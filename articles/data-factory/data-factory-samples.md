@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/25/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: 6ec8ac288a4daf6fddd6d135655e62fad7ae17c2
-ms.openlocfilehash: 3137773458ca5b50b1bf42972d4cfd8e9b8d5cba
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 446a7b585ca1204d49d76f71106799cbd2b0aa70
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -121,9 +122,4 @@ GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレ
 16. **[デプロイ ステータス]** ページに、デプロイメント プロセスのステータスが表示されます。 デプロイメントが完了したら、[完了] をクリックします。
 
 Visual Studio を使用して Data Factory エンティティを作成し、Azure に発行する方法の詳細については、「 [Visual Studio を使用した初めての Azure Data Factory パイプラインの作成](data-factory-build-your-first-pipeline-using-vs.md) 」を参照してください。          
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

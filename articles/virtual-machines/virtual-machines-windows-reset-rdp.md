@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2017
+ms.date: 03/24/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: e1331276cda20d235341171852dffeb4a9cb8bb2
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 2673c95d2e312d427454585d46ac790cb126fea6
+ms.lasthandoff: 03/27/2017
 
 
 ---
 # <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm"></a>Windows VM でリモート デスクトップ サービスまたはそのログイン パスワードをリセットする方法
-Windows 仮想マシン (VM) に接続できない場合、ローカル管理者パスワードをリセットすることも、リモート デスクトップ サービスの構成をリセットすることもできます。 Azure ポータルまたは Azure PowerShell で VM アクセス拡張機能を使用して、パスワードをリセットできます。 PowerShell を使用する場合は、[最新の PowerShell モジュールのインストールと構成](/powershell/azureps-cmdlets-docs)が完了しており、Azure サブスクリプションにサインインしていることを確認します。 また、[クラシック デプロイ モデルを使用して作成された VM でこれらの手順を実行](virtual-machines-windows-classic-reset-rdp.md)することもできます。
+Windows 仮想マシン (VM) に接続できない場合、ローカル管理者パスワードをリセットすることも、リモート デスクトップ サービスの構成をリセットすることもできます。 Azure ポータルまたは Azure PowerShell で VM アクセス拡張機能を使用して、パスワードをリセットできます。 PowerShell を使用する場合は、[最新の PowerShell モジュールのインストールと構成](/powershell/azureps-cmdlets-docs)が完了しており、Azure サブスクリプションにサインインしていることを確認します。 また、[クラシック デプロイ モデルを使用して作成された VM でこれらの手順を実行](windows/classic/reset-rdp.md)することもできます。
 
 ## <a name="ways-to-reset-configuration-or-credentials"></a>構成または資格情報をリセットする方法
 リモート デスクトップ サービスと資格情報は、ニーズに応じてさまざまな方法でリセットできます。
@@ -44,9 +44,15 @@ Windows 仮想マシンを選び、**[サポート + トラブルシューティ
 
 ユーザー名と新しいパスワードを入力し、**[更新]** をクリックします。 VM への接続を再度試してみます。
 
+> [!NOTE] 
+> - パスワードを変更してポータルで操作を完了してから、VM でこの変更が有効になるまで 3 ～ 5 分かかる場合があります。 変更が有効にならない場合は VM を再起動します。
+> - VMAccess 拡張機能は組み込みのローカル管理者アカウントに対してのみ動作し、その他のローカル ID やドメイン ID では動作しません。
+> - 対象となるコンピューターがドメイン コントローラーの場合は、拡張機能によってドメイン管理者アカウントがリセットされたりアカウント名が変更されます。
+
+
 ### <a name="reset-the-remote-desktop-service-configuration"></a>**リモート デスクトップ サービスの構成のリセット**
 
-Windows 仮想マシンを選び、**[サポート + トラブルシューティング]** > **[パスワードのリセット]** をクリックします。 パスワード リセット ブレードが表示されます。 
+Windows 仮想マシンを選び、**[サポート + トラブルシューティング]** > **[パスワードのリセット]** をクリックします。 パスワード リセット ブレードが次のように表示されます。
 
 ![RDP 構成のリセット](./media/virtual-machines-windows-reset-rdp/Portal-RM-RDP-Reset.png)
 

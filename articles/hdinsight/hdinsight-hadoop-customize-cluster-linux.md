@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 48e85f53-87c1-474f-b767-ca772238cc13
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,9 +17,9 @@ ms.topic: article
 ms.date: 03/10/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: b615f97484033bb406022e84fbcf50f88458de3c
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 1f64380b0bd271658c0f06e01a9b013ae4e25636
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -36,7 +37,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 ## <a name="permissions"></a>アクセス許可
 
-ドメイン参加済みの HDInsight クラスターを使用している場合、このクラスターでスクリプト アクションを使用するには次の&2; つの Ambari アクセス許可が必要になります。
+ドメイン参加済みの HDInsight クラスターを使用している場合、このクラスターでスクリプト アクションを使用するには次の 2 つの Ambari アクセス許可が必要になります。
 
 * **AMBARI.RUN\_CUSTOM\_COMMAND**: Ambari の管理者ロールは、既定でこのアクセス許可を持っています。
 * **CLUSTER.RUN\_CUSTOM\_COMMAND**: HDInsight クラスターの管理者および Ambari の管理者は、既定でこのアクセス許可を持っています。
@@ -718,7 +719,7 @@ Ambari の Web UI を使用すると、スクリプト アクションによっ�
 
     * **Zookeeper ノード** - `<uniqueidentifier>AmbariDb-zk0-<generated_value>.cloudapp.net`
 
-* 対応するホストのすべての stdout と stderr が、ストレージ アカウントにアップロードされます。 各スクリプト アクションに対して、**output-\*.txt** と **errors-\*.txt** が&1; つずつあります。 output-*.txt ファイルには、ホストで実行されたスクリプトの URI に関する情報が含まれます。 たとえば、次のように入力します。
+* 対応するホストのすべての stdout と stderr が、ストレージ アカウントにアップロードされます。 各スクリプト アクションに対して、**output-\*.txt** と **errors-\*.txt** が 1 つずつあります。 output-*.txt ファイルには、ホストで実行されたスクリプトの URI に関する情報が含まれます。 たとえば、次のように入力します。
 
         'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
 
@@ -730,7 +731,7 @@ Ambari の Web UI を使用すると、スクリプト アクションによっ�
 
 * 同じ日に同じ名前のスクリプト アクション クラスターを作成する場合は、一意のプレフィックスを使用して該当するログ ファイルを識別できます。
 
-* 1 日の最後にクラスターを作成すると、ログ ファイルが&2; 日間にまたがる場合があります。 そのような場合は、同じクラスターに日付が異なる&2; つのフォルダーが作成されます。
+* 1 日の最後にクラスターを作成すると、ログ ファイルが 2 日間にまたがる場合があります。 そのような場合は、同じクラスターに日付が異なる 2 つのフォルダーが作成されます。
 
 * 既定のコンテナーへのログ ファイルのアップロードは、特に大きなクラスターの場合、最大 5 分かかることがあります。 そのため、ログにアクセスする必要がある場合は、スクリプト アクションが失敗したときにクラスターをすぐに削除しないでください。
 
@@ -758,17 +759,13 @@ __解決策__: このエラーを解決するには、`ssh` を使用して各�
 sudo pip install azure-storage==0.20.0
 ```
 
-SSH を使用してクラスターに接続する方法の詳細については、次のドキュメントを参照してください。
-
-* [Linux、Unix、OS X、Windows から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-
-* [HDInsight の Linux ベースの Hadoop で Windows から SSH (PuTTY) を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+SSH を使用してクラスターに接続する方法については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 ### <a name="history-doesnt-show-scripts-used-during-cluster-creation"></a>クラスターの作成時に使用されたスクリプトが履歴に表示されません
 
 クラスターが 2016 年 3 月 15 日より前に作成された場合、クラスターの作成時に使用されたスクリプトのスクリプト アクション履歴にエントリが表示されない可能性があります。 ただし、2016 年 3 月 15 日より後にそのクラスターのサイズを変更すると、スクリプトはサイズ変更操作の一部としてクラスター内の新しいノードに適用されるため、クラスター作成時のスクリプトの使用は履歴に表示されます。
 
-ただし、例外が&2; つあります。
+ただし、例外が 2 つあります。
 
 * クラスターが 2015 年 9 月 1 日より前に作成された場合。 スクリプト アクションが導入される前であるため、この日付より前に作成されたクラスターについては、作成時にスクリプト アクションを使用できませんでした。
 

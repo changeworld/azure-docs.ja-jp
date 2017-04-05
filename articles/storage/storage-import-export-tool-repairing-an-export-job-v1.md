@@ -1,6 +1,6 @@
 ---
-title: "Azure Export ジョブの修復 | Microsoft Docs"
-description: "Azure Import/Export サービスを使用して作成したエクスポート ジョブを修復し、実行する方法について説明します。"
+title: "Azure Import/Export のエクスポート ジョブの修復 - v1 | Microsoft Docs"
+description: "Azure Import/Export サービスを使用して作成し実行したエクスポート ジョブを修復する方法について説明します。"
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 74182c8c357085f186aaa43adfaef80a083d16bb
-ms.openlocfilehash: 7ae819a662230a7ca7da6f7bc5bbb3b3f940074e
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: cab61ee993306e830ae899ed639929b0ee7fba82
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -30,11 +30,15 @@ ms.lasthandoff: 02/16/2017
   
 この機能を使用するには Azure ストレージへの接続が必要になります。  
   
-インポート ジョブを修復するためのコマンドは **RepairExport** です。 次のパラメーターを指定できます。  
+インポート ジョブを修復するためのコマンドは **RepairExport** です。
+
+## <a name="repairexport-parameters"></a>RepairExport パラメーター
+
+次のパラメーターは **RepairExport** とともに指定できます。  
   
 |パラメーター|Description|  
 |---------------|-----------------|  
-|**/r:<RepairFile\>**|必須。 修復の進行状況を追跡し、中断された修復を再開できる修復ファイルへのパスです。 各ドライブには修復ファイルが&1; つのみ必要です。 特定のドライブの修復を開始する際、まだ存在していない修復ファイルへのパスに渡されます。 中断された修復を再開するには、既存の修復ファイルの名前を指定してください。 ターゲット ドライブに対応する修復ファイルを必ず指定する必要があります。|  
+|**/r:<RepairFile\>**|必須。 修復の進行状況を追跡し、中断された修復を再開できる修復ファイルへのパスです。 各ドライブには修復ファイルが 1 つのみ必要です。 特定のドライブの修復を開始する際、まだ存在していない修復ファイルへのパスに渡されます。 中断された修復を再開するには、既存の修復ファイルの名前を指定してください。 ターゲット ドライブに対応する修復ファイルを必ず指定する必要があります。|  
 |**/logdir:<LogDirectory\>**|省略可能。 ログ ディレクトリです。 詳細ログ ファイルは、このディレクトリに書き込まれます。 ログ ディレクトリが指定されていない場合、現在のディレクトリがログ ディレクトリとして使用されます。|  
 |**/d:<TargetDirectory\>**|必須。 検証、修復するディレクトリです。 これは通常エクスポート ドライブのルート ディレクトリになりますが、エクスポートされたファイルのコピーを含むネットワーク ファイル共有にもできます。|  
 |**/bk:<BitLockerKey\>**|省略可能。 エクスポート ファイルが格納されている暗号のロックを解除する場合は BitLocker キーを指定する必要があります。|  
@@ -53,13 +57,13 @@ Azure Import/Export ツールを使用して、エクスポートできなかっ
   
 -   転送処理中に変更されたストレージ アカウント キー  
   
-**RepairExport**モードでツールを実行するには、まずエクスポートされたファイルを含むドライブをコンピューターに接続します。 次に、Azure Import/Export ツールを実行し、`/d`パラメーターでそのドライブへのパスを指定します。 また、ダウンロードしたドライブのコピー ログ ファイルへのパスも指定する必要があります。 次のコマンド ラインの例は、エクスポートに失敗したファイルを修復するツールを実行します。  
+**RepairExport**モードでツールを実行するには、まずエクスポートされたファイルを含むドライブをコンピューターに接続します。 次に、Azure Import/Export ツールを実行して、`/d` パラメーターでそのドライブへのパスを指定します。 また、ダウンロードしたドライブのコピー ログ ファイルへのパスも指定する必要があります。 次のコマンド ラインの例は、エクスポートに失敗したファイルを修復するツールを実行します。  
   
 ```  
 WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C3U.log  
 ```  
   
-次は、BLOB 内のブロックの&1; つがエクスポートに失敗したことを示すコピー ログ ファイルの例です。  
+次は、BLOB 内のブロックの 1 つがエクスポートに失敗したことを示すコピー ログ ファイルの例です。  
   
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
@@ -78,14 +82,14 @@ WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bob
 </DriveLog>  
 ```  
   
-コピー ログ ファイルでは、Windows Azure Import/Export サービスが BLOB ブロックの&1; つをエクスポート ドライブのファイルにダウンロードしている間にエラーが発生したことを示しています。 ファイルの他のコンポーネントは正常にダウンロードされ、ファイルの長さは正しく設定されていました。 この場合、ツールはドライブ上のファイルを開き、ストレージ アカウントからブロックをダウンロードして、長さ 65536 でオフセット 65536 から始まる範囲のファイルに書き込みます。  
+コピー ログ ファイルでは、Windows Azure Import/Export サービスが BLOB ブロックの 1 つをエクスポート ドライブのファイルにダウンロードしている間にエラーが発生したことを示しています。 ファイルの他のコンポーネントは正常にダウンロードされ、ファイルの長さは正しく設定されていました。 この場合、ツールはドライブ上のファイルを開き、ストレージ アカウントからブロックをダウンロードして、長さ 65536 でオフセット 65536 から始まる範囲のファイルに書き込みます。  
   
 ## <a name="using-repairexport-to-validate-drive-contents"></a>RepairExport を使用してドライブの内容を検証する  
 Azure Import/Export を **RepairExport** オプションと一緒に使用して、ドライブの内容が正しいことを検証することもできます。 各エクスポート ドライブのマニフェスト ファイルには、ドライブの内容に関する MD5 が含まれています。  
   
-また Azure Import/Export サービスは、エクスポート プロセス中にマニフェスト ファイルをストレージ アカウントに保存することもできます。 マニフェスト ファイルの場所は、ジョブが完了した際に [Get Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) 操作を通じて利用可能になります。 ドライブ マニフェスト ファイルの形式の詳細については、「[インポート/エクスポート サービスのマニフェスト ファイルの形式](storage-import-export-file-format-metadata-and-properties.md)」をご覧ください。  
+また Azure Import/Export サービスは、エクスポート プロセス中にマニフェスト ファイルをストレージ アカウントに保存することもできます。 マニフェスト ファイルの場所は、ジョブが完了した際に [Get Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) 操作を通じて利用可能になります。 ドライブ マニフェスト ファイルの形式の詳細については、[ サービスのマニフェスト ファイルの形式](storage-import-export-file-format-metadata-and-properties.md)に関する記事をご覧ください。  
   
-次の例では、**/ManifestFile** と**/CopyLogFile** パラメーターを使用する Azure Import/Export ツールを実行する方法を示しています。  
+次の例では、**/ManifestFile** パラメーターと**/CopyLogFile** パラメーターを使用する Azure Import/Export ツールを実行する方法を示しています。  
   
 ```  
 WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C3U.log /ManifestFile:G:\9WM35C3U.manifest  
@@ -129,31 +133,34 @@ WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bob
 ``` 
   
 修復処理が終わると、ツールではマニフェスト ファイルで参照されている各ファイルを読み取り、MD5 ハッシュに基づいて、ファイルの整合性を検証します。 上記のマニフェストでは、次のコンポーネントを確認します。  
+
+```  
+G:\pictures\city\redmond.jpg, offset 0, length 3584  
   
-G:\pictures\city\redmond.jpg、オフセット 0、長さ 3584  
+G:\pictures\city\redmond.jpg, offset 3584, length 3584  
   
-G:\pictures\city\redmond.jpg、オフセット 3584、長さ 3584  
-  
-G:\pictures\city\redmond.jpg、オフセット 7168、長さ 3584  
+G:\pictures\city\redmond.jpg, offset 7168, length 3584  
   
 G:\pictures\city\redmond.jpg.properties  
   
-G:\pictures\city\redmond.jpg、オフセット 0、長さ 2721  
+G:\pictures\wild\canyon.jpg, offset 0, length 2721  
   
-G:\pictures\city\redmond.jpg、オフセット 2721、長さ 2721  
+G:\pictures\wild\canyon.jpg, offset 2721, length 2721  
   
-G:\pictures\city\redmond.jpg、オフセット 5442、長さ 2721  
+G:\pictures\wild\canyon.jpg, offset 5442, length 2721  
   
-G:\pictures\city\redmond.jpg、オフセット 8163、長さ 2721  
+G:\pictures\wild\canyon.jpg, offset 8163, length 2721  
   
 G:\pictures\wild\canyon.jpg.properties  
-  
+```
+
 検証に失敗したコンポーネントはすべて、ツールによってダウンロードされ、ドライブ上の同じファイルに書き換えられます。  
   
-## <a name="see-also"></a>関連項目  
-[Azure Import/Export ツールの設定](storage-import-export-tool-setup-v1.md)   
-[インポート ジョブ用のハード ドライブを準備する](storage-import-export-tool-preparing-hard-drives-import-v1.md)   
-[コピー ログ ファイルによるジョブの状態の確認](storage-import-export-tool-reviewing-job-status-v1.md)   
-[インポート ジョブの修復](storage-import-export-tool-repairing-an-import-job-v1.md)   
-[Azure Import/Export ツールのトラブルシューティング](storage-import-export-tool-troubleshooting-v1.md)
+## <a name="next-steps"></a>次のステップ
+ 
+* [Azure Import/Export ツールの設定](storage-import-export-tool-setup-v1.md)   
+* [インポート ジョブ用のハード ドライブを準備する](storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+* [コピー ログ ファイルによるジョブの状態の確認](storage-import-export-tool-reviewing-job-status-v1.md)   
+* [インポート ジョブの修復](storage-import-export-tool-repairing-an-import-job-v1.md)   
+* [Azure Import/Export ツールのトラブルシューティング](storage-import-export-tool-troubleshooting-v1.md)
 

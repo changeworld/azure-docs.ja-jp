@@ -2,14 +2,14 @@
 redirect_url: https://docs.microsoft.com/azure/documentdb/documentdb-change-feed-hl7-fhir-logic-apps
 ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 0b93e0cd71add8bad86c2b3c0023b524bc4f621a
-ms.openlocfilehash: 1e44ae2341257df6ac367db83947178918016430
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 1b5ec3cb1c2aba86570c6f1753d9142c0d0349ce
+ms.lasthandoff: 03/29/2017
 
 
 ---
 # <a name="notifications-for-new-or-changed-documentdb-resources-using-logic-apps"></a>Logic Apps を使用した DocumentDB リソースの新規作成や変更の通知
-この記事は、Azure DocumentDB コミュニティ フォーラムの&1; つに投稿されていた質問を基にして作成しました。 その質問とは " **DocumentDB はリソースの変更に関する通知をサポートしていますか**" というものでした。
+この記事は、Azure DocumentDB コミュニティ フォーラムの 1 つに投稿されていた質問を基にして作成しました。 その質問とは " **DocumentDB はリソースの変更に関する通知をサポートしていますか**" というものでした。
 
 私は長年 BizTalk Server に携わっているのですが、変更通知は [WCF LOB アダプター](https://msdn.microsoft.com/library/bb798128.aspx)を使用している場合にはごく一般的なシナリオです。 そこで私は、この機能を DocumentDB の新規作成または変更されたドキュメントに対しても実装できるかどうかを調べることにしました。
 
@@ -28,7 +28,7 @@ IT 部門は、その方法を簡単に提供できると答えました。 ま�
 このアプリケーションを作成するために、IT 部門では、まずこれをモデル化することにしました。  ビジネス プロセス モデリング表記 (BPMN) には、技術者だけでなく技術系以外の人にも理解しやすいという利点があります。 ここでは、通知プロセス全体をビジネス プロセスとして捉えます。 
 
 ## <a name="high-level-view-of-notification-process"></a>通知プロセスの概要
-1. 出発点は、タイマー トリガーを持つロジック アプリです。 トリガーは既定で&1; 時間おきに実行されます。
+1. 出発点は、タイマー トリガーを持つロジック アプリです。 トリガーは既定で 1 時間おきに実行されます。
 2. 次に、このロジック アプリに対して HTTP POST を実行します。
 3. ロジック アプリがすべての作業を実行します。
 
@@ -41,7 +41,7 @@ IT 部門は、その方法を簡単に提供できると答えました。 ま�
 
 手順は次のとおりです。
 
-1. API アプリから現在の UTC DateTime を取得する必要があります。  既定値は&1; 時間前です。
+1. API アプリから現在の UTC DateTime を取得する必要があります。  既定値は 1 時間前です。
 2. UTC DateTime は、UNIX タイムスタンプ形式に変換されます。 これは、DocumentDB におけるタイムスタンプの既定の形式です。
 3. この値を API アプリに POST します。API アプリでは DocumentDB クエリが実行されます。 クエリでこの値が使用されます。
    
@@ -734,7 +734,7 @@ Azure BLOB API の使用に慣れていない場合は、「 [Get started with t
 
 このアクションでは、電子メール通知を送信します。  ここでは [SendGrid](https://sendgrid.com/marketing/sendgrid-services?cvosrc=PPC.Bing.sendgrib&cvo_cid=SendGrid%20-%20US%20-%20Brand%20-%20&mc=Paid%20Search&mcd=BingAds&keyword=sendgrib&network=o&matchtype=e&mobile=&content=&search=1&utm_source=bing&utm_medium=cpc&utm_term=%5Bsendgrib%5D&utm_content=%21acq%21v2%2134335083397-8303227637-1649139544&utm_campaign=SendGrid+-+US+-+Brand+-+%28English%29)を使用しています。   
 
-このコードは、 [101-logic-app-sendgrid Github リポジトリ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sendgrid)にあるロジック アプリと SendGrid 用のテンプレートを使用して生成されています。
+このコードは、[101-logic-app-sendgrid GitHub リポジトリ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sendgrid)にあるロジック アプリと SendGrid 用のテンプレートを使用して生成されています。
 
 HTTP 操作は POST です。 
 
@@ -913,7 +913,7 @@ emailBody では、クエリから返されるドキュメント数を連結し�
 では、API アプリを見てみましょう。
 
 ## <a name="docdbnotificationapi"></a>DocDBNotificationApi
-アプリにはいくつかの操作がありますが、使用するのは次の&3; つのみです。
+アプリにはいくつかの操作がありますが、使用するのは次の 3 つのみです。
 
 * GetUTCDate
 * ConvertToTimeStamp
@@ -1112,7 +1112,7 @@ Patient BLOB ファイル情報が次のように表示されます。
 重要な点は、事前に計画し、ワークフローをモデル化することです。
 
 ## <a name="next-steps"></a>次のステップ
-[Github](https://github.com/HEDIDIN/DocDbNotifications)で提供されているロジック アプリのコードをダウンロードして使用してみてください。 このアプリケーションをベースとして活用し、変更を加えたコードをぜひリポジトリに投稿してください。 
+[GitHub](https://github.com/HEDIDIN/DocDbNotifications) で提供されているロジック アプリのコードをダウンロードして使用してみてください。 このアプリケーションをベースとして活用し、変更を加えたコードをぜひリポジトリに投稿してください。 
 
 DocumentDB をさらに詳しく知りたい場合は、こちらの [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)をご覧ください。
 

@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 01/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 93990e342f6bd8fcfe9781bcb021aabfd33e8572
-ms.openlocfilehash: 271a15d258177c98ad72be007c20ae278df6236b
-ms.lasthandoff: 01/18/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 4fe50acbbf9424275c5746b3bdabc79b08b027d3
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -55,12 +55,7 @@ SSH コマンドを使用して、HDInsight クラスターの完全修飾ドメ
 
 **HDInsight クラスターの作成時に SSH 認証のパスワードを指定した場合は** 、パスワードの入力を求められます。
 
-HDInsight での SSH の使用に関する詳細については、「 [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)」をご覧ください。
-
-### <a name="putty-windows-based-clients"></a>PuTTY (Windows ベースのクライアント)
-Windows ではビルトイン SSH クライアントは提供されません。 **http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html**からダウンロードできる [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)を使用することをお勧めします。
-
-PuTTY の使用については、「 [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する ](hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
+SSH の使用方法の詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページをご覧ください。
 
 ## <a id="pig"></a>Pig コマンドの使用
 1. 接続したら、次のコマンドを使用して Pig コマンド ライン インターフェイス (CLI) を起動します。

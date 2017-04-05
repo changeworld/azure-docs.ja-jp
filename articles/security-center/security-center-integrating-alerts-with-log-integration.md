@@ -1,5 +1,5 @@
 ---
-title: "Azure Security Center の警告と Azure ログの統合 (プレビュー) | Microsoft Docs"
+title: "Azure Security Center の警告と Azure ログの統合 | Microsoft Docs"
 description: "この記事では、Security Center の警告と Azure ログの統合の概要について説明します。"
 services: security-center
 documentationcenter: na
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/09/2016
+ms.date: 03/23/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
-ms.openlocfilehash: 32d26fa811f1b5b34981e40d20e6c941d5f08477
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: fcd14b6b0afe08db82f2b8050beaf03ece7fd212
+ms.lasthandoff: 03/24/2017
 
 
 ---
-# <a name="integrating-azure-security-center-alerts-with-azure-log-integration-preview"></a>Azure Security Center の警告と Azure ログの統合 (プレビュー)
+# <a name="integrating-azure-security-center-alerts-with-azure-log-integration"></a>Azure Security Center の警告と Azure ログの統合
 セキュリティ操作およびインシデント対応チームの多くが、セキュリティ情報イベント管理 (SIEM) ソリューションを、セキュリティ警告のトリアージと調査の開始点として使用します。 Azure ログ統合により、お客様は、Security Center の警告を、Azure 診断および Azure 監査ログによって収集された仮想マシンのセキュリティ イベントと共に、ログ分析または SIEM ソリューションとほぼリアルタイムで同期させることができます。
 
 Azure ログ統合は、HP ArcSight、Splunk、IBM Qradar などで動作します。
@@ -92,9 +93,4 @@ Azure 監査ログとプロパティ定義の詳細については、次をご�
 * [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」 -- セキュリティの警告の管理と対応の方法について説明しています。
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
 * [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティに関する最新のニュースと情報を入手できます。
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

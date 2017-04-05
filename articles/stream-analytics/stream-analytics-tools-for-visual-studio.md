@@ -4,20 +4,21 @@ description: "Visual Studio の Azure Stream Analytics ツールに関する入�
 keywords: Visual Studio
 documentationcenter: 
 services: stream-analytics
-author: 
-manager: 
-editor: 
+author: jeffstokes72
+manager: jhubbard
+editor: cgronlun
 ms.assetid: a473ea0a-3eaa-4e5b-aaa1-fec7e9069f20
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 02/01/2017
-ms.author: 
+ms.date: 03/28/2017
+ms.author: sujie
 translationtype: Human Translation
-ms.sourcegitcommit: 81a5678051b026a16bdae2f2eab7ead2c17f9563
-ms.openlocfilehash: 4874c52b24d9c69fa1d1648035102aaef276f944
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: d0125dda4df69279e49a9fad4dc28dcbf6368322
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -56,28 +57,28 @@ Visual Studio で、**[ファイル] メニュー**をクリックし、**[新�
 2. Azure のアカウントを使用してログインします。 
 
 ## <a name="define-input-sources"></a>入力ソースの定義
-1.  **ソリューション エクスプローラー**で**[入力]** ノードを展開し、**Input.json** の名前を **EntryStream.json** に変更します。 **[EntryStream.json]** をダブルクリックします。
-2.  **[入力のエイリアス]** が **EntryStream** になりました。 この入力のエイリアスは、クエリ スクリプトで使用されることに注意してください。 
-3.  [ソースの種類] は **[データ ストリーム]** です。
-4.  [ソース] は **[イベント ハブ]** です。
-5.  [Service Bus 名前空間] は、ドロップダウンにある **TollData** の名前空間を指定します。
-6.  [イベント ハブの名前] は **entry** に設定する必要があります。
-7.  [イベント ハブ ポリシー名] は **RootManageSharedAccessKey** です (既定値)。
-8.  **[イベントのシリアル化の形式]** に **[JSON]** を、**[エンコード]** に **[UTF8]** を選択します。
+1.    **ソリューション エクスプローラー**で**[入力]** ノードを展開し、**Input.json** の名前を **EntryStream.json** に変更します。 **[EntryStream.json]** をダブルクリックします。
+2.    **[入力のエイリアス]** が **EntryStream** になりました。 この入力のエイリアスは、クエリ スクリプトで使用されることに注意してください。 
+3.    [ソースの種類] は **[データ ストリーム]** です。
+4.    [ソース] は **[イベント ハブ]** です。
+5.    [Service Bus 名前空間] は、ドロップダウンにある **TollData** の名前空間を指定します。
+6.    [イベント ハブの名前] は **entry** に設定する必要があります。
+7.    [イベント ハブ ポリシー名] は **RootManageSharedAccessKey** です (既定値)。
+8.    **[イベントのシリアル化の形式]** に **[JSON]** を、**[エンコード]** に **[UTF8]** を選択します。
    
    設定は次のようになります。
    
    ![入力ソースの定義](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-01.png)
    
-9.  ページ下部の **[保存]** をクリックしてウィザードを終了します。 入力ソースをもう&1; つ追加して、終了ストリームを作成できます。 [入力] ノードを右クリックして、**[新しい項目]** をクリックします。
+9.    ページ下部の **[保存]** をクリックしてウィザードを終了します。 入力ソースをもう 1 つ追加して、終了ストリームを作成できます。 [入力] ノードを右クリックして、**[新しい項目]** をクリックします。
    
    ![入力ソースの定義](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-02.png)
    
-10. ポップアップ ウィンドウで **[Azure Stream Analytics Input]**(Azure Stream Analytics の入力) を選択し、名前を **ExitStream.json** に変更します。 **[追加]**をクリックします。
+10.    ポップアップ ウィンドウで **[Azure Stream Analytics Input]**(Azure Stream Analytics の入力) を選択し、名前を **ExitStream.json** に変更します。 **[追加]**をクリックします。
    
    ![入力ソースの定義](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-03.png)
    
-11. プロジェクトで **[ExitStream.json]** をダブルクリックし、入力ストリームと同じ手順に従って入力します。 次のスクリーンショットに従ってイベント ハブの名前の値を入力してください。
+11.    プロジェクトで **[ExitStream.json]** をダブルクリックし、入力ストリームと同じ手順に従って入力します。 次のスクリーンショットに従ってイベント ハブの名前の値を入力してください。
    
    ![入力ソースの定義](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-04.png)
    
@@ -87,21 +88,21 @@ Visual Studio で、**[ファイル] メニュー**をクリックし、**[新�
    
    次に、車両登録データの BLOB ファイルに対する参照データ入力を追加します。
    
-12. プロジェクトの **[入力]** ノードを右クリックして、ストリーム入力と同じ手順に従います。ただし、[データ ストリーム] の代わりに **[参照データ]** を選択し、[入力のエイリアス] に **[登録]** を指定します。
+12.    プロジェクトの **[入力]** ノードを右クリックして、ストリーム入力と同じ手順に従います。ただし、[データ ストリーム] の代わりに **[参照データ]** を選択し、[入力のエイリアス] に **[登録]** を指定します。
    
    ![入力ソースの定義](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-06.png)
    
-13. [ストレージ アカウント] には、**tolldata** を含むものを選択します。 コンテナー名は **tolldata**、**[パス パターン]** は **registration.json** とする必要があります。 このファイル名は大文字と小文字が区別されるため、小文字で入力してください。
-14. **[保存]** をクリックしてウィザードを終了します。
+13.    [ストレージ アカウント] には、**tolldata** を含むものを選択します。 コンテナー名は **tolldata**、**[パス パターン]** は **registration.json** とする必要があります。 このファイル名は大文字と小文字が区別されるため、小文字で入力してください。
+14.    **[保存]** をクリックしてウィザードを終了します。
 
 これで、すべての入力が定義されました。
 
 ## <a name="define-output"></a>出力の定義
-1.  **ソリューション エクスプローラー**で、**[入力]** ノードを展開して **[Output.json]** をダブルクリックします。
-2.  [出力のエイリアス] を **[出力]** に設定し [シンク] を [SQL Database] に設定します。
-2.  データベース名を **TollDataDB** と入力します。
-3.  **[ユーザー名]** フィールドに「**tolladmin**」、**[パスワード]** フィールドに 「**123toll!**」、および **[テーブル]** フィールドに「**TollDataRefJoin**」と入力します。
-4.  **[保存]**をクリックします。
+1.    **ソリューション エクスプローラー**で、**[入力]** ノードを展開して **[Output.json]** をダブルクリックします。
+2.    [出力のエイリアス] を **[出力]** に設定し [シンク] を [SQL Database] に設定します。
+2.    データベース名を **TollDataDB** と入力します。
+3.    **[ユーザー名]** フィールドに「**tolladmin**」、**[パスワード]** フィールドに 「**123toll!**」、および **[テーブル]** フィールドに「**TollDataRefJoin**」と入力します。
+4.    **[保存]**をクリックします。
 
 ![出力の定義](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-output-01.png)
  
@@ -124,9 +125,10 @@ Visual Studio で、**[ファイル] メニュー**をクリックし、**[新�
 
 初めての Azure Stream Analytics クエリを作成したら、TollApp フォルダーの以下のパスに格納されているサンプル データ ファイルを使ってクエリをテストします。
 
-**..\TollApp\TollApp\Data**
+<seg>
+  **..\TollApp\TollApp\Data**</seg>
 
-このフォルダーには、Entry.json、Exit.json、Registration.json のファイルが格納されています。
+このフォルダには次のファイルが含まれています。 •    Entry.json •    Exit.json •    Registration.json
 
 ## <a name="question-number-of-vehicles-entering-a-toll-booth"></a>テスト: 料金所ブースに入る車両の台数
 プロジェクトで、[Script.asaql] をダブルクリックしてスクリプトをエディターで開き、前のセクションのスクリプトをエディターに貼り付けます。 クエリ エディターでは Intellisense、構文の色分け、およびエラーのマーカーがサポートされています。
@@ -148,7 +150,7 @@ Visual Studio で、**[ファイル] メニュー**をクリックし、**[新�
    
    ![ローカル入力の追加](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-add-local-input-03.png)
    
-3. クエリ エディターで [ローカルで実行する] をクリックするか 、または F5 キーを押します。
+3. クエリ エディターで [ローカルで実行する] をクリックしてください。 または F5 キーを押します。
    
    ![ローカルの実行](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-local-run-01.png)
    
@@ -223,7 +225,7 @@ Visual Studio で、**[ファイル] メニュー**をクリックし、**[新�
 
 
 ## <a name="export-an-existing-job-to-a-project"></a>既存のジョブをプロジェクトにエクスポートする
-既存のジョブをプロジェクトにエクスポートする方法は&2; つあります。
+既存のジョブをプロジェクトにエクスポートする方法は 2 つあります。
 1. **サーバー エクスプローラー** の **[Stream Analytics ジョブ]** ノードでジョブ ノードを右クリックします。 コンテキスト メニューから **[Export to New Stream Analytics Project]**(新しい Stream Analytics プロジェクトにエクスポートする) をクリックします。
    
    ![ジョブをエクスポートする](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-export-job-01.png)
@@ -252,10 +254,5 @@ Visual Studio で、**[ファイル] メニュー**をクリックし、**[新�
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

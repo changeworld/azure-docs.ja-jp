@@ -11,17 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/27/2017
+ms.date: 3/09/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 49352a5e8255468bbc54c02e0cd9242d49002dbd
-ms.openlocfilehash: 6a9a1cf616531de1d0b8194bc0e6c186acc27008
-ms.lasthandoff: 12/08/2016
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 3a58f6d2d3bc39af650f5d62acdf09d769cd7ad0
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thoughtworks-mingle"></a>チュートリアル: Azure Active Directory と Thoughtworks Mingle の統合
 このチュートリアルでは、Azure と Thoughtworks Mingle の統合について説明します。  
+
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 * 有効な Azure サブスクリプション
@@ -30,16 +31,17 @@ ms.lasthandoff: 12/08/2016
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
 1. Thoughtworks Mingle のアプリケーション統合の有効化
-2. シングル サインオンの構成
+2. シングル サインオン (SSO) の構成
 3. ユーザー プロビジョニングの構成
 4. ユーザーの割り当て
 
 ![シナリオ](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785150.png "Scenario")
 
-## <a name="enabling-the-application-integration-for-thoughtworks-mingle"></a>Thoughtworks Mingle のアプリケーション統合の有効化
+## <a name="enable-the-application-integration-for-thoughtworks-mingle"></a>Thoughtworks Mingle のアプリケーション統合の有効化
 このセクションでは、Thoughtworks Mingle のアプリケーション統合を有効にする方法を説明します。
 
-### <a name="to-enable-the-application-integration-for-thoughtworks-mingle-perform-the-following-steps"></a>Thoughtworks Mingle のアプリケーション統合を有効にするには、次の手順を実行します。
+**Thoughtworks Mingle のアプリケーション統合を有効にするには、次の手順を実行します。**
+
 1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
     ![Active Directory](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC700993.png "Active Directory")
@@ -66,12 +68,14 @@ ms.lasthandoff: 12/08/2016
    
     ![Thoughtworks Mingle](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785152.png "Thoughtworks Mingle")
 
-## <a name="configuring-single-sign-on"></a>シングル サインオンの構成
+## <a name="configure-single-sign-on"></a>Configure single sign-on
 このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Thoughtworks Mingle に対する認証を行うことができるようにする方法を説明します。  
+
 この手順の途中で、証明書を Thoughtworks Mingle にアップロードする必要があります。
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>シングル サインオンを構成するには、次の手順を実行します。
-1. Azure クラシック ポータルの **Thoughtworks Mingle** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+**シングル サインオンを構成するには、次の手順に従います。**
+
+1. Azure クラシック ポータルの **Thoughtworks Mingle **アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
    
     ![シングル サインオンの構成](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785153.png "Configure single sign-on")
 
@@ -95,21 +99,21 @@ ms.lasthandoff: 12/08/2016
 
 7. **[SSO Config]** セクションで、次の手順に従います。
    
-    ![SSO Config](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785158.png "SSO Config")
-   
-    a. メタデータ ファイルをアップロードするには、 **[Choose file]**をクリックします。
-   
-    b. **[変更を保存]**をクリックします。
+    ![SSO Config](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785158.png "SSO Config")   
+ 1. メタデータ ファイルをアップロードするには、 **[Choose file]**をクリックします。 
+ 2. **[変更を保存]**をクリックします。
 
 8. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
    
     ![シングル サインオンの構成](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785159.png "Configure single sign-on")
 
-## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
+## <a name="configure-user-provisioning"></a>[ユーザー プロビジョニングの構成]
 AAD ユーザーがサインインできるように、Azure Active Directory ユーザー名を使用して、Thoughtworks Mingle アプリケーションにユーザーをプロビジョニングする必要があります。  
-Thoughtworks Mingle の場合、プロビジョニングは手動で行います。
 
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>ユーザー プロビジョニングを構成するには、次の手順に従います。
+* Thoughtworks Mingle の場合、プロビジョニングは手動で行います。
+
+**ユーザー プロビジョニングを構成するには、次の手順に従います。**
+
 1. Thoughtworks Mingle 企業サイトに管理者としてログインします。
 
 2. **[Profile]**をクリックします。
@@ -126,23 +130,20 @@ Thoughtworks Mingle の場合、プロビジョニングは手動で行います
 
 5. **[New User]** ダイアログ ページで、次の手順に従います。
    
-    ![New User](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785163.png "New User")
-   
-    a. プロビジョニングする有効な AAD アカウントの **[Sign-in name]**、**[Display name]**、**[Choose password]**、**[Confirm password]** の詳細を該当するボックスに入力します。
-   
-    b. **[User type]** として、**[Full user]** を選択します。
-   
-    c. **[Create This Profile]**をクリックします。
+    ![New User](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785163.png "New User")   
+  1. プロビジョニングする有効な AAD アカウントの **[Sign-in name]**、**[Display name]**、**[Choose password]**、**[Confirm password]** の詳細を該当するボックスに入力します。 
+  2. **[User type]** として、**[Full user]** を選択します。
+  3. **[Create This Profile]**をクリックします。
 
-> [!NOTE]
-> Thoughtworks Mingle から提供されている他の Thoughtworks Mingle ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
-> 
-> 
+>[!NOTE]
+>Thoughtworks Mingle から提供されている他の Thoughtworks Mingle ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>  
 
-## <a name="assigning-users"></a>ユーザーの割り当て
+## <a name="assign-users"></a>[ユーザーの割り当て]
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
-### <a name="to-assign-users-to-thoughtworks-mingle-perform-the-following-steps"></a>ユーザーを Thoughtworks Mingle に割り当てるには、次の手順を実行します。
+**ユーザーを Thoughtworks Mingle に割り当てるには、次の手順を実行します。**
+
 1. Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2. **Thoughtworks Mingle** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。

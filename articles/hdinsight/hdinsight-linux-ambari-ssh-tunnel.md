@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 03/06/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: a09fc0052538316a37a9ff07dfddd89de00cb499
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 4d9471fcdff26ac76312fcecdb427dca842f7ee3
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -90,7 +90,7 @@ SSH キーを使用してクラスターを構成した場合は、SSH 秘密キ
 
 次の手順に従ってPuTTY を使用して、SSH トンネルを作成します。
 
-1. PuTTY を開き、接続情報を入力します。 HDInsight で PuTTY を使用する方法については、「 [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md) 」を参照してください。
+1. PuTTY を開き、接続情報を入力します。 PuTTY に慣れていない場合は、[PuTTY のドキュメント (http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)](http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html) を参照してください。
 
 2. ダイアログの左にある **[カテゴリ]** セクションで、**[接続]**、**[SSH]** の順に展開し、**[トンネル]** を選択します。
 
@@ -139,7 +139,7 @@ SSH キーを使用してクラスターを構成した場合は、SSH 秘密キ
     ![QuickLinks メニューが展開された画像](./media/hdinsight-linux-ambari-ssh-tunnel/namenodedropdown.png)
    
    > [!NOTE]
-   > インターネット接続が低速な場合、またはヘッド ノードの負荷が高い場合は、 **[Quick Links]**を選択したときにメニューではなく待機インジケーターが表示されることがあります。 その場合は、サーバーからデータが取得されるまで&1; ～&2; 分待ってから、改めて一覧を表示してみてください。
+   > インターネット接続が低速な場合、またはヘッド ノードの負荷が高い場合は、 **[Quick Links]**を選択したときにメニューではなく待機インジケーターが表示されることがあります。 その場合は、サーバーからデータが取得されるまで 1 ～ 2 分待ってから、改めて一覧を表示してみてください。
    > 
    > モニターの解像度が低い場合、またはブラウザー ウィンドウが最大化されていない場合は、 **[Quick Links]** メニューの一部のエントリが画面の右側で切れて表示されることがあります。 その場合は、マウスを使用してメニューを拡大するか、右矢印キーを使用して画面を右にスクロールして、メニューの残りを表示します。
    > 
@@ -159,9 +159,6 @@ SSH キーを使用してクラスターを構成した場合は、SSH 秘密キ
 
 * [Ambari を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)
 
-HDInsight での SSH の使用方法の詳細については、以下の記事を参照してください。
-
-* [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-* [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+SSH の使用方法の詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページをご覧ください。
 
 

@@ -8,6 +8,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 015d276e-f678-4f2b-9572-75553c56625b
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,9 +16,9 @@ ms.workload: big-data
 ms.date: 02/13/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 50a9c3929a4d3194c3786a3d4f6cdd1b73fb5867
-ms.openlocfilehash: 1527896e4f512cdfa6a4e925bbdca88a1e6a8fe7
-ms.lasthandoff: 02/14/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 281901045723266128db9069a6f244acb183ae80
+ms.lasthandoff: 03/25/2017
 
 ---
 # <a name="use-mirrormaker-to-create-a-replica-of-a-kafka-on-hdinsight-cluster-preview"></a>MirrorMaker を使用した HDInsight クラスターでの Kafka のレプリカの作成 (プレビュー)
@@ -27,7 +28,7 @@ Apache Kafka にはミラーリング機能が含まれているため、1 つ�
 ミラーリングは、継続的なプロセスとして実行できるほか、1 つのクラスターから別のクラスターにデータを移行する方法として断続的に使用することもできます。
 
 > [!WARNING]
-> ミラーリングは、フォールト トレランスを実現するための手段として考慮するべきではありません。 トピック内の項目へのオフセットは、移行元クラスターと移行先クラスターによって異なるため、クライアントはこれら&2; つを入れ替えて使用することはできません。
+> ミラーリングは、フォールト トレランスを実現するための手段として考慮するべきではありません。 トピック内の項目へのオフセットは、移行元クラスターと移行先クラスターによって異なるため、クライアントはこれら 2 つを入れ替えて使用することはできません。
 > 
 > フォールト トレランスを考慮する場合は、クラスター内のトピックをレプリケートする設定にします。 詳細については、「[Get started with Kafka on HDInsight (HDInsight での Kafka の使用)](hdinsight-apache-kafka-get-started.md)」を参照してください。
 
@@ -35,11 +36,11 @@ Apache Kafka にはミラーリング機能が含まれているため、1 つ�
 
 * Azure Virtual Network: 移行元および移行先の Kafka クラスターは、相互に直接通信できる必要があります。 HDInsight では Kafka API をインターネット上で公開していないため、移行元および移行先のクラスターは、同じ Azure Virtual Network に存在する必要があります。
 
-* 2 つの Kafka クラスター: このドキュメントでは、Azure Resource Manager テンプレートを使用して、Azure Virtual Network 内の HDInsight クラスターに&2; つの Kafka を作成します。
+* 2 つの Kafka クラスター: このドキュメントでは、Azure Resource Manager テンプレートを使用して、Azure Virtual Network 内の HDInsight クラスターに 2 つの Kafka を作成します。
 
 ## <a name="how-does-mirroring-work"></a>ミラーリングのしくみ
 
-ミラーリングでは、Apache Kafka に含まれるツール MirrorMaker によって移行元クラスターのトピックからレコードが使用され、移行元クラスターにローカル コピーが作成されます。 MirrorMaker では、移行元クラスターから読み取りを行う&1; つ (あるいは複数) の*コンシューマー*と、ローカル (移行先) クラスターへの書き込みを行う*プロデューサー*を使用します。
+ミラーリングでは、Apache Kafka に含まれるツール MirrorMaker によって移行元クラスターのトピックからレコードが使用され、移行元クラスターにローカル コピーが作成されます。 MirrorMaker では、移行元クラスターから読み取りを行う 1 つ (あるいは複数) の*コンシューマー*と、ローカル (移行先) クラスターへの書き込みを行う*プロデューサー*を使用します。
 
 次の図にミラーリング プロセスを示します。
 
@@ -71,7 +72,7 @@ HDInsight の Apache Kafka では、パブリック インターネットを介�
 > [!NOTE]
 > Kafka 自体は仮想ネットワーク内の通信に制限されていますが、クラスターの SSH や Ambari などの他のサービスにはインターネット経由でアクセスすることができます。 HDInsight で使用できるパブリック ポートの詳細については、「[HDInsight で使用されるポートと URI](hdinsight-hadoop-port-settings-for-services.md)」を参照してください。
 
-Azure 仮想ネットワークと Kafka クラスターは手動で作成できますが、Azure Resource Manager テンプレートを使用する方が簡単です。 次の手順に従って、Azure 仮想ネットワークと&2; つの Kafka クラスターを Azure サブスクリプションにデプロイします。
+Azure 仮想ネットワークと Kafka クラスターは手動で作成できますが、Azure Resource Manager テンプレートを使用する方が簡単です。 次の手順に従って、Azure 仮想ネットワークと 2 つの Kafka クラスターを Azure サブスクリプションにデプロイします。
 
 1. 次のボタンを使用して Azure にサインインし、Azure Portal でテンプレートを開きます。
    
@@ -118,18 +119,12 @@ Azure 仮想ネットワークと Kafka クラスターは手動で作成でき�
    
     **sshuser** は、クラスターの作成時に使用した SSH ユーザー名に置き換えます。 **BASENAME** は、クラスターの作成時に使用したベース名に置き換えます。
    
-    HDInsight での SSH の使用方法の詳細については、次のドキュメントを参照してください。
-   
-    * [HDInsight で Linux、Mac OS、Unix クライアント、Bash on Windows 10 から SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-   
-    * [HDInsight で Windows クライアントから SSH (PuTTY) を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+    詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 2. 次のコマンドを使用して Zookeeper ホストを検索し、`SOURCE_ZKHOSTS` 変数を設定して、`testtopic` という名前の新しいトピックをいくつか作成します。
    
     ```bash
-    # Get a list of zookeeper hosts for the source cluster
     SOURCE_ZKHOSTS=`grep -R zk /etc/hadoop/conf/yarn-site.xml | grep 2181 | grep -oPm1 "(?<=<value>)[^<]+"`
-    # Create a topic on the source cluster
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic testtopic --zookeeper $SOURCE_ZKHOSTS
     ```
 
@@ -147,11 +142,11 @@ Azure 仮想ネットワークと Kafka クラスターは手動で作成でき�
     echo $SOURCE_ZKHOSTS
     ```
    
-    次のテキストのような情報が返されます。
+ 次のテキストのような情報が返されます。
    
-        zk0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181,zk1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181,zk6-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181
+       zk0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181,zk1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181,zk6-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181
    
-    この情報は保存してください。 次のセクションで使用します。
+ この情報は保存してください。 次のセクションで使用します。
 
 ## <a name="configure-mirroring"></a>ミラーリングの構成
 
@@ -161,11 +156,7 @@ Azure 仮想ネットワークと Kafka クラスターは手動で作成でき�
    
     **sshuser** は、クラスターの作成時に使用した SSH ユーザー名に置き換えます。 **BASENAME** は、クラスターの作成時に使用したベース名に置き換えます。
    
-    HDInsight での SSH の使用方法の詳細については、次のドキュメントを参照してください。
-   
-    * [HDInsight で Linux、Mac OS、Unix クライアント、Bash on Windows 10 から SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-    
-    * [HDInsight で Windows クライアントから SSH (PuTTY) を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+    詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 2. 次のコマンドを使用して、**移行元**クラスターとの通信方法を説明する `consumer.properties` ファイルを作成します。
    
@@ -187,11 +178,8 @@ Azure 仮想ネットワークと Kafka クラスターは手動で作成でき�
 3. 移行先のクラスターと通信するプロデューサーを構成する前に、**移行先**クラスターのブローカー ホストを検索する必要があります。 この情報の取得には、次のコマンドを使用します。
    
     ```bash
-    # Install JQ for parsing JSON documents
     sudo apt -y install jq
-    # Get the broker information for the destination cluster
     DEST_BROKERHOSTS=`sudo bash -c 'ls /var/lib/ambari-agent/data/command-[0-9]*.json' | tail -n 1 | xargs sudo cat | jq -r '["\(.clusterHostInfo.kafka_broker_hosts[]):9092"] | join(",")'`
-    # Display the information
     echo $DEST_BROKERHOSTS
     ```
    
@@ -240,28 +228,22 @@ Azure 仮想ネットワークと Kafka クラスターは手動で作成でき�
 2. From the SSH connection to the **source** cluster, use the following command to start a producer and send messages to the topic:
     
     ```bash
-    # Install JQ for working with JSON
     sudo apt -y install jq
-    # Retrieve the Kafka brokers
     SOURCE_BROKERHOSTS=`sudo bash -c 'ls /var/lib/ambari-agent/data/command-[0-9]*.json' | tail -n 1 | xargs sudo cat | jq -r '["\(.clusterHostInfo.kafka_broker_hosts[]):9092"] | join(",")'`
-    # Start a producer
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list $SOURCE_BROKERHOSTS --topic testtopic
     ```
 
-    カーソル付きの空白行が表示されたら、テキスト メッセージを数個入力します。 これらのメッセージは、**移行元**クラスター上のトピックに送信されます。 操作が完了したら、**Ctrl + C** キーを使用してプロデューサーのプロセスを終了します。
+ カーソル付きの空白行が表示されたら、テキスト メッセージを数個入力します。 これらのメッセージは、**移行元**クラスター上のトピックに送信されます。 操作が完了したら、**Ctrl + C** キーを使用してプロデューサーのプロセスを終了します。
 
 3. **移行先**クラスターに SSH で接続してから、**Ctrl + C** キーを使用して MirrorMaker プロセスを終了します。 その後、次のコマンドを使用して、`testtopic` トピックが生成されたこと、およびトピック内のデータがこのミラーにレプリケートされたことを確認します。
     
     ```bash
-    # Get a list of zookeeper hosts for the destination cluster
     DEST_ZKHOSTS=`grep -R zk /etc/hadoop/conf/yarn-site.xml | grep 2181 | grep -oPm1 "(?<=<value>)[^<]+"`
-    # List topics on destination
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $DEST_ZKHOSTS
-    # Retrieve messages from the `testtopic`
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper $DEST_ZKHOSTS --topic testtopic --from-beginning
     ```
     
-    これで、MirrorMaster がトピックを移行元のクラスターから移行先にミラーリングしたときに作成された `testtopic` が、トピックの一覧に含まれるようになりました。 このトピックから取得するメッセージは、送信元クラスターで入力したものと同じです。
+  これで、MirrorMaster がトピックを移行元のクラスターから移行先にミラーリングしたときに作成された `testtopic` が、トピックの一覧に含まれるようになりました。 このトピックから取得するメッセージは、送信元クラスターで入力したものと同じです。
 
 ## <a name="delete-the-cluster"></a>クラスターを削除する
 

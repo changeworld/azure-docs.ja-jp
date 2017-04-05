@@ -1,7 +1,7 @@
 ---
 
 title: "Azure Import/Export のログ ファイルの形式 | Microsoft Docs"
-description: "インポート/エクスポート サービス ジョブの手順を実行したときに作成されるログ ファイルの形式について説明します"
+description: "インポート/エクスポート サービス ジョブの手順を実行したときに作成されるログ ファイルの形式について説明します。"
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -16,22 +16,22 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 74182c8c357085f186aaa43adfaef80a083d16bb
-ms.openlocfilehash: 0b402db8c7e6bd4abb5aaf6ded7f539cfec7172e
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 16234ccaf13ce1d85cfd207ed4734e683070faa6
+ms.lasthandoff: 03/30/2017
 
 
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Azure Import/Export サービスのログ ファイルの形式
 Microsoft Azure Import/Export サービスが、インポート ジョブまたはエクスポート ジョブの一部としてドライブでアクションを実行する場合、そのジョブに関連付けられているストレージ アカウントのブロック BLOB にログが書き込まれます。  
   
-Import/Export サービスによって書き込まれるログは&2; 種類あります。  
+Import/Export サービスによって書き込まれるログは 2 種類あります。  
   
 -   エラー ログは、エラーが発生したときに常に生成されます。  
   
 -   詳細ログは既定では無効になっていますが、[Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) または [Update Job Properties](/rest/api/storageimportexport/jobs#Jobs_Update) 操作で `EnableVerboseLog` プロパティを設定すると有効にできます。  
   
-## <a name="log-file-location"></a>ログ ファイルの場所  
+## <a name="log-file-location"></a>ログ ファイルの保存先  
 ログは、`Put Job` 操作で設定できる `ImportExportStatesPath` 設定で指定されるコンテナーまたは仮想ディレクトリでブロック BLOB に書き込まれます。 ログの書き込み先となる場所は、ジョブに認証を指定する方法と `ImportExportStatesPath` で指定される値と共によって異なります。 ジョブの認証はストレージ アカウント キーまたはコンテナーの SAS (共有アクセス署名) を通じて指定できます。  
   
 コンテナーまたは仮想ディレクトリの名前は `waimportexport` の既定の名前か、指定する別のコンテナー名または仮想ディレクトリ名のいずれかにできます。  
@@ -47,7 +47,7 @@ Import/Export サービスによって書き込まれるログは&2; 種類あ�
   
 [Get Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) 操作を呼び出すことで、エラー ログと詳細ログの URL が取得できます。 ログは、ドライブの処理が完了すると利用できます。  
   
-## <a name="log-file-format"></a>ログ ファイル形式  
+## <a name="log-file-format"></a>ログ ファイルの形式  
 両方のログの形式は同じで、ハード ドライブとお客様のアカウント間で BLOB をコピーする間に発生したイベントの XML の説明が格納される BLOB です。  
   
 詳細ログには、すべての BLOB (インポート ジョブの場合) またはファイル (エクスポート ジョブの場合) のコピー操作のステータスに関する完全な情報が含まれており、エラー ログには、インポートまたはエクスポート ジョブ中にエラーが発生した BLOB やファイルの情報のみが含まれます。  
@@ -149,13 +149,13 @@ properties-status ::=
 |`Properties/Path/@Hash`|属性、String|プロパティ ファイルの Base16 エンコード MD5 ハッシュ。|  
 |`Blob/Status`|String|BLOB の処理状態です。|  
   
-### <a name="drive-status-codes"></a>ドライブの状態コード  
+# <a name="drive-status-codes"></a>ドライブの状態コード  
 次の表は、ドライブの処理に関する状態コードを示します。  
   
 |状態コード|Description|  
 |-----------------|-----------------|  
 |`Completed`|ドライブは、処理が正常に完了しました。|  
-|`CompletedWithWarnings`|ドライブは、BLOB で指定されたインポート処理あたり&1; つ以上の BLOB で警告付きで処理が完了しました。|  
+|`CompletedWithWarnings`|ドライブは、BLOB で指定されたインポート処理あたり 1 つ以上の BLOB で警告付きで処理が完了しました。|  
 |`CompletedWithErrors`|ドライブは、1 つ以上の BLOB またはチャンクのエラーを完了しました。|  
 |`DiskNotFound`|ドライブでディスクが見つかりませんでした。|  
 |`VolumeNotNtfs`|ディスク上の最初のデータのボリュームは、NTFS 形式ではありません。|  
@@ -172,13 +172,13 @@ properties-status ::=
 |`ManifestAccessDenied`|マニフェスト ファイルへのアクセスが拒否されました。|  
 |`ManifestCorrupted`|マニフェスト ファイルは破損しています (コンテンツがハッシュと一致していません)。|  
 |`ManifestFormatInvalid`|マニフェストのコンテンツは、必要な形式に準拠していません。|  
-|`ManifestDriveIdMismatch`|マニフェスト ファイルのドライブ ID はドライブからの&1; 回の読み取りと一致しません。|  
+|`ManifestDriveIdMismatch`|マニフェスト ファイルのドライブ ID はドライブからの 1 回の読み取りと一致しません。|  
 |`ReadManifestFailed`|マニフェストからの読み取り中にディスク I/O エラーが発生しました。|  
 |`BlobListFormatInvalid`|エクスポート BLOB では、必須の形式に準拠していない BLOB が一覧表示されます。|  
 |`BlobRequestForbidden`|ストレージ アカウントでの BLOB へのアクセスが許可されていません。 無効なストレージ アカウント キーまたはコンテナー SAS が原因の可能性があります。|  
 |`InternalError`|ドライブを処理中に内部エラーが発生しました。|  
   
-### <a name="blob-status-codes"></a>BLOB 状態コード  
+## <a name="blob-status-codes"></a>BLOB の状態コード  
 次の表は、BLOB の処理に関する状態コードを示します。  
   
 |状態コード|Description|  
@@ -197,7 +197,7 @@ properties-status ::=
 |`IOFailed`|BLOB の処理中に、ディスクまたはネットワークの I/O エラーが発生しました。|  
 |`Failed`|BLOB の処理中に、不明なエラーが発生しました。|  
   
-### <a name="import-disposition-status-codes"></a>インポート処理の状態コード  
+## <a name="import-disposition-status-codes"></a>インポート処理の状態コード  
 次の表は、インポート処理を解決するための状態コードを示します。  
   
 |状態コード|説明|  
@@ -208,7 +208,7 @@ properties-status ::=
 |`Overwritten`|BLOB は、`overwrite` インポート処理によって既存の BLOB を上書きしました。|  
 |`Cancelled`|以前のエラーにより、インポート処理によりさらなる処理が停止しました。|  
   
-### <a name="page-rangeblock-status-codes"></a>ページ範囲/ブロックに関する状態コード  
+## <a name="page-rangeblock-status-codes"></a>ページ範囲またはブロックに関する状態コード  
 次の表は、ページ範囲またはブロックの処理に関する状態コードを示します。  
   
 |状態コード|説明|  
@@ -224,7 +224,7 @@ properties-status ::=
 |`Failed`|ページ範囲またはブロックの処理中に、不明なエラーが発生しました。|  
 |`Cancelled`|以前のエラーにより、ページ範囲またはブロックのさらなる処理が停止しました。|  
   
-### <a name="metadata-status-codes"></a>メタデータ状態コード  
+## <a name="metadata-status-codes"></a>メタデータの状態コード  
 次の表は、BLOB メタデータの処理に関する状態コードを示します。  
   
 |状態コード|Description|  
@@ -242,7 +242,7 @@ properties-status ::=
 |`Failed`|メタデータの処理中に、不明なエラーが発生しました。|  
 |`Cancelled`|以前のエラーにより、メタデータのさらなる処理が停止しました。|  
   
-### <a name="properties-status-codes"></a>プロパティの状態コード  
+## <a name="properties-status-codes"></a>プロパティの状態コード  
 次の表は、BLOB プロパティの処理に関する状態コードを示します。  
   
 |状態コード|説明|  
@@ -358,6 +358,7 @@ properties-status ::=
 </DriveLog>  
 ```
   
-## <a name="see-also"></a>関連項目  
-[ストレージの Import/Export REST](/rest/api/storageimportexport/)
+## <a name="next-steps"></a>次のステップ
+ 
+* [ストレージの Import/Export REST API](/rest/api/storageimportexport/)
 

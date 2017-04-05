@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/17/2017
+ms.date: 03/29/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 31a267963199518ed6db4610830062099ed0dde4
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 5b7e2d8df2723f77aa8283d9faab22656198ed47
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -109,7 +109,7 @@ ExpressRoute は、さまざまな種類のサービスのために、[3 つの�
 はい。 多くのサービス プロバイダーで ExpressRoute 回線をご利用いただけます。 各 ExpressRoute 回線は、1 つのサービス プロバイダーのみに関連付けられます。 
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-location"></a>同じ場所に複数の ExpressRoute 回線を配置することはできますか。
-はい。 複数の ExpressRoute 回線を同じ場所に配置できます。サービス プロバイダーは同じでも違っていてもかまいません。 ただし、複数の ExpressRoute 回線を同じ仮想ネットワークに接続することはできません。
+はい。 複数の ExpressRoute 回線を同じ場所に配置できます。サービス プロバイダーは同じでも違っていてもかまいません。 ただし、複数の ExpressRoute 回線を同じ場所から同じ Virtual Network に接続することはできません。
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>ExpressRoute 回線に仮想ネットワークを接続するにはどうすればいいですか。
 基本的な手順の概略は次のとおりです。

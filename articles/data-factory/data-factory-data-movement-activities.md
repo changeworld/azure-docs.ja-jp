@@ -13,12 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2017
+ms.date: 03/24/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: f4c225c97ac997c412704b278c033c519d4424ed
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 25e266441e902a06d980b3b51abdd4fcf668d4d2
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -65,7 +65,7 @@ Data Management Gateway を使用すると、Azure IaaS 仮想マシン (VM) で
 コピー アクティビティでサポートされていないデータ ストアとの間でデータを移動する必要がある場合は、データのコピーと移動に独自のロジックを使用した、Data Factory の **カスタム アクティビティ** を使用します。 カスタム アクティビティの作成と使用の詳細については、「 [Azure Data Factory パイプラインでカスタム アクティビティを使用する](data-factory-use-custom-activities.md)」をご覧ください。
 
 ### <a name="supported-file-formats"></a>サポートされるファイル形式
-コピー アクティビティを使用すると、Azure BLOB、Azure Data Lake Store、Amazon S3、FTP、ファイル システム、HDFS などを含む&2; つのファイル ベース データ ストアの間で**ファイルをそのままコピー**できます。 これを行うには、入力と出力の両方のデータセット定義で [format セクション](data-factory-create-datasets.md) をスキップします。 これにより、シリアル化/逆シリアル化を実行することなく、データが効率的にコピーされます。
+コピー アクティビティを使用すると、Azure BLOB、Azure Data Lake Store、Amazon S3、FTP、ファイル システム、HDFS などを含む 2 つのファイル ベース データ ストアの間で**ファイルをそのままコピー**できます。 これを行うには、入力と出力の両方のデータセット定義で [format セクション](data-factory-create-datasets.md) をスキップします。 これにより、シリアル化/逆シリアル化を実行することなく、データが効率的にコピーされます。
 
 また、コピー アクティビティは、指定された形式 (**テキスト、Avro、ORC、Parquet、JSON**) でのファイルの読み取りと書き込みも行います。圧縮コーデック **GZip、Deflate、BZip2、および ZipDeflate** がサポートされています。 コピー アクティビティの例をいくつか示します。
 
@@ -95,6 +95,8 @@ Azure Data Factory は、米国西部、米国東部、北ヨーロッパ リー
 | ブラジル | ブラジル南部 | ブラジル南部 |
 | ヨーロッパ | 北ヨーロッパ | 北ヨーロッパ |
 | &nbsp; | 西ヨーロッパ | 西ヨーロッパ |
+| 英国 | 英国西部 | 英国南部 |
+| &nbsp; | 英国南部 | 英国南部 |
 | アジア太平洋 | 東南アジア | 東南アジア |
 | &nbsp; | 東アジア | 東南アジア |
 | オーストラリア | オーストラリア東部 | オーストラリア東部 |
@@ -105,7 +107,7 @@ Azure Data Factory は、米国西部、米国東部、北ヨーロッパ リー
 | &nbsp; | インド西部 | インド中部 |
 | &nbsp; | インド南部 | インド中部 |
 
-また、コピー アクティビティ `typeProperties` で `executionLocation` プロパティを使用して、コピーで使用する Data Factory サービスのリージョンを明示的に指定することもできます。 上記の「**データ移動に使用するリージョン**」列には、このプロパティでサポートされる値が示されています。 コピー中のデータは、ネットワーク経由でこのリージョンを通過します。 たとえば、英国の Azure Store 間でコピーするには、北ヨーロッパ経由でルーティングされるように `"executionLocation": "North Europe"` を指定します ([JSON のサンプル](#by-using-json-scripts)を参照してください)。
+また、コピー アクティビティ `typeProperties` で `executionLocation` プロパティを使用して、コピーで使用する Data Factory サービスのリージョンを明示的に指定することもできます。 上記の「**データ移動に使用するリージョン**」列には、このプロパティでサポートされる値が示されています。 コピー中のデータは、ネットワーク経由でこのリージョンを通過します。 たとえば、韓国の Azure Store 間でコピーするには、日本リージョン経由でルーティングされるように `"executionLocation": "Japan East"` を指定します ([JSON のサンプル](#by-using-json-scripts)を参照してください)。
 
 > [!NOTE]
 > コピー先データ ストアのリージョンが前のリストにない場合、または検出できない場合は、`executionLocation` が指定されていないと、既定では代わりのリージョンには移動せず、コピー アクティビティは失敗します。 今後さらに多くのリージョンがサポートされる予定です。
@@ -155,7 +157,7 @@ JSON 定義のサンプルを次に示します。
           "sink": {
             "type": "SqlSink"
           },
-          "executionLocation": "North Europe"          
+          "executionLocation": "Japan East"          
         },
         "Policy": {
           "concurrency": 1,
@@ -178,10 +180,10 @@ JSON 定義のサンプルを次に示します。
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因については、「 [コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。 このガイドでは、内部テスト実行時の実際のパフォーマンスを一覧表示すると共に、コピー アクティビティのパフォーマンスを最適化するさまざまな方法についても説明します。
 
 ## <a name="scheduling-and-sequential-copy"></a>スケジュール設定と順次コピー
-Data Factory でのスケジュール設定と実行のしくみに関する詳細については、 [スケジュール設定と実行のしくみ](data-factory-scheduling-and-execution.md) に関するページをご覧ください。 複数のコピー操作を、順番にまたは順序を指定して&1; つずつ実行できます。 [順次コピー](data-factory-scheduling-and-execution.md#run-activities-in-a-sequence)に関するセクションを参照してください。
+Data Factory でのスケジュール設定と実行のしくみに関する詳細については、 [スケジュール設定と実行のしくみ](data-factory-scheduling-and-execution.md) に関するページをご覧ください。 複数のコピー操作を、順番にまたは順序を指定して 1 つずつ実行できます。 [順次コピー](data-factory-scheduling-and-execution.md#run-activities-in-a-sequence)に関するセクションを参照してください。
 
 ## <a name="type-conversions"></a>型の変換
-データ ストアが異なると、ネイティブな型システムも異なります。 コピー アクティビティは次の&2; 段階のアプローチで型を source から sink に自動的に変換します。
+データ ストアが異なると、ネイティブな型システムも異なります。 コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
 
 1. ネイティブの source 型から .NET 型に変換する。
 2. .NET 型からネイティブの sink 型に変換する。

@@ -1,5 +1,5 @@
 ---
-title: "Azure Import ジョブ用にハード ドライブを準備するためのサンプル ワークフロー | Microsoft Docs"
+title: "Azure Import/Export のインポート ジョブ用のハード ドライブを準備するためのサンプル ワークフロー - v1 | Microsoft Docs"
 description: "Azure Import/Export サービスでインポート ジョブ用のドライブを準備するプロセスの手順について説明します。"
 author: muralikk
 manager: syadav
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 8de848b1192ff1c10e0375053c4e03f18c06184e
-ms.openlocfilehash: ee7a8c9ae4cda5b67184100dd37ee4e0384aff26
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 313f8c1f3962a943b4c98c530c324ff28aa84c10
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -59,9 +59,9 @@ ms.lasthandoff: 02/16/2017
 |K:\Temp\FavoriteMovies.ISO|25 GB|https://mystorageaccount.blob.core.windows.net/favorite/FavoriteMovies.ISO|  
 |\\\bigshare\john\music|10 GB|https://mystorageaccount.blob.core.windows.net/music|  
   
- `H:\Video` ディレクトリが&2; つのディレクトリに分割されても、これらのディレクトリはストレージ アカウント内の同じインポート先仮想ディレクトリを参照していることに注意してください。 これにより、すべてのビデオ ファイルがストレージ アカウント内の&1; つの `video` コンテナーに保持されます。  
+ `H:\Video` ディレクトリが 2 つのディレクトリに分割されても、これらのディレクトリはストレージ アカウント内の同じインポート先仮想ディレクトリを参照していることに注意してください。 これにより、すべてのビデオ ファイルがストレージ アカウント内の 1 つの `video` コンテナーに保持されます。  
   
- 次に、上記のソース ディレクトリが&2; つのハード ドライブに均等に配置されます。  
+ 次に、上記のソース ディレクトリが 2 つのハード ドライブに均等に配置されます。  
   
 ||||  
 |-|-|-|  
@@ -74,7 +74,7 @@ ms.lasthandoff: 02/16/2017
   
 さらに、すべてのファイルの次のメタデータを設定できます。  
   
--   **UploadMethod:** Windows Azure Import/Export Service  
+-   **UploadMethod:** Windows Azure Import/Export サービス  
   
 -   **DataSetName:** SampleData  
   
@@ -85,7 +85,7 @@ ms.lasthandoff: 02/16/2017
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
 <Metadata>  
-    <UploadMethod>Windows Azure Import/Export Service</UploadMethod>  
+    <UploadMethod>Windows Azure Import/Export service</UploadMethod>  
     <DataSetName>SampleData</DataSetName>  
     <CreationDate>10/1/2013</CreationDate>  
 </Metadata>  
@@ -110,7 +110,7 @@ ms.lasthandoff: 02/16/2017
 </Properties>  
 ```
   
-これで、Azure Import/Export ツールを実行して&2; つのハード ドライブを準備できます。 以下の点に注意してください。  
+これで、Azure Import/Export ツールを実行して 2 つのハード ドライブを準備できます。 以下の点に注意してください。  
   
 -   最初のドライブは、ドライブ X としてマウントされます。  
   
@@ -131,38 +131,50 @@ ms.lasthandoff: 02/16/2017
     WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:Video1 /logdir:c:\logs /sk:8ImTigJhIwvL9VEIQKB/zbqcXbxrIHbBjLIfOt0tyR98TxtFvUM/7T0KVNR6KRkJrh26u5I8hTxTLM2O1aDVqg== /t:x /format /encrypt /srcdir:x:\Video1 /dstdir:video/ /MetadataFile:c:\WAImportExport\SampleMetadata.txt /skipwrite
 ```
 
-最初のドライブでは、Azure Import/Export ツールを&2; 回実行して、2 つのソース ディレクトリをコピーします。  
+## <a name="copy-sessions---first-drive"></a>コピー セッション - 最初のドライブ
+
+最初のドライブでは、Azure Import/Export ツールを 2 回実行して、2 つのソース ディレクトリをコピーします。  
+
+**最初のコピー セッション**
   
 ```
-## First copy session for first drive  
 WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:Video1 /logdir:c:\logs /sk:8ImTigJhIwvL9VEIQKB/zbqcXbxrIHbBjLIfOt0tyR98TxtFvUM/7T0KVNR6KRkJrh26u5I8hTxTLM2O1aDVqg== /t:x /format /encrypt /srcdir:H:\Video1 /dstdir:video/ /MetadataFile:c:\WAImportExport\SampleMetadata.txt  
 ```
 
+**2 番目のコピー セッション**
+
 ```  
-## Second copy session for first drive  
 WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:Photo /srcdir:H:\Photo /dstdir:photo/ /MetadataFile:c:\WAImportExport\SampleMetadata.txt
 ```
+
+## <a name="copy-sessions---second-drive"></a>コピー セッション - 2 番目のドライブ
+ 
+2 番目のドライブでは、Azure Import/Export ツールを 3 回 (ソース ディレクトリごとに 1 回と、スタンドアロンの Blu-Ray™ イメージ ファイルに対して 1 回) 実行します。  
   
-2 番目のドライブでは、Azure Import/Export ツールを&3; 回 (ソース ディレクトリごとに&1; 回と、スタンドアロンの Blu-Ray™ イメージ ファイルに対して&1; 回) 実行します。  
-  
+**最初のコピー セッション** 
+
 ```
-## First copy session  
 WAImportExport.exe PrepImport /j:SecondDrive.jrn /id:Video2 /logdir:c:\logs /sk:8ImTigJhIwvL9VEIQKB/zbqcXbxrIHbBjLIfOt0tyR98TxtFvUM/7T0KVNR6KRkJrh26u5I8hTxTLM2O1aDVqg== /t:y /format /encrypt /srcdir:H:\Video2 /dstdir:video/ /MetadataFile:c:\WAImportExport\SampleMetadata.txt  
 ```
   
+**2 番目のコピー セッション**
+
 ```
-## Second copy session  
 WAImportExport.exe PrepImport /j:SecondDrive.jrn /id:Music /srcdir:\\bigshare\john\music /dstdir:music/ /MetadataFile:c:\WAImportExport\SampleMetadata.txt  
 ```  
   
+**3 番目のコピー セッション**  
+
 ```
-## Third copy session  
 WAImportExport.exe PrepImport /j:SecondDrive.jrn /id:BlueRayIso /srcfile:K:\Temp\BlueRay.ISO /dstblob:favorite/BlueRay.ISO /MetadataFile:c:\WAImportExport\SampleMetadata.txt /PropertyFile:c:\WAImportExport\SampleProperties.txt  
 ```
+
+## <a name="copy-session-completion"></a>コピー セッションの完了
+
+コピー セッションが完了したら、コピー用コンピューターから 2 つのドライブを切断し、適切な Microsoft Azure データ センターに送付できます。 [Microsoft Azure 管理ポータル](https://manage.windowsazure.com/)でインポート ジョブを作成するときに、`FirstDrive.jrn` と `SecondDrive.jrn` の 2 つのジャーナル ファイルをアップロードします。  
   
-コピー セッションが完了したら、コピー用コンピューターから&2; つのドライブを切断し、適切な Microsoft Azure データ センターに送付できます。 [Microsoft Azure 管理ポータル](https://manage.windowsazure.com/)でインポート ジョブを作成するときに、`FirstDrive.jrn` と `SecondDrive.jrn` の&2; つのジャーナル ファイルをアップロードします。  
-  
-## <a name="see-also"></a>関連項目  
-[インポート ジョブ用のハード ドライブを準備する](storage-import-export-tool-preparing-hard-drives-import-v1.md)   
-[頻繁に使用するコマンドのクイック リファレンス](storage-import-export-tool-quick-reference-v1.md) 
+## <a name="next-steps"></a>次のステップ
+
+* [インポート ジョブ用のハード ドライブを準備する](storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+* [頻繁に使用するコマンドのクイック リファレンス](storage-import-export-tool-quick-reference-v1.md) 
 

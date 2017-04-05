@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 12/14/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: e982d29f76d521720eea7cbb56c5084572f4a542
-ms.openlocfilehash: 3286a6e98b52f2ce6f173f79ae69f0b86ab2179a
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 899115d213e626f17e58c2e5f01313f760f9e7f4
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -29,6 +30,9 @@ ms.openlocfilehash: 3286a6e98b52f2ce6f173f79ae69f0b86ab2179a
 ![application gateway probe example][1]
 
 既定の正常性プローブによる監視を行うだけでなく、アプリケーションの要件に合わせて正常性プローブをカスタマイズすることもできます。 この記事では、既定とカスタムの両方の正常性プローブについて説明します。
+
+> [!NOTE]
+> Application Gateway サブネット上に NSG がある場合、Application Gateway サブネットで 65503 ～ 65534 のポート範囲をインバウンド トラフィック用に開いておく必要があります。 これらのポートは、バックエンドの正常性 API が機能するために必要です。
 
 ## <a name="default-health-probe"></a>既定の正常性プローブ
 
@@ -78,9 +82,4 @@ ms.openlocfilehash: 3286a6e98b52f2ce6f173f79ae69f0b86ab2179a
 Application Gateway による正常性監視について学習した後は、Azure Portal で[カスタム正常性プローブ](application-gateway-create-probe-portal.md)を構成することも、PowerShell と Azure Resource Manager デプロイト モデルを使用して[カスタム正常性プローブ](application-gateway-create-probe-ps.md)を構成することもできます。
 
 [1]: ./media/application-gateway-probe-overview/appgatewayprobe.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

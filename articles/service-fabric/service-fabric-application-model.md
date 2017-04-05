@@ -1,5 +1,5 @@
 ---
-title: "Service Fabric アプリケーション モデル | Microsoft Docs"
+title: "Azure Service Fabric アプリケーション モデル | Microsoft Docs"
 description: "Service Fabric のアプリケーションとサービスをモデル化し、記述する方法。"
 services: service-fabric
 documentationcenter: .net
@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 3/02/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 62374d57829067b27bb5876e6bbd9f869cff9187
-ms.openlocfilehash: 4991992f15b941ab9250705e20ff5f37defc30d0
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 87db655d246dad90bf0afbc91ec507b0a86d90eb
+ms.lasthandoff: 03/27/2017
 
 
 ---
 # <a name="model-an-application-in-service-fabric"></a>Service Fabric でのアプリケーションのモデル化
-この記事では、Azure Service Fabric アプリケーション モデルの概要を示します。 また、マニフェストを使用したアプリケーションとサービスを定義する方法とアプリケーションをデプロイできるようパッケージ化する方法について説明します。
+ここでは、Azure Service Fabric のアプリケーション モデルの概要と、マニフェスト ファイルを使用してアプリケーションとサービスを定義する方法について説明します。
 
 ## <a name="understand-the-application-model"></a>アプリケーション モデルを理解する
 アプリケーションは、特定のまたは複数の関数を実行する構成サービスのコレクションです。 サービスは完全なスタンドアロンの機能を実行し (他のサービスから独立して開始、実行できる)、コード、構成、データで構成されます。 各サービスに対して、コードは実行可能ファイルのバイナリで構成され、構成は実行時に読み込まれるサービス設定で構成され、データはサービスが消費する任意の静的データで構成されます。 この階層的なアプリケーション モデル内の各コンポーネントは、個別にバージョン管理されてアップグレードされます。
@@ -39,7 +39,7 @@ ms.lasthandoff: 02/17/2017
 
 2 つの異なるマニフェスト ファイル (サービス マニフェストとアプリケーション マニフェスト) はアプリケーションとサービスの記述に使用されます。 サービス マニフェストとアプリケーション マニフェストについては次のセクションで詳しく説明します。
 
-クラスターにはアクティブな&1; つ以上のサービスの種類のインスタンスがある可能性があります。 たとえば、ステートフル サービス インスタンスやレプリカの場合、クラスター内の別のノード上にあるレプリカ間で状態をレプリケートすることで高い信頼性を実現します。 レプリカは基本的に、クラスター内の&1; つのノードが失敗した場合でも使用できるように、サービスの冗長性を実現します。 [パーティション分割されたサービス](service-fabric-concepts-partitioning.md) は、クラスター内のノード間でその状態 (状態へのアクセス パターンも) をさらに分割します。
+クラスターにはアクティブな 1 つ以上のサービスの種類のインスタンスがある可能性があります。 たとえば、ステートフル サービス インスタンスやレプリカの場合、クラスター内の別のノード上にあるレプリカ間で状態をレプリケートすることで高い信頼性を実現します。 レプリカは基本的に、クラスター内の 1 つのノードが失敗した場合でも使用できるように、サービスの冗長性を実現します。 [パーティション分割されたサービス](service-fabric-concepts-partitioning.md) は、クラスター内のノード間でその状態 (状態へのアクセス パターンも) をさらに分割します。
 
 次の図は、アプリケーションとサービス インスタンス、パーティション、レプリカ間のリレーションシップを示しています。
 
@@ -85,7 +85,14 @@ ms.lasthandoff: 02/17/2017
 
 **ServiceTypes** は、このマニフェストで **CodePackages** でサポートされているサービスの種類を宣言します。 これらのサービスの種類のいずれかに対してサービスがインスタンス化されると、このマニフェストで宣言されているすべてのコード パッケージは、エントリ ポイントを実行してアクティブ化されます。 実行時に、サポートされているサービスの種類を登録するために、結果のプロセスが必要になります。 サービスの種類は、コード パッケージ レベルではなく、マニフェスト レベルで宣言されることにご注意ください。 したがって、複数のコード パッケージがあるとき、システムが宣言されたサービスの種類のいずれかを検索するときは常に、すべてアクティブ化されます。
 
-**SetupEntryPoint** は、他のエントリポイントの前に、Service Fabric と同じ資格情報で実行する特権を持つエントリ ポイントです (通常は *LocalSystem* アカウント)。 **EntryPoint** によって指定された実行可能ファイルは通常は実行時間の長いサービス ホストです。 別々にセットアップされたエントリ ポイントの存在により、長期にわたって高い権限でサービス ホストを実行する必要がなくなります。 **EntryPoint** で指定された実行可能ファイルは、**SetupEntryPoint** が正常に終了した後に実行されます。 結果のプロセスは、終了またはクラッシュした場合に、監視されて再起動されます ( **SetupEntryPoint**で再起動)。
+**SetupEntryPoint** は、他のエントリポイントの前に、Service Fabric と同じ資格情報で実行する特権を持つエントリ ポイントです (通常は *LocalSystem* アカウント)。 **EntryPoint** によって指定された実行可能ファイルは通常は実行時間の長いサービス ホストです。 別々にセットアップされたエントリ ポイントの存在により、長期にわたって高い権限でサービス ホストを実行する必要がなくなります。 **EntryPoint** で指定された実行可能ファイルは、**SetupEntryPoint** が正常に終了した後に実行されます。 結果のプロセスは、終了またはクラッシュした場合に、監視されて再起動されます ( **SetupEntryPoint**で再起動)。 
+
+**SetupEntryPoint** を使用する際の一般的なシナリオは、サービス開始前に実行可能ファイルを実行する必要がある場合や、昇格した特権で操作を実行する必要がある場合になります。 次に例を示します。
+
+* サービス実行可能ファイルが使用する可能性がある環境変数の設定と初期化などです。 これは、Service Fabric のプログラミング モデルによって記述されの実行可能ファイルだけに限定されません。 たとえば、npm.exe は node.js アプリケーションのデプロイに構成されているいくつかの環境変数が必要です。
+* セキュリティ証明書のインストールによるアクセス制御の設定
+
+**SetupEntryPoint** の構成方法について詳しくは、「[エントリ ポイント セットアップ サービスのポリシーを構成する](service-fabric-application-runas-security.md)」をご覧ください
 
 **EnvironmentVariables** は、このコード パッケージに対して設定されている環境変数の一覧を提供します。 `ApplicationManifest.xml` でこれらをオーバーライドすれば、各種のサービス インスタンスに対して異なる値を指定できます。 
 
@@ -167,96 +174,12 @@ For more information about other features supported by application manifests, re
 *TODO: Service Templates
 -->
 
-## <a name="package-an-application"></a>アプリケーションをパッケージ化する
-### <a name="package-layout"></a>パッケージのレイアウト
-アプリケーション マニフェスト、サービス マニフェスト、その他の必要なパッケージ ファイルを Service Fabric クラスターへのデプロイメント用の特定のレイアウトにまとめる必要があります。 この記事のマニフェスト例は、次のディレクトリ構造でまとめる必要があります。
 
-```
-PS D:\temp> tree /f .\MyApplicationType
-
-D:\TEMP\MYAPPLICATIONTYPE
-│   ApplicationManifest.xml
-│
-└───MyServiceManifest
-    │   ServiceManifest.xml
-    │
-    ├───MyCode
-    │       MyServiceHost.exe
-    │
-    ├───MyConfig
-    │       Settings.xml
-    │
-    └───MyData
-            init.dat
-```
-
-フォルダーには、それぞれの対応する要素の **Name** 属性と一致する名前が付けられます。 たとえば、**MyCodeA** と **MyCodeB** という名前の付いた&2; つのコード パッケージがサービス マニフェストに含まれている場合、各コード パッケージと同じ名前のフォルダーにそれぞれのコード パッケージに必要なバイナリが含まれます。
-
-### <a name="use-setupentrypoint"></a>SetupEntryPoint の使用
-**SetupEntryPoint** を使用する際の一般的なシナリオは、サービス開始前に実行可能ファイルを実行する必要がある場合や、昇格した特権で操作を実行する必要がある場合になります。 次に例を示します。
-
-* サービス実行可能ファイルが使用する可能性がある環境変数の設定と初期化などです。 これは、Service Fabric のプログラミング モデルによって記述されの実行可能ファイルだけに限定されません。 たとえば、npm.exe は node.js アプリケーションのデプロイに構成されているいくつかの環境変数が必要です。
-* セキュリティ証明書のインストールによるアクセス制御の設定
-
-**SetupEntryPoint** の構成方法について詳しくは、「[エントリ ポイント セットアップ サービスのポリシーを構成する](service-fabric-application-runas-security.md)」をご覧ください  
-
-### <a name="configure"></a>構成 
-### <a name="build-a-package-by-using-visual-studio"></a>Visual Studio を使用したパッケージ構築
-Visual Studio 2015 を使用して、アプリケーションを作成する場合、パッケージのコマンドを使用して、前述のレイアウトと一致するパッケージを自動的に作成できます。
-
-パッケージを作成するには、次のように、ソリューション エクスプローラーでアプリケーション プロジェクトを右クリックして [パッケージ] コマンドを選択します。
-
-![Visual Studio でアプリケーションをパッケージングする][vs-package-command]
-
-パッケージ化が完了したら、[ **出力** ] ウィンドウにパッケージの場所が表示されます。 アプリケーションを Visual Studio でデプロイまたはデバッグする場合、パッケージ化の手順は自動で行われることにご注意ください。
-
-### <a name="build-a-package-by-command-line"></a>コマンド ラインを使用したパッケージ構築
-`msbuild.exe` を使用して、アプリケーションをプログラムによってパッケージ化することもできます。 これは内部的には Visual Studio で実行されているため、出力は同じになります。
-
-```shell
-D:\Temp> msbuild HelloWorld.sfproj /t:Package
-```
-
-### <a name="test-the-package"></a>パッケージのテスト
-パッケージ構造を PowerShell の **Test-ServiceFabricApplicationPackage** コマンドを使用して、ローカルで検証することができます。 このコマンドは、マニフェストの解析の問題がチェックし、すべての参照を検証します。 このコマンドは、パッケージ内のディレクトリやファイルの構造的な正確性を検証するだけであることに注意してください。 コードやデータ パッケージのコンテンツのいずれについても検証は行われず、それらがすべてそろっているかどうかは確認されません。
-
-```
-PS D:\temp> Test-ServiceFabricApplicationPackage .\MyApplicationType
-False
-Test-ServiceFabricApplicationPackage : The EntryPoint MySetup.bat is not found.
-FileName: C:\Users\servicefabric\AppData\Local\Temp\TestApplicationPackage_7195781181\nrri205a.e2h\MyApplicationType\MyServiceManifest\ServiceManifest.xml
-```
-
-このエラーは、 *SetupEntryPoint* サービス マニフェストで参照される **MySetup.bat** ファイルがコード パッケージに見つからないことを示しています。 不足しているファイルを追加すると、アプリケーションの検証に合格します。
-
-```
-PS D:\temp> tree /f .\MyApplicationType
-
-D:\TEMP\MYAPPLICATIONTYPE
-│   ApplicationManifest.xml
-│
-└───MyServiceManifest
-    │   ServiceManifest.xml
-    │
-    ├───MyCode
-    │       MyServiceHost.exe
-    │       MySetup.bat
-    │
-    ├───MyConfig
-    │       Settings.xml
-    │
-    └───MyData
-            init.dat
-
-PS D:\temp> Test-ServiceFabricApplicationPackage .\MyApplicationType
-True
-PS D:\temp>
-```
-
-アプリケーションが正しくパッケージ化されて検証に合格すると、デプロイメントの準備完了です。
 
 ## <a name="next-steps"></a>次のステップ
-「[アプリケーションのデプロイと削除][10]」では、PowerShell を使用してアプリケーション インスタンスを管理する方法について説明しています
+[アプリケーションをパッケージ化](service-fabric-package-apps.md)して展開できるようにします。
+
+[アプリケーションのデプロイと削除][10]に関するページでは、PowerShell を使用してアプリケーション インスタンスを管理する方法について説明しています。
 
 「[複数の環境のアプリケーション パラメーターの管理][11]」では、複数のアプリケーション インスタンスに対してパラメーターと環境変数を構成する方法について説明しています。
 
@@ -266,7 +189,6 @@ PS D:\temp>
 [appmodel-diagram]: ./media/service-fabric-application-model/application-model.png
 [cluster-imagestore-apptypes]: ./media/service-fabric-application-model/cluster-imagestore-apptypes.png
 [cluster-application-instances]: media/service-fabric-application-model/cluster-application-instances.png
-[vs-package-command]: ./media/service-fabric-application-model/vs-package-command.png
 
 <!--Link references--In actual articles, you only need a single period before the slash-->
 [10]: service-fabric-deploy-remove-applications.md

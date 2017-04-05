@@ -9,16 +9,17 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 610c4103-ffc8-4ec0-ad06-fdaf3c4d7c10
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/18/2017
+ms.date: 03/24/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: 6c81d978e470754f5c0a737aba0437e105949099
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 2ba5f280b38622b6a0c966d76617cd5698420b92
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -33,7 +34,8 @@ ms.lasthandoff: 01/24/2017
 
 この問題を回避するには、以下の手順を実行します。
 
-1. ヘッドノードに Ssh します。 Windows クライアントの場合は、[PuTTY を使用した Windows からの HDInsight (Hadoop) での SSH の使用](hdinsight-hadoop-linux-use-ssh-windows.md)に関するページをご覧ください。Linux、Unix、OS X の場合は、[Linux、Unix、OS X からの HDInsight (Hadoop) での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページをご覧ください。 
+1. ヘッドノードに Ssh します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+
 2. 次のコマンドを実行して、Livy を通じて開始された対話型ジョブのアプリケーション ID を調べます。 
    
         yarn application –list
@@ -62,6 +64,14 @@ hdiuser が spark-submit でジョブを送信すると、java.io.FileNotFoundEx
 3. Ambari を使用して、Spark ログの場所を、777 アクセス許可を持つディレクトリに変更します。  
 4. sudo として spark-submit を実行します。  
 
+## <a name="spark-phoenix-connector-is-not-supported"></a>Spark-Phoenix コネクタがサポートされない
+
+現時点では、Spark-Phoenix コネクタは HDInsight Spark クラスターではサポートされません。
+
+**対応策:**
+
+代わりに、Spark-HBase コネクタを使用する必要があります。 手順については、[Spark-HBase コネクタの使用方法](https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/)に関するページを参照してください。
+
 ## <a name="issues-related-to-jupyter-notebooks"></a>Jupyter Notebook に関連する問題
 Jupyter Notebook に関連する既知の問題を以下に示します。
 
@@ -73,7 +83,7 @@ Spark HDInsight クラスターで使用できる Jupyter Notebook では、フ�
 
 **対応策:**
 
-このエラーが発生した場合、データが壊れたり失われたりしているわけではありません。  Notebook はディスク上の `/var/lib/jupyter`に残っているため、クラスターに SSH 接続し、Notebook にアクセスすることができます。 Windows クライアントの場合は、[PuTTY を使用した Windows からの HDInsight (Hadoop) での SSH の使用](hdinsight-hadoop-linux-use-ssh-windows.md)に関するページをご覧ください。Linux、Unix、OS X の場合は、[Linux、Unix、OS X からの HDInsight (Hadoop) での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページをご覧ください。
+このエラーが発生した場合、データが壊れたり失われたりしているわけではありません。  Notebook はディスク上の `/var/lib/jupyter`に残っているため、クラスターに SSH 接続し、Notebook にアクセスすることができます。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 SSH を使用してクラスターに接続したら、バックアップとしてクラスターの Notebook をローカル コンピューター (SCP または WinSCP を使用) にコピーすることで、Notebook 内の重要なデータが失われるのを防ぐことができます。 ポート 8001 のヘッドノードへの SSH トンネルを使用すると、ゲートウェイを経由せずに Jupyter にアクセスできます。  そこでは、Notebook の出力をクリアしてから再度保存して、Notebook のサイズを最小限に縮小できます。
 

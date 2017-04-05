@@ -12,18 +12,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2016
+ms.date: 03/24/2017
 ms.author: xibingao;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 22d7dc81cb2fc44ff4471951cbc482f60a97bb27
-ms.openlocfilehash: b266dc9ead635fb852d64efa82587299f692a153
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 5fb930cb71fe008ba63d2068bb36643f40259e76
+ms.lasthandoff: 03/29/2017
 
 
 ---
 # <a name="set-up-an-azure-virtual-machine-as-an-ipython-notebook-server-for-advanced-analytics"></a>高度な分析のために Azure 仮想マシンを IPython Notebook サーバーとしてセットアップする
 このトピックでは、高度な分析のためにデータ サイエンス環境の一部として使える Azure 仮想マシンをプロビジョニングし、構成する方法について説明します。 IPython Notebook、Azure ストレージ エクスプローラー、AzCopy などのサポート ツールと、高度な分析プロジェクトに役立つ他のユーティリティで Windows 仮想マシンを構成します。 たとえば Azure ストレージ エクスプローラーおよび AzCopy には、ローカル マシンから Azure BLOB ストレージにデータをアップロードしたり、BLOB ストレージからローカル マシンにデータをダウンロードしたりするための便利な機能が備わっています。
 
-## <a name="a-namecreate-vmastep-1-create-a-general-purpose-azure-virtual-machine"></a><a name="create-vm"></a>手順 1: 汎用の Azure 仮想マシンを作成する
+## <a name="create-vm"></a>手順 1: 汎用の Azure 仮想マシンを作成する
 Azure 仮想マシンが既にあり、IPython Notebook サーバーをセットアップするだけの場合は、この手順を省略し、「 [手順 2： IPython Notebook 用のエンドポイントを既存の仮想マシンに追加する](#add-endpoint)」に進んでかまいません。
 
 Azure で仮想マシンを作成するプロセスを始める前に、プロジェクトのデータ処理に必要なマシンのサイズを決定する必要があります。 小さいマシンは大きいマシンに比べてメモリの量と CPU コア数が少ないですが、より安価でもあります。 マシンの種類と価格については、「<a href="http://azure.microsoft.com/pricing/details/virtual-machines/" target="_blank">Virtual Machines 価格</a>」ページをご覧ください。
@@ -53,15 +54,15 @@ Azure で仮想マシンを作成するプロセスを始める前に、プロ�
 
 ![Create workspace][29]
 
-## <a name="a-nameadd-endpointastep-2-add-an-endpoint-for-ipython-notebooks-to-an-existing-virtual-machine"></a><a name="add-endpoint"></a>手順 2: IPython Notebook 用のエンドポイントを既存の仮想マシンに追加する
+## <a name="add-endpoint"></a>手順 2: IPython Notebook 用のエンドポイントを既存の仮想マシンに追加する
 「手順 1」の指示に従って仮想マシンを作成した場合、IPython Notebook 用のエンドポイントは既に作成されており、このステップを省略できます。
 
 仮想マシンが既に存在するときに、次の「手順 3」でインストールする IPython Notebook 用のエンドポイントを追加する必要がある場合は、まず Azure クラシック ポータルにログインし、仮想マシンを選択して、IPython Notebook サーバー用のエンドポイントを追加します。 次の図は、IPython Notebook 用のエンドポイントを Windows 仮想マシンに追加した後のポータルのスクリーン ショットを示しています。
 
 ![Create workspace][17]
 
-## <a name="a-namerun-commandsastep-3-install-ipython-notebook-and-other-supporting-tools"></a><a name="run-commands"></a>手順 3: IPython Notebook とその他のサポート ツールをインストールする
-仮想マシンの作成後、リモート デスクトップ プロトコル (RDP) を使用して Windows 仮想マシンにログオンします。 詳細については、「[Windows Server が実行されている仮想マシンにログオンする方法](../virtual-machines/virtual-machines-windows-classic-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。 **管理者**として (**Powershell コマンド ウィンドウではなく**) **コマンド プロンプト**を開き、次のコマンドを実行します。
+## <a name="run-commands"></a>手順 3: IPython Notebook とその他のサポート ツールをインストールする
+仮想マシンの作成後、リモート デスクトップ プロトコル (RDP) を使用して Windows 仮想マシンにログオンします。 詳細については、「[Windows Server が実行されている仮想マシンにログオンする方法](../virtual-machines/windows/classic/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。 **管理者**として (**Powershell コマンド ウィンドウではなく**) **コマンド プロンプト**を開き、次のコマンドを実行します。
 
     set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/MachineSetup/Azure_VM_Setup_Windows.ps1'
 
@@ -71,7 +72,7 @@ Azure で仮想マシンを作成するプロセスを始める前に、プロ�
 
 メッセージが表示されたら、IPython Notebook のパスワードと、マシン管理者のパスワードを入力します。 これにより、IPython Notebook をマシン上のサービスとして実行させることができます。
 
-## <a name="a-nameaccessastep-4-access-ipython-notebooks-from-a-web-browser"></a><a name="access"></a>手順 4: Web ブラウザーから IPython Notebook にアクセスする
+## <a name="access"></a>手順 4: Web ブラウザーから IPython Notebook にアクセスする
 IPython Notebook サーバーにアクセスするには、Web ブラウザーを開き、URL テキスト ボックスに「*https://&#60;仮想マシンの DNS 名>:&#60;パブリック ポート番号>*」と入力します。 ここでは、&#60;*パブリック ポート番号*> として、IPython Notebook エンドポイントの追加時に指定したポート番号を入力してください。
 
 *&#60;仮想マシンの DNS 名>* は、Azure クラシック ポータルで確認できます。 クラシック ポータルにログインしたら、**[仮想マシン]** をクリックし、作成済みのマシンを選択して **[ダッシュボード]** を選択すると、DNS 名が次のように表示されます。
@@ -86,17 +87,17 @@ IPython Notebook サーバーにアクセスするには、Web ブラウザー�
 **Chrome:**
 ![ワークスペースを作成します][21]
 
-IPython Notebook にログオンした後、 *DataScienceSamples* ディレクトリがブラウザーに表示されます。 このディレクトリには、ユーザーがデータ サイエンス タスクを実行するうえで役立つ、Microsoft が共有するサンプル IPython Notebook が含まれています。 これらのサンプル IPython Notebook は、IPython Notebook サーバーのセットアップ プロセス中に [**Github リポジトリ**](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks)から仮想マシンにチェックアウトされます。 Microsoft はこのリポジトリを保守し、頻繁に更新しています。 ユーザーは Github リポジトリを参照して、最近更新されたサンプル IPython Notebook を入手できます。
+IPython Notebook にログオンした後、 *DataScienceSamples* ディレクトリがブラウザーに表示されます。 このディレクトリには、ユーザーがデータ サイエンス タスクを実行するうえで役立つ、Microsoft が共有するサンプル IPython Notebook が含まれています。 これらのサンプル IPython Notebook は、IPython Notebook サーバーのセットアップ プロセス中に [**GitHub リポジトリ**](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks)から仮想マシンにチェックアウトされます。 Microsoft はこのリポジトリを保守し、頻繁に更新しています。 ユーザーは GitHub リポジトリを参照して、最近更新されたサンプル IPython Notebook を入手できます。
 ![Create workspace][18]
 
-## <a name="a-nameuploadastep-5-upload-an-existing-ipython-notebook-from-a-local-machine-to-the-ipython-notebook-server"></a><a name="upload"></a>手順 5: 既存の IPython Notebook をローカル マシンから IPython Notebook サーバーにアップロードする
+## <a name="upload"></a>手順 5: 既存の IPython Notebook をローカル マシンから IPython Notebook サーバーにアップロードする
 IPython Notebook を使用すると、ユーザーはローカル マシン上の既存の IPython Notebook を仮想マシン上の IPython Notebook サーバーに簡単にアップロードできます。 Web ブラウザーで IPython Notebook にログオンした後、IPython Notebook のアップロード先となる**ディレクトリ**にクリックして移動します。 次に、 **[ファイル エクスプローラー]**で、ローカル マシンからアップロードする IPython Notebook の .ipynb ファイルを選択し、Web ブラウザーの IPython Notebook ディレクトリにドラッグ アンド ドロップします。 **[アップロード]** ボタンをクリックすると、.ipynb ファイルが IPython Notebook サーバーにアップロードされます。 その後、他のユーザーは自分の Web ブラウザーからそれを使用できるようになります。
 
 ![Create workspace][22]
 
 ![ワークスペースの作成][23]
 
-## <a name="a-nameshutdownashut-down-and-de-allocate-virtual-machine-when-not-in-use"></a><a name="shutdown"></a>未使用時に仮想マシンをシャットダウンして割り当てを解除する
+## <a name="shutdown"></a>未使用時に仮想マシンをシャットダウンして割り当てを解除する
 Azure Virtual Machines の料金は **従量課金制**です。 仮想マシンを使用しないときに課金されないようにするには、未使用時に **[停止 (割り当て解除)]** 状態にする必要があります。
 
 > [!NOTE]
@@ -134,9 +135,4 @@ Team Data Science Process の次のステップは、[ラーニング パス](ht
 [27]: ./media/machine-learning-data-science-setup-virtual-machine/create-virtual-machine-4.png
 [28]: ./media/machine-learning-data-science-setup-virtual-machine/create-virtual-machine-5.png
 [29]: ./media/machine-learning-data-science-setup-virtual-machine/create-virtual-machine-6.png
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

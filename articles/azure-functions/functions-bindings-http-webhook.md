@@ -17,9 +17,9 @@ ms.workload: na
 ms.date: 11/18/2016
 ms.author: mahender
 translationtype: Human Translation
-ms.sourcegitcommit: d405c58bf658222ceb72cc2b73e71f2ae1e1ed8d
-ms.openlocfilehash: ce7534b9ff675e1ae0902ba936e1ea897d80d936
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 06958522139d621f86afd8bf25128ee64cf822b3
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -118,7 +118,7 @@ _webHookType_ プロパティのある HTTP トリガーは、[webhooks](https:/
 
 トリガーは、さらに特定の webhook プロバイダー ([GitHub](https://developer.github.com/webhooks/)、[Slack](https://api.slack.com/outgoing-webhooks) など) 用にカスタマイズできます。 プロバイダーが指定されている場合は、Functions ランタイムがプロバイダーの検証ロジックを処理できます。  
 
-### <a name="configuring-github-as-a-webhook-provider"></a>webhook プロバイダーとしての Github の構成
+### <a name="configuring-github-as-a-webhook-provider"></a>webhook プロバイダーとしての GitHub の構成
 GitHub webhook に応答するには、まず、HTTP トリガーで関数を作成し、_webHookType_ プロパティを "github" に設定します。 次に、その [URL](#url) と [API キー](#keys)を GitHub リポジトリの **[Webhook の追加]** ページにコピーします。 詳細については、GitHub のドキュメント「[Creating Webhooks (webhook の作成)](http://go.microsoft.com/fwlink/?LinkID=761099&clcid=0x409)」を参照してください。
 
 ![](./media/functions-bindings-http-webhook/github-add-webhook.png)
@@ -157,7 +157,7 @@ HTTP トリガーの入力バインドで省略可能な `route` プロパティ
 
     http://<yourapp>.azurewebsites.net/api/products/electronics/357
 
-これにより、関数のコードはアドレス内で "category" と "id" という&2; つのパラメーターをサポートできます。 パラメーターでは任意の [Web API ルート制約](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints)を使用できます。 次の C# 関数コードは両方のパラメーターを使用します。
+これにより、関数のコードはアドレス内で "category" と "id" という 2 つのパラメーターをサポートできます。 パラメーターでは任意の [Web API ルート制約](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints)を使用できます。 次の C# 関数コードは両方のパラメーターを使用します。
 
 ```csharp
     public static Task<HttpResponseMessage> Run(HttpRequestMessage request, string category, int? id, 
@@ -216,7 +216,7 @@ HttpTrigger は、セキュリティを強化するためにキーを利用で�
 
 キーは関数アプリの一部として Azure に格納され、保存中は暗号化されます。 キーを表示するには、新しいキーを作成するか、キーを新しい値にロールし、ポータル内でいずれかの関数に移動して、[管理] を選択します。 
 
-キーには、次の&2; つの種類があります。
+キーには、次の 2 つの種類があります。
 - **ホスト キー**: これらのキーは、関数アプリ内のすべての関数で共有されます。 API キーとして使用した場合は、関数アプリ内のすべての関数がアクセスできます。
 - **関数キー**: これらのキーは、それらが定義されている特定の関数にのみ適用されます。 API キーとして使用した場合は、その関数だけがアクセスできます。
 

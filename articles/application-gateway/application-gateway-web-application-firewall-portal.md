@@ -1,5 +1,5 @@
 ---
-title: "Web アプリケーション ファイアウォールのある Application Gateway の作成 | Microsoft Docs"
+title: "Web アプリケーション ファイアウォールのある Azure Application Gateway の作成または更新 | Microsoft Docs"
 description: "ポータルを使用して Web アプリケーション ファイアウォールのある Application Gateway を作成する方法について説明します。"
 services: application-gateway
 documentationcenter: na
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 04/03/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: 9ba454ad2988c1ebb6410d78f79e46ed020a4bc5
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 9f16384a3944c3943dbfc094aaba37a24969e949
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -30,13 +31,13 @@ ms.openlocfilehash: 9ba454ad2988c1ebb6410d78f79e46ed020a4bc5
 
 Azure Application Gateway の Web アプリケーション ファイアウォール (WAF) は、SQL インジェクション、クロスサイト スクリプティング攻撃、セッション ハイジャックなどの一般的な Web ベースの攻撃から Web アプリケーションを保護します。 Web アプリケーションは、OWASP の上位 10 件の一般的な Web 脆弱性の多くを防ぎます。
 
-Azure Application Gateway はレイヤー&7; のロード バランサーです。 クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。
+Azure Application Gateway はレイヤー 7 のロード バランサーです。 クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。
 Application Gateway は、HTTP 負荷分散、Cookie ベースのセッション アフィニティ、Secure Sockets Layer (SSL) オフロード、カスタムの正常性プローブ、マルチサイトのサポートなどの多くのアプリケーション配信コントローラー (ADC) 機能を備えています。
 サポートされている機能の完全な一覧については、「 [Application Gateway の概要](application-gateway-introduction.md)
 
 ## <a name="scenarios"></a>シナリオ
 
-この記事では、次の&2; つのシナリオを扱います。
+この記事では、次の 2 つのシナリオを扱います。
 
 最初のシナリオでは、 [既存のアプリケーション ゲートウェイに Web アプリケーション ファイアウォールを追加する](#add-web-application-firewall-to-an-existing-application-gateway)方法を説明します。
 
@@ -51,7 +52,7 @@ Application Gateway は、HTTP 負荷分散、Cookie ベースのセッション
 
 Azure Application Gateway には、専用のサブネットが必要です。 仮想ネットワークを作成する場合は、複数のサブネットを持つことができるように十分なアドレス空間を残しておいてください。 アプリケーション ゲートウェイをサブネットにデプロイすると、追加のアプリケーション ゲートウェイのみをそのサブネットにデプロイすることができます。
 
-## <a name="add-web-application-firewall-to-an-existing-application-gateway"></a>既存のアプリケーション ゲートウェイに Web アプリケーション ファイアウォールを追加する
+##<a name="add-web-application-firewall-to-an-existing-application-gateway"></a> 既存のアプリケーション ゲートウェイに Web アプリケーション ファイアウォールを追加する
 
 このシナリオでは、防止モードで Web アプリケーション ファイアウォールをサポートするように、既存のアプリケーション ゲートウェイを更新します。
 
@@ -63,14 +64,18 @@ Azure ポータルに移動し、既存の Application Gateway を選択しま�
 
 ### <a name="step-2"></a>手順 2.
 
-**[構成]** をクリックし、アプリケーション ゲートウェイの設定を更新します。 完了したら、 **[保存]**
+**[Web アプリケーション ファイアウォール]** をクリックして、アプリケーション ゲートウェイの設定を更新します。 完了したら、 **[保存]**
 
 Web アプリケーション ファイアウォールをサポートするように既存のアプリケーション ゲートウェイを更新する設定は次のとおりです。
 
-* **[層]** - 選択した層が、Web アプリケーション ファイアウォールをサポートする **WAF** である必要があります。
-* **[SKU サイズ]** - Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイのサイズ。使用できるオプションは、**[中]** と **[大]** です。
+* **[WAF 層にアップグレードする]** - WAF の構成に必要です。
 * **[ファイアウォールの状態]** - Web アプリケーション ファイアウォールを無効または有効にします。
 * **[ファイアウォール モード]** - Web アプリケーション ファイアウォールが悪意のあるトラフィックを処理する方法です。 **[検出]** モードではイベントの記録のみを行い、**[防止]** モードではイベントをログに記録し、悪意のあるトラフィックを停止します。
+* **[ルール セット]** - バックエンド プールのメンバーの保護に使用される[コア ルール セット](application-gateway-web-application-firewall-overview.md#core-rule-sets)を決定します。
+* **[Configure disabled rules]** (無効化ルールの設定) - 特定の[ルールとルール グループ](application-gateway-crs-rulegroups-rules.md)を無効にして、起こりうる誤検知を防ぎます。
+
+>[!NOTE]
+> 既存のアプリケーション ゲートウェイを WAF SKU にアップグレードするときに、SKU サイズは **[中]** に変更されます。 これは構成が完了した後に再設定できます。
 
 ![blade showing basic settings][2]
 
@@ -99,8 +104,8 @@ Azure ポータルに移動し、**[新規]**、 > **[ネットワーク]** > �
 基本設定に必要な情報は次のとおりです。
 
 * **[名前]** - アプリケーション ゲートウェイの名前。
-* **[層]** - アプリケーション ゲートウェイの層。使用できるオプションは **[Standard]** と **[WAF]** です。 Web アプリケーション ファイアウォールは、WAF 層のみで利用できます。
-* **[SKU サイズ]** - アプリケーション ゲートウェイのサイズ。使用できるオプションは、**[中]** と **[大]** です。
+* **[層]** - アプリケーション ゲートウェイの層。使用できるオプションは (**[Standard]** と **[WAF]**) です。 Web アプリケーション ファイアウォールは、WAF 層のみで利用できます。
+* **[SKU サイズ]** - アプリケーション ゲートウェイのサイズ。使用できるオプションは、(**[中]** と **[大]**) です。
 * **[インスタンス数]** - インスタンスの数。この値は、**2** ～ **10** の数値で指定する必要があります。
 * **[リソース グループ]** - アプリケーション ゲートウェイを保持するリソース グループ。既存のリソース グループを指定することも、新しいグループを指定することもできます。
 * **[場所]** - アプリケーション ゲートウェイのリージョン。リソース グループと同じ場所にします。 "*この場所は、仮想ネットワークとパブリック IP はゲートウェイと同じ場所に存在する必要があるため、重要です。*"
@@ -164,7 +169,7 @@ Azure ポータルに移動し、**[新規]**、 > **[ネットワーク]** > �
 **WAF** 固有の設定を構成します。
 
 * **[ファイアウォールの状態]** - WAF のオンとオフを切り替えます。
-* **[ファイアウォール モード]** - 悪意のあるトラフィックに対処するときの WAF のアクションを決定します。 **[検出]** を選択すると、トラフィックがログに記録されます。  **[防止]** を選択すると、トラフィックがログに記録され、"403 許可されていません" で停止されます。
+* **[ファイアウォール モード]** - 悪意のあるトラフィックに対処するときの WAF のアクションを決定します。 **[検出]** を選択すると、トラフィックがログに記録されます。  **[防止]** を選択すると、トラフィックがログに記録され、"403 許可されていません" という応答で停止します。
 
 ![Web アプリケーション ファイアウォールの設定][9]
 
@@ -180,9 +185,12 @@ Azure ポータルに移動し、**[新規]**、 > **[ネットワーク]** > �
 
 これで、リスナー、バックエンド プール、バックエンド http 設定、ルールの既定の設定を持つ基本的なアプリケーション ゲートウェイが作成されます。 プロビジョニングが成功したら、独自のデプロイに合わせて、これらの設定を変更することができます。
 
+> [!NOTE]
+> 基本的な Web アプリケーション ファイアウォールの構成で作成されたアプリケーション ゲートウェイは、CRS 3.0 の保護で構成されています。
+
 ## <a name="next-steps"></a>次のステップ
 
-[Application Gateway の診断](application-gateway-diagnostics.md)
+[Application Gateway の診断](application-gateway-diagnostics.md)に関するページにアクセスして、診断ログを構成する方法と、Web アプリケーション ファイアウォールで検出または防止されたイベントを記録する方法を確認します。
 
 [カスタムの正常性プローブの作成](application-gateway-create-probe-portal.md)
 
@@ -202,9 +210,4 @@ Azure ポータルに移動し、**[新規]**、 > **[ネットワーク]** > �
 [9]: ./media/application-gateway-web-application-firewall-portal/figure9.png
 [10]: ./media/application-gateway-web-application-firewall-portal/figure10.png
 [scenario]: ./media/application-gateway-web-application-firewall-portal/scenario.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

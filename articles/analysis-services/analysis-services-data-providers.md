@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 02/27/2016
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 03720b926e3a75c5443308f510b38132144318ff
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
+ms.openlocfilehash: 14218a7c2acf6b68025095c1ecb60cb480233044
+ms.lasthandoff: 03/23/2017
 
 
 ---
@@ -27,9 +27,9 @@ ms.lasthandoff: 03/04/2017
 
 データ プロバイダーはクライアント ライブラリとも呼ばれ、クライアント アプリケーションが Analysis Services サーバーに接続するために必要です。 
 
-Analysis Services では&3; つのデータ プロバイダーが利用されます。 ADOMD.NET と Analysis Services Management Objects (AMO) はマネージ データ プロバイダーです。 Analysis Services OLE DB プロバイダー (MSOLAP DLL) は、ネイティブ データ プロバイダーです。 通常、3 つのプロバイダーがすべて同時にインストールされます。 Azure Analysis Services では最新バージョンのデータ プロバイダーが必要です。 
+Analysis Services では 3 つのデータ プロバイダーが利用されます。 ADOMD.NET と Analysis Services Management Objects (AMO) はマネージ データ プロバイダーです。 Analysis Services OLE DB プロバイダー (MSOLAP DLL) は、ネイティブ データ プロバイダーです。 通常、3 つのプロバイダーがすべて同時にインストールされます。 Azure Analysis Services では最新バージョンのデータ プロバイダーが必要です。 
 
-Power BI Desktop や Excel などの Microsoft クライアント アプリケーションでは&3; つのデータ プロバイダーがすべてインストールされます。 ただし、Excel のバージョンや、Excel および Power BI Desktop の新バージョンが毎月更新されるかどうかなどによっては、インストールされたデータ プロバイダーが、Azure Analysis Service で必要な最新バージョンに更新されないことがあります。 これは、カスタム アプリケーションまたは AsCmd、TOM、ADOMD.NET など他のインターフェイスでも同様です。 これらのアプリケーションでは、プロバイダーを手動でインストールする必要があります。 手動でインストールするためのデータ プロバイダーは、再頒布可能パッケージとして SQL Server Feature Pack に含まれます。ただし、これらは SQL Server のバージョンに対応しており、最新版ではない可能性があります。  
+Power BI Desktop や Excel などの Microsoft クライアント アプリケーションでは 3 つのデータ プロバイダーがすべてインストールされます。 ただし、Excel のバージョンや、Excel および Power BI Desktop の新バージョンが毎月更新されるかどうかなどによっては、インストールされたデータ プロバイダーが、Azure Analysis Service で必要な最新バージョンに更新されないことがあります。 これは、カスタム アプリケーションまたは AsCmd、TOM、ADOMD.NET など他のインターフェイスでも同様です。 これらのアプリケーションでは、プロバイダーを手動でインストールする必要があります。 手動でインストールするためのデータ プロバイダーは、再頒布可能パッケージとして SQL Server Feature Pack に含まれます。ただし、これらは SQL Server のバージョンに対応しており、最新版ではない可能性があります。  
 
 クライアント接続用のデータ プロバイダーは、Azure Analysis Services サーバーをデータ ソースに接続するために必要なデータ プロバイダーとは異なります。 データソース接続について詳しくは、「[Datasource connections](analysis-services-datasource.md)」(データソース接続) をご覧ください。
 

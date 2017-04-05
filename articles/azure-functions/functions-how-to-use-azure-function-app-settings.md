@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 10/28/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 3c18b1929a78137ff3b53b8e084dc35e0c8dcaac
-ms.openlocfilehash: 478db825a269beeaa9fbb0afef3488fc7d49d024
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: b7334f68e4526b716210b28388afcd0ee6e48940
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -32,7 +32,7 @@ ms.lasthandoff: 02/15/2017
 
 ## <a name="develop"></a>開発
 ### <a name="app-service-editor"></a>App Service Editor
-App Service Editor は、Json 構成ファイルとコード ファイルを変更するために使用できる高度なポータル内エディターです。 このオプションを選択すると、別のブラウザー タブが基本的なエディターで起動します。 これにより、Github との統合、コードの実行とデバッグ、および関数アプリの設定変更を行うことができます。
+App Service Editor は、Json 構成ファイルとコード ファイルを変更するために使用できる高度なポータル内エディターです。 このオプションを選択すると、別のブラウザー タブが基本的なエディターで起動します。 これにより、GitHub との統合、コードの実行とデバッグ、関数アプリの設定変更を行うことができます。
 
 ![App Service Editor](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
 
@@ -65,7 +65,7 @@ Azure Functions のポータル内コンソールを使用して、DOS 形式の
 Function App と GitHub、Visual Studio Team Services などを統合できます。
 
 1. **[継続的インテグレーションの構成]** リンクをクリックします。 オプションが表示された **[デプロイ]** ウィンドウが開きます。
-2. **[デプロイ]** ウィンドウの **[セットアップ]** をクリックし、オプションが&1; つ表示された **[展開元]** ウィンドウを開きます。**[ソースの選択]** をクリックして、使用できるソースを表示します。 
+2. **[デプロイ]** ウィンドウの **[セットアップ]** をクリックし、オプションが 1 つ表示された **[展開元]** ウィンドウを開きます。**[ソースの選択]** をクリックして、使用できるソースを表示します。 
 3. Visual Studio Team Services、OneDrive、ローカルの Git リポジトリ、GitHub、Bitbucket、DropBox、外部リポジトリのいずれかをクリックして、使用できるデプロイ ソースを選択します。 
    
     ![Function App の CI の構成](./media/functions-how-to-use-azure-function-app-settings/configure-function-ci.png)

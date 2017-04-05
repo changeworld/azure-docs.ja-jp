@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/17/2017
+ms.date: 03/28/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: a673044269016f5d216fa62a3bcc6f3b106838c0
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 037045c4e76d0fb8e96944fe8a3235223594a034
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -44,7 +44,7 @@ Application Gateway は、HTTP、HTTPS、および WebSocket をサポートし�
 
 **Q.現在、バックエンド プールの一部としてどのようなリソースがサポートされますか?**
 
-バックエンド プールは、NIC、仮想マシン スケール セット (VMSS)、パブリック IP、内部 IP、および完全修飾ドメイン名 (FQDN) で構成できます。 現時点では、Azure Web Apps はサポートされていません。 Application Gateway のバックエンド プールのメンバーは、可用性セットに関連付けられていません。 バックエンド プールのメンバーは、IP 接続されている限り、クラスターおよびデータ センター間、または Azure の外部に配置できます。
+バックエンド プールは、NIC、仮想マシン スケール セット、パブリック IP、内部 IP、および完全修飾ドメイン名 (FQDN) で構成できます。 現時点では、Azure Web Apps はサポートされていません。 Application Gateway のバックエンド プールのメンバーは、可用性セットに関連付けられていません。 バックエンド プールのメンバーは、IP 接続されている限り、クラスターおよびデータ センター間、または Azure の外部に配置できます。
 
 **Q.このサービスは、どのリージョンで利用できますか?**
 
@@ -66,14 +66,13 @@ Application Gateway は、お客様の仮想ネットワーク専用のデプロ
 
 お客様が Application Gateway を停止/起動すると、VIP が変更される可能性があります。 Application Gateway に関連付けられた DNS は、Application Gateway のライフサイクル全体を通して変更されません。 そのため、CNAME エイリアスを使用して Application Gateway の DNS アドレスを参照することをお勧めします。
 
-
 **Q.Application Gateway は静的 IP をサポートしますか?**
 
 いいえ。Application Gateway は、静的パブリック IP アドレスをサポートしませんが、静的内部 IP をサポートします。
 
 **Q.Application Gateway は複数のパブリック IP をサポートしますか?**
 
-Application Gateway でサポートされるパブリック IP アドレスは&1; つだけです。
+Application Gateway でサポートされるパブリック IP アドレスは 1 つだけです。
 
 **Q.Application Gateway は x-forwarded-for ヘッダーをサポートしますか?**
 
@@ -103,7 +102,7 @@ Application Gateway は IP 接続がある限り、仮想ネットワークの�
 
 **Q.Application Gateway を外部と内部の両方のトラフィックに同時に使用できますか?**
 
-はい。Application Gateway ごとに&1; つの内部 IP と&1; つの外部 IP を指定できます。
+はい。Application Gateway ごとに 1 つの内部 IP と 1 つの外部 IP を指定できます。
 
 **Q.VNET ピアリングはサポートされていますか?**
 
@@ -124,10 +123,6 @@ Application Gateway は IP 接続がある限り、仮想ネットワークの�
 **Q.カスタム プローブの [ホスト] フィールドは何を表しますか?**
 
 [ホスト] フィールドは、プローブの送信先の名前を指定します。 Application Gateway でマルチサイトが構成されている場合にのみ適用されます。それ以外の場合は、"127.0.0.1" を使用します。 この値は VM ホスト名とは異なり、\<プロトコル\>://\<ホスト\>:\<ポート\>\<パス\> という形式になります。 
-
-**Q.Application Gateway はマルチ テナントのバックエンドもサポートしますか?**
-
-いいえ。現在、Application Gateway は、受信ホスト ヘッダーを保持し、そのヘッダーをバックエンドに送信します。 バックエンドが別のヘッダーを必要とする場合、これは機能しなくなります。 同様に、バックエンドがマルチ テナントで、エンド ツー エンドの SSL が有効になっている場合、バックエンドは SNI 拡張機能のサーバー名を想定します。 Application Gateway では現在、エンド ツー エンドの SSL のシナリオでは、バックエンド要求で SNI ヘッダーを送信しません。これによって、プローブとデータ パスの問題が生じます。 
 
 ## <a name="performance"></a>パフォーマンス
 
@@ -219,7 +214,7 @@ TLS_RSA_WITH_3DES_EDE_CBC_SHA
 
 **Q.Application Gateway がサポートするのはどの CRS バージョンですか?**
 
-Application Gateway は CRS 2.2.9 をサポートします。
+Application Gateway は CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp229) と CRS [3.0](application-gateway-crs-rulegroups-rules.md#owasp30) をサポートします。
 
 **Q.WAF を監視するにはどうすればよいですか?**
 
@@ -231,11 +226,11 @@ WAF は診断ログを通じて監視されます。診断ログについて詳�
 
 **Q.WAF ルールをカスタマイズするにはどうすればよいですか?**
 
-現時点では、WAF ルールをカスタマイズできません。
+はい。WAF ルールはカスタマイズできます。カスタマイズ方法について詳しくは、[WAF ルール グループとルールのカスタマイズ](application-gateway-customize-waf-rules-portal.md)に関するページを参照してください。
 
 **Q.現在使用できるのはどのようなルールですか?**
 
-現在、WAF は CRS 2.2.9 をサポートしています。CRS 2.2.9 は、Open Web Application Security Project (OWASP) が特定した 10 の脆弱性 ([OWASP Top 10 の脆弱性に関するページ](https://www.owasp.org/index.php/Top10#OWASP_Top_10_for_2013)をご覧ください) のほとんどに対するベースライン セキュリティを提供します。
+現在、WAF は CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp229) と CRS [3.0](application-gateway-crs-rulegroups-rules.md#owasp30) をサポートしています。CRS 2.2.9 と CRS 3.0 は、Open Web Application Security Project (OWASP) が特定した 10 の脆弱性 ([OWASP Top 10 の脆弱性](https://www.owasp.org/index.php/Top10#OWASP_Top_10_for_2013)に関するページをご覧ください) のほとんどに対するベースライン セキュリティを提供します。
 
 * SQL インジェクションからの保護
 
@@ -251,17 +246,17 @@ WAF は診断ログを通じて監視されます。診断ログについて詳�
 
 * 一般的なアプリケーション構成ミスの検出 (Apache、IIS など)
 
-**Q.WAF は DDos 防止もサポートしますか?**
+**Q.WAF は DDoS 防止もサポートしますか?**
 
-いいえ。WAF は DDos 防止を提供しません。
+いいえ。WAF は DDoS 防止を提供しません。
 
 ## <a name="diagnostics-and-logging"></a>診断とログ
 
 **Q.Application Gateway ではどのような種類のログを使用できますか?**
 
-Application Gateway で使用できるログは&3; つあります。 これらのログとその他の診断機能について詳しくは、「[Application Gateway のバックエンドの正常性、診断ログ、およびメトリック](application-gateway-diagnostics.md)」をご覧ください。
+Application Gateway で使用できるログは 3 つあります。 これらのログとその他の診断機能について詳しくは、「[Application Gateway のバックエンドの正常性、診断ログ、およびメトリック](application-gateway-diagnostics.md)」をご覧ください。
 
-- **ApplicationGatewayAccessLog** - このログには、Application Gateway フロントエンドに送信された各要求が格納されます。 このデータには、呼び出し元の IP、要求された URL、応答の待機時間、リターン コード、入出力バイトが含まれます。 アクセス ログは 300 秒ごとに収集されます。 このログには、Application Gateway のインスタンスごとに&1; つのレコードが含まれます。
+- **ApplicationGatewayAccessLog** - このログには、Application Gateway フロントエンドに送信された各要求が格納されます。 このデータには、呼び出し元の IP、要求された URL、応答の待機時間、リターン コード、入出力バイトが含まれます。 アクセス ログは 300 秒ごとに収集されます。 このログには、Application Gateway のインスタンスごとに 1 つのレコードが含まれます。
 - **ApplicationGatewayPerformanceLog** - このログでは、インスタンスごとのパフォーマンス情報 (処理された要求の総数、スループット (バイト単位)、失敗した要求の数、正常および異常なバックエンド インスタンスの数など) が取得されます。
 - **ApplicationGatewayFirewallLog** - このログには、Web アプリケーション ファイアウォールが構成されたアプリケーション ゲートウェイの、検出モードまたは防止モードでログに記録された要求が含まれます。
 
@@ -288,4 +283,3 @@ Application Gateway では監査ログを使用できます。 ポータルで�
 ## <a name="next-steps"></a>次のステップ
 
 Application Gateway について詳しくは、「[Application Gateway の概要](application-gateway-introduction.md)」をご覧ください。
-

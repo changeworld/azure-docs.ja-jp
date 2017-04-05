@@ -15,15 +15,15 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: 0d6756dcc5b47898575002cd7336b8d4d5200e08
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: eab8b66bc4a9cf3090ee81f9bb47430aaf26eeee
+ms.lasthandoff: 03/24/2017
 
 ---
 
 # <a name="configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>Traffic Manager を使用した地理的トラフィック ルーティング方法の構成
 
-地理的トラフィック ルーティング方法を使用すると、要求の送信元の地理的な場所に基づいて、特定のエンドポイントにトラフィックを転送することができます。 このチュートリアルでは、このルーティング方法を使用して Traffic Manager プロファイルを作成し、特定の地域からのトラフィックを受信するようにエンドポイントを構成する方法を説明します。 
+地理的トラフィック ルーティング方法を使用すると、要求の送信元の地理的な場所に基づいて、特定のエンドポイントにトラフィックを転送することができます。 このチュートリアルでは、このルーティング方法を使用して Traffic Manager プロファイルを作成し、特定の地域からのトラフィックを受信するようにエンドポイントを構成する方法を説明します。
 
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager プロファイルの作成 
 
@@ -62,8 +62,6 @@ ms.lasthandoff: 03/22/2017
 
 ## <a name="next-steps"></a>次のステップ
 
-
-- [重み付けによるトラフィック ルーティング方法](traffic-manager-configure-weighted-routing-method.md)について学習します。
-- [パフォーマンスによるトラフィック ルーティング方法](traffic-manager-configure-performance-routing-method.md)について学習します。
-- [Traffic Manager の設定をテストする](traffic-manager-testing-settings.md)方法について学習します。
+- [地理的トラフィック ルーティング方法](traffic-manager-routing-methods.md#geographic-traffic-routing-method)の詳細を確認します。
+- [Traffic Manager の設定のテスト](traffic-manager-testing-settings.md)方法について学習します。
 

@@ -1,5 +1,5 @@
 ---
-title: "PowerShell を使用して ExpressRoute 用の VNet ゲートウェイを構成する | Microsoft Docs"
+title: "PowerShell を使用して ExpressRoute 用の VNet ゲートウェイを構成する: クラシック: Azure | Microsoft Docs"
 description: "ExpressRoute の構成に対して PowerShell を使用してクラシック デプロイ モデルの VNet 用の VNet ゲートウェイを構成します。"
 documentationcenter: na
 services: expressroute
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/03/2016
+ms.date: 03/21/2017
 ms.author: charwen
 translationtype: Human Translation
-ms.sourcegitcommit: 2a0db85dc5699b362aa6a920cc26c40bdfdfc28d
-ms.openlocfilehash: 1679bc2f2344ce3dd78599a1e6a8e2cc974ee905
-ms.lasthandoff: 12/14/2016
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: badec4e0b542db52f34db3c50f7d906ed6a5a377
+ms.lasthandoff: 03/24/2017
 
 
 ---
-# <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-classic-deployment-model-and-powershell"></a>クラシック デプロイ モデルと PowerShell を使用して ExpressRoute 用の仮想ネットワーク ゲートウェイを構成する
+# <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell-classic"></a>PowerShell を使用して ExpressRoute の仮想ネットワーク ゲートウェイを構成する (クラシック)
 > [!div class="op_single_selector"]
 > * [Resource Manager - PowerShell](expressroute-howto-add-gateway-resource-manager.md)
 > * [クラシック - PowerShell](expressroute-howto-add-gateway-classic.md)
@@ -31,6 +31,8 @@ ms.lasthandoff: 12/14/2016
 > 
 
 この記事では、既存の仮想ネットワーク (VNet) 用の VNet ゲートウェイを追加、サイズ変更、および削除する手順を説明します。 この構成の手順は、 **クラシック デプロイ モデル** を使用して作成され、ExpressRoute 構成で使用される VNet 専用です。 
+
+[!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
 **Azure のデプロイ モデルについて**
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure IoT Hub の IoT Hub エンドポイントについて | Microsoft Docs"
+title: "Azure IoT Hub のエンドポイントについて | Microsoft Docs"
 description: "開発者ガイド - IoT Hub デバイス向けおよびサービス向けエンドポイントに関する参照情報。"
 services: iot-hub
 documentationcenter: .net
@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/31/2017
+ms.date: 03/22/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 32364c5a681c1d614abbc32cc8b73dba4e5a2d18
-ms.openlocfilehash: 00a576357c6e89d7943e6c6c6a83c2c1535d549e
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
+ms.openlocfilehash: cdc50ec4bf98d7924ad5bf97c9a757f0bac01173
+ms.lasthandoff: 03/23/2017
 
 
 ---
@@ -67,7 +67,7 @@ Azure IoT Hub はさまざまなアクターに機能を公開するマルチテ
 
 IoT Hub でメッセージのルーティングを機能させるには、これらのサービス エンドポイントへの書き込みアクセス許可が必要です。 Azure ポータルを使用してエンドポイントを構成する場合、必要なアクセス許可は自動的に追加されます。 必要なスループットをサポートするようにサービスを確実に構成してください。 IoT ソリューションを初めて構成する場合は、追加のエンドポイントを監視した後で、実際の負荷に合わせるための調整を行う必要があります。
 
-メッセージが、同じエンドポイントを指している複数のルートと一致する場合、IoT Hub はそのエンドポイントにメッセージを&1; 回だけ送信します。 そのため、Service Bus キューまたはトピックで重複除去を構成する必要はありません。 パーティション分割されたキューでは、パーティションのアフィニティによってメッセージの順序が保証されます。 セッションが有効になっているキューは、エンドポイントとしてサポートされません。 重複除去が有効になっているパーティション分割されたキューとトピックもサポートされません。
+メッセージが、同じエンドポイントを指している複数のルートと一致する場合、IoT Hub はそのエンドポイントにメッセージを 1 回だけ送信します。 そのため、Service Bus キューまたはトピックで重複除去を構成する必要はありません。 パーティション分割されたキューでは、パーティションのアフィニティによってメッセージの順序が保証されます。 セッションが有効になっているキューは、エンドポイントとしてサポートされません。 重複除去が有効になっているパーティション分割されたキューとトピックもサポートされません。
 
 追加できるエンドポイントの数の制限については、「[クォータと調整][lnk-devguide-quotas]」をご覧ください。
 

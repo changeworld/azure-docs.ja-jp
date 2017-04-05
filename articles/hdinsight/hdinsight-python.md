@@ -17,9 +17,9 @@ ms.date: 02/27/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 translationtype: Human Translation
-ms.sourcegitcommit: cfaade8249a643b77f3d7fdf466eb5ba38143f18
-ms.openlocfilehash: b39c913367928e8e98dfb1d6bfdca75fcded13c3
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 88d54250c0ce8feff78e2bf122be1c69dd0d8008
+ms.lasthandoff: 03/25/2017
 
 ---
 # <a name="use-python-user-defined-functions-udf-with-hive-and-pig-in-hdinsight"></a>HDInsight における Hive および Pig での Python ユーザー定義関数 (UDF) の使用
@@ -101,7 +101,7 @@ while True:
 
 1. STDIN からデータ行を読み取ります。
 2. `string.strip(line, "\n ")` を使用することで、末尾の改行文字が削除されます。
-3. ストリームの処理中は、すべての値が&1; つの行に含まれ、値と値の間はタブ文字で区切られます。 それにより、 `string.split(line, "\t")` を使用してタブごとに入力を分割し、フィールドのみを返すことができます。
+3. ストリームの処理中は、すべての値が 1 つの行に含まれ、値と値の間はタブ文字で区切られます。 それにより、 `string.split(line, "\t")` を使用してタブごとに入力を分割し、フィールドのみを返すことができます。
 4. 処理の完了時には、フィールド間がタブで区切られた単一の行として、STDOUT に出力が書き出される必要があります。 この処理は `print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])` を使用して実現します。
 5. `line` が読み込まれなくなるまで、`while` ループが繰り返されます。
 
@@ -172,7 +172,7 @@ def create_structure(input):
 
 3. 例のデータである **sample.log**は通常、日付、時刻、クラス名、レベル、および詳細説明のデータを返すスキーマに従います。 しかし、ここにはスキーマとの一致を図るために、"*java.lang.Exception*" という文字列で始まるいくつかの行を変更する必要があります。 **if** ステートメントでそれらを確認した後、想定される出力スキーマと一致するように、入力データの "*java.lang.Exception*" 文字列を末尾に移動します。
 
-4. 次に、 **split** コマンドを使用して、最初の&4; つの空白文字でデータを分割します。 出力は、**date**、**time**、**classname**、**level**、**detail** に割り当てられます。
+4. 次に、 **split** コマンドを使用して、最初の 4 つの空白文字でデータを分割します。 出力は、**date**、**time**、**classname**、**level**、**detail** に割り当てられます。
 
 5. 最後に、値が Pig に返されます。
 
@@ -182,7 +182,8 @@ def create_structure(input):
 Linux ベースの HDInsight クラスターを使用している場合は、**SSH** の手順に従います。 Windows ベースの HDInsight クラスターと、Windows クライアントを使用している場合は、 **PowerShell** の手順を実行します。
 
 ### <a name="ssh"></a>SSH
-SSH の使用方法の詳細については、「[Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)」または「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
+
+SSH の使用方法の詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページをご覧ください。
 
 1. Python の例の [streaming.py](#streamingpy) と [pig_python.py](#jythonpy) を使用して、開発用コンピューターにファイルのローカル コピーを作成します。
 
@@ -270,7 +271,7 @@ SSH の使用方法の詳細については、「[Linux、Unix、または OS X 
 次の手順では、Azure PowerShell を使用します。 Azure PowerShell の使用方法の詳細については、「[Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」をご覧ください。
 
 1. Python の例の [streaming.py](#streamingpy) と [pig_python.py](#jythonpy) を使用して、開発用コンピューターにファイルのローカル コピーを作成します。
-2. 次の PowerShell スクリプトを使用して、**streaming.py** ファイルと **pig\_python.py** ファイルをサーバーにアップロードします。 スクリプトの最初の&3; 行に、Azure HDInsight クラスターの名前と、**streaming.py** ファイルおよび **pig\_python.py** ファイルへのパスを入力します。
+2. 次の PowerShell スクリプトを使用して、**streaming.py** ファイルと **pig\_python.py** ファイルをサーバーにアップロードします。 スクリプトの最初の 3 行に、Azure HDInsight クラスターの名前と、**streaming.py** ファイルおよび **pig\_python.py** ファイルへのパスを入力します。
    
    ```powershell
     # Login to your Azure subscription

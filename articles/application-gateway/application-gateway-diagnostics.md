@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 01/17/2017
 ms.author: amitsriva
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: 2c4b3e23c478a006b081929269ae066d00af20cd
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 104ef38666957c1317b41a28244e05f3132e7fbf
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -36,8 +36,9 @@ Azure は、ログとメトリックを使用してリソースを監視する�
 
 Application Gateway は、ポータル、PowerShell、および CLI を介して、バックエンド プールの各メンバーの正常性を監視する機能を提供します。 バックエンド プールの正常性の集計された概要は、パフォーマンスの診断ログでも確認できます。 バックエンドの正常性レポートには、バックエンドのインスタンスへの Application Gateway の正常性プローブの出力が反映されます。 プローブが正常に完了し、バックエンドにトラフィックを送信できる場合は、正常と見なされます。それ以外の場合は異常と見なされます。
 
-> [!important]
-> Application Gateway サブネット上に NSG がある場合、Application Gateway サブネットで 65503 ～ 65534 のポート範囲をバックエンド プールのメンバーに開いておく必要があります。 これらのポートは、バックエンドの正常性が適切に機能するために必要です。
+> [!IMPORTANT]
+> Application Gateway サブネット上に NSG がある場合、Application Gateway サブネットで 65503 ～ 65534 のポート範囲をインバウンド トラフィック用に開いておく必要があります。 これらのポートは、バックエンドの正常性 API が機能するために必要です。
+
 
 ### <a name="view-backend-health-through-the-portal"></a>ポータルを介したバックエンドの正常性の表示
 
@@ -166,7 +167,7 @@ Azure ポータルで、リソースに移動します。 **[診断ログ]**を�
 
 ```json
 {
-    "resourceId": "/SUBSCRIPTIONS/<subscription id>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/<application gateway name>",
+    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
     "operationName": "ApplicationGatewayAccess",
     "time": "2016-04-11T04:24:37Z",
     "category": "ApplicationGatewayAccessLog",
@@ -194,7 +195,7 @@ Azure ポータルで、リソースに移動します。 **[診断ログ]**を�
 
 ```json
 {
-    "resourceId": "/SUBSCRIPTIONS/<subscription id>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/<application gateway name>",
+    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
     "operationName": "ApplicationGatewayPerformance",
     "time": "2016-04-09T00:00:00Z",
     "category": "ApplicationGatewayPerformanceLog",
@@ -220,22 +221,30 @@ Azure ポータルで、リソースに移動します。 **[診断ログ]**を�
 
 ```json
 {
-    "resourceId": "/SUBSCRIPTIONS/<subscriptionId>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/<applicationGatewayName>",
-    "operationName": "ApplicationGatewayFirewall",
-    "time": "2016-09-20T00:40:04.9138513Z",
-    "category": "ApplicationGatewayFirewallLog",
-    "properties":     {
-        "instanceId":"ApplicationGatewayRole_IN_0",
-        "clientIp":"108.41.16.164",
-        "clientPort":1815,
-        "requestUri":"/wavsep/active/RXSS-Detection-Evaluation-POST/",
-        "ruleId":"OWASP_973336",
-        "message":"XSS Filter - Category 1: Script Tag Vector",
-        "action":"Logged",
-        "site":"Global",
-        "message":"XSS Filter - Category 1: Script Tag Vector",
-        "details":{"message":" Warning. Pattern match "(?i)(<script","file":"/owasp_crs/base_rules/modsecurity_crs_41_xss_attacks.conf","line":"14"}}
-}
+  "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
+  "operationName": "ApplicationGatewayFirewall",
+  "time": "2017-03-20T15:52:09.1494499Z",
+  "category": "ApplicationGatewayFirewallLog",
+  "properties": {
+    "instanceId": "ApplicationGatewayRole_IN_0",
+    "clientIp": "104.210.252.3",
+    "clientPort": "4835",
+    "requestUri": "/?a=%3Cscript%3Ealert(%22Hello%22);%3C/script%3E",
+    "ruleSetType": "OWASP",
+    "ruleSetVersion": "3.0",
+    "ruleId": "941320",
+    "message": "Possible XSS Attack Detected - HTML Tag Handler",
+    "action": "Blocked",
+    "site": "Global",
+    "details": {
+      "message": "Warning. Pattern match \"<(a|abbr|acronym|address|applet|area|audioscope|b|base|basefront|bdo|bgsound|big|blackface|blink|blockquote|body|bq|br|button|caption|center|cite|code|col|colgroup|comment|dd|del|dfn|dir|div|dl|dt|em|embed|fieldset|fn|font|form|frame|frameset|h1|head|h ...\" at ARGS:a.",
+      "data": "Matched Data: <script> found within ARGS:a: <script>alert(\\x22hello\\x22);</script>",
+      "file": "rules/REQUEST-941-APPLICATION-ATTACK-XSS.conf",
+      "line": "865"
+    }
+  }
+} 
+
 ```
 
 ### <a name="view-and-analyze-the-activity-log"></a>アクティビティ ログの表示と分析
@@ -252,7 +261,7 @@ Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.
 自身のストレージ アカウントに接続して、アクセス ログとパフォーマンス ログの JSON ログ エントリを取得することもできます。 JSON ファイルをダウンロードした後、そのファイルを CSV に変換し、Excel、Power BI などのデータ視覚化ツールで表示できます。
 
 > [!TIP]
-> Visual Studio を使い慣れていて、C# の定数と変数の値を変更する基本的な概念を理解している場合は、Github から入手できる [ログ変換ツール](https://github.com/Azure-Samples/networking-dotnet-log-converter) を使用できます。
+> Visual Studio を使い慣れていて、C# の定数と変数の値を変更する基本的な概念を理解している場合は、GitHub から入手できる[ログ変換ツール](https://github.com/Azure-Samples/networking-dotnet-log-converter)を使用できます。
 > 
 > 
 
@@ -316,4 +325,3 @@ webhook と、webhook とアラートを使用する方法の詳細について�
 [8]: ./media/application-gateway-diagnostics/figure8.png
 [9]: ./media/application-gateway-diagnostics/figure9.png
 [10]: ./media/application-gateway-diagnostics/figure10.png
-

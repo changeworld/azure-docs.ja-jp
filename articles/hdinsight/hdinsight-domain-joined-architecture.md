@@ -9,16 +9,17 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 7dc6847d-10d4-4b5c-9c83-cc513cf91965
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/03/2017
 ms.author: saurinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 4ba44128ec19d3937643ac934ca3e787cb9819a3
-ms.openlocfilehash: 690ba97d2b0634548a0ec424d441ad34d70667b9
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 69378496fb7e4176243d36950e7270809248d2bb
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -36,7 +37,7 @@ HDInsight を Azure AD と統合すると、HDInsight クラスター ノード�
 
 **Azure IaaS で実行されている Azure AD と統合された HDInsight**
 
-これは、HDInsight を Azure AD と統合する最も簡単なアーキテクチャです。 Azure AD ドメイン コントローラーは、Azure 内の&1; つ (または複数) の仮想マシン (VM) で動作します。 これらの VM は通常、仮想ネットワーク内に存在します。 HDInsight クラスター用に仮想ネットワークをもう&1; つ設定します。 HDInsight に Azure AD を認識させるには、[VNet 間のピアリング](../virtual-network/virtual-networks-create-vnetpeering-arm-portal.md)を使用してこれらの仮想ネットワークをピアリングする必要があります。
+これは、HDInsight を Azure AD と統合する最も簡単なアーキテクチャです。 Azure AD ドメイン コントローラーは、Azure 内の 1 つ (または複数) の仮想マシン (VM) で動作します。 これらの VM は通常、仮想ネットワーク内に存在します。 HDInsight クラスター用に仮想ネットワークをもう 1 つ設定します。 HDInsight に Azure AD を認識させるには、[VNet 間のピアリング](../virtual-network/virtual-networks-create-vnetpeering-arm-portal.md)を使用してこれらの仮想ネットワークをピアリングする必要があります。
 
 ![ドメイン参加の HDInsight クラスター トポロジ](./media/hdinsight-domain-joined-architecture/hdinsight-domain-joined-architecture_1.png)
 
@@ -57,7 +58,7 @@ Azure AD の前提条件:
 
 **クラウド専用の Azure AD と統合された HDInsight**
 
-クラウド専用の Azure AD の場合、ドメイン コントローラーを構成して HDInsight と Azure AD を統合できるようにします。 これは、[Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-overview.md) (Azure AD DS) を使用して実現されます。 Azure AD DS によってクラウド内にドメイン コントローラー マシンが作成され、そのマシン用の IP アドレスが提供されます。 高可用性を確保するために&2; つのドメイン コントローラーが作成されます。
+クラウド専用の Azure AD の場合、ドメイン コントローラーを構成して HDInsight と Azure AD を統合できるようにします。 これは、[Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-overview.md) (Azure AD DS) を使用して実現されます。 Azure AD DS によってクラウド内にドメイン コントローラー マシンが作成され、そのマシン用の IP アドレスが提供されます。 高可用性を確保するために 2 つのドメイン コントローラーが作成されます。
 
 現時点では、Azure AD DS はクラシック仮想ネットワークにしか存在せず、 アクセスする手段は Azure クラシック ポータルのみになります。 HDInsight 仮想ネットワークは Azure Portal に存在します。これは、VNet 間のピアリングを使用してクラシック仮想ネットワークとピアリングする必要があります。
 
@@ -100,7 +101,7 @@ Azure AD の前提条件:
 
 **Azure AD と同期されたオンプレミスの Active Directory に統合された HDInsight**
 
-このアーキテクチャは、クラウド専用の Azure AD と統合された HDInsight に似ています。 唯一の違いは、オンプレミスの Active Directory が Azure AD と同期されることです。 クラウドでドメイン コントローラーを構成して、HDInsight と Azure AD を統合できるようにします。 これは、[Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-overview.md) を使用して実現されます。 Azure AD DS によってクラウド内にドメイン コントローラー マシンが作成され、そのマシン用の IP アドレスが提供されます。 高可用性を確保するために&2; つのドメイン コントローラーが作成されます。
+このアーキテクチャは、クラウド専用の Azure AD と統合された HDInsight に似ています。 唯一の違いは、オンプレミスの Active Directory が Azure AD と同期されることです。 クラウドでドメイン コントローラーを構成して、HDInsight と Azure AD を統合できるようにします。 これは、[Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-overview.md) を使用して実現されます。 Azure AD DS によってクラウド内にドメイン コントローラー マシンが作成され、そのマシン用の IP アドレスが提供されます。 高可用性を確保するために 2 つのドメイン コントローラーが作成されます。
 
 現時点では、Azure AD DS はクラシック仮想ネットワークにしか存在せず、 アクセスする手段は Azure クラシック ポータルのみになります。 HDInsight 仮想ネットワークは Azure Portal に存在します。これは、VNet 間のピアリングを使用してクラシック仮想ネットワークとピアリングする必要があります。
 
@@ -125,7 +126,7 @@ Azure AD の前提条件:
 
 このアーキテクチャは、クラウド専用の Azure AD と統合された HDInsight に似ています。 ほとんどの企業では、Azure AD に対する管理アクセスは特定の個人に限定されています。 したがって、概念実証を行う際やドメイン参加済みクラスターの作成を試してみる際は、管理者が Azure AD で前提条件を構成するのを待つのではなく、サブスクリプション内で Azure AD インスタンスを作成したほうが便利な場合があります。 これは自分で作成した Azure AD インスタンスであるため、Azure AD DS を構成するうえで必要な、すべての Azure AD のアクセス許可があります。
 
-Azure AD DS によってクラウド内にドメイン コントローラー マシンが作成され、そのマシン用の IP アドレスが提供されます。 高可用性を確保するために&2; つのドメイン コントローラーが作成されます。
+Azure AD DS によってクラウド内にドメイン コントローラー マシンが作成され、そのマシン用の IP アドレスが提供されます。 高可用性を確保するために 2 つのドメイン コントローラーが作成されます。
 
 Azure AD DS はクラシック仮想ネットワークにのみ存在するため、Azure クラシック ポータルにアクセスする必要があるほか、Azure AD DS を構成するためのクラシック仮想ネットワークを作成する必要があります。 HDInsight 仮想ネットワークは Azure Portal に存在します。これは、VNet 間のピアリングを使用してクラシック仮想ネットワークとピアリングする必要があります。
 
@@ -150,5 +151,5 @@ Azure AD の前提条件:
 * ドメイン参加済み HDInsight クラスターを構成するには、[ドメイン参加済み HDInsight クラスターの構成](hdinsight-domain-joined-configure.md)に関する記事をご覧ください。
 * ドメイン参加済み HDInsight クラスターを管理するには、[ドメイン参加済み HDInsight クラスターの管理](hdinsight-domain-joined-manage.md)に関する記事をご覧ください。
 * Hive ポリシーを構成して Hive クエリを実行するには、[ドメイン参加済み HDInsight クラスターでの Hive ポリシーの構成](hdinsight-domain-joined-run-hive.md)に関する記事をご覧ください。
-* ドメイン参加済み HDInsight クラスターで SSH を使用して Hive クエリを実行するには、[Linux、Unix、または OS X から、HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する方法](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページをご覧ください。
+* SSH を使用してドメイン参加済み HDInsight クラスターで Hive クエリを実行する方法については、[HDInsight で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 

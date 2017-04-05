@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/01/2017
-ms.author: jotaub
+ms.date: 03/27/2017
+ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 98de5528d8c74630153bf6908c590b3e0a89d870
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 420a79a3f98500fa5e9054c3a59d9ac20ecb6cbf
+ms.lasthandoff: 03/28/2017
 
 ---
 
@@ -58,6 +58,7 @@ Visual Studio を起動します。 **[ファイル]** メニューの **[新規
     ```csharp
     using Microsoft.Azure.EventHubs;
     using System.Text;
+    using System.Threading.Tasks;
     ```
 
 2. Event Hubs 接続文字列とエンティティ パス (個別の Event Hub 名) の `Program` クラスに定数を追加します。 中かっこ内のプレースホルダーを、Event Hub の作成時に取得した適切な値に置き換えます。

@@ -12,12 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 3/1/2017
+ms.date: 3/27/2017
 ms.author: mcoskun
 translationtype: Human Translation
-ms.sourcegitcommit: 4952dfded6ec5c4512a61cb18d4c754bf001dade
-ms.openlocfilehash: b5fab7cf91493d477cafd66e27e346ea3ad02f04
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 6ac47fe040793f2ac4ff596880675df0b331143e
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -48,14 +48,14 @@ Reliable Collection API は同時実行コレクション API ( **System.Collect
 * out パラメーターを使用しない: `ConditionalValue<T>` を使用して out パラメーターではなく、ブール値および値を返します。 `ConditionalValue<T>` は `Nullable<T>` に似ていますが、構造体にするには「T」は必要ありません。
 * トランザクション: トランザクション オブジェクトを使用することで、トランザクション内で複数の Reliable Collection に対してユーザーがグループ操作を実行できます。
 
-現在、 **Microsoft.ServiceFabric.Data.Collections** には次の&2; つのコレクションが含まれています。
+現在、 **Microsoft.ServiceFabric.Data.Collections** には次の 2 つのコレクションが含まれています。
 
 * [Reliable Dictionary](https://msdn.microsoft.com/library/azure/dn971511.aspx): レプリケートされた、トランザクションに使用する非同期のキーと値のペアのコレクションです。 **ConcurrentDictionary**と同様に、キーと値のいずれにも任意の型を使用できます。
 * [Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx): レプリケートされた、トランザクションに使用する非同期の厳密な先入れ先出し型 (FIFO) のキューです。 **ConcurrentQueue**と同様に、値には任意の型を使用できます。
 
 ## <a name="isolation-levels"></a>分離レベル
 分離レベルは、トランザクションを他のトランザクションによって行われた変更から分離する必要がある度合を定義します。
-Reliable Collection では、次の&2; つの分離レベルがサポートされています。
+Reliable Collection では、次の 2 つの分離レベルがサポートされています。
 
 * **反復可能読み取り**: 他のトランザクションによって変更されたがまだコミットされていないデータをステートメントから読み取ることができないように指定するほか、現在のトランザクションが完了するまで、現在のトランザクションで読み取られたデータをその他のトランザクションが変更できないように指定します。 詳細については、 [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx)をご覧ください。
 * **スナップショット**: トランザクションの任意のステートメントによって読み取られたデータが、トランザクションの開始時に存在していたデータとトランザクション上の整合性を持つように指定します。
@@ -82,11 +82,11 @@ Reliable Dictionary と Reliable Queue では、Read Your Writes がサポート
 つまり、トランザクション内でのすべての書き込みは、同じトランザクションで行われる次の読み取りによって認識されるということです。
 
 ## <a name="locking"></a>ロック
-Reliable Collection では、すべてのトランザクションは&2; 段階で実行されます。つまり、トランザクションが中止またはコミットのいずれかで終了するまで、取得したロックを解放しないということです。
+Reliable Collection では、すべてのトランザクションは 2 段階で実行されます。つまり、トランザクションが中止またはコミットのいずれかで終了するまで、取得したロックを解放しないということです。
 
 Reliable Dictionary では、1 つのエンティティ操作のすべてに対して、行レベルのロックを使用します。
 Reliable Queue では、同時実行よりもトランザクション FIFO プロパティの厳密さが優先されます。
-Reliable Queue は操作レベルのロックを使用しており、一度に `TryPeekAsync` および/または `TryDequeueAsync` による&1; つのトランザクションと `EnqueueAsync` による&1; つのトランザクションが許可されます。
+Reliable Queue は操作レベルのロックを使用しており、一度に `TryPeekAsync` および/または `TryDequeueAsync` による 1 つのトランザクションと `EnqueueAsync` による 1 つのトランザクションが許可されます。
 FIFO の保持のため、`TryPeekAsync` または `TryDequeueAsync` により Reliable Queue が空であると認識されたことがある場合、`EnqueueAsync` のロックも行われることに注意してください。
 
 書き込み操作は、常に排他的ロックを取得します。
@@ -146,6 +146,7 @@ Reliable Collection がチェックポイントを完了すると、Reliable Sta
 * デッドロックを引き起こす可能性があるため、別のトランザクションの `using` ステートメント内にトランザクションを作成しないでください。
 * `IComparable<TKey>` の実装が正しいことを確認してください。 システムでは、チェックポイントを結合するため、これについての依存関係を取得します。
 * ある種のデッドロックを防ぐために、更新目的で項目を読み取る場合は更新ロックを使用してください。
+* 項目 (Reliable Dictionary の TKey + TValue など) を 80 KB 未満に保つように考慮してください。小さいほど良いです。 これにより、大きなオブジェクト ヒープの使用量だけでなく、ディスクとネットワークの IO 要件が軽減されます。 多くの場合は、値のごく一部だけが更新されるときの重複データのレプリケートも軽減されます。 Reliable Dictionary でこれを実現する一般的な方法は、行を複数行に分けることです。 
 * 障害復旧を行うには、バックアップと復元の機能の使用を検討します。
 * 1 つのエンティティ操作と複数のエンティティ操作 (例: `GetCountAsync`、`CreateEnumerableAsync`) は分離レベルが異なるため、同じトランザクション内に混在させないでください。
 * InvalidOperationException を処理します。 ユーザー トランザクションは、さまざまな理由でシステムによって中止されることがあります。 たとえば、Reliable State Manager がプライマリからロールを変更する場合や、実行時間の長いトランザクションがトランザクション ログの切り詰めをブロックしている場合などです。 このような場合、ユーザーは、トランザクションが既に終了されたことを示す InvalidOperationException を受け取る可能性があります。 ユーザーが要求したトランザクション終了ではない場合、この例外を処理する最善の方法は、トランザクションを破棄し、キャンセル トークンが通知されたかどうか (または、レプリカのロールが変更されたかどうか) を確認して、そうではない場合は新しいトランザクションを作成して再試行することです。  

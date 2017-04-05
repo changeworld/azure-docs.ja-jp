@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 653c9a04016c0157b2107710e170ba63b3a499f7
-ms.openlocfilehash: 38f68d6df19d24492a234933e10d5d5cf34d1b23
-ms.lasthandoff: 01/05/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 3539da8afe5781d74cbf723090050b767373f268
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -103,7 +103,7 @@ Azure Analysis Services は現在プレビュー段階です。 いくつかの�
 ##### <a name="data-sources"></a>データ ソース
 プレビューでは、次のデータ ソースは Azure Analysis Services サーバーにデプロイされた表形式の 1200 モデルでサポートされます。
 
-| **クラウド** | **オンプレミスの** |
+| **クラウド** | **オンプレミス (データ ゲートウェイが必要)** |
 | --- | --- |
 | SQL データベース |SQL Server |
 | SQL Data Warehouse |APS |
@@ -114,7 +114,8 @@ Azure Analysis Services は現在プレビュー段階です。 いくつかの�
 Azure Analysis Services のデータ モデルでデータ ソースに接続するには、SQL Server Analysis Services のデータ モデルとは異なるデータ プロバイダーが必要な場合があります。 データ プロバイダーの要件は、データ ソースがクラウドとオンプレミスのどちらに存在するか、およびデータ モデルの種類 (メモリか直接クエリか) によって異なります。 詳しくは、「[データ ソースの接続](analysis-services-datasource.md)」をご覧ください。
 
 ### <a name="client-connections"></a>クライアント接続
-Power BI Embedded はプレビューではまだサポートされていません。
+
+クライアント アプリケーションには、Azure Analysis Services に接続するための最新のクライアント [データ プロバイダー](analysis-services-data-providers.md) が必要です。
 
 Azure Analysis Services サーバーへのライブ接続を含み、OneDrive または SharePoint Online に保存される Excel ブックはサポートされていません。
 

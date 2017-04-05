@@ -1,6 +1,6 @@
 ---
 title: "Azure Import/Export のマニフェスト ファイルの形式 | Microsoft Docs"
-description: "Azure Blob Storage の BLOB と Import/Export サービスのインポートまたはエクスポート ジョブにおけるドライブ上のファイル間のマッピングを表すドライブ マニフェスト ファイルの形式について説明します"
+description: "Azure Blob Storage の BLOB とインポート/エクスポート サービスのインポートまたはエクスポート ジョブにおけるドライブ上のファイル間のマッピングを表すドライブ マニフェスト ファイルの形式について説明します。"
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 8de848b1192ff1c10e0375053c4e03f18c06184e
-ms.openlocfilehash: 2c76120a967aabf546fdb5246478f78e8cf47f94
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: d56754c9c205ddc4933b29e8f4891a56f42496e9
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -90,7 +90,10 @@ block-list ::=
       [<Block Offset="block-offset" Length="block-length" [Id="block-id"]   
        Hash="md5-hash"/>]  
     </BlockList>  
+
 ```
+
+## <a name="manifest-xml-elements-and-attributes"></a>マニフェストの XML 要素と属性
 
 データ要素とドライブのマニフェスト XML 形式の属性は、次の表で指定されます。  
   
@@ -131,6 +134,7 @@ block-list ::=
 |`Blob/PropertiesPath`|String|省略可能。 プロパティ ファイルの相対パスを指定します。 インポート中に、コピー先 BLOB のプロパティが設定されます。 エクスポート操作中、BLOB のプロパティは、ドライブ上のプロパティ ファイルに格納されます。|  
 |`Blob/PropertiesPath/@Hash`|属性、String|BLOB のプロパティ ファイルの Base16 エンコード MD5 ハッシュを指定します。|  
   
-## <a name="see-also"></a>関連項目  
-[ストレージの Import/Export REST](/rest/api/storageimportexport/)
+## <a name="next-steps"></a>次のステップ
+ 
+* [ストレージの Import/Export REST API](/rest/api/storageimportexport/)
 

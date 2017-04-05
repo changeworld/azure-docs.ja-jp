@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 01/13/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 1a2a08a844f1502d970cb7686d512387263d1d13
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 9a2e9b7809b00ae2b60e152bc240ab2ef775c7bf
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -67,10 +67,7 @@ Windows ベースの HDInsight はクラウドで Hadoop を使用する簡単�
 2. HDInsight ドキュメントに記載された Linux ベース クラスターの作成手順に従ってテスト環境を作成します。 クラスターを作成する前に、 **[オプションの構成]**を選択します。
 3. [オプションの構成] ブレードで、 **[リンクされたストレージ アカウント]**を選択します。
 4. **[ストレージ キーを追加]** を選択し、メッセージが表示されたら、手順 1. で PowerShell スクリプトによって返されたストレージ アカウントを選択します。 各ブレードで **[選択]** をクリックします。 最後に、クラスターを作成します。
-5. クラスターが作成されたら、**SSH** を使用して接続します。 HDInsight での SSH の使用に慣れていない場合は、次のいずれかのドキュメントをご覧ください。
-
-   * [Linux ベースの HDInsight で Windows クライアントから SSH (PuTTY) を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
-   * [Linux ベースの HDInsight で Linux、Unix、OS X、Bash on Windows 10 から SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
+5. クラスターが作成されたら、**SSH** を使用して接続します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 6. SSH セッションで次のコマンドを使用して、リンクされたストレージ アカウントから新しい既定のストレージ アカウントにファイルをコピーします。 CONTAINER を、PowerShell によって返されたコンテナーの情報に置き換えます。 __ACCOUNTNAME__ を、アカウント名に置き換えます。 データへのパスをデータ ファイルへのパスに置き換えます。
 
@@ -109,10 +106,7 @@ Linux ベースの HDInsight クラスターでは **Secure Shell (SSH)** プロ
 
 パスワードを使用するよりも安全であるため、公開キー証明書を使用することをお勧めします。 証明書認証は署名済みの公開キーと秘密キーのペアを生成してから、クラスターの作成時に公開キーを指定することで機能します。 SSH を使用してサーバーに接続するときに、クライアントの秘密キーで接続を認証します。
 
-HDInsight での SSH の使用方法の詳細については、以下を参照してください。
-
-* [Windows から HDInsight で SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
-* [Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
+詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 ### <a name="cluster-customization"></a>クラスターのカスタマイズ
 **スクリプト アクション** は、Bash スクリプトに記述する必要があります。 スクリプト アクションはクラスターの作成時に使用できますが、Linux ベースのクラスターの場合、クラスターの稼働後にカスタマイズを実行する場合にも使用できます。 詳細については、「[Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」および「[HDInsight での Script Action 開発](hdinsight-hadoop-script-actions-linux.md)」をご覧ください。
@@ -151,7 +145,7 @@ Linux クラスターのファイル システムは、Windows ベースの HDIn
 | --- | --- |
 | 構成 |`/etc`」を参照してください。 たとえば、 `/etc/hadoop/conf/core-site.xml` |
 | ログ ファイル |`/var/logs` |
-| Hortonworks Data Platform (HDP) |`/usr/hdp`。ここには&2; つのディレクトリがあります。つまり、現在の HDP バージョンと `current` です。 `current`ディレクトリには、バージョン番号ディレクトリにあるファイルとディレクトリへのシンボリック リンクが含まれています。 バージョン番号は HDP バージョンの更新時に変更されるため、`current` ディレクトリは HDP ファイルにアクセスするための便利な方法として提供されます。 |
+| Hortonworks Data Platform (HDP) |`/usr/hdp`。ここには 2 つのディレクトリがあります。つまり、現在の HDP バージョンと `current` です。 `current`ディレクトリには、バージョン番号ディレクトリにあるファイルとディレクトリへのシンボリック リンクが含まれています。 バージョン番号は HDP バージョンの更新時に変更されるため、`current` ディレクトリは HDP ファイルにアクセスするための便利な方法として提供されます。 |
 | hadoop-streaming.jar |`/usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar` |
 
 通常、ファイル名がわかっている場合は、SSH セッションから次のコマンドを使用してファイル パスを検索することができます。
@@ -220,8 +214,8 @@ Linux クラスター ノードで直接実行されるスクリプトの場合�
       hdfs dfs -put -f script.py wasbs:///path/to/script.py
 
 ## <a name="next-steps"></a>次のステップ
+
 * [Linux ベースの HDInsight クラスターを作成する方法を確認する](hdinsight-hadoop-provision-linux-clusters.md)
-* [Windows クライアントから SSH を使用して Linux ベースのクラスターに接続する](hdinsight-hadoop-linux-use-ssh-windows.md)
-* [Linux、Unix、または Mac クライアントから SSH を使用して Linux ベースのクラスターに接続する](hdinsight-hadoop-linux-use-ssh-unix.md)
+* [SSH を使用して HDInsight に接続する](hdinsight-hadoop-linux-use-ssh-unix.md)
 * [Ambari を使用して Linux ベースのクラスターを管理する](hdinsight-hadoop-manage-ambari.md)
 

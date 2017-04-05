@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: manage
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: f589111d3a4da061e1cc3313632dd0b5403dc278
-ms.openlocfilehash: 56651c2eb2f702b2ec51070b25239f1acb415289
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 548e61004bd95d9e785fea438eb8b81aa63f1739
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -27,8 +29,8 @@ ms.openlocfilehash: 56651c2eb2f702b2ec51070b25239f1acb415289
 > * [PowerShell](sql-data-warehouse-manage-compute-powershell.md)
 > * [REST ()](sql-data-warehouse-manage-compute-rest-api.md)
 > * [TSQL](sql-data-warehouse-manage-compute-tsql.md)
-> 
-> 
+>
+>
 
 <a name="scale-performance-bk"></a>
 <a name="scale-compute-bk"></a>
@@ -68,7 +70,13 @@ POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups
 データベースを開始するには、[データベースの再開][Resume Database] REST API を使います。 次の例では、"Server01" という名前のサーバーにホストされている "Database02" という名前のデータベースが開始されます。 サーバーは "ResourceGroup1" という名前の Asure リソース グループ内にあります。 
 
 ```
-POST https://management.azure.com/subscriptions{subscription-id}/resourceGroups/ResourceGroup1/providers/Microsoft.Sql/servers/Server01/databases/Database02/resume?api-version=2014-04-01-preview HTTP/1.1
+POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/ResourceGroup1/providers/Microsoft.Sql/servers/Server01/databases/Database02/resume?api-version=2014-04-01-preview HTTP/1.1
+```
+
+## <a name="check-database-state"></a>データベース状態のチェック
+
+```json
+GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}?api-version=2014-04-01 HTTP/1.1
 ```
 
 <a name="next-steps-bk"></a>
@@ -90,9 +98,4 @@ POST https://management.azure.com/subscriptions{subscription-id}/resourceGroups/
 <!--Other Web references-->
 
 [Azure portal]: http://portal.azure.com/
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 1d0136b044f6049e59fa09d824cf244cac703c45
-ms.openlocfilehash: 024d51df18405e0657b493976674fd23a99060a9
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 9c539f5885a5014f98ccc1083c93daa4eee3646c
+ms.lasthandoff: 03/28/2017
 
 ---
 
@@ -28,9 +28,9 @@ ms.lasthandoff: 02/23/2017
 > - [CLI](network-watcher-security-group-view-cli.md)
 > - [REST API](network-watcher-security-group-view-rest.md)
 
-セキュリティ グループ ビューは、仮想マシンに適用される構成済みで効果的なネットワーク セキュリティ規則を返します。 この機能は、ネットワーク セキュリティ グループおよび VM に構成されている規則を監査および診断して、トラフィックが正常に許可または拒否されていることを確認する際に役立ちます。 この記事では、Azure CLI を使用して、構成済みで効果的なセキュリティ規則を仮想マシン用に取得する方法を説明します。
+セキュリティ グループ ビューは、仮想マシンに適用される構成済みの効果的なネットワーク セキュリティ規則を返します。 この機能は、ネットワーク セキュリティ グループおよび VM に構成されている規則を監査および診断して、トラフィックが正常に許可または拒否されていることを確認する際に役立ちます。 この記事では、Azure CLI を使用して、構成済みで効果的なセキュリティ規則を仮想マシン用に取得する方法を説明します。
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
+この記事では、Windows、Mac、Linux で使用できるクロスプラット フォーム Azure CLI 1.0 を使います。 Network Watcher では、CLI サポートの Azure CLI 1.0 が使用されています。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -64,7 +64,7 @@ azure network watcher security-group-view -g resourceGroupName -n networkWatcher
 
 ## <a name="viewing-the-results"></a>結果の表示
 
-次の例は、返された結果の応答を短縮したものです。 この結果では、仮想マシン上の効果的で適用されたセキュリティ規則のすべてが **NetworkInterfaceSecurityRules**、**DefaultSecurityRules**、および **EffectiveSecurityRules** のグループに細分化して示されています。
+次の例は、返された結果の応答を短縮したものです。 この結果には、仮想マシンに適用される効果的なセキュリティ規則のすべてが **NetworkInterfaceSecurityRules**、**DefaultSecurityRules**、**EffectiveSecurityRules** の各グループに細分化されて示されています。
 
 ```json
 {

@@ -9,6 +9,7 @@ tags: azure-portal
 documentationcenter: 
 ms.assetid: cdc7d1b4-15d7-4d4d-a13f-c7d3a694b4fb
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,9 +17,9 @@ ms.topic: article
 ms.date: 03/02/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: fd30c5befb378a031e818c29e9bde72c1105bf78
-ms.openlocfilehash: ac7e47835b0ae4fee724c18df949cedfc3a16957
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: ff1013840c220c54a9120572d16946ab6c5c5b07
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -64,7 +65,7 @@ Linux ベースの HDInsight クラスターに空のエッジ ノードを追�
 エッジ ノードを作成した後、SSH を使用してエッジ ノードに接続し、クライアント ツールを実行して HDInsight の Hadoop クラスターにアクセスすることができます。
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>既存のクラスターにエッジ ノードを追加する
-このセクションでは、Resource Manager テンプレートを使用して既存の HDInsight クラスターにエッジ ノードを追加します。  Resource Manager テンプレートは、[GitHub](https://github.com/hdinsight/Iaas-Applications/tree/master/EmptyNode)にあります。 Resource Manager テンプレートは、https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/EmptyNode/scripts/EmptyNodeSetup.sh にあるスクリプト アクションのスクリプトを呼び出します。 このスクリプトでは操作は実行されません。  これは、Resource Manager テンプレートからのスクリプト アクションの呼び出しを説明するためのものです。
+このセクションでは、Resource Manager テンプレートを使用して既存の HDInsight クラスターにエッジ ノードを追加します。  Resource Manager テンプレートは、 [GitHub](https://github.com/hdinsight/Iaas-Applications/tree/master/EmptyNode)にあります。 Resource Manager テンプレートは、https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/EmptyNode/scripts/EmptyNodeSetup.sh にあるスクリプト アクションのスクリプトを呼び出します。 このスクリプトでは操作は実行されません。  これは、Resource Manager テンプレートからのスクリプト アクションの呼び出しを説明するためのものです。
 
 **既存のクラスターに空のエッジ ノードを追加するには**
 
@@ -120,7 +121,8 @@ Linux ベースの HDInsight クラスターに空のエッジ ノードを追�
 
 **エッジ ノードで Hive を使用するには**
 
-1. SSH を使用してエッジ ノードに接続します。  「[Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)」または「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)」を参照してください。
+1. SSH を使用してエッジ ノードに接続します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+
 2. SSH を使用してエッジ ノードに接続したら、次のコマンドを使用して Hive コンソールを開きます。
    
         hive
