@@ -26,7 +26,7 @@ VM 拡張機能では、パスワードのリセットや RDP の構成などの
 | **CentosChefClient** | | |
 | **ChefClient** |Windows 上で Chef クライアントを作成します (以下の DSC 拡張機能も使用できます)。 |[Chef と Microsoft Azure に関するページ](https://www.getchef.com/solutions/azure/) |
 | **LinuxChefClient** | | |
-| **DockerExtension** |リモートの Docker コマンドをサポートする Docker デーモンをインストールします。 |[Docker 仮想マシン拡張機能の使用方法](../articles/virtual-machines/virtual-machines-linux-dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)詳細については、[Docker VM 拡張機能ユーザー ガイド](https://github.com/Azure/azure-docker-extension/blob/master/README.md)を参照してください。 |
+| **DockerExtension** |リモートの Docker コマンドをサポートする Docker デーモンをインストールします。 |[Docker 仮想マシン拡張機能の使用方法](../articles/virtual-machines/linux/dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)詳細については、[Docker VM 拡張機能ユーザー ガイド](https://github.com/Azure/azure-docker-extension/blob/master/README.md)を参照してください。 |
 | **DSC** |PowerShell DSC (必要な状態の構成) 拡張機能。 |[Azure PowerShell DSC (Desired State Configuration) extension (Azure PowerShell DSC (必要な状態の構成) 拡張機能)](http://blogs.msdn.com/b/powershell/archive/2014/08/07/introducing-the-azure-powershell-dsc-desired-state-configuration-extension.aspx) |
 | **PuppetEnterpriseAgent** |Puppet Enterprise の機能を実装します。 |[Puppet on Azure (Azure で Puppet を使用する)](http://puppetlabs.com/solutions/microsoft) |
 | **CustomScriptExtension** (Windows)**CustomScriptForLinux** (Linux) |任意のタイミング (スタートアップ時または有効期間中) に VM でカスタム スクリプトを呼び出します。 |[カスタム スクリプト拡張機能](../articles/virtual-machines/windows/classic/extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) |
@@ -49,7 +49,7 @@ VM 拡張機能では、パスワードのリセットや RDP の構成などの
 
 | **VM 拡張機能の名前** | 機能の説明 | 詳細情報 |
 | --- | --- | --- |
-| **AzureVmLogCollector** |VM にリモートでログオンすることなく、オンデマンドで **AzureVMLogCollector** 拡張機能を使用し、1 つ以上のクラウド サービス VM (Web ロールと worker ロールの両方) のログを一度に収集して、収集したファイルを Azure ストレージ アカウントに転送することができます。 |[AzureLogCollector 拡張機能](../articles/virtual-machines/virtual-machines-windows-log-collector-extension.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
+| **AzureVmLogCollector** |VM にリモートでログオンすることなく、オンデマンドで **AzureVMLogCollector** 拡張機能を使用し、1 つ以上のクラウド サービス VM (Web ロールと worker ロールの両方) のログを一度に収集して、収集したファイルを Azure ストレージ アカウントに転送することができます。 |[AzureLogCollector 拡張機能](../articles/virtual-machines/windows/log-collector-extension.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
 | **IaaSDiagnostics** |Azure 診断を有効化、無効化、および構成します。また、SAP 監視のサポートのために **AzureCATExtensionHandler** によっても使用されます。 |[Microsoft Azure Virtual Machine Monitoring with Azure Diagnostics Extension (Azure 診断の拡張機能を使用した Microsoft Azure の仮想マシンの監視)](https://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
 | **OSPatchingForLinux** |Azure VM 管理者を有効にして、カスタマイズされた構成での VM OS の更新を自動化します。 OSPatching 拡張機能を使用すると、OS パッチをインストールする頻度と時期の指定、インストールするパッチの指定、および更新後の再起動動作の構成など、仮想マシンの OS の更新を構成できます。 |[OS Patching 拡張機能に関するブログ投稿](https://azure.microsoft.com/blog/2014/10/23/automate-linux-vm-os-updates-using-ospatching-extension/)。 GitHub の「 [OS Patching Extension](https://github.com/Azure/azure-linux-extensions)」(OS Patching 拡張機能) にある readme およびソースも参照してください。 |
 
@@ -72,5 +72,5 @@ VM 拡張機能では、パスワードのリセットや RDP の構成などの
 | VM 拡張機能の名前 | 機能の説明 | 詳細情報 |
 | --- | --- | --- |
 | **BGInfo** |RDP の使用時に、有用なサーバー情報を統合した図をデスクトップに表示します。 |[BGInfo 拡張機能](https://msdn.microsoft.com/library/mt589195.aspx) |
-| **HpcVmDrivers** |Windows Server 2012 R2 または Windows Server 2012 を実行しているサイズが A8 または A9 の VM で、リモート ダイレクト メモリ アクセス (RDMA) ネットワーク デバイスのドライバーのインストール、構成、管理を行います。 クラスター化された A8 または A9 の VM で、並列 MPI アプリケーション の実行中に RDMA ネットワークを使用できるようになります。 |[A8、A9、A10、A11 コンピューティング集中型インスタンスについて](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
+| **HpcVmDrivers** |Windows Server 2012 R2 または Windows Server 2012 を実行しているサイズが A8 または A9 の VM で、リモート ダイレクト メモリ アクセス (RDMA) ネットワーク デバイスのドライバーのインストール、構成、管理を行います。 クラスター化された A8 または A9 の VM で、並列 MPI アプリケーション の実行中に RDMA ネットワークを使用できるようになります。 |[A8、A9、A10、A11 コンピューティング集中型インスタンスについて](../articles/virtual-machines/windows/a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
 

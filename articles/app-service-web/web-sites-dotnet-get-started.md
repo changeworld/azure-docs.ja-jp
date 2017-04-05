@@ -3,7 +3,7 @@ title: "Visual Studio を使用した Azure への ASP.NET アプリのデプロ
 description: "Visual Studio を使用して ASP.NET Web プロジェクトを Azure App Service の新しい Web アプリにデプロイする方法について説明します。"
 services: app-service\web
 documentationcenter: .net
-author: tdykstra
+author: cephalin
 manager: erikre
 editor: 
 ms.assetid: 69759e3c-384c-4afb-9278-db6724f6cb74
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: get-started-article
 ms.date: 12/16/2016
-ms.author: rachelap
+ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 9b7e0b429575d080819f25e04d492a2b09d4d63a
-ms.openlocfilehash: 946552d1b268c6e70a9e8fcd4c40bd6e2ab76178
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
+ms.openlocfilehash: 93107d19e1814b30d69fc12c92b544d9760bda6a
+ms.lasthandoff: 04/04/2017
 
 
 ---
@@ -50,13 +50,13 @@ Azure SDK for .NET のインストールに必要な時間は別にして、こ�
   
     Azure アカウントにサインアップする前に Azure App Service を開始する場合は、[App Service の試用](https://azure.microsoft.com/try/app-service/)に関するページにアクセスしてください。 有効期間が短いスターター アプリを App Service で作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-## <a name="a-namesetupdevenvaset-up-the-development-environment"></a><a name="setupdevenv"></a>開発環境の設定
+## <a name="setupdevenv"></a>開発環境の設定
 このチュートリアルは、Visual Studio 2015 と [Azure SDK for .NET](../dotnet-sdk.md) 2.9 以降向けに書かれています。 
 
 * [最新の Azure SDK for Visual Studio 2015 はここからダウンロードしてください](http://go.microsoft.com/fwlink/?linkid=518003)。 Visual Studio 2015 をまだインストールしていない場合は、SDK によってインストールされます。
   
   > [!NOTE]
-  > マシンに既にある SDK の依存関係の数に応じて、SDK のインストールには長時間 (数分から&30; 分以上) かかる場合があります。
+  > マシンに既にある SDK の依存関係の数に応じて、SDK のインストールには長時間 (数分から 30 分以上) かかる場合があります。
   > 
   > 
 
@@ -130,7 +130,7 @@ Visual Studio 2013 を持っていて、それを使用する場合は、 [最�
 9. **[App Service の作成]** ダイアログ ボックスで、**[作成]** をクリックします。
 
 ## <a name="inspect-the-azure-resources-in-visual-studio"></a>Visual Studio での Azure リソースの確認
-ごく短時間で (通常は&1; 分未満)、Visual Studio によって Web プロジェクトと Web アプリが作成されます。  
+ごく短時間で (通常は 1 分未満)、Visual Studio によって Web プロジェクトと Web アプリが作成されます。  
 
 **[ソリューション エクスプローラー]** ウィンドウには、新しいプロジェクトのファイルとフォルダーが表示されます
 
@@ -171,7 +171,7 @@ Visual Studio 2013 を持っていて、それを使用する場合は、 [最�
    
    ![Web の発行ウィザードの [プレビュー] タブ](./media/web-sites-dotnet-get-started/GS13previewoutput.png)
    
-   **[発行]**をクリックすると、Visual Studio で Azure サーバーにファイルをコピーする処理が開始されます。 これには&1; ～&2; 分ほどかかることがあります。
+   **[発行]**をクリックすると、Visual Studio で Azure サーバーにファイルをコピーする処理が開始されます。 これには 1 ～ 2 分ほどかかることがあります。
    
    **[出力]** ウィンドウと **[Azure App Service アクティビティ]** ウィンドウでは、実行されたデプロイ操作が表示され、デプロイが問題なく完了したことが報告されます。
    
@@ -182,15 +182,13 @@ Visual Studio 2013 を持っていて、それを使用する場合は、 [最�
    ![Azure で実行されている Web アプリ](./media/web-sites-dotnet-get-started/GS13deployedsite.png)
    
    > [!TIP]
-   > **[Web の&1; クリック発行]** ツール バーを有効にすると、簡単にデプロイできるようになります。 **[表示]、[ツール バー]** の順にクリックし、**[Web の&1; クリック発行]** を選択します。 このツール バーを使用すると、プロファイルを選択できるほか、ボタンをクリックして発行したり、ボタンをクリックして **Web の発行** ウィザードを開いたりできます。
-   > ![[Web の&1; クリック発行] ツール バー](./media/web-sites-dotnet-get-started/weboneclickpublish.png)
+   > **[Web の 1 クリック発行]** ツール バーを有効にすると、簡単にデプロイできるようになります。 **[表示]、[ツール バー]** の順にクリックし、**[Web の 1 クリック発行]** を選択します。 このツール バーを使用すると、プロファイルを選択できるほか、ボタンをクリックして発行したり、ボタンをクリックして **Web の発行** ウィザードを開いたりできます。
+   > ![[Web の 1 クリック発行] ツール バー](./media/web-sites-dotnet-get-started/weboneclickpublish.png)
    > 
    > 
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 このチュートリアルの手順を行う際に問題が発生した場合は、必ず最新バージョンの Azure SDK for .NET を使用するようにしてください。 そのための最も簡単な方法は、 [Azure SDK for Visual Studio 2015 をダウンロード](http://go.microsoft.com/fwlink/?linkid=518003)することです。 最新バージョンをインストール済みの場合は、Web Platform Installer によってインストールが不要であることが示されます。
-
-企業ネットワークを使用しており、ファイアウォールを介して Azure App Service にデプロイしようとしている場合は、Web デプロイのためにポート 443 と 8172 を開いてください。 これらのポートを開くことができない場合は、次の「次のステップ」セクションで、その他のデプロイ オプションについて確認してください。
 
 ASP.NET Web アプリが Azure App Service で動作するようになったら、トラブルシューティングを容易にする Visual Studio の機能についてさらに学習できます。 ログ記録、リモート デバッグなどの詳細については、[Visual Studio での Azure Web アプリのトラブルシューティング](web-sites-dotnet-troubleshoot-visual-studio.md)に関する記事を参照してください。
 

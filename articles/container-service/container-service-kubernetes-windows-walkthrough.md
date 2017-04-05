@@ -18,9 +18,9 @@ ms.date: 03/20/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: c43648dae95d90d0ee9f3d6b5bedfad7ab4889ca
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: eb3af43b8a13eaaebfa9147848383ff889119d97
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/22/2017
 
 
 
-次の図は、1 つの Linux マスター ノードと&2; つの Windows エージェント ノードを含む、Azure Container Service の Kubernetes クラスターのアーキテクチャを示しています。 
+次の図は、1 つの Linux マスター ノードと 2 つの Windows エージェント ノードを含む、Azure Container Service の Kubernetes クラスターのアーキテクチャを示しています。 
 
 * Linux マスターは Kubernetes REST API を提供し、ポート 22 の SSH またはポート 443 の `kubectl` でアクセスできます。 
 * Windows エージェント ノードは、Azure 可用性セットにグループ化され、コンテナーを実行します。 Windows ノードには、マスター ノードを介して RDP SSH トンネル経由でアクセスできます。 Azure Load Balancer ルールは、公開されているサービスに応じてクラスターに動的に追加されます。
@@ -49,7 +49,7 @@ ms.lasthandoff: 03/22/2017
 ## <a name="prerequisites"></a>前提条件
 
 
-* **SSH RSA 公開キー**: ポータルまたはいずれかの Azure クイックスタート テンプレートを通じてデプロイする場合は、Azure Container Service 仮想マシンに対する認証のための SSH RSA 公開キーを指定する必要があります。 Secure Shell (SSH) RSA キーを作成するには、[OS X と Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) または [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md) のガイダンスを参照してください。 
+* **SSH RSA 公開キー**: ポータルまたはいずれかの Azure クイックスタート テンプレートを通じてデプロイする場合は、Azure Container Service 仮想マシンに対する認証のための SSH RSA 公開キーを指定する必要があります。 Secure Shell (SSH) RSA キーを作成するには、[OS X と Linux](../virtual-machines/linux/mac-create-ssh-keys.md) または [Windows](../virtual-machines/linux/ssh-from-windows.md) のガイダンスを参照してください。 
 
 * **サービス プリンシパル クライアント ID とシークレット**: 詳細とガイダンスについては、[Kubernetes クラスターのサービス プリンシパル](container-service-kubernetes-service-principal.md)に関するページをご覧ください。
 
@@ -173,7 +173,7 @@ Windows では、さまざまな方法で SSH トンネルを作成できます�
 
 2. アプリケーションを実行します。
 
-3. ホスト名を入力します。ホスト名は、クラスター管理者のユーザー名とクラスターの第&1; マスターのパブリック DNS 名で構成されます。 **[ホスト名]** は `adminuser@PublicDNSName` のようになります。 **[ポート]** に「22」と入力します。
+3. ホスト名を入力します。ホスト名は、クラスター管理者のユーザー名とクラスターの第 1 マスターのパブリック DNS 名で構成されます。 **[ホスト名]** は `adminuser@PublicDNSName` のようになります。 **[ポート]** に「22」と入力します。
 
   ![PuTTY configuration 1](media/container-service-kubernetes-windows-walkthrough/putty1.png)
 

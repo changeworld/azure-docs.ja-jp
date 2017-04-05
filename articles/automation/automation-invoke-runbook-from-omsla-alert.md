@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 01/31/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 8460ed6be3e922fb85f46982662d44eed21dda7c
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: 81cf490eae7f283c0180875cb3a2ed2ffe6333c8
+ms.lasthandoff: 03/29/2017
 
 ---
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 03/18/2017
 
 結果が特定の条件 (プロセッサ使用率の長期的なスパイクなど) に一致した場合やビジネス アプリケーションの機能にとって重要な特定のアプリケーション プロセスが失敗し、対応するイベントを Windows イベント ログに書き込んだ場合にアラート レコードを作成するように Log Analytics でアラートを構成すると、そのアラートは、問題を自動修復しようとして Automation Runbook を自動的に実行できます。  
 
-アラートを構成するときに Runbook を呼び出すオプションは&2; つあります。  具体的には次のとおりです。
+アラートを構成するときに Runbook を呼び出すオプションは 2 つあります。  具体的には次のとおりです。
 
 1. webhook を使用する。
    * これは、OMS ワークスペースが Automation アカウントにリンクされていない場合に使用できる唯一のオプションです。
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/18/2017
 
 ## <a name="calling-a-runbook-using-a-webhook"></a>webhook を使用して Runbook を呼び出す
 
-webhook を使用することにより、単一の HTTP 要求を通して Azure Automation で特定の Runbook を開始することができます。  アラート アクションとして webhook を使用して Runbook を呼び出すように [Log Analytics アラート](../log-analytics/log-analytics-alerts.md#creating-alert-rules)を構成する前に、まず、この方法を使用して呼び出される Runbook 用に webhook を作成する必要があります。  [webhook の作成](automation-webhooks.md#creating-a-webhook)に関する記事の手順を確認して従い、アラート ルールの構成時に参照できるように webhook URL を忘れずに記録しておいてください。   
+webhook を使用することにより、単一の HTTP 要求を通して Azure Automation で特定の Runbook を開始することができます。  アラート アクションとして webhook を使用して Runbook を呼び出すように [Log Analytics アラート](../log-analytics/log-analytics-alerts.md#alert-rules)を構成する前に、まず、この方法を使用して呼び出される Runbook 用に webhook を作成する必要があります。  [webhook の作成](automation-webhooks.md#creating-a-webhook)に関する記事の手順を確認して従い、アラート ルールの構成時に参照できるように webhook URL を忘れずに記録しておいてください。   
 
 ## <a name="calling-a-runbook-directly"></a>直接 Runbook を呼び出す
 
@@ -44,7 +44,7 @@ OMS ワークスペースで Automation & Control サービスをインストー
 
 ## <a name="characteristics-of-a-runbook-for-both-options"></a>Runbook の特性 (両方のオプションに該当)
 
-Log Analytics アラートから Runbook を呼び出す&2; つの方法には、アラート ルールを構成する前に理解しておく必要があるさまざまな動作の特性があります。  
+Log Analytics アラートから Runbook を呼び出す 2 つの方法には、アラート ルールを構成する前に理解しておく必要があるさまざまな動作の特性があります。  
 
 * **Object** 型の **WebhookData** という Runbook 入力パラメーターが必要です。  これには必須と任意があります。  アラートは、この入力パラメーターを使用して検索結果を Runbook に渡します。
 
@@ -73,9 +73,9 @@ Log Analytics アラートから Runbook を呼び出す&2; つの方法には�
 
 ここでは、次のグラフィカルな Runbook の例を使用してこのしくみを説明します。この Runbook は Windows サービスを開始します。<br><br> ![Windows サービスのグラフィカルな Runbook の開始](media/automation-invoke-runbook-from-omsla-alert/automation-runbook-restartservice.png)<br>
 
-Runbook には、**WebhookData** という **Object** 型の入力パラメーターが&1; つあり、*.SearchResults* を含むアラートから渡された webhook データが含まれています。<br><br> ![Runbook の入力パラメーター](media/automation-invoke-runbook-from-omsla-alert/automation-runbook-restartservice-inputparameter.png)<br>
+Runbook には、**WebhookData** という **Object** 型の入力パラメーターが 1 つあり、*.SearchResults* を含むアラートから渡された webhook データが含まれています。<br><br> ![Runbook の入力パラメーター](media/automation-invoke-runbook-from-omsla-alert/automation-runbook-restartservice-inputparameter.png)<br>
 
-この例では、Log Analytics で、2 つのカスタム フィールド (*SvcDisplayName_CF* と *SvcState_CF*) を作成し、システム イベント ログに書き込まれたイベントからサービスの表示名と状態 (つまり、実行中や停止済み) を抽出します。  その後、Windows システムで印刷スプーラー サービスが停止したときに検出できるように `Type=Event SvcDisplayName_CF="Print Spooler" SvcState_CF="stopped"` 検索クエリを含むアラート ルールを作成します。  これは関心のあるサービスならどれでもかまいませんが、この例では、Windows OS に付属している既存のサービスの&1; つを参照しています。  アラート アクションは、この例で使用されている Runbook を実行し、Hybrid Runbook Worker で動作するように構成されています。これは、ターゲット システムで有効になっています。   
+この例では、Log Analytics で、2 つのカスタム フィールド (*SvcDisplayName_CF* と *SvcState_CF*) を作成し、システム イベント ログに書き込まれたイベントからサービスの表示名と状態 (つまり、実行中や停止済み) を抽出します。  その後、Windows システムで印刷スプーラー サービスが停止したときに検出できるように `Type=Event SvcDisplayName_CF="Print Spooler" SvcState_CF="stopped"` 検索クエリを含むアラート ルールを作成します。  これは関心のあるサービスならどれでもかまいませんが、この例では、Windows OS に付属している既存のサービスの 1 つを参照しています。  アラート アクションは、この例で使用されている Runbook を実行し、Hybrid Runbook Worker で動作するように構成されています。これは、ターゲット システムで有効になっています。   
 
 Runbook コード アクティビティ **Get Service Name from LA** は、JSON 形式の文字列をオブジェクトの種類に変換し、項目 *SvcDisplayName_CF* をフィルター処理して Windows サービスの表示名を抽出し、これを次のアクティビティに渡します。次のアクティビティは、このサービスが停止していることを確認してから、サービスの再開を試みます。  *SvcDisplayName_CF* は、この例を説明するために Log Analytics に作成された[カスタム フィールド](../log-analytics/log-analytics-custom-fields.md)です。
 

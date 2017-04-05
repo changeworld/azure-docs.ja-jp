@@ -140,7 +140,7 @@ BLOB の最大サイズは 1024 ギガバイト (GB) で、それには VHD フ�
 ### <a name="striped-disks"></a>ストライピングされたディスク
 データ ディスクにストライピングを使用すると、1023 GB より大きいディスクを作成できるだけでなく、多くの場合に複数の BLOB で単一ボリュームのストレージをバックアップできるので、パフォーマンスが向上します。 ストライピングにより、単一の論理ディスクのデータを読み書きするのに必要な I/O が並列化されます。
 
-Azure では、仮想マシンのサイズにより、使用できるデータ ディスクの量と帯域幅が制限されます。 詳細については、「 [仮想マシンのサイズ](../articles/virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
+Azure では、仮想マシンのサイズにより、使用できるデータ ディスクの量と帯域幅が制限されます。 詳細については、「 [仮想マシンのサイズ](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
 Azure データ ディスクにディスク ストライピングを使用する場合は、次のガイドラインを考慮してください。
 
@@ -390,16 +390,11 @@ Contoso は、Azure Virtual Machines に対して次の名前を決定しまし�
 ## <a name="additional-resources"></a>その他のリソース
 [Microsoft Azure サブスクリプションとサービスの制限、クォータ、制約](../articles/azure-subscription-service-limits.md#storage-limits)
 
-[仮想マシンのサイズ](../articles/virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+[仮想マシンのサイズ](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../articles/storage/storage-scalability-targets.md)
 
 [データセンター拡張機能の参照アーキテクチャの図](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84)
 
 [Azure リソース マネージャーにおける Azure Compute、ネットワーク、ストレージ プロバイダー](../articles/virtual-machines/virtual-machines-windows-compare-deployment-models.md)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

@@ -84,7 +84,7 @@ Site Recovery を使用して、リージョン間または同じリージョン
   
   構成サーバーとして使用している VM で統合セットアップを実行して、構成サーバーとプロセス サーバーをインストールします。 インストールを完了するための手順は、[こちらのページ](../site-recovery/site-recovery-vmware-to-azure.md#set-up-the-source-environment)のスクリーンショットで確認できます。 この移行シナリオ用の手順については、以降のスクリーンショットを参照してください。
 
-  **[開始する前に]** で **[Install the configuration server and process server] (構成サーバーとプロセス サーバーをインストールする)** を選択します。
+  **[開始する前に]** で **[Install the configuration server and process server] \(構成サーバーとプロセス サーバーをインストールする)** を選択します。
   
   ![][6]
 

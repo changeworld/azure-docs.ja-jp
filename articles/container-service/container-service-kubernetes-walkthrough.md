@@ -18,9 +18,9 @@ ms.date: 03/01/2017
 ms.author: anhowe
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: d342e21e8e0bd78b713f3a6b2f7b3c319185eb43
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: e4f47341554e2de514c8be2f5c85983d09bbb760
+ms.lasthandoff: 04/03/2017
 
 ---
 
@@ -29,12 +29,12 @@ ms.lasthandoff: 03/22/2017
 
 この記事では、Azure CLI 2.0 コマンドを使用して Kubernetes クラスターを作成する方法について説明します。 その後、`kubectl` コマンド ライン ツールを使用して、クラスター内のコンテナーの操作を開始します。
 
-次の図は、1 つのマスターと&2; つのエージェントを含むコンテナー サービス クラスターのアーキテクチャを示します。 マスターは Kubernetes REST API を提供します。 エージェント ノードは、Azure 可用性セットにグループ化され、コンテナーを実行します。 すべての VM は同一のプライベート仮想ネットワーク内にあり、完全な相互アクセスが可能です。
+次の図は、1 つのマスターと 2 つのエージェントを含むコンテナー サービス クラスターのアーキテクチャを示します。 マスターは Kubernetes REST API を提供します。 エージェント ノードは、Azure 可用性セットにグループ化され、コンテナーを実行します。 すべての VM は同一のプライベート仮想ネットワーク内にあり、完全な相互アクセスが可能です。
 
 ![Azure 上の Kubernetes クラスターの図](media/container-service-kubernetes-walkthrough/kubernetes.png)
 
 ## <a name="prerequisites"></a>前提条件
-このチュートリアルは、[Azure CLI v.2.0](/cli/azure/install-az-cli2) のインストールとセットアップが完了していることを前提としています。 また、`~/.ssh/id_rsa.pub` に SSH RSA 公開キーが存在している必要もあります。 このキーがない場合は、[OS X と Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) または [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md) 用の手順を参照してください。
+このチュートリアルは、[Azure CLI v.2.0](/cli/azure/install-az-cli2) のインストールとセットアップが完了していることを前提としています。 また、`~/.ssh/id_rsa.pub` に SSH RSA 公開キーが存在している必要もあります。 このキーがない場合は、[OS X と Linux](../virtual-machines/linux/mac-create-ssh-keys.md) または [Windows](../virtual-machines/linux/ssh-from-windows.md) 用の手順を参照してください。
 
 
 
