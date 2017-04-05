@@ -46,6 +46,9 @@
 ### [Scheduler](active-directory-aadconnectsync-feature-scheduler.md)
 ### [ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md)
 
+### [Azure AD Sync のサービス アカウント パスワードの変更](active-directory-aadconnectsync-change-serviceacct-pass.md)
+### [AD のごみ箱の有効化](active-directory-aadconnectsync-recycle-bin.md)
+
 ### [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md)
 #### [操作](active-directory-aadconnectsync-service-manager-ui-operations.md)
 #### [コネクタ](active-directory-aadconnectsync-service-manager-ui-connectors.md)

@@ -46,11 +46,12 @@
 ### [セキュリティに関する考慮事項](best-practices-resource-manager-security.md)
 ## リソース ポリシーの設定
 ### [リソース ポリシーとは](resource-manager-policy.md)
-### [リソース ポリシーの割り当てと管理](resource-manager-policy-create-assign.md)
+### [ポータルでポリシーを割り当てる](resource-manager-policy-portal.md)
+### [ポリシーの割り当てのスクリプトを作成する](resource-manager-policy-create-assign.md)
 ### [リソースのタグ ポリシー](resource-manager-policy-tags.md)
 ### [ストレージのポリシー](resource-manager-policy-storage.md)
-### [Linux VM のポリシー](../virtual-machines/virtual-machines-linux-policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [Windows VM のポリシー](../virtual-machines/virtual-machines-windows-policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [Linux VM のポリシー](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [Windows VM のポリシー](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ## 監査とトラブルシューティング
 ### [一般的なデプロイ エラーのトラブルシューティング](resource-manager-common-deployment-errors.md)
 ### [アクティビティ ログを表示する](resource-group-audit.md)

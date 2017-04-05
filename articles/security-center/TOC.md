@@ -30,8 +30,8 @@
 #### [NGFW 経由に限定したトラフィックのルーティング](security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only)
 
 ### [SQL サービスの推奨事項](security-center-sql-service-recommendations.md)
-#### [Enable auditing on SQL databases](security-center-enable-auditing-on-sql-databases.md)
-#### [Enable auditing on SQL servers](security-center-enable-auditing-on-sql-servers.md)
+#### [SQL データベースの監査と脅威検出を有効にする](security-center-enable-auditing-on-sql-databases.md)
+#### [SQL サーバーの監査と脅威検出を有効にする](security-center-enable-auditing-on-sql-servers.md)
 #### [Transparent Data Encryption を有効にする](security-center-enable-transparent-data-encryption.md)
 
 ### [仮想マシンの推奨事項](security-center-virtual-machine-recommendations.md)
@@ -74,8 +74,3 @@
 ## [サービスの概要](https://azure.microsoft.com/services/security-center/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=security-center)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=security-center)
-
-
-<!--HONumber=Feb17_HO1-->
-
-

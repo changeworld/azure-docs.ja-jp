@@ -33,8 +33,7 @@
 ### [複合データ型をモデル化する](search-howto-complex-data-types.md)
 ## 管理
 ### Azure Search を管理する
-#### [Azure Portal](search-manage.md)
-#### [REST](search-get-started-management-api.md)
+#### [Azure ポータル](search-manage.md)
 #### [PowerShell](search-manage-powershell.md)
 ### [使用状況と統計情報を監視する](search-monitor-usage.md)
 ### [検索トラフィックの分析](search-traffic-analytics.md)
@@ -85,8 +84,3 @@
 ### [フォーラム](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureSearch)
 ### [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-search)
 ### [Azure Search GitHub](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

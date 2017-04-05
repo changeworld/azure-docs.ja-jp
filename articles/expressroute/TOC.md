@@ -23,17 +23,11 @@
 ## ピアリング構成の作成と変更
 ### [Azure ポータル](expressroute-howto-routing-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-routing-arm.md)
-### [PowerShell (クラシック)](expressroute-howto-routing-classic.md)
 ## ExpressRoute 回線への仮想ネットワークのリンク
 ### [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-linkvnet-arm.md)
-### [PowerShell (クラシック)](expressroute-howto-linkvnet-classic.md)
-## ExpressRoute の仮想ネットワーク ゲートウェイを構成する
-### [PowerShell](expressroute-howto-add-gateway-resource-manager.md)
-### [PowerShell (クラシック)](expressroute-howto-add-gateway-classic.md)
-## 共存するサイト間 VPN Gateway 接続と ExpressRoute 接続を作成する
-### [PowerShell](expressroute-howto-coexist-resource-manager.md)
-### [PowerShell (クラシック)](expressroute-howto-coexist-classic.md)
+## [ExpressRoute の仮想ネットワーク ゲートウェイを構成する](expressroute-howto-add-gateway-resource-manager.md)
+## [ExpressRoute 接続とサイト間接続の共存を構成する](expressroute-howto-coexist-resource-manager.md)
 ## [回線をクラシックから Resource Manager に移行する](expressroute-howto-move-arm.md)
 ## ExpressRoute のルーターの構成
 ### [ルーターの構成](expressroute-config-samples-routing.md)

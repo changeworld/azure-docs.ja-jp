@@ -33,6 +33,8 @@
 ### [Azure Security Center](../security-center/security-center-intro.md?toc=%2fazure%2fsecurity%2ftoc.json)
 ### [Azure ログ統合の概要](security-azure-log-integration-overview.md)
 #### [Azure ログ統合の使用](security-azure-log-integration-get-started.md)
+#### [Azure Active Directory の監査ログの統合](security-azure-log-integration-ad.md)
+#### [Security Center のアラートの統合](security-azure-log-integration-security-center.md)
 #### [FAQ](security-azure-log-integration-faq.md)
 
 ## ID 管理
