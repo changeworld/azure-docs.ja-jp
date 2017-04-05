@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: 276b1bcebbe3c32d6fead8ee240dd1ddfb01c872
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 12811b5cbfc6072075395d8542b79d10d2873286
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -30,9 +30,9 @@ ms.lasthandoff: 03/22/2017
 > * [テンプレート](virtual-network-deploy-static-pip-arm-template.md)
 > * [PowerShell (クラシック)](virtual-networks-reserved-public-ip.md)
 
-Azure での IP アドレスは、動的と予約済みという 2 つのカテゴリに分類されます。 Azure で管理されるパブリック IP アドレスは、既定では動的です。 これは、特定のクラウド サービス (VIP) に使用される IP アドレス、または VM やロール インスタンスへの直接アクセスに使用される IP アドレスが、リソースがシャット ダウンまたは割り当て解除された場合に変更される場合があるということです。
+Azure での IP アドレスは、動的と予約済みという 2 つのカテゴリに分類されます。 Azure で管理されるパブリック IP アドレスは、既定では動的です。 これは、リソースがシャットダウンまたは停止 (割り当て解除) されたときに、特定のクラウド サービスに使用される IP アドレス (VIP)、または VM やロール インスタンスへの直接アクセスに使用される IP アドレス (ILPIP) が変更される場合があるということです。
 
-IP アドレスが変更されないようにするには、IP アドレスを予約します。 予約済み IP は VIP としてのみ使用できるため、リソースがシャット ダウンしたり割り当てが解除されたりした場合でも、クラウド サービスの IP アドレスは変わりません。 さらに、VIP として使用されている既存の動的 IP を、予約済み IP アドレスに変換できます。
+IP アドレスが変更されないようにするには、IP アドレスを予約します。 予約済み IP は VIP としてのみ使用できるので、リソースがシャットダウンまたは停止 (割り当て解除) された場合でも、クラウド サービスの IP アドレスが変更されることはありません。 さらに、VIP として使用されている既存の動的 IP を、予約済み IP アドレスに変換できます。
 
 > [!IMPORTANT]
 > Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager デプロイ モデル](virtual-network-ip-addresses-overview-arm.md)を使用して静的パブリック IP アドレスを予約する方法を確認してください。
@@ -40,21 +40,21 @@ IP アドレスが変更されないようにするには、IP アドレスを�
 Azure における IP アドレスの詳細については、[IP アドレス](virtual-network-ip-addresses-overview-classic.md)に関する記事をご覧ください。
 
 ## <a name="when-do-i-need-a-reserved-ip"></a>予約済み IP が必要になる場合
-* **IP アドレスをサブスクリプションで確実に予約したい場合**。 どのような状況でもサブスクリプションから解放されない IP アドレスを予約する必要がある場合は、予約済みパブリック IP を使用します。  
-* **クラウド サービスまたは VM が停止したり割り当て解除された場合でも、IP アドレスを保持したい場合**。 クラウド サービスの VM が停止したり割り当て解除された場合でも、変更されない IP アドレスによるサービスへのアクセスを可能にしたい場合です。
-* **Azure の出力トラフィックに予測可能な IP アドレスを使用したい場合**。 オンプレミスのファイアウォールが、特定の IP アドレスからのトラフィックのみを許可するよう構成することができます。 IP を予約すると、発信元 IP アドレスがわかるため、IP の変更に合わせてファイアウォール ルールを更新する必要がなくなります。
+* **IP アドレスをサブスクリプションで確実に予約したい場合**。 どのような状況でもサブスクリプションから解放されない IP アドレスを予約する場合は、予約済みパブリック IP を使用します。  
+* **クラウド サービスまたは VM が停止したり割り当て解除された場合でも、IP アドレスを保持したい場合**。 クラウド サービスの VM がシャットダウンまたは停止 (割り当て解除) された場合でも、変更されない IP アドレスを使用してサービスにアクセスする場合です。
+* **Azure の出力トラフィックに予測可能な IP アドレスを使用したい場合**。 オンプレミスのファイアウォールが、特定の IP アドレスからのトラフィックのみを許可するよう構成することができます。 IP を予約すると、送信元 IP アドレスがわかるので、IP の変更に合わせてファイアウォール規則を更新する必要はありません。
 
 ## <a name="faq"></a>FAQ
-1. 予約済み IP はすべての Azure サービスに使用できますか。  
-   * 予約済み IP は、VIP を使用して公開される VM およびクラウド サービスのインスタンス ロールに対してのみ使用できます。
-2. 予約済み IP は、いくつ使用できますか。  
-   * [Azure の制限](../azure-subscription-service-limits.md#networking-limits)に関する記事をご覧ください。
-3. 予約済み IP に料金はかかりますか。
-   * 料金については、 [予約済み IP アドレスの価格詳細](http://go.microsoft.com/fwlink/?LinkID=398482) に関するページを参照してください。
-4. どうやって IP アドレスを予約するのですか。
-   * PowerShell、[Azure Management REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)、または [Azure Portal](https://portal.azure.com) を使用して、特定のリージョンの IP アドレスを予約できます。 この予約済み IP アドレスは、サブスクリプションに関連付けられます。
-5. 予約済み IP を VNet ベースのアフィニティ グループで使用できますか。
-   * 予約済み IP はリージョン VNet に対してのみサポートされます。 アフィニティ グループに関連付けられている VNet に対してはサポートされません。 リージョンまたはアフィニティ グループとの VNet の関連付けの詳細については、 [リージョン VNet およびアフィニティ グループについて](virtual-networks-migrate-to-regional-vnet.md)を参照してください。
+1. 予約済み IP はすべての Azure サービスに使用できますか。 <br>
+   いいえ。 予約済み IP は、VIP を使用して公開される VM およびクラウド サービスのインスタンス ロールに対してのみ使用できます。
+2. 予約済み IP は、いくつ使用できますか。 <br>
+   詳細については、[Azure の制限](../azure-subscription-service-limits.md#networking-limits)に関する記事をご覧ください。
+3. 予約済み IP に料金はかかりますか。 <br>
+   場合によります。 料金の詳細については、[予約済み IP アドレスの料金の詳細](http://go.microsoft.com/fwlink/?LinkID=398482)に関するページをご覧ください。
+4. どうやって IP アドレスを予約するのですか。 <br>
+   PowerShell、[Azure Management REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)、または [Azure Portal](https://portal.azure.com) を使用して、Azure リージョンの IP アドレスを予約できます。 予約済み IP アドレスは、サブスクリプションに関連付けられます。
+5. アフィニティ グループ ベースの VNet で予約済み IP を使用できますか。 <br>
+   いいえ。 予約済み IP はリージョン VNet に対してのみサポートされます。 予約済み IP は、アフィニティ グループに関連付けられている VNet ではサポートされていません。 リージョンまたはアフィニティ グループとの VNet の関連付けの詳細については、[リージョン VNet とアフィニティ グループ](virtual-networks-migrate-to-regional-vnet.md)に関する記事をご覧ください。
 
 ## <a name="manage-reserved-vips"></a>予約済み VIP を管理する
 
@@ -87,7 +87,10 @@ Get-AzureReservedIP
     OperationId          : 55e4f245-82e4-9c66-9bd8-273e815ce30a
     OperationStatus      : Succeeded
 
-IP アドレスが予約されると、サブスクリプションとの関連付けは、サブスクリプションが削除されるまで維持されます。 上記の予約済み IP を削除するには、次の PowerShell コマンドを実行します。
+>[!NOTE]
+>PowerShell を使用して予約済み IP アドレスを作成する場合、予約済み IP を作成するリソース グループを指定することはできません。 Azure では、予約済み IP は *Default-Networking* という名前のリソース グループに自動的に配置されます。 [Azure Portal](http://portal.azure.com) を使用して予約済み IP を作成する場合は、任意のリソース グループを指定できます。 ただし、*Default-Networking* 以外のリソース グループに予約済み IP を作成した場合、`Get-AzureReservedIP` や `Remove-AzureReservedIP` などのコマンドでその予約済み IP を参照するときに、*Group resource-group-name reserved-ip-name* という名前を参照する必要があります。  たとえば、*myResourceGroup* という名前のリソース グループに *myReservedIP* という予約済み IP を作成した場合、予約済み IP の名前を *Group myResourceGroup myReservedIP* として参照する必要があります。   
+
+IP アドレスが予約されると、サブスクリプションとの関連付けは、サブスクリプションが削除されるまで維持されます。 予約済み IP を削除するには、次の PowerShell コマンドを実行します。
 
 ```powershell
 Remove-AzureReservedIP -ReservedIPName "MyReservedIP"
@@ -101,7 +104,7 @@ New-AzureReservedIP –ReservedIPName MyReservedIP –Location "Central US" -Ser
 ```
 
 ## <a name="associate-a-reserved-ip-to-a-new-cloud-service"></a>予約済み IP を新しいクラウド サービスに関連付ける
-次のスクリプトによって新しい予約済み IP が作成され、 *TestService*という名前の新しいクラウド サービスに関連付けられます。
+次のスクリプトでは、新しい予約済み IP を作成し、*TestService* という名前の新しいクラウド サービスに関連付けます。
 
 ```powershell
 New-AzureReservedIP –ReservedIPName MyReservedIP –Location "Central US"
@@ -114,11 +117,11 @@ New-AzureVMConfig -Name TestVM -InstanceSize Small -ImageName $image.ImageName `
 ```
 
 > [!NOTE]
-> クラウド サービスで使用する予約済み IP を作成する場合は、受信方向の通信に *VIP:&lt;ポート番号>* を使用して VM を参照する必要があります。 IP を予約しても、VM に直接接続できないためです。 予約済み IP は、VM がデプロイされたクラウド サービスに割り当てられます。 IP を使用して VM に直接接続するには、インスタンスレベル パブリック IP を構成する必要があります。 インスタンスレベル パブリック IP とは、VM に直接割り当てられているパブリック IP (ILPIP と呼ばれる) の一種です。 この IP は予約できません。 詳細については、 [インスタンスレベル パブリック IP (ILPIP)](virtual-networks-instance-level-public-ip.md) を参照してください。
+> クラウド サービスで使用する予約済み IP を作成するときは、受信方向の通信に *VIP:&lt;ポート番号>* を使用して VM を参照します。 IP を予約しても、VM に直接接続できないためです。 予約済み IP は、VM がデプロイされたクラウド サービスに割り当てられます。 IP を使用して VM に直接接続するには、インスタンスレベル パブリック IP を構成する必要があります。 インスタンスレベル パブリック IP とは、VM に直接割り当てられている (ILPIP と呼ばれる) パブリック IP の一種です。 この IP は予約できません。 詳細については、[インスタンスレベル パブリック IP (ILPIP)](virtual-networks-instance-level-public-ip.md) に関する記事をご覧ください。
 > 
 
 ## <a name="remove-a-reserved-ip-from-a-running-deployment"></a>予約済み IP を実行中のデプロイから削除する
-上記のスクリプトで作成した新しいサービスに追加された予約済み IP を削除するには、次の PowerShell コマンドを実行します。
+新しいクラウド サービスに追加された予約済み IP を削除するには、次の PowerShell コマンドを実行します。
 
 ```powershell
 Remove-AzureReservedIPAssociation -ReservedIPName MyReservedIP -ServiceName TestService
@@ -129,7 +132,7 @@ Remove-AzureReservedIPAssociation -ReservedIPName MyReservedIP -ServiceName Test
 > 
 
 ## <a name="associate-a-reserved-ip-to-a-running-deployment"></a>予約済み IP を実行中のデプロイに関連付ける
-次のコマンドでは、*TestVM2* という新しい VM を含む *TestService2* という新しいクラウド サービスを作成し、*MyReservedIP* という既存の予約済み IP をクラウド サービスに関連付けます。
+次のコマンドでは、*TestVM2* という名前の新しい VM で *TestService2* という名前のクラウド サービスを作成します。 その後、*MyReservedIP* という既存の予約済み IP をクラウド サービスに関連付けます。
 
 ```powershell
 $image = Get-AzureVMImage|?{$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
@@ -142,7 +145,7 @@ Set-AzureReservedIPAssociation -ReservedIPName MyReservedIP -ServiceName TestSer
 ```
 
 ## <a name="associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file"></a>サービス構成ファイルを使用してクラウド サービスに予約済み IP を関連付ける
-サービスの構成 (CSCFG) ファイルを使用すると、クラウド サービスに予約済み IP を関連付けることもできます。 次の xml サンプルでは、 *MyReservedIP*という予約済み VIP が使用されるようにクラウド サービスを構成する方法を示しています。
+サービスの構成 (CSCFG) ファイルを使用すると、クラウド サービスに予約済み IP を関連付けることもできます。 次の xml サンプルは、*MyReservedIP* という予約済み VIP を使用するようにクラウド サービスを構成する方法を示しています。
 
     <?xml version="1.0" encoding="utf-8"?>
     <ServiceConfiguration serviceName="ReservedIPSample" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2014-01.2.3">

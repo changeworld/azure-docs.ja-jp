@@ -16,20 +16,20 @@ ms.topic: article
 ms.date: 09/19/2016
 ms.author: apurvajo
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: edcb6d37eb4d82ff5928ee33cf456c3795eb8131
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: f9ff33f33a196e65f6cb7ee7f5332aacb9231f6d
+ms.lasthandoff: 03/29/2017
 
 
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Azure App Service の SSL 証明書を購入して構成する
 > [!div class="op_single_selector"]
 > * [Azure での SSL 証明書の購入](web-sites-purchase-ssl-web-site.md)
-> * [別の場所からの SSL 証明書の使用](web-sites-configure-ssl-certificate.md)
+> * [別の場所から取得した SSL 証明書の使用](web-sites-configure-ssl-certificate.md)
 > 
 > 
 
-**[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)** では、*.azurewebsites.net ドメインのワイルドカード証明書を使用する Web アプリに対して、HTTPS が既定で既に有効になっています。カスタム ドメインを構成する予定がない場合は、既定の HTTPS 証明書を利用できます。ただし、すべての*[ワイルドカード ドメイン](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates)と同様に、カスタム ドメインに独自の証明書を使用する場合ほど安全ではありません。 Azure App Service では、ポータルを離れることなく Azure ポータルから SSL 証明書を購入して管理する簡単な方法が提供されるようになっています。  
+**[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)** では、*.azurewebsites.net ドメインのワイルドカード証明書を使用する Web アプリに対して、HTTPS が既定で既に有効になっています。 カスタム ドメインを構成する予定がない場合は、既定の HTTPS 証明書を利用できます。 ただし、すべての *[ワイルドカード ドメイン](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates)と同様に、カスタム ドメインに独自の証明書を使用する場合ほど安全ではありません。 Azure App Service では、ポータルを離れることなく Azure ポータルから SSL 証明書を購入して管理する簡単な方法が提供されるようになっています。  
 この記事では、3 つの簡単な手順で **[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)**用の SSL 証明書を購入して構成する方法を説明します。 
 
 > [!NOTE]
@@ -46,7 +46,7 @@ ms.lasthandoff: 03/10/2017
 ## <a name="a-purchase-store-and-assign-an-ssl-certificate-for-your-custom-domain-a"></a><a>カスタム ドメイン用の SSL 証明書を購入、保存、および割り当てる</a>
 contoso.comなどのカスタム ドメインに対して HTTPS を有効にするには、まず **[Azure App Service でカスタム ドメイン名を構成する](web-sites-custom-domain-name.md)**必要があります。
 
-SSL 証明書を要求する前に、その証明書により、どのドメイン名をセキュリティで保護するかを最初に決定する必要があります。 この結果、どのような種類の証明書を取得する必要があるかが決まります。 contoso.com または www.contoso.com のように、ただ&1; つのドメイン名を保護する必要がある場合は、Standard (基本的な) 証明書で十分です。 contoso.com、www.contoso.com、および mail.contoso.com のように、複数のドメイン名を保護する必要がある場合は、**[ワイルドカード証明書](http://en.wikipedia.org/wiki/Wildcard_certificate)**を取得できます。
+SSL 証明書を要求する前に、その証明書により、どのドメイン名をセキュリティで保護するかを最初に決定する必要があります。 この結果、どのような種類の証明書を取得する必要があるかが決まります。 contoso.com または www.contoso.com のように、ただ 1 つのドメイン名を保護する必要がある場合は、Standard (基本的な) 証明書で十分です。 contoso.com、www.contoso.com、および mail.contoso.com のように、複数のドメイン名を保護する必要がある場合は、**[ワイルドカード証明書](http://en.wikipedia.org/wiki/Wildcard_certificate)**を取得できます。
 
 ## <a name="bkmk_purchasecert"></a>手順 0: SSL 証明書を注文する
 この手順では、選択した SSL 証明書を注文する方法を説明します。
@@ -60,7 +60,7 @@ SSL 証明書を要求する前に、その証明書により、どのドメイ�
 3. SSL 証明書の **[ホスト名]**
    
    > [!NOTE]
-   > これは、購入プロセスの最も重要な部分の&1; つです。 この証明書で保護する正しいホスト名 (カスタム ドメイン) を入力してください。 ホスト名には WWW を**付けないでください**。 たとえば、カスタム ドメイン名が www.contoso.com の場合、[ホスト名] には contoso.com だけを入力します。購入した証明書では、www ドメインとルート ドメインの両方が保護されます。 
+   > これは、購入プロセスの最も重要な部分の 1 つです。 この証明書で保護する正しいホスト名 (カスタム ドメイン) を入力してください。 ホスト名には WWW を**付けないでください**。 たとえば、カスタム ドメイン名が www.contoso.com の場合、[ホスト名] には contoso.com だけを入力します。購入した証明書では、www ドメインとルート ドメインの両方が保護されます。 
    > 
    > 
 4. **サブスクリプション**を選択します。 
@@ -68,10 +68,10 @@ SSL 証明書を要求する前に、その証明書により、どのドメイ�
    複数のサブスクリプションがある場合は、対象のカスタム ドメインまたは Web アプリに使用したものと同じサブスクリプションで、SSL 証明書を作成してください。
 5. **リソース グループ**を選択または作成します。
    
-   リソース グループを使用すると、関連する Azure リソースを&1; つの単位として管理でき、アプリ用にロール ベースのアクセス制御 (RBAC) 規則を作成する際に便利です。 詳細については、Azure リソースの管理に関するページを参照してください。
+   リソース グループを使用すると、関連する Azure リソースを 1 つの単位として管理でき、アプリ用にロール ベースのアクセス制御 (RBAC) 規則を作成する際に便利です。 詳細については、Azure リソースの管理に関するページを参照してください。
 6. **[証明書 SKU]** 
    
-   最後に、ニーズに合った証明書 SKU を選択し、[作成] をクリックします。 今日では、Azure App Service を使用すると&2; つの異なる Sku を購入するには
+   最後に、ニーズに合った証明書 SKU を選択し、[作成] をクリックします。 今日では、Azure App Service を使用すると 2 つの異なる Sku を購入するには
    
         •    S1 – Standard Certificate with 1-year validity and auto renewal  
         •    W1 – Wild card Certificate with 1-year validity and auto renewal      
@@ -87,13 +87,13 @@ SSL 証明書を要求する前に、その証明書により、どのドメイ�
 ## <a name="bkmk_StoreKeyVault"></a>手順 1: 証明書を Azure Key Vault に保存する
 この手順では、選択した Azure Key Vault に購入した SSL 証明書を格納する方法を説明します。
 
-1. SSL 証明書の購入が完了した後は、 **[App Service 証明書]** リソース ブレードを再度参照して手動で開く必要があります (手順 1 を参照)。   
+1. SSL 証明書の購入が完了した後は、**[App Service 証明書]** リソース ブレードを再度参照して手動で開く必要があります (手順 1 を参照)。   
    
    ![KV に格納する準備完了のイメージを挿入](./media/app-service-web-purchase-ssl-web-site/ReadyKV.jpg)
    
    この証明書の使用を開始する前に完了する必要のある手順がまだいくつかあるため、証明書の状態は **[発行保留中]** になっています。
 2. [証明書のプロパティ] ブレードの **[証明書の構成]** をクリックし、**[ステップ 1: 格納]** をクリックして Azure Key Vault にこの証明書を格納します。
-3. **[Key Vault の状態]** ブレードの **[Key Vault リポジトリ]** をクリックして、この証明書を格納する Key Vault を選択するか、**[Key Vault の新規作成]** をクリックして同じサブスクリプションとリソース グループに新しい Key Vault を作成します。
+3. **[Key Vault の状態]** ブレードの **[Key Vault リポジトリ]** をクリックして、この証明書を格納する既存の Key Vault を選択するか、**[Key Vault の新規作成]** をクリックして同じサブスクリプションとリソース グループに新しい Key Vault を作成します。
    
    ![新規 KV 作成のイメージを挿入](./media/app-service-web-purchase-ssl-web-site/NewKV.jpg)
    
@@ -173,8 +173,16 @@ SSL 証明書を要求する前に、その証明書により、どのドメイ�
 * ドメイン名レジストラーから提供されるツールを使用して、前の手順の IP アドレスを指定するようにカスタム ドメイン名用の A レコードを変更します。
    ここで、証明書が正しく構成されていることを確認するために、HTTP:// ではなく、HTTPS:// を使用してアプリを参照することができる必要があります。
 
-## <a name="bkmk_Rekey"></a>App Service 証明書をエクスポートする
+## <a name="bkmk_Export"></a>App Service 証明書をエクスポートする
 他の Azure サービスで使用できるように、App Service 証明書のローカル PFX コピーを作成することができます。 詳細については、**[こちらのブログ記事を参照してください](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/)**。
+
+## <a name="bkmk_Renew"></a>App Service 証明書の自動更新
+証明書の自動更新の設定を切り替えたり、証明書を手動で更新したりするには、**[証明書のプロパティ]** ブレードの **[自動更新の設定]** オプションを選択します。 
+
+
+  ![参照を使用して作成のイメージを挿入](./media/app-service-web-purchase-ssl-web-site/autorenew.png)
+
+期限切れになる前に証明書を自動的に更新する場合は、**[自動更新]** を有効にします。 これは既定のオプションです。 このオプションが有効な場合、90 日目以降、期限切れ前に証明書の更新が試みられます。 Azure Portal での操作を使用して App Service アプリに SSL バインディングを作成した場合は、(キー更新および同期のシナリオと同様に) 準備が整ったら、新しい証明書と共にこれらのバインドも更新されます。 一方、手動で更新する場合は、この設定を無効する必要があります。 App Service 証明書は、有効期限が 90 日以内の場合のみ手動で更新できます。
 
 ## <a name="bkmk_Rekey"></a>キーを更新して証明書を同期する
 1. セキュリティ上の理由から証明書のキーを更新する必要がある場合は、**[証明書のプロパティ]** ブレードの **[キーの更新と同期]** オプションを選択します。 

@@ -13,43 +13,42 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 01/19/2017
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 7f76f8786bf08e4aacc63758260202fe7e1a832f
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 9f0e7f071f1aa8fdd95c4959eae884afc60644e9
+ms.lasthandoff: 03/25/2017
 
 
 ---
 # <a name="push-notifications-with-azure-notification-hubs---frequently-asked-questions"></a>Azure Notification Hubs のプッシュ通知 - よく寄せられる質問 (FAQ)
 ## <a name="general"></a>全般
-### <a name="1----what-is-the-price-model-for-notification-hubs"></a>1.  Notification Hubs の価格モデルを教えてください。
-Notification Hubs には、レベルが 3 つあります。
+### <a name="0--what-is-the-resource-structure-of-notification-hubs"></a>0.Notification Hubs のリソース構造について教えてください。
 
-* **Free** - サブスクリプションあたり、1 か月間に最大 100 万プッシュが可能です。
-* **Basic** - サブスクリプションあたりの 1 か月間のプッシュ数の基準値は 1,000 万です。クォータは、オプションで増やすことができます。
-* **Standard** - サブスクリプションあたりの 1 か月間のプッシュ数の基準値は 1,000 万です。オプションでクォータを増やすことができ、充実した製品利用統計情報も利用できます。
+Notification Hubs には、2 つのリソース レベル、ハブおよび名前空間があります。 ハブは、1 つのアプリのクロスプラットフォーム プッシュ情報を保持できる単一のプッシュ リソースです。 名前空間は、1 つのリージョンのハブのコレクションです。
 
-最新の情報については、「 [Notification Hubs の価格] 」ページを参照してください。 価格はサブスクリプション レベルで規定されており、Azure サブスクリプションに作成した名前空間または通知ハブの数に関係なく、プッシュ通知の開始数に基づいています。
+一般的に推奨されるのは、1 つのアプリに対応するように 1 つの名前空間を配置するマッピングです。 その名前空間内に、運用アプリで動作する運用環境ハブ、テスト アプリで動作するテスト ハブなどを配置できます。
 
-**Free** レベルは、開発目的のために提供されており、SLA の保証はありません。 このレベルは、Azure Notification Hubs のプッシュ通知機能の可能性について知りたいユーザーにとってはよい開始点ですが、中規模から大規模のアプリケーションには最適な選択肢ではない場合があります。
+### <a name="1--what-is-the-price-model-for-notification-hubs"></a>1.Notification Hubs の価格モデルを教えてください。
+最新の情報については、「 [Notification Hubs の価格] 」ページを参照してください。 Notification Hubs は、名前空間レベルで課金され (名前空間については、上記のリソース構造を参照してください)、3 つのレベルが提供されています。
 
-**Basic** と &  **Standard** レベルは本番環境用に提供されています。次の主要機能は *Standard レベル*のみで有効になります。
+* **Free** - このレベルは、運用環境アプリには適していませんが、プッシュ機能について調べるための出発点としてお勧めです。 名前空間ごとに 1 か月あたり 500 個のデバイスと 100 万回のプッシュ数が含まれます。SLA の保証はありません。
+* **Basic** - このレベルと Standard レベルは、小規模な運用アプリにお勧めです。 基準値として、名前空間ごとに 1 か月あたり 20 万個のデバイスと 1,000 万回のプッシュ数が含まれ、オプションでクォータを増やすことができます。
+* **Standard** - 中規模から大規模な運用アプリにお勧めです。 基準値として、名前空間ごとに 1 か月あたり 1,000 万個のデバイスと 1,000 万回のプッシュ数が含まれ、オプションでクォータを増やすことができ、充実したテレメトリも利用できます。
 
-* *充実した製品利用統計情報* - Notification Hubs には、オフラインで表示および分析するために、製品利用統計情報やプッシュ通知の登録情報をエクスポートする機能が多数あります。
-* *マルチ テナント機能* - Notification Hubs を使用して、マルチテナントをサポートするモバイル アプリを作成する場合に適しています。 これにより、アプリの通知ハブの名前空間レベルでプッシュ通知サービス (PNS) の資格情報を設定して、この共通の名前空間でテナントに個別のハブを提供し、分離ができます。 これにより、テナント間の重複を確実に避けるために各テナント用に分離した通知ハブからプッシュ通知を送受信する SAS キーを保持しつつ、簡単にメンテナンスをすることができます。
-* *スケジュールされたプッシュ* - プッシュ通知をスケジュールできます。スケジュール後、キューに入れられ、送信されます。
-* *一括インポート* - 登録を一括インポートできます。
+Standard レベルのすばらしい機能の一部をここで紹介します。
+* "*豊富なテレメトリ*" - Notification Hubs は、メッセージごとのテレメトリを提供して、すべてのプッシュ要求と、デバッグが必要なプラットフォーム通知システムのフィードバックを追跡します。
+* "*マルチテナント*" - プラットフォーム通知システム (PNS) の資格情報を名前空間レベルで使用することができます。 これにより、テナントを同じ名前空間内のハブに簡単に分割することができます。
+* "*プッシュのスケジュール*" - 通知がいつでも送信されるようにスケジュールすることができます。
 
-### <a name="2----what-is-the-notification-hubs-sla"></a>2.  Notification Hubs の SLA について教えてください。
-**Basic** と **Standard** レベルの Notification Hubs では、アプリケーションが正しく構成されている場合、サポートされているレベルにデプロイされている通知ハブから、少なくとも 99.9% はプッシュ通知を送信したり、登録管理操作が実行できることが保証されています。 SLA の詳細については、「 [Notification Hubs の SLA] 」ページを参照してください。
+### <a name="2--what-is-the-notification-hubs-sla"></a>2.Notification Hubs の SLA について教えてください。
+**Basic** と **Standard** レベルの Notification Hubs では、アプリケーションが正しく構成されている場合、サポートされているレベルにデプロイされている通知ハブから、少なくとも 99.9% はプッシュ通知を送信したり、登録管理操作が実行できることが保証されています。 SLA の詳細については、「 [Notification Hubs の SLA](https://azure.microsoft.com/support/legal/sla/notification-hubs/) 」ページを参照してください。
 
 > [!NOTE]
-> Notification Hubs は外部のプラットフォーム プロバイダーに依存してデバイスにプッシュ通知を送信するため、プラットフォーム通知サービスとデバイス間の区間における SLA の保証はありません。
-> 
-> 
+> プッシュ通知はサード パーティのプラットフォーム通知システム (Apple の APNS、Google の FCM など) に依存するため、これらのメッセージの配信に対する SLA 保証はありません。 Notification Hubs が PNS への送信をバッチで処理 (SLA 保証あり) した後は、プッシュが配信されるかどうかは PNS 任せとなります (SLA 保証なし)。
 
-### <a name="3----which-customers-are-using-notification-hubs"></a>手順 3.  Notification Hubs を使用している顧客を教えてください。
+### <a name="3--which-customers-are-using-notification-hubs"></a>3.Notification Hubs を使用している顧客を教えてください。
 大勢のお客様が Notification Hubs をご使用になっています。次にいくつかご紹介します。
 
 * ソチ 2014 年冬季オリンピック - 数百におよぶ利益団体、300 万台以上のデバイス、2 週間でディスパッチした通知 150 万件以上 [CaseStudy - ソチ]
@@ -59,20 +58,21 @@ Notification Hubs には、レベルが 3 つあります。
 * 7Digital - [CaseStudy - 7Digital]
 * Bing アプリ - 数千万台のデバイス、1 日あたり 300 万件の通知を送信
 
-### <a name="4-how-do-i-upgrade-or-downgrade-my-notification-hubs-to-change-my-service-tier"></a>4.Notification Hubs をアップグレードまたはダウングレー年、サービス層を変更する方法は?
-[Azure クラシック ポータル]にアクセスし、[Service Bus] をクリックし、名前空間をクリックし、お使いの通知ハブをクリックします。 [スケール] タブの下で、Notification Hubs サービス層を変更できます。
+### <a name="4-how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>4.ハブまたは名前空間を別のレベルにアップグレードまたはダウングレードする方法を教えてください。
+[Azure Portal] の [Notification Hubs Namespaces (Notification Hubs の名前空間)] または [Notification Hubs] に移動して、更新するリソースをクリックし、ナビゲーションで [価格レベル] に移動します。 希望するどのレベルにも更新できますが、いくつか注意する点があります。
+* 更新された価格レベルは、使用している名前空間内の "*すべて*" のハブに適用されます。
+* ダウングレードする場合、デバイスの数がダウングレード先のレベルの上限を超えているときは、ダウングレードする前に、上限内に収めるためにデバイスを削除する必要があります。
 
-![](./media/notification-hubs-faq/notification-hubs-classic-portal-scale.png)
 
 ## <a name="design--development"></a>設計と開発
-### <a name="1----which-server-side-platforms-do-you-support"></a>1.  サポートするサーバー側のプラットフォームはどれですか。
-SDK と、.NET、Java、PHP、Python、Node.js の[完全なサンプル]を提供しています。アプリのバックエンドを設定して、こうしたプラットフォームを使い Notification Hubs に通信できるようにします。 Notification Hubs の API は REST のインターフェイスに基づいているため、依存関係を増やしたい場合は、代わりにそれらと直接対話するように設定することもできます。 詳細については、「[NH - REST API]」ページを参照してください。
+### <a name="1--which-server-side-platforms-do-you-support"></a>1.サポートするサーバー側のプラットフォームはどれですか。
+.NET、Java、Node.js、PHP、および Python のサーバー SDK が用意されています。 さらに、Notification Hubs API は REST インターフェイスに基づくため、さまざまなプラットフォームを使用している場合や、追加の依存関係を避ける場合は、REST API を直接使用する方法を選択できます。 詳細については、[NH REST API] に関するページを参照してください。
 
-### <a name="2----which-client-platforms-do-you-support"></a>2.  どのクライアント プラットフォームをサポートしていますか。
-[Apple iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md)、[Android](notification-hubs-android-push-notification-google-gcm-get-started.md)、[Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)、[Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md)、[Kindle](notification-hubs-kindle-amazon-adm-push-notification.md)、[Android China (Baidu 経由)](notification-hubs-baidu-china-android-notifications-get-started.md)、Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) および  & [Android](xamarin-notification-hubs-push-notifications-android-gcm.md))、[Chrome Apps](notification-hubs-chrome-push-notifications-get-started.md) および [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari) プラットフォームへの通知の送信をサポートしています。 これらのプラットフォームでプッシュ通知を送信する方法が説明されている概要チュートリアルの全一覧については、「 [NH - 概要チュートリアル] 」ページを参照してください。
+### <a name="2--which-client-platforms-do-you-support"></a>2.どのクライアント プラットフォームをサポートしていますか。
+[iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md)、[Android](notification-hubs-android-push-notification-google-gcm-get-started.md)、[Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)、[Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md)、[Kindle](notification-hubs-kindle-amazon-adm-push-notification.md)、[Android China (Baidu 経由)](notification-hubs-baidu-china-android-notifications-get-started.md)、Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) および  & [Android](xamarin-notification-hubs-push-notifications-android-gcm.md))、[Chrome Apps](notification-hubs-chrome-push-notifications-get-started.md)、および [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari) への通知の送信をサポートしています。 詳細については、「Notification Hubs の使用」ページを参照してください。
 
-### <a name="3----do-you-support-smsemailweb-notifications"></a>手順 3.  SMS/メール/Web 通知はサポートしていますか。
-Notification Hubs は、主に、上記のプラットフォームを使用してモバイル アプリに通知を送信することを目的としています。 メールや SMS アラートの送信機能は提供していませんが、こうした機能を提供するサード パーティ製のプラットフォームを Notification Hubs に統合させて、 [Azure Mobile Apps]を使い、ネイティブのプッシュ通知を送信できます。
+### <a name="3--do-you-support-smsemailweb-notifications"></a>3.SMS/メール/Web 通知はサポートしていますか。
+Notification Hubs は、主にモバイル アプリに通知を送信することを目的とするため、メールや SMS の機能は提供していません。 ただし、こうした機能を提供するサード パーティ製のプラットフォームを Notification Hubs に統合させて、[Azure Mobile Apps] を使いネイティブのプッシュ通知を送信できます。
 
 また、Notification Hubs には、すぐに使えるブラウザー内プッシュ通知の送信サービスもありません。 これは、サポートされているサーバー側プラットフォームに SignalR を使用して実装すれば使用できます。 Chrome サンドボックスのブラウザー アプリに通知を送信する方法については、「 [Chrome アプリのチュートリアル]」を参照してください。
 
@@ -198,14 +198,14 @@ Azure Notification Hubs では [Azure クラシック ポータル]でテレメ�
 
 [Azure クラシック ポータル]: https://manage.windowsazure.com
 [Notification Hubs の価格]: http://azure.microsoft.com/pricing/details/notification-hubs/
-[Notification Hubs の SLA]: http://azure.microsoft.com/support/legal/sla/
+[Notification Hubs SLA]: http://azure.microsoft.com/support/legal/sla/
 [CaseStudy - ソチ]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=7942
 [CaseStudy - Skanska]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=5847
 [CaseStudy - シアトル タイムズ]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=8354
 [CaseStudy - Mural.ly]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11592
 [CaseStudy - 7Digital]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=3684
-[NH - REST API]: https://msdn.microsoft.com/library/azure/dn530746.aspx
-[NH - 概要チュートリアル]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
+[NH REST API]: https://msdn.microsoft.com/library/azure/dn530746.aspx
+[NH - Getting Started Tutorials]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
 [Chrome アプリのチュートリアル]: http://azure.microsoft.com/documentation/articles/notification-hubs-chrome-get-started/
 [Mobile Services Pricing]: http://azure.microsoft.com/pricing/details/mobile-services/
 [バックエンド登録のガイダンス]: https://msdn.microsoft.com/library/azure/dn743807.aspx
@@ -217,12 +217,7 @@ Azure Notification Hubs では [Azure クラシック ポータル]でテレメ�
 [NH - メトリックのサンプル]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel
 [登録の一括エクスポートと変更]: https://msdn.microsoft.com/library/dn790624.aspx
 [Azure Portal]: https://portal.azure.com
-[完全なサンプル]: https://github.com/Azure/azure-notificationhubs-samples
-[Azure Mobile Apps]: https://azure.microsoft.com/en-us/services/app-service/mobile/
-[App Service の価格]: https://azure.microsoft.com/en-us/pricing/details/app-service/
-
-
-
-<!--HONumber=Dec16_HO2-->
-
+[complete samples]: https://github.com/Azure/azure-notificationhubs-samples
+[Azure Mobile Apps]: https://azure.microsoft.com/services/app-service/mobile/
+[App Service の価格]: https://azure.microsoft.com/pricing/details/app-service/
 
