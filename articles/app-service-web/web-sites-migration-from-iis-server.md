@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 52e4ba9f1f623312780a9072719866932b1af502
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
+ms.openlocfilehash: 6fdee57d33b19569ef892d0d32ea7007fd69faaf
+ms.lasthandoff: 03/23/2017
 
 
 ---
@@ -41,23 +41,15 @@ Migration Assistant により対応状況レポートが作成されます。こ
 * 認証 - Web Apps では、匿名認証が既定でサポートされていますが、アプリケーションによってフォーム認証が指定される場合もあります。 Azure Active Directory および ADFS と統合する場合に限り、Windows 認証を使用できます。 基本認証など、その他すべての認証形式は現在サポートされていません。 
 * グローバル アセンブリ キャッシュ (GAC) – GAC は Web Apps でサポートされていません。 アプリケーションで、通常 GAC にデプロイするアセンブリを参照する場合は、Web Apps でアプリケーションの bin フォルダーにデプロイする必要があります。 
 * IIS5 互換性モード – Web Apps でサポートされていません。 
-* アプリケーション プール – Web Apps では、各サイトとその子アプリケーションが同じアプリケーション プールで実行されます。 サイトに複数のアプリケーション プールを利用する子アプリケーションが複数ある場合は、共通の設定で&1; つのアプリケーション プールに統合するか、または各アプリケーションを個別の Web アプリに移行します。
+* アプリケーション プール – Web Apps では、各サイトとその子アプリケーションが同じアプリケーション プールで実行されます。 サイトに複数のアプリケーション プールを利用する子アプリケーションが複数ある場合は、共通の設定で 1 つのアプリケーション プールに統合するか、または各アプリケーションを個別の Web アプリに移行します。
 * COM コンポーネント – Web Apps では、プラットフォームで COM コンポーネントを登録できません。 Web サイトまたはアプリケーションで COM コンポーネントを使用する場合、その COM コンポーネントをマネージ コードで書き換えて、Web サイトまたはアプリケーションにデプロイする必要があります。
-* ISAPI フィルター – Web Apps では、ISAPI フィルターの使用をサポートできます。 次の手順を実行する必要があります。
+* ISAPI 拡張機能 – Web Apps では、ISAPI 拡張機能の使用をサポートできます。 次の手順を実行する必要があります。
   
   * Web アプリで DLL をデプロイします。 
   * [Web.config](http://www.iis.net/configreference/system.webserver/isapifilters)
-  * 次の内容を含むサイト ルートに、applicationHost.xdt ファイルを配置します。
+  * [この記事のセクション](https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples)「Allowing arbitrary ISAPI extensions to be loaded (任意の ISAPI 拡張機能の読み込みを許可する)」で説明する内容を含むサイト ルートに applicationHost.xdt ファイルを配置します。 
     
-      <?xml version="1.0"?>
-    
-      <configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
-      <configSections>
-          <sectionGroup name="system.webServer">
-            <section name="isapiFilters" xdt:Transform="SetAttributes(overrideModeDefault)" overrideModeDefault="Allow" />
-          </sectionGroup>
-        </configSections>
-      </configuration>
+  
     
     Web サイトで XML ドキュメントの変換を使用する方法の例については、「 [Microsoft Azure Web サイトの変換](http://blogs.msdn.com/b/waws/archive/2014/06/17/transform-your-microsoft-azure-web-site.aspx)」を参照してください。
 * SharePoint、Front Page Server Extensions (FPSE)、FTP、SSL 証明書など、その他のコンポーネントは移行されません。
@@ -89,7 +81,7 @@ Migration Assistant により対応状況レポートが作成されます。こ
    もちろんローカル サーバーから移行することもできます。 実稼働環境の IIS サーバーから Web サイトを移行する場合は、リモート オプションが役立ちます。
    
    この時点で移行ツールにより、サイト、アプリケーション、アプリケーション プール、依存関係など、IIS サーバーの構成を確認し、移行対象となる Web サイトを識別します。 
-6. 次のスクリーンショットは、**既定の Web サイト**、**TimeTracker**、および **CommerceNet4** の&3; つの Web サイトを示しています。 これらすべてのサイトに、移行するデータベースが関連付けられています。 評価するサイトをすべて選択し、[ **次へ**] をクリックします。
+6. 次のスクリーンショットは、**既定の Web サイト**、**TimeTracker**、および **CommerceNet4** の 3 つの Web サイトを示しています。 これらすべてのサイトに、移行するデータベースが関連付けられています。 評価するサイトをすべて選択し、[ **次へ**] をクリックします。
    
    ![](./media/web-sites-migration-from-iis-server/select-migration-candidates.png)
 7. [ **アップロード** ] をクリックし、対応状況レポートをアップロードします。 [ **ファイルをローカルに保存**] をクリックすると、前述したように、移行ツールを後でもう一度実行し、保存されている対応状況レポートをアップロードできます。

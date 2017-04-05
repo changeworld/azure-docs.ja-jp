@@ -16,9 +16,9 @@ ms.workload: powerbi
 ms.date: 03/02/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 4f60937f9a9dd0e7d9939f85d1a9d442a4b7f266
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: beadcbfa4907d68a687ec5144136132d8b0439e1
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/14/2017
 * [JavaScript レポート埋め込みサンプル](https://microsoft.github.io/PowerBI-JavaScript/demo)
 
 > [!NOTE] 
-> Power BI Embedded の使用を開始するためのサンプルを構成して実行するには、Azure サブスクリプションで少なくとも&1; つの **ワークスペース コレクション** 作成する必要があります。 Azure ポータルで **ワークスペース コレクション** を作成する方法については、 [Power BI Embedded の概要](power-bi-embedded-get-started.md)に関する記事をご覧ください。
+> Power BI Embedded の使用を開始するためのサンプルを構成して実行するには、Azure サブスクリプションで少なくとも 1 つの **ワークスペース コレクション** 作成する必要があります。 Azure ポータルで **ワークスペース コレクション** を作成する方法については、 [Power BI Embedded の概要](power-bi-embedded-get-started.md)に関する記事をご覧ください。
 
 ## <a name="configure-the-sample-app"></a>サンプル アプリの構成
 
@@ -44,9 +44,8 @@ ms.lasthandoff: 03/14/2017
 2. Visual Studio で **PowerBI-embedded.sln** を開きます。 NuGet パッケージ マネージャー コンソールで **Update-Package** コマンドを実行して、このソリューションで使用するパッケージを更新する必要のある場合があります。
 3. ソリューションをビルドします。
 4. **ProvisionSample** コンソール アプリを実行します。 サンプルのコンソール アプリで、ワークスペースのプロビジョニングを行って、PBIX ファイルをインポートします。
-5. 新しい**ワークスペース**をプロビジョニングするために、オプション 5 の **[Provision a new workspace in an existing workspace collection (既存のワークスペース コレクションに新しいワークスペースをプロビジョニングする)]** を選択します。
+5. 新しい**ワークスペース**をプロビジョニングするには、オプション 2 の **[Report management (レポート管理)]** を選択し、オプション 3 の **[Import PBIX Desktop file into a workspace (ワークスペースに PBIX デスクトップ ファイルをインポートする)]** を選択します。
 
-    ![](media/powerbi-embedded-get-started-sample/console-option-5.png)
 6. **ワークスペース コレクション**名と**アクセス キー**を入力します。 これらは **Azure ポータル**で確認できます。 **アクセス キー**を取得する方法の詳細については、「Microsoft Power BI Embedded の概要」の「 [Power BI API のアクセス キーの表示](power-bi-embedded-get-started.md#view-power-bi-api-access-keys) 」をご覧ください。
 
     ![](media/powerbi-embedded-get-started-sample/azure-portal.png)
@@ -94,7 +93,7 @@ Checking import state... Succeeded
 
 ## <a name="explore-the-sample-code"></a>サンプル コードの検証
 
-**Microsoft Power BI Embedded** のサンプルは、アプリへの **Power BI** レポートの統合方法を示すサンプル Web アプリです。 このサンプルは、モデル ビュー コント ローラー (MVC) デザイン パターンを使用して、ベスト プラクティスを説明します。 このセクションでは、サンプル コードのうち、**PowerBI-embedded** Web アプリ ソリューション内で検証できる部分について説明します。 モデル ビュー コント ローラー (MVC) パターンは、ユーザー入力に基づいて、ドメイン、プレゼンテーション、およびアクションのモデリングをモデル、ビュー、およびコントロールという&3; つの個別クラスに分割します。 MVC の詳細については、[ASP.NET の詳細](http://www.asp.net/mvc)に関するページをご覧ください。
+**Microsoft Power BI Embedded** のサンプルは、アプリへの **Power BI** レポートの統合方法を示すサンプル Web アプリです。 このサンプルは、モデル ビュー コント ローラー (MVC) デザイン パターンを使用して、ベスト プラクティスを説明します。 このセクションでは、サンプル コードのうち、**PowerBI-embedded** Web アプリ ソリューション内で検証できる部分について説明します。 モデル ビュー コント ローラー (MVC) パターンは、ユーザー入力に基づいて、ドメイン、プレゼンテーション、およびアクションのモデリングをモデル、ビュー、およびコントロールという 3 つの個別クラスに分割します。 MVC の詳細については、[ASP.NET の詳細](http://www.asp.net/mvc)に関するページをご覧ください。
 
 **Microsoft Power BI Embedded** のサンプル コードは以下のように区切られています。 サンプル内のコードを簡単に見つけることができるように、各セクションには PowerBI-embedded.sln ソリューションのファイル名が含まれます。
 
@@ -112,7 +111,7 @@ Checking import state... Succeeded
         public List<Report> Reports { get; set; }
     }
 
-**ReportViewModel.cs**：&1; つの Power BI レポートを表します。
+**ReportViewModel.cs**： 1 つの Power BI レポートを表します。
 
     public classReportViewModel
     {
@@ -133,7 +132,7 @@ Data Source=tcp:MyServer.database.windows.net,1433;Initial Catalog=MyDatabase
 
 ### <a name="view"></a>表示
 
-**ビュー**では、複数の Power BI **レポート** の表示と&1; つの Power BI **レポート**の表示を管理します。
+**ビュー**では、複数の Power BI **レポート** の表示と 1 つの Power BI **レポート**の表示を管理します。
 
 **Reports.cshtml**: **ActionLink** を作成するために **Model.Reports** を反復処理します。 **ActionLink** の構成は次のとおりです。
 

@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 1/23/2017
 ms.author: kasing
 translationtype: Human Translation
-ms.sourcegitcommit: 2deaf44de51a989463826d6e4815f9ce9f0bbee5
-ms.openlocfilehash: 4b1fd3527140bc40299c008071753a91d264d567
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 5e2ad5e5eae97645368797c8cdf848d88719bb64
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: 4b1fd3527140bc40299c008071753a91d264d567
 この記事には、クラシック デプロイメント モデルから Azure Resource Manager デプロイメント モデルに IaaS リソースの移行するのを支援するコミュニティ提供ツールが掲載されています。
 
 > [!NOTE]
-> Microsoft サポートは これらのツールを正式にサポートしていません。 そのため、PowerShell スクリプトは Github でオープンソースになっており、修正プログラムや追加シナリオの PR を歓迎しています。 問題をレポートするには、Github の問題の機能を使用します。
+> Microsoft サポートは これらのツールを正式にサポートしていません。 そのため、PowerShell スクリプトは GitHub でオープンソースになっており、修正プログラムや追加シナリオの PR を歓迎しています。 問題をレポートするには、GitHub の問題の機能を使用します。
 > 
 > これらのツールによる移行でクラシック仮想マシンにダウンタイムが発生します。 プラットフォームでサポートされている移行については、次を参照してください。 
 > 
@@ -44,10 +45,5 @@ ms.openlocfilehash: 4b1fd3527140bc40299c008071753a91d264d567
 migAz は、クラシック IaaS リソースの完全なセットを Azure Resource Manager の IaaS リソースに移行するための追加オプションです。 移行は、同じサブスクリプション内、または別のサブスクリプションとサブスクリプションの種類 (例: CSP サブスクリプション) の間で発生する可能性があります。
 
 [ツールのドキュメントへのリンク](https://github.com/Azure/classic-iaas-resourcemanager-migration/tree/master/migaz)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

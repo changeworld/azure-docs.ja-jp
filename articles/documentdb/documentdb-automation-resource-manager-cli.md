@@ -13,12 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/17/2017
+ms.date: 03/20/2017
 ms.author: dimakwan
 translationtype: Human Translation
-ms.sourcegitcommit: 655f501f920e3169450831f501f7183ae46a4a60
-ms.openlocfilehash: 67d06372d186a0b51eac7a94ad67b9cd7f516319
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: b286a93d7cc5f962f969e877b2f487e56cbb1a95
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -65,6 +65,7 @@ Arguments
                                     address ranges in CIDR form to be included as the allowed list
                                     of client IPs for a given database account. IP addresses/ranges
                                     must be comma separated and must not contain any spaces.
+                                    To enable portal access, include 104.42.195.92.
     --kind                        : The type of DocumentDB database account to create.  Allowed
                                     values: GlobalDocumentDB, MongoDB, Parse.  Default:
                                     GlobalDocumentDB.
@@ -182,7 +183,7 @@ Arguments
 
 ## <a id="regenerate-account-key-cli"></a> アカウント キーの再生成
 
-接続のセキュリティを高めるために、DocumentDB アカウントのアクセス キーは定期的に変更する必要があります。 片方のアクセス キーで DocumentDB アカウントに接続したまま、もう片方のアクセス キーを再生成できるように、アクセス キーは&2; つ割り当てられます。
+接続のセキュリティを高めるために、DocumentDB アカウントのアクセス キーは定期的に変更する必要があります。 片方のアクセス キーで DocumentDB アカウントに接続したまま、もう片方のアクセス キーを再生成できるように、アクセス キーは 2 つ割り当てられます。
 
 ```
 Arguments
@@ -198,7 +199,7 @@ Arguments
 
 ## <a id="modify-failover-priority-cli"></a> DocumentDB データベース アカウントのフェールオーバー優先度の変更
 
-複数リージョンのデータベース アカウントでは、DocumentDB データベース アカウントが存在するさまざまなリージョンのフェールオーバー優先度を変更できます。 DocumentDB データベース アカウントでのフェールオーバーの詳細については、「DocumentDB を使用したデータのグローバル分散[distribute-data-globally]」を参照してください。
+複数リージョンのデータベース アカウントでは、DocumentDB データベース アカウントが存在するさまざまなリージョンのフェールオーバー優先度を変更できます。 DocumentDB データベース アカウントでのフェールオーバーの詳細については、[DocumentDB を使用したデータのグローバル分散](documentdb-distribute-data-globally.md)に関する記事を参照してください。
 
 ```
 Arguments

@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 1d0136b044f6049e59fa09d824cf244cac703c45
-ms.openlocfilehash: 30475d710dc00ff06683dcb963e9fdfdd762735b
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 0dcc02e4f3b1e512a2c9e4b96894324414182af9
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -29,13 +29,13 @@ ms.lasthandoff: 02/23/2017
 > - [CLI](network-watcher-troubleshoot-manage-cli.md)
 > - [REST API](network-watcher-troubleshoot-manage-rest.md)
 
-Network Watcher は、Azure 内のネットワーク リソースを理解することに関連していることから多くの機能を提供します。 これらの機能の&1; つが、リソースのトラブルシューティングです。 リソースのトラブルシューティングは、PowerShell、CLI、または REST API から呼び出すことができます。 呼び出されると、Network Watcher は仮想ネットワーク ゲートウェイまたは接続の正常性を検査し、その結果を返します。
+Network Watcher は、Azure 内のネットワーク リソースの把握に関する多くの機能を提供します。 これらの機能の 1 つが、リソースのトラブルシューティングです。 リソースのトラブルシューティングは、PowerShell、CLI、または REST API から呼び出すことができます。 呼び出されると、Network Watcher は仮想ネットワーク ゲートウェイまたは接続の正常性を検査し、その結果を返します。
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
+この記事では、Windows、Mac、Linux で使用できるクロスプラット フォーム Azure CLI 1.0 を使います。 Network Watcher では、CLI サポートの Azure CLI 1.0 が使用されています。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関するページの手順を参照して、Network Watcher を作成済みであることを前提としています。
+このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関する記事の手順に従って Network Watcher を作成済みであることを前提としています。
 
 ## <a name="overview"></a>概要
 
@@ -43,7 +43,7 @@ Network Watcher は、Azure 内のネットワーク リソースを理解する
 
 ## <a name="retrieve-a-virtual-network-gateway-connection"></a>仮想ネットワーク ゲートウェイ接続の取得
 
-この例ではリソースのトラブルシューティングは接続上で実行されています。 仮想ネットワーク ゲートウェイを渡すこともできます。 次のコマンドレットは、リソース グループ内の VPN 接続を一覧表示します。
+この例では、リソースのトラブルシューティングは接続上で実行されています。 仮想ネットワーク ゲートウェイを渡すこともできます。 次のコマンドレットは、リソース グループ内の VPN 接続を一覧表示します。
 
 ```azurecli
 azure network vpn-connection list -g resourceGroupName
@@ -69,7 +69,7 @@ azure network vpn-connection show -g resourceGroupName -n connectionName
 azure storage account create -n storageAccountName -l location -g resourceGroupName
 ```
 
-## <a name="run-network-watcher-resource-troubleshooting"></a>Network Watcher のリソースのトラブルシューティングを実行する
+## <a name="run-network-watcher-resource-troubleshooting"></a>Network Watcher のリソースのトラブルシューティングの実行
 
 リソースのトラブルシューティングは、`network watcher troubleshoot` コマンドレットを使用して行います。 このコマンドレットに、リソース グループ、Network Watcher の名前、接続の ID、ストレージ アカウントの ID、トラブルシューティングの結果を格納する BLOB のパスを渡します。
 
@@ -81,11 +81,11 @@ azure network watcher -g resourceGroupName -n networkWatcherName -t connectionId
 
 ## <a name="understanding-the-results"></a>結果について
 
-アクション テキストは、問題を解決する方法の一般的なガイダンスを提供します。 問題に対してアクションを実施できる場合は、追加のガイダンスのリンクが付きます。 追加のガイダンスがない場合は、サポート ケースを開くための URL が応答に付随しています。  応答のプロパティと内容の詳細については、[Network Watcher のトラブルシューティングの概要](network-watcher-troubleshoot-overview.md)に関するページを参照してください。
+アクション テキストは、問題を解決する方法の一般的なガイダンスを提供します。 問題に対してアクションを実施できる場合は、追加のガイダンスのリンクが提供されます。 追加のガイダンスがない場合は、サポート ケースを開くための URL が応答で提供されます。  応答のプロパティと内容の詳細については、[Network Watcher のトラブルシューティングの概要](network-watcher-troubleshoot-overview.md)に関するページを参照してください。
 
-Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure BLOB ストレージを使用する](../storage/storage-dotnet-how-to-use-blobs.md)」を参照してください。 使用できるツールとして他にストレージ エクスプローラーがあります。 ストレージ エクスプローラーの詳細については、[ストレージ エクスプローラー](http://storageexplorer.com/)リンクに掲載されています。
+Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure BLOB ストレージを使用する](../storage/storage-dotnet-how-to-use-blobs.md)」を参照してください。 使用できるツールとして他に Storage Explorer があります。 ストレージ エクスプローラーの詳細については、[ストレージ エクスプローラー](http://storageexplorer.com/)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-設定が変更されて VPN 接続が停止される場合は、[ネットワーク セキュリティ グループの管理](../virtual-network/virtual-network-manage-nsg-arm-portal.md)に関するページを参照して、問題がある可能性のあるネットワーク セキュリティ グループとセキュリティ ルールを詳しく調べます。
+設定が変更されて VPN 接続が停止される場合は、[ネットワーク セキュリティ グループの管理](../virtual-network/virtual-network-manage-nsg-arm-portal.md)に関する記事を参照して、問題がある可能性のあるネットワーク セキュリティ グループとセキュリティ規則を詳しく調べます。
 

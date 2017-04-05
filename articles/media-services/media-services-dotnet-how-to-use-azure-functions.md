@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/21/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 0469880325b907065b95f94f62ab76d252c0eda5
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 0cde1f36af2d41697fa956c62cc882e5429707e8
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -339,7 +339,7 @@ project.json ファイルには、依存関係が含まれています。 以下
 
 これで、Media Services アプリケーションの開発準備が整いました。 
  
-カスタム コンテンツ作成ワークフローを作成するために Azure Media Services で Azure Functions および Logic Apps を使用するサンプル/ソリューションの詳細については、[Github 上のMedia Services .NET Functions 統合サンプル](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)に関する記事を参照してください。
+カスタム コンテンツ作成ワークフローを作成するために Azure Media Services で Azure Functions と Logic Apps を使用するサンプル/ソリューションの詳細については、[GitHub 上のMedia Services .NET Functions 統合サンプル](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)に関する記事を参照してください
 
 また、「[Azure WebHook を使用して .NET で Media Services ジョブ通知を監視する](media-services-dotnet-check-job-progress-with-webhooks.md)」も参照してください。 
 

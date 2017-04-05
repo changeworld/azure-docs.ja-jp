@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: eedaefeed1a704f7816e71ef7b2dddda2268a90f
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: 6196cb7fa13cf664faa72b7f5f5e0645e4402739
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 03/14/2017
 >
 >
 
-最新のシステムでは、アップグレードできることが製品の長期的な成功の鍵となります。 Azure Service Fabric クラスターは、ユーザーが所有するリソースの&1; つです。 この記事では、クラスターが Service Fabric のコードと構成のサポートされているバージョンを常に実行できるようにする方法について説明します。
+最新のシステムでは、アップグレードできることが製品の長期的な成功の鍵となります。 Azure Service Fabric クラスターは、ユーザーが所有するリソースの 1 つです。 この記事では、クラスターが Service Fabric のコードと構成のサポートされているバージョンを常に実行できるようにする方法について説明します。
 
 ## <a name="control-the-service-fabric-version-that-runs-on-your-cluster"></a>クラスターで実行される Service Fabric のバージョンの管理
 Microsoft が新しいバージョンをリリースしたときに、クラスターが Service Fabric の更新プログラムをダウンロードするように設定するには、**fabricClusterAutoupgradeEnabled** クラスター構成を true に設定します。 クラスターに適用する Service Fabric のサポートされているバージョンを選択するには、**fabricClusterAutoupgradeEnabled** クラスター構成を false に設定します。
@@ -40,7 +40,7 @@ Microsoft が新しいバージョンをリリースしたときに、クラス�
 
 各 Service Fabric ノードが別個の物理または仮想マシンに割り当てられる、運用スタイルのノード構成を使用している場合にのみ、クラスターを新しいバージョンにアップグレードできます。 1 台の物理マシンまたは仮想マシンに複数の Service Fabric ノードが存在する開発クラスターがある場合、新しいバージョンでクラスターを再構築する必要があります。
 
-2 つの異なるワークフローで、Service Fabric の最新バージョンまたはサポートされているバージョンにクラスターをアップグレードできます。 1 つは、最新バージョンを自動的にダウンロードするための接続を使用できるクラスター向けのワークフローです。 もう&1; つは、Service Fabric の最新バージョンをダウンロードするための接続を使用できないクラスター向けのワークフローです。
+2 つの異なるワークフローで、Service Fabric の最新バージョンまたはサポートされているバージョンにクラスターをアップグレードできます。 1 つは、最新バージョンを自動的にダウンロードするための接続を使用できるクラスター向けのワークフローです。 もう 1 つは、Service Fabric の最新バージョンをダウンロードするための接続を使用できないクラスター向けのワークフローです。
 
 ### <a name="upgrade-clusters-that-have-connectivity-to-download-the-latest-code-and-configuration"></a>最新のコードと構成をダウンロードするための接続を使用できるクラスターをアップグレードする
 クラスター ノードが [http://download.microsoft.com](http://download.microsoft.com) にインターネット接続できる場合は、以下の手順でクラスターをサポートされているバージョンにアップグレードします。
@@ -127,24 +127,16 @@ Service Fabric の新しいバージョンが利用可能になると、パッ�
 
 #### <a name="cluster-upgrade-workflow"></a>クラスターのアップグレード ワークフロー
 
-1. [Windows Server の Service Fabric クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)に関するドキュメントから最新バージョンのパッケージをダウンロードします。
-2. クラスターにノードとして列挙されているすべてのマシンに管理者アクセスできるマシンからクラスターに接続します。 このスクリプトが実行されるマシンがクラスターに属している必要はありません。
+1. クラスター内のいずれかのノードから Get-ServiceFabricClusterUpgrade を実行し、TargetCodeVersion を書き留めます。
+2. インターネットに接続されているコンピューターから次のスクリプトを実行して、現在のバージョンとアップグレードの互換性があるすべてのバージョンを一覧表示し、関連付けられたダウンロード リンクから対応するパッケージをダウンロードします。
 
     ```powershell
 
-    ###### Connect to the cluster
-    $ClusterName= "mysecurecluster.something.com:19000"
-    $CertThumbprint= "70EF5E22ADB649799DA3C8B6A6BF7FG2D630F8F3"
-    Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveIntervalInSec 10 `
-        -X509Credential `
-        -ServerCertThumbprint $CertThumbprint  `
-        -FindType FindByThumbprint `
-        -FindValue $CertThumbprint `
-        -StoreLocation CurrentUser `
-        -StoreName My
+    ###### Get list of all upgrade compatible packages  
+    Get-ServiceFabricRuntimeUpgradeVersion -BaseVersion <TargetCodeVersion as noted in Step 1> 
     ```
 
-3. ダウンロードしたパッケージをクラスター イメージ ストアにコピーします。
+3. クラスターにノードとして列挙されているすべてのマシンに管理者アクセスできるマシンからクラスターに接続します。 このスクリプトが実行されるマシンがクラスターに属している必要はありません。
 
     ```powershell
 
@@ -155,8 +147,9 @@ Service Fabric の新しいバージョンが利用可能になると、パッ�
     Copy-ServiceFabricClusterPackage -Code -CodePackagePath .\MicrosoftAzureServiceFabric.5.3.301.9590.cab -ImageStoreConnectionString "fabric:ImageStore"
 
     ```
+4. ダウンロードしたパッケージをクラスター イメージ ストアにコピーします。
 
-4. コピーしたパッケージを登録します。
+5. コピーしたパッケージを登録します。
 
     ```powershell
 
@@ -167,7 +160,7 @@ Service Fabric の新しいバージョンが利用可能になると、パッ�
     Register-ServiceFabricClusterPackage -Code -CodePackagePath MicrosoftAzureServiceFabric.5.3.301.9590.cab
 
      ```
-5. 利用可能なバージョンへのクラスターのアップグレードを開始します。
+6. 利用可能なバージョンへのクラスターのアップグレードを開始します。
 
     ```Powershell
 
@@ -197,6 +190,13 @@ Service Fabric の新しいバージョンが利用可能になると、パッ�
     Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
 
 ```
+
+### <a name="cluster-certificate-config-upgrade"></a>クラスター証明書の構成のアップグレード  
+クラスター証明書はクラスター ノード間での認証で使用されるため、証明書のロール オーバーは特に注意して実行する必要があります。失敗するとクラスター ノード間の通信がブロックされます。  
+技術的には、次の 2 つのオプションがサポートされます。  
+
+1. 証明書のシングル アップグレード: アップグレードのパスは '証明書 A (プライマリ) -> 証明書 B (プライマリ) -> 証明書 C (プライマリ) -> ...' です。   
+2. 証明書のダブル アップグレード: アップグレードのパスは '証明書 A (プライマリ) -> 証明書 A (プライマリ) および B (セカンダリ) -> 証明書 B (プライマリ) -> 証明書 B (プライマリ) および C (セカンダリ) -> 証明書 C (プライマリ) -> ...' です。
 
 
 ## <a name="next-steps"></a>次のステップ
