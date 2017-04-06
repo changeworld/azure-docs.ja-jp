@@ -4,7 +4,7 @@ description: "Azure Virtual Network 上の仮想マシン (VM) に新しい Acti
 services: active-directory, virtual-network
 keywords: "Active Directory 仮想マシン, Active Directory フォレストのインストール, Azure Active Directory ビデオ  "
 documentationcenter: 
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: femila
 tags: 
 ms.assetid: eb7170d0-266a-4caa-adce-1855589d65d1
@@ -13,8 +13,8 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/11/2017
-ms.author: markvi
+ms.date: 04/06/2017
+ms.author: joflore
 translationtype: Human Translation
 ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
 ms.openlocfilehash: 46e248112985b2e8f58f90e15cf885839d3cfcc8

@@ -33,7 +33,7 @@ ms.lasthandoff: 03/22/2017
 <br>
 移行プロセス中に実行する必要のある手順を順番に示すフローチャートを以下に示します
 
-![移行手順を示すスクリーンショット](./media/virtual-machines-windows-migration-classic-resource-manager/migration-flow.png)
+![Screenshot that shows the migration steps](./media/virtual-machines-windows-migration-classic-resource-manager/migration-flow.png)
 
 ## <a name="step-1-prepare-for-migration"></a>手順 1. 移行を準備する
 ここでは、クラシックから Resource Manager への IaaS リソースの移行を評価するときに推奨できるベスト プラクティスをいくつか紹介します。

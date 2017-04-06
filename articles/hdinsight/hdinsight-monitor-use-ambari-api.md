@@ -15,9 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: jgao
+ROBOTS: NOINDEX
 translationtype: Human Translation
 ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
 ms.openlocfilehash: 6d36976712ba1ea5d51f203fc532d7f89c3b0871
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -170,9 +172,4 @@ Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api
 [hdinsight-provision]: hdinsight-provision-clusters.md
 
 [img-jobtracker-output]: ./media/hdinsight-monitor-use-ambari-api/hdi.ambari.monitor.jobtracker.output.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 
