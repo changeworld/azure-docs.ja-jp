@@ -38,7 +38,7 @@ Visual Studio のツールを活用し、[App Service](http://go.microsoft.com/f
 
 Visual Studio Ultimate がある場合は、デバッグに [IntelliTrace](http://msdn.microsoft.com/library/vstudio/dd264915.aspx) を使用することもできます。 IntelliTrace については、このチュートリアルでは説明しません。
 
-## <a name="a-nameprerequisitesaprerequisites"></a><a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>前提条件
 このチュートリアルでは、[Azure と ASP.NET の使用][GetStarted]に関するページで設定した開発環境、Web プロジェクト、および Azure Web アプリを使用します。 Web ジョブのセクションでは、[Azure Web ジョブ SDK の使用][GetStartedWJ]に関するページで作成したアプリケーションが必要です。
 
 このチュートリアルで示すコード サンプルは、C# MVC Web アプリケーションに対応していますが、トラブルシューティング手順は Visual Basic および Web フォームの各アプリケーションでも同じです。
@@ -47,7 +47,7 @@ Visual Studio Ultimate がある場合は、デバッグに [IntelliTrace](http:
 
 ストリーミング ログ機能は、.NET Framework 4 以降を対象とするアプリケーションでのみ動作します。
 
-## <a name="a-namesitemanagementaweb-app-configuration-and-management"></a><a name="sitemanagement"></a>Web アプリの構成と管理
+## <a name="sitemanagement"></a>Web アプリの構成と管理
 Visual Studio は、 [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)で利用できる Web アプリ管理機能や構成設定に一部アクセスできるようになっています。 このセクションでは、 **サーバー エクスプローラー**を使用することで、その対象となる機能や設定について取り上げます。 最新の Azure の統合機能を確認するために、 **Cloud Explorer** もお試しください。 どちらのウィンドウも **[表示]** メニューから開くことができます。
 
 1. まだ Visual Studio から Azure にサインインしていない場合は、**サーバー エクスプローラー**の **[Azure に接続]** をクリックします。
@@ -75,7 +75,7 @@ Visual Studio は、 [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId
 
     このウィンドウでは実行できない Web アプリ管理タスクを行う場合は、 **[管理ポータルで開く]** をクリックし、ブラウザー ウィンドウを開いて Azure ポータルにアクセスします。
 
-## <a name="a-nameremoteviewaaccess-web-app-files-in-server-explorer"></a><a name="remoteview"></a>サーバー エクスプローラーでの Web アプリ ファイルへのアクセス
+## <a name="remoteview"></a>サーバー エクスプローラーでの Web アプリ ファイルへのアクセス
 通常は、Web.config ファイルで `customErrors` フラグを `On` または `RemoteOnly` に設定して Web プロジェクトをデプロイします。これは、何か問題が発生したときに、役に立つエラー メッセージを表示しないことを意味します。 表示されるエラーの多くは、次のようなページになります。
 
 **'/' アプリケーションのサーバー エラー:**
@@ -113,7 +113,7 @@ Visual Studio は、 [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId
 
 Web.config ファイルを編集することは、Azure Web アプリケーションにあるファイルの読み取りと編集を可能にして、トラブルシューティングが容易にする状況における 1 つの例にすぎません。
 
-## <a name="a-nameremotedebugaremote-debugging-web-apps"></a><a name="remotedebug"></a>Web アプリのリモート デバッグ
+## <a name="remotedebug"></a>Web アプリのリモート デバッグ
 詳細なエラー メッセージで十分な情報が表示されておらず、エラーをローカルで再現できない場合は、トラブルシューティングの別の方法として、リモートでデバッグ モードを実行することができます。 ブレークポイントの設定、メモリの直接操作、コードのステップ実行、さらにコード パスの変更を実行できます。
 
 リモート デバッグは、Visual Studio の各 Express Edition では機能しません。
@@ -159,7 +159,7 @@ Web.config ファイルを編集することは、Azure Web アプリケーシ�
 
      ![[About] ページ (値の変更後)](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugchangeinwa.png)
 
-## <a name="a-nameremotedebugwja-remote-debugging-webjobs"></a><a name="remotedebugwj"></a> Web ジョブのリモート デバッグ
+## <a name="remotedebugwj"></a> Web ジョブのリモート デバッグ
 このセクションでは、「 [Azure Web ジョブ SDK の使用](websites-dotnet-webjobs-sdk.md)」で作成したプロジェクトと Web アプリを使用してリモートでデバッグする方法を示します。
 
 このセクションで示す機能は、Visual Studio 2013 Update 4 以降でのみ使用できます。
@@ -221,7 +221,7 @@ Web.config ファイルを編集することは、Azure Web アプリケーシ�
 * リモート デバッグ機能を有効にしたときに、サーバー上でタイマーが開始され、48 時間後にこの機能が自動的に無効になります。 この 48 時間の上限はセキュリティとパフォーマンス上の理由で設定されています。 必要に応じて、この機能を何回でも簡単に有効に戻すことができます。 積極的にデバッグを実行している場合以外は、この機能を無効にしたままにすることをお勧めします。
 * 手動でデバッガーを Web アプリケーション プロセス (w3wp.exe) だけでなく、任意のプロセスに接続できます。 Visual Studio のデバッグ モードの使い方の詳細については、MSDN のトピック「 [Visual Studio でのデバッグ](http://msdn.microsoft.com/library/vstudio/sc65sadd.aspx)」を参照してください。
 
-## <a name="a-namelogsoverviewadiagnostic-logs-overview"></a><a name="logsoverview"></a>診断ログの概要
+## <a name="logsoverview"></a>診断ログの概要
 Azure の Web アプリケーションで動作する ASP.NET アプリケーションでは、次の種類のログが作成されます。
 
 * **アプリケーション トレース ログ**<br/>
@@ -237,7 +237,7 @@ Azure の Web アプリケーションで動作する ASP.NET アプリケーシ
 
 ログは、Web アプリのファイル システムにあり、FTP 経由でアクセス可能な *LogFiles* フォルダー内のファイルに書き込まれます。 Web サーバーのログとアプリケーションのログは、Azure のストレージ アカウントに出力することもできます。 ストレージ アカウントには、ファイル システムよりも大量のログを保持することができます。 ファイル システムを使用した場合、保存できるログの上限は 100 MB です。 (ファイル システムのログは、短期間のみ保持されます。 上限に達すると、古いログ ファイルは削除され、新しいログ ファイルのための領域が確保されます。)  
 
-## <a name="a-nameapptracelogsacreate-and-view-application-trace-logs"></a><a name="apptracelogs"></a>アプリケーションのトレース ログの作成と表示
+## <a name="apptracelogs"></a>アプリケーションのトレース ログの作成と表示
 このセクションでは、次のタスクを実行します。
 
 * [Azure と ASP.NET の使用][GetStarted]に関するページで作成した Web プロジェクトに、トレース ステートメントを追加します。
@@ -373,7 +373,7 @@ Web ジョブでアプリケーション ログを作成する方法について
 
 検索文字列または正規表現を入力した場合、ログ情報は、Visual Studio によってクライアント側でフィルタリングされます。 つまり、フィルターの条件は、**出力**ウィンドウにログが表示された後に入力できます。フィルターの条件を変更するためにログを生成し直す必要はありません。
 
-## <a name="a-namewebserverlogsaview-web-server-logs"></a><a name="webserverlogs"></a>Web サーバーのログの表示
+## <a name="webserverlogs"></a>Web サーバーのログの表示
 Web サーバーのログには、Web アプリケーション上の HTTP アクティビティがすべて記録されます。 それらの HTTP アクティビティを **出力** ウィンドウに表示するには、Web アプリに対してその機能を有効にしたうえで、HTTP アクティビティを監視するための指定を Visual Studio に対して行う必要があります。
 
 1. **サーバー エクスプローラー**から開いた **Azure Web アプリの [構成]** タブで [Web サーバーのログ記録] を **[オン]** に変更し、**[保存]** をクリックします。
@@ -395,7 +395,7 @@ Visual Studio で Web サーバーのログを初めて有効にしたとき、�
 
 Azure ポータルを使用して、Azure ストレージ アカウントへの Web サーバーのログ記録を有効にした後、Visual Studio でログ記録を無効にした場合、Visual Studio でログ記録を再度有効にすると、ストレージ アカウントの設定が復元されます。
 
-## <a name="a-namedetailederrorlogsaview-detailed-error-message-logs"></a><a name="detailederrorlogs"></a>詳細なエラー メッセージ ログの表示
+## <a name="detailederrorlogs"></a>詳細なエラー メッセージ ログの表示
 詳細なエラー ログでは、エラー応答コード (400 以上) が返された HTTP 要求について、いくつかの詳しい情報が確認できます。 それらの HTTP 要求を **出力** ウィンドウに表示するには、Web アプリに対してその機能を有効にしたうえで、HTTP 要求を監視するための指定を Visual Studio に対して行う必要があります。
 
 1. **サーバー エクスプローラー**から開いた **Azure Web アプリの [構成]** タブで **[詳細なエラー メッセージ]** を **[オン]** に変更し、**[保存]** をクリックします。
@@ -415,7 +415,7 @@ Azure ポータルを使用して、Azure ストレージ アカウントへの 
 
     ![ブラウザー ウィンドウの詳細なエラー ログ](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-detailederrorloginbrowser.png)
 
-## <a name="a-namedownloadlogsadownload-file-system-logs"></a><a name="downloadlogs"></a>ファイル システムのログのダウンロード
+## <a name="downloadlogs"></a>ファイル システムのログのダウンロード
 **出力** ウィンドウで監視できるすべてのログは *.zip* ファイルとしてダウンロードすることもできます。
 
 1. **出力**ウィンドウの **[ストリーミング ログのダウンロード]** をクリックします。
@@ -435,7 +435,7 @@ Azure ポータルを使用して、Azure ストレージ アカウントへの 
 
      (*deployments* フォルダーは、ソース管理の発行によって作成されたファイルに使用されます。Visual Studio の発行に関連したファイルは保存されません。 *Git* フォルダーは、ログ ファイル ストリーミング サービスやソース管理の発行に関連したトレースに使用されます。)  
 
-## <a name="a-namestoragelogsaview-storage-logs"></a><a name="storagelogs"></a>ストレージ ログの表示
+## <a name="storagelogs"></a>ストレージ ログの表示
 アプリケーション トレース ログを Azure のストレージ アカウントに送って、Visual Studio で表示することもできます。 そのためには、ストレージ アカウントを作成してクラシック ポータルでストレージ ログを有効にし、**[Azure Web アプリ]** ウィンドウの **[ログ]** タブにストレージ ログを表示します。
 
 次の 3 個の送信先のいずれかまたはすべてにログを送信することができます。
@@ -514,7 +514,7 @@ Azure ポータルを使用して、Azure ストレージ アカウントへの 
 
      ![サーバー エクスプローラーのトレース テーブル](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-tracetablerow.png)
 
-## <a name="a-namefailedrequestlogsaview-failed-request-tracing-logs"></a><a name="failedrequestlogs"></a>失敗した要求トレース ログの表示
+## <a name="failedrequestlogs"></a>失敗した要求トレース ログの表示
 失敗した要求トレース ログは、URL の書き換えや認証の問題など、IIS による HTTP 要求の処理を詳しく把握する必要がある状況で活用できます。
 
 Azure の Web アプリでは、同じ失敗した要求トレース機能が使用されています。この機能は、IIS 7.0 以降で利用できます。 ただし、ログに記録するエラーを指定するための IIS 設定にアクセスする必要はありません。 失敗した要求トレースを有効にすると、すべてのエラーがキャプチャされます。
@@ -555,7 +555,7 @@ Azure の Web アプリでは、同じ失敗した要求トレース機能が使
 
     ![失敗した要求トレースをブラウザーで表示したところ](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-failedrequestinbrowser.png)
 
-## <a name="a-namenextstepsanext-steps"></a><a name="nextsteps"></a>次のステップ
+## <a name="nextsteps"></a>次のステップ
 Azure の Web アプリケーションで作成されたログは Visual Studio を使って簡単に参照できることが確認できました。 次のセクションでは、関連トピックに関する他のリソースへのリンクを紹介します。
 
 * Azure の Web アプリケーションのトラブルシューティング
@@ -637,6 +637,6 @@ Web サーバーのログの分析の詳細については、次のリソース�
 ### <a name="analyzing-failed-request-tracing-logs"></a>失敗した要求トレース ログの分析
 失敗した要求トレース ログの活用方法については、Microsoft TechNet Web サイトの「[Using Failed Request Tracing (失敗した要求トレースの使用)](http://www.iis.net/learn/troubleshoot/using-failed-request-tracing)」セクションなどが参考になります。 ただし、このドキュメントで扱う内容は、失敗した要求トレースを IIS で構成する作業が主体です。この作業を Azure Web Apps で行うことはできません。
 
-[GetStarted]: web-sites-dotnet-get-started.md
+[GetStarted]: app-service-web-get-started-dotnet.md
 [GetStartedWJ]: websites-dotnet-webjobs-sdk.md
 

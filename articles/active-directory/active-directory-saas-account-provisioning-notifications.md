@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 04/06/2017
 ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: 6adb1dd25c24b18b834dd921c2586ef29d56dc81
 ms.openlocfilehash: e15f3740fbf7cd97002b0b7efda34e968db4fe3c
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -50,9 +51,4 @@ ms.openlocfilehash: e15f3740fbf7cd97002b0b7efda34e968db4fe3c
 <!--Image references-->
 [1]: ./media/active-directory-saas-account-provisioning-notifications/ic766307.png
 [2]: ./media/active-directory-saas-account-provisioning-notifications/ic766308.png
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 
