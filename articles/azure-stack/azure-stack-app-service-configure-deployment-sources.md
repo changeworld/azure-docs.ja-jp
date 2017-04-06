@@ -12,21 +12,17 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/1/2017
+ms.date: 4/6/2017
 ms.author: anwestg
 translationtype: Human Translation
-ms.sourcegitcommit: cf55a0b4f61c971cedee602575f73d39c70f9edb
-ms.openlocfilehash: 489034cba479af69c74492bcc7c80e8d9f27f119
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: b64d943516f4debf91db1de2066b48158b6dcd35
+ms.openlocfilehash: 485fdab5ad1cd2c8a9ea27e3a2b1f93e2c2513a0
+ms.lasthandoff: 02/08/2017
 
 
 ---
 
 # <a name="configure-deployment-sources"></a>Configure deployment sources
-
-> [!IMPORTANT] 
-> This topic applies only to Azure Stack Technical Preview 2.
->
 
 App Service on Azure Stack supports on-demand deployment from multiple Source Control Providers.  This feature enables application developers to be able to deploy direct from their source control repositories.  In order for tenants to be able to configure App Service to connect to their repositories, Administrators must first configure the integration between App Service on Azure Stack and the Source Control Provider.  The Source Control Providers supported, in addition to local Git, are:
 

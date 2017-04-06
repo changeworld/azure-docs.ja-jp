@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 04/06/2017
 ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 3400d00112b4b66cceef602dba5cb8666e49e0e4
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -44,10 +45,5 @@ ms.openlocfilehash: 3400d00112b4b66cceef602dba5cb8666e49e0e4
 ## <a name="see-also"></a>関連項目
 * [Office 365 およびその他の Azure Active Directory 接続アプリでの条件付きアクセスの使用](active-directory-conditional-access.md)
 * [Azure AD への条件付きアクセスの基本](active-directory-conditional-access-azuread-connected-apps.md) 
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

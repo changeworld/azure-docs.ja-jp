@@ -3,7 +3,7 @@ title: "Reliable Collection での作業 | Microsoft Docs"
 description: "Reliable Collection で作業するためのベスト プラクティスについて説明します。"
 services: service-fabric
 documentationcenter: .net
-author: JeffreyRichter
+author: mcoskun
 manager: timlt
 editor: 
 ms.assetid: 39e0cd6b-32c4-4b97-bbcf-33dad93dcad1
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/05/2017
-ms.author: jeffreyr
+ms.author: mcoskun
 translationtype: Human Translation
 ms.sourcegitcommit: 407f2631044fb836930093a774f5b718c91f711d
 ms.openlocfilehash: 822941aa3f745e51f653b4274bf0add9c44ff0c8

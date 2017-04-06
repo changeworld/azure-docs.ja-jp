@@ -15,9 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
+ROBOTS: NOINDEX
 translationtype: Human Translation
 ms.sourcegitcommit: dc8e9647d99b39cdee36ec11e144452326e2d968
 ms.openlocfilehash: 99a3e44730737a9e1b3db8eead6dfe181382962b
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -31,16 +33,16 @@ ms.openlocfilehash: 99a3e44730737a9e1b3db8eead6dfe181382962b
 >
 > HDInsight 3.4 以上での HDInsight クラスターへの接続と MapReduce ジョブの実行に関する情報については、[SSH による MapReduce の使用](hdinsight-hadoop-use-mapreduce-ssh.md)に関するページを参照してください。
 
-## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>前提条件
+## <a id="prereq"></a>前提条件
 この記事の手順を完了するには、次のものが必要です。
 
 * Windows ベースの HDInsight (HDInsight で Hadoop を使用) クラスター
 * Windows 10、Windows 8、Windows 7 を実行するクライアント コンピューター
 
-## <a name="a-idconnectaconnect-with-remote-desktop"></a><a id="connect"></a>リモート デスクトップへの接続
+## <a id="connect"></a>リモート デスクトップへの接続
 「 [RDP を使用した HDInsight クラスターへの接続](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)」の手順に従って、HDInsight クラスターのリモート デスクトップを有効にしてからデスクトップに接続します。
 
-## <a name="a-idhadoopause-the-hadoop-command"></a><a id="hadoop"></a>Hadoop コマンドの使用
+## <a id="hadoop"></a>Hadoop コマンドの使用
 HDInsight クラスターのデスクトップに接続したら、次の手順に従って Hadoop コマンドを使用して MapReduce ジョブを実行します。
 
 1. HDInsight デスクトップから、 **Hadoop コマンド ライン**を起動します。 これにより、**c:\apps\dist\hadoop-&lt;version number>** ディレクトリに新しいコマンド プロンプトが開きます。
@@ -89,10 +91,10 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
         wretched        6
         wriggling       1
 
-## <a name="a-idsummaryasummary"></a><a id="summary"></a>概要
+## <a id="summary"></a>概要
 このように、Hadoop を使用すると、HDInsight クラスターで簡単に MapReduce ジョブを実行し、ジョブ出力を表示できます。
 
-## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>次のステップ
+## <a id="nextsteps"></a>次のステップ
 HDInsight での MapReduce ジョブに関する全般的な情報:
 
 * [HDInsight Hadoop での MapReduce の使用](hdinsight-use-mapreduce.md)
@@ -101,9 +103,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

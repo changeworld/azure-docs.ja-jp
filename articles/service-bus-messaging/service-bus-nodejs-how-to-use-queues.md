@@ -189,7 +189,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[Create and deploy a Node.js application to an Azure Website]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
+[Create and deploy a Node.js application to an Azure Website]: ../app-service-web/app-service-web-get-started-nodejs.md
 [Node.js Cloud Service with Storage]: ../storage/storage-nodejs-use-table-storage-cloud-service-app.md
 [Node.js Web Application with Storage]: ../storage/storage-nodejs-how-to-use-table-storage.md
 [Service Bus quotas]: service-bus-quotas.md
