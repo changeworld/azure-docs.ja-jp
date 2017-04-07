@@ -58,12 +58,12 @@ This sample script creates a key vault, and then stores a certificate stored in 
     "dataType" :"pfx",
     "password": "$certPassword"
     }
-    @$jsonObjectBytes = [System.Text.Encoding]::UTF8.GetBytes($jsonObject)
+    "@
+    $jsonObjectBytes = [System.Text.Encoding]::UTF8.GetBytes($jsonObject)
     $jsonEncoded = [System.Convert]::ToBase64String($jsonObjectBytes)
     Switch-AzureMode -Name AzureResourceManager
     New-AzureRmResourceGroup -Name $resourceGroup -Location $location
-    New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName
-    $resourceGroup -Location $location -sku standard -EnabledForDeployment
+    New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroup -Location $location -sku standard -EnabledForDeployment
     $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText -Force
     Set-AzureKeyVaultSecret -VaultName $vaultName -Name $secretName -SecretValue $secret
 

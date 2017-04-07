@@ -76,6 +76,7 @@ ms.lasthandoff: 03/16/2017
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/123/player] 
 
+
 [!INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
 
