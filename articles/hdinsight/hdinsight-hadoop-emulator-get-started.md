@@ -35,7 +35,7 @@ Hortonworks の Hadoop サンドボックスを仮想マシンにインストー
 
 ## <a name="download-and-install-the-virtual-machine"></a>仮想マシンのダウンロードとインストール
 1. [Hortonworks のダウンロード ページ](http://hortonworks.com/downloads/#sandbox)に移動します。
-2. **[VIRTUALBOX 用ダウンロード]** をクリックして、最新の Hrotonworks Sandbox を VM にダウンロードします。 ダウンロードが始まる前に、Hortonworks に登録するように求められます。 ダウンロードは、ネットワーク速度に応じて&1; ～&2; 時間かかります。
+2. **[VIRTUALBOX 用ダウンロード]** をクリックして、最新の Hrotonworks Sandbox を VM にダウンロードします。 ダウンロードが始まる前に、Hortonworks に登録するように求められます。 ダウンロードは、ネットワーク速度に応じて 1 ～ 2 時間かかります。
    
     ![Link image for download Hortonworks Sandbox for VirtualBox](./media/hdinsight-hadoop-emulator-get-started/download-sandbox.png)
 3. 同じ Web ページで、**[Import on Virtual Box (仮想ボックスにインポート)]** リンクをクリックして、仮想マシン用のインストール手順が記載された PDF をダウンロードします。
@@ -52,7 +52,7 @@ Hortonworks の Hadoop サンドボックスを仮想マシンにインストー
 1. Hortonworks Sandbox を選択し、**[Start (開始)]**、**[Normal Start (通常の方法で開始)]** の順にクリックします。 仮想マシンのブート プロセスが終了すると、ログインに関する手順が表示されます。
    
     ![[Normal Start (通常の方法で開始)]](./media/hdinsight-hadoop-emulator-get-started/normal-start.png)
-2. Web ブラウザーを開き、表示された URL に移動します (通常は http://127.0.0.1:8888)。
+2. Web ブラウザーを開き、表示された URL に移動します (通常は http://127.0.0.1:8888 )。
 
 ## <a name="set-sandbox-passwords"></a>サンドボックスのパスワードの設定
 
