@@ -77,7 +77,6 @@ ms.lasthandoff: 03/30/2017
 * App Service アプリ (Web Apps) - 「 [App Service の制限事項](#app-service-limitations)
 * Automation
 * Batch
-
 * Bing Maps
 * CDN
 * Cloud Services - 「 [クラシック デプロイメントの制限事項](#classic-deployment-limitations)
