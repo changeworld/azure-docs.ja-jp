@@ -149,7 +149,7 @@ Azure Site Recovery を使用していて、お使いのアプリケーション
 [Machine Change Tracking] \(コンピューター変更の追跡) パネルには、すべての変更の一覧が新しい順で表示されており、ログ検索へのリンクで追加情報を探すことができます。
 ![[Machine Change Tracking] (コンピューター変更の追跡) パネル](media/oms-service-map/change-tracking.png)
 
-下記では、**[Show in Log Analytics] (Log Analytics で表示)** を選択して、構成の変更イベントの詳細を表示しています。
+下記では、**[Show in Log Analytics] \(Log Analytics で表示)** を選択して、構成の変更イベントの詳細を表示しています。
 ![構成の変更イベント](media/oms-service-map/configuration-change-event.png)
 
 

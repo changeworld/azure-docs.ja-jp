@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 03/23/2017
+ms.date: 03/28/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: c8a915055318697ade229837653df4c105279299
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: a2ebd1181535087dbd33c5088fc495ccebf76e4f
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -48,7 +48,7 @@ Azure DocumentDB .NET Core SDK の NoSQL チュートリアルへようこそ。
 
 時間がなくても 心配はありません。 [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-core-getting-started) で完全なソリューションを入手できます。 簡単な手順については「[完全なソリューションの取得](#GetSolution)」を参照してください。
 
-DocumentDB .NET Core SDK を使用して Xamarin iOS、Android、またはフォーム アプリケーションを作成する方法については、 [DocumentDB を使用した Xamarin モバイル アプリケーションの構築](documentdb-mobile-apps-with-xamarin.md)に関するページを参照してください。
+DocumentDB .NET Core SDK を使用して Xamarin iOS、Android、またはフォーム アプリケーションを作成する場合は、 [DocumentDB を使用した Xamarin モバイル アプリケーションの開発](documentdb-mobile-apps-with-xamarin.md)に関する記事を参照してください。
 
 その後で、このページの上部または下部にある投票ボタンを使用して、フィードバックをお寄せください。 マイクロソフトから直接ご連絡を差し上げて問題がなければ、コメント欄に電子メール アドレスをご記入ください。
 
@@ -314,7 +314,7 @@ private async Task CreateFamilyDocumentIfNotExists(string databaseName, string c
 
 さらに、2 つのドキュメントを挿入します。1 つは Andersen Family のドキュメント、もう 1 つは Wakefield Family のドキュメントです。
 
-次のコードをコピーし、**GetStartedDemo** メソッドに貼り付けます。ドキュメント コレクションの作成処理のすぐ下に追加してください。
+`// ADD THIS PART TO YOUR CODE` に続くコードをコピーし、**GetStartedDemo** メソッドのドキュメント コレクションの作成処理の下に貼り付けます。
 
 ```csharp
 await this.CreateDatabaseIfNotExists("FamilyDB_oa");
@@ -591,7 +591,7 @@ Visual Studio で DocumentDB .NET Core SDK への参照を復元するには、�
 
 ## <a name="next-steps"></a>次のステップ
 * さらに複雑な ASP.NET MVC NoSQL チュートリアルが必要ですか。 「 [DocumentDB を使用した ASP.NET MVC Web アプリケーションの構築](documentdb-dotnet-application.md)」を参照してください。
-* DocumentDB .NET Core SDK を使用して Xamarin iOS、Android、またはフォーム アプリケーションを作成する方法については、 [DocumentDB を使用した Xamarin モバイル アプリケーションの構築](documentdb-mobile-apps-with-xamarin.md)に関するページを参照してください。
+* DocumentDB .NET Core SDK を使用して Xamarin iOS、Android、またはフォーム アプリケーションを開発する場合は、 [DocumentDB を使用した Xamarin モバイル アプリケーションの開発](documentdb-mobile-apps-with-xamarin.md)に関する記事を参照してください。
 * DocumentDB のスケールとパフォーマンスのテストを行う場合は、 「[Azure DocumentDB のパフォーマンスとスケールのテスト](documentdb-performance-testing.md)」を参照してください。
 * [DocumentDB アカウントを監視する](documentdb-monitor-accounts.md)方法について学習します。
 * [クエリのプレイ グラウンド](https://www.documentdb.com/sql/demo)でサンプル データセットに対してクエリを実行します。

@@ -124,7 +124,7 @@ Apache Storm を実行して HDInsight クラスターにプロジェクトを�
 
 ## <a name="python-components-with-a-clojure-topology"></a>Clojure トポロジを使用する Python コンポーネント
 > [!NOTE]
-> この例は、 [ClojureTopology](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount) ディレクトリの **https://github.com/Azure-Samples/hdinsight-python-storm-wordcount** にあります。
+> この例は、 **ClojureTopology** ディレクトリの [https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount) にあります。
 > 
 > 
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2017
+ms.date: 03/30/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 3cba38d95535ff5ed3cd62aac5c0aa04a310f48c
-ms.openlocfilehash: 10e58a76644b5e4d50f05a2db03f4af193cc5152
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
+ms.openlocfilehash: 1091abef19121ac4ce65fdaf7299b091bf41eb1c
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -29,12 +29,12 @@ Azure Security Center の [Power BI ダッシュボード](http://aka.ms/azure-s
 ## <a name="using-azure-security-center-dashboard-to-access-power-bi"></a>Azure Security Center ダッシュボードを使用して Power BI にアクセスする
 Azure Security Center ダッシュボードを使用して、Power BI レポートにアクセスすることもできます。 このタスクを実行するには、次の手順に従います。
 
-1. **Azure Security Center** ダッシュボードで **[Power BI で探索する]** ボタンをクリックします。
+1. **Azure Security Center** ダッシュボードで **[Power BI]** ボタンをクリックします。
 
-    ![Connect to Azure Security Center using Power BI](./media/security-center-powerbi/security-center-powerbi-fig1-new10.png)
-2. 次の画面に示すように、 **[Power BI で探索する]** ブレードが右側に表示されます。
+    ![Connect to Azure Security Center using Power BI](./media/security-center-powerbi/security-center-powerbi-fig1-new10-2017.png)
+2. 次の画面に示すように、**Power BI** ブレードが右側に表示されます。
 
-    ![Connect to Azure Security Center using Power BI](./media/security-center-powerbi/security-center-powerbi-fig1-new2.png)
+    ![Connect to Azure Security Center using Power BI](./media/security-center-powerbi/security-center-powerbi-fig1-new11-2017.png)
 3. Power BI ダッシュボードを初めて作成する場合は、 **[Power BI で探索する]** ブレードで次のいずれかのオプションを選択できます。
 
    * **[セキュリティの詳細情報のダッシュボード]**: セキュリティの状態、スレッド、検出を含むダッシュボードを作成する場合は、このオプションを選択します。 これは、サブスクリプション全体の保護の状態と検出されたアラートを分析する DevOps ロール向けの一般的なオプションです。
@@ -70,14 +70,14 @@ Azure Security Center へのリンクをクリックすると、Azure ポータ�
 
 ![推奨事項](./media/security-center-powerbi/security-center-powerbi-fig1-new6.png)
 
-このグラフのいずれかの項目をクリックすると、他の項目は淡色表示になり、選択した&1; つの項目だけに注目できます。 ダッシュボードに戻るには、このページの左側のウィンドウで **[ダッシュボード]** オプションの下にある **[Azure Security Center]** をクリックします。
+このグラフのいずれかの項目をクリックすると、他の項目は淡色表示になり、選択した 1 つの項目だけに注目できます。 ダッシュボードに戻るには、このページの左側のウィンドウで **[ダッシュボード]** オプションの下にある **[Azure Security Center]** をクリックします。
 
 > [!NOTE]
 > フィールドを追加したり既存のビジュアルを変更したりしてレポートをカスタマイズする場合は、レポートを編集できます。 詳細については、「 [Power BI の編集ビューでレポートと対話する](https://powerbi.microsoft.com/documentation/powerbi-service-interact-with-a-report-in-editing-view/) 」を参照してください。
 >
 >
 
-**[Alerts over Time (アラートの累積)]、[Attacked Resources (攻撃されたリソース)]**、**[Attacker IPs (攻撃者 IP)]** タイルは、クリックすると同じような情報が出力されます。 これは、これら&3; つの変数すべてに関する情報がレポートで集計されるためです。これは次の画面に示すように **[Resources under Attack (攻撃を受けているリソース)]** と呼ばれます。
+**[Alerts over Time (アラートの累積)]、[Attacked Resources (攻撃されたリソース)]**、**[Attacker IPs (攻撃者 IP)]** タイルは、クリックすると同じような情報が出力されます。 これは、これら 3 つの変数すべてに関する情報がレポートで集計されるためです。これは次の画面に示すように **[Resources under Attack (攻撃を受けているリソース)]** と呼ばれます。
 
 ![Resources under attack](./media/security-center-powerbi/security-center-powerbi-fig1-new7.png)
 
@@ -88,12 +88,12 @@ Azure Security Center へのリンクをクリックすると、Azure ポータ�
 ## <a name="exploring-your-azure-security-center-data-with-power-bi-services"></a>Power BI サービスで Azure Security Center のデータを調べる
 Power BI で [Power BI のコンテンツ パック サービス](https://msit.powerbi.com/groups/me/getdata/services) に接続し、次の手順を実行します。
 
-1. 次に示すように、 **[Content Pack for Power BI (Power BI 用コンテンツ パック)]** ウィンドウには&2; つのオプションが表示されます。
+1. 次に示すように、 **[Content Pack for Power BI (Power BI 用コンテンツ パック)]** ウィンドウには 2 つのオプションが表示されます。
 
     ![[Content Pack for Power BI (Power BI 用コンテンツ パック)]](./media/security-center-powerbi/security-center-powerbi-fig1-new.png)
 
    > [!NOTE]
-   > この記事の最初の部分が実行済みである場合、表示されるオプションは [Azure Security Center Policy Management (Azure Security Center のポリシー管理)] の&1; つだけです。
+   > この記事の最初の部分が実行済みである場合、表示されるオプションは [Azure Security Center Policy Management (Azure Security Center のポリシー管理)] の 1 つだけです。
    >
    >
 2. この例では、**[Azure Security Center Policy Management (Azure Security Center のポリシー管理)]** タイルの **[取得]** をクリックします。

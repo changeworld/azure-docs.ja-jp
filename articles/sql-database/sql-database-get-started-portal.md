@@ -9,23 +9,25 @@ manager: jhubbard
 editor: 
 ms.assetid: aeb8c4c3-6ae2-45f7-b2c3-fa13e3752eed
 ms.service: sql-database
-ms.custom: quick start
+ms.custom: quick start create
 ms.workload: data-management
 ms.tgt_pltfrm: portal
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/13/2017
+ms.date: 04/03/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: be5839e04fae457b889db11dffe56f31afe723a5
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: c0c6cdf8aa48568b7a4468dd87b2896f94fc1bf6
+ms.lasthandoff: 04/04/2017
 
 
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>Azure Portal で Azure SQL データベースを作成する
 
 このクイック スタート チュートリアルでは、Azure で SQL データベースを作成する方法について説明します。  Azure SQL Database は、"サービスとしてのデータベース" を提供するサービスで、これを使用すると、クラウド内で可用性の高い SQL Server データベースの実行とスケーリングが可能になります。  このクイック スタートでは、Azure Portal で新しい SQL データベースを作成して作業を開始する方法を紹介します。
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="log-in-to-the-azure-portal"></a>Azure ポータルにログインする
 
@@ -43,10 +45,10 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
     ![データベースの作成 -1](./media/sql-database-get-started/create-database-1.png)
 
-3. 前の画像で示されているように、[SQL Database] のフォームに次の情報を入力します。 
-   - [データベース名]: 「**mySampleDatabase**」を使用します
-   - [リソース グループ]: 「**myResourceGroup**」を使用します
-   - [ソース]: **[Sample (AdventureWorksLT) (サンプル (AdventureWorksLT))]** を選択します
+3. 前の画像で示されているように、[SQL Database] のフォームに次の情報を入力します。     
+   - [データベース名]: **mySampleDatabase**
+   - [リソース グループ]: **myResourceGroup**
+   - [ソースの選択]: **Sample (AdventureWorksLT)**
 
 4. **[サーバー]** をクリックして、新しいデータベース用の新しいサーバーを作成して構成します。 **[新しいサーバー]** のフォームに、グローバルに一意なサーバー名を指定し、サーバー管理者ログインの名前を指定して、任意のパスワードを指定します。 
 
@@ -82,7 +84,7 @@ SQL Database サービスは、サーバーレベルのファイアウォール�
 
 4. **[OK]** をクリックしてから、**[X]** をクリックして **[ファイアウォール設定]** ページを閉じます。
 
-これで、SQL Server Management Studio やその他の任意のツールを使用してデータベースとそのサーバーに接続できるようになりました。
+これで、SQL Server Management Studio やその他の任意のツールを使用して、データベースとそのサーバーに、前に作成したサーバー管理者アカウントでこの IP アドレスから接続できるようになりました。
 
 ## <a name="query-the-sql-database"></a>SQL データベースに対するクエリ
 
@@ -103,7 +105,7 @@ SQL データベースを作成したときに、そのデータベースに **A
 5. 認証されたら、[クエリ エディター] ウィンドウに次のクエリを入力します。
 
    ```
-   SELECT pc.Name as CategoryName, p.name as ProductName
+   SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
    FROM SalesLT.ProductCategory pc
    JOIN SalesLT.Product p
    ON pc.productcategoryid = p.productcategoryid;

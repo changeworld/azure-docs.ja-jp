@@ -6,7 +6,7 @@
     ```
     npm install -g iothub-explorer@latest
     ```
-2. 次に、次のコマンドを実行してハブにログインします。このとき、`{iot hub connection string}` を、前にコピーしておいた IoT Hub 接続文字列に置き換えます。
+2. その後、次のコマンドを実行してハブにログインします。 このとき、`{iot hub connection string}` を前にコピーしておいた IoT Hub の接続文字列と置き換えてください。
 
     ```
     iothub-explorer login "{iot hub connection string}"
@@ -21,7 +21,7 @@
 
 ![][img-identity]
 
-デバイスの ID をプログラムで作成する方法については、[IoT Hub の概要][lnk-getstarted]に関するページを参照してください。
+デバイス ID をプログラムで作成する方法については、[IoT Hub の概要][lnk-getstarted]に関するページを参照してください。
 
 <!-- images and links -->
 [img-identity]: media/iot-hub-get-started-create-device-identity/devidentity.png

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 02/28/2017
+ms.date: 04/03/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: fa7c846cf5018b5f0d918e5dc9d9020313833d77
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: f5793f771553df78c1c335ad57e0d64078d98148
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -68,7 +68,7 @@ Azure 仮想マシン (VM) ギャラリーには、Microsoft SQL Server を含�
     ![Create SQL VM with Resource Manager](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-sql-deployment-model.png)
 
 ## <a name="configure-the-vm"></a>VM を構成する
-SQL Server 仮想マシンを構成するための&5; つのブレードがあります。
+SQL Server 仮想マシンを構成するための 5 つのブレードがあります。
 
 | 手順 | Description |
 | --- | --- |
@@ -97,14 +97,17 @@ SQL Server 仮想マシンを構成するための&5; つのブレードがあ�
     ![SQL Basics Blade](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-basic.png)
 
 ## <a name="2-choose-virtual-machine-size"></a>2.仮想マシンのサイズを選択する
-この**サイズ**設定の手順では、**[サイズの選択]** ブレードで仮想マシンのサイズを選択します。 ブレードには、選択したイメージに基づいて推奨されるマシン サイズが最初に表示されます。 VM の実行にかかる毎月のコストも見積もられます。
+この**サイズ**設定の手順では、**[サイズの選択]** ブレードで仮想マシンのサイズを選択します。 ブレードには、選択したイメージに基づいて推奨されるマシン サイズが最初に表示されます。
+
+> [!IMPORTANT]
+> **[サイズの選択]** ブレードに表示される月額料金の見積もりには、SQL Server のライセンス費用は含まれていません。 この料金は VM 単体の費用です。 SQL Server Express エディションと SQL Server Developer エディションでは、この料金が概算費用の合計になります。 他のエディションについては、「[Windows Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)」で、ターゲットの SQL Server エディションを選択して確認できます。 
 
 ![SQL VM Size Options](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-vm-choose-a-size.png)
 
 運用環境のワークロードには、 [Premium Storage](../../../storage/storage-premium-storage.md)をサポートする仮想マシンのサイズを選択することをお勧めします。 そのレベルのパフォーマンスが必要ない場合は、 **[すべて表示]** ボタンを使用すると、マシン サイズのオプションすべてが表示されます。 たとえば、開発またはテスト環境用には、小さいマシン サイズを使用することができます。
 
 > [!NOTE]
-> 仮想マシン サイズの詳細については、 [仮想マシンのサイズ](../../virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。 SQL Server VM のサイズに関する考慮事項については、「 [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)」を参照してください。
+> 仮想マシン サイズの詳細については、 [仮想マシンのサイズ](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。 SQL Server VM のサイズに関する考慮事項については、「 [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)」を参照してください。
 > 
 > 
 
@@ -123,7 +126,7 @@ SQL Server 仮想マシンを構成するための&5; つのブレードがあ�
 * **[ストレージ アカウント]**で、自動的にプロビジョニングされたストレージ アカウント名をそのまま使用できます。 また、 **[ストレージ アカウント]** をクリックして、既存のアカウントを選択し、ストレージ アカウントの種類を構成することもできます。 既定では、ローカル冗長ストレージで新しいストレージ アカウントが作成されます。 ストレージ オプションの詳細については、「 [Azure Storage のレプリケーション](../../../storage/storage-redundancy.md)」を参照してください。
 * **[ネットワーク]**で、自動的に設定された値をそのまま使用できます。 また、各機能をクリックして、**仮想ネットワーク**、**サブネット**、**パブリック IP アドレス**、**ネットワーク セキュリティ グループ**を手動で構成することもできます。 このチュートリアルでは、既定値をそのまま使用します。
 * **[監視]** は、既定では VM に指定されているものと同じストレージ アカウントで有効になります。 これらの設定はここで変更できます。
-* **[可用性セット]**で、可用性セットを指定します。 このチュートリアルでは、 **[なし]**を選択します。 SQL AlwaysOn 可用性グループを設定する場合は、仮想マシンを再作成しないように可用性を構成します。  詳細については、「 [Virtual Machines の可用性管理](../../virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+* **[可用性セット]**で、可用性セットを指定します。 このチュートリアルでは、 **[なし]**を選択します。 SQL AlwaysOn 可用性グループを設定する場合は、仮想マシンを再作成しないように可用性を構成します。  詳細については、「 [Virtual Machines の可用性管理](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
 これらの設定の構成が済んだら、 **[OK]**をクリックします。
 

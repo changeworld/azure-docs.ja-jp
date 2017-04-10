@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: connect
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 106b9e8b5fd3461655527004fa7a65bbab9b3182
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: c3c30e51b81886ebc875df7c815a17dfa633a5f8
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -26,8 +28,8 @@ ms.openlocfilehash: 106b9e8b5fd3461655527004fa7a65bbab9b3182
 ## <a name="find-your-server-name"></a>サーバー名を検索する
 SQL Data Warehouse に接続するには、まず、サーバー名の検索方法を知る必要があります。  たとえば、次の例の場合、サーバー名は sample.database.windows.net です。 完全修飾サーバー名を検索するには、次の手順に従います。
 
-1. [Azure Portal][Azure Portal] にアクセスします。
-2.  **[SQL Database]** 
+1. [Azure Portal][Azure portal] にアクセスします。
+2. **[SQL Database]** 
 3. 接続先のデータベースをクリックします。
 4. サーバーの完全名を見つけます。
    
@@ -72,11 +74,11 @@ SQL Data Warehouse では、接続とオブジェクトの作成中にいくつ�
 | [DATEFIRST][DATEFIRST] |7 |
 
 ## <a name="next-steps"></a>次のステップ
-Visual Studio を使用して接続とクエリを行うには、[Visual Studio を使用したクエリ][Visual Studio を使用したクエリ]に関するページを参照してください。 認証オプションの詳細については、「[Authentication to Azure SQL Data Warehouse (Azure SQL Data Warehouse への認証)][Azure SQL Data Warehouse への認証]」を参照してください。
+Visual Studio を使用して接続とクエリの実行を行うには、[Visual Studio を使用したクエリ][Query with Visual Studio]に関するページをご覧ください。 認証オプションの詳細については、「[Azure SQL Data Warehouse への認証][Authentication to Azure SQL Data Warehouse]」をご覧ください。
 
 <!--Articles-->
-[Visual Studio を使用したクエリ]: ./sql-data-warehouse-query-visual-studio.md
-[Azure SQL Data Warehouse への認証]: ./sql-data-warehouse-authentication.md
+[Query with Visual Studio]: ./sql-data-warehouse-query-visual-studio.md
+[Authentication to Azure SQL Data Warehouse]: ./sql-data-warehouse-authentication.md
 
 <!--MSDN references-->
 [ADO.NET]: https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx
@@ -89,15 +91,10 @@ Visual Studio を使用して接続とクエリを行うには、[Visual Studio 
 [DATEFIRST]: https://msdn.microsoft.com/library/ms181598.aspx
 
 <!--Other-->
-[Azure Portal]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com
 
 <!--Image references-->
 [1]: media/sql-data-warehouse-connect-overview/get-server-name.png
 
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

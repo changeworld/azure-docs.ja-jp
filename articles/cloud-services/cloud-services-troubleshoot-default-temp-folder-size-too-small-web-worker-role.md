@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/6/2017
+ms.date: 4/6/2017
 ms.author: v-six
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 55d8e38462691c77a34eb5fca6ac79e2e0f69c37
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -75,9 +76,4 @@ namespace WorkerRole1
 クラウド サービスの他の [トラブルシューティングに関する記事](/?tag=top-support-issue&product=cloud-services) を参照します。
 
 Azure PaaS コンピューターの診断データを使用してクラウド サービス ロールの問題をトラブルシューティングする方法については、 [Kevin Williamson によるブログ シリーズ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)をご覧ください。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

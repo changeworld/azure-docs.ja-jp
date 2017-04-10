@@ -15,24 +15,20 @@ ms.workload: compute
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 300ee477a00cdd463a2abf87dd73550777fd9e05
-ms.openlocfilehash: 98f592ca96d8c332d7cb99679e1ef3834f84a095
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 5fee3d1fed507684b73dc5bb3b6b08014329ace1
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="onedrive-for-business-and-azure-remoteapp"></a>OneDrive for Business と Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp の提供は終了しました。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
+> Azure RemoteApp の提供は、2017 年 8 月 31 日で終了します。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
 > 
 > 
 
 Azure RemoteApp では OneDrive for Business 同期エージェントがサポートされません。
 
 Office 365 で使用するためのコレクションに OneDrive for Business を含めることはできます。 
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

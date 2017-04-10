@@ -15,14 +15,15 @@ ms.topic: get-started-article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 9d80640a58171e94440ca02f44a73866f6412997
-ms.openlocfilehash: 296dfaaa05b89cae265a9926fad08495ea02a647
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: a8ee2d2a4862e448d75b075537ef51cbdf8bfc9f
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="azure-remoteapp-faq"></a>Azure RemoteApp よく寄せられる質問
 > [!IMPORTANT]
-> Azure RemoteApp の提供は終了しました。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
+> Azure RemoteApp の提供は、2017 年 8 月 31 日で終了します。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
 > 
 > 
 
@@ -33,7 +34,7 @@ Azure RemoteApp について次のような質問が寄せられています。 
 
 ## <a name="what-is-azure-remoteapp"></a>Azure RemoteApp とは
 * **Azure RemoteApp とは** RemoteApp とは、多くのさまざまなユーザー デバイスからアプリケーションへのセキュリティで保護されたリモート アクセスを提供する際に役立つ Azure サービスです。 詳細については、「[Azure RemoteApp とは](remoteapp-whatis.md)」を参照してください。
-* **デプロイメント オプションにはどのようなものがありますか。** RemoteApp のコレクションには、クラウドとハイブリッドの&amp;2; つの種類があります。 ドメインへの参加の要不要など、さまざまな要素によって必要なコレクションが決まります。 この決定については、 [こちらのページ](remoteapp-collections.md)で詳しく説明しています。
+* **デプロイメント オプションにはどのようなものがありますか。** RemoteApp のコレクションには、クラウドとハイブリッドの 2 つの種類があります。 ドメインへの参加の要不要など、さまざまな要素によって必要なコレクションが決まります。 この決定については、 [こちらのページ](remoteapp-collections.md)で詳しく説明しています。
 
 ## <a name="quick-tips-on-using-azure-remoteapp"></a>Azure RemoteApp の使用に関するクイック ヒント
 * **切断されるまでの時間はどのくらいですか。どれくらいアイドル状態が続くとサインアウトされますか。** 4 時間です。 ユーザーのアイドル状態が 4 時間続くと、自動的に Azure RemoteApp からサインアウトされます。 その他の既定の設定については、「[Azure Subscription and Service Limits, Quotas, and Constraints (Azure サブスクリプションとサービスの制限、クォータ、制約)](../azure-subscription-service-limits.md)」を参照してください。
@@ -124,10 +125,5 @@ Azure RemoteApp について次のような質問が寄せられています。 
 
 ### <a name="help-us-help-you"></a>サポートのお願い
 記事を評価したり、下にコメントを投稿したりするだけでなく、記事自体を変更できることを知っていましたか。 説明不足ですか。 間違いがありますか。 わかりにくいことが書いてありますか。 上へスクロールし、**[GitHub で編集]** をクリックすると変更を加えることができます。その後は Microsoft で確認が行われ、承認されると変更点や改善点がこちらのページに反映されます。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -28,7 +28,7 @@
 ![][img-twin]
 
 さらに、ソリューション バックエンドは、上記のすべてのデータに基づいてデバイス ツインに対してクエリを実行できます。
-デバイス ツインの詳細については「[デバイス ツインについて][lnk-twins]」を、クエリについては [IoT Hub クエリ言語][lnk-query]のリファレンスを参照してください。
+デバイス ツインの詳細については、[デバイス ツイン][lnk-twins]に関するページを、クエリについては [IoT Hub クエリ言語][lnk-query]のリファレンスを参照してください。
 
 > [!NOTE]
 > 現在のところ、デバイス ツインには MQTT プロトコルを使用して IoT Hub に接続するデバイスからのみアクセスできます。 既存のデバイス アプリを変換して MQTT を使用する方法については、[MQTT サポート][lnk-devguide-mqtt]の記事を参照してください。
@@ -49,7 +49,3 @@
 [lnk-d2c]: ../articles/iot-hub/iot-hub-devguide-messaging.md#device-to-cloud-messages
 [lnk-methods]: ../articles/iot-hub/iot-hub-devguide-direct-methods.md
 [lnk-devguide-mqtt]: ../articles/iot-hub/iot-hub-mqtt-support.md
-
-<!--HONumber=Dec16_HO1-->
-
-

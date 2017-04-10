@@ -14,9 +14,9 @@ ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: ae869be6ed9f304629498f416ffdda96252bdf9c
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: bcd8b3b7fb44a28d7184d14969eb998ce07c8e53
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -83,10 +83,11 @@ Application Insights リソースを開きます。 [Azure Portal](https://porta
 ![Application Insights ポータルを開く方法を示した Visual Studio のスクリーンショット](./media/app-insights-asp-net/appinsights-04-openPortal.png)
 
 > [!NOTE]
-> アクセス エラーが発生した場合、Microsoft 資格情報のセットを複数持っており、正しくないセットでサインインしている可能性があります。 ポータルでサインアウトし、もう一度サインインしてください。
+> アクセス エラーが発生した場合: Microsoft 資格情報のセットが複数あり、間違ったセットでサインインしていませんか。 ポータルでサインアウトし、もう一度サインインしてください。
 
 ポータルを開くと、アプリのテレメトリが表示されます。
-![Application Insights の概要ページのスクリーンショット](./media/app-insights-asp-net/66.png)
+
+![Application Insights 概要ページのスクリーンショット](./media/app-insights-asp-net/66.png)
 
 詳細を表示するには、任意のタイルまたはグラフをクリックします。
 
@@ -99,7 +100,7 @@ Application Insights リソースを開きます。 [Azure Portal](https://porta
 
     アプリの実行と同時に [ライブ メトリックス ストリーム] を開いて、接続を許可します。
 
-    ライブ メトリック ストリームでは、送信後&1; 分間だけ、テレメトリが表示されます。 それより前の履歴を調査するには、検索、メトリックス エクスプローラー、Analytics を使用してください。 データがこれらの場所に表示されるまでに数分かかる場合があります。
+    ライブ メトリック ストリームでは、送信後 1 分間だけ、テレメトリが表示されます。 それより前の履歴を調査するには、検索、メトリックス エクスプローラー、Analytics を使用してください。 データがこれらの場所に表示されるまでに数分かかる場合があります。
 
 * [**[検索]**](app-insights-diagnostic-search.md) では、要求、例外、ページ ビューなど、個々のイベントが表示されます。 イベントの種類、語句の一致、およびプロパティ値でフィルター処理することができます。 イベントをクリックすると、そのプロパティと関連イベントが表示されます。
 
@@ -129,7 +130,7 @@ Application Insights によって、アプリのテレメトリが (Azure でホ
 
 ![テレメトリの移動のダイアグラム](./media/app-insights-asp-net/01-scheme.png)
 
-つまり、コマンドによって実行された操作は次の&3; つです。
+つまり、コマンドによって実行された操作は次の 3 つです。
 
 1. プロジェクトに Application Insights Web SDK NuGet パッケージが追加されます。 Visual Studio で表示するには、プロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
 2. [Azure Portal](https://portal.azure.com/) に Application Insights のリソースが作成されます。 ここにデータが表示されます。 リソースを識別する "*インストルメンテーション キー*" を取得します。

@@ -15,14 +15,15 @@ ms.workload: compute
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 52edc23e0f677567beeb33c47b14f6ea66989890
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 24d41c7eb6b5bd34c07d21318740ecf4c6db2d22
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="sql-azure-with-azure-remoteapp"></a>SQL Azure と Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp の提供は終了しました。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
+> Azure RemoteApp の提供は、2017 年 8 月 31 日で終了します。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
 > 
 > 
 
@@ -56,10 +57,5 @@ Azure RemoteApp でホストされているクライアント アプリケーシ
 * デバイスから Azure へのネットワーク待機時間が長い。 最良のパフォーマンスが得られるように、可能な限り最速のネットワーク接続に移行します。 一般的なツールである [azurespeed.com](http://azurespeed.com/) を使用して、デバイスから Azure データ センターへの接続の待機時間をテストします。  
 * Azure RemoteApp でホストされているクライアント アプリがストレス条件下に置かれている。 Premium 課金などの別の課金プランを選択すると、パフォーマンスが向上します。 別の方法として、アプリによって使用されるリソースを監視するという手があります。アクティブ セッション中に、Ctrl + Alt + End キーを押して、SAS 画面を起動し、タスク マネージャーを選択して、アプリのリソース使用状況を確認します。
 * SQL サーバーがストレス条件下にあるか、または最適化されていません。 SQL に関するトラブルシューティングのガイダンスに従います。 
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 
