@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: jonatul
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 0fee02286f6d5dd4614a933590cdab43cc69237f
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: 79f0c9297c4be70f705f325274f3d9241ea4bc3f
+ms.lasthandoff: 03/29/2017
 
 ---
 
@@ -72,7 +72,7 @@ DNS ゾーンは、特定のドメインの DNS レコードをホストする�
     ![[レコード セットの追加]](./media/dns-getstarted-portal/addrecordset500.png)
 
 5. 作成するレコードの種類を選択します。 この例では、**[A]** を選択します。
-6. **TTL**を設定します。 既定の有効期間は&1; 時間です。
+6. **TTL**を設定します。 既定の有効期間は 1 時間です。
 7. レコードの IP アドレスを追加します。
 8. ブレード下部の **[OK]** を選択すると、DNS レコードが作成されます。
 

@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: connect
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 77474214c6fafe7f591030d30f6a46c66fbc5c09
-ms.openlocfilehash: 71a56d0e99308d3f7f514283792a2155a05a7172
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 342f32596c91d2af7c0f33138a43d5c8925d5350
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -35,9 +37,9 @@ Visual Studio を使用して、わずか数分で Azure SQL Data Warehouse に�
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを使用するには、次のものが必要です。
 
-* 既存の SQL Data Warehouse。 その作成方法については、[SQL Data Warehouse の作成][SQL Data Warehouse の作成]に関するページを参照してください。
-* Visual Studio 用の SSDT。 Visual Studio をお持ちの方は既に SSDT を所有していると思われます。 インストールの手順とオプションの詳細については、[Visual Studio と SSDT のインストール][Visual Studio と SSDT のインストール]に関するページを参照してください。
-* 完全修飾 SQL サーバー名。 これを特定するには、[SQL Data Warehouse への接続][SQL Data Warehouse への接続]に関するページを参照してください。
+* 既存の SQL Data Warehouse。 作成方法については、[SQL Data Warehouse の作成][Create a SQL Data Warehouse]に関するページを参照してください。
+* Visual Studio 用の SSDT。 Visual Studio をお持ちの方は既に SSDT を所有していると思われます。 インストールの手順とオプションの詳細については、[Visual Studio と SSDT のインストール][Installing Visual Studio and SSDT]に関するページを参照してください。
+* 完全修飾 SQL サーバー名。 これを特定するには、[SQL Data Warehouse への接続][Connect to SQL Data Warehouse]に関するページを参照してください。
 
 ## <a name="1-connect-to-your-sql-data-warehouse"></a>1.SQL Data Warehouse への接続
 1. Visual Studio 2013 または 2015 を開きます。
@@ -79,19 +81,19 @@ Visual Studio を使用して、わずか数分で Azure SQL Data Warehouse に�
     ![Query results][7]
 
 ## <a name="next-steps"></a>次のステップ
-これで接続してクエリを実行することができます。[Power BI でデータを視覚化][Power BI でデータを視覚化]してみてください。
+これで接続してクエリを実行することができます。[Power BI でデータを視覚化][visualizing the data with PowerBI]してみてください。
 
-Azure Active Directory 認証を使用するために環境を構成する方法については、[SQL Data Warehouse の認証][SQL Data Warehouse の認証]に関するページを参照してください。
+Azure Active Directory 認証を使用するために環境を構成する方法については、[SQL Data Warehouse の認証][Authenticate to SQL Data Warehouse]に関するページを参照してください。
 
 <!--Arcticles-->
-[SQL Data Warehouse への接続]: sql-data-warehouse-connect-overview.md
-[SQL Data Warehouse の作成]: sql-data-warehouse-get-started-provision.md
-[Visual Studio と SSDT のインストール]: sql-data-warehouse-install-visual-studio.md
-[SQL Data Warehouse の認証]: sql-data-warehouse-authentication.md
-[Power BI でデータを視覚化]: sql-data-warehouse-get-started-visualize-with-power-bi.md  
+[Connect to SQL Data Warehouse]: sql-data-warehouse-connect-overview.md
+[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
+[Installing Visual Studio and SSDT]: sql-data-warehouse-install-visual-studio.md
+[Authenticate to SQL Data Warehouse]: sql-data-warehouse-authentication.md
+[visualizing the data with PowerBI]: sql-data-warehouse-get-started-visualize-with-power-bi.md  
 
 <!--Other-->
-[Azure ポータル]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com
 
 <!--Image references-->
 
@@ -102,9 +104,4 @@ Azure Active Directory 認証を使用するために環境を構成する方法
 [5]: media/sql-data-warehouse-query-visual-studio/new-query2.png
 [6]: media/sql-data-warehouse-query-visual-studio/run-query.png
 [7]: media/sql-data-warehouse-query-visual-studio/query-results.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

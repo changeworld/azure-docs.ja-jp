@@ -15,14 +15,15 @@ ms.workload: compute
 ms.date: 11/23/2016
 ms.author: piotrci
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 6dcadbfb99d4d111ab9ddde9d74db65b5542a8f5
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 20f9e9b31498f20c2a27f0d82d434abad73d2454
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="publish-applications-to-individual-users-in-an-azure-remoteapp-collection-preview"></a>Azure RemoteApp コレクション (プレビュー) で個々のユーザーにアプリケーションを発行する
 > [!IMPORTANT]
-> Azure RemoteApp の提供は終了しました。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
+> Azure RemoteApp の提供は、2017 年 8 月 31 日で終了します。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
 > 
 > 
 
@@ -102,10 +103,5 @@ AclLevel プロパティには、次の値が表示されます。
 
 ## <a name="havent-had-a-chance-to-try-the-preview-feature"></a>プレビュー機能を試す機会がなかった場合
 プレビューにまだ参加していない方は、こちらの [アンケート](http://www.instant.ly/s/AY83p) を使って利用を申し込んでください。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

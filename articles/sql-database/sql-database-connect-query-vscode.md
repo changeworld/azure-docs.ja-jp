@@ -10,7 +10,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 676bd799-a571-4bb8-848b-fb1720007866
 ms.service: sql-database
-ms.custom: manage
+ms.custom: quick start manage
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -18,15 +18,15 @@ ms.topic: hero-article
 ms.date: 03/17/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 86471fe29bbc9076624d96b83f7001d8755363bc
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: fd5cb0d45d0955b7e4c471dc5ccecac65ad7400a
+ms.lasthandoff: 03/29/2017
 
 
 ---
 # <a name="azure-sql-database-use-visual-studio-code-to-connect-and-query-data"></a>Azure SQL Database: Visual Studio Code を使って接続とデータの照会を行う
 
-[Visual Studio Code](https://code.visualstudio.com/docs) は、拡張機能をサポートするグラフィカル コード エディターであり、Linux、macOS、Windows で使用できます。 [mssql 拡張機能](https://aka.ms/mssql-marketplace)がインストールされた Visual Studio Code を使用し、Azure SQL データベースに接続してデータを照会します。 このガイドでは、Visual Studio Code を使用して Azure SQL データベースに接続し、照会、挿入、更新、削除の各ステートメントを実行する方法について詳しく説明します。
+[Visual Studio Code](https://code.visualstudio.com/docs) は、拡張機能をサポートするグラフィカル コード エディターであり、Linux、macOS、Windows で使用できます。 [mssql 拡張機能](https://aka.ms/mssql-marketplace)がインストールされた Visual Studio Code を使用し、Azure SQL データベースに接続してデータを照会します。 このクイック スタートでは、Visual Studio Code を使用して Azure SQL データベースに接続し、照会、挿入、更新、削除の各ステートメントを実行する方法について詳しく説明します。
 
 このクイック スタートでは、次のクイック スタートで作成されたリソースが出発点として使用されます。
 

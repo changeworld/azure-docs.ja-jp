@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 81c9313635f382252550a4c0dcc7a707e9f365fb
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: c731099cb91512f3bf0ecc2ffa5258788c90cd1b
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -63,7 +63,7 @@ Azure 仮想ネットワーク (VNet) は、クラウド内のユーザー独自
 
     VNet の作成には数秒かかります。 作成されると、Azure Portal のダッシュボードが表示されます。
 
-6. 仮想ネットワークが作成されたら、Azure Portal の **[お気に入り]** ウィンドウで **[すべてのリソース]** をクリックします。 **[すべてのリソース]** ブレードで **[MyVNet]** 仮想ネットワークをクリックします。 選択したサブスクリプションに既存のリソースがいくつもある場合は、**[名前でフィルター]** ボックスに「*MyVNet*」と入力すると目的の VNet がすぐに見つかります。 box to easily access the VNet.
+6. 仮想ネットワークが作成されたら、Azure Portal の **[お気に入り]** ウィンドウで **[すべてのリソース]** をクリックします。 **[すべてのリソース]** ブレードで **[MyVNet]** 仮想ネットワークをクリックします。 選択したサブスクリプションに既存のリソースがいくつもある場合は、**[名前でフィルター]** ボックスに「*MyVNet*」と入力すると 目的の VNet がすぐに見つかります。
 7. **[MyVNet]** ブレードが開いて、その VNet に関する情報が表示されます (下図)。
 
     ![仮想ネットワークの図](./media/virtual-network-get-started-vnet-subnet/myvnet.png)
@@ -101,7 +101,7 @@ Web サーバー VM を作成するには、次の手順を実行します。
     |**[リソース グループ]**|**[既存のものを使用]:** *[MyRG]* を選択します|ここでは VNet と同じリソース グループを使用しますが、一連のリソースが同じリソース グループに存在している必要はありません。|
     |**場所**|*[米国西部]*|この記事の「[2 つのサブネットから成る仮想ネットワークを作成する](#create-vnet)」セクションの手順 5. と同じ場所を指定してください。 VM とその接続先となる VNet は、同じ場所に存在している必要があります。|
 
-4. **[サイズの選択]** ブレードで、*[DS1_V2 Standard]* をクリックしてから **[選択]** をクリックします。 Azure でサポートされる全 Windows VM サイズの一覧については、[Windows VM サイズ](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
+4. **[サイズの選択]** ブレードで、*[DS1_V2 Standard]* をクリックしてから **[選択]** をクリックします。 Azure でサポートされる全 Windows VM サイズの一覧については、[Windows VM サイズ](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
 5. **[設定]** ブレードで次の値を入力または選択し、**[OK]** をクリックします。
 
     |**設定**|**値**|**詳細**|
@@ -111,7 +111,7 @@ Web サーバー VM を作成するには、次の手順を実行します。
     |**サブネット**|*[Front-end]* を選択します|VNet 内にあればどのサブネットを選択してもかまいません。|
     |**パブリック IP アドレス**|既定値を受け入れます|インターネットからは、パブリック IP アドレスで VM に接続することができます。 パブリック IP アドレスについて詳しくは、[IP アドレス](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)に関する記事をご覧ください。|
     |**ネットワーク セキュリティ グループ (ファイアウォール)**|既定値を受け入れます|ポータルによって既定で作成される NSG、**[(新規) MyWebServer-nsg]** をクリックし、その設定を表示します。 **[ネットワーク セキュリティ グループの作成]** ブレードが表示されます。送信元 IP アドレスからの TCP/3389 (RDP) トラフィックを許可する受信規則が 1 つあることがわかります。|
-    |**その他すべての値**|既定値を受け入れます|その他の設定について詳しくは、[VM について](../virtual-machines/virtual-machines-windows-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)の記事をご覧ください。|
+    |**その他すべての値**|既定値を受け入れます|その他の設定について詳しくは、[VM について](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)の記事をご覧ください。|
 
     ネットワーク セキュリティ グループ (NSG) を使用すると、VM がやり取りするネットワーク トラフィックの種類ごとに受信/送信規則を作成できます。 既定では、VM に対する受信トラフィックはすべて拒否されます。 運用環境の Web サーバーでは別途、TCP/80 (HTTP) と TCP/443 (HTTPS) の受信規則を追加するのが一般的です。 送信トラフィックに対する規則はありません。既定ですべての送信トラフィックが許可されています。 実際の方針に従って規則を追加/削除し、トラフィックを制御することができます。 NSG の詳細については、[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)に関する記事を参照してください。
 
@@ -160,7 +160,7 @@ Web サーバー VM を作成するには、次の手順を実行します。
 
     ![リソース グループの内容](./media/virtual-network-get-started-vnet-subnet/resource-group-contents.png)
 
-VM、ディスク、ストレージ アカウントについて詳しくは、[仮想マシン](../virtual-machines/virtual-machines-windows-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[ディスク](../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[ストレージ アカウント](../storage/storage-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)の概要に関する記事をご覧ください。 ポータルによって自動的に作成される既定の NSG が 2 つ確認できます。 さらに、ネットワーク インターフェイス (NIC) リソースが 2 つ作成されていることがわかります。 VM は NIC から VNet を通じて他のリソースに接続することができます。 詳しくは、[NIC](virtual-network-network-interface.md) に関する記事をご覧ください。 ポータルによって自動的に作成されるリソースとしては、他にも "パブリック IP アドレス" があります。 パブリック IP アドレスは、特定のパブリック IP アドレス リソースに使用される 1 つの設定です。 パブリック IP アドレスについて詳しくは、[IP アドレス](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)に関する記事をご覧ください。
+VM、ディスク、ストレージ アカウントについて詳しくは、[仮想マシン](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[ディスク](../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[ストレージ アカウント](../storage/storage-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)の概要に関する記事をご覧ください。 ポータルによって自動的に作成される既定の NSG が 2 つ確認できます。 さらに、ネットワーク インターフェイス (NIC) リソースが 2 つ作成されていることがわかります。 VM は NIC から VNet を通じて他のリソースに接続することができます。 詳しくは、[NIC](virtual-network-network-interface.md) に関する記事をご覧ください。 ポータルによって自動的に作成されるリソースとしては、他にも "パブリック IP アドレス" があります。 パブリック IP アドレスは、特定のパブリック IP アドレス リソースに使用される 1 つの設定です。 パブリック IP アドレスについて詳しくは、[IP アドレス](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)に関する記事をご覧ください。
 
 ## <a name="connect-to-from-vms"></a>VM に接続する
 
@@ -252,5 +252,5 @@ MyDBServer VM にパブリック IP アドレス リソースが割り当てら�
 - [パブリック IP アドレス](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
 - [ネットワーク インターフェイス](virtual-network-network-interface.md)
 - [ネットワーク セキュリティ グループ](virtual-networks-nsg.md)
-- [仮想マシン](../virtual-machines/virtual-machines-windows-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [仮想マシン](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 

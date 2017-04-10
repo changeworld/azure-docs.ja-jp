@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory のアクセスに関する問題のトラブルシューティング | Microsoft Docs"
+title: "Windows デバイスから Azure Portal で目的の場所にアクセスできない問題のトラブルシューティング | Microsoft Docs"
 description: "組織のオンライン リソースへのアクセスに関する問題を解決するための手順について説明します。"
 services: active-directory
 keywords: "デバイス ベースの条件付きアクセス, デバイス登録, デバイス登録の有効化, デバイス登録と MDM"
@@ -12,44 +12,63 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/24/2017
+ms.date: 04/04/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: fbabf6f2e1e588ba509c4da84ab1700b1b5d4f87
-ms.openlocfilehash: ad9f9a8c5b370ffa916b9089ef3ce523fe0266c7
+ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
+ms.openlocfilehash: 9a648ca8f91529bc5aaa7b8ffbcfddb40864f409
+ms.lasthandoff: 04/04/2017
 
 
 ---
-# <a name="troubleshooting-for-azure-active-directory-access-issues"></a>Azure Active Directory のアクセスに関する問題のトラブルシューティング
-社内の SharePoint Online イントラネットにアクセスしようとして、"アクセスが拒否されました" というエラー メッセージが表示されたら、 皆さんはどうしますか。
+# <a name="troubleshooting-you-cant-get-there-from-here-on-a-windows-device"></a>Windows デバイスで目的の場所にアクセスできない問題のトラブルシューティング
+
+たとえば、組織の SharePoint Online イントラネットにアクセスしようとしたとき、"*ここからアクセスすることはできません*" というページが表示される可能性があります。 このページは、特定の条件下において組織のリソースへのアクセスを防ぐ条件付きアクセス ポリシーを管理者が構成しているために表示されています。 ヘルプ デスクまたは管理者に連絡しないと問題を解決できない場合もありますが、まずはこちらのいくつかの手順をお試しください。
+
+**Windows** デバイスを使用している場合、次のことを確認する必要があります。
+
+- サポートされているブラウザーを使用していますか。
+
+- お使いのデバイスで、サポートされているバージョンの Windows を実行していますか。
+
+- お使いのデバイスは準拠デバイスですか。
 
 
-この記事では、組織のオンライン リソースへのアクセスに関する問題を解決するための手順について説明します。
 
-Azure Active Directory (Azure AD) のアクセスに関する問題を解決するためには、ご利用のデバイス プラットフォームを対象とした記事のセクションを参照してください。
 
-* Windows デバイス
-* iOS デバイス (iPhone と iPad については準備中)
-* Android デバイス (Android スマートフォンとタブレットについては準備中)
 
-## <a name="access-from-a-windows-device"></a>Windows デバイスからのアクセス
-ご利用のデバイスで次のいずれかのプラットフォームが実行されている場合は、アプリケーションまたはサービスにアクセスしようとしたときに表示されるエラー メッセージを以降のセクションから探してください。
 
-* Windows 10
-* Windows 8.1
-* Windows 8
-* Windows 7
-* Windows Server 2016
-* Windows Server 2012 R2
-* Windows Server 2012
-* Windows Server 2008 R2
+## <a name="supported-browser"></a>サポートされているブラウザー
 
-### <a name="device-is-not-registered"></a>デバイスが登録されていない
-デバイスが Azure AD には登録されていないものの、アプリケーションがデバイス ベースのポリシーで保護されている場合、次のいずれかのエラー メッセージが表示される可能性があります。
+管理者によって条件付きアクセス ポリシーが構成されている場合、サポートされているブラウザーを使用しないと組織のリソースにアクセスできません。 Windows デバイスでは、サポートされているのは **Internet Explorer** と **Edge** のみです。
 
+リソースにアクセスできない原因がサポートされていないブラウザーにあるかどうかは、エラー ページの詳細セクションで簡単に識別できます。
+
+![サポートされていないブラウザーに対する "ここからはアクセスできません" メッセージ](./media/active-directory-conditional-access-device-remediation/02.png "シナリオ")
+
+唯一の修復方法は、デバイスのプラットフォーム向けにアプリケーションでサポートされているブラウザーを使用することです。 サポートされているブラウザーの完全な一覧については、「[サポートされているブラウザー](active-directory-conditional-access-supported-apps.md#supported-browsers)」を参照してください。  
+
+
+## <a name="supported-versions-of-windows"></a>サポートされている Windows のバージョン
+
+デバイスで使用する Windows オペレーティング システムは、次の条件を満たしている必要があります。 
+
+- デバイスで Windows デスクトップ オペレーティング システムを実行している場合、Windows 7 以降である必要があります。
+- デバイスで Windows Server オペレーティング システムを実行している場合、Windows Server 2008 R2 以降である必要があります。 
+
+
+## <a name="compliant-device"></a>準拠デバイス
+
+準拠デバイスからでないと組織のリソースにアクセスできないという条件付きアクセス ポリシーを、管理者が構成している可能性があります。 準拠させるには、デバイスをオンプレミスの Active Directory に参加させるか、Azure Active Directory に参加させる必要があります。
+
+リソースにアクセスできない原因が準拠していないデバイスにあるかどうかは、エラー ページの詳細セクションで簡単に識別できます。
+ 
 ![登録されていないデバイスに対する "ここからはアクセスできません" メッセージ](./media/active-directory-conditional-access-device-remediation/01.png "シナリオ")
 
-デバイスが社内の Active Directory ドメインに参加している場合は、次の手順を試してください。
+
+### <a name="is-your-device-joined-to-an-on-premises-active-directory"></a>デバイスがオンプレミスの Active Directory に参加している場合
+
+**デバイスが組織内のオンプレミスの Active Directory に参加している場合は、次の手順を実施します。**
 
 1. 職場アカウント (Active Directory アカウント) を使用して Windows にサインインしていることを確認します。
 2. 仮想プライベート ネットワーク (VPN) または DirectAccess を使用して企業ネットワークに接続します。
@@ -58,16 +77,30 @@ Azure Active Directory (Azure AD) のアクセスに関する問題を解決す�
 5. しばらく待ってから、アプリケーションまたはサービスにもう一度アクセスしてみます。
 6. 同じページが表示された場合は、**[詳細]** リンクをクリックして詳細情報を管理者にお伝えください。
 
-デバイスがドメインに参加しておらず、Windows 10 を実行している場合、次の 2 つの選択肢があります。
+
+### <a name="is-your-device-not-joined-to-an-on-premises-active-directory"></a>デバイスがオンプレミスの Active Directory に参加していない場合
+
+デバイスがオンプレミスの Active Directory に参加しておらず、Windows 10 を実行している場合、次の 2 つの選択肢があります。
 
 * Azure AD Join を実行する。
 * 職場または学校アカウントを Windows に追加する。
 
-この 2 つの選択肢の違いについては、「[職場での Windows 10 デバイスの使用](active-directory-azureadjoin-windows10-devices.md)」を参照してください。
+この 2 つの選択肢の違いについては、「[職場での Windows 10 デバイスの使用](active-directory-azureadjoin-windows10-devices.md)」を参照してください。  
+デバイスについては、次のとおりです。
 
-Azure AD Join を実行するには、次の手順に従います。ご利用のデバイスで稼働しているプラットフォームに応じた手順を実行してください。 (Windows Phone では Azure AD Join が利用できません。)
+- 組織のデバイスである場合は、Azure AD Join を実行する必要があります。
+- 個人のデバイスまたは Windows スマートフォンである場合は、Windows に職場または学校アカウントを追加する必要があります。 
 
-**Windows 10 Anniversary Update**
+
+
+#### <a name="azure-ad-join-on-windows-10"></a>Windows 10 での Azure AD Join
+
+デバイスを Azure AD に参加させる手順は、そのデバイス上で実行している Windows 10 のバージョンに関連付けられています。 お使いの Windows 10 オペレーティング システムのバージョンを確認するには、**winver** コマンドを実行します。 
+
+![Windows のバージョン](./media/active-directory-conditional-access-device-remediation/03.png )
+
+
+**Windows 10 Anniversary Update (Version 1607):**
 
 1. **[設定]** アプリを開きます。
 2. **[アカウント]** > **[職場または学校にアクセスする]** をクリックします。
@@ -77,7 +110,7 @@ Azure AD Join を実行するには、次の手順に従います。ご利用の
 6. サインアウトしてから、職場アカウントを使用してサインインします。
 7. アプリケーションにもう一度アクセスしてみます。
 
-**Windows 10 November 2015 Update**
+**Windows 10 November 2015 Update (Version 1511):**
 
 1. **[設定]** アプリを開きます。
 2. **[システム]** > **[バージョン情報]** をクリックします。
@@ -86,23 +119,8 @@ Azure AD Join を実行するには、次の手順に従います。ご利用の
 5. サインアウトしてから、職場アカウント (Azure AD アカウント) を使用してサインインします。
 6. アプリケーションにもう一度アクセスしてみます。
 
-職場または学校アカウントを追加するには、次の手順を実行します。
 
-**Windows 10 Anniversary Update**
-
-1. **[設定]** アプリを開きます。
-2. **[アカウント]** > **[職場または学校にアクセスする]** をクリックします。
-3. **[接続]**をクリックします。
-4. 自分の組織に対する本人確認を行い、Multi-Factor Authentication の認証情報を提示して、表示される手順に従います。
-5. アプリケーションにもう一度アクセスしてみます。
-
-**Windows 10 November 2015 Update**
-
-1. **[設定]** アプリを開きます。
-2. **[アカウント]** > **[Your accounts (自分のアカウント)]** をクリックします。
-3. **[Add work or school account (職場または学校アカウントを追加)]**をクリックします。
-4. 自分の組織に対する本人確認を行い、Multi-Factor Authentication の認証情報を提示して、表示される手順に従います。
-5. アプリケーションにもう一度アクセスしてみます。
+#### <a name="workplace-join-on-windows-81"></a>Windows 8.1 での Workplace Join
 
 デバイスがドメインに参加しておらず、Windows 8.1 を実行している場合は、Workplace Join を実行し、次の手順に従って、Microsoft Intune に登録できます。
 
@@ -113,24 +131,33 @@ Azure AD Join を実行するには、次の手順に従います。ご利用の
 5. **[オン]**をクリックします。
 6. アプリケーションにもう一度アクセスしてみます。
 
-### <a name="browser-is-not-supported"></a>ブラウザーがサポート対象外
-次のいずれかのブラウザーでアプリケーションまたはサービスにアクセスしようとすると、アクセスが拒否される場合があります。
 
-* Windows 10 または Windows Server 2016 の場合、Chrome や Firefox など、Microsoft Edge および Microsoft Internet Explorer 以外のブラウザー。
-* Windows 8.1、Windows 7、Windows Server 2012 R2、Windows Server 2012、または Windows Server 2008 R2 の場合、Firefox。
 
-次のようなエラー ページが表示されます。
+#### <a name="add-your-work-or-school-account-to-windows"></a>職場または学校アカウントを Windows に追加する。 
 
-![サポートされていないブラウザーに対する "ここからはアクセスできません" メッセージ](./media/active-directory-conditional-access-device-remediation/02.png "シナリオ")
 
-唯一の修復方法は、デバイスのプラットフォーム向けにアプリケーションでサポートされているブラウザーを使用することです。
+**Windows 10 Anniversary Update (Version 1607):**
+
+1. **[設定]** アプリを開きます。
+2. **[アカウント]** > **[職場または学校にアクセスする]** をクリックします。
+3. **[接続]**をクリックします。
+4. 自分の組織に対する本人確認を行い、Multi-Factor Authentication の認証情報を提示して、表示される手順に従います。
+5. アプリケーションにもう一度アクセスしてみます。
+
+
+**Windows 10 November 2015 Update (Version 1511):**
+
+1. **[設定]** アプリを開きます。
+2. **[アカウント]** > **[Your accounts (自分のアカウント)]** をクリックします。
+3. **[Add work or school account (職場または学校アカウントを追加)]**をクリックします。
+4. 自分の組織に対する本人確認を行い、Multi-Factor Authentication の認証情報を提示して、表示される手順に従います。
+5. アプリケーションにもう一度アクセスしてみます。
+
+
+
+
 
 ## <a name="next-steps"></a>次のステップ
 [Azure Active Directory の条件付きアクセス](active-directory-conditional-access.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

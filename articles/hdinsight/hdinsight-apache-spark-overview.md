@@ -14,12 +14,12 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/03/2017
+ms.date: 04/03/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
-ms.openlocfilehash: edfdba3105aba1079d3c707e7320770c4a999a32
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 747b75cf813144fe64c650c4a8d1148ee1d86d9d
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/15/2017
 
 <a href="http://spark.apache.org/" target="_blank">Apache Spark</a> はビッグ データ分析アプリケーションのパフォーマンスを向上するメモリ内の処理をサポートする、オープン ソースの並列処理のフレームワークです。 Spark 処理エンジンは、速度、使いやすさ、高度な分析用に作成されています。 Spark のメモリ内の計算能力により、機械学習とグラフ計算における反復的なアルゴリズムに対して、Spark は適切な選択肢となります。 また、Spark は Azure Storage (WASB) と互換性があるので、Azure に格納されている既存データを Spark で簡単に処理できます。
 
-HDInsight で Spark クラスターを作成するときは、Spark をインストールおよび構成して Azure コンピューティング リソースを作成します。 HDInsight で Spark クラスターを作成するのにかかる時間はわずか約&10; 分です。 処理対象のデータは、Azure Storage に格納されます。 [HDInsight での Azure Storage の使用][hdinsight-storage]に関するページを参照してください。
+HDInsight で Spark クラスターを作成するときは、Spark をインストールおよび構成して Azure コンピューティング リソースを作成します。 HDInsight で Spark クラスターを作成するのにかかる時間はわずか約 10 分です。 処理対象のデータは、Azure Storage に格納されます。 [HDInsight での Azure Storage の使用][hdinsight-storage]に関するページを参照してください。
 
 ![Azure HDInsight での Apache Spark](./media/hdinsight-apache-spark-overview/hdispark.architecture.png "Azure HDInsight での Apache Spark")
 
@@ -84,6 +84,7 @@ HDInsight の Spark には、クラスターで使用できる次のコンポー
 * [Anaconda](http://docs.continuum.io/anaconda/)
 * [Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)
 * [Jupyter Notebook](https://jupyter.org)
+* [Zeppelin Notebook](http://zeppelin-project.org/)
 
 HDInsight の Spark では、Microsoft Power BI や Tableau などの BI ツールから HDInsight の Spark クラスターに接続するための [ODBC ドライバー](http://go.microsoft.com/fwlink/?LinkId=616229) も提供されます。
 
