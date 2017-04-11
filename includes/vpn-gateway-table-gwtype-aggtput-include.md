@@ -4,7 +4,7 @@ UltraPerformance ゲートウェイ SKU はこの表には示されていませ�
 
 |  | **VPN Gateway のスループット (1)** | **VPN Gateway の IPsec トンネルの最大数 (2)** | **ExpressRoute ゲートウェイのスループット** | **VPN Gateway と ExpressRoute の共存** |
 | --- | --- | --- | --- | --- |
-| **Basic SKU (3)(5)** |100 Mbps |10 |500 Mbps |なし |
+| **Basic SKU (3)(5)(6)** |100 Mbps |10 |500 Mbps (6) |いいえ |
 | **Standard SKU (4)(5)** |100 Mbps |10 |1000 Mbps |はい |
 | **High Performance SKU (4)** |200 Mbps |30 |2000 Mbps |はい |
 
@@ -13,9 +13,4 @@ UltraPerformance ゲートウェイ SKU はこの表には示されていませ�
 * (3) BGP は、Basic SKU ではサポートされていません。
 * (4) PolicyBased VPN は、この SKU ではサポートされていません。 Basic SKU でのみサポートされています。
 * (5) アクティブ/アクティブ S2S VPN ゲートウェイ接続は、この SKU ではサポートされていません。 アクティブ/アクティブは、HighPerformance SKU のみでサポートされています。
-
-
-
-<!--HONumber=Jan17_HO1-->
-
-
+* (6) Expressroute での Basic SKU の使用は廃止されています。

@@ -12,20 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/1/2017
+ms.date: 4/6/2017
 ms.author: anwestg
 translationtype: Human Translation
-ms.sourcegitcommit: cf55a0b4f61c971cedee602575f73d39c70f9edb
-ms.openlocfilehash: 4c74e9b6b74bae8e5c1b9c70bceb3f19d767af00
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: de37e12b47d566395717104de87a5dabc00fd5f4
+ms.openlocfilehash: 689e970cf0beb4ac05e1434f4f9a3b887d00005b
+ms.lasthandoff: 02/08/2017
 
 
 ---
 # <a name="enable-ftp-in-app-service-on-azure-stack"></a>Enable FTP in App Service on Azure Stack
-
-> [!IMPORTANT] 
-> This topic applies only to Azure Stack Technical Preview 2.
->
 
 Once you have successfully deployed App Service on Azure Stack if you wish to enable FTP publishing, so that your tenants can upload their application files and content, there are some additional steps that need to be completed.  In future releases these steps will be automated.
 
@@ -66,3 +62,4 @@ Once you have successfully deployed App Service on Azure Stack if you wish to en
 [7]: ./media/azure-stack-app-service-enable-ftp/azure-stack-app-service-enable-ftp-validate-app-services.png
 [8]: ./media/azure-stack-app-service-enable-ftp/azure-stack-app-service-enable-ftp-validate-app-service-app-detail.png
 [9]: ./media/azure-stack-app-service-enable-ftp/azure-stack-app-service-enable-ftp-validate-ftp-file-listing.png
+

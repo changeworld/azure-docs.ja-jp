@@ -15,6 +15,7 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/17/2017
 ms.author: larryfr
+ROBOTS: NOINDEX
 translationtype: Human Translation
 ms.sourcegitcommit: ccd1dffda19718a434fc09bb74a536714799740a
 ms.openlocfilehash: 3cf91abf83359f2157d0f8cd53e0b450bfd58d80
@@ -32,16 +33,16 @@ ms.lasthandoff: 02/17/2017
 >
 > HDInsight 3.4 以上でのクラスターでのコマンド ラインからの直接的な Pig ジョブの実行に関する情報については、[HDInsight と SSH での Pig の使用](hdinsight-hadoop-use-pig-ssh.md)に関するページを参照してください。
 
-## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>前提条件
+## <a id="prereq"></a>前提条件
 この記事の手順を完了するには、次のものが必要です。
 
 * Windows ベースの HDInsight (HDInsight で Hadoop を使用) クラスター
 * Windows 10、Windows 8、Windows 7 を実行するクライアント コンピューター
 
-## <a name="a-idconnectaconnect-with-remote-desktop"></a><a id="connect"></a>リモート デスクトップへの接続
+## <a id="connect"></a>リモート デスクトップへの接続
 「 [RDP を使用した HDInsight クラスターへの接続](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)」の手順に従って、HDInsight クラスターのリモート デスクトップを有効にしてからデスクトップに接続します。
 
-## <a name="a-idpigause-the-pig-command"></a><a id="pig"></a>Pig コマンドの使用
+## <a id="pig"></a>Pig コマンドの使用
 1. リモート デスクトップに接続したら、デスクトップ上のアイコンを使用して **Hadoop コマンド ライン** を開始します。
 2. Pig コマンドを開始するには次のコマンドを使用します。
 
@@ -117,10 +118,10 @@ Pig コマンドを使用して、ファイルに含まれた Pig Latin を実�
         (ERROR,6)
         (FATAL,2)
 
-## <a name="a-idsummaryasummary"></a><a id="summary"></a>概要
+## <a id="summary"></a>概要
 このように、Pig コマンドでは、MapReduce 操作を対話的に実行できるだけでなく、バッチ ファイルに格納された Pig Latin ジョブも実行できます。
 
-## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>次のステップ
+## <a id="nextsteps"></a>次のステップ
 HDInsight での Pig に関する全般的な情報:
 
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)

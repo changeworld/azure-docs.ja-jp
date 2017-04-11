@@ -1,4 +1,4 @@
-上記のテンプレートは、[こちらのドキュメント](../articles/azure-resource-manager/resource-group-template-deploy.md)に従ってデプロイできます。
+上記のテンプレートは、[Azure Resource Manager のドキュメント](../articles/azure-resource-manager/resource-group-template-deploy.md)に従ってデプロイできます。
 
 このチュートリアル シリーズは、[実行可能な最小のスケール セット テンプレートの記事](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md)から開始できます。
 

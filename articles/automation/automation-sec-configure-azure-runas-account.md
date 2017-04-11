@@ -13,7 +13,7 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/27/2017
+ms.date: 04/06/2017
 ms.author: magoedte
 translationtype: Human Translation
 ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
@@ -250,7 +250,7 @@ Automation アカウントが正常に作成されると、いくつかのリソ
 2. **[すべての設定]** ブレードで、**[アカウント設定]** の **[プロパティ]** を選択します。 
 3. **[プロパティ]** ブレードに表示される値をメモします。
 
- ![Automation アカウントの "プロパティ" ブレード](media/automation-sec-configure-azure-runas-account/automation-account-properties.png)  
+![Automation アカウントの "プロパティ" ブレード](media/automation-sec-configure-azure-runas-account/automation-account-properties.png)  
 
 ### <a name="create-a-run-as-account-powershell-script"></a>実行アカウント用の PowerShell スクリプトを作成する
 この PowerShell スクリプトでは、以下の構成がサポートされます。
@@ -340,6 +340,7 @@ Automation アカウントが正常に作成されると、いくつかのリソ
         $KeyCredential = New-Object  Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADKeyCredential
         $KeyCredential.StartDate = $CurrentDate
         $KeyCredential.EndDate= [DateTime]$PfxCert.GetExpirationDateString()
+        $KeyCredential.EndDate = $KeyCredential.EndDate.AddDays(-1)
         $KeyCredential.KeyId = $KeyId
         $KeyCredential.CertValue  = $keyValue
 
@@ -414,7 +415,6 @@ Automation アカウントが正常に作成されると、いくつかのリソ
         $TenantID = $SubscriptionInfo | Select TenantId -First 1
         $Thumbprint = $PfxCert.Thumbprint
         $ConnectionFieldValues = @{"ApplicationId" = $ApplicationId; "TenantId" = $TenantID.TenantId; "CertificateThumbprint" = $Thumbprint; "SubscriptionId" = $SubscriptionId}
-
 
         # Create an Automation connection asset named AzureRunAsConnection in the Automation account. This connection uses the service principal.
         CreateAutomationConnectionAsset $ResourceGroup $AutomationAccountName $ConnectionAssetName $ConnectionTypeName $ConnectionFieldValues

@@ -196,7 +196,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
                 await deviceClient.SendEventAsync(message);
                 Console.WriteLine("{0} > Sending message: {1}", DateTime.Now, messageString);
    
-                Task.Delay(1000).Wait();
+                await Task.Delay(1000);
             }
         }
    

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 3/1/2017
 ms.author: helaw
 translationtype: Human Translation
-ms.sourcegitcommit: 6dfd66e35e7a7d6b2d21f737849b4e9370385099
-ms.openlocfilehash: b60e71e9ee92eb5242f17fe9a661b7879a149804
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
+ms.openlocfilehash: c3ee2fb073d3ef5ca942ef7315f2b1ba64a6894b
+ms.lasthandoff: 03/23/2017
 
 
 ---
@@ -89,7 +89,7 @@ A subscription is how tenants buy your offers. A subscription is a combination o
 Subscriptions help providers organize access and use of cloud resources and services.
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
-By using Azure Resource Manager, you can work with your infrastructure resources in a template-based, declaritive model.   It provides a single interface that you can use to deploy, manage, and monitor your solution components, such as virtual machines, storage accounts, web apps, and databases. For full information and guidance, see the [Azure Resource Manager overview](../azure-resource-manager/resource-group-overview.md).
+By using Azure Resource Manager, you can work with your infrastructure resources in a template-based, declarative model.   It provides a single interface that you can use to deploy, manage, and monitor your solution components, such as virtual machines, storage accounts, web apps, and databases. For full information and guidance, see the [Azure Resource Manager overview](../azure-resource-manager/resource-group-overview.md).
 
 ### <a name="resource-groups"></a>Resource groups
 Resource groups are collections of resources, services, and applications—and each resource has a type, such as virtual machines, virtual networks, public IPs, storage accounts, and websites. Each resource must be in a resource group and so resource groups help logically organize resources, such as by workload or location.  In Microsoft Azure Stack, resources such as plans and offers are also managed in resource groups.

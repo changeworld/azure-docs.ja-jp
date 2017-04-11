@@ -3,7 +3,7 @@ title: "Azure Web ジョブ SDK とは"
 description: "Azure Web ジョブ SDK の紹介です。 この SDK の特徴、一般的な用途、コード サンプルについて説明します。"
 services: app-service\web, storage
 documentationcenter: .net
-author: tdykstra
+author: ggailey777
 manager: erikre
 editor: jimbe
 ms.assetid: 8281267b-572b-4b14-a328-6704493ea682
@@ -24,6 +24,8 @@ ms.lasthandoff: 11/17/2016
 # <a name="what-is-the-azure-webjobs-sdk"></a>Azure Web ジョブ SDK とは
 ## <a id="overview"></a>概要
 この記事では、Web ジョブ SDK の特徴を紹介すると共に、一般的な用途を確認し、コードでの使い方の概要を示します。
+
+[!INCLUDE [app-service-web-webjobs-corenote](../../includes/app-service-web-webjobs-corenote.md)]
 
 [Web ジョブ](websites-webjobs-resources.md) は、Web アプリ、API アプリ、またはモバイル アプリと同じコンテキストでプログラムやスクリプトを実行できる Azure App Service の機能です。 [Web ジョブ SDK](websites-webjobs-resources.md) の目的は、Web ジョブで実行できる一般的な作業 (画像処理、キュー処理、RSS 情報集約、ファイル管理、電子メールの送信など) を単純なコードで記述できるようにすることです。 WebJobs SDK には、Azure Storage や Service Bus の操作、タスクのスケジューリング、エラー処理など、一般的な用途に対応した各種の機能が組み込まれています。 また、拡張できるように設計されています。 [Web ジョブ SDK はオープン ソース](https://github.com/Azure/azure-webjobs-sdk/)であり、[拡張機能のオープン ソース リポジトリ](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)が用意されています。
 

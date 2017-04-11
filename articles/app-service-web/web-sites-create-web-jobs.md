@@ -3,7 +3,7 @@ title: "Web ジョブでバックグラウンド タスクを実行する"
 description: "Web アプリでバックグラウンド タスクを実行する方法について説明します。"
 services: app-service
 documentationcenter: 
-author: tdykstra
+author: ggailey777
 manager: erikre
 editor: jimbe
 ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
@@ -24,6 +24,8 @@ ms.lasthandoff: 03/01/2017
 # <a name="run-background-tasks-with-webjobs"></a>Web ジョブでバックグラウンド タスクを実行する
 ## <a name="overview"></a>概要
 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web アプリの Web ジョブでプログラムまたはスクリプトを実行するときには、オンデマンドで実行、連続的に実行、スケジュールに従って実行の&3; とおりの方法があります。 Web ジョブの使用に追加コストはかかりません。
+
+[!INCLUDE [app-service-web-webjobs-corenote](../../includes/app-service-web-webjobs-corenote.md)]
 
 この記事では、 [Azure ポータル](https://portal.azure.com)を使用して Web ジョブをデプロイする方法について説明します。 Visual Studio または継続的な配信プロセスを使用したデプロイ方法については、 [Azure WebJobs の Web Apps へのデプロイ方法](websites-dotnet-deploy-webjobs.md)に関するページをご覧ください。
 

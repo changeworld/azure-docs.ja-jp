@@ -14,14 +14,15 @@ ms.topic: get-started-article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: fcc53e4073a6957fae263cfb5d38023ed9710d21
-ms.openlocfilehash: 21ae6458d1d65698c0c8fc7081696cb7406a918c
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 348306795fd3c8275b21e4ec6dceae408916bf72
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="what-is-in-the-azure-remoteapp-template-images"></a>Azure RemoteApp テンプレート イメージの内容
 > [!IMPORTANT]
-> Azure RemoteApp の提供は終了しました。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
+> Azure RemoteApp の提供は、2017 年 8 月 31 日で終了します。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
 > 
 > 
 
@@ -111,10 +112,5 @@ Office 365 ProPlus、Visio Pro、Project Pro のライセンスは個別に取�
 > **法的情報:** このイメージには、Microsoft Office のライセンスは含まれていないため、" *運用環境では使用できません*"。 Office 2013 Professional Plus イメージは評価版を使用する目的でのみ提供されます。 運用環境で Azure RemoteApp の Office アプリケーションを使用する場合は、Office 365 ProPlus のイメージを使用する必要があります。 Office のライセンスの詳細については、 [Azure RemoteApp での Office 365 の使用](remoteapp-o365.md)
 > 
 > 
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 
