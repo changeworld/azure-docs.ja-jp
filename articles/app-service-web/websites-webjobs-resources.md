@@ -3,7 +3,7 @@ title: "Azure WebJobs のドキュメント リソース"
 description: "Azure の Web ジョブと Azure Web ジョブ SDK を使用する方法を学習するための推奨リソース。"
 services: app-service
 documentationcenter: .net
-author: tdykstra
+author: ggailey777
 manager: erikre
 editor: jimbe
 ms.assetid: ed005e56-4334-4641-a5e5-15435c2be36b

@@ -3,7 +3,7 @@ title: "Web ジョブ SDK で Azure Service Bus を使用する方法"
 description: "Web ジョブ SDK を使用して Azure Service Bus キューとトピックを操作する方法について説明します。"
 services: app-service\web, service-bus
 documentationcenter: .net
-author: tdykstra
+author: ggailey777
 manager: erikre
 editor: jimbe
 ms.assetid: 2114a934-135b-42b8-871c-6cc040214e76

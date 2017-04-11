@@ -3,7 +3,7 @@ title: "Web ジョブ SDK を使用して Azure キュー ストレージを操�
 description: "Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法について説明します。 キューの作成と削除のほか、キュー メッセージの挿入、ピーク、取得、削除を行います。"
 services: app-service\web, storage
 documentationcenter: .net
-author: tdykstra
+author: ggailey777
 manager: erikre
 editor: jimbe
 ms.assetid: dbfac5d9-f4a0-4e3e-9ecc-af3d7bf80463

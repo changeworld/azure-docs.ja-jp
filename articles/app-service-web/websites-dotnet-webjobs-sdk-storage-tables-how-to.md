@@ -3,7 +3,7 @@ title: "Web ジョブ SDK を使用して Azure テーブル ストレージを�
 description: "Web ジョブ SDK で Azure テーブル ストレージを使用する方法について説明します。 テーブルを作成し、エンティティをテーブルに追加し、既存のテーブルを読み取ります。"
 services: app-service\web, storage
 documentationcenter: .net
-author: tdykstra
+author: ggailey777
 manager: erikre
 editor: jimbe
 ms.assetid: 451432cc-c780-4310-85d3-84f44fe48afe
