@@ -125,9 +125,9 @@ Managed Disks に関して説明する暗号化には 2 つの種類がありま
 
 Azure Storage では、ストレージ アカウントに書き込まれたデータの自動暗号化をサポートしています。 詳細については、「[Azure Storage Service Encryption for Data at Rest](storage-service-encryption.md)」をご覧ください。 管理ディスク上のデータはどうでしょうか。 現時点では、Managed Disks で Storage Service Encryption を有効にすることはできません。 ただし、今後リリースされる予定です。 それまでの間は、暗号化されたストレージ アカウント内に存在し、それ自体も暗号化されている VHD ファイルの使用方法を理解しておく必要があります。 
 
-SSE では、Storage アカウントに書き込まれたデータを暗号化します。 SSE によって暗号化されたことがある VHD ファイルがある場合、その VHD ファイルを使用して Managed Disks を使用する VM を作成することはできません。 また、暗号化された非管理対象ディスクを管理ディスクに変換することもできません。 該当のストレージ アカウントで暗号化を無効にしても、VHD ファイルが元の状態に戻り、暗号化が解除されるわけではありません。 
+SSE では、ストレージ アカウントに書き込まれたデータを暗号化します。 SSE によって暗号化されたことがある VHD ファイルがある場合、その VHD ファイルを使用して Managed Disks を使用する VM を作成することはできません。 また、暗号化された非管理対象ディスクを管理ディスクに変換することもできません。 該当のストレージ アカウントで暗号化を無効にしても、VHD ファイルが元の状態に戻り、暗号化が解除されるわけではありません。 
 
-暗号化されたディスクを使用するには、まず、暗号化されたことのない Storage アカウントに VHD ファイルをコピーする必要があります。 これで、Managed Disks を使用する VM を作成し、作成時にその VHD ファイルを指定できるようになります。また、コピーした VHD ファイルを Managed Disks を使用する実行中の VM にアタッチすることもできます。 
+暗号化されたディスクを使用するには、まず、暗号化されたことのないストレージ アカウントに VHD ファイルをコピーする必要があります。 これで、Managed Disks を使用する VM を作成し、作成時にその VHD ファイルを指定できるようになります。また、コピーした VHD ファイルを Managed Disks を使用する実行中の VM にアタッチすることもできます。 
 
 ### <a name="azure-disk-encryption-ade"></a>Azure Disk Encryption (ADE)
 
@@ -143,9 +143,9 @@ Managed Disks の詳細については、次の記事をご覧ください。
 
 * [Azure CLI 2.0 を使用して Linux VM を作成する](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
 
-* [PowerShell を使用して Windows VM に 管理データ ディスクを接続する](../virtual-machines/virtual-machines-windows-attach-disk-ps.md)
+* [PowerShell を使用して Windows VM に管理データ ディスクを接続する](../virtual-machines/virtual-machines-windows-attach-disk-ps.md)
 
-* [Linux VM に Managed Disks を追加する](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
+* [Linux VM に管理ディスクを追加する](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
 
 ### <a name="compare-managed-disks-storage-options"></a>Managed Disks のストレージ オプションの比較 
 
