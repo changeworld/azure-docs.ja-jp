@@ -38,7 +38,7 @@ Windows ストア用アプリを開発する場合、Azure Active Directory (Azu
 * [スケルトン プロジェクトをダウンロード](https://github.com/AzureADQuickStarts/NativeClient-WindowsStore/archive/skeleton.zip)するか、または[完全なサンプル](https://github.com/AzureADQuickStarts/NativeClient-WindowsStore/archive/complete.zip)をダウンロードします。 どちらのダウンロードも Visual Studio 2015 ソリューションです。
 * ユーザーの作成先となりアプリの登録先となる Azure AD テナントも必要です。 テナントを所有していない場合は、「 [How to get an Azure Active Directory tenant (Azure Active Directory テナントの取得方法)](active-directory-howto-tenant.md)」を参照して取得してください。
 
-準備ができたら、次の&3; つのセクションの手順を実行します。
+準備ができたら、次の 3 つのセクションの手順を実行します。
 
 ## <a name="step-1-register-the-directorysearcher-app"></a>手順 1: DirectorySearcher アプリを登録する
 アプリでトークンを取得できるようにするには、まず、アプリを Azure AD テナントに登録し、Azure AD Graph API にアクセスするためのアクセス許可を付与する必要があります。 その方法は次のとおりです。
@@ -53,7 +53,7 @@ Windows ストア用アプリを開発する場合、Azure Active Directory (Azu
 6. 登録が完了すると、Azure AD によって、一意のアプリケーション ID がアプリに割り当てられます。 後で必要になるため、**[アプリケーション]** タブの値をコピーします。
 7. **[設定]** ページで、**[必要なアクセス許可]** を選択し、**[追加]** を選択します。
 8. **Azure Active Directory** アプリに対し、API として **Microsoft Graph** を選択します。
-9. **[デリゲートされたアクセス許可]** で **[Access the directory as the signed-in user] (サインイン ユーザーとしてディレクトリにアクセスする)** アクセス許可を追加します。 この操作によって、アプリが Graph API にユーザーを照会できるようになります。
+9. **[デリゲートされたアクセス許可]** で **[Access the directory as the signed-in user] \(サインイン ユーザーとしてディレクトリにアクセスする)** アクセス許可を追加します。 この操作によって、アプリが Graph API にユーザーを照会できるようになります。
 
 ## <a name="step-2-install-and-configure-adal"></a>手順 2: ADAL をインストールして構成する
 アプリを Azure AD に登録したので、ADAL をインストールし、ID 関連のコードを記述できます。 ADAL が Azure AD と通信できるようにするには、ADAL にアプリの登録に関する情報を入力する必要があります。
@@ -147,7 +147,7 @@ ADAL を使用する際の基本方針は、アプリがアクセス トーク�
 これで、ユーザーの認証、OAuth 2.0 を使用した Web API の安全な呼び出し、ユーザーについての基本情報の取得を行うことができる実用的な Windows ストア アプリが完成しました。
 
 まだテナントにユーザーを設定していない場合は、ここで設定しましょう。
-1. DirectorySearcher アプリを実行し、ユーザーの&1; 人としてサインインします。
+1. DirectorySearcher アプリを実行し、ユーザーの 1 人としてサインインします。
 2. UPN に基づいて、他のユーザーを検索します。
 3. アプリを閉じて、再び実行します。 ユーザーのセッションがそのままに維持されていることに注意します。
 4. 右クリックして下部のバーを表示することによりサインアウトし、別のユーザーとしてもう一度サインインします。
