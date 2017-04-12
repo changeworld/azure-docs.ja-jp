@@ -15,9 +15,9 @@ ms.workload: big-data
 ms.date: 03/02/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: e1101c92118e56768c668d19f6556517d5a79c51
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
+ms.openlocfilehash: fe8a84d7e6d88f11498c288e0424ba204d7f06fd
+ms.lasthandoff: 04/05/2017
 
 
 ---
@@ -38,7 +38,7 @@ HDInsight で Data Lake Store を使用するための重要な考慮事項を�
 
 * HBase クラスター (Windows および Linux) の場合、Data Lake Store は、既定のストレージとしても追加のストレージとしても*サポートされません*。
 
-PowerShell を使用して Data Lake Store を操作できるように HDInsight を構成するには、次の&5; つのセクションで示す手順に従います。
+PowerShell を使用して Data Lake Store を操作できるように HDInsight を構成するには、次の 5 つのセクションで示す手順に従います。
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを開始する前に、次の要件を満たしていることを確認します。
@@ -49,7 +49,7 @@ PowerShell を使用して Data Lake Store を操作できるように HDInsight
 * **Azure Active Directory サービス プリンシパル**: このチュートリアルでは、Azure Active Directory (Azure AD) でサービス プリンシパルを作成する方法について説明します。 ただし、サービス プリンシパルを作成するには、Azure AD 管理者である必要があります。 管理者である場合は、この前提条件をスキップしてチュートリアルを進めることができます。
 
     >[!NOTE]
-    >Azure AD 管理者である場合にのみ、サービス プリンシパルを作成することができます。 Data Lake Store で HDInsight クラスターを作成する前に、まず Azure AD 管理者がサービス プリンシパルを作成する必要があります。 「[証明書を使用したサービス プリンシパルの作成](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate)」で説明しているように、サービス プリンシパルは証明書を使って作成する必要があります。
+    >Azure AD 管理者である場合にのみ、サービス プリンシパルを作成することができます。 Data Lake Store で HDInsight クラスターを作成する前に、まず Azure AD 管理者がサービス プリンシパルを作成する必要があります。 「[証明書を使用したサービス プリンシパルの作成](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority)」で説明しているように、サービス プリンシパルは証明書を使って作成する必要があります。
     >
 
 ## <a name="create-a-data-lake-store-account"></a>Data Lake Store アカウントを作成する
@@ -71,7 +71,7 @@ Data Lake Store アカウントを作成するには、次の操作を行いま�
 
     > [!NOTE]
     > Data Lake Store リソース プロバイダーの登録時に `Register-AzureRmResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` のようなエラーが発生した場合は、サブスクリプションが Data Lake Store のホワイトリストに登録されていない可能性があります。 Data Lake Store パブリック プレビューで Azure サブスクリプションを有効にするには、「[Azure Portal で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」をご覧ください。
-    > 
+    >
 
 2. サインインを求められたら、サブスクリプションの管理者または所有者としてサインインします。
 3. Data Lake Store アカウントは、Azure リソース グループに関連付けられます。 まず、リソース グループを作成します。
@@ -103,7 +103,7 @@ Data Lake Store アカウントを作成するには、次の操作を行いま�
 
 このセクションでは、HDInsight のようなアプリケーション サービスに Azure のリソース (先ほど作成した Data Lake Store アカウント) へのアクセス権を付与する方法を説明します。 これを行うには、PowerShell を使用してアプリケーションのサービス プリンシパルを作成し、作成したサービス プリンシパルにロールを割り当てます。
 
-Azure Data Lake の Active Directory 認証を設定するには、次の&2; つのセクションのタスクを実行します。
+Azure Data Lake の Active Directory 認証を設定するには、次の 2 つのセクションのタスクを実行します。
 
 ### <a name="create-a-self-signed-certificate"></a>自己署名証明書の作成
 このセクションの手順を進める前に、[Windows SDK](https://dev.windows.com/en-us/downloads) がインストールされていることを確認してください。 証明書の作成先となるディレクトリ (*C:\mycertdir* など) も作成しておく必要があります。

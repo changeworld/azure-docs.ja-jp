@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/23/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 61610078ad5cefd513fdb758aec45d7489704817
-ms.openlocfilehash: b4cb40d81613c16558be1e0e2c10dbfa0265a6b7
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 1a462b8d557ad23bda912ddf9431195a8cfe909e
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -93,7 +93,7 @@ VM 診断用にプライベート ストレージ アカウントを設定しま
 
 **Managed Disks ではどのような RBAC サポートがありますか?**
 
-Managed Disks では&3; つの重要な既定のロールがサポートされます。
+Managed Disks では 3 つの重要な既定のロールがサポートされます。
 
 1.  所有者: アクセス権を含めすべてを管理できます。
 
@@ -125,7 +125,7 @@ Managed Disks では&3; つの重要な既定のロールがサポートされ�
 
 **Azure Managed Disks を使用している VM のポート 8443 で送信トラフィックのブロックを解除しなければならないのはなぜですか?**
 
-Azure VM エージェントは、各 VM 拡張機能の状態を Azure プラットフォームに報告するためにポート 8443 を使用します。 このポートのブロックが解除されていない場合は、VM エージェントから VM 拡張機能の状態を報告することができません。 VM エージェントの詳細については、「[Azure 仮想マシン エージェントの概要](../virtual-machines/virtual-machines-windows-agent-user-guide.md)」を参照してください。
+Azure VM エージェントは、各 VM 拡張機能の状態を Azure プラットフォームに報告するためにポート 8443 を使用します。 このポートのブロックが解除されていない場合は、VM エージェントから VM 拡張機能の状態を報告することができません。 VM エージェントの詳細については、「[Azure 仮想マシン エージェントの概要](../virtual-machines/windows/agent-user-guide.md)」を参照してください。
 
 **VM を拡張機能と共にデプロイするときに、このポートがブロックされている場合はどうなりますか?**
 

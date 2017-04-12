@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 10/28/2016
 ms.author: guybo
 translationtype: Human Translation
-ms.sourcegitcommit: 4818c0c036c7e462af5b8d99f1085f8d9025156c
-ms.openlocfilehash: 7b4db2f215b8f7369694a45533d0c862b8f8d08e
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: bd45a0fb99a77851aa7b91d23bd4b830b6f5cc7b
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.openlocfilehash: 7b4db2f215b8f7369694a45533d0c862b8f8d08e
 次のような点を検討します。
 
 * 各 VM のコア数はいくつですか。すべてのコアを読み込んでいますか。
-  上の例の Azure Quickstart テンプレートには do_work.php スクリプトが含まれ、1 つのコアが読み込まれます。 Standard_A1 や D1 などの単一コアの VM よりも大きいサイズの VM を使用する場合は、この負荷を複数回読み込む必要があります。 VM のコア数を確認する方法については、「[Azure の Windows 仮想マシンのサイズ](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
+  上の例の Azure Quickstart テンプレートには do_work.php スクリプトが含まれ、1 つのコアが読み込まれます。 Standard_A1 や D1 などの単一コアの VM よりも大きいサイズの VM を使用する場合は、この負荷を複数回読み込む必要があります。 VM のコア数を確認する方法については、「[Azure の Windows 仮想マシンのサイズ](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 * VM スケール セット内の VM 数はいくつですか。VM ごとに設定を行っていませんか。
   
     自動スケール規則で定義された時間内に、スケール セット内の **すべての** VM における平均 CPU 使用率がしきい値を超えた場合にのみ、スケールアウト イベントが発生します。
@@ -82,9 +83,4 @@ ms.openlocfilehash: 7b4db2f215b8f7369694a45533d0c862b8f8d08e
 [audit]: ./media/virtual-machine-scale-sets-troubleshoot/image3.png
 [explorer]: ./media/virtual-machine-scale-sets-troubleshoot/image1.png
 [tables]: ./media/virtual-machine-scale-sets-troubleshoot/image4.png
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

@@ -13,8 +13,9 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 2dc340dcb864325554700f58057d157dd46f7f7a
-ms.openlocfilehash: ba13ea0d6c17e50e7b1887373d67ca691bdfad01
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: 8933c77013d7b0d886d3e309dc0b1a72026eb677
+ms.lasthandoff: 04/11/2017
 
 ---
 
@@ -107,7 +108,7 @@ ms.openlocfilehash: ba13ea0d6c17e50e7b1887373d67ca691bdfad01
                 <div class="card">
                     <div class="cardText">
                         <h3>コマンド ライン</h3>
-                        <p><a href="/powershell/">PowerShell</a></p>
+                        <p><a href="/powershell/azure/overview?azureadps=2.0">PowerShell</a></p>
                     </div>
                 </div>
             </div>
@@ -139,9 +140,4 @@ ms.openlocfilehash: ba13ea0d6c17e50e7b1887373d67ca691bdfad01
         </div>
     </li>
 </ul>
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

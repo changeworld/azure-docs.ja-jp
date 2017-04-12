@@ -9,7 +9,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 9cf09000-87fc-4589-8543-a89175151bc2
 ms.service: sql-database
-ms.custom: migrate and move
+ms.custom: migrate
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
@@ -17,9 +17,9 @@ ms.workload: sqldb-migrate
 ms.date: 02/08/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 2d72731304aee0952abbb1f3b2c24b620118fc6c
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 272b5eade0a80b1f46af4e4df1c7801d86fee175
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -44,7 +44,7 @@ ms.lasthandoff: 03/18/2017
 2. 必要な修正を Transact-SQL スクリプトとして準備します。
 3. トランザクション上の一貫性が維持された、移行されるソース データベースのコピーを作成し、ソース データベースにそれ以上変更が行われないようにします (または、移行が完了した後に、このような変更を手動で適用することもできます)。 クライアント接続を無効にしたり、 [データベース スナップショット](https://msdn.microsoft.com/library/ms175876.aspx)を作成したりするなど、データベースはさまざまな方法で停止できます。
 4. Transact-SQL スクリプトをデプロイして、データベースのコピーに修正を適用します。
-5. データベースのコピーをローカル ドライブの .BACPAC ファイルに[エクスポート](sql-database-export-sqlpackage.md)します。
+5. データベースのコピーをローカル ドライブの .BACPAC ファイルに[エクスポート](sql-database-export.md)します。
 6. 任意の BACPAC インポート ツールを使用して、.BACPAC ファイルを新しい Azure SQL データベースとして[インポート](sql-database-import-sqlpackage.md)します。最適なパフォーマンスを得るには、SQLPackage.exe の使用をお勧めします。
 
 ### <a name="optimizing-data-transfer-performance-during-migration"></a>移行中のデータ転送パフォーマンスの最適化 

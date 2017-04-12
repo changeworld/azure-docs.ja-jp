@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/20/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: c530f08842efde1ab87cfd111f1957ae685748f3
-ms.openlocfilehash: 77d3cb18c52a10236eb40e6ffde1ed9e2753af3f
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 885180e9759d0702d4e0988a7a1b4eb9097d4433
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -92,7 +93,7 @@ Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
 Java を使用して [証明書を作成](../app-service-web/java-create-azure-website-using-java-sdk.md#create-a-certificate)できます。
 
 ### <a name="linux"></a>Linux
-[この](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)記事では、SSH で証明書を作成する方法について説明します。
+[この](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)記事では、SSH で証明書を作成する方法について説明します。
 
 ## <a name="next-steps"></a>次のステップ
 [サービス証明書を Azure クラシック ポータルにアップロード](cloud-services-configure-ssl-certificate.md)します (または [Azure Portal](cloud-services-configure-ssl-certificate-portal.md) にアップロードします)。
@@ -103,10 +104,5 @@ Java を使用して [証明書を作成](../app-service-web/java-create-azure-w
 > Azure ポータルは、API へのアクセスに管理証明書を使用しないで、代わりにユーザー アカウントを使用します。
 > 
 > 
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

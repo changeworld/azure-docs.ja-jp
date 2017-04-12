@@ -16,9 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 02/02/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 4d2799b8eecc6f4d733f0e29129df4fed0507959
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: e2e751886407a1fceffa0c09b6f7fb5664c03b1d
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -89,7 +89,7 @@ SQL Server の仮想マシンは、特定の Azure リージョンに存在す�
    
         $svcname = "<cloud service name>"
         New-AzureService -ServiceName $svcname -Label $svcname -Location $dcLocation
-2. 仮想マシンの名前とサイズを指定します。 仮想マシンのサイズの詳細については、「[Azure の仮想マシンのサイズ](../../virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+2. 仮想マシンの名前とサイズを指定します。 仮想マシンのサイズの詳細については、「[Azure の仮想マシンのサイズ](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
    
         $vmname="<machine name>"
         $vmsize="<Specify one: Large, ExtraLarge, A5, A6, A7, A8, A9, or see the link to the other VM sizes>"

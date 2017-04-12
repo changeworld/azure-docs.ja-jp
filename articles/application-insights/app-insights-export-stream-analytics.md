@@ -4,7 +4,7 @@ description: "Stream Analytics は、Application Insights からエクスポー�
 services: application-insights
 documentationcenter: 
 author: noamben
-manager: douge
+manager: carmonm
 ms.assetid: 31594221-17bd-4e5e-9534-950f3b022209
 ms.service: application-insights
 ms.workload: tbd
@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 10/18/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 78daa5a75b3414e2761333ea6ad91945596553c8
-ms.openlocfilehash: be47e9de14700b66a3f1c59554762303987f67be
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: c1a76f521cbee673eb473d40bb15badd40cead5f
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -73,7 +74,7 @@ ms.openlocfilehash: be47e9de14700b66a3f1c59554762303987f67be
    
     パス名の共通部分を書き留めます。共通部分はアプリケーションの名前とインストルメンテーション キーから派生します。 
 
-イベントが JSON 形式で BLOB ファイルに書き込まれます。 各ファイルに&1; つ以上のイベントが含まれる場合があります。 このため、イベント データを読み取って必要なフィールドをフィルター処理します。 データの処理に関して実行できることは多数ありますが、今日の計画は、Stream Analytics を使用してデータを Power BI に移動することです。
+イベントが JSON 形式で BLOB ファイルに書き込まれます。 各ファイルに 1 つ以上のイベントが含まれる場合があります。 このため、イベント データを読み取って必要なフィールドをフィルター処理します。 データの処理に関して実行できることは多数ありますが、今日の計画は、Stream Analytics を使用してデータを Power BI に移動することです。
 
 ## <a name="create-an-azure-stream-analytics-instance"></a>Azure Stream Analytics インスタンスの作成
 [従来の Azure ポータル](https://manage.windowsazure.com/)で、Azure Stream Analytics サービスを選択し、新しい Stream Analytics ジョブを作成します。
@@ -106,8 +107,8 @@ ms.openlocfilehash: be47e9de14700b66a3f1c59554762303987f67be
 
 次の点に注意してください。
 
-* ** は Application Insights リソースの名前です。`webapplication27`すべて小文字で指定します**。
-* ** は Application Insights リソースのインストルメンテーション キーです。`1234...`ダッシュは省略します**。 
+* **は Application Insights リソースの名前です。`webapplication27`すべて小文字で指定します**。
+* **は Application Insights リソースのインストルメンテーション キーです。`1234...`ダッシュは省略します**。 
 * `PageViews` は分析するデータの種類です。 使用可能な種類は、連続エクスポートで設定するフィルターによって異なります。 エクスポートされたデータを調べて、その他の使用可能な種類を確認します。「[Application Insights エクスポート データ モデル](app-insights-export-data-model.md)」をご覧ください。
 * `/{date}/{time}` はそのまま書き込まれるパターンです。
 
@@ -238,11 +239,5 @@ Noam Ben Zeev が、Stream Analytics を使ってエクスポートされたデ�
 * [連続エクスポート](app-insights-export-telemetry.md)
 * [データ モデルについては、プロパティの型と値のリファレンスで詳しく説明されています。](app-insights-export-data-model.md)
 * [Application Insights](app-insights-overview.md)
-* [その他のサンプルとチュートリアル](app-insights-code-samples.md)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 05/27/2016
 ms.author: thmullan;torsteng
 translationtype: Human Translation
-ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
-ms.openlocfilehash: 19afc13a1715890316b34ed1128b594105c53c69
-ms.lasthandoff: 01/13/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 09e3828172d06a8c7ef39c89e69653c48a7e729e
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/13/2017
 この記事では、これらのテクノロジを使用して、**ADO.NET SqlClient** と **Entity Framework** を使用してマルチテナントのシャードをサポートする拡張性の高いデータ層を持つアプリケーションを構築する方法について説明します。  
 
 * **弾力性データベース ツール** を使用すると、.NET ライブラリと Azure のサービス テンプレートのセットを使用して、業界標準のシャーディング手法に従ってアプリケーションのデータ層をスケール アウトすることができます。 弾力性データベース クライアント ライブラリを使用してシャードを管理することは、一般的にシャーディングに関連するインフラストラクチャ タスクの多くを自動化および効率化するうえで役立ちます。 
-* **Row-Level Security** を使用すると、クエリを実行しているテナントに属していない行をセキュリティ ポリシーを使って除外して、複数のテナントのデータを同じデータベースに格納できます。 アプリケーションではなくデータベース内に RLS を使ってアクセス ロジックを一元化することにより、アプリケーションのコードベースが大きくなった際にも保守が容易になり、エラーのリスクが小さくなります。 RLS では [Azure SQL Database (V12)](sql-database-technical-overview.md) が必要です。 
+* **Row-Level Security** を使用すると、クエリを実行しているテナントに属していない行をセキュリティ ポリシーを使って除外して、複数のテナントのデータを同じデータベースに格納できます。 アプリケーションではなくデータベース内に RLS を使ってアクセス ロジックを一元化することにより、アプリケーションのコードベースが大きくなった際にも保守が容易になり、エラーのリスクが小さくなります。 
 
 これらの機能を使いながら、複数のテナントのデータを同じデータベースに格納することにより、コストの削減と効率性の向上というメリットがアプリケーションにもたらされます。 マルチテナントのシャードではテナント間でリソースが等しく分配されることが保証されないため、より厳密なパフォーマンスの保証を必要とする "プレミアム" テナント向けに、分離された単一テナントのシャードを柔軟に提供することもできます。  
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 01/13/2017
 * サンプル プロジェクトをダウンロードします: [Elastic DB Tools for Azure SQL - Multi-Tenant Shards](http://go.microsoft.com/?linkid=9888163)
   * **Program.cs** 
 
-このプロジェクトでは、 [Azure SQL の弾力性 DB ツールの Entity Framework 統合](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) に関するページで説明したプロジェクトを、マルチテナント シャード データベースのサポートを追加して拡張します。 上の図に示すように、4 つのテナントと&2; つのマルチテナント シャード データベースを含む、ブログや投稿を作成するための簡単なコンソール アプリケーションを構築します。 
+このプロジェクトでは、 [Azure SQL の弾力性 DB ツールの Entity Framework 統合](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) に関するページで説明したプロジェクトを、マルチテナント シャード データベースのサポートを追加して拡張します。 上の図に示すように、4 つのテナントと 2 つのマルチテナント シャード データベースを含む、ブログや投稿を作成するための簡単なコンソール アプリケーションを構築します。 
 
 アプリケーションをビルドし、実行します。 弾力性データベース ツールのシャード マップ マネージャーが起動され、次のテストが実行されます。 
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 01/13/2017
 2. ADO.NET SqlClient を使用して、テナントのすべてのブログを表示します。
 3. 不適切なテナントへのブログの挿入を試みて、エラーがスローされることを確認します。  
 
-RLS はシャード データベースでまだ有効になっていないため、これらの各テストで問題点が明らかになります。テナントは、そのテナントに属さないブログを表示できます。また、アプリケーションは、不適切なテナントにブログを挿入できます。 この記事の残りの部分では、RLS によるテナントの分離を適用してこれらの問題を解決する方法について説明します。 次の&2; つの手順が含まれます。 
+RLS はシャード データベースでまだ有効になっていないため、これらの各テストで問題点が明らかになります。テナントは、そのテナントに属さないブログを表示できます。また、アプリケーションは、不適切なテナントにブログを挿入できます。 この記事の残りの部分では、RLS によるテナントの分離を適用してこれらの問題を解決する方法について説明します。 次の 2 つの手順が含まれます。 
 
 1. **アプリケーション層**: アプリケーション コードを変更し、接続を開いた後で、常に現在の TenantId を SESSION_CONTEXT に設定します。 サンプル プロジェクトでは、この手順は既に完了しています。 
 2. **データ層**: 各シャード データベースで、SESSION_CONTEXT に格納されている TenantId に基づいて行をフィルター処理するための RLS セキュリティ ポリシーを作成します。 この手順は、それぞれのシャード データベースに対して実行する必要があります。そうでないと、マルチテナント シャード内の行がフィルター選択されません。 
@@ -60,7 +60,7 @@ RLS はシャード データベースでまだ有効になっていないため
 弾力性データベース クライアント ライブラリのデータ依存型ルーティング API を使用してシャード データベースに接続した後、アプリケーションは、RLS セキュリティ ポリシーを使って他のテナントに属している行を除外できるように、その接続を使用している TenantId をデータベースに通知する必要があります。 この情報を渡すために推奨される方法は、[SESSION_CONTEXT](https://msdn.microsoft.com/library/mt590806.aspx) に対象の接続の現在の TenantId を格納することです。 (注: 代わりに [CONTEXT_INFO](https://msdn.microsoft.com/library/ms180125.aspx) を使用することもできます、使用方法が簡単、既定で NULL を返す、キーと値のペアをサポートするなどの理由で、SESSION_CONTEXT の方が優れています。)
 
 ### <a name="entity-framework"></a>Entity Framework
-Entity Framework を使用するアプリケーションの場合、最も簡単な方法は、「[EF DbContext を使用したデータ依存ルーティング](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md#data-dependent-routing-using-ef-dbcontext)」で説明されている ElasticScaleContext オーバーライドの中で SESSION_CONTEXT を設定する方法です。 データ依存型ルーティングで仲介された接続を返す前に、SESSION_CONTEXT の "TenantId" をその接続に指定されている shardingKey に設定する SqlCommand を作成して実行します。 この方法では、SESSION_CONTEXT を設定するコードを&1; 回記述するだけで済みます。 
+Entity Framework を使用するアプリケーションの場合、最も簡単な方法は、「[EF DbContext を使用したデータ依存ルーティング](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md#data-dependent-routing-using-ef-dbcontext)」で説明されている ElasticScaleContext オーバーライドの中で SESSION_CONTEXT を設定する方法です。 データ依存型ルーティングで仲介された接続を返す前に、SESSION_CONTEXT の "TenantId" をその接続に指定されている shardingKey に設定する SqlCommand を作成して実行します。 この方法では、SESSION_CONTEXT を設定するコードを 1 回記述するだけで済みます。 
 
 ```
 // ElasticScaleContext.cs 

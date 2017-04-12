@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 253b7fe3614579d5a9a74d1de21bd2d3efe50d09
-ms.openlocfilehash: bf642e08d92414543f55ddeceff297c886b82882
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 9684a04b9ce12e6ca09e60909167f7557212c8be
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -50,7 +51,7 @@ Azure AD Connect では、認証に先進認証方式 (ADAL ライブラリを�
 | \*.microsoftonline.com |HTTPS/443 |Azure AD ディレクトリの構成とデータのインポート/エクスポートに使用します。 |
 
 ## <a name="errors-in-the-wizard"></a>ウィザードでのエラー
-インストール ウィザードでは、2 種類のセキュリティ コンテキストを使用しています。 **[Azure AD に接続]** ページでは、現在サインインしているユーザーを使用します。 **[構成]** ページでは、使用するセキュリティ コンテキストを[同期エンジンのサービスを実行しているアカウント](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts)に変更します。 プロキシ構成はグローバルであるため、何らかの問題があると、ほとんどの場合、その問題はウィザードの **[Azure AD に接続]** ページに既に表示されています。
+インストール ウィザードでは、2 種類のセキュリティ コンテキストを使用しています。 **[Azure AD に接続]** ページでは、現在サインインしているユーザーを使用します。 **[構成]** ページでは、使用するセキュリティ コンテキストを[同期エンジンのサービスを実行しているアカウント](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account)に変更します。 プロキシ構成はグローバルであるため、何らかの問題があると、ほとんどの場合、その問題はウィザードの **[Azure AD に接続]** ページに既に表示されています。
 
 インストール ウィザードで発生する最も一般的な問題を次に示します。
 
@@ -196,9 +197,4 @@ Multi-Factor Authentication (MFA) 要求が取り消されました。
 
 ## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

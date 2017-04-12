@@ -17,9 +17,9 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: johnsta
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 65fc37a1fd1d1d0149b98767117f8faafb5dcd2b
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: acfba48585b960a1ce39b77e35d292189aa9732b
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -50,8 +50,8 @@ ms.lasthandoff: 03/18/2017
 >[!IMPORTANT]
 > セキュリティで保護されたクラスターを作成するには、`az acs create` を呼び出す際に渡す SSH 公開キー ファイルを渡します。 `--generate-ssh-keys` オプションを使用して Azure CLI 2.0 でキーを生成すると同時にそれらを渡すことも、`--ssh-key-value` オプションを使用してパスをキーに渡すこともできます (既定の場所は、Linux では `~/.ssh/id_rsa.pub`、Windows では `%HOMEPATH%\.ssh\id_rsa.pub` ですが、変更できます)。
 <!---Loc Comment: What do you mean by "you pass your SSH public key file to pass"? Thank you.--->
-> Linux で SSH 公開キー ファイルと秘密キー ファイルを作成するにはに、[Linux と Mac での SSH キーの作成](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fcontainer-services%2ftoc.json)に関するページを参照してください。 
-> Windows で SSH 公開キー ファイルと秘密キー ファイルを作成するには、[Windows での SSH キーの作成](../virtual-machines/virtual-machines-linux-ssh-from-windows.md?toc=%2fazure%2fcontainer-services%2ftoc.json)に関するページを参照してください。 
+> Linux で SSH 公開キー ファイルと秘密キー ファイルを作成するにはに、[Linux と Mac での SSH キーの作成](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fcontainer-services%2ftoc.json)に関するページを参照してください。 
+> Windows で SSH 公開キー ファイルと秘密キー ファイルを作成するには、[Windows での SSH キーの作成](../virtual-machines/linux/ssh-from-windows.md?toc=%2fazure%2fcontainer-services%2ftoc.json)に関するページを参照してください。 
 
 1. 最初に、ターミナル ウィンドウに [as login](/cli/azure/#login) コマンドを入力して、Azure CLI で Azure サブスクリプションにログインします。 
 

@@ -16,13 +16,17 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: allclark
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: be1c613744d510e4ace636b47fdf730462a2ae07
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 85fa6ab8f7f5ad31347901a0be932d2474594802
+ms.lasthandoff: 04/06/2017
 
 ---
 
 # <a name="restart-vms"></a>VM の再起動
+
+[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 このサンプルでは、いくつかの VM を取得して再起動する方法をいくつか紹介します。
 
@@ -38,12 +42,12 @@ az vm restart --ids $(az vm list --resource-group myResourceGroup --query "[].id
 az vm restart --ids $(az resource list --tag "restart-tag" --query "[?type=='Microsoft.Compute/virtualMachines'].id" -o tsv)
 ```
 
-このサンプルは、bash シェルに対応しています。 Azure CLI スクリプトを Windows クライアントで実行する方法については、[Windows での Azure CLI の実行](../virtual-machines-windows-cli-options.md)に関する記事を参照してください。
+このサンプルは、bash シェルに対応しています。 Azure CLI スクリプトを Windows クライアントで実行する方法については、[Windows での Azure CLI の実行](../windows/cli-options.md)に関する記事を参照してください。
 
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-サンプルには&3; つのスクリプトがあります。
+サンプルには 3 つのスクリプトがあります。
 1 つ目は、仮想マシンをプロビジョニングします。
 no-wait オプションを使用するため、コマンドは各 VM がプロビジョニングされるのを待たずに制御を戻します。
 2 つ目は、VM が完全にプロビジョニングされるまで待機します。
@@ -51,8 +55,8 @@ no-wait オプションを使用するため、コマンドは各 VM がプロ�
 
 ### <a name="provision-the-vms"></a>VM のプロビジョニング
 
-このスクリプトは、リソース グループを作成し、再起動する&3; つの VM を作成します。
-そのうち&2; つはタグ付きです。
+このスクリプトは、リソース グループを作成し、再起動する 3 つの VM を作成します。
+そのうち 2 つはタグ付きです。
 
 [!code-azurecli[main](../../../cli_scripts/virtual-machine/restart-by-tag/provision.sh "VM をプロビジョニングする")]
 
@@ -93,5 +97,5 @@ az group delete -n myResourceGroup --no-wait --yes
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
 
-その他の仮想マシン用の CLI サンプル スクリプトは、[Azure Linux VM のドキュメント](../virtual-machines-linux-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)のページにあります。
+その他の仮想マシン用の CLI サンプル スクリプトは、[Azure Linux VM のドキュメント](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)のページにあります。
 

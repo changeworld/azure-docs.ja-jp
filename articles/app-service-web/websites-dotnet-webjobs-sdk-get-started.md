@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 10/28/2016
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: b4a64bbccabf0e7b0e7aec659d066883139c8207
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 31fa57771aaa2d4d6e4e0d387e045fb28e378887
+ms.lasthandoff: 04/10/2017
 
 
 ---
 # <a name="create-a-net-webjob-in-azure-app-service"></a>Azure App Service に .NET Web ジョブを作成する
 このチュートリアルでは、 [WebJobs SDK](websites-dotnet-webjobs-sdk.md)を使用する簡単な多層 ASP.NET MVC 5 アプリケーションのコードを記述する方法を示します。
+
+[!INCLUDE [app-service-web-webjobs-corenote](../../includes/app-service-web-webjobs-corenote.md)]
 
 [WebJobs SDK](websites-webjobs-resources.md) の目的は、Web ジョブで実行できる一般的な作業 (画像処理、キュー処理、RSS 情報集約、ファイル管理、電子メールの送信など) を単純なコードで記述できるようにすることです。 WebJobs SDK には、Azure Storage や Service Bus の操作、タスクのスケジューリング、エラー処理など、一般的な用途に対応した各種の機能が組み込まれています。 拡張性にも優れた設計となっており、 [拡張機能のオープン ソース リポジトリ](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)が存在します。
 
@@ -62,7 +64,7 @@ ms.lasthandoff: 02/16/2017
 ## <a id="contosoads"></a>アプリケーションのアーキテクチャ
 サンプル アプリケーションでは、 [キューを中心とした作業パターン](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) を使用して、CPU 負荷の高い縮小表示の作成をバックエンド プロセスにオフロードします。
 
-このアプリでは、広告を SQL データベースに格納します。その際、テーブルを作成してデータにアクセスするために Entity Framework Code First を使用します。 それぞれの広告に対し、フルサイズ画像用と縮小表示画像用の&2; つの URL がデータベースに格納されます。
+このアプリでは、広告を SQL データベースに格納します。その際、テーブルを作成してデータにアクセスするために Entity Framework Code First を使用します。 それぞれの広告に対し、フルサイズ画像用と縮小表示画像用の 2 つの URL がデータベースに格納されます。
 
 ![広告表
 ](./media/websites-dotnet-webjobs-sdk-get-started/adtable.png)
@@ -78,7 +80,7 @@ ms.lasthandoff: 02/16/2017
 ## <a id="storage"></a>Azure ストレージ アカウントの作成
 Azure ストレージ アカウントは、キューおよび BLOB データをクラウドに格納するためのリソースを提供します。 また、ダッシュボードのログ データを格納するために Web ジョブ SDK によっても使用されます。
 
-現実のアプリケーションでは、通常、アプリケーション データとログ データ、テスト データと運用データに別個のアカウントを作成します。 このチュートリアルでは、アカウントを&1; つだけ使用します。
+現実のアプリケーションでは、通常、アプリケーション データとログ データ、テスト データと運用データに別個のアカウントを作成します。 このチュートリアルでは、アカウントを 1 つだけ使用します。
 
 1. Visual Studio で **サーバー エクスプローラー** ウィンドウを開きます。
 2. **[Azure]** ノードを右クリックし、**[Microsoft Azure に接続]** をクリックします。
@@ -96,7 +98,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
     この設定は、お使いのストレージ アカウントをホストしている Azure データセンターを指定します。 このチュートリアルでは、選択肢によって顕著な相違は生じません。 ただし、運用 Web アプリケーションの場合は、待ち時間とデータ送信料金を最小限に抑えるために、Web サーバーとストレージ アカウントを同じリージョンに設定することが望まれます。 待ち時間を最小限にするには、Web アプリケーション (後で作成する) を Web アプリケーションにアクセスするブラウザーのできるだけ近くに配置します。
 7. **[レプリケーション]** ボックスを **[ローカル冗長]** に設定します。
 
-    Geo レプリケーションをストレージ アカウントに対して有効にすると、1 次拠点で重大な障害が発生した場合に備えて、保存したコンテンツは&2; 次データセンターに複製されて、フェイルオーバーが可能になります。 Geo レプリケーションには追加費用が発生する場合があります。 また、テストおよび開発アカウントの場合は、一般的に Geo レプリケーションに対する課金は避けたいと考えるでしょう。 詳細については、「 [ストレージ アカウントの作成、管理、削除](../storage/storage-create-storage-account.md)」を参照してください。
+    Geo レプリケーションをストレージ アカウントに対して有効にすると、1 次拠点で重大な障害が発生した場合に備えて、保存したコンテンツは 2 次データセンターに複製されて、フェイルオーバーが可能になります。 Geo レプリケーションには追加費用が発生する場合があります。 また、テストおよび開発アカウントの場合は、一般的に Geo レプリケーションに対する課金は避けたいと考えるでしょう。 詳細については、「 [ストレージ アカウントの作成、管理、削除](../storage/storage-create-storage-account.md)」を参照してください。
 8. **[作成]**をクリックします。
 
     ![新しいストレージ アカウント ](./media/websites-dotnet-webjobs-sdk-get-started/newstorage.png)
@@ -124,7 +126,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
       &lt;add name="AzureWebJobsStorage" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/&gt;
     &lt;/connectionStrings&gt;</pre>
 
-    ストレージ接続文字列は AzureWebJobsStorage という名前になります。これは、Web ジョブ SDK が既定で使用する名前であるためです。 Azure 環境では&1; つの接続文字列を設定する必要しかないため、ここでも同じ名前が使用されます。
+    ストレージ接続文字列は AzureWebJobsStorage という名前になります。これは、Web ジョブ SDK が既定で使用する名前であるためです。 Azure 環境では 1 つの接続文字列を設定する必要しかないため、ここでも同じ名前が使用されます。
 2. **サーバー エクスプローラー**で、**[Storage]** ノードの下にあるストレージ アカウントを右クリックし、**[プロパティ]** をクリックします。
 
     ![ストレージ アカウント プロパティのクリック](./media/websites-dotnet-webjobs-sdk-get-started/storppty.png)
@@ -137,7 +139,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 5. *Web.config* ファイル内のストレージ接続文字列を、コピーした接続文字列で置き換えます。 貼り付ける前に、引用符の内側の文字列がすべてコピーされ、引用符が含まれていないことを確認してください。
 6. ContosoAdsWeb プロジェクトで *Web.config* ファイルを開きます。
 
-    このファイルには、アプリケーション データ用に&1; つとログ用に&1; つの計&2; つのストレージ接続文字列があります。 ストレージ アカウントは、アプリケーション データ用とログ用とで使い分けることができるほか、 [データ用に複数のストレージ アカウント](https://github.com/Azure/azure-webjobs-sdk/blob/master/test/Microsoft.Azure.WebJobs.Host.EndToEndTests/MultipleStorageAccountsEndToEndTests.cs)を使用することができます。 このチュートリアルでは、1 つのストレージ アカウントを使用します。 接続文字列には、ストレージ アカウント キーのプレースホルダーがあります。
+    このファイルには、アプリケーション データ用に 1 つとログ用に 1 つの計 2 つのストレージ接続文字列があります。 ストレージ アカウントは、アプリケーション データ用とログ用とで使い分けることができるほか、 [データ用に複数のストレージ アカウント](https://github.com/Azure/azure-webjobs-sdk/blob/master/test/Microsoft.Azure.WebJobs.Host.EndToEndTests/MultipleStorageAccountsEndToEndTests.cs)を使用することができます。 このチュートリアルでは、1 つのストレージ アカウントを使用します。 接続文字列には、ストレージ アカウント キーのプレースホルダーがあります。
 
       <pre class="prettyprint">&lt;configuration&gt;
     &lt;connectionStrings&gt;
@@ -269,9 +271,9 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 2. DefaultConnection 接続文字列の名前を ContosoAdsContext に変更します。
 
     この接続文字列は、Web アプリケーションおよび関連付けられたデータベースを作成したときに Azure で自動的に作成されたものであるため、既に正しい接続文字列値になっています。 単に、コードで検索される名前へと変更しているだけです。
-3. AzureWebJobsStorage および AzureWebJobsDashboard という名前の&2; つの新しい接続文字列を追加します。 型を [カスタム] に設定し、接続文字列値を *Web.config* および *App.config* で以前に使用した値と同じ値に設定します 引用符は含めないでください)。
+3. AzureWebJobsStorage および AzureWebJobsDashboard という名前の 2 つの新しい接続文字列を追加します。 型を [カスタム] に設定し、接続文字列値を *Web.config* および *App.config* で以前に使用した値と同じ値に設定します 引用符は含めないでください)。
 
-    これらの接続文字列は Web ジョブ SDK によって、アプリケーション データ用とログ用に&1; つずつ使用されます。 以前に見たとおり、アプリケーション データ用の接続文字列は Web フロントエンド コードによっても使用されます。
+    これらの接続文字列は Web ジョブ SDK によって、アプリケーション データ用とログ用に 1 つずつ使用されます。 以前に見たとおり、アプリケーション データ用の接続文字列は Web フロントエンド コードによっても使用されます。
 4. **[保存]**をクリックします。
 
     ![Connection strings in Azure Portal](./media/websites-dotnet-webjobs-sdk-get-started/azconnstr.png)
@@ -287,7 +289,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
    [インデックス] ページは最初に縮小表示なしで表示されます。
 9. 数秒後、ページを更新すると、縮小表示が現れます。
 
-   縮小表示が現れない場合は、Web ジョブが再開されるまで&1; 分ほど待機することがあります。 ページを更新してしばらくしても縮小表示が現れない場合は、Web ジョブが自動的に開始されなかった可能性があります。 その場合は、Web アプリの [クラシック ポータル](https://manage.windowsazure.com) ページで [Web ジョブ] タブに移動し、 **[開始]**をクリックしてください。
+   縮小表示が現れない場合は、Web ジョブが再開されるまで 1 分ほど待機することがあります。 ページを更新してしばらくしても縮小表示が現れない場合は、Web ジョブが自動的に開始されなかった可能性があります。 その場合は、Web アプリの [クラシック ポータル](https://manage.windowsazure.com) ページで [Web ジョブ] タブに移動し、 **[開始]**をクリックしてください。
 
 ### <a name="view-the-webjobs-sdk-dashboard"></a>Web ジョブ SDK ダッシュボードの表示
 1. [クラシック ポータル](https://manage.windowsazure.com)で、Web アプリを選択します。
@@ -346,7 +348,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
     このプロジェクトには、Entity Framework コンテキストおよびフロントエンドとバックエンドの両方が使用するデータ モデルが含まれます。 代替として、Entity Framework に関連するクラスを Web プロジェクトに定義し、Web ジョブ プロジェクトからそのプロジェクトを参照することもできます。 ただしその場合、Web ジョブ プロジェクトは、必要としない Web アセンブリへの参照を含むことになります。
 
 ### <a name="add-a-console-application-project-that-has-webjobs-deployment-enabled"></a>Web ジョブのデプロイが有効なコンソール アプリケーション プロジェクトの追加
-1. Web プロジェクト (ソリューションまたはクラス ライブラリ プロジェクトではなく) を右クリックし、 **[追加]** > **[新しい Azure Web ジョブ プロジェクト]**を使用する簡単な多層 ASP.NET MVC&5; アプリケーションのコードを記述する方法を示します。
+1. Web プロジェクト (ソリューションまたはクラス ライブラリ プロジェクトではなく) を右クリックし、 **[追加]** > **[新しい Azure Web ジョブ プロジェクト]**を使用する簡単な多層 ASP.NET MVC 5 アプリケーションのコードを記述する方法を示します。
 
     ![[新規 Azure Web ジョブ プロジェクト] メニュー選択](./media/websites-dotnet-webjobs-sdk-get-started/newawjp.png)
 2. **[Azure Web ジョブの追加]** ダイアログで、**[プロジェクト名]** と **[Web ジョブ名]** の両方に「ContosoAdsWebJob」と入力します。 **[Web ジョブ実行モード]** は **[連続的に実行]** に設定したままにします。
@@ -363,12 +365,12 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 ### <a name="add-nuget-packages"></a>NuGet パッケージの追加
 Web ジョブ プロジェクトの新しいプロジェクト テンプレートは、Web ジョブ SDK の NuGet パッケージ [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) とその依存関係を自動的にインストールします。
 
-Web ジョブ プロジェクトに自動的にインストールされる Web ジョブ SDK の依存関係の&1; つが、Azure Storage クライアント ライブラリ (SCL) です。 ただし、Blob およびキューで使用するには、これをWeb プロジェクトに追加する必要があります。
+Web ジョブ プロジェクトに自動的にインストールされる Web ジョブ SDK の依存関係の 1 つが、Azure Storage クライアント ライブラリ (SCL) です。 ただし、Blob およびキューで使用するには、これをWeb プロジェクトに追加する必要があります。
 
 1. ソリューションの **[NuGet パッケージの管理]** ダイアログを開きます。
 2. 左側のウィンドウで、 **[インストール済みのパッケージ]**を選択します。
 3. *Azure Storage* パッケージを見つけ、 **[管理]**をクリックします。
-4. **[プロジェクトの選択] **ボックスで、**[ContosoAdsWeb]** チェック ボックスをオンにし、**[OK]** をクリックします。
+4. **[プロジェクトの選択]**ボックスで、**[ContosoAdsWeb]** チェック ボックスをオンにし、**[OK]** をクリックします。
 
     3 つのプロジェクトすべてが Entity Framework を使用して SQL Database 内のデータを操作します。
 5. 左側のウィンドウで、 **[オンライン]**を選択します。
@@ -386,7 +388,7 @@ Web と Web ジョブ プロジェクトはどちらも SQL Database と連携�
 ### <a name="add-code-and-configuration-files"></a>コードと構成ファイルの追加
 このチュートリアルでは、[スキャフォールディングを使用した MVC コントローラーおよびビューの作成方法](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started)、[SQL Server データベースで動作する Entity Framework コードの作成方法](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc)、[ASP.NET 4.5 での非同期プログラミングの基礎](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices#async)については説明していません。 そのため、実行する必要のある残りの作業は、コードと構成ファイルをダウンロード済みのソリューションから新しいソリューションへコピーすることだけです。 コピーの実行後に、以降のセクションでコードの重要な部分について説明します。
 
-プロジェクトまたはフォルダーにファイルを追加するには、プロジェクトまたはフォルダーを右クリックし、 **[追加]** > **[既存の項目]**を使用する簡単な多層 ASP.NET MVC&5; アプリケーションのコードを記述する方法を示します。 目的のファイルを選択し、 **[追加]**をクリックします。 既存のファイルを置き換えるかどうかをたずねるメッセージが表示されたら、 **[はい]**をクリックします。
+プロジェクトまたはフォルダーにファイルを追加するには、プロジェクトまたはフォルダーを右クリックし、 **[追加]** > **[既存の項目]**を使用する簡単な多層 ASP.NET MVC 5 アプリケーションのコードを記述する方法を示します。 目的のファイルを選択し、 **[追加]**をクリックします。 既存のファイルを置き換えるかどうかをたずねるメッセージが表示されたら、 **[はい]**をクリックします。
 
 1. ContosoAdsCommon プロジェクトで、*Class1.cs* ファイルを削除します。その場所に、ダウンロードしたプロジェクトから次のファイルを追加します。
 
@@ -400,7 +402,7 @@ Web と Web ジョブ プロジェクトはどちらも SQL Database と連携�
    * *Controllers* フォルダー: *AdController.cs*
    * *Views\Shared* フォルダー: *_Layout.cshtml* ファイル
    * *Views\Home* フォルダー: *Index.cshtml*
-   * *Views\Ad* フォルダー (最初にフォルダーを作成):&5; つの *.cshtml* ファイル<br/><br/>
+   * *Views\Ad* フォルダー (最初にフォルダーを作成): 5 つの *.cshtml* ファイル<br/><br/>
 3. ContosoAdsWebJob プロジェクトで、ダウンロードしたプロジェクトから次のファイルを追加します。
 
    * *App.config* (ファイルの種類のフィルターを **[すべてのファイル]**に変更します)
@@ -474,7 +476,7 @@ ContosoAdsContext クラスは、Entity Framework によって SQL Database に�
             public System.Data.Entity.DbSet<Ad> Ads { get; set; }
         }
 
-このクラスには&2; つのコンストラクターがあります。 1 つ目のコンストラクターは Web プロジェクトによって使用され、Web.config ファイルまたは Azure ランタイム環境に格納される接続文字列の名前を指定します。 2 つ目のコンストラクターは、実際の接続文字列を渡すために使用します。 これは、Web ジョブ プロジェクトで必要になります。その理由は、Web ジョブ プロジェクトが Web.config ファイルを持たないためです。 この接続文字列がどこに格納されるかについては既に説明しました。後のセクションで、DbContext クラスを初期化するときに接続文字列がどのように取得されるかについて説明します。
+このクラスには 2 つのコンストラクターがあります。 1 つ目のコンストラクターは Web プロジェクトによって使用され、Web.config ファイルまたは Azure ランタイム環境に格納される接続文字列の名前を指定します。 2 つ目のコンストラクターは、実際の接続文字列を渡すために使用します。 これは、Web ジョブ プロジェクトで必要になります。その理由は、Web ジョブ プロジェクトが Web.config ファイルを持たないためです。 この接続文字列がどこに格納されるかについては既に説明しました。後のセクションで、DbContext クラスを初期化するときに接続文字列がどのように取得されるかについて説明します。
 
 ### <a name="contosoadscommon---blobinformationcs"></a>ContosoAdsCommon - BlobInformation.cs
 `BlobInformation` クラスは、画像 BLOB に関する情報をキュー メッセージに格納するために使用されます。
@@ -542,7 +544,7 @@ ContosoAdsContext クラスは、Entity Framework によって SQL Database に�
 ### <a name="contosoadsweb---adcontrollercs"></a>ContosoAdsWeb - AdController.cs
 *AdController.cs* ファイル内では、コンストラクターによって `InitializeStorage` メソッドが呼び出され、BLOB およびキューを操作するための API を提供する Azure Storage クライアント ライブラリ オブジェクトが作成されます。
 
-次に、*Global.asax.cs* と同様に、*images* BLOB コンテナーへの参照が取得されます。 この処理中に、Web アプリに適した既定の [再試行ポリシー](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling) が設定されます。 既定の指数関数的バックオフ再試行ポリシーでは、一時的な障害に対する反復的再試行操作によって Web アプリが&1; 分以上停止する可能性があります。 ここでは、再試行ごとに 3 秒待機し、再試行の回数を 3 回までとする再試行ポリシーを指定しています。
+次に、*Global.asax.cs* と同様に、*images* BLOB コンテナーへの参照が取得されます。 この処理中に、Web アプリに適した既定の [再試行ポリシー](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling) が設定されます。 既定の指数関数的バックオフ再試行ポリシーでは、一時的な障害に対する反復的再試行操作によって Web アプリが 1 分以上停止する可能性があります。 ここでは、再試行ごとに 3 秒待機し、再試行の回数を 3 回までとする再試行ポリシーを指定しています。
 
         var blobClient = storageAccount.CreateCloudBlobClient();
         blobClient.DefaultRequestOptions.RetryPolicy = new LinearRetry(TimeSpan.FromSeconds(3), 3);
@@ -681,7 +683,7 @@ Web ジョブ SDK は、キュー メッセージを受信したときに、こ�
         [QueueTrigger("thumbnailrequest")] BlobInformation blobInfo,
 
     キュー メッセージ内の `BlobInformation` オブジェクトは、自動的に `blobInfo` パラメーターへ逆シリアル化されます。 メソッドが完了すると、キュー メッセージは削除されます。 完了前にメソッドが失敗した場合は、キュー メッセージは削除されません。10 分間のリースが期限切れになると、メッセージは開放され、再度選択され処理されます。 メッセージが常に例外を引き起こす場合、このシーケンスが無限に繰り返されることはありません。 メッセージの処理試行に 5 回失敗した後、メッセージは {queuename}-poison という名前のキューに移動されます。 最大試行回数は構成可能です。
-* `Blob` の&2; つの属性は BLOB にバインドされているオブジェクトを提供します。1 つは既存の画像 BLOB で、もう&1; つはメソッドによって作成される新しい縮小表示の BLOB です。
+* `Blob` の 2 つの属性は BLOB にバインドされているオブジェクトを提供します。1 つは既存の画像 BLOB で、もう 1 つはメソッドによって作成される新しい縮小表示の BLOB です。
 
         [Blob("images/{BlobName}", FileAccess.Read)] Stream input,
         [Blob("images/{BlobNameWithoutExtension}_thumbnail.jpg")] CloudBlockBlob outputBlob)
@@ -696,7 +698,7 @@ Web ジョブ SDK の属性を使用する関数を記述する方法の詳細�
 * [Web ジョブ SDK で Azure Service Bus を使用する方法](websites-dotnet-webjobs-sdk-service-bus.md)
 
 > [!NOTE]
-> * Web アプリを複数の VM で実行している場合、複数の WebJobs が同時に実行し、一部のシナリオでは、これにより同じデータが複数回処理されることがあります。 これは、組み込みのキュー、BLOB、および Service Bus のトリガーを使用した場合は問題になりません。 SDK では、関数は各メッセージまたは BLOB に対して&1; 回のみ処理されます。
+> * Web アプリを複数の VM で実行している場合、複数の WebJobs が同時に実行し、一部のシナリオでは、これにより同じデータが複数回処理されることがあります。 これは、組み込みのキュー、BLOB、および Service Bus のトリガーを使用した場合は問題になりません。 SDK では、関数は各メッセージまたは BLOB に対して 1 回のみ処理されます。
 > * 正常なシャットダウンの実装方法の詳細については、 [正常なシャットダウン](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#graceful)に関するページを参照してください。
 > * `ConvertImageToThumbnailJPG` メソッドのコード (ここでは示していません) では、簡易化のために `System.Drawing` 名前空間のクラスを使用します。 ただし、この名前空間のクラスは Windows フォーム用に設計されています。 これらのクラスは、Windows または ASP.NET サービスでの使用に関してサポートされていません。 イメージの処理オプションの詳細については、「[イメージの動的生成](http://www.hanselman.com/blog/BackToBasicsDynamicImageGenerationASPNETControllersRoutingIHttpHandlersAndRunAllManagedModulesForAllRequests.aspx)」と「[イメージのサイズ変更の詳細](http://www.hanselminutes.com/313/deep-inside-image-resizing-and-scaling-with-aspnet-and-iis-with-imageresizingnet-author-na)」をご覧ください。
 >
@@ -709,7 +711,7 @@ Web ジョブ SDK の属性を使用する関数を記述する方法の詳細�
 アプリケーションは、入門用のチュートリアル用にシンプルに作られています。 実際のアプリケーションでは、[依存関係の挿入](http://www.asp.net/mvc/tutorials/hands-on-labs/aspnet-mvc-4-dependency-injection)や[作業パターンのリポジトリと単位](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application#repo)を実装したり、[ログのためのインターフェイス](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry#log)、データ モデルの変更を管理するための [EF Code First Migrations](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application)、一時的なネットワーク エラーを管理するための [EF 接続の回復性](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application)を使用したりします。
 
 ### <a name="scaling-webjobs"></a>Web ジョブの拡張
-Web ジョブは Web アプリケーションのコンテキストで実行され、個別に拡大縮小することはできません。 たとえば、1 つの標準の Web アプリケーション インスタンスがある場合、バックグラウンド プロセスを実行するインスタンスを&1; つだけ保持できます。それにはサーバー リソース (CPU、メモリなど) の一部が使用され、それ以外のリソースは Web コンテンツを処理するために使用できます。
+Web ジョブは Web アプリケーションのコンテキストで実行され、個別に拡大縮小することはできません。 たとえば、1 つの標準の Web アプリケーション インスタンスがある場合、バックグラウンド プロセスを実行するインスタンスを 1 つだけ保持できます。それにはサーバー リソース (CPU、メモリなど) の一部が使用され、それ以外のリソースは Web コンテンツを処理するために使用できます。
 
 トラフィックが時間帯や曜日によって変わる場合、および実行する必要のあるバックエンド処理を待機できる場合は、トラフィックの少ない時間帯に Web ジョブを実行するようにスケジュールできます。 そのソリューションの負荷が引き続き高すぎる場合は、その目的専用の個別の Web アプリで Web ジョブとしてバックエンドを実行できます。 その後、フロントエンド Web アプリから独立して、バックエンド Web アプリをスケールします。
 

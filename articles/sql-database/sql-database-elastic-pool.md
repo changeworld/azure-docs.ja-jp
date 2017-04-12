@@ -17,9 +17,9 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 53c54c490e7888edef0dc83d1657adbb3db0b745
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 06a67e4d2134baf54e88708d64981b897ecb74a0
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -39,7 +39,7 @@ SQL Database のエラスティック プールは、予期できない多様な
 
 ## <a name="how-do-elastic-pools-help-manage-database-resources"></a>エラスティック プールは、データベース リソースの管理にどのように役立つでしょうか。
 
-SaaS アプリケーションの一般的なパターンは、シングル テナント データベース モデルであり、顧客 (データベース) ごとにそれぞれ異なるデータベースが割り当てられます。 各顧客のメモリ、I/O、CPU のリソース要件は予測することができません。 このように需要の浮き沈みがある中で、コスト効率よくリソースを割り当てるには、どうしたらよいでしょうか。 従来、(1) ピーク時の使用量に基づくリソースの過剰プロビジョニングと、(2) ピーク時のパフォーマンスと顧客満足度を犠牲にしてコストを削減する過小プロビジョニングの&2; つの選択肢がありました。 エラスティック プールは、データベースが必要なパフォーマンス リソースを必要なときに確保できるようにすることで、この問題を解決します。 また、予測可能な予算の範囲内でシンプルなリソース割り当てメカニズムが提供されます。 エラスティック プールを使用する SaaS アプリケーションの設計パターンの詳細については、「 [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)」を参照してください。
+SaaS アプリケーションの一般的なパターンは、シングル テナント データベース モデルであり、顧客 (データベース) ごとにそれぞれ異なるデータベースが割り当てられます。 各顧客のメモリ、I/O、CPU のリソース要件は予測することができません。 このように需要の浮き沈みがある中で、コスト効率よくリソースを割り当てるには、どうしたらよいでしょうか。 従来、(1) ピーク時の使用量に基づくリソースの過剰プロビジョニングと、(2) ピーク時のパフォーマンスと顧客満足度を犠牲にしてコストを削減する過小プロビジョニングの 2 つの選択肢がありました。 エラスティック プールは、データベースが必要なパフォーマンス リソースを必要なときに確保できるようにすることで、この問題を解決します。 また、予測可能な予算の範囲内でシンプルなリソース割り当てメカニズムが提供されます。 エラスティック プールを使用する SaaS アプリケーションの設計パターンの詳細については、「 [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)」を参照してください。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Elastic-databases-helps-SaaS-developers-tame-explosive-growth/player]
 >
@@ -65,7 +65,7 @@ SQL Database では、リソースの需要に対処するデータベースの�
 
 [!INCLUDE [SQL DB service tiers table for elastic pools](../../includes/sql-database-service-tiers-table-elastic-pools.md)]
 
-エラスティック プールのすべての DTU が使用されている場合は、プール内の各データベースが、同量のリソースを受け取ってクエリを処理します。  SQL Database サービスは、コンピューティング時間を均等にすることで、データベース間におけるリソース共有の公平性を実現します。 それ以外の場合、エラスティック プールのリソース共有の公平性は、データベースあたりの DTU分が&0; 以外の値に設定されているときに、リソース量に加えて各データベースに適用されることが保証されます。
+エラスティック プールのすべての DTU が使用されている場合は、プール内の各データベースが、同量のリソースを受け取ってクエリを処理します。  SQL Database サービスは、コンピューティング時間を均等にすることで、データベース間におけるリソース共有の公平性を実現します。 それ以外の場合、エラスティック プールのリソース共有の公平性は、データベースあたりの DTU分が 0 以外の値に設定されているときに、リソース量に加えて各データベースに適用されることが保証されます。
 
 ## <a name="elastic-pool-properties"></a>エラスティック プールのプロパティ
 
@@ -112,7 +112,7 @@ geo リストアよりもアグレッシブな復旧要件があるアプリケ�
 
 * エラスティック プールは、[Azure Portal](sql-database-elastic-pool-manage-portal.md)、[PowerShell](sql-database-elastic-pool-manage-powershell.md)、[Transact-SQL](sql-database-elastic-pool-manage-tsql.md)、[C#](sql-database-elastic-pool-manage-csharp.md)、および REST API を使用して作成および管理できます。
 * エラスティック プールを使用するときのガイダンスについては、[エラスティック プールのガイダンス](sql-database-elastic-pool-guidance.md)を参照してください。
-* ビデオについては、[Azure SQL Database のエラスティック機能に関する Microsoft Virtual Academy のビデオ コース](https://mva.microsoft.com/en-US/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)をご覧ください。
+* ビデオについては、[Azure SQL Database のエラスティック機能に関する Microsoft Virtual Academy のビデオ コース](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)をご覧ください。
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-pool/databases.png

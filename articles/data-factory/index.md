@@ -13,8 +13,9 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 7e5e1b41828d0c3d81f5594609910ecdba02a249
-ms.openlocfilehash: 9e9a23f8ddcff428b45f08ab001489d00b3ed7a9
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: faa31345c423191591b392cdfdf1e2d9169b88fc
+ms.lasthandoff: 04/12/2017
 
 ---
 # <a name="azure-data-factory-documentation"></a>Azure Data Factory のドキュメント
@@ -119,6 +120,7 @@ ms.openlocfilehash: 9e9a23f8ddcff428b45f08ab001489d00b3ed7a9
                     <div class="cardText">
                         <h3>言語</h3>
                         <p><a href="/dotnet/api/microsoft.azure.management.datafactories.models">.NET</a></p>
+                        <p><a href="/azure/data-factory/data-factory-json-scripting-reference">JSON</a></p>
                    </div>
                 </div>
             </div>
@@ -137,10 +139,5 @@ ms.openlocfilehash: 9e9a23f8ddcff428b45f08ab001489d00b3ed7a9
         </div>
     </li>
 </ul>
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

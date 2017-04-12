@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 3/10/2017
 ms.author: markgal;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 9d9c56697a022fac2ad84b7688445cad3e489658
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 2eb88bd81a46dbff9842887976c59d150ae4dad6
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/14/2017
 >
 >
 
-Azure 仮想マシン (VM) をバックアップするには、事前に&3; つの条件を満たしておく必要があります。
+Azure 仮想マシン (VM) をバックアップするには、事前に 3 つの条件を満たしておく必要があります。
 
 * Backup コンテナーを作成するか、または *ご使用の VM と同じリージョンに*ある既存の Backup コンテナーを識別する必要があります。
 * Azure パブリック インターネット アドレスと Azure Storage エンドポイントの間にネットワーク接続を確立します。
@@ -38,13 +38,13 @@ Azure 仮想マシン (VM) をバックアップするには、事前に&3; つ�
 これらの条件が既に環境内で満たされている場合は、 [VM のバックアップに関する記事](backup-azure-vms.md)に進んでください。 まだ条件が満たされていない場合は、この記事の手順に従って、Azure VM をバックアップするための環境を準備します。
 
 ##<a name="supported-operating-system-for-backup"></a>バックアップでサポートされるオペレーティング システム
- * **Linux**: Azure Backup は、 [Azure で承認されている一連のディストリビューション](../virtual-machines/virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) をサポートしています (Core OS Linux を除く)。 _他の個人所有の Linux ディストリビューションも、仮想マシン上で VM エージェントが動作し、かつ Python がサポートされていれば使用できます。ただし、それらのディストリビューションのバックアップは保証されません。_
+ * **Linux**: Azure Backup は、 [Azure で承認されている一連のディストリビューション](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) をサポートしています (Core OS Linux を除く)。 _他の個人所有の Linux ディストリビューションも、仮想マシン上で VM エージェントが動作し、かつ Python がサポートされていれば使用できます。ただし、それらのディストリビューションのバックアップは保証されません。_
  * **Windows Server**: Windows Server 2008 R2 より前のバージョンはサポートされていません。
 
 
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>VM のバックアップと復元に関する制限
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して&2; 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md)です。 従来のモデルでデプロイする場合の制限事項を以下に一覧します。
+> Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md)です。 従来のモデルでデプロイする場合の制限事項を以下に一覧します。
 >
 >
 
@@ -96,7 +96,7 @@ VM をバックアップする際、バックアップ拡張機能は HTTPS API 
 >
 >
 
-次の図は、HTTP プロキシを使用するために必要な&3; つの構成手順を示しています。
+次の図は、HTTP プロキシを使用するために必要な 3 つの構成手順を示しています。
 
 * アプリケーション VM は、パブリック インターネット宛てのすべての HTTP トラフィックをプロキシ VM 経由でルーティングします。
 * プロキシ VM では、仮想ネットワーク内の VM からの着信トラフィックを許可します。
@@ -193,7 +193,7 @@ VM エージェントは、Azure ギャラリーから作成された仮想マ�
 | **操作** | **Windows** | **Linux** |
 | --- | --- | --- |
 | VM エージェントのインストール |<li>[エージェント MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をダウンロードしてインストールします。 インストールを実行するには、管理者特権が必要です。 <li>[VM プロパティを更新](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) して、エージェントがインストールされていることを示します。 |<li> GitHub から最新の [Linux エージェント](https://github.com/Azure/WALinuxAgent) をインストールします。 インストールを実行するには、管理者特権が必要です。 <li> [VM プロパティを更新](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) して、エージェントがインストールされていることを示します。 |
-| VM エージェントの更新 |VM エージェントを更新するには、単純に [VM エージェント バイナリ](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)を再インストールします。 <br><br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |[Linux VM エージェントの更新](../virtual-machines/virtual-machines-linux-update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する手順に従ってください。 <br><br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |
+| VM エージェントの更新 |VM エージェントを更新するには、単純に [VM エージェント バイナリ](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)を再インストールします。 <br><br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |[Linux VM エージェントの更新](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する手順に従ってください。 <br><br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |
 | VM エージェントのインストールの検証 |<li>Azure VM で *C:\WindowsAzure\Packages* フォルダーに移動します。 <li>WaAppAgent.exe ファイルを探します。<li> このファイルを右クリックして **[プロパティ]** をクリックし、**[詳細]** タブを選択します。 [製品バージョン] が 2.6.1198.718 以上であることを確認します。 |該当なし |
 
 詳細については、[VM エージェント](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409)および[インストール方法](https://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)に関するページをご覧ください。

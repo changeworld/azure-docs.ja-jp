@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 02/27/2016
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
-ms.openlocfilehash: 14218a7c2acf6b68025095c1ecb60cb480233044
-ms.lasthandoff: 03/23/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 197e32058908533bc46b2ea2e38ff521a4a1fa3f
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -36,10 +36,10 @@ Power BI Desktop や Excel などの Microsoft クライアント アプリケ�
 ## <a name="download-the-latest-preview-data-providers"></a>最新**プレビュー** データ プロバイダーのダウンロード  
 次のデータ プロバイダーを使用して、最新のバグ修正と更新プログラムを取得します。 Azure Analysis Services プレビューまたは SQL Server vNext Analysis Services に接続するときには、これらのデータ プロバイダーをお勧めします。
 
-[MSOLAP (amd64) プレビュー](http://download.microsoft.com/download/4/8/2/482E5799-9B8E-4724-8A4C-F301BAE788EE/14.0.304.138/1033/x64/SQL_AS_OLEDB.msi)</br>
-[MSOLAP (x86) プレビュー](http://download.microsoft.com/download/4/8/2/482E5799-9B8E-4724-8A4C-F301BAE788EE/14.0.304.138/1033/x86/SQL_AS_OLEDB.msi)</br>
-[AMO プレビュー](http://download.microsoft.com/download/4/8/2/482E5799-9B8E-4724-8A4C-F301BAE788EE/14.0.304.138/1033/x64/SQL_AS_AMO.msi)</br>
-[ADOMD プレビュー](http://download.microsoft.com/download/4/8/2/482E5799-9B8E-4724-8A4C-F301BAE788EE/14.0.304.138/1033/x64/SQL_AS_ADOMD.msi)</br>
+[MSOLAP (amd64) プレビュー](http://download.microsoft.com/download/4/8/2/482E5799-9B8E-4724-8A4C-F301BAE788EE/14.0.500.170/amd64/SQL_AS_OLEDB.msi)</br>
+[MSOLAP (x86) プレビュー](http://download.microsoft.com/download/4/8/2/482E5799-9B8E-4724-8A4C-F301BAE788EE/14.0.500.170/x86/SQL_AS_OLEDB.msi)</br>
+[AMO プレビュー](http://download.microsoft.com/download/4/8/2/482E5799-9B8E-4724-8A4C-F301BAE788EE/14.0.500.170/SQL_AS_AMO.msi)</br>
+[ADOMD プレビュー](http://download.microsoft.com/download/4/8/2/482E5799-9B8E-4724-8A4C-F301BAE788EE/14.0.500.170/SQL_AS_ADOMD.msi)</br>
 
 ## <a name="download-the-latest-rtm-data-providers"></a>最新 **RTM** データ プロバイダーのダウンロード  
 運用環境で、完全にリリースおよびサポートされるバージョンが必要な場合は、次のデータ プロバイダーを使用します。
