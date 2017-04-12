@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: "クラウドへのデータの格納, クラウドに格納されているデータ, IoT クラウド サービス"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-gateway-kit-c-lesson1-set-up-nuc
 ms.assetid: f84f9a85-e2c4-4a92-8969-f65eb34c194e
 ms.service: iot-hub
 ms.devlang: c

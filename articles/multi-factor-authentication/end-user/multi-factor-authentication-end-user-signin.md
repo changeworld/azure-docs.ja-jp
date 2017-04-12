@@ -13,13 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2017
+ms.date: 04/02/2017
 ms.author: kgremban
+ms.custom: end-user
 translationtype: Human Translation
 ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
 ms.openlocfilehash: e972446ea92e8fd31406c9ccff7832b7441f3a2a
 ms.lasthandoff: 03/04/2017
-
 
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication を使用したサインイン エクスペリエンス

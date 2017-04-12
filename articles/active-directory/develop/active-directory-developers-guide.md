@@ -95,6 +95,7 @@ Identity Management As A Service (IDMaaS) プラットフォームとして Azur
 > [!IMPORTANT]
 > Azure Active Directory リソースにアクセスする場合、Azure AD Graph API ではなく [Microsoft Graph](https://graph.microsoft.io/) を使用することを強くお勧めします。 開発作業は現在 Microsoft Graph に集中しており、Azure AD Graph API の追加の機能強化は予定されていません。 Azure AD Graph API の使用が適切なシナリオの数は非常に限られています。詳しくは、Office デベロッパー センターのブログ投稿「[Microsoft Graph or the Azure AD Graph (Microsoft Graph または Azure AD Graph)](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph)」をご覧ください。
 > 
+
 * [Microsoft Graph](https://graph.microsoft.io/): Microsoft Graph のドキュメント、リファレンス、サンプル、SDK です。 
 * [Azure AD Graph API リファレンス](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog): Azure Active Directory Graph API の REST リファレンスです。 
 * [Azure AD Graph API のアクセス許可スコープ](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes): テナント内のディレクトリ データに対するアプリケーションのアクセス権を制御するために使用される、OAuth 2.0 アクセス許可スコープです。

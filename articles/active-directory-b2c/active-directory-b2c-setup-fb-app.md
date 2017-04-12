@@ -27,17 +27,17 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Faceboo
 
 1. [Facebook for developers](https://developers.facebook.com/) の Web サイトに移動し、Facebook アカウントの資格情報でサインインします。
 2. まだ登録していない場合は、Facebook 開発者として登録する必要があります。 そのためには、ページの右上隅にある **[Register (登録)]** をクリックし、Facebook のポリシーに同意して登録手順を完了します。
-3. **[My Apps](マイ アプリ)** をクリックし、**[Add a New App](新しいアプリの追加)** をクリックします。 
+3. **[My Apps] \(マイ アプリ)** をクリックし、**[Add a New App] \(新しいアプリの追加)** をクリックします。 
 4. フォームに、**表示名**と有効な**連絡先の電子メール**を入力します。
-5. **[Create App ID](アプリ ID の作成)** をクリックします。 Facebook プラットフォームのポリシーを受け入れ、オンライン セキュリティ チェックを完了する必要があります。
-6. 左の列の **[設定](Settings)** をクリックし、選択が済んでいない場合は **[Basic]** を選択します。
-7. **[Category](カテゴリ)** を選択します。 
-8. **[+Add Platform](+ プラットフォームの追加)** をクリックし、**[Website](Web サイト)** を選択します。
+5. **[Create App ID] \(アプリ ID の作成)** をクリックします。 Facebook プラットフォームのポリシーを受け入れ、オンライン セキュリティ チェックを完了する必要があります。
+6. 左の列の **[設定] \(Settings)** をクリックし、選択が済んでいない場合は **[Basic]** を選択します。
+7. **[Category] \(カテゴリ)** を選択します。 
+8. **[+Add Platform] \(+ プラットフォームの追加)** をクリックし、**[Website] \(Web サイト)** を選択します。
    
     ![Facebook - 設定](./media/active-directory-b2c-setup-fb-app/fb-settings.png)
    
     ![Facebook - 設定 - ウェブサイト](./media/active-directory-b2c-setup-fb-app/fb-website.png)
-9. **[Site URL](サイト URL)** フィールドに「`https://login.microsoftonline.com/`」と入力し、**[Save Changes](変更の保存)** をクリックします。
+9. **[Site URL] \(サイト URL)** フィールドに「`https://login.microsoftonline.com/`」と入力し、**[Save Changes] \(変更の保存)** をクリックします。
    
     ![Facebook - サイトの URL](./media/active-directory-b2c-setup-fb-app/fb-site-url.png)
 
@@ -47,7 +47,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Faceboo
 11. 左のナビゲーションで **[+ Add Product (+ 製品の追加)]** をクリックし、**[Facebook Login (Facebook ログイン)]** の横にある **[Get Started (開始)]** ボタンをクリックします。
    
     ![Facebook - Facebook ログイン](./media/active-directory-b2c-setup-fb-app/fb-login.png)
-12. **[Website](Web サイト)** を選択し、**[Client OAuth Settings](クライアント OAuth 設定)** セクションの **[Valid OAuth redirect URIs](有効な OAuth リダイレクト URI)** フィールドに「`https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`」と入力します。 **{tenant}** は、実際のテナントの名前 (例: contosob2c.onmicrosoft.com) に置き換えます。 ページの下部にある **[Save Changes]** をクリックします。
+12. **[Website] \(Web サイト)** を選択し、**[Client OAuth Settings] \(クライアント OAuth 設定)** セクションの **[Valid OAuth redirect URIs] \(有効な OAuth リダイレクト URI)** フィールドに「`https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`」と入力します。 **{tenant}** は、実際のテナントの名前 (例: contosob2c.onmicrosoft.com) に置き換えます。 ページの下部にある **[Save Changes]** をクリックします。
     
     ![Facebook - OAuth リダイレクト URI](./media/active-directory-b2c-setup-fb-app/fb-oauth-redirect-uri.png)
 13. Facebook アプリケーションを Azure AD B2C で使用できるようにするには、アプリケーションをパブリックに利用できるようにする必要があります。 そのためには、左側のナビゲーションで **[App Review (アプリのレビュー)]** をクリックし、ページの先頭にあるスイッチを **[YES]** にして、**[Confirm (確認)]** をクリックします。

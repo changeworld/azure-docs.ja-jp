@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: "IoT 開発, IoT ソフトウェア, IoT クラウド サービス, モノのインターネット ソフトウェア, Azure CLI, Mac での Python のインストール, Mac での Git のインストール, gulp の実行, Mac での Node.js のインストール"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-gateway-kit-c-lesson1-set-up-nuc
 ms.assetid: 42f9d186-e20c-4ef9-98cc-71d39e058b06
 ms.service: iot-hub
 ms.devlang: c
