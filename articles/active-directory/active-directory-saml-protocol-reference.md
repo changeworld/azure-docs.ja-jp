@@ -38,4 +38,3 @@ Azure Active Directory は、テナント固有および共通 (テナント独�
 
 Azure AD で発行されるフェデレーション メタデータ ドキュメントについては、「 [フェデレーション メタデータ](active-directory-federation-metadata.md)」を参照してください。
 
-

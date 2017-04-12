@@ -12,7 +12,7 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 03/17/2017
+ms.date: 04/11/2017
 ms.author: sdanie
 translationtype: Human Translation
 ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
@@ -273,7 +273,7 @@ Azure Redis Cache は .NET オブジェクトとプリミティブ データ型�
 [How to: Set a Page's Cacheability Programmatically]: http://msdn.microsoft.com/library/z852zf6b.aspx
 [Configure a cache in Azure Redis Cache]: http://msdn.microsoft.com/library/azure/dn793612.aspx
 
-[StackExchange.Redis configuration model]: http://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Configuration.md
+[StackExchange.Redis configuration model]: https://stackexchange.github.io/StackExchange.Redis/Configuration
 
 [Work with .NET objects in the cache]: http://msdn.microsoft.com/library/dn690521.aspx#Objects
 

@@ -13,12 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2016
+ms.date: 03/15/2017
 ms.author: kgremban
+ms.custom: end-user
 translationtype: Human Translation
 ms.sourcegitcommit: 4ff028f88e984f28bc0f4a228aabed1fabc90560
 ms.openlocfilehash: 6dafec65b2e8091954cae39994d0013d9fd06558
-
+ms.lasthandoff: 12/22/2016
 
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>アカウントへの&2; 段階認証の設定
@@ -97,9 +98,4 @@ ms.openlocfilehash: 6dafec65b2e8091954cae39994d0013d9fd06558
 * 推奨されるオプションを変更し、[2 段階認証設定を管理します](multi-factor-authentication-end-user-manage-settings.md)
 * 2 段階認証をサポートしていないネイティブ デバイス アプリに[アプリ パスワード](multi-factor-authentication-end-user-app-passwords.md)を設定します。
 * 携帯電話サービスを利用していない場合でも、迅速で安全な認証のために [Microsoft Authenticator アプリ](microsoft-authenticator-app-how-to.md)をご確認ください。
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

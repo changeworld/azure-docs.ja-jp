@@ -96,23 +96,23 @@ Windows リモート デスクトップで仮想マシンに接続したら、�
 ## <a name="InstallIPython"></a>IPython Notebook とその他のサポート ツールをインストールする
 IPython Notebook サーバーとして機能するよう新しい SQL Server VM を構成し、AzCopy、Azure ストレージ エクスプローラー、便利な Data Science Python パッケージその他のサポート ツールを追加でインストールできるよう、特別なカスタマイズ スクリプトが用意されています。 インストールするには、次のようにします。
 
-* Windows の **[スタート]** アイコンを右クリックし、**[コマンド プロンプト (管理者)]** をクリックします。
-* 次のコマンドをコピーして、コマンド プロンプトに貼り付けます。
+1. Windows の **[スタート]** アイコンを右クリックし、**[コマンド プロンプト (管理者)]** をクリックします。
+2. 次のコマンドをコピーして、コマンド プロンプトに貼り付けます。
   
         set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/MachineSetup/Azure_VM_Setup_Windows.ps1'
         @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
-* メッセージが表示されたら、IPython Notebook サーバーの適切なパスワードを入力します。
-* カスタマイズ スクリプトは、次に示すようなインストール後の手順を自動化します。
-  * IPython Notebook サーバーのインストールとセットアップ
-  * 既に作成した次のエンドポイント用に Windows ファイアウォールで TCP ポートを開く
-  * SQL Server リモート接続用
-  * IPython Notebook サーバーのリモート接続用
-  * サンプルの IPython ノートブックおよび SQL スクリプトを取得する
-  * 便利な Data Science Python パッケージをダウンロードしてインストールする
-  * AzCopy や Azure ストレージ エクスプローラーなどの Azure ツールをダウンロードしてインストールする   
+3. メッセージが表示されたら、IPython Notebook サーバーの適切なパスワードを入力します。
+4. カスタマイズ スクリプトは、次に示すようなインストール後の手順を自動化します。
+    * IPython Notebook サーバーのインストールとセットアップ
+    * 既に作成した次のエンドポイント用に Windows ファイアウォールで TCP ポートを開く
+    * SQL Server リモート接続用
+    * IPython Notebook サーバーのリモート接続用
+    * サンプルの IPython ノートブックおよび SQL スクリプトを取得する
+    * 便利な Data Science Python パッケージをダウンロードしてインストールする
+    * AzCopy や Azure ストレージ エクスプローラーなどの Azure ツールをダウンロードしてインストールする   
     <br>
-* 任意のローカルまたはリモート ブラウザーから、URL 形式 `https://<virtual_machine_DNS_name>:<port>`を使用して IPython Notebook にアクセスし実行することができます (ポートは仮想マシンのプロビジョニング中に選択した IPython パブリック ポート)。
-* IPython Notebook サーバーはバックグラウンド サービスとして実行され、仮想マシンの再起動時に自動的に再起動されます。
+5. 任意のローカルまたはリモート ブラウザーから、URL 形式 `https://<virtual_machine_DNS_name>:<port>`を使用して IPython Notebook にアクセスし実行することができます (ポートは仮想マシンのプロビジョニング中に選択した IPython パブリック ポート)。
+6. IPython Notebook サーバーはバックグラウンド サービスとして実行され、仮想マシンの再起動時に自動的に再起動されます。
 
 ## <a name="Optional"></a>必要に応じて、データ ディスクをアタッチする
 データ ディスク、つまり C ドライブ (OS ディスク) と D ドライブ (一時的なディスク) 以外のディスクが VM イメージに含まれない場合、データを格納するために 1 つ以上のデータ ディスクを追加する必要があります。 SQL Server 2012 SP2 Enterprise Optimized for DataWarehousing Workloads 用の VM イメージは、SQL Server データおよびログ ファイル用の追加のディスク付きで事前構成されています。
