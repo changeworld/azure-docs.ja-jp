@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 03/03/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: db01dd7ff7590c6cb43b5f8bc39674f585160856
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 10e2f35bdaf1b6e00e3d8dde34dd5809a89cde30
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -37,18 +37,18 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 * Azure HDInsight (HDInsight の Hadoop) クラスター (Windows または Linux ベース)
 
   > [!IMPORTANT]
-  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。
 
 * Visual Studio 2012、2013、2015、または 2017
 
 ## <a name="create-the-application"></a>アプリケーションを作成する
 
-HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。 
+HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。
 
 1. Visual Studio で **[ファイル]** メニューから **[新規作成]**、**[プロジェクト]** の順に選択します。
 
 2. 新しいプロジェクトの場合は、次の値を入力または選択します。
-   
+
    | プロパティ | 値 |
    | ------ | ------ |
    | カテゴリ | テンプレート/Visual C#/Windows |
@@ -60,11 +60,11 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 4. **[ツール]** メニューで **[ライブラリ パッケージ マネージャー]** または **[NuGet パッケージ マネージャー]** を選択し、**[パッケージ マネージャー コンソール]** を選択します。
 
 5. .NET SDK パッケージをインストールするには、次のコマンドを使用します。
-   
+
         Install-Package Microsoft.Azure.Management.HDInsight.Job
 
 6. ソリューション エクスプローラーで **Program.cs** をダブルクリックして、このファイルを開きます。 既存のコードを次のコードに置き換えます。
-   
+
     ```csharp
     using Microsoft.Azure.Management.HDInsight.Job;
     using Microsoft.Azure.Management.HDInsight.Job.Models;
@@ -117,7 +117,7 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
         }
     }
     ```
-    
+
 7. アプリケーションを起動するには、**F5** キーを押します。
 
 8. アプリケーションを終了するには、**Enter** キーを押します。

@@ -16,9 +16,9 @@ ms.workload: infrastructure
 ms.date: 03/15/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: a82b96bd0a669d9798467c837bf34133b3f9cd0c
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 298190e1a83b2f7ac11a302e42ad2a3ab92c5ab2
+ms.lasthandoff: 04/06/2017
 
 ---
 
@@ -26,9 +26,9 @@ ms.lasthandoff: 03/21/2017
 
 このスクリプトは、Docker を有効にした仮想マシンを作成し、NGINX を実行する Docker コンテナーを起動します。 このスクリプトを実行すると、Azure 仮想マシンの FQDN 経由で NGINX Web サーバーにアクセスできるようになります。 
 
-必要に応じて、[Azure CLI インストール ガイド](https://docs.microsoft.com/cli/azure/install-azure-cli)の手順に従って Azure CLI をインストールし、`az login` を実行して、Azure との接続を作成します。
+[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
-このサンプルは、bash シェルに対応しています。 Azure CLI スクリプトを Windows クライアントで実行する方法については、[Windows での Azure CLI の実行](../virtual-machines-windows-cli-options.md)に関する記事を参照してください。
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -58,5 +58,5 @@ az group delete --name myResourceGroup
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
 
-その他の仮想マシン用の CLI サンプル スクリプトは、[Azure Linux VM のドキュメント](../virtual-machines-linux-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)のページにあります。
+その他の仮想マシン用の CLI サンプル スクリプトは、[Azure Linux VM のドキュメント](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)のページにあります。
 

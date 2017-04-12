@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 1d568bc6ab8f2801d575d726352f4c68e1f9277a
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: a1a2102f2d26a3e739d2112e2e05332a708227d8
+ms.lasthandoff: 04/11/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/25/2017
 このドキュメントでは、Azure HDInsight の Hadoop クラスターで完了した YARN (Yet Another Resource Negotiator) アプリケーションのログにアクセスする方法について説明します。
 
 > [!IMPORTANT]
-> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 * Linux ベースの HDInsight クラスター。
@@ -58,7 +58,7 @@ YARN はアプリケーションのスケジュール設定/監視からリソ�
 
 ここで、*user* はアプリケーションを開始したユーザーの名前であり、*applicationId* は YARN リソース マネージャーにより割り当てられたアプリケーションの一意の識別子です。
 
-集計されたログは、コンテナーでインデックスが作成され、[TFile][T-file] に[バイナリ形式][binary-format]で書かれているので、直接読み取ることはできません。 YARN ResourceManager Logs または CLI ツールを使用して、対象のアプリケーションまたはコンテナーのログをプレーン テキストとして表示する必要があります。 
+集計されたログは、コンテナーでインデックスが作成され、[TFile][T-file] に[バイナリ形式][binary-format]で書かれているので、直接読み取ることはできません。 YARN ResourceManager Logs または CLI ツールを使用して、対象のアプリケーションまたはコンテナーのログをプレーン テキストとして表示する必要があります。
 
 ## <a name="yarn-cli-tools"></a>YARN CLI ツール
 
@@ -78,12 +78,12 @@ SSH トンネルを作成したら、次の手順に従って YARN のログを�
 
 1. Web ブラウザーで、https://CLUSTERNAME.azurehdinsight.net に移動します。 CLUSTERNAME を、使用する HDInsight クラスターの名前に置き換えます。
 2. 左側のサービスの一覧で、 **[YARN]**を選択します。
-   
+
     ![選択された YARN サービス](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarnservice.png)
 3. **[クイック リンク]** ボックスの一覧で、クラスター ヘッドノードのいずれかを選択し、**[ResourceManager Log]** を選択します。
-   
+
     ![YARN クイック リンク](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarnquicklinks.png)
-   
+
     YARN のログへのリンクの一覧が表示されます。
 
 [YARN-timeline-server]:http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html

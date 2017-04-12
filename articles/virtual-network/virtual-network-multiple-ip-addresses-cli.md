@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 90f1f63beac199bc88397951896fe28e3824ee64
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 0e9b2ef89ca39a7988a7b2573496a605dfc604b4
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -35,7 +35,7 @@ ms.lasthandoff: 03/27/2017
 このタスクは、Azure CLI 2.0 (この記事) または [Azure CLI 1.0](virtual-network-multiple-ip-addresses-cli-nodejs.md) を使用して行うことができます。 これらの値は、お使いの環境に合わせて変更してください。 以下の手順は、シナリオの説明に従って複数の IP アドレスを持つ VM を作成する方法を示しています。 "" で囲まれた変数値と IP アドレスの種類は、実際の実装に合わせて変更してください。 
 
 1. まだインストールしていない場合は、[Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールします。
-2. 「[Linux VM 用の SSH 公開キーと秘密キーのペアの作成](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」の手順を実行して、Linux VM 用の SSH 公開キーと秘密キーのペアを作成します。
+2. 「[Linux VM 用の SSH 公開キーと秘密キーのペアの作成](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」の手順を実行して、Linux VM 用の SSH 公開キーと秘密キーのペアを作成します。
 3. コマンド シェルで、`az login` コマンドを使用してログインし、使用中のサブスクリプションを選択します。
 4. 以下のスクリプトを Linux または Mac コンピューターで実行して、VM を作成します。 このスクリプトは、リソース グループ、1 つの仮想ネットワーク (VNet)、3 つの IP 構成を持つ 1 つの NIC、この NIC が関連付けられた VM を作成します。 NIC、パブリック IP アドレス、仮想ネットワーク、および VM リソースはすべて、同一の場所およびサブスクリプション内に存在する必要があります。 すべてのリソースが同一のリソース グループ内に存在する必要はありませんが、以下のスクリプトでは同一グループ内に配置しています。
 
@@ -157,7 +157,7 @@ az vm create \
 
 このスクリプトでは、3 つの IP 構成が設定された NIC を備える VM に加えて次のものも作成されます。
 
-- 1 つの Premium 管理ディスク (既定)。ただし、作成するディスクの種類には別のオプションもあります。 詳細については、「[Azure CLI 2.0 を使用して Linux VM を作成する](../virtual-machines/virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
+- 1 つの Premium 管理ディスク (既定)。ただし、作成するディスクの種類には別のオプションもあります。 詳細については、「[Azure CLI 2.0 を使用して Linux VM を作成する](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
 - 1 つのサブネットと 2 つのパブリック IP アドレスを持つ仮想ネットワーク。 代わりに、*既存の*仮想ネットワーク、サブネット、NIC、またはパブリック IP アドレス リソースを使用することもできます。 リソースを別途作成するのではなく、既存のネットワーク リソースを使用する場合は、「`az vm create -h`」と入力します。
 
 パブリック IP アドレスには、わずかな費用がかかります。 IP アドレスの料金の詳細については、「 [IP アドレスの料金](https://azure.microsoft.com/pricing/details/ip-addresses) 」ページをご覧ください。 サブスクリプション内で使用できるパブリック IP アドレスの数には制限があります。 制限の詳細については、[Azure の制限](../azure-subscription-service-limits.md#networking-limits)に関する記事をご覧ください。

@@ -15,14 +15,15 @@ ms.workload: compute
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 84aaff1f1e8a92583107295643e0ada81376fab0
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: d32d91f7bbfcea61caba6ccc3033929d307f14be
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="run-any-windows-app-on-any-device-with-azure-remoteapp"></a>Azure RemoteApp を使用して任意のデバイス上で任意の Windows アプリを実行する
 > [!IMPORTANT]
-> Azure RemoteApp の提供は終了しました。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
+> Azure RemoteApp の提供は、2017 年 8 月 31 日で終了します。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
 > 
 > 
 
@@ -121,10 +122,5 @@ Access はデータベースです。せっかくのデータベースが役立�
 コレクションの作成方法を習得できたので、 [Office 365 を使用するコレクション](remoteapp-tutorial-o365anywhere.md)を作成してみてください。 あるいは、ローカル ネットワークにアクセスする [ハイブリッド コレクション ](remoteapp-create-hybrid-deployment.md)を作成することもできます。
 
 <!--Image references-->
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

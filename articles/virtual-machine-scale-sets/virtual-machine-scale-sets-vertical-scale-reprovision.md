@@ -16,13 +16,14 @@ ms.topic: article
 ms.date: 08/03/2016
 ms.author: guybo
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 4533b446f661568d0e70a23bb64880022038bb9a
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 9159a5a9041864fe06785829121233379c46bb03
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>仮想マシン スケール セットの使用を開始する
-この記事では、再プロビジョニングありまたはなしで Azure [仮想マシン スケール セット](https://azure.microsoft.com/services/virtual-machine-scale-sets/) を垂直方向にスケーリングする方法について説明します。 スケール セットにない仮想マシンの垂直方向のスケーリングについては、「 [Azure Automation で Azure 仮想マシンを垂直方向にスケーリングする](../virtual-machines/virtual-machines-windows-vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+この記事では、再プロビジョニングありまたはなしで Azure [仮想マシン スケール セット](https://azure.microsoft.com/services/virtual-machine-scale-sets/) を垂直方向にスケーリングする方法について説明します。 スケール セットにない仮想マシンの垂直方向のスケーリングについては、「 [Azure Automation で Azure 仮想マシンを垂直方向にスケーリングする](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
 *スケール アップ*および*スケール ダウン*とも呼ばれる垂直スケーリングとは、ワークロードに応じて仮想マシン (VM) のサイズを増減させることを意味します。 これを、*スケール アウト*および*スケール イン*とも呼ばれる、仮想マシンの数がワークロードに応じて変更される[水平方向のスケーリング](virtual-machine-scale-sets-autoscale-overview.md)と比較してください。
 
@@ -126,9 +127,4 @@ Add-AzureRmMetricAlertRule  -Name  $alertName `
 
 [runbooks]: ./media/virtual-machine-scale-sets-vertical-scale-reprovision/runbooks.png
 [gallery]: ./media/virtual-machine-scale-sets-vertical-scale-reprovision/runbooks-gallery.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

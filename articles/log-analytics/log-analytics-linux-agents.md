@@ -129,7 +129,7 @@ sudo /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py –enable
 Linux のパフォーマンス カウンターは、Windows のパフォーマンス カウンターと似ており、どちらも同じような働きがあります。 パフォーマンス カウンターの追加と構成は、以下の手順で行います。 パフォーマンス カウンターが OMS に追加された後、30 秒おきにデータが収集されます。
 
 ### <a name="to-add-a-linux-performance-counter-in-oms"></a>Linux のパフォーマンス カウンターを OMS で追加するには
-1. OMS ポータルを使用して OMS Agent for Linux を構成するには、[Settings] (設定) ページで Linux のパフォーマンス カウンターを追加し、 **[Data]**(データ) をクリックします。  
+1. OMS ポータルを使用して OMS Agent for Linux を構成するには、[Settings] \(設定) ページで Linux のパフォーマンス カウンターを追加し、 **[Data]**(データ) をクリックします。  
 2. **[Settings (設定)]** ページの **[Data (データ)]** で、**[Linux performance counters (Linux パフォーマンス カウンター)]** をクリックし、追加するカウンターの名前を選択するか入力します。  
     ![データ](./media/log-analytics-linux-agents/oms-settings-data01.png)
 3. カウンターのフル ネームがわからない場合は、名前の一部分を入力すると、使用できるカウンターが一覧表示されます。 追加するカウンターが見つかったら、目的の名前を一覧から選んでクリックし、プラス アイコンをクリックしてカウンターを追加します。
@@ -244,7 +244,7 @@ Apache 監視モジュールをアンロードするには、次のコマンド�
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 ```
 ### <a name="to-view-performance-data-with-log-analytics"></a>Log Analytics でパフォーマンス データを表示するには
-1. Operations Management Suite ポータルで、[Log Search] (ログの検索) タイルをクリックします。
+1. Operations Management Suite ポータルで、[Log Search] \(ログの検索) タイルをクリックします。
 2. すべてのパフォーマンス カウンターを表示するには、検索バーに「 `* (Type=Perf)` 」と入力します。
 
 OMS の収集対象には Windows のパフォーマンス カウンター データも含まれるので、Linux 固有のデータに検索範囲を限定する必要があります。 次の例では、Chorizo21 という名前の Linux サーバーに固有のパフォーマンス データが表示されます。
@@ -315,7 +315,7 @@ log { source(src); filter(f_warning_oms); destination(warning_oms); };
 ```
 
 ### <a name="to-view-all-syslog-events-with-log-analytics"></a>Log Analytics ですべての Syslog イベントを表示するには
-1. Operations Management Suite ポータルで、 **[Log Search]** (ログの検索) タイルをクリックします。
+1. Operations Management Suite ポータルで、 **[Log Search]** \(ログの検索) タイルをクリックします。
 2. **[Log Management]** (ログの管理) グループで、あらかじめ定義されている syslog 検索を選択し、いずれかを選んで実行します。
 
 この例では、すべての Syslog イベントを表示しています。
@@ -381,7 +381,7 @@ Type=Alert
 ```
 
 #### <a name="to-view-all-nagios-alerts-with-log-analytics"></a>Log Analytics ですべての Nagios アラートを表示するには
-1. Operations Management Suite ポータルで、 **[Log Search]** (ログの検索) タイルをクリックします。
+1. Operations Management Suite ポータルで、 **[Log Search]** \(ログの検索) タイルをクリックします。
 2. クエリ バーに、次の検索クエリを入力します。
 
     ```
@@ -392,7 +392,7 @@ Type=Alert
 表示された検索結果を掘り下げて、さらに詳しい情報を得ることができます ( *AlertState*など)。
 
 ### <a name="to-view-all-zabbix-alerts-with-log-analytics"></a>Log Analytics ですべての Zabbix アラートを表示するには
-1. Operations Management Suite ポータルで、 **[Log Search]** (ログの検索) タイルをクリックします。
+1. Operations Management Suite ポータルで、 **[Log Search]** \(ログの検索) タイルをクリックします。
 2. クエリ バーに、次の検索クエリを入力します。
 
     ```

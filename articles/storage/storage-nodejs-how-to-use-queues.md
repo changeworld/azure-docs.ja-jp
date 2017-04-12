@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 1fea38ed4caacfee0c69d024b1ea6dbdcbccaf1d
-ms.openlocfilehash: 0f558871b2dfc85d2713c3511829dcbf41aea17b
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: e30297bd0cc65105c92d6428035d2e6c156448af
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -103,7 +104,7 @@ function (returnObject, finalCallback, next)
 
 このコールバックで、returnObject (サーバーへの要求からの応答) の処理の後に、コールバックは next を呼び出すか (他のフィルターの処理を続けるために next が存在する場合)、単に finalCallback を呼び出す必要があります (サービス呼び出しを終了する場合)。
 
-再試行のロジックを実装する&2; つのフィルター (**ExponentialRetryPolicyFilter** と **LinearRetryPolicyFilter**) が、Azure SDK for Node.js に含まれています。 次のコードは、**ExponentialRetryPolicyFilter** を使う **QueueService** オブジェクトを作成します。
+再試行のロジックを実装する 2 つのフィルター (**ExponentialRetryPolicyFilter** と **LinearRetryPolicyFilter**) が、Azure SDK for Node.js に含まれています。 次のコードは、**ExponentialRetryPolicyFilter** を使う **QueueService** オブジェクトを作成します。
 
 ```
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
@@ -122,7 +123,7 @@ queueSvc.createMessage('myqueue', "Hello world!", function(error, result, respon
 ```
 
 ## <a name="how-to-peek-at-the-next-message"></a>方法: 次のメッセージをピークする
-**peekMessages** メソッドを呼び出すと、キューの先頭にあるメッセージをキューから削除せずにピークできます。 既定では、 **peekMessages** は&1; つのメッセージを対象としてピークします。
+**peekMessages** メソッドを呼び出すと、キューの先頭にあるメッセージをキューから削除せずにピークできます。 既定では、 **peekMessages** は 1 つのメッセージを対象としてピークします。
 
 ```
 queueSvc.peekMessages('myqueue', function(error, result, response){
@@ -140,7 +141,7 @@ queueSvc.peekMessages('myqueue', function(error, result, response){
 > 
 
 ## <a name="how-to-dequeue-the-next-message"></a>方法: 次のメッセージをデキューする
-メッセージは、次の&2; 段階のプロセスで処理されます。
+メッセージは、次の 2 段階のプロセスで処理されます。
 
 1. メッセージをデキューする。
 2. メッセージを削除する。
@@ -187,12 +188,12 @@ queueSvc.getMessages('myqueue', function(error, result, response){
 ```
 
 ## <a name="how-to-additional-options-for-dequeuing-messages"></a>方法: メッセージをデキューするための追加オプション
-キューからのメッセージの取得をカスタマイズする方法は&2; つあります。
+キューからのメッセージの取得をカスタマイズする方法は 2 つあります。
 
 * `options.numOfMessages` - メッセージをバッチで取得する (最大 32 個)。
 * `options.visibilityTimeout` - 非表示タイムアウトを長くするか、短くする。
 
-次のコード例では、 **getMessages** メソッドを使用して、1 回の呼び出しで 15 個のメッセージを取得します。 その後、for ループを使用して、各メッセージを処理します。 また、このメソッドで返されるすべてのメッセージの非表示タイムアウトを&5; 分に設定します。
+次のコード例では、 **getMessages** メソッドを使用して、1 回の呼び出しで 15 個のメッセージを取得します。 その後、for ループを使用して、各メッセージを処理します。 また、このメソッドで返されるすべてのメッセージの非表示タイムアウトを 5 分に設定します。
 
 ```
 queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, function(error, result, response){
@@ -233,7 +234,7 @@ queueSvc.listQueuesSegmented(null, function(error, result, response){
 });
 ```
 
-すべてのキューを返すことができない場合は、`result.continuationToken` を **listQueuesSegmented** の最初のパラメーターとして使うか、**listQueuesSegmentedWithPrefix** の&2; つ目のパラメーターとして使って、さらに多くの結果を取得することができます。
+すべてのキューを返すことができない場合は、`result.continuationToken` を **listQueuesSegmented** の最初のパラメーターとして使うか、**listQueuesSegmentedWithPrefix** の 2 つ目のパラメーターとして使って、さらに多くの結果を取得することができます。
 
 ## <a name="how-to-delete-a-queue"></a>方法: キューを削除する
 キューおよびキューに含まれているすべてのメッセージを削除するには、キュー オブジェクトに対して **deleteQueue** メソッドを呼び出します。
@@ -291,7 +292,7 @@ sharedQueueService.createMessage('myqueue', 'Hello world from SAS!', function(er
 ### <a name="access-control-lists"></a>アクセス制御リスト
 SAS のアクセス ポリシーを設定するために、アクセス制御リスト (ACL) も使用できます。 複数のクライアントにキューへのアクセスを許可し、各クライアントに異なるアクセス ポリシーを提供する場合に便利です。
 
-ACL は、アクセス ポリシーの配列と、各ポリシーに関連付けられた ID を使用して実装されます。 次の例では、2 つのポリシーを定義しています。1 つは "user1" 用、もう&1; つは "user2" 用です。
+ACL は、アクセス ポリシーの配列と、各ポリシーに関連付けられた ID を使用して実装されます。 次の例では、2 つのポリシーを定義しています。1 つは "user1" 用、もう 1 つは "user2" 用です。
 
 ```
 var sharedAccessPolicy = {
@@ -339,21 +340,11 @@ queueSAS = queueSvc.generateSharedAccessSignature('myqueue', { Id: 'user2' });
 [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
 [using the REST API]: http://msdn.microsoft.com/library/azure/hh264518.aspx
 [Azure Portal]: https://portal.azure.com
-[Azure App Service での Node.js Web アプリの作成]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
-[Node.js Cloud Service with Storage]: ../cloud-services/storage-nodejs-use-table-storage-cloud-service-app.md
+[Azure App Service での Node.js Web アプリの作成]: ../app-service-web/app-service-web-get-started-nodejs.md
 [Azure Table サービスを使用する Node.js Web アプリ]: ../app-service-web/storage-nodejs-use-table-storage-web-site.md
 
-
-[Queue1]: ./media/storage-nodejs-how-to-use-queues/queue1.png
-[plus-new]: ./media/storage-nodejs-how-to-use-queues/plus-new.png
-[quick-create-storage]: ./media/storage-nodejs-how-to-use-queues/quick-storage.png
 
 [Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
 [WebMatrix を使用した Node.js Web アプリの構築と Azure へのデプロイ]: ../app-service-web/web-sites-nodejs-use-webmatrix.md
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

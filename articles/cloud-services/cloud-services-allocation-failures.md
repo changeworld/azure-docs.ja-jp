@@ -13,11 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 1/6/2017
+ms.date: 4/6/2017
 ms.author: v-six
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: c91a34eb34a73abe5c5ac2bb6aeb08c818a97856
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -71,9 +72,4 @@ Azure データセンターのサーバーは、クラスターにパーティ�
    * 上の 2. の手順に従って、サービスの CSCFG で新しい ReservedIP を確実に指定します。
 4. 新しいデプロイのアフィニティ グループを削除する - アフィニティ グループは推奨されなくなりました。 上の 1. の手順に従って、新しいクラウド サービスをデプロイしてください。 クラウド サービスがアフィニティ グループ内にないことを確認します。
 5. リージョン Virtual Network に変換する - 「 [アフィニティ グループから、リージョン Virtual Network (VNet) に移行する方法](../virtual-network/virtual-networks-migrate-to-regional-vnet.md)」を参照してください。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -12,11 +12,13 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/04/2017
+ms.date: 04/07/2017
 ms.author: karolz@microsoft.com
+redirect_url: /azure/service-fabric/service-fabric-diagnostic-collect-logs-without-an-agent
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 86c1b4dd0cc8833404bd7b66804fa67bbf0d119a
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -242,9 +244,4 @@ Elasticsearch 接続データは、サービス構成ファイル (**PackageRoot
 <!--Image references-->
 [1]: ./media/service-fabric-diagnostics-how-to-use-elasticsearch/listener-lib-references.png
 [2]: ./media/service-fabric-diagnostics-how-to-use-elasticsearch/kibana.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

@@ -5,19 +5,21 @@
 * シミュレートされたファームウェアの更新をトリガーする
 * 報告されるプロパティを使用して、デバイス ツイン クエリで、デバイスと最後にファームウェアの更新が完了した日時を識別できるようにする
 
-1. **manageddevice** という名前の空のフォルダーを作成します。  コマンド プロンプトで次のコマンドを使用して、**manageddevice** フォルダー内に新しい package.json ファイルを作成します。 次の既定値をすべてそのまま使用します。
+手順 1. **manageddevice** という名前の空のフォルダーを作成します。  コマンド プロンプトで次のコマンドを使用して、**manageddevice** フォルダー内に新しい package.json ファイルを作成します。 次の既定値をすべてそのまま使用します。
    
     ```
     npm init
     ```
-2. コマンド プロンプトで、**manageddevice** フォルダーに移動し、次のコマンドを実行して、**azure-iot-device** と **azure-iot-device-mqtt** Device SDK パッケージをインストールします。
+
+手順 2. コマンド プロンプトで、**manageddevice** フォルダーに移動し、次のコマンドを実行して、**azure-iot-device** パッケージと **azure-iot-device-mqtt** Device SDK パッケージをインストールします。
    
     ```
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
-3. テキスト エディターを使用して、**manageddevice** フォルダーに **dmpatterns_fwupdate_device.js** ファイルを作成します。
 
-4. **dmpatterns_fwupdate_device.js** ファイルの先頭に、次の 'require' ステートメントを追加します。
+手順 3. テキスト エディターを使用して、**manageddevice** フォルダーに **dmpatterns_fwupdate_device.js** ファイルを作成します。
+
+手順 4. **dmpatterns_fwupdate_device.js** ファイルの先頭に、次の "require" ステートメントを追加します。
    
     ```
     'use strict';
@@ -25,13 +27,14 @@
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
-5. **connectionString** 変数を追加し、それを使用して **Client** インスタンスを作成します。 `{yourdeviceconnectionstring}`プレース ホルダーを、前に「デバイス ID の作成」セクションでメモしておいた接続文字列に置き換えます。
+手順 5. **connectionString** 変数を追加し、それを使用して **Client** インスタンスを作成します。 `{yourdeviceconnectionstring}`プレース ホルダーを、前に「デバイス ID の作成」セクションでメモしておいた接続文字列に置き換えます。
    
     ```
     var connectionString = '{yourdeviceconnectionstring}';
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
-6. 報告されるプロパティを更新するために使用する次の関数を追加します。
+
+手順 6. 報告されるプロパティを更新するために使用する次の関数を追加します。
    
     ```
     var reportFWUpdateThroughTwin = function(twin, firmwareUpdateValue) {
@@ -47,7 +50,8 @@
       });
     };
     ```
-7. ファームウェア イメージのダウンロードと適用をシミュレートする次の関数を追加します。
+
+手順 7. ファームウェア イメージのダウンロードと適用をシミュレートする次の関数を追加します。
    
     ```
     var simulateDownloadImage = function(imageUrl, callback) {
@@ -69,7 +73,8 @@
       callback(error);
     }
     ```
-8. 報告されるプロパティを介してファームウェアの更新状態を **waiting** に更新する次の関数を追加します。 通常、利用可能な更新プログラムがあるとデバイスに通知され、管理者が定義したポリシーによって更新のダウンロードと適用が開始されます。 この関数で、そのポリシーを実行するためのロジックが実行されます。 わかりやすくするため、サンプルはファームウェア イメージのダウンロードに進む前に&4; 秒間待ちます。
+
+手順 8. 報告されるプロパティを介してファームウェアの更新状態を **waiting** に更新する次の関数を追加します。 通常、利用可能な更新プログラムがあるとデバイスに通知され、管理者が定義したポリシーによって更新のダウンロードと適用が開始されます。 この関数で、そのポリシーを実行するためのロジックが実行されます。 わかりやすくするため、このサンプルでは、ファームウェア イメージのダウンロードに進む前に 4 秒間待ちます。
    
     ```
     var waitToDownload = function(twin, fwPackageUriVal, callback) {
@@ -84,7 +89,8 @@
       setTimeout(callback, 4000);
     };
     ```
-9. 報告されるプロパティを介してファームウェアの更新状態を **downloading** に更新する次の関数を追加します。 次に関数はファームウェアのダウンロードをシミュレートし、最後にファームウェアの更新状態を **downloadFailed** または **downloadComplete** に更新します。
+
+手順 9. 報告されるプロパティを介してファームウェアの更新状態を **downloading** に更新する次の関数を追加します。 次に関数はファームウェアのダウンロードをシミュレートし、最後にファームウェアの更新状態を **downloadFailed** または **downloadComplete** に更新します。
    
     ```
     var downloadImage = function(twin, fwPackageUriVal, callback) {
@@ -121,7 +127,8 @@
       }, 4000);
     }
     ```
-10. 報告されるプロパティを介してファームウェアの更新状態を **applying** に更新する次の関数を追加します。 次に関数はファームウェア イメージの適用をシミュレートし、最後にファームウェアの更新状態を **applyFailed** または **applyComplete** に更新します。
+
+手順 10. 報告されるプロパティを介してファームウェアの更新状態を **applying** に更新する次の関数を追加します。 次に関数はファームウェア イメージの適用をシミュレートし、最後にファームウェアの更新状態を **applyFailed** または **applyComplete** に更新します。
     
     ```
     var applyImage = function(twin, imageData, callback) {
@@ -158,7 +165,8 @@
       }, 4000);
     }
     ```
-11. **firmwareUpdate** ダイレクト メソッドを処理してマルチステージのファームウェア更新プロセスを開始する次の関数を追加します。
+
+手順 11. **firmwareUpdate** ダイレクト メソッドを処理してマルチステージのファームウェア更新プロセスを開始する次の関数を追加します。
     
     ```
     var onFirmwareUpdate = function(request, response) {
@@ -193,7 +201,8 @@
       });
     }
     ```
-12. 最後に、IoT Hub に接続する次のコードを追加します。
+
+手順 12. 最後に、IoT Hub に接続する次のコードを追加します。
     
     ```
     client.open(function(err) {
@@ -208,10 +217,6 @@
     ```
 
 > [!NOTE]
-> わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。 運用環境のコードでは、MSDN の記事「[Transient Fault Handling (一時的な障害処理)][lnk-transient-faults]」で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
+> わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。 運用環境のコードでは、[一時的な障害処理](https://msdn.microsoft.com/library/hh675232.aspx)に関する MSDN の記事で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
 > 
 > 
-
-<!--HONumber=Feb17_HO1-->
-
-

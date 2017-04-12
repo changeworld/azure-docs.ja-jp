@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 06/12/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: f86986fea6fc48a4a6ed09022e8026e0645dfc56
-ms.openlocfilehash: 971558d287191c6b7b5ea9d135e6fe37c904aa76
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 8e32014147c322e09af08e5c05d83aea13041a4c
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -40,7 +40,7 @@ Application Insights のリソースを [Azure ポータル](https://portal.azur
 
 * **ユーザー:** グラフの時間範囲内で変化する別個のアクティブ ユーザーの数。 
 * **セッション:** アクティブなセッションの数
-* **ページ ビュー**: trackPageView() の呼び出し数をカウントします。通常、各 Web ページで&1; 回呼び出されます。
+* **ページ ビュー**: trackPageView() の呼び出し数をカウントします。通常、各 Web ページで 1 回呼び出されます。
 
 グラフをクリックすると、詳細が表示されます。 グラフの時間範囲を変更できます。
 
@@ -83,7 +83,7 @@ Application Insights のリソースを [Azure ポータル](https://portal.azur
 
 **セッションの継続時間**は、セッションの最初と最後のテレメトリ項目の時間範囲を記録する[メトリック][metrics]です  (タイムアウト期間は含まれません)。
 
-**セッション数** は、この間隔でのアクティビティとの一意のセッション数として定義されます。 過去&1; 週間の日次セッション数などの長い時間範囲を確認する場合は、通常、セッションの合計数と同じです。 
+**セッション数** は、この間隔でのアクティビティとの一意のセッション数として定義されます。 過去 1 週間の日次セッション数などの長い時間範囲を確認する場合は、通常、セッションの合計数と同じです。 
 
 ただし、1 時間ごとなどの短い時間範囲を確認する場合、複数の時間にわたる長いセッションは、セッションがアクティブな状態だった時間ごとにカウントされます。 
 
@@ -126,7 +126,7 @@ Application Insights は、合成トラフィックを自動的に判定して�
 
 上の例はゲーム Web サイトの情報を示しています。 この情報から、次のことがすぐにわかります。
 
-* 利用状況はこの&1; 週間改善されていません。 おそらく、検索エンジンの最適化について検討する必要があります。
+* 利用状況はこの 1 週間改善されていません。 おそらく、検索エンジンの最適化について検討する必要があります。
 * ホーム ページよりもゲーム ページの閲覧人数がはるかに少なくなっています。 アクセスした人がゲームをプレイしたくなるような魅力なホーム ページにしましょう。
 * "Crossword" は最も人気のあるゲームです。 このゲームに優先的に新しいアイデアと改良を加える必要があります。
 
@@ -318,10 +318,6 @@ Application Insights ポータルでは、タグに基づいてデータをフ�
 * [API の使用 - 概要][api]
 * [JavaScript API リファレンス](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 
-## <a name="video"></a>ビデオ
-> [!VIDEO https://channel9.msdn.com/Series/ConnectOn-Demand/231/player]
-> 
-> 
 
 <!--Link references-->
 

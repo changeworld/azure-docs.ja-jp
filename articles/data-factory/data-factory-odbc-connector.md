@@ -289,50 +289,51 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 
 パイプラインには、この入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、**source** 型が **RelationalSource** に設定され、**sink** 型が **BlobSink** に設定されています。 **query** プロパティに指定されている SQL クエリは過去のデータを選択してコピーします。
 
-    {
-        "name": "CopyODBCToBlob",
-        "properties": {
-            "description": "pipeline for copy activity",
-            "activities": [
-                {
-                    "type": "Copy",
-                    "typeProperties": {
-                        "source": {
-                            "type": "RelationalSource",
-                            "query": "$$Text.Format('select * from MyTable where timestamp >= \\'{0:yyyy-MM-ddTHH:mm:ss}\\' AND timestamp < \\'{1:yyyy-MM-ddTHH:mm:ss}\\'', WindowStart, WindowEnd)"
-                        },
-                        "sink": {
-                            "type": "BlobSink",
-                            "writeBatchSize": 0,
-                            "writeBatchTimeout": "00:00:00"
-                        }
+```json
+{
+    "name": "CopyODBCToBlob",
+    "properties": {
+        "description": "pipeline for copy activity",
+        "activities": [
+            {
+                "type": "Copy",
+                "typeProperties": {
+                    "source": {
+                        "type": "RelationalSource",
+                        "query": "$$Text.Format('select * from MyTable where timestamp >= \\'{0:yyyy-MM-ddTHH:mm:ss}\\' AND timestamp < \\'{1:yyyy-MM-ddTHH:mm:ss}\\'', WindowStart, WindowEnd)"
                     },
-                    "inputs": [
-                        {
-                            "name": "OdbcDataSet"
-                        }
-                    ],
-                    "outputs": [
-                        {
-                            "name": "AzureBlobOdbcDataSet"
-                        }
-                    ],
-                    "policy": {
-                        "timeout": "01:00:00",
-                        "concurrency": 1
-                    },
-                    "scheduler": {
-                        "frequency": "Hour",
-                        "interval": 1
-                    },
-                    "name": "OdbcToBlob"
-                }
-            ],
-            "start": "2014-06-01T18:00:00Z",
-            "end": "2014-06-01T19:00:00Z"
-        }
+                    "sink": {
+                        "type": "BlobSink",
+                        "writeBatchSize": 0,
+                        "writeBatchTimeout": "00:00:00"
+                    }
+                },
+                "inputs": [
+                    {
+                        "name": "OdbcDataSet"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "AzureBlobOdbcDataSet"
+                    }
+                ],
+                "policy": {
+                    "timeout": "01:00:00",
+                    "concurrency": 1
+                },
+                "scheduler": {
+                    "frequency": "Hour",
+                    "interval": 1
+                },
+                "name": "OdbcToBlob"
+            }
+        ],
+        "start": "2016-06-01T18:00:00Z",
+        "end": "2016-06-01T19:00:00Z"
     }
-
+}
+```
 ### <a name="type-mapping-for-odbc"></a>ODBC の型マッピング
 [データ移動アクティビティ](data-factory-data-movement-activities.md) に関する記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
 

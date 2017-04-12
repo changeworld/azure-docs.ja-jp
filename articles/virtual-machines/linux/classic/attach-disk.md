@@ -16,15 +16,15 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: fc2a181a301ca56e41f586428e2994fcdf6d704d
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 017ba7197e11c2b222082833d5acabb9e542b762
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="how-to-attach-a-data-disk-to-a-linux-virtual-machine"></a>データ ディスクを Linux 仮想マシンに接続する方法
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager デプロイ モデルを使用してデータディスクを接続する](../../virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)方法をご覧ください。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager デプロイ モデルを使用してデータディスクを接続する](../add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)方法をご覧ください。
 
 空のディスクと、データが含まれているディスクのどちらも Azure VM に接続できます。 どちらの種類のディスクも、Azure ストレージ アカウントの .vhd ファイルです。 Linux マシンへのディスクの追加では、ディスクを接続した後、初期化とフォーマットを行って使用できるようにする必要があります。 この記事では、空のディスクと、データが含まれているディスクの両方を Azure VM に接続し、新しいディスクを初期化してフォーマットする方法について詳しく説明します。
 
@@ -229,10 +229,10 @@ Linux VM で TRIM のサポートを有効にする方法は 2 通りありま�
 * [Linux が実行されている仮想マシンにログオンする方法][Logon]
 * [Linux 仮想マシンからディスクを切断する方法](detach-disk.md)
 * [クラシック デプロイ モデルでの Azure CLI の使用](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
-* [Azure で Linux VM の RAID を構成する](../../virtual-machines-linux-configure-raid.md)
-* [Azure で Linux VM の LVM を構成する](../../virtual-machines-linux-configure-lvm.md)
+* [Azure で Linux VM の RAID を構成する](../configure-raid.md)
+* [Azure で Linux VM の LVM を構成する](../configure-lvm.md)
 
 <!--Link references-->
-[Agent]:../../virtual-machines-linux-agent-user-guide.md
-[Logon]:../../virtual-machines-linux-mac-create-ssh-keys.md
+[Agent]:../agent-user-guide.md
+[Logon]:../mac-create-ssh-keys.md
 

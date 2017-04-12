@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: 5e3cf1407079a166fbe5e24abae2248ef467ebbb
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 08390472c6480200751f37028fef594fb055f118
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -165,7 +165,7 @@ Application Insights SDK によって送信される標準のテレメトリに�
 * [.NET](app-insights-asp-net-trace-logs.md) または [Java](app-insights-java-trace-logs.md) の好みのログ記録フレームワークからのログ トレースをキャプチャする。 これは、ログ トレースを検索し、ページ ビュー、例外、その他のイベントと関連付けることができることを意味します。 
 * カスタム イベント、ページ ビュー、および例外を送信する[コードを作成](app-insights-api-custom-events-metrics.md)する。 
 
-[ログとカスタム テレメトリを Application Insights に送信する方法についてはこちら](app-insights-search-diagnostic-logs.md)。
+[ログとカスタム テレメトリを Application Insights に送信する方法についてはこちら](app-insights-asp-net-trace-logs.md)。
 
 ## <a name="questions"></a>Q & A
 ### <a name="limits"></a>保持されるデータの量はどのくらいですか
@@ -173,7 +173,7 @@ Application Insights SDK によって送信される標準のテレメトリに�
 「[制限の概要](app-insights-pricing.md#limits-summary)」を参照してください。
 
 ### <a name="how-can-i-see-post-data-in-my-server-requests"></a>サーバーの要求の POST データを表示するにはどうしたらよいですか
-POST データは自動的に記録されませんが、[TrackTrace または log の呼び出し](app-insights-search-diagnostic-logs.md)を使用できます。 メッセージ パラメーターに POST データを格納します。 プロパティと同じ方法でメッセージをフィルター処理することはできませんが、サイズの制限が緩和されます。
+POST データは自動的に記録されませんが、[TrackTrace または log の呼び出し](app-insights-asp-net-trace-logs.md)を使用できます。 メッセージ パラメーターに POST データを格納します。 プロパティと同じ方法でメッセージをフィルター処理することはできませんが、サイズの制限が緩和されます。
 
 ## <a name="video"></a>ビデオ
 
@@ -181,7 +181,7 @@ POST データは自動的に記録されませんが、[TrackTrace または lo
 
 ## <a name="add"></a>次のステップ
 * [Analytics で複雑なクエリを作成する](app-insights-analytics-tour.md)
-* [Application Insights にログとカスタム テレメトリを送信する](app-insights-search-diagnostic-logs.md)
+* [Application Insights にログとカスタム テレメトリを送信する](app-insights-asp-net-trace-logs.md)
 * [可用性と応答性のテストを設定する](app-insights-monitor-web-app-availability.md)
 * [トラブルシューティング](app-insights-troubleshoot-faq.md)
 

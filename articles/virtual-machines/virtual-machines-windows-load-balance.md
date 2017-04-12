@@ -1,33 +1,10 @@
 ---
-title: "インフラストラクチャ サービスの負荷分散 | Microsoft Docs"
-description: "Azure でサポートされている 2 種類の負荷分散 (クラウド サービス向けのロード バランサーと、クライアント トラフィック向けの Azure Traffic Manager) について説明します。"
-services: load-balancer
-documentationcenter: 
-author: kumudd
-manager: timlt
-editor: 
-ms.assetid: a15d49a9-18f5-4acb-ae9c-daa6287f9e72
-ms.service: load-balancer
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
-ms.date: 02/02/2016
-ms.author: kumud
+redirect_url: /azure/virtual-machines/windows/load-balance
+redirect_document_id: true
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 35e1bba6fb3810697d98775a5784d126fe97310c
-
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: a9d4e31bae9fd60c9af08360a61ce9389b4e108a
+ms.lasthandoff: 03/31/2017
 
 ---
-# <a name="load-balancing-for-azure-infrastructure-services"></a>Azure インフラストラクチャ サービスの負荷分散
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
-
-[!INCLUDE [virtual-machines-common-load-balance](../../includes/virtual-machines-common-load-balance.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

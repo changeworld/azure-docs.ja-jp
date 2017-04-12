@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 03/22/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 00fa4810e41bdbc19d0a2663cfe1437c6e678ab3
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 53092b0cfcf2bf9a09b36f6425724669f770e7fb
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -27,8 +27,8 @@ ms.lasthandoff: 03/25/2017
 このドキュメントでは、HDInsight クラスターで Storm を実行している Storm トポロジを管理および監視する方法の基本について説明します。
 
 > [!IMPORTANT]
-> この記事の手順では、HDInsight クラスター上の Linux ベースの Storm が必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。 
-> 
+> この記事の手順では、HDInsight クラスター上の Linux ベースの Storm が必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。 
+>
 > Windows ベースの HDInsight でトポロジをデプロイおよび監視する方法については、「 [HDInsight での Apache Storm トポロジのデプロイと管理](hdinsight-storm-deploy-monitor-topology.md)
 
 
@@ -78,20 +78,20 @@ HDInsight Tools は、C# またはハイブリッド トポロジを Storm ク�
 ## <a name="submit-a-topology-ssh-and-the-storm-command"></a>トポロジの送信: SSH および Storm コマンド
 
 1. SSH を使用して、HDInsight クラスターに接続します。 **USERNAME** には、SSH ログイン名を指定します。 **CLUSTERNAME** には、HDInsight クラスター名を指定します。
-   
+
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
-   
+
     SSH を使用して HDInsight クラスターに接続する方法の詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 2. 次のコマンドを実行してトポロジの例を開始します。
-   
+
         storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar storm.starter.WordCountTopology WordCount
-   
+
     このコマンドにより、クラスターで WordCount トポロジの例が開始されます。 このトポロジは、ランダムに文を生成し、文中の各単語の出現回数をカウントします。
-   
+
    > [!NOTE]
    > トポロジをクラスターに送信する場合、まずクラスターを含む jar ファイルをコピーしてから、`storm` コマンドを実行します。 ファイルをクラスターにコピーするには、`scp` コマンドを使用できます。 たとえば、 `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`
-   > 
+   >
    > WordCount の例と他の Storm スターターの例は、 `/usr/hdp/current/storm-client/contrib/storm-starter/`のクラスターに既に含まれています。
 
 ## <a name="submit-a-topology-programmatically"></a>トポロジの送信: プログラムで
@@ -187,11 +187,11 @@ Storm UI のメイン ページには、次の情報が表示されます。
 
 * **トポロジの概要**: トポロジの基本情報
 * **トポロジのアクション**: トポロジで実行できる管理アクション
-  
+
   * **アクティブ化**: アクティブ化が解除されたトポロジの処理を再開します
   * **アクティブ化の解除**: 実行中のトポロジを一時停止します
   * **再調整**: トポロジの並列処理を調整します。 クラスターのノード数を変更した場合は、実行中のトポロジを再調整する必要があります。 この操作によって、クラスター内のノード数の増減に合わせて、トポロジの並列処理を調整できます。
-    
+
     詳細については、「 <a href="http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Understanding the parallelism of a Storm topology (Storm トポロジの並列処理)</a>」を参照してください。
   * **強制終了**: 指定したタイムアウト後に Storm トポロジを停止します。
 * **トポロジの統計**: トポロジに関する統計。 ページで残りのエントリの時間枠を設定するには、**[Window]** 列にあるリンクを使用します。
@@ -245,5 +245,4 @@ REST API から返される情報は、クラスターと同じ Azure Virtual Ne
 ここでは、Storm ダッシュボードを使用してトポロジをデプロイおよび監視する方法について説明しました。次に、[Maven を使用して Java ベースのトポロジを開発する](hdinsight-storm-develop-java-topology.md)方法について説明します。
 
 その他の Storm トポロジ例は、「 [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)」をご覧ください。
-
 

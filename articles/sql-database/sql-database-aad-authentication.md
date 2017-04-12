@@ -17,9 +17,9 @@ ms.workload: data-management
 ms.date: 03/23/2017
 ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 01294f8f8fdaa65a5f33dbf6d35c0baa342cacc8
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 154cd7eec65559ec2263a12b8977ec0af0a78743
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -39,12 +39,11 @@ Azure Active Directory 認証は、Azure Active Directory (Azure AD) の ID を�
 構成の手順には、Azure Active Directory 認証を構成して使用する次の手順が含まれます。
 
 1. Azure AD を作成して設定します。
-2. データベースが Azure SQL Database V12 であることを確認します  (SQL Data Warehouse の場合は不要)。
-3. 省略可能: Active Directory を関連付けるか、現在 Azure サブスクリプションに関連付けられている Active Directory を変更します。
-4. Azure SQL Server または [Azure SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/) の Azure Active Directory 管理者を作成します。
-5. クライアント コンピューターを構成します。
-6. Azure AD の ID にマップされている包含データベース ユーザーをデータベースに作成します。
-7. Azure AD の ID を使用してデータベースに接続します。
+2. 省略可能: Active Directory を関連付けるか、現在 Azure サブスクリプションに関連付けられている Active Directory を変更します。
+3. Azure SQL Server または [Azure SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/) の Azure Active Directory 管理者を作成します。
+4. クライアント コンピューターを構成します。
+5. Azure AD の ID にマップされている包含データベース ユーザーをデータベースに作成します。
+6. Azure AD の ID を使用してデータベースに接続します。
 
 > [!NOTE]
 > Azure AD を作成して設定した後、Azure SQL Database と SQL Data Warehouse で Azure AD を構成する方法については、[Azure SQL Database での Azure AD の構成](sql-database-aad-authentication-configure.md)に関するページを参照してください。

@@ -11,20 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 03/22/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 4b21bf6bc1be59facd503000a4f83a56189d55d3
-ms.openlocfilehash: aea1b35348bec0affe2288ff683e0320e2b0f714
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 6869453e0776405841890978eef97f549be97541
+ms.lasthandoff: 04/03/2017
 
 
 ---
 
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシを使用する場合のネットワーク トポロジに関する注意事項
-> [!NOTE]
-> アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。 詳細については、「 [Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
->
 
 この記事では、アプリケーションをリモートで発行およびアクセスするために Azure Active Directory (Azure AD) アプリケーション プロキシを使用する場合のネットワーク トポロジに関する注意事項について説明しています。
 
@@ -88,7 +85,6 @@ Azure と企業ネットワークの間に専用の VPN または ExpressRoute �
 
 > [!NOTE]
 目的の待ち時間特性を得るためにホップ 2 とホップ 3 両方を最適化する必要があるシナリオがいくつかあります。 たとえば、ネットワークと Azure データセンターの間に VPN または ExpressRoute を設定済みの場合、両方のホップを最適化できます。
->
 
 ### <a name="pattern-2-take-advantage-of-expressroute-with-public-peering"></a>パターン 2: パブリック ピアリングを使用した ExpressRoute の活用
 
@@ -110,7 +106,7 @@ Azure と企業ネットワークとの間に、プライベート ピアリン�
 
 ホスト環境にネットワークを移動する組織が増えています。 これにより組織は、企業ネットワークの一部でもあり、ドメイン内のままであるホスト環境にアプリを配置できます。 この場合は、前のセクションで説明したパターンをアプリケーションの新しい場所に適用できます。
 
-別々の場所およびネットワーク内にある対象アプリケーションへのコネクタ グループを使用することを検討してください。 このオプションを検討する場合は、[Azure AD Domain Services](https://azure.microsoft.com/services/active-directory-ds) に関するページをご覧ください。
+別々の場所およびネットワーク内にある対象アプリケーションへのコネクタ グループを使用することを検討してください。 このオプションを検討する場合は、[Azure AD Domain Services](../active-directory-domain-services/active-directory-ds-overview.md) に関するページをご覧ください。
 
 ## <a name="common-scenarios"></a>一般的なシナリオ
 
@@ -168,13 +164,14 @@ ExpressRoute リンクでパブリック ピアリングを使用している場
 
 ![世界的規模の大陸の略図と、このユース ケースでのホップの配置方法を示す図](./media/application-proxy-network-topologies/application-proxy-pattern5b.png)
 
-このような状況では、もう&1; つのバリエーションを使用することも検討できます。 組織内のほとんどのユーザーが米国内に存在する場合、ネットワークが米国まで拡張される可能性があります。 その場合は、コネクタを米国内に配置して、EU 内のアプリケーションへの専用の内部企業ネットワーク回線を使用できます。 これにより、ホップ 2 と 3 が最適化されます。
+このような状況では、もう 1 つのバリエーションを使用することも検討できます。 組織内のほとんどのユーザーが米国内に存在する場合、ネットワークが米国まで拡張される可能性があります。 その場合は、コネクタを米国内に配置して、EU 内のアプリケーションへの専用の内部企業ネットワーク回線を使用できます。 これにより、ホップ 2 と 3 が最適化されます。
 
 ![世界的規模の大陸の略図と、このユース ケースでのホップの配置方法を示す図](./media/application-proxy-network-topologies/application-proxy-pattern5c.png)
 
 ## <a name="next-steps"></a>次のステップ
-[アプリケーション プロキシを有効にする](active-directory-application-proxy-enable.md)<br>
-[シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)<br>
-[条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)<br>
-[アプリケーション プロキシで発生した問題のトラブルシューティングを行う](active-directory-application-proxy-troubleshoot.md)
+
+- [アプリケーション プロキシを有効にする](active-directory-application-proxy-enable.md)
+- [シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)
+- [条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)
+- [アプリケーション プロキシで発生した問題のトラブルシューティングを行う](active-directory-application-proxy-troubleshoot.md)
 

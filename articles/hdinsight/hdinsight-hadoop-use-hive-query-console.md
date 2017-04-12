@@ -17,9 +17,9 @@ ms.date: 01/12/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
 translationtype: Human Translation
-ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
-ms.openlocfilehash: 0c7f570db388b0ed96479e994a4a2f79e7919b17
-ms.lasthandoff: 01/18/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 7de810dc712e7fdcd66ddedae5ccaa2a9753102f
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 01/18/2017
 この記事では、HDInsight クエリ コンソールを使用して、お使いのブラウザーから HDInsight Hadoop クラスターで Hive クエリを実行する方法について説明します。
 
 > [!IMPORTANT]
-> HDInsight クエリ コンソールは、Windows ベースの HDInsight クラスターでのみ使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+> HDInsight クエリ コンソールは、Windows ベースの HDInsight クラスターでのみ使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。
 >
 > HDInsight 3.4 以上での Web ブラウザーからの Hive クエリの実行に関する情報については、[Ambari Hive ビューでの Hive クエリの実行](hdinsight-hadoop-use-hive-ambari-view.md)に関するページを参照してください。
 
@@ -42,32 +42,32 @@ ms.lasthandoff: 01/18/2017
 ## <a id="run"></a> クエリ コンソールを使用して Hive クエリを実行
 1. Web ブラウザーを開いて **https://CLUSTERNAME.azurehdinsight.net** に移動します。**CLUSTERNAME** は実際の HDInsight クラスターの名前です。 プロンプトが表示されたら、クラスターの作成時に使用したユーザー名とパスワードを入力します。
 2. ページ上部のリンクから、 **[Hive エディター]**を選択します。 HDInsight クラスターで実行する HiveQL ステートメントの入力に使用できるフォームが表示されます。
-   
+
     ![Hive エディター](./media/hdinsight-hadoop-use-hive-query-console/queryconsole.png)
-   
+
     テキスト `Select * from hivesampletable` を次の HiveQL ステートメントに置き換えます。
-   
+
         set hive.execution.engine=tez;
         DROP TABLE log4jLogs;
         CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
         ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
         STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';
         SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
-   
+
     これらのステートメントは次のアクションを実行します。
-   
+
    * **DROP TABLE**: テーブルが既存の場合にテーブルとデータ ファイルを削除します。
    * **CREATE EXTERNAL TABLE**: Hive に新しく '外部' テーブルを作成します。 外部テーブルは、Hive にテーブル定義のみを格納し、データは、元の場所に残します。
-     
+
      > [!NOTE]
      > 基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。
-     > 
+     >
      > 外部テーブルを削除しても、データは削除**されません**。テーブル定義のみが削除されます。
-     > 
-     > 
+     >
+     >
    * **ROW FORMAT**: Hive にデータの形式を示します。 ここでは、各ログのフィールドは、スペースで区切られています。
    * **STORED AS TEXTFILE LOCATION**: Hive に、データの格納先 (example/data directory) と、データはテキストとして格納されていることを示します。
-   * **SELECT**: **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。 ここでは、この値を含む行が&3; 行あるため、 **3** という値が返されています。
+   * **SELECT**: **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。 ここでは、この値を含む行が 3 行あるため、 **3** という値が返されています。
    * **INPUT__FILE__NAME LIKE '%.log'** - Hive に .log で終わるファイルのデータのみを返す必要があることを示します。 これにより、検索はデータを含む sample.log ファイルに制限され、定義したスキーマに一致しない他のサンプル データ ファイルのデータを返すことができなくなります。
 3. **[Submit]**をクリックします。 ページ下部の **[ジョブ セッション]** にジョブの詳細が表示されます。
 4. **[ステータス]** フィールドが **Completed** に変わったら、ジョブの **[詳細の表示]** を選択します。 詳細ページの **[ジョブ出力]** に `[ERROR]    3` が含まれます。 このフィールドの下にある **[ダウンロード]** ボタンを使用して、ジョブの出力を含むファイルをダウンロードします。

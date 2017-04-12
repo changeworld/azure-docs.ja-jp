@@ -18,15 +18,15 @@ ms.topic: hero-article
 ms.date: 03/15/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: ba56eaa154116edbe1dd8962049535cfa57551ac
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: 7ae47bcce700336206d532b414b7d0eea41d87c5
+ms.lasthandoff: 04/04/2017
 
 
 ---
 # <a name="azure-sql-database-use-sql-server-management-studio-to-connect-and-query-data"></a>Azure SQL Database: SQL Server Management Studio を使って接続とデータの照会を行う
 
-[SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) を使用して、ユーザー インターフェイスまたはスクリプトで SQL Server リソースの作成と管理を行います。 このガイドでは、SSMS を使用して Azure SQL データベースに接続し、照会、挿入、更新、削除の各ステートメントを実行する方法について詳しく説明します。
+[SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) を使用して、ユーザー インターフェイスまたはスクリプトで SQL Server リソースの作成と管理を行います。 このクイック スタートでは、SSMS を使用して Azure SQL データベースに接続し、照会、挿入、更新、削除の各ステートメントを実行する方法について詳しく説明します。
 
 このクイック スタートでは、次のクイック スタートで作成されたリソースが出発点として使用されます。
 
@@ -45,11 +45,11 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 
     <img src="./media/sql-database-connect-query-ssms/connection-information.png" alt="connection information" style="width: 780px;" />
 
-## <a name="connect-to-the-server"></a>サーバーへの接続
+## <a name="connect-to-the-server-and-your-new-database"></a>サーバーと新しいデータベースへの接続
 
 SQL Server Management Studio を使用して、Azure SQL Database サーバーに対する接続を確立します。
 
-1. Windows 検索ボックスに「**SSMS**」と入力し、**Enter** キーを押して SSMS を開きます。
+1. SQL Server Management Studio を開きます。
 
 2. **[サーバーへの接続]** ダイアログ ボックスで、次の情報を入力します。
    - **[サーバーの種類]**: データベース エンジンを指定します

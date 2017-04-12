@@ -16,15 +16,15 @@ ms.topic: article
 ms.date: 09/13/2016
 ms.author: guybo
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 3c1877f0dd560894099fb7c50c30846c2cc720b3
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 1c1591079bf09da6fbe50d848b05ec7791657e04
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="deploy-a-lamp-app-using-the-azure-customscript-extension-for-linux"></a>Linux 向けに Azure カスタム スクリプト拡張機能を使って LAMP アプリをデプロイする
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Resource Manager モデルを使用した LAMP スタックのデプロイ方法については、[こちら](../../virtual-machines-linux-create-lamp-stack.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をご覧ください。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Resource Manager モデルを使用した LAMP スタックのデプロイ方法については、[こちら](../create-lamp-stack.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をご覧ください。
 
 Linux 向け Microsoft Azure カスタム スクリプト拡張機能では、Python や Bash など、仮想マシン (VM) でサポートされているスクリプト言語で記述された任意のコードを実行する VM をカスタマイズすることができます。 これによって、非常に柔軟に複数のマシンにアプリケーションを自動的にデプロイすることが可能になります。
 
@@ -105,6 +105,6 @@ CustomScript 拡張機能を実行すると、参照用に作成した PHP ペ�
 
 [Azure Linux 拡張機能 (GitHub)](https://github.com/Azure/azure-linux-extensions)
 
-[Azure での Linux とオープン ソース コンピューティング](../../virtual-machines-linux-opensource-links.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+[Azure での Linux とオープン ソース コンピューティング](../opensource-links.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 

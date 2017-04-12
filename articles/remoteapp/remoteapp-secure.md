@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: fb524efc41b1eaa36319726b3b8b534857e2afc7
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 13085f51529dadb739b4c629bb50d8aff0c9d8c2
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="secure-apps-and-resources-in-azure-remoteapp"></a>Azure RemoteApp でのアプリとリソースの保護
 > [!IMPORTANT]
-> Azure RemoteApp の提供は終了しました。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
+> Azure RemoteApp の提供は、2017 年 8 月 31 日で終了します。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
 > 
 > 
 
@@ -48,10 +49,5 @@ Azure RemoteApp には、一元管理された Windows アプリにユーザー�
 * RemoteApp PowerShell モジュールによるリダイレクトの構成 ([こちら](remoteapp-redirection.md)を参照) は、クライアント コンピューターによるポリシーの適用を信頼して行われます。このため、セキュリティが主な目的の場合は、テンプレート イメージのローカル ポリシーまたはグループ ポリシーを使用してポリシーを適用します。
 * [Windows Server 2012 R2 ポリシー](https://technet.microsoft.com/library/hh831791.aspx)。
 * [Office 2013 のポリシー](https://technet.microsoft.com/library/cc178969.aspx) ([Office ツールバーのカスタマイズ方法](https://technet.microsoft.com/library/cc179143.aspx)を含む)。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

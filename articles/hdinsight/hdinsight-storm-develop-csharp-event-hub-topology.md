@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 03/01/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: 23bdde763de6f437a0dec74c51722cbcfc19b141
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: bd44ba6795bc89ff4d250caf38520a72dd37c448
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -26,12 +26,12 @@ ms.lasthandoff: 03/07/2017
 
 Azure Event Hubs では、Web サイト、アプリ、デバイスで発生する大量のデータを処理できます。 Event Hubs スパウトでは、HDInsight で Apache Storm を使用してこのデータをリアルタイムで簡単に分析できます。 また、Event Hubs のボルトを使用して Storm から Event Hub にデータを書き込むこともできます。
 
-このチュートリアルでは、HDInsight Tools for Visual Studio と共にインストールされる Visual Studio テンプレートを使用して、Azure Event Hubs で動作する&2; つのトポロジを作成する方法を説明します。
+このチュートリアルでは、HDInsight Tools for Visual Studio と共にインストールされる Visual Studio テンプレートを使用して、Azure Event Hubs で動作する 2 つのトポロジを作成する方法を説明します。
 
 * **EventHubWriter**: データをランダムに生成して Event Hubs に書き込む
 * **EventHubReader**: Event Hubs からデータを読み取り、Storm ログにデータを記録する
 
-> [!NOTE] 
+> [!NOTE]
 > このプロジェクトの Java バージョンについては、「[HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (Java)](hdinsight-storm-develop-java-event-hub-topology.md)」を参照してください。
 
 ## <a name="scpnet"></a>SCP.NET
@@ -46,7 +46,7 @@ Azure Event Hubs では、Web サイト、アプリ、デバイスで発生す�
 プロジェクトによって使用される Microsoft.SCP.Net.SDK NuGet パッケージは、HDInsight にインストールされた Storm のメジャー バージョンと一致する必要があります。 HDInsight バージョン 3.3 および 3.4 上の Storm は Storm バージョン 0.10.x を使用するため、これらのクラスターでは SCP.NET バージョン 0.10.x.x を使用する必要があります。 HDInsight 3.5 は Storm 1.0.x を使用するため、このクラスターのバージョンでは SCP.NET バージョン 1.0.x.x を使用する必要があります。
 
 > [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関するセクションを参照してください。
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関するセクションを参照してください。
 
 HDInsight 3.4 以降では、Mono を使用して C# トポロジを実行します。 ほとんどの機能は Mono で動作します。 しかし、[Mono の互換性](http://www.mono-project.com/docs/about-mono/compatibility/)のドキュメントで互換性のない可能性がある機能について確認する必要があります。
 
@@ -187,7 +187,7 @@ topologyBuilder.SetJavaBolt(
 
 ## <a name="download-the-event-hub-components"></a>イベント ハブのコンポーネントをダウンロードする
 
-スパウトとボルトは、**eventhubs-storm-spout-#.#-jar-with-dependencies.jar**という名前の&1; つの Java アーカイブ (.jar) ファイルとして配布されます。
+スパウトとボルトは、**eventhubs-storm-spout-#.#-jar-with-dependencies.jar**という名前の 1 つの Java アーカイブ (.jar) ファイルとして配布されます。
 
 このソリューションを HDInsight 3.5 で使用するには、[https://github.com/hdinsight/hdinsight-storm-examples/blob/master/lib/eventhubs/](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/lib/eventhubs/) にあるバージョン 0.9.5 の jar ファイルを使用します。
 
@@ -198,12 +198,12 @@ topologyBuilder.SetJavaBolt(
 Event Hubs は、この例のデータ ソースです。 「[Event Hubs の使用](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)」ページの「**Event Hub を作成する**」セクションの情報を使用します。
 
 1. Event Hub が作成されたら、Azure Portal の EventHub ブレードを表示し、**[共有アクセス ポリシー]** を選択します。 **[+ 追加]** を選択して、次のポリシーを追加します。
-   
+
    | 名前 | アクセス許可 |
    | --- | --- |
    | ライター |送信 |
    | リーダー |リッスン |
-   
+
     ![ポリシー](./media/hdinsight-storm-develop-csharp-event-hub-topology/sas.png)
 
 2. **reader** ポリシーと **writer** ポリシーを選択します。 両方のポリシーの **PRIMARY KEY** 値をコピーして保存します (これらは後で使用します)。
@@ -215,7 +215,7 @@ Event Hubs は、この例のデータ ソースです。 「[Event Hubs の使�
 2. [eventhub-storm-hybrid](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub) からソリューションをダウンロードします。
 
 3. **EventHubWriter** プロジェクトで、**App.config** ファイルを開きます。 以前に構成した Event Hub の情報を使用して、次のキーの値を入力します。
-   
+
    | キー | 値 |
    | --- | --- |
    | EventHubPolicyName |writer (*Send* 権限を持つポリシーに別の名前を使用した場合は、その名前を使用) |
@@ -231,7 +231,7 @@ Event Hubs は、この例のデータ ソースです。 「[Event Hubs の使�
 1. **EventHubReader** プロジェクトを開きます。
 
 2. **EventHubReader** の **App.config** を開きます。 以前に構成した Event Hub の情報を使用して、次のキーの値を入力します。
-   
+
    | キー | 値 |
    | --- | --- |
    | EventHubPolicyName |reader (*listen* 権限を持つポリシーに別の名前を使用した場合は、その名前を使用) |
@@ -245,15 +245,15 @@ Event Hubs は、この例のデータ ソースです。 「[Event Hubs の使�
 ## <a name="deploy-the-topologies"></a>トポロジのデプロイ
 
 1. **ソリューション エクスプローラー**で **EventHubReader** プロジェクトを右クリックし、**[HDInsight での Storm に送信]** を選択します。
-   
+
     ![Storm に送信](./media/hdinsight-storm-develop-csharp-event-hub-topology/submittostorm.png)
 
 2. **[トポロジの送信]** 画面で該当する **[Storm クラスター]** を選択します。 **[追加の構成]** を展開し、**[Java ファイル パス]**、**[...]** の順に選択し、前の手順でダウンロードした jar ファイルがあるディレクトリを選択します。 最後に、 **[送信]**をクリックします。
-   
+
     ![送信ダイアログの画像](./media/hdinsight-storm-develop-csharp-event-hub-topology/submit.png)
 
 3. トポロジが送信されると、**[Storm トポロジ ビューアー]** が表示されます。 トポロジに関する情報を表示するには、左側のウィンドウにある **[EventHubReader]** トポロジを選択します。
-   
+
     ![ストレージ ビューの例](./media/hdinsight-storm-develop-csharp-event-hub-topology/topologyviewer.png)
 
 4. **ソリューション エクスプローラー**で **EventHubWriter** プロジェクトを右クリックし、**[HDInsight での Storm に送信]** を選択します。
@@ -266,8 +266,8 @@ Event Hubs は、この例のデータ ソースです。 「[Event Hubs の使�
 
 8. ボルトの **[コンポーネントの概要]** を開くには、ダイアグラムの **[LogBolt]** コンポーネントをダブルクリックします。
 
-9. **[Executors]** セクションで、**[ポート]** 列のリンクを&1; つ選択します。 これによって、コンポーネントで記録された情報が表示されます。 次のテキストのような情報が記録されています。
-   
+9. **[Executors]** セクションで、**[ポート]** 列のリンクを 1 つ選択します。 これによって、コンポーネントで記録された情報が表示されます。 次のテキストのような情報が記録されています。
+
         2017-03-02 14:51:29.255 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,255 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1830978598,"deviceId":"8566ccbc-034d-45db-883d-d8a31f34068e"}
         2017-03-02 14:51:29.283 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,283 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1756413275,"deviceId":"647a5eff-823d-482f-a8b4-b95b35ae570b"}
         2017-03-02 14:51:29.313 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,312 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1108478910,"deviceId":"206a68fa-8264-4d61-9100-bfdb68ee8f0a"}
@@ -289,5 +289,4 @@ Event Hubs は、この例のデータ ソースです。 「[Event Hubs の使�
 * [Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する](hdinsight-storm-develop-csharp-visual-studio-topology.md)
 * [SCP プログラミング ガイド](hdinsight-storm-scp-programming-guide.md)
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
-
 

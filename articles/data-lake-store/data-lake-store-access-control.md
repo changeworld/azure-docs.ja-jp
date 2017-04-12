@@ -15,9 +15,9 @@ ms.workload: big-data
 ms.date: 03/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 756d51e41c43be2e80f8fce1c3965e1723f7cec8
-ms.openlocfilehash: 7cd0c60b3eaaf6c2fd702d4e4b580299cb71c5fc
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: 7533fe3758860111ae6c26630effedd673734b63
+ms.lasthandoff: 04/04/2017
 
 
 ---
@@ -330,9 +330,11 @@ GUID が表示されるのは、そのユーザーがもう Azure AD に存在�
 
 * [POSIX 1003.1 2008](http://standards.ieee.org/findstds/standard/1003.1-2008.html)
 
-* [POSIX 1003.1e 1997](http://users.suse.com/~agruen/acl/posix/Posix_1003.1e-990310.pdf)
+* [POSIX 1003.1 2013](http://pubs.opengroup.org/onlinepubs/9699919799.2013edition/)
 
-* [POSIX ACL on Linux (Linux での POSIX ACL)](http://users.suse.com/~agruen/acl/linux-acls/online/)
+* [POSIX 1003.1 2016](http://pubs.opengroup.org/onlinepubs/9699919799.2016edition/)
+
+* [Ubuntu での POSIX ACL](https://help.ubuntu.com/community/FilePermissionsACLs)
 
 * [ACL using access control lists on Linux (Linux でのアクセス制御リストを使用した ACL)](http://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 

@@ -3,7 +3,7 @@
 CloudConfigurationManager パッケージを参照するには、次の `using` ディレクティブをクラスに追加します。
 
 ```csharp
-using Microsoft.Azure;    //Namespace for CloudConfigurationManager
+using Microsoft.Azure; //Namespace for CloudConfigurationManager
 ```
 
 構成ファイルから接続文字列を取得する方法の例を次に示します。
@@ -15,9 +15,4 @@ CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
 ```
 
 Azure Configuration Manager の使用はオプションです。 また、.NET Framework の [ConfigurationManager](https://msdn.microsoft.com/library/system.configuration.configurationmanager.aspx) クラスなどの API を使用することもできます。
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

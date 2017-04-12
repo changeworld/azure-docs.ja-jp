@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 3408fa87794c47b48fb64c579fc5191aec73a333
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 67934dca806510c7ec46523fbb3063313e833c16
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -30,9 +30,7 @@ ms.lasthandoff: 03/04/2017
 > - [CLI](network-watcher-packet-capture-manage-cli.md)
 > - [REST API](network-watcher-packet-capture-manage-rest.md)
 
-Network Watcher のパケット キャプチャを使用すると、仮想マシンとの間で送受信されるトラフィックを追跡するキャプチャ セッションを作成できます。 必要なトラフィックのみを確実にキャプチャするために、キャプチャ セッション用のフィルターが用意されています。 パケット キャプチャは、事後と事前に、ネットワークの異常を診断するのに役立ちます。 その他の用途には、ネットワーク統計の収集、ネットワークへの侵入に関する情報を取得などがあり、クライアント サーバー間の通信のデバッグなどに役立ちます。 パケット キャプチャをリモートでトリガーすることができることで、この機能によってパケット キャプチャを手動で、目的のマシン上で実行する負荷が軽減されて、貴重な時間の節約になります。
-
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
+Network Watcher のパケット キャプチャを使用すると、仮想マシンとの間で送受信されるトラフィックを追跡するキャプチャ セッションを作成できます。 必要なトラフィックのみを確実にキャプチャするためにキャプチャ セッション用のフィルターが用意されています。 パケット キャプチャは、事後と事前に、ネットワークの異常を診断するのに役立ちます。 その他の用途には、ネットワーク統計の収集、ネットワークへの侵入に関する情報を取得などがあり、クライアント サーバー間の通信のデバッグなどに役立ちます。 パケット キャプチャをリモートでトリガーすることができることで、この機能によってパケット キャプチャを手動で、目的のマシン上で実行する負荷が軽減されて、貴重な時間の節約になります。
 
 この記事では、パケット キャプチャで現在利用できるさまざまな管理作業について説明します。
 
@@ -49,7 +47,7 @@ Network Watcher のパケット キャプチャを使用すると、仮想マシ
 
 このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関するページの手順に従って、Network Watcher を作成済みであることを前提としています。
 
-> パケット キャプチャには仮想マシン拡張機能 `AzureNetworkWatcherExtension` が必要です。 Windows VM の拡張機能のインストールについては、[Windows 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/virtual-machines-windows-extensions-nwa.md)に関する記事をご覧ください。Linux VM の場合は、[Linux 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/virtual-machines-linux-extensions-nwa.md)に関する記事をご覧ください。
+> パケット キャプチャには仮想マシン拡張機能 `AzureNetworkWatcherExtension` が必要です。 Windows VM の拡張機能のインストールについては、[Windows 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/windows/extensions-nwa.md)に関する記事をご覧ください。Linux VM の場合は、[Linux 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/linux/extensions-nwa.md)に関する記事をご覧ください。
 
 ## <a name="log-in-with-armclient"></a>ARMClient でログインする
 

@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: d2a65104743d9497debdc85c134fd1a06114c514
-ms.openlocfilehash: 1ecd1cd12a5c8b62ee3c8623bd38431879546760
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: ec82b8cc381bc5a30763b9f5d1766ac15d5f1734
+ms.lasthandoff: 04/03/2017
 
 ---
 
@@ -29,11 +29,9 @@ ms.lasthandoff: 02/23/2017
 > - [CLI](network-watcher-packet-capture-manage-cli.md)
 > - [REST API](network-watcher-packet-capture-manage-rest.md)
 
-Network Watcher のパケット キャプチャを使用すると、仮想マシンとの間で送受信されるトラフィックを追跡するキャプチャ セッションを作成できます。 必要なトラフィックのみを確実にキャプチャするためにキャプチャ セッション用のフィルターが用意されています。 パケット キャプチャは、事後と事前に、ネットワークの異常を診断するのに役立ちます。 その他の用途には、ネットワーク統計の収集、ネットワークへの侵入に関する情報の取得、クライアント サーバー間の通信のデバッグなどがあります。 この機能により、パケット キャプチャをリモートでトリガーできるため、目的のマシンでパケット キャプチャを手動で実行する負担が軽減され、貴重な時間が節約されます。
+Network Watcher のパケット キャプチャを使用すると、仮想マシンとの間で送受信されるトラフィックを追跡するキャプチャ セッションを作成できます。 必要なトラフィックのみを確実にキャプチャするためにキャプチャ セッション用のフィルターが用意されています。 パケット キャプチャは、事後と事前に、ネットワークの異常を診断するのに役立ちます。 その他の用途には、ネットワーク統計の収集、ネットワークへの侵入に関する情報を取得などがあり、クライアント サーバー間の通信のデバッグなどに役立ちます。 パケット キャプチャをリモートでトリガーすることができることで、この機能によってパケット キャプチャを手動で、目的のマシン上で実行する負荷が軽減されて、貴重な時間の節約になります。
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
-
-この記事では、パケット キャプチャで現在利用できるさまざまな管理作業について説明します。
+この記事では、パケット キャプチャで現在利用できるさまざまな管理作業を見ていきます。
 
 - [**パケット キャプチャを開始する**](#start-a-packet-capture)
 - [**パケット キャプチャを停止する**](#stop-a-packet-capture)
@@ -49,7 +47,7 @@ Network Watcher のパケット キャプチャを使用すると、仮想マシ
 * パケット キャプチャ拡張機能が有効になっている仮想マシン
 
 > [!IMPORTANT]
-> パケット キャプチャには `AzureNetworkWatcherExtension` 仮想マシン拡張機能が必要です。 Windows VM への拡張機能のインストールについては、[Windows 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/virtual-machines-windows-extensions-nwa.md)に関する記事をご覧ください。Linux VM の場合は、[Linux 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/virtual-machines-linux-extensions-nwa.md)に関する記事をご覧ください。
+> パケット キャプチャには `AzureNetworkWatcherExtension` 仮想マシン拡張機能が必要です。 Windows VM への拡張機能のインストールについては、[Windows 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/windows/extensions-nwa.md)に関する記事をご覧ください。Linux VM の場合は、[Linux 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/linux/extensions-nwa.md)に関する記事をご覧ください。
 
 ## <a name="install-vm-extension"></a>VM 拡張機能をインストールする
 
@@ -122,11 +120,11 @@ ForceUpdateTag          :
 
 ## <a name="start-a-packet-capture"></a>パケット キャプチャを開始する
 
-上記の手順が完了すると、パケット キャプチャ エージェントが仮想マシンにインストールされます。
+上記の手順が完了すると、パケット キャプチャ エージェントは仮想マシンにインストールされます。
 
 ### <a name="step-1"></a>手順 1
 
-次に、Network Watcher インスタンスを取得します。 この変数は、手順 4 で `New-AzureRmNetworkWatcherPacketCapture` コマンドレットに渡されます。
+次の手順では、Network Watcher インスタンスを取得します。 この変数は、手順 4 で `New-AzureRmNetworkWatcherPacketCapture` コマンドレットに渡されます。
 
 ```powershell
 $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
@@ -135,7 +133,7 @@ $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $n
 
 ### <a name="step-2"></a>手順 2.
 
-ストレージ アカウントを取得します。 このストレージ アカウントは、パケット キャプチャ ファイルの保存に使用されます。
+ストレージ アカウントを取得します。 このストレージ アカウントは、パケット キャプチャ ファイルの格納に使用されます。
 
 ```powershell
 $storageAccount = Get-AzureRmStorageAccount -ResourceGroupName testrg -Name testrgsa123
@@ -207,7 +205,7 @@ Filters                 : [
 Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
 ```
 
-次の例は、`Get-AzureRmNetworkWatcherPacketCapture` コマンドレットの出力を示しています。 次の例はキャプチャ完了後を示しています。 PacketCaptureStatus 値が Stopped で、StopReason が TimeExceeded になっています。 この値は、パケット キャプチャが成功し、所定の時間実行されたことを示します。
+次の例は、`Get-AzureRmNetworkWatcherPacketCapture` コマンドレットからの出力です。 次の例はキャプチャ完了後です。 PacketCaptureStatus 値は Stopped で、StopReason は TimeExceeded です。 この値は、パケット キャプチャが成功し、所定の時間実行されたことを示します。
 ```
 Name                    : PacketCaptureTest
 Id                      : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatcher
@@ -268,7 +266,7 @@ Remove-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -Packe
 
 ## <a name="download-a-packet-capture"></a>パケット キャプチャをダウンロードする
 
-パケット キャプチャ セッションが完了したら、Blob Storage または VM 上のローカル ファイルにキャプチャ ファイルをアップロードできます。 パケット キャプチャの保存場所は、セッションの作成時に定義されます。 ストレージ アカウントに保存されているこれらのキャプチャ ファイルにアクセスする便利なツールが Microsoft Azure ストレージ エクスプローラーです。このツールは、http://storageexplorer.com/ からダウンロードできます。
+パケット キャプチャ セッションが完了すると、BLOB ストレージまたは VM 上のローカル ファイルにキャプチャ ファイルをアップロードできます。 パケット キャプチャの格納場所は、セッションの作成時に定義されます。 ストレージ アカウントに対して保存されているこれらのキャプチャ ファイルにアクセスする便利なツールが、http://storageexplorer.com/ からダウンロードできる Microsoft Azure ストレージ エクスプローラーです。
 
 ストレージ アカウントが指定されている場合、パケット キャプチャ ファイルは、次の場所にあるストレージ アカウントに保存されます。
 
@@ -278,9 +276,9 @@ https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscrip
 
 ## <a name="next-steps"></a>次のステップ
 
-[アラートによってトリガーされるパケット キャプチャの作成](network-watcher-alert-triggered-packet-capture.md)に関する記事を参照して、仮想マシンのアラートを使用してパケット キャプチャを自動化する方法を確認する
+[アラートがトリガーするパケット キャプチャの作成](network-watcher-alert-triggered-packet-capture.md)に関するページを参照して、仮想マシンのアラートを使用してパケット キャプチャを自動化する方法を確認する
 
-[IP フロー検証の確認](network-watcher-check-ip-flow-verify-portal.md)に関する記事を参照して、VM で送受信される特定のトラフィックが許可されているかどうかを調べる
+[IP flow verify のチェック](network-watcher-check-ip-flow-verify-portal.md)に関するページを参照して、VM に着信するか発信される特定のトラフィックが許可されたかどうかを調べる
 
 <!-- Image references -->
 

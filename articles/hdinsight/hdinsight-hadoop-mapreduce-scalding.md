@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 01/19/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: f3be777497d842f019c1904ec1990bd1f1213ba2
-ms.openlocfilehash: 166ff7f3586932494984e87fc0df7d3d3d914c82
-ms.lasthandoff: 01/20/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 0631d522c2a6cc36044106e76de16c78b7c24bca
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -34,7 +34,7 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 * **HDInsight クラスターの Windows ベースまたは Linux ベースの Hadoop**。 詳細については、「[HDInsight での Linux ベースの Hadoop のプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)」または「[HDInsight での Windows ベースの Hadoop のプロビジョニング](hdinsight-provision-clusters.md)」を参照してください。
 
   > [!IMPORTANT]
-  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。
 
 * **[Maven](http://maven.apache.org/)**
 
@@ -43,13 +43,13 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 ## <a name="create-and-build-the-project"></a>プロジェクトの作成とビルド
 
 1. 次のコマンドを使用して、新しい Maven プロジェクトを作成します。
-   
+
         mvn archetype:generate -DgroupId=com.microsoft.example -DartifactId=scaldingwordcount -DarchetypeGroupId=org.scala-tools.archetypes -DarchetypeArtifactId=scala-archetype-simple -DinteractiveMode=false
-   
+
     このコマンドは、 **scaldingwordcount**という名前の新しいディレクトリを作成し、Scala アプリケーションのスキャフォールディングを作成します。
 
 2. **scaldingwordcount** ディレクトリで、**pom.xml** ファイルを開いて内容を次のように置き換えます。
-   
+
         <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
             <modelVersion>4.0.0</modelVersion>
             <groupId>com.microsoft.example</groupId>
@@ -141,9 +141,9 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
             </plugins>
             </build>
         </project>
-   
+
     このファイルでは、プロジェクト、依存関係、およびプラグインが記述されています。 重要なエントリは次のとおりです。
-   
+
    * **maven.compiler.source** および **maven.compiler.target**: このプロジェクトの Java のバージョンを設定します。
 
    * **repositories**: このプロジェクトで使用される依存関係ファイルを含むリポジトリです。
@@ -153,19 +153,19 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
    * **maven-scala-plugin**: Scala アプリケーションをコンパイルするためのプラグインです。
 
    * **maven-shade-plugin**: シェードされた (ファット) Jar を作成するためのプラグインです。 このプラグインはフィルターおよび変換を適用します。具体的には次のとおりです。
-     
+
      * **フィルター**: 適用されたフィルターによって、jar ファイルに組み込まれるメタ情報が変更されます。 実行時に署名の例外が発生しないように、フィルターを使用して、依存関係で組み込まれる可能性のある、さまざまな署名ファイルを除外します。
 
      * **実行**: パッケージ フェーズ実行構成で、**com.twitter.scalding.Tool** クラスをパッケージのメイン クラスとして指定します。 これを指定しない場合は、hadoop コマンドでジョブを実行するときに、com.twitter.scalding.Tool を、アプリケーション ロジックを含むクラスと共に指定する必要があります。
-    
+
 3. この例ではテストを作成しないので、 **src/test** ディレクトリを削除します。
 
 4. **src/main/scala/com/microsoft/example/App.scala** ファイルを開き、内容を次のように置き換えます。
-   
+
         package com.microsoft.example
-   
+
         import com.twitter.scalding._
-   
+
         class WordCount(args : Args) extends Job(args) {
             // 1. Read lines from the specified input location
             // 2. Extract individual words from each line
@@ -175,21 +175,21 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
             .flatMap('line -> 'word) { line : String => tokenize(line) }
             .groupBy('word) { _.size }
             .write(Tsv(args("output")))
-   
+
             //Tokenizer to split sentance into words
             def tokenize(text : String) : Array[String] = {
             text.toLowerCase.replaceAll("[^a-zA-Z0-9\\s]", "").split("\\s+")
             }
         }
-   
+
     これにより、基本的なワード カウント ジョブが実装されます。
 
 5. ファイルを保存して閉じます。
 
 6. **scaldingwordcount** ディレクトリから次のコマンドを使用して、アプリケーションをビルドしてパッケージ化します。
-   
+
         mvn package
-   
+
     このジョブが完了すると、WordCount アプリケーションを含むパッケージが **target/scaldingwordcount-1.0-SNAPSHOT.jar**に作成されます。
 
 ## <a name="run-the-job-on-a-linux-based-cluster"></a>Linux ベースのクラスターでのジョブの実行
@@ -199,33 +199,33 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 
 
 1. 次のコマンドを使用して、HDInsight クラスターにパッケージをアップロードします。
-   
+
         scp target/scaldingwordcount-1.0-SNAPSHOT.jar username@clustername-ssh.azurehdinsight.net:
-   
+
     これにより、ファイルがローカル システムからヘッド ノードにコピーされます。
-   
+
    > [!NOTE]
    > SSH アカウントのセキュリティ保護にパスワードを使用している場合は、パスワードの入力が求められます。 SSH キーを使用している場合は、 `-i` パラメーターと、秘密キーのパスを使用する必要があることがあります。 たとえば、 `scp -i /path/to/private/key target/scaldingwordcount-1.0-SNAPSHOT.jar username@clustername-ssh.azurehdinsight.net:.`
-   > 
-   > 
+   >
+   >
 2. 次のコマンドを使用して、クラスターのヘッド ノードに接続します。
-   
+
         ssh username@clustername-ssh.azurehdinsight.net
-   
+
    > [!NOTE]
    > SSH アカウントのセキュリティ保護にパスワードを使用している場合は、パスワードの入力が求められます。 SSH キーを使用している場合は、 `-i` パラメーターと、秘密キーのパスを使用する必要があることがあります。 たとえば、 `ssh -i /path/to/private/key username@clustername-ssh.azurehdinsight.net`
 
 3. ヘッド ノードに接続した後、次のコマンドを使用してワード カウント ジョブを実行します
-   
+
         yarn jar scaldingwordcount-1.0-SNAPSHOT.jar com.microsoft.example.WordCount --hdfs --input wasbs:///example/data/gutenberg/davinci.txt --output wasbs:///example/wordcountout
-   
+
     これにより、前に実装した WordCount クラスが実行されます。 `--hdfs` は、HDFS を使用するようにジョブに指示します。 `--input` は入力テキスト ファイルを指定し、`--output` は出力の場所を指定します。
 4. ジョブが完了した後、次の方法で出力を表示します。
-   
+
         hdfs dfs -text wasbs:///example/wordcountout/*
-   
+
     次のような情報が表示されます。
-   
+
         writers 9
         writes  18
         writhed 1
@@ -247,22 +247,22 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 1. Azure PowerShell を起動し、Azure アカウントにログインします。 資格情報を提供すると、コマンドがアカウントの情報を返します。
-   
+
         Add-AzureRMAccount
-   
+
         Id                             Type       ...
         --                             ----
         someone@example.com            User       ...
 
 2. 複数のサブスクリプションがある場合、デプロイメントに使用するサブスクリプション ID を提供します。
-   
+
         Select-AzureRMSubscription -SubscriptionID <YourSubscriptionId>
-   
+
    > [!NOTE]
    > `Get-AzureRMSubscription` を使用して、アカウントに関連付けられているすべてのサブスクリプションのリストを取得することができます。これには、各サブスクリプション ID が含まれます。
 
 3. WordCount ジョブをアップロードして実行するには、次のスクリプトを使用します。 `CLUSTERNAME` は HDInsight クラスターの名前に置き換え、`$fileToUpload` が **scaldingwordcount-1.0-SNAPSHOT.jar** ファイルへの正しいパスであることを確認します。
-   
+
    ```powershell
     # Login to your Azure subscription
     # Is there an active Azure subscription?
@@ -330,15 +330,15 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
         -HttpCredential $creds `
         -DisplayOutputType StandardError
    ```
-   
+
      スクリプトの実行時に、HDInsight クラスターの管理者のユーザー名とパスワードを入力するように求められます。 ジョブが実行されているときに発生したエラーは、コンソールに記録されます。
 
 4. ジョブが完了すると、出力は現在のディレクトリにある **output.txt** ファイルにダウンロードされます。 次のコマンドを実行して、結果を表示します。
-   
+
         cat output.txt
-   
+
     ファイルには次のような値が含まれます。
-   
+
         writers 9
         writes  18
         writhed 1
@@ -359,5 +359,4 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 * [HDInsight での Hive の使用](hdinsight-use-hive.md)
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)
-
 

@@ -17,18 +17,18 @@ ms.date: 02/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
 translationtype: Human Translation
-ms.sourcegitcommit: c9e3c1d2a1f5b83c59fa2a22f3cb4d89df203384
-ms.openlocfilehash: 010a8a377150292fcb533a1af99adcc7c782bceb
-ms.lasthandoff: 01/19/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: d4fcab5f30f917812a6e6af3c54d51cecde8ea87
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="install-and-use-solr-on-windows-based-hdinsight-clusters"></a>Windows ベースの HDInsight クラスターに Solr をインストールして使用する
 
-スクリプト アクションを使用して Windows ベースの HDInsight クラスターを Solr でカスタマイズする方法と、Solr を使用してデータを検索する方法について説明します。 
+スクリプト アクションを使用して Windows ベースの HDInsight クラスターを Solr でカスタマイズする方法と、Solr を使用してデータを検索する方法について説明します。
 
 > [!IMPORTANT]
-> このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。 Windows では、バージョン 3.4 より前の HDInsight のみを使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。 Linux ベースのクラスターでの Solr の操作については、「 [HDInsight Hadoop クラスターに Solr をインストールして使用する (Linux)](hdinsight-hadoop-solr-install-linux.md)」を参照してください。
+> このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。 Windows では、バージョン 3.4 より前の HDInsight のみを使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。 Linux ベースのクラスターでの Solr の操作については、「 [HDInsight Hadoop クラスターに Solr をインストールして使用する (Linux)](hdinsight-hadoop-solr-install-linux.md)」を参照してください。
 
 
 *Script Action*を使用し、Azure HDInsight の任意の種類のクラスター (Hadoop、Storm、HBase、Spark) に Solr をインストールできます。 HDInsight クラスターに Solr をインストールするためのサンプル スクリプトは、 [https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1)の読み取り専用 Azure ストレージ BLOB から入手できます。
@@ -83,7 +83,7 @@ ms.lasthandoff: 01/19/2017
         COMMITting Solr index changes to http://localhost:8983/solr/update..
         Time spent: 0:00:01.624
 
-    post.jar ユーティリティは、**solr.xml** と **monitor.xml** という&2; つのサンプル ドキュメントで Solr のインデックスを作成します。 post.jar ユーティリティとサンプル ドキュメントは Solr のインストールで利用できるようになります。
+    post.jar ユーティリティは、**solr.xml** と **monitor.xml** という 2 つのサンプル ドキュメントで Solr のインデックスを作成します。 post.jar ユーティリティとサンプル ドキュメントは Solr のインストールで利用できるようになります。
 3. **Solr ダッシュボードを使用して、インデックス付きドキュメント内を検索します**。 HDInsight クラスターへの RDP セッションで Internet Explorer を開き、**http://headnodehost:8983/solr/#/** で Solr のダッシュ ボードを起動します。 左側のウィンドウの **[Core Selector]** ボックスから、**[collection1]** を選択し、メニューの中から **[クエリ]** をクリックします。 例として、Solr 内のすべてのドキュメントを選択して返すために、次の値を指定します。
 
    * **[q]** ボックスに「**\*:**\*」を入力します。 これにより、Solr でインデックス付けされたすべてのドキュメントが返されます。 ドキュメント内の特定の文字列を検索する場合には、ここにその文字列を入力することができます。
@@ -91,7 +91,7 @@ ms.lasthandoff: 01/19/2017
 
      ![スクリプト アクションを使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-solr-install/hdi-solr-dashboard-query.png "Solr ダッシュボードでクエリを実行する")
 
-     これによる出力は、Solr のインデックス作成のために使用した&2; つのドキュメントを返します。 出力結果は、以下のようになります。
+     これによる出力は、Solr のインデックス作成のために使用した 2 つのドキュメントを返します。 出力結果は、以下のようになります。
 
            "response": {
                "numFound": 2,

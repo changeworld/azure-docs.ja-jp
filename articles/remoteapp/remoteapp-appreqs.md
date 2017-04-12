@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: 74bba898d2a4f5e35b2312dd28cb515a2e159df2
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: a9a305e4c07e2c348b1c1503d53f1da05da57966
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="app-requirements"></a>アプリの要件
 > [!IMPORTANT]
-> Azure RemoteApp の提供は終了しました。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
+> Azure RemoteApp の提供は、2017 年 8 月 31 日で終了します。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
 > 
 > 
 
@@ -30,7 +31,7 @@ Azure RemoteApp は、Windows Server 2012 R2 イメージの 32 ビットまた�
 ヒント: Microsoft では、アプリケーションの実行例の作成に取り組んでいます。 RemoteApp での Microsoft Access、QuickBooks、App-V の使用に関する新しいトピックを掲載する予定です。
 
 ## <a name="requirements"></a>必要条件
-これらの&3; つの要件に従うと、アプリケーションが RemoteApp で快適に動作するのに役立ちます。
+これらの 3 つの要件に従うと、アプリケーションが RemoteApp で快適に動作するのに役立ちます。
 
 1. [Windows デスクトップ アプリ認定要件](https://msdn.microsoft.com/library/windows/desktop/hh749939.aspx)のすべてを満たし、[リモート デスクトップ サービスのプログラミング ガイドライン](https://msdn.microsoft.com/library/aa383490.aspx)に準拠しているアプリケーションは、RemoteApp との互換性があります。
 2. アプリケーションで、失われる可能性があるイメージ上または RemoteApp インスタンス上にローカルにデータを格納しないでください。  RemoteApp コレクションを作成した後、インスタンスは複製されてステートレスとなり、アプリケーションのみを含む必要があります。 外部ソース、またはユーザーのプロファイル内にデータを格納します。
@@ -42,7 +43,7 @@ Azure RemoteApp は、Windows Server 2012 R2 イメージの 32 ビットまた�
 1. Windows Server 2012 R2 とアプリケーションのインストール
 2. リモート デスクトップの有効化
 3. 2 つのユーザー アカウントの作成 (UserA と UserB、両方のユーザー アカウントをリモート デスクトップ セキュリティ グループに追加する)
-4. アプリケーションの起動時に PC に対する&2; つの同時 RDS セッションを確立することにより、マルチセッションの互換性を確認
+4. アプリケーションの起動時に PC に対する 2 つの同時 RDS セッションを確立することにより、マルチセッションの互換性を確認
 5. アプリケーションの動作の検証
 
 ## <a name="application-development-guidelines"></a>アプリケーション開発のガイドライン
@@ -59,10 +60,5 @@ Azure RemoteApp は、Windows Server 2012 R2 イメージの 32 ビットまた�
 * すべてのユーザーに対して CPU の可用性を最大にするため、 [バックグラウンド タスク ](https://msdn.microsoft.com/library/aa380665.aspx) を無効にするか、リソースを集中的に使用しない効率的なバックグラウンド タスクを作成します。
 * マルチユーザー、マルチプロセッサ環境向けに、アプリケーションの [スレッド使用状況](https://msdn.microsoft.com/library/aa383520.aspx) を調整する必要があります。
 * パフォーマンスを最適化するために、クライアント セッションで動作しているかどうかをアプリケーションで [検出する](https://msdn.microsoft.com/library/aa380798.aspx) ことをお勧めします。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

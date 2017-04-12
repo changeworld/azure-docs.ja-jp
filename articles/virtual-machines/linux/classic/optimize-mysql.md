@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: bd313ae585667cc80d44ae50f9d97659b8de62eb
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: e910c47d88434fae76f9c2d3bcb8a258d7d3fde4
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/27/2017
 Azure では、仮想ハードウェアの選択およびソフトウェアの構成の両方で MySQL のパフォーマンスに影響を与える多くの要素があります。 この記事では、ストレージ、システム、およびデータベースの構成でのパフォーマンスの最適化について説明します。
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Azure Resource Manager](../../../resource-manager-deployment-model.md) とクラシックの 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Resource Manager モデルを使用した Linux VM の最適化については、「[Azure での Linux VM の最適化](../../virtual-machines-linux-optimization.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
+> Azure には、リソースの作成と操作に関して、[Azure Resource Manager](../../../resource-manager-deployment-model.md) とクラシックの 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Resource Manager モデルを使用した Linux VM の最適化については、「[Azure での Linux VM の最適化](../optimization.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
 ## <a name="utilize-raid-on-an-azure-virtual-machine"></a>Azure 仮想マシン上での RAID の使用
 ストレージは、クラウド環境でのデータベース パフォーマンスに影響を与える重要な要素です。 RAID は、1 つのディスクと比較して、同時実行制御を使用して高速アクセスを提供できます。 詳細については、「[Standard RAID levels](http://en.wikipedia.org/wiki/Standard_RAID_levels)」(標準の RAID レベル) を参照してください。   
@@ -71,7 +71,7 @@ Azure クラシック ポータルの [仮想マシン] ページで、データ
     sudo grep SCSI /var/log/dmesg
 
 #### <a name="create-raid-with-the-additional-disks"></a>追加のディスクで RAID を作成する
-次の手順では、[Linux でのソフトウェア RAID の構成方法](../../virtual-machines-linux-configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)について説明します。
+次の手順では、[Linux でのソフトウェア RAID の構成方法](../configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)について説明します。
 
 > [!NOTE]
 > XFS ファイル システムを使用している場合は、RAID を作成した後に次の手順を実行してください。

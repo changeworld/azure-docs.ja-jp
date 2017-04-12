@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: mlearned
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 91e061820e8edc81bca395dc78d3e1e840b21438
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: da4bb7fcbb45afed5d45f4d48c0b90e44503daf8
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -44,7 +45,7 @@ Visual Studio Team Services を使用してクラウド サービスを自動的
    
     ![][4]
 2. このチュートリアルの手順に従って、Web アプリまたはクラウド サービス (Azure アプリケーション) をデプロイできます。 新しい Azure クラウド サービス プロジェクト、または新しい ASP.NET MVC プロジェクトを作成します。 プロジェクトが .NET Framework 4 以降を対象にしていることを確認します。 クラウド サービス プロジェクトを作成する場合は、ASP.NET MVC Web ロールと worker ロールを追加します。
-   Web アプリを作成する場合は、**[ASP.NET Web アプリケーション プロジェクト]** テンプレートを選択し、次に **[MVC]** を選択します。 詳細については、「 [Azure App Service での ASP.NET Web アプリの作成](../app-service-web/web-sites-dotnet-get-started.md) 」を参照してください。
+   Web アプリを作成する場合は、**[ASP.NET Web アプリケーション プロジェクト]** テンプレートを選択し、次に **[MVC]** を選択します。 詳細については、「 [Azure App Service での ASP.NET Web アプリの作成](../app-service-web/app-service-web-get-started-dotnet.md) 」を参照してください。
 3. ソリューションのショートカット メニューを開き、 **[コミット]**を選択します。
    
     ![][7]
@@ -232,9 +233,4 @@ Visual Studio Team Services で Git を使用する場合のその他のヒン�
 [45]: ./media/cloud-services-continuous-delivery-use-vso-git/SyncChanges2.PNG
 [47]: ./media/cloud-services-continuous-delivery-use-vso-git/SourceSettingsPage.PNG
 [48]: ./media/cloud-services-continuous-delivery-use-vso-git/IncludeWorkingBranch.PNG
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

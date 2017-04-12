@@ -3,9 +3,9 @@
 ## <a name="multi-and-single-instance-vms"></a>複数インスタンス VM と単一インスタンス VM
 VM の計画的メンテナンスでは約 15 分のダウンタイムが発生します。そのため Azure を利用する多くのユーザーにとって、計画的メンテナンスを確実にスケジューリングすることがきわめて重要となります。 可用性セットを使用すると、プロビジョニングされた VM の計画的メンテナンスがいつ行われるかを制御できます。
 
-Azure で実行される VM には 2 つの可能な構成があります。 VM は、複数インスタンスまたは単一インスタンスとして構成されます。 可用性セット内にある VM は、複数インスタンスとして構成されます。 ただし、単一 VM を可用性セットにデプロイすることもでき、そのような VM は複数インスタンスとして扱われます。 可用性セット内にない VM は、単一インスタンスとして構成されます。  可用性セットの詳細については、[Windows 仮想マシンの可用性管理](../articles/virtual-machines/virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)または [Linux 仮想マシンの可用性管理](../articles/virtual-machines/virtual-machines-linux-manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。
+Azure で実行される VM には 2 つの可能な構成があります。 VM は、複数インスタンスまたは単一インスタンスとして構成されます。 可用性セット内にある VM は、複数インスタンスとして構成されます。 ただし、単一 VM を可用性セットにデプロイすることもでき、そのような VM は複数インスタンスとして扱われます。 可用性セット内にない VM は、単一インスタンスとして構成されます。  可用性セットの詳細については、[Windows 仮想マシンの可用性管理](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)または [Linux 仮想マシンの可用性管理](../articles/virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。
 
-単一インスタンス VM と複数インスタンス VM に対する計画的メンテナンスの更新は、個別に行われます。 VM を単一インスタンス (複数インスタンスの場合) または複数インスタンス (単一インスタンスの場合) として再構成することにより、VM の計画的メンテナンスが行われるタイミングを制御できます。 Azure VM の計画的メンテナンスの詳細については、[Azure での Linux 仮想マシンに対する計画的なメンテナンス](../articles/virtual-machines/virtual-machines-linux-planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)または [Azure での Windows 仮想マシンに対する計画的なメンテナンス](../articles/virtual-machines/virtual-machines-windows-planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
+単一インスタンス VM と複数インスタンス VM に対する計画的メンテナンスの更新は、個別に行われます。 VM を単一インスタンス (複数インスタンスの場合) または複数インスタンス (単一インスタンスの場合) として再構成することにより、VM の計画的メンテナンスが行われるタイミングを制御できます。 Azure VM の計画的メンテナンスの詳細については、[Azure での Linux 仮想マシンに対する計画的なメンテナンス](../articles/virtual-machines/linux/planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)または [Azure での Windows 仮想マシンに対する計画的なメンテナンス](../articles/virtual-machines/windows/planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 
 ## <a name="for-multi-instance-configuration"></a>複数インスタンス構成の場合
 可用性セットから VM を削除することで、可用性セット構成にデプロイされた VM に対していつ計画的メンテナンスが行われるかを選択できます。
@@ -45,7 +45,7 @@ VM を可用性セットに追加することで、単一インスタンス構�
 
 1. 単一インスタンス構成の VM に対する計画的メンテナンスの 7 日前に、電子メールがユーザーに送信されます。 電子メールの本文には、サブスクリプション ID と、影響を受ける単一インスタンス VM の名前が記載されています。
 2. この 7 日の間に、単一インスタンス VM を同じリージョンの可用性セットに追加することにより、インスタンスが再起動する時間を選択できます。 この構成変更により、仮想マシンがメンテナンス対象の物理ホストからメンテナンス対象ではない別の物理ホストに移動するので、再起動が行われます。
-3. Azure Portal と Azure PowerShell を使用し、ここで示す手順に従って、既存の VM を可用性セットに追加します (後の Azure PowerShell サンプルを参照)。 (See the Azure PowerShell sample that follows these steps.)
+3. Azure Portal と Azure PowerShell を使用し、ここで示す手順に従って、既存の VM を可用性セットに追加します  (後の Azure PowerShell サンプルを参照)。
 4. 複数インスタンスとして再構成した VM は、単一インスタンス VM の計画的メンテナンスから除外されます。
 5. 単一インスタンス VM の更新が (元の電子メールに記載されているスケジュールに従って) 完了したら、可用性セットから VM を削除することで、その VM を単一インスタンスに戻すことができます。
 

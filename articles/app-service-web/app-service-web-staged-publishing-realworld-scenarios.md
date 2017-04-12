@@ -17,6 +17,7 @@ ms.author: sumuth
 translationtype: Human Translation
 ms.sourcegitcommit: 385eb87ec32f5f605b28cc8c76b1c89c7e90bfec
 ms.openlocfilehash: 5284022ea473db893800b0f64b5bf4f811d994aa
+ms.lasthandoff: 12/20/2016
 
 
 ---
@@ -164,7 +165,7 @@ ms.openlocfilehash: 5284022ea473db893800b0f64b5bf4f811d994aa
     * prefix. Only numbers, letters, and underscores please!
     */
     $table_prefix = getenv('DB_PREFIX');
-```
+    ```
 
 #### <a name="use-relative-paths"></a>相対パスの使用
 もう 1 つ、WordPress アプリで構成する必要があるのが、相対パスです。 WordPress では、データベースに URL 情報を格納します。 この記憶域を使用することが、環境間でのコンテンツの移動を難しくしています。 ローカル環境からステージング環境に移動したり、ステージング環境から運用環境に移動したりするたびに、データベースを更新する必要があるからです。 環境間でのデプロイ時ごとにデータベースをデプロイすることで生じる問題発生リスクを軽減するには、[Relative Root リンク プラグイン](https://wordpress.org/plugins/root-relative-urls/)を使用します。このプラグインは、WordPress の管理者ダッシュボードを使用してインストールできます。
@@ -442,9 +443,4 @@ Web アプリをローカルでアップグレードする方法について詳�
 [Azure App Service の Web アプリのステージング環境を設定する](web-sites-staged-publishing.md)
 
 [運用環境以外のデプロイメント スロットへの Web アクセスを禁止する方法](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

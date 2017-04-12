@@ -14,8 +14,9 @@ ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 46e6ab8a9c5d4e6a00d61ee4e5bbfd42307bfc69
-ms.openlocfilehash: 5ec35fb0171a4a62b915579b5a079060132998dd
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 22adefb1d506376e72bf27e295e009b1cf56d630
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -36,11 +37,10 @@ ms.openlocfilehash: 5ec35fb0171a4a62b915579b5a079060132998dd
 * [Angular](https://www.npmjs.com/package/angular-applicationinsights)
 * [ASP.NET](app-insights-asp-net.md)
 * [ASP.NET - 既にライブとなっているアプリ用](app-insights-monitor-performance-live-website-now.md)
-* [ASP.NET 5](app-insights-asp-net-core.md)
+* [ASP.NET Core](app-insights-asp-net-core.md)
 * [Android](https://github.com/Microsoft/ApplicationInsights-Android) (HockeyApp)
 * [Azure Web Apps](app-insights-azure-web-apps.md)
 * [Azure Cloud Services](app-insights-cloudservices.md)&#151; Web ロールと worker ロールの両方を含む
-* [Microsoft Dynamics からの CRM オンライン](app-insights-sample-mscrm.md)
 * [Docker](app-insights-docker.md)
 * [Glimpse](https://azure.microsoft.com/blog/glimpse-application-insights/)
 * [iOS](https://github.com/Microsoft/ApplicationInsights-iOS) (HockeyApp)
@@ -60,9 +60,10 @@ ms.openlocfilehash: 5ec35fb0171a4a62b915579b5a079060132998dd
 ## <a name="logging-frameworks"></a>ログ記録フレームワーク
 * [Log4Net、NLog、または System.Diagnostics.Trace](app-insights-diagnostic-search.md)
 * [Java、Log4J、または Logback](app-insights-java-trace-logs.md)
-* [セマンティック ログ (SLAB)](https://github.com/fidmor89/SLAB_AppInsights)&#151; [セマンティック ログ アプリケーション ブロック](https://msdn.microsoft.com/library/dn440729.aspx)と統合
+* [セマンティック ログ (SLAB)](https://github.com/fidmor89/SLAB_AppInsights) - [セマンティック ログ アプリケーション ブロック](https://msdn.microsoft.com/library/dn440729.aspx)と統合
 * [クラウド ベースのロード テスト](http://blogs.msdn.com/b/visualstudioalm/archive/2015/07/30/getting-application-insights-counters-with-cloud-based-load-testing.aspx)
 * [LogStash プラグイン](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-output-applicationinsights)
+* [OMS Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)
 
 ## <a name="content-management-systems"></a>コンテンツ管理システム
 * [Concrete](https://github.com/fidmor89/appInsights-Concrete)
@@ -77,11 +78,6 @@ ms.openlocfilehash: 5ec35fb0171a4a62b915579b5a079060132998dd
 * [Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)
 * [Stream Analytics](app-insights-export-power-bi.md)
 
-## <a name="a-nameprojectsa-build-your-own-sdk"></a><a name="projects"></a> 独自の SDK をビルドする
+## <a name="projects"></a> 独自の SDK をビルドする
 使用する言語やプラットフォーム用の SDK がない場合は、自分で作成するという方法があります。 [GitHub の Application Insights SDK プロジェクト](https://github.com/Microsoft/AppInsights-Home)に示されている既存の SDK のコードをご覧ください。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

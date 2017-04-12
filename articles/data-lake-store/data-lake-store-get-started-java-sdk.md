@@ -15,9 +15,9 @@ ms.workload: big-data
 ms.date: 04/03/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: 3e4302e7c5b54a46994eccaa8cf9ecbb0a84446d
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 7e1d596739e6c548349827ff79b76cc0312bc4df
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -29,6 +29,7 @@ ms.lasthandoff: 03/03/2017
 > * [Java SDK](data-lake-store-get-started-java-sdk.md)
 > * [REST API](data-lake-store-get-started-rest-api.md)
 > * [Azure CLI](data-lake-store-get-started-cli.md)
+> * [Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
 > * [Node.JS](data-lake-store-manage-use-nodejs.md)
 > * [Python](data-lake-store-get-started-python.md)
 >
@@ -77,7 +78,7 @@ Azure Active Directory には、トークンを取得するための他のオプ
     最初の依存関係では、maven リポジトリから Data Lake Store SDK (`azure-data-lake-store-sdk`) を使用します。 2 番目の依存関係 (`slf4j-nop`) では、このアプリケーションで使用するログ記録フレームワークを指定します。 Data Lake Store SDK では、[slf4j](http://www.slf4j.org/) ログ ファサードを使用します。slf4j を使用すると、log4j、Java ログ、logback などの多数の一般的なログ記録フレームの中から選択することも、ログを記録しないようにすることもできます。 この例ではログを無効にするため、**slf4j-nop** バインドを使用します。 アプリケーションで他のログ オプションを使用する場合は、[こちら](http://www.slf4j.org/manual.html#projectDep)をご覧ください。
 
 ### <a name="add-the-application-code"></a>アプリケーション コードの追加
-コードには&3; つの主要部分があります。
+コードには 3 つの主要部分があります。
 
 1. Azure Active Directory トークンを取得する。
 2. トークンを使用して Data Lake Store クライアントを作成する。
@@ -86,7 +87,7 @@ Azure Active Directory には、トークンを取得するための他のオプ
 #### <a name="step-1-obtain-an-azure-active-directory-token"></a>手順 1: Azure Active Directory トークンを取得する
 Data Lake Store SDK には、Data Lake Store アカウントとの対話に必要なセキュリティ トークンを管理できる便利な方法が用意されています。 ただし、使用する方法はこれらに限定されるわけではありません。 [Azure Active Directory SDK](https://github.com/AzureAD/azure-activedirectory-library-for-java) や独自のカスタム コードの使用など、トークンを取得するその他の方法も使用できます。
 
-Data Lake Store SDK を使用して、以前に作成した Active Directory Web アプリケーションのトークンを取得するには、`AccessTokenProvider` のサブクラスの&1; つを使用します (下の例では、`ClientCredsTokenProvider` を使用します)。 トークン プロバイダーは、メモリ内のトークンを取得するために使用する資格情報をキャッシュし、そのトークンの有効期限が切れそうになった場合に自動的に更新します。 トークンがカスタム トークンで取得されるように `AccessTokenProvider` のサブクラスを独自に作成することができますが、ここでは、SDK に用意されているものを使ってみましょう。
+Data Lake Store SDK を使用して、以前に作成した Active Directory Web アプリケーションのトークンを取得するには、`AccessTokenProvider` のサブクラスの 1 つを使用します (下の例では、`ClientCredsTokenProvider` を使用します)。 トークン プロバイダーは、メモリ内のトークンを取得するために使用する資格情報をキャッシュし、そのトークンの有効期限が切れそうになった場合に自動的に更新します。 トークンがカスタム トークンで取得されるように `AccessTokenProvider` のサブクラスを独自に作成することができますが、ここでは、SDK に用意されているものを使ってみましょう。
 
 **FILL-IN-HERE** を、Azure Active Directory Web アプリケーションの実際の値に置き換えます。
 

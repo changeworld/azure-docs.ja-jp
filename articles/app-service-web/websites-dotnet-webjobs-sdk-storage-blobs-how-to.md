@@ -3,7 +3,7 @@ title: "Web ジョブ SDK で Azure Blob Storage を使用する方法"
 description: "Web ジョブ SDK で Azure Blob Storage を使用する方法を説明します。 コンテナーに新しい BLOB が表示されたら、プロセスをトリガーし、 有害な BLOB を処理します。"
 services: app-service\web, storage
 documentationcenter: .net
-author: tdykstra
+author: ggailey777
 manager: erikre
 editor: 
 ms.assetid: bf32f919-f7bc-4aaa-916e-461c02f2e26c

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2017
+ms.date: 04/04/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 6ad2194a71e0d36ba4a0b9a46ca6dbcd58b619ff
-ms.openlocfilehash: 06a8b79f0740e902bb7f9412b449a98b2f0167ea
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: e22a1ccb958942cfa3c67194430af6bc74fdba64
+ms.openlocfilehash: 233691d19aa2553744f92af17f7ecf9fda2290e0
+ms.lasthandoff: 04/05/2017
 
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health についてよく寄せられる質問
@@ -42,7 +42,7 @@ Azure AD テナントを切り替えるには、現在サインインしてい�
 
 **Q: インフラストラクチャを監視するには、いくつのライセンスが必要ですか。**
 
-* 最初の Connect Health エージェントに、少なくとも&1; つの Azure AD Premium ライセンスが必要です。
+* 最初の Connect Health エージェントに、少なくとも 1 つの Azure AD Premium ライセンスが必要です。
 * 追加登録されるエージェントごとに、25 個の追加 Azure AD Premium ライセンスが必要です。
 * エージェントの数は、監視対象のすべての役割 (AD FS、Azure AD Connect、AD DS) で登録されるエージェントの合計数に相当します。
 
@@ -52,7 +52,7 @@ Azure AD テナントを切り替えるには、現在サインインしてい�
 
 | 登録されているエージェント | 必要なライセンスの数 | 監視構成の例 |
 | ------ | --------------- | --- |
-| 1 | 1 | Azure AD Connect サーバー ×&1; |
+| 1 | 1 | Azure AD Connect サーバー × 1 |
 | 2 | 26| Azure AD Connect サーバー × 1、ドメイン コントローラー × 1 |
 | 3 | 51 | Active Directory フェデレーション サービス (AD FS) サーバー × 1、AD FS プロキシ × 1、ドメイン コントローラー × 1 |
 | 4 | 76 | AD FS サーバー × 1、AD FS プロキシ × 1、ドメイン コントローラー × 2 |
@@ -67,7 +67,7 @@ Microsoft Azure AD Connect Health エージェント、AD FS、Web アプリケ�
 
 おおよその数値を以下に示します。
 
-* CPU 消費率: 約&1; ～&5;% 上昇。
+* CPU 消費率: 約 1 ～ 5% 上昇。
 * メモリ消費量: システム メモリ合計の最大 10%。
 
 > [!NOTE]
@@ -75,7 +75,7 @@ Microsoft Azure AD Connect Health エージェント、AD FS、Web アプリケ�
 >
 >
 
-* Azure AD Connect Health エージェントのローカル バッファー ストレージ: 約&20; MB。
+* Azure AD Connect Health エージェントのローカル バッファー ストレージ: 約 20 MB。
 * AD FS サーバーの場合、Azure AD Connect Health エージェントの AD FS 監査チャネルがすべての監査データを上書き前に処理できるように、1,024 MB (1 GB) のディスク領域をプロビジョニングすることをお勧めします。
 
 **Q: Azure AD Connect Health エージェントのインストール時にサーバーを再起動する必要はありますか。**
@@ -103,11 +103,11 @@ Microsoft Azure AD Connect Health エージェント、AD FS、Web アプリケ�
 
 ファイアウォールのポートとその他の接続要件の一覧については、「[必要条件](active-directory-aadconnect-health-agent-install.md#requirements)」セクションをご覧ください。
 
-**Q: Azure AD Connect Health ポータルに同じ名前のサーバーが&2; つ表示されるのはなぜですか。**
+**Q: Azure AD Connect Health ポータルに同じ名前のサーバーが 2 つ表示されるのはなぜですか。**
 
 サーバーからエージェントを削除しても、サーバーは Azure AD Connect Health ポータルから自動的に削除されません。 サーバーから手動でエージェントを削除したか、サーバー自体を削除した場合は、Azure AD Connect Health ポータルから手動でサーバー エントリを削除する必要があります。
 
-サーバーを再イメージ化したり、詳細情報 (マシン名など) が同じになっているサーバーを新規に作成したりすることがありますが、 Azure AD Connect Health ポータルから登録済みサーバーを削除せずに新しいサーバーにエージェントをインストールした場合、同じ名前の&2; つのエントリが表示される可能性があります。
+サーバーを再イメージ化したり、詳細情報 (マシン名など) が同じになっているサーバーを新規に作成したりすることがありますが、 Azure AD Connect Health ポータルから登録済みサーバーを削除せずに新しいサーバーにエージェントをインストールした場合、同じ名前の 2 つのエントリが表示される可能性があります。
 
 この場合、古いサーバーに対応するエントリを手動で削除します。 間違いなく、このサーバーのデータは古くなっています。
 
@@ -123,7 +123,7 @@ Health エージェントの登録は、次の理由により失敗する可能�
 
 **Q: "Health サービス データが最新ではありません。" というアラートが通知されます。この問題をトラブルシューティングする方法を教えてください。**
 
-Azure AD Connect Health では、過去&2; 時間でサーバーから一部のデータ ポイントが送られなかった場合に、このアラートが生成されます。 このアラートには複数の理由が考えられます。
+Azure AD Connect Health では、過去 2 時間でサーバーから一部のデータ ポイントが送られなかった場合に、このアラートが生成されます。 このアラートには複数の理由が考えられます。
 
 * ファイアウォールによってトラフィックがブロックされているため、エージェントが必要なエンドポイントと通信できません。 これは特に、Web アプリケーション プロキシ サーバーで起こりがちです。 必要なエンドポイントとポートへの発信通信が許可されていることを確認してください。 詳しくは、「[必要条件](active-directory-aadconnect-health-agent-install.md#requirements)」セクションをご覧ください。
 * 発信通信がネットワーク層による SSL 検査の対象になっています。 これが原因で、エージェントによって使われる証明書が検査サーバー/エンティティによって置き換えられ、Azure AD Connect Health サービスにデータをアップロードするプロセスが失敗します。
@@ -138,22 +138,6 @@ Azure AD Connect Health では、過去&2; 時間でサーバーから一部の�
 **Q: Azure AD Connect Health アラートはどのように解決すればよいですか。**
 
 Azure AD Connect Health アラートは、成功条件を満たすと解決されます。 Azure AD Connect Health エージェントは、定期的に成功条件を検出してサービスにレポートします。 一部のアラートは、時間に基づいて抑制されます。 つまり、アラートの生成から 72 時間以内に同じエラー条件が観察されない場合、アラートは自動的に解決されます。
-
-## <a name="migration-questions"></a>移行に関する質問
-
-このセクションは、Azure AD Connect Health データの今後の移行が通知されたお客様のみを対象としています。
-
-**Q: 移行後、エージェントを改めて登録したり、通知を構成し直したりする必要はありますか。**
-
-いいえ。エージェントの登録情報と通知の設定は、移行の一環として移動されます。
-
-**Q: 移行後どのくらい経ってから、ポータルにデータが表示されますか。**
-
-データは、移行後&1; 時間以内にポータルに表示されます。
-
-**Q: 既存のアクティブなアラートはどうなりますか。**
-
-該当するすべてのアラートが、移行後&1; 時間以内に有効になります。
 
 ## <a name="related-links"></a>関連リンク
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)

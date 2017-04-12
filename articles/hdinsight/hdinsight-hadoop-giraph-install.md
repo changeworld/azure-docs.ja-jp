@@ -17,9 +17,9 @@ ms.date: 02/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
 translationtype: Human Translation
-ms.sourcegitcommit: c9e3c1d2a1f5b83c59fa2a22f3cb4d89df203384
-ms.openlocfilehash: 2b69ebe544d663ee0b9d25bae482342726b6ffa8
-ms.lasthandoff: 01/19/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 643a8b6bfadd9464303ffc12b29cd739a7e41f1e
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/19/2017
 Script Action を使用して Windows ベースの HDInsight クラスターを Giraph でカスタマイズする方法と、Giraph を使用して大規模なグラフを処理する方法について説明します。 Linux ベースのクラスターでの Giraph の操作については、「 [HDInsight Hadoop クラスターに Giraph をインストールする (Linux)](hdinsight-hadoop-giraph-install-linux.md)」を参照してください。
 
 > [!IMPORTANT]
-> このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。 Windows では、バージョン 3.4 より前の HDInsight のみを使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。 Linux ベースの HDInsight クラスターでの Giraph のインストール方法については、[HDInsight Hadoop クラスターへの Giraph のインストール (Linux)](hdinsight-hadoop-giraph-install-linux.md) に関するページを参照してください。
+> このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。 Windows では、バージョン 3.4 より前の HDInsight のみを使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。 Linux ベースの HDInsight クラスターでの Giraph のインストール方法については、[HDInsight Hadoop クラスターへの Giraph のインストール (Linux)](hdinsight-hadoop-giraph-install-linux.md) に関するページを参照してください。
 
 
 *スクリプト アクション*を使用し、Azure HDInsight の任意の種類のクラスター (Hadoop、Storm、HBase、Spark) に Giraph をインストールできます。 HDInsight クラスターに Giraph をインストールするサンプル スクリプトは、 [https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1)の読み取り専用の Azure ストレージ BLOB から入手できます。 サンプル スクリプトは、HDInsight クラスター version 3.1 でのみ機能します。 HDInsight クラスター バージョンの詳細については、「 [HDInsight クラスター バージョン](hdinsight-component-versioning.md)」をご覧ください。
@@ -44,7 +44,7 @@ Script Action を使用して Windows ベースの HDInsight クラスターを 
 <a href="http://giraph.apache.org/" target="_blank">Apache Giraph</a> は、Hadoop でグラフの処理を実行するために使用でき、Azure HDInsight で使用できます。 グラフでは、オブジェクト間の関係 (インターネットのような大規模ネットワークでのルーター間の接続など) や、ソーシャル ネットワークでの人々の関係 (ソーシャル グラフとも呼ばれる) をモデル化します。 グラフの処理により、次のようなグラフ内のオブジェクト間の関係について推論できます。
 
 * 現在の関係に基づいて潜在的な友人を識別する
-* ネットワーク内の&2; 台のコンピューター間の最短ルートを識別する
+* ネットワーク内の 2 台のコンピューター間の最短ルートを識別する
 * Web ページのページ順位を計算する
 
 ## <a name="install-giraph-using-portal"></a>ポータルを使用して Giraph をインストールする
@@ -80,7 +80,7 @@ SimpleShortestPathsComputation サンプルを使用して、グラフのオブ�
 
     tiny_graph.txt ファイルを HDInsight クラスターのプライマリ ストレージにアップロードします。 データをアップロードする方法の詳細については、「 [HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」を参照してください。
 
-    このデータは、[source\_id, source\_value,[[dest\_id], [edge\_value],...]] の形式を使用して有向グラフ内のオブジェクト間の関係を示しています。 各行は、**source\_id** オブジェクトと&1; つ以上の **dest\_id** オブジェクトとの関係を表現しています。 **edge\_value** (重み) は、**source_id** と **dest\_id** の間のつながりの強さまたは距離であると考えられます。
+    このデータは、[source\_id, source\_value,[[dest\_id], [edge\_value],...]] の形式を使用して有向グラフ内のオブジェクト間の関係を示しています。 各行は、**source\_id** オブジェクトと 1 つ以上の **dest\_id** オブジェクトとの関係を表現しています。 **edge\_value** (重み) は、**source_id** と **dest\_id** の間のつながりの強さまたは距離であると考えられます。
 
     この値 (重み) を使用し、オブジェクト間の距離に応じて線を引くと、先のデータは次の図のようになります。
 
@@ -121,7 +121,7 @@ SimpleShortestPathsComputation サンプルを使用して、グラフのオブ�
     ```
 
     この例では、 **clustername** を、Giraph をインストールした HDInsight クラスターの名前で置き換えます。
-3. 結果を表示します。 ジョブが完了すると、結果が **wasbs:///example/out/shotestpaths** フォルダーの&2; つの出力ファイルに格納されます。 この&2; つのファイルは **part-m-00001** と **part-m-00002** という名前です。 出力をダウンロードして表示するには、次の手順を実行します。
+3. 結果を表示します。 ジョブが完了すると、結果が **wasbs:///example/out/shotestpaths** フォルダーの 2 つの出力ファイルに格納されます。 この 2 つのファイルは **part-m-00001** と **part-m-00002** という名前です。 出力をダウンロードして表示するには、次の手順を実行します。
 
     ```powershell
     $subscriptionName = "<SubscriptionName>"       # Azure subscription name
@@ -140,7 +140,7 @@ SimpleShortestPathsComputation サンプルを使用して、グラフのオブ�
     Get-AzureStorageBlobContent -Container $containerName -Blob example/output/shortestpaths/part-m-00002 -Context $storageContext -Force
     ```
 
-    これにより、コンピューターの現在のディレクトリに **example/output/shortestpaths** ディレクトリ構造が作成され、この場所に&2; つの出力ファイルがダウンロードされます。
+    これにより、コンピューターの現在のディレクトリに **example/output/shortestpaths** ディレクトリ構造が作成され、この場所に 2 つの出力ファイルがダウンロードされます。
 
     **Cat** コマンドレットを使用して、ファイルの内容を表示します。
 

@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/27/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 4725f4200446434bfcb8754aac9bf0d99f8a7526
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 0959dace90686324b9fe4360f4696f8d85c3a9e7
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -58,7 +58,7 @@ Azure リソース管理テンプレートを使用するには、職場のア�
     Enter the code E1A2B3C4D to authenticate.
 
 > [!NOTE]
-> Azure アカウントを持っていない場合、別の種類のアカウントが必要であることを示すエラー メッセージが表示されます。 現在の Azure アカウントから作成する方法については、「 [Azure Active Directory で職場または学校の ID を作成する](../virtual-machines/virtual-machines-windows-create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+> Azure アカウントを持っていない場合、別の種類のアカウントが必要であることを示すエラー メッセージが表示されます。 現在の Azure アカウントから作成する方法については、「 [Azure Active Directory で職場または学校の ID を作成する](../virtual-machines/windows/create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 >
 >
 
@@ -131,9 +131,9 @@ DocumentDB アカウントを作成するには、最初にリソース グル�
 エラーが発生した場合、「 [トラブルシューティング](#troubleshooting)」を参照してください。
 
 ## <a name="understanding-resource-manager-templates-and-resource-groups"></a>Resource Manager テンプレートおよびリソース グループについて
-大部分のアプリケーションは、異なる種類のリソースの組み合わせ (1 つ以上の DocumentDB アカウント、ストレージ アカウント、仮想ネットワーク、コンテンツ配信ネットワークなど) から構築されます。 既定の Azure サービス管理 API と Azure ポータルでは、サービス単位のアプローチを使用してこれらの項目を表していました。 この方法では、個々のサービスを&1; つの論理的なデプロイ単位としてではなく、個別にデプロイ、管理 (またはこのことを実行するその他のツールを検索) する必要があります。
+大部分のアプリケーションは、異なる種類のリソースの組み合わせ (1 つ以上の DocumentDB アカウント、ストレージ アカウント、仮想ネットワーク、コンテンツ配信ネットワークなど) から構築されます。 既定の Azure サービス管理 API と Azure ポータルでは、サービス単位のアプローチを使用してこれらの項目を表していました。 この方法では、個々のサービスを 1 つの論理的なデプロイ単位としてではなく、個別にデプロイ、管理 (またはこのことを実行するその他のツールを検索) する必要があります。
 
-*Azure リソース マネージャー テンプレート* では、これらの異なるリソースを&1; つの論理的なデプロイ単位として、宣言型の方法でデプロイし、管理することが可能になります。 何をデプロイするのかを Azure に&1; コマンドずつ命令するのではなく、JSON ファイル内にデプロイ全体、つまりすべてのリソースと、関連する構成およびデプロイ パラメーターを記述し、Azure にそれらのリソースを&1; つのグループとしてデプロイするよう指示します。
+*Azure リソース マネージャー テンプレート* では、これらの異なるリソースを 1 つの論理的なデプロイ単位として、宣言型の方法でデプロイし、管理することが可能になります。 何をデプロイするのかを Azure に 1 コマンドずつ命令するのではなく、JSON ファイル内にデプロイ全体、つまりすべてのリソースと、関連する構成およびデプロイ パラメーターを記述し、Azure にそれらのリソースを 1 つのグループとしてデプロイするよう指示します。
 
 Azure リソース グループとその機能の詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。 テンプレートの作成に興味がある場合は、「 [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」を参照してください。
 

@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2017
+ms.date: 04/02/2017
 ms.author: kgremban
+ms.custom: end-user
 translationtype: Human Translation
 ms.sourcegitcommit: ec52f719f33db0d893d707b59293fa75a8ff4314
 ms.openlocfilehash: 033392783fd98cbdb23fd0254c93687754808286
-
+ms.lasthandoff: 02/10/2017
 
 ---
 # <a name="sign-in-with-your-phone-not-your-password"></a>パスワードではなく携帯電話でサインインする
@@ -90,9 +91,4 @@ PC の場合は、Windows 10 で顔、指紋、または PIN を使って Window
 Microsoft Authenticator アプリをダウンロードしていない場合は、ダウンロードしてください。 このアプリは [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071) で使用でき、携帯電話でのサインインは [Android](http://go.microsoft.com/fwlink/?Linkid=825072) および [IOS](http://go.microsoft.com/fwlink/?Linkid=825073) 用の Microsoft Authenticator アプリで使用できます。
 
 アプリに関する一般的な質問については、「[Microsoft Authenticator アプリに関する FAQ](microsoft-authenticator-app-faq.md)」をご覧ください。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

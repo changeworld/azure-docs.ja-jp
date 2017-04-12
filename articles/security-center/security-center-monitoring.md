@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2017
+ms.date: 03/30/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 3cba38d95535ff5ed3cd62aac5c0aa04a310f48c
-ms.openlocfilehash: ae263615d5fa262eb8a8ed2e5461d92bec503f1d
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
+ms.openlocfilehash: d796566676e13b312832dd543f52d3475d877ef8
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -28,39 +28,40 @@ ms.lasthandoff: 01/31/2017
 私たちは監視について、状況に対処できるように、イベントが発生するのを監視して待機することだと考えがちです。 セキュリティの監視は、組織の標準やベスト プラクティスを満たしていないシステムを識別するために、リソースを監査するプロアクティブな戦略を持つことを意味します。
 
 ## <a name="monitoring-security-health"></a>セキュリティ ヘルスの監視
-サブスクリプションのリソースに対して[セキュリティ ポリシー](security-center-policies.md)を有効にすると、Security Center は、リソースのセキュリティを分析して潜在的な脆弱性を特定します。 ネットワークの構成に関する情報は、すぐに利用可能になります。 これに対して、セキュリティ更新プログラムの状態やオペレーティング システムの構成など、仮想マシンの構成に関する情報は、利用可能になるまで&1; 時間以上かかることがあります。 リソースのセキュリティの状態は、**[Resources security health (リソース セキュリティの正常性)]** ブレードに表示されます。問題がある場合には、同じブレードで問題も確認できます。 これらの問題の一覧は、 **[推奨事項]** ブレードでも確認できます。
+サブスクリプションのリソースに対して[セキュリティ ポリシー](security-center-policies.md)を有効にすると、Security Center は、リソースのセキュリティを分析して潜在的な脆弱性を特定します。 ネットワークの構成に関する情報は、すぐに利用可能になります。 これに対して、セキュリティ更新プログラムの状態やオペレーティング システムの構成など、仮想マシンの構成に関する情報は、利用可能になるまで 1 時間以上かかることがあります。 リソースのセキュリティの状態は、**[Resources security health (リソース セキュリティの正常性)]** ブレードに表示されます。問題がある場合には、同じブレードで問題も確認できます。 これらの問題の一覧は、 **[推奨事項]** ブレードでも確認できます。
 
 推奨事項の適用方法の詳細については、「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」を参照してください。
 
-**[Resources security health (リソース セキュリティの正常性)]** タイルでは、リソースのセキュリティの状態を監視することができます。 以下の例では、重大度が高レベルと中レベルの問題が多数あります。いずれも、注意が必要な問題です。 有効になっているセキュリティ ポリシーが、監視されているコントロールのタイプに影響します。
+**[Resource security health (リソース セキュリティの正常性)]** タイルでは、リソースのセキュリティの状態を監視することができます。 以下の例では、重大度が高レベルと中レベルの問題が多数あります。いずれも、注意が必要な問題です。 有効になっているセキュリティ ポリシーが、監視されているコントロールのタイプに影響します。
 
-![[Resources security health (リソース セキュリティの正常性)] タイル](./media/security-center-monitoring/security-center-monitoring-fig1-new4-2017.png)
+![[Resources security health (リソース セキュリティの正常性)] タイル](./media/security-center-monitoring/security-center-monitoring-fig1-new001-2017.png)
 
 セキュリティ更新プログラムが適用されていない仮想マシンや[ネットワーク セキュリティ グループ](/virtual-network/virtual-networks-nsg.md)がないサブネットなど、対処する必要がある脆弱性が Security Center によって特定された場合、ここに表示されます。
 
-### <a name="monitor-virtual-machines"></a>仮想マシンの監視
-**[Resources security health (リソース セキュリティの正常性)]** タイルで **[仮想マシン]** をクリックすると、**[仮想マシン]** ブレードが開き、以下のスクリーンショットのように、利用開始手順と問題の予防手順の詳細に加え、Security Center で監視されるすべての仮想マシンの一覧が表示されます。
+### <a name="monitor-compute"></a>コンピューティングの監視
+**[Resource security health (リソース セキュリティの正常性)]** タイルの **[Compute (コンピューティング)]** をクリックすると、**[Compute (コンピューティング)]** ブレードが開いて 3 つのタブが表示されます。
 
-![不足しているシステム更新プログラム (仮想マシン別)](./media/security-center-monitoring/security-center-monitoring-fig2-ga.png)
+- **[概要]**: 監視と仮想マシンの推奨事項です。
+- **[仮想マシン]**: すべての仮想マシンと現在のセキュリティの状態が一覧表示されます。
+- **[クラウド サービス]**: Security Center によって監視されているすべての Web および worker ロールの一覧です。
 
-* 利用開始手順
-* 仮想マシンの推奨事項
-* 仮想マシン
+![不足しているシステム更新プログラム (仮想マシン別)](./media/security-center-monitoring/security-center-monitoring-fig1-new002-2017.png)
 
-各セクションでは、個別のオプションを選択して、その問題に対処するために推奨される手順の詳細を確認できます。 以下のセクションでは、これらの領域をさらに詳しく説明します。
+各タブには複数のセクションを表示できます。各セクションでは、個別のオプションを選択して、特定の問題に対処するために推奨される手順の詳細を確認できます。 
 
 #### <a name="monitoring-recommendations"></a>監視に関する推奨事項
-このセクションには、データ収集用に初期化された仮想マシンの総数と、その現在の状態が表示されます。 すべての仮想マシンのデータ収集が初期化されると、Security Center のセキュリティ ポリシーを受信する準備が完了します。 このエントリをクリックすると **[データ収集のインストール状態]** ブレードが開き、以下のスクリーンショットのように、仮想マシンの名前のほか、**[インストールの状態]** 列でデータ収集の現在の状態を確認できます。
+このセクションには、データ収集用に初期化された仮想マシンの総数と、その現在の状態が表示されます。 すべての仮想マシンのデータ収集が初期化されると、Security Center のセキュリティ ポリシーを受信する準備が完了します。 このエントリをクリックすると、**[VM Agent is missing or not responding (VM エージェントが見つからないか、応答していません)]** ブレードが開きます。 
 
-![仮想マシンの初期化の状態](./media/security-center-monitoring/security-center-monitoring-fig3-ga.png)
+![不足しているシステム更新プログラム (仮想マシン別)](./media/security-center-monitoring/security-center-monitoring-fig1-new003-2017.png)
+
 
 #### <a name="virtual-machine-recommendations"></a>仮想マシンの推奨事項
 このセクションには、Azure Security Center で監視される[各仮想マシンについての推奨事項](security-center-virtual-machine-recommendations.md)が表示されます。 最初の列には、推奨事項が一覧表示されます。 2 番目の列は、その推奨事項の影響を受ける仮想マシンの合計数を表しています。 3 番目の列は、以下のスクリーンショットに示したように、問題の重大度を表します。
 
-![仮想マシンの推奨事項](./media/security-center-monitoring/security-center-monitoring-fig4-ga.png)
+![仮想マシンの推奨事項](./media/security-center-monitoring/security-center-monitoring-fig1-new004-2017.png)
 
 > [!NOTE]
-> **ネットワーク トポロジ**の一覧の **[Networking Health (ネットワークの正常性)]** ブレードに表示されるのは、少なくとも&1; つのパブリック エンドポイントを持つ仮想マシンだけです。
+> **ネットワーク トポロジ**の一覧の **[Networking Health (ネットワークの正常性)]** ブレードに表示されるのは、少なくとも 1 つのパブリック エンドポイントを持つ仮想マシンだけです。
 >
 >
 
@@ -92,9 +93,9 @@ ms.lasthandoff: 01/31/2017
 >
 
 #### <a name="virtual-machines-section"></a>[仮想マシン] セクション
-[仮想マシン] セクションには、すべての仮想マシンと推奨事項の概要が表示されます。 各列は、以下のスクリーンショットに示したように、推奨事項の&1; つのセットを表します。
+[仮想マシン] セクションには、すべての仮想マシンと推奨事項の概要が表示されます。 各列は、以下のスクリーンショットに示したように、推奨事項の 1 つのセットを表します。
 
-![すべての仮想マシンと推奨事項の概要](./media/security-center-monitoring/security-center-monitoring-fig7-ga.png)
+![すべての仮想マシンと推奨事項の概要](./media/security-center-monitoring/security-center-monitoring-fig1-new005-2017.png)
 
 各推奨事項の下に表示されるアイコンにより、注意が必要な仮想マシンと、その推奨事項の種類をすばやく把握できます。
 
@@ -104,12 +105,12 @@ ms.lasthandoff: 01/31/2017
 
 このブレードには仮想マシンのセキュリティに関する詳細情報が表示されます。 このブレードの下部には、推奨されるアクションと、各問題の重大度が表示されます。
 
-#### <a name="cloud-services-preview-section"></a>[Cloud services (Preview) (クラウド サービス (プレビュー))] セクション
-仮想マシンの **[セキュリティの正常性]** タイルには、クラウド サービスの正常性状態が表示されます。 オペレーティング システムのバージョンが最新でないときは、以下のスクリーンショットに示したような推奨事項が作成されます。
+#### <a name="cloud-services-section"></a>[クラウド サービス] セクション
+クラウド サービスについては、オペレーティング システムのバージョンが最新でないときに、次のスクリーンショットに示したような推奨事項が作成されます。
 
-![クラウド サービスの正常性状態](./media/security-center-monitoring/security-center-monitoring-fig8-new2.png)
+![クラウド サービスの正常性状態](./media/security-center-monitoring/security-center-monitoring-fig1-new006-2017.png)
 
-推奨事項内の手順に従って、オペレーティング システムのバージョンを更新する必要があります。 たとえば、WebRole1 (IIS に自動的にデプロイされた Web アプリで Windows Server を実行) の赤いアラートをクリックした場合、または WorkerRole1 (IIS に自動的にデプロイされた Web アプリで Windows Server を実行) をクリックした場合には、以下のスクリーンショットに示したブレードが新しく開き、推奨事項に関する詳細が表示されます。
+シナリオで推奨事項が発生した場合 (前の例には該当しません)、推奨事項の手順に従ってオペレーティング システムのバージョンを更新する必要があります。 更新プログラムが利用できる場合はアラートが表示されます (問題の重大度により、赤またはオレンジになります)。 WebRole1 (IIS に自動的にデプロイされた Web アプリで Windows Server を実行) または WorkerRole1 (IIS に自動的にデプロイされた Web アプリで Windows Server を実行) の行でこのアラートをクリックすると、次のスクリーンショットに示すとおり、推奨事項に関する詳細が表示された新しいブレードが開きます。
 
 ![クラウド サービスの詳細](./media/security-center-monitoring/security-center-monitoring-fig8-new3.png)
 

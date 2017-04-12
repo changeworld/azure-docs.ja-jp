@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/02/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 1d010dd85ccf2dd708a7740eb8399fc06a603574
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: c306000e898f5fe0260ef3347988923266ed096e
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -65,7 +65,7 @@ RBAC などの機能を利用したデータ アクセス制御を組織が適�
 
 ## <a name="vm-availability-and-network-access"></a>VM の可用性とネットワーク アクセス
 
-高可用性を必要とする重要なアプリケーションが仮想マシンで実行されている場合は、複数の VM を使うことを強くお勧めします。 可用性を高めるには、[可用性セット](../virtual-machines/virtual-machines-windows-infrastructure-availability-sets-guidelines.md)に少なくとも 2 つの VM を作成します。
+高可用性を必要とする重要なアプリケーションが仮想マシンで実行されている場合は、複数の VM を使うことを強くお勧めします。 可用性を高めるには、[可用性セット](../virtual-machines/windows/infrastructure-availability-sets-guidelines.md)に少なくとも 2 つの VM を作成します。
 
 [Azure Load Balancer](../load-balancer/load-balancer-overview.md) も、同じ可用性セットに属している負荷分散された VM を必要とします。 これらの VM にインターネットからアクセスをする必要がある場合は、[インターネットに接続するロード バランサー](../load-balancer/load-balancer-internet-overview.md)を構成する必要があります。
 
@@ -123,7 +123,7 @@ Security Center を使って Azure に存在する VM 内の脅威のリスク�
 
 VM のプロセスが必要以上に多くのリソースを消費しているときは、リソースの酷使が問題になる可能性があります。 VM のパフォーマンスの問題はサービス中断に発展する場合があり、そうなれば可用性というセキュリティの原則を損ないます。 そのため、VM のアクセスを監視することは、問題発生時の対処としてのみならず、通常運用時に測定された基準パフォーマンスと照らして能動的に行うことが不可欠となります。
 
-[Azure 診断ログ ファイル](https://azure.microsoft.com/en-us/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/)を分析することで、VM のリソースを監視し、パフォーマンスと可用性を損なう可能性がある問題を特定することができます。 Azure 診断の拡張機能は、Windows ベースの VM に関する監視と診断機能を備えています。 この拡張機能を [Azure Resource Manager テンプレート](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md)に含めることによって、これらの機能を有効にすることができます。
+[Azure 診断ログ ファイル](https://azure.microsoft.com/en-us/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/)を分析することで、VM のリソースを監視し、パフォーマンスと可用性を損なう可能性がある問題を特定することができます。 Azure 診断の拡張機能は、Windows ベースの VM に関する監視と診断機能を備えています。 この拡張機能を [Azure Resource Manager テンプレート](../virtual-machines/windows/extensions-diagnostics-template.md)に含めることによって、これらの機能を有効にすることができます。
 
 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-metrics.md) を使ってリソースの正常性を把握することもできます。
 

@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 5326c779d766e075a54f5ec43f92b6c5c973be8b
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 1199ca2378cfe4adba2d591bfab204113b4a0468
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="change-the-azure-active-directory-tenant-in-azure-remoteapp"></a>Azure RemoteApp で Azure Active Directory テナントを変更する
 > [!IMPORTANT]
-> Azure RemoteApp の提供は終了しました。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
+> Azure RemoteApp の提供は、2017 年 8 月 31 日で終了します。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
 > 
 > 
 
@@ -48,10 +49,5 @@ Azure RemoteApp では Azure Active Directory (Azure AD) を使用してユー�
 8. 再度サインインし、**[設定] -> [サブスクリプション]** に戻ります。 サブスクリプションを選択し、 **[ディレクトリの編集]**をクリックします。 使用する Azure AD テナントを選択します。
 
 これで新しい Azure AD テナントを使用し、Azure サブスクリプションへのアクセスを制御したり、Azure RemoteApp 内のユーザー アクセスを構成したりできます。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

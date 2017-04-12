@@ -15,23 +15,24 @@ ms.workload: NA
 ms.date: 06/08/2016
 ms.author: mlearned
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: f99dcb1ce4cfe2a629c9254264a93b4d9d02ce4b
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 7169b6f2d9738abd9651120be96bb1cf209ea85d
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="deploy-an-aspnet-container-to-a-remote-docker-host"></a>リモート Docker ホストへの ASP.NET コンテナーのデプロイ
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 Docker は軽量のコンテナー エンジンで、アプリケーションとサービスをホストするために使用できる仮想マシンにいくつかの点で似ています。
 このチュートリアルでは、 [Visual Studio 2015 Tools for Docker](http://aka.ms/DockerToolsForVS) 拡張機能を使用して、Azure 上の Docker ホストに PowerShell で ASP.NET Core アプリをデプロイする手順について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを完了するには、以下が必要です。
 
-* 「[Azure で docker マシンを使用する方法](virtual-machines/virtual-machines-linux-docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」の説明に従って、Azure Docker ホスト VM を作成する
-*  [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129)
+* 「[Azure で docker マシンを使用する方法](virtual-machines/linux/docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」の説明に従って、Azure Docker ホスト VM を作成する
+* [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129)
 * [Microsoft ASP.NET Core 1.0 SDK](https://go.microsoft.com/fwlink/?LinkID=809122)
-*  [Visual Studio 2015 Tools for Docker - Preview](http://aka.ms/DockerToolsForVS)
+* [Visual Studio 2015 Tools for Docker - Preview](http://aka.ms/DockerToolsForVS)
 
 ## <a name="1-create-an-aspnet-core-web-app"></a>1.ASP.NET Core Web アプリケーションの作成
 次の手順では、このチュートリアルで使用する基本的な ASP.NET Core アプリの作成について説明します。
@@ -96,9 +97,4 @@ Docker は軽量のコンテナー エンジンで、アプリケーションと
 [1]:./media/vs-azure-tools-docker-hosting-web-apps-in-docker/change-docker-machine-name.png
 [2]:./media/vs-azure-tools-docker-hosting-web-apps-in-docker/launch-application.png
 [3]:./media/vs-azure-tools-docker-hosting-web-apps-in-docker/view-application.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2016
+ms.date: 03/15/2017
 ms.author: kgremban
+ms.custom: end-user
 translationtype: Human Translation
 ms.sourcegitcommit: 3fd5b85f718313d8267157157e45965b2b21f2db
 ms.openlocfilehash: 60c84a5f5c675b012f2504f6fe222f35ce4d0646
-
+ms.lasthandoff: 02/03/2017
 
 ---
 # <a name="what-are-app-passwords-in-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication のアプリ パスワードとは
@@ -116,9 +117,4 @@ Azure で&2; 段階認証を使用している場合は、Azure Portal でアプ
 - [2 段階認証設定の管理](multi-factor-authentication-end-user-manage-settings.md)
 
 - SMS や電話を受ける代わりに、[Microsoft Authenticator アプリ](microsoft-authenticator-app-how-to.md)の通知を使用してサインインを確認する 
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

@@ -17,9 +17,9 @@ ms.date: 03/17/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 5d74f2c130eeddb1022acf9673c6a2006af2db58
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: 4787928ed066b9aed51a8512deeda6cd49897d82
+ms.lasthandoff: 04/11/2017
 
 ---
 #<a name="get-started-with-the-storm-starter-samples-for-big-data-analytics-on-linux-based-hdinsight"></a>Storm Starter サンプルを使用した Linux ベースの HDInsight でのビッグ データ分析の概要
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/25/2017
 Apache Storm は、データ ストリームの処理を目的とし、スケーラビリティとフォールト トレランスに優れた、分散型のリアルタイム計算システムです。 Azure HDInsight の Storm を使用して、Storm でリアルタイムで ビッグ データ分析を実行するクラウドベースの Storm クラスターを作成できます。
 
 > [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,7 +46,7 @@ Apache Storm は、データ ストリームの処理を目的とし、スケー
 HDInsight で Storm クラスターを作成するには、次の手順に従います。
 
 1. [Azure Portal](https://portal.azure.com) で、**[+ 新規]**、**[インテリジェンス + 分析]**、**[HDInsight]** の順に選択します。
-   
+
     ![HDInsight クラスターの作成](./media/hdinsight-apache-storm-tutorial-get-started-linux/create-hdinsight.png)
 
 2. **[基本]** ブレードで、次の情報を入力します。
@@ -57,11 +57,11 @@ HDInsight で Storm クラスターを作成するには、次の手順に従い
     * **[Secure Shell (SSH) username (Secure Shell (SSH) ユーザー名)]**: SSH 経由でクラスターにアクセスする際に使用されるログイン。 既定では、このパスワードは、クラスター ログイン パスワードと同じです。
     * **[リソース グループ]**: クラスターが作成されるリソース グループ。
     * **[場所]**: クラスターが作成される Azure リージョン。
-   
+
     ![サブスクリプションを選択します。](./media/hdinsight-apache-storm-tutorial-get-started-linux/hdinsight-basic-configuration.png)
 
 3. **[クラスターの種類]** を選択し、**[クラスターの構成]** ブレードで次の値を設定します。
-   
+
     * **[クラスターの種類]**: Storm
 
     * **[オペレーティング システム]**: Linux
@@ -69,9 +69,9 @@ HDInsight で Storm クラスターを作成するには、次の手順に従い
     * **[バージョン]**: Storm 1.0.1 (HDI 3.5)
 
     * **[クラスター レベル]**: Standard
-     
+
     最後に、**[選択]** ボタンをクリックして設定を保存します。
-     
+
     ![クラスターの種類の選択](./media/hdinsight-apache-storm-tutorial-get-started-linux/set-hdinsight-cluster-type.png)
 
 4. クラスターの種類を選択したら、__[選択]__ ボタンを使用してクラスターの種類を設定します。 次に、__[次へ]__ ボタンを使用して、基本的な構成を完了します。
@@ -81,34 +81,34 @@ HDInsight で Storm クラスターを作成するには、次の手順に従い
     ![HDInsight のストレージ アカウント設定](./media/hdinsight-apache-storm-tutorial-get-started-linux/set-hdinsight-storage-account.png)
 
 6. **[概要]** ブレードで、クラスターの構成を確認します。 間違った設定を変更するには、__[編集]__ リンクを使用します。 最後に、__[作成]__ ボタンを使用してクラスターを作成します。
-   
+
     ![クラスター構成の概要](./media/hdinsight-apache-storm-tutorial-get-started-linux/hdinsight-configuration-summary.png)
-   
+
     > [!NOTE]
     > クラスターの作成には最大で 20 分かかります。
 
 ## <a name="run-a-storm-starter-sample-on-hdinsight"></a>HDInsight での Storm Starter サンプルの実行
 
 1. SSH を使用して HDInsight クラスターに接続します。
-   
+
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
-   
+
     SSH ユーザー アカウントを保護するためにパスワードを使用している場合は、パスワードの入力を求められます。 公開キーを使用している場合、`-i` パラメーターを使用して、対応する秘密キーを指定することが必要な場合があります。 たとえば、「 `ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`」のように入力します。
-   
+
     詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 2. 次のコマンドを実行してトポロジの例を開始します。
-   
+
         storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology wordcount
-   
+
     > [!NOTE]
     > 以前のバージョンの HDInsight では、トポロジのクラス名は `org.apache.storm.starter.WordCountTopology` ではなく `storm.starter.WordCountTopology` です。
-   
+
     このコマンドにより、クラスター上で、"wordcount" というフレンドリ名の WordCount トポロジの例が開始されます。 文はランダムに生成され、文中の各単語の出現回数がカウントされます。
-   
+
     > [!NOTE]
     > 独自のトポロジをクラスターに送信する場合、まずクラスターを含む jar ファイルをコピーしてから、`storm` コマンドを実行します。 `scp` コマンドを使用して、ファイルをコピーします。 たとえば、 `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`
-    > 
+    >
     > WordCount の例と他の Storm スターターの例は、 `/usr/hdp/current/storm-client/contrib/storm-starter/`のクラスターに既に含まれています。
 
 Storm スターターの例のコードを確認したい場合、そのコードは [https://github.com/apache/storm/tree/1.0.x-branch/examples/storm-starter](https://github.com/apache/storm/tree/1.0.x-branch/examples/storm-starter) で見つかります。 このリンクは、HDInsight 3.5 に付属している Storm 1.0.x 用です。 Storm の他のバージョンについては、このページの上部にある __[Branch (分岐)]__ ボタンを使用して、別の Storm バージョンを選択してください。
@@ -120,58 +120,58 @@ Storm UI には、トポロジの実行を操作する Web インターフェイ
 次の手順により、Storm UI を使用してトポロジを監視します。
 
 1. Storm UI を表示するには、Web ブラウザーを開いて、https://CLUSTERNAME.azurehdinsight.net/stormui を参照します。 **CLUSTERNAME** をクラスターの名前に置き換えます。
-    
+
     > [!NOTE]
     > ユーザー名とパスワードの入力が求められたら、クラスターの作成時に使用したクラスター管理者名 (admin) とパスワードを入力します。
 
 2. **[トポロジの概要]** で、**[名前]** 列の **[wordcount]** エントリを選択します。 トポロジの情報が表示されます。
-    
+
     ![Storm Starter WordCount トポロジの情報が含まれている Storm ダッシュボード。](./media/hdinsight-apache-storm-tutorial-get-started-linux/topology-summary.png)
-    
+
     このページには、次の情報が表示されます。
-    
+
     * **トポロジの統計** - 時間枠で整理された、トポロジのパフォーマンスに関する基本的な情報。
-     
+
         > [!NOTE]
         > 特定の時間枠を選択すると、ページの他のセクションに表示される情報の時間枠に変更されます。
 
     * **スパウト** - 各スパウトによって返された最後のエラーを含む、スパウト関する基本的な情報。
-    
+
     * **ボルト** - ボルトに関する基本的な情報。
-    
+
     * **トポロジの構成** - トポロジの構成に関する詳細情報。
-     
+
     このページには、トポロジで実行できるアクションも表示されます。
-   
+
     * **アクティブ化** - アクティブ化が解除されたトポロジの処理を再開します。
-    
+
     * **アクティブ化の解除** - 実行中のトポロジを一時停止します
-    
+
     * **再調整** - トポロジの並列処理を調整します。 クラスターのノード数を変更した場合は、実行中のトポロジを再調整する必要があります。 再調整によって、並列処理が、クラスター内のノード数の増減に合わせて調整されます。 詳細については、「[Understanding the parallelism of a Storm topology (Storm トポロジの並列処理)](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)」をご覧ください。
-    
+
     * **強制終了** - 指定したタイムアウト後に Storm トポロジを停止します。
 
 3. このページで、**[スパウト]** または **[ボルト]** セクションからエントリを選択します。 選択したコンポーネントに関する情報が表示されます。
-   
+
     ![選択したコンポーネントに関する情報が含まれている Storm ダッシュボード。](./media/hdinsight-apache-storm-tutorial-get-started-linux/component-summary.png)
-   
+
     このページには次の情報が表示されます。
-   
+
     * **スパウト / ボルトの統計** - 時間枠で整理された、コンポーネントのパフォーマンスに関する基本的な情報。
-     
+
         > [!NOTE]
         > 特定の時間枠を選択すると、ページの他のセクションに表示される情報の時間枠に変更されます。
-     
+
     * **入力の統計** (ボルトのみ) - ボルトによって使用されるデータを生成するコンポーネントに関する情報。
-    
+
     * **出力の統計** - このボルトによって出力されるデータに関する情報。
-    
+
     * **エグゼキュータ** - このコンポーネントのインスタンスに関する情報。
-    
+
     * **エラー** - このコンポーネントで生成されたエラー。
 
 4. スパウトまたはボルトの詳細を表示したら、**[エグゼキュータ]** セクションの **[ポート]** 列でエントリを選択して、コンポーネントの特定のインスタンスの詳細を表示します。
-   
+
         2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: split default ["with"]
         2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: split default ["nature"]
         2015-01-27 14:18:02 b.s.d.executor [INFO] Processing received message source: split:21, stream: default, id: {}, [snow]
@@ -180,7 +180,7 @@ Storm UI には、トポロジの実行を操作する Web インターフェイ
         2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: count default [white, 747293]
         2015-01-27 14:18:02 b.s.d.executor [INFO] Processing received message source: split:21, stream: default, id: {}, [seven]
         2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: count default [seven, 1493957]
-   
+
     この例では、**seven** という単語が 1493957 回発生しました。 この数値は、このトポロジが開始されてから、この単語が発生した回数です。
 
 ## <a name="stop-the-topology"></a>トポロジを停止する

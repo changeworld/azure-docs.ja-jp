@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: 045410664ec70c846abbf32a36dcc8f70ac471be
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 8b5f4568fa4e505b28011134cc8669ea50e17cf6
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="estimate-azure-remoteapp-network-bandwidth-usage"></a>Azure RemoteApp で使用されるネットワーク帯域幅を推定する
 > [!IMPORTANT]
-> Azure RemoteApp の提供は終了しました。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
+> Azure RemoteApp の提供は、2017 年 8 月 31 日で終了します。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
 > 
 > 
 
@@ -43,10 +44,5 @@ Azure RemoteApp では、リモート デスクトップ プロトコル (RDP) �
 デバイス リダイレクトに言及していますが、ストレージ、プリンター、スキャナー、Web カメラ、その他の USB デバイスなど、接続されているデバイスで発生するネットワーク トラフィックの帯域幅への影響については考慮しませんでした。 通常、これらのデバイスにより、帯域幅のニーズが一時的に急上昇しますが、タスクが完了すれば影響はなくなります。 たび重なる場合は、帯域幅のニーズが非常に顕著になることがあります。
 
 また、あるユーザーが同じネットワーク内にいる別のユーザーに影響を与える可能性についても考慮しませんでした。 たとえば、あるユーザーが 100 MB/秒のネットワーク上で 4K ビデオを使用していると、同じネットワーク上で同じタスクを実行しようとしている他のユーザーに大きく影響する場合があります。 残念ながら、同時使用の影響を特定してシステム全体としてのパフォーマンスに関する一般的または包括的な推奨事項を提供することが段々と困難になってきています。 私たちに言えるのは、基になるプロトコル技術によって利用可能なネットワーク帯域幅が有効に活用されますが、それにも限界があるということです。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

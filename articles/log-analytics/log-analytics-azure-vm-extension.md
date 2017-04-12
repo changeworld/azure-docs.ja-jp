@@ -16,9 +16,9 @@ ms.date: 10/10/2016
 ms.author: richrund
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 5bb3a67c999c1d41c50b2b660a97a53125511633
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 87e888bf3d7355b36c42e8787abe9bf1cb191fcd
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -31,7 +31,7 @@ Azure 仮想マシンに Log Analytics エージェントをインストール�
 Windows 仮想マシンの場合は、*Microsoft Monitoring Agent* という仮想マシン拡張機能を有効にします。
 Linux 仮想マシンの場合は、*OMS Agent For Linux* という仮想マシン拡張機能を有効にします。
 
-[Azure 仮想マシン拡張機能](../virtual-machines/virtual-machines-windows-extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)と[Linux エージェント](../virtual-machines/virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)の詳細情報を確認してください。
+[Azure 仮想マシン拡張機能](../virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)と[Linux エージェント](../virtual-machines/linux/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)の詳細情報を確認してください。
 
 ログ データにエージェント ベースの収集を使用する場合は、[Log Analytics のデータ ソース](log-analytics-data-sources.md)を構成して、収集するログとメトリックを指定する必要があります。
 
@@ -397,18 +397,18 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -Templa
 6. 仮想マシン上の管理者特権の PowerShell ウィンドウで「`  (New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List`」と入力し、Microsoft Monitoring Agent の状態を確認します。
 7. `C:\Windows\System32\config\systemprofile\AppData\Local\SCOM\Logs` にある Microsoft Monitoring Agent のセットアップ ログ ファイルを確認します。
 
-詳細については、[Windows 拡張機能のトラブルシューティング](../virtual-machines/virtual-machines-windows-extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
+詳細については、[Windows 拡張機能のトラブルシューティング](../virtual-machines/windows/extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 
 ### <a name="troubleshooting-linux-virtual-machines"></a>Linux 仮想マシンのトラブルシューティング
 *OMS Agent for Linux* VM エージェント拡張機能のインストールまたはレポートが正しく機能しない場合は、以下の手順で問題をトラブルシューティングしてください。
 
 1. 拡張機能の状態が "*不明*" になっている場合は、Azure VM エージェントがインストールされて正常に動作しているかどうかを VM エージェントのログ ファイル (`/var/log/waagent.log`) で確認してください。
    * ログが存在しない場合、VM エージェントがインストールされていません。
-   * [Linux VM に Azure VM エージェントをインストールします。](../virtual-machines/virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+   * [Linux VM に Azure VM エージェントをインストールします。](../virtual-machines/linux/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 2. それ以外の異常な状態については、OMS Agent for Linux VM 拡張機能のログ ファイル (`/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` および `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log`) を確認してください。
 3. 拡張機能が正常な状態であるにもかかわらず、データがアップロードされない場合は、OMS Agent for Linux のログ ファイル (`/var/opt/microsoft/omsagent/log/omsagent.log`) を確認してください。
 
-詳細については、[Linux 拡張機能のトラブルシューティング](../virtual-machines/virtual-machines-linux-extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。
+詳細については、[Linux 拡張機能のトラブルシューティング](../virtual-machines/linux/extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * 収集するログとメトリックを指定するために、 [Log Analytics のデータ ソース](log-analytics-data-sources.md) を構成します。

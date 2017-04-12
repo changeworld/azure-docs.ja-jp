@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: cc3c3bff6179b634b82884dfcb3f8f8395f6bb89
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 88f6e1da090eb6088e54c6f81d0f83b1737d3c2c
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -38,10 +39,10 @@ ms.openlocfilehash: cc3c3bff6179b634b82884dfcb3f8f8395f6bb89
 | メディア エンコーダー Premium ワークフロー |メディア エンコーダー Premium ワークフローを使用してエンコード タスクを実行できます。 |[Azure オンデマンド メディア エンコーダーの概要と比較](media-services-encode-asset.md) |
 | Azure Media Indexer |メディア ファイルとコンテンツを検索可能にすると共に、クローズド キャプション トラックの生成を可能にします。 |[Azure Media Indexer](media-services-index-content.md) |
 | Azure Media Hyperlapse (プレビュー) |ビデオ安定化を使用して、ビデオの "凸凹" を取り除いて滑らかにすることができます。 コンテンツをすばやく使用可能なクリップにすることもできます。 |[Azure Media Hyperlapse](media-services-hyperlapse-content.md) |
-| Azure Media Encoder |償却対象 | |
-| Storage Decryption |償却対象 | |
-| Azure Media Packager |償却対象 | |
-| Azure Media Encryptor |償却対象 | |
+| Azure Media Encoder |非推奨 | |
+| Storage Decryption |非推奨 | |
+| Azure Media Packager |非推奨 | |
+| Azure Media Encryptor |非推奨 | |
 
 ## <a name="get-media-processor"></a>メディア プロセッサの取得
 次のメソッドは、メディア プロセッサ インスタンスを取得する方法を示しています。 このコード例では、[Media Services にプログラムから接続する方法](media-services-dotnet-connect-programmatically.md)に関するページで説明しているように、モジュール レベルの変数 **_context** を使用してサーバー コンテキストを参照しています。
@@ -66,10 +67,5 @@ ms.openlocfilehash: cc3c3bff6179b634b82884dfcb3f8f8395f6bb89
 
 ## <a name="next-steps"></a>次のステップ
 これで、メディア プロセッサ インスタンスを取得する方法がわかりました。次は、[資産のエンコード方法](media-services-dotnet-encode-with-media-encoder-standard.md)に関するトピックに進んでください。このトピックでは、Media Encoder Standard を使用して資産をエンコードする方法を説明します。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

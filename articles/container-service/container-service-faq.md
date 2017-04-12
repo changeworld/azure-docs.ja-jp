@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/03/2017
+ms.date: 03/28/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 682ebb212f9056f3704a6de5dde8d3a35681108f
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: a70b82770a13231ee59ac768deb45b232f95687d
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -44,7 +44,7 @@ ms.lasthandoff: 03/18/2017
 ### <a name="do-you-recommend-a-specific-orchestrator-in-azure-container-service"></a>Azure Container Service では、特定のオーケストレーターが推奨されますか。 
 基本的には、推奨される特定のオーケストレーターはありません。 サポートされているオーケストレーターのいずれかを使用した経験をお持ちの場合は、その経験を Azure Container Service でも活かすことができます。 ただし、データのトレンドから判断すると、ビッグ データや IoT のワークロードについては DC/OS に運用環境での実績があり、クラウド ネイティブのワークロードには Kubernetes が適しているようです。また、Docker Swarm は Docker ツールとの統合や習得の容易さに定評があります。
 
-また、シナリオによっては、他の Azure サービスを使用してカスタムのコンテナー ソリューションを構築し、管理することもできます。 使用できる Azure サービスには、[Virtual Machines](../virtual-machines/virtual-machines-linux-azure-overview.md)、[Service Fabric](../service-fabric/service-fabric-overview.md)、[Web Apps](../app-service-web/app-service-web-overview.md)、[Batch](../batch/batch-technical-overview.md) などがあります。  
+また、シナリオによっては、他の Azure サービスを使用してカスタムのコンテナー ソリューションを構築し、管理することもできます。 使用できる Azure サービスには、[Virtual Machines](../virtual-machines/linux/overview.md)、[Service Fabric](../service-fabric/service-fabric-overview.md)、[Web Apps](../app-service-web/app-service-web-overview.md)、[Batch](../batch/batch-technical-overview.md) などがあります。  
 
 ### <a name="what-is-the-difference-between-azure-container-service-and-acs-engine"></a>Azure Container Service と ACS Engine の違いは何ですか。 
 Azure Container Service は SLA による保証が付いた Azure サービスで、Azure Portal の各種機能、Azure コマンドライン ツール、Azure API が付属しています。 Azure Container Service を使用すると、比較的少ない選択肢を選んで構成するだけで、標準のコンテナー オーケストレーション ツールを実行するクラスターを簡単に実装して管理できます。 
@@ -55,7 +55,7 @@ Azure Container Service は SLA による保証が付いた Azure サービス�
 
 ### <a name="how-do-i-create-ssh-keys-for-my-cluster"></a>クラスターの SSH キーはどのようにして作成するのですか。
 
-クラスターの Linux 仮想マシンへの認証に使用する SSH RSA 公開キーと秘密キーのペアは、オペレーティング システムに搭載された標準のツールを使用して作成できます。 作成方法については、[OS X と Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) または [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md) のガイダンスを参照してください。 
+クラスターの Linux 仮想マシンへの認証に使用する SSH RSA 公開キーと秘密キーのペアは、オペレーティング システムに搭載された標準のツールを使用して作成できます。 作成方法については、[OS X と Linux](../virtual-machines/linux/mac-create-ssh-keys.md) または [Windows](../virtual-machines/linux/ssh-from-windows.md) のガイダンスを参照してください。 
 
 [Azure CLI 2.0 のコマンド](container-service-create-acs-cluster-cli.md)を使用してコンテナー サービス クラスターをデプロイする場合は、クラスター用の SSH キーを自動的に生成することができます。
 
@@ -66,6 +66,12 @@ Azure Active Directory サービス プリンシパルの ID とパスワード�
 
 [Azure CLI 2.0 のコマンド](container-service-create-acs-cluster-cli.md)を使用して Kubernetes クラスターをデプロイする場合は、クラスターのサービス プリンシパルの資格情報を自動的に生成することができます。
 
+### <a name="how-large-a-cluster-can-i-create"></a>作成できるクラスターの大きさはどの程度ですか。
+1、3、または 5 個のマスター ノードを含むクラスターを作成できます。 エージェント ノードは、最大 100 個選択できます。
+
+> [!IMPORTANT]
+> クラスターが大きい場合やノードに選択した VM サイズに応じて、サブスクリプションのコア クォータを増やすことが必要になる可能性があります。 クォータを増やすためのリクエストは、[オンライン カスタマー サポートに申請](../azure-supportability/how-to-create-azure-support-request.md) (無料) してください。 [Azure 無料アカウント](https://azure.microsoft.com/free/)を使用している場合は、使用できる Azure コンピューティング コアの数に制限があります。
+> 
 
 ### <a name="how-do-i-increase-the-number-of-masters-after-a-cluster-is-created"></a>クラスターの作成後にマスターの数を増やすにはどうすればよいですか。 
 クラスターを作成すると、マスターの数は固定され、変更できなくなります。 高可用性を確保するために、クラスターの作成時に複数のマスターを選択するのが理想です。
@@ -105,7 +111,7 @@ Azure Portal や Azure Resource Explorer などの Azure ツールではクラ�
 
 3. **[デプロイ履歴]** ブレードで、名前が **microsoft-acs** で始まり、その後にデプロイ日が付加されているデプロイをクリックします。 例: microsoft-acs-201701310000  
 
-4. **[概要]** ページの **[出力]** に、いくつかのクラスター リンクが用意されています。 **SSHMaster0** は、コンテナー サービス クラスター内の&1; つ目のマスターに対する SSH 接続文字列です。 
+4. **[概要]** ページの **[出力]** に、いくつかのクラスター リンクが用意されています。 **SSHMaster0** は、コンテナー サービス クラスター内の 1 つ目のマスターに対する SSH 接続文字列です。 
 
 前述のとおり、Azure ツールを使用して、マスターの FQDN を確認することもできます。 マスターへの SSH 接続は、マスターの FQDN と、クラスターの作成時に指定したユーザー名を使用して作成します。 次に例を示します。
 

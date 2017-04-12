@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 0639e19423adc842a708982997852fb8d10df779
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 9375981db64ec4a1ae523e958423b5f5787cec33
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="sizing-information-for-a-vnet-in-azure-remoteapp"></a>Azure RemoteApp の VNET に関するサイズ情報
 > [!IMPORTANT]
-> Azure RemoteApp の提供は終了しました。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
+> Azure RemoteApp の提供は、2017 年 8 月 31 日で終了します。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
 > 
 > 
 
@@ -33,10 +34,5 @@ Azure RemoteApp を仮想ネットワーク (VNET) で使用する場合、Remot
 
 * [個人の VNET から Azure VNET への切り替え](remoteapp-migratevnet.md)
 * [Azure RemoteApp で使用する Azure VNET の検証](remoteapp-vnet.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

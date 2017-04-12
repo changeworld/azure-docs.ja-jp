@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 02/06/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 34a9d187eecec185e2b8d6977baea267ca9e60e5
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 4149c5e06f1a23864ca0f92f1b7b73f4f66949df
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -61,6 +61,7 @@ Site Recovery は、サポート対象のマシンで実行されているすべ
 | Dynamics CRM |Y |近日対応予定 |Y |近日対応予定 |
 | Oracle |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |
 | Windows ファイル サーバー |Y |Y |Y |Y |
+| Citrix XenApp と XenDesktop |該当なし |Y |該当なし |Y |
 
 ## <a name="replicate-active-directory-and-dns"></a>Active Directory と DNS のレプリケート
 Active Directory と DNS インフラストラクチャは多くのエンタープライズ アプリにとって不可欠な要素です。 障害復旧の際は、これらのインフラストラクチャ コンポーネントを保護して復旧した後に、ワークロードとアプリケーションを復旧することが必要になります。
@@ -143,6 +144,17 @@ Azure Site Recovery では、環境内の重要なコンポーネントをリモ
 -    DR ドリル用の分離された環境で復旧計画のテストを実行する機能。
 
 IIS Web ファームの保護の詳細については、[こちら](https://aka.ms/asr-iis)を参照してください。
+
+## <a name="protect-citrix-xenapp-and-xendesktop"></a>Citrix XenApp と XenDesktop の保護
+Site Recovery を使用して、Citrix XenApp と XenDesktop のデプロイを次のように保護できます。
+
+* (AD DNS サーバー、SQL データベース サーバー、Citrix Delivery Controller、StoreFront サーバー、XenApp マスター (VDA)、Citrix XenApp ライセンス サーバーなどの) 各種のデプロイ層を Azure にレプリケートして、Citrix XenApp と XenDesktop のデプロイの保護を有効にします。
+* Site Recovery を使用して Citrix XenApp と XenDesktop のデプロイを Azure に移行することで、クラウド移行を簡略化します。
+* 必要に応じてテストとデバッグ用に運用環境に似たコピーを作成して、Citrix XenApp/XenDesktop のテストを簡略化します。
+* このソリューションは、Windows Server オペレーティング システム仮想デスクトップにのみ適用でき、クライアント仮想デスクトップには適用できません。これは、Azure のライセンスでクライアント仮想デスクトップがまだサポートされていないためです。 
+Azure におけるクライアント/サーバー デスクトップのライセンスについては、[こちら](https://azure.microsoft.com/en-us/pricing/licensing-faq/)を参照してください。
+
+Citrix XenApp と XenDesktop のデプロイの保護については、[こちら](https://aka.ms/citrix-xenapp-xendesktop-with-asr)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 [前提条件を確認する](site-recovery-prereq.md) 

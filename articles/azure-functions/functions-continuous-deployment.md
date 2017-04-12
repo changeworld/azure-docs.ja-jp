@@ -16,8 +16,9 @@ ms.workload: na
 ms.date: 09/25/2016
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 66753c80223e33c3add9d37aa4d81656472391ca
-ms.openlocfilehash: e1a869d3c3512f32eab7840f5abc17abd8ce8004
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: dbcee4d57448c6f25de24d5995b85849d6d82f77
+ms.lasthandoff: 04/04/2017
 
 
 ---
@@ -27,7 +28,7 @@ Azure Functions を利用すると、関数アプリの継続的なデプロイ�
 複数の頻繁に発生する投稿を統合する場合、継続的なデプロイはプロジェクトに最適なオプションとなります。 また、関数コードのソース管理を維持することもできます。 現在、次のデプロイ ソースがサポートされています。
 
 * [Bitbucket](https://bitbucket.org/)
-* [Dropbox](https://bitbucket.org/)
+* [Dropbox](https://www.dropbox.com/)
 * [Git ローカル リポジトリ](../app-service-web/app-service-deploy-local-git.md)
 * Git 外部リポジトリ
 * [GitHub]
@@ -141,9 +142,4 @@ FTP またはローカル Git リポジトリで関数アプリからファイ�
     要求された場合は、関数アプリ デプロイのユーザー名とパスワードを入力します。  
 
 [GitHub]: https://github.com/
-
-
-
-<!--HONumber=Nov16_HO4-->
-
 

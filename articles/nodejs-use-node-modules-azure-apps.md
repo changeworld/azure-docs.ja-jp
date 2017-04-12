@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 2d57fc14803e273157151d24efb12c3f5dd15a61
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 4ef028e7dbacc126a94b383d0fb13e255bcedcaf
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -44,18 +44,18 @@ Node.js モジュールである **package.json** および **npm-shrinkwrap.jso
 ### <a name="native-modules"></a>ネイティブ モジュール
 ほとんどのモジュールがシンプルな JavaScript テキスト ファイルですが、中にはプラットフォーム固有のバイナリ イメージのモジュールもあります。 こうしたモジュールは、通常、インストール時に Python および node-gyp を使用してコンパイルされます。 Azure Cloud Services は、アプリケーションの一部としてデプロイされている **node\_modules** フォルダーに依存するので、インストールされたモジュールの一部として含まれるネイティブ モジュールはすべて、Windows 開発システムでインストールおよびコンパイルされている限りクラウド サービスで動作します。
 
-Azure App Service では、すべてのネイティブ モジュールはサポートされません。また極めて特別な前提条件があるコンパイルに失敗する可能性があります。 MongoDB のような人気のあるモジュールのいくつかは、ネイティブの依存関係があります(任意)。なくても問題なく作動しますが、ほぼすべてのネイティブ モジュールで&2; つの回避策が現在利用でき、成功が実証されています。
+Azure App Service では、すべてのネイティブ モジュールはサポートされません。また極めて特別な前提条件があるコンパイルに失敗する可能性があります。 MongoDB のような人気のあるモジュールのいくつかは、ネイティブの依存関係があります(任意)。なくても問題なく作動しますが、ほぼすべてのネイティブ モジュールで 2 つの回避策が現在利用でき、成功が実証されています。
 
 * ネイティブ モジュールの前提条件がすべてインストールされている Windows コンピューターで **npm install** を実行します。 次に、作成した **node\_modules** フォルダーを Azure App Service へのアプリケーションの一部としてデプロイします。
   * コンパイルする前に、ローカルの Node.js インストールで対応するアーキテクチャが使用されていることと、バージョンが Azure で使用されているものにできるだけ近いことを確認してください (現在の値は、ランタイムで **process.arch** プロパティと **process.version** プロパティから確認できます)。
 * Azure App Service はデプロイ中に、カスタムの bash やシェル スクリプトを実行するように構成でき、カスタム コマンドを実行し、 **npm install** が実行される方法を正確に構成できる機会を与えます。 これを行う方法を説明するビデオについては、「 [Custom Website Deployment Scripts with Kudu (Kudu でのカスタム Web サイト デプロイメント スクリプト)]」をご覧ください。
 
 ### <a name="using-a-packagejson-file"></a>package.json ファイルの使用
-**package.json** ファイルは、ホスティング プラットフォームが依存関係をインストールできるように、アプリケーションに必要な最上位レベルの依存関係を指定する&1; つの手段です。この場合、**node\_packages** フォルダーをデプロイの一部として含める必要はありません。 アプリケーションのデプロイ後、**npm install** コマンドによって **package.json** ファイルが解析され、表示されているすべての依存関係がインストールされます。
+**package.json** ファイルは、ホスティング プラットフォームが依存関係をインストールできるように、アプリケーションに必要な最上位レベルの依存関係を指定する 1 つの手段です。この場合、**node\_packages** フォルダーをデプロイの一部として含める必要はありません。 アプリケーションのデプロイ後、**npm install** コマンドによって **package.json** ファイルが解析され、表示されているすべての依存関係がインストールされます。
 
 開発中、モジュールをインストールするときに **--save**、**--save-dev**、または **--save-optional** パラメーターを使用すると、モジュールのエントリを **package.json** ファイルに自動的に追加することができます。 詳細については、「 [npm-install](https://docs.npmjs.com/cli/install)」を参照してください。
 
-**package.json** ファイルの潜在的な問題の&1; つが、このファイルでは最上位レベルの依存関係のバージョンしか指定されないという点です。 インストールされているモジュールはそれぞれ、自身が依存しているモジュールのバージョンを指定することがあれば、指定しないこともあります。したがって、依存関係チェーンが、開発時に使用されたもの以外になる可能性があります。
+**package.json** ファイルの潜在的な問題の 1 つが、このファイルでは最上位レベルの依存関係のバージョンしか指定されないという点です。 インストールされているモジュールはそれぞれ、自身が依存しているモジュールのバージョンを指定することがあれば、指定しないこともあります。したがって、依存関係チェーンが、開発時に使用されたもの以外になる可能性があります。
 
 > [!NOTE]
 > Azure App Service へのデプロイ中、<b>package.json</b> ファイルがネイティブ モジュールを参照すると、Git を使用してアプリケーションを発行するときに次のようなエラーが表示されます。
@@ -81,14 +81,11 @@ Azure App Service では、すべてのネイティブ モジュールはサポ�
 > 
 
 ## <a name="next-steps"></a>次のステップ
-ここでは、Azure で Node.js モジュールを使う方法について説明しました。次は、[Node.js のバージョンを指定する]方法、[Node.js Web アプリを構築およびデプロイする](app-service-web/web-sites-nodejs-develop-deploy-mac.md)方法、[Mac および Linux で Azure コマンド ライン インターフェイスを使う方法]について、それぞれのトピックをご覧ください。
+ここでは、Azure で Node.js モジュールを使う方法について説明しました。次は、[Node.js のバージョンを指定する]方法、[Node.js Web アプリを構築およびデプロイする](app-service-web/app-service-web-get-started-nodejs.md)方法、[Mac および Linux で Azure コマンド ライン インターフェイスを使う方法]について、それぞれのトピックをご覧ください。
 
 詳細については、 [Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
 
 [Node.js のバージョンを指定する]: nodejs-specify-node-version-azure-apps.md
 [Mac および Linux で Azure コマンド ライン インターフェイスを使う方法]:cli-install-nodejs.md
-[build and deploy a Node.js web app]: web-sites-nodejs-develop-deploy-mac.md
-[Node.js Web Application with Storage on MongoDB (MongoLab)]: store-mongolab-web-sites-nodejs-store-data-mongodb.md
-[Build and deploy a Node.js application to an Azure Cloud Service]: cloud-services-nodejs-develop-deploy-app.md
 [Custom Website Deployment Scripts with Kudu (Kudu でのカスタム Web サイト デプロイメント スクリプト)]: /documentation/videos/custom-web-site-deployment-scripts-with-kudu/
 

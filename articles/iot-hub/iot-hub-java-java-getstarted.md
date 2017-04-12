@@ -65,7 +65,7 @@ IoT Hub の作成は以上です。 このチュートリアルを完了する�
     </dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-service-client</artifactId>
-      <version>1.2.17</version>
+      <version>1.2.18</version>
     </dependency>
     ```
     
@@ -289,7 +289,7 @@ IoT Hub の作成は以上です。 このチュートリアルを完了する�
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-device-client</artifactId>
-      <version>1.1.23</version>
+      <version>1.1.24</version>
     </dependency>
     <dependency>
       <groupId>com.google.code.gson</groupId>

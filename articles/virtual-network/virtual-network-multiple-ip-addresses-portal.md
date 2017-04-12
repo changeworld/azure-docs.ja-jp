@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 228737056b813c76bf26ee07023db27be710f6d7
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: d264bd47d76db8015a64f09248c57c94572e2693
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -32,7 +32,7 @@ ms.lasthandoff: 03/27/2017
 
 ## <a name = "create"></a>複数の IP アドレスを持つ VM を作成する
 
-複数の IP アドレスまたは静的プライベート IP アドレスを持つ VM を作成する場合は、PowerShell または Azure CLI を使用して VM を作成する必要があります。 この記事の上部にある PowerShell または CLI オプションをクリックすると、その方法が表示されます。 「[Windows VM の作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)」または「[Linux VM の作成](../virtual-machines/virtual-machines-linux-quick-create-portal.md)」に関する記事の手順に従ってポータルを使用し、1 つの動的プライベート IP アドレスと (必要に応じて) 1 つのパブリック IP アドレスを持つ VM を作成できます。 VM を作成したら、この記事の「[VM に IP アドレスを追加する](#add)」セクションの手順に従ってポータルを使用することにより、IP アドレス タイプを動的から静的に変更して、別の IP アドレスを追加できます。
+複数の IP アドレスまたは静的プライベート IP アドレスを持つ VM を作成する場合は、PowerShell または Azure CLI を使用して VM を作成する必要があります。 この記事の上部にある PowerShell または CLI オプションをクリックすると、その方法が表示されます。 「[Windows VM の作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)」または「[Linux VM の作成](../virtual-machines/linux/quick-create-portal.md)」に関する記事の手順に従ってポータルを使用し、1 つの動的プライベート IP アドレスと (必要に応じて) 1 つのパブリック IP アドレスを持つ VM を作成できます。 VM を作成したら、この記事の「[VM に IP アドレスを追加する](#add)」セクションの手順に従ってポータルを使用することにより、IP アドレス タイプを動的から静的に変更して、別の IP アドレスを追加できます。
 
 ## <a name="add"></a>VM に IP アドレスを追加する
 

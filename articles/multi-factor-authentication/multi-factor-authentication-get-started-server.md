@@ -13,12 +13,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/26/2017
+ms.date: 03/26/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: c5a26a17ab50993f8b57c8868b02541251de1cb1
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: b769f785f67c24b99156dcfc21a42f661cc9da27
+ms.lasthandoff: 03/31/2017
 
 ---
 
@@ -30,10 +30,10 @@ ms.lasthandoff: 03/06/2017
  
 
 ## <a name="download-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server のダウンロード
-Azure Multi-Factor Authentication Server は&2; つの方法でダウンロードできます。 どちらも Azure ポータルから実行できます。 1 つ目の方法では、Multi-Factor Authentication プロバイダーを直接管理します。 2 つ目の方法では、サービス設定を使用します。 2 つ目の方法には、多要素認証プロバイダーか、Azure MFA、Azure AD Premium、または Enterprise Mobility Suite のライセンスが必要です。
+Azure Multi-Factor Authentication Server は 2 つの方法でダウンロードできます。 どちらも Azure ポータルから実行できます。 1 つ目の方法では、Multi-Factor Authentication プロバイダーを直接管理します。 2 つ目の方法では、サービス設定を使用します。 2 つ目の方法には、多要素認証プロバイダーか、Azure MFA、Azure AD Premium、または Enterprise Mobility Suite のライセンスが必要です。
 
 > [!Important]
-> この&2; つの方法は似ているように見えますが、どちらを使用するかを把握することが重要です。 ユーザーが MFA に付属するライセンス (Azure MFA、Azure AD Premium、または Enterprise Mobility + Security) を持っている場合は、サーバーをダウンロードするために多要素認証プロバイダーを作成しないでください。 代わりに、2 つ目の方法を使用して、サービス設定のページからサーバーをダウンロードします。 
+> この 2 つの方法は似ているように見えますが、どちらを使用するかを把握することが重要です。 ユーザーが MFA に付属するライセンス (Azure MFA、Azure AD Premium、または Enterprise Mobility + Security) を持っている場合は、サーバーをダウンロードするために多要素認証プロバイダーを作成しないでください。 代わりに、2 つ目の方法を使用して、サービス設定のページからサーバーをダウンロードします。 
 
 ### <a name="option-1-download-azure-multi-factor-authentication-server-from-the-azure-classic-portal"></a>方法 1: Azure クラシック ポータルから Azure Multi-Factor Authentication Server をダウンロードする
 
@@ -119,24 +119,24 @@ Enterprise Mobility Suite、Azure AD Premium、または Enterprise Cloud Suite 
 ![クラウド](./media/multi-factor-authentication-get-started-server/import2.png)
 
 ## <a name="send-users-an-email"></a>ユーザーへの電子メールの送信
-これで MFA Server にユーザーをインポートしたので、次に&2; 段階認証に登録されたことを通知する電子メールをユーザーに送信します。
+これで MFA Server にユーザーをインポートしたので、次に 2 段階認証に登録されたことを通知する電子メールをユーザーに送信します。
 
-送信する電子メールは、ユーザーの&2; 段階認証の構成方法に応じて決定してください。 たとえば、会社のディレクトリから電話番号をインポートできた場合は、ユーザーが行う操作がわかるように、電子メールに既定の電話番号を記載する必要があります。 電話番号をインポートしなかった場合、またはユーザーがモバイル アプリを使用する場合は、Azure Multi-Factor Authentication ユーザー ポータルへのハイパーリンクを使用してアカウント登録を完了するよう指示する電子メールを送信します。
+送信する電子メールは、ユーザーの 2 段階認証の構成方法に応じて決定してください。 たとえば、会社のディレクトリから電話番号をインポートできた場合は、ユーザーが行う操作がわかるように、電子メールに既定の電話番号を記載する必要があります。 電話番号をインポートしなかった場合、またはユーザーがモバイル アプリを使用する場合は、アカウント登録を完了するよう指示する電子メールを送信します。 この電子メールには、Azure Multi-Factor Authentication ユーザー ポータルへのハイパーリンクを含めます。
 
 電子メールの内容は、ユーザーに対して設定されている認証方法 (電話、SMS、モバイル アプリ) によっても異なります。  たとえば、認証に PIN が要求される場合は、PIN の初期設定を電子メールで通知します。  ユーザーは最初の認証時に PIN の変更を要求されます。
 
 
 ### <a name="configure-email-and-email-templates"></a>電子メールと電子メール テンプレートの構成
-左側の電子メール アイコンをクリックして、これらの電子メールの送信設定をセットアップできます。 ここにメール サーバーの SMTP 情報を入力し、**[ユーザーへ電子メールを送信する]** チェック ボックスをオンにすると電子メールを送信できます。
+左側の電子メール アイコンをクリックして、これらの電子メールの送信設定をセットアップできます。 このページにメール サーバーの SMTP 情報を入力し、**[ユーザーへ電子メールを送信する]** チェック ボックスをオンにすると電子メールを送信できます。
 
 ![電子メールの設定](./media/multi-factor-authentication-get-started-server/email1.png)
 
-[電子メールの内容] タブで、選択可能な電子メール テンプレートを確認できます。 ユーザーの&2; 段階認証の構成方法に応じて、最適なテンプレートを選択できます。
+[電子メールの内容] タブで、選択可能な電子メール テンプレートを確認できます。 ユーザーの 2 段階認証の構成方法に応じて、最適なテンプレートを選択できます。
 
 ![Email templates](./media/multi-factor-authentication-get-started-server/email2.png)
 
 ## <a name="how-the-azure-multi-factor-authentication-server-handles-user-data"></a>Azure Multi-Factor Authentication サーバーでのユーザー データの処理方法
-オンプレミスで Multi-Factor Authentication (MFA) サーバーを使用すると、ユーザーのデータはオンプレミス サーバーに格納されます。 永続的なユーザー データはクラウドに格納されません。 ユーザーが&2; 段階認証を実行すると、MFA Server から Azure MFA クラウド サービスにデータが送信され、認証が実行されます。 これらの認証要求がクラウド サービスに送信されると、次のフィールドが要求で送信され、ログに記録されるので、ユーザーの認証/使用状況レポートで使用できます。 一部のフィールドは省略可能なので、Multi-Factor Authentication サーバー内で有効または無効にすることができます。 MFA サーバーから MFA クラウド サービスへの通信には、送信方向のポート 443 上で SSL/TLS が使用されます。 以下のフィールドが対象です。
+オンプレミスで Multi-Factor Authentication (MFA) サーバーを使用すると、ユーザーのデータはオンプレミス サーバーに格納されます。 永続的なユーザー データはクラウドに格納されません。 ユーザーが 2 段階認証を実行すると、MFA Server から Azure MFA クラウド サービスにデータが送信され、認証が実行されます。 これらの認証要求がクラウド サービスに送信されると、次のフィールドが要求で送信され、ログに記録されるので、ユーザーの認証/使用状況レポートで使用できます。 一部のフィールドは省略可能なので、Multi-Factor Authentication サーバー内で有効または無効にすることができます。 MFA サーバーから MFA クラウド サービスへの通信には、送信方向のポート 443 上で SSL/TLS が使用されます。 以下のフィールドが対象です。
 
 * 一意の ID - ユーザー名または内部 MFA サーバー ID
 * 姓と名 (省略可能)
@@ -155,11 +155,7 @@ Enterprise Mobility Suite、Azure AD Premium、または Enterprise Cloud Suite 
 
 - セルフ サービス アクセス用の[ユーザー ポータル](multi-factor-authentication-get-started-portal.md)のセットアップと構成。
 
-- [Active Directory フェデレーション サービス](multi-factor-authentication-get-started-adfs.md)を使用した Azure Multi-Factor Authentication のセットアップ。
-
-- [RADUIS 認証](multi-factor-authentication-get-started-server-radius.md)を使用した Azure MFA Server のセットアップと構成。 RADIUS を使用すると、Azure MFA Server にさまざまなサード パーティ システムを統合することができます。 
-
-- [Windows 認証](multi-factor-authentication-get-started-server-windows.md)を使用した Azure MFA Server のセットアップと構成。
+- [Active Directory フェデレーション サービス](multi-factor-authentication-get-started-adfs.md)、[RADIUS 認証](multi-factor-authentication-get-started-server-radius.md)、または [LDAP 認証](multi-factor-authentication-get-started-server-ldap.md)を使用した Azure MFA サーバーのセットアップと構成。
 
 - [RADIUS を使用したリモート デスクトップ ゲートウェイと Multi-Factor Authentication Server](multi-factor-authentication-get-started-server-rdg.md) のセットアップと構成。 
 

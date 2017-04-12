@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 01/19/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 0d5b68d26d708a28edee13ff3d9a57588ce83e12
-ms.openlocfilehash: fdca3ed832dc0895a04dc3fda2dcf863d8938d8a
-ms.lasthandoff: 01/18/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 4ee75cac7fb4c8e6903b73150ec7b1acfc9cb9f9
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -28,14 +28,14 @@ ms.lasthandoff: 01/18/2017
 
 [Apache Mahout](http://mahout.apache.org) 機械学習ライブラリを使用して Azure HDInsight で映画のリコメンデーションを生成する方法について説明します。 このドキュメントでは、Azure PowerShell を使用して Mahout をリモートで実行する方法について説明します。
 
-Mahout は、Apache Hadoop の[機械学習][ml]ライブラリの&1; つです。 Mahout には、フィルター処理、分類、クラスタリングなどデータを処理するためのアルゴリズムが含まれています。 この記事では、リコメンデーション エンジンを使用し、友人たちが鑑賞した映画に基づいて映画のリコメンデーションを生成します。
+Mahout は、Apache Hadoop の[機械学習][ml]ライブラリの 1 つです。 Mahout には、フィルター処理、分類、クラスタリングなどデータを処理するためのアルゴリズムが含まれています。 この記事では、リコメンデーション エンジンを使用し、友人たちが鑑賞した映画に基づいて映画のリコメンデーションを生成します。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Linux ベースの HDInsight クラスター。 作成の詳細については、「[Hadoop チュートリアル: HDInsight で Linux ベースの Hadoop を使用する][getstarted]」を参照してください。
 
 > [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。
 
 * **Azure PowerShell を実行できるワークステーション**。
 
@@ -51,15 +51,15 @@ Mahout は、Apache Hadoop の[機械学習][ml]ライブラリの&1; つです�
 >
 > SSH を使用した HDInsight への接続とクラスターでの Mahout サンプルの直接的な実行の例については、[Mahout と HDInsight を使用した映画のリコメンデーションの生成 (SSH)](hdinsight-hadoop-mahout-linux-mac.md)に関するページを参照してください。
 
-Mahout で提供される機能の&1; つが、リコメンデーション エンジンです。 データは、`userID`、`itemId`、`prefValue` (項目に対するユーザーの嗜好) の形式で受け付けられます。 Mahout では、共起分析を実行して、*ある項目を嗜好するユーザーが他の項目も嗜好する*ということを判断できます。 次に Mahout は、項目の嗜好が似ているユーザーを特定します。これはリコメンデーションの作成に使用できます。
+Mahout で提供される機能の 1 つが、リコメンデーション エンジンです。 データは、`userID`、`itemId`、`prefValue` (項目に対するユーザーの嗜好) の形式で受け付けられます。 Mahout では、共起分析を実行して、*ある項目を嗜好するユーザーが他の項目も嗜好する*ということを判断できます。 次に Mahout は、項目の嗜好が似ているユーザーを特定します。これはリコメンデーションの作成に使用できます。
 
 映画を使用した非常にシンプルな例を次に示します。
 
-* **共起**: Joe、Alice、Bob は全員、好きな映画として「*Star Wars (スター ウォーズ)*」、「*The Empire Strikes Back (帝国の逆襲)*」、「*Return of the Jedi (ジェダイの帰還)*」を挙げました。 Mahout では、これらの映画のいずれかを好きなユーザーが他の&2; 作品も好きであると判断します。
+* **共起**: Joe、Alice、Bob は全員、好きな映画として「*Star Wars (スター ウォーズ)*」、「*The Empire Strikes Back (帝国の逆襲)*」、「*Return of the Jedi (ジェダイの帰還)*」を挙げました。 Mahout では、これらの映画のいずれかを好きなユーザーが他の 2 作品も好きであると判断します。
 
-* **共起**: Bob と Alice は「*The Phantom Menace (ファントム メナス)*」、「*Attack of the Clones (クローンの攻撃)*」、「*Revenge of the Sith (シスの復讐)*」も好きな映画として選びました。 Mahout では、この例の最初の&3; 作品を好きなユーザーがこれらの&3; 作品も好きであると判断します。
+* **共起**: Bob と Alice は「*The Phantom Menace (ファントム メナス)*」、「*Attack of the Clones (クローンの攻撃)*」、「*Revenge of the Sith (シスの復讐)*」も好きな映画として選びました。 Mahout では、この例の最初の 3 作品を好きなユーザーがこれらの 3 作品も好きであると判断します。
 
-* **類似性のリコメンデーション**: Joe は、この例の最初の&3; 作品を好きな映画として選びました。Mahout では、嗜好が似ている他のユーザーが好きな映画の中で、Joe がまだ観ていない映画を調べます (好み/順位)。 この場合、Mahout では、「*The Phantom Menace (ファントム メナス)*」、「*Attack of the Clones (クローンの攻撃)*」、「*Revenge of the Sith (シスの復讐)*」を推薦します。
+* **類似性のリコメンデーション**: Joe は、この例の最初の 3 作品を好きな映画として選びました。Mahout では、嗜好が似ている他のユーザーが好きな映画の中で、Joe がまだ観ていない映画を調べます (好み/順位)。 この場合、Mahout では、「*The Phantom Menace (ファントム メナス)*」、「*Attack of the Clones (クローンの攻撃)*」、「*Revenge of the Sith (シスの復讐)*」を推薦します。
 
 ### <a name="understanding-the-data"></a>データの説明
 
@@ -349,7 +349,7 @@ $context = New-AzureStorageContext `
     -StorageAccountName $storageAccountName `
     -StorageAccountKey $storageAccountKey
 
-#Azure PowerShell can't delete blobs using wildcard, 
+#Azure PowerShell can't delete blobs using wildcard,
 #so have to get a list and delete one at a time
 # Start with the output
 $blobs = Get-AzureStorageBlob -Container $container -Context $context -Prefix "example/out"

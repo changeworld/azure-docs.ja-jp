@@ -14,14 +14,15 @@ ms.topic: hero-article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 300ee477a00cdd463a2abf87dd73550777fd9e05
-ms.openlocfilehash: 941cc40c3c1979609649eda42e4b39aa383c3fd2
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: a6d4fbdf0e552f50673092183e893841ec0c5aa4
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="using-microsoft-outlook-in-azure-remoteapp"></a>Azure RemoteApp で Microsoft Outlook を使用する
 > [!IMPORTANT]
-> Azure RemoteApp の提供は終了しました。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
+> Azure RemoteApp の提供は、2017 年 8 月 31 日で終了します。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
 > 
 > 
 
@@ -36,10 +37,5 @@ Azure RemoteApp は Microsoft Outlook O365 をサポートします。 [Azure Re
 
 ## <a name="search"></a>Search
 Azure RemoteApp では、Outlook 内での検索利用に制限があります。 Azure RemoteApp はプールされた VM を利用し、ユーザー セッションに対応します。 検索インデックス作成はマシン ID に基づきます。このマシン ID は VM ごとに異なります。 Azure RemoteApp にログインするたびに、ユーザーを新しい VM に向けることができます。 つまり、ローカル検索を有効にすると、マシン ID が変わるたびに (ユーザーが別の VM にいるとき) インデクサーが実行されます。 .OST ファイルのサイズによっては、インデクサーが完了し、他のアプリに必要なリソースを使い果たすまで時間がかかることがあります。 検索が遅くなるだけでなく、結果が得られないこともあります。 オンライン モード アカウント プロファイルを使用すればこれを回避できますが、ローカル キャッシュが存在しないために全体的なパフォーマンスが低下する可能性があります (キャッシュ モードとオンライン モードの違いについては、前述のリンクを参照してください)。 残念ながら、Outlook 2013 では、インデックス付きまたはローカルの検索は無効にできず、オンライン検索は既定で有効にできません。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

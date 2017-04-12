@@ -17,6 +17,7 @@ ms.author: thmullan
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: ba1bb3d84b462dfebbb2564569517d7336bf54fd
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -203,7 +204,7 @@ ALTER TABLE Contacts ADD UserId nvarchar(128)
 
 ![SSMS AspNetUsers table](./media/web-sites-dotnet-entity-framework-row-level-security/SSMS-AspNetUsers.png)
 
-user1@contoso.com, の ID をコピーして、次の T-SQL ステートメントに貼り付けます。 ステートメントを実行して、この UserId に 3 つの連絡先を関連付けます。
+user1@contoso.com の ID をコピーして、次の T-SQL ステートメントに貼り付けます。 ステートメントを実行して、この UserId に 3 つの連絡先を関連付けます。
 
 ```
 UPDATE Contacts SET UserId = '19bc9b0d-28dd-4510-bd5e-d6b6d445f511'
@@ -236,7 +237,7 @@ go
 
 このコードでは、3 つの処理が行われます。 まず、RLS オブジェクトへのアクセスを一元化して制限するためのベスト プラクティスとして、新しいスキーマを作成します。 次に、行の UserId が SESSION_CONTEXT の UserId と一致した場合に '1' を返す述語関数を作成します。 最後に、Contacts テーブルに対するフィルター述語とブロック述語の両方としてこの関数を追加するセキュリティ ポリシーを作成します。 フィルター述語は、現在のユーザーに属する行だけがクエリから返されるようにします。ブロック述語は、アプリケーションが誤って正しくないユーザーのために行を挿入しないようにするための安全装置として機能します。
 
-ここで、アプリケーションを実行し、 user1@contoso.com. このユーザーには、前にこの UserId に割り当てた連絡先だけが表示されるようになりました。
+ここで、アプリケーションを実行し、 user1@contoso.com。 このユーザーには、前にこの UserId に割り当てた連絡先だけが表示されるようになりました:
 
 ![Contact Manager application before enabling RLS](./media/web-sites-dotnet-entity-framework-row-level-security/ContactManagerApp-After.png)
 
@@ -248,10 +249,5 @@ go
 このチュートリアルでは、RLS でできることのほんの一部に触れただけです。 たとえば、より洗練されたきめ細かいアクセス ロジックを利用したり、SESSION_CONTEXT に現在の UserId 以外のものを格納したりすることもできます。 また、スケール アウト データ層でマルチテナント シャードをサポートするために、 [RLS をエラスティック データベース ツール クライアント ライブラリと統合する](../sql-database/sql-database-elastic-tools-multi-tenant-row-level-security.md) こともできます。
 
 これらの可能性の他にも、RLS をさらに良いものにするための努力が続けられています。 ご質問、ご意見、ご要望などありましたら、お知らせください。 フィードバックをお待ちしています。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

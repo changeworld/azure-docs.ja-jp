@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: 097a8aeecc783199b25d95dbc470dcabefa37ced
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: db3285bcdfb93c0c2b9f8972edb04e7064cfa31c
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -145,9 +145,6 @@ ms.lasthandoff: 03/16/2017
 * [**ロック**](../azure-resource-manager/resource-group-lock-resources.md) - Azure リソースをロックします。
 * [**Automation スクリプト**](app-insights-powershell.md) - 新しいリソースを作成する際にテンプレートとして使用できるように、Azure リソースの定義をエクスポートします。
 
-サポート
-
-* **サポート要求** - 有料のサブスクリプションが必要です。 [支援を得る方法](app-insights-get-dev-support.md)に関する記事もご覧ください。
 
 ## <a name="video"></a>ビデオ
 

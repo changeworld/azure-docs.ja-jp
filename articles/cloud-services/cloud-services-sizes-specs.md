@@ -15,9 +15,9 @@ ms.workload: tbd
 ms.date: 01/12/2017
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 45011050a6d2f8e4d9d92f4124d6dc9a9eec4cf7
-ms.openlocfilehash: 88032b3855c2f89b935064abe496a8455dcff88b
-ms.lasthandoff: 01/26/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: aee9d9b735358c3800f8f97f78dd2d3ad1e5e8a8
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -42,7 +42,7 @@ Azure では複数の標準的なサイズを選択できます。 これらの�
 
 サイズを決定する際に役立つ考慮事項は次のとおりです。
 
-* A8 ～ A11 と H シリーズのサイズは、 *コンピューティング集中型インスタンス*とも呼ばれます。 これらのサイズを実行するハードウェアは、ハイ パフォーマンス コンピューティング (HPC) クラスター アプリケーション、モデリング、シミュレーションなど、コンピューティング集中型およびネットワーク集中型アプリケーション用に設計および最適化されています。 A8 ～ A11 シリーズは Intel Xeon E5-2670 @ 2.6 GHZ を使用し、H シリーズは Intel Xeon E5-2667 v3 @ 3.2 GHz を使用します。 これらのサイズの使用に関する詳細な情報と考慮事項については、「 [H シリーズとコンピューティング集中型 A シリーズの VM について](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
+* A8 ～ A11 と H シリーズのサイズは、 *コンピューティング集中型インスタンス*とも呼ばれます。 これらのサイズを実行するハードウェアは、ハイ パフォーマンス コンピューティング (HPC) クラスター アプリケーション、モデリング、シミュレーションなど、コンピューティング集中型およびネットワーク集中型アプリケーション用に設計および最適化されています。 A8 ～ A11 シリーズは Intel Xeon E5-2670 @ 2.6 GHZ を使用し、H シリーズは Intel Xeon E5-2667 v3 @ 3.2 GHz を使用します。 これらのサイズの使用に関する詳細な情報と考慮事項については、「 [H シリーズとコンピューティング集中型 A シリーズの VM について](../virtual-machines/windows/a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 * Dv2 シリーズ、D シリーズ、G シリーズは、より高速の CPU やより高いローカル ディスク パフォーマンスが必要なアプリケーション、またはメモリー要求がより高いアプリケーションに最適です。 多数のエンタープライズ レベルのアプリケーションに、強力な組み合わせで対処します。
 * Azure データ センターの物理ホストの一部では、A5 ～ A11 などの大きな仮想マシンのサイズをサポートしていない場合があります。 その結果、既存の仮想マシンのサイズを新しいサイズに変更した場合、2013 年 4 月 16 日よりも前に作成された仮想ネットワーク内に新しい仮想マシンを作成した場合、または既存のクラウド サービスに新しい仮想マシンを追加した場合に、**"仮想マシン {マシン名} を構成できませんでした"** または **"仮想マシン {マシン名} を作成できませんでした"** というエラー メッセージが表示されることがあります。 各デプロイ シナリオの回避策については、サポート フォーラムで、 [エラー: "仮想マシンを構成できませんでした"](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows) というトピックを参照してください。
 * お客様のサブスクリプションによっては、特定のサイズ ファミリにデプロイできるコア数が制限されることがあります。 コア クォータを増やすには、Azure サポートにお問い合わせください。
@@ -62,12 +62,12 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 | [ExtraSmall](#a-series) |50 |
 | [Small-ExtraLarge](#a-series) |100 |
 | [A5-7](#a-series) |100 |
-| [Standard_A1 ～&8;v2](#av2-series) |100 |
-| [Standard_A2m ～&8;mv2](#av2-series) |100 |
+| [Standard_A1 ～ 8v2](#av2-series) |100 |
+| [Standard_A2m ～ 8mv2](#av2-series) |100 |
 | [A8 ～ A11](#a-series) |225* |
-| [D1 ～&14;](#d-series) |160 |
-| [D1 ～&15;v2](#dv2-series) |210 ～ 250* |
-| [G1 ～&5;](#g-series) |180 ～ 240* |
+| [D1 ～ 14](#d-series) |160 |
+| [D1 ～ 15v2](#dv2-series) |210 ～ 250* |
+| [G1 ～ 5](#g-series) |180 ～ 240* |
 | [H](#h-series) |290 ～ 300* |
 
 * が付いている ACU は、Intel® Turbo テクノロジを使用して CPU 周波数を上げ、パフォーマンスを増強します。 増強量は、VM のサイズ、ワークロード、および同じホストで実行されている他のワークロードによって変化します。
@@ -93,7 +93,7 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 | A7              | 8         | 56           | 2040                 | 4/高 |
 
 ## <a name="a-series---compute-intensive-instances"></a>A シリーズ - コンピューティング集中型インスタンス
-これらのサイズの使用に関する情報と考慮事項については、「 [H シリーズとコンピューティング集中型 A シリーズの VM について](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
+これらのサイズの使用に関する情報と考慮事項については、「 [H シリーズとコンピューティング集中型 A シリーズの VM について](../virtual-machines/windows/a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 
 | サイズ            | CPU コア数 | メモリ: GiB  | ローカル HDD: GiB       | 最大 NIC/ネットワーク帯域幅 |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
@@ -184,7 +184,7 @@ Web ロール インスタンスのロール サイズを [Standard_D2](#general
 ワークロードの性質が変化したり、新しい VM のサイズが使用可能になったりすると、ロールのサイズを変更する場合があります。 これを行うには、(上記のように) サービス定義ファイルで VM のサイズを変更し、Cloud Service を再パッケージ化してデプロイする必要があります。 ポータルまたは PowerShell から直接 VM のサイズを変更することはできません。
 
 >[!TIP]
-> さまざまな環境でのロールに対して異なる VM サイズを使用することがあります (例:  テスト対運用)。 これを行う&1; つの方法は、プロジェクトで複数のサービス定義 (.csdef) ファイルを作成し、自動化されたビルドの最中に CSPack ツールを使用して、環境ごとに異なるクラウド サービス パッケージを作成します。 クラウド サービス パッケージとその作成方法の詳しい要素については、「[クラウド サービス モデルおよびパッケージ方法について](cloud-services-model-and-package.md)」を参照してください。
+> さまざまな環境でのロールに対して異なる VM サイズを使用することがあります (例:  テスト対運用)。 これを行う 1 つの方法は、プロジェクトで複数のサービス定義 (.csdef) ファイルを作成し、自動化されたビルドの最中に CSPack ツールを使用して、環境ごとに異なるクラウド サービス パッケージを作成します。 クラウド サービス パッケージとその作成方法の詳しい要素については、「[クラウド サービス モデルおよびパッケージ方法について](cloud-services-model-and-package.md)」を参照してください。
 >
 >
 
@@ -197,5 +197,5 @@ Get-AzureRoleSize | where SupportedByWebWorkerRoles -eq $true | select InstanceS
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)について学習してください。
-* 高性能コンピューティング (HPC) などのワークロードに対する [H シリーズとコンピューティング集中型 A シリーズ VM](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) について学習してください。
+* 高性能コンピューティング (HPC) などのワークロードに対する [H シリーズとコンピューティング集中型 A シリーズ VM](../virtual-machines/windows/a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) について学習してください。
 

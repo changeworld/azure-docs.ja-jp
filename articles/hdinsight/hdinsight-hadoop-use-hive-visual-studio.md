@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 02/28/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: 0627155a86f961531cfb11c0d8dc7a66eafbf0cf
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 125531d8d52d4e27951a9e6cae0c50582c5b110e
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -36,12 +36,12 @@ Visual Studio の HDInsight ツールを使用して、Hive クエリを HDInsig
 * Azure HDInsight (HDInsight で Hadoop を使用) クラスター
 
   > [!IMPORTANT]
-  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。
 
 * 下記のいずれかのバージョンの Visual Studio
-  
+
     * Visual Studio 2013 Community/Professional/Premium/Ultimate の [アップデート 4](https://www.microsoft.com/download/details.aspx?id=44921)
-  
+
     * Visual Studio 2015 (任意のエディション)
 
     * Visual Studio 2017 (任意のエディション)
@@ -62,23 +62,23 @@ Visual Studio の HDInsight ツールを使用して、Hive クエリを HDInsig
    STORED AS TEXTFILE LOCATION '/example/data/';
    SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND  INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
    ```
-   
+
     これらのステートメントは次のアクションを実行します。
-   
+
    * `DROP TABLE`: テーブルが存在する場合、そのテーブルを削除します。
 
    * `CREATE EXTERNAL TABLE`: Hive に新しい "外部" テーブルを作成します。 外部テーブルは、Hive にテーブル定義のみを格納し、データは、元の場所に残します。
-     
+
      > [!NOTE]
      > 基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。
-     > 
+     >
      > 外部テーブルを削除しても、データは削除**されません**。テーブル定義のみが削除されます。
 
    * `ROW FORMAT`: データの形式を Hive に伝えます。 ここでは、各ログのフィールドは、スペースで区切られています。
 
    * `STORED AS TEXTFILE LOCATION`: データの格納先 (example/data ディレクトリ) と、データがテキストとして格納されていることを Hive に伝えます。
 
-   * `SELECT`: `t4` 列の値が `[ERROR]` であるすべての行の数を選択します。 この値を含む行が&3; 行あるため、このステートメントでは値 `3` が返されます。
+   * `SELECT`: `t4` 列の値が `[ERROR]` であるすべての行の数を選択します。 この値を含む行が 3 行あるため、このステートメントでは値 `3` が返されます。
 
    * `INPUT__FILE__NAME LIKE '%.log'`: .log で終わるファイルのデータだけを返す必要があることを Hive に伝えます。 この句により、データを含む sample.log ファイルに検索が制限されます。
 
@@ -95,7 +95,7 @@ Visual Studio の HDInsight ツールを使用して、Hive クエリを HDInsig
 6. プロジェクトを作成せずに Hive クエリを実行することもできます。 **サーバー エクスプローラー**を使用して **[Azure]** > **[HDInsight]** の順に展開し、HDInsight サーバーを右クリックして、**[Hive クエリを記述]** を選択します。
 
 7. 表示された **temp.hql** ドキュメントに次の HiveQL ステートメントを追加します。
-   
+
    ```hiveql
    set hive.execution.engine=tez;
    CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
@@ -103,9 +103,9 @@ Visual Studio の HDInsight ツールを使用して、Hive クエリを HDInsig
    ```
 
     これらのステートメントは次のアクションを実行します。
-   
+
    * `CREATE TABLE IF NOT EXISTS`: テーブルがまだ存在しない場合に、テーブルを作成します。 `EXTERNAL` キーワードが使用されていないため、このステートメントでは内部テーブルが作成されます。 内部テーブルは Hive データ ウェアハウスに格納され、Hive によって管理されます。
-     
+
      > [!NOTE]
      > `EXTERNAL` テーブルとは異なり、内部テーブルを削除すると、基になるデータも削除されます。
 

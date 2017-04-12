@@ -15,9 +15,9 @@ ms.workload: big-data
 ms.date: 04/03/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: 8a3f3d8bfe670f2a4d1a4642b2380764aa6daeb4
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 9e4efc9de7979c98fcb4afbe530c73e9013326c3
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -31,6 +31,7 @@ ms.lasthandoff: 01/24/2017
 > * [Java SDK](data-lake-store-get-started-java-sdk.md)
 > * [REST API](data-lake-store-get-started-rest-api.md)
 > * [Azure CLI](data-lake-store-get-started-cli.md)
+> * [Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
 > * [Node.JS](data-lake-store-manage-use-nodejs.md)
 > * [Python](data-lake-store-get-started-python.md)
 >

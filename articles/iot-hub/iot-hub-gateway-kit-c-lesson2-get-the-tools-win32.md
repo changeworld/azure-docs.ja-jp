@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: "IoT 開発, IoT ソフトウェア, IoT クラウド サービス, モノのインターネット ソフトウェア, Azure CLI, Windows での Git のインストール, gulp の実行, Windows での Node.js のインストール, Windows での NPM のインストール, Windows での Python のインストール"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-gateway-kit-c-lesson1-set-up-nuc
 ms.assetid: 18ae6ee4-574a-4d5f-9838-ca2a78165628
 ms.service: iot-hub
 ms.devlang: c

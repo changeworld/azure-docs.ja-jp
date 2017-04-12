@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8057e9ce27f9df3e9455d48d9c8196033612c8f3
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 0e82c639ea7bfceb89f0cf9c59ab657a951f2d5f
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="using-app-v-apps-in-azure-remoteapp"></a>Azure RemoteApp で App-V アプリを使用する
 > [!IMPORTANT]
-> Azure RemoteApp の提供は終了しました。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
+> Azure RemoteApp の提供は、2017 年 8 月 31 日で終了します。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
 > 
 > 
 
@@ -41,10 +42,5 @@ ms.openlocfilehash: 8057e9ce27f9df3e9455d48d9c8196033612c8f3
 | グローバル (コンピューター) |パブリッシング サーバーを利用した事前公開または対象設定 |(大きな) アプリを更新する場合、Azure イメージを更新する必要があります。 イメージの一部の領域を占有します。 | |
 
  カスタム イメージとハイブリッド コレクションを作成したら、アプリケーションを公開し、ユーザーを割り当てれば、Azure RemoteApp にホストされている既存の App-V アプリケーションを、場所を問わず、あらゆるデバイスに配信できます。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -10,13 +10,13 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: get-started-article
 ms.date: 02/07/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: 3b029b67e52b212d604e3d645fe7a451b5a60b3e
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 4c47041bb729a3ee1f3fb4c7baf7f988db226677
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -134,7 +134,6 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
   * [Troubleshooting][qna]
   * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
   * [StackOverflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
-  * [開発者のサポートを得る](app-insights-get-dev-support.md)
 * ご提案:
   * [UserVoice](https://visualstudio.uservoice.com/forums/357324)
 * ブログ:

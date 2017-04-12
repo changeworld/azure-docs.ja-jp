@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
-ms.openlocfilehash: 3540e9c151890468be028af7224a6d11045aec6b
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: b1d31112f024ddc8856835f639f58e2defd67bdf
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -53,6 +53,44 @@ Azure Data Factory サービスをオンプレミスの MongoDB データベー�
 ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  オンプレミスの MongoDB データ ストアからデータをコピーするために使用する Data Factory エンティティに関する JSON 定義のサンプルについては、この記事のセクション、「[JSON の使用例: MongoDB から Azure BLOB へのデータのコピー](#json-example-copy-data-from-mongodb-to-azure-blob)」をご覧ください。 
 
 次のセクションでは、MongoDB ソースに固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。
+
+## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
+次の表は、 **OnPremisesMongoDB** のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
+
+| プロパティ | 説明 | 必須 |
+| --- | --- | --- |
+| type |type プロパティを **OnPremisesMongoDb** |はい |
+| server |MongoDB サーバーの IP アドレスまたはホスト名。 |はい |
+| ポート |MongoDB サーバーがクライアント接続のリッスンに使用する TCP ポート。 |省略可能、既定値: 27017 |
+| authenticationType |Basic または Anonymous。 |はい |
+| username |MongoDB にアクセスするためのユーザー アカウント。 |はい (基本認証が使用される場合)。 |
+| パスワード |ユーザーのパスワード。 |はい (基本認証が使用される場合)。 |
+| authSource |認証のために資格情報を確認する際に使用する MongoDB データベースの名前。 |省略可能 (基本認証が使用される場合)。 既定では、管理者アカウントと、databaseName プロパティで指定されたデータベースが使用されます。 |
+| databaseName |アクセスする MongoDB データベースの名前。 |はい |
+| gatewayName |データ ストアにアクセスするゲートウェイの名前。 |はい |
+| encryptedCredential |ゲートウェイによって暗号化された資格情報。 |省略可能。 |
+
+## <a name="dataset-properties"></a>データセットのプロパティ
+データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
+
+**typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **MongoDbCollection** 型のデータセットの typeProperties セクションには次のプロパティがあります。
+
+| プロパティ | 説明 | 必須 |
+| --- | --- | --- |
+| collectionName |MongoDB データベースのコレクション名前。 |はい |
+
+## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
+
+一方、アクティビティの **typeProperties** セクションで使用できるプロパティは、各アクティビティの種類によって異なります。 コピー アクティビティの場合、ソースとシンクの種類によって異なります。
+
+コピー アクティビティで、source の種類が **MongoDbSource** である場合は、typeProperties セクションで次のプロパティを使用できます。
+
+| プロパティ | 説明 | 使用できる値 | 必須 |
+| --- | --- | --- | --- |
+| query |カスタム クエリを使用してデータを読み取ります。 |SQL-92 クエリ文字列。 例: Select * from MyTable。 |いいえ (**データセット**の **collectionName** が指定されている場合) |
+
+
 
 ## <a name="json-example-copy-data-from-mongodb-to-azure-blob"></a>JSON の使用例: MongoDB から Azure BLOB へのデータのコピー
 次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 このサンプルでは、オンプレミスの MongoDB から Azure Blob Storage にデータをコピーする方法を示します。 ただし、Azure Data Factory のコピー アクティビティを使用して、 [こちら](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に記載されているシンクのいずれかにデータをコピーすることができます。
@@ -236,41 +274,6 @@ Azure Data Factory サービスをオンプレミスの MongoDB データベー�
 }
 ```
 
-## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
-次の表は、 **OnPremisesMongoDB** のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
-
-| プロパティ | 説明 | 必須 |
-| --- | --- | --- |
-| type |type プロパティを **OnPremisesMongoDb** |はい |
-| server |MongoDB サーバーの IP アドレスまたはホスト名。 |はい |
-| ポート |MongoDB サーバーがクライアント接続のリッスンに使用する TCP ポート。 |省略可能、既定値: 27017 |
-| authenticationType |Basic または Anonymous。 |はい |
-| username |MongoDB にアクセスするためのユーザー アカウント。 |はい (基本認証が使用される場合)。 |
-| パスワード |ユーザーのパスワード。 |はい (基本認証が使用される場合)。 |
-| authSource |認証のために資格情報を確認する際に使用する MongoDB データベースの名前。 |省略可能 (基本認証が使用される場合)。 既定では、管理者アカウントと、databaseName プロパティで指定されたデータベースが使用されます。 |
-| databaseName |アクセスする MongoDB データベースの名前。 |はい |
-| gatewayName |データ ストアにアクセスするゲートウェイの名前。 |はい |
-| encryptedCredential |ゲートウェイによって暗号化された資格情報。 |省略可能。 |
-
-## <a name="dataset-properties"></a>データセットのプロパティ
-データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
-
-**typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **MongoDbCollection** 型のデータセットの typeProperties セクションには次のプロパティがあります。
-
-| プロパティ | 説明 | 必須 |
-| --- | --- | --- |
-| collectionName |MongoDB データベースのコレクション名前。 |はい |
-
-## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
-
-一方、アクティビティの **typeProperties** セクションで使用できるプロパティは、各アクティビティの種類によって異なります。 コピー アクティビティの場合、ソースとシンクの種類によって異なります。
-
-コピー アクティビティで、source の種類が **MongoDbSource** である場合は、typeProperties セクションで次のプロパティを使用できます。
-
-| プロパティ | 説明 | 使用できる値 | 必須 |
-| --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL-92 クエリ文字列。 例: Select * from MyTable。 |いいえ (**データセット**の **collectionName** が指定されている場合) |
 
 ## <a name="schema-by-data-factory"></a>Data Factory によるスキーマ
 Azure Data Factory サービスは、MongoDB コレクション内の最新のドキュメント 100 個を使用してスキーマを推論します。 この 100 個のドキュメントにスキーマが完全には含まれていない場合は、コピー操作中に無視される列が生じる可能性があります。

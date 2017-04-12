@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: mlearned
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 171c3f05b0eacfd8b1ede0b807f284ce6c0555b4
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: d80ce63eb7ddfd7c45726be887a772f9a7594b28
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -39,7 +40,7 @@ Visual Studio Team Services を使用してクラウド サービスを自動的
 1. Visual Studio で、デプロイするソリューションを開くか、新しいソリューションを作成します。
    このチュートリアルの手順に従って、Web アプリまたはクラウド サービス (Azure アプリケーション) をデプロイできます。
    新しいソリューションを作成する場合は、新しい Azure クラウド サービス プロジェクト、または新しい ASP.NET MVC プロジェクトを作成します。 プロジェクトが .NET Framework 4 または 4.5 をターゲットにしていることを確認し、クラウド サービス プロジェクトを作成している場合は、ASP.NET MVC の Web ロールおよび worker ロールのプロジェクトを追加して、Web ロールに対応するインターネット アプリケーションを選択します。 確認メッセージが表示されたら、 **[インターネット アプリケーション]**を選択します。
-   Web アプリを作成する場合は、ASP.NET Web アプリケーション プロジェクトのテンプレートを選択し、次に MVC を選択します。 「 [Azure アプリ サービスでの ASP.NET Web アプリの作成](../app-service-web/web-sites-dotnet-get-started.md)」を参照してください。
+   Web アプリを作成する場合は、ASP.NET Web アプリケーション プロジェクトのテンプレートを選択し、次に MVC を選択します。 「 [Azure アプリ サービスでの ASP.NET Web アプリの作成](../app-service-web/app-service-web-get-started-dotnet.md)」を参照してください。
    
    > [!NOTE]
    > Visual Studio Team Services では、現在、Visual Studio Web アプリケーションの CI デプロイメントのみをサポートしています。 Web サイト プロジェクトはサポート対象外です。
@@ -289,9 +290,4 @@ VSTS での単位テストの詳細については、 [「ビルド プロセス
 [48]: ./media/cloud-services-continuous-delivery-use-vso/CheckInChangeToMakeTestsFail.PNG
 [49]: ./media/cloud-services-continuous-delivery-use-vso/TestsFailed.PNG
 [50]: ./media/cloud-services-continuous-delivery-use-vso/TestsResultsFailed.PNG
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

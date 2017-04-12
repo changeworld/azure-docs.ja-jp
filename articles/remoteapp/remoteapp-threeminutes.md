@@ -14,14 +14,15 @@ ms.topic: hero-article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: ccbae83898ec8ea3bd7bca0beae7f78b2b535562
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 3373e37b8efb1bd7d9b7e6c4fb8d3db468c1ad02
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="try-azure-remoteapp-on-your-device-in-3-minutes-or-less"></a>手持ちのデバイスで Azure RemoteApp を 3 分以内に試してみる
 > [!IMPORTANT]
-> Azure RemoteApp の提供は終了しました。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
+> Azure RemoteApp の提供は、2017 年 8 月 31 日で終了します。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
 > 
 > 
 
@@ -42,10 +43,5 @@ ms.openlocfilehash: ccbae83898ec8ea3bd7bca0beae7f78b2b535562
 > これはデモ用に制御された環境であるため、発行されたデモ アプリケーションから外部へのインターネット アクセスは有効になっていません。 そのため、OneDrive などのサービスにはアクセスできません。 また、クリップボードの共有 (コピーと貼り付け)、USB やプリンターへのリダイレクトも無効になっています。  
 > 
 > 
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

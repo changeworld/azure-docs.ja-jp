@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: 30d18bdbdc6293bab5a8876fb1e503e125829e2e
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 05c8a0ff04293947cec391b6467cc4adddb6a7b0
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="validate-the-azure-vnet-to-use-with-azure-remoteapp"></a>Azure RemoteApp で使用する Azure VNET の検証
 > [!IMPORTANT]
-> Azure RemoteApp の提供は終了しました。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
+> Azure RemoteApp の提供は、2017 年 8 月 31 日で終了します。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
 > 
 > 
 
@@ -40,10 +41,5 @@ Azure VNET を検証するには、次の手順を行います。
 * [Azure RemoteApp の仮想ネットワークを計画する方法](remoteapp-planvnet.md)
 * [RemoteApp のハイブリッド デプロイの作成方法](remoteapp-create-hybrid-deployment.md)
 * [Azure RemoteApp コレクションの Azure Virtual Network へのデプロイ方法 (ExpressRoute のサポートを利用)](http://blogs.msdn.com/b/rds/archive/2015/04/23/deploy-azure-remoteapp-collection-to-your-azure-virtual-network-with-support-for-expressroute.aspx)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

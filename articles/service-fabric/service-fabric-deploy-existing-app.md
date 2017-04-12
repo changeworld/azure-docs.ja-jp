@@ -12,12 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 02/17/2016
+ms.date: 04/07/2016
 ms.author: mfussell;mikhegn
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: e9c53dc601406961ee7aeca2e350ba14e691cb9b
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 16000dcb751bd96fba247c6209e85c581833681d
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -36,7 +36,7 @@ Service Fabric クラスターでゲスト実行可能ファイルを実行す�
 * 密度: 各アプリケーションを専用のハードウェアで実行する必要がないクラスターで複数のアプリケーションを実行できます。
 
 ## <a name="samples"></a>サンプル
-* [ゲスト実行可能ファイルをパッケージ化してデプロイするためのサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/GuestExe/SimpleApplication)
+* [ゲスト実行可能ファイルをパッケージ化してデプロイするためのサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [REST を使用してネーム サービス経由で通信する 2 つのゲスト実行可能ファイル (C# と nodejs) のサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 
 ## <a name="overview-of-application-and-service-manifest-files"></a>アプリケーション マニフェスト ファイルとサービス マニフェスト ファイルの概要
@@ -348,7 +348,7 @@ Yeoman により、インストールおよびアンインストール スクリ
 ## <a name="next-steps"></a>次のステップ
 この記事では、ゲスト実行可能ファイルをパッケージ化し、Service Fabric にデプロイする方法について説明しました。 関連する情報やタスクは、次の記事を参照してください。
 
-* [ゲスト実行可能ファイルをパッケージ化してデプロイするためのサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/GuestExe/SimpleApplication)。これには、パッケージ化ツールのプレリリース版のリンクが含まれています。
+* [ゲスト実行可能ファイルをパッケージ化してデプロイするためのサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)。これには、パッケージ化ツールのプレリリース版のリンクが含まれています。
 * [REST を使用してネーム サービス経由で通信する 2 つのゲスト実行可能ファイル (C# と nodejs) のサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 * [複数のゲスト実行可能ファイルのデプロイ](service-fabric-deploy-multiple-apps.md)
 * [Visual Studio で最初の Service Fabric アプリケーションを作成する](service-fabric-create-your-first-application-in-visual-studio.md)

@@ -17,9 +17,9 @@ ms.date: 03/21/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: b4f2f1195887d8b64599e82334ab36b21eef1d1d
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: dcc248d398f2e2aa0f563a0868e80b1e7ee6a3fb
+ms.lasthandoff: 04/12/2017
 
 ---
 # <a name="use-azure-powershell-to-run-pig-jobs-with-hdinsight"></a>Azure PowerShell を使用して HDInsight で Pig ジョブを使用する
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/22/2017
 * **Azure HDInsight クラスター**
 
   > [!IMPORTANT]
-  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。
 
 * **Azure PowerShell を実行できるワークステーション**。
 
@@ -61,13 +61,13 @@ Azure PowerShell では、HDInsight で Pig ジョブをリモートで実行で
     [!code-powershell[main](../../powershell_scripts/hdinsight/use-pig/use-pig.ps1?range=5-51)]
 
 1. 新しい Windows PowerShell コマンド プロンプトを開きます。 ディレクトリを **pigjob.ps1** ファイルの場所に変更し、次のコマンドを使用してスクリプトを実行します。
-   
+
         .\pigjob.ps1
-   
+
     Azure サブスクリプションへのログインを求められます。 次に、HDInsight クラスターの HTTPS/管理者アカウント名とパスワードの入力が求められます。
 
 2. ジョブが完了すると、次のテキストのような情報が返されます。
-   
+
         Start the Pig job ...
         Wait for the Pig job to complete ...
         Display the standard output ...
@@ -104,5 +104,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
-
 

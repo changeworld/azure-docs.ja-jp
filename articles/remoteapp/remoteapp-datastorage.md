@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 6cc74e3d3bd704dab1a43b66374b51c1f3e2a0a2
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 75d5415d33324d957617426e75909a6c6c58b1f9
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="never-store-sensitive-data-on-custom-images"></a>カスタム イメージに機密データを格納しない
 > [!IMPORTANT]
-> Azure RemoteApp の提供は終了しました。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
+> Azure RemoteApp の提供は、2017 年 8 月 31 日で終了します。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
 > 
 > 
 
@@ -47,10 +48,5 @@ Azure RemoteApp で独自のアプリケーションをホストする場合、�
 * カスタム イメージの作成時には、機密データをイメージに格納しないでください。データが失われる可能性があります。
 * 機密データは、常に別のファイル サーバー、別の Azure VM、クラウドに格納し、Azure RemoteApp 内のアプリケーションをホストする VM インスタンスとは常に別に格納することをお勧めします。 
 * ユーザー データはユーザー プロファイル ディスク (UPD) に保存され、維持されます
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

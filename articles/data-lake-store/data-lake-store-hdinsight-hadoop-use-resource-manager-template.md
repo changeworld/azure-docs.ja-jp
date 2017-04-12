@@ -15,9 +15,9 @@ ms.workload: big-data
 ms.date: 03/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 40a1d76cc4167858a9bebac9845230473cc71e3e
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
+ms.openlocfilehash: bc870d2ec2f81c439beb96878a68466ed94988f3
+ms.lasthandoff: 04/05/2017
 
 
 ---
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/07/2017
 >
 >
 
-Azure PowerShell を使用して、Azure Data Lake Store を**追加のストレージとして**使用する HDInsight クラスターを構成する方法について説明します。 
+Azure PowerShell を使用して、Azure Data Lake Store を**追加のストレージとして**使用する HDInsight クラスターを構成する方法について説明します。
 
 サポートされている種類のクラスターでは、Data Lake Store を既定のストレージまたは追加のストレージ アカウントとして使用します。 Data Lake Store を追加のストレージとして使用した場合、クラスターの既定のストレージ アカウントは Azure Storage BLOB (WASB) のままであり、クラスター関連のファイル (ログなど) はその既定のストレージに書き込まれますが、一方で処理対象のデータは Data Lake Store アカウントに格納することができます。 Data Lake Store を追加のストレージ アカウントとして使用しても、クラスターからストレージに対する読み取り/書き込みのパフォーマンスや機能は何も変化しません。
 
@@ -54,7 +54,7 @@ HDInsight で Data Lake Store を使用するための重要な考慮事項を�
 * **Azure PowerShell 1.0 以上**。 「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」を参照してください。
 * **Azure Active Directory Service のプリンシパル**。 このチュートリアルの手順では、Azure AD でサービス プリンシパルを作成する方法を説明します。 ただし、サービス プリンシパルを作成するには、Azure AD 管理者である必要があります。 Azure AD 管理者である場合は、この前提条件をスキップしてチュートリアルを進めることができます。
 
-    **Azure AD 管理者でない場合**は、サービス プリンシパルの作成に必要な手順を実行することはできません。 その場合は、Data Lake Store で HDInsight クラスターを作成する前に、まず Azure AD 管理者がサービス プリンシパルを作成する必要があります。 また、「[Create a service principal with certificate](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate)」 (証明書でサービス プリンシパルを作成する) で説明しているように、サービス プリンシパルは証明書を使って作成する必要があります。
+    **Azure AD 管理者でない場合**は、サービス プリンシパルの作成に必要な手順を実行することはできません。 その場合は、Data Lake Store で HDInsight クラスターを作成する前に、まず Azure AD 管理者がサービス プリンシパルを作成する必要があります。 また、「[Create a service principal with certificate](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority)」 (証明書でサービス プリンシパルを作成する) で説明しているように、サービス プリンシパルは証明書を使って作成する必要があります。
 
 ## <a name="create-an-hdinsight-cluster-with-azure-data-lake-store"></a>Azure Data Lake Store で HDInsight クラスターを作成する
 Resource Manager テンプレートおよびテンプレート使用の前提条件は、GitHub の[新しい Data Lake Store での HDInsight Linux クラスターのデプロイ](https://github.com/Azure/azure-quickstart-templates/tree/master/201-hdinsight-datalake-store-azure-storage)に関するページにあります。 このリンクで示されている手順に従って、HDInsight クラスターを Azure Data Lake Store で追加ストレージとして作成します。
@@ -78,7 +78,7 @@ Resource Manager テンプレートでは、新しい Data Lake Store アカウ�
 ## <a name="set-relevant-acls-on-the-sample-data"></a>サンプル データに関連 ACL を設定する
 アップロードしたサンプル データに HDInsight クラスターからアクセスできるようにするには、HDInsight クラスターと Data Lake Store との間に ID を確立するのに使用した Azure AD アプリケーションに、アクセスしようとしているファイルやフォルダーへのアクセスを持たせる必要があります。 このためには、次の手順を実行します。
 
-1. HDInsight クラスターと Data Lake Store に関連付けられている Azure AD アプリケーションの名前を確認します。 名前を確認する方法の&1; つは、Resource Manager テンプレートを使って作成した HDInsight クラスター ブレードを開き、**[クラスター AAD ID]** タブをクリックし、**[Service Principal Display Name]** (サービス プリンシパル表示名) の値を探すことです。
+1. HDInsight クラスターと Data Lake Store に関連付けられている Azure AD アプリケーションの名前を確認します。 名前を確認する方法の 1 つは、Resource Manager テンプレートを使って作成した HDInsight クラスター ブレードを開き、**[クラスター AAD ID]** タブをクリックし、**[Service Principal Display Name]** (サービス プリンシパル表示名) の値を探すことです。
 2. 次に、HDInsight クラスターからアクセスするファイルまたはフォルダーにおいて、この Azure AD アプリケーションにアクセス権を付与します。 Data Lake Store のファイルやフォルダーに正しい ACL を設定する方法については、[Data Lake Store に格納されているデータのセキュリティ保護](data-lake-store-secure-data.md#filepermissions)に関するページを参照してください。
 
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-the-data-lake-store"></a>Data Lake Store を使用する HDInsight クラスターでテスト ジョブを実行する

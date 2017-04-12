@@ -14,14 +14,15 @@ ms.topic: get-started-article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: fcc53e4073a6957fae263cfb5d38023ed9710d21
-ms.openlocfilehash: 47a60ba7de5ad09f0fc27efd2d041199b71be348
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 43d0dbb905b2f2b9d98fb3bf8c073ba1c4b6f4c4
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="how-does-licensing-work-in-azure-remoteapp"></a>RemoteApp のライセンスはどのような仕組みになっていますか。
 > [!IMPORTANT]
-> Azure RemoteApp の提供は終了しました。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
+> Azure RemoteApp の提供は、2017 年 8 月 31 日で終了します。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
 > 
 > 
 
@@ -40,10 +41,5 @@ RemoteApp に同梱される Office 365 テンプレート イメージを使用
 ご理解いただけたでしょうか。 法的に共有が可能なすべてのアプリを発行することができます。 またプログラムを共有する資格を確認する必要があります。
 
 クラウド コレクションでは CAL またはボリューム ライセンス契約を使用できないことに注意してください。 ボリューム ライセンス契約を使用して、ハイブリッド コレクションのアプリケーションをライセンス認証することが *できます* (Office を除く)。 ボリューム ライセンス メディアから、テンプレート イメージにインストールする必要があります。 アプリケーションのベンダの情報に従ってリモート デスクトップ環境にライセンスをインストールしてください。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

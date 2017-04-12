@@ -17,9 +17,9 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 6f0fe474787efc15db5c75266cde369725832aab
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: c9b7cc0321ba06a5d30ea5bd467efe4feeb73b99
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -87,7 +87,7 @@ S2D では、コンバージド型とハイパー コンバージド型の 2 種
 
 1. お使いのサブスクリプションで、[Azure Portal](http://portal.azure.com) にログインします。
 
-1. [Azure 可用性セットを作成します](../../virtual-machines-windows-create-availability-set.md)。
+1. [Azure 可用性セットを作成します](../create-availability-set.md)。
 
    可用性セットを利用すると、障害ドメインと更新ドメインの仮想マシンがグループ化されます。 可用性セットがあると、アプリケーションがネットワーク スイッチ、サーバーのラックの電源装置など、単一障害点の影響を受けないようにすることができます。 
 

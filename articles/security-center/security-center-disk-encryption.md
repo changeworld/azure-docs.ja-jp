@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomsh
 translationtype: Human Translation
-ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
-ms.openlocfilehash: 5054ea1d5bd17712a4b343319d583e62a256752d
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: ac0d2e6891d916febb3eeee736288454c2b92c2d
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -142,10 +142,10 @@ Azure 仮想マシンを暗号化するには、次の手順を実行してく�
 
 ![PowerShell の出力](./media/security-center-disk-encryption/security-center-disk-encryption-fig7.png)
 
-暗号化コマンドを実行して仮想マシンを暗号化する方法は&2; とおりあります。 1 つ目の方法では、PowerShell ISE のコンソールで次のコマンドを入力します。
+暗号化コマンドを実行して仮想マシンのすべてのドライブを暗号化する方法は 2 とおりあります。 1 つ目の方法では、PowerShell ISE のコンソールで次のコマンドを入力します。
 
 ~~~
-Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId
+Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -VolumeType All
 ~~~
 
 上記のコマンドを入力した後、 **Enter**キーを押します。
