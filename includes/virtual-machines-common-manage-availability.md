@@ -41,10 +41,10 @@
 
 複数の仮想マシン間でトラフィックを分散するためのロード バランサーが構成されていない場合、計画メンテナンス イベントによって、トラフィックを提供している仮想マシンのみに影響が生じ、アプリケーション層の機能停止が生じます。 同じ層の複数の仮想マシンを、同じロード バランサーと可用性セット以下に配置することで、少なくとも 1 つのインスタンスによってトラフィックの提供を継続することができます。
 
-## <a name="use-multiple-storage-accounts-for-each-availability-set"></a>各可用性セットに複数の Storage アカウントを使用する
+## <a name="use-multiple-storage-accounts-for-each-availability-set"></a>各可用性セットに複数のストレージ アカウントを使用する
 Azure Managed Disks を使用する場合は、次のガイダンスを省略できます。 ディスクが VM の可用性セットに合致する障害ドメインに格納されるため、Azure Managed Disks には高可用性と冗長性の特性があります。 詳しくは、「[Azure Managed Disks overview](../articles/storage/storage-managed-disks-overview.md)」(Azure Managed Disks の概要) をご覧ください。
 
-非管理対象ディスクを使用する場合は、VM 内の仮想ハード ディスク (VHD) で使用される Storage アカウントに関して、従うべきベスト プラクティスがあります。 各ディスク (VHD) は、Azure Storage アカウント内のページ BLOB です。 可用性セット内の VM の高可用性を実現するには、Storage アカウントに冗長性を持たせ、Storage アカウントを分離することが重要です。
+非管理対象ディスクを使用する場合は、VM 内の仮想ハード ディスク (VHD) で使用されるストレージ アカウントに関して、従うべきベスト プラクティスがあります。 各ディスク (VHD) は、Azure ストレージ アカウント内のページ BLOB です。 可用性セット内の VM の高可用性を実現するには、ストレージ アカウントに冗長性を持たせ、ストレージ アカウントを分離することが重要です。
 
 1. **VM に関連付けられているすべてのディスク (OS とデータ) を同じ Storage アカウント内に保持する。**
 2. Storage アカウントに VHD を追加する場合は、**Storage アカウントの[制限](../articles/storage/storage-scalability-targets.md)を考慮する。**
