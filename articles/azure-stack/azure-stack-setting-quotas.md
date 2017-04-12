@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 3/1/2017
 ms.author: mattmcg
 translationtype: Human Translation
-ms.sourcegitcommit: a6d1037293ff48808f19cfa9a1fa468c22cc2328
-ms.openlocfilehash: 7a41e34925ef4208ee8fa2eb3151cbb058ea5b17
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: bbefca1a60f38f18838ee6563bd26b934cd02172
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -29,7 +29,7 @@ Quotas are configurable per service and per location, enabling administrators to
 A tenant that subscribes to an offer that contains multiple plans can use all resources that are available in each plan.
 
 ## <a name="to-create-an-iaas-quota"></a>To create an IaaS quota
-1. In a browser, go to [https://portal.local.azurestack.external](https://portal.local.azurestack.external/).
+1. In a browser, go to [https://adminportal.local.azurestack.external](https://adminportal.local.azurestack.external/).
    
    Sign in to the Azure Stack portal as an administrator (by using the credentials that you provided during deployment).
 2. Select **New**, then **Tenant Offers + Plans**, and select **Quota**.
