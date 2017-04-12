@@ -16,9 +16,9 @@ ms.workload: big-compute
 ms.date: 07/22/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: a779dd05623e84250d5595311d7d87d83f1298ad
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 2f92ebd82e5ac64f921e236a77657a1abc478a7c
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -41,7 +41,7 @@ Microsoft HPC Pack は、Microsoft Azure 仮想マシンのクラスター上で
   
   **その他の注意事項**
   
-  * Azure の Linux RDMA ネットワークの前提条件については、「[H シリーズとコンピューティング集中型 A シリーズの VM について](../../virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
+  * Azure の Linux RDMA ネットワークの前提条件については、「[H シリーズとコンピューティング集中型 A シリーズの VM について](../../windows/a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
   * Powershell スクリプトによるデプロイ オプションを使用した場合は、すべての Linux 計算ノードを 1 つのクラウド サービスにデプロイし、RDMA ネットワーク接続を使用します。
   * Linux ノードをデプロイした後は、SSH 接続を使用してその他の管理タスクを実行します。 Azure Portal で、各 Linux VM の SSH 接続の詳細を探します。  
 * **Intel MPI** - Azure の SLES 12 HPC 計算ノード上で OpenFOAM を実行するには、[Intel.com サイト](https://software.intel.com/en-us/intel-mpi-library/)から Intel MPI Library 5 ランタイムをインストールする必要があります。 (CentOS ベースの HPC イメージには、Intel MPI 5 がプレインストールされています)。その後、必要に応じて Linux 計算ノードに Intel MPI をインストールします。 この手順の準備をするには、Intel に登録した後、確認の電子メールに含まれる関連 Web ページへのリンクをクリックします。 次に、適切なバージョンの Intel MPI の .tgz ファイルのダウンロード リンクをコピーします。 この記事は、Intel MPI バージョン 5.0.3.048 に基づきます。

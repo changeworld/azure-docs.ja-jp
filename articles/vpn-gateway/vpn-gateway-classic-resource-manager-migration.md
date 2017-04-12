@@ -15,15 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 10/28/2016
 ms.author: amsriva
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8efa8df1381c19aa00bd49bedb3f99086e01d9e2
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 32ca2e4b1dcf5715602b8e1e1f3026cb785fbe0c
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="vpn-gateway-classic-to-resource-manager-migration"></a>VPN Gateway クラシックから Resource Manager への移行
 VPN Gateway は クラシック モデル から Resource Manager デプロイ モデルに移行できるようになりました。 詳細については、Azure Resource Manager の[機能と利点](../azure-resource-manager/resource-group-overview.md)をご覧ください。 この記事では、従来のデプロイメントから新しい Resource Manager ベースモデルへの移行方法について説明します。 
 
-VPN Gateway は、クラシックから Resource Manager への VNet の移行の一部として移行されます。 この移行では、一度に 1つの VNet が移行されます。 移行に必要な追加のツールや前提条件はありません。 移行手順は既存の VNet の移行と同じで、詳細は[IaaS リソースの移行](../virtual-machines/virtual-machines-windows-ps-migration-classic-resource-manager.md)に関するページに記載されています。 移行中にデータ パスのダウンタイムはないため、既存のワークロードは引き続き動作し、移行中にオンプレミスの接続が失われることはありません。 VPN Gateway に関連付けられているパブリック IP アドレスは、移行プロセス中も変更されません。 そのため、移行後にオンプレミスのルーターを再構成する必要はありません。  
+VPN Gateway は、クラシックから Resource Manager への VNet の移行の一部として移行されます。 この移行では、一度に 1つの VNet が移行されます。 移行に必要な追加のツールや前提条件はありません。 移行手順は既存の VNet の移行と同じで、詳細は[IaaS リソースの移行](../virtual-machines/windows/migration-classic-resource-manager-ps.md)に関するページに記載されています。 移行中にデータ パスのダウンタイムはないため、既存のワークロードは引き続き動作し、移行中にオンプレミスの接続が失われることはありません。 VPN Gateway に関連付けられているパブリック IP アドレスは、移行プロセス中も変更されません。 そのため、移行後にオンプレミスのルーターを再構成する必要はありません。  
 
 Resource Manager モデルは従来のモデルと異なり、仮想ネットワーク ゲートウェイ、ローカル ネットワーク ゲートウェイ、接続リソースで構成されます。 これらは、それぞれ VPN Gateway、 オンプレミスのアドレス空間であるローカルサイト、 2 つの間の接続を表します。 移行が完了すると、ゲートウェイはクラシック モデルでは利用できなくなり、仮想ネットワーク ゲートウェイ、ローカル ネットワーク ゲートウェイ、接続オブジェクトのすべての管理操作は、Resource Manager モデルを使って行う必要があります。
 
@@ -65,11 +66,6 @@ VNet の移行中、現在の VNet の VPN Gateway に接続しているエン�
 * 影響を受けるVNet からオンプレミスの場所を表すローカル ネットワーク ゲートウェイへの明示的な接続を確立します。 これには、オンプレミスのルーターの構成を変更して、IPsec トンネルを作成、構成する必要もあります。
 
 ## <a name="next-steps"></a>次のステップ
-VPN Gateway の移行サポートについて学習した後は、[プラットフォームでサポートされる、クラシックから Azure Resource Manager への IaaS リソースの移行](../virtual-machines/virtual-machines-windows-ps-migration-classic-resource-manager.md)に関する記事をご覧ください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
+VPN Gateway の移行サポートについて学習した後は、[プラットフォームでサポートされる、クラシックから Azure Resource Manager への IaaS リソースの移行](../virtual-machines/windows/migration-classic-resource-manager-ps.md)に関する記事をご覧ください。
 
 

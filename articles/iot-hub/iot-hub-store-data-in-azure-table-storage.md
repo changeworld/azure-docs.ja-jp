@@ -16,16 +16,15 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: de47a15dd4009b9a33a53fd981bc178eaa50c035
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: ef5d4af5d5dad2b548ab01be5ba9c4769b21416a
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="save-iot-hub-messages-that-contain-information-like-sensor-data-to-azure-table-storage"></a>センサー データなどの情報が含まれた IoT Hub メッセージを Azure テーブル ストレージに保存する
 
-> [!Note]
-> このチュートリアルを開始する前に、[Azure IoT Hub への ESP8266 の接続](/iot-hub-arduino-huzzah-esp8266-get-started.md)に関するページの手順を完了しておいてください。 [Azure IoT Hub への ESP8266 の接続](/iot-hub-arduino-huzzah-esp8266-get-started.md)に関するページでは、IoT デバイスと IoT ハブを設定し、デバイスで実行するサンプル アプリケーションをデプロイします。 そのアプリケーションは、収集されたセンサー データを IoT ハブに送信します。
+[!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
 ## <a name="what-you-will-learn"></a>学習内容
 
@@ -39,7 +38,7 @@ Azure ストレージ アカウントと Azure Function App を作成し、IoT H
 
 ## <a name="what-you-will-need"></a>前提条件
 
-- 次の要件を対象とする [ESP8266 を Azure IoT Hub に接続](/iot-hub-arduino-huzzah-esp8266-get-started.md)するためのチュートリアルを完了します。
+- 次の要件を対象とする [ESP8266 を Azure IoT Hub に接続](iot-hub-arduino-huzzah-esp8266-get-started.md)するためのチュートリアルを完了します。
   - 有効な Azure サブスクリプション
   - サブスクリプションの Azure IoT ハブ。
   - Azure IoT ハブにメッセージを送信する実行中のアプリケーション。
@@ -205,6 +204,4 @@ IoT Hub は、アプリケーションによる IoT Hub メッセージの読み
 
 Azure ストレージ アカウントと Azure Function App を作成し、IoT ハブが受信したメッセージを Azure テーブル ストレージに格納することができました。
 
-引き続き IoT Hub の使用方法を確認すると共に、他の IoT のシナリオについて調べるには、次のページを参照してください。
-
-- [iothub-explorer を使用したクラウド デバイス メッセージングの管理](iot-hub-explorer-cloud-device-messaging.md)
+[!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

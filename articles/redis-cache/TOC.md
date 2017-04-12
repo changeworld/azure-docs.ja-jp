@@ -26,7 +26,7 @@
 ###[クラスタリングによってキャッシュを分散する](cache-how-to-premium-clustering.md)
 ## 自動化
 ###[PowerShell でデプロイして管理する](cache-howto-manage-redis-cache-powershell.md)
-###[Azure CLI でデプロイして管理する](cache-manage-cli.md)
+###[Azure CLI でデプロイして管理する](cli-samples.md)
 ###[Redis Cache のプロビジョニング](cache-redis-cache-arm-provision.md)
 ###[Redis Cache で Web アプリをプロビジョニングする](cache-web-app-arm-with-redis-cache-provision.md)
 ## ASP.NET と統合する

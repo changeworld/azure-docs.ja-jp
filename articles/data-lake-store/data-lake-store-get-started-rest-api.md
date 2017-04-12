@@ -15,9 +15,9 @@ ms.workload: big-data
 ms.date: 04/03/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: 33574b0c1f023a8a5f83b1bf06f0523623891757
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 650ff05715c8c0d915c82f9de49756530b8f3138
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -29,6 +29,7 @@ ms.lasthandoff: 01/24/2017
 > * [Java SDK](data-lake-store-get-started-java-sdk.md)
 > * [REST API](data-lake-store-get-started-rest-api.md)
 > * [Azure CLI](data-lake-store-get-started-cli.md)
+> * [Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
 > * [Node.JS](data-lake-store-manage-use-nodejs.md)
 > * [Python](data-lake-store-get-started-python.md)
 >
@@ -47,7 +48,7 @@ ms.lasthandoff: 01/24/2017
 * [cURL](http://curl.haxx.se/)。 この記事では、cURL を使用して、Data Lake Store アカウントに対して REST API 呼び出しを行う方法を説明します。
 
 ## <a name="how-do-i-authenticate-using-azure-active-directory"></a>Azure Active Directory を使用して認証する方法
-Azure Active Directory を使用した認証方法には&2; つあります。
+Azure Active Directory を使用した認証方法には 2 つあります。
 
 ### <a name="end-user-authentication-interactive"></a>エンド ユーザー認証 (対話型)
 このシナリオでは、アプリケーションはユーザーにログインを求め、すべての操作はユーザーのコンテキストで実行されます。 対話型認証のためには次の手順を実行します。
@@ -166,7 +167,7 @@ Azure Active Directory を使用した認証方法には&2; つあります。
 ## <a name="upload-data-into-a-data-lake-store-account"></a>Data Lake Store アカウントにデータをアップロードする
 この操作は、 [ここ](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Create_and_Write_to_a_File)で定義されている WebHDFS REST API 呼び出しをベースにしています。
 
-WebHDFS REST API を使用したデータのアップロードは、次に説明するように&2; 段階のプロセスとなります。
+WebHDFS REST API を使用したデータのアップロードは、次に説明するように 2 段階のプロセスとなります。
 
 1. アップロードするファイル データを送信することなく、HTTP PUT 要求を送信します。 次のコマンドで、**\<yourstorename>** を実際の Data Lake Store 名に置き換えます。
    
@@ -202,7 +203,7 @@ Data Lake Store アカウントからのデータの読み取りは、2 段階�
 * まず、エンドポイント `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN`に対して GET 要求を送信します。 これにより、次の GET 要求を送信する場所が返されます。
 * 次に、エンドポイント `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN&read=true`に対して GET 要求を送信します。 これにより、ファイルの内容が表示されます。
 
-ただし、1 番目の手順と&2; 番目の手順の間に入力パラメーターの違いはないため、 `-L` パラメーターを使用して最初の要求を送信できます。 `-L` オプションは、基本的に&2; つの要求を&1; つの要求に結合し、新しい場所で cURL により要求をやり直します。 最後に、次のように、すべての要求呼び出しの出力が表示されます。 **\<yourstorename>** を実際の Data Lake Store 名に置き換えます。
+ただし、1 番目の手順と 2 番目の手順の間に入力パラメーターの違いはないため、 `-L` パラメーターを使用して最初の要求を送信できます。 `-L` オプションは、基本的に 2 つの要求を 1 つの要求に結合し、新しい場所で cURL により要求をやり直します。 最後に、次のように、すべての要求呼び出しの出力が表示されます。 **\<yourstorename>** を実際の Data Lake Store 名に置き換えます。
 
     curl -i -L GET -H "Authorization: Bearer <REDACTED>" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN
 

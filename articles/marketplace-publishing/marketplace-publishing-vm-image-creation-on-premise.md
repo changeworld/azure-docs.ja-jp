@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 04/29/2016
 ms.author: hascipio; v-divte
 translationtype: Human Translation
-ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
-ms.openlocfilehash: 101d0b2733a43b99b32efae8a9510ffca2a2e467
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 8f6b9a9293dc149586e6e5fd55028170ea825b07
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -86,7 +87,7 @@ Azure ポータルを使用する以外に、 [Save-AzureVhd](http://msdn.micros
 VHD をオンプレミスで準備した場合は、それらを Azure のストレージ アカウントにアップロードする必要があります。 この手順は、VHD をオンプレミスで作成した後、VM イメージの認定を取得する前に実行します。
 
 ### <a name="create-a-storage-account-and-container"></a>ストレージ アカウントとコンテナーの作成
-VHD は、米国内のリージョンのストレージ アカウントにアップロードすることをお勧めします。 1 つの SKU のすべての VHD は、1 つのストレージ アカウント内の&1; つのコンテナーに配置する必要があります。
+VHD は、米国内のリージョンのストレージ アカウントにアップロードすることをお勧めします。 1 つの SKU のすべての VHD は、1 つのストレージ アカウント内の 1 つのコンテナーに配置する必要があります。
 
 ストレージ アカウントを作成するには、 [Microsoft Azure ポータル](https://portal.azure.com/)、PowerShell、または Linux コマンドライン ツールを使用できます。  
 
@@ -105,7 +106,7 @@ VHD は、米国内のリージョンのストレージ アカウントにアッ
 7. [コンテナー] ブレードで、 **[追加]**を選択し、コンテナー名とコンテナーのアクセス許可を入力します。 コンテナーのアクセス許可には **[プライベート]** を選択します。
 
 > [!TIP]
-> 発行する予定の SKU ごとに&1; つのコンテナーを作成することをお勧めします。
+> 発行する予定の SKU ごとに 1 つのコンテナーを作成することをお勧めします。
 > 
 > 
 
@@ -124,7 +125,7 @@ PowerShell の [New-AzureStorageAccount](http://msdn.microsoft.com/library/dn495
 > これらのコマンドでは、現在のストレージ アカウントのコンテキストが PowerShell に設定されていることを前提としています。   PowerShell のセットアップの詳細については、「 [Azure PowerShell のセットアップ](marketplace-publishing-powershell-setup.md) 」を参照してください。  
 > 
 > ### <a name="create-a-storage-account-by-using-the-command-line-tool-for-mac-and-linux"></a>Mac と Linux 用のコマンドライン ツールを使用したストレージ アカウントの作成
-> [Linux コマンドライン ツール](../virtual-machines/virtual-machines-linux-cli-manage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)から、次のようにストレージ アカウントを作成します。
+> [Linux コマンドライン ツール](../virtual-machines/linux/cli-manage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)から、次のようにストレージ アカウントを作成します。
 > 
 > 
 
@@ -148,10 +149,5 @@ PowerShell の [New-AzureStorageAccount](http://msdn.microsoft.com/library/dn495
 ## <a name="see-also"></a>関連項目
 * [Marketplace 向けの仮想マシン イメージの作成](marketplace-publishing-vm-image-creation.md)
 * [Azure PowerShell の設定](marketplace-publishing-powershell-setup.md)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: 4ad7970b94949bf105ddf549279d4d1bcbad5f40
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: c92eec471cf080a651d6f12e9db9fa391beabd2a
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="how-to-use-your-office-365-subscription-with-azure-remoteapp"></a>Azure RemoteApp で Office 365 サブスクリプションを使用する方法
 > [!IMPORTANT]
-> Azure RemoteApp の提供は終了しました。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
+> Azure RemoteApp の提供は、2017 年 8 月 31 日で終了します。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
 > 
 > 
 
@@ -39,7 +40,7 @@ Office 365 サブスクリプションがすばらしい点は、Azure Cloud を
 
 Office 365 ProPlus は[共有コンピューターのアクティブ化](https://technet.microsoft.com/library/Dn782860.aspx)を可能にします。この機能を使用すると、Azure RemoteApp (およびリモート デスクトップ サービス) のような仮想環境とクラウド環境で Office を一時ユーザーがアクティブ化できます。
 
-Office 365 ProPlus を含む Office 365 プランについては、 「[それぞれの Office&365; プランのサービスの可用性](https://technet.microsoft.com/library/office-365-plan-options.aspx)」の表をご覧ください。 Office 365 ProPlus を含まないプランがあることに注意してください (たとえば、Office 365 Business プラン)。 お使いのプランに Office 365 ProPlus が含まれない場合は、含むプラン (Office 365 Education E3 など) へのアップグレードを検討してください。
+Office 365 ProPlus を含む Office 365 プランについては、 「[それぞれの Office 365 プランのサービスの可用性](https://technet.microsoft.com/library/office-365-plan-options.aspx)」の表をご覧ください。 Office 365 ProPlus を含まないプランがあることに注意してください (たとえば、Office 365 Business プラン)。 お使いのプランに Office 365 ProPlus が含まれない場合は、含むプラン (Office 365 Education E3 など) へのアップグレードを検討してください。
 
 ## <a name="ok-so-how-are-my-office-365-proplus-licenses-used-with-azure-remoteapp"></a>Azure RemoteApp で Office 365 ProPlus ライセンスを使用するにはどうすればよいですか?
 Office 365 ProPlus の各ユーザー ライセンスでは、1 人のユーザーが最大 5 台のコンピューターとタブレットおよび携帯電話で Office アプリケーションをアクティブ化できます。 デバイスで Office を非アクティブ化するまで、各アクティブ化はユーザーに登録されています (ユーザーは、[Office 365 ポータル](https://portal.office365.com/)で自分のデバイスを管理できます)。
@@ -75,7 +76,7 @@ Office 365 ProPlus を含むコレクションのカスタム イメージを作
 いつでもカスタム イメージを作成できます。[Azure VM](remoteapp-image-on-azurevm.md) を作成するか、[ローカルにイメージを作成](remoteapp-create-custom-image.md)してそれを Azure にアップロードします。 どちらの場合も、共有コンピューター アクティブ化ノードを使用して Office 365 ProPlus をインストールしてください。 [Office 展開ツール](http://blogs.technet.com/b/odsupport/archive/2014/07/11/using-the-office-deployment-tool.aspx)を使用し、インストールの[手順](https://technet.microsoft.com/library/Dn782858.aspx)に従います。  
 
 ### <a name="disable-automatic-updates-for-office-365-proplus-in-your-custom-image---important"></a>カスタム イメージで Office 365 ProPlus の自動更新を無効にする - 重要
-カスタム イメージは、ユーザーの要求が増えたときに新しいリソースを追加するためテンプレートとして、Azure RemoteApp によって使用されます。 遅延や接続の問題を回避するため、イメージでは Office の自動更新を無効にしてください。 無効にしないと、そのテンプレートで作成されたすべてのリソースが、開始時に自動的に更新されます。 代わりに、カスタム イメージの更新には標準の Azure RemoteApp プロセスを使用します。 テンプレート イメージで Office アプリケーションを&1; 回更新した後、Azure RemoteApp でユーザーを更新します。
+カスタム イメージは、ユーザーの要求が増えたときに新しいリソースを追加するためテンプレートとして、Azure RemoteApp によって使用されます。 遅延や接続の問題を回避するため、イメージでは Office の自動更新を無効にしてください。 無効にしないと、そのテンプレートで作成されたすべてのリソースが、開始時に自動的に更新されます。 代わりに、カスタム イメージの更新には標準の Azure RemoteApp プロセスを使用します。 テンプレート イメージで Office アプリケーションを 1 回更新した後、Azure RemoteApp でユーザーを更新します。
 
 自動更新を無効にするには、Office 展開ツールの構成ファイルに以下を追加します。
 
@@ -97,7 +98,7 @@ Office 365 ProPlus を含むコレクションのカスタム イメージを作
 
 更新したイメージを使用するようにコレクションを更新する手順については、 [こちら](remoteapp-update.md)をご覧ください。 ただし、イメージおよび Office 365 ProPlus を更新する方法については、以下の情報を確認してください。
 
-イメージを更新するには&2; つのオプションがあります。イメージを完全に新しいものに置き換える方法と、既存イメージを手動で更新する方法です。
+イメージを更新するには 2 つのオプションがあります。イメージを完全に新しいものに置き換える方法と、既存イメージを手動で更新する方法です。
 
 ### <a name="replace-your-image-with-the-latest-azure-gallery-image--add-customizations"></a>最新の Azure ギャラリー イメージでイメージを置き換え、カスタマイズを追加する
 このオプションでは、Microsoft に Windows Server および Office 365 ProPlus を更新させます。 既存のイメージを更新する代わりに、最新のギャラリー イメージを基にしてまったく新しいイメージを作成します。 次に、イメージをカスタマイズしたときの手順を繰り返し、カスタム アプリのインストールや、イメージ構成の変更などを行います。
@@ -117,10 +118,5 @@ Office 展開ツールを使用した更新の詳細については以下をご�
 * [Office 展開ツールを使用して Office 365 製品のクイック実行を展開する](https://technet.microsoft.com/library/JJ219423.aspx)
 * [Office 展開ツールを使用して Office 365 ProPlus を展開および更新する](https://channel9.msdn.com/Events/Ignite/2015/BRK3168) (ビデオ)
 * [Office 365 ProPlus の更新設定を構成する](https://technet.microsoft.com/library/dn761708.aspx)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

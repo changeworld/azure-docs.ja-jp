@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: a7e7b2dee8aad6112bf253f0396b174287d2d469
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 951a421a2ea7e8bea4d082f03ad85695d3a8063e
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="free-30-day-trial-of-azure-remoteapp"></a>Azure RemoteApp の 30 日間無料試用版
 > [!IMPORTANT]
-> Azure RemoteApp の提供は終了しました。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
+> Azure RemoteApp の提供は、2017 年 8 月 31 日で終了します。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
 > 
 > 
 
@@ -37,10 +38,5 @@ Azure サブスクリプションをお持ちであれば、 [Azure RemoteApp �
 すぐに使用したい場合 [クラウド デプロイの作成方法](https://azure.microsoft.com/documentation/videos/azure-remoteapp-cloud-deployment-overview/)に関する動画をご覧ください。
 
 フィードバックが欲しい場合 [ディスカッション フォーラム](https://feedback.azure.com/forums/247748-azure-remoteapp/)に質問を投稿してください。 [Azure サポート プラン](https://azure.microsoft.com/support/plans/)に加入している場合は、サポート ケースを送信できます。 [フィードバック フォーラム](https://feedback.azure.com/forums/247748-azure-remoteapp/)には、どなたでもフィードバックを送信できます。  
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

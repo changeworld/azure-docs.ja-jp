@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 02/16/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: f92909e0098a543f99baf3df3197a799bc9f1edc
-ms.openlocfilehash: 6c59c98a400da0616762b2bd0c4217d97e22ab86
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: ed1db5521a17988d7936c53afcfe565cc7ba1a38
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -44,7 +44,7 @@ ms.lasthandoff: 03/01/2017
 
 ![][0]
 
-このチュートリアルでは、既存のオンプレミスのシステムに商品情報が格納されているものとし、Azure Relay を使用してそのシステムにアクセスします。 これを、単純なコンソール アプリケーションで実行された、メモリ内の商品のセットが基盤となっている Web サービスでシミュレートします。 このコンソール アプリケーションをユーザー自身のコンピューターで実行し、Web ロールを Azure にデプロイできます。 そうすることで、Azure データセンターで実行されている Web ロールが実際にどのようにコンピューターを呼び出すかを確認できます。ただし、ユーザーのコンピューターは、ほぼ確実に少なくとも&1; つのファイアウォールとネットワーク アドレス変換 (NAT) レイヤーの背後に配置されます。
+このチュートリアルでは、既存のオンプレミスのシステムに商品情報が格納されているものとし、Azure Relay を使用してそのシステムにアクセスします。 これを、単純なコンソール アプリケーションで実行された、メモリ内の商品のセットが基盤となっている Web サービスでシミュレートします。 このコンソール アプリケーションをユーザー自身のコンピューターで実行し、Web ロールを Azure にデプロイできます。 そうすることで、Azure データセンターで実行されている Web ロールが実際にどのようにコンピューターを呼び出すかを確認できます。ただし、ユーザーのコンピューターは、ほぼ確実に少なくとも 1 つのファイアウォールとネットワーク アドレス変換 (NAT) レイヤーの背後に配置されます。
 
 次に、完成した Web アプリケーションの開始ページのスクリーンショットを示します。
 
@@ -211,7 +211,7 @@ Azure で Relay 機能を使用するには、最初にサービス名前空間�
 このセクションでは、商品サービスから取得したデータを表示する単純な ASP.NET アプリケーションを構築します。
 
 ### <a name="create-the-project"></a>プロジェクトを作成する
-1. Microsoft Visual Studio&2013; が管理者特権で実行されていることを確認します。
+1. Microsoft Visual Studio 2013 が管理者特権で実行されていることを確認します。
 2. Visual Studio で、**[ファイル]** メニューの **[新規作成]** をクリックした後、**[プロジェクト]** をクリックします。
 3. **[インストールされたテンプレート]** で **[Visual C#]** をクリックし、**[ASP.NET Web アプリケーション]** をクリックします。 プロジェクト名として、「**ProductsPortal**」と入力します。 次に、 **[OK]**をクリックします
 
@@ -227,7 +227,7 @@ Azure で Relay 機能を使用するには、最初にサービス名前空間�
 
    ![][19]
 8. Click **OK**.
-9. 次に、新しい Web アプリの Azure リソースを構成する必要があります。 「[Web アプリケーションの作成](../app-service-web/web-sites-dotnet-get-started.md#create-a-web-application)」および「[Azure リソースの作成](../app-service-web/web-sites-dotnet-get-started.md#create-the-azure-resources)」のすべての手順に従います。 完了したら、このチュートリアルに戻り、次の手順に進んでください。
+9. 次に、新しい Web アプリの Azure リソースを構成する必要があります。 「[Web アプリケーションの作成](../app-service-web/app-service-web-get-started-dotnet.md)」および「[Azure リソースの作成](../app-service-web/app-service-web-get-started-dotnet.md)」のすべての手順に従います。 完了したら、このチュートリアルに戻り、次の手順に進んでください。
 10. ソリューション エクスプローラーで **[Models]** を右クリックし、**[追加]**、**[クラス]** の順にクリックします。 **[名前]** ボックスに、名前として「**Product.cs**」と入力します。 **[追加]**をクリックします。
 
     ![][17]
@@ -395,7 +395,7 @@ Azure で Relay 機能を使用するには、最初にサービス名前空間�
 次の手順に進む前に、両方のアプリケーションを終了します。
 
 ## <a name="deploy-the-productsportal-project-to-an-azure-web-app"></a>Azure Web アプリに ProductsPortal プロジェクトをデプロイする
-次に、**ProductsPortal** フロントエンドを Azure Web アプリに変換します。 最初に、「[Azure への Web プロジェクトのデプロイ](../app-service-web/web-sites-dotnet-get-started.md#deploy-the-web-project-to-azure)」セクションのすべての手順を実行して、**ProductsPortal** プロジェクトをデプロイします。 デプロイが完了したら、このチュートリアルに戻り、次の手順に進んでください。
+次に、**ProductsPortal** フロントエンドを Azure Web アプリに変換します。 最初に、「[Azure への Web プロジェクトのデプロイ](../app-service-web/app-service-web-get-started-dotnet.md)」セクションのすべての手順を実行して、**ProductsPortal** プロジェクトをデプロイします。 デプロイが完了したら、このチュートリアルに戻り、次の手順に進んでください。
 
 > [!NOTE]
 > デプロイの後で **ProductsPortal** Web プロジェクトが自動的に起動するとき、ブラウザー ウィンドウにエラー メッセージが表示されることがあります。 これは想定されたエラーです。**ProductsServer** アプリケーションがまだ実行されていないため、このようなエラーが発生します。

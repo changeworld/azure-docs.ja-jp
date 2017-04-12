@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: a37804025cbd298ef2b98c84b5cc59c0cba07dd9
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 75b0f8d6b25a80f11002b683152cfb294cbb68bd
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="requirements-for-azure-remoteapp-images"></a>Azure RemoteApp イメージの要件
 > [!IMPORTANT]
-> Azure RemoteApp の提供は終了しました。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
+> Azure RemoteApp の提供は、2017 年 8 月 31 日で終了します。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
 > 
 > 
 
@@ -42,7 +43,7 @@ Azure RemoteApp で使用するためにアップロードできるイメージ�
 * VHD は、第 2 世代仮想マシンであってはなりません。
 * VHD は固定サイズにすることも、動的に拡大する容量可変にすることも可能です。 固定サイズの VHD より Azure へのアップロードの所要時間が短いことから、容量可変の VHD が推奨されます。
 * ディスクはマスター ブート レコード (MBR) パーティション分割のスタイルを使用して初期化しなければなりません。 GUID パーティション テーブル (GPT) パーティション分割のスタイルはサポートされていません。
-* VHD には Windows Server 2012 R2 の単一インストールが含まれていなければなりません。 複数のボリュームを含むことはできますが、Windows がインストールされるのは&1; ボリュームのみです。
+* VHD には Windows Server 2012 R2 の単一インストールが含まれていなければなりません。 複数のボリュームを含むことはできますが、Windows がインストールされるのは 1 ボリュームのみです。
 * リモート デスクトップ セッション ホスト (RDSH) ロールとデスクトップ エクスペリエンスの機能がインストール済みでなければなりません。
 * リモート デスクトップ接続ブローカーのロールをインストール *しないで* ください。
 * 暗号化ファイル システム (EFS) は無効にする必要があります。
@@ -50,10 +51,5 @@ Azure RemoteApp で使用するためにアップロードできるイメージ�
 * スナップショット チェーンからの VHD のアップロードはサポートされていません。
 
 Azure RemoteApp のイメージ作成の詳細については、「 [Azure RemoteApp イメージの作成](remoteapp-imageoptions.md) 」を参照してください。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

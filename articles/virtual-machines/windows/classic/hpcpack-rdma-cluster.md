@@ -16,9 +16,9 @@ ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 680b2bec3af18273d0ac43d7102a99392fd8ebe0
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 4e542ea6431933668d96f7028431826bceb9f337
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -85,7 +85,7 @@ Windows でコンピューティング集中型インスタンスを使用する
    ジョブの実行が完了したら、HPC クラスター マネージャーでノードをオフラインにし、 **[停止]** 操作を使用します。
 
 ## <a name="scenario-2-deploy-compute-nodes-in-compute-intensive-vms-iaas"></a>シナリオ 2: 計算ノードをコンピューティング集中型 VM にデプロイする (IaaS)
-このシナリオでは、Azure 仮想ネットワークの VM に HPC Pack ヘッド ノードとクラスター計算ノードをデプロイします。 HPC Pack には、自動デプロイ スクリプトや Azure クイックスタート テンプレートなど、[Azure VM でのデプロイ オプション](../../virtual-machines-linux-hpcpack-cluster-options.md)がいくつか用意されています。 例として、下記の考慮事項と手順は、[HPC Pack IaaS デプロイ スクリプト](hpcpack-cluster-powershell-script.md) を使用して Azure での HPC Pack 2012 R2 クラスターのデプロイを自動化する方法を示しています。
+このシナリオでは、Azure 仮想ネットワークの VM に HPC Pack ヘッド ノードとクラスター計算ノードをデプロイします。 HPC Pack には、自動デプロイ スクリプトや Azure クイックスタート テンプレートなど、[Azure VM でのデプロイ オプション](../../linux/hpcpack-cluster-options.md)がいくつか用意されています。 例として、下記の考慮事項と手順は、[HPC Pack IaaS デプロイ スクリプト](hpcpack-cluster-powershell-script.md) を使用して Azure での HPC Pack 2012 R2 クラスターのデプロイを自動化する方法を示しています。
 
 ![Cluster in Azure VMs][iaas]
 
@@ -102,7 +102,7 @@ Windows でコンピューティング集中型インスタンスを使用する
    * **Windows Server オペレーティング システム**: RDMA 接続をサポートするには、計算ノード VM 用に Windows Server 2012 R2 または Windows Server 2012 オペレーティング システムを指定します。
    * **クラウド サービス**: ヘッド ノードと計算ノードは、それぞれ異なるクラウド サービスにデプロイすることをお勧めします。
    * **ヘッド ノードのサイズ**: このシナリオでは、ヘッド ノードに少なくとも A4 (XL) サイズを用意することを検討してください。
-   * **HpcVmDrivers 拡張機能**: デプロイ スクリプトは、Windows Server オペレーティング システムを持つ A8 または A9 サイズの計算ノードをデプロイするときに、Azure VM エージェントと HpcVmDrivers 拡張機能を自動的にインストールします。 HpcVmDrivers は、RDMA ネットワークに接続するためのドライバーを計算ノード VM にインストールします。 RDMA 対応の H シリーズの VM では、HpcVmDrivers 拡張機能を手動でインストールする必要があります。 「[H シリーズとコンピューティング集中型 A シリーズの VM について](../../virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#access-to-the-rdma-network)」を参照してください。
+   * **HpcVmDrivers 拡張機能**: デプロイ スクリプトは、Windows Server オペレーティング システムを持つ A8 または A9 サイズの計算ノードをデプロイするときに、Azure VM エージェントと HpcVmDrivers 拡張機能を自動的にインストールします。 HpcVmDrivers は、RDMA ネットワークに接続するためのドライバーを計算ノード VM にインストールします。 RDMA 対応の H シリーズの VM では、HpcVmDrivers 拡張機能を手動でインストールする必要があります。 「[H シリーズとコンピューティング集中型 A シリーズの VM について](../a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#access-to-the-rdma-network)」を参照してください。
    * **クラスター ネットワークの構成**: デプロイ スクリプトにより、HPC Pack クラスターはトポロジ 5 (Enterprise ネットワークのすべてのノード) で自動的にセットアップされます。 このトポロジは、VM でのすべての HPC Pack クラスターのデプロイに必要です。 クラスター ネットワークのトポロジを後で変更しないでください。
 2. **計算ノードをオンラインにしてジョブを実行できるようにする**
    
