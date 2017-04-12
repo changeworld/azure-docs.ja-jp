@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [App Service とは](app-service-value-prop-what-is.md)
 ## [動作のしくみ](app-service-how-works-readme.md)
 ## [App Service プラン](azure-web-sites-web-hosting-plans-in-depth-overview.md)
@@ -21,12 +21,12 @@
 ### [Xamarin.iOS](../app-service-mobile/app-service-mobile-xamarin-ios-get-started.md)
 
 ## Web アプリの作成
-### [.NET](../app-service-web/web-sites-dotnet-get-started.md)
-### [Node.js](../app-service-web/app-service-web-nodejs-get-started.md)
-### [Python](../app-service-web/web-sites-python-ptvs-django-mysql.md)
-### [Java](../app-service-web/web-sites-java-get-started.md)
-### [Marketplace アプリ](../app-service-web/web-sites-php-web-site-gallery.md)
-### [PHP](../app-service-web/app-service-web-php-get-started.md)    
+### [.NET](../app-service-web/app-service-web-get-started-dotnet.md)
+### [PHP](../app-service-web/app-service-web-get-started-php.md)    
+### [Node.JS](../app-service-web/app-service-web-get-started-nodejs.md)
+### [Java](../app-service-web/app-service-web-get-started-java.md)
+### [Python](../app-service-web/app-service-web-get-started-python.md)
+### [HTML](../app-service-web/app-service-web-get-started-html.md)
 
 # 方法
 

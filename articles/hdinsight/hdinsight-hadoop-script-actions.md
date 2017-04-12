@@ -17,9 +17,9 @@ ms.date: 02/06/2017
 ms.author: jgao
 ROBOTS: NOINDEX
 translationtype: Human Translation
-ms.sourcegitcommit: 6c468c8ed0d817a32c343d55cac780b904ee8668
-ms.openlocfilehash: 6cedd18c22bcd97f7fb2b6926bdf637fe9f04ab4
-ms.lasthandoff: 02/07/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 989f45eed033409b1ade183827719acdd9a4b0b4
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -29,7 +29,7 @@ HDInsight 用の Script Action スクリプトを記述する方法について�
 
 
 > [!IMPORTANT]
-> このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。 Windows では、バージョン 3.4 より前の HDInsight のみを使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。 Linux ベースのクラスターでのスクリプト アクションの使用方法について詳しくは、[HDInsight でのスクリプト アクションの開発 (Linux) ](hdinsight-hadoop-script-actions-linux.md)に関するページをご覧ください。
+> このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。 Windows では、バージョン 3.4 より前の HDInsight のみを使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。 Linux ベースのクラスターでのスクリプト アクションの使用方法について詳しくは、[HDInsight でのスクリプト アクションの開発 (Linux) ](hdinsight-hadoop-script-actions-linux.md)に関するページをご覧ください。
 >
 >
 
@@ -93,7 +93,7 @@ Windows オペレーティング システムで HDInsight クラスターを作
 
     Write-HDILog "$configFileName has been configured."
 
-このスクリプトでは、構成ファイルの名前、変更するプロパティ、設定する値、および説明の&4; つのパラメーターを使用します。 For example:
+このスクリプトでは、構成ファイルの名前、変更するプロパティ、設定する値、および説明の 4 つのパラメーターを使用します。 For example:
 
     hive-site.xml hive.metastore.client.socket.timeout 90
 

@@ -12,12 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 03/31/2017
 ms.author: luisca
+ROBOTS: NOINDEX, NOFOLLOW
+redirect_url: machine-learning-datamarket-deprecation
 translationtype: Human Translation
-ms.sourcegitcommit: c5d1812a3bd7e1ad3621ca691339f01729882b08
-ms.openlocfilehash: 67131bbaccff549817bfe5fdf874d609ea22c2bc
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 21cf8b726ffd9b05f771c8ac6480140a6ed3199e
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -53,7 +55,7 @@ Azure Machine Learning の Recommendations を使用するには、次の手順�
 * カタログが保持できる項目の最大数は 100,000 です。
 * 保持される使用状況ポイントの最大数は ~5,000,000 です。 新しいデータがアップロードまたは報告されると、最も古いデータが削除されます。
 * POST で送信できるデータ (例: カタログ データのインポート、使用データのインポート) の最大サイズは 200 MB です。
-* 無効な推奨モデルのビルドの&1; 秒あたりのトランザクションの数は ~2TPS です。 有効な推奨モデルのビルドは、最大で 20TPS を保持できます。
+* 無効な推奨モデルのビルドの 1 秒あたりのトランザクションの数は ~2TPS です。 有効な推奨モデルのビルドは、最大で 20TPS を保持できます。
 
 ## <a name="integration"></a>統合
 ### <a name="authentication"></a>認証
@@ -66,12 +68,12 @@ Microsoft Azure Marketplace は、Basic または OAuth のいずれかの認証
 
     Where <creds> = ConvertToBase64("AccountKey:" + yourAccountKey);  
 
-Base&64; に変換 (c#)
+Base 64 に変換 (c#)
 
     var bytes = Encoding.UTF8.GetBytes("AccountKey:" + yourAccountKey);
     var creds = Convert.ToBase64String(bytes);
 
-Base&64; に変換 (JavaScript)
+Base 64 に変換 (JavaScript)
 
     var creds = window.btoa("AccountKey" + ":" + yourAccountKey);
 
@@ -423,7 +425,7 @@ OData XML
 
 HTTP 状態コード: 200
 
-応答には、ビルドごとに&1; つのエントリが含まれています。 各エントリには、次のデータが含まれています。
+応答には、ビルドごとに 1 つのエントリが含まれています。 各エントリには、次のデータが含まれています。
 
 * `feed/entry/content/properties/UserName` – ユーザーの名前。
 * `feed/entry/content/properties/ModelName` – モデルの名前。
@@ -508,7 +510,7 @@ OData XML
 
 HTTP 状態コード: 200
 
-応答には、推奨項目ごとに&1; つのエントリが含まれています。 各エントリには、次のデータが含まれています。
+応答には、推奨項目ごとに 1 つのエントリが含まれています。 各エントリには、次のデータが含まれています。
 
 * `Feed\entry\content\properties\Id` - 推奨項目の ID。
 * `Feed\entry\content\properties\Name` - 項目の名前。

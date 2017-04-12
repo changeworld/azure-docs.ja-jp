@@ -16,15 +16,15 @@ ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 9d1a89e84b7340bf4bb3d759b4ae856431efcc0e
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: e1e915e07591ed104a30e9194ec6228b04519b8c
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="design-and-build-a-management-solution-in-operations-management-suite-oms-preview"></a>Operations Management Suite (OMS) での管理ソリューションの設計と構築 (プレビュー)
 > [!NOTE]
-> 本記事は、現在プレビュー段階である OMS の管理ソリューションの作成手順に関する暫定版ドキュメントです。 本記事で説明するスキーマは、変更されることがあります。   j
+> 本記事は、現在プレビュー段階である OMS の管理ソリューションの作成手順に関する暫定版ドキュメントです。 本記事で説明するスキーマは、変更されることがあります。
 
 [管理ソリューション](operations-management-suite-solutions.md)は、お客様の OMS ワークスペースに追加できるパッケージの管理シナリオを提供することで、Operations Management Suite (OMS) の機能を拡張します。  この記事では、最も一般的な要件に適した管理ソリューションを設計および構築する基本的な手順について説明します。  管理ソリューションを初めて構築する場合は、このプロセスを出発点として使用し、要件の変化に応じてより複雑なソリューションの概念を活用できます。
 

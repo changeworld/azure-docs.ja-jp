@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
-ms.openlocfilehash: d10ae92ba79014d9700613c06ef37a437089f5ac
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 5e91f640ab72fd3a5fffcb0f9d7bac1e9e031249
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -35,7 +36,7 @@ Azure に仮想マシン (VM) を作成し、複数のネットワーク イン�
 * 現時点では、複数 NIC の VM のインスタンスレベル パブリック IP (LPIP) アドレス (従来のデプロイ) はサポートされていません。
 * VM 内の NIC の順序はランダムになり、Azure インフラストラクチャの更新によって変更される場合もあります。 ただし、IP アドレスと、対応するイーサネットの MAC アドレスは変更されません。 たとえば、**Eth1** の IP アドレスが 10.1.0.100 で、MAC アドレスが 00-0D-3A-B0-39-0D だとします。Azure インフラストラクチャが更新されて再起動された後、これを **Eth2** に変更できますが、IP アドレスと MAC アドレスの組み合わせは同じままになります。 お客様が再起動を開始した場合、NIC の順序は変更されません。
 * 各 VM の NIC のアドレスはそれぞれサブネットに存在する必要があるため、1 つの VM 上の複数 NIC それぞれには、同じサブネット内のアドレスに割り当てることができます。
-* VM のサイズによって、VM に作成できる NIC の数が決まります。 各サイズの VM でサポートされる NIC の数を確認するには、[Windows Server](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) と [Linux](../virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) の VM のサイズに関する記事を参照してください。 
+* VM のサイズによって、VM に作成できる NIC の数が決まります。 各サイズの VM でサポートされる NIC の数を確認するには、[Windows Server](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) と [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) の VM のサイズに関する記事を参照してください。 
 
 ## <a name="network-security-groups-nsgs"></a>ネットワーク セキュリティ グループ (NSG)
 リソース マネージャー デプロイでは、複数 NIC が有効になっている VM 上の NIC など、VM 上の任意の NIC をネットワーク セキュリティ グループ (NSG) に関連付けることができます。 NIC にサブネット内のアドレスが割り当てられ、そのサブネットが NSG に関連付けられている場合、サブネットの NSG のルールがその NIC にも適用されます。 サブネットを NSG に関連付けるだけでなく、NIC を NSG に関連付けることもできます。
@@ -227,10 +228,5 @@ Linux VM の場合、既定の動作では弱いホスト ルーティングが�
 ## <a name="next-steps"></a>次のステップ
 * [リソース マネージャー デプロイの 2 層アプリケーションのシナリオで複数 NIC の VM](virtual-network-deploy-multinic-arm-template.md)をデプロイします。
 * [従来のデプロイの 2 層アプリケーションのシナリオで複数 NIC の VM](virtual-network-deploy-multinic-classic-ps.md)をデプロイします。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

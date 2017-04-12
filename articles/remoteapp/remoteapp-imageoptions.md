@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 12f27315348040ac897c1ff286b54d38e9950c7d
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: f2decec5385ffab59a441cdc28da80371b579df7
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="create-an-azure-remoteapp-image"></a>Azure RemoteApp イメージの作成
 > [!IMPORTANT]
-> Azure RemoteApp の提供は終了しました。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
+> Azure RemoteApp の提供は、2017 年 8 月 31 日で終了します。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
 > 
 > 
 
@@ -36,10 +37,5 @@ Azure RemoteApp は、イメージを使用してユーザーと共有してい�
 * RemoteApp サブスクリプションに含まれる [テンプレート イメージ](remoteapp-images.md) のいずれか 1 つを使用できます。 これらのイメージは、RemoteApp チームによって作成および管理されているもので、イメージに含まれる標準的なアプリケーション (Office スイートなど) をユーザーが使用できます。 なお、運用設定では Office 365 Pro Plus イメージのみ使用可能です。
 
 イメージの取得および作成方法に関わりなく、 [アプリ要件](remoteapp-appreqs.md) を正しく理解し、アプリが RemoteApp で正常に動作することを確認してください。 次の手順は、[クラウド](remoteapp-create-cloud-deployment.md) コレクションまたは[ハイブリッド](remoteapp-create-hybrid-deployment.md) コレクションの作成です。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

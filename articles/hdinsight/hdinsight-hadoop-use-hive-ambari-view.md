@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 02/08/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 5ec4b964066687b506686709c3dc5ed5b402fbaf
-ms.openlocfilehash: a846d5a70451ed3082b90d87b90bef0eb6da5993
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 511d6dd1933f44cd0cb5ba800972a7c112a24c04
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/09/2017
 
 [!INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
 
-Ambari は、Linux ベースの HDInsight クラスターに付属する管理および監視ユーティリティです。 Ambari が提供する機能の&1; つに、Hive クエリを実行するときに使用される Web UI があります。 これを **Hive ビュー**と呼びます。これは、HDInsight クラスターに付属する Ambari のビューの一部です。
+Ambari は、Linux ベースの HDInsight クラスターに付属する管理および監視ユーティリティです。 Ambari が提供する機能の 1 つに、Hive クエリを実行するときに使用される Web UI があります。 これを **Hive ビュー**と呼びます。これは、HDInsight クラスターに付属する Ambari のビューの一部です。
 
 > [!NOTE]
 > Ambari には数多くの機能がありますが、このドキュメントではそれらについて説明しません。 詳細については、「 [Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」を参照してください。
@@ -37,7 +37,7 @@ Ambari は、Linux ベースの HDInsight クラスターに付属する管理�
 * Linux ベースの HDInsight クラスター。 クラスターの作成方法については、[Linux ベースの HDInsight の使用](hdinsight-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 
 > [!IMPORTANT]
-> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。
 
 ## <a name="open-the-hive-view"></a>Hive ビューを開く
 
@@ -68,7 +68,7 @@ Web ブラウザーで https://CLUSTERNAME.azurehdinsight.net にアクセスし
 Hive ビューから、次の手順を使用すると、Hive クエリを実行できます。
 
 1. ページの **[Query Editor]** セクションで、次の HiveQL ステートメントをワークシートに貼り付けます。
-   
+
     ```hiveql
     DROP TABLE log4jLogs;
     CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
@@ -76,12 +76,12 @@ Hive ビューから、次の手順を使用すると、Hive クエリを実行�
     STORED AS TEXTFILE LOCATION '/example/data/';
     SELECT t4 AS sev, COUNT(*) AS cnt FROM log4jLogs WHERE t4 = '[ERROR]' GROUP BY t4;
     ```
-   
+
     これらのステートメントは次のアクションを実行します。
-   
+
    * **DROP TABLE** - テーブルが既存の場合にテーブルとデータ ファイルを削除します。
 
-   * **CREATE EXTERNAL TABLE** - Hive に新しく "外部" テーブルを作成します。 
+   * **CREATE EXTERNAL TABLE** - Hive に新しく "外部" テーブルを作成します。
    外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に残されます。
 
    * **ROW FORMAT** - Hive にデータの形式を示します。 ここでは、各ログのフィールドは、スペースで区切られています。
@@ -89,43 +89,43 @@ Hive ビューから、次の手順を使用すると、Hive クエリを実行�
    * **STORED AS TEXTFILE LOCATION** - Hive に、データの格納先 (example/data ディレクトリ) と、データはテキストとして格納されていることを示します。
 
    * **SELECT** - t4 列の値が [ERROR] であるすべての行の数を指定します。
-     
+
      > [!NOTE]
      > 基になるデータが外部ソースによって更新されると考えられる場合は、外部テーブルを使用する必要があります。 たとえば、データの自動アップロード処理や別の MapReduce 操作によってです。 外部テーブルを削除しても、データは削除*されません*。テーブル定義のみが削除されます。
 
 2. クエリを開始するには、クエリ エディターの下部にある **[Execute]** ボタンを使用します。 ボタンがオレンジ色に変わり、テキストが **[Stop execution]** に変わります。 クエリ エディターの下に **[Query Process Results]** セクションが表示され、ジョブに関する情報が表示されます。
-   
+
    > [!IMPORTANT]
    > ブラウザーによっては、ログまたは結果の情報が正しく更新されない場合があります。 ジョブを実行したときに、ジョブの実行が続いているにもかかわらずログが更新されたり結果が返されたりしない場合は、Mozilla FireFox または Google Chrome を代わりに使用してください。
- 
+
 3. クエリが完了すると、**[Query Process Results (クエリ処理結果)]** セクションに操作の結果が表示されます。 クエリが完了すると、**[Stop execution]** ボタンも緑色の **[Execute]** ボタンに戻ります。 **[Results]** タブには次の情報が表示されます。
-   
+
         sev       cnt
         [ERROR]   3
-   
+
     **[Logs]** タブを使用すると、ジョブによって作成されたログ情報を表示できます。
-   
+
    > [!TIP]
    > **[Query Process Results]** セクションの左上にある **[Save results]** ドロップダウン ダイアログでは、結果をダウンロードまたは保存できます。
 
-4. このクエリの最初の&4; 行を選択し、**[Execute]** を選択します。 ジョブが完了したときに結果は生成されません。 クエリの一部が選択されているときに **[Execute]** ボタンを使用すると、選択したステートメントのみが実行されます。 この場合は、テーブルの行を取得する最後のステートメントが選択範囲に含まれていませんでした。 その行のみを選択して **[Execute]** を使用すると、予想どおりの結果が表示されます。
+4. このクエリの最初の 4 行を選択し、**[Execute]** を選択します。 ジョブが完了したときに結果は生成されません。 クエリの一部が選択されているときに **[Execute]** ボタンを使用すると、選択したステートメントのみが実行されます。 この場合は、テーブルの行を取得する最後のステートメントが選択範囲に含まれていませんでした。 その行のみを選択して **[Execute]** を使用すると、予想どおりの結果が表示されます。
 
 5. 新しいワークシートを追加するには、**クエリ エディター**の下部にある **[New Worksheet]** ボタンを使用します。 新しいワークシートに、次の HiveQL ステートメントを入力します。
-   
+
     ```hiveql
     CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
     INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]';
     ```
-   
-    These statements perform the following actions:
-   
+
+  これらのステートメントは次のアクションを実行します。
+
    * **CREATE TABLE IF NOT EXISTS** - 既存のテーブルがない場合、テーブルを作成します。 **EXTERNAL** キーワードは使用されないため、内部テーブルが作成されます。 内部テーブルは Hive データ ウェアハウスに格納され、完全に Hive によって管理されます。 外部テーブルとは異なり、内部テーブルを削除すると基盤となるデータも削除されます。
 
    * **STORED AS ORC** - Optimized Row Columnar (ORC) 形式でデータを格納します。 この形式は、Hive にデータを格納するための、非常に効率的で適切な形式です。
 
    * **INSERT OVERWRITE ...SELECT** - [ERROR] を含む **log4jLogs** テーブルの列を選択し、**errorLogs** テーブルにデータを挿入します。
-     
-     **[Execute]** ボタンを使用して、このクエリを実行します。 クエリから返される行が&0; の場合、**[Results]** タブには情報が含まれません。 クエリが完了すると、状態として **[SUCCEEDED]** が表示されます。
+
+     **[Execute]** ボタンを使用して、このクエリを実行します。 クエリから返される行が 0 の場合、**[Results]** タブには情報が含まれません。 クエリが完了すると、状態として **[SUCCEEDED]** が表示されます。
 
 ### <a name="hive-settings"></a>Hive の設定
 
@@ -174,13 +174,13 @@ Hive ビューから、次の手順を使用すると、Hive クエリを実行�
 ## <a name="saved-queries"></a>保存済みのクエリ
 
 1. クエリ エディターでワークシートを作成し、次のクエリを入力します。
-   
+
     ```hiveql
     SELECT * from errorLogs;
     ```
-   
+
     クエリを実行して、動作することを確認します。 結果は次の例のようになります。
-   
+
         errorlogs.t1     errorlogs.t2     errorlogs.t3     errorlogs.t4     errorlogs.t5     errorlogs.t6     errorlogs.t7
         2012-02-03     18:35:34     SampleClass0     [ERROR]     incorrect     id     
         2012-02-03     18:55:54     SampleClass1     [ERROR]     incorrect     id     
@@ -235,5 +235,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
-
 

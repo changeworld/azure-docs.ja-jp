@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 02/10/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
-ms.openlocfilehash: fa3f31cdd708729071876ffad707bea70567da83
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 6b1dede903083d1771733330a069b6ab533d9f00
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 03/01/2017
 Microsoft Azure のアカウントが必要です。 アカウントを持っていない場合は、[無料試用版にサインアップ](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)するか [Visual Studio サブスクライバー特典を有効](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)にしてください。
 
 > [!NOTE]
-> Azure アカウントがなくても、[App Service を試用](https://azure.microsoft.com/try/app-service/)できます。 スターター アプリを作成し、最大&1; 時間使用できます。クレジット カードも契約も不要です。
+> Azure アカウントがなくても、[App Service を試用](https://azure.microsoft.com/try/app-service/)できます。 スターター アプリを作成し、最大 1 時間使用できます。クレジット カードも契約も不要です。
 > 
 > 
 
@@ -103,7 +103,7 @@ Azure でアプリのデプロイが完了すると、別の通知が表示さ�
     ![Umbraco の構成 - Azure App Service での初めての Umbraco](./media/app-service-web-get-started-dotnet-portal/umbraco-config.png)
     
 ## <a name="next-steps"></a>次のステップ
-* [Visual Studio を使用して Azure App Service に ASP.NET Web アプリをデプロイする](web-sites-dotnet-get-started.md) - 含まれるアプリケーション テンプレートのいずれかを使用して、Visual Studio から新しい Azure Web アプリを作成する方法について学習します。
+* [Visual Studio を使用して Azure App Service に ASP.NET Web アプリをデプロイする](app-service-web-get-started-dotnet.md) - 含まれるアプリケーション テンプレートのいずれかを使用して、Visual Studio から新しい Azure Web アプリを作成する方法について学習します。
 * [Azure App Service にコードをデプロイする](web-sites-deploy.md) - FTP やソース管理リポジトリからデプロイする方法について学習します。
 * [初めての Web アプリに機能を追加する](app-service-web-get-started-2.md) - Azure アプリを次のレベルに進めます。 ユーザーを認証します。 必要に応じてスケールを変更したり、 パフォーマンスのアラートを設定したりできます。 いずれも、数回のクリックで実現できます。
 

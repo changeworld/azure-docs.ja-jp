@@ -17,8 +17,9 @@ ms.workload: iaas-sql-server
 ms.date: 01/09/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 7a75cb16a1d71b55b7b74107a82b9becbe7f6cb3
-ms.openlocfilehash: 22ce8f67cd3546a0983ce395372e8459e895c136
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 1ceb55ba137a61d6bc2121a6b23df2c87e5b7ce2
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -33,7 +34,7 @@ ms.openlocfilehash: 22ce8f67cd3546a0983ce395372e8459e895c136
 
    ![可用性グループ](./media/virtual-machines-windows-portal-sql-availability-group-dr/00-availability-group-basic.png)
 
-このデプロイでは、すべての仮想マシンが&1; つの Azure リージョンに存在します。 可用性グループ レプリカは、SQL-1 および SQL-2 上の自動フェールオーバーとの同期コミットを持つことができます。 このアーキテクチャを構築するには、[可用性グループのテンプレートまたはチュートリアルに関する記事](virtual-machines-windows-portal-sql-availability-group-overview.md)をご覧ください。
+このデプロイでは、すべての仮想マシンが 1 つの Azure リージョンに存在します。 可用性グループ レプリカは、SQL-1 および SQL-2 上の自動フェールオーバーとの同期コミットを持つことができます。 このアーキテクチャを構築するには、[可用性グループのテンプレートまたはチュートリアルに関する記事](virtual-machines-windows-portal-sql-availability-group-overview.md)をご覧ください。
 
 このアーキテクチャは、Azure リージョンにアクセスできなくなった場合、ダウンタイムに対して脆弱です。 この脆弱性に対処するには、別の Azure リージョンにレプリカを追加します。 次の図は、新しいアーキテクチャの概要を示したものです。
 
@@ -42,7 +43,7 @@ ms.openlocfilehash: 22ce8f67cd3546a0983ce395372e8459e895c136
 上の図では、SQL-3 という名前の新しい仮想マシンが示されています。 SQL-3 は別の Azure リージョンにあります。 SQL-3 は、Windows Server フェールオーバー クラスターに追加されています。 SQL-3 は可用性グループのレプリカをホストできます。 最後に、SQL-3 の Azure リージョンに新しい Azure Load Balancer があることに注意してください。
 
 >[!NOTE]
-> 同じリージョン内に複数の仮想マシンがある場合は、Azure 可用性セットが必要です。 リージョン内の仮想マシンが&1; つだけの場合は、可用性セットは必要ありません。 可用性セットに仮想マシンを配置できるのは作成時のみです。 可用性セットに仮想マシンが既に存在する場合は、後で追加レプリカ用の仮想マシンを追加できます。 
+> 同じリージョン内に複数の仮想マシンがある場合は、Azure 可用性セットが必要です。 リージョン内の仮想マシンが 1 つだけの場合は、可用性セットは必要ありません。 可用性セットに仮想マシンを配置できるのは作成時のみです。 可用性セットに仮想マシンが既に存在する場合は、後で追加レプリカ用の仮想マシンを追加できます。 
 
 このアーキテクチャでは、通常、リモート リージョン内のレプリカは非同期コミット可用性モードおよび手動フェールオーバー モードで構成されます。
 
@@ -183,10 +184,5 @@ ms.openlocfilehash: 22ce8f67cd3546a0983ce395372e8459e895c136
 * [AlwaysOn 可用性グループ](http://msdn.microsoft.com/library/hh510230.aspx)
 * [Azure Virtual Machines](http://docs.microsoft.com/azure/virtual-machines/windows/)
 * [Azure Load Balancer](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer)
-* [Azure の可用性セット](../../virtual-machines-windows-manage-availability.md)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
+* [Azure の可用性セット](../manage-availability.md)
 

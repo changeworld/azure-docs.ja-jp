@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 83c063bb003ccda80ba6c1a74aadcd624d77ae47
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 2a1e1004a4dab48aed75740a24ff5556242eaa67
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -62,17 +62,17 @@ App Service の Web Apps に加え、Azure では Web サイトと Web アプリ
 まず App Service で新しい Web アプリにサンプル コードをデプロイするには、次のドロップダウン ボックスにあるチュートリアルのいずれかに従ってください。 無料の Azure アカウントが必要になります。
 
 > [!div class="op_single_selector"]
-> * [初めての HTML サイトを Azure に 5 分でデプロイする](app-service-web-get-started-html-cli-nodejs.md)
-> * [初めての ASP.NET Web アプリを Azure に 5 分でデプロイする](app-service-web-get-started-dotnet-cli-nodejs.md)
-> * [初めての PHP Web アプリを Azure に 5 分でデプロイする](app-service-web-get-started-php-cli-nodejs.md)
-> * [初めての Node.js Web アプリを Azure に 5 分でデプロイする](app-service-web-get-started-nodejs-cli-nodejs.md)
-> * [初めての Python Web アプリを Azure に 5 分でデプロイする](app-service-web-get-started-python-cli-nodejs.md)
+> * [初めての ASP.NET Web アプリを Azure に 5 分でデプロイする](app-service-web-get-started-dotnet.md)
+> * [初めての PHP Web アプリを Azure に 5 分でデプロイする](app-service-web-get-started-php.md)
+> * [初めての Node.js Web アプリを Azure に 5 分でデプロイする](app-service-web-get-started-nodejs.md)
 > * [初めての Java Web アプリを Azure に 5 分でデプロイする](app-service-web-get-started-java.md)
+> * [初めての Python Web アプリを Azure に 5 分でデプロイする](app-service-web-get-started-python.md)
+> * [初めての HTML サイトを Azure に 5 分でデプロイする](app-service-web-get-started-html.md)
 > 
 > 
 
 > [!NOTE]
-> Azure アカウントがなくても、[App Service を試用](https://azure.microsoft.com/try/app-service/)できます。 スターター アプリを作成し、最大&1; 時間使用できます。クレジット カードも契約も不要です。
+> Azure アカウントがなくても、[App Service を試用](https://azure.microsoft.com/try/app-service/)できます。 スターター アプリを作成し、最大 1 時間使用できます。クレジット カードも契約も不要です。
 > 
 > 
 

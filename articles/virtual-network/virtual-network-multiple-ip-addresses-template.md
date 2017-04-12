@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: 5267ed6a2d9278b79e9fb98c1067eceae819cb6f
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 262acf8150b5065c3b7b79494856b2bdadd4e4ba
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -47,8 +47,8 @@ ms.lasthandoff: 03/22/2017
 
 |名前|Description|
 |---|---|
-|adminUsername|管理者のユーザー名です。 ユーザー名は [Azure のユーザー名要件](../virtual-machines/virtual-machines-windows-faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に準拠する必要があります。|
-|adminPassword|管理者パスワードです。パスワードは [Azure のパスワード要件](../virtual-machines/virtual-machines-windows-faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)に準拠する必要があります。|
+|adminUsername|管理者のユーザー名です。 ユーザー名は [Azure のユーザー名要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に準拠する必要があります。|
+|adminPassword|管理者パスワードです。パスワードは [Azure のパスワード要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)に準拠する必要があります。|
 |dnsLabelPrefix|PublicIPAddressName1 の DNS 名です。 DNS 名は、VM に割り当てられているパブリック IP アドレスのいずれかに解決されます。 名前は、VM を作成する Azure リージョン (場所) 内で一意である必要があります。|
 |dnsLabelPrefix1|PublicIPAddressName2 の DNS 名です。 DNS 名は、VM に割り当てられているパブリック IP アドレスのいずれかに解決されます。 名前は、VM を作成する Azure リージョン (場所) 内で一意である必要があります。|
 |OSVersion|VM の Windows または Linux バージョンです。 オペレーティング システムは、選択した Windows または Linux バージョンの完全にパッチが適用されたイメージです。|
@@ -81,7 +81,7 @@ PowerShell を使用してテンプレートをデプロイするには、次の
 
     テンプレートのデプロイに使用するオプションに関係なく、この記事の「[パラメーター](#parameters)」セクションの一覧にあるパラメーター値を指定する必要があります。 パラメーター ファイルを使用してパラメーターを指定する場合は、GitHub の[パラメーター ファイル](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.parameters.json)の内容を自分のコンピューター上の新しいファイルにコピーします。 ファイル内の値を変更します。 作成したファイルを、`-TemplateParameterFile` パラメーターの値として使用します。
     
-    OSVersion、ImagePublisher、imageOffer のパラメーターの有効な値を取得するには、「[Navigate and select Windows VM images (Windows VM イメージの検索と選択)](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md)」の記事の手順を実行します。
+    OSVersion、ImagePublisher、imageOffer のパラメーターの有効な値を取得するには、「[Navigate and select Windows VM images (Windows VM イメージの検索と選択)](../virtual-machines/windows/cli-ps-findimage.md)」の記事の手順を実行します。
 
     >[!TIP]
     >dnslabelprefix を使用できるかどうかわからない場合は、`Test-AzureRmDnsAvailability -DomainNameLabel <name-you-want-to-use> -Location <location>` コマンドを入力して確認します。 使用できる場合は、コマンドが `True` を返します。
@@ -96,7 +96,7 @@ Azure CLI 1.0 を使用してテンプレートをデプロイするには、次
 
     テンプレートのデプロイに使用するオプションに関係なく、この記事の「[パラメーター](#parameters)」セクションの一覧にあるパラメーター値を指定する必要があります。 パラメーター ファイルを使用してパラメーターを指定する場合は、GitHub の[パラメーター ファイル](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.parameters.json)の内容を自分のコンピューター上の新しいファイルにコピーします。 ファイル内の値を変更します。 作成したファイルを、`--parameters-file` (-e) パラメーターの値として使用します。
     
-    OSVersion、ImagePublisher、imageOffer のパラメーターの有効な値を取得するには、「[Navigate and select Windows VM images (Windows VM イメージの検索と選択)](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md)」の記事の手順を実行します。
+    OSVersion、ImagePublisher、imageOffer のパラメーターの有効な値を取得するには、「[Navigate and select Windows VM images (Windows VM イメージの検索と選択)](../virtual-machines/windows/cli-ps-findimage.md)」の記事の手順を実行します。
 
 2. VM をデプロイしたら、この記事の「[VM オペレーティング システムに IP アドレスを追加する](#os-config)」セクションに記載された手順を実行して、プライベート IP アドレスをデプロイした VM オペレーティング システムに追加します。 オペレーティング システムにパブリック IP アドレスは追加しないでください。
 

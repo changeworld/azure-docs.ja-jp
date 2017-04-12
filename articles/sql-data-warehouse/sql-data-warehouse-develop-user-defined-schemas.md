@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9d59ffe4b0f0d858af18f30f848a63a28ac5f9b8
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: dfb58956ad6637cf0f50b4c052ab98fb7c26139d
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -120,19 +122,14 @@ FROM    [edw].customer
 > 
 
 ## <a name="next-steps"></a>次のステップ
-開発に関するその他のヒントについては、[「開発の概要」][開発の概要]をご覧ください。
+開発に関するその他のヒントについては、[開発の概要][development overview]のページをご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
-[開発の概要]: sql-data-warehouse-overview-develop.md
+[development overview]: sql-data-warehouse-overview-develop.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

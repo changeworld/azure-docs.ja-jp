@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 03/02/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: 257138fddc75b39985ba974b1314e978a554b1e2
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: f9ea34229e2f6e498c2826be04c09fb2da6393e3
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -30,7 +30,7 @@ Hive と Pig は Azure HDInsight でデータを処理する場合にきわめ�
 このドキュメントでは、Hive と Pig で C# を使用する方法について説明します。
 
 > [!IMPORTANT]
-> このドキュメントの手順では、オペレーティング システムとして Windows を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+> このドキュメントの手順では、オペレーティング システムとして Windows を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -165,7 +165,7 @@ Hive と Pig は実行時にアプリケーションを起動する必要があ�
     ORDER BY clientid LIMIT 50;
     ```
 
-    このクエリは、`hivesampletable` から `clientid`、`devicemake`、`devicemodel` フィールドを選択し、HiveCSharp.exe アプリケーションにそのフィールドを渡します。 クエリはアプリケーションが&3; つのフィールドを返すことを想定し、これは `clientid`、`phoneLabel`、`phoneHash` として格納されます。 また、このクエリは既定のストレージ コンテナー (`add file wasbs:///HiveCSharp.exe`) のルートで HiveCSharp.exe を見つけることを想定しています。
+    このクエリは、`hivesampletable` から `clientid`、`devicemake`、`devicemodel` フィールドを選択し、HiveCSharp.exe アプリケーションにそのフィールドを渡します。 クエリはアプリケーションが 3 つのフィールドを返すことを想定し、これは `clientid`、`phoneLabel`、`phoneHash` として格納されます。 また、このクエリは既定のストレージ コンテナー (`add file wasbs:///HiveCSharp.exe`) のルートで HiveCSharp.exe を見つけることを想定しています。
 
 5. **[送信]** をクリックして、HDInsight クラスターにジョブを送信します。 **[Hive ジョブの概要]** ウィンドウが開きます。
 
@@ -228,7 +228,7 @@ Hive と Pig は実行時にアプリケーションを起動する必要があ�
         bin\pig
 
     `grunt>` プロンプトが表示されます。
-    
+
 3. .NET Framework アプリケーションを使用して Pig ジョブを実行するには、次のコマンドを入力します。
 
         DEFINE streamer `pigudf.exe` SHIP('pigudf.exe');

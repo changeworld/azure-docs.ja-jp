@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/10/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 8c07f0da21eab0c90ad9608dfaeb29dd4a01a6b7
-ms.openlocfilehash: 6eb692f7c3374f9073944b8c4c0f34af2ed35b3c
-ms.lasthandoff: 01/19/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 9068e0e92e15491d3377a1b8f42071b56373396e
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/19/2017
 スクリプト アクションは、クラスターの構成設定を指定したり、追加のサービス、ツール、その他のソフトウェアをクラスターにインストールしたりして、Azure HDInsight クラスターをカスタマイズする方法です。 クラスターの作成時または実行中のクラスターで、Script Action を使用できます。
 
 > [!IMPORTANT]
-> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。
 
 ## <a name="what-are-script-actions"></a>スクリプト アクションとは
 
@@ -133,10 +133,10 @@ Systemd と Upstart の違いを理解するには、「[Systemd for Upstart use
 
 ### <a name="bPS5"></a>クラスターのアーキテクチャの高可用性を確保
 
-Linux ベースの HDInsight クラスターは、クラスター内で有効な&2; つのヘッド ノードを提供し、スクリプト アクションがその両方のノードで実行されます。 インストールするコンポーネントで&1; つのヘッド ノードしか期待されない場合は、そのコンポーネントがクラスターの&2; つのヘッド ノードのいずれかにしかインストールされないスクリプトを設計する必要があります。
+Linux ベースの HDInsight クラスターは、クラスター内で有効な 2 つのヘッド ノードを提供し、スクリプト アクションがその両方のノードで実行されます。 インストールするコンポーネントで 1 つのヘッド ノードしか期待されない場合は、そのコンポーネントがクラスターの 2 つのヘッド ノードのいずれかにしかインストールされないスクリプトを設計する必要があります。
 
 > [!IMPORTANT]
-> HDInsight の一部としてインストールされている既定のサービスは必要に応じて&2; つのヘッド ノードの間でフェールオーバーされるように設計されていますが、この機能はスクリプト アクションでインストールされるカスタム コンポーネントには拡張されません。 スクリプト アクションからインストールされるコンポーネントを高可用性にする必要がある場合は、使用可能な&2; つのヘッド ノードを使用する独自のフェールオーバー メカニズムを実装する必要があります。
+> HDInsight の一部としてインストールされている既定のサービスは必要に応じて 2 つのヘッド ノードの間でフェールオーバーされるように設計されていますが、この機能はスクリプト アクションでインストールされるカスタム コンポーネントには拡張されません。 スクリプト アクションからインストールされるコンポーネントを高可用性にする必要がある場合は、使用可能な 2 つのヘッド ノードを使用する独自のフェールオーバー メカニズムを実装する必要があります。
 
 ### <a name="bPS6"></a>Azure BLOB ストレージを使用するカスタム コンポーネントの構成
 
@@ -167,7 +167,7 @@ echo "Getting ready to install Foo"
 >&2 echo "An error occurred installing Foo"
 ```
 
-これにより、STDOUT (既定の&1; であるため記載していません) に送信された情報が STDERR (2) にリダイレクトされます。 IO リダイレクトの詳細については、 [http://www.tldp.org/LDP/abs/html/io-redirection.html](http://www.tldp.org/LDP/abs/html/io-redirection.html)を参照してください。
+これにより、STDOUT (既定の 1 であるため記載していません) に送信された情報が STDERR (2) にリダイレクトされます。 IO リダイレクトの詳細については、 [http://www.tldp.org/LDP/abs/html/io-redirection.html](http://www.tldp.org/LDP/abs/html/io-redirection.html)を参照してください。
 
 スクリプト アクションによってログに記録される情報の表示の詳細については、 [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)
 
@@ -184,7 +184,7 @@ line 1: #!/usr/bin/env: No such file or directory
 
 ファイルのダウンロード時、apt-get を使用したパッケージのインストール時、またはインターネット経由でデータを転送するその他の操作時に、一時的なネットワーク エラーにより、操作に失敗する場合があります。 たとえば、通信対象のリモート リソースが、バックアップ ノードへのフェールオーバー中である可能性があります。
 
-一時的なエラーに対するスクリプトの回復力を高めるには、再試行ロジックを実装します。 以下に示す関数の例では、渡された任意のコマンドを実行し、(コマンドが失敗した場合に) 最大&3; 回まで再試行します。 再試行の間隔は&2; 秒です。
+一時的なエラーに対するスクリプトの回復力を高めるには、再試行ロジックを実装します。 以下に示す関数の例では、渡された任意のコマンドを実行し、(コマンドが失敗した場合に) 最大 3 回まで再試行します。 再試行の間隔は 2 秒です。
 
 ```bash
 #retry
@@ -282,7 +282,7 @@ echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
 
 * __パブリックに読み取り可能な URI__ (OneDrive、Dropbox など)。
 
-* HDInsight クラスターに関連付けられている __Azure Data Lake Store アカウント__。 HDInsight での Azure Data Lake Store の使用の詳細については、[Data Lake Store での HDInsight クラスターの作成](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)に関するページをご覧ください。 
+* HDInsight クラスターに関連付けられている __Azure Data Lake Store アカウント__。 HDInsight での Azure Data Lake Store の使用の詳細については、[Data Lake Store での HDInsight クラスターの作成](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)に関するページをご覧ください。
 
     > [!NOTE]
     > HDInsight が Data Lake Store へのアクセスに使用するサービス プリンシパルには、スクリプトに対する読み取りアクセスが必要です。
@@ -373,5 +373,4 @@ Windows の多くのテキスト エディターでは CRLF が一般的な行�
 * [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)
 * [HDInsight .NET SDK リファレンス](https://msdn.microsoft.com/library/mt271028.aspx) を使用して、HDInsight を管理する .NET アプリケーションの作成の詳細について理解します。
 * [HDInsight REST API](https://msdn.microsoft.com/library/azure/mt622197.aspx) を使用して、REST を使って HDInsight クラスターで管理操作を実行する方法について理解します。
-
 

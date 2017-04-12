@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 01/17/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: c56a1dc92c27d55b90554e23dd9763ff98ce6cc7
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: a8221c35a440ae859c82072ea170b438dc40d261
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について
-このトピックでは、Azure Resource Manager デプロイメント モデルとクラシック デプロイメント モデル、リソースの状態、各リソースのデプロイにそのモデルが使われた理由について説明します。 Resource Manager デプロイメント モデルとクラシック デプロイメント モデルは、Azure ソリューションのデプロイと管理における&2; 種類の異なる方法です。 異なる&2; 種類の API セットを使用することで、デプロイしたリソースには重要な相違点が存在する可能性があります。 これらの&2; つのモデルには、完全に互換性があるわけではありません。 このトピックでは、その相違点について説明します。
+このトピックでは、Azure Resource Manager デプロイメント モデルとクラシック デプロイメント モデル、リソースの状態、各リソースのデプロイにそのモデルが使われた理由について説明します。 Resource Manager デプロイメント モデルとクラシック デプロイメント モデルは、Azure ソリューションのデプロイと管理における 2 種類の異なる方法です。 異なる 2 種類の API セットを使用することで、デプロイしたリソースには重要な相違点が存在する可能性があります。 これらの 2 つのモデルには、完全に互換性があるわけではありません。 このトピックでは、その相違点について説明します。
 
 リソースのデプロイと管理を簡単にするために、すべての新しいリソースに Resource Manager を利用することが推奨されています。 可能であれば、Resource Manager を使用して既存のリソースを再度デプロイすることをお勧めします。
 
@@ -40,10 +40,10 @@ Azure では当初、クラシック デプロイメント モデルのみ用意
 * JavaScript Object Notation (JSON) を使用してソリューションのインフラストラクチャを定義できます。 JSON ファイルは Resource Manager テンプレートと呼ばれます。
 * 正しい順序でデプロイされるようにリソース間の依存性を定義できます。
 
-Resource Manager が追加されたとき、すべてのリソースが遡及的に既定のリソース グループに追加されました。 今、従来のデプロイでリソースを作成すると、デプロイ時にリソース グループを指定していなくても、リソースはそのサービスの既定のリソース グループ内に自動的に作成されます。 ただし、リソース グループ内に存在するだけでは、リソースが Resource Manager モデルに変換されたことになりません。 次のセクションでは、各サービスにおける&2; つのデプロイメント モデルの扱われ方を見ていきます。 
+Resource Manager が追加されたとき、すべてのリソースが遡及的に既定のリソース グループに追加されました。 今、従来のデプロイでリソースを作成すると、デプロイ時にリソース グループを指定していなくても、リソースはそのサービスの既定のリソース グループ内に自動的に作成されます。 ただし、リソース グループ内に存在するだけでは、リソースが Resource Manager モデルに変換されたことになりません。 次のセクションでは、各サービスにおける 2 つのデプロイメント モデルの扱われ方を見ていきます。 
 
 ## <a name="understand-support-for-the-models"></a>モデルのサポートについて
-リソースで使用するデプロイメント モデルを決定する際には、注意が必要なシナリオが&3; つあります。
+リソースで使用するデプロイメント モデルを決定する際には、注意が必要なシナリオが 3 つあります。
 
 1. サービスが Resource Manager をサポートしており、単一の種類にのみ対応している。
 2. サービスが Resource Manager をサポートしているが、2 つの種類に対応している (一方は Resource Manager、もう一方はクラシック)。 このシナリオは、仮想マシン、ストレージ アカウント、仮想ネットワークにのみ該当します。
@@ -180,7 +180,7 @@ Azure Portal を利用して、クラシック デプロイメントで作成さ
 | 仮想 IP アドレス |クラウド サービスに VM を追加すると、Cloud Services に既定の VIP (仮想 IP アドレス) が付与されます。 仮想 IP アドレスは、暗黙的なロード バランサーに関連付けられるアドレスです。 |パブリック IP アドレスは、Microsoft.Network プロバイダーによって公開されるリソースです。 パブリック IP アドレスには、静的 (予約済み) アドレスと動的アドレスとがあります。 Load Balancer には、動的パブリック IP を割り当てることができます。 パブリック IP のセキュリティは、セキュリティ グループを使用して保護できます。 |
 | 予約済み IP アドレス |IP アドレスを Azure で予約し、クラウド サービスに関連付けることで、その IP アドレスを固定アドレスとすることができます。 |パブリック IP アドレスは "静的" モードで作成でき、"予約済み IP アドレス" と同じ機能を持ちます。 現在、Load Balancer に割り当てることができるのは静的パブリック IP だけです。 |
 | VM ごとのパブリック IP アドレス (PIP) |パブリック IP アドレスを直接 VM に関連付けることもできます。 |パブリック IP アドレスは、Microsoft.Network プロバイダーによって公開されるリソースです。 パブリック IP アドレスには、静的 (予約済み) アドレスと動的アドレスとがあります。 ただし、VM ごとのパブリック IP を取得するためにネットワーク インターフェイスに割り当てることができるのは現在、動的パブリック IP だけです。 |
-| エンドポイント |特定のポートの接続を確立するためには、仮想マシンに入力エンドポイントを構成する必要があります。 入力エンドポイントを設定することによって仮想マシンに接続する一般的なモードの&1; つ。 |VM への接続用に特定のポートのエンドポイントを有効にする機能は、Load Balancer に受信 NAT ルールを構成することで実現できます。 |
+| エンドポイント |特定のポートの接続を確立するためには、仮想マシンに入力エンドポイントを構成する必要があります。 入力エンドポイントを設定することによって仮想マシンに接続する一般的なモードの 1 つ。 |VM への接続用に特定のポートのエンドポイントを有効にする機能は、Load Balancer に受信 NAT ルールを構成することで実現できます。 |
 | DNS 名 |クラウド サービスには、グローバルに一意となる暗黙的な DNS 名が与えられます  (例: `mycoffeeshop.cloudapp.net`)。 |DNS 名は、パブリック IP アドレス リソースに指定できる省略可能なパラメーターです。 FQDN は、`<domainlabel>.<region>.cloudapp.azure.com` という形式です。 |
 | ネットワーク インターフェイス |プライマリとセカンダリのネットワーク インターフェイスおよびそのプロパティは、仮想マシンのネットワーク構成として定義されます。 |ネットワーク インターフェイスは、Microsoft.Network プロバイダーによって公開されるリソースです。 ネットワーク インターフェイスのライフサイクルは、仮想マシンに関連付けられません。 ネットワーク インターフェイスは、仮想マシンに割り当てられた IP アドレス (必須)、仮想マシンの仮想ネットワークのサブネット (必須)、ネットワークのセキュリティ グループ (オプション) を参照します。 |
 
@@ -189,9 +189,9 @@ Azure Portal を利用して、クラシック デプロイメントで作成さ
 ## <a name="migrate-from-classic-to-resource-manager"></a>クラシックから Resource Manager への移行
 クラシック デプロイメントから Resource Manager デプロイメントにリソースを移行する準備ができたら、次のページを参照してください。
 
-1. [プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
-2. [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
-3. [Azure PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](../virtual-machines/virtual-machines-windows-ps-migration-classic-resource-manager.md)
+1. [プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細](../virtual-machines/windows/migration-classic-resource-manager-deep-dive.md)
+2. [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行](../virtual-machines/windows/migration-classic-resource-manager-overview.md)
+3. [Azure PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](../virtual-machines/windows/migration-classic-resource-manager-ps.md)
 4. [Azure CLI を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](../virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md)
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問

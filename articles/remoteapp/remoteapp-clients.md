@@ -14,18 +14,19 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: 7a34394ebc83e106bd2755ea2e3d966837c01be6
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: c07773be6e4a2274287920de9420f4c8b96f58e1
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="accessing-your-apps-in-azure-remoteapp"></a>Azure RemoteApp でのアプリへのアクセス
 > [!IMPORTANT]
-> Azure RemoteApp の提供は終了しました。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
+> Azure RemoteApp の提供は、2017 年 8 月 31 日で終了します。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
 > 
 > 
 
-Azure RemoteApp の優れた点の&1; つは、どのデバイスからでもアプリにアクセスできることです。 さらに、1 つのデバイスで作業を開始し、2 つ目のデバイスにシームレスに移行し、中断した箇所から作業を再開できます。 開始するには、デバイスの適切なクライアントをダウンロードして、サービスにサインインする必要があります。
+Azure RemoteApp の優れた点の 1 つは、どのデバイスからでもアプリにアクセスできることです。 さらに、1 つのデバイスで作業を開始し、2 つ目のデバイスにシームレスに移行し、中断した箇所から作業を再開できます。 開始するには、デバイスの適切なクライアントをダウンロードして、サービスにサインインする必要があります。
 
 このトピックでは、現在サポートされているクライアントとダウンロードする方法を確認してから、各クライアントから RemoteApp へサインインする方法を説明します。
 
@@ -70,7 +71,7 @@ Google Play ストアから、Microsoft リモート デスクトップ アプ�
 4. 画面の指示に従って、Microsoft アカウント (以前の "LiveID") や組織 ID でサインインします。 サインインすると、受信したすべての招待を一覧表示したページが表示されます。 信頼する招待を選択し、 **[完了]**をタップします。    
    
     ![招待のページ](./media/remoteapp-clients/Android4.png)
-5. 招待を受け付けると、アクセスできるアプリの一覧がデバイスにダウンロードされ、接続センターで使用可能になります。 アプリの&1; つをタップし、使用を開始します。
+5. 招待を受け付けると、アクセスできるアプリの一覧がデバイスにダウンロードされ、接続センターで使用可能になります。 アプリの 1 つをタップし、使用を開始します。
    
     ![フィードによる接続センター](./media/remoteapp-clients/Android5.png)
 6. まだ招待がない場合でも、サービスを試すことができます。 サービスを試すには、プロンプトが表示されたら、 **[無料試用版を試す]** をタップします。
@@ -173,10 +174,5 @@ Windows Phone 8.1 ストアから、Microsoft リモート デスクトップ �
 8. これで基本的なアプリのセットにアクセスし、RemoteApp を開始できます。
    
     ![Azure RemoteApp のデモ フィード](./media/remoteapp-clients/WinPhone8.png)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

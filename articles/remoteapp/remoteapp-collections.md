@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7c526faeef2418cfbbca7948004691e127327020
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 7891ce3b04cd5978440dd8af73dc95d1d123ed92
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="what-kind-of-collection-do-you-need-for-azure-remoteapp"></a>Azure RemoteApp にはどのような種類のコレクションが必要ですか。
 > [!IMPORTANT]
-> Azure RemoteApp の提供は終了しました。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
+> Azure RemoteApp の提供は、2017 年 8 月 31 日で終了します。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
 > 
 > 
 
@@ -90,10 +91,5 @@ Azure AD および Active Directory の構成に必要な手順については�
 これですべて説明したと思いますが、1 つだけやるべきことが残っていました。最初の Azure RemoteApp コレクションを作成することです。
 
 [クラウド コレクションの作成](remoteapp-create-cloud-deployment.md)に関するページまたは[ハイブリッド コレクションの作成](remoteapp-create-hybrid-deployment.md)に関するページで作成してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

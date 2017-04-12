@@ -17,9 +17,9 @@ ms.date: 09/23/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
-ms.openlocfilehash: 2dd6e9ba1d08d3528cdf8194e1e338422361d1d5
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 5edba79e5c65f0e9411a418ac1a121fd938feff2
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -40,12 +40,12 @@ Accelerated Networking を使用しない場合は、VM に出入りするすべ
 
 Accelerated Networking を使用したネットワーク トラフィックは、ネットワーク カード (NIC) に到達してから VM に転送されます。 Accelerated Networking がない場合に仮想スイッチによって適用されるネットワークポリシーはすべてオフロードされ、ハードウェアに適用されます。 ハードウェアにポリシーを適用することによって、ホストに適用されるポリシーをすべて維持したまま、ホストや仮想スイッチをバイパスして、NIC からネットワーク トラフィックを直接 VM に転送できます。
 
-VM で Accelerated Networking が有効になっている場合のみ、そのメリットを受けられます。 最適な結果を得るには、同じ VNet に接続された&2;台以上の VM でこの機能を有効にしておくことをお勧めします。  複数の VNet またはオンプレミスの間で通信する場合、全体的な待機時間に対してこの機能が与える影響は最小限のものになります。
+VM で Accelerated Networking が有効になっている場合のみ、そのメリットを受けられます。 最適な結果を得るには、同じ VNet に接続された 2台以上の VM でこの機能を有効にしておくことをお勧めします。  複数の VNet またはオンプレミスの間で通信する場合、全体的な待機時間に対してこの機能が与える影響は最小限のものになります。
 
 [!INCLUDE [virtual-network-preview](../../includes/virtual-network-preview.md)]
 
 ## <a name="benefits"></a>メリット
-* **待機時間の短縮 /&1; 秒あたりのパケット数 (pps)の向上:** データパスから仮想スイッチを削除することで、ホストにおけるパケットのポリシー処理に必要な時間がなくなるため、VM 内で処理できるパケット数が増加します。
+* **待機時間の短縮 / 1 秒あたりのパケット数 (pps)の向上:** データパスから仮想スイッチを削除することで、ホストにおけるパケットのポリシー処理に必要な時間がなくなるため、VM 内で処理できるパケット数が増加します。
 * **ジッターの削減:** 仮想スイッチの処理は、適用するポリシーの量と、処理を行う CPU のワークロードによって異なります。 ハードウェアへのポリシーの適用をオフロードすると、パケットが直接 VM に配信され、ホストと VM 間の通信とソフトウェアによる干渉やコンテキスト スイッチがなくなるため、そのばらつきはなくなります。
 * **CPU 使用率の削減:** ホストの仮想スイッチをバイパスすることによって、ネットワーク トラフィックを処理するための CPU の使用率を軽減できます。
 
@@ -56,7 +56,7 @@ VM で Accelerated Networking が有効になっている場合のみ、その�
 * **VM の作成:** Accelerated Networking を有効にしたネットワーク インターフェイスは、VM の作成時にのみ VM にアタッチできます。 ネットワーク インターフェイスを既存の VM にアタッチすることはできません。
 * **リージョン:** 米国中西部と西ヨーロッパの Azure のリージョンでのみ提供されます。 リージョンは今後拡大する予定です。
 * **サポートされているオペレーティング システム:** Microsoft Windows Server 2012 R2、Windows Server 2016 テクニカル プレビュー 5。 Linux と Windows Server 2012 もまもなくサポートされる予定です。
-* **VM サイズ:** サポートされる VM のインスタンス サイズは、Standard_D15_v2 と Standard_DS15_v2 のみです。 詳細については、「 [Windows VM のサイズ](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 」の記事をご覧ください。 サポートされる VM のインスタンス サイズは、今後増える予定です。
+* **VM サイズ:** サポートされる VM のインスタンス サイズは、Standard_D15_v2 と Standard_DS15_v2 のみです。 詳細については、「 [Windows VM のサイズ](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 」の記事をご覧ください。 サポートされる VM のインスタンス サイズは、今後増える予定です。
 
 これらの制限に対する変更については、「[Azure 仮想ネットワークの更新情報](https://azure.microsoft.com/updates/accelerated-networking-in-preview)」のページでお知らせします。
 

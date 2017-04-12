@@ -17,9 +17,9 @@ ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 9f9908466dbfd471bc881387c0968c924140c67b
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 99292dedfd83c0adde6b7352e08e7ae3b0b14513
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/21/2017
 [!INCLUDE [virtual-network-deploy-multinic-intro-include.md](../../includes/virtual-network-deploy-multinic-intro-include.md)]
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md)&2; 種類のデプロイメント モデルがあります。  この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、[クラシック デプロイメント モデル](virtual-network-deploy-multinic-classic-ps.md)ではなくこのモデルをお勧めします。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、[クラシック デプロイメント モデル](virtual-network-deploy-multinic-classic-ps.md)ではなくこのモデルをお勧めします。
 > 
 
 [!INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
@@ -68,7 +68,7 @@ DB サーバーを作成する前に、このシナリオで必要なすべて�
     },
     ```
 
-4. 下にスクロールして変数の一覧を表示し、次に示す **dbVMSetting** 変数の定義を確認します。 これは、 **dbVMSettings** 変数に格納されている配列要素の&1; つを受け取ります。 ソフトウェア開発用語に詳しい場合は、 **dbVMSettings** 変数をハッシュテーブルまたはディクショナリと考えることができます。
+4. 下にスクロールして変数の一覧を表示し、次に示す **dbVMSetting** 変数の定義を確認します。 これは、 **dbVMSettings** 変数に格納されている配列要素の 1 つを受け取ります。 ソフトウェア開発用語に詳しい場合は、 **dbVMSettings** 変数をハッシュテーブルまたはディクショナリと考えることができます。
 
     ```json
     "dbVMSetting": "[variables('dbVMSettings')[parameters('osType')]]"
@@ -95,7 +95,7 @@ DB サーバーを作成する前に、このシナリオで必要なすべて�
     },
     ```
 
-6. **vmSize** に値 *Standard_DS3* が格納されることに注意してください。 特定の VM のサイズに対してのみ、複数の NIC の使用が許可されます。 複数の NIC をサポートしている VM のサイズの確認方法については、[Windows Server VM のサイズ](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)と [Linux VM のサイズ](../virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。
+6. **vmSize** に値 *Standard_DS3* が格納されることに注意してください。 特定の VM のサイズに対してのみ、複数の NIC の使用が許可されます。 複数の NIC をサポートしている VM のサイズの確認方法については、[Windows Server VM のサイズ](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)と [Linux VM のサイズ](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。
 
 7. 下にスクロールして **resources** を表示し、最初の要素に注目してください。 ここでは、ストレージ アカウントについて記述しています。 このストレージ アカウントは、各データベース VM で使用されるデータ ディスクの管理に使用されます。 このシナリオでは、各データベース VM で、OS ディスクが標準ストレージに格納され、2 つのデータ ディスクが SSD (Premium) ストレージに格納されます。
 
@@ -114,7 +114,7 @@ DB サーバーを作成する前に、このシナリオで必要なすべて�
     },
     ```
 
-8. 下にスクロールして、次に示す次のリソースを表示します。 このリソースは、各データベース VM でデータベース アクセスに使用される NIC を表しています。 このリソースで **copy** 関数を使用していることに注目してください。 このテンプレートを使用すると、 **dbCount** パラメーターに基づいて、必要な数の VM をデプロイできます。 したがって、データベース アクセス用に同じ数 (VM ごとに&1; つ) の NIC を作成する必要があります。
+8. 下にスクロールして、次に示す次のリソースを表示します。 このリソースは、各データベース VM でデータベース アクセスに使用される NIC を表しています。 このリソースで **copy** 関数を使用していることに注目してください。 このテンプレートを使用すると、 **dbCount** パラメーターに基づいて、必要な数の VM をデプロイできます。 したがって、データベース アクセス用に同じ数 (VM ごとに 1 つ) の NIC を作成する必要があります。
 
     ```json
     {
@@ -146,7 +146,7 @@ DB サーバーを作成する前に、このシナリオで必要なすべて�
     },
     ```
 
-9. 下にスクロールして、次に示す次のリソースを表示します。 このリソースは、各データベース VM で管理に使用される NIC を表しています。 ここでも、データベース VM ごとにこれらの NIC が&1; つ必要です。 RDP/SSH へのアクセスを許可する NSG をこの NIC のみにリンクする、 **networkSecurityGroup** 要素に注目してください。
+9. 下にスクロールして、次に示す次のリソースを表示します。 このリソースは、各データベース VM で管理に使用される NIC を表しています。 ここでも、データベース VM ごとにこれらの NIC が 1 つ必要です。 RDP/SSH へのアクセスを許可する NSG をこの NIC のみにリンクする、 **networkSecurityGroup** 要素に注目してください。
 
     ```json
     {
@@ -181,7 +181,7 @@ DB サーバーを作成する前に、このシナリオで必要なすべて�
     },
 ```
 
-10. 下にスクロールして、次に示す次のリソースを表示します。 このリソースは、すべてのデータベース VM によって共有される可用性セットを表しています。 このように、保守中に動作するセット内に常に&1; 台の VM が存在するようにします。
+10. 下にスクロールして、次に示す次のリソースを表示します。 このリソースは、すべてのデータベース VM によって共有される可用性セットを表しています。 このように、保守中に動作するセット内に常に 1 台の VM が存在するようにします。
 
     ```json
     {
@@ -195,7 +195,7 @@ DB サーバーを作成する前に、このシナリオで必要なすべて�
     },
     ```
 
-11. 下にスクロールして、次のリソースを表示します。 次の最初の数行が示すように、このリソースはデータベース VM を表しています。 ここでも、**copy** 関数を使用していることに注目し、複数の VM が **dbCount** パラメーターに基づいて作成されることを確認してください。 また、 **dependsOn** コレクションにも注目してください。 可用性セット、ストレージ アカウントと共に、VM をデプロイするときに、事前に作成する必要のある&2; つの NIC が示されます。
+11. 下にスクロールして、次のリソースを表示します。 次の最初の数行が示すように、このリソースはデータベース VM を表しています。 ここでも、**copy** 関数を使用していることに注目し、複数の VM が **dbCount** パラメーターに基づいて作成されることを確認してください。 また、 **dependsOn** コレクションにも注目してください。 可用性セット、ストレージ アカウントと共に、VM をデプロイするときに、事前に作成する必要のある 2 つの NIC が示されます。
 
     ```json
     "apiVersion": "2015-06-15",
@@ -217,7 +217,7 @@ DB サーバーを作成する前に、このシナリオで必要なすべて�
     },
     ```
 
-12. VM リソース内を下にスクロールして、次に示す **networkProfile** 要素を表示します。 各 VM で参照される&2; つの NIC があることに注目してください。 VM に対して複数の NIC を作成する場合は、1 つの NIC の **primary** プロパティを *true* に設定し、残りを *false* に設定する必要があります。
+12. VM リソース内を下にスクロールして、次に示す **networkProfile** 要素を表示します。 各 VM で参照される 2 つの NIC があることに注目してください。 VM に対して複数の NIC を作成する場合は、1 つの NIC の **primary** プロパティを *true* に設定し、残りを *false* に設定する必要があります。
 
     ```json
     "networkProfile": {

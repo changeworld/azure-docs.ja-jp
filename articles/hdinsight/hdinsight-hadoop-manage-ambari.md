@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 02/08/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: e80bf82df28fbce8a1019c6eb07cfcae4cbba930
-ms.openlocfilehash: 34f5c92dc565e644bd8c569bfbea65e92ace5a19
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 290271855ac54af8c99311ff675a08d1e6942d93
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -38,14 +38,14 @@ Apache Ambari には使いやすい Web UI と REST API が用意されている
 Ambari Web UI は、Linux オペレーティング システムを使用する HDInsight クラスターに既定で付属しています。
 
 > [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。 
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。 
 
 ## <a name="connectivity"></a>接続
 
-Ambari Web UI はお使いの HDInsight クラスター (HTTPS://CLUSTERNAME.azurehdidnsight.net) にあります。**CLUSTERNAME** はお使いのクラスターの名前になります。 
+Ambari Web UI はお使いの HDInsight クラスター (HTTPS://CLUSTERNAME.azurehdidnsight.net) にあります。**CLUSTERNAME** はお使いのクラスターの名前になります。
 
 > [!IMPORTANT]
-> HDInsight の Ambari に接続するには、HTTPS が必要です。 クラスターの作成時に指定した管理者アカウント名 (既定値は **admin**) とパスワードを使用して、Ambari を認証する必要もあります。 
+> HDInsight の Ambari に接続するには、HTTPS が必要です。 クラスターの作成時に指定した管理者アカウント名 (既定値は **admin**) とパスワードを使用して、Ambari を認証する必要もあります。
 
 ## <a name="ssh-tunnel-proxy"></a>SSH トンネル (プロキシ)
 
@@ -105,7 +105,7 @@ Ambari には多数のアラートがあり、そのステータスは次のい�
 
 ![Create alert ダイアログ](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
 
-最後に、__[Actions]__ メニューの __[Manage Alert Settings]__ を選択すると、通知の送信前にアラートが発生する回数を設定できます。 これで、サービスが&1; つのヘッド ノードで失敗したが別のヘッド ノードで再起動した場合など、一時的なエラーを通知しないように設定できます。
+最後に、__[Actions]__ メニューの __[Manage Alert Settings]__ を選択すると、通知の送信前にアラートが発生する回数を設定できます。 これで、サービスが 1 つのヘッド ノードで失敗したが別のヘッド ノードで再起動した場合など、一時的なエラーを通知しないように設定できます。
 
 ### <a name="cluster"></a>クラスター
 
@@ -147,7 +147,7 @@ Ambari には多数のアラートがあり、そのステータスは次のい�
 
 > [!NOTE]
 > いずれかのサービスの **[Quick Links]** リンクを選択すると、クラスターへのプロキシ Web トラフィックに Secure Sockets Layer (SSL) トンネルを使用していない限り、サーバーが見つからないことを示すエラー メッセージが表示されます。 これは、この情報を表示するために使用される Web アプリケーションがインターネット上で公開されないためです。
-> 
+>
 > HDInsight での SSL トンネルの使用の詳細については、「 [SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)
 
 ## <a name="management"></a>管理
@@ -171,7 +171,7 @@ Ambari には多数のアラートがあり、そのステータスは次のい�
 1. 管理するホストを選択します。
 
 2. **[Actions]** メニューを使用して、実行する操作を選択します。
-   
+
    * **[Start all components]** - ホスト上のすべてのコンポーネントを開始します。
 
    * **[Stop all components]** - ホスト上のすべてのコンポーネントを停止します。
@@ -189,12 +189,12 @@ Ambari には多数のアラートがあり、そのステータスは次のい�
    * **[Restart]** - ホスト上の DataNode または NodeManagers を停止して起動します。
 
    * **[Decommission]** - クラスターからホストを削除します。
-     
+
      > [!NOTE]
      > HDInsight クラスターではこの操作は使用しないでください。
 
    * **[Recommission]** - 使用停止にしたホストをクラスターに追加します。
-     
+
      > [!NOTE]
      > HDInsight クラスターではこの操作は使用しないでください。
 
@@ -212,14 +212,14 @@ Ambari には多数のアラートがあり、そのステータスは次のい�
 1. **[Dashboard]** または **[Services]** ページでサービスを選択します。
 
 2. **[Summary]** タブの上部で **[Service Actions]** ボタンを使用して実行する操作を選択します。 これにより、すべてのノードでサービスが再起動されます。
-   
+
     ![service action](./media/hdinsight-hadoop-manage-ambari/individual-service-actions.png)
-   
+
    > [!NOTE]
    > クラスターの実行中にサービスを再起動すると、アラートが生成される場合があります。 これを回避するには、**[Service Actions]** ボタンを使用して、再起動を実行する前に、サービスの **[Maintenance mode]** を有効にします。
 
 3. 操作を選択したら、ページ上部の **[# op]** エントリが増分され、バックグラウンド操作が実行されていることが示されます。 バックグラウンド操作を表示するように設定されている場合は、バックグラウンド操作の一覧が表示されます。
-   
+
    > [!NOTE]
    > サービスの **[Maintenance mode]** を有効にした場合は、操作が完了したら、**[Service Actions]** ボタンを使用してこれを忘れずに無効にしてください。
 
@@ -228,7 +228,7 @@ Ambari には多数のアラートがあり、そのステータスは次のい�
 1. **[Dashboard]** または **[Services]** ページでサービスを選択します。
 
 2. **[Configs]** タブをクリックします。 現在の構成が表示されます。 以前の構成の一覧も表示されます。
-   
+
     ![構成](./media/hdinsight-hadoop-manage-ambari/service-configs.png)
 
 3. 表示されたフィールドを使用して構成を変更し、 **[Save]**を選択します。 または、以前の構成を選択し、 **[Make current]** を選択して以前の設定にロールバックします。
@@ -242,5 +242,4 @@ Ambari ビューを使うと、開発者は [Ambari ビュー フレームワー
 * Hive ビュー: Hive ビューを使用すると、Web ブラウザーから直接 Hive クエリを実行できます。 クエリの保存、結果の表示、結果のクラスター ストレージへの保存、または結果のローカル システムへのダウンロードを行えます。 Hive ビューの使用法の詳細については、 [HDInsight での Hive ビューの使用](hdinsight-hadoop-use-hive-ambari-view.md)に関するページを参照してください。
 
 * Tez ビュー: このビューでは、Tez ジョブの実行方法や、ジョブで使用するリソース関する情報を表示することで、ジョブをより良く理解、最適化できます。
-
 
