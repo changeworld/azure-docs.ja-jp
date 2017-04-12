@@ -12,12 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 03/21/2017
+ms.date: 04/04/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: a545925bdade693f4db7db45228188dae7e5ff38
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
+ms.openlocfilehash: 23f1bbb066c5b6481988ee841ad8979d78abf084
+ms.lasthandoff: 04/05/2017
 
 
 ---
@@ -52,8 +52,6 @@ Update 4 では、主に次の機能強化とバグ修正が行われていま�
 * **StorSimple 診断ツール** – Update 4 では StorSimple 診断ツールがリリースされており、システム、ネットワーク、パフォーマンス、ハードウェア コンポーネントの正常性に関する問題を簡単に診断してトラブルシューティングできます。 このツールの実行には Windows PowerShell for StorSimple を使用します。 詳しくは、[StorSimple 診断ツールを使用したトラブルシューティング](storsimple-8000-diagnostics.md)に関する記事をご覧ください。
 
 * **UI ベースの StorSimple 移行ツール** - これより前のリリースでは、5000/7000 シリーズからのデータ移行の際に、ユーザーは移行ワークフローの一部を Azure PowerShell インターフェイスを使用して実行する必要がありました。 このリリースでは、同じ移行ワークフローを簡単に行えるよう、使いやすい UI ベースの StorSimple 移行ツールが使用可能になっています。 このツールを使用すると、回復バケットの統合も可能です。 
-
-* **StorSimple Snapshot Manager の MPIO サポート** - このリリースでは、StorSimple Snapshot Manager の MPIO サポートが実装されました。
 
 * **FIPS 関連の変更** - このリリースから、Microsoft Azure Government アカウントと Azure パブリック クラウド アカウントの両方について、StorSimple 8000 シリーズの全デバイスで FIPS が既定で有効になっています。
 

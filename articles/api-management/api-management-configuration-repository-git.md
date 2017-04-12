@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
-ms.openlocfilehash: 801fe10ad20c48fb965d3f80956d7979c9c2314e
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: f5d6bb7ccbf15424e9940ccda2fac668a2af5a57
+ms.lasthandoff: 04/12/2017
 
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Git を使用して API Management サービス構成を保存および構成する方法
@@ -112,7 +113,7 @@ git clone https://bugbashdev4.scm.azure-api.net/
 git clone https://username:password@bugbashdev4.scm.azure-api.net/
 ```
 
-それでもエラーが発生する場合は、コマンドのパスワード部分をエンコードする URL を試してください。 これを簡単に行う&1; つの方法では、Visual Studio を開き、 **[イミディエイト ウィンドウ]**で次のコマンドを発行します。 **[イミディエイト ウィンドウ]** を開くには、Visual Studio で任意のソリューションまたはプロジェクトを開き (または新しく空のコンソール アプリケーションを作成し)、**[デバッグ]** メニューから **[ウィンドウ]**、**[イミディエイト]** の順に選択します。
+それでもエラーが発生する場合は、コマンドのパスワード部分をエンコードする URL を試してください。 これを簡単に行う 1 つの方法では、Visual Studio を開き、 **[イミディエイト ウィンドウ]**で次のコマンドを発行します。 **[イミディエイト ウィンドウ]** を開くには、Visual Studio で任意のソリューションまたはプロジェクトを開き (または新しく空のコンソール アプリケーションを作成し)、**[デバッグ]** メニューから **[ウィンドウ]**、**[イミディエイト]** の順に選択します。
 
 ```
 ?System.NetWebUtility.UrlEncode("password from publisher portal")
@@ -158,7 +159,7 @@ git push
 
 ![デプロイ][api-management-configuration-deploy]
 
-REST API を使用してこの操作を実行する方法については、「 [Deploy Git changes to configuration database using the REST API (REST API を使用して構成データベースに Git の変更をデプロイする)](https://msdn.microsoft.com/library/dn781420.aspx#DeployChanges)」を参照してください。
+REST API を使用してこの操作を実行する方法については、「 [Deploy Git changes to configuration database using the REST API (REST API を使用して構成データベースに Git の変更をデプロイする)](https://docs.microsoft.com/en-us/rest/api/apimanagement/tenantconfiguration)」を参照してください。
 
 ## <a name="file-and-folder-structure-reference-of-local-git-repository"></a>ローカル Git リポジトリのファイルとフォルダーの構造のリファレンス
 ローカル Git リポジトリのファイルとフォルダーには、サービス インスタンスに関する構成情報が含まれています。
@@ -173,7 +174,7 @@ REST API を使用してこの操作を実行する方法については、「 [
 | products フォルダー |サービス インスタンス内の製品の構成が含まれています |
 | templates フォルダー |サービス インスタンス内の電子メール テンプレートの構成が含まれています |
 
-各フォルダーには&1; つ以上のファイルを含めることができ、場合によっては&1; つ以上のフォルダーも含めることができます。たとえば、各 API、製品、またはグループに&1; つのフォルダーを含めることができます。 各フォルダー内のファイルは、フォルダー名で示されるエンティティの種類に固有です。
+各フォルダーには 1 つ以上のファイルを含めることができ、場合によっては 1 つ以上のフォルダーも含めることができます。たとえば、各 API、製品、またはグループに 1 つのフォルダーを含めることができます。 各フォルダー内のファイルは、フォルダー名で示されるエンティティの種類に固有です。
 
 | ファイルの種類 | 目的 |
 | --- | --- |
@@ -213,7 +214,7 @@ REST API を使用してこの操作を実行する方法については、「 [
 }
 ```
 
-最初の&4; つの設定 (`RegistrationEnabled`、`UserRegistrationTerms`、`UserRegistrationTermsEnabled`、`UserRegistrationTermsConsentRequired`) は、**[セキュリティ]** セクションの **[ID]** タブにある次の設定に対応します。
+最初の 4 つの設定 (`RegistrationEnabled`、`UserRegistrationTerms`、`UserRegistrationTermsEnabled`、`UserRegistrationTermsConsentRequired`) は、**[セキュリティ]** セクションの **[ID]** タブにある次の設定に対応します。
 
 | ID の設定 | 対応する設定 |
 | --- | --- |
@@ -224,7 +225,7 @@ REST API を使用してこの操作を実行する方法については、「 [
 
 ![Identity settings][api-management-identity-settings]
 
-その次の&4; つの設定 (`DelegationEnabled`、`DelegationUrl`、`DelegatedSubscriptionEnabled`、`DelegationValidationKey`) は、**[セキュリティ]** セクションの **[委任]** タブにある次の設定に対応します。
+その次の 4 つの設定 (`DelegationEnabled`、`DelegationUrl`、`DelegatedSubscriptionEnabled`、`DelegationValidationKey`) は、**[セキュリティ]** セクションの **[委任]** タブにある次の設定に対応します。
 
 | 委任の設定 | 対応する設定 |
 | --- | --- |
@@ -242,7 +243,7 @@ REST API を使用してこの操作を実行する方法については、「 [
 
 * `apis\<api name>\configuration.json` - これは API の構成で、バックエンド サービス URL と操作に関する情報が含まれています。 この情報は、[特定の API の取得](https://msdn.microsoft.com/library/azure/dn781423.aspx#GetAPI)を `application/json` 形式で `export=true` を指定して呼び出した場合に返される情報と同じです。
 * `apis\<api name>\api.description.html` - これは API の説明で、[API エンティティ](https://msdn.microsoft.com/library/azure/dn781423.aspx#EntityProperties)の `description` プロパティに対応します。
-* `apis\<api name>\operations\` - このフォルダーには、API での操作に対応する `<operation name>.description.html` ファイルが含まれています。 各ファイルには、API での&1; つの操作の説明が含まれています。この操作は、REST API の[操作エンティティ](https://msdn.microsoft.com/library/azure/dn781423.aspx#OperationProperties)の `description` プロパティに対応します。
+* `apis\<api name>\operations\` - このフォルダーには、API での操作に対応する `<operation name>.description.html` ファイルが含まれています。 各ファイルには、API での 1 つの操作の説明が含まれています。この操作は、REST API の[操作エンティティ](https://msdn.microsoft.com/library/azure/dn781423.aspx#OperationProperties)の `description` プロパティに対応します。
 
 ### <a name="groups-folder"></a>groups フォルダー
 `groups` フォルダーには、サービス インスタンスで定義された各グループのフォルダーが含まれています。
@@ -308,10 +309,5 @@ REST API を使用してこの操作を実行する方法については、「 [
 
 
 
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

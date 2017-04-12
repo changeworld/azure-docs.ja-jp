@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: 47dce83cb4e3e5df92e91f1ca9195326634d6c8b
-ms.openlocfilehash: af75c0016d4c64c13c971abc80d0c56542a0db3e
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: d063ea881c82b158a196cb5f63e7514777732846
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -37,7 +38,7 @@ ASP.NET Web API では、.NET Framework 4.5 に含まれる Microsoft の OWIN �
 git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet.git
 ```
 
-スケルトン アプリには、簡単な API 用の定型コードがすべて含まれますが、ID 関連の部分はまったく含まれません。 代わりに、完全なサンプルを複製または [ダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/skeleton.zip)することもできます。
+スケルトン アプリには、簡単な API 用の定型コードがすべて含まれますが、ID 関連の部分はまったく含まれません。 代わりに、完全なサンプルを複製または [ダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/complete.zip)することもできます。
 
 ```
 git clone https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet.git
@@ -122,7 +123,7 @@ public class TodoListController : ApiController
 {
 ```
 
-* 承認呼び出し元が `TodoListController` API の&1; つを正常に呼び出すときに、呼び出し元についての情報にアクセスするアクションが必要な場合があります。  OWIN は `ClaimsPrincpal` オブジェクトを通して、ベアラー トークン内のクレームにアクセスできるようにします。  
+* 承認呼び出し元が `TodoListController` API の 1 つを正常に呼び出すときに、呼び出し元についての情報にアクセスするアクションが必要な場合があります。  OWIN は `ClaimsPrincpal` オブジェクトを通して、ベアラー トークン内のクレームにアクセスできるようにします。  
 
 ```C#
 public IEnumerable<TodoItem> Get()
@@ -166,9 +167,4 @@ Todo List Service の動作を確認できるようにするには、Todo List C
 
 ## <a name="get-security-updates-for-our-products"></a>Microsoft 製品のセキュリティ更新プログラムの取得
 セキュリティの問題が発生したときに通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知を受信登録してください。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

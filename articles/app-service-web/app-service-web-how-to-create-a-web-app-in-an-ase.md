@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: ccompy
 translationtype: Human Translation
-ms.sourcegitcommit: 0b7c4c95328eb3ca573694b8eca0b0abda646fc5
-ms.openlocfilehash: cc8044f78da504c5cd9155c887b24f6880645262
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: a78d37ee59663896acc3192f8ae03575270101a8
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: cc8044f78da504c5cd9155c887b24f6880645262
 このチュートリアルでは、 [App Service 環境](app-service-app-service-environment-intro.md) (ASE) で Web アプリと App Service プランを作成する方法について説明します。 
 
 > [!NOTE]
-> Web アプリを作成する方法を知りたいが、App Service 環境で行う必要はない場合は、「 [.NET web アプリを作成する](web-sites-dotnet-get-started.md) 」か、その他の言語やフレームワーク向けの関連するチュートリアルを参照してください。
+> Web アプリを作成する方法を知りたいが、App Service 環境で行う必要はない場合は、「 [.NET web アプリを作成する](app-service-web-get-started-dotnet.md) 」か、その他の言語やフレームワーク向けの関連するチュートリアルを参照してください。
 > 
 > 
 
@@ -41,7 +42,7 @@ ms.openlocfilehash: cc8044f78da504c5cd9155c887b24f6880645262
     サブスクリプションを複数保有している場合、App Service 環境でアプリを作成するには、App Service 環境を作成するときに使用したものと同じサブスクリプションを使用する必要があります。 
 3. リソース グループを選択または作成します。
    
-    *リソース グループ*を使用すると、関連する Azure リソースを 1 つの単位として管理でき、アプリ用に*ロール ベースのアクセス制御* (RBAC) 規則を作成する際に便利です。 詳細については、「[Azure Resource Manager の概要][ResourceGroups]」を参照してください。 
+    *リソース グループ*を使用すると、関連する Azure リソースを 1 つの単位として管理でき、アプリ用に*ロール ベースのアクセス制御* (RBAC) 規則を作成する際に便利です。 詳細については、「[Azure Resource Manager の概要][ResourceGroups]」をご覧ください。 
 4. App Service プランを選択または作成します。
    
     *App Service プラン*は、管理された Web アプリのセットです。  通常、価格を選択すると、課金される価格は個々のアプリではなく App Service プランに適用されます。 ASE では、ASP に記載されているものではなく、ASE に割り当てられているコンピューティング インスタンスに対して課金されます。  Web アプリのインスタンスの数を増やすには、App Service プランのインスタンスを増やします。これにより、そのプラン内のすべての Web アプリが影響を受けます。  サイトのスロット、VNET 統合などのいくつかの機能には、プラン内での数量制限があります。  詳細については、「[Azure App Service プランの概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)」を参照してください。
@@ -58,7 +59,7 @@ ms.openlocfilehash: cc8044f78da504c5cd9155c887b24f6880645262
     ASE で内部 VIP を使用する場合、ASE 内のアプリの URL は [*サイト名*].[*ASE の作成時に指定されたサブドメイン*] になります。   
     ASE の作成時に ASP を選択すると、**[名前]** の下のサブドメインが更新されます。
 
-## <a name="a-namecreateplana-create-an-app-service-plan"></a><a name="createplan"></a> App Service プランを作成する
+## <a name="createplan"></a> App Service プランを作成する
 App Service 環境に App Service プランを作成する場合、ASE には共有ワーカーがないため、ワーカーの選択肢が異なります。  使用する必要があるワーカーは、管理者によって ASE に割り当てられたワーカーです。  つまり、新しいプランを作成するには、ASE ワーカー プールに既に存在しているすべてのプランのインスタンスの総数よりも多くのワーカーを ASE ワーカー プールに割り当てておく必要があります。  プランを作成するのに十分なワーカーが ASE ワーカー プールにない場合は、ASE の管理者に依頼してワーカーを追加してもらう必要があります。
 
 App Service 環境でホストされる App Service プランに関するもう 1 つの違いは、価格の選択肢がないことです。  App Service 環境を利用する場合、システムによって使用されるコンピューティング リソースについて料金を支払い、その環境内のプランに対する追加料金はありません。  通常、App Service プランを作成する際に、価格プランを選択します。これに基づいて、支払い価格が決定されます。  App Service 環境は、基本的に、コンテンツを作成できるプライベートな場所です。  支払いは環境に対するもので、コンテンツをホストする操作を対象にしたものではありません。
@@ -107,9 +108,4 @@ Web アプリと App Service プランを作成した後は、これをスケー
 [HowtoConfigureASE]: http://azure.microsoft.com/documentation/articles/app-service-web-configure-an-app-service-environment
 [ResourceGroups]: ../azure-resource-manager/resource-group-overview.md
 [AzurePowershell]: http://azure.microsoft.com/documentation/articles/powershell-install-configure/
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

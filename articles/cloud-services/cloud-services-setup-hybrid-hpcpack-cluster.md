@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: a0e80acad4e8db2177e699f90f7296c64b38e718
-ms.openlocfilehash: da7102882b9dcf7db1285c0ec004ce1ad3859853
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 0fcfcc53641ebdf8a668b353db8eebb3bc64795d
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -28,7 +29,7 @@ Microsoft HPC Pack 2012 R2 と Azure を使用して、小規模なハイブリ�
 
 このチュートリアルでは、「クラウド バースト」とも呼ばれる方法を紹介します。Azure 上で多くのコンピューティング処理を要するアプリケーションを実行するためにコンピューティング リソースをオンデマンドで使用する、拡張性に優れた方法です。
 
-このチュートリアルは、コンピューティング クラスターまたは HPC Pack 2012 R2 を使用した経験がない読者を対象に作成されています。 これは、ハイブリッド コンピューティング クラスターを迅速にデプロイする方法のデモンストレーションを目的としています。 大規模なハイブリッド HPC Pack クラスターを運用環境にデプロイするため、または HPC Pack 2016 を使用するための考慮事項と手順については、[詳細なガイダンス](http://go.microsoft.com/fwlink/p/?LinkID=200493)を参照してください。 Azure 仮想マシンでの自動クラスター デプロイなど、HPC Pack に関するその他のシナリオについては、[Azure での Microsoft HPC Pack を使用した HPC クラスター オプション](../virtual-machines/virtual-machines-windows-hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
+このチュートリアルは、コンピューティング クラスターまたは HPC Pack 2012 R2 を使用した経験がない読者を対象に作成されています。 これは、ハイブリッド コンピューティング クラスターを迅速にデプロイする方法のデモンストレーションを目的としています。 大規模なハイブリッド HPC Pack クラスターを運用環境にデプロイするため、または HPC Pack 2016 を使用するための考慮事項と手順については、[詳細なガイダンス](http://go.microsoft.com/fwlink/p/?LinkID=200493)を参照してください。 Azure 仮想マシンでの自動クラスター デプロイなど、HPC Pack に関するその他のシナリオについては、[Azure での Microsoft HPC Pack を使用した HPC クラスター オプション](../virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 * **Azure サブスクリプション** - Azure サブスクリプションがない場合は、 [無料アカウント](https://azure.microsoft.com/free/) を数分で作成することができます。
@@ -127,7 +128,7 @@ HPC クラスター マネージャーを使用して Azure ノードをデプ�
     ![トポロジ 5][config_hpc3]
    
    > [!NOTE]
-   > これはデモンストレーションを目的とした最も単純な構成であり、ヘッド ノードには、Active Directory とインターネットに接続するための&1; つのネットワーク アダプターのみが必要です。 このチュートリアルでは、追加のネットワークを必要とするクラスター シナリオは扱いません。
+   > これはデモンストレーションを目的とした最も単純な構成であり、ヘッド ノードには、Active Directory とインターネットに接続するための 1 つのネットワーク アダプターのみが必要です。 このチュートリアルでは、追加のネットワークを必要とするクラスター シナリオは扱いません。
    > 
    > 
 4. ウィザードの残りのページは既定の設定のままにして **[次へ]** をクリックします。 **[レビュー]** タブで、**[構成]** をクリックして、ネットワーク構成を完了します。
@@ -191,14 +192,14 @@ HPC クラスター マネージャーを使用して Azure ノードをデプ�
     使用できるサイズの詳細については、「 [Cloud Services のサイズ](cloud-services-sizes-specs.md)」を参照してください。
 4. **[ノードの追加ウィザードの完了]** ページで、**[完了]** をクリックします。
    
-     HPC クラスター マネージャーに、**AzureCN-0001** と **AzureCN-0002** という名前の&2; つの Azure ノードが表示されます。 どちらも **[未展開]** 状態です。
+     HPC クラスター マネージャーに、**AzureCN-0001** と **AzureCN-0002** という名前の 2 つの Azure ノードが表示されます。 どちらも **[未展開]** 状態です。
    
     ![追加されたノード][add_node3]
 
 ## <a name="start-the-azure-nodes"></a>Azure ノードを開始する
 Azure のクラスター リソースを使用する場合、HPC クラスター マネージャーを使用して、Azure ノードを開始 (プロビジョニング) してオンラインにします。
 
-1. HPC クラスター マネージャーの **[ノード管理]** (最近のバージョンの HPC Pack では **[リソース管理]**) で、どちらか&1; つまたは両方のノードをクリックして、**[操作]** ウィンドウの **[開始]** をクリックします。
+1. HPC クラスター マネージャーの **[ノード管理]** (最近のバージョンの HPC Pack では **[リソース管理]**) で、どちらか 1 つまたは両方のノードをクリックして、**[操作]** ウィンドウの **[開始]** をクリックします。
    
    ![ノードの開始][add_node4]
 2. **[Windows Azure ノードの起動]** ダイアログ ボックスで、**[開始]** をクリックします。
@@ -269,7 +270,7 @@ Azure のクラスター リソースを使用する場合、HPC クラスター
 ## <a name="next-steps"></a>次のステップ
 * [HPC Pack](https://technet.microsoft.com/library/cc514029) のドキュメントを確認してください。
 * ハイブリッド HPC Pack クラスターの大規模なデプロイを設定するには、 [Microsoft HPC Pack を使用した Azure worker ロール インスタンスへのバースト](http://go.microsoft.com/fwlink/p/?LinkID=200493)に関するページを参照してください。
-* Azure Resource Manager テンプレートの使用など、Azure で HPC Pack クラスターを作成するその他の方法については、[Azure での Microsoft HPC Pack を使用した HPC クラスター オプション](../virtual-machines/virtual-machines-windows-hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
+* Azure Resource Manager テンプレートの使用など、Azure で HPC Pack クラスターを作成するその他の方法については、[Azure での Microsoft HPC Pack を使用した HPC クラスター オプション](../virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 * Azure での大規模なコンピューティングと HPC クラウド ソリューションの範囲の詳細については、「 [Azure における大規模なコンピューティング: バッチとハイ パフォーマンス コンピューティング (HPC) に関するテクニカル リソース](../batch/big-compute-resources.md) 」を参照してください。
 
 [Overview]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/hybrid_cluster_overview.png
@@ -308,9 +309,4 @@ Azure のクラスター リソースを使用する場合、HPC クラスター
 [stop_node2]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/stop_node2.png
 [stop_node4]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/stop_node4.png
 [view_instances2]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/view_instances2.png
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

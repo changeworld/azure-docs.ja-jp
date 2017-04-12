@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 12/10/2016
 ms.author: zivr
 translationtype: Human Translation
-ms.sourcegitcommit: f67ff1cc18b23c3d4006121e266a5d96933e49bf
-ms.openlocfilehash: d6c4d0b9f9cbf05341d30fe75e9828d0237a1962
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 18c7a013c01fee26c5455535af6d9fba2b98fac7
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 03/02/2017
 > プレビューは、使用条件に同意することを条件に使用することができます。 詳細については、[Microsoft Azure プレビューの追加使用条件] (https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/) をご覧ください。
 >
 
-Azure Metadata Service のサブサービスの&1; つであるスケジュールされたイベントにより、今後のイベント (再起動など) に関する情報が表示されるため、アプリケーションはそれらのイベントに向けて準備し、中断を抑えることができます。 このサービスは、PaaS と IaaS を含むすべての Azure Virtual Machine の種類で利用できます。 スケジュールされたイベントにより、Virtual Machine が予防的タスクを実行する時間が確保され、イベントの影響を最小限に抑えることができます。 
+Azure Metadata Service のサブサービスの 1 つであるスケジュールされたイベントにより、今後のイベント (再起動など) に関する情報が表示されるため、アプリケーションはそれらのイベントに向けて準備し、中断を抑えることができます。 このサービスは、PaaS と IaaS を含むすべての Azure Virtual Machine の種類で利用できます。 スケジュールされたイベントにより、Virtual Machine が予防的タスクを実行する時間が確保され、イベントの影響を最小限に抑えることができます。 
 
 
 ## <a name="introduction---why-scheduled-events"></a>はじめに - スケジュールされたイベントが使用される理由
@@ -56,7 +56,7 @@ Virtual Machine が Virtual Network (VNet) 内で作成されている場合、�
 メタデータ サービスのクエリを実行するときは、ヘッダー *Metadata: true* を指定する必要があります。 
 
 ### <a name="enable-scheduled-events"></a>スケジュールされたイベントの有効化
-スケジュールされたイベントを初めて呼び出すときに、Azure はこの機能を Virtual Machine で暗黙的に有効化します。 そのため、最初の呼び出しでは最大&2; 分の応答遅延が発生すると予想されます。
+スケジュールされたイベントを初めて呼び出すときに、Azure はこの機能を Virtual Machine で暗黙的に有効化します。 そのため、最初の呼び出しでは最大 2 分の応答遅延が発生すると予想されます。
 
 ### <a name="testing-your-logic-with-user-initiated-operations"></a>ユーザーが開始した操作でのロジックのテスト
 ロジックをテストするには、Azure Portal、API、CLI、または PowerShell を使用して、スケジュールされたイベントが発生する操作を開始します。 仮想マシンを再起動すると、イベントの種類が "Reboot" であるスケジュールされたイベントが発生します。 仮想マシンを再デプロイすると、イベントの種類が "Redeploy" であるスケジュールされたイベントが発生します。
@@ -328,5 +328,5 @@ if __name__ == '__main__':
 
 ```
 ## <a name="next-steps"></a>次のステップ 
-[Azure での仮想マシンに対する計画的なメンテナンス](./virtual-machines-linux-planned-maintenance.md)
+[Azure での仮想マシンに対する計画的なメンテナンス](linux/planned-maintenance.md)
 

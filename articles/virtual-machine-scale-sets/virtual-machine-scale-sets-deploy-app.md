@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: guybo
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 9a92490239f22bd4c57c902ac53898aff1adf530
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: f39840ab2fb31775c9703799393d8c386a8451ee
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -32,7 +32,7 @@ VM スケール セットで実行されているアプリケーションは、�
 ## <a name="install-new-software-on-a-platform-image-at-deployment-time"></a>デプロイするときにプラットフォーム イメージに新しいソフトウェアをインストールする
 このコンテキストでのプラットフォーム イメージは、Ubuntu 16.04、Windows Server 2012 R2 など、Azure Marketplace からのオペレーティング システム イメージです。
 
-新しいソフトウェアをプラットフォーム イメージにインストールするには、[VM 拡張機能](../virtual-machines/virtual-machines-windows-extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を使用します。 VM 拡張機能は、VM をデプロイするときに実行されるソフトウェアです。 カスタム スクリプト拡張機能を使用すると、デプロイ時に好きなコードを実行できます。 [Azure Desired State Configuration (DSC) の拡張機能](virtual-machine-scale-sets-dsc.md)を使用して、Azure 自動スケールと統合された IIS と .NET MVC アプリケーションをインストールする Azure Resource Manager テンプレートの例については、[こちら](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale)をご覧ください。
+新しいソフトウェアをプラットフォーム イメージにインストールするには、[VM 拡張機能](../virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を使用します。 VM 拡張機能は、VM をデプロイするときに実行されるソフトウェアです。 カスタム スクリプト拡張機能を使用すると、デプロイ時に好きなコードを実行できます。 [Azure Desired State Configuration (DSC) の拡張機能](virtual-machine-scale-sets-dsc.md)を使用して、Azure 自動スケールと統合された IIS と .NET MVC アプリケーションをインストールする Azure Resource Manager テンプレートの例については、[こちら](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale)をご覧ください。
 
 このアプローチのメリットは、アプリケーション コードと OS の間に分離レベルがあり、アプリケーションを個別に管理できる点です。 もちろん、これは動的なパーツが多くなることを意味しており、ダウンロードして構成するスクリプトに対する動的パーツが多いと、VM デプロイに時間がかかる可能性があります。
 

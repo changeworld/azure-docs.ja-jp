@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: ccec356c653cf5d3c767fd273c37ea5685607135
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 6e03b6072b5244aca2810f704c485384de5aedf8
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -32,7 +32,7 @@ ms.lasthandoff: 03/25/2017
 ## <a name="scenario-diagram"></a>シナリオ図
 このシナリオでは、外部ユーザーは、ドメインに参加しているサーバーで稼働するアプリケーションにアクセスする必要があります。 アプリケーション サーバーとレプリカ DC を実行する VM は、Azure の仮想ネットワーク内にインストールされています。 次の図に示すように、仮想ネットワークは[サイト間 VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md) 接続で、オンプレミス ネットワークに接続できます。また、接続を高速化するために、[ExpressRoute](../expressroute/expressroute-locations-providers.md) を使用することもできます。
 
-アプリケーション サーバーと DC は、コンピューティング処理を分散するために別々のクラウド サービス内にデプロイされます。また、フォールト トレランスを強化するために[可用性セット](../virtual-machines/virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)内にデプロイされます。
+アプリケーション サーバーと DC は、コンピューティング処理を分散するために別々のクラウド サービス内にデプロイされます。また、フォールト トレランスを強化するために[可用性セット](../virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)内にデプロイされます。
 DC は、Active Directory レプリケーションを使用して、DC 同士で相互にレプリケートします。また、オンプレミス DC でレプリケートされます。 同期ツールは必要ありません。
 
 ![Azure vnet におけるレプリカ Active Directory ドメイン コントローラーの図][1]

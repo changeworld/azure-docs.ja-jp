@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 3/12/2017
 ms.author: markgal;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 1dc2883056eab9764cda674b42fa40c517550ccd
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 61f09a6f103b9cedaf19f1128a21fa8d5df974a1
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -128,7 +128,7 @@ VM バックアップから VM またはすべてのディスクを復元する�
 
 復元操作が完了すると、次のことができます。
 * [テンプレートを使用して、復元された VM をカスタマイズする](#use-templates-to-customize-restore-vm)
-* [復元ディスクを使用して、既存の仮想マシンにアタッチする](../virtual-machines/virtual-machines-windows-attach-disk-portal.md)
+* [復元ディスクを使用して、既存の仮想マシンにアタッチする](../virtual-machines/windows/attach-disk-portal.md)
 * [PowerShell を使用して、復元されたディスクから新しい仮想マシンを作成する](./backup-azure-vms-automation.md#restore-an-azure-vm)
 
 **[復元の構成]** ブレードで **[OK]** をクリックして、復元の構成を完了します。 **[復元]** ブレードで **[復元]** をクリックして、復元操作を開始します。
@@ -193,7 +193,7 @@ VM バックアップから VM またはすべてのディスクを復元する�
 * Ubuntu など cloud-init ベースの Linux ディストリビューションを使用している場合、セキュリティ上の理由から、復元後にパスワードがブロックされます。 復元した VM は、VMAccess 拡張機能を使用して [パスワードをリセット](../virtual-machines/linux/classic/reset-access.md)してください。 これらのディストリビューションでは、SSH キーを使用して、復元後のパスワード リセットを回避するようお勧めします。
 * バックアップの構成の間に存在した拡張機能はインストールされますが、有効にはされません。 問題がある場合、拡張機能を再インストールしてください。 
 * バックアップされる VM に静的 IP がある場合は、復元後、復元された VM を作成するときの競合を避けるため、復元される VM には動的 IP が設定されます。 [復元された VM に静的 IP を追加する](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)方法を参照してください。
-* 復元された VM には可用性の値が設定されていません。 復元ディスク オプションを使い、復元されたディスクを使って PowerShell またはテンプレートから VM を作成するときに[可用性セットを追加する](../virtual-machines/virtual-machines-windows-create-availability-set.md#use-powershell-to-create-an-availability-set)ことをお勧めします。 
+* 復元された VM には可用性の値が設定されていません。 復元ディスク オプションを使い、復元されたディスクを使って PowerShell またはテンプレートから VM を作成するときに[可用性セットを追加する](../virtual-machines/windows/create-availability-set.md#use-powershell-to-create-an-availability-set)ことをお勧めします。 
 
 ## <a name="backup-for-restored-vms"></a>復元された VM のバックアップ
 最初にバックアップされた VM と同じ名前で同じリソース グループに VM を復元した場合、復元後も VM に対するバックアップは引き続き行われます。 別のリソース グループに VM を復元した場合、または復元された VM に別の名前を指定した場合、この VM は新しい VM として扱われるので、復元された VM に対してバックアップをセットアップする必要があります。

@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/26/2017
+ms.date: 03/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: d78e5a50f5c0416aa5f7caa92d51f688abb1efcc
-ms.openlocfilehash: adfc80090c732fc0dfa2fa35056451921d242f6a
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: a7fae61f9b2dc400cbbd7054c11ec622f8683ccb
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -31,7 +32,7 @@ ms.openlocfilehash: adfc80090c732fc0dfa2fa35056451921d242f6a
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
 1. PagerDuty のアプリケーション統合の有効化
-2. シングル サインオンの構成
+2. シングル サインオン (SSO) の構成
 3. ユーザー プロビジョニングの構成
 4. ユーザーの割り当て
 
@@ -62,7 +63,7 @@ ms.openlocfilehash: adfc80090c732fc0dfa2fa35056451921d242f6a
    
    ![PagerDuty](./media/active-directory-saas-pagerduty-tutorial/IC778530.png "PagerDuty")
    
-## <a name="configuring-single-sign-on"></a>シングル サインオンの構成
+## <a name="configure-single-sign-on"></a>Configure single sign-on
 
 このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで PagerDuty に対する認証を行えるようにする方法を説明します。  
 
@@ -112,10 +113,11 @@ ms.openlocfilehash: adfc80090c732fc0dfa2fa35056451921d242f6a
    ![シングル サインオンの構成](./media/active-directory-saas-pagerduty-tutorial/IC778538.png "Configure single sign-on")
    
 
-## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
+## <a name="configure-user-provisioning"></a>[ユーザー プロビジョニングの構成]
 
 Azure AD ユーザーが PagerDuty にログインできるようにするには、ユーザーを PagerDuty にプロビジョニングする必要があります。  
-PagerDuty の場合、プロビジョニングは手動で行います。
+
+* PagerDuty の場合、プロビジョニングは手動で行います。
 
 **ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 
@@ -128,17 +130,17 @@ PagerDuty の場合、プロビジョニングは手動で行います。
    
    ![チームの招待](./media/active-directory-saas-pagerduty-tutorial/IC778540.png "チームの招待")
    
-   > [!NOTE]
-   > PagerDuty アカウントを作成すると、追加したすべてのユーザーが招待を受信します。
+   >[!NOTE]
+   >PagerDuty アカウントを作成すると、追加したすべてのユーザーが招待を受信します。
    > 
    > 
 
-> [!NOTE]
-> PagerDuty から提供されている他の PagerDuty ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[!NOTE]
+>PagerDuty から提供されている他の PagerDuty ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 > 
 > 
 
-## <a name="assigning-users"></a>ユーザーの割り当て
+## <a name="assign-users"></a>[ユーザーの割り当て]
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
 **ユーザーを PagerDuty に割り当てるには、次の手順に従います。**
@@ -151,11 +153,10 @@ PagerDuty の場合、プロビジョニングは手動で行います。
    
    ![はい](./media/active-directory-saas-pagerduty-tutorial/IC767830.png "Yes")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
+SSO の設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
+## <a name="additional-resources"></a>その他のリソース
 
-
-
-<!--HONumber=Feb17_HO1-->
-
+* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 

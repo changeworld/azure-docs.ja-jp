@@ -15,17 +15,24 @@ ms.workload: NA
 ms.date: 01/05/2017
 ms.author: masnider;
 translationtype: Human Translation
-ms.sourcegitcommit: 1472bd1647b620d1f0489cdabbed58e72585aef7
-ms.openlocfilehash: ad1f713f2b12af4f778b9b14edf33a568d2aa8b1
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 1237f467cf993170eaf1345134fb732d4f0b1171
+ms.lasthandoff: 04/03/2017
 
 ---
 
 # <a name="reliable-services-lifecycle-overview"></a>Reliable Services のライフサイクルの概要
+> [!div class="op_single_selector"]
+> * [Windows での C# ](service-fabric-reliable-services-lifecycle.md)
+> * [Linux での Java](service-fabric-reliable-services-lifecycle-java.md)
+>
+>
+
 Reliable Services のライフサイクルについて考える際には、ライフサイクルの基本が最も重要です。 一般的には次のとおりです。
 
 * スタートアップ時
   * サービスが構築される
-  * サービスは&0; 個以上のリスナーを構築して返すことができる
+  * サービスは 0 個以上のリスナーを構築して返すことができる
   * 返されたリスナーはすべて開かれて、サービスとの通信が許可される
   * サービスの RunAsync メソッドが呼び出され、ロング ランやバックグラウンド作業が可能になる
 * シャットダウン時
@@ -110,9 +117,4 @@ Service Fabric では、このレプリカでメッセージの処理を終了�
 * [Reliable Services 入門](service-fabric-reliable-services-introduction.md)
 * [Reliable Service の概要](service-fabric-reliable-services-quick-start.md)
 * [Reliable Services の詳細な使用方法](service-fabric-reliable-services-advanced-usage.md)
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

@@ -18,9 +18,9 @@ ms.date: 09/15/2016
 ms.author: negat
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 06e7418111762a0388ce1704ba5abaa9c3a10349
-ms.openlocfilehash: e0853070b5a3f9d44baebecac625a5ad6b9ef755
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 308355e7d66c977f5cbfc8de3b939b76c2f8f83c
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -38,11 +38,11 @@ Portal では、CentOS、CoreOS、Debian、Open Suse、Red Hat Enterprise Linux�
 既定の設定を使って、スケール セットをすぐに作成できます。
 
 * [`Basics`] ブレードで、スケール セットの名前を入力します。 この名前は、スケール セットの前に設置されるロード バランサーの FQDN のベースになります。そのため、Azure 全体で一意の名前にする必要があります。
-* 任意の OS の種類を選択し、目的のユーザー名を入力して、任意の認証の種類を選択します。 パスワードを選択する場合、パスワードは 12 文字以上にする必要があります。また、1 つの小文字、1 つの大文字、1 つの数字、1 つの特殊文字という複雑さの 4 要件のうち、3 つを満たしている必要があります。 [ユーザー名とパスワードの要件](../virtual-machines/virtual-machines-windows-faq.md#what-are-the-username-requirements-when-creating-a-vm)に関するページで詳細を確認してください。 [`SSH public key`] を選択した場合、秘密キーではなく、公開キーのみを貼り付けます。
+* 任意の OS の種類を選択し、目的のユーザー名を入力して、任意の認証の種類を選択します。 パスワードを選択する場合、パスワードは 12 文字以上にする必要があります。また、1 つの小文字、1 つの大文字、1 つの数字、1 つの特殊文字という複雑さの 4 要件のうち、3 つを満たしている必要があります。 [ユーザー名とパスワードの要件](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm)に関するページで詳細を確認してください。 [`SSH public key`] を選択した場合、秘密キーではなく、公開キーのみを貼り付けます。
 
 ![ScaleSetPortalBasics](./media/virtual-machine-scale-sets-portal-create/ScaleSetPortalBasics.PNG)
 
-* スケール セットを&1; つの配置グループに制限するか、または複数の配置グループにまたがるかを選びます。 複数の配置グループにまたがるスケール セットを許可すると、制限はありますが、スケール セットの容量は 100 VM を超える (最大 1,000) ことができます。 詳しくは、[こちらのドキュメント](./virtual-machine-scale-sets-placement-groups.md)をご覧ください。
+* スケール セットを 1 つの配置グループに制限するか、または複数の配置グループにまたがるかを選びます。 複数の配置グループにまたがるスケール セットを許可すると、制限はありますが、スケール セットの容量は 100 VM を超える (最大 1,000) ことができます。 詳しくは、[こちらのドキュメント](./virtual-machine-scale-sets-placement-groups.md)をご覧ください。
 * 目的のリソース グループ名と場所を入力し、[`OK`] をクリックします。
 * [ `Virtual machine scale set service settings` ] ブレードで、目的のドメイン名のラベル (スケール セットの前に設置されたロード バランサーの FQDN のベース) を入力します。 このラベルは、Azure 全体で一意の名前にする必要があります。
 * 目的のオペレーティング システム ディスク イメージ、インスタンス数、マシンのサイズを選択します。
@@ -55,7 +55,7 @@ Portal では、CentOS、CoreOS、Debian、Open Suse、Red Hat Enterprise Linux�
 
 
 ## <a name="connect-to-a-vm-in-the-scale-set"></a>スケール セットの VM に接続する
-スケール セットを&1; つの配置グループに制限することを選んだ場合は、スケール セットに簡単に接続できるように構成された NAT 規則と共に、スケール セットがデプロイされます (この規則がない場合は、スケール セットの仮想マシンに接続するには、スケール セットと同じ仮想ネットワークにジャンプボックス作成する必要があります)。 これらの NAT 規則を表示するには、スケール セットのロード バランサーの [`Inbound NAT Rules`] タブに移動します。
+スケール セットを 1 つの配置グループに制限することを選んだ場合は、スケール セットに簡単に接続できるように構成された NAT 規則と共に、スケール セットがデプロイされます (この規則がない場合は、スケール セットの仮想マシンに接続するには、スケール セットと同じ仮想ネットワークにジャンプボックス作成する必要があります)。 これらの NAT 規則を表示するには、スケール セットのロード バランサーの [`Inbound NAT Rules`] タブに移動します。
 
 ![ScaleSetPortalNatRules](./media/virtual-machine-scale-sets-portal-create/ScaleSetPortalNatRules.PNG)
 

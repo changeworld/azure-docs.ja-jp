@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/18/2017
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: f31a8347bf6bb36fa166d35f52915813394d85e9
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: e2d3a6725ee53dc6d6986b185fac143901ba6955
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -59,7 +59,7 @@ Web Apps では Azure 診断が使用されないので注意してください�
 
 * [Cloud Services 向けの Application Insights での Azure 診断の使用](../application-insights/app-insights-cloudservices.md)
 * [Azure 診断で Cloud Services アプリケーションのフローをトレースする](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
-* [PowerShell を使用した Cloud Services での診断の設定](../virtual-machines/virtual-machines-windows-ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [PowerShell を使用した Cloud Services での診断の設定](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="virtual-machines-using-azure-diagnostics"></a>Virtual Machines で Azure 診断を使用する
 * Visual Studio を使用する場合は、[Visual Studio を使用した Azure Virtual Machines のトレース](../vs-azure-tools-debug-cloud-services-virtual-machines.md)に関するページを参照して操作を開始してください。 それ以外の場合は次を参照してください。
@@ -67,8 +67,8 @@ Web Apps では Azure 診断が使用されないので注意してください�
 
 詳細なトピックについては、次を参照してください。
 
-* [PowerShell を使用した Azure Virtual Machines での診断の設定](../virtual-machines/virtual-machines-windows-ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Azure Resource Manager テンプレートを使用して監視および診断を含む Windows 仮想マシンを登録する](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [PowerShell を使用した Azure Virtual Machines での診断の設定](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Azure Resource Manager テンプレートを使用して監視および診断を含む Windows 仮想マシンを登録する](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="service-fabric-using-azure-diagnostics"></a>Service Fabric で Azure 診断を使用する
 [Service Fabric アプリケーションの監視](../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)に関するページを参照して操作を開始してください。 この記事にアクセスすると、左側のナビゲーション ツリーに Service Fabric 診断に関するその他の記事が多数あります。

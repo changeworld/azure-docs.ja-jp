@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: b9041713f3d084fde77a34ef7956a2c59312245e
-ms.openlocfilehash: d9008f6232ca2442edce2a3cae88f0b3d2be2f14
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 70830309c33d4a94fc1eb5abb85cba26c8623f88
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -30,7 +31,7 @@ ms.openlocfilehash: d9008f6232ca2442edce2a3cae88f0b3d2be2f14
 
 このトピックのコード例は、既に Node.js アプリケーションがあることを前提としています。 Azure で Node.js アプリケーションを作成する方法については、次のいずれかのトピックを参照してください。
 
-* [Azure App Service での Node.js Web アプリの作成](../app-service-web/web-sites-nodejs-develop-deploy-mac.md)
+* [Azure App Service での Node.js Web アプリの作成](../app-service-web/app-service-web-get-started-nodejs.md)
 * [WebMatrix を使用した Node.js Web アプリの構築と Azure へのデプロイ](../app-service-web/web-sites-nodejs-use-webmatrix.md)
 * [Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ](../cloud-services/cloud-services-nodejs-develop-deploy-app.md) (Windows PowerShell を使用)
 
@@ -103,7 +104,7 @@ function (returnObject, finalCallback, next)
 
 このコールバックで、returnObject (サーバーへの要求からの応答) の処理の後に、コールバックは next を呼び出すか (他のフィルターの処理を続けるために next が存在する場合)、単に finalCallback を呼び出す必要があります (サービス呼び出しを終了する場合)。
 
-再試行のロジックを実装する&2; つのフィルター (**ExponentialRetryPolicyFilter** と **LinearRetryPolicyFilter**) が、Azure SDK for Node.js に含まれています。 次のコードは、**ExponentialRetryPolicyFilter** を使う **TableService** オブジェクトを作成します。
+再試行のロジックを実装する 2 つのフィルター (**ExponentialRetryPolicyFilter** と **LinearRetryPolicyFilter**) が、Azure SDK for Node.js に含まれています。 次のコードは、**ExponentialRetryPolicyFilter** を使う **TableService** オブジェクトを作成します。
 
 ```nodejs
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
@@ -195,7 +196,7 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 > 1. 更新するオブジェクトの ETag を取得します。 これは、任意のエンティティに関連する操作の `response` の一部として返され、`response['.metadata'].etag` を通じて取得できます。
 > 2. エンティティで更新操作を実行する場合は、以前に取得した ETag 情報を新しいエンティティに追加します。 次に例を示します。
 >
->       entity2['.metadata'].etag = currentEtag;
+>         entity2['.metadata'].etag = currentEtag;
 > 3. 更新操作を実行します。 アプリケーションの別のインスタンスなど、ETag 値を取得した後でエンティティが更新されている場合は、要求で指定された更新の条件が満たされていないことを示す `error` が返されます。
 >
 >
@@ -269,7 +270,7 @@ tableSvc.retrieveEntity('mytable', 'hometasks', '1', function(error, result, res
   * **or** - `or` where 条件
 * **top** - 取得する項目の数
 
-次の例では、"hometasks" の PartitionKey で最初の&5; つの項目を返すクエリを作成します。
+次の例では、"hometasks" の PartitionKey で最初の 5 つの項目を返すクエリを作成します。
 
 ```nodejs
 var query = new azure.TableQuery()
@@ -287,7 +288,7 @@ tableSvc.queryEntities('mytable',query, null, function(error, result, response) 
 });
 ```
 
-成功した場合は、 `result.entries` にはクエリに一致するエンティティの配列が含まれます。 クエリですべてのエンティティを返すことができなかった場合、 `result.continuationToken` は*null* 以外になり、さらに結果を取得するために、これを **queryEntities** の&3; 番目のパラメーターとして使用できます。 最初のクエリでは、3 番目のパラメーターに *null* を使用します。
+成功した場合は、 `result.entries` にはクエリに一致するエンティティの配列が含まれます。 クエリですべてのエンティティを返すことができなかった場合、 `result.continuationToken` は*null* 以外になり、さらに結果を取得するために、これを **queryEntities** の 3 番目のパラメーターとして使用できます。 最初のクエリでは、3 番目のパラメーターに *null* を使用します。
 
 ### <a name="query-a-subset-of-entity-properties"></a>エンティティ プロパティのサブセットを照会する
 テーブルに対するクエリでは、ごくわずかのフィールドだけをエンティティから取得できます。
@@ -408,7 +409,7 @@ SAS がクエリ アクセスのみで生成された場合は、エンティテ
 ### <a name="access-control-lists"></a>アクセス制御リスト
 SAS のアクセス ポリシーを設定するために、アクセス制御リスト (ACL) も使用できます。 複数のクライアントにテーブルへのアクセスを許可し、各クライアントに異なるアクセス ポリシーを提供する場合に便利です。
 
-ACL は、アクセス ポリシーの配列と、各ポリシーに関連付けられた ID を使用して実装されます。 次の例では、2 つのポリシーを定義しています。1 つは "user1" 用、もう&1; つは "user2" 用です。
+ACL は、アクセス ポリシーの配列と、各ポリシーに関連付けられた ID を使用して実装されます。 次の例では、2 つのポリシーを定義しています。1 つは "user1" 用、もう 1 つは "user2" 用です。
 
 ```nodejs
 var sharedAccessPolicy = {
@@ -457,17 +458,8 @@ tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
 [OData.org]: http://www.odata.org/
 [Using the REST API]: http://msdn.microsoft.com/library/azure/hh264518.aspx
-[Azure portal]: portal.azure.com
 
-[Node.js Cloud Service]: ../cloud-services-nodejs-develop-deploy-app.md
 [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
-[Website with WebMatrix]: ../web-sites-nodejs-use-webmatrix.md
-[Node.js Cloud Service with Storage]: ../storage-nodejs-use-table-storage-cloud-service-app.md
 [Azure Table サービスを使用する Node.js Web アプリ]: ../app-service-web/storage-nodejs-use-table-storage-web-site.md
-[Create and deploy a Node.js application to an Azure website]: ../web-sites-nodejs-develop-deploy-mac.md
-
-
-
-<!--HONumber=Jan17_HO4-->
-
+[Create and deploy a Node.js application to an Azure website]: ../app-service-web/app-service-web-get-started-nodejs.md
 

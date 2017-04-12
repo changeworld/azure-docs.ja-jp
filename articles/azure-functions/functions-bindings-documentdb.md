@@ -17,9 +17,9 @@ ms.workload: na
 ms.date: 11/10/2016
 ms.author: chrande; glenga
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: e476a80a3846b8c80c35d6803d5518727f008824
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 2ac78606f851068fa0fb7dcab3bac1c629b9cdb3
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -153,7 +153,7 @@ DocumentDB 出力バインドを使用すると、Azure DocumentDB データベ�
 以下の点に注意してください。
 
 * データベースとコレクションが存在しない場合にこれを作成するには、`createIfNotExists` を `true` に設定します。 既定値は `false` です。 新しいコレクションは予約済みのスループットで作成されます。これにより、価格に影響が及びます。 詳細については、「 [DocumentDB の価格](https://azure.microsoft.com/pricing/details/documentdb/)」を参照してください。
-* `connection` は、(値 `AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>` を使用して) DocumentDB アカウントのエンドポイントを指すアプリ設定の名前である必要があります。 Functions ポータルの UI を使用して DocumentDB アカウントを作成すると、アカウント作成プロセスによって新しいアプリ設定が作成されます。 既存の DocumentDB アカウントを使用するには、[このアプリ設定を手動で構成する]()必要があります。 
+* `connection` は、(値 `AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>` を使用して) DocumentDB アカウントのエンドポイントを指すアプリ設定の名前である必要があります。 Functions ポータルの UI を使用して DocumentDB アカウントを作成すると、アカウント作成プロセスによって新しいアプリ設定が作成されます。 既存の DocumentDB アカウントを使用するには、[このアプリ設定を手動で構成する](functions-how-to-use-azure-function-app-settings.md)必要があります。 
 
 ## <a name="output-usage"></a>出力の使用方法
 このセクションでは、DocumentDB 出力バインドを関数のコードで使用する方法について説明します。
