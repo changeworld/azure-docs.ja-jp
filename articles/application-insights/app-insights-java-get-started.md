@@ -397,5 +397,5 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 [eclipse]: app-insights-java-eclipse.md
 [javalogs]: app-insights-java-trace-logs.md
 [metrics]: app-insights-metrics-explorer.md
-[usage]: app-insights-web-track-usage.md
+[usage]: app-insights-javascript.md
 

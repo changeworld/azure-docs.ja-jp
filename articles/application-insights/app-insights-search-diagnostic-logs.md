@@ -16,6 +16,7 @@ ms.author: awills
 translationtype: Human Translation
 ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
 ms.openlocfilehash: 874e9abb7ae7e06808645ae2ab7cd5b3c0d36e04
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: 874e9abb7ae7e06808645ae2ab7cd5b3c0d36e04
 
 カスタム イベント、例外レポート、およびトレースを送信するコードを記述することもできます。 log4J、log4net、NLog、System.Diagnostics.Trace などのログ記録フレームワークを既に使用している場合は、これらのログをキャプチャして検索に含めることができます。 このようにすると、ユーザーの操作、例外、その他のイベントをログ トレースと簡単に関連付けられるようになります。
 
-## <a name="a-namesendabefore-you-write-custom-telemetry"></a><a name="send"></a>カスタム テレメトリを作成する前に
+## <a name="send"></a>カスタム テレメトリを作成する前に
 [プロジェクトに Application Insights をまだ設定していない場合][start]、今すぐ設定します。
 
 アプリケーションを実行すると、アプリケーションがテレメトリを送信し、そのテレメトリが診断検索に表示されます。テレメトリには、サーバーが受信した要求、クライアント側で記録されたページ ビュー、キャッチされなかった例外などがあります。
@@ -40,7 +41,7 @@ ms.openlocfilehash: 874e9abb7ae7e06808645ae2ab7cd5b3c0d36e04
 ## <a name="sampling"></a>サンプリング
 アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。 [サンプリングの詳細については、こちらを参照してください。](app-insights-sampling.md)
 
-## <a name="a-nameeventsacustom-events"></a><a name="events"></a>カスタム イベント
+## <a name="events"></a>カスタム イベント
 カスタム イベントは、[診断検索][diagnostic]と[メトリック エクスプローラー][metrics]の両方に表示されます。 カスタム イベントは、デバイス、Web ページ、サーバー アプリケーションから送信できます。 これらは、診断の目的にも、[使用状況のパターンを理解する][track]ためにも利用できます。
 
 カスタム イベントには名前があり、プロパティを持つこともできるため、数値の測定値と共にフィルター処理をすることができます。
@@ -95,7 +96,7 @@ JavaScript at client
 
 ![](./media/app-insights-search-diagnostic-logs/appinsights-23-customevents-4.png)
 
-## <a name="a-namepagesa-page-views"></a><a name="pages"></a> ページ ビュー
+## <a name="pages"></a> ページ ビュー
 ページ ビュー テレメトリは、[Web ページ内に挿入した JavaScript のスニペット][usage]に含まれる trackPageView() 呼び出しによって送信されます。 その主な目的は、概要ページに表示されるページ ビューの数に加えることです。
 
 通常は各 HTML ページで&1; 度呼び出されますが、複数の呼び出しを挿入できます。たとえば、シングル ページ アプリで、ユーザーがデータを取得するたびに新しいページを記録できます。
@@ -108,7 +109,7 @@ JavaScript at client
      {Game: currentGame.name, Difficulty: currentGame.difficulty});
 
 
-## <a name="a-nametracea-trace-telemetry"></a><a name="trace"></a> トレース テレメトリ
+## <a name="trace"></a> トレース テレメトリ
 トレース テレメトリは、特に診断ログを作成するためだけに挿入するコードです。 
 
 たとえば、次のような呼び出しを挿入できます。
@@ -133,7 +134,7 @@ log4Net、NLog、System.Diagnostics.Trace といった、ログ記録フレー�
 
 NuGet パッケージは、必要なアセンブリをインストールし、web.config や app.config も変更します。
 
-#### <a name="a-namepepperainsert-diagnostic-log-calls"></a><a name="pepper"></a>診断ログの呼び出しを挿入する
+#### <a name="pepper"></a>診断ログの呼び出しを挿入する
 System.Diagnostics.Trace を使用する場合、通常の呼び出しは次のようになります。
 
     System.Diagnostics.Trace.TraceWarning("Slow response - database01");
@@ -146,7 +147,7 @@ log4net または NLog を使用する場合:
 
 トレース フィルターを選択すると、診断検索にメッセージが表示されます。
 
-### <a name="a-nameexceptionsaexceptions"></a><a name="exceptions"></a>例外
+### <a name="exceptions"></a>例外
 Application Insights で例外レポートを取得すると、特に、失敗した要求と例外間をナビゲートして例外スタックを確認できるようになるため、非常に強力なエクスペリエンスが提供されます。
 
 場合によっては、例外が自動的にキャッチされるように、[数行のコードを挿入][exceptions]する必要があります。
@@ -246,24 +247,24 @@ Application Insights は可能な場合、[Status Monitor][redfield] と [Applic
         .Add(new MyTelemetryInitializer());
     }
 
-### <a name="a-namerequestsa-server-web-requests"></a><a name="requests"></a> サーバー Web 要求
+### <a name="requests"></a> サーバー Web 要求
 [Status Monitor を Web サーバーにインストールする][redfield]か、[Application Insights を Web プロジェクトに追加する][greenbrown]と、要求テレメトリが自動的に送信されます。 また、このテレメトリは、メトリック エクスプローラーの要求と応答のタイムチャートや概要ページにもフィードされます。
 
 その他のイベントを送信する場合は、TrackRequest() API を使用します。
 
-## <a name="a-namequestionsaq--a"></a><a name="questions"></a>Q & A
-### <a name="a-nameemptykeyai-get-an-error-instrumentation-key-cannot-be-empty"></a><a name="emptykey"></a>エラー「インストルメンテーション キーは空にできません」が発生しました
+## <a name="questions"></a>Q & A
+### <a name="emptykey"></a>エラー「インストルメンテーション キーは空にできません」が発生しました
 Application Insights をインストールしないでログ アダプターの Nuget パッケージをインストールした可能性があります。
 
 ソリューション エクスプローラーで、 `ApplicationInsights.config` を右クリックし、[ **Application Insights の更新**] を選択します。 Azure へのサインインを促すダイアログが表示されます。または、Application Insights のリソースを作成するか、既存のリソースを再利用します。 これで問題は修正されます。
 
-### <a name="a-namelimitsahow-much-data-is-retained"></a><a name="limits"></a>保持されるデータの量はどのくらいですか
+### <a name="limits"></a>保持されるデータの量はどのくらいですか
 各アプリケーションで、1 秒あたり 500 イベントまでです。 イベントは&7; 日間保持されます。
 
 ### <a name="some-of-my-events-or-traces-dont-appear"></a>マイ イベントまたはトレースの一部が表示されません
 アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。 [サンプリングの詳細については、こちらを参照してください。](app-insights-sampling.md)
 
-## <a name="a-nameaddanext-steps"></a><a name="add"></a>次のステップ
+## <a name="add"></a>次のステップ
 * [可用性と応答性のテストを設定する][availability]
 * [Troubleshooting][qna]
 
@@ -278,12 +279,7 @@ Application Insights をインストールしないでログ アダプターの 
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 [track]: app-insights-api-custom-events-metrics.md
-[usage]: app-insights-web-track-usage.md
+[usage]: app-insights-javascript.md
 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

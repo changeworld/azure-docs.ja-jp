@@ -9,7 +9,7 @@ editor:
 tags: 
 ms.assetid: e163f878-b919-45c5-9f5a-75a64f3b14a0
 ms.service: virtual-machines-linux
-ms.devlang: na
+ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services

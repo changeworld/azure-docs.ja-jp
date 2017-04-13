@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/12/2017
+ms.date: 04/12/2017
 ms.author: oanapl
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: d986275612b3e5c97636936a5e448dd6d0fcfc4e
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -306,10 +307,5 @@ REST と、目的のエンティティに送られ、本体に正常性レポー
 [ローカルでのサービスの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
