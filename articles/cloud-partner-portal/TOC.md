@@ -9,6 +9,7 @@
 ## 仮想マシンの管理
 ### [仮想マシンのプランの作成](./cloud-partner-portal-publish-virtual-machine.md)
 #### [前提条件](./cloud-partner-portal-publish-virtual-machine.md#what-are-pre-requisites-for-publishing-a-vm)
+#### [Microsoft 開発者アカウントの登録](./cloud-partner-portal-dev-center-accounts-registration.md)
 #### [新しい VM プランの作成](./cloud-partner-portal-publish-virtual-machine.md#how-to-create-a-new-vm-offer)
 #### [プラン設定フォーム](./cloud-partner-portal-publish-virtual-machine.md#how-to-fill-out-the-offer-settings-form)
 #### [SKU フォーム](./cloud-partner-portal-publish-virtual-machine.md#how-to-create-skus)
@@ -21,6 +22,7 @@
 ### [既存のプランの更新](./cloud-partner-portal-update-existing-offer.md)
 ### [VM プランまたは SKU の削除](./cloud-partner-portal-delete-an-offer.md)
 ### [クラウド パートナー ポータルへの移行](./cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)
+## [Azure Marketplace 販売者ガイド](./cloud-partner-portal-seller-guide.md)
 
 ## [マーケティング リード管理](./cloud-partner-portal-marketing-lead-management.md)
 ### [Azure テーブル](./cloud-partner-portal-lead-management-instructions-azure-table.md)

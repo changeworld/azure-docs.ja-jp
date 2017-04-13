@@ -18,10 +18,13 @@
 
 # 方法
 ## 計画と設計
+### [🔧Azure サービスとの統合に関する一般的なシナリオ](event-hubs-common-integrations.md)
 ### [Event Hubs Dedicated](event-hubs-dedicated-overview.md)
 ### [認証とセキュリティ モデルの概要](event-hubs-authentication-and-security-model-overview.md)
 ### [可用性と一貫性](event-hubs-availability-and-consistency.md)
 ## 開発
+### [🔧エラー処理と再試行](event-hubs-handling-errors-retry.md)
+### [🔧パフォーマンスとスケールの管理](event-hubs-performance-scale.md)
 ### [利用可能な API](event-hubs-api-overview.md)
 #### [.NET Standard](event-hubs-dotnet-standard-api-overview.md)
 #### [.NET Framework](event-hubs-dotnet-framework-api-overview.md)
@@ -34,6 +37,7 @@
 #### [Event Hubs Archive](event-hubs-archive-overview.md)
 #### [テンプレートを使用して Event Hubs Archive を有効にする](event-hubs-resource-manager-namespace-event-hub-enable-archive.md)
 #### [Python を使用して Event Hubs Archive を有効にする](event-hubs-archive-python.md)
+### [PowerShell を使用したエンティティのプロビジョニング](event-hubs-manage-with-ps.md) 
 ### [Event Hubs を使用して Azure 診断データをストリーミングする](event-hubs-streaming-azure-diags-data.md)
 ### [Resource Manager テンプレートを使用してイベント ハブを作成およびデプロイする](event-hubs-resource-manager-namespace-event-hub.md)
 
@@ -58,8 +62,3 @@
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=event-hubs)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-eventhub)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=event-hubs)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

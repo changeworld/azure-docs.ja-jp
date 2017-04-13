@@ -1,6 +1,7 @@
 # 作業開始
 ## [予想外のコストを防ぐ](billing-getting-started.md)
 ## [Office 365 アカウントでサインアップする](billing-use-existing-office-365-account-azure-subscription.md)
+## [Azure アカウントで Office 365 にサインアップする](billing-use-existing-azure-account-for-office-365-subscription.md)
 ## [制限とクォータ](../azure-subscription-service-limits.md?toc=/azure/billing/TOC.json)
 # 方法
 ## 使用状況とコストの監視
@@ -33,8 +34,3 @@
 
 # リソース
 ## [サポートにお問い合せください](../azure-supportability/how-to-create-azure-support-request.md)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

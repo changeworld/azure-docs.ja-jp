@@ -27,7 +27,7 @@
 
 ## VM のベースとテンプレートの管理
 ### [要求可能 VM の作成](devtest-lab-add-claimable-vm.md)
-### [Azure Resource Manager テンプレートを使用してマルチ VM 環境を作成する](devtest-lab-create-environment-from-arm.md)
+### [Azure Resource Manager テンプレートを使用してマルチ VM 環境と PaaS リソースを作成する](devtest-lab-create-environment-from-arm.md)
 ### [Marketplace のイメージの構成](devtest-lab-configure-marketplace-images.md)
 ### [数式とイメージを比較する](devtest-lab-comparing-vm-base-image-types.md)
 ### [数式の管理](devtest-lab-manage-formulas.md)

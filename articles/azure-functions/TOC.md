@@ -29,15 +29,15 @@
 ##### [テーブル バインド](functions-bindings-storage-table.md)
 #### [タイマー トリガー](functions-bindings-timer.md)
 #### [Twilio 出力バインド](functions-bindings-twilio.md)
+### [関数プロキシを定義する](functions-proxies.md)
 ### [Azure Portal から関数アプリを作成する](functions-create-function-app-portal.md) 
-### [Azure Functions のテスト](functions-test-a-function.md)
+### [スケジュールされたクリーンアップ タスクを実行する](functions-scenario-database-table-cleanup.md)
+### [Azure Functions をテストする](functions-test-a-function.md)
 ### [開発とローカル デバッグ](functions-run-local.md)
 ### [Azure Functions のベスト プラクティス](functions-best-practices.md)
-### [スケジュールされたクリーンアップ タスクを Azure Functions で実行する](functions-scenario-database-table-cleanup.md)
-### [OpenAPI 定義 (プレビュー) を作成する](functions-api-definition-getting-started.md)
-#### [Functions での OpenAPI 2.0 のリファレンス](functions-api-definition.md)
+### [OpenAPI 定義を作成する](functions-api-definition-getting-started.md)
 
-## 管理
+## [管理]
 ### [関数アプリの設定を構成する](functions-how-to-use-azure-function-app-settings.md)
 
 ## デプロイ

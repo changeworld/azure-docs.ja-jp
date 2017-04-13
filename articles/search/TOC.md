@@ -48,16 +48,19 @@
 ### [JSON BLOB のインデックスを作成する](search-howto-index-json-blobs.md)
 ### [Azure VM で SQL Server へのインデクサーの接続を構成する](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 ### [インデクサーのフィールド マッピング](search-indexer-field-mappings.md)
-##  検索エクスペリエンス
-### [単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
-### [Lucene クエリ構文](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
-### [Lucene 構文クエリの例](search-query-lucene-examples.md)
-### [フィルター式構文](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
+##  Search 
+### [フルテキスト検索のしくみ](search-lucene-query-architecture.md)
+### クエリの構築
+#### [単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
+#### [Lucene クエリ構文](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
+#### [Lucene 構文クエリの例](search-query-lucene-examples.md)
+#### [フィルター式構文](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
+### カスタム検索
+#### [言語アナライザー](https://docs.microsoft.com/rest/api/searchservice/language-support)
+#### [カスタム アナライザー](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)
 ### [スコア付け](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
 ### [検索候補](https://docs.microsoft.com/rest/api/searchservice/suggesters)
 ### [ファセット ナビゲーション](search-faceted-navigation.md)
-### [言語アナライザー](https://docs.microsoft.com/rest/api/searchservice/language-support)
-### [カスタム アナライザー](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)
 
 # リファレンス
 ## [.NET](/dotnet/api/microsoft.azure.search)

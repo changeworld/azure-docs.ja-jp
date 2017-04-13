@@ -103,6 +103,7 @@
 #### [Power BI でのデータ視覚化](iot-hub-live-data-visualization-in-power-bi.md)
 #### [Web Apps でのデータ視覚化](iot-hub-live-data-visualization-in-web-apps.md)
 #### [Azure Machine Learning を使用した天気予報](iot-hub-weather-forecast-machine-learning.md)
+#### [iothub-explorer を使用したデバイス管理](iot-hub-device-management-iothub-explorer.md)
 
 ### [Sparkfun ESP8266 Thing Dev](iot-hub-sparkfun-esp8266-thing-dev-get-started.md)
 #### [iothub-explorer を使用したクラウド デバイス メッセージングの管理](iot-hub-explorer-cloud-device-messaging.md)
@@ -110,6 +111,7 @@
 #### [Power BI でのデータ視覚化](iot-hub-live-data-visualization-in-power-bi.md)
 #### [Web Apps でのデータ視覚化](iot-hub-live-data-visualization-in-web-apps.md)
 #### [Azure Machine Learning を使用した天気予報](iot-hub-weather-forecast-machine-learning.md)
+#### [iothub-explorer を使用したデバイス管理](iot-hub-device-management-iothub-explorer.md)
 
 
 ### [Adafruit Feather M0](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
@@ -138,54 +140,13 @@
 ### [Linux でのシミュレーション](iot-hub-linux-gateway-sdk-get-started.md)
 ### [Windows でのシミュレーション](iot-hub-windows-gateway-sdk-get-started.md)
 
+
 ## IoT Gateway Starter Kit の使用
-### [シミュレートされたデバイス](iot-hub-gateway-kit-c-sim-get-started.md)
-#### レッスン 1: NUC の構成
-##### [Intel NUC を IoT ゲートウェイとしてセットアップする](iot-hub-gateway-kit-c-sim-lesson1-set-up-nuc.md)
+### IoT Gateway Starter Kit の構成
+#### [Intel NUC を IoT ゲートウェイとしてセットアップする](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
+#### [IoT ゲートウェイを IoT Hub に接続する](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
+#### [IoT ゲートウェイをデータ変換に使用する](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
 
-#### レッスン 2: IoT ハブの作成
-##### [ツールを入手する (Windows 7 以降)](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-win32.md)
-##### [ツールを入手する (Ubuntu 16.04)](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-ubuntu.md)
-##### [ツールを入手する (macOS 10.10)](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-mac.md)
-##### [IoT ハブを作成してデバイスを登録する](iot-hub-gateway-kit-c-sim-lesson2-register-device.md)
-
-#### レッスン 3: シミュレートされたデバイスからのメッセージの受信
-##### [BLE サンプル アプリの構成と実行](iot-hub-gateway-kit-c-sim-lesson3-configure-simulated-device-app.md)
-##### [IoT ハブからのメッセージの読み取り](iot-hub-gateway-kit-c-sim-lesson3-read-messages-from-hub.md)
-
-#### レッスン 4: Azure Table ストレージへのメッセージの保存
-##### [Azure Function App と Azure ストレージ アカウントの作成](iot-hub-gateway-kit-c-sim-lesson4-deploy-resource-manager-template.md)
-##### [Azure Storage ストレージに保持されたメッセージの読み取り](iot-hub-gateway-kit-c-sim-lesson4-read-table-storage.md)
-
-#### [レッスン 5: 初めての Azure IoT Gateway モジュールの作成](iot-hub-gateway-kit-c-lesson5-create-gateway-module.md)
-
-#### [トラブルシューティング](iot-hub-gateway-kit-c-sim-troubleshooting.md)
-
-### [SensorTag デバイス](iot-hub-gateway-kit-c-get-started.md)
-#### レッスン 1: NUC の構成
-##### [Intel NUC を IoT ゲートウェイとしてセットアップする](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
-
-#### レッスン 2: IoT ハブの作成
-##### [ツールを入手する (Windows 7 以降)](iot-hub-gateway-kit-c-lesson2-get-the-tools-win32.md)
-##### [ツールを入手する (Ubuntu 16.04)](iot-hub-gateway-kit-c-lesson2-get-the-tools-ubuntu.md)
-##### [ツールを入手する (macOS 10.10)](iot-hub-gateway-kit-c-lesson2-get-the-tools-mac.md)
-##### [IoT ハブを作成してデバイスを登録する](iot-hub-gateway-kit-c-lesson2-register-device.md)
-
-#### レッスン 3: シミュレートされたデバイスからのメッセージの受信
-##### [BLE サンプル アプリの構成と実行](iot-hub-gateway-kit-c-lesson3-configure-ble-app.md)
-##### [IoT ハブからのメッセージの読み取り](iot-hub-gateway-kit-c-lesson3-read-messages-from-hub.md)
-
-#### レッスン 4: Azure Table ストレージへのメッセージの保存
-##### [Azure Function App と Azure ストレージ アカウントの作成](iot-hub-gateway-kit-c-lesson4-deploy-resource-manager-template.md)
-##### [Azure Storage ストレージに保持されたメッセージの読み取り](iot-hub-gateway-kit-c-lesson4-read-table-storage.md)
-
-#### [レッスン 5: 初めての Azure IoT Gateway モジュールの作成](iot-hub-gateway-kit-c-lesson5-create-gateway-module.md)
-
-##### [トラブルシューティング](iot-hub-gateway-kit-c-troubleshooting.md)
-
-## [C 用 Azure IoT device SDK の使用](iot-hub-device-sdk-c-intro.md)
-### [IoTHubClient の使用](iot-hub-device-sdk-c-iothubclient.md)
-### [シリアライザーの使用](iot-hub-device-sdk-c-serializer.md)
 
 # 方法
 ## プラン
@@ -211,6 +172,9 @@
 #### [デバイス SDK とサービス SDK](iot-hub-devguide-sdks.md)
 #### [MQTT サポート](iot-hub-mqtt-support.md)
 #### [用語集](iot-hub-devguide-glossary.md)
+### [C 用 Azure IoT device SDK の使用](iot-hub-device-sdk-c-intro.md)
+#### [IoTHubClient の使用](iot-hub-device-sdk-c-iothubclient.md)
+#### [シリアライザーの使用](iot-hub-device-sdk-c-serializer.md)
 ### デバイスからクラウドへのメッセージの処理
 #### [.NET](iot-hub-csharp-csharp-process-d2c.md)
 #### [Java](iot-hub-java-java-process-d2c.md)
@@ -268,8 +232,8 @@
 ## [Azure CLI 2.0 プレビュー](/cli/azure/iot)
 ## [.NET (サービス)](/dotnet/api/microsoft.azure.devices)
 ## [.NET (デバイス)](/dotnet/api/microsoft.azure.devices.client)
-## [Java (サービス)](/java/api/com.microsoft.azure.iot.service.auth)
-## [Java (デバイス)](/java/api/com.microsoft.azure.iothub)
+## [Java (サービス)](/java/api/com.microsoft.azure.sdk.iot.service)
+## [Java (デバイス)](/java/api/com.microsoft.azure.sdk.iot.device)
 ## [Azure IoT SDK](http://azure.github.io/azure-iot-sdks/)
 ## [Gateway SDK](http://azure.github.io/azure-iot-gateway-sdk)
 ## [REST (リソース プロバイダー)](https://docs.microsoft.com/rest/api/iothub/iothubresource)

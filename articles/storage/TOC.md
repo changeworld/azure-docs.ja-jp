@@ -79,6 +79,7 @@
 ### [Azure IaaS VM ディスクについてよく寄せられる質問](storage-faq-for-disks.md)
 ### Premium Storage
 #### [VM ディスク向けの高パフォーマンス Premium Storage](storage-premium-storage.md)
+#### [Azure Site Recovery を使用した Premium Storage への移行](storage-migrate-to-premium-storage-using-azure-site-recovery.md)
 #### [高パフォーマンス用の設計](storage-premium-storage-performance.md)
 ### Standard Storage
 #### [コスト効率に優れた Standard Storage および非管理対象と管理対象の VM ディスク](storage-standard-storage.md)

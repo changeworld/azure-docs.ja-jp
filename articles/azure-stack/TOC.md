@@ -8,6 +8,7 @@
 ## 作業開始
 ### [デプロイメントの前提条件](azure-stack-deploy.md)
 ### [デプロイする](azure-stack-run-powershell-script.md)
+### [ポータルのアクティブ化](azure-stack-run-powershell-script.md#activate-the-administrator-and-tenant-portals)
 ### [登録](azure-stack-register.md)
 ## 方法
 ### [Azure Stack POC に接続する](azure-stack-connect-azure-stack.md)
@@ -56,6 +57,7 @@
 #### [Azure Stack 上の App Service の概要](azure-stack-app-service-overview.md)
 #### [開始する前に](azure-stack-app-service-before-you-get-started.md)
 #### [App Service リソース プロバイダーのデプロイ](azure-stack-app-service-deploy.md)
+#### [App Service のオフライン デプロイ](azure-stack-app-service-deploy-offline.md)
 #### [web worker ロールを追加する](azure-stack-app-service-add-worker-roles.md)
 #### [デプロイ ソースを構成する](azure-stack-app-service-configure-deployment-sources.md)
 #### [Azure Stack 上の App Service で FTP を有効にする](azure-stack-app-service-enable-ftp.md)
@@ -80,7 +82,7 @@
 ### [概要](azure-stack-storage-overview.md)
 ### [相違点と考慮事項](azure-stack-acs-differences-tp2.md)
 ## ネットワーク
-### [Azure Stack 用の iDNS](azure-stack-understanding-dns-in-tp2.md)
+### [Azure Stack 用の iDNS](azure-stack-understanding-dns.md)
 ### [Azure Stack の DNS](azure-stack-dns.md)
 ### [サイト間 VPN 接続について](azure-stack-create-vpn-connection-one-node-tp2.md)
 ## Key Vault
