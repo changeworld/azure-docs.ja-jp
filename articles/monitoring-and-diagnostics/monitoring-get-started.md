@@ -22,12 +22,12 @@ ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="get-started-with-azure-monitor"></a>Azure Monitor の使用
-Azure Monitor は、Azure リソースを監視するための&1; つのソースを提供するプラットフォーム サービスです。 Azure Monitor を使用すると、Azure のリソースのメトリックとログを視覚化、クエリ、ルーティング、アーカイブし、そのメトリックとログに対してアクションを実行できます。 このデータを操作するには、Monitor ポータル ブレード、[Monitor PowerShell コマンドレット](insights-powershell-samples.md)、[クロスプラットフォーム CLI](insights-cli-samples.md)、または [Azure Monitor REST API](https://msdn.microsoft.com/library/dn931943.aspx) を使用します。 この記事では、Azure Monitor の重要なコンポーネントをいくつか取り上げて、ポータルを使用しながら説明します。
+Azure Monitor は、Azure リソースを監視するための 1 つのソースを提供するプラットフォーム サービスです。 Azure Monitor を使用すると、Azure のリソースのメトリックとログを視覚化、クエリ、ルーティング、アーカイブし、そのメトリックとログに対してアクションを実行できます。 このデータを操作するには、Monitor ポータル ブレード、[Monitor PowerShell コマンドレット](insights-powershell-samples.md)、[クロスプラットフォーム CLI](insights-cli-samples.md)、または [Azure Monitor REST API](https://msdn.microsoft.com/library/dn931943.aspx) を使用します。 この記事では、Azure Monitor の重要なコンポーネントをいくつか取り上げて、ポータルを使用しながら説明します。
 
 1. ポータルでは、**[More services (その他のサービス)]** に移動し、**[Monitor]** オプションを見つけます。 星のアイコンをクリックして、このオプションをお気に入りリストに追加し、左側のナビゲーション バーから簡単にアクセスできるようにします。
    
     ![サービス一覧の Monitor](./media/monitoring-get-started/monitor-more-services.png)
-2. **[Monitor]** をクリックして、**[Monitor]** ブレードを開きます。 このブレードは、すべての監視設定とデータが&1; つにまとめられた統合ビューです。 最初に開くのは **[アクティビティ ログ]** セクションです。
+2. **[Monitor]** をクリックして、**[Monitor]** ブレードを開きます。 このブレードは、すべての監視設定とデータが 1 つにまとめられた統合ビューです。 最初に開くのは **[アクティビティ ログ]** セクションです。
    
     ![[Monitor] ブレードのナビゲーション](./media/monitoring-get-started/monitor-blade-nav.png)
    
@@ -36,7 +36,7 @@ Azure Monitor は、Azure リソースを監視するための&1; つのソー�
    > 
    > 
    
-    Azure Monitor には、**アクティビティ ログ**、**メトリック**、**診断ログ**の&3; つの基本的なデータ監視カテゴリがあります。
+    Azure Monitor には、**アクティビティ ログ**、**メトリック**、**診断ログ**の 3 つの基本的なデータ監視カテゴリがあります。
 3. **[アクティビティ ログ]** をクリックすると、アクティビティ ログ セクションが表示されます。
    
     ![[アクティビティ ログ] ブレード](./media/monitoring-get-started/monitor-act-log-blade.png)
