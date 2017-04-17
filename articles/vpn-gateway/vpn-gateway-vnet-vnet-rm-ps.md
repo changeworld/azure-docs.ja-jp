@@ -13,38 +13,37 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/27/2017
+ms.date: 04/11/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: a4cbc4cd1c48da1120c643892b19692ac583d4c3
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 900e104574c4250adc2a0d3f5abf3749da4a578b
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="configure-a-vnet-to-vnet-connection-using-powershell"></a>PowerShell を使用して VNet 間接続を構成する
+
+仮想ネットワークどうし (VNet 間) の接続は、VNet をオンプレミス サイトの場所に接続することと似ています。 どちらの接続タイプでも、VPN ゲートウェイを使用して、IPsec/IKE を使った安全なトンネルが確保されます。 マルチサイト接続構成と VNet 間通信を組み合わせることもできます。 そのため、クロスプレミス接続と仮想ネットワーク間接続とを組み合わせたネットワーク トポロジを確立することができます。
+
+
+![v2v diagram](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
+
+この記事では、VPN Gateway を使用して Resource Manager デプロイメント モデルで VNet 間の接続を作成する手順について説明します。 仮想ネットワークが属しているリージョンやサブスクリプションは異なっていてもかまいません。 
+
+[!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)] 別のデプロイメント モデルを使って VNet 間接続を作成したい場合や、異なるデプロイメント モデル間で VNet 間接続を作成したい場合、または別のデプロイ ツールを使用したい場合は、次のドロップダウン リストから目的の記事を選択してください。
+
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [Resource Manager - PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [クラシック - Azure Portal](vpn-gateway-howto-vnet-vnet-portal-classic.md)
-> * [クラシック - クラシック ポータル](virtual-networks-configure-vnet-to-vnet-connection.md)
-> 
+> * [異なるデプロイメント モデルの接続 - Azure Portal](vpn-gateway-connect-different-deployment-models-portal.md)
+> * [異なるデプロイメント モデルの接続 - PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
+>
 >
 
-この記事では、VPN Gateway を使用して Resource Manager デプロイメント モデルで VNet 間の接続を作成する手順について説明します。 仮想ネットワークが属しているリージョンやサブスクリプションは異なっていてもかまいません。
-
-![v2v diagram](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
-
-### <a name="deployment-models-and-methods-for-vnet-to-vnet-connections"></a>VNet 間接続で使用できるデプロイメント モデルとデプロイ方法
-[!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
-
-以下の表は、VNet 間の構成に関して現在利用できるデプロイメント モデルとデプロイ方法を示しています。 構成手順を説明した記事が利用できるようになったら、表から直接リンクできるようにします。 
-
-[!INCLUDE [vpn-gateway-table-vnet-vnet](../../includes/vpn-gateway-table-vnet-to-vnet-include.md)]
-
-**VNet ピアリング**
-
 [!INCLUDE [vpn-gateway-vnetpeeringlink](../../includes/vpn-gateway-vnetpeeringlink-include.md)]
+
 
 ## <a name="about-vnet-to-vnet-connections"></a>VNet 間接続の概要
 仮想ネットワークどうし (VNet 間) の接続は、VNet をオンプレミス サイトの場所に接続することと似ています。 どちらの接続タイプでも、Azure VPN ゲートウェイを使用し、IPsec/IKE を使った安全なトンネルが確保されます。 接続する VNet は、リージョンが異なっていてもかまいません。 または、サブスクリプションが異なっていてもかまいません。 マルチサイト構成と VNet 間通信を組み合わせることもできます。 そのため、クロスプレミス接続と仮想ネットワーク間接続を組み合わせたネットワーク トポロジを確立することができます (下図参照)。
@@ -62,15 +61,12 @@ ms.lasthandoff: 03/31/2017
   
   * 同じリージョン内で、分離または管理要件に基づいて相互に接続された複数の仮想ネットワークを利用し、多層アプリケーションをセットアップすることができます。
 
-### <a name="vnet-to-vnet-considerations"></a>VNet 間の考慮事項
-[!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
+VNet 間接続の詳細については、この記事の最後にある「[VNet 間の考慮事項](#faq)」を参照してください。
 
 ## <a name="which-set-of-steps-should-i-use"></a>どの手順を利用するべきでしょうか。
 この記事では、2 種類の手順について説明します。 1 つは [VNet が同じサブスクリプション内に存在する](#samesub)場合の手順で、もう 1 つは [VNet が異なるサブスクリプション内に存在する](#difsub)場合の手順です。 すべての仮想ネットワーク リソースとゲートウェイ リソースを同じ PowerShell セッションで作成して構成できるかどうかが、両者の大きな違いとなります。
 
 この記事の手順では、各セクションの冒頭で宣言される変数を使用します。 既に既存の VNet を使用している場合は、実際の環境の設定に応じて変数を変更してください。 
-
-![両方の接続](./media/vpn-gateway-vnet-vnet-rm-ps/differentsubscription.png)
 
 ## <a name="samesub"></a>同じサブスクリプション内にある VNet を接続する方法
 ![v2v diagram](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
@@ -120,75 +116,96 @@ ms.lasthandoff: 03/31/2017
 1. 変数を宣言する
    
     まず変数を宣言します。 この例では、この演習の値を使って変数を宣言します。 ほとんどの場合、値は実際のものに置き換える必要があります。 しかし、この手順を実行してこの種の構成に慣れたら、これらの変数を利用してもかまいません。 変数を必要に応じて変更したうえでコピーし、PowerShell コンソールに貼り付けます。
-   
-        $Sub1 = "Replace_With_Your_Subcription_Name"
-        $RG1 = "TestRG1"
-        $Location1 = "East US"
-        $VNetName1 = "TestVNet1"
-        $FESubName1 = "FrontEnd"
-        $BESubName1 = "Backend"
-        $GWSubName1 = "GatewaySubnet"
-        $VNetPrefix11 = "10.11.0.0/16"
-        $VNetPrefix12 = "10.12.0.0/16"
-        $FESubPrefix1 = "10.11.0.0/24"
-        $BESubPrefix1 = "10.12.0.0/24"
-        $GWSubPrefix1 = "10.12.255.0/27"
-        $DNS1 = "8.8.8.8"
-        $GWName1 = "VNet1GW"
-        $GWIPName1 = "VNet1GWIP"
-        $GWIPconfName1 = "gwipconf1"
-        $Connection14 = "VNet1toVNet4"
-        $Connection15 = "VNet1toVNet5"
+
+  ```powershell
+  $Sub1 = "Replace_With_Your_Subcription_Name"
+  $RG1 = "TestRG1"
+  $Location1 = "East US"
+  $VNetName1 = "TestVNet1"
+  $FESubName1 = "FrontEnd"
+  $BESubName1 = "Backend"
+  $GWSubName1 = "GatewaySubnet"
+  $VNetPrefix11 = "10.11.0.0/16"
+  $VNetPrefix12 = "10.12.0.0/16"
+  $FESubPrefix1 = "10.11.0.0/24"
+  $BESubPrefix1 = "10.12.0.0/24"
+  $GWSubPrefix1 = "10.12.255.0/27"
+  $DNS1 = "8.8.8.8"
+  $GWName1 = "VNet1GW"
+  $GWIPName1 = "VNet1GWIP"
+  $GWIPconfName1 = "gwipconf1"
+  $Connection14 = "VNet1toVNet4"
+  $Connection15 = "VNet1toVNet5"
+  ```
 2. サブスクリプションへの接続
    
     PowerShell モードを切り替え、Resource Manager コマンドレットを使用します。 PowerShell コンソールを開き、アカウントに接続します。 接続については、次の例を参考にしてください。
-   
-        Login-AzureRmAccount
+
+  ```powershell
+  Login-AzureRmAccount
+  ```
    
     アカウントのサブスクリプションを確認します。
-   
-        Get-AzureRmSubscription 
+ 
+  ```powershell
+  Get-AzureRmSubscription
+  ``` 
    
     使用するサブスクリプションを指定します。
-   
-        Select-AzureRmSubscription -SubscriptionName $Sub1
+
+  ```powershell
+  Select-AzureRmSubscription -SubscriptionName $Sub1
+  ```
+
 3. 新しいリソース グループを作成する
-   
-        New-AzureRmResourceGroup -Name $RG1 -Location $Location1
+
+  ```powershell
+  New-AzureRmResourceGroup -Name $RG1 -Location $Location1
+  ```
 4. TestVNet1 のサブネット構成を作成する
    
     この例では、TestVNet1 という名前の仮想ネットワークと 3 つのサブネットを作成します。サブネットの名前は GatewaySubnet、FrontEnd、Backend です。 値を代入するときは、ゲートウェイの名前を必ず GatewaySubnet にすることが重要です。 別の名前にすると、接続を作成できません。 
    
-    次の例では、先ほど設定した変数を使用します。 この例では、ゲートウェイ サブネットに /27 が使用されています。 /29 と同程度の小規模なゲートウェイ サブネットを作成することはできますが、少なくとも /28 または /27 以上を選択してさらに多くのアドレスが含まれる大規模なサブネットを作成することをお勧めします。 これにより、十分な数のアドレスが、将来的に必要になる可能性のある追加の構成に対応できるようになります。 
-   
-        $fesub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
-        $besub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $BESubName1 -AddressPrefix $BESubPrefix1
-        $gwsub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $GWSubName1 -AddressPrefix $GWSubPrefix1
+    次の例では、先ほど設定した変数を使用します。 この例では、ゲートウェイ サブネットに /27 が使用されています。 /29 と同程度の小規模なゲートウェイ サブネットを作成することはできますが、少なくとも /28 または /27 以上を選択してさらに多くのアドレスが含まれる大規模なサブネットを作成することをお勧めします。 これにより、十分な数のアドレスが、将来的に必要になる可能性のある追加の構成に対応できるようになります。
+
+  ```powershell
+  $fesub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
+  $besub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $BESubName1 -AddressPrefix $BESubPrefix1
+  $gwsub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $GWSubName1 -AddressPrefix $GWSubPrefix1
+  ```
 5. TestVNet1 を作成する
-   
-        New-AzureRmVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 `
-        -Location $Location1 -AddressPrefix $VNetPrefix11,$VNetPrefix12 -Subnet $fesub1,$besub1,$gwsub1
+
+  ```powershell
+  New-AzureRmVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 `
+  -Location $Location1 -AddressPrefix $VNetPrefix11,$VNetPrefix12 -Subnet $fesub1,$besub1,$gwsub1
+  ```
 6. パブリック IP アドレスの要求
    
-    VNet 用に作成するゲートウェイに割り当てるパブリック IP アドレスを要求します。 AllocationMethod が Dynamic であることに注意してください。 使用する IP アドレスを指定することはできません。 IP アドレスはゲートウェイに動的に割り当てられます。 
+  VNet 用に作成するゲートウェイに割り当てるパブリック IP アドレスを要求します。 AllocationMethod が Dynamic であることに注意してください。 使用する IP アドレスを指定することはできません。 IP アドレスはゲートウェイに動的に割り当てられます。 
    
-        $gwpip1 = New-AzureRmPublicIpAddress -Name $GWIPName1 -ResourceGroupName $RG1 `
-        -Location $Location1 -AllocationMethod Dynamic
+  ```powershell
+  $gwpip1 = New-AzureRmPublicIpAddress -Name $GWIPName1 -ResourceGroupName $RG1 `
+  -Location $Location1 -AllocationMethod Dynamic
+  ```
 7. ゲートウェイ構成の作成
    
-    ゲートウェイの構成で、使用するサブネットとパブリック IP アドレスを定義します。 サンプルを使用してゲートウェイの構成を作成します。 
-   
-        $vnet1 = Get-AzureRmVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1
-        $subnet1 = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet1
-        $gwipconf1 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName1 `
-        -Subnet $subnet1 -PublicIpAddress $gwpip1
+    ゲートウェイの構成で、使用するサブネットとパブリック IP アドレスを定義します。 サンプルを使用してゲートウェイの構成を作成します。
+
+  ```powershell
+  $vnet1 = Get-AzureRmVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1
+  $subnet1 = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet1
+  $gwipconf1 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName1 `
+  -Subnet $subnet1 -PublicIpAddress $gwpip1
+  ```
 8. TestVNet1 のゲートウェイを作成する
    
-    この手順では、TestVNet1 の仮想ネットワーク ゲートウェイを作成します。 VNet 間構成では、RouteBased VpnType が必要です。 ゲートウェイの作成には時間がかかります (完了まで 45 分以上)。
-   
-        New-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 `
-        -Location $Location1 -IpConfigurations $gwipconf1 -GatewayType Vpn `
-        -VpnType RouteBased -GatewaySku Standard
+    この手順では、TestVNet1 の仮想ネットワーク ゲートウェイを作成します。 VNet 間構成では、RouteBased VpnType が必要です。 選択したゲートウェイ SKU によっては、ゲートウェイの作成に 45 分以上かかる場合も少なくありません。
+
+  ```powershell
+  New-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 `
+  -Location $Location1 -IpConfigurations $gwipconf1 -GatewayType Vpn `
+  -VpnType RouteBased -GatewaySku Standard
+  ```
 
 ### <a name="step-3---create-and-configure-testvnet4"></a>手順 3 - TestVNet4 を作成し、構成する
 TestVNet1 を構成したら、TestVNet4 を作成します。 下の手順を実行します。値は必要に応じて実際の値に置換します。 サブスクリプションが同じであるため、この手順は同じ PowerShell セッション内で実行できます。
@@ -196,73 +213,93 @@ TestVNet1 を構成したら、TestVNet4 を作成します。 下の手順を�
 1. 変数を宣言する
    
     値は実際の構成で使用する値に置換します。
-   
-        $RG4 = "TestRG4"
-        $Location4 = "West US"
-        $VnetName4 = "TestVNet4"
-        $FESubName4 = "FrontEnd"
-        $BESubName4 = "Backend"
-        $GWSubName4 = "GatewaySubnet"
-        $VnetPrefix41 = "10.41.0.0/16"
-        $VnetPrefix42 = "10.42.0.0/16"
-        $FESubPrefix4 = "10.41.0.0/24"
-        $BESubPrefix4 = "10.42.0.0/24"
-        $GWSubPrefix4 = "10.42.255.0/27"
-        $DNS4 = "8.8.8.8"
-        $GWName4 = "VNet4GW"
-        $GWIPName4 = "VNet4GWIP"
-        $GWIPconfName4 = "gwipconf4"
-        $Connection41 = "VNet4toVNet1"
+
+  ```powershell
+  $RG4 = "TestRG4"
+  $Location4 = "West US"
+  $VnetName4 = "TestVNet4"
+  $FESubName4 = "FrontEnd"
+  $BESubName4 = "Backend"
+  $GWSubName4 = "GatewaySubnet"
+  $VnetPrefix41 = "10.41.0.0/16"
+  $VnetPrefix42 = "10.42.0.0/16"
+  $FESubPrefix4 = "10.41.0.0/24"
+  $BESubPrefix4 = "10.42.0.0/24"
+  $GWSubPrefix4 = "10.42.255.0/27"
+  $DNS4 = "8.8.8.8"
+  $GWName4 = "VNet4GW"
+  $GWIPName4 = "VNet4GWIP"
+  $GWIPconfName4 = "gwipconf4"
+  $Connection41 = "VNet4toVNet1"
+  ```
    
     続行する前に、サブスクリプション 1 に接続されていることを確認してください。
 2. 新しいリソース グループを作成する
-   
-        New-AzureRmResourceGroup -Name $RG4 -Location $Location4
+
+  ```powershell
+  New-AzureRmResourceGroup -Name $RG4 -Location $Location4
+  ```
 3. TestVNet4 のサブネット構成を作成する
-   
-        $fesub4 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName4 -AddressPrefix $FESubPrefix4
-        $besub4 = New-AzureRmVirtualNetworkSubnetConfig -Name $BESubName4 -AddressPrefix $BESubPrefix4
-        $gwsub4 = New-AzureRmVirtualNetworkSubnetConfig -Name $GWSubName4 -AddressPrefix $GWSubPrefix4
+
+  ```powershell
+  $fesub4 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName4 -AddressPrefix $FESubPrefix4
+  $besub4 = New-AzureRmVirtualNetworkSubnetConfig -Name $BESubName4 -AddressPrefix $BESubPrefix4
+  $gwsub4 = New-AzureRmVirtualNetworkSubnetConfig -Name $GWSubName4 -AddressPrefix $GWSubPrefix4
+  ```
 4. TestVNet4 を作成する
-   
-        New-AzureRmVirtualNetwork -Name $VnetName4 -ResourceGroupName $RG4 `
-        -Location $Location4 -AddressPrefix $VnetPrefix41,$VnetPrefix42 -Subnet $fesub4,$besub4,$gwsub4
+
+  ```powershell
+  New-AzureRmVirtualNetwork -Name $VnetName4 -ResourceGroupName $RG4 `
+  -Location $Location4 -AddressPrefix $VnetPrefix41,$VnetPrefix42 -Subnet $fesub4,$besub4,$gwsub4
+  ```
 5. パブリック IP アドレスの要求
-   
-        $gwpip4 = New-AzureRmPublicIpAddress -Name $GWIPName4 -ResourceGroupName $RG4 `
-        -Location $Location4 -AllocationMethod Dynamic
+
+  ```powershell  
+  $gwpip4 = New-AzureRmPublicIpAddress -Name $GWIPName4 -ResourceGroupName $RG4 `
+  -Location $Location4 -AllocationMethod Dynamic
+  ```
 6. ゲートウェイ構成の作成
-   
-        $vnet4 = Get-AzureRmVirtualNetwork -Name $VnetName4 -ResourceGroupName $RG4
-        $subnet4 = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet4
-        $gwipconf4 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName4 -Subnet $subnet4 -PublicIpAddress $gwpip4
-7. TestVNet4 ゲートウェイを作成する
-   
-        New-AzureRmVirtualNetworkGateway -Name $GWName4 -ResourceGroupName $RG4 `
-        -Location $Location4 -IpConfigurations $gwipconf4 -GatewayType Vpn `
-        -VpnType RouteBased -GatewaySku Standard
+
+  ```powershell
+  $vnet4 = Get-AzureRmVirtualNetwork -Name $VnetName4 -ResourceGroupName $RG4
+  $subnet4 = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet4
+  $gwipconf4 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName4 -Subnet $subnet4 -PublicIpAddress $gwpip4
+  ```
+7. TestVNet4 ゲートウェイを作成する 選択したゲートウェイ SKU によっては、ゲートウェイの作成に 45 分以上かかる場合も少なくありません。
+
+  ```powershell
+  New-AzureRmVirtualNetworkGateway -Name $GWName4 -ResourceGroupName $RG4 `
+  -Location $Location4 -IpConfigurations $gwipconf4 -GatewayType Vpn `
+  -VpnType RouteBased -GatewaySku Standard
+  ```
 
 ### <a name="step-4---connect-the-gateways"></a>手順 4 - ゲートウェイを接続する
 1. 両方の仮想ネットワーク ゲートウェイを取得する
    
     この例では、両方のゲートウェイのサブスクリプションが同じであるため、この手順を同じ PowerShell セッションで完了できます。
    
-        $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
-        $vnet4gw = Get-AzureRmVirtualNetworkGateway -Name $GWName4 -ResourceGroupName $RG4
+  ```powershell
+  $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
+  $vnet4gw = Get-AzureRmVirtualNetworkGateway -Name $GWName4 -ResourceGroupName $RG4
+  ```
 2. TestVNet1 から TestVNet4 への接続を作成する
    
     この手順では、TestVNet1 から TestVNet4 への接続を作成します。 この例では、参照される共有キーが表示されます。 共有キーには独自の値を使用することができます。 両方の接続の共有キーが一致することが重要です。 接続の作成完了までしばらくかかります。
    
-        New-AzureRmVirtualNetworkGatewayConnection -Name $Connection14 -ResourceGroupName $RG1 `
-        -VirtualNetworkGateway1 $vnet1gw -VirtualNetworkGateway2 $vnet4gw -Location $Location1 `
-        -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
+  ```powershell
+  New-AzureRmVirtualNetworkGatewayConnection -Name $Connection14 -ResourceGroupName $RG1 `
+  -VirtualNetworkGateway1 $vnet1gw -VirtualNetworkGateway2 $vnet4gw -Location $Location1 `
+  -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
+  ```
 3. TestVNet4 から TestVNet1 への接続を作成する
    
     この手順は上記の手順と同じですが、TestVNet4 から TestVNet1 への接続になります。 共有キーが一致することを確認してください。
-   
-        New-AzureRmVirtualNetworkGatewayConnection -Name $Connection41 -ResourceGroupName $RG4 `
-        -VirtualNetworkGateway1 $vnet4gw -VirtualNetworkGateway2 $vnet1gw -Location $Location4 `
-        -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
+
+  ```powershell
+  New-AzureRmVirtualNetworkGatewayConnection -Name $Connection41 -ResourceGroupName $RG4 `
+  -VirtualNetworkGateway1 $vnet4gw -VirtualNetworkGateway2 $vnet1gw -Location $Location4 `
+  -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
+  ```
    
     数分後に接続が確立されます。
 4. 接続を確認します。 「 [接続を確認する方法](#verify)」を参照してください。
@@ -307,62 +344,82 @@ TestVNet1 を構成したら、TestVNet4 を作成します。 下の手順を�
 1. 変数を宣言する
    
     値は実際の構成で使用する値に置換します。
-   
-        $Sub5 = "Replace_With_the_New_Subcription_Name"
-        $RG5 = "TestRG5"
-        $Location5 = "Japan East"
-        $VnetName5 = "TestVNet5"
-        $FESubName5 = "FrontEnd"
-        $BESubName5 = "Backend"
-        $GWSubName5 = "GatewaySubnet"
-        $VnetPrefix51 = "10.51.0.0/16"
-        $VnetPrefix52 = "10.52.0.0/16"
-        $FESubPrefix5 = "10.51.0.0/24"
-        $BESubPrefix5 = "10.52.0.0/24"
-        $GWSubPrefix5 = "10.52.255.0/27"
-        $DNS5 = "8.8.8.8"
-        $GWName5 = "VNet5GW"
-        $GWIPName5 = "VNet5GWIP"
-        $GWIPconfName5 = "gwipconf5"
-        $Connection51 = "VNet5toVNet1"
+
+  ```powershell
+  $Sub5 = "Replace_With_the_New_Subcription_Name"
+  $RG5 = "TestRG5"
+  $Location5 = "Japan East"
+  $VnetName5 = "TestVNet5"
+  $FESubName5 = "FrontEnd"
+  $BESubName5 = "Backend"
+  $GWSubName5 = "GatewaySubnet"
+  $VnetPrefix51 = "10.51.0.0/16"
+  $VnetPrefix52 = "10.52.0.0/16"
+  $FESubPrefix5 = "10.51.0.0/24"
+  $BESubPrefix5 = "10.52.0.0/24"
+  $GWSubPrefix5 = "10.52.255.0/27"
+  $DNS5 = "8.8.8.8"
+  $GWName5 = "VNet5GW"
+  $GWIPName5 = "VNet5GWIP"
+  $GWIPconfName5 = "gwipconf5"
+  $Connection51 = "VNet5toVNet1"
+  ```
 2. サブスクリプション 5 に接続する
    
     PowerShell コンソールを開き、アカウントに接続します。 接続するには、次のサンプルを参照してください。
-   
-        Login-AzureRmAccount
+
+  ```powershell
+  Login-AzureRmAccount
+  ```
    
     アカウントのサブスクリプションを確認します。
    
-        Get-AzureRmSubscription 
+  ```powershell
+  Get-AzureRmSubscription
+  ```
    
     使用するサブスクリプションを指定します。
-   
-        Select-AzureRmSubscription -SubscriptionName $Sub5
+
+  ```powershell
+  Select-AzureRmSubscription -SubscriptionName $Sub5
+  ```
 3. 新しいリソース グループを作成する
-   
-        New-AzureRmResourceGroup -Name $RG5 -Location $Location5
+
+  ```powershell
+  New-AzureRmResourceGroup -Name $RG5 -Location $Location5
+  ```
 4. TestVNet4 のサブネット構成を作成する
-   
-        $fesub5 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName5 -AddressPrefix $FESubPrefix5
-        $besub5 = New-AzureRmVirtualNetworkSubnetConfig -Name $BESubName5 -AddressPrefix $BESubPrefix5
-        $gwsub5 = New-AzureRmVirtualNetworkSubnetConfig -Name $GWSubName5 -AddressPrefix $GWSubPrefix5
+
+  ```powershell
+  $fesub5 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName5 -AddressPrefix $FESubPrefix5
+  $besub5 = New-AzureRmVirtualNetworkSubnetConfig -Name $BESubName5 -AddressPrefix $BESubPrefix5
+  $gwsub5 = New-AzureRmVirtualNetworkSubnetConfig -Name $GWSubName5 -AddressPrefix $GWSubPrefix5
+  ```
 5. TestVNet5 を作成する
-   
-        New-AzureRmVirtualNetwork -Name $VnetName5 -ResourceGroupName $RG5 -Location $Location5 `
-        -AddressPrefix $VnetPrefix51,$VnetPrefix52 -Subnet $fesub5,$besub5,$gwsub5
+
+  ```powershell
+  New-AzureRmVirtualNetwork -Name $VnetName5 -ResourceGroupName $RG5 -Location $Location5 `
+  -AddressPrefix $VnetPrefix51,$VnetPrefix52 -Subnet $fesub5,$besub5,$gwsub5
+  ```
 6. パブリック IP アドレスの要求
-   
-        $gwpip5 = New-AzureRmPublicIpAddress -Name $GWIPName5 -ResourceGroupName $RG5 `
-        -Location $Location5 -AllocationMethod Dynamic
+
+  ```powershell
+  $gwpip5 = New-AzureRmPublicIpAddress -Name $GWIPName5 -ResourceGroupName $RG5 `
+  -Location $Location5 -AllocationMethod Dynamic
+  ```
 7. ゲートウェイ構成の作成
-   
-        $vnet5 = Get-AzureRmVirtualNetwork -Name $VnetName5 -ResourceGroupName $RG5
-        $subnet5  = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet5
-        $gwipconf5 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName5 -Subnet $subnet5 -PublicIpAddress $gwpip5
+
+  ```powershell
+  $vnet5 = Get-AzureRmVirtualNetwork -Name $VnetName5 -ResourceGroupName $RG5
+  $subnet5  = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet5
+  $gwipconf5 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName5 -Subnet $subnet5 -PublicIpAddress $gwpip5
+  ```
 8. TestVNet5 ゲートウェイを作成する
-   
-        New-AzureRmVirtualNetworkGateway -Name $GWName5 -ResourceGroupName $RG5 -Location $Location5 `
-        -IpConfigurations $gwipconf5 -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard
+
+  ```powershell
+  New-AzureRmVirtualNetworkGateway -Name $GWName5 -ResourceGroupName $RG5 -Location $Location5 `
+  -IpConfigurations $gwipconf5 -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard
+  ```
 
 ### <a name="step-7---connecting-the-gateways"></a>手順 7 - ゲートウェイを接続する
 この例では、ゲートウェイが異なるサブスクリプションにあるため、[Subscription 1] および [Subscription 5] というマークの付いた 2 つの PowerShell セッションにこの手順を分けました。
@@ -370,63 +427,82 @@ TestVNet1 を構成したら、TestVNet4 を作成します。 下の手順を�
 1. **[Subscription 1]** サブスクリプション 1 の仮想ネットワーク ゲートウェイを取得する
    
     ログインし、サブスクリプション 1 に接続します。
-   
-        $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
+
+  ```powershell
+  $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
+  ```
    
     次の要素の出力をコピーし、メールや他の方法でサブスクリプション 5 の管理者に送信します。
-   
-        $vnet1gw.Name
-        $vnet1gw.Id
+
+  ```powershell
+  $vnet1gw.Name
+  $vnet1gw.Id
+  ```
    
     これら 2 つの要素には、次のサンプル出力ような値が与えられます。
-   
-        PS D:\> $vnet1gw.Name
-        VNet1GW
-        PS D:\> $vnet1gw.Id
-        /subscriptions/b636ca99-6f88-4df4-a7c3-2f8dc4545509/resourceGroupsTestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW
+
+  ```
+  PS D:\> $vnet1gw.Name
+  VNet1GW
+  PS D:\> $vnet1gw.Id
+  /subscriptions/b636ca99-6f88-4df4-a7c3-2f8dc4545509/resourceGroupsTestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW
+  ```
 2. **[Subscription 5]** サブスクリプション 5 の仮想ネットワーク ゲートウェイを取得する
    
     ログインし、サブスクリプション 5 に接続します。
-   
-        $vnet5gw = Get-AzureRmVirtualNetworkGateway -Name $GWName5 -ResourceGroupName $RG5
+
+  ```powershell
+  $vnet5gw = Get-AzureRmVirtualNetworkGateway -Name $GWName5 -ResourceGroupName $RG5
+  ```
    
     次の要素の出力をコピーし、メールや他の方法でサブスクリプション 1 の管理者に送信します。
-   
-        $vnet5gw.Name
-        $vnet5gw.Id
+
+  ```powershell
+  $vnet5gw.Name
+  $vnet5gw.Id
+  ```
    
     これら 2 つの要素には、次のサンプル出力ような値が与えられます。
-   
-        PS C:\> $vnet5gw.Name
-        VNet5GW
-        PS C:\> $vnet5gw.Id
-        /subscriptions/66c8e4f1-ecd6-47ed-9de7-7e530de23994/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW
+
+  ```
+  PS C:\> $vnet5gw.Name
+  VNet5GW
+  PS C:\> $vnet5gw.Id
+  /subscriptions/66c8e4f1-ecd6-47ed-9de7-7e530de23994/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW
+  ```
 3. **[Subscription 1]** TestVNet1 から TestVNet5 への接続を作成する
    
     この手順では、TestVNet1 から TestVNet5 への接続を作成します。 ここでの違いは、サブスクリプションが異なるため、$vnet5gw を直接取得できないことです。 上記の手順でサブスクリプション 1 から伝えられた値を利用して、新しい PowerShell オブジェクトを作成する必要があります。 次の例を使用します。 名前、ID、共有キーを実際の値に置き換えてください。 両方の接続の共有キーが一致することが重要です。 接続の作成完了までしばらくかかります。
    
-    サブスクリプション 1 に接続します。 
-   
-        $vnet5gw = New-Object Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
-        $vnet5gw.Name = "VNet5GW"
-        $vnet5gw.Id   = "/subscriptions/66c8e4f1-ecd6-47ed-9de7-7e530de23994/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW"
-        $Connection15 = "VNet1toVNet5"
-        New-AzureRmVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -VirtualNetworkGateway2 $vnet5gw -Location $Location1 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
+    サブスクリプション 1 に接続します。
+
+  ```powershell
+  $vnet5gw = New-Object Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
+  $vnet5gw.Name = "VNet5GW"
+  $vnet5gw.Id   = "/subscriptions/66c8e4f1-ecd6-47ed-9de7-7e530de23994/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW"
+  $Connection15 = "VNet1toVNet5"
+  New-AzureRmVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -VirtualNetworkGateway2 $vnet5gw -Location $Location1 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
+  ```
 4. **[Subscription 5]** TestVNet5 から TestVNet1 への接続を作成する
    
     この手順は上記の手順と同じですが、TestVNet5 から TestVNet1 への接続になります。 サブスクリプション 1 から取得した値に基づいて PowerShell オブジェクトを作成するという同じプロセスをここでも実行します。 この手順では、共有キーが一致することを確認します。
    
     サブスクリプション 5 に接続します。
-   
-        $vnet1gw = New-Object Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
-        $vnet1gw.Name = "VNet1GW"
-        $vnet1gw.Id = "/subscriptions/b636ca99-6f88-4df4-a7c3-2f8dc4545509/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW "
-        New-AzureRmVirtualNetworkGatewayConnection -Name $Connection51 -ResourceGroupName $RG5 -VirtualNetworkGateway1 $vnet5gw -VirtualNetworkGateway2 $vnet1gw -Location $Location5 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
+
+  ```powershell
+  $vnet1gw = New-Object Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
+  $vnet1gw.Name = "VNet1GW"
+  $vnet1gw.Id = "/subscriptions/b636ca99-6f88-4df4-a7c3-2f8dc4545509/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW "
+  New-AzureRmVirtualNetworkGatewayConnection -Name $Connection51 -ResourceGroupName $RG5 -VirtualNetworkGateway1 $vnet5gw -VirtualNetworkGateway2 $vnet1gw -Location $Location5 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
+  ```
 
 ## <a name="verify"></a>接続を確認する方法
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
-[!INCLUDE [verify connection powershell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
+[!INCLUDE [verify connections powershell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
+
+### <a name="faq"></a>VNet 間の考慮事項
+[!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

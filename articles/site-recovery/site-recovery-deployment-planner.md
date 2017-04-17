@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 2/21/2017
 ms.author: nisoneji
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 431f73e1be45dec9aa0fe186cb22078f8d95588d
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 07c6836c9279ed2f28730a49d131c064891de1b1
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -90,9 +90,9 @@ Site Recovery Deployment Planner パブリック プレビューはコマンド 
 
     例:  
     .zip ファイルを E:\ ドライブにコピーして展開します。
-   E:\ASR Deployment Planner-Preview_v1.1.zip
+   E:\ASR Deployment Planner-Preview_v1.2.zip
 
-    E:\ASR Deployment Planner-Preview_v1.1\ ASR Deployment Planner-Preview_v1.1\ ASRDeploymentPlanner.exe
+    E:\ASR Deployment Planner-Preview_v1.2\ ASR Deployment Planner-Preview_v1.2\ ASRDeploymentPlanner.exe
 
 ## <a name="capabilities"></a>機能
 このコマンド ライン ツール (ASRDeploymentPlanner.exe) は、次の 3 とおりのモードで実行できます。
@@ -145,6 +145,8 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 | -Password | (省略可) vCenter サーバー/vSphere ESXi ホストに接続するためのパスワード。 ここで指定しなかった場合は、コマンドの実行時に入力を求められます。|
 | -StorageAccountName | (省略可) オンプレミスから Azure へのデータのレプリケーションに関して達成可能なスループットの調査対象となるストレージ アカウントの名前。 このストレージ アカウントにテスト データがアップロードされてスループットが計算されます。|
 | -StorageAccountKey | (省略可) ストレージ アカウントにアクセスするためのストレージ アカウント キー。 Azure Portal の [ストレージ アカウント]、[<*ストレージ アカウント名*>]、[設定]、[アクセス キー]、[Key1] (クラシック ストレージ アカウントの場合は [プライマリ アクセス キー]) の順に移動します。 |
+| -Environment | (省略可) レプリケーション先となる Azure ストレージ アカウント環境。 AzureCloud、AzureUSGovernment、AzureChinaCloud の 3 つのうち、いずれかの値を指定できます。 既定値は AzureCloud です。 このパラメーターは、レプリケーション先の Azure リージョンが Azure 米国政府機関または Azure China クラウドであるときに使用します。 |
+
 
 VM のプロファイリングは、少なくとも 15 ～ 30 日間は実行することをお勧めします。 プロファイリング期間中は ASRDeploymentPlanner.exe が実行状態となります。 ツールには、プロファイリングの時間を日数で入力します。 パブリック プレビュー版ツールの簡単なテストを行うためにプロファイリング期間を数時間または数分とする場合は、日数に換算する必要があります。 たとえばプロファイリング期間が 30 分である場合、入力する値は 30/(60*24) = 0.021 日となります。 プロファイリング期間として許容される最短時間は 30 分です。
 
@@ -281,11 +283,12 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com 
 
 |パラメーター名 | Description |
 |-|-|
-| -operation | GetThroughput |
+| -Operation | GetThroughput |
 | -Directory | (省略可) プロファイリング データ (プロファイリング中に生成されたファイル) の格納先となる UNC パスまたはローカル ディレクトリ パス。 レポートを生成するには、このデータが必要となります。 ディレクトリ名を指定しなかった場合は、"ProfiledData" ディレクトリが使用されます。 |
 | -StorageAccountName | オンプレミスから Azure へのデータのレプリケーションに関して、使用帯域幅の調査に使うストレージ アカウントの名前。 このストレージ アカウントにテスト データがアップロードされて使用帯域幅が計算されます。 |
 | -StorageAccountKey | ストレージ アカウントにアクセスするためのストレージ アカウント キー。 Azure Portal の [ストレージ アカウント]、[<*ストレージ アカウント名*>]、[設定]、[アクセス キー]、[Key1] (クラシック ストレージ アカウントの場合は [プライマリ アクセス キー]) の順に移動します。 |
 | -VMListFile | 使用帯域幅の計算に関して、プロファイリングの対象となる VM のリストを含んだファイル。 ファイルは、絶対パスまたは相対パスで指定できます。 このファイルには、1 行につき 1 つの VM 名または IP アドレスが記述されている必要があります。 このファイルに指定する VM 名は、vCenter サーバー/vSphere ESXi ホスト上の VM 名と一致させる必要があります。<br>たとえば VMList.txt ファイルに、次のように VM を記述することができます。<ul><li>VM_A</li><li>10.150.29.110</li><li>VM_B</li></ul>|
+| -Environment | (省略可) レプリケーション先となる Azure ストレージ アカウント環境。 AzureCloud、AzureUSGovernment、AzureChinaCloud の 3 つのうち、いずれかの値を指定できます。 既定値は AzureCloud です。 このパラメーターは、レプリケーション先の Azure リージョンが Azure 米国政府機関または Azure China クラウドであるときに使用します。 |
 
 Deployment Planner ツールは、指定されたディレクトリに 64 MB の asrvhdfile<#>.vhd ファイル ("#" はファイルの番号) をいくつか作成します。 これらのファイルをストレージ アカウントにアップロードすることによってスループットが調査されます。 これらのファイルはすべて、スループットの測定後にストレージ アカウントとローカル サーバーから削除されます。 スループットの計算中に何らかの理由でツールが終了した場合、ストレージとローカル サーバーからファイルが削除されません。 この場合は、ファイルを手動で削除する必要があります。
 
@@ -477,6 +480,10 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 
 **[NIC]**: VM に搭載されている NIC の数です。
 
+**[Boot Type (ブートの種類)]**: VM のブートの種類です。 BIOS と EFI のどちらかになります。 現在 Azure Site Recovery でサポートされるブートの種類は BIOS だけです。 ブートの種類が EFI である仮想マシンはすべて、[Incompatible VMs (不適合 VM)] ワークシートに一覧表示されます。 
+
+**[OS の種類]**: VM の OS の種類です。 [Windows] と [Linux or other (Linux またはその他)] のどちらかになります。
+
 ## <a name="incompatible-vms"></a>Incompatible VMs (不適合 VM)
 
 ![不適合 VM の Excel スプレッドシート](./media/site-recovery-deployment-planner/incompatible-vms.png)
@@ -486,6 +493,7 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 **[VM Compatibility (VM 適合性)]**: 指定された VM が Site Recovery での使用に不適合である理由が表示されます。 理由は VM の不適合ディスクごとに記述され、公開されている[ストレージの制限](https://aka.ms/azure-storage-scalbility-performance)に基づく次のいずれかの状況に該当します。
 
 * ディスク サイズが 1,023 GB を超えている。 Azure Storage では現在、1 TB を超えるディスク サイズがサポートされません。
+* ブートの種類が EFI である。 現在 Azure Site Recovery でサポートされる仮想マシンのブートの種類は BIOS だけです。
 
 * VM サイズの合計 (レプリケーション + テスト フェールオーバー) が、サポートされているストレージ アカウントの上限サイズ (35 TB) を超えている。 これは通常、VM にあるいずれか 1 台のディスクのパフォーマンス特性が、Azure または Site Recovery でサポートされる Standard ストレージの上限を超えている場合に発生します。 そのような VM は Premium Storage の領域に分類されます。 一方、Premium ストレージ アカウントでサポートされる最大サイズは 35 TB です。保護対象となる単一の VM を複数のストレージ アカウントにまたがって保護することはできません。 また、保護対象 VM で実行されるテスト フェールオーバーは、レプリケーション処理と同じストレージ アカウントで実行されることに注意してください。 この場合、レプリケーションの進行と同時にテスト フェールオーバーが正常完了するためには、対象となるディスク サイズの 2 倍の容量をセットアップする必要があります。
 * レプリケーション元の IOPS が、ストレージでサポートされている IOPS の上限 (ディスクあたり 5,000 IOPS) を超えている。
@@ -508,6 +516,10 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 **[メモリ (MB)]**: VM に搭載されている RAM のサイズです。
 
 **[NIC]**: VM に搭載されている NIC の数です。
+
+**[Boot Type (ブートの種類)]**: VM のブートの種類です。 BIOS と EFI のどちらかになります。 現在 Azure Site Recovery でサポートされるブートの種類は BIOS だけです。 ブートの種類が EFI である仮想マシンはすべて、[Incompatible VMs (不適合 VM)] ワークシートに一覧表示されます。 
+
+**[OS の種類]**: VM の OS の種類です。 [Windows] と [Linux or other (Linux またはその他)] のどちらかになります。
 
 
 ## <a name="site-recovery-limits"></a>Site Recovery の制限
@@ -546,6 +558,18 @@ Deployment Planner を更新するには、次の手順に従います。
 
 
 ## <a name="version-history"></a>バージョン履歴
+### <a name="12"></a>1.2
+更新日: 2017 年 4 月 7 日
+
+次の修正を加えました。
+
+* それぞれの仮想マシンが保護の対象として適合しているかどうかを判断するために、ブートの種類 (BIOS または EFI) のチェックを追加しました。
+* [Compatible VMs (適合 VM)] ワークシートと [Incompatible VMs (不適合 VM)] ワークシートで、それぞれの仮想マシンについて OS の種類の情報を追加しました。
+* 米国政府と中国の Microsoft Azure リージョンで、GetThroughput 操作に対応しました。
+* vCenter と ESXi サーバーに関して前提条件のチェックをいくつか追加しました。
+* ロケールの設定が英語以外のときに不正確なレポートが生成されていました。
+
+
 ### <a name="11"></a>1.1
 更新日: 2017 年 3 月 9 日
 

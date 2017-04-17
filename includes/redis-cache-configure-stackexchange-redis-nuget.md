@@ -25,7 +25,7 @@ Visual Studio で StackExchange.Redis NuGet パッケージを使用してクラ
 > 
 > 
 
-このほか、**[ツール]** メニューで **[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックし、[`Package Manager Console`] ウィンドウで次のコマンドを実行する方法でも、StackExchange.Redis NuGet パッケージをインストールできます。
+このほか、**[ツール]** メニューで **[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックし、**[パッケージ マネージャー コンソール]** ウィンドウで次のコマンドを実行する方法でも、StackExchange.Redis NuGet パッケージをインストールできます。
     
 ```
 Install-Package StackExchange.Redis

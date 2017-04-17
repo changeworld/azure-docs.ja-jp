@@ -12,12 +12,12 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/06/2017
+ms.date: 04/05/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 5da00d1d64b258773fa485baa804b283fde731c3
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 1b0d278c102497eca978d8cd3fa29cd2527f186c
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -55,7 +55,7 @@ Azure Security Center では、サイバー キル チェーンの各段階に�
 * 既知の悪意のある IP との通信 (データの搾取、コマンド アンド コントロール)
 * セキュリティの侵害されたリソースを使用した追加の攻撃の開始 (送信ポート スキャン RDP/SSH ブルート フォース攻撃、スパム)
 
-さまざまな種類の攻撃が各段階に関連し、さまざまなサブシステムをターゲットとしています。 これらの段階の攻撃に対処するために、Security Center では警告に&3; つのカテゴリを設けています。
+さまざまな種類の攻撃が各段階に関連し、さまざまなサブシステムをターゲットとしています。 これらの段階の攻撃に対処するために、Security Center では警告に 3 つのカテゴリを設けています。
 
 * 仮想マシンの動作分析 (VMBA)
 * ネットワーク分析
@@ -92,7 +92,7 @@ Azure Security Center は動作分析を使用し、仮想マシンのイベン�
 ![Shellcode alert](./media/security-center-alerts-type/security-center-alerts-type-fig2.png)
 
 ### <a name="module-hijacking-discovered"></a>モジュールのハイジャックの検出
-Windows では、システムに共通の機能をソフトウェアから利用できるようにするために、ダイナミック リンク ライブラリ (DLL) を使用しています。 DLL ハイジャックは、マルウェアが DLL の読み込み順序を改変することによって行われます。このときメモリに悪質なペイロードが読み込まれ、任意のコードを実行できる状態となります。 このアラートは、クラッシュ ダンプ分析により、よく似た名前のモジュールが&2; つの異なるパスから読み込まれている状態が検出されたことを示しています。 パスの&1; つは、一般的な Windows システム バイナリが置かれた場所です。
+Windows では、システムに共通の機能をソフトウェアから利用できるようにするために、ダイナミック リンク ライブラリ (DLL) を使用しています。 DLL ハイジャックは、マルウェアが DLL の読み込み順序を改変することによって行われます。このときメモリに悪質なペイロードが読み込まれ、任意のコードを実行できる状態となります。 このアラートは、クラッシュ ダンプ分析により、よく似た名前のモジュールが 2 つの異なるパスから読み込まれている状態が検出されたことを示しています。 パスの 1 つは、一般的な Windows システム バイナリが置かれた場所です。
 
 悪意からではなく、インストルメント化や Windows OS の拡張、Windows アプリケーションの拡張といった目的で、通常のソフトウェア開発者が DLL の読み込み順序を変更することも皆無ではありません。 DLL の読み込み順序に対する悪意のある変更と、無害である可能性の高い変更とを判別しやすいように、Azure Security Center では、読み込まれているモジュールに疑わしい特徴が見られるかどうかをチェックします。 このチェックの結果は、警告の "SIGNATURE (シグネチャ)" フィールドに表示され、警告の重大度、説明、修正手順に反映されます。 モジュールが正当なものか、それとも悪意のあるものかを調査するには、ハイジャック モジュールのディスク コピーを分析します。 たとえば、ファイルのデジタル署名を検証したり、ウイルス対策スキャンを実行したりする方法が考えられます。
 
@@ -148,11 +148,63 @@ Security Center は、ターゲット仮想マシンで実行されている疑�
 ![Suspicious process alert](./media/security-center-alerts-type/security-center-alerts-type-fig6-new.png)
 
 ### <a name="multiple-domain-accounts-queried"></a>複数のドメイン アカウントのクエリ
-Security Center は、ドメイン アカウントに対しクエリが複数回試行されていることを検出できます。このような試行は通常、ネットワーク偵察時に攻撃者が実行することです。 攻撃者は、この手法を使ってドメインに問い合わせ、ユーザー、ドメインの管理者アカウント、ドメイン コントローラーであるコンピューターを特定できるほか、他のドメインとの潜在的なドメイン信頼関係も特定できます。
+Security Center は、Active Directory ドメイン アカウントに対しクエリが複数回試行されていることを検出できます。このような試行は通常、ネットワーク偵察時に攻撃者が実行することです。 攻撃者は、この手法を使ってドメインに問い合わせ、ユーザー、ドメインの管理者アカウント、ドメイン コントローラーであるコンピューターを特定できるほか、他のドメインとの潜在的なドメイン信頼関係も特定できます。
 
 このタイプの警告の例を次に示します。
 
 ![Multiple domains account alert](./media/security-center-alerts-type/security-center-alerts-type-fig7-new.png)
+
+### <a name="local-administrators-group-members-were-enumerated"></a>ローカル管理者グループのメンバーの列挙操作
+
+Windows Server 2016 と Windows 10 でセキュリティ イベント 4798 がトリガーされると、Security Center からアラートがトリガーされます。 このアラートは、ローカル管理者グループが列挙されたときにトリガーされます。この操作は、攻撃者がネットワーク偵察時に実行することが多いためです。 攻撃者は、管理特権を持ったユーザーの ID を照会する目的で、この手法を利用することがあります。
+
+このタイプの警告の例を次に示します。
+
+![ローカル管理者](./media/security-center-alerts-type/security-center-alerts-type-fig14-new.png)
+
+### <a name="anomalous-mix-of-upper-and-lower-case-characters"></a>大文字と小文字の変則的な組み合わせ
+
+Security Center は、コマンド ラインで大文字と小文字の組み合わせが使われたことを検出すると、アラートをトリガーします。 大文字と小文字の区別やハッシュ ベースのマシン ルールから身を隠すために、一部の攻撃者がこの手法を使うことがあります。
+
+このタイプの警告の例を次に示します。
+
+![変則的な組み合わせ](./media/security-center-alerts-type/security-center-alerts-type-fig15-new.png)
+
+### <a name="suspected-kerberos-golden-ticket-attack"></a>Kerberos ゴールデン チケット攻撃の疑い
+
+攻撃者は、不正に入手した [krbtgt](https://technet.microsoft.com/library/dn745899.aspx) キーを使って Kerberos "ゴールデン チケット" を作成し、任意のユーザーになりすます場合があります。 このタイプのアクティビティが検出されると、Security Center からアラートがトリガーされます。
+
+> [!NOTE] 
+> Kerberos ゴールデン チケットの詳細については、「[Windows 10 credential theft mitigation guide (Windows 10 資格情報の盗難防止ガイド)](http://download.microsoft.com/download/C/1/4/C14579CA-E564-4743-8B51-61C0882662AC/Windows%2010%20credential%20theft%20mitigation%20guide.docx)」を参照してください。
+
+このタイプの警告の例を次に示します。
+
+![ゴールデン チケット](./media/security-center-alerts-type/security-center-alerts-type-fig16-new.png)
+
+### <a name="suspicious-account-created"></a>疑わしいアカウントの作成
+
+既存の組み込み管理特権アカウントと酷似するアカウントが作成されると、Security Center からアラートがトリガーされます。 この手法は、攻撃者が、人の目では気付きにくい不正アカウントを作成する目的で使う場合があります。
+ 
+このタイプの警告の例を次に示します。
+
+![疑わしいアカウント](./media/security-center-alerts-type/security-center-alerts-type-fig17-new.png)
+
+### <a name="suspicious-firewall-rule-created"></a>疑わしいファイアウォール規則が作成された
+
+攻撃者は、ホストのセキュリティを迂回するために、ファイアウォール規則を独自に作成しようと試みる場合があります。悪質なアプリケーションがコマンド アンド コントロール サーバーと通信を行ったり、侵入済みのホストを介してネットワーク経由で攻撃をしかけたりするのがその目的です。 Security Center は、疑わしい場所にある実行可能ファイルから新しいファイアウォール規則が作成されたことを検出すると、アラートをトリガーします。
+ 
+このタイプの警告の例を次に示します。
+
+![ファイアウォール規則](./media/security-center-alerts-type/security-center-alerts-type-fig18-new.png)
+
+### <a name="suspicious-combination-of-hta-and-powershell"></a>HTA と PowerShell の疑わしい組み合わせ
+
+Security Center は、Microsoft HTML アプリケーション ホスト (HTA) が PowerShell のコマンドを起動しようとしていることを検出するとアラートをトリガーします。 これは攻撃者が悪質な PowerShell スクリプトを起動するときに使う手法です。
+ 
+このタイプの警告の例を次に示します。
+
+![HTA と PS](./media/security-center-alerts-type/security-center-alerts-type-fig19-new.png)
+
 
 ## <a name="network-analysis"></a>ネットワーク分析
 Security Center のネットワーク脅威検出は、Azure IPFIX (Internet Protocol Flow Information Export) トラフィックからセキュリティ情報を自動的に収集することによって機能します。 この情報を分析し、ときには複数の情報源から得た情報との関連性を探りながら、脅威を特定します。

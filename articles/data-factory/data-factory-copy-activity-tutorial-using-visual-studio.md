@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/02/2017
+ms.date: 04/11/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 39824fa66dee9f1bd57687e59ece97f4f4636b7d
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 9716d18773fca8dd4612d681d1f9588106aacb14
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -150,10 +150,10 @@ ms.lasthandoff: 03/24/2017
    * **linkedServiceName** は **AzureStorageLinkedService** に設定されています。 このリンクされたサービスは手順 2. で作成しました。
    * **folderPath** は **adftutorial** コンテナーに設定されています。 **fileName** プロパティを使用して、フォルダー内の BLOB の名前を指定することもできます。 BLOB の名前を指定しない場合、コンテナー内のすべての BLOB からのデータが入力データと見なされます。  
    * format の **type** は **TextFormat** に設定されています。
-   * テキスト ファイル内に 2 つのフィールド (**FirstName** と **LastName**) があり、コンマ (**columnDelimiter**) で区切られています。    
-   * **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。 そのため、Data Factory は、指定された BLOB コンテナー (**adftutorial**) のルート フォルダーにある入力データを 1 時間ごとに検索します。 
+   * テキスト ファイル内に 2 つのフィールド (**FirstName** と **LastName**) があり、コンマ (columnDelimiter) で区切られています。    
+   * **availability** が **hourly** に設定されています (frequency は hour、interval は 1 に設定されています)。 そのため、Data Factory は、指定された BLOB コンテナー (adftutorial) のルート フォルダーで入力データを 1 時間ごとに検索します。 
    
-   **入力**データセット用に **fileName** を指定しない場合、入力フォルダー (**folderPath**) のすべてのファイルまたは BLOB が入力と見なされます。 JSON で fileName を指定した場合は、指定されたファイル/BLOB のみが入力と見なされます。
+   **入力**データセット用に **fileName** を指定しない場合、入力フォルダー (folderPath) のすべてのファイルまたは BLOB が入力と見なされます。 JSON で fileName を指定した場合は、指定されたファイル/BLOB のみが入力と見なされます。
    
    **出力テーブル**に **fileName** を指定しない場合、**folderPath** に生成されるファイルには Data.&lt;Guid&gt;.txt という形式で名前が付けられます (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt)。
    
@@ -182,7 +182,7 @@ ms.lasthandoff: 03/24/2017
 2. **[新しい項目の追加]** ダイアログ ボックスで、**[Azure SQL]** を選択し、**[追加]** をクリックします。 
 3. JSON テキストを次の JSON テキストで置き換え、 **AzureSqlTableLocation1.json** ファイルを保存します。
 
-    ```json
+  ```json
     {
      "name": "OutputDataset",
      "properties": {
@@ -215,7 +215,7 @@ ms.lasthandoff: 03/24/2017
    * **linkedServiceName** は **AzureSqlLinkedService** (手順 2. で作成した、リンクされたサービス) に設定されています。
    * **tablename** は **emp** に設定されています。
    * データベース内の emp テーブルには、**ID**、**FirstName**、**LastName** の 3 つの列があります。 ID は ID 列であるため、ここで指定する必要があるのは **FirstName** と **LastName** のみです。
-   * **availability** は **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。  Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに 1 時間ごとに出力データ スライスを生成します。
+   * **availability** は **hourly** に設定されています (frequency は hour、interval は 1 に設定されています)。  Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに 1 時間ごとに出力データ スライスを生成します。
 
 > [!NOTE]
 > JSON プロパティの詳細については、 [Azure SQL Database に対するデータの移動](data-factory-azure-sql-connector.md#linked-service-properties) に関するページを参照してください。
@@ -229,7 +229,7 @@ ms.lasthandoff: 03/24/2017
 2. **[新しい項目の追加]** ダイアログ ボックスで **[データ パイプラインのコピー]** を選択し、**[追加]** をクリックします。 
 3. JSON テキストを次の JSON テキストで置き換え、 **CopyActivity1.json** ファイルを保存します。
 
-    ```json   
+  ```json   
     {
      "name": "ADFTutorialPipeline",
      "properties": {
@@ -283,7 +283,7 @@ ms.lasthandoff: 03/24/2017
    
    start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります。 たとえば、2016-10-14T16:32:41Z とします。 **end** の時刻は省略可能ですが、このチュートリアルでは使用します。 
    
-   **end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。 パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティの値として指定します。
+   **end** プロパティの値を指定しない場合、**start + 48 時間** として計算されます。 パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティの値として指定します。
    
    前の例では、各データ スライスが 1 時間ごとに生成されるため、データ スライスは 24 個になります。
 
@@ -327,7 +327,7 @@ ms.lasthandoff: 03/24/2017
 
 以下の点に注意してください。 
 
-* "**サブスクリプションが名前空間 Microsoft.DataFactory を使用するように登録されていません**" というエラー メッセージが表示されたら、以下のいずれかの操作をしてから、もう一度発行してみます。 
+* "サブスクリプションが名前空間 Microsoft.DataFactory を使用するように登録されていません" というエラー メッセージが表示されたら、以下のいずれかの操作をしてから、もう一度発行してみます。 
   
   * Azure PowerShell で次のコマンドを実行して、Data Factory プロバイダーを登録します。 
 

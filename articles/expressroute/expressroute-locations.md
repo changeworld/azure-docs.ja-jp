@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 70955113bbd2e008be855e591d04651d09438e81
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: d878bd4ed40bc662dd5a43b56e08f84ce490287e
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -85,10 +85,10 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[CoreSite](http://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** |サポートされています |サポートされています |ロサンゼルス、ニューヨーク |
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** |サポートされています |サポートされています |アムステルダム、アトランタ、シカゴ、ダラス、香港、ロンドン、ロサンゼルス、メルボルン、ニューヨーク、大阪、パリ+、サンパウロ、シアトル、シリコン バレー、シンガポール、シドニー、東京、トロント、ワシントン DC |
 | **euNetworks** |サポートされています |サポートされています |アムステルダム |
-| **[Global Cloud Xchange (GCX)] (http://globalcloudxchange.com/cloud-platform/cloud-x-fusion/cloud-x-fusion-for-azure/)** | サポートされています| サポートされています | チェンナイ |
 | **GÉANT** |サポートされています |サポートされています |アムステルダム |
-| **[Internet Initiative Japan Inc. - IIJ](http://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** |サポートされています |サポートされています |大阪、東京 |
+| **[Global Cloud Xchange (GCX)] (http://globalcloudxchange.com/cloud-platform/cloud-x-fusion/cloud-x-fusion-for-azure/)** | サポートされています| サポートされています | チェンナイ |
 | **[InterCloud](https://www.intercloud.com/)** |サポートされています |サポートされています |アムステルダム、ロンドン、シンガポール、ワシントン DC |
+| **[Internet Initiative Japan Inc. - IIJ](http://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** |サポートされています |サポートされています |大阪、東京 |
 | **Internet Solutions - Cloud Connect** |サポートされています |サポートされています |アムステルダム、ロンドン |
 | **[Interxion](http://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |サポートされています |サポートされています |アムステルダム、ロンドン、パリ |
 | **Jisc** |サポートされています |サポートされています |ロンドン |
@@ -127,7 +127,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |サポートされています |サポートされています |シカゴ、ワシントン DC |
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** |サポートされています |サポートされています |シカゴ、ダラス、ニューヨーク、シアトル+、シリコン バレー、ワシントン DC |
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |サポートされています |サポートされています |シカゴ、ニューヨーク+、ワシントン DC |
-| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |サポートされています | サポートされています | ダラス |
+| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |サポートされています | サポートされています | シカゴ、ダラス |
 | **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** |サポートされています |サポートされています |シカゴ、ダラス、ニューヨーク、ワシントン DC |
 
 ### <a name="china"></a>中国
@@ -166,11 +166,11 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | --- | --- | --- |
 | **[1CLOUDSTAR](http://www.1cloudstar.com/service/cloudconnect-azure-expressroute/)** |Equinix |シンガポール |
 | **[Airgate Technologies, Inc.](http://airgate.ca/cloud-express/)** | Equinix、Cologix | トロント、モントリオール |
-| **[アルテリア・ネットワークス株式会社](https://arteria-net.com/business/service/cloud_access/sca/)** |Equinix |東京 |
 | **[Alaska Communications](http://www.alaskacommunications.com/For-Your-Business/Direct-Cloud-Service)** |Equinix |シアトル |
+| **[アルテリア・ネットワークス株式会社](https://arteria-net.com/business/service/cloud_access/sca/)** |Equinix |東京 |
 | **[Bezeq International Ltd.](https://www.bezeqint.net/english)** | euNetworks | ロンドン |
-| **[Cogeco Peer 1](https://www.cogecopeer1.com/en/)**| Equinix | モントリオール、トロント |
 | **[C3ntro](http://www.c3ntro.com/data/cloud-conectivity/)** | Equinix、Megaport | ダラス |
+| **[Cogeco Peer 1](https://www.cogecopeer1.com/en/)**| Equinix | モントリオール、トロント |
 | **[Data Foundry](https://www.datafoundry.com/services/cloud-connect)** | Megaport | ダラス |
 | **[Epsilon Telecommunications Limited](http://www.epsilontel.com/data-connectivity/cloud-access/)** | Equinix | シンガポール |
 | **[Eurofiber](https://eurofiber.nl/microsoft-azure/)** | Equinix | アムステルダム |
@@ -180,12 +180,12 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[Lightower](http://www.lightower.com/network-solutions/cloud-connect/#microsoft-azure)** |Equinix |ニューヨーク、ワシントン DC |
 | **[Macquarie Telecom Group](https://macquariegovernment.com/secure-cloud/secure-cloud-exchange/)** | Megaport | シドニー |
 | **[Masergy](https://www.masergy.com/solutions/hybrid-networking/cloud-marketplace/microsoft-azure)** | Equinix | ワシントン DC |
-| **[NexGen Networks](http://www.nexgen-net.com/nexgen-networks-direct-connect-microsoft-azure-expressroute.html)** | Interxion ロンドン |
+| **[NexGen Networks](http://www.nexgen-net.com/nexgen-networks-direct-connect-microsoft-azure-expressroute.html)** | Interxion | ロンドン |
 | **[Nianet](https://nianet.dk/produkter/internet/microsoft-expressroute)** |Telecity | アムステルダム、フランクフルト |  
+| **[QSC AG](https://www.qsc.de/de/produkte-loesungen/cloud-services-und-it-outsourcing/pure-enterprise-cloud/multi-cloud-management/azure-expressroute/)** |Interxion | フランクフルト |  
 | **[Tamares Telecom](http://www.tamarestelecom.com/our-services/#Connectivity)** | Telecity | ロンドン
 | **[Transtelco](http://www.transtelco.net/tcloud/microsoft)** |Equinix | ダラス、ロサンゼルス |  
-| **[QSC AG](https://www.qsc.de/de/produkte-loesungen/cloud-services-und-it-outsourcing/pure-enterprise-cloud/multi-cloud-management/azure-expressroute/)** |Interxion | フランクフルト |  
-| **[Windstream](http://www.windstreambusiness.com/solutions/cloud-services/cloud-and-managed-hosting-services)**| Equinix |シカゴ、シリコン バレー、ワシントン DC |
+| **[Windstream](http://www.windstreambusiness.com/solutions/cloud-services/cloud-and-managed-hosting-services)**| Equinix | シカゴ、シリコン バレー、ワシントン DC |
 | **[Zertia](http://www.zertia.es/index.php/novedades)**| レベル 3 | マドリッド |
 
 
@@ -196,7 +196,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | --- | --- |
 | **[Altogee](http://www.altogee.be/expressroute)** | ヨーロッパ |
 | **[Avanade Inc.](http://www.avanade.com/)** | アジア、ヨーロッパ、北米、南アメリカ |
-| **Bright Skies GmbH** | ヨーロッパ
+| **[Bright Skies GmbH](http://bskies.io/expressroute)** | ヨーロッパ
 | **[Dotnet Solutions](http://www.dotnetsolutions.co.uk/)** | ヨーロッパ |
 | **[Equinix Professional Services](http://www.equinix.com/services/consulting/)** | 北米 |
 | **[The IT Consultancy Group](http://itconsult.com.au/microsoft-expressroute)** | オーストラリア |
@@ -205,6 +205,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[OneAs1a](http://www.oneas1a.com/express-connect-any-cloud-ecac)** | アジア |
 | **[Orange Networks](https://orange-networks.com/blog/88-azureexpressroute)** | ヨーロッパ |
 | **[Perficient](http://www.perficient.com/Partners/Microsoft/Cloud/Azure-ExpressRoute)** | 北米 |
+| **[Presidio](http://info.presidio.com/microsoft-azure-expressroute)** | 北米 |
 | **[Project Leadership](http://www.projectleadership.net/azure)** | 北米 |
 | **[sol-tec](http://www.sol-tec.com/Technologies)** | ヨーロッパ |
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Storage を&5; 分で使い始める | Microsoft Docs"
-description: "Azure Storage クイック スタート、Visual Studio、Azure ストレージ エミュレーターを使用して、Microsoft Azure の BLOB、テーブル、キューをすばやく導入します。 初めての Azure Storage アプリケーションを&5; 分で実行します。"
+title: "Azure Storage を 5 分で使い始める | Microsoft Docs"
+description: "Azure Storage クイック スタート、Visual Studio、Azure ストレージ エミュレーターを使用して、Microsoft Azure の BLOB、テーブル、キューをすばやく導入します。 初めての Azure Storage アプリケーションを 5 分で実行します。"
 services: storage
 documentationcenter: .net
 author: mmacy
@@ -15,13 +15,13 @@ ms.topic: get-started-article
 ms.date: 02/23/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: a8e5d36d31aabc9226206f52d8543566c5218494
-ms.openlocfilehash: 6c833cd40439fef1fe9cca2591d36a6c49630579
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 6508b5a5d7d654954c68f9390c62a7871c1f032c
+ms.lasthandoff: 04/06/2017
 
 
 ---
-# <a name="get-started-with-azure-storage-in-five-minutes"></a>Azure Storage を&5; 分で使い始める
+# <a name="get-started-with-azure-storage-in-five-minutes"></a>Azure Storage を 5 分で使い始める
 ## <a name="overview"></a>Overview
 Azure Storage を使用した開発は簡単です。 このチュートリアルでは、Azure Storage アプリケーションを短時間で稼動させる方法について説明します。 Azure SDK for .NET に付属するクイック スタート テンプレートを使用します。 これらのクイック スタートには、すぐに実行できるコードが含まれています。今回はそのコードを使って、Azure Storage の基本的なプログラミング シナリオのデモをいくつか実行します。
 
@@ -41,7 +41,7 @@ Azure Storage を使用した開発は簡単です。 このチュートリア�
    * Azure でストレージ アカウントを作成するには、「 [ストレージ アカウントの作成方法](storage-create-storage-account.md#create-a-storage-account)」をご覧ください
 
 ## <a name="run-your-first-azure-storage-application-against-azure-storage-in-the-cloud"></a>クラウドの Azure Storage で最初の Azure Storage アプリケーションを実行する
-アカウントができたら、Visual Studio で Azure クイック スタート サンプル プロジェクトの&1; つを使って簡単な Azure Storage アプリケーションを作成できます。 このチュートリアルでは、**Azure Storage: Blobs**、**Azure Storage: Files**、**Azure Storage: Queues**、**Azure Storage: Tables** など、Azure Storage のサンプル プロジェクトに重点を置いて説明します。
+アカウントができたら、Visual Studio で Azure クイック スタート サンプル プロジェクトの 1 つを使って簡単な Azure Storage アプリケーションを作成できます。 このチュートリアルでは、**Azure Storage: Blobs**、**Azure Storage: Files**、**Azure Storage: Queues**、**Azure Storage: Tables** など、Azure Storage のサンプル プロジェクトに重点を置いて説明します。
 
 1. Visual Studio を起動します。
 2. **[ファイル]** メニューの **[新しいプロジェクト]** をクリックします。
@@ -75,7 +75,7 @@ Azure Storage を使用した開発は簡単です。 このチュートリア�
 ## <a name="run-your-first-azure-storage-application-locally-against-the-azure-storage-emulator"></a>Azure ストレージ エミュレーターで最初の Azure Storage アプリケーションをローカルに実行する
 [Azure ストレージ エミュレーター](storage-use-emulator.md) では、Azure の BLOB、Queue、Table サービスを開発用にエミュレートするローカル環境が利用できます。 ストレージ エミュレーターを使用すると、Azure サブスクリプションまたはストレージ アカウントを作成せずにストレージ アプリケーションをローカルでテストでき、コストもかかりません。
 
-それでは、Visual Studio で Azure Quick Starts サンプル プロジェクトの&1; つを使用する簡単な Azure Storage アプリケーションを作成しましょう。 このチュートリアルでは、**Azure Blob Storage**、**Azure Table Storage**、**Azure Queue Storage** の各サンプル プロジェクトに着目します。
+それでは、Visual Studio で Azure Quick Starts サンプル プロジェクトの 1 つを使用する簡単な Azure Storage アプリケーションを作成しましょう。 このチュートリアルでは、**Azure Blob Storage**、**Azure Table Storage**、**Azure Queue Storage** の各サンプル プロジェクトに着目します。
 
 1. Visual Studio を起動します。
 2. **[ファイル]** メニューの **[新しいプロジェクト]** をクリックします。
@@ -89,7 +89,7 @@ Azure Storage を使用した開発は簡単です。 このチュートリア�
 
     ![Azure Quick Starts][Image1]
 
-4. Visual Studio で、**[表示]** メニューにある **[ソリューション エクスプローラー]** を選択します。 Azure ストレージ アカウントを既に&1; つ追加している場合は、App.config ファイルを開き、お使いのストレージ アカウントの接続文字列をコメントアウトします。 その後、Azure ストレージ エミュレーターの接続文字列をコメント解除します。
+4. Visual Studio で、**[表示]** メニューにある **[ソリューション エクスプローラー]** を選択します。 Azure ストレージ アカウントを既に 1 つ追加している場合は、App.config ファイルを開き、お使いのストレージ アカウントの接続文字列をコメントアウトします。 その後、Azure ストレージ エミュレーターの接続文字列をコメント解除します。
 
    `<add key="StorageConnectionString" value = "UseDevelopmentStorage=true;"/>`
 
