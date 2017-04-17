@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 3/2/2017
 ms.author: victorh
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: 0881b2102c315ee6f904ed401ad5adb2c6765d6f
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 3be3733be510a79f2a41df967f4dec65f6361e22
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -96,5 +96,5 @@ The following default limits apply when using Azure Stack DNS:
 | Records per record set| 20|
 
 ## <a name="next-steps"></a>Next steps
-[Introducing iDNS for Azure Stack](azure-stack-understanding-dns-in-tp2.md)
+[Introducing iDNS for Azure Stack](azure-stack-understanding-dns.md)
 
