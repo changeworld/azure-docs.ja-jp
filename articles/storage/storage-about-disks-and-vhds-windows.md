@@ -24,7 +24,7 @@ ms.lasthandoff: 03/24/2017
 # <a name="about-disks-and-vhds-for-azure-windows-vms"></a>Azure Windows VM 用のディスクと VHD について
 Azure の仮想マシンでは、その他のコンピューターとまったく同じように、オペレーティング システム、アプリケーション、およびデータを格納するための場所としてディスクを使用します。 Azure のすべての仮想マシンには、Windows オペレーティング システム ディスクと一時ディスクの少なくとも 2 つのディスクがあります。 オペレーティング システム ディスクはイメージから作成されます。オペレーティング システム ディスクとイメージの両方は仮想ハード ディスク (VHD) であり、Azure のストレージ アカウントに格納されます。 仮想マシンでは 1 つ以上のデータ ディスクも保持することができ、これらも VHD として格納されます。 
 
-この記事では、ディスクのさまざまな仕様法王について説明し、作成および使用できるディスクの種類を示します。 この記事は、 [Linux 仮想マシン](storage-about-disks-and-vhds-linux.md)にも利用できます。
+この記事では、ディスクのさまざまな仕様方法について説明し、作成および使用できるディスクの種類を示します。 この記事は、 [Linux 仮想マシン](storage-about-disks-and-vhds-linux.md)にも利用できます。
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -57,7 +57,7 @@ Azure による一時ディスクの使用方法については、「 [Understan
 
 [!INCLUDE [storage-about-vhds-and-disks-windows-and-linux](../../includes/storage-about-vhds-and-disks-windows-and-linux.md)]
 
-## <a name="one-last-recommendation-use-trim-with-unmanaged-standard-disks"></a>最後の 1 つの推奨事項: Standard非管理ディスクでの TRIM の使用 
+## <a name="one-last-recommendation-use-trim-with-unmanaged-standard-disks"></a>最後の 1 つの推奨事項: Standard 非管理ディスクでの TRIM の使用 
 
 Standard 非管理ディスク (HDD) を使用する場合は、TRIM を有効にする必要があります。 TRIM はディスク上の未使用のブロックを破棄するため、実際に使用しているストレージにのみ課金されます。 これにより、サイズの大きいファイルを作成した後に削除した場合、コストを節約できます。 
 
