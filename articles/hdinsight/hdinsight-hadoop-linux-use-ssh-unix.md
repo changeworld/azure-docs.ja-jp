@@ -172,7 +172,7 @@ SSH アカウントが __SSH キー__を使用してセキュリティ保護さ�
 
         /tmp/ssh-rfSUL1ldCldQ/agent.1792
 
-    何も返されない場合は、`ssh-agent` が実行されていません。 「[Using ssh-agent with ssh (ssh での ssh-agent の使用)](http://mah.everybody.org/docs/ssh)」(http://mah.everybody.org/docs/ssh) でエージェントのスタートアップ スクリプト情報を参照するか、お使いの SSH クライアントのドキュメントで `ssh-agent` をインストールして構成する手順を確認してください。
+    何も返されない場合は、`ssh-agent` が実行されていません。 [「Using ssh-agent with ssh (ssh での ssh-agent の使用)」(http://mah.everybody.org/docs/ssh)](http://mah.everybody.org/docs/ssh) でエージェントのスタートアップ スクリプト情報を参照するか、お使いの SSH クライアントのドキュメントで `ssh-agent` をインストールして構成する手順を確認してください。
 
 4. **ssh-agent** が実行していることを確認したら、次のコマンドを使用して SSH 秘密キーをエージェントに追加します。
 

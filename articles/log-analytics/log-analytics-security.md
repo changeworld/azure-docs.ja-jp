@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 04/12/2017
 ms.author: banders
 translationtype: Human Translation
 ms.sourcegitcommit: d0f4323c22858300d95af7407cdb14995507ee60
 ms.openlocfilehash: 952697dff7dca2779a6eb5375afa41c0b130aad4
+ms.lasthandoff: 11/23/2016
 
 
 ---
@@ -162,9 +163,4 @@ OMS ポータルを使用してデータを CSV ファイルにエクスポー�
 
 ## <a name="next-steps"></a>次のステップ
 * [Log Analytics の起動と開始](log-analytics-get-started.md) 」では、Log Analytics の詳細と、分単位で起動および実行する方法について説明します。
-
-
-
-<!--HONumber=Nov16_HO4-->
-
 

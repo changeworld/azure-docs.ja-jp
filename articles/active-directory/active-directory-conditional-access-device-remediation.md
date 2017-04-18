@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/04/2017
+ms.date: 04/06/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: 9a648ca8f91529bc5aaa7b8ffbcfddb40864f409
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 4b8627f3cdd13578f9b4c35297bf5d550dccfd07
+ms.lasthandoff: 04/06/2017
 
 
 ---
-# <a name="troubleshooting-you-cant-get-there-from-here-on-a-windows-device"></a>Windows デバイスで目的の場所にアクセスできない問題のトラブルシューティング
+# <a name="you-cant-get-there-from-here-on-a-windows-device"></a>Windows デバイスで目的の場所にアクセスできない
 
 たとえば、組織の SharePoint Online イントラネットにアクセスしようとしたとき、"*ここからアクセスすることはできません*" というページが表示される可能性があります。 このページは、特定の条件下において組織のリソースへのアクセスを防ぐ条件付きアクセス ポリシーを管理者が構成しているために表示されています。 ヘルプ デスクまたは管理者に連絡しないと問題を解決できない場合もありますが、まずはこちらのいくつかの手順をお試しください。
 

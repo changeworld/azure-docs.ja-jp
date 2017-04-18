@@ -16,9 +16,9 @@ ms.topic: get-started-article
 ms.date: 01/27/2017
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: a469a6e29e07029b7eab4e80e132b9276c5b18df
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 53bb5d64e27458b4a88981bd20ea4236b31431ec
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -87,7 +87,7 @@ EAI および EDI を含む B2B シナリオ用のロジック アプリを作�
 
 ## <a name="custom-connectors-and-certification-for-microsoft-azure"></a>カスタム コネクタと Microsoft Azure の認定
 
-独自のコネクタを作成したい場合や、目的のコネクタが見つからない場合は、 [Logic Apps プラットフォームを拡張](../logic-apps/logic-apps-create-api-app.md)し、標準搭載のコネクタには含まれていない API やシステムを呼び出す API アプリを作成できます。 また、Microsoft Azure の認定を受けるために API アプリを提出し、Azure を通じて入手できるようにすることも可能です。 ソリューションの Microsoft Azure Certified の取得の詳細については、[こちら](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)を参照してください。
+カスタム コードを実行する API や、コネクタとして使用できない API を呼び出すために、カスタム コネクタとして REST ベースの API アプリを作成して、[Logic Apps プラットフォームを拡張](../logic-apps/logic-apps-create-api-app.md)できます。 カスタム API アプリを公開して Azure で使用できるようにする場合は、[Microsoft Azure Certified プログラム](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)に推薦を送信します。
 
 ## <a name="get-help"></a>問い合わせ
 

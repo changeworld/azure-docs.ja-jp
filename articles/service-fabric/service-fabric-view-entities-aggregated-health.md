@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/12/2017
+ms.date: 04/12/2017
 ms.author: oanapl
 translationtype: Human Translation
 ms.sourcegitcommit: 2573f300231ceb080343dad5c1c2aa65cc31c59e
 ms.openlocfilehash: f62a7a8f594c67cac687159d72bfdb00a3355025
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -1151,9 +1152,4 @@ UpgradeReplicaSetCheckTimeout : 00:15:00
 [ローカルでのサービスの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

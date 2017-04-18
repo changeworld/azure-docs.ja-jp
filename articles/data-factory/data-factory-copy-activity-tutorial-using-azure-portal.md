@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/14/2017
+ms.date: 04/11/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: a4658f1eee3cdd24b3da47b4c7319c61ea39cb34
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 079cb3e69954a9b02e26e005ad4bb1b7ef14c909
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -175,12 +175,12 @@ ms.lasthandoff: 03/24/2017
     ```   
     以下の点に注意してください。 
    
-   * データセットの **type** は **AzureBlob** に設定されています。
-   * **linkedServiceName** は **AzureStorageLinkedService** に設定されています。 このリンクされたサービスは手順 2. で作成しました。
-   * **folderPath** は **adftutorial** コンテナーに設定されています。 **fileName** プロパティを使用して、フォルダー内の BLOB の名前を指定することもできます。 BLOB の名前を指定しない場合、コンテナー内のすべての BLOB からのデータが入力データと見なされます。  
-   * format の **type** は **TextFormat** に設定されています。
-   * テキスト ファイル内に 2 つのフィールド (**FirstName** と **LastName**) があり、コンマ (**columnDelimiter**) で区切られています。    
-   * **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。 そのため、Data Factory は、指定された BLOB コンテナー (**adftutorial**) のルート フォルダーにある入力データを 1 時間ごとに検索します。 
+    - データセットの **type** は **AzureBlob** に設定されています。
+    - **linkedServiceName** は **AzureStorageLinkedService** に設定されています。 このリンクされたサービスは手順 2. で作成しました。
+    - **folderPath** は **adftutorial** コンテナーに設定されています。 **fileName** プロパティを使用して、フォルダー内の BLOB の名前を指定することもできます。 BLOB の名前を指定しない場合、コンテナー内のすべての BLOB からのデータが入力データと見なされます。
+    - format の **type** は **TextFormat** に設定されています。
+    - テキスト ファイル内に 2 つのフィールド (**FirstName** と **LastName**) があり、コンマ (**columnDelimiter**) で区切られています。
+    - **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。 そのため、Data Factory は、指定された BLOB コンテナー (**adftutorial**) のルート フォルダーにある入力データを 1 時間ごとに検索します。 
      
      **入力**データセット用に **fileName** を指定しない場合、入力フォルダー (**folderPath**) のすべてのファイルまたは BLOB が入力と見なされます。 JSON で fileName を指定した場合は、指定されたファイル/BLOB のみが入力と見なされます。
      
@@ -240,11 +240,11 @@ ms.lasthandoff: 03/24/2017
     ```       
     以下の点に注意してください。 
    
-   * データセットの **type** は **AzureSQLTable** に設定されています。
-   * **linkedServiceName** は **AzureSqlLinkedService** (手順 2. で作成した、リンクされたサービス) に設定されています。
-   * **tablename** は **emp** に設定されています。
-   * データベース内の emp テーブルには、**ID**、**FirstName**、**LastName** の 3 つの列があります。 ID は ID 列であるため、ここで指定する必要があるのは **FirstName** と **LastName** のみです。
-   * **availability** は **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。  Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに 1 時間ごとに出力データ スライスを生成します。
+    - データセットの **type** は **AzureSQLTable** に設定されています。
+    - **linkedServiceName** は **AzureSqlLinkedService** (手順 2. で作成した、リンクされたサービス) に設定されています。
+    - **tablename** は **emp** に設定されています。
+    - データベース内の emp テーブルには、**ID**、**FirstName**、**LastName** の 3 つの列があります。 ID は ID 列であるため、ここで指定する必要があるのは **FirstName** と **LastName** のみです。
+    - **availability** は **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。  Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに 1 時間ごとに出力データ スライスを生成します。
 3. ツール バーの **[デプロイ]** をクリックし、**OutputDataset** データセットを作成してデプロイします。 ツリー ビューに **OutputDataset** が表示されることを確認します。 
 
 > [!NOTE]
@@ -303,17 +303,17 @@ ms.lasthandoff: 03/24/2017
     
     以下の点に注意してください。
    
-   * activities セクションに、**type** が **Copy** に設定されたアクティビティが 1 つだけあります。
-   * アクティビティの入力を **InputDataset** に設定し、出力を **OutputDataset** に設定します。
-   * **typeProperties** セクションでは、ソースの種類として **BlobSource** が指定され、シンクの種類として **SqlSink** が指定されています。
+    - activities セクションに、**type** が **Copy** に設定されたアクティビティが 1 つだけあります。
+    - アクティビティの入力を **InputDataset** に設定し、出力を **OutputDataset** に設定します。
+    - **typeProperties** セクションでは、ソースの種類として **BlobSource** が指定され、シンクの種類として **SqlSink** が指定されています。
      
-     **start** プロパティの値を現在の日付に置き換え、**end** プロパティの値を翌日の日付に置き換えます。 日付の部分のみを指定し、時刻の部分をスキップすることもできます。 たとえば、"2016-02-03" と "2016-02-03T00:00:00Z" は同じです。
+    **start** プロパティの値を現在の日付に置き換え、**end** プロパティの値を翌日の日付に置き換えます。 日付の部分のみを指定し、時刻の部分をスキップすることもできます。 たとえば、"2016-02-03" と "2016-02-03T00:00:00Z" は同じです。
      
-     start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります。 たとえば、2016-10-14T16:32:41Z とします。 **end** の時刻は省略可能ですが、このチュートリアルでは使用します。 
+    start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります。 たとえば、2016-10-14T16:32:41Z とします。 **end** の時刻は省略可能ですが、このチュートリアルでは使用します。 
      
-     **end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。 パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティの値として指定します。
+    **end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。 パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティの値として指定します。
      
-     前の例では、各データ スライスが 1 時間ごとに生成されるため、データ スライスは 24 個になります。
+    前の例では、各データ スライスが 1 時間ごとに生成されるため、データ スライスは 24 個になります。
 3. ツール バーの **[デプロイ]** をクリックし、**ADFTutorialPipeline** を作成してデプロイします。 ツリー ビューにパイプラインが表示されることを確認します。 
 4. ここで、**[X]** をクリックして **[エディター]** ブレードを閉じます。もう一度 **[X]** をクリックし、**ADFTutorialDataFactory** 用の **Data Factory** ホーム ページを表示します。
 

@@ -17,9 +17,9 @@ ms.workload: data-management
 wms.date: 03/06/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: ab637f9910523cc8d8967dd1507dbcfad9f7ae88
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
+ms.openlocfilehash: 827394be9485685388879c1eb4cee4d79ef9fe51
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -127,29 +127,30 @@ P11/P15 データベースを作成するときに、1 TB (既定値) または 
 
 サポート対象のリージョンにある既存の P11 と P15 のデータベースでは、ストレージの最大サイズを 4 TB に増やすことができます。 この操作は、Azure Portal、PowerShell、または Transact-SQL で実行できます。 次のコードは、ALTER DATABASE コマンドを使用した最大サイズの変更の例を示しています。
 
-```ALTER DATABASE <DatabaseName> MODIFY (MAXSIZE = 4096 GB);
+ ```t-sql
+ALTER DATABASE <myDatabaseName> 
+   MODIFY (MAXSIZE = 4096 GB);
 ```
 
-Upgrading an existing P11 or P15 database can only be performed by a server-level principal login or by members of the dbmanager database role. 
-If executed in a supported region the configuration will be updated immediately. This can be checked using the [SELECT DATABASEPROPERTYEX](https://msdn.microsoft.com/library/ms186823.aspx) or by inspecting the database size in the Azure portal. The database will remain online during the upgrade process. However, you will not be able to utilize the full 4 TB of storage until the actual database files have been upgraded to the new maxsize. The length of time required depends upon on the size of the database being upgraded.  
+既存の P11 または P15 のデータベースのアップグレードは、サーバーレベル プリンシパルのログインまたは dbmanager データベース ロールのメンバーのみが実行できます。 サポートされているリージョンで実行されると、すぐに構成が更新されます。 これを確認するには、[SELECT DATABASEPROPERTYEX](https://msdn.microsoft.com/library/ms186823.aspx) を使用するか、Azure Portal でデータベース サイズを調べます。 データベースは、アップグレード処理中もオンラインのままになります。 ただし、実際のデータベース ファイルが新しい最大サイズにアップグレードされるまで、4 TB のストレージを十分に利用することはできません。 必要な時間は、アップグレードされるデータベースのサイズに応じて異なります。  
 
-### Error messages
-When creating or upgrading an P11/P15 database in an unsupported region, the create or upgrade operation will fail with the following error message: **P11 and P15 database with up to 4TB of storage are available in US East 2, West US, South East Asia, West Europe, Canada East, Canada Central, Japan East, and Australia East.**
+### <a name="error-messages"></a>エラー メッセージ
+サポートされていないリージョンで P11/P15 データベースを作成またはアップグレードすると、アップグレード操作が失敗し、"**P11 and P15 database with up to 4TB of storage are available in US East 2, West US, South East Asia, West Europe, Canada East, Canada Central, Japan East, and Australia East (最大 4 TB のストレージを使用する P11 および P15 データベースは、米国東部 2、米国西部、東南アジア、西ヨーロッパ、カナダ東部、カナダ中部、東日本、オーストラリア東部で利用可能です)**" というエラー メッセージが表示されます。
 
-## Current limitations of P11 and P15 databases with 4 TB maxsize
+## <a name="current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize"></a>最大サイズ 4 TB の P11 および P15 データベースの現時点での制限事項
 
-- When creating or updating a P11 or P15 database, you can only chose between 1 TB and 4 TB maxsize. Intermediate storage sizes are not currently supported.
-- The 4 TB database maxsize cannot be changed to 1 TB even if the actual storage used is below 1 TB. Thus, you cannot downgrade a P11-4TB/P15-4TB to a P11-1TB/P15-1TB or a lower performance tier (e.g., to P1-P6) until we are providing additional storage options for the rest of the performance tiers. This restriction also applies to the restore and copy scenarios including point-in-time, geo-restore, long-term-backup-retention, and database copy. Once a database is configured with the 4 TB option, all restore operations of this database must be into a P11/P15 with 4 TB maxsize.
-- For Active Geo-Replication scenarios:
-   - Setting up a geo-replication relationship: If the primary database is P11 or P15, the secondary(ies) must also be P11 or P15; lower performance tiers will be rejected as secondaries since they are not capable of supporting 4 TB.
-   - Upgrading the primary database in a geo-replication relationship: Changing the maxsize to 4 TB on a primary database will trigger the same change on the secondary database. Both upgrades must be successful for the change on the primary to take effect. Region limitations for the 4TB option apply (see above). If the secondary is in a region that does not support 4 TB, the primary will not be upgraded.
-- Using the Import/Export service for loading P11-4TB/P15-4TB databases is not supported. Use SqlPackage.exe to [import](sql-database-import-sqlpackage.md) and [export](sql-database-export-sqlpackage.md) data.
+- P11 または P15 データベースを作成または更新する際に、最大サイズとして 1 TB と 4 TB のいずれかのみを選択できます。 現在、中間のストレージ サイズはサポートされていません。
+- 実際に使用されるストレージが 1 TB 未満の場合でも、データベースの最大サイズ 4 TB を 1 TB に変更することはできません。 したがって、他のパフォーマンス レベルに追加のストレージ オプションが提供されない限り、P11-4TB/P15-4TB を P11-1TB/P15-1TB またはさらに下位のパフォーマンス レベル (たとえば、P1-P6) にダウングレードすることはできません。 この制限は、ポイントインタイム リストア、geo リストア、長期的なバックアップ保有期間、データベース コピーなど、復元とコピーのシナリオにも適用されます。 データベースを 4 TB のオプションを使用して構成すると、このデータベースのすべての復元操作により、最大サイズ 4 TB の P11/P15 になります。
+- アクティブ geo レプリケーションのシナリオの場合:
+   - geo レプリケーションのリレーションシップの設定: プライマリ データベースが P11 または P15 の場合は、セカンダリも P11 または P15 である必要があります。つまり、下位のパフォーマンス レベルは、4 TB をサポートできないため、セカンダリとして拒否されます。
+   - geo レプリケーションのリレーションシップでのプライマリ データベースのアップグレード: プライマリ データベースで最大サイズを 4 TB に変更すると、セカンダリ データベースでも同じ変更がトリガーされます。 プライマリに対する変更を有効にするには、両方のアップグレードが正常に完了する必要があります。 4 TB のオプションに関するリージョンの制限が適用されます (上記参照)。 4 TB をサポートしていないリージョンにセカンダリが存在する場合、プライマリはアップグレードされません。
+- P11-4TB/P15-4TB データベースの読み込みに Import/Export サービスを使用することはサポートされていません。 SqlPackage.exe を使用して、データを[インポート](sql-database-import-sqlpackage.md)および[エクスポート](sql-database-export.md)してください。
 
-## Next steps
+## <a name="next-steps"></a>次のステップ
 
-* Learn the details of [elastic pools](sql-database-elastic-pool-guidance.md) and [price and performance considerations for elastic pools](sql-database-elastic-pool-guidance.md).
-* Learn how to [Monitor, manage, and resize elastic pools](sql-database-elastic-pool-manage-portal.md) and [Monitor the performance of single databases](sql-database-single-database-monitor.md).
-* Now that you know about the SQL Database tiers, try them out with a [free account](https://azure.microsoft.com/pricing/free-trial/) and learn [how to create your first SQL database](sql-database-get-started.md).
-* For migration scenarios, use the [DTU Calculator](http://dtucalculator.azurewebsites.net/) to approximate the number of DTUs needed. 
+* [エラスティック プール](sql-database-elastic-pool-guidance.md)と、[エラスティック プールの価格とパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)の詳細を確認してください。
+* [エラスティック プールの監視、管理、およびサイズ変更](sql-database-elastic-pool-manage-portal.md)と[単一データベースのパフォーマンスの監視](sql-database-single-database-monitor.md)を行う方法を確認してください。
+* SQL Database の階層について理解できたら、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)で実際に試してみてください。また、[初めて SQL データベースを作成するにあたっての方法](sql-database-get-started.md)を確認してください。
+* 移行のシナリオの場合は、[DTU Calculator](http://dtucalculator.azurewebsites.net/) を使用して必要な DTU 数を見積もります。 
 
 

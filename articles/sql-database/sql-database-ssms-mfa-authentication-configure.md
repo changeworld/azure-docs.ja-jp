@@ -9,7 +9,7 @@ editor:
 tags: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: authentication and authorization
+ms.custom: security-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na

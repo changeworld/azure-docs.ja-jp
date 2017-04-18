@@ -17,6 +17,7 @@
 ### [Linux での Java](service-fabric-create-your-first-linux-application-with-java.md)
 ### [Linux での C#](service-fabric-create-your-first-linux-application-with-csharp.md)
 ## [ローカル クラスターへのアプリのデプロイ](service-fabric-get-started-with-a-local-cluster.md)
+## [スタンドアロン クラスターの作成](service-fabric-get-started-standalone-cluster.md)
 
 # 方法
 ## アプリケーションのビルド
@@ -145,6 +146,7 @@
 ### アプリケーションをデプロイまたは削除する
 #### [PowerShell](service-fabric-deploy-remove-applications.md)
 #### [Visual Studio](service-fabric-publish-app-remote-cluster.md)
+#### [FabricClient API](service-fabric-deploy-remove-applications-fabricclient.md)
 ### [アプリケーション アップグレードの概要](service-fabric-application-upgrade.md)
 ### [アプリケーション アップグレードの構成](service-fabric-visualstudio-configure-upgrade.md)
 ### [アプリケーション アップグレードのパラメーター](service-fabric-application-upgrade-parameters.md)
@@ -208,9 +210,9 @@
 ### [サービスの移動](service-fabric-cluster-resource-manager-movement-cost.md)
 
 # リファレンス
-## [PowerShell](//powershell/servicefabric/vlatest/servicefabric)
-## [Java API](/java/api/microsoft.servicefabric.services)
-## [.NET](/dotnet/api/microsoft.servicefabric.services)
+## [PowerShell](/powershell/module/ServiceFabric/)
+## [Java API](/java/api/)
+## [.NET](/dotnet/api/)
 ## [REST ()](/rest/api/servicefabric)
 
 # リソース

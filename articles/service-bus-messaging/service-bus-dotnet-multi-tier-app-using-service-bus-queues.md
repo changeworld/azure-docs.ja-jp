@@ -12,18 +12,18 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: get-started-article
-ms.date: 01/10/2017
+ms.date: 04/11/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: f92909e0098a543f99baf3df3197a799bc9f1edc
-ms.openlocfilehash: 76c884bfdfbfacf474489d41f1e388956e4daaa0
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 8b502f5ac5d89801d390a872e7a8b06e094ecbba
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>Azure Service Bus キューを使用する .NET 多層アプリケーション
 ## <a name="introduction"></a>はじめに
-Microsoft Azure 向けアプリケーションは、Visual Studio および無料の Azure SDK for .NET を使用して簡単に開発できます。 このチュートリアルでは、ローカル環境で実行されている複数の Azure リソースを使用するアプリケーションを作成する手順について説明します。 Azure を初めて使用するユーザーを対象としています。
+Microsoft Azure 向けアプリケーションは、Visual Studio および無料の Azure SDK for .NET を使用して簡単に開発できます。 このチュートリアルでは、ローカル環境で実行されている複数の Azure リソースを使用するアプリケーションを作成する手順について説明します。
 
 学習内容は次のとおりです。
 
@@ -34,18 +34,18 @@ Microsoft Azure 向けアプリケーションは、Visual Studio および無�
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-このチュートリアルでは、Azure のクラウド サービスで多層アプリケーションを構築して実行します。 フロントエンドは ASP.NET MVC Web ロール、バックエンドは Service Bus キューを使用する worker ロールです。 同じ多層アプリケーションを作成するときに、クラウド サービスではなく Azure Web サイトにデプロイされる Web プロジェクトとしてフロントエンドを実装することもできます。 Azure Web サイトのフロントエンドの場合の手順については、「[次のステップ](#nextsteps)」セクションを参照してください。 また、[.NET オンプレミス/クラウド ハイブリッド アプリケーション](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md)のチュートリアルを試すこともできます。
+このチュートリアルでは、Azure のクラウド サービスで多層アプリケーションを構築して実行します。 フロントエンドは ASP.NET MVC Web ロール、バックエンドは Service Bus キューを使用する worker ロールです。 同じ多層アプリケーションを作成するときに、クラウド サービスではなく Azure Web サイトにデプロイされる Web プロジェクトとしてフロントエンドを実装することもできます。 また、[.NET オンプレミス/クラウド ハイブリッド アプリケーション](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md)のチュートリアルを試すこともできます。
 
 次のスクリーン ショットに、完成したアプリケーションを示します。
 
 ![][0]
 
 ## <a name="scenario-overview-inter-role-communication"></a>シナリオの概要: ロール間通信
-処理を要求するため、Web ロールで実行されているフロントエンド UI コンポーネントは、worker ロールで実行されている中間層ロジックと対話する必要があります。 この例では、各層間での通信に Service Bus のブローカー メッセージングが使用されています。
+処理を要求するため、Web ロールで実行されているフロントエンド UI コンポーネントは、worker ロールで実行されている中間層ロジックと対話する必要があります。 この例では、各層間での通信に Service Bus メッセージングが使用されています。
 
-Web 層と中間層との間でブローカー メッセージングを使用すると、2 つのコンポーネントの結合が解除されます。 直接メッセージング (TCP や HTTP) とは異なり、Web 層は中間層に直接接続しません。その代わりに、作業をメッセージとして Service Bus にプッシュします。Service Bus は、このメッセージを中間層が受け取り、処理する用意ができるまで確実に保持します。
+Web 層と中間層との間で Service Bus メッセージングを使用すると、2 つのコンポーネントの結合が解除されます。 直接メッセージング (TCP や HTTP) とは異なり、Web 層は中間層に直接接続しません。その代わりに、作業をメッセージとして Service Bus にプッシュします。Service Bus は、このメッセージを中間層が受け取り、処理する用意ができるまで確実に保持します。
 
-Service Bus には、ブローカー メッセージングをサポートする、キューとトピックという&2; つのエンティティがあります。 キューでは、各メッセージは単一のレシーバーが使用するキューに送信されます。 トピックは発行/サブスクライブ パターンをサポートし、発行された各メッセージをトピックに登録されているサブスクリプションで使用します。 各サブスクリプションは、独自のメッセージ キューを論理的に管理しています。 また、サブスクリプションにフィルター ルールを構成し、サブスクリプション キューに渡すメッセージをフィルターに一致するメッセージのみに制限できます。 次の例では、Service Bus キューを使用します。
+Service Bus には、ブローカー メッセージングをサポートする、キューとトピックという 2 つのエンティティがあります。 キューでは、各メッセージは単一のレシーバーが使用するキューに送信されます。 トピックは発行/サブスクライブ パターンをサポートし、発行された各メッセージをトピックに登録されているサブスクリプションで使用します。 各サブスクリプションは、独自のメッセージ キューを論理的に管理しています。 また、サブスクリプションにフィルター ルールを構成し、サブスクリプション キューに渡すメッセージをフィルターに一致するメッセージのみに制限できます。 次の例では、Service Bus キューを使用します。
 
 ![][1]
 
@@ -53,7 +53,7 @@ Service Bus には、ブローカー メッセージングをサポートする�
 
 * **一時的な結合の解除。** 非同期メッセージング パターンでは、プロデューサーと コンシューマーが同時にオンラインになっている必要はありません。 コンシューマーが メッセージを受け取る用意ができるまで、Service Bus が確実に メッセージを保持します。 このため、保守などのために、分散型アプリケーションの各コンポーネントの接続を自主的に解除できます。また、コンポーネントのクラッシュによって接続が解除されても問題なく、接続解除の際にシステム全体に影響が及ぶことがありません。 さらに、コンシューマー側アプリケーションがオンラインになっている時間は、1 日のうち一定の時間だけで済みます。
 * **負荷平準化。** 多くのアプリケーションでは、システム負荷が時間の経過とともに変化しますが、各作業単位に必要な処理時間は通常一定に保たれます。 メッセージ プロデューサーとメッセージ コンシューマーの間をキューで仲介することは、コンシューマー側アプリケーション (worker) はピーク時ではなく平均時の負荷に対応できるようにプロビジョニングすればいいということを意味します。 キューの深さは、受信の負荷の変化に応じて増減します。 このため、アプリケーション負荷への対応に必要なインフラストラクチャの観点から直接費用を節約できます。
-* **負荷分散。** 負荷の増大に合わせて、キューからの読み取りのために worker プロセスを追加できます。 各メッセージは、ワーカー プロセスの中の&1; つのプロセスによって処理されます。 また、このプルベースの負荷分散では、各 worker マシンがそれぞれ独自の最大レートでメッセージをプルするため、worker マシンの処理能力が異なる場合であっても最適に使用できます。 このパターンは、"*競合コンシューマー*" パターンと呼ばれることもあります。
+* **負荷分散。** 負荷の増大に合わせて、キューからの読み取りのために worker プロセスを追加できます。 各メッセージは、ワーカー プロセスの中の 1 つのプロセスによって処理されます。 また、このプルベースの負荷分散では、各 worker マシンがそれぞれ独自の最大レートでメッセージをプルするため、worker マシンの処理能力が異なる場合であっても最適に使用できます。 このパターンは、"*競合コンシューマー*" パターンと呼ばれることもあります。
   
   ![][2]
 
@@ -63,7 +63,7 @@ Service Bus には、ブローカー メッセージングをサポートする�
 Azure アプリケーションの開発を開始する前に、ツールを入手して、開発環境を設定します。
 
 1. SDK の[ダウンロード ページ](https://azure.microsoft.com/downloads/)から、Azure SDK for .NET をインストールします。
-2. **[.NET]** 列で、使用している [Visual Studio](http://www.visualstudio.com) のバージョンをクリックします。 このチュートリアルの手順では、Visual Studio 2015 を使用します。
+2. **[.NET]** 列で、使用している [Visual Studio](http://www.visualstudio.com) のバージョンをクリックします。 このチュートリアルの手順では Visual Studio 2015 を使っていますが、Visual Studio 2017 でも正しく動作します。
 3. インストーラーの実行や保存を求めるメッセージが表示されたら、**[実行]** をクリックします。
 4. **Web Platform Installer** の **[インストール]** をクリックし、インストールの手順を進めます。
 5. インストールが完了すると、アプリケーションの開発に必要なツールがすべて揃います。 SDK には、Visual Studio で Azure アプリケーションを簡単に開発するためのツールが用意されています。
@@ -78,7 +78,7 @@ Azure アプリケーションの開発を開始する前に、ツールを入�
 その後、Service Bus キューに項目を送信し、キューに関するステータス情報を表示するコードを追加します。
 
 ### <a name="create-the-project"></a>プロジェクトを作成する
-1. 管理者特権を使用して、Microsoft Visual Studio を起動します。 管理者特権で Visual Studio を起動するには、**Visual Studio** のプログラム アイコンを右クリックし、**[管理者として実行]** をクリックします。 Azure コンピューティング エミュレーター (後ほどこの記事で解説) を使用するには、管理者特権で Visual Studio を開始する必要があります。
+1. 管理者特権で Visual Studio を起動します。**Visual Studio** のプログラム アイコンを右クリックし、**[管理者として実行]** をクリックしてください。 Azure コンピューティング エミュレーター (後ほどこの記事で解説) を使用するには、管理者特権で Visual Studio を開始する必要があります。
    
    Visual Studio で、**[ファイル]** メニューの **[新規作成]** をクリックした後、**[プロジェクト]** をクリックします。
 2. **[インストールされたテンプレート]** の **[Visual C#]** で **[クラウド]** をクリックし、**[Azure クラウド サービス]** をクリックします。 プロジェクトの名前を "**MultiTierApp**" にします。 次に、 **[OK]**をクリックします
@@ -98,7 +98,7 @@ Azure アプリケーションの開発を開始する前に、ツールを入�
     ![][16]
 7. **[New ASP.NET Project (新しい ASP.NET プロジェクト)]** ダイアログ ボックスに戻り、**[OK]** をクリックして、プロジェクトを作成します。
 8. **ソリューション エクスプローラー**で **FrontendWebRole** プロジェクトの **[参照]** を右クリックし、**[NuGet パッケージの管理]** をクリックします。
-9. **[参照]** タブをクリックして、`Microsoft Azure Service Bus` を検索します。 **[インストール]**をクリックして、使用条件に同意します。
+9. **[参照]** タブをクリックして、`Microsoft Azure Service Bus` を検索します。 **WindowsAzure.ServiceBus** パッケージを選択し、**[インストール]** をクリックして使用条件に同意します。
    
    ![][13]
    
@@ -290,7 +290,7 @@ Azure アプリケーションの開発を開始する前に、ツールを入�
        return View();
    }
    ```
-8. キューに注文情報を送信するために、`Submit(OnlineOrder order)` メソッド (パラメーターを&1; つ受け取るオーバーロード) を次のように更新します。
+8. キューに注文情報を送信するために、`Submit(OnlineOrder order)` メソッド (パラメーターを 1 つ受け取るオーバーロード) を次のように更新します。
    
    ```csharp
    public ActionResult Submit(OnlineOrder order)
@@ -362,7 +362,7 @@ Azure アプリケーションの開発を開始する前に、ツールを入�
 ## <a name="next-steps"></a>次のステップ
 Service Bus の詳細については、次のリソースを参照してください。  
 
-* [Azure Service Bus][sbmsdn]  
+* [Azure Service Bus のドキュメント][sbdocs]  
 * [Service Bus サービス ページ][sbacom]  
 * [Service Bus キューの使用方法][sbacomqhowto]  
 
@@ -370,7 +370,7 @@ Service Bus の詳細については、次のリソースを参照してくだ�
 
 * [ストレージ テーブル、キュー、BLOB を使用する .NET 多層アプリケーション][mutitierstorage]  
 
-[0]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-01.png
+[0]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-app.png
 [1]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-100.png
 [2]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-101.png
 [9]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-10.png
@@ -381,8 +381,8 @@ Service Bus の詳細については、次のリソースを参照してくだ�
 [14]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-33.png
 [15]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-34.png
 [16]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-14.png
-[17]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-36.png
-[18]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-37.png
+[17]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-app.png
+[18]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-app2.png
 
 [19]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-38.png
 [20]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-39.png
@@ -391,7 +391,7 @@ Service Bus の詳細については、次のリソースを参照してくだ�
 [26]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/SBNewWorkerRole.png
 [28]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-40.png
 
-[sbmsdn]: http://msdn.microsoft.com/library/azure/ee732537.aspx  
+[sbdocs]: /azure/service-bus-messaging/  
 [sbacom]: https://azure.microsoft.com/services/service-bus/  
 [sbacomqhowto]: service-bus-dotnet-get-started-with-queues.md  
 [mutitierstorage]: https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36

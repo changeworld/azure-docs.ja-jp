@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 03/17/2017
 ms.author: parakhj
 translationtype: Human Translation
-ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
-ms.openlocfilehash: 3dd207805c1a8f53c6cc74da08cc9378609581c5
-ms.lasthandoff: 03/23/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: d67043f2e0a062796f4d6167b28774ce494027c2
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -77,11 +77,11 @@ git clone https://github.com/Azure-Samples/b2c-dotnet-webapp-and-webapi.git
     * `ida:SignUpSignInPolicyId`。実際の "サインアップまたはサインイン" ポリシー名を指定します。
 
 2. `TaskWebApp` プロジェクトの `web.config` を開き、次のように値を置き換えます。
-    * `ida:Tenant`。実際のテナント名を指定します。
-    * `ida:ClientId`。実際の Web アプリのアプリケーション ID を指定します。
-    * `ida:ClientSecret`。実際の Web アプリのシークレット キーを指定します。
-    * `ida:SignUpSignInPolicyId`。実際の "サインアップまたはサインイン" ポリシー名を指定します。
-    * `ida:EditProfilePolicyId`。実際の "プロファイルの編集" ポリシーの名前を指定します。
+    * `ida:Tenant` を実際のテナント名に置き換えます。
+    * `ida:ClientId` を実際の Web アプリのアプリケーション ID に置き換えます。
+    * `ida:ClientSecret` を実際の Web アプリのシークレット キーに置き換えます。
+    * `ida:SignUpSignInPolicyId` を実際の "サインアップまたはサインイン" ポリシーの名前に置き換えます。
+    * `ida:EditProfilePolicyId` を実際の "プロファイルの編集" ポリシーの名前に置き換えます。
     * `ida:ResetPasswordPolicyId`。実際の "パスワードのリセット" ポリシーの名前を指定します。
 
 
@@ -103,9 +103,9 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb -ProjectName TaskService
 
 ### <a name="add-an-owin-startup-class"></a>OWIN Startup クラスを追加する
 
-OWIN スタートアップ クラス (`Startup.cs`) を API に追加します。  プロジェクトを右クリックし、**[追加]**、**[新しい項目]** の順に選択して、"OWIN" を検索します。 アプリが起動すると、OWIN ミドルウェアは `Configuration(…)` メソッドを呼び出します。
+OWIN Startup クラス (`Startup.cs`) を API に追加します。  プロジェクトを右クリックし、**[追加]**、**[新しい項目]** の順に選択して、"OWIN" を検索します。 アプリが起動すると、OWIN ミドルウェアは `Configuration(…)` メソッドを呼び出します。
 
-サンプルでは、クラスの宣言を `public partial class Startup` に変更し、その残りの部分を `App_Start\Startup.Auth.cs` に実装しています。 `Configuration` メソッドには、`ConfigureAuth` への呼び出しを追加していますが、その定義は `Startup.Auth.cs` に存在します。 変更後の `Startup.cs` は、次のようになります。
+サンプルでは、クラスの宣言を `public partial class Startup` に変更し、クラスの残りの部分を `App_Start\Startup.Auth.cs` に実装しました。 `Configuration` メソッド内に、`ConfigureAuth` (`Startup.Auth.cs` で定義) の呼び出しを追加しました。 変更後の `Startup.cs` は、次のようになります。
 
 ```CSharp
 // Startup.cs

@@ -12,7 +12,7 @@
     ```
 2. ハイブリッド接続の接続の詳細に関する次の Relay `constants` を `listener.js` に追加します。 中かっこ内のプレースホルダーを、ハイブリッド接続の作成時に取得した適切な値に置き換えます。
    
-   1. `const ns` - Relay 名前空間
+   1. `const ns` - Relay 名前空間。FQDN を使用します (例: `{namespace}.servicebus.windows.net`)。
    2. `const path` - ハイブリッド接続の名前
    3. `const keyrule` - SAS キーの名前
    4. `const key` - SAS キーの値
@@ -71,9 +71,4 @@
         console.log('error' + err);
     });
     ```
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 3/29/2017
 ms.author: sngun
 translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: 83214456c2e88daab6686964e8bec4c40feb6039
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: a1cae00383f92ad05339654895f569bf74830f7e
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -25,7 +25,7 @@ ms.lasthandoff: 04/04/2017
 To manage resources, you must connect to the Azure Stack POC computer. You can use either of the following connection options:
 
 * [Remote Desktop](#connect-with-remote-desktop): lets a single concurrent user quickly connect from the POC computer.
-* [Virtual Private Network (VPN)](#connect-with-vpn):  lets multiple concurrent users connect from clients outside of the Azure Stack infrastructure (requires configuration).
+* [Virtual Private Network (VPN)](#connect-with-vpn): lets multiple concurrent users connect from clients outside of the Azure Stack infrastructure (requires configuration).
 
 ## <a name="connect-with-remote-desktop"></a>Connect with Remote Desktop
 With a Remote Desktop connection, a single concurrent user can work with the portal to manage resources. You can also use tools on the MAS-CON01 virtual machine.
@@ -33,8 +33,8 @@ With a Remote Desktop connection, a single concurrent user can work with the por
 1. Log in to the Azure Stack POC physical machine.
 2. Open a Remote Desktop Connection and connect to MAS-CON01. Enter **AzureStack\AzureStackAdmin** as the username, and the administrative password you provided during Azure Stack setup.  
 3. On the MAS-CON01 desktop, open Server Manager, click **Local Server**, turn off Internet Explorer Enhanced Security, and then close Server Manager.
-4. To open the user [portal](azure-stack-key-features.md#portal), navigate to (https://publicportal.local.azurestack.external/) and sign in using user credentials.
-    To open the administrator [portal](azure-stack-key-features.md#portal), navigate to (https://portal.local.azurestack.external/) and sign in using the Azure Active Directory credentials specified during installation.
+4. To open the user [portal](azure-stack-key-features.md#portal), navigate to (https://portal.local.azurestack.external/) and sign in using user credentials.
+    To open the administrator [portal](azure-stack-key-features.md#portal), navigate to (https://adminportal.local.azurestack.external/) and sign in using the Azure Active Directory credentials specified during installation.
 
 ## <a name="connect-with-vpn"></a>Connect with VPN
 
@@ -126,7 +126,7 @@ To create a VPN connection to the Azure Stack PoC computer, use the following st
 
 ### <a name="validate-the-vpn-connectivity"></a>Validate the VPN connectivity
 
-To test the portal connection, open an Internet browser and navigate to either the user portal (https://publicportal.local.azurestack.external) or the administrator portal (https://portal.local.azurestack.external), sign in and create resources.  
+To test the portal connection, open an Internet browser and navigate to either the user portal (https://portal.local.azurestack.external/) or the administrator portal (https://adminportal.local.azurestack.external/), sign in and create resources.  
 
 ## <a name="next-steps"></a>Next steps
 * [Add the Windows Server 2016 VM image to the Azure Stack marketplace](azure-stack-add-default-image.md)

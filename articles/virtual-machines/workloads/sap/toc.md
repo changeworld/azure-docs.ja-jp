@@ -16,6 +16,11 @@
 ### [トラブルシューティングと監視](troubleshooting-monitoring.md)
 ### [単一インスタンスの SAP HANA](hana-get-started.md)
 ### [S/4 HANA または BW/4 HANA のデプロイ ガイド](cal-s4h.md)
+### Backup
+#### [概要](sap-hana-backup-guide.md)
+#### [ファイル レベルのバックアップ](sap-hana-backup-file-level.md)
+#### [ストレージのスナップショット](sap-hana-backup-storage-snapshots.md)
+
 ## SAP Netweaver
 ### [概要とアーキテクチャ](suse-quickstart.md)
 ### [計画と実装](planning-guide.md)

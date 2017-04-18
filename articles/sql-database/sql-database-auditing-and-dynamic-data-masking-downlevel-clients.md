@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 4ef19ed1-e798-43a2-ad99-0e563f93ab53
 ms.service: sql-database
-ms.custom: secure and protect
+ms.custom: security-protect
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -25,7 +25,7 @@ ms.lasthandoff: 02/17/2017
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-auditing"></a>SQL Database - 監査のためのダウンレベル クライアントのサポートと IP エンドポイントの変更
 [データベース監査](sql-database-auditing.md) は TDS リダイレクションに対応する SQL クライアントと自動的に連動します。 なお、Blob 監査メソッドを使用している場合、リダイレクトは適用されません。
 
-## <a name="a-idsubheading-1adownlevel-clients-support"></a><a id="subheading-1"></a>ダウンレベル クライアントのサポート
+## <a id="subheading-1"></a>ダウンレベル クライアントのサポート
 TDS 7.4 を実装するクライアントもリダイレクトをサポートします。 この例外には一部のリダイレクション機能に対応していない JDBC 4.0 とリダイレクションが実装されていない Tedious for Node.JS があります。
 
 「ダウンレベル クライアント」、つまり、TDS バージョンが 7.3 以前のクライアントの場合、接続文字列のサーバー FQDN を変更する必要があります。
@@ -43,7 +43,7 @@ TDS 7.4 を実装するクライアントもリダイレクトをサポートし
 
 **注記:** 上のサーバー FDQN 変更は SQL サーバー レベル監査ポリシーの適用にも役に立ちます。データベースごとの構成が必要ありません (一時的な軽減)。
 
-## <a name="a-idsubheading-2aip-endpoint-changes-when-enabling-auditing"></a><a id="subheading-2"></a>監査を有効にしたときの IP エンドポイントの変更
+## <a id="subheading-2"></a>監査を有効にしたときの IP エンドポイントの変更
 テーブル監査を有効にすると、データベースの IP エンドポイントが変更されます。 ファイアウォールを厳密に設定している場合は、この変更に従ってファイアウォールの設定を更新してください。
 
 データベースの新しい IP エンドポイントは、データベース リージョンによって異なります。

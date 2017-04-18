@@ -24,13 +24,10 @@
 ### [Azure ポータル](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 ### [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 ### [Azure Portal (クラシック)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
-### [クラシック ポータル (クラシック)](virtual-networks-configure-vnet-to-vnet-connection.md)
 ## デプロイメント モデル間の VNet 間接続の構成
 ### [Azure ポータル](vpn-gateway-connect-different-deployment-models-portal.md)
 ### [PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
-## 共存するサイト間接続と ExpressRoute 接続を作成する
-### [PowerShell](../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
-### [PowerShell (クラシック)](../expressroute/expressroute-howto-coexist-classic.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
+## [サイト対サイトおよび ExpressRoute の共存接続の構成](../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 ## 強制トンネリングについて
 ### [PowerShell](vpn-gateway-forced-tunneling-rm.md)
 ### [PowerShell (クラシック)](vpn-gateway-about-forced-tunneling.md)
@@ -50,8 +47,8 @@
 ## [VPN ゲートウェイの構成 (クラシック)](vpn-gateway-configure-vpn-gateway-mp.md)
 
 # リファレンス
-## [PowerShell](https://msdn.microsoft.com/library/mt163510(v=azure.300))
-## [PowerShell (クラシック)](https://msdn.microsoft.com/library/mt270335(v=azure.300))
+## [PowerShell](/powershell/resourcemanager/azurerm.network/v3.6.0/azurerm.network)
+## [PowerShell (クラシック)](/powershell/servicemanagement/azure.networking/v3.4.0/azure.networking)
 ## [REST ()](https://msdn.microsoft.com/library/mt163859)
 ## [REST (クラシック)](https://msdn.microsoft.com/library/jj154113)
 

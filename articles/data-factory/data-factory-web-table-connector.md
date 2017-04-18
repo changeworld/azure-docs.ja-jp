@@ -12,7 +12,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2017
+ms.date: 04/12/2017
 ms.author: jingwang
 translationtype: Human Translation
 ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/29/2017
 
 現在のところ、データ ファクトリは Web テーブルから他のデータ ストアへのデータの移動のみに対応しており、他のデータ ストアから Web テーブルにデータを移動することはできません。
 
-> [!NOTE]
+> [!IMPORTANT]
 > この Web コネクタは、現在、HTML ページからのテーブル コンテンツの抽出のみをサポートしています。 HTTP エンドポイントからデータを取得するには、代わりに [HTTP コネクタ](data-factory-http-connector.md)を使用します。
 
 ## <a name="getting-started"></a>使用の開始

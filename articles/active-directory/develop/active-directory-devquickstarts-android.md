@@ -13,7 +13,7 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: brandwe
+ms.author: xerners
 translationtype: Human Translation
 ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
 ms.openlocfilehash: 9ae8852c02361ff11c302f86cb5c53e01a48068a

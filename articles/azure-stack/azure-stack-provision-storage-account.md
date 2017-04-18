@@ -15,16 +15,16 @@ ms.topic: get-started-article
 ms.date: 3/1/2017
 ms.author: erikje
 translationtype: Human Translation
-ms.sourcegitcommit: 9b40e9e41982ca2f720c4b965f975846598812f1
-ms.openlocfilehash: b5e6d0d150ba70bcad2126ebff050e4850cad482
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 1a0e04d3a5d4c90484c9323097daf1a84c29d6ba
+ms.lasthandoff: 04/06/2017
 
 
 ---
 # <a name="storage-accounts-in-azure-stack"></a>Storage accounts in Azure Stack
 Storage accounts include Blob and Table services, and the unique namespace for your storage data objects. By default, the data in your account is available only to you, the storage account owner.
 
-1. On the Azure Stack POC computer, log in to `https://portal.local.azurestack.external` as [an admin](azure-stack-connect-azure-stack.md), and then click **New** > **Data + Storage** > **Storage account**.
+1. On the Azure Stack POC computer, log in to `https://adminportal.local.azurestack.external` as [an admin](azure-stack-connect-azure-stack.md), and then click **New** > **Data + Storage** > **Storage account**.
 
    ![](media/azure-stack-provision-storage-account/image01.png)
 2. In the **Create storage account** blade, type a name for your storage account. Create a new **Resource Group**, or select an existing one, then click **Create** to create the storage account.

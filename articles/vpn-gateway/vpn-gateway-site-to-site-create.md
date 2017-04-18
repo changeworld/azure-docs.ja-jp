@@ -13,16 +13,23 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 04/11/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 9df9d10d436ac56c881c9547f3095b630d4cb97f
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: ff70484dff03a44d23d2cf34ce115fd57c4b0390
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="create-a-vnet-with-a-site-to-site-connection-using-the-classic-portal"></a>クラシック ポータルを使用してサイト間接続を備えた VNet を作成する
+
+サイト間 (S2S) VPN ゲートウェイ接続とは、IPsec/IKE (IKEv1 または IKEv2) VPN トンネルを介した接続です。 この種類の接続では、オンプレミスの VPN デバイスが必要です。そのデバイスは、パブリック IP アドレスを割り当てられていて、NAT の内側に配置されていない必要があります。 サイト間接続は、クロスプレミスおよびハイブリッド構成に使用できます。
+
+![クロスプレミスのサイト間 VPN Gateway 接続の図](./media/vpn-gateway-site-to-site-create/site-to-site-connection-diagram.png)
+
+この記事では、クラシック デプロイメント モデルとクラシック ポータルを使用して、仮想ネットワークと、オンプレミス ネットワークに対するサイト間 VPN ゲートウェイ接続を作成する手順について説明します。 サイト間接続は、クロスプレミスおよびハイブリッド構成に使用できます。 Resource Manager デプロイメント モデルでは、次のリストから別の方法を選択して、この構成を作成することもできます。
+
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [Resource Manager - PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
@@ -31,22 +38,14 @@ ms.lasthandoff: 03/17/2017
 >
 >
 
-この記事では、クラシック デプロイメント モデルとクラシック ポータルを使用して、仮想ネットワークと、オンプレミス ネットワークに対するサイト間 VPN ゲートウェイ接続を作成する手順について説明します。 サイト間接続は、クロスプレミスおよびハイブリッド構成に使用できます。
-
-![クロスプレミスのサイト間 VPN Gateway 接続の図](./media/vpn-gateway-site-to-site-create/site-to-site-connection-diagram.png)
-
-### <a name="deployment-models-and-methods-for-site-to-site-connections"></a>サイト間接続のデプロイメント モデルとデプロイ方法
-[!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
-
-以下の表は、サイト間の構成に関して現在利用できるデプロイメント モデルとデプロイ方法を示しています。 構成手順を説明した記事が利用できるようになったら、表から直接リンクできるようにします。
-
-[!INCLUDE [vpn-gateway-table-site-to-site-table](../../includes/vpn-gateway-table-site-to-site-include.md)]
-
 #### <a name="additional-configurations"></a>追加の構成
 VNet どうしを接続する場合は、「 [クラシック デプロイメント モデルで VNet 対 VNet 接続を構成する](virtual-networks-configure-vnet-to-vnet-connection.md)」を参照してください。 既存の接続が存在する VNet にサイト間接続を追加する場合は、[VPN Gateway 接続が既に存在する VNet へのサイト間接続の追加](vpn-gateway-multi-site.md)に関するページを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
-構成を開始する前に、以下がそろっていることを確認します。
+
+[!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
+
+構成を開始する前に、以下が揃っていることを確認します。
 
 * 互換性のある VPN デバイスおよびデバイスを構成できる人員。 「 [VPN デバイスについて](vpn-gateway-about-vpn-devices.md)」を参照してください。 VPN デバイスの構成に詳しくない場合や、オンプレミス ネットワーク構成の IP アドレス範囲を把握していない場合は、詳細な情報を把握している担当者と協力して作業を行ってください。
 * VPN デバイスの外部接続用パブリック IP アドレス。 この IP アドレスを NAT の内側に割り当てることはできません。

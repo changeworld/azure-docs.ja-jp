@@ -50,7 +50,7 @@ CloudPassage と Azure AD の統合を構成するには、次のものが必要
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルの目的は、テスト環境で Azure AD の SSO をテストできるようにすることです。  
 
-このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの CloudPassage の追加 
 2. Azure AD SSO の構成とテスト
@@ -142,7 +142,7 @@ CloudPassage アプリケーションでは、特定の形式の SAML アサー�
   6. **[保存]**をクリックします。
 
 
-1. Azure AD クラシック ポータルで、[single sign-on configuration confirmation] (シングル サインオンの構成の確認) を選択し、 **[次へ]**をクリックします。 
+1. Azure AD クラシック ポータルで、[single sign-on configuration confirmation] \(シングル サインオンの構成の確認) を選択し、 **[次へ]**をクリックします。 
    
     ![Configure Single Sign-On][15]
 2. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。 

@@ -47,6 +47,7 @@
 ### [ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md)
 
 ### [Azure AD Sync のサービス アカウント パスワードの変更](active-directory-aadconnectsync-change-serviceacct-pass.md)
+### [AD DS アカウントのパスワードの変更](active-directory-aadconnectsync-change-addsacct-pass.md)
 ### [AD のごみ箱の有効化](active-directory-aadconnectsync-recycle-bin.md)
 
 ### [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md)
@@ -58,6 +59,7 @@
 
 ## フェデレーション サービスを管理する
 ### [管理およびカスタマイズする](active-directory-aadconnect-federation-management.md)
+### [Azure AD の複数のインスタンスと AD FS の単一インスタンスのフェデレーションを行う](active-directory-aadconnectfed-single-adfs-multitenant-federation.md)
 
 
 ## トラブルシューティング

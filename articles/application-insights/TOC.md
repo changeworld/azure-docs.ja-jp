@@ -30,7 +30,6 @@
 # 方法
 ## 計画と設計
 ### [Web アプリおよびサービスの詳細な診断](app-insights-devops.md)
-### [Application Insights と HockeyApp による開発者分析](app-insights-developer-analytics.md)
 ### [Web アプリケーションのパフォーマンスを監視する](app-insights-web-monitor-performance.md)
 ### [Application Insights による利用状況分析](app-insights-overview-usage.md)
 ### [Application Insights リソースの分離](app-insights-separate-resources.md)
@@ -39,6 +38,7 @@
 
 ## 構成
 ### Azure
+#### [プロファイラー](app-insights-profiler.md)
 #### [診断](app-insights-azure-diagnostics.md)
 
 ### ASP.NET
@@ -139,11 +139,6 @@
 
 ## [料金](https://azure.microsoft.com/pricing/details/application-insights/)  
 
-## [サンプルとチュートリアル](app-insights-code-samples.md)
-### [チュートリアル: Microsoft Dynamics CRM Online のテレメトリを有効にする](app-insights-sample-mscrm.md)
-### [チュートリアル: Stream Analytics を使用して SQL にエクスポートする](app-insights-code-sample-export-sql-stream-analytics.md)
-### [コード サンプル: エクスポートされたデータを解析する](app-insights-code-sample-export-telemetry-sql-database.md)
-
 ## ニュース
 
 ### [ブログ](https://azure.microsoft.com/blog/tag/application-insights/)
@@ -156,7 +151,7 @@
 ### [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=ApplicationInsights)  
 ### [Stack Overflow](http://stackoverflow.com/questions/tagged/az-application-insights)
 ### [ユーザーの声](https://visualstudio.uservoice.com/forums/357324-application-insights)
-### [サポート](app-insights-get-dev-support.md)
+### [サポート](https://azure.microsoft.com/support/)
 
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=application-insights)
 

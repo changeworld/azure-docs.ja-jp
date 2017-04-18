@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/07/2016
 ms.author: alfredop
 translationtype: Human Translation
-ms.sourcegitcommit: 65be2ee2e9dd4a6e9db8033cdb06cc349b786704
-ms.openlocfilehash: 900dee1404d1c4edf6a3491bb0dde2fe971bda73
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: bf586662d682b43538e74c08f960600a6bd3df4d
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -68,8 +69,7 @@ To see a delegated provider at work, you need additional Azure Active Directory 
    b.  [Create an offer](azure-stack-create-offer.md)
        based on this plan. In this article, we use an offer called OfferToDP.
    
-   c.  Once the creation of the offer is complete, add the user ID of   
-       the delegated provider as a tenant for this offer by clicking     **Subscriptions** &gt; **Add** &gt; **New Tenant Subscription**.
+   c.  Once the creation of the offer is complete, add the delegated provider as a subscriber to this offer by clicking     **Subscriptions** &gt; **Add** &gt; **New Tenant Subscription**.
    
    ![](media/azure-stack-delegated-provider/image3.png)
 
@@ -141,10 +141,5 @@ To create multiple tiers of offer delegation, the delegated provider in turn del
 
 ## <a name="next-steps"></a>Next steps
 [Provision a VM](azure-stack-provision-vm.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

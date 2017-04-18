@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/03/2017
+ms.date: 04/11/2017
 ms.author: yushwang;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: ab0a0ecba9d9e930cbc0ec5d4b83e252d2e50f7b
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 03ba7f0df69da073fd876fc4c06121952e594a02
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -33,7 +33,7 @@ VPN ゲートウェイを使用する Site-to-Site (S2S) クロスプレミス V
 
 ###<a name="items-to-note-when-viewing-the-tables"></a>表を確認するときの注意事項:
 
-* Azure VPN ゲートウェイ関連の用語が変更されています。 おそらく、両方の用語が見つかるでしょう。 機能上の変更はありませんが、名前のみが変更されています。
+* Azure VPN ゲートウェイ関連の用語が変更されています。 機能上の変更はありませんが、名前のみが変更されています。
   * 静的ルーティング = PolicyBased
   * 動的ルーティング = RouteBased
 * 高性能 VPN ゲートウェイと RouteBased VPN ゲートウェイの仕様は、特に記載がない限り同じです。 たとえば、RouteBased VPN ゲートウェイと互換性がある検証済みの VPN デバイスは、Azure 高性能 VPN ゲートウェイとも互換性があります。
@@ -45,7 +45,7 @@ VPN ゲートウェイを使用する Site-to-Site (S2S) クロスプレミス V
 ## <a name="devicetable"></a>検証済みの VPN デバイス
 Microsoft では、デバイス ベンダーと協力して一連の標準的な VPN デバイスを検証しました。 以下の一覧に含まれているデバイス ファミリ内のすべてのデバイスは、Azure VPN ゲートウェイで動作します。 「 [VPN Gateway について](vpn-gateway-about-vpngateways.md) 」を参照して、構成するソリューションで作成する必要があるゲートウェイの種類を確認してください。
 
-VPN デバイスを構成するには、適切なデバイス ファミリに対応するリンクを参照してください。 VPN デバイスのサポートについては、デバイスの製造元に問い合わせてください。
+VPN デバイスを構成するには、適切なデバイス ファミリに対応するリンクを参照してください。  構成方法へのリンクは、入手できる範囲で記載しています。 VPN デバイスのサポートについては、デバイスの製造元に問い合わせてください。
 
 |**ベンダー名**          |**デバイス ファミリ**     |**OS の最小バージョン** |**PolicyBased** |**RouteBased** |
 | ---                | ---                  | ---                   | ---            | ---           |
@@ -59,7 +59,6 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | Cisco |ASR |PolicyBased: IOS 15.1<br>RouteBased: IOS 15.2 |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |
 | Cisco |ISR |PolicyBased: IOS 15.0<br>RouteBased*: IOS 15.1 |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |[構成のサンプル*](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
 | Citrix |NetScaler MPX、SDX、VPX |10.1 以上 |[構成ガイド](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |互換性なし |
-| Dell SonicWALL |TZ シリーズ、NSA シリーズ<br>SuperMassive シリーズ<br>E-class NSA シリーズ |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |[SonicOS 6.2 の構成ガイド](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646)<br>[SonicOS 5.9 の構成ガイド](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |[SonicOS 6.2 の構成ガイド](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646)<br>[SonicOS 5.9 の構成ガイド](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |
 | F5 |BIG-IP シリーズ |12.0 |[構成ガイド](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[構成ガイド](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
 | Fortinet |FortiGate |FortiOS 5.4.2 |[構成ガイド](http://cookbook.fortinet.com/ipsec-vpn-microsoft-azure-54) |[構成ガイド](http://cookbook.fortinet.com/ipsec-vpn-microsoft-azure-54) |
 | Internet Initiative Japan (IIJ) |SEIL シリーズ |SEIL/X 4.60<br>SEIL/B1 4.60<br>SEIL/x86 3.20 |[構成ガイド](http://www.iij.ad.jp/biz/seil/ConfigAzureSEILVPN.pdf) |互換性なし |
@@ -71,6 +70,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | Open Systems AG |Mission Control Security Gateway |該当なし |[構成ガイド](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |[構成ガイド](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |
 | Openswan |Openswan |2.6.32 |(近日対応予定) |互換性なし |
 | Palo Alto Networks |PAN-OS を実行しているすべてのデバイス |PAN-OS<br>PolicyBased: 6.1.5 以降<br>RouteBased: 7.1.4 |[構成ガイド](https://live.paloaltonetworks.com/t5/Configuration-Articles/How-to-Configure-VPN-Tunnel-Between-a-Palo-Alto-Networks/ta-p/59065) |[構成ガイド](https://live.paloaltonetworks.com/t5/Integration-Articles/Configuring-IKEv2-VPN-for-Microsoft-Azure-Environment/ta-p/60340) |
+| SonicWall |TZ シリーズ、NSA シリーズ<br>SuperMassive シリーズ<br>E-class NSA シリーズ |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |[SonicOS 6.2 の構成ガイド](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646)<br>[SonicOS 5.9 の構成ガイド](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |[SonicOS 6.2 の構成ガイド](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646)<br>[SonicOS 5.9 の構成ガイド](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |
 | WatchGuard |すべて |Fireware XTM<br> PolicyBased: v11.11.x<br>RouteBased: v11.12.x |[構成ガイド](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[構成ガイド](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
 
 (*) ISR 7200 シリーズのルーターは、PolicyBased の VPN だけをサポートしています。
@@ -100,11 +100,11 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | &lt;SP_AzureGatewayIpAddress&gt; |この情報は仮想ネットワークに固有であり、 **ゲートウェイの IP アドレス**として管理ポータルに存在しています。 |
 | &lt;SP_PresharedKey&gt; |この情報は仮想ネットワークに固有であり、[キーの管理] として管理ポータルに存在しています。 |
 
-## <a name="IPSec"></a>IPsec/IKE パラメーター
+## <a name="ipsec"></a>IPsec/IKE パラメーター
 > [!NOTE]
-> 以下の表に記載した値は Azure VPN Gateway でサポートされていますが、Azure VPN Gateway の特定のアルゴリズムやパラメーターの組み合わせを指定 (または選択) する機構は現在ありません。 すべての制約は、オンプレミスの VPN デバイスから指定する必要があります。
+> 以下の表に記載した値は Azure VPN Gateway でサポートされていますが、Azure VPN Gateway の特定のアルゴリズムやパラメーターの組み合わせを指定 (または選択) する機構は現在ありません。 すべての制約は、オンプレミスの VPN デバイスから指定する必要があります。 また、**MSS** は **1350** で固定する必要があります。
 > 
-> また、**MSS** は **1350** で固定する必要があります。
+>
 
 以下の表で使われている用語について:
 
@@ -182,6 +182,8 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 
 > [!IMPORTANT]
 > この内容は、サード パーティの VPN デバイスと Azure VPN ゲートウェイの互換性に関する既知の問題です。 Azure チームは、ここに記載されている問題に対処するためにベンダーと積極的に連携しています。 問題が解決されると、このページが最新の情報で更新されるため、 定期的に確認してください。
+>
+>
 
 ###<a name="feb-16-2017"></a>2017 年 2 月 16 日
 

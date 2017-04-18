@@ -15,16 +15,16 @@ ms.topic: get-started-article
 ms.date: 3/1/2017
 ms.author: erikje
 translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: e662baf863082b0d99430a79e5bd0546cc4b8bd3
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 02c7fac4607685db8a3a1507fc604274720b0913
+ms.lasthandoff: 04/06/2017
 
 
 ---
 # <a name="subscribe-to-an-offer"></a>Subscribe to an offer
 Now that you've [created an offer](azure-stack-create-offer.md), test that your tenants can create a subscription.
 
-1. On the Azure Stack POC computer, log in to `https://publicportal.local.azurestack.external` as [a tenant](azure-stack-connect-azure-stack.md) and click **Get a Subscription**.
+1. On the Azure Stack POC computer, log in to `https://portal.local.azurestack.external` as [a tenant](azure-stack-connect-azure-stack.md) and click **Get a Subscription**.
 
    ![](media/azure-stack-subscribe-plan-provision-vm/image01.png)
 2. In the **Display Name** field, type a name for your subscription, click **Offer**, click one of the offers in the **Choose an offer** blade, and then click **Create**.

@@ -1,16 +1,17 @@
 # 概要
 ## [Azure Automation とは](automation-intro.md)
 # 作業開始
-## [Runbook を作成する](automation-first-runbook-graphical.md)
-## [初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md)
-## [PowerShell Workflow Runbook を作成する](automation-first-runbook-textual.md)
-## [ロールベースのアクセス制御を管理する](automation-role-based-access-control.md)
+## Runbook のチュートリアル
+### [グラフィカル Runbook を作成する](automation-first-runbook-graphical.md)
+### [初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md)
+### [PowerShell Workflow Runbook を作成する](automation-first-runbook-textual.md)
 # 方法
-## 認証の設定
+## 認証とセキュリティ
 ### [Azure Automation での認証](automation-security-overview.md)
-### [Azure 実行アカウント](automation-sec-configure-azure-runas-account.md)
-### [Azure サービス管理と Resource Manager](automation-sec-configure-aduser-account.md)
-### [Amazon Web Services](automation-sec-configure-aws-account.md)
+### [Azure 実行アカウントの構成](automation-sec-configure-azure-runas-account.md)
+### [Azure AD ユーザー アカウントの構成](automation-sec-configure-aduser-account.md)
+### [AWS を使った認証の構成](automation-sec-configure-aws-account.md)
+### [ロールベースのアクセス制御を管理する](automation-role-based-access-control.md)
 ## Runbook を作成する
 ### [Runbook の種類](automation-runbook-types.md)
 ### [Runbook を作成およびインポートする](automation-creating-importing-runbook.md)

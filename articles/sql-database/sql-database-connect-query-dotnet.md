@@ -1,6 +1,6 @@
 ---
 title: ".NET (C#) を使用した Azure SQL Database への接続 | Microsoft Docs"
-description: "このクイック スタートのコード サンプルを使用して、C# で最新のアプリケーションを構築し、Azure SQL Database を使用してクラウドの強力なリレーショナル データベースでバックアップします。"
+description: "Azure SQL Database への接続とデータの照会に使用できる .NET コード サンプルについて説明します。"
 services: sql-database
 documentationcenter: 
 author: ajlam
@@ -8,37 +8,42 @@ manager: jhubbard
 editor: 
 ms.assetid: 7faca033-24b4-4f64-9301-b4de41e73dfd
 ms.service: sql-database
-ms.custom: quick start
+ms.custom: quick start connect
 ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 03/28/2017
+ms.date: 04/05/2017
 ms.author: andrela;sstein;carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: c6c0c218b8d0456d37a4514238675fd8e75faf9d
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: c36c3a3f651bcee38b953b12e48cab8d93a34207
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="azure-sql-database-use-net-c-to-connect-and-query-data"></a>Azure SQL Database: .NET (C#) を使って接続とデータの照会を行う
 
-[C# と ADO.NET](https://msdn.microsoft.com/library/kb9s9ks0.aspx) を使用して Azure SQL データベースに接続し、クエリを実行します。 このガイドでは、C# を使用して Azure SQL データベースに接続し、照会、挿入、更新、削除の各ステートメントを実行する方法について詳しく説明します。
+このクイック スタートでは、Windows、Mac OS、Ubuntu Linux の各プラットフォームから [C# と ADO.NET](https://msdn.microsoft.com/library/kb9s9ks0.aspx) を使って Azure SQL データベースに接続し、Transact-SQL ステートメントを使ってデータベース内のデータを照会、挿入、更新、削除する方法について説明します。
 
 このクイック スタートでは、次のクイック スタートで作成されたリソースが出発点として使用されます。
 
 - [DB の作成 - ポータル](sql-database-get-started-portal.md)
 - [DB の作成 - CLI](sql-database-get-started-cli.md)
 
-## <a name="configure-development-environment"></a>開発環境の設定
+## <a name="install-net"></a>.NET のインストール
 
-次のセクションでは、既存の Mac OS、Linux (Ubuntu)、Windows 開発環境で Azure SQL Database を使用できるように設定する方法について説明します。
+### <a name="windows-net-framework-and-net-core"></a>**Windows .NET Framework と .NET Core**
+
+Visual Studio 2017 Community は、さまざまな機能が用意された、拡張可能な無料の IDE です。Web およびデータベース アプリケーションやクラウド サービスだけでなく、Android、iOS、Windows 向けの最新のアプリケーションの作成に使用できます。 完全な .NET Framework をインストールすることも、.NET Core だけをインストールすることもできます。 どちらの場合も、このクイック スタートのコード スニペットは正しく動作します。 既にコンピューターに Visual Studio がインストールされている場合、次のいくつかの手順はスキップします。
+
+1. [インストーラー](https://go.microsoft.com/fwlink/?LinkId=691978)をダウンロードします。 
+2. インストーラーを実行し、表示されるインストールの指示に従って、インストールを完了します。
 
 ### <a name="mac-os"></a>**Mac OS**
 ターミナルを開き、.NET Core プロジェクトの作成先となるディレクトリに移動します。 次のコマンドを入力して、**brew**、**OpenSSL**、**.NET Core** をインストールします。 
 
-```C#
+```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew update
 brew install openssl
@@ -52,20 +57,12 @@ macOS では、.NET Core をインストールします。 [公式インスト�
 ### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
 ターミナルを開き、.NET Core プロジェクトの作成先となるディレクトリに移動します。 次のコマンドを入力して、**.NET Core** をインストールします。
 
-```C#
+```bash
 sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
 sudo apt-get update
 sudo apt-get install dotnet-dev-1.0.1
 ```
-
-### <a name="windows"></a>**Windows**
-Visual Studio 2015 Community エディションと .NET Framework をインストールします。 既にコンピューターに Visual Studio がインストールされている場合、次のいくつかの手順はスキップします。
-
-Visual Studio 2015 Community は、さまざまな機能が用意された、拡張可能な無料の IDE です。Web およびデータベース アプリケーションやクラウド サービスだけでなく、Android、iOS、Windows 向けの最新のアプリケーションの作成に使用できます。
-
-1. [インストーラー](https://go.microsoft.com/fwlink/?LinkId=691978)をダウンロードします。 
-2. インストーラーを実行し、表示されるインストールの指示に従って、インストールを完了します。
 
 ## <a name="get-connection-information"></a>接続情報の取得
 
@@ -309,5 +306,11 @@ namespace ConsoleApplication1
 ## <a name="next-steps"></a>次のステップ
 
 - .NET のドキュメントについては、「[.NET ドキュメント](https://docs.microsoft.com/dotnet/)」を参照してください。
-- Visual Studio Code を使用したデータの照会と編集については、[Visual Studio Code](https://code.visualstudio.com/docs) に関するページを参照してください。
+- SQL Server Management Studio を使用して接続とクエリを実行するには、[SSMS を使用した接続とクエリ](sql-database-connect-query-ssms.md)に関するページを参照してください。
+- Visual Studio を使用して接続とデータの照会を行うには、[Visual Studio Code を使った接続とデータの照会](sql-database-connect-query-vscode.md)に関するページを参照してください。
+- PHP を使用して接続とデータの照会を行うには、[PHP を使った接続とデータの照会](sql-database-connect-query-php.md)に関するページを参照してください。
+- Node.js を使用して接続とデータの照会を行うには、[Node.js を使った接続とデータの照会](sql-database-connect-query-nodejs.md)に関するページを参照してください。
+- Java を使用して接続とデータの照会を行うには、[Java を使った接続とデータの照会](sql-database-connect-query-java.md)に関するページを参照してください。
+- Python を使用して接続とデータの照会を行うには、[Python を使った接続とデータの照会](sql-database-connect-query-python.md)に関するページを参照してください。
+- Ruby を使用して接続とデータの照会を行うには、[Ruby を使った接続とデータの照会](sql-database-connect-query-ruby.md)に関するページを参照してください。
 

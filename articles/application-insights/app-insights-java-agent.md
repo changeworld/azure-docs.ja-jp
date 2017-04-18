@@ -16,6 +16,7 @@ ms.author: awills
 translationtype: Human Translation
 ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
 ms.openlocfilehash: a481c7c62383c92a5dfab0e3f2b1b4f4f0e5ddf5
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -111,10 +112,4 @@ Application Insights リソースでは、集計されたリモートの依存�
 [java]: app-insights-java-get-started.md
 [javalogs]: app-insights-java-trace-logs.md
 [metrics]: app-insights-metrics-explorer.md
-[usage]: app-insights-web-track-usage.md
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

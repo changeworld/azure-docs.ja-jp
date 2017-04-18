@@ -1,4 +1,4 @@
-ストレージ アカウント内のリソースへのアクセスを許可する Shared Access Signature (SAS) の URL を所有している場合は、その SAS を接続文字列の中で使用できます。 SAS では、要求を認証するために必要な情報が URI に追加されます。リソースにアクセスするために必要な資格情報、サービス エンドポイント、プロトコルは、SAS の URI によって得られます。
+ストレージ アカウント内のリソースへのアクセスを許可する Shared Access Signature (SAS) の URL を所有している場合は、その SAS を接続文字列の中で使用できます。 要求を認証するために必要な情報は SAS に保持されているため、リソースにアクセスするために必要な資格情報、サービス エンドポイント、プロトコルが、SAS を含んだ接続文字列によって得られます。
 
 共有アクセス署名を含む接続文字列を作成するには、文字列を次の形式で指定します。
 
@@ -23,13 +23,15 @@ SharedAccessSignature=sasToken
 Blob Storage のサービス SAS を含んだ接続文字列の例を次に示します。
 
 ```
-BlobEndpoint=https://storagesample.blob.core.windows.net;SharedAccessSignature=sv=2015-04-05&sr=b&si=tutorial-policy-635959936145100803&sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D
+BlobEndpoint=https://storagesample.blob.core.windows.net;
+SharedAccessSignature=sv=2015-04-05&sr=b&si=tutorial-policy-635959936145100803&sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D
 ```
 
 そしてこちらが、同じ接続文字列に特殊文字のエンコードを適用した例です。
 
 ```
-BlobEndpoint=https://storagesample.blob.core.windows.net;SharedAccessSignature=sv=2015-04-05&amp;sr=b&amp;si=tutorial-policy-635959936145100803&amp;sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D
+BlobEndpoint=https://storagesample.blob.core.windows.net;
+SharedAccessSignature=sv=2015-04-05&amp;sr=b&amp;si=tutorial-policy-635959936145100803&amp;sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D
 ```
 
 ### <a name="account-sas-example"></a>アカウント SAS の例

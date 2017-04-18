@@ -39,6 +39,8 @@
     href: azure-vm-network-overview.md
   - name: "VM スケール セット"
     href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md
+  - name: "インスタンス メタデータ サービス" 
+    href: ../virtual-machines-instancemetadataservice-overview.md
   - name: "コンテナー"
     href: containers.md
   - name: "リソース マネージャー"

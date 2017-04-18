@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/16/2017
+ms.date: 4/7/2017
 ms.author: helaw
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 3e9b02cf5f4dedd8e8e2a59025187604ab9963df
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 3ac5daa019beb7bada3a3a76e48387cd84ff0662
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -25,16 +25,17 @@ ms.lasthandoff: 03/17/2017
 This release provides new features for both tenants and administrators.
 
 ## <a name="content-services-and-tools"></a>Content, services, and tools
-* Active Directory Federation Services (AD FS) support provides identity options for scenarios where network connectivity is limited or intermittent.
-* You can use Azure Virtual Machine Scale Sets to provide managed scale out of workloads.
+* [Active Directory Federation Services (AD FS)](azure-stack-key-features.md#identity) support provides identity options for scenarios where network connectivity is limited or intermittent.
+* You can use Azure Virtual Machine Scale Sets to provide managed scale-out and scale-in of IaaS VM-based workloads. 
 * Use Azure D-Series VM sizes for increased performance and consistency.
 * Deploy and create templates with Temp Disks that are consistent with Azure.
-* Marketplace Syndication allows you to use content from the Azure Marketplace and make available in Azure Stack.
+* [Marketplace Syndication](azure-stack-download-azure-marketplace-item.md) allows you to use content from the Azure Marketplace and make available in Azure Stack.
 
 ## <a name="infrastructure-and-operations"></a>Infrastructure and operations
-* Isolated administrator and user portals and APIs provide enhanced security.
+* Isolated administrator and user [portals](azure-stack-manage-portals.md) and APIs provide enhanced security.
 * Use enhanced infrastructure management functionality, such as improved alerting.
-* Using the Windows Azure Pack Connector, you can view and manage IaaS virtual machines that are hosted on Windows Azure Pack. For this preview release, try this only in test environments (both Windows Azure Pack and Azure Stack). Additional configuration is required.
+* Using the [Windows Azure Pack Connector](azure-stack-manage-windows-azure-pack.md), you can view and manage IaaS virtual machines that are hosted on Windows Azure Pack. For this preview release, try this scenario only in test environments (both Windows Azure Pack and Azure Stack). Additional configuration is required.
+* Azure Stack now supports multi-tenancy for scenarios where you need to provide IaaS and PaaS services to users outside of your Azure Active Directory domain.  For example, you may want to provide Azure Stack services to a partner company using their identities. You can configure Azure Stack to trust the other organization's identities, and enable users from that organization to sign up for subscriptions and consume services.  
 
 ## <a name="next-steps"></a>Next steps
 * [Understand Azure Stack POC architecture](azure-stack-architecture.md)      

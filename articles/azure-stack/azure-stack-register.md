@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/07/2017
 ms.author: erikje
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 8455b8b6b7b82fc9d51b22fb32bf70cb88eae694
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 0db4463625c63f24c1547aa65d4255d1bc641bc0
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -38,7 +38,7 @@ Before registering Azure Stack with Azure, you must have:
 - The username and password for an account that is an owner for the subscription (Hotmail.com, live.com domains and 2FA accounts are not supported)
 - The AAD directory for the Azure subscription. You can find this directory in Azure by hovering over your avatar at the top right corner of the Azure portal. 
 
-If you don’t have an Azure subscription that meets these requirements, you can [create a free Azure account here](https://azure.microsoft.com/en-us/free/?b=17.06). Registering Azure Stack incurs not cost on your Azure subscription.
+If you don’t have an Azure subscription that meets these requirements, you can [create a free Azure account here](https://azure.microsoft.com/en-us/free/?b=17.06). Registering Azure Stack incurs no cost on your Azure subscription.
 
 
 
@@ -53,16 +53,18 @@ If you don’t have an Azure subscription that meets these requirements, you can
 2. [Install PowerShell for Azure Stack](azure-stack-powershell-install.md). 
 3. Copy the [RegisterWithAzure.ps1 script](https://go.microsoft.com/fwlink/?linkid=842959) to a folder (such as C:\Temp).
 4. Start PowerShell ISE as an administrator.
-5. Run the RegisterWithAzure.ps1 script. Make sure to change the values for *YourAccountName* (the owner of the Azure subscription), *YourGUID*, and *YourDirectory* to match your Azure subscription.
+5. Run the RegisterWithAzure.ps1 script. Make sure to change the values for *YourAccountName* (the owner of the Azure subscription), *YourID*, and *YourDirectory* to match your Azure subscription.
 
     ```powershell
-    RegisterWithAzure.ps1 -azureDirectory YourDirectory -azureSubscriptionId YourGUID -azureSubscriptionOwner YourAccountName
+    RegisterWithAzure.ps1 -azureDirectory YourDirectory -azureSubscriptionId YourID -azureSubscriptionOwner YourAccountName
     ```
     
     For example:
     
     ```powershell
-    C:\temp\RegisterWithAzure.ps1 -azureDirectory contoso.onmicrosoft.com -azureSubscriptionId 5c15413c-1135-479b-a046-857e1ef9fbeb -azureSubscriptionOwner serviceadmin@contoso.onmicrosoft.com     
+    C:\temp\RegisterWithAzure.ps1 -azureDirectory contoso.onmicrosoft.com ` 
+    -azureSubscriptionId 5c15413c-1135-479b-a046-857e1ef9fbeb ` 
+    -azureSubscriptionOwner serviceadmin@contoso.onmicrosoft.com     
     ```
     
 6. At the two prompts, press Enter.

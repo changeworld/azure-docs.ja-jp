@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/17/2017
+ms.date: 04/11/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
-ms.openlocfilehash: 733c151012e3d896f720fbc64120432aca594bda
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 0664888dbb14aaa353d5d126cdf799b62711d71f
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -106,9 +106,9 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
     ```PowerShell
     $azureAdApplication    
     ```
-    アプリケーション ID (出力の**applicationID** ) をメモします。
+    出力のアプリケーション ID (applicationID) をメモします。
 
-これらの手順で、次の&4; つの値がわかりました。
+これらの手順で、次の 4 つの値がわかりました。
 
 * テナント ID
 * サブスクリプション ID
@@ -184,7 +184,7 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
    > [!IMPORTANT]
    > **resourceGroupName** の値を、使用する Azure リソース グループの名前で置き換えます。
    >
-   > データ ファクトリの名前 (**dataFactoryName**) が一意になるように更新します。 データ ファクトリの名前はグローバルに一意にする必要があります。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。
+   > データ ファクトリの名前 (dataFactoryName) が一意になるように更新します。 データ ファクトリの名前はグローバルに一意にする必要があります。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。
 
 7. **データ ファクトリ**を作成する次のコードを **Main** メソッドに追加します。
 
@@ -473,9 +473,9 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
     }
     ```
 
-15. ソリューション エクスプローラーで、プロジェクト (**DataFactoryAPITestApp**) を展開し、**[参照]** を右クリックして **[参照の追加]** をクリックします。 "**System.Configuration**" アセンブリのチェック ボックスをオンにして、**[OK]** をクリックします。
+15. ソリューション エクスプローラーで、プロジェクト (DataFactoryAPITestApp) を展開し、**[参照]** を右クリックして **[参照の追加]** をクリックします。 "**System.Configuration**" アセンブリのチェック ボックスをオンにします。 **[OK]** をクリックします。
 16. コンソール アプリケーションをビルドします。 メニューから **[ビルド]** をクリックし、**[ソリューションのビルド]** をクリックします。
-17. Azure BLOB ストレージ内の **adftutorial** コンテナーに少なくとも&1; つのファイルが存在することを確認します。 存在しない場合は、以下の内容を記述した **Emp.txt** ファイルをメモ帳で作成し、adftutorial コンテナーにアップロードします。
+17. Azure BLOB ストレージ内の **adftutorial** コンテナーに少なくとも 1 つのファイルが存在することを確認します。 存在しない場合は、以下の内容を記述した **Emp.txt** ファイルをメモ帳で作成し、adftutorial コンテナーにアップロードします。
 
     ```
     John, Doe
@@ -486,7 +486,7 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
    * リンクされたサービス: **LinkedService_AzureStorage**
    * データセット: **DatasetBlobSource** と **DatasetBlobDestination**
    * パイプライン: **PipelineBlobSample**
-20. 指定した Azure SQL データベースの "**emp**" テーブルに&2; つの従業員レコードが作成されることを確認します。
+20. 指定した Azure SQL データベースの **emp** テーブルに 2 つの従業員レコードが作成されることを確認します。
 
 ## <a name="next-steps"></a>次のステップ
 | トピック | 説明 |

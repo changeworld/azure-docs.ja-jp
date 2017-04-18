@@ -13,43 +13,39 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/27/2017
+ms.date: 04/11/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: c80ddbaf8c2c84735564e514ddaf4308c4aff303
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 4133e2e90f51d141044f2ac064c60df1263b498e
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="configure-a-vnet-to-vnet-connection-using-the-azure-portal"></a>Azure Portal を使用した VNet 間接続の構成
+
+仮想ネットワークどうし (VNet 間) の接続は、VNet をオンプレミス サイトの場所に接続することと似ています。 どちらの接続タイプでも、VPN ゲートウェイを使用して、IPsec/IKE を使った安全なトンネルが確保されます。 マルチサイト接続構成と VNet 間通信を組み合わせることもできます。 そのため、クロスプレミス接続と仮想ネットワーク間接続とを組み合わせたネットワーク トポロジを確立することができます。
+
+![v2v diagram](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/v2vrmps.png)
+
+この記事では、VPN Gateway と Azure Portal を使用して Resource Manager デプロイメント モデルで VNet 間の接続を作成する手順について説明します。 Azure Portal を使用して仮想ネットワーク間を接続する場合、各 VNet は同じサブスクリプションに属していることが必要です。 各仮想ネットワークが異なるサブスクリプションに属している場合でも、[PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) を使用した手順で接続することが可能です。
+
+[!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)] 別のデプロイメント モデルを使って VNet 間接続を作成したい場合や、異なるデプロイメント モデル間で VNet 間接続を作成したい場合、または別のデプロイ ツールを使用したい場合は、次のドロップダウン リストから目的の記事を選択してください。
+
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [Resource Manager - PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [クラシック - Azure Portal](vpn-gateway-howto-vnet-vnet-portal-classic.md)
-> * [クラシック - クラシック ポータル](virtual-networks-configure-vnet-to-vnet-connection.md)
-> 
-> 
-
-この記事では、VPN Gateway と Azure Portal を使用して Resource Manager デプロイメント モデルで VNet 間の接続を作成する手順について説明します。
-
-Azure Portal を使用して仮想ネットワーク間を接続する場合、各 VNet は同じサブスクリプションに属していることが必要です。 各仮想ネットワークが異なるサブスクリプションに属している場合でも、[PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) を使用した手順で接続することが可能です。
-
-![v2v diagram](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/v2vrmps.png)
-
-### <a name="deployment-models-and-methods-for-vnet-to-vnet-connections"></a>VNet 間接続で使用できるデプロイメント モデルとデプロイ方法
-[!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
-
-以下の表は、VNet 間の構成に関して現在利用できるデプロイメント モデルとデプロイ方法を示しています。 構成手順を説明した記事が利用できるようになったら、表から直接リンクできるようにします。
-
-[!INCLUDE [vpn-gateway-table-vnet-vnet](../../includes/vpn-gateway-table-vnet-to-vnet-include.md)]
-
-**VNet ピアリング**
+> * [異なるデプロイメント モデルの接続 - Azure Portal](vpn-gateway-connect-different-deployment-models-portal.md)
+> * [異なるデプロイメント モデルの接続 - PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
+>
+>
 
 [!INCLUDE [vpn-gateway-vnetpeeringlink](../../includes/vpn-gateway-vnetpeeringlink-include.md)]
 
+
 ## <a name="about-vnet-to-vnet-connections"></a>VNet 間接続の概要
-仮想ネットワークどうし (VNet 間) の接続は、VNet をオンプレミス サイトの場所に接続することと似ています。 どちらの接続タイプでも、Azure VPN ゲートウェイを使用し、IPsec/IKE を使った安全なトンネルが確保されます。 接続する VNet は、リージョンやサブスクリプションが異なっていてもかまいません。
+仮想ネットワークどうし (VNet 間) の接続は、VNet をオンプレミス サイトの場所に接続することと似ています。 どちらの接続タイプでも、Azure VPN ゲートウェイを使用し、IPsec/IKE を使った安全なトンネルが確保されます。 接続する VNet は、リージョンやサブスクリプションが異なっていてもかまいません。 対象となる VNet がそれぞれ異なるサブスクリプションに存在する場合、ポータルで接続を作成することはできません。 [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) を使用してください。
 
 マルチサイト構成と VNet 間通信を組み合わせることもできます。 そのため、クロスプレミス接続と仮想ネットワーク間接続を組み合わせたネットワーク トポロジを確立することができます (下図参照)。
 
@@ -144,7 +140,7 @@ VNet 間接続に DNS は不要です。 ただし仮想ネットワークにデ
 [!INCLUDE [vpn-gateway-add-dns-rm-portal](../../includes/vpn-gateway-add-dns-rm-portal-include.md)]
 
 ## <a name="VNetGateway"></a>5.仮想ネットワーク ゲートウェイの作成
-この手順では、VNet の仮想ネットワーク ゲートウェイを作成します。 完了までに最大で 45 分かかることがあります。 練習としてこの構成を作成する場合は、[設定例](#values)を参照してください。
+この手順では、VNet の仮想ネットワーク ゲートウェイを作成します。 選択したゲートウェイ SKU によっては、ゲートウェイの作成に 45 分以上かかる場合も少なくありません。 練習としてこの構成を作成する場合は、[設定例](#values)を参照してください。
 
 ### <a name="to-create-a-virtual-network-gateway"></a>仮想ネットワーク ゲートウェイを作成するには
 [!INCLUDE [vpn-gateway-add-gw-rm-portal](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
@@ -153,7 +149,7 @@ VNet 間接続に DNS は不要です。 ただし仮想ネットワークにデ
 TestVNet1 を構成したら、前の手順を繰り返して TestVNet4 を作成します。使用する値は TestVNet4 の値に置き換えてください。 TestVNet1 の仮想ネットワーク ゲートウェイの作成が完了するまで待つ必要はありません。すぐに TestVNet4 を構成できます。 独自の値を使用する場合は、接続先とするどの VNet ともアドレス空間が重複しないようにしてください。
 
 ## <a name="TestVNet1Connection"></a>7.TestVNet1 の接続の構成
-TestVNet1 と TestVNet4 の仮想ネットワーク ゲートウェイの作成が両方とも完了したら、仮想ネットワーク ゲートウェイの接続を作成できます。 このセクションでは、VNet1 から VNet4 への接続を作成します。
+TestVNet1 と TestVNet4 の仮想ネットワーク ゲートウェイの作成が両方とも完了したら、仮想ネットワーク ゲートウェイの接続を作成できます。 このセクションでは、VNet1 から VNet4 への接続を作成します。 これらの手順は、同じサブスクリプションに存在する VNet でのみ使用できます。 接続する VNet がそれぞれ異なるサブスクリプションに存在する場合は、PowerShell を使用する必要があります。 [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) に関する記事を参照してください。
 
 1. **[すべてのリソース]** から VNet の仮想ネットワーク ゲートウェイに移動します。 たとえば、**[TestVNet1GW]** に移動します。 **[TestVNet1GW]** をクリックして仮想ネットワーク ゲートウェイのブレードを開きます。
    

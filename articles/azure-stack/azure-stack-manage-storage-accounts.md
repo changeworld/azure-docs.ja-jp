@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 3/1/2017
+ms.date: 4/6/2017
 ms.author: anirudha
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: e70e512c2404d1d63c1d02a62d4eb358746ffe6e
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 5b4a10e1a6fc0be925aa124de30d15baac97ac8e
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -27,8 +27,8 @@ Learn how to manage storage accounts in Azure Stack to find, recover, and reclai
 ## <a name="find"></a>Find a storage account
 The list of storage accounts in the region can be viewed in Azure Stack by:
 
-1. In an Internet browser, navigate to https://portal.local.azurestack.external.
-2. Sign in to the Azure Stack portal as an administrator (using the credentials you provided during deployment)
+1. In an Internet browser, navigate to https://adminportal.local.azurestack.external.
+2. Sign in to the Azure Stack administration portal as an administrator (using the credentials you provided during deployment)
 3. On the default dashboard – find the **Region management** list and click the region you want to explore. For example **(local**).
    
    ![](media/azure-stack-manage-storage-accounts/image1.png)
@@ -103,8 +103,8 @@ The retention period setting allows an administrator to specify a time period in
 
 **To change the retention period:**
 
-1. In an internet browser, navigate to https://portal.local.azurestack.external.
-2. Sign in to the Azure Stack portal as an administrator (using the credentials you provided during deployment)
+1. In an internet browser, navigate to https://adminportal.local.azurestack.external.
+2. Sign in to the Azure Stack administration portal as an administrator (using the credentials you provided during deployment)
 3. On the default dashboard – find the **Region management** list and click the region you want to explore – for example **(local**).
 4. Select **Storage** from the **Resource Providers** list.
 5. Click **Settings** at the top to open the setting blade.

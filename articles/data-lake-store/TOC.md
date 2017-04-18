@@ -11,6 +11,7 @@
 ## [Java SDK の使用](data-lake-store-get-started-java-sdk.md)
 ## [REST API の使用](data-lake-store-get-started-rest-api.md)
 ## [Azure CLI の使用](data-lake-store-get-started-cli.md)
+## [Azure CLI 2.0 の使用](data-lake-store-get-started-cli-2.0.md)
 ## [Node.js の使用](data-lake-store-manage-use-nodejs.md)
 ## [Python の使用](data-lake-store-get-started-python.md)
 
@@ -49,6 +50,7 @@
 ### [Power BI で使用する](data-lake-store-power-bi.md)
 ### [Data Catalog で使用する](data-lake-store-with-data-catalog.md)
 ### [SQL Data Warehouse で PolyBase を使用する](../sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md)
+### [SQL Server Integration Services と共に使用する](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager)
 ### [その他の Azure 統合オプション](data-lake-store-integrate-with-other-services.md)
 
 ## 管理
@@ -63,6 +65,7 @@
 ## [Python (アカウント管理)](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-store.html)
 ## [Python (ファイルシステム管理)](http://azure-datalake-store.readthedocs.io/en/latest)
 ## [REST ()](/rest/api/datalakestore)
+## [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/dls)
 
 # リソース
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=data-lake-store)
