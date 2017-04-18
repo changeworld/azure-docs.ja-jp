@@ -1,4 +1,4 @@
-
+﻿
 ---
 title: "Azure Backup の FAQ | Microsoft Docs"
 description: "一般的な質問への回答: サービスの動作、Azure Backup エージェント、Recovery Services コンテナー、バックアップとリテンション期間の制限。"
