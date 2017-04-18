@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
 ms.date: 02/01/2017
-ms.author: brandwe
+ms.author: xerners
 translationtype: Human Translation
 ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
 ms.openlocfilehash: a20017a63ebed745e2d101d556e93594325533dc
