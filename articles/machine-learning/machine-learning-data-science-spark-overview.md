@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure HDInsight 上の Spark を使用したデータ サイエンスの概要 | Microsoft Docs"
 description: "Spark MLlib ツールキットによって、かなりの Machine Learning モデリング機能がこの分散 HDInsight 環境にもたらされます。"
 services: machine-learning
