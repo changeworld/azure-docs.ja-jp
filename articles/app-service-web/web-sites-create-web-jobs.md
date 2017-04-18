@@ -1,4 +1,4 @@
----
+﻿---
 title: "Web ジョブでバックグラウンド タスクを実行する"
 description: "Web アプリでバックグラウンド タスクを実行する方法について説明します。"
 services: app-service
