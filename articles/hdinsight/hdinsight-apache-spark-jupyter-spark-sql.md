@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure HDInsight における Apache Spark クラスターの概要 | Microsoft Docs"
 description: "HDInsight に Apache Spark クラスターをすばやく作成し、Jupyter Notebook から Spark SQL を使用して対話型クエリを実行する手順を説明します。"
 services: hdinsight
