@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure 仮想マシンをバックアップする環境の準備 | Microsoft Docs"
 description: "Azure で仮想マシンをバックアップするための環境を準備する方法について説明します"
 services: backup
