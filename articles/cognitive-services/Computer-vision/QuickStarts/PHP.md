@@ -10,15 +10,16 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: juliakuz
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 593b5cab958807bf9c45157408a35d96f0c510e7
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: ea50384e00aa86fa8f399d91f7910889797b71af
+ms.lasthandoff: 04/19/2017
 
 ---
 
 # <a name="computer-vision-php-quick-starts"></a>Computer Vision PHP Quick Starts
 This article provides information and code samples to help you quickly get started using PHP and the Computer Vision API to accomplish the following tasks: 
 * [Analyze an image](#AnalyzeImage) 
+* [Use a Domain-Specific Model](#DomainSpecificModel)
 * [Intelligently generate a thumbnail](#GetThumbnail)
 * [Detect and extract text from an Image](#OCR)
 
@@ -34,7 +35,7 @@ With the [Analyze Image method](https://westus.dev.cognitive.microsoft.com/docs/
 * The dominant color, the accent color, or whether an image is black & white.
 * Whether the image contains pornographic or sexually suggestive content. 
 
-#### <a name="analyze-an-image-php-example-request"></a>Analyze an Image PHP Example Request
+### <a name="analyze-an-image-php-example-request"></a>Analyze an Image PHP Example Request
 
 ```PHP
 <?php
@@ -80,8 +81,8 @@ catch (HttpException $ex)
 
 ```
 
-#### <a name="analyze-an-image-response"></a>Analyze an Image Response
-A successful response will be returned in JSON. Following is an example of a successful response: 
+### <a name="analyze-an-image-response"></a>Analyze an Image Response
+A successful response is returned in JSON. Following is an example of a successful response: 
 
 ```json
 {
@@ -183,10 +184,89 @@ A successful response will be returned in JSON. Following is an example of a suc
 
 ```
 
+## Use a Domain-Specific Model <a name="DomainSpecificModel"> </a>
+The Domain-Specific Model is a model trained to identify a specific set of objects in an image. The two domain-specific models that are currently available are celebrities and landmarks. The following example identifies a landmark in an image.
+
+### <a name="landmark-php-example-request"></a>Landmark PHP Example Request
+
+```PHP
+<html>
+<head>
+    <title>PHP Sample</title>
+</head>
+<body>
+<?php
+// This sample uses PEAR (https://pear.php.net/package/HTTP_Request2/download)
+require_once 'HTTP/Request2.php';
+
+// Change "landmarks" to "celebrities" in the url to use the Celebrities model.
+$request = new Http_Request2('https://westus.api.cognitive.microsoft.com/vision/v1.0/models/landmarks/analyze');
+$url = $request->getUrl();
+
+$headers = array(
+    // Request headers
+    'Content-Type' => 'application/json',
+    'Ocp-Apim-Subscription-Key' => '13hc77781f7e4b19b5fcdd72a8df7156',
+);
+
+$request->setHeader($headers);
+
+$parameters = array(
+    // Request parameters
+    'model' => 'landmarks',   // Use 'model' => 'celebrities' to use the Celebrities model.
+);
+
+$url->setQueryVariables($parameters);
+
+$request->setMethod(HTTP_Request2::METHOD_POST);
+
+// Request body
+$body = json_encode(array(
+    // Request body parameters
+    'url' => 'https://upload.wikimedia.org/wikipedia/commons/2/23/Space_Needle_2011-07-04.jpg',
+));
+$request->setBody($body);
+
+try
+{
+    $response = $request->send();
+    echo "<pre>" . json_encode(json_decode($response->getBody()), JSON_PRETTY_PRINT) . "</pre>";
+}
+catch (HttpException $ex)
+{
+    echo "<pre>" . $ex . "</pre>";
+}
+?>
+</body>
+</html>
+```
+
+### <a name="landmark-example-response"></a>Landmark Example Response
+A successful response is returned in JSON. Following is an example of a successful response:  
+
+```json
+{
+    "requestId": "0663b074-8eb3-4fab-a72e-4c31a49bd22e",
+    "metadata": {
+        "width": 2096,
+        "height": 4132,
+        "format": "Jpeg"
+    },
+    "result": {
+        "landmarks": [
+            {
+                "name": "Space Needle",
+                "confidence": 0.9998178
+            }
+        ]
+    }
+}
+```
+
 ## Get a Thumbnail with Computer Vision API Using PHP <a name="GetThumbnail"> </a>
 Use the [Get Thumbnail method](https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fb) to  crop an image based on its region of interest (ROI) to the height and width you desire, even if the aspect ratio differs from the input image. 
 
-#### <a name="get-a-thumbnail-php-example-request"></a>Get a Thumbnail PHP Example Request
+### <a name="get-a-thumbnail-php-example-request"></a>Get a Thumbnail PHP Example Request
 
 ```PHP
 <?php
@@ -231,14 +311,14 @@ catch (HttpException $ex)
 ?>
 ```
 
-#### <a name="get-a-thumbnail-response"></a>Get a Thumbnail Response
+### <a name="get-a-thumbnail-response"></a>Get a Thumbnail Response
 A successful response contains the thumbnail image binary. If the request failed, the response contains an error code and a message to help determine what went wrong.
 
 
 ## Optical Character Recognition (OCR) with Computer Vision API Using PHP <a name="OCR"> </a>
 Use the [Optical Character Recognition (OCR) method](https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fc) to detect text in an image and extract recognized characters into a machine-usable character stream.
 
-#### <a name="ocr-php-example-request"></a>OCR PHP Example Request
+### <a name="ocr-php-example-request"></a>OCR PHP Example Request
 ```PHP
 <?php
 // This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)
@@ -281,7 +361,7 @@ catch (HttpException $ex)
 ?>
 ```
 
-#### <a name="ocr-example-response"></a>OCR Example Response
+### <a name="ocr-example-response"></a>OCR Example Response
 Upon success, the OCR results are returned include include text, bounding box for regions, lines and words. 
 
 ```json 

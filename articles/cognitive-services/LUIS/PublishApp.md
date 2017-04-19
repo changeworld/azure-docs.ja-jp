@@ -10,15 +10,15 @@ ms.topic: article
 ms.date: 03/01/2017
 ms.author: cahann
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: b115c0f833e61dc60c7e43f1e58de2dba347ae82
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: d8e0f25d5dad4bf5651dd73144cde3a5435baa63
+ms.lasthandoff: 04/19/2017
 
 ---
 
 
 # <a name="publish-your-app"></a>Publish your app
-When you finish building and testing your app, you can publish your it as webservice on azure and get an HTTP endpoint that can be integrated in any backend code. 
+When you finish building and testing your app, you can publish it as webservice on Azure and get an HTTP endpoint that can be integrated in any backend code. 
 
 Optionally, it would be better to test your app before publishing it. For instructions, see [Train and test your app](Train-Test.md).
 

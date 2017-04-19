@@ -10,9 +10,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: juliakuz
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: bf575259bab255c6fd9c973e581aed1a8801f218
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 07765343f01b6bbf448d9d30318b38b23b002e7e
+ms.lasthandoff: 04/19/2017
 
 ---
 
@@ -34,7 +34,7 @@ With the [Analyze Image method](https://westus.dev.cognitive.microsoft.com/docs/
 * The dominant color, the accent color, or whether an image is black & white.
 * Whether the image contains pornographic or sexually suggestive content. 
 
-#### <a name="analyze-an-image-ruby-example-request"></a>Analyze an Image Ruby Example Request
+### <a name="analyze-an-image-ruby-example-request"></a>Analyze an Image Ruby Example Request
 ```Ruby
 require 'net/http'
 
@@ -61,8 +61,8 @@ end
 puts response.body
 
 ```
-#### <a name="analyze-an-image-response"></a>Analyze an Image Response
-A successful response will be returned in JSON. Following is an example of a successful response: 
+### <a name="analyze-an-image-response"></a>Analyze an Image Response
+A successful response is returned in JSON. Following is an example of a successful response: 
 
 ```json
 {
@@ -168,7 +168,7 @@ A successful response will be returned in JSON. Following is an example of a suc
 ## Get a Thumbnail with Computer Vision API Using Ruby <a name="GetThumbnail"> </a>
 Use the [Get Thumbnail method](https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fb) to  crop an image based on its region of interest (ROI) to the height and width you desire, even if the aspect ratio differs from the input image. 
 
-#### <a name="get-a-thumbnail-ruby-example-request"></a>Get a Thumbnail Ruby Example Request
+### <a name="get-a-thumbnail-ruby-example-request"></a>Get a Thumbnail Ruby Example Request
 ```Ruby
 require 'net/http'
 
@@ -195,13 +195,13 @@ end
 puts response.body 
 ```
 
-#### <a name="get-a-thumbnail-response"></a>Get a Thumbnail Response
+### <a name="get-a-thumbnail-response"></a>Get a Thumbnail Response
 A successful response contains the thumbnail image binary. If the request failed, the response contains an error code and a message to help determine what went wrong.
 
 ## Optical Character Recognition (OCR) with Computer Vision API Using Ruby <a name="OCR"> </a>
 Use the [Optical Character Recognition (OCR) method](https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fc) to detect text in an image and extract recognized characters into a machine-usable character stream.
 
-#### <a name="ocr-ruby-example-request"></a>OCR Ruby Example Request
+### <a name="ocr-ruby-example-request"></a>OCR Ruby Example Request
 ```Ruby
 require 'net/http'
 
@@ -228,8 +228,8 @@ puts response.body
 
 ```
 
-#### <a name="ocr-example-response"></a>OCR Example Response
-Upon success, the OCR results are returned include include text, bounding box for regions, lines and words. 
+### <a name="ocr-example-response"></a>OCR Example Response
+Upon success, the OCR results returned include text, bounding box for regions, lines and words. 
 
 ```json
 {

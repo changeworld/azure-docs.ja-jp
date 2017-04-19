@@ -10,15 +10,22 @@ ms.topic: article
 ms.date: 03/17/2017
 ms.author: anroth
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: bb36591e371c38b6e931ba7a39adc0bbcd56ac48
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 7ce661e08ce1166d08b56875e17c972b0fe73c90
+ms.lasthandoff: 04/19/2017
 
 ---
 
 # <a name="face-api-release-notes"></a>Face API Release Notes
 
 This article pertains to Microsoft Face API Service version 1.0.
+
+### <a name="release-changes-in-march-2017"></a>Release changes in March 2017
+* **New Attribute** Emotion attribute could be returned from [Face - Detect](https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) if `emotion` is specified in `returnFaceAttributes`.
+
+* **Bug fix** For [Face List - Add a Face to a Face List](https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250) and [Person - Add a Person Face](https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) APIs, algorithm is upgraded to make sure that the face could be re-detected with rectangle returned from [Face - Detect](https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) as `targetFace`.
+
+* **Bug fix** Make sure the detectable face size is strictly between 36x36 to 4096x4096 pixels.
 
 ### <a name="release-changes-in-november-2016"></a>Release changes in November 2016
 * **Face Storage Expansion**; Face Storage allows a Standard subscription to store additional persisted faces when using Person objects ([Person - Add A Person Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)) or Face Lists ([Face List - Add a Face to a Face List](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250)) for identification or similarity matching with the Face API. The stored images are charged at $0.5 per 1000 faces and this rate is prorated on a daily basis. Free tier subscriptions continue to be limited to 1,000 total persons.

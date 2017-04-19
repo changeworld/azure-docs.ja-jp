@@ -10,9 +10,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: juliakuz
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 563c92ce7aae50912239839c6a88bac00fd25de3
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 1ff737a8fcab95a6e88816a31cb7260b86eba086
+ms.lasthandoff: 04/19/2017
 
 ---
 
@@ -29,12 +29,12 @@ With the [Analyze Image method](https://westus.dev.cognitive.microsoft.com/docs/
 * The category defined in this [taxonomy](../Category-Taxonomy.md). 
 * A detailed list of tags related to the image content. 
 * A description of image content in a complete sentence. 
-* The coordinates, gender and age of any faces contained in the image.
+* The coordinates, gender, and age of any faces contained in the image.
 * The ImageType (clipart or a line drawing)
 * The dominant color, the accent color, or whether an image is black & white.
 * Whether the image contains pornographic or sexually suggestive content. 
 
-#### <a name="analyze-an-image-curl-example-request"></a>Analyze an Image curl Example Request
+### <a name="analyze-an-image-curl-example-request"></a>Analyze an Image curl Example Request
 
 ```json
 
@@ -47,8 +47,8 @@ curl -v -X POST "https://westus.api.cognitive.microsoft.com/vision/v1.0/analyze?
 --data-ascii "{body}" 
 
 ```
-#### <a name="analyze-an-image-response"></a>Analyze an Image Response
-A successful response will be returned in JSON. Following is an example of a successful response: 
+### <a name="analyze-an-image-response"></a>Analyze an Image Response
+A successful response is returned in JSON. Following is an example of a successful response: 
 
 ```json
 {
@@ -154,7 +154,7 @@ A successful response will be returned in JSON. Following is an example of a suc
 ## Get a Thumbnail with Computer Vision API Using curl <a name="GetThumbnail"> </a>
 Use the [Get Thumbnail method](https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fb) to  crop an image based on its region of interest (ROI) to the height and width you desire, even if the aspect ratio differs from the input image. 
 
-#### <a name="get-a-thumbnail-curl-example-request"></a>Get a Thumbnail curl Example Request
+### <a name="get-a-thumbnail-curl-example-request"></a>Get a Thumbnail curl Example Request
 
 ```JSON
 @ECHO OFF
@@ -165,14 +165,14 @@ curl -v -X POST "https://westus.api.cognitive.microsoft.com/vision/v1.0/generate
 
 --data-ascii "{body}" 
 ```
-#### <a name="get-a-thumbnail-response"></a>Get a Thumbnail Response
+### <a name="get-a-thumbnail-response"></a>Get a Thumbnail Response
 A successful response contains the thumbnail image binary. If the request failed, the response contains an error code and a message to help determine what went wrong.
 
 
 ## Optical Character Recognition (OCR) with Computer Vision API Using curl <a name="OCR"> </a>
 Use the [Optical Character Recognition (OCR) method](https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fc) to detect text in an image and extract recognized characters into a machine-usable character stream.
 
-#### <a name="ocr-curl-example-request"></a>OCR curl Example Request
+### <a name="ocr-curl-example-request"></a>OCR curl Example Request
 ```JSON
 @ECHO OFF
 
@@ -183,8 +183,8 @@ curl -v -X POST "https://westus.api.cognitive.microsoft.com/vision/v1.0/ocr?lang
 --data-ascii "{body}" 
 ```
 
-#### <a name="ocr-example-response"></a>OCR Example Response
-Upon success, the OCR results are returned include include text, bounding box for regions, lines and words. 
+### <a name="ocr-example-response"></a>OCR Example Response
+Upon success, the OCR results returned include text, bounding box for regions, lines and words. 
 
 ```json
 {

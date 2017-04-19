@@ -1,4 +1,4 @@
----
+--- 
 title: Computer Vision API Python quick start | Microsoft Docs
 description: Get information and code samples to help you quickly get started using Python and the Computer Vision API in Microsoft Cognitive Services.
 services: cognitive-services
@@ -10,31 +10,33 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: juliakuz
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: cb456888ea89153da242583ca3e90d9fa235ac3c
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: a8da78baf8f0d5dafcec2dc7ae2ab31855e3dac0
+ms.lasthandoff: 04/19/2017
 
----
+--- 
 
 # <a name="computer-vision-python-quick-starts"></a>Computer Vision Python Quick Starts
 This article provides information and code samples to help you quickly get started using the Computer Vision API with Python to accomplish the following tasks:
-* [Analyze an image](#AnalyzeImage) 
+* [Analyze an image](#AnalyzeImage)
+* [Use a Domain-Specific Model](#DomainSpecificModel)
 * [Intelligently generate a thumbnail](#GetThumbnail)
-* [Detect and extract text from an image](#OCR)
+* [Detect and extract printed text from an image](#OCR)
+* [Detect and extract handwritten text from an image](#RecognizeText)
 
-Learn more about obtaining free Subscription Keys [here](../Vision-API-How-to-Topics/HowToSubscribe.md).
+To use the Computer Vision API, you need a subscription key. You can get free subscription keys [here](https://www.microsoft.com/cognitive-services/en-us/Computer-Vision-API/documentation/vision-api-how-to-topics/HowToSubscribe).
 
 ## Analyze an Image With Computer Vision API Using Python <a name="AnalyzeImage"> </a>
-With the [Analyze Image method](https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fa) you can extract visual features based on image content. You can upload an image or specify an image URL and choose which features to return, including:
-* The category defined in this [taxonomy](../Category-Taxonomy.md). 
-* A detailed list of tags related to the image content. 
-* A description of image content in a complete sentence. 
+With the [Analyze Image method](https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fa), you can extract visual features based on image content. You can upload an image or specify an image URL and choose which features to return, including:
+* The category defined in this [taxonomy](https://www.microsoft.com/cognitive-services/en-us/Computer-Vision-API/documentation/Category-Taxonomy).
+* A detailed list of tags related to the image content.
+* A description of image content in a complete sentence.
 * The coordinates, gender, and age of any faces contained in the image.
-* The ImageType (clipart or a line drawing).
+* The ImageType (clip art or a line drawing).
 * The dominant color, the accent color, or whether an image is black & white.
-* Whether the image contains pornographic or sexually suggestive content. 
+* Does the image contains adult or sexually suggestive content?
 
-#### <a name="analyze-an-image-python-example-request"></a>Analyze an Image Python Example Request
+### <a name="analyze-an-image-python-example-request"></a>Analyze an Image Python Example Request
 
 ```Python
 ########### Python 2.7 #############
@@ -100,8 +102,8 @@ except Exception as e:
 
 ```
 
-#### <a name="analyze-an-image-response"></a>Analyze an Image Response
-A successful response will be returned in JSON. Following is an example of a successful response: 
+### <a name="analyze-an-image-response"></a>Analyze an Image Response
+A successful response is returned in JSON. Following is an example of a successful response:
 
 ```json
 {
@@ -204,10 +206,105 @@ A successful response will be returned in JSON. Following is an example of a suc
 
 ```
 
-## Get a Thumbnail with Computer Vision API Using Python <a name="GetThumbnail"> </a>
-Use the [Get Thumbnail method](https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fb) to  crop an image based on its region of interest (ROI) to the height and width you desire, even if the aspect ratio differs from the input image. 
+## Use a Domain-Specific Model <a name="DomainSpecificModel"> </a>
+The Domain-Specific Model is a model trained to identify a specific set of objects in an image. The two domain-specific models that are currently available are celebrities and landmarks. The following example identifies a landmark in an image.
 
-#### <a name="get-a-thumbnail-python-example-request"></a>Get a Thumbnail Python Example Request
+### <a name="landmark-python-example-request"></a>Landmark Python Example Request
+
+```Python
+########### Python 2.7 #############
+import httplib, urllib, base64, json
+
+headers = {
+    # Request headers. Replace the key below with your subscription key.
+    'Content-Type': 'application/json',
+    'Ocp-Apim-Subscription-Key': '13hc77781f7e4b19b5fcdd72a8df7156',
+}
+
+params = urllib.urlencode({
+    # Request parameters. Use "model": "celebrities" to use the Celebrity model.
+    'model': 'landmarks',
+})
+
+# The URL of a JEPG image containing text.
+body = "{'url':'https://upload.wikimedia.org/wikipedia/commons/2/23/Space_Needle_2011-07-04.jpg'}"
+
+try:
+    conn = httplib.HTTPSConnection('westus.api.cognitive.microsoft.com')
+    # Change "landmarks" to "celebrities" in the url to use the Celebrity model.
+    conn.request("POST", "/vision/v1.0/models/landmarks/analyze?%s" % params, body, headers)
+    response = conn.getresponse()
+    data = response.read()
+    # 'data' contains the JSON data. The following formats the JSON data for display.
+    parsed = json.loads(data)
+    print ("REST Response:")
+    print (json.dumps(parsed, sort_keys=True, indent=2))
+    conn.close()
+except Exception as e:
+    print("[Errno {0}] {1}".format(e.errno, e.strerror))
+
+####################################
+
+########### Python 3.2 #############
+import http.client, urllib.request, urllib.parse, urllib.error, base64, json
+
+headers = {
+    # Request headers. Replace the key below with your subscription key.
+    'Content-Type': 'application/json',
+    'Ocp-Apim-Subscription-Key': '13hc77781f7e4b19b5fcdd72a8df7156',
+}
+
+params = urllib.parse.urlencode({
+    # Request parameters. Use "model": "celebrities" to use the Celebrity model.
+    'model': 'landmarks',
+})
+
+# The URL of a JEPG image containing text.
+body = "{'url':'https://upload.wikimedia.org/wikipedia/commons/2/23/Space_Needle_2011-07-04.jpg'}"
+
+try:
+    conn = http.client.HTTPSConnection('westus.api.cognitive.microsoft.com')
+    conn.request("POST", "/vision/v1.0/models/landmarks/analyze?%s" % params, body, headers)
+    response = conn.getresponse()
+    data = response.read()
+    # 'data' contains the JSON data. The following formats the JSON data for display.
+    encoding = response.headers.get_content_charset()
+    parsed = json.loads(data.decode(encoding))
+    print ("REST Response:")
+    print (json.dumps(parsed, sort_keys=True, indent=2))
+    conn.close()
+except Exception as e:
+    print("[Errno {0}] {1}".format(e.errno, e.strerror))
+
+####################################
+```
+
+### <a name="landmark-example-response"></a>Landmark Example Response
+A successful response is returned in JSON. Following is an example of a successful response:  
+
+```json
+{
+  "metadata": {
+    "format": "Jpeg",
+    "height": 4132,
+    "width": 2096
+  },
+  "requestId": "d08a914a-0fbb-4695-9a2e-c93791865436",
+  "result": {
+    "landmarks": [
+      {
+        "confidence": 0.9998178,
+        "name": "Space Needle"
+      }
+    ]
+  }
+}
+```
+
+## Get a Thumbnail with Computer Vision API Using Python <a name="GetThumbnail"> </a>
+Use the [Get Thumbnail method](https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fb) to crop an image based on its region of interest (ROI) to the height and width you desire. The aspect ratio you set for the thumbnail can be different from the aspect ratio of the input image.
+
+### <a name="get-a-thumbnail-python-example-request"></a>Get a Thumbnail Python Example Request
 
 ```Python
 ########### Python 2.7 #############
@@ -226,7 +323,7 @@ params = urllib.urlencode({
     'smartCropping': 'true',
 })
 
-# Replace the three dots below with the URL of the JEPG image for which you want a thumbnail.
+# Replace the three dots below with the URL of the JPEG image for which you want a thumbnail.
 body = "{'url':'...'}"
 
 try:
@@ -257,7 +354,7 @@ params = urllib.parse.urlencode({
     'smartCropping': 'true',
 })
 
-# Replace the three dots below with the URL of the JEPG image for which you want a thumbnail.
+# Replace the three dots below with the URL of the JPEG image for which you want a thumbnail.
 body = "{'url':'...'}"
 
 try:
@@ -272,14 +369,14 @@ except Exception as e:
 ####################################
 ```
 
-#### <a name="get-a-thumbnail-response"></a>Get a Thumbnail Response
-A successful response contains the thumbnail image binary. If the request fails, the response will contain an error code and a message to help determine what went wrong.
+### <a name="get-a-thumbnail-response"></a>Get a Thumbnail Response
+A successful response contains the thumbnail image binary. If the request fails, the response contains an error code and a message to help determine what went wrong.
 
 
 ## Optical Character Recognition (OCR) with Computer Vision API Using Python <a name="OCR"> </a>
 Use the [Optical Character Recognition (OCR) method](https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fc) to detect text in an image and extract recognized characters into a machine-usable character stream.
 
-#### <a name="ocr-python-example-request"></a>OCR Python Example Request
+### <a name="ocr-python-example-request"></a>OCR Python Example Request
 ```Python
 ########### Python 2.7 #############
 import httplib, urllib, base64
@@ -296,7 +393,7 @@ params = urllib.urlencode({
     'detectOrientation ': 'true',
 })
 
-# Replace the three dots below with the URL of a JEPG image containing text.
+# Replace the three dots below with the URL of a JPEG image containing text.
 body = "{'url':'...'}"
 
 try:
@@ -326,7 +423,7 @@ params = urllib.parse.urlencode({
     'detectOrientation ': 'true',
 })
 
-# Replace the three dots below with the URL of a JEPG image containing text.
+# Replace the three dots below with the URL of a JPEG image containing text.
 body = "{'url':'...'}"
 
 try:
@@ -342,8 +439,8 @@ except Exception as e:
 
 ```
 
-#### <a name="ocr-example-response"></a>OCR Example Response
-Upon success, the OCR results include the text from the image, as well as bounding boxes for regions, lines, and words. 
+### <a name="ocr-example-response"></a>OCR Example Response
+Upon success, the OCR results include the text from the image. They also include bounding boxes for regions, lines, and words.
 
 ```json
 {
@@ -412,5 +509,96 @@ Upon success, the OCR results include the text from the image, as well as boundi
 
 ```
 
-  
+## Text recognition with Computer Vision API Using Python <a name="RecognizeText"> </a>
+Use the [RecognizeText method](https://ocr.portal.azure-api.net/docs/services/56f91f2d778daf23d8ec6739/operations/587f2c6a154055056008f200) to detect handwritten or printed text in an image and extract recognized characters into a machine-usable character stream.
 
+### <a name="handwriting-recognition-python-example"></a>Handwriting Recognition Python Example
+
+```Python
+########### Python 2.7 #############
+import httplib, urllib, base64, time
+
+headers = {
+    # Request headers - replace this example key with your valid subscription key.
+    # Another valid content type is "application/octet-stream".
+    'Content-Type': 'application/json',
+    'Ocp-Apim-Subscription-Key': '13hc77781f7e4b19b5fcdd72a8df7156',
+}
+
+# Replace the three dots below with the URL of a JPEG image containing text.
+body = "{'url':'...'}"
+
+serviceUrl = 'westus.api.cognitive.microsoft.com'
+
+# For printed text, set "handwriting" to false.
+params = urllib.urlencode({'handwriting' : 'true'})
+
+
+try:
+    conn = httplib.HTTPSConnection(serviceUrl)
+    conn.request("POST", "/vision/v1.0/RecognizeText?%s" % params, body, headers)
+    response = conn.getresponse()
+
+    # This is the URI where you can get the text recognition operation result.
+    operationLocation = response.getheader('Operation-Location')
+    print "Operation-Location:", operationLocation
+
+    parsedLocation = operationLocation.split(serviceUrl)
+    answerURL = parsedLocation[1]
+    print "AnswerURL:", answerURL
+
+    # Note: The response may not be immediately available. Handwriting recognition is an
+    # async operation that can take a variable amount of time depending on the length
+    # of the text you want to recognize. You may need to wait or retry this GET operation.
+
+    time.sleep(10)
+    conn = httplib.HTTPSConnection(serviceUrl)
+    conn.request("GET", answerURL, '', headers)
+    response = conn.getresponse()
+    print response.status, response.reason
+    print response.read()
+except Exception as e:
+    print e
+
+####################################
+
+########### Python 3.2 #############
+import http.client, urllib.request, urllib.parse, urllib.error, base64, requests, time
+
+requestHeaders = {
+    # Request headers - replace this example key with your valid subscription key.
+    # Another valid content type is "application/octet-stream".
+    'Content-Type': 'application/json',
+    'Ocp-Apim-Subscription-Key': '13hc77781f7e4b19b5fcdd72a8df7156',
+}
+
+# Replace the three dots below with the URL of a JPEG image containing text.
+body = {'url':'...'}
+
+serviceUrl = 'https://westus.api.cognitive.microsoft.com/vision/v1.0/RecognizeText'
+
+# For printed text, set "handwriting" to false.
+params = {'handwriting' : 'true'}
+
+
+try:
+    response = requests.request('post', serviceUrl, json=body, data=None, headers=requestHeaders, params=params)
+    print(response.status_code)
+
+    # This is the URI where you can get the text recognition operation result.
+    operationLocation = response.headers['Operation-Location']
+
+    # Note: The response may not be immediately available. Handwriting recognition is an
+    # async operation that can take a variable amount of time depending on the length
+    # of the text you want to recognize. You may need to wait or retry this GET operation.
+
+    time.sleep(10)
+    response = requests.request('get', operationLocation, json=None, data=None, headers=requestHeaders, params=None)
+    data = response.json()
+    print(data)
+except Exception as e:
+    print(e)
+
+####################################
+
+```
