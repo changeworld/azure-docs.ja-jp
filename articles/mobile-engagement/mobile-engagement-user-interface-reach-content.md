@@ -76,7 +76,7 @@ ms.lasthandoff: 03/01/2017
   * 例: geo:0,0?q=starbucks,paris
 * **iOS のみのアクション**
   * App ストアでアプリケーションをダウンロードする
-  * http://itunes.apple.com/[国]/app/[アプリ名]/id[アプリ ID]?mt=8 
+  * http://itunes.apple.com/[country]/app/[app name]/id[app id]?mt=8 
   * 例: http://itunes.apple.com/fr/app/briquet-virtuel/id430154748?mt=8
   * Windows のアクション
   * Web ページを開く
