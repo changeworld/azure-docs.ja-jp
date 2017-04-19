@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/30/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 8d24ab744715df69c707df5a119fa71c72338b62
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: b6a0504f2dd5d23fa135b8afc371e3a9210d7caa
+ms.lasthandoff: 04/18/2017
 
 
 ---

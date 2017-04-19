@@ -16,9 +16,9 @@ ms.custom: overview
 ms.date: 2/28/2017
 ms.author: jrj;mausher;kevin;barbkess;elbutter
 translationtype: Human Translation
-ms.sourcegitcommit: bf73ad830226626ddf41cc4ae80e714abf8bcfc2
-ms.openlocfilehash: 19e87c61493bd4620120b39a533e9e4b64517538
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: fd35b0e5c57e47c5e79fe926f24fb21089cbf89a
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -75,7 +75,7 @@ SQL Data Warehouse は、SQL Database と同様の技術で構築されていま
 * Microsoft は、ワークロードのパフォーマンスに影響を与えることなく、サービスの基になるアーキテクチャの改善を行うことができます。
 * Microsoft は、スケーラブルかつシステムに均等に影響が及ぶような方法で、SQL Data Warehouse のパフォーマンスを迅速に向上させることができます。
 
-Data Warehouse ユニットによって、データ ウェアハウスのワークロードのパフォーマンスとの関連性が高い&3; つのメトリックの尺度が提供されます。 次の重要なワークロード メトリックは、DWU の数に比例して変化します。
+Data Warehouse ユニットによって、データ ウェアハウスのワークロードのパフォーマンスとの関連性が高い 3 つのメトリックの尺度が提供されます。 次の重要なワークロード メトリックは、DWU の数に比例して変化します。
 
 **スキャン/集計:** 大量の行をスキャンして複雑な集計を実行する標準的なデータ ウェアハウス クエリ。 これは I/O と CPU を集中的に使用する操作です。
 

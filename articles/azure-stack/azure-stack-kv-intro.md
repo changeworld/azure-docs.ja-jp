@@ -17,7 +17,7 @@ ms.author: sngun
 translationtype: Human Translation
 ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
 ms.openlocfilehash: 6587e1e1b0af7cb57075ed0ceb51addc81eb9ac4
-ms.lasthandoff: 03/06/2017
+ms.lasthandoff: 04/18/2017
 
 
 ---

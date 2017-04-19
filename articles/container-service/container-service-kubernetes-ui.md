@@ -58,7 +58,7 @@ $ az acs kubernetes install-cli
 Kubernetes Web UI を起動するには、次を実行できます。
 
 ```console
-$ az acs kubernetes browse
+$ az acs kubernetes browse -g [Resource Group] -n [Container service instance name]
 ```
 
 これにより、お使いのローカル コンピューターと Kubernetes Web UI を接続する Secure プロキシと対話するように構成された Web ブラウザーが開きます。

@@ -19,7 +19,7 @@ ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
 ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
 ms.openlocfilehash: 4f05075efea0f0fd8ca4424f771d3991a65c6d67
-ms.lasthandoff: 03/08/2017
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -202,7 +202,7 @@ def create():
 ```
 
 > [!TIP]
-> **CreateCollection** メソッドは、省略可能な&3; 番目のパラメーター **RequestOptions** を受け取ります。 これを使用すると、コレクションのプランの種類を指定することができます。 offerType の値を指定しないと、コレクションは既定のプランの種類を使用して作成されます。 DocumentDB のプランの種類の詳細については、「 [DocumentDB のパフォーマンス レベル](documentdb-performance-levels.md)」を参照してください。
+> **CreateCollection** メソッドは、省略可能な 3 番目のパラメーター **RequestOptions** を受け取ります。 これを使用すると、コレクションのプランの種類を指定することができます。 offerType の値を指定しないと、コレクションは既定のプランの種類を使用して作成されます。 DocumentDB のプランの種類の詳細については、「 [DocumentDB のパフォーマンス レベル](documentdb-performance-levels.md)」を参照してください。
 > 
 > 
 
@@ -406,7 +406,7 @@ Web アプリケーションに機能を追加する場合は、 [DocumentDB Pyt
 
 Azure、Visual Studio、Python の詳細については、「 [Python デベロッパー センター](https://azure.microsoft.com/develop/python/)」を参照してください。 
 
-Python Flask の追加のチュートリアルについては、 [Flask メガ チュートリアルのパート&1;: Hello, World!](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)というブログ記事を参照してください。 
+Python Flask の追加のチュートリアルについては、 [Flask メガ チュートリアルのパート 1: Hello, World!](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)というブログ記事を参照してください。 
 
 [Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
 [2]: https://www.python.org/downloads/windows/

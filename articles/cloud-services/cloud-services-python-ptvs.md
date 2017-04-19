@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 11/16/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: c03122972228f30d56a8e0636b1c35ac92b42977
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 6b21f38ddd64278db26d7042349470805b799203
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/07/2017
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ## <a name="what-are-python-web-and-worker-roles"></a>Python Web ロールと Python worker ロールについて
-Azure には、アプリケーションの実行用として、[Azure App Service の Web Apps 機能][execution model-web sites]、[Azure Virtual Machines][execution model-vms]、[Azure Cloud Services][execution model-cloud services] という&3; つのコンピューティング モデルが用意されています。 これら&3; つのモデルはすべて、Python をサポートしています。 Cloud Services には、Web ロールと worker ロールが含まれ、"*サービスとしてのプラットフォーム (PaaS)*" を提供します。 クラウド サービス内で、Web ロールは、フロントエンド Web アプリケーションのホスト専用のインターネット インフォメーション サービス (IIS) Web サーバーを提供します。ワーカー ロールは、ユーザーの操作や入力とは関係なく、長期間または恒久的な非同期タスクを実行できます。
+Azure には、アプリケーションの実行用として、[Azure App Service の Web Apps 機能][execution model-web sites]、[Azure Virtual Machines][execution model-vms]、[Azure Cloud Services][execution model-cloud services] という 3 つのコンピューティング モデルが用意されています。 これら 3 つのモデルはすべて、Python をサポートしています。 Cloud Services には、Web ロールと worker ロールが含まれ、"*サービスとしてのプラットフォーム (PaaS)*" を提供します。 クラウド サービス内で、Web ロールは、フロントエンド Web アプリケーションのホスト専用のインターネット インフォメーション サービス (IIS) Web サーバーを提供します。ワーカー ロールは、ユーザーの操作や入力とは関係なく、長期間または恒久的な非同期タスクを実行できます。
 
 詳細については、「[クラウド サービスとは]」を参照してください。
 
@@ -327,7 +327,7 @@ Web ロールまたは worker ロールをデバッグするには、対象と�
 数分経過するとデプロイメントが完了し、Web ロールまたは worker ロールが Azure 上で稼働状態となります。
 
 ### <a name="investigate-logs"></a>ログを調査する
-クラウド サービスの仮想マシンが起動され、Python がインストールされた後、ログにエラー メッセージが含まれているかどうかを確認します。 これらのログは、**C:\Resources\Directory\\{role}\LogFiles** フォルダーに格納されます。 **PrepPython.err.txt** には、Python がインストールされているかどうかを検出しようとしたとき以降のエラーが少なくとも&1; つ含まれます。**PipInstaller.err.txt** には、pip のバージョンが古いことに関するエラーが含まれる場合があります。
+クラウド サービスの仮想マシンが起動され、Python がインストールされた後、ログにエラー メッセージが含まれているかどうかを確認します。 これらのログは、**C:\Resources\Directory\\{role}\LogFiles** フォルダーに格納されます。 **PrepPython.err.txt** には、Python がインストールされているかどうかを検出しようとしたとき以降のエラーが少なくとも 1 つ含まれます。**PipInstaller.err.txt** には、pip のバージョンが古いことに関するエラーが含まれる場合があります。
 
 ## <a name="next-steps"></a>次のステップ
 Python Tools for Visual Studio で Web ロールまたは worker ロールを扱う方法の詳細については、次の PTVS 関連ドキュメントを参照してください。
