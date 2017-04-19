@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/26/2017
 ms.author: sngun
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: b50a32a3182dd61f3d7f061c71704bb63ff2e677
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 56653e1db04555c9841c381f79b489cfb37a6508
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -66,6 +66,8 @@ To learn about API version profiles and the cmdlets provided by them, refer to t
   ```
 
 ## <a name="next-steps"></a>Next steps
+
+* [Download Azure Stack tools from GitHub](azure-stack-powershell-download.md)
 * [Configure PowerShell for use with Azure Stack](azure-stack-powershell-configure.md)  
 * [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md)  
-* [Download Azure Stack tools from GitHub](azure-stack-powershell-download.md)
+

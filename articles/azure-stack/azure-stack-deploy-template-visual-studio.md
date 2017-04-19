@@ -12,20 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/1/2017
+ms.date: 4/13/2017
 ms.author: helaw
 translationtype: Human Translation
-ms.sourcegitcommit: f851d873abf08c8214dc018091017573f3428432
-ms.openlocfilehash: 7cb1ecd113b003620fbc6b6890c1275ec53840f1
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 225f73442480849662c8c0b535230d18781e19dc
+ms.lasthandoff: 04/15/2017
 
 
 ---
 # <a name="deploy-templates-in-azure-stack-using-visual-studio"></a>Deploy templates in Azure Stack using Visual Studio
-
-> [!IMPORTANT] 
-> This topic applies only to Azure Stack Technical Preview 2.
->
 
 Use Visual Studio to deploy Azure Resource Manager templates to the Azure Stack POC.
 

@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 04/13/2017
 ms.author: erikje
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 0db4463625c63f24c1547aa65d4255d1bc641bc0
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: da6c3a013b8d7539160f05a692655bfcdd72312f
+ms.lasthandoff: 04/14/2017
 
 
 ---
 # <a name="register-azure-stack-with-your-azure-subscription"></a>Register Azure Stack with your Azure Subscription
 
-For Azure Active Directory deployments, you can register Azure Stack with Azure to download marketplace items from Azure and to set up commerce data reporting back to Microsoft. This registration is not currently supported for deployments using Active Directory Federation Services (AD FS). 
+For Azure Active Directory deployments, you can register Azure Stack with Azure to download marketplace items from Azure and to set up commerce data reporting back to Microsoft. 
 
 > [!NOTE]
 >In TP3, registering Azure Stack is not required because you don't have to select a business model or connection option. However, you can test the process and provide feedback about it.
