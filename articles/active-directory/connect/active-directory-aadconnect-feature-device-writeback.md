@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 28b5da6098316f8fbe84966e0dac88f5b7d2cb1d
-ms.openlocfilehash: bf7dd55be2b0e6ae43fc148ff36d8d2141a2f12b
-ms.lasthandoff: 12/20/2016
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: b5df0883f20cd484970587b17d5df646022ba84f
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -135,7 +135,7 @@ Active Directory の構成を確認します。
 
 ## <a name="additional-information"></a>追加情報
 * [条件付きアクセス ポリシーを使用したリスクの管理](../active-directory-conditional-access.md)
-* [Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](https://msdn.microsoft.com/library/azure/dn788908.aspx)
+* [Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](../active-directory-device-registration-on-premises-setup.md)
 
 ## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。

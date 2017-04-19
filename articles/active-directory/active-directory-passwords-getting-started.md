@@ -16,15 +16,15 @@ ms.topic: get-started-article
 ms.date: 03/08/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: c2c46637ccccd01c1c3056d6a25ef605cfd68f2d
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: d1094e1b350883c206a9180ff71bd8613156360a
+ms.lasthandoff: 04/13/2017
 
 
 ---
 # <a name="getting-started-with-password-management"></a>パスワード管理の概要
 > [!IMPORTANT]
-> **サインインに問題がありますか?** その場合は、 [自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#reset-your-password)。
+> **サインインに問題がありますか?** その場合は、 [自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#reset-my-password)。
 >
 >
 
@@ -69,9 +69,9 @@ ms.lasthandoff: 03/29/2017
 * [**ヒント 9: トラブルシューティング** - それでも解決しない場合は、サポートに必要な情報を提供する](#tip-9-troubleshoot---if-you-still-need-help-include-enough-information-for-us-to-assist-you)
 
 ### <a name="top-tip-documentation-navigation---use-our-table-of-contents-and-your-browsers-find-feature-to-find-answers"></a>重要なヒント: ドキュメント ナビゲーション - 目次とブラウザーの検索機能を使用して、回答を検索する
-どのドキュメントを使用する場合でも、Microsoft では、学習を目的としている管理者にとって興味深い項目へのクイックリンクをすべて目次に表示するよう努めています。 
+どのドキュメントを使用する場合でも、Microsoft では、学習を目的としている管理者にとって興味深い項目へのクイックリンクをすべて目次に表示するよう努めています。
 
-以下の目次を確認してください。 
+以下の目次を確認してください。
 * [Azure AD のパスワード リセット: ドキュメントの目次](https://docs.microsoft.com/azure/active-directory/active-directory-passwords)
 
 ### <a name="tip-1-licensing---make-sure-you-understand-the-licensing-requirements"></a>ヒント 1: ライセンス - ライセンスの要件を確実に把握する
@@ -93,9 +93,9 @@ Azure AD のパスワード リセットが機能するには、組織で少な�
  * 試用版の作成を開始してから最初の 30 日間、**または**
  * バニティ ドメインが存在しない、**かつ** Azure AD Connect が ID を同期していない
  * **_必要条件_**: 認証用電子メール、連絡用電子メール アドレス、認証用電話、携帯電話、または会社電話のうちのいずれか **1 つ**の値が存在すること
-* **ツー ゲート ポリシーが適用される場合** 
+* **ツー ゲート ポリシーが適用される場合**
  * 試用版の最初の 30 日間が経過した後、**または**
- * バニティ ドメインが存在する、**または** 
+ * バニティ ドメインが存在する、**または**
  * Azure AD Connect がオンプレミス環境から ID を同期できるようにしている
  * _**必要条件**_: 認証用電子メール、連絡用電子メール アドレス、認証用電話、携帯電話、または会社電話のうちのいずれか **2 つ**の値が存在すること
 
@@ -145,7 +145,7 @@ Azure AD Connect アプリケーション イベント ログには、パスワ�
 * [ライトバックのデプロイ - 手順 3: ファイアウォールを構成する](#step-3-configure-your-firewall)
 * [ライトバックのデプロイ - 手順 4: 適切な権限を設定する](#step-4-set-up-the-appropriate-active-directory-permissions)
 
-### <a name="tip-7-reporting---see-who-is-registering-or-resetting-passwords-with-the-azure-ad-sspr-audit-logs"></a>ヒント 7: レポート - 誰が登録しているかやパスワードをリセットしているかは Azure AD SSPR 監査ログで確認する 
+### <a name="tip-7-reporting---see-who-is-registering-or-resetting-passwords-with-the-azure-ad-sspr-audit-logs"></a>ヒント 7: レポート - 誰が登録しているかやパスワードをリセットしているかは Azure AD SSPR 監査ログで確認する
 パスワード リセットがデプロイされて機能したら、次のステップとして、動作していることを確認し、それでも登録が必要なユーザー、リセットした場合にユーザーが直面する一般的な問題、将来の投資収益率を分析します。
 
 Azure AD のパスワード リセット監査ログを使用すると、これ以外にもさまざまなことを Azure Portal、PowerBI、Azure AD Reporting Events API、または PowerShell から実行できます。  これらのレポート機能を使用する方法の詳細については、次を参照してください。
@@ -495,7 +495,7 @@ Azure AD Connect ツールでは、接続が現在も有効であることを確
 ## <a name="next-steps"></a>次のステップ
 Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
-* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#reset-your-password)にお進みください。
+* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#reset-my-password)にお進みください。
 * [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
 * [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。
 * [**ベスト プラクティス**](active-directory-passwords-best-practices.md) - 組織内でのパスワードの迅速なデプロイと効果的な管理方法について説明します。

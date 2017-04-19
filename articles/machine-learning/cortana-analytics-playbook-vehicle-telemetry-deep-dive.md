@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: f497366f8e66ba79b0e5978fde54d0b33048aa8d
-ms.openlocfilehash: 898b93ad95ab812b8b6a538048a86a8cc8951101
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 0a4dba58445cf0fd9fd8f51d443576bacd92251b
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 01/24/2017
 このセクションでは、ソリューション アーキテクチャで示されている各ステージについて、手順やカスタマイズのアドバイスと共に詳しく説明します。 
 
 ## <a name="data-sources"></a>データ ソース
-このソリューションでは、次の&2; つのデータ ソースを使用します。
+このソリューションでは、次の 2 つのデータ ソースを使用します。
 
 * **シミュレートされた車両信号と診断データセット** 
 * **車両カタログ**
@@ -61,7 +61,7 @@ ms.lasthandoff: 01/24/2017
 | Windshield_wiper_status |フロント ガラス ワイパーが動作しているかどうか |True または False |
 | ABS |ABS が動作中かどうか |True または False |
 | Timestamp |データ ポイントが作成されたときのタイムスタンプ |日付 |
-| City |車両の場所 |このソリューションでは、ベルビュー、レドモンド、サマミッシュ、シアトルの&4; つの都市 |
+| City |車両の場所 |このソリューションでは、ベルビュー、レドモンド、サマミッシュ、シアトルの 4 つの都市 |
 
 車両モデル参照データセットには、VIN とモデルのマッピングが含まれています。 
 
@@ -97,11 +97,6 @@ ms.lasthandoff: 01/24/2017
 | XUF99EW9OIQOMV7Q7 |ファミリー サルーン |
 | 8OMCL3LGI7XNCC21U |コンバーチブル |
 | ……. | |
-
-### <a name="to-generate-simulated-data"></a>シミュレートされたデータを生成するには
-1. データ シミュレーター パッケージをダウンロードするには、車両テレマティックス シミュレーター ノードの右上隅にある矢印をクリックします。 ローカルのコンピューターにファイルを保存して、展開します。 ![車両テレメトリ分析ソリューションの設計図](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig2-vehicle-telemetry-blueprint.png) *図 2 – 車両テレメトリ分析ソリューションの設計図*
-2. ローカル コンピューター上で、車両テレマティックス シミュレーター パッケージを展開したフォルダーに移動します。 ![車両テレマティックス シミュレーター フォルダー](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig3-vehicle-telematics-simulator-folder.png) *図 3 – 車両テレマティックス シミュレーター フォルダー*
-3. アプリケーション **CarEventGenerator.exe**を実行します。
 
 ### <a name="references"></a>参照
 [Vehicle Telematics Simulator Visual Studio ソリューション](http://go.microsoft.com/fwlink/?LinkId=717075) 
@@ -332,7 +327,7 @@ Stream Analytics ジョブは以下の処理を行います。
 データは最適化され、管理しやすくなり、さまざまな一括調査を処理する準備ができました。 
 
 ## <a name="data-analysis"></a>データ分析
-このセクションでは、Azure Stream Analytics、Azure Machine Learning、Azure Data Factory、Azure HDInsight を組み合わせて、車両の状態と運転の習慣に対してさまざまな高度な分析を行う方法について説明します。 このセクションには、次の&3; つのサブセクションがあります。
+このセクションでは、Azure Stream Analytics、Azure Machine Learning、Azure Data Factory、Azure HDInsight を組み合わせて、車両の状態と運転の習慣に対してさまざまな高度な分析を行う方法について説明します。 このセクションには、次の 3 つのサブセクションがあります。
 
 1. **機械学習**: このサブセクションには、サービス メンテナンスを必要とする車両と、安全性の問題のためにリコールを必要とする車両を予測するためにこのソリューションで使用した、異常検出実験に関する情報が含まれています。
 2. **リアルタイム分析**: このサブセクションには、Stream Analytics クエリ言語を使用し、カスタム アプリケーションによるリアルタイムでの機械学習実験を運用可能にした、リアルタイム分析に関する情報が含まれています。
@@ -341,7 +336,7 @@ Stream Analytics ジョブは以下の処理を行います。
 ### <a name="machine-learning"></a>機械学習
 ここでの目標は、特定の状態の統計データに基づいて、メンテナンスやリコールを必要とする車両を予測することです。 想定した条件は、以下のとおりです。
 
-* 次の&3; つの条件のいずれかに該当する場合、車両は **サービス メンテナンス**を必要とする。
+* 次の 3 つの条件のいずれかに該当する場合、車両は **サービス メンテナンス**を必要とする。
   
   * タイヤ空気圧が低い
   * エンジン オイルのレベルが低い
@@ -351,11 +346,11 @@ Stream Analytics ジョブは以下の処理を行います。
   * エンジン温度が高いが、外部温度が低い
   * エンジン温度が低いが、外部温度が高い
 
-これらの要件に基づき、異常を検出するための&2; つの異なるモデルを作成しました。1 つは車両メンテナンスの検出用で、もう&1; つは車両リコールの検出用です。 どちらのモデルでも、異常検出のために、組み込みの主成分分析 (PCA) アルゴリズムが使用されています。 
+これらの要件に基づき、異常を検出するための 2 つの異なるモデルを作成しました。1 つは車両メンテナンスの検出用で、もう 1 つは車両リコールの検出用です。 どちらのモデルでも、異常検出のために、組み込みの主成分分析 (PCA) アルゴリズムが使用されています。 
 
 **メンテナンス検出モデル**
 
-3 つのインジケーター (タイヤ空気圧、エンジン オイル、エンジン温度) のいずれかがそれぞれの条件を満たす場合、メンテナンス検出モデルは異常を報告します。 そのため、モデルの構築では、これらの&3; つの変数だけを考慮すれば済みます。 Azure Machine Learning による実験では、まず、 **データセット内の列の選択** モジュールを使用して、これらの&3; つの変数を抽出します。 次に、PCA ベースの異常検出モジュールを使用して、異常検出モデルを構築します。 
+3 つのインジケーター (タイヤ空気圧、エンジン オイル、エンジン温度) のいずれかがそれぞれの条件を満たす場合、メンテナンス検出モデルは異常を報告します。 そのため、モデルの構築では、これらの 3 つの変数だけを考慮すれば済みます。 Azure Machine Learning による実験では、まず、 **データセット内の列の選択** モジュールを使用して、これらの 3 つの変数を抽出します。 次に、PCA ベースの異常検出モジュールを使用して、異常検出モデルを構築します。 
 
 主成分分析 (PCA) は、機能の選択、分類、および異常検出に使用できる、機械学習で確立された手法です。 PCA では、関連を持つ可能性がある変数を含むケースのセットを、主要成分と呼ばれる値のセットに変換します。 PCA ベースのモデルの基本的な考え方は、機能や異常をより簡単に識別できるように、データをより低い次元の空間に投影することです。
 
@@ -393,11 +388,9 @@ Azure Stream Analytics のすべての "ウィンドウ化" 機能の詳細に�
 [ここ](http://go.microsoft.com/fwlink/?LinkId=717078) をクリックして、RealtimeDashboardApp Visual Studio ソリューションをダウンロードし、カスタマイズします。 
 
 **リアルタイム ダッシュボード アプリケーションを実行するには**
-
-1. [ダイアグラム] ビューで [Power BI] ノードをクリックし、[プロパティ] ウィンドウで [Download Real-time Dashboard Application] リンクをクリックします。 ![Power BI ダッシュ ボードのセットアップ手順](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig15-vehicle-telematics-powerbi-dashboard-setup.png) *図 15 – Power BI ダッシュ ボードのセットアップ手順*
-2. ![RealtimeDashboardApp フォルダー](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig16-vehicle-telematics-realtimedashboardapp-folder.png)をローカルに抽出し、保存します *図 16 - RealtimeDashboardApp フォルダー*  
-3. RealtimeDashboardApp.exe アプリケーションを実行します。
-4. 有効な Power BI 資格情報を指定し、サインインして [Accept] をクリックします。 ![リアルタイム ダッシュボード アプリで Power BI にサインイン](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17a-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) ![リアルタイム ダッシュボード アプリで Power BI にサインイン完了](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17b-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) 
+1. ![RealtimeDashboardApp フォルダー](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig16-vehicle-telematics-realtimedashboardapp-folder.png)をローカルに抽出し、保存します *図 16 - RealtimeDashboardApp フォルダー*  
+2. RealtimeDashboardApp.exe アプリケーションを実行します。
+3. 有効な Power BI 資格情報を指定し、サインインして [Accept] をクリックします。 ![リアルタイム ダッシュボード アプリで Power BI にサインイン](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17a-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) ![リアルタイム ダッシュボード アプリで Power BI にサインイン完了](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17b-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) 
 
 *図 17 – RealtimeDashboardApp: Power BI へのサインイン*
 
@@ -668,7 +661,7 @@ Azure Stream Analytics のすべての "ウィンドウ化" 機能の詳細に�
 ## <a name="publish"></a>[発行]
 
 ### <a name="real-time-analysis"></a>リアルタイム分析
-Stream Analytics ジョブのクエリの&1; つでは、出力のイベント ハブ インスタンスにイベントが発行されます。 
+Stream Analytics ジョブのクエリの 1 つでは、出力のイベント ハブ インスタンスにイベントが発行されます。 
 
 ![Stream Analytics ジョブから出力のイベント ハブ インスタンスへの発行](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig25-vehicle-telematics-stream-analytics-job-publishes-output-event-hub.png)
 

@@ -50,7 +50,7 @@
 ### [IoT セキュリティのベスト プラクティス](../iot-suite/iot-security-best-practices.md)
 
 ## セキュリティのアーキテクチャ
-### [データ分類](azure-security-data-classification.md)
+### [データ分類](https://gallery.technet.microsoft.com/Data-Classification-for-51252f03)
 ### [Azure 上に構築されたアプリケーションの障害復旧と高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md?toc=%2fazure%2fsecurity%2ftoc.json)
 
 # 関連項目

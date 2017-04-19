@@ -4,7 +4,7 @@ description: "アプリケーションを登録および構築するために Az
 services: active-directory
 documentationcenter: 
 author: dstrockis
-manager: terrylan
+manager: mbaldwin
 editor: 
 ms.assetid: 1f4b24eb-ab4d-4baa-a717-2a0e5b8d27cd
 ms.service: active-directory
@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 09/28/2015
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: 146d1377a017becdcdcd7fed7b97f07c2cb2bb39
-ms.openlocfilehash: 151b9bd8f29a1112c9ad839f2729309dba97c283
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: b4232f2d27624e44a720047ad44991059316413e
+ms.lasthandoff: 04/14/2017
 
 
 ---
@@ -47,7 +48,7 @@ Azure AD ユーザーがアプリケーションにサインインできるよ�
 3. 自動的に "既定のディレクトリ" にサインインされるはずですが、そうならない場合は、右上隅のアカウント名をクリックしてディレクトリを切り替えることができます。
 4. **[クイック タスク]** セクションで **[ユーザーの追加]** を選択します。
 5. [ユーザーの追加] フォームで、次の詳細を指定します。
-   
+
    * 名前: (適切な値を選択)
    * ユーザー名: (この管理者のユーザー名を選択)
    * プロファイル: (名、姓、役職、および部署の適切な値を入力)
@@ -57,16 +58,10 @@ Azure AD ユーザーがアプリケーションにサインインできるよ�
 8. 一時的なパスワードを変更するには、この新しいユーザー アカウントで [https://login.microsoftonline.com](https://login.microsoftonline.com) にログインし、要求された場合にはパスワードを変更します。
 
 ## <a name="use-an-organizational-azure-subscription"></a>組織の Azure サブスクリプションを使用する
-以前に組織のアカウントで Azure サブスクリプションにサインアップしている場合は、既にテナントを持っています。  [Azure Portal](https://portal.azure.com) で [その他のサービス]、[Azure Active Directory] に移動すると、テナントが見つかるはずです。  必要に応じて、このテナントを自由に使用できます。 
+以前に組織のアカウントで Azure サブスクリプションにサインアップしている場合は、既にテナントを持っています。  [Azure Portal](https://portal.azure.com) で [その他のサービス]、[Azure Active Directory] に移動すると、テナントが見つかるはずです。  必要に応じて、このテナントを自由に使用できます。
 
 ## <a name="start-from-scratch"></a>最初から行う
 上記のいずれにも当てはまらなくても、心配しないでください。  [https://account.windowsazure.com/organization](https://account.windowsazure.com/organization) にアクセスして、新しい組織で Azure にサインアップするだけです。  プロセスが完了すると、サインアップ時に選択したドメイン名で専用の Azure AD テナントが作成されます。  [Azure Portal](https://portal.azure.com) の左側にあるナビゲーションで [Azure Active Directory] に移動すると、テナントを見つけることができます。
 
 Azure へのサインアップ プロセスの中で、クレジット カードの詳細を提供する必要があります。  Azure AD でのアプリケーションの発行または新しいテナントの作成には料金は発生しないので安心してください。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

@@ -15,18 +15,18 @@ ms.workload: NA
 ms.date: 01/04/2017
 ms.author: dekapur
 translationtype: Human Translation
-ms.sourcegitcommit: bb93d4dac1853a317bbd6ac70946753f35be264e
-ms.openlocfilehash: bc1dd1d2c378e628094fe717d9c89298aca1f7b4
-ms.lasthandoff: 01/06/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: e2b969151876fac34b2a5c05ce050ee6b51004d0
+ms.lasthandoff: 04/18/2017
 
 
 ---
 # <a name="report-and-check-service-health"></a>サービス正常性のレポートとチェック
 サービスで問題が発生した場合、インシデントと停止に対処して修正する能力は、問題を迅速に検出できるかどうかに依存します。 問題とエラーをサービス コードから Service Fabric Health Manager にレポートすれば、正常性状態を確認するために Service Fabric に用意されている標準の正常性監視ツールを使用できます。
 
-サービスから正常性をレポートできる&3; つの方法があります。
+サービスから正常性をレポートできる 3 つの方法があります。
 
-* [Partition](https://msdn.microsoft.com/library/system.fabric.istatefulservicepartition.aspx) オブジェクトまたは [CodePackageActivationContext](https://msdn.microsoft.com/library/system.fabric.codepackageactivationcontext.aspx) オブジェクトを使用します。  
+* [Partition](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition) オブジェクトまたは [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext) オブジェクトを使用します。  
   `Partition` と `CodePackageActivationContext` オブジェクトを使用し、現在のコンテキストに含まれる要素の正常性をレポートできます。 たとえば、レプリカの一部として実行されるコードでは、そのレプリカ、所属パーティション、含まれるアプリケーションのみの正常性をレポートできます。
 * `FabricClient`を使用します。   
   クラスターが[セキュリティで保護](service-fabric-cluster-security.md)されていない場合やサービスが管理者特権で実行されている場合、`FabricClient` を使用し、サービス コードから正常性をレポートできます。 これは、ほとんどの現実のシナリオには当てはまりません。 `FabricClient`では、クラスターの一部であるすべてのエンティティの正常性をレポートできます。 ただし、サービス コードで独自の正常性に関するレポートのみを送信するのが理想的です。

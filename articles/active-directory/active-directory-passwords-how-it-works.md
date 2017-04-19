@@ -16,15 +16,15 @@ ms.date: 02/28/2017
 ms.author: joflore
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: 24c94f80afdb3d3330a835fae2f77ecb213a9ae5
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: b9f7c86415a2606cb969427a362b4d2feef183fb
+ms.lasthandoff: 04/13/2017
 
 
 ---
 # <a name="how-password-management-works-in-azure-active-directory"></a>Azure Active Directory でのパスワード管理のしくみ
 > [!IMPORTANT]
-> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#reset-your-password)にお進みください。
+> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#reset-my-password)にお進みください。
 
 Azure Active Directory (Azure AD) でのパスワード管理は、次の論理コンポーネントで構成されます。
 
@@ -116,7 +116,7 @@ Azure AD Connect について詳しくは、[Azure AD Connect の概要](active-
 
 Azure AD のパスワードのリセットについて詳しくは、次のページをご覧ください。
 
-* **サインインに問題がありますか?** 問題がある場合は、[自分のパスワードを変更してリセットする方法](active-directory-passwords-update-your-own-password.md#reset-your-password)を確認してください。
+* **サインインに問題がありますか?** 問題がある場合は、[自分のパスワードを変更してリセットする方法](active-directory-passwords-update-your-own-password.md#reset-my-password)を確認してください。
 * [**概要**](active-directory-passwords-getting-started.md) - ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
 * [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。
 * [**ベスト プラクティス**](active-directory-passwords-best-practices.md) - 組織内でのパスワードの迅速なデプロイと効果的な管理方法について説明します。

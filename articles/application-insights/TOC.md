@@ -31,7 +31,7 @@
 ## 計画と設計
 ### [Web アプリおよびサービスの詳細な診断](app-insights-devops.md)
 ### [Web アプリケーションのパフォーマンスを監視する](app-insights-web-monitor-performance.md)
-### [Application Insights による利用状況分析](app-insights-overview-usage.md)
+### [Application Insights による利用状況分析](app-insights-web-track-usage.md)
 ### [Application Insights リソースの分離](app-insights-separate-resources.md)
 ### [Application Insights での作業](app-insights-how-do-i.md)
 
@@ -49,7 +49,6 @@
 #### [依存関係](app-insights-asp-net-dependencies.md)
 #### [リリース注釈](app-insights-annotations.md)
 #### [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md)
-#### [FAQ](app-insights-troubleshoot-faq.md)
 
 
 ### J2EE
@@ -92,6 +91,7 @@
 #### [ツアー](app-insights-analytics-tour.md)
 #### [キューにメッセージがないときに](app-insights-analytics-using.md)
 #### [インポート](app-insights-analytics-import.md)
+#### [診断](app-insights-analytics-diagnostics.md)
 
 ## 自動化
 
@@ -146,6 +146,7 @@
 ### [SDK リリース ノート](app-insights-release-notes.md)
 ### [Developer Analytics Tools のリリース ノート](app-insights-release-notes-vsix.md)
 
+## [FAQ](app-insights-troubleshoot-faq.md)
 
 ## [ヘルプ]
 ### [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=ApplicationInsights)  

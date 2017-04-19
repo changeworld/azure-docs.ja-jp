@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 11/10/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 42e682eb8e0a740393648e9fe49244c3a02a9867
-ms.openlocfilehash: eb6bce9be34467e472fbae6cbf154f3b789b6ddc
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 878badf2753b4ceb471abc789e388fd784c4c42a
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -132,14 +133,9 @@ HTTP 要求に関するテレメトリが概要ブレードに表示されます
 [メトリックの詳細についてはこちらをご覧ください。](app-insights-metrics-explorer.md)
 
 ## <a name="next-steps"></a>次のステップ
-* [Web ページにテレメトリを追加](app-insights-web-track-usage.md) して、ページ ビューやユーザー メトリックを監視します。
+* [Web ページにテレメトリを追加](app-insights-javascript.md) して、ページ ビューやユーザー メトリックを監視します。
 * [Web テストを設定](app-insights-monitor-web-app-availability.md) して、アプリケーションが動作していて応答できることを確認します。
 * [ログ トレースをキャプチャする](app-insights-java-trace-logs.md)
 * [イベントおよびログを検索](app-insights-diagnostic-search.md) します。
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 
