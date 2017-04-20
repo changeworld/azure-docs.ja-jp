@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: "IoT クラウド サービス, Azure CLI"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-raspberry-pi-kit-c-get-started
 ms.assetid: f2d7d584-7734-401c-976c-81788a7282a3
 ms.service: iot-hub
 ms.devlang: c

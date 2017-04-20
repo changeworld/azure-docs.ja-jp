@@ -13,10 +13,11 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/18/2017
-ms.author: karolz@microsoft.com
+ms.author: karolz
 translationtype: Human Translation
 ms.sourcegitcommit: d7f7b157d8d6fb54259c8f23d5005509f4eb7872
 ms.openlocfilehash: 22acb6afbfbfff753e71b5e821385798cc76ffdd
+ms.lasthandoff: 01/19/2017
 
 
 ---
@@ -175,8 +176,3 @@ namespace Stateless1
 <!--Image references-->
 [1]: ./media/service-fabric-diagnostics-collect-logs-without-an-agent/eventflow-nugets.png
 [2]: ./media/service-fabric-diagnostics-collect-logs-without-an-agent/ai-traces.png
-
-
-<!--HONumber=Jan17_HO3-->
-
-

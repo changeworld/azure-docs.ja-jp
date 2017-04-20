@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: "クラウドへのデータの格納, クラウドに格納されているデータ, IoT クラウド サービス"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-intel-edison-kit-c-get-started
 ms.assetid: 739b82e9-5d4e-4485-8971-f57cbb682faf
 ms.service: iot-hub
 ms.devlang: c

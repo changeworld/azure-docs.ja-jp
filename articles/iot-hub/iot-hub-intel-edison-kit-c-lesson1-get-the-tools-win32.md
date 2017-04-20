@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: "Arduino 開発ツール, IoT 開発, IoT ソフトウェア, モノのインターネット ソフトウェア, Windows での Git のインストール, Windows での Node.js のインストール"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-intel-edison-kit-c-get-started
 ms.assetid: 7d29a358-544d-4657-a504-5ed9b79c2925
 ms.service: iot-hub
 ms.devlang: c

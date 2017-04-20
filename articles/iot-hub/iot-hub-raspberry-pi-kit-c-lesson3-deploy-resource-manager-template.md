@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: "クラウドへのデータの格納, クラウドに格納されているデータ, IoT クラウド サービス"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-raspberry-pi-kit-c-get-started
 ms.assetid: 4bcfb071-b3ae-48cc-8ea5-7e7434732287
 ms.service: iot-hub
 ms.devlang: c
