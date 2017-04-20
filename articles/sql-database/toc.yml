@@ -4,8 +4,6 @@
   items:
   - name: "SQL DB について"
     href: sql-database-technical-overview.md
-  - name: "SQL DB の比較"
-    href: sql-database-features.md
 - name: "クイック スタート"
   expanded: true
   items:
@@ -69,8 +67,12 @@
       href: sql-database-benchmark-overview.md
     - name: "制限"
       href: sql-database-resource-limits.md
-  - name: "ツール"
-    href: sql-database-manage-overview.md
+    - name: "PaaS または IaaS"
+      href: sql-database-paas-vs-sql-server-iaas.md  
+    - name: "Features (機能)"
+      href: sql-database-features.md
+    - name: "ツール"
+      href: sql-database-manage-overview.md
   - name: "データのパーティション分割"
     items:
     - name: "シャード データベース"
@@ -231,10 +233,6 @@
     items:
     - name: "Azure AD 認証"
       href: sql-database-aad-authentication-configure.md
-    - name: "監査"
-      href: sql-database-auditing-portal.md
-    - name: "脅威の検出"
-      href: sql-database-threat-detection-portal.md
     - name: "暗号化 - 証明書ストア"
       href: sql-database-always-encrypted.md
     - name: "暗号化 - Key Vault"
@@ -388,6 +386,8 @@
   items:
   - name: "FAQ"
     href: sql-database-faq.md
+  - name: "パブリック データ セット"
+    href: sql-database-public-data-sets.md  
   - name: "接続のトラブルシューティング"
     href: https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database
   - name: "価格"
@@ -414,3 +414,5 @@
       href: https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools
     - name: "エラスティック プール カスタム ダッシュボード"
       href: https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools-custom-dashboard
+
+

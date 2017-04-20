@@ -15,7 +15,6 @@
 ### [既定のイメージの追加](azure-stack-add-default-image.md)
 ### [仮想マシンのプロビジョニング](azure-stack-provision-vm.md)
 ### [ストレージ アカウントの作成](azure-stack-provision-storage-account.md)
-### [Azure Stack テナントの追加](azure-stack-add-new-user-aad.md)
 ### [Azure Stack POC の再デプロイ](azure-stack-redeploy.md)
 
 # 管理
@@ -31,15 +30,17 @@
 ## 方法
 ### [更新プログラムの管理](azure-stack-updates.md)
 ### [正常性とアラートの監視](azure-stack-monitor-health.md)
-### [ネットワーク リソースの管理](azure-stack-viewing-public-ip-address-consumption-in-tp2.md)
+### [ネットワーク リソースの管理](azure-stack-viewing-public-ip-address-consumption.md)
 ### [ストレージ リソースの管理](azure-stack-manage-storage-accounts.md)
 ### [Windows Azure Pack VM の管理](azure-stack-manage-windows-azure-pack.md)
 
 # セキュリティとコンプライアンス
 ## 方法
 ### [RBAC の管理](azure-stack-manage-permissions.md)
+### [Azure AD のユーザーの追加](azure-stack-add-new-user-aad.md)
 ### [AD FS のユーザーの追加](azure-stack-add-users-adfs.md)
 ### [サービス プリンシパルの作成](Azure-stack-create-service-principals.md)
+### [マルチテナントの有効化](azure-stack-enable-multitenancy.md)
 
 # サービスの提供
 ## 作業開始

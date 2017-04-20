@@ -28,7 +28,6 @@
 ## バッチ クエリへの Hadoop の使用
 ### [Hive と Hadoop](hdinsight-use-hive.md)
 #### [Hive ビューを使用する](hdinsight-hadoop-use-hive-ambari-view.md)
-#### [SSH の使用](hdinsight-hadoop-use-hive-ssh.md)
 #### [Beeline を使用する](hdinsight-hadoop-use-hive-beeline.md)
 #### [cURL の使用](hdinsight-hadoop-use-hive-curl.md)
 #### [PowerShell の使用](hdinsight-hadoop-use-hive-powershell.md)
@@ -109,6 +108,7 @@
 ### [Spark での使用](hdinsight-apache-spark-with-kafka.md)
 ### [Storm での使用](hdinsight-apache-storm-with-kafka.md)
 ## 開発
+### [C# ストリーミング MapReduce プログラムを開発する](hdinsight-hadoop-dotnet-csharp-mapreduce-streaming.md)
 ### [Java MapReduce プログラムを開発する](hdinsight-develop-deploy-java-mapreduce-linux.md)
 ### [Scalding MapReduce ジョブを開発する](hdinsight-hadoop-mapreduce-scalding.md)
 ### [HDInsight Tools を使用して Spark アプリを作成する](hdinsight-apache-spark-eclipse-tool-plugin.md)
@@ -199,6 +199,7 @@
 # 関連項目
 ## Windows クラスター
 ### [Windows クラスターを Linux クラスターに移行する](hdinsight-migrate-from-windows-to-linux.md)
+### [.NET ソリューションを Linux クラスターに移行する](hdinsight-hadoop-migrate-dotnet-to-linux.md)
 ### [Hadoop MapReduce サンプルを実行する](hdinsight-run-samples.md)
 ### [クラスターで Solr を使用する](hdinsight-hadoop-solr-install-linux.md)
 ### [Giraph を使用して大規模なグラフを処理する](hdinsight-hadoop-giraph-install.md)

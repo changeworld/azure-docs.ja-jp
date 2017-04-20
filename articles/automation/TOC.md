@@ -1,17 +1,20 @@
 # 概要
 ## [Azure Automation とは](automation-intro.md)
 # 作業開始
+## [Azure Automation の概要](automation-offering-get-started.md)
 ## Runbook のチュートリアル
 ### [グラフィカル Runbook を作成する](automation-first-runbook-graphical.md)
 ### [初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md)
 ### [PowerShell Workflow Runbook を作成する](automation-first-runbook-textual.md)
 # 方法
 ## 認証とセキュリティ
-### [Azure Automation での認証](automation-security-overview.md)
-### [Azure 実行アカウントの構成](automation-sec-configure-azure-runas-account.md)
-### [Azure AD ユーザー アカウントの構成](automation-sec-configure-aduser-account.md)
-### [AWS を使った認証の構成](automation-sec-configure-aws-account.md)
+### [スタンドアロン Automation アカウントを作成する](automation-create-standalone-account.md)
+### [Azure AD ユーザー アカウントを作成する](automation-create-aduser-account.md)
+### [AWS を使って認証を構成する](automation-config-aws-account.md)
+### [PowerShell で Azure 実行アカウントを作成する](automation-update-account-powershell.md)
+### [Automation アカウントの構成を検証する](automation-verify-runas-authentication.md)
 ### [ロールベースのアクセス制御を管理する](automation-role-based-access-control.md)
+### [Automation アカウントを管理する](automation-manage-account.md)
 ## Runbook を作成する
 ### [Runbook の種類](automation-runbook-types.md)
 ### [Runbook を作成およびインポートする](automation-creating-importing-runbook.md)
@@ -71,7 +74,7 @@
 ## [PowerShell](/powershell/resourcemanager/azurerm.automation/v2.3.0/azurerm.automation)
 ## [PowerShell (クラシック)](/powershell/servicemanagement/azure.automation/v3.1.0/azure.automation)
 ## [.NET](/dotnet/api/microsoft.azure.management.automation)
-## [REST ()](https://msdn.microsoft.com/library/azure/mt662285.aspx)
+## [REST ()](/rest/api/automation)
 ## [REST (クラシック)](https://msdn.microsoft.com/library/azure/mt163781)
 # リソース
 ## [リリース ノート](https://azure.microsoft.com/updates/?product=automation)

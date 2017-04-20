@@ -287,10 +287,10 @@
 ### [言語](Translator/languages.md)
 ### [ハブ](Translator/translator-hub-overview.md)
 ### [CTF](Translator/collaborative-translation-framework-reporting-api.md)
-### [Speech translation API の概要](Translator/speech-overview.md)
-### [Speech translation API リファレンス](http://docs.microsofttranslator.com/speech-translate.html)
-### [Text translation API の概要](Translator/text-overview.md)
-### [Text translation API のリファレンス](http://docs.microsofttranslator.com/text-translate.html)
+### [Translator Speech API の概要](Translator/speech-overview.md)
+### [Translator Speech API のリファレンス](http://docs.microsofttranslator.com/speech-translate.html)
+### [Translator Text API の概要](Translator/text-overview.md)
+### [Translator Text API のリファレンス](http://docs.microsofttranslator.com/text-translate.html)
 
 ## ビデオ
 ### [概要](Video/Home.md)
