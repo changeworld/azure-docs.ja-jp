@@ -115,7 +115,7 @@ HDInsight の Apache Spark クラスターを使用して Machine Learning ア�
         training = documents.toDF()
 
 
-1. トークナイザー、hashingTF、lr という&3; つのステージで構成される Spark 機械学習パイプラインを構成します。 パイプラインの概要と機能について詳しくは、<a href="http://spark.apache.org/docs/latest/ml-guide.html#how-it-works" target="_blank">Spark 機械学習に関するページ</a>をご覧ください。
+1. トークナイザー、hashingTF、lr という 3 つのステージで構成される Spark 機械学習パイプラインを構成します。 パイプラインの概要と機能について詳しくは、<a href="http://spark.apache.org/docs/latest/ml-guide.html#how-it-works" target="_blank">Spark 機械学習に関するページ</a>をご覧ください。
    
     次のスニペットを空のセルに貼り付けて、 **Shift + Enter**キーを押します。
    

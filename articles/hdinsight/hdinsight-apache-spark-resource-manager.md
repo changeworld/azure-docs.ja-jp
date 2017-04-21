@@ -64,7 +64,7 @@ Spark クラスターで現在実行されているアプリケーションを�
    >
 
 ## <a name="what-is-the-optimum-cluster-configuration-to-run-spark-applications"></a>Spark アプリケーションを実行するための最適なクラスター構成とは
-アプリケーションの要件に応じて Spark を構成するための主要なパラメーターは、`spark.executor.instances`、`spark.executor.cores`、`spark.executor.memory` の&3; つです。 Executor は、Spark アプリケーション用に起動されるプロセスです。 ワーカー ノードで動作し、アプリケーションのタスクを実行する役割を担います。 それぞれのクラスターで使用される Executor の既定の数とサイズは、ワーカー ノードの数とワーカー ノードのサイズに基づいて計算され、 クラスターのヘッド ノード上の `spark-defaults.conf` に保存されます。
+アプリケーションの要件に応じて Spark を構成するための主要なパラメーターは、`spark.executor.instances`、`spark.executor.cores`、`spark.executor.memory` の 3 つです。 Executor は、Spark アプリケーション用に起動されるプロセスです。 ワーカー ノードで動作し、アプリケーションのタスクを実行する役割を担います。 それぞれのクラスターで使用される Executor の既定の数とサイズは、ワーカー ノードの数とワーカー ノードのサイズに基づいて計算され、 クラスターのヘッド ノード上の `spark-defaults.conf` に保存されます。
 
 3 つの構成パラメーターは、クラスター レベルで (クラスター上で動作するすべてのアプリケーションに対して) 構成できるほか、個々のアプリケーションに対して指定することもできます。
 
@@ -100,7 +100,7 @@ Jupyter Notebook で実行しているアプリケーションについては、
     curl -k -v -H 'Content-Type: application/json' -X POST -d '{"file":"<location of application jar file>", "className":"<the application class to execute>", "args":[<application parameters>], "numExecutors":10, "executorMemory":"2G", "executorCores":5' localhost:8998/batches
 
 ### <a name="how-do-i-change-these-parameters-on-a-spark-thrift-server"></a>これらのパラメーターを Spark Thrift サーバーで変更する方法
-Spark Thrift サーバーを使用すると、Spark クラスターに JDBC/ODBC でアクセスし、Spark SQL クエリを実行することができます。 Power BI や Tableau などのツールは、 ODBC プロトコルを使用して Spark Thrift サーバーとやり取りし、Spark アプリケーションとして Spark SQL クエリを実行します。 Spark クラスターを作成すると、Spark Thrift サーバーの&2; つのインスタンスが起動されます (ヘッド ノードごとに&1; つ)。 YARN UI には、各 Spark Thrift サーバーが Spark アプリケーションとして表示されます。
+Spark Thrift サーバーを使用すると、Spark クラスターに JDBC/ODBC でアクセスし、Spark SQL クエリを実行することができます。 Power BI や Tableau などのツールは、 ODBC プロトコルを使用して Spark Thrift サーバーとやり取りし、Spark アプリケーションとして Spark SQL クエリを実行します。 Spark クラスターを作成すると、Spark Thrift サーバーの 2 つのインスタンスが起動されます (ヘッド ノードごとに 1 つ)。 YARN UI には、各 Spark Thrift サーバーが Spark アプリケーションとして表示されます。
 
 Spark Thrift サーバーでは、Spark の Dynamic Executor Allocation が使用されるため、 `spark.executor.instances` は使用されません。 代わりに、Executor 数の指定に `spark.dynamicAllocation.minExecutors` と `spark.dynamicAllocation.maxExecutors` が使用されます。 Executor のサイズ変更には、構成パラメーターとして `spark.executor.cores` と `spark.executor.memory` が使用されます。 これらのパラメーターは、以下のように変更できます。
 
@@ -125,7 +125,7 @@ Spark の動的割り当てを使用するため、Thrift サーバーから利�
 2. 次のページで、 **[Spark Thrift Servers]**をクリックします。
 
     ![Restart thrift server](./media/hdinsight-apache-spark-resource-manager/restart-thrift-server-1.png)
-3. Spark Thrift サーバーが実行されている&2; つのヘッド ノードが表示されます。 いずれかのヘッド ノードをクリックしてください。
+3. Spark Thrift サーバーが実行されている 2 つのヘッド ノードが表示されます。 いずれかのヘッド ノードをクリックしてください。
 
     ![Restart thrift server](./media/hdinsight-apache-spark-resource-manager/restart-thrift-server-2.png)
 4. そのヘッド ノードで実行されているすべてのサービスが次のページに一覧表示されます。 一覧内の Spark Thrift サーバーの横にあるドロップダウン ボタンをクリックし、 **[Stop (停止)]**をクリックします。

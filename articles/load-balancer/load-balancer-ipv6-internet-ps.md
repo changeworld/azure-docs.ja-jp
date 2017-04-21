@@ -29,7 +29,7 @@ ms.lasthandoff: 01/24/2017
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [テンプレート](load-balancer-ipv6-internet-template.md)
 
-Azure Load Balancer は、第&4; 層 (TCP、UDP) のロード バランサーです。 ロード バランサーは、ロード バランサー セット内のクラウド サービスまたは仮想マシンの正常なサービス インスタンスに着信トラフィックを分散することによって高可用性を提供します。 さらに、Azure Load Balancer は、これらのサービスを複数のポート、複数の IP アドレス、またはその両方に提供できます。
+Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーです。 ロード バランサーは、ロード バランサー セット内のクラウド サービスまたは仮想マシンの正常なサービス インスタンスに着信トラフィックを分散することによって高可用性を提供します。 さらに、Azure Load Balancer は、これらのサービスを複数のポート、複数の IP アドレス、またはその両方に提供できます。
 
 ## <a name="example-deployment-scenario"></a>デプロイ シナリオの例
 
@@ -40,7 +40,7 @@ Azure Load Balancer は、第&4; 層 (TCP、UDP) のロード バランサーで
 このシナリオでは、次の Azure リソースを作成します。
 
 * IPv4 と IPv6 のパブリック IP アドレスでインターネットに接続するロード バランサー
-* パブリック VIP をプライベート エンドポイントにマップする&2; つの負荷分散規則
+* パブリック VIP をプライベート エンドポイントにマップする 2 つの負荷分散規則
 * 2 つの VM が含まれる可用性セット
 * 2 つの仮想マシン (VM)
 * IPv4 と IPv6 の両方のアドレスが割り当てられている各 VM の仮想ネットワーク インターフェイス
@@ -141,7 +141,7 @@ PowerShell 用 Azure Resource Manager (ARM) モジュールが最新の製品版
     $inboundNATRule1v6 = New-AzureRmLoadBalancerInboundNatRuleConfig -Name "NicNatRulev6" -FrontendIpConfiguration $FEIPConfigv6 -Protocol TCP -FrontendPort 443 -BackendPort 4443
     ```
 
-2. 正常性プローブを作成します。 プローブは次の&2; とおりの方法で構成できます。
+2. 正常性プローブを作成します。 プローブは次の 2 とおりの方法で構成できます。
 
     HTTP プローブ
 
