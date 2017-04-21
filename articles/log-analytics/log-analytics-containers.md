@@ -1,6 +1,6 @@
 ---
 title: "Azure Log Analytics のコンテナー ソリューション | Microsoft Docs"
-description: "Log Analytics のコンテナー ソリューションを使用すると、Docker および Windows コンテナー ホストを&1; か所で表示して管理できます。"
+description: "Log Analytics のコンテナー ソリューションを使用すると、Docker および Windows コンテナー ホストを 1 か所で表示して管理できます。"
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -22,7 +22,7 @@ ms.lasthandoff: 03/11/2017
 
 ---
 # <a name="containers-preview-solution-log-analytics"></a>Log Analytics のコンテナー (プレビュー) ソリューション
-この記事では、Docker および Windows コンテナー ホストを&1; か所で表示して管理できる、Log Analytics のコンテナー ソリューションを設定して使用する方法について説明します。 Docker は、IT インフラストラクチャへのソフトウェアのデプロイを自動化するコンテナーを作成するために使用されるソフトウェア仮想化システムです。
+この記事では、Docker および Windows コンテナー ホストを 1 か所で表示して管理できる、Log Analytics のコンテナー ソリューションを設定して使用する方法について説明します。 Docker は、IT インフラストラクチャへのソフトウェアのデプロイを自動化するコンテナーを作成するために使用されるソフトウェア仮想化システムです。
 
 このソリューションを使用すれば、コンテナー ホストで実行されているコンテナーとコンテナー内で実行されているイメージを確認できます。 コンテナーで使用されるコマンドを示す詳細な監査情報を確認できます。 また、Docker または Windows ホストをリモートで確認しなくても、一元化されたログを表示および検索して、コンテナーのトラブルシューティングを行うことができます。 ホストで余分なリソースを使用しているコンテナーや、ノイズが大きいコンテナーを特定できます。 また、コンテナーについて、CPU、メモリ、ストレージ、ネットワークの使用量とパフォーマンスに関する情報を一元的に確認できます。 Windows を実行しているコンピューターでは、Windows Server、Hyper-V、Docker の各コンテナーのログを一元化して比較できます。
 
@@ -253,7 +253,7 @@ Type=Perf <containerName>
 ![コンテナーのパフォーマンス](./media/log-analytics-containers/containers-perf03.png)
 
 ## <a name="example-log-search-queries"></a>検索クエリの例
-クエリの作成の際には、多くの場合、1 ～&2; 個の例で始め、その後環境に合わせて変更するとうまくいきます。 まず、**[注目すべきクエリ]** ブレードを試してみると、より高度なクエリを作成するのに役立ちます。
+クエリの作成の際には、多くの場合、1 ～ 2 個の例で始め、その後環境に合わせて変更するとうまくいきます。 まず、**[注目すべきクエリ]** ブレードを試してみると、より高度なクエリを作成するのに役立ちます。
 
 ![コンテナーのクエリ](./media/log-analytics-containers/containers-queries.png)
 

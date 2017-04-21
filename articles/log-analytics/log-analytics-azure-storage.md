@@ -24,7 +24,7 @@ ms.lasthandoff: 03/15/2017
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Log Analytics で Azure サービスのログとメトリックを使用できるように収集する
 
-Azure サービスのログとメトリックを収集する方法は&4; 種類あります。
+Azure サービスのログとメトリックを収集する方法は 4 種類あります。
 
 1. Azure 診断から Log Analytics に直接 (次の表の "*診断*")
 2. Azure 診断から Azure storage 経由で Log Analytics に (次の表の "*ストレージ*")

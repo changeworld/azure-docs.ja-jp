@@ -44,13 +44,13 @@ Azure Managed Cache Service と Azure Redis Cache は似ていますが、一部
 
 | Managed Cache Service の機能 | Managed Cache Service のサポート | Azure Redis Cache のサポート |
 | --- | --- | --- |
-| 名前付きキャッシュ |既定のキャッシュが構成され、Standard および Premium キャッシュ プランでは、必要に応じて最大&9; 個の名前付きキャッシュを追加構成できます。 |Azure Redis キャッシュには、名前付きキャッシュに似た機能の実装に使用できるデータベースがあります (データベースの数は既定で 16 個ですが、構成できます)。 詳細については、「[What are Redis databases? (Redis データベースとは)](cache-faq.md#what-are-redis-databases)」と「[既定の Redis サーバー構成](cache-configure.md#default-redis-server-configuration)」を参照してください。 |
+| 名前付きキャッシュ |既定のキャッシュが構成され、Standard および Premium キャッシュ プランでは、必要に応じて最大 9 個の名前付きキャッシュを追加構成できます。 |Azure Redis キャッシュには、名前付きキャッシュに似た機能の実装に使用できるデータベースがあります (データベースの数は既定で 16 個ですが、構成できます)。 詳細については、「[What are Redis databases? (Redis データベースとは)](cache-faq.md#what-are-redis-databases)」と「[既定の Redis サーバー構成](cache-configure.md#default-redis-server-configuration)」を参照してください。 |
 | 高可用性 |Standard および Premium キャッシュ プランでは、キャッシュ内のアイテムの高可用性が提供されます。 アイテムが障害によって失われた場合でも、キャッシュ内のアイテムのバックアップ コピーを使用できます。 セカンダリ キャッシュへの書き込みは同期的に行われます。 |高可用性は Standard および Premium キャッシュ プランで利用でき、2 ノードのプライマリ/レプリカ構成を使用します (Premium キャッシュではシャードごとにプライマリ/レプリカ ペアがあります)。 レプリカへの書き込みは非同期的に行われます。 詳細については、 [Azure Redis Cache の価格に関するページ](https://azure.microsoft.com/pricing/details/cache/)を参照してください。 |
 | 通知 |名前付きキャッシュでさまざまなキャッシュ操作が発生したとき、クライアントは非同期の通知を受け取ることができます。 |クライアント アプリケーションは、Redis のパブリッシュ/サブスクライブまたは [キースペース通知](cache-configure.md#keyspace-notifications-advanced-settings) を使用して、同様の通知機能を実現できます。 |
 | ローカル キャッシュ |特に高速のアクセスのため、キャッシュされたオブジェクトのコピーをクライアントにローカルに格納します。 |クライアント アプリケーションは、ディクショナリまたは類似のデータ構造を使用してこの機能を実装する必要があります。 |
 | 削除ポリシー |None または LRU。 既定のポリシーは LRU です。 |Azure Redis Cache は、volatile-lru、allkeys-lru、volatile-random、allkeys-random、volatile-ttl、noeviction の各削除ポリシーをサポートします。 既定のポリシーは volatile-lru です。 詳細については、「 [既定の Redis サーバー構成](cache-configure.md#default-redis-server-configuration)」を参照してください。 |
-| 有効期限ポリシー |既定の有効期限ポリシーは絶対であり、既定の有効期限は&10; 分です。 スライド式ポリシーおよび期限なしポリシーも使用できます。 |既定ではキャッシュ内のアイテムは期限切れしませんが、キャッシュ設定のオーバーロードを使用して書き込みごとに有効期限を構成できます。 詳細については、「 [オブジェクトをキャッシュに追加する、キャッシュから削除する](cache-dotnet-how-to-use-azure-redis-cache.md#add-and-retrieve-objects-from-the-cache)」を参照してください。 |
-| リージョンとタグ付け |リージョンは、キャッシュされるアイテムのサブグループです。 また、リージョンでは、タグと呼ばれる追加の説明文を使用してキャッシュされるアイテムに注釈を付けることもできます。 リージョンでは、そのリージョン内のタグ付きアイテムに対する検索操作を実行できます。 リージョン内のすべてのアイテムは、キャッシュ クラスターの&1; つのノードに格納されます。 |Redis キャッシュは&1; つのノードで構成され (Redis クラスターが有効になっていない場合)、Managed Cache Service のリージョンの概念は適用されません。 Redis はキーを取得するときの検索とワイルドカード操作をサポートするので、説明的なタグをキー名に埋め込み、それを使用して後でアイテムを取得できます。 Redis を使用したタグ付けソリューションの実装の例については、 [Redis でのキャッシュタグの実装](http://stackify.com/implementing-cache-tagging-redis/)に関するページをご覧ください。 |
+| 有効期限ポリシー |既定の有効期限ポリシーは絶対であり、既定の有効期限は 10 分です。 スライド式ポリシーおよび期限なしポリシーも使用できます。 |既定ではキャッシュ内のアイテムは期限切れしませんが、キャッシュ設定のオーバーロードを使用して書き込みごとに有効期限を構成できます。 詳細については、「 [オブジェクトをキャッシュに追加する、キャッシュから削除する](cache-dotnet-how-to-use-azure-redis-cache.md#add-and-retrieve-objects-from-the-cache)」を参照してください。 |
+| リージョンとタグ付け |リージョンは、キャッシュされるアイテムのサブグループです。 また、リージョンでは、タグと呼ばれる追加の説明文を使用してキャッシュされるアイテムに注釈を付けることもできます。 リージョンでは、そのリージョン内のタグ付きアイテムに対する検索操作を実行できます。 リージョン内のすべてのアイテムは、キャッシュ クラスターの 1 つのノードに格納されます。 |Redis キャッシュは 1 つのノードで構成され (Redis クラスターが有効になっていない場合)、Managed Cache Service のリージョンの概念は適用されません。 Redis はキーを取得するときの検索とワイルドカード操作をサポートするので、説明的なタグをキー名に埋め込み、それを使用して後でアイテムを取得できます。 Redis を使用したタグ付けソリューションの実装の例については、 [Redis でのキャッシュタグの実装](http://stackify.com/implementing-cache-tagging-redis/)に関するページをご覧ください。 |
 | シリアル化 |Managed Cache は、NetDataContractSerializer、BinaryFormatter、およびカスタム シリアライザーの使用をサポートします。 既定値は NetDataContractSerializer です。 |キャッシュに格納する前の .NET オブジェクトのシリアル化は、クライアント アプリケーションで行う必要があります。使用するシリアライザーはクライアント アプリケーションの開発者が選択します。 詳細とサンプル コードについては、「 [キャッシュ内で .NET オブジェクトを使用する](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache)」を参照してください。 |
 | キャッシュ エミュレーター |Managed Cache には、ローカル キャッシュ エミュレーターが用意されています。 |Azure Redis Cache にはエミュレーターはありませんが、 [redis-server.exe の MSOpenTech ビルドをローカルに実行する](cache-faq.md#cache-emulator) ことで、エミュレーターを体験できます。 |
 
@@ -58,7 +58,7 @@ Azure Managed Cache Service と Azure Redis Cache は似ていますが、一部
 Microsoft Azure Redis Cache には、次のレベルがあります。
 
 * **Basic** – 単一ノード。 複数のサイズ、最大 53 GB
-* **Standard** –&2; ノード (プライマリ/レプリカ)。 複数のサイズ、最大 53 GB 99.9% の SLA。
+* **Standard** – 2 ノード (プライマリ/レプリカ)。 複数のサイズ、最大 53 GB 99.9% の SLA。
 * **Premium** – 最大 10 個のシャードがある 2 ノード (プライマリ/レプリカ)。 6 GB から 530 GB までの複数のサイズ (詳細はお問い合わせください)。 Standard レベルのすべての機能と、[Redis クラスター](cache-how-to-premium-clustering.md)、[Redis の永続化](cache-how-to-premium-persistence.md)、[Azure Virtual Network](cache-how-to-premium-vnet.md) のサポートを含むその他の機能。 99.9% の SLA。
 
 各レベルは、機能と価格ごとに異なります。 機能については、このガイドで後述します。価格の詳細については、[キャッシュ価格の詳細](https://azure.microsoft.com/pricing/details/cache/)ページをご覧ください。
@@ -134,7 +134,7 @@ using StackExchange.Redis
 > 
 > 
 
-Azure Redis Cache インスタンスに接続するには、静的メソッド `ConnectionMultiplexer.Connect` を呼び出して、エンドポイントとキーを渡します。 アプリケーション内の `ConnectionMultiplexer` インスタンスを共有する方法の&1; つに、次の例のように、接続されたインスタンスを返す静的プロパティを設定する方法があります。 これにより、接続された&1; つの `ConnectionMultiplexer` インスタンスだけがスレッドセーフな方法で初期化されます。 この例では、 `abortConnect` が false に設定されており、キャッシュへの接続が確立されていない場合でも呼び出しが成功します。 `ConnectionMultiplexer` の主な機能の&1; つは、ネットワーク問題などの原因が解決されると、キャッシュへの接続が自動的に復元されることです。
+Azure Redis Cache インスタンスに接続するには、静的メソッド `ConnectionMultiplexer.Connect` を呼び出して、エンドポイントとキーを渡します。 アプリケーション内の `ConnectionMultiplexer` インスタンスを共有する方法の 1 つに、次の例のように、接続されたインスタンスを返す静的プロパティを設定する方法があります。 これにより、接続された 1 つの `ConnectionMultiplexer` インスタンスだけがスレッドセーフな方法で初期化されます。 この例では、 `abortConnect` が false に設定されており、キャッシュへの接続が確立されていない場合でも呼び出しが成功します。 `ConnectionMultiplexer` の主な機能の 1 つは、ネットワーク問題などの原因が解決されると、キャッシュへの接続が自動的に復元されることです。
 
 ```c#
 private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
@@ -170,7 +170,7 @@ int key2 = (int)cache.StringGet("key2");
 
 StackExchange.Redis クライアントは、キャッシュ内のアイテムのアクセスと保存に `RedisKey` および `RedisValue` 型を使用します。 これらの型は文字列などのほとんどのプリミティブ言語型にマップし、多くの場合、直接は使用されません。 Redis String は最も基本的な Redis 値の種類であり、シリアル化されたバイナリ ストリームなどの多くの種類のデータを格納でき、この型を直接使用することはできませんが、名前に `String` を含むメソッドを使用します。 コレクションまたは他の Redis データ型をキャッシュに格納していない場合、ほとんどのプリミティブ データ型について、キャッシュのアイテムの格納と取得には `StringSet` および `StringGet` メソッドを使用します。 
 
-`StringSet` および `StringGet` は Managed Cache Service の `Put` および `Get` メソッドととてもよく似ていますが、大きな違いの&1; つは、キャッシュの .NET オブジェクトを設定および取得する前にシリアル化する必要があることです。 
+`StringSet` および `StringGet` は Managed Cache Service の `Put` および `Get` メソッドととてもよく似ていますが、大きな違いの 1 つは、キャッシュの .NET オブジェクトを設定および取得する前にシリアル化する必要があることです。 
 
 `StringGet` を呼び出すと、オブジェクトが存在する場合はそのオブジェクトが返され、存在しない場合は null が返されます。 その場合、目的のデータ ソースから値を取得してキャッシュに格納しておき、後で使用することができます。 これを "キャッシュ アサイド パターン" といいます。
 

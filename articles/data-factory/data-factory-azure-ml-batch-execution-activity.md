@@ -38,7 +38,7 @@ ms.lasthandoff: 03/14/2017
 ## <a name="introduction"></a>はじめに
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
-[Azure Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/) では、予測分析ソリューションをビルド、テスト、およびデプロイできます。 大まかに次の&3; つの手順で行われます。
+[Azure Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/) では、予測分析ソリューションをビルド、テスト、およびデプロイできます。 大まかに次の 3 つの手順で行われます。
 
 1. **トレーニング実験を作成する**。 この手順を実行するには、Azure ML Studio を使用します。 ML Studio は、トレーニング データを活用した予測分析モデルのトレーニングとテストに使用できる、コラボレーションと視覚化に対応した開発環境です。
 2. **トレーニング実験を予測実験に変換する**。 既存のデータでモデルがトレーニングされ、それを使用して新しいデータをスコア付けする準備ができると、スコア付け用に実験を用意し、合理化します。
@@ -47,7 +47,7 @@ ms.lasthandoff: 03/14/2017
 ### <a name="azure-data-factory"></a>Azure Data Factory
 Data Factory は、データの**移動**や**変換**を調整し自動化するクラウドベースのデータ統合サービスです。 さまざまなデータ ストアからデータを取り込み、データを変換/処理して結果データをデータ ストアに発行できる Azure Data Factory を使うことで、データ統合ソリューションを作成できます。
 
-Data Factory サービスでは、データを移動して変換するデータ パイプラインを作成し、指定したスケジュール (毎時、毎日、毎週など) でパイプラインを実行できます。 また、このサービスには視覚化機能が豊富に用意されています。このため、データ パイプライン間の系列と依存関係を表示できるほか、統一された&1; つのビューからすべてのデータ パイプラインを監視して、容易に問題を特定し、監視アラートを設定できます。
+Data Factory サービスでは、データを移動して変換するデータ パイプラインを作成し、指定したスケジュール (毎時、毎日、毎週など) でパイプラインを実行できます。 また、このサービスには視覚化機能が豊富に用意されています。このため、データ パイプライン間の系列と依存関係を表示できるほか、統一された 1 つのビューからすべてのデータ パイプラインを監視して、容易に問題を特定し、監視アラートを設定できます。
 
 Azure Data Factory サービスについては、[Azure Data Factory の概要](data-factory-introduction.md)と [Azure Data Factory を使用した初めてのパイプラインの作成](data-factory-build-your-first-pipeline.md)に関するページを参照してください。
 
@@ -137,7 +137,7 @@ Azure Data Factory を使用してデータの移動と処理を調整した後�
 
 この例を実行する前に、[Data Factory を使用して最初のパイプラインを作成する][adf-build-1st-pipeline]チュートリアルを完了することをお勧めします。 この例では、Data Factory エディターを使用して Data Factory アーティファクト (リンクされたサービス、データセット、パイプライン) を作成します。   
 
-1. **Azure Storage** 用の**リンクされたサービス**を作成します。 入力ファイルと出力ファイルが異なるストレージ アカウントにある場合は、リンクされたサービスが&2; つ必要です。 JSON の例を次に示します。
+1. **Azure Storage** 用の**リンクされたサービス**を作成します。 入力ファイルと出力ファイルが異なるストレージ アカウントにある場合は、リンクされたサービスが 2 つ必要です。 JSON の例を次に示します。
 
     ```JSON
     {
@@ -255,7 +255,7 @@ Azure Data Factory を使用してデータの移動と処理を調整した後�
    3. バッチの実行出力を出力データセットで指定された BLOB にコピーする。
 
       > [!NOTE]
-      > AzureMLBatchExecution アクティビティは、0 個以上の入力と&1; 個以上の出力を使用できます。
+      > AzureMLBatchExecution アクティビティは、0 個以上の入力と 1 個以上の出力を使用できます。
       >
       >
 
@@ -301,7 +301,7 @@ Azure Data Factory を使用してデータの移動と処理を調整した後�
     }
     ```
 
-      **start** と [end](http://en.wikipedia.org/wiki/ISO_8601) の日時は、いずれも **ISO 形式**である必要があります。 (例: 2014-10-14T16:32:41Z)。 **start +&48; 時間** " になります。 **end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。 パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティの値として指定します。 JSON のプロパティの詳細については、 [JSON スクリプティング リファレンス](https://msdn.microsoft.com/library/dn835050.aspx) を参照してください。
+      **start** と [end](http://en.wikipedia.org/wiki/ISO_8601) の日時は、いずれも **ISO 形式**である必要があります。 (例: 2014-10-14T16:32:41Z)。 **start + 48 時間** " になります。 **end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。 パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティの値として指定します。 JSON のプロパティの詳細については、 [JSON スクリプティング リファレンス](https://msdn.microsoft.com/library/dn835050.aspx) を参照してください。
 
       > [!NOTE]
       > AzureMLBatchExecution アクティビティへの入力の指定は省略可能です。
@@ -309,7 +309,7 @@ Azure Data Factory を使用してデータの移動と処理を調整した後�
       >
 
 ### <a name="scenario-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>シナリオ: リーダー/ライター モジュールを使用してさまざまなストレージ内のデータを参照する
-Azure ML を実験するときのもう&1; つの一般的なシナリオは、リーダー モジュールとライター モジュールを使用することです。 リーダー モジュールは実験にデータを読み込むために使用し、ライター モジュールは実験からデータを保存するために使用します。 リーダーとライター モジュールの詳細については、MSDN ライブラリの[リーダー](https://msdn.microsoft.com/library/azure/dn905997.aspx)と[ライター](https://msdn.microsoft.com/library/azure/dn905984.aspx)に関するページを参照してください。     
+Azure ML を実験するときのもう 1 つの一般的なシナリオは、リーダー モジュールとライター モジュールを使用することです。 リーダー モジュールは実験にデータを読み込むために使用し、ライター モジュールは実験からデータを保存するために使用します。 リーダーとライター モジュールの詳細については、MSDN ライブラリの[リーダー](https://msdn.microsoft.com/library/azure/dn905997.aspx)と[ライター](https://msdn.microsoft.com/library/azure/dn905984.aspx)に関するページを参照してください。     
 
 リーダー/ライター モジュールの各プロパティには Web サービスのパラメーターを使用するのがよい方法です。 これらの Web パラメーターを使用すると、実行時に値を構成できます。 たとえば、Azure SQL Database: XXX.database.windows.net を使用するリーダー モジュールで実験を作成できます。 Web サービスをデプロイした後、Web サービスのコンシューマーを有効にして、YYY.database.windows.net という名前の別の Azure SQL Server を指定できます。 Web サービスのパラメーターを使用して、この値を構成できます。
 
@@ -345,7 +345,7 @@ Web サービス パラメーターを使用するシナリオを見てみまし
 >
 
 ### <a name="using-a-reader-module-to-read-data-from-multiple-files-in-azure-blob"></a>リーダー モジュールを使用して Azure BLOB の複数のファイルからデータを読み取る
-ビッグ データ パイプラインにアクティビティ (Pig、Hive など) を設定すると、拡張子が付いていない出力ファイルを&1; つ以上生成できます。 たとえば、外部 Hive テーブルを指定するとき、外部 Hive テーブルのデータを 000000_0 という名前で Azure BLOB ストレージに格納できます。 実験では、リーダー モジュールを使用して複数のファイルを読み取り、予測に使用できます。
+ビッグ データ パイプラインにアクティビティ (Pig、Hive など) を設定すると、拡張子が付いていない出力ファイルを 1 つ以上生成できます。 たとえば、外部 Hive テーブルを指定するとき、外部 Hive テーブルのデータを 000000_0 という名前で Azure BLOB ストレージに格納できます。 実験では、リーダー モジュールを使用して複数のファイルを読み取り、予測に使用できます。
 
 Azure Machine Learning の実験でリーダー モジュールを使用する場合は、入力として Azure BLOB を指定できます。 Azure BLOB Strage 内のファイルは、HDInsight で実行する Pig および Hive スクリプトによって生成される出力ファイル (例: 000000_0) でもかまいません。 リーダー モジュールでは、 **[Path to container, directory/blob (コンテナーへのパス、ディレクトリ/BLOB)]**を構成して (拡張子がない) ファイルを読み取ることができます。 **コンテナーへのパス**でコンテナーをポイントし、**ディレクトリ/BLOB** では、次の画像のようにファイルが含まれるフォルダーをポイントします。 アスタリスク (\*) **は、実験の一環としてコンテナー/フォルダー内のすべてのファイル (つまり、data/aggregateddata/year=2014/month-6/\*)** を読み取るように指定します。
 
@@ -404,8 +404,8 @@ Azure Machine Learning の実験でリーダー モジュールを使用する�
 
 上の JSON の例に関する説明:
 
-* デプロイされた Azure Machine Learning Web サービスは、リーダー モジュールとライター モジュールを使用して、Azure SQL Database のデータを読み書きします。 この Web サービスでは、Database server name、Database name、Server user account name、Server user account password という&4; つのパラメーターが公開されています。  
-* **start** と [end](http://en.wikipedia.org/wiki/ISO_8601) の日時は、いずれも **ISO 形式**である必要があります。 (例: 2014-10-14T16:32:41Z)。 **start +&48; 時間** " になります。 **end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。 パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティの値として指定します。 JSON のプロパティの詳細については、 [JSON スクリプティング リファレンス](https://msdn.microsoft.com/library/dn835050.aspx) を参照してください。
+* デプロイされた Azure Machine Learning Web サービスは、リーダー モジュールとライター モジュールを使用して、Azure SQL Database のデータを読み書きします。 この Web サービスでは、Database server name、Database name、Server user account name、Server user account password という 4 つのパラメーターが公開されています。  
+* **start** と [end](http://en.wikipedia.org/wiki/ISO_8601) の日時は、いずれも **ISO 形式**である必要があります。 (例: 2014-10-14T16:32:41Z)。 **start + 48 時間** " になります。 **end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。 パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティの値として指定します。 JSON のプロパティの詳細については、 [JSON スクリプティング リファレンス](https://msdn.microsoft.com/library/dn835050.aspx) を参照してください。
 
 ### <a name="other-scenarios"></a>その他のシナリオ
 #### <a name="web-service-requires-multiple-inputs"></a>Web サービスで複数の入力が必要である

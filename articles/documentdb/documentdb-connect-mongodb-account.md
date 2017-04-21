@@ -26,7 +26,7 @@ ms.lasthandoff: 03/15/2017
 # <a name="connect-an-application-to-documentdb-api-for-mongodb"></a>アプリケーションを DocumentDB に接続する: MongoDB 用の API
 MongoDB 接続文字列を使用して MongoDB アプリを Azure DocumentDB アカウントに接続する方法を確認します。 MongoDB アプリを Azure DocumentDB データベースに接続することで、DocumentDB データベースを MongoDB アプリのデータ ストアとして使用できます。 
 
-このチュートリアルでは、接続文字列情報を取得する&2; とおりの方法を説明します。
+このチュートリアルでは、接続文字列情報を取得する 2 とおりの方法を説明します。
 
 - [クイック スタートを使う方法](#QuickstartConnection)。.NET、Node.js、MongoDB シェル、Java、Python のドライバー向けの方法です。
 - [カスタム接続文字列を使う方法](#GetCustomConnection)。その他のドライバー向けの方法です。
