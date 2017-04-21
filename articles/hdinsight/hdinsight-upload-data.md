@@ -40,7 +40,7 @@ Azure BLOB ストレージ コンテナーには、キーと値のペアとし�
 
 たとえば、BLOB のキー名を「 *input/log1.txt*」とします。 この場合、"input" ディレクトリは実際に存在しませんが、キー名でスラッシュ (/) が使用されているのでファイル パスのように見えます。
 
-このため、Azure エクスプローラー ツールを使用すると、サイズが 0 バイトのファイルがあることに気付きます。 これらのファイルには&2; つの目的があります。
+このため、Azure エクスプローラー ツールを使用すると、サイズが 0 バイトのファイルがあることに気付きます。 これらのファイルには 2 つの目的があります。
 
 * 空のフォルダーがある場合、フォルダーの存在をマークします。 Azure BLOB ストレージでは、foo/bar と呼ばれる BLOB が存在している場合、 **foo**と呼ばれるフォルダーも存在すると見なされます。 しかし、 **foo** と呼ばれる空のフォルダーが必要な場合、それを示すには、この特殊な 0 バイトのファイルを配置するしか方法はありません。
 * Hadoop ファイル システムが必要とする特殊なメタデータ、特に、フォルダーのアクセス許可と所有者を保持します。
@@ -107,7 +107,7 @@ Azure PowerShell は、Azure のワークロードのデプロイと管理を制
 **ローカル ファイルを Azure BLOB ストレージにアップロードするには**
 
 1. Azure PowerShell コンソールを開きます。手順については「[Azure PowerShell のインストールおよび構成](/powershell/azureps-cmdlets-docs)」をご覧ください。
-2. 次のスクリプトで最初の&5; つの変数の値を設定します。
+2. 次のスクリプトで最初の 5 つの変数の値を設定します。
 
         $resourceGroupName = "<AzureResourceGroupName>"
         $storageAccountName = "<StorageAccountName>"
@@ -161,7 +161,7 @@ HDInsight の既定のファイル システムは Azure BLOB ストレージに
 Hadoop のその他のファイル操作コマンドの一覧については、 [http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html](http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
 > [!WARNING]
-> HBase クラスターでは、データ書き込み時に使われる既定のブロック サイズは 256 KB です。 HBase API または REST API を使うときは問題なく動きますが、`hadoop` または `hdfs dfs` コマンドを使って&12; GB より大きいデータを書き込むとエラーになります。 詳しくは、後の「[BLOB への書き込みに関するストレージ例外](#storageexception)」セクションをご覧ください。
+> HBase クラスターでは、データ書き込み時に使われる既定のブロック サイズは 256 KB です。 HBase API または REST API を使うときは問題なく動きますが、`hadoop` または `hdfs dfs` コマンドを使って 12 GB より大きいデータを書き込むとエラーになります。 詳しくは、後の「[BLOB への書き込みに関するストレージ例外](#storageexception)」セクションをご覧ください。
 >
 >
 
@@ -230,7 +230,7 @@ Azure SDK のインストールの詳細については、 [Azure のダウン�
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 ### <a id="storageexception"></a>BLOB への書き込みに関するストレージ例外
-**現象**: `hadoop` または `hdfs dfs` コマンドを使って HBase クラスターで&12; GB 以上のフィルを書き込むと、次のエラーが発生する可能性があります。
+**現象**: `hadoop` または `hdfs dfs` コマンドを使って HBase クラスターで 12 GB 以上のフィルを書き込むと、次のエラーが発生する可能性があります。
 
     ERROR azure.NativeAzureFileSystem: Encountered Storage Exception for write on Blob : example/test_large_file.bin._COPYING_ Exception details: null Error Code : RequestBodyTooLarge
     copyFromLocal: java.io.IOException

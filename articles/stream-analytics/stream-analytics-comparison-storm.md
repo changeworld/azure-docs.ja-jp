@@ -122,7 +122,7 @@ HDInsight の Apache Storm を使用して、ユーザーは複数のストー�
             </td>
             <td width="204" valign="top">
                 <p>
-Stream Analytics では、処理するデータのボリュームと必要な (ジョブが実行されている&1; 時間あたりの) ストリーミング ユニットの数によって請求されます。
+Stream Analytics では、処理するデータのボリュームと必要な (ジョブが実行されている 1 時間あたりの) ストリーミング ユニットの数によって請求されます。
                 </p>
                 <p>
                     <a href="http://azure.microsoft.com/en-us/pricing/details/stream-analytics/">価格についての詳細は、こちらをご覧ください。</a>
@@ -225,7 +225,7 @@ Stream Analytics はデバッグの方法として基本的なジョブの状態
             </td>
             <td width="246" valign="top">
                 <p>
-詳細なログは、デバッグ目的で利用できます。 ユーザーにログを表示する には、Visual Studio による方法と、クラスターに RDP 接続してログにアクセスする方法の&2; つの方法があります。
+詳細なログは、デバッグ目的で利用できます。 ユーザーにログを表示する には、Visual Studio による方法と、クラスターに RDP 接続してログにアクセスする方法の 2 つの方法があります。
                 </p>
             </td>
         </tr>

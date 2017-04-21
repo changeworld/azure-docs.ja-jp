@@ -28,10 +28,10 @@ ms.lasthandoff: 03/21/2017
 > 
 > 
 
-[Azure Storage](../storage/storage-introduction.md) の [BLOB service ](../storage/storage-introduction.md#blob-storage)は、Azure ベースに元々あって Azure CDN と統合されたサービスの&1; つです。  パブリックにアクセス可能な BLOB コンテンツは、その有効期間 (TTL) が経過するまで、Azure CDN でキャッシュできます。  TTL は、Azure Storage からの HTTP 応答の [*Cache-Control* ヘッダー](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) によって決まります。
+[Azure Storage](../storage/storage-introduction.md) の [BLOB service ](../storage/storage-introduction.md#blob-storage)は、Azure ベースに元々あって Azure CDN と統合されたサービスの 1 つです。  パブリックにアクセス可能な BLOB コンテンツは、その有効期間 (TTL) が経過するまで、Azure CDN でキャッシュできます。  TTL は、Azure Storage からの HTTP 応答の [*Cache-Control* ヘッダー](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) によって決まります。
 
 > [!TIP]
-> BLOB に TTL を設定しないこともできます。  その場合は、Azure CDN が既定の&7; 日間の TTL を自動的に適用します。
+> BLOB に TTL を設定しないこともできます。  その場合は、Azure CDN が既定の 7 日間の TTL を自動的に適用します。
 > 
 > その他のファイルと BLOB へのアクセスを高速化する Azure CDN のしくみの詳細については、[Azure CDN の概要](cdn-overview.md)に関するページをご覧ください。
 > 
@@ -42,7 +42,7 @@ ms.lasthandoff: 03/21/2017
 このチュートリアルでは、Azure Storage で TTL を設定する方法のいくつかを示します。  
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-[Azure PowerShell](/powershell/azureps-cmdlets-docs) は、Azure の各種サービスを管理する最も簡単で最も強力な方法の&1; つです。  `Get-AzureStorageBlob` コマンドレットを使用して BLOB への参照を取得し、`.ICloudBlob.Properties.CacheControl` プロパティを設定します。 
+[Azure PowerShell](/powershell/azureps-cmdlets-docs) は、Azure の各種サービスを管理する最も簡単で最も強力な方法の 1 つです。  `Get-AzureStorageBlob` コマンドレットを使用して BLOB への参照を取得し、`.ICloudBlob.Properties.CacheControl` プロパティを設定します。 
 
 ```powershell
 # Create a storage context
@@ -101,7 +101,7 @@ class Program
 ## <a name="other-methods"></a>その他の方法
 * [Azure コマンド ライン インターフェイス](../cli-install-nodejs.md)
   
-    BLOB をアップロードするときに、`-p` スイッチを使用して *cacheControl* プロパティを設定します。  この例では、TTL を&1; 時間 (3,600 秒) に設定します。
+    BLOB をアップロードするときに、`-p` スイッチを使用して *cacheControl* プロパティを設定します。  この例では、TTL を 1 時間 (3,600 秒) に設定します。
   
     ```text
     azure storage blob upload -c <connectionstring> -p cacheControl="public, max-age=3600" .\test.txt myContainer test.txt

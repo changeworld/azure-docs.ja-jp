@@ -54,7 +54,7 @@ Webhook は、署名キー (資格情報) が通知エンドポイントを構�
 
 Media Services の各種 .NET Azure 関数の定義は、このトピックで紹介したものも含め、[こちら](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)で確認できます。
 
-次のコード リストでは、Azure Functions パラメーターの定義と、Azure Functions に関連付けられている&3; つのファイル (function.json、project.json、run.csx) の定義を示します。
+次のコード リストでは、Azure Functions パラメーターの定義と、Azure Functions に関連付けられている 3 つのファイル (function.json、project.json、run.csx) の定義を示します。
 
 ### <a name="application-settings"></a>アプリケーションの設定 
 
