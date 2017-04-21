@@ -12,7 +12,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 04/19/2017
 ms.author: raymondl;garye;v-donglo
 translationtype: Human Translation
 ms.sourcegitcommit: 0dc0f84ed65e76a95dcac523e42268039212773c
