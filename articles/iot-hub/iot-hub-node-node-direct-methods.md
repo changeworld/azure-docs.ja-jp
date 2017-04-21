@@ -25,7 +25,7 @@ ms.lasthandoff: 03/02/2017
 # <a name="use-direct-methods-on-your-iot-device-with-nodejs"></a>Node.js を使用した IoT デバイスでのダイレクト メソッドの使用
 [!INCLUDE [iot-hub-selector-c2d-methods](../../includes/iot-hub-selector-c2d-methods.md)]
 
-このチュートリアルの最後には、次の&2; つの Node.js コンソール アプリが完成します。
+このチュートリアルの最後には、次の 2 つの Node.js コンソール アプリが完成します。
 
 * **CallMethodOnDevice.js**。シミュレートされたデバイス アプリでメソッドを呼び出し、応答を表示します。
 * **SimulatedDevice.js**。前もって作成してあるデバイス ID を使用して IoT Hub に接続し、クラウドによって呼び出されたメソッドに応答をします。

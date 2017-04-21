@@ -26,7 +26,7 @@ ms.lasthandoff: 03/04/2017
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>HDInsight .NET SDK を使用して MapReduce ジョブを実行する
 [!INCLUDE [mapreduce-selector](../../includes/hdinsight-selector-use-mapreduce.md)]
 
-この記事では、HDInsight .NET SDK を使用して MapReduce ジョブを送信する方法について説明します。 HDInsight クラスターには、MapReduce サンプルがいくつか含まれた jar ファイルが付属しています。 jar ファイルは */example/jars/hadoop-mapreduce-examples.jar* に格納されています。  そのサンプルの&1; つに、*wordcount* があります。 この記事では、wordcount ジョブを送信する C# コンソール アプリケーションを作成します。  このジョブでは、*/example/data/gutenberg/davinci.txt* ファイルを読み取り、結果を */example/data/davinciwordcount* に出力します。  アプリケーションを再実行する場合は、出力フォルダーをクリーンアップする必要があります。
+この記事では、HDInsight .NET SDK を使用して MapReduce ジョブを送信する方法について説明します。 HDInsight クラスターには、MapReduce サンプルがいくつか含まれた jar ファイルが付属しています。 jar ファイルは */example/jars/hadoop-mapreduce-examples.jar* に格納されています。  そのサンプルの 1 つに、*wordcount* があります。 この記事では、wordcount ジョブを送信する C# コンソール アプリケーションを作成します。  このジョブでは、*/example/data/gutenberg/davinci.txt* ファイルを読み取り、結果を */example/data/davinciwordcount* に出力します。  アプリケーションを再実行する場合は、出力フォルダーをクリーンアップする必要があります。
 
 > [!NOTE]
 > この記事の手順は、Windows クライアントから実行する必要があります。 Linux、OS X、または Unix クライアントで Hive を使用する方法については、この記事の上部に表示されているタブ セレクターをクリックしてください。

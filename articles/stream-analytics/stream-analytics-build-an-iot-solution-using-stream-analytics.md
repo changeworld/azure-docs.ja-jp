@@ -180,7 +180,7 @@ Azure Portal で、左側の管理ウィンドウの下部にある **[その他
 
 ![Service Bus](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image8.png)
 
-*tolldata* で始まるものをクリックします。 **[イベント ハブ]** タブをクリックします。 この名前空間に作成された *entry* と *exit* という&2; つのイベント ハブが表示されます。
+*tolldata* で始まるものをクリックします。 **[イベント ハブ]** タブをクリックします。 この名前空間に作成された *entry* と *exit* という 2 つのイベント ハブが表示されます。
 
 ![クラシック ポータルの [イベント ハブ] タブ](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image9.png)
 
@@ -221,7 +221,7 @@ Azure Portal で、左側の管理ウィンドウの下部にある **[その他
 8. [サーバー エクスプローラー] を開きます。
    
     ![Server Explorer](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image18.png)
-9. TollDataDB データベースの&4; つのテーブルが表示されます。
+9. TollDataDB データベースの 4 つのテーブルが表示されます。
    
     ![Tables in the TollDataDB database](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image19.jpg)
 
@@ -255,7 +255,7 @@ PowerShell スクリプトは、TollApp というサンプル アプリケーシ
 6. [ソース] は **[イベント ハブ]** です。
 7. **[Service Bus 名前空間]** は、ドロップダウンにある TollData の名前空間を指定します。
 8. **[イベント ハブの名前]** は **[entry (入力)]** に設定する必要があります。
-9. **[イベント ハブ ポリシー名]*は **RootManageSharedAccessKey** です (既定値)。
+9. **[イベント ハブ ポリシー名]*は**RootManageSharedAccessKey** です (既定値)。
 10. **[イベントのシリアル化の形式]** に **[JSON]** を、**[エンコード]** に **[UTF8]** を選択します。
    
     設定は次のようになります。
@@ -386,7 +386,7 @@ WHERE Registration.Expired = '1'
 
 ![Screenshot of the Start button in the job dashboard](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image48.png)
 
-表示されたダイアログ ボックスで、**[出力の開始]** の時刻を **[ユーザー設定時刻]** に変更します。 時間 (時) を編集し、現在時刻の&1; 時間前の時刻に設定します。 この変更により、チュートリアルの最初にイベントの生成を開始したとき以降、イベント ハブから受け取ったすべてのイベントが確実に処理されます。 ここで、**[開始]** をクリックしてジョブを開始します。
+表示されたダイアログ ボックスで、**[出力の開始]** の時刻を **[ユーザー設定時刻]** に変更します。 時間 (時) を編集し、現在時刻の 1 時間前の時刻に設定します。 この変更により、チュートリアルの最初にイベントの生成を開始したとき以降、イベント ハブから受け取ったすべてのイベントが確実に処理されます。 ここで、**[開始]** をクリックしてジョブを開始します。
 
 ![Selection of custom time](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image49.png)
 
@@ -434,7 +434,7 @@ Azure Stream Analytics の詳細については、 [オンライン ドキュメ
 ## <a name="clean-up-your-azure-account"></a>Azure アカウントのクリーンアップ
 1. Azure Portal で Stream Analytics ジョブを停止します。
    
-    Setup.ps1 スクリプトでは、イベント ハブが&2; つと SQL データベースが&1; つ作成されます。 チュートリアルの最後に、次の手順に従ってリソースをクリーンアップしてください。
+    Setup.ps1 スクリプトでは、イベント ハブが 2 つと SQL データベースが 1 つ作成されます。 チュートリアルの最後に、次の手順に従ってリソースをクリーンアップしてください。
 2. PowerShell ウィンドウで「**\\Cleanup.ps1**」と入力します。これにより、チュートリアルで使用したリソースを削除するスクリプトが開始されます。
    
    > [!NOTE]
