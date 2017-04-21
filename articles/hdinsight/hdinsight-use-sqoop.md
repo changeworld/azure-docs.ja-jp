@@ -36,7 +36,7 @@ Hadoop はログやファイルなどの非構造化データおよび半構造�
 HDInsight クラスターでサポートされている Sqoop のバージョンについては、「[HDInsight で提供されるクラスター バージョンの新機能][hdinsight-versions]」を参照してください。
 
 ## <a name="understand-the-scenario"></a>シナリオの理解
-HDInsight クラスターにはサンプル データがいくつか付属しています。 そのうちの以下の&2; つを使用します。
+HDInsight クラスターにはサンプル データがいくつか付属しています。 そのうちの以下の 2 つを使用します。
 
 * log4j ログ ファイル ( */example/data/sample.log*)。 次のようなログがファイルから抽出されます。
   
@@ -165,7 +165,7 @@ PowerShell のサンプルでは、次の手順を実行します。
 
 1. Azure に接続します。
 2. Azure リソース グループを作成します。 詳細については、 [Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)
-3. Azure SQL Database サーバー、Azure SQL Database、および&2; つのテーブルを作成します。 
+3. Azure SQL Database サーバー、Azure SQL Database、および 2 つのテーブルを作成します。 
    
     SQL Server を使用する場合は、次のステートメントを使用してテーブルを作成します。
    

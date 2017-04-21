@@ -59,7 +59,7 @@ ms.lasthandoff: 01/24/2017
 2. Spark クラスター ブレードで、**[Usage (使用法)]** の **[スクリプト アクション]** をクリックします。 ヘッド ノードと worker ノードに TensorFlow をインストールするカスタム アクションを実行します。 Bash スクリプトは https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh から参照できます。[カスタム スクリプト アクションの使用方法](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)に関するドキュメントを参照してください。
 
    > [!NOTE]
-   > クラスターには&2; つの Python インストールがあります。 Spark では、`/usr/bin/anaconda/bin` の Anaconda Python インストールが使用されます。 そのインストールは、`/usr/bin/anaconda/bin/pip` および `/usr/bin/anaconda/bin/conda` を介してカスタム アクションで参照してください。
+   > クラスターには 2 つの Python インストールがあります。 Spark では、`/usr/bin/anaconda/bin` の Anaconda Python インストールが使用されます。 そのインストールは、`/usr/bin/anaconda/bin/pip` および `/usr/bin/anaconda/bin/conda` を介してカスタム アクションで参照してください。
    > 
    > 
 

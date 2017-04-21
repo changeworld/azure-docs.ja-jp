@@ -32,7 +32,7 @@ ms.lasthandoff: 01/24/2017
 
 PolyBase コマンドと T-SQL コマンドを使用して、Azure Blob Storage から Azure SQL Data Warehouse にデータを読み込みます。 
 
-このチュートリアルでは、シンプルにするために、パブリック Azure Storage BLOB の&2; つのテーブルを Contoso Retail Data Warehouse スキーマに読み込みます。 完全なデータ セットを読み込むには、Microsoft SQL Server のサンプル リポジトリから[完全な Contoso Retail Data Warehouse を読み込む][Load the full Contoso Retail Data Warehouse]例を実行します。
+このチュートリアルでは、シンプルにするために、パブリック Azure Storage BLOB の 2 つのテーブルを Contoso Retail Data Warehouse スキーマに読み込みます。 完全なデータ セットを読み込むには、Microsoft SQL Server のサンプル リポジトリから[完全な Contoso Retail Data Warehouse を読み込む][Load the full Contoso Retail Data Warehouse]例を実行します。
 
 このチュートリアルでは、次のことについて説明します。
 
@@ -229,7 +229,7 @@ GO
 ```
 
 ### <a name="42-load-the-data-into-new-tables"></a>4.2. データを新しいテーブルに読み込む
-Azure Blob Storage からデータを読み込み、データベース内のテーブルに保存するには、[CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] ステートメントを使います。 CTAS での読み込みには、作成したばかりの厳密に型指定されたテーブルを使います。データを新しいテーブルに読み込むには、テーブルごとに&1; つの [CTAS][CTAS] ステートメントを使います。 
+Azure Blob Storage からデータを読み込み、データベース内のテーブルに保存するには、[CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] ステートメントを使います。 CTAS での読み込みには、作成したばかりの厳密に型指定されたテーブルを使います。データを新しいテーブルに読み込むには、テーブルごとに 1 つの [CTAS][CTAS] ステートメントを使います。 
 
 CTAS により新しいテーブルが作成され、select ステートメントの結果が設定されます。 CTAS では、select ステートメントの結果と同じ列とデータ型が保持されるように、新しいテーブルが定義されます。 外部テーブルからすべての列を選択すると、新しいテーブルは、外部テーブルの列とデータ型のレプリカになります。
 

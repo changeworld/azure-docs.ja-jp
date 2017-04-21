@@ -77,7 +77,7 @@ ms.lasthandoff: 01/24/2017
    
     ![View Spark stages event timeline](./media/hdinsight-apache-spark-job-debugging/view-spark-stages-event-timeline.png)
    
-    Spark イベントがタイムラインの形式で表示されます。 タイムライン ビューには&3; 種類の表示があります (ジョブ間、ジョブ内、ステージ内)。 上の画像は、特定のステージのタイムライン ビューをキャプチャしたものです。
+    Spark イベントがタイムラインの形式で表示されます。 タイムライン ビューには 3 種類の表示があります (ジョブ間、ジョブ内、ステージ内)。 上の画像は、特定のステージのタイムライン ビューをキャプチャしたものです。
    
    > [!TIP]
    > **[Enable zooming (ズームを有効にする)]** チェック ボックスをオンにすると、タイムライン ビューを左右にスクロールすることができます。
