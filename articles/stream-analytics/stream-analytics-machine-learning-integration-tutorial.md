@@ -137,7 +137,7 @@ ms.lasthandoff: 02/14/2017
 
 ## <a name="start-the-stream-analytics-job-and-observe-the-output"></a>Stream Analytics ジョブを開始し、出力を確認します
 1. ジョブのページの上部にある **[開始]** をクリックします。
-2. **[クエリの開始]** ダイアログで **[ユーザー設定時刻]** を選択し、CSV を Blob Storage にアップロードする時刻の&1; 日前を選びます。 **[OK]**をクリックします。  
+2. **[クエリの開始]** ダイアログで **[ユーザー設定時刻]** を選択し、CSV を Blob Storage にアップロードする時刻の 1 日前を選びます。 **[OK]**をクリックします。  
 3. CSV ファイルのアップロードに使用したツール (Visual Studio など) を使用して、Blob Storage に移動します。
 4. ジョブが開始されて数分後に、出力コンテナーが作成され、CSV ファイルがアップロードされます。  
 5. CSV の既定のエディターでファイルを開きます。 次のような内容が表示されます。  
@@ -145,9 +145,9 @@ ms.lasthandoff: 02/14/2017
    ![Stream Analytics Machine Learning, CSV ビュー](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-csv-view.png)  
 
 ## <a name="conclusion"></a>まとめ
-この記事では、ストリーミングのテキスト データを読み取り、そのデータにセンチメント分析をリアルタイム適用する Stream Analytics ジョブを作成する方法を示します。 このすべての処理は、センチメント分析モデルを構築する場合の複雑な作業を心配することなく実行できます。 これが Cortana Intelligence Suite の利点の&1; つです。
+この記事では、ストリーミングのテキスト データを読み取り、そのデータにセンチメント分析をリアルタイム適用する Stream Analytics ジョブを作成する方法を示します。 このすべての処理は、センチメント分析モデルを構築する場合の複雑な作業を心配することなく実行できます。 これが Cortana Intelligence Suite の利点の 1 つです。
 
-Azure Machine Learning 関数に関連するメトリックも表示できます。 そのためには、**[監視]** タブを選択します。 関数に関連する&3; つのメトリックが表示されます。  
+Azure Machine Learning 関数に関連するメトリックも表示できます。 そのためには、**[監視]** タブを選択します。 関数に関連する 3 つのメトリックが表示されます。  
 
 * **[関数要求]** は、Machine Learning Web サービスに対して送信された要求数を示します。  
 * **[関数イベント]** は、要求内のイベントの数を示します。 既定では、Machine Learning Web サービスへの各要求には、最大 1,000 件のイベントが含まれています。  

@@ -50,7 +50,7 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 
 ## <a name="create-your-policies"></a>ポリシーの作成
 
-Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。 このアプリには、サインインとサインアップを組み合わせた&1; つの ID エクスペリエンスが含まれています。 [ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)で説明されているように、このポリシーを作成する必要があります。 ポリシーを作成するときは、以下の操作を必ず実行してください。
+Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。 このアプリには、サインインとサインアップを組み合わせた 1 つの ID エクスペリエンスが含まれています。 [ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)で説明されているように、このポリシーを作成する必要があります。 ポリシーを作成するときは、以下の操作を必ず実行してください。
 
 * ポリシーのサインアップ属性として **[表示名]** を選択します。
 * すべてのポリシーで、アプリケーション要求として **[表示名]** と **[オブジェクト ID]** を選択します。 その他のクレームも選択できます。

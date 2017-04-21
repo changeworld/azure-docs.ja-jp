@@ -69,7 +69,7 @@ Batch ソリューションを設計する際は、ジョブとタスク出力�
 ストレージ アカウントのリンクに関するさらに詳細なチュートリアルについては、 [「Azure Batch アプリケーション パッケージを使用したアプリケーションのデプロイ」](batch-application-packages.md)を参照してください。
 
 ## <a name="persist-output"></a>出力の保持
-ファイル規則ライブラリを利用してジョブとタスク出力を保存する場合、主なアクションが&2; つあります。ストレージ コンテナーの作成と、コンテナーへの出力の保存です。
+ファイル規則ライブラリを利用してジョブとタスク出力を保存する場合、主なアクションが 2 つあります。ストレージ コンテナーの作成と、コンテナーへの出力の保存です。
 
 > [!WARNING]
 > ジョブとタスクの出力はすべて同じコンテナーに格納されるため、大量のタスクで同時にファイルを保持しようとすると、 [ストレージのスロットルの制限](../storage/storage-performance-checklist.md#blobs) が適用される場合があります。
@@ -113,7 +113,7 @@ await taskOutputStorage.SaveAsync(TaskOutputKind.TaskOutput, "frame_full_res.jpg
 await taskOutputStorage.SaveAsync(TaskOutputKind.TaskPreview, "frame_low_res.jpg");
 ```
 
-保持されたファイルは "出力の種類" パラメーターによって分類されます。 [TaskOutputKind][net_taskoutputkind] として、事前に定義された&4; つの種類が存在します。"TaskOutput"、"TaskPreview"、"TaskLog"、"TaskIntermediate" です。 カスタムの種類を定義して、ワークフローで活用することもできます。
+保持されたファイルは "出力の種類" パラメーターによって分類されます。 [TaskOutputKind][net_taskoutputkind] として、事前に定義された 4 つの種類が存在します。"TaskOutput"、"TaskPreview"、"TaskLog"、"TaskIntermediate" です。 カスタムの種類を定義して、ワークフローで活用することもできます。
 
 これらの出力の種類を使用すれば、後で Batch に対してクエリを実行し、特定のタスクの保持された出力を取得するときに、どの種類の出力を一覧表示するかを指定することができます。 つまり、タスク出力を一覧表示したとき、出力の種類に基づいて一覧をフィルター処理することができます。 たとえば、"タスク *109* の出力の "*プレビュー*" を閲覧する" といったことが可能です。 一覧の表示と出力の取得については、この記事の後ろのセクションの「 [出力の取得](#retrieve-output) 」で詳しく説明します。
 
@@ -210,7 +210,7 @@ Azure Portal でタスク出力とログを表示するには、目的の出力�
 ![Task outputs blade in the Azure portal][2]
 
 ## <a name="code-sample"></a>サンプル コード
-[PersistOutputs][github_persistoutputs] サンプル プロジェクトは、GitHub にある [Azure Batch コード サンプル][github_samples]の&1; つです。 この Visual Studio ソリューションは、Azure Batch ファイル規則ライブラリを使用して永続的なストレージでタスク出力を保持する方法を示しています。 サンプルを実行するには、次の手順に従います。
+[PersistOutputs][github_persistoutputs] サンプル プロジェクトは、GitHub にある [Azure Batch コード サンプル][github_samples]の 1 つです。 この Visual Studio ソリューションは、Azure Batch ファイル規則ライブラリを使用して永続的なストレージでタスク出力を保持する方法を示しています。 サンプルを実行するには、次の手順に従います。
 
 1. **Visual Studio 2015 以降**でプロジェクトを開きます。
 2. Microsoft.Azure.Batch.Samples.Common プロジェクトの **AccountSettings.settings** に、Batch と Storage の**アカウント資格情報**を追加します。

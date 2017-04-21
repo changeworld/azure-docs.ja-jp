@@ -45,7 +45,7 @@ DocumentDB は、JSON 形式でデータを格納する NoSQL ドキュメント
 DocumentDB は、自動スケール、予測可能なパフォーマンス、ミリ秒レベルの高速な応答時間、およびスキーマフリー データに対してクエリを実行できることが重要である新しい Web アプリケーション、モバイル アプリケーション、ゲーム、IoT アプリケーションに適しています。 DocumentDB は、迅速な開発に役立ち、アプリケーション データ モデルの継続的な反復をサポートします。 ユーザーが生成したコンテンツとデータを管理するアプリケーションは、 [DocumentDB の一般的な使用事例](documentdb-use-cases.md)です。  
 
 ### <a name="how-does-documentdb-offer-predictable-performance"></a>DocumentDB では、予測可能なパフォーマンスをどのようにして実現していますか?
-DocumentDB ではスループットの単位として [要求ユニット](documentdb-request-units.md) (RU) を使用します。 1 RU は、1KB のドキュメントを取得するスループットに相当します。 DocumentDB におけるすべての操作 (読み取り、書き込み、SQL クエリ、ストアド プロシージャの実行など) には、操作を完了するのに必要なスループットに基づいて、明確な RU 値が設定されています。 CPU、IO、メモリや、これらがアプリケーションのスループットに及ぼす影響を考慮する代わりに、RU という&1; つの単位を基にして考えることができます。
+DocumentDB ではスループットの単位として [要求ユニット](documentdb-request-units.md) (RU) を使用します。 1 RU は、1KB のドキュメントを取得するスループットに相当します。 DocumentDB におけるすべての操作 (読み取り、書き込み、SQL クエリ、ストアド プロシージャの実行など) には、操作を完了するのに必要なスループットに基づいて、明確な RU 値が設定されています。 CPU、IO、メモリや、これらがアプリケーションのスループットに及ぼす影響を考慮する代わりに、RU という 1 つの単位を基にして考えることができます。
 
 DocumentDB の各コレクションを予約する際は、1 秒あたりのスループットを表す RU を単位としてプロビジョニングされたスループットを使用できます。 アプリケーションがどのようなサイズでも、個々の要求のベンチマークを実行して RU 値を測定し、すべての要求の要求ユニットの合計に対処できるようコレクションをプロビジョニングすることができます。 アプリケーションのニーズの進化に合わせて、コレクションのスループットをスケールアップしたりスケールダウンしたりすることもできます。 要求ユニットの詳細やコレクションのニーズを判断する方法については、「[スループットのニーズの推定](documentdb-request-units.md#estimating-throughput-needs)」を参照して、[スループット計算ツール](https://www.documentdb.com/capacityplanner)をお試しください。
 
@@ -62,7 +62,7 @@ DocumentDB でコレクションが格納できる合計データ量には、制
 詳細については、「[DocumentDB の価格](https://azure.microsoft.com/pricing/details/documentdb/)」ページを参照してください。 DocumentDB の利用料金は、プロビジョニング済みコレクションの数、コレクションがオンラインであった時間数、および各コレクションのプロビジョニング済みスループットによって決まります。
 
 ### <a name="is-there-a-free-account-available"></a>無料アカウントを使用できますか?
-Azure を初めて使用する場合は、30 日間使用できる [Azure 無料アカウント](https://azure.microsoft.com/free/)にサインアップできます。すべての Azure サービスを試すには 200 ドルかかります。 Visual Studio サブスクリプションをお持ちの場合は、[1 か月あたり&150; ドルの無料 Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)ですべての Azure サービスを使用できます。  
+Azure を初めて使用する場合は、30 日間使用できる [Azure 無料アカウント](https://azure.microsoft.com/free/)にサインアップできます。すべての Azure サービスを試すには 200 ドルかかります。 Visual Studio サブスクリプションをお持ちの場合は、[1 か月あたり 150 ドルの無料 Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)ですべての Azure サービスを使用できます。  
 
 また、[Azure DocumentDB Emulator](documentdb-nosql-local-emulator.md) を使用すると、Azure サブスクリプションを作成せずに、ローカルでアプリケーションの開発とテストを行うことができます。 DocumentDB Emulator でのアプリケーションの動作に満足できたら、クラウドでの Azure DocumentDB アカウントの使用に切り替えることができます。
 
@@ -111,7 +111,7 @@ DocumentDB では、HTTP エンティティ タグ (または ETag) によるオ
 DocumentDB では、JavaScript ストアド プロシージャおよびトリガーを介して、統合された言語のトランザクションがサポートされます。 スクリプト内のすべてのデータベース操作は、単一パーティション コレクションの場合はコレクションを対象として、スナップショット分離下で実行されます。コレクションがパーティション分割されている場合は、コレクション内の同じパーティション キー値を持つドキュメントを対象として実行されます。 ドキュメント バージョン (ETag) のスナップショットは、トランザクションの開始時に取得され、スクリプトが成功された場合のみコミットされます。 JavaScript がエラーをスローした場合、トランザクションはロールバックされます。 詳細については、「[DocumentDB のサーバー側プログラミング](documentdb-programming.md)」を参照してください。
 
 ### <a name="how-can-i-bulk-insert-documents-into-documentdb"></a>どのようにして DocumentDB にドキュメントを一括挿入しますか?
-DocumentDB にドキュメントを一括挿入するには&3; つの方法があります。
+DocumentDB にドキュメントを一括挿入するには 3 つの方法があります。
 
 * データ移行ツール。[DocumentDB へのデータのインポート](documentdb-import-data.md)に関するページを参照してください。
 * Azure Portal の Document Explorer。[ドキュメント エクスプローラーを使用したドキュメントの一括追加](documentdb-view-json-document-explorer.md#bulk-add-documents)に関するページを参照してください。
@@ -121,7 +121,7 @@ DocumentDB にドキュメントを一括挿入するには&3; つの方法が�
 はい、DocumentDB は RESTful サービスであるため、リソース リンクは不変であり、キャッシュできます。 DocumentDB クライアントは、ドキュメントやコレクションなどリソースの読み取りに対して "If-None-Match" ヘッダーを指定でき、サーバー バージョンが変更された場合のみローカル コピーを更新できます。
 
 ### <a name="is-a-local-instance-of-documentdb-available"></a>DocumentDB のローカル インスタンスは使用できますか?
-はい。 [Azure DocumentDB Emulator](documentdb-nosql-local-emulator.md) には、DocumentDB サービスの高忠実度エミュレーションが用意されています。 JSON ドキュメントの作成とクエリ、コレクションのプロビジョニングとスケーリング、ストアド プロシージャとトリガーの実行のサポートなど、Azure DocumentDB と同じ機能がサポートされています。 DocumentDB Emulator を使用してアプリケーションの開発およびテストを行い、DocumentDB の接続エンドポイントの構成を&1; つ変更するだけで、世界規模で Azure にデプロイすることができます。
+はい。 [Azure DocumentDB Emulator](documentdb-nosql-local-emulator.md) には、DocumentDB サービスの高忠実度エミュレーションが用意されています。 JSON ドキュメントの作成とクエリ、コレクションのプロビジョニングとスケーリング、ストアド プロシージャとトリガーの実行のサポートなど、Azure DocumentDB と同じ機能がサポートされています。 DocumentDB Emulator を使用してアプリケーションの開発およびテストを行い、DocumentDB の接続エンドポイントの構成を 1 つ変更するだけで、世界規模で Azure にデプロイすることができます。
 
 ## <a name="database-questions-about-developing-against-api-for-mongodb"></a>MongoDB 用 API に対する開発についてのデータベース質問
 ### <a name="what-is-documentdbs-api-for-mongodb"></a>DocumentDB の MongoDB 用 API とは何ですか?

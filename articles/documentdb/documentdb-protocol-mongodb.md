@@ -29,7 +29,7 @@ MongoDB 向けに作成されたアプリのデータ ストアとして Documen
 ## <a name="what-is-the-benefit-of-using-documentdb-api-for-mongodb"></a>DocumentDB: MongoDB 用 API を使用するメリット
 **サーバー管理が不要** - DocumentDB は完全に管理されたサービスです。つまり、インフラストラクチャまたは仮想マシンを自分で管理する必要がありません。 DocumentDB は、30 以上の [Azure リージョン](https://azure.microsoft.com/regions/services/)で使用できます。
 
-**無限のスケール** - スループットとストレージを分けてエラスティックにスケールできます。 容量を追加して&1; 秒あたり数百万件の要求に簡単に対応できます。
+**無限のスケール** - スループットとストレージを分けてエラスティックにスケールできます。 容量を追加して 1 秒あたり数百万件の要求に簡単に対応できます。
 
 **エンタープライズ グレード** - DocumentDB では、ローカルとリージョンで障害が発生した場合に 99.99% の可用性とデータ保護を実現する、複数のローカル レプリカがサポートされます。 DocumentDB には、エンタープライズ グレードの[コンプライアンス認定](https://www.microsoft.com/trustcenter)とセキュリティ機能があります。 
 

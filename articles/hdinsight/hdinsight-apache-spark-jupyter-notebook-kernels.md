@@ -126,12 +126,12 @@ HDInsight の Spark クラスターには、Spark アプリケーションをテ
 
 ## <a name="show-me-some-examples"></a>いくつかの例
 
-Jupyter Notebook を開くと、ルート レベルで利用可能な&2; つのフォルダーが表示されます。
+Jupyter Notebook を開くと、ルート レベルで利用可能な 2 つのフォルダーが表示されます。
 
 * **PySpark** フォルダーには、新しい **Python** カーネルを使用するサンプル Notebook があります。
 * **Scala** フォルダーには、新しい **Spark** カーネルを使用するサンプル Notebook があります。
 
-**PySpark** または **Spark** フォルダーから **00 - [READ ME FIRST] Spark Magic Kernel Features** Notebook を開くと、利用できるさまざまなマジックを確認できます。 この&2; つのフォルダーにはサンプル ノードブックが他にもあります。Jupyter ノードブックと HDInsight Spark クラスターを利用したさまざまなシナリオの実現方法について学習できます。
+**PySpark** または **Spark** フォルダーから **00 - [READ ME FIRST] Spark Magic Kernel Features** Notebook を開くと、利用できるさまざまなマジックを確認できます。 この 2 つのフォルダーにはサンプル ノードブックが他にもあります。Jupyter ノードブックと HDInsight Spark クラスターを利用したさまざまなシナリオの実現方法について学習できます。
 
 ## <a name="where-are-the-notebooks-stored"></a>Notebook の格納場所
 

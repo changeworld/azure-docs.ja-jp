@@ -174,7 +174,7 @@ HDInsight MapReduce アクティビティを使用して、HDInsight クラス�
 ```
 
 ### <a name="pipeline"></a>パイプライン
-この例のパイプラインには、HDInsightMapReduce という種類のアクティビティが&1; つだけあります。 JSON の重要なプロパティの一部を次に示します。 
+この例のパイプラインには、HDInsightMapReduce という種類のアクティビティが 1 つだけあります。 JSON の重要なプロパティの一部を次に示します。 
 
 | プロパティ | メモ |
 |:--- |:--- |

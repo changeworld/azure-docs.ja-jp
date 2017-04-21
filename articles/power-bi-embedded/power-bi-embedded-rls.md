@@ -28,7 +28,7 @@ ms.lasthandoff: 03/14/2017
 
 ![](media/power-bi-embedded-rls/pbi-embedded-rls-flow-1.png)
 
-RLS を利用するには、ユーザー、ロール、ルールの&3; つの主要概念を理解しておくことが重要です。 各概念について詳しく見てみましょう。
+RLS を利用するには、ユーザー、ロール、ルールの 3 つの主要概念を理解しておくことが重要です。 各概念について詳しく見てみましょう。
 
 **ユーザー** – レポートを表示する実際のエンドユーザーです。 Power BI Embedded では、ユーザーはアプリ トークンの username プロパティによって識別されます。
 
@@ -51,7 +51,7 @@ RLS は Power BI Desktop で作成されます。 データセットとレポー
 このスキーマでは、次の点に注意してください。
 
 * **Total Sales** など、すべてのメジャーが **Sales** ファクト テーブルに格納されています。
-* 関連するその他のディメンション テーブルとして、**Item**、**Time**、**Store**、**District** の&4; つのテーブルがあります。
+* 関連するその他のディメンション テーブルとして、**Item**、**Time**、**Store**、**District** の 4 つのテーブルがあります。
 * リレーションシップの線上の矢印は、テーブル間のフィルターの方向を示しています。 たとえば、**Time[Date]** にフィルターを配置すると、現在のスキーマでは **Sales** テーブルの値だけがフィルター処理されます。 リレーションシップの線上のすべての矢印が Sales テーブルを指しているため、他のテーブルはこのフィルターの影響を受けません。
 * **District** テーブルは、次のように各地区の担当マネージャーを示しています。
   
@@ -85,19 +85,19 @@ RLS は Power BI Desktop で作成されます。 データセットとレポー
 ![](media/power-bi-embedded-rls/pbi-embedded-rls-diagram-view-11.png)
 
 > [!NOTE]
-> データに DirectQuery モードを使用している場合は、次の&2; つのオプションを選択して、双方向のクロス フィルターを有効にする必要があります。
+> データに DirectQuery モードを使用している場合は、次の 2 つのオプションを選択して、双方向のクロス フィルターを有効にする必要があります。
 
 1. **[ファイル]** -> **[オプションと設定]** -> **[プレビュー機能]** -> **[Enable cross filtering in both directions for DirectQuery (DirectQuery 用に両方向のクロス フィルターを有効にする)]**。
 2. **[ファイル]** -> **[オプションと設定]** -> **[DirectQuery]** -> **[DirectQuery モードで無制限のメジャーを許可する]**。
 
 双方向のクロス フィルターの詳細については、ホワイトペーパー [Bidirectional cross-filtering in SQL Server Analysis Services 2016 and Power BI Desktop](http://download.microsoft.com/download/2/7/8/2782DF95-3E0D-40CD-BFC8-749A2882E109/Bidirectional cross-filtering in Analysis Services 2016 and Power BI.docx) をダウンロードしてください。
 
-このホワイトペーパーでは、Power BI Desktop で実行する必要があるすべての作業がまとめられていますが、定義した RLS のルールを Power BI Embedded で機能させるために実行する必要がある作業がもう&1; つあります。 ユーザーはアプリケーションによって認証および承認され、アプリ トークンを使用して、そのユーザーに特定の Power BI Embedded レポートへのアクセス権が付与されます。 Power BI Embedded には、ユーザーが誰であるかに関する具体的な情報はありません。 RLS を機能させるには、アプリ トークンの一部として追加のコンテキストを渡す必要があります。
+このホワイトペーパーでは、Power BI Desktop で実行する必要があるすべての作業がまとめられていますが、定義した RLS のルールを Power BI Embedded で機能させるために実行する必要がある作業がもう 1 つあります。 ユーザーはアプリケーションによって認証および承認され、アプリ トークンを使用して、そのユーザーに特定の Power BI Embedded レポートへのアクセス権が付与されます。 Power BI Embedded には、ユーザーが誰であるかに関する具体的な情報はありません。 RLS を機能させるには、アプリ トークンの一部として追加のコンテキストを渡す必要があります。
 
 * **username** (省略可能) – RLS で使用されます。この文字列を使用して、RLS のルールを適用するときにユーザーを特定できます。 「Using Row Level Security with Power BI Embedded (Power BI Embedded での行レベルのセキュリティの使用)」をご覧ください。
 * **roles** – 行レベルのセキュリティのルールを適用するときに選択したロールを含む文字列。 複数のロールを渡す場合は、文字列配列として渡す必要があります。
 
-トークンは [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#Microsoft_PowerBI_Security_PowerBIToken_CreateReportEmbedToken_System_String_System_String_System_String_System_DateTime_System_String_System_Collections_Generic_IEnumerable_System_String__) メソッドを使用して作成します。 username プロパティが存在する場合は、roles にも&1; つ以上の値を渡す必要があります。
+トークンは [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#Microsoft_PowerBI_Security_PowerBIToken_CreateReportEmbedToken_System_String_System_String_System_String_System_DateTime_System_String_System_Collections_Generic_IEnumerable_System_String__) メソッドを使用して作成します。 username プロパティが存在する場合は、roles にも 1 つ以上の値を渡す必要があります。
 
 たとえば、EmbedSample を変更して、 DashboardController の 55 行目を次のように更新することもできます。
 

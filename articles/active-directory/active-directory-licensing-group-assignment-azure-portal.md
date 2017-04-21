@@ -47,7 +47,7 @@ ms.lasthandoff: 03/10/2017
 
   ![グループの選択](media/active-directory-licensing-group-assignment-azure-portal/select-a-group.png)
 
-6. **[ライセンスの割り当て]** ブレードで **[割り当てオプション (省略可能)]** をクリックすると、先ほど選択した&2; つの製品に含まれているすべてのサービス プランが表示されます。 **Yammer Enterprise** を探して **[オフ]** に設定し、製品ライセンスのこのサービスを無効にします。 **[Assignment options (割り当てオプション)]** の下部にある **[OK]** をクリックして確定します。
+6. **[ライセンスの割り当て]** ブレードで **[割り当てオプション (省略可能)]** をクリックすると、先ほど選択した 2 つの製品に含まれているすべてのサービス プランが表示されます。 **Yammer Enterprise** を探して **[オフ]** に設定し、製品ライセンスのこのサービスを無効にします。 **[Assignment options (割り当てオプション)]** の下部にある **[OK]** をクリックして確定します。
 
   ![割り当てオプション](media/active-directory-licensing-group-assignment-azure-portal/assignment-options.png)
 

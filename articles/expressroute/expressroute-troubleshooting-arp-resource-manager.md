@@ -59,13 +59,13 @@ ARP テーブルの例:
 ## <a name="prerequisites-for-learning-arp-tables"></a>ARP テーブルを取得するための前提条件
 以降の作業を行うには、あらかじめ次の要件が満たされている必要があります。
 
-* 少なくとも&1; つのピアリングが構成された有効な ExpressRoute 回線。 この回線は、接続プロバイダーによって確実に構成されている必要があります。 この回線に対し、貴社または貴社の接続プロバイダーが少なくとも&1; つのピアリング (Azure プライベート、Azure パブリック、Microsoft) を構成済みであることが必要となります。
+* 少なくとも 1 つのピアリングが構成された有効な ExpressRoute 回線。 この回線は、接続プロバイダーによって確実に構成されている必要があります。 この回線に対し、貴社または貴社の接続プロバイダーが少なくとも 1 つのピアリング (Azure プライベート、Azure パブリック、Microsoft) を構成済みであることが必要となります。
 * ピアリング (Azure プライベート、Azure パブリック、Microsoft) の構成に使用する IP アドレス範囲。 貴社側インターフェイスと ExpressRoute 側インターフェイスに対する IP アドレスのマッピングについては、 [ExpressRoute のルーティングの要件](expressroute-routing.md) に関するページに記載された IP アドレス割り当ての例をご覧ください。 ピアリングの構成については、 [ExpressRoute のピアリングの構成](expressroute-howto-routing-arm.md)に関するページを参照してください。
 * 各 IP アドレスで使用するインターフェイスの MAC アドレスに関する情報 (ネットワーク チーム/接続プロバイダーから支給してもらう)。
 * Azure 用の最新の PowerShell モジュール (バージョン 1.50 以降)。
 
 ## <a name="getting-the-arp-tables-for-your-expressroute-circuit"></a>ExpressRoute 回線の ARP テーブルの取得
-このセクションでは、各ピアリングの ARP テーブルを PowerShell で参照する手順について説明します。 対象となるピアリングについては、あらかじめ貴社または貴社の接続プロバイダーによって構成済みであることを前提としています。 それぞれの回線には&2; つのパス (プライマリとセカンダリ) があります。 それぞれのパスについて別々に ARP テーブルを確認することができます。
+このセクションでは、各ピアリングの ARP テーブルを PowerShell で参照する手順について説明します。 対象となるピアリングについては、あらかじめ貴社または貴社の接続プロバイダーによって構成済みであることを前提としています。 それぞれの回線には 2 つのパス (プライマリとセカンダリ) があります。 それぞれのパスについて別々に ARP テーブルを確認することができます。
 
 ### <a name="arp-tables-for-azure-private-peering"></a>Azure プライベート ピアリングの ARP テーブル
 Azure プライベート ピアリングの ARP テーブルは、次のコマンドレットで取得します。
@@ -80,7 +80,7 @@ Azure プライベート ピアリングの ARP テーブルは、次のコマ�
         # ARP table for Azure private peering - Secodary path
         Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePrivatePeering -DevicePath Secondary 
 
-以下に示したのは、該当する&1; 本のパスについての出力例です。
+以下に示したのは、該当する 1 本のパスについての出力例です。
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
@@ -102,7 +102,7 @@ Azure パブリック ピアリングの ARP テーブルは、次のコマン�
         Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePublicPeering -DevicePath Secondary 
 
 
-以下に示したのは、該当する&1; 本のパスについての出力例です。
+以下に示したのは、該当する 1 本のパスについての出力例です。
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
@@ -124,7 +124,7 @@ Microsoft ピアリングの ARP テーブルは、次のコマンドレット�
         Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType MicrosoftPeering -DevicePath Secondary 
 
 
-以下に示したのは、該当する&1; 本のパスについての出力例です。
+以下に示したのは、該当する 1 本のパスについての出力例です。
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
@@ -147,7 +147,7 @@ Microsoft ピアリングの ARP テーブルは、次のコマンドレット�
           0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 
 ### <a name="arp-table-when-on-premises--connectivity-provider-side-has-problems"></a>オンプレミス側または接続プロバイダー側に問題がある場合の ARP テーブル
-オンプレミスまたは接続プロバイダーに問題がある場合は、ARP テーブルにエントリが&1; つだけ表示されるか、オンプレミス MAC アドレスがIncomplete と表示されます。 この場合マイクロソフト側で使用されている MAC アドレスと IP アドレスとのマッピングが表示されます。 
+オンプレミスまたは接続プロバイダーに問題がある場合は、ARP テーブルにエントリが 1 つだけ表示されるか、オンプレミス MAC アドレスがIncomplete と表示されます。 この場合マイクロソフト側で使用されている MAC アドレスと IP アドレスとのマッピングが表示されます。 
   
        Age InterfaceProperty IpAddress  MacAddress    
        --- ----------------- ---------  ----------    
@@ -164,7 +164,7 @@ Microsoft ピアリングの ARP テーブルは、次のコマンドレット�
 > [!NOTE]
 > このような問題の解決については、ご利用の接続プロバイダーにサポート要求を申請してください。 ARP テーブルでインターフェイスの IP アドレスが MAC アドレスにマップされていない場合は、次の情報を確認してください。
 > 
-> 1. MSEE-PR と MSEE の間のリンクに割り当てられた /30 サブネットの最初の IP アドレスが MSEE-PR のインターフェイスで使用されている場合は、 Azure では、常に MSEE の&2; 番目の IP アドレスが使用されます。
+> 1. MSEE-PR と MSEE の間のリンクに割り当てられた /30 サブネットの最初の IP アドレスが MSEE-PR のインターフェイスで使用されている場合は、 Azure では、常に MSEE の 2 番目の IP アドレスが使用されます。
 > 2. MSEE-PR と MSEE のペアで顧客 (S-Tag) とサービス (S-Tag) VLAN タグの両方が一致することを確認します。
 > 
 

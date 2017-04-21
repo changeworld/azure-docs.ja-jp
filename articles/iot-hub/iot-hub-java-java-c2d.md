@@ -35,7 +35,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
 クラウドからデバイスへのメッセージの詳細については、[IoT Hub 開発者ガイド][IoT Hub developer guide - C2D]を参照してください。
 
-このチュートリアルの最後に、次の&2; つの Java コンソール アプリを実行します。
+このチュートリアルの最後に、次の 2 つの Java コンソール アプリを実行します。
 
 * **simulated-device**。「[IoT Hub の概要]」で作成されたアプリの修正バージョン。これは、IoT Hub に接続し、C2D メッセージを受信します。
 * **send-c2d-messages**。これは、C2D メッセージを IoT Hub を介してシミュレートされたデバイス アプリに送信し、その配信確認を受信します。
@@ -85,7 +85,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 ## <a name="send-a-cloud-to-device-message"></a>C2D メッセージを送信する
 このセクションでは、クラウドからデバイスへのメッセージを、シミュレーション済みデバイス アプリに送信する Java コンソール アプリを作成します。 [IoT Hub の概要] のチュートリアルで追加したデバイスのデバイス ID が必要です。 また、ハブの IoT Hub 接続文字列も必要です ([Azure Portal] で確認できます)。
 
-1. コマンド プロンプトで次のコマンドを使用して、**send-c2d-messages** という Maven プロジェクトを作成します。 このコマンドが&1; つの長いコマンドであることに注意してください。
+1. コマンド プロンプトで次のコマンドを使用して、**send-c2d-messages** という Maven プロジェクトを作成します。 このコマンドが 1 つの長いコマンドであることに注意してください。
    
     ```
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=send-c2d-messages -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false

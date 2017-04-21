@@ -169,7 +169,7 @@ HDInsight クラスターには、サンプル プログラム (wc.exe および
 ```
 
 ### <a name="pipeline"></a>パイプライン
-この例のパイプラインには、 **HDInsightStreaming**という種類のアクティビティが&1; つだけあります。 
+この例のパイプラインには、 **HDInsightStreaming**という種類のアクティビティが 1 つだけあります。 
 
 HDInsight クラスターには、サンプル プログラム (wc.exe および cat.exe) とデータ (davinci.txt) が自動的に設定されます。 既定では、HDInsight クラスターで使用されるコンテナーの名前は、クラスター自体の名前になります。 たとえば、クラスター名が myhdicluster の場合、関連付けられる BLOB コンテナーの名は myhdicluster になります。  
 

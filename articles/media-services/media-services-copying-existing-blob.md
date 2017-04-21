@@ -129,8 +129,8 @@ ms.lasthandoff: 03/14/2017
 
 ### <a name="prerequisites"></a>前提条件
 
-- BLOB をコピーする元の&1; つのストレージ アカウント。
-- BLOB をコピーする先の&1; つの AMS アカウント。
+- BLOB をコピーする元の 1 つのストレージ アカウント。
+- BLOB をコピーする先の 1 つの AMS アカウント。
 
 ### <a name="set-up-your-project"></a>プロジェクトの設定
 
