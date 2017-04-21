@@ -112,7 +112,7 @@ Azure Service Management モードの CLI コマンドを使用するだけで�
 >
 
 ## <a name="cli-command-modes"></a>CLI コマンド モード
-Azure CLI には、異なるコマンド セットを使用して、Azure リソースを操作するための次の&2; つのコマンド モードが用意されています。
+Azure CLI には、異なるコマンド セットを使用して、Azure リソースを操作するための次の 2 つのコマンド モードが用意されています。
 
 * **Resource Manager モード** - Resource Manager デプロイ モデルでの Azure リソースの操作用です。 このモードを設定するには、 `azure config mode arm`を実行します。
 * **サービス管理モード** - クラシック デプロイ モデルでの Azure リソースの操作用です。 このモードを設定するには、 `azure config mode asm`を実行します。

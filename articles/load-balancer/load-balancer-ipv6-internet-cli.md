@@ -29,7 +29,7 @@ ms.lasthandoff: 03/21/2017
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [テンプレート](load-balancer-ipv6-internet-template.md)
 
-Azure Load Balancer は、第&4; 層 (TCP、UDP) のロード バランサーです。 ロード バランサーは、ロード バランサー セット内のクラウド サービスまたは仮想マシンの正常なサービス インスタンスに着信トラフィックを分散することによって高可用性を提供します。 さらに、Azure Load Balancer は、これらのサービスを複数のポート、複数の IP アドレス、またはその両方に提供できます。
+Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーです。 ロード バランサーは、ロード バランサー セット内のクラウド サービスまたは仮想マシンの正常なサービス インスタンスに着信トラフィックを分散することによって高可用性を提供します。 さらに、Azure Load Balancer は、これらのサービスを複数のポート、複数の IP アドレス、またはその両方に提供できます。
 
 ## <a name="example-deployment-scenario"></a>デプロイ シナリオの例
 
@@ -43,7 +43,7 @@ Azure Load Balancer は、第&4; 層 (TCP、UDP) のロード バランサーで
 * IPv4 と IPv6 の両方のアドレスが割り当てられている各 VM の仮想ネットワーク インターフェイス
 * IPv4 と IPv6 のパブリック IP アドレスでインターネットに接続するロード バランサー
 * 2 つの VM が含まれる可用性セット
-* パブリック VIP をプライベート エンドポイントにマップする&2; つの負荷分散規則
+* パブリック VIP をプライベート エンドポイントにマップする 2 つの負荷分散規則
 
 ## <a name="deploying-the-solution-using-the-azure-cli"></a>Azure CLI を使用したソリューションのデプロイ
 
@@ -124,7 +124,7 @@ Azure Load Balancer は、第&4; 層 (TCP、UDP) のロード バランサーで
     $vnet = azure network vnet create  --resource-group $rgname --name $vnetName --location $location --address-prefixes $vnetPrefix
     ```
 
-    この VNet に&2; つのサブネットを作成します。
+    この VNet に 2 つのサブネットを作成します。
 
     ```azurecli
     $subnet1 = azure network vnet subnet create --resource-group $rgname --name $subnet1Name --address-prefix $subnet1Prefix --vnet-name $vnetName

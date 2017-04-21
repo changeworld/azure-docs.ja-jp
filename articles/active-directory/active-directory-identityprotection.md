@@ -34,7 +34,7 @@ Azure Active Directory Identity Protection は Azure AD Premium P2 エディシ�
 
 ## <a name="getting-started"></a>使用の開始
 
-Microsoft は&10; 年以上にわたってクラウド ベースの ID を保護してきました。 Azure Active Directory Identity Protection を使用すると、お客様の環境で、Microsoft が使用する保護システムと同じものを使って、ID をセキュリティで保護できます。
+Microsoft は 10 年以上にわたってクラウド ベースの ID を保護してきました。 Azure Active Directory Identity Protection を使用すると、お客様の環境で、Microsoft が使用する保護システムと同じものを使って、ID をセキュリティで保護できます。
 
 ほとんどのセキュリティ侵害は、攻撃者がユーザーの ID を盗むことにより環境にアクセスできるようになると発生します。 攻撃者は長年にわたってサード パーティの侵害をさらに巧妙に利用し、高度なフィッシング攻撃を使っています。 低い特権のユーザー アカウントであってもアクセス権を得た攻撃者はすぐに、かつ比較的簡単に、横方向に移動し、重要な企業リソースにアクセスしてしまいます。
 
@@ -276,7 +276,7 @@ Azure Active Directory Identity Protection には、ユーザーのリスク イ
 1. **[Azure AD Identity Protection]** ブレードで、**[リスクのフラグ付きユーザー]** をクリックします。
 
     ![パスワードの手動リセット](./media/active-directory-identityprotection/1006.png "Manual password reset")
-2. ユーザーの一覧から、少なくとも&1; つのリスク イベントを持つユーザーを選択します。
+2. ユーザーの一覧から、少なくとも 1 つのリスク イベントを持つユーザーを選択します。
 
     ![パスワードの手動リセット](./media/active-directory-identityprotection/1007.png "Manual password reset")
 3. ユーザーのブレードで、 **[パスワードのリセット]**をクリックします。
@@ -340,7 +340,7 @@ Azure AD Identity Protection では、リスクのフラグ付きユーザーの
 
 
 ## <a name="multi-factor-authentication-registration-policy"></a>多要素認証登録ポリシー
-Azure Multi-Factor Authentication は、本人性の確認において、ユーザー名とパスワードに加えて、その他の要素を取り入れる手法です。 ユーザーのサインインとトランザクションに&2; 層構造のセキュリティを確保することができます。  
+Azure Multi-Factor Authentication は、本人性の確認において、ユーザー名とパスワードに加えて、その他の要素を取り入れる手法です。 ユーザーのサインインとトランザクションに 2 層構造のセキュリティを確保することができます。  
 次のような理由から、ユーザーのサインインに対して Azure Multi-Factor Authentication を要求することをお勧めします。
 
 * 簡単な検証オプションで強力な認証が提供されます。
