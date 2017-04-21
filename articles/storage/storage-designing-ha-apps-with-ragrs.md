@@ -1,5 +1,5 @@
 ---
-title: "Azure の読み取りアクセス地理冗長ストレージ (RA-GRS) を使用した高可用性アプリケーションの設計 | Microsoft Docs"
+title: "Azure の読み取りアクセス geo 冗長ストレージ (RA-GRS) を使用した高可用性アプリケーションの設計 | Microsoft Docs"
 description: "Azure の RA-GRS ストレージを使用して、サービス停止に対応できる高い柔軟性を備えた高可用性アプリケーションを設計する方法を説明します。"
 services: storage
 documentationcenter: .net
@@ -22,7 +22,7 @@ ms.openlocfilehash: c9c0756fd714438e4ae74deadf0e5f009164af13
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>RA-GRS を使用した高可用性アプリケーションの設計
 
-クラウド ベースのインフラストラクチャでは、アプリケーションをホストするための可用性の高いプラットフォームが提供されます。 クラウド ベース アプリケーションの開発者は、このプラットフォームをどのように活用してユーザーに高可用性アプリケーションを届けるかを慎重に検討する必要があります。 この記事では、開発者が Azure Storage の読み取りアクセス地理冗長ストレージ (RA-GRS) を使用してアプリケーションの可用性を高める方法に焦点を絞って説明します。
+クラウド ベースのインフラストラクチャでは、アプリケーションをホストするための可用性の高いプラットフォームが提供されます。 クラウド ベース アプリケーションの開発者は、このプラットフォームをどのように活用してユーザーに高可用性アプリケーションを届けるかを慎重に検討する必要があります。 この記事では、開発者が Azure Storage の読み取りアクセス geo 冗長ストレージ (RA-GRS) を使用してアプリケーションの可用性を高める方法に焦点を絞って説明します。
 
 冗長性のオプションには、LRS (ローカル冗長ストレージ)、ZRS (ゾーン冗長ストレージ)、GRS (地理冗長ストレージ)、RA-GRS (読み取りアクセス地理冗長ストレージ) の 4 種類があります。 この記事では、GRS と RA-GRS について説明します。 GRS では、データの 3 つのコピーがプライマリ リージョン (ストレージ アカウントの設定時に選択したリージョン) に保持され、 さらに 3 つのコピーがセカンダリ リージョン (Azure によって指定されたリージョン) に非同期的に保持されます。 RA-GRS も GRS と同じですが、RA-GRS の場合はセカンダリ コピーに対する読み取りアクセスが可能です。 Azure Storage の冗長性オプションの詳細については、「[Azure Storage のレプリケーション](https://docs.microsoft.com/en-us/azure/storage/storage-redundancy)」を参照してください。 このレプリケーションに関する記事では、プライマリ リージョンとセカンダリ リージョンのペアも示されています。
 
@@ -40,9 +40,9 @@ RA-GRS ストレージの使用方法について説明する前に、その特�
 
 * ストレージ クライアント ライブラリを使用して、プライマリ リージョンまたはセカンダリ リージョンのデータと対話することができます。 プライマリ リージョンに対する読み取り要求がタイムアウトした場合に、その要求をセカンダリ リージョンに自動的にリダイレクトすることもできます。
 
-* プライマリ リージョンのデータのアクセシビリティに影響する重大な問題が発生した場合は、Azure チームが地理フェールオーバーをトリガーすることがあります。このとき、プライマリ リージョンを指す DNS エントリがセカンダリ リージョンを指すよう変更されます。
+* プライマリ リージョンのデータのアクセシビリティに影響する重大な問題が発生した場合は、Azure チームが geo フェールオーバーをトリガーすることがあります。このとき、プライマリ リージョンを指す DNS エントリがセカンダリ リージョンを指すよう変更されます。
 
-* 地理フェールオーバーが行われると、Azure によって新しいセカンダリ リージョンの場所が選択され、その場所にデータがレプリケートされます。そして、セカンダリ DNS エントリがセカンダリ リージョンを指すよう変更されます。 セカンダリ エンドポイントは、ストレージ アカウントがレプリケートを完了するまで使用できなくなります。 詳細については、「[Azure Storage の停止が発生した場合の対処方法](https://docs.microsoft.com/en-us/azure/storage/storage-disaster-recovery-guidance)」を参照してください。
+* geo フェールオーバーが行われると、Azure によって新しいセカンダリ リージョンの場所が選択され、その場所にデータがレプリケートされます。そして、セカンダリ DNS エントリがセカンダリ リージョンを指すよう変更されます。 セカンダリ エンドポイントは、ストレージ アカウントがレプリケートを完了するまで使用できなくなります。 詳細については、「[Azure Storage の停止が発生した場合の対処方法](https://docs.microsoft.com/en-us/azure/storage/storage-disaster-recovery-guidance)」を参照してください。
 
 ## <a name="application-design-considerations-when-using-ra-grs"></a>RA-GRS を使用する場合のアプリケーション設計に関する考慮事項
 
@@ -231,7 +231,7 @@ static function OnBeforeResponse(oSession: Session) {
 
 ## <a name="next-steps"></a>次のステップ
 
-* 読み取りアクセス地理冗長性に関する詳細と、LastSyncTime の設定方法のその他の例については、「[Windows Azure Storage Redundancy Options and Read Access Geo Redundant Storage (Azure Storage の冗長オプションと読み取りアクセス地理冗長ストレージ)](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/)」を参照してください。
+* 読み取りアクセス geo 冗長性に関する詳細と、LastSyncTime の設定方法のその他の例については、「[Windows Azure Storage Redundancy Options and Read Access Geo Redundant Storage (Azure Storage の冗長オプションと読み取りアクセス geo 冗長ストレージ)](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/)」を参照してください。
 
 * プライマリ エンドポイントとセカンダリ エンドポイント間の切り替え方法を示す完全なサンプルについては、「[Azure Samples – Using the Circuit Breaker Pattern with RA-GRS storage (Azure サンプル - RA-GRS ストレージでのサーキット ブレーカー パターンの使用)](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs)」を参照してください。
 
