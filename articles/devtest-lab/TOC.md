@@ -19,6 +19,7 @@
 ### [コスト管理の構成](devtest-lab-configure-cost-management.md)
 ### [仮想ネットワークの構成](devtest-lab-configure-vnet.md)
 ### [共有 IP アドレスについて](devtest-lab-shared-ip.md)
+### [テンプレートと PowerShell を使用したラボの変更の自動化](devtest-lab-use-arm-and-powershell-for-lab-resources.md)
 
 ## アーティファクトの管理
 ### [アーティファクト リポジトリの追加](devtest-lab-add-artifact-repo.md)
@@ -27,7 +28,7 @@
 
 ## VM のベースとテンプレートの管理
 ### [要求可能 VM の作成](devtest-lab-add-claimable-vm.md)
-### [Azure Resource Manager テンプレートを使用してマルチ VM 環境を作成する](devtest-lab-create-environment-from-arm.md)
+### [Azure Resource Manager テンプレートを使用してマルチ VM 環境と PaaS リソースを作成する](devtest-lab-create-environment-from-arm.md)
 ### [Marketplace のイメージの構成](devtest-lab-configure-marketplace-images.md)
 ### [数式とイメージを比較する](devtest-lab-comparing-vm-base-image-types.md)
 ### [数式の管理](devtest-lab-manage-formulas.md)

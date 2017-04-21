@@ -5,7 +5,7 @@
 ## [アプリケーションのシナリオ](service-fabric-application-scenarios.md)
 ## [アーキテクチャ](service-fabric-architecture.md)
 ## [用語集](service-fabric-technical-overview.md)
-## [コンテンツ ロードマップ](service-fabric-content-roadmap.md)
+## [基本](service-fabric-content-roadmap.md)
 
 # 作業の開始
 ## 開発環境を設定する
@@ -17,6 +17,8 @@
 ### [Linux での Java](service-fabric-create-your-first-linux-application-with-java.md)
 ### [Linux での C#](service-fabric-create-your-first-linux-application-with-csharp.md)
 ## [ローカル クラスターへのアプリのデプロイ](service-fabric-get-started-with-a-local-cluster.md)
+## [Azure で初めてのクラスターを作成する](service-fabric-get-started-azure-cluster.md)
+## [初めてのスタンドアロン クラスターを作成する](service-fabric-get-started-standalone-cluster.md)
 
 # 方法
 ## アプリケーションのビルド
@@ -123,7 +125,6 @@
 #### [アクセス制御](service-fabric-cluster-security-roles.md)
 #### [クラスターの構成](service-fabric-cluster-fabric-settings.md)
 #### [クラスター証明書の追加またはロールオーバー](service-fabric-cluster-security-update-certs-azure.md) 
-#### [Party Cluster を無料で試す](http://aka.ms/tryservicefabric)
 
 ### スタンドアロンのクラスター
 #### [デプロイの計画と準備](service-fabric-cluster-standalone-deployment-preparation.md)
@@ -145,6 +146,7 @@
 ### アプリケーションをデプロイまたは削除する
 #### [PowerShell](service-fabric-deploy-remove-applications.md)
 #### [Visual Studio](service-fabric-publish-app-remote-cluster.md)
+#### [FabricClient API](service-fabric-deploy-remove-applications-fabricclient.md)
 ### [アプリケーション アップグレードの概要](service-fabric-application-upgrade.md)
 ### [アプリケーション アップグレードの構成](service-fabric-visualstudio-configure-upgrade.md)
 ### [アプリケーション アップグレードのパラメーター](service-fabric-application-upgrade-parameters.md)
@@ -208,9 +210,9 @@
 ### [サービスの移動](service-fabric-cluster-resource-manager-movement-cost.md)
 
 # リファレンス
-## [PowerShell](//powershell/servicefabric/vlatest/servicefabric)
-## [Java API](/java/api/microsoft.servicefabric.services)
-## [.NET](/dotnet/api/microsoft.servicefabric.services)
+## [PowerShell](/powershell/module/ServiceFabric/)
+## [Java API](/java/api/)
+## [.NET](/dotnet/api/)
 ## [REST ()](/rest/api/servicefabric)
 
 # リソース

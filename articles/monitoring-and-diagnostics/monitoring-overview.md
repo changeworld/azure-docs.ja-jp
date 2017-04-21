@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure Monitor の概要 | Microsoft Docs"
 description: "Azure Monitor は、アラート、webhook、自動スケール、およびオートメーションで使用するための統計を収集します。 この記事では、その他の Microsoft 監視オプションも示します。"
 author: rboucher
@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2017
+ms.date: 03/31/2017
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: ca55f1c295d99ff92abaef1a919d4c90d3c33b8a
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 8e2b1a31b9875b8403e6c97c097ba65985f5f3b5
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -34,13 +34,10 @@ Azure Monitor のビデオ チュートリアルは、
 
 ![非コンピューティング リソースに対する監視と診断のモデル](./media/monitoring-overview/Monitoring_Azure_Resources-compute_v4.png)
 
-図 1: 非コンピューティング リソースに対する監視と診断の概念モデル
-
 <br/>
 
 ![コンピューティング リソースに対する監視と診断のモデル](./media/monitoring-overview/Monitoring_Azure_Resources-non-compute_v4.png)
 
-図 2: コンピューティング リソースに対する監視と診断の概念モデル
 
 ## <a name="monitoring-sources"></a>監視のソース
 ### <a name="activity-logs"></a>アクティビティ ログ

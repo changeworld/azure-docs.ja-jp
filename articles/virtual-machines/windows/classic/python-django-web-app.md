@@ -16,16 +16,16 @@ ms.topic: article
 ms.date: 08/04/2015
 ms.author: huvalo
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: a55a2c069df1717bc49199589abf280cced307af
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: d777d2a7944d17a452732c0e820dc781357bc8d2
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="django-hello-world-web-application-on-a-windows-server-vm"></a>Windows Server VM での Django Hello World Web アプリケーション
 > [!div class="op_single_selector"]
 > * [Windows](python-django-web-app.md)
-> * [Mac/Linux](../../virtual-machines-linux-python-django-web-app.md)
+> * [Mac/Linux](../../linux/python-django-web-app.md)
 > 
 > 
 

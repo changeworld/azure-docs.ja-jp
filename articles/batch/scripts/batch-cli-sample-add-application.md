@@ -8,7 +8,7 @@ manager: daryls
 editor: tysonn
 ms.assetid: 
 ms.service: batch
-ms.devlang: na
+ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na

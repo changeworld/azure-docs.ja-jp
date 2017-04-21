@@ -15,14 +15,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: e28f4004e3cafcfa09309ff0143c83af5fa5493a
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: c5b87c3a814b816e8bdc28d3e22b64c2197579af
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="how-to-create-a-custom-template-image-for-azure-remoteapp"></a>Azure RemoteApp のカスタム テンプレート イメージの作成方法
 > [!IMPORTANT]
-> Azure RemoteApp の提供は終了しました。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
+> Azure RemoteApp の提供は、2017 年 8 月 31 日で終了します。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
 > 
 > 
 
@@ -142,10 +143,5 @@ Azure RemoteApp で使用するためにアップロードできるイメージ�
 
 * [RemoteApp のハイブリッド コレクションの作成方法](remoteapp-create-hybrid-deployment.md)
 * [RemoteApp のクラウド コレクションの作成方法](remoteapp-create-cloud-deployment.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

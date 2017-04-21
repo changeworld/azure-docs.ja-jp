@@ -15,9 +15,9 @@ ms.workload: big-compute
 ms.date: 03/17/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 671d5c3e88585d7874dbfb0b03adc3cd9374ceca
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: aff11fe3d7e4cea3580f73d54a53d9624e4f3ac9
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -49,7 +49,7 @@ HPC Pack は、Microsoft Azure と Windows Server テクノロジに基づいて
 * [HPC Pack 2016 をダウンロードする](https://www.microsoft.com/download/details.aspx?id=54507)
 * [HPC Pack 2012 R2 Update 3 をダウンロードする](https://www.microsoft.com/download/details.aspx?id=49922)
 * [ドキュメント](https://technet.microsoft.com/library/jj899572.aspx)
-* Azure の HPC Pack クラスター オプション: [Linux](../virtual-machines/virtual-machines-linux-hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) および [Windows](../virtual-machines/virtual-machines-windows-hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 
+* Azure の HPC Pack クラスター オプション: [Linux](../virtual-machines/linux/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) および [Windows](../virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 
 * [HPC Pack を使用した Azure ワーカー インスタンスへのバースト](https://technet.microsoft.com/library/gg481749.aspx)
 * [HPC Pack を使用した Azure Batch へのバースト](https://technet.microsoft.com/library/mt612877.aspx)
 * [Windows HPC フォーラム](https://social.microsoft.com/Forums/home?category=windowshpc)
@@ -77,7 +77,7 @@ HPC Pack は、Microsoft Azure と Windows Server テクノロジに基づいて
 * [MPI フォーラム](https://social.microsoft.com/Forums/en-us/home?forum=windowshpcmpi)
 
 ## <a name="compute-intensive-instances"></a>コンピューティング集中型インスタンス
-Azure では、Linux と Windows の HPC ワークロードを実行するために、[さまざまな VM サイズ](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)が用意されています。たとえば、[コンピューティング集中型 H シリーズ](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) インスタンスはバックエンド RDMA ネットワークに接続できます。 
+Azure では、Linux と Windows の HPC ワークロードを実行するために、[さまざまな VM サイズ](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)が用意されています。たとえば、[コンピューティング集中型 H シリーズ](../virtual-machines/windows/a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) インスタンスはバックエンド RDMA ネットワークに接続できます。 
 
 * [MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](../virtual-machines/linux/classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 * [Set up a Windows RDMA cluster with HPC Pack to run MPI applications (HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する)](../virtual-machines/windows/classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)

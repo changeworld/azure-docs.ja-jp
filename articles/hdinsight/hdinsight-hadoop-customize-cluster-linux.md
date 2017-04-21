@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 03/10/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 1f64380b0bd271658c0f06e01a9b013ae4e25636
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: 02a978402c8067105900ac50a2796000f8eef67f
+ms.lasthandoff: 04/11/2017
 
 
 ---
@@ -30,7 +30,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 > [!IMPORTANT]
 > 既に実行されているクラスター上でスクリプト アクションを使用する機能は、Linux ベースの HDInsight クラスターでのみ使用できます。
 >
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。
 
 
 スクリプト アクションは、HDInsight アプリケーションとして Azure Marketplace にも発行することができます。 このドキュメントの例では、PowerShell と .NET SDK からスクリプト アクション コマンドを使用して HDInsight アプリケーションをインストールする方法を示します。 HDInsight のアプリケーションの詳細については、「 [Azure Marketplace への HDInsight アプリケーションの発行](hdinsight-apps-publish-applications.md)」を参照してください。

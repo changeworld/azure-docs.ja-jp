@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/27/2016
+ms.date: 04/11/2017
 ms.author: bwren
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: df1a5b2c200b7fa69961247ac036ee35fd14f54d
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -83,10 +84,5 @@ Azure Site Recovery には、3 つの基本的なレプリケーション シナ
 * [Azure Automation](https://azure.microsoft.com/documentation/services/automation)の詳細を確認する。
 * [Azure Backup](http://azure.microsoft.com/documentation/services/backup)の詳細を確認する。
 * [Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery)の詳細を確認する。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

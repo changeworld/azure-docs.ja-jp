@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 12/09/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 8da480acc04922a3636821c5303f6380236c5ea3
-ms.openlocfilehash: 1bff76371ea1ca3ee68c9f04ea24a42f95bb7da7
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 45ff2ff08cb36f9a4bf49ff04de149accf157e0e
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -28,7 +28,7 @@ Identity Management As A Service (IDMaaS) プラットフォームとして Azur
 1. [Azure AD 統合のメリット](active-directory-how-to-integrate.md): Azure AD との統合が、セキュリティで保護されたサインインと承認に最適なソリューションである理由を説明します。
 2. [Azure AD の認証シナリオ](active-directory-authentication-scenarios.md): Azure AD の簡素化された認証を利用して、アプリケーションにサインオン機能を組み込む方法を説明します。
 3. [アプリケーションと Azure AD の統合](active-directory-integrating-applications.md): Azure AD にアプリケーションを追加し、それを更新および削除する方法と、統合されたアプリのブランド化のガイドラインについて説明します。
-4. [Azure AD Graph API](active-directory-graph-api.md): Azure AD Graph API を使用し、REST API エンドポイント経由で Azure AD にプログラムからアクセスする方法を説明します。 Azure AD Graph API には、 [Microsoft Graph](https://graph.microsoft.io/)からもアクセスできます。 Microsoft Graph は、単一の REST API エンドポイントから単一のアクセス トークンを使用して複数の Microsoft クラウド サービス API にアクセスできる統合 API を備えています。
+4. [Microsoft Graph](https://graph.microsoft.io/) と [Azure AD Graph API](active-directory-graph-api.md): REST API エンドポイント経由でプログラムから Azure AD にアクセスします。 **Azure Active Directory リソースにアクセスする場合、Azure AD Graph API ではなく Microsoft Graph を使用することを強くお勧めします。** 開発作業は現在 Microsoft Graph に集中しており、Azure AD Graph API の追加の機能強化は予定されていません。 Azure AD Graph API の使用が適切なシナリオの数は非常に限られています。詳しくは、Office デベロッパー センターのブログ投稿「[Microsoft Graph or the Azure AD Graph (Microsoft Graph または Azure AD Graph)](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph)」をご覧ください。
 5. [Azure AD 認証ライブラリ](active-directory-authentication-libraries.md): Azure AD 認証ライブラリ (.NET、JavaScript、Objective-C、Android などに対応) を使用して、ユーザーの認証とアクセス トークンの取得を簡単に実行する方法について説明します。
 
 ## <a name="getting-started"></a>使用の開始
@@ -57,10 +57,10 @@ Identity Management As A Service (IDMaaS) プラットフォームとして Azur
 |:---:|:---:|
 | [.NET](active-directory-devquickstarts-webapi-dotnet.md) |[Node.JS](active-directory-devquickstarts-webapi-nodejs.md) |
 
-### <a name="querying-the-directory-quickstart-guide"></a>ディレクトリのクエリに関するクイック スタート ガイド
-| [![.NET](./media/active-directory-developers-guide/graph.png)](active-directory-graph-api-quickstart.md) |
-|:---:|
-| [Graph API](active-directory-graph-api-quickstart.md) |
+### <a name="microsoft-graph-and-azure-ad-graph-api-quick-start-guides"></a>Microsoft Graph と Azure AD Graph API のクイック スタート ガイド
+| [![Microsoft Graph](./media/active-directory-developers-guide/msgraph.png)](https://developer.microsoft.com/graph/quick-start) | [![Azure AD Graph API](./media/active-directory-developers-guide/graph.png)](active-directory-graph-api-quickstart.md) |
+|:---:|:---:|
+| [Microsoft Graph](https://developer.microsoft.com/graph/quick-start) | [Azure AD Graph API](active-directory-graph-api-quickstart.md) |
 
 ## <a name="how-tos"></a>方法
 次の記事では、Azure Active Directory を使用して特定のタスクを実行する方法について説明しています。
@@ -91,9 +91,14 @@ Identity Management As A Service (IDMaaS) プラットフォームとして Azur
 * [Azure Active Directory のサンプル](https://github.com/azure-samples?query=active-directory): [コード サンプルのインデックス](active-directory-code-samples.md)を使用すると、サンプルのリスト内を最も簡単に移動できます。
 * [.NET 用 Active Directory Authentication Library (ADAL)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet): [最新のメジャー バージョン](https://docs.microsoft.com/active-directory/adal/microsoft.identitymodel.clients.activedirectory)と[前のメジャー バージョン](https://docs.microsoft.com/active-directory/adal/v2/microsoft.identitymodel.clients.activedirectory)の両方の参照ドキュメントを使用できます。
 
-### <a name="graph-api"></a>Graph API
-* [Graph API リファレンス](https://msdn.microsoft.com/library/azure/hh974476.aspx): Azure Active Directory Graph API の REST リファレンスです。 [対話型の Graph API リファレンスを表示します](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)。
-* [Graph API Permission Scopes (Graph API のアクセス許可スコープ)](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes): OAuth 2.0 のアクセス許可スコープは、アプリケーションに付与されている、テナント内のディレクトリ データに対するアクセス権を制御するために使用されます。
+### <a name="microsoft-graph-and-azure-ad-graph-api"></a>Microsoft Graph と Azure AD Graph API
+> [!IMPORTANT]
+> Azure Active Directory リソースにアクセスする場合、Azure AD Graph API ではなく [Microsoft Graph](https://graph.microsoft.io/) を使用することを強くお勧めします。 開発作業は現在 Microsoft Graph に集中しており、Azure AD Graph API の追加の機能強化は予定されていません。 Azure AD Graph API の使用が適切なシナリオの数は非常に限られています。詳しくは、Office デベロッパー センターのブログ投稿「[Microsoft Graph or the Azure AD Graph (Microsoft Graph または Azure AD Graph)](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph)」をご覧ください。
+> 
+
+* [Microsoft Graph](https://graph.microsoft.io/): Microsoft Graph のドキュメント、リファレンス、サンプル、SDK です。 
+* [Azure AD Graph API リファレンス](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog): Azure Active Directory Graph API の REST リファレンスです。 
+* [Azure AD Graph API のアクセス許可スコープ](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes): テナント内のディレクトリ データに対するアプリケーションのアクセス権を制御するために使用される、OAuth 2.0 アクセス許可スコープです。
 
 ### <a name="authentication-and-authorization-protocols"></a>認証および承認のプロトコル
 * [Azure AD の署名キーのロールオーバー](active-directory-signing-key-rollover.md): Azure AD の署名キーのロールオーバーの周期と、最も一般的なアプリケーション シナリオでのキーの更新方法について説明します。

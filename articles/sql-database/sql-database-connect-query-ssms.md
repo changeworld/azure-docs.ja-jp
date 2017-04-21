@@ -10,7 +10,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 7cd2a114-c13c-4ace-9088-97bd9d68de12
 ms.service: sql-database
-ms.custom: development
+ms.custom: quick start manage
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -18,15 +18,15 @@ ms.topic: hero-article
 ms.date: 03/15/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: ba56eaa154116edbe1dd8962049535cfa57551ac
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: c173f1b6937739f662eb41aa1886e66cb06ed729
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="azure-sql-database-use-sql-server-management-studio-to-connect-and-query-data"></a>Azure SQL Database: SQL Server Management Studio を使って接続とデータの照会を行う
 
-[SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) を使用して、ユーザー インターフェイスまたはスクリプトで SQL Server リソースの作成と管理を行います。 このガイドでは、SSMS を使用して Azure SQL データベースに接続し、照会、挿入、更新、削除の各ステートメントを実行する方法について詳しく説明します。
+[SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) は、ユーザー インターフェイスまたはスクリプトから SQL Server リソースの作成と管理を行うことができる管理ツールです。 このクイック スタートでは、SSMS を使って Azure SQL データベースに接続し Transact-SQL ステートメントを使ってデータベース内のデータを照会、挿入、更新、削除する方法について説明します。 
 
 このクイック スタートでは、次のクイック スタートで作成されたリソースが出発点として使用されます。
 
@@ -43,13 +43,18 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
 3. そのデータベースの Azure Portal ページの **[要点]** ウィンドウで、**サーバー名**を見つけてコピーします。
 
-    <img src="./media/sql-database-connect-query-ssms/connection-information.png" alt="connection information" style="width: 780px;" />
+   ![接続情報](./media/sql-database-connect-query-ssms/connection-information.png) 
 
-## <a name="connect-to-the-server"></a>サーバーへの接続
 
-SQL Server Management Studio を使用して、Azure SQL Database サーバーに対する接続を確立します。
+## <a name="connect-to-the-server-and-your-new-database"></a>サーバーと新しいデータベースへの接続
 
-1. Windows 検索ボックスに「**SSMS**」と入力し、**Enter** キーを押して SSMS を開きます。
+SQL Server Management Studio を使用して、Azure SQL Database サーバーに対する接続を確立します。 
+
+> [!IMPORTANT]
+> Azure SQL Database 論理サーバーは、ポート 1433 でリッスンします。 企業のファイアウォール内から Azure SQL Database 論理サーバーに接続する場合、企業のファイアウォールでこのポートが開放されていないと、正しく接続することができません。
+>
+
+1. SQL Server Management Studio を開きます。
 
 2. **[サーバーへの接続]** ダイアログ ボックスで、次の情報を入力します。
    - **[サーバーの種類]**: データベース エンジンを指定します
@@ -57,12 +62,16 @@ SQL Server Management Studio を使用して、Azure SQL Database サーバー�
    - **[認証]**: SQL Server 認証を指定します
    - **[ログイン]**: サーバー管理者アカウントを入力します
    - **[パスワード]**: サーバー管理者アカウントのパスワードを入力します
- 
-    <img src="./media/sql-database-connect-query-ssms/connect.png" alt="connect to server" style="width: 780px;" />
 
-3. **[接続]**をクリックします。 SSMS でオブジェクト エクスプローラー ウィンドウが開きます。 
+   ![[サーバーへの接続]](./media/sql-database-connect-query-ssms/connect.png)  
 
-    <img src="./media/sql-database-connect-query-ssms/connected.png" alt="connected to server" style="width: 780px;" />
+3. **[オプション]**をクリックします。 **[データベースへの接続]** セクションに「**mySampleDatabase**」と入力して、作成済みのこのデータベースに接続します。
+
+   ![サーバー上のデータベースに接続](./media/sql-database-connect-query-ssms/options-connect-to-db.png)  
+
+4. **[接続]**をクリックします。 SSMS でオブジェクト エクスプローラー ウィンドウが開きます。 
+
+   ![サーバーに接続されました](./media/sql-database-connect-query-ssms/connected.png)  
 
 4. オブジェクト エクスプローラーで、**Databases** フォルダー、**mySampleDatabase** フォルダーの順に展開して、サンプル データベース内のオブジェクトを表示します。
 
@@ -71,7 +80,7 @@ SQL Server Management Studio を使用して、Azure SQL Database サーバー�
 [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL ステートメントを使用して、Azure SQL データベースのデータを照会します。
 
 1. オブジェクト エクスプローラーで **mySampleDatabase** を右クリックし、**[新しいクエリ]** をクリックします。 データベースに接続された空のクエリ ウィンドウが開きます。
-2. このクエリ ウィンドウに次のクエリを入力します。
+2. クエリ ウィンドウに次のクエリを入力します。
 
    ```sql
    SELECT pc.Name as CategoryName, p.name as ProductName
@@ -88,8 +97,7 @@ SQL Server Management Studio を使用して、Azure SQL Database サーバー�
 
 [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL ステートメントを使用して、Azure SQL データベースにデータを挿入します。
 
-1. ツール バーの **[新しいクエリ]** をクリックします。 データベースに接続された空のクエリ ウィンドウが開きます。
-2. このクエリ ウィンドウに次のクエリを入力します。
+1. クエリ ウィンドウで、先ほどのクエリを次のクエリに置き換えます。
 
    ```sql
    INSERT INTO [SalesLT].[Product]
@@ -111,7 +119,7 @@ SQL Server Management Studio を使用して、Azure SQL Database サーバー�
            ,GETDATE() );
    ```
 
-3. ツール バーの **[実行]** をクリックして、新しい行を Product テーブルに挿入します。
+2. ツール バーの **[実行]** をクリックして、新しい行を Product テーブルに挿入します。
 
     <img src="./media/sql-database-connect-query-ssms/insert.png" alt="insert" style="width: 780px;" />
 
@@ -119,8 +127,7 @@ SQL Server Management Studio を使用して、Azure SQL Database サーバー�
 
 [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL ステートメントを使用して、Azure SQL データベースのデータを更新します。
 
-1. ツール バーの **[新しいクエリ]** をクリックします。 データベースに接続された空のクエリ ウィンドウが開きます。
-2. このクエリ ウィンドウに次のクエリを入力します。
+1. クエリ ウィンドウで、先ほどのクエリを次のクエリに置き換えます。
 
    ```sql
    UPDATE [SalesLT].[Product]
@@ -128,7 +135,7 @@ SQL Server Management Studio を使用して、Azure SQL Database サーバー�
    WHERE Name = 'myNewProduct';
    ```
 
-3. ツール バーの **[実行]** をクリックして、Product テーブルの指定した行を更新します。
+2. ツール バーの **[実行]** をクリックして、Product テーブルの指定した行を更新します。
 
     <img src="./media/sql-database-connect-query-ssms/update.png" alt="update" style="width: 780px;" />
 
@@ -136,20 +143,25 @@ SQL Server Management Studio を使用して、Azure SQL Database サーバー�
 
 [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL ステートメントを使用して、Azure SQL データベースのデータを削除します。
 
-1. ツール バーの **[新しいクエリ]** をクリックします。 データベースに接続された空のクエリ ウィンドウが開きます。
-2. このクエリ ウィンドウに次のクエリを入力します。
+1. クエリ ウィンドウで、先ほどのクエリを次のクエリに置き換えます。
 
    ```sql
    DELETE FROM [SalesLT].[Product]
    WHERE Name = 'myNewProduct';
    ```
 
-3. ツール バーの **[実行]** をクリックして、Product テーブルの指定した行を削除します。
+2. ツール バーの **[実行]** をクリックして、Product テーブルの指定した行を削除します。
 
     <img src="./media/sql-database-connect-query-ssms/delete.png" alt="delete" style="width: 780px;" />
 
 ## <a name="next-steps"></a>次のステップ
 
 - SSMS については、「[Use SQL Server Management Studio (SQL Server Management Studio の使用)](https://msdn.microsoft.com/library/ms174173.aspx)」を参照してください。
-- Visual Studio Code を使用したデータの照会と編集については、[Visual Studio Code](https://code.visualstudio.com/docs) に関するページを参照してください。
+- Visual Studio Code を使用して接続とデータの照会を行うには、[Visual Studio Code を使った接続とデータの照会](sql-database-connect-query-vscode.md)に関するページを参照してください。
+- .NET を使用して接続とデータの照会を行うには、[.NET を使った接続とデータの照会](sql-database-connect-query-dotnet.md)に関するページを参照してください。
+- PHP を使用して接続とデータの照会を行うには、[PHP を使った接続とデータの照会](sql-database-connect-query-php.md)に関するページを参照してください。
+- Node.js を使用して接続とデータの照会を行うには、[Node.js を使った接続とデータの照会](sql-database-connect-query-nodejs.md)に関するページを参照してください。
+- Java を使用して接続とデータの照会を行うには、[Java を使った接続とデータの照会](sql-database-connect-query-java.md)に関するページを参照してください。
+- Python を使用して接続とデータの照会を行うには、[Python を使った接続とデータの照会](sql-database-connect-query-python.md)に関するページを参照してください。
+- Ruby を使用して接続とデータの照会を行うには、[Ruby を使った接続とデータの照会](sql-database-connect-query-ruby.md)に関するページを参照してください。
 

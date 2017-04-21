@@ -12,21 +12,23 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/17/2017
+ms.date: 03/27/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: c3e3e407eb6a05b208863443bb8ccf3cba701b23
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
+ms.openlocfilehash: 9fb0fdf1a2a48c5c9daf7d0ec22e85221bfb6b28
+ms.lasthandoff: 04/07/2017
 
 
 ---
-# <a name="use-role-assignments-to-manage-access-to-your-azure-subscription-resources"></a>Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する
+# <a name="use-role-based-access-control-to-manage-access-to-your-azure-subscription-resources"></a>ロールベースのアクセス制御を使用して Azure サブスクリプション リソースへのアクセスを管理する
 > [!div class="op_single_selector"]
 > * [ユーザーまたはグループによるアクセスの管理](role-based-access-control-manage-assignments.md)
 > * [リソースによるアクセスの管理](role-based-access-control-configure.md)
 
 Azure のロールベースのアクセス制御 (RBAC) では、Azure のアクセス権の詳細な管理を実現します。 RBAC を使用すると、職務に必要な範囲のアクセス権だけをユーザーに付与することができます。 この記事では、Azure ポータルにおける RBAC の基本的な使い方について説明しています。 RBAC を使用した高度なアクセス管理については、「 [What is Role-Based Access Control (ロールベースのアクセス制御とは)](role-based-access-control-what-is.md)」を参照してください。
+
+各サブスクリプション内では、最大 2,000 のロールの割り当てを許可できます。 
 
 ## <a name="view-access"></a>アクセス許可の表示
 [Azure ポータル](https://portal.azure.com)のメイン ブレードで、リソース、リソース グループ、またはサブスクリプションへのアクセス権が付与されているユーザーを確認できます。 たとえば、リソース グループのいずれかへのアクセス権があるユーザーを確認する場合は、次の手順を実行します。
@@ -58,7 +60,7 @@ Azure のロールベースのアクセス制御 (RBAC) では、Azure のアク
 ロールの割り当てが正常に追加されると、 **[ユーザー]** ブレードに表示されます。
 
 ## <a name="remove-access"></a>アクセス権の削除
-1. アクセス制御ブレードのチェック ボックスを使用して、ロールの割り当てを&1; つ以上選択します。
+1. アクセス制御ブレードのチェック ボックスを使用して、ロールの割り当てを 1 つ以上選択します。
 2. **[削除]** を選択します。  
 3. アクションの確定を求めるボックスがポップアップ表示されます。 **[はい]** を選択してロールの割り当てを削除します。
 

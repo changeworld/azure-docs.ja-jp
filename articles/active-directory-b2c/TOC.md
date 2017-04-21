@@ -1,7 +1,7 @@
 # 概要
 ## [概要](active-directory-b2c-overview.md)
 ## [アプリケーションの種類](active-directory-b2c-apps.md)
-## [運用スケールとプレビューの B2C テナント](active-directory-b2c-reference-tenant-type.md)
+## [利用可能なリージョンとデータの保存場所](active-directory-b2c-reference-tenant-type.md)
 
 # 作業の開始
 ## [Azure AD B2C ディレクトリの作成](active-directory-b2c-get-started.md)

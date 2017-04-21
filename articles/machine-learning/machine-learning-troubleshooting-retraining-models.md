@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2017
+ms.date: 04/19/2017
 ms.author: v-donglo
 translationtype: Human Translation
 ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
 ms.openlocfilehash: 5bbd1bd74176b67beaecfc9995d16e923e5a40f1
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -113,9 +114,4 @@ PATCH ヘルプ ページには、使用する必要のある PATCH URL が含�
 [image5]: ./media/machine-learning-troubleshooting-retraining-a-model/ml-help-page-patch-url.png
 [image6]: ./media/machine-learning-troubleshooting-retraining-a-model/retraining-output.png
 [image7]: ./media/machine-learning-troubleshooting-retraining-a-model/web-services-tab.png
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

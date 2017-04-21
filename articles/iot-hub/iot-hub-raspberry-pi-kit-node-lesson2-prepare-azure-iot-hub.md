@@ -9,6 +9,8 @@ author: shizn
 manager: timlt
 tags: 
 keywords: "Raspberry Pi クラウド, Pi クラウド接続"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-raspberry-pi-kit-node-get-started
 ms.assetid: 736215b6-e7e4-46f9-af30-0ded9ffa5204
 ms.service: iot-hub
 ms.devlang: node

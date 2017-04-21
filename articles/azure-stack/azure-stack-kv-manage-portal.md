@@ -12,12 +12,12 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2017
+ms.date: 04/06/2017
 ms.author: sngun
 translationtype: Human Translation
-ms.sourcegitcommit: e279db33b963db2260d8430da3e5980103501aae
-ms.openlocfilehash: dd06b111674deb9ddfb185051fc459202688ebd5
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: f659b66e716f5c0d20fbc5d122cd4ca47b077f27
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -36,7 +36,7 @@ Starting in Technical Preview 3 (TP3), you can manage Key Vault in Azure Stack b
  
 ## <a name="create-a-key-vault"></a>Create a key vault 
 
-1. Sign in to the user portal(https://publicportal.local.azurestack.external).  
+1. Sign in to the user portal(https://portal.local.azurestack.external).  
 
 2. From the dashboard, click **New > Security + Identity > Key Vault**.  
 
@@ -64,11 +64,9 @@ After you create a vault, use the following steps to create and manage keys and 
 
 ## <a name="create-a-key"></a>Create a key
 
-1. Sign in to the user portal (https://publicportal.local.azurestack.external).  
+1. Sign in to the user portal (https://portal.local.azurestack.external).  
 
 2. From the dashboard, click **All resources** > select the key vault that you created earlier> click the **Keys** tile.  
-
-    ![Keys tile](media/azure-stack-kv-manage-portal/image3.png)  
 
 3. From the **Keys** blade, click **Add**. 
 
@@ -86,7 +84,7 @@ After the key is successfully created, you can select it from the **Keys** blade
 
 ## <a name="create-a-secret"></a>Create a secret 
 
-1. Sign in to the user portal (https://publicportal.local.azurestack.external).  
+1. Sign in to the user portal (https://portal.local.azurestack.external).  
 2. From the dashboard, click **All resources** > select the key vault that you created earlier> click the **Secrets** tile.  
 
 3. From the **Secrets** blade, click **Add**.  

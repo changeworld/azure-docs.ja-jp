@@ -17,9 +17,9 @@ ms.date: 3/13/2017
 ms.author: markgal;trinadhk; anuragm
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: a2452b95c9355957b10477a6e457000f0eba6a9c
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 2e981f0f45bc5b338937839b74114e12db960927
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -90,9 +90,9 @@ Azure Backup は、Microsoft Cloud のデータのバックアップ (または�
 | コンポーネント | Linux (Azure での動作保証済み) サポート |
 | --- | --- |
 | Azure Backup (MARS) エージェント |なし (Windows ベースのエージェントのみ) |
-| System Center DPM |Hyper-V でのファイル整合性バックアップのみ<br/> (Azure VM では不可) |
-| Azure Backup Server |Hyper-V でのファイル整合性バックアップのみ<br/> (Azure VM では不可) |
-| Azure IaaS VM のバックアップ |あり ([事前スクリプトおよび事後スクリプト フレームワーク](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)を使用するアプリケーション整合性バックアップ) |
+| System Center DPM |Hyper-V および VMWare 上の Linux Guest VM のファイル整合性バックアップ<br/> (Azure VM では不可)<br/> Hyper-V および VMWare Linux Guest VM の VM 復元 |
+| Azure Backup Server |Hyper-V および VMWare 上の Linux Guest VM のファイル整合性バックアップ<br/> (Azure VM では不可)<br/> Hyper-V および VMWare Linux Guest VM の VM 復元 |
+| Azure IaaS VM のバックアップ |[事前スクリプトおよび事後スクリプト フレームワーク](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)を使用するアプリケーション整合性バックアップ<br/> [詳細なファイルの回復](backup-azure-restore-files-from-vm.md)<br/> [すべての VM ディスクの復元](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-backed-up-disks)<br/> [VM の復元](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#create-a-new-vm-from-restore-point) |
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>Azure Backup での Premium Storage VM の使用
 Azure Backup で、Premium Storage VM が保護されます。 Azure Premium Storage は、入出力集中型ワークロードをサポートすることを目的としたソリッド ステート ドライブ (SSD) ベースのストレージです。 Premium Storage は、仮想マシン (VM) ワークロードに適しています。 Premium Storage の詳細については、[Premium Storage (Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ)](../storage/storage-premium-storage.md) に関する記事を参照してください。

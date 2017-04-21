@@ -18,9 +18,9 @@ ms.workload: big-data
 ms.date: 03/07/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 8bea5c13b8657be737cdc135b2d46bd0068b6b88
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 86641734634df131fd366e0b9e7cc6f0d4e54b7e
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -69,7 +69,7 @@ Data Lake Tools for Visual Studio を使用して、HDInsight クラスターへ
    > 
    > 
 4. Azure サブスクリプションの資格情報を入力し、 **[サインイン]**をクリックします。 この操作は、このワークステーションで、まだ一度も Visual Studio から Azure サブスクリプションに接続していない場合にのみ必要です。
-5. サーバー エクスプローラーに、既存の HDInsight クラスターの一覧が表示されます。 クラスターが&1; つもない場合は、Azure ポータル、Azure PowerShell、または HDInsight SDK を使用して作成できます。 詳細については、[HDInsight クラスターの作成][hdinsight-create-clusters]に関するページを参照してください。
+5. サーバー エクスプローラーに、既存の HDInsight クラスターの一覧が表示されます。 クラスターが 1 つもない場合は、Azure ポータル、Azure PowerShell、または HDInsight SDK を使用して作成できます。 詳細については、[HDInsight クラスターの作成][hdinsight-create-clusters]に関するページを参照してください。
    
    ![Data Lake Tools for Visual Studio サーバー エクスプローラー クラスターの一覧][5]
 6. HDInsight クラスターを展開します。 **Hive データベース**、既定のストレージ アカウント、リンクされたストレージ アカウント、**Hadoop サービス ログ**が表示されます。 さらに、エンティティを展開できます。
@@ -126,7 +126,7 @@ GUI を使用して Hive テーブルを作成するか、Hive クエリを使�
     ![Data Lake Tools: HDInsight Visual Studio Tools で Hive テーブルを作成する][7]
 
 ### <a name="run.queries"></a>Hive クエリの検証と実行
-Hive クエリを作成して実行するには次の&2; つの方法があります。
+Hive クエリを作成して実行するには次の 2 つの方法があります。
 
 * アドホック クエリを作成する
 * Hive アプリケーションを作成する

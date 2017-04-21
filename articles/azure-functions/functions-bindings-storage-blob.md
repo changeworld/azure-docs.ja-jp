@@ -17,9 +17,9 @@ ms.workload: na
 ms.date: 03/06/2017
 ms.author: chrande, glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: 590cb831ad265d9b83713f573c92d8675e64db3d
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 7b4ae9281bca20949c37b2c797e4a1a677665929
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -55,7 +55,7 @@ Azure Storage BLOB トリガーを使用して、新しい BLOB または更新�
 以下の点に注意してください。
 
 * `path` については、「[名前のパターン](#pattern)」を参照し、BLOB 名のパターンを設定する方法を確認してください。
-* `connection` にはストレージ接続文字列を含むアプリ設定の名前を含める必要があります。 Azure Portal では、ストレージ アカウントの作成や既存のストレージ アカウントの選択を行う際、**[統合]** タブの標準エディターによってこのアプリ設定が構成されます。 このアプリ設定を手動で作成するには、[アプリ設定の手動での構成]()に関する記事を参照してください。 
+* `connection` にはストレージ接続文字列を含むアプリ設定の名前を含める必要があります。 Azure Portal では、ストレージ アカウントの作成や既存のストレージ アカウントの選択を行う際、**[統合]** タブの標準エディターによってこのアプリ設定が構成されます。 このアプリ設定を手動で作成するには、[アプリ設定の手動での構成](functions-how-to-use-azure-function-app-settings.md)に関する記事を参照してください。 
 
 従量課金プランで実行しているときに Function App がアイドル状態になると、新しい BLOB の処理が最大で 10 分遅延する場合があります。 Function App が実行されると、BLOB はより迅速に処理されます。 この初期段階での遅延を回避するには、Always On を有効にした状態で App Service プランを使用するか、別のメカニズムを使用して、BLOB 名を含むキュー メッセージなどの BLOB 処理をトリガーします。 
 
@@ -103,7 +103,7 @@ BLOB のファイルの種類を制限するには、ファイル拡張子に固
 <a name="receipts"></a>
 
 ### <a name="blob-receipts"></a>BLOB の配信確認メッセージ
-Azure Functions ランタイムでは、BLOB トリガー関数は、同一の新規または更新された BLOB について&2; 回以上呼び出されることはありません。 これは "*BLOB の配信確認メッセージ*" を維持して、特定の BLOB バージョンが処理されているかどうかを判断するためです。
+Azure Functions ランタイムでは、BLOB トリガー関数は、同一の新規または更新された BLOB について 2 回以上呼び出されることはありません。 これは "*BLOB の配信確認メッセージ*" を維持して、特定の BLOB バージョンが処理されているかどうかを判断するためです。
 
 BLOB の配信確認メッセージは、(`AzureWebJobsStorage` アプリ設定で指定した) Function App の Azure ストレージ アカウントの *azure-webjobs-hosts* というコンテナーに格納されています。 BLOB の配信確認メッセージには次の情報が含まれています。
 
@@ -227,7 +227,7 @@ Azure Storage BLOB の入力バインドにより、関数でストレージ コ
 以下の点に注意してください。
 
 * `path` にはコンテナー名と BLOB 名を含める必要があります。 たとえば、関数内に[キュー トリガー](functions-bindings-storage-queue.md)がある場合は、`"path": "samples-workitems/{queueTrigger}"` を使用して、トリガー メッセージで指定された BLOB 名と同じ名前を持つ `samples-workitems` コンテナー内の BLOB をポイントできます。   
-* `connection` にはストレージ接続文字列を含むアプリ設定の名前を含める必要があります。 Azure Portal では、ストレージ アカウントの作成や既存のストレージ アカウントの選択を行う際、**[統合]** タブの標準エディターによってこのアプリ設定が構成されます。 このアプリ設定を手動で作成するには、[アプリ設定の手動での構成]()に関する記事を参照してください。 
+* `connection` にはストレージ接続文字列を含むアプリ設定の名前を含める必要があります。 Azure Portal では、ストレージ アカウントの作成や既存のストレージ アカウントの選択を行う際、**[統合]** タブの標準エディターによってこのアプリ設定が構成されます。 このアプリ設定を手動で作成するには、[アプリ設定の手動での構成](functions-how-to-use-azure-function-app-settings.md)に関する記事を参照してください。 
 
 <a name="inputusage"></a>
 
@@ -340,7 +340,7 @@ Azure Storage BLOB の出力バインドにより、関数で Storage コンテ�
 以下の点に注意してください。
 
 * `path` には書き込み対象となるコンテナー名と BLOB 名を含める必要があります。 たとえば、関数内に[キュー トリガー](functions-bindings-storage-queue.md)がある場合は、`"path": "samples-workitems/{queueTrigger}"` を使用して、トリガー メッセージで指定された BLOB 名と同じ名前を持つ `samples-workitems` コンテナー内の BLOB をポイントできます。   
-* `connection` にはストレージ接続文字列を含むアプリ設定の名前を含める必要があります。 Azure Portal では、ストレージ アカウントの作成や既存のストレージ アカウントの選択を行う際、**[統合]** タブの標準エディターによってこのアプリ設定が構成されます。 このアプリ設定を手動で作成するには、[アプリ設定の手動での構成]()に関する記事を参照してください。 
+* `connection` にはストレージ接続文字列を含むアプリ設定の名前を含める必要があります。 Azure Portal では、ストレージ アカウントの作成や既存のストレージ アカウントの選択を行う際、**[統合]** タブの標準エディターによってこのアプリ設定が構成されます。 このアプリ設定を手動で作成するには、[アプリ設定の手動での構成](functions-how-to-use-azure-function-app-settings.md)に関する記事を参照してください。 
 
 <a name="outputusage"></a>
 

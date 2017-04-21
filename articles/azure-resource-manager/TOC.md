@@ -14,12 +14,15 @@
 ## テンプレートの作成
 ### [テンプレートのベスト プラクティス](resource-manager-template-best-practices.md)
 ### [テンプレート セクション](resource-group-authoring-templates.md)
+### [他のテンプレートにリンクする](resource-group-linked-templates.md)
 ### [リソース間の依存関係を定義する](resource-group-define-dependencies.md)
+### ループをコピーして複数のインスタンスを作成する
+#### [基本構文](resource-group-create-multiple.md)
+#### [シーケンシャル ループ](resource-manager-sequential-loop.md)
+#### [プロパティのコピー](resource-manager-property-copy.md)
 ### [場所を設定する](resource-manager-template-location.md)
 ### [タグを割り当てる](resource-manager-template-tags.md)
 ### [子リソースの名前と種類を設定する](resource-manager-template-child-resource.md)
-### [リソースの種類の複数インスタンスを作成する](resource-group-create-multiple.md)
-### [他のテンプレートにリンクする](resource-group-linked-templates.md)
 ### [リンク済みテンプレート間の状態を共有する](best-practices-resource-manager-state.md)
 ### [テンプレートの設計パターン](best-practices-resource-manager-design-templates.md)
 ## デプロイ

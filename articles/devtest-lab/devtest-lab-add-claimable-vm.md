@@ -3,7 +3,7 @@ title: "Azure DevTest Labs でのラボへの要求可能 VM の追加 | Microso
 description: "Azure DevTest Labs でラボに要求可能な仮想マシンを追加する方法を説明します"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: craigcaseyMSFT
+author: tomarcher
 manager: douge
 editor: 
 ms.assetid: f671e66e-9630-4e30-a131-a6bad9ed9c11
@@ -13,16 +13,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
-ms.author: v-craic
+ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: fde776806c3b5eb126540841c12267ba1a6a90e4
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 1b6e826426ebafe10abdf33f9bcfecc1c6315cfc
+ms.lasthandoff: 04/07/2017
 
 
 ---
 # <a name="add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボへの要求可能 VM の追加
 要求可能な VM をラボに追加する方法は、"*ベース*" ([カスタム イメージ](devtest-lab-create-template.md)、[数式](devtest-lab-manage-formulas.md)、[Marketplace イメージ](devtest-lab-configure-marketplace-images.md)のいずれか) から[標準の VM を追加](devtest-lab-add-vm.md)する方法と似ています。 このチュートリアルでは、Azure Portal を使用して、DevTest Labs で要求可能な VM をラボに追加しながら、VM を要求するプロセスについて説明します。
+
+> [!NOTE]
+> [Azure Resource Manager テンプレート](devtest-lab-create-environment-from-arm.md)を使用してラボ VM をデプロイする場合、要求可能な VM を作成するには、プロパティ セクションで **allowClaim** プロパティを true に設定します。
+>
+>
 
 ## <a name="steps-to-add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs で要求可能 VM をラボに追加する手順
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
@@ -51,12 +56,8 @@ ms.lasthandoff: 03/21/2017
 1. **[作成]** を選択して、指定した VM をラボに追加します。
 1. ラボのブレードには VM の作成状況が表示されます。最初は **[作成中]**、VM が起動した後は **[実行中]** と表示されます。
 
-> [!NOTE]
-> [Azure Resource Manager テンプレート](devtest-lab-create-environment-from-arm.md)を使用してラボ VM をデプロイする場合、要求可能な VM を作成するには、プロパティ セクションで **allowClaim** プロパティを true に設定します。
->
->
 
-### <a name="using-a-claimable-vm"></a>要求可能 VM の使用
+## <a name="using-a-claimable-vm"></a>要求可能 VM の使用
 
 ユーザーが "要求可能な仮想マシン" の一覧から任意の VM を要求するには、次のいずれかの手順を実行します。
 

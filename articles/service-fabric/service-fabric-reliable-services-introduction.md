@@ -12,12 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/05/2017
+ms.date: 04/07/2017
 ms.author: masnider;
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 8ecde1ba2c7a18d0237b92a404eeb1e2d7348378
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 6b1627ee9c55ecb58bdb1263eb49458caab99322
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -28,7 +28,7 @@ Azure Service Fabric により、ステートレスおよびステートフル�
 * Reliable Service を作成するうえでの選択肢。
 * Reliable Service を使用するタイミングと作成方法のいくつかのシナリオと例。
 
-Reliable Services は、Service Fabric で使用できるプログラミング モデルの&1; つです。 もう&1; つは、Reliable Actor プログラミング モデルで、Reliable Services モデル上に仮想アクター プログラミング モデルを提供します。 Reliable Actors プログラミング モデルの詳細については、「 [Service Fabric 高信頼アクターの概要](service-fabric-reliable-actors-introduction.md)」を参照してください。
+Reliable Services は、Service Fabric で使用できるプログラミング モデルの 1 つです。 もう 1 つは、Reliable Actor プログラミング モデルで、Reliable Services モデル上に仮想アクター プログラミング モデルを提供します。 Reliable Actors プログラミング モデルの詳細については、「 [Service Fabric 高信頼アクターの概要](service-fabric-reliable-actors-introduction.md)」を参照してください。
 
 Service Fabric では、プロビジョニングとデプロイからアップグレードと削除までのサービスの有効期間が [Service Fabric のアプリケーション管理](service-fabric-deploy-remove-applications.md)で管理されます。
 
@@ -61,7 +61,7 @@ Service Fabric の Reliable Service は、以前に作成されたことがあ�
 * **整合性** - このサービスに格納されているすべての情報の一貫性が保証されます。 これは、サービス内の複数の Reliable Collection 間であっても当てはまります。 トランザクションによるアトミックな方法で、サービス内のコレクションに対して変更を行うことができます。
 
 ## <a name="service-lifecycle"></a>サービスのライフサイクル
-サービスがステートフルかステートレスかにかかわらず、Reliable Services は、コードをすばやく追加して使用開始できるというシンプルなライフサイクルを提供します。  サービスの稼動を開始するために実装する必要があるメソッドは&1; つまたは&2; つしかありません。
+サービスがステートフルかステートレスかにかかわらず、Reliable Services は、コードをすばやく追加して使用開始できるというシンプルなライフサイクルを提供します。  サービスの稼動を開始するために実装する必要があるメソッドは 1 つまたは 2 つしかありません。
 
 * **CreateServiceReplicaListeners/CreateServiceInstanceListeners** : このメソッドでは、サービスで使用される通信スタックが定義されます。 この通信スタック ([Web API](service-fabric-reliable-services-communication-webapi.md)など) によって、サービスをリッスンするエンドポイント (クライアントによるサービスのアクセス方法) が定義されます。 また、表示されるメッセージがサービス コードの残りの部分とやり取りする方法も定義されます。
 * **RunAsync** - このメソッドでは、サービスがそのビジネス ロジックを実行し、サービスの有効期間中に実行する必要があるすべてのバックグラウンド タスクを開始します。 ここで提供されているキャンセル トークンは、そのサービス実行を停止する信号となります。 たとえば、サービスで Reliable Queue からメッセージを取得して処理する必要がある場合は、ここでサービスが実行されます。
@@ -82,7 +82,7 @@ Reliable Services をはじめて学習している場合は、読み進めて�
 
 内部の状態がまったく保存されないため、この電卓の例はシンプルです。 ただし、大半のサービスは実際にはステートレスではありません。 状態が外部ストアに格納されているためです (たとえば、セッション状態をバッキング ストアまたはキャッシュに保持している任意の Web アプリはステートレスではありません)。
 
-Service Fabric でのステートレス サービスの使用方法を示す一般的な例は、Web アプリケーションの公開 API を公開するフロントエンド サービスです。 フロントエンド サービスは、ステートフル サービスと通信してユーザーの要求を完了します。 この場合、クライアントからの呼び出しは、ポート 80 など、ステートレス サービスがリッスンしている既知のポートに送られます。 このステートレス サービスは呼び出しを受信し、その呼び出しが信頼できる利用者からのものかどうかと、どのサービスに向けて送信されたのかを判断します。  次にステートレス サービスは、その呼び出しをステートフル サービスの正しいパーティションに転送して、応答を待ちます。 ステートレス サービスは、応答を受信すると、元のクライアントに応答します。 このようなサービスの例は、[C#](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/WordCount/WordCount.WebService) / [Java](https://github.com/Azure-Samples/service-fabric-java-getting-started/tree/master/Actors/VisualObjectActor/VisualObjectWebService) のサンプルにあります。 これは、サンプルに含まれているこのパターンの&1; 例にすぎません。その他のサンプルには他の例も含まれています。
+Service Fabric でのステートレス サービスの使用方法を示す一般的な例は、Web アプリケーションの公開 API を公開するフロントエンド サービスです。 フロントエンド サービスは、ステートフル サービスと通信してユーザーの要求を完了します。 この場合、クライアントからの呼び出しは、ポート 80 など、ステートレス サービスがリッスンしている既知のポートに送られます。 このステートレス サービスは呼び出しを受信し、その呼び出しが信頼できる利用者からのものかどうかと、どのサービスに向けて送信されたのかを判断します。  次にステートレス サービスは、その呼び出しをステートフル サービスの正しいパーティションに転送して、応答を待ちます。 ステートレス サービスは、応答を受信すると、元のクライアントに応答します。 このようなサービスの例は、[C#](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started) / [Java](https://github.com/Azure-Samples/service-fabric-java-getting-started/tree/master/Actors/VisualObjectActor/VisualObjectWebService) のサンプルにあります。 これは、サンプルに含まれているこのパターンの 1 例にすぎません。その他のサンプルには他の例も含まれています。
 
 ### <a name="stateful-reliable-services"></a>ステートフル Reliable Service
 ステートフル サービスは、サービス提供するために、状態の一部の整合性を維持して永続化しておかなければならないサービスです。 受け取る最新情報に基づいて値の移動平均を常に計算するサービスを考えてみてください。 このサービスを提供するには、最新の平均と、処理する必要がある一連の現在の受信要求が必要になります。 情報を取得、処理して、外部ストア (現時点では Azure BLOB やテーブル ストアなど) に格納するサービスはどれもステートフル サービスです。 その状態は外部の状態ストアに保持されます。
@@ -95,7 +95,7 @@ Service Fabric でのステートレス サービスの使用方法を示す一�
 
 たとえば、イメージを処理するサービスを記述するとします。 これを行うには、サービスはイメージを取り込んで、そのイメージに対して一連の変換を実行します。 このサービスは、`ConvertImage(Image i, IList<Conversion> conversions)` のような API を公開する通信リスナー (WebAPI と仮定しましょう) を返します。 サービスは要求を受信すると、`IReliableQueue` に格納して、要求を追跡できるように、クライアントになんらかの ID を返します。
 
-このサービスでは、`RunAsync()` がもっと複雑になる可能性があります。 サービスの `RunAsync()` の中にループがあり、`IReliableQueue` から要求を取り出して、要求された変換を実行します。 結果は `IReliableDictionary` に格納されるので、クライアントは戻ったときに、変換されたイメージを取り出すことができます。 何らかの障害が発生した場合でもイメージが失われないように、この Reliable Service では情報がキューから取得され、変換された後にすべての結果が&1; つのトランザクションに格納されます。 この場合、キューからメッセージが削除され、変換が完了したときにだけ結果が結果ディクショナリに格納されます。 代わりに、サービスが、イメージをキューから取り出して、すぐにリモートのストアに格納することもできます。 こうすると、サービスが管理しなければならない状態の量は減りますが、リモート ストアを管理するために必要なメタデータをサービスが保持しなければならないため複雑さが増します。 いずれの方法でも、途中で何かが失敗した場合は、要求は処理待ちの状態でキューに残ります。
+このサービスでは、`RunAsync()` がもっと複雑になる可能性があります。 サービスの `RunAsync()` の中にループがあり、`IReliableQueue` から要求を取り出して、要求された変換を実行します。 結果は `IReliableDictionary` に格納されるので、クライアントは戻ったときに、変換されたイメージを取り出すことができます。 何らかの障害が発生した場合でもイメージが失われないように、この Reliable Service では情報がキューから取得され、変換された後にすべての結果が 1 つのトランザクションに格納されます。 この場合、キューからメッセージが削除され、変換が完了したときにだけ結果が結果ディクショナリに格納されます。 代わりに、サービスが、イメージをキューから取り出して、すぐにリモートのストアに格納することもできます。 こうすると、サービスが管理しなければならない状態の量は減りますが、リモート ストアを管理するために必要なメタデータをサービスが保持しなければならないため複雑さが増します。 いずれの方法でも、途中で何かが失敗した場合は、要求は処理待ちの状態でキューに残ります。
 
 このサービスの注目すべき点は、これらの処理が通常の .NET サービスに似ているということです。 唯一異なる点は、使用されているデータ構造 (`IReliableQueue` および `IReliableDictionary`) が Service Fabric によって提供されているため、信頼性、可用性、および整合性が高いということです。
 

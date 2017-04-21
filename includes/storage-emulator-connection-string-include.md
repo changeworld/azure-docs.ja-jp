@@ -5,16 +5,14 @@ Account name: devstoreaccount1
 Account key: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
 ```
 
-
 > [!NOTE]
-> ストレージ エミュレーターでサポートされている認証キーは、クライアント認証コードの機能をテストすることだけを目的としています。 セキュリティ機能は果たしません。 ストレージ エミュレーターで運用環境のストレージ アカウントとキーを使用することはできません。 開発アカウントは運用データで使用できないことにもご注意ください。
+> ストレージ エミュレーターでサポートされている認証キーは、クライアント認証コードの機能をテストすることだけを目的としています。 セキュリティ機能は果たしません。 ストレージ エミュレーターで運用環境のストレージ アカウントとキーを使用することはできません。 開発アカウントを運用データで使用することは避けてください。
 > 
-> ストレージ エミュレーターでは HTTP 経由の接続のみがサポートされることに注意してください。 ただし、Azure 運用環境のストレージ アカウント内のリソースにアクセスする際は、HTTPS が推奨されるプロトコルです。
-> 
+> ストレージ エミュレーターでは HTTP 経由の接続のみがサポートされます。 ただし、運用環境の Azure ストレージ アカウント内のリソースにアクセスする際は、HTTPS が推奨されるプロトコルです。
 > 
 
 #### <a name="connect-to-the-emulator-account-using-a-shortcut"></a>ショートカットを使用してエミュレーター アカウントに接続する
-アプリケーションからストレージ エミュレーターに接続する最も簡単な方法は、ショートカット `UseDevelopmentStorage=true`を参照するアプリケーションの構成ファイル内から接続文字列を構成することです。 たとえば、app.config ファイル内でのストレージ エミュレーターへの接続文字列は次のようになります。 
+アプリケーションからストレージ エミュレーターに接続する最も簡単な方法は、ショートカット `UseDevelopmentStorage=true` を参照するアプリケーションの構成ファイル内で接続文字列を構成することです。 たとえば、*app.config* ファイル内でのストレージ エミュレーターへの接続文字列は次のようになります。 
 
 ```xml
 <appSettings>
@@ -23,14 +21,14 @@ Account key: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZ
 ```
 
 #### <a name="connect-to-the-emulator-account-using-the-well-known-account-name-and-key"></a>よく知られたアカウント名とキーを使用してエミュレーター アカウントに接続する
-エミュレーターのアカウント名とキーを参照する接続文字列を作成するには、接続文字列内のエミュレーターから使用する各サービスのエンドポイントを指定する必要があることに注意してください。 これは、接続文字列が運用ストレージ アカウントに使用するものと異なるエミュレーター エンドポイントを参照するために必要です。 たとえば、接続文字列の値は次のようになります。
+エミュレーターのアカウント名とキーを参照する接続文字列を作成するには、接続文字列内のエミュレーターから使用する各サービスのエンドポイントを指定する必要があります。 これは、接続文字列が運用ストレージ アカウントに使用するものと異なるエミュレーター エンドポイントを参照するために必要です。 たとえば、接続文字列の値は次のようになります。
 
 ```
 DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;
 AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;
 BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;
 TableEndpoint=http://127.0.0.1:10002/devstoreaccount1;
-QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1; 
+QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;
 ```
 
 この値は、前述のショートカット `UseDevelopmentStorage=true`と同じです。
@@ -41,9 +39,4 @@ QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;
 ```
 UseDevelopmentStorage=true;DevelopmentStorageProxyUri=http://myProxyUri
 ```
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

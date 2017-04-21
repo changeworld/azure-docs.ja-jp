@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: "Azure IoT ハブ, モノのインターネット クラウド, Azure IoT ハブでのデバイスの作成, TI SensorTag, TI BLE"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-gateway-kit-c-lesson1-set-up-nuc
 ms.assetid: 23cfbe21-22c6-4fe1-ae41-63714a897f12
 ms.service: iot-hub
 ms.devlang: c

@@ -18,9 +18,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6971e123b388eab689e02a5c67809509c2ad29c6
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 72206e299c245187731e4397610bbcfb01f5311c
+ms.lasthandoff: 04/18/2017
 
 
 ---

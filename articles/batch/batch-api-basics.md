@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 03/08/2017
+ms.date: 03/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: f323afdea34e973f3ecdd54022f04b3f0d86afb1
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: c7090940192d9bd07fce96ad475b2239f5e9f2e8
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -46,7 +46,7 @@ ms.lasthandoff: 04/03/2017
 次のセクションでは、これ以外にも、分散コンピューティングのシナリオを実現する Batch の各種リソースについて説明します。
 
 > [!NOTE]
-> Batch サービスを利用するには、[Batch アカウント](batch-account-create-portal.md)が必要です。 また、ほぼすべてのソリューションでファイルの保存と取得に [Azure Storage][azure_storage] アカウントが使用されています。 「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」の手順 5.「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」で説明されているように、Batch では、現時点で**汎用**のストレージ アカウントの種類のみがサポートされています。
+> Batch サービスを利用するには、[Batch アカウント](#account)が必要です。 また、ほぼすべてのソリューションでファイルの保存と取得に [Azure Storage][azure_storage] アカウントが使用されています。 「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」の手順 5.「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」で説明されているように、Batch では、現時点で**汎用**のストレージ アカウントの種類のみがサポートされています。
 >
 >
 
@@ -69,7 +69,16 @@ ms.lasthandoff: 04/03/2017
 * [アプリケーション パッケージ](#application-packages)
 
 ## <a name="account"></a>アカウント
-Batch アカウントは、Batch サービス内で一意に識別されるエンティティです。 すべての処理は、Batch アカウントに関連付けられています。 Batch サービスで処理を実行するには、アカウント名とそのいずれかのアカウント キーの両方が必要です。 [Azure Portal を使用して Azure Batch アカウントを作成](batch-account-create-portal.md)できます。
+Batch アカウントは、Batch サービス内で一意に識別されるエンティティです。 すべての処理は、Batch アカウントに関連付けられています。
+
+Azure Batch アカウントは、[Azure Portal](batch-account-create-portal.md) またはプログラム ([Batch Management .NET ライブラリ](batch-management-dotnet.md)など) を使用して作成できます。 アカウントを作成する際は、Azure ストレージ アカウントを関連付けることができます。
+
+Batch では、"*プール割り当てモード*" プロパティに基づいて 2 つのアカウント構成をサポートしています。 この 2 つの構成では、Batch サービスで認証を行い、Batch [プール](#pool)をプロビジョニングして管理するための各種オプションが用意されています (この記事の後半参照)。 
+
+
+* **Batch サービス** (既定): 共有キー認証または [Azure Active Directory 認証](batch-aad-auth.md)を使用して Batch API にアクセスできます。 Batch コンピューティング リソースは、Azure によって管理されているアカウントでバックグラウンドで割り当てられます。   
+* **ユーザー サブスクリプション**: [Azure Active Directory 認証](batch-aad-auth.md)でのみ Batch API にアクセスできます。 Batch コンピューティング リソースは、Azure サブスクリプションで直接割り当てられます。 このモードでは、コンピューティング ノードを構成して他のサービスと統合するための柔軟性が向上します。 このモードでは、Batch アカウント向けに Azure キー コンテナーを追加で設定する必要があります。
+ 
 
 ## <a name="compute-node"></a>コンピューティング ノード
 コンピューティング ノードは、アプリケーションのワークロードの処理に特化した Azure 仮想マシン (VM) です。 ノードのサイズによって、CPU コアの数、メモリ容量、およびノードに割り当てられるローカル ファイル システムのサイズが決まります。 Azure Cloud Services または Virtual Machines Marketplace イメージを使用して Windows ノードまたは Linux ノードのプールを作成することができます。 これらの各オプションの詳細については、以下の「 [プール](#pool) 」セクションを参照してください。
@@ -89,13 +98,16 @@ Azure Batch プールは、コア Azure コンピューティング プラット
 
 プールに追加されたすべてのノードに対し、一意の名前と IP アドレスが割り当てられます。 ノードがプールから削除されると、オペレーティング システムまたはファイルに加えられた変更は失われ、将来使用できるように名前と IP アドレスが解放されます。 ノードをプールから削除すると、その有効期間が終了します。
 
-プールを作成するときに次の属性を指定できます。
+プールを作成するときに次の属性を指定できます。 一部の設定は、Batch [アカウント](#account)のプール割り当てモードによって異なります。
 
 * コンピューティング ノードの**オペレーティング システム**と**バージョン**
 
-    プール内のノードに使用するオペレーティング システムには、**仮想マシンの構成**と **Cloud Services の構成**という 2 つの選択肢があります。
+    > [!NOTE]
+    > Batch サービス プール割り当てモードでは、プール内のノードに使用するオペレーティング システムを選択するときに、**仮想マシンの構成**と **Cloud Services の構成**という 2 つのオプションがあります。 ユーザー サブスクリプション モードでは、仮想マシンの構成のみを使用できます。
+    >
 
-    **仮想マシンの構成**では、[Azure Virtual Machines Marketplace][vm_marketplace] から Linux と Windows の両方のコンピューティング ノード イメージが提供されます。
+    **仮想マシンの構成**では、[Azure Virtual Machines Marketplace][vm_marketplace] から Linux と Windows の両方のコンピューティング ノード イメージが提供されます。また、ユーザー サブスクリプション モードでは、カスタム VM イメージを使用するオプションがあります。
+
     仮想マシンの構成ノードを含むプールを作成する場合は、ノードのサイズだけでなく、ノードにインストールする**仮想マシン イメージの参照**と Batch **ノード エージェント SKU** も指定する必要があります。 プールに関するこれらのプロパティの指定の詳細については、「 [Azure Batch プールの Linux コンピューティング ノードのプロビジョニング](batch-linux-nodes.md)」を参照してください。
 
     **Cloud Services の構成** では、Windows コンピューティング ノード *のみ*が提供されます。 Cloud Services 構成プールで使用可能なオペレーティング システムは、「 [Azure ゲスト OS リリースと SDK の互換性対応表](../cloud-services/cloud-services-guestos-update-matrix.md)」に一覧が掲載されています。 Cloud Services ノードを含むプールを作成する場合は、ノード サイズとその *OS ファミリ*のみを指定する必要があります。 Windows コンピューティング ノードのプールを作成する場合は、Cloud Services が最もよく使用されます。
@@ -313,17 +325,27 @@ Azure Batch ソリューションを設計するときは、いつ、どのよ�
 
 ## <a name="pool-network-configuration"></a>プール ネットワーク構成
 
-Azure Batch でコンピューティング ノードのプールを作成すると、プールのコンピューティング ノードを作成する必要のある Azure [仮想ネットワーク (VNet)](https://azure.microsoft.com/documentation/articles/virtual-networks-overview/) の ID を指定できます。
-
-* VNet に割り当てられるのは、**Cloud Services の構成**のプールのみです。
+Azure Batch でコンピューティング ノードのプールを作成すると、プールのコンピューティング ノードを作成する必要のある Azure [仮想ネットワーク (VNet)](../virtual-network/virtual-networks-overview.md) の ID を API を通じて指定できます。
 
 * VNet は次の要件を満たす必要があります。
 
    * Azure Batch アカウントと同じ Azure **リージョン**に存在する。
    * Azure Batch アカウントと同じ**サブスクリプション**に存在する。
-   * **クラシック** VNet である。 Azure Resource Manager デプロイメント モデルで作成した VNet はサポートされていません。
 
 * VNet には、プールの `targetDedicated` プロパティに対応できるよう十分な空き **IP アドレス**が必要です。 サブネットの空き IP アドレスが十分でない場合、Batch サービスによってプールのコンピューティング ノードが部分的に割り当てられ、サイズ変更のエラーが返されます。
+
+* コンピューティング ノードのタスクのスケジュールを設定できるように、Batch サービスからの通信を指定したサブネットで許可する必要があります。 VNet に関連付けられた**ネットワーク セキュリティ グループ (NSG)** によってコンピューティング ノードとの通信が拒否された場合、コンピューティング ノードの状態は Batch サービスによって**使用不可**に設定されます。 
+
+* 指定した VNet に NSG が関連付けられている場合は、受信通信を有効にする必要があります。 Linux プールの場合、ポート 29876、29877、および 22 を有効にする必要があります。 Windows プールの場合、ポート 3389 を有効にする必要があります。
+
+VNet の追加設定は、Batch アカウントのプール割り当てモードによって異なります。
+
+### <a name="vnets-for-pools-provisioned-in-the-batch-service"></a>Batch サービスでプロビジョニングされたプールの VNet
+
+Batch サービス割り当てモードでは、**Cloud Services の構成**プールにのみ VNet を割り当てることができます。 さらに、指定した VNet は**クラシック** VNet である必要があります。 Azure Resource Manager デプロイメント モデルで作成した VNet はサポートされていません。
+   
+
+
 * *MicrosoftAzureBatch* サービス プリンシパルは、指定の VNet に関して[従来の仮想マシン共同作業者](../active-directory/role-based-access-built-in-roles.md#classic-virtual-machine-contributor)というロールベースのアクセス制御 (RBAC) のロールを付与されている必要があります。 Azure Portal で次の操作を行います。
 
   * **VNet** を選択してから、**[アクセス制御 (IAM)]** > **[ロール]** > **[従来の仮想マシン共同作業者]** > **[追加]** の順に選択します。
@@ -331,7 +353,13 @@ Azure Batch でコンピューティング ノードのプールを作成する�
   * **[MicrosoftAzureBatch]** チェック ボックスをオンにします。
   * **[選択]** ボタンをクリックします。
 
-* VNet に関連付けられた**ネットワーク セキュリティ グループ (NSG)** によってコンピューティング ノードとの通信が拒否された場合、コンピューティング ノードの状態は Batch サービスによって**使用不可**に設定されます。 コンピューティング ノードのタスクのスケジュールを設定できるように、Azure Batch サービスからの通信をサブネットで許可する必要があります。
+
+
+### <a name="vnets-for-pools-provisioned-in-a-user-subscription"></a>ユーザー サブスクリプションでプロビジョニングされたプールの VNet
+
+ユーザー サブスクリプション割り当てモードでは、**仮想マシンの構成**プールのみがサポートされ、VNet を割り当てることができます。 さらに、指定した VNet は **Resource Manager** ベースの VNet である必要があります。 クラシック デプロイメント モデルで作成した VNet はサポートされていません。
+
+
 
 ## <a name="scaling-compute-resources"></a>コンピューティング リソースのスケーリング
 [自動スケール](batch-automatic-scaling.md)を使用すると、現在のコンピューティング環境のワークロードとリソース使用量に応じて、Batch サービスでプール内のコンピューティング ノードの数を動的に調整できます。 これにより、必要なリソースのみを使用し、不要なリソースを解放することで、アプリケーションの全体的な実行コストを削減することができます。

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: hero-article
 ms.date: 03/10/2017
-ms.author: brandwe
+ms.author: xerners
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 443516838190ccad408bc2b3b6b63513b3a3041e
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: a4d9394983539da52105bda6cf06273205f8b0ad
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -41,16 +41,13 @@ Azure Active Directory (Azure AD) 用の認証手法を開発しました。 こ
 
 完成したアプリケーションは、このチュートリアルの終わりに示しています。
 
-> [!WARNING]
-現時点では、Web API タスク サーバーとそのサーバーに接続するクライアントの両方に同じ**クライアント ID**/**アプリケーション ID** およびポリシーを使用する必要があります。 これは、iOS と Android のチュートリアルにも当てはまります。 これらのクイック スタートのいずれかでアプリケーションを作成したことがある場合は、新しい値を作成するのではなく、それらの値を使用してください。
-
 ## <a name="get-an-azure-ad-b2c-directory"></a>Azure AD B2C ディレクトリの取得
 
 Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。  ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。 まだディレクトリを作成していない場合は、先に進む前に [B2C ディレクトリを作成](active-directory-b2c-get-started.md) してください。
 
 ## <a name="create-an-application"></a>アプリケーションの作成
 
-次に、B2C ディレクトリにアプリを作成する必要があります。 これにより、アプリと安全に通信するために必要な情報を Azure AD に提供します。 クライアント アプリと Web API の両方が単一の**アプリケーション ID** で表されます。これは、クライアント アプリと Web API が&1; つの論理アプリを構成するためです。 アプリを作成するには、 [こちらの手順](active-directory-b2c-app-registration.md)に従ってください。 次を行ってください。
+次に、B2C ディレクトリにアプリを作成する必要があります。 これにより、アプリと安全に通信するために必要な情報を Azure AD に提供します。 クライアント アプリと Web API の両方が単一の**アプリケーション ID** で表されます。これは、クライアント アプリと Web API が 1 つの論理アプリを構成するためです。 アプリを作成するには、 [こちらの手順](active-directory-b2c-app-registration.md)に従ってください。 次を行ってください。
 
 - アプリケーションに **Web アプリ**/**Web API** を含めます。
 - **[応答 URL]** に「`http://localhost:3000/auth/openid/return`」と入力します。 これはこのサンプル コードで使用する既定の URL です。

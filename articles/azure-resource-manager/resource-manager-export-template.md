@@ -12,19 +12,19 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/03/2017
+ms.date: 03/30/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: f8512229ee30fee6315d8ba167f1716e40f79b3e
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
+ms.openlocfilehash: cee4748a0b24e11cd8a8ee46471418680fcf7b33
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="export-an-azure-resource-manager-template-from-existing-resources"></a>既存のリソースから Azure Resource Manager テンプレートをエクスポートする
 Resource Manager を使用すると、サブスクリプション内の既存のリソースから Resource Manager テンプレートをエクスポートできます。 この生成されたテンプレートを使用すると、テンプレートの構文を学習したり、必要に応じてソリューションの再デプロイを自動化したりすることができます。
 
-テンプレートのエクスポートには&2; つの異なる方法があることに注意する必要があります。
+テンプレートのエクスポートには 2 つの異なる方法があることに注意する必要があります。
 
 * デプロイに使用した実際のテンプレートをエクスポートできます。 エクスポートしたテンプレートには、元のテンプレートで定義されたのと同じパラメーターと変数がすべて含まれます。 この方法は、ポータルからリソースをデプロイした場合に役立ちます。 それらのリソースを作成するためのテンプレートの構築方法をご確認ください。
 * リソース グループの現在の状態を表すテンプレートをエクスポートできます。 エクスポートしたテンプレートは、デプロイに使用したテンプレートに基づいていません。 代わりに、リソース グループのスナップショットであるテンプレートが作成されます。 エクスポートしたテンプレートにはハードコーディングされた多くの値が含まれ、おそらく、通常定義するのと同程度のパラメーターは含まれません。 この方法は、ポータルまたはスクリプトでリソース グループを修正してあり、 そのリソース グループをテンプレートとしてキャプチャする必要が生じた場合に役に立ちます。
@@ -47,13 +47,13 @@ Resource Manager を使用すると、サブスクリプション内の既存の
 1. 新しいリソース グループのリソース グループ ブレードに移動します。 ブレードに直前のデプロイの結果が表示されていることがわかります。 そのリンクを選択します。
    
       ![resource group blade](./media/resource-manager-export-template/resource-group-blade.png)
-2. グループのデプロイの履歴が表示されます。 このケースでは、ブレードに表示されるデプロイはおそらく&1; つだけです。 このデプロイを選択します。
+2. グループのデプロイの履歴が表示されます。 このケースでは、ブレードに表示されるデプロイはおそらく 1 つだけです。 このデプロイを選択します。
    
      ![最終デプロイ](./media/resource-manager-export-template/last-deployment.png)
 3. ブレードにデプロイの概要が表示されます。 概要には、デプロイの状態とその操作、およびパラメーターに指定した値が含まれています。 デプロイに使用されたテンプレートを表示するには、 **[テンプレートの表示]**を選択します。
    
      ![view deployment summary](./media/resource-manager-export-template/deployment-summary.png)
-4. Resource Manager によって、次の&6; つのファイルが取得されます。
+4. Resource Manager によって、次の 7 つのファイルが取得されます。
    
    1. **Template** - ソリューションのインフラストラクチャを定義するテンプレート。 ポータルでストレージ アカウントを作成したときに、Resource Manager はテンプレートを使用してそれをデプロイし、今後参照できるようにテンプレートを保存しました。
    2. **Parameters** - デプロイ中に値を渡すために使用できるパラメーター ファイル。 最初のデプロイ中に指定した値が含まれていますが、テンプレートを再デプロイするときに任意の値を変更することができます。
@@ -128,7 +128,7 @@ Resource Manager を使用すると、サブスクリプション内の既存の
 3. 仮想ネットワークの名前を **VNET**にし、その他のプロパティには既定値を使用します。 **[作成]**を選択します。
    
       ![set alert](./media/resource-manager-export-template/create-vnet.png)
-4. 仮想ネットワークがリソース グループに正常にデプロイされた後で、デプロイの履歴を見直してください。 今度は&2; つのデプロイが表示されます。 2 つ目のデプロイが表示されない場合は、リソース グループのブレードを閉じてもう一度開く必要があります。 最新のデプロイを選択します。
+4. 仮想ネットワークがリソース グループに正常にデプロイされた後で、デプロイの履歴を見直してください。 今度は 2 つのデプロイが表示されます。 2 つ目のデプロイが表示されない場合は、リソース グループのブレードを閉じてもう一度開く必要があります。 最新のデプロイを選択します。
    
       ![deployment history](./media/resource-manager-export-template/deployment-history.png)
 5. そのデプロイのテンプレートを表示します。 仮想ネットワークだけが定義されていることに注意してください。 先にデプロイしたストレージ アカウントは含まれていません。 現時点では、リソース グループ内のすべてのリソースを表すテンプレートはありません。
@@ -146,30 +146,30 @@ Resource Manager を使用すると、サブスクリプション内の既存の
       ![リソース グループのエクスポート ](./media/resource-manager-export-template/export-resource-group.png)
    
      テンプレート関数のエクスポートは、すべてのリソースの種類でサポートされているわけではありません。 この記事で紹介するストレージ アカウントと仮想ネットワークのみがリソース グループに含まれる場合、エラーは表示されません。 しかし、他のリソースの種類を作成した場合、エクスポートに関する問題が存在することを示すエラーが表示される可能性があります。 これらの問題に対処する方法については、「 [エクスポートの問題の修正](#fix-export-issues) 」セクションで説明します。
-2. ソリューションを再デプロイするために使用できる&6; 個のファイルが再び表示されますが、今度のテンプレートは少し異なります。 このテンプレートには、パラメーターが&2; つだけあります (ストレージ アカウント名用が&1; つと、仮想ネットワーク名用が&1; つ)。
+2. ソリューションを再デプロイするために使用できる 6 個のファイルが再び表示されますが、今度のテンプレートは少し異なります。 このテンプレートには、パラメーターが 2 つだけあります (ストレージ アカウント名用が 1 つと、仮想ネットワーク名用が 1 つ)。
 
-  ```json
-  "parameters": {
-    "virtualNetworks_VNET_name": {
-      "defaultValue": "VNET",
-      "type": "String"
-    },
-    "storageAccounts_storagetf05092016_name": {
-      "defaultValue": "storagetf05092016",
-      "type": "String"
-    }
-  },
-  ```
+   ```json
+   "parameters": {
+     "virtualNetworks_VNET_name": {
+       "defaultValue": "VNET",
+       "type": "String"
+     },
+     "storageAccounts_storagetf05092016_name": {
+       "defaultValue": "storagetf05092016",
+       "type": "String"
+     }
+   },
+   ```
    
-     Resource Manager は、デプロイ時に使用されたテンプレートを取得しませんでした。 代わりに、リソースの現在の構成に基づいて、新しいテンプレートを生成しました。 たとえばこのテンプレートでは、ストレージ アカウントの場所とレプリケーションの値が、次のように設定されます。
+   Resource Manager は、デプロイ時に使用されたテンプレートを取得しませんでした。 代わりに、リソースの現在の構成に基づいて、新しいテンプレートを生成しました。 たとえばこのテンプレートでは、ストレージ アカウントの場所とレプリケーションの値が、次のように設定されます。
 
-  ```json 
-  "location": "northeurope",
-  "tags": {},
-  "properties": {
-    "accountType": "Standard_RAGRS"
-  },
-  ```
+   ```json 
+   "location": "northeurope",
+   "tags": {},
+   "properties": {
+     "accountType": "Standard_RAGRS"
+   },
+   ```
 3. このテンプレートの操作を続ける場合、2 とおりのオプションがあります。 テンプレートをダウンロードし、JSON エディターを使用してローカルで作業することができます。 また、ライブラリにテンプレートを保存し、Portal を使用して作業をすることもできます。
    
      [VS Code](resource-manager-vs-code.md)、[Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) などの JSON エディターの操作に慣れている場合は、テンプレートをローカルにダウンロードし、エディターを使用できます。 JSON エディターを設定していない場合は、Portal を使用してテンプレートを編集できます。 このトピックの後半部分では、Portal のライブラリにテンプレートを保存してあることを前提としています。 ただし、JSON エディターを使用してローカルで作業する場合でも、Portal を使用して作業する場合でも、テンプレートに対して行う構文の変更は同じです。
@@ -205,88 +205,88 @@ Resource Manager を使用すると、サブスクリプション内の既存の
      ![テンプレートの編集](./media/resource-manager-export-template/edit-template.png)
 3. 指定する値をデプロイ時に渡すことができるようにするには、**parameters** セクションを新しいパラメーター定義に置き換えます。 **storageAccount_accountType** に対して許可されている値 (**allowedValues**) に注意してください。 間違って無効な値を指定した場合、そのエラーはデプロイの開始前に認識されます。 また、ストレージ アカウント名のプレフィックスだけを指定していることと、プレフィックスが 11 文字までに制限されていることにも注意してください。 プレフィックスを 11 文字までに制限することで、完全な名前がストレージ アカウントの最大文字数を超えないようにすることができます。 プレフィックスを使用すると、ストレージ アカウントに名前付け規則を適用することができます。 一意の名前を作成する方法については、次の手順で説明します。
 
-  ```json
-  "parameters": {
-    "storageAccount_prefix": {
-      "type": "string",
-      "maxLength": 11
-    },
-    "storageAccount_accountType": {
-      "defaultValue": "Standard_RAGRS",
-      "type": "string",
-      "allowedValues": [
-        "Standard_LRS",
-        "Standard_ZRS",
-        "Standard_GRS",
-        "Standard_RAGRS",
-        "Premium_LRS"
-      ]
-    },
-    "virtualNetwork_name": {
-      "type": "string"
-    },
-    "addressPrefix": {
-      "defaultValue": "10.0.0.0/16",
-      "type": "string"
-    },
-    "subnetName": {
-      "defaultValue": "subnet-1",
-      "type": "string"
-    },
-    "subnetAddressPrefix": {
-      "defaultValue": "10.0.0.0/24",
-      "type": "string"
-    }
-  },
-  ```
+   ```json
+   "parameters": {
+     "storageAccount_prefix": {
+       "type": "string",
+       "maxLength": 11
+     },
+     "storageAccount_accountType": {
+       "defaultValue": "Standard_RAGRS",
+       "type": "string",
+       "allowedValues": [
+         "Standard_LRS",
+         "Standard_ZRS",
+         "Standard_GRS",
+         "Standard_RAGRS",
+         "Premium_LRS"
+       ]
+     },
+     "virtualNetwork_name": {
+       "type": "string"
+     },
+     "addressPrefix": {
+       "defaultValue": "10.0.0.0/16",
+       "type": "string"
+     },
+     "subnetName": {
+       "defaultValue": "subnet-1",
+       "type": "string"
+     },
+     "subnetAddressPrefix": {
+       "defaultValue": "10.0.0.0/24",
+       "type": "string"
+     }
+   },
+   ```
 
 4. テンプレートの **variables** セクションは、現時点では空です。 **variables** セクションでは、テンプレートの残りの部分で構文を簡略化するための値を作成できます。 このセクションを新しい変数の定義に置き換えます。 **storageAccount_name** 変数は、パラメーターのプレフィックスを一意の文字列に連結します。この文字列は、リソース グループの ID に基づいて生成されます。 パラメーターの値を指定するときに一意の名前を考える必要がなくなります。
 
-  ```json
-  "variables": {
-    "storageAccount_name": "[concat(parameters('storageAccount_prefix'), uniqueString(resourceGroup().id))]"
-  },
-  ```
+   ```json
+   "variables": {
+     "storageAccount_name": "[concat(parameters('storageAccount_prefix'), uniqueString(resourceGroup().id))]"
+   },
+   ```
 
 5. リソース定義でパラメーターと変数を使用するには、**resources** セクションを新しいリソース定義に置き換えます。 リソース プロパティにどの値を割り当てるかの指定以外に、リソース定義の変更はほとんどないことに注意してください。 プロパティは、エクスポートしたテンプレートのプロパティと同じです。 ハードコーディングされた値の代わりに、単にプロパティをパラメーターの値に割り当てています。 リソースの場所は、 **resourceGroup().location** 式を通じて、リソース グループと同じ場所を使用するように設定されます。 ストレージ アカウント名用に作成した変数は、 **variables** 式を通じて参照されます。
 
-  ```json
-  "resources": [
-    {
-      "type": "Microsoft.Network/virtualNetworks",
-      "name": "[parameters('virtualNetwork_name')]",
-      "apiVersion": "2015-06-15",
-      "location": "[resourceGroup().location]",
-      "properties": {
-        "addressSpace": {
-          "addressPrefixes": [
-            "[parameters('addressPrefix')]"
-          ]
-        },
-        "subnets": [
-          {
-            "name": "[parameters('subnetName')]",
-            "properties": {
-              "addressPrefix": "[parameters('subnetAddressPrefix')]"
-            }
-          }
-        ]
-      },
-      "dependsOn": []
-    },
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "name": "[variables('storageAccount_name')]",
-      "apiVersion": "2015-06-15",
-      "location": "[resourceGroup().location]",
-      "tags": {},
-      "properties": {
-        "accountType": "[parameters('storageAccount_accountType')]"
-      },
-      "dependsOn": []
-    }
-  ]
-  ```
+   ```json
+   "resources": [
+     {
+       "type": "Microsoft.Network/virtualNetworks",
+       "name": "[parameters('virtualNetwork_name')]",
+       "apiVersion": "2015-06-15",
+       "location": "[resourceGroup().location]",
+       "properties": {
+         "addressSpace": {
+           "addressPrefixes": [
+             "[parameters('addressPrefix')]"
+           ]
+         },
+         "subnets": [
+           {
+             "name": "[parameters('subnetName')]",
+             "properties": {
+               "addressPrefix": "[parameters('subnetAddressPrefix')]"
+             }
+           }
+         ]
+       },
+       "dependsOn": []
+     },
+     {
+       "type": "Microsoft.Storage/storageAccounts",
+       "name": "[variables('storageAccount_name')]",
+       "apiVersion": "2015-06-15",
+       "location": "[resourceGroup().location]",
+       "tags": {},
+       "properties": {
+         "accountType": "[parameters('storageAccount_accountType')]"
+       },
+       "dependsOn": []
+     }
+   ]
+   ```
 
 6. テンプレートの編集が完了したら、**[OK]** を選択します。
 7. **[保存]** を選択し、テンプレートに対する変更を保存します。
@@ -298,7 +298,7 @@ Resource Manager を使用すると、サブスクリプション内の既存の
 9. パラメーターの値を指定し、リソースをデプロイする新しいリソース グループを選択します。
 
 ## <a name="update-the-downloaded-parameters-file"></a>ダウンロードしたパラメーター ファイルを更新する
-(Portal のライブラリではなく) ダウンロードしたファイルを使用して作業する場合、ダウンロードしたパラメーター ファイルを更新する必要があります。 ダウンロードしたファイルは、テンプレートのパラメーターと一致しなくなっています。 パラメーター ファイルは使用しなくてもかまいませんが、使用すると環境の再デプロイ作業を簡略化できます。 多くのパラメーターにはテンプレートで定義されている既定値を使用するため、パラメーター ファイルで必要なのは&2; つの値だけです。
+(Portal のライブラリではなく) ダウンロードしたファイルを使用して作業する場合、ダウンロードしたパラメーター ファイルを更新する必要があります。 ダウンロードしたファイルは、テンプレートのパラメーターと一致しなくなっています。 パラメーター ファイルは使用しなくてもかまいませんが、使用すると環境の再デプロイ作業を簡略化できます。 多くのパラメーターにはテンプレートで定義されている既定値を使用するため、パラメーター ファイルで必要なのは 2 つの値だけです。
 
 parameters.json ファイルの内容を次のように置き換えます。
 
@@ -393,7 +393,7 @@ Web サイト リソースで、インストールするコードの定義を追
 ```
 
 ### <a name="virtual-machine-extension"></a>仮想マシン拡張機能
-仮想マシン拡張機能の例については、「 [Azure Windows VM 拡張機能の構成サンプル](../virtual-machines/virtual-machines-windows-extensions-configuration-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+仮想マシン拡張機能の例については、「 [Azure Windows VM 拡張機能の構成サンプル](../virtual-machines/windows/extensions-configuration-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
 ### <a name="virtual-network-gateway"></a>仮想ネットワーク ゲートウェイ
 仮想ネットワーク ゲートウェイのリソースの種類を追加します。

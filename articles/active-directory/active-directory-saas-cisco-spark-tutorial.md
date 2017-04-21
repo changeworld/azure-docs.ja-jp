@@ -48,7 +48,7 @@ Cisco Spark と Azure AD の統合を構成するには、次のものが必要�
 * Azure AD の評価環境がない場合は、[1 か月の試用版](https://azure.microsoft.com/pricing/free-trial/)を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Cisco Spark の追加
 2. Azure AD SSO の構成とテスト
@@ -131,14 +131,14 @@ Cisco Spark アプリケーションは SAML アサーションを使用し、�
 9. **[設定]** を選択し、**[認証]** セクションの下で **[変更]** をクリックします。
    
     ![Configure Single Sign-On](./media/active-directory-saas-cisco-spark-tutorial/tutorial_cisco_spark_10.png)
-9. **[Integrate a 3rd-party identity provider.(Advanced)] (サード パーティの ID プロバイダーを統合する。(詳細))** を選択して、次の画面に移動します。
-10. **[Download Metadata File] (メタデータ ファイルのダウンロード)** をクリックし、コンピューターにファイルを保存します。
-11. **[Import Idp Metadata] (Idp メタデータのインポート)** ページで、ページ上に Azure AD メタデータ ファイルをドラッグ アンド ドロップするか、ファイルのブラウザー オプションを使用して Azure AD メタデータ ファイルを見つけてアップロードします。 次に、**[Require certificate signed by a certificate authority in Metadata (more secure)(証明機関の署名付き証明書がメタデータに必要 (高セキュリティ))]** を選択し、**[Next (次へ)]** をクリックします。 
+9. **[Integrate a 3rd-party identity provider.(Advanced)] \(サード パーティの ID プロバイダーを統合する。(詳細))** を選択して、次の画面に移動します。
+10. **[Download Metadata File] \(メタデータ ファイルのダウンロード)** をクリックし、コンピューターにファイルを保存します。
+11. **[Import Idp Metadata] \(Idp メタデータのインポート)** ページで、ページ上に Azure AD メタデータ ファイルをドラッグ アンド ドロップするか、ファイルのブラウザー オプションを使用して Azure AD メタデータ ファイルを見つけてアップロードします。 次に、**[Require certificate signed by a certificate authority in Metadata (more secure)(証明機関の署名付き証明書がメタデータに必要 (高セキュリティ))]** を選択し、**[Next (次へ)]** をクリックします。 
    
    ![[シングル サインオンの構成]](./media/active-directory-saas-cisco-spark-tutorial/tutorial_cisco_spark_11.png)
 12. **[Test SSO Connection (SSO 接続のテスト)]** を選択し、ブラウザーの新しいタブが開いたら、サインインして Azure AD で認証します。
-13. ブラウザーの**[Cisco Cloud Collaboration Management]** タブに戻ります。 テストが成功した場合は、**[This test was successful.Enable Single Sign-On option] (このテストは正常に完了しました。シングル サインオン オプションを有効にします)** を選択して、**[次へ]** をクリックします。
-14. Azure AD クラシック ポータルで、[single sign-on configuration confirmation] (シングル サインオンの構成の確認) を選択し、 **[次へ]**をクリックします。
+13. ブラウザーの**[Cisco Cloud Collaboration Management]** タブに戻ります。 テストが成功した場合は、**[This test was successful.Enable Single Sign-On option] \(このテストは正常に完了しました。シングル サインオン オプションを有効にします)** を選択して、**[次へ]** をクリックします。
+14. Azure AD クラシック ポータルで、[single sign-on configuration confirmation] \(シングル サインオンの構成の確認) を選択し、 **[次へ]**をクリックします。
    
     ![Azure AD のシングル サインオン][10]
 15. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。  

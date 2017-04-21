@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 04/04/2017
 ms.author: garye;haining
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 069e662ce70f1ec78d796c29d8b5331fc8a5a3e7
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -171,9 +172,4 @@ Web サービスをデプロイするには、予測実験を実行し、キャ�
         Write-Host ('Patching endpoint ' + $endpointName + '...');
         Patch-AmlWebServiceEndpoint -WebServiceId $scoringSvc.Id -EndpointName $endpointName -ResourceName 'Bike Rental [trained model]' -BaseLocation $baseLoc -RelativeLocation $relativeLoc -SasBlobToken $sasToken
     }
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -15,15 +15,16 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: cephalin;dariac
 translationtype: Human Translation
-ms.sourcegitcommit: 283b1cfda82b4f96ad5148c522a4c9833cb4c381
-ms.openlocfilehash: 4b3b96e9c5d7a4ff99c803aa356dcb5ad6997978
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 99ec39d3f0f6e82409de571db1e7c7c9468eb068
+ms.lasthandoff: 04/06/2017
 
 
 ---
 # <a name="deploy-your-app-to-azure-app-service"></a>Azure App Service へのアプリのデプロイ
 この記事は、Web アプリ、モバイル アプリ バックエンド、または API アプリのファイルを [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする際の最適なオプションを特定するのに役立ちます。また、選択したオプションに固有の手順が記載された適切なリソースも紹介しています。
 
-## <a name="a-nameoverviewaazure-app-service-deployment-overview"></a><a name="overview"></a>Azure App Service のデプロイの概要
+## <a name="overview"></a>Azure App Service のデプロイの概要
 Azure App Service では、アプリケーション フレームワーク (ASP.NET、PHP、Node.js など) を自動的に保持します。 既定で有効化されるフレームワークもあれば、有効にするために簡単なチェックマークによる構成が必要なフレームワーク (Java や Python など) もあります。 また、PHP のバージョンやランタイムのビット数など、アプリケーション フレームワークをカスタマイズすることもできます。 詳細については、「 [Azure App Service での Web アプリの構成](web-sites-configure.md)」をご覧ください。
 
 Web サーバーやアプリケーション フレームワークを気にする必要がないため、アプリを App Service にデプロイするときは、コード、バイナリ、コンテンツ ファイル、それぞれのディレクトリ構造を、Azure の [**/site/wwwroot** ディレクトリ](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) (WebJobs の場合は **/site/wwwroot/App_Data/Jobs/** ディレクトリ) にデプロイすることが重要になります。 App Service では、3 つの異なるデプロイ プロセスをサポートしています。 この記事のデプロイ方法はすべて、次のいずれかのプロセスを使用します。 
@@ -36,14 +37,14 @@ Web サーバーやアプリケーション フレームワークを気にする
   * ローカル Git からの手動での同期によるリポジトリ ベースのデプロイ  
 * [Web Deploy](http://www.iis.net/learn/publish/using-web-deploy/introduction-to-web-deploy): Visual Studio など、好きな Microsoft ツールから、IIS サーバーへのデプロイを自動化するのと同じツールを使用して、直接 App Service にコードをデプロイします。 このツールは、差分のみのデプロイ、データベースの作成、接続文字列の変換などをサポートします。Web Deploy は、Azure にデプロイする前にアプリケーション バイナリがビルドされる点で Kudu とは異なります。 FTP と同様に、App Service から追加サービスは提供されません。
 
-一般的な Web 開発ツールでは、これらのデプロイメント プロセスを&1; つ以上サポートします。 選択したツールによって利用できるデプロイメント プロセスが決まりますが、自由に使える実際の DevOps 機能は、デプロイメント プロセスと選択したツールの組み合わせによって異なります。 たとえば、 [Visual Studio と Azure SDK](#vspros)から Web Deploy を実行する場合、Kudu の自動化機能を利用できなくても、Visual Studio でパッケージの復元と MSBuild による自動化が提供されます。 
+一般的な Web 開発ツールでは、これらのデプロイメント プロセスを 1 つ以上サポートします。 選択したツールによって利用できるデプロイメント プロセスが決まりますが、自由に使える実際の DevOps 機能は、デプロイメント プロセスと選択したツールの組み合わせによって異なります。 たとえば、 [Visual Studio と Azure SDK](#vspros)から Web Deploy を実行する場合、Kudu の自動化機能を利用できなくても、Visual Studio でパッケージの復元と MSBuild による自動化が提供されます。 
 
 > [!NOTE]
 > これらのデプロイ プロセスでは、実際には、アプリで必要な [Azure リソースがプロビジョニング](../azure-resource-manager/resource-group-template-deploy-portal.md) されるわけではありません。 ただし、リンクされている手順に関する記事のほとんどは、アプリをプロビジョニングし、コードをエンド ツー エンドでデプロイする方法を示しています。 また、「 [コマンド ライン ツールを使用したデプロイの自動化](#automate) 」では、Azure リソースをプロビジョニングするための追加オプションを紹介しています。
 > 
 > 
 
-## <a name="a-nameftpadeploy-manually-by-uploading-files-with-ftp"></a><a name="ftp"></a>FTP を使用したファイルのアップロードによる手動デプロイ
+## <a name="ftp"></a>FTP を使用したファイルのアップロードによる手動デプロイ
 Web コンテンツを Web サーバーに手動でコピーすることに慣れている場合は、エクスプローラーや [FileZilla](https://filezilla-project.org/) などの [FTP](http://en.wikipedia.org/wiki/File_Transfer_Protocol) ユーティリティを使用してファイルをコピーできます。
 
 ファイルの手動コピーの利点は次のとおりです。
@@ -59,12 +60,12 @@ Web コンテンツを Web サーバーに手動でコピーすることに慣�
 * デプロイに関する問題のトラブルシューティングに利用できる組み込みのデプロイ履歴がありません。
 * 多くの FTP ツールでは、差分のみのコピーは行われず、すべてのファイルがコピーされるため、デプロイ時間が長くなる可能性があります。  
 
-### <a name="a-namehowtoftpahow-to-upload-files-with-ftp"></a><a name="howtoftp"></a>FTP を使用してファイルをアップロードする方法
+### <a name="howtoftp"></a>FTP を使用してファイルをアップロードする方法
 [Azure Portal](https://portal.azure.com) では、FTP または FTPS を使用してアプリのディレクトリに接続するために必要な情報がすべて提供されます。
 
 * [FTP を使用した Azure App Service へのアプリのデプロイ](app-service-deploy-ftp.md)
 
-## <a name="a-namedropboxadeploy-by-syncing-with-a-cloud-folder"></a><a name="dropbox"></a>クラウド フォルダーとの同期によるデプロイ
+## <a name="dropbox"></a>クラウド フォルダーとの同期によるデプロイ
 [ファイルの手動コピー](#ftp) に代わる優れた方法として、OneDrive や Dropbox などのクラウド ストレージ サービスから App Service にファイルとフォルダーを同期する方法があります。 クラウド フォルダーとの同期では、デプロイに Kudu プロセスを利用します (「 [デプロイメント プロセスの概要](#overview)」を参照してください)。
 
 クラウド フォルダーとの同期の利点は次のとおりです。
@@ -78,12 +79,12 @@ Web コンテンツを Web サーバーに手動でコピーすることに慣�
 * エラーが発生したときにロールバックするためのバージョン管理が行われません。
 * デプロイは自動化されず、手動で同期する必要があります。
 
-### <a name="a-namehowtodropboxahow-to-deploy-by-syncing-with-a-cloud-folder"></a><a name="howtodropbox"></a>クラウド フォルダーと同期してデプロイする方法
+### <a name="howtodropbox"></a>クラウド フォルダーと同期してデプロイする方法
 [Azure ポータル](https://portal.azure.com)では、コンテンツを同期する OneDrive または Dropbox クラウド ストレージのフォルダーを指定し、そのフォルダー内でアプリのコードとコンテンツの作業を行い、ボタンをクリックするだけで App Service に同期できます。
 
 * [クラウド フォルダーから Azure App Service へのコンテンツの同期](app-service-deploy-content-sync.md)。 
 
-## <a name="a-namecontinuousdeploymentadeploy-continuously-from-a-cloud-based-source-control-service"></a><a name="continuousdeployment"></a>クラウド ベースのソース管理サービスからの継続的なデプロイ
+## <a name="continuousdeployment"></a>クラウド ベースのソース管理サービスからの継続的なデプロイ
 開発チームで [Visual Studio Team Services](http://www.visualstudio.com/)、[GitHub](https://www.github.com)、[BitBucket](https://bitbucket.org/) などのクラウド ベースのソース コード管理 (SCM) サービスを使用している場合、リポジトリと統合し、継続的にデプロイするように App Service を構成できます。 
 
 クラウド ベースのソース管理サービスからのデプロイの利点は次のとおりです。
@@ -97,14 +98,14 @@ Web コンテンツを Web サーバーに手動でコピーすることに慣�
 
 * 各 SCM サービスの知識が必要です。
 
-### <a name="a-namevstsahow-to-deploy-continuously-from-a-cloud-based-source-control-service"></a><a name="vsts"></a>クラウド ベースのソース管理サービスから継続的にデプロイする方法
+### <a name="vsts"></a>クラウド ベースのソース管理サービスから継続的にデプロイする方法
 [Azure ポータル](https://portal.azure.com)では、GitHub、Bitbucket、および Visual Studio Team Services からの継続的なデプロイを構成できます。
 
 * [Azure App Service への継続的なデプロイ](app-service-continuous-deployment.md)。 
 
 Azure Portal で一覧表示されていないクラウド リポジトリ ([GitLab](https://gitlab.com/) など) から継続的なデプロイを手動で構成する方法については、「[Setting up continuous deployment using manual steps (手動による手順を使用した継続的デプロイの設定)](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps)」を参照してください。
 
-## <a name="a-namelocalgitdeploymentadeploy-from-local-git"></a><a name="localgitdeployment"></a>ローカル Git からのデプロイ
+## <a name="localgitdeployment"></a>ローカル Git からのデプロイ
 開発チームで Git に基づくオンプレミスのローカル ソース コード管理 (SCM) サービスを使用している場合は、App Service へのデプロイ ソースとしてこれを構成できます。 
 
 ローカル Git からのデプロイの利点は次のとおりです。
@@ -118,7 +119,7 @@ Azure Portal で一覧表示されていないクラウド リポジトリ ([Git
 * 各 SCM システムの知識が必要です。
 * 継続的なデプロイのためのターンキー ソリューションがありません。 
 
-### <a name="a-namevstsahow-to-deploy-from-local-git"></a><a name="vsts"></a>ローカル Git からデプロイする方法
+### <a name="vsts"></a>ローカル Git からデプロイする方法
 [Azure ポータル](https://portal.azure.com)で、ローカル Git デプロイを構成できます。
 
 * [Azure App Service へのローカル Git デプロイ](app-service-deploy-local-git.md)。 
@@ -127,7 +128,7 @@ Azure Portal で一覧表示されていないクラウド リポジトリ ([Git
 ## <a name="deploy-using-an-ide"></a>IDE を使用したデプロイ
 [Visual Studio](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) と [Azure SDK](https://azure.microsoft.com/downloads/)、[Xcode](https://developer.apple.com/xcode/)、[Eclipse](https://www.eclipse.org)、[IntelliJ IDEA](https://www.jetbrains.com/idea/) などの IDE スイートを既に使用している場合は、IDE 内から直接 Azure にデプロイできます。 このオプションは個人開発者に最適です。
 
-Visual Studio は&3; つのデプロイ プロセス (FTP、Git、Web Deploy) をすべてサポートしていますが、FTP または Git と統合されていれば、他の IDE でも App Service にデプロイできます (「 [デプロイメント プロセスの概要](#overview)」を参照してください)。
+Visual Studio は 3 つのデプロイ プロセス (FTP、Git、Web Deploy) をすべてサポートしていますが、FTP または Git と統合されていれば、他の IDE でも App Service にデプロイできます (「 [デプロイメント プロセスの概要](#overview)」を参照してください)。
 
 IDE を使用したデプロイの利点は次のとおりです。
 
@@ -146,20 +147,20 @@ IDE を使用したデプロイの欠点は次のとおりです。
 * Azure エクスプローラーの統合。
 * 差分のみのデプロイ。 
 
-### <a name="a-namevsahow-to-deploy-from-visual-studio-directly"></a><a name="vs"></a>Visual Studio から直接デプロイする方法
-* [Azure と ASP.NET を使ってみる](web-sites-dotnet-get-started.md) Visual Studio と Web Deploy を使用して簡単な ASP.NET MVC Web プロジェクトを作成し、デプロイする方法。
+### <a name="vs"></a>Visual Studio から直接デプロイする方法
+* [Azure と ASP.NET を使ってみる](app-service-web-get-started-dotnet.md) Visual Studio と Web Deploy を使用して簡単な ASP.NET MVC Web プロジェクトを作成し、デプロイする方法。
 * [Visual Studio を使用した Azure WebJobs のデプロイ方法](websites-dotnet-deploy-webjobs.md)。 コンソール アプリケーション プロジェクトを Web ジョブとしてデプロイするための構成方法。  
 * [メンバーシップ、OAuth、SQL データベースを使用した安全な ASP.NET MVC 5 アプリケーションの Web アプリへのデプロイ](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)。 Visual Studio、Web Deploy、Entity Framework、Code First Migrations を使用して、ASP.NET MVC Web プロジェクトを SQL データベースと共に配置する方法。
 * [Visual Studio を使用した ASP.NET Web デプロイ](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/introduction)。 12 部構成のチュートリアル シリーズであり、このリスト内に掲載されている他のリソースより詳細にデプロイ タスクの範囲を網羅しています。 チュートリアルを作成した後で、不足している事項を説明するためにメモが追加されたため、一部の Azure デプロイ機能が追加されました。
 * [Git リポジトリから ASP.NET Web サイトを Visual Studio 2012 内にある Azure へ直接のデプロイ](http://www.dotnetcurry.com/ShowArticle.aspx?ID=881)。 Visual Studio 内で ASP.NET Web プロジェクトをデプロイし、Git プラグインを使用してコードを Git にコミットして、Azure を Git リポジトリに接続する方法について説明します。 Visual Studio 2013 以降、Git のサポートが組み込まれており、プラグインをインストールする必要はありません。
 
-### <a name="a-nameaztkahow-to-deploy-using-the-azure-toolkits-for-eclipse-and-intellij-idea"></a><a name="aztk"></a>Azure Toolkit for Eclipse や Azure Toolkit for IntelliJ IDEA を使用してデプロイする方法
+### <a name="aztk"></a>Azure Toolkit for Eclipse や Azure Toolkit for IntelliJ IDEA を使用してデプロイする方法
 Azure には、[Azure Toolkit for Eclipse](../azure-toolkit-for-eclipse.md) や [Azure Toolkit for IntelliJ](../azure-toolkit-for-intellij.md) を使用することで、Eclipse や IntelliJ から直接 Web Apps をデプロイすることができます。 以下のチュートリアルでは、いずれかの IDE を使用して単純な "Hello" world Web App を Azure にデプロイする手順を説明しています。
 
 * [Eclipse で Azure 用の Hello World Web アプリを作成する](app-service-web-eclipse-create-hello-world-web-app.md) このチュートリアルでは、Azure Toolkit for Eclipse を使用して、Azure 用の Hello World Web アプリを作成、デプロイする方法について説明します。
 * [IntelliJ で Azure 用の Hello World Web アプリを作成する](app-service-web-intellij-create-hello-world-web-app.md) このチュートリアルでは、Azure Toolkit for IntelliJ を使用して、Azure 用の Hello World Web アプリを作成、デプロイする方法について説明します。
 
-## <a name="a-nameautomateaautomate-deployment-by-using-command-line-tools"></a><a name="automate"></a>コマンド ライン ツールを使用したデプロイの自動化
+## <a name="automate"></a>コマンド ライン ツールを使用したデプロイの自動化
 コマンド ライン ターミナルを開発環境として使用する場合は、コマンド ライン ツールを使用して App Service アプリのデプロイ タスクをスクリプト化できます。 
 
 コマンド ライン ツールを使用したデプロイの利点は次のとおりです。
@@ -172,20 +173,15 @@ Azure には、[Azure Toolkit for Eclipse](../azure-toolkit-for-eclipse.md) や 
 
 * GUI を好む開発者には適していません。
 
-### <a name="a-nameautomatehowahow-to-automate-deployment-with-command-line-tools"></a><a name="automatehow"></a>コマンド ライン ツールを使用してデプロイを自動化する方法
+### <a name="automatehow"></a>コマンド ライン ツールを使用してデプロイを自動化する方法
 
 コマンド ライン ツールの一覧とチュートリアルへのリンクについては、「[Automate deployment of your Azure app with command-line tools](app-service-deploy-command-line.md)」(コマンド ライン ツールを使用した Azure アプリのデプロイの自動化) をご覧ください。 
 
-## <a name="a-namenextstepsanext-steps"></a><a name="nextsteps"></a>次のステップ
+## <a name="nextsteps"></a>次のステップ
 シナリオによっては、アプリをステージングと運用バージョンの間で簡単に切り替えることができる環境が必要です。 詳細については、 [Web アプリのステージングされたデプロイ](web-sites-staged-publishing.md)に関するページをご覧ください。
 
 バックアップと復元計画を策定することは、デプロイ ワークフローの重要な部分です。 App Service のバックアップと復元の機能については、 [Web Apps のバックアップ](web-sites-backup.md)に関するページを参照してください。  
 
 Azure のロールベースのアクセス許可を使用して、App Service のデプロイへのアクセスを管理する方法については、 [RBAC と Web Apps の公開](https://azure.microsoft.com/blog/2015/01/05/rbac-and-azure-websites-publishing/)に関するブログを参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2017
+ms.date: 03/25/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 5818efb315a0452beea03cde1adc657a9520dcac
-ms.openlocfilehash: 1fe3f3a697618bec5d314c6ebf161da37efc1346
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 28f100276511c1ae978466870ff48f885dd53c28
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -27,13 +27,11 @@ ms.lasthandoff: 03/01/2017
 
 >[!NOTE]
 >アプリケーション プロキシ機能は、Azure Active Directory の Premium または Basic エディションにアップグレードした場合にのみ利用できます。 詳細については、「 [Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
->
 
 アプリ ユーザーをアプリ内の特定のページに移動させたい場合などに、Azure AD PowerShell モジュールを使用すると、ホーム ページのカスタム URL (*https://expenseApp-contoso.msappproxy.net/login/login.aspx* など) を定義できます。
 
 >[!NOTE]
 >発行されたアプリにユーザーがアクセスできるようにすると、[Azure AD アクセス パネル](active-directory-saas-access-panel-introduction.md)と [Office 365 アプリ起動ツール](https://blogs.office.com/2016/09/27/introducing-the-new-office-365-app-launcher)にアプリが表示されます。
->
 
 ユーザーがアプリを起動すると、既定では、発行されたアプリのルート ドメイン URL に移動します。 通常、ランディング ページがホーム ページの URL として設定されます。 たとえば、バックエンド アプリ http://ExpenseApp の URL が *https://expenseApp-contoso.msappproxy.net* として発行されているとします。 既定では、ホーム ページの URL は *https://expenseApp-contoso.msappproxy.net* に設定されます。
 
@@ -63,11 +61,11 @@ PowerShell を使用してパッケージをインストールするには、次
      Install-Module -Name AzureAD -RequiredVersion 1.1.23.0
     ```
     コマンドを非管理者として実行している場合は、**-scope currentuser** オプションを使用します。
-2. インストール中に **Y** を選択して、Nuget.org から&2; つのパッケージをインストールします。 両方のパッケージが必要です。 
+2. インストール中に **Y** を選択して、Nuget.org から 2 つのパッケージをインストールします。 両方のパッケージが必要です。 
 
 ## <a name="set-a-custom-home-page-url-by-using-the-azure-ad-powershell-module"></a>Azure AD PowerShell モジュールを使用してホーム ページのカスタム URL を設定する
 
-Azure AD PowerShell モジュールのインストールが完了したので、ホーム ページの URL を設定する準備ができました。 これを行うには、次の&2; つのセクションの手順に従ってください。
+Azure AD PowerShell モジュールのインストールが完了したので、ホーム ページの URL を設定する準備ができました。 これを行うには、次の 2 つのセクションの手順に従ってください。
 
 ### <a name="step-1-find-the-objectid-of-the-app"></a>手順 1: アプリの ObjectID を取得する
 
@@ -139,6 +137,6 @@ Azure AD PowerShell モジュールのインストールが完了したので、
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure AD アプリケーション プロキシによる SharePoint へのリモート アクセスの有効化](application-proxy-enable-remote-access-sharepoint.md)<br>
-[Azure Portal でアプリケーション プロキシを有効にする](https://github.com/Microsoft/azure-docs-pr/blob/master/articles/active-directory/active-directory-application-proxy-enable.md)
+- [Azure AD アプリケーション プロキシによる SharePoint へのリモート アクセスの有効化](application-proxy-enable-remote-access-sharepoint.md)
+- [Azure Portal でアプリケーション プロキシを有効にする](active-directory-application-proxy-enable.md)
 

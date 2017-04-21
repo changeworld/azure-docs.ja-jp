@@ -9,6 +9,8 @@ author: shizn
 manager: timlt
 tags: 
 keywords: "クラウドからデバイス, クラウドからのメッセージ"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-raspberry-pi-kit-node-get-started
 ms.assetid: 6ae6539e-1163-4490-8d72-fdf7803e3054
 ms.service: iot-hub
 ms.devlang: node

@@ -7,7 +7,7 @@ author: adhurwit
 manager: jhubbard
 ms.assetid: 1052c83c-e7f5-4736-922f-216194d8874b
 ms.service: sql-database
-ms.custom: overview
+ms.custom: manage-how-to
 ms.workload: data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 12/01/2016
 ms.author: adhurwit
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 9916eb7deaae6acb784cac1b7b64d93a03f3c590
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 92cad42344fb6f77b3088f74ea0e37a542bd0378
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -58,11 +58,11 @@ Azure RemoteApp で SSMS を使用すると、次のような多くのメリッ�
 ギャラリーの "Windows Server Remote Desktop Session Host Windows Server 2012 R2" イメージを使用して、新しい VM を作成します。
 
 ### <a name="2-install-ssms-from-sql-express"></a>2.SQL Express から SSMS をインストールする
-新しい VM で [Microsoft® SQL Server® 2014 Express](https://www.microsoft.com/en-us/download/details.aspx?id=42299) のダウンロード ページに移動します。
+新しい VM で [Microsoft® SQL Server® 2014 Express](https://www.microsoft.com/download/details.aspx?id=42299) のダウンロード ページに移動します。
 
 SSMS のみをダウンロードするオプションがあります。 ダウンロードした後、インストール ディレクトリに移動し、セットアップを実行して SSMS をインストールします。
 
-SQL Server 2014 Service Pack 1 もインストールする必要があります。 Microsoft SQL Server 2014 Service Pack 1 (SP1) は、[こちら](https://www.microsoft.com/en-us/download/details.aspx?id=46694)でダウンロードできます。
+SQL Server 2014 Service Pack 1 もインストールする必要があります。 Microsoft SQL Server 2014 Service Pack 1 (SP1) は、[こちら](https://www.microsoft.com/download/details.aspx?id=46694)でダウンロードできます。
 
 SQL Server 2014 Service Pack 1 には、Azure SQL Database を使用するための基本機能が含まれます。
 

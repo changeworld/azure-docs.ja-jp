@@ -7,6 +7,8 @@ author: shizn
 manager: timlt
 tags: 
 keywords: "Raspbian のインストール, Raspbian のダウンロード, Raspbian のインストール方法, Raspbian の設定, Raspberry Pi への Raspbian のインストール, Raspberry Pi への OS のインストール, Raspberry Pi への SD カードの取り付け, Raspberry Pi 接続, Raspberry Pi への接続, Raspberry Pi の接続"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-raspberry-pi-kit-node-get-started
 ms.assetid: 43f7c2cf-f1a5-4dd5-93f0-7e546c6dc91e
 ms.service: iot-hub
 ms.devlang: node

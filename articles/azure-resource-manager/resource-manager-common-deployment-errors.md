@@ -17,9 +17,9 @@ ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: b31ecb83665208151e48f81e6148928bbf21d1b5
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: bfbb3356454b9ef8b1834d03e7b76de9860a12c9
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -27,18 +27,18 @@ ms.lasthandoff: 03/15/2017
 このトピックでは、Azure へのデプロイで発生する可能性がある一般的なエラーの解決方法について説明します。
 
 ## <a name="two-types-of-errors"></a>2 種類のエラー
-発生する可能性のあるエラーには、次の&2; 種類があります。
+発生する可能性のあるエラーには、次の 2 種類があります。
 
 * 検証エラー
 * デプロイ エラー
 
-次の図は、サブスクリプションのアクティビティ ログを示しています。 2 つのデプロイで&3; つの操作が実行されています。 最初のデプロイでは、テンプレートは検証を通過しましたが、リソースの作成時 (**Write Deployments**) に失敗しました。 2 番目のデプロイでは、テンプレートが検証に失敗し、**Write Deployments** に進むことができませんでした。
+次の図は、サブスクリプションのアクティビティ ログを示しています。 2 つのデプロイで 3 つの操作が実行されています。 最初のデプロイでは、テンプレートは検証を通過しましたが、リソースの作成時 (**Write Deployments**) に失敗しました。 2 番目のデプロイでは、テンプレートが検証に失敗し、**Write Deployments** に進むことができませんでした。
 
 ![エラー コードの表示](./media/resource-manager-common-deployment-errors/show-activity-log.png)
 
 検証エラーは、問題を引き起こすことを事前に判断できるシナリオで発生します。 これには、テンプレートに構文エラーがある場合や、サブスクリプション クォータを超えるリソースをデプロイしようとしている場合などがあります。 デプロイ エラーは、デプロイ プロセスで発生する状況に起因します。 たとえば、デプロイ中のリソースにアクセスしようとしている場合などです。
 
-この&2; 種類のエラーでは、デプロイのトラブルシューティングに使用するエラー コードが返されます。 どちらの種類のエラーも[アクティビティ ログ](resource-group-audit.md)に表示されます。 ただし、検証エラーは、デプロイが開始されていないため、デプロイ履歴には表示されません。
+この 2 種類のエラーでは、デプロイのトラブルシューティングに使用するエラー コードが返されます。 どちらの種類のエラーも[アクティビティ ログ](resource-group-audit.md)に表示されます。 ただし、検証エラーは、デプロイが開始されていないため、デプロイ履歴には表示されません。
 
 
 ## <a name="error-codes"></a>エラー コード
@@ -66,7 +66,7 @@ ms.lasthandoff: 03/15/2017
 
 ### <a name="deploymentfailed"></a>DeploymentFailed
 
-このエラー コードは、デプロイに関する一般的なエラーを示しますが、トラブルシューティングの開始が必要なエラー コードではありません。 実際に問題の解決に役立つエラー コードは、通常、このエラーの&1; つ下のレベルにあります。 たとえば、次の図は、デプロイ エラーの下にある **RequestDisallowedByPolicy** エラー コードを示しています。
+このエラー コードは、デプロイに関する一般的なエラーを示しますが、トラブルシューティングの開始が必要なエラー コードではありません。 実際に問題の解決に役立つエラー コードは、通常、このエラーの 1 つ下のレベルにあります。 たとえば、次の図は、デプロイ エラーの下にある **RequestDisallowedByPolicy** エラー コードを示しています。
 
 ![エラー コードの表示](./media/resource-manager-common-deployment-errors/error-code.png)
 
@@ -171,7 +171,7 @@ az account set --subscription {subscription-name}
   Message=Deployment template validation failed
   ```
 
-   テンプレートの式は複雑になることもあり、このエラーが発生することは珍しくありません。 たとえば、ストレージ アカウントの次の名前の割り当てには、1 組の角かっこ、3 つの関数、3 組のかっこ、1 組の一重引用符、および&1; つのプロパティが含まれています。
+   テンプレートの式は複雑になることもあり、このエラーが発生することは珍しくありません。 たとえば、ストレージ アカウントの次の名前の割り当てには、1 組の角かっこ、3 つの関数、3 組のかっこ、1 組の一重引用符、および 1 つのプロパティが含まれています。
 
   ```json
   "name": "[concat('storage', uniqueString(resourceGroup().id))]",
@@ -191,7 +191,7 @@ az account set --subscription {subscription-name}
   for type {resource-type} has incorrect segment lengths.
   ```
 
-   ルート レベルのリソースは、名前に含まれるセグメントの数がリソース タイプのセグメントの数よりも&1; つ少なくなっている必要があります。 各セグメントは、スラッシュで区別されます。 次の例は、type のセグメント数が&2; つで、name のセグメント数が&1; つなので、**有効な名前**です。
+   ルート レベルのリソースは、名前に含まれるセグメントの数がリソース タイプのセグメントの数よりも 1 つ少なくなっている必要があります。 各セグメントは、スラッシュで区別されます。 次の例は、type のセグメント数が 2 つで、name のセグメント数が 1 つなので、**有効な名前**です。
 
   ```json
   {
@@ -211,7 +211,7 @@ az account set --subscription {subscription-name}
   }
   ```
 
-   子のリソースに関しては、type と name のセグメント数が一致します。 このセグメントの数は理に適っています。子の完全な name と type には親の name と type が含まれるためです。 したがって、完全な name のセグメント数は、やはり完全な type よりも&1; つ少なくなります。
+   子のリソースに関しては、type と name のセグメント数が一致します。 このセグメントの数は理に適っています。子の完全な name と type には親の name と type が含まれるためです。 したがって、完全な name のセグメント数は、やはり完全な type よりも 1 つ少なくなります。
 
   ```json
   "resources": [
@@ -230,7 +230,7 @@ az account set --subscription {subscription-name}
   ]
   ```
 
-   複数のリソース プロバイダーに対して適用される Resource Manager タイプでは、セグメントを正しく指定するために注意が必要となります。 たとえば、リソース ロックを Web サイトに適用するためには、type が&4; つのセグメントで構成されている必要があります。 したがって name のセグメント数は&3; つになります。
+   複数のリソース プロバイダーに対して適用される Resource Manager タイプでは、セグメントを正しく指定するために注意が必要となります。 たとえば、リソース ロックを Web サイトに適用するためには、type が 4 つのセグメントで構成されている必要があります。 したがって name のセグメント数は 3 つになります。
 
   ```json
   {
@@ -372,7 +372,7 @@ Code: MissingSubscriptionRegistration
 Message: The subscription is not registered to use namespace {resource-provider-namespace}
 ```
 
-これらのエラーの原因として、次の&3; つの理由のいずれかが考えられます。
+これらのエラーの原因として、次の 3 つの理由のいずれかが考えられます。
 
 1. サブスクリプションに対してリソース プロバイダーが登録されていない
 2. リソース タイプでサポートされた API バージョンに該当しない
@@ -465,7 +465,7 @@ az vm list-usage --location "South Central US"
 ]
 ```
 
-米国西部リージョンで&5; 個以上のコアを作成するテンプレートをデプロイした場合、次のようなデプロイ エラーが発生します。
+米国西部リージョンで 5 個以上のコアを作成するテンプレートをデプロイした場合、次のようなデプロイ エラーが発生します。
 
 ```
 Code=OperationNotAllowed
@@ -620,7 +620,7 @@ az policy definition show --name regionPolicyAssignment
 }
 ```
 
-または、設定の誤った依存関係に関連すると思われるデプロイ エラーが発生していると仮定します。 テンプレートをテストするには、これを簡略化されたテンプレートに分解します。 最初に、1 つのリソース (SQL Server など) のみをデプロイするテンプレートを作成します。 そのリソースを正しく定義したことを確認したら、それに依存するリソース (SQL Database など) を追加します。 これら&2; つのリソースを正しく定義したことを確認したら、その他の依存リソース (監査ポリシーなど) を追加します。 各テスト デプロイの合間に、リソース グループを削除して、依存関係を適切にテストしていることを確認します。 
+または、設定の誤った依存関係に関連すると思われるデプロイ エラーが発生していると仮定します。 テンプレートをテストするには、これを簡略化されたテンプレートに分解します。 最初に、1 つのリソース (SQL Server など) のみをデプロイするテンプレートを作成します。 そのリソースを正しく定義したことを確認したら、それに依存するリソース (SQL Database など) を追加します。 これら 2 つのリソースを正しく定義したことを確認したら、その他の依存リソース (監査ポリシーなど) を追加します。 各テスト デプロイの合間に、リソース グループを削除して、依存関係を適切にテストしていることを確認します。 
 
 ### <a name="check-deployment-sequence"></a>デプロイの順序の確認
 
@@ -638,11 +638,11 @@ az policy definition show --name regionPolicyAssignment
 
    ![デプロイ イベントの選択](./media/resource-manager-common-deployment-errors/select-deployment-events.png)
 
-3. 各リソースのイベントの順序を調べます。 各操作の状態に注意してください。 たとえば、次の図には、並列でデプロイされた&3; つのストレージ アカウントが示されています。 3 つとも同時に開始されていることがわかります。
+3. 各リソースのイベントの順序を調べます。 各操作の状態に注意してください。 たとえば、次の図には、並列でデプロイされた 3 つのストレージ アカウントが示されています。 3 つとも同時に開始されていることがわかります。
 
    ![並列デプロイ](./media/resource-manager-common-deployment-errors/deployment-events-parallel.png)
 
-   次の図には、並列でデプロイされていない&3; つのストレージ アカウントが示されています。 2 つ目のストレージ アカウントは最初のストレージ アカウントに依存し、3 つ目のストレージ アカウントは&2; つ目のストレージ アカウントに依存します。 したがって、最初のストレージ アカウントの開始、受け入れ、完了の後に次のストレージ アカウントが開始されます。
+   次の図には、並列でデプロイされていない 3 つのストレージ アカウントが示されています。 2 つ目のストレージ アカウントは最初のストレージ アカウントに依存し、3 つ目のストレージ アカウントは 2 つ目のストレージ アカウントに依存します。 したがって、最初のストレージ アカウントの開始、受け入れ、完了の後に次のストレージ アカウントが開始されます。
 
    ![連続デプロイ](./media/resource-manager-common-deployment-errors/deployment-events-sequence.png)
 
@@ -679,13 +679,13 @@ Resource Manager では、テンプレートの検証中に循環依存関係を
 
 | エラー | 記事 |
 | --- | --- |
-| カスタム スクリプト拡張機能のエラー |[Windows VM 拡張機能のエラー](../virtual-machines/virtual-machines-windows-extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)<br />または<br />[Linux VM 拡張機能のエラー](../virtual-machines/virtual-machines-linux-extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |
-| OS イメージのプロビジョニング エラー |[新しい Windows VM のエラー](../virtual-machines/virtual-machines-windows-troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)<br />または<br />[新しい Linux VM のエラー](../virtual-machines/virtual-machines-linux-troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |
-| 割り当ての失敗 |[Windows VM の割り当てエラー](../virtual-machines/virtual-machines-windows-allocation-failure.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)<br />または<br />[Linux VM の割り当てエラー](../virtual-machines/virtual-machines-linux-allocation-failure.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |
-| 接続を試行するときの Secure Shell (SSH) エラー |[Linux VM への Secure Shell 接続](../virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |
-| VM で実行されているアプリケーションへの接続時に発生するエラー |[Windows VM で実行中のアプリケーション](../virtual-machines/virtual-machines-windows-troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)<br />または<br />[Linux VM で実行中のアプリケーション](../virtual-machines/virtual-machines-linux-troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |
-| リモート デスクトップ接続のエラー |[Windows VM へのリモート デスクトップ接続](../virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
-| 再デプロイすることで解決する接続エラー |[新しい Azure ノードへの仮想マシンの再デプロイ](../virtual-machines/virtual-machines-windows-redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
+| カスタム スクリプト拡張機能のエラー |[Windows VM 拡張機能のエラー](../virtual-machines/windows/extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)<br />または<br />[Linux VM 拡張機能のエラー](../virtual-machines/linux/extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |
+| OS イメージのプロビジョニング エラー |[新しい Windows VM のエラー](../virtual-machines/windows/troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)<br />または<br />[新しい Linux VM のエラー](../virtual-machines/linux/troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |
+| 割り当ての失敗 |[Windows VM の割り当てエラー](../virtual-machines/windows/allocation-failure.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)<br />または<br />[Linux VM の割り当てエラー](../virtual-machines/linux/allocation-failure.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |
+| 接続を試行するときの Secure Shell (SSH) エラー |[Linux VM への Secure Shell 接続](../virtual-machines/linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |
+| VM で実行されているアプリケーションへの接続時に発生するエラー |[Windows VM で実行中のアプリケーション](../virtual-machines/windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)<br />または<br />[Linux VM で実行中のアプリケーション](../virtual-machines/linux/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |
+| リモート デスクトップ接続のエラー |[Windows VM へのリモート デスクトップ接続](../virtual-machines/windows/troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
+| 再デプロイすることで解決する接続エラー |[新しい Azure ノードへの仮想マシンの再デプロイ](../virtual-machines/windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
 | クラウド サービスのエラー |[クラウド サービスのデプロイの問題](../cloud-services/cloud-services-troubleshoot-deployment-problems.md) |
 
 次の表に、その他の Azure サービスのトラブルシューティング トピックを示します。 リソースのデプロイまたは構成に関連した問題を中心に掲載しています。 リソースに関して実行時に発生する問題のトラブルシューティングについてご不明な点がある場合は、対応する Azure サービスのドキュメントを参照してください。

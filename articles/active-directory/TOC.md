@@ -81,6 +81,7 @@
 ### [名前付きネットワーク](active-directory-known-networks-azure-portal.md)
 ### [レポートの移行](active-directory-reporting-migration.md)
 ### [保持](active-directory-reporting-retention.md)
+### [待機時間](active-directory-reporting-latencies-azure-portal.md)
 ### [FAQ](active-directory-reporting-faq.md)
 ### トラブルシューティング
 #### [見つからない監査データ](active-directory-reporting-troubleshoot-missing-audit-data.md)
@@ -109,8 +110,9 @@
 ##### [異常なサインイン](active-directory-reporting-users-with-anomalous-sign-in-activity.md)
 
 ## [パスワードの管理](active-directory-manage-passwords.md)
-### [自分のパスワードを更新する](active-directory-passwords-update-your-own-password.md)
-### [セルフサービスのパスワード リセットをセットアップする](active-directory-passwords.md)
+### [パスワードのリセットまたは変更](active-directory-passwords-update-your-own-password.md)
+### [セルフサービスのパスワード リセットのための登録](active-directory-passwords-reset-register.md)
+### [管理者によるセルフサービスのパスワード リセットの有効化](active-directory-passwords.md)
 ### [パスワード管理について](active-directory-passwords-how-it-works.md)
 ### [パスワードに関するポリシーと制限について](active-directory-passwords-policy.md)
 ### パスワードをリセットする
@@ -155,19 +157,12 @@
 ### [アプリへのリモート アクセス権の付与](active-directory-application-proxy-get-started.md)
 #### [アプリケーション プロキシを有効にする](active-directory-application-proxy-enable.md)
 #### [コネクタについて](application-proxy-understand-connectors.md)
-
-#### アプリを発行する
-##### [Azure ポータル](application-proxy-publish-azure-portal.md)
-##### [クラシック ポータル](active-directory-application-proxy-publish.md)
-
+#### [アプリを発行する](application-proxy-publish-azure-portal.md)
 #### [セキュリティ](application-proxy-security-considerations.md)
 #### [ネットワーク](application-proxy-network-topology-considerations.md)
 #### [リモート デスクトップ](application-proxy-publish-remote-desktop.md)
 #### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
-
-#### 異なるネットワークに発行する
-##### [Azure Portal](active-directory-application-proxy-connectors-azure-portal.md)
-##### [クラシック ポータル](active-directory-application-proxy-connectors.md)
+#### [異なるネットワークに発行する](active-directory-application-proxy-connectors-azure-portal.md)
 #### [プロキシ サーバー](application-proxy-working-with-proxy-servers.md)
 #### [カスタム ドメイン](active-directory-application-proxy-custom-domains.md)
 #### [アプリへのアクセス](active-directory-appssoaccess-whatis.md)
@@ -181,6 +176,11 @@
 #### [サイレント インストール](active-directory-application-proxy-silent-installation.md)
 #### [Microsoft Forefront](application-proxy-transition-from-uag-tmg.md)
 #### [トラブルシューティング](active-directory-application-proxy-troubleshoot.md)
+#### クラシック ポータルの使用
+##### [コネクタをダウンロードする](application-proxy-enable-classic-portal.md)
+##### [アプリを発行する](active-directory-application-proxy-publish.md)
+##### [コネクタを使用する](active-directory-application-proxy-connectors.md)
+
 
 ### エンタープライズ アプリの管理
 #### [ユーザーを割り当てる](active-directory-coreapps-assign-user-azure-portal.md)
@@ -200,8 +200,21 @@
 #### [セルフ サービス アクセス](active-directory-self-service-application-access.md)
 #### [SSO の証明書](active-directory-sso-certs.md)
 #### [テナント制限](active-directory-tenant-restrictions.md)
+#### [ユーザーのプロビジョニングに SCIM を使用する](active-directory-scim-provisioning.md)
 
-### [ユーザーのプロビジョニングに SCIM を使用する](active-directory-scim-provisioning.md)
+### [トラブルシューティング](active-directory-application-troubleshoot-content-map.md)
+#### [アプリケーション開発](active-directory-application-dev-troubleshoot-content-map.md)
+##### [構成と登録](active-directory-application-dev-config-content-map.md)
+##### [開発](active-directory-application-dev-development-content-map.md)
+#### [アプリケーション管理](active-directory-application-management-troubleshoot-content-map.md)
+##### [構成](active-directory-application-config-content-map.md)
+##### [サインイン](active-directory-application-sign-in-content-map.md)
+##### [プロビジョニング](active-directory-application-provisioning-content-map.md)
+##### [アクセスの管理](active-directory-application-access-content-map.md)
+##### [アクセス パネル](active-directory-application-access-panel-content-map.md)
+##### [アプリケーション プロキシ](active-directory-application-proxy-content-map.md)
+##### [条件付きアクセス](active-directory-application-conditional-access-content-map.md)
+
 ### [ドキュメント ライブラリ](active-directory-apps-index.md)
 
 ## ディレクトリの管理
@@ -234,28 +247,29 @@
 ### [Azure AD B2B コラボレーションを使用してパートナーを統合する](active-directory-b2b-what-is-azure-ad-b2b.md)
 #### [管理者による B2B ユーザーの追加](active-directory-b2b-admin-add-users.md)
 #### [インフォメーション ワーカーによる B2B ユーザーの追加](active-directory-b2b-iw-add-users.md)
+#### [API とカスタマイズ](active-directory-b2b-api.md)
+#### [コードと PowerShell のサンプル](active-directory-b2b-code-samples.md)
+#### [セルフサービス サインアップ ポータルのサンプル](active-directory-b2b-self-service-portal.md)
 #### [招待メール](active-directory-b2b-invitation-email.md)
 #### [招待の利用](active-directory-b2b-redemption-experience.md)
-#### [B2B ユーザー プロパティ](active-directory-b2b-user-properties.md)
-#### [ゲスト ユーザーをロールに追加する](active-directory-b2b-add-guest-to-role.md)
+#### [B2B 向けの条件付きアクセス](active-directory-b2b-mfa-instructions.md)
+#### [B2B の共有ポリシー](active-directory-b2b-delegate-invitations.md)
+#### [B2B ユーザーをロールに追加する](active-directory-b2b-add-guest-to-role.md)
+#### [動的グループと B2B ユーザー](active-directory-b2b-dynamic-groups.md)
 #### [監査とレポート](active-directory-b2b-auditing-and-reporting.md)
-#### [API とカスタマイズ](active-directory-b2b-api.md)
-#### [招待を委任する](active-directory-b2b-delegate-invitations.md)
-#### [動的グループと B2B](active-directory-b2b-dynamic-groups.md)
-#### [B2B の多要素認証](active-directory-b2b-mfa-instructions.md)
-#### [B2B ユーザー トークン](active-directory-b2b-user-token.md)
-#### [B2B ユーザー要求のマッピング](active-directory-b2b-claims-mapping.md)
-#### [Office 365 の外部共有](active-directory-b2b-o365-external-user.md)
-#### [B2B 用に SaaS アプリを構成する](active-directory-b2b-configure-saas-apps.md)
-#### [コードと PowerShell のサンプル](active-directory-b2b-code-samples.md)
-#### [現時点での制限事項](active-directory-b2b-current-limitations.md)
+#### [B2B と Office 365 の外部共有](active-directory-b2b-o365-external-user.md)
 #### [ライセンス](active-directory-b2b-licensing.md)
+#### [現時点での制限事項](active-directory-b2b-current-limitations.md)
+#### [FAQ](active-directory-b2b-faq.md)
 #### [B2B のトラブルシューティング](active-directory-b2b-troubleshooting.md)
+#### [B2B ユーザーについて](active-directory-b2b-user-properties.md)
+#### [B2B ユーザー トークン](active-directory-b2b-user-token.md)
+#### [Azure AD 統合アプリ向けの B2B](active-directory-b2b-configure-saas-apps.md)
+#### [B2B ユーザー要求のマッピング](active-directory-b2b-claims-mapping.md)
 #### [B2B コラボレーションと B2C を比較する](active-directory-b2b-compare-b2c.md)
 #### [B2B のサポートの利用](active-directory-b2b-support.md)
-#### [FAQ](active-directory-b2b-faq.md)
-### [Azure AD Connect を使用してオンプレミスの ID を統合する](./connect/active-directory-aadconnect.md)
 
+### [Azure AD Connect を使用してオンプレミスの ID を統合する](./connect/active-directory-aadconnect.md)
 
 ## リソースへのアクセスを委任する
 ### [管理者ロール](active-directory-assign-admin-roles.md)
@@ -291,6 +305,8 @@
 ### 証明書ベースの認証
 #### [Android](active-directory-certificate-based-authentication-android.md)
 #### [iOS](active-directory-certificate-based-authentication-ios.md)
+#### [作業開始](active-directory-certificate-based-authentication-get-started.md)
+
 ### [Azure AD Identity Protection](active-directory-identityprotection.md)
 #### [有効にする](active-directory-identityprotection-enable.md)
 #### [脆弱性を検出する](active-directory-identityprotection-vulnerabilities.md)
@@ -315,6 +331,12 @@
 ### [署名ハッシュ アルゴリズムを変更する](active-directory-federation-sha256-guidance.md)
 
 ## [トラブルシューティング](active-directory-troubleshooting.md)
+
+## Azure AD の概念実証 (PoC) のデプロイ
+### [PoC プレイブック: はじめに](active-directory-playbook-intro.md)
+### [PoC プレイブック: 主な要素](active-directory-playbook-ingredients.md)
+### [PoC プレイブック: 実装](active-directory-playbook-implementation.md)
+### [PoC プレイブック: 構成要素](active-directory-playbook-building-blocks.md)
 
 
 # リファレンス

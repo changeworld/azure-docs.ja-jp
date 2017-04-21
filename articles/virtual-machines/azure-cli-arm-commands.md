@@ -13,12 +13,12 @@ ms.workload: multiple
 ms.tgt_pltfrm: command-line-interface
 ms.devlang: na
 ms.topic: article
-ms.date: 01/03/2017
+ms.date: 04/18/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: cdf9d576b6a7d3afcfb0839ce8bab2103fba14ed
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: be957651af78519f678321aec511b71cb18a85f2
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/21/2017
 
 オプション パラメーターは、ブラケットで囲んで表記しています (例 `[parameter]`)。 その他のパラメーターはすべて指定する必要があります。
 
-ここに記載している、コマンド固有のオプション パラメーターに加えて、要求オプションや状態コードなどの詳細出力の表示に使用できるオプション パラメーターが&3; つあります。 `-v` パラメーターでは詳細な出力を、`-vv` パラメーターではより詳細な出力を得ることができます。 `--json` オプションを使用すると、結果が未整形の json 形式で出力されます。
+ここに記載している、コマンド固有のオプション パラメーターに加えて、要求オプションや状態コードなどの詳細出力の表示に使用できるオプション パラメーターが 3 つあります。 `-v` パラメーターでは詳細な出力を、`-vv` パラメーターではより詳細な出力を得ることができます。 `--json` オプションを使用すると、結果が未整形の json 形式で出力されます。
 
 ## <a name="setting-the-resource-manager-mode"></a>リソース マネージャー モードの設定
 次のコマンドを使用して Azure CLI リソース マネージャー モードのコマンドを有効にします。
@@ -111,11 +111,11 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
     availset list [options] <resource-group>
 
-**リソース グループ内の可用性セットを&1; つ取得します**
+**リソース グループ内の可用性セットを 1 つ取得します**
 
     availset show [options] <resource-group> <name>
 
-**リソース グループ内の可用性セットを&1; つ削除します**
+**リソース グループ内の可用性セットを 1 つ削除します**
 
     availset delete [options] <resource-group> <name>
 
@@ -946,86 +946,6 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 <BR>
 
-    network lb address-pool add [options] <resource-group> <lb-name> <name>
-
-バックエンド アドレス プールの範囲によって、ロード バランサーが Azure Resource Manager を使用してエンドポイントからの着信ネットワーク トラフィックをルーティングするリソースを確認する方法が決まります。 バックエンド アドレス プールの範囲を作成し名前を付けた後 (コマンド "azure network lb address-pool create" を参照してください)、"ネットワーク インターフェイス" と呼ばれるリソースによって定義されるエンドポイントを追加する必要があります。
-
-バックエンド アドレスの範囲を構成するには、少なくとも&1; つの "ネットワーク インターフェイス" (詳細については "azure network lb nic" コマンド ラインを参照してください) が必要です。
-
-次の例では、以前に作成した "nic1" という名前のネットワーク インターフェイスを使用して、バックエンド アドレス プールの範囲を作成しています。
-
-    azure network lb address-pool add -g myresourcegroup -l mylb -n mybackendpool -a nic1
-
-    info:    Executing command network lb address-pool add
-    + Looking up the load balancer "mylb"
-    + Getting network interfaces
-    + Updating network interface "nic1"
-    + Looking up the load balancer "mylb"
-    data:    Id:                        /subscriptions/###############################/resourceGroups/myresourcegroup/providers/Microsoft.Network/loadBalancers/mylb/backendAddressPools/mybackendpool
-    data:    Name:                      mybackendpool
-    data:    Type:                      Microsoft.Network/loadBalancers/backendAddressPools
-    data:    Provisioning state:        Succeeded
-    data:    Backend IP configurations:
-    data:     id=/subscriptions/###############################/resourceGroups/myresourcegroup/providers/Microsoft.Network/networkInterfaces/nic1/ipConfigurations/NIC-config
-    data:    Load balancing rules:
-    data:
-    info:    network lb address-pool add command OK
-
-パラメーターのオプション:
-
-    -h, --help                             output usage information
-    -v, --verbose                          use verbose output
-    --json                                 use json output
-    -g, --resource-group <resource-group>  the name of the resource group
-    -l, --lb-name <lb-name>                the name of the load balancer
-    -n, --name <name>                      the name of the backend address pool
-    -i, --vm-id <vm-id>                    the virtual machine identifier.
-    e.g. "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Compute/virtualMachines/<vm-name>,/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Compute/virtualMachines/<vm-name>"
-    -m, --vm-name <vm-name>                the name of the virtual machine
-    -d, --nic-id <nic-id>                  the network interface identifier.
-    e.g. ""/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/networkInterfaces/<nic-name>"
-    -a, --nic-name <nic-name>              the name of the network interface
-    -s, --subscription <subscription>      the subscription identifier
-
-<BR>
-
-    network lb address-pool remove [options] <resource-group> <lb-name> <name>
-
-バックエンド IP アドレス プールの範囲から、ネットワーク インターフェイスを削除します。
-
-    azure network lb address-pool remove -g myresourcegroup -l mylb -n mybackendpool -a nic1
-
-    info:    Executing command network lb address-pool remove
-    + Looking up the load balancer "mylb"
-    + Getting network interfaces
-    + Updating network interface "nic1"
-    + Looking up the load balancer "mylb"
-    data:    Id:                        /subscriptions/###############################/resourceGroups/myresourcegroup/providers/Microsoft.Network/loadBalancers/mylb/backendAddressPools/mybackendpool
-    data:    Name:                      mybackendpool
-    data:    Type:                      Microsoft.Network/loadBalancers/backendAddressPools
-    data:    Provisioning state:        Succeeded
-    data:    Backend IP configurations:
-    data:    Load balancing rules:
-    data:
-    info:    network lb address-pool remove command OK
-
-パラメーターのオプション:
-
-    -h, --help                             output usage information
-    -v, --verbose                          use verbose output
-    --json                                 use json output
-    -g, --resource-group <resource-group>  the name of the resource group
-    -l, --lb-name <lb-name>                the name of the load balancer
-    -n, --name <name>                      the name of the backend address pool
-    -i, --vm-id <vm-id>                    the virtual machine identifier.
-    e.g. "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Compute/virtualMachines/<vm-name>,/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Compute/virtualMachines/<vm-name>"
-    -m, --vm-name <vm-name>                the name of the virtual machine
-    -d, --nic-id <nic-id>                  the network interface identifier.
-    e.g. ""/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/networkInterfaces/<nic-name>"
-    -a, --nic-name <nic-name>              the name of the network interface
-    -s, --subscription <subscription>      the subscription identifier
-<BR>
-
     network lb address-pool list [options] <resource-group> <lb-name>
 
 特定のリソース グループのバックエンド IP アドレス プールの範囲を一覧表示します
@@ -1614,7 +1534,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
     resource list [options] [resource-group]
 
-**リソース グループまたはサブスクリプションのリソースを&1; つ取得します**
+**リソース グループまたはサブスクリプションのリソースを 1 つ取得します**
 
     resource show [options] <resource-group> <name> <resource-type> <api-version>
 
@@ -1795,27 +1715,27 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
     vm list [options]
 
-**リソース グループ内の仮想マシンを&1; つ取得します**
+**リソース グループ内の仮想マシンを 1 つ取得します**
 
     vm show [options] <resource-group> <name>
 
-**リソース グループ内の仮想マシンを&1; つ削除します**
+**リソース グループ内の仮想マシンを 1 つ削除します**
 
     vm delete [options] <resource-group> <name>
 
-**リソース グループ内の仮想マシンを&1; つシャットダウンします**
+**リソース グループ内の仮想マシンを 1 つシャットダウンします**
 
     vm stop [options] <resource-group> <name>
 
-**リソース グループ内の仮想マシンを&1; つ再起動します**
+**リソース グループ内の仮想マシンを 1 つ再起動します**
 
     vm restart [options] <resource-group> <name>
 
-**リソース グループ内の仮想マシンを&1; つ起動します**
+**リソース グループ内の仮想マシンを 1 つ起動します**
 
     vm start [options] <resource-group> <name>
 
-**リソース グループ内の仮想マシンを&1; つシャットダウンし、コンピューティング リソースを解放します**
+**リソース グループ内の仮想マシンを 1 つシャットダウンし、コンピューティング リソースを解放します**
 
     vm deallocate [options] <resource-group> <name>
 

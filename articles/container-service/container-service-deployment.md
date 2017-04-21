@@ -18,9 +18,9 @@ ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 2e8ff5304d4ccc63f92567b22c0508e3fc7b9bcf
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 71903120a77aa4d8fd58ea600488d3464570b0cb
+ms.lasthandoff: 04/06/2017
 
 ---
 # <a name="deploy-a-docker-container-hosting-solution-using-the-azure-portal"></a>Azure Portal を使用して Docker コンテナーのホスティング ソリューションをデプロイする
@@ -36,7 +36,11 @@ Azure コンテナー サービスでは、人気のオープン ソースのコ
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション**: お持ちでない場合は、[無料試用版](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935)にサインアップしてください。 
+* **Azure サブスクリプション**: お持ちでない場合は、[無料試用版](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935)にサインアップしてください。 大規模なクラスターでは、従量課金制のサブスクリプションまたはその他の購入オプションを検討してください。
+
+    > [!NOTE]
+    > Azure サブスクリプションの使用状況と[リソース クォータ](../azure-subscription-service-limits.md) (コア クォータなど) によって、デプロイするクラスターのサイズが制限される場合があります。 クォータを増やすためのリクエストは、[オンライン カスタマー サポートに申請](../azure-supportability/how-to-create-azure-support-request.md) (無料) してください。
+    >
 
 * **SSH RSA 公開キー**: ポータルまたはいずれかの Azure クイックスタート テンプレートを通じてデプロイする場合は、Azure Container Service 仮想マシンに対する認証のための公開キーを指定する必要があります。 Secure Shell (SSH) RSA キーを作成するには、[OS X と Linux](../virtual-machines/linux/mac-create-ssh-keys.md) または [Windows](../virtual-machines/linux/ssh-from-windows.md) のガイダンスを参照してください。 
 
@@ -109,7 +113,7 @@ Azure コンテナー サービスでは、人気のオープン ソースのコ
 ## <a name="create-a-cluster-by-using-a-quickstart-template"></a>クイックスタート テンプレートを使用してクラスターを作成する
 Azure クイックスタート テンプレートは、Azure Container Service でクラスターをデプロイするために使用できます。 提供されたクイック スタート テンプレートを変更して、Azure の追加または高度な構成を含めることができます。 Azure クイックスタート テンプレートを使用して Azure Container Service クラスターを作成するには、Azure サブスクリプションが必要です。 お持ちでない場合は、[無料試用版](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935)にサインアップしてください。 
 
-テンプレートと Azure CLI 2.0 を使用してクラスターをデプロイするには、以下の手順に従ってください ([インストールとセットアップの手順](/cli/azure/install-az-cli2.md)を参照)。
+テンプレートと Azure CLI 2.0 を使用してクラスターをデプロイするには、以下の手順に従ってください ([インストールとセットアップの手順](/cli/azure/install-az-cli2)を参照)。
 
 > [!NOTE] 
 > Windows システムの場合は、同様の手順で、Azure PowerShell を使用してテンプレートをデプロイすることができます。 このセクションの後の方の手順を参照してください。 [ポータル](../azure-resource-manager/resource-group-template-deploy-portal.md)またはその他の方法でテンプレートをデプロイすることもできます。

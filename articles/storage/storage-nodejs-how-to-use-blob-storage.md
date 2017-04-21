@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: b9041713f3d084fde77a34ef7956a2c59312245e
-ms.openlocfilehash: d48f82d8fea89b45af14dd2154d69889c95a5e2f
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: b5ed7853c696d9e8477a31aba8a9cc9ab8558fa8
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -137,7 +138,7 @@ function (returnObject, finalCallback, next)
 
 このコールバックで、returnObject (サーバーへの要求からの応答) の処理の後に、コールバックは next を呼び出すか (他のフィルターの処理を続けるために next が存在する場合)、単に finalCallback を呼び出す必要があります (サービス呼び出しを終了する場合)。
 
-再試行のロジックを実装する&2; つのフィルター (**ExponentialRetryPolicyFilter** と **LinearRetryPolicyFilter**) が、Azure SDK for Node.js に含まれています。 次のコードは、**ExponentialRetryPolicyFilter** を使う **BlobService** オブジェクトを作成します。
+再試行のロジックを実装する 2 つのフィルター (**ExponentialRetryPolicyFilter** と **LinearRetryPolicyFilter**) が、Azure SDK for Node.js に含まれています。 次のコードは、**ExponentialRetryPolicyFilter** を使う **BlobService** オブジェクトを作成します。
 
 ```nodejs
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
@@ -145,7 +146,7 @@ var blobSvc = azure.createBlobService().withFilter(retryOperations);
 ```
 
 ## <a name="upload-a-blob-into-a-container"></a>コンテナーに BLOB をアップロードする
-BLOB には、ブロック BLOB、ページ BLOB、追加 BLOB の&3; 種類があります。 ブロック BLOB を使用すると、大規模なデータをより効率的にアップロードできます。 追加 BLOB は、追加操作用に最適化されています。 ページ BLOB は、読み取りと書き込み操作用に最適化されています。 詳細については、「 [ブロック BLOB、追加 BLOB、ページ BLOB について](http://msdn.microsoft.com/library/azure/ee691964.aspx)」を参照してください。
+BLOB には、ブロック BLOB、ページ BLOB、追加 BLOB の 3 種類があります。 ブロック BLOB を使用すると、大規模なデータをより効率的にアップロードできます。 追加 BLOB は、追加操作用に最適化されています。 ページ BLOB は、読み取りと書き込み操作用に最適化されています。 詳細については、「 [ブロック BLOB、追加 BLOB、ページ BLOB について](http://msdn.microsoft.com/library/azure/ee691964.aspx)」を参照してください。
 
 ### <a name="block-blobs"></a>ブロック blob
 データをブロック blob にアップロードするには、以下のメソッドを使用します。
@@ -244,7 +245,7 @@ blobSvc.listBlobsSegmented('mycontainer', null, function(error, result, response
 });
 ```
 
-`result` には `entries` コレクションが含まれます。これは、各 BLOB を記述するオブジェクトの配列です。 すべての BLOB を返すことができない場合は、`result` は、`continuationToken` も提供します。これは、追加のエントリを取得するための&2; つ目のパラメーターとして使用できます。
+`result` には `entries` コレクションが含まれます。これは、各 BLOB を記述するオブジェクトの配列です。 すべての BLOB を返すことができない場合は、`result` は、`continuationToken` も提供します。これは、追加のエントリを取得するための 2 つ目のパラメーターとして使用できます。
 
 ## <a name="download-blobs"></a>BLOB をダウンロードする
 BLOB からデータをダウンロードするには、以下のメソッドを使用します。
@@ -372,7 +373,7 @@ sharedBlobSvc.getBlobProperties('mycontainer', 'myblob', function (error, result
 ### <a name="access-control-lists"></a>アクセス制御リスト
 SAS のアクセス ポリシーを設定するために、アクセス制御リスト (ACL) も使用できます。 複数のクライアントにコンテナーへのアクセスを許可し、各クライアントに異なるアクセス ポリシーを提供する場合に便利です。
 
-ACL は、アクセス ポリシーの配列と、各ポリシーに関連付けられた ID を使用して実装されます。 次のコード例では、2 つのポリシーを定義しています。1 つは "user1" 用、もう&1; つは "user2" 用です。
+ACL は、アクセス ポリシーの配列と、各ポリシーに関連付けられた ID を使用して実装されます。 次のコード例では、2 つのポリシーを定義しています。1 つは "user1" 用、もう 1 つは "user2" 用です。
 
 ```nodejs
 var sharedAccessPolicy = {
@@ -416,14 +417,13 @@ blobSAS = blobSvc.generateSharedAccessSignature('mycontainer', { Id: 'user2' });
 
 * [Azure Storage SDK for Node の API リファレンス][Azure Storage SDK for Node API Reference]
 * [Azure Storage チーム ブログ][Azure Storage Team Blog]
-* GitHub の [Azure Storage SDK for Node] リポジトリ[Azure Storage SDK for Node]。
+* GitHub の [Azure Storage SDK for Node リポジトリ][Azure Storage SDK for Node]。
 * [Node.js デベロッパー センター](/develop/nodejs/)
 * [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy.md)
 
 [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
 
-[Azure App Service での Node.js Web アプリの作成]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
-[Node.js Cloud Service with Storage]: ../cloud-services/storage-nodejs-use-table-storage-cloud-service-app.md
+[Azure App Service での Node.js Web アプリの作成]: ../app-service-web/app-service-web-get-started-nodejs.md
 [Azure Table サービスを使用する Node.js Web アプリ]: ../app-service-web/storage-nodejs-use-table-storage-web-site.md
 [WebMatrix を使用した Node.js Web アプリの構築と Azure へのデプロイ]: ../app-service-web/web-sites-nodejs-use-webmatrix.md
 [Using the REST API]: http://msdn.microsoft.com/library/azure/hh264518.aspx
@@ -431,9 +431,4 @@ blobSAS = blobSvc.generateSharedAccessSignature('mycontainer', { Id: 'user2' });
 [Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
 [Azure Storage SDK for Node API Reference]: http://dl.windowsazure.com/nodestoragedocs/index.html
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

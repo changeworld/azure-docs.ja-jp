@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 05/31/2016
 ms.author: stepsic
 translationtype: Human Translation
-ms.sourcegitcommit: fc509ef8b30fadb6e026f346d4adbd6ef759624a
-ms.openlocfilehash: 74aae9f757f56e94b583069a1fdee7efaafe467c
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 9d169bcc0b1e89866d04cced474ee9c0e6ba6952
+ms.lasthandoff: 04/06/2017
 
 
 ---
 # <a name="call-custom-apis-hosted-on-azure-app-service-with-azure-logic-apps"></a>Azure Logic Apps を使用した、Azure App Service でホストされた独自のカスタム API の呼び出し
 
-Azure Logic Apps には、さまざまなサービス用に 40 以上のコネクタが用意されていますが、独自のカスタム API を呼び出して独自のコードを実行することもできます。 独自のカスタム Web API をホストする最も簡単かつスケーラブルな方法の&1; つは、Azure App Service を使用することです。 この記事では、App Service の API アプリ、Web アプリ、またはモバイル アプリでホストされる任意の Web API を呼び出す方法について説明します。
+Azure Logic Apps には、さまざまなサービス用に 40 以上のコネクタが用意されていますが、独自のカスタム API を呼び出して独自のコードを実行することもできます。 独自のカスタム Web API をホストする最も簡単かつスケーラブルな方法の 1 つは、Azure App Service を使用することです。 この記事では、App Service の API アプリ、Web アプリ、またはモバイル アプリでホストされる任意の Web API を呼び出す方法について説明します。
 [API をロジック アプリのトリガーまたはアクションとして構築する方法](../logic-apps/logic-apps-create-api-app.md)について学習してください。
 
 ## <a name="deploy-your-web-app"></a>Web アプリのデプロイ
 
-最初に、Azure App Service で API を Web アプリとしてデプロイする必要があります。 [ASP.NET Web アプリを作成する際の基本的なデプロイ](../app-service-web/web-sites-dotnet-get-started.md)について学習してください。 ロジック アプリから任意の API を呼び出すことができますが、最適な結果を得るには、ロジック アプリ アクションと簡単に統合できるように Swagger メタデータを追加することをお勧めします。 [Swagger メタデータの追加](../app-service-api/app-service-api-dotnet-get-started.md#use-swagger-api-metadata-and-ui)について学習してください。
+最初に、Azure App Service で API を Web アプリとしてデプロイする必要があります。 [ASP.NET Web アプリを作成する際の基本的なデプロイ](../app-service-web/app-service-web-get-started-dotnet.md)について学習してください。 ロジック アプリから任意の API を呼び出すことができますが、最適な結果を得るには、ロジック アプリ アクションと簡単に統合できるように Swagger メタデータを追加することをお勧めします。 [Swagger メタデータの追加](../app-service-api/app-service-api-dotnet-get-started.md#use-swagger-api-metadata-and-ui)について学習してください。
 
 ### <a name="api-settings"></a>API 設定
 
@@ -52,7 +52,7 @@ API をセキュリティで保護するには、2 つの異なる方法があ�
 
 ## <a name="secure-calls-to-your-api-without-changing-code"></a>コードの変更を伴わない API 呼び出しのセキュリティ保護
 
-このセクションでは、ロジック アプリ用と Web アプリ用の&2; つの Azure Active Directory アプリケーションを作成します。 Web アプリの呼び出しの認証は、ロジック アプリの Azure Active Directory アプリに関連付けられたサービス プリンシパル (クライアント ID とシークレット) を使用して行います。 最後に、アプリケーション ID をロジック アプリの定義に追加します。
+このセクションでは、ロジック アプリ用と Web アプリ用の 2 つの Azure Active Directory アプリケーションを作成します。 Web アプリの呼び出しの認証は、ロジック アプリの Azure Active Directory アプリに関連付けられたサービス プリンシパル (クライアント ID とシークレット) を使用して行います。 最後に、アプリケーション ID をロジック アプリの定義に追加します。
 
 ### <a name="part-1-set-up-an-application-identity-for-your-logic-app"></a>パート 1: ロジック アプリのアプリケーション ID の設定
 

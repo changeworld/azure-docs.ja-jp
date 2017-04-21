@@ -36,7 +36,7 @@ Microsoft Azure には、アプリケーションとサービスの接続要件�
 * ログの記録
 * 名前解決
 * DMZ アーキテクチャ
-* [Azure Security Center] (Azure Security Center)
+* [Azure Security Center] \(Azure Security Center)
 
 ## <a name="azure-networking"></a>Azure のネットワーク
 仮想マシンには、ネットワーク接続が必要です。 その要件に対応するため、Azure では、仮想マシンによる Azure Virtual Network への接続が必要となります。 Azure Virtual Network は、物理的な Azure ネットワーク ファブリック上に構築される論理的な構築物です。 各論理 Azure Virtual Network は、他のすべての Azure Virtual Network から分離されています。 これは、自分のデプロイ内のネットワーク トラフィックに他の Microsoft Azure ユーザーがアクセスすることを防ぐ上で役立ちます。
@@ -270,7 +270,7 @@ DMZ の設計と DMZ をデプロイする決定には多数のバリエーシ�
 
 * [Microsoft クラウド サービスとネットワーク セキュリティ](../best-practices-network-security.md)
 
-## <a name="azure-security-center"></a>[Azure Security Center] (Azure Security Center)
+## <a name="azure-security-center"></a>[Azure Security Center] \(Azure Security Center)
 Security Center は、脅威の回避、検出、対応に役立つサービスで、Azure リソースのセキュリティを高度に視覚化して制御できます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
 Azure Security Center は、ネットワーク セキュリティの最適化と監視に役立つ次の機能を備えています。

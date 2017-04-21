@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/16/2017
+ms.date: 04/03/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 89d44476e9de8ac32195efaf66535cdd9fb4260e
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: 248e820ccd2c68a8500aab3233c5beea3c8cc868
+ms.lasthandoff: 04/04/2017
 
 ---
 # <a name="connect-to-hdinsight-hadoop-using-ssh"></a>SSH を使用して HDInsight (Hadoop) に接続する
@@ -30,16 +30,19 @@ ms.lasthandoff: 03/25/2017
 
 | Address | ポート | 接続先 |
 | ----- | ----- | ----- |
-| `<edgenodename>.<clustername>-ssh.azurehdinsight.net` | 22 | エッジ ノード (存在する場合) |
+| `<clustername>-ed-ssh.azurehdinsight.net` | 22 | エッジ ノード (HDInsight の R Server) |
+| `<edgenodename>.<clustername>-ssh.azurehdinsight.net` | 22 | エッジ ノード (エッジ ノードが存在する場合はその他のクラスターの種類) |
 | `<clustername>-ssh.azurehdinsight.net` | 22 | プライマリ ヘッド ノード |
 | `<clustername>-ssh.azurehdinsight.net` | 23 | セカンダリ ヘッド ノード |
 
 > [!NOTE]
-> `<edgenodename>` をエッジ ノードの名前に置き換えます。 エッジ ノードの使用の詳細については、[HDInsight でのエッジ ノードの使用](hdinsight-apps-use-edge-node.md#access-an-edge-node)に関する記事を参照してください。
+> `<edgenodename>` をエッジ ノードの名前に置き換えます。
 >
 > `<clustername>` を、使用する HDInsight クラスターの名前に置き換えます。
 >
 > エッジ ノードが存在する場合は、__常にエッジ ノードに接続しておく__ことをお勧めします。 ヘッド ノードは、クラスターの正常な稼働に不可欠なサービスをホストします。 エッジ ノードは、配置されたもののみを実行します。
+>
+> エッジ ノードの使用の詳細については、[HDInsight でのエッジ ノードの使用](hdinsight-apps-use-edge-node.md#access-an-edge-node)に関する記事を参照してください。
 
 ## <a name="ssh-clients"></a>SSH クライアント
 
@@ -169,7 +172,7 @@ SSH アカウントが __SSH キー__を使用してセキュリティ保護さ�
 
         /tmp/ssh-rfSUL1ldCldQ/agent.1792
 
-    何も返されない場合は、`ssh-agent` が実行されていません。 「[Using ssh-agent with ssh (ssh での ssh-agent の使用)](http://mah.everybody.org/docs/ssh)」(http://mah.everybody.org/docs/ssh) でエージェントのスタートアップ スクリプト情報を参照するか、お使いの SSH クライアントのドキュメントで `ssh-agent` をインストールして構成する手順を確認してください。
+    何も返されない場合は、`ssh-agent` が実行されていません。 [「Using ssh-agent with ssh (ssh での ssh-agent の使用)」(http://mah.everybody.org/docs/ssh)](http://mah.everybody.org/docs/ssh) でエージェントのスタートアップ スクリプト情報を参照するか、お使いの SSH クライアントのドキュメントで `ssh-agent` をインストールして構成する手順を確認してください。
 
 4. **ssh-agent** が実行していることを確認したら、次のコマンドを使用して SSH 秘密キーをエージェントに追加します。
 

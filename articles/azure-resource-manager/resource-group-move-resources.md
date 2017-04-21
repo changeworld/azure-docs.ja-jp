@@ -12,12 +12,12 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2017
+ms.date: 04/10/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 892d24199be5065ee54d46863cca2fd958db3236
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: ba85ab354d051990d0a9bae089e45c8df7ade4ea
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -77,7 +77,6 @@ ms.lasthandoff: 03/30/2017
 * App Service アプリ (Web Apps) - 「 [App Service の制限事項](#app-service-limitations)
 * Automation
 * Batch
-
 * Bing Maps
 * CDN
 * Cloud Services - 「 [クラシック デプロイメントの制限事項](#classic-deployment-limitations)
@@ -115,6 +114,7 @@ ms.lasthandoff: 03/30/2017
 * Traffic Manager
 * Virtual Machines - 証明書が Key Vault に格納されている場合、新しいサブスクリプションへの移動はサポートされません
 * Virtual Machines (クラシック) - 「 [クラシック デプロイメントの制限事項](#classic-deployment-limitations)
+* Virtual Machine Scale Sets
 * Virtual Network - 現在、ピアリングされた Virtual Network は、VNet ピアリングを無効にするまで移動することはできません。 無効にすれば、Virtual Network を正常に移動し、VNet ピアリングを有効にできるようになります。
 * VPN Gateway 
 
@@ -135,11 +135,9 @@ ms.lasthandoff: 03/30/2017
 * 証明書が Key Vault に格納されている Virtual Machines
 * Managed Disks を使用する Virtual Machines
 * Managed Disks を使用する Virtual Machines の可用性セット
-* Managed Disks を使用する Virtual Machines スケール セット
 * Managed Disks
 * Managed Disks から作成されたイメージ
 * Managed Disks から作成されたスナップショット
-* Virtual Machines スケール セット
 * Virtual Networks (クラシック) - 「 [クラシック デプロイメントの制限事項](#classic-deployment-limitations)
 * Marketplace のリソースから作成された Virtual Machines は、サブスクリプション間で移動できません。 現在のサブスクリプションでリソースをプロビジョニング解除し、新しいサブスクリプションにデプロイし直す必要があります。
 

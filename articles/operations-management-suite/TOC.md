@@ -3,15 +3,9 @@
 ## [OMS アーキテクチャ](operations-management-suite-architecture.md)
 
 # 作業開始
-## 洞察と分析
-### [Log Analytics にサインアップする](../log-analytics/log-analytics-get-started.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-## Automation と制御
-### [初めての Runbook](../automation/automation-first-runbook-graphical.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-## 保護と復旧
-### [Azure Backup の概要](../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-## セキュリティとコンプライアンス
-### [セキュリティと監査](oms-security-getting-started.md)
-### [データのセキュリティ](oms-security-data-security.md)
+## チュートリアル
+### [サービス マップ](operations-management-suite-walkthrough-servicemap.md)
+
 
 # 方法
 

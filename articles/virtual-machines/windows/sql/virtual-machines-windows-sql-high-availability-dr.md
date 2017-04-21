@@ -16,9 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 8a6b48437eecd9f2f5c3fe8447b31192d8318149
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 65e3564111b1f291bead685ae0c831951460c827
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -76,7 +76,7 @@ Azure 内の SQL Server データベースの障害復旧ソリューション�
 Azure の VM、ストレージ、およびネットワークには、オンプレミスの非仮想化 IT インフラストラクチャとは異なる動作特性があります。 Azure での HADR SQL Server ソリューションの実装を成功させるには、これらの違いを理解し、それに対応したソリューションを設計する必要があります。
 
 ### <a name="high-availability-nodes-in-an-availability-set"></a>可用性セットでの高可用性ノード
-Azure の可用性セットを使用すると、高可用性ノードを別個の障害ドメイン (FD) と更新ドメイン (UD) に配置できます。 Azure VM を同じ可用性セットに配置するには、同じクラウド サービスにデプロイする必要があります。 同じクラウド サービス上にあるノードのみが同じ可用性セットに属することができます。 詳細については、「 [Virtual Machines の可用性管理](../../virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+Azure の可用性セットを使用すると、高可用性ノードを別個の障害ドメイン (FD) と更新ドメイン (UD) に配置できます。 Azure VM を同じ可用性セットに配置するには、同じクラウド サービスにデプロイする必要があります。 同じクラウド サービス上にあるノードのみが同じ可用性セットに属することができます。 詳細については、「 [Virtual Machines の可用性管理](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
 ### <a name="failover-cluster-behavior-in-azure-networking"></a>Azure ネットワークでのフェールオーバー クラスターの動作
 Azure の RFC に準拠しない DHCP サービスが原因で、特定のフェールオーバー クラスター構成の作成が失敗する場合があります。これは、クラスター ネットワーク名に重複する IP アドレス (クラスター ノードのいずれかと同じ IP アドレスなど) が割り当てられているためです。 これは、Windows フェールオーバー クラスター機能に依存する AlwaysOn 可用性グループを実装するときに問題になります。

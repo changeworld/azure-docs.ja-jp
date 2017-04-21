@@ -10,13 +10,13 @@ ms.service: azure-portal
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/14/2017
+ms.topic: get-started-article
+ms.date: 03/30/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: d7a8d669e75991f6707641e4ce53c9b63d04853c
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: c6f25b8cf8c133f44644db1507958b2176efa230
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -52,6 +52,8 @@ Azure で Web アプリを既に実行している場合、要求率とエラー
 Application Insights では、アプリへの SDK のインストールによって、より詳細なテレメトリを提供できます。 具体的には、トレース ログの収集、[カスタム テレメトリの作成](app-insights-api-custom-events-metrics.md)、より詳細な例外レポートの取得が可能です。
 
 1. **Visual Studio** (2013 Update 2 以降) で、Application Insights SDK をプロジェクト用に構成します。
+
+    Web プロジェクトを右クリックし、**[追加] > [Application Insights]** または **[Application Insights の構成]** を選択します。
    
     ![Web プロジェクトを右クリックし、Application Insights の追加または構成を選択する](./media/app-insights-azure-web-apps/03-add.png)
    
@@ -91,15 +93,21 @@ Application Insights では、アプリへの SDK のインストールによっ
 
 テレメトリに対するより強力な検索については、 [Analytics クエリ言語](app-insights-analytics-tour.md)を使用してください。
 
+## <a name="more-telemetry"></a>テレメトリの追加
+
+* [Web ページの読み込みデータ](app-insights-javascript.md)
+* [カスタムのテレメトリ](app-insights-api-custom-events-metrics.md)
+
 ## <a name="video"></a>ビデオ
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>次のステップ
+* [実行中のアプリに対してプロファイラーを実行](app-insights-profiler.md)します。
 * [Azure 診断](app-insights-azure-diagnostics.md) が Application Insights に送信されるように設定します。
 * [サービスの正常性メトリックを監視](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)して、サービスの可用性と応答性を確認します。
 * 操作イベントが発生したり、メトリックがしきい値を超えたりするたびに、[アラート通知を受け取り](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)ます。
-* [JavaScript のアプリや Web ページに Application Insights](app-insights-web-track-usage.md) を使用して、Web ページを参照しているブラウザーからクライアント テレメトリを取得します。
+* [JavaScript のアプリや Web ページに Application Insights](app-insights-javascript.md) を使用して、Web ページを参照しているブラウザーからクライアント テレメトリを取得します。
 * [可用性 Web テストを設定](app-insights-monitor-web-app-availability.md) して、サイトがダウンした場合にアラートを送信するようにします。
 
 

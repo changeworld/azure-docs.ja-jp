@@ -16,9 +16,9 @@ ms.topic: get-started-article
 ms.date: 01/27/2017
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
-ms.openlocfilehash: e9eae9ea648fc0e657d32f3f91e6641046bfae79
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 53bb5d64e27458b4a88981bd20ea4236b31431ec
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -26,30 +26,36 @@ ms.lasthandoff: 03/15/2017
 コネクタを選択すると、ワークフローを迅速に構築する方法を確認できます。
 
 ## <a name="standard-connectors"></a>Standard コネクタ
+
 | コネクタ |  |  |  |
 | --- | --- | --- | --- |
-|[![API アイコン][API/Web-Appicon]<br/> **API/Web アプリ**][API/Web-Appdoc]|![API アイコン][appFiguresicon]<br/>**Appfigures**|![API アイコン][Asanaicon]<br/>**Asana**|![API アイコン][Azure-DocumentDBicon]<br/>**Azure DocumentDB**|
-|![API アイコン][Azure-MLicon]<br/>**Azure ML**|[![API Icon][Azure-Functionsicon]<br/>**Azure<br/>Functions**][Azure-Functionsdoc]|[![API Icon][AzureBlobStorageicon]<br/>**Azure Blob<br/>Storage**][AzureBlobStoragedoc]|![API アイコン][Basecamp-3icon]<br/>**Basecamp 3**|
-|![API アイコン][Bitlyicon]<br/>**Bitly**|![API アイコン][BizTalk-Servericon]<br/>**BizTalk Server**|![API アイコン][Bloggericon]<br/>**Blogger**|[![API Icon][Boxicon]<br/>**Box**][boxDoc]|
-|![API アイコン][Campfireicon]<br/>**Campfire**|![API アイコン][Cognitive-Services-Text-Analyticsicon]<br/>**Cognitive Services<br/>Text Analytics**|![API アイコン][Common-Data-Serviceicon]<br/>**Common Data<br/>Service**|[![API Icon][DB2icon]<br/>**DB2**][db2doc]|
-|[![API Icon][Delayicon]<br/>**遅延**][Delaydoc]|[![API Icon][Dropboxicon]<br/>**Dropbox**][dropboxdoc]|[![API Icon][Dynamics-365icon]<br/>**Dynamics 365**][Dynamics-365doc]|![API アイコン][Dynamics-365-for-Financialsicon]<br/>**Dynamics 365<br/>for Financials**|
-|![API アイコン][Dynamics-365-for-Operationsicon]<br/>**Dynamics 365<br/>for Operations**|![API アイコン][Easy-Redmineicon]<br/>**Easy Redmine**|[![API Icon][Facebookicon]<br/>**Facebook**][Facebookdoc]|[![API Icon][FileSystemIcon]<br/>**ファイル システム**][FileSystemdoc]|
-|[![API Icon][FTPicon]<br/>**FTP**][FTPdoc]|![API アイコン][GitHubicon]<br/>**Github**|![API アイコン][Google-Calendaricon]<br/>**Google カレンダー**|[![API Icon][Google-Driveicon]<br/>**Google ドライブ**][Google-Drivedoc]|
-|![API アイコン][Google-Sheetsicon]<br/>**Google スプレッドシート**|![API アイコン][Google-Tasksicon]<br/>**Google ToDo リスト**|![API アイコン][HipChaticon]<br/>**HipChat**|[![API Icon][HTTPicon]<br/>**HTTP**][HTTPdoc]|
-|[![API Icon][HTTP-Swaggericon]<br/>**HTTP Swagger**][http-swaggerdoc]|[![API Icon][HTTP-Requesticon]<br/>**HTTP<br/>要求**][HTTP-Requestdoc]|[![API Icon][HTTP-Responseicon]<br/>**HTTP<br/>応答**][HTTP-Responsedoc]|[![API Icon][Informixicon]<br/>**Informix**][Informixdoc]|
-|![API アイコン][Insightlyicon]<br/>**Insightly**|![API アイコン][Instagramicon]<br/>**Instagram**|![API アイコン][Instapapericon]<br/>**Instapaper**|![API アイコン][JIRAicon]<br/>**JIRA**|
-|[![API Icon][MailChimpicon]<br/>**MailChimp**][MailChimpdoc]|![API アイコン][Mandrillicon]<br/>**Mandrill**|[![API Icon][Microsoft-Translatoricon]<br/>**Microsoft<br/>Translator**][Microsoft-Translatordoc]|[![API Icon][Nested-Logic-Appicon]<br/>**入れ子になった<br/>ロジック アプリ**][Nested-Logic-Appdoc]|
-|[![API Icon][Office-365-Outlookicon]<br/>**Office 365<br/>Outlook**][office365-outlookdoc]|[![API Icon][Office-365-Usersicon]][office365-usersdoc]<br/>**Office 365<br/>Users**|[![API Icon][Office-365-Videoicon]<br/>**Office 365<br/>ビデオ**][office365-videodoc]|[![API Icon][OneDriveicon]<br/>**OneDrive**][OneDrivedoc]|
-|[![API Icon][OneDrive-for-Businessicon]<br/>**OneDrive for<br/>Business**][OneDrive-for-Businessdoc]|[![API アイコン][Oracle-DB-icon]<br/>**Oracle DB**][oracle-db-doc]|[![API Icon][Outlook.comicon]<br/>**Outlook.com**][Outlook.comdoc]|![API アイコン][PagerDutyicon]<br/>**PagerDuty**|
-|![API アイコン][Pinteresticon]<br/>**Pinterest**|[![API Icon][Project-Onlineicon]<br/>**Project Online**][Project-Onlinedoc]|[![API Icon][Queryicon]<br/>**クエリ**][Querydoc]|[![API Icon][Recurrenceicon]<br/>**繰り返し**][Recurrencedoc]|
-|![API アイコン][Redmineicon]<br/>**Redmine**|[![API Icon][RSSicon]<br/>**RSS**][RSSdoc]|[![API Icon][Salesforceicon]<br/>**Salesforce**][Salesforcedoc]|[![API Icon][SendGridicon]<br/>**SendGrid**][SendGriddoc]|
-|[![API Icon][Service-Busicon]<br/>**Service Bus**][Service-Busdoc]|[![API Icon][SFTPicon]<br/>**SFTP**][SFTPdoc]|[![API Icon][SharePointicon]<br/>**SharePoint**][SharePointdoc]|[![API Icon][Slackicon]<br/>**Slack**][Slackdoc]|
-|![API アイコン][Smartsheeticon]<br/>**Smartsheet**|[![API Icon][SMTPicon]<br/>**SMTP**][SMTPdoc]|![API アイコン][SparkPosticon]<br/>**SparkPost**|[![API Icon][SQL-Servericon]<br/>**SQL Server**][SQL-Serverdoc]|
-|![API アイコン][Todoisticon]<br/>**Todoist**|[![API Icon][Trelloicon]<br/>**Trello**][Trellodoc]|[![API Icon][Twilioicon]<br/>**Twilio**][Twiliodoc]|[![API Icon][Twittericon]<br/>**Twitter**][Twitterdoc]|
-|![API アイコン][Vimeoicon]<br/>**Vimeo**|![API アイコン][Visual-Studio-Team-Servicesicon]<br/>**Visual Studio<br/>Team Services**|[![API Icon][Webhookicon]<br/>**webhook**][Webhookdoc]|![API アイコン][WordPressicon]<br/>**WordPress**|
-|[![API Icon][Wunderlisticon]<br/>**Wunderlist**][Wunderlistdoc]|[![API Icon][Yammericon]<br/>**Yammer**][Yammerdoc]|![API アイコン][YouTubeicon]<br/>**YouTube**|
+|[![API アイコン][API/Web-Appicon]<br/> **API/Web アプリ**][API/Web-Appdoc]|![API アイコン][appFiguresicon]<br/>**appFigures**|![API アイコン][Asanaicon]<br/>**Asana**|![API アイコン][Azure-Automation-icon]<br/>**Azure Automation**|
+|[![API Icon][AzureBlobStorageicon]<br/>**Azure Blob<br/>Storage**][AzureBlobStoragedoc]|![API アイコン][Azure-Data-Lake-icon]<br/>**Azure Data<br/>Lake**|![API アイコン][Azure-DocumentDBicon]<br/>**Azure DocumentDB**|[![API Icon][Azure-Functionsicon]<br/>**Azure<br/>Functions**][Azure-Functionsdoc]|
+|![API アイコン][Azure-MLicon]<br/>**Azure ML**|![API アイコン][Azure-Resource-Manager-icon]<br/>**Azure Resource<br/>Manager**|![API アイコン][Azure-Queues-icon]<br/>**Azure キュー**|![API アイコン][Basecamp-3icon]<br/>**Basecamp 3**|
+|![API アイコン][Bitbucket-icon]<br/>**Bitbucket**|![API アイコン][Bitlyicon]<br/>**Bitly**|![API アイコン][BizTalk-Servericon]<br/>**BizTalk Server**|![API アイコン][Bloggericon]<br/>**Blogger**|
+|[![API Icon][Boxicon]<br/>**Box**][boxDoc]|![API アイコン][Campfireicon]<br/>**Campfire**|![API アイコン][Cognitive-Services-Text-Analyticsicon]<br/>**Cognitive Services<br/>Text Analytics**|![API アイコン][Common-Data-Serviceicon]<br/>**Common Data<br/>Service**|
+|[![API Icon][DB2icon]<br/>**DB2**][db2doc]|[![API Icon][Delayicon]<br/>**遅延**][Delaydoc]|[![API Icon][Dropboxicon]<br/>**Dropbox**][dropboxdoc]|[![API Icon][Dynamics-365icon]<br/>**Dynamics 365**][Dynamics-365doc]|
+|![API アイコン][Dynamics-365-for-Financialsicon]<br/>**Dynamics 365<br/>for Financials**|![API アイコン][Dynamics-365-for-Operationsicon]<br/>**Dynamics 365<br/>for Operations**|![API アイコン][Easy-Redmineicon]<br/>**Easy Redmine**|[![API アイコン][Event-hubs-icon]<br/>**Event Hubs**][event-hubs-doc]|
+|[![API Icon][Facebookicon]<br/>**Facebook**][Facebookdoc]|[![API Icon][FileSystemIcon]<br/>**ファイル システム**][FileSystemdoc]|[![API Icon][FTPicon]<br/>**FTP**][FTPdoc]|![API アイコン][GitHubicon]<br/>**Github**|
+|![API アイコン][Google-Calendaricon]<br/>**Google カレンダー**|[![API Icon][Google-Driveicon]<br/>**Google ドライブ**][Google-Drivedoc]|![API アイコン][Google-Sheetsicon]<br/>**Google スプレッドシート**|![API アイコン][Google-Tasksicon]<br/>**Google ToDo リスト**|
+|![API アイコン][HipChaticon]<br/>**HipChat**|[![API Icon][HTTPicon]<br/>**HTTP**][HTTPdoc]|[![API Icon][HTTP-Swaggericon]<br/>**HTTP Swagger**][http-swaggerdoc]|[![API Icon][HTTP-Requesticon]<br/>**HTTP<br/>要求**][HTTP-Requestdoc]|
+|[![API Icon][HTTP-Responseicon]<br/>**HTTP<br/>応答**][HTTP-Responsedoc]|[![API Icon][Informixicon]<br/>**Informix**][Informixdoc]|![API アイコン][Insightlyicon]<br/>**Insightly**|![API アイコン][Instagramicon]<br/>**Instagram**|
+|![API アイコン][Instapapericon]<br/>**Instapaper**|![API アイコン][JIRAicon]<br/>**JIRA**|[![API Icon][MailChimpicon]<br/>**MailChimp**][MailChimpdoc]|![API アイコン][Mandrillicon]<br/>**Mandrill**|
+|[![API Icon][Microsoft-Translatoricon]<br/>**Microsoft<br/>Translator**][Microsoft-Translatordoc]|[![API Icon][Nested-Logic-Appicon]<br/>**入れ子になった<br/>ロジック アプリ**][Nested-Logic-Appdoc]|[![API Icon][Office-365-Outlookicon]<br/>**Office 365<br/>Outlook**][office365-outlookdoc]|[![API Icon][Office-365-Usersicon]][office365-usersdoc]<br/>**Office 365<br/>Users**|
+|[![API Icon][Office-365-Videoicon]<br/>**Office 365<br/>ビデオ**][office365-videodoc]|[![API Icon][OneDriveicon]<br/>**OneDrive**][OneDrivedoc]|[![API Icon][OneDrive-for-Businessicon]<br/>**OneDrive for<br/>Business**][OneDrive-for-Businessdoc]|[![API アイコン][Oracle-DB-icon]<br/>**Oracle DB**][oracle-db-doc]|
+|[![API Icon][Outlook.comicon]<br/>**Outlook.com**][Outlook.comdoc]|![API アイコン][PagerDutyicon]<br/>**PagerDuty**|![API アイコン][Pinteresticon]<br/>**Pinterest**|[![API Icon][Project-Onlineicon]<br/>**Project Online**][Project-Onlinedoc]|
+|[![API Icon][Queryicon]<br/>**クエリ**][Querydoc]|[![API Icon][Recurrenceicon]<br/>**繰り返し**][Recurrencedoc]|![API アイコン][Redmineicon]<br/>**Redmine**|[![API Icon][RSSicon]<br/>**RSS**][RSSdoc]|
+|[![API Icon][Salesforceicon]<br/>**Salesforce**][Salesforcedoc]|[![API Icon][SendGridicon]<br/>**SendGrid**][SendGriddoc]|[![API Icon][Service-Busicon]<br/>**Service Bus**][Service-Busdoc]|[![API Icon][SFTPicon]<br/>**SFTP**][SFTPdoc]|
+|[![API Icon][SharePointicon]<br/>**SharePoint**][SharePointdoc]|[![API Icon][Slackicon]<br/>**Slack**][Slackdoc]|![API アイコン][Smartsheeticon]<br/>**Smartsheet**|[![API Icon][SMTPicon]<br/>**SMTP**][SMTPdoc]|
+|![API アイコン][SparkPosticon]<br/>**SparkPost**|[![API Icon][SQL-Servericon]<br/>**SQL Server**][SQL-Serverdoc]|![API アイコン][Todoisticon]<br/>**Todoist**|[![API Icon][Trelloicon]<br/>**Trello**][Trellodoc]|
+|[![API Icon][Twilioicon]<br/>**Twilio**][Twiliodoc]|[![API Icon][Twittericon]<br/>**Twitter**][Twitterdoc]|![API アイコン][Vimeoicon]<br/>**Vimeo**|![API アイコン][Visual-Studio-Team-Servicesicon]<br/>**Visual Studio<br/>Team Services**|
+|[![API Icon][Webhookicon]<br/>**webhook**][Webhookdoc]|![API アイコン][WordPressicon]<br/>**WordPress**|[![API Icon][Wunderlisticon]<br/>**Wunderlist**][Wunderlistdoc]|[![API Icon][Yammericon]<br/>**Yammer**][Yammerdoc]|
+|![API アイコン][YouTubeicon]<br/>**YouTube**|
 
-### <a name="integration-account-connectors"></a>統合アカウント コネクタ 
+> [!TIP]
+> Azure アカウントにサインアップする前に、Azure Logic Apps を体験することもできます。[Logic Apps の試用](https://tryappservice.azure.com/?appservice=logic)に関するページをご覧ください。 App Service で短時間有効な簡易版のロジック アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+
+## <a name="integration-account-connectors"></a>統合アカウント コネクタ 
 
 | 統合アカウント<br/>コネクタ |  |  |  |
 | --- | --- | --- | --- |
@@ -57,29 +63,37 @@ ms.lasthandoff: 03/15/2017
 | [![API アイコン][as2icon]<br/>**AS2</br>デコード**][as2decode] |[![API アイコン][as2icon]<br/>**AS2</br>エンコード**][as2encode] |[![API アイコン][x12icon]<br/>**X12</br>デコード**][x12decode] |[![API アイコン][x12icon]<br/>**X12</br>エンコード**][x12encode] |
 | [![API アイコン][x12icon]<br/>**EDIFACT</br>デコード**][EDIFACTdecode] |[![API アイコン][x12icon]<br/>**EDIFACT</br>エンコード**][EDIFACTencode] | | |
 
-> [!NOTE]
-> Azure アカウントにサインアップする前に、Azure Logic Apps を体験することもできます。[Logic Apps の試用](https://tryappservice.azure.com/?appservice=logic)に関するページをご覧ください。 App Service で短時間有効な簡易版のロジック アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
-
 ## <a name="enterprise-connectors"></a>エンタープライズ コネクタ
-EAI および EDI を含む B2B シナリオ用のロジック アプリを作成するには、エンタープライズ コネクタを使用します。  
+
+EAI および EDI を含む B2B シナリオ用のロジック アプリを作成するには、次のエンタープライズ コネクタを含めてください。
 
 | Enterprise<br/>コネクタ |  |
 | --- | --- |
 |![API アイコン][MQicon]<br/>**MQ**|[![API アイコン][SAPicon]<br/>**SAP**][sapconnector]|
 
+## <a name="connectors-as-triggers"></a>トリガーとしてのコネクタ
 
-
-<!-- TODO: Add Functions, App Service, and Nested Workflow Icons -->
-### <a name="connectors-can-be-triggers"></a>トリガーとして使用できるコネクタ
-一部のコネクタは、特定のイベントが発生したときにアプリに通知できるトリガーを備えています。 たとえば、FTP コネクタには OnUpdatedFile トリガーがあります。 このトリガーをリッスンし、トリガーが起動されるたびにアクションを実行するロジック アプリ、PowerApp、またはフローを構築できます。
+一部のコネクタには、特定のイベントが発生したときにアプリに通知できるトリガーが用意されています。 たとえば、FTP コネクタには、ファイルが更新されたときにアプリに通知する OnUpdatedFile トリガーがあります。 このトリガーをリッスンし、トリガーが起動されるたびにアクションを実行するロジック アプリ、PowerApp、またはフローを作成できます。
 
 2 種類のトリガーがあります。  
 
-* ポーリング トリガー: このトリガーは、指定された頻度でサービスをポーリングして、新しいデータをチェックします。 新しいデータを利用できる場合、そのデータを入力値としてアプリの新しいインスタンスが実行されます。 同じデータが複数回使用されることを防ぐために、アプリで読み取られて渡されるデータのクリーンアップがトリガーで実行される場合があります。
-* プッシュ トリガー: このトリガーは、エンドポイント上のデータまたは発生するイベントをリッスンして、アプリの新しいインスタンスをトリガーします。 一例として Twitter コネクタが挙げられます。
+* "*ポーリング トリガー*": このトリガーは、指定された頻度でサービスをポーリングして、新しいデータをチェックします。 新しいデータを利用できる場合、そのデータを入力値としてアプリの新しいインスタンスが実行されます。 同じデータが複数回使用されることを防ぐために、トリガーは、読み取られてアプリに渡されたデータをクリーンアップする場合があります。
 
-### <a name="connectors-can-be-actions"></a>アクションとして使用できるコネクタ
-コネクタは、アプリのアクションとして使用することもできます。 アクションは、アプリの実行時に使用できるデータの検索に役立ちます。 たとえば、注文を処理するときに、SQL データベースから顧客データを検索することが必要になる場合があります。 または、変換先テーブルでデータの書き込み、更新、または削除が必要になる場合があります。 コネクタによって提供されるアクションを使用して、これらのタスクを実行できます。 アクションは、Swagger メタデータで定義された操作にマップされます。
+* "*プッシュ トリガー*": このトリガーは、エンドポイント上のデータまたは発生するイベントをリッスンして、アプリの新しいインスタンスをトリガーします。 一例として Twitter コネクタが挙げられます。
+
+## <a name="connectors-as-actions"></a>アクションとしてのコネクタ
+
+コネクタには、アプリのワークフローで使用できるアクションも用意されています。 たとえば、アプリは、後でアプリを実行するときに使用できるデータを検索できます。 具体的には、注文を処理するときに、SQL データベースから顧客データを検索できます。 または、変換先テーブルでデータの書き込み、更新、または削除が必要になる場合があります。 アクションは、Swagger メタデータで定義された操作にマップされます。
+
+## <a name="custom-connectors-and-certification-for-microsoft-azure"></a>カスタム コネクタと Microsoft Azure の認定
+
+カスタム コードを実行する API や、コネクタとして使用できない API を呼び出すために、カスタム コネクタとして REST ベースの API アプリを作成して、[Logic Apps プラットフォームを拡張](../logic-apps/logic-apps-create-api-app.md)できます。 カスタム API アプリを公開して Azure で使用できるようにする場合は、[Microsoft Azure Certified プログラム](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)に推薦を送信します。
+
+## <a name="get-help"></a>問い合わせ
+
+[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)では、質問の投稿や質問への回答を行うことができるほか、他の Azure Logic Apps ユーザーがどのようなことを行っているかがわかります。
+
+[Logic Apps ユーザー フィードバック サイト](http://aka.ms/logicapps-wish)でアイデアへの投票やアイデアの投稿を行って、Logic Apps とコネクタの改善にご協力ください。
 
 ## <a name="next-steps"></a>次のステップ
 * [初めてのロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)
@@ -95,6 +109,7 @@ EAI および EDI を含む B2B シナリオ用のロジック アプリを作�
 [delaydoc]: ./connectors-native-delay.md "遅延アクションを実行します。"
 [dropboxdoc]: ./connectors-create-api-dropbox.md "Dropbox に接続します。ファイルのアップロード、取得、削除、一覧表示などを実行します。"
 [Dynamics-365doc]: ./connectors-create-api-crmonline.md "CRM Online データを操作できるように Dynamics CRM Online に接続します。"
+[event-hubs-doc]: ./connectors-create-api-azure-event-hubs.md "Azure Event Hubs に接続します。ロジック アプリと Event Hubs の間でイベントを送受信します。"
 [facebookdoc]: ./connectors-create-api-facebook.md "Facebook に接続します。タイムラインへの投稿、ページ フィードの取得などを行います。"
 [filesystemdoc]: ../logic-apps/logic-apps-using-file-connector.md "オンプレミスのファイル システムに接続します。"
 [ftpdoc]: ./connectors-create-api-ftp.md "FTP/FTPS サーバーに接続して、ファイルのアップロード、取得、削除などの FTP タスクを実行できます。"
@@ -118,7 +133,7 @@ EAI および EDI を含む B2B シナリオ用のロジック アプリを作�
 [office365-videodoc]: ./connectors-create-api-office365-video.md "Office 365 ビデオのビデオ情報、ビデオのリストとチャンネル、再生 URL を取得します。"
 [onedrivedoc]: ./connectors-create-api-onedrive.md "個人用の Microsoft OneDrive に接続します。ファイルのアップロード、削除、一覧表示などを実行します。"
 [onedrive-for-businessdoc]: ./connectors-create-api-onedriveforbusiness.md "ビジネス用の Microsoft OneDrive に接続します。ファイルのアップロード、削除、一覧表示などを実行します。"
-[oracle-db-doc]: https://powerapps.microsoft.com/blog/connecting-to-oracle-database-from-powerapps-flow-and-logic-apps "Oracle データベースに接続します。"
+[oracle-db-doc]: ./connectors-create-api-oracledatabase.md "Oracle データベースに接続して、行の追加、挿入、削除などを実行します。"
 [outlook.comdoc]: ./connectors-create-api-outlook.md "Outlook メールボックスに接続します。電子メール、予定表、連絡先の管理などを実行できます。"
 [project-onlinedoc]: ./connectors-create-api-projectonline.md "Microsoft Project Online に接続します。プロジェクト、タスク、リソースなどを管理できます。"
 [querydoc]: ./connectors-native-query.md "クエリ アクションで、配列の選択とフィルター処理を行います。"
@@ -159,10 +174,15 @@ EAI および EDI を含む B2B シナリオ用のロジック アプリを作�
 <!--Icon references-->
 [appFiguresicon]: ./media/apis-list/appfigures.png
 [Asanaicon]: ./media/apis-list/asana.png
+[Azure-Automation-icon]: ./media/apis-list/azure-automation.png
 [AzureBlobStorageicon]: ./media/apis-list/azureblob.png
-[Azure-DocumentDBicon]: ./media/apis-list/documentdb.png
+[Azure-Data-Lake-icon]: ./media/apis-list/azure-data-lake.png
+[Azure-DocumentDBicon]: ./media/apis-list/azure-documentdb.png
 [Azure-MLicon]: ./media/apis-list/azureml.png
+[Azure-Resource-Manager-icon]: ./media/apis-list/azure-resource-manager.png
+[Azure-Queues-icon]: ./media/apis-list/azure-queues.png
 [Basecamp-3icon]: ./media/apis-list/basecamp.png
+[Bitbucket-icon]: ./media/apis-list/bitbucket.png
 [Bitlyicon]: ./media/apis-list/bitly.png
 [BizTalk-Servericon]: ./media/apis-list/biztalk.png
 [Bloggericon]: ./media/apis-list/blogger.png
@@ -175,6 +195,7 @@ EAI および EDI を含む B2B シナリオ用のロジック アプリを作�
 [Dynamics-365-for-Financialsicon]: ./media/apis-list/madeira.png
 [Dynamics-365-for-Operationsicon]: ./media/apis-list/dynamicsax.png
 [Easy-Redmineicon]: ./media/apis-list/easyredmine.png
+[Event-Hubs-icon]: ./media/apis-list/eventhubs.png
 [Facebookicon]: ./media/apis-list/facebook.png
 [FTPicon]: ./media/apis-list/ftp.png
 [GitHubicon]: ./media/apis-list/github.png

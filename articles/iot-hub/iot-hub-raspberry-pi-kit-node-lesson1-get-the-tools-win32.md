@@ -7,6 +7,8 @@ author: shizn
 manager: timlt
 tags: 
 keywords: "IoT 開発, IoT ソフトウェア, モノのインターネット ソフトウェア, Windows での Git のインストール, gulp の実行, Windows での Node.js のインストール, Windows での NPM のインストール, Windows での Python のインストール"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-raspberry-pi-kit-node-get-started
 ms.assetid: b3d88e17-97cc-4f23-85fd-a688fc228eb8
 ms.service: iot-hub
 ms.devlang: node

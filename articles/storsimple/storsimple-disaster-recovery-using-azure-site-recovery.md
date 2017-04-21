@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 05/16/2016
 ms.author: vidarmsft
 translationtype: Human Translation
-ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
-ms.openlocfilehash: a0817ac21afb83745ec2cc213fc6029fa395d479
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 700dffe72af853d0daa9af06c0b316e0363ab30b
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -58,7 +59,7 @@ StorSimple ストレージでホストされているファイル共有向けに
 Active Directory と DNS を実行するコンピューターを保護して障害復旧サイトで使用できるようにするには、これらのコンピューターを明示的に保護する必要があります (フェールオーバー後に、ファイル サーバーへの認証によるアクセスを可能にするためです)。 2 つの方法をお勧めしますので、お客様のオンプレミス環境の複雑さに応じて選択してください。
 
 #### <a name="option-1"></a>方法 1
-お客様のアプリケーションの数が少ない場合は、オンプレミスのサイト全体に&1; つのドメイン コントローラーを使用して、サイト全体をフェールオーバーしてから、Azure Site Recovery レプリケーションを使用してドメイン コントローラー マシンをセカンダリ サイトにレプリケートすることをお勧めします (この方法は、サイト間、サイトと Azure 間の両方に適用できます)。
+お客様のアプリケーションの数が少ない場合は、オンプレミスのサイト全体に 1 つのドメイン コントローラーを使用して、サイト全体をフェールオーバーしてから、Azure Site Recovery レプリケーションを使用してドメイン コントローラー マシンをセカンダリ サイトにレプリケートすることをお勧めします (この方法は、サイト間、サイトと Azure 間の両方に適用できます)。
 
 #### <a name="option-2"></a>方法 2
 お客様のアプリケーションの数が多く、Active Directory フォレストを実行している場合は、一度に複数のアプリケーションをフェールオーバーしてから、障害復旧サイトで追加のドメイン コントローラーを (セカンダリ サイトまたは Azure のいずれかにおいて) 設定することをお勧めします。
@@ -122,7 +123,7 @@ Active Directory と DNS を実行するコンピューターを保護して障�
    > この場合、ファイル共有が一時的に使用できなくなります。
    >
    >
-2. Azure Site Recovery ポータルから、ファイル サーバー VM の[仮想マシンの保護を有効にします](../site-recovery/site-recovery-hyper-v-site-to-azure.md#step-6-enable-replication)。
+2. Azure Site Recovery ポータルから、ファイル サーバー VM の[仮想マシンの保護を有効にします](../site-recovery/site-recovery-hyper-v-site-to-azure.md#enable-replication)。
 3. 最初の同期の開始時に、ターゲットに再接続できます。 iSCSI イニシエーターに移動して StorSimple デバイスを選択し、 **[接続]**をクリックします。
 4. 同期の完了後に VM のステータスが **[保護済み]** になっていれば、その VM を選択してから **[構成]** タブをクリックし、設定に合わせて VM のネットワークを更新します (これはフェールオーバーされた VM を含むネットワークです)。 ネットワークが表示されないときは、同期が実行中ということです。
 
@@ -263,7 +264,7 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
 #### <a name="azure"></a>Azure
 [Azure Virtual Machine 準備状態評価ツール](http://azure.microsoft.com/downloads/vm-readiness-assessment/) を VM で実行すると、VM が Azure VM および Azure Site Recovery Services と互換性があることを確認できます。 準備状態評価ツールを使用すると、VM の構成が確認され、構成と Azure に互換性がないと警告が表示されます。 たとえば、C: ドライブが 127 GB を超える場合は警告が表示されます。
 
-キャパシティ プランニングは、少なくとも&2; つの重要なプロセスで構成されます。
+キャパシティ プランニングは、少なくとも 2 つの重要なプロセスで構成されます。
 
 * オンプレミスの Hyper-V VM を Azure VM のサイズ (A6、A7、A8、A9 など) にマッピングする
 * 必要なインターネット帯域幅を決定する
@@ -301,9 +302,4 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
 
 ## <a name="summary"></a>概要
 Azure Site Recovery を使用すると、StorSimple ストレージでホストされているファイル共有を含むファイル サーバー VM に対して、自動障害復旧計画を作成できます。 障害発生時に、任意の場所から数秒以内にフェールオーバーを開始し、数分以内にアプリケーションを稼働させることができます。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

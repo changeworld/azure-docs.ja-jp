@@ -16,9 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 8f85a4cee6a59316eb5c321007b5b9d562c71302
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 3d9bdd4f07d22a7bc6c80150ae27453813d39f07
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -78,7 +78,7 @@ ASP.NET アプリケーションをオンプレミスでホストする場合、
 ReportViewer は、適切な資格情報を使用してレポート サーバーに対する認証を行う必要があります。必要なレポートにアクセスするには、その資格情報がレポート サーバーによって承認される必要があります。 認証についての詳細は、ホワイト ペーパー「[Reporting Services report viewer control and Microsoft Azure Virtual Machine based report servers](https://msdn.microsoft.com/library/azure/dn753698.aspx)」 (Reporting Services レポート ビューアー コントロールと Microsoft Azure Virtual Machines ベースのレポート サーバー) を参照してください。
 
 ## <a name="publish-the-aspnet-web-application-to-azure"></a>ASP.NET Web アプリケーションを Azure に発行する
-ASP.NET Web アプリケーションを Azure に発行する手順については、「[方法:Visual Studio から Azure クラウド サービスへの Web アプリケーションの移行および発行](../../../vs-azure-tools-migrate-publish-web-app-to-cloud-service.md)」および「[Web Apps と ASP.NET の概要](../../../app-service-web/web-sites-dotnet-get-started.md)」を参照してください。
+ASP.NET Web アプリケーションを Azure に発行する手順については、「[方法:Visual Studio から Azure クラウド サービスへの Web アプリケーションの移行および発行](../../../vs-azure-tools-migrate-publish-web-app-to-cloud-service.md)」および「[Web Apps と ASP.NET の概要](../../../app-service-web/app-service-web-get-started-dotnet.md)」を参照してください。
 
 > [!IMPORTANT]
 > [Azure デプロイ プロジェクトの追加] または [Azure クラウド サービス プロジェクトの追加] コマンドがソリューション エクスプローラーのショートカット メニューに表示されない場合は、必要に応じてプロジェクトの [ターゲット フレームワーク] を .NET Framework 4 に変更してください。

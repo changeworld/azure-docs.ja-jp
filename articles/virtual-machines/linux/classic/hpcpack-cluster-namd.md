@@ -16,9 +16,9 @@ ms.workload: big-compute
 ms.date: 10/13/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 1e1e3b405d752c459ecfc7f74fbdafc148c147b5
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: f46facee3e45704f74a13db7a18274f5ce90ceff
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -61,7 +61,7 @@ Azure で Linux HPC ワークロードを実行する他のオプションにつ
    ![公開キーと秘密キー][keys]
 
 ### <a name="add-the-key-pair-to-the-hpc-pack-cluster"></a>HPC Pack クラスターにキー ペアを追加する
-1. クラスターをデプロイしたときに指定したドメイン資格情報 (たとえば、hpc\clusteradmin) を使用して、[リモート デスクトップでヘッド ノードに接続](../../virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)します。 ヘッド ノードからクラスターを管理します。
+1. クラスターをデプロイしたときに指定したドメイン資格情報 (たとえば、hpc\clusteradmin) を使用して、[リモート デスクトップでヘッド ノードに接続](../../windows/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)します。 ヘッド ノードからクラスターを管理します。
 2. 標準的な Windows Server 手順を使用して、クラスターの Active Directory ドメインにドメイン ユーザー アカウントを作成します。 たとえば、ヘッド ノードで Active Directory ユーザーとコンピューター ツールを使用します。 この記事の例では、hpclab ドメインの hpcuser (hpclab\hpcuser) という名前のドメイン ユーザーを作成するものとします。
 3. クラスター ユーザーとして、HPC Pack クラスターにドメイン ユーザーを追加します。 手順については、「[ユーザーと管理者の追加または削除](https://technet.microsoft.com/library/ff919330.aspx)」をご覧ください。
 4. C:\cred.xml という名前のファイルを作成し、そこに RSA キーのデータをコピーします。 例については、この記事の最後にあるサンプル ファイルを参照してください。

@@ -31,15 +31,10 @@ Storage サービスにアクセスできるようにアプリケーションを
 
 1. まだインストールしていない場合は、 [Microsoft Azure ストレージ エクスプローラーをインストール](http://storageexplorer.com)
 2. サブスクリプションに接続します。
-3. ストレージ アカウントをクリックし、左下の [アクション] タブをクリックします。 [Get Shared Access Signature] (Shared Access Signature の取得) をクリックすると、SAS の "接続文字列" が生成されます。
+3. ストレージ アカウントをクリックし、左下の [アクション] タブをクリックします。 [Get Shared Access Signature] \(Shared Access Signature の取得) をクリックすると、SAS の "接続文字列" が生成されます。
 4. 次に示すのは、ストレージ アカウントの BLOB サービスに対するサービス、コンテナー、およびオブジェクト レベルの読み取りおよび書き込みのアクセス許可を付与する SAS 接続文字列の例です。
    
    `"SharedAccessSignature=sv=2015-04-05&ss=b&srt=sco&sp=rw&se=2016-07-21T18%3A00%3A00Z&sig=3ABdLOJZosCp0o491T%2BqZGKIhafF1nlM3MzESDDD3Gg%3D;BlobEndpoint=https://youraccount.blob.core.windows.net"`
 
 ご覧のように、SAS を使用する場合、アプリケーションでアカウント キーを公開することはありません。 SAS の詳細および SAS 使用のベスト プラクティスについては、 [Shared Access Signature: SAS モデルの説明](../articles/storage/storage-dotnet-shared-access-signature-part-1.md)に関するページをご覧ください。
-
-
-
-<!--HONumber=Nov16_HO4-->
-
 

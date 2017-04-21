@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2016
+ms.date: 03/15/2017
 ms.author: kgremban
+ms.custom: end-user
 translationtype: Human Translation
 ms.sourcegitcommit: 4ff028f88e984f28bc0f4a228aabed1fabc90560
 ms.openlocfilehash: dd9b0692dbc044e4bed26cfe7e9e4be11450a595
-
+ms.lasthandoff: 12/22/2016
 
 ---
 # <a name="what-does-azure-multi-factor-authentication-mean-for-me"></a>Azure Multi-Factor Authentication とは何ですか
@@ -46,10 +47,5 @@ ms.openlocfilehash: dd9b0692dbc044e4bed26cfe7e9e4be11450a595
 | [設定の変更](multi-factor-authentication-end-user-manage-settings.md) |電話番号や優先登録方法など、設定の変更方法を示します。 |
 | [アプリ パスワードに関するヘルプ](multi-factor-authentication-end-user-app-passwords.md) |アプリ パスワードの作成と使用に関する情報があります。 |
 | [モバイル アプリの使用](microsoft-authenticator-app-how-to.md) |Microsoft Authenticator アプリは、[Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)、[Android](http://go.microsoft.com/fwlink/?Linkid=825072)、[IOS](http://go.microsoft.com/fwlink/?Linkid=825073) で利用できます。 |
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

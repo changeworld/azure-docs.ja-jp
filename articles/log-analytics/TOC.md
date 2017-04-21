@@ -48,6 +48,7 @@
 ### [アラート管理ソリューション](log-analytics-solution-alert-management.md)
 ## ソリューションの使用
 ### [ソリューションの概要](log-analytics-add-solutions.md)
+### [アクティビティ ログ分析](log-analytics-activity.md)
 ### [AD 評価](log-analytics-ad-assessment.md)
 ### [AD レプリケーションの状態](log-analytics-ad-replication-status.md)
 ### [アラートの管理](log-analytics-solution-alert-management.md)

@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 01/12/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 5d741836f5defd5d9287b90e53e71aeea439a1df
-ms.openlocfilehash: 81a7a57e6b025710660f7d55145ee286b71acf24
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 4019b379939e43e4e974552f1f0be245c5b1d33e
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -38,7 +38,7 @@ Azure AD アプリケーション プロキシには、次のセキュリティ�
 **条件付きアクセス:** ネットワークへの接続が確立される前に、多数のポリシー制御を適用できます。
 
 * 条件付きアクセスを使用すると、バックエンド アプリケーションにアクセスできるトラフィックの制限をより細かく定義できます。 場所、認証の強度、ユーザーのリスク プロファイルに基づいて制限を定義できます。
-* この機能によって、攻撃者に対する防御を強化できます。 条件付きアクセスの詳細については、[Azure AD の条件付きアクセスの概要](https://azure.microsoft.com/en-us/documentation/articles/active-directory-conditional-access-azuread-connected-apps)に関する記事を参照してください。
+* この機能によって、攻撃者に対する防御を強化できます。 条件付きアクセスの詳細については、[Azure AD の条件付きアクセスの概要](https://azure.microsoft.com/documentation/articles/active-directory-conditional-access-azuread-connected-apps)に関する記事を参照してください。
 
 **トラフィックの終了:** すべてのトラフィックがクラウドで終了します。
 
@@ -53,14 +53,14 @@ Azure AD アプリケーション プロキシには、次のセキュリティ�
 
 * Azure AD Identity Protection と、機械学習を活用したインテリジェンスとデータは、Microsoft の Digital Crimes Unit および Microsoft セキュリティ レスポンス センターから情報を取得しています。 これらの組織は ID が攻撃されたアカウントを被害の発生前に特定し、危険性の高いサインインが実行されないように、リアルタイムで保護します。 感染したデバイスからのアクセス、匿名ネットワークを経由したアクセス、一般的でない場所や異常な場所からのアクセスなど、多数の要因が考慮されます。
 * これらのレポートとイベントの多くは、お客様のセキュリティ情報およびイベント管理 (SIEM) システムとの統合を可能にする API を通じて既に使用可能です。
-* 詳細については、[Azure AD Identity Protection](https://azure.microsoft.com/en-us/documentation/articles/active-directory-identityprotection) に関するページを参照してください。
+* 詳細については、[Azure AD Identity Protection](https://azure.microsoft.com/documentation/articles/active-directory-identityprotection) に関するページを参照してください。
 
 **サービスとしてのリモート アクセス:** オンプレミス サーバーの保守やパッチの適用について心配する必要がありません。
 
 * Azure AD アプリケーション プロキシは Microsoft によるインターネット規模のサービスであるため、常に最新のセキュリティ パッチとアップグレードが適用された状態で利用できます。
 * パッチの適用されていないソフトウェアは、依然として多数の攻撃の的となっています。 Microsoft のサービス モデルでは、お客様がエッジ サーバーの管理という重荷を背負う必要はありません。
 
-Azure AD で提供されるリモート アクセス サービスは、[Azure セキュリティ センター](https://azure.microsoft.com/en-us/support/trust-center)で説明されているガイドラインと標準に従って運用されます。
+Azure AD で提供されるリモート アクセス サービスは、[Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center)で説明されているガイドラインと標準に従って運用されます。
 
 次の図は、Azure AD によってお客様のオンプレミスのアプリケーションへの安全なリモート アクセスが実現されるしくみを示しています。
 
@@ -74,7 +74,7 @@ Azure AD で提供されるリモート アクセス サービスは、[Azure �
 
 ## <a name="components-of-the-azure-ad-application-proxy-solution"></a>Azure AD アプリケーション プロキシ ソリューションのコンポーネント
 
-Azure AD アプリケーション プロキシは、以下の&2; つで構成されています。
+Azure AD アプリケーション プロキシは、以下の 2 つで構成されています。
 
 * クラウドベースのサービス: このサービスは、外部のクライアント/ユーザーの接続が作成される場所です。
 * Azure AD アプリケーション プロキシ コネクタ: オンプレミスのコンポーネント。コネクタは、Azure AD アプリケーション プロキシ サービスからの要求をリッスンし、内部アプリケーションへの接続を処理します。 サービスには、SSO 向けの Kerberos の制約付き委任 (KCD) などの項目への対応が含まれます。
@@ -114,7 +114,7 @@ Azure AD アプリケーション プロキシは、以下の&2; つで構成さ
 
 1. アプリケーション プロキシ サービスがアプリの構成設定を確認します。 Azure AD で事前認証を使用するようにアプリが構成されている場合は、ユーザーは認証のために Azure AD STS にリダイレクトされます。 パススルーを使用してアプリを発行する場合は、この手順は省略されます。
 
- a. アプリケーション プロキシが、Azure AD での認証時に、特定のアプリケーションの条件付きアクセス ポリシーの要件を確認します。 これは、ユーザーがアプリケーションに割り当てられていることを確認するための手順です。 多要素認証 (MFA) が必要な場合は、認証シーケンスでユーザーに第&2; 要素認証が要求されます。
+ a. アプリケーション プロキシが、Azure AD での認証時に、特定のアプリケーションの条件付きアクセス ポリシーの要件を確認します。 これは、ユーザーがアプリケーションに割り当てられていることを確認するための手順です。 多要素認証 (MFA) が必要な場合は、認証シーケンスでユーザーに第 2 要素認証が要求されます。
 
  b. すべてのチェックに合格すると、Azure AD STS はアプリケーション向けに署名されたトークンを発行し、ユーザーをアプリケーション プロキシ サービスにリダイレクトします。
 

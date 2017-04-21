@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/22/2017
+ms.date: 04/06/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 78617dc7e3a4b6eb4fc32d32b6850b8c0832d6d8
-ms.openlocfilehash: 9819c5f6a3aea53664d86e3a23b25946c0f2b731
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: a63514af636696d168931150cbda2fd30e0b32ce
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -44,17 +44,99 @@ Azure Active Directory のレポート アーキテクチャは、次のコン�
 * 1 週間で何人のユーザーがユーザー サインインを行ったか。
 * これらのサインインはどのような状態か。
 
+すべてのサインイン アクティビティ データへの最初のエントリ ポイントは、**[Azure Active Directory]** の [アクティビティ] セクションの **[サインイン]** です。 Directory.
+
+
+![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/61.png "サインイン アクティビティ")
+
+
+監査ログには、次のものを示す既定のリスト ビューがあります。
+
+- 関連するユーザー
+- ユーザーがサインインしたアプリケーション
+- サインインの状態
+- サインインの時間
+
+![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/41.png "サインイン アクティビティ")
+
+リスト ビューをカスタマイズするには、ツール バーの **[列]** をクリックします。
+
+![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/19.png "サインイン アクティビティ")
+
+これで、追加のフィールドの表示または既に表示されているフィールドの削除ができます。
+
+![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/42.png "サインイン アクティビティ")
+
+リスト ビュー内の項目をクリックすると、その項目に関する確認可能な詳細が表示されます。
+
+![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/43.png "サインイン アクティビティ")
+
+
+## <a name="filtering-sign-in-activities"></a>サインイン アクティビティのフィルター処理
+
+報告されるデータを有用なものだけに絞り込むために、次のフィールドを使用してサインイン データをフィルター処理できます。
+
+- 間隔
+- User
+- アプリケーション
+- クライアント
+- サインインの状態
+
+![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/44.png "サインイン アクティビティ")
+
+
+**[間隔]** フィルターでは、返されるデータの期間を定義できます。  
+次のいずれかの値になります。
+
+- 1 か月
+- 7 日
+- 24 時間
+- カスタム
+
+カスタムの期間を選択すると、開始時刻と終了時刻を構成できます。
+
+**[ユーザー]** フィルターでは、確認したいユーザーの名前またはそのユーザー プリンシパル名 (UPN) を指定できます。
+
+**[アプリケーション]** フィルターでは、確認したいアプリケーションの名前を指定できます。
+
+**[クライアント]** フィルターでは、確認したいデバイスの情報を指定できます。
+
+**[サインイン状態]** フィルターでは、次のフィルターのいずれかを選択できます。
+
+- すべて
+- 成功
+- 失敗
+
+
+## <a name="sign-in-activities-shortcuts"></a>サインイン アクティビティのショートカット
+
+[Azure Active Directory] の他にも、Azure Portal にはサインイン アクティビティ データに対するエントリ ポイントが 2 つ用意されています。
+
+- [概要]
+- エンタープライズ アプリケーション
+
+
+### <a name="users-and-groups-sign-ins-activities"></a>ユーザーとグループのサインイン アクティビティ
+
+ユーザー サインイン レポートによって提供される情報を使用すると、次のような疑問への答えを得ることができます。
+
+- ユーザーのサインインにどのようなパターンがあるか。
+- 1 週間で何人のユーザーがユーザー サインインを行ったか。
+- これらのサインインはどのような状態か。
+
+
+
 このデータへのエントリ ポイントは、**[ユーザーとグループ]** の **[概要]** セクションにあるユーザー サインイン グラフです。
 
- ![レポート](./media/active-directory-reporting-activity-sign-ins/05.png "レポート")
+![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/45.png "サインイン アクティビティ")
 
 ユーザー サインイン グラフは、特定期間内のすべてのユーザーのサインインについて、週単位の集計を示します。 期間の既定値は 30 日です。
 
-![レポート](./media/active-directory-reporting-activity-sign-ins/02.png "レポート")
+![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/46.png "サインイン アクティビティ")
 
-サインイン グラフ内の日付をクリックすると、サインイン アクティビティの詳細な一覧が表示されます。
+サインイン グラフ内の日付をクリックすると、その日のサインイン アクティビティの詳細な一覧が表示されます。
 
-![レポート](./media/active-directory-reporting-activity-sign-ins/03.png "レポート")
+![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/41.png "サインイン アクティビティ")
 
 サインイン アクティビティの一覧内の各行には、選択したサインインに関する次のような詳細情報が表示されます。
 
@@ -63,6 +145,12 @@ Azure Active Directory のレポート アーキテクチャは、次のコン�
 * サインインの対象となったのはどのアプリケーションか。
 * サインインの IP アドレスは何か。
 * サインインはどのような状態だったか。
+
+**[サインイン]** オプションを使用すると、すべてのユーザー サインインの完全な概要を表示できます。
+
+![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/51.png "サインイン アクティビティ")
+
+
 
 ## <a name="usage-of-managed-applications"></a>マネージ アプリケーションの使用状況
 
@@ -74,43 +162,27 @@ Azure Active Directory のレポート アーキテクチャは、次のコン�
 
 このデータへのエントリ ポイントは、**[エンタープライズ アプリケーション]** の **[概要]** セクションにある過去 30 日間のレポートに示される、組織内の上位 3 つのアプリケーションです。
 
- ![レポート](./media/active-directory-reporting-activity-sign-ins/06.png "レポート")
+![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/64.png "サインイン アクティビティ")
 
 アプリ使用状況グラフは、特定の期間の上位 3 つのアプリへのサインインを週ごとに集計します。 期間の既定値は 30 日です。
 
-![レポート](./media/active-directory-reporting-activity-sign-ins/78.png "レポート")
+![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/47.png "サインイン アクティビティ")
 
 必要に応じて、特定のアプリケーションにフォーカスを設定できます。
+
 
 ![レポート](./media/active-directory-reporting-activity-sign-ins/single_spp_usage_graph.png "レポート")
 
 アプリ使用状況グラフ内の日付をクリックすると、サインイン アクティビティの詳細な一覧が表示されます。
 
-![レポート](./media/active-directory-reporting-activity-sign-ins/top_app_sign_ins.png "レポート")
+
+![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/48.png "サインイン アクティビティ")
+
 
 **[サインイン]** オプションを使用すると、アプリケーションへのすべてのサインイン イベントの完全な概要を表示できます。
 
-![レポート](./media/active-directory-reporting-activity-sign-ins/85.png "レポート")
+![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/49.png "サインイン アクティビティ")
 
-列選択機能を使用すると、表示するデータ フィールドを選択できます。
-
-![レポート](./media/active-directory-reporting-activity-sign-ins/column_chooser.png "レポート")
-
-## <a name="filtering-sign-ins"></a>サインインのフィルター処理
-表示されるデータの量を制限するために、次のフィールドを使用してサインインをフィルター処理できます。
-
-* 日付と時刻 
-* ユーザーのユーザー プリンシパル名
-* アプリケーション名
-* クライアント名
-* サインインの状態
-
-![レポート](./media/active-directory-reporting-activity-sign-ins/293.png "レポート")
-
-サインイン アクティビティのエントリをフィルター処理するためのもう&1; つの方法は、特定のエントリを検索することです。
-検索機能を使用すると、表示するサインインを特定の**ユーザー**、**グループ**、または**アプリケーション**に限定できます。
-
-![レポート](./media/active-directory-reporting-activity-sign-ins/84.png "レポート")
 
 
 ## <a name="next-steps"></a>次のステップ

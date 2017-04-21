@@ -9,7 +9,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: ce7e052e-8bf6-4d7c-9204-4c6f4afeba4b
 ms.service: sql-database
-ms.custom: secure and protect
+ms.custom: security-protect
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 03/02/2017
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
-ms.openlocfilehash: 02ea369d76c1fe7266e9dc0cad2c75e4b5eada6a
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: e2474b2f69ee0301ba00bd2a49afa90f83935cb6
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -50,7 +50,7 @@ Always Encrypted を使用するようデータベースを構成したら、Vis
 ## <a name="create-a-blank-sql-database"></a>空の SQL データベースを作成する
 1. [Azure ポータル](https://portal.azure.com/)にサインインします。
 2. **[新規]** > **[データ + ストレージ]** > **[SQL Database]** の順にクリックします。
-3. 新規または既存のサーバーに **Clinic** という名前の**空の**データベースを作成します。 Azure Portal でデータベースを作成する詳しい手順については、「[初めての Azure SQL Database](sql-database-get-started.md)」を参照してください。
+3. 新規または既存のサーバーに **Clinic** という名前の**空の**データベースを作成します。 Azure Portal でデータベースを作成する詳しい手順については、「[初めての Azure SQL Database](sql-database-get-started-portal.md)」を参照してください。
    
     ![空のデータベースの作成](./media/sql-database-always-encrypted/create-database.png)
 

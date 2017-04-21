@@ -59,7 +59,7 @@ ms.lasthandoff: 03/10/2017
 2. [Azure ポータル](https://portal.azure.com/)にサインインします。
 3. **[サインイン]** ページが表示されたら、サブスクリプションの資格情報を入力します。
    
-   ![[サインイン]](./media/sql-database-get-started/login.png)
+   ![[サインイン]](./media/sql-database-get-started-portal/login.png)
 
 
 <a name="create-logical-server-bk"></a>
@@ -84,11 +84,11 @@ ms.lasthandoff: 03/10/2017
 
 1. SQL Server Management Studio を開き、SQL Server 認証とサーバー管理者アカウントを使用して、サーバー管理者としてサーバーに接続します。
 
-   ![[サーバーへの接続]](./media/sql-database-get-started/connect-to-server.png)
+   ![[サーバーへの接続]](./media/sql-database-get-started-portal/connect-to-server.png)
 
 2. **[接続]**をクリックします。
 
-   ![サーバーに接続されました](./media/sql-database-get-started/connected-to-server.png)
+   ![サーバーに接続されました](./media/sql-database-get-started-portal/connected-to-server.png)
 
 3. オブジェクト エクスプローラーで **[セキュリティ]**、**[ログイン]** の順に展開し、サーバーの既存のログインを表示します。新しいサーバーの唯一のログインは、サーバー管理者アカウントのログインです。
 

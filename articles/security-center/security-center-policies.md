@@ -17,7 +17,7 @@ ms.author: yurid
 translationtype: Human Translation
 ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
 ms.openlocfilehash: bd2291129a1a61f69e83cb76748d00b9ede6eb6f
-ms.lasthandoff: 03/04/2017
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -61,7 +61,7 @@ ms.lasthandoff: 03/04/2017
 8. **[ストレージ アカウントを選ぶ]** ブレードで **[OK]** をクリックします。
 
    > [!NOTE]
-   > 必要に応じて、さまざまなリージョンにある仮想マシンについて、データを&1; つの中央のストレージ アカウントに集約することができます。 詳細については、「 [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」を参照してください。
+   > 必要に応じて、さまざまなリージョンにある仮想マシンについて、データを 1 つの中央のストレージ アカウントに集約することができます。 詳細については、「 [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」を参照してください。
    >
    >
 9. **[セキュリティ ポリシー]** ブレードで **[オン]** をクリックして、このサブスクリプションで使用するセキュリティの推奨事項を有効にします。 **[防止ポリシー]** をクリックして、次のスクリーンショットにあるようなオプションを表示します。

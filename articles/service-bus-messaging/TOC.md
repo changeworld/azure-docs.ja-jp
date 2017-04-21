@@ -50,7 +50,7 @@
 ## 管理
 ### [Service Bus 管理ライブラリ](service-bus-management-libraries.md)
 ### [Azure Resource Manager テンプレートを使用する](service-bus-resource-manager-overview.md)
-### [PowerShell を使用したエンティティのプロビジョニング](service-bus-powershell-how-to-provision.md)
+### [PowerShell を使用したエンティティのプロビジョニング](service-bus-manage-with-ps.md)
 
 # リファレンス
 ## .NET

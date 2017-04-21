@@ -14,7 +14,7 @@
 ## [ルーティングの要件](expressroute-routing.md)
 ## [NAT の要件](expressroute-nat.md)
 ## [QoS の要件](expressroute-qos.md)
-## [クラシックから Resource Manager への回線の移行](expressroute-move.md)
+## [クラシックから Resource Manager への回線の移行について](expressroute-move.md)
 
 # 方法
 ## 回線の作成と変更
@@ -26,9 +26,12 @@
 ## ExpressRoute 回線への仮想ネットワークのリンク
 ### [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-linkvnet-arm.md)
-## [ExpressRoute の仮想ネットワーク ゲートウェイを構成する](expressroute-howto-add-gateway-resource-manager.md)
+## ExpressRoute の仮想ネットワーク ゲートウェイを構成する
+### [Azure ポータル](expressroute-howto-add-gateway-portal-resource-manager.md)
+### [PowerShell](expressroute-howto-add-gateway-resource-manager.md)
 ## [ExpressRoute 接続とサイト間接続の共存を構成する](expressroute-howto-coexist-resource-manager.md)
 ## [回線をクラシックから Resource Manager に移行する](expressroute-howto-move-arm.md)
+## [仮想ネットワークをクラシックから Resource Manager に移行する](expressroute-migration-classic-resource-manager.md)
 ## ExpressRoute のルーターの構成
 ### [ルーターの構成](expressroute-config-samples-routing.md)
 ### [NAT のルーター構成サンプル](expressroute-config-samples-nat.md)

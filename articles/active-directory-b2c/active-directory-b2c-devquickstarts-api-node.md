@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: hero-article
 ms.date: 01/07/2017
-ms.author: brandwe
+ms.author: xerners
 translationtype: Human Translation
 ms.sourcegitcommit: 3b5d9162e2d39e2b0f011383a478545644c57861
 ms.openlocfilehash: c9742c7f505417577857889ef307083afb9bab18

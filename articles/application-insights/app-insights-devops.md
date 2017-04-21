@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: f6c8c895f406187f2bc525a60ca7e53f12e99d77
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 6bc820657da4a72455d76f38dbdb06fe50b0c895
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -162,8 +162,8 @@ Application Insights では、アラートが発生したときに、作業項�
 ## <a name="but-what-about"></a>詳細について
 * [プライバシーと記憶域](app-insights-data-retention-privacy.md) - テレメトリは Azure のセキュリティで保護されたサーバー上に保持されます。
 * パフォーマンス - 影響は非常に低いです。 テレメトリはバッチ処理されます。
-* [サポート](app-insights-get-dev-support.md) - Azure サポート プログラムを活用できます。 活気のあるフォーラムでは、当社の開発者から回答を得ることができます。 最終手段として、個別のサポートも提供できます。
 * [価格](app-insights-pricing.md) - 無料で開始することができ、容量が少ない間は無料期間を継続できます。
+
 
 ## <a name="video"></a>ビデオ
 

@@ -12,12 +12,12 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/27/2017
+ms.date: 04/05/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 981155c38bdc8cb54639d2271be1f3bd3036125c
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 5348cedf369264defc5bb8417397aae046915ca7
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -49,9 +49,16 @@ Site Recovery をデプロイすると、オンプレミス VM や物理サー�
 
 ## <a name="migrate-on-premises-vms-and-physical-servers"></a>オンプレミスの VM と物理サーバーの移行
 
-オンプレミスの Hyper-V VM、VMware VM、物理サーバーを移行するには、通常のレプリケーションに使用されるものとほぼ同じ手順に従います。 Recovery Services コンテナーの設定、(移行内容に応じて) 必要な管理サーバーの構成、コンテナーへの管理サーバーの追加、レプリケーション設定の指定を実行します。 移行するマシンのレプリケーションを有効にし、簡単なテスト フェールオーバーを実行して、すべてが予期したとおりに動作することを確認します。
+オンプレミスの Hyper-V VM、VMware VM、物理サーバーを移行するには、通常のレプリケーションに使用されるものとほぼ同じ手順に従います。
 
-レプリケーション環境が動作していることを確認したら、シナリオで[サポートされている内容](site-recovery-failover.md)に応じて、計画フェールオーバーまたは計画外フェールオーバーを使用します。 移行の場合、フェールオーバーをコミットする必要はありません。 代わりに、移行する各マシンの **[移行の完了]** オプションを選択します。 **[移行の完了]** アクションにより、移行プロセスが完了し、マシンのレプリケーションが削除され、マシンの Site Recovery の課金が停止されます。
+1. Recovery Services コンテナーの設定
+2. 移行対象に応じて必要な管理サーバー (VMware、VMM、Hyper-V) を構成し、そのサーバーをコンテナーに追加して、レプリケーションの設定を指定します。
+3. 移行するマシンのレプリケーションを有効にし、
+4. 初回移行の後、簡単なテスト フェールオーバーを実行して、すべてが予期したとおりに動作することを確認します。
+5. レプリケーション環境が動作していることを確認したら、シナリオで[サポートされている内容](site-recovery-failover.md)に応じて、計画フェールオーバーまたは計画外フェールオーバーを使用します。 可能であれば計画フェールオーバーの使用をお勧めします。
+6. 移行の場合、フェールオーバーをコミットする必要はなく、削除する必要もありません。 代わりに、移行する各マシンの **[移行の完了]** オプションを選択します。
+     - **[レプリケートされたアイテム]** で VM を右クリックし、**[移行の完了]** をクリックします。 完了するには **[OK]** をクリックします。 進行状況は、VM のプロパティから **[Site Recovery ジョブ]** の [移行の完了] ジョブを監視することで追跡できます。
+     - **[移行の完了]** アクションにより、移行プロセスが完了し、マシンのレプリケーションが削除され、マシンの Site Recovery の課金が停止されます。
 
 ![completemigration](./media/site-recovery-hyper-v-site-to-azure/migrate.png)
 

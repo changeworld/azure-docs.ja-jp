@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: dbc8a612d05f8456e55eb26c58cd4461ced4a521
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 10b5f4844a38fe97852dee8634e8cf54f1a23a1e
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="how-to-migrate-a-hybrid-collection-from-a-remoteapp-vnet-to-an-azure-vnet"></a>RemoteApp VNET から Azure VNET にハイブリッド コレクションを移行する方法
 > [!IMPORTANT]
-> Azure RemoteApp の提供は終了しました。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
+> Azure RemoteApp の提供は、2017 年 8 月 31 日で終了します。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
 > 
 > 
 
@@ -53,10 +54,5 @@ ms.openlocfilehash: dbc8a612d05f8456e55eb26c58cd4461ced4a521
 これで完了です。
 
 ご質問がある場合、または特別なサポートが必要な場合は、 [remoteappforum@microsoft.com](mailto:remoteappforum@microsoft.com?subject=Azure%20RemoteApp%20VNET%20migration%20help)という名前のハイブリッド RemoteApp コレクションを既に作成してあるとしましょう。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

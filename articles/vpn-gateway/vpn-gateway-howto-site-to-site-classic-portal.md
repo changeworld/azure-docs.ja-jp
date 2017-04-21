@@ -13,16 +13,23 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/15/2017
+ms.date: 04/11/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 619ea430b13c16e8e4338413613d5798f36458ba
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 81eca4b41b6a0726e5fcf851074bfb7dfca16fb8
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Azure Portal を使用してサイト間接続を作成する (クラシック)
+
+サイト間 (S2S) VPN ゲートウェイ接続とは、IPsec/IKE (IKEv1 または IKEv2) VPN トンネルを介した接続です。 この種類の接続では、オンプレミスの VPN デバイスが必要です。そのデバイスは、パブリック IP アドレスを割り当てられていて、NAT の内側に配置されていない必要があります。 サイト間接続は、クロスプレミスおよびハイブリッド構成に使用できます。
+
+![クロスプレミスのサイト間 VPN Gateway 接続の図](./media/vpn-gateway-howto-site-to-site-classic-portal/site-to-site-diagram.png)
+
+この記事では、クラシック デプロイメント モデルと Azure Portal を使用して、仮想ネットワークと、オンプレミス ネットワークに対するサイト間 VPN ゲートウェイ接続を作成する手順について説明します。 Resource Manager デプロイメント モデルでは、次のリストから別の方法を選択して、この構成を作成することもできます。
+
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [Resource Manager - PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
@@ -31,24 +38,13 @@ ms.lasthandoff: 03/25/2017
 >
 >
 
-
-サイト間 (S2S) VPN ゲートウェイ接続とは、IPsec/IKE (IKEv1 または IKEv2) VPN トンネルを介した接続です。 この種類の接続では、オンプレミスの VPN デバイスが必要です。そのデバイスは、パブリック IP アドレスを割り当てられていて、NAT の内側に配置されていない必要があります。 サイト間接続は、クロスプレミスおよびハイブリッド構成に使用できます。
-
-この記事では、クラシック デプロイメント モデルと Azure Portal を使用して、仮想ネットワークと、オンプレミス ネットワークに対するサイト間 VPN ゲートウェイ接続を作成する手順について説明します。 
-
-![クロスプレミスのサイト間 VPN Gateway 接続の図](./media/vpn-gateway-howto-site-to-site-classic-portal/site-to-site-diagram.png)
-
-### <a name="deployment-models-and-methods-for-site-to-site-connections"></a>サイト間接続のデプロイメント モデルとデプロイ方法
-[!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
-
-以下の表は、サイト間の構成に関して現在利用できるデプロイメント モデルとデプロイ方法を示しています。 構成手順を説明した記事が利用できるようになったら、表から直接リンクできるようにします。
-
-[!INCLUDE [site-to-site table](../../includes/vpn-gateway-table-site-to-site-include.md)]
-
 #### <a name="additional-configurations"></a>追加の構成
 VNet どうしは接続しても、オンプレミスへの接続は作成しない場合は、 [VNet 間の接続の構成](virtual-networks-configure-vnet-to-vnet-connection.md)に関するページを参照してください。 既存の接続が存在する VNet にサイト間接続を追加する場合は、[VPN Gateway 接続が既に存在する VNet へのサイト間接続の追加](vpn-gateway-multi-site.md)に関するページを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
+
+[!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
+
 構成を開始する前に、以下が揃っていることを確認します。
 
 * 互換性のある VPN デバイスおよびデバイスを構成できる人員。 「 [VPN デバイスについて](vpn-gateway-about-vpn-devices.md)」を参照してください。 VPN デバイスの構成に詳しくない場合や、オンプレミス ネットワーク構成の IP アドレス範囲を把握していない場合は、詳細な情報を把握している担当者と協力して作業を行ってください。
@@ -57,8 +53,7 @@ VNet どうしは接続しても、オンプレミスへの接続は作成しな
 * 現時点では、共有キーの指定と VPN ゲートウェイ接続の作成に PowerShell が必要です。 Azure サービス管理 (SM) PowerShell コマンドレットの最新版をインストールしてください。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」を参照してください。 この構成に PowerShell を使用する場合は、必ず管理者として実行するようにしてください。 
 
 > [!NOTE]
-> サイト間接続を構成するときには、VPN デバイスに公開 IPv4 IP アドレスが必要です。                                                                                                                                                                               
->
+> サイト間接続を構成するときには、VPN デバイスに公開 IPv4 IP アドレスが必要です。
 >
 
 ### <a name="values"></a>この演習のサンプル構成値
@@ -125,7 +120,7 @@ S2S 構成では DNS の設定は必須の手順ではありませんが、名�
 1. ポータルで仮想ネットワークを見つけます。
 2. その仮想ネットワークのブレードで、**[設定]** セクションの **[DNS サーバー]** をクリックします。
 3. DNS サーバーを追加します。
-4. ページの上部にある **[保存]** をクリックして設定を保存します。
+4. 設定を保存するには、ページの上部にある **[保存]** をクリックします。
  
 ## <a name="localsite"></a>4.ローカル サイトの構成
 
@@ -170,32 +165,48 @@ VPN ゲートウェイのゲートウェイ サブネットを作成する必要
 
 ## <a name="vpndevice"></a>7.VPN デバイスの構成
 
-構成に関する具体的な情報についてはお使いのデバイスの製造元の情報を参照し、デバイスの構成を行ってください。 Azure で正しく動作する VPN デバイスの詳細については、「 [VPN デバイス](vpn-gateway-about-vpn-devices.md) 」を参照してください。 さらに、使用する VPN デバイスに関して、[デバイスの互換性に関する既知の問題](vpn-gateway-about-vpn-devices.md#known)がないかどうかを確認してください。 
+オンプレミス ネットワークとのサイト間接続には VPN デバイスが必要です。 すべての VPN デバイスの構成手順を紹介することはできませんが、以下のリンクの情報が参考になるかと思います。
 
-VPN デバイスを構成するとき、作成した VPN ゲートウェイの IP アドレスが必要になります。 この IP アドレスを見つけるには、仮想ネットワークの **[概要]** ブレードに移動します。
+- 適合する VPN デバイスについては、[VPN デバイス](vpn-gateway-about-vpn-devices.md)に関するページを参照してください。 
+- デバイスの構成設定へのリンクについては、「[検証済みの VPN デバイス](vpn-gateway-about-vpn-devices.md#devicetable)」を参照してください。 これらのリンクは、入手できる範囲で記載しています。 最新の構成情報については必ず、デバイスの製造元にご確認ください。
+- デバイス構成サンプルの編集については、[サンプルの編集](vpn-gateway-about-vpn-devices.md#editing)に関するセクションを参照してください。
+- IPsec/IKE のパラメーターについては、[パラメーター](vpn-gateway-about-vpn-devices.md#ipsec)に関するセクションを参照してください。
+- VPN デバイスを構成する前に、使用する VPN デバイスに関して、[デバイスの互換性に関する既知の問題](vpn-gateway-about-vpn-devices.md#known)がないかどうかを確認してください。
+
+VPN デバイスを構成する際に、次の情報が必要になります。
+
+- 仮想ネットワーク ゲートウェイのパブリック IP アドレス。 この IP アドレスを見つけるには、仮想ネットワークの **[概要]** ブレードに移動します。
+- 共有キー。 サイト間 VPN 接続を作成するときにも、これと同じ共有キーを指定します。 ここで紹介している例では、ごく基本的な共有キーを使用しています。 実際には、もっと複雑なキーを作成して使用してください。
 
 ## <a name="CreateConnection"></a>8.接続の作成
 この手順では、共有キーを設定して接続を作成します。 設定するキーは、VPN デバイスの構成で使用したものと同じである必要があります。
 
 > [!NOTE]
-> 現時点では、この手順は Azure Portal で実行できません。 サービス管理 (SM) バージョンの Azure PowerShell コマンドレットを使用する必要があります。                                                                                                                                                                             
->
+> 現時点では、この手順は Azure Portal で実行できません。 サービス管理 (SM) バージョンの Azure PowerShell コマンドレットを使用する必要があります。                                        >
 >
 
 ### <a name="step-1-connect-to-your-azure-account"></a>手順 1. Azure アカウントに接続する
 
 1. 管理者特権で PowerShell コンソールを開き、アカウントに接続します。 接続については、次の例を参考にしてください。
 
-        Login-AzureRmAccount
+  ```powershell
+  Login-AzureRmAccount
+  ```
 2. アカウントのサブスクリプションを確認します。
 
-        Get-AzureRmSubscription
+  ```powershell
+  Get-AzureRmSubscription
+  ```
 3. 複数のサブスクリプションがある場合は、使用するサブスクリプションを選択します。
 
-        Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+  ```powershell
+  Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+  ```
 4. SM バージョンの PowerShell コマンドレットを追加します。
 
-        Add-AzureAccount
+  ```powershell
+  Add-AzureAccount
+  ```
 
 ### <a name="step-2-set-the-shared-key-and-create-the-connection"></a>手順 2. 共有キーを設定して接続を作成する
 
@@ -203,13 +214,17 @@ PowerShell とクラシック デプロイメント モデルを使用する場�
 
 1. コンピューターにディレクトリを作成し、ネットワーク構成ファイルをそのディレクトリにエクスポートします。 この例では、ネットワーク構成ファイルは C:\AzureNet にエクスポートされます。
 
-         Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
+  ```powershell
+  Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
+  ```
 2. XML エディターでネットワーク構成ファイルを開いて、"LocalNetworkSite name" と "VirtualNetworkSite name" の値を確認します。 これらの値を例に反映させます。 スペースを含む名前を指定するときは、単一引用符を使って値を囲みます。
 
 3. 共有キーを設定して接続を作成します。 "-SharedKey" は、生成して指定する値です。 この例では "abc123" を使いましたが、さらに複雑な値を生成して使うこともできます (推奨)。 重要なのは、ここで指定する値は、VPN デバイスを構成する際に指定した値と同じにする必要があることです。
 
-        Set-AzureVNetGatewayKey -VNetName 'Group TestRG1 TestVNet1' `
-        -LocalNetworkSiteName 'D1BFC9CB_Site2' -SharedKey abc123
+  ```powershell
+  Set-AzureVNetGatewayKey -VNetName 'Group TestRG1 TestVNet1' `
+  -LocalNetworkSiteName 'D1BFC9CB_Site2' -SharedKey abc123
+  ```
 接続が作成されたら、結果として **Status: Successful** が表示されます。
 
 ## <a name="verify"></a>9.接続を確認する

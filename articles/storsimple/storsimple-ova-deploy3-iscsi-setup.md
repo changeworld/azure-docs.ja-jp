@@ -15,8 +15,9 @@ ms.workload: TBD
 ms.date: 07/18/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 715720d22b58ddd3d0e5042de151219e49549c5e
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: cc5136c209483b6b72e8d456084338688792c0d0
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -52,7 +53,7 @@ StorSimple 仮想デバイスをセットアップして構成するには、次
     前の手順に記載されている接続 URL を使用します。 Web サイトのセキュリティ証明書に問題があることを知らせるエラーが表示されます。 **[続行]**をクリックして、この Web ページに進みます。
    
     ![セキュリティ証明書エラー](./media/storsimple-ova-deploy3-iscsi-setup/image3.png)
-2. 仮想デバイスの Web UI に **StorSimpleAdmin**としてサインインします。 「[StorSimple Virtual Array をデプロイする - Hyper-V で仮想デバイスをプロビジョニングする](storsimple-ova-deploy2-provision-hyperv.md)」または「[StorSimple Virtual Array をデプロイする - VMware で仮想デバイスをプロビジョニングする](storsimple-ova-deploy2-provision-vmware.md)」の「手順 3: 仮想デバイスを起動する」で変更したデバイス管理者のパスワードを入力します。
+2. 仮想デバイスの Web UI に **StorSimpleAdmin**としてサインインします。 「[StorSimple Virtual Array をデプロイする - Hyper-V で仮想デバイスをプロビジョニングする](storsimple-ova-deploy2-provision-hyperv.md)」または「[StorSimple Virtual Array をデプロイする - VMware で仮想デバイスをプロビジョニングする](storsimple-ova-deploy2-provision-vmware.md)」の「手順 3: 仮想デバイスを起動する」で変更したデバイス管理者のパスワードを入力します。 既定のユーザーは *StorSimpleAdmin* で、既定のパスワードは *Password1* です。 
    
     ![サインイン ページ](./media/storsimple-ova-deploy3-iscsi-setup/image4.png)
 3. **[ホーム]** ページが表示されます。 このページは、仮想デバイスを StorSimple Manager サービスに構成、登録するのに必要なさまざまな設定を掲載しています。 **ネットワーク設定**、**Web プロキシの設定**、**時刻の設定**はオプションであることに注意してください。 必須の設定は、**デバイスの設定**と**クラウドの設定**のみです。
@@ -242,10 +243,5 @@ Windows Server 2012 を実行する Windows ホストの iSCSI 修飾名 (IQN) �
 [1]: https://technet.microsoft.com/library/ee338480(WS.10).aspx
 
 
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

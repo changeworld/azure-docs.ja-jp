@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2017
+ms.date: 04/06/2017
 ms.author: efemmano
 translationtype: Human Translation
-ms.sourcegitcommit: 527b4f5c43d4672c54936189e626a60ed954730d
-ms.openlocfilehash: 380d7b76fdc0369510f95e8eaaad6060eb1847fe
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 649423b1e568919b1064d054027dbf863a9b6db0
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -54,7 +54,7 @@ This preview release of Azure Stack has a set of region management capabilities 
 ## <a name="next-steps"></a>Next steps
 [Monitor health and alerts in Azure Stack](azure-stack-monitor-health.md)
 
-[Update management in Azure Stack](azure-stack-updates.md)
+[Manage updates in Azure Stack](azure-stack-updates.md)
 
 
 

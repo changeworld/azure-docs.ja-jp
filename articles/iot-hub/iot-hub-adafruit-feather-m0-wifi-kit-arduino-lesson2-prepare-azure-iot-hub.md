@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: "クラウドへの Arduino の接続, Azure IoT ハブ, モノのインターネット クラウド, Azure IoT ハブでのデバイスの作成, Arduino クラウド"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started
 ms.assetid: 5edc690b-7a1d-4ebc-b011-ff27bfffe6e8
 ms.service: iot-hub
 ms.devlang: arduino

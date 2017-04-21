@@ -9,8 +9,6 @@ Azure では、'米国西部'、'北ヨーロッパ'、'東南アジア' のよ�
 
 * **米国政府バージニア**および**米国政府アイオワ**
   * 物理的および論理的にネットワークが分離された Azure インスタンス。米国の政府機関やパートナー (選別された米国の担当者が運営する) 向け。 [FedRAMP](https://www.microsoft.com/en-us/TrustCenter/Compliance/FedRAMP)、[DISA](https://www.microsoft.com/en-us/TrustCenter/Compliance/DISA) などのその他のコンプライアンス証明書が含まれます。 詳細については [Azure Government](https://azure.microsoft.com/features/gov/) に関するページをご覧ください。
-* **インド中部**、**インド南部**、および**インド西部**
-  * この 3 つのリージョンは、現在のところ、インドの現地で事業登録されているボリューム ライセンスのお客様とパートナーの皆様にご利用いただけます。 2016 年現在、ユーザーが直接オンライン サブスクリプションを購入した場合にアクセスできます。
 * **中国東部**および**中国北部**
   * これらのリージョンは、Microsoft と 21Vianet 間の特異なパートナーシップを通じてご利用いただけます。この契約により、Microsoft はデータ センターを直接管理しません。 詳細については、[Microsoft Azure の中国語ページ](http://www.windowsazure.cn/)をご覧ください。
 * **ドイツ中部**および**ドイツ北東部**

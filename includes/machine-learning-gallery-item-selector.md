@@ -1,4 +1,4 @@
-**[Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com)**は、Cortana Intelligence Suite を使用して構築されたソリューションの検出と共有を行うためのコミュニティ駆動型サイトです。
+**[Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com)**は、Cortana Intelligence Suite を使用して構築されたソリューションを入手および共有するためのコミュニティ主導のサイトです。
 このギャラリーには、独自の分析ソリューションの開発に使用できるさまざまなリソースが含まれています。
 
 <!-- On the new DOCS platform, this is a dropdown, not tabs, which doesn't work well in this context. So I'm just removing it for now.
@@ -16,8 +16,3 @@
 > 
 > 
 -->
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -1,5 +1,5 @@
 ---
-title: "Windows サービスと worker ロールのための Azure Application Insights | Microsoft Docs"
+title: "Windows サーバーと worker ロールのための Azure Application Insights | Microsoft Docs"
 description: "Application Insights SDK を ASP.NET アプリケーションに手動で追加して、使用状況、可用性、およびパフォーマンスを分析します。"
 services: application-insights
 documentationcenter: .net
@@ -14,14 +14,14 @@ ms.topic: get-started-article
 ms.date: 11/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: df23a55197d15946f16868d14c6db08dcba4df19
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 97d750035e79d4780738e660d05e1a41085d51f1
+ms.lasthandoff: 03/31/2017
 
 
 ---
-# <a name="manually-configure-application-insights-for-aspnet-4-applications"></a>Application Insights を ASP.NET 4 アプリケーション用に手動で構成する
-[Application Insights](app-insights-overview.md) は、Web 開発者がライブ アプリケーションのパフォーマンスと使用状況を監視するための拡張可能なツールです。 このツールは、Windows サービス、worker ロール、その他の ASP.NET アプリケーションを監視するように手動で構成できます。 Web アプリの場合、手動による構成は、Visual Studio で提供される [自動セットアップ](app-insights-asp-net.md) に代わる方法となります。
+# <a name="manually-configure-application-insights-for-aspnet-applications"></a>Application Insights を ASP.NET アプリケーション用に手動で構成する
+[Application Insights](app-insights-overview.md) は、Web 開発者がライブ アプリケーションのパフォーマンスと使用状況を監視するための拡張可能なツールです。 これは、Windows サーバー、worker ロール、その他の ASP.NET アプリケーションを監視するように手動で構成できます。 Web アプリの場合、手動による構成は、Visual Studio で提供される [自動セットアップ](app-insights-asp-net.md) に代わる方法となります。
 
 ![Example performance monitoring charts](./media/app-insights-windows-services/10-perf.png)
 
@@ -47,13 +47,13 @@ Azure の [リソース](app-insights-resources-roles-access-control.md) は、�
 
 新しいリソースを作成するために実行した手順は、任意のアプリケーションの監視を開始するための優れた方法です。 これで、データをリソースに送信できます。
 
-## <a name="sdk"></a>2.アプリケーションに SDK をインストールする
-Application Insights SDK のインストールと構成は、作業中のプラットフォームによって異なります。 ASP.NET アプリの場合は簡単です。
+## <a name="sdk"></a>2.アプリケーションに Application Insights パッケージをインストールする
+Application Insights パッケージのインストールと構成は、作業中のプラットフォームによって異なります。 ASP.NET アプリの場合は簡単です。
 
 1. Visual Studio で、Web アプリ プロジェクトの NuGet パッケージを編集します。
    
     ![プロジェクトを右クリックし、[Nuget パッケージの管理] を選択する](./media/app-insights-windows-services/03-nuget.png)
-2. Web Apps 向け Application Insights SDK をインストールします。
+2. Windows サーバー アプリ用の Application Insights パッケージをインストールします。
    
     ![Search for "Application Insights"](./media/app-insights-windows-services/04-ai-nuget.png)
    
@@ -61,10 +61,10 @@ Application Insights SDK のインストールと構成は、作業中のプラ�
    
     はい。 独自のテレメトリを送信するためだけに API を使用する場合は、コア API (Microsoft.ApplicationInsights) を選択してください。 Windows Server パッケージには、コア API に加え、他にも多くのパッケージ (パフォーマンス カウンターや依存関係の監視など) が自動的に含まれます。 
 
-#### <a name="to-upgrade-to-future-sdk-versions"></a>新しいバージョンの SDK にアップグレードするには
+#### <a name="to-upgrade-to-future-package-versions"></a>新しいバージョンのパッケージにアップグレードするには
 SDK の新しいバージョンは不定期でリリースされます。
 
-[SDK の新しいリリース](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases/)にアップグレードするには、NuGet パッケージ マネージャーをもう一度開き、インストールされているパッケージに対してフィルターを実行します。 Select **Microsoft.ApplicationInsights.Web** and choose **Upgrade**.
+[パッケージの新しいリリース](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases/)にアップグレードするには、NuGet パッケージ マネージャーをもう一度開き、インストールされているパッケージに対してフィルターを実行します。 **[Microsoft.ApplicationInsights.Web]** を選択し、**[アップグレード]** を選択します。
 
 ApplicationInsights.config をカスタマイズしている場合は、アップグレードする前にコピーを保存しておき、後から新しいバージョンに変更をマージします。
 
@@ -95,7 +95,7 @@ Visual Studio で、送信されたイベント数が表示されます。
 ## <a name="monitor"></a> 利用統計情報を表示する
 [Azure ポータル](https://portal.azure.com/) に戻り、Application Insights のリソースを参照します。
 
-概要グラフでデータを探します。 最初、1 つまたは&2; つのポイントだけが表示されます。 次に例を示します。
+概要グラフでデータを探します。 最初、1 つまたは 2 つのポイントだけが表示されます。 次に例を示します。
 
 ![クリックしてより多くのデータを表示する](./media/app-insights-windows-services/12-first-perf.png)
 

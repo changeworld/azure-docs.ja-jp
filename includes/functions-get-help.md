@@ -3,8 +3,3 @@ Azure フォーラムに質問を投稿してください。 [MSDN にアクセ�
 
 質問に `azure-functions`というキーワードのタグを付けてください。 [Stack Overflow にアクセス](http://stackoverflow.com/questions/tagged/azure-functions)
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

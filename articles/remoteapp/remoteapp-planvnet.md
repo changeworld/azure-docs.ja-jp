@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 71537845edcca85a7d0722dd32264da9f6b579e9
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 1eb8115b13fb18074b4c4726b69e3d9faf387c32
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="how-to-plan-your-virtual-network-for-azure-remoteapp"></a>Azure RemoteApp の仮想ネットワークを計画する方法
 > [!IMPORTANT]
-> Azure RemoteApp の提供は終了しました。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
+> Azure RemoteApp の提供は、2017 年 8 月 31 日で終了します。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
 > 
 > 
 
@@ -56,10 +57,5 @@ Azure RemoteApp をデプロイする仮想ネットワーク内の送受信ト�
 
 ## <a name="virtual-network-with-forced-tunneling"></a>強制トンネリングを使用した仮想ネットワーク
 [強制トンネリング](../vpn-gateway/vpn-gateway-about-forced-tunneling.md) が、すべての新しい Azure RemoteApp コレクションでサポートされるようになりました。 現在、既存のコレクションを移行して、強制トンネリングをサポートすることはできません。  コレクションで強制トンネリングを有効にするには、Azure RemoteApp にリンクしている VNET を使用する既存のコレクションをすべて削除し、新しいコレクションを作成する必要があります。 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

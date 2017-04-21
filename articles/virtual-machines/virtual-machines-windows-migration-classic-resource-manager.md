@@ -1,24 +1,11 @@
 ---
-title: "クラシックのリソースを Azure Resource Manager に移行する - 概要 | Microsoft Docs"
-description: "この記事では、プラットフォームでサポートされているクラシックから Azure Resource Manager へのリソースの移行について説明します"
-services: virtual-machines-windows
-documentationcenter: 
-author: singhkays
-manager: timlt
-editor: 
-tags: azure-resource-manager
-ms.assetid: 78492a2c-2694-4023-a7b8-c97d3708dcb7
-ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
-ms.date: 01/23/2017
-ms.author: kasing
+redirect_url: /azure/virtual-machines/windows/migration-classic-resource-manager-overview
+redirect_document_id: true
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 23f4813b3ba587784f5b31cfa633cdf27373843d
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
+ms.openlocfilehash: 3817238a277f4dcb0694f228155a5d95ca4d91f3
+ms.lasthandoff: 03/31/2017
+
 
 
 ---
@@ -265,4 +252,7 @@ Resource Manager デプロイメント モデルへのツールの更新は、�
 * [CLI を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](virtual-machines-linux-cli-migration-classic-resource-manager.md)
 * [コミュニティ PowerShell スクリプトを使用して Azure Resource Manager にクラシック仮想マシンを複製する](virtual-machines-windows-migration-scripts.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [移行の一般的なエラーを確認する](virtual-machines-migration-errors.md)
+
+---
+
 

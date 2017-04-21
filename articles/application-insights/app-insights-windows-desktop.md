@@ -10,12 +10,13 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: get-started-article
 ms.date: 08/26/2016
 ms.author: awills
 translationtype: Human Translation
 ms.sourcegitcommit: d84ab993b1d9489ca9d2edaa1cb9672d9bced899
 ms.openlocfilehash: 6f87eaf58c9c8dcd301a6ac245119621244a1c27
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -47,7 +48,7 @@ ms.openlocfilehash: 6f87eaf58c9c8dcd301a6ac245119621244a1c27
 5. [API を使用して](app-insights-api-custom-events-metrics.md) テレメトリを送信します。
 6. アプリケーションを実行し、Azure ポータルで作成したリソースのテレメトリを表示します。
 
-## <a name="a-nametelemetryaexample-code"></a><a name="telemetry"></a>コード例
+## <a name="telemetry"></a>コード例
 ```C#
 
     public partial class Form1 : Form
@@ -89,10 +90,5 @@ ms.openlocfilehash: 6f87eaf58c9c8dcd301a6ac245119621244a1c27
 * [診断検索](app-insights-diagnostic-search.md)
 * [メトリックを探索する](app-insights-metrics-explorer.md)
 * [Analytics クエリを作成する](app-insights-analytics.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

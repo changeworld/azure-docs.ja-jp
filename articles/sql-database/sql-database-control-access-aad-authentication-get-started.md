@@ -64,7 +64,7 @@ ms.lasthandoff: 03/10/2017
 2. [Azure ポータル](https://portal.azure.com/)にサインインします。
 3. **[サインイン]** ページが表示されたら、サブスクリプションの資格情報を入力します。
    
-   ![[サインイン]](./media/sql-database-get-started/login.png)
+   ![[サインイン]](./media/sql-database-get-started-portal/login.png)
 
 
 <a name="create-logical-server-bk"></a>
@@ -99,7 +99,7 @@ ms.lasthandoff: 03/10/2017
 
 2. インストール後に、Windows 検索ボックスに「**Microsoft SQL Server Management Studio**」と入力し、**Enter** キーを押して SSMS を開きます。
 
-   ![SQL Server Management Studio](./media/sql-database-get-started/ssms.png)
+   ![SQL Server Management Studio](./media/sql-database-connect-query-ssms/ssms.png)
 
 3. **[サーバーへの接続]** ダイアログ ボックスで、Active Directory の認証方法のいずれかを選択し、適切な認証情報を入力します。 方法の選択については、[Azure Active Directory 認証](sql-database-aad-authentication.md)に関する記事と [Azure AD MFA のための SSMS のサポート](sql-database-ssms-mfa-authentication.md)に関する記事を参照してください。
 

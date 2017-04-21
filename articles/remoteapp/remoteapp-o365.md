@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 8c04dc5a91b7859b5d75f919da55846599038f61
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 5a8af257eb964be4677d5da6a57aadaad1eb2cc3
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="using-office-with-azure-remoteapp"></a>Azure RemoteApp で Office を使用する
 > [!IMPORTANT]
-> Azure RemoteApp の提供は終了しました。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
+> Azure RemoteApp の提供は、2017 年 8 月 31 日で終了します。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
 > 
 > 
 
@@ -53,10 +54,5 @@ RemoteApp の 30 日間の無償試用期間中は、Office 2013 Professional Pl
 * Office 2013 Professional Plus (評価版) のテンプレート イメージは、評価のみを目的としています。 このテンプレート イメージで実行されているコレクションは、実稼働環境に移行することはできません。 これらが "無効" の状態になります。
 
 試用期間の終了後に実稼働モードに切り替えないと、RemoteApp コレクションは無効になります。 データは保存されます - 設定とユーザーのデータはあと 90 日間保存されますので、サービスをアクティブ化してデータを失うことなく、実稼働モードに切り替えることができます。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

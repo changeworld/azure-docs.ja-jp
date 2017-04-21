@@ -60,7 +60,8 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
         public void run()  {
             try {
-                double avgWindSpeed = 10; // m/s
+                double minTemperature = 20;
+                double minHumidity = 60;
                 Random rand = new Random();
 
                 while (true) {
@@ -71,10 +72,12 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
                         msg = new Message(msgStr);
                         msg.setProperty("level", "critical");
                     } else {
-                        double currentWindSpeed = avgWindSpeed + rand.nextDouble() * 4 - 2;
+                        double currentTemperature = minTemperature + rand.nextDouble() * 15;
+                        double currentHumidity = minHumidity + rand.nextDouble() * 20; 
                         TelemetryDataPoint telemetryDataPoint = new TelemetryDataPoint();
                         telemetryDataPoint.deviceId = deviceId;
-                        telemetryDataPoint.windSpeed = currentWindSpeed;
+                        telemetryDataPoint.temperature = currentTemperature;
+                        telemetryDataPoint.humidity = currentHumidity;
 
                         msgStr = telemetryDataPoint.serialize();
                         msg = new Message(msgStr);

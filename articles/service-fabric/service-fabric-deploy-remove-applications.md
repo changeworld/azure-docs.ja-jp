@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 02/23/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: 4e3840f68c93998a52fa2956c2ea9d0976e0f627
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: 3dd7f6db58bbb8704b7811b2fd19619e5e1ec0d4
+ms.lasthandoff: 04/11/2017
 
 
 ---
@@ -25,6 +25,7 @@ ms.lasthandoff: 03/28/2017
 > [!div class="op_single_selector"]
 > * [PowerShell](service-fabric-deploy-remove-applications.md)
 > * [Visual Studio](service-fabric-publish-app-remote-cluster.md)
+> * [FabricClient API](service-fabric-deploy-remove-applications-fabricclient.md)
 > 
 > 
 

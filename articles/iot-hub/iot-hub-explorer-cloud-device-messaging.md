@@ -16,16 +16,15 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 8c25b8f558aae638a95d6e7186e19e77d02edbb2
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: df1cf03bc452b76569bdca030b60719d6d2f29f3
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="use-iothub-explorer-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>iothub-explorer を使用してデバイスと IoT Hub 間でメッセージを送受信する
 
-> [!NOTE]
-> このチュートリアルを開始する前に、[ESP8266 と Azure IoT Hub の接続](/iot-hub-arduino-huzzah-esp8266-get-started.md)に関するページで説明する操作を必ず完了してください。 [ESP8266 と Azure IoT Hub の接続](/iot-hub-arduino-huzzah-esp8266-get-started.md)に関するページでは、IoT デバイスと IoT Hub を設定し、デバイスで実行するサンプル アプリケーションをデプロイします。 そのアプリケーションは、収集されたセンサー データを IoT Hub に送信します。
+[!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
 [iothub-explorer](https://github.com/azure/iothub-explorer) には、IoT Hub 管理を容易にするためのコマンドがいくつか用意されています。 このチュートリアルでは、iothub-explorer を使用して、デバイスと IoT Hub 間でメッセージを送受信する方法を中心に説明します。
 
@@ -40,7 +39,7 @@ iothub-explorer を使用して、D2C メッセージを監視し、C2D メッ�
 
 ## <a name="what-you-need"></a>必要なもの
 
-- 次の要件が含まれる [ESP8266 を Azure IoT Hub に接続](/iot-hub-arduino-huzzah-esp8266-get-started.md)するためのチュートリアルを完了します。
+- 次の要件を対象とする [ESP8266 を Azure IoT Hub に接続](iot-hub-arduino-huzzah-esp8266-get-started.md)するためのチュートリアルを完了します。
   - 有効な Azure サブスクリプション
   - サブスクリプションの Azure IoT Hub。
   - Azure IoT Hub にメッセージを送信するクライアント アプリケーション。
@@ -86,6 +85,4 @@ IoT Hub からデバイスにメッセージを送信するには、次の手順
 
 使用している IoT デバイスと Azure IoT Hub の間で D2C メッセージを監視し、C2D メッセージを送信する方法については学習しました。
 
-引き続き IoT Hub の使用方法を確認すると共に、他の IoT のシナリオについて調べるには、次のページを参照してください。
-
-- [Azure データ ストレージへの IoT Hub メッセージの保存](iot-hub-store-data-in-azure-table-storage.md)
+[!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

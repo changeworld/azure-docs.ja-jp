@@ -12,16 +12,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2017
+ms.date: 04/06/2017
 ms.author: chasat
 translationtype: Human Translation
-ms.sourcegitcommit: ad5b6ced5ab11c507baff56649ef744aafb45ff1
-ms.openlocfilehash: 61cca7900b52ea4493f0a7f7a30d268d8da0ec7d
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 66729ce678190a437f76a746956b5bee1ed5e8b6
+ms.lasthandoff: 04/06/2017
 
 
 ---
 # <a name="monitor-health-and-alerts-in-azure-stack"></a>Monitor health and alerts in Azure Stack
+
 Azure Stack includes infrastructure monitoring capabilities that enable a cloud administrator to view health and alerts for an Azure Stack region.
 
 This preview release of Azure Stack has a set of region management capabilities available in the **Region Management** tile. The Region Management tile, pinned by default in the administrator portal for the Default Provider Subscription, lists all the deployed regions of Azure Stack. It also shows the count of active critical and warning alerts for each region. This tile is your entry point into the health and alert functionality of Azure Stack.
@@ -76,7 +77,8 @@ After the infrastructure role instance is back online, this alert automatically 
 Now that you know more about health and viewing alerts in Azure Stack, it’s time to learn more about how to update Azure Stack.
 
 ## <a name="next-steps"></a>Next steps
-[Update management in Azure Stack](azure-stack-updates.md)
+
+[Manage updates in Azure Stack](azure-stack-updates.md)
 
 [Region management in Azure Stack](azure-stack-region-management.md)
 

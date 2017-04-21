@@ -12,12 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 02/23/2017
+ms.date: 04/07/2017
 ms.author: bharatn
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: a68855e0b6ba436849c4de13f1439f0e70009b6a
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 121bf91a2476a079c0737187aef8791be0b4b250
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -69,7 +69,7 @@ http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?
 * **Suffix path:** 接続先となるサービスの実際の URL パスです (例: *myapi/values/add/3*)。
 * **PartitionKey:** パーティション分割されたサービスの場合、到達するパーティションの計算済みのパーティション キーです。 これはパーティション ID の GUID ではありません ** 。 シングルトン パーティション構成を使用するサービスでは、このパラメーターは不要です。
 * **PartitionKind:** サービス パーティション構成です。 これには、"Int64Range" または "Named" を指定できます。 シングルトン パーティション構成を使用するサービスでは、このパラメーターは不要です。
-* **ListenerName**: サービスのエンドポイント。{"Endpoints":{"Listener1":"Endpoint1","Listener2":"Endpoint2" ...}} の形式で指定します。 サービスが複数のエンドポイントを公開している場合、このパラメーターによって、クライアント要求の転送先となるエンドポイントを特定します。 サービスにリスナーが&1; つしかない場合、このパラメーターは省略できます。
+* **ListenerName**: サービスのエンドポイント。{"Endpoints":{"Listener1":"Endpoint1","Listener2":"Endpoint2" ...}} の形式で指定します。 サービスが複数のエンドポイントを公開している場合、このパラメーターによって、クライアント要求の転送先となるエンドポイントを特定します。 サービスにリスナーが 1 つしかない場合、このパラメーターは省略できます。
 * **TargetReplicaSelector**: ターゲット レプリカまたはインスタンスの選択方法を指定します。
   * ターゲット サービスがステートフルの場合、TargetReplicaSelector には "PrimaryReplica"、"RandomSecondaryReplica"、"RandomReplica" のいずれかを指定できます。 このパラメーターが指定されていない場合、既定値は "PrimaryReplica" です。
   * ターゲット サービスがステートレスの場合、リバース プロキシは要求の転送先となるサービス パーティションのインスタンスをランダムに選択します。
@@ -108,7 +108,7 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 * `http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/api/users/6`
 
 ## <a name="special-handling-for-port-sharing-services"></a>ポートを共有するサービスの特別な処理
-サービスに到達できない場合、Application Gateway はサービス アドレスの解決を再度試み、要求を再試行します。 クライアント コードで独自のサービス解決と解決ループを実装する必要がないため、これは Application Gateway の主な利点の&1; つです。
+サービスに到達できない場合、Application Gateway はサービス アドレスの解決を再度試み、要求を再試行します。 クライアント コードで独自のサービス解決と解決ループを実装する必要がないため、これは Application Gateway の主な利点の 1 つです。
 
 一般に、サービスに到達できないときは、サービス インスタンスまたはレプリカが通常のライフサイクルの一環として別のノードに移動しています。 この場合、Application Gateway は、エンドポイントが解決された元のアドレスではもう開いていないことを示すネットワーク接続エラーを受信する可能性があります。
 
@@ -125,7 +125,7 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 
 最初のケースは通常の HTTP 404 であり、ユーザー エラーと見なされます。 ただし、2 番目のケースでは、ユーザーは存在するリソースを要求しています。 サービス自体が移動しているため、Application Gateway がリソースを見つけることができませんでした。 この場合、Application Gateway はアドレスを再度解決し、要求を再試行する必要があります。
 
-そのため、Application Gateway にはこの&2; つのケースを区別する手段が必要です。 この区別を行うには、サーバーからのヒントが必要になります。
+そのため、Application Gateway にはこの 2 つのケースを区別する手段が必要です。 この区別を行うには、サーバーからのヒントが必要になります。
 
 * 既定では、Application Gateway はケース 2 を想定し、アドレスを再度解決して要求を再発行することを試みます。
 * Application Gateway にケース 1 であることを示すには、サービスが次の HTTP 応答ヘッダーを返す必要があります。
@@ -297,7 +297,7 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 > 既存のクラスターで、クラスター証明書とは異なる証明書を使用してリバース プロキシを有効にするときは、リバース プロキシを有効にする前に、クラスターにリバース プロキシ証明書をインストールし、ACL を更新する必要があります。 手順 1. ～ 4. に従ってリバース プロキシを有効にするデプロイを開始する前に、前述の設定を使用して [Azure Resource Manager テンプレート](service-fabric-cluster-creation-via-arm.md)のデプロイを完了しておきます。
 
 ## <a name="next-steps"></a>次のステップ
-* [GitHub のサンプル プロジェクト](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/WordCount)で、サービス間の HTTP 通信の例を確認します。
+* [GitHub のサンプル プロジェクト](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)で、サービス間の HTTP 通信の例を確認します。
 * [Reliable Services のリモート処理によるリモート プロシージャ コール](service-fabric-reliable-services-communication-remoting.md)
 * [Reliable Services の OWIN を使用する Web API](service-fabric-reliable-services-communication-webapi.md)
 * [Reliable Services を使用した WCF 通信](service-fabric-reliable-services-communication-wcf.md)

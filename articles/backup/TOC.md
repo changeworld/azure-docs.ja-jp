@@ -19,6 +19,7 @@
 ## Azure Backup Server
 ### [Azure Portal での Azure Backup Server ワークロードの準備](backup-azure-microsoft-azure-backup.md)
 ### [クラシック ポータルでの Azure Backup Server ワークロードの準備](backup-azure-microsoft-azure-backup-classic.md)
+### [Azure Backup Server を使用した VMware サーバーのバックアップ](backup-azure-backup-server-vmware.md)
 ### [Azure Backup Server を使用した Exchange のバックアップ](backup-azure-exchange-mabs.md)
 ### [Azure Backup Server を使用した SharePoint ファームのバックアップ](backup-azure-backup-sharepoint-mabs.md)
 ### [Azure Backup Server を使用した SQL のバックアップ](backup-azure-sql-mabs.md)
@@ -75,6 +76,7 @@
 ## [Azure Backup 資格情報コンテナーを削除する](backup-azure-delete-vault.md)
 ## [オフライン バックアップの構成](backup-azure-backup-import-export.md)
 ## [テープ ライブラリの交換](backup-azure-backup-cloud-as-tape.md)
+## [Linux VM のアプリケーション整合性バックアップ](backup-azure-linux-app-consistent.md)
 
 # リファレンス
 ## [PowerShell](/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/azurerm.recoveryservices.backup)

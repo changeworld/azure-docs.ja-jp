@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/02/2016
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 99c972b4adf1dedbc556b20cdc7587edeb7f50e0
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 62bafc9bc58811cd9bd314639e3c2a609f4935d3
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -32,7 +32,7 @@ Azure Monitor の自動スケールは、[Virtual Machine Scale Sets](https://az
 >
 
 ## <a name="what-is-autoscale"></a>自動スケールとは何ですか。
-自動スケールを使用すると、適切な量のリソースを実行して、アプリケーションに対する負荷を処理することができます。 リソースを追加して負荷の増加に対処したり、アイドル状態のリソースを削除して経費を節約したりできます。 実行するインスタンスの最小値と最大数を指定して、一連のルールに基づいて自動的に仮想マシンを追加または削除します。 最小値を指定すると、負荷のない状況でも、アプリケーションが常に実行されます。 最大値を指定すると、時間単位の合計コストが制限されます。 作成するルールを使用して、これら&2; つの値の間で自動的にスケールします。
+自動スケールを使用すると、適切な量のリソースを実行して、アプリケーションに対する負荷を処理することができます。 リソースを追加して負荷の増加に対処したり、アイドル状態のリソースを削除して経費を節約したりできます。 実行するインスタンスの最小値と最大数を指定して、一連のルールに基づいて自動的に仮想マシンを追加または削除します。 最小値を指定すると、負荷のない状況でも、アプリケーションが常に実行されます。 最大値を指定すると、時間単位の合計コストが制限されます。 作成するルールを使用して、これら 2 つの値の間で自動的にスケールします。
 
  ![自動スケールについて説明します。 仮想マシンの追加と削除](./media/monitoring-overview-autoscale/AutoscaleConcept.png)
 
@@ -50,7 +50,7 @@ Azure Monitor の自動スケールは、[Virtual Machine Scale Sets](https://az
 スケジュール ベースの規則は、UTC に基づいています。 規則を設定する際に、タイム ゾーンを正しく設定する必要があります。  
 
 ## <a name="rules"></a>ルール
-次の図では&1; つの自動スケール規則だけを示していますが、複数の規則を使用できます。 状況に応じて、複雑に重複する規則を作成することができます。  規則の種類には、次のようなものがあります。  
+次の図では 1 つの自動スケール規則だけを示していますが、複数の規則を使用できます。 状況に応じて、複雑に重複する規則を作成することができます。  規則の種類には、次のようなものがあります。  
 
 * **メトリック ベース** - たとえば、CPU 使用率が 50% を超える場合に、この操作を実行します。
 * **時間ベース** - たとえば、特定のタイム ゾーンで毎週土曜の午前 8 時に webhook をトリガーします。
@@ -94,7 +94,7 @@ Azure Monitor の自動スケールは、[Virtual Machine Scale Sets](https://az
 
 一方、垂直方向のスケーリングは、それとは異なります。 VM の数は同じままですが、VM の能力を強めたり ("アップ") 弱めたり ("ダウン") します。 能力は、メモリ、CPU 速度、ディスク領域などで計測します。垂直スケーリングには、より多くの制限があります。 これはハードウェアの規模によって左右されます。大規模なハードウェアは拡張の上限に達しやすく、リージョンによって違いが出ることもあります。 垂直スケーリングでは、多くの場合、VM の停止と再起動も必要になります。
 
-詳細については、「[Azure Automation で Azure 仮想マシンを垂直方向にスケーリングする](../virtual-machines/virtual-machines-linux-vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
+詳細については、「[Azure Automation で Azure 仮想マシンを垂直方向にスケーリングする](../virtual-machines/linux/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
 ## <a name="methods-of-access"></a>アクセスの方法
 以下を通じて、自動スケールを設定することができます。

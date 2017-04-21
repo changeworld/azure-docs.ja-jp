@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/17/2017
+ms.date: 04/11/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
-ms.openlocfilehash: c5049cbe98dbb04deae4a2b9dc098938aa65495a
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 003a32f2ef67f8aa63ed7be2553fa0f0c3afc08a
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -49,9 +50,9 @@ ms.openlocfilehash: c5049cbe98dbb04deae4a2b9dc098938aa65495a
   3. **テナント ID**を取得します。 
   4. **ADFCopyTutorialApp** アプリケーションを **Data Factory 共同作成者**ロールに割り当てます。  
 * [Azure PowerShell](/powershell/azureps-cmdlets-docs)をインストールします。  
-* **PowerShell** を起動し、次のコマンドを実行します。 Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
+* **PowerShell** を起動し、次の手順を実行します。 Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
   
-  1. 次のコマンドを実行して、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。
+  1. 次のコマンドを実行して、Azure Portal へのサインインに使用するユーザー名とパスワードを入力します。
     
     ```PowerShell 
     Login-AzureRmAccount
@@ -172,10 +173,10 @@ JSON 定義では **AzureBlobInput** という名前のデータセットを定�
 * **linkedServiceName** は **AzureStorageLinkedService** に設定されています。 
 * **folderPath** は **adftutorial** コンテナーに設定され、**fileName** は **emp.txt** に設定されています。  
 * format の **type** は **TextFormat** に設定されています。
-* テキスト ファイル内に&2; つのフィールド (**FirstName** と **LastName**) があり、コンマ (**columnDelimiter**) で区切られています。    
-* **availability** が **hourly** に設定されています (frequency は hour、interval は 1 に設定されています)。 そのため、Data Factory は、指定された BLOB コンテナー (**adftutorial**) のルート フォルダーにある入力データを&1; 時間ごとに検索します。 
+* テキスト ファイル内に 2 つのフィールド (**FirstName** と **LastName**) があり、コンマ (columnDelimiter) で区切られています。    
+* **availability** が **hourly** に設定されています (frequency は hour、interval は 1 に設定されています)。 そのため、Data Factory は、指定された BLOB コンテナー (adftutorial) のルート フォルダーで入力データを 1 時間ごとに検索します。 
 
-入力データセット用に **fileName** を指定しない場合、入力フォルダー (**folderPath**) のすべてのファイルまたは BLOB が入力と見なされます。 JSON で fileName を指定した場合は、指定されたファイル/BLOB のみが入力と見なされます。
+入力データセット用に **fileName** を指定しない場合、入力フォルダー (folderPath) のすべてのファイルまたは BLOB が入力と見なされます。 JSON で fileName を指定した場合は、指定されたファイル/BLOB のみが入力と見なされます。
 
 **出力テーブル**に **fileName** を指定しない場合、**folderPath** に生成されるファイルには Data.&lt;Guid&gt;.txt という形式で名前が付けられます (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt)。
 
@@ -229,8 +230,8 @@ JSON 定義では **AzureSqlOutput** という名前のデータセットを定�
 * データセットの **type** は **AzureSQLTable** に設定されています。
 * **linkedServiceName** は **AzureSqlLinkedService** に設定されています。
 * **tablename** は **emp** に設定されています。
-* データベース内の emp テーブルには、**ID**、**FirstName**、**LastName** の&3; つの列があります。 ID は ID 列であるため、ここで指定する必要があるのは **FirstName** と **LastName** のみです。
-* **availability** は **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。  Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに&1; 時間ごとに出力データ スライスを生成します。
+* データベース内の emp テーブルには、**ID**、**FirstName**、**LastName** の 3 つの列があります。 ID は ID 列であるため、ここで指定する必要があるのは **FirstName** と **LastName** のみです。
+* **availability** は **hourly** に設定されています (frequency は hour、interval は 1 に設定されています)。  Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに 1 時間ごとに出力データ スライスを生成します。
 
 ### <a name="pipelinejson"></a>pipeline.json
 
@@ -280,7 +281,7 @@ JSON 定義では **AzureSqlOutput** という名前のデータセットを定�
 
 以下の点に注意してください。
 
-* activities セクションに、**type** が **CopyActivity** に設定されたアクティビティが&1; つだけあります。
+* activities セクションに、**type** が **CopyActivity** に設定されたアクティビティが 1 つだけあります。
 * アクティビティの入力は **AzureBlobInput** に設定され、アクティビティの出力は **AzureSqlOutput** に設定されています。
 * **transformation** セクションでは、ソースの種類として **BlobSource** が指定され、シンクの種類として **SqlSink** が指定されています。
 
@@ -353,7 +354,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
   
   1. **datafactory.json** ファイルで名前を変更します (たとえば、yournameADFCopyTutorialDF)。
   2. **$cmd** 変数に値が割り当てられる最初のコマンドで、ADFCopyTutorialDF を新しい名前に置き換え、コマンドを実行します。 
-  3. REST API を呼び出す次の&2; つのコマンドを実行して、データ ファクトリを作成し、操作の結果を出力します。 
+  3. REST API を呼び出す次の 2 つのコマンドを実行して、データ ファクトリを作成し、操作の結果を出力します。 
      
      Data Factory アーティファクトの名前付け規則については、「 [Azure Data Factory - 名前付け規則](data-factory-naming-rules.md) 」を参照してください。
 * Data Factory インスタンスを作成するには、Azure サブスクリプションの共同作成者または管理者である必要があります。
@@ -377,7 +378,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 ## <a name="create-linked-services"></a>リンクされたサービスの作成
 リンクされたサービスは、データ ストアまたはコンピューティング サービスを Azure Data Factory にリンクします。 データ ストアには、Azure Storage、Azure SQL Database、またはオンプレミスの SQL Server データベースを指定できます。これらのデータ ストアには、Data Factory パイプラインの入力データが含まれているか、出力データが格納されています。 コンピューティング サービスは、入力データを処理し、出力データを生成するサービスです。 
 
-この手順では、**AzureStorageLinkedService** と **AzureSqlLinkedService** の&2; つのリンクされたサービスを作成します。 リンクされたサービス AzureStorageLinkedService は Azure ストレージ アカウントを、AzureSqlLinkedService は Azure SQL Database を **ADFCopyTutorialDF**というデータ ファクトリにリンクします。 このチュートリアルの後半では、AzureStorageLinkedService 内の BLOB コンテナーから AzureSqlLinkedService 内の SQL テーブルにデータをコピーするパイプラインを作成します。
+この手順では、**AzureStorageLinkedService** と **AzureSqlLinkedService** の 2 つのリンクされたサービスを作成します。 リンクされたサービス AzureStorageLinkedService は Azure ストレージ アカウントを、AzureSqlLinkedService は Azure SQL Database を **ADFCopyTutorialDF**というデータ ファクトリにリンクします。 このチュートリアルの後半では、AzureStorageLinkedService 内の BLOB コンテナーから AzureSqlLinkedService 内の SQL テーブルにデータをコピーするパイプラインを作成します。
 
 ### <a name="create-azure-storage-linked-service"></a>Azure Storage のリンクされたサービスを作成する
 この手順では、Azure ストレージ アカウントをデータ ファクトリにリンクします。 このチュートリアルでは、Azure ストレージ アカウントを使用して、入力データを格納します。 
@@ -428,7 +429,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 * **emp.txt** という名前のテキスト ファイルを作成し、BLOB として **adftutorial** コンテナーにアップロードします。 
 * **AzureSqlLinkedService** がポイントする Azure SQL データベース内に **emp** という名前のテーブルを作成します。
 
-1. メモ帳を起動し、次のテキストを貼り付け、**emp.txt** という名前でハード ドライブの **C:\ADFGetStartedPSH** フォルダーに保存します。 
+1. メモ帳を起動します。 次のテキストを貼り付け、**emp.txt** という名前でハード ドライブの **C:\ADFGetStartedPSH** フォルダーに保存します。 
 
     ```   
     John, Doe
@@ -456,7 +457,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
     クライアントから Azure SQL サーバーへのアクセスが許可されていない場合は、コンピューター (IP アドレス) からのアクセスを許可するように、Azure SQL サーバーのファイアウォールを構成する必要があります。 Azure SQL サーバーのファイアウォールを構成する手順については、 [こちらの記事](../sql-database/sql-database-configure-firewall-settings.md) を参照してください。
 
 ### <a name="create-input-dataset"></a>入力データセットの作成
-この手順では、リンクされたサービス **AzureStorageLinkedService** が表す Azure Storage 内の BLOB コンテナーをポイントする **AzureBlobInput** という名前のデータセットを作成します。 この BLOB コンテナー (**adftutorial**) には、**emp.txt** ファイルの入力データが含まれています。 
+この手順では、リンクされたサービス **AzureStorageLinkedService** が表す Azure Storage 内の BLOB コンテナーをポイントする **AzureBlobInput** という名前のデータセットを作成します。 この BLOB コンテナー (adftutorial) には、**emp.txt** ファイルに入力データが含まれています。 
 
 1. コマンドを **cmd**という名前の変数に割り当てます。 
 
@@ -475,7 +476,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
     ```
 
 ### <a name="create-output-dataset"></a>出力データセットの作成
-この手順では、 **AzureSqlOutput**という名前の出力テーブルを作成します。 このデータセットは、**AzureSqlLinkedService** で表される Azure SQL データベース内の SQL テーブル (**emp**) をポイントします。 パイプラインで入力 BLOB から **emp** テーブルにデータがコピーされます。 
+この手順では、 **AzureSqlOutput**という名前の出力テーブルを作成します。 このデータセットは、**AzureSqlLinkedService** で表される Azure SQL データベース内の SQL テーブル (emp) をポイントします。 パイプラインで入力 BLOB から **emp** テーブルにデータがコピーされます。 
 
 1. コマンドを **cmd**という名前の変数に割り当てます。
 
@@ -539,7 +540,7 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 
 スライスが **Ready** 状態または **Failed** 状態として表示されるまで、これらのコマンドを実行します。 スライスが Ready 状態のときは、出力データ用の Azure SQL データベース内の **emp** テーブルを確認します。 
 
-スライスごとに、ソース ファイルのデータの&2; つの行が、Azure SQL データベースの emp テーブルにコピーされます。 そのため、すべてのスライスが正常に処理されると (Ready 状態になると)、emp テーブルに 24 個の新しいレコードが表示されます。 
+スライスごとに、ソース ファイルのデータの 2 つの行が、Azure SQL データベースの emp テーブルにコピーされます。 そのため、すべてのスライスが正常に処理されると (Ready 状態になると)、emp テーブルに 24 個の新しいレコードが表示されます。 
 
 ## <a name="summary"></a>まとめ
 このチュートリアルでは、REST API を使用して Azure データ ファクトリを作成し、Azure BLOB から Azure SQL Database にデータをコピーしました。 以下は、このチュートリアルで実行した手順の概要です。  
@@ -573,9 +574,4 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 [image-data-factory-get-started-storage-explorer]: ./media/data-factory-copy-activity-tutorial-using-powershell/getstarted-storage-explorer.png
 
 [sql-management-studio]: ../sql-database/sql-database-manage-azure-ssms.md
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

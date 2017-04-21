@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: single databases
+ms.custom: DBs and servers
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,8 +16,9 @@ ms.workload: data-management
 ms.date: 11/28/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 06639080dec485395d6821c371a4f792c7c02845
-ms.openlocfilehash: 5e3ac3a08ea3e5c72082dcc7faa209d848acf2fe
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: ebfc2a6a2e16140953abbb9da3b81702fcc26e60
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -40,7 +41,7 @@ Azure SQL Database 内の各データベースは、論理サーバーに関連�
 - **SQL Database ファイアウォール**: データを保護するため、SQL Database ファイアウォールは、どのコンピューターに権限を持たせるかを指定するまで、データベース サーバーまたはそのデータベースへのすべてのアクセスを遮断します。 [ファイアウォール](sql-database-firewall-configure.md)に関する記事を参照してください。
 
 ## <a name="what-collations-are-supported"></a>どのような照合順序がサポートされていますか。
-Microsoft Azure SQL Database で使用される既定のデータベース照合順序は **SQL_LATIN1_GENERAL_CP1_CI_AS** です。**LATIN1_GENERAL** は英語 (米国)、**CP1** はコード ページ 1252、**CI** は大文字と小文字の区別なし、**AS** はアクセントの区別ありを表しています。 V12 データベースの照合順序は変更できません。 照合順序を設定する方法の詳細については、「[COLLATE (Transact-SQL)](https://msdn.microsoft.com/library/ms184391.aspx)」を参照してください。
+Microsoft Azure SQL Database で使用される既定のデータベース照合順序は **SQL_LATIN1_GENERAL_CP1_CI_AS** です。**LATIN1_GENERAL** は英語 (米国)、**CP1** はコード ページ 1252、**CI** は大文字と小文字の区別なし、**AS** はアクセントの区別ありを表しています。 照合順序を設定する方法の詳細については、「[COLLATE (Transact-SQL)](https://msdn.microsoft.com/library/ms184391.aspx)」を参照してください。
 
 ## <a name="what-are-the-naming-requirements-for-database-objects"></a>データベース オブジェクトの名前付け要件とは
 
@@ -53,9 +54,10 @@ Microsoft Azure SQL Database で使用される既定のデータベース照合
 ## <a name="how-do-i-manage-an-azure-sql-database"></a>Azure SQL Database の管理方法を教えてください。
 
 いくつかの方法を使用して Azure SQL Database 論理サーバーを管理できます。
-- [Azure ポータル](sql-database-manage-portal.md)
-- [PowerShell](sql-database-manage-powershell.md)
-- [Transact-SQL](sql-database-manage-azure-ssms.md)
+- [Azure ポータル](sql-database-manage-overview.md)
+- [PowerShell](sql-database-manage-overview.md)
+- [Transact-SQL](sql-database-connect-query-ssms.md)
+- [Visual Studio Code](sql-database-connect-query-vscode.md)
 - [REST ()](/rest/api/sql/)
 
 ## <a name="next-steps"></a>次のステップ
@@ -67,10 +69,5 @@ Microsoft Azure SQL Database で使用される既定のデータベース照合
 - サービス階層に基づく特定のリソース クォータと制限については、**サービス階層**に関する記事を参照してください。 サービス レベルの概要については、「 [SQL Database のサービス階層](sql-database-service-tiers.md)」を参照してください。
 - セキュリティの概要については、[Azure SQL Database のセキュリティの概要](sql-database-security-overview.md)に関するページを参照してください。
 - SQL Database の利用可能なドライバーとサポートの詳細については、「 [SQL Database および SQL Server の接続ライブラリ](sql-database-libraries.md)」を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

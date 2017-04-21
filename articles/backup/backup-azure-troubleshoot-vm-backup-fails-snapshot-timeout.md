@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: genli;markgal;
 translationtype: Human Translation
-ms.sourcegitcommit: 26ea5c6f867165a25dd5aecb01d0a0ce3b213a51
-ms.openlocfilehash: 707d666eb6c23fb926c31711daddfb22979513bc
-ms.lasthandoff: 01/25/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: d7924d8aade1ea582faa0f319f8c1d16d5461fbc
+ms.lasthandoff: 04/03/2017
 
 ---
 
 # <a name="troubleshoot-azure-backup-failure-snapshot-vm-sub-task-timed-out"></a>Azure Backup エラー "スナップショット VM サブタスクのタイムアウト" のトラブルシューティング
 ## <a name="summary"></a>まとめ
-Azure Backup サービスに VM を登録して、スケジュール設定すると、Backup サービスは、VM のバックアップ拡張機能と通信してジョブを開始し、ポイントインタイム スナップショットを作成します。 スナップショットをトリガーできず、それがバックアップ エラーにつながる条件は&4; つあります。 この記事では、スナップショットのタイムアウト エラーに関連する Backup エラーを解決するためのトラブルシューティング手順について説明します。
+Azure Backup サービスに VM を登録して、スケジュール設定すると、Backup サービスは、VM のバックアップ拡張機能と通信してジョブを開始し、ポイントインタイム スナップショットを作成します。 スナップショットをトリガーできず、それがバックアップ エラーにつながる条件は 4 つあります。 この記事では、スナップショットのタイムアウト エラーに関連する Backup エラーを解決するためのトラブルシューティング手順について説明します。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -55,7 +55,7 @@ VM バックアップの HTTP プロキシを設定する方法については�
 ### <a name="solution"></a>解決策
 Linux VM の場合、エージェントに関連するエラーまたは拡張機能に関連するエラーのほとんどは、古い VM エージェントに影響する問題が原因で発生します。 この問題のトラブルシューティングを行うには、次の一般的なガイドラインに従います。
 
-1. [Linux VM エージェントを更新](../virtual-machines/virtual-machines-linux-update-agent.md)する手順に従います。
+1. [Linux VM エージェントを更新](../virtual-machines/linux/update-agent.md)する手順に従います。
 
  >[!NOTE]
  >ディストリビューション リポジトリを通してのみエージェントを更新することを "*強くお勧め*" します。 エージェント コードを直接 GitHub からダウンロードして、更新することはお勧めしません。 最新のエージェントをディストリビューションで使用できない場合は、そのエージェントをインストールする方法をディストリビューション サポートにお問い合わせください。 最新のエージェントを確認するには、GitHub リポジトリの [Windows Azure Linux エージェント](https://github.com/Azure/WALinuxAgent/releases)のページをご覧ください。

@@ -25,6 +25,16 @@
 ### [Batch PowerShell コマンドレット](batch-powershell-cmdlets-get-started.md)
 ### [Azure CLI](batch-cli-get-started.md)
 ### [Batch 診断ログ](batch-diagnostics.md)
+### [一括分析](batch-analytics.md)
+#### [プール作成イベント](batch-pool-create-event.md)
+#### [プール削除の開始イベント](batch-pool-delete-start-event.md)
+#### [プール削除の完了イベント](batch-pool-delete-complete-event.md)
+#### [プールのサイズ変更の開始イベント](batch-pool-resize-start-event.md)
+#### [プールのサイズ変更の完了イベント](batch-pool-resize-complete-event.md)
+#### [タスク開始イベント](batch-task-start-event.md)
+#### [タスク完了イベント](batch-task-complete-event.md)
+#### [タスク失敗イベント](batch-task-fail-event.md)
+### [Azure Batch コンピューティング ノードの環境変数](batch-compute-node-environment-variables.md)
 
 # リファレンス
 ## [PowerShell](/powershell/resourcemanager/azurerm.batch/v2.5.0/azurerm.batch)

@@ -1,6 +1,6 @@
 ---
 title: "StorSimple Virtual Array をファイル サーバーとして設定する | Microsoft Docs"
-description: "StorSimple Virtual Array のデプロイの&3; 番目のチュートリアルでは、ファイル サーバーとして仮想デバイスを設定する方法について説明します。"
+description: "StorSimple Virtual Array のデプロイの 3 番目のチュートリアルでは、ファイル サーバーとして仮想デバイスを設定する方法について説明します。"
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 05/26/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 78daa5a75b3414e2761333ea6ad91945596553c8
-ms.openlocfilehash: e1863b43706ffc200bb94c4a26ae75080a6dd857
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 37d25c8c7b47bf8ef3b4d5c6d3978b13c52329c3
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -33,7 +34,7 @@ StorSimple 仮想デバイスを構成およびセットアップする前に、
 
 * 「[Hyper-V で StorSimple Virtual Array をプロビジョニングする](storsimple-ova-deploy2-provision-hyperv.md)」または「[VMware で StorSimple Virtual Array をプロビジョニングする](storsimple-ova-deploy2-provision-vmware.md)」の説明に従って仮想デバイスをプロビジョニングし、接続していること。
 * StorSimple 仮想デバイスを管理するために作成した、StorSimple Manager サービスからのサービス登録キーがあること。 詳細については、StorSimple Virtual Array の「 [手順 2. サービス登録キーを取得する](storsimple-ova-deploy1-portal-prep.md#step-2-get-the-service-registration-key) 」をご覧ください。
-* 既存の StorSimple Manager サービスに登録する&2; 番目または後続の仮想デバイスである場合は、サービス データ暗号化キーがあるはずです。 このキーは、最初のデバイスがこのサービスに正常に登録されたときに生成されています。 このキーを紛失した場合は、StorSimple Virtual Array の「 [サービス データ暗号化キーの取得](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) 」をご覧ください。
+* 既存の StorSimple Manager サービスに登録する 2 番目または後続の仮想デバイスである場合は、サービス データ暗号化キーがあるはずです。 このキーは、最初のデバイスがこのサービスに正常に登録されたときに生成されています。 このキーを紛失した場合は、StorSimple Virtual Array の「 [サービス データ暗号化キーの取得](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) 」をご覧ください。
 
 ## <a name="step-by-step-setup"></a>セットアップの手順
 StorSimple 仮想デバイスをセットアップして構成するには、次の詳細な手順を実行します。
@@ -47,7 +48,7 @@ StorSimple 仮想デバイスをセットアップして構成するには、次
    前の手順に記載されている接続 URL を使用します。 Web サイトのセキュリティ証明書に問題があることを示すエラーが表示されます。 **[この Web ページの閲覧を続ける]**をクリックして、この Web ページに進みます。
    
    ![](./media/storsimple-ova-deploy3-fs-setup/image2.png)
-2. 仮想デバイスの Web UI に **StorSimpleAdmin**としてサインインします。 「[Hyper-V で StorSimple Virtual Array をプロビジョニングする](storsimple-ova-deploy2-provision-hyperv.md)」または「[VMware で Virtual Array をプロビジョニングする](storsimple-ova-deploy2-provision-vmware.md)」の「手順 3: 仮想デバイスを起動し、IP アドレスを取得する」で変更したデバイス管理者のパスワードを入力します。
+2. 仮想デバイスの Web UI に **StorSimpleAdmin**としてサインインします。 「[Hyper-V で StorSimple Virtual Array をプロビジョニングする](storsimple-ova-deploy2-provision-hyperv.md)」または「[VMware で Virtual Array をプロビジョニングする](storsimple-ova-deploy2-provision-vmware.md)」の「手順 3: 仮想デバイスを起動し、IP アドレスを取得する」で変更したデバイス管理者のパスワードを入力します。 既定のユーザーは *StorSimpleAdmin* で、既定のパスワードは *Password1* です。
    
    ![](./media/storsimple-ova-deploy3-fs-setup/image3.png)
 3. **[ホーム]** ページが表示されます。 このページは、仮想デバイスを StorSimple Manager サービスに構成、登録するのに必要なさまざまな設定を掲載しています。 **ネットワーク設定**、**Web プロキシの設定**、**時刻の設定**はオプションであることに注意してください。 必須の設定は、**デバイスの設定**と**クラウドの設定**のみです。
@@ -183,10 +184,5 @@ StorSimple Virtual Array をファイル サーバーとして構成、登録す
 
 ## <a name="next-steps"></a>次のステップ
 ローカル Web UI を使用して [StorSimple Virtual Array を管理する](storsimple-ova-web-ui-admin.md)方法を確認します。
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

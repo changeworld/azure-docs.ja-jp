@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: "Arduino による LED の制御"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started
 ms.assetid: d7a25430-450e-43c4-a3ed-1eed995b8b7e
 ms.service: iot-hub
 ms.devlang: arduino

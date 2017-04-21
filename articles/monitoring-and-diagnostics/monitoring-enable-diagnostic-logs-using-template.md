@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 2/14/2017
 ms.author: johnkem
 translationtype: Human Translation
-ms.sourcegitcommit: f4e7b1f2ac7f10748473605eacee71bf0cd538e6
-ms.openlocfilehash: 2b28045c3ec32a703c62aeb509777750342ffbb3
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 87403d68bfb57645417d6255329af7fd0d757f50
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -38,7 +39,7 @@ Resource Manager テンプレートを使用して診断ログを有効にする
 生成する必要がある、非コンピューティング リソースおよびコンピューティング リソースのテンプレート JSON ファイルの例を以下に示します。
 
 ## <a name="non-compute-resource-template"></a>非コンピューティング リソース テンプレート
-非コンピューティング リソースの場合、次の&2; つの手順を実行する必要があります。
+非コンピューティング リソースの場合、次の 2 つの手順を実行する必要があります。
 
 1. (ストレージ アカウントへの診断ログのアーカイブ、Event Hubs へのログのストリーミング、Log Analytics へのログの送信を有効にするために) パラメーター BLOB に、ストレージ アカウント名、Service Bus 規則 ID、OMS Log Analytics ワークスペース ID のパラメーターを追加します。
    
@@ -231,19 +232,14 @@ Resource Manager テンプレートを使用して診断ログを有効にする
 3. すべての XML 文字を正しくエスケープして、WADCfg XML ファイルの内容を XMLCfg プロパティに追加します。
 
 > [!WARNING]
-> この最後の手順は理解するのが難しい場合があります。 [こちらの記事](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md#diagnostics-configuration-variables) をご覧ください。
+> この最後の手順は理解するのが難しい場合があります。 [こちらの記事](../virtual-machines/windows/extensions-diagnostics-template.md#diagnostics-configuration-variables) をご覧ください。
 > 
 > 
 
-このプロセス全体とサンプルについては、 [こちらのドキュメント](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)をご覧ください。
+このプロセス全体とサンプルについては、 [こちらのドキュメント](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure 診断ログの詳細を確認する](monitoring-overview-of-diagnostic-logs.md)
 * [Azure 診断ログを Event Hubs にストリーミングする](monitoring-stream-diagnostic-logs-to-event-hubs.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

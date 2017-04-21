@@ -11,12 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 03/22/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 0d9f2f5c9ad5c47eb5e1a8a8ec3fee2952caef63
-ms.openlocfilehash: 5c01f89c335a6c85b5b50a4c8491ae1b02740578
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: fd0ecc62fd3cfc860423acd02108648e99f44753
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -82,5 +82,5 @@ RDWA で RDP トラフィックへの SSO が必要な場合、または RDWA �
 ## <a name="next-steps"></a>次のステップ
 
 [Azure AD アプリケーション プロキシによる SharePoint へのリモート アクセスの有効化](application-proxy-enable-remote-access-sharepoint.md)  
-[Azure Portal でアプリケーション プロキシを有効にする](https://github.com/Microsoft/azure-docs-pr/blob/master/articles/active-directory/active-directory-application-proxy-enable.md)
+[Azure Portal でアプリケーション プロキシを有効にする](active-directory-application-proxy-enable.md)
 

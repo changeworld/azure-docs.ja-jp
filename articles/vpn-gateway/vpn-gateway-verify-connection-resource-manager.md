@@ -13,7 +13,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/30/2017
+ms.date: 04/11/2017
 ms.author: cherylmc
 translationtype: Human Translation
 ms.sourcegitcommit: b5bad71095e4b7e3b26df15780467526200ffa10
@@ -35,14 +35,20 @@ PowerShell を使用して確認を行うには、Azure Resource Manager PowerSh
 
 ### <a name="log-in-to-your-azure-account"></a>Azure アカウントにログインする
 1. 昇格された特権で PowerShell コンソールを開き、アカウントに接続します。
-   
-        Login-AzureRmAccount
+
+  ```powershell
+  Login-AzureRmAccount
+  ```
 2. アカウントのサブスクリプションを確認します。
-   
-        Get-AzureRmSubscription 
+
+  ```powershell
+  Get-AzureRmSubscription
+  ``` 
 3. 使用するサブスクリプションを指定します。
-   
-        Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+
+  ```powershell
+  Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+  ```
 
 ### <a name="verify-your-connection"></a>接続を確認する
 
@@ -57,17 +63,25 @@ PowerShell を使用して確認を行うには、Azure PowerShell コマンド�
 
 ### <a name="log-in-to-your-azure-account"></a>Azure アカウントにログインする
 1. 昇格された特権で PowerShell コンソールを開き、アカウントに接続します。
-   
-        Login-AzureRmAccount
+
+  ```powershell
+  Login-AzureRmAccount
+  ```
 2. アカウントのサブスクリプションを確認します。
-   
-        Get-AzureRmSubscription 
+
+  ```powershell
+  Get-AzureRmSubscription 
+  ```
 3. 使用するサブスクリプションを指定します。
-   
-        Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+
+  ```powershell
+  Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+  ```
 4. ログインして、クラシック デプロイメント モデル向けの Service Management コマンドレットを使用します。
 
-        Add-AzureAccount
+  ```powershell
+  Add-AzureAccount
+  ```
 
 ### <a name="verify-your-connection"></a>接続を確認する
 [!INCLUDE [Classic PowerShell](../../includes/vpn-gateway-verify-connection-ps-classic-include.md)]

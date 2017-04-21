@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 04/12/2017
 ms.author: banders
 translationtype: Human Translation
 ms.sourcegitcommit: 15858f7b7436536e6bae7fcfd6a50c722d2d04a2
 ms.openlocfilehash: 813120692232096275f3a7500c3b54e16af26b77
+ms.lasthandoff: 11/17/2016
 
 ---
 
@@ -197,9 +198,4 @@ ESXi ホストに syslog タイムスタンプのバグがありました。 詳
 * Log Analytics の[ログ検索](log-analytics-log-searches.md)を使用して、VMware ホストの詳細データを表示します。
 * VMware ホストのデータを表示する[独自のダッシュ ボードを作成](log-analytics-dashboards.md)します。
 * VMware ホストの特定のイベントが発生した場合の[アラートを作成](log-analytics-alerts.md)します。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

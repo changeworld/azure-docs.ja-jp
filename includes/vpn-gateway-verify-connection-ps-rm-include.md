@@ -1,8 +1,10 @@
 接続に成功したことを確認するには、`Get-AzureRmVirtualNetworkGatewayConnection` コマンドレットを使用します。`-Debug` は指定しても指定しなくてもかまいません。 
 
 1. 次のコマンドレットを使用します。値は実際の値に置き換えてください。 プロンプトが表示されたら、"A" を選択して "すべて" (All) を実行します。 この例の `-Name` は、テストする作成済みの接続の名前を示します。
-   
-        Get-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnection -ResourceGroupName MyRG
+
+  ```powershell
+  Get-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnection -ResourceGroupName MyRG
+  ```
 2. コマンドレットの実行後、値を確認します。 以下の例では、接続状態は "Connected" と表示され、受信バイトと送信バイトを確認できます。
    
         Body:
@@ -30,9 +32,4 @@
             "ingressBytesTransferred": 33509044,
             "egressBytesTransferred": 4142431
           }
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 
