@@ -159,7 +159,7 @@ Compare-Object -ReferenceObject $nsgbaserules `
 -Property Name,Description,Protocol,SourcePortRange,DestinationPortRange,SourceAddressPrefix,DestinationAddressPrefix,Access,Priority,Direction
 ```
 
-次の例は結果です。 最初の規則セットにあった&2; つの規則が比較では見つからなかったことがわかります。
+次の例は結果です。 最初の規則セットにあった 2 つの規則が比較では見つからなかったことがわかります。
 
 ```
 Name                     : My2ndRuleDoNotDelete

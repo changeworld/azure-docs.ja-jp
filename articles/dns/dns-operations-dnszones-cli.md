@@ -104,7 +104,7 @@ az network dns zone create --resource-group MyResourceGroup --name contoso.com
 
 ### <a name="to-create-a-dns-zone-with-tags"></a>タグのある DNS ゾーンを作成するには
 
-次の例では、`--tags` パラメーター (短縮形 `-t`) を使用して、*project = demo* と *env = test* の&2; つ [Azure Resource Manager タグ](dns-zones-records.md#tags)を含む DNS ゾーンを作成する方法を示します。
+次の例では、`--tags` パラメーター (短縮形 `-t`) を使用して、*project = demo* と *env = test* の 2 つ [Azure Resource Manager タグ](dns-zones-records.md#tags)を含む DNS ゾーンを作成する方法を示します。
 
 ```azurecli
 az network dns zone create --resource-group MyResourceGroup --name contoso.com --tags "project=demo" "env=test"
