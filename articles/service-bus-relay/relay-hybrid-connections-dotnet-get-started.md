@@ -27,7 +27,7 @@ ms.lasthandoff: 03/01/2017
 このチュートリアルでは、[Azure Relay ハイブリッド接続](relay-what-is-it.md#hybrid-connections)の概要について説明し、対応するリスナー アプリケーションにメッセージを送信するクライアント アプリケーションを作成する方法を示しています。 
 
 ## <a name="what-will-be-accomplished"></a>作業内容
-ハイブリッド接続ではクライアントとサーバーの&2; つのコンポーネントが必要になります。このため、このチュートリアルでは&2; つのコンソール アプリケーションを作成します。 手順は次のとおりです。
+ハイブリッド接続ではクライアントとサーバーの 2 つのコンポーネントが必要になります。このため、このチュートリアルでは 2 つのコンソール アプリケーションを作成します。 手順は次のとおりです。
 
 1. Azure Portal を使用した Relay 名前空間の作成
 2. Azure Portal を使用したハイブリッド接続の作成
@@ -45,7 +45,7 @@ Relay 名前空間を既に作成してある場合には、「[Azure Portal を
 
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 
-## <a name="2-create-a-hybrid-connection-using-the-azure-portal"></a>手順&2;.Azure Portal を使用したハイブリッド接続の作成
+## <a name="2-create-a-hybrid-connection-using-the-azure-portal"></a>手順 2.Azure Portal を使用したハイブリッド接続の作成
 ハイブリッド接続を既に作成してある場合には、「[サーバー アプリケーションの作成](#3-create-a-server-application-listener)」セクションに進んでください。
 
 [!INCLUDE [relay-create-hybrid-connection-portal](../../includes/relay-create-hybrid-connection-portal.md)]
