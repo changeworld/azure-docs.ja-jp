@@ -25,7 +25,7 @@ ms.lasthandoff: 03/21/2017
 # <a name="what-is-azure-app-service"></a>Azure App Service とは
 *App Service* は、Microsoft Azure が提供する [サービスとしてのプラットフォーム](https://en.wikipedia.org/wiki/Platform_as_a_service) (PaaS) です。 任意のプラットフォームまたはデバイスを対象として Web アプリとモバイル アプリを作成できます。 作成したアプリと SaaS ソリューションの統合、オンプレミス アプリケーションへの接続、ビジネス プロセスの自動化を実行できます。 Azure では、指定した共有仮想マシン (VM) リソースまたは専用 VM を使用して、完全に管理された VM 上で、アプリが実行されます。
 
-App Service には、以前は Azure Websites および Azure Mobile Services として個別に提供されていた Web 機能とモバイル機能が含まれています。 さらに、ビジネス プロセスの自動化やクラウド API のホストに利用できる新しい機能も備えています。 単一の統合サービスである App Service では、さまざまなコンポーネント (Web サイト、モバイル アプリのバック エンド、RESTful API、ビジネス プロセス) を&1; つのソリューションにまとめることができます。
+App Service には、以前は Azure Websites および Azure Mobile Services として個別に提供されていた Web 機能とモバイル機能が含まれています。 さらに、ビジネス プロセスの自動化やクラウド API のホストに利用できる新しい機能も備えています。 単一の統合サービスである App Service では、さまざまなコンポーネント (Web サイト、モバイル アプリのバック エンド、RESTful API、ビジネス プロセス) を 1 つのソリューションにまとめることができます。
 
 次の 4 分間のビデオでは、App Service と以前の Azure サービスとの関連と App Service の新機能について簡単に説明しています。
 
@@ -67,7 +67,7 @@ App Service には、*アプリの種類*が複数用意されており、それ
 App Service プランには、次の定義があります。
 
 - **リージョン** (米国西部、米国東部など)
-- **スケール カウント** (インスタンス数&1;、2、3 など)
+- **スケール カウント** (インスタンス数 1、2、3 など)
 - **インスタンス サイズ** (Small、Medium、Large)
 - **SKU** (Free、Shared、Basic、Standard、Premium)
 

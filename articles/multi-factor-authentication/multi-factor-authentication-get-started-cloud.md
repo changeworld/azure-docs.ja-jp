@@ -33,15 +33,15 @@ ms.lasthandoff: 03/18/2017
 [Azure サブスクリプションにサインアップする](https://azure.microsoft.com/pricing/free-trial/) - Azure サブスクリプションをまだ取得していない場合は、サインアップが必要です。 Azure MFA を開始して使ってみるだけの場合、試用版のサブスクリプションを使用できます。
 
 ## <a name="enable-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の有効化
-ユーザーが Azure Multi-Factor Authentication を利用できるライセンスをお持ちであれば、Azure MFA を有効にするうえで必要な作業は特にありません。 ユーザーごとに&2; 段階認証の適用を開始できます。 Azure MFA を利用できるライセンスは、次の&3; 種類です。
+ユーザーが Azure Multi-Factor Authentication を利用できるライセンスをお持ちであれば、Azure MFA を有効にするうえで必要な作業は特にありません。 ユーザーごとに 2 段階認証の適用を開始できます。 Azure MFA を利用できるライセンスは、次の 3 種類です。
 - Azure Multi-Factor Authentication
 - Azure Active Directory Premium
 - Enterprise Mobility + Security
 
-この&3; 種類のライセンスのいずれもお持ちでない場合や、全ユーザーをカバーできるだけのライセンスがない場合でも、心配いりません。 手順が&1; つ増え、ディレクトリで[多要素認証プロバイダーを作成する](multi-factor-authentication-get-started-auth-provider.md)作業が加わるだけです。
+この 3 種類のライセンスのいずれもお持ちでない場合や、全ユーザーをカバーできるだけのライセンスがない場合でも、心配いりません。 手順が 1 つ増え、ディレクトリで[多要素認証プロバイダーを作成する](multi-factor-authentication-get-started-auth-provider.md)作業が加わるだけです。
 
-## <a name="turn-on-two-step-verification-for-users"></a>ユーザーに対する&2; 段階認証をオンにする
-あるユーザーに対して新たに&2; 段階認証を必須とするには、そのユーザーの状態を [無効] から [有効] に変更します。  ユーザーの状態の詳細については、「[Azure Multi-Factor Authentication におけるユーザーの状態](multi-factor-authentication-get-started-user-states.md)」を参照してください。
+## <a name="turn-on-two-step-verification-for-users"></a>ユーザーに対する 2 段階認証をオンにする
+あるユーザーに対して新たに 2 段階認証を必須とするには、そのユーザーの状態を [無効] から [有効] に変更します。  ユーザーの状態の詳細については、「[Azure Multi-Factor Authentication におけるユーザーの状態](multi-factor-authentication-get-started-user-states.md)」を参照してください。
 
 ユーザーの MFA を有効にするには、次の手順を使用します。
 
@@ -63,9 +63,9 @@ ms.lasthandoff: 03/18/2017
 10. ユーザーの状態が **[無効]** から **[有効]** に変わります。
     ![Enable Users](./media/multi-factor-authentication-get-started-cloud/user.png)
 
-有効にした後は、ユーザーにメールで通知することをお勧めします。 2 段階認証が有効になっているユーザーは、次回のサインイン時に、2 段階認証のためにアカウントの登録が必要であることを示すメッセージが表示されます。 このほか、ユーザーが&2; 段階認証の使用を開始した後には、ブラウザー以外のアプリからロックアウトされないように、アプリのパスワードを設定する必要があります。
+有効にした後は、ユーザーにメールで通知することをお勧めします。 2 段階認証が有効になっているユーザーは、次回のサインイン時に、2 段階認証のためにアカウントの登録が必要であることを示すメッセージが表示されます。 このほか、ユーザーが 2 段階認証の使用を開始した後には、ブラウザー以外のアプリからロックアウトされないように、アプリのパスワードを設定する必要があります。
 
-## <a name="use-powershell-to-automate-turning-on-two-step-verification"></a>PowerShell を使って&2; 段階認証を自動でオンにする
+## <a name="use-powershell-to-automate-turning-on-two-step-verification"></a>PowerShell を使って 2 段階認証を自動でオンにする
 [Azure AD PowerShell](/powershell/azureps-cmdlets-docs) を使用して[状態](multi-factor-authentication-whats-next.md)を変更するには、次のようにします。  `$st.State` は、次のいずれかの状態と一致するように変更できます。
 
 * 有効
@@ -75,7 +75,7 @@ ms.lasthandoff: 03/18/2017
 > [!IMPORTANT]
 > ユーザーの状態を [無効] から [強制] に直接変更することはお勧めしていません。 ユーザーが MFA の登録を終えておらず、[アプリのパスワード](multi-factor-authentication-whats-next.md#app-passwords)を取得していない場合には、ブラウザーベースでないアプリが動作を停止してしまうからです。 ブラウザーベースでないアプリを使用しており、アプリのパスワードを必要とする場合は、状態を一度 [無効] から [有効] に変更することをお勧めします。 これにより、ユーザーが登録とアプリのパスワードの取得を行うことができるようになります。 パスワードの取得が終わったら、状態を [強制] に移行してください。
 
-ユーザーを一括で有効にする方法の&1; つとして、PowerShell を使用します。 現在、Azure ポータルには一括有効化の機能がないため、各ユーザーを個別に選択する必要があります。 そのため、ユーザーの数が多いと作業量が膨大になることがあります。 以下のように PowerShell スクリプトを作成することで、ユーザーのリストをループ処理して各ユーザーを有効にすることができます。
+ユーザーを一括で有効にする方法の 1 つとして、PowerShell を使用します。 現在、Azure ポータルには一括有効化の機能がないため、各ユーザーを個別に選択する必要があります。 そのため、ユーザーの数が多いと作業量が膨大になることがあります。 以下のように PowerShell スクリプトを作成することで、ユーザーのリストをループ処理して各ユーザーを有効にすることができます。
 
         $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
         $st.RelyingParty = "*"
