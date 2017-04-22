@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/21/2017
+ms.date: 04/21/2017
 ms.author: kumud
 translationtype: Human Translation
 ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
@@ -39,7 +39,7 @@ ms.lasthandoff: 03/22/2017
     6. **[作成]**をクリックします。
     7. Traffic Manager プロファイルは、グローバルなデプロイが完了すると、それぞれのリソース グループ内にリソースの 1 つとして表示されます。
 
-![Traffic Manager プロファイルの作成](./media/traffic-manager-create-profile/Create-traffic-manager-profile.png)
+    ![Traffic Manager プロファイルの作成](./media/traffic-manager-create-profile/Create-traffic-manager-profile.png)
 
 ## <a name="add-traffic-manager-endpoints"></a>Traffic Manager エンドポイントの追加
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 03/22/2017
 5.    次の Azure Web Apps エンドポイントに対して手順 3. と 4. を繰り返します。 必ず **[優先順位]** の値を **[2]** に設定してこのエンドポイント追加してください。
 6.    両方のエンドポイントは、追加が完了すると、**[Traffic Manager プロファイル]** ブレードに、監視ステータスが **[オンライン]** の状態で表示されます。
 
-![Traffic Manager エンドポイントの追加](./media/traffic-manager-create-profile/add-traffic-manager-endpoint.png)
+    ![Traffic Manager エンドポイントの追加](./media/traffic-manager-create-profile/add-traffic-manager-endpoint.png)
 
 ## <a name="use-the-traffic-manager-profile"></a>Traffic Manager プロファイルの使用
 1.    ポータルの検索バーで、前のセクションで作成した **Traffic Manager プロファイル**の名前を検索します。 表示された結果で、Traffic Manager プロファイルをクリックします。

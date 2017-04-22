@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/14/2017
 ms.author: robmcm
 translationtype: Human Translation
 ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
 ms.openlocfilehash: 9f664b07566fe78d93b1e35a2e0f7e5513960fad
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -31,14 +32,23 @@ Azure サービス エンドポイントは、アプリケーションがどこ�
 **[Service Endpoints]** ダイアログで、次のいずれかを行います。
 
 * グローバル Azure プラットフォームを使用する場合は、**[Active Set (アクティブ セット)]** ドロップダウン リストから **[windowsazure.com]** を選択し、**[OK]** をクリックします。
+
 * 中国の 21Vianet が運営する Azure を使用する場合は、**[Active Set (アクティブ セット)]** ドロップダウン リストから **[windowsazure.cn (China)]** を選択し、**[OK]** をクリックします。
+
 * プライベート Azure プラットフォームを使用する場合:
+
   1. **[編集]**をクリックします。
+
   2. **[Service Endpoints]** ダイアログを閉じて基本設定ファイルを開くことを通知するダイアログ ボックスが表示されます。 **[OK]**をクリックします。
+
   3. Preferencesets.xml ファイルに、新しい `preferenceset` 要素を作成します。 この新しい要素の `name`、`blob`、`management`、`portalURL`、および `publishsettings` 属性を作成し、各属性にプライベート Azure プラットフォームに該当する値を追加します。 既存の `preferenceset` 要素に指定されている値をテンプレートとして使用できます。 **注**: `blob` 属性で使用する値には、URL に "blob" というテキストを含める必要があります。
+
   4. preferencesets.xml を保存して閉じます。
+
   5. **[Service Endpoints]** ダイアログを再度開きます。
+
   6. **[Active Set (アクティブ セット)]** ドロップダウン リストから、作成したアクティブ セットを選択し、**[OK]** をクリックします。
+
   7. プライベート Azure プラットフォームの `preferenceset` 要素を作成した後は、**[Services Endpoint (サービス エンドポイント)]** ダイアログの **[Edit (編集)]** ボタンをクリックすることで、要素に割り当てられている値を変更できます。 必要であれば、複数のプライベート Azure プラットフォームの `preferenceset` 要素を作成することもできます。
 
 ## <a name="see-also"></a>関連項目
@@ -62,9 +72,4 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 [ic719493]: ./media/azure-toolkit-for-eclipse-azure-service-endpoints/ic719493.png
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/dn268600.aspx -->
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

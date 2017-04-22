@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/14/2017
 ms.author: robmcm
 translationtype: Human Translation
 ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
 ms.openlocfilehash: 480a0f1c15dda00d7335c8d0ff02143a4e37abaa
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -61,9 +62,4 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 [ic719480]: ./media/azure-toolkit-for-eclipse-azure-project-properties/ic719480.png
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/jj835232.aspx -->
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

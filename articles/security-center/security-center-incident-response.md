@@ -25,13 +25,13 @@ ms.lasthandoff: 01/24/2017
 多くの組織は、攻撃を受けた後にのみセキュリティ インシデントに対応する方法を学習します。 コストを削減し、被害を抑えるためには、攻撃を受ける前にインシデント対応計画を整えておくことが重要です。 Azure Security Center は、インシデント対応のさまざまな段階で利用できます。
 
 ## <a name="incident-response-planning"></a>インシデント対応の計画
-計画が効果的なものとなるかどうかは、脅威に対する保護、検出、対応という&3; つの中心的な機能にかかっています。 保護はインシデントの防止を指し、検出は脅威の早期特定を指します。対応は、攻撃者を追い払うことと、システムを復元して侵害の影響を軽減することを指します。
+計画が効果的なものとなるかどうかは、脅威に対する保護、検出、対応という 3 つの中心的な機能にかかっています。 保護はインシデントの防止を指し、検出は脅威の早期特定を指します。対応は、攻撃者を追い払うことと、システムを復元して侵害の影響を軽減することを指します。
 
 この記事では、次の図に示すように、「[Microsoft Azure Security Response in the Cloud (クラウドにおける Microsoft Azure のセキュリティ対応)](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678)」で述べられているセキュリティ インシデント対応の段階を使用します。
 
 ![Incident response lifecycle](./media/security-center-incident-response/security-center-incident-response-fig1.png)
 
-Security Center は、検出、評価、診断の各段階で利用できます。 初期インシデント対応の&3; つの段階で Security Center が役に立つ例を次に示します。
+Security Center は、検出、評価、診断の各段階で利用できます。 初期インシデント対応の 3 つの段階で Security Center が役に立つ例を次に示します。
 
 * **検出**: イベント調査の最初の兆候を確認します。
   * 例: 優先順位の高いセキュリティの警告が Security Center ダッシュボードに表示されたことの最初の確認。
