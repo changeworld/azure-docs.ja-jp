@@ -42,7 +42,7 @@ ms.lasthandoff: 02/22/2017
 * webhcat-site.xml
 * yarn-site.xml
 
-ブートストラップの使用方法は&3; つあります。
+ブートストラップの使用方法は 3 つあります。
 
 * Azure PowerShell の使用
 * .NET SDK の使用

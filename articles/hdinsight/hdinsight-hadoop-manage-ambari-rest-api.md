@@ -59,7 +59,7 @@ HDInsight の Ambari REST API のベース URI は、https://CLUSTERNAME.azurehd
 >
 > `https://MyCluster.azurehdinsight.net/api/v1/clusters/MyCluster`
 > 
-> 名前が&2; 番目に出現したときの大文字/小文字の指定が正しくないため、次の URI はエラーを返します。
+> 名前が 2 番目に出現したときの大文字/小文字の指定が正しくないため、次の URI はエラーを返します。
 > 
 > `https://mycluster.azurehdinsight.net/api/v1/clusters/mycluster`
 >

@@ -23,7 +23,7 @@ ms.lasthandoff: 02/27/2017
 
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics と Power BI: ストリーミング データのリアルタイム分析ダッシュボード
-Azure Stream Analytics では、主要なビジネス インテリジェンス ツールの&1; つである Microsoft Power BI を利用することができます。 ここでは、Azure Stream Analytics を使用して、大量のストリーミング データを分析し、リアルタイム Power BI 分析ダッシュボードで確認する方法を説明します。
+Azure Stream Analytics では、主要なビジネス インテリジェンス ツールの 1 つである Microsoft Power BI を利用することができます。 ここでは、Azure Stream Analytics を使用して、大量のストリーミング データを分析し、リアルタイム Power BI 分析ダッシュボードで確認する方法を説明します。
 
 [Microsoft Power BI](https://powerbi.com/) を使用すると、ライブ ダッシュボードがすぐに作成されます。 [このシナリオを紹介する動画](https://www.youtube.com/watch?v=SGUpT-a99MA)をご覧ください。
 
@@ -58,7 +58,7 @@ Azure Stream Analytics では、主要なビジネス インテリジェンス �
 6. フィールドは次のように定義します。
     * **[グループ ワークスペース]**: データセットの作成先となる Power BI テナントのワークスペースを選択します。
     * **[データセット名]**: Power BI 出力に設定するデータセット名を入力します。 たとえば、"StreamAnalyticsRealTimeFraudPBI" を使用しましょう。
-    * **[テーブル名]**: Power BI 出力のデータセットの下にテーブル名を入力します。 たとえば、"StreamAnalyticsRealTimeFraudPBI" を使用しましょう。 現在、Stream Analytics ジョブからの Power BI 出力では、1 つのデータセット内に&1; つのテーブルのみを保持できます。
+    * **[テーブル名]**: Power BI 出力のデータセットの下にテーブル名を入力します。 たとえば、"StreamAnalyticsRealTimeFraudPBI" を使用しましょう。 現在、Stream Analytics ジョブからの Power BI 出力では、1 つのデータセット内に 1 つのテーブルのみを保持できます。
 
 7. **[作成]**を選択します。 出力の構成はこれで完了です。
 
@@ -128,21 +128,21 @@ Power BI データセットの詳細については、[Power BI REST API](https:
 ![不正行為の呼び出し](./media/stream-analytics-power-bi-dashboard/fraud-calls.png)
 
 
-このチュートリアルで紹介している方法では、1 つのデータセットに対して作成しているグラフは&1; 種類だけです。 Power BI は、組織の他の顧客のビジネス インテリジェンス ツールを作成するのに役立ちます。 Power BI ダッシュボードの別の例については、[Power BI の概要](https://youtu.be/L-Z_6P56aas?t=1m58s)ビデオをご覧ください。
+このチュートリアルで紹介している方法では、1 つのデータセットに対して作成しているグラフは 1 種類だけです。 Power BI は、組織の他の顧客のビジネス インテリジェンス ツールを作成するのに役立ちます。 Power BI ダッシュボードの別の例については、[Power BI の概要](https://youtu.be/L-Z_6P56aas?t=1m58s)ビデオをご覧ください。
 
 Power BI 出力の構成と Power BI グループの利用の詳細については、[Stream Analytics 出力について](stream-analytics-define-outputs.md "Stream Analytics 出力について")のページにある「[Power BI](stream-analytics-define-outputs.md#power-bi)」セクションをご覧ください。 また、「[Power BI のダッシュボード](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/)」もぜひ参考にしてください。
 
 ## <a name="learn-about-limitations-and-best-practices"></a>制限事項とベスト プラクティスについて
 Power BI には、同時実行性とスループットに関して制約があります。[Power BI に関するこちらのページ](https://powerbi.microsoft.com/pricing "Power BI の価格")をご覧ください。
 
-現在、Power BI は、およそ&1; 秒に&1; 回呼び出すことができます。 ストリーミング ビジュアルでは、15 KB のパケットがサポートされます。 これを超えると、ストリーミング ビジュアルは失敗します (ただし、プッシュは動作し続けます)。
+現在、Power BI は、およそ 1 秒に 1 回呼び出すことができます。 ストリーミング ビジュアルでは、15 KB のパケットがサポートされます。 これを超えると、ストリーミング ビジュアルは失敗します (ただし、プッシュは動作し続けます)。
 
 このような制限から必然的に、Power BI は、Azure Stream Analytics で大幅なデータ負荷の低減が見られるケースへと落ち着きます。
-1 秒あたりのデータ プッシュを&1; 回以内に抑え、かつスループットの要件の範囲内にクエリを抑えるために、タンブリング ウィンドウやホッピング ウィンドウの使用をお勧めします。
+1 秒あたりのデータ プッシュを 1 回以内に抑え、かつスループットの要件の範囲内にクエリを抑えるために、タンブリング ウィンドウやホッピング ウィンドウの使用をお勧めします。
 
 必要な期間 (秒) の値は、次の数式を使用して計算することができます。
 
-![式&1;](./media/stream-analytics-power-bi-dashboard/equation1.png)  
+![式 1](./media/stream-analytics-power-bi-dashboard/equation1.png)  
 
 For example:
 - 1 秒間隔でデータを送信するデバイスが 1,000 台。
@@ -151,7 +151,7 @@ For example:
 
 これを式に当てはめると次のようになります。
 
-![式&2;](./media/stream-analytics-power-bi-dashboard/equation2.png)  
+![式 2](./media/stream-analytics-power-bi-dashboard/equation2.png)  
 
 つまり、最初のクエリは次のように変更できます。
 
@@ -170,7 +170,7 @@ For example:
 
 
 ### <a name="renew-authorization"></a>承認の更新
-ジョブが作成されてから、または最後の認証以降にパスワードが変わっている場合、Power BI アカウントを再認証する必要があります。 また、Azure Active Directory (Azure AD) テナント上で Azure Multi-Factor Authentication が構成されている場合は、Power BI の承認を&2; 週間ごとに更新する必要があります。 更新しなかった場合、ジョブが出力されなかったり、操作ログに "ユーザー認証エラー" が記録されたりする現象が生じる可能性があります。
+ジョブが作成されてから、または最後の認証以降にパスワードが変わっている場合、Power BI アカウントを再認証する必要があります。 また、Azure Active Directory (Azure AD) テナント上で Azure Multi-Factor Authentication が構成されている場合は、Power BI の承認を 2 週間ごとに更新する必要があります。 更新しなかった場合、ジョブが出力されなかったり、操作ログに "ユーザー認証エラー" が記録されたりする現象が生じる可能性があります。
 
 同様に、トークンの期限が切れた後に、ジョブを開始しようとすると、エラーが発生し、ジョブは開始できません。 この問題を解決するには、実行中のジョブを停止し、Power BI 出力に移動します。 データの損失を避けるには、**[承認の更新]** リンクを選択し、**[最後に停止した時刻]** からジョブを再開します。
 

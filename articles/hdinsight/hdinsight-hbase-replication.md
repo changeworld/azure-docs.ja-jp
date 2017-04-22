@@ -23,7 +23,7 @@ ms.lasthandoff: 02/23/2017
 ---
 # <a name="configure-hbase-replication"></a>HBase レプリケーションの構成
 
-1 つの仮想ネットワーク (VNet) 内または&2; つの仮想ネットワーク間で HBase レプリケーションを構成する方法について説明します。
+1 つの仮想ネットワーク (VNet) 内または 2 つの仮想ネットワーク間で HBase レプリケーションを構成する方法について説明します。
 
 クラスターのレプリケーションでは、ソース プッシュの手法が使用されます。 HBase クラスターは、ソースまたはターゲットになることも、両方のロールを同時に満たすこともできます。 レプリケーションは非同期であり、レプリケーションの目的は最終的な整合性です。 レプリケーションが有効になった列ファミリに対する編集をソースが受け取ると、その編集はすべてのターゲット クラスターに伝達されます。 クラスター間でデータがレプリケートされるときは、ソース クラスターとそのデータを既に消費されているすべてのクラスターが追跡されて、レプリケーション ループが防止されます。
 
@@ -49,11 +49,11 @@ ms.lasthandoff: 02/23/2017
 
 ## <a name="configure-the-environments"></a>環境の構成
 
-可能な構成オプションは&3; つあります。
+可能な構成オプションは 3 つあります。
 
-- 1 つの Azure Virtual Network 内の&2; つの HBase クラスター
-- 同じリージョンの&2; つの異なる仮想ネットワーク内の&2; つの HBase クラスター
-- 2 つの異なるリージョンの&2; つの異なる仮想ネットワーク内の&2; つの HBase クラスター (geo レプリケーション)
+- 1 つの Azure Virtual Network 内の 2 つの HBase クラスター
+- 同じリージョンの 2 つの異なる仮想ネットワーク内の 2 つの HBase クラスター
+- 2 つの異なるリージョンの 2 つの異なる仮想ネットワーク内の 2 つの HBase クラスター (geo レプリケーション)
 
 環境を構成しやすくするために、複数の [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-overview.md)が用意されています。 他の方法で環境を構成する場合は、次の記事を参照してください。
 
@@ -66,9 +66,9 @@ ms.lasthandoff: 02/23/2017
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-replication-one-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
-### <a name="configure-two-virtual-networks-in-the-same-region"></a>同じリージョンでの&2; つの仮想ネットワークの構成
+### <a name="configure-two-virtual-networks-in-the-same-region"></a>同じリージョンでの 2 つの仮想ネットワークの構成
 
-次のイメージをクリックして、同じリージョンに、VNet ピアリングされた&2; つの仮想ネットワークと&2; つの HBase クラスターを作成します。 テンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-two-vnets-same-region/)に格納されています。
+次のイメージをクリックして、同じリージョンに、VNet ピアリングされた 2 つの仮想ネットワークと 2 つの HBase クラスターを作成します。 テンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-two-vnets-same-region/)に格納されています。
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-replication-two-vnets-same-region%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
@@ -83,7 +83,7 @@ HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 2. 左側のメニューで **[リソース グループ]** をクリックします。
 3. デスティネーション HBase クラスターを含むリソース グループをクリックします。 これは、Resource Manager テンプレートを使用して環境を作成するときに指定したリソース グループです。 フィルターを使用して一覧を絞り込むことができます。 2 つの仮想ネットワークを含むリソースの一覧を表示できます。
-4. デスティネーション HBase クラスターを含む仮想ネットワークをクリックします。 たとえば、**[xxxx-vnet2]** をクリックします。 **nic-zookeepermode-** で始まる名前を持つ&3; つのデバイスを確認できます。 これらのデバイスは、3 つの ZooKeeper VM です。
+4. デスティネーション HBase クラスターを含む仮想ネットワークをクリックします。 たとえば、**[xxxx-vnet2]** をクリックします。 **nic-zookeepermode-** で始まる名前を持つ 3 つのデバイスを確認できます。 これらのデバイスは、3 つの ZooKeeper VM です。
 5. いずれかの ZooKeeper VM をクリックします。
 6. **[IP 構成]** をクリックします。
 7. 一覧の **[ipConfig1]** をクリックします。
@@ -95,15 +95,15 @@ HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用
 
 VNet 間のシナリオの場合は、**hdi_enable_replication.sh**スクリプト アクションを呼び出すときに **-ip** スイッチを使用する必要があります。
 
-### <a name="configure-two-virtual-networks-in-two-different-regions"></a>2 つの異なるリージョンでの&2; つの仮想ネットワークの構成
+### <a name="configure-two-virtual-networks-in-two-different-regions"></a>2 つの異なるリージョンでの 2 つの仮想ネットワークの構成
 
-2 つの異なるリージョンに&2; つの仮想ネットワークを作成するには、次のイメージをクリックします。 このテンプレートは、パブリック Azure BLOB コンテナーに格納されています。
+2 つの異なるリージョンに 2 つの仮想ネットワークを作成するには、次のイメージをクリックします。 このテンプレートは、パブリック Azure BLOB コンテナーに格納されています。
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhbaseha%2Fdeploy-hbase-geo-replication.json" target="_blank"><img src="./media/hdinsight-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
 2 つの仮想ネットワーク間の VPN ゲートウェイを作成します。 手順については、[サイト間接続を持つ VNet の作成](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)に関する記事を参照してください。
 
-HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用します。 デスティネーション HBase ZooKeeper ノードの静的 IP アドレスを構成する必要があります。 静的 IP を構成するには、この記事の「同じリージョンに&2; つの仮想ネットワークを構成する」を参照してください。
+HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用します。 デスティネーション HBase ZooKeeper ノードの静的 IP アドレスを構成する必要があります。 静的 IP を構成するには、この記事の「同じリージョンに 2 つの仮想ネットワークを構成する」を参照してください。
 
 VNet 間のシナリオの場合は、**hdi_enable_replication.sh**スクリプト アクションを呼び出すときに **-ip** スイッチを使用する必要があります。
 
@@ -182,11 +182,11 @@ VNet 間のシナリオの場合は、**hdi_enable_replication.sh**スクリプ�
 
 ## <a name="copy-and-migrate-data"></a>データのコピーと移行
 
-レプリケーションを有効にした後でデータをコピー/移行するスクリプト アクションのスクリプトは&2; つあります。
+レプリケーションを有効にした後でデータをコピー/移行するスクリプト アクションのスクリプトは 2 つあります。
 
-- [小さなテーブル向けのスクリプト](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_copy_table.sh) (サイズが数ギガバイトであり、全部のコピーが&1; 時間以内に完了することが予期されます)
+- [小さなテーブル向けのスクリプト](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_copy_table.sh) (サイズが数ギガバイトであり、全部のコピーが 1 時間以内に完了することが予期されます)
 
-- [大きなテーブル向けのスクリプト](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/nohup_hdi_copy_table.sh)(コピー時間が&1; 時間を超えることが予期されます)
+- [大きなテーブル向けのスクリプト](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/nohup_hdi_copy_table.sh)(コピー時間が 1 時間を超えることが予期されます)
 
 「[レプリケーションを有効にする](#enable-replication)」と同じ手順で、次のパラメーターを指定したスクリプト アクションを呼び出すことができます。
 
