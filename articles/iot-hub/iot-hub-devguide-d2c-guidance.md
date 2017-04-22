@@ -22,7 +22,7 @@ ms.lasthandoff: 03/10/2017
 
 ---
 # <a name="device-to-cloud-communications-guidance"></a>device-to-cloud 通信に関するガイダンス
-デバイス アプリからソリューション バック エンドに情報を送信する場合、IoT Hub では、次の&3; つのオプションを公開します。
+デバイス アプリからソリューション バック エンドに情報を送信する場合、IoT Hub では、次の 3 つのオプションを公開します。
 
 * [device-to-cloud メッセージ][lnk-d2c]: 時系列のテレメトリとアラート用。
 * [報告されるプロパティ][lnk-twins]: 使用できる機能、状態、実行時間の長いワークフローの状態など、デバイスの状態情報のレポート用 (例: 構成とソフトウェアの更新)。 For example, configuration and software updates.
