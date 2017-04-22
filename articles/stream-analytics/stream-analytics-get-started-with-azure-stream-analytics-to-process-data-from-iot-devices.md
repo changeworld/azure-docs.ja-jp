@@ -59,7 +59,7 @@ Contoso は工業オートメーションの領域で活動する会社で、自
     ![新しい Stream Analytics ジョブの作成](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03.png)
    
    > [!NOTE]
-   > このストレージ アカウントは、1 リージョンあたり&1; 回のみ作成します。 このストレージは、そのリージョン内に作成されるすべての Stream Analytics ジョブで共有されます。
+   > このストレージ アカウントは、1 リージョンあたり 1 回のみ作成します。 このストレージは、そのリージョン内に作成されるすべての Stream Analytics ジョブで共有されます。
    > 
    > 
 4. ボックスをオンにしてジョブをダッシュボードに配置し、**[作成]** をクリックします。
@@ -84,7 +84,7 @@ Contoso は工業オートメーションの領域で活動する会社で、自
 1. PassThrough.txt ファイルからクエリを貼り付けます。 
    
     ![Test input stream](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06.png)
-2. 入力の隣にある&3; つの点をクリックし、**[ファイルからサンプル データをアップロードする]** ボックスを選択します。
+2. 入力の隣にある 3 つの点をクリックし、**[ファイルからサンプル データをアップロードする]** ボックスを選択します。
    
     ![Test input stream](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06a.png)
 3. その結果、右側にウィンドウが開きます。そのウィンドウで、ダウンロードした場所から HelloWorldASA-InputStream.json データ ファイルを選択し、ウィンドウ下部の **[OK]** をクリックします。
@@ -111,7 +111,7 @@ Contoso は工業オートメーションの領域で活動する会社で、自
 ご覧のように、結果に含まれるのは 245 行のみで、平均温度が 100 度を超えるセンサーの名前が一覧表示されます。 このクエリでは、センサー名である **dspl** 別に、30 秒の**タンブリング ウィンドウ**でイベントのストリームをグループ化しています。 一時的なクエリでは、時間の進み方を指定する必要があります。 ここでは、一時的な計算すべてに時間を関連付けるため、**TIMESTAMP BY** 句を使用して **OUTPUTTIME** 列を指定しました。 詳細については、MSDN の[時間管理](https://msdn.microsoft.com/library/azure/mt582045.aspx)と[ウィンドウ関数](https://msdn.microsoft.com/library/azure/dn835019.aspx)に関する記事を参照してください。
 
 ### <a name="query-detect-absence-of-events"></a>クエリ: イベントがないことを検出する
-入力イベントがないことを検出するためのクエリは、どのように記述すればよいのでしょうか。 センサーが最後にデータを送信してから&1; 分間イベントを送信しなかったタイミングを見つけましょう。 このクエリは AbsenseOfEvent.txt ファイルにあります。
+入力イベントがないことを検出するためのクエリは、どのように記述すればよいのでしょうか。 センサーが最後にデータを送信してから 1 分間イベントを送信しなかったタイミングを見つけましょう。 このクエリは AbsenseOfEvent.txt ファイルにあります。
 
 ![Detect absence of events](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-11.png)
 
