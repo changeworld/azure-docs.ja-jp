@@ -1,5 +1,5 @@
 ---
-title: "初めての Java Web アプリを Azure に&5; 分で作成する | Microsoft Docs"
+title: "初めての Java Web アプリを Azure に 5 分で作成する | Microsoft Docs"
 description: "サンプル アプリをデプロイして、App Service での Web アプリの実行がいかに簡単であるかを説明します。"
 services: app-service\web
 documentationcenter: 
@@ -21,7 +21,7 @@ ms.lasthandoff: 03/18/2017
 
 
 ---
-# <a name="create-your-first-java-web-app-in-azure-in-five-minutes"></a>初めての Java Web アプリを Azure に&5; 分で作成する
+# <a name="create-your-first-java-web-app-in-azure-in-five-minutes"></a>初めての Java Web アプリを Azure に 5 分で作成する
 [!INCLUDE [app-service-web-selector-get-started](../../includes/app-service-web-selector-get-started.md)]
 
 このクイック スタートを読むと、初めての Java Web アプリを [Azure App Service](../app-service/app-service-value-prop-what-is.md) に数分でデプロイできるようになります。

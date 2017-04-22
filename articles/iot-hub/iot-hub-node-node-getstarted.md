@@ -25,11 +25,11 @@ ms.lasthandoff: 03/17/2017
 # <a name="connect-your-simulated-device-to-your-iot-hub-using-node"></a>Node を使用してシミュレーション対象デバイスを IoT Hub に接続する
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
-このチュートリアルの最後には、次の&3; つの Node.js コンソール アプリが完成します。
+このチュートリアルの最後には、次の 3 つの Node.js コンソール アプリが完成します。
 
 * **CreateDeviceIdentity.js**。デバイス ID と関連付けられているセキュリティ キーを作成し、シミュレーション対象デバイス アプリを接続します。
 * **ReadDeviceToCloudMessages.js**。シミュレーション対象デバイス アプリから送信されたテレメトリを表示します。
-* **SimulatedDevice.js**。以前に作成したデバイス ID で IoT ハブに接続し、MQTT プロトコルを使用して&1; 秒ごとにテレメトリ メッセージを送信します。
+* **SimulatedDevice.js**。以前に作成したデバイス ID で IoT ハブに接続し、MQTT プロトコルを使用して 1 秒ごとにテレメトリ メッセージを送信します。
 
 > [!NOTE]
 > デバイス上で動作するアプリケーションの作成とソリューションのバックエンドで動作するアプリケーションの開発に利用できる各種 Azure IoT SDK については、[Azure IoT SDK][lnk-hub-sdks] に関する記事を参照してください。
@@ -138,7 +138,7 @@ IoT Hub の作成は以上です。 以降の作業に必要な IoT Hub ホス�
     ```
     var connectionString = '{iothub connection string}';
     ```
-6. コンソールに出力する次の&2; つの関数を追加します。
+6. コンソールに出力する次の 2 つの関数を追加します。
    
     ```
     var printError = function (err) {
@@ -209,7 +209,7 @@ IoT Hub の作成は以上です。 以降の作業に必要な IoT Hub ホス�
       };
     }
     ```
-7. コールバックを作成し、**setInterval** 関数を使用して&1; 秒ごとにメッセージを IoT ハブに送信します。
+7. コールバックを作成し、**setInterval** 関数を使用して 1 秒ごとにメッセージを IoT ハブに送信します。
    
     ```
     var connectCallback = function (err) {

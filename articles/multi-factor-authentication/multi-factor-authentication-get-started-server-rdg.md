@@ -26,7 +26,7 @@ ms.lasthandoff: 03/16/2017
 
 Windows Server 2012 R2 ではターミナル サービス向けの Windows 認証をサポートしていないため、MFA Server との統合には RD ゲートウェイと RADIUS を使用します。 
 
-Multi-Factor Authentication Server は別個のサーバーにインストールする必要があります。このサーバーがプロキシとしての役割を果たし、RADIUS 要求をリモート デスクトップ ゲートウェイ サーバーの NPS に戻します。 NPS でユーザー名とパスワードが検証されると、Multi-Factor Authentication Server に応答が返されます。Multi-Factor Authentication Server は、その応答を受けて認証の&2; つ目の要素を実行し、ゲートウェイに結果を返します。
+Multi-Factor Authentication Server は別個のサーバーにインストールする必要があります。このサーバーがプロキシとしての役割を果たし、RADIUS 要求をリモート デスクトップ ゲートウェイ サーバーの NPS に戻します。 NPS でユーザー名とパスワードが検証されると、Multi-Factor Authentication Server に応答が返されます。Multi-Factor Authentication Server は、その応答を受けて認証の 2 つ目の要素を実行し、ゲートウェイに結果を返します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,7 +38,7 @@ RD ゲートウェイは、RADIUS 認証を Azure Multi-Factor Authentication Se
 
 1. RD ゲートウェイ マネージャーでサーバー名を右クリックし、**[プロパティ]** を選択します。
 2. **[RD CAP ストア]** タブに移動し、**[NPS を実行するセントラル サーバー]** を選択します。 
-3. RADIUS サーバーとして&1; つ以上の Azure Multi-Factor Authentication Server を追加します。これには、各サーバーの名前または IP アドレスを入力します。 
+3. RADIUS サーバーとして 1 つ以上の Azure Multi-Factor Authentication Server を追加します。これには、各サーバーの名前または IP アドレスを入力します。 
 4. 各サーバーの共有シークレットを作成します。
 
 ## <a name="configure-nps"></a>NPS の構成
@@ -73,7 +73,7 @@ Azure Multi-Factor Authentication Server は、RD ゲートウェイと NPS 間�
 3. [クライアント] タブで、ポートが NPS の構成と一致していることを確認し、**[追加]** を選択します。
 4. RD ゲートウェイ サーバーの IP アドレス、アプリケーション名 (省略可能)、共有シークレットを追加します。 共有シークレットは、Azure Multi-Factor Authentication Server と RD ゲートウェイの両方で共通である必要があります。
 3. **[ターゲット]** タブに移動し、**[RADIUS サーバー]** ラジオ ボタンを選択します。
-4. **[追加]** を選択し、IP アドレス、共有シークレット、NPS サーバーのポートを入力します。 一元的な NPS を使用していない限り、RADIUS クライアントと RADIUS ターゲットは同じになります。 共有シークレットは、NPS サーバーの RADIUS クライアント セクションの&1; つのセットアップと一致している必要があります。
+4. **[追加]** を選択し、IP アドレス、共有シークレット、NPS サーバーのポートを入力します。 一元的な NPS を使用していない限り、RADIUS クライアントと RADIUS ターゲットは同じになります。 共有シークレットは、NPS サーバーの RADIUS クライアント セクションの 1 つのセットアップと一致している必要があります。
 
 ![RADIUS 認証](./media/multi-factor-authentication-get-started-server-rdg/radius.png)
 
