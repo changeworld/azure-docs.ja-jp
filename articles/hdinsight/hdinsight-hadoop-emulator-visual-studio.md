@@ -124,7 +124,7 @@ Hive には、構造化データを操作するための、SQL に似たクエ�
 
 ## <a name="create-a-hive-project"></a>Hive プロジェクトを作成する
 
-複数の Hive スクリプトを含むプロジェクトを作成することもできます。 プロジェクトは、複数の関連スクリプトを&1; つにまとめておきたい場合や、バージョン管理システムを使用して管理する必要がある場合に便利です。
+複数の Hive スクリプトを含むプロジェクトを作成することもできます。 プロジェクトは、複数の関連スクリプトを 1 つにまとめておきたい場合や、バージョン管理システムを使用して管理する必要がある場合に便利です。
 
 1. Visual Studio で、**[ファイル]**、**[新規]**、__[プロジェクト]__ の順に選択します。
 
@@ -132,7 +132,7 @@ Hive には、構造化データを操作するための、SQL に似たクエ�
 
     ![HIVE (HDInsight) template](./media/hdinsight-hadoop-emulator-visual-studio/new-hive-project.png)
 
-**[Hive Sample (Hive サンプル)]** プロジェクトには、**WebLogAnalysis.hql** と **SensorDataAnalysis.hql** という&2; つのスクリプトが含まれています。 これらのスクリプトを送信する際も、ウィンドウの上部にある **[送信]** ボタンをクリックします。
+**[Hive Sample (Hive サンプル)]** プロジェクトには、**WebLogAnalysis.hql** と **SensorDataAnalysis.hql** という 2 つのスクリプトが含まれています。 これらのスクリプトを送信する際も、ウィンドウの上部にある **[送信]** ボタンをクリックします。
 
 ## <a name="create-a-pig-project"></a>Pig プロジェクトを作成する
 

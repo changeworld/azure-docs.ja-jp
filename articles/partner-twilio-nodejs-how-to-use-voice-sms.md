@@ -218,7 +218,7 @@ app.post('/sms', (request, response) => {
 });
 ```
 
-`views/index.ejs` で、最初のフォームの下に、番号とテキスト メッセージを送信するためのもう&1; つのフォームを追加します。
+`views/index.ejs` で、最初のフォームの下に、番号とテキスト メッセージを送信するためのもう 1 つのフォームを追加します。
 
 ```html
 <form action="/sms" method="POST">
