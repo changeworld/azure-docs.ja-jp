@@ -18,9 +18,9 @@ ms.topic: hero-article
 ms.date: 03/15/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: c173f1b6937739f662eb41aa1886e66cb06ed729
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: a08fe566f4962684bc4aad220687e9cd36fc4abf
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -41,12 +41,13 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 
 1. [Azure ポータル](https://portal.azure.com/)にログインします。
 2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
-3. そのデータベースの Azure Portal ページの **[要点]** ウィンドウで、**サーバー名**を見つけてコピーします。
+3. データベースの **[概要]** ページで、次の図に示すように、完全修飾サーバー名を確認します。 サーバー名をポイントすると、**[コピーするにはクリックします]** オプションが表示されます。
 
    ![接続情報](./media/sql-database-connect-query-ssms/connection-information.png) 
 
+4. Azure SQL Database サーバーのログイン情報を忘れた場合は、[SQL データベース サーバー] ページに移動して、サーバー管理者名を表示し、必要に応じてパスワードをリセットします。 
 
-## <a name="connect-to-the-server-and-your-new-database"></a>サーバーと新しいデータベースへの接続
+## <a name="connect-to-your-database-in-the-sql-database-logical-server"></a>SQL Database 論理サーバーのデータベースに接続する
 
 SQL Server Management Studio を使用して、Azure SQL Database サーバーに対する接続を確立します。 
 
@@ -65,7 +66,7 @@ SQL Server Management Studio を使用して、Azure SQL Database サーバー�
 
    ![[サーバーへの接続]](./media/sql-database-connect-query-ssms/connect.png)  
 
-3. **[オプション]**をクリックします。 **[データベースへの接続]** セクションに「**mySampleDatabase**」と入力して、作成済みのこのデータベースに接続します。
+3. **[サーバーへの接続]** ダイアログ ボックスの **[オプション]** をクリックします。 **[データベースへの接続]** セクションに「**mySampleDatabase**」と入力して、このデータベースに接続します。
 
    ![サーバー上のデータベースに接続](./media/sql-database-connect-query-ssms/options-connect-to-db.png)  
 
@@ -73,7 +74,7 @@ SQL Server Management Studio を使用して、Azure SQL Database サーバー�
 
    ![サーバーに接続されました](./media/sql-database-connect-query-ssms/connected.png)  
 
-4. オブジェクト エクスプローラーで、**Databases** フォルダー、**mySampleDatabase** フォルダーの順に展開して、サンプル データベース内のオブジェクトを表示します。
+5. オブジェクト エクスプローラーで、**Databases** フォルダー、**mySampleDatabase** フォルダーの順に展開して、サンプル データベース内のオブジェクトを表示します。
 
 ## <a name="query-data"></a>データのクエリを実行する
 
@@ -91,7 +92,7 @@ SQL Server Management Studio を使用して、Azure SQL Database サーバー�
 
 3. ツール バーの **[実行]** をクリックして、Product と ProductCategory のテーブルからデータを取得します。
 
-    <img src="./media/sql-database-connect-query-ssms/query.png" alt="query" style="width: 780px;" />
+    ![query](./media/sql-database-connect-query-ssms/query.png)
 
 ## <a name="insert-data"></a>データを挿入する
 

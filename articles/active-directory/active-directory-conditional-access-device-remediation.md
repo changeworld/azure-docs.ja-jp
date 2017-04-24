@@ -1,6 +1,6 @@
 ---
-title: "Windows デバイスから Azure Portal で目的の場所にアクセスできない問題のトラブルシューティング | Microsoft Docs"
-description: "組織のオンライン リソースへのアクセスに関する問題を解決するための手順について説明します。"
+title: "Windows デバイスから Azure Portal で目的の場所にアクセスできない | Microsoft Docs"
+description: "このダイアログが表示されないようにするために、目的の場所にアクセスできない原因と確認事項について説明します。"
 services: active-directory
 keywords: "デバイス ベースの条件付きアクセス, デバイス登録, デバイス登録の有効化, デバイス登録と MDM"
 documentationcenter: 
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/06/2017
+ms.date: 04/11/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 4b8627f3cdd13578f9b4c35297bf5d550dccfd07
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
+ms.openlocfilehash: 42dcc653b50698cf8ce8145dfb51f27be7ece440
+ms.lasthandoff: 04/12/2017
 
 
 ---

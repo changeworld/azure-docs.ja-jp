@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 04/07/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: aef5bce6f440f4a0a57763f915d307297f50281b
-ms.lasthandoff: 04/10/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: d88f8bed0cbd14ee49986d6749396731a810034b
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -75,7 +75,6 @@ Azure Active Directory の監査ログは、コンプライアンスのために
 - 期間
 - 開始者 (アクター)
 - カテゴリ
-- カテゴリ
 - アクティビティのリソースの種類
 - アクティビティ
 
@@ -92,7 +91,7 @@ Azure Active Directory の監査ログは、コンプライアンスのために
 
 カスタムの期間を選択すると、開始時刻と終了時刻を構成できます。
 
-**[開始者 (アクター)]** フィルターでは、開始者の名前またはそのユーザー プリンシパル名 (UPN) を定義できます。
+**[開始者 (アクター)]** フィルターでは、開始者の名前またはそのユニバーサル プリンシパル名 (UPN) を定義できます。
 
 **[カテゴリ]** フィルターでは、次のフィルターのいずれかを選択できます。
 

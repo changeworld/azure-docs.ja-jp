@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 04/03/2017
+ms.date: 04/13/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 17fb538b33a4a4a2b333ff501e6e729f6000f623
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 8a86cf64dcd65e74285a1073f7494eba0708ddcd
+ms.lasthandoff: 04/15/2017
 
 ---
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 04/06/2017
 
 Azure 仮想マシンは、Azure Portal で作成できます。 この方法では、ブラウザーベースのユーザー インターフェイスで仮想マシンとそれに関連するすべてのリソースを作成して構成できます。 このクイック スタートでは、Azure Portal を使用して仮想マシンを作成する方法について説明しています。 デプロイが完了したら、サーバーに接続し、IIS をインストールします。
 
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/en-us/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="log-in-to-azure"></a>Azure へのログイン
 
@@ -42,7 +42,9 @@ Azure Portal (http://portal.azure.com) にログインします。
 
     ![ポータルのブレードで VM に関する基本情報を入力する](./media/quick-create-portal/create-windows-vm-portal-basic-blade.png)  
 
-5. VM のサイズを選択し、**[選択]** をクリックします。
+5. VM のサイズを選択します。 その他のサイズも表示するには、**[すべて表示]** を選択するか、**[Supported disk type (サポートされているディスクの種類)]** フィルターを変更します。 
+
+    ![VM のサイズを示すスクリーンショット](./media/quick-create-portal/create-windows-vm-portal-sizes.png)  
 
 6. 設定ブレードの **[管理ディスクを使用]** で **[はい]** を選択し、他の設定は既定のままにして、**[OK]** をクリックします。
 
@@ -54,11 +56,11 @@ Azure Portal (http://portal.azure.com) にログインします。
 
 IIS のトラフィックを許可するには、Web トラフィック用にポート 80 を開く必要があります。 次の手順でネットワーク セキュリティ グループ (NSG) の規則を作成し、ポート 80 で受信接続を許可してみましょう。
 
-1. 仮想マシンのブレードの **[Essentials (要点)]** セクションで、**リソース グループ**の名前をクリックします。
+1. 仮想マシンのブレードの **[要点]** セクションで、**リソース グループ**の名前をクリックします。
 2. リソース グループのブレードで、リソースの一覧の **[ネットワーク セキュリティ グループ]** をクリックします。 NSG 名は、VM 名の末尾に -nsg が付加された形式になります。
 3. 見出しの **[セキュリティ規則の受信]** をクリックして、受信規則の一覧を開きます。 一覧には既に RDP の規則が表示されています。
 4. **[+ 追加]** をクリックして **[受信セキュリティ規則の追加]** ブレードを開きます。
-5. **[名前]** に「**IIS**」と入力し、**[ポート範囲]** が 80 に設定されていること、および **[アクション]** が **[許可]** に設定されていることを確認したら、**[OK]** をクリックします。
+5. **[名前]** で「**IIS**」と入力します。 **[ポート範囲]** が 80 に設定されていることと、**[アクション]** が **[許可]** に設定されていることを確認します。 **[OK]**をクリックします。
 
 
 ## <a name="connect-to-virtual-machine"></a>仮想マシンへの接続
@@ -73,12 +75,12 @@ IIS のトラフィックを許可するには、Web トラフィック用にポ
 
 3. 仮想マシンの作成時に指定したユーザー名とパスワードを入力し、**[OK]** をクリックします。
 
-4. ログイン処理中に証明書の警告が表示される場合があります。 **[はい]** または **[続行]** をクリックして接続処理を続行します。
+4. サインイン処理中に証明書の警告が表示される場合があります。 **[はい]** または **[続行]** をクリックして接続処理を続行します。
 
 
 ## <a name="install-iis-using-powershell"></a>PowerShell を使用した IIS のインストール
 
-Azure VM にログインしたら、1 行の PowerShell を使用して、IIS をインストールし、Web トラフィックを許可するローカル ファイアウォール規則を有効にできます。  PowerShell プロンプトを開き、次のコマンドを実行します。
+仮想マシンで PowerShell プロンプトを開き、次のコマンドを実行して、IIS をインストールし、Web トラフィックを許可するローカル ファイアウォール規則を有効にします。
 
 ```powershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
@@ -90,13 +92,6 @@ IIS をインストールし、VM のポート 80 をインターネットから
 
 ![IIS の既定のサイト](./media/quick-create-powershell/default-iis-website.png) 
 
-## <a name="delete-virtual-machine"></a>仮想マシンの削除
-
-必要がなくなったら、次のコマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
-
-```powershell
-Remove-AzureRmResourceGroup -Name myResourceGroup
-```
 ## <a name="delete-virtual-machine"></a>仮想マシンの削除
 
 必要がなくなったら、リソース グループ、仮想マシン、すべての関連リソースを削除します。 そのためには、仮想マシン ブレードでリソース グループを選択し、**[削除]** をクリックします。

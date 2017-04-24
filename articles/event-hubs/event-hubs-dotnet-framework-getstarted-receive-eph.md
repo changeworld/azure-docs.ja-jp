@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 03/08/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 38fe7818771f6a6965cb324631d0935959576541
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 6c309a14e00324a9335bde61fe175ec3906c066d
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -28,7 +28,7 @@ Event Hubs は、接続されているデバイスとアプリケーションか
 
 このチュートリアルでは、**[イベント プロセッサ ホスト][EventProcessorHost]**を使用してイベント ハブからメッセージを受信する .NET Framework コンソール アプリケーションの記述方法を説明します。 .NET Framework を使用してイベントを送信するには、[.NET Framework を使用して Azure Event Hubs にイベントを送信する方法](event-hubs-dotnet-framework-getstarted-send.md)に関する記事を参照するか、左側の目次で適切な送信側の言語をクリックしてください。
 
-[イベント プロセッサ ホスト][EventProcessorHost]は、永続的なチェックポイントの管理によって Event Hubs のイベントの受信を簡素化し、並列してそれらの Event Hubs から受信する .NET クラスです。 [イベント プロセッサ ホスト][Event Processor Host]を使用すると、さまざまなノードでホストされている場合でも、複数の受信側間でイベントを分割できます。 この例では、受信側が単一の場合に[イベント プロセッサ ホスト][EventProcessorHost]を使用する方法を示します。 [イベント処理のスケールアウト][Scale out Event Processing with Event Hubs]のサンプルは、受信者側が複数の場合に[イベント プロセッサ ホスト][EventProcessorHost]を使用する方法を示します。
+[イベント プロセッサ ホスト][EventProcessorHost]は、永続的なチェックポイントの管理によってイベント ハブのイベントの受信を簡素化し、並列してそれらのイベント ハブから受信する .NET クラスです。 [イベント プロセッサ ホスト][Event Processor Host]を使用すると、さまざまなノードでホストされている場合でも、複数の受信側間でイベントを分割できます。 この例では、受信側が単一の場合に[イベント プロセッサ ホスト][EventProcessorHost]を使用する方法を示します。 [イベント処理のスケールアウト][Scale out Event Processing with Event Hubs]のサンプルは、受信者側が複数の場合に[イベント プロセッサ ホスト][EventProcessorHost]を使用する方法を示します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ Event Hubs は、接続されているデバイスとアプリケーションか
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs 名前空間とイベント ハブを作成する
 
-最初のステップでは、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[この記事](event-hubs-create.md)の手順を踏み、次のステップに進みます。
+最初の手順では、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[この記事](event-hubs-create.md)の手順を踏み、次の手順に進みます。
 
 ## <a name="create-an-azure-storage-account"></a>Azure Storage アカウントの作成
 
@@ -119,14 +119,14 @@ Event Hubs は、接続されているデバイスとアプリケーションか
      }
      ```
     
-     このクラスは、 **EventProcessorHost** から呼び出されて、Event Hub から受信したイベントを処理します。 `SimpleEventProcessor` クラスは、ストップウォッチを使用して **EventProcessorHost** コンテキストで定期的にチェックポイント メソッドを呼び出します。 これにより、受信側を再起動すると、処理の作業の&5; 分以内に機能が失われます。
+     このクラスは、**EventProcessorHost** から呼び出されて、イベント ハブから受信したイベントを処理します。 `SimpleEventProcessor` クラスは、ストップウォッチを使用して **EventProcessorHost** コンテキストで定期的にチェックポイント メソッドを呼び出します。 これにより、受信側を再起動すると、処理の作業の 5 分以内に機能が失われます。
 11. **Program** クラスで、ファイルの先頭に次の `using` ステートメントを追加します。
     
      ```csharp
      using Microsoft.ServiceBus.Messaging;
      ```
     
-     次に、`Program` クラスの `Main` メソッドを次のコードに置き換え、先ほど保存した Event Hub の名前と名前空間レベルの接続文字列、および前のセクションでコピーしたストレージ アカウントとキーを代入します。 
+     次に、`Program` クラスの `Main` メソッドを次のコードに置き換え、先ほど保存したイベント ハブの名前と名前空間レベルの接続文字列、および前のセクションでコピーしたストレージ アカウントとキーを代入します。 
     
      ```csharp
      static void Main(string[] args)
@@ -152,7 +152,7 @@ Event Hubs は、接続されているデバイスとアプリケーションか
 
 12. プログラムを実行し、エラーがないことを確認します。
   
-お疲れさまでした。 イベント プロセッサ ホストを使用して、イベント ハブからメッセージを受信しました。
+ご利用ありがとうございます。 イベント プロセッサ ホストを使用して、イベント ハブからメッセージを受信しました。
 
 
 > [!NOTE]
