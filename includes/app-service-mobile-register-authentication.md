@@ -12,8 +12,3 @@
 
 <!-- URLs. -->
 [Azure portal]: https://portal.azure.com/
-
-
-<!--HONumber=Dec16_HO2-->
-
-

@@ -2,7 +2,7 @@
 1. リモート監視ダッシュボードで **[+ デバイスの追加]** をクリックし、"*カスタム デバイス*" を追加します。 IoT Hub のホスト名、デバイス ID、デバイス キーをメモします。 これらの情報は、後でこのチュートリアルの中で remote_monitoring.js デバイス クライアント アプリケーションを準備するときに必要となります。
 2. 開発コンピューターに Node.js のバージョン 0.12.x 以降がインストールされていることを確認します。 バージョンを確認するには、コマンド プロンプトまたはシェルから「 `node --version` 」を実行します。 パッケージ マネージャーを使用して Linux に Node.js をインストールする方法については、[パッケージ マネージャーによる Node.js のインストール][node-linux]に関するページを参照してください。
 3. Node.js をインストールしたら、ご使用の開発コンピューターに最新バージョンの [azure-iot-sdk-node][lnk-github-repo] リポジトリを複製します。 最新バージョンのライブラリとサンプルを入手するために、必ず **master** ブランチを使用してください。
-4. ローカルにコピーした [azure-iot-sdk-node][lnk-github-repo] リポジトリの node/device/samples フォルダーから次の&2; つのファイルを開発コンピューター上の空のフォルダーにコピーします。
+4. ローカルにコピーした [azure-iot-sdk-node][lnk-github-repo] リポジトリの node/device/samples フォルダーから次の 2 つのファイルを開発コンピューター上の空のフォルダーにコピーします。
    
    * packages.json
    * remote_monitoring.js
@@ -44,7 +44,3 @@
 [lnk-github-repo]: https://github.com/Azure/azure-iot-sdk-node
 [image1]: media/iot-suite-send-external-temperature/image1.png
 [image2]: media/iot-suite-send-external-temperature/image2.png
-
-<!--HONumber=Dec16_HO3-->
-
-
