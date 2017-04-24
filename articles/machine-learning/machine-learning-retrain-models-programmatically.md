@@ -56,7 +56,7 @@ ms.lasthandoff: 03/02/2017
 
 1. 実験キャンバスの下部で、**[Set Up Web Service (Web サービスの設定)]** をクリックして **[Predictive Web Service (予測 Web サービス)]** を選択します。 これによりモデルがトレーニング済みのモデルとして保存され、Web サービス入力モジュールと Web サービス出力モジュールが追加されます。 
 2. **[実行]**をクリックします。 
-3. 実験の実行が終了したら **[Deploy Web Service [Classic] (Web サービスのデプロイ [従来])]** または **[Deploy Web Service [New] (Web サービスのデプロイ [新規])]** を選択します。
+3. 実験の実行が終了したら **[Deploy Web Service [Classic] \(Web サービスのデプロイ [従来])]** または **[Deploy Web Service [New] \(Web サービスのデプロイ [新規])]** を選択します。
 
 > [!NOTE] 
 > 新しい Web サービスをデプロイするには、Web サービスのデプロイ先となるサブスクリプションで十分なアクセス許可を持っている必要があります。 詳しくは、「[Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する](machine-learning-manage-new-webservice.md)」をご覧ください。 
@@ -74,11 +74,11 @@ ms.lasthandoff: 03/02/2017
 
 **従来の Web サービス**
 
-実験キャンバスの下部で、**[Set Up Web Service (Web サービスの設定)]** をクリックして **Deploy Web Service [Classic] (Web サービスのデプロイ [従来])** を選択します。 Web サービス **ダッシュボード** が、API キーとバッチ実行用 API ヘルプ ページとともに表示されます。 トレーニング済みのモデルの作成に使用できるのはバッチ実行メソッドのみです。
+実験キャンバスの下部で、**[Set Up Web Service (Web サービスの設定)]** をクリックして **Deploy Web Service [Classic] \(Web サービスのデプロイ [従来])** を選択します。 Web サービス **ダッシュボード** が、API キーとバッチ実行用 API ヘルプ ページとともに表示されます。 トレーニング済みのモデルの作成に使用できるのはバッチ実行メソッドのみです。
 
 **新しい Web サービス**
 
-実験キャンバスの下部で、**[Set Up Web Service (Web サービスの設定)]** をクリックして **[Deploy Web Service [Classic] (Web サービスのデプロイ [従来])** を選択します。 Web サービス Azure Machine Learning Web サービスのポータルが [Deploy web service (Web サービスのデプロイ)] ページに表示されます。 Web サービスの名前を入力し、支払プランを選択してから、**[デプロイ]** をクリックします。 トレーニング済みのモデルの作成に使用できるのはバッチ実行メソッドのみです。
+実験キャンバスの下部で、**[Set Up Web Service (Web サービスの設定)]** をクリックして **[Deploy Web Service [New] \(Web サービスのデプロイ [新規])]** を選択します。 Web サービス Azure Machine Learning Web サービスのポータルが [Deploy web service (Web サービスのデプロイ)] ページに表示されます。 Web サービスの名前を入力し、支払プランを選択してから、**[デプロイ]** をクリックします。 トレーニング済みのモデルの作成に使用できるのはバッチ実行メソッドのみです。
 
 いずれの場合でも、実験の実行が完了すると、ワークフローは次のようになります。
 
@@ -151,7 +151,7 @@ BES サンプル コードは、ファイルをローカル ドライブ ("C:\te
         },
 
 > [!NOTE]
-> 出力場所の名前は、このチュートリアルで使用されている名前とは異なる場合があります。これは、Web サービス出力モジュールを追加した順序に基づいています。 このトレーニング実験は&2; つの出力で設定したため、結果には、両方のストレージの場所に関する情報が含まれています。  
+> 出力場所の名前は、このチュートリアルで使用されている名前とは異なる場合があります。これは、Web サービス出力モジュールを追加した順序に基づいています。 このトレーニング実験は 2 つの出力で設定したため、結果には、両方のストレージの場所に関する情報が含まれています。  
 > 
 > 
 
@@ -169,9 +169,9 @@ BES サンプル コードは、ファイルをローカル ドライブ ("C:\te
 出力結果から *BaseLocation*、*RelativeLocation*、*SasBlobToken* をコピーします。これは、後で再トレーニング プロセスで使用します。
 
 ## <a name="next-steps"></a>次のステップ
-**[Deploy Web Service [Classic](Web サービスのデプロイ [従来])]** をクリックして予測 Web サービスをデプロイした場合は、「[従来の Web サービスの再トレーニング](machine-learning-retrain-a-classic-web-service.md)」を参照してください。
+**[Deploy Web Service [Classic] \(Web サービスのデプロイ [従来])]** をクリックして予測 Web サービスをデプロイした場合は、「[従来の Web サービスの再トレーニング](machine-learning-retrain-a-classic-web-service.md)」を参照してください。
 
-**[Deploy Web Service [New](Web サービスのデプロイ [新規])]** をクリックして予測 Web サービスをデプロイした場合は、[Machine Learning Management コマンドレットを使用した新しい Web サービスの再トレーニング](machine-learning-retrain-new-web-service-using-powershell.md)に関するページをご覧ください。
+**[Deploy Web Service [New] \(Web サービスのデプロイ [新規])]** をクリックして予測 Web サービスをデプロイした場合は、[Machine Learning Management コマンドレットを使用した新しい Web サービスの再トレーニング](machine-learning-retrain-new-web-service-using-powershell.md)に関するページをご覧ください。
 
 <!-- Retrain a New web service using the Machine Learning Management REST API -->
 
