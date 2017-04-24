@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 03/08/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 5c326a025a4276ae9b1a777439ed6c728d3e7103
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 306c9c5cb06caa186bc0b7f431a5412dfe810722
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -35,10 +35,10 @@ Event Hubs は、接続されているデバイスとアプリケーションか
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs 名前空間とイベント ハブを作成する
 
-最初のステップでは、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[この記事](event-hubs-create.md)の手順を踏み、次のステップに進みます。
+最初の手順では、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[この記事](event-hubs-create.md)の手順を踏み、次の手順に進みます。
 
 ## <a name="create-a-console-application"></a>コンソール アプリケーションの作成
-このセクションでは、Windows コンソール アプリを記述して、Event Hub にイベントを送信します。
+このセクションでは、イベント ハブにイベントを送信する Windows コンソール アプリを記述します。
 
 1. Visual Studio で、 **コンソール アプリケーション** プロジェクト テンプレートを使用して、新しい Visual C# のデスクトップ アプリ プロジェクトを作成します。 プロジェクトの名前として「 **Sender**」と入力します。
    
@@ -55,7 +55,7 @@ Event Hubs は、接続されているデバイスとアプリケーションか
     using System.Threading;
     using Microsoft.ServiceBus.Messaging;
     ```
-5. **Program** クラスに次のフィールドを追加し、前のセクションで作成した Event Hub の名前と、先ほど保存した名前空間レベルの接続文字列を値に代入します。
+5. **Program** クラスに次のフィールドを追加し、前のセクションで作成したイベント ハブの名前と、先ほど保存した名前空間レベルの接続文字列を値に代入します。
    
     ```csharp
     static string eventHubName = "{Event Hub name}";
@@ -98,7 +98,7 @@ Event Hubs は、接続されているデバイスとアプリケーションか
     ```
 8. プログラムを実行し、エラーがないことを確認します。
   
-お疲れさまでした。 メッセージを Event Hub に送信しました。
+ご利用ありがとうございます。 メッセージをイベント ハブに送信しました。
 
 ## <a name="next-steps"></a>次のステップ
 イベント ハブを作成し、データを送信する実用的なアプリケーションが構築できたので、次のシナリオに移動します。

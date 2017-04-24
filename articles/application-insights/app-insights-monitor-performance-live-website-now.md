@@ -14,9 +14,9 @@ ms.topic: get-started-article
 ms.date: 02/08/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: a0340359dff470551a08a8213f3a704f15f78794
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 88abdb41a403f9c1dc85e574c655c532ee9b1eb5
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -27,7 +27,7 @@ Azure Application Insights を使用すれば、ライブ Web アプリケーシ
 
 ![サンプルのグラフ](./media/app-insights-monitor-performance-live-website-now/10-intro.png)
 
-Application Insights を .NET Web アプリケーションに適用する方法には、次の&3; つがあります。
+Application Insights を .NET Web アプリケーションに適用する方法には、次の 3 つがあります。
 
 * **ビルド時**: Web アプリ コードに [Application Insights SDK を追加][greenbrown]します。
 * **実行時:** 後述するように、コードのリビルドと再デプロイを行うことなく、サーバー上の Web アプリをインストルメント化します。
@@ -184,6 +184,54 @@ IIS のサポート: IIS 7、7.5、8、8.5 (IIS は必須)。
 
 * 最新の Application Insights SDK をサーバーにダウンロードします。
 
+## <a name="questions"></a>Status Monitor に関する質問
+
+### <a name="what-is-status-monitor"></a>Status Monitor とは何ですか?
+
+IIS Web サーバーにインストールするデスクトップ アプリケーションです。 Web アプリのインストルメント化と構成を支援します。 
+
+### <a name="when-do-i-use-status-monitor"></a>どのような場合に Status Monitor を使うのですか?
+
+* IIS サーバーで実行される任意の Web アプリをインストルメント化する場合。既に実行中の場合でも、インストルメント化が可能です。
+* コンパイル時に [Application Insights SDK でビルドされた](app-insights-asp-net.md) Web アプリ用の追加のテレメトリを有効にする場合。 
+
+### <a name="can-i-close-it-after-it-runs"></a>実行後に閉じることはできますか?
+
+はい。 選択した Web サイトをインストルメント化した後で、閉じることができます。
+
+単独でテレメトリを収集することはありません。 Web アプリの構成と、一部のアクセス許可の設定のみを行います。
+
+### <a name="what-does-status-monitor-do"></a>Status Monitor では何ができますか?
+
+Status Monitor でインストルメント化する Web アプリを選択する際、次のことができます。
+
+* Web アプリのバイナリ フォルダーで、Application Insights のアセンブリと .config ファイルをダウンロードし、配置します。
+* `web.config` を変更して、Application Insights HTTP 追跡モジュールを追加します。
+* CLR プロファイリングを有効にして、依存関係の呼び出しを収集します。
+
+### <a name="do-i-need-to-run-status-monitor-whenever-i-update-the-app"></a>アプリを更新するときは、毎回 Status Monitor を実行する必要がありますか?
+
+段階的に再デプロイする場合は必要ありません。 
+
+発行プロセスで [既存のファイルの削除] オプションを選択した場合は、Status Monitor を再実行して Application Insights を構成する必要があります。
+
+### <a name="what-telemetry-is-collected"></a>どのようなテレメトリが収集されますか?
+
+Status Monitor を使用して実行時にのみインストルメント化するアプリケーションの場合:
+
+* HTTP 要求
+* 依存関係の呼び出し
+* 例外
+* パフォーマンス カウンター
+
+コンパイル時に既にインストルメント化されているアプリケーションの場合:
+
+ * プロセス カウンター。
+ * 依存関係の呼び出し (.NET 4.5) と、依存関係の呼び出しの戻り値 (.NET 4.6)。
+ * 例外スタック トレースの値。
+
+[詳細情報](http://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/)
+
 ## <a name="video"></a>ビデオ
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
@@ -212,5 +260,5 @@ IIS のサポート: IIS 7、7.5、8、8.5 (IIS は必須)。
 [greenbrown]: app-insights-asp-net.md
 [qna]: app-insights-troubleshoot-faq.md
 [roles]: app-insights-resources-roles-access-control.md
-[usage]: app-insights-web-track-usage.md
+[usage]: app-insights-javascript.md
 

@@ -14,9 +14,9 @@ ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: c4e1ecc824b09fd7523cdc7a29559adca19488f3
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: a06ba41193f00f4aa2c7af4e5430ed15f9bb877c
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -108,7 +108,7 @@ Web アプリが Application Insights に送信している利用統計情報を
 
 ![In portal.azure.com, open your app's resource and click Settings, Browser](./media/app-insights-javascript/03.png)
 
-*まだデータが表示されませんか?ページの上部にある**[更新]**をクリックします。まだは何も表示されませんか?「[トラブルシューティング](app-insights-troubleshoot-faq.md)」を参照してください。*
+*まだデータが表示されませんか?ページの上部にある **[更新]** をクリックします。まだは何も表示されませんか?「[トラブルシューティング](app-insights-troubleshoot-faq.md)」を参照してください。*
 
 [ブラウザー] ブレードは、あらかじめ設定されたフィルターと一連のグラフで構成された [メトリックス エクスプローラーのブレード](app-insights-metrics-explorer.md) です。 時間範囲、フィルター、グラフの構成を必要に応じて編集し、その結果をお気に入りとして保存することができます。 **[既定値に戻す]** をクリックすると、元のブレード構成に戻ります。
 
@@ -122,7 +122,7 @@ Web アプリが Application Insights に送信している利用統計情報を
 多くの場合、"*ネットワーク接続*" 時間は予想よりも短くなることに注意してください。これは、ブラウザーからサーバーに送信されるすべての要求の平均であるためです。 個別の要求の多くは接続時間が 0 です。サーバーへの接続が既にアクティブになっているためです。
 
 ### <a name="slow-loading"></a>読み込みに時間がかかる
-ページの読み込みに時間がかかる問題は、エンド ユーザーの満足度を下げる大きな要因の&1; つです。 グラフからページの読み込みに時間がかかっていることがわかれば、診断調査を簡単に行うことができます。
+ページの読み込みに時間がかかる問題は、エンド ユーザーの満足度を下げる大きな要因の 1 つです。 グラフからページの読み込みに時間がかかっていることがわかれば、診断調査を簡単に行うことができます。
 
 このグラフは、対象アプリにおける全ページ読み込みの平均時間を示しています。 問題が特定のページに限定されているかどうかは、ブレードの下の方にある、ページの URL ごとにセグメント化されたグリッドで確認できます。
 
@@ -230,6 +230,6 @@ AJAX 呼び出しには、Web ページのスクリプトから実行される�
 ## <a name="next"></a> 次のステップ
 * [利用状況を追跡する](app-insights-web-track-usage.md)
 * [カスタム イベントとメトリックス](app-insights-api-custom-events-metrics.md)
-* [ビルド - 測定 - 学習](app-insights-overview-usage.md)
+* [ビルド - 測定 - 学習](app-insights-web-track-usage.md)
 
 

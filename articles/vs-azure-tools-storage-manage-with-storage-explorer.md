@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 11/18/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 0550f5fecd83ae9dc0acb2770006156425baddf3
-ms.openlocfilehash: 0617d2e668fe719d6002254b6d13ca729887c0e3
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 07b62cd6f6deb0cf3ff1c806204ebc26c773a164
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -47,7 +48,7 @@ Microsoft Azure ストレージ エクスプローラー (プレビュー) は�
 1. ストレージ エクスプローラー (プレビュー) で、 **[Azure アカウントの設定]**を選択します。
 
     ![[Azure アカウントの設定]][0]
-2. 左側のウィンドウに、ログインしている Microsoft アカウントがすべて表示されます。 別のアカウントに接続するには、 **[アカウントの追加]**を選択し、ダイアログに従って、少なくとも&1; つのアクティブな Azure サブスクリプションと関連付けられている Microsoft アカウントでサインインします。
+2. 左側のウィンドウに、ログインしている Microsoft アカウントがすべて表示されます。 別のアカウントに接続するには、 **[アカウントの追加]**を選択し、ダイアログに従って、少なくとも 1 つのアクティブな Azure サブスクリプションと関連付けられている Microsoft アカウントでサインインします。
 > [!NOTE]
 >サインインを利用した国内の Azure (Black Forest Azure、Fairfax Azure、Mooncake Azure など) への接続は、現在サポートされていません。 国内の Azure ストレージ アカウントに接続する方法については、「**外部ストレージ アカウントをアタッチまたはデタッチする**」を参照してください。
 
@@ -56,7 +57,68 @@ Microsoft Azure ストレージ エクスプローラー (プレビュー) は�
     ![Select Azure subscriptions][3]
 4. 左側のウィンドウに、選択した Azure サブスクリプションに関連付けられているストレージ アカウントが表示されます。
 
-    ![Selected Azure subscriptions][4]
+    ![選択された Azure サブスクリプション][4]
+
+## <a name="connect-to-an-azure-stack-subscription"></a>Azure Stack サブスクリプションに接続する
+
+1. ストレージ エクスプローラーでは、リモートで Azure Stack サブスクリプションに接続するために VPN 接続が必要です。 Azure Stack への VPN 接続を設定する方法の詳細については、[VPN を使用した Azure Stack への接続](azure-stack/azure-stack-connect-azure-stack.md#connect-with-vpn)に関するセクションを参照してください。
+
+2. Azure Stack POC では、Azure Stack の証明機関のルート証明書をエクスポートする必要があります。 MAS-CON01 (Azure Stack に VPN 接続された、Azure Stack のホスト コンピューターまたはローカル コンピューター) で `mmc.exe` を開きます。 **[ファイル]** で **[スナップインの追加と削除]** を選択し、**[証明書]** を追加して、**ローカル コンピューター**の**コンピューター アカウント**を管理します。
+
+   ![Azure Stack のルート証明書を mmc.exe で読み込む][25]   
+
+   **Console Root\Certificated (Local Computer)\Trusted Root Certification Authorities\Certificates** の直下で **AzureStackCertificationAuthority** を探します。 項目を右クリックし、**[すべてのタスク] > [エクスポート]** の順に選択します。 その後、ダイアログの指示に従い、**Base 64 でエンコードされた X.509 (.CER)** 形式の証明書をエクスポートします。 エクスポートした証明書は、次の手順で使用します。   
+
+   ![Azure Stack の証明機関のルート証明書をエクスポートする][26]   
+
+3. ストレージ エクスプローラー (プレビュー) で、**[編集]** メニュー、**[SSL 証明書]**、**[証明書のインポート]** の順に選択します。 ファイル ピッカー ダイアログを使用して、前の手順で調べた証明書を検索し、開きます。 インポートした後、ストレージ エクスプローラーを再起動するように求められます。
+
+   ![ストレージ エクスプローラー (プレビュー) に証明書をインポートする][27]
+
+4. ストレージ エクスプローラー (プレビュー) が再起動したら、**[編集]** メニューを選択し、**[Target Azure Stack (Azure Stack を対象にする)]** が選択されていることを確認します。 選択されていない場合は、選択してからストレージ エクスプローラーを再起動し、この変更を反映させます。 この構成は、Azure Stack 環境との互換性を持たせるために必要です。
+
+   ![[Target Azure Stack (Azure Stack を対象にする)] が選択されていることを確認する][28]
+
+5. 左側のバーで、**[アカウントの管理]** を選択します。 左側のウィンドウに、ログインしている Microsoft アカウントがすべて表示されます。 Azure Stack アカウントに接続するには、**[アカウントの追加]** を選択します。
+
+   ![Azure Stack アカウントを追加する][29]
+
+6. **[新しいアカウントを追加]** ダイアログで **[Azure 環境]** 内の **[Create Custom Environment (カスタム環境の作成)]** を選択し、**[次へ]** をクリックします。
+
+7. Azure Stack のカスタム環境に必要なすべての情報を入力し、**[サインイン]** をクリックします。  少なくとも 1 つのアクティブな Azure Stack サブスクリプションと関連付けられた Azure Stack アカウントでサインインするために、**[Sign in to a Custom Cloud environment (カスタム クラウド環境にサインインする)]** ダイアログに情報を入力します。 ダイアログの各フィールドの詳細は次のとおりです。
+
+    * **[環境名]** – このフィールドはユーザーがカスタマイズできます。
+    * **[機関]** – 値は https://login.windows.net である必要があります。 Azure China (Mooncake) の場合は、https://login.chinacloudapi.cn を使用してください。
+    * **[Sign in resource id (サインイン リソース ID)]** – 次の PowerShell を実行して、値を取得します。
+
+    クラウド管理者の場合:
+
+    ```powershell
+    PowerShell (Invoke-RestMethod -Uri https://adminmanagement.local.azurestack.external/metadata/endpoints?api-version=1.0 -Method Get).authentication.audiences[0]
+    ```
+
+    テナントの場合:
+
+    ```powershell
+    PowerShell (Invoke-RestMethod -Uri https://management.local.azurestack.external/metadata/endpoints?api-version=1.0 -Method Get).authentication.audiences[0]
+    ```
+
+    * **[Graph のエンドポイント]** – 値は https://graph.windows.net である必要があります。 Azure China (Mooncake) の場合は、https://graph.chinacloudapi.cn を使用してください。
+    * **[ARM resource id (ARM リソース ID)]** – [Sign in resource id (サインイン リソース ID)] と同じ値を使用します。
+    * **[ARM resource endpoint (ARM リソース エンドポイント)]** – [ARM resource endpoint (ARM リソース エンドポイント)] の例は次のとおりです。
+
+    クラウド管理者の場合: https://adminmanagement.local.azurestack.external   
+    テナントの場合: https://management.local.azurestack.external
+ 
+    * **[Tenant Ids (テナント ID)]** – 省略可能です。 ディレクトリを指定する必要がある場合にのみ値を入力します。
+
+8. Azure Stack アカウントでのサインインに成功すると、左側のウィンドウに、そのアカウントに関連付けられた Azure Stack サブスクリプションが表示されます。 操作する Azure Stack サブスクリプションを選択してから、**[適用]** を選択します  (**[すべてのサブスクリプション]** チェック ボックスをオンまたはオフにすることで、一覧の Azure Stack サブスクリプションがすべて選択された状態と、1 つも選択されていない状態を切り替えることができます)。
+
+   ![カスタム クラウド環境のダイアログに情報を入力した後、Azure Stack サブスクリプションを選択する][30]
+
+9. 左側のウィンドウに、選択した Azure Stack サブスクリプションに関連付けられているストレージ アカウントが表示されます。
+
+   ![Azure Stack サブスクリプション アカウントを含むストレージ アカウントの一覧][31]
 
 ## <a name="work-with-local-development-storage"></a>ローカル開発ストレージを操作する
 ストレージ エクスプローラー (プレビュー) では、Azure ストレージ エミュレーターを使ってローカル ストレージを操作することができます。 そのため、Azure にデプロイされたストレージ アカウントがなくても、ストレージ関連のコードを記述したり、ストレージをテストしたりできます (ストレージ アカウントが Azure ストレージ エミュレーターによってエミュレートされるため)。
@@ -207,9 +269,11 @@ Azure サブスクリプションの管理者は、 [SAS (Shared Access Signatur
 [22]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/download-storage-emulator.png
 [23]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connect-to-azure-storage-icon.png
 [24]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connect-to-azure-storage-next.png
-
-
-
-<!--HONumber=Jan17_HO3-->
-
+[25]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/add-certificate-azure-stack.png
+[26]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/export-root-cert-azure-stack.png
+[27]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/import-azure-stack-cert-storage-explorer.png
+[28]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/select-target-azure-stack.png
+[29]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/add-azure-stack-account.png
+[30]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/select-accounts-azure-stack.png
+[31]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/azure-stack-storage-account-list.png
 

@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 04/12/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: ace5d18cd88d55d167f8447d18d65ca21818ff62
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 0a6b5115a4eebfcce14094d82cdcc9579f80def6
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -54,13 +54,13 @@ Azure サブスクリプションごとに複数のワークスペースを用�
 
 エージェントを使用してデータを収集する場合は、[1 つ以上のワークスペースにレポートを生成するように各エージェントを構成](log-analytics-windows-agents.md)できます。
 
-System Center Operations Manager を使用している場合、各 Operations Manager 管理グループを&1; つのワークスペースのみに接続できます。 Operations Manager を使って管理するコンピューターに Microsoft Monitoring Agent をインストールし、Operations Manager と別の Log Analytics ワークスペースの両方にレポートを生成するようにエージェントを構成できます。
+System Center Operations Manager を使用している場合、各 Operations Manager 管理グループを 1 つのワークスペースのみに接続できます。 Operations Manager を使って管理するコンピューターに Microsoft Monitoring Agent をインストールし、Operations Manager と別の Log Analytics ワークスペースの両方にレポートを生成するようにエージェントを構成できます。
 
 ### <a name="workspace-information"></a>ワークスペース情報
 
 ワークスペースに関する詳細情報は Azure Portal で表示できます。 また、OMS ポータルでも詳細情報を表示できます。
 
-#### <a name="view-workspace-information-the-azure-portal"></a>Azure Portal でワークスペース情報を表示する
+#### <a name="view-workspace-information-in-the-azure-portal"></a>Azure Portal でワークスペース情報を表示する
 
 1. まだサインインしていない場合は、Azure サブスクリプションを使用して [Azure Portal](https://portal.azure.com) にサインインします。
 2. **ハブ** メニューで **[その他のサービス]** をクリックし、リソースの一覧で「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** をクリックします。  
@@ -75,7 +75,7 @@ System Center Operations Manager を使用している場合、各 Operations Ma
 
 既定では、ワークスペースを作成した Microsoft アカウントまたは組織アカウントは、そのワークスペースの管理者になります。
 
-Log Analytics ワークスペースへのアクセスを制御するアクセス許可モデルは&2; 種類あります。
+Log Analytics ワークスペースへのアクセスを制御するアクセス許可モデルは 2 種類あります。
 
 1. 従来の Log Analytics ユーザー ロール
 2. [Azure のロールベースのアクセス](../active-directory/role-based-access-control-configure.md)
@@ -149,7 +149,7 @@ Azure Portal に関して留意が必要ないくつかの点:
    * [Microsoft サポート] は、Microsoft サポート エンジニアなど Microsoft の従業員がトラブルシューティングのためにユーザーのワークスペースに一時的にアクセスすることを許可するために使用します。
 
      > [!NOTE]
-     > 最適なパフォーマンスを発揮するには、単一の OMS アカウントに関連付けられている Active Directory グループの数を&3; つ (1 つは管理者用に、1 つは共同作成者、もう&1; つは読み取り専用ユーザー用) に制限します。 それ以上のグループを使用すると、Log Analytics のパフォーマンスに影響を与える可能性があります。
+     > 最適なパフォーマンスを発揮するには、単一の OMS アカウントに関連付けられている Active Directory グループの数を 3 つ (1 つは管理者用に、1 つは共同作成者、もう 1 つは読み取り専用ユーザー用) に制限します。 それ以上のグループを使用すると、Log Analytics のパフォーマンスに影響を与える可能性があります。
      >
      >
 4. 追加するユーザーまたはグループの種類を **[管理者]**、**[共同作成者]**、**[読み取り専用ユーザー]** の中から選択します。  
@@ -177,7 +177,7 @@ OMS アカウントに関連付けられているユーザーのアカウント 
 4. 確認のダイアログ ボックスで **[はい]** をクリックします。
 
 ### <a name="remove-a-user-from-a-workspace"></a>ワークスペースからユーザーを削除する
-次の手順でワークスペースからユーザーを削除します。 ユーザーを削除しても、ワークスペースは閉じません。 ユーザーとワークスペース間の関連付けが削除されます。 1 人のユーザーが複数のワークスペースに関連付けられている場合、そのユーザーは、OMS にサインインして、他のワークスペースを表示することができます。
+次の手順でワークスペースからユーザーを削除します。 ユーザーを削除しても、ワークスペースは閉じません。 ユーザーとワークスペース間の関連付けが削除されます。 1 人のユーザーが複数のワークスペースに関連付けられている場合、そのユーザーは、OMS にサインインして、自分の他のワークスペースを表示することができます。
 
 1. OMS ポータルで、**[設定]** タイルをクリックします。
 2. **[アカウント]** タブ、**[ユーザーの管理]** タブの順にクリックします。
@@ -202,9 +202,6 @@ OMS アカウントに関連付けられているユーザーのアカウント 
     > [!IMPORTANT]
     > ワークスペースをリンクするためには、リンクするワークスペースに Azure アカウントが既にアクセスしていることが必要です。  つまり、Azure Portal へのアクセスに使用するアカウントは、ワークスペースへのアクセスに使用するアカウントと **同じ** アカウントである必要があります。 それ以外の場合は、「[既存のワークスペースへのユーザーの追加](#add-a-user-to-an-existing-workspace)」をご覧ください。
 
-
-
-
 ### <a name="to-link-a-workspace-to-an-azure-subscription-in-the-azure-portal"></a>Azure Portal でワークスペースを Azure サブスクリプションにリンクするには
 1. [Azure ポータル](http://portal.azure.com)にサインインします。
 2. **[Log Analytics]** を探して選択します。
@@ -225,12 +222,12 @@ OMS アカウントに関連付けられているユーザーのアカウント 
 8. **[OK]**をクリックします。 これでワークスペースがユーザーの Azure アカウントにリンクされました。
 
 > [!NOTE]
-> リンクするワークスペースが表示されない場合、OMS Web サイトで作成したワークスペースにアクセスする許可がユーザーの Azure サブスクリプションにありません。  OMS ポータルからこのアカウントへのアクセスを許可するには、「[既存のワークスペースへのユーザーの追加](#add-a-user-to-an-existing-workspace)」を参照してください。
+> リンクするワークスペースが表示されない場合、OMS ポータルで作成したワークスペースにアクセスする許可がユーザーの Azure サブスクリプションにありません。  OMS ポータルからこのアカウントへのアクセスを許可するには、「[既存のワークスペースへのユーザーの追加](#add-a-user-to-an-existing-workspace)」を参照してください。
 >
 >
 
 ## <a name="upgrade-a-workspace-to-a-paid-plan"></a>有料プランへワークスペースをアップグレードする
-OMS のワークスペースには、**Free**、**Standalone**、**OMS** の&3; 種類のプランがあります。  *Free* プランを利用している場合、Log Analytics に送信できるデータは 1 日あたり 500 MB が上限となります。  この量を超える場合は、この上限を超えるデータの収集漏れを防ぐためにワークスペースを有料プランに変更する必要があります。 プランの種類はいつでも変更できます。  OMS の価格の詳細については、[価格の詳細](https://www.microsoft.com/en-us/cloud-platform/operations-management-suite-pricing)に関する記述を参照してください。
+OMS のワークスペースには、**Free**、**Standalone**、**OMS** の 3 種類のプランがあります。  *Free* プランを利用している場合、Log Analytics に送信できるデータは 1 日あたり 500 MB が上限となります。  この量を超える場合は、この上限を超えるデータの収集漏れを防ぐためにワークスペースを有料プランに変更する必要があります。 プランの種類はいつでも変更できます。  OMS の価格の詳細については、[価格の詳細](https://www.microsoft.com/en-us/cloud-platform/operations-management-suite-pricing)に関する記述を参照してください。
 
 ### <a name="using-entitlements-from-an-oms-subscription"></a>OMS サブスクリプションに付属する資格の使用
 OMS E1、OMS E2 OMS、OMS Add-On for System Center のいずれかを購入することによって得られる資格を使用するには、OMS Log Analytics の *OMS* プランを選択します。
@@ -250,7 +247,7 @@ OMS サブスクリプションを購入すると、マイクロソフト エン
 OMS サブスクリプションの資格は、Azure Portal にも OMS ポータルにも表示されません。 資格と使用状況は、エンタープライズ ポータルで確認できます。  
 
 ワークスペースがリンクされている Azure サブスクリプションを変更する必要がある場合は、Azure PowerShell の [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx) コマンドレットを使用します。
-to
+
 ### <a name="using-azure-commitment-from-an-enterprise-agreement"></a>エンタープライズ契約の Azure コミットメントを使用する
 OMS サブスクリプションがない場合、料金は OMS のコンポーネントごとに発生し、その使用状況が Azure の請求書に記載されます。
 
@@ -290,7 +287,7 @@ OMS ポータルを使用して価格レベルを変更するには、Azure サ�
 
 ## <a name="change-how-long-log-analytics-stores-data"></a>Log Analytics でのデータの保持期間を変更する
 
-Free 価格レベルでは、Log Analytics によって直近の&7; 日間のデータが保持されます。
+Free 価格レベルでは、Log Analytics によって直近の 7 日間のデータが保持されます。
 Standard 価格レベルでは、Log Analytics によって直近の 30 日間のデータが保持されます。
 Premium 価格レベルでは、Log Analytics によって直近の 365 日間のデータが保持されます。
 Standalone および OMS 価格レベルでは、Log Analytics によって既定で直近の 31 日間のデータが保持されます。
