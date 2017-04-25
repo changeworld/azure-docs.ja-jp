@@ -62,7 +62,7 @@ OMS ポータルで作成するカスタム ダッシュボードはすべて、
 ![タイルの編集](./media/log-analytics-dashboards/oms-dashboards-pictorial05.png)
 
 ### <a name="tile-visualizations"></a>タイルの視覚化
-タイルの視覚化は、次の&3; 種類から選択できます。
+タイルの視覚化は、次の 3 種類から選択できます。
 
 | グラフの種類 | 実行内容 |
 | --- | --- |
