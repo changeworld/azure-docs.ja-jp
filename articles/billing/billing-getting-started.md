@@ -1,6 +1,6 @@
 ---
-title: "Azure の課金とコスト管理に関するガイダンス | Microsoft Docs"
-description: "課金を最適化するためのベスト プラクティスと最初に行うべきことについて説明します。"
+title: "課金を管理して予想外のコストを防ぐ - Azure | Microsoft Docs"
+description: "Azure の課金内容が予想外の金額となるのを防ぐ方法について説明します。 Microsoft Azure サブスクリプションに対して、コスト管理機能を使用します。"
 services: 
 documentationcenter: 
 author: jlian
@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 03/20/2017
 ms.author: jlian
 translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: af53cea83d2e348b2c73e56cf4b6ce5a875bce18
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: c69334279e79352e3f7ad58d356f6891dd060b0a
+ms.lasthandoff: 04/03/2017
 
 
 ---

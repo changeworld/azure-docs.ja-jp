@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: padmavc
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 75eeca842cc31be6807dd6071de6d9a5c327fad3
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 507fb3200fe62aaa813464e5d6152a79907fdef7
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -32,7 +32,7 @@ Encode EDIFACT Message コネクタでは、EDI およびパートナー固有�
 
 * Azure アカウント。[無料アカウント](https://azure.microsoft.com/free)を作成できます。
 * 既に定義され、Azure サブスクリプションに関連付けられている[統合アカウント](logic-apps-enterprise-integration-create-integration-account.md)。 Encode EDIFACT Message コネクタを使用するには、統合アカウントが必要です。 
-* 統合アカウントで既に定義されている&2; つ以上の[パートナー](logic-apps-enterprise-integration-partners.md)
+* 統合アカウントで既に定義されている 2 つ以上の[パートナー](logic-apps-enterprise-integration-partners.md)
 * 統合アカウントで既に定義されている [EDIFACT 契約](logic-apps-enterprise-integration-edifact.md)
 
 ## <a name="encode-edifact-messages"></a>EDIFACT メッセージをエンコードする
@@ -66,7 +66,7 @@ Encode EDIFACT Message コネクタでは、EDI およびパートナー固有�
 
 #### <a name="encode-edifact-message-by-agreement-name"></a>契約名による Encode EDIFACT Message
 
-契約名で EDIFACT メッセージをエンコードすることを選択した場合は、**[X12 契約の名前]** リストを開き、EDIFACT 契約名を入力または選択します。 エンコードする XML メッセージを入力します。
+契約名で EDIFACT メッセージをエンコードすることを選択した場合は、**[EDIFACT 契約の名前]** リストを開き、EDIFACT 契約名を入力または選択します。 エンコードする XML メッセージを入力します。
 
 ![EDIFACT 契約名とエンコードする XML メッセージの入力](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage6.png)
 

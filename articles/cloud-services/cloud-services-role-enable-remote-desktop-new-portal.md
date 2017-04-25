@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: b478251715076a254fe87abee1d709f47e2b3886
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: fc9b84d151144ae9cb49beacdf525fdc356818a6
+ms.lasthandoff: 04/11/2017
 
 
 ---
@@ -67,7 +67,7 @@ Azure Portal では、アプリケーションのデプロイ後でもリモー�
 4. **[開く]**、**[接続]** の順にクリックして、リモート デスクトップ接続を開始します。
 
 >[!NOTE]
-> クラウド サービスが NSG の背後にある場合は、ポート **20000** を開くルールを作成する必要があることがあります。
+> クラウド サービスが NSG の背後にある場合は、ポート **3389** と **20000** でのトラフィックを許可するルールを作成する必要があることがあります。  リモート デスクトップではポート **3389** を使用します。  クラウド サービス インスタンスは負荷分散されるため、接続先のインスタンスを直接制御することはできません。  *RemoteForwarder* および *RemoteAccess* エージェントは RDP トラフィックを管理し、クライアントが RDP Cookie を送信して接続先の個々のインスタンスを指定できるようにします。  *RemoteForwarder* および *RemoteAccess* エージェントではポート **20000*** を開く必要があります。NSG がある場合、ブロックされる可能性があります。
 
 ## <a name="additional-resources"></a>その他のリソース
 

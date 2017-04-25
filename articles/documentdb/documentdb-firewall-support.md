@@ -14,12 +14,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/10/2017
+ms.date: 04/05/2017
 ms.author: ankshah
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 7acbdda2e8179219c21370d20d30a94feb405fce
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 7b4f397e4abb66933f05e5d5ba4afeb8c2c00d5f
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -61,6 +61,16 @@ Azure Portal で IP アクセス制御ポリシーを設定するには、Docume
 ![Azure Portal で [ファイアウォール] ブレードを開く方法を示しているスクリーンショット](./media/documentdb-firewall-support/documentdb-azure-portal-firewall.png)
 
 新しいウィンドウで、Azure Portal がアカウントにアクセスできるかどうかを指定し、必要に応じてその他のアドレスと範囲を追加した後、**[保存]** をクリックします。  
+
+> [!NOTE]
+> IP アクセス制御ポリシーを有効にする場合は、アクセスを維持するために Azure Portal の IP アドレスを追加する必要があります。 ポータルの IP アドレスは次のとおりです。
+> |リージョン|IP アドレス|
+> |------|----------|
+> |以下を除くすべてのリージョン| 104.42.195.92|
+> |ドイツ|51.4.229.218|
+> |中国|139.217.8.252|
+> |米国政府アリゾナ|52.244.48.71|
+>
 
 ![Azure Portal でファイアウォール設定を構成する方法を示しているスクリーンショット](./media/documentdb-firewall-support/documentdb-azure-portal-firewall-configure.png)
 

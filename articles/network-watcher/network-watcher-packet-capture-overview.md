@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 211c33ceb8e3b9adc9ad75cf18aa459ad5523c18
-ms.openlocfilehash: 1478e5bb08b29e083861b63e4ca999a38fab8452
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: dde3d1b1b0708d49ac713e18242c3376d301c675
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -26,14 +26,10 @@ ms.lasthandoff: 02/22/2017
 
 Network Watcher の可変パケット キャプチャを使用すると、仮想マシンとの間で送受信されるトラフィックを追跡するパケット キャプチャ セッションを作成できます。 パケット キャプチャは、事後と事前に、ネットワークの異常を診断するのに役立ちます。 その他の用途には、ネットワーク統計の収集、ネットワークへの侵入に関する情報の取得などがあり、クライアントとサーバーの間で行われる通信のデバッグなどに役立ちます。
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
-
-パケット キャプチャは、Network Watcher によりリモートで開始される、仮想マシン拡張機能です。 この機能により、目的の仮想マシンでパケット キャプチャを手動で実行する負担が軽減され、貴重な時間の節約になります。 パケット キャプチャは、ポータル、PowerShell、CLI、REST API を介してトリガーできます。 パケット キャプチャをトリガーできる方法の一例は、仮想マシンのアラートの使用です。 監視したいトラフィックを確実にキャプチャするために、キャプチャ セッション用のフィルターが用意されています。 フィルターは 5 組 (プロトコル、ローカル IP アドレス、リモート IP アドレス、ローカル ポート、リモート ポート) の情報に基づいています。 キャプチャしたデータは、ローカル ディスクまたはストレージ BLOB に格納されます。
-
-![パケット キャプチャの概要][1]
+パケット キャプチャは、Network Watcher によりリモートで開始される、仮想マシン拡張機能です。 この機能により、目的の仮想マシンでパケット キャプチャを手動で実行する負担が軽減され、貴重な時間の節約になります。 パケット キャプチャは、ポータル、PowerShell、CLI、REST API を介してトリガーできます。 パケット キャプチャをトリガーできる方法の一例は、仮想マシンのアラートの使用です。 監視したいトラフィックを確実にキャプチャするために、キャプチャ セッション用のフィルターが用意されています。 フィルターは 5 組 (プロトコル、ローカル IP アドレス、リモート IP アドレス、ローカル ポート、リモート ポート) の情報に基づいています。 キャプチャしたデータは、ローカル ディスクまたはストレージ BLOB に格納されます。 各サブスクリプションのリージョンごとに、10 パケット キャプチャ セッションという制限があります。 この制限はセッションにのみ適用され、VM のローカルまたはストレージ アカウントで保存されたパケット キャプチャ ファイルには適用されません。
 
 > [!IMPORTANT]
-> パケット キャプチャには `AzureNetworkWatcherExtension` 仮想マシン拡張機能が必要です。 Windows VM の拡張機能のインストールについては、[Windows 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/virtual-machines-windows-extensions-nwa.md)に関する記事を参照してください。Linux VM の場合は、[Linux 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/virtual-machines-linux-extensions-nwa.md)に関する記事を参照してください。
+> パケット キャプチャには `AzureNetworkWatcherExtension` 仮想マシン拡張機能が必要です。 Windows VM の拡張機能のインストールについては、[Windows 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/windows/extensions-nwa.md)に関する記事を参照してください。Linux VM の場合は、[Linux 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/linux/extensions-nwa.md)に関する記事を参照してください。
 
 キャプチャする情報を減らし、必要な情報だけを取得するために、パケット キャプチャ セッション用の次のオプションを利用できます。
 

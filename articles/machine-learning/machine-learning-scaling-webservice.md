@@ -16,14 +16,15 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: neerajkh
 translationtype: Human Translation
-ms.sourcegitcommit: c54b16517b6f08ed8bfddfb6e2c793ec0f292899
-ms.openlocfilehash: 678f747fd1b2e5017d1859fd594c3b4bc465ea41
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 013354515d841003c912ac0338690dd975a79ef7
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="scaling-an-azure-machine-learning-web-service-by-adding-additional-endpoints"></a>エンドポイントの追加による Azure Machine Learning Web サービスのスケーリング
 > [!NOTE]
-> このトピックでは、従来の Machine Learning Web サービスに適用できる手法について説明します。 
+> このトピックでは、**従来**の Machine Learning Web サービスに適用できる手法について説明します。 
 > 
 > 
 
@@ -37,14 +38,9 @@ Web サービスのスケーリングは一般的なタスクです。 スケー
 
 同時呼び出しの数を増やす場合、これに相当する高いレートで API を呼び出さないと悪影響が出ることがありますのでご注意ください。 高い負荷で構成された API に比較的低い負荷を割り当てた場合、不規則なタイムアウトや待機時間の急増が発生することがあります。
 
-同期 API は通常、短い待機時間が望まれる状況で使用されます。 ここでの待機時間とは、API が&1; つの要求を完了するのにかかる時間を指し、ネットワークの遅延に影響しないものです。 たとえば待機時間が 50 ms の API があるとします。 スロットル レベル "高" で同時呼び出しの最大数が 20 件のときに使用可能な容量をすべて使用するには、この API を 1 秒あたり 20 × 1000 / 50 = 400 回呼び出す必要があります。 さらに増やして、同時呼び出しの最大数 200 件にすると、API を 1 秒あたり 4,000 回呼び出すことができ、この場合の待機時間は 50 ms と想定されます。
+同期 API は通常、短い待機時間が望まれる状況で使用されます。 ここでの待機時間とは、API が 1 つの要求を完了するのにかかる時間を指し、ネットワークの遅延に影響しないものです。 たとえば待機時間が 50 ms の API があるとします。 スロットル レベル "高" で同時呼び出しの最大数が 20 件のときに使用可能な容量をすべて使用するには、この API を 1 秒あたり 20 × 1000 / 50 = 400 回呼び出す必要があります。 さらに増やして、同時呼び出しの最大数 200 件にすると、API を 1 秒あたり 4,000 回呼び出すことができ、この場合の待機時間は 50 ms と想定されます。
 
 <!--Image references-->
 [1]: ./media/machine-learning-scaling-webservice/machlearn-1.png
 [2]: ./media/machine-learning-scaling-webservice/machlearn-2.png
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

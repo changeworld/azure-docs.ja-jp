@@ -16,9 +16,9 @@ ms.date: 02/06/2017
 ms.author: jgao
 ROBOTS: NOINDEX
 translationtype: Human Translation
-ms.sourcegitcommit: 6407c371bc51461a05429fabaf38d3f9bc80d32c
-ms.openlocfilehash: a90c412d2d66834cd0df3f348fa488b6ce10c898
-ms.lasthandoff: 02/07/2017
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: 159e41f3d1b43abc830b79e1ea0bed05e05505a2
+ms.lasthandoff: 04/11/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 02/07/2017
 このチュートリアルでは、Twitter streaming API を使用して複数のツイートを取得します。さらに、Azure HDInsight の Apache Hive を使用して、特定の単語を含むツイートを多く送信した Twitter ユーザーの一覧を取得します。
 
 > [!IMPORTANT]
-> このドキュメントの手順では、Windows ベースの HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。 Linux ベースのクラスターに固有の手順については、「[HDInsight での Hive を使用した Twitter データの分析 (Linux)](hdinsight-analyze-twitter-data-linux.md)」を参照してください。
+> このドキュメントの手順では、Windows ベースの HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。 Linux ベースのクラスターに固有の手順については、「[HDInsight での Hive を使用した Twitter データの分析 (Linux)](hdinsight-analyze-twitter-data-linux.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
@@ -231,7 +231,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
     Write-Host "Completed!" -ForegroundColor Green
     ```
 
-3. スクリプトに、最初の&5; ～&8; 個の変数を設定します。
+3. スクリプトに、最初の 5 ～ 8 個の変数を設定します。
 
     変数|Description
     ---|---
@@ -440,7 +440,7 @@ HiveQL スクリプトは、次の作業を実行します。
     Write-Host "Completed!" -ForegroundColor Green
     ```
 
-3. スクリプトの最初の&2; 個の変数を設定します。
+3. スクリプトの最初の 2 個の変数を設定します。
 
    | 変数 | Description |
    | --- | --- |
@@ -461,7 +461,7 @@ HiveQL スクリプトは、次の作業を実行します。
 次の Windows PowerShell スクリプトを使用して Hive スクリプトを実行します。 最初の変数を設定する必要があります。
 
 > [!NOTE]
-> 最後の&2; つのセクションでアップロードしたツイートと HiveQL スクリプトを使用するには、$hqlScriptFile を "/tutorials/twitter/twitter.hql" に設定します。 パブリック BLOB にアップロードされているものを使用するには、$hqlScriptFile を "wasbs://twittertrend@hditutorialdata.blob.core.windows.net/twitter.hql" に設定します。
+> 最後の 2 つのセクションでアップロードしたツイートと HiveQL スクリプトを使用するには、$hqlScriptFile を "/tutorials/twitter/twitter.hql" に設定します。 パブリック BLOB にアップロードされているものを使用するには、$hqlScriptFile を "wasbs://twittertrend@hditutorialdata.blob.core.windows.net/twitter.hql" に設定します。
 
 ```powershell
 #region variables and constants
@@ -500,7 +500,7 @@ Get-AzureRmHDInsightJobOutput -ClusterName $clusterName -JobId $jobID -DefaultCo
 ```
 
 ### <a name="check-the-results"></a>結果を確認する
-次の Windows PowerShell スクリプトを使用して Hive ジョブ出力を確認します。 最初の&2; つの変数を設定する必要があります。
+次の Windows PowerShell スクリプトを使用して Hive ジョブ出力を確認します。 最初の 2 つの変数を設定する必要があります。
 
 ```powershell
 #region variables and constants

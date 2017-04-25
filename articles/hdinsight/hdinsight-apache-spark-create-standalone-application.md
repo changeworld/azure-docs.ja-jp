@@ -1,6 +1,6 @@
 ---
-title: "スタンドアロン Scala アプリケーションを作成して Azure Spark クラスターで実行する | Microsoft Docs"
-description: "スタンドアロン Scala アプリケーションを作成して HDInsight Spark クラスターで実行する方法を説明します。"
+title: "Scala Maven アプリケーションを作成して Azure Spark クラスターで実行する | Microsoft Docs"
+description: "Maven を利用してスタンドアロン Scala アプリケーションを作成し、HDInsight Spark クラスターで実行する方法を説明します。"
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -17,15 +17,15 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: 153b1ea4ec3d326fb533817cdb74d3489135f7d9
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: c435e8ec21b568afcadaa1af95964753d36d0ccb
+ms.lasthandoff: 04/06/2017
 
 
 ---
-# <a name="create-a-standalone-scala-application-to-run-on-apache-spark-cluster-on-hdinsight"></a>スタンドアロン Scala アプリケーションを作成して、HDInsight の Apache Spark クラスターで実行する
+# <a name="create-a-scala-maven-application-to-run-on-apache-spark-cluster-on-hdinsight"></a>Scala Maven アプリケーションを作成し、HDInsight の Apache Spark クラスターで実行する
 
-この記事では、Maven と IntelliJ IDEA を使用して、スタンドアロン Spark アプリケーションを Scala で開発する手順を説明します。 この記事では、ビルド システムとして Apache Maven を使用し、IntelliJ IDEA で提供されている Scala 用の既存の Maven アーキタイプから始めます。  大まかには、IntelliJ IDEA で Scala アプリケーションを作成するには、次の手順が必要です。
+Maven と IntelliJ IDEA を利用し、Scala で記述された Spark アプリケーションを作成する方法について説明します。 この記事では、ビルド システムとして Apache Maven を使用し、IntelliJ IDEA で提供されている Scala 用の既存の Maven アーキタイプから始めます。  IntelliJ IDEA での Scala アプリケーションには次の手順があります。
 
 * ビルド システムとして Maven を使用します。
 * プロジェクト オブジェクト モデル (POM) ファイルを更新して、Spark モジュールの依存関係を解決します。
@@ -38,7 +38,7 @@ ms.lasthandoff: 01/24/2017
 > 
 > 
 
-**前提条件**
+## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 * HDInsight での Apache Spark クラスター。 手順については、 [Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。

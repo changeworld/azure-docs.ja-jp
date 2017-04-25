@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 103b3ad93c6bb99f1781e9b3c485caa6042ae0a3
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: e42d80f0ca35f3fbb67389c66d072bc40d8a8d2c
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -63,7 +65,7 @@ GO
 EXEC prc_nesting
 ```
 
-SQL Data Warehouse は、@@NESTLEVEL. を現在サポートしていません。入れ子レベルは、開発者が自分で追跡する必要があります。 入れ子レベルが上限の 8 に達することはほとんどありませんが、上限に達した場合は、コードを再作成し、この制限の範囲内に収まるようにフラット化する必要があります。
+SQL Data Warehouse は現在 @@NESTLEVEL をサポートしていません。 入れ子レベルは自分で追跡する必要があります。 入れ子レベルが上限の 8 に達することはほとんどありませんが、上限に達した場合は、コードを再作成し、この制限の範囲内に収まるようにフラット化する必要があります。
 
 ## <a name="insertexecute"></a>INSERT..EXECUTE
 SQL Data Warehouse では、INSERT ステートメントでストアド プロシージャの結果セットを使用することはできません。 ただし、別の方法を使用できます。
@@ -88,21 +90,16 @@ SQL Data Warehouse で実装されていない Transact-SQL ストアド プロ�
 * return ステートメント
 
 ## <a name="next-steps"></a>次のステップ
-開発に関するその他のヒントについては、[「開発の概要」][開発の概要]をご覧ください。
+開発に関するその他のヒントについては、[開発の概要][development overview]のページをご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
 [一時テーブル]: ./sql-data-warehouse-tables-temporary.md#modularizing-code
-[開発の概要]: ./sql-data-warehouse-overview-develop.md
+[development overview]: ./sql-data-warehouse-overview-develop.md
 
 <!--MSDN references-->
-[入れ子のレベル]: https://msdn.microsoft.com/library/ms187371.aspx
+[nest level]: https://msdn.microsoft.com/library/ms187371.aspx
 
 <!--Other Web references-->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

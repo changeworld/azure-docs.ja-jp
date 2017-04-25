@@ -12,11 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 03/29/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a90e56bb2b7db0bb964684f9cac04096a6577adc
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 5ef6e368a170816b7000c23cdf686644690fca45
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -26,7 +27,8 @@ Azure Media Services では、Widevine ライセンスを構成および要求�
 
 Widevine ライセンス要求の形式は、JSON メッセージです。  
 
-値を指定せずに "{}" のみの空のメッセージを作成すると、すべてに既定値を使用したライセンス テンプレートが作成されます。  
+>[!NOTE]
+> 値を指定せずに "{}" のみの空のメッセージを作成すると、すべてに既定値を使用したライセンス テンプレートが作成されます。 ほとんどの場合、既定値で問題ありません。 たとえば、MS ベースのライセンス配信シナリオの場合、常に既定値にします。 "provider" 値と "content_id" 値を設定する必要がある場合、プロバイダーは Google の Widevine 資格情報を照合する必要があります。
 
     {  
        “payload”:“<license challenge>”,
@@ -62,7 +64,7 @@ Widevine ライセンス要求の形式は、JSON メッセージです。
 | --- | --- | --- |
 | payload |Base64 でエンコードされた文字列 |クライアントから送信されたライセンス要求です。 |
 | content_id |Base64 でエンコードされた文字列 |各 content_key_specs.track_type のキー ID およびコンテンツ キーを取得するために使用される識別子です。 |
-| provider |string |コンテンツ キーおよびポリシーを検索するために使用されます。 必須。 |
+| provider |string |コンテンツ キーおよびポリシーを検索するために使用されます。 MS キー配信が Widevine ライセンス配信に使用される場合、このパラメーターは無視されます。 |
 | policy_name |string |以前に登録されたポリシーの名前です。 省略可能 |
 | allowed_track_types |enum |SD_ONLY または SD_HD。 どのコンテンツ キーをライセンスに含めるかを制御します |
 | content_key_specs |JSON 構造体の配列。次の「**コンテンツ キーの仕様**」を参照してください |どのコンテンツ キーを返すかについて、より細かく制御します。 詳細については、次の「コンテンツ キーの仕様」を参照してください。  allowed_track_types と content_key_specs のいずれかのみを指定できます。 |
@@ -79,7 +81,7 @@ Widevine ライセンス要求の形式は、JSON メッセージです。
 | 名前 | 値 | Description |
 | --- | --- | --- |
 | content_key_specs track_type |string |トラックの種類の名前です。 ライセンス要求で content_key_specs が指定されている場合は、すべてのトラックの種類を明示的に指定します。 指定しないと、過去 10 秒間を再生できません。 |
-| content_key_specs  <br/> security_level |uint32 |再生に関するクライアントの堅牢性の要件を定義します。 <br/>  1 - ソフトウェアベースのホワイトボックス暗号化が必須です。 <br/>  2 - ソフトウェア暗号化と難読化デコーダーが必須です。 <br/>  3 - キー マテリアルと暗号化の操作を、ハードウェアを基盤にした信頼できる実行環境で実行する必要があります。 <br/>  4 - コンテンツの暗号化とデコードを、ハードウェアを基盤にした信頼できる実行環境で実行する必要があります。  <br/>  5 - 暗号化、デコード、およびメディア (圧縮済みおよび圧縮解除済み) のすべての処理を、ハードウェアを基盤にした信頼できる実行環境で実行する必要があります。 |
+| content_key_specs  <br/> security_level |uint32 |再生に関するクライアントの堅牢性の要件を定義します。 <br/> 1 - ソフトウェアベースのホワイトボックス暗号化が必須です。 <br/> 2 - ソフトウェア暗号化と難読化デコーダーが必須です。 <br/> 3 - キー マテリアルと暗号化の操作を、ハードウェアを基盤にした信頼できる実行環境で実行する必要があります。 <br/> 4 - コンテンツの暗号化とデコードを、ハードウェアを基盤にした信頼できる実行環境で実行する必要があります。  <br/> 5 - 暗号化、デコード、およびメディア (圧縮済みおよび圧縮解除済み) のすべての処理を、ハードウェアを基盤にした信頼できる実行環境で実行する必要があります。 |
 | content_key_specs <br/> required_output_protection.hdc |文字列 - 次のいずれか 1 つ: HDCP_NONE、HDCP_V1、HDCP_V2 |HDCP が必須かどうかを示します |
 | content_key_specs <br/>key |Base64  <br/>でエンコードされた文字列 |このトラックで使用するコンテンツ キーです。 指定した場合、track_type または key_id が必要です。  このオプションを使用すると、Widevine ライセンス サーバーでキーを生成または検索する代わりに、コンテンツ プロバイダーがこのトラックのコンテンツ キーを挿入できます。 |
 | content_key_specs.key_id |Base64 でエンコードされた文字列バイナリ、16 バイト |キーの一意識別子です。 |
@@ -197,10 +199,5 @@ Media Services が提供する .NET API を使用して、Widevine ライセン�
 
 ## <a name="see-also"></a>関連項目
 [PlayReady または Widevine の動的共通暗号化を使用する](media-services-protect-with-drm.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

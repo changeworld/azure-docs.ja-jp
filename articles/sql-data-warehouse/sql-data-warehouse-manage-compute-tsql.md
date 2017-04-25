@@ -12,12 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 10/31/2016
+ms.date: 03/30/2017
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: 94f9bbcfddf8ea3d5ae9bffcb3c196a30f4bb396
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: e37a943c775261a6817169c95a931f1b268305d9
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/28/2017
 ## <a name="view-current-dwu-settings"></a>現在の DWU 設定の表示
 データベースの現在の DWU 設定を表示するには、次の手順に従います。
 
-1. Visual Studio 2015 で SQL Server オブジェクト エクスプローラーを開きます。
+1. Visual Studio で SQL Server オブジェクト エクスプローラーを開きます。
 2. SQL Database 論理サーバーに関連付けられている master データベースに接続します。
 3. sys.database_service_objectives 動的管理ビューから選択します。 たとえば次のようになります。 
 

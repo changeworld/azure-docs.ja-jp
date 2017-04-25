@@ -12,11 +12,13 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.custom: security
 ms.date: 10/31/2016
 ms.author: rortloff;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fb915cd9abb83b10af17046591ce313dcc84fd47
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 74c9032aababdce91ed617cd7a4c628915b42504
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -78,16 +80,11 @@ FROM
 * [sys.dm_pdw_nodes_database_encryption_keys][sys.dm_pdw_nodes_database_encryption_keys]
 
 <!--Anchors-->
-[透過的なデータ暗号化 (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
+[Transparent Data Encryption (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
 [sys.databases]: http://msdn.microsoft.com/library/ms178534.aspx  
 [sys.dm_pdw_nodes_database_encryption_keys]: https://msdn.microsoft.com/library/mt203922.aspx  
 
 <!--Image references-->
 
 <!--Link references-->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

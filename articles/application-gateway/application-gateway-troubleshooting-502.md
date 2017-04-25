@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 12/16/2016
 ms.author: amsriva
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: d61e50b7440dcd107df3e5dd085a36b149779553
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 178cd0e1c20947c952a2abb4bad253272da9fcd4
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -132,6 +132,8 @@ BackendAddressPool のインスタンスがすべて異常である場合、Appl
 * プローブが [ガイド](application-gateway-create-probe-ps.md)のとおりに正しく指定されていることを確認する。
 * Application Gateway を単一のサイトで構成する場合、既定ではホスト名は "127.0.0.1" と指定する必要があります (カスタム プローブで構成する場合は除く)。
 * http://\<host\>:\<port\>\<path\> の呼び出しで HTTP 結果コード 200 が返されることを確認する。
+* 間隔、タイムアウト、異常のしきい値が許容される範囲内であることを確認する。
+* HTTPS ブローブを使用する場合は、バックエンド サーバー自体にフォールバック証明書を構成して、バックエンド サーバーが SNI を必要としないようにしてください。 
 * 間隔、タイムアウト、異常のしきい値が許容される範囲内であることを確認する。
 
 ## <a name="request-time-out"></a>要求のタイムアウト

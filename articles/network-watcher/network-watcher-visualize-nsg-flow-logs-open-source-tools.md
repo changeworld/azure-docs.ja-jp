@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 7018320e601c1e8762e1c8fc409813a113a35044
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 20f60ccd9108a7473705c2368f28d3152d0dd614
+ms.lasthandoff: 04/07/2017
 
 ---
 
@@ -29,14 +29,14 @@ ms.lasthandoff: 03/06/2017
 
 ## <a name="scenario"></a>シナリオ
 
-この記事では、Elastic Stack を使用してネットワーク セキュリティ グループのフロー ログを視覚化するソリューションを設定します。  Logstash 入力プラグは、フロー ログを格納するように構成されているストレージ BLOB から直接、フロー ログを取得します。 Elastic Stack を使用して、フロー ログにインデックスを作成し、Kibana ダッシュボードを作成して、情報を視覚化します。
+この記事では、Elastic Stack を使用してネットワーク セキュリティ グループのフロー ログを視覚化するソリューションを設定します。  Logstash 入力プラグインは、フロー ログを格納するように構成されているストレージ BLOB から直接、フロー ログを取得します。 Elastic Stack を使用して、フロー ログにインデックスを作成し、Kibana ダッシュボードを作成して、情報を視覚化します。
 
 ![scenario][scenario]
 
 ## <a name="steps"></a>手順
 
 ### <a name="enable-network-security-group-flow-logging"></a>ネットワーク セキュリティ グループのフロー ログの有効化
-このシナリオでは、アカウント内の少なくとも&1; つのネットワーク セキュリティ グループで、ネットワーク セキュリティ グループのフロー ログを有効にする必要があります。 ネットワーク セキュリティ フロー ログを有効にする手順については、「[Introduction to flow logging for Network Security Groups (ネットワーク セキュリティ グループのフロー ログの概要)](network-watcher-nsg-flow-logging-overview.md)」をご覧ください。
+このシナリオでは、アカウント内の少なくとも 1 つのネットワーク セキュリティ グループで、ネットワーク セキュリティ グループのフロー ログを有効にする必要があります。 ネットワーク セキュリティ フロー ログを有効にする手順については、「[Introduction to flow logging for Network Security Groups (ネットワーク セキュリティ グループのフロー ログの概要)](network-watcher-nsg-flow-logging-overview.md)」をご覧ください。
 
 
 ### <a name="set-up-the-elastic-stack"></a>Elastic Stack の設定
@@ -88,7 +88,7 @@ Elasticsearch のインストール方法の詳細については、[インス�
     curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.deb
     sudo dpkg -i logstash-5.2.0.deb
     ```
-1. 次に、eve.json ファイルの出力を読み取るように Logstash を構成する必要があります。 以下のコマンドで logstash.conf ファイルを作成します。
+1. 次に、フロー ログにアクセスし、解析するように Logstash を構成する必要があります。 以下のコマンドで logstash.conf ファイルを作成します。
 
     ```
     sudo touch /etc/logstash/conf.d/logstash.conf
@@ -209,27 +209,27 @@ sudo /etc/init.d/logstash start
 
 1. Flows by Decision/Direction Over Time (決定/方向別のフロー (時系列)) - 一定時間内のフローの数を時系列のグラフで表示します。 これらのグラフでは、時間の単位と範囲を編集できます。 Flows by Decision (決定別のフロー) は、許可または拒否の決定の割合を示しています。Flows by Direction (方向別のフロー) は、受信トラフィックと送信トラフィックの割合を示しています。 これらのグラフで、時間の経過に伴う傾向を精査し、急激な増加や異常なパターンがないかどうかを確認できます。
 
-  ![図&2;][2]
+  ![図 2][2]
 
 1. Flows by Destination/Source Port (送信先ポート/送信元ポート別のフロー) - 該当するポートごとにフローを分割した円グラフです。 このビューでは、最もよく使用されるポートを確認できます。 円グラフ内の特定のポートをクリックすると、ダッシュボードの空いている部分に、そのポートのフローの詳細が表示されます。
 
-  ![図&3;][3]
+  ![図 3][3]
 
 1. Number of Flows (フローの数) と Earliest Log Time (最も早いログ時刻) - 記録されたフローの数と、ログが取得された最も早い時刻を示すメトリックです。
 
-  ![図&4;][4]
+  ![図 4][4]
 
 1. Flows by NSG and Rule (NSG ごとのフローとルール) - 各 NSG 内のフローの分布、および各 NSG 内のルールの分布を示す棒グラフです。 ここから、どの NSG とルールがトラフィックの多くの部分を生成しているかを確認できます。
 
-  ![図&5;][5]
+  ![図 5][5]
 
 1. Top 10 Source/Destination IPs (送信元/送信先 IP の上位 10 個) - 送信元/送信先 IP の上位 10 個を示す棒グラフです。 グラフを調整して、表示される IP を増やしたり減らしたりできます。 ここから、最もよく使われる IP や、各 IP へのトラフィックの決定 (許可または拒否) を確認できます。
 
-  ![図&6;][6]
+  ![図 6][6]
 
 1. Flow Tuples (フロー タプル) - 各フロー タプルに含まれる情報と、対応する NSG およびルールを表示する表です。
 
-  ![図&7;][7]
+  ![図 7][7]
 
 ダッシュボードの最上部にあるクエリ バーを使用して、フローのパラメーター (サブスクリプション ID、リソース グループ、ルール、また関連するその他の変数など) に基づいて、ダッシュボードをフィルターできます。 Kibana のクエリとフィルターの詳細については、[公式ドキュメント](https://www.elastic.co/guide/en/beats/packetbeat/current/kibana-queries-filters.html)を参照してください。
 

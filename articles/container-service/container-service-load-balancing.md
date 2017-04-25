@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 07/11/2016
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
-ms.openlocfilehash: 27ad7100f6203db3ba3dcc88ffdc191b9b9d45cb
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: f8a001350c9e1ac50641c3ee4430849023233c60
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.openlocfilehash: 27ad7100f6203db3ba3dcc88ffdc191b9b9d45cb
 オーケストレーターの種類が DC/OS の [Azure Container Service のインスタンスをデプロイ](container-service-deployment.md)し、[クライアントがクラスターに接続できるようにします](container-service-connect.md)。 
 
 ## <a name="load-balancing"></a>負荷分散
-作成するコンテナー サービス クラスターには、次に示す&2; つの負荷分散レイヤーがあります。 
+作成するコンテナー サービス クラスターには、次に示す 2 つの負荷分散レイヤーがあります。 
 
 1. Azure Load Balancer は、パブリック エントリ ポイント (エンド ユーザーがアクセスするエントリ ポイント) を提供します。 これは Azure コンテナー サービスによって自動的に提供され、既定ではポート 80、443、8080 を開放するように構成されています。
 2. Marathon Load Balancer (Marathon-LB) は、受信要求を処理するコンテナー インスタンスに、それらの要求をルーティングします。 Web サービスを提供しているコンテナーをスケーリングすると、それに応じて Marathon-LB が動的に変化します。 このロード バランサーは、コンテナー サービスの既定で提供される機能ではありませんが、ごく簡単な方法でインストールできます。
@@ -93,8 +94,8 @@ marathon-lb パッケージができたので、負荷分散するアプリケ�
 
 ```
 
-* `HAProxy_0_VHOST` の値に、エージェントのロード バランサーの FQDN を設定します。 これは、 `<acsName>agents.<region>.cloudapp.azure.com`という形式になります。 たとえば、`West US` リージョンに `myacs` という名前の Container Service クラスターを作成した場合、FQDN は `myacsagents.westus.cloudapp.azure.com` になります。 この FQDN は、 [Azure Portal](https://portal.azure.com)で Container Service 用に作成したリソース グループのリソースを表示している状態で、名前に "agent" が含まれるロード バランサーを検索する方法でも確認できます。
-* servicePort を 10,000 以上のポートに設定します。 この設定により、このコンテナーで実行されているサービスを特定できます。つまり、marathon-lb は、これを使用して、分散先となるサービスを特定します。
+* `HAPROXY_0_VHOST` の値に、エージェントのロード バランサーの FQDN を設定します。 これは、 `<acsName>agents.<region>.cloudapp.azure.com`という形式になります。 たとえば、`West US` リージョンに `myacs` という名前の Container Service クラスターを作成した場合、FQDN は `myacsagents.westus.cloudapp.azure.com` になります。 この FQDN は、 [Azure Portal](https://portal.azure.com)で Container Service 用に作成したリソース グループのリソースを表示している状態で、名前に "agent" が含まれるロード バランサーを検索する方法でも確認できます。
+* `servicePort` を、10,000 以上のポートに設定します。 この設定により、このコンテナーで実行されているサービスを特定できます。つまり、marathon-lb は、これを使用して、分散先となるサービスを特定します。
 * `HAPROXY_GROUP` ラベルを "external" に設定します。
 * `hostPort` を 0 に設定します。 この設定は、使用可能なポートを Marathon が任意に割り当てることを意味します。
 * `instances` を、作成するインスタンスの数に設定します。 これらの値は、設定後にいつでもスケールアップまたはスケールダウンできます。
@@ -102,10 +103,10 @@ marathon-lb パッケージができたので、負荷分散するアプリケ�
 Marathon は既定でプライベート クラスターにデプロイされることに注意する必要があります。つまり、上のデプロイは、ロード バランサー経由でのみアクセスできます。通常は、これが望ましい動作です。
 
 ### <a name="deploy-using-the-dcos-web-ui"></a>DC/OS Web UI を使用してデプロイする
-1. [SSH トンネル](container-service-connect.md)を設定した後、http://localhost/marathon の Marathon ページにアクセスして、[`Create Appliction`] をクリックします。
+1. http://localhost/marathon の Marathon ページにアクセスして ([SSH トンネル](container-service-connect.md)を設定した後)、[`Create Application`] をクリックします。
 2. `New Application` ダイアログ ボックスで、右上にある [`JSON Mode`] をクリックします。
 3. 上記の JSON をエディターに貼り付けます。
-4. [`Create Appliction`] をクリックします。
+4. [`Create Application`] をクリックします。
 
 ### <a name="deploy-using-the-dcos-cli"></a>DC/OS CLI を使用してデプロイする
 DC/OS CLI でこのアプリケーションをデプロイするには、上記の JSON をコピーして `hello-web.json` というファイルに貼り付け、次のコマンドを実行します。
@@ -115,7 +116,7 @@ dcos marathon app add hello-web.json
 ```
 
 ## <a name="azure-load-balancer"></a>Azure Load Balancer
-既定では、Azure Load Balancer はポート 80、8080、443 を公開します。 上の例のように、これらの&3; つのポートのいずれかを使用している場合は、何もする必要がありません。 つまり、エージェント ロード バランサーの FQDN をヒットできるようになり、更新するたびにラウンド ロビン方式で&3; つの Web サーバーのいずれかがヒットします。 ただし、別のポートを使用する場合は、使用したポート用のラウンド ロビン ルールとプローブをロード バランサーに追加する必要があります。 この操作は、[Azure CLI](../xplat-cli-azure-resource-manager.md) で `azure network lb rule create` コマンドと `azure network lb probe create` コマンドを使用して行うことができます。 また、この操作は Azure ポータルからも実行できます。
+既定では、Azure Load Balancer はポート 80、8080、443 を公開します。 上の例のように、これらの 3 つのポートのいずれかを使用している場合は、何もする必要がありません。 つまり、エージェント ロード バランサーの FQDN をヒットできるようになり、更新するたびにラウンド ロビン方式で 3 つの Web サーバーのいずれかがヒットします。 ただし、別のポートを使用する場合は、使用したポート用のラウンド ロビン ルールとプローブをロード バランサーに追加する必要があります。 この操作は、[Azure CLI](../xplat-cli-azure-resource-manager.md) で `azure network lb rule create` コマンドと `azure network lb probe create` コマンドを使用して行うことができます。 また、この操作は Azure ポータルからも実行できます。
 
 ## <a name="additional-scenarios"></a>その他のシナリオ
 公開するサービスに応じて使用するドメインが異なるシナリオもあります。 次に例を示します。
@@ -132,10 +133,5 @@ Azure lb:8080 -> marathon-lb:1002 -> mycontainer2:33432
 
 ## <a name="next-steps"></a>次のステップ
 DC/OS に関するドキュメントで [Marathon-LB](https://dcos.io/docs/1.7/usage/service-discovery/marathon-lb/)の詳細について参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

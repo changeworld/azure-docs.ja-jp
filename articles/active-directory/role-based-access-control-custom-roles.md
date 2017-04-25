@@ -12,17 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/21/2017
+ms.date: 03/21/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 53fa0876ce1e3e2b2ac47316f37c5a0de2591d41
-ms.openlocfilehash: c8189af2ebd9cabfa3e20e6b3520ba347d6147ff
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: e7a85813ae5e26f402837774a40fa3630a436bee
+ms.lasthandoff: 03/31/2017
 
 ---
 # <a name="create-custom-roles-for-azure-role-based-access-control"></a>Azure のロールベースのアクセス制御のためのカスタム ロールを作成する
 組み込みのロールの中にアクセス権に関する特定の要件を満たすものがない場合は、Azure のロールベースのアクセス制御 (RBAC) でカスタム ロールを作成できます。 カスタム ロールは、[Azure PowerShell](role-based-access-control-manage-access-powershell.md)、[Azure コマンドライン インターフェイス](role-based-access-control-manage-access-azure-cli.md) (CLI)、および [REST API](role-based-access-control-manage-access-rest.md) で作成することができます。 組み込みのロールと同様、カスタム ロールは、ユーザー、グループ、アプリケーションに対して、サブスクリプション、リソース グループ、リソースのスコープで割り当てることができます。 カスタム ロールは Azure AD テナントで保存され、そのテナントをサブスクリプションの Azure AD ディレクトリとして使用するすべてのサブスクリプションで共有することができます。
+
+各テナントには、最大 2,000 個のカスタム ロールを作成できます。 
 
 以下は、仮想マシンの監視と再起動を行うためのカスタム ロールの例です。
 
@@ -94,12 +96,12 @@ azure provider operations show "Microsoft.Network/*"
 
 有効な AssignableScopes の例を次に示します。
 
-* "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e"、"/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624" - 対象となるロールの割り当てを&2; つのサブスクリプションに許可します。
-* "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e" - 対象となるロールの割り当てを&1; つのサブスクリプションに許可します。
+* "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e"、"/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624" - 対象となるロールの割り当てを 2 つのサブスクリプションに許可します。
+* "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e" - 対象となるロールの割り当てを 1 つのサブスクリプションに許可します。
 * "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network" - 対象となるロールの割り当てを Network リソース グループのみに許可します。
 
 > [!NOTE]
-> 少なくとも&1; つのサブスクリプション、リソース グループ、またはリソース ID を使用する必要があります。
+> 少なくとも 1 つのサブスクリプション、リソース グループ、またはリソース ID を使用する必要があります。
 >
 >
 

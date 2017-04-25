@@ -12,24 +12,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2017
+ms.date: 03/30/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 6d459e37b8b39f5d76c4ec86ebb7351c783b81fb
-ms.openlocfilehash: 64cb4be184e02519a6c496f8639035201ebb60f8
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: d75088bd83b0b70c889388c95331bb56fe9ba15b
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="resource-policy-overview"></a>リソース ポリシーの概要
 リソース ポリシーを使用すると、組織内のリソースの規則を確立することができます。 規則を定義することによって、コストを制御し、リソースをより簡単に管理することができます。 たとえば、特定の種類の仮想マシンのみが許可されるように指定したり、すべてのリソースに特定のタグが付けられることを要求したりすることができます。 ポリシーは、すべての子リソースが継承します。 したがって、リソース グループに適用されたポリシーは、そのリソース グループのすべてのリソースに適用されます。
 
-ポリシーについて理解するための概念は、次の&2; つです。
+ポリシーについて理解するための概念は、次の 2 つです。
 
 * ポリシー定義 - いつポリシーが適用され、どのようなアクションが行われるかを記述します
 * ポリシー割り当て - ポリシー定義をスコープ (サブスクリプションまたはリソース グループ) に適用します
 
-このトピックでは、ポリシー定義を中心に説明します。 ポリシー割り当てについては、[ポリシーの割り当てと管理](resource-manager-policy-create-assign.md)に関するページを参照してください。
+このトピックでは、ポリシー定義を中心に説明します。 ポリシー割り当ての詳細については、「[Use Azure portal to assign and manage resource policies](resource-manager-policy-portal.md)」(Azure Portal によるリソース ポリシーの割り当てと管理) または「[Assign and manage policies through script](resource-manager-policy-create-assign.md)」(リソース ポリシーの割り当てと管理) を参照してください。
 
 Azure には、いくつかの組み込みのポリシー定義が用意されているので、定義が必要なポリシーの数を減らすことができます。 組み込みのポリシー定義が目的のシナリオでうまく機能する場合は、スコープに割り当てる際にその定義を使用します。
 
@@ -93,7 +93,7 @@ Azure には、いくつかの組み込みのポリシー定義が用意され�
 ```
 
 ## <a name="parameters"></a>パラメーター
-パラメーターを使用すると、ポリシー定義の数を減らすことで、ポリシーの管理を単純化できます。 リソース プロパティに対してポリシーを定義し (リソースをデプロイできる場所を制限するなど)、定義にパラメーターを含めます。 その後、そのポリシー定義を別のシナリオで再利用する場合は、ポリシーを割り当てるときに別の値を渡します (サブスクリプションに対する&1; 組の場所を指定するなど)。
+パラメーターを使用すると、ポリシー定義の数を減らすことで、ポリシーの管理を単純化できます。 リソース プロパティに対してポリシーを定義し (リソースをデプロイできる場所を制限するなど)、定義にパラメーターを含めます。 その後、そのポリシー定義を別のシナリオで再利用する場合は、ポリシーを割り当てるときに別の値を渡します (サブスクリプションに対する 1 組の場所を指定するなど)。
 
 パラメーターは、ポリシーの定義を作成するときに宣言します。
 
@@ -213,7 +213,7 @@ Azure には、いくつかの組み込みのポリシー定義が用意され�
 * Microsoft.Web/serverFarms/sku.name
 
 ### <a name="effect"></a>効果
-ポリシーでは、`deny`、`audit`、`append` の&3; 種類の効果がサポートされています。 
+ポリシーでは、`deny`、`audit`、`append` の 3 種類の効果がサポートされています。 
 
 * **deny** は監査ログでイベントを生成し、要求は失敗します
 * **audit** は監査ログで警告イベントを生成しますが、要求は失敗しません
@@ -239,7 +239,7 @@ Azure には、いくつかの組み込みのポリシー定義が用意され�
 
 * タグ ポリシーの例については、「[Apply resource policies for tags (タグに関するリソース ポリシーを適用する)](resource-manager-policy-tags.md)」を参照してください。
 * ストレージ ポリシーの例については、「[Apply resource policies to storage accounts (ストレージ アカウントにリソース ポリシーを適用する)](resource-manager-policy-storage.md)」を参照してください。
-* 仮想マシン ポリシーの例については、[Linux VM へのリソース ポリシーの適用](../virtual-machines/virtual-machines-linux-policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)と [Windows VM へのリソース ポリシーの適用](../virtual-machines/virtual-machines-windows-policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)に関するページを参照してください。
+* 仮想マシン ポリシーの例については、[Linux VM へのリソース ポリシーの適用](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)と [Windows VM へのリソース ポリシーの適用](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)に関するページを参照してください。
 
 ### <a name="allowed-resource-locations"></a>許可されるリソースの場所
 どの場所が許可されるかを指定するには、「[ポリシー定義の構造](#policy-definition-structure)」セクションの例を参照してください。 このポリシー定義を割り当てるには、リソース ID が `/providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c` の組み込みポリシーを使用します。
@@ -326,7 +326,7 @@ Azure には、いくつかの組み込みのポリシー定義が用意され�
 ```
 
 ## <a name="next-steps"></a>次のステップ
-* ポリシー規則を定義した後で、スコープに割り当てます。 ポリシー割り当てについては、[ポリシーの割り当てと管理](resource-manager-policy-create-assign.md)に関するページを参照してください。
+* ポリシー規則を定義した後で、スコープに割り当てます。 ポータルでポリシーを割り当てる方法については、「[Use Azure portal to assign and manage resource policies](resource-manager-policy-portal.md)」(Azure Portal によるリソース ポリシーの割り当てと管理) を参照してください。 REST API、PowerShell、Azure CLI でポリシーを割り当てる方法については、「[Assign and manage policies through script](resource-manager-policy-create-assign.md)」(スクリプトによるポリシーの割り当てと管理) を参照してください。
 * 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](resource-manager-subscription-governance.md)」を参照してください。
 * [http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json](http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json) でポリシー スキーマが公開されています。 
 

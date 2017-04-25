@@ -1,10 +1,10 @@
 ---
-title: "Application Insights データ モデル"
+title: "Azure Application Insights のデータ モデル | Microsoft Docs"
 description: "JSON の連続エクスポートからエクスポートされ、フィルターとして使用されるプロパティについて説明します。"
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: cabad41c-0518-4669-887f-3087aef865ea
 ms.service: application-insights
 ms.workload: tbd
@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/21/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
-ms.openlocfilehash: feaa76e81f64b224f62e583541bf2ef376793a38
-ms.lasthandoff: 02/02/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 3084bb344976bc542e78a55a1c27c4dedc111af0
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -31,7 +31,6 @@ ms.lasthandoff: 02/02/2017
 * 期間は 1/10 マイクロ秒なので、10000000 == 1 秒です。
 * 日付と時刻は UTC で、ISO 形式 ( `yyyy-MM-DDThh:mm:ss.sssZ`
 
-テレメトリの使用例は [こちら](app-insights-export-telemetry.md#code-samples) です。
 
 ## <a name="example"></a>例
     // A server report about an HTTP request

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: cd727a02716323c54d1c54a23cd4edd8f4940da1
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: aaada39283b19015e460768b072d0164b0d22bae
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -44,7 +44,7 @@ SSE Files のプレビューへの参加を希望する方は、ssediscussions@m
 詳細については、よく寄せられる質問に関するセクションを参照してください。
 
 ### <a name="availability-for-file-storage"></a>File Storage を利用できるリージョン
-File Storage 向け Storage Service Encryption は、現在、米国東部、米国東部&2;、米国中部、米国中北部、米国中南部、米国中西部、米国西部、米国西部&2;、東アジア、北ヨーロッパ、西ヨーロッパ、オーストラリア東部、およびオーストラリア南東部リージョンで利用可能です。
+File Storage の Storage Service Encryption は、現在すべての Azure リージョンで使用できます。
 
 
 特定のストレージ アカウントについてストレージ サービスの暗号化を有効または無効にするには、 [Azure Portal](https://azure.portal.com) にログインしてストレージ アカウントを選択します。 [設定] ブレードで [BLOB サービス] セクション (次のスクリーンショットを参照) を探し、[暗号化] をクリックします。

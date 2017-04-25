@@ -15,8 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 02/08/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 2541236d84100ed7889d06f9b0580fcbc55ecfdb
-ms.openlocfilehash: f9443b633601272c79739c92995d53ba1a7d2b4e
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: d53d4cfdc7b673d2816fa9372dedbed540380cce
+ms.lasthandoff: 04/04/2017
 
 
 ---
@@ -30,11 +31,11 @@ ms.openlocfilehash: f9443b633601272c79739c92995d53ba1a7d2b4e
 
 ## <a name="deployment-options"></a>デプロイ オプション
 
-**デプロイ** | **VMware/物理サーバー** | **Hyper-V (VMM なし)** | **Hyper-V (VMM あり)**
+**デプロイ** | **VMware/物理サーバー** | **Hyper-V (SCVMM あり/なし)
 --- | --- | --- | ---
-**Azure Portal** | オンプレミスの VMware VM をセカンダリ VMware サイトにレプリケートします。<br/><br/> [InMage Scout ユーザー ガイド](http://download.microsoft.com/download/E/0/8/E08B3BCE-3631-4CED-8E65-E3E7D252D06D/InMage_Scout_Standard_User_Guide_8.0.1.pdf)をダウンロードします (Azure Portal では入手できません)。 | サポートされていません | VMM クラウドのオンプレミスの Hyper-V VM をセカンダリ VMM クラウドにレプリケートします。<br/><br/> 標準の Hyper-V レプリケーションのみ。 SAN はサポートされていません。
-**クラシック ポータル** | メンテナンス モードのみ。 新しい資格情報コンテナーを作成することはできません。 | サポートされていません | メンテナンス モードのみ
-**PowerShell** | サポートされていません | サポートされていません | サポートされています
+**Azure ポータル** | オンプレミスの VMware VM をセカンダリ VMware サイトにレプリケートします。<br/><br/> [InMage Scout ユーザー ガイド](http://download.microsoft.com/download/E/0/8/E08B3BCE-3631-4CED-8E65-E3E7D252D06D/InMage_Scout_Standard_User_Guide_8.0.1.pdf)をダウンロードします (Azure Portal では入手できません)。 | VMM クラウドのオンプレミスの Hyper-V VM をセカンダリ VMM クラウドにレプリケートします。<br></br> SCVMM なしではサポートされていません。  <br/><br/> 標準の Hyper-V レプリケーションのみ。 SAN はサポートされていません。
+**クラシック ポータル** | メンテナンス モードのみ。 新しい資格情報コンテナーを作成することはできません。 | メンテナンス モードのみ<br></br> SCVMM なしではサポートされていません。
+**PowerShell** | サポートされていません | サポートされています<br></br> SCVMM なしではサポートされていません。
 
 ## <a name="on-premises-servers"></a>オンプレミスのサーバー
 
@@ -119,7 +120,7 @@ RDM | はい | 該当なし
 ストライピングされたディスクのボリューム > 1 TB<br/><br/> LVM | はい | はい
 記憶域 | なし | あり
 ディスクのホット アド/削除 | なし | いいえ
-ディスクの除外 | なし | なし
+ディスクの除外 | いいえ | はい
 マルチパス (MPIO) | 該当なし | はい
 
 ## <a name="vaults"></a>資格情報コンテナー
@@ -140,9 +141,4 @@ RDM | はい | 該当なし
 ## <a name="next-steps"></a>次のステップ
 
 [デプロイメントの前提条件](site-recovery-prereq.md)を確認してください。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

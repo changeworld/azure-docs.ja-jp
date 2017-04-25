@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: f9e4fededc2bbb069cc653791137f248a7dc3fe8
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: aabc0cf743487752312f5e1b078837545169e964
+ms.lasthandoff: 03/31/2017
 
 ---
 
@@ -30,13 +30,11 @@ Azure では、VNet、ExpressRoute、Application Gateway、ロード バラン�
 この記事では、シナリオ レベルおよびリソース レベルの監視について説明します。 Azure でのネットワーク監視が指す意味は広く、2 つの大まかなカテゴリを対象としています。
 
 * [**Network Watcher**](#network-watcher) - シナリオベースの監視は、Network Watcher の機能を使用して実現できます。 このサービスには、パケット キャプチャ、次のホップ、IP フロー検証、セキュリティ グループ ビュー、NSG フロー ログなどが搭載されています。 シナリオ レベルの監視では、個別のネットワーク リソースの監視とは対照的に、ネットワーク リソースを隅から隅まで確認できます。
-* [**リソース監視**](#network-resource-level-monitoring) - リソース レベルの監視は、診断ログ、メトリック、トラブルシューティング、Resource Health の&4; つの機能で構成されています。 これらの機能はすべて、ネットワーク リソース レベルで構築されています。
+* [**リソース監視**](#network-resource-level-monitoring) - リソース レベルの監視は、診断ログ、メトリック、トラブルシューティング、Resource Health の 4 つの機能で構成されています。 これらの機能はすべて、ネットワーク リソース レベルで構築されています。
 
 ## <a name="network-watcher"></a>Network Watcher
 
 Network Watcher は地域サービスであり、ネットワーク シナリオ レベルで Azure 内と Azure 間の状態を監視して診断できます。 Network Watcher に搭載されているネットワークの診断および監視ツールを使用して、Azure 内のネットワークを把握および診断し、洞察を得ることができます。
-
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 現在、Network Watcher が備える機能は次のとおりです。
 
@@ -48,11 +46,11 @@ Network Watcher は地域サービスであり、ネットワーク シナリオ
 * **[NSG フロー ログ](network-watcher-nsg-flow-logging-overview.md)** - ネットワーク セキュリティ グループのフロー ログにより、そのグループのセキュリティ規則で許可または拒否されるトラフィックに関係するログを記録できます。 フローは 5 タプル情報 (発信元 IP、宛先 IP、発信元ポート、宛先ポート、プロトコル) で定義されます。
 * **[仮想ネットワーク ゲートウェイと接続のトラブルシューティング](network-watcher-troubleshoot-manage-rest.md)** - 仮想ネットワーク ゲートウェイと接続に関する問題をトラブルシューティングできます。
 * **[ネットワーク サブスクリプションの制限](#network-subscription-limits)** - ネットワーク リソースの使用状況を制限と照らし合わせて確認できます。
-* **[診断ログの構成](#diagnostic-logs)** –&1; つのペインで、リソース グループ内のネットワーク リソースの診断ログを有効化または無効化することができます。
+* **[診断ログの構成](#diagnostic-logs)** – 1 つのペインで、リソース グループ内のネットワーク リソースの診断ログを有効化または無効化することができます。
 
 ### <a name="role-based-access-control-rbac-in-network-watcher"></a>Network Watcher におけるロールベースのアクセス制御 (RBAC)
 
-Network Watcher では、[Azure のロールベースのアクセス制御 (RBAC) モデル](../active-directory/role-based-access-control-what-is.md)を使用しています。 プレビュー段階の Network Watcher には次のアクセス許可が必要です。 Network Watcher API を開始またはポータルから Network Watcher を使用するために用いるロールには、必ず必要なアクセスを設定してください。
+Network Watcher では、[Azure のロールベースのアクセス制御 (RBAC) モデル](../active-directory/role-based-access-control-what-is.md)を使用しています。 Network Watcher には次のアクセス許可が必要です。 Network Watcher API を開始またはポータルから Network Watcher を使用するために用いるロールには、必ず必要なアクセスを設定してください。
 
 |リソース| アクセス許可|
 |---|---|
@@ -108,7 +106,7 @@ Network Watcher には診断ログ ビューが用意されています。 こ�
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 
-ポータルの&1; 機能であるトラブルシューティング ブレードは、現時点ではネットワーク リソースで提供されており、個々のリソースに関連する一般的な問題を診断できます。 この機能は、ExpressRoute、VPN Gateway、Application Gateway、ネットワーク セキュリティ ログ、ルーティング、DNS、ロード バランサー、Traffic Manager の各ネットワーク リソースで利用できます。 リソース レベルのトラブルシューティングの詳細については、「[Diagnose and resolve issues with Azure Troubleshooting](https://azure.microsoft.com/blog/azure-troubleshoot-diagonse-resolve-issues/)」(Azure のトラブルシューティング機能を使用した問題の診断と解決) を参照してください。
+ポータルの 1 機能であるトラブルシューティング ブレードは、現時点ではネットワーク リソースで提供されており、個々のリソースに関連する一般的な問題を診断できます。 この機能は、ExpressRoute、VPN Gateway、Application Gateway、ネットワーク セキュリティ ログ、ルーティング、DNS、ロード バランサー、Traffic Manager の各ネットワーク リソースで利用できます。 リソース レベルのトラブルシューティングの詳細については、「[Diagnose and resolve issues with Azure Troubleshooting](https://azure.microsoft.com/blog/azure-troubleshoot-diagonse-resolve-issues/)」(Azure のトラブルシューティング機能を使用した問題の診断と解決) を参照してください。
 
 ![トラブルシューティングの情報][TS]
 

@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2017
+ms.date: 04/06/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 79004e91c9e22b085b04e446999d4efe05426436
-ms.openlocfilehash: 512c4dc5f77d5f730720909628364c5c9d8b3174
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 6d878b00094f573adc440d2384c426506fea0a40
+ms.lasthandoff: 04/06/2017
 
 
 ---
 # <a name="manage-your-iot-hub-device-identities-in-bulk"></a>IoT Hub デバイス ID を一括で管理する
+
 各 IoT Hub には、サービスのデバイスごとのリソース (クラウドからデバイスへの転送中のメッセージを含むキューなど) を作成するために使用できる ID レジストリがあります。 この ID レジストリを使って、デバイス向けエンドポイントへのアクセスを制御することもできます。 この記事では、ID レジストリとの間でデバイス ID を一括でインポートおよびエクスポートする方法について説明します。
 
 インポートおよびエクスポート操作は、IoT Hub に対する一括サービス操作を実行するのを可能にする "*ジョブ*" のコンテキストで行われます。
@@ -29,6 +30,7 @@ ms.lasthandoff: 02/23/2017
 **RegistryManager** クラスには、**ジョブ** フレームワークを使用する **ExportDevicesAsync** および **ImportDevicesAsync** メソッドが含まれています。 これらのメソッドを使用すると、IoT Hub ID レジストリ全体のエクスポート、インポート、および同期化を行うことができます。
 
 ## <a name="what-are-jobs"></a>ジョブとは
+
 ID レジストリの操作では、次の場合に **ジョブ** システムを使用します。
 
 * 操作の実行時間が、標準のランタイム操作と比べて長くなる可能性がある。
@@ -38,7 +40,7 @@ ID レジストリの操作では、次の場合に **ジョブ** システム�
 
 次の C# コード スニペットでは、エクスポート ジョブの作成方法を示します。
 
-```
+```csharp
 // Call an export job on the IoT Hub to retrieve all devices
 JobProperties exportJob = await registryManager.ExportDevicesAsync(containerSasUri, false);
 ```
@@ -51,7 +53,7 @@ JobProperties exportJob = await registryManager.ExportDevicesAsync(containerSasU
 
 次の C# コード スニペットでは、5 秒ごとにポーリングして、ジョブの実行が完了したかどうかを確認する方法を示します。
 
-```
+```csharp
 // Wait until job is finished
 while(true)
 {
@@ -69,22 +71,24 @@ while(true)
 ```
 
 ## <a name="export-devices"></a>デバイスのエクスポート
-**ExportDevicesAsync** メソッドでは、[Shared Access Signature](https://msdn.microsoft.com/library/ee395415.aspx) を使用して IoT Hub ID レジストリ全体を [Azure Storage](https://azure.microsoft.com/documentation/services/storage/) BLOB コンテナーにエクスポートすることができます。
+
+**ExportDevicesAsync** メソッドでは、[Shared Access Signature](../storage/storage-security-guide.md#data-plane-security) を使用して IoT Hub ID レジストリ全体を [Azure Storage](../storage/index.md) BLOB コンテナーにエクスポートすることができます。
 
 このメソッドでは、制御対象の BLOB コンテナーにデバイス情報のバックアップを確実に作成することができます。
 
-**ExportDevicesAsync** メソッドには、次の&2; つのパラメーターが必要です。
+**ExportDevicesAsync** メソッドには、次の 2 つのパラメーターが必要です。
 
 * BLOB コンテナーの URI が格納される*文字列*。 この URI には、コンテナーに対する書き込みアクセスを付与する SAS トークンを含める必要があります。 ジョブでは、デバイスのシリアル化されたエクスポート データを格納するために、このコンテナー内にブロック BLOB を作成します。 SAS トークンには、次のアクセス許可を含める必要があります。
-  
-   ```
+
+   ```csharp
    SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
    ```
+
 * エクスポート データから認証キーを除外するかどうかを示す*ブール値*。 **false** の場合、認証キーはエクスポート出力に含められます。 それ以外の場合、キーは **null** としてエクスポートされます。
 
 次の C# コード スニペットは、エクスポート データにデバイスの認証キーを含むエクスポート ジョブを開始し、ポーリングを実行して完了する方法を示します。
 
-```
+```csharp
 // Call an export job on the IoT Hub to retrieve all devices
 JobProperties exportJob = await registryManager.ExportDevicesAsync(containerSasUri, false);
 
@@ -104,11 +108,11 @@ while(true)
 }
 ```
 
-ジョブは、その出力を、指定された BLOB コンテナー内に **devices.txt**という名前のブロック BLOB として格納します。 出力データは、JSON のシリアル化されたデバイス データで構成され、1 行につき&1; つのデバイスが配置されます。
+ジョブは、その出力を、指定された BLOB コンテナー内に **devices.txt**という名前のブロック BLOB として格納します。 出力データは、JSON のシリアル化されたデバイス データで構成され、1 行につき 1 つのデバイスが配置されます。
 
 次の例は、出力データを示します。
 
-```
+```json
 {"id":"Device1","eTag":"MA==","status":"enabled","authentication":{"symmetricKey":{"primaryKey":"abc=","secondaryKey":"def="}}}
 {"id":"Device2","eTag":"MA==","status":"enabled","authentication":{"symmetricKey":{"primaryKey":"abc=","secondaryKey":"def="}}}
 {"id":"Device3","eTag":"MA==","status":"disabled","authentication":{"symmetricKey":{"primaryKey":"abc=","secondaryKey":"def="}}}
@@ -118,7 +122,7 @@ while(true)
 
 コード内のこのデータにアクセスする必要がある場合、 **ExportImportDevice** クラスを使用すると、データを簡単に逆シリアル化できます。 次の C# コード スニペットでは、以前にブロック BLOB にエクスポートしたデバイス情報を読み取る方法を示します。
 
-```
+```csharp
 var exportedDevices = new List<ExportImportDevice>();
 
 using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondition.GenerateIfExistsCondition(), RequestOptions, null), Encoding.UTF8))
@@ -134,44 +138,40 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
 
 > [!NOTE]
 > また、**RegistryManager** クラスの **GetDevicesAsync** メソッドを使用して、デバイスの一覧を取得することができます。 ただし、この方法では、返されるデバイス オブジェクトの数は 1000 に制限されます。 **GetDevicesAsync** メソッドの用途は、開発シナリオでデバッグを支援することを想定しており、運用環境のワークロードに対しての使用はお勧めできません。
-> 
-> 
 
 ## <a name="import-devices"></a>デバイスのインポート
+
 **RegistryManager** クラスの **ImportDevicesAsync** メソッドを使用すると、IoT Hub ID レジストリの一括インポートおよび同期化操作を実行することができます。 **ExportDevicesAsync** メソッドと同様に、**ImportDevicesAsync** メソッドでも**ジョブ** フレームワークを使用します。
 
 **ImportDevicesAsync** メソッドを使用する場合は注意が必要です。このメソッドでは、ID レジストリ内に新しいデバイスをプロビジョニングするほか、既存のデバイスを更新および削除する可能性もあるためです。
 
 > [!WARNING]
 > インポート操作は元に戻すことができません。 ID レジストリに対して一括変更を加える場合は、必ず事前に **ExportDevicesAsync** メソッドを使用して既存のデータを別の BLOB コンテナーにバックアップしておく必要があります。
-> 
-> 
 
-**ImportDevicesAsync** メソッドには、次の&2; つのパラメーターが必要です。
+**ImportDevicesAsync** メソッドには、次の 2 つのパラメーターが必要です。
 
-* [Azure Storage](https://azure.microsoft.com/documentation/services/storage/) BLOB コンテナーの URI を、ジョブへの*入力*として使用するために格納する*文字列*。 この URI には、コンテナーに対する読み取りアクセスを付与する SAS トークンを含める必要があります。 このコンテナーには、ID レジストリにインポートするシリアル化されたデバイス データが入っている **devices.txt** という名前の BLOB を含める必要があります。 インポート データには、**ExportImportDevice** ジョブが **devices.txt** BLOB を作成する際に使用するのと同じ JSON 形式でデバイス情報を含める必要があります。 SAS トークンには、次のアクセス許可を含める必要があります。
-  
-   ```
+* [Azure Storage](../storage/index.md) BLOB コンテナーの URI を、ジョブへの*入力*として使用するために格納する*文字列*。 この URI には、コンテナーに対する読み取りアクセスを付与する SAS トークンを含める必要があります。 このコンテナーには、ID レジストリにインポートするシリアル化されたデバイス データが入っている **devices.txt** という名前の BLOB を含める必要があります。 インポート データには、**ExportImportDevice** ジョブが **devices.txt** BLOB を作成する際に使用するのと同じ JSON 形式でデバイス情報を含める必要があります。 SAS トークンには、次のアクセス許可を含める必要があります。
+
+   ```csharp
    SharedAccessBlobPermissions.Read
    ```
 * [Azure Storage](https://azure.microsoft.com/documentation/services/storage/) BLOB コンテナーの URI を、ジョブからの*出力*として格納する*文字列*。 ジョブは、このコンテナー内にブロック BLOB を作成して、完了したインポート **ジョブ**からのエラー情報を格納します。 SAS トークンには、次のアクセス許可を含める必要があります。
-  
-   ```
+
+   ```csharp
    SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
    ```
 
 > [!NOTE]
-> この&2; つのパラメーターは、同じ BLOB コンテナーを指すことができます。 出力コンテナーで追加のアクセス許可が必要な場合は、個々のパラメーターでデータのより細かな制御を簡単に実現できます。
-> 
-> 
+> この 2 つのパラメーターは、同じ BLOB コンテナーを指すことができます。 出力コンテナーで追加のアクセス許可が必要な場合は、個々のパラメーターでデータのより細かな制御を簡単に実現できます。
 
 次の C# コード スニペットでは、インポート ジョブの開始方法を示します。
 
-```
+```csharp
 JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
 ```
 
 ## <a name="import-behavior"></a>インポートの動作
+
 **ImportDevicesAsync** メソッドを使用して、ID レジストリで次の一括操作を実行することができます。
 
 * 新しいデバイスの一括登録
@@ -180,7 +180,7 @@ JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasU
 * 新しいデバイス認証キーの一括割り当て
 * デバイス認証キーの一括自動再生成
 
-上記の操作の任意の組み合わせを&1; 回の **ImportDevicesAsync** 呼び出しで実行できます。 たとえば、新しいデバイスの登録と、既存のデバイスの削除または更新とを同時に行うことができます。 **ExportDevicesAsync** メソッドと一緒に使用すると、すべてのデバイスを一つの IoT Hub から別の IoT Hub へ完全に移行できます。
+上記の操作の任意の組み合わせを 1 回の **ImportDevicesAsync** 呼び出しで実行できます。 たとえば、新しいデバイスの登録と、既存のデバイスの削除または更新とを同時に行うことができます。 **ExportDevicesAsync** メソッドと一緒に使用すると、すべてのデバイスを一つの IoT Hub から別の IoT Hub へ完全に移行できます。
 
 デバイスごとにインポート プロセスを制御するには、デバイスごとのインポート シリアル化データにオプションの **importMode** プロパティを使用します。 **importMode** プロパティには、次のオプションが用意されています。
 
@@ -196,17 +196,16 @@ JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasU
 
 > [!NOTE]
 > シリアル化データが、デバイスの **importMode** フラグを明確に定義していない場合、インポート操作中に **createOrUpdate** が既定値に設定されます。
-> 
-> 
 
 ## <a name="import-devices-example--bulk-device-provisioning"></a>デバイスのインポートの例 – デバイスの一括プロビジョニング
+
 次の C# コード サンプルでは、複数のデバイス ID を生成して以下の操作を行う方法を示します。
 
 * 認証キーを含める。
 * ブロック BLOB にデバイスの情報を書き込む。
 * ID レジストリにデバイスをインポートする。
 
-```
+```csharp
 // Provision 1,000 more devices
 var serializedDevices = new List<string>();
 
@@ -268,9 +267,10 @@ while(true)
 ```
 
 ## <a name="import-devices-example--bulk-deletion"></a>デバイスのインポートの例 – 一括削除
+
 次のコード サンプルでは、前述のコード サンプルを使用して追加したデバイスを削除する方法を示します。
 
-```
+```csharp
 // Step 1: Update each device's ImportMode to be Delete
 sb = new StringBuilder();
 serializedDevices.ForEach(serializedDevice =>
@@ -317,10 +317,11 @@ while(true)
 
 ```
 
-## <a name="getting-the-container-sas-uri"></a>コンテナーの SAS URI の取得
+## <a name="get-the-container-sas-uri"></a>コンテナーの SAS URI の取得
+
 次のコード サンプルでは、BLOB コンテナーに対する読み取り、書き込み、および削除アクセス許可を使用して [SAS URI](../storage/storage-dotnet-shared-access-signature-part-2.md) を生成する方法を示します。
 
-```
+```csharp
 static string GetContainerSasUri(CloudBlobContainer container)
 {
   // Set the expiry time and permissions for the container.
@@ -345,6 +346,7 @@ static string GetContainerSasUri(CloudBlobContainer container)
 ```
 
 ## <a name="next-steps"></a>次のステップ
+
 この記事では、IoT Hub の ID レジストリに対して一括操作を実行する方法について説明しました。 Azure IoT Hub の管理についてさらに学習するには、次のリンクを使用してください。
 
 * [IoT Hub メトリック][lnk-metrics]

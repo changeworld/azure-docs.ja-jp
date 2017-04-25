@@ -11,28 +11,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/18/2017
+ms.date: 03/23/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 8e209d70a0bdcac4d3d1f7fefe265bf4824520e3
-ms.openlocfilehash: 20c198577349a2173d5b7bafd1b84fd4c24fa711
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 2fcde595a40dafda7549f5bccb582b57585b314e
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qualtrics"></a>チュートリアル: Azure Active Directory と Qualtrics の統合
 このチュートリアルでは、Azure と Qualtrics の統合について説明します。  
+
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 * 有効な Azure サブスクリプション
-* Qualtrics でのシングル サインオンが有効なサブスクリプション
+* Qualtrics でのシングル サインオン (SSO) が有効なサブスクリプション
 
 このチュートリアルを完了すると、Qualtrics に割り当てた Azure AD ユーザーは、Qualtrics 企業サイト (サービス プロバイダーが開始したサインオン) で、または「 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
 
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
 1. Qualtrics のアプリケーション統合の有効化
-2. シングル サインオンの構成
+2. シングル サインオン (SSO) の構成
 3. ユーザー プロビジョニングの構成
 4. ユーザーの割り当て
 
@@ -41,7 +42,8 @@ ms.lasthandoff: 02/03/2017
 ## <a name="enabling-the-application-integration-for-qualtrics"></a>Qualtrics のアプリケーション統合の有効化
 このセクションでは、Qualtrics のアプリケーション統合を有効にする方法を説明します。
 
-### <a name="to-enable-the-application-integration-for-qualtrics-perform-the-following-steps"></a>Qualtrics のアプリケーション統合を有効にするには、次の手順に従います。
+**Qualtrics のアプリケーション統合を有効にするには、次の手順を実行します。**
+
 1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
    ![Active Directory](./media/active-directory-saas-qualtrics-tutorial/IC700993.png "Active Directory")
@@ -62,11 +64,12 @@ ms.lasthandoff: 02/03/2017
    
    ![Qualtrics](./media/active-directory-saas-qualtrics-tutorial/IC789544.png "Qualtrics")
    
-## <a name="configuring-single-sign-on"></a>シングル サインオンの構成
+## <a name="configure-single-sign-on"></a>Configure single sign-on
 
 このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Qualtrics に対する認証を行えるようにする方法を説明します。
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>シングル サインオンを構成するには、次の手順を実行します。
+**シングル サインオンを構成するには、次の手順に従います。**
+
 1. Azure クラシック ポータルの **Qualtrics** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
    ![シングル サインオンの構成](./media/active-directory-saas-qualtrics-tutorial/IC789545.png "Configure Single Sign-On")
@@ -81,25 +84,25 @@ ms.lasthandoff: 02/03/2017
    ![シングル サインオンの構成](./media/active-directory-saas-qualtrics-tutorial/IC789548.png "Configure Single Sign-On")
 5. Qualtrics サポート チームに、メタデータ ファイルを送信します。
    
-   > [!NOTE]
-   > シングル サインオンの構成は、Qualtrics サポート チームが実行する必要があります。 構成が完了すると、サポート チームから通知が届きます。
+   >[!NOTE]
+   >SSO の構成は、Qualtrics サポート チームが実行する必要があります。 構成が完了すると、サポート チームから通知が届きます。
    > 
    > 
 6. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
    
    ![シングル サインオンの構成](./media/active-directory-saas-qualtrics-tutorial/IC789549.png "Configure Single Sign-On")
    
-## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
+## <a name="configure-user-provisioning"></a>[ユーザー プロビジョニングの構成]
 
-Qualtrics へのユーザー プロビジョニングの構成にあたって必要な操作はありません。  
-割り当てられたユーザーがアクセス パネルを使用して Qualtrics にログインしようとすると、そのユーザーが存在するかどうかが Qualtrics によって確認されます。  
+Qualtrics へのユーザー プロビジョニングの構成にあたって必要な操作はありません。 割り当てられたユーザーがアクセス パネルを使用して Qualtrics にログインしようとすると、そのユーザーが存在するかどうかが Qualtrics によって確認されます。  
 
 使用可能なユーザー アカウントがない場合、ユーザー アカウントは Qualtrics により自動的に作成されます。
 
-## <a name="assigning-users"></a>ユーザーの割り当て
+## <a name="assign-users"></a>[ユーザーの割り当て]
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
-### <a name="to-assign-users-to-qualtrics-perform-the-following-steps"></a>ユーザーを Qualtrics に割り当てるには、次の手順に従います。
+**ユーザーを Qualtrics に割り当てるには、次の手順を実行します。**
+
 1. Azure クラシック ポータルで、テスト アカウントを作成します。
 2. **Qualtrics** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
    
@@ -108,6 +111,6 @@ Qualtrics へのユーザー プロビジョニングの構成にあたって必
    
    ![はい](./media/active-directory-saas-qualtrics-tutorial/IC767830.png "Yes")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
+SSO の設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
 

@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 3cd588751346517f9359f760561839339b0f9edb
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 2e1915f017db8286b8a381aacf62205f3d34bcc9
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="securing-access-to-azure-remoteapp-and-beyond"></a>Azure RemoteApp とその先にあるリソースへのアクセスのセキュリティ保護
 > [!IMPORTANT]
-> Azure RemoteApp の提供は終了しました。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
+> Azure RemoteApp の提供は、2017 年 8 月 31 日で終了します。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
 > 
 > 
 
@@ -34,11 +35,11 @@ ms.openlocfilehash: 3cd588751346517f9359f760561839339b0f9edb
 詳細およびこれらの質問に対する回答については、以下で説明します。
 
 ## <a name="who-can-access-the-collection"></a>コレクションにアクセスできるのは誰ですか?
-管理者は、コレクション内のリモート アプリケーションにアクセスできるユーザーを選択します。 Azure Active Directory (Azure AD) の職場または学校のアカウント (旧称、"組織アカウント") または Microsoft アカウント (例: @outlook.com). を使用することができます。ほとんどのエンタープライズ シナリオでは Azure AD アカウントが使用されます。このアカウントでは、後で説明する条件付きアクセス機能を使用できます。また、ドメイン参加コレクションに対して選択できるのはこのアカウントのみです。 記事の後半では、Azure RemoteApp で Azure AD アカウントを使用することを前提としています。
+管理者は、コレクション内のリモート アプリケーションにアクセスできるユーザーを選択します。 Azure Active Directory (Azure AD) の職場または学校のアカウント (旧称、"組織アカウント") または Microsoft アカウント (例: @outlook.com) を使用することができます。 ほとんどのエンタープライズ シナリオでは Azure AD アカウントが使用されます。このアカウントでは、後で説明する条件付きアクセス機能を使用できます。また、ドメイン参加コレクションに対して選択できるのはこのアカウントのみです。 記事の後半では、Azure RemoteApp で Azure AD アカウントを使用することを前提としています。
 
 **実現内容:**
 
-Azure RemoteApp へのアクセスを制御するために Azure AD アカウントを使用すると、次の&2; つのことが実現できます。
+Azure RemoteApp へのアクセスを制御するために Azure AD アカウントを使用すると、次の 2 つのことが実現できます。
 
 1. 発行されたアプリケーションと、それらのアプリケーションの接続先となるバックエンドにアクセスできるユーザーを常に把握する。
 2. ユーザー アカウントの作成と削除、パスワード ポリシーの設定、多要素認証の使用などができるように、基になる Azure AD を制御する。 
@@ -100,7 +101,7 @@ Azure RemoteApp デプロイメントの一般的なシナリオは、リモー�
 
 このソリューションでは、同じ Azure Virtual Network (VNET) に Azure RemoteApp 環境とセキュリティで保護されたリソースの両方を配置します。 リソースが別のサイトにある場合は、Azure データ センターとお客様のオンプレミス環境にまたがる VNet を作成する場合などに、サイト間 VPN 接続を確立できます。
 
-Azure RemoteApp では、ユーザーが独自の VNET を指定できる以下の&2; 種類のコレクション デプロイメントがサポートされています。
+Azure RemoteApp では、ユーザーが独自の VNET を指定できる以下の 2 種類のコレクション デプロイメントがサポートされています。
 
 * ドメイン不参加: アプリケーションから、VNET 内の他のリソースを見通すことができます。 たとえば、これを使用して、SQL 認証を使用する SQL Database にアプリケーションを接続することができます (アプリケーションがデータベースに対して直接ユーザーを認証)。
 * ドメイン参加: Azure RemoteApp で使用される仮想マシンは、VNET 内のドメイン コント ローラーに参加しています。 これは、アプリケーションがバックエンド リソースにアクセスするために、Windows ドメイン コントローラーに対して認証する必要がある場合に便利です。
@@ -115,10 +116,5 @@ Azure RemoteApp では、最初に VNet を構成してから、コレクショ�
 以下の図は、エンド ユーザーからバックエンド リソースへの Azure RemoteApp (ARA) 経由のセキュリティで保護されたアクセス チャネルが構築された完全なソリューションを示しています。
 ![セキュリティで保護された Azure RemoteApp](./media/remoteapp-secureaccess/ra-secureoverview.png) ステージ 1 では、ユーザーを選択し、ARA へのアクセス方法を制御するアクセス規則を作成しました。 この例では、企業ネットワークから作業を行っているユーザーに対してのみアクセスを許可しています。 非準拠ユーザーは、ARA 環境にはまったくアクセスすることはできません。
 "ステージ 2" では、制御下の VNet/VPN 構成でのみバックエンド リソースを公開しました。 Azure RemoteApp は同じ VNet 内に配置されています。 最終的に、リソースは ARA 環境を介してのみアクセスできます。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

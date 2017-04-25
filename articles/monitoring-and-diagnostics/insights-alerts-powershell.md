@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 10/20/2016
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
-ms.openlocfilehash: 62faba3827e9fc33e9788cd2d487adf04d760791
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
+ms.openlocfilehash: 50127242cdf156771d0610e58cf2fc41281adae7
+ms.lasthandoff: 03/31/2017
 
 
 ---
-# <a name="create-alerts-in-azure-monitor-for-azure-services---powershell"></a>Azure Monitorでの Azure サービス アラートの作成 
+# <a name="create-metric-alerts-in-azure-monitor-for-azure-services---powershell"></a>Azure Monitor での Azure サービス メトリック アラートの作成
 > [!div class="op_single_selector"]
 > * [ポータル](insights-alerts-portal.md)
 > * [PowerShell](insights-alerts-powershell.md)
@@ -30,14 +30,14 @@ ms.lasthandoff: 03/15/2017
 >
 
 ## <a name="overview"></a>概要
-この記事では、PowerShell を使用して Azure アラートを設定する方法について説明します。  
+この記事では、PowerShell を使用して Azure メトリック アラートを設定する方法について説明します。  
 
 監視メトリック、イベント、Azure サービスに基づいて通知を受け取ることができます。
 
 * **メトリック値** - アラートは、指定したメトリックの値が、割り当てたしきい値をいずれかの方向で超えたときにトリガーされます。 つまり、条件を最初に満たしたときと、後でその条件を満たさなくなったときの両方でトリガーされます。    
-* **アクティビティ ログ イベント** - アラートは、" *すべて* " のイベントに対して、または特定数のイベントが発生したときにのみトリガーされます。
+* **アクティビティ ログ イベント** - アラートは*すべて*のイベントに対して、または特定のイベントが発生したときにのみトリガーされます。 アクティビティ ログ アラートの詳細については、[ここをクリック](monitoring-activity-log-alerts.md)してください。
 
-アラートがトリガーされたときに実行されるように構成できる処理は次のとおりです。
+メトリック アラートがトリガーされたときに実行されるように構成できる処理は次のとおりです。
 
 * サービスの管理者/共同管理者に電子メール通知を送信する
 * 指定した追加の電子メール アドレスに電子メールを送信する。
@@ -74,8 +74,8 @@ ms.lasthandoff: 03/15/2017
    ```
 4. ルールを作成するには、最初に重要な情報をいくつか入手する必要があります。
 
-   * アラートを設定するリソースの **リソース ID**
-   * そのリソースが使用できる **メトリック定義**
+  * アラートを設定するリソースの **リソース ID**
+  * そのリソースが使用できる **メトリック定義**
 
      リソース ID は、Azure ポータルを使用して取得できます。 リソースが既に作成されている場合は、ポータルでそのリソースを選択し、 次のブレードで "*設定*" セクションの "*プロパティ*" を選択します。 次のブレードに "**リソース ID**" フィールドがあります。 また、[Azure リソース エクスプローラー](https://resources.azure.com/)を使用することもできます。
 
@@ -113,27 +113,14 @@ ms.lasthandoff: 03/15/2017
     Add-AzureRmMetricAlertRule -Name myMetricRuleWithWebhookAndEmail -Location "East US" -ResourceGroup myresourcegroup -TargetResourceId /subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Web/sites/mywebsitename -MetricName "BytesReceived" -Operator GreaterThan -Threshold 2 -WindowSize 00:05:00 -TimeAggregationOperator Total -Actions $actionEmail, $actionWebhook -Description "alert on any website activity"
     ```
 
-
-1. アクティビティ ログで特定の状況にトリガーされるアラートを作成するには、次の形式のコマンドを使用します。
-
-    ```PowerShell
-    $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail myname@company.com
-    $actionWebhook = New-AzureRmAlertRuleWebhook -ServiceUri https://www.contoso.com?token=mytoken
-
-    Add-AzureRmLogAlertRule -Name myLogAlertRule -Location "East US" -ResourceGroup myresourcegroup -OperationName microsoft.web/sites/start/action -Status Succeeded -TargetResourceGroup resourcegroupbeingmonitored -Actions $actionEmail, $actionWebhook
-    ```
-
-    -OperationName は、アクティビティ ログのイベントの種類に対応します。 *Microsoft.Compute/virtualMachines/delete*、*microsoft.insights/diagnosticSettings/write* などが例として挙げられます。
-
-    PowerShell コマンド [Get AzureRmProviderOperation](https://msdn.microsoft.com/library/mt603720.aspx) を使用すると、考えられる operationNames の一覧を取得できます。 また、Azure ポータルを使用して、アクティビティ ログを照会し、アラートを作成する過去の操作を検索することもできます。 操作は、フレンドリ名のグラフィック ログに表示されます。 JSON でエントリを検索し、OperationName 値を取得します。   
-2. 個別のルールを確認して、アラートが正しく作成されていることを確かめます。
+7. 個別のルールを確認して、アラートが正しく作成されていることを確かめます。
 
     ```PowerShell
     Get-AzureRmAlertRule -Name myMetricRuleWithWebhookAndEmail -ResourceGroup myresourcegroup -DetailedOutput
 
     Get-AzureRmAlertRule -Name myLogAlertRule -ResourceGroup myresourcegroup -DetailedOutput
     ```
-3. アラートを削除します。 この記事で作成したルールは、次のコマンドで削除します。
+8. アラートを削除します。 この記事で作成したルールは、次のコマンドで削除します。
 
     ```PowerShell
     Remove-AzureRmAlertRule -ResourceGroup myresourcegroup -Name myrule
@@ -144,6 +131,7 @@ ms.lasthandoff: 03/15/2017
 ## <a name="next-steps"></a>次のステップ
 * [Azure での監視の概要](monitoring-overview.md) 情報を入手します。
 * [アラートでの webhook の構成](insights-webhooks-alerts.md)に関する詳細情報を確認します。
+* アクティビティ ログ イベントにアラートを構成する方法は[ここ](monitoring-activity-log-alerts.md)でご覧いただけます。
 * [Azure Automation Runbooks](../automation/automation-starting-a-runbook.md)の詳細情報を確認します。
 * [診断ログ収集の概要](monitoring-overview-of-diagnostic-logs.md) 情報を入手して、サービスに関する詳細な頻度の高いメトリックを収集します。
 * [メトリック収集の概要](insights-how-to-customize-monitoring.md) 情報を入手して、サービスの可用性と応答性を確認します。

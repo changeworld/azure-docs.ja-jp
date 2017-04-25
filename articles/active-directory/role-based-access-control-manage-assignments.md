@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 3/01/2017
+ms.date: 3/21/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 55baaf0984e01f3cbca7b2296f0b24661e70e7b5
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 82f084b220ba321945975c8d1a6d22e419acf5e4
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -33,7 +33,7 @@ Azure Active Directory のロールベースのアクセス制御 (RBAC) のプ�
 * **スコープ:** RBAC ロールの割り当ては、指定したサブスクリプション、リソース グループ、またはリソースに限られます。 1 つのリソースのアクセス権を付与されたユーザーは、同じサブスクリプションで他のリソースにアクセスすることはできません。
 * **ロール:** 割り当てのスコープ内で、ロールを割り当てることによって、アクセス権がさらに限定されます。 ロールは、所有者のように高レベルにすることも、仮想マシン リーダーのように限定することもできます。
 
-ロールは、割り当てのスコープであるサブスクリプション、リソース グループ、またはリソース内からのみ割り当てられます。 ただし、特定のユーザーまたはグループのすべてのアクセス権の割り当てを&1; 箇所から確認できます。
+ロールは、割り当てのスコープであるサブスクリプション、リソース グループ、またはリソース内からのみ割り当てられます。 ただし、特定のユーザーまたはグループのすべてのアクセス権の割り当てを 1 箇所から確認できます。 各サブスクリプションには、最大 2,000 個のロールの割り当てを保持できます。 
 
 [Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](role-based-access-control-configure.md)方法について参照してください。
 

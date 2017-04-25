@@ -11,16 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/03/2017
+ms.date: 03/23/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 9a653ac435198e89a527070a0174a1adaf830dc3
-ms.openlocfilehash: 504a5723f025d7383dbec78cdd268b7c1b94a1e5
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 8d913c024fce9945cfd5eaf336deed259dfbef50
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rally-software"></a>チュートリアル: Azure Active Directory と Rally Software の統合
 このチュートリアルでは、Azure と Rally Software の統合について説明します。  
+
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 * 有効な Azure サブスクリプション
@@ -29,16 +31,17 @@ ms.openlocfilehash: 504a5723f025d7383dbec78cdd268b7c1b94a1e5
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
 1. Rally Software のアプリケーション統合の有効化
-2. シングル サインオンの構成
+2. シングル サインオン (SSO) の構成
 3. ユーザー プロビジョニングの構成
 4. ユーザーの割り当て
 
 ![シナリオ](./media/active-directory-saas-rally-software-tutorial/IC769525.png "Scenario")
 
-## <a name="enabling-the-application-integration-for-rally-software"></a>Rally Software のアプリケーション統合の有効化
+## <a name="enable-the-application-integration-for-rally-software"></a>Rally Software のアプリケーション統合を有効にする
 このセクションでは、Rally Software のアプリケーション統合を有効にする方法を説明します。
 
-### <a name="to-enable-the-application-integration-for-rally-software-perform-the-following-steps"></a>Rally Software のアプリケーション統合を有効にするには、次の手順に従います。
+**Rally Software のアプリケーション統合を有効にするには、次の手順を実行します。**
+
 1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
     ![Active Directory](./media/active-directory-saas-rally-software-tutorial/IC700993.png "Active Directory")
@@ -65,12 +68,14 @@ ms.openlocfilehash: 504a5723f025d7383dbec78cdd268b7c1b94a1e5
    
     ![Rally Software](./media/active-directory-saas-rally-software-tutorial/IC769527.png "Rally Software")
    
-## <a name="configuring-single-sign-on"></a>シングル サインオンの構成
+## <a name="configure-single-sign-on"></a>Configure single sign-on
 
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Rally Software に対する認証を行うことができるようにする方法を説明します。  
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Rally Software に対する認証を行うことができるようにする方法を説明します。
+
 この手順の途中で、証明書を Rally Software にアップロードする必要があります。
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>シングル サインオンを構成するには、次の手順を実行します。
+**シングル サインオンを構成するには、次の手順に従います。**
+
 1. Azure クラシック ポータルの **Rally Software** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
     ![シングル サインオンの構成](./media/active-directory-saas-rally-software-tutorial/IC749323.png "Configure single sign-on")
@@ -99,21 +104,20 @@ ms.openlocfilehash: 504a5723f025d7383dbec78cdd268b7c1b94a1e5
    
     ![Authentication](./media/active-directory-saas-rally-software-tutorial/IC769542.png "Authentication")
    
-    1. Authentication のドロップダウン リストから、 **[Rally or SSO authentication]** を選びます。
- 
-    2. Azure クラシック ポータルの **[Rally Software でのシングル サインオンの構成]** ダイアログ ページで、**[ID プロバイダーの識別]** の値をコピーし、**[Identity Provider URL]** ボックスに貼り付けます。
-
-    3. Azure クラシック ポータルで、**[Rally Software でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーします。
+  1. Authentication のドロップダウン リストから、**[Rally or SSO authentication]** を選択します。
+  2. Azure クラシック ポータルの **[Rally Software でのシングル サインオンの構成]** ダイアログ ページで、**[ID プロバイダーの識別]** の値をコピーし、**[Identity Provider URL]** テキストボックスに貼り付けます。
+  3. Azure クラシック ポータルで、**[Rally Software でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーします。
 
 9. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
    
     ![シングル サインオンの構成](./media/active-directory-saas-rally-software-tutorial/IC769547.png "Configure single sign-on")
    
-## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
+## <a name="configure-user-provisioning"></a>[ユーザー プロビジョニングの構成]
 
 AAD ユーザーがサインインできるように、Azure Active Directory ユーザー名を使用して、Rally Software アプリケーションにユーザーをプロビジョニングする必要があります。
 
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>ユーザー プロビジョニングを構成するには、次の手順に従います。
+**ユーザー プロビジョニングを構成するには、次の手順に従います。**
+
 1. Rally Software テナントにログインします。
 
 2. **[Setup] \> [USERS]** に移動し、**[+ Add New]** をクリックします。
@@ -126,21 +130,20 @@ AAD ユーザーがサインインできるように、Azure Active Directory �
    
     ![Create User](./media/active-directory-saas-rally-software-tutorial/IC781040.png "Create User")
    
-    1. **[User Name]** ボックスに、プロビジョニングする Azure AD ユーザーの名前を入力します。
+   1. **[User Name]** ボックスに、プロビジョニングする Azure AD ユーザーの名前を入力します。
+   2. **[Email Address]** ボックスに、プロビジョニングする Azure AD ユーザーのメール アドレスを入力します。
+   3. **[Save & Close]** をクリックします。
 
-    2. **[Email Address]** ボックスに、プロビジョニングする Azure AD ユーザーのメール アドレスを入力します。
-
-    3. **[Save & Close]** をクリックします。
-
-> [!NOTE]
-> 他の Rally Software ユーザー アカウントの作成ツールまたは Rally Software から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[!NOTE]
+>他の Rally Software ユーザー アカウントの作成ツールまたは Rally Software から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 > 
 > 
 
-## <a name="assigning-users"></a>ユーザーの割り当て
+## <a name="assign-users"></a>[ユーザーの割り当て]
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
-### <a name="to-assign-users-to-rally-software-perform-the-following-steps"></a>ユーザーを Rally Software に割り当てるには、次の手順に従います。
+**ユーザーを Rally Software に割り当てるには、次の手順を実行します。**
+
 1. Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2. **Rally Software** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
@@ -151,11 +154,6 @@ AAD ユーザーがサインインできるように、Azure Active Directory �
    
     ![はい](./media/active-directory-saas-rally-software-tutorial/IC767830.png "Yes")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO1-->
+SSO の設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
 

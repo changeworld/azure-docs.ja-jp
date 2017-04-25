@@ -12,12 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 09/06/2016
+ms.date: 04/05/2017
 ms.author: lmazuel
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 579015f419ac0ee886f8e8497760a562ab324c24
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 90f417768d58c42df9b786b5c50d96970f133548
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -38,13 +38,13 @@ Service Management API を使用するには、 [Azure アカウントを作成�
 Azure SDK for Python は、REST API である [Azure Service Management API][svc-mgmt-rest-api] をラップします。 すべての API 操作は SSL 上で実行され、X.509 v3 証明書を使用して相互認証されます。 管理サービスへのアクセスは、Azure で実行されているサービス内から行うことも、HTTPS 要求の送信と HTTPS 応答の受信の機能を持つ任意のアプリケーションからインターネット上で直接行うこともできます。
 
 ## <a name="Installation"> </a>インストール
-`azure-servicemanagement-legacy` パッケージには、この記事で説明されているすべての機能が用意されています。このパッケージは pip を使用してインストールできます。 インストールの詳細については (たとえば、Python を初めて使用する場合)、[Python と Azure SDK のインストール](../python-how-to-install.md)に関する記事をご覧ください。
+`azure-servicemanagement-legacy` パッケージには、この記事で説明されているすべての機能が用意されています。このパッケージは pip を使用してインストールできます。 インストールの詳細については (たとえば、Python を初めて使用する場合)、「[Python と SDK のインストール](../python-how-to-install.md)」を参照してください。
 
 ## <a name="Connect"> </a>方法: サービス管理に接続する
 サービス管理エンドポイントに接続するには、Azure サブスクリプション ID、および有効な管理証明書が必要です。 サブスクリプション ID は [Azure クラシック ポータル][management-portal]から入手できます。
 
 > [!NOTE]
-> Azure SDK for Python v0.8.0 以降、Windows で実行中の OpenSSL で作成した証明書を使用できるようになりました。  これには、Python 2.7.4 以降が必要です。 .pfx 証明書のサポートは今後削除される可能性があるため、.pfx の代わりに OpenSSL を使用することをお勧めします。
+> Windows で実行中の OpenSSL で作成した証明書を使用できるようになりました。  これには、Python 2.7.4 以降が必要です。 .pfx 証明書のサポートは今後削除される可能性があるため、.pfx の代わりに OpenSSL を使用することをお勧めします。
 > 
 > 
 

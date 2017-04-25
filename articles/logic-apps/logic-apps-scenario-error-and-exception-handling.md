@@ -17,9 +17,9 @@ ms.custom: H1Hack27Feb2017
 ms.date: 07/29/2016
 ms.author: b-hoedid
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: db5f70c88eb0b429a8d5d76f192a742f97fdf131
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
+ms.openlocfilehash: b996ed1889ec39de78dcee9bbcb18a5982fc5f7f
+ms.lasthandoff: 04/04/2017
 
 
 ---
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/09/2017
 
 以前ある有名な医療機関から、Azure ソリューションの開発を依頼されたことがあります。Microsoft Dynamics CRM Online を使って患者ポータルを作成することが目的です。 Dynamics CRM Online の患者ポータルと Salesforce の間で予約レコードを送信する必要がありました。 すべての患者レコードに [HL7 FHIR](http://www.hl7.org/implement/standards/fhir/) 標準を使うように依頼されました。
 
-このプロジェクトには、主に&2; つの要件がありました。  
+このプロジェクトには、主に 2 つの要件がありました。  
 
 * Dynamics CRM Online ポータルから送信されたレコードを記録するメソッド
 * ワークフロー内で発生したエラーを確認する手段
@@ -48,14 +48,14 @@ ms.lasthandoff: 03/09/2017
 
 ここでは、[Azure DocumentDB](https://azure.microsoft.com/services/documentdb/ "Azure DocumentDB") をログとエラーのレコードを格納するリポジトリとして選びました (DocumentDB では、レコードはドキュメントと呼ばれます)。 Azure Logic Apps にはあらゆる応答の標準テンプレートが用意されています。そのためカスタム スキーマを作成する必要はないだろうと考えました。 場合によっては、エラー レコードとログ レコードの**挿入**と**クエリ**を行う API アプリを作成することもできます。 また、それぞれのスキーマを API アプリ内で定義してもかまいません。  
 
-もう&1; つの要件は、特定の日付を越えたらレコードを消去するというものでした。 DocumentDB には [Time to Live](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Time to Live") (TTL) というプロパティがあり、レコードごと、またはコレクションに対して **Time to Live** 値を設定することができます。 この機能により、DocumentDB から手動でレコードを削除する手間が省かれました。
+もう 1 つの要件は、特定の日付を越えたらレコードを消去するというものでした。 DocumentDB には [Time to Live](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Time to Live") (TTL) というプロパティがあり、レコードごと、またはコレクションに対して **Time to Live** 値を設定することができます。 この機能により、DocumentDB から手動でレコードを削除する手間が省かれました。
 
 > [!IMPORTANT]
-> このチュートリアルの作業を行うためには、DocumentDB データベースと&2; つのコレクション (ログとエラー) を作成する必要があります。
+> このチュートリアルの作業を行うためには、DocumentDB データベースと 2 つのコレクション (ログとエラー) を作成する必要があります。
 
 ## <a name="create-the-logic-app"></a>ロジック アプリの作成
 
-最初に行うことは、ロジック アプリを作成し、そのアプリをロジック アプリ デザイナーで開くことです。 この例では、親子のロジック アプリを使用しています。 親の方は、既に作成済みであると仮定して、子のロジック アプリを&1; つ作成します。
+最初に行うことは、ロジック アプリを作成し、そのアプリをロジック アプリ デザイナーで開くことです。 この例では、親子のロジック アプリを使用しています。 親の方は、既に作成済みであると仮定して、子のロジック アプリを 1 つ作成します。
 
 Dynamics CRM Online から送信されたレコードのログを記録することになります。最初から順に見ていきましょう。 子のロジック アプリは親のロジック アプリによってトリガーされるので、**要求**トリガーを使用する必要があります。
 
@@ -105,22 +105,22 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
 
 1. まず Dynamics CRM Online から新しい予約レコードを取得する必要があります。
 
-    CRM から取得したトリガーによって、**CRM 患者 ID**、 **レコード タイプ**、**更新/新規レコード** (新しいレコードか更新されたレコードかを表すブール値)、**Salesforce ID** が得られます。 **Salesforce ID** は更新時にのみ使用されるので、null の場合もあります。
-    CRM レコードは、CRM **患者 ID** と**レコードの種類**を使用して取得します。
+   CRM から取得したトリガーによって、**CRM 患者 ID**、**レコード タイプ**、**更新/新規レコード** (新しいレコードか更新されたレコードかを表すブール値)、**Salesforce ID** が得られます。 **Salesforce ID** は更新時にのみ使用されるので、null の場合もあります。
+   CRM レコードは、CRM **患者 ID** と**レコードの種類**を使用して取得します。
 
-2. 次に、DocumentDB API アプリの **InsertLogEntry** 操作を追加する必要があります (下図)。
+2. 次に、DocumentDB API アプリの **InsertLogEntry** 操作を追加する必要があります。下のロジック アプリ デザイナーの画像をご覧ください。
 
-### <a name="insert-log-entry-designer-view"></a>ログ エントリ挿入のデザイナー ビュー
+   **ログ エントリの挿入**
 
-![Insert Log Entry](media/logic-apps-scenario-error-and-exception-handling/lognewpatient.png)
+   ![Insert Log Entry](media/logic-apps-scenario-error-and-exception-handling/lognewpatient.png)
 
-### <a name="insert-error-entry-designer-view"></a>エラー エントリ挿入のデザイナー ビュー
+   **エラー エントリの挿入**
 
-![Insert Log Entry](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
+   ![Insert Log Entry](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
 
-### <a name="check-for-create-record-failure"></a>レコード作成エラーのチェック
+   **レコード作成エラーのチェック**
 
-![条件](media/logic-apps-scenario-error-and-exception-handling/condition.png)
+   ![条件](media/logic-apps-scenario-error-and-exception-handling/condition.png)
 
 ## <a name="logic-app-source-code"></a>ロジック アプリのソース コード
 
@@ -429,7 +429,7 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
 
 #### <a name="logic-apps-exception-management-api"></a>Logic Apps 例外管理 API
 
-Microsoft がソース コードを公開している Azure Logic Apps 例外管理 API アプリには、以下に示す機能が用意されており、次の&2; つのコントローラーがあります。
+Microsoft がソース コードを公開している Azure Logic Apps 例外管理 API アプリには、以下に示す機能が用意されており、次の 2 つのコントローラーがあります。
 
 * **ErrorController** は、DocumentDB コレクションにエラー レコード (ドキュメント) を挿入します。
 * **LogController** は、DocumentDB コレクションにログ レコード (ドキュメント) を挿入します。

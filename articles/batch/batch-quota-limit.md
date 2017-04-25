@@ -12,19 +12,23 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 03/24/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
-ms.openlocfilehash: a0f47a19f7ef1832e64e9a0bdc4bda3434f77aa2
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 4d2ba8d3a5efad1be3395aae732874e7a770f64b
+ms.lasthandoff: 04/06/2017
 
 
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch サービスのクォータと制限
 
 他の Azure サービスと同様に、Batch サービスに関連付けられている特定のリソースにも制限があります。 これらの制限の多くは、Azure によって、サブスクリプションまたはアカウント レベルで適用される既定のクォータです。 ここでは、これらの既定の設定と、クォータの引き上げを要求する方法について説明します。
+
+Batch ワークロードの設計やスケールアップを行う際は、これらのクォータに留意してください。 たとえば、プールのコンピューティング ノード数がターゲットとして指定した数に満たない場合は、Batch アカウントのコア クォータ制限に達している可能性があります。
+
+1 つの Batch アカウントで複数の Batch ワークロードを実行することも、同じサブスクリプションで異なる Azure リージョンの複数の Batch アカウントにワークロードを分散することもできます。
 
 Batch で実稼働ワークロードを実行する予定がある場合は、1 つまたは複数のクォータについて既定値から増やすことが必要になる場合があります。 クォータを増やすには、オンライン [カスタマー サポートに申請](#increase-a-quota) (無料) してください。
 
@@ -39,7 +43,7 @@ Batch で実稼働ワークロードを実行する予定がある場合は、1 
 ## <a name="other-limits"></a>その他の制限
 | **リソース** | **上限** |
 | --- | --- |
-| [同時実行タスク数](batch-parallel-node-tasks.md)  |ノードのコア数 x&4; |
+| [同時実行タスク数](batch-parallel-node-tasks.md)  |ノードのコア数 x 4 |
 | [アプリケーション](batch-application-packages.md) 数 |20 |
 | アプリケーションあたりのアプリケーション パッケージ数 |40 |
 | 各アプリケーション パッケージのサイズ |約 195 GB<sup>1</sup> |

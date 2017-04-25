@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: reference
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ab42fce8cd49d9ae1585072a173e0c2b928f9f35
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 5aca3011fc67e009bc3d543235049a4d5dd3a69b
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -112,20 +114,15 @@ ms.openlocfilehash: ab42fce8cd49d9ae1585072a173e0c2b928f9f35
 * [OPEN MASTER KEY](https://msdn.microsoft.com/library/ms174433.aspx)
 
 ## <a name="next-steps"></a>次のステップ
-TSQL の詳細な例については、[SQL Data Warehouse のリファレンス概要][SQL Data Warehouse のリファレンス概要] に関するページを参照してください。
+TSQL の例については、「[SQL Data Warehouse の参照トピック][SQL Data Warehouse reference overview]」を参照してください。
 
 <!--Image references-->
 
 <!--Article references-->
-[SQL Data Warehouse のリファレンス概要]: sql-data-warehouse-overview-reference.md
+[SQL Data Warehouse reference overview]: sql-data-warehouse-overview-reference.md
 
 <!--MSDN references-->
 
 
 <!--Other Web references-->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: c233439b78fb01beaa3183b79ab633aeb9357ef0
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 773043f2841ec7539b0d49357dec6bcb9f4f78a1
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -44,8 +44,8 @@ Azure でクラウド サービスを作成すると、対応する DNS A レコ
 ## <a name="why-would-i-request-an-ilpip"></a>ILPIP を要求する理由
 VM またはロール インスタンスに直接割り当てた IP アドレスで接続できるようにする場合は、クラウド サービスの VIP:&lt;ポート番号&gt; を使用する代わりに、VM またはロール インスタンスの ILPIP を要求します。
 
-* **パッシブ FTP** - VM に ILPIP を割り当てることで、ほぼすべてのポートでトラフィックを受信できます。 VM でトラフィックを受信するために、エンドポイントは不要になります。 ILPIP により、ポートが動的に選択されるパッシブ FTP などのシナリオを実現できます。
-* **送信 IP** - VM からの送信トラフィックは、送信元である ILPIP と共に送信されます。ILPIP は外部エンティティに対して VM を一意に識別します。
+* **アクティブ FTP** - VM に ILPIP を割り当てることで、すべてのポートでトラフィックを受信できます。 VM でトラフィックを受信するために、エンドポイントは不要になります。  FTP プロトコルの詳細については、(https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview)[FTP プロトコルの概要] を参照してください。
+* **送信 IP** - VM からの送信トラフィックは、送信元である ILPIP にマップされ、ILPIP は外部エンティティに対して VM を一意に識別します。
 
 > [!NOTE]
 > これまで、ILPIP アドレスはパブリック IP (PIP) アドレスと呼ばれていました。

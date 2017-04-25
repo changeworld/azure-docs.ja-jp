@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: migrate
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 79a2cb3739ebb13792a60a9b55761a054bf89e7a
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: e5937f8472492cd1dd77c82ed518a665718623a1
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -28,29 +30,24 @@ SQL Data Warehouse は、ニーズに合わせて柔軟に拡張できる分散�
 ## <a name="migration-guidance"></a>移行ガイダンス
 移行を開始する前に、次の記事を読んで製品の相違点と基本的な概念を必ず理解しておいてください。
 
-* [スキーマの移行][スキーマの移行]
-* [データの移行][データの移行]
-* [コードの移行][コードの移行]
+* [スキーマの移行][Migrate your schema]
+* [データの移行][Migrate your data]
+* [コードの移行][Migrate your code]
 
 ## <a name="next-steps"></a>次のステップ
-また、CAT (Customer Advisory Team) には、ブログを通じて発行する SQL Data Warehouse の優れたガイダンスもあります。  移行に関する追加のガイダンスについては、[「Azure SQL Data Warehouse へのデータの実践移行」][Migrating data to Azure SQL Data Warehouse in practice (Azure SQL Data Warehouse へのデータの実践移行) (Azure SQL Data Warehouse へのデータの実践移行)] の記事をご覧ください。
+また、CAT (Customer Advisory Team) には、ブログを通じて発行する SQL Data Warehouse の優れたガイダンスもあります。  移行に関するその他のガイダンスについては、「[Migrating data to Azure SQL Data Warehouse in practice][Migrating data to Azure SQL Data Warehouse in practice]」(Azure SQL Data Warehouse へのデータの実践移行) の記事を参照してください。
 
 <!--Image references-->
 
 <!--Article references-->
-[スキーマの移行]: sql-data-warehouse-migrate-schema.md
-[データの移行]: sql-data-warehouse-migrate-data.md
-[コードの移行]: sql-data-warehouse-migrate-code.md
+[Migrate your schema]: sql-data-warehouse-migrate-schema.md
+[Migrate your data]: sql-data-warehouse-migrate-data.md
+[Migrate your code]: sql-data-warehouse-migrate-code.md
 
 
 <!--MSDN references-->
 
 
 <!--Other Web references-->
-[Migrating data to Azure SQL Data Warehouse in practice (Azure SQL Data Warehouse へのデータの実践移行) (Azure SQL Data Warehouse へのデータの実践移行)]: https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+[Migrating data to Azure SQL Data Warehouse in practice]: https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
 

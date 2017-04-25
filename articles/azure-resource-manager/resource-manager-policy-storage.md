@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/09/2017
+ms.date: 03/30/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 5ea75843bf671ad4d879c01cdd20d5bbc5e889c2
-ms.openlocfilehash: 08c991e9f217c49828889d0b806888e193b245a8
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 75685a21ce4a212638016be62640badd4870454a
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -113,12 +114,7 @@ ms.openlocfilehash: 08c991e9f217c49828889d0b806888e193b245a8
 このポリシー規則は、リソース ID が `/providers/Microsoft.Authorization/policyDefinitions/7c5a74bf-ae94-4a74-8fcf-644d1e0e6e6f` の組み込みポリシー定義としても使用できます。
 
 ## <a name="next-steps"></a>次のステップ
-* (上記の例で示すように) ポリシー規則を定義した後、ポリシー定義を作成してスコープに割り当てる必要があります。 スコープには、サブスクリプション、リソース グループ、またはリソースを使用できます。 ポリシーの作成と割り当ての例については、「[リソース ポリシーの割り当てと管理](resource-manager-policy-create-assign.md)」をご覧ください。 
+* (上記の例で示すように) ポリシー規則を定義した後、ポリシー定義を作成してスコープに割り当てる必要があります。 スコープには、サブスクリプション、リソース グループ、またはリソースを使用できます。 ポータルでポリシーを割り当てる方法については、「[Use Azure portal to assign and manage resource policies](resource-manager-policy-portal.md)」(Azure Portal によるリソース ポリシーの割り当てと管理) を参照してください。 REST API、PowerShell、Azure CLI でポリシーを割り当てる方法については、「[Assign and manage policies through script](resource-manager-policy-create-assign.md)」(スクリプトによるポリシーの割り当てと管理) を参照してください。 
 * 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](resource-manager-subscription-governance.md)」を参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 
