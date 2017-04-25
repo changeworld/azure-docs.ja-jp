@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/09/2017
+ms.date: 03/30/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 72d398c529fc7dd5eef450da0e134dcdab534ac5
-ms.openlocfilehash: 375a8df763eb6b4b8f7349e0061ab39c076ebfc6
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 6e71fd9eda822478fa0555aa44908a4094fe8de2
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -34,7 +35,7 @@ ms.openlocfilehash: 375a8df763eb6b4b8f7349e0061ab39c076ebfc6
 * 必要なタグと値ではないその他のタグと値を持つ新規および更新されたリソースには、必要なタグと値が追加されます。
 * 既存のリソースから必要なタグと値を削除することはできません。
 
-この要件は、リソース グループに次の&3; つのポリシーを適用することで対応できます。
+この要件は、リソース グループに次の 3 つのポリシーを適用することで対応できます。
 
 * [タグを追加する](#append-tag) 
 * [タグとその他のタグを追加する](#append-tag-with-other-tags)
@@ -173,13 +174,8 @@ foreach($r in $resources)
 ```
 
 ## <a name="next-steps"></a>次のステップ
-* (上記の例で示すように) ポリシー ルールを定義した後、ポリシー定義を作成してスコープに割り当てる必要があります。 スコープには、サブスクリプション、リソース グループ、またはリソースを使用できます。 ポリシーの作成と割り当ての例については、[ポリシーの割り当てと管理](resource-manager-policy-create-assign.md)に関するページを参照してください。 
+* (上記の例で示すように) ポリシー規則を定義した後、ポリシー定義を作成してスコープに割り当てる必要があります。 スコープには、サブスクリプション、リソース グループ、またはリソースを使用できます。 ポータルでポリシーを割り当てる方法については、「[Use Azure portal to assign and manage resource policies](resource-manager-policy-portal.md)」(Azure Portal によるリソース ポリシーの割り当てと管理) を参照してください。 REST API、PowerShell、Azure CLI でポリシーを割り当てる方法については、「[Assign and manage policies through script](resource-manager-policy-create-assign.md)」(スクリプトによるポリシーの割り当てと管理) を参照してください。
 * リソース ポリシーの概要については、[リソース ポリシーの概要](resource-manager-policy.md)に関するページを参照してください。
 * 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](resource-manager-subscription-governance.md)」を参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

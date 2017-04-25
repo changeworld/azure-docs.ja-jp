@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/15/2017
+ms.date: 03/30/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: 5560b22f3f92a8e0a7cb8b973ef2e4c66bc32c06
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: fd15cbc8f6efa788ddaeaee4ab39ce1410c4be5a
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 03/16/2017
 
 Azure には、いくつか定義済みのポリシーが用意されているので、定義が必要なポリシーの数を減らすことができます。 定義済みのポリシーが自分のシナリオで動作する場合は、最初の 2 つの手順をスキップし、スコープに定義済みのポリシーを割り当てます。
 
-このトピックでは、ポリシー定義を作成してその定義をスコープに割り当てる手順について説明します。 ポリシー定義を作成する構文については説明しません。 ポリシーの構文については、「[ポリシーを使用したリソース管理とアクセス制御](resource-manager-policy.md)」を参照してください。
+この記事では、REST API、PowerShell、または Azure CLI を使用して、ポリシー定義を作成し、その定義をスコープに割り当てる手順を中心に説明します。 ポータルを使用してポリシーを割り当てる方法については、「[Use Azure portal to assign and manage resource policies](resource-manager-policy-portal.md)」(Azure Portal によるリソース ポリシーの割り当てと管理) を参照してください。 この記事では、ポリシー定義を作成する構文については説明しません。 ポリシーの構文については、「[ポリシーを使用したリソース管理とアクセス制御](resource-manager-policy.md)」を参照してください。
 
 ## <a name="rest-api"></a>REST API
 

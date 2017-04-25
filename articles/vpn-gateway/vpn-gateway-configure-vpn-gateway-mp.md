@@ -4,7 +4,7 @@ description: "この記事では、仮想ネットワーク VPN ゲートウェ�
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-service-management
 ms.assetid: fbe59ba8-b11f-4d21-9bb1-225ec6c6d351
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/09/2017
+ms.date: 04/04/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: b6f001345daf411497295357ab43d01635ae743e
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 2ea4e6bb86b1ba6f7b501b193d0713d3901457af
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -67,16 +67,20 @@ ms.lasthandoff: 03/25/2017
 ![[キーの管理]](./media/vpn-gateway-configure-vpn-gateway-mp/IC717029.png)
 
 ### <a name="step-2--configure-your-vpn-device"></a>手順 2.  VPN デバイスの構成
-サイト間接続については、ここまでの手順が完了したら、ネットワーク管理者は VPN デバイスを構成して接続を作成する必要があります。 VPN デバイスの詳細については、「 [Virtual Network 接続の VPN デバイスについて](vpn-gateway-about-vpn-devices.md) 」を参照してください。
+オンプレミス ネットワークとのサイト間接続には VPN デバイスが必要です。 すべての VPN デバイスの構成手順を紹介することはできませんが、以下のリンクの情報が参考になるかと思います。
+
+- 適合する VPN デバイスについては、[VPN デバイス](vpn-gateway-about-vpn-devices.md)に関するページを参照してください。 
+- デバイスの構成設定へのリンクについては、「[検証済みの VPN デバイス](vpn-gateway-about-vpn-devices.md#devicetable)」を参照してください。 これらのリンクは、入手できる範囲で記載しています。 最新の構成情報については必ず、デバイスの製造元にご確認ください。
+- デバイス構成サンプルの編集については、[サンプルの編集](vpn-gateway-about-vpn-devices.md#editing)に関するセクションを参照してください。
+- IPsec/IKE のパラメーターについては、[パラメーター](vpn-gateway-about-vpn-devices.md#ipsec)に関するセクションを参照してください。
+- VPN デバイスを構成する前に、使用する VPN デバイスに関して、[デバイスの互換性に関する既知の問題](vpn-gateway-about-vpn-devices.md#known)がないかどうかを確認してください。
+
+VPN デバイスを構成する際に、次の情報が必要になります。
+
+- 仮想ネットワーク ゲートウェイのパブリック IP アドレス。 この IP アドレスを見つけるには、仮想ネットワークの **[概要]** ブレードに移動します。
+- 共有キー。 サイト間 VPN 接続を作成するときにも、これと同じ共有キーを指定します。 ここで紹介している例では、ごく基本的な共有キーを使用しています。 実際には、もっと複雑なキーを作成して使用してください。
 
 VPN デバイスの構成完了後は、更新された接続情報を VNet のダッシュ ボード ページで表示できます。
-
-接続のテストは、次のコマンドのいずれかで実行することもできます。
-
-|  | Cisco ASA | Cisco ISR/ASR | Juniper SSG/ISG | Juniper SRX/J |
-| --- | --- | --- | --- | --- |
-| **メイン モード SA の確認** |show crypto isakmp sa |show crypto isakmp sa |get ike cookie |show security ike security-association |
-| **クイック モード SA の確認** |show crypto ipsec sa |show crypto ipsec sa |get sa |show security ipsec security-association |
 
 ### <a name="step-3-verify-your-local-network-ranges-and-vpn-gateway-ip-address"></a>手順 3. ローカル ネットワークの範囲と VPN ゲートウェイの IP アドレスを確認します。
 #### <a name="verify-your-vpn-gateway-ip-address"></a>VPN ゲートウェイ の IP アドレスの確認

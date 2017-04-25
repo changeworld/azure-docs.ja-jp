@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/23/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 065e84e8ddee3466834e04fb5d1929652533265a
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: cec1bcceea158a20742c7019a266dcefaac4c9cf
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -76,7 +76,7 @@ ms.lasthandoff: 03/25/2017
 この 3 つの手順は手動でも実行できますが、幸いにも、実験キャンバスの下部にある **[Web サービスの設定]** をクリックすることですべての手順を完了できます (**[予測 Web サービス]** オプションを選択します)。
 
 > [!TIP]
-> トレーニング実験を予測実験に変換するときの動作の詳細については、「[Machine Learning のトレーニング実験から予測実験に変換する](machine-learning-convert-training-experiment-to-scoring-experiment.md)」を参照してください。
+> トレーニング実験を予測実験に変換するときの動作の詳細については、[Azure Machine Learning Studio でのデプロイのためにモデルを準備する方法](machine-learning-convert-training-experiment-to-scoring-experiment.md)に関するページを参照してください。
 
 **[Web サービスの設定]**をクリックすると、次の動作が行われます。
 

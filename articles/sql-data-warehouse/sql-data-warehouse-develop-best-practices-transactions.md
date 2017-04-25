@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ed017b542de11a5e8abe46e1651b04cb61c77265
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: f9f19d75a37351b3562ce8c2f3629df14c5437c6
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -179,12 +181,12 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> 大きなテーブルを作成し直す場合は、SQL Data Warehouse のワークロード管理機能が役立ちます。 詳細については、[同時実行][同時実行]に関する記事のワークロード管理についてのセクションをご覧ください。
+> 大きなテーブルを作成し直す場合は、SQL Data Warehouse のワークロード管理機能が役立ちます。 詳細については、[同時実行][concurrency]に関する記事のワークロード管理についてのセクションをご覧ください。
 > 
 > 
 
 ## <a name="optimizing-with-partition-switching"></a>パーティションの切り替えを使用した最適化
-[テーブル パーティション][テーブル パーティション]内で大規模な変更を加える場合は、パーティション切り替えパターンを使用すると効率的です。 データが大幅に変更されていて、複数のパーティションにまたがっている場合は、それらのパーティションを反復処理するだけで同じ結果を得られます。
+[テーブル パーティション][table partition]内で大規模な変更を加える場合は、パーティション切り替えパターンを使用すると効率的です。 データが大幅に変更されていて、複数のパーティションにまたがっている場合は、それらのパーティションを反復処理するだけで同じ結果を得られます。
 
 パーティション切り替えを実行する手順は次のとおりです。
 
@@ -420,26 +422,21 @@ Azure SQL Data Warehouse では、データ ウェアハウスの一時停止、
 * 操作をチャンクに分割し、行のサブセットに対して実行する
 
 ## <a name="next-steps"></a>次のステップ
-分離レベルとトランザクションの制限の詳細については、[「SQL Data Warehouse のトランザクション」][SQL Data Warehouse のトランザクション]を参照してください。  その他のベスト プラクティスの概要については、[「SQL Data Warehouse のベスト プラクティス」][SQL Data Warehouse のベスト プラクティス]を参照してください。
+分離レベルとトランザクションの制限の詳細については、「[SQL Data Warehouse のトランザクション][Transactions in SQL Data Warehouse]」を参照してください。  その他のベスト プラクティスの概要については、「[Azure SQL Data Warehouse のベスト プラクティス][SQL Data Warehouse Best Practices]」を参照してください。
 
 <!--Image references-->
 
 <!--Article references-->
-[SQL Data Warehouse のトランザクション]: ./sql-data-warehouse-develop-transactions.md
-[テーブル パーティション]: ./sql-data-warehouse-tables-partition.md
-[同時実行]: ./sql-data-warehouse-develop-concurrency.md
+[Transactions in SQL Data Warehouse]: ./sql-data-warehouse-develop-transactions.md
+[table partition]: ./sql-data-warehouse-tables-partition.md
+[Concurrency]: ./sql-data-warehouse-develop-concurrency.md
 [CTAS]: ./sql-data-warehouse-develop-ctas.md
-[SQL Data Warehouse のベスト プラクティス]: ./sql-data-warehouse-best-practices.md
+[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
 
 <!--MSDN references-->
-[ALTER INDEX]:https://msdn.microsoft.com/library/ms188388.aspx
+[alter index]:https://msdn.microsoft.com/library/ms188388.aspx
 [RENAME]: https://msdn.microsoft.com/library/mt631611.aspx
 
 <!-- Other web references -->
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

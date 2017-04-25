@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 3152a1306f2c3eeb42dd3b21cff62b696ed01e5d
-ms.openlocfilehash: 75ea0486a1b5abc71df3b7d9e8385717954b89f4
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: d96dde8c74141d000c1f7c5fd9ef624ff5e46953
+ms.lasthandoff: 04/07/2017
 
 ---
 # <a name="api-management-policy-expressions"></a>API Management ポリシー式
@@ -186,7 +186,7 @@ ms.lasthandoff: 03/01/2017
 |context.User|Email: 文字列<br /><br /> FirstName: 文字列<br /><br /> Groups: IEnumerable<IGroup\><br /><br /> Id: 文字列<br /><br /> Identities: IEnumerable<IUserIdentity\><br /><br /> LastName: 文字列<br /><br /> Note: 文字列<br /><br /> RegistrationDate: DateTime|  
 |IApi|Id: 文字列<br /><br /> Name: 文字列<br /><br /> Path: 文字列<br /><br /> Protocols: IEnumerable<string\><br /><br /> ServiceUrl: IUrl<br /><br /> SubscriptionKeyParameterNames: ISubscriptionKeyParameterNames|  
 |IGroup|Id: 文字列<br /><br /> Name: 文字列|  
-|IMessageBody|As<T\>(preserveContent: bool = false): Where T: string, JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> `context.Request.Body.As<T>` メソッドと `context.Request.Body.As<T>` メソッドは、指定した書式のいずれかで要求または応答のメッセージ本文を読み取るのに使用します。 既定では、メッセージ本文にアクセスした場合に元のメッセージ本文は失われるため、この本文を読み込んだ式で本文を戻して設定する必要があります。 本文の内容を保持するには、メッセージへのアクセス時に `preserveContent` パラメーターを `true` に設定します。 `preserveContent` の既定値は `false` です。 `preserveContent` を `true` に設定している場合に式から本文が返されると、返された本文が使用されます。 詳細については、[Set body](api-management-transformation-policies.md#SetBody) ポリシーを参照してください。|  
+|IMessageBody|As<T\>(preserveContent: bool = false): Where T: string, JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> `context.Request.Body.As<T>` メソッドと `context.Response.Body.As<T>` メソッドは、指定した型 `T` で要求および応答のメッセージ本文を読み取るのに使用します。 メソッドでは既定で元のメッセージ本文のストリームが使用され、制御が戻ると使用不可になります。 本文ストリームのコピーでメソッドを実行することでこれを回避するには、`preserveContent` パラメーターを `true` に設定します。 例については、[こちら](api-management-transformation-policies.md#SetBody)を参照してください。|  
 |IUrl|Host: 文字列<br /><br /> Path: 文字列<br /><br /> Port: 整数<br /><br /> Query: IReadOnlyDictionary<文字列, 文字列[]><br /><br /> QueryString: 文字列<br /><br /> Scheme: 文字列|  
 |IUserIdentity|Id: 文字列<br /><br /> Provider: 文字列|  
 |ISubscriptionKeyParameterNames|Header: 文字列<br /><br /> Query: 文字列|  

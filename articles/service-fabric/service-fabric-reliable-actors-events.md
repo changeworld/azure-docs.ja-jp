@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 03/02/2017
 ms.author: amanbha
 translationtype: Human Translation
-ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
-ms.openlocfilehash: 92df9505416c5b4326f007dbf4b920f2c7ec3bd8
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: b598b59dc3fa5b629b31f235fc0ea830338b1f84
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -34,7 +34,12 @@ public interface IGameEvents : IActorEvents
     void GameScoreUpdated(Guid gameId, string currentScore);
 }
 ```
-
+```Java
+public interface GameEvents implements ActorEvents
+{
+    void gameScoreUpdated(UUID gameId, String currentScore);
+}
+```
 アクター インターフェイスで、アクターによって発行されたイベントを宣言します。
 
 ```csharp
@@ -45,7 +50,14 @@ public interface IGameActor : IActor, IActorEventPublisher<IGameEvents>
     Task<string> GetGameScore();
 }
 ```
+```Java
+public interface GameActor extends Actor, ActorEventPublisherE<GameEvents>
+{
+    CompletableFuture<?> updateGameStatus(GameStatus status);
 
+    CompletableFuture<String> getGameScore();
+}
+```
 クライアント側で、イベント ハンドラーを実装します。
 
 ```csharp
@@ -54,6 +66,15 @@ class GameEventsHandler : IGameEvents
     public void GameScoreUpdated(Guid gameId, string currentScore)
     {
         Console.WriteLine(@"Updates: Game: {0}, Score: {1}", gameId, currentScore);
+    }
+}
+```
+
+```Java
+class GameEventsHandler implements GameEvents {
+    public void gameScoreUpdated(UUID gameId, String currentScore)
+    {
+        System.out.println("Updates: Game: "+gameId+" ,Score: "+currentScore);
     }
 }
 ```
@@ -67,6 +88,12 @@ var proxy = ActorProxy.Create<IGameActor>(
 await proxy.SubscribeAsync<IGameEvents>(new GameEventsHandler());
 ```
 
+```Java
+GameActor actorProxy = ActorProxyBase.create<GameActor>(GameActor.class, new ActorId(UUID.fromString(args)));
+
+return ActorProxyEventUtility.subscribeAsync(actorProxy, new GameEventsHandler());
+```
+
 フェールオーバーが発生した場合、アクターは別のプロセスまたはノードにフェールオーバーする可能性があります。 アクター プロキシは、アクティブなサブスクリプションを管理し、自動的に再サブスクライブします。 `ActorProxyEventExtensions.SubscribeAsync<TEvent>` API を介して、再サブスクリプションの間隔を制御できます。 サブスクリプションを解除するには、 `ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` API を使用します。
 
 アクターで、イベントが発生したときに単純に発行します。 イベントをサブスクライブしているユーザーがいる場合、アクター ランタイムはこれらのユーザーに通知を送信します。
@@ -75,10 +102,16 @@ await proxy.SubscribeAsync<IGameEvents>(new GameEventsHandler());
 var ev = GetEvent<IGameEvents>();
 ev.GameScoreUpdated(Id.GetGuidId(), score);
 ```
+```Java
+GameEvents event = getEvent<GameEvents>(GameEvents.class);
+event.gameScoreUpdated(Id.getUUIDId(), score);
+```
+
 
 ## <a name="next-steps"></a>次のステップ
 * [アクターの再入](service-fabric-reliable-actors-reentrancy.md)
 * [アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)
 * [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [コード サンプル](https://github.com/Azure/servicefabric-samples)
+* [C# コード サンプル](https://github.com/Azure/servicefabric-samples)
+* [Java コード サンプル](http://github.com/Azure-Samples/service-fabric-java-getting-started)
 

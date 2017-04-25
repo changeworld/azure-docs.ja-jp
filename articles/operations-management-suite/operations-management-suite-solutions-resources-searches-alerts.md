@@ -15,9 +15,9 @@ ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: e47aacd1a188649a3b424981c20a6c2b736b2d89
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 35264f1ec5df5a3e171f7631e0d3b46bf9c0b8e7
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -109,8 +109,7 @@ Log Analytics のすべてのリソースは、[ワークスペース](../log-an
 
 次の表では、スケジュール リソースのプロパティについて説明します。
 
-| 要素名
- | 必須 | Description |
+| 要素名 | 必須 | Description |
 |:--|:--|:--|
 | 有効       | はい | 作成時点でアラートが有効かどうかを指定します。 |
 | interval      | はい | クエリを実行する間隔です (分単位)。 |
@@ -171,8 +170,7 @@ Log Analytics のすべてのリソースは、[ワークスペース](../log-an
 
 次の表では、アラート アクション リソースのプロパティについて説明します。
 
-| 要素名
- | 必須 | Description |
+| 要素名 | 必須 | Description |
 |:--|:--|:--|
 | 種類 | はい | アクションの種類。  これは、アラート アクションの**アラート**です。 |
 | 名前 | はい | アラートの表示名。  これは、コンソールに表示されるアラート ルールの名前です。 |
@@ -183,8 +181,7 @@ Log Analytics のすべてのリソースは、[ワークスペース](../log-an
 ##### <a name="threshold"></a>しきい値
 このセクションは必須です。  アラートのしきい値のプロパティを定義します。
 
-| 要素名
- | 必須 | Description |
+| 要素名 | 必須 | Description |
 |:--|:--|:--|
 | 演算子 | はい | 比較のための演算子であり、次のいずれかの値です。<br><br>**gt = より大きい<br>lt = より小さい** |
 | 値 | はい | 結果を比較する値です。 |
@@ -196,8 +193,7 @@ Log Analytics のすべてのリソースは、[ワークスペース](../log-an
 > [!NOTE]
 > メトリック測定アラートは現在パブリック プレビュー中です。 
 
-| 要素名
- | 必須 | Description |
+| 要素名 | 必須 | Description |
 |:--|:--|:--|
 | TriggerCondition | はい | しきい値が、違反の合計数に対するものか、または連続する違反の数に対するものかを、次の値で指定します。<br><br>**Total<br>Consecutive** |
 | 演算子 | はい | 比較のための演算子であり、次のいずれかの値です。<br><br>**gt = より大きい<br>lt = より小さい** |
@@ -206,16 +202,14 @@ Log Analytics のすべてのリソースは、[ワークスペース](../log-an
 ##### <a name="throttling"></a>調整
 このセクションは省略可能です。  同じルールからのアラートを、アラート作成後の一定期間にわたって抑制する場合に、このセクションを指定します。
 
-| 要素名
- | 必須 | Description |
+| 要素名 | 必須 | Description |
 |:--|:--|:--|
 | DurationInMinutes | Throttling 要素が含まれる場合は Yes です。 | アラートが作成された後、それと同じアラート ルールからにアラートを抑制する分数です。 |
 
 ##### <a name="emailnotification"></a>EmailNotification
  このセクションは省略可能です。アラートで 1 人以上の受信者にメールを送信する場合に指定します。
 
-| 要素名
- | 必須 | Description |
+| 要素名 | 必須 | Description |
 |:--|:--|:--|
 | Recipients | はい | アラートが作成されたときに通知を送信するメール アドレスのコンマ区切りのリストです。次に例を示します。<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
 | [件名] | はい | メールの件名です。 |
@@ -225,8 +219,7 @@ Log Analytics のすべてのリソースは、[ワークスペース](../log-an
 ##### <a name="remediation"></a>修復
 このセクションは省略可能です。アラートに対して Runbook を開始する場合に指定します。 |
 
-| 要素名
- | 必須 | 説明 |
+| 要素名 | 必須 | 説明 |
 |:--|:--|:--|
 | RunbookName | はい | 開始する Runbook の名前です。 |
 | WebhookUri | はい | Runbook に対する webhook の URI です。 |
@@ -255,10 +248,9 @@ Webhook アクションは、URL を呼び出し、送信されるペイロー�
         }
     }
 
-次の表では、アラート アクション リソースのプロパティについて説明します。
+次の表では、Webhook アクション リソースのプロパティについて説明します。
 
-| 要素名
- | 必須 | 説明 |
+| 要素名 | 必須 | 説明 |
 |:--|:--|:--|
 | type | はい | アクションの種類。  これは、webhook アクションの **Webhook** です。 |
 | name | はい | アクションの表示名です。  コンソールには表示されません。 |

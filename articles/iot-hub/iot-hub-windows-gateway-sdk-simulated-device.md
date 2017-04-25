@@ -12,12 +12,12 @@ ms.devlang: cpp
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/08/2017
+ms.date: 03/29/2017
 ms.author: andbuc
 translationtype: Human Translation
-ms.sourcegitcommit: 5edf2f4c7d9d2e8e8ceb2e8de9ae7cef4c9fd02e
-ms.openlocfilehash: 446e7361b5817ce888105fbb78f329affa7de6e6
-ms.lasthandoff: 02/06/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 458984f75eed3a7a3102c288798b55664afaa37d
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -28,12 +28,12 @@ ms.lasthandoff: 02/06/2017
 作業を開始する前に、以下を行う必要があります。
 
 * Windows で SDK を使用するための[開発環境を設定][lnk-setupdevbox]します。
-* Azure サブスクリプションで [IoT ハブを作成][lnk-create-hub]します。このチュートリアルを実行するには、ハブの名前が必要です。 アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます。
+* Azure サブスクリプションで [IoT ハブを作成][lnk-create-hub]します。このチュートリアルを実行するには、ハブの名前が必要です。 アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
 * 2 つのデバイスを IoT Hub に追加し、デバイスの ID とデバイス キーをメモしておきます。 [デバイス エクスプローラー][lnk-device-explorer]または [iothub-explorer][lnk-iothub-explorer] ツールを使用して、前の手順で作成した IoT Hub にデバイスを追加し、キーを取得します。
 
 サンプルをビルドするには、次の手順に従います。
 
-1. **開発者コマンド プロンプト for VS2015** コマンド プロンプトを開きます。
+1. **開発者コマンド プロンプト for VS 2015** か **開発者コマンド プロンプト for VS 2017** を開きます。
 2. **azure-iot-gateway-sdk** リポジトリのローカル コピーのルート フォルダーに移動します。
 3. **tools\\build.cmd** スクリプトを実行します。 このスクリプトでは、Visual Studio ソリューション ファイルを作成し、ソリューションをビルドします。 Visual Studio ソリューションは、**azure-iot-gateway-sdk** リポジトリのローカル コピーの **build** フォルダーにあります。 スクリプトで追加のパラメーターを指定すると、ユニット テストとエンド ツー エンド テストをビルドして実行できます。 パラメーターはそれぞれ、**--run-unittests** と **--run-e2e-tests** です。
 
@@ -41,11 +41,11 @@ ms.lasthandoff: 02/06/2017
 
 テキスト エディターで、**azure-iot-gateway-sdk** リポジトリのローカル コピーの **samples\\simulated_device_cloud_upload\\src\\simulated_device_cloud_upload_win.json** ファイルを開きます。 このファイルでは、サンプル ゲートウェイの各モジュールを構成します。
 
-* **IoTHub** モジュールは、IoT Hub に接続します。 データを IoT Hub に送信するようにモジュールを構成する必要があります。 具体的には、**IoTHubName** 値を実際の IoT Hub の名前に設定し、**IoTHubSuffix** 値を **azure-devices.net** に設定します。 **Transport** の値を "HTTP"、"AMQP"、または "MQTT" のいずれかに設定します。 現在、すべてのデバイス メッセージで&1; つの TCP 接続を共有するのは "HTTP" のみです。 値を "AMQP" または "MQTT" に設定すると、ゲートウェイは各デバイスで IoT Hub に対する TCP 接続を別個に維持します。
-* **mapping** モジュールは、シミュレートされたデバイスの MAC アドレスを IoT Hub のデバイス ID にマップします。 **deviceId** 値が IoT Hub に追加した&2; つのデバイスの ID と一致し、**deviceKey** 値に&2; つのデバイスのキーが含まれていることを確認します。
-* **BLE1** モジュールと **BLE2** モジュールは、シミュレートされたデバイスです。 これらのモジュールの MAC アドレスが **mapping** モジュールの MAC アドレスとどのように一致しているかに注意してください。
+* **IoTHub** モジュールは、IoT Hub に接続します。 データを IoT Hub に送信するようにモジュールを構成します。 具体的には、**IoTHubName** 値を実際の IoT Hub の名前に設定し、**IoTHubSuffix** 値を **azure-devices.net** に設定します。 **Transport** の値を "HTTP"、"AMQP"、"MQTT" のいずれかに設定します。 現在、すべてのデバイス メッセージで 1 つの TCP 接続を共有するのは "HTTP" のみです。 値を "AMQP" または "MQTT" に設定すると、ゲートウェイは各デバイスで IoT Hub に対する TCP 接続を別個に維持します。
+* **mapping** モジュールは、シミュレートされたデバイスの MAC アドレスを IoT Hub のデバイス ID にマップします。 **deviceId** 値が IoT Hub に追加した 2 つのデバイスの ID と一致し、**deviceKey** 値に 2 つのデバイスのキーが含まれていることを確認します。
+* **BLE1** モジュールと **BLE2** モジュールは、シミュレートされたデバイスです。 モジュールの MAC アドレスが **mapping** モジュールの MAC アドレスとどのように一致しているかに注意してください。
 * **Logger** モジュールは、ゲートウェイのアクティビティをファイルに記録します。
-* 次に示す **module path** の値は、IoT Gateway SDK リポジトリを **C:** ドライブのルートに複製していることを前提としています。 リポジトリを別の場所にダウンロードした場合は、 **module path** の値を適宜調整する必要があります。
+* 次の例の **module path** の値は、IoT Gateway SDK リポジトリを **C:** ドライブのルートに複製していることを前提としています。 リポジトリを別の場所にダウンロードした場合は、 **module path** の値を適宜調整する必要があります。
 * JSON ファイルの下部にある **links** 配列は、**BLE1** モジュールと **BLE2** モジュールを **mapping** モジュールに、**mapping** モジュールを **IoTHub** モジュールに接続します。 また、すべてのメッセージが **Logger** モジュールによってログに記録されます。
 
 ```

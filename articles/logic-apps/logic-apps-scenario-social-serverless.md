@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/29/2017
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 4676e0da4309b1460e471f94946161fa22d46226
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
+ms.openlocfilehash: 0b6e118cb13ab8185d8eeb42bec6147155967967
+ms.lasthandoff: 04/04/2017
 
 ---
 # <a name="create-a-real-time-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Azure Logic Apps と Azure Functions を使用してリアルタイム Customer Insights ダッシュボードを作成する
@@ -35,17 +35,17 @@ Functions は、クラウド内でサーバーレス コンピューティング
 
 ソリューション全体は [Visual Studio で構築](logic-apps-deploy-from-vs.md)して、[リソース テンプレートの一部としてデプロイ](logic-apps-create-deploy-template.md)できます。  [Channel 9](http://aka.ms/logicappsdemo) に、このシナリオのビデオ チュートリアルもあります。
 
-## <a name="building-the-logic-app-to-trigger-on-customer-data"></a>顧客のデータをトリガーするロジック アプリの構築
+## <a name="build-the-logic-app-to-trigger-on-customer-data"></a>顧客のデータをトリガーするロジック アプリの構築
 
 Visual Studio か Azure Portal で[ロジック アプリを作成](logic-apps-create-a-logic-app.md)した後、次の操作を実行します。
 
 1. Twitter から **[On New Tweets (新しいツイート)]** にトリガーを追加します。
-1. キーワードまたはハッシュタグに対してツイートをリッスンするようにトリガーを構成します。
+2. キーワードまたはハッシュタグに対してツイートをリッスンするようにトリガーを構成します。
 
-> [!NOTE]
-> このトリガーの反復プロパティは、ポーリングベースのトリガーに対してロジック アプリが新しいアイテムを確認する頻度を決定します。
+   > [!NOTE]
+   > このトリガーの反復プロパティは、ポーリングベースのトリガーに対してロジック アプリが新しいアイテムを確認する頻度を決定します。
 
-![Twitter のトリガーの例][1]
+   ![Twitter のトリガーの例][1]
 
 これで、このアプリはすべての新しいツイートに対して起動されます。  そのツイートのデータを取得し、表現されたセンチメントをより深く理解できます。  そのためには、[Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) を使用してテキストのセンチメントを検出します。
 
@@ -99,7 +99,7 @@ Logic Apps でサーバーレス オーケストレーションを作成する�
 
 Azure Functions をデプロイ テンプレートに組み込むこともできるので、すべての依存関係を含むソリューション全体を 1 つのテンプレートとして管理できます。  関数のデプロイ テンプレートの例については、[Azure クイックスタート テンプレート レポジトリ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-function-app-create-dynamic)を参照してください。
 
-## <a name="whats-next"></a>参照トピック
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Logic Apps のその他の例とシナリオを参照する](logic-apps-examples-and-scenarios.md)
 * [このソリューションのエンド ツー エンドでの作成に関するビデオ チュートリアルを視聴する](http://aka.ms/logicappsdemo)

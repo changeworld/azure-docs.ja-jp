@@ -12,11 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/07/2017
+ms.date: 04/05/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 9797df57e6efcba689e6d2f13fed165ee0cc0755
-ms.openlocfilehash: 2b51cdf8ef55c2ee80e3f660a1073419e353ec3a
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: cc2b025b7f3e28954c7f95409ffab03e5cbcf13d
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -80,6 +81,8 @@ Update 0.4 は、バグ修正を中心とするビルドですが、いくつか
 | **12.** |CHAP |作成された CHAP 資格情報は、削除できません。 また、CHAP 資格情報を変更する場合は、変更を有効にするために、ボリュームをオフラインにしてからオンラインにする必要があります。 |この問題は今後のリリースで対処されます。 |
 | **13.** |iSCSI サーバー |iSCSI ボリュームに対して表示される '使用済みストレージ' は、StorSimple Manager サービスと iSCSI ホストで異なる場合があります。 |iSCSI ホストにはファイル システム ビューがあります。<br></br>デバイスでは、ボリュームが最大サイズのときに割り当てられるブロックを確認できます。 |
 | **14.** |ファイル サーバー |フォルダー内のファイルが代替データ ストリーム (ADS) に関連付けられている場合、ADS のバックアップまたは復元には、障害復旧、複製、および項目レベルの回復が使用されません。 | |
+| **15.** |ファイル サーバー |シンボリック リンクはサポートされていません。 | |
+| **16.** |ファイル サーバー |Windows 暗号化ファイル システム (EFS) で保護されているファイルを StorSimple Virtual Array のファイル サーバーにコピーまたは保存すると、サポートされていない構成になります。  | |
 
 ## <a name="next-step"></a>次のステップ
 StorSimple Virtual Array に [Update 0.4 をインストール](storsimple-virtual-array-install-update-04.md)します。
@@ -90,10 +93,5 @@ StorSimple Virtual Array に [Update 0.4 をインストール](storsimple-virtu
 * [StorSimple Virtual Array Update 0.3 のリリース ノート](storsimple-ova-update-03-release-notes.md)
 * [StorSimple Virtual Array Update 0.1 および 0.2 のリリース ノート](storsimple-ova-update-01-release-notes.md)
 * [StorSimple Virtual Array 一般公開リリース ノート](storsimple-ova-pp-release-notes.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

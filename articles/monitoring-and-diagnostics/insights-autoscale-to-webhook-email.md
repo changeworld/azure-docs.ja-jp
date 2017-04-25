@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2016
+ms.date: 04/03/2017
 ms.author: ashwink
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d5fb08bbeb5564566808cd8ff6d2e83dec89de6c
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: f0ab9d4bea3a3f7f1e1a0af2206e7b5641be1288
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -75,10 +76,7 @@ REST API または Resource Manager テンプレートを使用している場�
 | プロパティ |○ |値は空 {} にするか、キーと値のペアを指定できます。 |
 
 ## <a name="authentication-in-webhooks"></a>Webhook での認証
-認証 URI には、2 つの形式があります。
-
-1. トークンベースの認証。クエリ パラメーターとしてトークン ID を使用して Webhook URI を保存します。 たとえば、https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue のように指定します。
-2. 基本認証。ユーザー ID とパスワードを使用します。 たとえば、https://userid:password@mysamplealert/webcallback?someparamater=somevalue&parameter=value のように指定します。
+webhook はトークンベースの認証を利用して認証できます。クエリ パラメーターとしてトークン ID を使用し、webhook URI を保存します。 たとえば、https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue のように指定します。
 
 ## <a name="autoscale-notification-webhook-payload-schema"></a>自動スケール通知の Webhook ペイロード スキーマ
 自動スケール通知が生成されると、次のメタデータが Webhook ペイロードに含まれます。
@@ -128,10 +126,5 @@ REST API または Resource Manager テンプレートを使用している場�
 | oldCapacity |○ |自動スケールによってスケール操作が実行された時点の (以前の) インスタンス数。 |
 | newCapacity |○ |自動スケールによってリソースがスケールされた後の新しいインスタンス数。 |
 | プロパティ |いいえ |省略可能。 <Key, Value> ペアのセット (例: Dictionary <String, String>)。 properties フィールドは省略可能です。 カスタム ユーザー インターフェイスまたはロジック アプリ ベースのワークフローでは、ペイロードを使用して渡すことのできるキーと値を入力できます。 Webhook URI 自体を (クエリ パラメーターとして) 使用して、カスタム プロパティを送信 Webhook 呼び出しに戻すこともできます。 |
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

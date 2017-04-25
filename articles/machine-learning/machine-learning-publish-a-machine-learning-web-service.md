@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 01/06/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 247d370c1f80729856e53690045991127ad54351
-ms.openlocfilehash: fa62c0883b8230e514f60626b59fa3b3b20a6784
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 5bcdb2cd11ffa633bce4e0faee4f49d9053a662b
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="deploy-an-azure-machine-learning-web-service"></a>Azure Machine Learning Web サービスをデプロイする
 Azure Machine Learning では、予測分析ソリューションをビルド、テスト、およびデプロイできます。
 
-大まかに次の&3; つの手順で行われます。
+大まかに次の 3 つの手順で行われます。
 
 * **[トレーニング実験を作成する]** - Azure Machine Learning Studio は、供給するトレーニング データを活用した予測分析モデルの学習とテストに使用できる、コラボレーションと視覚化に対応した開発環境です。
 * **[予測実験に変換する]** - 既存のデータでモデルが学習され、それを使用して新しいデータをスコア付けする準備ができると、予測用に実験を用意し、合理化します。
@@ -51,7 +51,7 @@ Azure Machine Learning では、予測分析ソリューションをビルド、
 
 ![スコア付け実験に変換する](./media/machine-learning-publish-a-machine-learning-web-service/figure-1.png)
 
-この変換を実行する方法の詳細については、「[Machine Learning トレーニング実験を予測実験に変換する](machine-learning-convert-training-experiment-to-scoring-experiment.md)」をご覧ください。
+この変換を実行する方法については、[Azure Machine Learning Studio でのデプロイのためにモデルを準備する方法](machine-learning-convert-training-experiment-to-scoring-experiment.md)に関するページを参照してください。
 
 次の手順では、新しい Web サービスとして予測実験をデプロイする方法を説明します。 実験は、従来の Web サービスとしてデプロイすることもできます。
 
@@ -73,7 +73,7 @@ Azure Machine Learning では、予測分析ソリューションをビルド、
 
 1. **[Price Plan (料金プラン)]** ドロップダウンで、既存のプランを選択するか、**[Select new plan (新しいプランを選択する)]** オプションを選択します。
 2. **[プラン名]**に、請求書でプランを識別する名前を入力します。
-3. **[Monthly Plan Tiers (月額プラン レベル)]**のいずれか&1; つを選択します。 プラン レベルは既定では既定のリージョンのプランになり、Web サービスはそのリージョンにデプロイされます。
+3. **[Monthly Plan Tiers (月額プラン レベル)]**のいずれか 1 つを選択します。 プラン レベルは既定では既定のリージョンのプランになり、Web サービスはそのリージョンにデプロイされます。
 
 **[デプロイ]** をクリックすると、Web サービスの **[クイック スタート]** ページが開きます。
 
@@ -180,7 +180,7 @@ Web サービスを更新するには、Web サービスのデプロイに使用
 > 
 > 
 
-Web サービスを更新するオプションの&1; つに、モデルをプログラムによって再トレーニングする方法があります。 詳細については、「 [プログラムによる Machine Learning のモデルの再トレーニング](machine-learning-retrain-models-programmatically.md)」をご覧ください。
+Web サービスを更新するオプションの 1 つに、モデルをプログラムによって再トレーニングする方法があります。 詳細については、「 [プログラムによる Machine Learning のモデルの再トレーニング](machine-learning-retrain-models-programmatically.md)」をご覧ください。
 
 <!-- internal links -->
 [トレーニング実験を作成する]: #create-a-training-experiment

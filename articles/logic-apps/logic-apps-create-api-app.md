@@ -15,13 +15,14 @@ ms.topic: article
 ms.date: 10/18/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
-ms.openlocfilehash: 4c6bf3e46d80871c8f6ef1cd0a9959e4766a69f5
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 3fd558835fb36ef70ac97419727b5133d0741d7e
+ms.lasthandoff: 04/07/2017
 
 
 ---
 # <a name="creating-a-custom-api-to-use-with-logic-apps"></a>Logic Apps で使用するカスタム API の作成
-Logic Apps プラットフォームを拡張する際は、多数ある標準搭載コネクタには含まれていない API やシステムをさまざまな方法で呼び出すことができます。  そのような方法の&1; つに、ロジック アプリ ワークフロー内から呼び出せる API アプリの作成があります。
+Logic Apps プラットフォームを拡張する際は、多数ある標準搭載コネクタには含まれていない API やシステムをさまざまな方法で呼び出すことができます。  そのような方法の 1 つに、ロジック アプリ ワークフロー内から呼び出せる API アプリの作成があります。
 
 ## <a name="helpful-tools"></a>便利なツール
 作成した API が Logic Apps とうまく連携するように、API でサポートされる操作とパラメーターを記述した [swagger](http://swagger.io) ドキュメントを作成することをお勧めします。  swagger を自動的に生成するライブラリが ([Swashbuckle](https://github.com/domaindrivendev/Swashbuckle) など) 豊富に用意されています。  また、[TRex](https://github.com/nihaue/TRex) を使用して、Logic Apps でうまく機能するように swagger に注釈 (表示名、プロパティの型など) を付けることもできます。  Logic Apps 向けに作成された API Apps のサンプルが [GitHub リポジトリ](http://github.com/logicappsio)と[ブログ](http://aka.ms/logicappsblog)で公開されていますので、ぜひご覧ください。
@@ -50,7 +51,7 @@ Logic Apps プラットフォームを拡張する際は、多数ある標準搭
 [こちら](https://github.com/jeffhollan/LogicAppsAsyncResponseSample)
 
 ### <a name="webhook-actions"></a>Webhook アクション
-ワークフロー中に、ロジック アプリを一時停止し、"コールバック" が続くのを待機させることができます。  このコールバックは、HTTP POST の形式をとります。  このパターンを実装するには、サブスクライブとサブスクライブ解除という&2; つのエンドポイントをコントローラーに提供する必要があります。
+ワークフロー中に、ロジック アプリを一時停止し、"コールバック" が続くのを待機させることができます。  このコールバックは、HTTP POST の形式をとります。  このパターンを実装するには、サブスクライブとサブスクライブ解除という 2 つのエンドポイントをコントローラーに提供する必要があります。
 
 "サブスクライブ" では、ロジック アプリがコールバック URL を作成して登録します。API は、それを HTTP POST として準備された状態で格納してコールバックできます。  コンテンツやヘッダーがあればロジック アプリに渡され、ワークフローの残りの部分で使用できます。  ロジック アプリ エンジンは、実行時にそのステップに到達すると、すぐに "サブスクライブ" エンドポイントを呼び出します。
 
@@ -61,7 +62,7 @@ Logic Apps プラットフォームを拡張する際は、多数ある標準搭
 [こちら](https://github.com/jeffhollan/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)
 
 ## <a name="triggers"></a>トリガー
-アクションに加えて、カスタム API をロジック アプリのトリガーとして機能させることができます。  ロジック アプリをトリガーするパターンには、次の&2; つがあります。
+アクションに加えて、カスタム API をロジック アプリのトリガーとして機能させることができます。  ロジック アプリをトリガーするパターンには、次の 2 つがあります。
 
 ### <a name="polling-triggers"></a>ポーリング トリガー
 ポーリング トリガーの動作は、上記の実行時間の長い非同期アクションに似ています。  ロジック アプリ エンジンは、一定の時間が経過した後に (Premium は 15 秒、Standard は1 分、Free は 1 時間など、SKU によって異なります)、トリガー エンドポイントを呼び出します。
@@ -88,9 +89,7 @@ Webhook トリガー (ロジック アプリ全体または Webhook トリガー
 
 [こちら](https://github.com/jeffhollan/LogicAppTriggersExample/tree/master/LogicAppTriggers)
 
+## <a name="publish-custom-connectors-to-azure"></a>Azure にカスタム コネクタを公開する
 
-
-
-<!--HONumber=Jan17_HO3-->
-
+カスタム API アプリを公開して Azure で使用できるようにするには、[Microsoft Azure Certified プログラム](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)に推薦を送信します。
 

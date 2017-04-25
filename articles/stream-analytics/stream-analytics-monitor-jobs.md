@@ -13,19 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/28/2017
+ms.date: 04/04/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 37797743df0e2ce029b65f267a7cea5c8d793773
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: dc19bec960edff15feffc41bee1bbc63eeff5c6d
+ms.lasthandoff: 04/04/2017
 
 
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Stream Analytics ジョブ モニターをプログラムで作成する
- この記事では、Stream Analytics ジョブの監視を有効にする方法を示します。 REST API、Azure SDK、または Powershell を介して作成された Stream Analytics ジョブは、既定では監視は有効になっていません。  Azure ポータルで、ジョブの [監視] ページに移動し、[有効にする] ボタンをクリックして、手動で監視を有効にできます。または、この記事にある手順に従って、有効にするプロセスを自動化することもできます。 監視データは、Stream Analytics ジョブ用の Azure ポータルの [監視] タブに表示されます。
-
-![ジョブ モニター、[ジョブ] タブ](./media/stream-analytics-monitor-jobs/stream-analytics-monitor-jobs-tab.png)
+ この記事では、Stream Analytics ジョブの監視を有効にする方法を示します。 REST API、Azure SDK、または Powershell を介して作成された Stream Analytics ジョブは、既定では監視は有効になっていません。  Azure Portal で、ジョブの [監視] ページに移動し、[有効にする] ボタンをクリックして、手動で監視を有効にできます。または、この記事にある手順に従って、有効にするプロセスを自動化することもできます。 監視データは、Azure Portal の Stream Analytics ジョブの [メトリック] 領域に表示されます。
 
 ## <a name="prerequisites"></a>前提条件
 この記事を読み始める前に、次の項目を用意する必要があります。
@@ -34,9 +32,9 @@ ms.lasthandoff: 03/06/2017
 * [Azure .NET SDK](https://azure.microsoft.com/downloads/)のダウンロードとインストール。
 * 監視を有効にする必要がある、既存の Stream Analytics ジョブ。
 
-## <a name="setup-a-project"></a>プロジェクトのセットアップ
+## <a name="create-a-project"></a>プロジェクトの作成
 1. Visual Studio C# .Net コンソール アプリケーションを作成します。
-2. パッケージ マネージャー コンソールで、次のコマンドを実行して NuGet パッケージをインストールします。 1 つ目は、Azure Stream Analytics 管理用 .NET SDK です。 2 つ目は、監視を有効にするために使用される Azure Monitor SDK です。 最後の&1; つは、認証で使用する Azure Active Directory クライアントです。
+2. パッケージ マネージャー コンソールで、次のコマンドを実行して NuGet パッケージをインストールします。 1 つ目は、Azure Stream Analytics 管理用 .NET SDK です。 2 つ目は、監視を有効にするために使用される Azure Monitor SDK です。 最後の 1 つは、認証で使用する Azure Active Directory クライアントです。
    
    ```
    Install-Package Microsoft.Azure.Management.StreamAnalytics
@@ -142,7 +140,7 @@ ms.lasthandoff: 03/06/2017
 次のコードは、 **既存の** Stream Analytics ジョブに対して監視を有効にします。 コードの最初の部分では、Stream Analytics サービスに対して GET 要求を実行して、特定の Stream Analytics ジョブに関する情報を取得します。 コードの後半部分では、GET 要求で取得した "Id" プロパティをパラメーターとして Put メソッドが Insights サービスに送信され、Stream Analytics ジョブの監視を有効にします。
 
 > [!WARNING]
-> Azure Portal から、または次のコードを使用してプログラムにより、別の Stream Analytics ジョブの監視を有効にしている場合、 **前に監視を有効にしたときと同じストレージ アカウント名を指定することをお勧めします。**
+> Azure Portal から、または次のコードを使用してプログラムにより、別の Stream Analytics ジョブの監視を有効にしている場合、**前に監視を有効にしたときと同じストレージ アカウント名を指定することをお勧めします。**
 > 
 > ストレージ アカウントは、特定のジョブ自体ではなく、Stream Analytics ジョブを作成したリージョンに関連付けられます。
 > 

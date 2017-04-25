@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 02/21/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 2b5e2c2d5cc572ba951a61fd1eb78613c43ec453
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 305f02bb120a1096c46de94d103a5700dabdc8ba
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -193,7 +193,7 @@ Hyper-V クラスターをインストールする場合は、フェールオー
 >
 >
 
-1. 保護グループの **[コンピューター]** タブで、**[Add virtual machines to protection groups to enable protection (仮想マシンを保護グループに追加して保護を有効にする)]** をクリックします。
+1. 保護グループの **[コンピューター]** タブで、[Add virtual machines to protection groups to enable protection (仮想マシンを保護グループに追加して保護を有効にする)] をクリックします。
 2. **[仮想マシンの保護の有効化]** ページで、保護する仮想マシンを選択します。
 
     ![[仮想マシンの保護の有効化]](./media/site-recovery-hyper-v-site-to-azure-classic/add-vm.png)
@@ -208,9 +208,9 @@ Hyper-V クラスターをインストールする場合は、フェールオー
      * **サイズ**: フェールオーバーする仮想マシンのターゲット サイズ。
 
        ![仮想マシンのプロパティの構成](./media/site-recovery-hyper-v-site-to-azure-classic/vm-properties.png)
-   * *[保護された項目]** > **[保護グループ]** > *[<保護グループ名>]* > **[Virtual Machines]***[<仮想マシン名>]* > **[構成]** の順に移動し、次に示す追加の仮想マシンの設定を構成します:
+   * *[保護された項目]** > **[保護グループ]** > *[保護グループ名]* > **[Virtual Machines** *仮想マシン名]* > **[構成]** の順に移動し、次に示す追加の仮想マシン設定を構成します。
 
-     * **ネットワーク アダプター**: ネットワーク アダプターの数は、ターゲット仮想マシンに指定したサイズによって異なります。 仮想マシンのサイズでサポートされている NIC の数については、「 [仮想マシン サイズの仕様](../virtual-machines/virtual-machines-linux-sizes.md) 」を参照してください。
+     * **ネットワーク アダプター**: ネットワーク アダプターの数は、ターゲット仮想マシンに指定したサイズによって異なります。 仮想マシンのサイズでサポートされている NIC の数については、「 [仮想マシン サイズの仕様](../virtual-machines/linux/sizes.md) 」を参照してください。
 
        仮想マシンのサイズを変更し、設定を保存すると、次回 **[構成]** ページを開くときに、ネットワーク アダプターの数が変更されます。 ターゲット仮想マシンのネットワーク アダプターの数は、ソース仮想マシン上のネットワーク アダプターの最小数と、選択した仮想マシンのサイズでサポートされているネットワーク アダプターの最大数です。 次に説明します。
 

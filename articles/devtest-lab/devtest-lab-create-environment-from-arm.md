@@ -1,6 +1,6 @@
 ---
-title: "Azure Resource Manager テンプレートを使った複数 VM 環境の作成 | Microsoft Docs"
-description: "Azure Resource Manager テンプレートから Azure DevTest Labs で複数 VM の環境を作成する方法について説明します"
+title: "Azure Resource Manager テンプレートを使用してマルチ VM 環境と PaaS リソースを作成する | Microsoft Docs"
+description: "Azure Resource Manager テンプレートから Azure DevTest Labs で複数 VM の環境と PaaS リソースを作成する方法について説明します"
 services: devtest-lab,virtual-machines,visual-studio-online
 documentationcenter: na
 author: tomarcher
@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 01/31/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: c17ea1f078c424d855109da07113a4c2f8f84ab3
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 0fbe1af87594aacd2eee4f706429e3674548d3fd
+ms.lasthandoff: 04/07/2017
 
 
 ---
 
-# <a name="create-multi-vm-environments-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使った複数 VM 環境の作成
+# <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用してマルチ VM 環境と PaaS リソースを作成する
 
-[Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) を使用すると、簡単に [VM を作成してラボに追加する](./devtest-lab-add-vm-with-artifacts.md)ことができます。 この方法は、一度に&1; つの VM を作成する場合に適してします。 ところが、環境に複数の VM が含まれる場合は、各 VM を個別に作成する必要があります。 多層 Web アプリや SharePoint ファームのようなシナリオでは、シングル ステップで複数の VM を作成できるメカニズムが必要です。 Azure Resource Manager テンプレートを使用することで、Azure のソリューションのインフラストラクチャと構成を定義して、複数の VM を一貫した状態で繰り返しデプロイできるようになりました。 この機能には次のような利点があります。
+[Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) を使用すると、簡単に [VM を作成してラボに追加する](./devtest-lab-add-vm-with-artifacts.md)ことができます。 この方法は、一度に 1 つの VM を作成する場合に適してします。 ところが、環境に複数の VM が含まれる場合は、各 VM を個別に作成する必要があります。 多層 Web アプリや SharePoint ファームのようなシナリオでは、シングル ステップで複数の VM を作成できるメカニズムが必要です。 Azure Resource Manager テンプレートを使用することで、Azure のソリューションのインフラストラクチャと構成を定義して、複数の VM を一貫した状態で繰り返しデプロイできるようになりました。 この機能には次のような利点があります。
 
 - Azure Resource Manager テンプレートが、ソース管理リポジトリ (GitHub や Team Services Git) から直接読み込まれます。
 - 構成したら、ユーザーは、他の種類の [VM ベース](./devtest-lab-comparing-vm-base-image-types.md)を使用してできることとして Azure Portal から Azure Resource Manager テンプレートを選択して環境を作成できます。
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/15/2017
 
 ## <a name="configure-azure-resource-manager-template-repositories"></a>Azure Resource Manager テンプレート リポジトリを構成する
 
-コードとしてのインフラストラクチャとコードとしての構成のベスト プラクティスの&1; つとして、環境テンプレートをソース管理で管理する必要があります。 Azure DevTest Labs は、このベスト プラクティスに従って、GitHub または VSTS の Git リポジトリから直接すべての Azure Resource Manager テンプレートを読み込みます。 この場合、リポジトリ内で Azure Resource Manager テンプレートを整理するためのルールがいくつかあります。
+コードとしてのインフラストラクチャとコードとしての構成のベスト プラクティスの 1 つとして、環境テンプレートをソース管理で管理する必要があります。 Azure DevTest Labs は、このベスト プラクティスに従って、GitHub または VSTS の Git リポジトリから直接すべての Azure Resource Manager テンプレートを読み込みます。 この場合、リポジトリ内で Azure Resource Manager テンプレートを整理するためのルールがいくつかあります。
 
 - マスター テンプレート ファイルの名前を `azuredeploy.json` にする必要があります。 
 
@@ -72,7 +72,7 @@ ms.lasthandoff: 03/15/2017
     - **Git クローン URL** - GitHub または Visual Studio Team Services の GIT HTTPS クローン URL を入力します。  
     - **分岐** - Azure Resource Manager テンプレートの定義にアクセスするための分岐名を入力します。 
     - **個人用アクセス トークン** - 個人用アクセス トークンは、リポジトリに安全にアクセスするために使用されます。 Visual Studio Team Services からトークンを取得するには、**&lt;自分の名前>、[マイ プロファイル]、[セキュリティ]、[Public access token (パブリック アクセス トークン)]** の順に選択します。 GitHub からトークンを入手するには、アバターを選択した後に、**[設定]、[Public access token (パブリック アクセス トークン)]** の順に選択します。 
-    - **フォルダー パス** -&2; つの入力フィールドのいずれかを使用して、アーティファクトの定義 (最初の入力フィールド) または Azure Resource Manager テンプレートの定義に、フォワード スラッシュ (/) で始まり、Git クローン URI に対して相対的なフォルダー パスを入力します。   
+    - **フォルダー パス** - 2 つの入力フィールドのいずれかを使用して、アーティファクトの定義 (最初の入力フィールド) または Azure Resource Manager テンプレートの定義に、フォワード スラッシュ (/) で始まり、Git クローン URI に対して相対的なフォルダー パスを入力します。   
     
         ![Public Repo](./media/devtest-lab-create-environment-from-arm/repo-values.png)
 

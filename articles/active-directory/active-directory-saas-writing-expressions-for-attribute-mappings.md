@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 04/06/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d49236c634be8260cb0fb24a0ee08cd71353f6ba
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: d2d7f5b00039cd1beab009b78b273ec4dffaab47
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -40,9 +41,9 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 - - -
 ### <a name="append"></a>追加
-**関数:**<br>  Append(source, suffix)
+**関数:**<br> Append(source, suffix)
 
-**説明:**<br>  source 文字列値を受け取り、その末尾に suffix を追加します。
+**説明:**<br> source 文字列値を受け取り、その末尾に suffix を追加します。
 
 **パラメーター:**<br> 
 
@@ -53,7 +54,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 - - -
 ### <a name="formatdatetime"></a>FormatDateTime
-**関数:**<br>  FormatDateTime(source, inputFormat, outputFormat)
+**関数:**<br> FormatDateTime(source, inputFormat, outputFormat)
 
 **説明:**<br> 1 つの形式の日付文字列を受け取り、別の形式に変換します。
 
@@ -67,7 +68,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 - - -
 ### <a name="join"></a>Join
-**関数:**<br>  Join(separator, source1, source2, …)
+**関数:**<br> Join(separator, source1, source2, …)
 
 **説明:**<br> Join() は Append() によく似ていますが、Join() では複数の **source** 文字列値を 1 つの文字列に結合できます。文字列値は **separator** で区切って指定します。
 
@@ -78,13 +79,13 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 | 名前 | 必須/繰り返し | 型 | メモ |
 | --- | --- | --- | --- |
 | **separator** |必須 |String |source 値を 1 つの文字列に連結するときに、各値を区切るのに使用する文字列。 区切り記号が必要ない場合は、“” とすることができます。 |
-| **source1 … sourceN ** |必須、回数は可変 |String |結合する文字列値。 |
+| **source1  … sourceN ** |必須、回数は可変 |String |結合する文字列値。 |
 
 - - -
 ### <a name="mid"></a>Mid
-**関数:**<br>  Mid(source, start, length)
+**関数:**<br> Mid(source, start, length)
 
-**説明:**<br>  source 値の部分文字列を返します。 部分文字列は、source 文字列の文字のみを含む文字列です。
+**説明:**<br> source 値の部分文字列を返します。 部分文字列は、source 文字列の文字のみを含む文字列です。
 
 **パラメーター:**<br> 
 
@@ -96,7 +97,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 - - -
 ### <a name="not"></a>not
-**関数:**<br>  Not(source)
+**関数:**<br> Not(source)
 
 **説明:**<br> **source** のブール値を反転します。 **source** 値が "*True*" の場合は "*False*" を返します。 "False" の場合は "*True*" を返します。
 
@@ -108,10 +109,10 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 - - -
 ### <a name="replace"></a>Replace
-**関数:**<br>  ObsoleteReplace(source, oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, template)
+**関数:**<br> ObsoleteReplace(source, oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, template)
 
 **説明:**<br>
- 文字列内の値を置換します。 指定されたパラメーターに応じて異なる動作をします。
+文字列内の値を置換します。 指定されたパラメーターに応じて異なる動作をします。
 
 * **oldValue** と **replacementValue** が指定された場合:
   
@@ -141,9 +142,9 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 - - -
 ### <a name="stripspaces"></a>StripSpaces
-**関数:**<br>  StripSpaces(source)
+**関数:**<br> StripSpaces(source)
 
-**説明:**<br>  source 文字列からすべての空白文字 (" ") を削除します。
+**説明:**<br> source 文字列からすべての空白文字 (" ") を削除します。
 
 **パラメーター:**<br> 
 
@@ -153,7 +154,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 - - -
 ### <a name="switch"></a>Switch
-**関数:**<br>  Switch(source, defaultValue, key1, value1, key2, value2, …)
+**関数:**<br> Switch(source, defaultValue, key1, value1, key2, value2, …)
 
 **説明:**<br> **source** 値が **key** と一致するときに、その **key** の **value** を返します。 **source** 値がどの key とも一致しない場合は、**defaultValue** を返します。  **key** と **value** パラメーターは、常にペアで指定する必要があります。 この関数には、常に、偶数個のパラメーターを指定する必要があります。
 
@@ -188,7 +189,7 @@ Salesforce Sandbox を使用している場合は、ユーザー名を同期す�
 **サンプル入力/出力:** <br>
 
 * **入力**: (userPrincipalName): "John.Doe@contoso.com"
-* **出力**: "John.Doe@contoso.com.test"
+* **出力**:  "John.Doe@contoso.com.test"
 
 ### <a name="generate-user-alias-by-concatenating-parts-of-first-and-last-name"></a>姓の一部と名の一部を連結することでユーザー エイリアスを生成する
 ユーザーの名の最初の 3 文字とユーザーの姓の最初の 5 文字を取得することでユーザー エイリアスを生成する必要があります。
@@ -236,10 +237,5 @@ Azure AD に格納されている都道府県コードに基づいて、ユー�
 * [SCIM を使用して、Azure Active Directory からアプリケーションへのユーザーとグループの自動プロビジョニングを有効にする](active-directory-scim-provisioning.md)
 * [アカウント プロビジョニング通知](active-directory-saas-account-provisioning-notifications.md)
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

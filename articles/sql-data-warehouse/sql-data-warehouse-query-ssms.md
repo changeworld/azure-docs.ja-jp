@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
+ms.custom: connect
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 77474214c6fafe7f591030d30f6a46c66fbc5c09
-ms.openlocfilehash: 30ac3558534e96b63d78f9c66d42d11b7c1a3c75
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 3cf78b59dc2dd010fdf4f480b09b3f80def1e62d
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -35,9 +37,9 @@ SQL Server Management Studio (SSMS) を使用して Azure SQL Data Warehouse に
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを使用するには、次のものが必要です。
 
-* 既存の SQL Data Warehouse。 その作成方法については、[SQL Data Warehouse の作成][SQL Data Warehouse の作成]に関するページを参照してください。
-* SQL Server Management Studio (SSMS) をインストールしている。 [SSMS をインストール][SSMS のインストールする] していない場合はインストールします (無料)。
-* 完全修飾 SQL サーバー名。 これを特定するには、[SQL Data Warehouse への接続][SQL Data Warehouse への接続]に関するページを参照してください。
+* 既存の SQL Data Warehouse。 作成方法については、[SQL Data Warehouse の作成][Create a SQL Data Warehouse]に関するページを参照してください。
+* SQL Server Management Studio (SSMS) をインストールしている。 [SSMS をインストール][Install SSMS]していない場合はインストールします (無料)。
+* 完全修飾 SQL サーバー名。 これを特定するには、[SQL Data Warehouse への接続][Connect to SQL Data Warehouse]に関するページを参照してください。
 
 ## <a name="1-connect-to-your-sql-data-warehouse"></a>1.SQL Data Warehouse への接続
 1. SSMS を開きます。
@@ -76,19 +78,19 @@ SQL Server Management Studio (SSMS) を使用して Azure SQL Data Warehouse に
     ![Query results][6]
 
 ## <a name="next-steps"></a>次のステップ
-これで接続してクエリを実行することができます。[Power BI でデータを視覚化][Power BI でデータを視覚化]してみてください。
+これで接続してクエリを実行することができます。[Power BI でデータを視覚化][visualizing the data with PowerBI]してみてください。
 
-Azure Active Directory 認証を使用するために環境を構成する方法については、[SQL Data Warehouse の認証][SQL Data Warehouse の認証]に関するページを参照してください。
+Azure Active Directory 認証を使用するために環境を構成する方法については、[SQL Data Warehouse の認証][Authenticate to SQL Data Warehouse]に関するページを参照してください。
 
 <!--Arcticles-->
-[SQL Data Warehouse への接続]: sql-data-warehouse-connect-overview.md
-[SQL Data Warehouse の作成]: sql-data-warehouse-get-started-provision.md
-[SQL Data Warehouse の認証]: sql-data-warehouse-authentication.md
-[Power BI でデータを視覚化]: sql-data-warehouse-get-started-visualize-with-power-bi.md 
+[Connect to SQL Data Warehouse]: sql-data-warehouse-connect-overview.md
+[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
+[Authenticate to SQL Data Warehouse]: sql-data-warehouse-authentication.md
+[visualizing the data with PowerBI]: sql-data-warehouse-get-started-visualize-with-power-bi.md 
 
 <!--Other-->
-[Azure ポータル]: https://portal.azure.com
-[SSMS のインストールする]: https://msdn.microsoft.com/en-US/library/hh213248.aspx
+[Azure portal]: https://portal.azure.com
+[Install SSMS]: https://msdn.microsoft.com/en-US/library/hh213248.aspx
 
 
 <!--Image references-->
@@ -99,9 +101,4 @@ Azure Active Directory 認証を使用するために環境を構成する方法
 [4]: media/sql-data-warehouse-query-ssms/new-query.png
 [5]: media/sql-data-warehouse-query-ssms/execute-query.png
 [6]: media/sql-data-warehouse-query-ssms/results.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

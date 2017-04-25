@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: performance
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1abac24447f709690c42add7c383394443ef957c
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: dd8c1b07262fc375678262a7617699c1f69c6090
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -269,7 +271,7 @@ Removed as these two are not confirmed / supported under SQLDW
     ```
    
    > [!NOTE]
-   > Azure SQL Data Warehouse ユーザーの master データベースにユーザーを作成することをお勧めします。 マスターでユーザーを作成すると、ユーザーはデータベース名を指定せずに SSMS のようなツールを使用してログインできます。  また、オブジェクト エクスプ ローラーを使用して、SQL Server のすべてのデータベースを表示することもできます。  ユーザーの作成および管理の詳細については、[「SQL Data Warehouse でのデータベース保護」][SQL Data Warehouse でのデータベース保護]をご覧ください。
+   > Azure SQL Data Warehouse ユーザーの master データベースにユーザーを作成することをお勧めします。 マスターでユーザーを作成すると、ユーザーはデータベース名を指定せずに SSMS のようなツールを使用してログインできます。  また、オブジェクト エクスプ ローラーを使用して、SQL Server のすべてのデータベースを表示することもできます。  ユーザーの作成および管理の詳細については、「[SQL Data Warehouse でのデータベース保護][Secure a database in SQL Data Warehouse]」を参照してください。
    > 
    > 
 2. **SQL Data Warehouse ユーザーを作成する:** **SQL Data Warehouse** データベースへの接続を開き、次のコマンドを実行します。
@@ -406,22 +408,17 @@ FROM    sys.dm_pdw_wait_stats w;
 ```
 
 ## <a name="next-steps"></a>次のステップ
-データベース ユーザーの管理とセキュリティの詳細については、[「SQL Data Warehouse でのデータベース保護」][SQL Data Warehouse でのデータベース保護]を参照してください。 大規模なリソース クラスを使用して、クラスター化された列ストア インデックスの品質を向上させる方法については、「 [セグメントの品質を向上させるためのインデックスの再構築]」を参照してください。
+データベース ユーザーの管理とセキュリティの詳細については、「[SQL Data Warehouse でのデータベース保護][Secure a database in SQL Data Warehouse]」を参照してください。 大規模なリソース クラスを使用して、クラスター化された列ストア インデックスの品質を向上させる方法については、「 [セグメントの品質を向上させるためのインデックスの再構築]」を参照してください。
 
 <!--Image references-->
 
 <!--Article references-->
-[SQL Data Warehouse でのデータベース保護]: ./sql-data-warehouse-overview-manage-security.md
+[Secure a database in SQL Data Warehouse]: ./sql-data-warehouse-overview-manage-security.md
 [セグメントの品質を向上させるためのインデックスの再構築]: ./sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality
-[SQL Data Warehouse でのデータベース保護]: ./sql-data-warehouse-overview-manage-security.md
+[Secure a database in SQL Data Warehouse]: ./sql-data-warehouse-overview-manage-security.md
 
 <!--MSDN references-->
-[Azure SQL Database におけるデータベース、ログイン、およびユーザーの管理]:https://msdn.microsoft.com/library/azure/ee336235.aspx
+[Managing Databases and Logins in Azure SQL Database]:https://msdn.microsoft.com/library/azure/ee336235.aspx
 
 <!--Other Web references-->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

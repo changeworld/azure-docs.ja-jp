@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2017
+ms.date: 03/30/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
-ms.openlocfilehash: 9702f179a65754be88646987f868385b02a9f2d7
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: eeaab56b376ffd3123efb95a1223b7344dd6d187
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -868,20 +868,18 @@ Azure Data Factory および Azure Batch の機能の詳細については、こ
 1. **inputfolder**に2015-11-16-05、2015-11-16-06、201-11-16-07、2011-11-16-08、2015-11-16-09 のサブフォルダーを追加し、これらのフォルダーに入力ファイルを配置します。 パイプラインの終了時刻を `2015-11-16T05:00:00Z` から `2015-11-16T10:00:00Z` に変更します。 **[ダイアグラム] ビュー**で、**[InputDataset]** をダブルクリックして、入力スライスが準備完了であることを確認します。 **[OuptutDataset]** をダブルクリックして、出力スライスの状態を表示します。 準備完了の状態である場合、出力ファイルの outputfolder を確認します。
 2. 特に Azure Batch 上で発生する処理のように、どのようにソリューションのパフォーマンスに影響するかを理解するには、**concurrency** の設定を増加または減少させます。 (**concurrency** の設定の詳細については、「手順 4: パイプラインを作成して実行する」を参照してください。)
 3. **[VM ごとの最大タスク]** を高くまたは低くして、プールを作成します。 新しく作成したプールを使用するには、Data Factory ソリューションで、Azure Batch のリンクされたサービスを更新します。 (**VM ごとの最大タスク**の設定の詳細については、「手順 4: パイプラインを作成して実行する」を参照してください。)
-4. **[自動スケール]** 機能で、Azure Batch プールを作成します。 Azure Batch プール内のコンピューティング ノードの自動スケールは、アプリケーションによって使用される処理能力を動的に調整します。 たとえば、専用 VM 数が 0 の Azure Batch プールと、保留中のタスクの数に基づく自動スケールの数式を作成できます。
+4. **[自動スケール]** 機能で、Azure Batch プールを作成します。 Azure Batch プール内のコンピューティング ノードの自動スケールは、アプリケーションによって使用される処理能力を動的に調整します。 
 
-   保留中のタスクにつき一度に 1 つの VM (例: 保留中のタスクが 5 つ -> 5 つの VM):
-    
-    ```
-    pendingTaskSampleVector=$PendingTasks.GetSample(600 * TimeInterval_Second);
-    $TargetDedicated = max(pendingTaskSampleVector);
-    ```
+    ここでのサンプル数式では次の動作が行われます。プールが最初に作成されるとき、1 つの VM から始まります。 $PendingTasks メトリックにより、実行中 + アクティブ (キューに登録済み) 状態のタスク数が定義されます。  この数式により、最後の 180 秒間の保留タスク平均数が判明し、TargetDedicated が適宜設定されます。 それにより、TargetDedicated が 25 台の仮想マシンを超えることはありません。 そのため、新しいタスクが送信されると、プールが自動的に増加します。タスクが完了すると、VM は 1 台ずつ解放され、自動スケールにより VM が減らされます。 startingNumberOfVMs と maxNumberofVMs はニーズに合わせて調整できます。
+ 
+    自動スケールの数式:
 
-   保留中のタスクの数に関係なく、最大で一度に 1 つの VM:
-
-    ```
-    pendingTaskSampleVector=$PendingTasks.GetSample(600 * TimeInterval_Second);
-    $TargetDedicated = (max(pendingTaskSampleVector)>0)?1:0;
+    ``` 
+    startingNumberOfVMs = 1;
+    maxNumberofVMs = 25;
+    pendingTaskSamplePercent = $PendingTasks.GetSamplePercent(180 * TimeInterval_Second);
+    pendingTaskSamples = pendingTaskSamplePercent < 70 ? startingNumberOfVMs : avg($PendingTasks.GetSample(180 * TimeInterval_Second));
+    $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
     ```
 
    詳細については、「 [Azure Batch プール内のコンピューティング ノードの自動スケール](../batch/batch-automatic-scaling.md) 」をご覧ください。

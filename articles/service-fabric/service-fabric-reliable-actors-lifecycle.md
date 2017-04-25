@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 03/02/2017
 ms.author: amanbha
 translationtype: Human Translation
-ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
-ms.openlocfilehash: 22f906de37ad7ae2a48acf26be26f2af1e3bde7a
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 0d942fa9f4a3b9094d8122e4745c0450f507ea16
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -29,14 +29,14 @@ ms.lasthandoff: 01/24/2017
 
 * アクターが呼び出し時にまだアクティブになっていない場合は、新しいアクターが作成されます。
 * アクターの状態が保持されている場合は、状態が読み込まれます。
-* `OnActivateAsync` メソッド (アクターの実装でオーバーライドできる) が呼び出されます。
+* `OnActivateAsync` (C#) または `onActivateAsync` (Java) メソッド (アクターの実装でオーバーライドできる) が呼び出されます。
 * アクターはアクティブと見なされるようになります。
 
 ## <a name="actor-deactivation"></a>アクターの非アクティブ化
 アクターは次のように非アクティブ化されます。
 
 * アクターは、一定期間使用されていない場合、アクティブ アクター テーブルから削除されます。
-* `OnDeactivateAsync` メソッド (アクターの実装でオーバーライドできる) が呼び出されます。 呼び出されると、アクターのタイマーをすべてクリアします。 状態の変更などのアクター操作は、このメソッドから呼び出さないようにしてください。
+* `OnDeactivateAsync` (C#) または `onDeactivateAsync` (Java) メソッド (アクターの実装でオーバーライドできる) が呼び出されます。 呼び出されると、アクターのタイマーをすべてクリアします。 状態の変更などのアクター操作は、このメソッドから呼び出さないようにしてください。
 
 > [!TIP]
 > Fabric アクター ランタイムはいくつかの [アクターのアクティブ化と非アクティブ化に関するイベント](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters)を出力します。 これらは、診断やパフォーマンスの監視に役立ちます。
@@ -44,7 +44,7 @@ ms.lasthandoff: 01/24/2017
 >
 
 ### <a name="actor-garbage-collection"></a>アクターのガベージ コレクション
-アクターが非アクティブ化されると、アクター オブジェクトへの参照が解放され、共通言語ランタイム (CLR) のガベージ コレクターによる通常のガベージ コレクションが可能になります。 ガベージ コレクションでクリーンアップされるのはアクター オブジェクトのみであり、アクターの状態マネージャーに格納されている状態は削除 **されません** 。 次にアクターがアクティブになると、新しいアクター オブジェクトが作成され、その状態が復元されます。
+アクターが非アクティブ化されると、アクター オブジェクトへの参照が解放され、共通言語ランタイム (CLR) または Java 仮想マシン (JVM) のガベージ コレクターによる通常のガベージ コレクションが可能になります。 ガベージ コレクションでクリーンアップされるのはアクター オブジェクトのみであり、アクターの状態マネージャーに格納されている状態は削除 **されません** 。 次にアクターがアクティブになると、新しいアクター オブジェクトが作成され、その状態が復元されます。
 
 非アクティブ化やガベージ コレクションにおいて、次の状態は "使用中" と見なされます。
 
@@ -82,11 +82,23 @@ public class Program
 }
 ```
 
+```Java
+public class Program
+{
+    public static void main(String[] args)
+    {
+        ActorRuntime.registerActorAsync(
+                MyActor.class,
+                (context, actorTypeInfo) -> new FabricActorService(context, actorTypeInfo),
+                timeout);
+    }
+}
+```
 各アクティブ アクターについて、アクター ランタイムはアクターがアイドル (つまり、未使用) 状態だった時間を追跡します。 アクター ランタイムは、`ScanIntervalInSeconds` ごとにアクターをそれぞれチェックして、ガベージ コレクションが可能かどうかを確認し、`IdleTimeoutInSeconds` の間アイドル状態だった場合はアクターを収集します。
 
 アクターが使用されるたびに、そのアイドル時間は 0 にリセットされます。 その後、アクターをガベージ コレクトできるのは、再び `IdleTimeoutInSeconds`の間アイドル状態のままになった場合のみです。 アクター インターフェイス メソッドまたはアクター アラーム コールバックが実行された場合、アクターが使用されていると見なされることを思い出してください。 タイマー コールバックが実行された場合、アクターは使用されていると見なされ **ません** 。
 
-次の図は、これらの概念を表す&1; つのアクターのライフ サイクルを示しています。
+次の図は、これらの概念を表す 1 つのアクターのライフ サイクルを示しています。
 
 ![アイドル時間の例][1]
 
@@ -114,6 +126,14 @@ IActorService myActorServiceProxy = ActorServiceProxy.Create(
 
 await myActorServiceProxy.DeleteActorAsync(actorToDelete, cancellationToken)
 ```
+```Java
+ActorId actorToDelete = new ActorId(id);
+
+ActorService myActorServiceProxy = ActorServiceProxy.create(
+    new Uri("fabric:/MyApp/MyService"), actorToDelete);
+
+myActorServiceProxy.deleteActorAsync(actorToDelete);
+```
 
 アクターを削除すると、アクターが現在アクティブかどうかに応じて、次のような結果になります。
 
@@ -131,7 +151,8 @@ await myActorServiceProxy.DeleteActorAsync(actorToDelete, cancellationToken)
 * [アクターの再入](service-fabric-reliable-actors-reentrancy.md)
 * [アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)
 * [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [コード サンプル](https://github.com/Azure/servicefabric-samples)
+* [C# コード サンプル](https://github.com/Azure/servicefabric-samples)
+* [Java コード サンプル](http://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-lifecycle/garbage-collection.png

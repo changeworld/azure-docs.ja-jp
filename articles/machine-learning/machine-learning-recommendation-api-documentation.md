@@ -12,11 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2016
+ms.date: 03/31/2017
 ms.author: LuisCa
+ROBOTS: NOINDEX, NOFOLLOW
+redirect_url: machine-learning-datamarket-deprecation
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d9c7f3c11e534f20bae157430a00724a2c839e8e
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 7f51e8f112dff71084280e1e132eb60d1bb2eeec
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -667,11 +670,131 @@ OData XML
 応答は未加工のテキスト形式で返されます。
 
 <pre>
-Level 1 --------------- 655fc955-a5a3-4a26-9723-3090859cb27b, Prey: A Novel 655fc955-a5a3-4a26-9723-3090859cb27b, Prey: A Novel Rating: 0.5215 3f471802-f84f-44a0-99c8-6d2e7418eec1, Black Hawk Down: A Story of Modern War Rating: 0.5151 07b10e28-9e7c-4032-90b7-10acab7f2460, Cryptonomicon Rating: 0.5148 6afc18e4-8c2a-43d1-9021-57543d6b11d8, Imajica Rating: 0.5146 e4cc5e69-3567-43ab-b00f-f0d8d0506870, Hit List Rating: 0.514 56b61441-0eed-46cc-a8f6-112775b81892, Life and Death in Shanghai 56b61441-0eed-46cc-a8f6-112775b81892, Life and Death in Shanghai Rating: 0.5218 53156702-cc0c-443d-b718-6fb74b2491d3, Son of \ Rating: 0.5212 fb8cf7a6-8719-46ee-97d4-92f931d77a3a, Smoke and Mirrors: Short Fictions and Illusions Rating: 0.5188 8f5fe006-79e4-4679-816b-950989d1db4b, A Place I've Never Been (Contemporary American Fiction) Rating: 0.5156 d8db4583-cc0f-49ce-bc95-b7fa3491623f, Happiness: A Novel Rating: 0.5156 50471eec-9aeb-4900-84d7-21567ab18546, If the Buddha Dated: A Handbook for Finding Love on a Spiritual Path cfe922a1-7ca0-4f8d-ad9d-b7cc87bfe0ef, Divine Secrets of the Ya-Ya Sisterhood: A Novel Rating: 0.5266 ff91a483-1ce5-4b37-a6fd-5ffcf21f8745, The Poisonwood Bible: A Novel Rating: 0.5252 973f8cbd-0846-4f6b-9d28-4dd0d7dc3a19, Pigs in Heaven Rating: 0.5244 e2cbf7ad-0636-4117-8b30-298da6df7077, Animal Dreams Rating: 0.5227 6c818fd3-5a09-417d-9ab4-7ffe090f0fef, Confessions of an Ugly Stepsister: A Novel Rating: 0.5222 5e97148f-defb-4d74-af2d-80f4763bf531, The Deep End of the Ocean (Oprah's Book Club) 5e97148f-defb-4d74-af2d-80f4763bf531, The Deep End of the Ocean (Oprah's Book Club) Rating: 0.537 5dcbac37-2946-4f2a-a0b3-bbe710f9409a, Up Island: A Novel Rating: 0.5277 bc5b69db-733b-4346-adde-3927544258f7, Downtown Rating: 0.5275 31fe5c63-3e5a-48d0-802b-d3b0f989a634, Have a Nice Day: A Tale of Blood and Sweatsocks Rating: 0.5252 0adf981a-b65b-4c11-b36b-78aca2f948a2, The Perfect Storm: A True Story of Men Against the Sea Rating: 0.5238 68f97068-ae1a-4163-9e94-396b800b743d, Modoc: The True Story of the Greatest Elephant That Ever Lived 68f97068-ae1a-4163-9e94-396b800b743d, Modoc: The True Story of the Greatest Elephant That Ever Lived Rating: 0.5379 6724862e-e4e7-4022-9614-1468d8b902ff, Little House on the Prairie Rating: 0.5345 cdedb837-1620-496d-94c4-6ccfed888320, Little House in the Big Woods Rating: 0.5325 382164ba-406b-4187-b726-d7a54b9d790d, The Tao of Pooh Rating: 0.5309 6a068d6a-bb74-4ba3-b3f2-a956c4f9d1b5, On the Banks of Plum Creek Rating: 0.5285 37ef8e74-e348-44e5-aabc-1d7f9efcb25b, Men Are from Mars Women Are from Venus: A Practical Guide for Improving Communication and Getting What You Want in Your Relationships 37ef8e74-e348-44e5-aabc-1d7f9efcb25b, Men Are from Mars, Women Are from Venus: A Practical Guide for Improving Communication and Getting What You Want in Your Relationships Rating: 0.5397 f2be16d4-5faf-4d32-ab83-7ba74d29261e, Politically Correct Bedtime Stories: Modern Tales for Our Life and Times Rating: 0.5207 ef732c5c-334b-4d6b-ab82-7255eb7286d0, Honor Among Thieves Rating: 0.5195 0b209b8c-7cdd-47fd-b940-05c7ff7c60fc, The Giving Tree Rating: 0.5194 883b360f-8b42-407f-b977-2f44ad840877, Scary Stories to Tell in the Dark: Collected from American Folklore (Scary Stories) Rating: 0.5184 ff51b67e-fa8e-4c5e-8f4d-02a928de735d, Men at Work: The Craft of Baseball d008dae9-c73a-40a1-9a9b-96d5cf546f36, The Gulag Archipelago 1918-1956: An Experiment in Literary Investigation I-II Rating: 0.5416 ff51b67e-fa8e-4c5e-8f4d-02a928de735d, Men at Work: The Craft of Baseball Rating: 0.5403 49dec30e-0adb-411a-b186-48eaabf6f8bc, Fatherland Rating: 0.5394 cc7964fd-d30f-478e-a425-93ddbdf094ed, Magic the Gathering: Arena Vol. 1 Rating: 0.5379 8a1e9f36-97af-4614-bed9-24e3940a05f3, More Sniglets: Any Word That Doesn't Appear in the Dictionary but Should Rating: 0.5377 12a6d988-be21-4a09-8143-9d5f4261ba16, A Dream of Eagles 07b10e28-9e7c-4032-90b7-10acab7f2460, Cryptonomicon Rating: 0.5417 e4cc5e69-3567-43ab-b00f-f0d8d0506870, Hit List Rating: 0.5416 1f1a34c4-9781-49f5-a3cc-acec3ae3c71d, The Family Rating: 0.5371 56daeffe-7d48-43cd-8ef8-7dffd0c103d3, Kilo Class Rating: 0.5366 b2fe511e-5cb9-4a56-b823-2801e63e6a96, Legal Tender Rating: 0.5366 df87525b-e435-4bd6-8701-4e60ad344e28, Finding Fish 56d33036-dfda-46b9-8e2a-76cb03921bb0, The X-Files: Ground Zero Rating: 0.5417 0780cde8-6529-4e1d-b6c6-082c1b80e596, Twelve Red Herrings Rating: 0.5416 df87525b-e435-4bd6-8701-4e60ad344e28, Finding Fish Rating: 0.5408 400fe331-2c35-490c-adbc-b28b4b73d56c, Shall We Tell the President? Rating: 0.5383 f86ad7d0-5c03-42b3-aebf-13d44aec8b30, Shades of Grace Rating: 0.5358 de1f62a4-89e6-44d2-aaee-992a4bf093f1, The Map That Changed the World: William Smith and the Birth of Modern Geology de1f62a4-89e6-44d2-aaee-992a4bf093f1, The Map That Changed the World: William Smith and the Birth of Modern Geology Rating: 0.5422 b303538f-e2c6-4a2c-b425-8d21e684fc3e, My Uncle Oswald Rating: 0.5385 34b84627-48af-4a4c-96c4-b26fb3863f56, Midnight In the Garden of Good and Evil Rating: 0.5379 306cbaa7-b1a8-4142-9d55-e11b5018a7a8, The Street Lawyer Rating: 0.5376 e53b4baa-8c09-45c4-95c0-b6a26b98770b, Miss Smillas Feeling for Snow Rating: 0.5367
-
-<a name="level-2"></a>Level 2
+Level 1
 ---------------
-352aaea1-6b12-454d-a3d5-46379d9e4eb2, The Sinister Pig (Hillerman Tony) 352aaea1-6b12-454d-a3d5-46379d9e4eb2, The Sinister Pig (Hillerman Tony) Rating: 0.5425 74c49398-bc10-4af5-a658-a996a1201254, Children of the Storm (Peters Elizabeth) Rating: 0.5387 9ba80080-196e-43fd-8025-391d963f77e7, The Floating Girl Rating: 0.5372 e68f81d5-7745-4cc7-b943-fedb8fcc2ced, Killer Smile (Scottoline Lisa) Rating: 0.5353 b2fe511e-5cb9-4a56-b823-2801e63e6a96, Legal Tender Rating: 0.5332 c65c3995-abf7-4c7b-bb3c-8eb5aa9be7a5, Lake Wobegon days 0adf981a-b65b-4c11-b36b-78aca2f948a2, The Perfect Storm: A True Story of Men Against the Sea Rating: 0.5433 c65c3995-abf7-4c7b-bb3c-8eb5aa9be7a5, Lake Wobegon days Rating: 0.543 a00ae6ad-4a7f-4211-9836-75ce8834eb11, Sniglets (Snig'lit: Any Word That Doesn't Appear in the Dictionary But Should) Rating: 0.5327 6f6e192e-0d64-49ca-9b63-f09413ea1ee6, Politically Correct Holiday Stories: For an Enlightened Yuletide Season Rating: 0.5307 798051a8-147d-4d46-b0dc-e836325029e6, AGE OF INNOCENCE (MOVIE TIE-IN) Rating: 0.5301 73f3e25a-e996-4162-9ed8-ff3d34075650, O Pioneers! (Penguin Twentieth-Century Classics) cba8163f-6536-436b-8130-47b4a43c827f, Trust No One (The Official Guide to the X-Files Vol. 2) Rating: 0.5434 5708e4cb-2492-49c0-94a8-cc413eec5d89, Small Gods (Discworld Novels (Paperback)) Rating: 0.5406 73f3e25a-e996-4162-9ed8-ff3d34075650, O Pioneers! (Penguin Twentieth-Century Classics) Rating: 0.5403 d885b0bd-ae4b-452d-bdf2-faa90197dbc9, The Color of Magic Rating: 0.539 b133a9c4-4784-4db3-b100-d0d6dffb94d2, The Truth Is Out There (The Official Guide to the X-Files Vol. 1) Rating: 0.5367 271700a5-854a-4d5a-8409-6b57a5ee4de4, Fluke: Or I Know Why the Winged Whale Sings 271700a5-854a-4d5a-8409-6b57a5ee4de4, Fluke: Or I Know Why the Winged Whale Sings Rating: 0.5445 2de1c354-90ff-47c5-a0db-1bad7d88ef94, The Salaryman's Wife (Children of Violence Series) Rating: 0.5329 d279416e-19c0-43f8-9ec9-a585947879ca, Zen Attitude Rating: 0.5316 c8f854d7-3de3-4b23-8217-f4f851670fd4, Revenge of the Cootie Girls: A Robin Hudson Mystery (Robin Hudson Mysteries (Paperback)) Rating: 0.5305 8ef4751c-7074-409e-a3ac-d49b222fc864, Where the Wild Things Are Rating: 0.5289 9ad1b620-0a7b-4543-8673-66d4c3bcb2f1, Their Eyes Were Watching God 9ad1b620-0a7b-4543-8673-66d4c3bcb2f1, Their Eyes Were Watching God Rating: 0.5446 da45c4d5-aba1-413b-a9bd-50df98b1e1d2, The Bean Trees Rating: 0.5389 65ecbdd1-131c-40c3-a3d6-d86ca281377a, The God of Small Things Rating: 0.5387 c78743bf-7947-4a0c-8db7-8a3bfe69ba70, The Stone Diaries Rating: 0.5355 973f8cbd-0846-4f6b-9d28-4dd0d7dc3a19, Pigs in Heaven Rating: 0.5344 5f17d90a-2604-4fe8-8977-1a280b9098b1, One for the Money (Stephanie Plum Novels (Paperback)) 5f17d90a-2604-4fe8-8977-1a280b9098b1, One for the Money (Stephanie Plum Novels (Paperback)) Rating: 0.5446 57169b2b-9a8a-486b-9aac-1ed98ce57168, Final Appeal Rating: 0.5332 efcb1bc4-7278-4a8f-b491-befde02070d6, Moment of Truth Rating: 0.5329 1efa91a2-993b-4c43-9f5c-3454fc12612d, Burn Factor Rating: 0.5309 24c59962-458a-4ec8-b95d-d694e861919c, At Home in Mitford (The Mitford Years) Rating: 0.5303 4fd48c46-1a20-4c57-bc7f-a02ef123dc52, As Nature Made Him: The Boy Who Was Raised As a Girl 4fd48c46-1a20-4c57-bc7f-a02ef123dc52, As Nature Made Him: The Boy Who Was Raised As a Girl Rating: 0.5449 cd5f2c03-20cb-43be-a1fb-3b4233e63222, Pigs in Heaven Rating: 0.5329 19985fdb-d07a-4a25-ae4a-97b9cb61e5d1, Love in the Time of Cholera (Penguin Great Books of the 20th Century) Rating: 0.5267 15689d09-c711-4844-84d8-130a90237b26, Bel Canto Rating: 0.5245 ff91a483-1ce5-4b37-a6fd-5ffcf21f8745, The Poisonwood Bible: A Novel Rating: 0.5235 98df28ec-41e7-4fca-b77f-8b0d3109085d, Star Trek Memories f874b5a3-5d40-4436-94ff-0fa1c090ddf5, The Sun Also Rises (A Scribner classic) Rating: 0.5451 98df28ec-41e7-4fca-b77f-8b0d3109085d, Star Trek Memories Rating: 0.5442 0ce0014a-9a48-4013-a08a-7f2c11877930, H.M.S. Unseen Rating: 0.5421 15316ca6-1e38-425f-893d-691944a47000, More Scary Stories To Tell In The Dark Rating: 0.5409 329d5682-3dc3-4206-8aa2-eef4b1032258, Letters from the Earth Rating: 0.54 5b9445d5-c072-419c-8d49-6f669bb1b0a9, Daughter of Fortune: A Novel (Oprah's Book Club (Hardcover)) 5b9445d5-c072-419c-8d49-6f669bb1b0a9, Daughter of Fortune: A Novel (Oprah's Book Club (Hardcover)) Rating: 0.5462 ff91a483-1ce5-4b37-a6fd-5ffcf21f8745, The Poisonwood Bible: A Novel Rating: 0.5372 604eb3bd-6026-4f51-bffd-9fb54f180400, Family Pictures: A Novel Rating: 0.5341 8d06d01d-31cd-4678-b6b1-140a67987ce9, Songs in Ordinary Time (Oprah's Book Club (Paperback)) Rating: 0.5334 da45c4d5-aba1-413b-a9bd-50df98b1e1d2, The Bean Trees Rating: 0.5319 d5358189-d70f-4e35-8add-34b83b4942b3, Pigs in Heaven d5358189-d70f-4e35-8add-34b83b4942b3, Pigs in Heaven Rating: 0.5491 ff91a483-1ce5-4b37-a6fd-5ffcf21f8745, The Poisonwood Bible: A Novel Rating: 0.5401 c78743bf-7947-4a0c-8db7-8a3bfe69ba70, The Stone Diaries Rating: 0.5393 8d06d01d-31cd-4678-b6b1-140a67987ce9, Songs in Ordinary Time (Oprah's Book Club (Paperback)) Rating: 0.5382 973f8cbd-0846-4f6b-9d28-4dd0d7dc3a19, Pigs in Heaven Rating: 0.5367
+655fc955-a5a3-4a26-9723-3090859cb27b, Prey: A Novel
+    655fc955-a5a3-4a26-9723-3090859cb27b, Prey: A Novel Rating: 0.5215
+    3f471802-f84f-44a0-99c8-6d2e7418eec1, Black Hawk Down: A Story of Modern War Rating: 0.5151
+    07b10e28-9e7c-4032-90b7-10acab7f2460, Cryptonomicon Rating: 0.5148
+    6afc18e4-8c2a-43d1-9021-57543d6b11d8, Imajica Rating: 0.5146
+    e4cc5e69-3567-43ab-b00f-f0d8d0506870, Hit List Rating: 0.514
+56b61441-0eed-46cc-a8f6-112775b81892, Life and Death in Shanghai
+    56b61441-0eed-46cc-a8f6-112775b81892, Life and Death in Shanghai Rating: 0.5218
+    53156702-cc0c-443d-b718-6fb74b2491d3, Son of \ Rating: 0.5212
+    fb8cf7a6-8719-46ee-97d4-92f931d77a3a, Smoke and Mirrors: Short Fictions and Illusions Rating: 0.5188
+    8f5fe006-79e4-4679-816b-950989d1db4b, A Place I've Never Been (Contemporary American Fiction) Rating: 0.5156
+    d8db4583-cc0f-49ce-bc95-b7fa3491623f, Happiness: A Novel Rating: 0.5156
+50471eec-9aeb-4900-84d7-21567ab18546, If the Buddha Dated: A Handbook for Finding Love on a Spiritual Path
+    cfe922a1-7ca0-4f8d-ad9d-b7cc87bfe0ef, Divine Secrets of the Ya-Ya Sisterhood: A Novel Rating: 0.5266
+    ff91a483-1ce5-4b37-a6fd-5ffcf21f8745, The Poisonwood Bible: A Novel Rating: 0.5252
+    973f8cbd-0846-4f6b-9d28-4dd0d7dc3a19, Pigs in Heaven Rating: 0.5244
+    e2cbf7ad-0636-4117-8b30-298da6df7077, Animal Dreams Rating: 0.5227
+    6c818fd3-5a09-417d-9ab4-7ffe090f0fef, Confessions of an Ugly Stepsister: A Novel Rating: 0.5222
+5e97148f-defb-4d74-af2d-80f4763bf531, The Deep End of the Ocean (Oprah's Book Club)
+    5e97148f-defb-4d74-af2d-80f4763bf531, The Deep End of the Ocean (Oprah's Book Club) Rating: 0.537
+    5dcbac37-2946-4f2a-a0b3-bbe710f9409a, Up Island: A Novel Rating: 0.5277
+    bc5b69db-733b-4346-adde-3927544258f7, Downtown Rating: 0.5275
+    31fe5c63-3e5a-48d0-802b-d3b0f989a634, Have a Nice Day: A Tale of Blood and Sweatsocks Rating: 0.5252
+    0adf981a-b65b-4c11-b36b-78aca2f948a2, The Perfect Storm: A True Story of Men Against the Sea Rating: 0.5238
+68f97068-ae1a-4163-9e94-396b800b743d, Modoc: The True Story of the Greatest Elephant That Ever Lived
+    68f97068-ae1a-4163-9e94-396b800b743d, Modoc: The True Story of the Greatest Elephant That Ever Lived Rating: 0.5379
+    6724862e-e4e7-4022-9614-1468d8b902ff, Little House on the Prairie Rating: 0.5345
+    cdedb837-1620-496d-94c4-6ccfed888320, Little House in the Big Woods Rating: 0.5325
+    382164ba-406b-4187-b726-d7a54b9d790d, The Tao of Pooh Rating: 0.5309
+    6a068d6a-bb74-4ba3-b3f2-a956c4f9d1b5, On the Banks of Plum Creek Rating: 0.5285
+37ef8e74-e348-44e5-aabc-1d7f9efcb25b, Men Are from Mars Women Are from Venus: A Practical Guide for Improving Communication and Getting What You Want in Your Relationships
+    37ef8e74-e348-44e5-aabc-1d7f9efcb25b, Men Are from Mars, Women Are from Venus: A Practical Guide for Improving Communication and Getting What You Want in Your Relationships Rating: 0.5397
+    f2be16d4-5faf-4d32-ab83-7ba74d29261e, Politically Correct Bedtime Stories: Modern Tales for Our Life and Times Rating: 0.5207
+    ef732c5c-334b-4d6b-ab82-7255eb7286d0, Honor Among Thieves Rating: 0.5195
+    0b209b8c-7cdd-47fd-b940-05c7ff7c60fc, The Giving Tree Rating: 0.5194
+    883b360f-8b42-407f-b977-2f44ad840877, Scary Stories to Tell in the Dark: Collected from American Folklore (Scary Stories) Rating: 0.5184
+ff51b67e-fa8e-4c5e-8f4d-02a928de735d, Men at Work: The Craft of Baseball
+    d008dae9-c73a-40a1-9a9b-96d5cf546f36, The Gulag Archipelago 1918-1956: An Experiment in Literary Investigation I-II Rating: 0.5416
+    ff51b67e-fa8e-4c5e-8f4d-02a928de735d, Men at Work: The Craft of Baseball Rating: 0.5403
+    49dec30e-0adb-411a-b186-48eaabf6f8bc, Fatherland Rating: 0.5394
+    cc7964fd-d30f-478e-a425-93ddbdf094ed, Magic the Gathering: Arena Vol. 1 Rating: 0.5379
+    8a1e9f36-97af-4614-bed9-24e3940a05f3, More Sniglets: Any Word That Doesn't Appear in the Dictionary but Should Rating: 0.5377
+12a6d988-be21-4a09-8143-9d5f4261ba16, A Dream of Eagles
+    07b10e28-9e7c-4032-90b7-10acab7f2460, Cryptonomicon Rating: 0.5417
+    e4cc5e69-3567-43ab-b00f-f0d8d0506870, Hit List Rating: 0.5416
+    1f1a34c4-9781-49f5-a3cc-acec3ae3c71d, The Family Rating: 0.5371
+    56daeffe-7d48-43cd-8ef8-7dffd0c103d3, Kilo Class Rating: 0.5366
+    b2fe511e-5cb9-4a56-b823-2801e63e6a96, Legal Tender Rating: 0.5366
+df87525b-e435-4bd6-8701-4e60ad344e28, Finding Fish
+    56d33036-dfda-46b9-8e2a-76cb03921bb0, The X-Files: Ground Zero Rating: 0.5417
+    0780cde8-6529-4e1d-b6c6-082c1b80e596, Twelve Red Herrings Rating: 0.5416
+    df87525b-e435-4bd6-8701-4e60ad344e28, Finding Fish Rating: 0.5408
+    400fe331-2c35-490c-adbc-b28b4b73d56c, Shall We Tell the President? Rating: 0.5383
+    f86ad7d0-5c03-42b3-aebf-13d44aec8b30, Shades of Grace Rating: 0.5358
+de1f62a4-89e6-44d2-aaee-992a4bf093f1, The Map That Changed the World: William Smith and the Birth of Modern Geology
+    de1f62a4-89e6-44d2-aaee-992a4bf093f1, The Map That Changed the World: William Smith and the Birth of Modern Geology Rating: 0.5422
+    b303538f-e2c6-4a2c-b425-8d21e684fc3e, My Uncle Oswald Rating: 0.5385
+    34b84627-48af-4a4c-96c4-b26fb3863f56, Midnight In the Garden of Good and Evil Rating: 0.5379
+    306cbaa7-b1a8-4142-9d55-e11b5018a7a8, The Street Lawyer Rating: 0.5376
+    e53b4baa-8c09-45c4-95c0-b6a26b98770b, Miss Smillas Feeling for Snow Rating: 0.5367
+
+Level 2
+---------------
+352aaea1-6b12-454d-a3d5-46379d9e4eb2, The Sinister Pig (Hillerman Tony)
+    352aaea1-6b12-454d-a3d5-46379d9e4eb2, The Sinister Pig (Hillerman Tony) Rating: 0.5425
+    74c49398-bc10-4af5-a658-a996a1201254, Children of the Storm (Peters Elizabeth) Rating: 0.5387
+    9ba80080-196e-43fd-8025-391d963f77e7, The Floating Girl Rating: 0.5372
+    e68f81d5-7745-4cc7-b943-fedb8fcc2ced, Killer Smile (Scottoline Lisa) Rating: 0.5353
+    b2fe511e-5cb9-4a56-b823-2801e63e6a96, Legal Tender Rating: 0.5332
+c65c3995-abf7-4c7b-bb3c-8eb5aa9be7a5, Lake Wobegon days
+    0adf981a-b65b-4c11-b36b-78aca2f948a2, The Perfect Storm: A True Story of Men Against the Sea Rating: 0.5433
+    c65c3995-abf7-4c7b-bb3c-8eb5aa9be7a5, Lake Wobegon days Rating: 0.543
+    a00ae6ad-4a7f-4211-9836-75ce8834eb11, Sniglets (Snig'lit: Any Word That Doesn't Appear in the Dictionary But Should) Rating: 0.5327
+    6f6e192e-0d64-49ca-9b63-f09413ea1ee6, Politically Correct Holiday Stories: For an Enlightened Yuletide Season Rating: 0.5307
+    798051a8-147d-4d46-b0dc-e836325029e6, AGE OF INNOCENCE (MOVIE TIE-IN) Rating: 0.5301
+73f3e25a-e996-4162-9ed8-ff3d34075650, O Pioneers! (Penguin Twentieth-Century Classics)
+    cba8163f-6536-436b-8130-47b4a43c827f, Trust No One (The Official Guide to the X-Files Vol. 2) Rating: 0.5434
+    5708e4cb-2492-49c0-94a8-cc413eec5d89, Small Gods (Discworld Novels (Paperback)) Rating: 0.5406
+    73f3e25a-e996-4162-9ed8-ff3d34075650, O Pioneers! (Penguin Twentieth-Century Classics) Rating: 0.5403
+    d885b0bd-ae4b-452d-bdf2-faa90197dbc9, The Color of Magic Rating: 0.539
+    b133a9c4-4784-4db3-b100-d0d6dffb94d2, The Truth Is Out There (The Official Guide to the X-Files Vol. 1) Rating: 0.5367
+271700a5-854a-4d5a-8409-6b57a5ee4de4, Fluke: Or I Know Why the Winged Whale Sings
+    271700a5-854a-4d5a-8409-6b57a5ee4de4, Fluke: Or I Know Why the Winged Whale Sings Rating: 0.5445
+    2de1c354-90ff-47c5-a0db-1bad7d88ef94, The Salaryman's Wife (Children of Violence Series) Rating: 0.5329
+    d279416e-19c0-43f8-9ec9-a585947879ca, Zen Attitude Rating: 0.5316
+    c8f854d7-3de3-4b23-8217-f4f851670fd4, Revenge of the Cootie Girls: A Robin Hudson Mystery (Robin Hudson Mysteries (Paperback)) Rating: 0.5305
+    8ef4751c-7074-409e-a3ac-d49b222fc864, Where the Wild Things Are Rating: 0.5289
+9ad1b620-0a7b-4543-8673-66d4c3bcb2f1, Their Eyes Were Watching God
+    9ad1b620-0a7b-4543-8673-66d4c3bcb2f1, Their Eyes Were Watching God Rating: 0.5446
+    da45c4d5-aba1-413b-a9bd-50df98b1e1d2, The Bean Trees Rating: 0.5389
+    65ecbdd1-131c-40c3-a3d6-d86ca281377a, The God of Small Things Rating: 0.5387
+    c78743bf-7947-4a0c-8db7-8a3bfe69ba70, The Stone Diaries Rating: 0.5355
+    973f8cbd-0846-4f6b-9d28-4dd0d7dc3a19, Pigs in Heaven Rating: 0.5344
+5f17d90a-2604-4fe8-8977-1a280b9098b1, One for the Money (Stephanie Plum Novels (Paperback))
+    5f17d90a-2604-4fe8-8977-1a280b9098b1, One for the Money (Stephanie Plum Novels (Paperback)) Rating: 0.5446
+    57169b2b-9a8a-486b-9aac-1ed98ce57168, Final Appeal Rating: 0.5332
+    efcb1bc4-7278-4a8f-b491-befde02070d6, Moment of Truth Rating: 0.5329
+    1efa91a2-993b-4c43-9f5c-3454fc12612d, Burn Factor Rating: 0.5309
+    24c59962-458a-4ec8-b95d-d694e861919c, At Home in Mitford (The Mitford Years) Rating: 0.5303
+4fd48c46-1a20-4c57-bc7f-a02ef123dc52, As Nature Made Him: The Boy Who Was Raised As a Girl
+    4fd48c46-1a20-4c57-bc7f-a02ef123dc52, As Nature Made Him: The Boy Who Was Raised As a Girl Rating: 0.5449
+    cd5f2c03-20cb-43be-a1fb-3b4233e63222, Pigs in Heaven Rating: 0.5329
+    19985fdb-d07a-4a25-ae4a-97b9cb61e5d1, Love in the Time of Cholera (Penguin Great Books of the 20th Century) Rating: 0.5267
+    15689d09-c711-4844-84d8-130a90237b26, Bel Canto Rating: 0.5245
+    ff91a483-1ce5-4b37-a6fd-5ffcf21f8745, The Poisonwood Bible: A Novel Rating: 0.5235
+98df28ec-41e7-4fca-b77f-8b0d3109085d, Star Trek Memories
+    f874b5a3-5d40-4436-94ff-0fa1c090ddf5, The Sun Also Rises (A Scribner classic) Rating: 0.5451
+    98df28ec-41e7-4fca-b77f-8b0d3109085d, Star Trek Memories Rating: 0.5442
+    0ce0014a-9a48-4013-a08a-7f2c11877930, H.M.S. Unseen Rating: 0.5421
+    15316ca6-1e38-425f-893d-691944a47000, More Scary Stories To Tell In The Dark Rating: 0.5409
+    329d5682-3dc3-4206-8aa2-eef4b1032258, Letters from the Earth Rating: 0.54
+5b9445d5-c072-419c-8d49-6f669bb1b0a9, Daughter of Fortune: A Novel (Oprah's Book Club (Hardcover))
+    5b9445d5-c072-419c-8d49-6f669bb1b0a9, Daughter of Fortune: A Novel (Oprah's Book Club (Hardcover)) Rating: 0.5462
+    ff91a483-1ce5-4b37-a6fd-5ffcf21f8745, The Poisonwood Bible: A Novel Rating: 0.5372
+    604eb3bd-6026-4f51-bffd-9fb54f180400, Family Pictures: A Novel Rating: 0.5341
+    8d06d01d-31cd-4678-b6b1-140a67987ce9, Songs in Ordinary Time (Oprah's Book Club (Paperback)) Rating: 0.5334
+    da45c4d5-aba1-413b-a9bd-50df98b1e1d2, The Bean Trees Rating: 0.5319
+d5358189-d70f-4e35-8add-34b83b4942b3, Pigs in Heaven
+    d5358189-d70f-4e35-8add-34b83b4942b3, Pigs in Heaven Rating: 0.5491
+    ff91a483-1ce5-4b37-a6fd-5ffcf21f8745, The Poisonwood Bible: A Novel Rating: 0.5401
+    c78743bf-7947-4a0c-8db7-8a3bfe69ba70, The Stone Diaries Rating: 0.5393
+    8d06d01d-31cd-4678-b6b1-140a67987ce9, Songs in Ordinary Time (Oprah's Book Club (Paperback)) Rating: 0.5382
+    973f8cbd-0846-4f6b-9d28-4dd0d7dc3a19, Pigs in Heaven Rating: 0.5367
 
 </pre>
 
@@ -849,13 +972,13 @@ HTTP 状態コード: 200
 
 ** 形式の詳細 **
 
-| Name | 必須 | 型 | Description |
+| 名前 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
 | 項目 ID |はい |[A-z]、[a-z]、[0-9]、[_] (アンダースコア)、[-] (ダッシュ) <br> 最大長: 50 |項目の一意識別子 |
-| Item Name |はい |任意の英数字<br>  最大長: 255 |項目名。 |
-| Item Category |はい |任意の英数字 <br>  最大長: 255 |この項目が属しているカテゴリ (例: 料理本、ドラマ...)。空にすることができます。 |
-| Description |いいえ。ただし特徴が存在する場合を除きます (しかし、空にすることはできます) |任意の英数字 <br>  最大長: 4000 |この項目の説明。 |
-| Features list |なし |任意の英数字 <br>  最大長: 4000、特徴の最大数: 20 |モデルの推奨事項を強化するために使用できる "特徴名=特徴値" のコンマ区切りの一覧。[高度なトピック](#2-advanced-topics)のセクションをご覧ください。 |
+| Item Name |はい |任意の英数字<br> 最大長: 255 |項目名。 |
+| Item Category |はい |任意の英数字 <br> 最大長: 255 |この項目が属しているカテゴリ (例: 料理本、ドラマ...)。空にすることができます。 |
+| Description |いいえ。ただし特徴が存在する場合を除きます (しかし、空にすることはできます) |任意の英数字 <br> 最大長: 4000 |この項目の説明。 |
+| Features list |なし |任意の英数字 <br> 最大長: 4000、特徴の最大数: 20 |モデルの推奨事項を強化するために使用できる "特徴名=特徴値" のコンマ区切りの一覧。[高度なトピック](#2-advanced-topics)のセクションをご覧ください。 |
 
 | HTTP メソッド | URI |
 |:--- |:--- |
@@ -1073,7 +1196,7 @@ OData XML
 | filename |カタログを表すテキスト形式の識別子。<br>英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダースコア (_) のみが許可されます。<br>最大長: 50 |
 | apiVersion |1.0 |
 |  | |
-| 要求本文 |使用状況データ。 形式:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>名前</th><th>必須</th><th>型</th><th>Description</th></tr><tr><td>ユーザー ID</td><td>はい</td><td>[A-z]、[a-z]、[0-9]、[_] (アンダースコア)、[-] (ダッシュ) <br>  最大長: 255 </td><td>ユーザーの一意識別子。</td></tr><tr><td>項目 ID</td><td>はい</td><td>[A-z]、[a-z]、[0-9]、[_] (アンダースコア)、[-] (ダッシュ) <br> 最大長: 50</td><td>項目の一意識別子</td></tr><tr><td>Time</td><td>いいえ</td><td>YYYY/MM/DDTHH:MM:SS 形式の日付 (例: 2013/06/20T10:00:00)</td><td>データの時間。</td></tr><tr><td>イベント</td><td>いいえ、指定した場合は日付も指定すること</td><td>次のいずれか:<br>• Click<br>• RecommendationClick<br>•    AddShopCart<br>• RemoveShopCart<br>• Purchase</td><td></td></tr></table><br>ファイルの最大サイズ: 200 MB<br><br>例:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
+| 要求本文 |使用状況データ。 形式:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>名前</th><th>必須</th><th>型</th><th>Description</th></tr><tr><td>ユーザー ID</td><td>あり</td><td>[A-z]、[a-z]、[0-9]、[_] (アンダースコア)、[-] (ダッシュ) <br> 最大長: 255 </td><td>ユーザーの一意識別子。</td></tr><tr><td>項目 ID</td><td>はい</td><td>[A-z]、[a-z]、[0-9]、[_] (アンダースコア)、[-] (ダッシュ) <br> 最大長: 50</td><td>項目の一意識別子</td></tr><tr><td>Time</td><td>いいえ</td><td>YYYY/MM/DDTHH:MM:SS 形式の日付 (例: 2013/06/20T10:00:00)</td><td>データの時間。</td></tr><tr><td>イベント</td><td>いいえ、指定した場合は日付も指定すること</td><td>次のいずれか:<br>• Click<br>• RecommendationClick<br>•    AddShopCart<br>• RemoveShopCart<br>• Purchase</td><td></td></tr></table><br>ファイルの最大サイズ: 200 MB<br><br>例:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
 
 **応答**:
 
@@ -1384,7 +1507,21 @@ HTTP 状態コード: 200
 応答は未加工のテキスト形式で返されます。
 
 <pre>
-85526,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1 210926,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1 116866,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1 177458,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1 274004,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 123883,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 37712,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 152249,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 250948,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 235588,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 158254,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 271195,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 141157,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 171118,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 225087,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+85526,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1
+210926,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1
+116866,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1
+177458,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1
+274004,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+123883,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+37712,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+152249,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+250948,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+235588,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+158254,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+271195,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+141157,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+171118,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+225087,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
 </pre>
 
 
@@ -1411,7 +1548,39 @@ HTTP 状態コード: 200
 応答は未加工のテキスト形式で返されます。
 
 <pre>
-85526,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1 210926,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1 116866,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1 177458,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1 274004,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 123883,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 37712,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 152249,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 250948,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 235588,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 158254,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 271195,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 141157,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 171118,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 225087,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 244881,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 50547,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 213090,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 260655,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 72214,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 189334,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 36326,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 189336,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 189334,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1 260655,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1 162100,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1 54946,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1 260965,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1 102758,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1 112602,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1 163925,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1 262998,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1 144717,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
+85526,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1
+210926,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1
+116866,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1
+177458,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1
+274004,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+123883,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+37712,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+152249,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+250948,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+235588,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+158254,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+271195,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+141157,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+171118,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+225087,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+244881,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+50547,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+213090,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+260655,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+72214,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+189334,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+36326,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+189336,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+189334,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
+260655,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
+162100,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
+54946,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
+260965,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
+102758,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
+112602,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
+163925,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
+262998,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
+144717,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
 </pre>
 
 ### <a name="96----delete-usage-file"></a>9.6.    使用状況ファイルの削除
@@ -1466,7 +1635,7 @@ HTTP 状態コード: 200
 | パラメーター名 | 有効な値 |
 |:--- |:--- |
 | modelId |モデルの一意識別子 |
-| samplingSize |カタログ内に存在するデータに従い、特徴ごとに含める値の数。 <br/>次のいずれかの値になります。<br>  -1 - すべてのサンプル。 <br>0 - サンプリングなし。 <br>N - 特徴名ごとに、N 個のサンプルを返します。 |
+| samplingSize |カタログ内に存在するデータに従い、特徴ごとに含める値の数。 <br/>次のいずれかの値になります。<br> -1 - すべてのサンプル。 <br>0 - サンプリングなし。 <br>N - 特徴名ごとに、N 個のサンプルを返します。 |
 | apiVersion |1.0 |
 |  | |
 | 要求本文 |なし |
@@ -1545,7 +1714,7 @@ OData XML
 | パラメーター名 | 有効な値 |
 |:--- |:--- |
 | modelId |モデルの一意識別子 |
-| samplingSize |カタログ内に存在するデータに従い、特徴ごとに含める値の数。<br/> 次のいずれかの値になります。<br>  -1 - すべてのサンプル。 <br>0 - サンプリングなし。 <br>N - 特徴名ごとに、N 個のサンプルを返します。 |
+| samplingSize |カタログ内に存在するデータに従い、特徴ごとに含める値の数。<br/> 次のいずれかの値になります。<br> -1 - すべてのサンプル。 <br>0 - サンプリングなし。 <br>N - 特徴名ごとに、N 個のサンプルを返します。 |
 | rankBuildId |順位付けのビルドの一意識別子。最後の順位付けのビルドの場合は -1。 |
 | apiVersion |1.0 |
 |  | |
@@ -1776,7 +1945,7 @@ OData XML
 |:--- |:--- |
 | modelId |モデルの一意識別子 |
 | userDescription |カタログを表すテキスト形式の識別子。 空白を使用する場合は、%20 にエンコードする必要があることに注意してください上記の例をご覧ください。 (上記の例を参照)。<br>最大長: 50 |
-| buildType |呼び出すビルドの種類:  <br/> - 推奨事項のビルドは ’Recommendation’ <br> - 順位付けのビルドは 'Ranking' <br/>  -FBT のビルドは ' Fbt' |
+| buildType |呼び出すビルドの種類:  <br/> - 推奨事項のビルドは ’Recommendation’ <br> - 順位付けのビルドは 'Ranking' <br/> -FBT のビルドは ' Fbt' |
 | apiVersion |1.0 |
 |  | |
 | 要求本文 |空のままにすると、既定のビルド パラメーターを使用してビルドが実行されます。<br><br>ビルド パラメーターを設定する場合は、次の例のように本文に XML として指定して送信します。 (パラメーターの詳細と完全なリストについては、「ビルド パラメーター」セクションを参照してください)。`<BuildParametersList><NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance></BuildParametersList>` |
@@ -1865,7 +2034,7 @@ HTTP 状態コード: 200
 * `feed/entry/content/properties/UserName` - ユーザーの名前。
 * `feed/entry/content/properties/ModelName` - モデルの名前。
 * `feed/entry/content/properties/ModelId` - モデルの一意識別子。
-* `feed/entry/content/properties/IsDeployed` - ビルドがデプロイされている  (アクティブなビルド) かどうか。
+* `feed/entry/content/properties/IsDeployed` - ビルドがデプロイされている ( アクティブなビルド) かどうか。
 * `feed/entry/content/properties/BuildId` - ビルドの一意識別子。
 * `feed/entry/content/properties/BuildType` - ビルドの種類。
 * `feed/entry/content/properties/Status` - ビルド状態。 次のいずれか: Error、Building、Queued、Cancelling、Cancelled、Success。
@@ -2262,7 +2431,7 @@ OData XML
 |:--- |:--- |
 | modelId |モデルの一意識別子 |
 | itemIds |推奨項目のコンマ区切りの一覧。 <br>アクティブなビルドが FBT の種類の場合は、1 つの項目のみを送信できます。 <br>最大長: 1024 |
-| numberOfResults |必要な結果の数  <br>  最大: 150 |
+| numberOfResults |必要な結果の数  <br> 最大: 150 |
 | includeMetatadata |将来的に利用 (常に false) |
 | apiVersion |1.0 |
 
@@ -2441,7 +2610,7 @@ OData XML
 |:--- |:--- |
 | modelId |モデルの一意識別子 |
 | itemIds |推奨項目のコンマ区切りの一覧。 <br>アクティブなビルドが FBT の種類の場合は、1 つの項目のみを送信できます。 <br>最大長: 1024 |
-| numberOfResults |必要な結果の数  <br>  最大: 150 |
+| numberOfResults |必要な結果の数  <br> 最大: 150 |
 | includeMetatadata |将来的に利用 (常に false) |
 | buildId |この推奨事項の要求で使用するビルド ID |
 | apiVersion |1.0 |
@@ -2470,7 +2639,7 @@ HTTP 状態コード: 200
 |:--- |:--- |
 | modelId |モデルの一意識別子 |
 | itemId |推奨する項目です。 <br>最大長: 1024 |
-| numberOfResults |必要な結果の数  <br> 最大: 150 |
+| numberOfResults |必要な結果の数  <br>最大: 150 |
 | minimalScore |返される結果に含めるために頻度のセットが持つべきスコアの最小値。 |
 | includeMetatadata |将来的に利用 (常に false) |
 | apiVersion |1.0 |
@@ -2560,7 +2729,7 @@ OData XML
 |:--- |:--- |
 | modelId |モデルの一意識別子 |
 | itemId |推奨する項目です。 <br>最大長: 1024 |
-| numberOfResults |必要な結果の数  <br> 最大: 150 |
+| numberOfResults |必要な結果の数  <br>最大: 150 |
 | minimalScore |返される結果に含めるために頻度のセットが持つべきスコアの最小値。 |
 | includeMetatadata |将来的に利用 (常に false) |
 | buildId |この推奨事項の要求で使用するビルド ID |
@@ -2875,10 +3044,5 @@ HTTP 状態コード: 200
 使用している例は、例示のみを目的に提供された、架空のものです。 実際の関連やつながりはなく、推測によるものです。<br><br>
 このドキュメントは、Microsoft 製品に含まれる知的財産に対するいかなる法的権利も提供するものではありません。 お客様の社内での参照目的に限り、このドキュメントをコピーし使用することができます。<br><br>
 © 2015 Microsoft. All rights reserved.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

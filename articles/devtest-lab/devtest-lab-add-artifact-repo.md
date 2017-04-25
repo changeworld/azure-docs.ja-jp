@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/11/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: f7656382500682898cd3ed6372630afa3c3f6350
-ms.openlocfilehash: 5c595bd2175f1cbc650bd1a757eeacc80cf39e23
-ms.lasthandoff: 01/12/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 407d50afe3470f5a9e84026eaa2dcccea4d06641
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -46,7 +46,7 @@ GitHub リポジトリのクローン URL と個人用アクセス トークン�
 4. GitHub の右上隅にあるプロファイルの画像を選択し、 **[設定]**を選択します。
 5. **[Personal settings (個人設定)]** メニューの左側で、**[Personal access tokens (個人用アクセス トークン)]** を選択します。
 6. **[新しいトークンの生成]**を選択します。
-7. **[New personal access token (新しい個人用アクセス トークン)]** ページで、**トークンの説明**を入力し、**[Select scopes (範囲の選択)]** で既定の項目をそのまま使用します。次に **[(Generate Token) トークンの生成]** を選択します。
+7. **[New personal access token (新しい個人用トークン)]** ページで、**トークンの説明**を入力します。 パブリック リポジトリの場合、**[スコープの選択]** で既定の項目をそのまま使用します。パブリック リポジトリではない場合、**[リポジトリ]** スコープを選択します。 **[トークンの生成]** を選択します。 OAuth スコープの詳細は [GitHub](https://developer.github.com/v3/oauth/#scopes) でご確認ください。
 8. 後で必要となるため、生成されたトークンを保存します。
 9. これで、GitHub を閉じることができます。   
 10. [アーティファクト リポジトリにラボを接続する](#connect-your-lab-to-the-artifact-repository) のセクションに続きます。

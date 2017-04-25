@@ -18,9 +18,9 @@ ms.date: 02/28/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 0ec56111847300833ba92cc9149e8a276ba2c6c1
-ms.openlocfilehash: af7cabf3d5286dc3cd368db191bc5218cd9c5893
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
+ms.openlocfilehash: e64c0336578be2c1a1126f7459775f47d73f9d6e
+ms.lasthandoff: 04/07/2017
 
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Azure サブスクリプションの所有権を別のアカウントに譲渡する
@@ -95,7 +95,7 @@ ms.lasthandoff: 03/02/2017
 
 * **あらゆるものが譲渡されるのでしょうか。リソース グループ、VM、ディスク、他の実行中のサービスは含まれますか?**
 
-  はい。VM、ディスク、Web サイトなどのすべてのリソースが、新しい所有者に譲渡されます。 ただし、自分で設定した[管理者の役割](billing-add-change-azure-subscription-administrator.md)と[ロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-configure.md) ポリシーは譲渡されません。 
+  はい。VM、ディスク、Web サイトなどのすべてのリソースが、新しい所有者に譲渡されます。 ただし、自分で設定した[管理者の役割](billing-add-change-azure-subscription-administrator.md)と[ロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-configure.md) ポリシーは、異なるディレクトリ間で譲渡されません。
 
 * <a id="no-button"></a>**[サブスクリプションの譲渡] ボタンが表示されないのはなぜですか?**
 
@@ -142,7 +142,7 @@ ms.lasthandoff: 03/02/2017
 
 * **譲渡先で別の支払い方法を使用できますか。**
 
-  はい。 ただし、サブスクリプションの請求履歴は&2; つのアカウントに分かれます。  
+  はい。 ただし、サブスクリプションの請求履歴は 2 つのアカウントに分かれます。  
 
 * **Azure サブスクリプションを譲渡した後に、支払い方法に対する影響はありますか。**
 

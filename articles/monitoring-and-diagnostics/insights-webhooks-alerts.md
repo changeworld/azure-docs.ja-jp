@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 04/03/2017
 ms.author: ashwink
 translationtype: Human Translation
-ms.sourcegitcommit: c0d101266fecf04a84b5717c1b81cefed90cab40
-ms.openlocfilehash: 440bd939f0c7d235d7be210c7fee9f2bc122718c
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 7282de704a1053e2052a189990fb2b30b2adad6f
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="configure-a-webhook-on-an-azure-metric-alert"></a>Azure メトリック アラートでの webhook の構成
 webhook を使用すると、後処理やカスタム アクションのために、Azure アラート通知を他のシステムにルーティングすることができます。 アラートで webhook を使用することで、SMS の送信、バグのログ記録、チャット/メッセージング サービスを介したチームへの通知、またはその他のさまざまなアクションを実行するサービスに、アラートをルーティングできます。 この記事では、Azure メトリック アラートで webhook を設定する方法のほか、webhook に対する HTTP POST のペイロードの内容について説明します。 Azure アクティビティ ログ アラート (イベントでのアラート) の設定とスキーマについては、 [こちらのページをご覧ください](insights-auditlog-to-webhook-email.md)。
 
-Azure は、JSON 形式 (以下で定義されているスキーマ) でアラートに含まれている HTTP POST を、アラートの作成時に指定した webhook URI に送信します。 この URI は有効な HTTP または HTTPS エンドポイントである必要があります。 Azure では、アラートがアクティブ化された場合に要求ごとに&1; つのエントリがポストされます。
+Azure は、JSON 形式 (以下で定義されているスキーマ) でアラートに含まれている HTTP POST を、アラートの作成時に指定した webhook URI に送信します。 この URI は有効な HTTP または HTTPS エンドポイントである必要があります。 Azure では、アラートがアクティブ化された場合に要求ごとに 1 つのエントリがポストされます。
 
 ## <a name="configuring-webhooks-via-the-portal"></a>ポータルを使用して Webhook を構成する
 [ポータル](https://portal.azure.com/)のアラートの作成/更新画面では、webhook URI を追加または更新できます。
@@ -34,10 +34,7 @@ Azure は、JSON 形式 (以下で定義されているスキーマ) でアラ�
 また、webhook URI にポストするアラートの構成には、[Azure PowerShell コマンドレット](insights-powershell-samples.md#create-alert-rules)、[クロスプラットフォーム CLI](insights-cli-samples.md#work-with-alerts)、[Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx) のいずれかを使用できます。
 
 ## <a name="authenticating-the-webhook"></a>webhook の認証
-webhook は、次の方法のいずれかを使用して認証できます。
-
-1. **トークンベースの認証** - webhook URI は次のようなトークン ID を使用して保存されます。 `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
-2. **パスワードベースの基本認証** - webhook URI は次のようなユーザー名とパスワードを使用して保存されます。 `https://userid:password@mysamplealert/webcallback?someparamater=somevalue&foo=bar`
+webhook はトークン ベースの承認を使用して認証できます。 webhook URI は次のようなトークン ID を使用して保存されます。 `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
 
 ## <a name="payload-schema"></a>ペイロード スキーマ
 POST 操作には、すべてのメトリックベースのアラートについて以下の JSON ペイロードとスキーマが含まれます。
@@ -84,7 +81,7 @@ POST 操作には、すべてのメトリックベースのアラートについ
 | id |Y | |すべてのアラート ルールには一意の ID があります。 |
 | name |Y | |アラートの名前。 |
 | description |Y | |アラートの説明。 |
-| conditionType |Y |"Metric"、"Event" |2 つの種類のアラートがサポートされています。 1 つはメトリックの条件に基づき、もう&1; つはアクティビティ ログ内のイベントに基づきます。 この値を使用して、アラートがメトリックとイベントのどちらに基づいているかを確認できます。 |
+| conditionType |Y |"Metric"、"Event" |2 つの種類のアラートがサポートされています。 1 つはメトリックの条件に基づき、もう 1 つはアクティビティ ログ内のイベントに基づきます。 この値を使用して、アラートがメトリックとイベントのどちらに基づいているかを確認できます。 |
 | condition |Y | |conditionType に基づいて確認する特定のフィールド。 |
 | metricName |メトリック アラートの場合 | |ルールによる監視対象を定義するメトリックの名前。 |
 | metricUnit |メトリック アラートの場合 |"Bytes"、"BytesPerSecond"、"Count"、"CountPerSecond"、"Percent"、"Seconds" |メトリックで使用できる単位。 [使用できる値はこちらに記載されています](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx)。 |

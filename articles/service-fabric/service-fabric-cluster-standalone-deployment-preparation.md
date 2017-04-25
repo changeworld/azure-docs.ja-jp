@@ -14,9 +14,9 @@ ms.workload: NA
 ms.date: 1/17/2017
 ms.author: maburlik;chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: bd9ea82adc97698957dfebc3ee7c14c498808dd3
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: f332193f9a53260173a1010b8bf9f08726bea427
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -105,7 +105,9 @@ ms.lasthandoff: 03/29/2017
 4. デプロイ予定のクラスターがセキュリティで保護されたクラスターである場合は、まず必要なセキュリティの前提条件を検証してから、目的の構成に合わせて適切に構成します。
 5. クラスター マシンにインターネットでアクセスできない場合は、クラスター構成で次を設定します。
 * テレメトリの収集を無効にする: *properties* で   *"enableTelemetry": false* と設定します。
-* Fabric バージョンの自動ダウンロードおよび現在のクラスター バージョンのサポート終了が近づいていることの通知を無効にする: *properties* で   *"fabricClusterAutoupgradeEnabled": true* と設定します。
+* Fabric バージョンの自動ダウンロードおよび現在のクラスター バージョンのサポート終了が近づいていることの通知を無効にする: *properties* で   *"fabricClusterAutoupgradeEnabled": false* と設定します。
+* また、ネットワーク インターネット アクセスがホワイト リスト ドメインに制限されている場合、自動アップグレードには go.microsoft.com   download.microsoft.com というドメインが必要になります。
+
 6. Service Fabric のウイルス対策の対象外項目を適切に設定します。
 
 | **ウイルス対策の対象外ディレクトリ** |

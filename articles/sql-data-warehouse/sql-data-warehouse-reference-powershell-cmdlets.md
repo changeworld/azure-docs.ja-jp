@@ -16,9 +16,9 @@ ms.custom: reference
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 96ac017b469405e0eb106bf5eb391b5273600ab2
-ms.lasthandoff: 12/08/2016
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: d30a49a79e74c575dd6daba9a260c18822a26462
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -73,8 +73,8 @@ $resultDatabase = $database | Resume-AzureRmSqlDatabase
 > 
 > 
 
-## <a name="frequently-used-powershell-cmdlets"></a>よく使用される PowerShell コマンドレット
-Azure SQL Data Warehouse でよく使用される PowerShell コマンドレットを次に示します。
+## <a name="other-supported-powershell-cmdlets"></a>その他のサポートされている PowerShell コマンドレット
+Azure SQL Data Warehouse でサポートされている PowerShell コマンドレットを次に示します。
 
 * [Get-AzureRmSqlDatabase][Get-AzureRmSqlDatabase]
 * [Get-AzureRmSqlDeletedDatabaseBackup][Get-AzureRmSqlDeletedDatabaseBackup]
@@ -93,7 +93,7 @@ PowerShell のその他の例については、次のトピックをご覧くだ
 * [PowerShell を使用して SQL Data Warehouse を作成する][Create a SQL Data Warehouse using PowerShell]
 * [データベースの復元][Database restore]
 
-PowerShell で自動化できるタスクの一覧については、[Azure SQL Database コマンドレット][Azure SQL Database Cmdlets]に関するページをご覧ください。  REST で自動化できるタスクの一覧については、「[Operations for Azure SQL Databases (Azure SQL データベースの操作)][Operations for Azure SQL Databases]」をご覧ください。
+PowerShell で自動化できるその他のタスクについては、[Azure SQL Database コマンドレット][Azure SQL Database Cmdlets]に関するページを参照してください。 Azure SQL Data Warehouse ではサポートされていない Azure SQL Database コマンドレットがあります。  REST で自動化できるタスクの一覧については、「[Operations for Azure SQL Databases (Azure SQL データベースの操作)][Operations for Azure SQL Databases]」をご覧ください。
 
 <!--Image references-->
 

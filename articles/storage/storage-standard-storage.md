@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/18/2017
 ms.author: yuemlu
 translationtype: Human Translation
-ms.sourcegitcommit: 36fa9cd757b27347c08f80657bab8a06789a3c2f
-ms.openlocfilehash: c208f44045ba414be2034f577435ae02ea4456cf
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 77e48af7ba59ed1e5b2ebcda0760e0eda1f407df
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -29,7 +29,7 @@ Azure Standard Storage は、待機時間の影響を受けないワークロー
 
 ## <a name="disk-types"></a>ディスクの種類
 
-Azure VM の Standard ディスクは、次の&2; とおりの方法で作成できます。
+Azure VM の Standard ディスクは、次の 2 とおりの方法で作成できます。
 
 **非管理対象ディスク**: これは、VM ディスクに対応する VHD ファイルの格納に使用するストレージ アカウントをユーザーが管理する本来の方法です。 VHD ファイルは、ストレージ アカウントにページ BLOB として格納されます。 非管理対象ディスクは、主に Premium Storage を使用する VM (DSv2 シリーズや GS シリーズなど) も含め、すべてのサイズの Azure VM に接続できます。 Azure VM には複数の Standard ディスクを接続できるので、VM あたり最大 64 TB のストレージを使用できます。
 
@@ -42,7 +42,7 @@ Azure Standard Storage を使用するには、[無料試用版](https://azure.m
 Managed Disks を使用する VM を作成する方法については、次のいずれかの記事をご覧ください。
 
 * [Resource Manager と PowerShell を使用して VM を作成する](../virtual-machines/virtual-machines-windows-ps-create.md)
-* [Azure CLI 2.0 を使用して Linux VM を作成する](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
+* [Azure CLI 2.0 を使用して Linux VM を作成する](../virtual-machines/linux/quick-create-cli.md)
 
 ## <a name="standard-storage-features"></a>Standard Storage の機能 
 
@@ -50,11 +50,11 @@ Managed Disks を使用する VM を作成する方法については、次の�
 
 **Standard Storage**: Azure Standard Storage では、Azure Disks、Azure BLOB、Azure Files、Azure Tables、Azure Queues をサポートしています。 Standard Storage サービスを使用するには、まず、[Azure ストレージ アカウントを作成](storage-create-storage-account.md#create-a-storage-account)します。
 
-**Standard Storage ディスク**: Standard Storage ディスクは、Premium Storage で使用されるサイズ シリーズの VM (DSv2 シリーズや GS シリーズなど) も含め、すべての Azure VM に接続できます。 Standard Storage ディスクは、1 台の VM にのみ接続できます。 ただし、1 台の VM に Standard Storage ディスクを&1; つ以上接続できます。その VM サイズで定義されている最大ディスク数まで接続することが可能です。 Standard Storage のスケーラビリティとパフォーマンスのターゲットに関する次のセクションで、仕様についてさらに詳しく説明します。 
+**Standard Storage ディスク**: Standard Storage ディスクは、Premium Storage で使用されるサイズ シリーズの VM (DSv2 シリーズや GS シリーズなど) も含め、すべての Azure VM に接続できます。 Standard Storage ディスクは、1 台の VM にのみ接続できます。 ただし、1 台の VM に Standard Storage ディスクを 1 つ以上接続できます。その VM サイズで定義されている最大ディスク数まで接続することが可能です。 Standard Storage のスケーラビリティとパフォーマンスのターゲットに関する次のセクションで、仕様についてさらに詳しく説明します。 
 
 **Standard ページ BLOB**: Standard ページ BLOB は VM の永続ディスクを保持するために使用されます。他の種類の Azure BLOB と同様に、REST から Standard ページ BLOB に直接アクセスすることもできます。 [ページ BLOB](/rest/api/storageservices/fileservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) は、ランダム読み取り/書き込み操作に最適化された 512 バイト ページのコレクションです。 
 
-**ストレージ レプリケーション**: ほとんどのリージョンで、Standard Storage アカウント内のデータはローカルにレプリケートすることも、複数のデータセンター間で geo レプリケートすることもできます。 ローカル冗長ストレージ (LRS)、ゾーン冗長ストレージ (ZRS)、geo 冗長ストレージ (GRS)、読み取りアクセス geo 冗長ストレージ (RA-GRS) の&4; 種類のレプリケーションを使用できます。 現在、Standard Storage の Managed Disks では、ローカル冗長ストレージ (LRS) のみをサポートしています。 詳細については、[Storage のレプリケーション](storage-redundancy.md)に関する記事をご覧ください。
+**ストレージ レプリケーション**: ほとんどのリージョンで、Standard Storage アカウント内のデータはローカルにレプリケートすることも、複数のデータセンター間で geo レプリケートすることもできます。 ローカル冗長ストレージ (LRS)、ゾーン冗長ストレージ (ZRS)、geo 冗長ストレージ (GRS)、読み取りアクセス geo 冗長ストレージ (RA-GRS) の 4 種類のレプリケーションを使用できます。 現在、Standard Storage の Managed Disks では、ローカル冗長ストレージ (LRS) のみをサポートしています。 詳細については、[Storage のレプリケーション](storage-redundancy.md)に関する記事をご覧ください。
 
 ## <a name="scalability-and-performance-targets"></a>スケーラビリティとパフォーマンスのターゲット
 
@@ -75,7 +75,7 @@ Managed Disks を使用する VM を作成する方法については、次の�
 
 詳細については、「 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)」をご覧ください。
 
-アプリケーションのニーズが&1; つのストレージ アカウントのスケーラビリティ ターゲットを超えた場合は、複数のストレージ アカウントを使用するようにアプリケーションをビルドし、それらのストレージ アカウント間でデータをパーティション分割します。 また、Azure Managed Disks を使用することもできます。Azure Managed Disks では、データのパーティション分割と配置の管理は Azure が行います。
+アプリケーションのニーズが 1 つのストレージ アカウントのスケーラビリティ ターゲットを超えた場合は、複数のストレージ アカウントを使用するようにアプリケーションをビルドし、それらのストレージ アカウント間でデータをパーティション分割します。 また、Azure Managed Disks を使用することもできます。Azure Managed Disks では、データのパーティション分割と配置の管理は Azure が行います。
 
 ### <a name="standard-disks-limits"></a>Standard ディスクの制限
 
@@ -153,4 +153,4 @@ Standard Storage、Virtual Machines、Managed Disks の価格の詳細につい�
 
 * [Resource Manager と PowerShell を使用して VM を作成する](../virtual-machines/virtual-machines-windows-ps-create.md)
 
-* [Azure CLI 2.0 を使用して Linux VM を作成する](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
+* [Azure CLI 2.0 を使用して Linux VM を作成する](../virtual-machines/linux/quick-create-cli.md)

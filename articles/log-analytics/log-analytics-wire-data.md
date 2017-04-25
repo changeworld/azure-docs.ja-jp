@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 15858f7b7436536e6bae7fcfd6a50c722d2d04a2
-ms.openlocfilehash: be00cb9b1e8ba5d9d8368695ca8d448d466e8f47
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: b1db5cd0149374842b0201cd6b820436f3822325
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: be00cb9b1e8ba5d9d8368695ca8d448d466e8f47
 ワイヤ データとは、Operations Manager エージェントや Windows に接続されたエージェントなどの OMS エージェントがインストールされたコンピューターからのネットワーク データとパフォーマンス データを統合したものです。 ネットワーク データをログ データと結び付けると、データを相関させるのに役立ちます。 IT インフラストラクチャ内のコンピューターにインストールされている OMS エージェントでは、使用されるさまざまなプロトコルやポートなど、 [OSI モデル](https://en.wikipedia.org/wiki/OSI_model) のネットワーク レベル 2 ～ 3 について、これらのコンピューターとの間で送受信されたネットワーク データを監視します。
 
 > [!NOTE]
-> ワイヤ データ ソリューションは、現在、ワークスペースに追加できません。 ワイヤ データ ソリューションを既に有効にしているユーザーは、ワイヤ データ ソリューションを引き続き使用できます。
+> ワイヤ データ 1.0 ソリューションは、現在、ワークスペースに追加できません。 ワイヤ データ 1.0 ソリューションを既に有効にしているユーザーは、ワイヤ データ 1.0 ソリューションを引き続き使用できます。 ただし、新しいお客様は[ワイヤ データ 2.0](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) ソリューションを代わりにご利用ください。
 >
 >
 
@@ -106,9 +107,4 @@ ms.openlocfilehash: be00cb9b1e8ba5d9d8368695ca8d448d466e8f47
 ## <a name="next-steps"></a>次のステップ
 * [ログを検索](log-analytics-log-searches.md) して、詳細なワイヤ データ検索レコードを確認します。
 * Dan の「 [Using Wire Data in Operations Management Suite Log Search (Operations Management Suite Log Search でのワイヤ データの使用)](http://blogs.msdn.com/b/dmuscett/archive/2015/09/09/using-wire-data-in-operations-management-suite.aspx) 」というブログ投稿では、データが収集される頻度や、Operations Manager エージェントの収集プロパティを変更する方法について、付加的な情報が提供されています。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

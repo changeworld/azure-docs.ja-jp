@@ -12,15 +12,18 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 04/05/2017
 ms.author: raynew
+ROBOTS: NOINDEX, NOFOLLOW
+redirect_url: site-recovery-vmware-to-azure
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 03178e1b933f5681caf6efbeb5a89d56727ae743
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 5c597e94f524a7ecbb9e4269adbbbd735a90aa14
+ms.lasthandoff: 04/06/2017
 
 
 ---
+
 # <a name="replicate-vmware-virtual-machines-and-physical-servers-to-azure-with-azure-site-recovery"></a>Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure にレプリケートする
 > [!div class="op_single_selector"]
 > * [Azure ポータル](site-recovery-vmware-to-azure.md)
@@ -256,10 +259,10 @@ VMware 仮想マシンをレプリケートする場合、管理サーバーで�
 
 1. **[クイック スタート]** ページで、統合インストール ファイルをサーバーにダウンロードします。
 2. インストール ファイルを実行して、**Site Recovery 統合セットアップ** ウィザードでセットアップを開始します。
-3. **[開始する前に]** で **[Install the configuration server and process server] (構成サーバーとプロセス サーバーをインストールする)** を選択します。
+3. **[開始する前に]** で **[Install the configuration server and process server] \(構成サーバーとプロセス サーバーをインストールする)** を選択します。
 
    ![開始する前に](./media/site-recovery-vmware-to-azure-classic/combined-wiz1.png)
-4. **[Third-Party Software License] (サードパーティ製ソフトウェア ライセンス)** で、**[同意する]** をクリックして MySQL をダウンロードし、インストールします。
+4. **[Third-Party Software License] \(サードパーティ製ソフトウェア ライセンス)** で、**[同意する]** をクリックして MySQL をダウンロードし、インストールします。
 
     ![サードパーティ製ソフトウェア](./media/site-recovery-vmware-to-azure-classic/combined-wiz105.PNG)
 5. **[登録]** で、コンテナーからダウンロードした登録キーを参照して選択します。
@@ -267,7 +270,7 @@ VMware 仮想マシンをレプリケートする場合、管理サーバーで�
     ![登録](./media/site-recovery-vmware-to-azure-classic/combined-wiz3.png)
 6. **[インターネット設定]** で、構成サーバーで実行されているプロバイダーがインターネット経由で Azure Site Recovery に接続する方法を指定します。
 
-   * マシンで現在セットアップされているプロキシを使用して接続する場合は、**[Connect with existing proxy settings] (既存のプロキシ設定を使用して接続する)** を選択します。
+   * マシンで現在セットアップされているプロキシを使用して接続する場合は、**[Connect with existing proxy settings] \(既存のプロキシ設定を使用して接続する)** を選択します。
    * プロバイダーから直接接続するには、**[Connect directly without a proxy (プロキシなしで直接接続する)]** を選択します。
    * 既存のプロキシで認証が必要な場合、またはプロバイダー接続にカスタム プロキシを使用する場合は、**[Connect with custom proxy settings (カスタム プロキシ設定を使用して接続する)]** を選択します。
      * カスタム プロキシを使用する場合、アドレス、ポート、資格情報を指定する必要があります
@@ -579,7 +582,7 @@ VMware VM をレプリケートする場合、vCenter サーバー (または ES
 3. 次の設定を変更できます。
 
    * **Azure VM の名前**: フェールオーバー後に Azure 内のマシンに付けられる名前です。 名前は Azure の要件に準拠する必要があります。
-   * **Azure VM のサイズ**: ネットワーク アダプターの数は、ターゲット仮想マシンに指定したサイズによって異なります。 サイズとアダプターの詳細については、「[サイズ一覧表](../virtual-machines/virtual-machines-linux-sizes.md)」をご覧ください。 以下の点に注意してください。
+   * **Azure VM のサイズ**: ネットワーク アダプターの数は、ターゲット仮想マシンに指定したサイズによって異なります。 サイズとアダプターの詳細については、「[サイズ一覧表](../virtual-machines/linux/sizes.md)」をご覧ください。 以下の点に注意してください。
 
      * 仮想マシンのサイズを変更し、設定を保存すると、次回 **[構成]** タブを開いたときにネットワーク アダプターの数が変更されます。 ターゲット仮想マシンのネットワーク アダプターの最小数は、ソース仮想マシンのネットワーク アダプターの最小数と同じです。 ネットワーク アダプターの最大数は、仮想マシンのサイズによって決まります。
        * ソース マシンのネットワーク アダプターの数が、ターゲット マシンのサイズで許可されているアダプターの数以下の場合、ターゲットのアダプターの数はソースと同じになります。
@@ -683,7 +686,7 @@ VMware VM をレプリケートする場合、vCenter サーバー (または ES
 
 ### <a name="install-the-process-server"></a>プロセス サーバーをインストールする
 1. **[クイック スタート]** ページで、Site Recovery コンポーネント インストールの統合インストール ファイルをダウンロードします。 セットアップを実行します。
-2. **[開始する前に]** で **[Add additional process servers to scale out deployment] (デプロイをスケールアウトするためにプロセス サーバーを追加する)** を選択します。
+2. **[開始する前に]** で **[Add additional process servers to scale out deployment] \(デプロイをスケールアウトするためにプロセス サーバーを追加する)** を選択します。
 
  ![プロセス サーバーの追加](./media/site-recovery-vmware-to-azure-classic/add-ps1.png)
 3. 1 つ目の管理サーバーを[セットアップ](#step-5-install-the-management-server)したときと同様にウィザードを完了します。

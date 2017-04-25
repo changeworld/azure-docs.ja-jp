@@ -10,28 +10,25 @@ tags: azure-service-management
 ms.assetid: 389d3bd3-cd8e-4715-a3a1-031ec061d385
 ms.service: app-service-web
 ms.workload: web
-ms.devlang: na
+ms.devlang: azurecli
+ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: cfowler
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: a2009cb07ae2ae7cf716d77a7d9eac7482138ab1
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
+ms.openlocfilehash: b82e51d8d96c98cba1d5989060eed40ed7f2d4fe
+ms.lasthandoff: 04/04/2017
 
 ---
-
 # <a name="create-a-web-app-with-continuous-deployment-from-visual-studio-team-services"></a>Visual Studio Team Services からの継続的なデプロイで Web アプリを作成する
 
-このサンプル スクリプトでは、App Service で Web アプリを関連リソースと合わせて作成し、Visual Studio Team Services リポジトリからの継続的デプロイを設定します。 
+このサンプル スクリプトでは、App Service で Web アプリを関連リソースと合わせて作成し、Visual Studio Team Services リポジトリからの継続的デプロイを設定します。 このサンプルでは、次のものが必要になります。
 
-必要に応じて、[Azure CLI インストール ガイド](https://docs.microsoft.com/cli/azure/install-azure-cli)の手順に従って Azure CLI をインストールします。 また、次のことを確認します。
+* 管理アクセス許可のある、アプリケーション コードを含む Visual Studio Team Services リポジトリ。
+* Visual Studio Team Services アカウントの[個人用アクセス トークン (PAT)](https://www.visualstudio.com/docs/setup-admin/team-services/use-personal-access-tokens-to-authenticate)。
 
-- Azure との接続が、`az login` コマンドを使用して作成されている。
-- アプリケーション コードが、自分が所有する Visual Studio Team Services リポジトリ内にある。
-- [Visual Studio Team Services アカウントにアクセス トークンを作成](https://www.visualstudio.com/docs/setup-admin/team-services/use-personal-access-tokens-to-authenticate)している。
-
-このサンプルは、bash シェルに対応しています。 Azure CLI スクリプトを Windows クライアントで実行する方法については、[Windows での Azure CLI の実行](../../virtual-machines/virtual-machines-windows-cli-options.md)に関する記事を参照してください。
+[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
 ## <a name="create-app-sample"></a>サンプル アプリの作成
 

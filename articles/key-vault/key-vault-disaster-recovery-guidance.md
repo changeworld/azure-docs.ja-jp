@@ -15,15 +15,16 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: sumedhb;aglick
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d2fb323e8cf6d14d0b5cf10071475cf4669545ed
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 6419d54c54e7d19103419262b79e7a5268b2268c
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure Key Vault の可用性と冗長性
 Azure Key Vault には複数層の冗長性が備わっています。そのため、サービスの個々のコンポーネントで障害が発生した場合でも、アプリケーションでは引き続きキーとシークレットを使用することができます。
 
-Key Vault のコンテンツは、リージョン内と、同じ地域内の 150 マイル (約 241 km) 以上離れたセカンダリ リージョンにレプリケートされます。 これにより、キーとシークレットの高い持続性が保たれます。
+Key Vault のコンテンツは、リージョン内と、同じ地域内の 150 マイル (約 241 km) 以上離れたセカンダリ リージョンにレプリケートされます。 これにより、キーとシークレットの高い持続性が保たれます。 特定のリージョン ペアの詳細については、「[Azure のペアになっているリージョン](https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions)」ドキュメントを参照してください。
 
 Key Vault サービス内の個々のコンポーネントで障害が発生した場合、リージョン内の代替コンポーネントが要求を処理し、機能が低下しないようにします。 この処理をトリガーするために、何かの措置を講じる必要はありません。 ユーザーからは見えないところで自動的に実行されます。
 
@@ -47,10 +48,5 @@ Azure リージョン全体が使用できない場合がまれにあります�
   * 署名
   * バックアップ
 * フェールオーバーがフェールバックされると、すべての種類の要求 (つまり、読み取り "*および*" 書き込み要求) が可能になります。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

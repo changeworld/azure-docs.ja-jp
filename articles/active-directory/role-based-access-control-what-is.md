@@ -1,5 +1,5 @@
 ---
-title: "ロールを使用したアクセスとアクセス許可の管理 - Azure RBAC | Microsoft Docs"
+title: "RBAC を使用したアクセスとアクセス許可の管理 - Azure RBAC | Microsoft Docs"
 description: "Azure ポータルで Azure のロールベースのアクセス制御を使用したアクセス管理を開始します。 ロールの割り当てを使用して、ディレクトリ内でアクセス許可を割り当てます。"
 services: active-directory
 documentationcenter: 
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/23/2017
+ms.date: 04/03/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: d00ba4e6d1abd62e5a0d5a9d5bb229d3fa64b473
-ms.openlocfilehash: fb12fb78d4257fc8264bd476de70671eb8264323
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
+ms.openlocfilehash: aa31b373e67d4742f7697e2ec6958e108535f746
+ms.lasthandoff: 04/07/2017
 
 
 ---
-# <a name="get-started-with-access-management-in-the-azure-portal"></a>Azure ポータルでのアクセス管理の概要
+# <a name="get-started-with-role-based-access-control-in-the-azure-portal"></a>Azure Portal でのロールベースの Access Control の基礎を確認する
 セキュリティを重視する企業は、実際に必要となるアクセス許可を従業員に付与することに注力する必要があります。 アクセス許可が多すぎると、アカウントが攻撃者による悪用の対象になりかねません。 アクセス許可が少なすぎると、従業員は業務を効率的に遂行できなくなる可能性があります。 Azure のロールベースの Access Control (RBAC) は、Azure のアクセス許可を詳細に管理を実現することでこの問題に対処できます。
 
 RBAC を使用して、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与します。 すべてのユーザーに Azure サブスクリプションまたはリソースで無制限のアクセス許可を付与するのではなく、特定の操作のみを許可することができます。 たとえば、RBAC を使用して、ある従業員にはサブスクリプションで仮想マシンを管理できるようにし、他の従業員にも同じサブスクリプション内で SQL データベースを管理できるようにします。
@@ -36,7 +36,7 @@ RBAC を使用して、チーム内で職務を分離し、職務に必要なア
 割り当てる RBAC ロールにより、そのスコープ内でユーザー、グループ、またはアプリケーションが管理できるリソースが決まります。
 
 ## <a name="built-in-roles"></a>組み込みのロール
-Azure RBAC には、すべてのリソースの種類に適用される&3; つの基本的なロールがあります。
+Azure RBAC には、すべてのリソースの種類に適用される 3 つの基本的なロールがあります。
 
 * **所有者** は、他のユーザーへアクセス権を委任する権限を含め、すべてのリソースへのフル アクセス権を持ちます。
 * **作成協力者** は、Azure リソースのすべてのタイプを作成および管理できますが、他のユーザーへアクセス権を付与することはできません。
