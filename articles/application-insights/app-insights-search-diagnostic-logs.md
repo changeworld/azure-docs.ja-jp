@@ -99,7 +99,7 @@ JavaScript at client
 ## <a name="pages"></a> ページ ビュー
 ページ ビュー テレメトリは、[Web ページ内に挿入した JavaScript のスニペット][usage]に含まれる trackPageView() 呼び出しによって送信されます。 その主な目的は、概要ページに表示されるページ ビューの数に加えることです。
 
-通常は各 HTML ページで&1; 度呼び出されますが、複数の呼び出しを挿入できます。たとえば、シングル ページ アプリで、ユーザーがデータを取得するたびに新しいページを記録できます。
+通常は各 HTML ページで 1 度呼び出されますが、複数の呼び出しを挿入できます。たとえば、シングル ページ アプリで、ユーザーがデータを取得するたびに新しいページを記録できます。
 
     appInsights.trackPageView(pageSegmentName, "http://fabrikam.com/page.htm"); 
 
@@ -259,7 +259,7 @@ Application Insights をインストールしないでログ アダプターの 
 ソリューション エクスプローラーで、 `ApplicationInsights.config` を右クリックし、[ **Application Insights の更新**] を選択します。 Azure へのサインインを促すダイアログが表示されます。または、Application Insights のリソースを作成するか、既存のリソースを再利用します。 これで問題は修正されます。
 
 ### <a name="limits"></a>保持されるデータの量はどのくらいですか
-各アプリケーションで、1 秒あたり 500 イベントまでです。 イベントは&7; 日間保持されます。
+各アプリケーションで、1 秒あたり 500 イベントまでです。 イベントは 7 日間保持されます。
 
 ### <a name="some-of-my-events-or-traces-dont-appear"></a>マイ イベントまたはトレースの一部が表示されません
 アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。 [サンプリングの詳細については、こちらを参照してください。](app-insights-sampling.md)
