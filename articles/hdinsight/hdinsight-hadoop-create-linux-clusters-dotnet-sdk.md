@@ -30,7 +30,7 @@ ms.lasthandoff: 03/04/2017
 HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight を簡単に操作できる .NET クライアント ライブラリを提供します。 この記事では、.NET SDK を使用して Linux ベースの HDInsight クラスターを作成する方法について説明します。
 
 > [!IMPORTANT]
-> このドキュメントの手順では、worker ノードが&1; つあるクラスターを作成します。 クラスター作成または作成後の拡大で 32 以上の worker ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
+> このドキュメントの手順では、worker ノードが 1 つあるクラスターを作成します。 クラスター作成または作成後の拡大で 32 以上の worker ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
 >
 > ノードのサイズと関連コストに関する詳細については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 

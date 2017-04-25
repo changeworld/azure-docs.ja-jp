@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/7/2017
+ms.date: 4/13/2017
 ms.author: helaw
 translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 3ac5daa019beb7bada3a3a76e48387cd84ff0662
-ms.lasthandoff: 04/07/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: 28cc736704a9700845a6d2f53f4fbd06b8a81201
+ms.lasthandoff: 04/14/2017
 
 
 ---
@@ -35,7 +35,7 @@ This release provides new features for both tenants and administrators.
 * Isolated administrator and user [portals](azure-stack-manage-portals.md) and APIs provide enhanced security.
 * Use enhanced infrastructure management functionality, such as improved alerting.
 * Using the [Windows Azure Pack Connector](azure-stack-manage-windows-azure-pack.md), you can view and manage IaaS virtual machines that are hosted on Windows Azure Pack. For this preview release, try this scenario only in test environments (both Windows Azure Pack and Azure Stack). Additional configuration is required.
-* Azure Stack now supports multi-tenancy for scenarios where you need to provide IaaS and PaaS services to users outside of your Azure Active Directory domain.  For example, you may want to provide Azure Stack services to a partner company using their identities. You can configure Azure Stack to trust the other organization's identities, and enable users from that organization to sign up for subscriptions and consume services.  
+* Azure Stack now supports [multi-tenancy](azure-stack-enable-multitenancy.md) for scenarios where you need to provide IaaS and PaaS services to users outside of your Azure Active Directory domain.  For example, you may want to provide Azure Stack services to a partner company using their identities. You can configure Azure Stack to trust the other organization's identities, and enable users from that organization to sign up for subscriptions and consume services.  
 
 ## <a name="next-steps"></a>Next steps
 * [Understand Azure Stack POC architecture](azure-stack-architecture.md)      

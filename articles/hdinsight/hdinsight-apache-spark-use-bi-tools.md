@@ -193,7 +193,7 @@ Azure HDInsight で Apache Spark を使って生サンプル データセット�
      データの視覚化が、次のスクリーンショットのように変化します。
 
     ![視覚化](./media/hdinsight-apache-spark-use-bi-tools/hdispark.tableau.final.visual.png "視覚化")
-9. **[保存]** をクリックしてワークシートを保存します。 ダッシュボードを作成して&1; つまたは複数のシートを追加できます。
+9. **[保存]** をクリックしてワークシートを保存します。 ダッシュボードを作成して 1 つまたは複数のシートを追加できます。
 
 ## <a name="seealso"></a>関連項目
 * [概要: Azure HDInsight での Apache Spark](hdinsight-apache-spark-overview.md)

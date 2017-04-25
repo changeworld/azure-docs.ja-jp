@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 03/27/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: b575e92d2140ecc0e0f30186302e7733e08d0415
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 24ddf0d81e52960bd582861d324585b8ba0ca357
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -159,7 +159,7 @@ Azure Portal に移動し、作成したばかりの Web アプリを表示し�
 
 そのためには、[https://portal.azure.com](https://portal.azure.com) にサインインします。
 
-左側のメニューで **[App Service]** をクリックした後、Azure Web アプリの名前をクリックします。
+左側のメニューで **[App Services (App Services)]** をクリックした後、Azure Web アプリの名前をクリックします。
 
 ![Azure Web アプリへのポータル ナビゲーション](./media/app-service-web-get-started-dotnet/access-portal.png)
 

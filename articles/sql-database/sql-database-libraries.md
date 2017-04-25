@@ -16,14 +16,15 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: genemi
 translationtype: Human Translation
-ms.sourcegitcommit: fdbe5ff497b7acc9d8521b8ba1a016ae11bc69d2
-ms.openlocfilehash: 26140426eb2a5376af003248a0de6685999ac5a2
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: b42d2bd64dbaf44f1be85d687b27ffe47eb0db53
+ms.lasthandoff: 04/15/2017
 
 
 ---
 # <a name="connection-libraries-for-sql-database-and-sql-server"></a>SQL Database と SQL Server の接続ライブラリ
 
-このトピックでは、クライアント プログラムが Azure SQL Database または Microsoft SQL Server に接続するときに使用できる各ライブラリと*ドライバー*を示します。
+このトピックでは、クライアント プログラムが Azure SQL Database または Microsoft SQL Server に接続するときに使用できる各ライブラリと*ドライバー*を示します。 
 
 | 言語 | Platform | その他のリソース | ダウンロード |
 |:--- |:--- |:--- |:--- |
@@ -38,13 +39,10 @@ ms.openlocfilehash: 26140426eb2a5376af003248a0de6685999ac5a2
 ## <a name="related-links"></a>関連リンク
 
 - [SQL Server ドライバー](https://docs.microsoft.com/sql/connect/sql-server-drivers/)クライアントからの接続用
-- [.NET (C#) を使用して SQL Database に接続する](sql-database-develop-dotnet-simple.md) (ADO.NET)
-- [Node.js を使用して SQL Database に接続する](sql-database-develop-nodejs-simple.md)
-- [Python を使用して SQL Database に接続する](sql-database-develop-python-simple.md) (pymssql)
-- [Ruby を使用して SQL Database に接続する](sql-database-develop-ruby-simple.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
+- [.NET (C#) を使用して SQL Database に接続する](sql-database-connect-query-dotnet.md)
+- [PHP を使用して SQL Database に接続する](sql-database-connect-query-php.md)
+- [Node.js を使用して SQL Database に接続する](sql-database-connect-query-nodejs.md)
+- [Java を使用して SQL Database に接続する](sql-database-connect-query-java.md)
+- [Python を使用して SQL Database に接続する](sql-database-connect-query-python.md)
+- [Ruby を使用して SQL Database に接続する](sql-database-connect-query-ruby.md)
 

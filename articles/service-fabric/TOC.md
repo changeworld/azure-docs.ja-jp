@@ -5,7 +5,7 @@
 ## [アプリケーションのシナリオ](service-fabric-application-scenarios.md)
 ## [アーキテクチャ](service-fabric-architecture.md)
 ## [用語集](service-fabric-technical-overview.md)
-## [コンテンツ ロードマップ](service-fabric-content-roadmap.md)
+## [基本](service-fabric-content-roadmap.md)
 
 # 作業の開始
 ## 開発環境を設定する
@@ -17,7 +17,8 @@
 ### [Linux での Java](service-fabric-create-your-first-linux-application-with-java.md)
 ### [Linux での C#](service-fabric-create-your-first-linux-application-with-csharp.md)
 ## [ローカル クラスターへのアプリのデプロイ](service-fabric-get-started-with-a-local-cluster.md)
-## [スタンドアロン クラスターの作成](service-fabric-get-started-standalone-cluster.md)
+## [Azure で初めてのクラスターを作成する](service-fabric-get-started-azure-cluster.md)
+## [初めてのスタンドアロン クラスターを作成する](service-fabric-get-started-standalone-cluster.md)
 
 # 方法
 ## アプリケーションのビルド
@@ -124,7 +125,6 @@
 #### [アクセス制御](service-fabric-cluster-security-roles.md)
 #### [クラスターの構成](service-fabric-cluster-fabric-settings.md)
 #### [クラスター証明書の追加またはロールオーバー](service-fabric-cluster-security-update-certs-azure.md) 
-#### [Party Cluster を無料で試す](http://aka.ms/tryservicefabric)
 
 ### スタンドアロンのクラスター
 #### [デプロイの計画と準備](service-fabric-cluster-standalone-deployment-preparation.md)

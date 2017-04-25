@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 6ed35ca1b83f5f7221824d99817800c1e42e68c1
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: 51e4665b6372859021237144a0bf7f6763a2638b
+ms.lasthandoff: 04/14/2017
 
 
 ---
@@ -55,7 +55,7 @@ Azure Active Directory Domain Services では、管理対象ドメインでユ�
    > アクセス パネル ウィンドウに **[パスワードの変更]** オプションが表示されない場合は、組織で [Azure AD でのパスワード管理](../active-directory/active-directory-passwords-getting-started.md)を構成済みであることを確認します。
    >
    >
-4. **[パスワードの変更]** ページで既存の (古い) パスワードを入力し、新しいパスワードを入力して、それを確認します。 
+4. **[パスワードの変更]** ページで既存の (古い) パスワードを入力し、新しいパスワードを入力して、それを確認します。
 
     ![Azure AD Domain Services 用の仮想ネットワークを作成します。](./media/active-directory-domain-services-getting-started/user-change-password2.png)
 
@@ -64,7 +64,7 @@ Azure Active Directory Domain Services では、管理対象ドメインでユ�
 パスワードを変更すると、数分後に Azure Active Directory Domain Services で新しいパスワードを使用できるようになります。 また、さらに数分 (通常は約 20 分) 後には、新しく変更したパスワードを使用して、管理対象ドメインに参加しているコンピューターにサインインできるようになります。
 
 ## <a name="next-steps"></a>次のステップ
-* [自分のパスワードを更新する方法](../active-directory/active-directory-passwords-update-your-own-password.md#reset-your-password)
+* [自分のパスワードを更新する方法](../active-directory/active-directory-passwords-update-your-own-password.md#reset-my-password)
 * [Azure AD でのパスワード管理の概要](../active-directory/active-directory-passwords-getting-started.md)
 * [Azure Active Directory Domain Services とのパスワード同期を有効にする (同期された Azure AD テナントの場合)](active-directory-ds-getting-started-password-sync-synced-tenant.md)
 * [Azure Active Directory Domain Services で管理されているドメインを管理する](active-directory-ds-admin-guide-administer-domain.md)

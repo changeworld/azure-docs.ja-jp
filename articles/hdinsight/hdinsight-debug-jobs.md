@@ -38,7 +38,7 @@ HDInsight クラスターを作成すると、Linux ベースのクラスター�
 * ambariserverlog
 * ambariagentlog
 
-Windows ベースのクラスターの場合は、次の&3; つのテーブルが作成されます。
+Windows ベースのクラスターの場合は、次の 3 つのテーブルが作成されます。
 
 * setuplog: HDInsight クラスターのプロビジョニング/設定で発生したイベントと例外のログ。
 * hadoopinstalllog: クラスターに Hadoop をインストールする際に発生したイベントと例外のログ。 このテーブルは、カスタム パラメーターを使用して作成されたクラスターに関連した問題のデバッグに役立つことがあります。
@@ -271,7 +271,7 @@ Azure Portal から、HDInsight HBase クラスター名をクリックし、ク
 
 ### <a id="MoreThanOneHeadNode"></a>MoreThanOneHeadNode
 * **説明**: 無効なクラスター構成です。 ヘッド ノード構成が複数見つかりました。  
-* **対応策**: 構成を編集して、ヘッド ノードが&1; つだけ指定されるようにします。
+* **対応策**: 構成を編集して、ヘッド ノードが 1 つだけ指定されるようにします。
 
 ### <a id="OperationTimedOutRetryRequest"></a>OperationTimedOutRetryRequest
 * **説明**: 許容時間または最大試行回数内に操作を完了できませんでした。 要求を再試行してください。  
@@ -282,7 +282,7 @@ Azure Portal から、HDInsight HBase クラスター名をクリックし、ク
 * **対応策**: パラメーターの有効な値を指定します。
 
 ### <a id="PreClusterCreationValidationFailure"></a>PreClusterCreationValidationFailure
-* **説明**: クラスターの作成要求入力が&1; つ以上、無効です。 入力値が正しいことを確認して、要求を再試行してください。  
+* **説明**: クラスターの作成要求入力が 1 つ以上、無効です。 入力値が正しいことを確認して、要求を再試行してください。  
 * **対応策**: 入力値が正しいことを確認して、要求を再試行してください。
 
 ### <a id="RegionCapabilityNotAvailable"></a>RegionCapabilityNotAvailable

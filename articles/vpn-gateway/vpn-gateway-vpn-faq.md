@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/14/2017
+ms.date: 04/17/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 15ac382f72cab455246ffcc05f08c8aba5876c8f
-ms.openlocfilehash: c90bb4f41661aedec2bde53abe035fe9bcc80320
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 49aeb711de73bf967f330ec54385fb8bb36dd7ca
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -35,18 +35,18 @@ Windows PowerShell および Azure REST API を使用して複数のサイトに
 ### <a name="what-are-my-cross-premises-connection-options"></a>クロスプレミス接続にはどのようなオプションがありますか。
 次のようなクロスプレミス接続がサポートされています。
 
-* [サイト間接続](vpn-gateway-howto-site-to-site-resource-manager-portal.md) - IPsec (IKE v1 および IKE v2) 経由での VPN 接続。 この種類の接続には、VPN デバイスまたは RRAS が必要です。
-* [ポイント対サイト接続](vpn-gateway-howto-point-to-site-resource-manager-portal.md) – SSTP (Secure Socket トンネリング プロトコル) 経由での VPN 接続。 この接続では、VPN デバイスは不要です。
-* [VNet 間接続](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) - この種類の接続は、サイト間構成の場合と同じです。 VNet 間接続では IPsec (IKE v1 および IKE v2) 経由で VPN 接続を確立します。 VPN デバイスは不要です。
-* [マルチサイト接続](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) - これはサイト間構成の一種で、複数のオンプレミス サイトから仮想ネットワークに接続するものです。
-* [ExpressRoute 接続](../expressroute/expressroute-introduction.md) - ExpressRoute 接続では、パブリックなインターネットを経由せず、WAN から Azure に直接接続します。 詳細については、「[ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)」および「[ExpressRoute の FAQ](../expressroute/expressroute-faqs.md)」をご覧ください。
+* サイト間接続 - IPsec (IKE v1 および IKE v2) 経由での VPN 接続。 この種類の接続には、VPN デバイスまたは RRAS が必要です。 詳細については、[サイト間接続](vpn-gateway-howto-site-to-site-resource-manager-portal.md)に関するページを参照してください。
+* ポイント対サイト接続 – SSTP (Secure Socket トンネリング プロトコル) 経由での VPN 接続。 この接続では、VPN デバイスは不要です。 詳細については、[ポイント対サイト接続](vpn-gateway-howto-point-to-site-resource-manager-portal.md)に関するページを参照してください。
+* VNet 間接続 - この種類の接続は、サイト間構成の場合と同じです。 VNet 間接続では IPsec (IKE v1 および IKE v2) 経由で VPN 接続を確立します。 VPN デバイスは不要です。 詳細については、[VNet 間接続](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)に関するページを参照してください。
+* マルチサイト接続 - これはサイト間構成の一種で、複数のオンプレミス サイトから仮想ネットワークに接続するものです。 詳細については、[マルチサイト接続](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)に関するページを参照してください。
+* ExpressRoute 接続 - ExpressRoute 接続では、パブリックなインターネットを経由して VPN 接続するのではなく、WAN から Azure に直接接続します。 詳細については、「[ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)」および「[ExpressRoute の FAQ](../expressroute/expressroute-faqs.md)」をご覧ください。
 
 VPN Gateway の接続の詳細については、「[VPN Gateway について](vpn-gateway-about-vpngateways.md)」をご覧ください。
 
 ### <a name="what-is-the-difference-between-a-site-to-site-connection-and-point-to-site"></a>サイト間接続とポイント対サイト接続の違いを教えてください。
-**サイト間**構成は、オンプレミスの場所と Azure の間で行われます。 つまり、ルーティングの構成に従って、オンプレミスの場所に存在する任意のコンピューターと仮想ネットワーク内に存在する任意の仮想マシンやロール インスタンスを接続できます。 このオプションはクロスプレミス接続として常に使用可能で、ハイブリッド構成にも適しています。 この種類の接続は IPsec VPN アプライアンス (ハードウェア アプライアンスまたはソフト アプライアンス) に依存します。 なお、これらのアプライアンスはネットワーク境界にデプロイされている必要がありますこの種類の接続を作成するには、VPN ハードウェアと、外部に公開された IPv4 アドレスが必要です。
+**サイト間** (IPsec/IKE VPN トンネル) 構成は、オンプレミスの場所と Azure の間で行われます。 つまり、ルーティングとアクセス許可の構成に従って、オンプレミスの場所に存在する任意のコンピューターと仮想ネットワーク内に存在する任意の仮想マシンやロール インスタンスを接続できます。 このオプションはクロスプレミス接続として常に使用可能で、ハイブリッド構成にも適しています。 この種類の接続は IPsec VPN アプライアンス (ハードウェア デバイスまたはソフト アプライアンス) に依存します。このアプライアンスは、ネットワークの境界にデプロイされる必要があります。 この種類の接続を作成するには、NAT の内側にはない、外部に公開された IPv4 アドレスが必要です。
 
-**ポイント対サイト**構成では、任意の場所に存在する&1; 台のコンピューターから仮想ネットワーク内に存在する任意のデバイスに接続できます。 この接続では、Windows に組み込み済みの VPN クライアントを使用します。 ポイント対サイト構成の一部として、証明書と VPN クライアント構成パッケージをインストールします。このパッケージには、コンピューターを仮想ネットワーク内の任意の仮想マシンまたはロール インスタンスに接続できるようにする設定が含まれています。 これは仮想ネットワークに接続する場合には適していますが、オンプレミスに存在している場合は適していません。 また、このオプションは VPN ハードウェアにアクセスできない場合や外部に公開された IPv4 アドレスが存在しない場合にも便利ですが、このどちらでもサイト間接続が必須となります。
+**ポイント対サイト** (VPN over SSTP) 構成では、任意の場所に存在する 1 台のコンピューターから仮想ネットワーク内に存在する任意のデバイスに接続できます。 この接続では、Windows に組み込み済みの VPN クライアントを使用します。 ポイント対サイト構成の一部として、証明書と VPN クライアント構成パッケージをインストールします。このパッケージには、コンピューターを仮想ネットワーク内の任意の仮想マシンまたはロール インスタンスに接続できるようにする設定が含まれています。 これは仮想ネットワークに接続する場合には適していますが、オンプレミスに存在している場合は適していません。 また、このオプションは VPN ハードウェアにアクセスできない場合や外部に公開された IPv4 アドレスが存在しない場合にも便利ですが、このどちらでもサイト間接続が必須となります。
 
 VPN の種類がルート ベースのゲートウェイを使用してサイト間接続を作成すれば、サイト間接続とポイント対サイト接続の両方を同時に使用するように仮想ネットワークを構成できます。 VPN の種類がルート ベースのゲートウェイは、クラシック デプロイ モデルでは動的ゲートウェイと呼ばれます。
 
@@ -64,7 +64,7 @@ VPN ゲートウェイは仮想ネットワーク ゲートウェイの一種で
 ### <a name="do-i-need-a-gatewaysubnet"></a>'GatewaySubnet' は必要ですか。
 はい。 ゲートウェイ サブネットには、仮想ネットワーク ゲートウェイ サービスが使用する IP アドレスが含まれます。 仮想ネットワーク ゲートウェイを構成するには、VNet のゲートウェイ サブネットを作成する必要があります。 すべてのゲートウェイ サブネットを正常に動作させるには、'GatewaySubnet' という名前を付ける必要があります。 ゲートウェイ サブネットに他の名前を付けないでください。 また、ゲートウェイ サブネットには VM などをデプロイしないでください。
 
-ゲートウェイ サブネットを作成するときに、サブネットに含まれる IP アドレスの数を指定します。 ゲートウェイ サブネット内の IP アドレスは、ゲートウェイ サービスに割り当てられます。 一部の構成では、他の構成よりも多くの IP アドレスをゲートウェイ サービスに割り当てる必要があります。 ゲートウェイ サブネットには、将来の拡大や新しい接続構成の追加に対応できる十分な IP アドレスが含まれるようにしてください。 そのため、/29 のような小さいゲートウェイ サブネットを作成できますが、/28 以上 (/28、/27、/26 など) のゲートウェイ サブネットを作成することをお勧めします。 作成する構成の要件を調べて、ゲートウェイ サブネットがその要件を満たしていることを確認してください。
+ゲートウェイ サブネットを作成するときに、サブネットに含まれる IP アドレスの数を指定します。 ゲートウェイ サブネット内の IP アドレスは、ゲートウェイ サービスに割り当てられます。 一部の構成では、他の構成よりも多くの IP アドレスをゲートウェイ サービスに割り当てる必要があります。 ゲートウェイ サブネットには、将来の拡大や新しい接続構成の追加に対応できる十分な IP アドレスが含まれるようにしてください。 そのため、/29 のような小さいゲートウェイ サブネットを作成できますが、/27 以上 (/27、/26、/25 など) のゲートウェイ サブネットを作成することをお勧めします。 作成する構成の要件を調べて、ゲートウェイ サブネットがその要件を満たしていることを確認してください。
 
 ### <a name="can-i-deploy-virtual-machines-or-role-instances-to-my-gateway-subnet"></a>ゲートウェイ サブネットに仮想マシンやロール インスタンスをデプロイできますか。
 いいえ。
@@ -107,11 +107,23 @@ VPN ゲートウェイは、基本的に、1 つの NIC が顧客のプライベ
 詳細については、「[VPN Gateway の設定について](vpn-gateway-about-vpn-gateway-settings.md)」をご覧ください。
 
 ## <a name="site-to-site-connections-and-vpn-devices"></a>サイト間接続と VPN デバイス
-### <a name="what-should-i-consider-when-selecting-a-vpn-device"></a>VPN デバイスを選択する場合の考慮事項について教えてください。
-Microsoft では、デバイス ベンダーと協力して複数の標準的なサイト間 VPN デバイスを検証しました。 互換性が確認されている VPN デバイス、およびそれに対応する構成の手順またはサンプル、およびデバイスの仕様のリストは [こちら](vpn-gateway-about-vpn-devices.md)で確認できます。 互換性が確認されているデバイス ファミリに属するすべてのデバイスも仮想ネットワークで動作します。 VPN デバイスを構成するには、デバイスの構成サンプル、または適切なデバイス ファミリに対応するリンクを参照してください。
 
-### <a name="what-do-i-do-if-i-have-a-vpn-device-that-isnt-in-the-known-compatible-device-list"></a>互換性が確認されているデバイスのリストに記載されていない VPN デバイスを所有している場合はどうすればよいですか。
-互換性が確認されている VPN デバイスのリストにお持ちのデバイスが記載されていない場合、そのデバイスを VPN 接続で使用するには、そのデバイスが IPsec/IKE 構成オプションのほか、 [こちらのリスト](vpn-gateway-about-vpn-devices.md)に記載されているパラメーターをサポートしていることを確認する必要があります。 最小要件を満たしていれば、そのデバイスは VPN ゲートウェイで動作します。 詳細なサポートと構成手順については、デバイスの製造元にお問い合わせください。
+### <a name="what-should-i-consider-when-selecting-a-vpn-device"></a>VPN デバイスを選択する場合の考慮事項について教えてください。
+Microsoft では、デバイス ベンダーと協力して複数の標準的なサイト間 VPN デバイスを検証しました。 互換性が確認されている VPN デバイス、それに対応する構成の手順またはサンプル、デバイスの仕様の一覧は [VPN デバイス](vpn-gateway-about-vpn-devices.md)に関する記事で確認できます。 互換性が確認されているデバイス ファミリに属するすべてのデバイスも仮想ネットワークで動作します。 VPN デバイスを構成するには、デバイスの構成サンプル、または適切なデバイス ファミリに対応するリンクを参照してください。
+
+### <a name="where-can-i-find-configuration-settings-for-vpn-devices"></a>VPN デバイスの構成設定はどこにありますか。
+
+デバイスの構成設定へのリンクについては、「[検証済みの VPN デバイス](vpn-gateway-about-vpn-devices.md#devicetable)」を参照してください。 デバイスの構成に関するリンクは、入手できる範囲で記載しています。 最新の構成情報については必ず、デバイスの製造元にご確認ください。
+
+VPN デバイスを構成する前に、使用する VPN デバイスに関して、[デバイスの互換性に関する既知の問題](vpn-gateway-about-vpn-devices.md#known)がないかどうかを確認してください。
+
+### <a name="how-do-i-edit-vpn-device-configuration-samples"></a>VPN デバイス構成サンプルは、どのように編集すればよいですか。
+
+デバイス構成サンプルの編集については、[サンプルの編集](vpn-gateway-about-vpn-devices.md#editing)に関するセクションを参照してください。
+
+### <a name="where-do-i-find-ipsec-and-ike-parameters"></a>IPsec および IKE パラメーターはどこにありますか。
+
+IPsec/IKE のパラメーターについては、[パラメーター](vpn-gateway-about-vpn-devices.md#ipsec)に関するセクションを参照してください。
 
 ### <a name="why-does-my-policy-based-vpn-tunnel-go-down-when-traffic-is-idle"></a>トラフィックがアイドル状態のときにポリシー ベースの VPN トンネルがダウンするのはなぜですか。
 これは、ポリシー ベースの (静的ルーティングとも呼ばれる) VPN ゲートウェイの予期される動作です。 トンネル経由のトラフィックが 5 分以上アイドル状態になると、トンネルは破棄されます。 どちらかの方向のトラフィック フローが開始されると、トンネルはすぐに再び確立されます。
@@ -121,11 +133,11 @@ Windows Server 2012 ルーティングとリモート アクセス (RRAS) サー
 
 その他のソフトウェア VPN ソリューションについては、業界標準の IPsec の実装に準拠していればマイクロソフトのゲートウェイで動作します。 構成とサポートの手順については、ソフトウェアのベンダーにお問い合わせください。
 
-## <a name="a-namep2sapoint-to-site-connections"></a><a name="P2S"></a>ポイント対サイト接続
+## <a name="P2S"></a>ポイント対サイト接続
 
 [!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-point-to-site-faq-include.md)]
 
-## <a name="a-namev2vmultiavnet-to-vnet-and-multi-site-connections"></a><a name="V2VMulti"></a>VNet 間接続とマルチサイト接続
+## <a name="V2VMulti"></a>VNet 間接続とマルチサイト接続
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq-include](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
 
@@ -152,7 +164,7 @@ Windows Server 2012 ルーティングとリモート アクセス (RRAS) サー
 ### <a name="can-i-connect-a-virtual-network-with-ipsec-vpns-to-my-expressroute-circuit"></a>IPsec VPN を使用している仮想ネットワークを自社の ExpressRoute 回線に接続できますか。
 はい、これはサポートされています。 詳細については、 [共存する ExpressRoute とサイト間 VPN の接続の構成](../expressroute/expressroute-howto-coexist-classic.md)を参照してください。
 
-## <a name="a-namebgpabgp"></a><a name="bgp"></a>BGP
+## <a name="bgp"></a>BGP
 [!INCLUDE [vpn-gateway-bgp-faq-include](../../includes/vpn-gateway-bpg-faq-include.md)]
 
 ## <a name="cross-premises-connectivity-and-vms"></a>クロスプレミス接続と VM

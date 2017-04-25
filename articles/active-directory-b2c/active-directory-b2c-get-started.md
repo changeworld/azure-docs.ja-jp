@@ -22,7 +22,7 @@ ms.lasthandoff: 03/09/2017
 
 ---
 # <a name="azure-active-directory-b2c-create-an-azure-ad-b2c-tenant"></a>Azure Active Directory B2C: Azure AD B2C テナントを作成する
-Microsoft Azure Active Directory (Azure AD) B2C の使用を開始するには、この記事で説明する&4; つの手順に従います。
+Microsoft Azure Active Directory (Azure AD) B2C の使用を開始するには、この記事で説明する 4 つの手順に従います。
 
 ## <a name="step-1-sign-up-for-an-azure-subscription"></a>手順 1: Azure サブスクリプションにサインアップする
 既に Azure サブスクリプションがある場合は、この手順を省略できます。 ない場合は、 [Azure サブスクリプション](../active-directory/sign-up-organization.md) にサインアップし、Azure AD B2C にアクセスできるようにします。

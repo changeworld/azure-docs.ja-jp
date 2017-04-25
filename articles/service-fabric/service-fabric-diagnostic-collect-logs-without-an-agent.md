@@ -13,10 +13,11 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/18/2017
-ms.author: karolz@microsoft.com
+ms.author: karolz
 translationtype: Human Translation
 ms.sourcegitcommit: d7f7b157d8d6fb54259c8f23d5005509f4eb7872
 ms.openlocfilehash: 22acb6afbfbfff753e71b5e821385798cc76ffdd
+ms.lasthandoff: 01/19/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.openlocfilehash: 22acb6afbfbfff753e71b5e821385798cc76ffdd
 
     * 診断データ収集の構成は、サービス構成のごく一部に過ぎません。 アプリケーションのその他の部分と常に "同期を保つ" ことは簡単です。
     * アプリケーションごと、またはサービスごとの構成を簡単に実現できます。
-        * エージェントに基づくログ収集には、通常、診断エージェントを別にデプロイして構成する必要があります。そのため、管理者の作業とエラーの潜在的な原因が増えます。 多くの場合、仮想マシン (ノード) ごとに許可されるエージェントのインスタンスは&1; つだけであり、エージェントの構成はそのノードで実行されているすべてのアプリケーションとサービスの間で共有されます。 
+        * エージェントに基づくログ収集には、通常、診断エージェントを別にデプロイして構成する必要があります。そのため、管理者の作業とエラーの潜在的な原因が増えます。 多くの場合、仮想マシン (ノード) ごとに許可されるエージェントのインスタンスは 1 つだけであり、エージェントの構成はそのノードで実行されているすべてのアプリケーションとサービスの間で共有されます。 
 
 * *柔軟性*
    
@@ -175,8 +176,3 @@ namespace Stateless1
 <!--Image references-->
 [1]: ./media/service-fabric-diagnostics-collect-logs-without-an-agent/eventflow-nugets.png
 [2]: ./media/service-fabric-diagnostics-collect-logs-without-an-agent/ai-traces.png
-
-
-<!--HONumber=Jan17_HO3-->
-
-

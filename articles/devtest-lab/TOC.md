@@ -19,6 +19,7 @@
 ### [コスト管理の構成](devtest-lab-configure-cost-management.md)
 ### [仮想ネットワークの構成](devtest-lab-configure-vnet.md)
 ### [共有 IP アドレスについて](devtest-lab-shared-ip.md)
+### [テンプレートと PowerShell を使用したラボの変更の自動化](devtest-lab-use-arm-and-powershell-for-lab-resources.md)
 
 ## アーティファクトの管理
 ### [アーティファクト リポジトリの追加](devtest-lab-add-artifact-repo.md)

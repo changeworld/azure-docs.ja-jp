@@ -22,7 +22,7 @@ ms.lasthandoff: 01/26/2017
 
 ---
 # <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>Azure AD Connect で使用するインストールの種類の選択
-Azure AD Connect には、簡易とカスタマイズの&2; 種類のインストールが用意されています。 このトピックは、どちらのオプションでインストールするかを決める際に役立ちます。
+Azure AD Connect には、簡易とカスタマイズの 2 種類のインストールが用意されています。 このトピックは、どちらのオプションでインストールするかを決める際に役立ちます。
 
 ## <a name="express"></a>Express
 簡易は一般的なオプションで、新規インストールの約 90% で使用されます。 これは、最も一般的な顧客シナリオで使用できる構成を提供できるように設計されました。
@@ -58,13 +58,13 @@ Azure AD Connect には、簡易とカスタマイズの&2; 種類のインス�
 - ドメインまたは OU ベースのフィルター処理だけでなく、グループ ベースでフィルター処理する予定がある。
 
 ## <a name="upgrade-from-dirsync"></a>DirSync からのアップグレード
-DirSync を使用している場合は、[DirSync からのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)に関するページの手順に従って、既存の構成をアップグレードします。 次の異なる&2; つのアップグレード オプションがあります。
+DirSync を使用している場合は、[DirSync からのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)に関するページの手順に従って、既存の構成をアップグレードします。 次の異なる 2 つのアップグレード オプションがあります。
 
 - インプレース アップグレード。Connect を同じサーバーにインストールします。
 - 並列デプロイ。既存の DirSync サーバーを稼働させながら、Connect を新しいサーバーにインストールします。
 
 ## <a name="upgrade-from-azure-ad-sync"></a>Azure AD Sync からのアップグレード
-Azure AD Sync を使用している場合は、Connect を新しいバージョンにアップグレードする場合と[同じ手順](active-directory-aadconnect-upgrade-previous-version.md)でアップグレードできます。 次の異なる&2; つのアップグレード オプションがあります。
+Azure AD Sync を使用している場合は、Connect を新しいバージョンにアップグレードする場合と[同じ手順](active-directory-aadconnect-upgrade-previous-version.md)でアップグレードできます。 次の異なる 2 つのアップグレード オプションがあります。
 
 - インプレース アップグレード。Connect を同じサーバーにインストールします。
 - スウィング移行。既存の Azure AD Sync サーバーを稼働させながら、Connect を新しいサーバーにインストールします。

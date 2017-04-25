@@ -6,7 +6,7 @@
 * [MySQL レプリケーション クラスターでバックアップされる WordPress Web アプリのデプロイ](/documentation/templates/wordpress-mysql-replication/)
 * [Percona Cluster を使用した独自のマスター/マスター MySQL クラスターの構築](/documentation/templates/mysql-ha-pxc/)と[クラスター管理方法の詳細](https://github.com/fanjeffrey/axiom.articles/tree/master/pxc)
 * [マスター/スレーブ構成を使用して MySQL レプリケーション クラスターでバックアップされる WordPress のデプロイ](/documentation/templates/mysql-replication/)
-* [ProjectNami によって管理される SQL Azure DB でバックアップされる WordPress アプリのデプロイ](/marketplace/partners/projectnami/projectnami/)
+* [ProjectNami によって管理される SQL Azure DB でバックアップされる WordPress アプリのデプロイ](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/ProjectNami.ProjectNami?tab=Overview)
 
 ## <a name="troubleshooting-wordpress-application"></a>WordPress アプリケーションのトラブルシューティング
 * [WordPress アプリのトラブルシューティング方法](https://sunithamk.wordpress.com/2014/09/04/wordpress-troubleshooting-techniques-on-azure-websites/)
@@ -24,9 +24,4 @@
 * [SuperCache プラグインを使用して WordPress アプリを高速化する方法](http://ruslany.net/2008/12/speed-up-wordpress-on-iis-70/)
 * [IIS 出力キャッシュを使用してキャッシュを提供する方法](http://blogs.msdn.com/b/brian_swan/archive/2011/06/08/performance-tuning-php-apps-on-windows-iis-with-output-caching.aspx)
 * [静的コンテンツのブラウザー キャッシュを有効にする方法](http://www.iis.net/configreference/system.webserver/staticcontent)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

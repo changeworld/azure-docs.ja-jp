@@ -73,7 +73,7 @@ IoT Hub は次のデータを返します。デバイスはこのデータを使
 > [!NOTE]
 > このセクションでは、IoT Hub から SAS URI を 受信するための廃止された機能について説明しています。 前述の POST メソッドを使用する必要があります。
 
-IoT Hub には、ファイルのアップロードをサポートする&2; つの REST エンドポイントがあります。1 つは、ストレージの SAS URI を取得します。もう&1; つは、アップロードの完了を IoT Hub に通知します。 デバイスは、`{iot hub}.azure-devices.net/devices/{deviceId}/files/{filename}` で IoT Hub に GET を送信することで、ファイルのアップロード処理を開始します。 IoT Hub は、アップロードするファイルに固有の SAS URI と、アップロードの完了後に使用する相関 ID を返します。
+IoT Hub には、ファイルのアップロードをサポートする 2 つの REST エンドポイントがあります。1 つは、ストレージの SAS URI を取得します。もう 1 つは、アップロードの完了を IoT Hub に通知します。 デバイスは、`{iot hub}.azure-devices.net/devices/{deviceId}/files/{filename}` で IoT Hub に GET を送信することで、ファイルのアップロード処理を開始します。 IoT Hub は、アップロードするファイルに固有の SAS URI と、アップロードの完了後に使用する相関 ID を返します。
 
 ## <a name="notify-iot-hub-of-a-completed-file-upload"></a>IoT Hub へのファイルのアップロード完了の通知
 

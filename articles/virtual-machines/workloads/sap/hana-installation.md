@@ -3,7 +3,7 @@ title: "SAP HANA on Azure (L インスタンス) への SAP HANA のインスト
 description: "SAP HANA on Azure (L インスタンス) への SAP HANA のインストール方法を説明します。"
 services: virtual-machines-linux
 documentationcenter: 
-author: RicksterCDN
+author: hermanndms
 manager: timlt
 editor: 
 ms.service: virtual-machines-linux
@@ -15,9 +15,9 @@ ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: fa842efd99718be7fa9eaf8aac8030c32cbceeec
-ms.openlocfilehash: 0d998b5347a9da6dd209b0ba106792ab5c34164d
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: 61d191b5b2cc18731caacb6d192b851b6b49b22c
+ms.lasthandoff: 04/13/2017
 
 
 ---

@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/11/2017
 ms.author: yushwang;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 03ba7f0df69da073fd876fc4c06121952e594a02
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: d7c4c5b118dade39bd47ae2c7836157589fcb45a
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -33,21 +33,21 @@ VPN ゲートウェイを使用する Site-to-Site (S2S) クロスプレミス V
 
 ###<a name="items-to-note-when-viewing-the-tables"></a>表を確認するときの注意事項:
 
-* Azure VPN ゲートウェイ関連の用語が変更されています。 機能上の変更はありませんが、名前のみが変更されています。
+* Azure VPN ゲートウェイ関連の用語が変更されています。 機能の変更はありません。 名前のみが変更されています。
   * 静的ルーティング = PolicyBased
   * 動的ルーティング = RouteBased
 * 高性能 VPN ゲートウェイと RouteBased VPN ゲートウェイの仕様は、特に記載がない限り同じです。 たとえば、RouteBased VPN ゲートウェイと互換性がある検証済みの VPN デバイスは、Azure 高性能 VPN ゲートウェイとも互換性があります。
 
 > [!NOTE]
-> サイト間接続を構成するときには、VPN デバイスに公開 IPv4 IP アドレスが必要です。                                                                                                                                                                               
+> サイト間接続を構成するときには、VPN デバイスに公開 IPv4 IP アドレスが必要です。
+>                
 
-
-## <a name="devicetable"></a>検証済みの VPN デバイス
+## <a name="devicetable"></a>検証済みの VPN デバイスとデバイス構成ガイド
 Microsoft では、デバイス ベンダーと協力して一連の標準的な VPN デバイスを検証しました。 以下の一覧に含まれているデバイス ファミリ内のすべてのデバイスは、Azure VPN ゲートウェイで動作します。 「 [VPN Gateway について](vpn-gateway-about-vpngateways.md) 」を参照して、構成するソリューションで作成する必要があるゲートウェイの種類を確認してください。
 
-VPN デバイスを構成するには、適切なデバイス ファミリに対応するリンクを参照してください。  構成方法へのリンクは、入手できる範囲で記載しています。 VPN デバイスのサポートについては、デバイスの製造元に問い合わせてください。
+VPN デバイスを構成するには、適切なデバイス ファミリに対応するリンクを参照してください。 構成方法へのリンクは、入手できる範囲で記載しています。 VPN デバイスのサポートについては、デバイスの製造元に問い合わせてください。
 
-|**ベンダー名**          |**デバイス ファミリ**     |**OS の最小バージョン** |**PolicyBased** |**RouteBased** |
+|**ベンダー名**          |**デバイス ファミリ**     |**OS の最小バージョン** |**PolicyBased の構成手順** |**RouteBased の構成手順** |
 | ---                | ---                  | ---                   | ---            | ---           |
 | A10 Networks, Inc. |Thunder CFW           |ACOS 4.1.1             |互換性なし  |[構成ガイド](https://www.a10networks.com/resources/deployment-guides/a10-thunder-cfw-ipsec-vpn-interoperability-azure-vpn-gateways)|
 | Allied Telesis     |AR シリーズ VPN ルーター |2.9.2                  |近日対応予定     |互換性なし  |
@@ -81,7 +81,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 ## <a name="editing"></a>デバイス構成のサンプルの編集
 提供されている VPN デバイス構成のサンプルをダウンロードしたら、一部の値を使用している環境の設定を反映した値に置換する必要があります。
 
-###<a name="to-edit-a-sample"></a>サンプルを編集するには:
+### <a name="to-edit-a-sample"></a>サンプルを編集するには:
 
 1. メモ帳を使用してサンプルを開きます。
 2. お使いの環境に関連する値を含む <*テキスト*> 文字列をすべて検索して置き換えます。 < と > を必ず含めてください。 名前を指定する場合、選択する名前は一意である必要があります。 コマンドが機能しない場合は、デバイスの製造元のドキュメントを参照してください。
@@ -106,7 +106,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 > 
 >
 
-以下の表で使われている用語について:
+以下の表では、次のようになっています。
 
 * SA = セキュリティ アソシエーション (Security Association)
 * IKE フェーズ 1 は "メイン モード" と呼ばれることもあります。
@@ -185,7 +185,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 >
 >
 
-###<a name="feb-16-2017"></a>2017 年 2 月 16 日
+### <a name="feb-16-2017"></a>2017 年 2 月 16 日
 
 Azure ルートベースの VPN 用の **Palo Alto Networks の 7.1.4 より前のバージョンのデバイス**: Palo Alto Networks の PAN-OS のバージョンが 7.1.4 より前の VPN デバイスを使用している場合、Azure ルートベースの VPN ゲートウェイへの接続の問題が発生したときは次の手順を実行してください。
 

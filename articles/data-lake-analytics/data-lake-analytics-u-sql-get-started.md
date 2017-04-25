@@ -142,7 +142,7 @@ WHERE 句では [C# ブール式](https://msdn.microsoft.com/library/6a71f45d.as
         WHERE Start >= DateTime.Parse("2012/02/16") AND Start <= DateTime.Parse("2012/02/17");
 
     OUTPUT @rs1   
-        TO "/output/SearchLog-transform-datatime.csv"
+        TO "/output/SearchLog-transform-datetime.csv"
         USING Outputters.Csv();
 
  >[!NOTE]

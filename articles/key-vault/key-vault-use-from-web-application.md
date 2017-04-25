@@ -46,7 +46,7 @@ Key Vault にアクセスする Web アプリケーションは、Azure Active D
 このチュートリアルは、Azure 上での Web アプリケーション作成の基本を理解している Web 開発者向けに設計されています。 Azure Web Apps の詳細については、 [Web Apps の概要](../app-service-web/app-service-web-overview.md)に関するページを参照してください。
 
 ## <a id="packages"></a>NuGet パッケージの追加
-Web アプリケーションでインストールしておく必要のあるパッケージは&2; つあります。
+Web アプリケーションでインストールしておく必要のあるパッケージは 2 つあります。
 
 * Active Directory 認証ライブラリ: Azure Active Directory と対話してユーザー ID を管理するためのメソッドが含まれています。
 * Azure Key Vault ライブラリ: Azure Key Vault と対話するためのメソッドが含まれています。
@@ -60,7 +60,7 @@ Web アプリケーションでインストールしておく必要のあるパ�
 
 
 ## <a id="webconfig"></a>web.config の変更
-次のように、web.config ファイルに追加する必要のある&3; つのアプリケーション設定があります。
+次のように、web.config ファイルに追加する必要のある 3 つのアプリケーション設定があります。
 
     <!-- ClientId and ClientSecret refer to the web application registration with Azure Active Directory -->
     <add key="ClientId" value="clientid" />
@@ -105,7 +105,7 @@ Azure Active Directory からアクセス トークンを取得するコード�
 > 
 
 ## <a id="appstart"></a>アプリケーション起動時のシークレットの取得
-ここで、Key Vault API を呼び出してシークレットを取得するコードが必要になります。 次のコードは、それが必要になる前に呼び出されれば、どこに配置してもかまいません。 ここでは、このコードを Global.asax の Application Start イベントに配置しました。これにより、コードは起動時に&1; 回実行され、アプリケーションでシークレットを使用できるようになります。
+ここで、Key Vault API を呼び出してシークレットを取得するコードが必要になります。 次のコードは、それが必要になる前に呼び出されれば、どこに配置してもかまいません。 ここでは、このコードを Global.asax の Application Start イベントに配置しました。これにより、コードは起動時に 1 回実行され、アプリケーションでシークレットを使用できるようになります。
 
     //add these using statements
     using Microsoft.Azure.KeyVault;
@@ -220,7 +220,7 @@ StoreLocation は LocalMachine ではなく CurrentUser であることに注意
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetAccessToken));
 
 
-**Azure ポータルで証明書を Web アプリに追加する** 証明書を Web アプリに追加する手順は、簡単な&2; 段階のプロセスです。 まず Azure ポータルに移動し、Web アプリに移動します。 Web アプリの [設定] ブレードで、[カスタム ドメインおよび SSL] のエントリをクリックします。 開いたブレードで、先ほど作成した証明書 KVWebApp.pfx をアップロードし、pfx のパスワードを覚えているかどうかを確認できます。
+**Azure ポータルで証明書を Web アプリに追加する** 証明書を Web アプリに追加する手順は、簡単な 2 段階のプロセスです。 まず Azure ポータルに移動し、Web アプリに移動します。 Web アプリの [設定] ブレードで、[カスタム ドメインおよび SSL] のエントリをクリックします。 開いたブレードで、先ほど作成した証明書 KVWebApp.pfx をアップロードし、pfx のパスワードを覚えているかどうかを確認できます。
 
 ![Azure ポータルでの Web アプリへの証明書の追加][2]
 
@@ -228,7 +228,7 @@ StoreLocation は LocalMachine ではなく CurrentUser であることに注意
 
 Web アプリに証明書を追加する方法の詳細については、 [Azure Websites アプリケーションでの証明書の使用](https://azure.microsoft.com/blog/2014/10/27/using-certificates-in-azure-websites-applications/)
 
-**証明書をシークレットとして Key Vault に追加する** 証明書を Web Apps サービスに直接アップロードするのではなく、Key Vault にシークレットとして保存しておき、そこからデプロイすることができます。 これは&2; 段階のプロセスとなっており、「 [Deploying Azure Web App Certificate through Key Vault (Azure Web アプリの証明書を Key Vault 経由でデプロイする)](https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/)
+**証明書をシークレットとして Key Vault に追加する** 証明書を Web Apps サービスに直接アップロードするのではなく、Key Vault にシークレットとして保存しておき、そこからデプロイすることができます。 これは 2 段階のプロセスとなっており、「 [Deploying Azure Web App Certificate through Key Vault (Azure Web アプリの証明書を Key Vault 経由でデプロイする)](https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/)
 
 ## <a id="next"></a>次のステップ
 プログラミング リファレンスについては、 [Azure Key Vault C# クライアント API リファレンス](https://msdn.microsoft.com/library/azure/dn903628.aspx)に関するページを参照してください。

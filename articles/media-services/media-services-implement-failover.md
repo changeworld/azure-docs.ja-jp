@@ -57,7 +57,7 @@ ms.lasthandoff: 03/15/2017
 > 
 
 ## <a name="prerequisites"></a>前提条件
-* 新規または既存の Azure サブスクリプションで作成した&2; つの Media Services アカウント。 「[Media Services アカウントの作成方法](media-services-portal-create-account.md)」を参照してください。
+* 新規または既存の Azure サブスクリプションで作成した 2 つの Media Services アカウント。 「[Media Services アカウントの作成方法](media-services-portal-create-account.md)」を参照してください。
 * オペレーティング システム: Windows 7、Windows Server 2008 R2、Windows 8。
 * .NET Framework 4.5 または .NET Framework 4。
 * Visual Studio 2010 SP1 以降のバージョン (Professional、Premium、Ultimate、または Express)。
@@ -944,7 +944,7 @@ ms.lasthandoff: 03/15/2017
 
 
 ## <a name="next-steps"></a>次のステップ
-これで、Traffic Manager を使用して&2; つのデータ センター間で要求をルーティングできるので、障害時のフェールオーバーが可能になりました。
+これで、Traffic Manager を使用して 2 つのデータ センター間で要求をルーティングできるので、障害時のフェールオーバーが可能になりました。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

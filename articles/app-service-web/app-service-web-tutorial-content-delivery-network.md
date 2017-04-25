@@ -9,9 +9,9 @@ ms.topic: hero-article
 ms.service: app-service-web
 manager: erikre
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: a12eab1f7bc4177f659771d58a58f749507c994c
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 8194e669f943a6c47f02ae0d2a55e0e720420489
+ms.lasthandoff: 04/19/2017
 
 ---
 # <a name="connect-a-web-app-to-a-content-delivery-network"></a>Web アプリを Content Delivery Network に接続する
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/12/2017
 
 ## <a name="step-2---create-a-cdn-profile"></a>手順 2 - CDN プロファイルを作成する
 
-左側のナビゲーションで、[`+ New`] ボタンをクリックし、**[Web + モバイル]** をクリックします。 [Web + モバイル] カテゴリで、**[CDN]** を選択します。
+左側のナビゲーションで、**[+ 新規]** ボタンをクリックし、**[Web + モバイル]** をクリックします。 [Web + モバイル] カテゴリで、**[CDN]** を選択します。
 
 **[名前]**、**[場所]**、**[リソース グループ]**、**[価格レベル]** を指定し、**[作成]** をクリックします。
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 04/12/2017
 
 ## <a name="step-3---create-a-cdn-endpoint"></a>手順 3 - CDN エンドポイントを作成する
 
-検索ボックスの横にあるコマンドから [`+ Endpoint`] をクリックします。エンドポイント作成ブレードが開きます。
+検索ボックスの横にあるコマンドから **[+ エンドポイント]** をクリックします。エンドポイント作成ブレードが開きます。
 
 **[名前]**、**[配信元の種類]**、**[配信元のホスト名]** を指定し、**[追加]** をクリックします。
 

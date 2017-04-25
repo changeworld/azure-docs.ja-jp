@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: "Arduino 開発ツール, IoT 開発, IoT ソフトウェア, モノのインターネット ソフトウェア, Mac での Git のインストール, Mac での Node.js のインストール"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-intel-edison-kit-node-get-started
 ms.assetid: fb6742be-2825-4524-89f7-8ccb7e7f1de1
 ms.service: iot-hub
 ms.devlang: nodejs

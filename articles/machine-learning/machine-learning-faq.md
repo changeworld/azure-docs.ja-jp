@@ -18,7 +18,7 @@ ms.author: garye
 translationtype: Human Translation
 ms.sourcegitcommit: 21d2c20a3ac8dc4fee0680028d6c004c80a3ae38
 ms.openlocfilehash: 2835e4e8be2a11b659118f836d53c84a2c021263
-ms.lasthandoff: 03/02/2017
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -76,7 +76,7 @@ REST API を使用して Web サービスにアクセスするには、いくつ
 ### <a name="import-and-export-data-for-machine-learning"></a>Machine Learning 用データのインポートとエクスポート
 **Machine Learning はどのようなデータ ソースをサポートしていますか。**
 
-Machine Learning Studio の実験にデータをダウンロードする方法は&3; つあります。
+Machine Learning Studio の実験にデータをダウンロードする方法は 3 つあります。
 
 - ローカル ファイルをデータセットとしてアップロードする
 - モジュールを使用して、クラウド データ サービスからデータをインポートする
@@ -132,7 +132,7 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 
 **実験でいくつのモジュールを並列実行できますか。**  
 
-実験では最大&4; つのモジュールを並列実行できます。
+実験では最大 4 つのモジュールを並列実行できます。
 
 ### <a name="data-processing"></a>データ処理
 **実験内で対話的にデータを視覚化する (R の視覚化以上) 機能はありますか。**
@@ -152,7 +152,7 @@ Machine Learning Studio は、拡張性の高い強化された意思決定ツ�
 
 いいえ。ただし、Machine Learning Studio には、各アルゴリズムの結果を比較して問題に合ったアルゴリズムを決定できるさまざまな方法があります。
 
-**提供されているアルゴリズムから&1; つのアルゴリズムを選ぶ際のガイドラインはありますか。**
+**提供されているアルゴリズムから 1 つのアルゴリズムを選ぶ際のガイドラインはありますか。**
 
 [アルゴリズムの選択方法](machine-learning-algorithm-choice.md)」に関するページをご覧ください。
 
@@ -314,7 +314,7 @@ MSDN にも、Azure Machine Learning に関するコミュニティ フォーラ
 ## <a name="billing-questions"></a>課金に関する質問
 **Machine Learning ではどのように請求が行われますか。**
 
-Azure Machine Learning には、Machine Learning Studio と Machine Learning Web サービスという&2; つのコンポーネントがあります。
+Azure Machine Learning には、Machine Learning Studio と Machine Learning Web サービスという 2 つのコンポーネントがあります。
 
 Machine Learning Studio の評価中は、無料 (Free) の課金レベルをご利用いただけます。 この Free レベルでは、クラシック Web サービスを制限付きの容量でデプロイすることもできます。
 
@@ -335,7 +335,7 @@ Standard レベルでは、Machine Learning Studio で定義するワークス�
 
 **Azure Machine Learning に無料試用版はありますか。**
 
- Azure Machine Learning には、無料サブスクリプションのオプションが用意されています。詳細については、「[Machine Learning の価格](https://azure.microsoft.com/pricing/details/machine-learning/)」を参照してください。 Machine Learning Studio には、簡易評価用に&8; 時間の試用版が用意されています。[Machine Learning Studio](https://studio.azureml.net/?selectAccess=true&o=2) にサインインして入手できます。
+ Azure Machine Learning には、無料サブスクリプションのオプションが用意されています。詳細については、「[Machine Learning の価格](https://azure.microsoft.com/pricing/details/machine-learning/)」を参照してください。 Machine Learning Studio には、簡易評価用に 8 時間の試用版が用意されています。[Machine Learning Studio](https://studio.azureml.net/?selectAccess=true&o=2) にサインインして入手できます。
 
  さらに、Azure の無料試用版にサインアップすると、1 か月間すべての Azure サービスを試すことができます。 Azure 無料試用版の詳細については、「[Azure 無料アカウント FAQ](https://azure.microsoft.com/pricing/free-trial-faq/)」を参照してください。
 
@@ -389,7 +389,7 @@ Web サービスが使用中のプランを削除することはできません�
 
 **プランスのインスタンスはいくつ追加できますか?**
 
-開発/テスト価格レベルのインスタンスは、1 つのサブスクリプションにつき&1; つとなります。
+開発/テスト価格レベルのインスタンスは、1 つのサブスクリプションにつき 1 つとなります。
 
 Standard S1、Standard S2、Standard S3 レベルでは、必要なだけインスタンスを追加できます。
 
@@ -414,7 +414,7 @@ Standard S1、Standard S2、Standard S3 レベルでは、必要なだけイン�
 ### <a name="sign-up-for-new-resource-manager-based-web-services-plans"></a>新しい (Resource Manager ベースの) Web サービス プランへのサインアップ
 **プランにサインアップするにはどうすればよいですか?**
 
-課金プランの作成方法は&2; とおりあります。
+課金プランの作成方法は 2 とおりあります。
 
 Resource Manager ベースの Web サービスを最初にデプロイするときには、既存のプランを選択することも、新しいプランを作成することもできます。
 
@@ -430,7 +430,7 @@ Standard S1 レベルから開始して、サービスの使用状況を監視�
 
 **新しいプランはどのリージョンで利用できますか?**
 
-新しい課金プランは、新しい Web サービスがサポートされている&3; つの運用リージョンで利用できます。
+新しい課金プランは、新しい Web サービスがサポートされている 3 つの運用リージョンで利用できます。
 
 * 米国中南部
 * 西ヨーロッパ
@@ -469,7 +469,7 @@ BES ワークロードの場合も、同じ方法で課金されます。 ただ
 ### <a name="azure-machine-learning-free-and-standard-tier"></a>Azure Machine Learning の Free および Standard レベル
 **Azure Machine Learning の Free レベルには何が含まれますか?**
 
-Azure Machine Learning の Free レベルは、Azure Machine Learning Studio を深く体験していただくためのものです。 サインアップに必要なのは、Microsoft アカウントだけです。 Free レベルには、 [Microsoft アカウント](https://www.microsoft.com/account/default.aspx)1 つにつき&1; つの Azure Machine Learning Studio ワークスペースへの無料アクセスが含まれます。 このレベルでは、最大 10 GB のストレージを使用でき、モデルをステージング API として運用できます。 Free レベルのワークロードは SLA の対象外であり、開発や個人用の目的にのみ使用されます。 
+Azure Machine Learning の Free レベルは、Azure Machine Learning Studio を深く体験していただくためのものです。 サインアップに必要なのは、Microsoft アカウントだけです。 Free レベルには、 [Microsoft アカウント](https://www.microsoft.com/account/default.aspx)1 つにつき 1 つの Azure Machine Learning Studio ワークスペースへの無料アクセスが含まれます。 このレベルでは、最大 10 GB のストレージを使用でき、モデルをステージング API として運用できます。 Free レベルのワークロードは SLA の対象外であり、開発や個人用の目的にのみ使用されます。 
 
 Free レベルのワークスペースには次の制限事項があります。
 
@@ -520,7 +520,7 @@ Standard Machine Learning ワークスペースを作成するには、まず Az
 
 **Azure 無料試用版と Azure Machine Learning の Free レベルの違いは何ですか?**
 
-[Microsoft Azure 無料試用版](https://azure.microsoft.com/free/)では、任意の Azure サービスに&1; か月間適用できるクレジットを提供しています。 Azure Machine Learning の Free レベルは、特に非運用環境のワークロード用に Azure Machine Learning への継続的なアクセスを提供します。
+[Microsoft Azure 無料試用版](https://azure.microsoft.com/free/)では、任意の Azure サービスに 1 か月間適用できるクレジットを提供しています。 Azure Machine Learning の Free レベルは、特に非運用環境のワークロード用に Azure Machine Learning への継続的なアクセスを提供します。
 
 **Free レベルから Standard レベルへの実験の移行はどのように行いますか?**
 
@@ -545,7 +545,7 @@ Machine Learning サービスはマルチテナント サービスです。 バ�
 ### <a name="guest-access"></a>ゲスト アクセス
 **Azure Machine Learning Studio に対するゲスト アクセスとは何ですか?**
 
-ゲスト アクセスとは、機能が制限された試用版です。 費用をかけず、認証もなしで、Azure Machine Learning Studio で実験を作成して実行できます。 ゲスト セッションは非永続的で保存ができず、利用できる時間は&8; 時間に制限されます。 他にも、R と Python がサポートされていない、ステージング API がない、データセットのサイズとストレージの容量が制限されている、などの制限事項があります。 一方 Microsoft アカウントでサインインしたユーザーの場合は、前述した Machine Learning Studio の Free レベルへのフル アクセスが提供され、永続ワークスペースやさらに包括的な機能を使用できます。 [https://studio.azureml.net](https://studio.azureml.net) の **Get started (開始)** をクリックして **Guest Access (ゲスト アクセス)** または Sign In with Microsoft account (Microsoft アカウントでサインイン) を選択し、無料の Machine Learning の機能をお試しください。
+ゲスト アクセスとは、機能が制限された試用版です。 費用をかけず、認証もなしで、Azure Machine Learning Studio で実験を作成して実行できます。 ゲスト セッションは非永続的で保存ができず、利用できる時間は 8 時間に制限されます。 他にも、R と Python がサポートされていない、ステージング API がない、データセットのサイズとストレージの容量が制限されている、などの制限事項があります。 一方 Microsoft アカウントでサインインしたユーザーの場合は、前述した Machine Learning Studio の Free レベルへのフル アクセスが提供され、永続ワークスペースやさらに包括的な機能を使用できます。 [https://studio.azureml.net](https://studio.azureml.net) の **Get started (開始)** をクリックして **Guest Access (ゲスト アクセス)** または Sign In with Microsoft account (Microsoft アカウントでサインイン) を選択し、無料の Machine Learning の機能をお試しください。
 
 <!-- Module References -->
 [image-reader]: https://msdn.microsoft.com/library/azure/893f8c57-1d36-456d-a47b-d29ae67f5d84/

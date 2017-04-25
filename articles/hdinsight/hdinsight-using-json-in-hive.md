@@ -65,7 +65,7 @@ HDInsight の Hive を使用して JSON ファイルを処理および分析す�
 このチュートリアルでは、Hive コンソールを使用します。  Hive コンソールを開く手順については、「 [リモート デスクトップによる HDInsight での Hive と Hadoop の使用](hdinsight-hadoop-use-hive-remote-desktop.md)」をご覧ください。
 
 ## <a name="flatten-json-documents"></a>JSON ドキュメントの平坦化
-次のセクションで一覧表示されているメソッドでは、JSON ドキュメントが&1; 行で表示されている必要があります。 このため、JSON ドキュメントを文字列に平坦化する必要があります。 JSON ドキュメントがすでにフラット化されている場合、このステップをスキップして、JSON データの分析に関する次のセクションに直接進むことができます。
+次のセクションで一覧表示されているメソッドでは、JSON ドキュメントが 1 行で表示されている必要があります。 このため、JSON ドキュメントを文字列に平坦化する必要があります。 JSON ドキュメントがすでにフラット化されている場合、このステップをスキップして、JSON データの分析に関する次のセクションに直接進むことができます。
 
     DROP TABLE IF EXISTS StudentsRaw;
     CREATE EXTERNAL TABLE StudentsRaw (textcol string) STORED AS TEXTFILE LOCATION "wasb://processjson@hditutorialdata.blob.core.windows.net/";
@@ -97,7 +97,7 @@ SELECT ステートメントの出力を次に示します。
 ![JSON ドキュメントのフラット化。][image-hdi-hivejson-flatten]
 
 ## <a name="analyze-json-documents-in-hive"></a>Hive での JSON ドキュメントの分析
-Hive は、JSON ドキュメントに対してクエリを実行するための次の&3; つの異なるメカニズムを提供します。
+Hive は、JSON ドキュメントに対してクエリを実行するための次の 3 つの異なるメカニズムを提供します。
 
 * GET\_JSON\_OBJECT UDF (ユーザー定義関数) を使用する
 * JSON_TUPLE UDF を使用する
@@ -105,7 +105,7 @@ Hive は、JSON ドキュメントに対してクエリを実行するための�
 * Python またはその他の言語を使用して独自の UDF を作成する Hive を使用した独自の Python コードの実行については、[この記事][hdinsight-python]をご覧ください。
 
 ### <a name="use-the-getjsonobject-udf"></a>GET\_JSON_OBJECT UDF を使用する
-Hive には、ランタイム処理中に JSON クエリを実行できる [get json object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) という組み込み UDF があります。 このメソッドは&2; つの引数を取ります。テーブル名とメソッド名で、解析することが必要なフラット化された JSON ドキュメントと JSON フィールドが含まれます。 この UDF の動作を確認する例を見てみましょう。
+Hive には、ランタイム処理中に JSON クエリを実行できる [get json object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) という組み込み UDF があります。 このメソッドは 2 つの引数を取ります。テーブル名とメソッド名で、解析することが必要なフラット化された JSON ドキュメントと JSON フィールドが含まれます。 この UDF の動作を確認する例を見てみましょう。
 
 各学生の姓と名を取得します。
 
@@ -126,7 +126,7 @@ get-json_object UDF にはいくつかの制限があります。
 このため、Hive Wiki では json_tuple の使用が推奨されています。  
 
 ### <a name="use-the-jsontuple-udf"></a>JSON_TUPLE UDF を使用する
-Hive に備わっているもう&1; つの UDF に [json_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple) があります。これは、[get_ json _object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) よりもパフォーマンスに優れています。 このメソッドは、一連のキーと、JSON 文字列を取り、1 つの関数を使用して値のタプルを返します。 次のクエリでは、JSON ドキュメントから、学生 ID とグレードが返されます。
+Hive に備わっているもう 1 つの UDF に [json_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple) があります。これは、[get_ json _object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) よりもパフォーマンスに優れています。 このメソッドは、一連のキーと、JSON 文字列を取り、1 つの関数を使用して値のタプルを返します。 次のクエリでは、JSON ドキュメントから、学生 ID とグレードが返されます。
 
     SELECT q1.StudentId, q1.Grade
       FROM StudentsOneLine jt
@@ -140,7 +140,7 @@ Hive コンソールにおけるこのスクリプトの出力:
 JSON\_TUPLE では Hive で [lateral view](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) 構文が使用されます。この構文を使用すると、json\_tuple は UDT 関数を元のテーブルの各行に適用して仮想テーブルを作成できます。  複雑な JSON では LATERAL VIEW が繰り返し使用されるため、処理が難しくなります。 また、JSON_TUPLE では入れ子になった JSON を処理できません。
 
 ### <a name="use-custom-serde"></a>カスタム SerDe を使用する
-SerDe は、入れ子になった JSON ドキュメントを解析するのに最適です。これを使用して JSON スキーマを定義し、そのスキーマを使用してドキュメントを解析できます。 このチュートリアルでは、[rcongiu](https://github.com/rcongiu) によって作成された、最も広く使用されている SerDe の&1; つを使用します。
+SerDe は、入れ子になった JSON ドキュメントを解析するのに最適です。これを使用して JSON スキーマを定義し、そのスキーマを使用してドキュメントを解析できます。 このチュートリアルでは、[rcongiu](https://github.com/rcongiu) によって作成された、最も広く使用されている SerDe の 1 つを使用します。
 
 **カスタムの SerDe を使用するには:**
 
@@ -237,7 +237,7 @@ Hive コンソールの出力を次に示します。
 
 
 ## <a name="summary"></a>概要
-結論として、Hive で選択する JSON 演算子の種類は、シナリオによって異なります。 JSON ドキュメントが単純で、検索するのが&1; つのフィールドのみの場合には、Hive UDF get\_json\_object を選択できます。 検索対象のキーが複数ある場合には、json_tuple を使用できます。 入れ子になったドキュメントの場合、JSON SerDe を使用する必要があります。
+結論として、Hive で選択する JSON 演算子の種類は、シナリオによって異なります。 JSON ドキュメントが単純で、検索するのが 1 つのフィールドのみの場合には、Hive UDF get\_json\_object を選択できます。 検索対象のキーが複数ある場合には、json_tuple を使用できます。 入れ子になったドキュメントの場合、JSON SerDe を使用する必要があります。
 
 その他の関連記事については、次を参照してください。
 

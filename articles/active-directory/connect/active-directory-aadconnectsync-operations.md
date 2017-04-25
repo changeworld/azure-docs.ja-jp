@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: 9faa28a86c9427a83e8ca4485ebcdc8e8dacd93d
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 0288d70bb5c0094b5c738b2d0c597e4c6d38a5aa
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -59,7 +59,7 @@ ms.lasthandoff: 03/03/2017
 プライマリ サーバーにカスタム変更を行い、構成をステージング サーバーと比較する場合は、[Azure AD Connect 構成データベース構造の解析](https://github.com/Microsoft/AADConnectConfigDocumenter)を使用します。
 
 #### <a name="import-and-synchronize"></a>インポートおよび同期
-1. **[コネクタ]** を選択します。種類が "**Active Directory Domain Services**" の&1; つ目のコネクタを選択します。 **[Run (実行)]**、**[Full import (フル インポート)]**、**[OK]** の順にクリックします。 この種類のすべてのコネクタに対して、これらの手順を繰り返します。
+1. **[コネクタ]** を選択します。種類が "**Active Directory Domain Services**" の 1 つ目のコネクタを選択します。 **[Run (実行)]**、**[Full import (フル インポート)]**、**[OK]** の順にクリックします。 この種類のすべてのコネクタに対して、これらの手順を繰り返します。
 2. 種類が " **Azure Active Directory (Microsoft)**" のコネクタを選択します。 **[Run (実行)]**、**[Full import (フル インポート)]**、**[OK]** の順にクリックします。
 3. [Connectors (コネクタ)] タブが選択されたままであることを確認します。 種類が "**Active Directory Domain Services**" の各コネクタに対し、**[Run (実行)]**、**[Delta Synchronization (差分同期)]**、**[OK]** の順にクリックします。
 4. 種類が " **Azure Active Directory (Microsoft)**" のコネクタを選択します。 **[Run (実行)]**、**[Delta Synchronization (差分同期)]**、**[OK]** の順にクリックします。
@@ -69,7 +69,7 @@ ms.lasthandoff: 03/03/2017
 #### <a name="verify"></a>確認
 1. コマンド プロンプトを起動し、`%ProgramFiles%\Microsoft Azure AD Sync\bin` に移動します。
 2. `csexport "Name of Connector" %temp%\export.xml /f:x` を実行します。同期サービスにコネクタの名前があることを確認できます。 Azure AD の場合は、"contoso.com - AAD" のような名前が表示されます。
-3. セクション [CSAnalyzer](#Appendix-CSAnalyzer) から `csanalyzer.ps1` という名前のファイルに PowerShell スクリプトをコピーします。
+3. セクション [CSAnalyzer](#appendix-csanalyzer) から `csanalyzer.ps1` という名前のファイルに PowerShell スクリプトをコピーします。
 4. PowerShell ウィンドウを開き、PowerShell スクリプトを作成したフォルダーを参照します。
 5. `.\csanalyzer.ps1 -xmltoimport %temp%\export.xml` を実行します。
 6. **processedusers1.csv** という名前のファイルが生成されます。このファイルは、Microsoft Excel で開くことができます。 Azure AD にエクスポートするためにステージングされたすべての変更は、このファイル内にあります。

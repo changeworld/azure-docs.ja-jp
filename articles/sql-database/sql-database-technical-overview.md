@@ -17,9 +17,9 @@ ms.workload: data-management
 ms.date: 03/17/2017
 ms.author: shkurhek
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: c505844cc2b7c745a1106b3c446833fb206ca98a
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: a139b97e20685a5ced513c1fd180a74e91c497a7
+ms.lasthandoff: 04/15/2017
 
 ---
 # <a name="what-is-sql-database-introduction-to-sql-database"></a>SQL Database とは SQL Database の概要
@@ -35,7 +35,7 @@ Azure CLI と PowerShell の各種サンプルについては、以下のペー�
  - [Azure SQL Database 用の Azure PowerShell サンプル](sql-database-powershell-samples.md)
 
 ## <a name="adjust-performance-and-scale-without-downtime"></a>ダウンタイムなしでのパフォーマンスの調整とスケール
-SQL Database サービスには、Basic、Standard、Premium という&3; つのサービス レベルが用意されています。 各サービス階層では、軽量のデータベース ワークロードから重量のデータベース ワークロードに至るまでサポートできるように、 [さまざまなレベルのパフォーマンスと機能](sql-database-service-tiers.md) を提供しています。 最初にアプリを月数ドルの小規模データベースでビルドし、後でいつでもソリューションのニーズに合わせて手動またはプログラムで[サービス レベルを変更](sql-database-service-tiers.md)することができます。 その際に、アプリにも顧客にも、ダウンタイムは発生しません。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができ、必要なときに必要な分のリソースにのみ課金されます。
+SQL Database サービスには、Basic、Standard、Premium、および Premium RS という 3 つのサービス レベルが用意されています。 各サービス階層では、軽量のデータベース ワークロードから重量のデータベース ワークロードに至るまでサポートできるように、 [さまざまなレベルのパフォーマンスと機能](sql-database-service-tiers.md) を提供しています。 最初にアプリを月数ドルの小規模データベースでビルドし、後でいつでもソリューションのニーズに合わせて手動またはプログラムで[サービス レベルを変更](sql-database-service-tiers.md)することができます。 その際に、アプリにも顧客にも、ダウンタイムは発生しません。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができ、必要なときに必要な分のリソースにのみ課金されます。
 
 ## <a name="elastic-pools-to-maximize-resource-utilization"></a>リソース使用率を最大化するためのエラスティック プール
 特に使用パターンが比較的予測可能である場合、多くのビジネスとアプリにおいて、単一データベースを作成し、要求に応じてパフォーマンスを調整する能力は十分です。 しかし、使用パターンが予測できない場合、コストおよびビジネス モデルを管理するのが難しくなる可能性があります。 [エラスティック プール](sql-database-elastic-pool.md)は、この問題を解決するように設計されています。 概念は単純です。 パフォーマンス リソースを個々のデータベースではなくプールに割り当て、課金は単一のデータベースのパフォーマンスではなくプールの全体的なパフォーマンス リソースに対して行われます。 エラスティック プールを使用すると、リソースの需要が変動しても、データベース パフォーマンスの調整に気を配る必要がなくなります。 プールされたデータベースは、必要に応じて、エラスティック プールのパフォーマンス リソースを使用します。 しかし、プールされたデータベースの使用は、プールの上限を超えることはありません。したがって、個々のデータベースの使用状況が予測できなくても、コストが予測可能なことに変わりはありません。 さらに、[プールに対してデータベースの追加および削除を行う](sql-database-elastic-pool-manage-portal.md)ことで、完全に設定予算内で、アプリケーションを数個のデータベースから何千ものデータベースに及ぶ範囲でスケーリングすることができます。 また、プール内のデータベースが使用できるリソースの下限と上限を制御して、プール内のいずれかのデータベースがプールのすべてのリソースを使用してしまわないようにしたり、プールされているすべてのデータベースに最小限のリソースが保証されるようにしたりすることもできます。 エラスティック プールを使用する SaaS アプリケーションの設計パターンの詳細については、「 [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)」を参照してください。
@@ -61,6 +61,6 @@ SQL Server は、アクセスの制限、データの保護、および監視ア
 
 * 単一データベースとエラスティック プールのコストの比較と計算ツールについては、[価格に関するページ](https://azure.microsoft.com/pricing/details/sql-database/)を参照してください。
 * [エラスティック プール](sql-database-elastic-pool.md)について学習します。
-* [最初のデータベースを作成する](sql-database-get-started.md)ことによって作業を開始します。
+* [最初のデータベースを作成する](sql-database-get-started-portal.md)ことによって作業を開始します。
 * 初めてのアプリを C#、Java、Node.js、PHP、Python、Ruby で作成します。「[SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)」を参照してください。
 

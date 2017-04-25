@@ -49,7 +49,7 @@ API アプリの API 定義 URL は、[リソース エクスプローラー](ht
 Visual Studio を使用して API アプリを作成すると、API 定義のエンドポイントは、自動的に、その API アプリのベース URL に `/swagger/docs/v1`が追加されたものに設定されます。 これは既定の URL で、ASP.NET Web API プロジェクトの動的に生成された Swagger メタデータを提供するために [Swashbuckle](https://www.nuget.org/packages/Swashbuckle) NuGet パッケージで使用されます。 
 
 ## <a name="code-generation"></a>コードの生成
-Azure API アプリに Swagger を統合する利点の&1; つは、自動コード生成です。 生成されたクライアント クラスにより、API アプリを呼び出すコードの記述が容易になります。
+Azure API アプリに Swagger を統合する利点の 1 つは、自動コード生成です。 生成されたクライアント クラスにより、API アプリを呼び出すコードの記述が容易になります。
 
 API アプリのクライアント コードは、Visual Studio を使用して生成するか、コマンド ラインから生成することができます。 Visual Studio で ASP.NET Web API プロジェクトのクライアント クラスを生成する方法については、 [API Apps と ASP.NET の使用](app-service-api-dotnet-get-started.md#codegen)に関するページを参照してください。 サポートされているすべての言語のコマンド ラインからこの操作を実行する方法については、GitHub.com の [Azure/autorest](https://github.com/azure/autorest) リポジトリにある readme ファイルを参照してください。
 

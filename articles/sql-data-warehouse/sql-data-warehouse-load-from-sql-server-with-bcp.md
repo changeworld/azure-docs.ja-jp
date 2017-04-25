@@ -80,7 +80,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 
-## <a name="2-create-a-source-data-file"></a>手順&2;.ソース データ ファイルを作成する
+## <a name="2-create-a-source-data-file"></a>手順 2.ソース データ ファイルを作成する
 メモ帳を開き、データの以下の行を新しいテキスト ファイルにコピーして、このファイルをローカルの一時ディレクトリに保存します (C:\Temp\DimDate2.txt)。 このデータは ASCII 形式です。
 
 ```

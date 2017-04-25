@@ -31,7 +31,7 @@ ms.lasthandoff: 03/10/2017
 
 * Azure アカウント。[無料アカウント](https://azure.microsoft.com/free)を作成できます。
 * 既に定義され、Azure サブスクリプションに関連付けられている[統合アカウント](logic-apps-enterprise-integration-create-integration-account.md)。 Encode AS2 Message コネクタを使用するには、統合アカウントが必要です。
-* 統合アカウントで既に定義されている&2; つ以上の[パートナー](logic-apps-enterprise-integration-partners.md)
+* 統合アカウントで既に定義されている 2 つ以上の[パートナー](logic-apps-enterprise-integration-partners.md)
 * 統合アカウントで既に定義されている [AS2 契約](logic-apps-enterprise-integration-as2.md)
 
 ## <a name="encode-as2-messages"></a>AS2 メッセージをエンコードする

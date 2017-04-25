@@ -18,7 +18,7 @@ ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
 ms.sourcegitcommit: 7adde91586f5fbbffd0aeaf0efb0810cc891ac0b
 ms.openlocfilehash: ed204c466c5cfb60e5ba250b9dacb2524ca384eb
-ms.lasthandoff: 03/02/2017
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -32,7 +32,7 @@ Azure IoT Hub へようこそ。 この記事では、Azure IoT Hub の概要と
 * デバイス接続イベントおよびデバイス ID 管理イベントの詳細な監視を実現します。
 * 最も一般的な言語とプラットフォームのデバイスのライブラリが含まれます。
 
-[IoT Hub と Event Hubs の比較][lnk-compare]に関する記事では、この&2; つのサービスの主な違いについて説明し、IoT ソリューションで IoT Hub を使用する利点を示しています。
+[IoT Hub と Event Hubs の比較][lnk-compare]に関する記事では、この 2 つのサービスの主な違いについて説明し、IoT ソリューションで IoT Hub を使用する利点を示しています。
 
 Azure と IoT Hub で IoT ソリューションをセキュリティ保護する方法の詳細については、「[モノのインターネットの徹底的なセキュリティ][lnk-security-ground-up]」を参照してください。
 
@@ -66,7 +66,7 @@ Azure IoT Hub では、メッセージング、ファイル転送、要求/応�
 * **広範なデバイス ライブラリ**。 [Azure IoT device SDK][lnk-device-sdks] は、さまざまな言語とプラットフォーム (多くの Linux ディストリビューション、Windows、リアルタイム オペレーティング システムでは C) で使用でき、サポートされています。 Azure IoT デバイス SDK はまた、C#、Java、JavaScript など管理対象言語に対応しています。
 * **IoT プロトコルと機能拡張**。 ソリューションでデバイス ライブラリを使用できない場合、IoT Hub は、デバイスで MQTT v3.1.1、HTTP 1.1、または AMQP 1.0 プロトコルをネイティブに使用できるようにするパブリック プロトコルを公開します。 また、以下の方法で IoT Hub を拡張して、カスタム プロトコルをサポートすることもできます。
   
-  * IoT Hub で認識される&3; つのプロトコルのいずれかにカスタム プロトコルを変換するフィールド ゲートウェイを、[Azure IoT Gateway SDK][lnk-gateway-sdk] で作成します。 
+  * IoT Hub で認識される 3 つのプロトコルのいずれかにカスタム プロトコルを変換するフィールド ゲートウェイを、[Azure IoT Gateway SDK][lnk-gateway-sdk] で作成します。 
   * クラウドで実行されるオープン ソース コンポーネントである [Azure IoT プロトコル ゲートウェイ][protocol-gateway]をカスタマイズします。
 * **スケール**。 Azure IoT Hub は、デバイスの数百万単位での同時接続、および毎秒数百万単位のイベントに対応できます。
 

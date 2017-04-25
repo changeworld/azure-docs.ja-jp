@@ -15,18 +15,18 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/17/2017
+ms.date: 04/17/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: ff5d156ab2b701233c4cdbf08e3d6e517c01b9fb
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 5b623c78f8b8eac846c5ca244f1e0b25ee4f400f
+ms.lasthandoff: 04/19/2017
 
 
 ---
 # <a name="azure-sql-database-use-visual-studio-code-to-connect-and-query-data"></a>Azure SQL Database: Visual Studio Code を使って接続とデータの照会を行う
 
-[Visual Studio Code](https://code.visualstudio.com/docs) は、Linux、macOS、Windows で使用できるグラフィカル コード エディターです。Microsoft SQL Server、Azure SQL Database、SQL Data Warehouse のデータを照会するための [mssql 拡張機能](https://aka.ms/mssql-marketplace)など、各種の拡張機能をサポートします。 このクイック スタートでは、Visual Studio Code を使って Azure SQL データベースに接続し、Transact-SQL ステートメントを使ってデータベース内のデータを照会、挿入、更新、削除する方法について説明します。
+[Visual Studio Code](https://code.visualstudio.com/docs) は、Linux、macOS、Windows で使用できるグラフィカル コード エディターです。Microsoft SQL Server、Azure SQL Database、SQL Data Warehouse のデータを照会するために、[mssql 拡張機能](https://aka.ms/mssql-marketplace)など、各種の拡張機能をサポートしています。 このクイック スタートでは、Visual Studio Code を使って Azure SQL データベースに接続し、Transact-SQL ステートメントを使ってデータベース内のデータを照会、挿入、更新、削除する方法について説明します。
 
 このクイック スタートでは、次のクイック スタートで作成されたリソースが出発点として使用されます。
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 04/12/2017
 ## <a name="configure-vs-code-mac-os-only"></a>VS コードの構成 (Mac OS のみ)
 
 ### <a name="mac-os"></a>**Mac OS**
-macOS では、mssql 拡張機能で使用される DotNet Core の前提条件として、OpenSSL をインストールする必要があります。 ご使用のターミナルを開き、次のコマンドを入力して、**brew** と **OpenSSL*** をインストールします。 
+macOS では、mssql 拡張機能で使用される DotNet Core の前提条件として、OpenSSL をインストールする必要があります。 使用するターミナルを開き、次のコマンドを入力して、**brew** と **OpenSSL** をインストールします。 
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -55,9 +55,11 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 
 1. [Azure ポータル](https://portal.azure.com/)にログインします。
 2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
-3. そのデータベースの Azure Portal ページの **[要点]** ウィンドウで、後でこのクイック スタートで使用する**サーバー名**を見つけてコピーします。
+3. データベースの **[概要]** ページで、次の図に示すように、完全修飾サーバー名を確認します。 サーバー名をポイントすると、**[コピーするにはクリックします]** オプションが表示されます。
 
-    <img src="./media/sql-database-connect-query-vscode/connection-information.png" alt="connection information" style="width: 780px;" />
+   ![接続情報](./media/sql-database-connect-query-ssms/connection-information.png) 
+
+4. Azure SQL Database サーバーのログイン情報を忘れた場合は、[SQL データベース サーバー] ページに移動して、サーバー管理者名を表示し、必要に応じてパスワードをリセットします。 
 
 ## <a name="set-language-mode-to-sql"></a>言語モードを SQL に設定
 
@@ -65,17 +67,22 @@ Visual Studio Code で言語モードを **[SQL]** に設定し、mssql コマ�
 
 1. 新しい Visual Studio Code ウィンドウを開きます。 
 
-2. **⌘ + K キーを押して M キー** (Mac の場合) または **Ctrl + K キーを押して M キー** (Windows の場合) を押し、「**SQL**」と入力して **Enter** キーを押すと、言語モードが SQL に設定されます。 
+2. ステータス バーの右下隅の **[プレーン テキスト]** をクリックします。
+3. 表示された **[言語モードの選択]** ドロップダウン メニューで「**SQL**」と入力し、**Enter** キーを押して、言語モードを SQL に設定します。 
 
-<img src="./media/sql-database-connect-query-vscode/vscode-language-mode.png" alt="SQL language mode" style="width: 780px;" />
+   ![SQL 言語モード](./media/sql-database-connect-query-vscode/vscode-language-mode.png)
 
-## <a name="connect-to-the-server"></a>サーバーへの接続
+## <a name="connect-to-your-database-in-the-sql-database-logical-server"></a>SQL Database 論理サーバーのデータベースに接続する
 
 Visual Studio Code を使用して、Azure SQL Database サーバーに対する接続を確立します。
 
+> [!IMPORTANT]
+> 続行する前に、サーバー、データベース、およびログイン情報が準備できていることを確認します。 接続プロファイル情報の入力を開始した後は、Visual Studio Code からフォーカスを移動すると、接続プロファイルの作成をやり直さなければならなくなります。
+>
+
 1. VS Code で、**Ctrl + Shift + P** キー (または **F1** キー) を押してコマンド パレットを開きます。
 
-2. 「**sqlcon**」と入力し、**Enter** キーを押して、言語を **SQL** に設定します。
+2. 「**sqlcon**」と入力して **Enter** キーを押します。
 
 3. **Enter** キーを押して **[接続プロファイルの作成]** を選択します。 これで、SQL Server インスタンスの接続プロファイルが作成されます。
 
@@ -97,7 +104,7 @@ Visual Studio Code を使用して、Azure SQL Database サーバーに対する
 
 6. ステータス バーで接続を確認します。
 
-   <img src="./media/sql-database-connect-query-vscode/vscode-connection-status.png" alt="Connection status" style="width: 780px;" />
+   ![接続の状態](./media/sql-database-connect-query-vscode/vscode-connection-status.png)
 
 ## <a name="query-data"></a>データのクエリを実行する
 
@@ -114,7 +121,7 @@ Visual Studio Code を使用して、Azure SQL Database サーバーに対する
 
 2. **Ctrl + Shift + E** キーを押して、Product と ProductCategory のテーブルからデータを取得します。
 
-    <img src="./media/sql-database-connect-query-vscode/query.png" alt="Query" style="width: 780px;" />
+    ![クエリ](./media/sql-database-connect-query-vscode/query.png)
 
 ## <a name="insert-data"></a>データを挿入する
 

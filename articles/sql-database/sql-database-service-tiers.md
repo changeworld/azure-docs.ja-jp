@@ -9,7 +9,7 @@ manager: jhubbard
 editor: 
 ms.assetid: f5c5c596-cd1e-451f-92a7-b70d4916e974
 ms.service: sql-database
-ms.custom: overview
+ms.custom: resources
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,15 +17,15 @@ ms.workload: data-management
 wms.date: 03/06/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
-ms.openlocfilehash: 827394be9485685388879c1eb4cee4d79ef9fe51
-ms.lasthandoff: 04/07/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 85b7336958c90b477eea8ea185a69bab2bd87a79
+ms.lasthandoff: 04/15/2017
 
 
 ---
 # <a name="sql-database-options-and-performance-understand-whats-available-in-each-service-tier"></a>SQL Database のオプションとパフォーマンス: 各サービス レベルで使用できる内容について理解する
 
-[Azure SQL Database](sql-database-technical-overview.md) には、**Basic**、**Standard**、**Premium**、**Premium RS** の 4 つのサービス レベルが用意されています。 各サービス レベルには、さまざまなワークロードに対応するために、いくつかのパフォーマンス レベルが用意されています。 パフォーマンス レベルが高くなるほど提供されるリソースが追加され、スループットが段階的に高くなるように設計されています。 ダウンタイムを発生させることなく、サービス レベルとパフォーマンス レベルは動的に変更できます。 Basic、Standard、Premium のサービス レベルは、いずれも稼働時間の SLA が 99.99% で、柔軟なビジネス継続性のオプション、セキュリティ機能、時間単位の課金体系が用意されています。 Premium RS レベルでは、SLA が少ないにも関わらず、Premium レベルと同じレベルのパフォーマンス、セキュリティ機能およびビジネス継続性機能が用意されています。
+[Azure SQL Database](sql-database-technical-overview.md) には、**Basic**、**Standard**、**Premium**、**Premium RS** の 4 つのサービス レベルが用意されています。 各サービス レベルには、さまざまなワークロードに対応するために、いくつかのパフォーマンス レベルが用意されています。 パフォーマンス レベルが高くなるほど提供されるリソースが追加され、スループットが段階的に高くなるように設計されています。 ダウンタイムを発生させることなく、サービス レベルとパフォーマンス レベルは動的に変更できます。 Basic、Standard、Premium、および Premium RS のサービス レベルは、いずれも稼働時間の SLA が 99.99% で、柔軟なビジネス継続性のオプション、セキュリティ機能、時間単位の課金体系が用意されています。 Premium RS レベルでは、SLA が少ないにも関わらず、Premium レベルと同じレベルのパフォーマンス、セキュリティ機能およびビジネス継続性機能が用意されています。
 
 > [!IMPORTANT]
 > Premium RS のデータベースは、Premium または Standard の各データベースよりも少ない冗長コピーで実行されます。 そのため、サービスで障害が発生した場合は、5 分以内にバックアップからデータベースを復旧する必要があります。
@@ -61,7 +61,7 @@ ms.lasthandoff: 04/07/2017
 最小限のサービス レベルを決定したら、データベースのパフォーマンス レベル (DTU 数) を決定できるようになります。 多くの場合、出発点として Standard S2 および S3 というパフォーマンス レベルが適しています。 CPU または IO の要件が高いデータベースの場合は、Premium のパフォーマンス レベルが出発点として適しています。 Premium では、より多くの CPU が提供されるため、最も高い Standard パフォーマンス レベルと比較して 10 倍超える IO から始まります。
 
 ## <a name="single-database-service-tiers-and-performance-levels"></a>Single Database サービス階層とパフォーマンス レベル
-単一データベースでは、各サービス レベル内に複数のパフォーマンス レベルがあります。 [Azure Portal](sql-database-manage-single-databases-portal.md)、[PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md)、[Transact-SQL](sql-database-manage-single-databases-tsql.md)、C#、および REST API を使用して、ワークロードの需要に最も合ったレベルを選択できる柔軟性があります。 
+単一データベースでは、各サービス レベル内に複数のパフォーマンス レベルがあります。 Azure Portal、[PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md)、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-database)、C#、および REST API を使用して、ワークロードの需要に最も合ったレベルを選択できる柔軟性があります。  
 
 ホストされるデータベースの数にかかわらず、データベースは所定のリソースを取得します。データベースの期待されるパフォーマンス特性には影響しません。
 
@@ -73,7 +73,7 @@ ms.lasthandoff: 04/07/2017
 
 ## <a name="scaling-up-or-scaling-down-a-single-database"></a>1 つのデータベースのスケールアップとスケールダウン
 
-最初にサービス レベルとパフォーマンス レベルを選んだ後、実際の使用感に基づいて、1 つのデータベースを動的にスケールアップまたはスケールダウンすることができます。 スケールアップまたはスケールダウンする必要がある場合は、[Azure Portal](sql-database-manage-single-databases-portal.md)、[PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md)、[Transact-SQL](sql-database-manage-single-databases-tsql.md)、C#、および REST API を使用してデータベースの階層を簡単に変更することができます。 
+最初にサービス レベルとパフォーマンス レベルを選んだ後、実際の使用感に基づいて、1 つのデータベースを動的にスケールアップまたはスケールダウンすることができます。 スケールアップまたはスケールダウンする必要がある場合は、Azure Portal、[PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md)、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-database)、C#、および REST API を使用してデータベースのレベルを簡単に変更することができます。 
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player]
 >
@@ -87,10 +87,6 @@ ms.lasthandoff: 04/07/2017
 * Premium サービス階層からダウングレードするときは、最初に geo レプリケーション リレーションシップをすべて終了する必要があります。 「 [Azue SQL Database を障害から回復する](sql-database-disaster-recovery.md) 」に記載されている手順に従って、プライマリ データベースとアクティブなセカンダリ データベース間のレプリケーション プロセスを停止できます。
 * サービス階層によって、提供されている復元サービスは異なります。 ダウングレードすると、特定の時点に復元する機能を使えなくなったり、バックアップの保存期間が短くなったりする可能性があります。 詳細については、「 [Azure SQL Database のバックアップと復元](sql-database-business-continuity.md)」を参照してください。
 * データベースに対する新しいプロパティは、変更が完了するまで適用されません。
-
-> [!IMPORTANT]
-> 詳細な手順については、[Azure Portal での単一データベースの管理](sql-database-manage-single-databases-portal.md)、[PowerShell を使用した単一データベースの管理](scripts/sql-database-monitor-and-scale-database-powershell.md)、[Transact-SQL を使用した単一のデータベースの管理](sql-database-manage-single-databases-tsql.md)に関する記事をそれぞれ参照してください。
->
 
 ## <a name="elastic-pool-service-tiers-and-performance-in-edtus"></a>エラスティック プール サービス階層と eDTU のパフォーマンス
 
@@ -127,7 +123,7 @@ P11/P15 データベースを作成するときに、1 TB (既定値) または 
 
 サポート対象のリージョンにある既存の P11 と P15 のデータベースでは、ストレージの最大サイズを 4 TB に増やすことができます。 この操作は、Azure Portal、PowerShell、または Transact-SQL で実行できます。 次のコードは、ALTER DATABASE コマンドを使用した最大サイズの変更の例を示しています。
 
- ```t-sql
+ ```sql
 ALTER DATABASE <myDatabaseName> 
    MODIFY (MAXSIZE = 4096 GB);
 ```
@@ -144,13 +140,13 @@ ALTER DATABASE <myDatabaseName>
 - アクティブ geo レプリケーションのシナリオの場合:
    - geo レプリケーションのリレーションシップの設定: プライマリ データベースが P11 または P15 の場合は、セカンダリも P11 または P15 である必要があります。つまり、下位のパフォーマンス レベルは、4 TB をサポートできないため、セカンダリとして拒否されます。
    - geo レプリケーションのリレーションシップでのプライマリ データベースのアップグレード: プライマリ データベースで最大サイズを 4 TB に変更すると、セカンダリ データベースでも同じ変更がトリガーされます。 プライマリに対する変更を有効にするには、両方のアップグレードが正常に完了する必要があります。 4 TB のオプションに関するリージョンの制限が適用されます (上記参照)。 4 TB をサポートしていないリージョンにセカンダリが存在する場合、プライマリはアップグレードされません。
-- P11-4TB/P15-4TB データベースの読み込みに Import/Export サービスを使用することはサポートされていません。 SqlPackage.exe を使用して、データを[インポート](sql-database-import-sqlpackage.md)および[エクスポート](sql-database-export.md)してください。
+- P11-4TB/P15-4TB データベースの読み込みに Import/Export サービスを使用することはサポートされていません。 SqlPackage.exe を使用して、データを[インポート](sql-database-import.md)および[エクスポート](sql-database-export.md)してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [エラスティック プール](sql-database-elastic-pool-guidance.md)と、[エラスティック プールの価格とパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)の詳細を確認してください。
 * [エラスティック プールの監視、管理、およびサイズ変更](sql-database-elastic-pool-manage-portal.md)と[単一データベースのパフォーマンスの監視](sql-database-single-database-monitor.md)を行う方法を確認してください。
-* SQL Database の階層について理解できたら、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)で実際に試してみてください。また、[初めて SQL データベースを作成するにあたっての方法](sql-database-get-started.md)を確認してください。
+* SQL Database の階層について理解できたら、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)で実際に試してみてください。また、[初めて SQL データベースを作成するにあたっての方法](sql-database-get-started-portal.md)を確認してください。
 * 移行のシナリオの場合は、[DTU Calculator](http://dtucalculator.azurewebsites.net/) を使用して必要な DTU 数を見積もります。 
 
 

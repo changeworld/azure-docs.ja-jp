@@ -23,7 +23,7 @@
 ### [VM プランまたは SKU の削除](./cloud-partner-portal-delete-an-offer.md)
 ### [クラウド パートナー ポータルへの移行](./cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)
 
-## [マーケティング リード管理](../../cloud-partner-portal/cloud-partner-portal-marketing-lead-management.md)
+## [潜在顧客の獲得](./cloud-partner-portal-get-customer-leads.md)
 ### [Azure テーブル](../../cloud-partner-portal/cloud-partner-portal-lead-management-instructions-azure-table.md)
 ### [Dynamics CRM Online](../../cloud-partner-portal/cloud-partner-portal-lead-management-instructions-dynamics.md)
 ### [Salesforce](../../cloud-partner-portal/cloud-partner-portal-lead-management-instructions-salesforce.md)
@@ -31,5 +31,4 @@
 
 ## [公開元プロファイルの管理](./cloud-partner-portal-manage-publisher-profile.md)
 ## [ユーザーの管理](./cloud-partner-portal-manage-users.md)
-## [フィードバックのご提供](./cloud-partner-portal-give-feedback.md)
 ## [サポートを受ける](./cloud-partner-portal-support-for-cloud-partner-portal.md)

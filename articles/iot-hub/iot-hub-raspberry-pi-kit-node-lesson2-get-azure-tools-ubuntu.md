@@ -7,6 +7,8 @@ author: shizn
 manager: timlt
 tags: 
 keywords: "IoT クラウド サービス, Azure CLI"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-raspberry-pi-kit-node-get-started
 ms.assetid: 2f98923a-5274-4220-87d4-77ac8beb4d0f
 ms.service: iot-hub
 ms.devlang: node
@@ -45,7 +47,7 @@ Azure CLI では、Azure 用のマルチプラットフォーム コマンド �
 
 最新の Azure CLI をインストールするには、次の手順を実行します。
 
-1. ターミナル ウィンドウで次のコマンドを実行します。 Azure CLI のインストールには&5; 分ほどかかる場合があります。
+1. ターミナル ウィンドウで次のコマンドを実行します。 Azure CLI のインストールには 5 分ほどかかる場合があります。
 
    ```bash
    sudo apt-get update

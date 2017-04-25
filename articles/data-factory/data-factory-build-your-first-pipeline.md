@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2017
+ms.date: 04/17/2017
 ms.author: spelluru
 translationtype: Human Translation
 ms.sourcegitcommit: fbf77e9848ce371fd8d02b83275eb553d950b0ff
 ms.openlocfilehash: 590d8e7c90381c455e0145a9016bd888ab0dda2c
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -107,8 +108,3 @@ Azure Portal と Visual Studio では、GUI を使用してデータ ファク�
 
 
   
-
-
-<!--HONumber=Feb17_HO1-->
-
-

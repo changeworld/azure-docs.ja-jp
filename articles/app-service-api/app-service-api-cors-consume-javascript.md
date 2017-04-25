@@ -24,10 +24,10 @@ ms.lasthandoff: 03/21/2017
 # <a name="consume-an-api-app-from-javascript-using-cors"></a>CORS を使用して JavaScript から API アプリを使用する
 App Service では、API アプリでホストされている API を JavaScript クライアントからドメインの境界を越えて呼び出すことができる [クロス オリジン リソース共有 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)をネイティブでサポートしています。 App Service を利用すると、API でコードを記述することなく API への CORS アクセスを構成することができます。
 
-この記事には&2; つのセクションが含まれます。
+この記事には 2 つのセクションが含まれます。
 
 * [CORS の構成方法](#corsconfig) に関するセクションでは、API アプリ、Web アプリ、またはモバイル アプリ用に CORS を構成する方法について概要を説明します。 .NET、Node.js、Java など、App Service でサポートされるすべてのフレームワークを対象としています。 
-* 「[.NET 入門チュートリアルの続行](#tutorialstart)」セクション以降では、[API Apps の入門チュートリアル シリーズの第&1; 回](app-service-api-dotnet-get-started.md)で作成したアプリを基に、CORS の機能のデモンストレーションを行います。 
+* 「[.NET 入門チュートリアルの続行](#tutorialstart)」セクション以降では、[API Apps の入門チュートリアル シリーズの第 1 回](app-service-api-dotnet-get-started.md)で作成したアプリを基に、CORS の機能のデモンストレーションを行います。 
 
 ## <a id="corsconfig"></a> Azure App Service での CORS の構成方法
 CORS は、Azure Portal、または [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) ツールを使用して構成できます。
@@ -191,10 +191,10 @@ API アプリの Node.js または Java の入門シリーズを読んでいる�
 ## <a name="app-service-cors-versus-web-api-cors"></a>App Service の CORS と Web API の CORS
 Web API プロジェクトでは、 [Microsoft.AspNet.WebApi.Cors](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Cors/) の NuGet パッケージをインストールして、API が JavaScript の呼び出しを受け入れるドメインをコードで指定できます。
 
-Web API の CORS サポートは、App Service の CORS サポートよりも柔軟です。 たとえば、コード内の異なるアクション メソッドにさまざまな承認済みのオリジンを指定することができます。一方、App Service CORS の場合、すべての API アプリのメソッドに承認済みのオリジンを&1; セット指定します。
+Web API の CORS サポートは、App Service の CORS サポートよりも柔軟です。 たとえば、コード内の異なるアクション メソッドにさまざまな承認済みのオリジンを指定することができます。一方、App Service CORS の場合、すべての API アプリのメソッドに承認済みのオリジンを 1 セット指定します。
 
 > [!NOTE]
-> 1 つの API アプリ内で、Web API CORS と App Service CORS の両方を使用しないでください。 App Service CORS が優先され、Web API CORS は効果がありません。 たとえば、App Service で元のドメインを&1; つ有効にして、Web API コードですべての元のドメインを有効にした場合、Azure API アプリは Azure で指定したドメインからの呼び出しのみを受け付けます。
+> 1 つの API アプリ内で、Web API CORS と App Service CORS の両方を使用しないでください。 App Service CORS が優先され、Web API CORS は効果がありません。 たとえば、App Service で元のドメインを 1 つ有効にして、Web API コードですべての元のドメインを有効にした場合、Azure API アプリは Azure で指定したドメインからの呼び出しのみを受け付けます。
 > 
 > 
 

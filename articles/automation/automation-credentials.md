@@ -4,7 +4,7 @@ description: "Azure Automation の資格情報資産には、Runbook または D
 services: automation
 documentationcenter: 
 author: mgoedtel
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: 3209bf73-c208-425e-82b6-df49860546dd
 ms.service: automation
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/11/2016
+ms.date: 04/14/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 109ca4a4672d21969096af26a094390673de25d9
-ms.openlocfilehash: afb6662e1b4af6cf66fd3c8e7b155b5b6bea85ff
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 17b4dc2223d30ef13877efc650b56268b707c4bd
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -88,7 +89,7 @@ Runbook または DSC 構成で資格情報資産を取得するには、**Get-A
 
 ![キャンバスに資格情報を追加する](media/automation-credentials/credential-add-canvas.png)
 
-次の図は、グラフィカルな Runbook で資格情報を使用する例を示したものです。  この例では、「 [Authenticate Runbooks with Azure AD User account (Azure AD ユーザー アカウントでの Runbook の認証)](automation-sec-configure-aduser-account.md)」で説明されているように、Runbook 用の認証を Azure リソースに提供するために使用されています。  最初のアクティビティは、Azure サブスクリプションへのアクセス権を持つ資格情報を取得します。  その後、 **Add-AzureAccount** アクティビティはこの資格情報を使用して、その後にあるすべてのアクティビティに認証を提供します。  [Get-AutomationPSCredential](automation-graphical-authoring-intro.md#links-and-workflow) は 1 つのオブジェクトを受け取るので、ここでは **パイプライン リンク** を使用します。  
+次の図は、グラフィカルな Runbook で資格情報を使用する例を示したものです。  この例では、「 [Authenticate Runbooks with Azure AD User account (Azure AD ユーザー アカウントでの Runbook の認証)](automation-create-aduser-account.md)」で説明されているように、Runbook 用の認証を Azure リソースに提供するために使用されています。  最初のアクティビティは、Azure サブスクリプションへのアクセス権を持つ資格情報を取得します。  その後、 **Add-AzureAccount** アクティビティはこの資格情報を使用して、その後にあるすべてのアクティビティに認証を提供します。  [Get-AutomationPSCredential](automation-graphical-authoring-intro.md#links-and-workflow) は 1 つのオブジェクトを受け取るので、ここでは **パイプライン リンク** を使用します。  
 
 ![キャンバスに資格情報を追加する](media/automation-credentials/get-credential.png)
 
@@ -100,10 +101,5 @@ Azure Automation の DSC 構成では **Get-AutomationPSCredential**を使用し
 * Automation のさまざまな認証方法を理解するには、「 [Azure Automation のセキュリティ](automation-security-overview.md)
 * グラフィカルな Runbook の使用を開始するには、「 [初めてのグラフィカルな Runbook](automation-first-runbook-graphical.md)
 * PowerShell Workflow Runbook の使用を開始するには、「 [最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md) 
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

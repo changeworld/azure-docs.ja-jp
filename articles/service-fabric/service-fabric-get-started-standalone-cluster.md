@@ -15,18 +15,18 @@ ms.workload: NA
 ms.date: 04/11/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 6da8b21014966edd9f4cea0fd27f6973b2b820f0
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 5e32f1e534057b5e8e0ed6d5c0a4631f9fefbca5
+ms.lasthandoff: 04/18/2017
 
 
 ---
 
 # <a name="create-your-first-service-fabric-standalone-cluster"></a>初めての Service Fabric スタンドアロン クラスターの作成
-Service Fabric スタンドアロン クラスターは、Windows Server 2012 R2 または Windows Server 2016 が実行されていれば、どの仮想マシンまたはコンピューターにでも作成できます。場所は、オンプレミスでもクラウドでもかまいません。 このクイック スタートを読むと、開発用のスタンドアロン クラスターを数分で作成することができます。  最後まで読み進めていけば、1 台のコンピューター上で動作する 3 ノード クラスターが完成します。開発したアプリをそこにデプロイすることが可能です。
+Service Fabric スタンドアロン クラスターは、Windows Server 2012 R2 または Windows Server 2016 が実行されていれば、どの仮想マシンまたはコンピューターにでも作成できます。場所は、オンプレミスでもクラウドでもかまいません。 このクイック スタートを読むと、開発用のスタンドアロン クラスターを数分で作成することができます。  最後まで読み進めていけば、1 台のコンピューター上で動作する 3 ノード クラスターが完成します。開発したアプリをそこにデプロイすることができます。
 
 ## <a name="before-you-begin"></a>開始する前に
-Service Fabric には、Service Fabric スタンドアロン クラスターを作成するためのセットアップ パッケージが用意されています。  その[セットアップ パッケージをダウンロード](http://go.microsoft.com/fwlink/?LinkId=730690)してください。  ダウンロードしたパッケージは、開発用クラスターのセットアップ先となるコンピューターまたは仮想マシン上のフォルダー (*C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer* など) に解凍します。  セットアップ パッケージの内容については、[こちら](service-fabric-cluster-standalone-package-contents.md)に詳しい説明があります。
+Service Fabric には、Service Fabric スタンドアロン クラスターを作成するためのセットアップ パッケージが用意されています。  その[セットアップ パッケージをダウンロード](http://go.microsoft.com/fwlink/?LinkId=730690)してください。  開発クラスターをセットアップしているコンピューターまたは仮想マシン上のフォルダーに、セットアップ パッケージを解凍します。  セットアップ パッケージの内容については、[こちら](service-fabric-cluster-standalone-package-contents.md)に詳しい説明があります。
 
 クラスターのデプロイと構成を行うクラスター管理者には、コンピューターに対する管理特権が必要です。 ドメイン コントローラーに Service Fabric をインストールすることはできません。
 
@@ -37,7 +37,9 @@ Service Fabric には、Service Fabric スタンドアロン クラスターを�
 .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json
 ```
 ## <a name="create-the-cluster"></a>クラスターを作成する
-セットアップ パッケージと共に、いくつかのサンプル クラスター構成ファイルがインストールされます。 *ClusterConfig.Unsecure.DevCluster.json* は最も単純なクラスター構成です。1 台のコンピューターで動作する 3 ノード クラスターとなっており、セキュリティ対策は施されていません。 このチュートリアルでは、既定の構成設定を編集する必要はありません。  その他の構成ファイルには、X.509 証明書または Windows セキュリティによって安全性が確保された 1 台または複数台のコンピューターから成るクラスターが記述されています。  Service Fabric クラスターのセキュリティについて詳しくは、[クラスターのセキュリティ保護](service-fabric-cluster-security.md)についてのページを参照してください。 
+セットアップ パッケージと共に、いくつかのサンプル クラスター構成ファイルがインストールされます。 *ClusterConfig.Unsecure.DevCluster.json* は最も単純なクラスター構成です。1 台のコンピューターで動作する 3 ノード クラスターとなっており、セキュリティ対策は施されていません。  その他の構成ファイルには、X.509 証明書または Windows セキュリティによって安全性が確保された 1 台または複数台のコンピューターから成るクラスターが記述されています。  このチュートリアルのために既定の構成設定を変更する必要はありませんが、構成ファイルに目を通して、設定の概要を把握しておいてください。  **nodes** セクションでは、クラスター内の 3 つのノードの name、IP address、[node type、fault domain、および upgrade domain](service-fabric-cluster-manifest.md#nodes-on-the-cluster) が記述されています。  **properties** セクションでは、クラスターの[セキュリティ、信頼性レベル、診断コレクション、およびノードの種類](service-fabric-cluster-manifest.md#cluster-properties)が定義されています。
+
+このクラスターは、安全ではありません。  だれでも匿名で接続し、管理操作を実行することができるため、運用クラスターは常に X.509 証明書または Windows セキュリティを使用して保護する必要があります。  セキュリティを構成できるのはクラスターを作成するときだけであり、クラスターの作成後はセキュリティを有効にすることはできません。  Service Fabric クラスターのセキュリティについて詳しくは、[クラスターのセキュリティ保護](service-fabric-cluster-security.md)についてのページを参照してください。  
 
 開発用の 3 ノード クラスターを作成するには、管理特権の PowerShell セッションから *CreateServiceFabricCluster.ps1* スクリプトを実行します。
 
@@ -88,7 +90,7 @@ Service Fabric ランタイムをコンピューターから削除するには�
 ```
 
 ## <a name="next-steps"></a>次のステップ
-開発用のスタンドアロン クラスターをセットアップしたら、次の作業に挑戦してみてください。
+開発用のスタンドアロン クラスターをセットアップできたので、以下の作業に挑戦してみてください。
 * [複数マシンのスタンドアロン クラスターをセットアップ](service-fabric-cluster-creation-for-windows-server.md)してセキュリティを確保します。
 * [PowerShell を使ってアプリをデプロイ](service-fabric-deploy-remove-applications.md)します。
 

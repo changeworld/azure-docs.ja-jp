@@ -12,7 +12,7 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/09/2017
+ms.date: 04/17/2017
 ms.author: milanga;juliako;
 translationtype: Human Translation
 ms.sourcegitcommit: adaf2a71e022d6d29493ab0a679bd593ea40195e
@@ -49,7 +49,7 @@ ms.lasthandoff: 02/10/2017
 
 検出されて追跡される顔に対しては、画像内での顔の位置を示す座標 (左端、上端、幅、高さ、ピクセル単位) と、追跡対象の個人を識別する顔 ID 番号が返されます。 顔 ID 番号は、前向きの顔が失われたりフレーム内で重なったりするとリセットされる場合があり、同じ顔に複数の ID が割り当てられる可能性があります。
 
-### <a name="a-idoutputelementsaelements-of-the-output-json-file"></a><a id="output_elements"></a>出力 JSON ファイルの要素
+### <a id="output_elements"></a>出力 JSON ファイルの要素
 顔の検出と追跡の操作での出力結果は、顔のメタデータが含まれる JSON 形式ファイルです。
 
 顔の検出と追跡の JSON には、次の属性が含まれます。
@@ -83,7 +83,7 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
 **Azure Media Face Detector**でタスクを作成するときは、構成プリセットを指定する必要があります。 次の構成プリセットは、顔検出用だけです。
 
     {
-      "version":"1.0"
+      "version":"1.0",
       "options":{
           "TrackingMode": "Faster"
       }

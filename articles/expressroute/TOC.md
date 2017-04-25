@@ -26,7 +26,9 @@
 ## ExpressRoute 回線への仮想ネットワークのリンク
 ### [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-linkvnet-arm.md)
-## [ExpressRoute の仮想ネットワーク ゲートウェイを構成する](expressroute-howto-add-gateway-resource-manager.md)
+## ExpressRoute の仮想ネットワーク ゲートウェイを構成する
+### [Azure ポータル](expressroute-howto-add-gateway-portal-resource-manager.md)
+### [PowerShell](expressroute-howto-add-gateway-resource-manager.md)
 ## [ExpressRoute 接続とサイト間接続の共存を構成する](expressroute-howto-coexist-resource-manager.md)
 ## [回線をクラシックから Resource Manager に移行する](expressroute-howto-move-arm.md)
 ## [仮想ネットワークをクラシックから Resource Manager に移行する](expressroute-migration-classic-resource-manager.md)

@@ -76,6 +76,7 @@
 ## [Azure Backup 資格情報コンテナーを削除する](backup-azure-delete-vault.md)
 ## [オフライン バックアップの構成](backup-azure-backup-import-export.md)
 ## [テープ ライブラリの交換](backup-azure-backup-cloud-as-tape.md)
+## [Linux VM のアプリケーション整合性バックアップ](backup-azure-linux-app-consistent.md)
 
 # リファレンス
 ## [PowerShell](/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/azurerm.recoveryservices.backup)

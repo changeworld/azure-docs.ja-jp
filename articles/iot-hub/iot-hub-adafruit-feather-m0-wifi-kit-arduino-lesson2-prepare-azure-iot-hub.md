@@ -84,7 +84,7 @@ Azure IoT Hub は、何百万台もの IoT 資産を接続、監視、管理す�
 
 > [!NOTE]
 > IoT ハブの名前は、グローバルに一意である必要があります。
-> Azure サブスクリプションで作成できる F1 エディションの Azure IoT Hub は&1; つのみです。
+> Azure サブスクリプションで作成できる F1 エディションの Azure IoT Hub は 1 つのみです。
 
 ## <a name="register-your-arduino-board-in-your-iot-hub"></a>IoT ハブへの Arduino ボードの登録
 IoT ハブとの間でメッセージの交換を行う各デバイスは、一意の ID を使用して登録する必要があります。

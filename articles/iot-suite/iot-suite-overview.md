@@ -19,7 +19,7 @@ ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
 ms.sourcegitcommit: 7adde91586f5fbbffd0aeaf0efb0810cc891ac0b
 ms.openlocfilehash: ecae2cb9c0cdc78226c100cd287b840b6b2a6bb8
-ms.lasthandoff: 03/02/2017
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -44,7 +44,7 @@ Azure IoT (モノのインターネット) サービスには、さまざまな�
 ## <a name="azure-iot-services-in-azure-iot-suite"></a>Azure IoT Suite の Azure IoT サービス
 通常、構成済みソリューションでは次のサービスが使用されます。
 
-* Azure IoT Suite の中核となるものは [Azure IoT Hub][lnk-iot-hub] サービスです。 このサービスは、デバイスからクラウドへ、およびクライアントからデバイスへのメッセージング機能を提供し、クラウドや他の主要な IoT Suite サービスに対するゲートウェイとして機能します。 このサービスを使用すると、デバイスから大規模にメッセージを受信し、デバイスにコマンドを送信することができます。 また、[デバイスを管理][lnk-device-management]することもできます。 たとえば、ハブに接続されている&1; 台以上のデバイスで、構成、再起動、または出荷時の設定へのリセットを実行できます。
+* Azure IoT Suite の中核となるものは [Azure IoT Hub][lnk-iot-hub] サービスです。 このサービスは、デバイスからクラウドへ、およびクライアントからデバイスへのメッセージング機能を提供し、クラウドや他の主要な IoT Suite サービスに対するゲートウェイとして機能します。 このサービスを使用すると、デバイスから大規模にメッセージを受信し、デバイスにコマンドを送信することができます。 また、[デバイスを管理][lnk-device-management]することもできます。 たとえば、ハブに接続されている 1 台以上のデバイスで、構成、再起動、または出荷時の設定へのリセットを実行できます。
 * [Azure Stream Analytics][lnk-asa] には、インモーション データ分析機能があります。 IoT Suite は、このサービスを利用して、受信テレメトリを処理し、集計を実行してイベントを検出します。 また、事前構成されたソリューションは、ストリーム分析を使用して、メタデータやデバイスからのコマンド応答などのデータを含む情報メッセージも処理します。 ソリューションでは、Stream Analytics を使用し、デバイスからのメッセージを処理して他のサービスに配信します。
 * [Azure Storage][lnk-azure-storage] と [Azure DocumentDB][lnk-document-db] には、データ ストレージ機能があります。 構成済みソリューションでは、BLOB ストレージを使用してテレメトリを保存し、分析に使用することができます。 ソリューションでは、DocumentDB を使用してデバイスのメタデータを格納し、ソリューションのデバイス管理機能を有効にします。
 * [Azure Web Apps][lnk-web-apps] と [Microsoft Power BI][lnk-power-bi] には、データ視覚化機能があります。 Power BI は柔軟なので、IoT Suite データを使用する独自の対話型ダッシュボードをすばやく構築できます。

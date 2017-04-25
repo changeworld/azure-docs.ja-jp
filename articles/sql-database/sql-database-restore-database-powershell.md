@@ -1,8 +1,8 @@
 ---
-redirect_url: /azure/sql-database/scripts/sql-database-restore-database-powershell
+redirect_url: /azure/sql-database/scripts/sql-database-recovery-using-backups
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 77b5c031b907b3afbfd5ec5a7999068baa253e7b
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 5152712e1036c8bb130fce1aeedb50bdd0bd0128
+ms.lasthandoff: 04/15/2017
 
 --- 

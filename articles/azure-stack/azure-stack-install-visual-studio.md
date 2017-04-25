@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/27/2016
 ms.author: sngun
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 7819c59b81c8e742b4824b6ac35e7241af0bf429
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: 9e2d90255bb25ad1b6bca25806fc297ab77b9e06
+ms.lasthandoff: 04/14/2017
 
 
 ---
@@ -46,7 +46,7 @@ Use Visual Studio to author and deploy Azure Resource Manager [templates](azure-
 
 2. From the **View** menu, select **Cloud Explorer**.
 
-3. In the new pane, select **Add Account** and sign in with your Active Directory credentials.  
+3. In the new pane, select **Add Account** and sign in with your Azure Active Directory credentials.  
     ![Screenshot of Cloud Explorer once logged in and connected to Azure Stack](./media/azure-stack-install-visual-studio/image6.png)
 
 Once logged in, you can [deploy templates](azure-stack-deploy-template-visual-studio.md) or browse available resource types and resource groups to create your own templates.  

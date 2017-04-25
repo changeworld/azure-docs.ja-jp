@@ -55,7 +55,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 このセクションでは、Azure AD を Slack のユーザー アカウント プロビジョニング API に接続する手順のほか、プロビジョニング サービスを構成して、Azure AD のユーザーとグループの割り当てに基づいて割り当て済みのユーザー アカウントを Slack で作成、更新、無効化する手順を説明します。
 
-**ヒント:** Slack では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、(Azure Portal)[https://portal.azure.com] で説明されている手順に従ってください。 シングル サインオンは自動プロビジョニングとは別に構成できますが、これらの&2; つの機能は相補的な関係にあります。
+**ヒント:** Slack では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、(Azure Portal)[https://portal.azure.com] で説明されている手順に従ってください。 シングル サインオンは自動プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-slack-in-azure-ad"></a>Azure AD で Slack への自動ユーザー アカウント プロビジョニングを構成するには

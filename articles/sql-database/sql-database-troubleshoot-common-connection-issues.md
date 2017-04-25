@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/03/2017
 ms.author: daleche
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 7e48069b84c1048617a86fbc334a04462b52deda
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 914084ff790ceb2e11852c5dae757b935f813062
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -80,20 +80,6 @@ Error code 40613: "Database <x> on server <y> is not currently available. Please
 2. クライアントとインターネットの間のすべてのファイアウォールで、送信接続用のポート 1433 が開いていることを確認します。 Azure Active Directory 認証のために追加で開く必要があるポートに関する詳しい情報は、「[Configure the Windows Firewall to Allow SQL Server Access (SQL Server のアクセスを許可するための Windows ファイアウォールの構成)](https://msdn.microsoft.com/library/cc646023.aspx)」および「[Hybrid Identity Required Ports and Protocols (ハイブリッド ID で必要なポートとプロトコル)](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-ports)」を参照してください。
 3. 接続文字列およびその他の接続設定を確認します。 [接続の問題に関するトピック](sql-database-connectivity-issues.md#connections-to-azure-sql-database)で、接続文字列のセクションを確認します。
 4. ダッシュ ボードでサービスの正常性を確認します。 リージョンの障害があると思われる場合は、新しいリージョンへの回復手順を [障害からの回復](sql-database-disaster-recovery.md) のトピックで参照してください。
-
-## <a name="all-topics-for-azure-sql-database-connection-problems"></a>Azure SQL Database の接続の問題に関するすべてのトピック
-次の表は、Azure SQL Database サービスに直接当てはまる、接続の問題に関するすべてのトピックをまとめたものです。
-
-| &nbsp; | タイトル | 説明 |
-| ---:|:--- |:--- |
-| 1 |[Azure SQL Database との接続に関する一般的な問題のトラブルシューティング](sql-database-troubleshoot-common-connection-issues.md) |Azure SQL Database の接続に関する問題のトラブルシューティングは、まずこちらを参照してください。 Azure SQL Database での、一時的なエラー、および永続的もしくは一時的でないエラーの特定と解決の方法について説明しています。 |
-| 2 |[SQL Database の SQL 接続エラーと一時エラーのトラブルシューティング、診断、防止](sql-database-connectivity-issues.md) |Azure SQL Database での SQL 接続エラーまたは一時エラーのトラブルシューティング、診断、防止の方法について説明します。 |
-| 3 |[一時的なエラーに対処するための一般的なガイダンス](../best-practices-retry-general.md) |Azure SQL Database 接続時に発生した一時的なエラーに対処するための、一般的なガイダンスを紹介しています。 |
-| 4 |[Troubleshoot connectivity issues with Microsoft Azure SQL Database](https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database) |このツールは、問題の特定と、接続エラーの解決に役立ちます。 |
-| 5 |["サーバー &lt;y&gt; のデータベース &lt;x&gt; は現在使用できません。後で接続を再試行してください」エラーのトラブルシューティング](sql-database-troubleshoot-connection.md) |40613 エラーの特定と解決の方法を説明します: 「サーバー &lt;y&gt; 上のデータベース &lt;x&gt; は現在使用できません。 後で接続を再試行してください" のトラブルシューティングを行う |
-| 6 |[SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題](sql-database-develop-error-messages.md) |よくあるデータベース接続エラー、データベース コピーの問題、一般エラーなど、SQL Database クライアント アプリケーションの SQL エラー コードについて説明します。 |
-| 7 |[データベースが&1; 台の場合の Azure SQL Database のパフォーマンス ガイダンス](sql-database-performance-guidance.md) |お使いのアプリケーションに適したサービス レベルを判断する際に役立つガイダンスを紹介しています。 お使いの Azure SQL Database を最大限に活用するための、アプリケーションの調整に関する推奨事項も掲載しています。 |
-| 8 |[SQL Database の開発: 概要](sql-database-develop-overview.md) |ここには、Azure SQL Database に接続して対話的に作業するためのさまざまなテクノロジのコード サンプルへのリンクがあります。 |
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure SQL Database のパフォーマンスに関する問題のトラブルシューティング](sql-database-troubleshoot-performance.md)

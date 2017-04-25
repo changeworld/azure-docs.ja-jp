@@ -5,7 +5,7 @@
 ## [保護できるワークロード](site-recovery-workload.md)
 ## [Site Recovery のサポート マトリックス](site-recovery-support-matrix-to-azure.md)
 ## [FAQ](site-recovery-faq.md)
-## [概要を見る](https://azure.microsoft.com/resources/videos/index/?services=recovery-manager)
+## [概要を見る](https://azure.microsoft.com/resources/videos/index/?services=site-recovery)
 
 # 作業の開始
 ## [VMware VM を Azure にレプリケートする](site-recovery-vmware-to-azure.md)
@@ -21,7 +21,7 @@
 ### [ネットワーク インフラストラクチャの考慮事項](site-recovery-network-design.md)
 ### [容量の計画と Azure への VMware レプリケーションのスケーリング](site-recovery-plan-capacity-vmware.md)
 ### [Azure への VMware レプリケーションのための Deployment Planner](site-recovery-deployment-planner.md)
-### [Hyper-V レプリケーションのための Site Recovery Capacity Planner](site-recovery-capacity-planner.md)
+### [Hyper-V レプリケーションのための Capacity Planner](site-recovery-capacity-planner.md)
 
 ## 構成
 ### [ソース環境をセットアップする](site-recovery-set-up-vmware-to-azure.md)

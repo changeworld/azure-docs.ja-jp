@@ -15,8 +15,9 @@ ms.workload: multiple
 ms.date: 07/29/2016
 ms.author: cawa
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: e7bd4398503566684187831bde1e82f334a59f32
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: 4ee53679ca6f42f2181e6552fce89c18f289a116
+ms.lasthandoff: 04/11/2017
 
 
 ---
@@ -24,6 +25,7 @@ ms.openlocfilehash: e7bd4398503566684187831bde1e82f334a59f32
 > [!div class="op_single_selector"]
 > * [PowerShell](service-fabric-deploy-remove-applications.md)
 > * [Visual Studio](service-fabric-publish-app-remote-cluster.md)
+> * [FabricClient API](service-fabric-deploy-remove-applications-fabricclient.md)
 > 
 > 
 
@@ -113,9 +115,4 @@ Visual Studio の発行機能は、ご利用の Azure サブスクリプショ�
 [2]: ./media/service-fabric-publish-app-remote-cluster/EditParams.png
 [3]: ./media/service-fabric-publish-app-remote-cluster/EditVersions.png
 [4]: ./media/service-fabric-publish-app-remote-cluster/publish-to-party-cluster.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

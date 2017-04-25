@@ -11,7 +11,7 @@
 
 **更新プログラムをインストールできないことを示すエラー メッセージが表示され、更新プログラムに関するトラブルシューティング ガイドを参照してエラーの原因を特定するよう推奨されている場合はどうすればよいですか。**
 
-この問題で考えられる原因の&1; つは、Microsoft Update サーバーに接続できないことです。 この場合、手動チェックを実行する必要があります。 Update サーバーに接続できない場合は、更新ジョブは失敗します。 StorSimple デバイスの Windows PowerShell インターフェイスから次のコマンドレットを実行して、接続を確認できます。
+この問題で考えられる原因の 1 つは、Microsoft Update サーバーに接続できないことです。 この場合、手動チェックを実行する必要があります。 Update サーバーに接続できない場合は、更新ジョブは失敗します。 StorSimple デバイスの Windows PowerShell インターフェイスから次のコマンドレットを実行して、接続を確認できます。
 
  `Test-Connection -Source <Fixed IP of your device controller> -Destination <Any IP or computer name outside of datacenter>`
 

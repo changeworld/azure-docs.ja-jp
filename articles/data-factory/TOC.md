@@ -74,6 +74,8 @@
 ### [Data Lake Analytics U-SQL アクティビティ](data-factory-usql-activity.md)
 ### [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
 ### [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+### [Azure Analysis Services でモデルを処理する](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample)
+
 ## 開発
 ### [Azure Resource Manager テンプレート](data-factory-how-to-use-resource-manager-templates.md)
 ### [サンプル](data-factory-samples.md)

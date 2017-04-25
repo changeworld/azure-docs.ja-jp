@@ -26,7 +26,7 @@ ms.lasthandoff: 02/17/2017
 
 このチュートリアルでは、Machine Learning Studio で予測分析ソリューションを開発するプロセスについて詳しく説明します。 Machine Learning Studio でシンプルなモデルを開発し、Machine Learning Web サービスとしてデプロイします。このサービスでは、モデルが新しいデータを使用して予測を行うことができます。 
 
-このチュートリアルでは、ユーザーがこれまでに少なくとも&1; 回は Machine Learning Studio を使用したことがあり、機械学習の概念をある程度理解していることを前提としていますが、 いずれにしても専門家ではないことを想定しています。
+このチュートリアルでは、ユーザーがこれまでに少なくとも 1 回は Machine Learning Studio を使用したことがあり、機械学習の概念をある程度理解していることを前提としていますが、 いずれにしても専門家ではないことを想定しています。
 
 **Azure Machine Learning Studio** をまだ使用したことがない場合は、チュートリアル「[Azure Machine Learning Studio で初めてのデータ サイエンス実験を作成する](machine-learning-create-experiment.md)」から始めることをお勧めします。 そのチュートリアルでは、Machine Learning Studio を初めて使用する場合の手順を示しながら、 実験にモジュールをドラッグ アンド ドロップして互いに結び付け、実験を実行して結果を確認する方法の基本について説明します。 また、Machine Learning Studio の機能の概要を示すダイアグラムも、作業を開始するうえで役に立つでしょう。 このダイアグラムは、「[Azure Machine Learning Studio 機能の概要図](machine-learning-studio-overview-diagram.md)」からダウンロードして印刷することができます。
  

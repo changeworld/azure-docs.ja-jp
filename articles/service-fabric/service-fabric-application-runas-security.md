@@ -106,7 +106,7 @@ REM To delete this system variable us
 REM REG delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v TestVariable /f
 ```
 
-次に、ソリューションをビルドして、開発用のローカル クラスターにデプロイします。 サービスが開始した後、Service Fabric Explorer で示されるように、MySetup.bat ファイルが成功したことを&2; つの方法で確認できます。 PowerShell コマンド プロンプトを起動し、次を入力します。
+次に、ソリューションをビルドして、開発用のローカル クラスターにデプロイします。 サービスが開始した後、Service Fabric Explorer で示されるように、MySetup.bat ファイルが成功したことを 2 つの方法で確認できます。 PowerShell コマンド プロンプトを起動し、次を入力します。
 
 ```
 PS C:\ [Environment]::GetEnvironmentVariable("TestVariable","Machine")

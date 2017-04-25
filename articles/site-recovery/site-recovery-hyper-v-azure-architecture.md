@@ -17,7 +17,7 @@ ms.author: raynew
 translationtype: Human Translation
 ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
 ms.openlocfilehash: 9adf266c6a2ac00c3aaa34e2a29aefe34abe2871
-ms.lasthandoff: 03/06/2017
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -39,7 +39,7 @@ ms.lasthandoff: 03/06/2017
 **Azure** | Azure では、Microsoft Azure アカウント、Azure ストレージ アカウント、Azure ネットワークが必要です。 | ストレージとネットワークには、Resource Manager ベースのアカウントまたはクラシック アカウントを指定できます。<br/><br/> レプリケートされたデータはストレージ アカウントに格納され、オンプレミス サイトからのフェールオーバーが発生したときにそのレプリケートされたデータで Azure VM が作成されます。<br/><br/> Azure VM は、作成時に Azure 仮想ネットワークに接続します。
 **VMM サーバー** | VMM クラウドに配置されている Hyper-V ホスト | Hyper-V ホストが VMM クラウドで管理されている場合は、VMM サーバーを Recovery Services コンテナーに登録します。<br/><br/> VMM サーバーで、Azure とのレプリケーションの調整のために、Site Recovery Provider をインストールします。<br/><br/> ネットワーク マッピングを構成するには、論理ネットワークと VM ネットワークをセットアップする必要があります。 VM ネットワークは、クラウドに関連付けられた論理ネットワークにリンクされている必要があります。
 **Hyper-V ホスト** | Hyper-V サーバーは、VMM サーバーがあってもなくてもデプロイできます。 | VMM サーバーがない場合は、インターネット経由でレプリケーションを Site Recovery と調整するために、Site Recovery Provider がホストにインストールされます。 VMM サーバーがある場合は、Provider がホストではなく VMM サーバーにインストールされます。<br/><br/> Recovery Services エージェントは、データのレプリケーションを処理するために、ホストにインストールされます。<br/><br/> プロバイダーとエージェントの両方からの通信は、セキュリティで保護され、暗号化されます。 Azure Storage 内のレプリケートされたデータも暗号化されます。
-**Hyper-V VM** | Hyper-V ホスト サーバー上に&1; つ以上の VM が必要です。 | VM に明示的にインストールする必要があるものはありません
+**Hyper-V VM** | Hyper-V ホスト サーバー上に 1 つ以上の VM が必要です。 | VM に明示的にインストールする必要があるものはありません
 
 ## <a name="deployment-steps"></a>デプロイメントの手順
 
@@ -104,7 +104,7 @@ ms.lasthandoff: 03/06/2017
 
 ### <a name="retries"></a>再試行
 
-レプリケーション エラーが発生した場合に備えて、組み込み再試行があります。 このロジックは、次の&2; つのカテゴリに分類できます。
+レプリケーション エラーが発生した場合に備えて、組み込み再試行があります。 このロジックは、次の 2 つのカテゴリに分類できます。
 
 **カテゴリ** | **詳細**
 --- | ---

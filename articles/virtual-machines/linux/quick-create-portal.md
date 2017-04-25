@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/03/2017
+ms.date: 04/13/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 25ffd1c5bf289fa98a4b350eb916b386eee7f05c
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: ab29f01980bc7c3a8f12aaa55ff35baa3bf3f9fb
+ms.lasthandoff: 04/15/2017
 
 ---
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 04/06/2017
 
 Azure 仮想マシンは、Azure Portal で作成できます。 この方法では、ブラウザーベースのユーザー インターフェイスで仮想マシンとそれに関連するすべてのリソースを作成して構成できます。 このクイック スタートでは、Azure Portal を使用して仮想マシンを作成する方法について説明しています。
 
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/en-us/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="create-ssh-key-pair"></a>SSH キー ペアの作成
 
@@ -52,9 +52,9 @@ Azure Portal (http://portal.azure.com) にログインします。
 
     ![ポータルのブレードで VM に関する基本情報を入力する](./media/quick-create-portal/create-vm-portal-basic-blade.png)  
 
-4. VM のサイズを選択し、**[選択]** をクリックします。 
+4. VM のサイズを選択します。 その他のサイズも表示するには、**[すべて表示]** を選択するか、**[Supported disk type (サポートされているディスクの種類)]** フィルターを変更します。 
 
-    ![ポータルのブレードで VM のサイズを選択する](./media/quick-create-portal/create-vm-portal-size-blade.png)
+    ![VM のサイズを示すスクリーンショット](./media/quick-create-portal/create-linux-vm-portal-sizes.png)  
 
 5. 設定ブレードの **[管理ディスクを使用]** で **[はい]** を選択し、他の設定は既定のままにして、**[OK]** をクリックします。
 
@@ -67,11 +67,11 @@ Azure Portal (http://portal.azure.com) にログインします。
 
 Azure にデプロイされている Linux 仮想マシンに対しては、既定で SSH 接続のみが許可されます。 この VM を Web サーバーとして使用する場合は、Web トラフィック用にポート 80 を開く必要があります。 次の手順でネットワーク セキュリティ グループ (NSG) の規則を作成し、ポート 80 で受信接続を許可してみましょう。
 
-1. 仮想マシンのブレードの **[Essentials (要点)]** セクションで、**リソース グループ**の名前をクリックします。
+1. 仮想マシンのブレードの **[要点]** セクションで、**リソース グループ**の名前をクリックします。
 2. リソース グループのブレードで、リソースの一覧の **[ネットワーク セキュリティ グループ]** をクリックします。 NSG 名は、VM 名の末尾に -nsg が付加された形式になります。
 3. 見出しの **[セキュリティ規則の受信]** をクリックして、受信規則の一覧を開きます。 一覧には既に RDP の規則が表示されています。
 4. **[+ 追加]** をクリックして **[受信セキュリティ規則の追加]** ブレードを開きます。
-5. **[名前]** に「**nginx**」と入力し、**[ポート範囲]** が 80 に設定されていること、および **[アクション]** が **[許可]** に設定されていることを確認したら、**[OK]** をクリックします。
+5. **[名前]** で「**nginx**」と入力します。 **[ポート範囲]** が 80 に設定されていることと、**[アクション]** が **[許可]** に設定されていることを確認します。 **[OK]**をクリックします。
 
 
 ## <a name="connect-to-virtual-machine"></a>仮想マシンへの接続
@@ -104,7 +104,7 @@ apt-get -y install nginx
 
 ## <a name="view-the-ngix-welcome-page"></a>NGIX のようこそページの表示
 
-NGINX をインストールし、VM のポート 80 をインターネットから開いたら、任意の Web ブラウザーを使用して NGINX の既定のようこそページを表示することができます。 上の手順で指定した `publicIpAddress` を使用して既定のページにアクセスします。 
+NGINX をインストールし、VM のポート 80 をインターネットから開いたら、任意の Web ブラウザーを使用して NGINX の既定のようこそページを表示することができます。 指定した `publicIpAddress` を使用して、既定のページにアクセスします。 
 
 ![NGINX の既定のサイト](./media/quick-create-cli/nginx.png) 
 ## <a name="delete-virtual-machine"></a>仮想マシンの削除

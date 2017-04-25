@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: "IoT 開発, IoT ソフトウェア, モノのインターネット ソフトウェア, Mac での Git のインストール, gulp の実行, Mac での Node.js のインストール"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-raspberry-pi-kit-c-get-started
 ms.assetid: fc6bd2c8-a847-4bf5-818f-6f7f9a6835ee
 ms.service: iot-hub
 ms.devlang: c

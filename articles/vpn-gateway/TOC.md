@@ -34,10 +34,11 @@
 ## 複数のサイト対サイト接続
 ### [Azure ポータル](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
 ### [PowerShell (クラシック)](vpn-gateway-multi-site.md)
-## [PowerShell を使用した Azure VPN Gateway 向けの BGP の構成](vpn-gateway-bgp-resource-manager-ps.md)
+## [VPN ゲートウェイ用の BGP の構成](vpn-gateway-bgp-resource-manager-ps.md)
 ## [高可用性のアクティブ/アクティブ接続の構成](vpn-gateway-activeactive-rm-powershell.md)
 ## [PowerShell を使用したローカル ネットワーク ゲートウェイの設定の変更](vpn-gateway-modify-local-network-gateway.md)
 ## [VPN Gateway 接続の確認](vpn-gateway-verify-connection-resource-manager.md)
+## [VNet への VPN スループットの確認](vpn-gateway-validate-throughput-to-vnet.md)
 ## [VPN Gateway のリセット](vpn-gateway-resetgw-classic.md)
 ## VPN ゲートウェイの削除
 ### [Azure ポータル](vpn-gateway-delete-vnet-gateway-portal.md)

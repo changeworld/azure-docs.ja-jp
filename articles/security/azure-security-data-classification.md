@@ -6,17 +6,20 @@ documentationcenter: na
 author: YuriDio
 manager: swadhwa
 editor: TomSh
+ROBOTS: NOINDEX
+redirect_url: https://aka.ms/data-classification-cloud
 ms.assetid: 91d4afed-b80f-4a26-b526-b52b9c858cfb
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2017
+ms.date: 04/18/2017
 ms.author: yurid
 translationtype: Human Translation
 ms.sourcegitcommit: 354648461adf77ccf753cf24721ab7dd82b34d3c
 ms.openlocfilehash: 1f64478b900e5120253da42fcd1777540737b22c
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -255,10 +258,5 @@ DLP テクノロジでは、キーワード照合、ディクショナリ照合�
 * [Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス](azure-security-identity-management-best-practices.md)
 * [Azure セキュリティ チームのブログ](http://blogs.msdn.com/b/azuresecurity/)
 * [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

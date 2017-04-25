@@ -16,20 +16,20 @@ ms.date: 03/16/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 969e6bd55ca69e293f13b66f1a51f1d5fd1996b7
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
+ms.openlocfilehash: ac67a1a67c3a11fde98242519266fcd3ab4f60cb
+ms.lasthandoff: 04/18/2017
 
 
 ---
 # <a name="connect-your-simulated-device-to-your-iot-hub-using-net"></a>.NET を使用してシミュレーション対象デバイスを IoT Hub に接続する
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
-このチュートリアルの最後には、次の&3; つの .NET コンソール アプリが完成します。
+このチュートリアルの最後には、次の 3 つの .NET コンソール アプリが完成します。
 
 * **CreateDeviceIdentity**。デバイス ID と関連付けられているセキュリティ キーを作成し、シミュレーション対象デバイス アプリを接続します。
 * **ReadDeviceToCloudMessages**。シミュレーション対象デバイス アプリから送信されたテレメトリを表示します。
-* **SimulatedDevice**。以前に作成したデバイス ID で IoT Hub に接続し、MQTT プロトコルを使用して&1; 秒ごとにテレメトリ メッセージを送信します。
+* **SimulatedDevice**。以前に作成したデバイス ID で IoT Hub に接続し、MQTT プロトコルを使用して 1 秒ごとにテレメトリ メッセージを送信します。
 
 > [!NOTE]
 > デバイス上で動作するアプリケーションの作成とソリューションのバックエンドで動作するアプリケーションの開発に利用できる各種 Azure IoT SDK については、「[Azure IoT SDK][lnk-hub-sdks]」を参照してください。
@@ -200,7 +200,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
             }
         }
    
-    このメソッドは、デバイスからクラウドへの新しいメッセージを&1; 秒おきに送信します。 このメッセージには、JSON 形式でシリアル化されたオブジェクトが、デバイス ID、ランダムに生成された番号と共に含まれ、これによって風速センサーがシミュレートされます。
+    このメソッドは、デバイスからクラウドへの新しいメッセージを 1 秒おきに送信します。 このメッセージには、JSON 形式でシリアル化されたオブジェクトが、デバイス ID、ランダムに生成された番号と共に含まれ、これによって風速センサーがシミュレートされます。
 7. 最後に、 **Main** メソッドに次の行を追加します。
    
         Console.WriteLine("Simulated device\n");
