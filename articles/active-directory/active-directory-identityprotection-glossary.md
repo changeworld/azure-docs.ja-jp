@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2017
+ms.date: 04/24/2017
 ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: f31188ed3216034ef8ec056023472844ec4debd6
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -161,10 +162,5 @@ Azure Active Directory で ID を認証するプロセスとアクション、�
 
 ## <a name="see-also"></a>関連項目
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

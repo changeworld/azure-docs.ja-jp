@@ -70,13 +70,13 @@ $ az acs kubernetes browse -g [Resource Group] -n [Container service instance na
 
     ダイアログ ボックスが開き、アプリケーションの作成を開始できます。
 
-2. `hello-nginx` と名付けます。 [Docker からの `nginx` コンテナー](https://hub.docker.com/_/nginx/)を使用して、この Web サービスの&3; つのレプリカをデプロイします。
+2. `hello-nginx` と名付けます。 [Docker からの `nginx` コンテナー](https://hub.docker.com/_/nginx/)を使用して、この Web サービスの 3 つのレプリカをデプロイします。
 
     ![Kubernetes ポッドの [作成] ダイアログ](media/k8s/nginx.png)
 
 3. **[サービス]** で **[外部]** を選び、ポート 80 を入力します。
 
-    この設定は、トラフィックを&3; つのレプリカに負荷分散します。
+    この設定は、トラフィックを 3 つのレプリカに負荷分散します。
 
     ![Kubernetes サービスの [作成] ダイアログ](media/k8s/service.png)
 
@@ -130,7 +130,7 @@ UI でオブジェクトを表示するだけではなく、Kubernetes API オ�
 
 `spec.replicas` フィールドを `2` に編集し、**[更新]** をクリックします。
 
-これで、Pod のいずれかを削除することにより、レプリカの数を&2; つに下げます。
+これで、Pod のいずれかを削除することにより、レプリカの数を 2 つに下げます。
 
  
 

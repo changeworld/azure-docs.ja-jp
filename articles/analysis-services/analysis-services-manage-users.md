@@ -23,7 +23,7 @@ ms.lasthandoff: 02/16/2017
 
 ---
 # <a name="manage-users-in-azure-analysis-services"></a>Azure Analysis Services でのユーザーの管理
-Azure Analysis Services のユーザーには、サーバー管理者とデータベース ユーザーの&2; 種類があります。 
+Azure Analysis Services のユーザーには、サーバー管理者とデータベース ユーザーの 2 種類があります。 
 
 ## <a name="server-administrators"></a>サーバー管理者
 Azure Portal のサーバー用コントロール ブレードで **[Analysis Services 管理者]** を使用するか、SSMS のサーバー プロパティを使用して、サーバー管理者を管理できます。 Analysis Services 管理者は、データベースの追加と削除やユーザーの管理などの一般的なデータベース管理タスクに対する権限を持つデータベース サーバー管理者です。 既定では、Azure Portal でサーバーを作成したユーザーは、自動的に Analysis Services 管理者として追加されます。

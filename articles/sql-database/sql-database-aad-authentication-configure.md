@@ -35,7 +35,7 @@ Azure AD を作成し、ユーザーとグループを設定します。 Azure A
 ## <a name="optional-associate-or-change-the-active-directory-that-is-currently-associated-with-your-azure-subscription"></a>省略可能: Active Directory を関連付けるか、現在 Azure サブスクリプションに関連付けられている Active Directory を変更する
 データベースを組織の Azure AD ディレクトリに関連付けるには、そのディレクトリを、データベースをホストする Azure サブスクリプションの信頼できるディレクトリにします。 詳細については、 [Azure サブスクリプションを Azure AD に関連付ける方法](https://msdn.microsoft.com/library/azure/dn629581.aspx)を参照してください。
 
-**追加情報:** すべての Azure サブスクリプションには、Azure AD インスタンスとの信頼関係があります。 つまり、ディレクトリを信頼してユーザー、サービス、デバイスを認証します。 複数のサブスクリプションが同じディレクトリを信頼できますが、1 つのサブスクリプションは&1; つのディレクトリだけを信頼します。 サブスクリプションが信頼しているディレクトリは、[https://manage.windowsazure.com/](https://manage.windowsazure.com/) の **[設定]** タブで確認できます。 このサブスクリプションとディレクトリの間の信頼関係は、サブスクリプションと Azure 内の他のすべてのリソース (Web サイト、データベースなど) の間の関係と異なります。後者は、サブスクリプションの子リソースにより近いものです。 サブスクリプションの有効期限が切れた場合、サブスクリプションに関連付けられたこれらの他のリソースへのアクセスも停止します。 一方、ディレクトリは Azure 内に残っており、別のサブスクリプションをそのディレクトリと関連付けて、ディレクトリ ユーザーの管理を継続できます。 リソースの詳細については、[Azure でのリソース アクセスの説明](https://msdn.microsoft.com/library/azure/dn584083.aspx)に関するページを参照してください。
+**追加情報:** すべての Azure サブスクリプションには、Azure AD インスタンスとの信頼関係があります。 つまり、ディレクトリを信頼してユーザー、サービス、デバイスを認証します。 複数のサブスクリプションが同じディレクトリを信頼できますが、1 つのサブスクリプションは 1 つのディレクトリだけを信頼します。 サブスクリプションが信頼しているディレクトリは、[https://manage.windowsazure.com/](https://manage.windowsazure.com/) の **[設定]** タブで確認できます。 このサブスクリプションとディレクトリの間の信頼関係は、サブスクリプションと Azure 内の他のすべてのリソース (Web サイト、データベースなど) の間の関係と異なります。後者は、サブスクリプションの子リソースにより近いものです。 サブスクリプションの有効期限が切れた場合、サブスクリプションに関連付けられたこれらの他のリソースへのアクセスも停止します。 一方、ディレクトリは Azure 内に残っており、別のサブスクリプションをそのディレクトリと関連付けて、ディレクトリ ユーザーの管理を継続できます。 リソースの詳細については、[Azure でのリソース アクセスの説明](https://msdn.microsoft.com/library/azure/dn584083.aspx)に関するページを参照してください。
 
 次の手順は、特定のサブスクリプションの関連付けられたディレクトリを変更する方法を示しています。
 1. Azure サブスクリプションの管理者を使用して [Azure クラシック ポータル](https://manage.windowsazure.com/) に接続します。
@@ -59,7 +59,7 @@ Azure AD を作成し、ユーザーとグループを設定します。 Azure A
    >  
 
 ## <a name="create-an-azure-ad-administrator-for-azure-sql-server"></a>Azure SQL Server の Azure AD 管理者を作成する
-(SQL Database または SQL Data Warehouse をホストする) 各 Azure SQL Server は、Azure SQL Server 全体の管理者である&1; つのサーバー管理者アカウントから開始します。 Azure AD アカウントであるもう&1; つの SQL Server 管理者を作成する必要があります。 このプリンシパルは、master データベースの包含データベース ユーザーとして作成されます。 管理者の場合、サーバー管理者アカウントは、すべてのユーザー データベースの **db_owner** ロールのメンバーであり、**dbo** ユーザーとして各ユーザー データベースに入ります。 サーバー管理者アカウントについて詳しくは、「[Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)」をご覧ください。
+(SQL Database または SQL Data Warehouse をホストする) 各 Azure SQL Server は、Azure SQL Server 全体の管理者である 1 つのサーバー管理者アカウントから開始します。 Azure AD アカウントであるもう 1 つの SQL Server 管理者を作成する必要があります。 このプリンシパルは、master データベースの包含データベース ユーザーとして作成されます。 管理者の場合、サーバー管理者アカウントは、すべてのユーザー データベースの **db_owner** ロールのメンバーであり、**dbo** ユーザーとして各ユーザー データベースに入ります。 サーバー管理者アカウントについて詳しくは、「[Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)」をご覧ください。
 
 geo レプリケーションで Azure Active Directory を使用する場合は、プライマリ サーバーとセカンダリ サーバーの両方で Azure Active Directory 管理者を構成する必要があります。 サーバーに Azure Active Directory 管理者がいない場合、Azure Active Directory へのログイン時に、"接続できません" サーバー エラーが発生します。
 
@@ -69,7 +69,7 @@ geo レプリケーションで Azure Active Directory を使用する場合は�
 
 ## <a name="provision-an-azure-active-directory-administrator-for-your-azure-sql-server"></a>Azure SQL Server の Azure Active Directory 管理者をプロビジョニングします
 
-次の&2; つの手順は、Azure Portal と PowerShell を使用して、Azure SQL Server の Azure Active Directory 管理者をプロビジョニングする方法を示しています。
+次の 2 つの手順は、Azure Portal と PowerShell を使用して、Azure SQL Server の Azure Active Directory 管理者をプロビジョニングする方法を示しています。
 
 ### <a name="azure-portal"></a>Azure Portal
 1. [Azure Portal](https://portal.azure.com/) の右上隅にあるユーザー アイコンをクリックすると、Active Directory 候補の一覧がドロップダウンで表示されます。 既定の Azure AD として適切な Active Directory を選択します。 この手順では、Active Directory とサブスクリプションの関連付けを Azure SQL Server とリンクすることで、Azure AD と SQL Server の両方に同じサブスクリプションが使用されるようにします  (Azure SQL Server は、Azure SQL Database または Azure SQL Data Warehouse をホストしている可能性があります)。
@@ -286,7 +286,7 @@ conn.Open();
 この認証方法を使用すると、中間層サービスは Azure Active Directory (AAD) からトークンを取得して、Azure SQL Database または Azure SQL Data Warehouse に接続できます。 この方法では、証明書ベースの認証などの高度なシナリオが可能になります。 Azure AD トークンの認証を使用するには、4 つの基本的な手順を完了する必要があります。
 
 1. Azure Active Directory にアプリケーションを登録し、コードのクライアント ID を取得します。 
-2. アプリケーションを表すデータベース ユーザーを作成します (上の手順&6;. で完了しています)。
+2. アプリケーションを表すデータベース ユーザーを作成します (上の手順 6. で完了しています)。
 3. アプリケーションを実行するクライアント コンピューターで証明書を作成します。
 4. アプリケーションのキーとして、証明書を追加します。
 
