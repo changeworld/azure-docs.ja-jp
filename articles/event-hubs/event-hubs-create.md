@@ -1,6 +1,6 @@
 ---
-title: "Azure Event Hub を作成する | Microsoft Docs"
-description: "Azure Portal を使用して Azure Event Hubs 名前空間と Event Hub を作成します"
+title: "Azure Event Hubs を作成する | Microsoft Docs"
+description: "Azure ポータルを使用して Azure Event Hubs 名前空間と Event Hubs を作成します"
 services: event-hubs
 documentationcenter: na
 author: jtaubensee
@@ -20,7 +20,7 @@ ms.openlocfilehash: ca5c8b489345dcd0523897895de346509db08a28
 
 ---
 
-# <a name="create-an-event-hubs-namespace-and-an-event-hub-using-the-azure-portal"></a>Azure Portal を使用して Event Hubs 名前空間と Event Hub を作成します
+# <a name="create-an-event-hubs-namespace-and-an-event-hub-using-the-azure-portal"></a>Azure ポータルを使用して Event Hubs 名前空間と Event Hubs を作成します
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs 名前空間を作成します
 1. [Azure Portal][Azure portal] にログインし、画面の左上にある **[新規]** をクリックします。
@@ -39,7 +39,7 @@ ms.openlocfilehash: ca5c8b489345dcd0523897895de346509db08a28
    
     ![](./media/event-hubs-create/create-event-hub3.png)
 
-## <a name="create-an-event-hub"></a>Event Hub を作成する
+## <a name="create-an-event-hub"></a>Event Hubs を作成する
 
 1. ブレード上部の **[イベント ハブの追加]**をクリックします。
    
@@ -57,7 +57,7 @@ ms.openlocfilehash: ca5c8b489345dcd0523897895de346509db08a28
     
      ![](./media/event-hubs-create/create-event-hub8.png)
 
-イベント ハブが作成され、イベントの送受信に必要な接続文字列が手元にあります。
+Event Hubs が作成され、イベントの送受信に必要な接続文字列が手元にあります。
 
 ## <a name="next-steps"></a>次のステップ
 Event Hubs の詳細については、次のリンク先を参照してください。
@@ -65,7 +65,7 @@ Event Hubs の詳細については、次のリンク先を参照してくださ
 * [Event Hubs の概要](event-hubs-overview.md)
 * [Event Hubs API 概要](event-hubs-api-overview.md)
 
-[Azure portal]: https://portal.azure.com/
+[Azure ポータル]: https://portal.azure.com/
 
 
 <!--HONumber=Feb17_HO1-->
