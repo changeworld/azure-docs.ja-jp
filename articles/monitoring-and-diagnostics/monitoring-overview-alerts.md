@@ -53,7 +53,7 @@ ms.lasthandoff: 03/09/2017
 * webhook を呼び出す。これにより、追加のオートメーション アクションを実行できます。 たとえば、次のものの呼び出しが可能です。
     - Azure Automation Runbook
     - Azure 関数
-    - Azure Logic App
+    - Azure ロジック アプリ
     - サードパーティのサービス
 
 
