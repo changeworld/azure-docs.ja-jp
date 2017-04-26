@@ -1,4 +1,4 @@
----
+﻿---
 title: "分散型深層学習用に Azure HDInsight Spark で Caffe を使用する | Microsoft Docs"
 description: "分散型深層学習用に Azure HDInsight Spark で Caffe を使用する"
 services: hdinsight
@@ -49,7 +49,7 @@ HDInsight は PaaS ソリューションであるため、優れたプラット�
 
 ## <a name="step-1--install-the-required-dependencies-on-all-the-nodes"></a>手順 1: すべてのノードに必要な依存関係をインストールする
 
-最初に、必要な依存関係をインストールする必要があります。 Caffe サイトと [CaffeOnSpark サイト](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn)の Wiki には、YARN モード (HDInsight Spark 用のモード) での Spark の依存関係のインストールに関して非常に有用な情報が掲載されていますが、HDInsight プラットフォーム向けの依存関係をさらにいくつか追加する必要があります。 ここでは、次のスクリプト アクションをすべてのヘッド ノードと worker ノードで実行します。 これらの依存関係は他のパッケージにも依存するため、このスクリプト アクションの実行には約 20 分かかります。 このスクリプト アクションは、GitHub の場所や既定の BLOB ストレージ アカウントなど、HDInsight クラスターで利用できる場所に配置する必要があります。
+最初に、必要な依存関係をインストールする必要があります。 Caffe サイトと [CaffeOnSpark サイト](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn)の Wiki には、YARN モード (HDInsight Spark 用のモード) での Spark の依存関係のインストールに関して非常に有用な情報が掲載されていますが、HDInsight プラットフォーム向けの依存関係をさらにいくつか追加する必要があります。 ここでは、次のスクリプト アクションをすべてのヘッド ノードとワーカー ノードで実行します。 これらの依存関係は他のパッケージにも依存するため、このスクリプト アクションの実行には約 20 分かかります。 このスクリプト アクションは、GitHub の場所や既定の BLOB ストレージ アカウントなど、HDInsight クラスターで利用できる場所に配置する必要があります。
 
     #!/bin/bash
     #Please be aware that installing the below will add additional 20 mins to cluster creation because of the dependencies
@@ -205,7 +205,7 @@ CaffeOnSpark には、MNIST トレーニング用にネットワーク トポロ
 
 ## <a name="monitoring-and-troubleshooting"></a>監視とトラブルシューティング
 
-ここでは YARN クラスター モードを使用しているため、Spark ドライバーが任意のコンテナー (と任意の worker ノード) にスケジュールされたときに、コンソールには次のような出力しか表示されません。
+ここでは YARN クラスター モードを使用しているため、Spark ドライバーが任意のコンテナー (と任意のワーカー ノード) にスケジュールされたときに、コンソールには次のような出力しか表示されません。
 
     17/02/01 23:22:16 INFO Client: Application report for application_1485916338528_0015 (state: RUNNING)
 

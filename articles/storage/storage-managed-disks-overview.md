@@ -24,7 +24,7 @@ ms.lasthandoff: 03/17/2017
 
 # <a name="azure-managed-disks-overview"></a>Azure Managed Disks の概要
 
-Azure Managed Disks は、VM ディスクに関連付けられている[Storage アカウント](storage-introduction.md)を管理することで、Azure IaaS VM のディスク管理を簡素化します。 必要なディスクの種類 ([Premium](storage-premium-storage.md) または [Standard](storage-standard-storage.md)) とサイズを指定するだけで、ディスクの作成と管理は Azure によって行われます。
+Azure Managed Disks は、VM ディスクに関連付けられている[ストレージ アカウント](storage-introduction.md)を管理することで、Azure IaaS VM のディスク管理を簡素化します。 必要なディスクの種類 ([Premium](storage-premium-storage.md) または [Standard](storage-standard-storage.md)) とサイズを指定するだけで、ディスクの作成と管理は Azure によって行われます。
 
 >[!NOTE]
 >Managed Disks を使用する VM では、インストール済みの [VM 拡張機能](../virtual-machines/virtual-machines-windows-extensions-features.md)の状態を Azure プラットフォームにレポートするためにポート 8443 上の送信トラフィックを必要とします。 このポートを利用できない場合、拡張機能を含む VM のプロビジョニングは失敗します。 また、実行中の VM にインストールされている場合、拡張機能のデプロイ ステータスは不明になります。 ポート 8443 をブロック解除できない場合は、非管理対象ディスクを使用する必要があります。 現在、この問題の解決に積極的に取り組んでいます。 詳細については、[IaaS VM ディスクに関する FAQ](storage-faq-for-disks.md#managed-disks-and-port-8443)に関するページを参照してください。 
