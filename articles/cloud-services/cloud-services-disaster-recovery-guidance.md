@@ -27,10 +27,10 @@ Microsoft は、稼働時間と接続に関するコミットメントとして�
 
 Azure には、可用性の高いアプリケーションをサポートするさまざまなプラットフォーム機能が既に組み込まれています。 これらのサービスの詳細については、 [Azure アプリケーションの障害復旧と高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)に関する記事をご覧ください。
 
-この記事では、大きな自然災害や広範囲にわたるサービス中断により、リージョン全体で障害が発生した場合の真の障害復旧シナリオについて説明します。 こうした状況はほとんど発生しませんが、リージョン全体で中断が発生する可能性に対して準備する必要があります。 リージョン全体でサービス中断が発生した場合、データのローカル冗長コピーは、一時的に使用できなくなります。 geo レプリケーションを有効にしてある場合は、Azure Storage の BLOB とテーブルのコピーがさらに 3 つ、別のリージョンに格納されます。 地域的な停電や災害が発生し、プライマリ リージョンを復旧できない場合は、すべての DNS エントリが、geo レプリケートされたリージョンに再マッピングされます。
+この記事では、大きな自然災害や広範囲にわたるサービス中断により、リージョン全体で障害が発生した場合の真のディザスター リカバリーのシナリオについて説明します。 こうした状況はほとんど発生しませんが、リージョン全体で中断が発生する可能性に対して準備する必要があります。 リージョン全体でサービス中断が発生した場合、データのローカル冗長コピーは、一時的に使用できなくなります。 geo レプリケーションを有効にしてある場合は、Azure Storage の BLOB とテーブルのコピーがさらに 3 つ、別のリージョンに格納されます。 地域的な停電や災害が発生し、プライマリ リージョンを復旧できない場合は、すべての DNS エントリが、geo レプリケートされたリージョンに再マッピングされます。
 
 > [!NOTE]
-> ユーザーはこのプロセスを制御できないこと、およびデータセンター全体のサービス中断の場合にのみ行われることに注意してください。 そのため、最高レベルの可用性を実現するには、アプリケーション固有の他のバックアップ戦略にも依存する必要があります。 詳細については、「[Microsoft Azure 上に構築されたアプリケーションの障害復旧と高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)」を参照してください。 独自のフェールオーバーを使用できるようにする場合は、[読み取りアクセス geo 冗長ストレージ (RA-GRS)](../storage/storage-redundancy.md#read-access-geo-redundant-storage) の使用を検討してください。この場合は、他のリージョンに、データの読み取り専用のコピーが作成されます。
+> ユーザーはこのプロセスを制御できないこと、およびデータセンター全体のサービス中断の場合にのみ行われることに注意してください。 そのため、最高レベルの可用性を実現するには、アプリケーション固有の他のバックアップ戦略にも依存する必要があります。 詳細については、「[Microsoft Azure 上に構築されたアプリケーションのディザスター リカバリーと高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)」を参照してください。 独自のフェールオーバーを使用できるようにする場合は、[読み取りアクセス geo 冗長ストレージ (RA-GRS)](../storage/storage-redundancy.md#read-access-geo-redundant-storage) の使用を検討してください。この場合は、他のリージョンに、データの読み取り専用のコピーが作成されます。
 >
 >
 
@@ -62,12 +62,12 @@ Azure には、可用性の高いアプリケーションをサポートする�
 * SQL Database ソースの場合は、「 [概要: SQL Database を使用したクラウド ビジネス継続性とデータベース障害復旧](../sql-database/sql-database-business-continuity.md) 」を参照して、アプリケーション用に選択したレプリケーション モデルに応じて使用できるオプションについて確認してください。
 
 ## <a name="option-3-use-a-backup-deployment-through-azure-traffic-manager"></a>オプション 3: Azure Traffic Manager を介してバックアップ デプロイを使用する
-このオプションは、リージョンの障害復旧を考慮に入れて既にアプリケーション ソリューションを設計していることを前提としています。 Cloud Services アプリケーションのセカンダリ デプロイを既に別のリージョンで実行していて、Traffic Manager チャネルを介して接続されている場合に、このオプションを使用できます。 この場合、セカンダリ デプロイの正常性を確認し、 正常であれば、Azure Traffic Manager を介して、そこにトラフィックをリダイレクトできます。 そうすることで、Azure Traffic Manager のトラフィック ルーティング方法とフェールオーバー順序構成の利点を活用できます。 詳細については、「[Traffic Manager について](../traffic-manager/traffic-manager-overview.md)」を参照してください。
+このオプションは、リージョンのディザスター リカバリーを考慮に入れて既にアプリケーション ソリューションを設計していることを前提としています。 Cloud Services アプリケーションのセカンダリ デプロイを既に別のリージョンで実行していて、Traffic Manager チャネルを介して接続されている場合に、このオプションを使用できます。 この場合、セカンダリ デプロイの正常性を確認し、 正常であれば、Azure Traffic Manager を介して、そこにトラフィックをリダイレクトできます。 そうすることで、Azure Traffic Manager のトラフィック ルーティング方法とフェールオーバー順序構成の利点を活用できます。 詳細については、「[Traffic Manager について](../traffic-manager/traffic-manager-overview.md)」を参照してください。
 
 ![Balancing Azure Cloud Services across regions with Azure Traffic Manager](./media/cloud-services-disaster-recovery-guidance/using-azure-traffic-manager.png)
 
 ## <a name="next-steps"></a>次のステップ
-障害復旧と高可用性戦略を実装する方法の詳細については、 [Azure アプリケーションの障害復旧と高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)に関するページを参照してください。
+ディザスター リカバリーと高可用性戦略を実装する方法の詳細については、 [Azure アプリケーションの災害復旧と高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)に関するページを参照してください。
 
 クラウド プラットフォームの機能の詳細な技術について理解を深めるには、「 [Azure の回復性技術ガイダンス](../resiliency/resiliency-technical-guidance.md)」を参照してください。
 
