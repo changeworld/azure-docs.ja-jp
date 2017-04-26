@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 08/19/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 0ddac6ef30439e6bea04d63c41662bc49309de2c
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: a9bb00c6f0a691ac3a67d19ada4341d8d94876c1
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -36,7 +36,7 @@ Queue Storage を使用する Media Services アプリケーションを開発�
 
 * Queue Storage では、先入先出法 (FIFO) の順次配送を保証しません。 詳細については、「 [Azure キューと Service Bus キューの比較](https://msdn.microsoft.com/library/azure/hh767287.aspx)」をご覧ください。
 * Queue Storage はプッシュ サービスではありません。 キューをポーリングする必要があります。
-* キューの数に制限はありません。 詳細については、「 [Queue サービスの REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/Queue-Service-REST-API)」をご覧ください。
+* キューの数に制限はありません。 詳細については、「 [Queue サービスの REST API](https://docs.microsoft.com/rest/api/storageservices/Queue-Service-REST-API)」をご覧ください。
 * Queue Storage には、注意すべきいくつかの制限事項と特性があります。 これらについては、[Azure キューと Azure Service Bus キューの比較](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted)に関する記事で説明しています。
 
 ### <a name="code-example"></a>コード例

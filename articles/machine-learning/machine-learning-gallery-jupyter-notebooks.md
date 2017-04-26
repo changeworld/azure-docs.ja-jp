@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 03/31/2017
 ms.author: roopalik;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 262ee4f092efa11150de61168e6b03c0477f0543
-ms.openlocfilehash: 1573ae126f8b76983abe98b37b9ac4072e70d9d0
-ms.lasthandoff: 01/10/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: ff7d5c372500c2cd392ed65a921d8a994b090f23
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -46,7 +46,7 @@ ms.lasthandoff: 01/10/2017
 ## <a name="download"></a>ダウンロード
 Machine Learning Studio ワークスペースに、ギャラリーから任意の Notebook のコピーをダウンロードできます。
 
-### <a name="from-the-gallery"></a>ギャラリーから
+### <a name="download-from-the-gallery"></a>ギャラリーからのダウンロード
 ギャラリーから Notebook のコピーをダウンロードするには:
 
 1. ギャラリーで Notebook の詳細ページを開く
@@ -57,7 +57,7 @@ Machine Learning Studio ワークスペースに、ギャラリーから任意�
 
 **[Studio で開く]** をクリックすると、Notebook が Machine Learning Studio ワークスペースに読み込まれ、開きます (Studio にサインインしていない場合は、Notebook がワークスペースにコピーされる前に、Microsoft アカウントを使用してサインインするよう求められます)。 Studio ホーム ページの左側にある **[Notebooks]** をクリックすることで、後でもう一度 Notebook を検索することができます。
 
-### <a name="in-machine-learning-studio"></a>Machine Learning Studio で
+### <a name="download-in-machine-learning-studio"></a>Machine Learning Studio でダウンロードする
 Machine Learning Studio で作業している間は、同じギャラリー Notebooks のいくつかを開くこともできます。
 
 1. Machine Learning Studio で、**[+ 新規]** をクリックする

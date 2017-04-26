@@ -16,20 +16,21 @@ ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: af2dde245fdef2984465f0c8447b558a2c770618
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 4c6b70d793a7d734f5a29139e1f0b91f0d41e73a
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="set-up-intel-nuc-as-an-iot-gateway"></a>IoT ゲートウェイとしての Intel NUC のセットアップ
+[!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
 ## <a name="what-you-will-do"></a>学習内容
 
 - Intel NUC を IoT ゲートウェイとしてセットアップします。
 - Azure IoT Gateway SDK パッケージを Intel NUC にインストールします。
 - Intel NUC で "hello_world" サンプル アプリケーションを実行して、ゲートウェイの機能を検証します。
-    
+
   > 問題が発生した場合は、[トラブルシューティングのページ](iot-hub-gateway-kit-c-troubleshooting.md)で解決策を探してください。
 
 ## <a name="what-you-will-learn"></a>学習内容
@@ -97,9 +98,12 @@ Azure IoT Gateway SDK パッケージには、SDK のコンパイル済みバイ
 1. ターミナル ウィンドウで、次のコマンドを実行して、IoT クラウド リポジトリを追加します。
 
    ```bash
-   rpm --import http://iotdk.intel.com/misc/iot_pub.key
+   rpm --import https://iotdk.intel.com/misc/iot_pub2.key
    smart channel --add IoT_Cloud type=rpm-md name="IoT_Cloud" baseurl=http://iotdk.intel.com/repos/iot-cloud/wrlinux7/rcpl13/ -y
+   smart channel --add WR_Repo type=rpm-md baseurl=https://distro.windriver.com/release/idp-3-xt/public_feeds/WR-IDP-3-XT-Intel-Baytrail-public-repo/RCPL13/corei7_64/
    ```
+
+   > 'このチャネルを含める' ように求められたら、'y' を入力します。
 
    `rpm` コマンドは、rpm キーをインポートします。 `smart channel` コマンドは、rpm チャネルを Smart Package Manager に追加します。 `smart update` コマンドを実行する前に、次のような出力が表示されます。
 
@@ -119,14 +123,14 @@ Azure IoT Gateway SDK パッケージには、SDK のコンパイル済みバイ
 
    `packagegroup-cloud-azure` はパッケージの名前です。 `smart install` コマンドを使用して、パッケージをインストールします。
 
-
     > "公開キーが使用できない" ことを示すエラーが表示される場合は、次のコマンドを実行します。
 
     ```bash
     smart config --set rpm-check-signatures=false
     smart install packagegroup-cloud-azure -y
     ```
-   
+    > 'no package provides util-linux-dev' (util-linux-dev を提供するパッケージがありません) というエラーが表示されたら、Intel NUC を再起動します。
+
    パッケージをインストールしたら、Intel NUC はいつでもゲートウェイとして機能します。
 
 ## <a name="run-the-azure-iot-gateway-sdk-helloworld-sample-application"></a>Azure IoT Gateway SDK の "hello_world" サンプル アプリケーションの実行
@@ -163,5 +167,6 @@ log.txt のコンテンツが表示されます。これは、ゲートウェイ
 ご利用ありがとうございます。 Intel NUC をゲートウェイとしてセットアップする操作が完了しました。 これで、次のレッスンに進んで、ホスト コンピューターをセットアップし、Azure IoT Hub を作成し、Azure IoT Hub の論理デバイスを登録することができます。
 
 ## <a name="next-steps"></a>次のステップ
-[ホスト コンピューターと Azure IoT Hub の準備](iot-hub-gateway-kit-c-lesson2-get-the-tools-win32.md)
+[IoT ゲートウェイを使用し、Azure IoT Hub にデバイスを接続する](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
+
 

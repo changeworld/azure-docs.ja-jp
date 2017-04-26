@@ -3,7 +3,7 @@ title: "SQL Server から Azure SQL Data Warehouse へのデータの読み込�
 description: "さまざまなデータ ソースから SQL Data Warehouse にデータを移動する SQL Server Integration Services (SSIS) パッケージを作成する方法について説明します。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: douglaslms
 manager: jhubbard
 editor: 
 ms.assetid: e2c252e9-0828-47c2-a808-e3bea46c134a
@@ -12,13 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 10/31/2016
-ms.author: barbkess
 ms.custom: loading
+ms.date: 03/30/2017
+ms.author: douglasl;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a8c557ea07cbccb913bc47c510f6759dd832c861
-ms.lasthandoff: 12/08/2016
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: d208f783e5b4e7786350706d8025e6e13f45f0d2
+ms.lasthandoff: 04/03/2017
+
 
 
 ---
@@ -55,14 +56,14 @@ SQL Server Integration Services (SSIS) は、SQL Data Warehouse に接続し、�
 このチュートリアルを進めるには、次が必要です。
 
 1. **SQL Server Integration Services (SSIS)**。 SSIS は SQL Server のコンポーネントであるため、SQL Server の評価版またはライセンス版が必要です。 SQL Server 2016 Preview の評価版を入手するには、「[SQL Server 評価版ソフトウェア][SQL Server Evaluations]」をご覧ください。
-2. **Visual Studio**。 無料の Visual Studio 2015 Community Edition を入手するには、「[Visual Studio Community][Visual Studio Community]」をご覧ください。
-3. **SQL Server Data Tools for Visual Studio (SSDT)**。 SQL Server Data Tools for Visual Studio 2015 を入手するには、「[SQL Server Data Tools (SSDT) のダウンロード][Download SQL Server Data Tools (SSDT)]」をご覧ください。
+2. **Visual Studio**。 無料の Visual Studio Community Edition を入手するには、「[Visual Studio Community][Visual Studio Community]」を参照してください。
+3. **SQL Server Data Tools for Visual Studio (SSDT)**。 SQL Server Data Tools for Visual Studio を入手するには、「[SQL Server Data Tools (SSDT) のダウンロード][Download SQL Server Data Tools (SSDT)]」を参照してください。
 4. **サンプル データ**。 このチュートリアルでは、SQL Data Warehouse に読み込むソース データとして SQL Server の AdventureWorks サンプル データベースに格納されているサンプル データを使用します。 AdventureWorks サンプル データベースを入手するには、「[AdventureWorks 2014 Sample Databases (AdventureWorks 2014 サンプル データベース)][AdventureWorks 2014 Sample Databases]」をご覧ください。
 5. **SQL Data Warehouse データベースとアクセス許可**。 このチュートリアルでは、SQL Data Warehouse インスタンスに接続し、そのインスタンスにデータを読み込みます。 テーブルを作成し、データを読み込むためのアクセス許可が必要です。
 6. **ファイアウォール規則**。 SQL Data Warehouse にデータをアップロードする前に、SQL Data Warehouse でローカル コンピューターの IP アドレスを指定したファイアウォール規則を作成する必要があります。
 
 ## <a name="step-1-create-a-new-integration-services-project"></a>手順 1: 新しい Integration Services プロジェクトを作成する
-1. Visual Studio 2015 を起動します。
+1. Visual Studio を起動します。
 2. **[ファイル]** メニューの **[新規作成]、[プロジェクト]** の順にクリックします。
 3. **[インストール済み]、[テンプレート]、[ビジネス インテリジェンス]、[Integration Services]** プロジェクトの種類の順に移動します。
 4. **[Integration Services プロジェクト]**を選択します。 **[名前]** と **[場所]** に値を指定し、**[OK]** をクリックします。

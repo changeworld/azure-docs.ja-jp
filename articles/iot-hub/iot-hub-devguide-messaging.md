@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: e9e1649e4329d10ca8b87c730ad8c6beb3be818f
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: ac3f4d2220c1902f00049ce237468ddee992209d
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -191,8 +191,8 @@ C2D メッセージを送信するときに、サービスは、そのメッセ�
 | --- | --- |
 | EnqueuedTimeUtc |メッセージの結果が発生した日時を示すタイムスタンプ。 たとえば、デバイスの完了やメッセージの期限切れなどです。 |
 | OriginalMessageId |**MessageId** です。 |
-| StatusCode |必須の整数です。 IoT Hub によって生成されたフィードバック メッセージで使用されます。 <br/> 0 = 成功 <br/> 1 = メッセージの有効期限が切れました <br/> 2 = 最大配信数を超えました <br/> 3 = メッセージは拒否されました |
-| 説明 |**StatusCode**の文字列値。 |
+| StatusCode |必須の文字列。 IoT Hub によって生成されたフィードバック メッセージで使用されます。 <br/> 'Success' <br/> 'Expired' <br/> 'DeliveryCountExceeded' <br/> 'Rejected' <br/> 'Purged' |
+| Description |**StatusCode**の文字列値。 |
 | deviceId |**DeviceId** 。 |
 | DeviceGenerationId |**DeviceGenerationId** 。 |
 

@@ -12,17 +12,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2017
+ms.date: 03/29/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: edef5fbc015f6b6ba01aa2bfc3d908e6f11159cc
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 06f7b38f5d08f2182f08d38a11dec526042c1828
+ms.lasthandoff: 03/31/2017
 
 
 ---
 
 # <a name="file-and-compression-formats-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされるファイル形式と圧縮形式
+*このトピックが適用されるコネクタは、[Amazon S3](data-factory-amazon-simple-storage-service-connector.md)、[Azure Blob](data-factory-azure-blob-connector.md)、[Azure Data Lake Store](data-factory-azure-datalake-connector.md)、[ファイル システム](data-factory-onprem-file-system-connector.md)、[FTP](data-factory-ftp-connector.md)、[HDFS](data-factory-hdfs-connector.md)、[HTTP](data-factory-http-connector.md)、[SFTP](data-factory-sftp-connector.md) です。*
+
 Azure Data Factory は次のファイル形式をサポートしています。
 
 * [テキスト形式](#text-format)
@@ -47,7 +49,7 @@ Azure Data Factory は次のファイル形式をサポートしています。
 | treatEmptyAsNull |入力ファイルのデータの読み取り時に null または空の文字列 を Null 値として扱うかどうかを指定します。 |**True (既定値)**<br/>False |いいえ |
 
 ### <a name="textformat-example"></a>TextFormat の例
-次のデータセットの JSON 定義では、省略可能なプロパティの一部が指定されます。 
+次のデータセットの JSON 定義では、省略可能なプロパティの一部が指定されます。
 
 ```json
 "typeProperties":
@@ -80,7 +82,7 @@ Azure Data Factory は次のファイル形式をサポートしています。
 * テキスト ファイルからコピーして、データやヘッダー情報を含まない先頭の数行をスキップする:  `skipLineCount` を指定して、スキップする行数を示します。 ファイルの残りの部分にヘッダー行が含まれている場合は、`firstRowAsHeader` も指定できます。 `skipLineCount` と `firstRowAsHeader` の両方を指定した場合は、まず行がスキップされ、次に入力ファイルからヘッダー情報が読み取られます。
 
 ## <a name="json-format"></a>JSON 形式
-**JSON ファイルをそのまま DocumentDB にインポートしたり、DocumentDB からエクスポートしたりする**には、[Azure DocumentDB との間でのデータ移動](data-factory-azure-documentdb-connector.md)に関する記事の「[JSON ドキュメントのインポート/エクスポート](data-factory-azure-documentdb-connector.md#importexport-json-documents)」を参照してください。 
+**JSON ファイルをそのまま DocumentDB にインポートしたり、DocumentDB からエクスポートしたりする**には、[Azure DocumentDB との間でのデータ移動](data-factory-azure-documentdb-connector.md)に関する記事の「[JSON ドキュメントのインポート/エクスポート](data-factory-azure-documentdb-connector.md#importexport-json-documents)」を参照してください。
 
 JSON ファイルを解析するか、JSON 形式でデータを書き込む場合は、`format` セクションの `type` プロパティを **JsonFormat** に設定します。 `format` セクションに**オプションの**プロパティを指定することもできます。 構成方法については、「[JsonFormat の例](#jsonformat-example)」セクションを参照してください。
 
@@ -452,7 +454,7 @@ Parquet ファイルを解析するか、Parquet 形式でデータを書き込�
 * 複雑なデータ型はサポートされていません (MAP、LIST)。
 * Parquet ファイルには圧縮関連のオプション (NONE、SNAPPY、GZIP、LZO) があります。 Data Factory では、これらすべての圧縮形式の ORC ファイルからデータを読み取ることができます。 データの読み取りには、メタデータ内の圧縮コーデックが使用されます。 ただし、Data Factory で Parquet ファイルに書き込むときは、Parquet 形式の既定の動作である SNAPPY が選択されます。 現時点でこの動作をオーバーライドするオプションはありません。
 
-## <a name="compression-support"></a>圧縮のサポート 
+## <a name="compression-support"></a>圧縮のサポート
 大量のデータセットを処理すると、I/O およびネットワークにボトルネックが生じる可能性があります。 そのため、データを圧縮して保存すると、ネットワークでのデータ転送速度が上昇してディスク領域を節約できるだけでなく、ビッグ データの処理性能を大幅に高めることができます。 現時点では、圧縮は Azure BLOB やオンプレミスのファイル システムなど、ファイルベースのデータ ストアでサポートされています。  
 
 データセットの圧縮を指定するには、次の例のように、データセットの JSON で **compression** プロパティを使用します。   
@@ -511,3 +513,4 @@ Azure Data Factory でサポートされるファイル ベースのデータ �
 - [HDFS](data-factory-hdfs-connector.md)
 - [ファイル システム](data-factory-onprem-file-system-connector.md)
 - [Amazon S3](data-factory-amazon-simple-storage-service-connector.md)
+

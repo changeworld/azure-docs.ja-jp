@@ -15,9 +15,9 @@ ms.workload: required
 ms.date: 02/22/2017
 ms.author: ruturajd@microsoft.com
 translationtype: Human Translation
-ms.sourcegitcommit: ac56273cf85aff550febecf0d75ec87d5c6dbbca
-ms.openlocfilehash: 26547135548dde96e9da601f2e0ccfe96c626880
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 198caeea693fbc48b6e0eb1c9c8ee559e0553261
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -26,10 +26,10 @@ ms.lasthandoff: 02/23/2017
 
 Azure Automation について聞いたことがない場合は、[こちら](https://azure.microsoft.com/services/automation/)でサインアップして、[こちら](https://azure.microsoft.com/documentation/scripts/)からサンプル スクリプトをダウンロードしてください。 [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) の詳細と、復旧計画を使用した Azure への復旧の調整方法については、[こちら](https://azure.microsoft.com/blog/?p=166264)を参照してください。
 
-このチュートリアルでは、Azure Automation Runbook を復旧計画に統合する方法を説明します。 以前は手動での介入を必要とした単純なタスクを自動化し、複数の手順の復旧を&1; 回のクリックの復旧アクションに変換する方法を説明します。
+このチュートリアルでは、Azure Automation Runbook を復旧計画に統合する方法を説明します。 以前は手動での介入を必要とした単純なタスクを自動化し、複数の手順の復旧を 1 回のクリックの復旧アクションに変換する方法を説明します。
 
 ## <a name="customize-the-recovery-plan"></a>復旧計画のカスタマイズ
-1. はじめに、復旧計画のリソース ブレードを開きます。 復旧計画に、復旧用に&2; つの仮想マシンが追加されています。
+1. はじめに、復旧計画のリソース ブレードを開きます。 復旧計画に、復旧用に 2 つの仮想マシンが追加されています。
 
     ![](media/site-recovery-runbook-automation-new/essentials-rp.PNG)
 - - -
@@ -150,7 +150,7 @@ NSG を入力として受け取り、復旧計画の VM に適用するスクリ
         $RPName = $RecoveryPlanContext.RecoveryPlanName
 ```
 
-既にある NSG を適用するには、NSG の名前と NSG のリソース グループが必要です。 それらの変数を復旧計画スクリプトの入力として与えることになります。 具体的には、Automation アカウント アセットに&2; つの変数を作成し、そのプレフィックスとして、パラメーターの作成対象となる復旧計画の名前を追加します。
+既にある NSG を適用するには、NSG の名前と NSG のリソース グループが必要です。 それらの変数を復旧計画スクリプトの入力として与えることになります。 具体的には、Automation アカウント アセットに 2 つの変数を作成し、そのプレフィックスとして、パラメーターの作成対象となる復旧計画の名前を追加します。
 
 1. NSG の名前を格納するための変数を作成します。 そのプレフィックスとして復旧計画の名前を追加します。
     ![NSG 名の変数を作成](media/site-recovery-runbook-automation-new/var1.png)
@@ -189,7 +189,7 @@ NSG を入力として受け取り、復旧計画の VM に適用するスクリ
 
 ### <a name="using-complex-variable-to-store-more-information"></a>複合変数を使ってより多くの情報を格納する
 
-たった&1; つのスクリプトで、特定の VM のパブリック IP を有効にするにはどうすればよいのでしょうか。また、仮想マシン全体ではなく一部の仮想マシンについてのみ、それぞれ異なる NSG を適用するにはどうすればよいのでしょうか。 そのスクリプトは、他の復旧計画にも再利用できなければなりません。 仮想マシンの台数は復旧計画ごとに異なる場合があります (SharePoint の復旧の場合はフロント エンドが&2; 台、単純な LOB アプリケーションの場合はフロント エンドが&1; 台だけでよいなど)。 復旧計画ごとに個別に変数を作成する方法では、このようなことはできません。 ここでは新たな手法として、Azure Automation アカウントのアセットに複数の値を指定して、[複合変数](https://msdn.microsoft.com/library/dn913767.aspx?f=255&MSPPError=-2147217396)を作成します。 以降の手順を実行するためには、Azure PowerShell が必要です。
+たった 1 つのスクリプトで、特定の VM のパブリック IP を有効にするにはどうすればよいのでしょうか。また、仮想マシン全体ではなく一部の仮想マシンについてのみ、それぞれ異なる NSG を適用するにはどうすればよいのでしょうか。 そのスクリプトは、他の復旧計画にも再利用できなければなりません。 仮想マシンの台数は復旧計画ごとに異なる場合があります (SharePoint の復旧の場合はフロント エンドが 2 台、単純な LOB アプリケーションの場合はフロント エンドが 1 台だけでよいなど)。 復旧計画ごとに個別に変数を作成する方法では、このようなことはできません。 ここでは新たな手法として、Azure Automation アカウントのアセットに複数の値を指定して、[複合変数](https://msdn.microsoft.com/library/dn913767.aspx?f=255&MSPPError=-2147217396)を作成します。 以降の手順を実行するためには、Azure PowerShell が必要です。
 
 1. Azure PowerShell で自分のサブスクリプションにログインします。
 
@@ -238,25 +238,15 @@ NSG を入力として受け取り、復旧計画の VM に適用するスクリ
 各復旧計画に対応する値をそれぞれ異なる変数に格納することで、同じスクリプトを別の復旧計画で使用し、異なるパラメーターを指定することができます。
 
 ## <a name="sample-scripts"></a>サンプルのスクリプト
-Automation アカウントに直接インポートできるスクリプトのリポジトリについては、[Kristian Nese のスクリプトの OMS リポジトリ](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/Solutions/asrautomation)に関する記事を参照してください。
+下の [Azure へのデプロイ] ボタンを使用して、サンプル スクリプトを Automation アカウントにデプロイします。
 
-このスクリプトは Azure Resource Manager テンプレートで、以下のすべてのスクリプトをデプロイします。
+[![Azure へのデプロイ](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
-* NSG
+2 層 WordPress アプリケーションを Azure に復元する方法に関する簡単なビデオもご覧ください。
 
-NSG Runbook は、Public IP Addresses を復旧計画内のすべての VM に割り当てて、その仮想ネットワーク アダプターを、既定の通信を許可するネットワーク セキュリティ グループにアタッチします。
+> [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]
 
-* PublicIP
 
-Public IP Runbook は Public IP Addresses を復旧計画内のすべての VM に割り当てます。 マシンおよびアプリケーションへのアクセスは、各ゲスト内のファイアウォール設定に基づきます。
-
-* CustomScript
-
-CustomScript Runbook は、Public IP Addresses を復旧計画内のすべての VM に割り当て、テンプレートのデプロイ中に参照するスクリプトをプルするカスタム スクリプト拡張機能をインストールします。
-
-* NSGwithCustomScript
-
-NSGwithCustomScript Runbook は Public IP Addresses を復旧計画内のすべての VM に割り当て、拡張機能を使用してカスタム スクリプトをインストールし、仮想ネットワーク アダプターを NSG に接続して、リモート アクセス用の受信と送信の通信を可能にします。
 
 ## <a name="additional-resources"></a>その他のリソース
 [Azure Automation サービスの実行アカウント](../automation/automation-sec-configure-azure-runas-account.md)

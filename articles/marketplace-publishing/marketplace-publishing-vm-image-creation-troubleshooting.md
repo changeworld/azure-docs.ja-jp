@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 09/26/2016
 ms.author: hascipio; v-divte
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3acef7399d5e8757ebad3d6178b22eb2c5c68660
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: c4e88a9fbb15dd90d619b159ae1065dfacc1907f
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -28,47 +29,29 @@ ms.openlocfilehash: 3acef7399d5e8757ebad3d6178b22eb2c5c68660
     VM を作成した後は、ユーザーはホストの名前を更新できません。
 2. リモート デスクトップ サービスまたはそのログイン パスワードをリセットするにはどうすればよいですか?
    
-   * [Windows VM の場合はこちらをご覧ください](https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-windows-reset-rdp/)
-   * [Linux VM の場合はこちらをご覧ください](https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-classic-reset-access/)
+   * [Windows VM の場合はこちらをご覧ください](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-reset-rdp/)
+   * [Linux VM の場合はこちらをご覧ください](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/)
 3. 新しい SSH 証明書を生成するにはどうすればよいですか?
    
-   [https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-classic-reset-access/](https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-classic-reset-access/) をご覧ください
+   [https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/) をご覧ください
 4. 開いている VPN 証明書を構成するにはどうすればよいですか?
    
-   [https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-point-to-site-create/](https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-point-to-site-create/) をご覧ください
+   [https://azure.microsoft.com/documentation/articles/vpn-gateway-point-to-site-create/](https://azure.microsoft.com/documentation/articles/vpn-gateway-point-to-site-create/) をご覧ください
 5. Microsoft Azure 仮想マシン環境での Microsoft サーバー ソフトウェアの実行に関するサポート ポリシーはどのようなものですか (インフラストラクチャとしてのサービス)?
    
-   [https://support.microsoft.com/en-us/kb/2721672](https://support.microsoft.com/en-us/kb/2721672) をご覧ください
+   [https://support.microsoft.com/kb/2721672](https://support.microsoft.com/kb/2721672) をご覧ください
 6. 仮想マシンには一意の識別子がありますか?
    
    Azure では、すべての VM に Azure VM の一意の ID がエンコードされています。 詳しくは、このブログとドキュメントをご覧ください。
 7. VM で、スタートアップ タスクのカスタム スクリプト拡張機能を管理するにはどうすればよいですか?
    
-   [https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-windows-extensions-customscript/](https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-windows-extensions-customscript/) をご覧ください
+   [https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/) をご覧ください
 8. Premium Storage にアップロードされる VHD を使用して、Azure ポータルから VM を作成するにはどうすればよいですか?
    
    この機能はまだサポートされていません。
 9. Azure Marketplace では 32 ビット アプリはサポートされていますか?
    
-   サポート ポリシーについて詳しくは、[https://support.microsoft.com/en-us/kb/2721672](https://support.microsoft.com/en-us/kb/2721672) をご覧ください
+   サポート ポリシーについて詳しくは、[https://support.microsoft.com/kb/2721672](https://support.microsoft.com/kb/2721672) をご覧ください
 10. VHD からイメージを作成しようとするたびに、PowerShell で "VHD は、既にリソースとしてイメージ リポジトリに登録されています" というエラーが発生します。 これまでイメージを作成したことはなく、Azure で同じ名前のイメージは見つかっていません。 解決するにはどうすればよいですか?
     
     この問題は通常、ユーザーがこの VHD から VM をプロビジョニングし、その VHD にロックがある場合に発生します。 この VHD から割り当てられている VM がないことを確認してください。 エラーが解決しない場合は、このリンクを使用して、または発行ポータルから、これに関するサポート チケットをお送りください (詳細については質問 11 の回答を参照)。
-11. 問題に対するサポート チケットを送るにはどうすればよいですか?
-    
-    次の手順に従ってください。
-    
-    * サポート チケットを送る前に、ご自分が Azure 認定パートナーであることを確認してください。 そうでない場合は、[こちらのリンク](https://azure.microsoft.com/en-us/documentation/articles/marketplace-publishing-azure-certification/)を使って、Azure 認定プログラムに申し込んでください。
-    * 承認済みの Azure 認定パートナーの場合は、Microsoft アカウントを使って[発行ポータル](https://publish.windowsazure.com/)にログインします。Microsoft アカウントをお持ちでない場合は、[こちらのリンク](https://signup.live.com/signup?uaid=0089f09ccae94043a0f07c2aaf928831&lic=1)を使って作成できます。
-    * ユーザー名の下にあるメニューから [Get support (サポートを受ける)] リンクをクリックします (次のスクリーンショットを参照)。
-      
-      ![図](media/marketplace-publishing-vm-image-creation-troubleshooting/img11_01.png)
-    * 問題の種類として [VM image Certification (VM イメージの認定)] を選び、カテゴリとして [Preparing VHDs for the Azure VM Marketplace (Azure VM Marketplace 用の VHD の準備)] を選んだ後、[Start request (要求を開始)] ボタンをクリックします。
-    * 詳細を入力し、チケットを送信します。 サポート チームが問題の解決をお手伝いします。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

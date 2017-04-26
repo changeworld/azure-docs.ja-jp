@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/03/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 09c18ca6a967c2930ddd2b16d37f0bc606712ea1
-ms.openlocfilehash: fc1c8cb6b7c186e189658cacf218ec7e9261472a
-ms.lasthandoff: 02/08/2017
+ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
+ms.openlocfilehash: 05e23ad6bc07293f53e081b905c3a9ce1c91e6f9
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -32,16 +32,22 @@ ms.lasthandoff: 02/08/2017
 * 別のインターネット ブラウザーを使用します。
 * Microsoft Internet Explorer を使用している場合は、InPrivate ブラウズ モードを使用して Azure Portal にアクセスします。 
   
-  A.    **[ツール]**ツール ボタン![](./media/billing-cannot-login-subscription/Toolsbutton.png) > **[セーフティ]** > **[InPrivate ブラウズ]** の順にクリックします。
+  A. **[ツール]**ツール ボタン![](./media/billing-cannot-login-subscription/Toolsbutton.png) > **[セーフティ]** > **[InPrivate ブラウズ]** の順にクリックします。
   
-  B.    [Azure Portal](https://portal.azure.com) にアクセスしてサインインします。
+  B. [Azure Portal](https://portal.azure.com) にアクセスしてサインインします。
 
 ## <a name="error-message-no-subscriptions-found"></a>"サブスクリプションが見つかりません" エラー メッセージが表示される
 アカウントに必要なアクセス許可がない場合、"**サブスクリプションが見つかりません**" というエラー メッセージが表示されることがあります。 適切な管理者としてログインしていることを確認してください。 アカウント管理者は[アカウント センター](https://account.windowsazure.com/Subscriptions)のみにアクセスできます。 サービス管理者 (SA) と共同管理者 (CA) がアクセスできるのは [Azure Portal](https://portal.azure.com) または Azure クラシック ポータルのみです。
 
 **シナリオ 1: [Azure Portal](https://portal.azure.com) でこのエラー メッセージが表示された場合**
 
-この問題を解決するには、アカウントに [共同管理者または所有者のロールを追加します](billing-add-change-azure-subscription-administrator.md) 。
+この問題を解決するには、次の手順に従います。
+
+* 右上にある自分のアカウントをクリックして、適切な Azure ディレクトリが選択されていることを確認します。
+
+![Azure ポータルの右上にあるディレクトリを選択する](./media/billing-cannot-login-subscription/directory-switch.png)
+
+* 適切な Azure ディレクトリは選択されているもののエラーが引き続き発生する場合は、[アカウントを所有者として追加](billing-add-change-azure-subscription-administrator.md)します。
 
 **シナリオ 2: [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)でこのエラー メッセージが表示された場合**
 

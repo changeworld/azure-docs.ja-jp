@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/06/2017
+ms.date: 03/17/2017
 ms.author: juanpere
 translationtype: Human Translation
-ms.sourcegitcommit: 4ba60cee8848079935111ed3de480081a4aa58f6
-ms.openlocfilehash: a586d437ed7636874d324c9d3fc5274fe9001627
-ms.lasthandoff: 02/06/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: c2192328a152e955d182c4a07b391c98a5960964
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -40,7 +40,7 @@ ms.lasthandoff: 02/06/2017
 
 このチュートリアルを完了するには、以下が必要です。
 
-* Microsoft Visual Studio 2015
+* Visual Studio 2015 または Visual Studio 2017。
 * Node.js バージョン 0.12.x 以降。 <br/>  「[Prepare your development environment (開発環境を準備する)][lnk-dev-setup]」では、このチュートリアルのために Node.js を Windows または Linux にインストールする方法が説明されています。
 * アクティブな Azure アカウント。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
 
@@ -57,16 +57,16 @@ ms.lasthandoff: 02/06/2017
 
     ![New Visual C# Windows Classic Desktop project][img-createapp]
 
-2. ソリューション エクスプローラーで **TriggerFWUpdate** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
-3. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**microsoft.azure.devices** を検索します。**[インストール]** を選択して **Microsoft.Azure.Devices** パッケージをインストールし、使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT service SDK][lnk-nuget-service-sdk] NuGet パッケージへの参照とその依存関係が追加されます。
+1. ソリューション エクスプローラーで **TriggerFWUpdate** プロジェクトを右クリックし、**[NuGet パッケージの管理...]** をクリックします。
+1. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**microsoft.azure.devices** を検索します。**[インストール]** を選択して **Microsoft.Azure.Devices** パッケージをインストールし、使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT service SDK][lnk-nuget-service-sdk] NuGet パッケージへの参照とその依存関係が追加されます。
 
     ![NuGet Package Manager window][img-servicenuget]
-4. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
+1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
    
         using Microsoft.Azure.Devices;
         using Microsoft.Azure.Devices.Shared;
         
-5. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値は、前のセクションで作成した Hub の IoT Hub 接続文字列とデバイスの ID に置き換えてください。
+1. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値は、前のセクションで作成した Hub の IoT Hub 接続文字列とデバイスの ID に置き換えてください。
    
         static RegistryManager registryManager;
         static string connString = "{iot hub connection string}";
@@ -74,7 +74,7 @@ ms.lasthandoff: 02/06/2017
         static JobClient jobClient;
         static string targetDevice = "{deviceIdForTargetDevice}";
         
-6. **Program** クラスに次のメソッドを追加します。
+1. **Program** クラスに次のメソッドを追加します。
    
         public static async Task QueryTwinFWUpdateReported()
         {
@@ -82,7 +82,7 @@ ms.lasthandoff: 02/06/2017
             Console.WriteLine(twin.Properties.Reported.ToJson());
         }
         
-7. **Program** クラスに次のメソッドを追加します。
+1. **Program** クラスに次のメソッドを追加します。
 
         public static async Task StartFirmwareUpdate()
         {
@@ -99,7 +99,7 @@ ms.lasthandoff: 02/06/2017
             Console.WriteLine("Invoked firmware update on device.");
         }
 
-7. 最後に、 **Main** メソッドに次の行を追加します。
+1. 最後に、 **Main** メソッドに次の行を追加します。
    
         registryManager = RegistryManager.CreateFromConnectionString(connString);
         StartFirmwareUpdate().Wait();
@@ -107,7 +107,9 @@ ms.lasthandoff: 02/06/2017
         Console.WriteLine("Press ENTER to exit.");
         Console.ReadLine();
         
-8. ソリューションをビルドします。
+1. ソリューション エクスプローラーで、**[スタートアップ プロジェクトの設定...]** を開き、**TriggerFWUpdate** プロジェクトの **[アクション]** が **[開始]** になっていることを確認します。
+
+1. ソリューションをビルドします。
 
 [!INCLUDE [iot-hub-device-firmware-update](../../includes/iot-hub-device-firmware-update.md)]
 
@@ -123,6 +125,8 @@ ms.lasthandoff: 02/06/2017
 
 3. ダイレクト メソッドに対するデバイスの応答がコンソールに表示されます。
 
+    ![ファームウェアが正常に更新されました][img-fwupdate]
+
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、ダイレクト メソッドを使用してデバイス上でリモートのファームウェア更新を開始し、報告されるプロパティを使用してファームウェア更新の進捗状況を確認しました。
 
@@ -131,6 +135,7 @@ IoT ソリューションの拡張と複数のデバイスでのメソッドの�
 <!-- images -->
 [img-servicenuget]: media/iot-hub-csharp-node-firmware-update/servicesdknuget.png
 [img-createapp]: media/iot-hub-csharp-node-firmware-update/createnetapp.png
+[img-fwupdate]: media/iot-hub-csharp-node-firmware-update/fwupdated.png
 
 [lnk-devtwin]: iot-hub-devguide-device-twins.md
 [lnk-c2dmethod]: iot-hub-devguide-direct-methods.md

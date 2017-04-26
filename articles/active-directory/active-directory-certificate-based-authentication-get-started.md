@@ -10,11 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2017
+ms.date: 04/24/2017
 ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: c8c6c105c2142dac1b3df6c26838ba8626161092
 ms.openlocfilehash: d818cd3a243fb78228706b21a002f295782189be
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -218,10 +219,5 @@ EAS プロファイルをデバイス上に構成して配置するには、Intu
 
 1. 上記の要件を満たすアプリケーションで EAS プロファイルを構成します。  
 2. アプリケーションを開き、メールが同期されていることを確認します。 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 12/09/2016
 ms.author: bburns
 translationtype: Human Translation
-ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
-ms.openlocfilehash: 2a124c42e6c90e9443475e1f46cf3e10b5d53d6a
+ms.sourcegitcommit: 4e4a4f4e299dc2747eb48bbd2e064cd80783211c
+ms.openlocfilehash: 46240f3dc99a8c8a103a1e7919ad4f5e7a8ea62a
+ms.lasthandoff: 04/04/2017
 
 
 ---
@@ -52,7 +53,7 @@ $ az acs kubernetes install-cli
 
 ## <a name="monitoring-containers-with-operations-management-suite-oms"></a>Operations Management Suite (OMS) を使用したコンテナーの監視
 
-Microsoft Operations Management (OMS) は、Microsoft のクラウドベースの IT 管理ソリューションです。OMS を使用して、オンプレミスとクラウドのインフラストラクチャを管理し、保護することができます。 コンテナー ソリューションは OMS Log Analytics の&1; つのソリューションであり、コンテナー インベントリ、パフォーマンス、およびログを&1; つの場所で表示するのに役立ちます。 一元的な場所でログを表示して監査やコンテナーのトラブルシューティングを行い、ホスト上のノイズと消費の多いコンテナーを検索することができます。
+Microsoft Operations Management (OMS) は、Microsoft のクラウドベースの IT 管理ソリューションです。OMS を使用して、オンプレミスとクラウドのインフラストラクチャを管理し、保護することができます。 コンテナー ソリューションは OMS Log Analytics の 1 つのソリューションであり、コンテナー インベントリ、パフォーマンス、およびログを 1 つの場所で表示するのに役立ちます。 一元的な場所でログを表示して監査やコンテナーのトラブルシューティングを行い、ホスト上のノイズと消費の多いコンテナーを検索することができます。
 
 ![](media/container-service-monitoring-oms/image1.png)
 
@@ -67,43 +68,10 @@ OMS エージェントからサービスに通信するには、ワークスペ�
  ![](media/container-service-monitoring-oms/image5.png)
 
 ### <a name="install-the-oms-agent-using-a-daemonset"></a>DaemonSet を使用して OMS エージェントをインストールする
-DaemonSet は Kubernetes によって使用され、クラスターのホストごとに&1; つのコンテナーの&1; つのインスタンスを実行します。
+DaemonSet は Kubernetes によって使用され、クラスターのホストごとに 1 つのコンテナーの 1 つのインスタンスを実行します。
 この DaemonSet は、監視エージェントの実行に最適です。
 
-DaemonSet の YAML ファイルを次に示します。 これを `oms-daemonset.yaml` という名前のファイルに保存し、このファイル内で、下の `WSID` と `KEY` のプレースホルダーの値をワークスペース ID とキーに置き換えます。
-
-```yaml
-apiVersion: extensions/v1beta1
-kind: DaemonSet
-metadata:
-  name: omsagent
-spec:
-  template:
-    metadata:
-      labels:
-        app: omsagent
-    spec:
-      containers:
-      - env:
-        - name: WSID
-          value: <your workspace ID>
-        - name: KEY
-          value: <your key>
-        image: microsoft/oms
-        name: omsagent
-        ports:
-        - containerPort: 25225
-          protocol: TCP
-        securityContext:
-          privileged: true
-        volumeMounts:
-        - mountPath: /var/run/docker.sock
-          name: docker-sock
-      volumes:
-      - name: docker-sock
-        hostPath:
-          path: /var/run/docker.sock
-```
+[DaemonSet の YAML ファイル](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)を次に示します。 これを `oms-daemonset.yaml` という名前のファイルに保存し、このファイル内で、`WSID` と `KEY` のプレースホルダーの値をワークスペース ID とキーに置き換えます。
 
 DaemonSet 構成にワークスペース ID とキーを追加したら、`kubectl` コマンド ライン ツールを使用してクラスターに OMS エージェントをインストールできます。
 
@@ -113,9 +81,4 @@ $ kubectl create -f oms-daemonset.yaml
 
 ### <a name="conclusion"></a>まとめ
 これで完了です。 しばらくすると、OMS ダッシュボードにデータが送られたことがわかります。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

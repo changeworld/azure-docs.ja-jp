@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 816305fb3ace5bfc7cf50bac5e42fde83e9697d3
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 232901ab919c63ea70e52afb845240b41a517c51
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="azure-ad--active-directory-requirements-for-azure-remoteapp"></a>Azure RemoteApp に関する Azure AD と Active Directory の要件
 > [!IMPORTANT]
-> Azure RemoteApp の提供は終了しました。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
+> Azure RemoteApp の提供は、2017 年 8 月 31 日で終了します。 詳細については、 [お知らせ](https://go.microsoft.com/fwlink/?linkid=821148) をご覧ください。
 > 
 > 
 
@@ -35,9 +36,9 @@ Azure AD テナントとオンプレミスの Active Directory 環境を接続�
 ### <a name="make-sure-your-domaincom-match"></a>"@domain.com" が一致することを確認する
 作業を開始する前に、オンプレミス フォレストの UPN が、Azure AD ドメインのサフィックスと一致していることを確認してください。 
 
-Azure AD に UPN ドメインのサフィックスをセットアップしたら、Azure RemoteApp にログインするすべてのユーザーが "user@<the suffix you set up>" としてログインするようになります。 ユーザーが同じ user@suffix を使用してオンプレミス ドメインにログインできることも確認してください。 場合によっては、Azure AD に&1; つのドメイン名をセットアップし、オンプレミスのユーザー用に別のドメイン サフィックスを指定することもできます。 この場合、ユーザーは Azure RemoteApp を介してドメインに参加しているコンピューターまたはリソースに接続することはできません。
+Azure AD に UPN ドメインのサフィックスをセットアップしたら、Azure RemoteApp にログインするすべてのユーザーが "user@<the suffix you set up>" としてログインするようになります。 ユーザーが同じ user@suffix を使用してオンプレミス ドメインにログインできることも確認してください。 場合によっては、Azure AD に 1 つのドメイン名をセットアップし、オンプレミスのユーザー用に別のドメイン サフィックスを指定することもできます。 この場合、ユーザーは Azure RemoteApp を介してドメインに参加しているコンピューターまたはリソースに接続することはできません。
 
-たとえば、UPN ドメイン サフィックスを AAD に contoso.com としてセットアップした場合に、オンプレミス/AD の一部のユーザーが @contoso.uk, を使用してログインするように構成されている場合、そのようなユーザーは ARA コレクションに正しくログインすることはできません。 ログインするには、AAD と AD のユーザー UPN が同じである必要があります。
+たとえば、UPN ドメイン サフィックスを AAD に contoso.com としてセットアップした場合に、オンプレミス/AD の一部のユーザーが @contoso.uk を使用してログインするように構成されている場合、そのようなユーザーは ARA コレクションに正しくログインすることはできません。 ログインするには、AAD と AD のユーザー UPN が同じである必要があります。
 
 ### <a name="create-objects-for-azure-remoteapp"></a>Azure RemoteApp のオブジェクトを作成する
 また、次のオンプレミス Active Directory オブジェクトを作成する必要もあります。
@@ -46,10 +47,5 @@ Azure AD に UPN ドメインのサフィックスをセットアップしたら
 * RemoteApp マシン オブジェクトを含む組織単位 (OU)。 RemoteApp で使用するアカウントとポリシーを特定するために OU の使用を推奨します (必須ではありません)。
 
 RemoteApp コレクションを作成するときは、これらのオブジェクトが両方とも必要であるため、これらの手順を最初に行ってください。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

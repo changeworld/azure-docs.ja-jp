@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2017
+ms.date: 03/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 9c027decf5d982519bc9f41aa9588fa431ef3975
-ms.openlocfilehash: 17ad8938cbee539e74f87210077a12c72e777edc
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: a1d7c2f01d3bf345f63077c4d42d79476235e941
+ms.lasthandoff: 04/07/2017
 
 
 ---
-# <a name="tutorial-azure-ad-integration-with-slack"></a>チュートリアル: Azure AD と Slack の統合
+# <a name="tutorial-azure-active-directory-integration-with-slack"></a>チュートリアル: Azure Active Directory と Slack の統合
 
 このチュートリアルでは、Slack と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -39,8 +39,10 @@ Slack と Azure AD の統合を構成するには、次のものが必要です�
 * Azure AD サブスクリプション
 * Slack SSO が有効なサブスクリプション
 
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境は使用しないことをお勧めします。
+>[!NOTE]
+>このチュートリアルの手順をテストする場合、運用環境は使用しないことをお勧めします。
+>
+>
 
 このチュートリアルの手順をテストするには、次の推奨事項に従います。
 
@@ -76,7 +78,7 @@ Azure AD と Slack の統合を構成するには、次の手順でギャラリ�
 
 6. 結果ウィンドウで **[Slack]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
-    ![結果ウィンドウでの [Slack] の選択](./media/active-directory-saas-slack-tutorial/tutorial_slack_0001.png)
+     ![結果ウィンドウでの [Slack] の選択](./media/active-directory-saas-slack-tutorial/tutorial_slack_0001.png)
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
 このセクションでは、"Britta Simon" というテスト ユーザーを使用して、Slack で Azure AD SSO を構成し、テストします。
@@ -85,13 +87,13 @@ SSO が機能するには、Azure AD ユーザーと Slack の対応するユー
 
 Slack で Azure AD SSO を構成してテストするには、次の構成要素を完了する必要があります。
 
-1. [Azure AD SSO の構成](#configuring-azure-ad-single-sign-on)。ユーザーがこの機能を使用できるようにします。
+1. [Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)。ユーザーがこの機能を使用できるようにします。
 2. [Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)。Britta Simon というユーザーで Azure AD SSO をテストします。
 3. [Slack のテスト ユーザーの作成](#creating-a-slack-test-user)。Azure AD のユーザーである Britta Simon に、Slack で対応するユーザーを作成してリンクさせます。
 4. [Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)。Britta Simon というユーザーが Azure AD SSO を使用できるようにします。
-5. [SSO のテスト](#testing-single-sign-on)。構成が機能することを確認します。
+5. [シングル サインオンのテスト](#testing-single-sign-on)。構成が機能することを確認します。
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
 このセクションでは、次の手順で Azure Portal で Azure AD SSO を有効にし、Slack アプリケーションに SSO を構成します。
 
@@ -106,13 +108,13 @@ Slack で Azure AD SSO を構成してテストするには、次の構成要素
 3. **[Slack のドメインと URL]** で、次の手順を実行します。
 
     ![[シングル サインオン] ダイアログ ボックス](./media/active-directory-saas-slack-tutorial/tutorial_slack_02.png)
+  1. **[サインオン URL]** ボックスに、_https://<company name>.slack.com_ という命名規則を使用した URL を入力します。
+  2. **[識別子]** ボックスに、「**https://slack.com**」と入力します。
 
-    a. **[サインオン URL]** ボックスに、*https://<company name>.slack.com* という命名規則を使用した URL を入力します。
-
-    b. **[識別子]** ボックスに、「**https://slack.com**」と入力します。
-
-    > [!NOTE]
-    > 上記の値は、実際の値ではありません。 ここでは、URL と識別子には一意の値を使用することをお勧めします。 後で、実際の URL と識別子で値を更新します。 値を取得するには、[Slack サポート チーム](https://slack.com/help/contact)に問い合わせてください。
+     >[!NOTE]
+     >上記の値は、実際の値ではありません。 ここでは、URL と識別子には一意の値を使用することをお勧めします。 後で、実際の URL と識別子で値を更新します。 値を取得するには、[Slack サポート チーム](https://slack.com/help/contact)に問い合わせてください。
+     >
+     >
 
 4. Slack アプリケーションでは、Security Assertion Markup Language (SAML) のアサーションを特定の形式で表示する必要があります。 次のスクリーンショットに示すように、Slack アプリケーション統合ページの **[ユーザー属性]** セクションで、要求を構成し、属性の値を管理します。
 
@@ -127,19 +129,15 @@ Slack で Azure AD SSO を構成してテストするには、次の構成要素
     | last_name | User.surname |
     | User.Username | extractmailprefix([userprincipalname]) |
 
-    a. **[属性の追加]** ボタンをクリックします。
+    1. **[属性の追加]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-slack-tutorial/tutorial_slack_04.png)
-
-    b. **[属性の追加]** ダイアログ ボックスの **[名前]** ボックスに、表の**属性名**の列にある名を入力します。
+    ![Configure Single Sign-On](./media/active-directory-saas-slack-tutorial/tutorial_slack_04.png)
+    2. **[属性の追加]** ダイアログ ボックスの **[名前]** ボックスに、表の**属性名**の列にある名を入力します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-slack-tutorial/tutorial_slack_05.png)
-
-    c. **[値]** ボックスに、表の**属性値**の列の最初の値を入力します。
-
-    d. **[OK]**をクリックします。
-
-    e. 表の次の&3; 行についても "a" ～ "d" の手順を繰り返します。
+    3. **[値]** ボックスに、表の**属性値**の列の最初の値を入力します。
+    4. **[OK]**をクリックします。
+    5. 表の次の 3 行についても "a" ～ "d" の手順を繰り返します。
 
 6. **[SAML 署名証明書]** で、**[新しい証明書の作成]** をクリックします。
 
@@ -180,24 +178,15 @@ Slack で Azure AD SSO を構成してテストするには、次の構成要素
 15. **[SAML Authentication Settings (SAML 認証設定)]** ダイアログ ボックスで、次の手順を実行します。
 
     ![[SAML Authentication Settings (SAML 認証設定)] ダイアログ ボックス](./media/active-directory-saas-slack-tutorial/tutorial_slack_003.png)
-
-    a. **[SAML 2.0 Endpoint (HTTP) (SAML 2.0 エンドポイント (HTTP))]** ボックスに、Azure AD アプリケーション構成ウィンドウの **[SAML Single Sign-on Service URL (SAML シングル サインオン サービス URL)]** の値を入力します。
-
-    b. **[Identity Provider Issuer (ID プロバイダー発行者)]** ボックスに、Azure AD アプリケーション構成ウィンドウの **[SAML Entity ID (SAML エンティティ ID)]** の値を入力します。
-
-    c. ダウンロードした証明書ファイルをメモ帳で開き、その内容をコピーして、**[Public Certificate (パブリック証明書)]** ボックスに貼り付けます。
-
-    d. 必要に応じて、Slack チームに上記の&3; つの設定を構成します。 設定の詳細については、「[Guide to single sign-on with Slack (Slack でのシングル サインオンのガイド)](https://get.slack.help/hc/en-us/articles/220403548-Guide-to-single-sign-on-with-Slack)」を参照してください。
-
-    e. **[Save Configuration]**をクリックします。
-
-    <!-- **[Allow users to change their email address]** (ユーザーにメール アドレスの変更を許可する) を選択解除します。
-
-    e. **[Allow users to choose their own username]** を選択します。
-
-    f. **[Authentication for your team must be used by]** で、**[It’s optional]** を選択します。 -->
-
-
+  1. **[SAML 2.0 Endpoint (HTTP) (SAML 2.0 エンドポイント (HTTP))]** ボックスに、Azure AD アプリケーション構成ウィンドウの **[SAML Single Sign-on Service URL (SAML シングル サインオン サービス URL)]** の値を入力します。
+  2. **[Identity Provider Issuer (ID プロバイダー発行者)]** ボックスに、Azure AD アプリケーション構成ウィンドウの **[SAML Entity ID (SAML エンティティ ID)]** の値を入力します。
+  3. ダウンロードした証明書ファイルをメモ帳で開き、その内容をコピーして、**[Public Certificate (パブリック証明書)]** ボックスに貼り付けます。
+  4. 必要に応じて、Slack チームに上記の 3 つの設定を構成します。 設定の詳細については、「[Guide to single sign-on with Slack (Slack でのシングル サインオンのガイド)](https://get.slack.help/hc/en-us/articles/220403548-Guide-to-single-sign-on-with-Slack)」を参照してください。
+  5. **[Save Configuration]**をクリックします。
+  6. **[Allow users to change their email address]**を選択解除します。
+  7. **[Allow users to choose their own username]** を選択します。
+  8. **[Authentication for your team must be used by]** で、**[It’s optional]** を選択します。
+  
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションでは、Azure Portal で次の手順に従って Britta Simon というテスト ユーザーを作成します。
 
@@ -216,14 +205,10 @@ Slack で Azure AD SSO を構成してテストするには、次の構成要素
 4. **[ユーザー]** ダイアログ ボックスで、次の情報を入力します。
 
     ![[ユーザー] ダイアログ ボックス](./media/active-directory-saas-slack-tutorial/create_aaduser_04.png)
-
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-
-    b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
-
-    d. **[作成]**をクリックします。
+  1. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+  2. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
+  3. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
+  4. **[作成]**をクリックします。
 
 ### <a name="create-a-slack-test-user"></a>Slack のテスト ユーザーの作成
 
@@ -231,8 +216,10 @@ Slack で Azure AD SSO を構成してテストするには、次の構成要素
 
 このセクションでは、ユーザー側で必要な操作はありません。 ユーザーがまだ Slack に存在しない場合は、Slack にアクセスしようとしたときに新しいユーザーが作成されます。
 
-> [!NOTE]
-> ユーザーを手動で作成する必要がある場合は、[Slack サポート チーム](https://slack.com/help/contact)にお問い合わせください。
+>[!NOTE]
+>ユーザーを手動で作成する必要がある場合は、[Slack サポート チーム](https://slack.com/help/contact)にお問い合わせください。
+>
+>
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -264,7 +251,7 @@ Slack にユーザーである Britta Simon を割り当てるには、次の手
 
 7. **[割り当ての追加]** ブレードで、**[割り当て]** ボタンをクリックします。
 
-### <a name="test-sso"></a>SSO のテスト
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD SSO の構成をテストします。
 

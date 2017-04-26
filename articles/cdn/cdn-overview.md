@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 02/08/2017
 ms.author: rli
 translationtype: Human Translation
-ms.sourcegitcommit: 6c8c04e0237e2168df60ecc597754c38af167e14
-ms.openlocfilehash: 0aed3d224199b17bac748b14416a738eac342103
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 8809f35e992d528224fc14e0de01a61d396c082b
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -40,12 +41,12 @@ CDN を使用して Web サイト資産をキャッシュすると、次のよ�
 1. ユーザー (Alice) は、特殊なドメイン名 ( `<endpointname>.azureedge.net`など) の URL を使用して、ファイル (資産とも呼ばれます) を要求します。  DNS は、パフォーマンスが最高の Point-of-Presence (POP) の場所に要求をルーティングします。  通常は、ユーザーに地理的に最も近い位置にある POP です。
 2. POP のエッジ サーバーのキャッシュにファイルがない場合、エッジ サーバーは配信元にあるファイルを要求します。  配信元は、Azure Web App、Azure Cloud Service、Azure ストレージ アカウント、またはパブリックにアクセスできる Web サーバーです。
 3. 配信元からエッジ サーバーに対して、ファイルの有効期間 (TTL) を記述したオプションの HTTP ヘッダーなどのファイルが戻されます。
-4. エッジ サーバーはファイルをキャッシュし、ファイルを要求元 (Alice) に返します。  TTL が期限切れになるまで、ファイルはエッジ サーバーにキャッシュされた状態になります。  配信元で TTL を指定していなかった場合、既定の TTL は&7; 日間です。
+4. エッジ サーバーはファイルをキャッシュし、ファイルを要求元 (Alice) に返します。  TTL が期限切れになるまで、ファイルはエッジ サーバーにキャッシュされた状態になります。  配信元で TTL を指定していなかった場合、既定の TTL は 7 日間です。
 5. その他のユーザーが同じ URL を使用して同じファイルを要求し、同じ POP に転送することもできます。
 6. ファイルの TTL が期限切れになっていない場合、エッジ サーバーはキャッシュのファイルを返します。  その結果、応答時間が短縮されます。
 
 ## <a name="azure-cdn-features"></a>Azure CDN の機能
-Azure CDN 製品には、**Azure CDN Standard from Akamai**、**Azure CDN Standard from Verizon**、**Azure CDN Premium from Verizon** の&3; つがあります。  次の表に、各製品で使用できる機能を示します。
+Azure CDN 製品には、**Azure CDN Standard from Akamai**、**Azure CDN Standard from Verizon**、**Azure CDN Premium from Verizon** の 3 つがあります。  次の表に、各製品で使用できる機能を示します。
 
 |  | Standard Akamai | Standard Verizon | Premium Verizon |
 | --- | --- | --- | --- |
@@ -62,7 +63,7 @@ Azure CDN 製品には、**Azure CDN Standard from Akamai**、**Azure CDN Standa
 | [高速消去](cdn-purge-endpoint.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [資産の事前読み込み](cdn-preload-endpoint.md) | |**&#x2713;** |**&#x2713;** |
 | [コア分析](cdn-analyze-usage-patterns.md) | |**&#x2713;** |**&#x2713;** |
-| [HTTP/2 のサポート](https://msdn.microsoft.com/library/mt762901.aspx) |**&#x2713;** | | |
+| [HTTP/2 のサポート](https://msdn.microsoft.com/library/mt762901.aspx) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [詳細な HTTP レポート](cdn-advanced-http-reports.md) | | |**&#x2713;** |
 | [リアルタイム統計](cdn-real-time-stats.md) | | |**&#x2713;** |
 | [リアルタイム アラート](cdn-real-time-alerts.md) | | |**&#x2713;** |
@@ -88,10 +89,5 @@ CDN の概要については、「 [Azure CDN の使用](cdn-create-new-endpoint
 [.NET](cdn-app-dev-net.md) または [Node.js](cdn-app-dev-node.md) を使用して Azure CDN を自動化する方法について学習します。
 
 料金情報については、 [CDN の価格](https://azure.microsoft.com/pricing/details/cdn/)に関するページを参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

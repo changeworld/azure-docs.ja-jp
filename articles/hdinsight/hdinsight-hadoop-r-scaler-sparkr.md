@@ -1,5 +1,5 @@
 ---
-title: "Azure HDInsight で ScaleR と SparkR を組み合わせて使う | Microsoft Docs"
+title: "Azure HDInsight で ScaleR と SparkR を使用する | Microsoft Docs"
 description: "R Server と HDInsight で ScaleR と SparkR を使用する"
 services: hdinsight
 documentationcenter: 
@@ -14,29 +14,29 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 04/04/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 5e8fb7642dca815c64b9aed8184672259d3facf8
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: bab5268c4aab2210e8ace2c3a1db23b34887c2ed
+ms.lasthandoff: 04/04/2017
 
 
 ---
 
-# <a name="mixing-use-of-scaler-and-sparkr-in-hdinsight"></a>HDInsight で ScaleR と SparkR を組み合わせて使う
+# <a name="combining-scaler-and-sparkr-in-hdinsight"></a>HDInsight で ScaleR と SparkR を組み合わせる
 
-SparkR を使用した Spark でのデータ操作と Microsoft R Server を使用した分析とを組み合わせて使う方法について説明します。 最新の分散処理機能を活かすために、どちらのパッケージも Hadoop の Spark 実行エンジン上で動作しますが、それぞれ固有の Spark セッションが必要となることから、両者がメモリ内でデータを共有することはできません。 今後 R Server のバージョンアップでその点が改善されるまで、それぞれの Spark セッションを別々に維持し、中間ファイルを介してデータを交換するのが回避策になります。 ここで紹介する方法を使えば、この&2; つの要件は簡単に満たすことができます。
+Spark でデータを操作する ScaleR の機能と Microsoft R Server を使用した分析を組み合わせる方法について説明します。 最新の分散処理機能を活かすために、どちらのパッケージも Hadoop の Spark 実行エンジン上で動作しますが、それぞれ固有の Spark セッションが必要となることから、両者がメモリ内でデータを共有することはできません。 今後 R Server のバージョンアップでその点が対処されるまで、それぞれの Spark セッションを別々に維持し、中間ファイルを介してデータを交換するのが回避策になります。 ここで紹介する方法を使えば、この 2 つの要件は簡単に満たすことができます。
 
 その方法を説明するために、Strata 2016 カンファレンスで Mario Inchiosa と Roni Burd が最初に紹介した例を取り上げます。「[Building a Scalable Data Science Platform with R (スケーラブルなデータ サイエンス プラットフォームを R で構築する)](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio)」のウェビナーでもご覧いただけます。この例では、大手航空会社の到着遅延データセットと発着空港における気象データを SparkR を使って結合し、ScaleR ロジスティック回帰モデルの入力とすることで、フライトの到着遅延を予測します。
 
-これから紹介するコードは、もともとは Azure HDInsight クラスターの Spark で動作する R Server 向けに書かれたものです。しかし SparkR と ScaleR を&1; つのスクリプトで組み合わせて使う概念は、オンプレミス環境にもそのまま当てはまります。 以降、R と R Server の [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) ライブラリについて、ある程度理解している読者を対象に、[SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) の使い方も交えながら説明していきます。
+これから紹介するコードは、もともとは Azure HDInsight クラスターの Spark で動作する R Server 向けに書かれたものです。しかし SparkR と ScaleR を 1 つのスクリプトで組み合わせて使う概念は、オンプレミス環境にもそのまま当てはまります。 以降、R と R Server の [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) ライブラリについて、ある程度理解している読者を対象に、[SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) の使い方も交えながら説明していきます。
 
 ## <a name="the-airline-and-weather-datasets"></a>航空データセットと気象データセット
 
 AirOnTime08to12CSV は、一般公開されている航空データセットです。米国内の全民間飛行便を対象に 1987 年 10 月から 2012 年 12 月までの発着情報が記録されています。 この大規模なデータセットのレコード数は、およそ 1 億 5,000 万件にも上ります。 サイズは未圧縮状態で 4 GB 弱です。 このデータを[米国政府のアーカイブ](http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236)からダウンロードすることができます。また、より便利な zip ファイル (AirOnTimeCSV.zip) として入手することもできます。zip ファイルは、月ごとに分かれた 303 個の CSV ファイルを含んでおり、[Revolution Analytics のデータセット リポジトリ](http://packages.revolutionanalytics.com/datasets/AirOnTime87to12/)に置かれています。
 
-フライト遅延に気象が及ぼす影響を把握するためには、各空港の気象データも必要です。 気象データについては、[米国海洋大気庁のリポジトリ](http://www.ncdc.noaa.gov/orders/qclcd/)から、月ごとの生データを zip ファイルとしてダウンロードできます。 この例では、その目的上、2007 年 5 月から 2012 年 12 月の気象データをダウンロードしました。この 68 か月分の各 zip ファイルに含まれる毎時のデータ ファイルを使っています。 月ごとの zip ファイルには、他にも測候所 ID (WBAN) とそれが関連付けられている空港 (CallSign)、UTC (TimeZone) を基準とする空港のタイム ゾーン オフセットという&3; つの情報のマッピング (YYYYMMstation.txt) が含まれており、航空会社の遅延データを結合する際にこれらの情報が必要となります。
+フライト遅延に気象が及ぼす影響を把握するためには、各空港の気象データも必要です。 気象データについては、[米国海洋大気庁のリポジトリ](http://www.ncdc.noaa.gov/orders/qclcd/)から、月ごとの生データを zip ファイルとしてダウンロードできます。 この例では、その目的上、2007 年 5 月から 2012 年 12 月の気象データをダウンロードしました。この 68 か月分の各 zip ファイルに含まれる毎時のデータ ファイルを使っています。 月ごとの zip ファイルには、他にも測候所 ID (WBAN) とそれが関連付けられている空港 (CallSign)、UTC (TimeZone) を基準とする空港のタイム ゾーン オフセットという 3 つの情報のマッピング (YYYYMMstation.txt) が含まれており、航空会社の遅延データを結合する際にこれらの情報が必要となります。
 
 ## <a name="setting-up-the-spark-environment"></a>Spark 環境のセットアップ
 
@@ -118,7 +118,7 @@ sqlContext <- sparkRSQL.init(sc)
 | 14871 | 24232 | -8
 | .. | .. | ..
 
-次のコードは、1 時間ごとの生の気象データ ファイルを&1; つずつ読み取って必要な列を抽出し、測候所のマッピング ファイルをマージして、測定日時を UTC に調整した後、新しいバージョンのファイルとして出力しています。
+次のコードは、1 時間ごとの生の気象データ ファイルを 1 つずつ読み取って必要な列を抽出し、測候所のマッピング ファイルをマージして、測定日時を UTC に調整した後、新しいバージョンのファイルとして出力しています。
 
 ```
 # Look up AirportID and Timezone for WBAN (weather station ID) and adjust time
@@ -535,7 +535,7 @@ logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 
 ## <a name="summary"></a>まとめ
 
-これで終了です。 この記事では、Hadoop Spark で SparkR を使ったデータ操作と ScaleR を使ったモデル開発を組み合わせて使う方法を紹介しました。ただし、ひとつ注意点があります。Spark セッションが互いにかち合わないよう、一度に&1; セッションずつ実行して、データを CSV ファイルを介して交換する必要があります。 単純な方法ではありますが、このプロセスによって、新しい R Server が今後リリースされ、SparkR と ScaleR とで Spark セッション (ひいては Spark DataFrames) を共有できるようになったときの移行作業がはるかに楽になります。
+これで終了です。 この記事では、Hadoop Spark で SparkR を使ったデータ操作と ScaleR を使ったモデル開発を組み合わせて使う方法を紹介しました。ただし、ひとつ注意点があります。Spark セッションが互いにかち合わないよう、一度に 1 セッションずつ実行して、データを CSV ファイルを介して交換する必要があります。 単純な方法ではありますが、このプロセスによって、新しい R Server が今後リリースされ、SparkR と ScaleR とで Spark セッション (ひいては Spark DataFrames) を共有できるようになったときの移行作業がはるかに楽になります。
 
 ## <a name="next-steps-and-more-information"></a>次のステップと詳細情報
 

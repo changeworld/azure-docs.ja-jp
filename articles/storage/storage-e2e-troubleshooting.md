@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: f32f61824de6a0195fc57b8cb0d73a89c7a06067
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: acf807538c8c9efdadb95c4b66db9a9d5d1f7a6d
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -32,10 +32,10 @@ ms.lasthandoff: 03/16/2017
 ## <a name="tools-for-troubleshooting-azure-storage-applications"></a>Azure Storage アプリケーションのトラブルシューティングに使用するツール
 Microsoft Azure Storage を使用してクライアント アプリケーションのトラブルシューティングを実施する場合、問題がいつ発生したのか、原因は何なのかを見極めるために複数のツールを組み合わせて使用することができます。 これには以下のツールが含まれます。
 
-* **Azure Storage Analytics**。 [Azure Storage Analytics](/rest/api/storageservices/fileservices/Storage-Analytics) では、Azure Storage 向けのメトリックとログが利用できます。
+* **Azure Storage Analytics**。 [Azure Storage Analytics](/rest/api/storageservices/Storage-Analytics) では、Azure Storage 向けのメトリックとログが利用できます。
   
-  * **ストレージ メトリック** は、ストレージ アカウントのトランザクション メトリックと容量メトリックを追跡するためのものです。 メトリックを使用すると、アプリケーションがどのように機能しているかを、さまざまな基準に従って判断できます。 Storage Analytics が追跡するメトリックの種類の詳細については、「 [Storage Analytics Metrics のテーブル スキーマ](/rest/api/storageservices/fileservices/Storage-Analytics-Metrics-Table-Schema) 」を参照してください。
-  * **ストレージ ログ** は、Azure Storage サービスへの各要求をサーバー側のログに記録します。 このログは、実行された操作、操作のステータス、遅延情報などを含む各要求の詳細データを追跡します。 Storage Analytics がログに書き込む要求および応答データの詳細については、「 [Storage Analytics のログの形式](/rest/api/storageservices/fileservices/Storage-Analytics-Log-Format) 」を参照してください。
+  * **ストレージ メトリック** は、ストレージ アカウントのトランザクション メトリックと容量メトリックを追跡するためのものです。 メトリックを使用すると、アプリケーションがどのように機能しているかを、さまざまな基準に従って判断できます。 Storage Analytics が追跡するメトリックの種類の詳細については、「 [Storage Analytics Metrics のテーブル スキーマ](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema) 」を参照してください。
+  * **ストレージ ログ** は、Azure Storage サービスへの各要求をサーバー側のログに記録します。 このログは、実行された操作、操作のステータス、遅延情報などを含む各要求の詳細データを追跡します。 Storage Analytics がログに書き込む要求および応答データの詳細については、「 [Storage Analytics のログの形式](/rest/api/storageservices/Storage-Analytics-Log-Format) 」を参照してください。
 
 > [!NOTE]
 > 現時点では、レプリケーションの種類がゾーン冗長ストレージ (ZRS) のストレージ アカウントでは、メトリックまたはログ機能が有効になっていません。 

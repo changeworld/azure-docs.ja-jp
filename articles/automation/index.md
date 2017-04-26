@@ -13,8 +13,9 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 5a96f86157516585742bf184a65f42b1a2070a95
-ms.openlocfilehash: 008fe9bc549d2ba4bc043c344b39409a04efe598
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 00c4fe633a7ef76b20d2a9d1c704bb09da6b19a0
+ms.lasthandoff: 04/20/2017
 
 ---
 # <a name="automation-documentation"></a>Automation のドキュメント
@@ -168,7 +169,7 @@ Automation を使用して、クラウド環境で実行される普段の管理
                 <div class="card">
                     <div class="cardText">
                         <h3>REST ()</h3>
-                        <p><a href="https://msdn.microsoft.com/library/azure/mt662285.aspx">REST API</a></p>
+                        <p><a href="/rest/api/automation/">REST API</a></p>
                         <p><a href="https://msdn.microsoft.com/library/azure/mt163781">クラシック REST API</a></p>
                     </div>
                 </div>
@@ -177,10 +178,5 @@ Automation を使用して、クラウド環境で実行される普段の管理
     </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

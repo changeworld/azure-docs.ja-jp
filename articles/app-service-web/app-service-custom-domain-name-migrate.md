@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: aea3e1bae3695636ec0f9bb347dbe205f701684e
-ms.openlocfilehash: 4f1b4c630cd1e676db4f8b512a8973ebee6f6eba
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: d6d506eef720488969c5b33fe4b94c02752c6b58
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -65,7 +65,7 @@ ms.lasthandoff: 02/16/2017
     </tr>
     <tr>
     <td>\*.contoso.com (ワイルドカード)</td>
-    <td>awverify.\*.contoso.com</td>
+    <td>awverify\*.contoso.com</td>
     <td>&lt;<i>appname</i>>.azurewebsites.net</td>
     </tr>
     </table>

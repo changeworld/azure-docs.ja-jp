@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/09/2017
 ms.author: TomSh
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 71e0d74f0e4787393e3184a3a5b553c4935cf785
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 659304937eebb1b2fe6faf019dfef63e1e29bcd4
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -235,9 +236,4 @@ Azure Security Center の詳細と、使用しているデプロイで有効に�
 Microsoft では、このデータセンター拡張を詳しく把握するうえで役立つ[データセンター拡張機能の参照アーキテクチャ図](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84#content)と関連資料を提供しています。 これに記載された実装例を利用して、エンタープライズ データセンターをクラウドに安全に拡張するための計画と設計を作成できます。 このドキュメントを参照し、安全なソリューションの主要要素を理解することをお勧めします。
 
 データセンターを Azure に安全に拡張する方法の詳細については、ビデオ「[Extending Your Datacenter to Microsoft Azure (Microsoft Azure へのデータセンターの拡張)](https://www.youtube.com/watch?v=Th1oQQCb2KA)」をご覧ください。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

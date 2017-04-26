@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 04/14/2017
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 3fb7a0361717d4616ec21e55c0a202ed8bf8991d
-ms.openlocfilehash: a537a71a43b49d510a12d1293d8ee898d66efe63
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: ab8623d6f9751ed6d71d9a5b1c0d5e939c442862
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -27,10 +28,14 @@ Azure toolkit for Eclipse の中で、ロールに対する HTTP セッション
 
 ## <a name="to-enable-session-affinity-for-your-role"></a>ロールに対するセッション アフィニティを有効にするには
 1. Eclipse の [Project Explorer (プロジェクト エクスプローラー)] でロールを右クリックし、**[Azure]**、**[Load Balancing (負荷分散)]** の順にクリックします。
+
 2. **[Properties for WorkerRole1 Load Balancing]** ダイアログで次のように操作します。
-   1. **[Enable HTTP session affinity (sticky sessions) for this role]**
-   2. **[Input endpoint to use (使用する入力エンドポイント)]** で、使用する入力エンドポイント (例: **http (パブリック:&80;、プライベート:&8080;)**) を選択します。 アプリケーションは、HTTP エンドポイントとしてこのエンドポイントを使用する必要があります。 ロールに対して複数のエンドポイントを有効にすることができますが、スティッキー セッションをサポートするにはその中の&1; つだけを選択できます。
-   3. アプリケーションをリビルドします。
+
+   a. **[Enable HTTP session affinity (sticky sessions) for this role]**
+
+   b. **[Input endpoint to use (使用する入力エンドポイント)]** で、使用する入力エンドポイント (例: **http (パブリック: 80、プライベート: 8080)**) を選択します。 アプリケーションは、HTTP エンドポイントとしてこのエンドポイントを使用する必要があります。 ロールに対して複数のエンドポイントを有効にすることができますが、スティッキー セッションをサポートするにはその中の 1 つだけを選択できます。
+
+   c. アプリケーションをリビルドします。
 
 有効にすると、1 つ以上のロール インスタンスがある場合、特定のクライアントからの HTTP 要求は、同じロール インスタンスによって処理され続けます。
 
@@ -38,8 +43,11 @@ Eclipse Toolkit では、各ロール インスタンスに Application Request 
 
 ## <a name="notes-about-session-affinity"></a>セッション アフィニティに関する注意事項
 * セッション アフィニティは、コンピューティング エミュレーターでは機能しません。 設定は、コンピューティング エミュレーターのビルド処理や実行を妨げることなくコンピューティング エミュレーターに適用できますが、機能自体はコンピューティング エミュレーターでは機能しません。
+
 * セッション アフィニティを有効にすると、Azure でのデプロイで使用されるディスク容量が増加します。これは、Azure クラウドでサービスが開始されたときに、追加ソフトウェアがダウンロードされインストールされるためです。
+
 * 各ロールの初期化時間が長くなります。
+
 * 上記のようにトラフィック リルーターとして機能する内部エンドポイントが追加されます。
 
 
@@ -65,9 +73,4 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 [ic719492]: ./media/azure-toolkit-for-eclipse-enable-session-affinity/ic719492.png
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh690950.aspx -->
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

@@ -12,11 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/30/2016
+ms.date: 04/03/2017
 ms.author: rli; juliako;
 translationtype: Human Translation
-ms.sourcegitcommit: 8d8575decb177001cefbb7f159841b64c3f84f41
-ms.openlocfilehash: d9bb513a7f5acc0ba41902795b159564b2562842
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: b34502aa75d94da1abcda880bb1a251a8455f3f8
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -90,12 +91,12 @@ JSON 注釈データを解析しようとしている開発者は、Models.MetaD
 
 ### <a name="set-up-the-tool"></a>ツールをセットアップする
 
-1.  ソリューション全体をダウンロードし、ビルドします。 
+1.    ソリューション全体をダウンロードし、ビルドします。 
 
     ![顔編集](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough009.png)
 
-2.  FFMPEG を[こちら](https://ffmpeg.org/download.html)からダウンロードします。 このプロジェクトは、もともと、バージョン be1d324 (2016-10-04) で開発され、静的リンクが設定されていました。 
-3.  ffmpeg.exe と ffprobe.exe を、AzureMediaRedactor.exe と同じ出力フォルダーにコピーします。 
+2.    FFMPEG を[こちら](https://ffmpeg.org/download.html)からダウンロードします。 このプロジェクトは、もともと、バージョン be1d324 (2016-10-04) で開発され、静的リンクが設定されていました。 
+3.    ffmpeg.exe と ffprobe.exe を、AzureMediaRedactor.exe と同じ出力フォルダーにコピーします。 
 
     ![顔編集](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough010.png)
 
@@ -113,9 +114,13 @@ JSON 注釈データを解析しようとしている開発者は、Models.MetaD
     
     ![顔編集](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough012.png)
 
-5.  下部にあるテキスト フィールドには、顔の ID が表示されます。 これらの ID を 改行区切りリストとして含む "idlist.txt" という名前のファイルを作成します。 
-6.  このファイルを、手順 1 で生成された出力資産にアップロードします。 元のビデオをこの資産にアップロードし、プライマリ資産として設定します。 
-7.  この資産に対して "修正" モードで修正ジョブを実行して、修正後の最終ビデオを取得します。 
+5.    下部にあるテキスト フィールドには、顔の ID が表示されます。 これらの ID を 改行区切りリストとして含む "idlist.txt" という名前のファイルを作成します。 
+
+    >[!NOTE]
+    > idlist.txt は ANSI で保存してください。 メモ帳を利用し、ANSI で保存できます。
+    
+6.    このファイルを、手順 1 で生成された出力資産にアップロードします。 元のビデオをこの資産にアップロードし、プライマリ資産として設定します。 
+7.    この資産に対して "修正" モードで修正ジョブを実行して、修正後の最終ビデオを取得します。 
 
 ## <a name="next-steps"></a>次のステップ 
 
@@ -129,9 +134,5 @@ JSON 注釈データを解析しようとしている開発者は、Models.MetaD
 
 [Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-
-
-
-<!--HONumber=Dec16_HO1-->
-
+[Azure Media Analytics の顔編集の発表](https://azure.microsoft.com/blog/azure-media-redactor/)
 

@@ -15,23 +15,14 @@ ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 236d38fcda90643992f66c9b2f4d92180e4463f5
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: e0c999b2bf1dd38d8a0c99c6cdd4976cc896dd99
+ms.openlocfilehash: 1caea59e71126e934e2e52a1ad7f533ffa7d4b03
+ms.lasthandoff: 04/20/2017
 
 
 ---
 # <a name="devtest-labs-concepts"></a>DevTest ラボの概念
-> [!NOTE]
-> この記事は、3 部構成のシリーズの第 3 部です。
->
-> 1. [DevTest ラボとは](devtest-lab-overview.md)
-> 2. [DevTest ラボを使用する理由](devtest-lab-why.md)
-> 3. **[DevTest ラボの概念](devtest-lab-concepts.md)**
->
->
-
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 次の一覧には、DevTest ラボの主要な概念と定義が含まれています。
 
 ## <a name="labs"></a>ラボ
@@ -91,10 +82,10 @@ DevTest Labs にカスタム ロールを作成する方法については、記
 
 スコープは階層構造を持つため、ユーザーが特定のスコープのアクセス許可を持つ場合は、含まれているすべての下位のスコープでそのアクセス許可が自動的に付与されます。 たとえば、ユーザーにサブスクリプション所有者のロールが割り当てられている場合、ユーザーはサブスクリプションのすべてのリソースにアクセスできます。これには、すべての仮想マシン、すべての仮想ネットワーク、およびすべてのラボが含まれます。 このため、サブスクリプション所有者は、ラボ所有者のロールを自動的に継承します。 ただし、その逆は真ではありません。 ラボ所有者はラボにアクセスできます。これはサブスクリプション レベルよりも下位のスコープです。 そのため、ラボ所有者はラボの外にある仮想マシン、仮想ネットワーク、またはいずれのリソースも表示できません。
 
-## <a name="arm-templates"></a>ARM テンプレート
-この記事で説明されているすべての概念は、Azure Resource Manager (ARM) テンプレートを使用して構成できます。 ARM テンプレートを使用すると、Azure ソリューションのインフラストラクチャや構成を定義し、それを一貫性のある状態で繰り返しデプロイできます。
+## <a name="azure-resource-manager-templates"></a>Azure リソース マネージャーのテンプレート
+この記事で取り扱う概念はすべて Azure Resource Manager テンプレートを利用して構成できます。Azure Resource Manager テンプレートを利用すると、Azure ソリューションのインフラストラクチャ/構成を定義し、一貫性のある状態で繰り返しデプロイできます。
 
-[ARM テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates#template-format)では、Azure Resource Manager テンプレートの構造と、テンプレートのさまざまなセクションで利用できるプロパティが示されます。
+「[Azure Resource Manager テンプレートの構造と構文の詳細](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates#template-format)」では、Azure Resource Manager テンプレートの構造とテンプレートのさまざまなセクションで利用できるプロパティについて説明しています。
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

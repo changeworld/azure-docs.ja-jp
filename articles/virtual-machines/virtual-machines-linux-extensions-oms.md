@@ -1,5 +1,5 @@
 ---
-redirect_url: /azure/virtual-machines/linux/extensions-oms
+redirect_url: /articles/virtual-machines/linux/extensions-oms.md
 redirect_document_id: true
 translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3

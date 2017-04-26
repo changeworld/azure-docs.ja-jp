@@ -16,9 +16,9 @@ ms.custom: manage
 ms.date: 03/22/2017
 ms.author: elbutter
 translationtype: Human Translation
-ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
-ms.openlocfilehash: f4a79413bc5e660504b4b6b48fcf496fb0f08ade
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: abe22f542a79714f6e894870872ee6b76ffe7633
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -171,7 +171,7 @@ DWU をスケーリングするタイミングを特定するための推奨事�
 ## <a name="next-steps"></a>次のステップ
 その他の主要なパフォーマンスの概念を理解するために、次の記事を参照してください。
 
-* [ワークロードと同時実行の管理][ワークロードと同時実行の管理]
+* [ワークロードと同時実行の管理][Workload and concurrency management]
 * [テーブル設計の概要][Table design overview]
 * [テーブルの分散][Table distribution]
 * [テーブルのインデックス作成][Table indexing]

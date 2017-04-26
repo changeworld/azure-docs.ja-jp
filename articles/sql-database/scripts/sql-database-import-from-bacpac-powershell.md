@@ -17,17 +17,17 @@ ms.workload: database
 ms.date: 03/07/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 0afe2d9e8cb6d26c43830df0ebfe2cea5c2f7665
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: ff27ec5eb86b11bbbc91e648ffa72956436f445a
+ms.lasthandoff: 04/12/2017
 
 ---
 
 # <a name="import-from-a-bacpac-into-a-sql-database-using-powershell"></a>PowerShell を使用した bacpac から SQL データベースへのインポート
 
-この PowerShell のサンプル スクリプトでは、bacpac からデータベースをインポートします。  
+この PowerShell のサンプル スクリプトでは、**bacpac** ファイルからデータベースをインポートします。  
 
-[!INCLUDE [sample-cli-install](../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -47,11 +47,11 @@ Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
 
 | コマンド | メモ |
 |---|---|
-| [New-AzureRmResourceGroup]() | すべてのリソースを格納するリソース グループを作成します。 |
-| [New-AzureRmSqlServer]() | SQL Database をホストする論理サーバーを作成します。 |
-| [New-AzureRmSqlServerFirewallRule]() | サーバー上のすべての SQL データベースに対する入力した IP アドレス範囲からのアクセスを許可するファイアウォール規則を作成します。 |
-| [New-AzureRmSqlDatabase]() | 論理サーバー内に SQL Database を作成します。 |
-| [Remove-AzureRmResourceGroup]() | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.3.0/new-azurermresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
+| [New-AzureRmSqlServer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.5.0/new-azurermsqlserver) | SQL Database をホストする論理サーバーを作成します。 |
+| [New-AzureRmSqlServerFirewallRule](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/new-azurermsqlserverfirewallrule) | サーバー上のすべての SQL データベースに対する入力した IP アドレス範囲からのアクセスを許可するファイアウォール規則を作成します。 |
+| [New-AzureRmSqlDatabaseImport](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaseimport?view=azurermps-3.7.0) | .bacpac ファイルをインポートし、新しいデータベースをサーバー上に作成します。 |
+| [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.2.0/remove-azurermresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: migrate
 ms.date: 01/30/2017
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: d9436796373af55a18c0b6fbfc036bd6616bbe4f
-ms.openlocfilehash: 0c9a7792331b4662a93a78fe5dd08ab037b466db
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 3fd5224983c723faefb8001888ae20e78acdb8ce
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -31,7 +33,8 @@ Azure SQL Data Warehouse でサポートされていない一般的な機能を�
 * [MERGE ステートメント][merge statement]
 * 複数データベースの JOIN
 * [カーソル][cursors]
-* [INSERT..EXEC][INSERT..EXEC]
+* <seg>
+  [INSERT..EXEC][INSERT..EXEC]</seg>
 * OUTPUT 句
 * インライン ユーザー定義関数
 * 複数ステートメント関数
@@ -91,7 +94,7 @@ SQL Data Warehouse での共通テーブル式の制限事項を次に示しま�
 これらの問題の一部は回避できます。
 
 ## <a name="rowcount-workaround"></a>@@ROWCOUNT 対処法
-@@ROWCOUNT, がサポートされていない問題を回避するには、sys.dm_pdw_request_steps から最後の行数を取得するストアド プロシージャを作成して、DML ステートメントの後で `EXEC LastRowCount` を実行することです。
+@@ROWCOUNT がサポートされていない問題を回避するには、sys.dm_pdw_request_steps から最後の行数を取得するストアド プロシージャを作成して、DML ステートメントの後で `EXEC LastRowCount` を実行することです。
 
 ```sql
 CREATE PROCEDURE LastRowCount AS
@@ -135,9 +138,4 @@ SELECT TOP 1 row_count FROM LastRequestRowCounts ORDER BY step_index DESC
 <!--MSDN references-->
 
 <!--Other Web references-->
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

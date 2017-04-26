@@ -1,21 +1,22 @@
 ---
-title: "Application Insights での作業 | Microsoft Docs"
+title: "Azure Application Insights での作業 | Microsoft Docs"
 description: "Application Insights での FAQ。"
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 48b2b644-92e4-44c3-bc14-068f1bbedd22
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 02/05/2016
+ms.date: 04/04/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
-ms.openlocfilehash: 9e54ee2d67a8dfb5b480db01219e128607e26f51
+ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
+ms.openlocfilehash: d7795a494fbe8d3a850d7d8805cf059a86965a64
+ms.lasthandoff: 04/05/2017
 
 
 ---
@@ -50,7 +51,7 @@ ms.openlocfilehash: 9e54ee2d67a8dfb5b480db01219e128607e26f51
     measurements ["Alarm"] = 10;
     telemetry.TrackEvent("status", null, measurements);
 
-アラートには&2; つの状態があるため、アラートを終了するときは低い値を送信する必要があります。
+アラートには 2 つの状態があるため、アラートを終了するときは低い値を送信する必要があります。
 
     telemetry.TrackMetric("Alarm", 0.5);
 
@@ -68,10 +69,10 @@ ms.openlocfilehash: 9e54ee2d67a8dfb5b480db01219e128607e26f51
 
 考慮すべき点:
 
-* アラートには、"警告" と "正常" の&2; つの状態があります。 状態はメトリックを受信した場合にのみ評価されます。
+* アラートには、"警告" と "正常" の 2 つの状態があります。 状態はメトリックを受信した場合にのみ評価されます。
 * 電子メールは状態が変化したときにのみ送信されます。 これは、高い値と低い値の両方のメトリックを送信する必要がある理由です。
 * アラートを評価するため、前の期間に受け取った値の平均が計算されます。 これはメトリックを受信するたびに行われるので、設定した期間より頻繁に電子メールが送信される可能性があります。
-* 電子メールは "警告" と "正常" の両方で送信されるので、1 回限りのイベントを&2; つの状態として考え直すことができます。 たとえば、"ジョブ完了" イベントの代わりに、"ジョブ進行中" という状態を考え、その場合はジョブの開始時と終了時に電子メールを受け取ります。
+* 電子メールは "警告" と "正常" の両方で送信されるので、1 回限りのイベントを 2 つの状態として考え直すことができます。 たとえば、"ジョブ完了" イベントの代わりに、"ジョブ進行中" という状態を考え、その場合はジョブの開始時と終了時に電子メールを受け取ります。
 
 ### <a name="set-up-alerts-automatically"></a>アラートの自動設定
 [Use PowerShell to create new alerts (PowerShell を使用した新しいアラートの作成)](app-insights-alerts.md#automation)
@@ -206,8 +207,21 @@ ms.openlocfilehash: 9e54ee2d67a8dfb5b480db01219e128607e26f51
 * 最初に、 [新しいグラフを追加](app-insights-metrics-explorer.md) し、提供されている基本的なセットにカウンターが含まれているかどうかを確認します。
 * 含まれていない場合は、[パフォーマンス カウンター モジュールによって収集されたセットにカウンターを追加](app-insights-performance-counters.md)します。
 
+## <a name="version-and-release-tracking"></a>バージョンおよびリリースの追跡
+アプリケーションのバージョンを追跡するには、Microsoft Build Engine プロセスによって `buildinfo.config` が生成されたことを確認してください。 .csproj ファイルに、次のコードを追加します。  
 
+```XML
 
-<!--HONumber=Feb17_HO1-->
+    <PropertyGroup>
+      <GenerateBuildInfoConfigFile>true</GenerateBuildInfoConfigFile>    <IncludeServerNameInBuildInfo>true</IncludeServerNameInBuildInfo>
+    </PropertyGroup>
+```
 
+ビルド情報がある場合、Application Insights Web モジュールは、 **アプリケーションのバージョン** をプロパティとしてテレメトリのすべての項目に自動的に追加します。 これにより、[診断の検索](app-insights-diagnostic-search.md)を実行するとき、または[メトリックを調べる](app-insights-metrics-explorer.md)ときに、バージョンによってフィルター処理できます。
 
+ただし、Visual Studio での開発者向けのビルドではなく、Microsoft Build Engine でのみビルド バージョン番号が生成されることに注意してください。
+
+### <a name="release-annotations"></a>リリース注釈
+Visual Studio Team Services を使用する場合は、新しいバージョンをリリースするたびに、グラフに[注釈マーカーを追加](app-insights-annotations.md)できます。 このマーカーは、次の図のように表示されます。
+
+![グラフのリリース注釈の例のスクリーンショット](./media/app-insights-asp-net/release-annotation.png)

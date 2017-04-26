@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/03/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 8b9e174523b3d08be20a4d30cc83c11f5bc93cd5
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: a47a806856be9e2daa9bcac8ce23da4d15386cc8
+ms.lasthandoff: 04/06/2017
 
 ---
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 03/06/2017
 ## <a name="overview"></a>概要
 Azure PowerShell は、Windows PowerShell から Azure を管理するコマンドレットを提供するモジュールです。 タスクベースのコマンドライン シェルとスクリプト言語であり、システム管理に特化して設計されています。 PowerShell を使用すると、Azure サービスやアプリケーションの管理を容易に制御して自動化できます。 たとえば、このコマンドレットを使用して、[Azure Portal](https://portal.azure.com) で実行できるタスクと同じタスクを実行できます。
 
-このガイドでは、 [Azure Storage 用コマンドレット](https://msdn.microsoft.com/library/azure/mt269418.aspx) を使用して、Azure Storage でさまざまな開発タスクや管理タスクを実行する方法について説明します。
+このガイドでは、[Azure Storage 用コマンドレット](https://msdn.microsoft.com/library/azure/mt269418.aspx)を使用して、Azure Storage でさまざまな開発タスクや管理タスクを実行する方法について説明します。
 
 このガイドは、[Azure Storage](https://azure.microsoft.com/documentation/services/storage/) と [Windows PowerShell](http://technet.microsoft.com/library/bb978526.aspx) を使った経験がある読者を対象としています。 また、PowerShell と Azure Storage の使用方法を示すための多くのスクリプトを用意しています。 各スクリプトの実行前に、使用する構成に基づいてスクリプト変数を更新する必要があります。
 
@@ -102,7 +102,7 @@ Azure サブスクリプションの詳細については、「 [Azure Active Di
 6. **Windows PowerShell ISE**で、Ctrl キーを押しながら V キーを押してスクリプトを貼り付けます。 **[ファイル]** > **[保存]** の順にクリックします。 **[名前を付けて保存]** ダイアログ ウィンドウで、スクリプト ファイルの名前を "mystoragescript" などとして入力します。 [ **Save**] をクリックします。
 7. ここで、構成設定に基づいてスクリプト変数を更新する必要があります。 たとえば、 **$SubscriptionName** 変数を自分のサブスクリプションで更新する必要があります。 その他の変数は、スクリプトで指定されたままにすることも、必要に応じて更新することも可能です。
    
-   * **$SubscriptionName:** この変数は、自分のサブスクリプション名で更新する必要があります。 次の&3; つの方法のいずれかに従って、サブスクリプションの名前を確認します。
+   * **$SubscriptionName:** この変数は、自分のサブスクリプション名で更新する必要があります。 次の 3 つの方法のいずれかに従って、サブスクリプションの名前を確認します。
      
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **Windows PowerShell ISE** で、**[ファイル]** > **[新規作成]** の順にクリックして、新しいスクリプト ファイルを作成します。 次のスクリプトを新しいスクリプト ファイルにコピーし、**[デバッグ]** > **[実行/続行]** の順にクリックします。 次のスクリプトでは、Azure アカウントをローカルの PowerShell 環境に追加するための Azure アカウント資格情報が最初に求められ、次に、ローカルの PowerShell セッション接続されているすべてのサブスクリプションが表示されます。 このチュートリアルに従って作業する際に使用するサブスクリプションの名前を書き留めます。
      
@@ -236,7 +236,7 @@ Get-AzureStorageAccount | Format-Table -Property StorageAccountName, Location, A
 ### <a name="how-to-create-an-azure-storage-context"></a>Azure ストレージ コンテキストを作成する方法
 Azure ストレージ コンテキストは、ストレージ資格情報をカプセル化するための PowerShell 内のオブジェクトです。 後続のコマンドレットを実行する際にストレージ コンテキストを使用すると、ストレージ アカウントとそのアクセス キー明示的に指定しなくても、要求を認証できます。 ストレージ コンテキストは、ストレージ アカウント名とアクセス キーを使用する、Shared Access Signature (SAS) トークンを使用する、接続文字列または匿名を使用するなどのさまざまな方法で作成できます。 詳細については、「 [New-AzureStorageContext](http://msdn.microsoft.com/library/azure/dn806380.aspx)」を参照してください。  
 
-次の&3; つの方法のいずれかを使用してストレージ コンテキストを作成します。
+次の 3 つの方法のいずれかを使用してストレージ コンテキストを作成します。
 
 * [Get-AzureStorageKey](http://msdn.microsoft.com/library/azure/dn495235.aspx) コマンドレットを実行し、Azure ストレージ アカウントのプライマリ ストレージ アクセス キーを確認します。 次に、 [New-AzureStorageContext](http://msdn.microsoft.com/library/azure/dn806380.aspx) コマンドレットを呼び出し、ストレージ コンテキストを作成します。
 
@@ -267,7 +267,7 @@ Azure ストレージ コンテキストは、ストレージ資格情報をカ�
 これで、コンピューターを設定できました。また、Azure PowerShell を使用してサブスクリプションとストレージ アカウントを管理する方法を確認できました。次のセクションでは、Azure BLOB と BLOB スナップショットを管理する方法について説明します。
 
 ### <a name="how-to-retrieve-and-regenerate-azure-storage-keys"></a>Azure Storage キーを取得および再生成する方法
-Azure Storage アカウントには&2; つのアカウント キーがあります。 次のコマンドレットを使用すると、ご自身のキーを取得できます。
+Azure Storage アカウントには 2 つのアカウント キーがあります。 次のコマンドレットを使用すると、ご自身のキーを取得できます。
 
 ```powershell
 Get-AzureStorageKey -StorageAccountName "yourstorageaccount"
@@ -284,9 +284,9 @@ Get-AzureStorageKey -StorageAccountName "yourstorageaccount"
 キーを再生成するには、次のコマンドレットを使用します。 -KeyType の有効な値は "Primary" と "Secondary" です
 
 ```powershell
-New-AzureStorageKey -StorageAccountName $StorageAccountName -KeyType “Primary”
+New-AzureStorageKey -StorageAccountName $StorageAccountName -KeyType "Primary"
     
-New-AzureStorageKey -StorageAccountName $StorageAccountName -KeyType “Secondary”
+New-AzureStorageKey -StorageAccountName $StorageAccountName -KeyType "Secondary"
 ```
 
 ## <a name="how-to-manage-azure-blobs"></a>Azure BLOB の管理方法
@@ -301,7 +301,7 @@ New-AzureStorageContainer -Name $StorageContainerName -Permission Off
 ```
 
 > [!NOTE]
-> **Off**、**Blob**、**Container** という&3; つのレベルの匿名読み取りアクセスがあります。 BLOB に対する匿名アクセスを許可しない場合は、Permission パラメーターを **Off**に設定します。 既定では、新しいコンテナーはプライベートであり、アカウント所有者のみがアクセスできます。 BLOB リソースに対する匿名パブリック読み取りアクセスを許可するが、コンテナー メタデータまたはコンテナー内の BLOB の一覧に対するアクセスは許可しない場合は、Permission パラメーターを **BLOB**に設定します。 BLOB リソース、コンテナー メタデータ、コンテナー内の BLOB の一覧に対する完全パブリック読み取りアクセスを許可する場合は、Permission パラメーターを **Container**に設定します。 詳細については、「 [コンテナーと BLOB への匿名読み取りアクセスを管理する](storage-manage-access-to-resources.md)」を参照してください。
+> **Off**、**Blob**、**Container** という 3 つのレベルの匿名読み取りアクセスがあります。 BLOB に対する匿名アクセスを許可しない場合は、Permission パラメーターを **Off**に設定します。 既定では、新しいコンテナーはプライベートであり、アカウント所有者のみがアクセスできます。 BLOB リソースに対する匿名パブリック読み取りアクセスを許可するが、コンテナー メタデータまたはコンテナー内の BLOB の一覧に対するアクセスは許可しない場合は、Permission パラメーターを **BLOB**に設定します。 BLOB リソース、コンテナー メタデータ、コンテナー内の BLOB の一覧に対する完全パブリック読み取りアクセスを許可する場合は、Permission パラメーターを **Container**に設定します。 詳細については、「 [コンテナーと BLOB への匿名読み取りアクセスを管理する](storage-manage-access-to-resources.md)」を参照してください。
 > 
 > 
 
@@ -467,7 +467,7 @@ New-AzureStorageTable –Name $tabName –Context $Ctx
 ```
 
 ### <a name="how-to-retrieve-a-table"></a>テーブルを取得する方法
-あるストレージ アカウント内の&1; 個またはすべてのテーブルを照会して取得できます。 次の例は、 [Get-AzureStorageTable](http://msdn.microsoft.com/library/azure/dn806411.aspx) コマンドレットを使用して特定のテーブルを取得する方法を示しています。
+あるストレージ アカウント内の 1 個またはすべてのテーブルを照会して取得できます。 次の例は、 [Get-AzureStorageTable](http://msdn.microsoft.com/library/azure/dn806411.aspx) コマンドレットを使用して特定のテーブルを取得する方法を示しています。
 
 ```powershell
 #Retrieve a table.
@@ -541,7 +541,7 @@ Add-Entity -Table $table -PartitionKey Partition2 -RowKey Row2 -Name Steven -Id 
 ```
 
 #### <a name="how-to-query-table-entities"></a>テーブル エンティティを照会する方法
-テーブルを照会するには、[Microsoft.WindowsAzure.Storage.Table.TableQuery](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.table.tablequery.aspx) クラスを使います。 次の例では、このガイドのエンティティの追加方法に関するセクションで指定されたスクリプトを実行済みであると想定しています。 この例では、まず、ストレージ コンテキストを使用して Azure Storage への接続を確立します。このコンテキストには、ストレージ アカウント名とそのアクセス キーが含まれます。 次に、[Get-AzureStorageTable](http://msdn.microsoft.com/library/azure/dn806411.aspx) コマンドレットを使って、作成済みの Employees テーブルの取得を試みます。 Microsoft.WindowsAzure.Storage.Table.TableQuery クラスで [New-Object](http://technet.microsoft.com/library/hh849885.aspx) コマンドレットを呼び出すと、新しいクエリ オブジェクトが作成されます。 そして、文字列フィルターで指定されたとおりの 1 を値とする "ID" 列があるエンティティを見つけます。 詳しくは、「[テーブルおよびエンティティのクエリ](http://msdn.microsoft.com/library/azure/dd894031.aspx)」をご覧ください。 このクエリを実行すると、フィルター条件に一致するすべてのエンティティが返されます。
+テーブルを照会するには、[Microsoft.WindowsAzure.Storage.Table.TableQuery](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.table.tablequery.aspx) クラスを使います。 次の例では、このガイドのエンティティの追加方法に関するセクションで指定されたスクリプトを実行済みであると想定しています。 この例では、まず、ストレージ コンテキストを使用して Azure Storage への接続を確立します。このコンテキストには、ストレージ アカウント名とそのアクセス キーが含まれます。 次に、[Get-AzureStorageTable](http://msdn.microsoft.com/library/azure/dn806411.aspx) コマンドレットを使って、作成済みの "Employees" テーブルの取得を試みます。 Microsoft.WindowsAzure.Storage.Table.TableQuery クラスで [New-Object](http://technet.microsoft.com/library/hh849885.aspx) コマンドレットを呼び出すと、新しいクエリ オブジェクトが作成されます。 そして、文字列フィルターで指定されたとおりの 1 を値とする "ID" 列があるエンティティを見つけます。 詳しくは、「[テーブルおよびエンティティのクエリ](http://msdn.microsoft.com/library/azure/dd894031.aspx)」をご覧ください。 このクエリを実行すると、フィルター条件に一致するすべてのエンティティが返されます。
 
 ```powershell
 #Define the storage account and context.
@@ -575,7 +575,7 @@ $entities  | Format-Table PartitionKey, RowKey, @{ Label = "Name"; Expression={$
 ```
 
 #### <a name="how-to-delete-table-entities"></a>テーブル エンティティを削除する方法
-パーティション キーと行キーを使用してエンティティを削除できます。 次の例では、このガイドのエンティティの追加方法に関するセクションで指定されたスクリプトを実行済みであると想定しています。 この例では、まず、ストレージ コンテキストを使用して Azure Storage への接続を確立します。このコンテキストには、ストレージ アカウント名とそのアクセス キーが含まれます。 次に、[Get-AzureStorageTable](http://msdn.microsoft.com/library/azure/dn806411.aspx) コマンドレットを使って、作成済みの Employees テーブルの取得を試みます。 このテーブルが存在する場合は、[Microsoft.WindowsAzure.Storage.Table.TableOperation.Retrieve](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.table.tableoperation.retrieve.aspx) メソッドを呼び出し、パーティションと行キーの値に基づいてエンティティを取得します。 次に、このエンティティを [Microsoft.WindowsAzure.Storage.Table.TableOperation.Delete](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.table.tableoperation.delete.aspx) メソッドに渡して削除します。
+パーティション キーと行キーを使用してエンティティを削除できます。 次の例では、このガイドのエンティティの追加方法に関するセクションで指定されたスクリプトを実行済みであると想定しています。 この例では、まず、ストレージ コンテキストを使用して Azure Storage への接続を確立します。このコンテキストには、ストレージ アカウント名とそのアクセス キーが含まれます。 次に、[Get-AzureStorageTable](http://msdn.microsoft.com/library/azure/dn806411.aspx) コマンドレットを使って、作成済みの "Employees" テーブルの取得を試みます。 このテーブルが存在する場合は、[Microsoft.WindowsAzure.Storage.Table.TableOperation.Retrieve](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.table.tableoperation.retrieve.aspx) メソッドを呼び出し、パーティションと行キーの値に基づいてエンティティを取得します。 次に、このエンティティを [Microsoft.WindowsAzure.Storage.Table.TableOperation.Delete](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.table.tableoperation.delete.aspx) メソッドに渡して削除します。
 
 ```powershell
 #Define the storage account and context.
@@ -667,7 +667,7 @@ if ($Queue -ne $null) {
 ```
 
 #### <a name="how-to-de-queue-at-the-next-message"></a>次のメッセージでデキューする方法
-コードでは、2 つの手順でキューからメッセージをデキューします。 [Microsoft.WindowsAzure.Storage.Queue.CloudQueue.GetMessage](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.getmessage.aspx) メソッドを呼び出すと、キュー内の次のメッセージが取得されます。 **GetMessage** から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。 キューからのメッセージの削除を完了するには、 [Microsoft.WindowsAzure.Storage.Queue.CloudQueue.DeleteMessage](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.deletemessage.aspx) メソッドも呼び出す必要があります。 このようにメッセージを&2; つの手順で削除することで、ハードウェアまたはソフトウェアの問題が原因でコードによるメッセージの処理が失敗した場合に、コードの別のインスタンスで同じメッセージを取得し、もう一度処理することができます。 コードでは、メッセージが処理された直後に **DeleteMessage** を呼び出します。
+コードでは、2 つの手順でキューからメッセージをデキューします。 [Microsoft.WindowsAzure.Storage.Queue.CloudQueue.GetMessage](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.getmessage.aspx) メソッドを呼び出すと、キュー内の次のメッセージが取得されます。 **GetMessage** から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。 キューからのメッセージの削除を完了するには、 [Microsoft.WindowsAzure.Storage.Queue.CloudQueue.DeleteMessage](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.deletemessage.aspx) メソッドも呼び出す必要があります。 このようにメッセージを 2 つの手順で削除することで、ハードウェアまたはソフトウェアの問題が原因でコードによるメッセージの処理が失敗した場合に、コードの別のインスタンスで同じメッセージを取得し、もう一度処理することができます。 コードでは、メッセージが処理された直後に **DeleteMessage** を呼び出します。
 
 ```powershell
 # Define the storage account and context.
@@ -701,13 +701,13 @@ PowerShell を使用してストレージ ログを有効にする方法とロ�
 ストレージ メトリックとストレージ ログを使用してストレージの問題のトラブルシューティングを行う方法の詳細については、 [Microsoft Azure Storage の監視、診断、トラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)に関するページを参照してください。
 
 ## <a name="how-to-manage-shared-access-signature-sas-and-stored-access-policy"></a>Shared Access Signature (SAS) や格納されているアクセス ポリシーの選択を管理する方法
-共有アクセス署名は、Azure Storage を使用するあらゆるアプリケーションのセキュリティ モデルの重要な部分となります。 アカウント キーを知らせずに、ストレージ アカウントへの制限付きアクセス許可をクライアントに付与する場合に便利です。 既定では、ストレージ アカウントの所有者のみがそのアカウントを使って BLOB、テーブル、キューなどにアクセスできます。 サービスやアプリケーションで、アクセス キーを共有せずに他のクライアントでそれらのリソースを使えるようにするには、次の&3; つの方法があります。
+共有アクセス署名は、Azure Storage を使用するあらゆるアプリケーションのセキュリティ モデルの重要な部分となります。 アカウント キーを知らせずに、ストレージ アカウントへの制限付きアクセス許可をクライアントに付与する場合に便利です。 既定では、ストレージ アカウントの所有者のみがそのアカウントを使って BLOB、テーブル、キューなどにアクセスできます。 サービスやアプリケーションで、アクセス キーを共有せずに他のクライアントでそれらのリソースを使えるようにするには、次の 3 つの方法があります。
 
 * 匿名ユーザーにコンテナーや BLOB への読み込みアクセスを許可するようにコンテナーのアクセス許可を設定します。 これはテーブルやキューでは許可されません。
 * Shared Access Signature を使用して、特定の期間のコンテナー、BLOB、キュー、テーブルへの制限付きアクセス権を付与します。
 * 保存されたアクセス ポリシーを使用して、コンテナー、BLOB、キュー、テーブルに対する共有アクセス署名の制御を追加します。 保存されたアクセス ポリシーによって、開始時刻、有効期限、署名の許可の変更や、署名が発行された後の取り消しが行えるようになります。
 
-Shared Access Signature の形式は、次の&2; つのいずれかです。
+Shared Access Signature の形式は、次の 2 つのいずれかです。
 
 * **アドホック SAS**: アドホック SAS を作成すると、開始時刻、有効期限、SAS へのアクセス許可がすべて、SAS URI で指定されます。 この種類の SAS は、コンテナー、BLOB、テーブル、キューで作成できます。これは取り消しできません。
 * **保存されているアクセス ポリシーのある SAS:**保存されているアクセス ポリシーは、リソース コンテナー (BLOB コンテナー、テーブル、またはキュー) で定義されており、これを使用して、1 つ以上の共有アクセス署名のコンテナーを管理できます。 保存されているアクセス ポリシーに SAS を関連付けると、SAS は、保存されているアクセス ポリシーに定義されている制約 (開始時刻、有効期限、およびアクセス許可) を継承します。 この種類の SAS は、取り消しできません。

@@ -12,11 +12,13 @@ ms.workload: sql-data-warehouse
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2016
+ms.custom: reference
+ms.date: 03/30/2017
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ab5b0c283d1bd3fd1b734082d5ccffa4125f6de4
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 9fe41f12960dc099700e01573b4f03ebf63f8749
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -34,7 +36,7 @@ ms.openlocfilehash: ab5b0c283d1bd3fd1b734082d5ccffa4125f6de4
 | &nbsp; | 記事 | 更新されたテキスト (抜粋) | 更新日 |
 | ---:|:--- |:--- |:--- |
 | 2 |[Azure Blob Storage ストレージから SQL Data Warehouse へのデータの読み込み (PolyBase)](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) |/- バイトとファイルを追跡するには SELECT  r.command,  s.request_id,  r.status,  count(distinct input_name) as nbr_files,  sum(s.bytes_processed)/1024/1024 as gb_processed FROM  sys.dm_pdw_exec_requests r  inner join sys.dm_pdw_dms_external_work s  on r.request_id = s.request_id WHERE  r. label  = 'CTAS : Load  cso . DimProduct  '  OR r. label  = 'CTAS : Load  cso . FactOnlineSales  ' GROUP BY  r.command,  s.request_id,  r.status ORDER BY  nbr_files desc,  gb_processed desc; |2016-09-07 |
-| 3 |[SQL Data Warehouse の復元](sql-data-warehouse-restore-database-overview.md) |**一時停止中のデータ ウェアハウスを復元できますか?** 一時停止中のデータ ウェアハウスを復元するには、最初にオンラインに戻す必要があります。 データ ウェアハウスがオンラインに戻ると、7 日間の復元ポイントから選択できます。 **地理冗長領域に復元** 地理冗長ストレージを使用している場合は、さまざまな地理的地域のペアのデータ センターにデータ ウェアハウスを復元できます。 データ ウェアハウスは、最新の日次バックアップから復元されます。 **タイムライン復元** 過去 7 日間の任意の復元ポイントにデータベースを復元できます。 スナップショットは 4 ～ 8 時間ごとに開始され、7 日間使用できます。 スナップショットが 7 日間以上経過した場合、期限切れとなり、復元ポイントは使用できなくなります。 **復元コスト** 復元されたデータ ウェアハウスのストレージ料金は、Azure Premium Storage レートで請求されます。 復元されたデータ ウェアハウスを一時停止した場合、Azure Premium Storage レートでストレージに対して課金されます。 一時停止の利点は、課金されないことです。 |2016-09-29 |
+| 3 |[SQL Data Warehouse の復元](sql-data-warehouse-restore-database-overview.md) |**一時停止されたデータ ウェアハウスは復元できますか?** 一時停止中のデータ ウェアハウスを復元するには、最初にオンラインに戻す必要があります。 データ ウェアハウスがオンラインに戻ると、7 日間の復元ポイントから選択できます。 **地理冗長領域に復元** 地理冗長ストレージを使用している場合は、さまざまな地理的地域のペアのデータ センターにデータ ウェアハウスを復元できます。 データ ウェアハウスは、最新の日次バックアップから復元されます。 **タイムライン復元** 過去 7 日間の任意の復元ポイントにデータベースを復元できます。 スナップショットは 4 ～ 8 時間ごとに開始され、7 日間使用できます。 スナップショットが 7 日間以上経過した場合、期限切れとなり、復元ポイントは使用できなくなります。 **復元コスト** 復元されたデータ ウェアハウスのストレージ料金は、Azure Premium Storage レートで請求されます。 復元されたデータ ウェアハウスを一時停止した場合、Azure Premium Storage レートでストレージに対して課金されます。 一時停止の利点は、課金されないことです。 |2016-09-29 |
 
 ## <a name="get-started"></a>作業開始
 | &nbsp; | タイトル | 説明 |
@@ -158,15 +160,10 @@ ms.openlocfilehash: ab5b0c283d1bd3fd1b734082d5ccffa4125f6de4
 ## <a name="miscellaneous"></a>その他
 | &nbsp; | タイトル | Description |
 | ---:|:--- |:--- |
-| 83 |[SQL Data Warehouse 用に Visual Studio 2015 と SSDT をインストールする](sql-data-warehouse-install-visual-studio.md) |Azure SQL Data Warehouse 用に Visual Studio と SQL Server Development Tools (SSDT) をインストールします |
+| 83 |[SQL Data Warehouse 用に Visual Studio と SSDT をインストールする](sql-data-warehouse-install-visual-studio.md) |Azure SQL Data Warehouse 用に Visual Studio と SQL Server Development Tools (SSDT) をインストールします |
 | 84 |[Premium Storage への移行の詳細](sql-data-warehouse-migrate-to-premium-storage.md) |Premium Storage へ既存の SQL Data Warehouse を移行する手順 |
 | 85 |[脅威の検出の概要](sql-data-warehouse-security-threat-detection.md) |脅威の検出を開始する方法 |
 | 86 |[SQL Data Warehouse の容量制限](sql-data-warehouse-service-capacity-limits.md) |SQL Data Warehouse の接続、データベース、テーブル、およびクエリの最大値。 |
 | 87 |[Azure SQL Data Warehouse のトラブルシューティング](sql-data-warehouse-troubleshoot.md) |Azure SQL Data Warehouse のトラブルシューティングを行います。 |
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

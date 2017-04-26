@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 03/14/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 8e1fccf953579beb138d47d1897bf702461fc39a
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 203648d999032d86dca10f9b47c40a2208ab79e9
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="documentdb---a-globally-distributed-database-service-on-azure"></a>DocumentDB - Azure のグローバル分散データベース サービス
-Azure はユビキタスです。30 か所以上の地理的リージョンでグローバル展開されており、継続的に拡大しています。 その世界的なプレゼンスにより、Azure が開発者に提供する差別化機能の&1; つは、グローバル分散アプリケーションを簡単に構築し、デプロイ、管理できることです。 DocumentDB は、開発者が全世界規模のアプリケーションを構築できるようにすることを目的とした Microsoft のマルチテナント グローバル分散データベース システムです。 DocumentDB では、多数の地理的リージョン間でスループットとストレージの両方を弾力的にスケーリングできます。 このサービスは、P99, 99.99% の高可用性で低待機時間を保証し、予測可能なスループットと[明確に定義された複数の整合性モデル](documentdb-consistency-levels.md)を提供します。このすべてが包括的な SLA に支えられています。 DocumentDB では、[スキーマに依存しない書き込みに最適化されたデータベース エンジン](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)により、取り込んだすべてのデータのインデックスを既定で自動的に作成することができ、規模に依存しない方法で、[SQL](documentdb-sql-query.md)、[MongoDB](documentdb-protocol-mongodb.md)、および [JavaScript](documentdb-programming.md#javascript-language-integrated-query-api) 統合言語クエリを処理できます。 DocumentDB は、クラウド サービスとして、最初からマルチテナントとグローバル配布を念頭に置いて入念に設計されています。
+Azure はユビキタスです。30 か所以上の地理的リージョンでグローバル展開されており、継続的に拡大しています。 その世界的なプレゼンスにより、Azure が開発者に提供する差別化機能の 1 つは、グローバル分散アプリケーションを簡単に構築し、デプロイ、管理できることです。 DocumentDB は、開発者が全世界規模のアプリケーションを構築できるようにすることを目的とした Microsoft のマルチテナント グローバル分散データベース システムです。 DocumentDB では、多数の地理的リージョン間でスループットとストレージの両方を弾力的にスケーリングできます。 このサービスは、P99, 99.99% の高可用性で低待機時間を保証し、予測可能なスループットと[明確に定義された複数の整合性モデル](documentdb-consistency-levels.md)を提供します。このすべてが包括的な SLA に支えられています。 DocumentDB では、[スキーマに依存しない書き込みに最適化されたデータベース エンジン](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)により、取り込んだすべてのデータのインデックスを既定で自動的に作成することができ、規模に依存しない方法で、[SQL](documentdb-sql-query.md)、[MongoDB](documentdb-protocol-mongodb.md)、および [JavaScript](documentdb-programming.md#javascript-language-integrated-query-api) 統合言語クエリを処理できます。 DocumentDB は、クラウド サービスとして、最初からマルチテナントとグローバル配布を念頭に置いて入念に設計されています。
 
 **1 つの DocumentDB コレクションをパーティション分割し、3 つの Azure リージョンに配布**
 
@@ -109,7 +109,7 @@ var collection = database.GetCollection<BsonDocument>(collectionName);
 collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode.SecondaryPreferred));
 ```
 
-最後に、読み取るリージョンを手動で指定する場合は、 読み取り設定の中にリージョン タグを設定できます。
+最後に、読み取りリージョンを手動で指定する場合について説明します。 リージョン タグは、読み取り設定で設定できます。
 
 ```csharp
 var collection = database.GetCollection<BsonDocument>(collectionName);
@@ -219,7 +219,7 @@ DocumentDB コレクションは、2 つのディメンション (リージョ�
 
 DocumentDB では、応答性の高いパーティション管理、負荷分散、厳密なリソース ガバナンスにより、複数の Azure リージョン間で DocumentDB コレクションのスループットを弾力的にスケーリングできます。 コレクションのスループットの変更は、DocumentDB のランタイム操作です。他のデータベース操作と同様に、DocumentDB ではスループットの変更要求の待機時間の絶対上限が保証されます。 一例として、次の図は需要に基づいてスループット (2 つのリージョンでの 1 秒あたりの要求数が 1 M ～ 10 M) が弾力的にプロビジョニングされた顧客のコレクションを示しています。
  
-**スループット (1 秒あたりの要求数が&1; M ～&10; M) が弾力的にプロビジョニングされた顧客のコレクション**
+**スループット (1 秒あたりの要求数が 1 M ～ 10 M) が弾力的にプロビジョニングされた顧客のコレクション**
 
 ![スループットが弾力的にプロビジョニングされた Azure DocumentDB](./media/documentdb-distribute-data-globally/documentdb-elastic-throughput.png)
 
@@ -252,12 +252,12 @@ DocumentDB では、スループット、待機時間、整合性、可用性の
 
 ## <a id="References"></a>参考資料
 1. Eric Brewer 著:  「[Towards Robust Distributed Systems (堅牢な分散システムに向けて)](https://people.eecs.berkeley.edu/~brewer/cs262b-2004/PODC-keynote.pdf)」
-2. Eric Brewer 著:  「[CAP Twelve Years Later: How the "Rules" have changed (CAP の&12; 年後: "ルール" がどのように変わったか)](http://informatik.unibas.ch/fileadmin/Lectures/HS2012/CS341/workshops/reportsAndSlides/PresentationKevinUrban.pdf)」
+2. Eric Brewer 著:  「[CAP Twelve Years Later: How the "Rules" have changed (CAP の 12 年後: "ルール" がどのように変わったか)](http://informatik.unibas.ch/fileadmin/Lectures/HS2012/CS341/workshops/reportsAndSlides/PresentationKevinUrban.pdf)」
 3. Gilbert、Lynch 共著:  「[Brewer&#39;s Conjecture and the Feasibility of Consistent, Available, Partition-Tolerant Web Services (ブリュワーの推測と整合性および可用性を備えたパーティション トレラントな Web サービスの実現可能性)](http://www.glassbeam.com/sites/all/themes/glassbeam/images/blog/10.1.1.67.6951.pdf)」
 4. Daniel Abadi 著: 「[Consistency Tradeoffs in Modern Distributed Database Systems Design (最新の分散データベース システム設計における整合性のトレードオフ)](http://cs-www.cs.yale.edu/homes/dna/papers/abadi-pacelc.pdf)」
 5. Martin Kleppmann 著:  「[Please stop calling databases CP or AP (データベースを CP または AP と呼ぶのはやめてください)](https://martin.kleppmann.com/2015/05/11/please-stop-calling-databases-cp-or-ap.html)」
 6. Peter Bailis その他共著: 「[Probabilistic Bounded Staleness (PBS) for Practical Partial Quorums (現実的なパーシャル クォーラムのための Probabilistic Bounded Staleness (PBS))](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)」
 7. Naor、Wool 共著:  「[The Load, Capacity and Availability of Quorum Systems (クォーラム システムの負荷、容量、および可用性)](http://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf)」
 8. Herlihy、Wing 共著:  「[Lineralizability: A Correctness Condition for Concurrent Objects (線形化可能性: 同時実行オブジェクトの正確性の条件)](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf)」
-9. Azure DocumentDB SLA (最終更新: 2016 年 12 月)
+9. [Azure DocumentDB SLA](https://azure.microsoft.com/support/legal/sla/documentdb/v1_1/)
 

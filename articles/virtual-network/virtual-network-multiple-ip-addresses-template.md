@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 262acf8150b5065c3b7b79494856b2bdadd4e4ba
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: d4b189fb23dda1167c4f6b17b618c718d32dd98f
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -57,7 +57,7 @@ ms.lasthandoff: 03/31/2017
 
 テンプレートで展開された各リソースは、いくつかの既定の設定が構成されます。 これらの設定は、次のいずれかの方法を使用して確認できます。
 
-- **GitHub でテンプレートを確認する:** テンプレートを使い慣れている場合は、[テンプレート](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json)内で設定を確認できます。 
+- **GitHub でテンプレートを確認する:** テンプレートを使い慣れている場合は、[テンプレート](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json)内で設定を確認できます。
 - **デプロイ後に設定を確認する:** テンプレートに慣れていない場合は、次のいずれかのセクションを使用してテンプレートをデプロイした後に、設定を確認できます。
 
 テンプレートのデプロイには、Azure Portal、PowerShell、Azure コマンド ライン インターフェイス (CLI) を使用できます。 いずれの方法を使用しても同じ結果が得られます。 テンプレートをデプロイするには、次のいずれかのセクションの手順を実行します。
@@ -77,10 +77,10 @@ Azure Portal を使用してテンプレートをデプロイするには、次�
 
 PowerShell を使用してテンプレートをデプロイするには、次の手順を実行します。
 
-1. 「[Deploy a template with PowerShell (PowerShell を使用したテンプレートのデプロイ)](../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy)」の記事の手順を実行して、テンプレートをデプロイします。 この記事では、テンプレートをデプロイする際に使用する複数のオプションについて説明されています。 `-TemplateUri parameter`を使用してデプロイする場合は、このテンプレートの URI は *https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json* になります。 `-TemplateFile` パラメーターを使用してデプロイする場合は、GitHub の[テンプレート ファイル](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json) の内容を自分のコンピューター上の新しいファイルにコピーします。 必要に応じて、テンプレートの内容を変更します。 テンプレートによって、この記事の「[リソース](#resources)」セクションの一覧にあるリソースと設定がデプロイされます。 テンプレートとその作成方法の詳細については、「[Azure Resource Manager のテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」の記事をご覧ください。
+1. 「[Deploy a template with PowerShell (PowerShell を使用したテンプレートのデプロイ)](../azure-resource-manager/resource-group-template-deploy-cli.md)」の記事の手順を実行して、テンプレートをデプロイします。 この記事では、テンプレートをデプロイする際に使用する複数のオプションについて説明されています。 `-TemplateUri parameter`を使用してデプロイする場合は、このテンプレートの URI は *https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json* になります。 `-TemplateFile` パラメーターを使用してデプロイする場合は、GitHub の[テンプレート ファイル](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json) の内容を自分のコンピューター上の新しいファイルにコピーします。 必要に応じて、テンプレートの内容を変更します。 テンプレートによって、この記事の「[リソース](#resources)」セクションの一覧にあるリソースと設定がデプロイされます。 テンプレートとその作成方法の詳細については、「[Azure Resource Manager のテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」の記事をご覧ください。
 
     テンプレートのデプロイに使用するオプションに関係なく、この記事の「[パラメーター](#parameters)」セクションの一覧にあるパラメーター値を指定する必要があります。 パラメーター ファイルを使用してパラメーターを指定する場合は、GitHub の[パラメーター ファイル](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.parameters.json)の内容を自分のコンピューター上の新しいファイルにコピーします。 ファイル内の値を変更します。 作成したファイルを、`-TemplateParameterFile` パラメーターの値として使用します。
-    
+
     OSVersion、ImagePublisher、imageOffer のパラメーターの有効な値を取得するには、「[Navigate and select Windows VM images (Windows VM イメージの検索と選択)](../virtual-machines/windows/cli-ps-findimage.md)」の記事の手順を実行します。
 
     >[!TIP]
@@ -92,10 +92,10 @@ PowerShell を使用してテンプレートをデプロイするには、次の
 
 Azure CLI 1.0 を使用してテンプレートをデプロイするには、次の手順を実行します。
 
-1. 「[Deploy a template with Azure CLI (Azure CLI を使用したテンプレートのデプロイ)](../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy)」の記事の手順を実行して、テンプレートをデプロイします。 この記事では、テンプレートをデプロイする際に使用する複数のオプションについて説明されています。 `--template-uri` (-f) を使用してデプロイする場合は、このテンプレートの URI は *https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json* になります。 `--template-file` (-f) パラメーターを使用してデプロイする場合は、GitHub の[テンプレート ファイル](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json) の内容を自分のコンピューター上の新しいファイルにコピーします。 必要に応じて、テンプレートの内容を変更します。 テンプレートによって、この記事の「[リソース](#resources)」セクションの一覧にあるリソースと設定がデプロイされます。 テンプレートとその作成方法の詳細については、「[Azure Resource Manager のテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」の記事をご覧ください。
+1. 「[Deploy a template with Azure CLI (Azure CLI を使用したテンプレートのデプロイ)](../azure-resource-manager/resource-group-template-deploy-cli.md)」の記事の手順を実行して、テンプレートをデプロイします。 この記事では、テンプレートをデプロイする際に使用する複数のオプションについて説明されています。 `--template-uri` (-f) を使用してデプロイする場合は、このテンプレートの URI は *https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json* になります。 `--template-file` (-f) パラメーターを使用してデプロイする場合は、GitHub の[テンプレート ファイル](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json) の内容を自分のコンピューター上の新しいファイルにコピーします。 必要に応じて、テンプレートの内容を変更します。 テンプレートによって、この記事の「[リソース](#resources)」セクションの一覧にあるリソースと設定がデプロイされます。 テンプレートとその作成方法の詳細については、「[Azure Resource Manager のテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」の記事をご覧ください。
 
     テンプレートのデプロイに使用するオプションに関係なく、この記事の「[パラメーター](#parameters)」セクションの一覧にあるパラメーター値を指定する必要があります。 パラメーター ファイルを使用してパラメーターを指定する場合は、GitHub の[パラメーター ファイル](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.parameters.json)の内容を自分のコンピューター上の新しいファイルにコピーします。 ファイル内の値を変更します。 作成したファイルを、`--parameters-file` (-e) パラメーターの値として使用します。
-    
+
     OSVersion、ImagePublisher、imageOffer のパラメーターの有効な値を取得するには、「[Navigate and select Windows VM images (Windows VM イメージの検索と選択)](../virtual-machines/windows/cli-ps-findimage.md)」の記事の手順を実行します。
 
 2. VM をデプロイしたら、この記事の「[VM オペレーティング システムに IP アドレスを追加する](#os-config)」セクションに記載された手順を実行して、プライベート IP アドレスをデプロイした VM オペレーティング システムに追加します。 オペレーティング システムにパブリック IP アドレスは追加しないでください。

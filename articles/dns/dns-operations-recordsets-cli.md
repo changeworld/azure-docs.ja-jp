@@ -84,7 +84,7 @@ az network dns record-set a add-record --resource-group myresourcegroup --zone-n
 az network dns record-set create --resource-group myresourcegroup --zone-name contoso.com --name www --type A --ttl 60
 ```
 
-次の例では、`--metadata` パラメーターを指定することで、"dept=finance" と "environment=production" という&2; つのメタデータ エントリを含むレコード セットを作成します。
+次の例では、`--metadata` パラメーターを指定することで、"dept=finance" と "environment=production" という 2 つのメタデータ エントリを含むレコード セットを作成します。
 
 ```azurecli
 az network dns record-set create --resource-group myresourcegroup --zone-name contoso.com --name www --type A --metadata "dept=finance" "environment=production"
@@ -193,7 +193,7 @@ az network dns record-setA a list --resource-group myresourcegroup --zone-name c
 
 ## <a name="remove-a-record-from-an-existing-record-set"></a>既存のレコード セットからのレコードの削除
 
-既存のレコード セットからレコードを削除するには、`az network dns record-set ? remove-record` を使用します (? にはレコードの種類を指定します)。 is the record type). `az network dns record-set -h` を使用すると、ヘルプが表示されます。
+既存のレコード セットからレコードを削除するには、`az network dns record-set ? remove-record` を使用します (? にはレコードの種類を指定します)。 `az network dns record-set -h` を使用すると、ヘルプが表示されます。
 
 このコマンドは、DNS レコードをレコード セットから削除します。 レコード セットの最後のレコードを削除しても、レコード セット自体は削除**されません**。 代わりに、空のレコード セットが残されます。 その代わりにレコード セットを削除する場合は、「[レコード セットの削除](#delete-a-record-set)」を参照してください。
 
@@ -226,7 +226,7 @@ az network dns record-set a remove-record --resource-group myresourcegroup --zon
 
 ### <a name="to-modify-a-cname-record"></a>CNAME レコードを変更するには
 
-CNAME レコードを変更するには、--set スイッチを指定して `az network dns record-set update` を使用し、新しいレコードの値を追加します。 その他のレコードの種類とは異なり、CNAME レコード セットはレコードを&1; つだけ含むことができます。
+CNAME レコードを変更するには、--set スイッチを指定して `az network dns record-set update` を使用し、新しいレコードの値を追加します。 その他のレコードの種類とは異なり、CNAME レコード セットはレコードを 1 つだけ含むことができます。
 
 例では、リソース グループ *MyResourceGroup* のゾーン *contoso.com* の CNAME レコード セット *www* を変更して、既存の値ではなく 'www.fabrikam.net' を指すようにします。
 
@@ -258,7 +258,7 @@ az network dns record-set update --resource-group myresourcegroup --zone-name co
 
 [レコード セットのメタデータ](dns-zones-records.md#tags-and-metadata)を使用すると、アプリケーション固有のデータを、キーと値のペアとして各レコード セットに関連付けることができます。 既存のレコード セットのメタデータを変更するには、`az network dns record-set update` を使用します。 `az network dns record-set update --help` を使用すると、ヘルプが表示されます。
 
-次の例では、`--metadata` パラメーター (短縮形は `-m`) を指定することで、"dept=finance" と "environment=production" という&2; つのメタデータ エントリを含むレコード セットを変更する方法を示します。 既存のメタデータは指定した値に*置換*されることに注意してください。
+次の例では、`--metadata` パラメーター (短縮形は `-m`) を指定することで、"dept=finance" と "environment=production" という 2 つのメタデータ エントリを含むレコード セットを変更する方法を示します。 既存のメタデータは指定した値に*置換*されることに注意してください。
 
 ```azurecli
 az network dns record-set update --resource-group myresourcegroup --zone-name contoso.com --name "www" --type A --set metadata.dept=finance metadata.environment=production

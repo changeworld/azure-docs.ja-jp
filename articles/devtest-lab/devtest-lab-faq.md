@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/22/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 5c427ddbe408fc42403eb6738d1983c220e899a7
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 7a9b8037967f0180d2f7d2a7d100d0cc3ad9e4a2
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -258,7 +258,7 @@ Microsoft アカウントは、Microsoft のデバイスおよびサービスで
 ### <a name="why-do-i-get-a-parent-resource-not-found-error-when-provisioning-a-vm-from-powershell"></a>PowerShell から VM をプロビジョニングするときに、"親リソースが見つからない" ことを示すエラーが発生する理由を教えてください。
 あるリソースが別のリソースの親である場合、子リソースを作成する前に親リソースが存在する必要があります。 存在しない場合、**ParentResourceNotFound** エラーが発生します。 親リソースに依存関係を指定しなかった場合、子リソースは親の前にデプロイされる可能性があります。
 
-VM は、リソース グループ内のラボの下の子リソースです。 PowerShell を介して Azure リソース テンプレートを使用してデプロイした場合、PowerShell スクリプトで指定されるリソース グループ名は、ラボのリソース グループ名である必要があります。 詳細については、[Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-common-deployment-errors#parentresourcenotfound)に関する記事をご覧ください。
+VM は、リソース グループ内のラボの下の子リソースです。 PowerShell を介して Azure Resource Manager テンプレートを使用してデプロイした場合、PowerShell スクリプトで指定されるリソース グループ名は、ラボのリソース グループ名である必要があります。 詳しくは、「[Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-common-deployment-errors#parentresourcenotfound)」をご覧ください。
 
 ### <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>VM のデプロイが失敗した場合、さらに詳しいエラー情報はどこで確認できますか。
 VM デプロイのエラーは、アクティビティ ログに記録されます。 VM のアクティビティ ログは、ラボの VM ブレードにあるリソース メニューの **[監査ログ]** または **[Virtual machine diagnostics (仮想マシン診断)]** で確認できます。このブレードは、**[My virtual machines (マイ仮想マシン)]** の一覧から VM を選択すると表示されます。

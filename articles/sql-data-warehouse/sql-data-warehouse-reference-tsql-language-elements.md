@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: reference
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 126aac98dd9b4b9b3ab3cc4778b75cec7413a7fe
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 604cc41e2a7e0858c6926ef3a2199dfd6ca2943f
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -82,7 +84,7 @@ ms.openlocfilehash: 126aac98dd9b4b9b3ab3cc4778b75cec7413a7fe
 * [|= (ビット演算子 OR EQUALS)](https://msdn.microsoft.com/library/cc627409.aspx)
 * [&= (ビット演算子 AND EQUALS)](https://msdn.microsoft.com/library/cc627427.aspx)
 
-## <a name="functions"></a>関数
+## <a name="functions"></a>Functions
 * [@@DATEFIRST](https://msdn.microsoft.com/library/ms187766.aspx)
 * [@@ERROR](https://msdn.microsoft.com/library/ms188790.aspx)
 * [@@LANGUAGE](https://msdn.microsoft.com/library/ms177557.aspx)
@@ -278,17 +280,12 @@ ms.openlocfilehash: 126aac98dd9b4b9b3ab3cc4778b75cec7413a7fe
 * [SET XACT_ABORT](https://msdn.microsoft.com/library/ms188792.aspx)
 
 ## <a name="next-steps"></a>次のステップ
-詳細な参照情報については、[SQL Data Warehouse のリファレンス概要][SQL Data Warehouse のリファレンス概要] に関するページを参照してください。
+詳細な参照情報については、[SQL Data Warehouse のリファレンス概要][SQL Data Warehouse reference overview]に関するページをご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
-[SQL Data Warehouse のリファレンス概要]: sql-data-warehouse-overview-reference.md
+[SQL Data Warehouse reference overview]: sql-data-warehouse-overview-reference.md
 
 <!--MSDN references-->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

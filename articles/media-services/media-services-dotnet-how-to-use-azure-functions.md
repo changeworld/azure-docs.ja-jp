@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/21/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 0cde1f36af2d41697fa956c62cc882e5429707e8
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: ca7c89dc5f56f1bf4c300874111e65048e88abcf
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -36,11 +36,15 @@ ms.lasthandoff: 03/29/2017
 - [Azure Functions を使用する方法](../azure-functions/functions-overview.md)の説明。 また、次を確認してください。
     - [Azure Functions における HTTP と Webhook のバインド](../azure-functions/functions-triggers-bindings.md)
     - [Azure Function App の設定の構成方法](../azure-functions/functions-how-to-use-azure-function-app-settings.md)
+    
+## <a name="considerations"></a>考慮事項
+
+-  従量課金プランで実行される Azure Functions には 5 分のタイムアウト制限があります。
 
 ## <a name="create-a-function-app"></a>Function App を作成する
 
 1. [Azure Portal](http://portal.azure.com) に移動し、Azure アカウントでサインインします。
-2. [こちら](../azure-functions/functions-create-first-azure-function-azure-portal.md#create-a-function-app)の説明に従って関数アプリを作成します。
+2. [こちら](../azure-functions/functions-create-function-app-portal.md)の説明に従って関数アプリを作成します。
 
 >[!NOTE]
 > **StorageConnection** 環境変数で指定したストレージ アカウント (次の手順を参照してください) は、アプリと同じリージョンにする必要があります。

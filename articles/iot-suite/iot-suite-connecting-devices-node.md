@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 02/20/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 144dcd5277673024c7a71808f32c6a7b6491559a
-ms.openlocfilehash: 6ccea0eeb594070eed6341d3f5ec80db0efdf8f2
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 8f45d0e86a95779d5ceeddb72638b14e0e7a80eb
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/27/2017
 
 ## <a name="create-a-nodejs-sample-solution"></a>node.js のサンプル ソリューションを作成する
 
-開発コンピューターに Node.js のバージョン 0.10.x 以降がインストールされていることを確認します。 バージョンを確認するには、コマンド ラインで `node --version` を実行します。
+開発コンピューターに Node.js のバージョン 0.11.5x 以降がインストールされていることを確認します。 バージョンを確認するには、コマンド ラインで `node --version` を実行します。
 
 1. 開発用コンピューターに **RemoteMonitoring** という名前のフォルダーを作成します。 コマンドライン環境内でこのフォルダーに移動します。
 

@@ -15,22 +15,22 @@ ms.workload: NA
 ms.date: 03/28/2017
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 2fbce8754a5e3162e3f8c999b34ff25284911021
-ms.openlocfilehash: 731c6542ba6d1385eeffa89a6f62e5bcf57a5c1e
-ms.lasthandoff: 12/14/2016
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 87f99a9e6df2103f70968c10556242ddb268e9e4
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="polymorphism-in-the-reliable-actors-framework"></a>Reliable Actors フレームワークにおけるポリモーフィズム
-Reliable Actors フレームワークでは、オブジェクト指向設計で使用する手法の多くを使用してアクターを作成できます。 このような手法の&1; つがポリモーフィズムで、型とインターフェイスが汎用性の高い親から継承できるようにします。 Reliable Actors フレームワークにおける継承は、一般に .NET モデルに従いますが、追加の制約がいくつかあります。
+Reliable Actors フレームワークでは、オブジェクト指向設計で使用する手法の多くを使用してアクターを作成できます。 このような手法の 1 つがポリモーフィズムで、型とインターフェイスが汎用性の高い親から継承できるようにします。 Reliable Actors フレームワークにおける継承は、一般に .NET モデルに従いますが、追加の制約がいくつかあります。 Java/Linux の場合は、Java モデルに従います。
 
 ## <a name="interfaces"></a>インターフェイス
-Reliable Actors フレームワークでは、アクター型によって実装される&1; つ以上のインターフェイスを定義する必要があります。 このインターフェイスを使用して、クライアントがアクターとの通信に使用できるプロキシ クラスを生成します。 アクター型によって実装されるすべてのインターフェイスとそのすべての親が、最終的に IActor から派生していれば、インターフェイスは他のインターフェイスから継承できます。 IActor は、プラットフォームで定義されているアクターの基本インターフェイスです。 したがって、図形を使用する従来のポリモーフィズムの例は次のようになります。
+Reliable Actors フレームワークでは、アクター型によって実装される 1 つ以上のインターフェイスを定義する必要があります。 このインターフェイスを使用して、クライアントがアクターとの通信に使用できるプロキシ クラスを生成します。 アクター型によって実装されるすべてのインターフェイスとそのすべての親が、最終的に IActor(C#) または Actor(Java) から派生していれば、インターフェイスは他のインターフェイスから継承できます。 IActor(C#) および Actor(Java) はそれぞれ .NET および Java フレームワークにおいて、プラットフォームで定義されているアクターの基本インターフェイスです。 したがって、図形を使用する従来のポリモーフィズムの例は次のようになります。
 
 ![図形アクターのインターフェイス階層][shapes-interface-hierarchy]
 
 ## <a name="types"></a>型
-プラットフォームで提供される Actor 基本クラスから派生したアクター型の階層を作成することもできます。 図形の場合、基本 `Shape` 型を使用します。
+プラットフォームで提供される Actor 基本クラスから派生したアクター型の階層を作成することもできます。 図形の場合、`Shape`(C#) または `ShapeImpl`(Java) 型を使用します。
 
 ```csharp
 public abstract class Shape : Actor, IShape
@@ -40,8 +40,16 @@ public abstract class Shape : Actor, IShape
     public abstract Task<double> GetAreaAsync();
 }
 ```
+```Java
+public abstract class ShapeImpl extends FabricActor implements Shape
+{
+    public abstract CompletableFuture<int> getVerticeCount();
 
-`Shape` のサブタイプは、基本型のメソッドをオーバーライドできます。
+    public abstract CompletableFuture<double> getAreaAsync();
+}
+```
+
+`Shape`(C#) または `ShapeImpl`(Java) のサブタイプは、基本型のメソッドをオーバーライドできます。
 
 ```csharp
 [ActorService(Name = "Circle")]
@@ -60,6 +68,26 @@ public class Circle : Shape, ICircle
         return Math.PI *
             state.Radius *
             state.Radius;
+    }
+}
+```
+```Java
+@ActorServiceAttribute(name = "Circle")
+@StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
+public class Circle extends ShapeImpl implements Circle
+{
+    @Override
+    public CompletableFuture<Integer> getVerticeCount()
+    {
+        return CompletableFuture.completedFuture(0);
+    }
+
+    @Override
+    public CompletableFuture<Double> getAreaAsync()
+    {
+        return (this.stateManager().getStateAsync<CircleState>("circle").thenApply(state->{
+          return Math.PI * state.radius * state.radius;
+        }));
     }
 }
 ```

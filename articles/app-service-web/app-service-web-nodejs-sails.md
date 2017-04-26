@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
-ms.openlocfilehash: b3c8a2d54ea05462db8a873c852a70e64111bc2f
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: ff5deaa15d1f78df249e9e89b1f0ffc82076fee1
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -50,7 +50,7 @@ Sails.js の実用的な知識が必要です。 このチュートリアルは�
 * Microsoft Azure アカウント。 アカウントを持っていない場合は、[無料試用版にサインアップ](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)するか [Visual Studio サブスクライバー特典を有効](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)にしてください。
 
 > [!NOTE]
-> Azure アカウントがなくても、[App Service を試用](https://azure.microsoft.com/try/app-service/)できます。 スターター アプリを作成し、最大&1; 時間使用できます。クレジット カードも契約も不要です。
+> Azure アカウントがなくても、[App Service を試用](https://azure.microsoft.com/try/app-service/)できます。 スターター アプリを作成し、最大 1 時間使用できます。クレジット カードも契約も不要です。
 > 
 > 
 
@@ -66,13 +66,13 @@ Sails.js の実用的な知識が必要です。 このチュートリアルは�
 
     http://localhost:1377 で既定のホーム ページに移動できることを確認します。
 
-1. 次に、Azure のログを有効にします。 ルート ディレクトリで、`iisnode.yml` というファイルを作成し、次の&2; 行を追加します。
+1. 次に、Azure のログを有効にします。 ルート ディレクトリで、`iisnode.yml` というファイルを作成し、次の 2 行を追加します。
 
         loggingEnabled: true
         logDirectory: iisnode
 
     これで、Azure App Service が Node.js アプリの実行のために使用する [iisnode](https://github.com/tjanczuk/iisnode) サーバーに対して、ログが有効になりました。 
-    このしくみの詳細については、「 [iisnode から stdout ログと stderr ログを取得する](app-service-web-nodejs-get-started.md#iisnodelog)」を参照してください。
+    このしくみの詳細については、「 [Azure App Service での Node.js Web アプリのデバッグ方法](web-sites-nodejs-debug.md)」を参照してください。
 
 2. 次に、Azure の環境変数を使用するように Sails.js アプリを構成します。 config/env/production.js を開いて運用環境を構成し、`port` と `hookTimeout` を設定します。
 
@@ -161,7 +161,7 @@ Sails.js の実用的な知識が必要です。 このチュートリアルは�
 
 ## <a name="troubleshoot-your-deployment"></a>デプロイのトラブルシューティング
 App Service で何らかの理由により Sails.js アプリケーションのエラーが発生した場合は、そのトラブルシューティングを行うのに役立つ stderr ログを探します。
-詳細については、「 [iisnode から stdout ログと stderr ログを取得する](app-service-web-nodejs-get-started.md#get-stdout-and-stderr-logs-from-iisnode)」を参照してください。
+詳細については、「[Azure App Service での Node.js Web アプリのデバッグ方法](web-sites-nodejs-debug.md)」を参照してください。
 アプリが正常に起動した場合は、stdout ログに次のような見慣れたメッセージが表示されます。
 
                    .-..-.
@@ -273,6 +273,6 @@ Azure のデータベースに接続するには、Azure SQL Database、MySQL、
      API から別の新しいエントリが返されれば、Azure Web アプリが DocumentDB (MongoDB) データベースと対話しているということです。
 
 ## <a name="more-resources"></a>その他のリソース
-* [Get started with Node.js web apps in Azure App Service (Azure App Service で Node.js Web アプリの使用を開始する)](app-service-web-nodejs-get-started.md)
+* [Get started with Node.js web apps in Azure App Service (Azure App Service で Node.js Web アプリの使用を開始する)](app-service-web-get-started-nodejs.md)
 * [Azure アプリケーションでの Node.js モジュールの使用](../nodejs-use-node-modules-azure-apps.md)
 

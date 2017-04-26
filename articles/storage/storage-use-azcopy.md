@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: e1c4342897fe6cf57e323a82e04e10473b3ece30
-ms.openlocfilehash: 777b84d9aa59f773345c1925c3c6467dc64d2d34
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: f703da63c4243c73cf68d3df9953f73d2462ac1c
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -57,7 +57,7 @@ AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfo
 
 フォルダー `C:\myfolder` が存在しない場合、AzCopy によってフォルダーが作成され、この新しいフォルダーに `abc.txt ` がダウンロードされます。
 
-### <a name="download-single-blob-from-secondary-region"></a>セカンダリ リージョンから&1; つの BLOB をダウンロードする
+### <a name="download-single-blob-from-secondary-region"></a>セカンダリ リージョンから 1 つの BLOB をダウンロードする
 
 ```azcopy
 AzCopy /Source:https://myaccount-secondary.blob.core.windows.net/mynewcontainer /Dest:C:\myfolder /SourceKey:key /Pattern:abc.txt
@@ -218,21 +218,21 @@ AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.blob.core.windows.net/myCont
 ```
 
 ## <a name="blob-copy"></a>BLOB: コピー
-### <a name="copy-single-blob-within-storage-account"></a>ストレージ アカウント内の&1; つの BLOB をコピーする
+### <a name="copy-single-blob-within-storage-account"></a>ストレージ アカウント内の 1 つの BLOB をコピーする
 
 ```azcopy
 AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer1 /Dest:https://myaccount.blob.core.windows.net/mycontainer2 /SourceKey:key /DestKey:key /Pattern:abc.txt
 ```
 
-ストレージ アカウント内の&1; つの BLOB をコピーすると、 [サーバー側でコピー](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) 操作が実行されます。
+ストレージ アカウント内の 1 つの BLOB をコピーすると、 [サーバー側でコピー](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) 操作が実行されます。
 
-### <a name="copy-single-blob-across-storage-accounts"></a>複数のストレージ アカウントに&1; つの BLOB をコピーする
+### <a name="copy-single-blob-across-storage-accounts"></a>複数のストレージ アカウントに 1 つの BLOB をコピーする
 
 ```azcopy
 AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /SourceKey:key1 /DestKey:key2 /Pattern:abc.txt
 ```
 
-複数のストレージ アカウントに&1; つの BLOB をコピーすると、 [サーバー側でコピー](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) 操作が実行されます。
+複数のストレージ アカウントに 1 つの BLOB をコピーすると、 [サーバー側でコピー](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) 操作が実行されます。
 
 ### <a name="copy-single-blob-from-secondary-region-to-primary-region"></a>1 つの BLOB をセカンダリ リージョンからプライマリ リージョンにコピーする
 
@@ -242,20 +242,20 @@ AzCopy /Source:https://myaccount1-secondary.blob.core.windows.net/mynewcontainer
 
 地理冗長ストレージに対応する読み取りアクセス権を持っている必要があります。
 
-### <a name="copy-single-blob-and-its-snapshots-across-storage-accounts"></a>複数のストレージ アカウントに&1; つの BLOB とそのスナップショットをコピーする
+### <a name="copy-single-blob-and-its-snapshots-across-storage-accounts"></a>複数のストレージ アカウントに 1 つの BLOB とそのスナップショットをコピーする
 
 ```azcopy
     AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /SourceKey:key1 /DestKey:key2 /Pattern:abc.txt /Snapshot
 ```
 
-コピー操作後、ターゲット コンテナーには BLOB とそのスナップショットが含まれます。 前の例の BLOB に&2; つのスナップショットが含まれる場合、コンテナーには以下の BLOB とスナップショットが含まれます。
+コピー操作後、ターゲット コンテナーには BLOB とそのスナップショットが含まれます。 前の例の BLOB に 2 つのスナップショットが含まれる場合、コンテナーには以下の BLOB とスナップショットが含まれます。
 
     abc.txt
     abc (2013-02-25 080757).txt
     abc (2014-02-21 150331).txt
 
 ### <a name="synchronously-copy-blobs-across-storage-accounts"></a>複数のストレージ アカウントに複数の BLOB を同期的にコピーする
-既定では、AzCopy は&2; つのストレージ エンドポイント間で非同期でデータをコピーします。 そのため、コピー操作は、BLOB のコピー速度に関する SLA のない予備の帯域幅容量を使用してバック グラウンドで実行され、AzCopy はコピーが完了または失敗するまで定期的にコピー状態を確認します。
+既定では、AzCopy は 2 つのストレージ エンドポイント間で非同期でデータをコピーします。 そのため、コピー操作は、BLOB のコピー速度に関する SLA のない予備の帯域幅容量を使用してバック グラウンドで実行され、AzCopy はコピーが完了または失敗するまで定期的にコピー状態を確認します。
 
 `/SyncCopy` オプションは、コピー操作が一定の速度になるようにします。 AzCopy は、指定されたソースからローカル メモリにコピーして BLOB をダウンロードし、これを BLOB ストレージのコピー先にアップロードすることで同期コピーを実行します。
 
@@ -360,11 +360,11 @@ AzCopy /Source:https://myaccount.table.core.windows.net/myTable/ /Dest:C:\myfold
 AzCopy /Source:https://myaccount.table.core.windows.net/mytable/ /Dest:C:\myfolder /SourceKey:key /S /SplitSize:100
 ```
 
-AzCopy では、複数のファイルを区別できるように、分割したデータ ファイル名に *ボリューム インデックス* を含めます。 ボリューム インデックスは、*パーティション キー範囲のインデックス*と*分割されたファイルのインデックス*の&2; つの部分で構成されます。 どちらのインデックスも&0; から始まります。
+AzCopy では、複数のファイルを区別できるように、分割したデータ ファイル名に *ボリューム インデックス* を含めます。 ボリューム インデックスは、*パーティション キー範囲のインデックス*と*分割されたファイルのインデックス*の 2 つの部分で構成されます。 どちらのインデックスも 0 から始まります。
 
 パーティション キー範囲のインデックスは、ユーザーがオプション `/PKRS`を指定しなかった場合、0 に設定されます。
 
-たとえば、ユーザーがオプション `/SplitSize`を指定した後に、AzCopy によって&2; つのデータ ファイルが生成されたとします。 生成されたデータ ファイルの名前は次のようになります。
+たとえば、ユーザーがオプション `/SplitSize`を指定した後に、AzCopy によって 2 つのデータ ファイルが生成されたとします。 生成されたデータ ファイルの名前は次のようになります。
 
     myaccount_mytable_20140903T051850.8128447Z_0_0_C3040FE8.json
     myaccount_mytable_20140903T051850.8128447Z_0_1_0AB9AC20.json
@@ -386,9 +386,9 @@ CSV ペイロード形式を指定して AzCopy を実行すると、各デー�
 AzCopy /Source:https://myaccount.table.core.windows.net/myTable/ /Dest:C:\myfolder\ /SourceKey:key /PKRS:"aa#bb"
 ```
 
-ユーザーによってオプション `/PKRS`が指定されると、AzCopy はエンティティをエクスポートするための同時操作を開始します。 1 つの操作で&1; つのパーティション キー範囲がエクスポートされます。
+ユーザーによってオプション `/PKRS`が指定されると、AzCopy はエンティティをエクスポートするための同時操作を開始します。 1 つの操作で 1 つのパーティション キー範囲がエクスポートされます。
 
-同時操作の数もオプション `/NC`によって制御されます。 `/NC` が指定されていない場合でも、AzCopy はコア プロセッサ数を `/NC` の既定値として使用してテーブル エンティティをコピーします。 ユーザーがオプション `/PKRS`を指定した場合、AzCopy は、パーティション キー範囲と明示的または暗黙的に指定された同時操作数の&2; つの値のうち小さい方を使用して、開始する同時操作の数を決定します。 詳細については、コマンド ラインに「 `AzCopy /?:NC` 」と入力してください。
+同時操作の数もオプション `/NC`によって制御されます。 `/NC` が指定されていない場合でも、AzCopy はコア プロセッサ数を `/NC` の既定値として使用してテーブル エンティティをコピーします。 ユーザーがオプション `/PKRS`を指定した場合、AzCopy は、パーティション キー範囲と明示的または暗黙的に指定された同時操作数の 2 つの値のうち小さい方を使用して、開始する同時操作の数を決定します。 詳細については、コマンド ラインに「 `AzCopy /?:NC` 」と入力してください。
 
 ### <a name="export-table-to-blob"></a>テーブルを BLOB にエクスポートする
 
@@ -453,7 +453,7 @@ AzCopy /@:"C:\responsefiles\copyoperation.txt"
 
 応答ファイルには、任意の AzCopy コマンド ライン パラメーターを含めることができます。 AzCopy は、ファイルの内容に直接置換することで、ファイルのパラメーターをコマンド ラインで指定されているかのように処理します。
 
-`copyoperation.txt`という名前のファイルに、以下の行が含まれているとします。 各 AzCopy パラメーターは&1; 行に指定できます。
+`copyoperation.txt`という名前のファイルに、以下の行が含まれているとします。 各 AzCopy パラメーターは 1 行に指定できます。
 
     /Source:http://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:<sourcekey> /S /Y
 
@@ -465,7 +465,7 @@ AzCopy /@:"C:\responsefiles\copyoperation.txt"
     /S
     /Y
 
-`/sourcekey` パラメーターの場合、次の例のようにパラメーターが&2; 行に分かれていると、AzCopy は失敗します。
+`/sourcekey` パラメーターの場合、次の例のようにパラメーターが 2 行に分かれていると、AzCopy は失敗します。
 
     http://myaccount.blob.core.windows.net/mycontainer
      C:\myfolder
@@ -798,9 +798,9 @@ AzCopy は既定で、データ転送のスループットを向上するため�
 ### <a name="pkrskey1key2key3"></a>/PKRS:"key1#key2#key3#..."
 テーブル データを並行してエクスポートできるようにパーティション キーの範囲を分割します。これによって、エクスポート操作の速度が速くなります。
 
-このオプションを指定しない場合、AzCopy はシングル スレッドを使用してテーブル エンティティをエクスポートします。 たとえば、ユーザーが /PKRS:"aa#bb" と指定した場合、AzCopy は&3; つの同時操作を開始します。
+このオプションを指定しない場合、AzCopy はシングル スレッドを使用してテーブル エンティティをエクスポートします。 たとえば、ユーザーが /PKRS:"aa#bb" と指定した場合、AzCopy は 3 つの同時操作を開始します。
 
-以下のとおり、1 つの操作で、3 つのパーティション キー範囲の&1; つがエクスポートされます。
+以下のとおり、1 つの操作で、3 つのパーティション キー範囲の 1 つがエクスポートされます。
 
   [first-partition-key, aa)
 
@@ -813,7 +813,7 @@ AzCopy は既定で、データ転送のスループットを向上するため�
 ### <a name="splitsizefile-size"></a>/SplitSize:"file-size"
 エクスポートされるファイルの分割サイズを MB 単位で指定します。許容される最小値は 32 です。
 
-このオプションを指定しない場合、AzCopy はテーブル データを&1; つのファイルにエクスポートします。
+このオプションを指定しない場合、AzCopy はテーブル データを 1 つのファイルにエクスポートします。
 
 テーブル データを BLOB にエクスポートする場合、エクスポートされるファイルのサイズが BLOB サイズの上限である 200 GB に達していると、このオプションが指定されていなくても、エクスポートされるファイルが分割されます。
 
@@ -868,8 +868,8 @@ AzCopy を使用して BLOB またはファイルをコピーする場合は、�
 
 コピーしている BLOB またはファイルに対する他のアプリケーションによる書き込みを回避できない場合は、ジョブが終了した時点で、コピー対象のリソースがソース リソースとの間に完全なパリティを保持していない可能性があることを覚えておいてください。
 
-### <a name="run-one-azcopy-instance-on-one-machine"></a>1 つのマシンでは&1; つの AzCopy インスタンスを実行します。
-AzCopy はマシン リソースの利用率を最大限に高めてデータ転送を高速化する設計になっています。1 つのマシンで実行する AzCopy インスタンスは&1; つのみとすること、同時実行操作の数を増やす必要がある場合はオプション `/NC` を指定することをお勧めします。 詳細については、コマンド ラインに「 `AzCopy /?:NC` 」と入力してください。
+### <a name="run-one-azcopy-instance-on-one-machine"></a>1 つのマシンでは 1 つの AzCopy インスタンスを実行します。
+AzCopy はマシン リソースの利用率を最大限に高めてデータ転送を高速化する設計になっています。1 つのマシンで実行する AzCopy インスタンスは 1 つのみとすること、同時実行操作の数を増やす必要がある場合はオプション `/NC` を指定することをお勧めします。 詳細については、コマンド ラインに「 `AzCopy /?:NC` 」と入力してください。
 
 ### <a name="enable-fips-compliant-md5-algorithms-for-azcopy-when-you-use-fips-compliant-algorithms-for-encryption-hashing-and-signing"></a>[暗号化、ハッシュ、署名のための FIPS 準拠アルゴリズムを使う] を有効にする場合、AzCopy に対して FIPS 準拠の MD5 アルゴリズムを有効にします。
 AzCopy はオブジェクトをコピーするときに、既定で .NET MD5 実装を使用して MD5 を計算しますが、AzCopy で FIPS 準拠の MD5 設定を有効にするために必要ないくつかのセキュリティ要件があります。

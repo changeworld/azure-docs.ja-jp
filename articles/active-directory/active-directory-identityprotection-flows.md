@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2017
+ms.date: 04/24/2017
 ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: e81ef1d182108114305291273227ce2ac4dacf3f
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -110,10 +111,5 @@ Azure Active Directory Identity Protection を使用すると、次の操作を�
 
 ## <a name="see-also"></a>関連項目
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md) 
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 
