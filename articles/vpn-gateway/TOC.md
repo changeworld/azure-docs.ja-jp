@@ -14,6 +14,7 @@
 ## サイト対サイト接続の構成
 ### [Azure ポータル](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 ### [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+### [Azure CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 ### [Azure Portal (クラシック)](vpn-gateway-howto-site-to-site-classic-portal.md)
 ### [クラシック ポータル (クラシック)](vpn-gateway-site-to-site-create.md)
 ## ポイント対サイト接続の構成
@@ -38,7 +39,6 @@
 ## [高可用性のアクティブ/アクティブ接続の構成](vpn-gateway-activeactive-rm-powershell.md)
 ## [PowerShell を使用したローカル ネットワーク ゲートウェイの設定の変更](vpn-gateway-modify-local-network-gateway.md)
 ## [VPN Gateway 接続の確認](vpn-gateway-verify-connection-resource-manager.md)
-## [VNet への VPN スループットの確認](vpn-gateway-validate-throughput-to-vnet.md)
 ## [VPN Gateway のリセット](vpn-gateway-resetgw-classic.md)
 ## VPN ゲートウェイの削除
 ### [Azure ポータル](vpn-gateway-delete-vnet-gateway-portal.md)
@@ -46,12 +46,15 @@
 ### [PowerShell (クラシック)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 ## [P2S 接続用の自己署名ルート証明書の作成](vpn-gateway-certificates-point-to-site.md)
 ## [VPN ゲートウェイの構成 (クラシック)](vpn-gateway-configure-vpn-gateway-mp.md)
+## トラブルシューティング
+### [VNet への VPN スループットの確認](vpn-gateway-validate-throughput-to-vnet.md)
 
 # リファレンス
 ## [PowerShell](/powershell/resourcemanager/azurerm.network/v3.6.0/azurerm.network)
 ## [PowerShell (クラシック)](/powershell/servicemanagement/azure.networking/v3.4.0/azure.networking)
 ## [REST ()](https://msdn.microsoft.com/library/mt163859)
 ## [REST (クラシック)](https://msdn.microsoft.com/library/jj154113)
+## [Azure CLI](https://docs.microsoft.com/cli/azure/network)
 
 # 関連項目
 ## [Virtual Network](/azure/virtual-network/)

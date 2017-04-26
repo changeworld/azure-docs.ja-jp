@@ -17,9 +17,9 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 67c308f8216ebd291ae483c9b18d43528687e9a9
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: bb01be3ee044f60376e0c9c2de7b3dd34f3b7aca
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -61,7 +61,7 @@ Azure Storage テーブルの入力バインドにより、関数で Storage テ
 以下の点に注意してください。 
 
 * 単一のエンティティを読み取るには、`partitionKey` と `rowKey` を一緒に使用します。 これらのプロパティは省略可能です。 
-* `connection` にはストレージ接続文字列を含むアプリ設定の名前を含める必要があります。 Azure Portal では、ストレージ アカウントの作成や既存のストレージ アカウントの選択を行う際、**[統合]** タブの標準エディターによってこのアプリ設定が構成されます。 [このアプリケーション設定を手動で構成](functions-how-to-use-azure-function-app-settings.md#application-settings)することもできます。  
+* `connection` にはストレージ接続文字列を含むアプリ設定の名前を含める必要があります。 Azure Portal では、ストレージ アカウントの作成や既存のストレージ アカウントの選択を行う際、**[統合]** タブの標準エディターによってこのアプリ設定が構成されます。 [このアプリケーション設定を手動で構成](functions-how-to-use-azure-function-app-settings.md#settings)することもできます。  
 
 <a name="inputusage"></a>
 
@@ -179,7 +179,7 @@ Azure Storage テーブルの出力バインドにより、関数で Storage テ
 以下の点に注意してください。 
 
 * 単一のエンティティを書き込むには、`partitionKey` と `rowKey` を一緒に使用します。 これらのプロパティは省略可能です。 関数コードでエンティティ オブジェクトを作成する際に `PartitionKey` と `RowKey` を指定することもできます。
-* `connection` にはストレージ接続文字列を含むアプリ設定の名前を含める必要があります。 Azure Portal では、ストレージ アカウントの作成や既存のストレージ アカウントの選択を行う際、**[統合]** タブの標準エディターによってこのアプリ設定が構成されます。 [このアプリケーション設定を手動で構成](functions-how-to-use-azure-function-app-settings.md#application-settings)することもできます。 
+* `connection` にはストレージ接続文字列を含むアプリ設定の名前を含める必要があります。 Azure Portal では、ストレージ アカウントの作成や既存のストレージ アカウントの選択を行う際、**[統合]** タブの標準エディターによってこのアプリ設定が構成されます。 [このアプリケーション設定を手動で構成](functions-how-to-use-azure-function-app-settings.md#settings)することもできます。 
 
 <a name="outputusage"></a>
 

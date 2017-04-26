@@ -29,7 +29,6 @@
 #### [.NET Standard](event-hubs-dotnet-standard-api-overview.md)
 #### [.NET Framework](event-hubs-dotnet-framework-api-overview.md)
 #### [診断ログ](event-hubs-diagnostic-logs.md)
-### [認証と権限承認](../service-bus-messaging/service-bus-sas.md)
 ### [AMQP 1.0 プロトコル ガイド](../service-bus-messaging/service-bus-amqp-protocol-guide.md)
 ## Manage
 ### [Event Hubs 管理ライブラリ](event-hubs-management-libraries.md)

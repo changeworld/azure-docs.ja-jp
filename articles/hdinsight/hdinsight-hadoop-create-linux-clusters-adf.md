@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 02/23/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: a77aa4a44bbb7dafffa4269c3713153df9bbced9
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: 8b7ccb0be15b4eba3bb400f546bc2469bb2b6009
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -28,23 +28,23 @@ ms.lasthandoff: 03/25/2017
 
 [Azure Data Factory](../data-factory/data-factory-introduction.md) は、データの移動や変換を調整および自動化する、クラウドベースのデータ統合サービスです。 Azure Data Factory を使用すると、入力データ スライスを処理するために HDInsight Hadoop クラスターを Just-In-Time 方式で作成し、処理が完了した時点でクラスターを削除することができます。 オンデマンドの HDInsight Hadoop クラスターを使用するメリットをいくつか次に示します。
 
-- 課金の対象になるのは、HDInsight Hadoop クラスターでジョブが実行されている時間 (と構成可能な短いアイドル時間) のみです。 料金は、HDInsight クラスターを使用しているかどうかに関係なく、分単位で課金されます。 Data Factory でオンデマンドの HDInsight のリンクされたサービスを使用すると、クラスターはオンデマンドで作成されます。 さらに、クラスターは、ジョブの完了時に自動的に削除されます。 そのため、ジョブの実行時間と短いアイドル時間 (time-to-live 設定) のみが課金の対象となります。 
+- 課金の対象になるのは、HDInsight Hadoop クラスターでジョブが実行されている時間 (と構成可能な短いアイドル時間) のみです。 料金は、HDInsight クラスターを使用しているかどうかに関係なく、分単位で課金されます。 Data Factory でオンデマンドの HDInsight のリンクされたサービスを使用すると、クラスターはオンデマンドで作成されます。 さらに、クラスターは、ジョブの完了時に自動的に削除されます。 そのため、ジョブの実行時間と短いアイドル時間 (time-to-live 設定) のみが課金の対象となります。
 - Data Factory パイプラインを使用してワークフローを作成できます。 たとえば、パイプラインを使用して、オンプレミスの SQL Server から Azure BLOB ストレージにデータをコピーし、オンデマンドの HDInsight Hadoop クラスターで Hive スクリプトと Pig スクリプトを実行してデータを処理することができます。 次に、BI アプリケーションで使用するために、結果データを Azure SQL Data Warehouse にコピーします。
 - 定期的 (毎時、毎日、毎週、毎月など) に実行されるように、ワークフローのスケジュールを設定することができます。
 
-Azure Data Factory では、データ ファクトリに 1 つまたは複数のデータ パイプラインを設定できます。 データ パイプラインには、1 つ以上のアクティビティがあります。 アクティビティには、[データ移動アクティビティ](../data-factory/data-factory-data-movement-activities.md)と[データ変換アクティビティ](../data-factory/data-factory-data-transformation-activities.md)の 2 種類があります。 データ移動アクティビティ (現在はコピー アクティビティのみ) は、ソース データ ストアからコピー先データ ストアにデータを移動するために使用します。 データ変換アクティビティは、データを変換/処理するために使用します。 HDInsight Hive アクティビティは、Data Factory でサポートされるデータ変換アクティビティの 1 つです。 このチュートリアルでは、Hive 変換アクティビティを使用します。 
+Azure Data Factory では、データ ファクトリに 1 つまたは複数のデータ パイプラインを設定できます。 データ パイプラインには、1 つ以上のアクティビティがあります。 アクティビティには、[データ移動アクティビティ](../data-factory/data-factory-data-movement-activities.md)と[データ変換アクティビティ](../data-factory/data-factory-data-transformation-activities.md)の 2 種類があります。 データ移動アクティビティ (現在はコピー アクティビティのみ) は、ソース データ ストアから宛先データ ストアにデータを移動するために使用します。 データ変換アクティビティは、データを変換/処理するために使用します。 HDInsight Hive アクティビティは、Data Factory でサポートされるデータ変換アクティビティの 1 つです。 このチュートリアルでは、Hive 変換アクティビティを使用します。
 
-Hive アクティビティを構成して、独自の HDInsight Hadoop クラスターまたはオンデマンドの HDInsight Hadoop クラスターを使用することができます。 このチュートリアルでは、データ ファクトリ パイプラインの Hive アクティビティが、オンデマンドの HDInsight クラスターを使用するように構成されています。 したがって、アクティビティを実行してデータ スライスを処理するとき、次の処理が実行されます。 
+Hive アクティビティを構成して、独自の HDInsight Hadoop クラスターまたはオンデマンドの HDInsight Hadoop クラスターを使用することができます。 このチュートリアルでは、データ ファクトリ パイプラインの Hive アクティビティが、オンデマンドの HDInsight クラスターを使用するように構成されています。 したがって、アクティビティを実行してデータ スライスを処理するとき、次の処理が実行されます。
 
 1. スライスを処理するために、HDInsight Hadoop クラスターが Just-In-Time 方式で自動的に作成されます。  
-2. クラスター上で HiveQL スクリプトを実行することによって入力データが処理されます。 
+2. クラスター上で HiveQL スクリプトを実行することによって入力データが処理されます。
 3. HDInsight Hadoop クラスターは、処理が完了し、(TimeToLive 設定で) 構成された時間アイドル状態になると、削除されます。 この TimeToLive アイドル時間内に次のデータ スライスを処理できる場合、スライスを処理するために同じクラスターが使用されます。  
-      
-このチュートリアルの Hive アクティビティに関連付けられた HiveQL スクリプトは、次のアクションを実行します。 
+
+このチュートリアルの Hive アクティビティに関連付けられた HiveQL スクリプトは、次のアクションを実行します。
 
 1. Azure BLOB ストレージに格納されている生の Web ログ データを参照する外部テーブルを作成します。
 2. 生データを年と月で分割します。
-3. 分割したデータを Azure BLOB ストレージに格納します。 
+3. 分割したデータを Azure BLOB ストレージに格納します。
 
 このチュートリアルの Hive アクティビティに関連付けられた HiveQL スクリプトは、Azure BLOB ストレージに格納されている生の Web ログ データを参照する外部テーブルを作成します。 入力ファイル内の各月のサンプル行を次に示します。
 
@@ -184,21 +184,21 @@ Write-host "`nScript completed" -ForegroundColor Green
 3. PowerShell スクリプトで作成したリソース グループの名前をダブルクリックします。 一覧表示されるリソース グループが多すぎる場合は、フィルターを使用します。
 4. **[リソース]** タイルには、リソース グループを他のプロジェクトと共有する場合を除き、リソースが 1 つだけ表示されています。 このリソースが、前の手順で指定した名前のストレージ アカウントです。 このストレージ アカウント名をクリックします。
 5. **[BLOB]** タイルをクリックします。
-6. **adfgetstarted** コンテナーをクリックします。 **inputdata** と **script** の 2 つのフォルダーが表示されます。 
-7. フォルダーを開き、フォルダー内のファイルを確認します。 inputdata には入力データを含む input.log ファイルが含まれ、script フォルダーには HiveQL スクリプト ファイルが含まれています。 
+6. **adfgetstarted** コンテナーをクリックします。 **inputdata** と **script** の 2 つのフォルダーが表示されます。
+7. フォルダーを開き、フォルダー内のファイルを確認します。 inputdata には入力データを含む input.log ファイルが含まれ、script フォルダーには HiveQL スクリプト ファイルが含まれています。
 
 ## <a name="create-a-data-factory-using-resource-manager-template"></a>Resource Manager テンプレートを使用したデータ ファクトリの作成
-ストレージ アカウント、入力データ、および HiveQL スクリプトの準備ができたら、いつでも Azure データ ファクトリを作成できます。 データ ファクトリを作成する方法はいくつかあります。 このチュートリアルでは、Azure Portal を使用して Azure Resource Manager テンプレートをデプロイすることで、データ ファクトリを作成します。 Resource Manager テンプレートは、[Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) と [Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md#deploy) を使用してデプロイすることもできます。 他のデータ ファクトリの作成方法については、「[Azure Data Factory を使ってみる](../data-factory/data-factory-build-your-first-pipeline.md)」を参照してください。
+ストレージ アカウント、入力データ、および HiveQL スクリプトの準備ができたら、いつでも Azure データ ファクトリを作成できます。 データ ファクトリを作成する方法はいくつかあります。 このチュートリアルでは、Azure Portal を使用して Azure Resource Manager テンプレートをデプロイすることで、データ ファクトリを作成します。 Resource Manager テンプレートは、[Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) と [Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md#deploy-local-template) を使用してデプロイすることもできます。 他のデータ ファクトリの作成方法については、「[Azure Data Factory を使ってみる](../data-factory/data-factory-build-your-first-pipeline.md)」を参照してください。
 
 1. 次の画像をクリックして Azure にサインインし、Azure Portal で Resource Manager テンプレートを開きます。 テンプレートは https://hditutorialdata.blob.core.windows.net/adfhiveactivity/data-factory-hdinsight-on-demand.json にあります。 テンプレートで定義されるエンティティの詳細については、「[テンプレートの Data Factory エンティティ](#data-factory-entities-in-the-template)」セクションを参照してください。 
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fadfhiveactivity%2Fdata-factory-hdinsight-on-demand.json" target="_blank"><img src="./media/hdinsight-hadoop-create-linux-clusters-adf/deploy-to-azure.png" alt="Deploy to Azure"></a>
-2. **[リソース グループ]** 設定の **[既存のものを使用]** オプションを選択し、前の手順で (PowerShell スクリプトを使用して) 作成したリソース グループの名前を選択します。 
+2. **[リソース グループ]** 設定の **[既存のものを使用]** オプションを選択し、前の手順で (PowerShell スクリプトを使用して) 作成したリソース グループの名前を選択します。
 3. データ ファクトリの名前を入力します (**[データ ファクトリ名]**)。 この名前はグローバルに一意である必要があります。
 4. 前の手順で書き留めた**ストレージ アカウント名**と**ストレージ アカウント キー**を入力します。
 5. **使用条件**を読み、**[上記の使用条件に同意する]** をオンにします。
-6. **[ダッシュボードにピン留めする]** オプションをオンにします。 
-6. **[Purchase/Create (購入/作成)]** をクリックします。 ダッシュボードに "**テンプレートのデプロイのデプロイ中**" というタイルが表示されます。 対象のリソース グループの**リソース グループ** ブレードが開くまで待ちます。 また、対象のリソース グループの名前が付けられたタイルをクリックしてリソース グループ ブレードを開くこともできます。 
+6. **[ダッシュボードにピン留めする]** オプションをオンにします。
+6. **[Purchase/Create (購入/作成)]** をクリックします。 ダッシュボードに "**テンプレートのデプロイのデプロイ中**" というタイルが表示されます。 対象のリソース グループの**リソース グループ** ブレードが開くまで待ちます。 また、対象のリソース グループの名前が付けられたタイルをクリックしてリソース グループ ブレードを開くこともできます。
 6. リソース グループ ブレードがまだ開いていない場合は、タイルをクリックしてリソース グループを開きます。 これで、ストレージ アカウント リソースのほかに、もう 1 つデータ ファクトリ リソースが表示されます。
 7. データ ファクトリの名前 (**[データ ファクトリ名]** パラメーターに指定した値) をクリックします。
 8. [Data Factory] ブレードで、**[ダイアグラム]** タイルをクリックします。 このダイアグラムには、1 つの入力データセットと 1 つの出力データセットを持つ 1 つのアクティビティが示されます。
@@ -207,13 +207,13 @@ Write-host "`nScript completed" -ForegroundColor Green
 
     名前は Resource Manager テンプレートで定義されます。
 9. **[AzureBlobOutput]**をダブルクリックします。
-10. **[最近更新されたスライス]**に、1 つのスライスが表示されます。 状態が **[処理中]** の場合は、**[準備完了]** に変わるまで待ちます。 通常、HDInsight クラスターの作成には約 **20 分**かかります。 
+10. **[最近更新されたスライス]**に、1 つのスライスが表示されます。 状態が **[処理中]** の場合は、**[準備完了]** に変わるまで待ちます。 通常、HDInsight クラスターの作成には約 **20 分**かかります。
 
 ### <a name="check-the-data-factory-output"></a>データ ファクトリの出力を確認する
 
 1. 前のセクションと同じ手順を使用して、adfgetstarted コンテナーのコンテナーを確認します。 **adfgetsarted**に加えて、次の 2 つの新しいコンテナーがあります。
 
-   * `adf<yourdatafactoryname>-linkedservicename-datetimestamp` 形式の名前が付いたコンテナー。 このコンテナーは、HDInsight クラスターの既定のコンテナーです。 
+   * `adf<yourdatafactoryname>-linkedservicename-datetimestamp` 形式の名前が付いたコンテナー。 このコンテナーは、HDInsight クラスターの既定のコンテナーです。
    * adfjobs: このコンテナーは、ADF ジョブ ログのコンテナーです。
 
      データ ファクトリの出力は、Resource Manager テンプレートに構成されている **afgetstarted** に格納されます。
@@ -227,7 +227,7 @@ Write-host "`nScript completed" -ForegroundColor Green
     ![Azure Data Factory HDInsight on-demand Hive activity pipeline output](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-adf-output-month.png)
 
 ## <a name="data-factory-entities-in-the-template"></a>テンプレートの Data Factory エンティティ
-データ ファクトリの大まかな Resource Manager テンプレートは次のようになります。 
+データ ファクトリの大まかな Resource Manager テンプレートは次のようになります。
 
 ```json
 {
@@ -267,9 +267,9 @@ Write-host "`nScript completed" -ForegroundColor Green
 }
 ```
 dataFactoryName は、テンプレートをデプロイするときに指定するデータ ファクトリの名前です。 データ ファクトリは現在、米国東部、米国西部、北ヨーロッパ リージョンでのみサポートされています。
-   
+
 ### <a name="defining-entities-within-the-data-factory"></a>データ ファクトリ内のエンティティの定義
-JSON テンプレートには、次の Data Factory エンティティが定義されています。 
+JSON テンプレートには、次の Data Factory エンティティが定義されています。
 
 * [Azure Storage のリンクされたサービス](#azure-storage-linked-service)
 * [HDInsight のオンデマンドのリンクされたサービス](#hdinsight-on-demand-linked-service)
@@ -278,7 +278,7 @@ JSON テンプレートには、次の Data Factory エンティティが定義�
 * [コピー アクティビティを含むデータ パイプライン](#data-pipeline)
 
 #### <a name="azure-storage-linked-service"></a>Azure Storage のリンクされたサービス
-Azure Storage のリンクされたサービスでは、Azure ストレージ アカウントをデータ ファクトリにリンクします。 このチュートリアルでは、同じストレージ アカウントが、既定の HDInsight ストレージ アカウント、入力データ ストレージ、出力データ ストレージとして使用されます。 そのため、Azure Storage のリンクされたサービスを 1 つだけ定義します。 リンクされたサービスの定義では、Azure ストレージ アカウントの名前とキーを指定します。 Azure Storage のリンクされたサービスの定義に使用する JSON プロパティの詳細については、「[Azure Storage のリンクされたサービス](../data-factory/data-factory-azure-blob-connector.md#azure-storage-linked-service)」をご覧ください。 
+Azure Storage のリンクされたサービスでは、Azure ストレージ アカウントをデータ ファクトリにリンクします。 このチュートリアルでは、同じストレージ アカウントが、既定の HDInsight ストレージ アカウント、入力データ ストレージ、出力データ ストレージとして使用されます。 そのため、Azure Storage のリンクされたサービスを 1 つだけ定義します。 リンクされたサービスの定義では、Azure ストレージ アカウントの名前とキーを指定します。 Azure Storage のリンクされたサービスの定義に使用する JSON プロパティの詳細については、「[Azure Storage のリンクされたサービス](../data-factory/data-factory-azure-blob-connector.md#azure-storage-linked-service)」をご覧ください。
 
 ```json
 {
@@ -323,7 +323,7 @@ HDInsight のオンデマンドのリンクされたサービスの定義で、�
     }
 }
 ```
-以下の点に注意してください。 
+以下の点に注意してください。
 
 * Data Factory によって、**Linux ベース**の HDInsight クラスターが自動的に作成されます。
 * HDInsight Hadoop クラスターは、ストレージ アカウントと同じリージョンに作成されます。
@@ -336,7 +336,7 @@ HDInsight のオンデマンドのリンクされたサービスの定義で、�
 > 処理されるスライスが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、"adf**データ ファクトリ名**-**リンクされたサービス名**-日時スタンプ" というパターンに従います。 Azure BLOB ストレージ内のコンテナーを削除するには、 [Microsoft ストレージ エクスプローラー](http://storageexplorer.com/) などのツールを使用します。
 
 #### <a name="azure-blob-input-dataset"></a>Azure BLOB の入力データセット
-入力データセット定義では、入力データを格納する BLOB コンテナー、フォルダー、ファイルの名前を指定します。 Azure BLOB データセットの定義に使用する JSON プロパティの詳細については、[Azure BLOB データセットのプロパティ](../data-factory/data-factory-azure-blob-connector.md#dataset-properties)に関するセクションをご覧ください。 
+入力データセット定義では、入力データを格納する BLOB コンテナー、フォルダー、ファイルの名前を指定します。 Azure BLOB データセットの定義に使用する JSON プロパティの詳細については、[Azure BLOB データセットのプロパティ](../data-factory/data-factory-azure-blob-connector.md#dataset-properties)に関するセクションをご覧ください。
 
 ```json
 
@@ -370,7 +370,7 @@ HDInsight のオンデマンドのリンクされたサービスの定義で、�
 
 ```
 
-JSON 定義内の次の設定に注目してください。 
+JSON 定義内の次の設定に注目してください。
 
 ```json
 "fileName": "input.log",
@@ -409,7 +409,7 @@ JSON 定義内の次の設定に注目してください。
 }
 ```
 
-folderPath は、出力データを格納するフォルダーへのパスを指定します。 
+folderPath は、出力データを格納するフォルダーへのパスを指定します。
 
 ```json
 "folderPath": "adfgetstarted/partitioneddata",
@@ -428,7 +428,7 @@ folderPath は、出力データを格納するフォルダーへのパスを指
 Azure Data Factory では、出力データセットの可用性によってパイプラインが動作するようになります。 この例では、毎月の最終日 (EndOfInterval) にスライスが生成されます。 詳細については、「[Data Factory を使用したスケジュール設定と実行](../data-factory/data-factory-scheduling-and-execution.md)」を参照してください。
 
 #### <a name="data-pipeline"></a>データ パイプライン
-オンデマンドの Azure HDInsight クラスターで Hive スクリプトを実行してデータを変換するパイプラインを定義します。 この例のパイプラインの定義に使用されている JSON 要素については、「[パイプライン JSON](../data-factory/data-factory-create-pipelines.md#pipeline-json)」をご覧ください。 
+オンデマンドの Azure HDInsight クラスターで Hive スクリプトを実行してデータを変換するパイプラインを定義します。 この例のパイプラインの定義に使用されている JSON 要素については、「[パイプライン JSON](../data-factory/data-factory-create-pipelines.md#pipeline-json)」をご覧ください。
 
 ```json
 {
@@ -487,7 +487,7 @@ Azure Data Factory では、出力データセットの可用性によってパ�
 ### <a name="delete-the-blob-containers-created-by-on-demand-hdinsight-cluster"></a>オンデマンドの HDInsight クラスターによって作成された BLOB コンテナーを削除する
 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (timeToLive) がある場合を除き、スライスを処理する必要があるたびに HDInsight クラスターが作成され、処理が終了するとそのクラスターが削除されます。 Azure Data Factory は、クラスターごとに、クラスターの既定のストレージ アカウントとして使用される Azure BLOB ストレージ内に BLOB コンテナーを作成します。 HDInsight クラスターが削除されても、既定の BLOB ストレージ コンテナーとそれに関連付けられたストレージ アカウントは削除されません。 この動作は仕様です。 処理されるスライスが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、`adfyourdatafactoryname-linkedservicename-datetimestamp` 形式になります。
 
-**adfjobs** フォルダーと **adfyourdatafactoryname-linkedservicename-datetimestamp** フォルダーを削除します。 adfjobs コンテナーには、Azure Data Factory からのジョブのログが含まれています。 
+**adfjobs** フォルダーと **adfyourdatafactoryname-linkedservicename-datetimestamp** フォルダーを削除します。 adfjobs コンテナーには、Azure Data Factory からのジョブのログが含まれています。
 
 ### <a name="delete-the-resource-group"></a>リソース グループを削除します
 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) は、ソリューションをグループとしてデプロイ、管理、監視するために使用します。  リソース グループを削除すると、そのグループ内のコンポーネントがすべて削除されます。  
@@ -594,5 +594,4 @@ azure storage blob copy start "https://hditutorialdata.blob.core.windows.net/adf
 ```
 
 コンテナー名は *adfgetstarted*です。 この名前はそのままにしておいてください。 そうしないと、Resource Manager テンプレートの更新が必要になります。 この CLI スクリプトに関してサポートが必要な場合は、「[Azure Storage での Azure CLI の使用](../storage/storage-azure-cli.md)」を参照してください。
-
 

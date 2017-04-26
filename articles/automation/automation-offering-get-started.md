@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 04/14/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 1876b78186da3aa6c0ae9dc7de3b7ab7e46888bb
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 0f80ac93e3ff1ee95477e4fa5dbe21d61ddf8ead
+ms.lasthandoff: 04/25/2017
 
 ---
 
@@ -211,7 +211,7 @@ Automation アカウントが正常に作成されると、いくつかのリソ
 | AzureClassicAutomationTutorial Runbook | クラシック デプロイメント モデルを使ってサブスクリプションに作成されたすべての VM をクラシック実行アカウント (証明書) を使って取得し、その VM の名前と状態を出力するサンプルのグラフィカルな Runbook。 |
 | AzureClassicAutomationTutorial Script Runbook | サブスクリプション内のすべてのクラシック VM をクラシック実行アカウント (証明書) を使って取得し、その VM の名前と状態を出力するサンプルの PowerShell Runbook。 |
 | AzureClassicRunAsCertificate | Runbook から Azure のクラシック リソースを管理できるよう、Azure に対する認証に使用される自動的に作成される証明書資産。 この証明書には、1 年の有効期間があります。 |
-| AzureClassicRunAsConnection | Runbook から Azure のクラシック リソースを管理できるよう、Azure に対する認証に使用される自動的に作成される接続資産。 |authenticate with Azure so that you can manage Azure classic resources from runbooks. |
+| AzureClassicRunAsConnection | Runbook から Azure のクラシック リソースを管理できるよう、Azure に対する認証に使用される自動的に作成される接続資産。|
 
 ## <a name="next-steps"></a>次のステップ
 * 新しい Automation アカウントが Azure リソースに対して認証できることを確認するには、「[Azure Automation 実行アカウントの認証をテストする](automation-verify-runas-authentication.md)」を参照してください。

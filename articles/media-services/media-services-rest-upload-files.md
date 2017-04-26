@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/13/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: c0ea95ed12a704116e8cdff257dacd7768b45708
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 256f8323d199db98a1267a5139a1ab3f14a3441c
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -34,7 +34,7 @@ Media Services で、デジタル ファイルを資産にアップロードし�
 > [!NOTE]
 > 次の考慮事項が適用されます。
 > 
-> * Media Services は、ストリーミング コンテンツ (たとえば、http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。 **Name** プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) (!*'();:@&=+$,/?%#[]") は使用できません。 また、ファイル名拡張子で使用できる "." は&1; つのみです。
+> * Media Services は、ストリーミング コンテンツ (たとえば、http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。 **Name** プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) (!*'();:@&=+$,/?%#[]") は使用できません。 また、ファイル名拡張子で使用できる "." は 1 つのみです。
 > * 名前は 260 文字以内で指定する必要があります。
 > * Media Services での処理についてサポートされている最大ファイル サイズには制限があります。 ファイル サイズの制限の詳細については、[こちら](media-services-quotas-and-limitations.md)のトピックを参照してください。
 > 
@@ -54,13 +54,13 @@ AMS では、資産を一括でアップロードすることもできます。 
 > 
 > Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「 [Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
 > 
-> https://media.windows.net に正常に接続されると、別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 「 [Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect-programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。 
+> ( https://media.windows.net ) に正常に接続されると、別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 「 [Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect-programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。 
 > 
 > 
 
 資産は、ビデオ、オーディオ、イメージ、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイルなど、Media Services 内の多様な種類やセットのオブジェクトのためのコンテナーです。 REST API で資産を作成するには、Media Services に POST 要求を送信し、要求本文に、資産に関するプロパティ情報を配置する必要があります。
 
-資産を作成するときに指定できるプロパティの&1; つは **Options** です。 **Options** は、資産の作成に使用できる暗号化オプションを説明する列挙値です。 有効な値は、以下の一覧の値のいずれかです。値の組み合わせではありません。 
+資産を作成するときに指定できるプロパティの 1 つは **Options** です。 **Options** は、資産の作成に使用できる暗号化オプションを説明する列挙値です。 有効な値は、以下の一覧の値のいずれかです。値の組み合わせではありません。 
 
 * **None** = **0**: 暗号化は使用されません。 これが既定値です。 このオプションを使用した場合、送信経路上とストレージ内のいずれにおいてもコンテンツが保護されないので注意してください。
     プログレッシブ ダウンロードを使用して MP4 を配信する場合はこのオプションを使用します。 
@@ -123,9 +123,9 @@ AMS では、資産を一括でアップロードすることもできます。 
     }
 
 ### <a name="create-an-assetfile"></a>AssetFile を作成する
-[AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) エンティティは、BLOB コンテナーに格納されているビデオまたはオーディオ ファイルを表します。 資産ファイルは、常に資産に関連付けられており、資産には&1; つまたは複数の資産ファイルが含まれている可能性があります。 資産ファイル オブジェクトが blob コンテナー内のデジタル ファイルに関連付けられていないと、Media Services のエンコーダー タスクは失敗します。
+[AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) エンティティは、BLOB コンテナーに格納されているビデオまたはオーディオ ファイルを表します。 資産ファイルは、常に資産に関連付けられており、資産には 1 つまたは複数の資産ファイルが含まれている可能性があります。 資産ファイル オブジェクトが blob コンテナー内のデジタル ファイルに関連付けられていないと、Media Services のエンコーダー タスクは失敗します。
 
-**AssetFile** インスタンスと実際のメディア ファイルは次の&2; つの異なるオブジェクトであることに注意してください。 AssetFile インスタンスには、メディア ファイルに関するメタデータが含まれており、メディア ファイルには実際のメディア コンテンツが含まれています。
+**AssetFile** インスタンスと実際のメディア ファイルは次の 2 つの異なるオブジェクトであることに注意してください。 AssetFile インスタンスには、メディア ファイルに関するメタデータが含まれており、メディア ファイルには実際のメディア コンテンツが含まれています。
 
 デジタル メディア ファイルを BLOB コンテナーにアップロードした後、 **MERGE** HTTP 要求を使用して、メディア ファイル (トピックの後半で説明します) に関する情報で AssetFile を更新します。 
 
@@ -245,8 +245,8 @@ SAS URL には次の形式があります。
 
 いくつかの考慮事項が適用されます。
 
-* 特定の資産に関連付けられている&5; つの一意の Locator を同時に使用することはできません。 詳細については、「Locator」をご覧ください。
-* すぐにファイルをアップロードする必要がある場合は、StartTime 値を現在の時刻の&5; 分前に設定する必要があります。 これは、クライアント コンピューターと Media Services の間にクロック スキューがある可能性があるためです。 また、StartTime 値の DateTime 形式は、YYYY-MM-DDTHH:mm:ssZ とする必要があります (たとえば、"2014-05-23T17:53:50Z")。    
+* 特定の資産に関連付けられている 5 つの一意の Locator を同時に使用することはできません。 詳細については、「Locator」をご覧ください。
+* すぐにファイルをアップロードする必要がある場合は、StartTime 値を現在の時刻の 5 分前に設定する必要があります。 これは、クライアント コンピューターと Media Services の間にクロック スキューがある可能性があるためです。 また、StartTime 値の DateTime 形式は、YYYY-MM-DDTHH:mm:ssZ とする必要があります (たとえば、"2014-05-23T17:53:50Z")。    
 * Locator を作成した後に使用可能になるまで 30 ～ 40 秒の遅延が発生する場合があります。 この問題は、SAS URL と Origin Locator の両方に当てはまります。
 
 次の例は、要求本文の Type プロパティで定義されているように、SAS URL Locator を作成する方法を示しています　(SAS ロケーターの場合は "1"、オンデマンド配信元ロケーターの場合は "2")。 返される **Path** プロパティには、ファイルのアップロードに使用する必要がある URL が含まれています。
@@ -310,7 +310,7 @@ AccessPolicy と Locator を設定すると、実際のファイルは、Azure S
 > 
 > 
 
-Azure ストレージ BLOB の使用の詳細については、 [BLOB サービス REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/Blob-Service-REST-API)をご覧ください。
+Azure ストレージ BLOB の使用の詳細については、 [BLOB サービス REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)をご覧ください。
 
 ### <a name="update-the-assetfile"></a>AssetFile を更新する
 ファイルをアップロードしたので、FileAsset サイズ (およびその他) の情報を更新します。 次に例を示します。
@@ -483,7 +483,7 @@ IngestManifest の Statistics プロパティをポーリングすることに�
     {"Id" : "nb:kid:UUID:316d14d4-b603-4d90-b8db-0fede8aa48f8", "ContentKeyType" : 1, "EncryptedContentKey" : "Y4NPej7heOFa2vsd8ZEOcjjpu/qOq3RJ6GRfxa8CCwtAM83d6J2mKOeQFUmMyVXUSsBCCOdufmieTKi+hOUtNAbyNM4lY4AXI537b9GaY8oSeje0NGU8+QCOuf7jGdRac5B9uIk7WwD76RAJnqyep6U/OdvQV4RLvvZ9w7nO4bY8RHaUaLxC2u4aIRRaZtLu5rm8GKBPy87OzQVXNgnLM01I8s3Z4wJ3i7jXqkknDy4VkIyLBSQvIvUzxYHeNdMVWDmS+jPN9ScVmolUwGzH1A23td8UWFHOjTjXHLjNm5Yq+7MIOoaxeMlKPYXRFKofRY8Qh5o5tqvycSAJ9KUqfg==", "ProtectionKeyId" : "7D9BB04D9D0A4A24800CADBFEF232689E048F69C", "ProtectionKeyType" : 1, "Checksum" : "TfXtjCIlq1Y=" }
 
 ### <a name="link-the-contentkey-to-the-asset"></a>ContentKey を資産にリンクする
-ContentKey は、HTTP POST 要求を送信することによって&1; つ以上の資産に関連付けます。 次では、ID を使用して、ContentKey の例と資産の例をリンクする要求の例を示します。
+ContentKey は、HTTP POST 要求を送信することによって 1 つ以上の資産に関連付けます。 次では、ID を使用して、ContentKey の例と資産の例をリンクする要求の例を示します。
 
 **HTTP 応答**
 

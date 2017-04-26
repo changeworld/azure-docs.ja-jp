@@ -1,8 +1,8 @@
 | リソース | 既定の制限 | 上限 |
 | --- | --- | --- |
 | [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md) |リージョンあたり 20 件<sup>1</sup> |リージョンあたり 10,000 |
-| [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりの VM の合計コア数 |リージョンあたり 20 件<sup>1</sup> |リージョンあたり 10,000 |
-| [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりのシリーズ (Dv2、F など) ごとの VM のコア数 |リージョンあたり 20 件<sup>1</sup> |リージョンあたり 10,000 |
+| [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりの VM の合計コア数 |リージョンあたり 20 件<sup>1</sup> | サポートにお問い合せください |
+| [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりのシリーズ (Dv2、F など) ごとの VM のコア数 |リージョンあたり 20 件<sup>1</sup> | サポートにお問い合せください |
 | [共同管理者](../articles/billing-add-change-azure-subscription-administrator.md) 数 |無制限 |無制限 |
 | [Storage アカウント](../articles/storage/storage-create-storage-account.md) 数 |200 |200<sup>2</sup> |
 | サブスクリプションあたりの[リソース グループ数](../articles/azure-resource-manager/resource-group-overview.md) |800 |800 |

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 5ec2f1346e7c9723aeca45f1c278d0731b3a43b5
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: cb330845ea623e49cc1d434dea9448c41b26413d
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -135,7 +135,7 @@ ms.lasthandoff: 03/30/2017
 |コマンド ライン パラメーター|Description|
 |----------------------------|-----------------|
 |**/srcdir:**<SourceDirectory\>|`Required.` ターゲット ドライブにコピーされるファイルが置かれているソース ディレクトリ。 ディレクトリ パスは絶対パス (相対パスではなく) にする必要があります。|
-|**/dstdir:**<DestinationBlobVirtualDirectory\>|`Required.` Microsoft Azure ストレージ アカウント内の、インポート先仮想ディレクトリへのパス。 仮想ディレクトリが既に存在しているかどうかは、場合によって異なります。<br /><br /> 指定できるのは、コンテナーか BLOB プレフィックス (例: `music/70s/`) です。 インポート先ディレクトリは、コンテナー名の後にスラッシュ (/) を付けて指定します。 仮想 BLOB ディレクトリ (省略可能) を追加する場合は、その末尾にも "/" を付けます。<br /><br /> インポート先のコンテナーがルート コンテナーである場合は、ルート コンテナーを (スラッシュ付きで) 明示的に指定する必要があります (例: `$root/`)。 ルート コンテナーの下にある BLOB の名前に "/" を含めることはできないので、インポート先のディレクトリがルート コンテナーである場合、ソース ディレクトリのサブディレクトリはコピーされません。<br /><br /> コピー先の仮想ディレクトリや BLOB を指定する場合は、有効なコンテナー名を使用してください。 コンテナー名は小文字にする必要があります。 コンテナーの名前付け規則については、「[コンテナー、BLOB、およびメタデータの名前付けおよび参照](/rest/api/storageservices/fileservices/naming-and-referencing-containers--blobs--and-metadata)」をご覧ください。|
+|**/dstdir:**<DestinationBlobVirtualDirectory\>|`Required.` Microsoft Azure ストレージ アカウント内の、インポート先仮想ディレクトリへのパス。 仮想ディレクトリが既に存在しているかどうかは、場合によって異なります。<br /><br /> 指定できるのは、コンテナーか BLOB プレフィックス (例: `music/70s/`) です。 インポート先ディレクトリは、コンテナー名の後にスラッシュ (/) を付けて指定します。 仮想 BLOB ディレクトリ (省略可能) を追加する場合は、その末尾にも "/" を付けます。<br /><br /> インポート先のコンテナーがルート コンテナーである場合は、ルート コンテナーを (スラッシュ付きで) 明示的に指定する必要があります (例: `$root/`)。 ルート コンテナーの下にある BLOB の名前に "/" を含めることはできないので、インポート先のディレクトリがルート コンテナーである場合、ソース ディレクトリのサブディレクトリはコピーされません。<br /><br /> コピー先の仮想ディレクトリや BLOB を指定する場合は、有効なコンテナー名を使用してください。 コンテナー名は小文字にする必要があります。 コンテナーの名前付け規則については、「[コンテナー、BLOB、およびメタデータの名前付けおよび参照](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」をご覧ください。|
 |**/Disposition:**<rename&#124;no-overwrite&#124;overwrite>|`Optional.` 指定したアドレスを持つ BLOB が既に存在する場合の動作を指定します。 このパラメーターの有効値は、`rename`、`no-overwrite`、および `overwrite` です。 これらの値では、大文字と小文字が区別されます。 値を設定しなかった場合は、既定値として `rename` が使用されます。<br /><br /> このパラメーターで指定した値は、`/srcdir` パラメーターによって指定されたディレクトリ内のすべてのファイルに影響を及ぼします。|
 |**/BlobType:**<BlockBlob&#124;PageBlob>|`Optional.` インポート先 BLOB の BLOB タイプを指定します。 有効値は `BlockBlob` と `PageBlob` です。 これらの値では、大文字と小文字が区別されます。 値を設定しなかった場合は、既定値として `BlockBlob` が使用されます。<br /><br /> ほとんどの場合は、`BlockBlob` を使用することをお勧めします。 `PageBlob` を指定する場合、ディレクトリ内の各ファイルの長さは 512 の倍数である必要があります (ページ BLOB のページのサイズ)。|
 |**/PropertyFile:**<PropertyFile\>|`Optional.` インポート先 BLOB のプロパティ ファイルへのパス。 詳細については、「[Import/Export サービスのメタデータとプロパティ ファイルの形式](storage-import-export-file-format-metadata-and-properties.md)」を参照してください。|
@@ -147,7 +147,7 @@ ms.lasthandoff: 03/30/2017
 |コマンド ライン パラメーター|Description|
 |----------------------------|-----------------|
 |**/srcfile:**<SourceFile\>|`Required.` コピーするファイルの完全パス。 ディレクトリ パスは絶対パス (相対パスではなく) にする必要があります。|
-|**/dstblob:**<DestinationBlobPath\>|`Required.` Microsoft Azure ストレージ アカウント内の、インポート先 BLOB へのパス。 BLOB が既に存在しているかどうかは、場合によって異なります。<br /><br /> BLOB 名は先頭をコンテナー名にして指定します。 BLOB 名の先頭を "/" やストレージ アカウント名にすることはできません。 BLOB の名前付け規則については、「[コンテナー、BLOB、およびメタデータの名前付けおよび参照](/rest/api/storageservices/fileservices/naming-and-referencing-containers--blobs--and-metadata)」をご覧ください。<br /><br /> インポート先のコンテナーがルート コンテナーである場合は、`$root` をコンテナーとして明示的に指定する必要があります (例: `$root/sample.txt`)。 なお、ルート コンテナーの下にある BLOB の名前に "/" を含めることはできません。|
+|**/dstblob:**<DestinationBlobPath\>|`Required.` Microsoft Azure ストレージ アカウント内の、インポート先 BLOB へのパス。 BLOB が既に存在しているかどうかは、場合によって異なります。<br /><br /> BLOB 名は先頭をコンテナー名にして指定します。 BLOB 名の先頭を "/" やストレージ アカウント名にすることはできません。 BLOB の名前付け規則については、「[コンテナー、BLOB、およびメタデータの名前付けおよび参照](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」をご覧ください。<br /><br /> インポート先のコンテナーがルート コンテナーである場合は、`$root` をコンテナーとして明示的に指定する必要があります (例: `$root/sample.txt`)。 なお、ルート コンテナーの下にある BLOB の名前に "/" を含めることはできません。|
 |**/Disposition:**<rename&#124;no-overwrite&#124;overwrite>|`Optional.` 指定したアドレスを持つ BLOB が既に存在する場合の動作を指定します。 このパラメーターの有効値は、`rename`、`no-overwrite`、および `overwrite` です。 これらの値では、大文字と小文字が区別されます。 値を設定しなかった場合は、既定値として `rename` が使用されます。|
 |**/BlobType:**<BlockBlob&#124;PageBlob>|`Optional.` インポート先 BLOB の BLOB タイプを指定します。 有効値は `BlockBlob` と `PageBlob` です。 これらの値では、大文字と小文字が区別されます。 値を設定しなかった場合は、既定値として `BlockBlob` が使用されます。<br /><br /> ほとんどの場合は、`BlockBlob` を使用することをお勧めします。 `PageBlob` を指定する場合、ディレクトリ内の各ファイルの長さは 512 の倍数である必要があります (ページ BLOB のページのサイズ)。|
 |**/PropertyFile:**<PropertyFile\>|`Optional.` インポート先 BLOB のプロパティ ファイルへのパス。 詳細については、「[Import/Export サービスのメタデータとプロパティ ファイルの形式](storage-import-export-file-format-metadata-and-properties.md)」を参照してください。|
