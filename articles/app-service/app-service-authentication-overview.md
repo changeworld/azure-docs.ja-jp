@@ -73,7 +73,7 @@ SDK プロバイダーを設定しない場合は、Azure App Service の Mobile
 
 App Service 認証を使用して、サービス間のシナリオを処理する場合、クライアント証明書または基本認証を利用することができます。 Azure のクライアント証明書の詳細については、「 [Web Apps の TLS 相互認証を構成する方法](../app-service-web/app-service-web-configure-tls-mutual-auth.md)」を参照してください。 ASP.NET での基本認証の詳細については、「 [Authentication Filters in ASP.NET Web API 2 (ASP.NET Web API 2 の認証フィルター)](http://www.asp.net/web-api/overview/security/authentication-filters)」を参照してください。
 
-App Service ロジック アプリから API アプリへのサービス アカウント認証は特殊なケースであり、「 [App Service でホストされたカスタム API のロジック アプリでの使用](../logic-apps/logic-apps-custom-hosted-api.md)」で説明されています。
+App Service ロジック アプリから API アプリへのサービス アカウント認証は特殊なケースであり、[App Service でホストされたカスタム API の Logic Apps での使用に関するページ](../logic-apps/logic-apps-custom-hosted-api.md)で説明されています。
 
 ## <a name="a-nameauthorizationahow-authorization-works-in-app-service"></a><a name="authorization"></a>App Service の認証のしくみ
 アプリケーションにアクセスできる要求を完全に制御することができます。 App Service の認証/承認は、次の動作のいずれかになるように構成できます。
