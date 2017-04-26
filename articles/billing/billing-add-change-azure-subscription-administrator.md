@@ -26,11 +26,11 @@ ms.lasthandoff: 02/21/2017
 Azure サブスクリプションまたはサブスクリプションで使われる Azure サービスを管理する Azure 管理者を変更できます。 Azure 課金情報の確認およびサブスクリプションの管理を行うには、[アカウント センター](https://account.windowsazure.com/Home/Index)にアカウント管理者としてサインインする必要があります。 
 
 ## <a name="add-an-admin-for-a-subscription"></a>サブスクリプションの管理者を追加する
-Azure ポータルまたは Azure クラシック ポータルで、Azure 管理者を追加できます。
+Azure Portal または Azure クラシック ポータルで、Azure 管理者を追加できます。
 
 **Azure ポータル**
 
-Azure ポータルでユーザーをサブスクリプションの管理者として追加するには、そのユーザーに所有者ロールを付与します。 所有者ロールでは、割り当てられたサブスクリプション内のリソースのみを管理できます。 他のサブスクリプションへのアクセス権はありません。 [Azure ポータル](https://portal.azure.com) で追加した所有者は、[Azure クラシック ポータル](https://manage.windowsazure.com)でリソースを管理できません。
+Azure Portal でユーザーをサブスクリプションの管理者として追加するには、そのユーザーに所有者ロールを付与します。 所有者ロールでは、割り当てられたサブスクリプション内のリソースのみを管理できます。 他のサブスクリプションへのアクセス権はありません。 [Azure Portal](https://portal.azure.com) で追加した所有者は、[Azure クラシック ポータル](https://manage.windowsazure.com)でリソースを管理できません。
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 2. ハブ メニューで **[サブスクリプション]** > *管理者にアクセスさせたいサブスクリプション*を選択します。
@@ -99,9 +99,9 @@ Azure アカウントの所有権を別のアカウントに譲渡するには�
 
 | 管理ロール | 制限 | Description |
 | --- | --- | --- |
-| アカウント管理者 (AA) |1 Azure アカウントに 1 人 |Azure サブスクリプションをサインアップまたは購入し、 [アカウント センター](https://account.windowsazure.com/Home/Index) にアクセスして多様な管理タスクを実行する権限を持っている個人。 管理タスクには、サブスクリプションの作成、サブスクリプションの取り消し、サブスクリプションの料金の変更、サービス管理者の変更などがあります。 |
-| サービス管理者 (SA) |1 Azure サブスクリプションに 1 人 |このロールには、 [Azure ポータル](https://portal.azure.com)でのサービスの管理が許可されます。 既定で、新しいサブスクリプションのアカウント管理者はサービス管理者でもあります。 |
-| [Azure クラシック ポータル](https://manage.windowsazure.com) |サブスクリプションあたり 200 人 |サービス管理者と同じアクセス権を持っているものの、サブスクリプションと Azure ディレクトリとの関連付けを変更することはできないロール。 |
+| アカウント管理者 (AA) |1 Azure アカウントに&1; 人 |Azure サブスクリプションをサインアップまたは購入し、 [アカウント センター](https://account.windowsazure.com/Home/Index) にアクセスして多様な管理タスクを実行する権限を持っている個人。 管理タスクには、サブスクリプションの作成、サブスクリプションの取り消し、サブスクリプションの料金の変更、サービス管理者の変更などがあります。 |
+| サービス管理者 (SA) |1 Azure サブスクリプションに&1; 人 |このロールには、 [Azure ポータル](https://portal.azure.com)でのサービスの管理が許可されます。 既定で、新しいサブスクリプションのアカウント管理者はサービス管理者でもあります。 |
+| [Azure クラシック ポータル](https://manage.windowsazure.com) |サブスクリプションあたり&200; 人 |サービス管理者と同じアクセス権を持っているものの、サブスクリプションと Azure ディレクトリとの関連付けを変更することはできないロール。 |
 
 Azure Active Directory のロールベースのアクセス制御 (RBAC) では、ユーザーを複数のロールに追加できます。 詳細については、「 [Azure Active Directory のロールベースの Access Control](../active-directory/role-based-access-control-configure.md)」を参照してください。
 
@@ -113,8 +113,8 @@ Azure Active Directory のロールベースのアクセス制御 (RBAC) では�
 
   | サインイン方法 | Microsoft アカウントまたは既定のディレクトリ内のユーザーを CA または SA として追加できる | 同じ組織内の組織アカウントを CA または SA として追加できる | 異なる組織内の組織アカウントを CA または SA として追加できる |
   | --- | --- | --- | --- |
-  |  Microsoft アカウント |はい |いいえ |いいえ |
-  |  組織アカウント |はい |はい |いいえ |
+  |  Microsoft アカウント |はい |なし |なし |
+  |  組織アカウント |はい |あり |いいえ |
 
 ## <a name="learn-more-about-resource-access-control-and-active-directory"></a>リソースのアクセス制御と Active Directory の詳細
 * Microsoft Azure でリソース アクセスを制御する方法の詳細については、「[Azure でのリソース アクセスについて](../active-directory/active-directory-understanding-resource-access.md)」を参照してください。
