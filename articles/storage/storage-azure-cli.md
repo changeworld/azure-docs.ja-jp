@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/18/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: be44ca9d14d6dbb7a50d5c42c163bc66531bb90f
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 5b77598e76de3508d90b35ce5a1f2ee338aca0c8
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -241,7 +241,7 @@ export AZURE_STORAGE_CONNECTION_STRING=<connection_string>
 >
 
 ## <a name="create-and-manage-blobs"></a>BLOB を作成および管理する
-Azure Blob Storage は、HTTP または HTTPS 経由で世界中のどこからでもアクセスできるテキストやバイナリ データなど、大量の非構造化データを格納するためのサービスです。 このセクションでは、Azure BLOB ストレージの概念について理解しているユーザーを対象としています。 詳しくは、「[.NET を使用して Azure Blob Storage を使用する](storage-dotnet-how-to-use-blobs.md)」と「[BLOB サービスの概念](/rest/api/storageservices/fileservices/blob-service-concepts)」をご覧ください。
+Azure Blob Storage は、HTTP または HTTPS 経由で世界中のどこからでもアクセスできるテキストやバイナリ データなど、大量の非構造化データを格納するためのサービスです。 このセクションでは、Azure BLOB ストレージの概念について理解しているユーザーを対象としています。 詳しくは、「[.NET を使用して Azure Blob Storage を使用する](storage-dotnet-how-to-use-blobs.md)」と「[BLOB サービスの概念](/rest/api/storageservices/blob-service-concepts)」をご覧ください。
 
 ### <a name="create-a-container"></a>コンテナーを作成する
 Azure Storage のすべての BLOB はコンテナーに格納する必要があります。 次の `az storage container create` コマンドを使用して、コンテナーを作成できます。
@@ -267,7 +267,7 @@ az storage blob upload -f <local_file_path> -c <container_name> -n <blob_name>
 
  既定では `blob upload` コマンドは *.vhd ファイルをページ BLOB にアップロードし、それ以外の場合はブロック BLOB にアップロードします。 BLOB アップロード時に別の種類を指定するには、`--type` 引数を使用することができます。使用できる値は `append`、`block`、および `page` です。
 
- 異なる BLOB の種類の詳細については、「[Understanding Block Blobs, Append Blobs, and Page Blobs](/rest/api/storageservices/fileservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs)」 (ブロック BLOB、追加 BLOB、ページ BLOB について) をご覧ください。
+ 異なる BLOB の種類の詳細については、「[Understanding Block Blobs, Append Blobs, and Page Blobs](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs)」 (ブロック BLOB、追加 BLOB、ページ BLOB について) をご覧ください。
 
 ### <a name="download-blobs-from-a-container"></a>コンテナーから BLOB をダウンロードする
 この例は、BLOB をコンテナーからダウンロードする方法を示しています。

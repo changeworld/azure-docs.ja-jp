@@ -22,5 +22,5 @@ BLOB サービスには、次のコンポーネントが含まれます。
   
     *ページ BLOB* は最大 1 TB のサイズにすることができます。読み取り/書き込み操作を頻繁に実行する場合はこの BLOB が効率的です。 Azure の仮想マシンでは、ページ BLOB を OS とデータ ディスクとして使用します。
   
-    コンテナーと BLOB の名前付け規則については、「 [コンテナー、BLOB、およびメタデータの名前付けおよび参照](/rest/api/storageservices/fileservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)」を参照してください。
+    コンテナーと BLOB の名前付け規則については、「 [コンテナー、BLOB、およびメタデータの名前付けおよび参照](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)」を参照してください。
 

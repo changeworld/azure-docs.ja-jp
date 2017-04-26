@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 8dc33077a955052a99b415b1299004cf8a4f217e
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: b49e06da0019a50cc8e50c4da47e42c03b44bcc6
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/15/2017
 [Azure Storage Analytics](storage-analytics.md) では、すべてのストレージ サービスのメトリックと、BLOB、キュー、およびテーブルのログを利用できます。 [Azure Portal](https://portal.azure.com) を使用すると、アカウントに対してどのメトリックとログを記録するか、また、そのメトリック データを視覚的に表現するグラフを構成できます。
 
 > [!NOTE]
-> Azure Portal で監視データを調査するとコストがかかります。 詳細については、 [ストレージの分析と課金に関するページ](/rest/api/storageservices/fileservices/Storage-Analytics-and-Billing)を参照してください。
+> Azure Portal で監視データを調査するとコストがかかります。 詳細については、 [ストレージの分析と課金に関するページ](/rest/api/storageservices/Storage-Analytics-and-Billing)を参照してください。
 >
 > 現在、Azure File ストレージは、Storage Analytics のメトリックをサポートしますが、ログ記録はまだサポートされていません。
 >
@@ -153,7 +153,7 @@ BLOB、テーブル、およびキューごとに、読み取り要求、書き�
 
 診断ログは、ストレージ アカウントの $logs という名前の BLOB コンテナーに保存されます。 ログ データを表示するには、[Microsoft Storage Explorer](http://storageexplorer.com) などのストレージ エクスプローラーを使用するか、プログラムによってストレージ クライアント ライブラリまたは PowerShell を使用します。
 
-$logs コンテナーへのアクセスの詳細については、「[Enabling Storage Logging and Accessing Log Data (ストレージ ログの有効化およびログ データへのアクセス)](/rest/api/storageservices/fileservices/enabling-storage-logging-and-accessing-log-data)」を参照してください。
+$logs コンテナーへのアクセスの詳細については、「[Enabling Storage Logging and Accessing Log Data (ストレージ ログの有効化およびログ データへのアクセス)](/rest/api/storageservices/enabling-storage-logging-and-accessing-log-data)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -13,8 +13,9 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 565dfcc4ca69badecff981057681bb7bd61d048d
-ms.openlocfilehash: 931102cca5799d0117fdaf056ac479edac8de776
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: f5358e2395d5380841894e62a694a6d1253c9126
+ms.lasthandoff: 04/25/2017
 
 ---
 # <a name="analysis-services-documentation"></a>Analysis Services のドキュメント
@@ -106,12 +107,20 @@ Analysis Services を使用してデータ モデリングを設定および管�
             </div>
         </div>
     </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>その他</h3>
+                        <p><a href="https://msdn.microsoft.com/library/gg413422.aspx">DAX</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/mt211003.aspx">Power Query M</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/02/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
-ms.openlocfilehash: 353677bc7eb7fe791d23bcfdb79f3a0df6366c6f
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 532afb45c73d68d6dc259fa504d9520eecdb23b7
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -34,13 +34,13 @@ ms.lasthandoff: 03/03/2017
 | 問題 | Description |
 | --- | --- |
 | REST API で一般的な HTTP ヘッダーがいくつか提供されていない。 |REST API を使用して Media Services アプリケーションを開発している場合、いくつかの一般的な HTTP フィールド (CLIENT-REQUEST-ID、REQUEST-ID、および RETURN-CLIENT-REQUEST-ID を含む) がサポートされていないことに気付きます。 ヘッダーは、今後の更新プログラムで追加される予定です。 |
-| パーセントエンコーディングは利用できません。 |Media Services は、ストリーミング コンテンツ (たとえば、http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。 **Name** プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) (!*'();:@&=+$,/?%#[]") は使用できません。 "." は&amp;1; つのみです。 また、ファイル名拡張子で使用できる "." は&1; つのみです。 |
-| Azure Storage SDK Version 3.x に含まれる ListBlobs メソッドが失敗する。 |Media Services は、 [2012-02-12](https://docs.microsoft.com/rest/api/storageservices/fileservices/Version-2012-02-12) バージョンに基づいて SAS URL を生成します。 Azure Storage SDK を使用して、BLOB コンテナー内の BLOB を一覧する場合は、Azure Storage SDK Version 2.x に含まれる [CloudBlobContainer.ListBlobs](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobs.aspx) メソッドを使用してください。 Azure Storage SDK Version 3.x に含まれる ListBlobs メソッドは失敗します。 |
+| パーセントエンコーディングは利用できません。 |Media Services は、ストリーミング コンテンツ (たとえば、http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。 **Name** プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) (!*'();:@&=+$,/?%#[]") は使用できません。 "." は 1 つのみです。 また、ファイル名拡張子で使用できる "." は 1 つのみです。 |
+| Azure Storage SDK Version 3.x に含まれる ListBlobs メソッドが失敗する。 |Media Services は、 [2012-02-12](https://docs.microsoft.com/rest/api/storageservices/Version-2012-02-12) バージョンに基づいて SAS URL を生成します。 Azure Storage SDK を使用して、BLOB コンテナー内の BLOB を一覧する場合は、Azure Storage SDK Version 2.x に含まれる [CloudBlobContainer.ListBlobs](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobs.aspx) メソッドを使用してください。 Azure Storage SDK Version 3.x に含まれる ListBlobs メソッドは失敗します。 |
 | Media Services 調整メカニズムが、サービスに対して過剰な要求を作成するアプリケーションのリソース使用を制限する。 サービスが「サービスを利用できません」(503) HTTP 状態コードを返すことがある。 |詳細については、「 [Azure Media Services エラー コード](media-services-encoding-error-codes.md) 」の 503 HTTP 状態コードの説明を参照してください。 |
 | パブリック REST v2 では、クエリ結果が 1000 件に制限されているため、エンティティを照会するときには、一度に返されるエンティティが 1000 個に制限されます。 |[この .NET の例](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities)と[この REST API の例](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)に示すように、**Skip** および **Take** (.NET)/**top** (REST) を使用する必要があります。 |
 | 一部のクライアントは、スムーズ ストリーミング マニフェストで繰り返しタグに遭遇することがあります。 |詳細については、 [こちらの](media-services-deliver-content-overview.md#known-issues) セクションを参照してください。 |
 | Azure Media Services .NET SDK オブジェクトをシリアル化できず、その結果、Azure Cache と連携動作しません。 |SDK AssetCollection オブジェクトをシリアル化して、Azure Cache に追加しようとすると、例外がスローされます。 |
-| エンコード ジョブが、メッセージ文字列 "段階: DownloadFile. コード: System.NullReferenceException" で失敗します。 |一般的なエンコード ワークフローでは、入力ビデオ ファイルを入力資産にアップロードし、その入力資産の&1; つまたは複数のエンコード ジョブを送信します。その入力資産がさらに変更されることはありません。 ただし、(たとえば、資産内のファイルの追加/削除/名前変更のために) 入力資産を変更した場合は、これ以降のジョブが DownloadFile エラーで失敗する可能性があります。 これを回避するには、入力資産を削除して、新しい資産に入力ファイルを再度アップロードしてください。 |
+| エンコード ジョブが、メッセージ文字列 "段階: DownloadFile. コード: System.NullReferenceException" で失敗します。 |一般的なエンコード ワークフローでは、入力ビデオ ファイルを入力資産にアップロードし、その入力資産の 1 つまたは複数のエンコード ジョブを送信します。その入力資産がさらに変更されることはありません。 ただし、(たとえば、資産内のファイルの追加/削除/名前変更のために) 入力資産を変更した場合は、これ以降のジョブが DownloadFile エラーで失敗する可能性があります。 これを回避するには、入力資産を削除して、新しい資産に入力ファイルを再度アップロードしてください。 |
 
 ## <a id="rest_version_history"></a>REST API バージョン履歴
 Media Services REST API バージョン履歴の詳細については、「 [Azure Media Services REST API リファレンス]」を参照してください。
@@ -75,7 +75,7 @@ Azure Media Services を使用して、サービスのテレメトリ/メトリ�
 > 
 > 
 
-### <a name="a-new-client-manifest-ismc-file-is-generated-in-the-output-asset-when-an-encoding-task-outputs-one-or-more-mp4-files"></a>エンコード タスクが&1; つ以上の MP4 ファイルを出力すると、新しいクライアント マニフェスト (*.ISMC) ファイルが出力アセットに生成される
+### <a name="a-new-client-manifest-ismc-file-is-generated-in-the-output-asset-when-an-encoding-task-outputs-one-or-more-mp4-files"></a>エンコード タスクが 1 つ以上の MP4 ファイルを出力すると、新しいクライアント マニフェスト (*.ISMC) ファイルが出力アセットに生成される
 最新のサービス リリース以降、1 つ以上の MP4 ファイルを生成するエンコード タスクが完了すると、出力アセットにも、ストリーミング クライアント マニフェスト (*.ismc) ファイルが追加されます。 この .ismc ファイルは、動的ストリーミングのパフォーマンス向上に役立ちます。 
 
 > [!NOTE]
@@ -288,7 +288,7 @@ Media Services SDK for .NET は、現在、バージョン 3.0.0.7 です。
 
 以前は、Azure クラシック ポータルを使用して単一ファイルの MP4 ビデオ資産を発行すると、SAS URL が作成されました (SAS URL を使用してビデオを BLOB ストレージからダウンロードできます)。 現在は、Azure クラシック ポータルを使用して、単一ファイルの MP4 ビデオ資産をエンコードし、その後、発行すると、生成された URL は Azure Media Services ストリーミング エンドポイントを指します。  この変更は、Media Services に直接アップロードされ、Azure Media Services によってエンコードされずに発行された MP4 ビデオには影響しません。
 
-現在、問題を解決するための次の&2; つのオプションがあります。
+現在、問題を解決するための次の 2 つのオプションがあります。
 
 * ストリーミング ユニットを有効にし、動的パッケージを使用して、.mp4 資産を Smooth Streaming プレゼンテーションとしてストリーミングします。
 * .mp4 をダウンロード (または、漸次的に再生) するための SAS url を作成します。 SAS ロケーターの作成方法の詳細については、「 [コンテンツの配信]」を参照してください。
@@ -493,7 +493,7 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
     オリジン固有のバージョンは削除されました。 SAS 固有の context.Locators.CreateSasLocator(asset, accessPolicy) は非推奨化されます。つまり、GA までに廃止されます。 更新後の動作については、新機能について説明するページの Locators のセクションをご覧ください。
 
 ## <a id="june_changes_12"></a>2012 年 6 月のプレビュー リリース
-以下は、SDK の&11; 月のリリースでの新機能です。
+以下は、SDK の 11 月のリリースでの新機能です。
 
 * エンティティの削除
   

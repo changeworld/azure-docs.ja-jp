@@ -67,7 +67,7 @@
 ### [テーブル設計ガイド](storage-table-design-guide.md)
 ### [サンプル](https://azure.microsoft.com/documentation/samples/?service=storage&term=table)
 ## ファイルの使用
-### [概要](/rest/api/storageservices/fileservices/File-Service-Concepts)
+### [概要](/rest/api/storageservices/File-Service-Concepts)
 ### [Azure Files のトラブルシューティング](storage-troubleshoot-file-connection-problems.md)
 ### [サンプル](https://azure.microsoft.com/documentation/samples/?service=storage&term=file)
 ## ディスクの使用
@@ -180,7 +180,7 @@
 ## [iOS](http://azure.github.io/azure-storage-ios/)
 ## [Android](http://azure.github.io/azure-storage-android)
 ## REST ()
-### [BLOB、キュー、テーブル、ファイル](/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference)
+### [BLOB、キュー、テーブル、ファイル](/rest/api/storageservices/azure-storage-services-rest-api-reference)
 ### [リソース プロバイダー](/rest/api/storagerp)
 ### [Import/Export](/rest/api/storageimportexport)
 

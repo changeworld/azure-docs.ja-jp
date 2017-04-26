@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/14/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: d7a08bb0f4128eb3915658b41843b35613108a98
-ms.openlocfilehash: d544695654ff136ee25856cb4a0309f882057ebb
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 4036c994cb5be68b372a4f244f65a17ce173ecc2
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -25,7 +25,7 @@ ms.lasthandoff: 02/22/2017
 [!INCLUDE [storage-selector-portal-enable-and-view-metrics](../../includes/storage-selector-portal-enable-and-view-metrics.md)]
 
 ## <a name="overview"></a>概要
-新しいストレージ アカウントを作成すると、ストレージ メトリックが既定で有効になります。 [Azure Portal](https://portal.azure.com) または Windows PowerShell を使って監視を構成できます。または、ストレージ クライアント ライブラリの&1; つを使ってプログラムで監視を有効にすることもできます。
+新しいストレージ アカウントを作成すると、ストレージ メトリックが既定で有効になります。 [Azure Portal](https://portal.azure.com) または Windows PowerShell を使って監視を構成できます。または、ストレージ クライアント ライブラリの 1 つを使ってプログラムで監視を有効にすることもできます。
 
 メトリック データのリテンション期間を構成できます。この期間により、ストレージ サービスがメトリックを保有する期間が決まり、メトリックを保存するために必要な領域に対して課金されます。 一般的には、分単位メトリックには時間単位メトリックより短いリテンション期間を使用してください。分単位メトリックにはかなりの追加領域が必要になるためです。 データを分析し、保存するメトリックをダウンロードし、オフライン分析やレポートを行うために十分な時間が確保されるようにリテンション期間を選択してください。 ストレージ アカウントからメトリック データをダウンロードした場合にも課金されることにご注意ください。
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 02/22/2017
 * ServiceType: 指定可能な値は、Blob、Queue、Table です。
 * MetricsLevel: 指定可能な値は None、Service、ServiceAndApi です。
 
-たとえば、次のコマンドは、既定のストレージ アカウントの BLOB サービスの分単位メトリックを&5; 日間に設定されたリテンション期間でオンにします。
+たとえば、次のコマンドは、既定のストレージ アカウントの BLOB サービスの分単位メトリックを 5 日間に設定されたリテンション期間でオンにします。
 
 ```powershell
 Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5`
@@ -143,7 +143,7 @@ blobClient.SetServiceProperties(properties);
 | 20140522T1100 |user;QueryEntity |2014-05-22T11:01:16.7650250Z |1 |1 |538 |633 |100 |3 |3 |100 |
 | 20140522T1100 |user;UpdateEntity |2014-05-22T11:01:16.7650250Z |1 |1 |771 |217 |100 |9 |6 |100 |
 
-この例の分単位メトリック データでは、パーティション キーは分単位解決の時間を使用しています。 行キーは、行に保存され、アクセス タイプと要求タイプという&2; つの情報から構成されるタイプの情報を識別します。
+この例の分単位メトリック データでは、パーティション キーは分単位解決の時間を使用しています。 行キーは、行に保存され、アクセス タイプと要求タイプという 2 つの情報から構成されるタイプの情報を識別します。
 
 * アクセス タイプは user と system のいずれかになります。user はストレージ サービスに対するすべてのユーザー要求を意味し、system は Storage Analytics により行われる要求を意味します。
 * 要求タイプは、概要行となる all か、QueryEntity や UpdateEntity など特定の API のいずれかになります。
@@ -214,4 +214,4 @@ private static string MetricsString(MetricsEntity entity, OperationContext opCon
 * BLOB の容量テーブルには、毎日、2 つの行が追加されます (ユーザーがログを選択している場合)。つまり、このテーブルのサイズは、毎日、最大約 300 バイト増えることになります。
 
 ## <a name="next-steps"></a>次のステップ
-[ストレージ ログの有効化とログ データへのアクセス](/rest/api/storageservices/fileservices/Enabling-Storage-Logging-and-Accessing-Log-Data)
+[ストレージ ログの有効化とログ データへのアクセス](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data)

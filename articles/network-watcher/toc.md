@@ -7,6 +7,7 @@
 ## [セキュリティ グループ ビュー](network-watcher-security-group-view-overview.md)
 ## [次ホップ](network-watcher-next-hop-overview.md)
 ## [VPN 接続のトラブルシューティング](network-watcher-troubleshoot-overview.md)
+## [サービスの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-watcher-limits)
 # 作業の開始
 ## [Network Watcher の構成](network-watcher-create.md)
 ## パケット キャプチャの管理

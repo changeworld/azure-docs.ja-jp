@@ -1,8 +1,3 @@
-Data Factory のコピー アクティビティは、ソース データ ストアからシンク データ ストアにデータをコピーします。 Data Factory は次のデータ ストアをサポートしています。 また、任意のソースのデータを任意のシンクに書き込むことができます。 データ ストアをクリックすると、そのストアとの間でデータをコピーする方法がわかります。
-
-> [!NOTE] 
-> コピー アクティビティでサポートされていないデータ ストアとの間でデータを移動する必要がある場合は、データのコピーと移動に独自のロジックを使用した、Data Factory の **カスタム アクティビティ** を使用します。 カスタム アクティビティの作成と使用の詳細については、「 [Azure Data Factory パイプラインでカスタム アクティビティを使用する](../articles/data-factory/data-factory-use-custom-activities.md)」をご覧ください。
-
 | カテゴリ | データ ストア | ソースとしてサポート | シンクとしてサポート |
 |:--- |:--- |:--- |:--- |
 | **Azure** |[Azure BLOB Storage](../articles/data-factory/data-factory-azure-blob-connector.md) |✓  |✓  |
@@ -34,9 +29,6 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 | &nbsp; |[汎用 ODBC](../articles/data-factory/data-factory-odbc-connector.md)* |✓  | |
 | &nbsp; |[Salesforce](../articles/data-factory/data-factory-salesforce-connector.md) |✓  | |
 | &nbsp; |[Web テーブル (HTML のテーブル)](../articles/data-factory/data-factory-web-table-connector.md) |✓  | |
-| &nbsp; |[GE Historian](../articles/data-factory/data-factory-odbc-connector.md#ge-historian-store)* |✓  | | |
+| &nbsp; |[GE Historian](../articles/data-factory/data-factory-odbc-connector.md#ge-historian-store)* |✓ | | |
 
-> [!NOTE]
-> * が付いたデータ ストアは、オンプレミスと Azure IaaS のどちらでもサポートされます。ただし、オンプレミス/Azure IaaS のコンピューターに [Data Management Gateway](../articles/data-factory/data-factory-data-management-gateway.md) をインストールする必要があります。
->
->
+

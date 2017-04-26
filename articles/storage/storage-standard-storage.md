@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/18/2017
 ms.author: yuemlu
 translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 77e48af7ba59ed1e5b2ebcda0760e0eda1f407df
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 37a22be9fba7b245b2c1ea3ca6e495601d63b611
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -52,7 +52,7 @@ Managed Disks を使用する VM を作成する方法については、次の�
 
 **Standard Storage ディスク**: Standard Storage ディスクは、Premium Storage で使用されるサイズ シリーズの VM (DSv2 シリーズや GS シリーズなど) も含め、すべての Azure VM に接続できます。 Standard Storage ディスクは、1 台の VM にのみ接続できます。 ただし、1 台の VM に Standard Storage ディスクを 1 つ以上接続できます。その VM サイズで定義されている最大ディスク数まで接続することが可能です。 Standard Storage のスケーラビリティとパフォーマンスのターゲットに関する次のセクションで、仕様についてさらに詳しく説明します。 
 
-**Standard ページ BLOB**: Standard ページ BLOB は VM の永続ディスクを保持するために使用されます。他の種類の Azure BLOB と同様に、REST から Standard ページ BLOB に直接アクセスすることもできます。 [ページ BLOB](/rest/api/storageservices/fileservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) は、ランダム読み取り/書き込み操作に最適化された 512 バイト ページのコレクションです。 
+**Standard ページ BLOB**: Standard ページ BLOB は VM の永続ディスクを保持するために使用されます。他の種類の Azure BLOB と同様に、REST から Standard ページ BLOB に直接アクセスすることもできます。 [ページ BLOB](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) は、ランダム読み取り/書き込み操作に最適化された 512 バイト ページのコレクションです。 
 
 **ストレージ レプリケーション**: ほとんどのリージョンで、Standard Storage アカウント内のデータはローカルにレプリケートすることも、複数のデータセンター間で geo レプリケートすることもできます。 ローカル冗長ストレージ (LRS)、ゾーン冗長ストレージ (ZRS)、geo 冗長ストレージ (GRS)、読み取りアクセス geo 冗長ストレージ (RA-GRS) の 4 種類のレプリケーションを使用できます。 現在、Standard Storage の Managed Disks では、ローカル冗長ストレージ (LRS) のみをサポートしています。 詳細については、[Storage のレプリケーション](storage-redundancy.md)に関する記事をご覧ください。
 
@@ -99,11 +99,11 @@ Storage サービスでは、VHD ファイルはページ BLOB です。 ペー�
 
 Standard Storage でスナップショットを使用する場合と同様に、非管理対象 Standard ディスクの[増分スナップショット](storage-incremental-snapshots.md)を作成できます。 ソース ディスクがローカル冗長ストレージ アカウント内にある場合は、スナップショットを作成し、それらのスナップショットを geo 冗長 Standard Storage アカウントにコピーすることをお勧めします。 詳細については、「 [Azure Storage 冗長オプション](storage-redundancy.md)」をご覧ください。
 
-ディスクが VM に接続されている場合、ディスクで特定の API 操作を実行できなくなります。 たとえば、ディスクが VM にアタッチされている間は、その BLOB に対して [Copy Blob](/rest/api/storageservices/fileservices/Copy-Blob) 操作を実行できません。 代わりに、[Snapshot Blob](/rest/api/storageservices/fileservices/Snapshot-Blob) REST API メソッドを使って BLOB のスナップショットを作成してから、スナップショットの [Copy Blob](/rest/api/storageservices/fileservices/Copy-Blob) を実行してアタッチされたディスクをコピーします。 または、ディスクの接続を解除してから必要な操作を実行します。
+ディスクが VM に接続されている場合、ディスクで特定の API 操作を実行できなくなります。 たとえば、ディスクが VM にアタッチされている間は、その BLOB に対して [Copy Blob](/rest/api/storageservices/Copy-Blob) 操作を実行できません。 代わりに、[Snapshot Blob](/rest/api/storageservices/Snapshot-Blob) REST API メソッドを使って BLOB のスナップショットを作成してから、スナップショットの [Copy Blob](/rest/api/storageservices/Copy-Blob) を実行してアタッチされたディスクをコピーします。 または、ディスクの接続を解除してから必要な操作を実行します。
 
-スナップショットの geo 冗長コピーを維持するには、AzCopy または Copy BLOB を使用して、ローカル冗長ストレージ アカウントから geo 冗長 Standard Storage アカウントにスナップショットをコピーします。 詳しくは、「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」および「[BLOB のコピー](/rest/api/storageservices/fileservices/Copy-Blob)」をご覧ください。
+スナップショットの geo 冗長コピーを維持するには、AzCopy または Copy BLOB を使用して、ローカル冗長ストレージ アカウントから geo 冗長 Standard Storage アカウントにスナップショットをコピーします。 詳しくは、「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」および「[BLOB のコピー](/rest/api/storageservices/Copy-Blob)」をご覧ください。
 
-Standard Storage アカウントのページ BLOB に対して REST 操作を実行する方法の詳細については、[Azure Storage Services REST API](/rest/api/storageservices/fileservices/Azure-Storage-Services-REST-API-Reference) に関する記事をご覧ください。
+Standard Storage アカウントのページ BLOB に対して REST 操作を実行する方法の詳細については、[Azure Storage Services REST API](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference) に関する記事をご覧ください。
 
 ### <a name="managed-disks"></a>管理ディスク
 
@@ -125,7 +125,7 @@ Standard Storage を使用するときには、課金に関する次の考慮事
 
 **管理ディスク**: 管理ディスクは、プロビジョニング済みサイズに対して課金されます。 ディスクが 10 GB ディスクとしてプロビジョニングされており、5 GB しか使用していなくても、10 GB のプロビジョニング サイズに対して課金されます。
 
-**スナップショット**: Standard ディスクのスナップショットについては、スナップショットで使用された追加の容量に対して課金されます。 スナップショットの詳細については、「 [BLOB のスナップショットの作成](/rest/api/storageservices/fileservices/Creating-a-Snapshot-of-a-Blob)」をご覧ください。
+**スナップショット**: Standard ディスクのスナップショットについては、スナップショットで使用された追加の容量に対して課金されます。 スナップショットの詳細については、「 [BLOB のスナップショットの作成](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob)」をご覧ください。
 
 **送信データ転送**: [送信データ転送](https://azure.microsoft.com/pricing/details/data-transfers/) (Azure データ センターから送信されるデータ) では、帯域幅の使用量に対して課金されます。
 

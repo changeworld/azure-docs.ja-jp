@@ -4,6 +4,7 @@
 ## [DocumentDB: MongoDB 用 API とは](documentdb-protocol-mongodb.md)
 ## [主要な概念](documentdb-resources.md)
 ## [グローバル配信](documentdb-distribute-data-globally.md)
+## [リージョン間フェールオーバー](documentdb-regional-failovers.md)
 ## [セキュリティ](documentdb-nosql-database-security.md)
 ## [NoSQL TCO 分析](https://aka.ms/documentdb-tco-paper)
 ## シナリオ
@@ -47,7 +48,6 @@
 ### [データのモデル化](documentdb-modeling-data.md)
 ### [データを自動的に期限切れにする](documentdb-time-to-live.md)
 ### [バックアップおよび復元](documentdb-online-backup-and-restore.md)
-### [リージョン間フェールオーバー](documentdb-regional-failovers.md)
 ### Automation
 #### [Azure CLI 2.0](documentdb-automation-resource-manager-cli.md)
 #### [Azure CLI 1.0: アカウントの作成](documentdb-automation-resource-manager-cli-nodejs.md)

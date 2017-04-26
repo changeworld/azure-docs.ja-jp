@@ -22,7 +22,7 @@
 
 ## Web アプリの作成
 ### [.NET](../app-service-web/app-service-web-get-started-dotnet.md)
-### [PHP](../app-service-web/app-service-web-get-started-php.md)    
+### [PHP](../app-service-web/app-service-web-get-started-php.md)
 ### [Node.JS](../app-service-web/app-service-web-get-started-nodejs.md)
 ### [Java](../app-service-web/app-service-web-get-started-java.md)
 ### [Python](../app-service-web/app-service-web-get-started-python.md)
@@ -68,7 +68,7 @@
 #### [プッシュ通知を追加する](app-service-mobile-windows-store-dotnet-get-started-push.md)
 #### [クライアント SDK を操作する](app-service-mobile-dotnet-how-to-use-client-library.md)
 
-### Xamarin.Android 
+### Xamarin.Android
 #### [オフライン同期を有効にする](app-service-mobile-xamarin-android-get-started-offline-data.md)
 #### [認証を追加する](app-service-mobile-xamarin-android-get-started-users.md)
 #### [プッシュ通知を追加する](app-service-mobile-xamarin-android-get-started-push.md)
@@ -78,7 +78,6 @@
 #### [オフライン同期を有効にする](app-service-mobile-xamarin-forms-get-started-offline-data.md)
 #### [認証を追加する](app-service-mobile-xamarin-forms-get-started-users.md)
 #### [プッシュ通知を追加する](app-service-mobile-xamarin-forms-get-started-push.md)
-#### [Xamarin.Forms アプリで Azure Storage に接続する](app-service-mobile-xamarin-forms-blob-storage.md)
 #### [クライアント SDK を操作する](app-service-mobile-dotnet-how-to-use-client-library.md)
 
 ### Xamarin.iOS
@@ -194,7 +193,6 @@
 ### [Azure Automation を使用してアプリを管理する](../app-service-web/automation-manage-web-app.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## 統合
-### [Xamarin.Forms アプリで Azure Storage に接続する](app-service-mobile-xamarin-forms-blob-storage.md)
 ### [ハイブリッド接続を使用してオンプレミスのリソースにアクセスする](../app-service-web/web-sites-hybrid-connection-get-started.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [SendGrid を使用した Azure での電子メールの送信方法](../app-service-web/sendgrid-dotnet-how-to-send-email.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
@@ -219,10 +217,10 @@
 ## [Azure ポータル](../app-service-web/app-service-web-app-azure-portal.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 # リソース
-## [料金](https://azure.microsoft.com/en-us/pricing/details/app-service/)  
-## [MSDN フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile)  
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-mobile-services)  
-## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=mobile-services) 
+## [料金](https://azure.microsoft.com/en-us/pricing/details/app-service/)
+## [MSDN フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-mobile-services)
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=mobile-services)
 ## サンプル
 ### [フィールド エンジニア](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-fieldengineer/)
 ### [構造化データの同期](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-todo-list-files/)
