@@ -1,15 +1,15 @@
-Azure クラウド ソリューションは、仮想マシン (物理コンピューター ハードウェアのエミュレーション) 上に構築されています。これにより、ソフトウェア デプロイのアジャイル パッケージ化と、物理ハードウェアよりも優れたリソース統合が可能になります。 [Docker](https://www.docker.com) コンテナーと Docker エコシステムにより、分散ソフトウェアを開発、出荷、管理する方法が大幅に拡張されました。 コンテナー内のアプリケーション コードは、ホスト VM および同じ VM 上の他のコンテナーから分離されます。 この分離により、開発とデプロイの機敏性が向上します。
+﻿Azure クラウド ソリューションは、仮想マシン (物理コンピューター ハードウェアのエミュレーション) 上に構築されています。これにより、ソフトウェア デプロイのアジャイルなパッケージ化と、物理ハードウェアよりも優れたリソース統合が可能になります。 [Docker](https://www.docker.com) コンテナーと Docker エコシステムにより、分散ソフトウェアを開発、出荷、管理する方法が大幅に拡張されました。 コンテナー内のアプリケーション コードは、ホスト VM および同じ VM 上の他のコンテナーから分離されます。 この分離により、開発とデプロイの機敏性が向上します。
 
-Azure は、次の Docker 値を提供します。
+Azure は、次の Docker の価値を提供します。
 
 * [状況に応じて、](../articles/virtual-machines/linux/docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)[さまざまな方法](../articles/virtual-machines/linux/dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)で Docker ホストを作成できる
 * [Azure Container Service](https://azure.microsoft.com/documentation/services/container-service/) で **marathon** や **swarm** といったオーケストレーターを使用して、コンテナー ホストのクラスターを作成できる
 * [Azure Resource Manager](../articles/azure-resource-manager/resource-group-overview.md) と[リソース グループ テンプレート](../articles/resource-group-authoring-templates.md)を使用して、複雑な分散アプリケーションのデプロイや更新を簡略化できる
 * 自社製かオープン ソースかを問わず、さまざまな構成管理ツールを統合できる
 
-また、VM や Linux コンテナーを Azure 上でコーディングできるので、VM とコンテナーの *オーケストレーション* ツールを使用して Virtual Machines (VM) のグループを作成し、Linux コンテナーと [Windows コンテナー](https://msdn.microsoft.com/virtualization/windowscontainers/about/about_overview)の両方にアプリケーションをデプロイすることができます。
+また、VM や Linux コンテナーを Azure 上でコーディングできるので、VM とコンテナーの *オーケストレーション* ツールを使用して仮想マシン (VM) のグループを作成し、Linux コンテナーと [Windows コンテナー](https://msdn.microsoft.com/virtualization/windowscontainers/about/about_overview)の両方にアプリケーションをデプロイすることができます。
 
-この記事では、これらの技術の概念について俯瞰的に説明とともに、 Azure でのコンテナーとクラスターの使用に関連する詳細情報、チュートリアル、および製品へのリンクを紹介します。 技術については既にご存知で、リンクだけを確認したいという方は、[コンテナーを操作するためのツール](#tools-for-working-with-azure-vms-and-containers)に関するページでご確認ください。
+この記事では、これらの技術の概念について俯瞰的に説明するとともに、 Azure でのコンテナーとクラスターの使用に関連する詳細情報、チュートリアル、および製品へのリンクを紹介します。 技術については既にご存知で、リンクだけを確認したいという方は、[コンテナーを操作するためのツール](#tools-for-working-with-azure-vms-and-containers)に関するページでご確認ください。
 
 ## <a name="the-difference-between-virtual-machines-and-containers"></a>仮想マシンとコンテナーの違い
 仮想マシンは、 [ハイパーバイザー](http://en.wikipedia.org/wiki/Hypervisor)によって提供される隔離されたハードウェア仮想化環境内で実行されます。 Azure では、[Virtual Machines](https://azure.microsoft.com/services/virtual-machines/) サービスによってすべてが管理されるため、ユーザーはオペレーティング システムを選択して構成したり、カスタム VM イメージをアップロードしたりして仮想マシンを作成できます。 Virtual Machines は市場で長年使用され、その価値を広く認められているテクノロジであり、OS やそこに含まれるアプリの管理を行うためのツールも多数提供されています。  VM 内のアプリは、ホスト OS からは見えません。 VM 上のアプリケーションまたはユーザーから見ると、VM は自立した物理コンピューターのように見えます。
@@ -21,11 +21,11 @@ Windows コンテナーは、Linux コンテナーと同じメリットを Windo
 
 ## <a name="what-are-containers-good-for"></a>コンテナーのメリット
 
-コンテナーを向上させることができます。
+コンテナーは、次のものを改善できます。
 
-* 高速なアプリケーション コードを開発し、広範囲に共有できる
-* アプリの速度と信頼性をテストできる
-* アプリの速度と信頼性をデプロイできる
+* アプリケーション コードを開発し、広範囲に共有できる速度
+* アプリをテストできる速度と信頼性
+* アプリをデプロイできる速度と信頼性
 
 コンテナーはコンテナー ホスト (オペレーティング システム) で実行されます。Azure でいうところの Azure 仮想マシンです。 コンテナーのメリットを活用するには、コンテナーをホストする VM インフラストラクチャが必要なのです。しかし、コンテナーの利点は実行するための VM を選ばないという点にあります (コンテナーの実行環境として Linux と Windows のどちらが適しているか、などといったことは重要になりますが)。
 
@@ -37,7 +37,7 @@ Windows コンテナーは、Linux コンテナーと同じメリットを Windo
 
 たとえば現在、高可用性を備えた大規模な分散アプリケーションのデプロイメントを、9 つの Azure VM で構成しているとします。 このアプリケーションのコンポーネントをコンテナーでデプロイすれば、わずか 4 つの VM を使用して、20 個のコンテナー内にアプリケーション コンポーネントをデプロイし、冗長性と負荷分散を実現することができます。
 
-これは単なる例に過ぎませんが、組織のシナリオに合わせてこのようなデプロイメントを行えば、Azure VM ではなくコンテナーの追加によって処理パワーを調整し、残りの CPU パワーをより効率的に使用することができます。
+これは単なる例に過ぎませんが、組織のシナリオに合わせてこのようなデプロイメントを行えば、Azure VM ではなくコンテナーの追加によって処理能力を調整し、残りの CPU 能力をより効率的に使用することができます。
 
 またコンテナーは、マイクロサービス アプローチ以外にもさまざまなシナリオに適用できます。ここからは、マイクロサービスとコンテナーのメリットについてより具体的に説明していきます。
 
@@ -58,7 +58,7 @@ IT コンテナーと仮想マシンの組み合わせは、オペレーショ�
 * コンテナー内のコードを完全に統一できる
 * コンテナー内のサービスをすばやく起動、停止できるだけでなく、開発環境、テスト環境、および運用環境間の移動もすばやく行える。
 
-これらの機能は、老舗の大手企業にとっては特に魅力的なものです。このような企業の IT スタッフは、事業継続だけでなく、顧客満足度や顧客リーチの改善のために必要な各種のタスクに対し、処理パワーなどのリソースをバランスよく割り当てなければならないからです。 小規模企業、ISV、新興企業などでも同様の要件はありますが、具体的な事情は多少異なるかもしれません。
+これらの機能は、老舗の大手企業にとっては特に魅力的なものです。このような企業の IT スタッフは、事業継続だけでなく、顧客満足度や顧客リーチの改善のために必要な各種のタスクに対し、処理能力などのリソースをバランスよく割り当てなければならないからです。 小規模企業、ISV、新興企業などでも同様の要件はありますが、具体的な事情は多少異なるかもしれません。
 
 ## <a name="what-are-virtual-machines-good-for"></a>仮想マシンの役割
 仮想マシンはクラウド コンピューティングのバックボーンを提供するものであり、そのことは今でも変わりません。 仮想マシンは起動が遅く、ディスク フットプリントが大きく、マイクロサービス アーキテクチャに直接マップすることもできませんが、非常に重要な役割を担っています。
@@ -68,7 +68,7 @@ IT コンテナーと仮想マシンの組み合わせは、オペレーショ�
 3. コマンドや管理ツールのエコシステムが長年にわたって整備されている
 4. コンテナーをホストするための実行環境を提供してくれる
 
-最後の項目は特に重要です。コンテナー内のアプリケーションでは、プロセスの呼び出し方法に応じて特定のオペレーティング システムや CPU タイプが必要になるからです。 コンテナーをインストールするには、あくまでも VM が必要です。コンテナーはデプロイするアプリケーションの格納手段であり、VM やオペレーティング システムに取って代わるものではないのです。
+最後の項目は特に重要です。コンテナー内のアプリケーションでは、プロセスの呼び出し方法に応じて特定のオペレーティング システムや CPU の種類が必要になるからです。 コンテナーをインストールするには、あくまでも VM が必要です。コンテナーはデプロイするアプリケーションの格納手段であり、VM やオペレーティング システムに取って代わるものではないのです。
 
 ## <a name="high-level-feature-comparison-of-vms-and-containers"></a>VM とコンテナーの大まかな機能比較
 次の表は、VM と Linux コンテナーの機能の違いを、大規模な作業を伴わない機能に限って、きわめて大まかに示したものです。 どちらの機能がより有効かは、組織のニーズによって変わってくる場合もあります。また、どのアプリケーションでも、追加作業によって機能のサポート レベルを向上させることは可能です (特にセキュリティ面)。
@@ -82,16 +82,16 @@ IT コンテナーと仮想マシンの組み合わせは、オペレーショ�
 | イメージの自動化 |OS やアプリによって大きく異なる |[Docker レジストリ](https://registry.hub.docker.com/)など |
 
 ## <a name="creating-and-managing-groups-of-vms-and-containers"></a>VM とコンテナーのグループ作成とその管理
-ここまでお読みになって、設計者、開発者、IT オペレーション スペシャリストの皆さんはこう思っているのではないでしょうか。「これなら何でも自動化できる。これこそ真の DCaaS (Data-Center-As-A-Service) だ」と。
+ここまでお読みになって、設計者、開発者、IT オペレーション スペシャリストの皆さんはこう思っているのではないでしょうか。「これなら何でも自動化できる。これこそ真の DCaaS (サービスとしてのデータ センター) だ」と。
 
 その通りです。コンテナーにはそれだけの可能性があります。Azure VM のグループを管理したり、スクリプトを使用してカスタム コードを挿入できるシステムは既に多数存在しています (その多くは [CustomScriptingExtension for Windows](https://msdn.microsoft.com/library/azure/dn781373.aspx) や [CustomScriptingExtension for Linux](https://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/) を使用したものです)。 既に使用している方もいらっしゃるかもしれませんが、PowerShell や Azure CLI のスクリプトを使用すれば、Azure のデプロイを自動化することもできます。
 
 また多くの場合、これらの機能は [Puppet](https://puppetlabs.com/) や [Chef](https://www.chef.io/) などのツールに移行され、大規模な VM の作成や構成を自動化する目的に使用されます。 (Azure でこれらのツールを使用する方法については、[こちら](#tools-for-working-with-containers)のリンクを参照してください。)
 
 ### <a name="azure-resource-group-templates"></a>Azure のリソース グループ テンプレート
-Azure では先ごろ、[Azure リソース管理](../articles/resource-manager-deployment-model.md) REST API と、この API を簡単に使用できるように更新された PowerShell および Azure CLI ツールをリリースしました。 [Azure リリース マネージャー テンプレート](../articles/resource-group-authoring-templates.md) と Azure リソース管理 API、および下記のツールを使用すれば、アプリケーション トポロジ全体を効率的にデプロイ、変更、または再デプロイできます。
+Azure では先ごろ、[Azure リソース管理](../articles/resource-manager-deployment-model.md) REST API と、この API を簡単に使用できるように更新された PowerShell および Azure CLI ツールをリリースしました。 [Azure Resource Manager テンプレート](../articles/resource-group-authoring-templates.md) と Azure リソース管理 API、および下記のツールを使用すれば、アプリケーション トポロジ全体を効率的にデプロイ、変更、または再デプロイできます。
 
-* [テンプレートを使用した Azure Portal](https://github.com/Azure/azure-quickstart-templates) &mdash; "DeployToAzure" ボタンを使用するなど
+* [テンプレートを使用した Azure ポータル](https://github.com/Azure/azure-quickstart-templates) &mdash; "DeployToAzure" ボタンを使用するなど
 * [Azure CLI](../articles/virtual-machines/linux/cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure PowerShell モジュール](../articles/virtual-machines/linux/cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
@@ -104,7 +104,7 @@ Docker は、独自の VM 作成ツール セット ([docker-machine](../article
 
 [Kubernetes](https://azure.microsoft.com/blog/2014/08/28/hackathon-with-kubernetes-on-azure/) は、Google に影響を受けて開発された、VM およびコンテナー グループ管理のためのオープン ソース システムです。 [Kubernetes を Weave と併用して、ネットワーク サポートを提供する](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/coreos/azure/README.md#kubernetes-on-azure-with-coreos-and-weave)こともできます。
 
-[Deis](http://deis.io/overview/) は、独自のサーバー上アプリケーションを簡単にデプロイして管理できる、オープン ソースの PaaS (Platform-as-a-Service) です。 Deis はDocker と CoreOS をベースとしており、それによって、Heroku 風のワークフローを使用した軽量な PaaS を実現しています。 Azure では、[3 ノードの Azure VM グループを簡単に作成して Deis をインストール](../articles/virtual-machines/linux/deis-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)した後、[Hello World Go アプリケーションをインストール](../articles/virtual-machines/linux/deis-cluster.md#deploy-and-scale-a-hello-world-application)できます。
+[Deis](http://deis.io/overview/) は、独自のサーバー上アプリケーションを簡単にデプロイして管理できる、オープン ソースの PaaS (サービスとしてのプラットフォーム) です。 Deis はDocker と CoreOS をベースとしており、それによって、Heroku 風のワークフローを使用した軽量な PaaS を実現しています。 Azure では、[3 ノードの Azure VM グループを簡単に作成して Deis をインストール](../articles/virtual-machines/linux/deis-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)した後、[Hello World Go アプリケーションをインストール](../articles/virtual-machines/linux/deis-cluster.md#deploy-and-scale-a-hello-world-application)できます。
 
 [CoreOS](https://coreos.com/os/docs/latest/booting-on-azure.html) は、最適なフット プリントと Docker サポート、および独自のコンテナー システム ([rkt](https://github.com/coreos/rkt)) を備えた Linux ディストリビューションで、[fleet](https://coreos.com/using-coreos/clustering/) というコンテナー グループ管理ツールも備えています。
 
