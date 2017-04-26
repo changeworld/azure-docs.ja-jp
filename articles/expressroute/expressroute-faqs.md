@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure ExpressRoute の FAQ | Microsoft Docs"
 description: "ExpressRoute の FAQ には、サポートされている Azure サービス、料金、データと接続、SLA、プロバイダーと提供地域、帯域幅、およびその他の技術的な詳細に関する情報が記載されています。"
 documentationcenter: na
@@ -89,7 +89,7 @@ ExpressRoute は、さまざまな種類のサービスのために、[3 つの�
 要件については、 [ExpressRoute の前提条件](expressroute-prerequisites.md) に関するページを参照してください。
 
 ### <a name="are-connections-to-expressroute-redundant"></a>ExpressRoute への接続は冗長化されていますか。
-はい。 各 Express Route 回線にクロス接続の冗長ペアが設定され、高可用性を実現するように構成されています。
+はい。 各 ExpressRoute 回線にクロス接続の冗長ペアが設定され、高可用性を実現するように構成されています。
 
 ### <a name="will-i-lose-connectivity-if-one-of-my-expressroute-links-fail"></a>ExpressRoute リンクのいずれかに障害が発生すると接続できなくなりますか。
 クロス接続の一方に障害が発生しても、接続が失われることはありません。 ネットワークの負荷に対応できる冗長接続が用意されています。 さらに、耐障害性を実現するために、複数の回線を別のピアリング場所に作成することもできます。
@@ -196,7 +196,7 @@ ExpressRoute Premium は、次に示す機能で構成されたサービスで�
 * Office 365 サービスおよび CRM Online への接続。
 
 ### <a name="how-many-vnets-can-i-link-to-an-expressroute-circuit-if-i-enabled-expressroute-premium"></a>ExpressRoute Premium を有効にすると、どれくらいの VNET を ExpressRoute 回線に接続できますか。
-次の表は、ExpressRoute の制限と、ExpressRoute 回線ごとの VNet の数を示しています。
+次の表は、ExpressRoute の制限と、ExpressRoute 回線ごとの VNET の数を示しています。
 
 [!INCLUDE [expressroute-limits](../../includes/expressroute-limits.md)]
 
