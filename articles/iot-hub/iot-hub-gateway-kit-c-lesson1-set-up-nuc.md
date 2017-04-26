@@ -98,7 +98,7 @@ Azure IoT Gateway SDK パッケージには、SDK のコンパイル済みバイ
 1. ターミナル ウィンドウで、次のコマンドを実行して、IoT クラウド リポジトリを追加します。
 
    ```bash
-   rpm --import http://iotdk.intel.com/misc/iot_pub2.key
+   rpm --import https://iotdk.intel.com/misc/iot_pub2.key
    smart channel --add IoT_Cloud type=rpm-md name="IoT_Cloud" baseurl=http://iotdk.intel.com/repos/iot-cloud/wrlinux7/rcpl13/ -y
    smart channel --add WR_Repo type=rpm-md baseurl=https://distro.windriver.com/release/idp-3-xt/public_feeds/WR-IDP-3-XT-Intel-Baytrail-public-repo/RCPL13/corei7_64/
    ```
