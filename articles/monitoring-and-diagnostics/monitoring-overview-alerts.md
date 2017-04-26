@@ -52,8 +52,8 @@ ms.lasthandoff: 03/09/2017
 * メール通知をサービス管理者、共同管理者、または指定した追加のメール アドレスに送信する。
 * webhook を呼び出す。これにより、追加のオートメーション アクションを実行できます。 たとえば、次のものの呼び出しが可能です。
     - Azure Automation Runbook
-    - Azure 関数
-    - Azure Logic App
+    - Azure Functions
+    - Azure Logic Apps
     - サードパーティのサービス
 
 
