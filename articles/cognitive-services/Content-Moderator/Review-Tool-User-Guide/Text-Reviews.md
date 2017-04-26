@@ -10,9 +10,9 @@ ms.topic: article
 ms.date: 02/03/2017
 ms.author: sajagtap
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 2f232368a3f04eec20ca4241b332ddf15533a204
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: 7b6dfba0023f96702ee7aa8e0eedc132bac55112
+ms.lasthandoff: 04/21/2017
 
 ---
 
@@ -21,8 +21,6 @@ ms.lasthandoff: 04/12/2017
 ## <a name="select-or-enter-the-text-to-review"></a>Select or enter the text to review ##
 
 Click the **Try** TAB and select the "Text" option to bring up the Text Moderation start screen. Enter any text upto a maximum of 1024 characters or use the default sample text to submit for automated text moderation.
-
-![Review Text](images/1-try-text-updated.png)
 
 ## <a name="get-ready-to-review-results"></a>Get ready to review results ##
 
