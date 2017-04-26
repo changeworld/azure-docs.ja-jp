@@ -1,6 +1,6 @@
----
-title: "Azure API Management でバックアップと復元を使用して障害復旧を実装する | Microsoft Docs"
-description: "Azure API Management でバックアップと復元を使用して障害復旧を行う方法について説明します。"
+﻿---
+title: "Azure API Management でバックアップと復元を使用して災害復旧を実装する | Microsoft Docs"
+description: "Azure API Management でバックアップと復元を使用して災害復旧を行う方法について説明します。"
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -20,31 +20,31 @@ ms.openlocfilehash: c0413f9c83fd6dceb4a1d956c0f32712e29bdc58
 ms.lasthandoff: 03/31/2017
 
 ---
-# <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management でサービスのバックアップと復元を使用して障害復旧を実装する方法
+# <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management でサービスのバックアップと復元を使用して災害復旧を実装する方法
 Azure API Management を介して API の発行と管理を行うように選択することで、そうしなければ自分で設計、実装、および管理する必要のある、さまざまなフォールト トレランス機能やインフラストラクチャ機能を利用できるようになります。 Azure プラットフォームにより、わずかな料金で潜在的な障害の大部分が軽減されます。
 
-API Management サービスがホストされているリージョンに影響する可用性の問題から復旧するためには、いつでも異なるリージョンにサービスを再構成できるように準備しておく必要があります。 可用性の目標と復旧時間の目標に応じて、バックアップ サービスを 1 つ以上のリージョンに確保し、それらの構成と内容がアクティブ サービスと同期するように保守することができます。 サービス バックアップと復元の機能は、障害復旧戦略を実装するために必要な構成要素となります。
+API Management サービスがホストされているリージョンに影響する可用性の問題から復旧するためには、いつでも異なるリージョンにサービスを再構成できるように準備しておく必要があります。 可用性の目標と復旧時間の目標に応じて、バックアップ サービスを 1 つ以上のリージョンに確保し、それらの構成と内容がアクティブ サービスと同期するように保守することができます。 サービス バックアップと復元の機能は、災害復旧戦略を実装するために必要な構成要素となります。
 
-このガイドでは、Azure リソース マネージャーの要求を認証する方法と、API Management サービス インスタンスをバックアップおよび復元する方法を説明します。
+このガイドでは、Azure Resource Manager の要求を認証する方法と、API Management サービス インスタンスをバックアップおよび復元する方法を説明します。
 
 > [!NOTE]
-> 障害復旧用に API Management サービス インスタンスをバックアップおよび復元するプロセスは、ステージングなどのシナリオ用に API Management サービス インスタンスをレプリケートするためにも使用できます。
+> 災害復旧用に API Management サービス インスタンスをバックアップおよび復元するプロセスは、ステージングなどのシナリオ用に API Management サービス インスタンスをレプリケートするためにも使用できます。
 >
 > 各バックアップの有効期限は 30 日間です。 30 日の有効期限が切れた後にバックアップを復元しようとしても、" `Cannot restore: backup expired` " というメッセージが表示されて復元は失敗します。
 >
 >
 
-## <a name="authenticating-azure-resource-manager-requests"></a>Azure リソース マネージャーの要求の認証
+## <a name="authenticating-azure-resource-manager-requests"></a>Azure Resource Manager の要求の認証
 > [!IMPORTANT]
-> バックアップと復元用の REST API では、Azure リソース マネージャーが使用されます。API Management のエンティティ管理には REST API 以外の認証メカニズムも用意されています。 このセクションの手順では、Azure リソース マネージャーの要求を認証する方法について説明します。 詳細については、「[Azure REST API Reference (Azure REST API リファレンス)](http://msdn.microsoft.com/library/azure/dn790557.aspx)」を参照してください。
+> バックアップと復元用の REST API では、Azure Resource Manager が使用されます。API Management のエンティティ管理には REST API 以外の認証メカニズムも用意されています。 このセクションの手順では、Azure Resource Manager の要求を認証する方法について説明します。 詳細については、「[Azure REST API Reference (Azure REST API リファレンス)](http://msdn.microsoft.com/library/azure/dn790557.aspx)」を参照してください。
 >
 >
 
-Azure リソース マネージャーを使用してリソースに実行するすべてのタスクは、Azure Active Directory で以下の手順に従って認証する必要があります。
+Azure Resource Manager を使用してリソースに実行するすべてのタスクは、Azure Active Directory で以下の手順に従って認証する必要があります。
 
 * Azure Active Directory テナントにアプリケーションを追加する。
 * 追加したアプリケーションのアクセス許可を設定する。
-* Azure リソース マネージャーへの要求を認証するためのトークンを取得する。
+* Azure Resource Manager への要求を認証するためのトークンを取得する。
 
 最初の手順は、Azure Active Directory アプリケーションの作成です。 API Management サービス インスタンスが含まれたサブスクリプションを使用して [Azure クラシック ポータル](http://manage.windowsazure.com/) にログインし、既定の Azure Active Directory の **[アプリケーション]** タブに移動します。
 
@@ -130,7 +130,7 @@ API Management サービスをバックアップするには、次の HTTP 要�
 * `serviceName` - バックアップを作成する API Management サービスの、作成時に指定された名前
 * `api-version` - `2014-02-14` に置き換えます。
 
-要求の本文に、ターゲットの Azure ストレージ アカウント名、アクセス キー、BLOB コンテナー名、バックアップ名を指定します。
+要求の本文に、ターゲットの Azure Storage アカウント名、アクセス キー、BLOB コンテナー名、バックアップ名を指定します。
 
 ```
 '{  
@@ -166,7 +166,7 @@ API Management サービスをバックアップするには、次の HTTP 要�
 * `serviceName` - 復元先の API Management サービスの、作成時に指定された名前
 * `api-version` - `2014-02-14` に置き換えます。
 
-要求の本文に、バックアップ ファイルの場所、つまり Azure ストレージ アカウント名、アクセス キー、BLOB コンテナー名、バックアップ名を指定します。
+要求の本文に、バックアップ ファイルの場所、つまり Azure Storage アカウント名、アクセス キー、BLOB コンテナー名、バックアップ名を指定します。
 
 ```
 '{  
