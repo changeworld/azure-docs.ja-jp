@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure HDInsight での Apache Spark の概要 | Microsoft Docs"
 description: "HDInsight での Apache Spark の概要およびアプリケーションで HDInsight の Spark を使用するシナリオです。"
 services: hdinsight

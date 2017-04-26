@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Backup とは | Microsoft Docs"
 description: "Azure Backup を使用して、Windows Server、Windows ワークステーション、System Center DPM サーバー、Azure 仮想マシンのデータとワークロードをバックアップおよび復元します。"
 services: backup
