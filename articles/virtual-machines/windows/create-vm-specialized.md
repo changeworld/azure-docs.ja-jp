@@ -123,7 +123,7 @@ $vm = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
 
     ```powershell
     $osDisk = New-AzureRmDisk -DiskName "myOSDisk1" -Disk (New-AzureRmDiskConfig `
-    -AccountType StandardLRS  -Location $location -CreationDataCreateOption Import `
+    -AccountType StandardLRS  -Location $location -CreateOption Import `
     -SourceUri https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vh.vhd) `
     -ResourceGroupName $rgName
     ```

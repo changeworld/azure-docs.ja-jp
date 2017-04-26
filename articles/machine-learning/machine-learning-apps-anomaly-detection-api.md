@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 01/05/2017
+ms.date: 04/24/2017
 ms.author: alok;rotimpe
 translationtype: Human Translation
 ms.sourcegitcommit: a384756abaca45fc6863f8bc59dc3d6cb4fa974a
 ms.openlocfilehash: ae9a4f99d5b38944f38534021523e2153ce7f0d0
+ms.lasthandoff: 01/07/2017
 
 
 ---
@@ -189,10 +190,5 @@ ScoreWithSeasonality API は、季節的なパターンを含んだ時系列デ�
 
 [1]: ./media/machine-learning-apps-anomaly-detection-api/anomaly-detection-score.png
 [2]: ./media/machine-learning-apps-anomaly-detection-api/anomaly-detection-seasonal.png
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 
