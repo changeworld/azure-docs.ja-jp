@@ -1,4 +1,4 @@
----
+﻿---
 title: "Hadoop コンポーネントとバージョン - Azure HDInsight | Microsoft Docs"
 description: "HDInsight での Hadoop コンポーネントおよびバージョンと、このクラウド ディストリビューションの HortonWorks Data Platform で使用できるサービス レベルについて説明します。"
 services: hdinsight

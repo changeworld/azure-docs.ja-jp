@@ -1,4 +1,4 @@
----
+﻿---
 title: "Hadoop とは Azure HDInsight 入門 | Microsoft Docs"
 description: "Hadoop エコシステムと HDInsight のコンポーネントを概説します。 HDInsight には、ビッグ データの処理と分析に使用できる Hadoop、Spark、HBase、その他のコンポーネントが含まれています。"
 keywords: "ビッグ データ分析,hadoop の概要,hadoop とは,hadoop テクノロジ スタック,hadoop エコシステム"

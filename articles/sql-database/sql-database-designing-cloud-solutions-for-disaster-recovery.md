@@ -22,13 +22,13 @@ ms.openlocfilehash: dd56a8d1ee428b1845ed80f0b899cc73c2c4b7f6
 
 
 ---
-# <a name="application-design-for-cloud-disaster-recovery-using-active-geo-replication-in-sql-database"></a>SQL Database のアクティブ geo レプリケーションを使ったクラウド障害復旧用のアプリケーション設計
+# <a name="application-design-for-cloud-disaster-recovery-using-active-geo-replication-in-sql-database"></a>SQL Database のアクティブ地理レプリケーションを使ったクラウド障害復旧用のアプリケーション設計
 > [!NOTE]
 > すべてのレベルのすべてのデータベースで [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md) を使用できるようになりました。
 >
 >
 
-ここでは、SQL Database の [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md) を使用して、リージョンの障害や致命的な停止に対して回復性の高いデータベース アプリケーションを設計する方法について説明します。 ビジネス継続性の計画では、アプリケーションのデプロイ トポロジ、目標とするサービス レベル アグリーメント、トラフィック待機時間、コストを考慮します。 この記事では一般的なアプリケーション パターンを紹介したうえで、それぞれの選択肢の利点とトレードオフについて説明します。 エラスティック プールでのアクティブ geo レプリケーションについては、 [エラスティック プール障害復旧戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページを参照してください。
+ここでは、SQL Database の [アクティブ地理レプリケーション](sql-database-geo-replication-overview.md) を使用して、リージョンの障害や致命的な停止に対して回復性の高いデータベース アプリケーションを設計する方法について説明します。 ビジネス継続性の計画では、アプリケーションのデプロイ トポロジ、目標とするサービス レベル アグリーメント、トラフィック待機時間、コストを考慮します。 この記事では一般的なアプリケーション パターンを紹介したうえで、それぞれの選択肢の利点とトレードオフについて説明します。 エラスティック プールでのアクティブ地理レプリケーションについては、 [エラスティック プール障害復旧戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページを参照してください。
 
 ## <a name="design-pattern-1-active-passive-deployment-for-cloud-disaster-recovery-with-a-co-located-database"></a>設計パターン 1: アクティブ/パッシブ デプロイとデータベースの併置によるクラウド障害復旧
 この設計パターンは、以下の特性を持ったアプリケーションに最適な選択肢です。
@@ -53,7 +53,7 @@ ms.openlocfilehash: dd56a8d1ee428b1845ed80f0b899cc73c2c4b7f6
 
 この構成の機能停止前の状態を示したのが次の図です。
 
-![SQL Database の geo レプリケーションの構成。 Cloud disaster recovery.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern1-1.png)
+![SQL Database の地理レプリケーションの構成。 クラウド災害復旧。](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern1-1.png)
 
 プライマリ リージョンの機能が停止すると、プライマリ データベースにアクセスできないことを監視アプリケーションが検出し、アラートを発生させます。 監視プローブが何回失敗したらデータベースの機能停止と見なすかは、アプリケーションの SLA に応じて指定してください。 アプリケーションのエンド ポイントとデータベースの同時フェールオーバーを実現するためには、監視アプリケーションで次の手順を実行する必要があります。
 
@@ -67,13 +67,13 @@ ms.openlocfilehash: dd56a8d1ee428b1845ed80f0b899cc73c2c4b7f6
 セカンダリ リージョンの機能が停止した場合、プライマリ データベースとセカンダリ データベース間のレプリケーション リンクが中断状態となり、監視アプリケーションは、プライマリ データベースがレプリケーションされていないことを示すアラートを生成します。 この点がアプリケーションのパフォーマンスに影響を及ぼすことはありませんが、レプリケーションされていない状態で運用されることから、両方のリージョンに相次いで障害が発生した場合、リスクは増大します。
 
 > [!NOTE]
-> マイクロソフトで推奨しているのは、障害復旧リージョンを&1; つだけ使用したデプロイ構成のみです。 これは、Azure で地理的に割り当てられるリージョンがほとんどの場合&2; つであるためです。 これらの構成で、両方のリージョンの致命的な障害からアプリケーションを保護することはできません。 万一そのような障害が発生した場合は、[geo リストア操作](sql-database-disaster-recovery.md#recover-using-geo-restore)を使って、第&3; のリージョンのデータベースを復元することができます。
+> マイクロソフトで推奨しているのは、障害復旧リージョンを 1 つだけ使用したデプロイ構成のみです。 これは、Azure で地理的に割り当てられるリージョンがほとんどの場合 2 つであるためです。 これらの構成で、両方のリージョンの致命的な障害からアプリケーションを保護することはできません。 万一そのような障害が発生した場合は、[地理リストア操作](sql-database-disaster-recovery.md#recover-using-geo-restore)を使って、第 3 のリージョンのデータベースを復元することができます。
 >
 >
 
 停止していた機能が復旧すると、セカンダリ データベースがプライマリ データベースと自動的に同期されます。 同期対象のデータの量によっては、プライマリのパフォーマンスが同期中やや低下する場合があります。 次の図は、セカンダリ リージョンの機能が停止した場合の例です。
 
-![プライマリと同期されたセカンダリ データベース。 Cloud disaster recovery.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern1-3.png)
+![プライマリと同期されたセカンダリ データベース。 クラウド災害復旧。](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern1-3.png)
 
 この設計パターンの主な **利点** は次のとおりです。
 
@@ -95,7 +95,7 @@ ms.openlocfilehash: dd56a8d1ee428b1845ed80f0b899cc73c2c4b7f6
 パターン 1 と同様の監視アプリケーションをデプロイすることを検討してください。 ただし、パターン 1 とは異なり、この監視アプリケーションでエンド ポイントのフェールオーバーをトリガーする必要はありません。
 
 > [!NOTE]
-> このパターンでは複数のセカンダリ データベースを使用していますが、先ほど説明した理由から、フェールオーバーで使用されるセカンダリは&1; つだけです。 このパターンではセカンダリへの読み取り専用アクセスが必要となるため、アクティブ geo レプリケーションが必要です。
+> このパターンでは複数のセカンダリ データベースを使用していますが、先ほど説明した理由から、フェールオーバーで使用されるセカンダリは 1 つだけです。 このパターンではセカンダリへの読み取り専用アクセスが必要となるため、アクティブ地理レプリケーションが必要です。
 >
 >
 
@@ -110,7 +110,7 @@ ms.openlocfilehash: dd56a8d1ee428b1845ed80f0b899cc73c2c4b7f6
 次の図は、フェールオーバー後の新しい構成を示しています。
 ![Configuration after failover. Cloud disaster recovery.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern2-2.png)
 
-いずれかのセカンダリ リージョンの機能が停止した場合、Traffic Manager は、そのリージョンのオフライン エンド ポイントをルーティング テーブルから自動的に削除します。 そのリージョンのセカンダリ データベースへのレプリケーション チャンネルが中断状態となります。 残っているリージョンへのユーザー トラフィックが増えるという点で、機能が停止している間はアプリケーションのパフォーマンスに影響が生じます。 停止していた機能が復旧すると、影響のあったリージョンのセカンダリ データベースがプライマリ データベースと直ちに同期されます。 同期対象のデータの量によっては、プライマリのパフォーマンスが同期中やや低下する場合があります。 次の図は、セカンダリ リージョンの&1; つで機能が停止した場合の例です。
+いずれかのセカンダリ リージョンの機能が停止した場合、Traffic Manager は、そのリージョンのオフライン エンド ポイントをルーティング テーブルから自動的に削除します。 そのリージョンのセカンダリ データベースへのレプリケーション チャンネルが中断状態となります。 残っているリージョンへのユーザー トラフィックが増えるという点で、機能が停止している間はアプリケーションのパフォーマンスに影響が生じます。 停止していた機能が復旧すると、影響のあったリージョンのセカンダリ データベースがプライマリ データベースと直ちに同期されます。 同期対象のデータの量によっては、プライマリのパフォーマンスが同期中やや低下する場合があります。 次の図は、セカンダリ リージョンの 1 つで機能が停止した場合の例です。
 
 ![Outage in secondary region. クラウドの障害復旧 - geo レプリケーション。](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern2-3.png)
 
@@ -121,7 +121,7 @@ ms.openlocfilehash: dd56a8d1ee428b1845ed80f0b899cc73c2c4b7f6
 * データベースのフェールオーバー後、アプリケーションのインスタンスは SQL 接続文字列を動的に変更する必要がある  
 
 > [!NOTE]
-> 同様のアプローチで、レポート ジョブ、ビジネス インテリジェンス ツール、バックアップなど特定のワークロードの負荷を軽減することができます。 通常これらのワークロードはデータベースのリソースを著しく消費するため、予測されるワークロードに見合ったパフォーマンス レベルのセカンダリ データベースを&1; つ指定することをお勧めします。
+> 同様のアプローチで、レポート ジョブ、ビジネス インテリジェンス ツール、バックアップなど特定のワークロードの負荷を軽減することができます。 通常これらのワークロードはデータベースのリソースを著しく消費するため、予測されるワークロードに見合ったパフォーマンス レベルのセカンダリ データベースを 1 つ指定することをお勧めします。
 >
 >
 
@@ -178,12 +178,12 @@ Traffic Manager は、プライマリ リージョンへの接続障害を検出
 | アクティブ/パッシブ デプロイによるデータ保存 |読み取り専用アクセス = 5 秒未満、読み取り/書き込みアクセス = 0 |読み取り専用アクセス = 接続障害検出時間 + アプリケーション検証テスト  <br>読み取り/書き込みアクセス = 停止していた機能の回復にかかる時間 |
 
 ## <a name="next-steps"></a>次のステップ
-* Azure SQL Database 自動バックアップの詳細については、「 [SQL Database automated backups (SQL Database 自動バックアップ)](sql-database-automated-backups.md)
+* Azure SQL Database 自動バックアップの詳細については、「 SQL Database automated backups (SQL Database 自動バックアップ)](sql-database-automated-backups.md)
 * ビジネス継続性の概要およびシナリオについては、 [ビジネス継続性の概要](sql-database-business-continuity.md)
 * 自動バックアップを使用して復旧する方法については、 [サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)
-* より迅速な復旧オプションについては、 [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)  
+* より迅速な復旧オプションについては、 [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md) 
 * 自動バックアップを使用したアーカイブについては、 [データベースのコピー](sql-database-copy.md)
-* エラスティック プールでのアクティブ geo レプリケーションについては、 [エラスティック プール障害復旧戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページを参照してください。
+* エラスティック プールでのアクティブ geo レプリケーションについては、 [エラスティック プール障害復旧戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページを参照してください
 
 
 

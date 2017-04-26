@@ -1,4 +1,4 @@
----
+﻿---
 title: "Jupyter Notebook のローカルでのインストールと Azure Spark クラスターへの接続 | Microsoft Docs"
 description: "Jupyter Notebook をローカル コンピューターにインストールして Azure HDInsight 上の Apache Spark クラスターに接続する方法を説明します。"
 services: hdinsight
