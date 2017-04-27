@@ -74,6 +74,8 @@ Docker Swarm は、Docker のネイティブ クラスタリングを提供し�
 
 ![Swarm を使用するように構成された Azure Container Service。](media/acs-intro/acs-swarm2.png)
 
+[!INCLUDE [container-service-swarm-mode-note](../../includes/container-service-swarm-mode-note.md)]
+
 Swarm クラスターでコンテナーを管理するためにサポートされているツールには、(これらに限定はされていませんが) 以下があります。
 
 * Dokku
