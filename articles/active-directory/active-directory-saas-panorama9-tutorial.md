@@ -11,34 +11,35 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/25/2017
+ms.date: 03/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 12868706693a076ead3cfc13ce5901bbc56d588b
-ms.openlocfilehash: 961aef8496a7de264c5d57c7a990c69996c1527e
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 66d68ef805a28552c5d161b4761e2aa3052c118c
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>チュートリアル: Azure Active Directory と Panorama9 の統合
 このチュートリアルでは、Azure と Panorama9 の統合について説明します。  
+
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 * 有効な Azure サブスクリプション
-* Panorama9 でのシングル サインオンが有効なサブスクリプション
+* Panorama9 でのシングル サインオン (SSO) が有効なサブスクリプション
 
 このチュートリアルを完了すると、Panorama9 に割り当てた Azure AD ユーザーは、Panorama9 企業サイト (サービス プロバイダーが開始したサインオン) で、または「 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
 
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
 1. Panorama9 のアプリケーション統合の有効化
-2. シングル サインオンの構成
+2. シングル サインオン (SSO) の構成
 3. ユーザー プロビジョニングの構成
 4. ユーザーの割り当て
 
 ![シナリオ](./media/active-directory-saas-panorama9-tutorial/IC790016.png "Scenario")
 
-## <a name="enabling-the-application-integration-for-panorama9"></a>Panorama9 のアプリケーション統合の有効化
+## <a name="enable-the-application-integration-for-panorama9"></a>Panorama9 のアプリケーション統合の有効化
 このセクションでは、Panorama9 のアプリケーション統合を有効にする方法を説明します。
 
 **Panorama9 のアプリケーション統合を有効にするには、次の手順に従います。**
@@ -63,15 +64,15 @@ ms.lasthandoff: 02/03/2017
    
    ![Panorama9](./media/active-directory-saas-panorama9-tutorial/IC790018.png "Panorama9")
    
-## <a name="configuring-single-sign-on"></a>シングル サインオンの構成
+## <a name="configure-single-sign-on"></a>Configure single sign-on
 
 このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD のアカウントで Panorama9 に対する認証を行えるようにする方法を説明します。  
 
-Panorama9 のシングル サインオンを構成するには、証明書から拇印の値を取得する必要があります。  
+Panorama9 の SSO を構成するには、証明書からサムプリント値を取得する必要があります。  
 
 この手順に慣れていない場合は、「 [How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
 
-**シングル サインオンを構成するには、次の手順に従います。**
+**構成された SSO を取得するには、次の手順を実行します。**
 
 1. Azure クラシック ポータルの **Panorama9** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
@@ -108,30 +109,31 @@ Panorama9 のシングル サインオンを構成するには、証明書から
    
    ![シングル サインオンの構成](./media/active-directory-saas-panorama9-tutorial/IC790026.png "Configure Single Sign-On")
    
-## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
+## <a name="configure-user-provisioning"></a>[ユーザー プロビジョニングの構成]
 
 Azure AD ユーザーが Panorama9 にログインできるようにするには、ユーザーを Panorama9 にプロビジョニングする必要があります。  
-Panorama9 の場合、プロビジョニングは手動で行います。
+
+* Panorama9 の場合、プロビジョニングは手動で行います。
 
 **ユーザー プロビジョニングを構成するには、次の手順に従います。**
 1. **Panorama9** 企業サイトに管理者としてログインします。
 2. 上部のメニューで、**[管理]**、**[ユーザー]** の順にクリックします。
    
-   ![ユーザー](./media/active-directory-saas-panorama9-tutorial/IC790027.png "Users")
+  ![ユーザー](./media/active-directory-saas-panorama9-tutorial/IC790027.png "Users")
 3. ページの下部にある **+**」の説明に従って、アプリケーションにシングル サインオンできるようになります。
 4. [ユーザー データ] セクションで、次の手順に従います。
    
-   ![ユーザー](./media/active-directory-saas-panorama9-tutorial/IC790028.png "Users")
-   
-   1. **[電子メール]** テキストボックスに、プロビジョニングする有効な Azure Active Directory ユーザーの電子メール アドレスを入力します。
-   2. **[保存]**をクリックします。
+  ![ユーザー](./media/active-directory-saas-panorama9-tutorial/IC790028.png "Users")
 
-> [!NOTE]
-> Panorama9 から提供されている他の Panorama9 ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
-> 
+  1. **[電子メール]** テキストボックスに、プロビジョニングする有効な Azure Active Directory ユーザーの電子メール アドレスを入力します。
+  2. **[保存]**をクリックします。
 
+>[!NOTE]
+>Panorama9 から提供されている他の Panorama9 ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>
+>
 
-## <a name="assigning-users"></a>ユーザーの割り当て
+## <a name="assign-users"></a>[ユーザーの割り当て]
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
 **ユーザーを Panorama9 に割り当てるには、次の手順に従います。**
@@ -144,6 +146,6 @@ Panorama9 の場合、プロビジョニングは手動で行います。
    
    ![はい](./media/active-directory-saas-panorama9-tutorial/IC767830.png "Yes")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
+SSO の設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
 

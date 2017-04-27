@@ -3,7 +3,7 @@ title: "Azure Active Directory 監査 API リファレンス | Microsoft Docs"
 description: "Azure Active Directory 監査 API の概要について説明します。"
 services: active-directory
 documentationcenter: 
-author: dhanyahk
+author: markusvi
 manager: femila
 editor: 
 ms.assetid: 44e46be8-09e5-4981-be2b-d474aaa92792
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/16/2016
+ms.date: 04/05/2017
 ms.author: dhanyahk;markvi
 translationtype: Human Translation
-ms.sourcegitcommit: b1de516d907826d3e6ede0783649f6101b381852
-ms.openlocfilehash: 261cce0b8424f73df4c7ca86784a14e95a8336f1
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 87c7990834eaf2aa6c4aff0c341150ba9bd9eed4
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -75,6 +76,8 @@ Azure AD 監査 API によって (OData 改ページ調整を使用) 返され�
 重要なレコードの種類を指定するには、次のフィルター フィールドの 1 つまたは組み合わせのいずれかを含めることができるフィルター ステートメントを構築します。
 
 * [activityDate](#activitydate) - 日付または日付範囲を定義します。
+* [category](#category) - フィルターを適用するカテゴリを定義します。
+* [activityStatus](#activitystatus) - アクティビティの状態を定義します。
 * [activityType](#activitytype) - アクティビティの種類を定義します。
 * [activity](#activity) - 文字列としてアクティビティを定義します。  
 * [actor/name](#actorname) - アクターの名前の形式でアクターを定義します。
@@ -97,6 +100,45 @@ Azure AD 監査 API によって (OData 改ページ調整を使用) 返され�
 datetime は UTC 形式にする必要があります。
 
 - - -
+### <a name="category"></a>カテゴリ
+
+**サポートされる値**：
+
+| カテゴリ                         | 値     |
+| :--                              | ---       |
+| Core Directory (コア ディレクトリ)                   | Directory |
+| Self-service Password Management \(セルフサービスによるパスワード管理) | SSPR      |
+| セルフサービスによるグループ管理    | SSGM      |
+| アカウント プロビジョニング             | 同期      |
+| 自動パスワード ロールオーバー      | 自動パスワード ロールオーバー |
+| Identity Protection              | IdentityProtection |
+| 招待されたユーザー                    | 招待されたユーザー |
+| MIM サービス                      | MIM サービス |
+
+
+
+**サポートされている演算子**: eq
+
+**例**:
+
+    $filter=category eq 'SSPR'
+- - -
+### <a name="activitystatus"></a>activityStatus
+
+**サポートされる値**：
+
+| アクティビティの状態 | 値 |
+| :--             | ---   |
+| 成功         | 0     |
+| 失敗         | - 1   |
+
+**サポートされている演算子**: eq
+
+**例**:
+
+    $filter=activityStatus eq -1    
+
+---
 ### <a name="activitytype"></a>activityType
 **サポートされている演算子**: eq
 
@@ -139,6 +181,7 @@ datetime は UTC 形式にする必要があります。
 **例**:
 
     $filter=actor/objectId eq 'e8096343-86a2-4384-b43a-ebfdb17600ba'    
+
 
 - - -
 ### <a name="targetname"></a>target/name
@@ -190,10 +233,5 @@ datetime は UTC 形式にする必要があります。
 ## <a name="next-steps"></a>次のステップ
 * フィルター処理されたシステム アクティビティの例を参照しますか。 [Azure Active Directory 監査 API のサンプル](active-directory-reporting-api-audit-samples.md)に関する記事を確認してください。
 * Azure AD Reporting API の詳細を確認しますか。 「 [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md)」を参照してください。
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

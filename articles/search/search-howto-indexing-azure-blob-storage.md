@@ -12,12 +12,12 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 01/18/2017
+ms.date: 04/15/2017
 ms.author: eugenesh
 translationtype: Human Translation
-ms.sourcegitcommit: 05fc8ff05f8e2f20215f6683a125c1a506b4ccdc
-ms.openlocfilehash: 23ed2e066cc6751ebabb57c8077f95b0cb074850
-ms.lasthandoff: 02/18/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: e14da5fa10533d922a6263e8f52a53c0eaa23393
+ms.lasthandoff: 04/25/2017
 
 ---
 
@@ -38,7 +38,7 @@ BLOB インデクサーは、次の形式のドキュメントからテキスト
 * CSV ([CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)のプレビュー機能を参照)
 
 > [!IMPORTANT]
-> CSV および JSON ファイルの機能は現在プレビュー段階です。 これらの形式は、REST API のバージョン **2015-02-28-Preview** または .NET SDK のバージョン 2.x のプレビューを使用する場合のみ利用可能です。 プレビュー版の API は、テストと評価を目的としたものです。運用環境での使用は避けてください。
+> CSV および JSON 配列の機能は現在プレビュー段階です。 これらの形式は、REST API のバージョン **2015-02-28-Preview** または .NET SDK のバージョン 2.x のプレビューを使用する場合のみ利用可能です。 プレビュー版の API は、テストと評価を目的としたものです。運用環境での使用は避けてください。
 >
 >
 
@@ -130,7 +130,7 @@ Shared Access Signature について詳しくは、「[Shared Access Signature �
       "schedule" : { "interval" : "PT2H" }
     }
 
-このインデクサーは&2; 時間ごとに実行されます (スケジュールの間隔が "PT2H" に設定されています)。 インデクサーを 30 分ごとに実行するには、間隔を "PT30M" に設定します。 サポートされている最短の間隔は 5 分です。 スケジュールは省略可能です。省略した場合、インデクサーは作成時に一度だけ実行されます。 ただし、いつでもオンデマンドでインデクサーを実行できます。   
+このインデクサーは 2 時間ごとに実行されます (スケジュールの間隔が "PT2H" に設定されています)。 インデクサーを 30 分ごとに実行するには、間隔を "PT30M" に設定します。 サポートされている最短の間隔は 5 分です。 スケジュールは省略可能です。省略した場合、インデクサーは作成時に一度だけ実行されます。 ただし、いつでもオンデマンドでインデクサーを実行できます。   
 
 インデクサー作成 API の詳細については、「 [インデクサーの作成](https://docs.microsoft.com/rest/api/searchservice/create-indexer)」をご覧ください。
 
@@ -139,11 +139,15 @@ Shared Access Signature について詳しくは、「[Shared Access Signature �
 [インデクサー構成](#PartsOfBlobToIndex)に応じて、BLOB インデクサーでは、ストレージ メタデータのみ (メタデータのみに注意すればよく、BLOB のコンテンツにインデックスを作成する必要がないときに便利です)、ストレージとコンテンツ メタデータ、またはメタデータとテキスト コンテンツの両方にインデックスを作成することができます。 インデクサーは、既定では、メタデータとコンテンツの両方を抽出します。
 
 > [!NOTE]
-> 既定では、JSON、CSV、XML などの構造化コンテンツを持つ BLOB には、1 つのテキスト チャンクとしてインデックスが作成されます。 構造化された方法で JSON および CSV の BLOB のインデックスを作成する場合は、[JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)と [CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)のプレビュー機能を参照してください。 現在、XML コンテンツの解析はサポートされていません。サポートが必要な場合は、[UserVoice](https://feedback.azure.com/forums/263029-azure-search) にご要望をお寄せください。
->
+> 既定では、JSON や CSV などの構造化コンテンツを持つ BLOB には、1 つのテキスト チャンクとしてインデックスが作成されます。 構造化された方法で JSON および CSV の BLOB のインデックスを作成する場合は、[JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)と [CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)のプレビュー機能を参照してください。
+> 
 > 複合ドキュメントや埋め込みドキュメント (ファイルが添付された Outlook 電子メールを埋め込んだ Word 文書、ZIP アーカイブなど) も、1 つのドキュメントとしてインデックスが作成されます。
 
-* ドキュメントのテキスト コンテンツ全体が、`content` という名前の文字列フィールドに抽出されます。
+* ドキュメントのテキスト コンテンツが、`content` という名前の文字列フィールドに抽出されます。
+
+> [!NOTE]
+> どれだけのテキストが抽出されるかは、価格レベルに応じて Azure Search によって制限されます。Free レベルの場合は 32,000 文字、Basic レベルの場合は 64,000 文字、Standard レベル、Standard S2 レベル、および Standard S3 レベルの場合は 400 万文字です。 切り捨てられたドキュメントについては、インデクサーの状態の応答に警告が含められます。  
+
 * ユーザー指定のメタデータのプロパティが BLOB に存在する場合、それらのプロパティは、そのまま抽出されます。
 * 標準的な BLOB のメタデータのプロパティは、次のフィールドに抽出されます。
 
@@ -164,7 +168,7 @@ Shared Access Signature について詳しくは、「[Shared Access Signature �
 
 <a name="DocumentKeys"></a>
 ### <a name="defining-document-keys-and-field-mappings"></a>ドキュメント キーとフィールド マッピングの定義
-Azure Search では、ドキュメントがそのキーによって一意に識別されます。 それぞれの検索インデックスに、Edm.String 型のキー フィールドが&1; つだけ存在している必要があります。 キー フィールドは、インデックスに追加するドキュメントごとに必要となります (唯一の必須フィールド)。  
+Azure Search では、ドキュメントがそのキーによって一意に識別されます。 それぞれの検索インデックスに、Edm.String 型のキー フィールドが 1 つだけ存在している必要があります。 キー フィールドは、インデックスに追加するドキュメントごとに必要となります (唯一の必須フィールド)。  
 
 抽出されたフィールドとインデックスのキー フィールドとのマッピングは、慎重に検討する必要があります。 その例を次に示します。
 
@@ -173,7 +177,7 @@ Azure Search では、ドキュメントがそのキーによって一意に識�
 * いずれの選択肢も利用できない場合は、独自のメタデータ プロパティを BLOB に追加できます。 ただし、この方法を選んだ場合、BLOB のアップロード プロセスで、該当するメタデータのプロパティをすべての BLOB に追加する必要があります。 キーは必須のプロパティであるため、そのプロパティを持たない BLOB については、インデックスが一切作成されません。
 
 > [!IMPORTANT]
-> インデックス内のキー フィールドに対して明示的なマッピングが存在しない場合、Azure Search は自動的に `metadata_storage_path` をキーおよび base-64 エンコード キー値として使用します (上記の&2; つ目の選択肢)。
+> インデックス内のキー フィールドに対して明示的なマッピングが存在しない場合、Azure Search は自動的に `metadata_storage_path` をキーおよび base-64 エンコード キー値として使用します (上記の 2 つ目の選択肢)。
 >
 >
 
@@ -300,7 +304,7 @@ BLOB のどの部分にインデックスを作成するかは、`dataToExtract`
 
 たとえば、次のポリシーでは、BLOB のメタデータ プロパティ `IsDeleted` の値が `true` のときに、その BLOB が削除されるものと見なされます。
 
-    PUT https://[service name].search.windows.net/datasources?api-version=2016-09-01
+    PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2016-09-01
     Content-Type: application/json
     api-key: [admin key]
 
@@ -321,7 +325,7 @@ BLOB のどの部分にインデックスを作成するかは、`dataToExtract`
 BLOB のインデックス作成プロセスは、時間がかかる場合があります。 インデックスを作成する BLOB が数百万ある場合は、データをパーティション分割し、複数のインデクサーを使用してデータを並列で処理することで、インデックス作成を高速に処理できます。 設定方法は次のとおりです。
 
 - 複数の BLOB コンテナーまたは仮想フォルダーにデータをパーティション分割します。
-- コンテナーまたはフォルダーごとに&1; つずつ、Azure Search データ ソースを設定します。 BLOB フォルダーをポイントするには、`query` パラメーターを使用します。
+- コンテナーまたはフォルダーごとに 1 つずつ、Azure Search データ ソースを設定します。 BLOB フォルダーをポイントするには、`query` パラメーターを使用します。
 
     ```
     {
@@ -338,7 +342,7 @@ BLOB のインデックス作成プロセスは、時間がかかる場合があ
 
 ドキュメントには、次のいずれかの場所に構造化データとして格納されているメタデータ (ドキュメントを作成した部門など) が関連付けられている場合があります。
 -   SQL Database や DocumentDB などの別のデータ ストア。
--   Azure Blob Storage 内の各ドキュメントにカスタム メタデータとして直接接続されている  (詳細については、「[Setting and Retrieving Properties and Metadata for Blob Resources (BLOB リソースのプロパティとメタデータの設定と取得)](https://docs.microsoft.com/rest/api/storageservices/fileservices/setting-and-retrieving-properties-and-metadata-for-blob-resources)」を参照してください)。
+-   Azure Blob Storage 内の各ドキュメントにカスタム メタデータとして直接接続されている  (詳細については、「[Setting and Retrieving Properties and Metadata for Blob Resources (BLOB リソースのプロパティとメタデータの設定と取得)](https://docs.microsoft.com/rest/api/storageservices/setting-and-retrieving-properties-and-metadata-for-blob-resources)」を参照してください)。
 
 各ドキュメントとそのメタデータに同じ一意のキー値を割り当て、各インデクサーに `mergeOrUpload` アクションを指定することで、ドキュメントとメタデータを併せたインデックスを作成することができます。 このソリューションの詳細については、外部資料「[Combine documents with other data in Azure Search (ドキュメントを Azure Search の他のデータと組み合わせる)](http://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)」を参照してください。
 

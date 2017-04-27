@@ -1,21 +1,22 @@
 ---
-title: "Application Insights でのデータ保持と保存"
+title: "Azure Application Insights でのデータ保持と保存 | Microsoft Docs"
 description: "データ保持およびプライバシー ポリシー ステートメント"
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: a6268811-c8df-42b5-8b1b-1d5a7e94cbca
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 04/07/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 3dc6373c9aaa01000a7da282e48557f175f040e7
-ms.openlocfilehash: a6588718fdc0b561a70f25ac4d674c5edf08d8cb
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: d82f27c9a657a97f23b60ade352e4d2a87166233
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -48,7 +49,7 @@ Application Insights SDK はさまざまなアプリケーション タイプに
 
 ## <a name="what-data-does-it-collect"></a>どのようなデータが収集されますか。
 ### <a name="how-is-the-data-is-collected"></a>データはどのような方法で収集されますか。
-データ ソースは&3; つあります。
+データ ソースは 3 つあります。
 
 * SDK は[開発時](app-insights-asp-net.md)または[実行時](app-insights-monitor-performance-live-website-now.md)にアプリと統合します。 アプリケーションの種類が違えば SDK も違います。 [Web ページ用の SDK](app-insights-javascript.md) もあります。ページと共にエンドユーザーのブラウザーに読み込まれます。
   
@@ -67,7 +68,7 @@ Application Insights SDK はさまざまなアプリケーション タイプに
 * [例外](app-insights-asp-net-exceptions.md) とクラッシュ - **スタック ダンプ**、ビルド ID、CPU タイプ。 
 * [依存関係](app-insights-asp-net-dependencies.md) - REST、SQL、AJAX など、外部サービスの呼び出し。 URI または接続文字列、期間、成功、コマンド。
 * [可用性テスト](app-insights-monitor-web-app-availability.md) - テストとステップの期間、応答。
-* [トレース ログ](app-insights-search-diagnostic-logs.md)と[カスタム テレメトリ](app-insights-api-custom-events-metrics.md) - **コード化してログまたはテレメトリに入れるすべて**。
+* [トレース ログ](app-insights-asp-net-trace-logs.md)と[カスタム テレメトリ](app-insights-api-custom-events-metrics.md) - **コード化してログまたはテレメトリに入れるすべて**。
 
 [詳細](#data-sent-by-application-insights)。
 
@@ -198,16 +199,7 @@ SDK はプラットフォームごとに異なり、インストールできる�
 ## <a name="credits"></a>謝辞
 この製品には、MaxMind によって作成された GeoLite2 データが含まれています。MaxMind は [http://www.maxmind.com](http://www.maxmind.com) から入手できます。
 
-## <a name="a-namevideoavideos"></a><a name="video"></a>ビデオ
-#### <a name="introduction"></a>はじめに
-> [!VIDEO https://channel9.msdn.com/Series/Application-Insights-on-Azure-Preview-Portal/Application-Insights-Introduction/player]
-> 
-> 
 
-#### <a name="get-started"></a>作業開始
-> [!VIDEO https://channel9.msdn.com/Series/Application-Insights-on-Azure-Preview-Portal/Getting-Started-with-Application-Insights/player]
-> 
-> 
 
 <!--Link references-->
 
@@ -221,10 +213,5 @@ SDK はプラットフォームごとに異なり、インストールできる�
 [pricing]: http://azure.microsoft.com/pricing/details/application-insights/
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

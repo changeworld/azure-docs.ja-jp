@@ -15,31 +15,31 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: 420a79a3f98500fa5e9054c3a59d9ac20ecb6cbf
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 12d4282082b3318bd14535a49e25c8d606d1bd7f
+ms.lasthandoff: 04/26/2017
 
 ---
 
 # <a name="get-started-sending-messages-to-azure-event-hubs-in-net-standard"></a>.NET Standard で Azure Event Hubs へのメッセージ送信を開始する
 
 > [!NOTE]
-> このサンプルは [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/SampleSender) で入手できます。
+> このサンプルは [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) で入手できます。
 
-このチュートリアルでは、Event Hub に一連のメッセージを送信する .NET Core コンソール アプリケーションの記述方法を示します。 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/SampleSender) ソリューションをそのまま実行するには、`EhConnectionString` および `EhEntityPath` 文字列を Event Hub の値に置き換えるか、 このチュートリアルの手順に従って独自のものを作成します。
+このチュートリアルでは、イベント ハブに一連のメッセージを送信する .NET Core コンソール アプリケーションの記述方法を示します。 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) ソリューションをそのまま実行するには、`EhConnectionString` および `EhEntityPath` 文字列をイベント ハブの値に置き換えるか、 このチュートリアルの手順に従って独自のものを作成します。
 
 ## <a name="prerequisites"></a>前提条件
 
 * [Microsoft Visual Studio 2015 または 2017](http://www.visualstudio.com)。 このチュートリアルの例では Visual Studio 2015 を使用しますが、Visual Studio 2017 もサポートされています。
 * [.NET Core Visual Studio 2015 または 2017 ツール](http://www.microsoft.com/net/core)。
 * Azure サブスクリプション。
-* Event Hubs 名前空間。
+* イベント ハブ名前空間。
 
-Event Hub にメッセージを送信するために、Visual Studio を使って C# コンソール アプリケーションを記述します。
+イベント ハブにメッセージを送信するために、Visual Studio を使って C# コンソール アプリケーションを記述します。
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs 名前空間とイベント ハブを作成する
 
-最初のステップでは、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[この記事](event-hubs-create.md)の手順を踏み、次のステップに進みます。
+最初のステップでは、[Azure Portal](https://portal.azure.com) を使用して イベント ハブ型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[この記事](event-hubs-create.md)の手順を踏み、次のステップに進みます。
 
 ## <a name="create-a-console-application"></a>コンソール アプリケーションの作成
 
@@ -51,7 +51,7 @@ Visual Studio を起動します。 **[ファイル]** メニューの **[新規
 
 [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) NuGet パッケージをプロジェクトに追加します。
 
-## <a name="write-some-code-to-send-messages-to-the-event-hub"></a>Event Hub にメッセージを送信するコードの記述
+## <a name="write-some-code-to-send-messages-to-the-event-hub"></a>イベント ハブにメッセージを送信するコードの記述
 
 1. Program.cs ファイルの先頭に次の `using` ステートメントを追加します。
 
@@ -61,7 +61,7 @@ Visual Studio を起動します。 **[ファイル]** メニューの **[新規
     using System.Threading.Tasks;
     ```
 
-2. Event Hubs 接続文字列とエンティティ パス (個別の Event Hub 名) の `Program` クラスに定数を追加します。 中かっこ内のプレースホルダーを、Event Hub の作成時に取得した適切な値に置き換えます。
+2. Event Hubs 接続文字列とエンティティ パス (個別のイベント ハブ名) の `Program` クラスに定数を追加します。 中かっこ内のプレースホルダーを、イベント ハブの作成時に取得した適切な値に置き換えます。
 
     ```csharp
     private static EventHubClient eventHubClient;
@@ -96,7 +96,7 @@ Visual Studio を起動します。 **[ファイル]** メニューの **[新規
 4. 次のように、`Program` クラスに `SendMessagesToEventHub` という名前の新しいメソッドを追加します。
 
     ```csharp
-    // Creates an Event Hub client and sends 100 messages to the event hub.
+    // Creates an event hub client and sends 100 messages to the event hub.
     private static async Task SendMessagesToEventHub(int numMessagesToSend)
     {
         for (var i = 0; i < numMessagesToSend; i++)
@@ -166,7 +166,7 @@ Visual Studio を起動します。 **[ファイル]** メニューの **[新規
                 Console.ReadLine();
             }
 
-            // Creates an Event Hub client and sends 100 messages to the event hub.
+            // Creates an event hub client and sends 100 messages to the event hub.
             private static async Task SendMessagesToEventHub(int numMessagesToSend)
             {
                 for (var i = 0; i < numMessagesToSend; i++)
@@ -193,14 +193,14 @@ Visual Studio を起動します。 **[ファイル]** メニューの **[新規
 
 6. プログラムを実行し、エラーがないことを確認します。
 
-お疲れさまでした。 メッセージを Event Hub に送信しました。
+ご利用ありがとうございます。 メッセージをイベント ハブに送信しました。
 
 ## <a name="next-steps"></a>次のステップ
 Event Hubs の詳細については、次のリンク先を参照してください:
 
 * [Event Hubs からイベントを受信する](event-hubs-dotnet-standard-getstarted-receive-eph.md)
 * [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
-* [Event Hub を作成する](event-hubs-create.md)
+* [イベント ハブの作成](event-hubs-create.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)
 
 [1]: ./media/event-hubs-dotnet-standard-getstarted-send/netcore.png

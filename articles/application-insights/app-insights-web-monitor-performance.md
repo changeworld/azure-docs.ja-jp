@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 11/25/2015
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: d84ab993b1d9489ca9d2edaa1cb9672d9bced899
-ms.openlocfilehash: 7dd1289453fe146b446322570fcb1c0df74b4db2
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: cbdef43381deac957c0e48b7043273c43b032935
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -28,7 +29,7 @@ Application Insights は、Java と ASP.NET の Web アプリケーションと�
 
 クライアント側で、Application Insights は、Web ページと、iOS、Android、Windows ストア アプリを含むさまざまなデバイスからテレメトリを取得できます。
 
-## <a name="a-namesetupaset-up-performance-monitoring"></a><a name="setup"></a>パフォーマンス モニターの設定
+## <a name="setup"></a>パフォーマンス モニターの設定
 プロジェクトに Application Insights を追加していない場合 (つまり、ApplicationInsights.config がない場合)、以下のいずれかの方法で開始します。
 
 * [ASP.NET Web アプリ](app-insights-asp-net.md)
@@ -37,7 +38,7 @@ Application Insights は、Java と ASP.NET の Web アプリケーションと�
 * [J2EE Web アプリ](app-insights-java-get-started.md)
   * [依存関係の監視を追加する](app-insights-java-agent.md)
 
-## <a name="a-nameviewaexploring-performance-metrics"></a><a name="view"></a>パフォーマンス メトリックの監視
+## <a name="view"></a>パフォーマンス メトリックの監視
 [Azure ポータル](https://portal.azure.com)で、アプリケーション用に設定した Application Insights リソースを参照します。 概要ブレードに、基本的なパフォーマンス データが表示されます。
 
 詳細を表示したり、より長い期間の結果を表示したりするには、グラフをクリックします。 たとえば、[要求] タイルをクリックして、次の時間範囲を選択します。
@@ -53,7 +54,7 @@ Application Insights は、Java と ASP.NET の Web アプリケーションと�
 > 
 > 
 
-## <a name="a-namemetricsawhat-does-it-all-mean-performance-tiles-and-reports"></a><a name="metrics"></a>どのような意味がありますか? パフォーマンス タイルとレポート
+## <a name="metrics"></a>どのような意味がありますか? パフォーマンス タイルとレポート
 多様なパフォーマンス メトリックを取得できます。 まず、アプリケーション ブレードに既定で表示されるメトリックから始めます。
 
 ### <a name="requests"></a>要求
@@ -106,15 +107,15 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 
 *[アラートの追加] ボタンが表示されません。* これは、読み取り専用のアクセス許可しかないグループ アカウントなのでしょうか? アカウント管理者にご確認ください。
 
-## <a name="a-namediagnosisadiagnosing-issues"></a><a name="diagnosis"></a>問題の診断
+## <a name="diagnosis"></a>問題の診断
 パフォーマンス上の問題を検出して診断するためのいくつかのヒントを以下に記します。
 
-* [Web テスト][可用性]を設定して、Web サイトが停止した場合や、間違って応答したり、応答速度が低下したりした場合にアラートを送信するようにします。 
+* [Web テスト][availability]を設定して、Web サイトが停止した場合や、間違って応答したり、応答速度が低下したりした場合にアラートを送信するようにします。 
 * 要求の数を他のメトリックと比較し、障害や応答速度の低下が負荷と関連しているかどうかを確認します。
-* コードに[トレース ステートメントを挿入し、そのステートメントを検索する][diagnostic]ことにより、問題を特定しやすくします。
+* コードに[トレース ステートメント][diagnostic]を挿入し、そのステートメントを検索することにより、問題を特定しやすくします。
 
-## <a name="a-namenextanext-steps"></a><a name="next"></a>次のステップ
-[Web テスト][可用性] - 世界中から定期的に Web 要求をアプリケーションに送信します。
+## <a name="next"></a>次のステップ
+[Web テスト][availability] - 世界中から定期的に Web 要求をアプリケーションに送信します。
 
 [診断トレースの収集と検索][diagnostic] - トレース呼び出しを挿入し、結果を詳しく調べて問題を特定します。
 
@@ -122,13 +123,11 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 
 [トラブルシューティング][qna] と Q & A
 
-## <a name="video"></a>ビデオ
-> [!VIDEO https://channel9.msdn.com/Series/ConnectOn-Demand/222/player]
 
 
 <!--Link references-->
 
-[可用性]: app-insights-monitor-web-app-availability.md
+[availability]: app-insights-monitor-web-app-availability.md
 [diagnostic]: app-insights-diagnostic-search.md
 [greenbrown]: app-insights-asp-net.md
 [qna]: app-insights-troubleshoot-faq.md
@@ -136,10 +135,5 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 [start]: app-insights-overview.md
 [usage]: app-insights-web-track-usage.md
 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

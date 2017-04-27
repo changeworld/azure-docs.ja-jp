@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4eff4ebb948f88a93b403d6375c1342918120ac5
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 4c32d3cf70b222e2795df2b94e23da67bf38d72b
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -240,5 +240,5 @@ encrypted_property_1 = EntityProperty(EdmType.STRING, value, encrypt=True)
 ストレージ データを暗号化すると、パフォーマンスのオーバーヘッドが増えることに注意してください。 コンテンツ キーと IV を生成する必要があり、コンテンツ自体を暗号化する必要があります。また、追加のメタデータをフォーマットおよびアップロードする必要もあります。 このオーバーヘッドは、暗号化されるデータの量によって異なります。 開発中に、アプリケーションのパフォーマンスを常にテストすることをお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
-*  [Azure Storage Client Library for Java の PyPi パッケージ](https://pypi.python.org/pypi/azure-storage)
-*  [Azure Storage Client Library for Python のソースコード](https://github.com/Azure/azure-storage-python)
+* [Azure Storage Client Library for Java の PyPi パッケージ](https://pypi.python.org/pypi/azure-storage)
+* [Azure Storage Client Library for Python のソースコード](https://github.com/Azure/azure-storage-python)

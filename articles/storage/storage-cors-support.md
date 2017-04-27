@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 2/22/2017
 ms.author: cbrooks
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: e50e55fb6471add71b3d2ebd477a91ec424a4fab
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 8d189d3ec3e6081dd37b912824f287cd75f39b35
+ms.lasthandoff: 04/06/2017
 
 
 ---

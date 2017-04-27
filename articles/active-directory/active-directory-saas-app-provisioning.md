@@ -15,8 +15,9 @@ ms.workload: identity
 ms.date: 02/09/2016
 ms.author: asmalser
 translationtype: Human Translation
-ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
-ms.openlocfilehash: 1bee9573e23e1c814626d19a3df1eb7ab12486ab
+ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
+ms.openlocfilehash: 39714145f84f5f9229dbf4bbe136103d4d102bed
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -86,23 +87,11 @@ Azure AD は、各アプリケーション ベンダーによって提供され�
 Azure AD とSaaS アプリ間で属性がマップされる方法の詳細については、「 [属性マッピングのカスタマイズ](active-directory-saas-customizing-attribute-mappings.md)」の記事をご覧ください。
 
 ## <a name="list-of-apps-that-support-automated-user-provisioning"></a>自動ユーザー プロビジョニングをサポートするアプリの一覧
-アプリをクリックして、自動プロビジョニングの構成方法に関するチュートリアルをご覧ください。
-
-* [Box](http://go.microsoft.com/fwlink/?LinkId=286016)
-* [Citrix GoToMeeting](http://go.microsoft.com/fwlink/?LinkId=309580)
-* [Concur](http://go.microsoft.com/fwlink/?LinkId=309575)
-* [Docusign](http://go.microsoft.com/fwlink/?LinkId=403254)
-* [Dropbox for Business](http://go.microsoft.com/fwlink/?LinkId=309581)
-* [Google Apps](http://go.microsoft.com/fwlink/?LinkId=309577)
-* [Jive](http://go.microsoft.com/fwlink/?LinkId=309591)
-* [Salesforce](http://go.microsoft.com/fwlink/?LinkId=286017)
-* [Salesforce Sandbox](http://go.microsoft.com/fwlink/?LinkId=327869)
-* [ServiceNow](http://go.microsoft.com/fwlink/?LinkId=309587)
-* [Workday](http://go.microsoft.com/fwlink/?LinkId=690250) (受信のプロビジョニング)
+Azure AD アプリケーション ギャラリーの "おすすめ" アプリのすべてで、自動的なユーザー プロビジョニングがサポートされています。 おすすめアプリの一覧を表示するには、[こちら](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured)をクリックしてください。
 
 自動ユーザー プロビジョニングをサポートするアプリに対して、まず、外部のプログラムでユーザーの作成、保守、削除を自動化するのに必要なエンドポイントを提供する必要があります。 そのため、すべての SaaS アプリがこの機能と互換性があるとは限りません。 これをサポートするアプリでは、Azure AD エンジニア リング チームがこれらのアプリケーションにプロビジョニング コネクタを作成でき、この作業の優先順位は現在と将来の顧客のニーズによって決まります。
 
-他のアプリのプロビジョニングに関するサポートを要求するために Azure AD エンジニア リング チームに問い合わせる場合は、 [Azure Active Directory フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)からメッセージを送信してください。
+他のアプリのプロビジョニングに関するサポートを要求するために Azure AD エンジニア リング チームに問い合わせる場合は、 [Azure Active Directory フィードバック フォーラム](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/category/172035-user-provisioning)からメッセージを送信してください。
 
 ## <a name="related-articles"></a>関連記事
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
@@ -112,10 +101,5 @@ Azure AD とSaaS アプリ間で属性がマップされる方法の詳細につ
 * [SCIM を使用して、Azure Active Directory からアプリケーションへのユーザーとグループの自動プロビジョニングを有効にする](active-directory-scim-provisioning.md)
 * [アカウント プロビジョニング通知](active-directory-saas-account-provisioning-notifications.md)
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/24/2017
+ms.date: 04/05/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: caa4f001871beeb83cc0406bd2f89c5aa026cd97
-ms.lasthandoff: 12/08/2016
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 3155990d977d8b0849c9e0be92db11ad6567cd6e
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -49,7 +49,7 @@ Azure Security Center の主な機能とそのしくみについて説明しま�
 | 対応 | 現在の攻撃を阻止し、将来の攻撃を防止する方法を示します。 |
 
 ## <a name="introductory-walkthrough"></a>入門チュートリアル
- Security Center には [Azure ポータル](https://azure.microsoft.com/features/azure-portal/)からアクセスします。 [ポータルにサインイン](https://portal.azure.com)し、**[参照]** を選択します。次に、**[セキュリティ センター]** オプションまでスクロールするか、以前ポータルのダッシュボードにピン留めした **[セキュリティ センター]** タイルを選択します。
+ Security Center には [Azure ポータル](https://azure.microsoft.com/features/azure-portal/)からアクセスします。 [ポータルにサインイン](https://portal.azure.com)します。 メイン ポータル メニューで、**[セキュリティ センター]** オプションまでスクロールするか、以前ポータルのダッシュボードにピン留めした **[セキュリティ センター]** タイルを選択します。
 
 ![Security tile in Azure portal][1]
 
@@ -83,7 +83,7 @@ Azure サブスクリプションとリソース グループのポリシーは�
 >
 >
 
-**[防止ポリシー]** を選択して (上図参照)、**[防止ポリシー]** ブレードを開きます。 **[推奨事項を表示]** では、サブスクリプション内のリソースのセキュリティのニーズに基づいて、監視と推奨事項の提示を必要とするセキュリティ制御項目を選択できます。
+**[防止ポリシー]** を選択して (上図参照)、**[防止ポリシー]** ブレードを開きます。 **[推奨事項を表示]** では、サブスクリプション内のリソースのセキュリティ ニーズに基づいて、監視するセキュリティ制御と表示する推奨事項を選択できます。
 
 次に、どのリソース グループのポリシー詳細を表示するかを選択します。
 
@@ -115,7 +115,7 @@ Azure サブスクリプションとリソース グループのポリシーは�
 ### <a name="resource-health"></a>リソース ヘルス
 **[リソース セキュリティの正常性]** タイルには、リソースの種類 (VM、Web アプリケーション、その他のリソース) ごとに環境の全体的なセキュリティの状態が表示されます。   
 
-**[リソース セキュリティの正常性]** タイルでリソースの種類を選択すると、特定済みの潜在的なセキュリティ脆弱性の一覧など、詳しい情報が表示されます  (次の例では **[仮想マシン]** が選択されています)。
+**[リソース セキュリティの正常性]** タイルでリソースの種類を選択すると、特定済みの潜在的なセキュリティ脆弱性の一覧など、詳しい情報が表示されます  (次の例では **[コンピューティング]** が選択されています)。
 
 ![Resources health tile][6]
 

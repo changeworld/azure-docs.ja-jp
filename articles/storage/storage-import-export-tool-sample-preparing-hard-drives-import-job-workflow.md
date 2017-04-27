@@ -12,12 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 04/07/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 2e522fabf9be5af7477e556ee0c2bf66f41c28fe
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 78d7ce3bbd3205fd995ba331af08d830097c8156
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -32,10 +32,10 @@ ms.lasthandoff: 03/30/2017
 
 |場所|Description|データ サイズ|
 |--------------|-----------------|-----|
-|H:\Video|一連のビデオ|12 TB|
-|H:\Photo|一連の写真|30 GB|
+|H:\Video\ |一連のビデオ|12 TB|
+|H:\Photo\ |一連の写真|30 GB|
 |K:\Temp\FavoriteMovie.ISO|Blu-Ray™ ディスク イメージ|25 GB|
-|\\\bigshare\john\music|ネットワーク共有上の一連の音楽ファイル|10 GB|
+|\\\bigshare\john\music\|ネットワーク共有上の一連の音楽ファイル|10 GB|
 
 ## <a name="storage-account-destinations"></a>ストレージ アカウント内のインポート先
 
@@ -43,10 +43,10 @@ ms.lasthandoff: 03/30/2017
 
 |から|インポート先の仮想ディレクトリまたは BLOB|
 |------------|-------------------------------------------|
-|H:\Video|https://mystorageaccount.blob.core.windows.net/video|
-|H:\Photo|https://mystorageaccount.blob.core.windows.net/photo|
-|K:\Temp\FavoriteMovie.ISO|https://mystorageaccount.blob.core.windows.net/favorite/FavoriteMovies.ISO|
-|\\\bigshare\john\music|https://mystorageaccount.blob.core.windows.net/music|
+|H:\Video\ |video/|
+|H:\Photo\ |photo/|
+|K:\Temp\FavoriteMovie.ISO|favorite/FavoriteMovies.ISO|
+|\\\bigshare\john\music\ |music|
 
 このマッピングにより、`H:\Video\Drama\GreatMovie.mov` ファイルが `https://mystorageaccount.blob.core.windows.net/video/Drama/GreatMovie.mov` BLOB にインポートされます。
 
@@ -56,27 +56,24 @@ ms.lasthandoff: 03/30/2017
 
 `12TB + 30GB + 25GB + 10GB = 12TB + 65GB`
 
-この例では、8 TB のハード ドライブが 2 つあれば十分です。 ただし、ソース ディレクトリ `H:\Video` には 12 TB のデータがありますが、1 つのハード ドライブの容量は 8 TB しかないため、**dataset.csv** ファイルに次のように指定します。
-
-```
-BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
-H:\Video\,https://mystorageaccount.blob.core.windows.net/video/,BlockBlob,rename,None,H:\mydirectory\properties.xml
-H:\Photo\,https://mystorageaccount.blob.core.windows.net/photo/,BlockBlob,rename,None,H:\mydirectory\properties.xml
-K:\Temp\FavoriteVideo.ISO,https://mystorageaccount.blob.core.windows.net/favorite/FavoriteVideo.ISO,BlockBlob,rename,None,H:\mydirectory\properties.xml
-\\myshare\john\music\,https://mystorageaccount.blob.core.windows.net/music/,BlockBlob,rename,None,H:\mydirectory\properties.xml
-```
-
-## <a name="attach-drives-and-configure-the-job"></a>ドライブを接続してジョブを構成する
-
-両方のディスクをコンピューターに接続し、ボリュームを作成します。 次に、**driveset.csv** ファイルを作成します。
+この例では、8 TB のハード ドライブが 2 つあれば十分です。 ただし、ソース ディレクトリ `H:\Video` には 12 TB のデータがありますが、1 つのハード ドライブの容量は 8 TB しかないため、**driveset.csv** ファイルに次のように指定します。
 
 ```
 DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
 X,Format,SilentMode,Encrypt,
 Y,Format,SilentMode,Encrypt,
 ```
-
 ツールにより、最適化された方法で 2 つのハード ドライブにデータが分配されます。
+
+## <a name="attach-drives-and-configure-the-job"></a>ドライブを接続してジョブを構成する
+両方のディスクをコンピューターに接続し、ボリュームを作成します。 次に、**dataset.csv** ファイルを作成します。
+```
+BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
+H:\Video\,video/,BlockBlob,rename,None,H:\mydirectory\properties.xml
+H:\Photo\,photo/,BlockBlob,rename,None,H:\mydirectory\properties.xml
+K:\Temp\FavoriteVideo.ISO,favorite/FavoriteVideo.ISO,BlockBlob,rename,None,H:\mydirectory\properties.xml
+\\myshare\john\music\,music/,BlockBlob,rename,None,H:\mydirectory\properties.xml
+```
 
 さらに、すべてのファイルの次のメタデータを設定できます。
 

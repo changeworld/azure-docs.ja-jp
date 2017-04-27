@@ -11,12 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2017
+ms.date: 04/02/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 0ca485599d159fd4e7e001b68e4d4b41b6b2043f
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: e1ceaf7baef021f97f70a6b1a5203e178db613db
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -173,6 +173,16 @@ ms.lasthandoff: 03/29/2017
 
 その他のパラメーターを追加することもできます。テンプレートのパラメーター セクションに説明があります。
 
+## <a name="to-get-the-instrumentation-key"></a>インストルメンテーション キーを取得するには
+アプリケーション リソースを作成したら、インストルメンテーション キーが必要になります。 
+
+```PS
+    $resource = Find-AzureRmResource -ResourceNameEquals "<YOUR APP NAME>"
+    $details = Get-AzureRmResource -ResourceId $resource.ResourceId
+    $ikey = $details.Properties.InstrumentationKey
+```
+
+
 <a id="price"></a>
 ## <a name="set-the-price-plan"></a>料金プランの設定
 
@@ -193,17 +203,11 @@ ms.lasthandoff: 03/29/2017
 |2|Enterprise|
 
 * 既定の Basic 料金プランのみを使用する場合は、テンプレートから CurrentBillingFeatures リソースを除外することができます。
+* コンポーネント リソースが作成された後に料金プランを変更する場合は、"microsoft.insights/components" リソースを除外するテンプレートを使用することができます。 また、課金リソースから `dependsOn` ノードを除外します。 
+
+更新された料金プランを確認するには、ブラウザーで [機能と価格設定] ブレードを確認します。 **ブラウザーを最新表示**し、必ず、最新の状態を表示してください。
 
 
-## <a name="to-get-the-instrumentation-key"></a>インストルメンテーション キーを取得するには
-アプリケーション リソースを作成したら、iKey が必要になります。 
-
-```PS
-
-    $resource = Get-AzureRmResource -ResourceId "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<YOUR RESOURCE GROUP>/providers/Microsoft.Insights/components/<YOUR APP NAME>"
-
-    $resource.Properties.InstrumentationKey
-```
 
 ## <a name="add-a-metric-alert"></a>メトリック アラートの追加
 

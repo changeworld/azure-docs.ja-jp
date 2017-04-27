@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 77b8b8960fb0e5e5340b65dae03f95b456832a07
-ms.openlocfilehash: 1765e009438684373c89dc8364efd20dd1b7c84b
-ms.lasthandoff: 01/13/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 12f84f7ee418955f34316686c836a8697be94ea2
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -36,8 +36,8 @@ Azure SQL Database の Elastic Database ジョブ (プレビュー) を使用す
 
    ![コマンド プロンプト](./media/sql-database-elastic-query-getting-started/cmd-prompt.png)
 
-2. コマンド ウィンドウで、「1」を入力し、**Enter** キーを押します。 シャード マップ マネージャーが作成され、2 つのシャードがサーバーに追加されます。 「3」を入力し、**Enter** キーを押します。この操作を&4; 回を繰り返します。 これにより、サンプルのデータ行がシャードに挿入されます。
-3. [Azure ポータル](https://portal.azure.com) に、v12 サーバーにある次の&3; つの新しいデータベースが表示されるはずです。
+2. コマンド ウィンドウで、「1」を入力し、**Enter** キーを押します。 シャード マップ マネージャーが作成され、2 つのシャードがサーバーに追加されます。 「3」を入力し、**Enter** キーを押します。この操作を 4 回を繰り返します。 これにより、サンプルのデータ行がシャードに挿入されます。
+3. [Azure Portal](https://portal.azure.com) に、次の 3 つの新しいデータベースが表示されます。
 
    ![Visual Studio の確認](./media/sql-database-elastic-query-getting-started/portal.png)
 
@@ -259,7 +259,7 @@ Elastic Database ジョブは、ジョブの開始時に適用できるカスタ
 * 初期再試行間隔: 最初の再試行前に待機する間隔。
 * 最大再試行間隔: 使用する再試行間隔の上限。
 * 再試行間隔のバックオフ係数: 次回の再試行間隔の計算に使用される係数。  (初期再試行間隔) * Math.pow((間隔のバックオフ係数), (再試行回数) - 2) という式が使用されます。
-* 最大試行回数:&1; つのジョブ内で実行する最大再試行回数。
+* 最大試行回数: 1 つのジョブ内で実行する最大再試行回数。
 
 既定の実行ポリシーでは、次の値を使用します。
 
@@ -413,7 +413,7 @@ Elastic Database ジョブでは、カスタム データベース ターゲッ�
    ```
 
 ## <a name="create-a-schedule-for-job-execution-using-a-job-trigger"></a>ジョブ トリガーを使用してジョブ実行のスケジュールを作成する
-次の PowerShell スクリプトを使用すると、繰り返し実行されるスケジュールを作成できます。 このスクリプトでは&1; 分間隔を使用していますが、New-AzureSqlJobSchedule は -DayInterval、-HourInterval、-MonthInterval、-WeekInterval の各パラメーターもサポートしています。 1 回だけ実行するスケジュールを作成するには、-OneTime を渡します。
+次の PowerShell スクリプトを使用すると、繰り返し実行されるスケジュールを作成できます。 このスクリプトでは 1 分間隔を使用していますが、New-AzureSqlJobSchedule は -DayInterval、-HourInterval、-MonthInterval、-WeekInterval の各パラメーターもサポートしています。 1 回だけ実行するスケジュールを作成するには、-OneTime を渡します。
 
 新しいスケジュールを作成します。
    ```

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: ae8e531c32b49e121b1c43b15071c138aaacf498
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
+ms.openlocfilehash: ba078a870a3998568170cc197bd6698b97b7fadb
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -29,6 +29,11 @@ ms.lasthandoff: 03/21/2017
 >
 
 Azure CLI は、任意のプラットフォームから Azure インフラストラクチャを管理する優れた方法です。 この記事では、Azure CLI を使用して Azure Redis Cache インスタンスを作成および管理する方法について説明します。
+
+> [!NOTE]
+> この記事は、Azure CLI の以前のバージョンに適用されます。 最新の Azure CLI 2.0 サンプル スクリプトについては、[Azure CLI Redis キャッシュ サンプル](cli-samples.md)に関するページを参照してください。
+> 
+> 
 
 ## <a name="prerequisites"></a>前提条件
 Azure CLI を使用して Azure Redis Cache インスタンスを作成および管理するには、次の手順を実行する必要があります。
@@ -54,7 +59,7 @@ Redis Cache インスタンスを作成および更新する場合には、次�
 | シャード数 |-r、--shard-count |クラスタリングにより Premium クラスター キャッシュに作成するシャードの数。 |
 | 仮想ネットワーク |-v、--virtual-network |VNET でキャッシュをホストする場合に、Redis Cache をデプロイする仮想ネットワークの正確な ARM リソース ID を指定します。 形式の例: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | key type |-t、--key-type |更新するキーの種類です。 有効な値: [Primary、Secondary] |
-| StaticIP |-p, --static-ip <static-ip> |VNET でキャッシュをホストする場合に、キャッシュのサブネットで一意の IP アドレスを指定します。 指定していない場合、サブネットから自動的にアドレスが&1; つ選択されます。 |
+| StaticIP |-p, --static-ip <static-ip> |VNET でキャッシュをホストする場合に、キャッシュのサブネットで一意の IP アドレスを指定します。 指定していない場合、サブネットから自動的にアドレスが 1 つ選択されます。 |
 | サブネット |t、--subnet <subnet> |VNET でキャッシュをホストする場合に、キャッシュをデプロイするサブネットの名前を指定します。 |
 | VirtualNetwork |-v, --virtual-network <virtual-network> |VNET でキャッシュをホストする場合に、Redis Cache をデプロイする仮想ネットワークの正確な ARM リソース ID を指定します。 形式の例: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | サブスクリプション |-s、--subscription |サブスクリプションの識別子です。 |

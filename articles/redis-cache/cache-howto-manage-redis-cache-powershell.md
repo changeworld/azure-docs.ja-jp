@@ -12,11 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 04/03/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 9d76e82b1658c3ea4dd6631bae232d17f375ab33
-ms.openlocfilehash: 61c0fd56aad1cc589138aa02ea43ef315edf9baf
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 715f76377947baaf1a72871cfe291f17e1cc0baf
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -65,7 +66,7 @@ Azure リソース マネージャーで Windows PowerShell を使用するに�
 
     Get-Help New-AzureRmRedisCache -Detailed
 
-### <a name="how-to-connect-to-azure-government-cloud-or-azure-china-cloud"></a>Azure Government Cloud または Azure China Cloud に接続する方法
+### <a name="how-to-connect-to-other-clouds"></a>他のクラウドに接続する方法
 既定では、Azure 環境はグローバル Azure クラウド インスタンスを表す `AzureCloud`です。 別のインスタンスに接続するには、`Add-AzureRmAccount` コマンドと `-Environment` または -`EnvironmentName` コマンド ライン スイッチを使用し、任意の環境または環境名を指定します。
 
 利用可能な環境の一覧を表示するには、 `Get-AzureRmEnvironment` コマンドレットを実行します。
@@ -102,6 +103,23 @@ Azure China Cloud でキャッシュを作成するには、次のいずれか�
 
 Azure China Cloud の詳細については、 [中国の 21Vianet が運営している AzureChinaCloud for Azure](http://www.windowsazure.cn/)に関するページをご覧ください。
 
+### <a name="to-connect-to-microsoft-azure-germany"></a>Microsoft Azure Germany に接続するには
+Microsoft Azure Germany に接続するには、次のいずれかのコマンドを使用します。
+
+    Add-AzureRMAccount -EnvironmentName AzureGermanCloud
+
+
+または
+
+    Add-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureGermanCloud)
+
+Microsoft Azure Germany でキャッシュを作成するには、次のいずれかの場所を使用します。
+
+* ドイツ中部
+* ドイツ北東部
+
+Microsoft Azure Germany の詳細については、「[Microsoft Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)」を参照してください。
+
 ### <a name="properties-used-for-azure-redis-cache-powershell"></a>Azure Redis Cache 用の PowerShell で使用されるプロパティ
 次の表は、Azure PowerShell を使用して Azure Redis Cache インスタンスを作成し、管理するときに一般的に使用されるパラメーターのプロパティと説明を示しています。
 
@@ -125,11 +143,11 @@ Azure China Cloud の詳細については、 [中国の 21Vianet が運営し�
 | プロパティ | Description | 価格レベル |
 | --- | --- | --- |
 | rdb-backup-enabled |[Redis データ永続化](cache-how-to-premium-persistence.md) が有効かどうか。 |Premium のみ |
-| rdb-storage-connection-string | [Redis データ永続化](cache-how-to-premium-persistence.md) |Premium のみ |
-| rdb-backup-frequency | [Redis データ永続化](cache-how-to-premium-persistence.md) |Premium のみ |
+| rdb-storage-connection-string |[Redis データ永続化](cache-how-to-premium-persistence.md) |Premium のみ |
+| rdb-backup-frequency |[Redis データ永続化](cache-how-to-premium-persistence.md) |Premium のみ |
 | maxmemory-reserved |キャッシュ以外のプロセスに [予約済みのメモリ](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) を構成する |Standard と Premium |
 | maxmemory-policy |キャッシュに [削除ポリシー](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) を構成する |すべての価格レベル |
-| notify-keyspace-events | [キースペース通知](cache-configure.md#keyspace-notifications-advanced-settings) |Standard と Premium |
+| notify-keyspace-events |[キースペース通知](cache-configure.md#keyspace-notifications-advanced-settings) |Standard と Premium |
 | hash-max-ziplist-entries |小規模の集計データの種類に [メモリ最適化](http://redis.io/topics/memory-optimization) を構成する |Standard と Premium |
 | hash-max-ziplist-value |小規模の集計データの種類に [メモリ最適化](http://redis.io/topics/memory-optimization) を構成する |Standard と Premium |
 | set-max-intset-entries |小規模の集計データの種類に [メモリ最適化](http://redis.io/topics/memory-optimization) を構成する |Standard と Premium |
@@ -763,15 +781,10 @@ Azure Redis Cache インスタンスを再起動するには、 `Reset-AzureRmRe
 Azure での Windows PowerShell の使用の詳細については、次のリソースをご覧ください。
 
 * [MSDN 上の Azure Redis Cache コマンドレットのドキュメント](https://msdn.microsoft.com/library/azure/mt634513.aspx)
-* [Azure リソース マネージャー コマンドレットに関するページ](http://go.microsoft.com/fwlink/?LinkID=394765): AzureResourceManager モジュールのコマンドレットを使用する方法について説明します。
+* [Azure Resource Manager コマンドレットに関するページ](http://go.microsoft.com/fwlink/?LinkID=394765): Azure Resource Manager モジュールのコマンドレットを使用する方法について説明します。
 * [リソース グループを使用した Azure リソースの管理](../azure-resource-manager/resource-group-template-deploy-portal.md): Azure ポータルでリソース グループを作成して管理する方法について説明します。
 * [Azure blog (Azure のブログ)](http://blogs.msdn.com/windowsazure): Azure の新機能について説明します。
 * [Windows PowerShell blog (Windows PowerShell ブログ)](http://blogs.msdn.com/powershell): Windows PowerShell の新機能について説明します。
 * ["Hey, Scripting Guy!"ブログ](http://blogs.technet.com/b/heyscriptingguy/): 実践で使えるヒントとテクニックを Windows PowerShell コミュニティから得られます。
-
-
-
-
-<!--HONumber=Nov16_HO5-->
 
 

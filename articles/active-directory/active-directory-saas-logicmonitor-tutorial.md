@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/02/2017
+ms.date: 03/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: d87f6068cef7630ca7d9e8929b43449d28d11f78
-ms.openlocfilehash: 9d9074c986c7210e7d7a345ad5d761ac781be3c1
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: d47cb9ae48034c73ccb20bd1872a6b50eebb27d7
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -37,7 +37,7 @@ ms.lasthandoff: 02/17/2017
 
 ![シナリオ](./media/active-directory-saas-logicmonitor-tutorial/IC790045.png "Scenario")
 
-## <a name="enabling-the-application-integration-for-logicmonitor"></a>LogicMonitor のアプリケーション統合の有効化
+## <a name="enable-the-application-integration-for-logicmonitor"></a>LogicMonitor のアプリケーション統合の有効化
 このセクションでは、LogicMonitor のアプリケーション統合を有効にする方法を説明します。
 
 **LogicMonitor のアプリケーション統合を有効にするには、次の手順に従います。**
@@ -62,7 +62,7 @@ ms.lasthandoff: 02/17/2017
    
    ![LogicMonitor](./media/active-directory-saas-logicmonitor-tutorial/IC790047.png "LogicMonitor")
    
-## <a name="configuring-single-sign-on"></a>シングル サインオンの構成
+## <a name="configure-single-sign-on"></a>Configure single sign-on
 
 このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで LogicMonitor に対する認証を行えるようにする方法を説明します。
 
@@ -99,7 +99,7 @@ ms.lasthandoff: 02/17/2017
    
    ![シングル サインオンの構成](./media/active-directory-saas-logicmonitor-tutorial/IC790055.png "Configure Single Sign-On")
    
-## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
+## <a name="configure-user-provisioning"></a>[ユーザー プロビジョニングの構成]
 
 AAD ユーザーがサインインできるように、Azure Active Directory ユーザー名を使用して、LogicMonitor アプリケーションにユーザーをプロビジョニングする必要があります。
 
@@ -122,7 +122,7 @@ AAD ユーザーがサインインできるように、Azure Active Directory �
 >LogicMonitor から提供されている他の LogicMonitor ユーザー アカウント作成ツールや API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。 
 > 
 
-## <a name="assigning-users"></a>ユーザーの割り当て
+## <a name="assign-users"></a>[ユーザーの割り当て]
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
 **ユーザーを LogicMonitor に割り当てるには、次の手順に従います。**

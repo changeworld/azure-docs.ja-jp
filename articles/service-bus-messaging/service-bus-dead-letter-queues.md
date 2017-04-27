@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 02/14/2017
 ms.author: clemensv;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 6d08aacf43126011ed8ad3ce708485a188b67c3b
-ms.openlocfilehash: 4576340ef268a10014124d0d76c70eca941a90c8
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
+ms.openlocfilehash: 2b118f285f822d6cba3a2db4130539e62aabd342
+ms.lasthandoff: 04/04/2017
 
 
 ---
@@ -33,7 +33,7 @@ DLQ は自動的にクリーンアップされないことに注意してくだ�
 ## <a name="moving-messages-to-the-dlq"></a>DLQ にメッセージを移動する
 Service Bus には、メッセージがメッセージング エンジン自体から DLQ にプッシュされる原因となるアクティビティがいくつかあります。 アプリケーションは明示的にメッセージを DLQ にプッシュすることもできます。 
 
-ブローカーによってメッセージが移動され、ブローカーがメッセージに対して内部バージョンの [DeadLetter](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeadLetter_System_String_System_String_) メソッドを呼び出すと、`DeadLetterReason` および `DeadLetterErrorDescription` という&2; つのプロパティが追加されます。
+ブローカーによってメッセージが移動され、ブローカーがメッセージに対して内部バージョンの [DeadLetter](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeadLetter_System_String_System_String_) メソッドを呼び出すと、`DeadLetterReason` および `DeadLetterErrorDescription` という 2 つのプロパティが追加されます。
 
 アプリケーションは `DeadLetterReason` プロパティに対して独自のコードを定義できますが、システムでは以下の値が設定されます。
 
@@ -54,7 +54,7 @@ Service Bus には、メッセージがメッセージング エンジン自体�
 ## <a name="exceeding-timetolive"></a>TimeToLive の超過
 [QueueDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) または [SubscriptionDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription#Microsoft_ServiceBus_Messaging_SubscriptionDescription_EnableDeadLetteringOnMessageExpiration) プロパティが **true** に設定されている場合 (既定値は **false**)、期限が切れるメッセージはすべて DLQ に移動され、`TTLExpiredException` 理由コードが示されます。
 
-期限切れメッセージのみが消去され、メイン キューまたはサブスクリプションに対してプルを実行している&1; つ以上のアクティブな受信者が存在する場合は DLQ に移動される (この動作は仕様によるものです) ことに注意してください。
+期限切れメッセージのみが消去され、メイン キューまたはサブスクリプションに対してプルを実行している 1 つ以上のアクティブな受信者が存在する場合は DLQ に移動される (この動作は仕様によるものです) ことに注意してください。
 
 ## <a name="errors-while-processing-subscription-rules"></a>サブスクリプション ルールの処理中のエラー
 [SubscriptionDescription.EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription#Microsoft_ServiceBus_Messaging_SubscriptionDescription_EnableDeadLetteringOnFilterEvaluationExceptions) プロパティがサブスクリプションに対して有効になっている場合、サブスクリプションの SQL フィルター ルールの実行時に発生したエラーはすべて問題のメッセージと共に DLQ にキャプチャされます。
@@ -68,6 +68,7 @@ Service Bus には、メッセージがメッセージング エンジン自体�
 
 - メッセージが、[連結](service-bus-auto-forwarding.md)されている 3 つのキューまたはトピックを通過する。
 - 送信先キューまたはトピックが無効または削除されている。
+- 送信先キューまたはトピックがエンティティの最大サイズを超えている。
 
 これらの配信不能メッセージを取得するために、[FormatTransferDeadletterPath](/dotnet/api/microsoft.servicebus.messaging.queueclient#Microsoft_ServiceBus_Messaging_QueueClient_FormatTransferDeadLetterPath_System_String_) ユーティリティ メソッドを使用して受信者を作成することができます。
 
