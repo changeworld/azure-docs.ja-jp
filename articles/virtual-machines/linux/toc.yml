@@ -13,20 +13,30 @@
     href: quick-create-portal.md
   - name: "VM の作成 - PowerShell"
     href: quick-create-powershell.md
+- name: "Tutorials (チュートリアル)"
+  items:
+  - name: "1 - VM の作成/管理"
+    href: tutorial-manage-vm.md
+  - name: "2 - ディスクの作成/管理"
+    href: tutorial-manage-disks.md
+  - name: "3 - 構成の自動化"
+    href: tutorial-automate-vm-deployment.md
+  - name: "4 - VM イメージの作成"
+    href: tutorial-custom-images.md
+  - name: "5 - 高可用性 VM"
+    href: tutorial-availability-sets.md
+  - name: "6 - VM スケール セットの作成"
+    href: tutorial-create-vmss.md
+  - name: "7 - VM の負荷分散"
+    href: tutorial-load-balancer.md
+  - name: "8 - ネットワークの管理"
+    href: tutorial-virtual-network.md
 - name: "サンプル"
   items:
   - name: "Azure CLI"
     href: cli-samples.md
   - name: "PowerShell"
     href: powershell-samples.md
-- name: "Tutorials (チュートリアル)"
-  items:
-  - name: "VM の作成と管理"
-    href: tutorial-manage-vm.md
-  - name: "高可用性 VM の負荷分散"
-    href: tutorial-load-balance-nodejs.md
-  - name: "VM スケール セットの作成"
-    href: tutorial-create-vmss.md
 - name: "概念"
   items:
   - name: "Azure での動作保証済みディストリビューション"

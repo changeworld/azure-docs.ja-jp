@@ -105,6 +105,7 @@
 ### [Hive ポリシーを構成する](hdinsight-domain-joined-run-hive.md)
 ## Kafka の使用 (プレビュー)
 ### [Kafka データのレプリケート](hdinsight-apache-kafka-mirroring.md)
+### [Virtual Networks での使用](hdinsight-apache-kafka-connect-vpn-gateway.md)
 ### [Spark での使用](hdinsight-apache-spark-with-kafka.md)
 ### [Storm での使用](hdinsight-apache-storm-with-kafka.md)
 ## 開発

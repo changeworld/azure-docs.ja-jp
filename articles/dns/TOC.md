@@ -1,6 +1,8 @@
 # 概要
 ## [Azure DNS とは](dns-overview.md)
 ## [DNS ゾーンとレコード](dns-zones-records.md)
+## [Azure DNS による DNS 委任](dns-domain-delegation.md)
+## [DNS に関する FAQ](dns-faq.md)
 
 # 作業の開始
 
@@ -10,7 +12,7 @@
 ### [Azure CLI 1.0](dns-getstarted-cli-nodejs.md)
 ### [Azure CLI 2.0](dns-getstarted-cli.md)
 
-## [Azure DNS にドメインを委任する](dns-domain-delegation.md)
+## [Azure DNS にドメインを委任する](dns-delegate-domain-azure-dns.md)
 ## [Web アプリのカスタム DNS レコードの作成](dns-web-sites-custom-domain.md)
 
 # 方法

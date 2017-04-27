@@ -13,9 +13,9 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: e54c45164037fb2817573817e271846a22aa886b
-ms.lasthandoff: 04/13/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 1895c271483ee17ded6022c049d41f87b49f93e3
+ms.lasthandoff: 04/21/2017
 
 ---
 
@@ -108,6 +108,24 @@ IoT Hub を使用して、何十億台ものモノのインターネット資産
                     </div>
                     <div class="cardText">
                         <h3>Node.js で IoT Hub を使ってみる</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/iot-hub/iot-hub-device-sdk-c-intro">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/c.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>C で IoT Hub を使ってみる</h3>
                     </div>
                 </div>
             </div>

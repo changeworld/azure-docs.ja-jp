@@ -1,10 +1,11 @@
 # 概要
+## [Azure AD との統合](active-directory-how-to-integrate.md)
 ## [開発者向けガイド](active-directory-developers-guide.md)
 ## [アプリと Azure Active Directory](active-directory-how-applications-are-added.md)
 ## [開発者向け用語集](active-directory-dev-glossary.md)
-## [AAD Graph API](active-directory-graph-api.md)
+## [Azure AD Graph API](active-directory-graph-api.md)
 # クイック スタート
-## [AAD テナントを取得する方法](active-directory-howto-tenant.md)
+## [Azure AD テナントを取得する方法](active-directory-howto-tenant.md)
 ## [アプリと AAD の統合](active-directory-integrating-applications.md)
 ## モバイルと PC アプリ
 ### [iOS](active-directory-devquickstarts-ios.md)
@@ -23,9 +24,9 @@
 ## Web API
 ### [Web API と .NET](active-directory-devquickstarts-webapi-dotnet.md)
 ### [NodeJS](active-directory-devquickstarts-webapi-nodejs.md)
-## [AAD Graph API](active-directory-graph-api-quickstart.md)
+## [Azure AD Graph API](active-directory-graph-api-quickstart.md)
 # ガイド
-## [認証パターン](active-directory-authentication-scenarios.md#basics-of-authentication-in-azure-ad.md)
+## [認証パターン](active-directory-authentication-scenarios.md#basics-of-authentication-in-azure-ad)
 ### [ネイティブ アプリ](active-directory-authentication-scenarios.md#native-application-to-web-api)
 ### [Web アプリ](active-directory-authentication-scenarios.md#web-application-to-web-api)
 ### [Web API](active-directory-authentication-scenarios.md#web-application-to-web-api)
@@ -45,7 +46,7 @@
 ### [シングル サインオンの SAML プロトコル](active-directory-single-sign-on-protocol-reference.md)
 ### [シングル サインアウトの SAML プロトコル](active-directory-single-sign-out-protocol-reference.md)
 ## Visual Studio の操作
-### [Azure Active Directory と Visual Studio 接続済みサービスの概要 (MVC Projects.md)](vs-active-directory-dotnet-getting-started.md)
+### [Visual Studio 接続済みサービスの概要 (MVC Projects.md)](vs-active-directory-dotnet-getting-started.md)
 ### [認証検出時のエラー](vs-active-directory-error.md)
 ### [WebApi を使って作業を開始する](vs-active-directory-webapi-getting-started.md)
 ### [Web API プロジェクトの変更点](vs-active-directory-webapi-what-happened.md)
