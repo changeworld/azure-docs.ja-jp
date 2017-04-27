@@ -13,12 +13,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2016
+ms.date: 4/4/2016
 ms.author: anandy
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: b4b5e1af6c03e1124de78308cab1dad86d06641e
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 2a64405c0862d09dd487d260a651123eafbcaf99
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -29,6 +29,7 @@ ms.lasthandoff: 03/28/2017
 |:--- |:--- |
 | **AD FS の管理** | |
 | [信頼を修復する](#repairthetrust) |Office 365 とのフェデレーション信頼を修復する方法 |
+| [代替ログイン ID を使用して Azure AD とフェデレーションする](#alternateid) | 代替ログイン ID を使用してフェデレーションを構成する  |
 | [AD FS サーバーを追加する](#addadfsserver) |追加の AD FS サーバーで AD FS ファームを拡張する方法 |
 | [AD FS Web アプリケーション プロキシ サーバーを追加する](#addwapserver) |追加の Web アプリケーション プロキシ (WAP) サーバーで AD FS ファームを拡張する方法 |
 | [フェデレーション ドメインを追加します](#addfeddomain) |フェデレーション ドメインを追加する方法 |
@@ -66,6 +67,22 @@ Azure AD Connect を使用して、AD FS と Azure AD の信頼の現在の正�
 
 > [!NOTE]
 > Azure AD Connect では、自己署名されている証明書に対してのみ修復などのアクションを実行できます。 サード パーティの証明書を Azure AD Connect で修復することはできません。
+
+## 代替 ID を使用して Azure AD とフェデレーションする<a name=alternateid></a>
+オンプレミスのユーザー プリンシパル名 (UPN) とクラウドのユーザー プリンシパル名を同じにすることをお勧めします。 オンプレミスの UPN がルーティング不可能なドメイン (Contoso.local など) を使用している場合、 またはローカル アプリケーションの依存関係のために変更できない場合は、代替ログイン ID を設定することをお勧めします。 代替ログイン ID を使用すると、ユーザーがメールなどの UPN 以外の属性でサインイン可能になるサインイン エクスペリエンスを構成できます。 Azure AD Connect でユーザー プリンシパル名として選択した名前が、Active Directory の userPrincipalName 属性の既定値となります。 他の属性をユーザー プリンシパル名として選択し、AD FS を使用してフェデレーションを行っている場合、Azure AD Connect では、代替ログイン ID の AD FS が構成されます。 別の属性をユーザー プリンシパル名として選択した例を、以下に示します。
+
+![代替 ID 属性の選択](media/active-directory-aadconnect-federation-management/attributeselection.png)
+
+AD FS 用の代替ログイン ID の構成は、主に 2 つの手順で構成されています。
+1. **適切な発行要求セットの構成**: Azure AD 証明書利用者信頼の発行要求規則は、選択された UserPrincipalName 属性をユーザーの代替 ID として使用するように変更されます。
+2. **AD FS の構成での代替ログイン ID の有効化**: AD FS が代替 ID を使用して、適切なフォレスト内でユーザーを検索できるように、AD FS の構成が更新されます。 この構成は、Windows Server 2012 R2 (KB2919355) 以降で動作する AD FS に対応しています。 AD FS サーバーが 2012 R2 である場合は、Azure AD Connect が必要な KB が存在するかどうかを確認します。 KB が検出されない場合、構成の完了後に、次のような警告が表示されます。
+
+    ![2012R2 の KB の欠落を知らせる警告](media/active-directory-aadconnect-federation-management/kbwarning.png)
+
+    KB が欠落している場合、構成を修正するには、必要な [KB2919355](http://go.microsoft.com/fwlink/?LinkID=396590)をインストールしたあと、[[AAD と AD FS 信頼を修復します]](#repairthetrust) を使用して信頼を修復します。
+
+> [!NOTE]
+> 代替 ID および手動構成の手順の詳細については、「[代替ログイン ID の構成](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configuring-alternate-login-id)」を参照してください。
 
 ## AD FS サーバーを追加する <a name=addadfsserver></a>
 

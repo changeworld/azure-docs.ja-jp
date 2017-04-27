@@ -1,53 +1,69 @@
 ---
-title: "初めての Azure 関数の作成 | Microsoft Docs"
-description: "初めての Azure 関数、つまりサーバー不要のアプリケーションを&2; 分以内に作成します。"
+title: "Azure Portal で初めての関数を作成する | Microsoft Docs"
+description: "Azure へようこそ。 Azure Portal で初めての Azure 関数を作成しましょう。"
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: erikre
 editor: 
 tags: 
-ms.assetid: 4a1669e7-233e-4ea2-9b83-b8624f2dbe59
+ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
 ms.service: functions
 ms.devlang: multiple
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/14/2016
+ms.date: 04/10/2017
 ms.author: glenga
+ms.custom: welcome-email
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: a797910e286cd2aacf5a8aa6c509e2b0f5f60276
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 7542280ca6dbe1a8d110155e521228d675c0d994
+ms.lasthandoff: 04/12/2017
 
 
 ---
-# <a name="create-your-first-azure-function"></a>初めての Azure 関数の作成
+# <a name="create-your-first-function-in-the-azure-portal"></a>Azure Portal で初めての関数を作成する
 
-このトピックでは、ポータルで Azure Functions のクイック スタートを使用して、HTTP 要求によって呼び出される簡単な "hello world" 関数を作成する方法について説明します。 Azure Functions の詳細については、「 [Azure Functions の概要](functions-overview.md)」を参照してください。
+このトピックでは、Azure 関数を使用して、HTTP 要求によって呼び出される "hello world" 関数を作成する方法について説明します。 Azure Portal で関数を作成するには、関数のサーバーなしの実行をホストする関数アプリを作成しておく必要があります。
 
-開始する前に、Azure アカウントが必要です。 [無料アカウント](https://azure.microsoft.com/free/)を入手できます。 また、Azure に登録せずに、[Azure Functions を試す](https://azure.microsoft.com/try/app-service/functions/)こともできます。
+このクイック スタートを完了するには、Azure アカウントが必要です。 [無料アカウント](https://azure.microsoft.com/free/)を入手できます。 また、Azure に登録せずに、[Azure Functions を試す](https://azure.microsoft.com/try/app-service/functions/)こともできます。
 
-## <a name="create-a-function-from-the-portal-quickstart"></a>ポータルのクイック スタートから関数を作成する
+## <a name="log-in-to-azure"></a>Azure へのログイン
 
-1. [Azure Functions ポータル](https://functions.azure.com/signin)に移動し、Azure アカウントでサインインします。 
- 
-2. 新しい関数アプリの一意の**名前**を入力するか、自動生成された名前をそのまま使用し、希望の**リージョン**を選んで、**[作成 + 開始]** をクリックします。 有効な名前には、英文字、数字、ハイフンのみを使用できます。 アンダースコア (**_**) は使用できません。
+[Azure ポータル](https://portal.azure.com/)にログインします。
 
-3. **[クイック スタート]** タブで、**[webhook + API]** をクリックし、関数の言語を選択して、**[この関数を作成する]** をクリックします。 選択した言語で、定義済み関数が新しく作成されます。 
+## <a name="create-a-function-app"></a>Function App を作成する
+
+[!INCLUDE [functions-create-function-app-portal](../../includes/functions-create-function-app-portal.md)]
+
+詳しくは、「[Azure Portal から関数アプリを作成する](functions-create-function-app-portal.md)」をご覧ください。
+
+## <a name="create-a-function"></a>関数を作成する
+次の手順では、Azure Functions クイック スタートを使用して、新しい Function App で関数を作成します。
+
+1. **[新規作成]** ボタンをクリックしてから **[webhook + API]** をクリックし、関数の言語を選択して、**[関数を作成する]** をクリックします。 HTTP トリガー関数テンプレートを使用して、選択した言語で関数が作成されます。  
    
     ![](./media/functions-create-first-azure-function/function-app-quickstart-node-webhook.png)
 
-4. (オプション) クイック スタートのこの時点で、ポータルの Azure Functions 機能のクイック ツアーを開始するかどうか選択することができます。 ツアーを完了するかスキップしたら、HTTP 要求を送信して、新しい関数をテストできます。
+関数が作成されたら、HTTP 要求を送信してその関数をテストできます。
 
 ## <a name="test-the-function"></a>関数をテストする
-[!INCLUDE [Functions quickstart test](../../includes/functions-quickstart-test.md)]
 
-## <a name="watch-the-video"></a>ビデオを見る
-次のビデオでは、このチュートリアルの基本的な手順を実行する方法について説明します。 
+関数テンプレートには動作するコードが含まれているため、新しい関数をポータルですぐにテストできます。
 
-> [!VIDEO https://channel9.msdn.com/Series/Windows-Azure-Web-Sites-Tutorials/Create-your-first-Azure-Function-simple/player]
-> 
+1. Function App で、新しい関数をクリックし、テンプレートのコードを確認します。 この関数は、メッセージ本文またはクエリ文字列で *name* 値が渡される HTTP 要求を予期していることがわかります。 関数を実行すると、応答メッセージでこの値が返されます。 この例は、JavaScript 関数です。
+   
+2. **[実行]** をクリックして、関数を実行します。 テスト HTTP 要求によって実行がトリガーされ、情報がログに書き込まれて、"hello..." という応答が **[テスト]** タブの **[出力]** に表示されます。
+ 
+    ![](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
+
+3. **[要求本文]** テキスト ボックスで、*name* プロパティの値を自分の名前に変更して、**[実行]** を再びクリックします。 今度は、**[出力]** の応答に自分の名前が含まれています。   
+
+4. 同じ関数の実行を HTTP テスト ツールまたは別のブラウザー ウィンドウからトリガーするには、**[関数の URL の取得]** をクリックして、要求 URL をコピーし、ツールまたはブラウザーのアドレス バーに貼り付けます。 その URL にクエリ文字列値 `&name=yourname` を追加して、要求を実行します。 同じ情報がログに書き込まれ、同じ文字列が応答メッセージの本文に含まれます。
+
+    ![](./media/functions-create-first-azure-function/function-app-browser-testing.png)
 
 
 ## <a name="next-steps"></a>次のステップ

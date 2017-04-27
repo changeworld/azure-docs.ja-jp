@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2017
+ms.date: 03/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 04a045f41965b093aab71e59cd9b5f328b44de84
-ms.openlocfilehash: eb24c4fe5f382a30acc524065f2ee9e3a27ce94f
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: f0b7010b75c612cb1112d7414bab1617844dfa65
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/03/2017
 People と Azure AD の統合には、次の利点があります。
 
 * People にアクセスする Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントで自動的に People にサインオン (シングル サインオン) できるようにします。
+* ユーザーが自分の Azure AD アカウントで自動的に People にサインオン (シングル サインオン) するように設定できます。
 * Azure クラシック ポータルでアカウントを一元的に管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
@@ -38,23 +38,25 @@ People と Azure AD の統合を構成するには、次のものが必要です
 * Azure サブスクリプション
 * People でのシングル サインオン (SSO) が有効なサブスクリプション
 
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+>[!NOTE]
+>このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 > 
 > 
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、[1 か月の試用版](https://azure.microsoft.com/pricing/free-trial/)を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。 このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
+このチュートリアルの目的は、テスト環境で Azure AD の SSO をテストできるようにすることです。 
+
+このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの People の追加
-2. Azure AD シングル サインオンの構成とテスト
+2. Azure AD SSO の構成とテスト
 
-## <a name="adding-people-from-the-gallery"></a>ギャラリーからの People の追加
+## <a name="add-people-from-the-gallery"></a>ギャラリーからの People の追加
 Azure AD への People の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に People を追加する必要があります。
 
 **ギャラリーから People を追加するには、次の手順に従います。**
@@ -79,8 +81,8 @@ Azure AD への People の統合を構成するには、ギャラリーから管
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-people-tutorial/tutorial_people_02.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、People で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、People で Azure AD の SSO を構成し、テストする方法について説明することです。
 
 People で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
@@ -90,10 +92,10 @@ People で Azure AD のシングル サインオンを構成してテストす�
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
 5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
-このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、People アプリケーションでシングル サインオンを構成することです。
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+このセクションの目的は、Azure クラシック ポータルで Azure AD の SSO を有効にすることと、People アプリケーションでシングル サインオンを構成することです。
 
-**People で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+**People で Azure AD の SSO を構成するには、次の手順に従います。**
 
 1. Azure クラシック ポータルの **People** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
    
@@ -132,9 +134,10 @@ People で Azure AD のシングル サインオンを構成してテストす�
    
     ![Azure AD のシングル サインオン][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。
-ユーザーの一覧で **[Britta Simon]**を選択します。
+
+ * ユーザーの一覧で **[Britta Simon]**を選択します。
 
 ![Azure AD ユーザーの作成][20]
 
@@ -154,9 +157,9 @@ People で Azure AD のシングル サインオンを構成してテストす�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-people-tutorial/create_aaduser_05.png) 
    
-    1. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
-    2. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
-    3. **[次へ]**をクリックします。
+   1. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+   2. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
+   3. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-people-tutorial/create_aaduser_06.png) 
@@ -174,13 +177,13 @@ People で Azure AD のシングル サインオンを構成してテストす�
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-people-tutorial/create_aaduser_08.png) 
    
    1. **[新しいパスワード]** の値を書き留めます。
-   2. ページの下部にある **[完了]**」を参照してください。   
+   2. **[完了]** をクリックします。   
 
-### <a name="creating-a-people-test-user"></a>People テスト ユーザーの作成
+### <a name="create-a-people-test-user"></a>People のテスト ユーザーの作成
 このセクションの目的は、People で Britta Simon というユーザーを作成することです。 People ではジャストインタイム プロビジョニングがサポートされていないため、手動でユーザーを作成する場合、People のサポート チームにお問い合わせください。
 
-### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-このセクションの目的は、Britta Simon に People へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+このセクションの目的は、Britta Simon に People へのアクセスを許可し、このユーザーが Azure の SSO を使用できるようにすることです。
 
 ![ユーザーの割り当て][200] 
 
@@ -200,8 +203,9 @@ People で Azure AD のシングル サインオンを構成してテストす�
    
     ![ユーザーの割り当て][205]
 
-### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
-このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+このセクションの目的は、アクセス パネルを使用して Azure AD の SSO 構成をテストすることです。
+
 アクセス パネルで [People] タイルをクリックすると、自動的に People アプリケーションにサインオンします。
 
 ## <a name="additional-resources"></a>その他のリソース

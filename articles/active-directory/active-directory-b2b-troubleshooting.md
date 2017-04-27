@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 03/14/2017
+ms.date: 04/12/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 66c0084c89b5c7510196142afd27b58953d0dc86
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: ccd7bb3cab65f95c53489de07479c9750e860040
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -27,9 +27,6 @@ ms.lasthandoff: 03/15/2017
 
 以下に、Azure Active Directory (Azure AD) B2B コラボレーションの一般的な問題のいくつかの対処方法を示します。
 
-## <a name="i-cant-create-an-external-user-due-to-an-existing-contact"></a>既存の連絡先が理由で、外部ユーザーを作成できません
-
-招待する外部ユーザーに既存の連絡先オブジェクトがある場合は、競合を解決する (通常は連絡先オブジェクトを削除する) まで、そのユーザーを招待することはできません。 B2B コラボレーションの一般公開までは、競合を手動で解決する必要があります。
 
 ## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>外部ユーザーを追加しましたが、グローバル アドレス帳またはユーザー選択ウィンドウに表示されません
 
@@ -66,7 +63,7 @@ Azure Active Directory を使用している組織のユーザーを招待して
 
 ## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>通常は無効な文字である "\#" は、どのように Azure AD と同期しますか。
 
-"\#" は Azure AD B2B コラボレーションまたは外部ユーザーの UPN の予約文字です (つまり、招待された &lt;user@contoso.com&gt; は &lt;user_contoso.com#EXT@fabrikam.onmicrosoft.com&gt; になります)。そのため、オンプレミスから来る UPN の \# では、Azure Portal へのサインインは許可されません。
+"\#" は Azure AD B2B コラボレーションまたは外部ユーザーの UPN の予約文字です (つまり、招待された user@contoso.com は user_contoso.com#EXT@fabrikam.onmicrosoft.com になります)。そのため、オンプレミスから来る UPN の \# では、Azure Portal へのサインインは許可されません。
 
 ## <a name="i-receive-an-error-when-adding-external-users-to-a-synchronized-group"></a>同期済みグループに外部ユーザーを追加すると、エラー メッセージが表示されます
 
@@ -74,11 +71,11 @@ Azure Active Directory を使用している組織のユーザーを招待して
 
 ## <a name="my-external-user-did-not-receive-an-email-to-redeem"></a>外部ユーザーが招待の電子メールを受信しませんでした
 
-招待されるユーザーは、&lt;Invites@microsoft.com&gt; というアドレスが許可されていることを、ISP に確認するか、スパム フィルターで確認する必要があります。
+招待されるユーザーは、Invites@microsoft.com というアドレスが許可されていることを ISP またはスパム フィルターで確認する必要があります。
 
-## <a name="my-recipient-received-multiple-emails-from-me"></a>受信者が複数の電子メールを受け取りました
+## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>カスタム メッセージが招待メッセージに含まれないことがあります
 
-招待の受信者がアカウントに複数のエイリアスを持っている場合は、2 通の招待を受信することがあります。 このような場合は、利用される最初のリンクでアカウントが作成され、2 番目に利用されるリンクは無効になります。
+招待者がリソース組織 (招待組織とも呼ばれます) の電子メール アドレスを持っていない場合、またはアプリケーションのサービス プリンシパルが招待を送信する場合は、プライバシーに関する法律を順守するために、API は電子メール招待状にカスタム メッセージを含めません。 これがお客様にとって重要なシナリオである場合は、API による招待メール送信を抑制し、任意の電子メール メカニズムを使用して送信できます。 お客様の組織の弁護士に相談して、この方法による電子メールの送信がプライバシーに関する法律に適合しているかどうかを確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 

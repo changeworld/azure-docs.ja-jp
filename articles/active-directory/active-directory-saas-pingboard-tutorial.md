@@ -11,12 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2017
+ms.date: 04/04/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: d9daa59b1f20a76dfe18390ffdab008245387332
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
+ms.openlocfilehash: 008c670a8043da0c67ccefde48d5ef721c75d97c
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -26,8 +26,8 @@ ms.lasthandoff: 03/22/2017
 
 PingBoard と Azure AD の統合には、次の利点があります。
 
-- PingBoard にアクセスする Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで PingBoard に自動的にサインオン (シングル サインオン) できるように、設定が可能です。
+- PingBoard にアクセスする Azure AD ユーザーを制御できます
+- ユーザーが Azure AD アカウントで PingBoard に自動的にサインオン (シングル サインオン) できるように設定できます
 - 1 つの中央サイト (Microsoft Azure 管理ポータル) でアカウントを管理できます
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
@@ -72,11 +72,11 @@ Azure AD への PingBoard の統合を構成するには、ギャラリーから
 
 4. 検索ボックスに、「**PingBoard**」と入力します。
 
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-PingBoard-tutorial/tutorial_PingBoard_search.png)
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pingboard-tutorial/tutorial_pingboard_search.png)
 
 5. 結果ウィンドウで **[PingBoard]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-PingBoard-tutorial/tutorial_PingBoard_addfromgallery.png)
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pingboard-tutorial/tutorial_pingboard_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、PingBoard で Azure AD のシングル サインオンを構成し、テストします。
@@ -87,7 +87,7 @@ Azure AD への PingBoard の統合を構成するには、ギャラリーから
 
 PingBoard で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[PingBoard のテスト ユーザーの作成](#creating-a-pingboard-test-user)** - PingBoard で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -105,11 +105,11 @@ PingBoard で Azure AD のシングル サインオンを構成してテスト�
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![Configure Single Sign-On](./media/active-directory-saas-PingBoard-tutorial/tutorial_PingBoard_samlbase.png)
+    ![[シングル サインオンの構成]](./media/active-directory-saas-pingboard-tutorial/tutorial_pingboard_samlbase.png)
 
 3. **[PingBoard のドメインと URL]** セクションで、**IDP 開始モード**でアプリケーションを構成する場合は、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-PingBoard-tutorial/tutorial_PingBoard_url.png)
+    ![[シングル サインオンの構成]](./media/active-directory-saas-pingboard-tutorial/tutorial_pingboard_url.png)
 
     a. **[識別子]** ボックスに、値として「`http://<entity-id>.pingboard.com/sp`」と入力します。
 
@@ -120,35 +120,35 @@ PingBoard で Azure AD のシングル サインオンを構成してテスト�
 
 4. **SP** 開始モードでアプリケーションを構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-PingBoard-tutorial/tutorial_pingboard_sp_initiated01.png)
+    ![[シングル サインオンの構成]](./media/active-directory-saas-pingboard-tutorial/tutorial_pingboard_sp_initiated01.png)
 
     a. **[サインオン URL]** テキストボックスに、「`http://<sub-domain>.pingboard.com/sign_in`」と入力します。
      
 5. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-PingBoard-tutorial/tutorial_pingboard_certificate.png) 
+    ![[シングル サインオンの構成]](./media/active-directory-saas-pingboard-tutorial/tutorial_pingboard_certificate.png) 
 
 6. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-PingBoard-tutorial/tutorial_general_400.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-pingboard-tutorial/tutorial_general_400.png)
 
-7. PingBoard 側で SSO を構成するには、新しいブラウザー ウィンドウを開き、PingBoard アカウントにログインします。 シングル サインオンを設定するには PingBoard 管理者である必要があります。
+7. PingBoard 側で SSO を構成するには、新しいブラウザー ウィンドウを開き、PingBoard アカウントにログインします。 シングル サインオンを設定するには、PingBoard 管理者である必要があります。
 
 8. 上部のメニューで、**[Apps]、[Integrations]** の順に選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-PingBoard-tutorial/pingboard_integration.png)
+    ![[シングル サインオンの構成]](./media/active-directory-saas-pingboard-tutorial/Pingboard_integration.png)
 
 9.    **[Integrations]** ページで、**[Azure Active Directory]** タイルを探してクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-PingBoard-tutorial/pingboard_aad.png)
+    ![[シングル サインオンの構成]](./media/active-directory-saas-pingboard-tutorial/Pingboard_aad.png)
 
 10. 続いて表示されるモーダルで、**[Configure]** をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-PingBoard-tutorial/pingboard_configure.png)
+    ![[シングル サインオンの構成]](./media/active-directory-saas-pingboard-tutorial/Pingboard_configure.png)
 
 11. 次のページに、"Azure SSO 統合が有効になっている" ことを示す通知が表示されます。 ダウンロードしたメタデータ XML ファイルをメモ帳で開き、コンテンツを **[IDP Metadata]** に貼り付けます。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-PingBoard-tutorial/pingboard_sso_configure.png)
+    ![[シングル サインオンの構成]](./media/active-directory-saas-pingboard-tutorial/Pingboard_sso_configure.png)
 
 12. ファイルが検証されます。すべて正しい場合は、シングル サインオンが有効になります。
 
@@ -161,19 +161,19 @@ PingBoard で Azure AD のシングル サインオンを構成してテスト�
 
 1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-PingBoard-tutorial/create_aaduser_01.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pingboard-tutorial/create_aaduser_01.png) 
 
 2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-PingBoard-tutorial/create_aaduser_02.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pingboard-tutorial/create_aaduser_02.png) 
 
 3. ダイアログの上部にある **[追加]** をクリックして **[ユーザー]** ダイアログを開きます。
  
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-PingBoard-tutorial/create_aaduser_03.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pingboard-tutorial/create_aaduser_03.png) 
 
 4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-PingBoard-tutorial/create_aaduser_04.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pingboard-tutorial/create_aaduser_04.png) 
 
     a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
@@ -194,11 +194,11 @@ PingBoard の場合、プロビジョニングは手動で行います。
 
 2. **[Directory]** ページで **[Add Employee]** をクリックします。
 
-    ![従業員の追加](./media/active-directory-saas-PingBoard-tutorial/create_testuser_add.png)
+    ![従業員の追加](./media/active-directory-saas-pingboard-tutorial/create_testuser_add.png)
 
 3. **[Add Employee]** ダイアログ ページで、次の手順に従います。
 
-    ![[ユーザーの招待]](./media/active-directory-saas-PingBoard-tutorial/create_testuser_name.png)
+    ![[ユーザーの招待]](./media/active-directory-saas-pingboard-tutorial/create_testuser_name.png)
 
     a. **[Full Name]** ボックスに氏名を「Britta Simon」と入力します。
 
@@ -212,7 +212,7 @@ PingBoard の場合、プロビジョニングは手動で行います。
 
 4. ユーザーの追加を確認するための確認画面が表示されます。
     
-    ![確認](./media/active-directory-saas-PingBoard-tutorial/create_testuser_confirm.png)
+    ![確認](./media/active-directory-saas-pingboard-tutorial/create_testuser_confirm.png)
         
     > [!NOTE]
     > Azure Active Directory アカウント所有者がメールを受信し、リンクに従ってアカウントを確認するとそのアカウントがアクティブになります。
@@ -225,13 +225,13 @@ PingBoard の場合、プロビジョニングは手動で行います。
 
 **PingBoard に Britta Simon を割り当てるには、次の手順を実行します。**
 
-1. Microsoft Azure 管理ポータルでアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+1. Azure 管理ポータルでアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
 
     ![ユーザーの割り当て][201] 
 
 2. アプリケーションの一覧で **[PingBoard]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-PingBoard-tutorial/tutorial_pingboard_app.png) 
+    ![[シングル サインオンの構成]](./media/active-directory-saas-pingboard-tutorial/tutorial_pingboard_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -262,15 +262,15 @@ PingBoard の場合、プロビジョニングは手動で行います。
 
 <!--Image references-->
 
-[1]: ./media/active-directory-saas-PingBoard-tutorial/tutorial_general_01.png
-[2]: ./media/active-directory-saas-PingBoard-tutorial/tutorial_general_02.png
-[3]: ./media/active-directory-saas-PingBoard-tutorial/tutorial_general_03.png
-[4]: ./media/active-directory-saas-PingBoard-tutorial/tutorial_general_04.png
+[1]: ./media/active-directory-saas-pingboard-tutorial/tutorial_general_01.png
+[2]: ./media/active-directory-saas-pingboard-tutorial/tutorial_general_02.png
+[3]: ./media/active-directory-saas-pingboard-tutorial/tutorial_general_03.png
+[4]: ./media/active-directory-saas-pingboard-tutorial/tutorial_general_04.png
 
-[100]: ./media/active-directory-saas-PingBoard-tutorial/tutorial_general_100.png
+[100]: ./media/active-directory-saas-pingboard-tutorial/tutorial_general_100.png
 
-[200]: ./media/active-directory-saas-PingBoard-tutorial/tutorial_general_200.png
-[201]: ./media/active-directory-saas-PingBoard-tutorial/tutorial_general_201.png
-[202]: ./media/active-directory-saas-PingBoard-tutorial/tutorial_general_202.png
-[203]: ./media/active-directory-saas-PingBoard-tutorial/tutorial_general_203.png
+[200]: ./media/active-directory-saas-pingboard-tutorial/tutorial_general_200.png
+[201]: ./media/active-directory-saas-pingboard-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-pingboard-tutorial/tutorial_general_202.png
+[203]: ./media/active-directory-saas-pingboard-tutorial/tutorial_general_203.png
 

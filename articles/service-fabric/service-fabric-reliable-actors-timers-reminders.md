@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 02/10/2017
 ms.author: vturecek
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 56b2e13c3bf053175e357a627d45a91d9a9a4ba9
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 3dbcbbab51080cb8e714cff4f9cc0b3a7a463b24
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -24,9 +25,9 @@ ms.openlocfilehash: 56b2e13c3bf053175e357a627d45a91d9a9a4ba9
 アクターは、タイマーまたはアラームを登録することで、自身の定期的な作業をスケジュールできます。 ここでは、タイマーとアラームの使用方法と、これらの違いについて説明します。
 
 ## <a name="actor-timers"></a>アクターのタイマー
-アクターのタイマーは、アクターのランタイムが提供するターンごとの同時実行の保証をコールバック メソッドが考慮するように、.NET タイマーの単純なラッパーを提供します。
+アクターのタイマーは、アクターのランタイムが提供するターンごとの同時実行の保証を、コールバック メソッドが考慮するように、.NET タイマーまたは Java タイマーの単純なラッパーを提供します。
 
-アクターは、`RegisterTimer` と `UnregisterTimer` のメソッドをその基本クラスに使用して、タイマーを登録/登録解除できます。 次の例はタイマー API の使用を示します。 API は、.NET タイマーによく似ています。 この例では、タイマーが期限に達すると、アクターのランタイムが `MoveObject` メソッドを呼び出します。 このメソッドは、ターンごとの同時実行を優先することを保証します。 つまり、このコールバックの実行が完了するまで、他のアクター メソッドやタイマーとアラームのコールバックは進行しません。
+アクターは、その基本クラスに `RegisterTimer`(C#) または `registerTimer`(Java) および `UnregisterTimer`(C#) または `unregisterTimer`(Java) のメソッドを使用して、タイマーを登録/登録解除できます。 次の例はタイマー API の使用を示します。 API は、.NET タイマーまたは Java タイマーによく似ています。 この例では、タイマーが期限に達すると、アクターのランタイムが `MoveObject`(C#) または `moveObject`(Java) メソッドを呼び出します。 このメソッドは、ターンごとの同時実行を優先することを保証します。 つまり、このコールバックの実行が完了するまで、他のアクター メソッドやタイマーとアラームのコールバックは進行しません。
 
 ```csharp
 class VisualObjectActor : Actor, IVisualObject
@@ -68,10 +69,67 @@ class VisualObjectActor : Actor, IVisualObject
     }
 }
 ```
+```Java
+public class VisualObjectActorImpl extends FabricActor implements VisualObjectActor
+{
+    private ActorTimer updateTimer;
+
+    public VisualObjectActorImpl(FabricActorService actorService, ActorId actorId)
+    {
+        super(actorService, actorId);
+    }
+
+    @Override
+    protected CompletableFuture onActivateAsync()
+    {
+        ...
+
+        return this.stateManager()
+                .getOrAddStateAsync(
+                        stateName,
+                        VisualObject.createRandom(
+                                this.getId().toString(),
+                                new Random(this.getId().toString().hashCode())))
+                .thenApply((r) -> {
+                    this.registerTimer(
+                            (o) -> this.moveObject(o),                        // Callback method
+                            "moveObject",
+                            null,                                             // Parameter to pass to the callback method
+                            Duration.ofMillis(10),                            // Amount of time to delay before the callback is invoked
+                            Duration.ofMillis(timerIntervalInMilliSeconds));  // Time interval between invocations of the callback method
+                    return null;
+                });
+    }
+
+    @Override
+    protected CompletableFuture onDeactivateAsync()
+    {
+        if (updateTimer != null)
+        {
+            unregisterTimer(updateTimer);
+        }
+
+        return super.onDeactivateAsync();
+    }
+
+    private CompletableFuture moveObject(Object state)
+    {
+        ...
+        return this.stateManager().getStateAsync(this.stateName).thenCompose(v -> {
+            VisualObject v1 = (VisualObject)v;
+            v1.move();
+            return (CompletableFuture<?>)this.stateManager().setStateAsync(stateName, v1).
+                    thenApply(r -> {
+                      ...
+                      return null;});
+        });
+    }
+}
+```
 
 タイマーの次の期間は、コールバックが実行を完了した後に開始します。 これは、コールバックを実行している間はタイマーが停止し、コールバックが完了したときにタイマーが開始することを意味します。
 
-コールバックが完了すると、アクターのランタイムは、アクターの状態マネージャーに加えられた変更を保存します。 状態の保存中にエラーが発生した場合、そのアクターのオブジェクトは非アクティブ化し、新しいインスタンスがアクティブ化されます。 
+コールバックが完了すると、アクターのランタイムは、アクターの状態マネージャーに加えられた変更を保存します。 状態の保存中にエラーが発生した場合、そのアクターのオブジェクトは非アクティブ化し、新しいインスタンスがアクティブ化されます。
 
 ガベージ コレクションの一部としてアクターが非アクティブ化されると、すべてのタイマーが停止します。 その後は、タイマーのコールバックは呼び出されません。 また、アクターのランタイムは、非アクティブ化の前に実行されていたタイマーについての情報は保持しません。 その後、再アクティブ化したときに必要なタイマーを登録するかどうかはアクターによって異なります。 詳細については、「 [アクターのガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)」のセクションを参照してください。
 
@@ -94,7 +152,22 @@ protected override async Task OnActivateAsync()
 }
 ```
 
-上記の例で、 `"Pay cell phone bill"` はアラーム名です。 これは、アクターがアラームを一意に識別するために使用する文字列です。 `BitConverter.GetBytes(amountInDollars)` は、そのアラームに関連付けられているコンテキストです。 これは、アラームのコールバックの引数、つまり `IRemindable.ReceiveReminderAsync`としてアクターに戻ります。
+```Java
+@Override
+protected CompletableFuture onActivateAsync()
+{
+    String reminderName = "Pay cell phone bill";
+    int amountInDollars = 100;
+
+    ActorReminder reminderRegistration = this.registerReminderAsync(
+            reminderName,
+            state,
+            dueTime,    //The amount of time to delay before firing the reminder
+            period);    //The time interval between firing of reminders
+}
+```
+
+上記の例で、 `"Pay cell phone bill"` はアラーム名です。 これは、アクターがアラームを一意に識別するために使用する文字列です。 `BitConverter.GetBytes(amountInDollars)`(C#) は、そのアラームに関連付けられているコンテキストです。 これは、アラームのコールバックの引数、つまり `IRemindable.ReceiveReminderAsync`(C#) または `Remindable.receiveReminderAsync`(Java) としてアクターに戻ります。
 
 アラームを使用するアクターは、次の例に示すように `IRemindable` インターフェイスを実装する必要があります。
 
@@ -117,30 +190,48 @@ public class ToDoListActor : Actor, IToDoListActor, IRemindable
     }
 }
 ```
+```Java
+public class ToDoListActorImpl extends FabricActor implements ToDoListActor, Remindable
+{
+    public ToDoListActor(FabricActorService actorService, ActorId actorId)
+    {
+        super(actorService, actorId);
+    }
 
-アラームがトリガーされると、Reliable Actors のランタイムがアクターの `ReceiveReminderAsync` メソッドを呼び出します。 アクターは複数のアラームを登録でき、 `ReceiveReminderAsync` メソッドは、そのいずれかのアラームがトリガーされると呼び出されます。 アクターは `ReceiveReminderAsync` メソッドに渡されるアラーム名を使用して、どのアラームがトリガーされたかを判別できます。
+    public CompletableFuture receiveReminderAsync(String reminderName, byte[] context, Duration dueTime, Duration period)
+    {
+        if (reminderName.equals("Pay cell phone bill"))
+        {
+            int amountToPay = ByteBuffer.wrap(context).getInt();
+            System.out.println("Please pay your cell phone bill of " + amountToPay);
+        }
+        return CompletableFuture.completedFuture(true);
+    }
 
-アクターのランタイムは、 `ReceiveReminderAsync` の呼び出しが完了するとアクターの状態を保存します。 状態の保存中にエラーが発生した場合、そのアクターのオブジェクトは非アクティブ化し、新しいインスタンスがアクティブ化されます。 
+```
 
-アラームの登録を解除するには、次の例に示すように、アクターが `UnregisterReminderAsync` メソッドを呼び出します。
+アラームがトリガーされると、Reliable Actors のランタイムがアクターの `ReceiveReminderAsync`(C#) メソッドまたは `receiveReminderAsync`(Java) メソッドを呼び出します。 アクターは複数のアラームを登録でき、そのいずれかのアラームがトリガーされると、`ReceiveReminderAsync`(C#) メソッドまたは `receiveReminderAsync`(Java) メソッドが呼び出されます。 アクターは `ReceiveReminderAsync`(C#) メソッドまたは `receiveReminderAsync`(Java) メソッドに渡されるアラーム名を使用して、どのアラームがトリガーされたかを判別します。
+
+アクターのランタイムは、`ReceiveReminderAsync`(C#) または `receiveReminderAsync`(Java) の呼び出しが完了すると、アクターの状態を保存します。 状態の保存中にエラーが発生した場合、そのアクターのオブジェクトは非アクティブ化し、新しいインスタンスがアクティブ化されます。
+
+アラームの登録を解除するには、次の例に示すように、アクターが `UnregisterReminderAsync`(C#) メソッドまたは `unregisterReminderAsync`(Java) メソッドを呼び出します。
 
 ```csharp
 IActorReminder reminder = GetReminder("Pay cell phone bill");
 Task reminderUnregistration = UnregisterReminderAsync(reminder);
 ```
+```Java
+ActorReminder reminder = getReminder("Pay cell phone bill");
+CompletableFuture reminderUnregistration = unregisterReminderAsync(reminder);
+```
 
-上記の例のように、 `UnregisterReminderAsync` メソッドは、`IActorReminder` インターフェイスを受け入れます。 アクターの基本クラスは、アラーム名で渡すことで、`IActorReminder` インターフェイスを取得できる `GetReminder` メソッドをサポートします。 これにより、アクターが `RegisterReminder` メソッドの呼び出しから返された `IActorReminder` インターフェイスを永続化する必要がなくなるため便利です。
+上記の例のように、`UnregisterReminderAsync`(C#) メソッドまたは `unregisterReminderAsync`(Java) メソッドは、`IActorReminder`(C#) インターフェースまたは `ActorReminder`(Java) インターフェイスを受け入れます。 アクターの基本クラスは、アラーム名で渡すことで、`IActorReminder`(C#) インターフェイスまたは `ActorReminder`(Java) インターフェイスを取得できる `GetReminder`(C#) メソッドまたは `getReminder`(Java) メソッドをサポートします。 これにより、アクターが `RegisterReminder`(C#) メソッドまたは `registerReminder`(Java) メソッドの呼び出しから返された `IActorReminder`(C#) インターフェイスまたは `ActorReminder`(Java) インターフェイスを永続化する必要がなくなるため便利です。
 
 ## <a name="next-steps"></a>次のステップ
 * [アクター イベント](service-fabric-reliable-actors-events.md)
 * [アクターの再入](service-fabric-reliable-actors-reentrancy.md)
 * [アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)
 * [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [コード サンプル](https://github.com/Azure/servicefabric-samples)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+* [C# コード サンプル](https://github.com/Azure/servicefabric-samples)
+* [Java コード サンプル](http://github.com/Azure-Samples/service-fabric-java-getting-started)
 

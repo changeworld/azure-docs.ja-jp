@@ -16,9 +16,9 @@ ms.date: 02/21/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 53fa0876ce1e3e2b2ac47316f37c5a0de2591d41
-ms.openlocfilehash: 404c4c4012eb5b6f8e7acdd7f985009b9f13b9f3
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: bb8d390a6ab045dc418bf80ec4fc218e0a35282b
+ms.lasthandoff: 04/11/2017
 
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Azure のロールベースのアクセス制御のための組み込みロール
@@ -48,6 +48,8 @@ Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、
 | [DNS ゾーン共同作成者](#dns-zone-contributor) |DNS ゾーンとレコードを保護できます |
 | [Document DB アカウントの共同作業者](#documentdb-account-contributor) |DocumentDB アカウントを管理できます |
 | [Intelligent Systems アカウントの共同作業者](#intelligent-systems-account-contributor) |Intelligent Systems アカウントを管理できます |
+| [監視リーダー](#monitoring-reader) |すべての監視データを読み取ることができます |
+| [監視共同作業者](#monitoring-contributor) |監視データを読み取り、監視設定を編集できます |
 | [ネットワークの共同作業者](#network-contributor) |すべてのネットワーク リソースを管理できます |
 | [New Relic APM アカウントの共同作業者](#new-relic-apm-account-contributor) |New Relic Application Performance Management アカウントおよびアプリケーションを管理できます |
 | [所有者](#owner) |アクセス権を含めすべてを管理できます |
@@ -336,6 +338,36 @@ Intelligent Systems アカウントを管理できます
 | Microsoft.Resources/deployments/* |リソース グループ デプロイの作成と管理 |
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
+
+### <a name="monitoring-reader"></a>監視閲覧者
+すべての監視データ (メトリック、ログなど) を読み取ることができます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](/monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles)も参照してください。
+
+| **アクション** |  |
+| --- | --- |
+| */read |機密データを除くあらゆる種類のリソースの読み取り |
+| Microsoft.OperationalInsights/workspaces/search/action |Log Analytics データの検索 |
+| Microsoft.Support/* |サポート チケットの作成と管理 |
+
+### <a name="monitoring-contributor"></a>監視共同作業者
+すべての監視データを読み取り、監視設定を編集できます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](/monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles)も参照してください。
+
+| **アクション** |  |
+| --- | --- |
+| */read |機密データを除くあらゆる種類のリソースの読み取り |
+| Microsoft.Insights/AlertRules/* |アラート ルールの読み取り/書き込み/削除を実行します。 |
+| Microsoft.Insights/components/* |Application Insights コンポーネントの読み取り/書き込み/削除を実行します。 |
+| Microsoft.Insights/DiagnosticSettings/* |診断設定の読み取り/書き込み/削除を実行します。 |
+| Microsoft.Insights/eventtypes/* |サブスクリプションのアクティビティ ログのイベント (管理イベント) を一覧表示します。 このアクセス許可は、アクティビティ ログへのプログラムによるアクセスとポータル アクセスの両方に適用されます。 |
+| Microsoft.Insights/LogDefinitions/* |このアクセス許可は、ポータルを使用してアクティビティ ログにアクセスする必要があるユーザーに必要です。 アクティビティ ログのログのカテゴリを一覧表示します。 |
+| Microsoft.Insights/MetricDefinitions/* |メトリック定義 (リソースの使用可能なメトリックの種類の一覧) を読み取ります。 |
+| Microsoft.Insights/Metrics/* |リソースのメトリックを読み取ります。 |
+| Microsoft.Insights/Register/Action |Microsoft Insights プロバイダーを登録します。 |
+| Microsoft.Insights/webtests/* |Application Insights の Web テストの読み取り/書き込み/削除を行います。 |
+| Microsoft.OperationalInsights/workspaces/intelligencepacks/* |Log Analytics ソリューション パックの読み取り/書き込み/削除を行います。 |
+| Microsoft.OperationalInsights/workspaces/savedSearches/* |Log Analytics によって保存された検索の読み取り/書き込み/削除を行います。 |
+| Microsoft.OperationalInsights/workspaces/search/action |Log Analytics ワークスペースを検索します。 |
+| Microsoft.OperationalInsights/workspaces/sharedKeys/action |Log Analytics ワークスペースのキーを一覧表示します。 |
+| Microsoft.OperationalInsights/workspaces/storageinsightconfigs/* |Log Analytics ストレージ インサイト構成の読み取り/書き込み/削除を行います。 |
 
 ### <a name="network-contributor"></a>ネットワークの共同作業者
 すべてのネットワーク リソースを管理できます

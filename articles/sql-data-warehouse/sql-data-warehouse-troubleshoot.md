@@ -12,12 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 03/03/2017
+ms.custom: manage
+ms.date: 03/30/2017
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 73f10984b7fe2636f5b9f664b831adc910e7ac7a
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: adbd994022f7585676bcbd0c4e4b040e9160c679
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -31,12 +32,13 @@ ms.lasthandoff: 03/04/2017
 | サーバー プリンシパル"MyUserName" が、現在のセキュリティ コンテキストでデータベース "master" にアクセスできません。 ユーザー既定のデータベースを開けません。 ログインできませんでした。 ユーザー 'MyUserName' はログインできませんでした。 (Microsoft SQL Server、エラー: 916) |このエラーは、AAD ユーザーが master データベースに接続しようとするが、マスターにユーザーがいない場合に発生します。  この問題を解決するには、接続時に接続する SQL Data Warehouse を指定するか、master データベースにユーザーを追加します。  詳細については、[セキュリティの概要][Security overview]に関する記事をご覧ください。 |
 | CTAIP エラー |このエラーは、ログインが SQL Data Warehouse データベースではなく、SQL Server マスター データベース上で作成された場合に発生する可能性があります。  このエラーが発生した場合は、[セキュリティの概要][Security overview]に関する記事をご覧ください。  この記事では、マスター上にログインとユーザーを作成する方法と、SQL Data Warehouse データベースにユーザーを作成する方法について説明しています。 |
 | ファイアウォールによってブロックされる |Azure SQL Database は、既知の IP アドレスのみがデータベースにアクセスできるように、サーバーとデータベース レベルのファイアウォールによって保護されています。 ファイアウォールは、既定でセキュリティ保護されています。つまり、接続する前に、IP アドレスまたはアドレス範囲を明示的に有効にする必要があります。  アクセスできるようにファイアウォールを構成するには、[プロビジョニングの手順][Provisioning instructions]に関する記事の、[クライアント IP 用のサーバー ファイアウォール アクセスの構成][Configure server firewall access for your client IP]に関するセクションの手順に従ってください。 |
-| ツールまたはドライバーで接続できない |SQL Data Warehouse では、[SSMS][SSMS]、[SSDT for Visual Studio 2015][SSDT for Visual Studio 2015]、または [sqlcmd][sqlcmd] を使用してデータを照会することをお勧めします。 ドライバーおよび SQL Data Warehouse への接続の詳細については、「[Azure SQL Data Warehouse のドライバー][Drivers for Azure SQL Data Warehouse]」および「[Azure SQL Data Warehouse への接続][Connect to Azure SQL Data Warehouse]」をご覧ください。 |
+| ツールまたはドライバーで接続できない |SQL Data Warehouse では、[SSMS][SSMS]、[SSDT for Visual Studio][SSDT for Visual Studio]、または [sqlcmd][sqlcmd] を使用してデータをクエリすることをお勧めします。 ドライバーおよび SQL Data Warehouse への接続の詳細については、「[Azure SQL Data Warehouse のドライバー][Drivers for Azure SQL Data Warehouse]」および「[Azure SQL Data Warehouse への接続][Connect to Azure SQL Data Warehouse]」をご覧ください。 |
 
 ## <a name="tools"></a>ツール
 | 問題 | 解決策 |
 |:--- |:--- |
 | Visual Studio オブジェクト エクスプローラーに AAD ユーザーが表示されない |これは既知の問題です。  回避策として、ユーザーを [sys.database_principals][sys.database_principals] で表示します。  SQL Data Warehouse での Azure Active Directory の使用方法の詳細については、「[Azure SQL Data Warehouse への認証][Authentication to Azure SQL Data Warehouse]」をご覧ください。 |
+|手動でのスクリプト作成、スクリプト作成ウィザードの使用、または SSMS を介した接続が遅かったり、ハングしたり、エラーが発生したりします。| ユーザーがマスター データベース内に作成されているかどうかを確認してください。 スクリプト作成オプションでも、エンジンのエディションが "Microsoft Azure SQL Data Warehouse Edition" と設定され、エンジンの種類が "Microsoft Azure SQL Database" であるかどうかを確認してください。|
 
 ## <a name="performance"></a>パフォーマンス
 | 問題 | 解決策 |
@@ -54,6 +56,7 @@ ms.lasthandoff: 03/04/2017
 | メッセージ 40847: サーバーが許容データベース トランザクション単位クォータ 45000 を超えることになるため、操作を実行できませんでした。 |作成しようとしているデータベースの [DWU][DWU] を減らすか、[クォータの引き上げを要求][request a quota increase]してください。 |
 | 領域使用率の調査 |システムの領域使用率の詳細については、[テーブルのサイズ][Table sizes]に関するセクションをご覧ください。 |
 | テーブルの管理に関するヘルプ |テーブルの管理については、[テーブルの概要][Overview]に関する記事をご覧ください。  この記事には、[テーブルのデータ型][Data types]、[テーブルの分散][Distribute]、[テーブルのインデックス作成][Index]、[テーブルのパーティション分割][Partition]、[テーブルの統計の管理][Statistics]、[一時テーブル][Temporary]などのより詳細なトピックへのリンクも含まれています。 |
+|Azure Portal で、透過的なデータ暗号化 (TDE) の進行状況バーが更新されません。|[powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabasetransparentdataencryption?view=azurermps-3.7.0) を使用すると、TDE の状態を表示できます。|
 
 ## <a name="polybase"></a>PolyBase
 | 問題 | 解決策 |
@@ -88,7 +91,7 @@ ms.lasthandoff: 03/04/2017
 <!--Article references-->
 [Security overview]: ./sql-data-warehouse-overview-manage-security.md
 [SSMS]: https://msdn.microsoft.com/library/mt238290.aspx
-[SSDT for Visual Studio 2015]: ./sql-data-warehouse-install-visual-studio.md
+[SSDT for Visual Studio]: ./sql-data-warehouse-install-visual-studio.md
 [Drivers for Azure SQL Data Warehouse]: ./sql-data-warehouse-connection-strings.md
 [Connect to Azure SQL Data Warehouse]: ./sql-data-warehouse-connect-overview.md
 [サポート チケットを作成する]: ./sql-data-warehouse-get-started-create-support-ticket.md

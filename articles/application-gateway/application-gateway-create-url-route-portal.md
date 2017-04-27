@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 04/03/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: e92c33b81aa1b69da0336bec1260cbda96c7a72e
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: df167435757b2d9d2d25b58b1b548a811b490eb5
+ms.lasthandoff: 04/04/2017
 
 
 ---
@@ -27,9 +28,9 @@ ms.openlocfilehash: e92c33b81aa1b69da0336bec1260cbda96c7a72e
 > * [Azure ポータル](application-gateway-create-url-route-portal.md)
 > * [Azure Resource Manager の PowerShell](application-gateway-create-url-route-arm-ps.md)
 
-URL パスベースのルーティングを使用すると、HTTP 要求の URL パスに基づいてルートの関連付けを行うことができます。 Application Gateway の URL 一覧に対して構成されたバックエンド プールへのルートがあるかどうかを調べ、定義されたバックエンド プールにネットワーク トラフィックを送信します。 URL ベースのルーティングの一般的な用途は、さまざまな種類のコンテンツに対する要求をさまざまなバックエンド サーバー プールに負荷分散することです。
+URL パスベースのルーティングを使用すると、HTTP 要求の URL パスに基づいてルートの関連付けを行うことができます。 Application Gateway に記載されている URLに対して構成されたバックエンド プールへのルートがあるかどうかを調べて、定義されたバックエンド プールにネットワーク トラフィックを送信します。 URL ベースのルーティングの一般的な用途は、さまざまな種類のコンテンツに対する要求をさまざまなバックエンド サーバー プールに負荷分散することです。
 
-URL ベースのルーティングでは、新しいルールの種類が Application Gateway に導入されています。 Application Gateway には、基本ルールとパスベース ルールという&2; つのルールの種類があります。 基本ルールは、バックエンド プールに対してラウンドロビン サービスを提供します。一方、パスベース ルールはラウンドロビン サービスに加えて、バックエンド プールを選択しながら要求 URL のパス パターンも考慮に入れます。
+URL ベースのルーティングでは、新しいルールの種類が Application Gateway に導入されています。 Application Gateway には、基本ルールとパスベース ルールという 2 種類のルールがあります。 基本ルールは、バックエンド プールに対してラウンドロビン サービスを提供します。一方、パスベース ルールは、ラウンドロビン配信に加えて、バックエンド プールを選択する際に、要求 URL のパス パターンも考慮に入れます。
 
 ## <a name="scenario"></a>シナリオ
 
@@ -38,7 +39,7 @@ URL ベースのルーティングでは、新しいルールの種類が Applic
 
 ![url ルート][scenario]
 
-## <a name="a-namecreateruleacreate-the-path-based-rule"></a><a name="createrule"></a>パスベース ルールを作成する
+## <a name="createrule"></a>パスベース ルールを作成する
 
 パスベース ルールには独自のリスナーが必要です。ルールを作成する前に、使用する利用可能なリスナーがあることを確認します。
 
@@ -54,7 +55,7 @@ URL ベースのルーティングでは、新しいルールの種類が Applic
 
 ### <a name="step-3"></a>手順 3.
 
-**[Add path-based rule (パスベース ルールの追加)]** ブレードには&2; つのセクションがあります。 最初のセクションでは、リスナー、ルールの名前、既定のパス設定を定義しました。 既定のパス設定は、カスタムのパスベース ルートに分類されないルートのための設定です。 **[Add path-based rule (パスベース ルールの追加)]** ブレードの&2; 番目のセクションでは、パスベース ルールそのものを定義します。
+**[Add path-based rule (パスベース ルールの追加)]** ブレードには 2 つのセクションがあります。 最初のセクションでは、リスナー、ルールの名前、既定のパス設定を定義しました。 既定のパス設定は、カスタムのパスベース ルートに分類されないルートのための設定です。 **[Add path-based rule (パスベース ルールの追加)]** ブレードの 2 番目のセクションでは、パスベース ルールそのものを定義します。
 
 **基本設定**
 
@@ -79,6 +80,8 @@ URL ベースのルーティングでは、新しいルールの種類が Applic
 
 ![追加のパスベース ルールの追加][3]
 
+これは、パス ベースのルートを構成します。 Application Gateway に要求が着信すると、要求を検査して、URL のパターンに基づいて適切なバック エンドに要求を送信するため、要求は再書き込みされないことを理解することが重要です。
+
 ## <a name="next-steps"></a>次のステップ
 
 Azure Application Gateway で SSL オフロードを構成する方法を学習するには、 [SSL オフロードの構成](application-gateway-ssl-portal.md)
@@ -87,9 +90,4 @@ Azure Application Gateway で SSL オフロードを構成する方法を学習�
 [2]: ./media/application-gateway-create-url-route-portal/figure2.png
 [3]: ./media/application-gateway-create-url-route-portal/figure3.png
 [scenario]: ./media/application-gateway-create-url-route-portal/scenario.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

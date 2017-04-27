@@ -12,19 +12,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2017
+ms.date: 03/29/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
-ms.openlocfilehash: 80ad4ee51dc03c588e9da6a3277120c685839a2b
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 750dfb2ff8b4d82b2f42518c3873a32d6be0bc20
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="move-data-tofrom-on-premises-oracle-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの Oracle との間でデータを移動する
-この記事では、Azure Data Factory のコピー アクティビティを使って、オンプレミスの Oracle データベースとの間でデータを移動させる方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。 
+この記事では、Azure Data Factory のコピー アクティビティを使って、オンプレミスの Oracle データベースとの間でデータを移動させる方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
 
-サポートされる任意のソース データ ストアから Oracle データベースにデータをコピーしたり、Oracle データベースからサポートされる任意のシンク データ ストアにデータをコピーすることができます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関するページの表をご覧ください。 
+サポートされる任意のソース データ ストアから Oracle データベースにデータをコピーしたり、Oracle データベースからサポートされる任意のシンク データ ストアにデータをコピーすることができます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関するページの表をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 Data Factory は、Data Management Gateway を使用したオンプレミスの Oracle ソースへの接続をサポートします。 [Data Management Gateway](data-factory-data-management-gateway.md) の詳細については、「Data Management Gateway」をご覧ください。また、データを移動するデータ パイプラインにゲートウェイをセットアップするための詳しい手順については、[オンプレミスからクラウドへのデータの移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事をご覧ください。
@@ -35,36 +35,38 @@ Oracle が Azure IaaS VM でホストされている場合でも、ゲートウ�
 > 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、 [ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) に関するセクションをご覧ください。
 
 ## <a name="supported-versions-and-installation"></a>サポートされているバージョンとインストール
-Oracle コネクタでは、2 つのバージョンのドライバーがサポートされます。
+この Oracle コネクタでは、2 つのバージョンのドライバーがサポートされます。
 
-- **Microsoft Driver for Oracle** は、バージョン 2.7 以降の Data Management Gateway にバンドルされています。 このドライバーを使用することを**お勧め**します。 ゲートウェイだけをインストールすれば Oracle に接続することができ、コピーのパフォーマンスが向上することも実感できます。 Oracle Database バージョン 10g リリース 2 以降がサポートされています。
+- **Microsoft driver for Oracle (推奨)**: Data Management Gateway バージョン 2.7 以降では、Microsoft driver for Oracle がゲートウェイと共に自動的にインストールされるため、Oracle への接続を確立するためにドライバーを追加処理する必要がなく、コピーのパフォーマンス向上も実感できます。 Oracle Database バージョン 10g リリース 2 以降がサポートされています。
 
-    > [!NOTE]
+    > [!IMPORTANT]
     > 現在 Microsoft Driver for Oracle でサポートされているのは、Oracle からのデータ コピーだけです。Oracle への書き込みはサポートされていません。 また、Data Managemetn Gateway の [診断] タブのテスト接続機能では、このドライバーはサポートされていません。 代わりに、コピー ウィザードを使用して接続を確認できます。
     >
 
 - **Oracle Data Provider for .NET**: Oracle Data Provider を使用して、Oracle との間でデータをコピーすることもできます。 このコンポーネントは、 [Oracle Data Access Components for Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/)に含まれます。 ゲートウェイがインストールされているコンピューターに、適切なバージョン (32/64 ビット) をインストールしてください。 [Oracle Data Provider .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) は Oracle Database 10g リリース 2 以降にアクセスできます。
 
     "XCopy インストール" を選択した場合は、readme.htm の手順に従います。 UI を備えたインストーラー (XCopy 以外のインストーラー) を選択することをお勧めします。
-    
+
     プロバイダーのインストール後、サービス アプレット (または Data Management Gateway 構成マネージャー) を使用して、コンピューターで Data Management Gateway ホスト サービスを**再開**します。  
+
+コピー ウィザードを使用してコピー パイプラインを作成する場合は、ドライバーのタイプも自動的に決定されます。 ゲートウェイのバージョンが 2.7 以前か、シンクとして Oracle を選択した場合を除き、既定では、Microsoft ドライバーが使用されます。
 
 ## <a name="getting-started"></a>使用の開始
 さまざまなツール/API を使用して、オンプレミスの Oracle データベースとの間でデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
 パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
 
-次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
+次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
-ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。 
+ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
 1. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
-2. コピー操作用の入力データと出力データを表す**データセット**を作成します。 
-3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 
+2. コピー操作用の入力データと出力データを表す**データセット**を作成します。
+3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  オンプレミスの Oracle データベースとの間でデータをコピーするために使用する Data Factory エンティティに関する JSON 定義のサンプルについては、この記事の [JSON の使用例](#json-examples)のセクションをご覧ください。 
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  オンプレミスの Oracle データベースとの間でデータをコピーするために使用する Data Factory エンティティに関する JSON 定義のサンプルについては、この記事の [JSON の使用例](#json-examples)のセクションをご覧ください。
 
-次のセクションでは、Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。 
+次のセクションでは、Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 次の表は、Oracle のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。

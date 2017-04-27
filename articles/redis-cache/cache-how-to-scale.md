@@ -12,24 +12,20 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 04/11/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 65385aa918222837468f88246d0527c22c677ba7
-ms.openlocfilehash: 022916bacd93d283a6495a60ca1afa0c27e34e0c
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 91b3580491a1e3504a3891b66606a9bd18c0638f
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="how-to-scale-azure-redis-cache"></a>Azure Redis Cache のスケーリング方法
-> [!NOTE]
-> Azure Redis Cache のスケーリング機能は現在プレビュー中です。 
-> 
-> 
-
-Azure Redis Cache は、キャッシュ サイズや機能の選択に柔軟性を持たせるために、さまざまなキャッシュ オファリングを用意しています。 キャッシュを作成した後にご利用のアプリケーションの要件が変わった場合は、 **Azure ポータル** の [[価格レベルの変更]](https://portal.azure.com)ブレードを使用して、キャッシュのサイズを変更することができます。
+Azure Redis Cache は、キャッシュ サイズや機能の選択に柔軟性を持たせるために、さまざまなキャッシュ オファリングを用意しています。 キャッシュを作成した後でご利用のアプリケーションの要件が変わった場合、キャッシュのサイズと価格レベルをスケーリングできます。 この記事では、Azure Portal と、Azure PowerShell や Azure CLI などのツールの両方を使用して、キャッシュをスケーリングする方法を説明します。
 
 ## <a name="when-to-scale"></a>スケーリングするタイミング
-Azure Redis Cache の [監視](cache-how-to-monitor.md) 機能を使用して、キャッシュ アプリケーションの正常性とパフォーマンスを監視し、キャッシュのスケーリングが必要であるかどうかを判断できます。 
+Azure Redis Cache の [監視](cache-how-to-monitor.md) 機能を使用して、キャッシュの正常性とパフォーマンスを監視し、キャッシュのスケーリングが必要であるかどうかを判断できます。 
 
 次のメトリックを監視して、スケーリングの必要性の判断に役立てることができます。
 
@@ -38,31 +34,27 @@ Azure Redis Cache の [監視](cache-how-to-monitor.md) 機能を使用して、
 * ネットワーク帯域幅
 * CPU 使用率
 
-現在のキャッシュがアプリケーションの要件を満たさないと判断した場合は、ご利用のアプリケーションにとって適切な価格レベルのキャッシュに変更できます。 使用するキャッシュの価格レベルを決定する方法の詳細については、「 [Redis Cache のサービス内容と適切なサイズの選択](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)」をご覧ください。
+キャッシュがアプリケーションの要件を満たさなくなったと判断した場合は、ご利用のアプリケーションにとって適切な価格レベルのキャッシュにスケーリングできます。 使用するキャッシュの価格レベルを決定する方法の詳細については、「 [Redis Cache のサービス内容と適切なサイズの選択](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)」をご覧ください。
 
 ## <a name="scale-a-cache"></a>キャッシュのスケーリング
-キャッシュをスケーリングするには、[Azure Portal](https://portal.azure.com) で[キャッシュを参照](cache-configure.md#configure-redis-cache-settings)し、**[設定]**、**[価格レベル]** の順にクリックします。
+キャッシュをスケーリングするには、[Azure Portal](https://portal.azure.com) で[キャッシュを参照](cache-configure.md#configure-redis-cache-settings)し、**[リソース] メニュー**の **[スケール]** をクリックします。
 
-**[Redis Cache]** ブレードの **[価格レベル]** 部分をクリックする方法もあります。
+![スケール](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
-![[価格レベル]][redis-cache-pricing-tier-part]
+**[価格レベルの選択]** ブレードから希望の価格レベルを選択し、**[選択]** をクリックします。
 
-**[価格レベル]** ブレードから希望の価格レベルを選択し、**[選択]** をクリックします。
+![[価格レベル] ][redis-cache-pricing-tier-blade]
 
-![[価格レベル]][redis-cache-pricing-tier-blade]
 
-> [!NOTE]
-> 別の価格レベルにスケーリングできますが、次のような制約があります。
-> 
-> * 上位の価格レベルから下位の価格レベルにスケーリングすることはできません。
-> * **Premium** キャッシュから **Standard** または **Basic** キャッシュにスケールすることはできません。
-> * **Standard** キャッシュから **Basic** キャッシュにスケールすることはできません。
-> * **Basic** キャッシュから **Standard** キャッシュにスケールすることはできますが、同時にサイズを変更することはできません。 サイズを変更する必要がある場合、後続のスケーリング操作でサイズを変更できます。
-> * **Basic** キャッシュから直接 **Premium** キャッシュにスケールすることはできません。 1 回のスケーリング操作で **Basic** から **Standard** にスケールし、その後の操作で **Standard** から **Premium** にスケールする必要があります。
-> * **C0 (250 MB)** サイズにそれより大きなサイズからスケールダウンすることはできません。
-> 
-> 
+別の価格レベルにスケーリングできますが、次のような制約があります。
 
+* 上位の価格レベルから下位の価格レベルにスケーリングすることはできません。
+  * **Premium** キャッシュから **Standard** または **Basic** キャッシュにスケールすることはできません。
+  * **Standard** キャッシュから **Basic** キャッシュにスケールすることはできません。
+* **Basic** キャッシュから **Standard** キャッシュにスケールすることはできますが、同時にサイズを変更することはできません。 サイズを変更する必要がある場合、後続のスケーリング操作でサイズを変更できます。
+* **Basic** キャッシュから直接 **Premium** キャッシュにスケールすることはできません。 1 回のスケーリング操作で **Basic** から **Standard** にスケールし、その後の操作で **Standard** から **Premium** にスケールする必要があります。
+* **C0 (250 MB)** サイズにそれより大きなサイズからスケールダウンすることはできません。
+ 
 キャッシュを新しい価格レベルにスケーリングするときに、**[Redis Cache]** ブレードで状態が **[拡大中]** と表示されます。
 
 ![スケーリング][redis-cache-scaling]
@@ -70,7 +62,7 @@ Azure Redis Cache の [監視](cache-how-to-monitor.md) 機能を使用して、
 スケーリングが完了すると、状態が **[拡大中]** から **[実行中]** に変わります。
 
 ## <a name="how-to-automate-a-scaling-operation"></a>スケーリング処理を自動化する方法
-Azure Redis Cache インスタンスは、Azure Portal のほか、Azure Redis Cache PowerShell コマンドレット、Azure CLI、および Microsoft Azure 管理ライブラリ (MAML) を使用してスケーリングすることができます。 
+Azure Portal でキャッシュ インスタンスをスケーリングするほか、PowerShell コマンドレット、Azure CLI、および Microsoft Azure 管理ライブラリ (MAML) を使用してスケーリングすることができます。 
 
 * [PowerShell を使用したスケーリング](#scale-using-powershell)
 * [Azure CLI を使用したスケーリング](#scale-using-azure-cli)
@@ -123,15 +115,14 @@ Azure CLI によるスケーリングの詳細については、「 [既存の R
 * [サポートされていない処理](#operations-that-are-not-supported)
 * [スケーリングにはどのくらいの時間がかかりますか](#how-long-does-scaling-take)
 * [スケーリングが完了したことをどのようにして確認できますか](#how-can-i-tell-when-scaling-is-complete)
-* [この機能がプレビュー段階なのはなぜですか](#why-is-this-feature-in-preview)
 
 ### <a name="can-i-scale-to-from-or-within-a-premium-cache"></a>Premium キャッシュへのスケーリング、Premium キャッシュからのスケーリング、または Premium キャッシュ内でのスケーリングは可能ですか
 * **Premium** キャッシュから **Basic** または **Standard** の価格レベルにスケーリングすることはできません。
 * ある **Premium** キャッシュの価格レベルから別の Premium キャッシュの価格レベルにスケーリングすることはできます。
 * **Basic** キャッシュから直接 **Premium** キャッシュにスケールすることはできません。 まずは 1 回のスケーリング操作で **Basic** から **Standard** にスケーリングし、その後の操作で **Standard** から **Premium** にスケーリングする必要があります。
-* **Premium** キャッシュを作成しているときにクラスタリングを有効にした場合、 [クラスター サイズを変更](cache-how-to-premium-clustering.md#cluster-size)できます。 現時点では、クラスタリングを使わずに作成された既存のキャッシュでクラスタリングを有効にすることはできません。
+* **Premium** キャッシュを作成しているときにクラスタリングを有効にした場合、 [クラスター サイズを変更](cache-how-to-premium-clustering.md#cluster-size)できます。 クラスタリングを有効にせずに作成されたキャッシュの場合、後でクラスタリングを構成することはできません。
   
-  詳細については、「 [Premium Azure Redis Cache のクラスタリングの構成方法](cache-how-to-premium-clustering.md)」をご覧ください。
+  詳細については、「 [Premium Azure Redis Cache のクラスタリングの構成方法](cache-how-to-premium-clustering.md)」を参照してください。
 
 ### <a name="after-scaling-do-i-have-to-change-my-cache-name-or-access-keys"></a>スケーリング後にキャッシュ名やアクセス キーを変更する必要はありますか
 いいえ、スケーリング処理中にキャッシュ名やキーが変更されることはありません。
@@ -166,7 +157,7 @@ Standard および Premium キャッシュには可用性について 99.9% の 
   * **Premium** キャッシュから **Standard** または **Basic** キャッシュにスケールすることはできません。
   * **Standard** キャッシュから **Basic** キャッシュにスケールすることはできません。
 * **Basic** キャッシュから **Standard** キャッシュにスケールすることはできますが、同時にサイズを変更することはできません。 サイズを変更する必要がある場合、後続のスケーリング操作でサイズを変更できます。
-* **Basic** キャッシュから直接 **Premium** キャッシュにスケールすることはできません。 1 回のスケーリング操作で **Basic** から **Standard** にスケールし、その後の操作で **Standard** から **Premium** にスケールする必要があります。
+* **Basic** キャッシュから直接 **Premium** キャッシュにスケールすることはできません。 まずは 1 回のスケーリング操作で **Basic** から **Standard** にスケーリングし、その後の操作で **Standard** から **Premium** にスケーリングする必要があります。
 * **C0 (250 MB)** サイズにそれより大きなサイズからスケールダウンすることはできません。
 
 スケーリング処理でエラーが発生すると、サービスは処理を取り消してキャッシュを元のサイズに戻すように試行します。
@@ -177,21 +168,12 @@ Standard および Premium キャッシュには可用性について 99.9% の 
 ### <a name="how-can-i-tell-when-scaling-is-complete"></a>スケーリングが完了したことをどのようにして確認できますか
 スケーリング処理の進捗は Azure Portal で確認できます。 スケーリングが完了すると、キャッシュの状態が **[実行中]**に変わります。
 
-### <a name="why-is-this-feature-in-preview"></a>この機能がプレビュー段階なのはなぜですか
-私たちはフィードバックを取得する目的でこの機能をリリースしています。 フィードバックに基づき、まもなくこの機能の一般提供を開始する予定です。
-
 <!-- IMAGES -->
-[redis-cache-pricing-tier-part]: ./media/cache-how-to-scale/redis-cache-pricing-tier-part.png
 
 [redis-cache-pricing-tier-blade]: ./media/cache-how-to-scale/redis-cache-pricing-tier-blade.png
 
 [redis-cache-scaling]: ./media/cache-how-to-scale/redis-cache-scaling.png
 
 
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

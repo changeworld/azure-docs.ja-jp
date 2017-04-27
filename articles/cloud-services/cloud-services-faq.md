@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 04/19/2017
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 7287cb1709b7c863cd046edfb995e23455398ec2
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: a0fd75e0797319aecac29b48df75e7a268063e04
+ms.lasthandoff: 04/11/2017
 
 
 ---
@@ -95,5 +95,5 @@ Azure サブスクリプションには、使用できるコアの数に制限�
 
 ## <a name="remote-desktop"></a>リモート デスクトップ
 ### <a name="how-do-i-remote-desktop-when-i-have-an-nsg"></a>NSG がある場合にリモート デスクトップを使用するには
-ポート **20000** を転送するルールを NSG に追加します。
+ポート **3389** および **20000** でのトラフィックを許可するルールを NSG に追加します。  リモート デスクトップはポート **3389** を使用します。  クラウド サービス インスタンスは負荷分散されるため、接続先のインスタンスを直接制御することはできません。  *RemoteForwarder* および *RemoteAccess* エージェントは、RDP トラフィックを管理し、クライアントが RDP クッキーを送信して接続先の個々のインスタンスを指定できるようにします。  *RemoteForwarder* および *RemoteAccess* エージェントでは、ポート **20000*** を開く必要があります。NSG がある場合、これがブロックされる可能性があります。
 

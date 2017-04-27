@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/08/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 9b88b18e32e6a5ef6c0a0195e649fe2862583a0b
-ms.openlocfilehash: c2c50ff6e92cf42a7d309afafb01210c4edabbe0
-ms.lasthandoff: 01/05/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 5082ed8d2f41e72fa979b978e2ac0b0840fdcdac
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -89,7 +89,19 @@ Edge ブラウザーの設定 (お気に入り、リーディング リスト) �
 | **デバイス**: 接続済みの共有プリンター |○ |○ |その他 |
 | **Edge ブラウザー**: リーディング リスト |sync |sync |内部 |
 | **Edge ブラウザー**: お気に入り |sync |sync |内部 |
-| **Edge ブラウザー**: Edge におけるその他すべての設定 |○ |○ | |
+| **Edge ブラウザー**: サイトのトップ <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: 入力された URL <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: お気に入りバーの設定 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: [ホーム] ボタンを表示する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: ポップアップをブロックする <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: ダウンロード時の動作を毎回確認する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: パスワードを保存する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: トラッキング拒否要求を送信する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: フォームへの入力を保存する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: 入力時に検索候補とおすすめサイトを表示する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: cookie の基本設定 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: サイトでデバイスに保護されたメディア ライセンスを保存できるようにする <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: スクリーン リーダー設定 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
 | **ハイ コントラスト**: オン/オフ |sync |○ |簡単操作 |
 | **ハイ コントラスト**: テーマの設定 |sync |○ |簡単操作 |
 | **Internet Explorer**: 開いているタブ (URL とタイトル) |sync |sync |Internet Explorer |
@@ -115,7 +127,7 @@ Edge ブラウザーの設定 (お気に入り、リーディング リスト) �
 | **言語**: CHS QWERTY - 読みの自動修正 |sync |○ |言語 |
 | **言語**: CHS QWERTY - C/E 切り替えキー、Shift |sync |○ |言語 |
 | **言語**: CHS QWERTY - C/E 切り替えキー、Ctrl |sync |○ |言語 |
-| **言語**: CHS WUBI -&1; 文字入力モード |sync |○ |言語 |
+| **言語**: CHS WUBI - 1 文字入力モード |sync |○ |言語 |
 | **言語**: CHS WUBI - candidate の残りのコーディングを表示 |sync |○ |言語 |
 | **言語**: CHS WUBI - 4 コーディングが無効な場合に音を鳴らす |sync |○ |言語 |
 | **言語**: CHT Bopomofo - CJK 統合漢字拡張 A を含める |sync |○ |言語 |
@@ -158,6 +170,9 @@ Edge ブラウザーの設定 (お気に入り、リーディング リスト) �
 | **入力**: 入力時にキー音を鳴らす |sync |backup |言語 |
 | **入力**: タッチ キーボードの個人用設定データ |sync |backup |言語 |
 | **Wi-Fi**: Wi-Fi プロファイル (WPA のみ) |sync |sync |パスワード |
+
+###### <a name="footnote-1"></a>脚注 1
+サポートされる Windows Creators Update の最小 OS バージョン (ビルド 15063)。 
 
 ## <a name="related-topics"></a>関連トピック
 * [Enterprise State Roaming の概要](active-directory-windows-enterprise-state-roaming-overview.md)

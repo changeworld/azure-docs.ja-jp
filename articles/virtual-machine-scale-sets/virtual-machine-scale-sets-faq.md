@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/17/2017
+ms.date: 4/10/2017
 ms.author: negat
 ms.custom: na
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: e207ace4eb5722e08f2020078dfea9129ef1deb8
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 1c7b4c4b7675bfc33e102c9abb4f942a1dd33ad4
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -237,7 +237,7 @@ keyData | はい | String | Base64 でエンコードされた SSH 公開キー�
 > 現時点では、仮想マシン スケール セット API を使用して VM から証明書を削除することはできません。
 >
 
-新しい VM に古い証明書が割り当てられることはありませんが、 証明書が存在していて既にデプロイされていた VM には古い証明書が引き続き存在します。
+新しい VM に古い証明書が割り当てられることはありません。 ただし、証明書が存在していて、既にデプロイされていた VM には古い証明書が引き続き存在します。
  
 ### <a name="can-i-push-certificates-to-the-virtual-machine-scale-set-without-providing-the-password-when-the-certificate-is-in-the-secret-store"></a>証明書がシークレット ストアにあるときに、パスワードを指定せずに証明書を仮想マシン スケール セットにプッシュすることはできますか。
 
@@ -427,7 +427,7 @@ Update-AzureRmVmss -ResourceGroupName $vmssResourceGroup -Name $vmssName -Virtua
                     }
 ```
  
-### <a name="my-virtual-machine-scale-set-extension-is-trying-to-install-something-that-requires-a-reboot-for-example-commandtoexecute-powershellexe--executionpolicy-unrestricted-install-windowsfeature-name-fs-resource-manager-includemanagementtools"></a>仮想マシン スケール セット拡張機能で、再起動を必要とするもの ("commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted Install-WindowsFeature –Name FS-Resource-Manager –IncludeManagementTools" など) をインストールしようとしています。 For example, "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted Install-WindowsFeature –Name FS-Resource-Manager –IncludeManagementTools"
+### <a name="my-virtual-machine-scale-set-extension-is-trying-to-install-something-that-requires-a-reboot-for-example-commandtoexecute-powershellexe--executionpolicy-unrestricted-install-windowsfeature-name-fs-resource-manager-includemanagementtools"></a>私の仮想マシン スケール セット拡張機能が、何か再起動を必要とするものをインストールしようとしています。 たとえば、"commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted Install-WindowsFeature –Name FS-Resource-Manager –IncludeManagementTools" などです。
 
 仮想マシン スケール セット拡張機能で、再起動を必要とするものをインストールしようとしている場合、Azure Automation Desired State Configuration (Automation DSC) 拡張機能を使用してください。 オペレーティング システムが Windows Server 2012 R2 の場合、Azure は Windows Management Framework (WMF) 5.0 セットアップをプルし、再起動して構成を続行します。 
  
@@ -538,6 +538,28 @@ VM 数が 2 台未満の仮想マシン スケール セットを作成する理
 
 
 
+## <a name="patching-and-operations"></a>修正プログラムの適用と操作
+
+### <a name="how-do-i-create-a-scale-set-in-an-existing-resource-group"></a>既存のリソース グループでスケール セットを作成するにはどうすればよいですか。
+
+Azure Portal で既存のリソース グループにスケール セットを作成することはできませんが、Azure Resource Manager テンプレートからスケール セットを展開するときに、既存のリソース グループを指定できます。 Azure PowerShell または CLI を使用してスケール セットを作成するときに、既存のリソース グループを指定することもできます。
+
+### <a name="can-we-move-a-scale-set-to-another-resource-group"></a>別のリソース グループにスケール セットを移動できますか。
+
+はい。スケール セット リソースは、新しいサブスクリプションまたはリソース グループに移動できます。
+
+### <a name="how-to-i-update-my-virtual-machine-scale-set-to-a-new-image-how-do-i-manage-patching"></a>仮想マシン スケール セットを新しいイメージに更新する方法を教えてください。 パッチはどのように管理するのでしょうか。
+
+仮想マシン スケール セットを新しいイメージに更新し、パッチの適用を管理する方法については、「[仮想マシン スケール セットのアップグレード](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set)」を参照してください。
+
+### <a name="can-i-use-the-reimage-operation-to-reset-a-vm-without-changing-the-image-that-is-i-want-reset-a-vm-to-factory-settings-rather-than-to-a-new-image"></a>イメージを変更せずに、再イメージ化操作を使用して VM をリセットすることはできますか  (つまり、新しいイメージにではなく、出荷時の設定に VM をリセットできますか)。
+
+はい。イメージを変更せずに、再イメージ化操作を使用して VM をリセットできます。 ただし、`version = latest` が指定されたプラットフォーム イメージを仮想マシン スケール セットが参照している場合、`reimage` を呼び出すと、VM が新しい OS イメージに更新される可能性があります。
+
+詳細については、[仮想マシン スケール セットのすべての VM の管理](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-all-vms-in-a-set)に関するページを参照してください。
+
+
+
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 ### <a name="how-do-i-turn-on-boot-diagnostics"></a>ブート診断を有効にするにはどうすればよいですか。
@@ -562,21 +584,6 @@ VM 数が 2 台未満の仮想マシン スケール セットを作成する理
   }
 ```
 
- 
-
-## <a name="updates"></a>更新プログラム
-
-### <a name="how-to-i-update-my-virtual-machine-scale-set-to-a-new-image-how-do-i-manage-patching"></a>仮想マシン スケール セットを新しいイメージに更新する方法を教えてください。 パッチはどのように管理するのでしょうか。
-
-仮想マシン スケール セットを新しいイメージに更新し、パッチの適用を管理する方法については、「[仮想マシン スケール セットのアップグレード](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set)」を参照してください。
-
-### <a name="can-i-use-the-reimage-operation-to-reset-a-vm-without-changing-the-image-that-is-i-want-reset-a-vm-to-factory-settings-rather-than-to-a-new-image"></a>イメージを変更せずに、再イメージ化操作を使用して VM をリセットすることはできますか  (つまり、新しいイメージにではなく、出荷時の設定に VM をリセットできますか)。
-
-はい。イメージを変更せずに、再イメージ化操作を使用して VM をリセットできます。 ただし、`version = latest` が指定されたプラットフォーム イメージを仮想マシン スケール セットが参照している場合、`reimage` を呼び出すと、VM が新しい OS イメージに更新される可能性があります。
-
-詳細については、[仮想マシン スケール セットのすべての VM の管理](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-all-vms-in-a-set)に関するページを参照してください。
-
-
 
 ## <a name="virtual-machine-properties"></a>仮想マシン プロパティ
 
@@ -592,7 +599,7 @@ VM 数が 2 台未満の仮想マシン スケール セットを作成する理
 
 ### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>仮想マシン スケール セット VM のマシン名や VM ID に欠落があるのはなぜですか  (0、1、3... など)?
 
-仮想マシン スケール セット VM のマシン名や VM ID に欠落があるのは、仮想マシン スケール セットの**過剰プロビジョニング** プロパティが既定値の **true** に設定されているためです。 過剰プロビジョニングが **true** の場合、要求した数よりも多くの VM が作成され、 その後、余分な VM が削除されます。 この場合、連続した名前付けと連続した NAT (ネットワーク アドレス変換) 規則が失われる代わりに、デプロイの信頼性が向上します。 
+仮想マシン スケール セット VM のマシン名や VM ID に欠落があるのは、仮想マシン スケール セットの**過剰プロビジョニング** プロパティが既定値の **true** に設定されているためです。 過剰プロビジョニングが **true** の場合、要求した数よりも多くの VM が作成されます。 その後、余分な VM が削除されます。 この場合、連続した名前付けと連続した NAT (ネットワーク アドレス変換) 規則が失われる代わりに、デプロイの信頼性が向上します。 
 
 このプロパティは **false** に設定することができます。 仮想マシン スケール セットの規模が小さい場合、デプロイの信頼性はさほど変わりません。
 

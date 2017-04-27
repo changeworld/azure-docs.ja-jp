@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 09/06/2016
+ms.date: 04/11/2017
 ms.author: rclaus
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 4f6f8dd109a1f0d395782ba73fd425c7a6ccf0eb
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 1a808a83a8ed1162d57f7c5a49e34b2e3be50833
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -29,18 +29,13 @@ ms.lasthandoff: 03/27/2017
 * Oracle JDK 仮想マシンのイメージ
 
 ## <a name="oracle-database-virtual-machine-images"></a>Oracle データベース仮想マシン イメージ
-### <a name="clustering-rac-is-not-supported"></a>クラスタリング (RAC) はサポートされていません
-現在、Azure では Oracle Database の Oracle Real Application Clusters (RAC) はサポートされていません。 Oracle Database のスタンドアロン インスタンスのみ使用可能です。 これは、Azure では現在のところ、複数の仮想マシンインスタンス間での仮想ディスク共有 (読み取り/書き込み) がサポートされていないためです。 マルチキャスト UDP もサポートされていません。
 
 ### <a name="no-static-internal-ip"></a>静的内部 IP はありません
 Azure は各仮想マシンに内部 IP アドレスを割り当てます。 仮想マシンが仮想ネットワークに含まれていない限り、その仮想マシンの IP アドレスは動的であり、仮想マシンを再起動した後に変更される可能性があります。 Oracle データベースは静的な IP アドレスを要求するため、問題が生じることがあります。 こういった問題を避けるために、仮想マシンを Azure Virtual Network へ追加することを検討してください。 詳しくは、[Virtual Network](https://azure.microsoft.com/documentation/services/virtual-network/) と [Azure で仮想ネットワークを作成する方法](../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md)に関する記事をご覧ください。
 
 ### <a name="attached-disk-configuration-options"></a>接続ディスクの設定オプション
-仮想マシンのオペレーティングシステムのディスク上、またはデータ ディスクとも呼ばれる接続ディスクのいずれかにデータファイルを配置することができます。 接続ディスクはオペレーティング システムのディスクよりもパフォーマンスに優れ、サイズを柔軟に構築できます。 オペレーティング システム ディスクは、10 ギガバイト (GB) 以下のデータベースにしか推奨できない場合があります。
 
-接続ディスクは Azure Blob Storage サービスを利用します。 各ディスクは理論上、毎秒最大約 500 回 の入出力の操作 (IOPS) が可能です。 最初は接続ディスクのパフォーマンスが最適でない場合があります。IOPS パフォーマンスは約 60 ～ 90 分の連続操作 「バーンイン」期間の後に大幅に改善される可能性があります。 その後、ディスクのアイドル状態が続く場合、もう一度連続操作 (バーンイン期間) するまで IOPS パフォーマンスは低下する可能性があります。 つまり、ディスクがアクティブであるほど、最適な IOPS パフォーマンスに近づく可能性が高くなります。
-
-最も簡単な方法は 1 つのディスクを仮想マシンに接続し、そのディスクにデータベース ファイルを置くことですが、その方法はパフォーマンスの観点では最も制約があります。 代わりに、多くの場合、複数の接続ディスクを使い、それらの間でデータベースのデータを分散させ、Oracle Automatic Storage Management (ASM) を利用すると、効果的に IOPS パフォーマンスを改善できます 詳しくは、[Oracle Automatic Storage の概要に関するページ](http://www.oracle.com/technetwork/database/index-100339.html)をご覧ください。 オペレーティング システム レベルで複数のディスクのストライピングを使用することができますが、IOPS パフォーマンスの向上については不明なため、推奨されてはいません。
+接続ディスクは Azure Blob Storage サービスを利用します。 各 Standard ディスクは理論上、毎秒最大約 500 回 の入出力の操作 (IOPS) が可能です。 Premium ディスク オファリングでは、高パフォーマンスのデータベース ワークロードが優先され、ディスクあたり最大 5000 IOps を実現できます。 パフォーマンスの要件を満たしている場合は、1 つのディスクを使用できます。一方、複数の接続ディスクを使い、それらの間でデータベースのデータを分散させ、Oracle Automatic Storage Management (ASM) を利用すると、効果的に IOPS パフォーマンスを改善できます。 詳しくは、[Oracle Automatic Storage の概要に関するページ](http://www.oracle.com/technetwork/database/index-100339.html)をご覧ください。 オペレーティング システム レベルで複数のディスクのストライピングを使用できますが、どちらのルートを使用しても、それぞれトレードオフがあります。 
 
 読み込み操作、またはデータベースへの書き込み操作のいずれを重視するかに基づいて、複数のディスクを接続する場合に向けて 2 つの手法を検討してください。
 
@@ -48,14 +43,16 @@ Azure は各仮想マシンに内部 IP アドレスを割り当てます。 仮
     ![](media/mysql-2008r2/image2.png)
 
 > [!IMPORTANT]
-> 書き込み性能と読み取り性能のトレードオフは個別で評価します。 これを使用すると、実際の結果が変わる可能性があります。
+> 書き込み性能と読み取り性能のトレードオフは個別で評価します。 これを使用すると、実際の結果が変わる可能性があるため、適切なテストを実行してください。 ASM では、書き込み操作が優先され、オペレーティング システム ディスクのストライピングでは、読み取り操作が優先されます。
 > 
-> 
+
+### <a name="clustering-rac-is-not-supported"></a>クラスタリング (RAC) はサポートされていません
+Oracle Real Application クラスター (RAC) では、オンプレミスのマルチノード クラスタ構成の単一ノードで発生する障害を軽減するように設計されています。  このクラスタは、Microsoft Azure のような超大規模パブリック クラウド環境では機能しない、2 つのオンプレミスのテクノロジに依存しています。それがネットワーク マルチキャストと共有ディスクです。 Oracle DB の geo 冗長マルチノード構成を設計する場合は、Oracle DataGuard を使用して、データ レプリケーションを実装する必要があります。
 
 ### <a name="high-availability-and-disaster-recovery-considerations"></a>高可用性と障害復旧に関する考慮
 Azure 仮想マシンで Oracle データベースを使用する場合、いかなるダウンタイムも回避するために高可用性と障害復旧ソリューションを実装する責任があります。 また、ご自身のデータやアプリケーションをバックアップする責任も負うことになります。
 
-Azure の Oracle Database Enterprise Edition (RAC なし) では、[Data Guard, Active Data Guard](http://www.oracle.com/technetwork/articles/oem/dataguardoverview-083155.html) または [Oracle Golden Gate](http://www.oracle.com/technetwork/middleware/goldengate) と 2 つの異なる仮想マシンの 2 つのデータベースを使用することで高可用性と障害復旧を実現できます。 両方の仮想マシンを同じ[クラウド サービス](../../linux/classic/connect-vms.md)と同じ[仮想ネットワーク](https://azure.microsoft.com/documentation/services/virtual-network/)に置き、プライベートの固定 IP アドレスで互いにアクセスできるようにする必要があります。  さらに、Azure が仮想マシンを個別のフォールト ドメインやアップグレード ドメインに配置できるように、仮想マシンを同じ[可用性セット](../../virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に配置することをお勧めします。 同じクラウド サービス上にある仮想マシンのみを、同じ可用性セットに含めることができます。 それぞれの仮想マシンには、少なくとも 2 GB のメモリと 5 GB のディスク領域が必要です。
+Azure の Oracle Database Enterprise Edition (RAC なし) では、[Data Guard, Active Data Guard](http://www.oracle.com/technetwork/articles/oem/dataguardoverview-083155.html) または [Oracle Golden Gate](http://www.oracle.com/technetwork/middleware/goldengate) と 2 つの異なる仮想マシンの 2 つのデータベースを使用することで高可用性と障害復旧を実現できます。 両方の仮想マシンを同じ[仮想ネットワーク](https://azure.microsoft.com/documentation/services/virtual-network/)に置き、プライベートの固定 IP アドレスで互いにアクセスできるようにする必要があります。  さらに、Azure が仮想マシンを個別のフォールト ドメインやアップグレード ドメインに配置できるように、仮想マシンを同じ[可用性セット](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に配置することをお勧めします。 それぞれの仮想マシンには、少なくとも 2 GB のメモリと 5 GB のディスク領域が必要です。
 
 Oracle Data Guard では、1 つの仮想マシンにプライマリ データベース、別の仮想マシンにセカンダリ データベース (待機)、そしてその間に一方向のレプリケーションセットを配置することで高可用性を実現できます。 データベースのコピーへのアクセスを結果として読み込みます。 Oracle GoldenGate では、2 つのデータベース間に双方向レプリケーションを構成することができます。 これらのツールを使用してデータベース用に高可用性ソリューションを設定する方法については、Oracle の Web サイトにある [Active Data Guard](http://www.oracle.com/technetwork/database/features/availability/data-guard-documentation-152848.html) および [GoldenGate](http://docs.oracle.com/goldengate/1212/gg-winux/index.html) に関する文書をご覧ください。 データベースのコピーに読み込み/書き込みアクセスをする必要がある場合は、 [Oracle Active Data Guard](http://www.oracle.com/uk/products/database/options/active-data-guard/overview/index.html)もご利用いただけます。
 

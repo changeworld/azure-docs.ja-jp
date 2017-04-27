@@ -16,9 +16,9 @@ ms.date: 03/02/2017
 ms.author: robb
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: c9065c3346c924ea21060c9e7e5b297a3cb26941
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 76c8feb077cca27dc96f43e708cdef4fbb0f824c
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -44,9 +44,9 @@ ms.lasthandoff: 03/09/2017
 アラートは、以下の値とイベントに基づいて受け取ることができます。
 
 * **メトリック値**: アラートは、指定したメトリックの値が、割り当てたしきい値をいずれかの方向で超えたときにトリガーされます。 つまり、条件を最初に満たしたときと、後でその条件を満たさなくなったときの両方でトリガーされます。 Azure Monitor がサポートするメトリックは増え続けています。使用できるメトリックの一覧については、[Azure Monitor でサポートされているメトリックの一覧](monitoring-supported-metrics.md)を参照してください。
-* **アクティビティ ログ イベント**: アラートは、すべてのイベントに対して、または発生したイベントが特定の数に達したときにのみトリガーされます。
+* **アクティビティ ログ イベント**: このアラートは、リソースに特定のイベントが発生したとき、またはサービス通知がサブスクリプションにポストされたときにトリガーされます。
 
-## <a name="what-can-alerts-do"></a>アラートでできること
+## <a name="what-can-metric-alerts-do"></a>メトリック アラートでできること
 次のアクションを実行するようにアラートを構成することができます。
 
 * メール通知をサービス管理者、共同管理者、または指定した追加のメール アドレスに送信する。
@@ -56,12 +56,27 @@ ms.lasthandoff: 03/09/2017
     - Azure Logic App
     - サードパーティのサービス
 
+## <a name="what-can-activity-log-alerts-do"></a>アクティビティ ログ アラートでできること
+次のアクションを実行するようにアラートを構成することができます。
+* サブスクリプションの下のリソースの 1 つで特定のイベントが発生したときにトリガーする
+* サービス通知がサブスクリプションにポストされたときにトリガーする
+* アクション グループのメンバーに警告する方法
+    * sms
+    * 電子メール
+    * Webhook
 
 ## <a name="next-steps"></a>次のステップ
 アラート ルールとその構成方法については、以下をご覧ください。
 
-* [Azure ポータル](insights-alerts-portal.md)
-* [PowerShell](insights-alerts-powershell.md)
-* [コマンド ライン インターフェイス (CLI)](insights-alerts-command-line-interface.md)
-* [Azure 監視 REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* [メトリック](monitoring-overview-metrics.md)の詳細
+* [Azure Portal からのメトリック アラートク](insights-alerts-portal.md)の構成
+* [メトリック アラート PowerShell](insights-alerts-powershell.md) の構成
+* [メトリック アラート コマンドライン インターフェイス (CLI)](insights-alerts-command-line-interface.md) の構成
+* [メトリック アラート Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx) の構成
+* [アクティビティ ログ](monitoring-overview-activity-logs.md) の詳細
+* [Azure Portal からのアクティビティ ログ アラート](monitoring-activity-log-alerts.md)の構成
+* [Resource Manager からのアクティビティ ログ アラート](monitoring-create-activity-log-alerts-with-resource-manager-template.md)の構成
+* [アクティビティ ログ アラート webhook スキーマ](monitoring-activity-log-alerts-webhook.md) の確認
+* [サービス通知](monitoring-service-notifications.md) の詳細
+* [アクション グループ](monitoring-action-groups.md)の詳細については、こちらをご覧ください。
 

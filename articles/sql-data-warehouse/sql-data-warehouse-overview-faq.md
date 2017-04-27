@@ -12,12 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: overview
 ms.date: 3/1/2017
 ms.author: elbutter
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 7a752bfb349d2730537538f6856fe431204d3329
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 49cbfca4f733356548b6c8f491fead9e2d7fdf5c
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -33,7 +34,7 @@ A. SQL DW は、TDE や監査など、データを保護するための複数の
 Q. SQL DW が準拠している法律またはビジネスに関する標準は、どこで確認できますか。
 
 A. SOC や ISO などの製品によって提供されるさまざまなコンプライアンスについては、[Microsoft のコンプライアンスに関するページ]をご覧ください。 最初にコンプライアンス タイトルを選び、ページ右側の [Microsoft in-scope cloud services (Microsoft 対象クラウド サービス)] セクションで Azure を展開して、Azure サービスが準拠しているサービスを確認します。
- 
+
 Q. PowerBI に接続できますか。
 
 A. はい。 PowerBI は SQL DW での直接クエリをサポートしますが、多数のユーザーまたはリアルタイム データを意図したものではありません。 PowerBI を運用環境で使う場合は、Azure Analysis Services または Analysis Service IaaS の上で PowerBI を使うことをお勧めします。 
@@ -41,6 +42,10 @@ A. はい。 PowerBI は SQL DW での直接クエリをサポートしますが
 Q. SQL Data Warehouse の容量制限とは何ですか。
 
 A. [容量制限に関するページ]をご覧ください。 
+
+Q. スケール/一時停止/再開にそれほど時間がかかるのはなぜでしょうか。
+
+A. さまざまな要因がコンピューティングの管理操作に必要な時間に影響します。 長時間を要する操作に共通するのは、トランザクションのロールバックです。 スケール操作または一時停止操作が開始されると、すべての着信セッションがブロックされ、クエリが廃棄されます。 システムを安定した状態に維持するには、操作を開始する前にトランザクションをロールバックする必要があります。 トランザクションのログ数が多く、サイズが大きいほど、システムを安定した状態に復元するために操作を停止する時間が長くなります。
 
 ## <a name="user-support"></a>ユーザー サポート
 
@@ -113,7 +118,7 @@ SQL Data Warehouse 全体について詳しくは、[概要に関するページ
 [容量制限に関するページ]: ./sql-data-warehouse-service-capacity-limits.md
 [データ型に関するページ]: ./sql-data-warehouse-tables-data-types.md
 [サポートされていないテーブルの機能]: ./sql-data-warehouse-tables-overview.md#unsupported-table-features
-[Azure Data Lake Store]: ./sql-data-warehouse-load-from-azure-data-lake-store.md 
+[Azure Data Lake Store]: ./sql-data-warehouse-load-from-azure-data-lake-store.md
 [Azure Storage Blob]: ./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
 [データベース プロジェクト機能要求に関するページ]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu
 [MSDN]: https://msdn.microsoft.com/en-us/library/azure/mt163685.aspx
