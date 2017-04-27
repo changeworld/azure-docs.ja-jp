@@ -12,11 +12,12 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/25/2017
 ms.author: robmcm
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: df6443bb27285e8ba719c229dd1b12114acc48c7
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -248,9 +249,4 @@ Java の詳細については、 [Java デベロッパー センター](/develop
 
 <!-- External Links -->
 [Azure App Service]: http://go.microsoft.com/fwlink/?LinkId=529714
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

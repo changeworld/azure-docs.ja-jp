@@ -754,7 +754,7 @@ Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスク�
 [hdinsight-storage]: hdinsight-use-blob-storage.md
 [hdinsight-get-started]: hdinsight-get-started.md
 [hdinsight-use-sqoop]: hdinsight-use-sqoop-mac-linux.md
-[hdinsight-provision]: hdinsight-provision-clusters.md
+[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-use-mapreduce]: hdinsight-use-mapreduce.md
 [hdinsight-use-hive]: hdinsight-use-hive.md

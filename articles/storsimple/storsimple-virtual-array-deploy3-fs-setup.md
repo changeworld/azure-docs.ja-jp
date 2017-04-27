@@ -1,6 +1,6 @@
 ---
 title: "StorSimple Virtual Array をファイル サーバーとして設定する | Microsoft Docs"
-description: "StorSimple Virtual Array のデプロイの&3; 番目のチュートリアルでは、ファイル サーバーとして仮想デバイスを設定する方法について説明します。"
+description: "StorSimple Virtual Array のデプロイの 3 番目のチュートリアルでは、ファイル サーバーとして仮想デバイスを設定する方法について説明します。"
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/27/2017
+ms.date: 04/17/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 405e236288a32afa572da8c665ea2557a9c8cb03
-ms.openlocfilehash: 8d09eb65d6d165093f9de5810a6affbe95b7a053
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: ca5b67043843185ac40d02030f26fab8639a1f9f
+ms.lasthandoff: 04/25/2017
 
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>StorSimple Virtual Array をデプロイする - Azure Portal を介してファイル サーバーとしてセットアップする
@@ -34,7 +34,7 @@ StorSimple Virtual Array を構成およびセットアップする前に、以�
 
 * 「[Hyper-V で StorSimple Virtual Array をプロビジョニングする](storsimple-virtual-array-deploy2-provision-hyperv.md)」または「[VMware で StorSimple Virtual Array をプロビジョニングする](storsimple-virtual-array-deploy2-provision-vmware.md)」の説明に従って、仮想アレイをプロビジョニングし、そのアレイに接続していること。
 * StorSimple Virtual Array を管理するために作成した、StorSimple デバイス マネージャー サービスからのサービス登録キーがあること。 詳細については、StorSimple Virtual Array の「[手順 2: サービス登録キーを取得する](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key)」を参照してください。
-* 既存の StorSimple デバイス マネージャー サービスに登録する&2; 番目以降の仮想アレイの場合は、サービス データ暗号化キーがあるはずです。 このキーは、最初のデバイスがこのサービスに正常に登録されたときに生成されています。 このキーを紛失した場合は、StorSimple Virtual Array の「 [サービス データ暗号化キーの取得](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) 」をご覧ください。
+* 既存の StorSimple デバイス マネージャー サービスに登録する 2 番目以降の仮想アレイの場合は、サービス データ暗号化キーがあるはずです。 このキーは、最初のデバイスがこのサービスに正常に登録されたときに生成されています。 このキーを紛失した場合は、StorSimple Virtual Array の「 [サービス データ暗号化キーの取得](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) 」をご覧ください。
 
 ## <a name="step-by-step-setup"></a>セットアップの手順
 StorSimple Virtual Array をセットアップして構成するには、次の手順を実行します。
@@ -134,7 +134,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
     
     3. ユーザー定義のキーの暗号化には 256 ビット AES キーが使用されます。 32 文字のキーを指定し、そのキーを確認のために再入力します。 後で参照できるように、キー管理アプリケーションにキーを記録します。
     
-    4. **[必要な設定の構成]** をクリックして、デバイスで使用するストレージ アカウントの資格情報を指定します。 ストレージ アカウントの資格情報が構成されていない場合は、**[新規追加]** をクリックします。
+    4. **[必要な設定の構成]** をクリックして、デバイスで使用するストレージ アカウントの資格情報を指定します。 ストレージ アカウントの資格情報が構成されていない場合は、**[新規追加]** をクリックします。 **使用するストレージ アカウントがブロック BLOB をサポートしていることを確認します。ページ BLOB はサポートされていません。** [ブロック BLOB とページ BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)に関する詳細情報。
    
     ![ファイル サーバーの構成](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
 4. **[ストレージ アカウント資格情報の追加]** ブレードで、次の操作を行います。 
@@ -196,7 +196,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
     ![共有の追加](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
 
 ## <a name="step-4-connect-to-the-share"></a>手順 4: 共有に接続する
-次に、前の手順で作成した&1; つ以上の共有に接続する必要があります。 StorSimple Virtual Array に接続されている Windows Server ホストで、次の手順を実行します。
+次に、前の手順で作成した 1 つ以上の共有に接続する必要があります。 StorSimple Virtual Array に接続されている Windows Server ホストで、次の手順を実行します。
 
 #### <a name="to-connect-to-the-share"></a>共有に接続するには
 1. ![](./media/storsimple-virtual-array-deploy3-fs-setup/image22.png) + R キーを押します。[ファイル名を指定して実行] ウィンドウで、パスとして *&#92;&#92;&lt;ファイル サーバー名&gt;* を指定します。*file server name* は、ファイル サーバーに割り当てたデバイス名で置き換えます。 **[OK]**をクリックします。

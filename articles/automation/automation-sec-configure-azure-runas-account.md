@@ -15,6 +15,9 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/06/2017
 ms.author: magoedte
+ROBOTS: NOINDEX
+redirect_url: /azure/automation/automation-offering-get-started
+redirect_document_id: TRUE
 translationtype: Human Translation
 ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
 ms.openlocfilehash: fbca3d195290551d37606e231b997a40a602351f

@@ -12,11 +12,12 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/25/2017
 ms.author: robmcm;asirveda
 translationtype: Human Translation
 ms.sourcegitcommit: 9bb0b5fa32cd6dabd6c41106db38a587b0a55eed
 ms.openlocfilehash: 18299966173f030f615049eaf11a55a1f71305a0
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -214,9 +215,4 @@ Azure Web Apps の作成の詳細については、「 [Web Apps の概要]」�
 [13]: ./media/app-service-web-eclipse-create-hello-world-web-app/13-Azure-Explorer-Web-App.png
 [14]: ./media/app-service-web-eclipse-create-hello-world-web-app/14-publishDropdownButton.png
 [15]: ./media/app-service-web-eclipse-create-hello-world-web-app/15-New-Azure-Web-Container.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

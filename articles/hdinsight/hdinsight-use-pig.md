@@ -144,7 +144,7 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を�
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-mapreduce]: hdinsight-use-mapreduce.md
 
-[hdinsight-provision]: hdinsight-provision-clusters.md
+[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 [hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md#mapreduce-sdk
 
 [Powershell-install-configure]: /powershell/azureps-cmdlets-docs

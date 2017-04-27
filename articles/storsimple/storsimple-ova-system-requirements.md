@@ -12,12 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/03/2017
+ms.date: 04/17/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: e5f9952d136a2a7914100d8a7f5ffa5ba05a9d75
-ms.openlocfilehash: 9eb839834ed4ee2291eb311f64a8dfa7f07a1ac3
-ms.lasthandoff: 02/07/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 4a2c86cee40dbd1dc2c37d58e69bdf35b0046c4d
+ms.lasthandoff: 04/25/2017
 
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple Virtual Array のシステム要件
@@ -81,7 +81,9 @@ ms.lasthandoff: 02/07/2017
 > [!IMPORTANT]
 > StorSimple Virtual Array のファイル サーバーに Windows 暗号化ファイル システム (EFS) で保護されているファイルを保存またはコピーしないでください。サポートされていない構成の原因になります。 
 > 
-> 
+
+### <a name="supported-storage-format"></a>サポートされているストレージ形式
+Azure ブロック BLOB ストレージのみがサポートされています。 ページ BLOB はサポートされていません。 [ブロック BLOB とページ BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)に関する詳細情報。
 
 ## <a name="networking-requirements"></a>ネットワーク要件
 iSCSI、SMB、クラウド、または管理トラフィックを許可するためにファイアウォールで開く必要があるポートを次の表に示します。 この表では、*イン*または*受信*はデバイスにアクセスするクライアント要求が入ってくる方向を意味します。 *アウト*または*送信*は StorSimple デバイスがデプロイを超えて外部に (たとえば、インターネットに) データを送信する方向を意味します。

@@ -12,11 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/25/2017
 ms.author: robmcm
 translationtype: Human Translation
 ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
 ms.openlocfilehash: 331d82a987aebe422ca2f560d856dad9f1b733f3
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -123,10 +124,5 @@ Azure PowerShell ウィンドウで、 **Publish-AzureServiceProject** コマン
 [Express]: http://expressjs.com/
 [http://jade-lang.com]: http://jade-lang.com
 
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

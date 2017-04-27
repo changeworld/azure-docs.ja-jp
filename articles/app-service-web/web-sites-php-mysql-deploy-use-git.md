@@ -13,11 +13,12 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/25/2017
 ms.author: robmcm
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 1b1da346a253443c0b5eaf6f8a9a5a399923e760
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -296,9 +297,4 @@ Registration アプリケーションは、名前と電子メール アドレス
 [composer-extension-add]: ./media/web-sites-php-mysql-deploy-use-git/composer-extension-add.png
 [composer-extension-view]: ./media/web-sites-php-mysql-deploy-use-git/composer-extension-view.png
 [composer-extension-success]: ./media/web-sites-php-mysql-deploy-use-git/composer-extension-success.png
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 
