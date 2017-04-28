@@ -150,10 +150,10 @@ geo レプリケートされたセカンダリを geo レプリケーション �
 > 
 > 
 
-1. 最初に、"セカンダリ" サーバーに接続し、読み取り不能なセカンダリ データベースを削除します。**  
+1. 最初に、*セカンダリ* サーバーに接続し、読み取り不能なセカンダリ データベースを削除します。  
    
         DROP DATABASE <MyNonReadableSecondaryDB>;
-2. これで、"プライマリ" サーバーに接続して、新しい読み取り可能なセカンダリを追加できます**
+2. これで、*プライマリ* サーバーに接続して、新しい読み取り可能なセカンダリを追加できます
    
         ALTER DATABASE <MyDB>
             ADD SECONDARY ON SERVER <MySecondaryServer> WITH (ALLOW_CONNECTIONS = ALL);
