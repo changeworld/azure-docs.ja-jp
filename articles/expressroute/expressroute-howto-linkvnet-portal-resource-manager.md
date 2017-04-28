@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/08/2017
+ms.date: 04/12/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: b3c0cca9a6d5171b1248b0f463cbbb26641fc5f2
-ms.openlocfilehash: a1a689dbfc35107b52f9b84f74ac8bfac0727a0e
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: 4d86910acca16299627c4202ef073c526bd4fc26
+ms.lasthandoff: 04/14/2017
 
 
 ---
@@ -33,22 +33,18 @@ ms.lasthandoff: 02/10/2017
 
 この記事では、Resource Manager デプロイメント モデルと Azure ポータルを使用して Azure ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法について説明します。 仮想ネットワークは、同じサブスクリプションにあっても、別のサブスクリプションの一部であってもかいまいません。
 
-**Azure のデプロイ モデルについて**
-
-[!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
-
-## <a name="configuration-prerequisites"></a>構成の前提条件
-* 構成を開始する前に、必ず、[前提条件](expressroute-prerequisites.md)、[ルーティングの要件](expressroute-routing.md)、および[ワークフロー](expressroute-workflows.md)を確認してください。
+## <a name="before-you-begin"></a>開始する前に
+* 構成を開始する前に、[前提条件](expressroute-prerequisites.md)、[ルーティングの要件](expressroute-routing.md)、[ワークフロー](expressroute-workflows.md)を確認します。
 * アクティブな ExpressRoute 回線が必要です。
   
-  * 手順に従って、 [ExpressRoute 回線を作成](expressroute-howto-circuit-arm.md) し、接続プロバイダー経由で回線を有効にしてください。
+  * 手順に従って、 [ExpressRoute 回線を作成](expressroute-howto-circuit-portal-resource-manager.md) し、接続プロバイダー経由で回線を有効にしてください。
   * 回線用に Azure プライベート ピアリングが構成されていることを確認してください。 ルーティング手順については、 [ルーティングの構成](expressroute-howto-routing-portal-resource-manager.md) に関する記事を参照してください。
   * Azure プライベート ピアリングが構成されていることを確認します。また、エンド ツー エンド接続を有効にできるように、ネットワークと Microsoft の間の BGP ピアリングを起動しておく必要があります。
-  * 仮想ネットワークと仮想ネットワーク ゲートウェイを作成し、完全にプロビジョニングします。 [VPN ゲートウェイ](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)を作成する手順 (手順 1. ～ 5. のみ) に従ってください。
+  * 仮想ネットワークと仮想ネットワーク ゲートウェイを作成し、完全にプロビジョニングします。 指示に従って [ExpressRoute 用の仮想ネットワーク ゲートウェイを作成](expressroute-howto-add-gateway-resource-manager.md)します。 ExpressRoute 用の仮想ネットワーク ゲートウェイは、VPN ではなく GatewayType 'ExpressRoute' を使用します。
 
 * 最大 10 個の仮想ネットワークを標準 ExpressRoute 回線に接続できます。 標準 ExpressRoute 回線を使用する場合は、すべての仮想ネットワークが同じ地理的リージョンに存在する必要があります。 
-
 * ExpressRoute Premium アドオンを有効にした場合は、ExpressRoute 回線の地理的リージョンの外部にある仮想ネットワークをリンクしたり、さらに多くの仮想ネットワークを ExpressRoute 回線にリンクしたりすることができます。 Premium アドオンの詳細については、 [FAQ](expressroute-faqs.md) を確認してください。
+* 手順をより理解するため、開始する前に[ビデオを参照](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)できます。
 
 ## <a name="connect-a-virtual-network-in-the-same-subscription-to-a-circuit"></a>同じサブスクリプション内の仮想ネットワークを回線に接続する
 
@@ -87,14 +83,15 @@ ms.lasthandoff: 02/10/2017
     > 
     >
 
-### <a name="administration"></a>管理
-"回線所有者" は、ExpressRoute 回線リソースの権限のあるパワー ユーザーです。 回線所有者は、"回線ユーザー" が利用できる承認を作成できます。 回線ユーザーは、(ExpressRoute 回線とは別のサブスクリプション内にある) 仮想ネットワーク ゲートウェイの所有者です。 回線ユーザーは、承認を利用できます (仮想ネットワークごとに&1; つの承認)。
+### <a name="administration---circuit-owners-and-circuit-users"></a>管理 - 回線所有者と回線ユーザー
+
+"回線所有者" は、ExpressRoute 回線リソースの権限のあるパワー ユーザーです。 回線所有者は、"回線ユーザー" が利用できる承認を作成できます。 回線ユーザーは、ExpressRoute 回線と同じサブスクリプション内にない仮想ネットワーク ゲートウェイの所有者です。 回線ユーザーは、承認を利用できます (仮想ネットワークごとに 1 つの承認)。
 
 回線所有者は、承認をいつでも変更し、取り消す権限を持っています。 承認を取り消すと、アクセスが取り消されたサブスクリプションからすべてのリンク接続が削除されます。
 
 ### <a name="circuit-owner-operations"></a>回線所有者の操作
 
-#### <a name="creating-an-authorization"></a>承認の作成
+**接続の承認を作成するには**
 
 回線所有者は、承認を作成します。 その結果、回線ユーザーが各自の仮想ネットワーク ゲートウェイを ExpressRoute 回線に接続するために使用できる承認キーが作成されます。 承認は、1 つの接続に対してのみ有効です。
 
@@ -106,21 +103,17 @@ ms.lasthandoff: 02/10/2017
 
     ![承認キー](./media/expressroute-howto-linkvnet-portal-resource-manager/authkey.png)
 
-#### <a name="deleting-authorizations"></a>承認の削除
+**接続の承認を削除するには**
 
 接続を削除するには、接続のブレードで **[削除]** アイコンを選択します。
 
 ### <a name="circuit-user-operations"></a>回線ユーザーの操作
 
-   > [!NOTE]
-   > 回線ユーザーは、リソース ID と回線所有者が作成した承認キーを必要とします。 
+回線ユーザーは、リソース ID と回線所有者が作成した承認キーを必要とします。 
 
-#### <a name="redeeming-connection-authorizations"></a>接続承認の利用
+**接続の承認を利用するには**
 
-
-[基本] タブで詳細を入力して **[OK]** をクリックします。
-
-1.    **[+新規]** をクリックします。
+1.    **[+ 新規]** ボタンをクリックします。
 
     ![[新規] をクリック](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection1.png)
 
@@ -131,7 +124,7 @@ ms.lasthandoff: 02/10/2017
 3.    **[接続の種類]** を [ExpressRoute] に設定します。
 
 
-4.    [基本] ブレードで詳細を入力して **[OK]** をクリックします。
+4.    [基本] ブレードで詳細を入力し、**[OK]** をクリックします。
 
     ![[基本] ブレード](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
 
@@ -143,7 +136,8 @@ ms.lasthandoff: 02/10/2017
 
 7. **[概要]** ブレードの内容を確認し、**[OK]** をクリックします。
 
-#### <a name="releasing-connection-authorizations"></a>接続承認の解除
+
+**接続の承認を解除するには**
 
 ExpressRoute 回線を仮想ネットワークにリンクしている接続を削除することで、承認を解除できます。
 

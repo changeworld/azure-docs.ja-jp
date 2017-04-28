@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 3/24/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 45bf19b4c8406cfc09624bef2b9c0f1c443d8fd6
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: bc87185c56b2dc45f041136474b9fb1bf6afebc3
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -64,10 +64,10 @@ Visual Studio 2015 を使用して、アプリケーションを作成する場�
 
 ![Visual Studio でアプリケーションをパッケージングする][vs-package-command]
 
-パッケージ化が完了したら、[ **出力** ] ウィンドウにパッケージの場所が表示されます。 アプリケーションを Visual Studio でデプロイまたはデバッグする場合、パッケージ化の手順は自動で行われることにご注意ください。
+パッケージ化が完了したら、**[出力]** ウィンドウにパッケージの場所が表示されます。 アプリケーションを Visual Studio でデプロイまたはデバッグする場合、パッケージ化の手順は自動で行われます。
 
 ### <a name="build-a-package-by-command-line"></a>コマンド ラインを使用したパッケージ構築
-`msbuild.exe` を使用して、アプリケーションをプログラムによってパッケージ化することもできます。 これは内部的には Visual Studio で実行されているため、出力は同じになります。
+`msbuild.exe` を使用して、アプリケーションをプログラムによってパッケージ化することもできます。 これは内部的には Visual Studio で実行されているため、出力は同じです。
 
 ```shell
 D:\Temp> msbuild HelloWorld.sfproj /t:Package
@@ -75,7 +75,7 @@ D:\Temp> msbuild HelloWorld.sfproj /t:Package
 
 ## <a name="test-the-package"></a>パッケージのテスト
 パッケージ構造を PowerShell の [Test-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage) コマンドを使用して、ローカルで検証することができます。
-このコマンドは、マニフェストの解析の問題がチェックし、すべての参照を検証します。 このコマンドは、パッケージ内のディレクトリとファイルの構造的な正確性を検証するだけです。
+このコマンドは、マニフェストの解析の問題をチェックし、すべての参照を検証します。 このコマンドは、パッケージ内のディレクトリとファイルの構造的な正確性を検証するだけです。
 コードやデータ パッケージのコンテンツのいずれについても検証は行われず、それらがすべてそろっているかどうかは確認されません。
 
 ```
@@ -169,8 +169,9 @@ PS D:\temp> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\MyApp
 ```
 
 内部的に、Service Fabric がアプリケーション パッケージのチェックサムを計算して検証を行います。 圧縮を使用すると、各パッケージの zip 圧縮バージョンでチェックサムが計算されます。
-圧縮されていないアプリケーション パッケージのバージョンをコピーし、同じパッケージの圧縮を使用する場合は、チェックサムの不一致を避けるために、アプリケーション マニフェストのバージョンを変更する必要があります。
-同様に、パッケージの圧縮バージョンをアップロードし、圧縮されていないパッケージを使用する場合は、アプリケーション マニフェストのバージョンを更新する必要があります。
+圧縮されていないアプリケーション パッケージのバージョンをコピーし、同じパッケージの圧縮を使用する場合は、チェックサムの不一致を避けるために、`code`、`config`、および `data` パッケージのバージョンを変更する必要があります。 パッケージが変更されていない場合は、バージョンを変更する代わりに、[diff プロビジョニング](service-fabric-application-upgrade-advanced.md)を使用します。 このオプションでは、変更されていないパッケージを含めず、サービス マニフェストから参照するだけです。
+
+同様に、パッケージの圧縮バージョンをアップロードし、圧縮されていないパッケージを使用する場合は、チェックサムの不一致を避けるために、バージョンを更新する必要があります。
 
 これでパッケージは正しくパッケージ化、検証、および (必要に応じて) 圧縮されたため、1 つまたは複数の Service Fabric クラスターに[デプロイ](service-fabric-deploy-remove-applications.md)する準備ができました。
 

@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 884e519f-23bb-4b73-a718-00658629646a
 ms.service: sql-database
-ms.custom: overview
+ms.custom: resources
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,9 +16,9 @@ ms.workload: data-management
 ms.date: 03/06/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 61eac09668b14a98a42b1907a54577d80eb933a6
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: a2177926e76b25ceb5ecb4fd9471f961d3fa989f
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/29/2017
 Azure SQL Database では、**リソース ガバナンス**と**制限の適用**という 2 つの異なるメカニズムを使用して、データベースで使用できるリソースを管理します。 このトピックでは、リソース管理のこれら 2 つの主な領域について説明します。
 
 ## <a name="resource-governance"></a>リソース ガバナンス
-Basic、Standard、および Premium サービス レベルの設計目標の 1 つは、Azure SQL Database の動作を、データベースが他のデータベースから分離された専用のコンピューターで稼働しているかのようにすることです。 リソース ガバナンスは、この動作をエミュレートします。 集計されたリソース使用率が、データベースに割り当てられた利用可能な CPU、メモリ、ログ I/O、データ I/O のリソースの最大値に達すると、リソース管理により、実行中のクエリがキューに配置されます。キューに配置されたクエリには、リソースが解放されるたびに、順次リソースが割り当てられていきます。
+Basic、Standard、Premium、および Premium RS サービス階層の設計目標の 1 つは、Azure SQL Database を、そのデータベースが他のデータベースから分離された専用のマシン上で実行されているかのように動作させることです。 リソース ガバナンスは、この動作をエミュレートします。 集計されたリソース使用率が、データベースに割り当てられた利用可能な CPU、メモリ、ログ I/O、データ I/O のリソースの最大値に達すると、リソース管理により、実行中のクエリがキューに配置されます。キューに配置されたクエリには、リソースが解放されるたびに、順次リソースが割り当てられていきます。
 
 専用のコンピューターの場合と同様、利用可能なリソースをすべて使用すると、現在実行中のクエリの実行時間が長くなり、コマンドがクライアントでタイムアウトする可能性があります。 積極的な再試行ロジックを使用するアプリケーションやデータベースに対して高い頻度でクエリを実行するアプリケーションでは、同時要求の制限に達したときに新しいクエリを実行しようとするとエラー メッセージが表示される場合があります。
 
@@ -47,7 +47,7 @@ Basic、Standard、および Premium サービス レベルの設計目標の 1 
 単一データベースとエラスティック プールの両方に、サービス レベルとパフォーマンス レベルがあります。
 
 ### <a name="single-databases"></a>Single Database
-単一のデータベースの場合、データベースの制限はデータベース サービス階層とパフォーマンス レベルによって決まります。 次の表では、パフォーマンス レベルごとの Basic、Standard、Premium の各データベースの特性について説明します。
+単一のデータベースの場合、データベースの制限はデータベース サービス階層とパフォーマンス レベルによって決まります。 次の表では、さまざまなパフォーマンス レベルでの Basic、Standard、Premium、および Premium RS データベースの特性について説明します。
 
 [!INCLUDE [SQL DB service tiers table](../../includes/sql-database-service-tiers-table.md)]
 
@@ -56,7 +56,7 @@ Basic、Standard、および Premium サービス レベルの設計目標の 1 
 >
 
 ### <a name="elastic-pools"></a>エラスティック プール
-[エラスティック プール](sql-database-elastic-pool.md) は、プール内のデータベース全体のリソースを共有します。 次の表では、Basic、Standard、および Premium のエラスティック プールの特性について説明します。
+[エラスティック プール](sql-database-elastic-pool.md) は、プール内のデータベース全体のリソースを共有します。 次の表では、Basic、Standard、Premium、および Premium RS のエラスティック プールの特性について説明します。
 
 [!INCLUDE [SQL DB service tiers table for elastic databases](../../includes/sql-database-service-tiers-table-elastic-pools.md)]
 
@@ -66,8 +66,8 @@ Basic、Standard、および Premium サービス レベルの設計目標の 1 
 | 領域 | 制限 | Description |
 | --- | --- | --- |
 | サブスクリプションあたりの自動エクスポートを使用するデータベース |10 |自動エクスポートを使用すると、カスタム スケジュールを作成して、SQL Database をバックアップできます。 この機能のプレビューは、2017 年 3 月 1 日に終了します。  |
-| サーバーあたりのデータベース数 |最大 5000 |V12 サーバーでは、サーバーあたり最大 5000 個のデータベースが許可されています。 |
-| サーバーあたりの DTU |45000 |スタンドアロン データベースとエラスティック プールをプロビジョニングする場合、V12 サーバーではサーバーあたり 45,000 DTU を使用できます。 サーバーごとに許可されるスタンドアロン データベースとプールの合計数は、サーバーの DTU の数に制限されます。  
+| サーバーあたりのデータベース数 |最大 5000 |サーバーあたり最大 5000 個のデータベースが許可されています。 |
+| サーバーあたりの DTU |45000 |スタンドアロン データベースとエラスティック プールのプロビジョニングには、サーバーあたり 45000 個の DTU が許可されています。 サーバーごとに許可されるスタンドアロン データベースとプールの合計数は、サーバーの DTU の数に制限されます。  
 
 > [!IMPORTANT]
 > Azure SQL Database の自動エクスポート機能は現在プレビュー段階であり、2017 年 3 月 1 日に廃止されます。 2016 年 12 月 1 日から、SQL データベースの自動エクスポートを構成することはできなくなります。 既存の自動エクスポート ジョブは、引き続き 2017 年 3 月 1 日まで実行されます。 2016 年 12 月 1 日以降は、[長期のバックアップ リテンション期間](sql-database-long-term-retention.md)または [Azure Automation](../automation/automation-intro.md) を使用してください。PowerShell を使用して、選択したスケジュールに従って定期的に SQL データベースをアーカイブできます。 サンプル スクリプトは [GitHub からダウンロード](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-automation-automated-export)できます。

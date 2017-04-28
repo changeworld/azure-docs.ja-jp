@@ -13,19 +13,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/09/2017
+ms.date: 04/12/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 64af2509036d035c5802f4b1985c3f986b685545
-ms.openlocfilehash: 2b677e684021a873c0bc4db751d8e60d9eaa6f9d
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: 4e620f3d76caa25ac0e5afb134f37ffe263935f0
+ms.lasthandoff: 04/13/2017
 
 
 ---
 
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Azure Active Directory B2B コラボレーションのライセンスに関するガイダンス
 
-Azure Active Directory (Azure AD) B2B コレボレーションでは、選択された既存の Azure AD 機能セットが、Azure AD テナントに招待されたゲスト ユーザーにも適用されます。 そのため、Azure AD B2B コラボレーションのゲスト ユーザーは、Azure AD ライセンスによって使用許諾され、https://azure.microsoft.com/en-us/pricing/details/active-directory/ に示すように、既存の Free、Basic、Premium P1/P2 の各ライセンス レベルに従うことになります。
+Azure Active Directory (Azure AD) B2B コレボレーションでは、選択された既存の Azure AD 機能セットが、Azure AD テナントに招待されたゲスト ユーザーにも適用されます。 そのため、Azure AD B2B コラボレーションのゲスト ユーザーは、Azure AD ライセンスによって使用許諾され、https://azure.microsoft.com/pricing/details/active-directory/ に示すように、既存の Free、Basic、Premium P1/P2 の各ライセンス レベルに従うことになります。
 
 B2B ユーザーを招待し、Azure AD でアプリケーションに割り当てる際に料金は発生しません。 また、B2B ユーザーは、ゲスト ユーザーごとに最大 10 個のアプリと 3 つの基本レポートも無料で利用できます。これらは、Azure AD の "Free" レベルに含まれるためです。
 B2B コラボレーション機能によって B2B ユーザーにも適用される Azure AD の有料機能は、Azure AD 有料ライセンス (使用する機能に応じて、Basic、Premium P1、または Premium P2) によって使用を許諾する必要があります。 招待元のテナントは、Azure AD 有料ライセンスごとに 5 人の B2B ユーザーの権利を取得します。 つまり、Azure AD 有料機能に対する権利を、テナントの 1 人の従業員ユーザーに付与する各 Azure AD 有料ライセンスでは、その Azure AD 有料機能に対する権利が、テナントに招待された 5 人の追加 B2B ユーザーにも付与されます。
@@ -45,6 +45,21 @@ B2B コラボレーション機能によって B2B ユーザーにも適用さ�
 - B2B ユーザー アカウントにライセンスを実際に割り当てる必要はありません。 自動的に計算され、報告されます。
 - テナントに Azure AD 有料ライセンスがない場合、招待された各ユーザーは、Azure AD Free エディションで提供される権利を取得します。
 - B2B コラボレーション ユーザーが、自分の組織の従業員として Azure AD 有料ライセンスを持っている場合、招待元のテナントの B2B コラボレーション ライセンスは使用されません。
+
+## <a name="advanced-discussion-what-are-the-licensing-considerations-when-we-add-users-from-a-conglomerate-organization-as-members-using-your-apis"></a>高度なディスカッション: 貴社の API を使用して複合組織からユーザーを「メンバー」として追加する際のライセンスに関する考慮事項は何ですか?
+B2B ゲスト ユーザーとは、パートナー組織から招待されてホスト組織で仕事をするユーザーです。 一般に、これ以外のケースでは、B2B 機能を使用しても B2B とはみなされません。 具体的に 2 つのケースを見てみましょう。
+
+1. ホストがコンシューマー アドレスを使用して従業員を招待する場合
+  1. これはライセンス ポリシーに準拠しておらず、現在は推奨できません。
+
+2.    ホスト組織が別の複合組織からユーザーを追加する場合
+  1. このケースでユーザーは B2B API を使用して招待されますが、これは従来型の B2B ではありません。 理想として、これらの組織は他の組織ユーザーをメンバーとして招待するべきです (当社の API もこれなら可能です)。 この場合、これらのメンバーにライセンスを割り当てて、招待側組織のリソースにアクセスできるようにしなければなりません。
+
+  2. 組織の中には、他の組織のユーザーをポリシー上「ゲスト」として追加したい場合もあるでしょう。 次の 2 つのケースがあります。
+      * 複合組織がすでに Azure AD を使用しており、招待されたユーザーが他の組織でライセンスを与えられている: この場合、招待されたユーザーは本書で既出の 1:5 の式に従う必要はありません。 
+
+      * 複合組織が Azure AD を使用していないか、適切なライセンスを持っていない: この場合は、このドキュメントで既出の 1:5 の式に従います。
+
 
 ## <a name="next-steps"></a>次のステップ
 

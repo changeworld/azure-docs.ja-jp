@@ -1,9 +1,9 @@
 ---
-title: "Azure Backup: Azure Linux VM のアプリケーション整合性バックアップ | Microsoft Docs"
-description: "Azure Linux VM のアプリケーション整合性バックアップ"
+title: "Azure Backup: Linux VM のアプリケーション整合性バックアップ | Microsoft Docs"
+description: "スクリプトを使用して、Linux 仮想マシンの Azure へのアプリケーション整合性バックアップを確実にできるようにします。 スクリプトは Resource Manager デプロイ内の Linux VM にのみ適用されます。スクリプトは、Windows VM または Service Manager のデプロイには適用されません。 この記事では、トラブルシューティングを含むスクリプトを構成する手順について説明します。"
 services: backup
 documentationcenter: dev-center-name
-author: anuragm
+author: anuragmehrotra
 manager: shivamg
 keywords: "アプリケーション整合性バックアップ; アプリケーション整合性 Azure VM バックアップ; Linux VM バックアップ; Azure Backup"
 ms.assetid: bbb99cf2-d8c7-4b3d-8b29-eadc0fed3bef
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 3/20/2017
+ms.date: 4/12/2017
 ms.author: anuragm;markgal
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 044b5d3834518b44209485d1c1a68f2ac0f8a455
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 0f4ca1924531df890433ec092790e6bec7c41df0
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/22/2017
 この記事では、Linux の事前/事後スクリプト フレームワークと、それらを使用して Azure Linux VM のアプリケーション整合性バックアップを作成する方法について説明します。
 
 > [!Note]
-> 事前/事後スクリプト フレームワークは、Resource Manager でデプロイされた Linux 仮想マシンでのみサポートされます。クラシック仮想マシンまたは Windows 仮想マシンではサポートされません。
+> 事前/事後スクリプト フレームワークは、Resource Manager がデプロイされている Linux 仮想マシンについてのみサポートしています。 アプリケーション整合性スクリプトは、Service Manager がデプロイされた仮想マシンまたは Windows 仮想マシンについてサポートしていません。
 >
 
 ## <a name="how-the-framework-works"></a>フレームワークの動作
@@ -48,12 +48,12 @@ ms.lasthandoff: 03/22/2017
    - VMSnapshotPluginConfig.json: "600" アクセス許可を指定します。つまり "root" ユーザーにのみ、このファイルに対する "読み取り" アクセス許可と "書き込み" アクセス許可を付与します。どのユーザーにも "実行" アクセス許可は付与しません。
    - 事前スクリプト ファイル: "700" アクセス許可を指定します。つまり "root" ユーザーにのみ、このファイルに対する "読み取り"、"書き込み"、"実行" のすべてのアクセス許可を付与します。
    - 事後スクリプト ファイル: "700" アクセス許可を指定します。つまり "root" ユーザーにのみ、このファイルに対する "読み取り"、"書き込み"、"実行" のすべてのアクセス許可を付与します。
-   
+
    > [!Note]
    > このフレームワークがユーザーに与える影響は非常に大きいので、セキュリティを確実に確保することがきわめて重要となります。"root" 以外のユーザーには、重要な json ファイルとスクリプト ファイルに対するアクセス権を決して付与しないでください。
    > 前述の要件が満たされていない場合、スクリプトは実行されず、ファイル システム整合性/クラッシュ整合性バックアップになります。
    >
-   
+
 5. VMSnapshotPluginConfig.json を以下のように構成します。
     - **pluginName**: このフィールドは変更しないでください。変更するとスクリプトが正しく動作しなくなることがあります。
     - **preScriptLocation**: バックアップする VM 上の事前スクリプトの完全パスを指定します。
@@ -65,7 +65,7 @@ ms.lasthandoff: 03/22/2017
     - **timeoutInSeconds**: 事前スクリプトと事後スクリプトのタイムアウトを指定します。
     - **continueBackupOnFailure**: 事前スクリプトまたは事後スクリプトでエラーが発生した場合、Azure Backup をファイル システム整合性/クラッシュ整合性バックアップにフォールバックする場合は、この値を true に設定します。 これを false に設定した場合は、スクリプト エラーが発生するとバックアップが失敗します (ただしシングル ディスク VM の場合は、この設定に関係なくクラッシュ整合性バックアップにフォールバックします)。
     - **fsFreezeEnabled**: VM スナップショットの作成中、ファイル システム レベルの整合性を確保するために Linux fsfreeze を呼び出すかどうかを指定します。 アプリケーションの動作上、fsfreeze を無効にしなければならない場合を除いて、この設定は true にしておくことをお勧めします。
-    
+
 6. スクリプト フレームワークの構成はこれで完了です。VM バックアップの構成が済んでいれば、次回のバックアップ時にスクリプトが呼び出され、アプリケーション整合性バックアップがトリガーされます。 VM バックアップの構成が済んでいない場合は、「[Recovery Services コンテナーへの Azure 仮想マシンのバックアップ](https://docs.microsoft.com/azure/backup/backup-azure-vms-first-look-arm)」を参照して必要な構成を行ってください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング

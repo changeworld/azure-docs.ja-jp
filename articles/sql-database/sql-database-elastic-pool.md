@@ -17,9 +17,9 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 06a67e4d2134baf54e88708d64981b897ecb74a0
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 7490fe7261c760f2945d67a7f819091fd69b04f8
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -55,13 +55,13 @@ SQL Database では、リソースの需要に対処するデータベースの�
 ## <a name="which-databases-go-in-a-pool"></a>どのデータベースをプールに移動しますか?
 ![エラスティック プール内で eDTU を共有する SQL データベース。][1]
 
-エラスティック プールの候補として最適であるデータベースには通常、決まった期間のアクティビティがあり、その他の期間はアイドル状態です。 上図は、1 つのデータベース、4 つのデータベース、20 のデータベースによるエラスティック プールのアクティビティをそれぞれ示しています。 これらのデータベースは時間の経過と共にさまざまなアクティビティを行いますが、同時にアクティブにならず、eDTU を共有できるため、エラスティック プールの候補として最適です。 すべてのデータベースが、このパターンに適合するわけではありません。 リソースに常に一定の負荷があるデータベースは、リソースが個別に割り当てられる Basic、Standard、Premium サービス階層に適しています。
+エラスティック プールの候補として最適であるデータベースには通常、決まった期間のアクティビティがあり、その他の期間はアイドル状態です。 上図は、1 つのデータベース、4 つのデータベース、20 のデータベースによるエラスティック プールのアクティビティをそれぞれ示しています。 これらのデータベースは時間の経過と共にさまざまなアクティビティを行いますが、同時にアクティブにならず、eDTU を共有できるため、エラスティック プールの候補として最適です。 すべてのデータベースが、このパターンに適合するわけではありません。 リソースに常に一定の負荷があるデータベースは、リソースが個別に割り当てられる Basic、Standard、Premium、および Premium RS サービス階層に適しています。
 
 [エラスティック プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)。
 
 ## <a name="edtu-and-storage-limits-for-elastic-pools"></a>エラスティック プールの eDTU とストレージ制限
 
-次の表では、Basic、Standard、および Premium のエラスティック プールの特性について説明します。
+次の表では、Basic、Standard、Premium、および Premium RS のエラスティック プールの特性について説明します。
 
 [!INCLUDE [SQL DB service tiers table for elastic pools](../../includes/sql-database-service-tiers-table-elastic-pools.md)]
 
@@ -74,7 +74,7 @@ SQL Database では、リソースの需要に対処するデータベースの�
 ### <a name="limits-for-elastic-pools"></a>エラスティック プールに関する制限事項
 | プロパティ | Description |
 |:--- |:--- |
-| サービス階層 |Basic、Standard、Premium を選択できます。 サービス レベルにより、構成可能なパフォーマンス範囲とストレージ制限のほか、ビジネス継続性の選択肢が決定されます。 プール内の各データベースは、プールと同じサービス レベルになります。 "サービス レベル" は "エディション" とも呼ばれます。 |
+| サービス階層 |Basic、Standard、Premium、または Premium RS。 サービス レベルにより、構成可能なパフォーマンス範囲とストレージ制限のほか、ビジネス継続性の選択肢が決定されます。 プール内の各データベースは、プールと同じサービス レベルになります。 "サービス レベル" は "エディション" とも呼ばれます。 |
 | プールあたりの eDTU 数 |プール内のデータベースで共有できる eDTU の最大数。 プール内のデータベースで同時に使用する eDTU の合計数がこの制限を超えることはできません。 |
 | プールあたりの最大ストレージ容量 (GB) |プール内のデータベースで共有できる最大ストレージ容量 (GB 単位)。 プール内のデータベースで使用するストレージの合計がこの制限を超えることはできません。 この制限は、プールごとの eDTU によって決定されます。 この制限を超えた場合、すべてのデータベースは読み取り専用になります。 プールあたりの最大ストレージ容量とは、プール内のデータ ファイルの最大ストレージ容量のことであり、ログ ファイルによって使用される領域は含みません。 |
 | プールあたりのデータベースの最大数 |プールごとに許可されるデータベースの最大数。 |
@@ -106,7 +106,7 @@ SQL Database では、リソースの需要に対処するデータベースの�
 Geo リストアは、データベースがホストされているリージョンでのインシデントのためにデータベースが利用できない場合にも既定の復旧オプションを提供します。 「 [Azure SQL Database を復元する、またはセカンダリにフェールオーバーする](sql-database-disaster-recovery.md)
 
 ### <a name="active-geo-replication"></a>アクティブ geo レプリケーションを選択するとき
-geo リストアよりもアグレッシブな復旧要件があるアプリケーションについては、[Azure Portal](sql-database-geo-replication-portal.md)、[PowerShell](sql-database-geo-replication-powershell.md)、または [Transact-SQL](sql-database-geo-replication-transact-sql.md) を使用して、アクティブ geo レプリケーションを構成します。
+geo リストアよりもアグレッシブな復旧要件があるアプリケーションの場合は、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)を構成します。
 
 ## <a name="next-steps"></a>次のステップ
 

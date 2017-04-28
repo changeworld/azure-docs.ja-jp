@@ -3,155 +3,165 @@ title: "Azure ログ統合の使用 | Microsoft Docs"
 description: "Azure ログ統合サービスをインストールし、Azure ストレージのログ、Azure 監査ログ、および Azure Security Center の警告を統合する方法について説明します。"
 services: security
 documentationcenter: na
-author: TomShinder
+author: Barclayn
 manager: MBaldwin
-editor: TerryLanfear
+editor: TomShinder
 ms.assetid: 53f67a7c-7e17-4c19-ac5c-a43fabff70e1
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 03/07/2017
+ms.date: 04/07/2017
 ms.author: TomSh
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: f5f5597e09128236fd659b68c70d587d87a0832a
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 2752ae92fbbbb284756215a53dcab054881bd08a
+ms.lasthandoff: 04/13/2017
 
 
 ---
-# <a name="get-started-with-azure-log-integration"></a>Azure ログ統合の使用
-Azure ログ統合を使用すると、未加工のログを、Azure リソースからオンプレミスのセキュリティ情報/イベント管理 (SIEM) システムに統合できます。 この統合は、すべての資産に対してオンプレミスまたはクラウドの統合ダッシュボードを提供します。これにより、アプリケーションに関連付けられているセキュリティ イベントの集計、関連付け、分析を実行し、警告を生成できます。
+# <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Azure 診断ログおよび Windows イベント転送による Azure ログ統合
+Azure ログ統合 (AzLog) を使用すると、未加工のログを、Azure リソースからオンプレミスのセキュリティ情報/イベント管理 (SIEM) システムに統合できます。 この統合は、すべての資産に対するオンプレミスまたはクラウドの統合セキュリティ ダッシュボードを可能にします。これにより、アプリケーションに関連付けられているセキュリティ イベントの集計、関連付け、分析、警告が行えます。
+>[!NOTE]
+Azure ログ統合の詳細については、[Azure ログ統合の概要](https://docs.microsoft.com/azure/security/security-azure-log-integration-overview)を参照してください。
 
-このチュートリアルでは、Azure ログ統合をインストールし、Azure ストレージのログ、Azure 監査ログ、および Azure Security Center の警告を統合する方法について説明します。 このチュートリアルの推定所要時間は&1; 時間です。
+本記事は Azlog サービスのインストールに重点を置き、Azure 診断でサービスを統合することによって、Azure ログ統合を始める際に役立ちます。 Azure ログ統合サービスにより、Azure IaaS に展開された仮想マシンの Windows セキュリティ イベント チャネルから、Windows イベント ログ情報を収集することができます。 これはオンプレミスで利用される「イベント転送」と類似しています。
+
+>[!NOTE]
+>Azure ログ統合の出力を SIEM に統合する機能は、SIEM により提供されます。 詳細は、[オンプレミスの SIEM への Azure ログ統合](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/)を参照してください。
+
+Azure ログ統合サービスは、Windows Server 2008 R2 またはそれ以上の オペレーティング システム (Windows Server 2012 R2 または Windows Server 2016 を推奨) を使用する、物理または仮想コンピューター上で実行されます。 
+
+物理コンピューターはオンプレミス (またはホスト側サイト) で実行可能です。 仮想マシンで Azure ログ統合サービスを実行する場合、その仮想マシンをオンプレミスまたは Microsoft Azure などのパブリック クラウドに設置することができます。 
+
+物理または仮想マシンが Azure ログ統合サービスを実行するには、Azure パブリック クラウドへのネットワーク接続が必要です。 この記事では、構成に関する手順を詳しく説明します。
 
 ## <a name="prerequisites"></a>前提条件
-このチュートリアルを完了するには、以下が必要です。
-
-* Azure ログ統合サービスをインストールするコンピューター (オンプレミスまたはクラウド)。 64 ビット Windows OS が実行され、.Net 4.5.1 がインストールされている必要があります。 このコンピューターは、 **Azlog インテグレーター**と呼ばれます。
-* として機能します。 このサブスクリプションがない場合は、 [無料アカウント](https://azure.microsoft.com/free/)にサインアップできます。
-* Azure 仮想マシン (VM) が有効になっている Azure 診断。 Cloud Services に対する診断の有効化については、「 [Azure Cloud Services での Azure 診断の有効化](../cloud-services/cloud-services-dotnet-diagnostics.md)」をご覧ください。 Windows を実行している Azure VM に対する診断の有効化については、「[PowerShell を使用して Windows を実行している仮想マシンで Azure 診断を有効にする](../virtual-machines/virtual-machines-windows-ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
-* Azlog インテグレーターから Azure ストレージへの接続、および Azure サブスクリプションに対する認証と承認。
-* Azure VM ログについては、SIEM エージェント (Splunk Universal Forwarder、HP ArcSight Windows Event Collector エージェント、IBM QRadar WinCollect など) を Azlog インテグレーターにインストールする必要があります。
+AzLog のインストールには、少なくとも次が必要です。
+* **Azure サブスクリプション**。 このサブスクリプションがない場合は、 [無料アカウント](https://azure.microsoft.com/free/)にサインアップできます。
+* Windows Azure 診断ログに使用可能な**ストレージ アカウント** (事前構成されたストレージ アカウントを使用するか、新規に作成できます。この記事の後半で、ストレージ アカウントを構成する方法を紹介します)。
+* **2 つのシステム**: Azure ログ統合サービスを実行するコンピューターと、Azlog サービス コンピューターに送信されるログ情報を持つ監視可能なコンピューター。
+   * 監視対象のマシン - [Azure 仮想マシン](../virtual-machines/virtual-machines-windows-overview.md)として実行する VM
+   * Azure ログ統合サービスを実行し、SIEM に後でインポートされるすべてのログ情報を収集するコンピューター。
+    * このシステムは、オンプレミスまたは Microsoft Azure に設置可能です。  
+    * Windows server 2008 R2 SP1 の x64 バージョンまたはそれ以上を実行し、.NET 4.5.1 がインストールされている必要があります。 [方法 : インストールされている .NET Framework バージョンを確認する](https://msdn.microsoft.com/library/hh925568)の記事に従って、インストールされている .NET のバージョンを確認することができます。  
+    Azure 診断ログに使用する Azure Storage アカウントへの接続が必要です。 接続を確認する方法については、この記事の後半で説明します。
 
 ## <a name="deployment-considerations"></a>デプロイメントに関する考慮事項
-大量のイベントがある場合は、複数の Azlog インテグレーター インスタンスを実行できます。 Windows 用 Azure 診断 *(WAD)* ストレージ アカウントの負荷分散と、インスタンスに提供するサブスクリプションの数は、容量をベースにする必要があります。
+Azure ログ統合のテスト中は、オペレーティング システムの最小要件を満たす任意のシステムを使用することができます。 ただし運用環境によっては、負荷のスケールアップまたはスケールアウトの検討が必要な場合もあります。
 
-8 プロセッサ (コア) コンピューターでは、1 つの Azlog インテグレーター インスタンスが、1 日あたり 2,400 万 (1 時間あたり最大 100 万) のイベントを処理できます。
+イベント量が高い場合は、Azure ログ統合サービスの複数インスタンス (物理または仮想マシンごとに 1 つのインスタンス) を実行できます。 また、Windows 用 Azure 診断 (WAD) ストレージ アカウントの負荷分散が可能です。インスタンスに提供するサブスクリプションの数は、容量をベースにする必要があります。
+>[!NOTE]
+この時点では、(Azure ログ統合サービスを実行する) Azure ログ統合マシンのインスタンスのスケールアウト、またはストレージ アカウントやサブスクリプションに対する具体的な推奨事項はありません。 拡大/縮小の決定は、これらの各領域におけるパフォーマンスの観測値に基づく必要があります。
 
-4 プロセッサ (コア) コンピューターでは、1 つの Azlog インテグレーター インスタンスが、1 日あたり 150 万 (1 時間あたり最大 62,500 ) のイベントを処理できます。
+またパフォーマンス向上のために、Azure ログ統合サービスをスケールアップすることもできます。 次のパフォーマンス メトリックは、Azure ログ統合サービスを実行するマシンのサイズ変更に役立ちます。
+* 8 プロセッサ (コア) コンピューターでは、1 つの Azlog インテグレーター インスタンスが、1 日あたり 2,400 万 (1 時間あたり最大 100 万) のイベントを処理できます。
+
+* 4 プロセッサ (コア) コンピューターでは、1 つの Azlog インテグレーター インスタンスが、1 日あたり 150 万 (1 時間あたり最大 62,500 ) のイベントを処理できます。
 
 ## <a name="install-azure-log-integration"></a>Azure ログ統合のインストール
-[Azure ログ統合](https://www.microsoft.com/download/details.aspx?id=53324)をダウンロードします。
+Azure ログ統合のインストールには、[Azure ログ統合](https://www.microsoft.com/download/details.aspx?id=53324)インストール ファイルをダウンロードする必要があります。 セットアップ ルーチンを実行し、利用統計情報をマイクロソフトに提供するかを決定します。  
 
-Azure ログ統合サービスは、インストール先のマシンから利用統計情報を収集します。  収集される利用統計情報を以下に示します。
+![インストール画面で利用統計情報チェック ボックスをオンに](./media/security-azure-log-integration-get-started/telemetry.png)
+
+*
+> [!NOTE]
+> マイクロソフトによる利用統計情報の収集を許可することをお勧めします。 このオプションをオフにして、利用統計情報の収集を無効にすることができます。
+>
+
+
+Azure ログ統合サービスは、インストール先のマシンから利用統計情報を収集します。  
+
+収集される利用統計情報を以下に示します。
 
 * Azure ログ統合の実行中に発生する例外
 * 処理されたクエリおよびイベントの数に関するメトリック
 * 使用されている Azlog.exe コマンド ライン オプションについての統計情報
 
-> [!NOTE]
-> このオプションをオフにして、利用統計情報の収集を無効にすることができます。
->
->
 
+## <a name="post-installation-and-validation-steps"></a>ポスト インストールおよび検証の手順
+基本的なセットアップ ルーチンを完了すると、ポスト インストールおよび検証手順が実行できます。
+1. 管理者特権の PowerShell ウィンドウを開き、**c:\Program Files\Microsoft Azure Log Integration** に移動します。
+2. まず初めに Azlog コマンドレットをインポートします。 スクリプト **LoadAzlogModule.ps1** (次のコマンドでは “.\” に注意してください) を実行することでインポートが可能です。 **.\LoadAzlogModule.ps1** と入力し、**ENTER** をクリックします。  
+次の図のように表示されます。 </br></br>
+![インストール画面で利用統計情報チェック ボックスをオンに](./media/security-azure-log-integration-get-started/loaded-modules.png) </br></br>
+3. 特定の Azure 環境を使用して AzLog を構成する必要があります。 「Azure 環境」とは、使用する Azure のクラウド データ センターの「種類」です。 この時点では複数の Azure 環境が存在しますが、現在対象となるオプションは **AzureCloud** または**AzureUSGovernment** のいずれかです。   管理者特権の PowerShell 環境では、**c:\program files \Microsoft Azure ログ統合\**内であることを確認します。 </br></br>
+    確認したらコマンドを実行します。 </br>
+    ``Set-AzlogAzureEnvironment -Name AzureCloud``(Azure 商用)
 
-## <a name="set-your-azure-environment"></a>Azure 環境を設定する
-1. PowerShell コンソールを管理者として開き、**cd** を **c:\Program Files\Microsoft Azure Log Integration** にします。
-2. コマンド Set-AzLogAzureEnvironment -Name <Cloud> を実行します。
+      >[!NOTE]
+      コマンドの成功時に、フィードバックは提供されません。  米国政府の Azure クラウドを使用する場合、米国政府クラウド向け **AzureUSGovernment** (Name 変数) が使用されます。 その他の Azure クラウドは、現時点ではサポートされていません。  
+4. システムを監視するには、Azure 診断に使用されているストレージ アカウント名が必要です。  Azure ポータルで **[仮想マシン]** に移動し、監視対象の仮想マシンを検索します。 **[プロパティ]** セクションで、**[診断設定]** を選択します。  **[エージェント]** をクリックし、指定されたストレージ アカウント名をメモします。 このアカウント名は今後の手順で必要です。
+![Azure 診断設定](./media/security-azure-log-integration-get-started/storage-account-large.png) </br></br>
 
-       Replace the Cloud with any of the following
-       AzureCloud
-       AzureUSGovernment
+      ![Azure 診断設定](./media/security-azure-log-integration-get-started/azure-monitoring-not-enabled-large.png)
+      >[!NOTE]
+      仮想マシン作成中において監視が有効でない場合には、上記のオプションが選択できます。 
+5. ここで再び Azure ログ統合マシンについて説明します。 Azure ログ統合をインストールしたシステムと、ストレージ アカウント間の接続を確認する必要があります。 Azure ログ統合サービスを実行する物理コンピューターまたは仮想マシンは、ストレージ アカウントに接続し、各監視対象システムで構成されている Azure 診断が記録する情報を取得する必要があります。  
+  1. Azure Storage エクスプローラーをダウンロードするには[ここ](http://storageexplorer.com/)をクリック。
+  2. セットアップ ルーチンの実行
+  3. インストールが完了したら **[次へ]** をクリックします。**[Microsoft Azure Storage エクスプローラーを起動]** チェック ボックスはチェックを入れたままにします。  
+  4. Azure にログインします。
+  5. Azure 診断用に構成したストレージ アカウントが表示できることを確認します。  
+![ストレージ アカウント](./media/security-azure-log-integration-get-started/storage-account.jpg) </br></br>
+   6. ストレージ アカウントには、オプションがいくつかありますのでご注意ください。 そのうちの 1 つは**テーブル**です。 **テーブル**には、**WADWindowsEventLogsTable** が表示されます。 </br></br>
+   ![ストレージ アカウント](./media/security-azure-log-integration-get-started/storage-explorer.png) </br>
 
-       Note that at this time, an Azlog integrator only supports integrating logs from a cloud that you choose to integrate.
+## <a name="integrate-azure-diagnostic-logging"></a>Azure 診断ログの統合
+この手順では、Azure ログ統合サービスを実行しているコンピューターを構成し、ログ ファイルを含むストレージ アカウントに接続します。
+この手順を完了するには、いくつかの事項が前もって必要です。  
+* **FriendlyNameForSource:** Azure 診断から情報を格納するために仮想マシンを構成した、ストレージ アカウントに適用可能な表示名。
+* **StorageAccountName:** Azure 診断を構成する際に指定したストレージ アカウント名。  
+* **StorageKey:** 仮想マシン用に Azure 診断情報が格納されるストレージ アカウントに対するストレージ キー。  
 
-## <a name="integrate-azure-vm-logs-from-your-azure-diagnostics-storage-accounts"></a>Azure 診断ストレージ アカウントからの Azure VM ログの統合
-1. 上記の前提条件をチェックして、Azure ログ統合を続行する前に、WAD ストレージ アカウントがログを収集していることを確認します。 WAD ストレージ アカウントがログを収集していない場合は、以下の手順を実行しないでください。
-2. コマンド プロンプトを開き、**cd** により、現在のディレクトリを **C:\Program Files\Microsoft Azure Log Integration** に変更します。
-3. コマンドを実行します
+ストレージ キーを取得するには、次の手順を実行します。
+ 1. [Azure ポータル](http://portal.azure.com)にアクセスします。
+ 2. Azure コンソールのナビゲーション ウィンドウで一番下までスクロールし、**その他のサービス**をクリックします。
 
-        azlog source add <FriendlyNameForTheSource> WAD <StorageAccountName> <StorageKey>
+ ![その他のサービス](./media/security-azure-log-integration-get-started/more-services.png)
+ 3. **[フィルター]** テキスト ボックスで、**ストレージ**を入力します。 **[ストレージ アカウント]** (**ストレージ**入力後に表示されます) をクリックします。
 
-      StorageAccountName を、VM から診断イベントを受信するように構成された Azure ストレージ アカウントの名前に置き換えます。
+  ![フィルター ボックス](./media/security-azure-log-integration-get-started/filter.png)
+ 4. ストレージ アカウント一覧が表示されたら、ログの記憶域に割り当てられているアカウントをダブルクリックします。
 
-        azlog source add azlogtest WAD azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==
+   ![ストレージ アカウント一覧](./media/security-azure-log-integration-get-started/storage-accounts.png)
+ 5. **[設定]** セクションで **[アクセス キー]** をクリックします。
 
-      サブスクリプション ID がイベント XML に表示されるようにするには、サブスクリプション ID を表示名に追加します。
+  ![アクセス キー](./media/security-azure-log-integration-get-started/storage-account-access-keys.png)
+ 6. **key1** をコピーし、次の手順でアクセスできるよう安全な場所に格納します。
 
-        azlog source add <FriendlyNameForTheSource>.<SubscriptionID> WAD <StorageAccountName> <StorageKey>
-4. 30 ～ 60 分間待って (1 時間かかる場合があります)、ストレージ アカウントから取得されたイベントを表示します。 表示するには、Azlog インテグレーターで **[イベント ビューアー] > [Windows ログ] > [転送されたイベント]** を開きます。
-5. コンピューターにインストールされている標準 SIEM コネクタが、 **[転送されたイベント]** フォルダーからイベントを選択し、SIEM インスタンスにパイプするように構成されていることを確認します。 SIEM 固有の構成を確認してログ統合を構成し、表示します。
+   ![2 つのアクセス キー](./media/security-azure-log-integration-get-started/storage-account-access-keys.png)
+ 7. Azure ログ統合をインストールしたサーバーで、管理者特権のコマンド プロンプトを開きます (管理者特権の PowerShell コンソールではなく、管理者特権のコマンド プロンプト ウィンドウを必ず使用してください)。
+ 8. **c:\Program Files\Microsoft Azure Log Integration** に移動します。
+ 9. ``Azlog source add <FriendlyNameForTheSource> WAD <StorageAccountName> <StorageKey> `` を実行します。 </br> たとえば、``Azlog source add Azlogtest WAD Azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==``サブスクリプション ID をイベント XML に表示するには、サブスクリプション ID を表示名に追加します。``Azlog source add <FriendlyNameForTheSource>.<SubscriptionID> WAD <StorageAccountName> <StorageKey>``または``Azlog source add Azlogtest.YourSubscriptionID WAD Azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==``
+
+>[!NOTE]  
+60 分間待つと、ストレージ アカウントから取得されたイベントが表示されます。 表示するには、Azlog インテグレーターで **[イベント ビューアー] > [Windows ログ] > [転送されたイベント]** を開きます。
 
 ## <a name="what-if-data-is-not-showing-up-in-the-forwarded-events-folder"></a>[転送されたイベント] フォルダーにデータが表示されない場合
 1 時間経過しても、 **[転送されたイベント]** フォルダーにデータが表示されない場合は、次の操作を行います。
 
-1. コンピューターを確認し、Azure にアクセスできることを確かめます。 接続をテストするには、 [Azure ポータル](http://portal.azure.com) をブラウザーから開いてみます。
-2. ユーザー アカウント **azlog** に、**users\azlog** フォルダーに対する書き込みアクセス許可が付与されていることを確認します。
-3. **azlog source list** コマンドを実行して、**azlog source add** コマンドに追加されたストレージ アカウントが表示されることを確認します。
+1. Azure ログ統合サービスを実行するコンピューターが、Azure にアクセスできることを確認します。 接続をテストするには、 [Azure ポータル](http://portal.azure.com) をブラウザーから開いてみます。
+2. ユーザー アカウント **Azlog** に、**users\Azlog** フォルダーへの書き込みアクセス許可が付与されていることを確認します。
+  <ol type="a">
+   <li>**Windows エクスプローラー** を開く</li>
+  <li> **c:\users** に移動</li>
+  <li> **c:\users\Azlog** を右クリック</li>
+  <li> **セキュリティ**  をクリック</li>
+  <li> **NT Service\Azlog** をクリックし、アカウントのアクセス許可を確認します。 アカウントがタブに表示されない場合や、適切なアクセス許可が表示されない場合は、このタブでアカウント権限を付与することができます。</li>
+  </ol>**Azlog source list** コマンドを実行して、**Azlog source add** コマンドに追加された
+3.ストレージ アカウントを確認します。
 4. **[イベント ビューアー] > [Windows ログ] > [アプリケーション]** の順にアクセスして、Azure ログ統合からエラーが報告されていないかどうかを確認します。
 
-イベントがまだ表示されない場合は、次の操作を行います。
+インストールおよび構成中に問題が発生した場合、[サポート要求](../azure-supportability/how-to-create-azure-support-request.md)を作成し、サポートを要求するサービスとして **[ログ統合]** を選択します。
 
-1. [Microsoft Azure Storage Explorer](http://storageexplorer.com/)をダウンロードします。
-2. **azlog source add**コマンドに追加されたストレージ アカウントに接続します。
-3. Microsoft Azure Storage Explorer で **WADWindowsEventLogsTable** テーブルに移動して、データがあるかどうかを確認します。 データがない場合は、VM で診断が正しく構成されていません。
-
-## <a name="integrate-azure-activity-logs-and-security-center-alerts"></a>Azure アクティビティ ログと Security Center の警告の統合
-1. コマンド プロンプトを開き、**cd** により、現在のディレクトリを **C:\Program Files\Microsoft Azure Log Integration** に変更します。
-2. コマンドを実行します
-
-        azlog createazureid
-
-      このコマンドは Azure ログインを要求します。 このコマンドは、管理者、共同管理者、または所有者としてログインしている、Azure サブスクリプションをホストする Azure AD テナントに [Azure Active Directory サービス プリンシパル](../active-directory/active-directory-application-objects.md) を作成します。 単なる Guest ユーザーとして Azure AD テナントにログインしている場合、コマンドは失敗します。 Azure への認証は、Azure Active Directory (AD) によって行われます。  Azlog 統合のサービス プリンシパルを作成すると、Azure AD の ID が作成され、Azure サブスクリプションからの読み取りアクセス許可が付与されます。
-3. コマンドを実行します
-
-        azlog authorize <SubscriptionID>
-
-      これにより、サブスクリプションの閲覧者アクセス許可が、手順 2. で作成されたサービス プリンシパルに割り当てられます。 SubscriptionID を指定しないと、このコマンドは、サービス プリンシパルの閲覧者ロールを、アクセスできるすべてのサブスクリプションに割り当てようとします。
-
-        azlog authorize 0ee9d577-9bc4-4a32-a4e8-c29981025328
-
-   > [!NOTE]
-   > **createazureid** コマンドの実行後すぐに **authorize** コマンドを実行すると、警告が表示される可能性があります。 Azure AD アカウントが作成されてから、そのアカウントが使用できるようになるまで、少し時間がかかります。 **createazureid** コマンドを実行した後で約 10 秒間待ってから **authorize** コマンドを実行すれば、この警告が表示されることはありません。
-   >
-   >
-4. 次のフォルダーを調べて、監査ログの JSON ファイルがあることを確認します。
-
-   * **c:\Users\azlog\AzureResourceManagerJson**
-   * **c:\Users\azlog\AzureResourceManagerJsonLD**
-5. 次のフォルダーを調べて、Security Center のアラートが存在することを確認します。
-
-   * **c:\Users\azlog\ AzureSecurityCenterJson**
-   * **c:\Users\azlog\AzureSecurityCenterJsonLD**
-6. 標準的な SIEM ファイル フォワーダー コネクタで、SIEM インスタンスにデータをパイプ処理する適切なフォルダーをポイントします。 使用している SIEM 製品に基づいて、フィールド マッピングが必要になる可能性があります。
-
-## <a name="integrate-azure-active-directory-audit-logs"></a>Azure Active Directory と監査ログの統合
-1. コマンド プロンプトと **cd** を **c:\Program Files\Microsoft Azure Log Integration** に開きます。
-2. tenantID を提供するコマンドを実行します。 コマンドを実行するには、テナント管理者ロールのメンバーである必要があります。
-
-AZLOG.exe authorizedirectoryreader tenantId
-
-サンプル -
-
-AZLOG.exe authorizedirectoryreader ba2c0023-d24b-4f4e-92b1-48c4469999
-
-
-3. 次のフォルダーを調べて、Azure Active Directory 監査ログの JSON ファイルが作成されていることを確認します。
-* **C:\Users\azlog\AzureActiveDirectoryJson**  
-* **C:\Users\azlog\AzureActiveDirectoryJsonLD**
-
-4. 標準的な SIEM ファイル フォワーダー コネクタで、SIEM インスタンスにデータをパイプ処理する適切なフォルダーをポイントします。 使用している SIEM 製品に基づいて、フィールド マッピングが必要になる可能性があります。
-
-[Azure Active Directory で監査イベントとして現在記録されるイベントの一覧](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-audit-events#list-of-audit-report-events)
-
-インストールおよび構成中に問題が発生した場合、[サポート要求](https://docs.microsoft.com/en-us/azure/azure-supportability/how-to-create-azure-support-request)を作成し、サポートを要求するサービスとして 'Log Integration' を選択します。
+別のオプションとして、[Azure ログ統合の MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureLogIntegration)も利用可能です。 このコミュニティでは、Azure ログ統合を最大限に活用する方法に関する質問、回答、ヒント、およびコツなどによる、相互サポート機能を提供しています。 さらに、Azure ログ統合チームがこのフォーラムを監視しており、可能なときにはいつでも支援を提供します。
 
 ## <a name="next-steps"></a>次のステップ
-このチュートリアルでは、Azure ログ統合をインストールし、Azure ストレージからログを統合する方法について説明しました。 詳細については、次の記事を参照してください。
+Azure ログの統合の詳細については、次のドキュメントを参照してください。
 
-* [Azure ログ用の Microsoft Azure ログ統合 (プレビュー)](https://www.microsoft.com/download/details.aspx?id=53324) – Azure ログ統合の詳細情報、システム要件、およびインストール手順のダウンロード センター。
+* [Azure ログ用の Microsoft Azure ログ統合](https://www.microsoft.com/download/details.aspx?id=53324) – Azure ログ統合の詳細情報、システム要件、およびインストール手順のダウンロード センター。
 * [Azure ログ統合の概要](security-azure-log-integration-overview.md) – このドキュメントでは、Azure ログ統合と、その主な機能およびしくみについて紹介します。
 * [パートナーの構成手順](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) – このブログ投稿では、Splunk、HP ArcSight、IBM QRadar などのパートナー ソリューションを使用できるように、Azure ログ統合を構成する方法について説明します。
 * [Azure ログ統合のよく寄せられる質問 (FAQ)](security-azure-log-integration-faq.md) – この FAQ は、Azure ログ統合について寄せられる質問とその回答です。

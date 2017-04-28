@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: f92909e0098a543f99baf3df3197a799bc9f1edc
-ms.openlocfilehash: f62c0ca57bfd15a9ad1f767fa8fd59cc73b71c43
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: f029b2dfaff372b3a8282d056ca52bd5d0893e64
+ms.lasthandoff: 04/19/2017
 
 ---
 
@@ -28,7 +28,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 詳細については、「[Event Hubs の概要][Event Hubs overview]」を参照してください。
 
-このチュートリアルでは、C のコンソール アプリケーションを使用して Event Hub にイベントを送信する方法について説明します。イベントを受け取るには、左側の目次で適切な受信言語をクリックします。
+このチュートリアルでは、C のコンソール アプリケーションを使用してイベント ハブにイベントを送信する方法について説明します。イベントを受け取るには、左側の目次で適切な受信言語をクリックします。
 
 このチュートリアルを最後まで行うには、以下のものが必要です。
 
@@ -37,7 +37,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 * アクティブな Azure アカウント。 アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
 ## <a name="send-messages-to-event-hubs"></a>Event Hub へのメッセージ送信
-このセクションでは、イベントを Event Hub に送信する C アプリを作成します。 [Apache Qpid プロジェクト](http://qpid.apache.org/)の Proton AMQP ライブラリを使用します。 これは、 [ここ](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504)に示すように、C の AMQP を Service Bus キューと Topics と使用するのに似ています。 詳細については、「 [Qpid Proton のドキュメント](http://qpid.apache.org/proton/index.html)」を参照してください。
+このセクションでは、イベントをイベント ハブに送信する C アプリを作成します。 [Apache Qpid プロジェクト](http://qpid.apache.org/)の Proton AMQP ライブラリを使用します。 これは、 [ここ](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504)に示すように、C の AMQP を Service Bus キューと Topics と使用するのに似ています。 詳細については、「 [Qpid Proton のドキュメント](http://qpid.apache.org/proton/index.html)」を参照してください。
 
 1. [Qpid AMQP Messenger ページ](http://qpid.apache.org/components/messenger/index.html)の **[Installing Qpid Proton]** リンクをクリックして、環境に応じた指示に従ってください。
 2. Proton ライブラリをコンパイルするには、次のパッケージをインストールします。
@@ -60,7 +60,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
     sudo make install
     ```
-5. 作業ディレクトリに **sender.c** と呼ばれる新しいファイルを次の内容で作成します。 Event Hub の名前と名前空間の名前の値を置き換えます (通常、後者は `{event hub name}-ns`です)。 前に作成した **SendRule** のキーの URL でエンコードされたバージョンも代入する必要があります。 [ここ](http://www.w3schools.com/tags/ref_urlencode.asp)で URL でエンコードすることができます。
+5. 作業ディレクトリに **sender.c** と呼ばれる新しいファイルを次の内容で作成します。 イベント ハブの名前と名前空間の名前の値を置き換えます (通常、後者は `{event hub name}-ns`です)。 前に作成した **SendRule** のキーの URL でエンコードされたバージョンも代入する必要があります。 [ここ](http://www.w3schools.com/tags/ref_urlencode.asp)で URL でエンコードすることができます。
    
     ```c
     #include "proton/message.h"
@@ -155,7 +155,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 Event Hubs の詳細については、次のリンク先を参照してください:
 
 * [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
-* [Event Hub を作成する](event-hubs-create.md)
+* [イベント ハブの作成](event-hubs-create.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)
 
 <!-- Images. -->

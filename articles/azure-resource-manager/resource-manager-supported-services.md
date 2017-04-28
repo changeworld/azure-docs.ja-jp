@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/20/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 7dc5143086e3a73e0536408a41468b8cdd40bd12
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: a740813b013e75a098836290ad8e9ebe76d33b37
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -38,7 +38,7 @@ Azure ポータルとクラシック ポータルでサポートされている�
 | Container Registry |はい |[Container Registry の REST](/rest/api/containerregistry) |[Container Registry のリソース](/azure/templates/microsoft.containerregistry/registries) |
 | Container Service |はい |[コンテナー サービスの REST](/rest/api/compute/containerservices) |[コンテナー サービスのリソース](/azure/templates/microsoft.containerservice/containerservices) |
 | Dynamics Lifecycle Services |あり | | |
-| スケール セット |あり |[スケール セットの REST](/rest/api/compute/virtualmachinescalesets) |[スケール セットのリソース](/azure/templates/microsoft.compute/virtualmachinescalesets) |
+| スケール セット |あり |[スケール セットの REST](/rest/api/virtualmachinescalesets/) |[スケール セットのリソース](/azure/templates/microsoft.compute/virtualmachinescalesets) |
 | Service Fabric |あり |[Service Fabric Rest](/rest/api/servicefabric) | [Service Fabric のリソース](/azure/templates/microsoft.servicefabric/clusters) |
 | Virtual Machines |あり |[VM REST](/rest/api/compute/virtualmachines) |[VM のリソース](/azure/templates/microsoft.compute/virtualmachines) |
 | Virtual Machines (クラシック) |制限あり |- |- |
@@ -133,7 +133,7 @@ Azure Active Directory はリソース マネージャーと連携して、サ�
 | --- | --- | --- | --- |
 | 監視 |はい |[Monitor REST](/rest/api/monitor) |[Insights のリソース](/azure/templates/microsoft.insights/alertrules) |
 | Bing Maps |あり | | |
-| DevTest Labs |はい | [DevTest REST](/rest/api/dtl) |[DevTest Lab のリソース](/azure/templates/microsoft.devtestlab/labs) |
+| DevTest Labs |はい | [DevTest Labs REST](/rest/api/dtl) |[DevTest Labs リソース](/azure/templates/microsoft.devtestlab/labs) |
 | Visual Studio アカウント |はい | |[Visual Studio スキーマ](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-02-26/microsoft.visualstudio.json) |
 
 ## <a name="management-and-security"></a>管理とセキュリティ
@@ -158,7 +158,7 @@ Azure Active Directory はリソース マネージャーと連携して、サ�
 ## <a name="resource-providers-and-types"></a>リソース プロバイダーと種類
 リソースをデプロイするときに、リソース プロバイダーと種類に関する情報を取得しなければならないケースは少なくありません。 この情報は、REST API、Azure PowerShell、Azure CLI のいずれかを使って取得できます。
 
-リソース プロバイダーを使用するには、そのリソース プロバイダーをアカウントに登録する必要があります。 既定では、多くのリソース プロバイダーが自動的に登録されます。ただし、一部のリソース プロバイダーは手動で登録することが必要な場合があります。 次の例は、リソース プロバイダーの登録状態を取得し、必要に応じてリソース プロバイダーを登録する方法を示しています。
+リソース プロバイダーを使用するには、そのリソース プロバイダーをアカウントに登録する必要があります。 既定では、多くのリソース プロバイダーが自動的に登録されます。ただし、一部のリソース プロバイダーは手動で登録することが必要な場合があります。 このセクションの例は、リソース プロバイダーの登録状態を取得し、リソース プロバイダーを登録する方法を示しています。
 
 ### <a name="portal"></a>ポータル
 サブスクリプション ブレードで **[リソース プロバイダー]** を選択すると、サポートされているリソース プロバイダーの一覧を簡単に確認できます。 サブスクリプションをリソース プロバイダーに登録するには、**[登録]** リンクを選択します。
@@ -256,7 +256,7 @@ az provider show --namespace Microsoft.Web --query "resourceTypes[?resourceType=
 次の例では、特定のリソースの種類で利用できる API バージョンを取得する方法を示します。
 
 ```powershell
-    ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
+((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
 ```
 
 次のように出力されます。

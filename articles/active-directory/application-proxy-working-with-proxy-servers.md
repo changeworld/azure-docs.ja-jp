@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 01/12/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 07adf751001a49e0365dde7cb8d7d2317a6b8134
-ms.openlocfilehash: d79c8418769656ecfd35a71a450176bd27427f68
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 64d06a67ee5480e6bdbac2f6745ea32faa2cf003
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 02/27/2017
 * オンプレミスの送信プロキシをバイパスするようにコネクタを構成する。
 * 送信プロキシを使用して Azure AD アプリケーション プロキシにアクセスにするようにコネクタを構成する。
 
-コネクタの仕組みの詳細については、「[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-get-started)」を参照してください。
+コネクタの仕組みの詳細については、「[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started)」を参照してください。
 
 ## <a name="configure-your-connectors"></a>コネクタの構成
 
@@ -55,7 +55,7 @@ Microsoft Edge を使用してプロキシ設定を構成するには、次の�
 
 この OS コンポーネントは、wpad.domainsuffix の DNS 参照を実行することで、プロキシ サーバーの検出を試みます。 これが DNS で解決すると、wpad.dat の IP アドレスに対して HTTP 要求が作成されます。 この要求が、環境におけるプロキシ構成スクリプトになります。 コネクタは、このスクリプトを使用して送信プロキシ サーバーを選択します。 ただし、プロキシで追加の構成設定が必要なため、コネクタのトラフィックがプロキシを経由しないことがあります。
 
-次のセクションでは、トラフィックが送信プロキシを経由するようにするために必要な、送信プロキシの構成手順について説明します。 その前に、オンプレミス プロキシをバイパスして Azure サービスへの直接接続を使用するようにコネクタを構成する方法について見ていきましょう。 これは、管理する構成が&1; つ少なくて済むため、(ネットワーク ポリシーで許可されている場合) 推奨される方法です。
+次のセクションでは、トラフィックが送信プロキシを経由するようにするために必要な、送信プロキシの構成手順について説明します。 その前に、オンプレミス プロキシをバイパスして Azure サービスへの直接接続を使用するようにコネクタを構成する方法について見ていきましょう。 これは、管理する構成が 1 つ少なくて済むため、(ネットワーク ポリシーで許可されている場合) 推奨される方法です。
 
 コネクタで送信プロキシの使用を無効にするには、次のコード例に示すように、C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config ファイルを編集し、[system.net] セクションを追加します。
 
@@ -122,7 +122,7 @@ Microsoft Edge を使用してプロキシ設定を構成するには、次の�
 
 ### <a name="step-2-configure-the-proxy-to-allow-traffic-from-the-connector-and-related-services-to-flow-through"></a>手順 2: プロキシがコネクタと関連サービスのトラフィックの通過を許可するように構成する
 
-送信プロキシで考慮すべき点は次の&4; つです。
+送信プロキシで考慮すべき点は次の 4 つです。
 * プロキシ送信規則
 * プロキシの認証
 * プロキシ ポート
@@ -139,7 +139,7 @@ Microsoft Edge を使用してプロキシ設定を構成するには、次の�
 * login.windows.net
 * login.microsoftonline.com
 
-コネクタ サービスで使用する基になる Service Bus 管理チャネルでも、特定の IP アドレスへの接続が必要です。 代わりに Service Bus が FQDN に移動するまでは、次の&2; つのオプションがあります。
+コネクタ サービスで使用する基になる Service Bus 管理チャネルでも、特定の IP アドレスへの接続が必要です。 代わりに Service Bus が FQDN に移動するまでは、次の 2 つのオプションがあります。
 
 * すべてのアクセス先に対するコネクタの送信アクセスを許可する。
 * [Azure データセンターの IP アドレス範囲](https://www.microsoft.com/en-gb/download/details.aspx?id=41653)に対するコネクタの送信アクセスを許可する。
@@ -172,7 +172,7 @@ Service Bus のトラフィックも送信プロキシ サーバー経由で送�
 
 コネクタの接続の問題を特定してトラブルシューティングを行う最善の方法は、コネクタ サービスの開始時にそのサービス上でネットワーク キャプチャを実行することです。 これは手間のかかる作業なため、ネットワーク トレースのキャプチャおよびフィルター処理に関する簡単なヒントを見てみましょう。
 
-任意の監視ツールを使用することができます。 この記事の目的上、ここでは Microsoft ネットワーク モニター 3.4 を使用しています。 [これは Microsoft Web サイトからダウンロード](https://www.microsoft.com/en-us/download/details.aspx?id=4865)できます。
+任意の監視ツールを使用することができます。 この記事の目的上、ここでは Microsoft ネットワーク モニター 3.4 を使用しています。 [これは Microsoft Web サイトからダウンロード](https://www.microsoft.com/download/details.aspx?id=4865)できます。
 
 次のセクションで使用する例とフィルターはネットワーク モニター限定ですが、紹介する原則はどの分析ツールにも適用できます。
 
@@ -240,7 +240,7 @@ SYN パケットは、TCP 接続を確立するために最初に送信される
 
 コネクタの接続の問題に悩んでいるお客様は、サポート チームのチケットを作成してください。 チームが問題の解決をお手伝いします。
 
-アプリケーション プロキシ コネクタのエラーの解決については、[アプリケーション プロキシのトラブルシューティング](https://azure.microsoft.com/en-us/documentation/articles/active-directory-application-proxy-troubleshoot)に関する記事を参照してください。
+アプリケーション プロキシ コネクタのエラーの解決については、[アプリケーション プロキシのトラブルシューティング](https://azure.microsoft.com/documentation/articles/active-directory-application-proxy-troubleshoot)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 01/25/2017
 ms.author: rajanaki
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: da63e54b3f4e27ed3c4a1fd909c6c28295c6730d
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 711fb0715b7f12e12a742136f75af8069cbc83d8
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -33,11 +33,11 @@ ms.lasthandoff: 03/09/2017
 
 ## <a name="support-for-deployment-options"></a>デプロイ オプションのサポート
 
-**デプロイ** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager なし)** | **Hyper-V (Virtual Machine Manager あり)**
---- | --- | --- | ---
-**Azure ポータル** | Azure Resource Manager または従来のストレージとネットワークを使用して、オンプレミスの VMware VM を Azure Storage にレプリケートします。<br/><br/> Resource Manager ベースの VM または従来の VM にフェールオーバーします。 | Resource Manager または従来のストレージとネットワークを使用して、(Virtual Machine Managerクラウドにない) オンプレミスの Hyper-V VM を Azure Storage にレプリケートします。<br/><br/> Resource Manager ベースの VM または従来の VM にフェールオーバーします。 | Resource Manager または従来のストレージとネットワークを使用して、オンプレミスの Hyper-V (Virtual Machine Manager クラウドにある VM) を Azure Storage にレプリケートします。<br/><br/> Resource Manager ベースの VM または従来の VM にフェールオーバーします。
-**クラシック ポータル** | メンテナンス モードのみ。 新しい資格情報コンテナーを作成することはできません。 | メンテナンス モードのみ。 | メンテナンス モードのみ。
-**PowerShell** | 現在、サポートされていません。 | サポートされています | サポートされています
+**デプロイ** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager あり/なし)** |
+--- | --- | ---
+**Azure ポータル** | Azure Resource Manager または従来のストレージとネットワークを使用して、オンプレミスの VMware VM を Azure Storage にレプリケートします。<br/><br/> Resource Manager ベースの VM または従来の VM にフェールオーバーします。 | Resource Manager または従来のストレージとネットワークを使用して、オンプレミスの Hyper-V VM を Azure Storage にレプリケートします。<br/><br/> Resource Manager ベースの VM または従来の VM にフェールオーバーします。
+**クラシック ポータル** | メンテナンス モードのみ。 新しい資格情報コンテナーを作成することはできません。 | メンテナンス モードのみ。
+**PowerShell** | 現在、サポートされていません。 | サポートされています
 
 
 ## <a name="support-for-datacenter-management-servers"></a>データセンター管理サーバーのサポート
@@ -50,15 +50,15 @@ ms.lasthandoff: 03/09/2017
 **Hyper-V (Virtual Machine Manager あり)** | System Center Virtual Machine Manager 2016 と System Center Virtual Machine Manager 2012 R2
 
   >[!Note]
-  > Windows Server 2016 ホストと 2012 R2 ホストが混在する System Center Virtual Machine Manager 2016 クラウドは、現在サポートされていません。 
+  > Windows Server 2016 ホストと 2012 R2 ホストが混在する System Center Virtual Machine Manager 2016 クラウドは、現在サポートされていません。
 
 ### <a name="host-servers"></a>ホスト サーバー
 
 **デプロイ** | **サポート**
 --- | ---
 **VMware VM/物理サーバー** | vCenter 5.5 または 6.0 (5.5 の機能のみをサポート) 
-**Hyper-V (Virtual Machine Manager なし)** | Windows Server 2016、最新の更新プログラムが適用された Windows Server 2012 R2
-**Hyper-V (Virtual Machine Manager あり)** | Windows Server 2016、最新の更新プログラムが適用された Windows Server 2012 R2。<br/><br/> Windows Server 2016 ホストは、System Center Virtual Machine Manager 2016 によって管理されている必要があります。
+**Hyper-V (Virtual Machine Manager あり/なし)** | Windows Server 2016、最新の更新プログラムが適用された Windows Server 2012 R2。<br></br>SCVMM が使用されている場合、Windows Server 2016 ホストは、SCVMM 2016 によって管理されている必要があります。
+
 
   >[!Note]
   >Windows Server 2016 を実行しているホストと 2012 R2 を実行しているホストが混在する Hyper-V サイトは、現在サポートされていません。 Windows Server 2016 ホスト上の VM は、現時点では別の場所に復元することはできません。
@@ -68,50 +68,67 @@ ms.lasthandoff: 03/09/2017
 保護対象の仮想マシンは、Azure にレプリケートされるときは、[Azure の要件](#failed-over-azure-vm-requirements)を満たしている必要があります。
 次の表は、Azure Site Recovery 使用時の、さまざまなデプロイ シナリオにおけるレプリケートされるオペレーティング システムのサポートをまとめたものです。 このサポートは、示された OS で実行される任意のワークロードに適用可能です。
 
- **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager なし)** | **Hyper-V (Virtual Machine Manager あり)**
---- | --- | ---
-64 ビット Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 以降<br/><br/> Red Hat Enterprise Linux 6.7、6.8、7.1、7.2 <br/><br/> CentOS 6.5、6.6、6.7、6.8、7.0、7.1、7.2 <br/><br/> Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、6.5 <br/><br/> SUSE Linux Enterprise Server 11 SP3 | [Azure がサポートする](https://technet.microsoft.com/library/cc794868.aspx)任意のゲスト OS | [Azure がサポートする](https://technet.microsoft.com/library/cc794868.aspx)任意のゲスト OS
+ **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager あり/なし)** |
+--- | --- |
+64 ビット Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 以降<br/><br/> Red Hat Enterprise Linux 6.7、6.8、7.1、7.2 <br/><br/> CentOS 6.5、6.6、6.7、6.8、7.0、7.1、7.2 <br/><br/> Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、6.5 <br/><br/> SUSE Linux Enterprise Server 11 SP3 <br/><br/> SUSE Linux Enterprise Server 11 SP4 <br/>(レプリケートするマシンの SLES 11 SP3 から SLES 11 SP4 へのアップグレードはサポートされていません。 レプリケートされるマシンが SLES 11SP3 から SLES 11 SP4 にアップグレードされた場合は、アップグレード後にレプリケーションを無効にし、再度マシンを保護する必要があります。) | [Azure がサポートする](https://technet.microsoft.com/library/cc794868.aspx)任意のゲスト OS
 
+
+>[!IMPORTANT]
+>(Azure にレプリケートする VMware/物理サーバーに適用されます)
+>
+> Red Hat Enterprise Linux Server 7 以降および CentOS 7 以降のサーバーでは、Azure Site Recovery モビリティ サービスのバージョン 9.8 以降、カーネル バージョン 3.10.0-514 がサポートされます。<br/><br/>
+> モビリティ サービスのバージョンが 9.8 より前の 3.10.0-514 カーネルのお客様は、レプリケーションを無効にし、モビリティ サービスのバージョンを 9.8 に更新してから、再度レプリケーションを有効にする必要があります。  
+
+## <a name="supported-file-systems-and-guest-storage-configurations-on-linux-vmwarephysical-servers"></a>Linux (VMware/物理サーバー) でサポートされるファイル システムおよびゲスト ストレージ構成
+
+VMware または物理サーバーで実行される Linux サーバーでは、次のファイル システムおよびストレージ構成ソフトウェアがサポートされます。
+* ファイル システム: ext3、ext4、ReiserFS (Suse Linux Enterprise Server のみ)、XFS (v4 までに限られます)
+* ボリューム マネージャー: LVM2
+* マルチパス ソフトウェア: デバイス マッパー
+
+HP CCISS ストレージ コントローラーを使用する物理サーバーはサポートされていません。
 
 >[!Note]
->Linux バージョンのファイル システム (EXT3、ETX4、ReiserFS、XFS) に対するストレージのサポート、マルチパス ソフトウェア-デバイス マッパー、ボリューム マネージャー (LVM2)、HP CCISS コントローラー ストレージを使用する物理サーバーはサポートされて "*いません*"。
->ReiserFS ファイル システムは、SUSE Linux Enterprise Server 11 SP3 でのみサポートされています。
+> Linux サーバーでは、/ (ルート)、/boot、/usr、/usr/local、/var、/etc の各ディレクトリ (個別のパーティション/ファイルシステムとしてセットアップされた場合) はすべて、ソース サーバーの同じディスク (OS ディスク) 上に存在する必要があります。<br/><br/>
+> メタデータ チェックサムなど XFS v5 の機能は現在、XFS ファイルシステムの ASR でサポートされていません。 XFS ファイルシステムで v5 の機能を使用していないことを確認してください。 xfs_info ユーティリティを使用して、パーティションの XFS スーパーブロックを確認します。 ftype が 1 に設定されている場合は、XFSv5 の機能が使用されています。 
+>
+
 
 ## <a name="support-for-network-configuration"></a>ネットワーク構成のサポート
 次の表は、Azure へのレプリケートに Azure Site Recovery を使用するさまざまなデプロイ シナリオにおけるネットワーク構成のサポートをまとめたものです。
 
 ### <a name="host-network-configuration"></a>ホストのネットワーク構成
 
-**構成** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager なし)** | **Hyper-V (Virtual Machine Manager あり)**
---- | --- | --- | ---
-NIC チーミング | はい<br/><br/>物理マシン上でサポートされていません| はい | はい
-VLAN | あり | あり | あり
-IPv4 | はい | あり | はい
-IPv6 | なし | いいえ | なし
+**構成** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager あり/なし)**
+--- | --- | ---
+NIC チーミング | はい<br/><br/>物理マシン上でサポートされていません| はい
+VLAN | あり | あり
+IPv4 | はい | はい
+IPv6 | なし | なし
 
 ### <a name="guest-vm-network-configuration"></a>ゲスト VM のネットワーク構成
 
-**構成** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager なし)** | **Hyper-V (Virtual Machine Manager あり)**
---- | --- | --- | ---
-NIC チーミング | なし | いいえ | なし
-IPv4 | はい | あり | はい
-IPv6 | なし | いいえ | なし
-静的 IP (Windows) | あり | あり | あり
-静的 IP (Linux) | なし | いいえ | なし
-マルチ NIC | はい | あり | はい
+**構成** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager あり/なし)**
+--- | --- | ---
+NIC チーミング | なし | なし
+IPv4 | はい | はい
+IPv6 | なし | なし
+静的 IP (Windows) | あり | あり
+静的 IP (Linux) | なし | なし
+マルチ NIC | はい | はい
 
 ### <a name="failed-over-azure-vm-network-configuration"></a>フェールオーバーされる Azure VM のネットワーク構成
 
-**Azure のネットワーク** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager なし)** | **Hyper-V (Virtual Machine Manager あり)**
---- | --- | --- | ---
-ExpressRoute | あり | あり | あり
-ILB | はい | あり | はい
-ELB | はい | あり | はい
-Traffic Manager | はい | あり | はい
-マルチ NIC | はい | あり | はい
-予約済み IP | あり | あり | あり
-IPv4 | はい | あり | はい
-発信元アドレスを保持 | あり | あり | はい
+**Azure のネットワーク** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager あり/なし)**
+--- | --- | ---
+ExpressRoute | あり | あり
+ILB | はい | はい
+ELB | はい | はい
+Traffic Manager | はい | はい
+マルチ NIC | はい | はい
+予約済み IP | あり | あり
+IPv4 | はい | はい
+発信元アドレスを保持 | あり | はい
 
 
 ## <a name="support-for-storage"></a>ストレージのサポート
@@ -119,50 +136,51 @@ IPv4 | はい | あり | はい
 
 ### <a name="host-storage-configuration"></a>ホストのストレージ構成
 
-**構成** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager なし)** | **Hyper-V (Virtual Machine Manager あり)**
+**構成** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager あり/なし)**
 --- | --- | --- | ---
-NFS | VMware = はい<br/><br/> 物理サーバー = いいえ | 該当なし | 該当なし
-SMB 3.0 | 該当なし | はい | はい
-SAN (ISCSI) | あり | あり | はい
-マルチパス (MPIO)<br></br>テスト環境: Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON | はい | あり | はい
+NFS | VMware = はい<br/><br/> 物理サーバー = いいえ | 該当なし
+SMB 3.0 | 該当なし | はい
+SAN (ISCSI) | あり | はい
+マルチパス (MPIO)<br></br>テスト環境: Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON | はい | はい
 
 ### <a name="guest-or-physical-server-storage-configuration"></a>ゲストまたは物理サーバーのストレージ構成
 
-**構成** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager なし)** | **Hyper-V (Virtual Machine Manager あり)**
---- | --- | --- | ---
-VMDK | はい | 該当なし | 該当なし
-VHD/VHDX | 該当なし | はい | はい
-第 2 世代 VM | 該当なし | はい | はい
-EFI/UEFI| なし | はい | あり
-共有クラスター ディスク | VMware = はい<br/><br/> 物理サーバー = 該当なし | いいえ | なし
-暗号化されたディスク | いいえ | いいえ | なし
-NFS | なし | 該当なし | 該当なし
-SMB 3.0 | なし | いいえ | なし
-RDM | はい<br/><br/> 物理サーバー = 該当なし | 該当なし | 該当なし
-1 TB より大きいディスク | いいえ | いいえ | いいえ
-ストライピングされたディスクのボリューム > 1 TB<br/><br/> LVM 論理ボリュームの管理 | はい | あり | はい
-記憶域 | なし | はい | はい
-ディスクのホット アド/削除 | なし | いいえ | いいえ
-ディスクの除外 | はい | あり | はい
-マルチパス (MPIO) | 該当なし | はい | はい
+**構成** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager あり/なし)**
+--- | --- | ---
+VMDK | はい | 該当なし
+VHD/VHDX | 該当なし | はい
+第 2 世代 VM | 該当なし | はい
+EFI/UEFI| なし | はい
+共有クラスター ディスク | VMware = はい<br/><br/> 物理サーバー = 該当なし | いいえ
+暗号化されたディスク | いいえ | なし
+NFS | なし | 該当なし
+SMB 3.0 | なし | なし
+RDM | はい<br/><br/> 物理サーバー = 該当なし | 該当なし
+1 TB より大きいディスク | いいえ | いいえ
+ストライピングされたディスクのボリューム > 1 TB<br/><br/> LVM 論理ボリュームの管理 | はい | はい
+記憶域 | なし | あり
+ディスクのホット アド/削除 | なし | いいえ
+ディスクの除外 | はい | はい
+マルチパス (MPIO) | 該当なし | はい
 
-**Azure Storage** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager なし)** | **Hyper-V (Virtual Machine Manager あり)**
---- | --- | --- | ---
-LRS | はい | あり | はい
-GRS | はい | あり | はい
-クール ストレージ | なし | いいえ | なし
-ホット ストレージ| なし | いいえ | なし
-保存時の暗号化 (SSE)| はい | あり | はい
-Premium Storage | はい | なし | なし
-インポート/エクスポート サービス | なし | いいえ | いいえ
+**Azure Storage** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager あり/なし)**
+--- | --- | ---
+LRS | はい | はい
+GRS | はい | はい
+RA-GRS | はい | はい
+クール ストレージ | なし | なし
+ホット ストレージ| なし | なし
+保存時の暗号化 (SSE)| はい | はい
+Premium Storage | はい | はい
+インポート/エクスポート サービス | なし | いいえ
 
 
 ## <a name="support-for-azure-compute-configuration"></a>Azure コンピューティング構成のサポート
 
-**コンピューティング機能** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager なし)** | **Hyper-V (Virtual Machine Manager あり)**
+**コンピューティング機能** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager あり/なし)**
 --- | --- | --- | ---
-可用性セット | いいえ | いいえ | なし
-ハブ | あり | あり | はい
+可用性セット | はい | はい
+ハブ | あり | はい  
 
 ## <a name="failed-over-azure-vm-requirements"></a>フェールオーバーされる Azure VM の要件
 

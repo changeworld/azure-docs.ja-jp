@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure HDInsight での Hadoop、HBase、Kafka、Storm、または Spark の作成 | Microsoft Docs"
 description: "ブラウザー、Azure CLI、Azure PowerShell、REST、または SDK を使用して HDInsight に Linux ベースの Hadoop、HBase、Storm、または Spark クラスターを作成する方法について説明します。"
 services: hdinsight
@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 02/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: bc047ba2aacbbea6d47d3870ee70d9d9a068f83a
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 1b7772fbf719013d82e5baed1bbbf229d6f2946c
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -41,7 +41,7 @@ Hadoop クラスターは、クラスターでのタスクの分散処理に使�
 | [Storm](hdinsight-storm-overview.md) |リアルタイム イベント処理 |
 | [Spark](hdinsight-apache-spark-overview.md) |メモリ内処理、対話型クエリ、マイクロバッチ ストリーム処理 |
 | [対話型 Hive (プレビュー)](hdinsight-hadoop-use-interactive-hive.md) |対話型で高速な Hive クエリのメモリ内キャッシュ |
-| [R Server on Spark (プレビュー)](hdinsight-hadoop-r-server-overview.md) |さまざまなビッグ データ統計、予測モデリング、機械学習の機能 |
+| [R Server on Spark](hdinsight-hadoop-r-server-overview.md) |さまざまなビッグ データ統計、予測モデリング、機械学習の機能 |
 | [Kafka (プレビュー)](hdinsight-apache-kafka-introduction.md) | リアルタイムのストリーミング データ パイプラインとアプリケーションの構築に使用できる分散ストリーム プラットフォーム |
 
 各クラスターの種類には、クラスター内の独自のノード数、クラスター内のノードを表す用語、およびノードの種類ごとに既定の VM サイズがあります。 次の表では、各ノードの種類のノード数がかっこ内に示されています。
@@ -61,8 +61,8 @@ Hadoop クラスターは、クラスターでのタスクの分散処理に使�
   | --- | --- | --- | --- | --- | --- |
   | ヘッド: 既定の VM サイズ |D3 v2 |D3 v2 |A3 |D12 v2 |D12 v2 |
   | ヘッド: 推奨される VM サイズ |D3 v2、D4 v2、D12 v2 |D3 v2、D4 v2、D12 v2 |A3、A4、A5 |D12 v2、D13 v2、D14 v2 |D12 v2、D13 v2、D14 v2 |
-  | ワーカー: 既定の VM サイズ |D3 v2 |D3 v2 |D3 v2 |Windows: D12 v2、Linux: D4 v2 |Windows: D12 v2、Linux: D4 v2 |
-  | ワーカー: 推奨される VM サイズ |D3 v2、D4 v2、D12 v2 |D3 v2、D4 v2、D12 v2 |D3 v2、D4 v2、D12 v2 |Windows: D12 v2、D13 v2、D14 v2、Linux: D4 v2、D12 v2、D13 v2、D14 v2 |Windows: D12 v2、D13 v2、D14 v2、Linux: D4 v2、D12 v2、D13 v2、D14 v2 |
+  | worker: 既定の VM サイズ |D3 v2 |D3 v2 |D3 v2 |Windows: D12 v2、Linux: D4 v2 |Windows: D12 v2、Linux: D4 v2 |
+  | worker: 推奨される VM サイズ |D3 v2、D4 v2、D12 v2 |D3 v2、D4 v2、D12 v2 |D3 v2、D4 v2、D12 v2 |Windows: D12 v2、D13 v2、D14 v2、Linux: D4 v2、D12 v2、D13 v2、D14 v2 |Windows: D12 v2、D13 v2、D14 v2、Linux: D4 v2、D12 v2、D13 v2、D14 v2 |
   | ZooKeeper: 既定の VM サイズ | |A3 |A2 | | |
   | ZooKeeper: 推奨される VM サイズ | |A3、A4、A5 |A2、A3、A4 | | |
   | エッジ: 既定の VM サイズ | | | | |Windows: D12 v2、Linux: D4 v2 |
@@ -73,8 +73,8 @@ Hadoop クラスターは、クラスターでのタスクの分散処理に使�
   | --- | --- | --- | --- | --- | --- |
   | ヘッド: 既定の VM サイズ |D3 |D3 |A3 |D12 |D12 |
   | ヘッド: 推奨される VM サイズ |D3、D4、D12 |D3、D4、D12 |A3、A4、A5 |D12、D13、D14 |D12、D13、D14 |
-  | ワーカー: 既定の VM サイズ |D3 |D3 |D3 |Windows: D12、Linux: D4 |Windows: D12、Linux: D4 |
-  | ワーカー: 推奨される VM サイズ |D3、D4、D12 |D3、D4、D12 |D3、D4、D12 |Windows: D12、D13、D14、Linux: D4、D12、D13、D14 |Windows: D12、D13、D14、Linux: D4、D12、D13、D14 |
+  | worker: 既定の VM サイズ |D3 |D3 |D3 |Windows: D12、Linux: D4 |Windows: D12、Linux: D4 |
+  | worker: 推奨される VM サイズ |D3、D4、D12 |D3、D4、D12 |D3、D4、D12 |Windows: D12、D13、D14、Linux: D4、D12、D13、D14 |Windows: D12、D13、D14、Linux: D4、D12、D13、D14 |
   | ZooKeeper: 既定の VM サイズ | |A2 |A2 | | |
   | ZooKeeper: 推奨される VM サイズ | |A2、A3、A4 |A2、A3、A4 | | |
   | エッジ: 既定の VM サイズ | | | | |Windows: D12、Linux: D4 |
@@ -84,7 +84,7 @@ Hadoop クラスターは、クラスターでのタスクの分散処理に使�
 > ヘッドは、Storm クラスター タイプでは *Nimbus* と呼ばれます。 worker は、HBase クラスターでは *"リージョン"*、Storm クラスターでは *"スーパーバイザー"* と呼ばれます。
 
 > [!IMPORTANT]
-> クラスターの作成時または作成後のスケーリングで 32 個を超えるワーカー ノードを使用することを予定している場合は、コア数が 8 個以上、RAM が 14 GB 以上のヘッド ノード サイズを選択する必要があります。
+> クラスターの作成時または作成後のスケーリングで 32 個を超える worker ノードを使用することを予定している場合は、コア数が 8 個以上、RAM が 14 GB 以上のヘッド ノード サイズを選択する必要があります。
 >
 >
 
@@ -108,11 +108,11 @@ Azure HDInsight では、Standard と [Premium](hdinsight-component-versioning.m
 
 | クラスターの種類 | Standard | Premium |
 | --- | --- | --- |
-| Hadoop は、 |はい |はい |
-| Spark |はい |はい |
-| HBase |はい |いいえ |
-| Storm |はい |いいえ |
-| R Server on Spark |いいえ |はい |
+| Hadoop は、 |あり |あり |
+| Spark |あり |あり |
+| HBase |あり |いいえ |
+| Storm |あり |いいえ |
+| R Server on Spark |いいえ |あり |
 
 HDInsight Premium でサポートされるクラスターの種類が追加されたら、それに応じてこの表も更新されます。 次のスクリーンショットは、クラスターの種類を選択するための Azure ポータルの情報を示しています。
 
@@ -237,10 +237,10 @@ Azure Portal を使用してクラスターを構成するときに、**[ノー�
 | Standard_D13_v2 |8 |56 GB |8 |一時的 (SSD) = 400 GB |16 |16 x 500 |
 | Standard_D14_v2 |16 |112 GB |8 |一時的 (SSD) = 800 GB |32 |32 x 500 |
 
-これらのリソースの使用を計画するときに注意する必要のあるデプロイの考慮事項については、 [仮想マシンのサイズ](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。 さまざまなサイズの価格については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight)」をご覧ください。   
+これらのリソースの使用を計画するときに注意する必要のあるデプロイの考慮事項については、 [仮想マシンのサイズ](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。 さまざまなサイズの価格については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight)」をご覧ください。   
 
 > [!IMPORTANT]
-> クラスターの作成時または作成後のスケーリングで 32 個を超えるワーカー ノードを使用することを予定している場合は、コア数が 8 個以上、RAM が 14 GB 以上のヘッド ノード サイズを選択する必要があります。
+> クラスターの作成時または作成後のスケーリングで 32 個を超える worker ノードを使用することを予定している場合は、コア数が 8 個以上、RAM が 14 GB 以上のヘッド ノード サイズを選択する必要があります。
 >
 >
 
@@ -253,20 +253,23 @@ HDInsight クラスターを作成するとき、あるいはクラスターが�
 
 セカンダリ Azure Storage アカウントの詳細については、[HDInsight での Azure Storage の使用](hdinsight-hadoop-use-blob-storage.md)に関する記事をご覧ください。 セカンダリ Data Lake Store の詳細については、「 [Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」をご覧ください。
 
+> [!WARNING]
+> HDInsight クラスター以外の場所で追加のストレージ アカウントを使用することはできません。
+
 ## <a name="use-hiveoozie-metastore"></a>Hive/Oozie メタストアの使用
-HDInsight クラスターを削除した後も Hive テーブルを保持する場合は、カスタム メタストアを使用することをお勧めします。 そのメタストアを別の HDInsight クラスターにアタッチすることもできます。
+HDInsight クラスターを削除した後も Hive テーブルを保持する場合は、カスタム metastore を使用することをお勧めします。 そのメタストアを別の HDInsight クラスターにアタッチすることもできます。
 
 > [!IMPORTANT]
-> あるバージョンの HDInsight クラスター用に作成された HDInsight メタストアは、別の HDInsight クラスター バージョン間で共有できません。 HDInsight のバージョンの一覧は、「[サポートされる HDInsight のバージョン](hdinsight-component-versioning.md#supported-hdinsight-versions)」をご覧ください。
+> あるバージョンの HDInsight クラスター用に作成された HDInsight metastore は、別の HDInsight クラスター バージョン間で共有できません。 HDInsight のバージョンの一覧は、「[サポートされる HDInsight のバージョン](hdinsight-component-versioning.md#supported-hdinsight-versions)」をご覧ください。
 >
 >
 
-メタストアには、Hive テーブル、パーティション、スキーマ、列などについての Hive と Oozie メタデータが格納されます。 metastore では Hive と Oozie メタデータを保持できるため、新しいクラスターを作成するときに、Hive テーブルまたは Oozie ジョブを再作成する必要はありません。 既定では、Hive は組み込みの Azure SQL Database を使用してこの情報を格納します。 組み込みデータベースは、クラスターが削除されるとメタデータを保持できません。 Hive メタストアが構成された HDInsight クラスターで Hive テーブルを作成すると、同じ Hive メタストアを使用してクラスターを再作成したときにそれらのテーブルが保持されます。
+メタストアには、Hive テーブル、パーティション、スキーマ、列などについての Hive と Oozie メタデータが格納されます。 metastore では Hive と Oozie メタデータを保持できるため、新しいクラスターを作成するときに、Hive テーブルまたは Oozie ジョブを再作成する必要はありません。 既定では、Hive は組み込みの Azure SQL Database を使用してこの情報を格納します。 組み込みデータベースは、クラスターが削除されるとメタデータを保持できません。 Hive metastore が構成された HDInsight クラスターで Hive テーブルを作成すると、同じ Hive metastore を使用してクラスターを再作成したときにそれらのテーブルが保持されます。
 
 HBase のクラスターの種類では、メタストア構成は使用できません。
 
 > [!IMPORTANT]
-> カスタム メタストア を作成するときは、データベース名にダッシュやハイフンを使用しないでください。 クラスター作成プロセスが失敗する可能性があります。
+> カスタム metastore を作成するときは、データベース名にダッシュやハイフンを使用しないでください。 クラスター作成プロセスが失敗する可能性があります。
 >
 >
 

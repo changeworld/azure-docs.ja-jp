@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory B2B コラボレーション ユーザーの多要素認証 | Microsoft Docs"
+title: "Azure Active Directory B2B コラボレーション ユーザーの条件付きアクセス | Microsoft Docs"
 description: "Azure Active Directory B2B コラボレーションでは、会社のアプリケーションへの選択的なアクセスのために、多要素認証 (MFA) をサポートしています"
 services: active-directory
 documentationcenter: 
@@ -13,19 +13,20 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/16/2017
+ms.date: 04/11/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 0c07c842ba8c6214d6746b0361af7b416069a6f5
-ms.openlocfilehash: 32d0b45080d57712209e0c5a3e5adf981fb4b66e
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: fac4657e9b78e900c052384e212aa9f3915f970d
+ms.lasthandoff: 04/13/2017
 
 
 ---
 
-# <a name="multi-factor-authentication-for-azure-active-directory-b2b-collaboration-users"></a>Azure Active Directory B2B コラボレーション ユーザーの多要素認証
+# <a name="conditional-access-for-b2b-collaboration-users"></a>B2B コラボレーション ユーザーの条件付きアクセス
 
-この Azure AD B2B コラボレーションのパブリック プレビューの更新では、組織が B2B コラボレーション ユーザーにも多要素認証 (MFA) ポリシーを強制できる機能を導入します。 この更新では、リソース テナントに MFA が常に強制されます。
+## <a name="multi-factor-authentication-for-b2b-users"></a>B2B ユーザーの多要素認証
+Azure AD B2B コラボレーションでは、組織は B2B ユーザーの多要素認証ポリシーを一意に適用することができます。 このポリシーは、組織のフルタイムの従業員とメンバーについてこのポリシーを有効にするのと同じ方法で、テナント レベル、アプリ レベル、または個々のユーザー レベルで適用できます。 MFA ポリシーは、リソース組織で適用します。
 
 そのため、次のようになります。
 1. 会社 A の管理者またはインフォメーション ワーカーが、会社 B のユーザーを会社 A のアプリケーション Foo に招待します。
@@ -34,28 +35,27 @@ ms.lasthandoff: 02/17/2017
 4. ユーザーは、会社 A で MFA をセットアップし、MFA オプションを選択することができます。
 5. これは、どの ID でも機能します (会社 B のユーザーがソーシャル ID を使用して認証を行う場合は、たとえば Azure AD または MSA)。
 6. 会社 A は、MFA をサポートしている十分な数の Premium Azure AD SKU を所持している必要があります。 会社 B のユーザーは、A 社のこのライセンスを使用します。
-7. まとめると、パートナー組織自体ではなく招待側のテナントが、"*常に*" パートナー組織の B2B コラボレーション ユーザーの MFA に対する責任を持ちます (パートナー組織が MFA 機能を持っている場合でも)。 今後のリリースでは、招待側の組織が自社の MFA を使用するのではなく、特定のパートナー組織の MFA を信頼できるようになっていく予定です。
 
-## <a name="setting-up-mfa-for-b2b-collaboration-users"></a>B2B コラボレーション ユーザー用の MFA のセットアップ
+まとめると、パートナー組織自体ではなく招待側のテナントが、"*常に*" パートナー組織の B2B コラボレーション ユーザーの MFA に対する責任を持ちます (パートナー組織が MFA 機能を持っている場合でも)。
+
+### <a name="setting-up-mfa-for-b2b-collaboration-users"></a>B2B コラボレーション ユーザー用の MFA のセットアップ
 B2B コラボレーション ユーザー用の MFA のセットアップがいかに簡単かについては、次のビデオをご覧ください。
 
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-conditional-access-setup/Player]
 
-## <a name="b2b-users-mfa-experience-for-offer-redemption"></a>B2B ユーザーがオファーに応じるための MFA エクスペリエンス
+### <a name="b2b-users-mfa-experience-for-offer-redemption"></a>B2B ユーザーがオファーに応じるための MFA エクスペリエンス
 招待に応じるためのエクスペリエンスについては、次のビデオのアニメーションをご覧ください。
 
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/MFA-redemption/Player]
 
-## <a name="mfa-reset-for-b2b-collaboration-users"></a>B2B コラボレーション ユーザーの MFA リセット
+### <a name="mfa-reset-for-b2b-collaboration-users"></a>B2B コラボレーション ユーザーの MFA リセット
 現時点では、管理者は次の PowerShell コマンドレットを使用することによってのみ、B2B コラボレーション ユーザーにもう一度証明を要求できます。 そのため、B2B コラボレーション ユーザーの証明方法をリセットする場合は、以下の PowerShell コマンドレットを使用する必要があります。
-
-> [!NOTE]
-> 新しいコマンドレットを使用するには、Azure AD PowerShell V2 モジュールをインストールする必要があります。このモジュールは、https://www.powershellgallery.com/packages/AzureADPreview で入手できます。
 
 1. Azure への接続
 
   ```
-  Connect-MsolService and login
+  $cred = Get-Credential
+  Connect-MsolService -Credential $cred
   ```
 2. すべてのユーザーと証明方法を取得します。
 
@@ -65,8 +65,7 @@ B2B コラボレーション ユーザー用の MFA のセットアップがい�
   たとえば次のようになります。
 
   ```
-  PS C:\Users\tjwasser> Get-MsolUser | where { $_.StrongAuthenticationMethods} | select UserPrincipalName,
-  @{n="Methods";e={($_.StrongAuthenticationMethods).MethodType}}
+  PS C:\Users\tjwasserGet-MsolUser | where { $_.StrongAuthenticationMethods} | select UserPrincipalName, @{n="Methods";e={($_.StrongAuthenticationMethods).MethodType}}
   ```
 
 3. 特定のユーザーの MFA 方法をリセットします。 次に、その UserPrincipalName を使用してリセット コマンドを実行し、B2B コラボレーション ユーザーにもう一度証明方法を設定するように要求することができます。 例:
@@ -74,6 +73,46 @@ B2B コラボレーション ユーザー用の MFA のセットアップがい�
   ```
   Reset-MsolStrongAuthenticationMethodByUpn -UserPrincipalName gsamoogle_gmail.com#EXT#@ WoodGroveAzureAD.onmicrosoft.com
   ```
+
+### <a name="why-do-we-perform-mfa-at-the-resource-tenancy"></a>リソース テナントで MFA を実行する理由
+
+現在のリリースでは、MFA は常にリソース テナントにあります。 その理由は予測可能性です。
+
+たとえば、Contoso ユーザー (Sally) が Fabrikam に招待され、Fabrikam が B2B ユーザーの MFA を有効にしたとします。
+
+ここで、Contoso の App1 については MFA ポリシーが有効になっていて、App2 については有効になっていない場合、Contoso の MFA 要求によってトークン内で Sally が Fabrikam で MFA を実行するかどうかを決定すると、次の問題が発生する可能性があります。
+
+* 1 日目: Sally は App1 にアクセスするため Contoso で MFA を実行しましたが、その場合 Fabrikam では MFA 要求は表示されません。
+
+* 2 日目: Sally は Contoso で App 2 にアクセスしたので、Fabrikam にアクセスする際、Fabrikam で MFA の登録を行う必要があります。
+
+このため Sally はかなり混乱して、サインインを完了できなくなる可能性があります。
+
+さらに、Contoso に MFA の機能があっても、Fabrikam が Contoso の MFA ポリシーを信頼するとは限りません。
+
+最後に、リソース テナントの MFA は、MSA とソーシャル ID、および MFA をセットアップしていないパートナー組織でも機能します。
+
+したがって、B2B ユーザーの MFA では、常にリソース MFA を要求することをお勧めします。 この場合、MFA が重複する可能性がありますが、いつリソース テナントにアクセスしてもエンドユーザーのエクスペリエンスは予測可能なので、Sally は リソース テナントで MFA の登録を行う必要があります。
+
+### <a name="device-location-and-risk-based-conditional-access-for-b2b-users"></a>B2B ユーザー用のデバイス、場所、リスクに基づく条件付きアクセス
+
+Contoso 組織が会社のデータに関してデバイス ベースの条件付きアクセス ポリシーを有効にした場合、非管理対象デバイス (つまり、Contoso 組織によって管理されておらず、Contoso のデバイス ポリシーに準拠していないデバイス) からのアクセスは禁止されます。
+
+つまり、B2B ユーザーのデバイスが Contoso によって管理されていない場合、このポリシーが適用されるどのような環境でもパートナー組織の B2B ユーザーのアクセスはブロックされます。
+
+別の組織のユーザーに、招待する側の組織にそのユーザーのデバイスを管理してもらうよう期待するのは困難です。 そのため、今後の更新プログラムでは、Contoso が特定のパートナーのデバイス コンプライアンス状態を信頼できるようにします。 これにより、Fabrikam のユーザーが Fabrikam によって管理されるデバイスを使用している場合、そのユーザーが Contoso のリソースにもアクセスできるポリシーを Contoso が適用できるようになります。
+
+一方、Contoso は、デバイス ベースの条件付きアクセス ポリシーで特定のパートナー ユーザーを含む除外リストを作成できます。
+
+#### <a name="location-based-conditional-access-for-b2b"></a>B2B 向けの場所ベースの条件付きアクセス
+
+招待する側の組織 (たとえば、Contoso) がパートナー組織 (たとえば、Fabrikam) を定義する信頼されたネットワーク境界 (つまり、IP アドレスの範囲) を作成できる場合は、B2B ユーザー用の場所ベースの条件付きアクセス ポリシーを適用することができます。
+
+#### <a name="risk-based-conditional-access-for-b2b"></a>B2B 向けのリスクベースの条件付きアクセス
+
+現時点では、リスク評価は B2B ユーザーのホーム組織 (言い換えれば、B2B ユーザーの身元確認テナント) で実行されるため、B2B ユーザー用のサインイン リスクベース ポリシーを適用することはできません。
+
+今後の更新では、既知のリスクだけでなく、他の場所で発生する可能性があるために知るすべのないリスクからも Contoso が外部共有のアプリとデータを保護できるように、パートナーからのリスク スコアのフェデレーション (パートナーの同意のもと) について検討中です。
 
 ## <a name="next-steps"></a>次のステップ
 
