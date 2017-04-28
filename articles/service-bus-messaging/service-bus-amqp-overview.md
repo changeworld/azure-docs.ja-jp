@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 04/27/2017
 ms.author: sethm
 translationtype: Human Translation
 ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
 ms.openlocfilehash: 91b138ee9590a66c63e2055eaeace82b4e719ae5
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -101,9 +102,4 @@ Azure Service Bus で AMQP 1.0 がサポートされるため、仲介型メッ�
 [AMQP で PHP から Service Bus を使用する]: service-bus-amqp-php.md
 [Azure Linux VM に Apache Qpid Proton-C をインストールする]: service-bus-amqp-apache.md
 [Windows Server 用 Service Bus の AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
