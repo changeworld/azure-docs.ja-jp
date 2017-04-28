@@ -12,8 +12,8 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
-ms.author: curtand
+ms.date: 04/26/2017
+ms.author: curtand;jeffsta
 translationtype: Human Translation
 ms.sourcegitcommit: f0e7890ba4c7ef281558886f8cb8bcc429944f06
 ms.openlocfilehash: 9c0c15c0bf876110fcf9dd01a7930d3b226dfbc4
