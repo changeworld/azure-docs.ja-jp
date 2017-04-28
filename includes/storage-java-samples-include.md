@@ -8,7 +8,3 @@ Azure Storage Java クライアント ライブラリ向けのサンプル リ�
 * [Java での Azure Queue サービスの概要](https://azure.microsoft.com/resources/samples/storage-queue-java-getting-started/)
 * [Java での Azure Table service の概要](https://azure.microsoft.com/resources/samples/storage-table-java-getting-started/)
 * [Storage の Java クライアント ライブラリのサンプル](https://github.com/Azure/azure-storage-java/tree/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage)
-
-<!--HONumber=Jan17_HO3-->
-
-
