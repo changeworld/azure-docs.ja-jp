@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure App Service での認証と承認 | Microsoft Docs"
 description: "Azure App Service の認証/承認の機能の概念リファレンスと概要"
 services: app-service
@@ -24,7 +24,7 @@ ms.openlocfilehash: e89ba5613c615c41af93e8f63b3703da8395095c
 ## <a name="what-is-app-service-authentication--authorization"></a>App Service の認証および承認とは
 App Service の認証および承認は、アプリケーションで、アプリのバックエンドでコードを変更する必要がないように、ユーザーをサインインさせる方法を提供する機能です。 これにより、アプリケーションの保護が容易になり、またユーザーごとのデータにも対応できるようになります。
 
-App Service では、サード パーティの ID プロバイダーがアカウントを格納しユーザーを認証する、フェデレーション ID を使用しています。 アプリケーションは、プロバイダーの ID 情報を、自身には格納する必要がないように使用します。 App Service では、標準で Azure Active Directory、Facebook、Google、Microsoft アカウント、および Twitter の&5; つの ID プロバイダーをサポートしています。 アプリで使用可能な ID プロバイダーには制限がないため、ユーザーのサインイン方法に合わせたオプションを提供できます。 組み込みのサポートを拡張するために、他の ID プロバイダーや[独自のカスタム ID ソリューション][custom-auth]を統合できます。
+App Service では、サード パーティの ID プロバイダーがアカウントを格納しユーザーを認証する、フェデレーション ID を使用しています。 アプリケーションは、プロバイダーの ID 情報を、自身には格納する必要がないように使用します。 App Service では、標準で Azure Active Directory、Facebook、Google、Microsoft アカウント、および Twitter の 5 つの ID プロバイダーをサポートしています。 アプリで使用可能な ID プロバイダーには制限がないため、ユーザーのサインイン方法に合わせたオプションを提供できます。 組み込みのサポートを拡張するために、他の ID プロバイダーや[独自のカスタム ID ソリューション][custom-auth]を統合できます。
 
 すぐに開始する場合は、以下のチュートリアルのいずれかを参照してください。
 

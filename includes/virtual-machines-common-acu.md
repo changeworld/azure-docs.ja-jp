@@ -30,4 +30,4 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 | [H](../articles/virtual-machines/windows/sizes-hpc.md) |290 ～ 300* |
 | [L4s ～ L32s](../articles/virtual-machines/windows/sizes-storage.md) |180 ～ 240* |
 
-* が付いている ACU は、Intel® Turbo テクノロジを使用して CPU 周波数を上げ、パフォーマンスを増強します。  増強量は、VM のサイズ、ワークロード、および同じホストで実行されている他のワークロードによって変化します。
+\* が付いている ACU は、Intel® Turbo テクノロジを使用して CPU 周波数を上げ、パフォーマンスを増強します。  増強量は、VM のサイズ、ワークロード、および同じホストで実行されている他のワークロードによって変化します。

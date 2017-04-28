@@ -1,4 +1,4 @@
----
+﻿---
 title: "Microsoft Azure と Azure Monitor のアラートの概要 | Microsoft Docs"
 description: "アラートを使用すると、Azure リソースのメトリック、イベント、またはログを監視し、指定した条件が満たされたときに通知を受けることができます。"
 author: rboucher
