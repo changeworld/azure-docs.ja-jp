@@ -57,7 +57,7 @@ Azure RBAC には、すべてのリソースの種類に適用される 3 つの
 * 共同作成者ロールをリソース グループ スコープでアプリケーションに割り当てると、 そのアプリケーションでは、そのリソース グループ内のすべてのタイプのリソースを管理できるようになりますが、サブスクリプション内の他のリソース グループは管理できません。
 
 ## <a name="azure-rbac-vs-classic-subscription-administrators"></a>Azure RBAC と従来のサブスクリプションの管理者の比較
-従来のサブスクリプションの管理者と共同管理者には、Azure サブスクリプションへのフル アクセス権があります。 リソースの管理には、[Azure ポータル](https://portal.azure.com)と Azure Resource Manager API の組み合わせ、または [Azure クラシック ポータル](https://manage.windowsazure.com)と Azure クラシック デプロイメント モデルの組み合わせを使用できます。 RBAC モデルで、従来の管理者は、サブスクリプション スコープで所有者ロールを割り当てられます。
+従来のサブスクリプションの管理者と共同管理者には、Azure サブスクリプションへのフル アクセス権があります。 リソースの管理には、[Azure Portal](https://portal.azure.com)と Azure Resource Manager API の組み合わせ、または [Azure クラシック ポータル](https://manage.windowsazure.com)と Azure クラシック デプロイメント モデルの組み合わせを使用できます。 RBAC モデルで、従来の管理者は、サブスクリプション スコープで所有者ロールを割り当てられます。
 
 Azure RBAC は Azure ポータルと新しい Azure Resource Manager API の組み合わせのみでサポートされています。 RBAC ロールを割り当てられているユーザーとアプリケーションは、クラシック管理ポータルと Azure クラシック デプロイメント モデルを使用できません。
 
