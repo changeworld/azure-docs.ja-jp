@@ -7,8 +7,3 @@
     ![iSCSI イニシエーターのプロパティ](./media/storsimple-get-iqn/HCS_iSCSIInitiatorPropertiesFigureIQN-include.png)
 3. この文字列を保存します。
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

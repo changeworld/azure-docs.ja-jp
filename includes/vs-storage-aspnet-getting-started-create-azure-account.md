@@ -4,8 +4,3 @@
 Azure Storage アカウントは、[Azure PowerShell](../articles/storage/storage-powershell-guide-full.md)、[Azure CLI](../articles/storage/storage-azure-cli.md)、または [.NET 用ストレージ リソース プロバイダー クライアント ライブラリ](https://msdn.microsoft.com/library/azure/mt131037.aspx)を使用して作成することもできます。
 
 
-
-
-<!--HONumber=Dec16_HO3-->
-
-

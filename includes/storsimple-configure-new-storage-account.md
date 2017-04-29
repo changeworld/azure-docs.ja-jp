@@ -9,13 +9,8 @@
    2. ストレージ アカウントの名前を入力します。
    3. Microsoft Azure ストレージ アカウントのプライマリ **アクセス キー** を入力します。
    4. **[SSL モードを有効にする]** を選択して、デバイスとクラウド間のネットワーク通信用のセキュリティで保護されたチャネルを作成します。 プライベート クラウド内で運用している場合にのみ、 **[SSL モードを有効にする]** チェック ボックスをオフにします。
-   5. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-configure-new-storage-account/HCS_CheckIcon-include.png) をクリックします。 ストレージ アカウントが正常に作成されると通知が表示されます。
+   5. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-configure-new-storage-account/HCS_CheckIcon-include.png)をクリックします。 ストレージ アカウントが正常に作成されると通知が表示されます。
       
       ![ストレージ アカウントの追加](./media/storsimple-configure-new-storage-account/HCS_AddStorageAccount-include.png)
 4. 新しく作成されたストレージ アカウントは、**[構成]** ページの **[ストレージ アカウント]** に表示されます。 **[保存]** をクリックして、新しく作成されたストレージ アカウントを保存します。 確認を求められたら、 **[OK]** をクリックします。
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

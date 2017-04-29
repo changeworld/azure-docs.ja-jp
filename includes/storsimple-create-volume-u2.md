@@ -24,7 +24,7 @@
       
         ![ローカル ボリュームの追加](./media/storsimple-create-volume-u2/add-tiered-volume-include.png)
    
-   1. 矢印アイコン  ![矢印アイコン](./media/storsimple-create-volume-u2/HCS_ArrowIcon-include.png)  をクリックして、次のページに進みます。
+   1. 矢印アイコン  ![矢印アイコン](./media/storsimple-create-volume-u2/HCS_ArrowIcon-include.png) をクリックして、次のページに進みます。
 3. **[追加設定]** ダイアログ ボックスで、新しい Access Control レコード (ACR) を追加します。
    
    1. ACR の **[名前]** を入力します。
@@ -37,10 +37,5 @@
       > 
       
       ![ボリュームの追加](./media/storsimple-create-volume-u2/AddVolumeAdditionalSettings1.png)
-4. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-create-volume-u2/HCS_CheckIcon-include.png) チェックボックスをオンにします。 指定した設定でボリュームが作成されます。
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+4. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-create-volume-u2/HCS_CheckIcon-include.png)チェックボックスをオンにします。 指定した設定でボリュームが作成されます。
 
