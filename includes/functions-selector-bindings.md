@@ -13,7 +13,3 @@
 > * [Twilio](../articles/azure-functions/functions-bindings-twilio.md)  
 > 
 > 
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -27,8 +27,3 @@
    ![SFTP アクション条件イメージ 13](./media/connectors-create-api-sftp/condition-13.png)   
 9. ワークフローへの変更を保存します。  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -77,8 +77,3 @@ JSON 形式の VNet のサンプルは次のとおりです。
 * VNet に関する [REST API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/mt163650.aspx) も参照してください。
 * サブネットに関する [REST API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/mt163618.aspx) も参照してください。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

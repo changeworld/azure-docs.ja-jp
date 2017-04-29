@@ -29,8 +29,3 @@
     "sqlReaderQuery": "select * from MyTable"
 },
 ```
-
-
-<!--HONumber=Nov16_HO3-->
-
-

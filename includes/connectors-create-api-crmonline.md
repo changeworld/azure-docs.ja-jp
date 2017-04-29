@@ -16,8 +16,3 @@
 4. 接続が作成されたことを確認します。 これで、ロジック アプリで他の手順に進むことができます。  
    ![](./media/connectors-create-api-crmonline/dynamics-properties.png)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

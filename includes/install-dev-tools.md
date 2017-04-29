@@ -6,8 +6,3 @@
 > * Mac または Linux を使用している場合は、[http://nodejs.org](http://nodejs.org) から Node.js をインストールします。 Windows インストーラーには既に Node.js が含まれています。
 > 
 > 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

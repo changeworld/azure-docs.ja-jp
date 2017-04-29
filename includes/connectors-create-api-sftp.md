@@ -12,8 +12,3 @@ SFTP アカウントに接続するロジック アプリを承認する手順�
 3. 接続が作成されたら、ロジック アプリで他の手順を自由に実行できるようになります。   
    ![SFTP オンライン接続イメージ 3](./media/connectors-create-api-sftp/sftp-3.png) 
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

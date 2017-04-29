@@ -9,7 +9,7 @@
 ### <a name="download-the-vault-credential-file"></a>資格情報コンテナーの資格情報ファイルのダウンロード
 資格情報コンテナーの資格情報ファイルは、セキュリティで保護されたチャネルを介して Azure ポータルからダウンロードされます。 Azure Backup サービスは証明書の秘密キーを認識せず、ポータルまたはサービスでは秘密キーは保持されません。 資格情報コンテナーの資格情報ファイルをローカル コンピューターにダウンロードするには、次の手順を使用します。
 
-1.  [管理ポータル](https://manage.windowsazure.com/)
+1. [管理ポータル](https://manage.windowsazure.com/)
 2. 左側のナビゲーション ウィンドウの **[Recovery Services]** をクリックして、作成したバックアップ資格情報コンテナーを選択します。 クラウド アイコンをクリックして、バックアップ資格情報コンテナーの [クイック スタート] ビューに移動します。
    
    ![Quick view](./media/backup-download-credentials/quickview.png)
@@ -23,9 +23,4 @@
 * 資格情報コンテナーの資格情報ファイルは登録ワークフロー中しか使用されません。
 * 資格情報コンテナーの資格情報ファイルの有効期限は 48 時間であり、ポータルからダウンロードすることができます。
 * ワークフローに関する質問については、Azure Backup の [FAQ](../articles/backup/backup-azure-backup-faq.md) を参照してください。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -12,8 +12,3 @@ Azure では、可用性グループ リスナーを構成する 2 つの方法�
 
 ILB は、リージョン スコープを持つ仮想ネットワークでのみ構成できます。 アフィニティ グループに構成されている既存の仮想ネットワークは ILB を使用できません。 詳細については、「 [内部ロード バランサー](../articles/load-balancer/load-balancer-internal-overview.md)」を参照してください。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

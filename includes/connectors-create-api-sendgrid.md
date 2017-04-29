@@ -12,8 +12,3 @@
 3. 接続が作成されたら、ロジック アプリで他の手順を自由に実行できるようになります。  
    ![SendGrid 手順 3](./media/connectors-create-api-sendgrid/sendgrid-3.png)   
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

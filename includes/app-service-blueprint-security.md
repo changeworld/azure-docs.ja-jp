@@ -16,8 +16,3 @@
   * [ASE の着信ネットワーク トラフィック用のアクセス制御を構成する](../articles/app-service-web/app-service-app-service-environment-control-inbound-traffic.md)
   * [ASE からバックエンド リソースに安全に接続する](../articles/app-service-web/app-service-app-service-environment-securely-connecting-to-backend-resources.md)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

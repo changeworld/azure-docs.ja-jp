@@ -19,8 +19,3 @@
 * .NET API アプリの場合、[リモート デバッグ セッション](../articles/app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remotedebug)を開始して、ADAL を使用してベアラー トークンを取得するコード、または予測されるサービス プリンシパル ID に対して要求を確認するコードに渡される変数の値を確認します。 コードはさまざまなソースの構成値を選択することができるので、意外な結果になることがあります。 たとえば、Azure App Service Environment 設定を構成するときに、`ida:ClientID` を間違って `ida:ClientId` と入力すると、Azure App Service 設定を無視して Web.config ファイルが検索され、`ida:ClientId` の値が取得される可能性があります。 
 * 通常の Internet Explorer ウィンドウでうまくいかない場合は、既存のログインが妨げになっている可能性があるので、InPrivate を試し、Chrome または Firefox を使ってみてください。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

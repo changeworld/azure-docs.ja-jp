@@ -115,8 +115,3 @@ Azure Active Directory から取得した新しいユーザー、 **開発者の
     data:    Tags:
     data:
     info:    group create command OK
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -203,8 +203,3 @@ Vnet は、1 つの別の機能と、Azure インフラストラクチャでホ�
 ### <a name="is-there-tooling-support-for-vnets"></a>VNet に対するツール サポートはありますか。
 はい。 各種プラットフォームで PowerShell とコマンド ライン ツールを使用することができます。 詳細については、 [こちら](http://go.microsoft.com/fwlink/?LinkId=317721)で確認できます。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

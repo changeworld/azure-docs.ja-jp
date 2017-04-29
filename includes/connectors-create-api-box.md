@@ -16,8 +16,3 @@ Box アカウントに接続するロジック アプリを承認する手順を
 5. 接続が作成されたら、ロジック アプリで他の手順を自由に実行できるようになります。  
    ![Box の接続の作成手順](./media/connectors-create-api-box/box-5.png)  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

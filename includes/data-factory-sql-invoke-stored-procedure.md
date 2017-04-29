@@ -65,8 +65,3 @@ CREATE TYPE [dbo].[MarketingType] AS TABLE(
 ```
 ストアド プロシージャ機能は [テーブル値パラメーター](https://msdn.microsoft.com/library/bb675163.aspx)を利用しています。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

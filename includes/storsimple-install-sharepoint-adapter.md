@@ -18,8 +18,3 @@
 7. SharePoint サーバーの全体管理ページを開きます。 SharePoint 用 StorSimple アダプターへのリンクを含む StorSimple 構成グループが表示されます。
 8. 次の [RBS の構成](#configure-rbs)手順に進みます。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

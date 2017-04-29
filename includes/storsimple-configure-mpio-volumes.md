@@ -6,8 +6,3 @@
     ![MPIO プロパティ、マルチパスの検出](./media/storsimple-configure-mpio-volumes/IC741003.png)
 4. メッセージが表示されたら、サーバーを再起動します。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-
