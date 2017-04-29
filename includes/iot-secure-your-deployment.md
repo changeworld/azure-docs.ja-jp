@@ -107,8 +107,3 @@ Azure IoT Hub によって取り込まれたデータは、Azure Stream Analytic
 [lnk-appservices]: https://azure.microsoft.com/services/app-service/
 [lnk-logicapps]: https://azure.microsoft.com/services/app-service/logic/
 [lnk-blob]: https://azure.microsoft.com/services/storage/
-
-
-<!--HONumber=Dec16_HO1-->
-
-

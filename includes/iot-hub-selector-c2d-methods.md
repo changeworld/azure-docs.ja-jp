@@ -26,7 +26,3 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
 [IoT Hub を使用したクラウドからデバイスへのメッセージの送信]: ../articles/iot-hub/iot-hub-csharp-csharp-c2d.md
 [IoT Hub の使用]: ../articles/iot-hub/iot-hub-node-node-getstarted.md
-
-<!--HONumber=Dec16_HO1-->
-
-
