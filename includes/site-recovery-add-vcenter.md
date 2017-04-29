@@ -4,8 +4,3 @@
 
    > [!NOTE]
    > vCenter サーバーまたはホスト サーバーに対する管理者特権のないアカウントを使用して VMware vCenter サーバーまたは VMware vSphere ホストを追加する場合、そのアカウントで、Datacenter、Datastore、Folder、Host、Network、Resource、Virtual Machine、vSphere Distributed Switch の各特権が有効になっていることを確認します。 さらに、VMware vCenter サーバーは Storage ビューの特権が有効になっている必要があります。
-
-
-<!--HONumber=Feb17_HO2-->
-
-
