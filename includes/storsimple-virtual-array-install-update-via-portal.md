@@ -53,7 +53,3 @@
 9. 更新プログラムが正常にインストールされると、その旨のメッセージが [デバイスの更新プログラム] ブレードに表示されます。 ソフトウェアのバージョンも **10.0.10288.0** に変更されます。 
 
     ![デバイスの更新](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate17m.png)
-
-<!--HONumber=Nov16_HO4-->
-
-

@@ -30,8 +30,3 @@
 
 パラメーターに機密性の高い値(パスワードなど) を提供する必要がある場合は、その値を Key Vault に追加します。 前の例で示したように、デプロイ中に Key Vault を取得します。 詳細については、「 [デプロイメント時にセキュリティで保護された値を渡す](../articles/azure-resource-manager/resource-manager-keyvault-parameter.md)」を参照してください。 
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-
