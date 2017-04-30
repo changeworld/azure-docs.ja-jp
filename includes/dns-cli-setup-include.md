@@ -49,7 +49,7 @@ azure group create -n myresourcegroup --location "West US"
 
 ### <a name="register-resource-provider"></a>リソース プロバイダーの登録
 
-Azure DNS サービスは Microsoft.Network リソース プロバイダーによって管理されます。 Azure DNS を使用するには、このリソース プロバイダーを使用するように Azure サブスクリプションを登録する必要があります。 この操作は、サブスクリプションごとに&1; 回だけ実行します。
+Azure DNS サービスは Microsoft.Network リソース プロバイダーによって管理されます。 Azure DNS を使用するには、このリソース プロバイダーを使用するように Azure サブスクリプションを登録する必要があります。 この操作は、サブスクリプションごとに 1 回だけ実行します。
 
 ```azurecli
 azure provider register --namespace Microsoft.Network
