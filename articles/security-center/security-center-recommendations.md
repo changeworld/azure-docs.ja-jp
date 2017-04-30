@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/20/2016
+ms.date: 04/03/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 51a882d82793e5e284cfaeec9271ff3719385fcc
-ms.openlocfilehash: 4bebc8267040a52fabc12fa96d38f96f0a0eb993
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: b16d8607ca0dbb08421b332df11e462267eb80f5
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -84,8 +85,8 @@ ms.openlocfilehash: 4bebc8267040a52fabc12fa96d38f96f0a0eb993
 | [Endpoint Protection の正常性アラートの解決](security-center-resolve-endpoint-protection-health-alerts.md) |Endpoint Protection のエラーを解決することをお勧めします。 |
 | [サブネットまたは仮想マシンでのネットワーク セキュリティ グループの有効化](security-center-enable-network-security-groups.md) |サブネットまたは VM で NSG を有効にすることをお勧めします。 |
 | [インターネットに接続するエンドポイント経由のアクセスの制限](security-center-restrict-access-through-internet-facing-endpoints.md) |NSG に着信トラフィックのルールを構成することをお勧めします。 |
-| [サーバーの SQL 監査の有効化](security-center-enable-auditing-on-sql-servers.md) |Azure SQL サーバーの監査を有効にすることを推奨します  (Azure SQL サービスのみ。 仮想マシン上で実行されている SQL は含まれません)。 |
-| [データベースの SQL 監査の有効化](security-center-enable-auditing-on-sql-databases.md) |Azure SQL Database の監査を有効にすることを推奨します  (Azure SQL サービスのみ。 仮想マシン上で実行されている SQL は含まれません)。 |
+| [SQL サーバーの監査と脅威検出を有効にする](security-center-enable-auditing-on-sql-servers.md) |Azure SQL サーバーの監査と脅威検出を有効にするよう推奨されます  (Azure SQL サービスのみ。 仮想マシン上で実行されている SQL は含まれません)。 |
+| [SQL データベースの監査と脅威検出を有効にする](security-center-enable-auditing-on-sql-databases.md) |Azure SQL データベースの監査と脅威検出を有効にするよう推奨されます  (Azure SQL サービスのみ。 仮想マシン上で実行されている SQL は含まれません)。 |
 | [SQL データベースでの透過的なデータ暗号化の有効化](security-center-enable-transparent-data-encryption.md) |SQL データベースの暗号化を有効にするよう推奨されます。 (Azure SQL サービスのみ。) |
 | [VM エージェントの有効化](security-center-enable-vm-agent.md) |VM エージェントを必要とする VM を確認できます。 パッチ スキャン、ベースライン スキャン、マルウェア対策プログラムをプロビジョニングするには、VM に VM エージェントをインストールする必要があります。 既定では、Azure Marketplace からデプロイされた VM に VM エージェントがインストールされます。 「 [VM エージェントと拡張機能 – パート 2](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/) 」の記事には、VM エージェントのインストール方法が記載されています。 |
 | [ディスク暗号化の適用](security-center-apply-disk-encryption.md) |Azure Disk Encryption を使用して VM ディスクを暗号化することをお勧めします (Windows VM および Linux VM)。 VM 上の OS とデータ ボリュームの両方を暗号化することをお勧めします。 |
@@ -100,7 +101,7 @@ ms.openlocfilehash: 4bebc8267040a52fabc12fa96d38f96f0a0eb993
 1. **[推奨事項]** ブレードで **[フィルター]** をクリックします。 **[フィルター]** ブレードが開いたら、確認する重要度と状態の値を選択します。
 
     ![Filter recommendations][2]
-2. 推奨事項が適用できないと判断した場合、その推奨事項を無視し、ビューから除外することができます。 推奨事項を無視するには&2; つの方法があります。 1 つは、項目を右クリックして **[無視]**を選択する方法です。 もう&1; つは、項目の上にマウスを合わせ、右側に表示される&3; つの点をクリックして、 **[無視]**を選択する方法です。 **[フィルター]** をクリックして **[無視]** を選択すると、無視した推奨事項を表示できます。
+2. 推奨事項が適用できないと判断した場合、その推奨事項を無視し、ビューから除外することができます。 推奨事項を無視するには 2 つの方法があります。 1 つは、項目を右クリックして **[無視]**を選択する方法です。 もう 1 つは、項目の上にマウスを合わせ、右側に表示される 3 つの点をクリックして、 **[無視]**を選択する方法です。 **[フィルター]** をクリックして **[無視]** を選択すると、無視した推奨事項を表示できます。
 
     ![Dismiss recommendation][3]
 
@@ -123,9 +124,4 @@ ms.openlocfilehash: 4bebc8267040a52fabc12fa96d38f96f0a0eb993
 [1]: ./media/security-center-recommendations/recommendations-tile.png
 [2]: ./media/security-center-recommendations/filter-recommendations.png
 [3]: ./media/security-center-recommendations/dismiss-recommendations.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

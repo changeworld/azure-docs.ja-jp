@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/30/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
-ms.openlocfilehash: 23d0092915c98da54ed486aed22afba4839befd1
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 27f37b3fb441f1269cc8df5b7d60446ce9aade9a
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="move-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Azure Data Factory を使用した Amazon Simple Storage Service からのデータの移動
-この記事では、Azure Data Factory のコピー アクティビティを使って、Amazon Simple Storage Service (S3) からデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。 
+この記事では、Azure Data Factory のコピー アクティビティを使って、Amazon Simple Storage Service (S3) からデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
 
 Amazon Simple Storage Service (S3) から、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)の表をご覧ください。 データ ファクトリは、他のデータ ストアから Amazon S3 へのデータの移動ではなく、Amazon S3 から他のデータ ストアへのデータの移動のみをサポートします。
 
@@ -39,17 +39,17 @@ Amazon S3 のアクセス許可の完全な一覧と詳細については、「[
 
 パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
 
-**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API** などのツールを使ってパイプラインを作成することもできます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
+次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
-ツールまたは API のいずれを使用した場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。 
+ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
 1. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
-2. コピー操作用の入力データと出力データを表す**データセット**を作成します。 
-3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 
+2. コピー操作用の入力データと出力データを表す**データセット**を作成します。
+3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 ツール/API (.NET API を除く) を使う場合、こうした Data Factory エンティティは、JSON 形式で定義します。  Amazon S3 データ ストアからデータをコピーするときに使用する Data Factory エンティティの JSON 定義のサンプルについては、この記事の「[JSON の使用例: Amazon S3 から Azure BLOB へのデータのコピー](#json-example-copy-data-from-amazon-s3-to-azure-blob)」を参照してください。 
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 ツール/API (.NET API を除く) を使う場合、こうした Data Factory エンティティは、JSON 形式で定義します。  Amazon S3 データ ストアからデータをコピーするときに使用する Data Factory エンティティの JSON 定義のサンプルについては、この記事の「[JSON の使用例: Amazon S3 から Azure BLOB へのデータのコピー](#json-example-copy-data-from-amazon-s3-to-azure-blob)」を参照してください。
 
-次のセクションでは、Amazon S3 に固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。 
+次のセクションでは、Amazon S3 に固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 リンクされたサービスは、データ ストアをデータ ファクトリにリンクします。 Amazon S3 データ ストアをデータ ファクトリにリンクするには、**AwsAccessKey** 型のリンクされたサービスを作成します。 次の表は、Amazon S3 (AwsAccessKey) のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
@@ -59,7 +59,7 @@ Amazon S3 のアクセス許可の完全な一覧と詳細については、「[
 | accessKeyID |シークレット アクセス キーの ID。 |string |はい |
 | secretAccessKey |シークレット アクセス キー自体。 |暗号化された秘密文字列 |はい |
 
-たとえば次のようになります。 
+たとえば次のようになります。
 
 ```json
 {
@@ -162,9 +162,11 @@ Amazon S3 のアクセス許可の完全な一覧と詳細については、「[
 | --- | --- | --- | --- |
 | recursive |ディレクトリで S3 オブジェクトを再帰的に一覧表示するかどうかを指定します。 |true または false |いいえ |
 
+## <a name="supported-file-and-compression-formats"></a>サポートされているファイル形式と圧縮形式
+詳細については、[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md)に関する記事を参照してください。
 
 ## <a name="json-example-copy-data-from-amazon-s3-to-azure-blob"></a>JSON の使用例: Amazon S3 から Azure BLOB へのデータのコピー
-このサンプルは、Amazon S3 から Azure BLOB ストレージにデータをコピーする方法を示します。 Azure Data Factory のコピー アクティビティを使用して、 **こちら** に記載されているシンクのいずれかにデータを [直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats) コピーすることもできます。 
+このサンプルは、Amazon S3 から Azure BLOB ストレージにデータをコピーする方法を示します。 Azure Data Factory のコピー アクティビティを使用して、 **こちら** に記載されているシンクのいずれかにデータを [直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats) コピーすることもできます。
 
 この例は、次の Data Factory エンティティの JSON 定義を示しています。 [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) のいずれかで、この定義を使用して、Amazon S3 から Azure Blob Storage にデータをコピーするためのパイプラインを作成できます。   
 
@@ -343,7 +345,7 @@ Amazon S3 のアクセス許可の完全な一覧と詳細については、「[
 }
 ```
 > [!NOTE]
-> ソース データセット列からシンク データセット列へのマッピングについては、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。
+> ソース データセット列からシンク データセット列へのマッピングの詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。
 
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
