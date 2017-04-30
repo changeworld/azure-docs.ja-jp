@@ -4,7 +4,7 @@ description: "グラフィカル作成では、コードを操作せずに Azure
 services: automation
 documentationcenter: 
 author: mgoedtel
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: 4b6f840c-e941-4293-a728-b33407317943
 ms.service: automation
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/03/2016
+ms.date: 04/14/2017
 ms.author: magoedte;bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8d408f6ac49ea376508e025c53b09434c2ea164a
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 1e61e3717a9006f67c0b57c33573c2d0f5fbfa05
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -253,13 +254,13 @@ Runbook がまだ発行されていない場合、状態は [ **新規**] です
 チェックポイントは、グラフィカル PowerShell ワークフロー Runbook のみで有効で、グラフィカル Runbook では使用できません。  Runbook で Azure コマンドレットを使用する場合、Runbook が一時停止され、別のワーカーでこのチェックポイントから再起動するときは、Add-AzureRMAccount を使用してチェックポイントを設定したアクティビティに従います。 
 
 ## <a name="authenticating-to-azure-resources"></a>Azure リソースの認証
-Azure リソースを管理する、Azure Automation の Runbook は、Azure に対する認証が必要になります。  新しい[実行アカウント](automation-sec-configure-azure-runas-account.md)機能 (サービス プリンシパルとも呼ばれます) は、サブスクリプション内の Azure Resource Manager リソースに Automation Runbook でアクセスするための既定の方法です。  この機能をグラフィカル Runbook に追加するには、**AzureRunAsConnection** 接続資産を追加します。これは、PowerShell [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) コマンドレットと、キャンバスに対する [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) コマンドレットを使用しています。 これを次の例に示します。<br>![Run As Authentication Activities](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)<br>
+Azure リソースを管理する、Azure Automation の Runbook は、Azure に対する認証が必要になります。  [実行アカウント](automation-offering-get-started.md#automation-account) (サービス プリンシパルとも呼ばれます) は、サブスクリプション内の Azure Resource Manager リソースに Automation Runbook でアクセスするための既定の方法です。  この機能をグラフィカル Runbook に追加するには、**AzureRunAsConnection** 接続資産を追加します。これは、PowerShell [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) コマンドレットと、キャンバスに対する [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) コマンドレットを使用しています。 これを次の例に示します。<br>![Run As Authentication Activities](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)<br>
 Get Run As Connection アクティビティ (つまり Get-AutomationConnection) は、AzureRunAsConnection という名前の定数値データ ソースで構成されています。<br>![Run As Connection Configuration](media/automation-graphical-authoring-intro/authenticate-runas-parameterset.png)<br>
 次のアクティビティ Add-AzureRmAccount は、Runbook で使用する認証済み実行アカウントを追加します｡<br>
 ![Add-AzureRmAccount Parameter Set](media/automation-graphical-authoring-intro/authenticate-conn-to-azure-parameter-set.png)<br>
 **APPLICATIONID**、**CERTIFICATETHUMBPRINT**、**TENANTID** パラメーターでは、[フィールド パス] にプロパティの名前を指定する必要があります。これは、アクティビティが複数のプロパティを持つオブジェクトを出力するためです。  指定しなかった場合は、Runbook を実行するときに、認証しようとして失敗します。  これは、実行アカウントで Runbook を認証するために最低限必要なことです。
 
-Azure サービス管理 (ASM) または Azure Resource Manager のリソースを管理するために [Azure AD ユーザー アカウント](automation-sec-configure-aduser-account.md)を使用して Automation アカウントを作成したサブスクライバーのために下位互換性を維持するには、認証方法として、Azure アカウントへのアクセス権を持つ Active Directory ユーザーを表す[資格情報資産](http://msdn.microsoft.com/library/dn940015.aspx)を指定した Add-AzureAccount コマンドレットがあります。
+Azure クラシック デプロイメントまたは Azure Resource Manager のリソースを管理するために [Azure AD ユーザー アカウント](automation-create-aduser-account.md)を使用して Automation アカウントを作成したサブスクライバーのために下位互換性を維持するには、認証方法として、Azure アカウントへのアクセス権を持つ Active Directory ユーザーを表す[資格情報資産](automation-credentials.md)を指定した Add-AzureAccount コマンドレットがあります。
 
 グラフィカル Runbook にこの機能を追加するには、キャンバスに資格情報資産を追加します。この後に Add-AzureAccount アクティビティが続きます。  Add-AzureAccount では、資格情報アクティビティを使用して入力します。  これを次の例に示します。
 
@@ -381,10 +382,5 @@ PowerShell 式をデータ ソースとして使用し、 [アクティビティ
 * グラフィカルな Runbook の使用を開始するには、「 [初めてのグラフィカルな Runbook](automation-first-runbook-graphical.md)
 * Runbook の種類とそれらの利点や制限事項の詳細については、「 [Azure Automation の Runbook の種類](automation-runbook-types.md)
 * Automation の実行アカウントを使った認証方法を理解するには、 [Azure 実行アカウントの構成](automation-sec-configure-azure-runas-account.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

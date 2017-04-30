@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren;dairwin
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 389c01234acff068dc90f3cdfdc4916a9d76d244
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: 1937462eef4647b273dfa029c8f18c80d3443ae8
+ms.lasthandoff: 04/14/2017
 
 
 ---
@@ -50,7 +50,7 @@ SCOM とサービス マップの統合を行うには、Microsoft.SystemCenter.
 
     ![SCOM 構成ウィザード](media/oms-service-map/scom-configuration.png)
 
-3. ウィザードの最初のステップは、Azure サービス プリンシパルの情報を入力する [接続構成] です。 サービス プリンシパルのテナント名または ID、アプリケーション ID (またはユーザー名かクライアント ID)、パスワードを入力します。  [詳細については、「サービス プリンシパルの作成」をご覧ください](#creating-a-service-principal)。
+3. ウィザードの最初のステップは、Azure サービス プリンシパルの情報を入力する [接続構成] です。 サービス プリンシパルのテナント名または ID、アプリケーション ID (ユーザー名またはクライアント ID とも呼ばれます)、パスワードを入力します。  [詳細については、「サービス プリンシパルの作成」をご覧ください](#creating-a-service-principal)。
 
     ![SCOM での SPN の構成](media/oms-service-map/scom-config-spn.png)
 
@@ -77,8 +77,8 @@ OMS ワークスペースが接続されると、SCOM コンソールの [監視
 ![SCOM での監視](media/oms-service-map/scom-monitoring.png)
 
 サービス マップ フォルダーには 3 つのノードがあります。
-### <a name="all-alerts"></a>すべてのアラート:
-このノードには、SCOM と OMS のサービス マップ ソリューション間の通信に関するアラートがすべて表示されます。
+### <a name="active-alerts"></a>Active Alerts (アクティブなアラート):
+このノードには、SCOM と OMS のサービス マップ ソリューション間の通信に関するアクティブなアラートがすべて表示されます。
 
 **注:** これらは、SCOM で表示される OMS アラートではありません。
 ### <a name="servers"></a>サーバー:

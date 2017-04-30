@@ -16,9 +16,9 @@ ms.workload: data-management
 ms.date: 06/22/2016
 ms.author: srinia
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: ffcf0f0aa80f0a6b65cbef65e361e4830fcca3ff
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 7ab1d760d26aac7fc185b0e9f5e4a7a47cc2eee5
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/10/2017
 [!INCLUDE [Start your PowerShell session](../../includes/sql-database-powershell.md)]
 
 ## <a name="create-an-elastic-pool"></a>エラスティック プールの作成
-エラスティック プールを作成するには、[New-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt619378\(v=azure.300\).aspx) コマンドレットを使用します。 プールあたりの eDTU、最小 DTU、最大 DTU は、サービス レベルの値 (Basic、Standard、Premium) によって制限されます。 [エラスティック プールとエラスティック データベースの eDTU とストレージの制限](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools)に関するセクションを参照してください。
+エラスティック プールを作成するには、[New-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt619378\(v=azure.300\).aspx) コマンドレットを使用します。 プールあたりの eDTU、最小 DTU、最大 DTU は、サービス レベルの値 (Basic、Standard、Premium、または Premium RS) によって制限されます。 [エラスティック プールとエラスティック データベースの eDTU とストレージの制限](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools)に関するセクションを参照してください。
 
     New-AzureRmSqlElasticPool -ResourceGroupName "resourcegroup1" -ServerName "server1" -ElasticPoolName "elasticpool1" -Edition "Standard" -Dtu 400 -DatabaseDtuMin 10 -DatabaseDtuMax 100
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 03/10/2017
     New-AzureRmSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName -ElasticPoolName $poolName -MaxSizeBytes 10GB
 
 ## <a name="create-an-elastic-pool-and-add-multiple-pooled-databases"></a>エラスティック プールの作成と、複数のプールされるデータベースの追加
-ポータルまたは PowerShell コマンドレットで一度に作成できるデータベースは&1; つのみであるため、エラスティック プールに多数のデータベースを作成しようとすると時間がかかることがあります。 エラスティック プールへの作成処理を自動化する方法については、[CreateOrUpdateElasticPoolAndPopulate](https://gist.github.com/billgib/d80c7687b17355d3c2ec8042323819ae) に関するページを参照してください。   
+ポータルまたは PowerShell コマンドレットで一度に作成できるデータベースは 1 つのみであるため、エラスティック プールに多数のデータベースを作成しようとすると時間がかかることがあります。 エラスティック プールへの作成処理を自動化する方法については、[CreateOrUpdateElasticPoolAndPopulate](https://gist.github.com/billgib/d80c7687b17355d3c2ec8042323819ae) に関するページを参照してください。   
 
 ## <a name="move-a-database-into-an-elastic-pool"></a>エラスティック プールへのデータベースの移動
 エラスティック プールへの、またはエラスティック プールからのデータベースの移動は、[Set-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619433\(v=azure.300\).aspx) で行うことができます。
@@ -111,7 +111,7 @@ ms.lasthandoff: 03/10/2017
     $metrics = (Get-AzureRmMetric -ResourceId /subscriptions/<subscriptionId>/resourceGroups/FabrikamData01/providers/Microsoft.Sql/servers/fabrikamsqldb02/elasticPools/franchisepool -TimeGrain ([TimeSpan]::FromMinutes(5)) -StartTime "4/18/2015" -EndTime "4/21/2015")  
 
 ## <a name="get-resource-usage-data-for-a-database-in-an-elastic-pool"></a>エラスティック プール内のデータベースのリソース使用状況データの取得
-これらの API は、セマンティック上の相違が&1; 点あることを除いて、単一のデータベースのリソース使用率の監視に使用する現行の (V12) API と同じです。この API の場合、取得されたメトリックがプールに設定されている最大 eDTU 数 (または CPU、IO など、基盤となるメトリックに関してこれと同等の役割を果たす上限値) に対するパーセンテージで表示されます。 たとえば、これらのメトリックのうちのいずれかの使用率が 50% であることは、特定のリソースの消費量が、親となるプールでそのリソースに対して設けられているデータベースの上限の 50% であることを示しています。
+これらの API は、セマンティック上の相違が 1 点あることを除いて、単一のデータベースのリソース使用率の監視に使用する API と同じです。この API の場合、取得されたメトリックがプールに設定されている最大 eDTU 数 (または CPU、IO など、基盤となるメトリックに関してこれと同等の役割を果たす上限値) に対するパーセンテージで表示されます。 たとえば、これらのメトリックのうちのいずれかの使用率が 50% であることは、特定のリソースの消費量が、親となるプールでそのリソースに対して設けられているデータベースの上限の 50% であることを示しています。
 
 メトリックを取得するには:
 
@@ -190,7 +190,7 @@ ms.lasthandoff: 03/10/2017
 このサンプル実装を使用するには、次の手順に従います。
 
 1. [スクリプトとドキュメント](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools)をダウンロードします。
-2. 環境に合わせてスクリプトを変更します。 エラスティック プールがホストされている&1; つまたは複数のサーバーを指定します。
+2. 環境に合わせてスクリプトを変更します。 エラスティック プールがホストされている 1 つまたは複数のサーバーを指定します。
 3. 収集されたメトリックを格納するテレメトリ データベースを指定します。
 4. スクリプトをカスタマイズして、スクリプトの実行期間を指定します。
 

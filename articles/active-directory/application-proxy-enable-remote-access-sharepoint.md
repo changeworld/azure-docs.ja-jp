@@ -11,12 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 03/22/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 12e8ff02c72d90513868d43bc34c564f1da1ae43
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 93b36891c960582563a4ff9c622cd5ac3198dfeb
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -41,9 +41,9 @@ Azure AD アプリケーション プロキシによる SharePoint へのリモ�
 
 ## <a name="step-1-set-up-single-sign-on-to-sharepoint"></a>手順 1: SharePoint へのシングル サインオンの設定
 
-お客様は、バックエンド アプリケーション (この場合は SharePoint サーバー) での最良の SSO エクスペリエンスを求めています。 この一般的な Azure AD シナリオでは、ユーザーは&1; 回のみ認証され、認証をもう一度求められることはありません。
+お客様は、バックエンド アプリケーション (この場合は SharePoint サーバー) での最良の SSO エクスペリエンスを求めています。 この一般的な Azure AD シナリオでは、ユーザーは 1 回のみ認証され、認証をもう一度求められることはありません。
 
-Windows 認証を必要とする、または使用するオンプレミス アプリケーションの場合は、Kerberos 認証プロトコルと、Kerberos の制約付き委任 (KCD) と呼ばれる機能を使用して SSO を実現できます。 KCD を構成すると、ユーザーが Windows に直接サインインしていない場合でも、アプリケーション プロキシ コネクタは、そのユーザーの Windows チケット/トークンを取得できます。 KCD の詳細については、「[Kerberos の制約付き委任の概要](https://technet.microsoft.com/en-us/library/jj553400.aspx)」をご覧ください。
+Windows 認証を必要とする、または使用するオンプレミス アプリケーションの場合は、Kerberos 認証プロトコルと、Kerberos の制約付き委任 (KCD) と呼ばれる機能を使用して SSO を実現できます。 KCD を構成すると、ユーザーが Windows に直接サインインしていない場合でも、アプリケーション プロキシ コネクタは、そのユーザーの Windows チケット/トークンを取得できます。 KCD の詳細については、「[Kerberos の制約付き委任の概要](https://technet.microsoft.com/library/jj553400.aspx)」をご覧ください。
 
 SharePoint サーバーの KCD を設定するには、以下のセクションの手順を順番に実行します。
 
@@ -63,7 +63,7 @@ SharePoint サーバーの KCD を設定するには、以下のセクション�
 5. **[新しい管理アカウントの登録]** を選択します。 アカウントを作成したら、アカウントを使用する前に **Web アプリケーション プール**を設定する必要があります。
 
 > [!NOTE]
-サービス用に事前に作成した Azure AD アカウントが必要です。 パスワードの自動変更を許可することをお勧めします。 問題のトラブルシューティングの完全な手順について詳しくは、「[SharePoint 2013 でのパスワードの自動変更の構成](https://technet.microsoft.com/EN-US/library/ff724280.aspx)」をご覧ください。
+サービス用に事前に作成した Azure AD アカウントが必要です。 パスワードの自動変更を許可することをお勧めします。 問題のトラブルシューティングの完全な手順について詳しくは、「[SharePoint 2013 でのパスワードの自動変更の構成](https://technet.microsoft.com/library/ff724280.aspx)」をご覧ください。
 
 ### <a name="configure-sharepoint-for-kerberos"></a>Kerberos 用に SharePoint を構成する
 
@@ -87,7 +87,7 @@ Kerberos 認証用 SharePoint サイトを構成するには
 
 ### <a name="set-a-service-principal-name-for-the-sharepoint-service-account"></a>SharePoint サービス アカウントのサービス プリンシパル名の設定
 
-KCD を構成する前に、構成した、サービス アカウントとして実行されている SharePoint サービスを特定する必要があります。 これは SPN を設定して行います。 詳細については、「[Service Principal Names (サービス プリンシパル名)](https://technet.microsoft.com/en-us/library/cc961723.aspx)」をご覧ください。
+KCD を構成する前に、構成した、サービス アカウントとして実行されている SharePoint サービスを特定する必要があります。 これは SPN を設定して行います。 詳細については、「[Service Principal Names (サービス プリンシパル名)](https://technet.microsoft.com/library/cc961723.aspx)」をご覧ください。
 
 SPN の形式は以下のとおりです。
 
@@ -115,7 +115,7 @@ SPN は以下のようになります。
 HTTP/ sharepoint.demo.o365identity.us demo
 ```
 
-サーバー上の特定のサイトの SPN も設定することが必要な場合があります。 詳しくは、[Kerberos 認証の構成](https://technet.microsoft.com/en-us/library/cc263449(v=office.12).aspx)に関する記事をご覧ください。 「Kerberos 認証を使用して Web アプリケーションのサービス プリンシパル名を作成する」セクションに特に注意を払ってください。
+サーバー上の特定のサイトの SPN も設定することが必要な場合があります。 詳しくは、[Kerberos 認証の構成](https://technet.microsoft.com/library/cc263449(v=office.12).aspx)に関する記事をご覧ください。 「Kerberos 認証を使用して Web アプリケーションのサービス プリンシパル名を作成する」セクションに特に注意を払ってください。
 
 SPN を設定する最も簡単な方法は、サイトに既に存在する可能性がある SPN の形式に従うことです。 その SPN をコピーし、サービス アカウントに対して SPN を登録します。 これを行うには、次の手順を実行します。
 
@@ -140,7 +140,7 @@ Klist は、ターゲット SPN のセットを返します。 この例では�
 
  _http/sharepoint.demo.o365identity.us_ をサーバーの SPN に、_demo\sp_svc_ を環境でのサービス アカウントに置き換えます。 Setspn コマンドでは、追加前にその SPN が検索されます。 この場合、**重複している SPN 値**のエラーが表示されることがあります。 このエラーが表示された場合、SPN 値がサービス アカウントに関連付けられていることを確認してください。
 
--l オプションを使用して Setspn コマンドを実行すると、SPN が追加されたことを確認できます。 このコマンドについて詳しくは、「[Setspn](https://technet.microsoft.com/en-us/library/cc731241.aspx)」をご覧ください。
+-l オプションを使用して Setspn コマンドを実行すると、SPN が追加されたことを確認できます。 このコマンドについて詳しくは、「[Setspn](https://technet.microsoft.com/library/cc731241.aspx)」をご覧ください。
 
 ### <a name="ensure-that-the-connector-is-set-as-a-trusted-delegate-to-sharepoint"></a>コネクタが信頼され、SharePoint に委任するように設定されていることを確認する
 
@@ -183,7 +183,7 @@ Kerberos 用の SharePoint を有効にし、KCD を構成したことから、�
 
  SharePoint では、_[ホスト ヘッダー]_ 値を使用してサイトを検索します。 この値に基づいてリンクも生成されます。 実際の効果は、SharePoint で生成されたリンクはどれも公開 URL であり、外部 URL を使用するように適切に設定されていることを確実にするというものです。 この値を **[はい]** に設定すると、コネクタが要求をバックエンド アプリケーションに転送できるようにもなります。 一方、値を **[いいえ]** に設定することは、コネクタが内部のホスト名を送信しないことを意味します。 代わりに、コネクタは、ホスト ヘッダーをバックエンド アプリケーションに公開 URL として送信します。
 
- また、SharePoint がこの URL を受け入れるようにするには、SharePoint サーバーでもう&1; つの構成を完了する必要があります。 これは、次のセクションで行います。
+ また、SharePoint がこの URL を受け入れるようにするには、SharePoint サーバーでもう 1 つの構成を完了する必要があります。 これは、次のセクションで行います。
 
 7. **[内部認証方法]** を **[統合 Windows 認証]** に設定します。 Azure AD テナントが、オンプレミス の UPN とは異なる UPN をクラウドで使用している場合は、**[委任されたログイン ID]** も忘れずに更新します。
 8. **[内部アプリケーション SPN]** を先ほど設定した値に設定します。 たとえば、**http/sharepoint.demo.o365identity.us** を使用します。
@@ -220,7 +220,7 @@ Kerberos 用の SharePoint を有効にし、KCD を構成したことから、�
 
 ## <a name="next-steps"></a>次のステップ
 
-[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](active-directory-application-proxy-get-started.md)<br>
-[Azure AD アプリケーション プロキシ コネクタについて](application-proxy-understand-connectors.md)<br>
-[Publishing SharePoint 2016 and Office Online Server with Azure AD Application Proxy (Azure AD アプリケーション プロキシによる SharePoint 2016 および Office Online Server の公開)](https://blogs.technet.microsoft.com/dawiese/2016/06/09/publishing-sharepoint-2016-and-office-online-server-with-azure-ad-application-proxy/)
+- [オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](active-directory-application-proxy-get-started.md)
+- [Azure AD アプリケーション プロキシ コネクタについて](application-proxy-understand-connectors.md)
+- [Publishing SharePoint 2016 and Office Online Server with Azure AD Application Proxy (Azure AD アプリケーション プロキシによる SharePoint 2016 および Office Online Server の公開)](https://blogs.technet.microsoft.com/dawiese/2016/06/09/publishing-sharepoint-2016-and-office-online-server-with-azure-ad-application-proxy/)
 

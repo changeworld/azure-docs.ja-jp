@@ -1,5 +1,5 @@
 ---
-title: "Azure Resource Manger テンプレートの構造と構文 | Microsoft Docs"
+title: "Azure Resource Manager テンプレートの構造と構文 | Microsoft Docs"
 description: "宣言型 JSON 構文を使用した Azure Resource Manager テンプレートの構造とプロパティについて説明します。"
 services: azure-resource-manager
 documentationcenter: na
@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/23/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: e5e793eeab46b31c728e7dbb493c6396d6daad08
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: de6016130666774577fb4ef598a44f6191ba9a76
+ms.lasthandoff: 04/14/2017
 
 
 ---

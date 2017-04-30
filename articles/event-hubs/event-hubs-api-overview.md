@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/31/2017
 ms.author: jotaub
 translationtype: Human Translation
-ms.sourcegitcommit: aa7244849f6286e8ef9f9785c133b4c326193c12
-ms.openlocfilehash: 5a360462288e5df6e0ede5f11adabba158a9dd57
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: a10ab3cf10826c63785d6427c27712573e82457a
+ms.lasthandoff: 04/19/2017
 
 ---
 
@@ -24,7 +25,7 @@ ms.openlocfilehash: 5a360462288e5df6e0ede5f11adabba158a9dd57
 
 ## <a name="runtime-apis"></a>ランタイム API
 
-現在使用できる Event Hubs ランタイム クライアントの一覧を次に示します。 ライブラリの中には管理機能が制限されているものがありますが、管理操作専用の[ライブラリ](#management-apis)もあります。 これらのライブラリの主な目的は、Event Hub からメッセージを送受信することです。
+現在使用できる Azure Event Hubs ランタイム クライアントの一覧を次に示します。 ライブラリの中には管理機能が制限されているものがありますが、管理操作専用の[ライブラリ](#management-apis)もあります。 これらのライブラリの主な目的は、イベント ハブからメッセージを送受信することです。
 
 各ランタイム ライブラリの現在の状態の詳細については、[追加情報](#additional-information)を参照してください。
 
@@ -59,8 +60,3 @@ Event Hubs の詳細については、次のリンク先を参照してくださ
 * [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
 * [イベント ハブの作成](event-hubs-create.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)
-
-
-<!--HONumber=Feb17_HO1-->
-
-

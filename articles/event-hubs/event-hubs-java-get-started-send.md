@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: aa7244849f6286e8ef9f9785c133b4c326193c12
-ms.openlocfilehash: feb466064f2e26a329977240eeafb28148bdf212
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: fe10aaca3232e5baa0b726b7262a6e9e8ce6b638
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -27,7 +28,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 詳細については、「[Event Hubs の概要][Event Hubs overview]」をご覧ください。
 
-このチュートリアルでは、Java のコンソール アプリケーションを使用して、Event Hub へのイベントを送信する方法について説明します。 Java のイベント プロセッサ ホスト ライブラリを使用してイベントを受信するには、[この記事](event-hubs-java-get-started-receive-eph.md)を参照するか、左側の目次で適切な受信側の言語をクリックしてください。
+このチュートリアルでは、Java のコンソール アプリケーションを使用して、イベント ハブへのイベントを送信する方法について説明します。 Java のイベント プロセッサ ホスト ライブラリを使用してイベントを受信するには、[この記事](event-hubs-java-get-started-receive-eph.md)を参照するか、左側の目次で適切な受信側の言語をクリックしてください。
 
 このチュートリアルを完了するには、以下が必要です。
 
@@ -68,7 +69,7 @@ public class Send
     {
 ```
 
-名前空間と Event Hub の名前を、Event Hub の作成時に使用した値に置き換えます。
+名前空間とイベント ハブの名前を、イベント ハブの作成時に使用した値に置き換えます。
 
 ``` Java
     final String namespaceName = "----ServiceBusNamespaceName-----";
@@ -100,10 +101,5 @@ Event Hubs の詳細については、次のリンク先を参照してくださ
 
 * [EventProcessorHost を使用してイベントを受信する](event-hubs-java-get-started-receive-eph.md)
 * [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
-* [Event Hub を作成する](event-hubs-create.md)
+* [イベント ハブの作成](event-hubs-create.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)
-
-
-<!--HONumber=Feb17_HO1-->
-
-

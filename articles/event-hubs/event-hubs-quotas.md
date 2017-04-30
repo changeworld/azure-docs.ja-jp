@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 03/07/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: fe331199333d492dbc42c9125c9da96a44066ee1
-ms.openlocfilehash: 91e611a0b3516bdb8f1ce6eba0210e2e610e5484
-ms.lasthandoff: 02/02/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: fe56028d4731a83ffb8010b0094c98dec7374be0
+ms.lasthandoff: 04/19/2017
 
 
 ---
 # <a name="event-hubs-quotas"></a>Event Hubs のクォータ
-このセクションでは、Microsoft Azure Event Hubs の基本的なクォータと制限について一覧形式で説明しています。
+このセクションでは、Azure Event Hubs の基本的なクォータと制限について一覧形式で説明しています。
 
 [!INCLUDE [event-hubs-limits](../../includes/event-hubs-limits.md)]
 
@@ -30,6 +30,6 @@ ms.lasthandoff: 02/02/2017
 Event Hubs の詳細については、次のリンク先を参照してください:
 
 * [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
-* [Event Hub を作成する](event-hubs-create.md)
+* [イベント ハブの作成](event-hubs-create.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)
 

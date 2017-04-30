@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/13/2017
+ms.date: 04/03/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
-ms.openlocfilehash: 34919221a82a024bd3a1d09c1def6040ff6c55e1
-ms.lasthandoff: 03/23/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 3dba9ebc8eb23be00f9b52907ba4bc565eeb5688
+ms.lasthandoff: 04/15/2017
 
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication---public-preview"></a>Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合 - パブリック プレビュー
@@ -36,6 +36,14 @@ Azure MFA の NPS 拡張機能を使用する場合、認証フローには次�
 
 ![認証要求フローの図](./media/multi-factor-authentication-nps-extension/auth-flow.png)
 
+## <a name="plan-your-deployment"></a>デプロイを計画する
+
+NPS 拡張機能は、自動的に冗長性を処理するため、特別な構成は不要です。 
+
+必要な数だけ Azure Multi-Factor Authentication 対応の NPS サーバーを作成できます。 複数のサーバーをインストールする場合、サーバーごとに異なるクライアント証明書を使用する必要があります。 サーバーごとに証明書を作成することは、各証明書を個別に更新でき、すべてのサーバー全体でのダウンタイムを心配しなくてもよいことを意味します。 
+
+VPN サーバーは認証要求をルーティングするため、新しい Azure MFA 対応の NPS サーバーを認識する必要があります。 
+
 ## <a name="prerequisites"></a>前提条件
 
 NPS 拡張機能は、既存のインフラストラクチャで使用します。 開始する前に、以下の前提条件を確認してください。
@@ -46,10 +54,11 @@ Azure MFA の NPS 拡張機能は、[Azure Multi-Factor Authentication のライ
 
 ### <a name="software"></a>ソフトウェア
 
-Windows Server 2008 R2 SP1 以降 (NPS コンポーネントが有効になっている必要があります)
+Windows Server 2008 R2 SP1 以上。
 
 ### <a name="libraries"></a>ライブラリ
 
+これらのライブラリは拡張機能を含めて自動的にインストールされます。 
 -    [Visual Studio 2013 (X64) の Visual C++ 再頒布可能パッケージ](https://www.microsoft.com/download/details.aspx?id=40784)
 -    [Windows PowerShell 用 Microsoft Azure Active Directory モジュール バージョン 1.1.166.0](https://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185)
 
@@ -57,22 +66,62 @@ Windows Server 2008 R2 SP1 以降 (NPS コンポーネントが有効になっ�
 
 NPS の拡張機能を使用するすべてのユーザーが、Azure AD Connect を使用して Azure Active Directory に同期され、MFA を有効にしている必要があります。
 
-拡張機能をインストールするときに、Azure AD テナントのディレクトリ ID と管理資格情報が必要です。 ディレクトリ ID は [Azure Portal](https://portal.azure.com) で確認できます。 管理者としてサインインし、左側の **[Azure Active Directory]** アイコンを選択して、**[プロパティ]** を選択します。 **[ディレクトリ ID]** ボックス内の GUID をコピーして保存します。
+拡張機能をインストールするときに、Azure AD テナントのディレクトリ ID と管理資格情報が必要です。 ディレクトリ ID は [Azure Portal](https://portal.azure.com) で確認できます。 管理者としてサインインし、左側の **[Azure Active Directory]** アイコンを選択して、**[プロパティ]** を選択します。 **[ディレクトリ ID]** ボックス内の GUID をコピーして保存します。 NPS 拡張機能をインストールする際は、この GUID をテナント ID として使用します。
 
 ![Azure Active Directory のプロパティでディレクトリ ID を探す](./media/multi-factor-authentication-nps-extension/find-directory-id.png)
+
+## <a name="prepare-your-environment"></a>環境を準備する
+
+NPS 拡張機能をインストールする前に、認証トラフィックを処理するように環境を準備する必要があります。 
+
+### <a name="enable-the-nps-role-on-a-domain-joined-server"></a>ドメインに参加しているサーバーで NPS 役割を有効にする
+
+NPS サーバーは、Azure Active Directory に接続し、MFA 要求を認証します。 この役割に対して 1 台のサーバーを選択します。 NPS 拡張機能は RADIUS でないすべての要求に対してエラーをスローするため、他のサービスからの要求を処理しないサーバーを選択することをお勧めします。
+
+1. サーバーで、サーバー マネージャーの [クイック スタート] メニューから、**[役割と機能の追加ウィザード]**を開きます。
+2. インストールの種類として、**[役割ベースまたは機能ベースのインストール]**を選択します。
+3. **[ネットワーク ポリシーとアクセス サービス]** サーバーの役割を選択します。 ウィンドウがポップアップし、この役割を実行するために必要な機能が通知される場合があります。
+4. [確認] ページまでウィザードを続行します。 **[インストール]** を選択します。 
+
+NPS 用にサーバーを指定したので、VPN ソリューションからの着信 RADIUS 要求を処理するように、このサーバーを構成する必要もあります。 
+
+### <a name="configure-your-vpn-solution-to-communicate-with-the-nps-server"></a>NPS サーバーと通信するように VPN ソリューションを構成する
+
+使用する VPN ソリューションに応じて、RADIUS 認証ポリシーを構成する手順は異なります。 このポリシーを RADIUS NPS サーバーをポイントするように構成します。 
+
+### <a name="sync-domain-users-to-the-cloud"></a>クラウドにドメイン ユーザーを同期する
+
+この手順は、テナントで既に完了している可能性がありますが、Azure AD Connect が最近データベースを同期させたことを再確認することをお勧めします。 
+
+1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
+2. **[Azure Active Directory]**  >  **[Azure AD Connect]** を選択します。
+3. 同期の状態が **[有効]** であり、最後の同期が 1 時間以内であったことを確認します。
+
+新しい同期を開始する必要がある場合は、「[Azure AD Connect 同期: Scheduler](../active-directory/connect/active-directory-aadconnectsync-feature-scheduler.md#start-the-scheduler)」の手順を使用します。
+
+### <a name="enable-users-for-mfa"></a>ユーザーの MFA を有効にする
+
+完全な NPS 拡張機能をデプロイする前に、2 段階認証を実行するユーザーに対して MFA を有効にする必要があります。 もっと早く、拡張機能をデプロイ時にテストするには、Multi-Factor Authentication に対して完全に登録されている少なくとも 1 つのテスト アカウントが必要です。 
+
+テスト アカウントを開始するには、次の手順を使用します。
+1. [アカウントの MFA を有効にします](multi-factor-authentication-get-started-user-states.md)。
+2. Https://portal.azure.com などの Azure AD 認証を開始する任意の Web サイトに移動します。
+3. [2 段階認証に登録します](./end-user/multi-factor-authentication-end-user-first-time.md)。
 
 ## <a name="install-the-nps-extension"></a>NPS 拡張機能のインストール
 
 > [!IMPORTANT]
 > VPN アクセス ポイントとは異なるサーバーに NPS 拡張機能をインストールします。 
 
-Azure MFA の NPS 拡張機能をインストールするには:
+### <a name="download-and-install-the-nps-extension-for-azure-mfa"></a>Azure MFA の NPS 拡張機能をダウンロードしてインストールする 
 
-1.    Microsoft Download Center から [NPS 拡張機能をダウンロード](https://aka.ms/npsmfa)します。
-2.    構成するバイナリをネットワーク ポリシー サーバーにコピーします。
-3.    *setup.exe* を実行してインストールの指示に従います。
+1.    Microsoft ダウンロード センターから [NPS 拡張機能をダウンロード](https://aka.ms/npsmfa)します。
+2.    構成するネットワーク ポリシー サーバーにバイナリをコピーします。
+3.    *setup.exe* を実行してインストールの指示に従います。 エラーが発生した場合は、前提条件のセクションの 2 つのライブラリが正常にインストールされていることを再確認します。
 
-インストールが完了したら、次の場所に PowerShell スクリプトが作成されます: `C:\Program Files\Microsoft\AzureMfa\Config` (C:\ はインストール先のドライブ)。 この PowerShell スクリプトは、次のアクションを実行します。
+### <a name="run-the-powershell-script"></a>PowerShell スクリプトの実行
+
+インストーラーによって、`C:\Program Files\Microsoft\AzureMfa\Config` (C:\ はインストール先のドライブ) の場所に PowerShell スクリプトが作成されます。 この PowerShell スクリプトは、次のアクションを実行します。
 
 -    自己署名証明書を作成します。
 -    Azure AD のサービス プリンシパルに証明書の公開キーを関連付ける。
@@ -80,7 +129,20 @@ Azure MFA の NPS 拡張機能をインストールするには:
 -    ネットワーク ユーザーに証明書の秘密キーへのアクセスを許可する。
 -    NPS を再起動する。
 
-(PowerShell スクリプトで生成される自己署名証明書ではなく) 独自の証明書を使用する場合を除き、PowerShell スクリプトを実行してインストールを完了します。 複数のサーバーに拡張機能をインストールする場合は、証明書を更新する場合にダウンタイムがないように、それぞれのサーバーに独自の証明書が必要です。 
+(PowerShell スクリプトで生成される自己署名証明書ではなく) 独自の証明書を使用する場合を除き、PowerShell スクリプトを実行してインストールを完了します。 複数のサーバーに拡張機能をインストールする場合は、それぞれに独自の証明書が必要です。
+
+1. Windows PowerShell を管理者として実行します。
+2. ディレクトリを変更します。
+
+   `cd "C:\Program Files\Microsoft\AzureMfa\Config"`
+
+3. インストーラーによって作成された PowerShell スクリプトを実行します。
+
+   `.\AzureMfaNpsExtnConfigSetup.ps1`
+
+4. PowerShell によって、テナント ID の入力が求められます。 前提条件セクションで、 Azure Portal からコピーしたディレクトリ ID の GUID を使用します。 
+5. 管理者として Azure AD にログインします。
+6. スクリプトが終了すると、PowerShell によって成功メッセージが表示されます。  
 
 ## <a name="configure-your-nps-extension"></a>NPS 拡張機能の構成
 
@@ -88,8 +150,7 @@ Azure MFA の NPS 拡張機能をインストールするには:
 
 ### <a name="configurations-limitations"></a>構成の制限事項
 
-- NPS 拡張機能は新規デプロイ用であり、既存のデプロイメントで使用するものではありません。 このため、Azure MFA の NPS 拡張機能には、MFA サーバーからクラウドにユーザーと設定を移行するためのツールは含まれません。
-
+- Azure MFA の NPS 拡張機能には、MFA サーバーからクラウドにユーザーと設定を移行するためのツールは含まれません。 このため、既存のデプロイではなく、新しいデプロイに拡張機能を使用することをお勧めします。 既存のデプロイで拡張機能を使用する場合、ユーザーはクラウドに MFA の詳細を設定するために、再度セキュリティ確認を実行する必要があります。  
 - NPS 拡張機能は、オンプレミスの Active Directory の UPN を使用して Azure MFA のユーザーを識別し、セカンダリ認証を行います。 代替ログイン ID や カスタム AD フィールドなど、UPN 以外の識別子を使用するように NPS 拡張機能を構成することはできません。  
 
 ### <a name="control-radius-clients-that-require-mfa"></a>MFA を必須とする RADIUS クライアントの制御
@@ -106,7 +167,7 @@ MFA に登録されていないユーザーがいる場合は、そのユーザ�
 
 この設定により、MFA に登録されていないユーザーの扱いが決まります。 キーが存在しないか、設定されていないか、または TRUE に設定されていて、ユーザーが登録されていない場合は、拡張機能による MFA チャレンジが失敗します。 キーが FALSE に設定されていて、ユーザーが登録されていない場合は、MFA を実行することがなく認証が行われます。
 
-ユーザーのオンボーディングの際に、このキーを作成して FALSE に設定することができますが、 そうすると、MFA に登録されていないユーザーのサインインが、チャレンジなしで許可されることになります。このキーは運用環境に移行する前に削除してください。
+ユーザーのオンボーディングの際に、このキーを作成して FALSE に設定することができますが、 そうすると、MFA に登録されていないユーザーのログインが許可されることになります。このキーは運用環境に移行する前に削除してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -121,9 +182,9 @@ MFA に登録されていないユーザーがいる場合は、そのユーザ�
 PowerShell コマンド プロンプトを開き、次のコマンドを実行します。
 
 ```
-> import-module MSOnline
-> Connect-MsolService
-> Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1 
+import-module MSOnline
+Connect-MsolService
+Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1 
 ```
 
 このコマンドは、テナントと NPS 拡張機能のインスタンスを関連付けているすべての証明書を PowerShell セッションに出力します。 クライアント証明書を "Base-64 encoded X.509(.cer)" ファイルとして秘密キーなしでエクスポートし、PowerShell が出力したリストと比較します。
