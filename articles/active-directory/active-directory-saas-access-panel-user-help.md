@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 04/12/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: 6195b80037762a7f71eee9138c765e4d342acd5f
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: ff38f1536bf92911c18e0766ee655583c4d913d6
+ms.lasthandoff: 04/14/2017
 
 
 ---
@@ -25,7 +25,7 @@ ms.lasthandoff: 03/28/2017
 
 このページでは、MyApps ポータルの使用中に問題が発生を使用した場合のトラブルシューティングをお手伝いします。 問題を解決するにあたり、ヘルプ デスクまたは管理者に連絡しないと問題を解決できない場合もありますが、一般的な質問については、まずはこちらのトピックの手順をお試しください。
 
-パスワード管理に関連するヘルプについては、[こちら](active-directory-passwords-update-your-own-password.md#reset-your-password)をご覧ください。
+パスワード管理に関連するヘルプについては、[こちら](active-directory-passwords-update-your-own-password.md#reset-my-password)をご覧ください。
 
 
 ## <a name="what-is-the-myapps-portal"></a>MyApps ポータルとは
@@ -49,7 +49,7 @@ MyApps とは、以下を行うことができる Web ポータルです。
 3.    古いパスワードを入力した後、新しいパスワードを入力して、それを確認します。
 4.    **[Submit]**をクリックします。
 
-詳細については、「[自分のパスワードを更新する方法](active-directory-passwords-update-your-own-password.md#reset-your-password)」を参照してください。
+詳細については、「[自分のパスワードを更新する方法](active-directory-passwords-update-your-own-password.md#reset-my-password)」を参照してください。
 
 
 ## <a name="how-do-i-setup-password-reset"></a>パスワードのリセットの設定方法
@@ -58,7 +58,7 @@ MyApps とは、以下を行うことができる Web ポータルです。
 2.    **[アカウントの管理]** で、**[セルフ サービス パスワードのリセットを設定]** をクリックします。
 3.    ダイアログ ボックスの手順を実行して送信します。
 
-詳細については、「[パスワードをリセットする](active-directory-passwords-update-your-own-password.md#reset-your-password)」を参照してください。
+詳細については、「[パスワードをリセットする](active-directory-passwords-update-your-own-password.md#reset-my-password)」を参照してください。
 
 
 ## <a name="how-can-i-add-a-new-app"></a>新しいアプリの追加方法
@@ -84,7 +84,9 @@ MyApps とは、以下を行うことができる Web ポータルです。
 - メンバーであるグループをクリックすると、詳細を表示したり、グループを抜けたりすることができます。
 - 所有者であるグループをクリックすると、メンバーを追加または削除したり、グループを抜けたりすることができます。
 
+## <a name="next-steps"></a>次のステップ
 
+トラブルシューティングに関連した情報については、「[アプリケーション アクセス パネルの Web サイトまたはモバイル アプリケーションの使用に関する問題](active-directory-application-access-panel-content-map.md)」を参照してください。
 
 <!--Image references-->
 [1]: ./media/active-directory-saas-access-panel-user-help/01.png

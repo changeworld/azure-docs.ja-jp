@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 02/27/2017
+ms.date: 04/17/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 3539da8afe5781d74cbf723090050b767373f268
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 2760705d189a1b557625bcb4868ba2a429026bb5
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -53,14 +53,12 @@ Azure のサーバーにデプロイされるデータ モデルは、組織の�
 
 サーバーはクラウド内にあるため、クラウドのデータ ソースへの接続はシームレスです。 オンプレミス データ ソースに接続するときは、[オンプレミス データ ゲートウェイ](analysis-services-gateway.md)によってクラウドの Analysis Services サーバーとの高速で安全な接続が保証されます。  
 
- \* プレビューでは一部のデータ ソースはまだサポートされていません。 詳しくは、後の「[プレビューでの考慮事項](#preview-expectations)」をご覧ください。
 
 ## <a name="explore-your-data-from-anywhere"></a>任意の場所からデータを取得
-ほとんどどこからでもサーバーに接続して[データを取得](analysis-services-connect.md)します。 Azure Analysis Services は、Power BI Desktop、Excel、カスタム アプリ、ブラウザー ベースのツールからの接続をサポートします。
+ほとんどどこからでもサーバーに接続してデータを取得します。 Azure Analysis Services は、Power BI Desktop、Excel、カスタム アプリ、ブラウザー ベースのツールからの接続をサポートします。
 
 ![データ可視化](./media/analysis-services-overview/aas-overview-visualization.png)
 
- \* Power BI Embedded はプレビューではまだサポートされていません。
 
 ## <a name="secure"></a>セキュリティ保護
 #### <a name="user-authentication"></a>ユーザー認証
@@ -115,7 +113,7 @@ Azure Analysis Services のデータ モデルでデータ ソースに接続す
 
 ### <a name="client-connections"></a>クライアント接続
 
-クライアント アプリケーションには、Azure Analysis Services に接続するための最新のクライアント [データ プロバイダー](analysis-services-data-providers.md) が必要です。
+クライアント アプリケーションには、Azure Analysis Services に接続するための最新の[クライアント ライブラリ](analysis-services-data-providers.md)が必要です。
 
 Azure Analysis Services サーバーへのライブ接続を含み、OneDrive または SharePoint Online に保存される Excel ブックはサポートされていません。
 

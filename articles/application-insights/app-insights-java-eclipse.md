@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 12/12/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
-ms.openlocfilehash: 16e1276d5c0cc7eb8a8a868fa3b31fd51fbb1b96
-ms.lasthandoff: 02/02/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 8922c65a1755343e19072a0594b800838a5e1cf9
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -35,7 +35,7 @@ Application Insights SDK は、利用状況とパフォーマンスを分析で�
 * Windows 7 以降または Windows Server 2008 以降。
 
 ## <a name="install-the-sdk-on-eclipse-one-time"></a>Eclipse に SDK をインストールする (1 回限り)
-この操作は、コンピューターごとに&1; 回行う必要があります。 この手順では、SDK を各動的 Web プロジェクトに追加できるツールキットをインストールします。
+この操作は、コンピューターごとに 1 回行う必要があります。 この手順では、SDK を各動的 Web プロジェクトに追加できるツールキットをインストールします。
 
 1. Eclipse で、[Help]、[Install New Software] の順にクリックします。
 
@@ -48,7 +48,7 @@ Application Insights SDK は、利用状況とパフォーマンスを分析で�
 Java プロジェクトごとに、残りの手順に従います。
 
 ## <a name="create-an-application-insights-resource-in-azure"></a>Azure で Application Insights のリソースを作成する
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 新しい Application Insights リソースを作成します。 アプリケーションの種類を [Java Web アプリケーション] に設定します。  
 
     ![[+] をクリックし、[Application Insights] を選択します](./media/app-insights-java-eclipse/01-create.png)  
@@ -61,7 +61,7 @@ Java プロジェクトごとに、残りの手順に従います。
 1. Web プロジェクトのコンテキスト メニューから Application Insights を追加します。
 
     ![新しいリソース概要で、[プロパティ] をクリックし、インストルメンテーション キーをコピーします](./media/app-insights-java-eclipse/02-context-menu.png)
-2. Azure ポータルで入手したインストルメンテーション キーを貼り付けます。
+2. Azure Portal で入手したインストルメンテーション キーを貼り付けます。
 
     ![新しいリソース概要で、[プロパティ] をクリックし、インストルメンテーション キーをコピーします](./media/app-insights-java-eclipse/03-ikey.png)
 
@@ -94,7 +94,7 @@ HTTP 要求データが概要ブレードに表示されます  (表示されな
 HTML ファイルの先頭にコード スニペットを挿入します。
 
 #### <a name="view-client-side-data"></a>クライアント側のデータの表示
-更新された Web ページを開いて使用します。 1 ～&2; 分待ってから、Application Insights に戻り、[使用状況] ブレードを開きます  ([概要] ブレードで下へスクロールし、[使用状況] をクリックします)。
+更新された Web ページを開いて使用します。 1 ～ 2 分待ってから、Application Insights に戻り、[使用状況] ブレードを開きます  ([概要] ブレードで下へスクロールし、[使用状況] をクリックします)。
 
 [使用状況] ブレードに、ページ ビュー、ユーザー、セッションのメトリックが表示されます。
 
@@ -122,7 +122,7 @@ HTML ファイルの先頭にコード スニペットを挿入します。
 
 ![](./media/app-insights-java-eclipse/21-exceptions.png)
 
-その他の例外に関するデータを収集するには&2; つのオプションがあります。
+その他の例外に関するデータを収集するには 2 つのオプションがあります。
 
 * [TrackException への呼び出しをコードに挿入](app-insights-api-custom-events-metrics.md#trackexception)します。
 * [Java エージェントをサーバーにインストール](app-insights-java-agent.md)します。 監視するメソッドを指定します。
@@ -184,7 +184,7 @@ HTML ファイルの先頭にコード スニペットを挿入します。
 * displayName - Application Insights ポータルに表示される名前。
 * categoryName - このパフォーマンス カウンターが関連付けられているパフォーマンス カウンターのカテゴリ (パフォーマンス オブジェクト)。
 * counterName - パフォーマンス カウンターの名前。
-* instanceName - パフォーマンス カウンター カテゴリ インスタンスの名前、または空の文字列 ("") (カテゴリにインスタンスが&1; つ含まれている場合)。 categoryName が Process であり、アプリが実行されている現在の JVM プロセスからパフォーマンス カウンターを収集する場合は、 `"__SELF__"`を指定します。
+* instanceName - パフォーマンス カウンター カテゴリ インスタンスの名前、または空の文字列 ("") (カテゴリにインスタンスが 1 つ含まれている場合)。 categoryName が Process であり、アプリが実行されている現在の JVM プロセスからパフォーマンス カウンターを収集する場合は、 `"__SELF__"`を指定します。
 
 パフォーマンス カウンターは、[メトリックス エクスプローラー][metrics]でカスタム メトリックとして表示されます。
 
@@ -225,7 +225,7 @@ Java Web アプリケーションに数行のコードを挿入して、ユー�
 
 #### <a name="track-usage"></a>利用状況を追跡する
 * [Web クライアント テレメトリを追加][usage]して、ビューや基本的なユーザー メトリックを監視します。
-* [カスタム イベントおよびメトリックを追跡][track]して、クライアント側とサーバー側でアプリケーションの利用状況を確認します。
+* [カスタム イベントおよびメトリックを追跡](app-insights-web-track-usage.md)して、クライアント側とサーバー側でアプリケーションの利用状況を確認します。
 
 <!--Link references-->
 
@@ -235,5 +235,5 @@ Java Web アプリケーションに数行のコードを挿入して、ユー�
 [javalogs]: app-insights-java-trace-logs.md
 [metrics]: app-insights-metrics-explorer.md
 [track]: app-insights-api-custom-events-metrics.md
-[usage]: app-insights-web-track-usage.md
+[usage]: app-insights-javascript.md
 
