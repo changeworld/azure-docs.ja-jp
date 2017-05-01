@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: ramankum
 translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 25dc9c5778c8259b8e59a9695239d167ccb9582a
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 1040027de1df88544bd7a0c4ba6565d5599a54ab
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -69,7 +69,7 @@ Premium Storage の使用を開始するには、[無料の Azure アカウン�
 * **Premium Storage アカウント**
 
     Premium Storage の使用を開始するには、非管理対象ディスクの Premium Storage アカウントを作成します。 [Azure Portal](https://portal.azure.com) で、Premium Storage アカウントを作成するには、**[Premium]** パフォーマンス レベルを選択します。 **[ローカル冗長ストレージ (LRS)]** レプリケーション オプションを選択します。 また、次のいずれかの場所では、種類を **Premium_LRS** を設定することで Premium Storage アカウントを作成できます。
-    * [Storage REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/Azure-Storage-Services-REST-API-Reference) (バージョン 2014-02-14 以降のバージョン)
+    * [Storage REST API](https://docs.microsoft.com/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference) (バージョン 2014-02-14 以降のバージョン)
     * [サービス管理 REST API](http://msdn.microsoft.com/library/azure/ee460799.aspx) (バージョン 2014-10-01 以降のバージョン、Azure クラシック デプロイメント向け)
     * [Azure Storage Resource Provider REST API](https://docs.microsoft.com/rest/api/storagerp) (Azure Resource Manager デプロイメント向け)
     * [Azure PowerShell](../powershell-install-configure.md) (バージョン 0.8.10 以降のバージョン)
@@ -223,7 +223,7 @@ Storage サービスでは、VHD ファイルはページ BLOB です。 ペー�
 
 Standard Storage でスナップショットを使用する場合と同様に、非管理対象 Premium ディスクの[増分スナップショット](storage-incremental-snapshots.md)を作成します。 Premium Storage では、レプリケーション オプションとしてローカル冗長ストレージのみがサポートされています。 スナップショットを作成し、そのスナップショットを geo 冗長 Standard Storage アカウントにコピーすることをお勧めします。 詳細については、[Azure Storage の冗長オプション](storage-redundancy.md)に関する記事を参照してください。
 
-ディスクが VM に接続されている場合、そのディスクに対する一部の API 操作は許可されません。 たとえば、ディスクが VM に接続されている場合は、その BLOB に対して [Copy Blob](/rest/api/storageservices/fileservices/Copy-Blob) 操作を実行できません。 代わりに、まず、[Snapshot Blob](/rest/api/storageservices/fileservices/Snapshot-Blob) REST API を使用してその BLOB のスナップショットを作成します。 その後、スナップショットの [Copy Blob](/rest/api/storageservices/fileservices/Copy-Blob) を実行して、接続されたディスクをコピーします。 または、ディスクの接続を解除してから必要な操作を実行できます。
+ディスクが VM に接続されている場合、そのディスクに対する一部の API 操作は許可されません。 たとえば、ディスクが VM に接続されている場合は、その BLOB に対して [Copy Blob](/rest/api/storageservices/Copy-Blob) 操作を実行できません。 代わりに、まず、[Snapshot Blob](/rest/api/storageservices/Snapshot-Blob) REST API を使用してその BLOB のスナップショットを作成します。 その後、スナップショットの [Copy Blob](/rest/api/storageservices/Copy-Blob) を実行して、接続されたディスクをコピーします。 または、ディスクの接続を解除してから必要な操作を実行できます。
 
 Premium Storage BLOB スナップショットには次の制限が適用されます。
 
@@ -233,7 +233,7 @@ Premium Storage BLOB スナップショットには次の制限が適用され�
 | スナップショットのストレージ アカウントの容量<br>(スナップショットのデータのみを含み、 ベース BLOB のデータは含まない) | 10 TB |
 | 連続したスナップショットの最小時間間隔 | 10 分 |
 
-スナップショットの地理冗長コピーを維持するには、AzCopy か Copy Blob を使用して、Premium Storage アカウントから地理冗長 Standard Storage アカウントにスナップショットをコピーできます。 詳細については、「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」および「[Copy Blob](/rest/api/storageservices/fileservices/Copy-Blob)」を参照してください。
+スナップショットの地理冗長コピーを維持するには、AzCopy か Copy Blob を使用して、Premium Storage アカウントから地理冗長 Standard Storage アカウントにスナップショットをコピーできます。 詳細については、「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」および「[Copy Blob](/rest/api/storageservices/Copy-Blob)」を参照してください。
 
 Premium Storage アカウントでページ BLOB に対して REST 操作を実行する方法の詳細については、[Azure Premium Storage での Blob service の操作](http://go.microsoft.com/fwlink/?LinkId=521969)に関する記事を参照してください。
 
@@ -294,7 +294,7 @@ Premium Storage の使用時には、課金に関する次の考慮事項が適�
 
 * **Premium 非管理対象ディスクのスナップショット**
 
-    Premium 非管理対象ディスクのスナップショットについては、スナップショットで使用された追加の容量に対して課金されます。 スナップショットの詳細については、[BLOB のスナップショットの作成](/rest/api/storageservices/fileservices/Snapshot-Blob)に関する記事を参照してください。
+    Premium 非管理対象ディスクのスナップショットについては、スナップショットで使用された追加の容量に対して課金されます。 スナップショットの詳細については、[BLOB のスナップショットの作成](/rest/api/storageservices/Snapshot-Blob)に関する記事を参照してください。
 
 * **Premium 管理ディスクのスナップショット**
 

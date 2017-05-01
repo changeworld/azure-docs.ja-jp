@@ -14,9 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 3/13/2017
 ms.author: rclaus
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 3f473836959fbc5d336038a62a95df8db6b7eb7d
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 587a8e225b18ae2a07d766f1a0d75623e44aec9f
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -91,7 +91,7 @@ HANA バックアップとストレージ スナップショットについて�
 
 Azure では、Azure BLOB スナップショット機能を使ってもファイル システムの整合性が確保されるわけでない点に注意してください ([PowerShell による BLOB スナップショットの使用](https://blogs.msdn.microsoft.com/cie/2016/05/17/using-blob-snapshots-with-powershell/)に関するページを参照)。 次のセクション「_ストレージ スナップショットを作成する際の SAP HANA データの整合性_」では、この機能に関するいくつかの考慮事項について説明します。
 
-さらに、BLOB スナップショットを頻繁に使用する場合、「[Understanding How Snapshots Accrue Charges (スナップショットの課金方法について)](/rest/api/storageservices/fileservices/understanding-how-snapshots-accrue-charges)」で説明されているとおり、課金への影響を把握する必要があります。これは Azure 仮想ディスクの使用よりもわかりにくくなっています。
+さらに、BLOB スナップショットを頻繁に使用する場合、「[Understanding How Snapshots Accrue Charges (スナップショットの課金方法について)](/rest/api/storageservices/understanding-how-snapshots-accrue-charges)」で説明されているとおり、課金への影響を把握する必要があります。これは Azure 仮想ディスクの使用よりもわかりにくくなっています。
 
 ### <a name="sap-hana-data-consistency-when-taking-storage-snapshots"></a>ストレージ スナップショットを作成する際の SAP HANA データの整合性
 
