@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 02/27/2017
+ms.date: 04/18/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 684b7a439b20a5cee0e7ce76167ce25903df3b50
-ms.lasthandoff: 04/19/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 9a298a5869d449c974267483eb779f45bc6b7abc
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -40,12 +40,6 @@ Azure のサーバーへの接続は、組織内のサーバー インスタン�
 
 [SQL Server Management Studio をダウンロード](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)します。
 
-ダウンロード ページには、2 つのオプションがあります。
- 
-* リリース候補 - Azure Analysis Services プレビューのみに接続する場合に推奨されています。 このリリースは、最新の更新プログラムを取得するため、Azure Analysis Services プレビューで最適に動作します。
-* 最新の運用リリース - 運用サーバーと Azure Analysis Services プレビューの両方に接続する場合に使用することが推奨されています。 このリリースを使用するときは、接続時に **[Windows 認証]** を選択する必要があります。
-
-同じコンピューターに両方のバージョンをインストールして共存させることができます。
 
 ### <a name="to-connect-with-ssms"></a>SSMS で接続するには
  SSMS を使用する場合は、最初にサーバーに接続する前に、Analysis Services の管理者グループにユーザー名が含まれていることを確認してください。 詳細については、この記事で後述する「[サーバー管理者](#server-administrators)」を参照してください。
