@@ -55,8 +55,3 @@ New-HPCIaaSCluster.ps1 [-ConfigFile] <String> [-AdminUserName]<String> [[-AdminP
 ## <a name="configuration-file"></a>構成ファイル
 デプロイ スクリプトの構成ファイルは XML ファイルです。 「HPCIaaSClusterConfig.xsd」という名前のスキーマ ファイルは HPC Pack IaaS デプロイ スクリプト フォルダーにあります。 **IaaSClusterConfig** は構成ファイルのルート要素であり、デプロイ スクリプト フォルダーの Manual.rtf ファイルに詳細がある子要素が含まれています。
 
-
-
-<!--HONumber=Feb17_HO3-->
-
-
