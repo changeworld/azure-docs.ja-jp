@@ -483,8 +483,3 @@ SetAzureVMLogCollector.ps1
 ## <a name="next-steps"></a>次のステップ
 ログは、すっきりと 1 か所から調査またはコピーすることができます。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

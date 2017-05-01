@@ -2,8 +2,3 @@ Azure に仮想マシン (VM) を作成し、複数のネットワーク イン�
 
 VM に複数の NIC を実装するには、先に、複数の NIC を使用できる状況およびその使用方法を理解しておく必要があります。 複数の NIC を使用する VM の詳細については、「 [複数 NIC を持つ VM の作成](../articles/virtual-network/virtual-networks-multiple-nics.md) 」を参照してください。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

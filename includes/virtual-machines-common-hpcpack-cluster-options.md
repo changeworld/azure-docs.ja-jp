@@ -2,8 +2,3 @@
 
 Azure で大規模な並列および一括 HPC を実行する他のオプションについては、「 [Azure における大規模なコンピューティング: バッチとハイ パフォーマンス コンピューティングに関するテクニカル リソース](../articles/batch/big-compute-resources.md)」をご覧ください。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

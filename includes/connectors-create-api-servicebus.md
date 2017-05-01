@@ -14,8 +14,3 @@ Service Bus アカウントに接続するロジック アプリを承認する�
 4. 接続が作成されたら、ロジック アプリで他の手順を自由に実行できるようになります。  
     ![Service Bus の接続イメージ 3](./media/connectors-create-api-servicebus/servicebus-3.png)   
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

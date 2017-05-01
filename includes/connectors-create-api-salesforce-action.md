@@ -40,8 +40,3 @@
 ここで、ロジック アプリをテストできます。 Salesforce で、作成した条件を満たす新しい潜在顧客を作成します。  このチュートリアルに完全に従うと、電子メール アドレスに "*amazon.com*" が含まれる潜在顧客が作成されます。 数秒後に、ロジック アプリがトリガーされ、結果は次のようになります。  
 ![Salesforce 操作イメージ 9](./media/connectors-create-api-salesforce/action-9.png)  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

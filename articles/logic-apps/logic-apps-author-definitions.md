@@ -295,7 +295,7 @@ ms.lasthandoff: 03/01/2017
       "defaultValue": {
         "quantity": 10,
         "id": "myorder1",
-        "orderer": "NAME=St�ph�n__�?�i?ian�"
+        "orderer": "NAME=Contoso"
       },
       "type": "Object"
     }

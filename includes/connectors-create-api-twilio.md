@@ -24,8 +24,3 @@
 6. 接続が作成されたら、ロジック アプリで他の手順を自由に実行できるようになります。  
    ![](./media/connectors-create-api-twilio/twilio-5.png)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

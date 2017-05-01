@@ -5,8 +5,3 @@
 | Linux gen. |N<sup>1</sup> |Y |N<sup>3</sup> |Y |
 | Linux spec. |Y |N<sup>2</sup> |Y |N<sup>4</sup> |
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -7,8 +7,3 @@
 
 UDR および IP 転送の詳細については、「 [ユーザー定義のルートと IP 転送](../articles/virtual-network/virtual-networks-udr-overview.md)」を参照してください。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-
