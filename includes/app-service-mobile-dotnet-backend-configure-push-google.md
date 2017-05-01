@@ -1,6 +1,6 @@
 バックエンド プロジェクトの種類 ([.NET バックエンド](#dotnet)または [Node.js バックエンド](#nodejs)のいずれか) に応じた手順を使用します。
 
-### <a name="a-namedotnetanet-back-end-project"></a><a name="dotnet"></a>.NET バックエンド プロジェクト
+### <a name="dotnet"></a>.NET バックエンド プロジェクト
 1. Visual Studio でサーバー プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 `Microsoft.Azure.NotificationHubs` を検索し、**[インストール]** をクリックします。 これにより、Notification Hubs のクライアント ライブラリがインストールされます。
 2. Controllers フォルダーで、TodoItemController.cs を開き、次の `using` ステートメントを追加します。
 
@@ -48,7 +48,7 @@
 
 4. サーバー プロジェクトを発行します。
 
-### <a name="a-namenodejsanodejs-back-end-project"></a><a name="nodejs"></a>Node.js バックエンド プロジェクト
+### <a name="nodejs"></a>Node.js バックエンド プロジェクト
 1. これをまだ行っていない場合は、[クイック スタート プロジェクト](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)をダウンロードするか、[Azure Portal でオンライン エディター](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor)を使用します。
 2. todoitem.js ファイル内の既存のコードを次のコードに置き換えます。
 
@@ -97,8 +97,3 @@
 
     これにより、新しい ToDo 項目が挿入されたときには item.text を含む GCM 通知が送信されます。
 3. ローカル コンピューターでファイルを編集するときは、サーバー プロジェクトを再発行します。
-
-
-<!--HONumber=Dec16_HO2-->
-
-

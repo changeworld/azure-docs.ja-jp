@@ -6,8 +6,3 @@
 > * [オンプレミスの SQL データベースから](../articles/machine-learning/machine-learning-use-data-from-an-on-premises-sql-server.md)
 >  
 
-
-
-<!--HONumber=Dec16_HO2-->
-
-
