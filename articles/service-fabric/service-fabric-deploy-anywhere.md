@@ -15,14 +15,16 @@ ms.workload: NA
 ms.date: 03/08/2017
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 6d8f489ac053db4898741671df73b6abfabeb0dd
-ms.openlocfilehash: 140bee520dd8de0d9303a7d80e10cae407c8b10d
-ms.lasthandoff: 12/14/2016
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 8e487cd33bef73ac66e1b1b6ee614b5a1376d772
+ms.lasthandoff: 04/21/2017
 
 
 ---
 # <a name="create-service-fabric-clusters-on-windows-server-or-linux"></a>Windows Server または Linux での Service Fabric クラスターの作成
-Azure Service Fabric を使用すると、Windows Server または Linux を実行するすべての VM またはコンピューター上に Service Fabric クラスターを作成できます。 つまり、オンプレミスか、Microsoft Azure か、クラウド プロバイダーかに関係なく、相互接続された一連の Windows Server コンピューターまたは Linux コンピューターがある任意の環境に、Service Fabric アプリケーションをデプロイして実行できます。
+Azure Service Fabric クラスターは、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターに属しているコンピューターまたは VM をクラスター ノードといいます。 クラスターは多数のノードにスケールできます。 新しいノードがクラスターに追加されると、Service Fabric は、増加したノード数全体で、サービスのパーティションのレプリカとインスタンスのバランスを再調整します。 アプリケーション全体のパフォーマンスが向上し、メモリへのアクセスの競合が減少します。 クラスター内のノードが効率的に使用されていない場合、クラスター内のノードの数を削減できます。 Service Fabric は、各ノードのハードウェアを効率的に利用できるように、減らされたノード数全体で、再度パーティションのレプリカとインスタンスのバランスを再調整します。
+
+Service Fabric を使用すると、Windows Server または Linux を実行するすべての VM またはコンピューター上に Service Fabric クラスターを作成できます。 つまり、オンプレミスか、Microsoft Azure か、クラウド プロバイダーかに関係なく、相互接続された一連の Windows Server コンピューターまたは Linux コンピューターがある任意の環境に、Service Fabric アプリケーションをデプロイして実行できます。
 
 ## <a name="create-service-fabric-clusters-on-azure"></a>Azure 上での Service Fabric クラスターの作成
 Azure でのクラスターの作成は、リソース モデル テンプレートまたは Azure Portal を使用して行います。 詳細については、[Resource Manager テンプレートを使用した Service Fabric クラスターの作成](service-fabric-cluster-creation-via-arm.md)に関する記事または [Azure Portal からの Service Fabric クラスターの作成](service-fabric-cluster-creation-via-portal.md)に関する記事を参照してください。
