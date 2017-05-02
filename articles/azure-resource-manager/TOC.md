@@ -10,6 +10,12 @@
 ## [最初のテンプレートを作成する](resource-manager-create-first-template.md)
 ## [Visual Studio と Resource Manager](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
 
+# サンプル
+## PowerShell
+### [テンプレートのデプロイ](resource-manager-samples-powershell-deploy.md)
+## Azure CLI
+### [テンプレートのデプロイ](resource-manager-samples-cli-deploy.md)
+
 # 方法
 ## テンプレートの作成
 ### [テンプレートのベスト プラクティス](resource-manager-template-best-practices.md)
@@ -26,8 +32,12 @@
 ### [リンク済みテンプレート間の状態を共有する](best-practices-resource-manager-state.md)
 ### [テンプレートの設計パターン](best-practices-resource-manager-design-templates.md)
 ## デプロイ
-### [PowerShell](resource-group-template-deploy.md)
-### [Azure CLI](resource-group-template-deploy-cli.md)
+### PowerShell
+#### [テンプレートのデプロイ](resource-group-template-deploy.md)
+#### [SAS トークンを使用したプライベート テンプレートのデプロイ](resource-manager-powershell-sas-token.md)
+### Azure CLI
+#### [テンプレートのデプロイ](resource-group-template-deploy-cli.md)
+#### [SAS トークンを使用したプライベート テンプレートのデプロイ](resource-manager-cli-sas-token.md)
 ### [ポータル](resource-group-template-deploy-portal.md)
 ### [REST API](resource-group-template-deploy-rest.md)
 ### [Visual Studio Team Services を使用した継続的インテグレーション](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)

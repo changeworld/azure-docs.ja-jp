@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 1/6/2017
+ms.date: 4/10/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: dfd1ae52cc56a4d4b4c7ee3f69f0c454be607401
-ms.openlocfilehash: 84075b60074b0607c14787db72c8dff8b701a8ea
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: a9023448c4ced1edf54c84bb103454cbd76fbfba
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -64,7 +65,7 @@ Event Hubs リソースを操作するパターンは、次の共通のプロト
     };
     ```
 
-1. CreateOrUpdate パラメーターを指定した値に設定します。
+1. `CreateOrUpdate` パラメーターを指定した値に設定します。
     ```csharp
     var ehParams = new EventHubCreateOrUpdateParameters()
     {
@@ -80,9 +81,4 @@ Event Hubs リソースを操作するパターンは、次の共通のプロト
 ## <a name="next-steps"></a>次のステップ
 * [.NET 管理のサンプル](https://github.com/Azure-Samples/event-hubs-dotnet-management/)
 * [Microsoft.Azure.Management.EventHub リファレンス](/dotnet/api/Microsoft.Azure.Management.EventHub) 
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

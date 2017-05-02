@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/20/2017
+ms.date: 03/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 04a045f41965b093aab71e59cd9b5f328b44de84
-ms.openlocfilehash: 801c0f7085034cc3a3ed74722a11204f6421c27d
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 3b1a347322e2307aadbd287cb2235e39e11f1e79
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -35,27 +36,27 @@ SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active
 PerformanceCentre と Azure AD の統合を構成するには、次のものが必要です。
 
 * Azure AD サブスクリプション
-* PerformanceCentre でのシングル サインオンが有効なサブスクリプション
+* 有効なサブスクリプションでの PerformanceCentre へのシングル サインオン
 
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+>[!NOTE]
+>このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 > 
 > 
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。 
+* Azure AD の評価環境がない場合は、[1 か月の試用版](https://azure.microsoft.com/pricing/free-trial/)を入手できます。 
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。  
+このチュートリアルの目的は、テスト環境で Azure AD の SSO をテストできるようにすることです。  
 
-このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 *  ギャラリーからの PerformanceCentre の追加 
-*  Azure AD シングル サインオンの構成とテスト
+*  Azure AD SSO の構成とテスト
 
-## <a name="adding-performancecentre-from-the-gallery"></a>ギャラリーからの PerformanceCentre の追加
+## <a name="add-performancecentre-from-the-gallery"></a>ギャラリーからの PerformanceCentre の追加
 Azure AD への PerformanceCentre の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に PerformanceCentre を追加する必要があります。
 
 **ギャラリーから PerformanceCentre を追加するには、次の手順に従います。**
@@ -80,8 +81,8 @@ Azure AD への PerformanceCentre の統合を構成するには、ギャラリ�
    
     ![アプリケーション][500]
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、PerformanceCentre で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
+## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
+このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、PerformanceCentre で Azure AD のシングル サインオンを構成し、テストする方法を説明することです。
 
 シングル サインオンを機能させるには、Azure AD ユーザーに対応する PerformanceCentre ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと PerformanceCentre の関連ユーザーの間で、リンクの関係が確立されている必要があります。  
 
@@ -89,14 +90,14 @@ Azure AD への PerformanceCentre の統合を構成するには、ギャラリ�
 
 **PerformanceCentre で Azure AD のシングル サインオンを構成し、テストするには、次の要素を完了する必要があります。**
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[PerformanceCentre のテスト ユーザーの作成](#creating-a-halogen-software-test-user)** - PerformanceCentre で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
 5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
-このセクションの目的は、Azure AD クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、PerformanceCentre アプリケーションでシングル サインオンを構成することです。
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+このセクションの目的は、Azure AD クラシック ポータルで Azure AD シングル サインオンを有効にし、PerformanceCentre アプリケーションでシングル サインオンを構成することです。
 
 **PerformanceCentre で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
@@ -140,7 +141,7 @@ Azure AD への PerformanceCentre の統合を構成するには、ギャラリ�
     
      ![Azure AD のシングル サインオン][16]
 
-### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。  
 
 ![Azure AD ユーザーの作成][20]
@@ -182,10 +183,10 @@ Azure AD への PerformanceCentre の統合を構成するには、ギャラリ�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-performancecentre-tutorial/create_aaduser_08.png) 
    
-    1. **[新しいパスワード]** の値を書き留めます。
-    2. ページの下部にある **[完了]**」を参照してください。   
+   1. **[新しいパスワード]** の値を書き留めます。
+   2. ページの下部にある **[完了]**」を参照してください。   
 
-### <a name="creating-a-performancecentre-test-user"></a>PerformanceCentre のテスト ユーザーの作成
+### <a name="create-a-performancecentre-test-user"></a>PerformanceCentre テスト ユーザーの作成
 このセクションの目的は、PerformanceCentre で Britta Simon というユーザーを作成することです。
 
 **PerformanceCentre で Britta Simon というユーザーを作成するには、次の手順に従います。**
@@ -199,17 +200,18 @@ Azure AD への PerformanceCentre の統合を構成するには、ギャラリ�
     ![[Create User]][401]
    
    1. 関連するテキスト ボックスに Britta Simon の必要な属性を入力します。
-   > [!IMPORTANT]
-   > PerformanceCentre での Britta の User Name 属性は、Azure AD でのユーザー名と同じにする必要があります。
-   > 
-   > 
+
+    >[!IMPORTANT]
+    >PerformanceCentre での Britta の User Name 属性は、Azure AD でのユーザー名と同じにする必要があります。
+    > 
+    > 
  
    2. **[ロールの選択]** で **[クライアント管理者]** を選択します。
    3. **[保存]**をクリックします。   
 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-このセクションの目的は、Britta Simon に PerformanceCentre へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+このセクションの目的は、Britta Simon に PerformanceCentre へのアクセスを許可することによって、このユーザーが Azure シングル サインオンを使用できるようにすることです。
 
 ![ユーザーの割り当て][200] 
 
@@ -229,8 +231,8 @@ Azure AD への PerformanceCentre の統合を構成するには、ギャラリ�
    
     ![ユーザーの割り当て][205]
 
-### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
-このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。  
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+このセクションの目的は、アクセス パネルを使用して Azure AD の SSO 構成をテストすることです。  
 
 アクセス パネルで PerformanceCentre のタイルをクリックすると、自動的に PerformanceCentre アプリケーションにサインオンします。
 
@@ -275,10 +277,5 @@ Azure AD への PerformanceCentre の統合を構成するには、ギャラリ�
 [402]: ./media/active-directory-saas-performancecentre-tutorial/tutorial_performancecentre_402.png
 
 
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

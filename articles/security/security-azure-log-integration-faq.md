@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/07/2017
 ms.author: TomSh
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 2d5201a335e96cc8595de834858750f6aac884a3
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: f539fc2945b9c6646660d50713d11dd7d822d06f
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -25,7 +25,11 @@ ms.lasthandoff: 03/17/2017
 この FAQ では、Azure ログ統合に関する質問に回答します。このサービスを使用すると、未加工のログを、Azure リソースからオンプレミスのセキュリティ情報/イベント管理 (SIEM) システムに統合できます。 この統合は、すべての資産に対してオンプレミスまたはクラウドの統合ダッシュボードを提供します。これにより、アプリケーションに関連付けられているセキュリティ イベントの集計、関連付け、分析を実行し、警告を生成できます。
 
 ## <a name="is-the-azure-log-integration-software-free"></a>Azure ログ統合ソフトウェアは無料ですか。
-はい。 Azure ログ統合ソフトウェアに料金はかかりません。 
+はい。 Azure ログ統合ソフトウェアに料金はかかりません。
+
+## <a name="where-is-azure-log-integration-available"></a>Azure ログ統合はどこで利用できますか。
+
+現時点では、Azure 商用および Azure Government サービスで利用できます。中国やドイツでは利用できません。
 
 ## <a name="how-can-i-see-the-storage-accounts-from-which-azure-log-integration-is-pulling-azure-vm-logs-from"></a>Azure ログ統合が Azure VM を取得しているストレージ アカウントを表示するには、どうすればよいですか。
 **azlog source list**コマンドを実行します。
@@ -82,7 +86,7 @@ ms.lasthandoff: 03/17/2017
 「 [Azure Security Center でのセキュリティの警告の管理と対応](../security-center/security-center-managing-and-responding-alerts.md)」をご覧ください。
 
 ## <a name="how-can-i-modify-what-is-collected-with-vm-diagnostics"></a>VM 診断で収集した情報を変更するには、どうすればよいですか。
-Windows の Azure 診断 [(WAD)](../virtual-machines/virtual-machines-windows-ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 構成を取得、変更、および設定する方法の詳細については、「 *PowerShell を使用して Windows を実行している仮想マシンで Azure 診断を有効にする* 」をご覧ください。 サンプルを次に示します。
+Windows の Azure 診断 [(WAD)](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 構成を取得、変更、および設定する方法の詳細については、「 *PowerShell を使用して Windows を実行している仮想マシンで Azure 診断を有効にする* 」をご覧ください。 サンプルを次に示します。
 
 ### <a name="get-the-wad-config"></a>WAD 構成の取得
     -AzureRmVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient
@@ -107,7 +111,7 @@ Windows の Azure 診断 [(WAD)](../virtual-machines/virtual-machines-windows-ps
 
 変更後、ストレージ アカウントをチェックして、適切なイベントが収集されていることを確認します。
 
-インストールおよび構成中に問題が発生した場合、[サポート要求](https://docs.microsoft.com/en-us/azure/azure-supportability/how-to-create-azure-support-request)を作成し、サポートを要求するサービスとして 'Log Integration' を選択します。
+インストールおよび構成中に問題が発生した場合、[サポート要求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)を作成し、サポートを要求するサービスとして **[ログ統合]** を選択します。
 
 
 <!--Image references-->

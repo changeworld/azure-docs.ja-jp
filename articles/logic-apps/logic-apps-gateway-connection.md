@@ -15,26 +15,28 @@ ms.workload: integration
 ms.date: 07/05/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: ef7df25d8080cae41235dffb287906508d4a652d
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: 3e9b95e6e9e84f8c2b615f43783d9fec5a2c09b6
+ms.lasthandoff: 04/14/2017
 
 
 ---
 # <a name="connect-to-on-premises-data-from-logic-apps"></a>ロジック アプリからオンプレミスのデータに接続する
 
-オンプレミスのデータにアクセスするには、サポートされている Azure Logic Apps コネクタ向けにオンプレミス データ ゲートウェイへの接続を設定します。 オンプレミス データ ゲートウェイをインストールし、ロジック アプリで使用できるように設定する方法について、以下の手順で説明します。
-オンプレミス データ ゲートウェイでは、以下のデータ ソース接続がサポートされています。
+オンプレミスのデータにアクセスするには、サポートされている Azure Logic Apps コネクタ向けにオンプレミス データ ゲートウェイへの接続を設定します。 オンプレミス データ ゲートウェイをインストールし、ロジック アプリで使用できるように設定する方法について、以下の手順で説明します。 オンプレミス データ ゲートウェイでは、以下の接続がサポートされています。
 
 *   BizTalk Server
-*    DB2  
+*   DB2  
 *   ファイル システム
 *   Informix
 *   MQ
-*    Oracle Database 
+*   MySQL
+*   Oracle Database 
 *   SAP アプリケーション サーバー 
 *   SAP メッセージ サーバー
-*    SQL Server
+*   SharePoint (HTTP のみ。HTTPS は対象外)
+*   SQL Server
+*   Teradata
 
 これらの接続の詳細については、[Azure Logic Apps のコネクタ](https://docs.microsoft.com/azure/connectors/apis-list)に関するページを参照してください。
 
@@ -42,7 +44,7 @@ ms.lasthandoff: 03/30/2017
 
 * オンプレミス データ ゲートウェイをアカウント (Azure Active Directory ベースのアカウント) に関連付けるために、Azure で職場または学校の電子メール アドレスを用意する必要があります。
 
-* @outlook.com などの Microsoft アカウントを使用している場合は、Azure アカウントを使用して[職場または学校の電子メール アドレスを作成](../virtual-machines/virtual-machines-windows-create-aad-work-id.md#locate-your-default-directory-in-the-azure-classic-portal)できます。
+* @outlook.com などの Microsoft アカウントを使用している場合は、Azure アカウントを使用して[職場または学校の電子メール アドレスを作成](../virtual-machines/windows/create-aad-work-id.md#locate-your-default-directory-in-the-azure-classic-portal)できます。
 
 * [ローカル コンピューターへのオンプレミス データ ゲートウェイのインストール](logic-apps-gateway-install.md)を済ませている必要があります。
 
@@ -59,7 +61,7 @@ ms.lasthandoff: 03/30/2017
 ゲートウェイをインストールしたら、そのゲートウェイに Azure サブスクリプションを関連付ける必要があります。
 
 > [!IMPORTANT] 
-> ロジック アプリと同じ Azure リージョンに、ゲートウェイ リソースが作成されることを確認します。 同じリージョンにデプロイしないと、ロジック アプリでアクセスできません。 
+> ロジック アプリと同じ Azure リージョンに、ゲートウェイ リソースが作成されることを確認します。 ゲートウェイ リソースを同じリージョンにデプロイしない場合、ロジック アプリはゲートウェイにアクセスできません。 
 > 
 
 1. ゲートウェイのインストールで使用したのと同じ職場または学校の電子メール アドレスを使用して、Azure にサインインします。
@@ -85,10 +87,13 @@ Azure サブスクリプションをオンプレミス データ ゲートウェ
 
 これで、ロジック アプリで使用する接続が構成できました。
 
-## <a name="data-gateway-connection-modifications"></a>データ ゲートウェイ接続の変更
-ロジック アプリにデータ ゲートウェイ接続を追加すると、変更を行ってその接続に固有の設定を調整する必要がある場合があります。 次の 2 つの場所のいずれかで接続を見つけることができます。
-* ロジック アプリのメイン ブレードの [開発ツール] セクションに、API 接続のパネルが表示されます。 データ ゲートウェイ接続を含む、ロジック アプリに関連付けられたすべての API 接続を表示しているパネルを選択します。 データ ゲートウェイ接続を選択すると、接続に関連付けられた設定が表示され、変更することができます。
-* API 接続のメイン ブレードを選択すると、サブスクリプションのすべての API 接続が表示されます。 この一覧にデータ ゲートウェイ接続が含まれています。 データ ゲートウェイ接続を選択すると、接続に関連付けられた設定が表示され、変更することができます。
+## <a name="edit-your-data-gateway-connection-settings"></a>データ ゲートウェイ接続設定の編集
+
+ロジック アプリにデータ ゲートウェイ接続を追加した後で、変更を行ってその接続に固有の設定を調整できるようにすることが必要な場合があります。 次の 2 つの場所のいずれかで接続を見つけることができます。
+
+* ロジック アプリ ブレードの **[Development Tools]**(開発ツール) で、**[API Connections]**(API 接続) を選択します。 このリストには、データ ゲートウェイ接続を含む、ロジック アプリに関連付けられているすべての API 接続が表示されます。 その接続の設定を表示して変更するには、その接続を選択します。
+
+* API 接続のメイン ブレードで、データ ゲートウェイ接続を含む、Azure サブスクリプションに関連付けられているすべての API 接続を確認できます。 接続の設定を表示して変更するには、その接続を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

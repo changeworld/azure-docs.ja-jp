@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: a423975e8a091183154217678706817694f3e346
-ms.openlocfilehash: d5256250d6d3a6d7df3a90ae4a0801af131b830e
-ms.lasthandoff: 12/21/2016
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 2b8638ffc3287346a71f591370367655c450e376
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -29,25 +29,25 @@ ms.lasthandoff: 12/21/2016
 非対話型 .NET アプリケーションでは、以下が必要です。
 
 * Azure サブスクリプションのテナント ID (別名: ディレクトリ ID)。 「[Get tenant ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id)」 (テナント ID を取得する) を参照してください。
-* Azure Directory アプリケーションのクライアント ID。 「[Active Directory アプリケーションを作成する](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-active-directory-application)」と「[Get an application ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)」 (アプリケーション ID を取得する) を参照してください。
-* Azure Directory アプリケーションのシークレット キー。 「[Get application authentication key](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)」 (アプリケーションの認証キーを取得する) を参照してください。
+* Azure Active Directory アプリケーションのクライアント ID。 「[Azure Active Directory アプリケーションを作成する](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)」と「[Get an application ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)」 (アプリケーション ID を取得する) を参照してください。
+* Azure Active Directory アプリケーションのシークレット キー。 「[Get application authentication key](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)」 (アプリケーションの認証キーを取得する) を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 * HDInsight クラスター。 [使用に関するチュートリアル](hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster)を参照してください。
 
 
 
-## <a name="assign-ad-application-to-role"></a>AD アプリケーションをロールに割り当てる
+## <a name="assign-azure-ad-application-to-role"></a>Azure AD アプリケーションをロールに割り当てる
 アクションを実行するアクセス許可を付与するには、 [ロール](../active-directory/role-based-access-built-in-roles.md) にアプリケーションを割り当てる必要があります。 スコープは、サブスクリプション、リソース グループ、またはリソースのレベルで設定できます。 アクセス許可は、スコープの下位レベルに継承されます (たとえば、アプリケーションをリソース グループの閲覧者ロールに追加すると、アプリケーションではリソース グループとそれに含まれているすべてのリソースを読み取ることができます)。 このチュートリアルでは、リソース グループ レベルでスコープを設定します。 詳細については、「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../active-directory/role-based-access-control-configure.md)」を参照してください。
 
-**AD アプリケーションに所有者ロールを追加するには**
+**Azure AD アプリケーションに所有者ロールを追加するには**
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 2. 左側のウィンドウの **[リソース グループ]** をクリックします。
 3. HDInsight クラスター (このチュートリアルの後半で Hive クエリを実行するクラスター) を含むリソース グループをクリックします。 リソース グループ数が多すぎる場合は、フィルターを使用することができます。
 4. リソース グループ メニューから **[アクセス制御 (IAM)]**を選択します。
 5. **[ユーザー]** ブレードから **[追加]** をクリックします。
-6. 指示に従って、前の手順で作成した AD アプリケーションに **所有者** ロールを追加します。 正常に完了し、所有者ロールで [ユーザー] ブレードを見ると、そのアプリケーションが表示されます。
+6. 指示に従って、前の手順で作成した Azure AD アプリケーションに**所有者**ロールを追加します。 正常に完了し、所有者ロールで [ユーザー] ブレードを見ると、そのアプリケーションが表示されます。
 
 ## <a name="develop-hdinsight-client-application"></a>HDInsight クライアント アプリケーションを開発する
 
@@ -125,7 +125,7 @@ ms.lasthandoff: 12/21/2016
         }
 
 ## <a name="next-steps"></a>次のステップ
-* [ポータルを利用し、Active Directory のアプリケーションとサービス プリンシパルを作成する](../azure-resource-manager/resource-group-create-service-principal-portal.md)
+* [ポータルを利用し、Azure Active Directory のアプリケーションとサービス プリンシパルを作成する](../azure-resource-manager/resource-group-create-service-principal-portal.md)
 * [Azure Resource Manager でサービス プリンシパルを認証する](../azure-resource-manager/resource-group-authenticate-service-principal.md)
 * [Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)
 

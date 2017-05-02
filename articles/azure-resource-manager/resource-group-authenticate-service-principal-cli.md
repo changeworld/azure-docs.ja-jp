@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 01/17/2017
+ms.date: 03/31/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: a99b55c98f29356fb78e053434f6f3fc5c9d0efc
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 4ea75e08a630ad777444ea3a3cb85f4bb0efe01f
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -29,25 +29,12 @@ ms.lasthandoff: 03/21/2017
 > 
 > 
 
-リソースへのアクセスを必要とするアプリケーションやスクリプトがある場合は、そのアプリの ID を設定し、それをお客様自身の資格情報で認証できます。 この方法は、お客様自身の資格情報でアプリを実行するよりも推奨されます。
+リソースへのアクセスを必要とするアプリケーションやスクリプトがある場合は、そのアプリの ID を設定し、それをお客様自身の資格情報で認証できます。 この ID は、サービス プリンシパルと呼ばれます。 このアプローチを使用すると、以下のことが実行できます。
 
-* お客様自身のアクセス許可とは異なるアクセス許可を、アプリ ID に割り当てることができます。 通常、こうしたアクセス許可は、アプリが行う必要があることに制限されます。
-* お客様の責任が変わっても、アプリの資格情報を変更する必要はありません。 
-* 無人インストール用スクリプトを実行するときに、証明書を使用して認証を自動化できます。
+* お客様自身のアクセス許可とは異なるアクセス許可を、アプリケーション ID に割り当てることができます。 通常、こうしたアクセス許可は、アプリが行う必要があることに制限されます。
+* 無人インストール用スクリプトを実行するときに、証明書を使用して認証できます。
 
-このトピックでは、アプリケーションをその独自の資格情報と ID で実行させるために必要な設定を [Mac、Linux、および Windows 用の Azure CLI](../cli-install-nodejs.md) で行う方法を紹介しています。
-
-AD アプリケーションの認証に関して、Azure CLI には次の&2; つの選択肢があります。
-
-* パスワード
-* 証明書
-
-このトピックでは、Azure CLI でのこれらの選択肢の使用方法について説明します。 プログラミング フレームワーク (Python、Ruby、Node.js など) から Azure にログインする場合は、パスワード認証が最適な選択肢と考えられます。 パスワードと証明書のどちらを使用するか決める前に、「 [サンプル アプリケーション](#sample-applications) 」セクションで、各種フレームワークにおける認証の例を参照してください。
-
-## <a name="active-directory-concepts"></a>Active Directory の概念
-この記事では、Active Directory (AD) アプリケーションとサービス プリンシパルという&2; つのオブジェクトを作成します。 AD アプリケーションは、アプリケーションをグローバルに表現したものです。 資格情報としてアプリケーション ID と、パスワードまたは証明書のいずれかを保持します。 サービス プリンシパルは、Active Directory のアプリケーションをローカルに表現したものです。 こちらは、ロールの割り当てを保持します。 このトピックでは、シングル テナント アプリケーション (単一組織内でのみ実行するように意図されたアプリケーション) に焦点を絞って説明します。 一般に、組織内で実行される基幹業務アプリケーションには、シングル テナント アプリケーションが使用されます。 シングルテナント アプリケーションでは、1 つの AD アプリケーションと&1; つのサービス プリンシパルを設定します。
-
-両方のオブジェクトが必要になるわけを疑問に思う方もいるでしょう。 このような方法の利点は、マルチテナント アプリケーションについて考えるとはっきりします。 通常、マルチテナント アプリケーションは、さまざまなサブスクリプションでアプリケーションが実行されるサービスとしてのソフトウェア (SaaS) アプリケーションで使用します。 マルチテナント アプリケーションでは、1 つの AD アプリケーションと複数のサービス プリンシパル (1 つは Active Directory でアプリケーションにアクセスを付与するためのもの) を設定できます。 マルチテナント アプリケーションのセットアップについては、「 [Azure Resource Manager API を使用した承認の開発者ガイド](resource-manager-api-authentication.md)」を参照してください。
+この記事では、[Azure CLI 1.0](../cli-install-nodejs.md) を使用してアプリケーションをその独自の資格情報と ID で実行する設定方法について説明します。 [Azure CLI 1.0](../cli-install-nodejs.md) の最新バージョンをインストールし、自分の環境がこの記事の例と一致するかどうかを確認します。
 
 ## <a name="required-permissions"></a>必要なアクセス許可
 このトピックを完了するには、Azure Active Directory と Azure サブスクリプションの両方で適切なアクセス許可を持っている必要があります。 具体的には、Active Directory でアプリケーションを作成し、ロールにサービス プリンシパルを割り当てることができる必要があります。 
@@ -59,64 +46,38 @@ AD アプリケーションの認証に関して、Azure CLI には次の&2; つ
 ## <a name="create-service-principal-with-password"></a>パスワードを使用したサービス プリンシパルの作成
 このセクションでは、パスワードを使用して AD アプリケーションを作成し、閲覧者ロールをサービス プリンシパルに割り当てる手順を実行します。
 
-それでは、これらの手順を見ていきましょう。
-
 1. ご使用のアカウントにサインインします。
    
    ```azurecli
    azure login
    ```
-2. AD アプリケーションを作成するには&2; つのオプションがあります。 AD アプリケーションとサービス プリンシパルは、ワン ステップで作成することや、個別に作成することができます。 アプリのホーム ページと識別子の URI を指定する必要がない場合は、ワン ステップで作成します。 Web アプリ用に値を設定する必要がある場合は、個別に作成します。 この手順では、両方のオプションを紹介します。
-   
-   * AD アプリケーションとサービス プリンシパルをワン ステップで作成するには、次のコマンドに示すように、アプリの名前とパスワードを指定します。
+2. アプリ ID を作成するには、次のコマンドに示すように、アプリケーションの名前とパスワードを指定します。
      
-     ```azurecli
-     azure ad sp create -n exampleapp -p {your-password}
-     ```
-   * AD アプリケーションを別に作成するには、次を指定します。
+   ```azurecli
+   azure ad sp create -n exampleapp -p {your-password}
+   ```
+     
+   新しいサービス プリンシパルが返されます。 アクセス許可を付与する場合は、オブジェクト ID が必要です。 ログイン時には、示されている GUID とサービス プリンシパル名が必要となります。 この GUID は、アプリケーション ID と同じ値です。 サンプル アプリケーションでは、この値は `Client ID` と呼ばれます。 
+     
+   ```azurecli
+   info:    Executing command ad sp create
+     
+   Creating application exampleapp
+     / Creating service principal for application 7132aca4-1bdb-4238-ad81-996ff91d8db+
+     data:    Object Id:               ff863613-e5e2-4a6b-af07-fff6f2de3f4e
+     data:    Display Name:            exampleapp
+     data:    Service Principal Names:
+     data:                             7132aca4-1bdb-4238-ad81-996ff91d8db4
+     data:                             https://www.contoso.org/example
+     info:    ad sp create command OK
+   ```
 
-      * アプリの名前
-      * アプリのホーム ページの URL
-      * アプリケーションを特定するための URI のコンマ区切りリスト
-      * [パスワード]
-
-      たとえば、次のようなコマンドになります。
-     
-     ```azurecli
-     azure ad app create -n exampleapp --home-page http://www.contoso.org --identifier-uris https://www.contoso.org/example -p {Your_Password}
-     ```
-
-       前のコマンドで、AppId 値が返されます。 サービス プリンシパルを作成するには、次のコマンドでこの値をパラメーターとして指定します。
-     
-     ```azurecli
-     azure ad sp create -a {AppId}
-     ```
-     
-     Active Directory のアカウントに[必要なアクセス許可](#required-permissions)が設定されていない場合、"認証が承認されなかったこと" または "コンテキストにサブスクリプションが見つからなかったこと" を示すエラー メッセージが表示されます。
-     
-     どちらのオプションでも新しいサービス プリンシパルが返されます。 アクセス許可を付与する場合は、`Object Id` が必要です。 また、ログイン時には、`Service Principal Names` に示されている GUID が必要です。 この GUID は、アプリケーション ID と同じ値です。 サンプル アプリケーションでは、この値は `Client ID` と呼ばれます。 
-     
-     ```azurecli
-     info:    Executing command ad sp create
-     
-     Creating application exampleapp
-       / Creating service principal for application 7132aca4-1bdb-4238-ad81-996ff91d8db+
-       data:    Object Id:               ff863613-e5e2-4a6b-af07-fff6f2de3f4e
-       data:    Display Name:            exampleapp
-       data:    Service Principal Names:
-       data:                             7132aca4-1bdb-4238-ad81-996ff91d8db4
-       data:                             https://www.contoso.org/example
-       info:    ad sp create command OK
-      ```
-
-3. サブスクリプションに対する権限をサービス プリンシパルに付与します。 この例では、サブスクリプション内のすべてのリソースを読み取る権限である閲覧者ロールを、サービス プリンシパルに付与します。 その他のロールについては、「[RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」を参照してください。 `objectid` パラメーターには、アプリケーションの作成時に使用した `Object Id` を指定します。 このコマンドを実行する前に、新しいサービス プリンシパルが Active Directory 全体に反映されるまでの時間を設ける必要が必要があります。 これらのコマンドを手動で実行した場合、通常はタスクとタスクの間に十分な時間が経過しています。 スクリプトでは、コマンドとコマンドの間にスリープのための手順 (`sleep 15` など) を追加してください。 プリンシパルがディレクトリに存在しないことを示すエラーが表示された場合は、コマンドを再実行してください。
+3. サブスクリプションに対する権限をサービス プリンシパルに付与します。 この例では、サブスクリプション内のすべてのリソースを読み取る権限である閲覧者ロールを、サービス プリンシパルに付与します。 その他のロールについては、「[RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」を参照してください。 objectid パラメーターには、アプリケーションの作成時に使用した Object Id を指定します。 このコマンドを実行する前に、新しいサービス プリンシパルが Active Directory 全体に反映されるまでの時間を設ける必要が必要があります。 これらのコマンドを手動で実行した場合、通常はタスクとタスクの間に十分な時間が経過しています。 スクリプトでは、コマンドとコマンドの間にスリープのための手順 (`sleep 15` など) を追加してください。 プリンシパルがディレクトリに存在しないことを示すエラーが表示された場合は、コマンドを再実行してください。
    
    ```azurecli
    azure role assignment create --objectId ff863613-e5e2-4a6b-af07-fff6f2de3f4e -o Reader -c /subscriptions/{subscriptionId}/
    ```
    
-     ロールを割り当てることのできるアクセス許可がアカウントに設定されていない場合は、エラー メッセージが表示されます。 このメッセージは、アカウントで、スコープ "/subscriptions/{guid} に対するアクション Microsoft.Authorization/roleAssignments/write の実行が承認されていない" ことを示しています。
-
 これで完了です。 AD アプリケーションとサービス プリンシパルが設定されました。 次のセクションでは、Azure CLI から資格情報を使ってログインする方法を紹介します。 コード アプリケーションの資格情報を使用する場合は、このトピックを続行する必要はありません。 「 [サンプル アプリケーション](#sample-applications) 」に進んで、アプリケーション ID とパスワードでログインする例をご覧ください。 
 
 ### <a name="provide-credentials-through-azure-cli"></a>資格情報を Azure CLI で渡す
@@ -128,7 +89,7 @@ AD アプリケーションの認証に関して、Azure CLI には次の&2; つ
    azure account show
    ```
    
-     次のような結果が返されます。
+   次のような結果が返されます。
    
    ```azurecli
    info:    Executing command account show
@@ -198,66 +159,45 @@ AD アプリケーションの認証に関して、Azure CLI には次の&2; つ
    ```
    openssl req -x509 -days 3650 -newkey rsa:2048 -out cert.pem -nodes -subj '/CN=exampleapp'
    ```
-2. パブリックとプライベート キーを組み合わせます。
-   
+
+2. 前の手順では、privkey.pem と cert.pem の 2 つのファイルを作成しました。 パブリック キーとプライベート キーを 1 つのファイルに結合します。
+
    ```
    cat privkey.pem cert.pem > examplecert.pem
    ```
+
 3. **examplecert.pem** ファイルを開き、**-----BEGIN CERTIFICATE-----** と **-----END CERTIFICATE-----** の間の長い文字のシーケンスを探します。 証明書データをコピーします。 サービス プリンシパルを作成するときに、このデータをパラメーターとして渡します。
+
 4. ご使用のアカウントにサインインします。
-   
+
    ```azurecli
    azure login
    ```
-5. AD アプリケーションを作成するには&2; つのオプションがあります。 AD アプリケーションとサービス プリンシパルは、ワン ステップで作成することや、個別に作成することができます。 アプリのホーム ページと識別子の URI を指定する必要がない場合は、ワン ステップで作成します。 Web アプリ用に値を設定する必要がある場合は、個別に作成します。 この手順では、両方のオプションを紹介します。
-   
-   * AD アプリケーションとサービス プリンシパルをワン ステップで作成するには、次のコマンドに示すように、アプリの名前と証明書データを指定します。
+5. サービス プリンシパルを作成するには、次のコマンドに示すように、アプリケーションの名前と証明書データを指定します。
      
-     ```azurecli
-     azure ad sp create -n exampleapp --cert-value {certificate data}
-     ```
-   * AD アプリケーションを別に作成するには、次を指定します。
-      
-      * アプリの名前
-      * アプリのホーム ページの URL
-      * アプリケーションを特定するための URI のコンマ区切りリスト
-      * 証明書データ
-
-      たとえば、次のようなコマンドになります。
-
-     ```azurecli
-     azure ad app create -n exampleapp --home-page http://www.contoso.org --identifier-uris https://www.contoso.org/example --cert-value {certificate data}
-     ```
+   ```azurecli
+   azure ad sp create -n exampleapp --cert-value {certificate data}
+   ```
      
-       前のコマンドで、AppId 値が返されます。 サービス プリンシパルを作成するには、次のコマンドでこの値をパラメーターとして指定します。
+   新しいサービス プリンシパルが返されます。 アクセス許可を付与する場合は、オブジェクト ID が必要です。 ログイン時には、示されている GUID とサービス プリンシパル名が必要となります。 この GUID は、アプリケーション ID と同じ値です。 サンプル アプリケーションでは、この値はクライアント ID と呼ばれます。 
      
-     ```azurecli
-     azure ad sp create -a {AppId}
-     ```
+   ```azurecli
+   info:    Executing command ad sp create
      
-     Active Directory のアカウントに[必要なアクセス許可](#required-permissions)が設定されていない場合、"認証が承認されなかったこと" または "コンテキストにサブスクリプションが見つからなかったこと" を示すエラー メッセージが表示されます。
-     
-     どちらのオプションでも新しいサービス プリンシパルが返されます。 アクセス許可を付与する場合は、オブジェクト ID が必要です。 また、ログイン時には、`Service Principal Names` に示されている GUID が必要です。 この GUID は、アプリケーション ID と同じ値です。 サンプル アプリケーションでは、この値は `Client ID` と呼ばれます。 
-     
-     ```azurecli
-     info:    Executing command ad sp create
-     
-     Creating service principal for application 4fd39843-c338-417d-b549-a545f584a74+
-       data:    Object Id:        7dbc8265-51ed-4038-8e13-31948c7f4ce7
-       data:    Display Name:     exampleapp
-       data:    Service Principal Names:
-       data:                      4fd39843-c338-417d-b549-a545f584a745
-       data:                      https://www.contoso.org/example
-       info:    ad sp create command OK
-     ```
-6. サブスクリプションに対する権限をサービス プリンシパルに付与します。 この例では、サブスクリプション内のすべてのリソースを読み取る権限である閲覧者ロールを、サービス プリンシパルに付与します。 その他のロールについては、「[RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」を参照してください。 `objectid` パラメーターには、アプリケーションの作成時に使用した `Object Id` を指定します。 このコマンドを実行する前に、新しいサービス プリンシパルが Active Directory 全体に反映されるまでの時間を設ける必要が必要があります。 これらのコマンドを手動で実行した場合、通常はタスクとタスクの間に十分な時間が経過しています。 スクリプトでは、コマンドとコマンドの間にスリープのための手順 (`sleep 15` など) を追加してください。 プリンシパルがディレクトリに存在しないことを示すエラーが表示された場合は、コマンドを再実行してください。
+   Creating service principal for application 4fd39843-c338-417d-b549-a545f584a74+
+     data:    Object Id:        7dbc8265-51ed-4038-8e13-31948c7f4ce7
+     data:    Display Name:     exampleapp
+     data:    Service Principal Names:
+     data:                      4fd39843-c338-417d-b549-a545f584a745
+     data:                      https://www.contoso.org/example
+     info:    ad sp create command OK
+   ```
+6. サブスクリプションに対する権限をサービス プリンシパルに付与します。 この例では、サブスクリプション内のすべてのリソースを読み取る権限である閲覧者ロールを、サービス プリンシパルに付与します。 その他のロールについては、「[RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」を参照してください。 objectid パラメーターには、アプリケーションの作成時に使用した Object ID を指定します。 このコマンドを実行する前に、新しいサービス プリンシパルが Active Directory 全体に反映されるまでの時間を設ける必要が必要があります。 これらのコマンドを手動で実行した場合、通常はタスクとタスクの間に十分な時間が経過しています。 スクリプトでは、コマンドとコマンドの間にスリープのための手順 (`sleep 15` など) を追加してください。 プリンシパルがディレクトリに存在しないことを示すエラーが表示された場合は、コマンドを再実行してください。
    
    ```azurecli
    azure role assignment create --objectId 7dbc8265-51ed-4038-8e13-31948c7f4ce7 -o Reader -c /subscriptions/{subscriptionId}/
    ```
-   
-     ロールを割り当てることのできるアクセス許可がアカウントに設定されていない場合は、エラー メッセージが表示されます。 このメッセージは、アカウントで、スコープ "/subscriptions/{guid} に対するアクション Microsoft.Authorization/roleAssignments/write の実行が承認されていない" ことを示しています。
-
+  
 ### <a name="provide-certificate-through-automated-azure-cli-script"></a>自動化された Azure CLI スクリプトから証明書を渡す
 次に、操作を実行するアプリケーションとしてログインする必要があります。
 
@@ -267,7 +207,7 @@ AD アプリケーションの認証に関して、Azure CLI には次の&2; つ
    azure account show
    ```
    
-     次のような結果が返されます。
+   次のような結果が返されます。
    
    ```azurecli
    info:    Executing command account show
@@ -279,7 +219,7 @@ AD アプリケーションの認証に関して、Azure CLI には次の&2; つ
    ...
    ```
    
-     別のサブスクリプションのテナント ID を取得する必要がある場合は、次のコマンドを使用します。
+   別のサブスクリプションのテナント ID を取得する必要がある場合は、次のコマンドを使用します。
    
    ```azurecli
    azure account show -s {subscription-id}
@@ -290,7 +230,7 @@ AD アプリケーションの認証に関して、Azure CLI には次の&2; つ
    openssl x509 -in "C:\certificates\examplecert.pem" -fingerprint -noout | sed 's/SHA1 Fingerprint=//g'  | sed 's/://g'
    ```
    
-     次のような拇印の値が返されます。
+   次のような拇印の値が返されます。
    
    ```
    30996D9CE48A0B6E0CD49DBB9A48059BF9355851
@@ -301,7 +241,7 @@ AD アプリケーションの認証に関して、Azure CLI には次の&2; つ
    azure ad sp show -c exampleapp
    ```
    
-     ログインに使用する値は、サービス プリンシパル名に示されている GUID です。
+   ログインに使用する値は、サービス プリンシパル名に示されている GUID です。
      
    ```azurecli
    [
@@ -341,6 +281,13 @@ azure ad app set --applicationId 4fd39843-c338-417d-b549-a545f584a745 --password
 azure ad app set --applicationId 4fd39843-c338-417d-b549-a545f584a745 --cert-value {certificate data}
 ```
 
+## <a name="debug"></a>デバッグ
+
+サービス プリンシパルの作成時に、以下のエラーが発生することがあります。
+
+* **"Authentication_Unauthorized"** または **"コンテキストにサブスクリプトが見つかりません"** - アカウントが Active Directory でアプリを登録するために[必要なアクセス許可](#required-permissions)を持っていない場合に、このエラーが表示されます。 通常、Active Directory の管理者ユーザーしかアプリを登録できません。自分のアカウントが管理者でない場合に、このエラーが発生します。 管理者ロールに割り当てるか、ユーザーがアプリケーションを登録できるように、管理者に依頼します。
+
+* アカウントに**「'/subscriptions/{guid} ' をスコープとした 'Microsoft.Authorization/roleAssignments/write' のアクションを実行するためのアクセス権限がありません」と表示される場合** -自分のアカウントが ID にロールを割り当てるのに十分なアクセス許可を持っていない場合に、このエラーが表示されます。 サブスクリプション管理者に連絡して、ユーザー アクセス管理者ロールに追加してもらいます。
 
 ## <a name="sample-applications"></a>サンプル アプリケーション
 サービス プリンシパルとしてログインする方法については、以下のサンプル アプリケーションで紹介されています。

@@ -5,8 +5,3 @@ File Storage 共有は標準の SMB ファイル共有であるため、Azure �
 
 Azure のファイル共有は、 [Azure ポータル](https://portal.azure.com)、Azure Storage の PowerShell コマンドレット、Azure Storage のクライアント ライブラリ、または Azure Storage の REST API を使用して作成することができます。 また、これらのファイル共有は SMB 共有であるため、それらには標準の使い慣れたファイル システム API を使用してアクセスできます。
 
-
-
-<!--HONumber=Jan17_HO3-->
-
-

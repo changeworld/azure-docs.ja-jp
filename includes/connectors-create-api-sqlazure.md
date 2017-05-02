@@ -40,8 +40,3 @@
    
     ![SQL Azure の接続の作成手順](./media/connectors-create-api-sqlazure/table.png)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 03/02/2017
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: 5e4aebee48754f1f6762898d9571a4fff7d7283e
-ms.openlocfilehash: 2149bcf588b019a0c0f3c64a4e39fec9b9bc5925
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 7fc832ff23f5ad652df3cb9c689180c92952ba8e
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -187,7 +187,7 @@ PS D:\temp>
 ### <a name="service-fabric-is-not-following-the-specified-health-policies"></a>Service Fabric が指定された正常性ポリシーに従っていない
 考えられる原因 1:
 
-Service Fabric は、すべてのパーセンテージを、正常性評価のためのエンティティ (レプリカ、パーティション、サービスなど) の実際の数値に変換し、全体のエンティティ数に常に切り上げます。 たとえば、最大の *MaxPercentUnhealthyReplicasPerPartition* が 21% で、5 個のレプリカがある場合、Service Fabric は最大 2 個の異常レプリカ (つまり `Math.Ceiling (5\*0.21)) を許可します。 このため、これに基づいて、正常性ポリシーを設定する必要があります。
+Service Fabric は、すべてのパーセンテージを、正常性評価のためのエンティティ (レプリカ、パーティション、サービスなど) の実際の数値に変換し、全体のエンティティ数に常に切り上げます。 たとえば、最大の *MaxPercentUnhealthyReplicasPerPartition* が 21% で、5 個のレプリカがある場合、Service Fabric は最大 2 個の異常レプリカ (つまり `Math.Ceiling (5*0.21)`) を許可します。 このため、これに基づいて、正常性ポリシーを設定する必要があります。
 
 考えられる原因 2:
 
@@ -222,7 +222,4 @@ Service Fabric は、すべてのパーセンテージを、正常性評価の�
 [データのシリアル化](service-fabric-application-upgrade-data-serialization.md)の方法を学ぶことで、アプリケーションのアップグレードに互換性を持たせます。
 
 [高度なトピック](service-fabric-application-upgrade-advanced.md)を参照して、アプリケーションをアップグレードするときの高度な機能の使用方法を学習します。
-
-「 [アプリケーションのアップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)」の手順を参照して、アプリケーションのアップグレードでの一般的な問題を修正します。
-
 

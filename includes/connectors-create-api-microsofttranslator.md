@@ -12,8 +12,3 @@ MicrosoftTranslator アカウントに接続するロジック アプリを承�
 3. 接続が作成されたら、ロジック アプリで他の手順を自由に実行できるようになります。  
    ![MicrosoftTranslator の接続の作成手順](./media/connectors-create-api-microsofttranslator/microsofttranslator-3.png)  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

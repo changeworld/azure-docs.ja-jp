@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/02/2017
+ms.date: 04/21/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 79e122beb0f31c46bbb9951a2dee223de4a77e1f
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 89c3eb1c501f455cfa154014665fef25af346873
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -52,7 +52,7 @@ HDInsight は、[ドメイン参加済み](hdinsight-domain-joined-introduction.
 
     curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
 
-**PASSWORD** は管理者アカウントのパスワードに、**CLUSTERNAME** はクラスターの名前に置き換えます。 このコマンドで返される JSON ドキュメントにクラスター内のホストの一覧が含まれます。jq により、クラスター内の各ホストの `host_name` 要素値が取り出されます。
+**PASSWORD** は管理者アカウントのパスワードに、**CLUSTERNAME** はクラスターの名前に置き換えます。 このコマンドで返される JSON ドキュメントにクラスター内のホストの一覧が含まれます。 jq により、クラスター内の各ホストの `host_name` 要素値が取り出されます。
 
 特定のサービスのノード名を見つける必要がある場合、そのコンポーネントについて Ambari に問い合わせることができます。 たとえば、HDFS 名のノードのホストを見つけるには、次のコマンドを利用します。
 
@@ -64,12 +64,12 @@ HDInsight は、[ドメイン参加済み](hdinsight-domain-joined-introduction.
 
 * **Ambari (web)** - https://&lt;clustername>.azurehdinsight.net
 
-    クラスター管理者のユーザー名とパスワードを使用して認証した後、Ambari にログインします。 クラスター管理者のユーザー名とパスワードを使用して認証する必要があります。
+    クラスター管理者のユーザー名とパスワードを使用して認証した後、Ambari にログインします。
 
     認証はプレーンテキストです。接続をセキュリティで確実に保護するために、常に HTTPS を使用してください。
 
     > [!IMPORTANT]
-    > クラスター用の Ambari にはインターネットから直接アクセスできますが、一部の機能では、クラスターが使用する内部ドメイン名によってノードにアクセスします。 内部ドメイン名はパブリックにアクセスできないため、インターネット経由で機能にアクセスしようとすると、サーバーが見つからないことを示すエラーが発生する可能性があります。
+    > Ambari から使用できる Web UI の中には、内部ドメイン名を使ってノードにアクセスするものがあります。 内部ドメイン名には、インターネット経由でパブリックにアクセスできません。 インターネット経由で機能にアクセスしようとすると、"サーバーが見つからない" ことを示すエラーが発生する可能性があります。
     >
     > Ambari Web UI の全機能を使用するには、SSH トンネルを使用して、クラスター ヘッド ノードに対する Web トラフィックがプロキシ経由になるようにします。 「[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)」を参照してください。
 
@@ -96,14 +96,14 @@ HDInsight は、[ドメイン参加済み](hdinsight-domain-joined-introduction.
 
 Hadoop 関連ファイルは、 `/usr/hdp`のクラスター ノードにあります。 このディレクトリには、次のサブディレクトリが含まれます。
 
-* **2.2.4.9-1**: このディレクトリは HDInsight が使用する Hortonworks Data Platform のバージョンから名前が付けられるため、クラスター上の番号はここに記載されたものと異なる場合があります。
-* **current**: このディレクトリには、**2.2.4.9-1** ディレクトリ下のサブディレクトリへのリンクが含まれています。 このディレクトリは、(変わる可能性のある) バージョン番号をファイルにアクセスするたびに入力しなくて済むように存在します。
+* **2.2.4.9-1**: このディレクトリは、HDInsight が使用する Hortonworks Data Platform のバージョンから名前が付けられます。 クラスター上の番号は、ここに記載されているものと異なる場合があります。
+* **current**: このディレクトリには、**2.2.4.9-1** ディレクトリ下のサブディレクトリへのリンクが含まれています。 バージョン番号を記憶する必要がないのは、このディレクトリが存在するためです。
 
 サンプル データ ファイルと JAR ファイルは、Hadoop 分散ファイル システムの `/example` と `/HdiSamples` にあります。
 
 ## <a name="hdfs-azure-storage-and-data-lake-store"></a>HDFS、Azure Storage、Data Lake Store
 
-ほとんどの Hadoop ディストリビューションでは、HDFS はクラスター内のコンピューターのローカル ストレージによって支えられています。 ローカル ストレージの使用は効率的である一方、コンピューティング リソースが時間または分単位で課金されるクラウドベースのソリューションではコストが高くなります。
+ほとんどの Hadoop ディストリビューションでは、HDFS はクラスター内のコンピューターのローカル ストレージによって支えられています。 ローカル ストレージの使用コストは、コンピューティング リソースが時間または分単位で課金されるクラウドベースのソリューションでは高くなる場合があります。
 
 HDInsight では、既定のストアとして Azure Data Lake Store または Azure Storage の BLOB が使用されます。 これらのサービスには次のような利点があります。
 
@@ -111,9 +111,9 @@ HDInsight では、既定のストアとして Azure Data Lake Store または A
 * Websites、ファイル アップロード/ダウンロード ユーティリティ、さまざまな言語の SDK、Web ブラウザーなどの外部サービスからアクセスできます。
 
 > [!WARNING]
-> __汎用__の Azure Storage アカウントがサポートされるのは HDInsight のみです。 現時点では、__Blob Storage__ タイプのアカウントはサポートされません。
+> __汎用__の Azure ストレージ アカウントがサポートされるのは HDInsight のみです。 現時点では、__Blob Storage__ タイプのアカウントはサポートされません。
 
-Azure Storage アカウントは最大 4.75 TB を保持できますが、個々の BLOB (HDInsight から見たファイル) は最大 195 GB を保持できます。 Azure Data Lake Store は、膨大な数のファイルを保持するように動的に拡張可能であり、ペタバイト以上のファイルも保持できます。 詳細については、[BLOB の概要](https://docs.microsoft.com/rest/api/storageservices/fileservices/understanding-block-blobs--append-blobs--and-page-blobs)に関するページと「[Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)」を参照してください。
+Azure Storage アカウントは最大 4.75 TB を保持できますが、個々の BLOB (HDInsight から見たファイル) は最大 195 GB を保持できます。 Azure Data Lake Store は、膨大な数のファイルを保持するように動的に拡張可能であり、ペタバイト以上のファイルも保持できます。 詳細については、[BLOB の概要](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)に関するページと「[Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)」を参照してください。
 
 Azure Storage または Data Lake Store を使用している場合、HDInsight からデータにアクセスするときに特別な処理を行う必要はありません。 たとえば、次のコマンドは、`/example/data` フォルダーの保存場所 (Azure Storage または Data Lake Store) に関係なく、そのフォルダー内のファイルの一覧を表示します。
 
@@ -135,7 +135,7 @@ __Data Lake Store__ を使用する場合は、次のいずれかの URI スキ�
 
 * `adl:///`: クラスターの既定の Data Lake Store にアクセスします。
 
-* `adl://<storage-name>.azuredatalakestore.net/`: 既定以外の Data Lake Store と通信するとき、または HDInsight クラスターのルート ディレクトリ以外のデータにアクセスするときに使用します。
+* `adl://<storage-name>.azuredatalakestore.net/`: 既定以外の Data Lake Store を使用して通信するときに使用します。 HDInsight クラスターのルート ディレクトリ以外のデータにアクセスするときにも使用できます。
 
 > [!IMPORTANT]
 > Data Lake Store を HDInsight の既定のストアとして使用する場合は、HDInsight のストレージのルートとして使用するためのパスをストア内に指定する必要があります。 既定のパスは `/clusters/<cluster-name>/` です。
@@ -149,9 +149,9 @@ Ambari を使用して、クラスターの既定のストレージ構成を取�
 ```curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'```
 
 > [!NOTE]
-> このコードは、サーバーに適用された最初の構成 (`service_config_version=1`) を返し、その中にこの情報が含まれています。 クラスターの作成後に変更された値を取得する場合は、構成のバージョンを一覧表示した後で最新の構成を取得することが必要になる場合があります。
+> このコードは、サーバーに適用された最初の構成 (`service_config_version=1`) を返し、その中にこの情報が含まれています。 最新の構成を確認するには、構成バージョンの一覧を表示しなければならない場合があります。
 
-このコマンドにより、次のような値が返されます。
+このコマンドにより、次の URI のような値が返されます。
 
 * Azure Storage アカウントを使用している場合: `wasbs://<container-name>@<account-name>.blob.core.windows.net`
 
@@ -206,11 +206,11 @@ __Azure Data Lake Store__ を使用している場合は、次のリンクを参
 
 ## <a name="scaling"></a>クラスターのスケーリング
 
-クラスターのスケール設定機能を使用すると、クラスターによって使用されるデータ ノードの数を、クラスターを削除して再作成することなく、変更できます。 クラスターで他のジョブまたはプロセスを実行している間にスケーリング操作を実行できます。
+クラスターのスケール設定機能を使用すると、クラスターによって使用されるデータ ノードの数を動的に変更できます。 クラスターで他のジョブまたはプロセスを実行している間にスケーリング操作を実行できます。
 
 別のクラスターの種類は、次のようにスケーリングすることによって影響を受けます。
 
-* **Hadoop**: クラスター内のノードの数をスケール ダウンすると、クラスター内のサービスの一部が再起動されます。 これにより、スケーリング操作の完了時に、実行中および保留中のジョブが失敗する可能性があります。 ただし、操作が完了した時点で、ジョブを再送信できます。
+* **Hadoop**: クラスター内のノードの数をスケール ダウンすると、クラスター内のサービスの一部が再起動されます。 スケーリング操作の完了時に、実行中および保留中のジョブが失敗する可能性があります。 ただし、操作が完了した時点で、ジョブを再送信できます。
 * **HBase**: リージョンのサーバーは、スケーリング操作の完了から数分以内に自動的に調整されます。 リージョンのサーバーを手動で調整するには、次の手順を使用します。
 
     1. SSH を使用して HDInsight クラスターに接続します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
@@ -223,7 +223,7 @@ __Azure Data Lake Store__ を使用している場合は、次のリンクを参
 
             balancer
 
-* **Storm**: スケーリング操作が実行された後に、実行中の Storm トポロジをすべて再調整する必要があります。 これにより、トポロジはクラスター内のノードの新しい数に基づいて並列処理の設定を再調整できます。 実行中のトポロジを再調整するには、次のオプションのいずれかを使用します。
+* **Storm**: スケーリング操作が実行された後に、実行中の Storm トポロジをすべて再調整する必要があります。 これにより、トポロジがクラスター内のノードの新しい数に基づいて並列処理の設定を再調整できます。 実行中のトポロジを再調整するには、次のオプションのいずれかを使用します。
 
     * **SSH**: サーバーに接続し、次のコマンドを使用してトポロジを再調整します。
 
@@ -248,7 +248,7 @@ HDInsight は管理されたサービスです。 Azure によってクラスタ
 * サービスや Web サイト (Spark、Hue など) をインストールして構成する。
 * クラスターの複数のノードで構成変更を必要とするコンポーネントをインストールして構成する。 たとえば、必要な環境変数、ログ ディレクトリの作成、構成ファイルの作成。
 
-スクリプト アクションとは、クラスターのプロビジョニング中に実行される Bash スクリプトで、クラスター上に追加のコンポーネントをインストールし、構成するために使用できます。 次のコンポーネントをインストールするスクリプトの例が用意されています。
+スクリプト アクションとは、Bash スクリプトです。 このスクリプトは、クラスターのプロビジョニング中に実行され、クラスター上に追加のコンポーネントをインストールし、構成するときに使用できます。 次のコンポーネントをインストールするスクリプトの例が用意されています。
 
 * [Hue](hdinsight-hadoop-hue-linux.md)
 * [Giraph](hdinsight-hadoop-giraph-install-linux.md)
@@ -269,7 +269,7 @@ HDInsight は管理されたサービスです。 Azure によってクラスタ
 >
 > このコマンドからは、一致する jar ファイルのパスが返されます。
 
-クラスターに付属するバージョンとは異なるバージョンが必要になった場合は、新しいバージョンのコンポーネントをアップロードして、実際のジョブから使用してください。
+異なるバージョンのコンポーネントが必要になった場合は、必要なバージョンをアップロードして、ジョブで使用してください。
 
 > [!WARNING]
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。

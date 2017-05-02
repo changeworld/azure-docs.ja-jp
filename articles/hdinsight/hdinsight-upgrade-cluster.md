@@ -1,6 +1,6 @@
 ---
-title: "Windows ベースの HDInsight から Linux ベースの HDInsight への移行 -Azure | Microsoft Docs"
-description: "Windows ベースの HDInsight クラスターから Linux ベースの HDInsight クラスターへの移行方法について説明します。"
+title: "HDInsight クラスターを新しいバージョンにアップグレードする - Azure | Microsoft Docs"
+description: "HDInsight クラスターを新しいバージョンにアップグレードする方法について説明します。"
 services: hdinsight
 documentationcenter: 
 author: bhanupr
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/11/2017
+ms.date: 04/04/2017
 ms.author: bhanupr
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: e249d2859f135bf1a49b152ce206dc66ddebb75f
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
+ms.openlocfilehash: 909ac8bff4c3fdb78fc7ed6fdcac4743fda6c6a9
+ms.lasthandoff: 04/05/2017
 
 
 ---

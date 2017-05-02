@@ -16,9 +16,9 @@ ms.workload: NA
 ms.date: 10/13/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
-ms.openlocfilehash: 164f3affdf0622653a0a7dcc2a5e886ab855ced1
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: dab476db32b2274049140144847fba24b55856b0
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -33,7 +33,7 @@ Azure SQL Database は、障害から回復するために次の機能を備え�
 ### <a name="prepare-for-the-event-of-an-outage"></a>障害に備える
 アクティブ geo レプリケーションまたは geo 冗長バックアップのいずれかを使用して、他のデータリージョンに適切に復旧するには、必要な場合に備えて、サーバーを、他のデータ センターが停止したときに新しいプライマリ サーバーとして使用できるように準備する必要があります。また、スムーズに復旧できるように、明確に定義された手順を文書化およびテストする必要もあります。 この準備手順を次に示します。
 
-* 他のリージョンで、新しいプライマリ サーバーとして使用する論理サーバーを特定します。 アクティブ geo レプリケーションを使用する場合、これは少なくとも&1; つで、ほとんどの場合、各セカンダリ サーバーになります。 geo リストアの場合は、通常、データベースが配置されているリージョンの [ペア リージョン](../best-practices-availability-paired-regions.md) にあるサーバーです。
+* 他のリージョンで、新しいプライマリ サーバーとして使用する論理サーバーを特定します。 アクティブ geo レプリケーションを使用する場合、これは少なくとも 1 つで、ほとんどの場合、各セカンダリ サーバーになります。 geo リストアの場合は、通常、データベースが配置されているリージョンの [ペア リージョン](../best-practices-availability-paired-regions.md) にあるサーバーです。
 * ユーザーが新しいプライマリ データベースにアクセスするのに必要なサーバー レベルのファイアウォール規則を特定し、必要に応じて定義します。
 * 新しいプライマリ サーバーにユーザーをリダイレクトする方法を決めます。たとえば、接続文字列を変更したり、DNS エントリを変更したりすることでリダイレクトできます。
 * 新しいプライマリ サーバーのマスター データベースに必要なログインを特定し、必要に応じて作成します。また、マスター データベースにあるこれらのログインに、適切なアクセス許可が付与されていることを確認します (ある場合)。 詳細については、[障害復旧後の SQL Database のセキュリティ](sql-database-geo-replication-security-config.md)に関するページをご覧ください。
@@ -63,16 +63,11 @@ Azure チームはできるだけ早くサービスが利用できるように�
 geo レプリケートされたセカンダリ データベースへのフェールオーバーについては、次のいずれかを参照してください。
 
 * [Azure ポータルを使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-portal.md)
-* [PowerShell を使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-powershell.md)
+* [PowerShell を使用して Azure SQL Database の geo レプリケーションを構成する](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
 * [Transact-SQL を使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-transact-sql.md)
 
 ## <a name="recover-using-geo-restore"></a>geo リストアを使用した復旧
-アプリケーションのダウンタイムがビジネス責任にならない場合は、アプリケーション データベースを回復する方法として geo リストアを使用できます。 geo リストアは、最新の geo 冗長バックアップからデータベースのコピーを作成します。
-
-新しいリージョンへのデータベースの geo リストアについては、次のいずれかを参照してください。
-
-* [Geo-Restore a database to a new region using Azure Portal (Azure ポータルを使用して新しいリージョンにデータベースを geo リストアする)](sql-database-geo-restore-portal.md)
-* [Geo-Restore a database to a new region using PowerShell (PowerShell を使用して新しいリージョンにデータベースを geo リストアする)](sql-database-geo-restore-powershell.md)
+アプリケーションのダウンタイムがビジネス責任にならない場合は、アプリケーション データベースを回復する方法として [geo リストア](sql-database-recovery-using-backups.md)を使用できます。 geo リストアは、最新の geo 冗長バックアップからデータベースのコピーを作成します。
 
 ## <a name="configure-your-database-after-recovery"></a>復旧後のデータベースの構成
 geo レプリケーション フェールオーバーまたは geo リストアを使用して障害から復旧する場合は、通常のアプリケーション機能を再開できるように新しいデータベースへの接続が正しく構成されていることを確認する必要があります。 復旧後のデータベースをすぐ運用できるようにするためのタスクのチェックリストを次に示します。

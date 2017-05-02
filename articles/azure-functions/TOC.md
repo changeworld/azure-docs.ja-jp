@@ -2,7 +2,7 @@
 ## [Azure Functions とは](functions-overview.md)
 # 作業の開始
 ## [最初の関数を作成する](functions-create-first-azure-function.md)
-## [webhook 関数を作成する](functions-create-a-web-hook-or-api-function.md)
+## [webhook でトリガーされる関数を作成する](functions-create-github-webhook-triggered-function.md)
 ## [Azure 接続関数を作成する](functions-create-an-azure-connected-function.md)
 ## [イベント処理関数を作成する](functions-create-an-event-processing-function.md)
 # 方法

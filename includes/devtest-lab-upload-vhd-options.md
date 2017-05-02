@@ -4,8 +4,3 @@
 - [AzCopy コマンドライン ユーティリティを使用してアップロードする](../articles/devtest-lab/devtest-lab-upload-vhd-using-azcopy.md)
 - [Microsoft Azure ストレージ エクスプローラーを使用してアップロードする](../articles/devtest-lab/devtest-lab-upload-vhd-using-storage-explorer.md)
 - [PowerShell コンソールを使用してアップロードする](../articles/devtest-lab/devtest-lab-upload-vhd-using-powershell.md)
-
-
-<!--HONumber=Jan17_HO2-->
-
-

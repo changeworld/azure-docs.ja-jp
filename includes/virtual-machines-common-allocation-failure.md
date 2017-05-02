@@ -99,7 +99,7 @@ GeneralError*
 ## <a name="allocation-scenario-stagingproduction-deployments-platform-as-a-service-only"></a>割り当てシナリオ: ステージング環境/運用環境のデプロイメント (サービスとしてのプラットフォームのみ)
 **エラー**
 
-New_General* または New_VMSizeNotSupported*
+New_General *または New_VMSizeNotSupported*
 
 **クラスターの固定の原因**
 
@@ -112,7 +112,7 @@ New_General* または New_VMSizeNotSupported*
 ## <a name="allocation-scenario-affinity-group-vmservice-proximity"></a>割り当てシナリオ: アフィニティ グループ (VM/サービス近接性)
 **エラー**
 
-New_General* または New_VMSizeNotSupported*
+New_General *または New_VMSizeNotSupported*
 
 **クラスターの固定の原因**
 
@@ -125,7 +125,7 @@ New_General* または New_VMSizeNotSupported*
 ## <a name="allocation-scenario-affinity-group-based-virtual-network"></a>割り当てシナリオ: アフィニティ グループ ベースの仮想ネットワーク
 **エラー**
 
-New_General* または New_VMSizeNotSupported*
+New_General *または New_VMSizeNotSupported*
 
 **クラスターの固定の原因**
 
@@ -151,7 +151,7 @@ New_General* または New_VMSizeNotSupported*
 ## <a name="allocation-scenario-resize-a-vm-or-add-vms-to-an-existing-availability-set"></a>割り当てシナリオ: VM のサイズの変更、または既存の可用性セットへの VM の追加
 **エラー**
 
-Upgrade_VMSizeNotSupported* または GeneralError*
+Upgrade_VMSizeNotSupported *または GeneralError*
 
 **クラスターの固定の原因**
 
@@ -205,9 +205,4 @@ GeneralError*
 **GeneralError***
 
 "サーバーで内部エラーが発生しました。 要求を再試行してください。" または "サービスの割り当てを生成できませんでした。"
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

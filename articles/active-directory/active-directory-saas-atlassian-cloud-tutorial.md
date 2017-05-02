@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2017
+ms.date: 03/23/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 6d53de158a44116058ab8241d5182414f8f306fb
-ms.openlocfilehash: 243e81ecd1e1648bfd6b2ca6e6268ea1a18d2036
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 8928581d9636f571008f965185eeb61b414a16e7
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -44,11 +44,10 @@ Atlassian Cloud と Azure AD の統合を構成するには、次のものが必
 >[!NOTE] 
 >このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
-
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+- Azure AD の評価環境がない場合は、[1 か月の試用版](https://azure.microsoft.com/pricing/free-trial/)を入手できます。
 
 
 ## <a name="scenario-description"></a>シナリオの説明
@@ -57,10 +56,10 @@ Atlassian Cloud と Azure AD の統合を構成するには、次のものが必
 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Atlassian Cloud の追加
-2. Azure AD シングル サインオンの構成とテスト
+2. Azure AD SSO の構成とテスト
 
 
-## <a name="adding-atlassian-cloud-from-the-gallery"></a>ギャラリーからの Atlassian Cloud の追加
+## <a name="add-atlassian-cloud-from-the-gallery"></a>ギャラリーからの Atlassian Cloud の追加
 Azure AD への Atlassian Cloud の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Atlassian Cloud を追加する必要があります。
 
 **ギャラリーから Atlassian Cloud を追加するには、次の手順に従います。**
@@ -90,10 +89,10 @@ Azure AD への Atlassian Cloud の統合を構成するには、ギャラリー
 
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_02.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+##  <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
 このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Atlassian Cloud で Azure AD のシングル サインオンを構成し、テストします。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Atlassian Cloud ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Atlassian Cloud の関連ユーザーの間で、リンク関係が確立されている必要があります。
+SSO を機能させるには、Azure AD ユーザーに対応する Atlassian Cloud ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Atlassian Cloud の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
 このリンク関係を確立するには、Azure AD の **[ユーザー名]** の値を Atlassian Cloud の **[Username]** の値として割り当てます。
 
@@ -102,12 +101,12 @@ Atlassian Cloud での Azure AD シングル サインオンを構成してテ�
 1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Atlassian Cloud のテスト ユーザーの作成](#creating-Atlassian-cloud-test-user)** - Atlassian Cloud で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-このセクションでは、クラシック ポータルで Azure AD のシングル サインオンを有効にして、Atlassian Cloud アプリケーションでシングル サインオンを構成します。
+このセクションでは、クラシック ポータルで Azure AD のシングル サインオンを有効にして、Atlassian Cloud アプリケーションで SSO を構成します。
 
 
 **Atlassian Cloud との Azure AD シングル サインオンを構成するには、次の手順を実行します。**
@@ -122,71 +121,57 @@ Atlassian Cloud での Azure AD シングル サインオンを構成してテ�
 
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_04.png) 
-
-    a. **[サインオン URL]** ボックスに、ユーザーが Atlassian Cloud アプリケーションにサインオンするために使用する URL を、次の形式で入力します。`https://<instancename>.atlassian.net`
-    
-    b. **[識別子]** ボックスに、URL を次のパターンで入力します。`https://id.atlassian.com/login`
+    ![Configure Single Sign-On](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_04.png) 
+ 1. **[サインオン URL]** ボックスに、ユーザーが Atlassian Cloud アプリケーションにサインオンするために使用する URL を、次の形式で入力します。`https://<instancename>.atlassian.net`    
+ 2. **[識別子]** ボックスに、URL を次のパターンで入力します。`https://id.atlassian.com/login`
 
     >[!NOTE] 
     >**[識別子]**の正確な値は、[Atlassian Cloud SAML 構成] 画面で取得できます。
+    >
 
-    c. **[次へ]** をクリックします。
+ 3. **[次へ]**をクリックします。
  
 4. **[Atlassian Cloud でのシングル サインオンの構成]** ページで、次の手順を実行します。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_05.png)
-
-    a. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
-
-    b. **[次へ]**をクリックします。
-
+    ![[シングル サインオンの構成]](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_05.png)
+ 1. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+ 2. **[次へ]**をクリックします。
 
 5. アプリケーションの SSO を構成するには、管理者権限で Atlassian ポータルにログインします。
 
 6. 左側のナビゲーションの [Authentication] セクションで、**[Domains]** をクリックします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_06.png)
-
-    a. ボックスにドメイン名を入力し、**[Add domain]** をクリックします。
+ 1. ボックスにドメイン名を入力し、**[Add domain]** をクリックします。
         
     ![[シングル サインオンの構成]](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_07.png)
+ 2. ドメインを検証するために、**[Verify]** をクリックします。 
 
-    b. ドメインを検証するために、**[Verify]** をクリックします。 
-
-    ![[シングル サインオンの構成]](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_08.png)
-
-    c. ドメイン検証 html ファイルをダウンロードし、ドメインの Web サイトのルート フォルダーにアップロードします。次に、**[Verify domain]** をクリックします。
+    ![Configure Single Sign-On](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_08.png) 
+  3. ドメイン検証 html ファイルをダウンロードし、ドメインの Web サイトのルート フォルダーにアップロードします。次に、**[Verify domain]** をクリックします。
     
     ![Configure Single Sign-On](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_09.png)
+  4. ドメインの検証が終わると、**[Stauts]** フィールドの値が **[Verified]** になります。
 
-    d. ドメインの検証が終わると、**[Stauts]** フィールドの値が **[Verified]** になります。
-
-    ![シングル サインオンの構成](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_10.png)
+    ![[シングル サインオンの構成]](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_10.png)
 
 7. 左側のナビゲーション バーで、**[SAML]** をクリックします。
  
-    ![シングル サインオンの構成](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_11.png)
+    ![[シングル サインオンの構成]](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_11.png)
 
 8. 新しい SAML 構成を作成し、ID プロバイダー構成を追加します。
+  1. Azure AD からエンティティ ID の値をコピーし、[ID プロバイダー エンティティ ID] フィールドに貼り付けます。
+  2. SAML SSO URL をコピーし、[ID プロバイダー SSO URL] ボックスに貼り付けます。
+  3. Azure AD からダウンロードした証明書をメモ帳で開き、Begin 行と End 行以外の値をコピーし、[公開 X509 証明書] ボックスに貼り付けます。
+  4. 設定を保存します。
 
-    a. Azure AD からエンティティ ID の値をコピーし、[ID プロバイダー エンティティ ID] フィールドに貼り付けます。
-    
-    b. SAML SSO URL をコピーし、[ID プロバイダー SSO URL] ボックスに貼り付けます。
-
-    c. Azure AD からダウンロードした証明書をメモ帳で開き、Begin 行と End 行以外の値をコピーし、[公開 X509 証明書] ボックスに貼り付けます。
-    
-    d. 設定を保存します。
-
-    ![シングル サインオンの構成](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_12.png)
-  
+      ![[シングル サインオンの構成]](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_12.png)
+ 
 9. Azure AD 設定を更新し、適切な識別子 URL が設定されていることを確認します。
+  1. [SAML] 画面から SP 識別 ID をコピーし、Azure AD に **[識別子]** の値として貼り付けます。
+  2. サインオン URL は、Atlassian Cloud のテナント URL です。     
 
-    a. [SAML] 画面から SP 識別 ID をコピーし、Azure AD に **[識別子]** の値として貼り付けます。
-
-    b. サインオン URL は、Atlassian Cloud のテナント URL です。     
-
-    ![シングル サインオンの構成](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_13.png)
+     ![シングル サインオンの構成](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_13.png)
     
 10. クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]**をクリックします。
     
@@ -197,9 +182,8 @@ Atlassian Cloud での Azure AD シングル サインオンを構成してテ�
     ![Azure AD のシングル サインオン][11]
 
 
-### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションでは、クラシック ポータルで Britta Simon というテスト ユーザーを作成します。
-
 
 ![Azure AD ユーザーの作成][20]
 
@@ -219,25 +203,21 @@ Atlassian Cloud での Azure AD シングル サインオンを構成してテ�
 
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-atlassian-cloud-tutorial/create_aaduser_04.png) 
 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。 ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-atlassian-cloud-tutorial/create_aaduser_05.png) 
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
 
-    a. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-atlassian-cloud-tutorial/create_aaduser_05.png) 
+  1. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+  2. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
+  3. **[次へ]**をクリックします。
 
-    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
 
-    c. ページの下部にある **[次へ]**」を参照してください。
-
-6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-atlassian-cloud-tutorial/create_aaduser_06.png) 
-
-    a. **[名]** ボックスに「**Britta**」と入力します。  
-
-    b. **[姓]** ボックスに「**Simon**」と入力します。
-
-    c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
-
-    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
-
-    e. **[次へ]**をクリックします。
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-atlassian-cloud-tutorial/create_aaduser_06.png) 
+   1. **[名]** ボックスに「**Britta**」と入力します。  
+   2. **[姓]** ボックスに「**Simon**」と入力します。
+   3. **[表示名]** ボックスに「**Britta Simon**」と入力します。
+   4. **[ロール]** 一覧で **[ユーザー]** を選択します。
+   5. **[次へ]**をクリックします。
 
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
 
@@ -246,17 +226,14 @@ Atlassian Cloud での Azure AD シングル サインオンを構成してテ�
 8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
 
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-atlassian-cloud-tutorial/create_aaduser_08.png) 
+  1. **[新しいパスワード]** の値を書き留めます。
+  2. ページの下部にある **[完了]**」を参照してください。   
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
+### <a name="create-an-atlassian-cloud-test-user"></a>Atlassian Cloud のテスト ユーザーの作成
 
-    b. ページの下部にある **[完了]**」を参照してください。   
+このセクションでは、Atlassian Cloud で Britta Simon というユーザーを作成します。 このユーザーが、SSO を実行する前に Atlassian Cloud に存在することが重要です。 
 
-
-
-### <a name="creating-an-atlassian-cloud-test-user"></a>Atlassian Cloud のテスト ユーザーの作成
-
-
-このセクションでは、Atlassian Cloud で Britta Simon というユーザーを作成します。 そのユーザーは、シングル サインオンを実行する前に Atlassian Cloud に存在することが重要です。 Atlassian Cloud インスタンスに管理者権限でログインし、次の手順を実行します。
+Atlassian Cloud インスタンスに管理者権限でログインし、次の手順を実行します。
 
 >[!NOTE] 
 >[Users (ユーザー)] セクションの **[Bulk Create (一括作成)]** ボタンをクリックして、ユーザーを作成することもできます。
@@ -275,10 +252,9 @@ Atlassian Cloud での Azure AD シングル サインオンを構成してテ�
  
 4. **[Create user (ユーザーの作成)]** ボタンをクリックします。これで、招待状が電子メールでユーザーに送信され、招待状を受け取ったユーザーがシステムをアクティブ化します。 
 
+### <a name="assig-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-
-このセクションでは、Britta Simon に Atlassian Cloud へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、Britta Simon に Atlassian Cloud へのアクセスを許可して、このユーザーが Azure SSO を使用できるようにします。
 
 ![ユーザーの割り当て][200] 
 
@@ -302,10 +278,9 @@ Atlassian Cloud での Azure AD シングル サインオンを構成してテ�
 
     ![ユーザーの割り当て][205]
 
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
-### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
-
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、アクセス パネルを使用して Azure AD の SSO 構成をテストします。
 
 アクセス パネルで [Atlassian Cloud] タイルをクリックすると、自動的に Atlassian Cloud アプリケーションにサインオンします。
 

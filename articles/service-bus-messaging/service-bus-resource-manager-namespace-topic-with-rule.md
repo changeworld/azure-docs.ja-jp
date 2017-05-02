@@ -1,5 +1,5 @@
 ---
-title: "テンプレートを使用した Azure Service Bus のトピック、サブスクリプション、およびルールの作成 | Microsoft Docs"
+title: "Azure Resource Manager テンプレートを使用した Azure Service Bus とトピック、サブスクリプション、ルールの作成 | Microsoft Docs"
 description: "トピック、サブスクリプション、ルールを含んだ Service Bus 名前空間を Azure Resource Manager テンプレートで作成する"
 services: service-bus-messaging
 documentationcenter: .net
@@ -12,15 +12,17 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 01/18/2017
+ms.date: 04/18/2017
 ms.author: sethm;shvija
 translationtype: Human Translation
-ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
-ms.openlocfilehash: 16da81e14b7c4059de61b2dfebe081a9e4f08d5e
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 759c5655d7a6dbfff92136968ae8f26ccdeb44af
+ms.lasthandoff: 04/19/2017
 
 
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>トピック、サブスクリプション、ルールを含んだ Service Bus 名前空間を Azure Resource Manager テンプレートで作成します。
+
 この記事では、Azure Resource Manager テンプレートを使用して、トピック、サブスクリプション、ルール (フィルター) を含んだ Service Bus の名前空間を作成する方法について説明します。 デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
 テンプレートの作成について詳しくは、「[Azure Resource Manager のテンプレートの作成][Authoring Azure Resource Manager templates]」をご覧ください。
@@ -42,18 +44,21 @@ Azure リソースの名前付け規則のプラクティスとパターンに�
 > 
 
 ## <a name="what-will-you-deploy"></a>デプロイの対象
+
 このテンプレートでデプロイされるのは、トピック、サブスクリプション、ルール (フィルター) を含んだ Service Bus 名前空間です。
 
 [Service Bus のトピックとサブスクリプション](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions)は、"*発行とサブスクライブ*" のパターンで一対多の形式の通信を実現します。 トピックとサブスクリプションを使用しているとき、分散アプリケーションのコンポーネントは互いに直接通信するのではなく、仲介者として機能するトピックを介してメッセージをやり取りします。トピックのサブスクリプションとは、トピックに送信されたメッセージのコピーを受け取るキューと実質的には考えることができます。 サブスクリプションにフィルターを設定すると、トピックに送信されたメッセージのうち、その特定のサブスクリプションで取得できるメッセージを指定することができます。
 
 ## <a name="what-are-rules-filters"></a>ルール (フィルター) とは
-多くのシナリオでは、特性のあるメッセージは、異なる方法で処理する必要があります。 これを実現するために、目的のプロパティを持つメッセージを検索し、該当するプロパティに特定の変更を行うようにサブスクリプションを構成できます。 Service Bus のサブスクリプションには、トピックに送信されたすべてのメッセージが表示されますが、仮想サブスクリプション キューにコピーできるのは、これらのメッセージの一部のみです。 これを行うには、サブスクリプション フィルターを使用します。 ルール (フィルター) について詳しくは、「[Service Bus のキュー、トピック、サブスクリプション][Service Bus queues, topics, and subscriptions]」をご覧ください。
+
+多くのシナリオでは、特性のあるメッセージは、異なる方法で処理する必要があります。 これを実現するために、特定のプロパティを持つメッセージを検索し、該当するプロパティに変更を行うようにサブスクリプションを構成できます。 Service Bus のサブスクリプションには、トピックに送信されたすべてのメッセージが表示されますが、仮想サブスクリプション キューにコピーできるのは、これらのメッセージの一部のみです。 これを行うには、サブスクリプション フィルターを使用します。 ルール (フィルター) の詳細については、「[Rules and actions](service-bus-queues-topics-subscriptions.md#rules-and-actions)」を参照してください。
 
 デプロイメントを自動的に実行するには、次のボタンをクリックします。
 
 [![Azure へのデプロイ](./media/service-bus-resource-manager-namespace-topic/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-topic-subscription-rule%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>パラメーター
+
 テンプレートのデプロイ時に指定したい値については、Azure Resource Manager パラメーターを定義する必要があります。 テンプレートには、すべてのパラメーター値を含む `Parameters` という名前のセクションがあります。 これらの値のパラメーターを定義する必要があります。これらの値は、デプロイするプロジェクトやデプロイ先の環境に応じて異なります。 常に同じ値に対してはパラメーターを定義しないでください。 テンプレート内のそれぞれのパラメーターの値は、デプロイされるリソースを定義するために使用されます。
 
 このテンプレートでは、次のパラメーターを定義します。
@@ -170,8 +175,8 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ## <a name="next-steps"></a>次のステップ
 Azure Resource Manager を使ってリソースを作成、デプロイしたら、それらのリソースを管理する方法を次の記事で確認しましょう。
 
-* [Azure Automation を使用した Azure Service Bus の管理](service-bus-automation-manage.md)
-* [PowerShell で Service Bus を管理する](service-bus-powershell-how-to-provision.md)
+* [Azure Service Bus を管理する](service-bus-management-libraries.md)
+* [PowerShell で Service Bus を管理する](service-bus-manage-with-ps.md)
 * [Service Bus リソースを Service Bus Explorer で管理する](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
@@ -182,10 +187,5 @@ Azure Resource Manager を使ってリソースを作成、デプロイしたら
 [Recommended naming conventions for Azure resources]: ../guidance/guidance-naming-conventions.md
 [Service Bus namespace with topic, subscription, and rule]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-topic-subscription-rule/
 [Service Bus queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

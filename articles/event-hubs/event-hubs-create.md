@@ -1,6 +1,6 @@
 ---
-title: "Azure Event Hub を作成する | Microsoft Docs"
-description: "Azure Portal を使用して Azure Event Hubs 名前空間と Event Hub を作成します"
+title: "Azure イベント ハブを作成する | Microsoft Docs"
+description: "Azure Portal を使用して Azure Event Hubs 名前空間とイベント ハブを作成します"
 services: event-hubs
 documentationcenter: na
 author: jtaubensee
@@ -15,16 +15,17 @@ ms.workload: na
 ms.date: 01/25/2017
 ms.author: jotaub
 translationtype: Human Translation
-ms.sourcegitcommit: aa7244849f6286e8ef9f9785c133b4c326193c12
-ms.openlocfilehash: ca5c8b489345dcd0523897895de346509db08a28
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 23df3a3a11d8f065d6ce2a4f14ba175d6c781ee9
+ms.lasthandoff: 04/19/2017
 
 ---
 
-# <a name="create-an-event-hubs-namespace-and-an-event-hub-using-the-azure-portal"></a>Azure Portal を使用して Event Hubs 名前空間と Event Hub を作成します
+# <a name="create-an-event-hubs-namespace-and-an-event-hub-using-the-azure-portal"></a>Azure Portal を使用して Event Hubs 名前空間とイベント ハブを作成します
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs 名前空間を作成します
 1. [Azure Portal][Azure portal] にログインし、画面の左上にある **[新規]** をクリックします。
-1. **[モノのインターネット]**、**[イベント ハブ]** の順にクリックします。
+1. **[モノのインターネット]**、**[Event Hubs]** の順にクリックします。
    
     ![](./media/event-hubs-create/create-event-hub9.png)
 1. **[名前空間の作成]** ブレードで、名前空間の名前を入力します。 その名前が使用できるかどうかがすぐに自動で確認されます。
@@ -39,7 +40,7 @@ ms.openlocfilehash: ca5c8b489345dcd0523897895de346509db08a28
    
     ![](./media/event-hubs-create/create-event-hub3.png)
 
-## <a name="create-an-event-hub"></a>Event Hub を作成する
+## <a name="create-an-event-hub"></a>イベント ハブの作成
 
 1. ブレード上部の **[イベント ハブの追加]**をクリックします。
    
@@ -47,15 +48,15 @@ ms.openlocfilehash: ca5c8b489345dcd0523897895de346509db08a28
 1. イベント ハブの名前を入力し、 **[作成]**をクリックします。
    
     ![](./media/event-hubs-create/create-event-hub5.png)
-1. Event Hubs の一覧で、新しく作成したイベント ハブの名前をクリックします。 
+1. イベント ハブの一覧で、新しく作成したイベント ハブの名前をクリックします。 
     
-     ![](./media/event-hubs-create/create-event-hub6.png)
+    ![](./media/event-hubs-create/create-event-hub6.png)
 1. 名前空間ブレード (特定のイベント ハブ ブレードではなく) に戻り、**[共有アクセス ポリシー]** をクリックし、**[RootManageSharedAccessKey]** をクリックします。
     
-     ![](./media/event-hubs-create/create-event-hub7.png)
+    ![](./media/event-hubs-create/create-event-hub7.png)
 1. コピー ボタンをクリックして **RootManageSharedAccessKey** 接続文字列をクリップボードにコピーします。 この接続文字列を保存し、後でこのチュートリアルの中で使用します。
     
-     ![](./media/event-hubs-create/create-event-hub8.png)
+    ![](./media/event-hubs-create/create-event-hub8.png)
 
 イベント ハブが作成され、イベントの送受信に必要な接続文字列が手元にあります。
 
@@ -66,8 +67,3 @@ Event Hubs の詳細については、次のリンク先を参照してくださ
 * [Event Hubs API 概要](event-hubs-api-overview.md)
 
 [Azure portal]: https://portal.azure.com/
-
-
-<!--HONumber=Feb17_HO1-->
-
-

@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 5f31b24a0d46b9d557a55b3c9d0cd7748ecb9c33
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 941a795c4c83e05ec3c5bb55790f8fcc72829a65
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -46,7 +46,7 @@ Azure エコシステム内部から Network Watcher、アラート、関数を�
 
 ## <a name="creating-an-azure-function-and-overview"></a>Azure 関数の作成と概要
 
-最初の手順では、アラートを処理してパケット キャプチャを作成する Azure 関数を作成します。 
+最初の手順では、アラートを処理してパケット キャプチャを作成する Azure 関数を作成します。
 
 次の一覧は、実行されるワークフローの概要です。
 
@@ -73,7 +73,7 @@ Network Watcher PowerShell コマンドレットを使用するには、最新�
     (Get-Module AzureRM.Network).Path
     ```
 
-    これにより、Azure PowerShell モジュールのローカル パスを取得します。 これらのフォルダーは、後の手順で使用されます。 このシナリオで使用されているモジュールは次のとおりです。
+    この例では、Azure PowerShell モジュールのローカル パスを取得しています。 これらのフォルダーは、後の手順で使用されます。 このシナリオで使用されているモジュールは次のとおりです。
 
     * AzureRM.Network
 
@@ -107,14 +107,14 @@ Network Watcher PowerShell コマンドレットを使用するには、最新�
 
 ## <a name="authentication"></a>認証
 
-PowerShell コマンドレットを使用するには、認証する必要があります。 認証は、Function App で構成されている必要があります。 Function App で構成するには、環境変数が構成されており、暗号化されたキー ファイルが Function App にアップロードされている必要があります。
+PowerShell コマンドレットを使用するには、認証する必要があります。 認証は、Function App で構成されている必要があります。 認証を構成するには、環境変数が構成されており、暗号化されたキー ファイルが Function App にアップロードされている必要があります。
 
-> [!note]
+> [!NOTE]
 > このシナリオでは、Azure Functions を使用した認証の実装方法を一例として取り上げます。この他の実装方法もあります。
 
 ### <a name="encrypted-credentials"></a>暗号化された資格情報
 
-次の PowerShell スクリプトでは、**PassEncryptKey.key** という名前のキー ファイルが作成され、暗号化されたパスワードを取得します。  このパスワードは、認証に使用される Azure AD アプリケーション用に定義されたパスワードと同じものです。
+次の PowerShell スクリプトでは、**PassEncryptKey.key** という名前のキー ファイルが作成され、暗号化されたパスワードが取得されます。  このパスワードは、認証に使用される Azure AD アプリケーション用に定義されたパスワードと同じものです。
 
 ```powershell
 #variables
@@ -139,7 +139,7 @@ Function App の App Service Editor で、**AlertPacketCapturePowerShell** 下�
 
 ### <a name="retrieving-values-for-environment-variables"></a>環境変数の値の取得
 
-最終的な構成では、認証用の値にアクセスするために必要となる環境変数を設定する必要があります。 作成される環境変数の一覧を次に示します。
+最終的な構成では、認証用の値にアクセスするために必要となる環境変数を設定する必要があります。 次に示すのは、作成される環境変数の一覧です。
 
 * AzureClientID
 
@@ -303,7 +303,7 @@ webhook POST 要求のペイロードでカスタム プロパティが必要な
 ![仮想マシンへの VM アラート ルールの追加][1]
 
 > [!NOTE]
-> 既定では、一部のメトリックは有効になっていません。 追加のメトリックを有効にする方法の詳細については、「[監視と診断の有効化](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md)」を参照してください。
+> TCP セグメントのメトリックは、既定では無効です。 追加のメトリックを有効にする方法の詳細については、「[監視と診断の有効化](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md)」を参照してください。
 
 最後に、前の手順で取得した URL をアラートの [webhook] ボックスに貼り付けます。 **[OK]** をクリックして、アラート ルールを保存します。
 

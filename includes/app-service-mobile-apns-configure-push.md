@@ -6,8 +6,3 @@
 これで、iOS のプッシュ通知と連携するようにサービスが構成されました。
 
 [1]: ./media/app-service-mobile-apns-configure-push/mobile-push-notification-hub.png
-
-
-<!--HONumber=Dec16_HO2-->
-
-

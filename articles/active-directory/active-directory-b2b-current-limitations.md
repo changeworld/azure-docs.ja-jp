@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/16/2017
+ms.date: 04/12/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 0e71a840d4f503779131ee4a21fe6063d33185f1
-ms.openlocfilehash: cbefca2d45a332cd57cfea49dfeaa300426d5502
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: cdc951d4e16e7f0df425dba7c33d86255276f526
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -26,18 +26,14 @@ ms.lasthandoff: 02/24/2017
 # <a name="limitations-of-azure-ad-b2b-collaboration"></a>Azure AD B2B コラボレーションの制限
 現在、Azure Active Directory (Azure AD) B2B コラボレーションには、この記事に記載されている制限が適用されます。
 
-## <a name="invitation-apis-are-in-preview"></a>招待 API がプレビュー段階
-API サーフェスは前に進んでいきますが、 すべてのプレリリース版と同様、API は、プレビュー名前空間契約の対象です。 この API は、一般公開 (GA) リリースで番号付きのバージョンに移される予定です。
+## <a name="possible-double-multi-factor-authentication"></a>多要素認証重複の可能性
+Azure AD B2B を使用すると、多要素認証をリソース組織 (招待する側の組織) で実施することができます。 このアプローチの理由については、[Conditional access for B2B collaboration users](active-directory-b2b-mfa-instructions.md)を参照してください。 このため、パートナー側で既に多要素認証ポリシーが設定され、実施されていると、パートナー側のユーザーは、自分の組織と招待する側の組織の両方で認証が必要になる可能性があります。
 
-## <a name="possible-double-multi-factor-authentication"></a>Multi-Factor Authentication 重複の可能性
-この冗長性は、パートナー側で既に Azure Multi-Factor Authentication ポリシーが設定されている場合に、発生する可能性があります。 B2B コラボレーション Multi-Factor Authentication は、招待する側の組織で実行および管理され、 すべての ID を処理対象としているほか、B2B コラボレーションで招待されたユーザーの認証の強度を制御できます。このため、これが望ましい認証方法です。
+今後のリリースでは、パートナーの多要素認証を信頼して、認証の重複を回避できるポリシーを導入する予定です。
 
-しかし、パートナー側で既に Multi-Factor Authentication ポリシーが設定され、実施されていると、パートナー側のユーザーは、自分の組織と招待する側の組織の両方で認証が必要になる可能性があります。
-
-今後のリリースでは、パートナーの Multi-Factor Authentication を信頼して、認証の重複を回避できるポリシーを導入する予定です。
 
 ## <a name="instant-on"></a>インスタント オン
-B2B コラボレーションのフローでは、ユーザーをディレクトリに追加し、招待の使用、アプリ割り当てなどの際に動的に更新します。 更新と書き込みは、通常、1 つのディレクトリ インスタンスで行い、すべてのインスタンス間でレプリケートする必要があります。 レプリケーション完了までの時間が制限されていることが原因で、承認の問題が発生する場合があることが確認されました。 この問題は、一般公開の前に改善または解決できるように取り組んでいます。 当面はこの問題が発生する可能性は低いと思われますが、万一発生した場合は、更新または再試行によって解決できます。
+B2B コラボレーションのフローでは、ユーザーをディレクトリに追加し、招待の使用、アプリ割り当てなどの際に動的に更新します。 更新と書き込みは、通常、1 つのディレクトリ インスタンスで行い、すべてのインスタンス間でレプリケートする必要があります。 レプリケーションの完了までには、いくらか時間がかかることがあります。 ディレクトリのいずれかのインスタンスでオブジェクトの書き込みまたは更新が行われ、そのオブジェクトを取得する呼び出しが別のインスタンスに負荷分散された場合、そのことが認証の問題の原因になってきました。 このレプリケーションの待機時間をなくしたり短縮したりするために多くの作業を行ってきましたが、依然としてまれに待機時間が発生することがあります。 その場合は、更新または再試行が役立つことがあります。 API を使用してアプリを記述する場合は、バックオフの再試行がこの問題を軽減するための推奨される防御的な方法です。
 
 ## <a name="next-steps"></a>次のステップ
 

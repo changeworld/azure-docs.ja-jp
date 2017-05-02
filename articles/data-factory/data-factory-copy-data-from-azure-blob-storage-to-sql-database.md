@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 04/03/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 2dcba235353f2b1bd2b42d93066a91071f0ea1a1
-ms.openlocfilehash: 8b9afcd62ad318e181e2d210af58dcb412eefaaf
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 393bc1ad782b072f3b27eeeb3e4149ec8ab64252
+ms.lasthandoff: 04/12/2017
 
 
 ---
-# <a name="copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Data Factory を使用した Blob Storage から SQL Database へのデータのコピー
+# <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>チュートリアル: Data Factory を使用した Blob Storage から SQL Database へのデータのコピー
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
@@ -32,8 +32,6 @@ ms.lasthandoff: 02/22/2017
 > * [Azure Resource Manager テンプレート](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
->
->
 
 このチュートリアルでは、BLOB ストレージから SQL Database にデータをコピーするパイプラインを備えたデータ ファクトリを作成します。
 
@@ -45,7 +43,7 @@ ms.lasthandoff: 02/22/2017
 >
 
 ## <a name="prerequisites-for-the-tutorial"></a>このチュートリアルの前提条件
-このチュートリアルを読み始める前に、次の項目を用意する必要があります。
+このチュートリアルを開始する前に、以下の前提条件を満たしている必要があります。
 
 * **Azure サブスクリプション**。  サブスクリプションがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [無料試用版](http://azure.microsoft.com/pricing/free-trial/) のページを参照してください。
 * **Azure ストレージ アカウント**。 このチュートリアルでは、BLOB ストレージを **ソース** データ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「 [ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account) 」をご覧ください。
@@ -87,7 +85,7 @@ Data Factory サービスから Azure SQL サーバーにアクセスできる�
 ## <a name="prepare-blob-storage-and-sql-database"></a>Blob Storage と SQL Database を準備する
 ここからは、次の手順を実行して、チュートリアルで使用する Azure Blob Storage と Azure SQL Database を準備します。  
 
-1. メモ帳を起動し、次のテキストを貼り付け、**emp.txt** という名前でハード ドライブの **C:\ADFGetStarted** フォルダーに保存します。
+1. メモ帳を起動します。 次のテキストを貼り付け、**emp.txt** という名前でハード ドライブの **C:\ADFGetStarted** フォルダーに保存します。
 
     ```
     John, Doe

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 05/23/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 531fdbbeab09a67be9636b3a70eabbb4148f7400
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: b817577d835f2f4a912356366ab24d1f812e1e11
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -37,8 +37,8 @@ ms.lasthandoff: 03/21/2017
 1. 「 **「エラスティック データベース ツールの概要** 」に示されているサンプル アプリケーションをビルドして実行します。 セクション「[サンプル アプリケーションのダウンロードと実行](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app)」の手順 7 まで実行します。 手順 7 を終了すると、次のコマンド プロンプトが表示されます。
 
     ![コマンド プロンプト][1]
-2. コマンド ウィンドウで、「1」を入力し、**Enter** キーを押します。 シャード マップ マネージャーが作成され、2 つのシャードがサーバーに追加されます。 「3」を入力し、**Enter** キーを押します。この操作を&4; 回を繰り返します。 これにより、サンプルのデータ行がシャードに挿入されます。
-3. [Azure Portal](https://portal.azure.com) に、v12 サーバーにある次の&3; つの新しいデータベースが表示されます。
+2. コマンド ウィンドウで、「1」を入力し、**Enter** キーを押します。 シャード マップ マネージャーが作成され、2 つのシャードがサーバーに追加されます。 「3」を入力し、**Enter** キーを押します。この操作を 4 回を繰り返します。 これにより、サンプルのデータ行がシャードに挿入されます。
+3. [Azure Portal](https://portal.azure.com) に、サーバー内の 3 つの新しいデータベースが表示されます。
 
    ![Visual Studio の確認][2]
 

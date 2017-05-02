@@ -32,8 +32,3 @@ VM 拡張機能を Azure Resource Manager のテンプレートの一部とし�
 ## <a name="identifying-the-publisher-type-and-typehandlerversion-for-any-extension"></a>任意の拡張機能の発行元、種類、typeHandlerVersion の識別
 Azure VM 拡張機能は、マイクロソフトと信頼されたサード パーティの発行元によって発行されています。それぞれの拡張機能は、その発行元、種類、typeHandlerVersion によって一意に識別されます。 これらは、次の方法で確認できます。  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

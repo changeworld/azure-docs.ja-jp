@@ -10,8 +10,3 @@ Azure Backup サービスには、バックアップ コンテナーと Recovery
 > 
 > 
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

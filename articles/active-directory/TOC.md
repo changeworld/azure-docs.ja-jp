@@ -69,6 +69,7 @@
 #### [グループのライセンスに関する問題を特定して解決する](active-directory-licensing-group-problem-resolution-azure-portal.md)
 #### [個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する](active-directory-licensing-group-migration-azure-portal.md)
 #### [グループベースのライセンスのその他のシナリオ](active-directory-licensing-group-advanced.md)
+#### [グループベースのライセンスの PowerShell の例](active-directory-licensing-ps-examples.md)
 ### [セルフサービス グループのセットアップ](active-directory-accessmanagement-self-service-group-management.md)
 ### [トラブルシューティング](active-directory-accessmanagement-troubleshooting.md)
 

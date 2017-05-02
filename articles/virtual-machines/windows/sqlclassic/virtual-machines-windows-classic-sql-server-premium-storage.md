@@ -16,9 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 11/28/2016
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: d055a859ec89ef7fec23db9bf1d574dd8cb76293
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: aba69b95db8313dd9ce711ddc6c26e5df55d79a4
+ms.lasthandoff: 04/04/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/25/2017
 ## <a name="overview"></a>概要
 [Azure Premium Storage](../../../storage/storage-premium-storage.md) は、低遅延と高いスループット IO を提供する次世代のストレージです。 IaaS [仮想マシン](https://azure.microsoft.com/services/virtual-machines/)上の SQL Server など、主要な IO 集中型ワークロードに最適です。
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
 
 この記事では、SQL Server を実行する仮想マシンから Premium Storage の使用への移行に関する計画とガイダンスについて説明します。 これには、Azure インフラストラクチャ (ネットワーク、ストレージ) とゲストの Windows VM の手順が含まれます。 [付録](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage) の例では、PowerShell を使用して、強化されたローカル SSD ストレージを利用するように大きな VM を移動する方法の詳細な移行を示します。
@@ -47,7 +47,7 @@ Azure Virtual Machines での SQL Server についての背景情報について
 Premium Storage を使用するにはいくつかの前提条件があります。
 
 ### <a name="machine-size"></a>マシンのサイズ
-Premium Storage を使用するには、DS シリーズ仮想マシン (VM) を使用する必要があります。 クラウド サービスで DS シリーズ マシンを使用していない場合、既存の VM を削除し、アタッチされたディスクを保持し、新しいクラウド サービスを作成してから、DS* ロール サイズとして VM を再作成する必要があります。 仮想マシンのサイズについて詳しくは、[Azure の仮想マシンおよびクラウド サービスのサイズ](../../virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。
+Premium Storage を使用するには、DS シリーズ仮想マシン (VM) を使用する必要があります。 クラウド サービスで DS シリーズ マシンを使用していない場合、既存の VM を削除し、アタッチされたディスクを保持し、新しいクラウド サービスを作成してから、DS* ロール サイズとして VM を再作成する必要があります。 仮想マシンのサイズについて詳しくは、[Azure の仮想マシンおよびクラウド サービスのサイズ](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。
 
 ### <a name="cloud-services"></a>クラウド サービス
 Premium Storage で DS* VM を使用できるのは、新しいクラウド サービスに作成されるときだけです。 Azure で SQL Server Always On を使用する場合、Always On Listener はクラウド サービスと関連付けられた Azure の内部または外部 Load Balancer の IP アドレスを参照します。 この記事では、このシナリオで可用性を維持しながら移行する方法について説明します。
@@ -142,9 +142,9 @@ VHD をアタッチした後は、キャッシュの設定を変更できませ�
 VHD を記憶域プールの物理ディスクにマップした後は、デタッチして Premium Storage アカウントにコピーし、正しいキャッシュ設定でアタッチできます。 [付録](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage)の手順 8 ～ 12 の例を参照してください。 これらの手順では、VM にアタッチされた VHD ディスクの構成を CSV ファイルに抽出し、VHD をコピーし、ディスク構成のキャッシュ設定を変更し、最後にすべてのディスクをアタッチして DS シリーズ VM として VM をデプロイする方法が示されています。
 
 ### <a name="vm-storage-bandwidth-and-vhd-storage-throughput"></a>VM ストレージの帯域幅と VHD ストレージのスループット
-ストレージのパフォーマンスは、指定されている DS* VM のサイズと VHD のサイズによって決まります。 VM により、アタッチできる VHD の数と、サポートする最大帯域幅 (MB/秒) は異なります。 具体的な帯域幅については、[Azure の仮想マシンおよびクラウド サービスのサイズ](../../virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。
+ストレージのパフォーマンスは、指定されている DS* VM のサイズと VHD のサイズによって決まります。 VM により、アタッチできる VHD の数と、サポートする最大帯域幅 (MB/秒) は異なります。 具体的な帯域幅については、[Azure の仮想マシンおよびクラウド サービスのサイズ](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。
 
-ディスク サイズを大きくすると IOPS が向上します。 移行パスについて考えるときはこれを検討する必要があります。 詳しくは、[IOPS とディスク タイプの表](../../../storage/storage-premium-storage.md#premium-storage-scalability-and-performance-targets)をご覧ください。
+ディスク サイズを大きくすると IOPS が向上します。 移行パスについて考えるときはこれを検討する必要があります。 詳しくは、[IOPS とディスク タイプの表](../../../storage/storage-premium-storage.md#scalability-and-performance-targets)をご覧ください。
 
 最後に、VM はアタッチされるすべてのディスクについてサポートされる最大ディスク帯域幅が異なることを考慮します。 高負荷では、その VM ロール サイズに対して使用可能な最大ディスク帯域幅が飽和状態になる可能性があります。 たとえば、Standard_DS14 は最大 512MB/秒をサポートします。したがって、3 台の P30 ディスクで、VM のディスク帯域幅が飽和する可能性があります。 ただし、この例では、読み取りと書き込みの IO 組み合わせによってはスループット制限を超える場合があります。
 
@@ -271,7 +271,7 @@ VHD を記憶域プールの物理ディスクにマップした後は、デタ�
 
 
 #### <a name="step-3-use-existing-image"></a>手順 3. 既存のイメージを使用する
-既存のイメージを使用できます。 または、[既存のマシンのイメージを取得](../classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)できます。 イメージを取得するマシンは DS*マシンでなくてもよいことに注意してください。イメージを用意した後、次に示すように、**Start-AzureStorageBlobCopy** PowerShell コマンドレットで Premium Storage アカウントにコピーします。
+既存のイメージを使用できます。 または、[既存のマシンのイメージを取得](../classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)できます。 イメージを取得するマシンは DS* マシンでなくてもよいことに注意してください。 イメージを用意した後、次に示すように、**Start-AzureStorageBlobCopy** PowerShell コマンドレットで Premium Storage アカウントにコピーします。
 
     #Get storage account keys:
     #Standard Storage account

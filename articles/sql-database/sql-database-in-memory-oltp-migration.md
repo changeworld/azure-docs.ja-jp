@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 11/22/2016
 ms.author: jodebrui
 translationtype: Human Translation
-ms.sourcegitcommit: 42f3f6a24e423f54ad7bb282404ddc6ff2450cb7
-ms.openlocfilehash: 5b6fdbfa983cd5bb27ddd13860dfe89c5a3681b6
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: db2d6dbdec80e8c443014c72c80172ad3effb82c
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -25,13 +26,13 @@ ms.openlocfilehash: 5b6fdbfa983cd5bb27ddd13860dfe89c5a3681b6
 [インメモリ OLTP](sql-database-in-memory.md) は、[Premium](sql-database-service-tiers.md) Azure SQL Database で、価格レベルを上げることなくトランザクション処理、データの取り込み、一時的なデータ シナリオのパフォーマンスを向上させるために使用できます。 
 
 > [!NOTE] 
-> 「[Quorum doubles key database’s workload while lowering DTU by 70% with SQL Database (クォーラムが SQL Database で DTU の 70% を削減しながら主要なデータベースのワークロードを 2 倍にする)](https://customers.microsoft.com/en-US/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)」方法について
+> 「[Quorum doubles key database’s workload while lowering DTU by 70% with SQL Database (クォーラムが SQL Database で DTU の 70% を削減しながら主要なデータベースのワークロードを 2 倍にする)](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)」方法について
 
 
 既存のデータベースでインメモリ OLTP を採用するには、以下の手順に従います。
 
 ## <a name="step-1-ensure-you-are-using-a-premium-database"></a>手順 1: Premium データベースを使用していることを確認する
-インメモリ OLTP は、v12 Premium データベースでのみサポートされています。 返された結果が (0 ではなく) 1 である場合は、インメモリがサポートされています。
+インメモリ OLTP は、Premium データベースでのみサポートされています。 返された結果が (0 ではなく) 1 である場合は、インメモリがサポートされています。
 
 ```
 SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
@@ -173,10 +174,5 @@ CREATE PROCEDURE schemaname.procedurename
 * [インメモリ OLTP (インメモリ最適化)](http://msdn.microsoft.com/library/dn133186.aspx)
 * [ネイティブ コンパイル ストアド プロシージャの概要](http://msdn.microsoft.com/library/dn133184.aspx)
 * [メモリ最適化アドバイザー](http://msdn.microsoft.com/library/dn284308.aspx)
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

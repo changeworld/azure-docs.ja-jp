@@ -155,7 +155,7 @@ Visual Studio の HDInsight ツールに関する詳細情報:
 
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 
-[hdinsight-provision]: hdinsight-provision-clusters.md
+[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 [hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md

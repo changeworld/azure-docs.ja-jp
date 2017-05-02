@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2017
+ms.date: 04/11/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 6a76c399e626ea85581d5f8fb863da878bdbf50b
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 280737097038ff328d487477279ce4f204b0ac0c
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -28,7 +28,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 ## <a name="prerequisites"></a>前提条件
 * Visual Studio 2012 または 2013 または 2015
 * [Azure .NET SDK](http://azure.microsoft.com/downloads/)のダウンロードとインストール。
-* Azure Active Directory にネイティブ クライアント アプリケーションを追加します。 アプリケーションを追加する手順については、「 [Azure Active Directory とアプリケーションの統合](../active-directory/active-directory-integrating-applications.md) 」を参照してください。 **[構成]** ページの**クライアント ID** と**リダイレクト URI** をメモしておきます。
+* Azure Active Directory にネイティブ クライアント アプリケーションを追加します。 アプリケーションを追加する手順については、「 [Azure Active Directory とアプリケーションの統合](../active-directory/active-directory-integrating-applications.md) 」を参照してください。 **[構成]** ページの**クライアント ID** と**リダイレクト URI** をメモしておきます。 詳しい手順については、[.NET API を利用したコピー アクティビティのチュートリアル](data-factory-copy-activity-tutorial-using-dotnet-api.md)の記事をご覧ください。 
 * Azure の**サブスクリプション ID** と**テナント ID** を入手します。 手順については、「 [Azure サブスクリプションとテナント ID を入手する](#get-azure-subscription-and-tenant-ids) 」を参照してください。
 * Azure Data Factory の NuGet パッケージをダウンロードしてインストールします。 手順はこのチュートリアルにあります。
 
@@ -42,7 +42,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
    6. **[場所]** は **[C:\ADFGetStarted]** を選択します。
    7. **[OK]** をクリックしてプロジェクトを作成します。
 2. **[ツール]** をクリックし、**[NuGet パッケージ マネージャー]** をポイントして、**[パッケージ マネージャー コンソール]** をクリックします。
-3. **[パッケージ マネージャー コンソール]**で、次のコマンドを&1; つずつ実行します。
+3. **[パッケージ マネージャー コンソール]**で、次のコマンドを 1 つずつ実行します。
 
     ```
     Install-Package Microsoft.Azure.Management.DataFactories
@@ -297,7 +297,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
         throw new InvalidOperationException("Failed to acquire token");
     }
     ```
-12. 次のコードを **Main** メソッドに追加して、出力データセットのデータ スライスのステータスを取得します。 この例で予想される&1; つのスライスのみが存在します。
+12. 次のコードを **Main** メソッドに追加して、出力データセットのデータ スライスのステータスを取得します。 この例で予想される 1 つのスライスのみが存在します。
 
     ```csharp
     // Pulling status within a timeout threshold
@@ -364,9 +364,9 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
     Console.WriteLine("\nPress any key to exit.");
     Console.ReadKey();
     ```
-14. ソリューション エクスプローラーで、プロジェクト (**DataFactoryAPITestApp**) を展開し、**[参照]** を右クリックして **[参照の追加]** をクリックします。 `System.Configuration` アセンブリのチェック ボックスをオンにし、 **[OK]**をクリックします。
+14. ソリューション エクスプローラーで、**DataFactoryAPITestApp** プロジェクトを展開し、**[参照]** を右クリックして **[参照の追加]** をクリックします。 `System.Configuration` アセンブリのチェック ボックスをオンにし、 **[OK]**をクリックします。
 15. コンソール アプリケーションをビルドします。 メニューから **[ビルド]** をクリックし、**[ソリューションのビルド]** をクリックします。
-16. Azure BLOB ストレージ内の adftutorial コンテナーに少なくとも&1; つのファイルが存在することを確認します。 存在しない場合は、以下の内容を記述した Emp.txt ファイルをメモ帳で作成し、これを adftutorial コンテナーにアップロードします。
+16. Azure BLOB ストレージ内の adftutorial コンテナーに少なくとも 1 つのファイルが存在することを確認します。 存在しない場合は、以下の内容を記述した Emp.txt ファイルをメモ帳で作成し、これを adftutorial コンテナーにアップロードします。
 
     ```
     John, Doe
@@ -454,7 +454,7 @@ TokenCloudCredentials aadTokenCredentials =
     Login-AzureRmAccount
     ```
 
-    このアカウントに関連付けられている Azure サブスクリプションを&1; つのみをお持ちの場合は、次の&2; つの手順を実行する必要はありません。
+    このアカウントに関連付けられている Azure サブスクリプションを 1 つのみをお持ちの場合は、次の 2 つの手順を実行する必要はありません。
 3. 次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
 
     ```PowerShell

@@ -18,8 +18,3 @@ FTP クライアントを使用してサーバーに接続し、env フォルダ
 ### <a name="option-3-customize-deployment-script"></a>オプション 3: デプロイメント スクリプトをカスタマイズする
 デプロイメント スクリプトをカスタマイズした場合、env フォルダーの削除を強制するように deploy.cmd 内のコードを変更できます。
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

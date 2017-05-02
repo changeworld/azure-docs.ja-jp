@@ -1,6 +1,6 @@
 ---
 title: "HDInsight での MapReduce と Hadoop | Microsoft Docs"
-description: "HDInsight クラスターの Hadoop で MapReduce ジョブを実行する方法を説明します。 Java MapReduce ジョブとして実装されている基本的なワード カウントの操作を実行します。"
+description: "HDInsight クラスターの Hadoop で MapReduce ジョブを実行する方法を説明します。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -14,24 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/12/2017
+ms.date: 04/03/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 8be0f2f30f815277c4953c223d91c2571c2521a5
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 764b54dd7fa6ac8d7b3fadb0745f06cbd3bff689
+ms.lasthandoff: 04/18/2017
 
 
 ---
 # <a name="use-mapreduce-in-hadoop-on-hdinsight"></a>HDInsight での MapReduce と Hadoop の使用
 
-[!INCLUDE [mapreduce-selector](../../includes/hdinsight-selector-use-mapreduce.md)]
+HDInsight クラスターで MapReduce ジョブを実行する方法を説明します。 次の表を使用して、HDInsight で MapReduce を使用できるさまざまな方法を確認してください。
 
-この記事では、HDInsight クラスターの Hadoop で MapReduce ジョブを実行する方法を説明します。 Java MapReduce ジョブとして実装されている基本的なワード カウントの操作を実行します。
+| **使用する方法** | **目的** | 使用する **クラスターのオペレーティング システム** | 使用元の **クライアントのオペレーティング システム** |
+|:--- |:--- |:--- |:--- |
+| [SSH](hdinsight-hadoop-use-mapreduce-ssh.md) |**SSH** |Linux |Linux、Unix、Mac OS X、または Windows |
+| [REST ()](hdinsight-hadoop-use-mapreduce-curl.md) |**REST** を使用してリモートからジョブを送信する (例では cURL を使用) |Linux または Windows |Linux、Unix、Mac OS X、または Windows |
+| [Windows PowerShell](hdinsight-hadoop-use-mapreduce-powershell.md) |**Windows PowerShell** |Linux または Windows |Windows |
+| [リモート デスクトップ](hdinsight-hadoop-use-mapreduce-remote-desktop.md) (HDInsight 3.2 および 3.3) |**リモート デスクトップ** |Windows |Windows |
+
+> [!IMPORTANT]
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight 3.2 と 3.3 の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関するページを参照してください。
 
 ## <a id="whatis"></a>MapReduce とは
 
-Hadoop MapReduce は、膨大なデータを処理するジョブを記述するためのソフトウェア フレームワークです。 入力データは独立したチャンクに分割され、クラスター内のノードで並列に処理されます。 MapReduce ジョブは次の&2; つの関数で構成されます。
+Hadoop MapReduce は、膨大なデータを処理するジョブを記述するためのソフトウェア フレームワークです。 入力データは独立したチャンクに分割され、クラスター内のノードで並列に処理されます。 MapReduce ジョブは次の 2 つの関数で構成されます。
 
 * **Mapper**: 入力データを使用して分析し (通常はフィルターと並べ替え操作を使用)、タプル (キーと値のペア) を出力します。
 
@@ -48,42 +56,31 @@ Hadoop MapReduce は、膨大なデータを処理するジョブを記述する
 
 さまざまな言語で MapReduce を実装することができます。 Java は最も一般的な実装で、このドキュメントでのデモンストレーションのために使用されます。
 
-### <a name="hadoop-streaming"></a>Hadoop ストリーミング
+## <a name="development-languages"></a>開発言語
 
-Java や Java 仮想マシンに基づく言語またはフレームワーク (たとえば、Scalding や Cascading) は、Java アプリケーションと同様に、MapReduce ジョブとして直接実行できます。 C# や Python などの他の言語、またはスタンドアロンの実行可能ファイルでは Hadoop ストリーミングを使用する必要があります。
+Java や Java 仮想マシンに基づく言語またはフレームワークは、MapReduce ジョブとして直接実行できます。 このドキュメントで使用されている例は、Java MapReduce アプリケーションです。 C# や Python などの Java 以外の言語、またはスタンドアロンの実行可能ファイルでは Hadoop ストリーミングを使用する必要があります。
 
-Hadoop ストリーミングは STDIN と STDOUT を介して mapper および reducer と通信します。mapper と reducer は STDIN から同時に&1; 行のデータを読み取り、出力を STDOUT に書き込みます。 mapper と reducer によって読み取りまたは出力される各行は、以下のように、タブ文字で区切られたキーと値のペアの形式である必要があります。
+Hadoop ストリーミングは、STDIN と STDOUT 上で mapper や reducer と通信します。 mapper と reducer は、STDIN から一度に 1 行ずつデータを読み取り、STDOUT に出力を書き込みます。 mapper と reducer によって読み取りまたは出力が行われる各行は、以下のように、タブ文字で区切られたキーと値のペアの形式である必要があります。
 
     [key]/t[value]
 
 詳細については、「 [Hadoop ストリーミング](http://hadoop.apache.org/docs/r1.2.1/streaming.html)」を参照してください。
 
-HDInsight での Hadoop ストリーミングの使用例については、以下を参照してください。
+HDInsight での Hadoop ストリーミングの使用例については、以下のドキュメントを参照してください。
+
+* [C# MapReduce ジョブの開発](hdinsight-hadoop-dotnet-csharp-mapreduce-streaming.md)
 
 * [Python MapReduce ジョブの開発](hdinsight-hadoop-streaming-python.md)
 
-## <a id="data"></a>サンプル データについて
+## <a id="data"></a>サンプル データ
 
-この例では、サンプル データとして、HDInsight クラスターでテキスト ドキュメントとして提供される、レオナルド ダ ビンチの手記を使用します。
+HDInsight にはさまざまなサンプル データ セットが用意されていて、`/example/data` および `/HdiSamples` ディレクトリに格納されています。 これらのディレクトリは、クラスターの既定のストレージ内にあります。 このドキュメントでは、`/example/data/gutenberg/davinci.txt` ファイルを使用します。 このファイルには、レオナルド ダ ヴィンチの手記が含まれています。
 
-サンプル データは、HDInsight が Hadoop クラスターの既定のファイル システムとして使用する Azure BLOB ストレージに格納されています。 HDInsight では、 **wasb** プレフィックスを使用して、BLOB ストレージに格納されたファイルにアクセスすることができます。 たとえば、sample.log ファイルにアクセスするには、次の構文を使用します。
+## <a id="job"></a>MapReduce の例
 
-    wasbs:///example/data/gutenberg/davinci.txt
+サンプルの MapReduce ワード カウント アプリケーションは、HDInsight クラスターに付属しています。 このサンプルは、クラスターの既定のストレージの `/example/jars/hadoop-mapreduce-examples.jar` にあります。
 
-Azure BLOB ストレージが HDInsight の既定のストレージであるため、 **/example/data/gutenberg/davinci.txt**を使用してファイルにアクセスすることもできます。
-
-> [!NOTE]
-> 上の構文 **wasbs:///** は HDInsight クラスターの既定のストレージ コンテナーに格納されたファイルにアクセスするために使用します。 クラスターをプロビジョニングするときに追加のストレージ アカウントを指定し、そのアカウントに格納されたファイルにアクセスする必要がある場合、コンテナー名とストレージ アカウント アドレスを指定することによって、データにアクセスすることができます。 たとえば、**wasbs://mycontainer@mystorage.blob.core.windows.net/example/data/gutenberg/davinci.txt** です。
-
-
-## <a id="job"></a>MapReduce 例について
-
-この例で使用される MapReduce ジョブは **wasbs://example/jars/hadoop-mapreduce-examples.jar** にあり、HDInsight クラスターと共に提供されます。 これには、**davinci.txt** に対して実行するワード カウント例が含まれます。
-
-> [!NOTE]
-> HDInsight 2.1 クラスターでのファイルの場所は **wasbs:///example/jars/hadoop-examples.jar** です。
-
-参考のために、ワード カウント MapReduce ジョブの Java コードを以下に示します。
+次の Java コードは、`hadoop-mapreduce-examples.jar` ファイルに含まれている MapReduce アプリケーションのソースです。
 
 ```java
 package org.apache.hadoop.examples;
@@ -157,7 +154,11 @@ public class WordCount {
 }
 ```
 
-独自の MapReduce ジョブの作成手順については、「 [HDInsight 用 Java MapReduce プログラムの開発](hdinsight-develop-deploy-java-mapreduce-linux.md)」を参照してください。
+独自の MapReduce アプリケーションを記述する手順については、次のドキュメントを参照してください。
+
+* [HDInsight 用 Java MapReduce アプリケーションの開発](hdinsight-develop-deploy-java-mapreduce-linux.md)
+
+* [HDInsight 用 Python MapReduce アプリケーションの開発](hdinsight-hadoop-streaming-python.md)
 
 ## <a id="run"></a>MapReduce の実行
 
@@ -168,19 +169,23 @@ HDInsight では、さまざまな方法を使用して HiveQL ジョブを実�
 | [SSH](hdinsight-hadoop-use-mapreduce-ssh.md) |**SSH** |Linux |Linux、Unix、Mac OS X、または Windows |
 | [Curl](hdinsight-hadoop-use-mapreduce-curl.md) |**REST** |Linux または Windows |Linux、Unix、Mac OS X、または Windows |
 | [Windows PowerShell](hdinsight-hadoop-use-mapreduce-powershell.md) |**Windows PowerShell** |Linux または Windows |Windows |
-| [リモート デスクトップ](hdinsight-hadoop-use-mapreduce-remote-desktop.md) |**リモート デスクトップ** |Windows |Windows |
+| [リモート デスクトップ](hdinsight-hadoop-use-mapreduce-remote-desktop.md) (HDInsight 3.2 および 3.3) |**リモート デスクトップ** |Windows |Windows |
 
 > [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight 3.2 と 3.3 の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関するページを参照してください。
 
 ## <a id="nextsteps"></a>次のステップ
 
-MapReduce は高度な診断機能を備えていますが、使いこなすのは少し難しいツールです。 HDInsight でデータを操作する簡単な方法を提供する、Pig や Hive などのテクノロジだけでなく、MapReduce アプリケーションを定義しやすくする Java ベースのフレームワークがいくつかあります。 詳細については、次の記事を参照してください。
+HDInsight でのデータ操作の詳細については、次のドキュメントを参照してください。
 
 * [HDInsight 用 Java MapReduce プログラムの開発](hdinsight-develop-deploy-java-mapreduce-linux.md)
+
 * [HDInsight 用 Python ストリーミング MapReduce プログラムの開発](hdinsight-hadoop-streaming-python.md)
+
 * [HDInsight での Apache Hadoop による Scalding MapReduce ジョブの開発](hdinsight-hadoop-mapreduce-scalding.md)
+
 * [HDInsight での Hive の使用][hdinsight-use-hive]
+
 * [HDInsight での Pig の使用][hdinsight-use-pig]
 
 

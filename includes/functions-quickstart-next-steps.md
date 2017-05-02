@@ -10,7 +10,3 @@
   Azure Functions で利用できるサービス プラン (従量課金ホスティング プランを含む) と、適切なプランを選択する方法について説明します。 
 * [Azure App Service とは](../articles/app-service/app-service-value-prop-what-is.md)  
   Azure Functions では、デプロイ、環境変数、診断などの主要機能に Azure App Service プラットフォームを使用します。 
-
-<!--HONumber=Feb17_HO1-->
-
-

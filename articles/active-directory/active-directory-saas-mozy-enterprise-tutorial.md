@@ -11,16 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/26/2017
+ms.date: 03/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 991a7d112bc0cd65466be394dbb1aad9ca823681
-ms.openlocfilehash: 726880186693756941538f767dfba40c54ac9fd9
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: b4c69228bd768a1f8b129338280a0baf5f980f0f
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>チュートリアル: Azure Active Directory と Mozy Enterprise の統合
 このチュートリアルでは、Azure と Mozy Enterprise の統合について説明します。  
+
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 * 有効な Azure サブスクリプション
@@ -31,7 +33,7 @@ ms.openlocfilehash: 726880186693756941538f767dfba40c54ac9fd9
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
 1. Mozy Enterprise のアプリケーション統合の有効化
-2. シングル サインオンの構成
+2. シングル サインオン (SSO) の構成
 3. ユーザー プロビジョニングの構成
 4. ユーザーの割り当て
 
@@ -62,7 +64,7 @@ ms.openlocfilehash: 726880186693756941538f767dfba40c54ac9fd9
    
    ![Mozy Enterprise](./media/active-directory-saas-mozy-enterprise-tutorial/IC777310.png "Mozy Enterprise")
    
-## <a name="configuring-single-sign-on"></a>シングル サインオンの構成
+## <a name="configure-single-sign-on"></a>Configure single sign-on
 
 このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Mozy Enterprise に対する認証を行うことができるようにする方法を説明します。  
 
@@ -98,8 +100,10 @@ ms.openlocfilehash: 726880186693756941538f767dfba40c54ac9fd9
    6. ダウンロードした証明書から **Base-64 でエンコードされた** ファイルを作成します。  
    
       >[!TIP]
-      >詳細については、「 [How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)
-      >  
+      >詳細については、「 [How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+      >
+      >
+
    7. base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、証明書全体を **[SAML 証明書]** テキストボックスに貼り付けます。
    8. **[Enable SSO for Admins to log in with their network credentials 管理者のネットワーク資格情報を使用した SSO を許可する]**を選択します。
    9. **[変更を保存]**をクリックします。
@@ -107,9 +111,10 @@ ms.openlocfilehash: 726880186693756941538f767dfba40c54ac9fd9
    
    ![シングル サインオンの構成](./media/active-directory-saas-mozy-enterprise-tutorial/IC777316.png "Configure single sign-on")
    
-## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
+## <a name="configure-user-provisioning"></a>[ユーザー プロビジョニングの構成]
 
-Azure AD ユーザーが Mozy Enterprise にログインできるようにするには、ユーザーを Mozy Enterprise にプロビジョニングする必要があります。  
+Azure AD ユーザーが Mozy Enterprise にログインできるようにするには、ユーザーを Mozy Enterprise にプロビジョニングする必要があります。
+
 Mozy Enterprise の場合、プロビジョニングは手動で行います。
 
 **ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
@@ -119,8 +124,9 @@ Mozy Enterprise の場合、プロビジョニングは手動で行います。
    
    ![ユーザー](./media/active-directory-saas-mozy-enterprise-tutorial/IC777317.png "Users")
    
-   > [!NOTE]
-   > **[新規ユーザーの追加]** オプションは、**[認証ポリシー]** で **[Mozy]** が選択されている場合にのみ表示されます。 SAML 認証が構成されている場合、ユーザーはシングル サインオンでの初回ログイン時に自動的に追加されます。
+   >[!NOTE]
+   >**[新規ユーザーの追加]** オプションは、**[認証ポリシー]** で **[Mozy]** が選択されている場合にのみ表示されます。 SAML 認証が構成されている場合、ユーザーはシングル サインオンでの初回ログイン時に自動的に追加されます。
+   >
    > 
     
 3. 新しいユーザーのダイアログで、次の手順に従います。
@@ -133,16 +139,18 @@ Mozy Enterprise の場合、プロビジョニングは手動で行います。
   4. **[Email (メール)]** ボックスに、Azure AD ユーザーのメール アドレスを入力します。
   5. **[Send user instruction email (ユーザーに指示メールを送信する)]**を選択します。
   6. **[Add User(s) (ユーザーの追加)]**をクリックします。
-   > [!NOTE]
-   > ユーザーの作成後、Azure AD ユーザーに、アカウントがアクティブになる前にアカウントを確認するためのリンクが記載されたメールが送信されます。
 
+     >[!NOTE]
+     > ユーザーの作成後、Azure AD ユーザーに、アカウントがアクティブになる前にアカウントを確認するためのリンクが記載されたメールが送信されます。
+     > 
+     > 
 
-> [!NOTE]
-> Mozy Enterprise から提供されている他の Mozy Enterprise ユーザー アカウント作成ツールや API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[!NOTE]
+>Mozy Enterprise から提供されている他の Mozy Enterprise ユーザー アカウント作成ツールや API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 > 
 > 
 
-## <a name="assigning-users"></a>ユーザーの割り当て
+## <a name="assign-users"></a>[ユーザーの割り当て]
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
 **ユーザーを Mozy Enterprise に割り当てるには、次の手順に従います。**
@@ -155,11 +163,11 @@ Mozy Enterprise の場合、プロビジョニングは手動で行います。
    
    ![はい](./media/active-directory-saas-mozy-enterprise-tutorial/IC767830.png "Yes")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
+SSO の設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
 
+## <a name="additional-resources"></a>その他のリソース
 
-
-<!--HONumber=Feb17_HO1-->
-
+* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md
 

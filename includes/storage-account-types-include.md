@@ -1,6 +1,6 @@
 ストレージ アカウントには、次の 2 種類があります。
 
-### <a name="generalpurpose-storage-accounts"></a>汎用ストレージ アカウント
+### <a name="general-purpose-storage-accounts"></a>汎用ストレージ アカウント
 汎用ストレージ アカウントを使用すると、1 つのアカウントにあるテーブル、キュー、ファイル、BLOB、Azure 仮想マシン ディスクなどの Azure Storage サービスにアクセスできます。 この種類のストレージ アカウントには、次の 2 つのパフォーマンス レベルがあります。
 
 * テーブル、キュー、ファイル、BLOB、および Azure 仮想マシン ディスクを格納できる、Standard Storage パフォーマンス レベル。
@@ -26,9 +26,4 @@ BLOB ストレージ アカウントの詳細については、「 [Azure Blob S
 ストレージ アカウントを作成するには、事前に Azure サブスクリプション (多様な Azure サービスにアクセスするためのプラン) が必要です。 Azure を初めて使うときは、 [無料アカウント](https://azure.microsoft.com/pricing/free-trial/)で試用することができます。 サブスクリプション プランの購入時には、さまざまな [購入オプション](https://azure.microsoft.com/pricing/purchase-options/)から選択できます。 [MSDN サブスクライバー](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)には、毎月、Azure Storage を含む Azure サービスに使用できる無料使用分のクレジットが与えられます。 ボリューム価格については、「 [Azure Storage 料金 ](https://azure.microsoft.com/pricing/details/storage/) 」を参照してください。
 
 ストレージ アカウントの作成方法の詳細については、「 [ストレージ アカウントの作成](../articles/storage/storage-create-storage-account.md#create-a-storage-account) 」を参照してください。 1 つのサブスクリプションに対し、最大 100 の一意の名前を持つストレージ アカウントを作成できます。 ストレージ アカウントの制限の詳細については、「 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../articles/storage/storage-scalability-targets.md) 」を参照してください。
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

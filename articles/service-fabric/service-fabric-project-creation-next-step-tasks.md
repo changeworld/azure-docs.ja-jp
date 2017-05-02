@@ -12,11 +12,12 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/01/2016
+ms.date: 03/28/2017
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b4b2424e5efe3392b08e58ceb05ec63f15c7ad32
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 8208a1a41388a8cc36f3702bd0cad2bb82e16403
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -49,27 +50,29 @@ Azure Service Fabric アプリケーションが作成されました。 この�
 ### <a name="stateless-web-api"></a>ステートレス Web API
 ステートレス Web API プロジェクトでは、外部クライアントに対してアプリケーションを開くときに使用できる基本的な Web サービスを提供します。 プロジェクトの構造の詳細については、「 [はじめに: OWIN 自己ホストによる Service Fabric Web API サービス](service-fabric-reliable-services-communication-webapi.md)」をご覧ください。
 
+
 ### <a name="aspnet-core"></a>ASP.NET Core
-Service Fabric SDK には、スタンドアロン ASP.NET Core プロジェクトで利用できるのと同じ ASP.NET Core テンプレート セット (空、[Web API][aspnet-webapi]、および [Web Application][aspnet-webapp]) が用意されています。
+Service Fabric SDK には、スタンドアロン ASP.NET Core プロジェクトで利用できるのと同じ ASP.NET Core テンプレート セット (空、[Web API][aspnet-webapi]、および [Web アプリケーション][aspnet-webapp]) が用意されています。
+
+### <a name="guest-executables-and-guest-containers"></a>ゲストの実行可能ファイルおよびゲスト コンテナー
+
+Service Fabric 'guest' は、プラットフォームのプログラミング モデルに組み込まれていないサービスです。 ゲスト用にバイナリを[直接アプリケーション パッケージに入れる](service-fabric-deploy-existing-app.md)か、[コンテナー イメージを使用](service-fabric-deploy-container.md)してパッケージできます。 どちらの場合も、Visual Studio によってアプリケーション プロジェクトの **ApplicationPackageRoot** フォルダー内に必要な成果物が作成されます。 コードは既に別の場所に存在するため、Visual Studio は新しいサービス プロジェクトを作成しません。 ゲスト プロジェクトを Service Fabric アプリケーション プロジェクトと一緒に管理する場合は、それらを同じ Visual Studio ソリューションに追加できます。
 
 ## <a name="next-steps"></a>次のステップ
 ### <a name="create-an-azure-cluster"></a>Azure クラスターの作成
 Service Fabric SDK には、開発およびテスト用のローカル クラスターが用意されています。 Azure でのクラスターの作成については、[Azure Portal からの Service Fabric クラスターのセットアップ][create-cluster-in-portal]に関する記事を参照してください。
 
-### <a name="try-deploying-to-azure-for-free-with-party-clusters"></a>パーティ クラスターを使用した Azure へのデプロイの無料試行
-独自のクラスターを設定せずに Azure でのアプリケーションのデプロイと管理を試してみる場合は、無料の [パーティ クラスター サービス](http://aka.ms/tryservicefabric)を使用できます。
-
 ### <a name="publish-your-application-to-azure"></a>Azure へのアプリケーションの発行
-Visual Studio から Azure クラスターに直接アプリケーションを発行することができます。 方法については、[Azure へのアプリケーションの発行][publish-app-to-azure]に関するページを参照してください。
+Visual Studio から Azure クラスターに直接アプリケーションを発行することができます。 詳細については、[Azure へのアプリケーションの発行][publish-app-to-azure]に関するページを参照してください。
 
 ### <a name="use-service-fabric-explorer-to-visualize-your-cluster"></a>Service Fabric Explorer を使用したクラスターの視覚化
 Service Fabric Explorer には、デプロイ済みのアプリケーションや物理的なレイアウトなど、クラスターを視覚化するための簡単な方法が用意されています。 詳細については、「[Service Fabric Explorer を使用したクラスターの視覚化]」[visualize-with-sfx]を参照してください。
 
 ### <a name="version-and-upgrade-your-services"></a>サービスのアップグレードとバージョン管理
-Service Fabric では、アプリケーションにおいて、独立したサービスの個別のバージョン管理とアップグレードを実行できます。 詳細については、「[サービスのバージョン管理とアップグレード]」[app-upgrade-tutorial]を参照してください。
+Service Fabric では、アプリケーションにおいて、独立したサービスの個別のバージョン管理とアップグレードを実行できます。 詳細については、「[サービスのバージョン管理とアップグレード][app-upgrade-tutorial]」を参照してください。
 
 ### <a name="configure-continuous-integration-with-visual-studio-team-services"></a>Visual Studio Team Services を使用した継続的な統合の構成
-Service Fabric アプリケーション向けに継続的な統合プロセスを設定する方法については、「[Visual Studio Team Services を使用した継続的な統合の構成]」[ci-with-vso]を参照してください。
+Service Fabric アプリケーション向けに継続的な統合プロセスを設定する方法については、「[Visual Studio Team Services を使用した継続的な統合の構成][ci-with-vso]」を参照してください。
 
 <!-- Links -->
 [add-web-frontend]: service-fabric-add-a-web-frontend.md
@@ -81,9 +84,4 @@ Service Fabric アプリケーション向けに継続的な統合プロセス�
 [app-upgrade-tutorial]: service-fabric-application-upgrade-tutorial.md
 [aspnet-webapi]: https://docs.asp.net/en/latest/tutorials/first-web-api.html
 [aspnet-webapp]: https://docs.asp.net/en/latest/tutorials/first-mvc-app/index.html
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

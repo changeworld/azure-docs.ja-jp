@@ -6,8 +6,3 @@
 | [.NET Web アプリから Web API を呼び出す](../articles/active-directory-b2c/active-directory-b2c-devquickstarts-web-api-dotnet.md) | [サインアップとサインインを JavaScript SPA に追加する (NodeJS)](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi)| |
 | [サインアップとサインインを ASP.NET Core アプリに追加する](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-aspnetcore-b2c) | | |
 
-
-
-<!--HONumber=Feb17_HO1-->
-
-

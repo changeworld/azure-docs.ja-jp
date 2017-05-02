@@ -16,13 +16,15 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: df1cf03bc452b76569bdca030b60719d6d2f29f3
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 38121cccc81ef82226e9ea7cbc197e294bb723e3
+ms.lasthandoff: 04/25/2017
 
 
 ---
 # <a name="use-iothub-explorer-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>iothub-explorer を使用してデバイスと IoT Hub 間でメッセージを送受信する
+
+![エンド ツー エンド ダイアグラム](media/iot-hub-get-started-e2e-diagram/2.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
@@ -39,7 +41,7 @@ iothub-explorer を使用して、D2C メッセージを監視し、C2D メッ�
 
 ## <a name="what-you-need"></a>必要なもの
 
-- 次の要件を対象とする [ESP8266 を Azure IoT Hub に接続](iot-hub-arduino-huzzah-esp8266-get-started.md)するためのチュートリアルを完了します。
+- 次の要件に対応するために、[デバイスのセットアップ](iot-hub-raspberry-pi-kit-node-get-started.md)に関するチュートリアルを完了しておきます。
   - 有効な Azure サブスクリプション
   - サブスクリプションの Azure IoT Hub。
   - Azure IoT Hub にメッセージを送信するクライアント アプリケーション。

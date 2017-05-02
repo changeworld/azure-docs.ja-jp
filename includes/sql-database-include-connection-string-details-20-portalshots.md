@@ -46,8 +46,3 @@ includes/sql-database-include-connection-string-20-portalshots.md
 includes/sql-database-include-connection-string-30-compare.md
 includes/sql-database-include-connection-string-40-config.md
 -->
-
-
-<!--HONumber=Dec16_HO2-->
-
-

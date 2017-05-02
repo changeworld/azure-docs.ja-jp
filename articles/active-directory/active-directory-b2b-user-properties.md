@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/18/2017
+ms.date: 04/12/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: eb0482d0dec3121710cc2ee56ab538cd66cb03c9
-ms.openlocfilehash: eaf7fabc243b3dfa37d974f4315a378bec9356b7
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 3d7801d8a53ac048333e43ee64724c11c25bf6a8
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -31,7 +31,7 @@ Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーション ユ�
 
 - 状態 1: Azure AD の外部インスタンスに所属し、ホスト組織のゲスト ユーザーとして表されます。 この場合、B2B ユーザーはホーム テナントに属している Azure AD アカウントを使用してサインインします。 招待時にユーザーの外部組織が Azure AD を使用していない場合は、ユーザーが招待に応じると、Azure AD が電子メール アドレスを検証した後で Azure AD のゲスト ユーザーが作成されます。 これは、Just-In-Time (JIT) テナント、またはバイラル テナントとも呼ばれます。
 
-- 状態 2: Microsoft アカウントに所属し、ホスト組織のゲスト ユーザーとして表されます。 この場合、ゲスト ユーザーは Microsoft アカウントでサインインします。 Azure AD パブリック プレビューの更新では、招待されたユーザーのソーシャル ID (google.com など、Microsoft アカウント以外のもの) が、招待に応じる際に Microsoft アカウントとして作成されます。
+- 状態 2: Microsoft アカウントに所属し、ホスト組織のゲスト ユーザーとして表されます。 この場合、ゲスト ユーザーは Microsoft アカウントでサインインします。 招待されたユーザーのソーシャル ID (google.com など、Microsoft アカウント以外のもの) は、招待に応じる際に Microsoft アカウントとして作成されます。
 
 - 状態 3: ホスト組織のオンプレミス Active Directory に所属し、ホスト組織の Azure AD と同期されます。 このリリースでは、クラウドのこのようなユーザーの UserType を、PowerShell を使用して手動で変更する必要があります。
 
@@ -52,7 +52,7 @@ Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーション ユ�
 
 ## <a name="key-properties-of-the-azure-ad-b2b-collaboration-user"></a>Azure AD B2B コラボレーション ユーザーの主要なプロパティ
 ### <a name="usertype"></a>UserType
-このプロパティは、ユーザーとホスト テナントとの関係を示します。 これは次の&2; つの値を取ります。
+このプロパティは、ユーザーとホスト テナントとの関係を示します。 これは次の 2 つの値を取ります。
 - メンバー: この値は、ホスト組織の従業員、組織の給与支払い名簿にあるユーザーを示します。 たとえば、このユーザーは、内部専用のサイトにアクセスできることが想定されます。 このユーザーが外部コラボレーターと見なされることはありません。
 
 - ゲスト: この値は、会社の内部人員と見なされないユーザーを示します。 外部コラボレーター、パートナー、顧客や、たとえば CEO の内部メモを見たり会社給付を受けたりすることが想定されていないようなユーザーなどです。

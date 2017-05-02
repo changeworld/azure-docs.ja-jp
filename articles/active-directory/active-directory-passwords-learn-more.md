@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: dca6f5189693fc98cec4f92eac81b6985e691889
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: a07051ea0be58cafcf1a7d7ae800b44e7abd05cd
+ms.lasthandoff: 04/13/2017
 
 
 ---
 # <a name="learn-more-about-password-management"></a>パスワード管理の詳細情報
 > [!IMPORTANT]
-> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#reset-your-password)。
+> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#reset-my-password)。
 >
 >
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 03/28/2017
  * [ユーザーのパスワード リセット データにアクセスする](#how-to-access-password-reset-data-for-your-users)
  * [PowerShell を使用したパスワード リセット データの設定](#setting-password-reset-data-with-powershell)
  * [PowerShell を使用したパスワード リセット データの読み取り](#reading-password-reset-data-with-powershell)
-* [**B2B ユーザーに対するパスワード リセットの動作**](#how-does-password-reset-work-for-b2b-users)
+* [**B2B ユーザーに対するパスワード リセットの動作** ](#how-does-password-reset-work-for-b2b-users)
 
 ## <a name="how-does-the-password-reset-portal-work"></a>パスワード リセット ポータルのしくみ
 ユーザーがパスワード リセット ポータルに移動すると、そのユーザー アカウントは有効か、そのユーザーはどの組織に属しているか、そのユーザーのパスワードはどこに管理されているか、ユーザーは機能を使用するライセンスが付与されているかを判断するためのワークフローが開始されます。  パスワード リセット ページの背後にあるロジックの詳細については、次の手順をお読みください。
@@ -105,7 +105,7 @@ ms.lasthandoff: 03/28/2017
 6. メッセージが Service Bus に到達すると、パスワード リセット エンドポイントが自動的にアクティブになり、保留中のリセット要求があるかどうかを確認します。
 7. サービスは、クラウドのアンカー属性を使用して該当するユーザーを探します。  この検索が正常に動作するには、ユーザー オブジェクトが AD コネクタ スペースに存在し、これが対応する MV オブジェクトにリンクし、さらにこれが対応する AAD コネクタ オブジェクトにリンクする必要があります。 最後に、同期によってこのユーザー アカウントを検索するには、AD コネクタ オブジェクトから MV へのリンクに `Microsoft.InfromADUserAccountEnabled.xxx` 同期ルールが含まれている必要があります。  これが必要なのは、クラウドから呼び出される場合に、同期エンジンは cloudAnchor 属性を使用して AAD コネクタ スペース オブジェクトを検索し、MV オブジェクトのリンクに戻り、次に AD オブジェクトのリンクに戻るためです。 同じユーザーに対して複数の AD オブジェクト (マルチ フォレスト) がある可能性があるため、同期エンジンは `Microsoft.InfromADUserAccountEnabled.xxx` のリンクに依存して正しいユーザー アカウントを選択します。 このロジックの結果として、パスワード ライトバックが機能するには、Azure AD Connect をプライマリ ドメイン コントローラーに接続する必要があります。  これを行う必要がある場合は、プライマリ ドメイン コントローラー エミュレーターを使用するよう Azure AD Connect を構成できます。そのためには、Active Directory 同期コネクタの **[プロパティ]** を右クリックして **[configure directory partitions (ディレクトリ パーティションの構成)]** を選択します。 そこで **[domain controller connection settings (ドメイン コントローラーの接続の設定)]** セクションを探して、**[only use preferred domain controllers (優先ドメイン コントローラーのみを使用する)]** というチェック ボックスをオンにします。 注: 優先 DC が PDC エミュレーターではない場合、Azure AD Connect はパスワード ライトバックのため引き続き PDC にアクセスします。
 8. ユーザー アカウントが見つかると、適切な AD フォレスト内で直接パスワードのリセットを試みます。
-9. パスワードの設定操作に成功すると、ユーザーにパスワードが変更されたことが通知され、そのまま続行されます。
+9. パスワードの設定操作に成功すると、ユーザーにパスワードが変更されたことが通知され、そのまま続行されます。 パスワード同期を使用してユーザーのパスワードが Azure AD に同期される場合、オンプレミスのパスワード ポリシーが、クラウドのパスワード ポリシーと比べて緩い可能性があります。 その場合、オンプレミスのポリシーは、どのようなものであれ適用されます。その代わりに、そのパスワードのハッシュを同期することが、パスワード ハッシュ同期に許可されます。 これにより、パスワード同期やフェデレーションによるシングル サインオンを提供していたとしても、クラウドでオンプレミスのポリシーが確実に適用されます。
 10. パスワードの設定操作に失敗した場合は、エラーが返され、やり直す必要があります。  サービスがダウンした、選択したパスワードが組織のポリシーを満たしていない、ローカル AD でユーザーが見つからないなど、さまざまな原因で操作に失敗する可能性があります。  多くの場合、特定のメッセージが表示され、問題解決の手段がユーザーに通知されます。
 
 ## <a name="scenarios-supported-for-password-writeback"></a>パスワード ライトバックでサポートされるシナリオ
@@ -629,7 +629,7 @@ Not possible in PowerShell V2
 ## <a name="next-steps"></a>次のステップ
 Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
-* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#reset-your-password)にお進みください。
+* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#reset-my-password)にお進みください。
 * [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
 * [**概要**](active-directory-passwords-getting-started.md) - ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
 * [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。

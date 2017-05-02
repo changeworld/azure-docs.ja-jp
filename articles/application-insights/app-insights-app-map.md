@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: 9fc7a41dcca3d9e51b8c67b86ef61443945b6bad
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 37b85ba4987f8f29e4e825a17f0a892ddabf9599
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -105,7 +105,7 @@ Azure でホストされるコンポーネントの場合、そのコンポー�
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player] 
 
 ## <a name="feedback"></a>フィードバック
-[ご意見やご感想は、ポータルのフィードバック オプションからお寄せください](app-insights-get-dev-support.md)。
+ご意見やご感想は、ポータルのフィードバック オプションからお寄せください。
 
 ![MapLink-1 image](./media/app-insights-app-map/13.png)
 

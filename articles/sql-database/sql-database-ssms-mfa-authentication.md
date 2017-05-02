@@ -9,44 +9,40 @@ editor:
 tags: 
 ms.assetid: fbd6e644-0520-439c-8304-2e4fb6d6eb91
 ms.service: sql-database
-ms.custom: authentication and authorization
+ms.custom: security-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 01/23/2017
+ms.date: 04/07/2017
 ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: 6e68ff56eaab3de8166711c872bf1b5707dbdf56
-ms.openlocfilehash: ce77a059a05f83d74e80c71a87a22de6755b2dbb
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 2a2ee58ba86fef089401521d727a301f8b59ce75
+ms.lasthandoff: 04/07/2017
 
 
 ---
-# <a name="ssms-support-for-azure-ad-mfa-with-sql-database-and-sql-data-warehouse"></a>SQL Database と SQL Data Warehouse での Azure AD MFA のための SSMS のサポート
-Azure SQL Database と Azure SQL Data Warehouse では、" *Active Directory ユニバーサル認証*" を使用して SQL Server Management Studio (SSMS) からの接続をサポートするようになりました。 Active Directory ユニバーサル認証とは、 *Azure Multi-Factor Authentication* (MFA) をサポートする対話型ワークフローです。 Azure MFA では、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護することができます。 電話、テキスト メッセージ、スマート カードと PIN、モバイル アプリ通知など、簡単な各種確認オプションによって強力な認証が実現するため、ユーザーは自分に最も合った方法を選択できます。 
+# <a name="universal-authentication-with-sql-database-and-sql-data-warehouse-ssms-support-for-mfa"></a>SQL Database と SQL Data Warehouse でのユニバーサル認証 (MFA 対応の SSMS サポート)
+Azure SQL Database と Azure SQL Data Warehouse では、*Active Directory ユニバーサル認証*を使用して、SQL Server Management Studio (SSMS) からの接続をサポートするようになりました。 
 
-* Multi-Factor Authentication の説明については、 [Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)に関する記事を参照してください。
-* 構成手順については、「[SQL Server Management Studio 用に Azure SQL Database の多要素認証を構成する](sql-database-ssms-mfa-authentication-configure.md)」をご覧ください。
+- Active Directory ユニバーサル認証では、2 つの非対話型の認証方式 (Active Directory パスワード認証と Active Directory 統合認証) をサポートします。 非対話型 Active Directory パスワード認証方式および Active Directory 統合認証方式は、さまざまなアプリケーション (ADO.NET、JDBC、ODBC など) で使用できます。 これら 2 つの方式では、ポップアップ ダイアログ ボックスは表示されません。
 
-## <a name="multi-factor-options"></a>多要素認証のオプション
+- Active Directory ユニバーサル認証とは、*Azure Multi-Factor Authentication* (MFA) もサポートする対話型の認証方式です。 Azure MFA では、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護することができます。 電話、テキスト メッセージ、スマート カードと PIN、モバイル アプリ通知など、簡単な各種確認オプションによって強力な認証が実現するため、ユーザーは自分に最も合った方法を選択できます。 Azure AD との対話型 MFA はポップアップ ダイアログ ボックスで検証できます。
 
-現在、SSMS では以下がサポートされています。
+Multi-Factor Authentication の説明については、 [Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)に関する記事を参照してください。
+構成手順については、「[SQL Server Management Studio 用に Azure SQL Database の多要素認証を構成する](sql-database-ssms-mfa-authentication-configure.md)」をご覧ください。
 
-* ポップアップ ダイアログ ボックスでの検証が可能な、Azure AD との対話型 MFA。
-* 多くの異なるアプリケーション (ADO.NET、JDBC、ODBC など) で使用可能な、非対話型 Active Directory パスワードおよび Active Directory 統合認証方式。 これら&2; つの方式では、ポップアップ ダイアログ ボックスは表示されません。
+### <a name="azure-ad-domain-name-or-tenant-id-parameter"></a>Azure AD ドメイン名またはテナント ID パラメーター   
 
-ユーザー アカウントが MFA 用に構成されている場合、対話型の認証ワークフローでは、ポップアップ ダイアログ ボックスやスマート カードの使用など、追加のユーザー操作が必要になります。ユーザー アカウントが MFA 用に構成されている場合、ユーザーは接続する Azure ユニバーサル認証を選択する必要があります。 ユーザー アカウントが MFA を必要としない場合は、引き続き他の&2; つの Azure Active Directory 認証オプションを使用できます。
+[SSMS バージョン 17](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 以降では、別の Azure Active ディレクトリから現在の Active Directory にインポートされたユーザーが、接続時に Azure AD のドメイン名またはテナント ID を指定できます。 これにより、**Active Directory ユニバーサル認証**の際に、正しい認証機関を識別できます。 また、このオプションでは、outlook.com、hotmail.com、live.com などの Microsoft のアカウント (MSA) のサポートが必要です。 ユニバーサル認証を使用して認証される、これらすべてのユーザーは、Azure AD ドメイン名またはテナント ID を入力する必要があります。 このパラメーターは、Azure サーバーがリンクしている、現在の Azure AD ドメイン名またはテナント ID を表しています。 たとえば、Azure サーバーが Azure AD ドメイン `contosotest.onmicrosoft.com` と関連付けられていて、このドメインにユーザー `joe@contosodev.onmicrosoft.com` が Azure AD ドメイン `contosodev.onmicrosoft.com` からインポートされたユーザーとしてホストされている場合、このドメイン名はこのユーザーを `contosotest.onmicrosoft.com` として認証する必要があります。 ユーザーが Azure サーバーにリンクされている Azure AD のネイティブ ユーザーであるが、MSA アカウントではない場合、ドメイン名またはテナント ID は必要ありません。 パラメーター (SSMS バージョン 17 以降) を入力するには、**[データベースへの接続]** ダイアログ ボックスで **[Active Directory のユニバーサル認証]** を選択して入力を完了します。次に、**[オプション]**、**[接続プロパティ]** タブの順にクリックし、**[AD ドメイン名またはテナント ID]** ボックスをオンにして、ドメイン名 (**contosotest.onmicrosoft.com**) またはテナント ID の GUID などの認証機関を指定します。
 
 ## <a name="universal-authentication-limitations-for-sql-database-and-sql-data-warehouse"></a>SQL Database と SQL Data Warehouse でのユニバーサル認証の制限事項
 * SSMS は、Active Directory ユニバーサル認証を介する MFA で現在有効になっている唯一のツールです。
 * ユニバーサル認証を使用して SSMS のインスタンスにログインできるのは、1 つの Azure Active Directory アカウントのみです。 別の Azure AD アカウントとしてログインするには、SSMS の別のインスタンスを使用する必要があります (この制限は Active Directory ユニバーサル認証に限定されます。 Active Directory パスワード認証、Active Directory 統合認証、または SQL Server 認証の使用時は別のサーバーにログインできます)。
 * SSMS では、オブジェクト エクスプローラー、クエリ エディター、クエリ ストアの視覚化で Active Directory ユニバーサル認証がサポートされます。
 * DacFx とスキーマ デザイナーでは、ユニバーサル認証はサポートされません。
-* MSA アカウントは Active Directory ユニバーサル認証でサポートされていません。
-* 他の Azure Active Directory から現在の Active Directory にインポートされたユーザーの場合、SSMS での Active Directory ユニバーサル認証はサポートされていません。 アカウントの検証にテナント ID が必要になるが、それを実行するメカニズムがないため、これらのユーザーはサポートされていません。
 * サポートされているバージョンの SSMS を使用する必要があることを除き、Active Directory ユニバーサル認証に関する追加のソフトウェア要件はありません。
-
 
 
 ## <a name="next-steps"></a>次のステップ

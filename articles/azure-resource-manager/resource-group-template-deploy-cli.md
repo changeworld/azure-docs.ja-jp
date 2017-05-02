@@ -12,165 +12,99 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/10/2017
+ms.date: 04/19/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 0320aafd5eed1b3ef658d5f020fc37ba1dcff308
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: c889a609b8d49474216fe1dcfba69a881edb4133
+ms.lasthandoff: 04/21/2017
 
 
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ
-> [!div class="op_single_selector"]
-> * [PowerShell](resource-group-template-deploy.md)
-> * [Azure CLI](resource-group-template-deploy-cli.md)
-> * [ポータル](resource-group-template-deploy-portal.md)
-> * [REST API](resource-group-template-deploy-rest.md)
-> 
-> 
 
-このトピックでは、[Azure CLI 2.0](/cli/azure/install-az-cli2) と Resource Manager テンプレートを使用して Azure にリソースをデプロイする方法について説明します。  テンプレートは、ローカル ファイルまたは URI を通じて利用できる外部ファイルのいずれも使用できます。 テンプレートがストレージ アカウントに存在する場合は、テンプレートへのアクセスを制限し、デプロイ時に Shared Access Signature (SAS) トークンを設定できます。
+このトピックでは、[Azure CLI 2.0](/cli/azure/install-az-cli2) と Resource Manager テンプレートを使用して Azure にリソースをデプロイする方法について説明します。  テンプレートは、ローカル ファイルまたは URI を通じて利用できる外部ファイルのいずれも使用できます。
 
-## <a name="deploy"></a>デプロイ
+これらの例で使用するテンプレート (storage.json) は、「[初めての Azure Resource Manager テンプレートを作成する](resource-manager-create-first-template.md#final-template)」から取得できます。 このテンプレートを例で使用するには、JSON ファイルを作成し、コピーしたコンテンツを追加します。
 
-* デプロイを速やかに開始するには、次のコマンドを使用してインライン パラメーターを含むローカル テンプレートをデプロイします。
+## <a name="deploy-local-template"></a>ローカル テンプレートのデプロイ
 
-  ```azurecli
-  az login
-  az account set --subscription {subscription-id}
+デプロイを速やかに開始するには、次のコマンドを使用してインライン パラメーターを含むローカル テンプレートをデプロイします。
 
-  az group create --name ExampleGroup --location "Central US"
-  az group deployment create \
-      --name ExampleDeployment \
-      --resource-group ExampleGroup \
-      --template-file storage.json \
-      --parameters '{"storageNamePrefix":{"value":"contoso"},"storageSKU":{"value":"Standard_GRS"}}'
-  ```
+```azurecli
+az login
 
-  デプロイが完了するまでに数分かかる場合があります。 デプロイが完了すると、次のような結果を含むメッセージが表示されます。
+az group create --name ExampleGroup --location "Central US"
+az group deployment create \
+    --name ExampleDeployment \
+    --resource-group ExampleGroup \
+    --template-file storage.json \
+    --parameters "{\"storageNamePrefix\":{\"value\":\"contoso\"},\"storageSKU\":{\"value\":\"Standard_GRS\"}}"
+```
 
-  ```azurecli
-  "provisioningState": "Succeeded",
-  ```
-  
-* `az account set` コマンドは、既定のサブスクリプション以外のサブスクリプションを使用する場合にのみ必要です。 すべてのサブスクリプションとその ID を表示するには、次のコマンドを使用します。
+デプロイが完了するまでに数分かかる場合があります。 デプロイが完了すると、次のような結果を含むメッセージが表示されます。
 
-  ```azurecli
-  az account list
-  ```
+```azurecli
+"provisioningState": "Succeeded",
+```
 
-* 外部テンプレートをデプロイするには、**template-uri** パラメーターを使用します。
+前の例では、既定のサブスクリプションでリソース グループを作成しました。 別のサブスクリプションを使用するには、ログインの後に [az account set](/cli/azure/account#set) コマンドを追加します。
+
+## <a name="deploy-external-template"></a>外部テンプレートのデプロイ
+
+外部テンプレートをデプロイするには、**template-uri** パラメーターを使用します。 外部テンプレートの場所は、パブリックにアクセスできる URI (ストレージ アカウント内のファイルなど) であればどこでもかまいません。
    
-   ```azurecli
-   az group deployment create \
-       --name ExampleDeployment \
-       --resource-group ExampleGroup \
-       --template-uri "https://raw.githubusercontent.com/exampleuser/MyTemplates/master/storage.json" \
-       --parameters '{"storageNamePrefix":{"value":"contoso"},"storageSKU":{"value":"Standard_GRS"}}'
-   ```
+```azurecli
+az group deployment create \
+    --name ExampleDeployment \
+    --resource-group ExampleGroup \
+    --template-uri "https://raw.githubusercontent.com/exampleuser/MyTemplates/master/storage.json" \
+    --parameters "{\"storageNamePrefix\":{\"value\":\"contoso\"},\"storageSKU\":{\"value\":\"Standard_GRS\"}}"
+```
 
-* パラメーター値をファイルで渡すには、次のコマンドを使用します。
+アクセスの際に Shared Access Signature (SAS) トークンを要求することで、テンプレートを保護することができます。 SAS トークンを必要とするテンプレートをデプロイする方法については、「[Deploy private template with SAS token (SAS トークンを使用したプライベート テンプレートのデプロイ)](resource-manager-cli-sas-token.md)」を参照してください。
 
-   ```azurecli
-   az group deployment create \
-       --name ExampleDeployment \
-       --resource-group ExampleGroup \
-       --template-file storage.json \
-       --parameters @storage.parameters.json
-   ```
+## <a name="parameter-files"></a>パラメーター ファイル
 
-   パラメーター ファイルは次の形式にする必要があります。
+前の例では、パラメーターをインライン値として渡す方法を示しました。 ファイル内にパラメーター値を指定し、デプロイ時にそのファイルを渡すことができます。 
 
-   ```json
-   {
-     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-     "contentVersion": "1.0.0.0",
-     "parameters": {
-        "storageNamePrefix": {
-            "value": "contoso"
-        },
-        "storageSKU": {
-            "value": "Standard_GRS"
-        }
+パラメーター ファイルは次の形式にする必要があります。
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+     "storageNamePrefix": {
+         "value": "contoso"
+     },
+     "storageSKU": {
+         "value": "Standard_GRS"
      }
-   }
-   ```
+  }
+}
+```
 
-
-[!INCLUDE [resource-manager-deployments](../../includes/resource-manager-deployments.md)]
-
-完全モードを使用するには、モード パラメーターを使用します。
+ローカル パラメーター ファイルを渡すには、次のコマンドを使用します。
 
 ```azurecli
 az group deployment create \
     --name ExampleDeployment \
-    --mode Complete \
     --resource-group ExampleGroup \
     --template-file storage.json \
-    --parameters '{"storageNamePrefix":{"value":"contoso"},"storageSKU":{"value":"Standard_GRS"}}'
+    --parameters @storage.parameters.json
 ```
 
-## <a name="deploy-template-from-storage-with-sas-token"></a>SAS トークンを使用してストレージからテンプレートをデプロイする
-SAS トークンを使用したデプロイの際に、テンプレートをストレージ アカウントに追加し、リンクできます。
+## <a name="test-a-deployment"></a>デプロイのテスト
 
-> [!IMPORTANT]
-> 次の手順に従うことにより、テンプレートを含む BLOB はアカウントの所有者だけがアクセスできるようになります。 ただし、BLOB の SAS トークンを作成すると、その URI を持つ誰もが BLOB にアクセスできるようになります。 もし別のユーザーが URI を傍受した場合、そのユーザーは、テンプレートにアクセスできます。 SAS トークンの使用はテンプレートへのアクセスを制限する有効な方法ですが、パスワードのような機密データをテンプレートに直接含めないでください。
-> 
-> 
+リソースを実際にデプロイすることなく、テンプレートとパラメーターの値をテストするには、[az group deployment validate](/cli/azure/group/deployment#validate) を使用します。 ローカル ファイルを使用する場合も、リモート ファイルを使用する場合も、オプションは同じです。
 
-### <a name="add-private-template-to-storage-account"></a>ストレージ アカウントにプライベートのテンプレートを追加する
-次の例では、プライベート ストレージ アカウントのコンテナーを設定し、テンプレートをアップロードします。
-   
 ```azurecli
-az group create --name "ManageGroup" --location "South Central US"
-az storage account create \
-    --resource-group ManageGroup \
-    --location "South Central US" \
-    --sku Standard_LRS \
-    --kind Storage \
-    --name {your-unique-name}
-connection=$(az storage account show-connection-string \
-    --resource-group ManageGroup \
-    --name {your-unique-name} \
-    --query connectionString)
-az storage container create \
-    --name templates \
-    --public-access Off \
-    --connection-string $connection
-az storage blob upload \
-    --container-name templates \
-    --file vmlinux.json \
-    --name vmlinux.json \
-    --connection-string $connection
+az group deployment validate \
+    --resource-group ExampleGroup \
+    --template-file storage.json \
+    --parameters @storage.parameters.json
 ```
-
-### <a name="provide-sas-token-during-deployment"></a>デプロイ時に SAS トークンを指定する
-ストレージ アカウントにプライベートのテンプレートをデプロイするため、SAS トークンを生成してテンプレートの URI に含めます。 デプロイの完了に必要な時間を確保できるように有効期限を設定します。
-   
-```azurecli
-seconds='@'$(( $(date +%s) + 1800 ))
-expiretime=$(date +%Y-%m-%dT%H:%MZ --date=$seconds)
-connection=$(az storage account show-connection-string \
-    --resource-group ManageGroup \
-    --name {your-unique-name} \
-    --query connectionString)
-token=$(az storage blob generate-sas \
-    --container-name templates \
-    --name vmlinux.json \
-    --expiry $expiretime \
-    --permissions r \
-    --output tsv \
-    --connection-string $connection)
-url=$(az storage blob url \
-    --container-name templates \
-    --name vmlinux.json \
-    --output tsv \
-    --connection-string $connection)
-az group deployment create --resource-group ExampleGroup --template-uri $url?$token
-```
-
-リンクされたテンプレートでの SAS トークン使用例については、「 [Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)」を参照してください。
 
 ## <a name="debug"></a>デバッグ
 
@@ -182,136 +116,40 @@ az group deployment operation list --resource-group ExampleGroup --name vmlinux 
 
 一般的なデプロイ エラーを解決するうえでのヒントについては、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](resource-manager-common-deployment-errors.md)」を参照してください。
 
-## <a name="complete-deployment-script"></a>デプロイメント スクリプトの完了
 
-次の例は、[テンプレートのエクスポート](resource-manager-export-template.md)機能により生成されたテンプレートをデプロイするための Azure CLI 2.0 スクリプトを示しています。
+## <a name="export-resource-manager-template"></a>Resource Manager テンプレートのエクスポート
+(Azure CLI または、ポータルなど、その他の方法でデプロイされた) 既存のリソース グループの場合、そのリソース グループの Resource Manager テンプレートを参照できます。 テンプレートのエクスポートには、2 つの利点があります。
+
+1. ソリューションの将来のデプロイを簡単に自動化できます。すべてのインフラストラクチャがテンプレートに定義されているためです。
+2. ソリューションを表す JavaScript Object Notation (JSON) を見ることでテンプレートの構文に詳しくなります。
+
+リソース グループのテンプレートを表示するには、[az group export](/cli/azure/group#export) コマンドを実行します。
 
 ```azurecli
-#!/bin/bash
-set -euo pipefail
-IFS=$'\n\t'
-
-# -e: immediately exit if any command has a non-zero exit status
-# -o: prevents errors in a pipeline from being masked
-# IFS new value is less likely to cause confusing bugs when looping arrays or arguments (e.g. $@)
-
-usage() { echo "Usage: $0 -i <subscriptionId> -g <resourceGroupName> -n <deploymentName> -l <resourceGroupLocation>" 1>&2; exit 1; }
-
-declare subscriptionId=""
-declare resourceGroupName=""
-declare deploymentName=""
-declare resourceGroupLocation=""
-
-# Initialize parameters specified from command line
-while getopts ":i:g:n:l:" arg; do
-    case "${arg}" in
-        i)
-            subscriptionId=${OPTARG}
-            ;;
-        g)
-            resourceGroupName=${OPTARG}
-            ;;
-        n)
-            deploymentName=${OPTARG}
-            ;;
-        l)
-            resourceGroupLocation=${OPTARG}
-            ;;
-        esac
-done
-shift $((OPTIND-1))
-
-#Prompt for parameters is some required parameters are missing
-if [[ -z "$subscriptionId" ]]; then
-    echo "Subscription Id:"
-    read subscriptionId
-    [[ "${subscriptionId:?}" ]]
-fi
-
-if [[ -z "$resourceGroupName" ]]; then
-    echo "ResourceGroupName:"
-    read resourceGroupName
-    [[ "${resourceGroupName:?}" ]]
-fi
-
-if [[ -z "$deploymentName" ]]; then
-    echo "DeploymentName:"
-    read deploymentName
-fi
-
-if [[ -z "$resourceGroupLocation" ]]; then
-    echo "Enter a location below to create a new resource group else skip this"
-    echo "ResourceGroupLocation:"
-    read resourceGroupLocation
-fi
-
-#templateFile Path - template file to be used
-templateFilePath="template.json"
-
-if [ ! -f "$templateFilePath" ]; then
-    echo "$templateFilePath not found"
-    exit 1
-fi
-
-#parameter file path
-parametersFilePath="parameters.json"
-
-if [ ! -f "$parametersFilePath" ]; then
-    echo "$parametersFilePath not found"
-    exit 1
-fi
-
-if [ -z "$subscriptionId" ] || [ -z "$resourceGroupName" ] || [ -z "$deploymentName" ]; then
-    echo "Either one of subscriptionId, resourceGroupName, deploymentName is empty"
-    usage
-fi
-
-#login to azure using your credentials
-az account show 1> /dev/null
-
-if [ $? != 0 ];
-then
-    az login
-fi
-
-#set the default subscription id
-az account set --name $subscriptionId
-
-set +e
-
-#Check for existing RG
-az group show $resourceGroupName 1> /dev/null
-
-if [ $? != 0 ]; then
-    echo "Resource group with name" $resourceGroupName "could not be found. Creating new resource group.."
-    set -e
-    (
-        set -x
-        az resource group create --name $resourceGroupName --location $resourceGroupLocation 1> /dev/null
-    )
-    else
-    echo "Using existing resource group..."
-fi
-
-#Start deployment
-echo "Starting deployment..."
-(
-    set -x
-    az resource group deployment create --name $deploymentName --resource-group $resourceGroupName --template-file $templateFilePath --parameters $parametersFilePath
-)
-
-if [ $?  == 0 ];
- then
-    echo "Template has been successfully deployed"
-fi
+az group export --name ExampleGroup
 ```
 
-## <a name="next-steps"></a>次のステップ
-* .NET クライアント ライブラリを使用したリソースのデプロイの例については、「[Deploy resources using .NET libraries and a template](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」 (.NET ライブラリとテンプレートを使用した Azure リソースのデプロイ) を参照してください。
-* テンプレートのパラメーターの定義については、 [テンプレートの作成](resource-group-authoring-templates.md#parameters)に関する記事を参照してください。
-* ソリューションを別の環境にデプロイする方法については、「 [Microsoft Azure の開発環境とテスト環境](solution-dev-test-environments.md)」を参照してください。
-* セキュリティで保護された値を渡す KeyVault 参照を使用する方法については、「 [デプロイメント時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)」を参照してください。
-* 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](resource-manager-subscription-governance.md)」を参照してください。
-* デプロイの自動化についての 4 回シリーズの解説については、「[Automating application deployments to Azure Virtual Machines (Azure Virtual Machines へのアプリケーションのデプロイの自動化)](../virtual-machines/windows/dotnet-core-1-landing.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。 このシリーズでは、アプリケーションのアーキテクチャ、アクセスとセキュリティ、可用性と拡張性、およびアプリケーションのデプロイについて説明しています。
+詳細については、「[Export an Azure Resource Manager template from existing resources (既存のリソースから Azure Resource Manager テンプレートをエクスポートする)](resource-manager-export-template.md)」を参照してください。
 
+
+[!INCLUDE [resource-manager-deployments](../../includes/resource-manager-deployments.md)]
+
+完全モードを使用するには、`mode` パラメーターを使用します。
+
+```azurecli
+az group deployment create \
+    --name ExampleDeployment \
+    --mode Complete \
+    --resource-group ExampleGroup \
+    --template-file storage.json \
+    --parameters "{\"storageNamePrefix\":{\"value\":\"contoso\"},\"storageSKU\":{\"value\":\"Standard_GRS\"}}"
+```
+
+
+## <a name="next-steps"></a>次のステップ
+* テンプレートのデプロイ用の完全なサンプル スクリプトについては、[Resource Manager テンプレートのデプロイ用のスクリプト](resource-manager-samples-cli-deploy.md)に関するページを参照してください。
+* テンプレートのパラメーターの定義については、 [テンプレートの作成](resource-group-authoring-templates.md#parameters)に関する記事を参照してください。
+* 一般的なデプロイ エラーを解決するうえでのヒントについては、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](resource-manager-common-deployment-errors.md)」を参照してください。
+* SAS トークンを必要とするテンプレートをデプロイする方法については、「[Deploy private template with SAS token (SAS トークンを使用したプライベート テンプレートのデプロイ)](resource-manager-cli-sas-token.md)」を参照してください。
+* 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](resource-manager-subscription-governance.md)」を参照してください。
 

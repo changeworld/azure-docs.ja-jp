@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 1/31/2017
 ms.author: vakarand
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 6a466937358932a28604cddf7f32cdfd02a5b88d
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: a1190f0ab4caf749cce0b5c9ba45e55f7e6ca8ec
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -86,15 +86,15 @@ Azure Active Directory スキーマでは、次の属性について複数のオ
    * **smtp:bob@contoso.com**
 9. 同期中に、Azure AD Connect はオンプレミス Active Directory への Bob Taylor の追加を認識し、同じ変更を行うように Azure AD に依頼します。
 10. Azure AD は、最初に完全一致を実行します。 つまり、immutableId が "abcdefghijkl0123456789==" と等しいオブジェクトがないかどうか検索します。 Azure AD の他のオブジェクトにはその immutableId がないため、完全一致は失敗します。
-11. 次に、Azure AD は、Bob Taylor のあいまい一致を試みます。 つまり、proxyAddresses が smtp:bob@contoso.com など&3; つの値と等しいオブジェクトがないか検索します。
+11. 次に、Azure AD は、Bob Taylor のあいまい一致を試みます。 つまり、proxyAddresses が smtp:bob@contoso.com など 3 つの値と等しいオブジェクトがないか検索します。
 12. Azure AD は、あいまい一致条件を満たす Bob Smith のオブジェクトを見つけます。 このオブジェクトの immutableId の値は "abcdefghijklmnopqrstuv==" です。 これは、このオブジェクトがオンプレミスの Active Directory の別のオブジェクトから同期されたことを示します。 したがって、Azure AD はこれらのオブジェクトのあいまい一致を行うことができず、**InvalidSoftMatch** 同期エラーが発生します。
 
 #### <a name="how-to-fix-invalidsoftmatch-error"></a>InvalidSoftMatch エラーを修正する方法
 InvalidSoftMatch エラーの最も一般的な理由は、2 つのオブジェクトの異なる SourceAnchor \(immutableId\) の ProxyAddresses 属性または UserPrincipalName 属性 (あるいは両方) の値が同じであることです。これらの属性が、Azure AD でのあいまい一致プロセスで使用されます。 無効なあいまい一致を修正するには、次の手順に従います。
 
-1. エラーの原因となった、重複する proxyAddresses 属性、userPrincipalName 属性、または他の属性の値を特定します。 また、どの&2; つ \(以上\) のオブジェクトが競合しているかも特定します。 [Azure AD Connect Health for sync](https://aka.ms/aadchsyncerrors) によって生成されるレポートが、2 つのオブジェクトを特定するために役立ちます。
+1. エラーの原因となった、重複する proxyAddresses 属性、userPrincipalName 属性、または他の属性の値を特定します。 また、どの 2 つ \(以上\) のオブジェクトが競合しているかも特定します。 [Azure AD Connect Health for sync](https://aka.ms/aadchsyncerrors) によって生成されるレポートが、2 つのオブジェクトを特定するために役立ちます。
 2. 重複した値をそのまま使用するオブジェクトと、使用すべきでないオブジェクトを決めます。
-3. 重複する値を、その値を使用すべきでないオブジェクトから削除します。 そのオブジェクトのソースであるディレクトリで、この変更を行う必要があることに注意してください。 場合によっては、競合しているオブジェクトの&1; つを削除する必要があります。
+3. 重複する値を、その値を使用すべきでないオブジェクトから削除します。 そのオブジェクトのソースであるディレクトリで、この変更を行う必要があることに注意してください。 場合によっては、競合しているオブジェクトの 1 つを削除する必要があります。
 4. オンプレミス AD で変更を行った場合は、Azure AD Connect で変更を同期します。
 
 Azure AD Connect Health for sync の同期エラーレポートは 30 分ごとに更新され、最新の同期試行のエラーが含まれることに注意してください。
@@ -109,7 +109,7 @@ Azure AD Connect Health for sync の同期エラーレポートは 30 分ごと�
 
 ### <a name="objecttypemismatch"></a>ObjectTypeMismatch
 #### <a name="description"></a>説明
-Azure AD が&2; つのオブジェクトのあいまい一致を試行するとき、"オブジェクトの種類" (ユーザー、グループ、連絡先など) が異なる&2; つのオブジェクトで、あいまい一致の実行に使用される属性の値が同一である場合があります。 これらの属性の重複は Azure AD では許可されないため、この操作は "ObjectTypeMismatch" 同期エラーで終了します。
+Azure AD が 2 つのオブジェクトのあいまい一致を試行するとき、"オブジェクトの種類" (ユーザー、グループ、連絡先など) が異なる 2 つのオブジェクトで、あいまい一致の実行に使用される属性の値が同一である場合があります。 これらの属性の重複は Azure AD では許可されないため、この操作は "ObjectTypeMismatch" 同期エラーで終了します。
 
 #### <a name="example-scenarios-for-objecttypemismatch-error"></a>ObjectTypeMismatch エラーのシナリオ例
 * メール対応セキュリティ グループが Office 365 で作成されます。 管理者は、ProxyAddresses 属性の値が Office 365 グループと同じ新しいユーザーまたは連絡先をオンプレミス ADに追加します (まだ Azure AD に同期されません)。
@@ -120,11 +120,11 @@ Azure AD が&2; つのオブジェクトのあいまい一致を試行すると�
 3. Azure AD Connect が新しいユーザー アカウントを同期するとき、"ObjectTypeMismatch" エラーが生成されます。
 
 #### <a name="how-to-fix-objecttypemismatch-error"></a>ObjectTypeMismatch エラーを修正する方法
-ObjectTypeMismatch エラーの最も一般的な原因は、異なる種類 (ユーザー、グループ、連絡先など) の&2; つのオブジェクトの ProxyAddresses 属性の値が同じであることです。 ObjectTypeMismatch を修正するには:
+ObjectTypeMismatch エラーの最も一般的な原因は、異なる種類 (ユーザー、グループ、連絡先など) の 2 つのオブジェクトの ProxyAddresses 属性の値が同じであることです。 ObjectTypeMismatch を修正するには:
 
-1. エラーの原因となった、重複する proxyAddresses 属性 (または他の属性) の値を特定します。 また、どの&2; つ \(以上\) のオブジェクトが競合しているかも特定します。 [Azure AD Connect Health for sync](https://aka.ms/aadchsyncerrors) によって生成されるレポートが、2 つのオブジェクトを特定するために役立ちます。
+1. エラーの原因となった、重複する proxyAddresses 属性 (または他の属性) の値を特定します。 また、どの 2 つ \(以上\) のオブジェクトが競合しているかも特定します。 [Azure AD Connect Health for sync](https://aka.ms/aadchsyncerrors) によって生成されるレポートが、2 つのオブジェクトを特定するために役立ちます。
 2. 重複した値をそのまま使用するオブジェクトと、使用すべきでないオブジェクトを決めます。
-3. 重複する値を、その値を使用すべきでないオブジェクトから削除します。 そのオブジェクトのソースであるディレクトリで、この変更を行う必要があることに注意してください。 場合によっては、競合しているオブジェクトの&1; つを削除する必要があります。
+3. 重複する値を、その値を使用すべきでないオブジェクトから削除します。 そのオブジェクトのソースであるディレクトリで、この変更を行う必要があることに注意してください。 場合によっては、競合しているオブジェクトの 1 つを削除する必要があります。
 4. オンプレミス AD で変更を行った場合は、Azure AD Connect で変更を同期します。 Azure AD Connect Health for sync の同期エラーレポートは 30 分ごとに更新され、最新の同期試行のエラーが含まれます。
 
 ## <a name="duplicate-attributes"></a>重複する属性
@@ -157,9 +157,9 @@ Azure AD Connect が新しいオブジェクトの追加または既存のオブ
 #### <a name="how-to-fix-attributevaluemustbeunique-error"></a>AttributeValueMustBeUnique エラーを修正する方法
 AttributeValueMustBeUnique エラーの最も一般的な理由は、2 つのオブジェクトの異なる SourceAnchor \(immutableId\) の ProxyAddresses 属性または UserPrincipalName 属性 (あるいは両方) の値が同じであることです。 AttributeValueMustBeUnique エラーを修正するには、次の手順に従います。
 
-1. エラーの原因となった、重複する proxyAddresses 属性、userPrincipalName 属性、または他の属性の値を特定します。 また、どの&2; つ \(以上\) のオブジェクトが競合しているかも特定します。 [Azure AD Connect Health for sync](https://aka.ms/aadchsyncerrors) によって生成されるレポートが、2 つのオブジェクトを特定するために役立ちます。
+1. エラーの原因となった、重複する proxyAddresses 属性、userPrincipalName 属性、または他の属性の値を特定します。 また、どの 2 つ \(以上\) のオブジェクトが競合しているかも特定します。 [Azure AD Connect Health for sync](https://aka.ms/aadchsyncerrors) によって生成されるレポートが、2 つのオブジェクトを特定するために役立ちます。
 2. 重複した値をそのまま使用するオブジェクトと、使用すべきでないオブジェクトを決めます。
-3. 重複する値を、その値を使用すべきでないオブジェクトから削除します。 そのオブジェクトのソースであるディレクトリで、この変更を行う必要があることに注意してください。 場合によっては、競合しているオブジェクトの&1; つを削除する必要があります。
+3. 重複する値を、その値を使用すべきでないオブジェクトから削除します。 そのオブジェクトのソースであるディレクトリで、この変更を行う必要があることに注意してください。 場合によっては、競合しているオブジェクトの 1 つを削除する必要があります。
 4. オンプレミス AD で変更を行った場合は、エラーを修正するために Azure AD Connect で変更を同期します。
 
 #### <a name="related-articles"></a>関連記事
@@ -180,9 +180,9 @@ a.[サインオン URL] ボックスに、次のパターンを使用して、�
 #### <a name="related-articles"></a>関連記事
 * [Office 365 へのディレクトリ同期を通してユーザーをプロビジョニングするための準備](https://support.office.com/en-us/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
 
-### <a name="datavalidationfailed"></a>DataValidationFailed
+### <a name="federateddomainchangeerror"></a>FederatedDomainChangeError
 #### <a name="description"></a>説明
-これは、ユーザーの UserPrincipalName のサフィックスのフェデレーション ドメインが変更された場合に **"DataValidationFailed"** 同期エラーが発生する特殊なケースです。
+これは、ユーザーの UserPrincipalName のサフィックスがあるフェデレーション ドメインから別のフェデレーション ドメインに変更された場合に **"FederatedDomainChangeError"** 同期エラーが発生する特殊なケースです。
 
 #### <a name="scenarios"></a>シナリオ
 同期されたユーザーで、オンプレミスの UserPrincipalName のサフィックスが、あるフェデレーション ドメインから別のフェデレーション ドメインに変更されました。 たとえば、*UserPrincipalName = bob@contoso.com* が *UserPrincipalName = bob@fabrikam.com* に変更されました。
@@ -191,7 +191,7 @@ a.[サインオン URL] ボックスに、次のパターンを使用して、�
 1. Contoso.com のアカウントである Bob Smith が、新しいユーザーとして UserPrincipalName bob@contoso.com で Active Directory に追加されます。
 2. Bob が Contoso.com の別の部門 Fabrikam.com に移動し、UserPrincipalName が bob@fabrikam.com に変更されます。
 3. contoso.com ドメインと fabrikam.com ドメインは両方とも Azure Active Directory のフェデレーション ドメインです。
-4. Bob の userPrincipalName は更新されず、"DataValidationFailed" 同期エラーが発生します。
+4. Bob の userPrincipalName は更新されず、"FederatedDomainChangeError" 同期エラーが発生します。
 
 #### <a name="how-to-fix"></a>修正方法
 ユーザーの UserPrincipalName サフィックスが bob@**contoso.com** から bob@**fabrikam.com** に更新され、**contoso.com** と **fabrikam.com** のどちらも**フェデレーション ドメイン**の場合、次の手順に従って同期エラーを修正します。

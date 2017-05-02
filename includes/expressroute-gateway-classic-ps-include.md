@@ -24,7 +24,3 @@
 ゲートウェイを削除するには、次のコマンドを使用します。
 
     Remove-AzureVirtualNetworkGateway -GatewayId <Gateway ID>
-
-<!--HONumber=Nov16_HO3-->
-
-

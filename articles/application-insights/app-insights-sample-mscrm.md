@@ -4,18 +4,19 @@ description: "Application Insights を使用して Microsoft Dynamics CRM Online
 services: application-insights
 documentationcenter: 
 author: mazharmicrosoft
-manager: douge
+manager: carmonm
 ms.assetid: 04c66338-687e-49e5-9975-be935f98f156
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2015
+ms.date: 04/16/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
-ms.openlocfilehash: 8a000ecda94edbeab8c0438c63d6b66dc7f0902b
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 948c894cba1b8bb513a26d720cbe433b38353d03
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -32,14 +33,14 @@ ms.openlocfilehash: 8a000ecda94edbeab8c0438c63d6b66dc7f0902b
 
 ### <a name="create-an-application-insights-resource-in-azure"></a>Azure で Application Insights のリソースを作成する
 1. [Microsoft Azure のアカウント](http://azure.com/pricing)を取得します。 
-2. [Azure ポータル](https://portal.azure.com) にサインインし、Application Insights の新しいリソースを追加します。 これは、データを処理し表示する場所になります。
+2. [Azure Portal](https://portal.azure.com) にサインインし、Application Insights の新しいリソースを追加します。 これは、データを処理し表示する場所になります。
    
     ![[+]、[開発者向けサービス]、[Application Insights] をクリックします。](./media/app-insights-sample-mscrm/01.png)
    
     アプリケーションの種類として ASP.NET を選択します。
-3. [クイック スタート] タブを開き、コードのスクリプトを開きます。
+3. [はじめに] ページを開き、[クライアント側アプリケーションの監視と診断] を開きます。
    
-    ![](./media/app-insights-sample-mscrm/03.png)
+    ![Web ページに挿入するためのコード スニペット](./media/app-insights-sample-mscrm/03.png)
 
 **このコードのページは開いたまま** 、別のブラウザー ウィンドウで次の手順を行います。 このコードはすぐに必要になります。 
 
@@ -47,40 +48,40 @@ ms.openlocfilehash: 8a000ecda94edbeab8c0438c63d6b66dc7f0902b
 1. CRM Online インスタンスを開き、管理者権限でログインします。
 2. Microsoft Dynamics CRM で、[設定]、[カスタマイズ]、[システムのカスタマイズ] の順に開きます。
    
-    ![](./media/app-insights-sample-mscrm/04.png)
+    ![Microsoft Dynamics CRM 設定](./media/app-insights-sample-mscrm/04.png)
    
-    ![](./media/app-insights-sample-mscrm/05.png)
+    ![[設定]、[カスタマイズ]](./media/app-insights-sample-mscrm/05.png)
 
-    ![](./media/app-insights-sample-mscrm/06.png)
+    ![[システムのカスタマイズ] オプション](./media/app-insights-sample-mscrm/06.png)
 
 1. JavaScript リソースを作成します。
    
-    ![](./media/app-insights-sample-mscrm/07.png)
+    ![新しい [Web リソース] ダイアログ](./media/app-insights-sample-mscrm/07.png)
    
     名前を付け、[ **スクリプト (JScript)** ] を選択してテキスト エディターを開きます。
    
-    ![](./media/app-insights-sample-mscrm/08.png)
+    ![テキスト エディターを開く](./media/app-insights-sample-mscrm/08.png)
 2. Application Insights からコードをコピーします。 コピーの際はスクリプト タグを無視します。 次のスクリーン ショットを参照してください。
    
-    ![](./media/app-insights-sample-mscrm/09.png)
+    ![インストルメンテーション キーを設定する](./media/app-insights-sample-mscrm/09.png)
    
     コードには Application Insights リソースを識別するインストルメンテーション キーが含まれています。
 3. 保存して発行します。
    
-    ![](./media/app-insights-sample-mscrm/10.png)
+    ![保存して発行する](./media/app-insights-sample-mscrm/10.png)
 
 ### <a name="instrument-forms"></a>フォームをインストルメント化する
 1. Microsoft CRM Online で Account フォームを開きます。
    
-    ![](./media/app-insights-sample-mscrm/11.png)
+    ![[取引先企業] フォーム](./media/app-insights-sample-mscrm/11.png)
 2. フォームのプロパティを開きます。
    
-    ![](./media/app-insights-sample-mscrm/12.png)
+    ![[フォームのプロパティ]](./media/app-insights-sample-mscrm/12.png)
 3. 作成した JavaScript の Web リソースを追加します。
    
-    ![](./media/app-insights-sample-mscrm/13.png)
+    ![[追加] メニュー](./media/app-insights-sample-mscrm/13.png)
    
-    ![](./media/app-insights-sample-mscrm/14.png)
+    ![Web リソースを追加する](./media/app-insights-sample-mscrm/14.png)
 4. 保存し、フォームのカスタマイズ内容を発行します。
 
 ## <a name="metrics-captured"></a>キャプチャされるメトリック
@@ -89,47 +90,47 @@ ms.openlocfilehash: 8a000ecda94edbeab8c0438c63d6b66dc7f0902b
 表示されるデータのサンプルを次に示します。
 
 #### <a name="application-health"></a>アプリケーションの健全性
-![](./media/app-insights-sample-mscrm/15.png)
+![ページ読み込み時間の例](./media/app-insights-sample-mscrm/15.png)
 
-![](./media/app-insights-sample-mscrm/16.png)
+![ページ ビュー グラフの例](./media/app-insights-sample-mscrm/16.png)
 
 ブラウザーの例外:
 
-![](./media/app-insights-sample-mscrm/17.png)
+![ブラウザーの例外グラフ](./media/app-insights-sample-mscrm/17.png)
 
 詳細情報を表示するグラフをクリックします。
 
-![](./media/app-insights-sample-mscrm/18.png)
+![例外リスト](./media/app-insights-sample-mscrm/18.png)
 
 #### <a name="usage"></a>使用法
-![](./media/app-insights-sample-mscrm/19.png)
+![ユーザー、セッション、ページ ビュー](./media/app-insights-sample-mscrm/19.png)
 
-![](./media/app-insights-sample-mscrm/20.png)
+![セッション グラフ](./media/app-insights-sample-mscrm/20.png)
 
-![](./media/app-insights-sample-mscrm/21.png)
+![ブラウザーのバージョン](./media/app-insights-sample-mscrm/21.png)
 
 #### <a name="browsers"></a>ブラウザー
-![](./media/app-insights-sample-mscrm/22.png)
+![ページ読み込み時間の内訳](./media/app-insights-sample-mscrm/22.png)
 
-![](./media/app-insights-sample-mscrm/23.png)
+![ブラウザーのバージョン別のセッション数](./media/app-insights-sample-mscrm/23.png)
 
 #### <a name="geolocation"></a>地理的位置情報
-![](./media/app-insights-sample-mscrm/24.png)
+![国別のセッション数](./media/app-insights-sample-mscrm/24.png)
 
-![](./media/app-insights-sample-mscrm/25.png)
+![国別のセッションとユーザー](./media/app-insights-sample-mscrm/25.png)
 
 #### <a name="inside-page-view-request"></a>内部ページ表示要求
-![](./media/app-insights-sample-mscrm/26.png)
+![ページ ビューの概要](./media/app-insights-sample-mscrm/26.png)
 
-![](./media/app-insights-sample-mscrm/27.png)
+![ページ ビュー イベントの検索](./media/app-insights-sample-mscrm/27.png)
 
-![](./media/app-insights-sample-mscrm/28.png)
+![類似のページ ビュー](./media/app-insights-sample-mscrm/28.png)
 
-![](./media/app-insights-sample-mscrm/29.png)
+![ページ ビュー プロパティ](./media/app-insights-sample-mscrm/29.png)
 
-![](./media/app-insights-sample-mscrm/30.png)
+![セッションごとのページ数](./media/app-insights-sample-mscrm/30.png)
 
-## <a name="sample-code"></a>コード サンプル
+## <a name="sample-code"></a>サンプル コード
 [サンプル コードを参照します](https://dynamicsandappinsights.codeplex.com/)。
 
 ## <a name="power-bi"></a>Power BI
@@ -142,10 +143,4 @@ ms.openlocfilehash: 8a000ecda94edbeab8c0438c63d6b66dc7f0902b
 * [Application Insights とは何か?](app-insights-overview.md)
 * [Web ページ向けの Application Insights](app-insights-javascript.md)
 * [その他のサンプルとチュートリアル](app-insights-code-samples.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

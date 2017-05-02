@@ -16,8 +16,3 @@
 5. ポータルで接続が作成されたことを確認します。 これで、ロジック アプリを作成し、その中で GitHub を使用することができます。   
    ![](./media/connectors-create-api-github/github-5.png)   
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

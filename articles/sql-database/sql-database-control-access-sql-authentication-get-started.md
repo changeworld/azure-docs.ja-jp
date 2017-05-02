@@ -9,7 +9,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 67797b09-f5c3-4ec2-8494-fe18883edf7f
 ms.service: sql-database
-ms.custom: authentication and authorization
+ms.custom: security-access
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 02/17/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: a5084b62a309dba433e2b363322b9a9c362bcdc3
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 1bd474cc547ca2f6aa32944c1a1e5a92f917444a
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -47,7 +47,7 @@ ms.lasthandoff: 03/10/2017
 
 * **SQL Server Management Studio**。 最新バージョンの SQL Server Management Studio (SSMS) は、「[SQL Server Management Studio (SSMS) のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)」からダウンロードしてインストールすることができます。 新機能が継続的にリリースされているため、Azure SQL Database に接続する場合は、常に最新バージョンの SSMS を使用してください。
 
-* **基本サーバーおよびデータベース**。このチュートリアルで使用するサーバーと&2; つのデータベースをインストールして構成するには、**[Deploy to Azure (Azure へのデプロイ)]** ボタンをクリックします。 ボタンをクリックすると **[Deploy from a template (テンプレートからのデプロイ)]** ブレードが開くので、新しいリソース グループを作成し、作成予定の新しいサーバーの **[管理者ログイン パスワード]** を指定します。
+* **基本サーバーおよびデータベース**。このチュートリアルで使用するサーバーと 2 つのデータベースをインストールして構成するには、**[Deploy to Azure (Azure へのデプロイ)]** ボタンをクリックします。 ボタンをクリックすると **[Deploy from a template (テンプレートからのデプロイ)]** ブレードが開くので、新しいリソース グループを作成し、作成予定の新しいサーバーの **[管理者ログイン パスワード]** を指定します。
 
    [![ダウンロード](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fsqldbtutorial.blob.core.windows.net%2Ftemplates%2Fsqldbgetstarted.json)
 
@@ -58,11 +58,6 @@ ms.lasthandoff: 03/10/2017
 1. 任意のブラウザーを開き、 [Azure ポータル](https://portal.azure.com/)に接続します。
 2. [Azure ポータル](https://portal.azure.com/)にサインインします。
 3. **[サインイン]** ページが表示されたら、サブスクリプションの資格情報を入力します。
-   
-   ![[サインイン]](./media/sql-database-get-started-portal/login.png)
-
-
-<a name="create-logical-server-bk"></a>
 
 ## <a name="view-logical-server-security-information-in-the-azure-portal"></a>Azure Portal で論理サーバーのセキュリティ情報を確認する
 
@@ -268,17 +263,17 @@ ms.lasthandoff: 03/10/2017
 
 2. **[サーバーへの接続]** ウィンドウで、サーバー名と認証情報を入力し、SQL Server 認証と **user1** アカウントを使用して接続します。 
     
-   ![ファイアウォール規則なしで user1 として接続する&1;](./media/sql-database-control-access-sql-authentication-get-started/connect-user1_no_rule1.png)
+   ![ファイアウォール規則なしで user1 として接続する 1](./media/sql-database-control-access-sql-authentication-get-started/connect-user1_no_rule1.png)
 
-3. **[オプション]** をクリックして接続先のデータベースを指定し、**[接続のプロパティ]** タブの **[データベースへの接続]** ボックスの一覧で「**sqldbtutorialdb**」と入力します。
+3. **[サーバーへの接続]** ダイアログ ボックスの **[オプション]** をクリックして接続先のデータベースを指定し、**[接続のプロパティ]** タブの **[データベースへの接続]** ボックスの一覧で「**sqldbtutorialdb**」と入力します。
    
-   ![ファイアウォール規則なしで user1 として接続する&2;](./media/sql-database-control-access-sql-authentication-get-started/connect-user1_no_rule2.png)
+   ![ファイアウォール規則なしで user1 として接続する 2](./media/sql-database-control-access-sql-authentication-get-started/connect-user1_no_rule2.png)
 
 4. **[接続]**をクリックします。 
 
    SQL Database への接続元のコンピューターにデータベースへのアクセスを有効にするファイアウォール規則がないことを示すダイアログ ボックスが表示されます。 
 
-   ![ファイアウォール規則なしで user1 として接続する&4;](./media/sql-database-control-access-sql-authentication-get-started/connect-user1_no_rule4.png)
+   ![ファイアウォール規則なしで user1 として接続する 4](./media/sql-database-control-access-sql-authentication-get-started/connect-user1_no_rule4.png)
 
 
 5. 手順 8. で使用するために、このダイアログ ボックスのクライアント IP アドレスをコピーします。
@@ -301,15 +296,15 @@ ms.lasthandoff: 03/10/2017
 
 10. 正常に接続した後、オブジェクト エクスプローラーで **[データベース]** を展開します。 **user1** は **sqldbtutorialdb** データベースの表示のみが可能であることに注意してください。
 
-   ![ファイアウォール規則で user1 として接続する&1;](./media/sql-database-control-access-sql-authentication-get-started/connect-user1_rule1.png)
+   ![ファイアウォール規則で user1 として接続する 1](./media/sql-database-control-access-sql-authentication-get-started/connect-user1_rule1.png)
 
-11. **[sqldbtutorialdb]**、**[テーブル]** の順に展開します。 user1 には、**SalesLT.ProductCategory** テーブルという&1; つのテーブルを表示するアクセス許可しかないことがわかります。 
+11. **[sqldbtutorialdb]**、**[テーブル]** の順に展開します。 user1 には、**SalesLT.ProductCategory** テーブルという 1 つのテーブルを表示するアクセス許可しかないことがわかります。 
 
-   ![user1 として接続してオブジェクトを表示する&1;](./media/sql-database-control-access-sql-authentication-get-started/connect-user1_view_objects1.png)
+   ![user1 として接続してオブジェクトを表示する 1](./media/sql-database-control-access-sql-authentication-get-started/connect-user1_view_objects1.png)
 
 ## <a name="create-a-new-user-as-dbowner-and-a-database-level-firewall-rule"></a>db_owner としての新しいユーザーとデータベースレベルのファイアウォール規則を作成する
 
-この手順では、db_owner データベース ロール アクセス許可があるユーザーを別のデータベースに作成し、この別のデータベースにデータベースレベルのファイアウォールを作成する方法を示します。 **db_owner** ロールのメンバーシップが付与されたこの新しいユーザーは、この&1; つのデータベースに対する接続と管理のみが可能です。
+この手順では、db_owner データベース ロール アクセス許可があるユーザーを別のデータベースに作成し、この別のデータベースにデータベースレベルのファイアウォールを作成する方法を示します。 **db_owner** ロールのメンバーシップが付与されたこの新しいユーザーは、この 1 つのデータベースに対する接続と管理のみが可能です。
 
 1. サーバー管理者アカウントを使用して、SQL Database への接続を備えたコンピューターに切り替えます。
 2. **blankdb** データベースに接続しているクエリ ウィンドウを開き、次のステートメントを実行して、blankdb データベースに blankdbadmin というユーザーを作成します。

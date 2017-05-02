@@ -20,8 +20,3 @@
     perl Unregister-ASRComponent.pl -IPAddress <IP_of_Process_Server> -Component PS
     ```
 4. システムからプロセス サーバーの詳細が消去されます。
-
-
-<!--HONumber=Feb17_HO1-->
-
-

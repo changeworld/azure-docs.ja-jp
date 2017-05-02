@@ -12,36 +12,47 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 01/18/2017
+ms.date: 04/10/2017
 ms.author: eugenesh
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 66e6fec16aab7764b05b616efc0fccbfb2d0595e
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 9b45ab6b86ab0a336b2a4b90e702fa4ff098d41c
+ms.lasthandoff: 04/10/2017
 
 ---
 
 # <a name="indexing-azure-table-storage-with-azure-search"></a>Azure Table Storage のインデックスを Azure Search で作成する
-この記事では、Azure Search を使用して、Azure Table Storage に格納されているデータのインデックスを使用する方法を示します。 Azure Search の新しいテーブル インデクサーを使用すると、迅速かつシームレスに作成できます。
+この記事では、Azure Search を使用して、Azure Table Storage に格納されているデータのインデックスを使用する方法を示します。
 
 ## <a name="setting-up-azure-table-indexing"></a>Azure テーブルのインデックス作成の設定
-Azure テーブルのインデクサーの設定と構成は、「[インデクサーの操作](https://msdn.microsoft.com/library/azure/dn946891.aspx)」の説明に従い、Azure Search REST API を使用して**インデクサー**と**データ ソース**を作成、管理することによって行います。 [バージョン 2.0-preview](https://msdn.microsoft.com/library/mt761536%28v=azure.103%29.aspx) の .NET SDK を使用することもできます。 今後、Azure ポータルにテーブル インデックス作成機能が追加される予定です。
 
-データ ソースでは、インデックスを作成するデータ、データにアクセスするために必要な資格情報、および Azure Search がデータの変更 (新しい行、変更された行、削除された行) を効率よく識別できるようにするポリシーを指定します。
+Azure Table インデクサーを設定するには、以下を使用します。
 
-インデクサーはデータ ソースからデータを読み取って、対象となる検索インデックスに読み込みます。
+* [Azure ポータル](https://ms.portal.azure.com)
+* Azure Search [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
+* Azure Search [.NET SDK](https://aka.ms/search-sdk)
 
-テーブル インデックスを設定するには、次の手順に従います。
+ここでは、REST API を使用したフローについて説明します。 
 
-1. データ ソースを作成する
-   * `type` パラメーターを `azuretable` に設定します。
-   * ストレージ アカウントの接続文字列を `credentials.connectionString` パラメーターとして渡します。 詳しくは、後述の「[資格情報を指定する方法](#Credentials)」をご覧ください。
-   * `container.name` パラメーターを使用して、テーブル名を指定します。
-   * 必要に応じて `container.query` パラメーターを使用して、クエリを指定します。 可能な場合は、PartitionKey でフィルターを使用して、パフォーマンスを最大限に高めます。他のクエリを実行すると、フル テーブル スキャンが発生し、大きなテーブルの場合はパフォーマンスが低下する可能性があります。
-2. インデックスを作成するテーブルの列に対応するスキーマを使用して検索インデックスを作成します。
-3. データ ソースを検索インデックスに接続することによって、インデクサーを作成します。
+### <a name="step-1-create-a-data-source"></a>手順 1: データ ソースを作成する
 
-### <a name="create-data-source"></a>データ ソースの作成
+データ ソースでは、インデックスを作成するデータ、データにアクセスするために必要な資格情報、および Azure Search がデータの変更を効率よく識別できるようにするポリシーを指定します。
+
+Table インデックス作成の場合は、次のプロパティがデータ ソースに必要です。
+
+- **name** は、Search サービス内のデータ ソースの一意の名前です。
+- **type** は `azuretable` である必要があります。
+- **credentials** パラメーターは、ストレージ アカウントの接続文字列が含まれます。 詳しくは、「[資格情報を指定する方法](#Credentials)」のセクションをご覧ください。
+- **container** はテーブル名とオプションのクエリを設定します。
+    - `name` パラメーターを使用して、テーブル名を指定します。
+    - 必要に応じて `query` パラメーターを使用して、クエリを指定します。 
+
+> [!IMPORTANT] 
+> 可能な場合は、パフォーマンス向上のために PartitionKey でフィルターを使用してください。 その他のクエリはフル テーブル スキャンを実行するため、規模の大きなテーブルではパフォーマンスが下がります。 詳しくは、「[パフォーマンスに関する考慮事項](#Performance)」のセクションをご覧ください。
+
+
+データ ソースを作成する方法を次に示します。
+
     POST https://[service name].search.windows.net/datasources?api-version=2016-09-01
     Content-Type: application/json
     api-key: [admin key]
@@ -53,7 +64,7 @@ Azure テーブルのインデクサーの設定と構成は、「[インデク�
         "container" : { "name" : "my-table", "query" : "PartitionKey eq '123'" }
     }   
 
-データ ソース作成 API の詳細については、「 [データ ソースの作成](https://msdn.microsoft.com/library/azure/dn946876.aspx)」をご覧ください。
+データ ソース作成 API の詳細については、「 [データ ソースの作成](https://docs.microsoft.com/rest/api/searchservice/create-data-source)」をご覧ください。
 
 <a name="Credentials"></a>
 #### <a name="how-to-specify-credentials"></a>資格情報を指定する方法 ####
@@ -69,7 +80,11 @@ Shared Access Signature について詳しくは、「[Shared Access Signature �
 > [!NOTE]
 > SAS の資格情報を使用する場合は、その有効期限が切れないように、データ ソースの資格情報を更新された署名で定期的に更新する必要があります。 SAS の資格情報の有効期限が切れると、インデクサーは「`Credentials provided in the connection string are invalid or have expired.`」のようなエラー メッセージで失敗します。  
 
-### <a name="create-index"></a>インデックスの作成
+### <a name="step-2-create-an-index"></a>手順 2: インデックスを作成する
+インデックスでは、検索に使用する、ドキュメント内のフィールド、属性、およびその他の構成要素を指定します。
+
+インデックスを作成する方法を次に示します。
+
     POST https://[service name].search.windows.net/indexes?api-version=2016-09-01
     Content-Type: application/json
     api-key: [admin key]
@@ -82,10 +97,12 @@ Shared Access Signature について詳しくは、「[Shared Access Signature �
           ]
     }
 
-インデックス作成 API の詳細については、「 [Create Index](https://msdn.microsoft.com/library/dn798941.aspx)
+インデックスの作成方法について詳しくは、[インデックスの作成](https://docs.microsoft.com/rest/api/searchservice/create-index)に関する記事をご覧ください。
 
-### <a name="create-indexer"></a>インデクサーの作成
-最後に、データ ソースとターゲット インデックスとを参照するインデクサーを作成します。 次に例を示します。
+### <a name="step-3-create-an-indexer"></a>手順 3: インデクサーを作成する
+インデクサーはデータ ソースをターゲットの検索インデックスに接続し、データ更新を自動化するスケジュールを提供します。 
+
+インデックスとデータ ソースを作成したら、インデクサーを作成できます。
 
     POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
     Content-Type: application/json
@@ -98,17 +115,17 @@ Shared Access Signature について詳しくは、「[Shared Access Signature �
       "schedule" : { "interval" : "PT2H" }
     }
 
-インデクサー作成 API の詳細については、「 [インデクサーの作成](https://msdn.microsoft.com/library/azure/dn946899.aspx)」をご覧ください。
+このインデクサーは 2 時間ごとに実行されます (スケジュールの間隔が "PT2H" に設定されています)。 インデクサーを 30 分ごとに実行するには、間隔を "PT30M" に設定します。 サポートされている最短の間隔は 5 分です。 スケジュールは省略可能です。省略した場合、インデクサーは作成時に一度だけ実行されます。 ただし、いつでもオンデマンドでインデクサーを実行できます。   
 
-これですべて完了です。是非お試しください。
+インデクサー作成 API の詳細については、「 [インデクサーの作成](https://docs.microsoft.com/rest/api/searchservice/create-indexer)」をご覧ください。
 
 ## <a name="dealing-with-different-field-names"></a>さまざまなフィールド名の操作
-既存のインデックス内のフィールド名が、テーブルのプロパティ名と異なることは少なくありません。 テーブルのプロパティ名は、 **フィールド マッピング** を使用して、検索インデックス内のフィールド名に対応付けることができます。 フィールド マッピングの詳細については、「 [データ ソースと検索インデックスの橋渡し役としての Azure Search インデクサー フィールド マッピング](search-indexer-field-mappings.md)」を参照してください。
+既存のインデックス内のフィールド名が、テーブルのプロパティ名と異なることがあります。 テーブルのプロパティ名は、 **フィールド マッピング** を使用して、検索インデックス内のフィールド名に対応付けることができます。 フィールド マッピングの詳細については、「 [データ ソースと検索インデックスの橋渡し役としての Azure Search インデクサー フィールド マッピング](search-indexer-field-mappings.md)」を参照してください。
 
 ## <a name="handling-document-keys"></a>ドキュメント キーの処理
 Azure Search では、ドキュメントがそのキーによって一意に識別されます。 それぞれの検索インデックスには、 `Edm.String`型のキー フィールドが 1 つだけ必要です。 キー フィールドは、インデックスに追加するドキュメントごとに必要です (実際のところ、これは唯一の必須フィールドです)。
 
-テーブル行には複合キーがあるため、Azure Search では、パーティション キーと行キーの値が連結された `Key` と呼ばれる合成フィールドが生成されます。 たとえば、行の PartitionKey が `PK1` で、RowKey が `RK1` の場合、`Key` フィールドの値は `PK1RK1` になります。
+テーブル行には複合キーがあるため、Azure Search では、パーティション キーと行キーの値が連結された `Key` と呼ばれる合成フィールドが生成されます。 たとえば、行の PartitionKey が `PK1` で、RowKey が `RK1` の場合、`Key` フィールドの値は `PK1RK1` です。
 
 > [!NOTE]
 > `Key` 値には、ドキュメント キーでは無効な文字、たとえばダッシュを含めることができます。 無効な文字を扱うには、 `base64Encode` [フィールド マッピング関数](search-indexer-field-mappings.md#base64EncodeFunction)を使用します。 これを行う場合は、Lookup などの API 呼び出しでドキュメント キーを渡す際に、必ず URL の安全な Base64 エンコードを使用する点にも注意してください。
@@ -118,7 +135,7 @@ Azure Search では、ドキュメントがそのキーによって一意に識�
 ## <a name="incremental-indexing-and-deletion-detection"></a>インデックスの増分作成と削除の検出
 スケジュールに従って実行するようにテーブルのインデクサーを設定すると、行の `Timestamp` 値に従って、新しい行または更新された行のみでインデックスが再作成されます。 変更検出ポリシーを独自に指定する必要はありません。インデックスの増分作成は自動的に有効になります。
 
-特定のドキュメントをインデックスから削除するよう指定する場合は、論理削除方式を使用できます。つまり、行を削除するのではなく、その行が削除されたことを示すためのプロパティを追加し、データソースで論理削除の検出ポリシーを設定します。 たとえば、以下に示すポリシーでは、プロパティ `IsDeleted` の値が `"true"` であるとき、行が削除されたと見なされます。
+一部のドキュメントをインデックスを削除する必要があることを示すには、論理的な削除を使用できます。 行を削除する代わりに、プロパティを追加してそれが削除されていることを示し、データソースに論理的な削除のポリシーを設定します。 たとえば、次のポリシーは値 `"true"` が指定されたプロパティ `IsDeleted` がある行を削除されているものと見なします。
 
     PUT https://[service name].search.windows.net/datasources?api-version=2016-09-01
     Content-Type: application/json
@@ -128,11 +145,29 @@ Azure Search では、ドキュメントがそのキーによって一意に識�
         "name" : "my-table-datasource",
         "type" : "azuretable",
         "credentials" : { "connectionString" : "<your storage connection string>" },
-        "container" : { "name" : "table name", "query" : "query" },
+        "container" : { "name" : "table name", "query" : "<query>" },
         "dataDeletionDetectionPolicy" : { "@odata.type" : "#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy", "softDeleteColumnName" : "IsDeleted", "softDeleteMarkerValue" : "true" }
     }   
 
+<a name="Performance"></a>
+## <a name="performance-considerations"></a>パフォーマンスに関する考慮事項
+
+既定では、Azure Search は `Timestamp >= HighWaterMarkValue` というクエリ フィルターを使用します。 Azure のテーブルの `Timestamp` フィールドにはセカンダリ インデックスがないため、この種類のクエリはフル テーブル スキャンを必要とし、規模の大きなテーブルでは速度が低下します。
+
+
+テーブルのインデックス作成のパフォーマンスを向上させる可能性のある 2 つの方法を紹介します。 どちらの方法もテーブルのパーティションを使用します。 
+
+- データを複数のパーティション範囲に自然に分割できる場合は、各パーティション範囲にデータソースと対応するインデクサーを作成します。 これで各インデクサーが特定のパーティション範囲のみを処理するようになるため、クエリのパフォーマンスが向上します。 インデックスを作成する必要があるデータに固定のパーティションが少数ある場合、各インデクサーはパーティションのスキャンのみを実行するため、パフォーマンスがより改善します。 たとえば、キーが `000` から `100` の範囲のパーティションを処理するデータソースを作成するには、次のようなクエリを使用します。 
+    ```
+    "container" : { "name" : "my-table", "query" : "PartitionKey ge '000' and PartitionKey lt '100' " }
+    ```
+
+- データが時間によって分割されている (新しいパーティションを毎日または毎週作成するなどの) 場合は、次の方法を検討してください。 
+    - `(PartitionKey ge <TimeStamp>) and (other filters)` の形式のクエリを使用します。 
+    - インデクサーの進行状況を [Get Indexer Status API](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) を使用して監視し、直近の成功した高基準値に基づいてクエリの `<TimeStamp>` 条件を定期的に更新します。 
+    - この方法では、全インデックスの再作成をトリガーする必要がある場合は、インデクサーのリセットに加えてデータソース クエリをリセットする必要があります。 
+
 
 ## <a name="help-us-make-azure-search-better"></a>Azure Search の品質向上にご協力ください
-ご希望の機能や品質向上のアイデアがありましたら、 [UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search/)にぜひお寄せください。
+ご希望の機能や品質向上のアイデアがありましたら、[UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search/)にぜひお寄せください。
 

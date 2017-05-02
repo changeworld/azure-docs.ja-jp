@@ -18,6 +18,7 @@
 ### [Web アプリ - ランタイム](app-insights-java-live.md)
 ### [Docker アプリ](app-insights-docker.md)
 
+
 ## Web ページの監視
 ### [JavaScript](app-insights-javascript.md)
 
@@ -75,6 +76,7 @@
 #### [ダッシュボード](app-insights-dashboards.md)
 #### [Search](app-insights-diagnostic-search.md)
 #### [メトリック](app-insights-metrics-explorer.md)
+#### [ライブ ストリーム](app-insights-live-stream.md)
 
 #### [アプリケーション マップ](app-insights-app-map.md)
 #### [HockeyApp データ](app-insights-hockeyapp-bridge-app.md)
@@ -132,6 +134,14 @@
 ## [Java](/java/api/com.microsoft.applicationinsights)
 ## [JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 ## [REST ()](https://dev.applicationinsights.io/)
+## [データ モデル](application-insights-data-model.md)
+### [要求](application-insights-data-model-request-telemetry.md)
+### [依存関係](application-insights-data-model-dependency-telemetry.md)
+### [例外](application-insights-data-model-exception-telemetry.md)
+### [トレース](application-insights-data-model-trace-telemetry.md)
+### [Event](application-insights-data-model-event-telemetry.md)
+### [メトリック](application-insights-data-model-metric-telemetry.md)
+## [テレメトリの関連付け](application-insights-correlation.md)
 
 # リソース
 

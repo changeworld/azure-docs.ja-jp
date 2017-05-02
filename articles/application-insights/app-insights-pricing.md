@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/17/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 3f0c890056c2ee00151ebc4cc74106368a56ba2f
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 229dd21f3ab1ae716cd49611e720450ae5939eb8
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -123,9 +123,16 @@ Application Insights の課金は Azure の課金内容に加えられます。 
 * [ApplicationInsights.config を編集](app-insights-configuration-with-applicationinsights-config.md)し、不要なコレクション モジュールを無効にします。 たとえば、パフォーマンス カウンターや依存関係のデータが重要ではないと判断した場合などに検討します。
 * テレメトリを分割して、インストルメンテーション キーを分割します。 
 * 事前集計メトリック。 TrackMetric への呼び出しをアプリに配置した場合、平均計算と測定のバッチの標準偏差を受け入れるオーバーロードを使用して、トラフィックを減らすことができます。 また、 [事前集計パッケージ](https://www.myget.org/gallery/applicationinsights-sdk-labs)を使用することもできます。
-* 最後に、日次ボリューム上限を減らして収集するデータを制限できますが、そうするとその日の残りのデータが失われます。 上限を変更するには、**[機能と価格設定]**、**[データ管理]** の順に開きます。
 
-    ![テレメトリの日次ボリューム上限の調整](./media/app-insights-pricing/daily-cap.png) 
+## <a name="managing-the-maximum-daily-data-volume"></a>最大日次データ ボリュームの管理
+
+日次ボリューム上限を使用して、収集されるデータを制限できますが、上限に達した場合、アプリケーションから送信されるその日の残りのすべてのテレメトリが失われます。 アプリケーションが日次上限に達すると、その後のアプリケーションの正常性とパフォーマンスを追跡できなくなるため、上限に達しないようにすることを**お勧めします**。 
+
+代わりに、[サンプリング](app-insights-sampling.md) を使用してデータ ボリュームを調整し、日次上限は、アプリケーションが予想以上に大量のテレメトリを送信し始めた場合の「最後の手段」としてのみ使用するようにします。 
+
+日次上限を変更するには、**[機能と価格設定]**、**[データ管理]** の順に開きます。
+
+![テレメトリの日次ボリューム上限の調整](./media/app-insights-pricing/daily-cap.png) 
 
 ## <a name="sampling"></a>サンプリング
 [サンプリング](app-insights-sampling.md) は、テレメトリがアプリに送信される速度を低下させる一方で、診断検索中に関連イベントを見つける機能を保持すると共に、正しいイベント数を保持する方法です。 

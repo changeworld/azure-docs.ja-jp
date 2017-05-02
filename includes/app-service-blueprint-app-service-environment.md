@@ -9,8 +9,3 @@
 * [App Service Environment のカスタム構成設定 (PCI コンプライアンス設定を含む)](../articles/app-service-web/app-service-app-service-environment-custom-settings.md)
 * [App Service Environment での高密度アプリ ホスティング](../articles/app-service/app-service-high-density-hosting.md#recommended-configuration-for-high-density-hosting)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

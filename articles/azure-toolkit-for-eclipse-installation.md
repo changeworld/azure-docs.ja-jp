@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/14/2017
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
-ms.openlocfilehash: 5bb67803be0c9cb2fa21545eaee1d26b85bae3c5
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 31582a87354bf915f058090add02d837f835a77c
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -68,13 +69,15 @@ Azure Toolkit for Eclipse は、Eclipse 開発環境を使って Azure アプリ
 Azure Toolkits for Java IDE の詳細については、次のリンクをご覧ください。
 
 * [Azure Toolkit for Eclipse]
-  * *Azure Toolkit for Eclipse のインストール (この記事）*
-  * [Eclipse で Azure 用の Hello World Web アプリを作成する]
   * [Azure Toolkit for Eclipse の新機能]
+  * *Azure Toolkit for Eclipse のインストール (この記事）*
+  * [Azure Toolkit for Eclipse のサインイン手順]
+  * [Eclipse で Azure 用の Hello World Web アプリを作成する]
 * [Azure Toolkit for IntelliJ]
-  * [Azure Toolkit for IntelliJ のインストール]
-  * [IntelliJ で Azure 用の Hello World Web アプリを作成する]
   * [Azure Toolkit for IntelliJ の新機能]
+  * [Azure Toolkit for IntelliJ のインストール]
+  * [Azure Toolkit for IntelliJ のサインイン手順]
+  * [IntelliJ で Azure 用の Hello World Web アプリを作成する]
 
 Java での Azure の使用の詳細については、 [Azure Java デベロッパー センター]を参照してください。
 
@@ -86,6 +89,8 @@ Java での Azure の使用の詳細については、 [Azure Java デベロッ�
 [IntelliJ で Azure 用の Hello World Web アプリを作成する]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
 [Installing the Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-installation.md
 [Azure Toolkit for IntelliJ のインストール]: ./azure-toolkit-for-intellij-installation.md
+[Azure Toolkit for Eclipse のサインイン手順]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
+[Azure Toolkit for IntelliJ のサインイン手順]: ./azure-toolkit-for-intellij-sign-in-instructions.md
 [Azure Toolkit for Eclipse の新機能]: ./azure-toolkit-for-eclipse-whats-new.md
 [Azure Toolkit for IntelliJ の新機能]: ./azure-toolkit-for-intellij-whats-new.md
 
@@ -101,9 +106,4 @@ Java での Azure の使用の詳細については、 [Azure Java デベロッ�
 [06]: ./media/azure-toolkit-for-eclipse-installation/eclipse-installation-06.png
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh690946.aspx -->
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

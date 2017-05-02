@@ -14,12 +14,7 @@
    
     ![手動バックアップの監視](./media/storsimple-create-manual-backup/HCS_CreateManualBackup2-include.png)
 5. バックアップ ジョブが完了したら、 **[バックアップ カタログ]** タブに移動します。
-6. フィルター選択項目を適切なデバイス、バックアップ ポリシー、および時間範囲に設定します。 フィルターを設定したら、チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-create-manual-backup/HCS_CheckIcon-include.png)  をクリックします。
+6. フィルター選択項目を適切なデバイス、バックアップ ポリシー、および時間範囲に設定します。 フィルターを設定したら、チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-create-manual-backup/HCS_CheckIcon-include.png) をクリックします。
    
    カタログに表示されているバックアップ セットの一覧に、そのバックアップが表示されます。
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

@@ -12,8 +12,3 @@ Azure Redis Cache 構成の制限については、「[既定の Redis サーバ
 
 Azure Redis Cache インスタンスの構成と管理は Microsoft によって行われるため、すべての Redis コマンドが Azure Redis Cache でサポートされるわけではありません。 詳細については、[Azure Redis Cache でサポートされない Redis コマンド]((redis-cache/cache-configure.md#redis-commands-not-supported-in-azure-redis-cache) を参照してください。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

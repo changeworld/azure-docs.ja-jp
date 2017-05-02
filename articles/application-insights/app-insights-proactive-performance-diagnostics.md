@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 63c901529b81c75f46f1b21219054817c148063a
-ms.openlocfilehash: 1c46c40b09ca1923190d3c7109d25bd7525cb577
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 843a3cafd5a00dd4b4de04a43f18d58e60a48b29
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -58,7 +59,7 @@ ms.openlocfilehash: 1c46c40b09ca1923190d3c7109d25bd7525cb577
 
   * まだありません。 ただし、次のことができます。
   * メトリックがしきい値を超えたときに通知する[アラートを設定](app-insights-alerts.md)する。
-  * 自分で分析できるように、[データベース](app-insights-code-sample-export-sql-stream-analytics.md)、[PowerBI](app-insights-export-power-bi.md)、または[その他](app-insights-code-sample-export-telemetry-sql-database.md)のツールに、[テレメトリをエクスポート](app-insights-export-telemetry.md)する。
+  * 自分で分析できるように、[データベース](app-insights-code-sample-export-sql-stream-analytics.md)または [PowerBI](app-insights-export-power-bi.md) に[テレメトリをエクスポート](app-insights-export-telemetry.md)する。
 * *どのくらいの頻度で分析は実行されますか。*
 
   * 前日のテレメトリの分析が毎日実行されます。
@@ -104,7 +105,7 @@ Web サイト ユーザーにとって最大の不満の 1 つは、自らの経
 ### <a name="improve-slow-pages"></a>表示が遅いページの改善
 サーバーの応答およびページ読み込み時間を短縮するためのアドバイスは Web に多数掲載されていますが、ここではその一部を取り上げます。 把握済みかもしれませんがいくつかのヒントを参考までに以下に示します。
 
-* ファイルのサイズが大きいため読み込みに時間がかかる: スクリプトとその他の部分を非同期に読み込みます。 スクリプトのバンドルを使用します。 メイン ページをウィジェットに分割し、データを別々に読み込みます。 長いテーブルに対して古いプレーンな HTML が送信されない: スクリプトを使用してデータを JSON またはその他のコンパクトな形式で要求し、所定のテーブルに入力します。 このようなすべてにおいて有効な優れたフレームワークがあります  (これらはまた、当然ながら、大きなスクリプトを伴います)。
+* ファイルのサイズが大きいため読み込みに時間がかかる: スクリプトとその他の部分を非同期に読み込みます。 スクリプトのバンドルを使用します。 メイン ページをウィジェットに分割し、データを別々に読み込みます。 長いテーブルに対して古いプレーンな HTML が送信されない: スクリプトを使用してデータを JSON またはその他のコンパクトな形式で要求し、所定のテーブルに入力します。 このようなすべてにおいて有効な優れたフレームワークがあります (これらはまた、当然ながら、大きなスクリプトを伴います)。
 * サーバーの依存関係が低速: コンポーネントの地理的な場所について検討してください。 たとえば、Azure を使用している場合、Web サーバーとデータベースが同じリージョンにあることを確認します。 クエリで必要以上の情報が取得されませんか。 キャッシュまたはバッチは役に立ちますか。
 * 容量の問題: 応答時間と要求数のサーバー メトリックを確認してください。 応答時間のピークと要求数のピークが合わない場合は、サーバーが拡大されている可能性があります。
 
@@ -136,9 +137,4 @@ Web サイト ユーザーにとって最大の不満の 1 つは、自らの経
 
 * [手動で構成するメトリックのアラート](app-insights-alerts.md)
 * [可用性 Web テスト](app-insights-monitor-web-app-availability.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

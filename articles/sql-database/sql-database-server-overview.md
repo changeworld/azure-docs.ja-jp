@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: servers
+ms.custom: DBs and servers
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,8 +16,9 @@ ms.workload: data-management
 ms.date: 02/01/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 79a9e72d29b5522dc3960b79bae7876f21acb4c5
-ms.openlocfilehash: 07181e5d35703cddf8a896badd45e7485c9e07a2
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 430af168e1bd19c15170996247bc7c7a62fe52d4
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -40,11 +41,11 @@ Azure SQL Database 論理サーバーは、
 - データベース アクセスの接続エンドポイント (<serverName>.database.windows.net) を提供します
 - マスター データベースに接続することで、含まれているリソースに関するメタデータへの DMV 経由のアクセスを提供します 
 - データベースに適用される管理ポリシーの範囲 (ログイン、ファイアウォール、監査、脅威の検出など) を提供します 
-- 親サブスクリプション内のクォータによって制限されます (サブスクリプションあたり&6; サーバー - [サブスクリプションの制限についてはここを参照してください](../azure-subscription-service-limits.md))
-- 含まれるリソースのデータベースのクォータと DTU クォータの範囲 (V12 では 45000 DTU など) を提供します
-- 含まれるリソース (最新バージョンは V12) で有効な機能のバージョン管理の範囲です
+- 親サブスクリプション内のクォータによって制限されます (サブスクリプションあたり 6 サーバー - [サブスクリプションの制限についてはここを参照してください](../azure-subscription-service-limits.md))
+- 含まれるリソースのデータベースのクォータと DTU クォータの範囲 (45000 DTU など) を提供します
+- 含まれるリソースで有効な機能のバージョン管理の範囲です 
 - サーバー レベルのプリンシパルのログインによってサーバー上のすべてのデータベースを管理できます
-- サーバー上の&1; つまたは複数のデータベースへのアクセスが付与された、オンプレミスの SQL Server のインスタンスでのログインと同様のログインを含めることができます。また、限定された管理者権限を付与できます。 詳細については、[ログイン](sql-database-manage-logins.md)に関する記事を参照してください。
+- サーバー上の 1 つまたは複数のデータベースへのアクセスが付与された、オンプレミスの SQL Server のインスタンスでのログインと同様のログインを含めることができます。また、限定された管理者権限を付与できます。 詳細については、[ログイン](sql-database-manage-logins.md)に関する記事を参照してください。
 
 ## <a name="how-do-i-connect-and-authenticate-to-an-azure-sql-database-logical-server"></a>Azure SQL Database 論理サーバーに接続して認証するにはどうすればよいですか。
 
@@ -55,7 +56,7 @@ Azure SQL Database 論理サーバーは、
 
 ## <a name="what-collations-are-supported"></a>どのような照合順序がサポートされていますか。
 
-(マスター データベースを含む) Microsoft Azure SQL Database で使用される既定のデータベース照合順序は **SQL_LATIN1_GENERAL_CP1_CI_AS** です。**LATIN1_GENERAL** は英語 (米国)、**CP1** はコード ページ 1252、**CI** は大文字と小文字の区別なし、**AS** はアクセントの区別ありを表しています。 V12 データベースの作成後の照合順序の変更はお勧めしません。 照合順序の詳細については、「[COLLATE (Transact-SQL)](https://msdn.microsoft.com/library/ms184391.aspx)」を参照してください。
+(マスター データベースを含む) Microsoft Azure SQL Database で使用される既定のデータベース照合順序は **SQL_LATIN1_GENERAL_CP1_CI_AS** です。**LATIN1_GENERAL** は英語 (米国)、**CP1** はコード ページ 1252、**CI** は大文字と小文字の区別なし、**AS** はアクセントの区別ありを表しています。 データベースの作成後の照合順序の変更はお勧めしません。 照合順序の詳細については、「[COLLATE (Transact-SQL)](https://msdn.microsoft.com/library/ms184391.aspx)」を参照してください。
 
 ## <a name="what-are-the-naming-requirements-for-database-objects"></a>データベース オブジェクトの名前付け要件とは
 
@@ -68,8 +69,8 @@ Azure SQL Database 論理サーバーは、
 ## <a name="how-do-i-manage-a-logical-server"></a>論理サーバーの管理方法について教えてください。
 
 いくつかの方法を使用して Azure SQL Database 論理サーバーを管理できます。
-- [Azure ポータル](sql-database-manage-portal.md)
-- [PowerShell](sql-database-manage-powershell.md)
+- [Azure ポータル](sql-database-manage-overview.md)
+- [PowerShell](sql-database-manage-overview.md)
 - [REST ()](/rest/api/sql/)
 
 ## <a name="next-steps"></a>次のステップ
@@ -81,10 +82,5 @@ Azure SQL Database 論理サーバーは、
 - サービス階層に基づく特定のリソース クォータと制限については、**サービス階層**に関する記事を参照してください。 サービス レベルの概要については、「 [SQL Database のサービス階層](sql-database-service-tiers.md)」を参照してください。
 - セキュリティの概要については、[Azure SQL Database のセキュリティの概要](sql-database-security-overview.md)に関するページを参照してください。
 - SQL Database の利用可能なドライバーとサポートの詳細については、「 [SQL Database および SQL Server の接続ライブラリ](sql-database-libraries.md)」を参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

@@ -137,7 +137,7 @@ outputs では、ワークフローの実行から返すことができる情報
 |"@@"|"@" を含む 1 文字の文字列が返されます。|  
 |" @"|" @" を含む 2 文字の文字列が返されます。|  
   
-"*文字列の補間*" により、式が `@{ ... }` にラップされている文字列の内部で式を使うこともできます。 For example: <p>`"name" : "First Name: @{parameters('firstName')} Last Name: @{parameters('lastName'}"`
+"*文字列の補間*" により、式が `@{ ... }` にラップされている文字列の内部で式を使うこともできます。 For example: <p>`"name" : "First Name: @{parameters('firstName')} Last Name: @{parameters('lastName')}"`
 
 結果は常に文字列であり、この機能は `concat` 関数に似ています。 `myNumber` が `42`、`myString` が `sampleString` と定義されているものとします。  
   

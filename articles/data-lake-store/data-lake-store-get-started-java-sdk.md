@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/03/2017
+ms.date: 04/28/2017
 ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
@@ -66,7 +66,7 @@ Azure Active Directory には、トークンを取得するための他のオプ
           <dependency>
             <groupId>com.microsoft.azure</groupId>
             <artifactId>azure-data-lake-store-sdk</artifactId>
-            <version>2.1.4</version>
+            <version>2.1.5</version>
           </dependency>
           <dependency>
             <groupId>org.slf4j</groupId>

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 223a7f808ae21ddf8e237e7c5ec2d7ba035e38e8
-ms.openlocfilehash: 82d91881e7f744471f4e60d1c6571e0ae2f7ee4e
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 5413e86ac3c83947566b2686392612bd33c4483f
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -242,11 +243,6 @@ BLOB、キュー、およびテーブルや、Key Vault 統合の詳細なエン
 
 ## <a name="next-steps"></a>次のステップ
 * [チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化](storage-encrypt-decrypt-blobs-key-vault.md)
-*  [Azure Storage Client Library for .NET NuGet package](https://www.nuget.org/packages/WindowsAzure.Storage)
+* [Azure Storage Client Library for .NET NuGet package](https://www.nuget.org/packages/WindowsAzure.Storage)
 * Azure Key Vault NuGet [Core](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、[Client](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/)、[Extensions](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/) の 3 つのパッケージをダウンロードする  
-*  [Azure Key Vault のドキュメント](../key-vault/key-vault-whatis.md)
-
-
-<!--HONumber=Nov16_HO3-->
-
-
+* [Azure Key Vault のドキュメント](../key-vault/key-vault-whatis.md)

@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/26/2017
+ms.date: 03/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 04a045f41965b093aab71e59cd9b5f328b44de84
-ms.openlocfilehash: 5ae6afea4d55eb03624602f483a2dc9620e33bb7
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 84f9c9745cc0c95fc5134dcc7e659e7ace11b188
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -25,12 +26,12 @@ ms.openlocfilehash: 5ae6afea4d55eb03624602f483a2dc9620e33bb7
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 * 有効な Azure サブスクリプション
-* New Relic でのシングル サインオンが有効なサブスクリプション
+* New Relic でのシングル サインオン (SSO) が有効なサブスクリプション
 
-このチュートリアルを完了すると、New Relic に割り当てられている Azure Active Directory ユーザーは、AAD アクセス パネルを使用してシングル サインオンが可能になります。
+このチュートリアルを完了すると、New Relic に割り当てられている Azure Active Directory ユーザーは、AAD アクセス パネルを使用して SSO ができます。
 
 1. New Relic のアプリケーション統合の有効化
-2. シングル サインオンの構成
+2. シングル サインオン (SSO) の構成
 3. ユーザー プロビジョニングの構成
 4. ユーザーの割り当て
 
@@ -61,11 +62,11 @@ ms.openlocfilehash: 5ae6afea4d55eb03624602f483a2dc9620e33bb7
    
    ![New Relic](./media/active-directory-saas-new-relic-tutorial/IC797032.png "New Relic")
    
-## <a name="configuring-single-sign-on"></a>シングル サインオンの構成
+## <a name="configure-single-sign-on"></a>Configure single sign-on
 
 このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure Active Directory でのユーザーのアカウントで New Relic に対する認証を行えるようにする方法を説明します。
 
-**シングル サインオンを構成するには、次の手順に従います。**
+**構成された SSO を取得するには、次の手順を実行します。**
 
 1. Azure クラシック ポータルの **New Relic** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
    
@@ -100,7 +101,7 @@ ms.openlocfilehash: 5ae6afea4d55eb03624602f483a2dc9620e33bb7
    
    ![シングル サインオンの構成](./media/active-directory-saas-new-relic-tutorial/IC797039.png "Configure Single Sign-On")
    
-## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
+## <a name="configure-user-provisioning"></a>[ユーザー プロビジョニングの構成]
 
 Azure Active Directory ユーザーが New Relic にログインできるようにするには、そのユーザーを New Relic にプロビジョニングする必要があります。 New Relic の場合、プロビジョニングは手動で行います。
 
@@ -121,12 +122,12 @@ Azure Active Directory ユーザーが New Relic にログインできるよう�
    2. **[ロール]** として **[ユーザー]** を選びます。
    3. **[このユーザーを追加]**をクリックします。
 
-> [!NOTE]
-> 他の New Relic ユーザー アカウントの作成ツールまたは New Relic から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[!NOTE]
+>他の New Relic ユーザー アカウントの作成ツールまたは New Relic から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 > 
 > 
 
-## <a name="assigning-users"></a>ユーザーの割り当て
+## <a name="assign-users"></a>[ユーザーの割り当て]
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
 **ユーザーを New Relic に割り当てるには、次の手順に従います。**
@@ -139,11 +140,9 @@ Azure Active Directory ユーザーが New Relic にログインできるよう�
    
    ![はい](./media/active-directory-saas-new-relic-tutorial/IC767830.png "Yes")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
+SSO の設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
+## <a name="additional-resources"></a>その他のリソース
 
-
-
-<!--HONumber=Feb17_HO1-->
-
-
+* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)

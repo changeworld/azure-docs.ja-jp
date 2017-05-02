@@ -1,7 +1,7 @@
-## <a name="a-nameadditionalservicesahow-to-use-additional-twilio-services"></a><a name="AdditionalServices"></a>方法: その他の Twilio サービスを使用する
+## <a name="AdditionalServices"></a>方法: その他の Twilio サービスを使用する
 ここに示す例以外にも、Twilio が提供する Web ベースの API を使用して、Azure アプリケーションからその他の Twilio 機能を利用することができます。 詳しくは、[Twilio API に関するドキュメント][twilio_api_documentation]をご覧ください。さい。
 
-## <a name="a-namenextstepsanext-steps"></a><a name="NextSteps"></a>次のステップ
+## <a name="NextSteps"></a>次のステップ
 これで、Twilio サービスの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先をご覧ください。
 
 * [Twilio に関するセキュリティ ガイドライン][twilio_security_guidelines]
@@ -16,10 +16,5 @@
 [twilio_on_github]: https://github.com/twilio
 [twilio_support]: http://www.twilio.com/help/contact
 [twilio_quickstarts]: http://www.twilio.com/docs/quickstart
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

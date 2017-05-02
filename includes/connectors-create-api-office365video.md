@@ -14,8 +14,3 @@ Office 365 Video アカウントに接続するロジック アプリを承認�
 4. 接続が作成されたら、ロジック アプリで他の手順を自由に実行できるようになります。  
    ![Office 365 Video の接続の作成手順](./media/connectors-create-api-office365video/office365video-4.png)  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

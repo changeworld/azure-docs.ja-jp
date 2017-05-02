@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: d3d59e19ff654a953be43706dce926c4450c6179
-ms.openlocfilehash: 6493230295dbfc939df3daf8504a7d8662083f51
-ms.lasthandoff: 02/08/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 64f875581dccd2ad1215a82eba1e2659fe01d191
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 02/08/2017
 [Azure Portal](https://portal.azure.com/) または [Azure クラシック ポータル](https://manage.windowsazure.com/)で Azure ストレージ アカウント、コンテナー、または VHD を削除しようとすると、エラーが表示される場合があります。 問題は、次の状況で発生する可能性があります。
 
 * バーチャル マシンを削除すると、ディスクと VHD は自動的に削除されません。 これがストレージ アカウントの削除に失敗する理由である場合があります。 ディスクを別の VM にマウントできるように、マイクロソフトはディスクを削除しません。
-* ディスクまたはディスクに関連付けられている BLOB のリースがまだ存在します。
+* ディスクまたはディスクに関連付けられている BLOB にリースがまだ存在します。
 * BLOB、コンテナー、またはストレージ アカウントを使用している VM イメージがまだ存在します。
 
 この記事で Azure の問題に対処できない場合は、 [MSDN と Stack Overflow の Azure フォーラム](https://azure.microsoft.com/support/forums/)を参照してください。 問題をこれらのフォーラムまたは Twitter の @AzureSupport に投稿できます。 また、 **Azure サポート** サイトの [[サポートの要求]](https://azure.microsoft.com/support/options/) を選択して、Azure サポート要求を提出することもできます。
@@ -69,7 +69,7 @@ VM を削除してから、関連する VHD の BLOB を削除しようと、次
 
 または
 
-"*BLOB ‘BlobName.vhd’ は仮想マシンのディスク ‘VirtualMachineDiskName’ として使用中のため、削除できません。*"
+*BLOB ‘BlobName.vhd’ は仮想マシンのディスク ‘VirtualMachineDiskName’ として使用中のため、削除できません。*
 
 ## <a name="solution"></a>解決策
 最も一般的な問題を解決するには、次の方法をお試しください。

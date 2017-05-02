@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 2/24/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: 02d810db5433370802b866424c24464d64171ef0
-ms.openlocfilehash: 6921965c3286209e024ba59637da0c485b4a0c71
-ms.lasthandoff: 02/01/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 14b7900a8b4fbf86e8a814def6fa8c7915832376
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -45,7 +45,7 @@ Data Factory は、**米国西部**と**北ヨーロッパ**で使用できま�
 詳細については、記事「 **Azure サブスクリプションとサービスの制限、クォータ、制約** 」の [Azure Data Factory の制限](../azure-subscription-service-limits.md#data-factory-limits) に関するセクションを参照してください。
 
 ### <a name="what-is-the-authoringdeveloper-experience-with-azure-data-factory-service"></a>Azure Data Factory サービスではどのような作成エクスペリエンスまたは開発者エクスペリエンスが提供されますか。
-データ ファクトリを生成または作成する方法には、以下のものがあります。
+データ ファクトリの生成または作成は、次のツール/SDK を使用して行う事ができます。
 
 * **Azure Portal**
   : Azure Portal の Data Factory ブレードは、Data Factory およびリンクされたサービスを作成するための優れたユーザー インターフェイスです。 **Data Factory エディター**は、ポータルの一部でもあり、これらの成果物の JSON の定義を指定することによって、リンクされたサービス、テーブル、データ セット、パイプラインを簡単に作成できる機能です。 ポータルまたはエディターを使用した Data Factory の作成とデプロイの例については、 [Azure Portal を使用した初めてのデータ パイプラインの作成](data-factory-build-your-first-pipeline-using-editor.md) に関するページを参照してください。
@@ -64,7 +64,7 @@ Data Factory は、**米国西部**と**北ヨーロッパ**で使用できま�
 いいえ。 他の Azure のリソースと同様に、Azure Data Factory の名前は変更できません。
 
 ### <a name="can-i-move-a-data-factory-from-one-azure-subscription-to-another"></a>Azure サブスクリプション間でデータ ファクトリを移動できますか。
-はい。 次の図に示すように、データ ファクトリ ブレードの **[移動]** ボタンを使用します。
+はい。 次の図に示されているように、データ ファクトリ ブレードの **[移動]** ボタンを使用します。
 
 ![データ ファクトリの移動](media/data-factory-faq/move-data-factory.png)
 
@@ -79,6 +79,9 @@ Data Factory は、**米国西部**と**北ヨーロッパ**で使用できま�
 | [Azure Data Lake Analytics](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) |[Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
 | [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service)、[Azure SQL Data Warehouse](data-factory-compute-linked-services.md#azure-sql-data-warehouse-linked-service)、[SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[ストアド プロシージャ](data-factory-stored-proc-activity.md) |
 
+### <a name="how-does-azure-data-factory-compare-with-sql-server-integration-services-ssis"></a>Azure Data Factory と SQL Server Integration Services (SSIS) はどのように違いますか。 
+MVP (Most Valued Professional) の一人である Reza Rad の「[Azure Data Factory と SSIS](http://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS)」プレゼンテーションを参照してください。 Data Factory の最近の変更点の一部は、スライド デッキに表示されない場合があります。 Azure Data factory には、継続的に機能が追加されています。 Azure Data factory には、継続的に機能が追加されています。 これらの更新は、今年中に、マイクロソフトのデータ統合テクノロジの比較に組み込まれる予定です。   
+
 ## <a name="activities---faq"></a>アクティビティ - FAQ
 ### <a name="what-are-the-different-types-of-activities-you-can-use-in-a-data-factory-pipeline"></a>Data Factory パイプラインで使用できるアクティビティには、どのような種類がありますか。
 * [データ移動アクティビティ](data-factory-data-movement-activities.md) で、データを移動します。
@@ -89,7 +92,7 @@ Data Factory は、**米国西部**と**北ヨーロッパ**で使用できま�
 
 ## <a name="copy-activity---faq"></a>コピー アクティビティ - FAQ
 ### <a name="is-it-better-to-have-a-pipeline-with-multiple-activities-or-a-separate-pipeline-for-each-activity"></a>1 つのパイプラインに複数のアクティビティを設定する方法とアクティビティごとに別個のパイプラインを使用する方法ではどちらの方法がよいですか。
-パイプラインでは、関連する複数のアクティビティをまとめることが想定されています。 複数のアクティビティを接続するデータセットがパイプラインの外部の他のアクティビティによって使用されない場合は、1 つのパイプラインにそれらのアクティビティを保持できます。 これにより、パイプラインのアクティブな期間を揃えるためにこれを連結する必要はありません。 また、パイプライン内部のテーブルのデータの整合性が、パイプラインを更新するときに、よりうまく保持されるようになります。 パイプラインを更新するとき、基本的にパイプライン内のすべてのアクティビティが停止、削除された後、もう一度作成されます。 作成操作の観点では、パイプラインの&1; つの JSON ファイルで関連するアクティビティ内のデータのフローを簡単に見ることができるようになる可能性があります。
+パイプラインでは、関連する複数のアクティビティをまとめることが想定されています。 複数のアクティビティを接続するデータセットがパイプラインの外部の他のアクティビティによって使用されない場合は、1 つのパイプラインにそれらのアクティビティを保持できます。 これにより、パイプラインのアクティブな期間を揃えるためにこれを連結する必要はありません。 また、パイプライン内部のテーブルのデータの整合性が、パイプラインを更新するときに、よりうまく保持されるようになります。 パイプラインを更新するとき、基本的にパイプライン内のすべてのアクティビティが停止、削除された後、もう一度作成されます。 作成操作の観点では、パイプラインの 1 つの JSON ファイルで関連するアクティビティ内のデータのフローを簡単に見ることができるようになる可能性があります。
 
 ### <a name="what-are-the-supported-data-stores"></a>どのようなデータ ストアがサポートされますか。
 [!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
@@ -147,7 +150,7 @@ Data Factory サービスで作成されたオンデマンド クラスターを
 
 external プロパティが適切に設定されている場合は、入力データセットの定義で指定された場所に入力データが存在しているかどうかを確認してください。
 
-### <a name="how-to-run-a-slice-at-another-time-than-midnight-when-the-slice-is-being-produced-daily"></a>スライスを毎日生成している場合、午前&0; 時以外の時刻にスライスを実行するにはどうすればよいですか。
+### <a name="how-to-run-a-slice-at-another-time-than-midnight-when-the-slice-is-being-produced-daily"></a>スライスを毎日生成している場合、午前 0 時以外の時刻にスライスを実行するにはどうすればよいですか。
 **offset** プロパティを使用して、スライスを生成する時刻を指定します。 このプロパティの詳細については、「 [データセットの可用性](data-factory-create-datasets.md#Availability) 」セクションをご覧ください。 以下に簡単な例を示します。
 
 ```json
@@ -158,7 +161,7 @@ external プロパティが適切に設定されている場合は、入力デ�
     "offset": "06:00:00"
 }
 ```
-既定の設定である真夜中ではなく、毎日 **午前&6; 時** にスライスを開始する例です。     
+既定の設定である真夜中ではなく、毎日 **午前 6 時** にスライスを開始する例です。     
 
 ### <a name="how-can-i-rerun-a-slice"></a>スライスを再実行するにはどうすればよいですか。
 スライスを再実行するには、次のどちらかの方法を使用します。

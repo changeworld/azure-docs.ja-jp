@@ -26,8 +26,3 @@
     
     ![Azure ポータルでの VNet の作成](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure7.gif)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/28/2016
+ms.date: 4/20/2017
 ms.author: saurse;nkolli;trinadhk
 translationtype: Human Translation
-ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
-ms.openlocfilehash: 2876f3a7e8e83dc05801d914c7582a4f1fd92e98
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: 4f5e58713d925d2f7477dc072ecec455dec70792
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -48,7 +49,7 @@ Azure へのバックアップ データのアップロードが完了した後�
   * Windows Server、Windows クライアント、または System Center Data Protection Manager サーバーに Azure Backup エージェントがインストール済みであり、Azure Backup コンテナーにコンピューターが登録されている。
 * [Azure 発行ファイル設定をダウンロード](https://manage.windowsazure.com/publishsettings) します。
 * ステージング場所を準備します。 これには、コンピューター上のネットワーク共有や追加ドライブを使用できます。 ステージング場所は一時ストレージであり、このワークフロー中に一時的に使用されます。 ステージング場所には、初期コピーを保持するのに十分なディスク領域があることを確認します。 たとえば、500 GB のファイル サーバーをバックアップする場合は、ステージング領域が 500 GB 以上あることを確認します (圧縮処理により、使用量はこれよりも少なくなります)。
-* サポートされているドライブを使用していることを確認します。 Import/Export サービスで使用できるのは、3.5 インチ SATA II/III ハード ドライブのみです。 8 TB を超えるハード ドライブはサポートされていません。 大部分のコンピューターには、SATA II/III USB アダプターを使用して SATA II/III ディスクを外部接続できます。 サービスでサポートされている最新のドライブについては、Azure Import/Export のドキュメントを参照してください。
+* サポートされているドライブを使用していることを確認します。 Import/Export サービスで使用できるのは、2.5 インチ SSD か、2.5 または 3.5 インチ SATA II/III の内部ハード ドライブだけです。 最大 10 TB のハード ドライブを使用できます。 サービスでサポートされている最新のドライブについては、[Azure Import/Export サービスのドキュメント](../storage/storage-import-export-service.md#hard-disk-drives)をご覧ください。
 * SATA ドライブ ライターが接続されているコンピューターで BitLocker を有効にします。
 * [Azure Import/Export ツールをダウンロード](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409) します。 Azure Backup の更新プログラム 2016 年 8 月 (以降) をインストールした場合、この手順は不要です。
 
@@ -209,9 +210,4 @@ Azure Disk Preparation ツールは、次のパスにある Recovery Services �
 ## <a name="next-steps"></a>次のステップ
 * Azure Import/Export ワークフローについて質問がある場合は、「 [Microsoft Azure Import/Export サービスを使用した Blob Storage へのデータの転送](../storage/storage-import-export-service.md)」を参照してください。
 * ワークフローについて質問がある場合は、Azure Backup [FAQ](backup-azure-backup-faq.md) のオフライン バックアップのセクションを参照してください。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

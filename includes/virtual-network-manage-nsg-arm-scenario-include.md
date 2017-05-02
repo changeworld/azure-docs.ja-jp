@@ -16,8 +16,3 @@ NSG の管理方法をわかりやすく説明するために、この記事で�
 
 上記のシナリオをデプロイするには、 [このリンク](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd-NSG)に従って、 **[Azure へのデプロイ]**をクリックし、必要に応じて既定のパラメーター値を置き換えて、ポータルの指示に従います。 下記のサンプル手順では、テンプレートを使用して、 **RG NSG**というリソース グループ名をデプロイしています。 
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

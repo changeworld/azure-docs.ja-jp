@@ -39,8 +39,3 @@ JSON 形式でのパブリック IP アドレスのサンプル:
 * [インスタンス レベル パブリック IP アドレス](../articles/virtual-network/virtual-networks-instance-level-public-ip.md)の詳細情報。
 * パブリック IP アドレスに関する [REST API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/mt163638.aspx) もご覧ください。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

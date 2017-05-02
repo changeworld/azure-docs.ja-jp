@@ -16,8 +16,3 @@ ISP によって割り当てられた IP ブロックの ARPA ゾーンを Azure
 ### <a name="can-i-host-arpa-zones-for-both-ipv4-and-ipv6-addresses-in-azure-dns"></a>Azure DNS で IPv4 と IPv6 の両方のアドレスの ARPA ゾーンをホストできますか?
 
 はい。
-
-
-<!--HONumber=Nov16_HO3-->
-
-

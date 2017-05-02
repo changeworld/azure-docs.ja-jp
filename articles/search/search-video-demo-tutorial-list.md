@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 02/28/2017
+ms.date: 03/31/2017
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 0925318a483d9a5e72015d33ee0868f41ae4bedd
-ms.openlocfilehash: 4d883d96a2a45f27e847c51c973d5ca7d0e267a8
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 70b04cde5fe877355c1dea29c78df3dcb8277973
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -27,17 +27,17 @@ ms.lasthandoff: 03/01/2017
 
 ## <a name="learn"></a>詳細情報
 
-Azure Search を初めて使う場合は、ここから開始します。 約&1; 時間ですべてのリソースを確認できます。
+Azure Search を初めて使う場合は、ここから開始します。 約 1 時間ですべてのリソースを確認できます。
 
 | タイトル | Description | 日付 |
 |-------|-------------|------|
-| [この概要ビデオを見る](https://channel9.msdn.com/Events/Connect/2016/138) | 9 分&38; 秒で、機能、サービスの作成、およびクエリを紹介します。 | 2016 年 11 月 |
+| [この概要ビデオを見る](https://channel9.msdn.com/Events/Connect/2016/138) | 9 分 38 秒で、機能、サービスの作成、およびクエリを紹介します。 | 2016 年 11 月 |
 | [サービスを作成する](search-get-started-portal.md) | ポータルで Azure Search を設定するための手順です。 | 2017 年 2 |
 | [インデックスのクエリ](search-get-started-portal.md) | 組み込みのサンプル データを使って、インデックスを作成し、クエリを行います。 ポータルのツールを使うと、クエリの種類と検索パラメーターについて短時間で学習できます。 | 2017 年 2 |
 | [次のステップ:<br/> .NET でのコード](search-howto-dotnet-sdk.md) | この C# チュートリアルでは、Azure Search .NET ライブラリを使って接続、インデックス作成、クエリを実行する方法を示します。 | 2016 年 11 月 |
 | [次のステップ:<br/> REST でのコード](search-create-index-rest-api.md) | 任意のプラットフォームとプログラミング言語で Azure Search インデックスを作成するための REST 呼び出しと JSON ペイロードを確認します。 | 2016 年 12 月 |
 
-## <a name="practice"></a>実習
+## <a name="code-samples"></a>コード サンプル
 
 サンプルとチュートリアルによってコードに基づく調査を行います。
 
@@ -45,10 +45,19 @@ Azure Search を初めて使う場合は、ここから開始します。 約&1;
 |-------|-------------|
 | [Get started with .NET client library (.NET クライアント ライブラリの概要) に関するページ](https://github.com/Azure-Samples/search-dotnet-getting-started) | .NET クライアント ライブラリを使う ASP.NET MVC 5 アプリケーションです。 |
 | [Get started with REST API (REST API の概要) に関するページ](https://github.com/Azure-Samples/search-rest-api-getting-started) | REST API のコード サンプルです。 |
-| [Demo: NYC Jobs Website (デモ: NYC ジョブの Web サイト) に関するページ](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) | ASP.NET MVC を使用する NYC ジョブ データに対するライブ デモ Azure Search サイトのソースです。 |
-| [Demo: Tate Art Gallery (デモ: テート美術館) に関するページ](https://github.com/liamca/azure-search-tate-art-gallery/) | Collections データ型と入れ子になったデータ構造、ファセットとフィルター、人名、およびサムネイル画像を表示する、美術館データについてのライブ デモ Azure Search サイトのソースです。|
+| [Source: NYC Jobs Website Demo (ソース: NYC ジョブ Web サイト デモ)](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) | ASP.NET MVC を使用する NYC ジョブ データに対するライブ デモ Azure Search サイトのソースです。 |
+| [Source: Tate Art Gallery Demo (ソース: テート美術館デモ)](https://github.com/liamca/azure-search-tate-art-gallery/) | Collections データ型と入れ子になったデータ構造、ファセットとフィルター、人名、およびサムネイル画像を表示する、美術館データについてのライブ デモ Azure Search サイトのソースです。|
 
 特定の機能の組み合わせとシナリオに関する他のコード サンプルは、[**[Azure Samples] の [Azure Search]**](https://github.com/azure-samples?utf8=%E2%9C%93&query=search) で検索してください。
+
+## <a name="online-demos"></a>オンライン デモ
+検索操作に Azure Search を使用する完全に機能する Web アプリケーションです。 これらのリンク先では、Azure Search を使用するアプリの実用的な使用例を紹介しています。
+
+| リンク | Description |
+|-------|-------------|
+|[Azure Search のニューヨーク市 (NYC) ジョブ ポータル デモ](http://aka.ms/azjobsdemo) | NYC Open Data 構想のデータを使用して Azure Search の機能を示すライブ ASP.NET Web サイトです。 このアプリでは、 [簡単なクエリ構文](https://msdn.microsoft.com/library/azure/dn798920.aspx)を使用しています。 コードを変更して、 [Lucene 構文](https://msdn.microsoft.com/library/azure/mt589323.aspx)を試すことができます。 |
+|[Tate Art Gallery Demo (テート美術館デモ)](https://rawgit.com/liamca/azure-search-tate-art-gallery/master/Demo/index.html) | テート美術館のサンプル データを使用するホステッド ASP.NET Web サイト。 まず「modern」、「photo」、「portrait」などの検索用語を試してください。
+|[Azure Search デモ サイト](https://searchsamples.azurewebsites.net/#/) | Azure Search のためのデモ アプリを集めたサイトです。 Azure Search を利用し、メディア検索、地理検索、製品在庫のアプリを試します。 |
 
 ## <a name="courseware"></a>コースウェア
 
@@ -58,14 +67,6 @@ Azure Search に関する複数セッションのデモとラボです。
 |------|-------------|------|
 [Building Intelligent Cross-Platform Mobile Applications Using Xamarin and Azure Search (Xamarin と Azure Search を使用するインテリジェントなクロスプラットフォーム モバイル アプリケーションの構築 )](https://mva.microsoft.com/en-US/training-courses/building-intelligent-crossplatform-mobile-applications-using-xamarin-and-azure-search-16890) | 先行入力、フル テキスト検索とページ処理、フィルター処理、検索、moreLikeThis、機械学習、スコア付けとチューニング、分析 | 2016 年 12 月 |
 [Using Windows Azure Search (Windows Azure Search の使用)](https://mva.microsoft.com/en-US/training-courses/using-windows-azure-search-10540) | 古いがまだ関連のあるスケールへのドリルダウン、地理空間検索、言語分析、Cortana 音声認識 | 2015 年 5 月 | 
-
-## <a name="online-demos"></a>オンライン デモ
-検索操作に Azure Search を使用する完全に機能する Web アプリケーションです。 
-
-| リンク | Description |
-|-------|-------------|
-|[Azure Search のニューヨーク市 (NYC) ジョブ ポータル デモ](http://aka.ms/azjobsdemo) | NYC Open Data 構想のデータを使用して Azure Search の機能を示すライブ ASP.NET Web サイトです。 このアプリでは、 [簡単なクエリ構文](https://msdn.microsoft.com/library/azure/dn798920.aspx)を使用しています。 コードを変更して、 [Lucene 構文](https://msdn.microsoft.com/library/azure/mt589323.aspx)を試すことができます。 |
-|[Azure Search デモ サイト](https://searchsamples.azurewebsites.net/#/) | Azure Search のためのデモ アプリを集めたサイトです。 Azure Search を利用し、メディア検索、地理検索、製品在庫のアプリを試します。 |
 
 ## <a name="video-archive"></a>ビデオ アーカイブ
 
@@ -98,6 +99,5 @@ Azure Search に関する複数セッションのデモとラボです。
 | [検索候補を検索アプリケーションに追加する方法](https://azure.microsoft.com/blog/2015/01/20/azure-search-how-to-add-suggestions-auto-complete-to-your-search-applications/) |一般的にオート コンプリートと呼ばれる検索候補を実行する方法を説明します。 このデモでは、Azure Search の検索候補を活用する MVC4 アプリケーションの作成、Twitter typeahead.js ライブラリを使用した JavaScript での効率的な自動提案コンポーネントの構築、ファジー検索候補を使用して、ユーザーがスペルを間違えても検索候補を表示される方法など、多くのトピックの手順について説明します。 |
 | [TechNet バーチャル ラボ: Microsoft Azure Search アプリケーションの構築](http://go.microsoft.com/?linkid=9874663) |開発環境、ツール、ドキュメント、およびデータが用意されたバーチャル ラボ。 ラボを完了するには、Azure アカウント (試用版のサブスクリプションまたは個人の Azure サブスクリプションのいずれか) が必要です。 |
 | [SQL Server データの Azure Search との同期](https://azure.microsoft.com/blog/2014/11/10/how-to-sync-sql-server-data-with-azure-search/) |SQL Server リレーショナル データベースのデータを Azure Search インデックスに読み込む方法を説明したブログ投稿。 |
-| [Azure Search 管理 REST API チュートリアル](search-get-started-management-api.md) |管理 REST API を使用して、サービスをプロビジョニングし、管理またはクエリ API キーを管理する方法。 |
 
 

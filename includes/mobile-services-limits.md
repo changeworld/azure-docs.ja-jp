@@ -14,8 +14,3 @@
 
 これらの制限に関する詳細と価格の詳細については、「 [Mobile Services 料金](https://azure.microsoft.com/pricing/details/mobile-services/)」を参照してください。 
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

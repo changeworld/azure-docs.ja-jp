@@ -14,7 +14,7 @@ Mobile Engagement にプッシュ通知の送信を許可するには、API キ�
    
     ![](./media/mobile-engagement-android-send-push/api-key.png)
 
-## <a name="a-idsendasend-a-notification-to-your-app"></a><a id="send"></a>アプリへ通知を送信する
+## <a id="send"></a>アプリへ通知を送信する
 アプリにプッシュ通知を送信する単純なプッシュ通知キャンペーンを作成します。
 
 1. Mobile Engagement ポータルで [ **リーチ** ] タブに移動します。
@@ -41,9 +41,4 @@ Mobile Engagement にプッシュ通知の送信を許可するには、API キ�
 6. 最後の手順として、 **[アクティブ化]** をクリックしてキャンペーンをアクティブにし、プッシュ通知を送信します。
    
     ![](./media/mobile-engagement-android-send-push/campaign-activate.png)
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

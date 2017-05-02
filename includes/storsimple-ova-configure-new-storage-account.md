@@ -9,13 +9,8 @@
    2. Azure ストレージ アカウントの名前を指定します。
    3. Azure ストレージ アカウントのプライマリ **アクセス キー** を入力します。 このキーを取得するには、Storage サービスでストレージ アカウントを選択し、 **[アカウント キーの管理]**をクリックします。 **プライマリ アクセス キー**をコピーできるようになります。
    4. **[SSL モードを有効にする]** を選択し、StorSimple デバイスとクラウドの間のネットワーク通信用にセキュリティで保護されたチャネルを作成します。 プライベート クラウド内で運用している場合にのみ、 **[SSL モードを有効にする]** チェック ボックスをオフにします。
-   5. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-ova-configure-new-storage-account/checkicon-include.png) をクリックします。 ストレージ アカウントが正常に作成されると通知が表示されます。
+   5. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-ova-configure-new-storage-account/checkicon-include.png)をクリックします。 ストレージ アカウントが正常に作成されると通知が表示されます。
       
         ![ストレージ アカウントの追加](./media/storsimple-ova-configure-new-storage-account/addnewstorageaccount-include.png)
 4. 新しく作成されたストレージ アカウントは、**[構成]** ページの **[ストレージ アカウント]** に表示されます。 
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

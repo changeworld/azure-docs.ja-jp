@@ -61,8 +61,3 @@ Java または PHP を使用する場合は、[Java または PHP から Notific
 [Mobile Apps へのプッシュ通知の追加]: ../articles/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md
 [Java または PHP から Notification Hubs を使用する方法]: ../articles/notification-hubs/notification-hubs-java-push-notification-tutorial.md
 [Microsoft.Azure.Notification Hubs NuGet パッケージ]: http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/
-
-
-<!--HONumber=Nov16_HO3-->
-
-

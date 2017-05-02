@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/28/2017
 ms.author: sethm;hillaryc
 translationtype: Human Translation
-ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
-ms.openlocfilehash: 1952adece7e874ade97c2a8480455e1236bb74f1
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 946f3ac069db436828427e575be5a14efac9dda9
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -65,7 +65,9 @@ ns.CreateTopic(td);
 **MessageId**: キューまたはトピックで [QueueDescription.RequiresDuplicateDetection][QueueDescription.RequiresDuplicateDetection] プロパティが **true** に設定され、[BrokeredMessage.SessionId][BrokeredMessage.SessionId] プロパティまたは [BrokeredMessage.PartitionKey][BrokeredMessage.PartitionKey] プロパティが設定されていない場合は、[BrokeredMessage.MessageId][BrokeredMessage.MessageId] プロパティがパーティション キーとしての役割を果たします。 (送信元のアプリケーションでメッセージ ID が割り当てられていない場合は、Microsoft .NET および AMQP のライブラリによって自動的にメッセージ ID が割り当てられます)。この場合は、同じメッセージのすべてのコピーが同じメッセージ ブローカーによって処理されます。 これにより、Service Bus は重複したメッセージの検出と削除ができるようになります。 [QueueDescription.RequiresDuplicateDetection][QueueDescription.RequiresDuplicateDetection] プロパティが **true** に設定されていない場合、Service Bus は [MessageId][MessageId] プロパティをパーティション キーと見なしません。
 
 ### <a name="not-using-a-partition-key"></a>パーティション キーを使用しない場合
-パーティション キーが存在しない場合、Service Bus は、ラウンドロビン方式で、パーティション分割されたキューまたはトピックのすべてのフラグメントにメッセージを配信します。 選択されたフラグメントが使用できない場合、Service Bus はメッセージを別のフラグメントに割り当てます。 このように、メッセージング ストアが一時的に使用できなくても送信操作は成功します。
+パーティション キーが存在しない場合、Service Bus は、ラウンドロビン方式で、パーティション分割されたキューまたはトピックのすべてのフラグメントにメッセージを配信します。 選択されたフラグメントが使用できない場合、Service Bus はメッセージを別のフラグメントに割り当てます。 このように、メッセージング ストアが一時的に使用できなくても送信操作は成功します。 ただし、パーティション キーで提供される保証された順序にはなりません。
+
+可用性 (パーティション キーなし) と一貫性 (パーティション キーを使用) の間のトレードオフの詳細については、[こちらの記事](../event-hubs/event-hubs-availability-and-consistency.md)を参照してください。 この情報は、パーティション分割された Service Bus エンティティと Event Hub パーティションにも同様に適用されます。
 
 Service Bus が別のフラグメントにメッセージをエンキューする時間を確保するには、メッセージの送信元のクライアントによって指定される [MessagingFactorySettings.OperationTimeout][MessagingFactorySettings.OperationTimeout] 値が 15 秒を超える必要があります。 [OperationTimeout][OperationTimeout] プロパティを既定値の 60 秒に設定することをお勧めします。
 
@@ -109,7 +111,7 @@ committableTransaction.Commit();
 Service Bus では、パーティション分割されたエンティティを送信元または送信先とするメッセージの自動転送、およびパーティション分割されたエンティティ間でのメッセージの自動転送をサポートしています。 メッセージの自動転送を有効にするには、ソース キューまたはサブスクリプションで [QueueDescription.ForwardTo][QueueDescription.ForwardTo] プロパティを設定する必要があります。 メッセージでパーティション キー ([SessionId][SessionId]、[PartitionKey][PartitionKey]、[MessageId][MessageId]) が指定されている場合、そのパーティション キーが出力先エンティティで使用されます。
 
 ## <a name="considerations-and-guidelines"></a>考慮事項とガイドライン
-* **高い整合性機能**: パーティション キーの明示的制御、重複データ検出、セッションといった機能が使用されるエンティティの場合、メッセージング操作は常に特定のフラグメントにルーティングされます。 いずれかのフラグメントにトラフィックが集中した場合や、基になるストアに異常が生じた場合、それらの操作は失敗し、可用性が低下します。 それでも全体として堅牢性は、パーティション分割されていないエンティティと比べれば、はるかに高くなります。問題が発生するのはトラフィックの一部だけです。すべてのトラフィックで問題が発生するわけではありません。
+* **高い整合性機能**: パーティション キーの明示的制御、重複データ検出、セッションといった機能が使用されるエンティティの場合、メッセージング操作は常に特定のフラグメントにルーティングされます。 いずれかのフラグメントにトラフィックが集中した場合や、基になるストアに異常が生じた場合、それらの操作は失敗し、可用性が低下します。 それでも全体として堅牢性は、パーティション分割されていないエンティティと比べれば、はるかに高くなります。問題が発生するのはトラフィックの一部だけです。すべてのトラフィックで問題が発生するわけではありません。 詳細については、「[Event Hubs における可用性と一貫性](../event-hubs/event-hubs-availability-and-consistency.md)」を参照してください。
 * **管理**: 作成、更新、削除といった操作は、エンティティのすべてのフラグメントに対して実行する必要があります。 異常のあるフラグメントが 1 つでもあると、それらの操作は失敗します。 Get 操作に関して言えば、メッセージ数などの情報は、全フラグメントから集計する必要があります。 いずれかのフラグメントに異常があった場合、そのエンティティの可用性ステータスは "制限あり" として報告されます。
 * **メッセージ ボリュームの削減に伴うシナリオ**: 特に HTTP プロトコルを使用している場合は、すべてのメッセージを取得するために、複数の受信操作を実行しなければならないことがあります。 受信要求の場合、フロント エンドは、すべてのフラグメントを受信し、返されたすべての応答をキャッシュします。 以降、同じ接続上で行われる受信要求でこのキャッシュを利用できるため、受信で発生する遅延は小さくなります。 ただし複数の接続が存在する場合や、HTTP を使用している場合は、要求ごとに新しい接続が確立されます。 そのため、要求元と同じノードに応答が届く保証はありません。 既存のメッセージがすべてロックされ、別のフロント エンドでキャッシュされている場合は、受信操作から **null**が返されます。 最終的にはメッセージの有効期限が切れ、再度受信できる状態になります。 HTTP キープアライブの使用をお勧めします。
 * **メッセージの参照/ピーク**: [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatch_System_Int32_) は、必ずしも [MessageCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_MessageCount) プロパティに指定された数のメッセージを返すとは限りません。 一般に、これには 2 つの理由があります。 1 つ目は、メッセージのコレクションの総サイズが、最大サイズである 256 KB を超えていることです。 2 つ目は、キューまたはトピックの [EnablePartitioning プロパティ](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_EnablePartitioning)が **true** に設定されている場合に、要求されたメッセージ数を満たすだけのメッセージがパーティションにない可能性があります。 通常、アプリケーションは、決まった数のメッセージを受信する必要がある場合、そのメッセージ数に達するまで、または読み取るメッセージがなくなるまで、[PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatch_System_Int32_) を繰り返し呼び出す必要があります。 コード サンプルを含む詳細については、[QueueClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatch_System_Int32_) または [SubscriptionClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient#Microsoft_ServiceBus_Messaging_SubscriptionClient_PeekBatch_System_Int32_) に関する記事をご覧ください。

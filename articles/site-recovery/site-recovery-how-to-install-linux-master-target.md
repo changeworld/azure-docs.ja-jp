@@ -15,9 +15,9 @@ ms.workload:
 ms.date: 02/13/2017
 ms.author: ruturajd
 translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: c75a3a2477f113f17aab7a3e1969f15a4ec88a02
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 22a86001fe93dcb11e180dbdd75045b49b85b58f
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -37,13 +37,14 @@ ms.lasthandoff: 03/31/2017
 * マスター ターゲットは、プロセス サーバーおよび構成サーバーと通信できるネットワーク上に存在する必要があります。
 * マスター ターゲットのバージョンは、プロセス サーバーおよび構成サーバーと同等か、それより前のバージョンにする必要があります。 たとえば、構成サーバーのバージョンが 9.4 である場合、マスター ターゲットのバージョンは 9.4 または 9.3 にすることができますが、9.5 にすることはできません。
 * マスター ターゲットは、VMware 仮想マシンにのみすることができますが、物理サーバーにすることはできません。
-* マスター ターゲットは、次のサイズ ガイドラインに従う必要があります。
+
+## <a name="master-target-sizing-guideline"></a>マスター ターゲット サイズのガイドライン
+
+マスター ターゲットは、サイズに関する次のガイドラインに従って作成する必要があります。
     * RAM - 6 GB 以上
-    * OS ディスク サイズ - 50 GB 以上 (CentOS6.6 をインストールする場合)
+    * OS ディスク サイズ - 100 GB 以上 (CentOS6.6 をインストールする場合)
     * リテンション ドライブの追加ディスク サイズ - 1 TB
     * CPU コア数 - 4 コア以上
-
-
 
 
 ## <a name="steps-to-deploy-the-master-target-server"></a>マスター ターゲット サーバーをデプロイする手順

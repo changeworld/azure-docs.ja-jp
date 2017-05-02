@@ -19,8 +19,3 @@ articles/sql-data-warehouse/sql-data-warehouse-manage-scale-out-tasks-rest-api.m
 * データ ストレージは影響を受けず、データはそのまま残ります。 
 * SQL Data Warehouse では、実行中またはキューに格納されたすべての操作を取り消します。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

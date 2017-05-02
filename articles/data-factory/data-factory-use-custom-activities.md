@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2017
+ms.date: 03/30/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: b4b0a8139b69a31e4af40e1f8231d4d7772fee0b
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 780c7b90fc97a38b69b9a30abe920e083562e238
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -62,7 +62,7 @@ Data Factory でサポートされていないデータ ストアとの間でデ
 
 1. **Azure ポータル** を使用して、 [Azure Batch アカウント](http://portal.azure.com)を作成します。 手順については、「[Azure Batch アカウントの作成と管理][batch-create-account]」の記事を参照してください。
 2. Azure Batch のアカウント名とアカウント キー、URI、プール名をメモしておきます。 Azure Batch のリンクされたサービスを作成するためにこれらが必要になります。
-    1. Azure Batch アカウントのホーム ページに、**https://myaccount.westus.batch.azure.com** の形式で **URL** が表示されます。 この例では、**myaccount** が Azure Batch のアカウント名です。 リンクされたサービスの定義で使用する URI は、URL からアカウント名を除いたものです。 たとえば、**https://westus.batch.azure.com** です。
+    1. Azure Batch アカウントのホーム ページに、`https://myaccount.westus.batch.azure.com` の形式で **URL** が表示されます。 この例では、**myaccount** が Azure Batch のアカウント名です。 リンクされたサービスの定義で使用する URI は、URL からアカウント名を除いたものです。 (例: `https://westus.batch.azure.com`)。
     2. 左側のメニューの **[キー]** をクリックして、**プライマリ アクセス キー**をコピーします。
     3. 既存のプールを使用するには、メニューの **[プール]** をクリックして、プールの **ID** をメモしておきます。 既存のプールがない場合は、次の手順に進みます。     
 2. **Azure Batch プール**を作成します。
@@ -71,7 +71,7 @@ Data Factory でサポートされていないデータ ストアとの間でデ
    2. Azure Batch アカウントを選択して、 **[Batch アカウント]** ブレードを開きます。
    3. **[プール]** タイルをクリックします。
    4. **[プール]** ブレードで、ツールバーの [追加] ボタンをクリックしてプールを追加します。
-      1. プールの ID を入力します (**プール ID**)。 **プールの ID**は、Data Factory ソリューションを作成するときに必要になります。
+      1. プールの ID を入力します (プール ID)。 **プールの ID**は、Data Factory ソリューションを作成するときに必要になります。
       2. オペレーティング システム ファミリ設定には、 **Windows Server 2012 R2** を指定します。
       3. **ノード価格レベル**を選択します。
       4. **ターゲットの専用数**の設定値として、「**2**」と入力します。
@@ -120,7 +120,7 @@ public IDictionary<string, string> Execute(
      <li><b>[OK]</b> をクリックしてプロジェクトを作成します。</li>
    </ol>
 2. **[ツール]** をクリックし、**[NuGet パッケージ マネージャー]** をポイントして、**[パッケージ マネージャー コンソール]** をクリックします。
-手順 3. パッケージ マネージャー コンソールで、次のコマンドを実行して **Microsoft.Azure.Management.DataFactories**をインポートします。
+3. パッケージ マネージャー コンソールで、次のコマンドを実行して **Microsoft.Azure.Management.DataFactories**をインポートします。
 
     ```PowerShell
     Install-Package Microsoft.Azure.Management.DataFactories
@@ -419,12 +419,18 @@ adftutorial\customactivityoutput folder フォルダーには、1 つ以上の�
    1. 左側のメニューの **[新規]** をクリックします。
    2. **[新規]** ブレードの **[データ + 分析]** をクリックします。
    3. **[データ分析]** ブレードの **[Data Factory]** をクリックします。
+   
+    ![新しい Azure Data Factory メニュー](media/data-factory-use-custom-activities/new-azure-data-factory-menu.png)
 2. **[新しい Data Factory]** ブレードで、[名前] フィールドに「**CustomActivityFactory**」と入力します。 Azure Data Factory の名前はグローバルに一意にする必要があります。 **""CustomActivityFactory" という名前の Data Factory は使用できません"** というエラーが発生した場合は、Data Factory の名前を変更して (**yournameCustomActivityFactory** など) 作成し直してください。
+
+    ![新しい Azure Data Factory ブレード](media/data-factory-use-custom-activities/new-azure-data-factory-blade.png)
 3. **[リソース グループ名]**をクリックし、既存のリソース グループを選択するか、リソース グループを作成します。
 4. 作成する Data Factory に適した**サブスクリプション**と**リージョン**を使用していることを確認します。
 5. **[新しい Data Factory]** ブレードで **[作成]** をクリックします。
 6. 作成した Data Factory は、Azure ポータルの **ダッシュボード** に表示されます。
 7. Data Factory が正常に作成されると、Data Factory の内容を示す [Data Factory] ブレードが表示されます。
+    
+    ![[Data Factory] ブレード](media/data-factory-use-custom-activities/data-factory-blade.png)
 
 ### <a name="step-2-create-linked-services"></a>手順 2. リンク サービスを作成する
 リンクされたサービスは、データ ストアまたはコンピューティング サービスを Azure Data Factory にリンクします。 この手順では、Azure Storage アカウントと Azure Batch アカウントを Data Factory にリンクします。
@@ -432,22 +438,26 @@ adftutorial\customactivityoutput folder フォルダーには、1 つ以上の�
 #### <a name="create-azure-storage-linked-service"></a>Azure Storage のリンクされたサービスを作成する
 1. **[CustomActivityFactory]** の **[Data Factory]** ブレードで、**[作成およびデプロイ]** をクリックします。 Data Factory エディターが起動します。
 2. コマンド バーの **[新しいデータ ストア]** をクリックし、**[Azure Storage]** を選択します。 Azure Storage のリンクされたサービスを作成するための JSON スクリプトがエディターに表示されます。
+    
+    ![[新しいデータ ストア] - [Azure Storage]](media/data-factory-use-custom-activities/new-data-store-menu.png)
+3. `<accountname>` は Azure Storage アカウントの名前に、`<accountkey>` は Azure ストレージ アカウントのアクセス キーに置き換えます。 ストレージ アクセス キーを取得する方法については、「 [ストレージ アクセス キーの表示、コピーおよび再生成](../storage/storage-create-storage-account.md#manage-your-storage-account)」を参照してください。
 
-3. **accountname** は Azure ストレージ アカウントの名前に、**accountkey** は Azure ストレージ アカウントのアクセス キーに置き換えます。 ストレージ アクセス キーを取得する方法については、「 [ストレージ アクセス キーの表示、コピーおよび再生成](../storage/storage-create-storage-account.md#manage-your-storage-account)」を参照してください。
-
+    ![Azure Storage のリンクされたサービス](media/data-factory-use-custom-activities/azure-storage-linked-service.png)
 4. コマンド バーの **[デプロイ]** をクリックして、リンク サービスをデプロイします。
 
 #### <a name="create-azure-batch-linked-service"></a>Azure Batch のリンクされたサービスの作成
-1. Data Factory エディターで、コマンド バーの **[新規計算]** をクリックし、メニューの **[Azure Batch]** を選択します。
+1. Data Factory Editor のツール バーで **[...More(...詳細)]** をクリックして **[新しい計算]** をクリックし、メニューから **[Azure Batch]** を選択します。
+
+    ![[新しい計算] - [Azure Batch]](media/data-factory-use-custom-activities/new-azure-compute-batch.png)
 2. JSON スクリプトを次のように変更します。
 
-   1. **accountName** プロパティに Azure Batch アカウント名を指定します。 **[Azure Batch アカウント] ブレード**の **URL** は、次の形式です: **accountname**.region.batch.azure.com。 JSON の **batchUri** プロパティでは、URL から **"accountname." を削除**し、 **accountName** JSON プロパティには **accountname** を使用する必要があります。
+   1. **accountName** プロパティに Azure Batch アカウント名を指定します。 **[Azure Batch アカウント] ブレード**の **URL** は、`http://accountname.region.batch.azure.com` という形式です。 JSON の **batchUri** プロパティについては、URL から `accountname.` を削除し、`accountName` JSON プロパティには `accountname` を使用する必要があります。
    2. **accessKey** プロパティに Azure Batch アカウント キーを指定します。
    3. **poolName** プロパティに、前提条件の一部として作成したプールの名前を指定します。 プールの名前の代わりにプールの ID を指定することもできます。
-   4. **batchUri** プロパティに Azure Batch の URI を指定します。 例: https://westus.batch.azure.com。  
+   4. **batchUri** プロパティに Azure Batch の URI を指定します。 例: `https://westus.batch.azure.com`.  
    5. **AzureStorageLinkedService** for the **linkedServiceName** プロパティに Azure Batch アカウント名を指定します。
 
-        ```JSON
+        ```json
         {
          "name": "AzureBatchLinkedService",
          "properties": {
@@ -473,10 +483,10 @@ adftutorial\customactivityoutput folder フォルダーには、1 つ以上の�
 この手順では、入力データと出力データを表すデータセットを作成します。
 
 #### <a name="create-input-dataset"></a>入力データセットの作成
-1. Data Factory **エディター**のツール バーで **[新しいデータセット]** ボタンをクリックし、ドロップダウン メニューの **[Azure BLOB ストレージ]** をクリックします。
+1. Data Factory の**エディター**で、**[...More(...詳細)]** をクリックし、**[新しいデータセット]** をクリックして、ドロップダウン メニューから **[Azure BLOB ストレージ]** を選択します。
 2. 右側のウィンドウの JSON を、次の JSON スニペットに置き換えます。
 
-    ```JSON
+    ```json
     {
      "name": "InputDataset",
      "properties": {
@@ -506,7 +516,7 @@ adftutorial\customactivityoutput folder フォルダーには、1 つ以上の�
 3. ツール バーの **[デプロイ]** をクリックし、**InputDataset** を作成してデプロイします。 エディターのタイトル バーに **"テーブルが正常に作成されました"** というメッセージが表示されていることを確認します。
 
 #### <a name="create-an-output-dataset"></a>出力データセットの作成
-1. **Data Factory エディター**で、**[新しいデータセット]** をクリックし、コマンド バーの **[Azure BLOB ストレージ]** をクリックします。
+1. **Data Factory エディター**のコマンド バーで **[...More(...詳細)]** をクリックし、**[新しいデータセット]** をクリックして、**[Azure BLOB ストレージ]** を選択します。
 2. 右側のウィンドウの JSON スクリプトを、次の JSON スクリプトに置き換えます。
 
     ```JSON
@@ -553,7 +563,7 @@ adftutorial\customactivityoutput folder フォルダーには、1 つ以上の�
 3. **OutputDataset** をデプロイするには、コマンド バーの **[デプロイ]** をクリックします。
 
 ### <a name="create-and-run-a-pipeline-that-uses-the-custom-activity"></a>カスタム アクティビティを使用するパイプラインの作成と実行
-1. Data Factory エディターで、コマンド バーの **[新しいパイプライン]** をクリックします。 このコマンドが表示されない場合は、**[...](省略記号)** をクリックすると表示されます。
+1. Data Factory Editor のツール バーで **[...More(...詳細)]** をクリックし、**[新しいパイプライン]** をクリックします。 
 2. 右側のウィンドウの JSON を、次の JSON スクリプトに置き換えます。
 
     ```JSON
@@ -740,20 +750,18 @@ foreach (KeyValuePair<string, string> entry in extendedProperties)
 ```
 
 ## <a name="auto-scaling-of-azure-batch"></a>Azure Batch の自動スケール
-**自動スケール** 機能で、Azure Batch プールを作成することもできます。 たとえば、専用 VM 数が 0 の Azure Batch プールと、保留中のタスクの数に基づく自動スケールの数式を作成できます。
+**自動スケール** 機能で、Azure Batch プールを作成することもできます。 たとえば、専用 VM 数が 0 の Azure Batch プールと、保留中のタスクの数に基づく自動スケールの数式を作成できます。 
 
-保留中のタスクにつき一度に 1 つの VM (例: 保留中のタスクが 5 つ -> 5 つの VM):
+ここでのサンプル数式では次の動作が行われます。プールが最初に作成されるとき、1 つの VM から始まります。 $PendingTasks メトリックにより、実行中 + アクティブ (キューに登録済み) 状態のタスク数が定義されます。  この数式により、最後の 180 秒間の保留タスク平均数が判明し、TargetDedicated が適宜設定されます。 それにより、TargetDedicated が 25 台の仮想マシンを超えることはありません。 そのため、新しいタスクが送信されると、プールが自動的に増加します。タスクが完了すると、VM は 1 台ずつ解放され、自動スケールにより VM が減らされます。 startingNumberOfVMs と maxNumberofVMs はニーズに合わせて調整できます。
 
-```
-pendingTaskSampleVector=$PendingTasks.GetSample(600 * TimeInterval_Second);
-$TargetDedicated = max(pendingTaskSampleVector);
-```
+自動スケールの数式:
 
-保留中のタスクの数に関係なく、最大で一度に 1 つの VM:
-
-```
-pendingTaskSampleVector=$PendingTasks.GetSample(600 * TimeInterval_Second);
-$TargetDedicated = (max(pendingTaskSampleVector)>0)?1:0;
+``` 
+startingNumberOfVMs = 1;
+maxNumberofVMs = 25;
+pendingTaskSamplePercent = $PendingTasks.GetSamplePercent(180 * TimeInterval_Second);
+pendingTaskSamples = pendingTaskSamplePercent < 70 ? startingNumberOfVMs : avg($PendingTasks.GetSample(180 * TimeInterval_Second));
+$TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 ```
 
 詳細については、「 [Azure Batch プール内のコンピューティング ノードの自動スケール](../batch/batch-automatic-scaling.md) 」をご覧ください。
@@ -869,6 +877,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 | [Twitter センチメント分析のサンプル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-CustomC%23Activity) |Azure ML モデルを呼び出し、センチメント分析、スコア付け、予測などを行います。 |
 | [R スクリプトの実行](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample) |既に R がインストールされている HDInsight クラスターで RScript.exe を実行し、R スクリプトを呼び出します。 |
 | [クロス AppDomain .NET アクティビティ](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) |Data Factory 起動ツールによって使用されているアセンブリ バージョンとは別のバージョンを使用します。 |
+| [Azure Analysis Services でモデルを再処理する](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample) |  Azure Analysis Services でモデルを再処理します。 |
 
 
 [batch-net-library]: ../batch/batch-dotnet-get-started.md

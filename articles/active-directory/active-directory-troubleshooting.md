@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/07/2017
-ms.author: mbaldwin
+ms.date: 04/27/2017
+ms.author: bryanla
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 9c52e9257272c5b0c55c488d2c7ca6fef500260b
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -51,10 +52,5 @@ Access Control 名前空間または Multi-factor Authentication プロバイダ
 ただし、ページの読み込み中は、項目は淡色表示され、 **[使用不可]**とマークされます。 これは一時的な状態です。 数秒待てば、項目は使用可能になります。 待ち時間が長いときは、Web ページを更新すれば、多くの場合、問題が解決します。
 
 ![画面ショット: Active Directory を使用できない](./media/active-directory-troubleshooting/not-available.png)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

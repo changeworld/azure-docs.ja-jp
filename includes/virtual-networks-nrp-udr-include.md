@@ -5,8 +5,8 @@
 
 | プロパティ | 説明 | サンプルの値 |
 | --- | --- | --- |
-| **routes** |ルート テーブル内のユーザー定義ルートのコレクション | [ユーザー定義のルート](#User-defined-routes) |
-| **サブネット** |ルート テーブルが適用されるサブネットのコレクション | [サブネット](#Subnets) |
+| **routes** |ルート テーブル内のユーザー定義ルートのコレクション |[ユーザー定義のルート](#User-defined-routes) |
+| **サブネット** |ルート テーブルが適用されるサブネットのコレクション |[サブネット](#Subnets) |
 
 ### <a name="user-defined-routes"></a>ユーザー定義のルート
 宛先アドレスに基づいてトラフィックの送信先を指定する UDR を作成できます。 ルートは、ネットワーク パケットの宛先アドレスに基づく既定のゲートウェイ定義として考えることができます。
@@ -54,9 +54,4 @@ JSON 形式のサンプル ルート テーブル
 * [UDR](../articles/virtual-network/virtual-networks-udr-overview.md)の詳細を確認します。
 * ルート テーブルに関しては、 [REST API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/mt502549.aspx) を確認してください。
 * ユーザー定義ルート (UDR) に関しては、 [REST API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/mt502539.aspx) を確認してください。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

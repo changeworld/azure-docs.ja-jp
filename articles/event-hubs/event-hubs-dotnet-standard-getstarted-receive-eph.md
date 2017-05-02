@@ -15,18 +15,18 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: c86a1feee02bbf8580a40119ac140528217e435d
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: e286693b585a5991dbecd537fe5cd6621dd27e01
+ms.lasthandoff: 04/26/2017
 
 ---
 
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>.NET Standard で EventProcessorHost を使用したメッセージ受信を開始する
 
 > [!NOTE]
-> このサンプルは [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/SampleEphReceiver) で入手できます。
+> このサンプルは [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) で入手できます。
 
-このチュートリアルでは、**EventProcessorHost** を使用して Event Hub からメッセージを受信する .NET Core コンソール アプリケーションの記述方法を説明します。 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/SampleEphReceiver) ソリューションをそのまま実行するには、文字列を Event Hub とストレージ アカウントの値に置き換えます。 または、このチュートリアルの手順に従って独自のものを作成します。
+このチュートリアルでは、**EventProcessorHost** を使用してイベント ハブからメッセージを受信する .NET Core コンソール アプリケーションの記述方法を説明します。 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) ソリューションをそのまま実行するには、文字列をイベント ハブとストレージ アカウントの値に置き換えます。 このチュートリアルの手順に従って独自のものを作成します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 03/28/2017
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs 名前空間とイベント ハブを作成する  
 
-最初のステップでは、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[この記事](event-hubs-create.md)の手順を踏み、次のステップに進みます。  
+最初のステップでは、[Azure Portal](https://portal.azure.com) を使用して イベント ハブ型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[この記事](event-hubs-create.md)の手順を踏み、次のステップに進みます。  
 
 ## <a name="create-an-azure-storage-account"></a>Azure のストレージ アカウントの作成  
 
@@ -121,7 +121,7 @@ Visual Studio を起動します。 **[ファイル]** メニューの **[新規
     using System.Threading.Tasks;
     ```
 
-2. Event Hubs 接続文字列、Event Hub 名、ストレージ アカウント コンテナー名、ストレージ アカウント名、およびストレージ アカウント キーの `Program` クラスに定数を追加します。 プレースホルダーを対応する値に置き換えて、次のコードを追加します。
+2. イベント ハブ接続文字列、イベント ハブ名、ストレージ アカウント コンテナー名、ストレージ アカウント名、およびストレージ アカウント キーの `Program` クラスに定数を追加します。 プレースホルダーを対応する値に置き換えて、次のコードを追加します。
 
     ```csharp
     private const string EhConnectionString = "{Event Hubs connection string}";
@@ -211,13 +211,13 @@ Visual Studio を起動します。 **[ファイル]** メニューの **[新規
 
 4. プログラムを実行し、エラーがないことを確認します。
 
-お疲れさまでした。 イベント プロセッサ ホストを使用して、イベント ハブからメッセージを受信しました。
+ご利用ありがとうございます。 イベント プロセッサ ホストを使用して、イベント ハブからメッセージを受信しました。
 
 ## <a name="next-steps"></a>次のステップ
 Event Hubs の詳細については、次のリンク先を参照してください:
 
 * [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
-* [Event Hub を作成する](event-hubs-create.md)
+* [イベント ハブの作成](event-hubs-create.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)
 
 [1]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/event-hubs-python1.png

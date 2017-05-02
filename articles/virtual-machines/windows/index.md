@@ -12,16 +12,30 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: d6358d1a44b85a475cdf2d489112244152f64395
-ms.lasthandoff: 04/08/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 631eb4c8aa3a41e03cf623fcc5610d3e84f18ec4
+ms.lasthandoff: 04/22/2017
 
 ---
 <div class="content">
     <h1>Windows 仮想マシンのドキュメント</h1>
-    <p style="padding-bottom: 0px; max-width: 1050px;">Azure Windows 仮想マシンでは、Windows Server を使用して、セキュリティで保護された高スケールな仮想化インフラストラクチャをオンデマンドで構築できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Windows VM の作成、構成、管理、スケーリングを行う方法を確認してください。</p>
-<h2 style="margin-top: 36px; margin-bottom: 0px;">クイック スタート</h2>
-<p style="margin-top: 6px; margin-bottom: 6px;">Windows VM の作成には次のいずれかを使用します。</p>
+    <div class="introHolder" style="justify-content: space-between;">
+        <div class="intro" style="min-width: 200px">
+            <p>Azure Windows 仮想マシンでは、Windows Server を使用して、セキュリティで保護された高スケールな仮想化インフラストラクチャをオンデマンドで構築できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Windows VM の作成、構成、管理、スケーリングを行う方法を確認してください。</p>
+        </div>
+        <a href="https://azure.microsoft.com/en-us/resources/videos/create-windows-server-virtual-machine/">
+            <div class="calloutHolder" style="max-width: 250px">
+                <div>
+                    <img src="media/index/create-windows-server-virtual-machine.png" style="width: 250px" />
+                </div>
+                <div>
+                    <p style="margin-top: 0; color: #6e6e6e">Windows Server 仮想マシンを作成する。 (3:58)</p>
+                </div>
+            </div>
+        </a>
+    </div>
+<h2 style="margin-top: 0px; margin-bottom: 0px;">5 分間のクイック スタート</h2>
+<p style="margin-top: 6px; margin-bottom: 6px;">Windows Server 2016 を実行している仮想マシン内で IIS Web サーバーをデプロイする方法について説明します。</p>
 <div class="ico48Case">
     <div class="ico48Link">
         <a href="/azure/virtual-machines/virtual-machines-windows-quick-create-portal?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">
@@ -42,37 +56,82 @@ ms.lasthandoff: 04/08/2017
         </a>
     </div>
 </div>
-<div class="columnHolder">
-    <div class="column50">
-        <h2 style="margin-top: 36px">Tutorials (チュートリアル)</h2>
-        <p>Windows 仮想マシンを構築してデプロイします。</p>
-        <ul class="spaced">
-            <li><a href="/azure/virtual-machines/virtual-machines-windows-tutorial-manage-vm?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">Windows VM の作成と管理</a></li>
-            <li><a href="/azure/virtual-machines/virtual-machines-windows-load-balanced-iis-tutorial?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">高可用性 VM の負荷分散</a></li>
-        </ul>
-        <h2>サンプル</h2>
-        <p>初めてのアプリケーションを Azure にデプロイします。</p>
-        <ul class="spaced">
-            <li><a href="/azure/virtual-machines/virtual-machines-windows-cli-samples?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">Azure CLI</a></li>
-            <li><a href="/azure/virtual-machines/virtual-machines-windows-powershell-samples?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">Azure PowerShell</a></li>
-        </ul>
-    </div>
-    <div class="column50" style="max-width: 400px">
-        <h2 style="margin-top: 36px">無料のビデオ トレーニング</h2>
-        <a href="https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">
-            <img src="media/index/video-training-infrastructure.png" width="400" alt="" />
-            <p style="margin-top: 0px">無料の Pluralsight ビデオ トレーニング - インフラストラクチャの管理</a></p>
-            <p style="margin-top: 36px"></p>
-                <a href="https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">
-            <img src="media/index/video-training-vms.png" width="400" alt="" />
-            <p style="margin-top: 0px">無料の Pluralsight ビデオ トレーニング - 仮想マシンの概要</a></p>
-        <p style="margin-top: 36px"></p>
-        <a href="https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">
-            <img src="media/index/video-training-iaas-monitoring.png" width="400" alt="" />
-            <p style="margin-top: 0px">無料の Pluralsight ビデオ トレーニング - IaaS 監視の概要</a></p>
-    </div>
-</div>
-<hr />
+
+<h2 style="margin-top: 36px">ステップバイステップのチュートリアル</h2>
+<p>Azure で Windows VM のデプロイ、管理、スケーリングを行う方法について説明します</p>
+<ol>
+   <li><a href="/azure/virtual-machines/windows/tutorial-manage-vm">Windows VM の作成と管理</a></li>
+    <li><a href="/azure/virtual-machines/windows/tutorial-manage-data-disk">VM ディスクの作成と管理</a></li>
+    <li><a href="/azure/virtual-machines/windows/tutorial-automate-vm-deployment">VM 構成の自動化</a></li>
+    <li><a href="/azure/virtual-machines/windows/tutorial-load-balancer">VM の負荷分散</a></li>
+    <li><a href="/azure/virtual-machines/windows/tutorial-virtual-network">VM ネットワークの管理</a></li>
+</ol>
+
+<h2 style="margin-top: 36px">無料の Pluralsight ビデオ トレーニング</h2>
+<ul class="panelContent cardsW">
+    <li style="flex: 0 1 25%">
+        <a href="https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02"> 
+            <div class="cardSize">
+                <div class="cardPadding">
+                    <div class="card">
+                       <div class="cardImageOuter">
+                            <div class="cardImage">
+                                <img style="max-width: 100%" alt="" src="media/index/video-training-infrastructure.png" data-linktype="external">
+                            </div>
+                        </div>
+                        <div class="cardText">
+                            <p>インフラストラクチャの管理</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+    <li style="flex: 0 1 25%">
+        <a href="https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02"> 
+            <div class="cardSize">
+                <div class="cardPadding">
+                    <div class="card">
+                       <div class="cardImageOuter">
+                            <div class="cardImage">
+                                <img style="max-width: 100%" alt="" src="media/index/video-training-vms.png" data-linktype="external">
+                            </div>
+                        </div>
+                        <div class="cardText">
+                            <p>Virtual Machines の概要</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+    <li style="flex: 0 1 25%">
+        <a href="https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02"> 
+            <div class="cardSize">
+                <div class="cardPadding">
+                    <div class="card">
+                       <div class="cardImageOuter">
+                            <div class="cardImage">
+                                <img style="max-width: 100%" alt="" src="media/index/video-training-iaas-monitoring.png" data-linktype="external">
+                            </div>
+                        </div>
+                        <div class="cardText">
+                            <p>IaaS 監視の概要</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+</ul>
+
+<h2>サンプル</h2>
+<p>初めてのアプリケーションを Azure にデプロイします。</p>
+<ul class="spaced">
+    <li><a href="/azure/virtual-machines/virtual-machines-windows-cli-samples?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">Azure CLI</a></li>
+    <li><a href="/azure/virtual-machines/virtual-machines-windows-powershell-samples?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">Azure PowerShell</a></li>
+</ul>
+
 <h2 style="margin-top: 36px">リファレンス</h2>
 <ul class="panelContent cardsW">
     <li>

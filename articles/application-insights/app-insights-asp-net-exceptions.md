@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 2f046ff687985a5c4f83ca7236ce832b4c81ea6e
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: d55892027a01bc9a1be2455d5d9bfee05b6fb982
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -28,6 +28,7 @@ ms.lasthandoff: 03/18/2017
   * [Application Insights SDK](app-insights-asp-net.md) をアプリ コードにインストールする
   * IIS Web サーバー: [Application Insights エージェント](app-insights-monitor-performance-live-website-now.md)を実行する
   * Azure Web アプリ: [Application Insights Extension](app-insights-azure-web-apps.md) を追加する
+  * Java Web アプリ: [Java エージェント](app-insights-java-agent.md)をインストールする
 * ブラウザー例外をキャッチする [JavaScript スニペット](app-insights-javascript.md)を Web ページにインストールします。
 * 一部のアプリケーション フレームワークまたは一部の設定では、より多くの例外をキャッチするために余分の手順を実行する必要があります。
   * [Web フォーム](#web-forms)
@@ -56,7 +57,7 @@ Visual Studio で Application Insights の [検索] ウィンドウを開き、�
 
 ![例外の CodeLens 通知。](./media/app-insights-asp-net-exceptions/35.png)
 
-## <a name="diagnosing-failures-using-the-azure-portal"></a>Azure ポータルを使用して障害を診断する
+## <a name="diagnosing-failures-using-the-azure-portal"></a>Azure Portal を使用して障害を診断する
 アプリの Application Insights の概要の [障害] タイルには、例外と失敗した HTTP 要求のグラフ、最も頻繁に発生する障害の原因となる要求 URL の一覧が表示されます。
 
 ![[設定]、[障害] を選択する](./media/app-insights-asp-net-exceptions/012-start.png)

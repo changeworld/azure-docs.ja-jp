@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 632100f324c47d69f64cff020aafbaa300ae8c2b
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 47f450ee87dac3db2ccf7659928d52a6330a5697
+ms.lasthandoff: 04/06/2017
 
 
 ---

@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2017
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 186b8331d2fcfc16bd41eb08badb200e2abf9e30
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: e22a1ccb958942cfa3c67194430af6bc74fdba64
+ms.openlocfilehash: 1072148f11052a643bdc70239029a651d9d71dda
+ms.lasthandoff: 04/05/2017
 
 
 ---
@@ -39,26 +39,26 @@ Azure Virtual Network サービスでは、仮想ネットワーク (VNet) を�
 
 ## <a name = "isolation"></a>ネットワークの分離とセグメント化
 
-各 Azure サブスクリプションと Azure リージョン内に複数の VNet を実装できます。 VNet どうしは分離されています。 各 VNet では、次のことを実行できます。
+各 Azure [サブスクリプション](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)と Azure [リージョン](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region)内に複数の VNet を実装できます。 VNet どうしは分離されています。 各 VNet では、次のことを実行できます。
 - パブリックおよびプライベート (RFC 1918) アドレスを使用して、カスタム プライベート IP アドレス空間を指定する。 Azure は、VNet に接続されているリソースに、割り当てたアドレス空間のプライベート IP アドレスを割り当てます。
 - VNet を 1 つ以上のサブネットに分割し、各サブネットに VNet のアドレス空間の一部を割り当てる。
 - Azure で提供される名前解決を使用するか、VNet に接続されたリソースで使用するために独自の DNS サーバーを指定する。 VNet での名前解決の詳細については、[VM と Cloud Services の名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md)に関する記事を参照してください。
 
-## <a name = "internet"></a>インターネットへの接続
+## <a name = "internet"></a>インターネットに接続する
 VNet に接続されているすべてのリソースは、既定で、インターネットに送信接続されています。 リソースのプライベート IP アドレスは、Azure インフラストラクチャによりプライベート IP アドレスへの送信元ネットワーク アドレス変換 (SNAT) が行われています。 インターネットへの送信接続の詳細については、「[Azure の送信用接続の詳細](..\load-balancer\load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json#standalone-vm-with-no-instance-level-public-ip-address)」を参照してください。 カスタム ルーティングとトラフィック フィルタリングを実装することで、既定の接続を変更できます。
 
 インターネットから Azure リソースへの着信接続、または SNAT なしでインターネットへの送信接続を行うには、リソースにパブリック IP アドレスを割り当てる必要があります。 パブリック IP アドレスの詳細については、「[パブリック IP アドレス](virtual-network-public-ip-address.md)」を参照してください。
 
-## <a name="within-vnet"></a>Azure リソースの接続
+## <a name="within-vnet"></a>Azure リソースに接続する
 VNet には、仮想マシン (VM)、クラウド サービス、App Service 環境、仮想マシン スケール セットなど、複数の Azure リソースを接続できます。 VM は、ネットワーク インターフェイス (NIC) を経由して VNet 内のサブネットに接続します。 NIC の詳細については、「[ネットワーク インターフェイス](virtual-network-network-interface.md)」を参照してください。
 
-## <a name="connect-vnets"></a>仮想ネットワークの接続
+## <a name="connect-vnets"></a>仮想ネットワークを接続する
 
 VNet を相互に接続できるため、一方の VNet に接続されているリソースは、VNet をまたいで相互に通信できます。 次のオプションのいずれかまたは両方を使用して、複数の VNet を相互に接続できます。
 - **ピアリング:** 同じ Azure の場所内の別の Azure VNet に接続されているリソースの相互接続を可能にします。 複数の VNet の間での帯域幅と待ち時間は、リソースが同じ VNet に接続されている場合と同じです。 ピアリングの詳細については、「[仮想ネットワーク ピアリング](virtual-network-peering-overview.md)」を参照してください。
 - **VNet 間接続:** 同じまたは異なる Azure の場所内の別の Azure VNet に接続されているリソースの相互接続を有効にします。 ピアリングとは異なり、VNet 間での帯域幅は制限されます。これは、トラフィックが Azure VPN ゲートウェイを通過する必要があるためです。 VNet 間接続を使用した VNet 接続の詳細については、[VNet 間接続の構成](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事を参照してください。
 
-## <a name="connect-on-premises"></a>オンプレミス ネットワークへの接続
+## <a name="connect-on-premises"></a>オンプレミス ネットワークに接続する
 
 オンプレミス ネットワークを VNet に接続するには、次のオプションを組み合わせて使用します。
 - **ポイント対サイト仮想プライベート ネットワーク (VPN):** ネットワークに接続されている 1 台の PC と VNet の間で確立されます。 この接続の種類は、既存のネットワークへの変更をほとんどまたはまったく必要としないため、Azure を使い始めたばかりのユーザーまたは開発者に適しています。 この接続は、SSTP プロトコルを使用して、PC と VNet の間にインターネット経由の暗号化された通信を提供します。 トラフィックがインターネットを経由するため、ポイント対サイト VPN の待ち時間は予測できません。これは暗号化されています。
@@ -67,14 +67,12 @@ VNet を相互に接続できるため、一方の VNet に接続されている
 
 ここまでに説明したすべての接続オプションの詳細については、「[接続トポロジの図](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#a-namediagramsaconnection-topology-diagrams)」を参照してください。
 
-## <a name="filtering"></a>ネットワーク トラフィックのフィルター処理
-<!---Get confirmation that a UDR on the gateway subnet is supported. Need to provide some additional info as to the key differences between the two options.--->
-
+## <a name="filtering"></a>ネットワーク トラフィックをフィルター処理する
 次のオプションのいずれかまたは両方を使用して、サブネット間のネットワーク トラフィックをフィルター処理できます。
 - **ネットワーク セキュリティ グループ (NSG):** 各 NSG には、送信元と送信先の IP アドレス、ポート、およびプロトコルでトラフィックをフィルター処理できるようにする受信と送信のセキュリティ規則を複数含めることができます。 NSG は VM の各 NIC に適用できます。 NSG は、NIC または他の Azure リソースが接続されているサブネットに適用することもできます。 NSG について詳しくは、[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)に関する記事をご覧ください。
 - **ネットワーク仮想アプライアンス (NVA):** NVA とは、ファイアウォールなどのネットワーク機能を実行するソフトウェアが動作している VM です。 入手可能な NVA の一覧については、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances) を参照してください。 WAN の最適化やその他のネットワーク トラフィック機能を提供する NVA も入手できます。 通常、NVA はユーザー定義ルートまたは BGP ルートで使用されます。 また、NVA を使用して、VNet 間のトラフィックをフィルター処理することもできます。
 
-## <a name="routing"></a>ネットワーク トラフィックのルーティング
+## <a name="routing"></a>ネットワーク トラフィックをルーティングする
 
 Azure では、VNet 内の任意のサブネットに接続されている複数のリソースが相互通信できるようにするルート テーブルが既定で作成されます。 次のオプションのいずれかまたは両方を実装して、Azure によって作成される既定のルートを上書きできます。
 - **ユーザー定義ルート:** サブネットごとにトラフィックのルーティング先を制御するルートを含むカスタム ルート テーブルを作成できます。 ユーザー定義ルートについて詳しくは、[ユーザー定義のルート](virtual-networks-udr-overview.md)に関する記事をご覧ください。

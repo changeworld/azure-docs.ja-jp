@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/10/2017
+ms.date: 04/26/2017
 ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: 8f171456f74925eba16ebd6f56ced558a11f9d99
 ms.openlocfilehash: 7d2cc99925e01f8135f04f5863f798e13d7413e3
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -100,9 +101,4 @@ Azure AD では、グループのメンバーとして追加するユーザー�
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 * [Azure Active Directory とは](active-directory-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

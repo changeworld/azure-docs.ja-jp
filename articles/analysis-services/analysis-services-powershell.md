@@ -12,12 +12,12 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2017
+ms.date: 04/18/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: c0dd85570f052c4a9651faecbaeb3eaa181f9017
-ms.openlocfilehash: b00b2cf1d3a54bba716d7470643aa1a5e6a58633
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 478703542edeee1b40fb5714c91dd6a75bb17513
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -47,19 +47,21 @@ Azure Analysis Services コマンドレットは、[AzureRM.AnalysisServices](ht
 |[Test-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.analysisservices/v3.0.0/test-azurermanalysisservicesserver)|サーバー インスタンスの存在をテストします。| 
 
 ## <a name="database-operations"></a>データベース操作
-Azure Analysis Services のデータベース操作では、SQL Server Analysis Services と同じ [SQLASCMDLETS](https://msdn.microsoft.com/library/hh758425.aspx) モジュールが使用されます。 ただし、すべてのコマンドレットが、Azure Analysis Services プレビューでサポートされているわけではありません。 
+Azure Analysis Services のデータベース操作では、SQL Server Analysis Services と同じ [SQLASCMDLETS](https://msdn.microsoft.com/library/hh758425.aspx) モジュールが使用されます。 ただし、すべてのコマンドレットが、Azure Analysis Services でサポートされているわけではありません。 
 
-SQLASCMDLETS モジュールには、タスク固有のデータベース管理コマンドレットと、Tabular Model Scripting Language (TMSL) クエリまたはスクリプトを受け入れる汎用 Invoke-ASCmd コマンドレットが用意されています。 以下の SQLASCMDLETS モジュールのコマンドレットは、Azure Analysis Services プレビューでサポートされます。
+SQLASCMDLETS モジュールには、タスク固有のデータベース管理コマンドレットと、Tabular Model Scripting Language (TMSL) クエリまたはスクリプトを受け入れる汎用 Invoke-ASCmd コマンドレットが用意されています。 以下の SQLASCMDLETS モジュールのコマンドレットは、Azure Analysis Services でサポートされます。
   
 |コマンドレット|説明|
 |------------|-----------------| 
 |[Add-RoleMember](https://msdn.microsoft.com/library/hh510167.aspx)|データベース ロールにメンバーを追加します。| 
+|[Backup-ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/backup-asdatabase-cmdlet)|Analysis Services データベースをバックアップします。|  
 |[Remove-RoleMember](https://msdn.microsoft.com/library/hh510173.aspx)|データベース ロールからメンバーを削除します。|   
 |[Invoke-ASCmd](https://msdn.microsoft.com/library/hh479579.aspx)|TMSL スクリプトを実行します。|
 |[Invoke-ProcessASDatabase](https://msdn.microsoft.com/library/mt651773.aspx)|データベースを処理します。|  
 |[Invoke-ProcessPartition](https://msdn.microsoft.com/library/hh510164.aspx)|パーティションを処理します。| 
 |[Invoke-ProcessTable](https://msdn.microsoft.com/library/mt651774.aspx)|テーブルを処理します。|  
 |[Merge-Partition](https://msdn.microsoft.com/library/hh479576.aspx)|パーティションをマージします。|  
+|[Restore-ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/restore-asdatabase-cmdlet)|Analysis Services データベースを復元します。| 
   
 
 ## <a name="related-information"></a>関連情報

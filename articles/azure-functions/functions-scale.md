@@ -14,13 +14,13 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/14/2017
+ms.date: 04/04/2017
 ms.author: dariagrigoriu, glenga
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: 4eb138348686e9d7befe4d5433d174374977c2a1
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: cea92fe434288012a398f6821bc9cd7ab85b7d3e
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -43,6 +43,8 @@ Azure Functions には、従量課金プランと App Service プランの 2 つ
 ### <a name="app-service-plan"></a>App Service プラン
 
 **App Service プラン**では、関数アプリは専用の VM 上で実行されます。これは、現在、Web アプリが Basic、Standard、または Premium SKU で動作するのと同様です。 専用 VM は App Service アプリと関数アプリに割り当てられ、コードがアクティブに実行されているかどうかに関係なく、常に使用できます。 このプランは、他のコードを既に実行している既存の VM があるが使用率が低い場合、または (ほぼ) 継続的に関数を実行する予定がある場合に適したオプションです。 VM を使用すると、コストが実行時間とメモリ サイズの両方から切り離されます。 その結果、長時間実行される多数の関数のコストを、それらを実行する VM のコストに制限できます。 App Service プランの仕組みの詳細については、「[Azure App Service プランの詳細な概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)」を参照してください。 
+
+App Service プランでは、シングルコア VM インスタンスを追加することで手動でスケールアウトするか、自動スケールを有効にすることができます。 詳細については、「[手動または自動によるインスタンス数のスケール変更](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json)」を参照してください。 別の App Service プランを選択してスケールアップすることもできます。 詳細については、 [Azure でのアプリのスケールアップ](../app-service-web/web-sites-scale.md) に関するページを参照してください。 App Service プランで JavaScript 関数を実行する予定がある場合は、コアの少ないプランを選択してください。 詳細については、「[JavaScript 関数リファレンス](functions-reference-node.md#choose-single-core-app-service-plans)」を参照してください。  
 
 ## <a name="how-the-consumption-plan-works"></a>従量課金プランの仕組み
 

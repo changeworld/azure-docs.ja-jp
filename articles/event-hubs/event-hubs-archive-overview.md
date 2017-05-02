@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/22/2017
 ms.author: darosa;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: 95a927d8c2fbfbcb6aa663985d078d5146c489aa
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: f86336de4e1d5bda1eba12f0f95079b950963bde
+ms.lasthandoff: 04/19/2017
 
 
 ---
 # <a name="azure-event-hubs-archive"></a>Azure Event Hubs Archive の概要
-Azure Event Hubs Archive を利用すると、Event Hubs のストリーミング データを任意の BLOB ストレージ アカウントに自動的に配信できます。その際、時間やサイズを柔軟に指定可能です。 Archive の設定は手軽で、実行に伴う管理コストは生じません。また、Event Hubs の[スループット単位](event-hubs-what-is-event-hubs.md#capacity)に応じて自動的にスケールします。 Event Hubs Archive は Azure にストリーミング データを読み込む最も簡単な方法であり、これを利用すれば、データのキャプチャではなくデータの処理に注力できるようになります。
+Azure Event Hubs Archive を利用すると、Event Hubs のストリーミング データを任意の Blob Storage アカウントに自動的に配信できます。その際、時間やサイズを柔軟に指定可能です。 Archive の設定は手軽で、実行に伴う管理コストは生じません。また、Event Hubs の[スループット単位](event-hubs-what-is-event-hubs.md#capacity)に応じて自動的にスケールします。 Event Hubs Archive は Azure にストリーミング データを読み込む最も簡単な方法であり、これを利用すれば、データのキャプチャではなくデータの処理に注力できるようになります。
 
 Event Hubs Archive を利用すると、リアルタイムおよびバッチベースのパイプラインを同じストリームで処理できます。 そのため、変化するニーズに合わせて拡大可能なソリューションを構築できます。 将来のリアルタイム処理を視野に入れてバッチベースのシステムを構築している場合も、既存のリアルタイム ソリューションに効率的なコールド パスを追加したいと考えている場合も、Event Hubs Archive ならストリーミング データの操作が容易です。
 
 ## <a name="how-event-hubs-archive-works"></a>Event Hubs Archive の機能のしくみ
-Event Hubs は分散ログに似た、テレメトリの受信のための持続的バッファーです。 Event Hubs におけるスケールの鍵となるのは、 [パーティション分割されたコンシューマー モデル](event-hubs-what-is-event-hubs.md#partitions)です。 各パーティションは独立したデータのセグメントであり、個別に使用されます。 このデータは、構成可能なリテンション期間に基づいて、所定のタイミングで破棄されます。 そのため、特定のイベント ハブが "いっぱい" になることはありません。
+Event Hubs は分散ログに似た、テレメトリの受信のための持続的バッファーです。 Event Hubs でのスケーリングの鍵となるのは、[パーティション分割されたコンシューマー モデル](event-hubs-what-is-event-hubs.md#partitions)です。 各パーティションは独立したデータのセグメントであり、個別に使用されます。 このデータは、構成可能なリテンション期間に基づいて、所定のタイミングで破棄されます。 そのため、特定のイベント ハブが "いっぱい" になることはありません。
 
 Event Hubs Archive では、アーカイブされたデータを格納するための独自の Azure BLOB ストレージ アカウントとコンテナーを指定することができます。 このアカウントのリージョンはイベント ハブと同じであっても、別のリージョンであってもかまわないため、Event Hubs Archive 機能の柔軟性がさらに高まっています。
 
@@ -53,7 +53,7 @@ Event Hubs Archive は、構成後、最初のイベントを送信するとす�
 ![][1]
 
 ## <a name="adding-archive-to-an-existing-event-hub"></a>既存のイベント ハブへの Archive の追加
-Event Hubs 名前空間内の既存の Event Hubs で Archive を構成できます。 この機能は以前の **Messaging** または **Mixed** 型の名前空間では利用できません。 既存のイベント ハブで Archive を有効にするか、Archive の設定を変更するには、名前空間をクリックして **[要点]** ブレードを読み込み、Archive の有効化または Archive 設定の変更を行う対象のイベント ハブをクリックします。 最後に、次の図に示すように、開いているブレードの **[プロパティ]** セクションをクリックします。
+Event Hubs 名前空間内の既存のイベント ハブで Archive を構成できます。 この機能は以前の **Messaging** または **Mixed** 型の名前空間では利用できません。 既存のイベント ハブで Archive を有効にするか、Archive の設定を変更するには、名前空間をクリックして **[要点]** ブレードを読み込み、Archive の有効化または Archive 設定の変更を行う対象のイベント ハブをクリックします。 最後に、次の図に示すように、開いているブレードの **[プロパティ]** セクションをクリックします。
 
 ![][2]
 

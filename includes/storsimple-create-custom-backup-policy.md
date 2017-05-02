@@ -6,7 +6,7 @@
    
    1. バックアップ ポリシー名を指定します。
    2. このポリシーに追加するボリュームを選択します。 ドロップダウン リストで複数のボリュームを選択して追加することもできます。
-   3. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png) をクリックします。
+   3. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png)をクリックします。
       
       ポリシーが正常に作成されると、通知が表示されます。 [バックアップ ポリシー] ページも更新され、新しく作成されたポリシーが表示されます。
 3. ポリシー名 (最初の列) をクリックして、作成したポリシーの詳細にドリルダウンします。
@@ -19,14 +19,9 @@
    4. 保有期間を選択します。 保存期間の選択肢はバックアップの頻度によって異なります。
    5. ポリシーの開始日時を選択します。
    6. ポリシーを有効にするチェック ボックスをオンにします。
-6. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png)  をクリックして完了します。
+6. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png) をクリックして完了します。
 7. ポリシーの詳細が再び表示されます。 **[保存]** をクリックして、このポリシーに加えた変更を保存します。 ポリシーが保存されると、通知が表示されます。
 8. **[バックアップ ポリシー]** ページに戻ります。 バックアップ ポリシーの表形式の一覧が更新され、変更したポリシーが表示されます。
    
-    ![Custom backup policy](./media/storsimple-create-custom-backup-policy/HCS_CustomBackupPolicyM-include.png) をクリックします。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+    ![Custom backup policy](./media/storsimple-create-custom-backup-policy/HCS_CustomBackupPolicyM-include.png)をクリックします。
 

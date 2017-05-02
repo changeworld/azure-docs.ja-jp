@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/20/2017
+ms.date: 04/04/2017
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 38546a1cc3ae1696dbb37d4dd47d2d540ecd08fa
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 76b43c78341abb638e2ede97f68c05ee6df0700f
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -313,6 +313,96 @@ public class Order
 * `#load "..\shared\mylogger.csx"` によって、関数フォルダーと同じレベル ( *wwwroot*の直下) にあるフォルダーのファイルが読み込まれます。
 
 `#load` ディレクティブは、*.csx* (C# スクリプト) ファイルでのみ機能し、*.cs* ファイルでは機能しません。 
+
+## <a name="versioning"></a>バージョン管理
+
+Functions ランタイムは Function App のサイト拡張として実行します。 サイト拡張は、Azure App Service、Web サイト、または Function App に機能を追加するための機能拡張ポイントです。 `Kudu` および `Monaco` はサイト拡張の 2 つの例で、カスタム拡張も作成および使用できます。 `FUNCTIONS_EXTENSION_VERSION` アプリ設定を使用して拡張のバージョンを構成できます。
+
+`FUNCTIONS_EXTENSION_VERSION` は、ランタイムのメジャー バージョンのみを設定します。 たとえば、「~1」の値は、Function App がそのメジャー バージョンとして 1 を使用することを示します。 Function App は、リリースされたときにそれぞれの新しいマイナー バージョンにアップグレードされます。 これにより、バージョンをいつアップグレードするかを管理して、重大な変更を回避できます。
+
+さらに、ランタイムがポータルの既定のバージョンになる前に、ランタイムをアップグレードすることがあります。 その場合は、`FUNCTIONS_EXTENSION_VERSION` の設定を古い値に戻すことでいつでもロールバックできます。
+
+*Azure Function App のランタイム バージョンを決定するには:*
+
+Kudu の `D:\local\Config` フォルダーにある `applicationhost.config` ファイルを見つけます。 `virtualDirectory` エントリには関数の正確なランタイム バージョンが表示されます。 
+
+```xml
+<virtualDirectory path="/" physicalPath="D:\Program Files (x86)\SiteExtensions\Functions\0.8.10564" />
+```
+この値を使用して、Function App の特定のメジャーおよびマイナー ランタイム バージョンを設定できます。 Function App のバージョンを変更するたびに再起動する必要があります。
+
+## <a name="advanced-binding-at-runtime-imperative-binding"></a>実行時の高度なバインド (命令型のバインド)
+
+C# および他の .NET 言語では、*function.json* の[*宣言型*](https://en.wikipedia.org/wiki/Declarative_programming)のバインドではなく[命令型](https://en.wikipedia.org/wiki/Imperative_programming)のバインド パターンを使用できます。 命令型のバインドは、設計時ではなくランタイム時にバインド パラメーターを計算する必要がある場合に便利です。 このパターンを使用すると、サポートされている任意の数の入力バインドと出力バインドに関数コード内でバインドできます。
+
+次のように命令型のバインドを定義します。
+
+- 必要な命令型のバインドの *function.json* にエントリを**含めないで**ください。
+- 入力パラメーター [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) または [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs) を渡します。 
+- 次の C# パターンを使用してデータ バインドを実行します。
+
+```cs
+using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
+{
+    ...
+}
+```
+
+ここで、`BindingTypeAttribute` はバインドを定義する .NET 属性、`T` はそのバインドの種類でサポートされている入力または出力の型です。 `T` も `out` パラメーター型 (`out JObject` など) にすることはできません。 たとえば、Mobile Apps テーブルの出力バインドは [6 種類の出力](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)をサポートしますが、`T` に使用できるのは [ICollector<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) または [IAsyncCollector<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) のみです。
+    
+次のコード例は、実行時に BLOB パスが定義された [Storage Blob の出力バインド](functions-bindings-storage-blob.md#storage-blob-output-binding)を作成し、この BLOB に文字列を書き込みます。
+
+```cs
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host.Bindings.Runtime;
+
+public static async Task Run(string input, Binder binder)
+{
+    using (var writer = await binder.BindAsync<TextWriter>(new BlobAttribute("samples-output/path")))
+    {
+        writer.Write("Hello World!!");
+    }
+}
+```
+
+[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) は [Storage Blob](functions-bindings-storage-blob.md) の入力バインドまたは出力バインドを定義します。[TextWriter](https://msdn.microsoft.com/library/system.io.textwriter.aspx) はサポートされている出力バインドの種類です。
+このコードは、ストレージ アカウントの接続文字列 (`AzureWebJobsStorage`) の既定のアプリケーション設定を取得します。 [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) を追加し、属性の配列を `BindAsync<T>()` に渡すことで、使用するカスタムなアプリケーション設定を指定できます。 たとえば、次のように入力します。
+
+```cs
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host.Bindings.Runtime;
+
+public static async Task Run(string input, Binder binder)
+{
+    var attributes = new Attribute[]
+    {    
+        new BlobAttribute("samples-output/path"),
+        new StorageAccountAttribute("MyStorageAccount")
+    };
+
+    using (var writer = await binder.BindAsync<TextWriter>(attributes))
+    {
+        writer.Write("Hello World!");
+    }
+}
+```
+
+次の表に、各バインドの種類の .NET 属性と、それらが定義されているパッケージを示します。 
+
+> [!div class="mx-codeBreakAll"]
+| バインド | Attribute | 参照の追加 |
+|------|------|------|
+| DocumentDB | [`Microsoft.Azure.WebJobs.DocumentDBAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.DocumentDB"` |
+| Event Hubs | [`Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs)、[`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.Jobs.ServiceBus"` |
+| Mobile Apps | [`Microsoft.Azure.WebJobs.MobileTableAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.MobileApps"` |
+| Notification Hubs | [`Microsoft.Azure.WebJobs.NotificationHubAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.NotificationHubs"` |
+| Service Bus | [`Microsoft.Azure.WebJobs.ServiceBusAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAttribute.cs)、[`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.WebJobs.ServiceBus"` |
+| ストレージ キュー | [`Microsoft.Azure.WebJobs.QueueAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs)、[`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
+| Storage Blob | [`Microsoft.Azure.WebJobs.BlobAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs)、[`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
+| ストレージ テーブル | [`Microsoft.Azure.WebJobs.TableAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs)、[`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
+| Twilio | [`Microsoft.Azure.WebJobs.TwilioSmsAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.Twilio"` |
+
+
 
 ## <a name="next-steps"></a>次のステップ
 詳細については、次のリソースを参照してください。

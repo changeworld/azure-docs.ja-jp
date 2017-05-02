@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/26/2017
+ms.date: 03/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: bd503bb141b5686f149c5fb46ba069db070d5fae
-ms.openlocfilehash: 99dbb3deefb066b619b839aa709fe5e9b804eb27
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: a6ca819329de130257ec67e63a53f87cbca9f39b
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/03/2017
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
 1. NetDocuments のアプリケーション統合の有効化
-2. シングル サインオンの構成
+2. シングル サインオン (SSO) の構成
 3. ユーザー プロビジョニングの構成
 4. ユーザーの割り当て
 
@@ -62,13 +62,13 @@ ms.lasthandoff: 02/03/2017
    
    ![NetDocuments](./media/active-directory-saas-netdocuments-tutorial/IC795042.png "NetDocuments")
    
-## <a name="configuring-single-sign-on"></a>シングル サインオンの構成
+## <a name="configure-single-sign-on"></a>Configure single sign-on
 
 このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで NetDocuments に対する認証を行えるようにする方法を説明します。  
 
-NetDocuments にシングル サインオンを構成するには、証明書の拇印の値を取得する必要があります。 この手順に慣れていない場合は、「 [How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
+NetDocuments の SSO を構成するには、証明書からサムプリント値を取得する必要があります。 この手順に慣れていない場合は、「 [How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
 
-**シングル サインオンを構成するには、次の手順に従います。**
+**構成された SSO を取得するには、次の手順を実行します。**
 
 1. Azure クラシック ポータルの **NetDocuments** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
    
@@ -83,10 +83,11 @@ NetDocuments にシングル サインオンを構成するには、証明書の
    1. **[サインオン URL]** ボックスに、ユーザーが NetDocuments アプリケーションへのサインオンに使用する URL を入力します (例: "*https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=CA-JI1BG3H1*")。
    2. **[NetDocuments 応答 URL]** ボックスに、**[サインオン URL]** ボックスに入力したのと同じ値を入力します。  
       
-      > [!NOTE]
-      > 適切な値は、 **フェデレーション ID** ダイアログの最後に見つけることができます (ステップ 9 のスクリーン ショットをご覧ください)。
-      > 
-      
+      >[!NOTE]
+      >適切な値は、 **フェデレーション ID** ダイアログの最後に見つけることができます (ステップ 9 のスクリーン ショットをご覧ください)。
+      >
+      >
+     
    3. **[次へ]**をクリックします。
 4. **[NetDocuments でのシングル サインオン構成]** ページで、証明書をダウンロードするには、**[証明書のダウンロード]** をクリックし、コンピューターにローカルで証明書ファイルを保存します。
    
@@ -110,7 +111,7 @@ NetDocuments にシングル サインオンを構成するには、証明書の
     
     ![シングル サインオンの構成](./media/active-directory-saas-netdocuments-tutorial/IC795050.png "Configure Single Sign-On")
     
-## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
+## <a name="configure-user-provisioning"></a>[ユーザー プロビジョニングの構成]
 
 Azure AD ユーザーが NetDocuments にログインできるようにするには、そのユーザーを NetDocuments にプロビジョニングする必要があります。 NetDocuments の場合、プロビジョニングは手動で行います。
 
@@ -127,16 +128,17 @@ Azure AD ユーザーが NetDocuments にログインできるようにするに
    
    ![電子メール アドレス](./media/active-directory-saas-netdocuments-tutorial/IC795053.png "電子メール アドレス")
    
-   > [!NOTE]
-   > Azure Active Directory のアカウント所有者には、アカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
+   >[!NOTE]
+   >Azure Active Directory のアカウント所有者には、アカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
    > 
    > 
 
-> [!NOTE]
-> 他の NetDocuments ユーザー アカウントの作成ツールまたは NetDocuments から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
-> 
+>[!NOTE]
+>他の NetDocuments ユーザー アカウントの作成ツールまたは NetDocuments から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>
+>
 
-## <a name="assigning-users"></a>ユーザーの割り当て
+## <a name="assign-users"></a>[ユーザーの割り当て]
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
 **ユーザーを NetDocuments に割り当てるには、次の手順に従います。**
@@ -149,6 +151,9 @@ Azure AD ユーザーが NetDocuments にログインできるようにするに
    
    ![はい](./media/active-directory-saas-netdocuments-tutorial/IC767830.png "Yes")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
+SSO の設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
+## <a name="additional-resources"></a>その他のリソース
 
+* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)

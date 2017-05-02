@@ -3,8 +3,3 @@
 
 ![MultiNIC シナリオ](./media/virtual-network-deploy-multinic-scenario-include/Figure1.png)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

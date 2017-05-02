@@ -17,8 +17,3 @@
        ![Modify Volume Container with Bandwidth Template 2](./media/storsimple-modify-volume-container/HCS_ModifyVCBT2-include.png)
    3. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-modify-volume-container/HCS_CheckIcon-include.png) をクリックして、更新した設定を保存します。 **[ボリューム コンテナー]** ページが更新され、変更が反映されます。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

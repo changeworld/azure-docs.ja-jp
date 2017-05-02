@@ -15,17 +15,17 @@ ms.workload: NA
 ms.date: 02/10/2017
 ms.author: vturecek
 translationtype: Human Translation
-ms.sourcegitcommit: 57aec98a681e1cb5d75f910427975c6c3a1728c3
-ms.openlocfilehash: f08fc1df10506dead5d049fb2c6cdc29c8f89d90
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: c0eda3f6648c085a7328c6271ed36eafde5ff142
+ms.lasthandoff: 04/14/2017
 
 
 ---
 # <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Service Fabric Reliable Actors 型のシリアル化に関する留意事項
-すべてのメソッドの引数、アクター インターフェイスの各メソッドによって返されるタスクの結果の型、アクターの状態マネージャーに保存されるオブジェクトは、[シリアル化可能なデータ コントラクト](https://msdn.microsoft.com/library/ms731923.aspx)である必要があります。 これは、[アクター イベント インターフェイス](service-fabric-reliable-actors-events.md)で定義されているメソッドの引数にも当てはまります。 (アクター イベント インターフェイス メソッドは常に void を返します)。
+すべてのメソッドの引数、アクター インターフェイスの各メソッドによって返されるタスクの結果の型、アクターの状態マネージャーに保存されるオブジェクトは、[データ コントラクト シリアル化可能](https://msdn.microsoft.com/library/ms731923.aspx)である必要があります。 これは、[アクター イベント インターフェイス](service-fabric-reliable-actors-events.md)で定義されているメソッドの引数にも当てはまります。 (アクター イベント インターフェイス メソッドは常に void を返します)。
 
 ## <a name="custom-data-types"></a>カスタム データ型
-次の例では、アクター インターフェイスで `VoicemailBox`というカスタム データ型を返すメソッドを定義しています。
+この例では、次のアクター インターフェイスで、`VoicemailBox` というカスタム データ型を返すメソッドを定義しています。
 
 ```csharp
 public interface IVoiceMailBoxActor : IActor

@@ -51,8 +51,3 @@ source ~/.bashrc
 ```bash
 dcos --help
 ```
-
-
-<!--HONumber=Nov16_HO2-->
-
-

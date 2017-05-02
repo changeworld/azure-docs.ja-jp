@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/04/2017
+ms.date: 04/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: 0a566fe81239b5753f48d62219d8c8ea3842ffdb
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: f2c4956ba296781907498226a18708684281692b
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -51,7 +51,7 @@ Windows ベースの HDInsight はクラウドで Hadoop を使用する簡単�
 
 2. Windows ベースのクラスターを削除します。
 
-3. Windows ベースのクラスターで使用したものと同じ既定のデータ ストアを使用して、Linux ベースのクラスターを作成します。 これで、新しいクラスターで既存の運用データを引き続き使用できます。
+3. Windows ベースのクラスターで使用したものと同じ既定のデータ ストアを使用して、Linux ベースのクラスターを作成します。 これで、Linux ベースのクラスターで既存の運用データを引き続き使用できます。
 
 4. バックアップしたすべての一時的なデータをインポートします。
 
@@ -61,7 +61,7 @@ Windows ベースの HDInsight はクラウドで Hadoop を使用する簡単�
 
 データやジョブをコピーする方法は多くありますが、このセクションで説明する最も簡単な方法では、ファイルを直接テスト クラスターに移動します。
 
-#### <a name="hdfs-dfs-copy"></a>HDFS DFS コピー
+#### <a name="hdfs-copy"></a>HDFS のコピー
 
 以下の手順を使用して、運用環境クラスターからテスト クラスターにデータをコピーします。 この手順では、HDInsight に付属している `hdfs dfs` ユーティリティを使用します。
 
@@ -97,13 +97,13 @@ Windows ベースの HDInsight はクラウドで Hadoop を使用する簡単�
 
     `-p` スイッチで、パス内のすべてのディレクトリを作成できます。
 
-#### <a name="direct-copy-between-azure-storage-blobs"></a>Azure Storage BLOB 間で直接コピーする
+#### <a name="direct-copy-between-blobs-in-azure-storage"></a>Azure Storage の BLOB 間の直接コピー
 
 `Start-AzureStorageBlobCopy` Azure PowerShell コマンドレットを使用して、HDInsight 外のストレージ アカウント間で BLOB をコピーすることもできます。 詳細については、「Azure Storage での Azure PowerShell の使用」の「Azure BLOB の管理方法」セクションを参照してください。
 
 ## <a name="client-side-technologies"></a>クライアント側のテクノロジ
 
-通常、[Azure PowerShell コマンドレット](/powershell/azureps-cmdlets-docs)、[Azure CLI](../cli-install-nodejs.md)、[.NET SDK for Hadoop](https://hadoopsdk.codeplex.com/) などのクライアント側のテクノロジは、Linux ベースのクラスターでも同じように引き続き機能します。これは、依存する REST API が両方のクラスターの OS タイプで同じであるためです。
+[Azure PowerShell コマンドレット](/powershell/azureps-cmdlets-docs)、[AZURE-CLI](../cli-install-nodejs.md)、[.NET SDK for Hadoop](https://hadoopsdk.codeplex.com/) などのクライアント側のテクノロジでは、Linux ベースのクラスターを引き続き使用できます。 これらのテクノロジは、両方のクラスター OS の種類で同じ REST API を使用します。
 
 ## <a name="server-side-technologies"></a>サーバー側のテクノロジ
 
@@ -112,9 +112,12 @@ Windows ベースの HDInsight はクラウドで Hadoop を使用する簡単�
 | 使用するテクノロジ | 実行するアクション |
 | --- | --- |
 | **PowerShell** (クラスターの作成時に使用されるスクリプトを含む、サーバー側スクリプト) |Bash スクリプトを書き直します。 スクリプト アクションについては、「[Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」および「[HDInsight での Script Action 開発](hdinsight-hadoop-script-actions-linux.md)」をご覧ください。 |
-| **Azure CLI** (サーバー側スクリプト) |Azure CLI は Linux で使用可能ですが、HDInsight クラスター ヘッド ノードにはプレインストールされません。 サーバー側スクリプトで必要な場合は、Linux ベースのプラットフォームへのインストールについて、「 [Azure CLI のインストール](../cli-install-nodejs.md) 」を参照してください。 |
-| **.NET コンポーネント** |.Net は、Linux ベースの HDInsight クラスターのすべての種類で全面的にサポートされているわけではありません。 2016 年 10 月 28 日以降に作成された HDInsight クラスター上の Linux ベース Storm は、SCP.NET フレームワークを使用して C# Storm トポロジをサポートします。 .NET のその他のサポートは将来の更新時に追加される予定です。 |
+| **Azure CLI** (サーバー側スクリプト) |Azure CLI は Linux で使用可能ですが、HDInsight クラスター ヘッド ノードにはプレインストールされません。 Azure CLI のインストールの詳細については、「[Azure CLI 2.0 の概要](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)」を参照してください。 |
+| **.NET コンポーネント** |.Net は、[Mono](https://mono-project.com) を使用した Linux ベースの HDInsight でサポートされています。 詳細については、「[Migrate .NET solutions to Linux-based HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md)」 (Linux ベースの HDInsight に .NET ソリューションを移行する) を参照してください。 |
 | **Win32 コンポーネントまたはその他の Windows 専用のテクノロジ** |ガイダンスはコンポーネントやテクノロジによって異なります。 Linux と互換性のあるバージョンを見つけることができる場合や、代替ソリューションを見つけるかこのコンポーネントを書き換える必要がある場合があります。 |
+
+> [!IMPORTANT]
+> HDInsight 管理 SDK は Mono と完全な互換性はありません。 現時点では、HDInsight クラスターにデプロイされるソリューションの一部として使用しないでください。
 
 ## <a name="cluster-creation"></a>クラスターの作成
 
@@ -122,7 +125,7 @@ Windows ベースの HDInsight はクラウドで Hadoop を使用する簡単�
 
 ### <a name="ssh-user"></a>SSH ユーザー
 
-Linux ベースの HDInsight クラスターでは **Secure Shell (SSH)** プロトコルを使用して、クラスター ノードにリモート アクセスできます。 Windows ベース クラスター用のリモート デスクトップとは異なり、ほとんどの SSH クライアントはグラフィカル ユーザー エクスペリエンスを提供しませんが、代わりに、クラスターでコマンドを実行できるコマンドラインを提供します。 一部のクライアント ([MobaXterm](http://mobaxterm.mobatek.net/)など) は、リモート コマンドラインに加え、グラフィカル ファイル システム ブラウザーを提供します。
+Linux ベースの HDInsight クラスターでは **Secure Shell (SSH)** プロトコルを使用して、クラスター ノードにリモート アクセスできます。 Windows ベースのクラスターのリモート デスクトップとは異なり、ほとんどの SSH クライアントはグラフィカル ユーザー エクスペリエンスを提供しません。 代わりに、SSH クライアントは、クラスター上でコマンドを実行できるコマンド ラインを提供します。 一部のクライアント ([MobaXterm](http://mobaxterm.mobatek.net/)など) は、リモート コマンドラインに加え、グラフィカル ファイル システム ブラウザーを提供します。
 
 クラスターの作成時に、SSH ユーザーと、認証用の**パスワード**または**公開キー証明書**を指定する必要があります。
 
@@ -162,7 +165,7 @@ Ambari には、クラスターに関する潜在的な問題を通知できる�
 >
 > 多くのアラートがサービスに対する一定間隔のクエリとして実装され、特定の期間内での応答を予期します。 したがって、アラートは必ずしもサービスが停止していることを意味するわけでなく、単に予期した期間内に結果が返されなかったことを意味します。
 
-通常は、アラートが長期間発生していたか、アクションを実行する前に報告されていたユーザーの問題を反映しているのかを評価する必要があります。
+アラートが長期間発生していたか、アクションを実行する前に報告されていたユーザーの問題を反映しているのかを評価する必要があります。
 
 ## <a name="file-system-locations"></a>ファイル システムの場所
 
@@ -183,12 +186,18 @@ Linux クラスターのファイル システムは、Windows ベースの HDIn
 
 ## <a name="hive-pig-and-mapreduce"></a>Hive、Pig、および MapReduce
 
-Linux ベースのクラスターの Pig と MapReduce は非常に似ています。 唯一の違いは、クラスターのヘッド ノードへの接続方法です。 詳細については、以下のドキュメントをご覧ください。
+Linux ベースのクラスターでは、Pig と MapReduce のワークロードは似ています。 ただし、Linux ベースの HDInsight クラスターは、Hadoop、Hive 、Pig の新しいバージョンを使用して作成できます。 これらのバージョンの違いにより、既存のソリューションの機能が変わる場合があります。 HDInsight に付属するコンポーネントのバージョンの詳細については、「[HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md)」を参照してください。
 
+Linux ベースの HDInsight では、リモート デスクトップ機能は提供されません。 代わりに、SSH を使用して、クラスターのヘッド ノードにリモート接続できます。 詳細については、以下のドキュメントをご覧ください。
+
+* [SSH での Hive の使用](hdinsight-hadoop-use-hive-ssh.md)
 * [SSH での Pig の使用](hdinsight-hadoop-use-pig-ssh.md)
 * [SSH での MapReduce の使用](hdinsight-hadoop-use-mapreduce-ssh.md)
 
 ### <a name="hive"></a>Hive
+
+> [!IMPORTANT]
+> 外部の Hive メタストアを使用する場合は、Linux ベースの HDInsight で使用する前にメタストアをバックアップする必要があります。 Linux ベースの HDInsight は、新しいバージョンの Hive で利用できますが、以前のバージョンで作成されたメタストアと互換性がない場合があります。
 
 次のグラフでは、Hive ワークロードの移行に関するガイダンスを示します。
 
@@ -196,8 +205,32 @@ Linux ベースのクラスターの Pig と MapReduce は非常に似ていま�
 | --- | --- |
 | **Hive エディター** |[Ambari の Hive ビュー](hdinsight-hadoop-use-hive-ambari-view.md) |
 | `set hive.execution.engine=tez;` を使用して Tez を有効にします。 |Tez は Linux ベースのクラスターの既定の実行エンジンであるため、set ステートメントは不要になります。 |
+| C# ユーザー定義関数 | Linux ベースの HDInsight での C# コンポーネントの検証の詳細については、「[Migrate .NET solutions to Linux-based HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md)」 (Linux ベースの HDInsight に .NET ソリューションを移行する) を参照してください。 |
 | サーバーで、Hive ジョブの一部として呼び出される CMD ファイルまたはスクリプトを使用します。 |Bash スクリプトを使用します。 |
 | `hive` コマンドを使用します。 |[Beeline](hdinsight-hadoop-use-hive-beeline.md) または [SSH セッションから Hive](hdinsight-hadoop-use-hive-ssh.md) を使用します。 |
+
+### <a name="pig"></a>Pig
+
+| Windows ベースの場合 | Linux ベースの場合 |
+| --- | --- |
+| C# ユーザー定義関数 | Linux ベースの HDInsight での C# コンポーネントの検証の詳細については、「[Migrate .NET solutions to Linux-based HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md)」 (Linux ベースの HDInsight に .NET ソリューションを移行する) を参照してください。 |
+| Pig ジョブの一部として呼び出されるサーバー上の CMD ファイルまたはスクリプト |Bash スクリプトを使用します。 |
+
+### <a name="mapreduce"></a>MapReduce
+
+| Windows ベースの場合 | Linux ベースの場合 |
+| --- | --- |
+| C# マッパーとレジューサのコンポーネント | Linux ベースの HDInsight での C# コンポーネントの検証の詳細については、「[Migrate .NET solutions to Linux-based HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md)」 (Linux ベースの HDInsight に .NET ソリューションを移行する) を参照してください。 |
+| サーバーで、Hive ジョブの一部として呼び出される CMD ファイルまたはスクリプトを使用します。 |Bash スクリプトを使用します。 |
+
+## <a name="oozie"></a>Oozie
+
+> [!IMPORTANT]
+> 外部の Oozie メタストアを使用する場合は、Linux ベースの HDInsight で使用する前にメタストアをバックアップする必要があります。 Linux ベースの HDInsight は、新しいバージョンの Oozie で利用できますが、以前のバージョンで作成されたメタストアと互換性がない場合があります。
+
+Oozie ワークフローでは、シェルの操作が可能です。 シェルの操作では、オペレーティング システムの既定のシェルを使用して、コマンド ライン コマンドを実行します。 Windows シェルを使用する Oozie ワークフローがある場合は、Linux シェル環境 (Bash) を使用するワークフローを書き換える必要があります。 Oozie でのシェルの操作の使用の詳細については、「[Oozie shell action extension](http://oozie.apache.org/docs/3.3.0/DG_ShellActionExtension.html)」 (Oozie シェル操作の拡張) を参照してください。
+
+シェルの操作で呼び出される C# アプリケーションを使用する Oozie ワークフローがある場合は、Linux 環境でこれらのアプリケーションを検証する必要があります。 詳細については、「[Migrate .NET solutions to Linux-based HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md)」 (Linux ベースの HDInsight に .NET ソリューションを移行する) を参照してください。
 
 ## <a name="storm"></a>Storm
 
@@ -230,22 +263,27 @@ Linux ベースのクラスターでは、HBase の znode の親は `/hbase-unse
 
 通常、Windows ベース システムの行の終わりには CRLF を使用しますが、Linux ベース システムでは LF を使用します。 行の終わりが CRLF のデータを生成する場合、またはそのようなデータが必要な場合には、LF 行の終わりを操作するためにプロデューサーとコンシューマーの変更が必要になることがあります。
 
-たとえば、Azure PowerShell を使用して Windows ベース クラスター上の HDInsight に対してクエリを実行すると、CRLF のデータが返されます。 Linux ベースのクラスターで同じクエリを実行すると、LF が返されます。 Linux ベースのクラスターに移行する前に、これによってソリューションで問題が発生しないかどうかを調べる必要があります。
+たとえば、Azure PowerShell を使用して Windows ベース クラスター上の HDInsight に対してクエリを実行すると、CRLF のデータが返されます。 Linux ベースのクラスターで同じクエリを実行すると、LF が返されます。 Linux ベースのクラスターに移行する前に、行の終わりによってソリューションで問題が発生しないかどうかを調べる必要があります。
 
 Linux クラスター ノードで直接実行されるスクリプトの場合は、行の終わりとして常に LF を使用する必要があります。 CRLF を使用すると、Linux ベースのクラスターでスクリプトを実行するときにエラーが発生する可能性があります。
 
 スクリプトに CR 文字が埋め込まれた文字列が含まれていないことがわかっている場合は、以下のいずれかの方法を使用して行の終わりを一括変更することができます。
 
-* **クラスターにアップロードする予定のスクリプトの場合**、次の PowerShell ステートメントを使用して、クラスターにスクリプトをアップロードする前に行の終わりを CRLF から LF に変更します。
+* **クラスターにアップロードする前**: 次の PowerShell ステートメントを使用して、クラスターにスクリプトをアップロードする前に、行の終わりを CRLF から LF に変更します。
 
-      $original_file ='c:\path\to\script.py'
-      $text = [IO.File]::ReadAllText($original_file) -replace "`r`n", "`n"
-      [IO.File]::WriteAllText($original_file, $text)
-* **クラスターで使用されているストレージに既に存在するスクリプトの場合**、Linux ベースのクラスターに対して SSH セッションで以下のコマンドを使用して、スクリプトを変更します。
+    ```powershell
+    $original_file ='c:\path\to\script.py'
+    $text = [IO.File]::ReadAllText($original_file) -replace "`r`n", "`n"
+    [IO.File]::WriteAllText($original_file, $text)
+    ```
 
-      hdfs dfs -get wasbs:///path/to/script.py oldscript.py
-      tr -d '\r' < oldscript.py > script.py
-      hdfs dfs -put -f script.py wasbs:///path/to/script.py
+* **クラスターにアップロードした後**: SSH セッションから Linux ベースのクラスターに次のコマンドを使用して、スクリプトを変更します。
+
+    ```bash
+    hdfs dfs -get wasbs:///path/to/script.py oldscript.py
+    tr -d '\r' < oldscript.py > script.py
+    hdfs dfs -put -f script.py wasbs:///path/to/script.py
+    ```
 
 ## <a name="next-steps"></a>次のステップ
 

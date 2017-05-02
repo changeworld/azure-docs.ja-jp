@@ -15,13 +15,14 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: fe331199333d492dbc42c9125c9da96a44066ee1
-ms.openlocfilehash: 8db864801042170fcad947d5b40220eea9c1c307
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 35bf064fdf2a766b8f699bed5c32d30c6c4dcd3c
+ms.lasthandoff: 04/19/2017
 
 ---
 
-## <a name="receive-events-from-azure-event-hubs-using-apache-storm"></a>Apache Storm を使用して Azure Event Hubs からイベントを受信する
-[Apache Storm](https://storm.incubator.apache.org) は、境界のないデータ ストリームを確実かつ容易に処理する分散型リアルタイム計算システムです。 このセクションでは、Event Hub Storm スパウトを使用して、Event Hub からイベントを受信する方法を示します。 Apache Storm を使用して、別々のノードにホストされている複数のプロセスでイベントを分割することができます。 Storm と Event Hub の統合は、Storm の Zookeeper のインストールを使用して、進行状況への透過的なチェックポイントの設定、永続的なチェックポイントの管理、並行した Event Hub からの受信によって、イベントの利用を簡略化します。
+# <a name="receive-events-from-event-hubs-using-apache-storm"></a>Apache Storm を使用して Azure Event Hubs からイベントを受信する
+[Apache Storm](https://storm.incubator.apache.org) は、境界のないデータ ストリームを確実かつ容易に処理する分散型リアルタイム計算システムです。 このセクションでは、Azure Event Hubs Storm スパウトを使用して、Event Hub からイベントを受信する方法を示します。 Apache Storm を使用して、別々のノードにホストされている複数のプロセスでイベントを分割することができます。 Storm と Event Hub の統合は、Storm の Zookeeper のインストールを使用して、進行状況への透過的なチェックポイントの設定、永続的なチェックポイントの管理、並行した Event Hub からの受信によって、イベントの利用を簡略化します。
 
 Event Hub の受信パターンの詳細については、「[Event Hub の概要][Event Hubs overview]」を参照してください。
 
@@ -236,7 +237,7 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
 Event Hubs の詳細については、次のリンク先を参照してください:
 
 * [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
-* [Event Hub を作成する](event-hubs-create.md)
+* [イベント ハブの作成](event-hubs-create.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)
 
 <!-- Links -->
@@ -247,8 +248,4 @@ Event Hubs の詳細については、次のリンク先を参照してくださ
 <!-- Images -->
 
 [12]: ./media/event-hubs-get-started-receive-storm/create-storm1.png
-
-
-<!--HONumber=Feb17_HO1-->
-
 

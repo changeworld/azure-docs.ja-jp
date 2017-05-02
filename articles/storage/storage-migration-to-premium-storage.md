@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: yuemlu
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 2703a7ae9274e6bef38e530839c1a7c5ad69fb88
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: cbf4f1a3bce53844e032c49637d4cfd9dd722679
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -49,13 +49,13 @@ Azure Premium Storage は、高負荷の I/O ワークロードを実行する�
 ### <a name="prerequisites"></a>前提条件
 * Azure サブスクリプションが必要です。 サブスクリプションがない場合は、1 か月間の[無料試用版](https://azure.microsoft.com/pricing/free-trial/)サブスクリプションを作成するか、「[Azure の価格](https://azure.microsoft.com/pricing/)」でさらに多くのオプションを利用することができます。
 * PowerShell コマンドレットを実行するには、Microsoft Azure PowerShell モジュールが必要です。 インストール先とインストール方法については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」を参照してください。
-* Premium Storage で実行されている Azure VM を使う予定がある場合は、Premium Storage 対応の VM を使う必要があります。 Premium Storage 対応の VM では、Standard Storage ディスクと Premium Storage ディスクの両方を使えます。 Premium Storage ディスクの方が、将来的により多くの VM の種類を使用できます。 使用可能な Azure VM ディスクの種類とサイズの詳細については、「[仮想マシンのサイズ](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」と「[Cloud Services のサイズ](../cloud-services/cloud-services-sizes-specs.md)」を参照してください。
+* Premium Storage で実行されている Azure VM を使う予定がある場合は、Premium Storage 対応の VM を使う必要があります。 Premium Storage 対応の VM では、Standard Storage ディスクと Premium Storage ディスクの両方を使えます。 Premium Storage ディスクの方が、将来的により多くの VM の種類を使用できます。 使用可能な Azure VM ディスクの種類とサイズの詳細については、「[仮想マシンのサイズ](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」と「[Cloud Services のサイズ](../cloud-services/cloud-services-sizes-specs.md)」を参照してください。
 
 ### <a name="considerations"></a>考慮事項
 Azure VM では複数の Premium Storage ディスクをアタッチすることができるので、アプリケーションには VM あたり最大で 64 TB のストレージを設定することができます。 Premium Storage を使用すると、アプリケーションは、VM あたり 80,000 IOPS (1 秒あたりの入力/出力操作) と、VM あたり 2000 MB/秒のディスク スループットを実現でき、読み取り操作の待ち時間も非常に短くなります。 VM とディスクのさまざまなオプションがあります。 このセクションは、ワークロードに最適なオプションを探すのに役立ちます。
 
 #### <a name="vm-sizes"></a>VM サイズ
-Azure VM のサイズの仕様は、「 [仮想マシンのサイズ](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」に記載されています。 Premium Storage で動作する仮想マシンのパフォーマンス特性を確認し、ワークロードに最適な VM を選択してください。 ディスク トラフィックが流れるのに十分な帯域幅が VM で利用できることを確認します。
+Azure VM のサイズの仕様は、「 [仮想マシンのサイズ](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」に記載されています。 Premium Storage で動作する仮想マシンのパフォーマンス特性を確認し、ワークロードに最適な VM を選択してください。 ディスク トラフィックが流れるのに十分な帯域幅が VM で利用できることを確認します。
 
 #### <a name="disk-sizes"></a>ディスク サイズ
 VM で使えるディスクには 3 種類あり、それぞれに特定の IOPS とスループットの制限があります。 VM のディスクの種類を選択する場合は、容量、パフォーマンス、スケーラビリティ、最大負荷に関するアプリケーションのニーズに基づいて、これらの制限を考慮してください。
@@ -66,7 +66,7 @@ VM で使えるディスクには 3 種類あり、それぞれに特定の IOPS
 | ディスクあたりの IOPS |500 |2300 |5000 |
 | ディスクあたりのスループット |100 MB/秒 |150 MB/秒 |200 MB/秒 |
 
-ワークロードに応じて、VM にデータ ディスクを追加する必要があるかどうかを判断します。 複数の永続データ ディスクを VM に接続できます。 必要に応じて、ディスク全体をストライピングして容量を増やし、ボリュームのパフォーマンスを高めることができます。 (ディスク ストライピングについては、[こちら](storage-premium-storage-performance.md#disk-striping)をご覧ください)[記憶域スペース][4]を使用して Premium Storage データ ディスクをストライピングする場合は、使用するディスクごとに 1 つの列で構成する必要があります。 そうしない場合は、ディスク全体のトラフィックの配分が不均等になるため、ストライプ ボリュームの全体的なパフォーマンスが低下する可能性があります。 Linux VM の場合は、 *mdadm* ユーティリティを使用すると同じ結果を得ることができます。 詳細については、 [Linux でのソフトウェア RAID の構成](../virtual-machines/virtual-machines-linux-configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) に関する記事を参照してください。
+ワークロードに応じて、VM にデータ ディスクを追加する必要があるかどうかを判断します。 複数の永続データ ディスクを VM に接続できます。 必要に応じて、ディスク全体をストライピングして容量を増やし、ボリュームのパフォーマンスを高めることができます。 (ディスク ストライピングについては、[こちら](storage-premium-storage-performance.md#disk-striping)をご覧ください)[記憶域スペース][4]を使用して Premium Storage データ ディスクをストライピングする場合は、使用するディスクごとに 1 つの列で構成する必要があります。 そうしない場合は、ディスク全体のトラフィックの配分が不均等になるため、ストライプ ボリュームの全体的なパフォーマンスが低下する可能性があります。 Linux VM の場合は、 *mdadm* ユーティリティを使用すると同じ結果を得ることができます。 詳細については、 [Linux でのソフトウェア RAID の構成](../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) に関する記事を参照してください。
 
 #### <a name="storage-account-scalability-targets"></a>ストレージ アカウントのスケーラビリティ ターゲット
 Premium Storage アカウントには、[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)に加えて、次のスケーラビリティ ターゲットがあります。 アプリケーションの要件が単一のストレージ アカウントのスケーラビリティ ターゲットを上回った場合は、複数のストレージ アカウントを使用するようにアプリケーションを構築し、それらのストレージ アカウント間でデータを分割します。
@@ -75,7 +75,7 @@ Premium Storage アカウントには、[Azure Storage のスケーラビリテ�
 |:--- |:--- |
 | ディスク容量: 35 TB<br />スナップショット容量: 10 TB |受信と送信を合わせて最大 50 GB/秒 |
 
-Premium Storage の仕様の詳細については、「[Premium Storage を使用するときの拡張性とパフォーマンスのターゲット](storage-premium-storage.md#premium-storage-scalability-and-performance-targets)」を参照してください。
+Premium Storage の仕様の詳細については、「[Premium Storage を使用するときの拡張性とパフォーマンスのターゲット](storage-premium-storage.md#scalability-and-performance-targets)」を参照してください。
 
 #### <a name="disk-caching-policy"></a>ディスク キャッシュ ポリシー
 既定では、ディスクのキャッシュ ポリシーは、すべてのPremium データ ディスクに対して「*読み取り専用*」、VM にアタッチされた Premium オペレーティング システム ディスクに対して「*読み取り/書き込み*」です。 アプリケーションの IO パフォーマンスを最適化するには、この構成をお勧めします。 書き込み量の多いディスクや書き込み専用のディスク (SQL Server ログ ファイルなど) の場合は、ディスク キャッシュを無効にすることで、アプリケーションのパフォーマンスを向上できる場合があります。 既存のデータ ディスクのキャッシュ設定は、[Azure Portal](https://portal.azure.com)、または *Set-AzureDataDisk* コマンドレットの *-HostCaching* パラメーターを使用して更新できます。
@@ -185,11 +185,11 @@ AzCopy を使うと、インターネット経由で VHD を簡単にアップ�
 
     次に AzCopy コマンドで使用するパラメーターを示します。
 
-   * **/Source:*&lt;source&gt;:*** VHD が格納されているフォルダーの場所またはストレージ コンテナー URL。
-   * **/SourceKey:*&lt;source-account-key&gt;:*** コピー元ストレージ アカウントのストレージ アカウント キー。
-   * **/Dest:*&lt;destination&gt;:*** VHD のコピー先のストレージ コンテナー URL。
-   * **/DestKey:*&lt;dest-account-key&gt;:*** コピー先ストレージ アカウントのストレージ アカウント キー。
-   * **/Pattern:*&lt;file-name&gt;:*** コピーする VHD のファイル名を指定。
+   * **/Source: *&lt;source&gt;:*** VHD が格納されているフォルダーの場所またはストレージ コンテナー URL。
+   * **/SourceKey: *&lt;source-account-key&gt;:*** コピー元ストレージ アカウントのストレージ アカウント キー。
+   * **/Dest: *&lt;destination&gt;:*** VHD のコピー先のストレージ コンテナー URL。
+   * **/DestKey: *&lt;dest-account-key&gt;:*** コピー先ストレージ アカウントのストレージ アカウント キー。
+   * **/Pattern: *&lt;file-name&gt;:*** コピーする VHD のファイル名を指定。
 
 AzCopy ツールの使用の詳細については、「 [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」を参照してください。
 
@@ -270,7 +270,7 @@ AzCopy を使うと、インターネット経由で VHD を簡単にアップ�
     ```azcopy
     AzCopy /Source: <source> /SourceKey: <source-account-key> /Dest: <destination> /DestKey: <dest-account-key> /BlobType:page /Pattern: <file-name>
     ```
-    
+
     例:
 
     ```azcopy
@@ -279,12 +279,12 @@ AzCopy を使うと、インターネット経由で VHD を簡単にアップ�
 
     次に AzCopy コマンドで使用するパラメーターを示します。
 
-   * **/Source:*&lt;source&gt;:*** VHD が格納されているフォルダーの場所またはストレージ コンテナー URL。
-   * **/SourceKey:*&lt;source-account-key&gt;:*** コピー元ストレージ アカウントのストレージ アカウント キー。
-   * **/Dest:*&lt;destination&gt;:*** VHD のコピー先のストレージ コンテナー URL。
-   * **/DestKey:*&lt;dest-account-key&gt;:*** コピー先ストレージ アカウントのストレージ アカウント キー。
+   * **/Source: *&lt;source&gt;:*** VHD が格納されているフォルダーの場所またはストレージ コンテナー URL。
+   * **/SourceKey: *&lt;source-account-key&gt;:*** コピー元ストレージ アカウントのストレージ アカウント キー。
+   * **/Dest: *&lt;destination&gt;:*** VHD のコピー先のストレージ コンテナー URL。
+   * **/DestKey: *&lt;dest-account-key&gt;:*** コピー先ストレージ アカウントのストレージ アカウント キー。
    * **/BlobType: page:** コピー先がページ BLOB であることを指定。
-   * **/Pattern:*&lt;file-name&gt;:*** コピーする VHD のファイル名を指定。
+   * **/Pattern: *&lt;file-name&gt;:*** コピーする VHD のファイル名を指定。
 
 AzCopy ツールの使用の詳細については、「 [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」を参照してください。
 
@@ -459,14 +459,14 @@ Update-AzureVM  -VM $vm
     .Terms of Use
     Copyright © 2015 Microsoft Corporation.  All rights reserved.
 
-    THIS CODE AND ANY ASSOCIATED INFORMATION ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND,
+    THIS CODE AND ANY ASSOCIATED INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
     EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY
     AND/OR FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK OF USE, INABILITY TO USE, OR
     RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER.
 
     .Example (Save this script as Migrate-AzureVM.ps1)
 
-    .\Migrate-AzureVM.ps1 -SourceServiceName CurrentServiceName -SourceVMName CurrentVMName –DestStorageAccount newpremiumstorageaccount -DestServiceName NewServiceName -DestVMName NewDSVMName -DestVMSize "Standard_DS2" –Location “Southeast Asia”
+    .\Migrate-AzureVM.ps1 -SourceServiceName CurrentServiceName -SourceVMName CurrentVMName –DestStorageAccount newpremiumstorageaccount -DestServiceName NewServiceName -DestVMName NewDSVMName -DestVMSize "Standard_DS2" –Location "Southeast Asia"
 
     .Link
     To find more information about how to set up Azure PowerShell, refer to the following links.
@@ -581,7 +581,7 @@ Update-AzureVM  -VM $vm
     # check if VM is shut down
     if ( $sourceVM.Status -notmatch "Stopped" )
     {
-        Write-Host "[Warning] - Stopping the VM is a required step so that the file system is consistent when you do the copy operation. Azure does not support live migration at this time. If you’d like to create a VM from a generalized image, sys-prep the Virtual Machine before stopping it." -ForegroundColor Yellow
+        Write-Host "[Warning] - Stopping the VM is a required step so that the file system is consistent when you do the copy operation. Azure does not support live migration at this time. If you'd like to create a VM from a generalized image, sys-prep the Virtual Machine before stopping it." -ForegroundColor Yellow
         $ContinueAnswer = Read-Host "`n`tDo you wish to stop $SourceVMName now? Input 'N' if you want to shut down the VM manually and come back later.(Y/N)"
         If ($ContinueAnswer -ne "Y") { Write-Host "`n Exiting." -ForegroundColor Red;Exit }
         $sourceVM | Stop-AzureVM

@@ -12,17 +12,33 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/10/2017
+ms.date: 4/11/2017
 ms.author: raiye
 translationtype: Human Translation
-ms.sourcegitcommit: e579c7fd4547a88c6356c77a220b5f9e1a07e542
-ms.openlocfilehash: deafae1c6f77a655d80ee7bafd220c5b624018bd
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 51b5c32eb73dc70b4019e60342db659959cc93bb
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
+
+## <a name="march-guest-os"></a>3 月のゲスト OS
+| セキュリティ情報 ID | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| --- | --- | --- | --- | --- |
+| Rel 17-03 |  [4013429] |機能強化と修正 | 5.5 | 2017 年 3 月 14 日 |
+| Rel 17-03 |  [4012212] |2017 年 3 月 Windows 7 SP1 および Windows Server 2008 R2 SP1 用のセキュリティのみ品質更新プログラム |2.60 |2017 年 3 月 14 日 |
+| Rel 17-03 |  [4012213] |2017 年 3 月 Windows 8.1 および Windows Server 2012 R2 用のセキュリティのみ品質更新プログラム |4.40 |2017 年 3 月 14 日 |
+| Rel 17-03 |  [4012214] |2017 年 3 月 Windows Server 2012 用のセキュリティのみ品質更新プログラム|3.47 |2017 年 3 月 14 日 |
+| Rel 17-03 |  [4012204] |Internet Explorer 用のセキュリティ更新プログラム |2.60, 3.47, 4.40, 5.5 |2017 年 3 月 14 日 |
+| 該当なし |  [4012864] |北キプロス、モンゴル、およびロシア・サラトフ リージョン用 Windows の DST の変更 |2.60, 3.47, 4.40 |2017 年 3 月 14 日 |
+| 該当なし |  [3212646] |2017 年 1 月 Windows 7 SP1 および Windows Server 2008 R2 SP1 用のセキュリティ月例品質ロールアップ |2.60 |2017 年 3 月 14 日 |
+| 該当なし |  [3205409] |2016 年 12 月 Windows Server 2012 用のセキュリティ月例品質ロールアップ |3.47 |2017 年 3 月 14 日 |
+| 該当なし |  [3205401] |2016 年 12 月 Windows 8.1 および Windows Server 2012 R2 用のセキュリティ月例品質ロールアップ |4.40 |2017 年 3 月 14 日 |
+| 該当なし |  [3211320] |Windows 10 バージョン 1607 および Windows Server 2016 用の累積的な更新プログラム: 2017 年 1 月 24 日 |5.5 |2017 年 3 月 14 日 |
+
+
 
 ## <a name="january-guest-os"></a>1 月のゲスト OS
 | セキュリティ情報 ID | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
@@ -146,7 +162,7 @@ ms.lasthandoff: 02/17/2017
 | MS16-074 |[3164036] |Microsoft グラフィックス コンポーネント用のセキュリティ更新プログラム |4.33、3.40、2.52 |2016 年 6 月 14 日 |
 | MS16-075 |[3164038] |Windows SMB サーバー用のセキュリティ更新プログラム |4.33、3.40、2.52 |2016 年 6 月 14 日 |
 | MS16-076 |[3167691] |Netlogon 用のセキュリティ更新プログラム |4.33 |2016 年 6 月 14 日 |
-| MS16&077; |[3165191] |WPAD 用のセキュリティ更新プログラム |4.33、3.40、2.52 |2016 年 6 月 14 日 |
+| MS16 077 |[3165191] |WPAD 用のセキュリティ更新プログラム |4.33、3.40、2.52 |2016 年 6 月 14 日 |
 | MS16-080 |[3164302] |Microsoft Windows PDF 用のセキュリティ更新プログラム |4.33、3.40 |2016 年 6 月 14 日 |
 | MS16-081 |[3160352] |Active Directory 用のセキュリティ更新プログラム |4.33、3.40、2.52 |2016 年 6 月 14 日 |
 | 該当なし |[2922223] |Windows で RealTimeIsUniversal レジストリ エントリが有効になっているときに、システム時刻を変更できない |2.52 |2016 年 6 月 14 日 |
@@ -268,7 +284,7 @@ ms.lasthandoff: 02/17/2017
 ## <a name="september-guest-os"></a>9 月のゲスト OS
 | セキュリティ情報 ID | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
 | --- | --- | --- | --- | --- |
-| MS15&093; |[3088903] |Internet Explorer 用の累積的なセキュリティ更新プログラム |4.24, 3.31, 2.43 |2015 年 9 月 8 日 |
+| MS15 093 |[3088903] |Internet Explorer 用の累積的なセキュリティ更新プログラム |4.24, 3.31, 2.43 |2015 年 9 月 8 日 |
 | MS15-094 |[3089548] |Internet Explorer 用の累積的なセキュリティ更新プログラム |4.24, 3.31, 2.43 |2015 年 9 月 8 日 |
 | MS15-096 |[3072595] |Active Directory サービスの脆弱性により、サービスの拒否が起こる |4.24, 3.31, 2.43 |2015 年 9 月 8 日 |
 | MS15-097 |[3089656] |Microsoft グラフィックス コンポーネントの脆弱性により、特権が昇格される |4.24, 3.31, 2.43 |2015 年 9 月 8 日 |
@@ -404,6 +420,18 @@ ms.lasthandoff: 02/17/2017
 | 該当なし |[3007054] |Windows で Windows ストア アプリケーション内のドキュメントを印刷するときに、PIN で保護された印刷オプションが常に表示される |4.15、3.22、2.34 |2015 年 1 月 13 日 |
 | 該当なし |[2999802] |点線ではなく実線が Windows で印刷される |4.15、3.22、2.34 |2015 年 1 月 13 日 |
 | 該当なし |[2896881] |Windows でのログオン プロセス中にユーザーのプリンターをマップする AddPrinterConnection VBScript コマンドを使用するとログオン時間が長い |4.15、3.22、2.34 |2015 年 1 月 13 日 |
+
+[4013429]: http://support.microsoft.com/kb/4013429 
+[4012212]: http://support.microsoft.com/kb/4012212 
+[4012213]: http://support.microsoft.com/kb/4012213 
+[4012214]: http://support.microsoft.com/kb/4012214 
+[4012204]: http://support.microsoft.com/kb/4012204 
+[4012864]: http://support.microsoft.com/kb/4012864 
+[3212646]: http://support.microsoft.com/kb/3212646 
+[3205409]: http://support.microsoft.com/kb/3205409 
+[3205401]: http://support.microsoft.com/kb/3205401
+[3211320]: http://support.microsoft.com/kb/3211320
+
 
 [3216771]: https://technet.microsoft.com/library/security/MS17-004
 

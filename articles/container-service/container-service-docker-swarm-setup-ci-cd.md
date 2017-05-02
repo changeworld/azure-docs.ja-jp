@@ -17,6 +17,7 @@ ms.author: jucoriol
 translationtype: Human Translation
 ms.sourcegitcommit: c5e05a8693bd000010013922ed6f2a127e998efe
 ms.openlocfilehash: db58703f573c09ba45abed87547c5e80ef58638b
+ms.lasthandoff: 12/14/2016
 
 
 ---
@@ -53,6 +54,8 @@ ms.openlocfilehash: db58703f573c09ba45abed87547c5e80ef58638b
 - [Azure コンテナー レジストリを作成する](../container-registry/container-registry-get-started-portal.md)
 - [Visual Studio Team Services アカウントとチーム プロジェクトを作成する](https://www.visualstudio.com/en-us/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services)
 - [GitHub アカウントに GitHub リポジトリをフォークする](https://github.com/jcorioland/MyShop/)
+
+[!INCLUDE [container-service-swarm-mode-note](../../includes/container-service-swarm-mode-note.md)]
 
 Docker がインストールされた Ubuntu (14.04 または 16.04) マシンも必要です。 このマシンは、Visual Studio Team Services がビルドおよびリリース プロセス中に使用します。 このマシンを作成する方法の&1; つに、[Azure Marketplace](https://azure.microsoft.com/marketplace/partners/canonicalandmsopentech/dockeronubuntuserver1404lts/) から入手できるイメージを使用する方法があります。 
 
@@ -227,8 +230,3 @@ Visual Studio Team Services を使用すると、[複数の環境のリリース
 ## <a name="next-steps"></a>次のステップ
 
 * Visual Studio Team Services を使用した CI/CD の詳細については、[VSTS ビルドの概要](https://www.visualstudio.com/docs/build/overview)に関するページを参照してください。
-
-
-<!--HONumber=Dec16_HO2-->
-
-

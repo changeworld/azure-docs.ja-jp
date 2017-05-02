@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 08/17/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: cf627b92399856af2b9a58ab155fac6730128f85
-ms.openlocfilehash: 59b8e7b6b2e2442c0a961d105ccdbc9336445aa6
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 338fa476377e9ff04c9a1f4e585f790b92a59f87
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: 59b8e7b6b2e2442c0a961d105ccdbc9336445aa6
 この記事では、Azure SQL Database に接続するコードを記述するときの基本的な考慮事項について説明します。
 
 > [!TIP]
-> サーバーの作成、サーバーベースのファイアウォールの作成、サーバー プロパティの表示、SQL Server Management Studio を使用した接続、master データベースに対するクエリ実行、サンプル データベースと空のデータベースの作成、データベース プロパティに対するクエリ実行、SQL Server Management Studio を使用した接続、およびサンプル データベースに対するクエリ実行の方法を示すチュートリアルについては、[入門用チュートリアル](sql-database-get-started.md)を参照してください。
+> サーバーの作成、サーバーベースのファイアウォールの作成、サーバー プロパティの表示、SQL Server Management Studio を使用した接続、master データベースに対するクエリ実行、サンプル データベースと空のデータベースの作成、データベース プロパティに対するクエリ実行、SQL Server Management Studio を使用した接続、およびサンプル データベースに対するクエリ実行の方法を示すチュートリアルについては、[入門用チュートリアル](sql-database-get-started-portal.md)を参照してください。
 >
 
 ## <a name="language-and-platform"></a>言語とプラットフォーム
@@ -37,7 +38,7 @@ ms.openlocfilehash: 59b8e7b6b2e2442c0a961d105ccdbc9336445aa6
 [cheetah](https://github.com/wunderlist/cheetah)、[sql-cli](https://www.npmjs.com/package/sql-cli)、[VS コード](https://code.visualstudio.com/)などのオープン ソース ツールを活用できます。 さらに、Azure SQL Database は、[Visual Studio](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)、[SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) などの Microsoft ツールと連携しています。  また、Microsoft Azure 管理ポータル、PowerShell、および REST API も使用でき、生産性向上に役立ちます。
 
 ## <a name="resource-limitations"></a>リソースの制限事項
-Azure SQL Database では、リソース ガバナンスと制限の適用という&2; つの異なるメカニズムを使用して、データベースで使用できるリソースを管理します。
+Azure SQL Database では、リソース ガバナンスと制限の適用という 2 つの異なるメカニズムを使用して、データベースで使用できるリソースを管理します。
 
 * 詳細: [Azure SQL Database のリソース制限](sql-database-resource-limits.md)
 
@@ -64,8 +65,8 @@ SQL Database への接続中に一時エラーが発生した場合は、コー�
 
 ## <a name="network-considerations"></a>ネットワークに関する考慮事項
 * クライアント プログラムをホストするコンピューターのファイアウォールで、ポート 1433 での発信 TCP が許可されていることを確認します。  詳細: [Azure ポータルを使用して Azure SQL Database ファイアウォールを構成する](sql-database-configure-firewall-settings.md)
-* クライアントが Azure 仮想マシン (VM) で実行されているときに、クライアント プログラムが SQL Database V12 に接続する場合、VM で特定のポートの範囲を開く必要があります。 詳細: [ADO.NET 4.5 および SQL Database V12 における 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)
-* Azure SQL Database V12 へのクライアント接続はプロキシを使用せずに、データベースに直接やり取りする場合があります。 1433 以外のポートが重要になります。 詳細: [ADO.NET 4.5 および SQL Database V12 における 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)
+* クライアントが Azure 仮想マシン (VM) で実行されているときに、クライアント プログラムが SQL Database に接続する場合、VM で特定のポートの範囲を開く必要があります。 詳細: [ADO.NET 4.5 および SQL Database における 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)
+* Azure SQL Database へのクライアント接続はプロキシを使用せずに、データベースに直接やり取りする場合があります。 1433 以外のポートが重要になります。 詳細: [ADO.NET 4.5 および SQL Database における 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)
 
 ## <a name="data-sharding-with-elastic-scale"></a>Elastic Scale によるデータ シャーディング
 Elastic Scale は、スケール アウト (およびスケール イン) のプロセスを簡略化します。 
@@ -76,9 +77,4 @@ Elastic Scale は、スケール アウト (およびスケール イン) のプ
 
 ## <a name="next-steps"></a>次のステップ
 [SQL Database の機能](sql-database-technical-overview.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

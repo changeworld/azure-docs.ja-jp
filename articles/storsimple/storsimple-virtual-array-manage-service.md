@@ -23,7 +23,7 @@ ms.lasthandoff: 01/26/2017
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>StorSimple Virtual Array の StorSimple デバイス マネージャー サービスをデプロイする
 ## <a name="overview"></a>Overview
 
-StorSimple デバイス マネージャー サービスは Microsoft Azure で実行され、複数の StorSimple デバイスに接続します。 サービスを作成したら、それを使用して、ブラウザーで実行される Microsoft Azure ポータルでデバイスを管理できます。 このポータルを使用すると、StorSimple デバイス マネージャー サービスに接続されているすべてのデバイスを&1; か所から集中的に監視でき、管理の負荷を最小限に抑えることができます。
+StorSimple デバイス マネージャー サービスは Microsoft Azure で実行され、複数の StorSimple デバイスに接続します。 サービスを作成したら、それを使用して、ブラウザーで実行される Microsoft Azure ポータルでデバイスを管理できます。 このポータルを使用すると、StorSimple デバイス マネージャー サービスに接続されているすべてのデバイスを 1 か所から集中的に監視でき、管理の負荷を最小限に抑えることができます。
 
 StorSimple デバイス マネージャー サービスに関連する一般的なタスクは次のとおりです。
 

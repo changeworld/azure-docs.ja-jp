@@ -171,7 +171,7 @@ Storage キューの長さ (Storage キュー内のメッセージ数) に応じ
 ```
 "metricName": "ApproximateMessageCount",
  "metricNamespace": "",
- "metricResourceUri": "/subscriptions/s1/resourceGroups/rg1/providers/Microsoft.ClassicStorage/storageAccounts/mystorage/services/queue/queues/mystoragequeue"
+ "metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ClassicStorage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
  ```
 
 (非従来の) ストレージ アカウントの場合、metricTrigger は、次のようになります。
@@ -179,7 +179,7 @@ Storage キューの長さ (Storage キュー内のメッセージ数) に応じ
 ```
 "metricName": "ApproximateMessageCount",
 "metricNamespace": "",
-"metricResourceUri": "/subscriptions/s1/resourceGroups/rg1/providers/Microsoft.Storage/storageAccounts/mystorage/services/queue/queues/mystoragequeue"
+"metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.Storage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
 ```
 
 ## <a name="commonly-used-service-bus-metrics"></a>一般的に使用される Service Bus のメトリック
@@ -190,7 +190,7 @@ VM Scale Sets の場合、Resource Manager テンプレートの [自動スケ�
 ```
 "metricName": "MessageCount",
  "metricNamespace": "",
-"metricResourceUri": "/subscriptions/s1/resourceGroups/rg1/providers/Microsoft.ServiceBus/namespaces/mySB/queues/myqueue"
+"metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ServiceBus/namespaces/SB_NAMESPACE/queues/QUEUE_NAME"
 ```
 
 > [!NOTE]

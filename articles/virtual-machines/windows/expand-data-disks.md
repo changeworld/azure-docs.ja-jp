@@ -177,3 +177,4 @@ Resize-Partition -DriveLetter $driveLetter -Size $MaxSize
 
 ## <a name="next-steps"></a>次のステップ
 - [ディスクと VHD](../../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) に関する説明を参照します。
+

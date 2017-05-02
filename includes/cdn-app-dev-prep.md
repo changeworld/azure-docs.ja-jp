@@ -51,8 +51,3 @@ Azure Active Directory でのアプリの認証には、個別ユーザーか、
 4. サービス プリンシパルを **CDN プロファイルの投稿者** ロールに割り当てる代わりに、個別ユーザーまたはグループに割り当てます。  この例では、*CDN Demo User* を **CDN プロファイルの投稿者**ロールに割り当てています。  
 
     ![Individual user access](./media/cdn-app-dev-prep/cdn-aad-user-include.png)
-
-
-<!--HONumber=Dec16_HO1-->
-
-

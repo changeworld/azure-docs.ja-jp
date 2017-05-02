@@ -16,9 +16,9 @@ ms.date: 03/13/2017
 ms.author: tarcher
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 799bacdac6ff49cb6fa38cd208318673629d4035
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: e8452e272916222679dd5e411b5f8732d3e8059b
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -38,7 +38,7 @@ Azure DevTest Labs では、各ラボのポリシー (設定) を管理するこ
 
 1. このポリシーを有効にするには **[オン]** を選択し、無効にするには **[オフ]** を選択します。
 
-1. このポリシーを有効にする場合は、ラボで作成できる&1; つ以上の VM サイズを選択します。
+1. このポリシーを有効にする場合は、ラボで作成できる 1 つ以上の VM サイズを選択します。
 
 1. [ **保存**] を選択します。
 
@@ -99,6 +99,9 @@ Azure DevTest Labs では、各ラボのポリシー (設定) を管理するこ
 4. [ **保存**] を選択します。
 
     このポリシーを有効にしても、現在のラボの VM に自動的に適用されることはありません。 この設定を特定の VM に適用するには、その VM のブレードを開いて **[自動開始]** 設定を変更します。 
+
+## <a name="set-expiration-date"></a>有効期限の設定
+[VM を作成する](devtest-lab-add-vm.md)ときに有効期限を設定をできます。 **[詳細設定]** で、予定表アイコンを選択して、VM が自動的に削除される日付を指定します。  既定では、VM は無期限に設定されます。
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

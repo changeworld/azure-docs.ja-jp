@@ -20,8 +20,3 @@
 [install-git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 [download-SDK-PHP]: ../articles/php-download-sdk.md
 [composer-phar]: http://getcomposer.org/composer.phar
-
-
-<!--HONumber=Nov16_HO3-->
-
-

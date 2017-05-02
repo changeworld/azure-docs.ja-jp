@@ -13,19 +13,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: getting-started
-ms.date: 2/14/2017
+ms.date: 4/4/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 9a0e7a9aadf6ca12915635408653a37241dbb321
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 8a903cd870f01f9ca6224efd1386b68c63e3aa98
+ms.lasthandoff: 04/06/2017
 
 
 ---
 
 # <a name="deploy-an-autoscaling-app-using-a-template"></a>テンプレートを使用した自動スケール アプリのデプロイ
 
-[Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment)は、関連するリソースのグループをデプロイするための優れた方法です。 このチュートリアルは、[単純なスケール セットのデプロイ](virtual-machine-scale-sets-mvss-start.md)に関する記事に基づいて作成されています。このチュートリアルでは、Azure Resource Manager テンプレートを使用して、スケール セットにシンプルな自動スケール アプリケーションをデプロイする方法について説明します。
+[Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment)は、関連するリソースのグループをデプロイするための優れた方法です。 このチュートリアルは、[単純なスケール セットのデプロイ](virtual-machine-scale-sets-mvss-start.md)に関する記事に基づいて作成されています。このチュートリアルでは、Azure Resource Manager テンプレートを使用して、スケール セットにシンプルな自動スケール アプリケーションをデプロイする方法について説明します。  PowerShell、CLI、またはポータルを使用して、自動スケールを設定することもできます。 詳細については、[自動スケールの概要](virtual-machine-scale-sets-autoscale-overview.md)に関するページを参照してください。
 
 ## <a name="two-quickstart-templates"></a>2 つのクイックスタート テンプレート
 スケール セットをデプロイするときに、[VM 拡張機能](../virtual-machines/virtual-machines-windows-extensions-features.md)を使用して、プラットフォーム イメージに新しいソフトウェアをインストールできます。 VM 拡張機能は、アプリのデプロイなど、Azure 仮想マシンでのデプロイ後の構成タスクと自動タスクを提供する小規模なアプリケーションです。 [Azure/azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates) には、VM 拡張機能を使用して自動スケール アプリケーションをスケール セットにデプロイする方法を示す、2 種類のサンプル テンプレートが用意されています。

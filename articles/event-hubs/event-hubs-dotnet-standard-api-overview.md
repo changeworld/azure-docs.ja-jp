@@ -15,13 +15,14 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: jotaub
 translationtype: Human Translation
-ms.sourcegitcommit: f77755bed5463c0c87f698ded5c80d824efbd8b0
-ms.openlocfilehash: 101727b54aa198411efaa5bfa7c0859bcfeb5417
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 4e05b1cc41038b2239f9314c17b93d20eed33844
+ms.lasthandoff: 04/19/2017
 
 ---
 
 # <a name="event-hubs-net-standard-api-overview"></a>Event Hubs .NET Standard API の概要
-この記事は主要な Event Hubs .NET Standard クライアント API についてまとめてあります。 現在&2; つの .NET Standard クライアント ライブラリがあります。
+この記事は主要な Event Hubs .NET Standard クライアント API についてまとめてあります。 現在 2 つの .NET Standard クライアント ライブラリがあります。
 * [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs)
   *  このライブラリは、基本的なランタイム操作がすべて用意されています。
 * [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor)
@@ -48,7 +49,7 @@ var connectionStringBuilder = new EventHubsConnectionStringBuilder("{Event Hub c
 var eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringBuilder.ToString());
 ```
 
-### <a name="send-events"></a>イベントの送信
+### <a name="send-events"></a>送信イベント
 Event Hub にイベントを送信するには、[**EventData**](/dotnet/api/microsoft.azure.eventhubs.eventdata) クラスを使用します。 本文は `byte` 配列または `byte` 配列セグメントにする必要があります。
 
 ```csharp
@@ -113,7 +114,7 @@ if (ehEvents != null)
         var customType = ehEvent.Properties["Type"];
         // Implement processing logic here
     }
-}       
+}        
 ```
 
 ## <a name="event-processor-host-apis"></a>イベント プロセッサ ホスト API
@@ -188,8 +189,3 @@ Event Hubs シナリオに関する詳細については、次のリンク先を
 
 * [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs)
 * [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor)
-
-
-<!--HONumber=Feb17_HO1-->
-
-

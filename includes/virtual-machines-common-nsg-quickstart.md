@@ -11,8 +11,3 @@
 
 ネットワーク セキュリティ グループと規則を使用して、複雑なネットワーク構成を作成して環境を保護できます。 この例では、HTTP トラフィックまたはリモート管理を許可する 1 つまたは 2 つのルールのみを使用します。 詳細については、後述の[詳細情報](#more-information-on-network-security-groups)セクションまたは[ネットワーク セキュリティ グループ](../articles/virtual-network/virtual-networks-nsg.md)に関する記事を参照してください。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

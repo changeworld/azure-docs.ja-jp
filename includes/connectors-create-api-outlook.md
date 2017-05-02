@@ -15,8 +15,3 @@
 4. Outlook の資格情報を入力して、サインインします。![](./media/connectors-create-api-outlook/office365-outlook-2.png)  
    これで終了です。 Outlook への接続が作成されました。 この接続は、作成するロジック アプリで使用可能になります。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

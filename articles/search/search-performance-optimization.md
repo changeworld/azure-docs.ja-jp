@@ -12,11 +12,12 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/17/2016
+ms.date: 04/02/2017
 ms.author: liamca
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9024c47e7d483129d66105012e0d67cfa9700cb9
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 56eeed7634fca840172ab828be5f202d80f3f4fb
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -29,7 +30,7 @@ Bing や Google などの検索エンジンとこれらが提供する高いパ�
 1. 標準的な検索要求が完了するまでに要する対象待機時間 (または最長時間) を選択します。
 2. 実際のワークロードを作成し、現実的なデータセットを使って Search サービスでワークロードをテストして待機時間の割合を測定します。
 3. 少数の QPS (1 秒あたりのクエリ数) から始め、クエリの待機時間が定義済みの対象待機時間を下回るまで、テストで実行されるクエリ数を増やし続けます。  これは、アプリケーションの普及に伴ってスケールの計画を立てる際に役立つ重要なベンチマークです。
-4. 可能な限り、HTTP 接続を再利用します。  Azure Search .NET SDK を使用している場合、これはインスタンスまたは [SearchIndexClient](https://msdn.microsoft.com/library/azure/microsoft.azure.search.searchindexclient.aspx) インスタンスを再利用することを意味します。REST API を使用している場合は、1 つの HttpClient を再利用します。
+4. 可能な限り、HTTP 接続を再利用します。  Azure Search .NET SDK を使用している場合、これはインスタンスまたは [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) インスタンスを再利用することを意味します。REST API を使用している場合は、1 つの HttpClient を再利用します。
 
 これらのテスト ワークロードの作成時に留意すべき Azure Search の特性がいくつかあります。
 
@@ -46,7 +47,7 @@ Bing や Google などの検索エンジンとこれらが提供する高いパ�
 ## <a name="scaling-azure-search-for-high-query-rates-and-throttled-requests"></a>高いクエリ レートと調整済みの要求に対応するための Azure Search のスケーリング
 受信する調整済みの要求が多すぎる場合や、クエリ負荷の増加によって対象待機時間の割合を超えた場合は、次の 2 つの方法のいずれかで待機時間の割合を減らすことができます。
 
-1. **レプリカを増やす:** レプリカはデータのコピーのようなものです。レプリカにより、Azure Search は複数のコピーに対して要求の負荷を分散させることができます。  複数のレプリカでの負荷分散とデータのレプリケーションはすべて Azure Search によって管理されます。サービスに割り当てられたレプリカの数はいつでも変更できます。  Standard Search サービスでは最大 12 個、Basic Search サービスでは最大 3 個のレプリカを割り当てることができます。  レプリカは、[Azure Portal](search-create-service-portal.md) または [Azure Search 管理 API](search-get-started-management-api.md) を使用して調整できます。
+1. **レプリカを増やす:** レプリカはデータのコピーのようなものです。レプリカにより、Azure Search は複数のコピーに対して要求の負荷を分散させることができます。  複数のレプリカでの負荷分散とデータのレプリケーションはすべて Azure Search によって管理されます。サービスに割り当てられたレプリカの数はいつでも変更できます。  Standard Search サービスでは最大 12 個、Basic Search サービスでは最大 3 個のレプリカを割り当てることができます。 レプリカは [Azure Portal](search-create-service-portal.md) または [PowerShell](search-manage-powershell.md) から調整できます。
 2. **Search のレベルを上げる:** Azure Search には[複数のレベル](https://azure.microsoft.com/pricing/details/search/)が用意されており、レベルごとに異なるパフォーマンス レベルを提供します。  クエリの数が非常に多いため、レプリカを最大数まで増やしても、現在のレベルでは待機時間の割合を十分に低くしておくことができない場合があります。  この場合、多数のドキュメントと負荷がきわめて高いクエリ ワークロードを使用するシナリオに最適な Azure Search S3 など、Search のより高いレベルのいずれかを利用することを検討します。
 
 ## <a name="scaling-azure-search-for-slow-individual-queries"></a>個々の低速クエリに対応するための Azure Search のスケーリング
@@ -54,7 +55,7 @@ Bing や Google などの検索エンジンとこれらが提供する高いパ�
 
 1. **パーティションを増やす:** パーティションとは、追加のリソース間でデータを分割するためのメカニズムです。  そのため、2 つ目のパーティションを追加すると、データが 2 つに分割されます。  3 つ目のパーティションにより、インデックスが 3 つに分割されます。これは、計算の並列処理によって低速クエリの実行を高速化する場合にも効果があります。  選択度の低いクエリを含むクエリで、この並列処理が大きな効果を発揮した例がいくつかあります。  たとえば、多数のドキュメントと一致するクエリや、ファセットで多数のドキュメントの数をカウントする必要がある場合です。  ドキュメントの関連性を評価したり、ドキュメントの数をカウントしたりするために多数の計算が必要となるため、パーティションを追加することで追加の計算を提供できます。  
    
-   Standard Search サービスでは最大 12 個のパーティション、Basic Search サービスでは 1 つのパーティションを使用できます。  パーティションは、[Azure Portal](search-create-service-portal.md) または [Azure Search 管理 API](search-get-started-management-api.md) を使用して調整できます。
+   Standard Search サービスでは最大 12 個のパーティション、Basic Search サービスでは 1 つのパーティションを使用できます。  パーティションは [Azure Portal](search-create-service-portal.md) または [PowerShell](search-manage-powershell.md) から調整できます。
 2. **高基数フィールドを制限する:** 高基数フィールドは、多数の一意の値を含むファセット可能フィールドまたはフィルター可能フィールドで構成されます。そのため、結果を計算するために多くのリソースを必要とします。   たとえば、製品 ID フィールドや説明フィールドをファセット可能/フィルター可能として設定すると、ドキュメント間でほとんどの値が一意であるため、高基数になります。 可能な限り、高基数フィールドの数を制限します。
 3. **Search のレベルを上げる:** 低速クエリのパフォーマンスを向上させるもう 1 つの方法として、Azure Search のレベルを上げます。  レベルを上げると、CPU が高速化され、メモリ容量も増えるので、クエリのパフォーマンスが向上する可能性があります。
 
@@ -76,7 +77,7 @@ Bing や Google などの検索エンジンとこれらが提供する高いパ�
    ![リージョン別のサービスのクロス集計][1]
 
 ### <a name="keeping-data-in-sync-across-multiple-azure-search-services"></a>複数の Azure Search サービス間でのデータの同期の維持
-分散した Search サービスの同期を維持するには、[Azure Search インデクサー](search-indexer-overview.md)を使用するか、Push API ([Azure Search REST API](https://msdn.microsoft.com/library/dn798935.aspx) とも呼ばれます) を使用します。  
+分散した Search サービスの同期を維持するには、[Azure Search インデクサー](search-indexer-overview.md)を使用するか、Push API ([Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/) とも呼ばれます) を使用します。  
 
 ### <a name="azure-search-indexers"></a>Azure Search インデクサー
 Azure Search インデクサーを使用している場合は、Azure SQL DB や DocumentDB などの中央のデータストアからデータの変更を既にインポートしています。 新しい Search サービスを作成するときは、この同じデータストアを参照する、そのサービス用の新しい Azure Search インデクサーも作成します。 これにより、新しい変更がデータストアに書き込まれるたびに、さまざまなインデクサーによってインデックスが作成されます。  
@@ -86,7 +87,7 @@ Azure Search インデクサーを使用している場合は、Azure SQL DB や
    ![分散したインデクサーとサービスの組み合わせを使用する単一のデータ ソース][2]
 
 ### <a name="push-api"></a>Push API
-[Azure Search インデックスの内容を更新](https://msdn.microsoft.com/library/dn798930.aspx)するために、Azure Search Push API を使用している場合は、更新が必要になるたびにすべての Search サービスに変更をプッシュすることで、さまざまな Search サービスの同期を維持できます。  これを実行するときには、1 つの Search サービスの更新が失敗し、1 つ以上の更新が成功した場合に確実に処理できるようにする必要があります。
+[Azure Search インデックスの内容を更新](https://docs.microsoft.com/rest/api/searchservice/update-index)するために、Azure Search Push API を使用している場合は、更新が必要になるたびにすべての Search サービスに変更をプッシュすることで、さまざまな Search サービスの同期を維持できます。  これを実行するときには、1 つの Search サービスの更新が失敗し、1 つ以上の更新が成功した場合に確実に処理できるようにする必要があります。
 
 ## <a name="leveraging-azure-traffic-manager"></a>Azure Traffic Manager の活用
 [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) を使用すると、複数の Azure Search サービスが支援する地理的に配置された複数の Web サイトに要求をルーティングできます。  Traffic Manager の利点の 1 つは、Azure Search をプローブしてサービスが利用可能であることを確認し、ダウンタイムが発生した場合にユーザーを別の Search サービスにルーティングできることです。  また、Azure Websites を使用して検索要求をルーティングしている場合、Azure Traffic Manager を使用すると、Websites は稼働していても Azure Search が稼働していない場合に負荷を分散できます。  Traffic Manager を活用したアーキテクチャの例を次に示します。
@@ -113,9 +114,4 @@ STA は、その Azure Search の観点から待機時間の割合を把握す�
 [1]: ./media/search-performance-optimization/geo-redundancy.png
 [2]: ./media/search-performance-optimization/scale-indexers.png
 [3]: ./media/search-performance-optimization/geo-search-traffic-mgr.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

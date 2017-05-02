@@ -5,8 +5,3 @@ Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーで�
 * 仮想マシン (VM) への着信インターネット トラフィックを負荷分散します。 このシナリオのロード バランサーを、 [インターネット接続ロード バランサー](../articles/load-balancer/load-balancer-internet-overview.md)と呼びます。
 * 仮想ネットワーク (VNet) 内の VM 間、クラウド サービス内の VM 間、またはクロスプレミスの仮想ネットワーク内のオンプレミス コンピューターと VM 間でトラフィックを負荷分散します。 このシナリオのロード バランサーを、 [内部ロード バランサー (ILB)](../articles/load-balancer/load-balancer-internal-overview.md)と呼びます。
 * 外部トラフィックを特定の VM インスタンスに転送します。
-
-
-<!--HONumber=Nov16_HO2-->
-
-

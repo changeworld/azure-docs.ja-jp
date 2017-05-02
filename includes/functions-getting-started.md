@@ -2,8 +2,3 @@ Azure Functions は、他の Azure サービス、SaaS 製品、オンプレミ�
 
 この概要のビデオでは、Functions アプリの作成方法、コードの変更方法、トリガーとバインドの操作方法について説明します。
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

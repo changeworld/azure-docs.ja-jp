@@ -11,7 +11,7 @@
       
         ![ボリュームの追加](./media/storsimple-create-volume/ScreenshotUpdate1VolumeFlow.png)
       
-      1. 矢印アイコン  ![矢印アイコン](./media/storsimple-create-volume/HCS_ArrowIcon-include.png)  をクリックして、次のページに進みます。
+      1. 矢印アイコン  ![矢印アイコン](./media/storsimple-create-volume/HCS_ArrowIcon-include.png) をクリックして、次のページに進みます。
 3. **[追加設定]** ダイアログ ボックスで、新しい Access Control レコード (ACR) を追加します。
    
    1. ACR の **[名前]** を入力します。
@@ -24,14 +24,9 @@
       > 
       
         ![ボリュームの追加](./media/storsimple-create-volume/AddVolume2-include.png)
-4. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-create-volume/HCS_CheckIcon-include.png) をクリックします。 指定された設定でボリュームが作成されます。
+4. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-create-volume/HCS_CheckIcon-include.png)をクリックします。 指定された設定でボリュームが作成されます。
 
 ![ビデオ](./media/storsimple-create-volume/Video_icon.png) **ビデオ**
 
 StorSimple ボリュームの作成方法を説明したビデオについては、 [こちら](https://azure.microsoft.com/documentation/videos/create-a-storsimple-volume/)を参照してください。
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

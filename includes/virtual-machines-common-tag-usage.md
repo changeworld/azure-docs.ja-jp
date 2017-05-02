@@ -18,8 +18,3 @@ Resource Manager デプロイメント モデルで Compute、Network、およ�
 
 これらのタグと使用量を分析すると、新たな視点で組織の使用データを調査できるようになります。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -16,8 +16,3 @@ Salesforce アカウントに接続するロジック アプリを承認する�
 5. 接続が作成されたら、ロジック アプリで他の手順を自由に実行できるようになります。  
    ![Salesforce 接続イメージ 5](./media/connectors-create-api-salesforce/salesforce-5.png)  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

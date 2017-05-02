@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: e279ca5f86ec2870955f0fd204e852252a34a42e
-ms.lasthandoff: 04/14/2017
+ms.sourcegitcommit: 4bab9f44d1c91f05618ea510b83beb06540429f2
+ms.openlocfilehash: f744a29e12fb693dd422f359d0faacaae004351b
+ms.lasthandoff: 02/14/2017
 
 
 ---
 # <a name="set-password-expiration-policies-in-azure-active-directory"></a>Azure Active Directory でパスワード有効期限ポリシーを設定する
 > [!IMPORTANT]
-> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#reset-my-password)にお進みください。
+> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)にお進みください。
 >
 >
 
@@ -45,7 +45,7 @@ Windows PowerShell コマンドレットを使用するには、最初に Window
 1. 会社の管理者の資格情報を使用して Windows PowerShell に接続します。
 2. 次のいずれかを実行します。
 
-   * 特定のユーザーについてパスワードの有効期限が切れないかどうかを確認するには、確認するユーザーのユーザー プリンシパル名 (UPN) (例: aprilr@contoso.onmicrosoft.com) またはユーザー ID を使用して、次のコマンドレットを実行します。`Get-MSOLUser -UserPrincipalName <user ID> | Select PasswordNeverExpires`
+   * 特定のユーザーについてパスワードの有効期限が切れないかどうかを確認するには、確認するユーザーのユーザー プリンシパル名 (UPN) (例: aprilr@contoso.onmicrosoft.com)) またはユーザー ID を使用して、次のコマンドレットを実行します。`Get-MSOLUser -UserPrincipalName <user ID> | Select PasswordNeverExpires`
    * すべてのユーザーについて「パスワードを無期限にする」設定を表示するには、次のコマンドレットを実行します。 `Get-MSOLUser | Select UserPrincipalName, PasswordNeverExpires`
 
 ## <a name="set-a-password-to-expire"></a>パスワードを期限付きに設定する
@@ -63,5 +63,5 @@ Windows PowerShell コマンドレットを使用するには、最初に Window
    * 組織内のすべてのユーザーのパスワードを無期限に設定するには、次のコマンドレットを実行します。 `Get-MSOLUser | Set-MsolUser -PasswordNeverExpires $true`
 
 ## <a name="next-steps"></a>次のステップ
-* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#reset-my-password)にお進みください。
+* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)にお進みください。
 

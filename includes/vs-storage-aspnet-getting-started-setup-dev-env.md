@@ -29,8 +29,3 @@
     ![[接続済みサービス] ダイアログ](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-3.png)
 
 1. **[Azure Storage]** ダイアログで目的の Azure ストレージ アカウントを選択し、**[追加]** を選択します。
-
-
-<!--HONumber=Dec16_HO3-->
-
-

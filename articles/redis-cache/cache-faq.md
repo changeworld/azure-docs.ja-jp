@@ -12,12 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2017
+ms.date: 04/12/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: afdbd737be96acbcf2883c644bfbbb741fe94179
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 831ce961992747de87706c3dde24b812a281c23a
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -50,7 +50,7 @@ Azure Redis Cache についてよく寄せられる質問の回答、パター�
 * [Azure Redis Cache のパフォーマンス](#azure-redis-cache-performance)
 * [キャッシュを配置するリージョン](#in-what-region-should-i-locate-my-cache)
 * [Azure Redis Cache の課金方法を教えてください。](#how-am-i-billed-for-azure-redis-cache)
-* [Azure Government Cloud または Azure China Cloud で Azure Redis Cache を使用することはできますか。](#can-i-use-azure-redis-cache-with-azure-government-cloud-or-azure-china-cloud)
+* [Azure Redis Cache を Azure Government Cloud、Azure China Cloud、または Microsoft Azure Germany で使用することはできますか。](#can-i-use-azure-redis-cache-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany)
 
 ## <a name="development-faqs"></a>開発に関する FAQ
 * [StackExchange.Redis 構成オプションについて](#what-do-the-stackexchangeredis-configuration-options-do)
@@ -162,15 +162,28 @@ Cache のオプションを選択するときの考慮事項を次に示しま�
 ### <a name="how-am-i-billed-for-azure-redis-cache"></a>Azure Redis Cache の課金方法を教えてください。
 Azure Redis Cache の価格については、 [ここ](https://azure.microsoft.com/pricing/details/cache/)を参照してください。 価格ページには、1 時間単位の価格が表示されます。 キャッシュは、キャッシュが作成された時間から削除された時間までの期間に関して、分単位で課金されます。 キャッシュの課金を停止または一時停止するオプションはありません。
 
-## <a name="can-i-use-azure-redis-cache-with-azure-government-cloud-or-azure-china-cloud"></a>Azure Government Cloud または Azure China Cloud で Azure Redis Cache を使用することはできますか。
-はい。Azure Redis Cache は Azure Government Cloud と Azure China Cloud のどちらでも使用できます。 Azure Government Cloud と Azure China Cloud では、Azure Redis Cache へのアクセスと管理のための URL が Azure パブリック クラウドと異なります。 Azure Government Cloud と Azure China Cloud で Azure Redis Cache を使用する場合の考慮事項の詳細については、[Azure Government Databases のページの Azure Redis Cache](../azure-government/documentation-government-services-database.md#azure-redis-cache) に関するセクションと、[Azure China Cloud のページの Azure Redis Cache](https://www.azure.cn/documentation/services/redis-cache/) に関するセクションをそれぞれ参照してください。
+### <a name="can-i-use-azure-redis-cache-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany"></a>Azure Redis Cache を Azure Government Cloud、Azure China Cloud、または Microsoft Azure Germany で使用することはできますか。
+はい。Azure Redis Cache は、Azure Government Cloud、Azure China Cloud、および Microsoft Azure Germany で使用できます。 ただし、Azure Redis Cache のアクセスと管理を行うための URL については、これらのクラウドと、Azure パブリック クラウドとで異なります。 
 
-Azure Government Cloud と Azure China Cloud で PowerShell と一緒に Azure Redis Cache を使用する方法の詳細については、「[Azure Government Cloud または Azure China Cloud に接続する方法](cache-howto-manage-redis-cache-powershell.md#how-to-connect-to-azure-government-cloud-or-azure-china-cloud)」を参照してください。
+| クラウド   | Redis の DNS サフィックス            |
+|---------|---------------------------------|
+| パブリック  | *.redis.cache.windows.net       |
+| 米国政府  | *. redis.cache.usgovcloudapi.net |
+| ドイツ | *.redis.cache.cloudapi.de       |
+| 中国   | *.redis.cache.chinacloudapi.cn  |
+
+その他のクラウドで Azure Redis Cache を使用するときの考慮事項の詳細については、次のリンクを参照してください。
+
+- [Azure Government データベース - Azure Redis Cache](../azure-government/documentation-government-services-database.md#azure-redis-cache)
+- [Azure China Cloud - Azure Redis Cache](https://www.azure.cn/documentation/services/redis-cache/)
+- [Microsoft Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)
+
+Azure Government Cloud、Azure China Cloud、および Microsoft Azure Germany で PowerShell と共に Azure Redis Cache を使用する方法の詳細については、「[その他のクラウドへの接続方法 - Azure Redis Cache PowerShell](cache-howto-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds)」を参照してください。
 
 <a name="cache-configuration"></a>
 
 ### <a name="what-do-the-stackexchangeredis-configuration-options-do"></a>StackExchange.Redis 構成オプションについて
-StackExchange.Redis には多くのオプションが用意されています。 ここでは、いくつかの一般的な設定について説明します。 StackExchange.Redis オプションの詳細については、 [StackExchange.Redis の構成](https://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Configuration.md)に関するページを参照してください。
+StackExchange.Redis には多くのオプションが用意されています。 ここでは、いくつかの一般的な設定について説明します。 StackExchange.Redis オプションの詳細については、 [StackExchange.Redis の構成](https://stackexchange.github.io/StackExchange.Redis/Configuration)に関するページを参照してください。
 
 | 構成オプション | 説明 | 推奨 |
 | --- | --- | --- |

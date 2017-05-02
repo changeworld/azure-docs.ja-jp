@@ -1,6 +1,6 @@
 ---
-title: "Active Directory 認証と Resource Manager | Microsoft Docs"
-description: "アプリケーションを他の Azure サブスクリプションと統合するための Azure Resource Manager API と Active Directory を使用した認証の開発者ガイド。"
+title: "Azure Active Directory 認証と Resource Manager | Microsoft Docs"
+description: "アプリケーションを他の Azure サブスクリプションと統合するための Azure Resource Manager API と Azure Active Directory を使用した認証の開発者ガイド。"
 services: azure-resource-manager,active-directory
 documentationcenter: na
 author: dushyantgill
@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 12/27/2016
 ms.author: dugill;tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: de1355a8dc4b0099dca3efc2109ccfb9facf7269
-ms.lasthandoff: 04/05/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 8a8a28e6491855434c4445bedd5644d7da109f8a
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -71,7 +71,7 @@ Web アプリケーションのエンド ツー エンドのフローを次に�
 ## <a name="register-application"></a>アプリケーションを登録する
 コーディングを開始する前に、Web アプリケーションを Azure Active Directory (AD) に登録します。 アプリケーションの登録により、Azure AD にアプリケーションの主要 ID が作成されます。 この ID には、OAuth クライアント ID、応答 URL、アプリケーションが Azure Resource Manager API に対する認証とアクセスに使用する資格情報など、アプリケーションに関する基本情報が保持されます。 また、アプリケーションの登録により、アプリケーションがユーザーに代わって Microsoft API にアクセスするときに必要となる委任された各種アクセス許可が記録されます。
 
-アプリケーションは他のサブスクリプションにアクセスするため、アプリケーションをマルチテナント アプリケーションとして構成する必要があります。 検証に合格するには、Active Directory に関連付けられているドメインを指定します。 Active Directory に関連付けられているドメインを表示するには、 [クラシック ポータル](https://manage.windowsazure.com)にログインします。 Active Directory を選択し、 **[ドメイン]**を選択します。
+アプリケーションは他のサブスクリプションにアクセスするため、アプリケーションをマルチテナント アプリケーションとして構成する必要があります。 検証に合格するには、Azure Active Directory に関連付けられているドメインを指定します。 Azure Active Directory に関連付けられているドメインを表示するには、[クラシック ポータル](https://manage.windowsazure.com)にログインします。 Azure Active Directory を選択し、**[ドメイン]** を選択します。
 
 次の例は、Azure PowerShell を使用してアプリケーションを登録する方法を示しています。 このコマンドを機能させるには、Azure PowerShell の最新バージョン (2016 年 8 月) が必要です。
 
@@ -93,7 +93,7 @@ Azure AD では、アプリケーションの証明書資格情報もサポー�
 証明書を使用した AD アプリケーションの作成方法については、「[リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority)」または「[リソースにアクセスするためのサービス プリンシパルを Azure CLI で作成する](resource-group-authenticate-service-principal-cli.md#create-service-principal-with-certificate)」をご覧ください。
 
 ## <a name="get-tenant-id-from-subscription-id"></a>サブスクリプション ID を使用してテナント ID を取得する
-Resource Manager の呼び出しに使用できるトークンを要求するには、Azure サブスクリプションをホストする Azure AD テナントのテナント ID をアプリケーションが認識している必要があります。 ほとんどの場合、ユーザーはサブスクリプション ID を知っていますが、Active Directory のテナント ID は知らないことがあります。 ユーザーのテナント ID を取得するには、ユーザーにサブスクリプション ID を要求します。 サブスクリプションに関する要求を送信するときに、そのサブスクリプション ID を指定します。
+Resource Manager の呼び出しに使用できるトークンを要求するには、Azure サブスクリプションをホストする Azure AD テナントのテナント ID をアプリケーションが認識している必要があります。 ほとんどの場合、ユーザーはサブスクリプション ID を知っていますが、Azure Active Directory のテナント ID は知らないことがあります。 ユーザーのテナント ID を取得するには、ユーザーにサブスクリプション ID を要求します。 サブスクリプションに関する要求を送信するときに、そのサブスクリプション ID を指定します。
 
     https://management.azure.com/subscriptions/{subscription-id}?api-version=2015-01-01
 

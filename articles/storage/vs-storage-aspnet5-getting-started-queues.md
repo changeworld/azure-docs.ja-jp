@@ -1,6 +1,6 @@
 ---
-title: "Queue Storage と Visual Studio 接続済みサービスの概要 (ASP.NET 5) | Microsoft Docs"
-description: "Visual Studio の ASP.NET 5 プロジェクトで Azure キュー ストレージの使用を開始する方法"
+title: "Queue Storage と Visual Studio 接続済みサービスの概要 (ASP.NET Core) | Microsoft Docs"
+description: "Visual Studio の ASP.NET Core プロジェクトで Azure Queue Storage の使用を開始する方法"
 services: storage
 documentationcenter: 
 author: TomArcher
@@ -15,22 +15,23 @@ ms.topic: article
 ms.date: 12/02/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b166ced70b845dd297a1eb87aaec5456ec3e0b31
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 4622496544ce6e1057ac68a2e9946917573e997e
+ms.lasthandoff: 03/31/2017
 
 
 ---
-# <a name="get-started-with-queue-storage-and-visual-studio-connected-services-aspnet-5"></a>キュー ストレージと Visual Studio 接続済みサービスの概要 (ASP.NET 5)
+# <a name="get-started-with-queue-storage-and-visual-studio-connected-services-aspnet-core"></a>Queue Storage と Visual Studio 接続済みサービスの概要 (ASP.NET Core)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>概要
-この記事では、Visual Studio の **[Add Connected Services (接続済みサービスの追加)]** ダイアログを使用して ASP.NET 5 プロジェクトで Azure ストレージ アカウントを作成または参照した後に、Visual Studio で Azure Queue Storage の使用を開始する方法について説明します。 **接続済みサービスの追加** 操作によって、プロジェクト内の Azure ストレージにアクセスする適切な NuGet パッケージがインストールされ、プロジェクトの構成ファイルに、ストレージ アカウントの接続文字列が追加されます。
+この記事では、Visual Studio の **[接続済みサービスの追加]** ダイアログを使用して ASP.NET Core プロジェクトで Azure Storage アカウントを作成または参照した後に、Visual Studio で Azure Queue Storage の使用を開始する方法について説明します。 **接続済みサービスの追加** 操作によって、プロジェクト内の Azure ストレージにアクセスする適切な NuGet パッケージがインストールされ、プロジェクトの構成ファイルに、ストレージ アカウントの接続文字列が追加されます。
 
 Azure キュー ストレージは、HTTP または HTTPS を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。 キューの 1 つのメッセージの最大サイズは 64 キロバイト (KB) で、1 つのキューには、ストレージ アカウントの合計容量の上限に達するまで、数百万のメッセージを格納できます。
 
 最初に、ストレージ アカウント内に Azure キューを作成する必要があります。 コードでキューを作成する方法を説明します。 また、キュー メッセージの追加、変更、読み取り、削除などの基本的なキュー操作を実行する方法についても説明します。 例は C\# のコードで記述され、Azure .NET 用ストレージ クライアント ライブラリを利用しています。 ASP.NET の詳細については、 [ASP.NET](http://www.asp.net)に関するページを参照してください。
 
-**注:** ASP.NET 5 で Azure ストレージへの呼び出しを実行する API の一部は非同期です。 詳細については、 [Async および Await を使用した非同期プログラミング](http://msdn.microsoft.com/library/hh191443.aspx) に関するページをご覧ください。 次のコードでは、非同期のプログラミング方法を使用していることを前提としています。
+**注** - ASP.NET Core で Azure Storage への呼び出しを実行する API の一部は非同期です。 詳細については、 [Async および Await を使用した非同期プログラミング](http://msdn.microsoft.com/library/hh191443.aspx) に関するページをご覧ください。 次のコードでは、非同期のプログラミング方法を使用していることを前提としています。
 
 * プログラムを使用してキューを操作する方法の詳細については、「 [.NET を使用して Azure Queue Storage を使用する](storage-dotnet-how-to-use-queues.md) 」をご覧ください。
 * Azure Storage の一般情報については、「 [ストレージのドキュメント](https://azure.microsoft.com/documentation/services/storage/) 」をご覧ください。
@@ -38,7 +39,7 @@ Azure キュー ストレージは、HTTP または HTTPS を使用した認証�
 * ASP.NET アプリケーションのプログラミングについての詳細は、「 [ASP.NET](http://www.asp.net) 」をご覧ください。
 
 ## <a name="access-queues-in-code"></a>コードでキューにアクセスする
-ASP.NET 5 プロジェクトでキューにアクセスするには、Azure キュー ストレージにアクセスする C# ソース ファイルに、次の項目を含める必要があります。
+ASP.NET Core プロジェクトでキューにアクセスするには、Azure Queue Storage にアクセスする C# ソース ファイルに、次の項目を含める必要があります。
 
 1. C# ファイル冒頭の名前空間宣言に、次の **using** ステートメントが含まれていることを確認します。
    
@@ -153,10 +154,5 @@ ASP.NET 5 プロジェクトでキューにアクセスするには、Azure キ�
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

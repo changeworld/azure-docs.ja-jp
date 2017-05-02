@@ -7,8 +7,3 @@
   * Azure Storage のキューを操作する方法については、「 [.NET を使用して Azure Queue Storage を使用する](../articles/storage/storage-dotnet-how-to-use-queues.md)」を参照してください。
   * リレーショナル データを格納する方法については、「 [.NET (C#) を使用して SQL Database に接続する](../articles/sql-database/sql-database-develop-dotnet-simple.md)」をご覧ください。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

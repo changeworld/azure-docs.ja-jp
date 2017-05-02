@@ -15,29 +15,36 @@ ms.workload: NA
 ms.date: 02/10/2017
 ms.author: vturecek
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 194935398809b1905ddc4100b5f09fce7f75a796
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: 18a4ab09d83c0a664317191ef15834cc7bf335fc
+ms.lasthandoff: 04/14/2017
 
 
 ---
 # <a name="reliable-actors-state-management"></a>Reliable Actors の状態管理
-Reliable Actors は、ロジックと状態の両方をカプセル化できるシングル スレッド オブジェクトです。 アクターは Reliable Services 上で実行されるため、Reliable Services によって使用されるのと同じ永続化およびレプリケーション メカニズムを使用して、状態を確実に保持することができます。 このため、エラー後や、ガベージ コレクションに続く再アクティブ化の後や、リソース分散またはアップグレードのためにクラスター内のノード間を移動されたときでも、アクターは状態を失いません。
+Reliable Actors は、ロジックと状態の両方をカプセル化できるシングル スレッド オブジェクトです。 アクターは Reliable Services 上で実行されるため、Reliable Services と同じ永続化およびレプリケーション メカニズムを使用して、状態を確実に保持することができます。 このため、エラー後やガベージ コレクションに続く再アクティベーション時、リソース分散またはアップグレードのためにクラスター内のノード間を移動されたときでも、アクターは状態を失いません。
 
 ## <a name="state-persistence-and-replication"></a>状態の永続性とレプリケーション
-各アクター インスタンスは一意の ID にマッピングされるため、すべての Reliable Actors は、 *ステートフル* であると見なされます。 つまり、同じアクター ID を繰り返し呼び出すと、同じアクター インスタンスにルーティングされます。 これは、クライアント呼び出しが常に同じサーバーにルーティングされるとは限らないステートレス システムとは異なります。 このため、アクター サービスは常にステートフルなサービスです。
+各アクター インスタンスは一意の ID にマッピングされるため、すべての Reliable Actors は、 *ステートフル* であると見なされます。 つまり、同じアクター ID を繰り返し呼び出すと、同じアクター インスタンスにルーティングされます。 一方ステートレス システムでは、クライアント呼び出しが常に同じサーバーにルーティングされるとは限りません。 このため、アクター サービスは常にステートフルなサービスです。
 
-ただし、アクターはステートフルと見なせるとしても、状態を確実に格納しているとは限りません。 アクターは、データ ストレージの要件に基づいて、次のような状態の永続性とレプリケーションのレベルを選択できます。
+アクターをステートフルと見なすことができても、状態を確実に格納しているとは限りません。 アクターは、データ ストレージの要件に基づいて、次のような状態の永続性とレプリケーションのレベルを選択できます。
 
 * **永続化状態:** 状態はディスクに永続化され、3 つ以上のレプリカにレプリケートされます。 これは、完全なクラスター停止があっても状態を永続化できる、最も持続性のある状態ストレージ オプションです。
-* **揮発状態:** 状態は 3 つ以上のレプリカにレプリケートされ、メモリだけに保持されます。 これにより、ノード障害時、アクター障害時、およびアップグレードとリソース分散中の回復力が得られます。 ただし、状態はディスクに永続化されないため、すべてのレプリカが同時に失われると、状態も失われます。
-* **非永続化状態:** 状態はレプリケートされず、ディスクにも書き込まれません。 単に状態を確実に保持する必要がないアクター用です。
+* **揮発状態:** 状態は 3 つ以上のレプリカにレプリケートされ、メモリだけに保持されます。 これにより、ノード障害時、アクター障害時、およびアップグレードとリソース分散中の回復力が得られます。 ただし、状態はディスクに保持されません。 従って、すべてのレプリカが同時に失われると状態も失われます。
+* **非永続化状態:** 状態はレプリケートされず、ディスクにも書き込まれません。 単に状態を確実に保持する必要がないアクター レベルです。
 
-永続性の各レベルは、単にサービスの*状態プロバイダー*と*レプリケーション*構成が異なるだけです。 状態がディスクに書き込まれるかどうかは、*状態プロバイダー*によって決まります。これは、状態を格納する Reliable Service のコンポーネントです。また、レプリケーションによって、いくつのレプリカにサービスがデプロイされるかが決まります。 Reliable Services と同様に、状態プロバイダーもレプリカ数も手動で簡単に設定できます。 アクター フレームワークは、属性を提供します。これは、アクターに使用された場合に、既定の状態プロバイダーとレプリカ数の自動生成設定を自動的に選択して、上記の 3 つの永続性設定のいずれかを実現します。
+永続性の各レベルは、単にサービスの*状態プロバイダー*と*レプリケーション*構成が異なるだけです。 状態がディスクに書き込まれるかどうかは、状態プロバイダーによって決まります。これは、状態を格納する Reliable Service のコンポーネントです。 またレプリケーションは、サービスがデプロイされるレプリカ数によって決まります。 Reliable Services と同様に、状態プロバイダーもレプリカ数も手動で簡単に設定できます。 アクター フレームワークは、属性を提供します。これはアクターに使用された場合、既定の状態プロバイダーとレプリカ数の自動生成設定を自動的に選択して、上記の 3 つの永続性設定のいずれかを実現します。
 
 ### <a name="persisted-state"></a>永続化状態
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
 class MyActor : Actor, IMyActor
+{
+}
+```
+```Java
+@StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
+class MyActorImpl  extends FabricActor implements MyActor
 {
 }
 ```  
@@ -50,6 +57,12 @@ class MyActor : Actor, IMyActor
 {
 }
 ```
+```Java
+@StatePersistenceAttribute(statePersistence = StatePersistence.Volatile)
+class MyActorImpl extends FabricActor implements MyActor
+{
+}
+```
 この設定は、メモリ内のみの状態プロバイダーを使用し、レプリカ数を 3 に設定します。
 
 ### <a name="no-persisted-state"></a>非永続化状態
@@ -59,10 +72,18 @@ class MyActor : Actor, IMyActor
 {
 }
 ```
+```Java
+@StatePersistenceAttribute(statePersistence = StatePersistence.None)
+class MyActorImpl extends FabricActor implements MyActor
+{
+}
+```
 この設定は、メモリ内のみの状態プロバイダーを使用し、レプリカ数を 1 に設定します。
 
 ### <a name="defaults-and-generated-settings"></a>既定値と生成される設定
-`StatePersistence` 属性を使用する場合、状態プロバイダーは実行時にアクター サービスが開始されるときに自動的に選択されます。 ただし、レプリカ数は、コンパイル時に Visual Studio アクター ビルド ツールによって設定されます。 ビルド ツールは自動的にアクター サービスの*既定のサービス*を ApplicationManifest.xml 内に生成します。 **最小レプリカ セット サイズ**と**ターゲット レプリカ セット サイズ**のために、パラメーターが作成されます。 もちろん、これらのパラメーターは手動で変更できます。ただし、`StatePersistence` 属性が変更されるたびに、パラメーターは選択された `StatePersistence` 属性の既定のレプリカ セット サイズ値に設定され、前の値は上書きされます。 つまり、`StatePersistence` 属性の値を変更すると、ServiceManifest.xml に設定した値**のみ**がビルド時にオーバーライドされます。 
+`StatePersistence`属性を使用する場合、状態プロバイダーはアクター サービスが開始される際に、ランタイムで自動的に選択されます。 ただし、レプリカ数は、コンパイル時に Visual Studio アクター ビルド ツールによって設定されます。 ビルド ツールは自動的にアクター サービスの*既定のサービス*を ApplicationManifest.xml 内に生成します。 **最小レプリカ セット サイズ**と**ターゲット レプリカ セット サイズ**のために、パラメーターが作成されます。 
+
+これらのパラメーターは手動で変更できます。 ただし`StatePersistence`属性が変更されるたびに、選択された`StatePersistence`属性の既定のレプリカ セット サイズ値にパラメーターは設定され、前の値はオーバーライドされます。 つまり、`StatePersistence`属性の値を変更すると、ServiceManifest.xml に設定した値がビルド時*のみ*にオーバーライドされます。
 
 ```xml
 <ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Application12Type" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -85,20 +106,20 @@ class MyActor : Actor, IMyActor
 ```
 
 ## <a name="state-manager"></a>状態マネージャー
-各アクター インスタンスは、独自の状態マネージャーを持ちます。これは、辞書のようなデータ構造で、キーと値のペアを確実に保持します。 状態マネージャーは、状態プロバイダーのラッパーです。 どの永続性設定が使用されるかにかかわらず、データを格納するために使用できますが、ローリング アップグレードを通じて、データを保持しつつ、実行中のアクター サービスを揮発 (メモリ内のみ) 状態設定から永続化状態設定に変更できることは保証されません。 ただし、実行中のサービスのレプリカ数を変更することはできます。 
+各アクター インスタンスは、独自の状態マネージャーを持ちます。これは、辞書のようなデータ構造で、キーと値のペアを確実に保持します。 状態マネージャーは、状態プロバイダーのラッパーです。 永続化設定の使用に関係なくデータの格納に使用できます。 データ保持中のローリング アップグレードを通じて、実行中のアクター サービスを揮発 (メモリ内のみ) 状態設定から永続化状態設定に変更できることは保証されません。 ただし、実行中のサービスのレプリカ数を変更することはできます。
 
-状態マネージャー キーは、文字列である必要があります。一方、値はジェネリックであり、カスタム型も含めて、任意の型にすることができます。 状態マネージャーに格納される値は、データ コントラクト シリアル化可能である必要があります。これらの値は、アクターの状態の永続性設定によっては、レプリケーション中にネットワーク経由で他のノードに送信されたり、ディスクに書き込まれたりする可能性があるためです。 
+状態マネージャー キーは、文字列でなければなりません。 値はジェネリックでカスタム型を含む任意のタイプです。 状態マネージャーに格納される値は、データ コントラクト シリアル化可能である必要があります。アクター状態の永続性設定によっては、これらの値がレプリケーション中にネットワーク経由で他のノードに送信されたり、ディスクに書き込まれたりする可能性があるためです。
 
-状態マネージャーは、Reliable Dictionary に含まれているような、状態を管理するための一般的な辞書メソッドを公開します。
+状態マネージャーは、Reliable Dictionary に含まれているものと同様、状態管理のための一般的な辞書メソッドを公開します。
 
 ### <a name="accessing-state"></a>状態へのアクセス
-状態には、状態マネージャーからキーでアクセスできます。 状態マネージャーのメソッドは、すべて非同期です。アクターが永続化状態を持つ場合に、ディスク I/O が必要になる可能性があるためです。 最初のアクセス時に、状態オブジェクトがメモリにキャッシュされます。 その後のアクセス操作では、メモリのオブジェクトに直接アクセスし、同期的に戻ります。ディスク I/O や、非同期のコンテキスト切り替えのオーバーヘッドは生じません。 状態オブジェクトは、次の場合に、キャッシュから削除されます。
+状態には、状態マネージャーからキーでアクセスできます。 状態マネージャーのメソッドは、すべて非同期です。アクターが永続化状態を持つ場合に、ディスク I/O が必要になる可能性があるためです。 最初のアクセス時に、状態オブジェクトがメモリにキャッシュされます。 その後のアクセス操作では、メモリから直接オブジェクトにアクセスし同期的に戻ります。ディスク I/O や非同期のコンテキスト切り替えのオーバーヘッドは生じません。 状態オブジェクトは、次の場合に、キャッシュから削除されます。
 
-* アクター メソッドが、状態マネージャーからオブジェクトを取得した後に、未処理の例外をスローする。
-* アクターが、非アクティブ化の後、またはエラーのために、再アクティブ化される。
-* 状態プロバイダーが、状態をディスクにページングする場合。 この動作は、状態プロバイダーの実装に依存します。 `Persisted` 設定用の既定の状態プロバイダーは、この動作を行います。 
+* アクター メソッドは、状態マネージャーからオブジェクトを取得した後に、未処理の例外をスローします。
+* アクターは、非アクティブ化またはエラーの後に再アクティブ化されます。
+* 状態プロバイダーは、状態をディスクにページングします。 この動作は、状態プロバイダーの実装に依存します。 `Persisted` 設定用の既定の状態プロバイダーは、この動作を行います。
 
-状態は、次のように標準の *Get* 操作を使用して取得できます。指定されたキーのエントリが存在しない場合は、`KeyNotFoundException` がスローされます。 
+キーのエントリが存在しない場合は、`KeyNotFoundException`(C#) または `NoSuchElementException`(Java) をスローする標準の *Get* 操作を使用して状態を取得できます。
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -115,8 +136,23 @@ class MyActor : Actor, IMyActor
     }
 }
 ```
+```Java
+@StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
+class MyActorImpl extends FabricActor implements  MyActor
+{
+    public MyActorImpl(ActorService actorService, ActorId actorId)
+    {
+        super(actorService, actorId);
+    }
 
-状態は、次のように *TryGet* メソッドを使用して取得することもできます。指定されたキーのエントリが存在しない場合も、例外はスローされません。
+    public CompletableFuture<Integer> getCountAsync()
+    {
+        return this.stateManager().getStateAsync("MyState");
+    }
+}
+```
+
+キーのエントリが存在しない場合、スローしない *TryGet* メソッドを使用して状態を取得することもできます。
 
 ```csharp
 class MyActor : Actor, IMyActor
@@ -138,11 +174,30 @@ class MyActor : Actor, IMyActor
     }
 }
 ```
+```Java
+class MyActorImpl extends FabricActor implements  MyActor
+{
+    public MyActorImpl(ActorService actorService, ActorId actorId)
+    {
+        super(actorService, actorId);
+    }
+
+    public CompletableFuture<Integer> getCountAsync()
+    {
+        return this.stateManager().<Integer>tryGetStateAsync("MyState").thenApply(result -> {
+            if (result.hasValue()) {
+                return result.getValue();
+            } else {
+                return 0;
+            });
+    }
+}
+```
 
 ### <a name="saving-state"></a>状態の保存
-状態マネージャーの取得メソッドは、ローカル メモリ内のオブジェクトへの参照を返します。 ローカル メモリ内のこのオブジェクトを変更しただけでは、変更は永続的に保存されません。 オブジェクトが状態マネージャーから取得され、変更された場合、それを永続的に保存するには、状態マネージャーに再挿入する必要があります。
+状態マネージャーの取得メソッドは、ローカル メモリ内のオブジェクトへの参照を返します。 ローカル メモリ内のこのオブジェクトを変更しただけでは、変更は永続的に保存されません。 オブジェクトが状態マネージャーから取得され変更された場合、それを永続的に保存するには、状態マネージャーに再挿入する必要があります。
 
-状態を挿入するには、次のように、無条件の *Set* を使用します。これは、`dictionary["key"] = value` 構文と同等です。
+状態を挿入するには無条件の *Set* を使用します。これは、`dictionary["key"] = value` 構文と同等です。
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -159,8 +214,23 @@ class MyActor : Actor, IMyActor
     }
 }
 ```
+```Java
+@StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
+class MyActorImpl extends FabricActor implements  MyActor
+{
+    public MyActorImpl(ActorService actorService, ActorId actorId)
+    {
+        super(actorService, actorId);
+    }
 
-状態を追加するには、次のように、*Add* メソッドを使用します。既に存在するキーを追加しようとすると、`InvalidOperationException` がスローされます。
+    public CompletableFuture setCountAsync(int value)
+    {
+        return this.stateManager().setStateAsync("MyState", value);
+    }
+}
+```
+
+*Add* メソッド使用して状態を追加することができます。 このメソッドは、すでに存在するキーを追加しようとしたときに `InvalidOperationException`(c#) または `IllegalStateException`(Java) をスローします。
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -177,8 +247,23 @@ class MyActor : Actor, IMyActor
     }
 }
 ```
+```Java
+@StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
+class MyActorImpl extends FabricActor implements  MyActor
+{
+    public MyActorImpl(ActorService actorService, ActorId actorId)
+    {
+        super(actorService, actorId);
+    }
 
-状態の追加には、次のように、*TryAdd* メソッドを使用することもできます。既に存在するキーを追加しようとしても、例外はスローされません。
+    public CompletableFuture addCountAsync(int value)
+    {
+        return this.stateManager().addOrUpdateStateAsync("MyState", value, (key, old_value) -> old_value + value);
+    }
+}
+```
+
+*TryAdd* メソッド使用して状態を追加することもできます。 このメソッドは、すでに存在するキーを追加しようとしたときでもスローしません。
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -200,10 +285,30 @@ class MyActor : Actor, IMyActor
     }
 }
 ```
+```Java
+@StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
+class MyActorImpl extends FabricActor implements  MyActor
+{
+    public MyActorImpl(ActorService actorService, ActorId actorId)
+    {
+        super(actorService, actorId);
+    }
 
-アクター メソッドの最後に、状態マネージャーは、挿入または更新操作によって追加または変更されたすべての値を自動的に保存します。 "保存" には、使用されている設定に応じて、ディスクへの永続化やレプリケーションも含まれます。 変更されていない値は、永続化もレプリケートもされません。 値が変更されなかった場合、保存操作では何も行われません。 保存が失敗した場合、変更された状態は破棄され、元の状態が再度読み込まれます。
+    public CompletableFuture addCountAsync(int value)
+    {
+        return this.stateManager().tryAddStateAsync("MyState", value).thenApply((result)->{
+            if(result)
+            {
+                // Added successfully!
+            }
+        });
+    }
+}
+```
 
-状態は、次のように、アクター ベースの `SaveStateAsync` メソッドを呼び出すことで、手動で保存することもできます。
+状態マネージャーはアクター メソッドの最後に、挿入または更新操作によって追加または変更されたすべての値を自動的に保存します。 "保存" には、使用されている設定に応じて、ディスクへの永続化やレプリケーションも含まれます。 変更されていない値は、永続化もレプリケートもされません。 値が変更されなかった場合、保存操作では何も行われません。 保存が失敗した場合、変更された状態は破棄され、元の状態が再度読み込まれます。
+
+状態はアクター ベースの `SaveStateAsync` メソッドを呼び出すことで、手動で保存することもできます。
 
 ```csharp
 async Task IMyActor.SetCountAsync(int count)
@@ -213,9 +318,19 @@ async Task IMyActor.SetCountAsync(int count)
     await this.SaveStateAsync();
 }
 ```
+```Java
+interface MyActor {
+    CompletableFuture setCountAsync(int count)
+    {
+        this.stateManager().addOrUpdateStateAsync("count", count, (key, value) -> count > value ? count : value).thenApply();
+
+        this.stateManager().saveStateAsync().thenApply();
+    }
+}
+```
 
 ### <a name="removing-state"></a>状態の削除
-状態は、 *Remove* メソッドを呼び出すことによって、アクターの状態マネージャーから完全に削除することができます。 このメソッドは、存在しないキーを削除しようとすると、 `KeyNotFoundException` をスローします。
+状態は *Remove* メソッドを呼び出すことによって、アクターの状態マネージャーから完全に削除することができます。 このメソッドは、存在しないキーを削除しようとしたときに `KeyNotFoundException`(c#) または `NoSuchElementException`(Java) をスローします。
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -232,8 +347,23 @@ class MyActor : Actor, IMyActor
     }
 }
 ```
+```Java
+@StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
+class MyActorImpl extends FabricActor implements  MyActor
+{
+    public MyActorImpl(ActorService actorService, ActorId actorId)
+    {
+        super(actorService, actorId);
+    }
 
-状態は、*TryRemove* メソッドを使用して完全に削除することもできます。この場合は、存在しないキーを削除しようとしても、例外はスローされません。
+    public CompletableFuture removeCountAsync()
+    {
+        return this.stateManager().removeStateAsync("MyState");
+    }
+}
+```
+
+*TryRemove* メソッドを使用して、状態を完全に削除することもできます。 このメソッドは、存在しないキーを削除しようとしたときでもスローしません。
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -255,17 +385,32 @@ class MyActor : Actor, IMyActor
     }
 }
 ```
+```Java
+@StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
+class MyActorImpl extends FabricActor implements  MyActor
+{
+    public MyActorImpl(ActorService actorService, ActorId actorId)
+    {
+        super(actorService, actorId);
+    }
+
+    public CompletableFuture removeCountAsync()
+    {
+        return this.stateManager().tryRemoveStateAsync("MyState").thenApply((result)->{
+            if(result)
+            {
+                // State removed!
+            }
+        });
+    }
+}
+```
 
 ## <a name="next-steps"></a>次のステップ
 * [アクター型のシリアル化](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
 * [アクターのポリモーフィズムとオブジェクト指向設計パターン](service-fabric-reliable-actors-polymorphism.md)
 * [アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)
 * [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [コード サンプル](https://github.com/Azure/servicefabric-samples)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+* [C# コード サンプル](https://github.com/Azure/servicefabric-samples)
+* [Java サンプル コード](http://github.com/Azure-Samples/service-fabric-java-getting-started)
 

@@ -29,16 +29,11 @@
    デバイスの **[クイック スタート]** ページが再び表示されます。
    
    > [!NOTE]
-   >  **[構成]** ページが再び表示されます。
+   > **[構成]** ページが再び表示されます。
    > 
    > 
 
 ![ビデオ](./media/storsimple-complete-minimum-device-setup/Video_icon.png) **ビデオ**
 
 最小限のデバイス設定を完了する方法を説明したビデオについては、 [こちら](https://azure.microsoft.com/documentation/videos/minimum-storsimple-device-setup/)を参照してください。
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

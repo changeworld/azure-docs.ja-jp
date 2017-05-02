@@ -12,23 +12,25 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: tables
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 83b12c6daf5422039f3dd95eb9b177b972fad840
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 091ad6068c64bfe06c090430874d23f6ca497b34
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>SQL Data Warehouse の一時テーブル
 > [!div class="op_single_selector"]
-> * [概要][概要]
-> * [データ型][データ型]
-> * [分散][分散]
-> * [Index][Index]
-> * [Partition][Partition]
-> * [統計][統計]
-> * [一時的な][一時]
+> * [概要][Overview]
+> * [データ型][Data Types]
+> * [分散][Distribute]
+> * [インデックス][Index]
+> * [パーティション][Partition]
+> * [統計][Statistics]
+> * [一時][Temporary]
 > 
 > 
 
@@ -231,26 +233,21 @@ DROP TABLE #stats_ddl;
 SQL Data Warehouse では、一時テーブルを実装するときに制限事項がいくつかあります。  現時点では、セッションを範囲とした一時テーブルのみがサポートされています。  グローバル一時テーブルはサポートされていません。  また、一時テーブルでビューを作成することはできません。
 
 ## <a name="next-steps"></a>次のステップ
-[テーブルの概要][概要]、[テーブルのデータ型][データ型]、[テーブルの分散][分散]、[テーブルのインデックス作成][Index]、[テーブルのパーティション分割][Partition]、[テーブル統計の更新][統計]に関する各記事で詳細をご覧ください。  その他のベスト プラクティスについては、[SQL Data Warehouse のベスト プラクティス][SQL Data Warehouse のベスト プラクティス]に関するページをご覧ください。
+詳細については、[テーブルの概要][Overview]、[テーブルのデータ型][Data Types]、[テーブルの分散][Distribute]、[テーブルのインデックス作成][Index]、[テーブルのパーティション分割][Partition]、[テーブルの統計の管理][Statistics]に関する各記事を参照してください。  [SQL Data Warehouse のベスト プラクティス][SQL Data Warehouse Best Practices]に関する記事でベスト プラクティスの詳細を確認します。
 
 <!--Image references-->
 
 <!--Article references-->
-[概要]: ./sql-data-warehouse-tables-overview.md
-[データ型]: ./sql-data-warehouse-tables-data-types.md
-[分散]: ./sql-data-warehouse-tables-distribute.md
+[Overview]: ./sql-data-warehouse-tables-overview.md
+[Data Types]: ./sql-data-warehouse-tables-data-types.md
+[Distribute]: ./sql-data-warehouse-tables-distribute.md
 [Index]: ./sql-data-warehouse-tables-index.md
 [Partition]: ./sql-data-warehouse-tables-partition.md
-[統計]: ./sql-data-warehouse-tables-statistics.md
-[一時]: ./sql-data-warehouse-tables-temporary.md
-[SQL Data Warehouse のベスト プラクティス]: ./sql-data-warehouse-best-practices.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
+[Temporary]: ./sql-data-warehouse-tables-temporary.md
+[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

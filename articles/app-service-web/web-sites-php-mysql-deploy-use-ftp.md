@@ -12,11 +12,12 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/25/2017
 ms.author: robmcm
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 134239990df959fe2657340eca4f2a8bf646a7b0
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -272,10 +273,5 @@ Web Apps で実行されている MySQL データベースに接続するには�
 [connection-string-info]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/connection_string_info.png
 [management-portal]: https://portal.azure.com
 [download-publish-profile]: ./media/web-sites-php-mysql-deploy-use-ftp/download_publish_profile_3.png
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

@@ -13,19 +13,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 03/15/2017
+ms.date: 04/11/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 6f487e2e8f368240339ef5e0015c85591522e49a
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: c85e05b38b4a9525e13ec510a17b7ef4841198d7
+ms.lasthandoff: 04/13/2017
 
 
 ---
 
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B コラボレーションの API とカスタマイズ
 
-多くのお客様から、組織に最適な方法で招待の処理をカスタマイズできるようにしてほしいという要望がありました。 API を使用すると、そのようにすることができます。 [https://graph.microsoft.io/en-us/docs/api-reference/beta/resources/invitation](https://graph.microsoft.io/en-us/docs/api-reference/beta/resources/invitation)
+多くのお客様から、組織に最適な方法で招待の処理をカスタマイズできるようにしてほしいという要望がありました。 API を使用すると、そのようにすることができます。 [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
 
 ## <a name="capabilities-of-the-invitation-api"></a>招待 API の機能
 API には次の機能が用意されています。
@@ -98,7 +98,7 @@ New-AzureADMSInvitation
 * -SendInvitationMessage
 * -InvitedUserMessageInfo
 
-[https://graph.microsoft.io/ja-jp/docs/api-reference/beta/resources/invitation](https://graph.microsoft.io/en-us/docs/api-reference/beta/resources/invitation) で招待 API リファレンスを確認することもできます
+[https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) で招待 API リファレンスを確認することもできます
 
 ## <a name="next-steps"></a>次のステップ
 

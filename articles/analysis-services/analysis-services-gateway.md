@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 193c939065979dc48243d31e7f97cd87d96bf9a8
-ms.openlocfilehash: 90584f60864589744888817ea71d0eb0d4d170ff
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: c7127f4bd89bf00a4ef72e54dc7694a1766e5762
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -129,6 +129,25 @@ ms.lasthandoff: 11/17/2016
 ゲートウェイのインストールと構成に問題がある場合は、「[オンプレミス データ ゲートウェイのトラブルシューティング](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem-tshoot/)」をご覧ください。 ファイアウォールに問題があると思われる場合は、ファイアウォールまたはプロキシのセクションをご覧ください。
 
 ゲートウェイにプロキシの問題があると思われる場合は、「[オンプレミス データ ゲートウェイのプロキシ設定を構成する](https://powerbi.microsoft.com/documentation/powerbi-gateway-proxy.md)」をご覧ください。
+
+### <a name="telemetry"></a>テレメトリ
+監視とトラブルシューティングには、テレメトリを使用できます。 
+
+**テレメトリを有効にするには**
+
+1.    コンピューター上のオンプレミス データ ゲートウェイ クライアント ディレクトリを確認します。 通常は、%systemdrive%\Program Files\On-premises data gateway にあります。 または、サービス コンソールを開き、オンプレミス データ ゲートウェイ サービスのプロパティで実行可能ファイルのパスを確認することもできます。
+2.    クライアント ディレクトリにある Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config ファイルで、 SendTelemetry の設定を true に変更します。
+        
+    ```
+        <setting name="SendTelemetry" serializeAs="String">
+                    <value>true</value>
+        </setting>
+    ```
+
+3.    変更を保存し、その Windows サービス (オンプレミス データ ゲートウェイ サービス) を再起動します。
+
+
+
 
 ## <a name="next-steps"></a>次のステップ
 * [Analysis Services を管理する](analysis-services-manage.md)

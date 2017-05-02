@@ -12,18 +12,19 @@ ms.devlang: node
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/13/2016
+ms.date: 03/30/2017
 ms.author: elioda
 translationtype: Human Translation
-ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
-ms.openlocfilehash: 26a6cd170e47204e16bb5799af8dcece7f4bb844
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: e42ad1b62d4f953e23624841ddec70b1fac28058
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="use-desired-properties-to-configure-devices"></a>必要なプロパティを使用してデバイスを構成する
 [!INCLUDE [iot-hub-selector-twin-how-to-configure](../../includes/iot-hub-selector-twin-how-to-configure.md)]
 
-このチュートリアルの最後には、次の 2 つの Node.js コンソール アプリが完成します。
+このチュートリアルの最後には、次の 2 つのコンソール アプリが完成します。
 
 * **SimulateDeviceConfiguration.js**: 必要な構成の更新を待機し、シミュレートされた構成の更新プロセスの状態を報告する、シミュレートされたデバイス アプリです。
 * **SetDesiredConfigurationAndQuery**: .NET バックエンド アプリで、デバイス上に目的の構成を設定し、構成更新プロセスをクエリします。
@@ -35,11 +36,11 @@ ms.openlocfilehash: 26a6cd170e47204e16bb5799af8dcece7f4bb844
 
 このチュートリアルを完了するには、以下が必要です。
 
-* Microsoft Visual Studio 2015
+* Visual Studio 2015 または Visual Studio 2017。
 * Node.js バージョン 0.10.x 以降。
-* アクティブな Azure アカウント。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
+* アクティブな Azure アカウント。 アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
 
-[デバイス ツインの概要][lnk-twin-tutorial]に関するチュートリアルを行った場合は、既に IoT ハブと、**myDeviceId** というデバイス ID があるため、「[シミュレートされたデバイス アプリを作成する][lnk-how-to-configure-createapp]」セクションに進んでください。
+[デバイス ツインの概要][lnk-twin-tutorial]に関するチュートリアルを行った場合は、既に IoT Hub と、**myDeviceId** というデバイス ID があります。 その場合は、「[シミュレートされたデバイス アプリを作成する]」[lnk-how-to-configure-createapp]セクションをスキップできます。
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
@@ -48,18 +49,18 @@ ms.openlocfilehash: 26a6cd170e47204e16bb5799af8dcece7f4bb844
 ## <a name="create-the-simulated-device-app"></a>シミュレートされたデバイスのアプリを作成する
 このセクションでは、ハブに **myDeviceId** として接続し、必要な構成の更新を待機して、シミュレートされた構成の更新プロセスの情報を報告する、Node.js コンソール アプリを作成します。
 
-1. **simulatedeviceconfiguration** という名前の新しい空のフォルダーを作成します。 **simulatedeviceconfiguration** フォルダー内に、コマンド プロンプトで次のコマンドを使用して新しい package.json ファイルを作成します。 次の既定値をすべてそのまま使用します。
+1. **simulatedeviceconfiguration** という名前の新しい空のフォルダーを作成します。 **simulatedeviceconfiguration** フォルダー内に、コマンド プロンプトで次のコマンドを使用して新しい package.json ファイルを作成します。 すべての既定値をそのまま使用します。
    
     ```
     npm init
     ```
-2. コマンド プロンプトで、**simulatedeviceconfiguration** フォルダーに移動し、次のコマンドを実行して、**azure-iot-device** と **azure-iot-device-mqtt** パッケージをインストールします。
+1. **simulatedeviceconfiguration** フォルダーのコマンド プロンプトに対して、次のコマンドを実行して、**azure-iot-device** と **azure-iot-device-mqtt** パッケージをインストールします。
    
     ```
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
-3. テキスト エディターを使用して、**simulatedeviceconfiguration** フォルダーに新しい **SimulateDeviceConfiguration.js** ファイルを作成します。
-4. **SimulateDeviceConfiguration.js** ファイルに次のコードを追加し、**{device connection string}** プレースホルダーを、**myDeviceId** のデバイス IDの作成時にコピーしたデバイス接続文字列で置き換えます。
+1. テキスト エディターを使用して、**simulatedeviceconfiguration** フォルダーに新しい **SimulateDeviceConfiguration.js** ファイルを作成します。
+1. **SimulateDeviceConfiguration.js** ファイルに次のコードを追加し、**{device connection string}** プレースホルダーを、**myDeviceId** のデバイス IDの作成時にコピーしたデバイス接続文字列で置き換えます。
    
         'use strict';
         var Client = require('azure-iot-device').Client;
@@ -93,15 +94,15 @@ ms.openlocfilehash: 26a6cd170e47204e16bb5799af8dcece7f4bb844
             }
         });
    
-    **Client** オブジェクトに、デバイスからデバイス ツインとやりとりするのに必要なすべてのメソッドが表示されます。 前のコードでは、**Client** オブジェクトを初期化した後、**myDeviceId** のデバイス ツインを取得して、必要なプロパティの更新のハンドラーをアタッチします。 ハンドラーは、configIds を比較して実際に構成の変更リクエストがあることを確認してから、構成の変更を開始するメソッドを呼び出します。
+    **Client** オブジェクトに、デバイスからデバイス ツインとやりとりするのに必要なすべてのメソッドが表示されます。 このコードは、**Client** オブジェクトを初期化し、**myDeviceId** のデバイス ツインを取得して、*必要なプロパティ*の更新のハンドラーをアタッチします。 ハンドラーは、configIds を比較して実際に構成の変更リクエストがあることを確認してから、構成の変更を開始するメソッドを呼び出します。
    
-    わかりやすくするため、前のコードでは初期構成にハードコーディングされた既定値を使用しています。 実際のアプリでは、おそらくローカル ストレージから構成を読み込みます。
+    分かりやすくするため、このコードでは、ハード コーディングされた既定値を初期構成に使用しています。 実際のアプリでは、おそらくローカル ストレージから構成を読み込みます。
    
    > [!IMPORTANT]
-   > 目的のプロパティの変更イベントは常にデバイスの接続時に発行されるため、何らかの操作を行う前に、目的のプロパティに実際に変更点があることをかならずご確認ください。
+   > 目的のプロパティ変更イベントは、デバイス接続時に常に 1 回生成されます。 アクションを実行する前に、必要なプロパティに実際の変更があることを確認してください。
    > 
    > 
-5. `client.open()` の呼び出しの前に次のメソッドを追加します。
+1. `client.open()` の呼び出しの前に次のメソッドを追加します。
    
         var initConfigChange = function(twin) {
             var currentTelemetryConfig = twin.properties.reported.telemetryConfig;
@@ -147,10 +148,10 @@ ms.openlocfilehash: 26a6cd170e47204e16bb5799af8dcece7f4bb844
     帯域幅を節約するため、報告されたプロパティの更新は、ドキュメント全体を置き換えるのではなく、変更するプロパティのみを指定して行われます (上のコードでは **patch**)。
    
    > [!NOTE]
-   > このチュートリアルでは、同時実行の構成の更新動作はシミュレートしません。 一部の構成更新プロセスでは、更新の実行中に対象の構成に変更を加えることができますが、場合によってはキューに入れる必要がある場合や、エラー条件で拒否されることがあります。 お使いの構成プロセスに必要な動作を考慮し、構成の変更を開始する前に適切なロジックを追加するようにしてください。
+   > このチュートリアルでは、同時実行の構成の更新動作はシミュレートしません。 一部の構成更新プロセスでは、更新の実行中に対象の構成に変更を加えることができますが、場合によってはキューに入れる必要があったり、エラー条件で拒否されたりすることがあります。 お使いの構成プロセスに必要な動作を考慮し、構成の変更を開始する前に適切なロジックを追加するようにしてください。
    > 
    > 
-6. デバイス アプリを実行する:
+1. デバイス アプリを実行する:
    
         node SimulateDeviceConfiguration.js
    
@@ -162,20 +163,20 @@ ms.openlocfilehash: 26a6cd170e47204e16bb5799af8dcece7f4bb844
 1. Visual Studio で、 **[コンソール アプリケーション]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを現在のソリューションに追加します。 プロジェクトに **SetDesiredConfigurationAndQuery** という名前を付けます。
    
     ![New Visual C# Windows Classic Desktop project][img-createapp]
-2. ソリューション エクスプローラーで **SetDesiredConfigurationAndQuery** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
-3. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**microsoft.azure.devices** を検索します。**[インストール]** を選択して **Microsoft.Azure.Devices** パッケージをインストールし、使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT service SDK][lnk-nuget-service-sdk] NuGet パッケージへの参照とその依存関係が追加されます。
+1. ソリューション エクスプローラーで **SetDesiredConfigurationAndQuery** プロジェクトを右クリックし、**[NuGet パッケージの管理...]** をクリックします。
+1. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**microsoft.azure.devices** を検索します。**[インストール]** を選択して **Microsoft.Azure.Devices** パッケージをインストールし、使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT service SDK][lnk-nuget-service-sdk] NuGet パッケージへの参照とその依存関係が追加されます。
    
     ![NuGet Package Manager window][img-servicenuget]
-4. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
+1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
    
         using Microsoft.Azure.Devices;
         using System.Threading;
         using Newtonsoft.Json;
-5. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値は、前のセクションで作成したハブの IoT Hub 接続文字列に置き換えてください。
+1. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値は、前のセクションで作成したハブの IoT Hub 接続文字列に置き換えてください。
    
         static RegistryManager registryManager;
         static string connectionString = "{iot hub connection string}";
-6. **Program** クラスに次のメソッドを追加します。
+1. **Program** クラスに次のメソッドを追加します。
    
         static private async Task SetDesiredConfigurationAndQuery()
         {
@@ -209,20 +210,23 @@ ms.openlocfilehash: 26a6cd170e47204e16bb5799af8dcece7f4bb844
             }
         }
    
-    **Registry** オブジェクトに、サービスからデバイス ツインとやりとりするのに必要なすべてのメソッドが表示されます。 前のコードでは、**Registry** オブジェクトを初期化した後、**myDeviceId** のデバイス ツインを取得して、新しいテレメトリ構成オブジェクトを使って必要なプロパティを更新します。
-    この後、10 秒毎に IoT Hub に格納されたデバイス ツインのクエリを実行し、目的のテレメトリ構成と報告されたテレメトリ構成を出力します。 すべてのデバイスに関する豊富なレポートを生成する方法については、[IoT Hub のクエリ言語][lnk-query]に関するページを参照してください。
+    **Registry** オブジェクトに、サービスからデバイス ツインとやりとりするのに必要なすべてのメソッドが表示されます。 このコードは、**Registry** オブジェクトを初期化し、**myDeviceId** のデバイス ツインを取得してから、新しいテレメトリ構成オブジェクトを使って必要なプロパティを更新します。
+    その後、IoT Hub に格納されたデバイス ツインのクエリを 10 秒ごとに実行して、報告された目的のテレメトリ構成を出力します。 すべてのデバイスに関する豊富なレポートを生成する方法については、[IoT Hub のクエリ言語][lnk-query]に関するページを参照してください。
    
    > [!IMPORTANT]
    > このアプリケーションでは、例示を目的として 10 秒ごとに IoT Hub にクエリを実行します。 変更を検出するためではなく、あらゆるデバイスのユーザー向けのレポートを生成するためにクエリを使用します。 ソリューションにデバイス イベントのリアルタイム通知が必要な場合は、[デバイスからクラウドへのメッセージ][lnk-d2c]を使用します。
    > 
    > 
-7. 最後に、 **Main** メソッドに次の行を追加します。
+1. 最後に、 **Main** メソッドに次の行を追加します。
    
         registryManager = RegistryManager.CreateFromConnectionString(connectionString);
         SetDesiredConfigurationAndQuery();
         Console.WriteLine("Press any key to quit.");
         Console.ReadLine();
-8. **SimulateDeviceConfiguration.js** を実行した状態で、Visual Studio から **F5** を使用して .NET アプリケーションを実行します。報告される構成が、「**成功**」から「**保留中**」に変わり、24 時間ではなく 5分の新しいアクティブな送信頻度を使って再度「**成功**」に変わります。
+1. ソリューション エクスプローラーで、**[スタートアップ プロジェクトの設定...]** を開き、**SetDesiredConfigurationAndQuery** プロジェクトの **[アクション]** が **[開始]** になっていることを確認します。 ソリューションをビルドします。
+1. **SimulateDeviceConfiguration.js** を実行した状態で、Visual Studio から **F5** を使用して .NET アプリケーションを実行します。報告される構成が、「**成功**」から「**保留中**」に変わり、24 時間ではなく 5分の新しいアクティブな送信頻度を使って再度「**成功**」に変わります。
+
+ ![正常に構成されたデバイス][img-deviceconfigured]
    
    > [!IMPORTANT]
    > デバイスのレポート操作とクエリの結果までには、最大 1 分間の遅延が生じます。 これは、非常に大きな規模でクエリのインフラストラクチャを動作させるためです。 1 つのデバイス ツインの一貫したビューを取得するには、**Registry** クラスで **getDeviceTwin** メソッドを使用します。
@@ -239,8 +243,9 @@ ms.openlocfilehash: 26a6cd170e47204e16bb5799af8dcece7f4bb844
 * [ダイレクト メソッドの使用][lnk-methods-tutorial]に関するチュートリアルで、デバイスを対話形式で制御する (ユーザー制御アプリからファンをオンにするなど)。
 
 <!-- images -->
-[img-servicenuget]: media/iot-hub-csharp-node-twin-getstarted/servicesdknuget.png
-[img-createapp]: media/iot-hub-csharp-node-twin-getstarted/createnetapp.png
+[img-servicenuget]: media/iot-hub-csharp-node-twin-how-to-configure/servicesdknuget.png
+[img-createapp]: media/iot-hub-csharp-node-twin-how-to-configure/createnetapp.png
+[img-deviceconfigured]: media/iot-hub-csharp-node-twin-how-to-configure/deviceconfigured.png
 
 <!-- links -->
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md
@@ -264,9 +269,4 @@ ms.openlocfilehash: 26a6cd170e47204e16bb5799af8dcece7f4bb844
 [lnk-guid]: https://en.wikipedia.org/wiki/Globally_unique_identifier
 
 [lnk-how-to-configure-createapp]: iot-hub-node-node-twin-how-to-configure.md#create-the-simulated-device-app
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

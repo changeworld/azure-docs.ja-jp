@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: af3ba5a4d1bd457f19038b9917ce55920e5e882b
-ms.openlocfilehash: 7d97e0f8be183c8858520d795ac28b7ad63a6dae
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: f8ecb68fddf4293592e546c0c10d0c86664bd090
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -200,7 +200,7 @@ outfile.close();
 ```
 
 ## <a name="how-to-delete-a-file"></a>ファイルを削除する方法
-もう&1; つの一般的なファイル ストレージ操作はファイル削除です。 次のコードでは、ルート ディレクトリに保存されている my-sample-file-3 という名前のファイルを削除します。
+もう 1 つの一般的なファイル ストレージ操作はファイル削除です。 次のコードでは、ルート ディレクトリに保存されている my-sample-file-3 という名前のファイルを削除します。
 
 ```cpp
 // Get a reference to the root directory for the share.    

@@ -13,13 +13,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/21/2017
+ms.date: 03/29/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: 183425e296f91bba47094c9b35be67fb6299c569
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
+ms.openlocfilehash: 7418544c43afee41a1c20058f53cf626aed17147
+ms.lasthandoff: 04/07/2017
 
 ---
 # <a name="use-maven-to-develop-a-java-based-word-count-topology-for-storm-on-hdinsight"></a>Maven を使用して HDInsight で Storm の Java ベースのワード カウント トポロジを開発する
@@ -83,23 +83,62 @@ Java と JDK をインストールするときに、次のような環境変数�
 * **src\test\java\com\microsoft\example\AppTest.java**
 * **src\main\java\com\microsoft\example\App.java**
 
+## <a name="add-repositories"></a>リポジトリの追加
+
+HDInsight は Hortonworks Data Platform (HDP) を基盤とするため、Hortonworks リポジトリを利用し、HDInsight プロジェクトの依存関係をダウンロードすることをお勧めします。 __pom.xml__ ファイルで、`<url>http://maven.apache.org</url>` 行の後に次を追加します。
+
+```xml
+<repositories>
+    <repository>
+        <releases>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+            <checksumPolicy>warn</checksumPolicy>
+        </releases>
+        <snapshots>
+            <enabled>false</enabled>
+            <updatePolicy>never</updatePolicy>
+            <checksumPolicy>fail</checksumPolicy>
+        </snapshots>
+        <id>HDPReleases</id>
+        <name>HDP Releases</name>
+        <url>http://repo.hortonworks.com/content/repositories/releases/</url>
+        <layout>default</layout>
+    </repository>
+    <repository>
+        <releases>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+            <checksumPolicy>warn</checksumPolicy>
+        </releases>
+        <snapshots>
+            <enabled>false</enabled>
+            <updatePolicy>never</updatePolicy>
+            <checksumPolicy>fail</checksumPolicy>
+        </snapshots>
+        <id>HDPJetty</id>
+        <name>Hadoop Jetty</name>
+        <url>http://repo.hortonworks.com/content/repositories/jetty-hadoop/</url>
+        <layout>default</layout>
+    </repository>
+</repositories>
+```
+
 ## <a name="add-properties"></a>プロパティの追加
 
-Maven では、プロパティと呼ばれるプロジェクト レベルの値を定義することができます。 `<url>http://maven.apache.org</url>` 行の後に次のテキストを追加します。
+Maven では、プロパティと呼ばれるプロジェクト レベルの値を定義することができます。 __pom.xml__ で、`</repositories>` 行の後に次のテキストを追加します。
 
 ```xml
 <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!--
-    Storm 0.10.0 is for HDInsight 3.3 and 3.4.
-    To find the version information for earlier HDInsight cluster
-    versions, see https://azure.microsoft.com/en-us/documentation/articles/hdinsight-component-versioning/
+    This is a version of Storm from the Hortonworks repository that is compatible with HDInsight.
     -->
-    <storm.version>0.10.0</storm.version>
+    <storm.version>1.0.1.2.5.3.0-37</storm.version>
 </properties>
 ```
 
-これで、`pom.xml` の他のセクションでこれらの値を使用できるようになりました。 たとえば、Storm コンポーネントのバージョンを指定するときに、値をハードコーディングする代わりに `${storm.version}` を使用することができます。
+これで、`pom.xml` の他のセクションでこの値を使用できるようになりました。 たとえば、Storm コンポーネントのバージョンを指定するときに、値をハードコーディングする代わりに `${storm.version}` を使用することができます。
 
 ## <a name="add-dependencies"></a>依存関係を追加する
 
@@ -157,6 +196,7 @@ Storm トポロジの場合、[Exec Maven プラグイン](http://mojo.codehaus.
     <includePluginDependencies>false</includePluginDependencies>
     <classpathScope>compile</classpathScope>
     <mainClass>${storm.topology}</mainClass>
+    <cleanupDaemonThreads>false</cleanupDaemonThreads> 
     </configuration>
 </plugin>
 ```
@@ -297,7 +337,7 @@ public class RandomSentenceSpout extends BaseRichSpout {
 > [!NOTE]
 > ボルトは、たとえば、計算、永続化、外部コンポーネントとの対話など、実にあらゆる操作が可能です。
 
-`src\main\java\com\microsoft\example` ディレクトリに、`SplitSentence.java` と `WordCount.Java` という 2 つの新しいファイルを作成します。 ファイルの内容として、次のテキストを使用します。
+`src\main\java\com\microsoft\example` ディレクトリに、`SplitSentence.java` と `WordCount.java` という 2 つの新しいファイルを作成します。 ファイルの内容として、次のテキストを使用します。
 
 **SplitSentence**
 

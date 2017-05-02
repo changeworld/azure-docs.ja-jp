@@ -13,19 +13,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 03/15/2017
+ms.date: 04/12/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 867a1c8dda37815663fa3fb095351fa3854a52cc
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: ba782270f3280e52235bc13148d232284b55762a
+ms.lasthandoff: 04/12/2017
 
 
 ---
 
 
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>B2B コラボレーション ユーザーの監査およびレポート
-このプレビューでは、ゲスト ユーザーに対しても、メンバー ユーザーに対する場合と同様に、監査機能を使用できます。 招待された Sam Oogle の招待と使用の履歴の例を示します。
+ゲスト ユーザーに対しても、メンバー ユーザーに対する場合と同様に、監査機能を使用できます。 招待された Sam Oogle の招待と使用の履歴の例を示します。
 
 ![監査ログ](./media/active-directory-b2b-auditing-and-reporting/audit-log.png)
 

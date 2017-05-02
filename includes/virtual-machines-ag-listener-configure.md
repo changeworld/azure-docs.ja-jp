@@ -14,7 +14,7 @@
 
 以下の各セクションで、個々の手順の詳細を示します。 
 
-#### <a name="a-namegetnetaget-the-name-of-the-cluster-network-resource"></a><a name="getnet"></a>クラスター ネットワーク リソースの名前を取得する
+#### <a name="getnet"></a>クラスター ネットワーク リソースの名前を取得する
 
 1. プライマリ レプリカのホストとなっている Azure 仮想マシンに RDP で接続します。 
 
@@ -26,7 +26,7 @@
 
    ![クラスター ネットワーク名](./media/virtual-machines-ag-listener-configure/90-clusternetworkname.png)
 
-#### <a name="a-nameaddcapaadd-the-client-access-point"></a><a name="addcap"></a>クライアント アクセス ポイントを追加する
+#### <a name="addcap"></a>クライアント アクセス ポイントを追加する
 
 クライアント アクセス ポイントは、アプリケーションが可用性グループ内のデータベースに接続するために使用するネットワーク名です。 クライアント アクセス ポイントは、フェールオーバー クラスター マネージャーで作成します。 
 
@@ -42,7 +42,7 @@
    
    **[次へ]** を 2 回クリックしてから **[完了]** をクリックし、リスナーの作成を完了します。 この時点では、リスナーまたはリソースをオンラインにしないでください。
    
-#### <a name="a-namecongroupaconfigure-the-ip-resource-for-the-availability-group"></a><a name="congroup"></a>可用性グループの IP リソースを構成する
+#### <a name="congroup"></a>可用性グループの IP リソースを構成する
 
 1. **[リソース]** タブをクリックして、作成したクライアント アクセス ポイントを展開します。 クライアント アクセス ポイントはオフラインになっています。
 
@@ -58,7 +58,7 @@
 1. Disable NetBIOS for this address and click **OK**. Repeat this step for each IP resource if your solution spans multiple Azure VNets. 
 ------------------------->
 
-#### <a name="a-name--dependencygroupamake-the-sql-server-availability-group-resource-dependent-on-the-client-access-point"></a><a name = "dependencyGroup"></a>SQL Server 可用性グループ リソースがクライアント アクセス ポイントに依存するよう設定する
+#### <a name = "dependencyGroup"></a>SQL Server 可用性グループ リソースがクライアント アクセス ポイントに依存するよう設定する
 
 1. フェールオーバー クラスター マネージャーで、**[ロール]**、可用性グループの順にクリックします。
 
@@ -70,7 +70,7 @@
 
 1. **[OK]**をクリックします。
 
-#### <a name="a-namelistnameamake-the-client-access-point-resource-dependent-on-the-ip-address"></a><a name="listname"></a>クライアント アクセス ポイント リソースが IP アドレスに依存するよう設定する
+#### <a name="listname"></a>クライアント アクセス ポイント リソースが IP アドレスに依存するよう設定する
 
 1. フェールオーバー クラスター マネージャーで、**[ロール]**、可用性グループの順にクリックします。 
 
@@ -84,7 +84,7 @@
 
 1. リスナー名を右クリックし、 **[オンラインにする]**をクリックします。 
 
-#### <a name="a-namesetparamaset-the-cluster-parameters-in-powershell"></a><a name="setparam"></a>PowerShell でクラスターのパラメーターを設定する
+#### <a name="setparam"></a>PowerShell でクラスターのパラメーターを設定する
 
 1. いずれかの SQL Server に次の PowerShell スクリプトをコピーします。 環境に合わせて変数を更新してください。     
    ```PowerShell
@@ -102,10 +102,5 @@
 
 > [!NOTE]
 > SQL Server が別個のリージョンに存在する場合は、PowerShell スクリプトを 2 回実行する必要があります。 1 回目の実行では、1 番目のリージョンの `$ILBIP` と `$ProbePort` を使用します。 2 回目の実行では、2 番目のリージョンの `$ILBIP` と `$ProbePort` を使用します。 クラスター ネットワーク名とクラスター IP リソース名は同じものを使用します。 
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

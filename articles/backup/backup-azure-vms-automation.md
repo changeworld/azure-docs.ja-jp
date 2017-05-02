@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 02/09/2017
+ms.date: 04/05/2017
 ms.author: markgal;trinadhk
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 82b7541ab1434179353247ffc50546812346bda9
-ms.openlocfilehash: 754ad53c46fd6bc00be0282138480e73d560fdc6
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: b179588d29c5dd8cc5bd2469e7f1dfe669027eca
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -29,10 +29,10 @@ ms.lasthandoff: 03/02/2017
 >
 >
 
-この記事では、Azure PowerShell コマンドレットを使用して Recovery Services コンテナーに Azure 仮想マシン (VM) をバックアップする方法と Recovery Services コンテナーから Azure 仮想マシンを回復する方法について説明します。 Recovery Services コンテナーは、Azure Resource Manager のリソースであり、Azure Backup サービスと Azure Site Recovery サービスの両方でデータと資産を保護するために使用されます。 Recovery Services コンテナーを使用すると、Azure Resource Manager でデプロイされた VM と同様に、Azure Service Manager でデプロイされた VM も保護できます。
+この記事では、Azure PowerShell コマンドレットを使用して Recovery Services コンテナーに Azure 仮想マシン (VM) をバックアップする方法と Recovery Services コンテナーから Azure 仮想マシンを回復する方法について説明します。 Recovery Services コンテナーは、Azure Resource Manager のリソースであり、Azure Backup サービスと Azure Site Recovery サービスの両方でデータと資産を保護するために使用されます。 Recovery Services コンテナーを使用すると、Azure Service Manager でデプロイされた VM と、Azure Resource Manager でデプロイされた VM を保護できます。
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して&2; 種類のデプロイ モデルがあります。[Resource Manager デプロイ モデルとクラシック デプロイ モデル](../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、Resource Manager モデルで作成された VM を対象とします。
+> Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、Resource Manager モデルで作成された VM を対象とします。
 >
 >
 
@@ -105,12 +105,12 @@ Cmdlet          Wait-AzureRmRecoveryServicesBackupJob              1.4.0      Az
     ```
     PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
-2. Recovery Services コンテナーは Resource Manager リソースであるため、リソース グループ内に配置する必要があります。 既存のリソース グループを使用することも、**[New-AzureRmResourceGroup](https://msdn.microsoft.com/library/mt678985.aspx)** コマンドレットを使って新しいリソース グループを作成することもできます。 新しいリソース グループを作成する場合、リソース グループの名前と場所を指定します。  
+2. Recovery Services コンテナーは Resource Manager リソースであるため、リソース グループ内に配置する必要があります。 既存のリソース グループを使用することも、**[New-AzureRmResourceGroup](https://msdn.microsoft.com/library/mt678985.aspx)** コマンドレットを使って新しいリソース グループを作成することもできます。 新しいリソース グループを作成するときは、リソース グループの名前と場所を指定します。  
 
     ```
     PS C:\> New-AzureRmResourceGroup –Name "test-rg" –Location "West US"
     ```
-3. **[New-AzureRmRecoveryServicesVault](https://msdn.microsoft.com/library/mt643910.aspx)** コマンドレットを使用して新しいコンテナーを作成します。 リソース グループに使用したのと同じコンテナーの場所を指定してください。
+3. **[New-AzureRmRecoveryServicesVault](https://msdn.microsoft.com/library/mt643910.aspx)** コマンドレットを使用して、新しいコンテナーを作成します。 リソース グループに使用したのと同じコンテナーの場所を指定してください。
 
     ```
     PS C:\> New-AzureRmRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
@@ -154,7 +154,7 @@ PS C:\> Get-AzureRmRecoveryServicesVault -Name testvault | Set-AzureRmRecoverySe
 ```
 
 ### <a name="create-a-protection-policy"></a>保護ポリシーの作成
-新しい資格情報コンテナーを作成すると、これには既定のポリシーが付属します。 このポリシーは、各日の指定した時間にバックアップ ジョブをトリガーします。 既定のポリシーでは、バックアップ スナップショットは 30 日間保持されます。 既定のポリシーを使用すると、VM を迅速に保護することができ、後で異なる詳細な内容にポリシーを編集することもできます。
+コンテナーを作成すると、既定のポリシーが付属します。 このポリシーは、各日の指定した時間にバックアップ ジョブをトリガーします。 既定のポリシーでは、バックアップ スナップショットは 30 日間保持されます。 既定のポリシーを使用すると、VM を迅速に保護することができ、後で異なる詳細な内容にポリシーを編集することもできます。
 
 **[Get-AzureRmRecoveryServicesBackupProtectionPolicy](https://msdn.microsoft.com/library/mt723300.aspx)** を使用して、コンテナーの使用可能なポリシーの一覧を表示します。
 
@@ -170,7 +170,7 @@ DefaultPolicy        AzureVM            AzureVM              4/14/2016 5:00:00 P
 >
 >
 
-バックアップ保護ポリシーは、少なくとも&1; つのアイテム保持ポリシーと関連付けられます。  アイテム保持ポリシーには、Azure Backup で復旧ポイントを保持する期間が定義されています。 既定のアイテム保持ポリシーを表示するには、 **Get-AzureRmRecoveryServicesBackupRetentionPolicyObject** を使用します。  同様に **Get-AzureRmRecoveryServicesBackupSchedulePolicyObject** を使用して、既定のスケジュール ポリシーを取得できます。 スケジュール ポリシーとアイテム保持ポリシー オブジェクトは、 **New-AzureRmRecoveryServicesBackupProtectionPolicy** コマンドレットの入力として使用されます。
+バックアップ保護ポリシーは、少なくとも 1 つのアイテム保持ポリシーと関連付けられます。  アイテム保持ポリシーには、Azure Backup で復旧ポイントを保持する期間が定義されています。 既定のアイテム保持ポリシーを表示するには、 **Get-AzureRmRecoveryServicesBackupRetentionPolicyObject** を使用します。  同様に **Get-AzureRmRecoveryServicesBackupSchedulePolicyObject** を使用して、既定のスケジュール ポリシーを取得できます。 スケジュール ポリシーとアイテム保持ポリシー オブジェクトは、 **New-AzureRmRecoveryServicesBackupProtectionPolicy** コマンドレットの入力として使用されます。
 
 バックアップ保護ポリシーには、アイテムのバックアップが実行されるタイミングと方法を定義します。 New-AzureRmRecoveryServicesBackupProtectionPolicy コマンドレットは、バックアップ ポリシー情報を保持する PowerShell オブジェクトを作成します。 バックアップ ポリシーは、Enable-AzureRmRecoveryServicesBackupProtection コマンドレットへの入力として使用されます。
 
@@ -184,7 +184,7 @@ NewPolicy           AzureVM            AzureVM              4/24/2016 1:30:00 AM
 ```
 
 ### <a name="enable-protection"></a>保護を有効にする
-保護を有効にするには、アイテムとポリシーの&2; つのオブジェクトが必要です。 資格情報コンテナーでの保護を有効にするには両方のオブジェクトが必要です。 ポリシーがコンテナーに関連付けられると、ポリシーのスケジュールで定義された時刻にバックアップのワークフローが開始されます。
+保護を有効にするには、アイテムとポリシーの 2 つのオブジェクトが必要です。 資格情報コンテナーでの保護を有効にするには両方のオブジェクトが必要です。 ポリシーがコンテナーに関連付けられると、ポリシーのスケジュールで定義された時刻にバックアップのワークフローが開始されます。
 
 暗号化されていない Resource Manager VM で保護を有効にする場合
 
@@ -214,7 +214,7 @@ PS C:\>  Enable-AzureRmRecoveryServicesBackupProtection -Policy $pol -Name "V1VM
 ```
 
 ### <a name="modify-a-protection-policy"></a>保護ポリシーの変更
-ポリシーを変更する場合は、BackupSchedulePolicyObject または BackupRetentionPolicy オブジェクトを変更し、Set-AzureRmRecoveryServicesBackupProtectionPolicy を使用してポリシーを変更します。
+ポリシーを変更するには、BackupSchedulePolicyObject または BackupRetentionPolicy オブジェクトを変更し、Set-AzureRmRecoveryServicesBackupProtectionPolicy を使用してポリシーを変更します。
 
 次の例では、保持期間を 365 に変更します。
 
@@ -226,7 +226,7 @@ PS C:\> Set-AzureRmRecoveryServicesBackupProtectionPolicy -Policy $pol  -Retenti
 ```
 
 ## <a name="run-an-initial-backup"></a>初回バックアップの実行
-バックアップのスケジュールでは、アイテムの初回のバックアップ時に完全なバックアップをトリガーします。 以後のバックアップでは、バックアップは増分コピーとなります。 初回バックアップを強制的に特定の時刻に行うか、すぐに行う場合は、**[Backup-AzureRmRecoveryServicesBackupItem](https://msdn.microsoft.com/library/mt723312.aspx)** コマンドレットを使用します。
+バックアップのスケジュールでは、アイテムの初回のバックアップ時に完全なバックアップをトリガーします。 以後のバックアップでは、バックアップは増分コピーとなります。 初回バックアップを特定の時刻に強制的に行うか、すぐに行う場合は、**[Backup-AzureRmRecoveryServicesBackupItem](https://msdn.microsoft.com/library/mt723312.aspx)** コマンドレットを使用します。
 
 ```
 PS C:\> $namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -FriendlyName 'V2VM'
@@ -243,7 +243,7 @@ V2VM              Backup               InProgress            4/23/2016 5:00:30 P
 >
 
 ## <a name="monitoring-a-backup-job"></a>バックアップ ジョブの監視
-Azure Backup で長時間実行される多くの操作は、ジョブとしてモデル化されています。 これにより、Azure ポータルを常に開いていなくても進捗を簡単に追跡できるようになります。
+Azure Backup で長時間実行される多くの操作は、ジョブとしてモデル化されています。 これにより、Azure Portal を常に開いておかなくても、進捗を簡単に追跡できるようになります。
 
 進行中のジョブの最新の状態を取得するには、Get-AzureRmRecoveryservicesBackupJob コマンドレットを使用します。
 
@@ -378,11 +378,13 @@ PS C:\> $details = Get-AzureRmRecoveryServicesBackupJobDetails -Job $restorejob
        $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.VirtualHardDisk.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption Attach
        }
        ```
+       
       For encrypted VMs, you need to specify [Key vault information](https://msdn.microsoft.com/library/dn868052.aspx) before you can attach disks.
 
       ```
       PS C:\> Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.StorageProfile.OSDisk.VirtualHardDisk.Uri -DiskEncryptionKeyUrl "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007" -DiskEncryptionKeyVaultId "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault" -KeyEncryptionKeyUrl "https://ContosoKeyVault.vault.azure.net:443/keys/ContosoKey007" -KeyEncryptionKeyVaultId "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault" -CreateOption "Attach" -Windows    PS C:\> $vm.StorageProfile.OsDisk.OsType = $obj.StorageProfile.OSDisk.OperatingSystemType    PS C:\> foreach($dd in $obj.StorageProfile.DataDisks)     {     $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.VirtualHardDisk.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption Attach     }
        ```
+       
 5. ネットワーク設定を設定します。
 
     ```

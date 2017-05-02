@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 04/12/2017
 ms.author: oanapl
 translationtype: Human Translation
-ms.sourcegitcommit: d20b8d5848d1a11326c60d998099571a4ab8056e
-ms.openlocfilehash: 0306b8c38a7dd86dff56f6cc7bb9eab7e0428762
-ms.lasthandoff: 01/13/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 93a4e5fc2ec3c4e847f3fe8e76df9f83253eea9b
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -57,7 +57,7 @@ Azure Service Fabric コンポーネントは、追加の設定なしでクラ�
 * **次のステップ**: ネットワーク コンピューターが消失した原因を調査します (たとえば、クラスター ノード間の通信をチェックします)。
 
 ## <a name="node-system-health-reports"></a>ノード システム正常性レポート
-**System.FM**は Failover Manager サービスを表し、クラスター ノードに関する情報を管理する権限です。 どのノードにも、ノードの状態を示す System.FM からのレポートが 1 つあるはずです。 ノードの状態が削除されると、ノード エンティティは削除されます ( [RemoveNodeStateAsync](https://msdn.microsoft.com/library/azure/mt161348.aspx)を参照)。
+**System.FM**は Failover Manager サービスを表し、クラスター ノードに関する情報を管理する権限です。 どのノードにも、ノードの状態を示す System.FM からのレポートが 1 つあるはずです。 ノードの状態が削除されると、ノード エンティティは削除されます ( [RemoveNodeStateAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync)を参照)。
 
 ### <a name="node-updown"></a>ノードを上/下に移動
 System.FM は、ノードがリングに参加する (稼動している) と、OK と報告します。 ノードがリングから外れる (アップグレードのため、または単に障害が発生しているため停止している) と、エラーを報告します。 正常性ストアによって構築された正常性の階層は、デプロイ済みエンティティに対して、System.FM ノード レポートに関連したアクションを実行します。 その階層では、ノードは、デプロイ済みのすべてのエンティティの仮想的な親ノードと見なされます。 そのノードにデプロイされたエンティティは、ノードが System.FM によって起動されたものとしてレポートされた場合、エンティティに関連付けられているインスタンスと同じインスタントと共に、クエリを通じて公開されます。 System.FM によってノードの停止または再起動 (新規インスタンス) が報告されると、正常性ストアは、停止したノードまたはノードの以前のインスタンスのみに存在している可能性のあるデプロイ済みエンティティを自動的にクリーンアップします。
@@ -486,7 +486,7 @@ Visual Studio 2015 診断イベント: **fabric:/HelloWorldStatefulApplication**
 * **Property**: レプリカのロールに応じて **PrimaryReplicationQueueStatus** または **SecondaryReplicationQueueStatus**
 
 ### <a name="slow-naming-operations"></a>名前付け操作が遅い
-**System.NamingService** は、名前付け操作にかかる時間が許容範囲を超える場合に、そのプライマリ レプリカの正常性を報告します。 名前付け操作の例として、[CreateServiceAsync](https://msdn.microsoft.com/library/azure/mt124028.aspx) または [DeleteServiceAsync](https://msdn.microsoft.com/library/azure/mt124029.aspx) があります。 FabricClient には、[サービス管理メソッド](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.servicemanagementclient.aspx)や[プロパティ管理メソッド](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.propertymanagementclient.aspx)など、その他多くのメソッドが見つかります。
+**System.NamingService** は、名前付け操作にかかる時間が許容範囲を超える場合に、そのプライマリ レプリカの正常性を報告します。 名前付け操作の例として、[CreateServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) または [DeleteServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync) があります。 FabricClient には、[サービス管理メソッド](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient)や[プロパティ管理メソッド](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.propertymanagementclient)など、その他多くのメソッドが見つかります。
 
 > [!NOTE]
 > ネーム サービスは、サービス名を解決してクラスター内の場所に対応付けて、ユーザーによるサービス名とプロパティの管理を可能にします。 これは、Service Fabric のパーティション分割型の永続化されたサービスです。 パーティションの 1 つは、Service Fabric のすべての名前とサービスに関するメタデータを含む Authority Owner を表します。 Service Fabric の名前は、Name Owner パーティションという各種パーティションにマップされるため、サービスは拡張可能です。 詳細については、 [ネーム サービス](service-fabric-architecture.md)に関するページを参照してください。
@@ -604,7 +604,7 @@ System.Hosting は、ノードでのサービス パッケージのアクティ�
 **System.Hosting** は、各コード パッケージのアクティブ化が成功すると、OK を報告します。 アクティブ化に失敗した場合は、構成されているとおりに警告を報告します。 **CodePackage** がアクティブ化に失敗したか、構成されている **CodePackageHealthErrorThreshold** より大きいエラーで終了した場合、Hosting はエラーを報告します。 サービス パッケージに複数のコード パッケージが含まれている場合、コード パッケージごとにアクティブ化レポートが生成されます。
 
 * **SourceId**: System.Hosting
-* **Property**: プレフィックス **CodePackageActivation** を使用し、**CodePackageActivation:*CodePackageName*:*SetupEntryPoint/EntryPoint*** として、コード パッケージの名前とエントリ ポイントを含みます (**CodePackageActivation:Code:SetupEntryPoint** など)
+* **Property**: プレフィックス **CodePackageActivation** を使用し、**CodePackageActivation:*CodePackageName*:*SetupEntryPoint/EntryPoint* として、コード パッケージの名前とエントリ ポイントを含みます** (**CodePackageActivation:Code:SetupEntryPoint** など)
 
 ### <a name="service-type-registration"></a>サービスの種類の登録
 **System.Hosting** は、サービスの種類が正常に登録されていると、OK を報告します。 (**ServiceTypeRegistrationTimeout** を使用して構成されている) 時間内に登録が行われなかった場合は、エラーを報告します。 ランタイムが閉じられたために、サービスの種類がノードから登録解除された場合には、 Hosting は警告を報告します。

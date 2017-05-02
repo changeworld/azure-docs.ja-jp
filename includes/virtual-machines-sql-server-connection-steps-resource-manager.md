@@ -27,8 +27,3 @@ DNS ラベルを作成するには、最初にポータルで **[Virtual Machine
    
     ![SSMS 接続](./media/virtual-machines-sql-server-connection-steps/rm-ssms-connect.png)
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

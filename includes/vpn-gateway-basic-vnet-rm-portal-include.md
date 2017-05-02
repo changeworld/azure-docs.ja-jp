@@ -27,8 +27,3 @@ Azure Portal を使用して Resource Manager デプロイメント モデルで
     
     ![仮想ネットワーク タイルの作成](./media/vpn-gateway-basic-vnet-rm-portal-include/deploying150.png "Creating virtual network tile")
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

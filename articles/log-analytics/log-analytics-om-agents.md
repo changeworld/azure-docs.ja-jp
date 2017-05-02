@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2016
+ms.date: 04/19/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 961a3867362d14ab7b6ff99ce4002380d763082f
-
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: c0a988a11722cfefb242f573c5a3affe21e6b6b4
+ms.lasthandoff: 04/20/2017
 
 ---
+
 # <a name="connect-operations-manager-to-log-analytics"></a>Operations Manager を Log Analytics に接続する
 Operations Manager と OMS ワークスペースを統合することにより、System Center Operations Manager における既存の投資を維持しながら、Log Analytics で拡張機能を使用することができます。  この統合により、Operations Manager を使用して以下に示す処理を引き続き行いながら、OMS によってもたらされる利点を活用することができます。
 
@@ -35,10 +36,12 @@ Operations Manager 管理グループに報告を行うエージェントは、L
 
 ![oms-operations-manager-integration-diagram](./media/log-analytics-om-agents/oms-operations-manager-connection.png)
 
+IT セキュリティ ポリシーで、ネットワーク上のコンピューターによるインターネットへの接続が許可されていない場合、有効にしたソリューションに応じて、管理サーバーが OMS ゲートウェイに接続して構成情報を受信し、収集されたデータを送信するように構成できます。  Operations Manager 管理グループが OMS Gateway 経由で OMS サービスと通信するように構成する方法の詳細と手順については、[「OMS Gateway を使用してコンピューターを OMS に接続する」](log-analytics-oms-gateway.md)を参照してください。  
+
 ## <a name="system-requirements"></a>システム要件
 始める前に、次の詳細を確認し、必要な前提条件が満たされていることを確認してください。
 
-* OMS では、Operations Manager 2012 SP1 UR6 以上、および Operations Manager 2012 R2 UR2 以上のみをサポートします。  プロキシ サポートは、Operations Manager 2012 SP1 UR7 と Operations Manager 2012 R2 UR3 に追加されています。
+* OMS では、Operations Manager 2016、Operations Manager 2012 SP1 UR6 以上、および Operations Manager 2012 R2 UR2 以上のみがサポートされます。  プロキシ サポートは、Operations Manager 2012 SP1 UR7 と Operations Manager 2012 R2 UR3 に追加されています。
 * すべての Operations Manager エージェントが最小サポート要件を満たす必要があります。 エージェントに最小限の更新プログラムが適用されていることを確認してください。そうでないと、Windows エージェントのトラフィックに異常が発生し、Operations Manager イベント ログに多数のエラーが記録される可能性があります。
 * OMS サブスクリプション。  詳細については、「 [Log Analytics の起動と開始](log-analytics-get-started.md)」を参照してください。
 
@@ -82,7 +85,7 @@ OMS ワークスペースとの統合を構成しても、OMS との接続が確
 2. **[RunAs Configuration (RunAs の構成)]** で **[Profiles (プロファイル)]** を選択します。
 3. **System Center Advisor Run As Profile Proxy** というプロファイルを開きます。
 4. 実行プロファイル ウィザードで [追加] をクリックし、実行アカウントを使用します。 新しい [実行アカウント](https://technet.microsoft.com/library/hh321655.aspx) を作成することも、既存のアカウントを使用することもできます。 このアカウントには、プロキシ サーバーを通過するための十分な権限を持たせる必要があります。
-5. 管理するアカウントを設定するには、**[選択したクラス、グループ、またはオブジェクト]** を選択し、**[選択...]** をクリックします。 次に、**[グループ...]**  をクリックし、**[グループの検索]** ボックス開きます。
+5. 管理するアカウントを設定するには、**[選択したクラス、グループ、またはオブジェクト]** を選択し、**[選択...]** をクリックします。 次に、**[グループ...]** をクリックし、**[グループの検索]** ボックス開きます。
 6. **Microsoft System Center Advisor Monitoring Server Group**を検索して選択します。  グループを選択したら、**[OK]** をクリックして、**[グループ検索]** ボックスを閉じます。
 7. **[OK]** をクリックして、**[実行アカウントの追加]** ボックスを閉じます。
 8. **[保存]** をクリックして、ウィザードを完了し、変更を保存します。
@@ -137,28 +140,36 @@ Operations Manager と OMS の統合が正常に行われているかを確認�
 ## <a name="remove-integration-with-oms"></a>OMS との統合を解除する
 Operations Manager 管理グループと OMS ワークスペース間の統合が不要になったときは、管理グループ内の接続と構成を適切に削除するためにいくつかの手順を実行する必要があります。 次の手順を実行すると、管理グループの参照の削除、OMS コネクタの削除、OMS をサポートする管理パックの削除が実行されて、OMS ワークスペースが更新されます。   
 
+Operations Manager との統合を有効にしたソリューションの管理パックだけでなく、OMS サービスとの統合をサポートするために必要な管理パックは、管理グループからは簡単に削除することはできません。  これは、OMS 管理パックの中に関連する他の管理パックに依存するものがあるためです。  他の管理パックに依存している管理パックを削除するには、TechNet スクリプト センターから、スクリプト[「依存関係を持つ管理パックを削除する」](https://gallery.technet.microsoft.com/scriptcenter/Script-to-remove-a-84f6873e)をダウンロードします。  
+
 1. Operations Manager 管理者ロールのメンバーであるアカウントを使用して Operations Manager コマンド シェルを開きます。
    
-   > [!WARNING]
-   > 続行する前に、Advisor または IntelligencePack という語句を名前に含むカスタム管理パックが存在しないことを確認します。これを確認しないまま次の手順を実行すると、これらは管理グループから削除されます。
-   > 
-   > 
-2. コマンド シェル プロンプトで、「 `Get-SCOMManagementPack -name "*advisor*" | Remove-SCOMManagementPack`
-3. 次に、「 `Get-SCOMManagementPack -name “*IntelligencePack*” | Remove-SCOMManagementPack`
-4. Operations Manager 管理者ロールのメンバーであるアカウントを使用して Operations Manager オペレーション コンソールを開きます。
-5. **[管理]** で **[管理パック]** ノードを選択し、**[Look for (検索する文字列)]** ボックスに「**Advisor**」と入力して、次の管理パックが管理グループにインポートされた状態になっていることを確認します。
+    > [!WARNING]
+    > 続行する前に、Advisor または IntelligencePack という語句を名前に含むカスタム管理パックが存在しないことを確認します。これを確認しないまま次の手順を実行すると、これらは管理グループから削除されます。
+    > 
+
+2. コマンド シェル プロンプトで、「 `Get-SCOMManagementPack -name "*Advisor*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
+3. 次に、「 `Get-SCOMManagementPack -name “*IntelligencePack*” | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
+4. 他の System Center Advisor 管理パックに依存している残りの管理パックを削除するには、TechNet スクリプト センターからダウンロードしたスクリプト *RecursiveRemove.ps1* を使用します。  
+ 
+    > [!NOTE]
+    > Microsoft System Center Advisor または Microsoft System Center Advisor Internal 管理パックを削除しないでください。  
+    >  
+
+5. Operations Manager 管理者ロールのメンバーであるアカウントを使用して Operations Manager オペレーション コンソールを開きます。
+6. **[管理]** で **[管理パック]** ノードを選択し、**[Look for (検索する文字列)]** ボックスに「**Advisor**」と入力して、次の管理パックが管理グループにインポートされた状態になっていることを確認します。
    
    * Microsoft System Center Advisor
    * Microsoft System Center Advisor Internal
-6. OMS ポータルで、 **[設定]** タイルをクリックします。
-7. **[Connected Sources]**(接続されているソース) を選択します。
-8. [System Center Operations Manager] セクションの下の表に、ワークスペースから削除する管理グループの名前が表示されます。  **[Last Data (最後のデータ)]** 列で、**[削除]** をクリックします。  
+7. OMS ポータルで、 **[設定]** タイルをクリックします。
+8. **[Connected Sources]**(接続されているソース) を選択します。
+9. [System Center Operations Manager] セクションの下の表に、ワークスペースから削除する管理グループの名前が表示されます。  **[Last Data (最後のデータ)]** 列で、**[削除]** をクリックします。  
    
-   > [!NOTE]
-   > **[削除]** リンクは、接続された管理グループからアクティビティが検出されない場合、14 日後までは使用できません。  
-   > 
-   > 
-9. 削除操作を続行するかどうかを確認するためのウィンドウが表示されます。  **[はい]** をクリックして続行します。 
+    > [!NOTE]
+    > **[削除]** リンクは、接続された管理グループからアクティビティが検出されない場合、14 日後までは使用できません。  
+    > 
+
+10. 削除操作を続行するかどうかを確認するためのウィンドウが表示されます。  **[はい]** をクリックして続行します。 
 
 Microsoft.SystemCenter.Advisor.DataConnector と Advisor Connector の 2 つのコネクタを削除するには、次の PowerShell スクリプトを自分のコンピューターに保存した後、次の例に従って実行します。
 
@@ -168,7 +179,7 @@ Microsoft.SystemCenter.Advisor.DataConnector と Advisor Connector の 2 つの�
 ```
 
 > [!NOTE]
-> このスクリプトを実行するコンピューターが管理サーバーでない場合、そのコンピューターには、管理グループのバージョンに応じて Operations Manager 2012 SP1 または R2 のコマンド シェルがインストールされている必要があります。
+> このスクリプトを実行するコンピューターが管理サーバーでない場合、そのコンピューターには、管理グループのバージョンに応じた Operations Manager のコマンド シェルがインストールされている必要があります。
 > 
 > 
 
@@ -263,10 +274,5 @@ Microsoft.SystemCenter.Advisor.DataConnector と Advisor Connector の 2 つの�
 ## <a name="next-steps"></a>次のステップ
 * [ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md) 」を参照してください。
 * [Configure proxy and firewall settings in Log Analytics (Log Analytics のプロキシとファイアウォールの設定を構成する) (Log Analytics のプロキシとファイアウォールの設定を構成する)](log-analytics-proxy-firewall.md) 」を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

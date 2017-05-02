@@ -189,8 +189,3 @@ Json 形式のロード バランサー テンプレートの例:
 ### <a name="additional-resources"></a>その他のリソース
 詳細については、「 [ロード バランサー REST API](https://msdn.microsoft.com/library/azure/mt163651.aspx) 」を参照してください。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-
