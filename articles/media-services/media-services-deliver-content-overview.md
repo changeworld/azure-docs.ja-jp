@@ -48,7 +48,7 @@ Media Services が提供するダイナミック パッケージを使用する�
 詳細については、「 [ダイナミック パッケージ](media-services-dynamic-packaging-overview.md)」を参照してください。
 
 ## <a name="filters-and-dynamic-manifests"></a>フィルターと動的マニフェスト
-Media Services を使用すると、資産にフィルターを定義できます。 これらのフィルターは、ビデオの特定セクションのみの再生や、顧客のデバイスで処理できるオーディオやビデオ演奏のサブセットの特定 (資産に関連付けられているすべての演奏ではなく) などを顧客が実行できるようにする、サーバー側のルールです。 このフィルター処理は "*動的マニフェスト*" によって実行されます。これは、顧客が&1; つまたは複数の指定したフィルターに基づいてビデオをストリーミングするようにリクエストした場合に作成されます。
+Media Services を使用すると、資産にフィルターを定義できます。 これらのフィルターは、ビデオの特定セクションのみの再生や、顧客のデバイスで処理できるオーディオやビデオ演奏のサブセットの特定 (資産に関連付けられているすべての演奏ではなく) などを顧客が実行できるようにする、サーバー側のルールです。 このフィルター処理は "*動的マニフェスト*" によって実行されます。これは、顧客が 1 つまたは複数の指定したフィルターに基づいてビデオをストリーミングするようにリクエストした場合に作成されます。
 
 詳細については、「 [フィルターと動的マニフェスト](media-services-dynamic-manifest-overview.md)」を参照してください。
 
@@ -58,7 +58,7 @@ Media Services を使用すると、資産にフィルターを定義できま�
 * OnDemandOrigin ロケーターは、 メディアのストリーミング (MPEG-DASH、HLS、Smooth Streaming など) やファイルのプログレッシブ ダウンロードに使用します。
 * Shared Access Signature (SAS) URL ロケーターは、 メディア ファイルをローカル コンピューターにダウンロードする際に使用します。
 
-"アクセス ポリシー" ** は、アクセス許可 (読み取り、書き込み、一覧表示など) や、クライアントが特定の資産にアクセスできる期間を定義するために使用します。 一覧表示のアクセス許可 (AccessPermissions.List) は、OnDemandOrigin ロケーターを作成するときには使用しないでください。
+*アクセス ポリシー* は、アクセス許可 (読み取り、書き込み、一覧表示など) や、クライアントが特定の資産にアクセスできる期間を定義するために使用します。 一覧表示のアクセス許可 (AccessPermissions.List) は、OnDemandOrigin ロケーターを作成するときには使用しないでください。
 
 ロケーターには有効期限があります。 Azure ポータルにより、ロケーターの有効期限の日付が 100 年後に設定されます。
 
@@ -115,7 +115,7 @@ http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f
 
 http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
 
-### <a name="a-idfmp4v20asmooth-streaming-20-manifest-legacy-manifest"></a><a id="fmp4_v20"></a>Smooth Streaming 2.0 マニフェスト (レガシ マニフェスト)
+### <a id="fmp4_v20"></a>Smooth Streaming 2.0 マニフェスト (レガシ マニフェスト)
 既定では、Smooth Streaming のマニフェスト形式には、繰り返しタグ (r タグ) が含まれています。 ただし、一部のプレーヤーは、r タグをサポートしていません。 これらのプレーヤーを使用するクライアントは、r タグを無効にする形式を使用できます。
 
 {ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=fmp4-v20)
@@ -145,7 +145,7 @@ http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f
 
 ## <a name="streaming-endpoints"></a>ストリーミング エンドポイント
 
-ストリーミング エンドポイントは、コンテンツをクライアント プレーヤー アプリケーションや、再配布のためのコンテンツ配信ネットワーク (CDN) に直接配信するストリーミング サービスを表します。 ストリーミング エンドポイント サービスからの送信ストリームには、Media Services アカウントのライブ ストリームやビデオ オンデマンドの資産があります。 ストリーミング エンドポイントには&2; つの種類があります。**Standard** と **Premium** です。 詳しくは、「[ストリーミング エンドポイントの概要](media-services-streaming-endpoints-overview.md)」をご覧ください。
+ストリーミング エンドポイントは、コンテンツをクライアント プレーヤー アプリケーションや、再配布のためのコンテンツ配信ネットワーク (CDN) に直接配信するストリーミング サービスを表します。 ストリーミング エンドポイント サービスからの送信ストリームには、Media Services アカウントのライブ ストリームやビデオ オンデマンドの資産があります。 ストリーミング エンドポイントには 2 つの種類があります。**Standard** と **Premium** です。 詳しくは、「[ストリーミング エンドポイントの概要](media-services-streaming-endpoints-overview.md)」をご覧ください。
 
 >[!NOTE]
 >AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 
