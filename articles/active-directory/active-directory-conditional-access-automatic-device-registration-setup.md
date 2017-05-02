@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 96fb170e7a079fbb4bcfb4a6b1e98970a709406f
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 6028116d18207d13729d1816f64ad192d4cdb491
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -418,7 +418,7 @@ Windows Server 2008 またはそれ以前のバージョンが実行されてい
     ]
     => issue(
         Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", 
-        Value = "http://<verified-domain-name>/adfs/services/trust/"
+        Value = "http://' + $oneOfVerifiedDomainNames + '/adfs/services/trust/"
     );'
     }
 
@@ -461,7 +461,7 @@ Windows Server 2008 またはそれ以前のバージョンが実行されてい
         c:[Type == "http://schemas.xmlsoap.org/claims/UPN"]
         => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)",  "http://${domain}/adfs/services/trust/")); 
 
-- 既にユーザー アカウントの **ImmutableID** 要求を発行した場合は、スクリプトで **$oneOfVerifiedDomainNames** の値を **$true** に設定します。
+- ユーザー アカウントの **ImmutableID** 要求を既に発行している場合は、スクリプトの **$immutableIDAlreadyIssuedforUsers** の値を **$true** に設定します。
 
 ## <a name="step-3-enable-windows-down-level-devices"></a>手順 3: ダウンレベルの Windows デバイスの有効化
 

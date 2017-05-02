@@ -16,15 +16,15 @@ ms.workload: na
 ms.date: 03/29/2017
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 1d1eec1457917baef1acab27f7c60bdb048837a9
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: f3bb01da7764e467963a47d3d5485679411c9167
+ms.lasthandoff: 04/25/2017
 
 
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-azure-web-apps"></a>Azure Web Apps を使用して Azure IoT Hub からのリアルタイム センサー データを視覚化する
 
-![センサー、IoT デバイス、IoT Hub、Azure Web アプリの接続](media/iot-hub-live-data-visualization-in-web-apps/1_sensor-iot-device-azure-iot-hub-web-app-connection.png)
+![エンド ツー エンド ダイアグラム](media/iot-hub-get-started-e2e-diagram/5.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 04/12/2017
 
 ## <a name="what-you-need"></a>必要なもの
 
-- 次の要件を対象とする [ESP8266 を Azure IoT Hub に接続](iot-hub-arduino-huzzah-esp8266-get-started.md)するためのチュートリアルを完了します。
+- 次の要件に対応するために、[デバイスのセットアップ](iot-hub-raspberry-pi-kit-node-get-started.md)に関するチュートリアルを完了しておきます。
   - 有効な Azure サブスクリプション
   - サブスクリプションの Azure IoT Hub。
   - Azure IoT ハブにメッセージを送信するクライアント アプリケーション。
@@ -57,16 +57,7 @@ ms.lasthandoff: 04/12/2017
 
    ![Azure Web アプリの作成](media/iot-hub-live-data-visualization-in-web-apps/2_create-web-app-azure.png)
 
-## <a name="add-a-consumer-group-to-your-iot-hub"></a>IoT ハブへのコンシューマー グループの追加
-
-コンシューマー グループは、Azure IoT Hub からデータをプルするアプリケーションによって使用されます。 このレッスンでは、IoT ハブからデータを読み取る Web アプリによって使用されるコンシューマー グループを作成します。
-
-コンシューマー グループを IoT ハブに追加するには、次の手順に従います。
-
-1. [Azure Portal](https://ms.portal.azure.com/) で、IoT ハブを開きます。
-1. 左側のウィンドウで **[エンドポイント]** をクリックし、中央のウィンドウで **[イベント]** を選択します。次に、右側のウィンドウの **[コンシューマー グループ]** で名前を入力し、**[保存]** をクリックします。
-
-   ![Azure IoT Hub でのコンシューマー グループの作成](media/iot-hub-live-data-visualization-in-web-apps/3_add-consumer-group-iot-hub-azure.png)
+[!INCLUDE [iot-hub-get-started-create-consumer-group](../../includes/iot-hub-get-started-create-consumer-group.md)]
 
 ## <a name="configure-the-web-app-to-read-data-from-your-iot-hub"></a>IoT ハブからデータを読み取る Web アプリの構成
 
@@ -75,8 +66,8 @@ ms.lasthandoff: 04/12/2017
 
    | キー                                   | 値                                                        |
    |---------------------------------------|--------------------------------------------------------------|
-   | Azure.IoT.IoTHub.ConnectionString     | IoT Hub エクスプローラーから取得                               |
-   | Azure.IoT.IoTHub.DeviceId             | IoT Hub エクスプローラーから取得                               |
+   | Azure.IoT.IoTHub.ConnectionString     | iothub-explorer から取得                                |
+   | Azure.IoT.IoTHub.DeviceId             | iothub-explorer から取得                                |
    | Azure.IoT.IoTHub.ConsumerGroup        | IoT ハブに追加するコンシューマー グループの名前  |
 
    ![キー/値のペアを使用して Azure Web アプリに設定を追加する](media/iot-hub-live-data-visualization-in-web-apps/4_web-app-settings-key-value-azure.png)
