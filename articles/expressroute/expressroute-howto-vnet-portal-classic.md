@@ -18,6 +18,7 @@ ms.author: cherylmc
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 1206d7444f32216597a6f546c71131b2de0ec3f8
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -25,6 +26,8 @@ ms.openlocfilehash: 1206d7444f32216597a6f546c71131b2de0ec3f8
 この記事の手順では、クラシック デプロイメント モデルとクラシック ポータルを使用して、ExpressRoute で使用する仮想ネットワークと仮想ネットワーク ゲートウェイを構成する手順について説明します。
 
 Resource Manager デプロイメント モデルでの手順については、[PowerShell を使用した仮想ネットワークの作成](../virtual-network/virtual-networks-create-vnet-arm-ps.md)に関する記事と、[ExpressRoute 用 Resource Manager VNet への VPN ゲートウェイの追加](expressroute-howto-add-gateway-resource-manager.md)に関する記事を参照してください。
+
+[!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
 **Azure のデプロイ モデルについて**
 
@@ -57,13 +60,13 @@ Resource Manager デプロイメント モデルでの手順については、[P
    * **ゲートウェイ サブネットの追加**: ゲートウェイ サブネットを追加する場合はクリックします。 ゲートウェイ サブネットは仮想ネットワーク ゲートウェイにのみ適用されます。この構成では、ゲートウェイ サブネットは必須です<BR>ExpressRoute のゲートウェイ サブネット CIDR (アドレス数) は、/28 以上 (/27、/26 など) である必要があります。 これにより、構成の対象となる IP アドレスをそのサブネット内で余裕を持って確保することができます。 クラシック ポータルで、[ExpressRoute の使用] チェック ボックスをオンにした場合、ゲートウェイ サブネットが自動的に /28 に設定されます。  CIDR アドレス数をクラシック ポータルで調整することはできません。 実際に作成されるゲートウェイ サブネットの名前は **GatewaySubnet** ですが、クラシック ポータルには、ゲートウェイ サブネットが **[ゲートウェイ]** として表示されます。 この名前は、PowerShell を使用するか、または Azure ポータルで確認できます。
 7. ページ下部のチェックマークをクリックすると、仮想ネットワークの作成が開始されます。 完了すると、クラシック ポータルの **[ネットワーク]** ページにある **[状態]** に **[作成済み]** と表示されます。
 
-## <a name="a-namegwacreate-the-gateway"></a><a name="gw"></a>ゲートウェイの作成
+## <a name="gw"></a>ゲートウェイの作成
 1. **[ネットワーク]** ページで、先ほど作成した仮想ネットワークをクリックし、ページの一番上にある **[ダッシュボード]** をクリックします。
 2. **[ダッシュボード]** ページの下にある **[ゲートウェイの作成]** をクリックし、**[動的ルーティング]** を選択します。 ゲートウェイを作成するかどうかを確認するメッセージが表示されたら **[はい]** をクリックします。
 3. ゲートウェイの作成が開始され、ゲートウェイが起動したことを知らせるメッセージが表示されます。 ゲートウェイの作成には最大で 45 分かかる場合があります。
 4. ネットワークを回線にリンクします。 記事「 [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)」の指示に従ってください。
 
-## <a name="a-nameconfigaconfigure-an-existing-classic-vnet-for-expressroute"></a><a name="config"></a>ExpressRoute 用に既存のクラシック VNet を構成する
+## <a name="config"></a>ExpressRoute 用に既存のクラシック VNet を構成する
 既にクラシック VNet をご利用の場合は、その VNet を ExpressRoute に接続するようにクラシック ポータルで構成することができます。 設定は既出のセクションと同じです。これらのセクションを読んで必要な設定を確認してください。 ExpressRoute 接続とサイト対サイト接続を共存させる必要がある場合は、[こちらの記事](expressroute-howto-coexist-classic.md)で手順を確認してください。 この記事とは異なる手順が必要となります。
 
 1. 他の VNet 設定を更新する前にローカル ネットワークを作成する必要があります。 新しいローカル ネットワークを作成するには (ExpressRoute の構成をクラシック ポータルから行う場合に必要)、**[新規]** **>** **[ネットワーク サービス]** **>** **[仮想ネットワーク]** **>** **[ローカル ネットワークの追加]** の順にクリックします。 ウィザードの手順に従ってローカル ネットワークを作成します。
@@ -73,10 +76,5 @@ Resource Manager デプロイメント モデルでの手順については、[P
 ## <a name="next-steps"></a>次のステップ
 * 仮想マシンを仮想ネットワークに追加する場合は、 [Virtual Machines のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/)に関する記述を参照してください。
 * ExpressRoute の詳細については、 [ExpressRoute の概要](expressroute-introduction.md)に関するページを参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
