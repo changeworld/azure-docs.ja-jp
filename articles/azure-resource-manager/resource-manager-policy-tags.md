@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
+ms.date: 04/20/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 6e71fd9eda822478fa0555aa44908a4094fe8de2
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: 04338b62d942774368149b27e8b35713b77f8d7c
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -31,83 +31,53 @@ ms.lasthandoff: 03/31/2017
 
 一般的な要件は、リソース グループ内のすべてのリソースに特定のタグと値があることです。 多くの場合、この要件は、部門別にコストを追跡するために必要です。 次の条件を満たす必要があります。
 
-* 既存のタグを持たない新規および更新されたリソースには、必要なタグと値が追加されます。
-* 必要なタグと値ではないその他のタグと値を持つ新規および更新されたリソースには、必要なタグと値が追加されます。
+* タグを持たない新規および更新されたリソースには、必要なタグと値が追加されます。
 * 既存のリソースから必要なタグと値を削除することはできません。
 
-この要件は、リソース グループに次の 3 つのポリシーを適用することで対応できます。
+この要件は、リソース グループに次の 2 つの組み込みポリシーを適用することで対応できます。
 
-* [タグを追加する](#append-tag) 
-* [タグとその他のタグを追加する](#append-tag-with-other-tags)
-* [必要なタグと値](#require-tag-and-value)
+| ID | Description |
+| ---- | ---- |
+| 2a0e14a6-b0a6-4fab-991a-187a4f81c498 | ユーザーによって指定されていない場合に、必要なタグとその既定値を適用します。 |
+| 1e30110a-5ceb-460c-a204-c1c3969c6d62 | 必要なタグとその値を強制的に適用します。 |
 
-### <a name="append-tag"></a>タグを追加する
+### <a name="powershell"></a>PowerShell
 
-次のポリシー ルールは、タグが存在しない場合に定義済みの値を持つ costCenter タグを追加します。
+次の PowerShell スクリプトを実行すると、リソース グループに 2 つの組み込みポリシー定義が割り当てられます。 スクリプトを実行する前に、リソース グループに必要なすべてのタグを割り当てます。 リソース グループの各タグは、グループ内のリソースに必要です。 サブスクリプション内のすべてのリソース グループに割り当てるには、リソース グループを取得するときに `-Name` パラメーターを指定しないようにします。
 
-```json
+```powershell
+$appendpolicy = Get-AzureRmPolicyDefinition | Where-Object {$_.Name -eq '2a0e14a6-b0a6-4fab-991a-187a4f81c498'}
+$denypolicy = Get-AzureRmPolicyDefinition | Where-Object {$_.Name -eq '1e30110a-5ceb-460c-a204-c1c3969c6d62'}
+
+$rgs = Get-AzureRMResourceGroup -Name ExampleGroup
+
+foreach($rg in $rgs)
 {
-  "if": {
-    "field": "tags",
-    "exists": "false"
-  },
-  "then": {
-    "effect": "append",
-    "details": [
-      {
-        "field": "tags",
-        "value": {"costCenter":"myDepartment" }
-      }
-    ]
-  }
-}
-```
-
-### <a name="append-tag-with-other-tags"></a>タグとその他のタグを追加する
-
-次のポリシー ルールは、タグが存在する場合に、定義済みの値を持つ costCenter タグを追加しますが、costCenter タグは定義されていません。
-
-```json
-{
-  "if": {
-    "allOf": [
-      {
-        "field": "tags",
-        "exists": "true"
-      },
-      {
-        "field": "tags.costCenter",
-        "exists": "false"
-      }
-    ]
-  },
-  "then": {
-    "effect": "append",
-    "details": [
-      {
-        "field": "tags.costCenter",
-        "value": "myDepartment"
-      }
-    ]
-  }
-}
-```
-
-### <a name="require-tag-and-value"></a>必要なタグと値
-
-次のポリシー ルールは、定義済みの値に割り当てられた costCenter タグがないリソースの更新または作成を拒否します。
-
-```json
-{
-  "if": {
-    "not": {
-      "field": "tags.costCenter",
-      "equals": "myDepartment"
+    $tags = $rg.Tags
+    foreach($key in $tags.Keys){
+        $key 
+        $tags[$key]
+        New-AzureRmPolicyAssignment -Name ("append"+$key+"tag") -PolicyDefinition $appendpolicy -Scope $rg.ResourceId -tagName $key -tagValue  $tags[$key]
+        New-AzureRmPolicyAssignment -Name ("denywithout"+$key+"tag") -PolicyDefinition $denypolicy -Scope $rg.ResourceId -tagName $key -tagValue  $tags[$key]
     }
-  },
-  "then": {
-    "effect": "deny"
-  }
+}
+```
+
+ポリシーを割り当てたら、既存のすべてのリソースへの更新をトリガーし、追加したタグのポリシーを強制的に適用することができます。 次のスクリプトを実行すると、リソースに存在していたその他のタグがすべて保持されます。
+
+```powershell
+$group = Get-AzureRmResourceGroup -Name "ExampleGroup" 
+
+$resources = Find-AzureRmResource -ResourceGroupName $group.ResourceGroupName 
+
+foreach($r in $resources)
+{
+    try{
+        $r | Set-AzureRmResource -Tags ($a=if($r.Tags -eq $NULL) { @{}} else {$r.Tags}) -Force -UsePatchSemantics
+    }
+    catch{
+        Write-Host  $r.ResourceId + "can't be updated"
+    }
 }
 ```
 
@@ -150,26 +120,6 @@ ms.lasthandoff: 03/31/2017
   "then" : {
     "effect" : "deny"
   }
-}
-```
-
-## <a name="trigger-updates-to-existing-resources"></a>既存のリソースに対する更新をトリガーする
-
-次の PowerShell スクリプトは、既存のリソースに対して、追加したタグ ポリシーを適用する更新をトリガーします。
-
-```powershell
-$group = Get-AzureRmResourceGroup -Name "ExampleGroup" 
-
-$resources = Find-AzureRmResource -ResourceGroupName $group.ResourceGroupName 
-
-foreach($r in $resources)
-{
-    try{
-        $r | Set-AzureRmResource -Tags ($a=if($_.Tags -eq $NULL) { @{}} else {$_.Tags}) -Force -UsePatchSemantics
-    }
-    catch{
-        Write-Host  $r.ResourceId + "can't be updated"
-    }
 }
 ```
 
