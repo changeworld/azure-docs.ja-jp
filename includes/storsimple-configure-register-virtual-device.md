@@ -18,8 +18,3 @@
 ![StorSimple 仮想デバイス オンライン ステージ
 ](./media/storsimple-configure-register-virtual-device/StorSimple_VirtualDeviceOnline1M.png)
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-

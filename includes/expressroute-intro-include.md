@@ -3,8 +3,3 @@ Microsoft Azure ExpressRoute を利用すれば、接続プロバイダーが提
 
 ![](./media/expressroute-intro-include/expressroute-basic.png)
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-
