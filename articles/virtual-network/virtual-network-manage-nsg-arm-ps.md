@@ -262,8 +262,8 @@ Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
     -Protocol Tcp `
     -Direction Inbound `
     -Priority 102 `
-    -SourceAddressPrefix * `
-    -SourcePortRange Internet `
+    -SourceAddressPrefix Internet `
+    -SourcePortRange * `
     -DestinationAddressPrefix * `
     -DestinationPortRange 443
     ```

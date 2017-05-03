@@ -518,7 +518,7 @@ private async Task DeleteFamilyDocument(string databaseName, string collectionNa
 
 次のコードをコピーし、**GetStartedDemo** メソッドに貼り付けます。2 回目のクエリ実行のすぐ下に追加してください。
 
-```cshrp
+```csharp
 await this.ReplaceFamilyDocument("FamilyDB_oa", "FamilyCollection_oa", "Andersen.1", andersenFamily);
 
 this.ExecuteSimpleQuery("FamilyDB_oa", "FamilyCollection_oa");
