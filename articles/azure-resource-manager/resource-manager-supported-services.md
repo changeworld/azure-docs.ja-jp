@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/20/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: a740813b013e75a098836290ad8e9ebe76d33b37
-ms.lasthandoff: 04/19/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: bf4e400e30cc93ca8fa0cc727ada0f1b224b05cb
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -126,7 +126,7 @@ Cloud Services (クラシック) は、他のクラシック リソースと共�
 | Service Bus |はい |[Service Bus REST](/rest/api/servicebus) |[Service Bus のリソース](/azure/templates/microsoft.servicebus/namespaces) |
 
 ## <a name="identity--access-management"></a>ID 管理とアクセス管理
-Azure Active Directory はリソース マネージャーと連携して、サブスクリプションのロールベースのアクセス制御を可能にします。 ロールベースのアクセス制御と Active Directory の使用方法については、「 [Azure Active Directory リソースへのアクセスをロールの割り当てによって管理する](../active-directory/role-based-access-control-configure.md)」を参照してください。
+Azure Active Directory はリソース マネージャーと連携して、サブスクリプションのロールベースのアクセス制御を可能にします。 ロールベースのアクセス制御と Azure Active Directory の使用方法については、「[Azure Active Directory リソースへのアクセスをロールの割り当てによって管理する](../active-directory/role-based-access-control-configure.md)」を参照してください。
 
 ## <a name="developer-services"></a>開発者サービス
 | サービス | リソース マネージャーが有効 | REST API | テンプレートの形式 |

@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/14/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 203648d999032d86dca10f9b47c40a2208ab79e9
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 746fefab12aae11774a7d582e39ac2bc7eb9c88b
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -58,7 +58,7 @@ DocumentDB は、ポリシー ベースのジオフェンス機能を備える�
 DocumentDB では、データベース アカウントへのリージョンの追加 (関連付け) とリージョンの削除 (関連付け解除) をいつでも行うことができます ([前の図を参照](#UnlimitedRegionsPerAccount))。 DocumentDB は、パーティション間でのデータの並列レプリケーションにより、新しいリージョンがオンラインになったときに、最大 100 TB で世界中のどこでも 30 分以内に利用できます。 
 
 ### <a id="FailoverPriorities"></a>フェールオーバーの優先順位
-複数のリージョンで障害が発生したときにリージョン内フェールオーバーの正確なシーケンスを制御するために、DocumentDB ではデータベース アカウントに関連付けられたさまざまなリージョンに優先順位を関連付けることができます (次の図を参照)。 DocumentDB では、指定された優先順位で自動フェールオーバー シーケンスが発生します。
+複数のリージョンで障害が発生したときにリージョン内フェールオーバーの正確なシーケンスを制御するために、DocumentDB ではデータベース アカウントに関連付けられたさまざまなリージョンに優先順位を関連付けることができます (次の図を参照)。 DocumentDB では、指定された優先順位で自動フェールオーバー シーケンスが発生します。 リージョンのフェールオーバーの詳細については、「[DocumentDB でのビジネス継続性のためのリージョン内自動フェールオーバー](documentdb-regional-failovers.md)」を参照してください。
 
 **DocumentDB のテナントは、データベース アカウントに関連付けられているリージョンのフェールオーバーの優先順位を構成することが可能 (右側のウィンドウ)**
 

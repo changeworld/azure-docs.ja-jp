@@ -1,24 +1,24 @@
 ---
-title: "一括分析 - Azure | Microsoft Docs"
-ms.custom: 
-ms.date: 2017-02-01
-ms.prod: azure
-ms.reviewer: 
-ms.service: batch
-ms.suite: 
-ms.tgt_pltfrm: 
-ms.topic: reference
-ms.assetid: 2fda4d9c-f782-4088-9320-656b450e3100
-caps.latest.revision: 7
+title: "Azure 一括分析 | Microsoft Docs"
+description: "Azure 一括分析のリファレンスです。"
+services: batch
 author: tamram
-ms.author: tamram
 manager: timlt
+ms.assetid: 
+ms.service: batch
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: vm-windows
+ms.workload: big-compute
+ms.date: 04/20/2017
+ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 4b73637e0ec6798b701d5a13f96c504bcbb14cc7
-ms.lasthandoff: 04/13/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 7d634e1bb595a84b8af339e5bc5a483a7849e7f7
+ms.lasthandoff: 04/22/2017
 
 ---
+
 # <a name="batch-analytics"></a>一括分析
 一括分析のトピックには、Batch サービスのリソースで使用できるイベントとアラートに関するリファレンス情報が含まれています。
 

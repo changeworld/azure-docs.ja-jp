@@ -12,12 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 04/27/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 831ce961992747de87706c3dde24b812a281c23a
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: cbd764b3c6ce912c825aa2756ac6f35c23d047bf
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -70,6 +70,7 @@ Azure Redis Cache についてよく寄せられる質問の回答、パター�
 * [キャッシュのベンチマークを実行およびテストする方法](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 * [ThreadPool 拡大の重要な詳細情報](#important-details-about-threadpool-growth)
 * [StackExchange.Redis を使用するときにサーバー GC を有効にしてクライアントでのスループットを向上させる](#enable-server-gc-to-get-more-throughput-on-the-client-when-using-stackexchangeredis)
+* [接続のパフォーマンスに関する考慮事項](#performance-considerations-around-connections)
 
 ## <a name="monitoring-and-troubleshooting-faqs"></a>監視とトラブルシューティングに関する FAQ
 このセクションの FAQ では、監視とトラブルシューティングに関する一般的な質問について説明します。 Azure Redis Cache インスタンスの監視とトラブルシューティングの詳細については、「[Azure Redis Cache の監視方法](cache-how-to-monitor.md)」および「[Azure Redis Cache のトラブルシューティング方法](cache-how-to-troubleshoot.md)」を参照してください。
@@ -405,6 +406,13 @@ StackExchange.Redis を使用するときにサーバー GC を有効にする�
 * [サーバー GC を有効にするには](https://msdn.microsoft.com/library/ms229357.aspx)
 * [ガベージ コレクションの基礎](https://msdn.microsoft.com/library/ee787088.aspx)
 * [ガベージ コレクションとパフォーマンス](https://msdn.microsoft.com/library/ee851764.aspx)
+
+
+### <a name="performance-considerations-around-connections"></a>接続のパフォーマンスに関する考慮事項
+
+各価格レベルには、クライアント接続、メモリ、および帯域幅についてさまざまな制限があります。 各キャッシュのサイズが特定の接続数*まで*許容される一方で、Redis への各接続はそれにオーバーヘッドが関連付けられています。 このようなオーバーヘッドの例には、TLS/SSL 暗号化の結果としての CPU とメモリの使用量があります。 指定したキャッシュ サイズの最大接続数の上限は、負荷が低いキャッシュを想定しています。 接続オーバーヘッドからの読み込みに*加えて*、クライアントの操作からの読み込みがシステムの容量を超える場合、現在のキャッシュ サイズが接続数の上限を超えていない場合でも、キャッシュ容量の問題が発生する可能性があります。
+
+各レベルの異なる接続制限について詳しくは、「[Redis Cache の価格](https://azure.microsoft.com/pricing/details/cache/)」をご覧ください。 接続と他の既定の構成について詳しくは、「[既定の Redis サーバー構成](cache-configure.md#default-redis-server-configuration)」をご覧ください。
 
 <a name="cache-monitor"></a>
 

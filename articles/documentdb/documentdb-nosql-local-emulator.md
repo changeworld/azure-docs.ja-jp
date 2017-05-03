@@ -13,19 +13,32 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/06/2017
+ms.date: 04/21/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 767698f12a5cb58fafc70c58e3d36a65194c2999
-ms.lasthandoff: 04/07/2017
+ms.sourcegitcommit: 260208e7c7a08110eb3c885ef86ec4c18ff42fc9
+ms.openlocfilehash: 87486f94bee474b13680e9a90716f09399a95e16
+ms.lasthandoff: 04/23/2017
 
 
 ---
 # <a name="use-the-azure-documentdb-emulator-for-development-and-testing"></a>開発とテストでの Azure DocumentDB Emulator の使用
 
-[**Emulator をダウンロードする**](https://aka.ms/documentdb-emulator)
-
+<table>
+<tr>
+  <td><strong>バイナリ</strong></td>
+  <td>[MSI のダウンロード](https://aka.ms/documentdb-emulator)</td>
+</tr>
+<tr>
+  <td><strong>Docker</strong></td>
+  <td>[Docker Hub](https://hub.docker.com/r/microsoft/azure-documentdb-emulator/)</td>
+</tr>
+<tr>
+  <td><strong>Docker ソース</strong></td>
+  <td>[Github](https://github.com/azure/azure-documentdb-emulator-docker)</td>
+</tr>
+</table>
+  
 Azure DocumentDB Emulator では、Azure DocumentDB サービスを開発目的でエミュレートするローカル環境を利用できます。 DocumentDB Emulator を使用すると、ローカルでのアプリケーションの開発とテストが、Azure サブスクリプションを作成したりコストをかけたりせずに実施できます。 DocumentDB Emulator でのアプリケーションの動作に満足できたら、クラウドでの Azure DocumentDB アカウントの使用に切り替えることができます。
 
 最初に、Kirill Gavrylyuk が DocumentDB Emulator の使用のいろはを解説している次のビデオを視聴することをお勧めします。
@@ -56,7 +69,7 @@ DocumentDB Emulator は、Docker for Windows 上で実行できます。 Emulato
 [Docker for Windows](https://www.docker.com/docker-windows) をインストールした後、お気に入りのシェル (cmd.exe、PowerShell など) から次のコマンドを実行することによって、Docker Hub から Emulator イメージをプルできます。
 
 ```      
-docker pull mominag/documentdb_emulator 
+docker pull microsoft/azure-documentdb-emulator 
 ```
 イメージを起動するには、次のコマンドを実行します。
 

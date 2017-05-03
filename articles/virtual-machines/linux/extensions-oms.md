@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 4e890582e790ad9187287e1323159098e19d7325
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: c2d14be5f27a775a14039bd63c5ccb5cd7b10f9a
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -36,11 +36,11 @@ OMS Agent 拡張機能は、次の Linux ディストリビューションに対
 
 | ディストリビューション | バージョン |
 |---|---|
-| CentOS Linux | 5、6、7 |
-| Oracle Linux | 5、6、7 |
-| Red Hat Enterprise Linux Server | 5、6、7 |
+| CentOS Linux | 5、6 および 7 |
+| Oracle Linux | 5、6 および 7 |
+| Red Hat Enterprise Linux Server | 5、6 および 7 |
 | Debian GNU/Linux | 6、7、8 |
-| Ubuntu | 12.04 LTS、14.04 LTS、15.04 |
+| Ubuntu | 12.04 LTS、14.04 LTS、15.04、15.10、16.04 LTS |
 | SUSE Linux Enterprise Server | 11、12 |
 
 ### <a name="internet-connectivity"></a>インターネット接続
@@ -49,7 +49,7 @@ Linux 用の OMS Agent 拡張機能では、ターゲットの仮想マシンが
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
-次の JSON は、OMS Agent 拡張機能のスキーマを示しています。 この拡張機能では、ターゲット OMS ワークスペースのワークスペース ID とワークスペース キーが必要です (これらは OMS ポータルで確認できます)。 ワークスペース キーは機密データとして取り扱う必要があるため、保護された設定構成に格納される必要があります。 Azure VM 拡張機能の保護された設定データは暗号化され、ターゲットの仮想マシンでのみ、暗号化が解除されます。 **workspaceId** と **workspaceKey** の大文字と小文字は区別されることに注意してください。
+次の JSON は、OMS Agent 拡張機能のスキーマを示しています。 この拡張機能では、ターゲット OMS ワークスペースのワークスペース ID とワークスペース キーが必要です (これらの値は OMS ポータルで確認できます)。 ワークスペース キーは機密データとして取り扱う必要があるため、保護された設定構成に格納される必要があります。 Azure VM 拡張機能の保護された設定データは暗号化され、ターゲットの仮想マシンでのみ、暗号化が解除されます。 **workspaceId** と **workspaceKey** の大文字と小文字は区別されることに注意してください。
 
 ```json
 {
@@ -63,7 +63,7 @@ Linux 用の OMS Agent 拡張機能では、ターゲットの仮想マシンが
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.0",
+    "typeHandlerVersion": "1.3",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -81,7 +81,7 @@ Linux 用の OMS Agent 拡張機能では、ターゲットの仮想マシンが
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.EnterpriseCloud.Monitoring |
 | type | OmsAgentForLinux |
-| typeHandlerVersion | 1.0 |
+| typeHandlerVersion | 1.3 |
 | workspaceId (例) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (例) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
 
@@ -106,7 +106,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.0",
+    "typeHandlerVersion": "1.3",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -131,7 +131,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.0",
+    "typeHandlerVersion": "1.3",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -148,7 +148,7 @@ Azure CLI を使用して、OMS Agent VM 拡張機能を既存の仮想マシン
 
 ```azurecli
 azure vm extension set myResourceGroup myVM \
-  OmsAgentForLinux Microsoft.EnterpriseCloud.Monitoring 1.0 \
+  OmsAgentForLinux Microsoft.EnterpriseCloud.Monitoring 1.3 \
   --public-config-path public.json  \
   --private-config-path protected.json
 ```
@@ -168,6 +168,30 @@ azure vm extension get myResourceGroup myVM
 ```
 /opt/microsoft/omsagent/bin/stdout
 ```
+
+### <a name="error-codes-and-their-meanings"></a>エラー コードとその意味
+
+| エラー コード | 意味 | 可能なアクション |
+| :---: | --- | --- |
+| 2 | シェル バンドルに提供されたオプションが無効です | |
+| 3 | シェル バンドルにオプションが提供されていません | |
+| 4 | パッケージの種類が無効です | |
+| 5 | シェル バンドルはルートとして実行する必要があります | |
+| 6 | パッケージ アーキテクチャが無効です | |
+| 10 | VM は既に OMS ワークスペースに接続されています | 拡張スキーマに指定されたワークスペースに VM を接続するには、パブリック設定で stopOnMultipleConnections を false に設定するか、このプロパティを削除します。 この VM は、各ワークスペースに接続された後、課金されます。 |
+| 11 | 拡張機能に提供された構成が無効です | 前の例に従って、デプロイするために必要なすべてのプロパティ値を設定します。 |
+| 20 | SCX/OMIのインストールに失敗しました | |
+| 21 | SCX/プロバイダー キットのインストールに失敗しました | |
+| 22 | バンドルされているパッケージのインストールに失敗しました | |
+| 23 | SCX または OMI パッケージは既にインストールされています | |
+| 30 | バンドルの内部エラー | |
+| 51 | VM のオペレーティング システムでは、この拡張機能はサポートされていません | |
+| 60 | OpenSSL のバージョンがサポートされていません。 | [パッケージ要件](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#package-requirements)に適合する OpenSSL のバージョンをインストールします。 |
+| 61 | Python ctypes ライブラリが不足しています | Python ctypes ライブラリまたはパッケージ (python-ctypes) をインストールします。 |
+| 62 | tar プログラムが不足しています | tar をインストールします。 |
+| 63 | sed プログラムが不足しています | sed をインストールします。 |
+
+その他のトラブルシューティング情報については、「[Troubleshooting Guide for OMS Agent for Linux](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#)」(Linux 用の OMS エージェントに関するトラブルシューティン グガイド) を参照してください。
 
 ### <a name="support"></a>サポート
 

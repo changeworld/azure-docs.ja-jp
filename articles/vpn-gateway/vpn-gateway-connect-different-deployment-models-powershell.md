@@ -13,40 +13,44 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/11/2017
+ms.date: 04/21/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
-ms.openlocfilehash: 49384bc101f89f613dad30591c3fcb2144f96276
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: b6319266d2b2cb664f5673b1365600ae8e974342
+ms.lasthandoff: 04/25/2017
 
 
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>異なるデプロイ モデルの仮想ネットワークを PowerShell を使用して接続する
+
+
+
+この記事では、クラシック VNet を Resource Manager VNet に接続し、異なるデプロイ モデルにあるリソースを相互に通信できるようにする方法について説明します。 この記事の手順では PowerShell を使いますが、Azure Portal を使ってこの構成を作成することもできます。この場合は、次のリストから PowerShell に関する記事を選んでください。
+
 > [!div class="op_single_selector"]
 > * [ポータル](vpn-gateway-connect-different-deployment-models-portal.md)
 > * [PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 > 
 > 
 
-Azure には現在、クラシックと Resource Manager (RM) の 2 つの管理モデルがあります。 これまで Azure を使用してきているユーザーであれば、おそらく Azure VM およびクラシック VNet で実行されているインスタンス ロールを利用されていることでしょう。 新しい VM とロール インスタンスが、Resource Manager で作成された VNet 上で実行されていることも考えられます。
+クラシック VNet から Resource Manager VNet への接続は、VNet をオンプレミス サイトの場所に接続することと似ています。 どちらの接続タイプでも、VPN ゲートウェイを使用して、IPsec/IKE を使った安全なトンネルが確保されます。 別のサブスクリプション、別のリージョンに存在する VNet 間で接続を作成することができます。 オンプレミスのネットワークに既に接続されている VNet を接続することもできます。ただし、Vnet が構成されているゲートウェイが動的またはルート ベースである場合に限ります。 VNet 間接続の詳細については、この記事の最後にある「[VNet 間接続に関してよく寄せられる質問](#faq)」を参照してください。 
 
-この記事では、クラシック VNet を Resource Manager VNet に接続し、異なるデプロイ モデルにあるリソースをゲートウェイ接続経由で相互に通信できるようにする方法について説明します。 [!INCLUDE [vpn-gateway-vnetpeeringlink](../../includes/vpn-gateway-vnetpeeringlink-include.md)]
-
-別のサブスクリプション、別のリージョンに存在する VNet 間で接続を作成することができます。 オンプレミスのネットワークに既に接続されている VNet を接続することもできます。ただし、Vnet が構成されているゲートウェイが動的またはルート ベースである場合に限ります。 VNet 間接続の詳細については、この記事の最後にある「[VNet 間接続に関してよく寄せられる質問](#faq)」を参照してください。 
-
-
+複数の VNet が同じリージョンに存在する場合は、それらを VNet ピアリングで接続することを検討してください。 VNet ピアリングは、VPN ゲートウェイを使いません。 詳細については、「 [VNet ピアリング](../virtual-network/virtual-network-peering-overview.md)」を参照してください。 
 
 ## <a name="before-beginning"></a>作業を開始する前に
+
 次の手順では、各 VNet 用に動的またはルート ベースのゲートウェイを構成してゲートウェイ間の VPN 接続を作成する際に必要な設定について説明します。 この構成は、静的またはポリシー ベースのゲートウェイをサポートしていません。
 
 ### <a name="prerequisites"></a>前提条件
+
 * 両方の VNet が既に作成されている。
 * これらの VNet のアドレス範囲が互いに重複していない。また、ゲートウェイの接続先になる可能性のある他の接続の範囲と重複していない。
-* 最新の PowerShell コマンドレット (1.0.2 以降) がインストール済みである。 詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」ご覧ください。 必ずサービス管理 (SM) と Resource Manager (RM) のコマンドレットの両方をインストールしてください。 
+* 最新の PowerShell コマンドレットがインストール済みである。 詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」ご覧ください。 必ずサービス管理 (SM) と Resource Manager (RM) のコマンドレットの両方をインストールしてください。 
 
 ### <a name="exampleref"></a>設定例
-設定の例は、リファレンスとして使用できます。
+
+この値を使って、テスト環境を作成できます。また、この値を参考にしながら、この記事の例を確認していくこともできます。
 
 **クラシック VNet の設定**
 
@@ -253,7 +257,7 @@ RM VNet 用の VPN ゲートウェイを作成するには、次の手順に従�
   ```
 
 ## <a name="connect"></a>セクション 4: ゲートウェイ間の接続を作成する
-ゲートウェイ間の接続を作成するには PowerShell が必要です。 従来の PowerShell コマンドレットを使用して、Azure アカウントを追加する必要が生じる場合もあります。 その場合は、**Add-azureaccount** を使用します。
+ゲートウェイ間の接続を作成するには PowerShell が必要です。 従来のバージョンの PowerShell コマンドレットを使って、Azure アカウントを追加する必要が生じる場合もあります。 その場合は、**Add-azureaccount** を使用します。
 
 1. PowerShell コンソールで、共有キーを設定します。 コマンドレットを実行する前に、ダウンロードしたネットワーク構成ファイルで、Azure が期待する正確な名前を確認します。 スペースを含む VNet の名前を指定するときは、単一引用符を使って値を囲みます。<br><br>次の例では、**-VNetName** はクラシック VNet の名前で、**-LocalNetworkSiteName** はローカル ネットワーク サイトに対して指定した名前です。 **-SharedKey** は、生成して指定する値です。 この例では "abc123" を使いましたが、さらに複雑な値を生成して使うことができます。 重要なのは、ここで指定する値は、次の手順で接続を作成するときに指定するものと同じ値でなければならないということです。 戻り値が **Status: Successful** を示している必要があります。
 
@@ -302,7 +306,7 @@ RM VNet 用の VPN ゲートウェイを作成するには、次の手順に従�
 
 [!INCLUDE [vpn-gateway-verify-connection-portal-rm](../../includes/vpn-gateway-verify-connection-portal-rm-include.md)]
 
-## <a name="faq"></a>VNet 間の考慮事項
+## <a name="faq"></a>VNet 間接続に関してよく寄せられる質問
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
 
