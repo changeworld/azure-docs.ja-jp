@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 02/13/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
-ms.openlocfilehash: 4aef51551857fb21ea86397f36b0e92894db2eaf
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: c7517f61944b9fdb02a3589d7c9cd83355dae6d8
+ms.lasthandoff: 04/20/2017
 
 ---
 # <a name="use-mirrormaker-to-create-a-replica-of-a-kafka-on-hdinsight-cluster-preview"></a>MirrorMaker を使用した HDInsight クラスターでの Kafka のレプリカの作成 (プレビュー)
@@ -262,5 +262,5 @@ Azure 仮想ネットワークと Kafka クラスターは手動で作成でき�
 * [HDInsight での Apache Kafka の使用](hdinsight-apache-kafka-get-started.md)
 * [HDInsight での Kafka に Apache Spark を使用する](hdinsight-apache-spark-with-kafka.md)
 * [HDInsight での Kafka に Apache Storm を使用する](hdinsight-apache-storm-with-kafka.md)
-
+* [Azure Virtual Network 経由で Kafka に接続する](hdinsight-apache-kafka-connect-vpn-gateway.md)
 

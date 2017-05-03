@@ -1,6 +1,6 @@
 ---
-title: "Azure Table Storage のインデックスを Azure Search で作成する"
-description: "Azure Search で Azure テーブルに格納されたデータのインデックスを作成する方法について説明します"
+title: "Azure Table Storage のインデックスを Azure Search で作成する | Microsoft Docs"
+description: "Azure Table Storage に格納されているデータのインデックスを Azure Search で作成する方法について説明します"
 services: search
 documentationcenter: 
 author: chaosrealm
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.date: 04/10/2017
 ms.author: eugenesh
 translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: 9b45ab6b86ab0a336b2a4b90e702fa4ff098d41c
-ms.lasthandoff: 04/10/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 7679aa86aa24396d9cd7cf84a8cafe7950ad6d62
+ms.lasthandoff: 04/20/2017
 
 ---
 
-# <a name="indexing-azure-table-storage-with-azure-search"></a>Azure Table Storage のインデックスを Azure Search で作成する
-この記事では、Azure Search を使用して、Azure Table Storage に格納されているデータのインデックスを使用する方法を示します。
+# <a name="index-azure-table-storage-with-azure-search"></a>Azure Table Storage のインデックスを Azure Search で作成する
+この記事では、Azure Search を使用して、Azure Table Storage に格納されているデータのインデックスを作成する方法を示します。
 
-## <a name="setting-up-azure-table-indexing"></a>Azure テーブルのインデックス作成の設定
+## <a name="set-up-azure-table-storage-indexing"></a>Azure Table Storage のインデックスを設定する
 
-Azure Table インデクサーを設定するには、以下を使用します。
+次のリソースを使用して、Azure Table Storage のインデクサーを設定できます。
 
 * [Azure ポータル](https://ms.portal.azure.com)
 * Azure Search [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
@@ -34,24 +34,24 @@ Azure Table インデクサーを設定するには、以下を使用します�
 
 ここでは、REST API を使用したフローについて説明します。 
 
-### <a name="step-1-create-a-data-source"></a>手順 1: データ ソースを作成する
+### <a name="step-1-create-a-datasource"></a>手順 1: データ ソースを作成する
 
-データ ソースでは、インデックスを作成するデータ、データにアクセスするために必要な資格情報、および Azure Search がデータの変更を効率よく識別できるようにするポリシーを指定します。
+データ ソースは、インデックスを作成するデータ、データにアクセスするために必要な資格情報、および Azure Search がデータの変更を効率よく識別できるようにするポリシーを指定します。
 
-Table インデックス作成の場合は、次のプロパティがデータ ソースに必要です。
+テーブルのインデックス作成では、次のプロパティがデータ ソースに必要です。
 
 - **name** は、Search サービス内のデータ ソースの一意の名前です。
 - **type** は `azuretable` である必要があります。
-- **credentials** パラメーターは、ストレージ アカウントの接続文字列が含まれます。 詳しくは、「[資格情報を指定する方法](#Credentials)」のセクションをご覧ください。
+- **credentials** パラメーターは、ストレージ アカウントの接続文字列が含まれます。 詳しくは、「[資格情報を指定する方法](#Credentials)」セクションをご覧ください。
 - **container** はテーブル名とオプションのクエリを設定します。
     - `name` パラメーターを使用して、テーブル名を指定します。
     - 必要に応じて `query` パラメーターを使用して、クエリを指定します。 
 
 > [!IMPORTANT] 
-> 可能な場合は、パフォーマンス向上のために PartitionKey でフィルターを使用してください。 その他のクエリはフル テーブル スキャンを実行するため、規模の大きなテーブルではパフォーマンスが下がります。 詳しくは、「[パフォーマンスに関する考慮事項](#Performance)」のセクションをご覧ください。
+> 可能な場合は、パフォーマンス向上のために PartitionKey でフィルターを使用してください。 その他のクエリはフル テーブル スキャンを実行するため、規模の大きなテーブルではパフォーマンスが下がります。 詳しくは、「[パフォーマンスに関する考慮事項](#Performance)」セクションをご覧ください。
 
 
-データ ソースを作成する方法を次に示します。
+データ ソースを作成するには:
 
     POST https://[service name].search.windows.net/datasources?api-version=2016-09-01
     Content-Type: application/json
@@ -64,26 +64,26 @@ Table インデックス作成の場合は、次のプロパティがデータ �
         "container" : { "name" : "my-table", "query" : "PartitionKey eq '123'" }
     }   
 
-データ ソース作成 API の詳細については、「 [データ ソースの作成](https://docs.microsoft.com/rest/api/searchservice/create-data-source)」をご覧ください。
+データ ソース作成 API の詳細については、「[データ ソースの作成](https://docs.microsoft.com/rest/api/searchservice/create-data-source)」をご覧ください。
 
 <a name="Credentials"></a>
-#### <a name="how-to-specify-credentials"></a>資格情報を指定する方法 ####
+#### <a name="ways-to-specify-credentials"></a>資格情報を指定する方法 ####
 
 次のいずれかの方法でテーブルに対して資格情報を指定できます。 
 
-- **フル アクセス ストレージ アカウントの接続文字列**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`。 この接続文字列は、ストレージ アカウント ブレードに移動し、[設定]、[キー] と選択する (クラシック ストレージ アカウントの場合) か、[設定]、[アクセス キー] と選択する (Azure Resource Manager ストレージ アカウントの場合) ことで Azure Portal から取得できます。
-- **ストレージ アカウントの Shared Access Signature** (SAS) の接続文字列: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl`。 SAS にはコンテナー (この場合はテーブル) 上およびオブジェクト (テーブル行) にリストおよび読み取りアクセス許可が必要です。
--  **テーブルの Shared Access Signature**: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r`。 SAS にはテーブル上にクエリ (読み取り) アクセス許可が必要です。
+- **ストレージ アカウントへのフル アクセス接続文字列**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` この接続文字列は、Azure ポータルで次の順に移動することで取得できます。**ストレージ アカウント ブレード** > **[設定]** > **[キー]** (クラシック ストレージ アカウントの場合)、または **[設定]** > **[アクセス キー]** (Azure Resource Manager ストレージ アカウントの場合)。
+- **ストレージ アカウントの共有アクセス署名接続文字列**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` 共有アクセス署名には、コンテナ (ここではテーブル) とオブジェクト (テーブルの行) の一覧と読み取りアクセス許可が必要です。
+-  **テーブルの共有アクセス署名**: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` 共有アクセス署名には、テーブルに対するクエリ (読み取り) アクセス許可が必要です。
 
-Shared Access Signature について詳しくは、「[Shared Access Signature の使用](../storage/storage-dotnet-shared-access-signature-part-1.md)」をご覧ください。
+ストレージの共有アクセス署名の詳細については、「[Shared Access Signature (SAS) の使用](../storage/storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
 
 > [!NOTE]
-> SAS の資格情報を使用する場合は、その有効期限が切れないように、データ ソースの資格情報を更新された署名で定期的に更新する必要があります。 SAS の資格情報の有効期限が切れると、インデクサーは「`Credentials provided in the connection string are invalid or have expired.`」のようなエラー メッセージで失敗します。  
+> 共有アクセス署名の資格情報を使用する場合は、その有効期限が切れないように、データ ソースの資格情報を更新された署名で定期的に更新する必要があります。 共有アクセス署名の資格情報の有効期限が切れた場合、インデクサーは失敗し、「接続文字列で指定された資格情報が無効か期限が切れています」のようなエラー メッセージが表示されます。  
 
 ### <a name="step-2-create-an-index"></a>手順 2: インデックスを作成する
-インデックスでは、検索に使用する、ドキュメント内のフィールド、属性、およびその他の構成要素を指定します。
+インデックスは、検索に使用する、ドキュメント内のフィールド、属性、およびその他の構成要素を指定します。
 
-インデックスを作成する方法を次に示します。
+インデックスを作成するには:
 
     POST https://[service name].search.windows.net/indexes?api-version=2016-09-01
     Content-Type: application/json
@@ -97,12 +97,12 @@ Shared Access Signature について詳しくは、「[Shared Access Signature �
           ]
     }
 
-インデックスの作成方法について詳しくは、[インデックスの作成](https://docs.microsoft.com/rest/api/searchservice/create-index)に関する記事をご覧ください。
+インデックスの作成の詳細については、[インデックスの作成](https://docs.microsoft.com/rest/api/searchservice/create-index)に関する記事をご覧ください。
 
 ### <a name="step-3-create-an-indexer"></a>手順 3: インデクサーを作成する
 インデクサーはデータ ソースをターゲットの検索インデックスに接続し、データ更新を自動化するスケジュールを提供します。 
 
-インデックスとデータ ソースを作成したら、インデクサーを作成できます。
+インデックスとデータ ソースを作成した後、インデクサーを作成できます。
 
     POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
     Content-Type: application/json
@@ -115,15 +115,15 @@ Shared Access Signature について詳しくは、「[Shared Access Signature �
       "schedule" : { "interval" : "PT2H" }
     }
 
-このインデクサーは 2 時間ごとに実行されます (スケジュールの間隔が "PT2H" に設定されています)。 インデクサーを 30 分ごとに実行するには、間隔を "PT30M" に設定します。 サポートされている最短の間隔は 5 分です。 スケジュールは省略可能です。省略した場合、インデクサーは作成時に一度だけ実行されます。 ただし、いつでもオンデマンドでインデクサーを実行できます。   
+このインデクサーは、2 時間ごとに実行されます  (スケジュール間隔は "PT2H"に設定されます)。インデクサーを 30 分ごとに実行するには、間隔を "PT30M" に設定します。 サポートされている最短の間隔は 5 分です。 スケジュールは省略可能です。省略した場合、インデクサーは作成時に一度だけ実行されます。 ただし、いつでもオンデマンドでインデクサーを実行できます。   
 
-インデクサー作成 API の詳細については、「 [インデクサーの作成](https://docs.microsoft.com/rest/api/searchservice/create-indexer)」をご覧ください。
+インデクサー作成 API の詳細については、[インデクサーの作成](https://docs.microsoft.com/rest/api/searchservice/create-indexer)に関するページをご覧ください。
 
-## <a name="dealing-with-different-field-names"></a>さまざまなフィールド名の操作
-既存のインデックス内のフィールド名が、テーブルのプロパティ名と異なることがあります。 テーブルのプロパティ名は、 **フィールド マッピング** を使用して、検索インデックス内のフィールド名に対応付けることができます。 フィールド マッピングの詳細については、「 [データ ソースと検索インデックスの橋渡し役としての Azure Search インデクサー フィールド マッピング](search-indexer-field-mappings.md)」を参照してください。
+## <a name="deal-with-different-field-names"></a>さまざまなフィールド名を操作する
+既存のインデックス内のフィールド名が、テーブルのプロパティ名と異なることがあります。 テーブルのプロパティ名は、フィールド マッピングを使用して、検索インデックス内のフィールド名に対応付けることができます。 フィールド マッピングの詳細については、「[データ ソースと検索インデックスの橋渡し役としての Azure Search インデクサー フィールド マッピング](search-indexer-field-mappings.md)」を参照してください。
 
-## <a name="handling-document-keys"></a>ドキュメント キーの処理
-Azure Search では、ドキュメントがそのキーによって一意に識別されます。 それぞれの検索インデックスには、 `Edm.String`型のキー フィールドが 1 つだけ必要です。 キー フィールドは、インデックスに追加するドキュメントごとに必要です (実際のところ、これは唯一の必須フィールドです)。
+## <a name="handle-document-keys"></a>ドキュメント キーを処理する
+Azure Search では、ドキュメントがそのキーによって一意に識別されます。 それぞれの検索インデックスには、 `Edm.String`型のキー フィールドが 1 つだけ必要です。 キー フィールドは、インデックスに追加するドキュメントごとに必要です  (実際のところ、これは唯一の必須フィールドです)。
 
 テーブル行には複合キーがあるため、Azure Search では、パーティション キーと行キーの値が連結された `Key` と呼ばれる合成フィールドが生成されます。 たとえば、行の PartitionKey が `PK1` で、RowKey が `RK1` の場合、`Key` フィールドの値は `PK1RK1` です。
 
@@ -133,7 +133,7 @@ Azure Search では、ドキュメントがそのキーによって一意に識�
 >
 
 ## <a name="incremental-indexing-and-deletion-detection"></a>インデックスの増分作成と削除の検出
-スケジュールに従って実行するようにテーブルのインデクサーを設定すると、行の `Timestamp` 値に従って、新しい行または更新された行のみでインデックスが再作成されます。 変更検出ポリシーを独自に指定する必要はありません。インデックスの増分作成は自動的に有効になります。
+スケジュールに従って実行するようにテーブルのインデクサーを設定すると、行の `Timestamp` 値に従って、新しい行または更新された行のみでインデックスが再作成されます。 変更検出ポリシーを指定する必要はありません。 増分インデックス作成が自動的に有効になります。
 
 一部のドキュメントをインデックスを削除する必要があることを示すには、論理的な削除を使用できます。 行を削除する代わりに、プロパティを追加してそれが削除されていることを示し、データソースに論理的な削除のポリシーを設定します。 たとえば、次のポリシーは値 `"true"` が指定されたプロパティ `IsDeleted` がある行を削除されているものと見なします。
 
@@ -157,7 +157,7 @@ Azure Search では、ドキュメントがそのキーによって一意に識�
 
 テーブルのインデックス作成のパフォーマンスを向上させる可能性のある 2 つの方法を紹介します。 どちらの方法もテーブルのパーティションを使用します。 
 
-- データを複数のパーティション範囲に自然に分割できる場合は、各パーティション範囲にデータソースと対応するインデクサーを作成します。 これで各インデクサーが特定のパーティション範囲のみを処理するようになるため、クエリのパフォーマンスが向上します。 インデックスを作成する必要があるデータに固定のパーティションが少数ある場合、各インデクサーはパーティションのスキャンのみを実行するため、パフォーマンスがより改善します。 たとえば、キーが `000` から `100` の範囲のパーティションを処理するデータソースを作成するには、次のようなクエリを使用します。 
+- データを複数のパーティション範囲に自然に分割できる場合は、各パーティション範囲にデータソースと対応するインデクサーを作成します。 これで各インデクサーが特定のパーティション範囲のみを処理するようになるため、クエリのパフォーマンスが向上します。 インデックスを作成する必要があるデータに固定のパーティションが少数ある場合、各インデクサーはパーティションのスキャンのみを実行するため、パフォーマンスが向上します。 たとえば、キーが `000` から `100` の範囲のパーティションを処理するデータソースを作成するには、次のようなクエリを使用します。 
     ```
     "container" : { "name" : "my-table", "query" : "PartitionKey ge '000' and PartitionKey lt '100' " }
     ```

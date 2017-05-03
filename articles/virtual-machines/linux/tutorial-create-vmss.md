@@ -1,9 +1,9 @@
 ---
-title: "仮想マシン スケール セットを使用して Azure で高可用性アプリを作成する | Microsoft Docs"
-description: "仮想マシン スケール セットと Azure CLI を使用して Linux VM に高可用性アプリを作成およびデプロイします。"
+title: "Azure で Linux 用の仮想マシン スケール セットを作成する | Microsoft Docs"
+description: "仮想マシン スケール セットを使って、Linux VM に高可用性アプリを作成およびデプロイします"
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: Thraka
+author: iainfoulds
 manager: timlt
 editor: 
 tags: 
@@ -13,33 +13,33 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 04/05/2017
-ms.author: adegeo
+ms.date: 04/18/2017
+ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 4c76fb202f501f671504646395b800aeb90d8e69
-ms.lasthandoff: 04/07/2017
+ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
+ms.openlocfilehash: 73167924f95c8cea0ac3cb4651cb3571fb24cc01
+ms.lasthandoff: 04/21/2017
 
 ---
 
-# <a name="create-a-highly-available-application-on-linux-with-virtual-machine-scale-sets"></a>仮想マシン スケール セットを使用して Linux に高可用性アプリを作成する
-このチュートリアルでは、仮想マシン スケール セットに高可用性アプリを作成する方法について説明します。 また、スケール セット内の仮想マシンの構成を自動化する方法についても説明します。 
+# <a name="create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux"></a>仮想マシン スケール セットを作成して Linux に高可用性アプリをデプロイする
+このチュートリアルでは、Azure で仮想マシン スケール セットを使うことにより、アプリを実行する仮想マシン (VM) の数をすばやく拡張する方法について説明します。 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU の使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケーリングするルールを定義したりできます。 実際に動いている仮想マシン スケール セットを確認するため、複数の Linux VM で動作する Node.js アプリを作成します。
+
+このチュートリアルの手順は、最新バージョンの [Azure CLI 2.0](/cli/azure/install-azure-cli) を使用して行うことができます。
 
 
-## <a name="step-1---create-a-resource-group"></a>手順 1: リソース グループを作成する
-このチュートリアルに取り組む前に、最新の [Azure CLI 2.0](/cli/azure/install-azure-cli) がインストールされていることを確認してください。 まだ Azure サブスクリプションにログインしていない場合は、[az login](/cli/azure/#login) でログインし、画面の指示に従ってください。
+## <a name="scale-set-overview"></a>スケール セットの概要
+仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セットは、前の[高可用性 VM の作成](tutorial-availability-sets.md)チュートリアルで学習したものと同じコンポーネントを使います。 スケール セット内の VM は、可用性セット内に作成されて、論理障害ドメインおよび更新ドメインに配布されます。
 
-[az group create](/cli/azure/group#create) を使用して、リソース グループを作成します。 次の例では、`myResourceGroupVMSS` という名前のリソース グループを `westus` の場所に作成します。
+スケール セットには必要に応じて VM が作成されます。 自動スケール ルールを定義して、スケール セットの VM を追加または削除する方法とタイミングを制御できます。 これらのルールは、CPU の負荷、メモリの使用量、ネットワーク トラフィックなどのメトリックに基づいて発動できます。
 
-```azurecli
-az group create --name myResourceGroupVMSS --location westus
-```
+Azure プラットフォーム イメージを使う場合、スケール セットは最大 1,000 個の VM をサポートします。 運用環境のワークロードでは、[カスタム VM イメージの作成](tutorial-custom-images.md)が必要な場合があります。 カスタム イメージを使うと、最大 100 個の VM をスケール セットに作成できます。
 
 
-## <a name="step-2---define-your-app"></a>手順 2 - アプリを定義する
-チュートリアルで高可用性および負荷が分散されたアプリを作成した同じ **cloud-init** 構成を使用します。 **cloud-init** の使用の詳細については、「[Use cloud-init to customize a Linux VM during creation (cloud-init を利用し、作成時に Linux VM をカスタマイズする)](using-cloud-init.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
+## <a name="create-an-app-to-scale"></a>スケーリングするアプリを作成する
+運用環境で使う場合は、インストールと構成が済んだアプリケーションを含む[カスタム VM イメージを作成](tutorial-custom-images.md)できます。 このチュートリアルでは、スケール セットの動作をすぐに確認できるように初回起動時に VM をカスタマイズします。
 
-`cloud-init.txt` というファイルを作成し、次の構成を貼り付けます。
+前のチュートリアルでは、cloud-init を使って [Linux 仮想マシンを初回起動時にカスタマイズする方法](tutorial-automate-vm-deployment.md)を説明しました。 同じ cloud-init 構成ファイルを使って、NGINX をインストールし、単純な "Hello World" Node.js アプリを実行することができます。 `cloud-init.txt` というファイルを作成し、次の構成を貼り付けます。
 
 ```yaml
 #cloud-config
@@ -76,7 +76,7 @@ write_files:
         console.log('Hello world app listening on port 3000!')
       })
 runcmd:
-  - nginx -s reload
+  - service nginx restart
   - cd "/home/azureuser/myapp"
   - npm init
   - npm install express -y
@@ -84,16 +84,18 @@ runcmd:
 ```
 
 
-## <a name="step-3---create-scale-set"></a>手順 3 - スケール セットを作成する
-仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セットは[Azure で高可用性アプリをビルドする](tutorial-load-balance-nodejs.md)チュートリアルで学習した同じコンポーネントを使用します。 これらのコンポーネントは、可用性セット、フォールト ドメインと更新ドメイン、およびロード バランサーとして含まれます。
+## <a name="create-a-scale-set"></a>スケール セットを作成する
+スケール セットを作成する前に、[az group create](/cli/azure/group#create) を使ってリソース グループを作成します。 次の例では、`myResourceGroupScaleSet` という名前のリソース グループを `westus` の場所に作成します。
 
-スケール セットを使用すると、ユーザーに代わってこれらのリソースが作成および管理されます。 スケール セット内の VM の数は定義したルールに基づいて自動的に増減されることがあります。 仮想マシンのソースとして[カスタム イメージを使用](capture-image.md)するか、このチュートリアルで示すように **cloud-init** を使用してデプロイ中に VM を構成できます。
+```azurecli
+az group create --name myResourceGroupScaleSet --location westus
+```
 
-[az vmss create](/cli/azure/vmss#create) を使用して仮想マシン スケール セットを作成します。 次の例は `myScaleSet` という名前のスケール セットを作成します。
+ここでは、[az vmss create](/cli/azure/vmss#create) を使って仮想マシン スケール セットを作成します。 以下の例では、`myScaleSet` という名前のスケール セットを作成し、cloud-int ファイルを使って VM をカスタマイズして、存在しない場合は SSH キーを生成します。
 
 ```azurecli
 az vmss create \
-  --resource-group myResourceGroupVMSS \
+  --resource-group myResourceGroupScaleSet \
   --name myScaleSet \
   --image Canonical:UbuntuServer:14.04.4-LTS:latest \
   --upgrade-policy-mode automatic \
@@ -105,12 +107,14 @@ az vmss create \
 すべてのスケール セットのリソースと VM を作成および構成するのに数分かかります。
 
 
-## <a name="step-4---configure-firewall"></a>手順 4 - ファイアウォールを構成する
-仮想マシン スケール セットの一部として、ロード バランサーが自動的に作成されました。 ロード バランサーはロード バランサー ルールを使用して定義した VM のセット全体にトラフィックを分散します。 トラフィックが Web アプリに到達することを許可するには、[az network lb probe create](/cli/azure/network/lb/probe#create) を使用してルールを作成します。 次の例では、`myLoadBalancerRuleWeb` という名前の規則を作成します。
+## <a name="allow-web-traffic"></a>Web トラフィックを許可する
+仮想マシン スケール セットの一部として、ロード バランサーが自動的に作成されました。 ロード バランサーはロード バランサー ルールを使用して定義した VM のセット全体にトラフィックを分散します。 ロード バランサーの概念と構成につい詳しくは、次のチュートリアル「[Azure の Linux 仮想マシンを負荷分散して高可用性アプリケーションを作成する方法](tutorial-load-balancer.md)」をご覧ください。
+
+トラフィックが Web アプリに到達することを許可するには、[az network lb rule creat](/cli/azure/network/lb/rule#create) を使ってルールを作成します。 次の例では、`myLoadBalancerRuleWeb` という名前の規則を作成します。
 
 ```azurecli
 az network lb rule create \
-  --resource-group myResourceGroupVMSS \
+  --resource-group myResourceGroupScaleSet \
   --name myLoadBalancerRuleWeb \
   --lb-name myScaleSetLB \
   --backend-pool-name myScaleSetLBBEPool \
@@ -120,12 +124,12 @@ az network lb rule create \
   --protocol tcp
 ```
 
-## <a name="step-5---test-your-app"></a>手順 5 - アプリをテストする
-ロード バランサーのパブリック IP アドレスを取得するには、[az network public-ip show](/cli/azure/network/public-ip#show) を使用します。 次の例では、スケール セットの一部として作成された `myScaleSetLBPublicIP` の IP アドレスを取得しています。
+## <a name="test-your-app"></a>アプリケーションをテストする
+Web 上の Node.js アプリを確認するには、[az network public-ip show](/cli/azure/network/public-ip#show) でロード バランサーのパブリック IP アドレスを取得します。 次の例では、スケール セットの一部として作成された `myScaleSetLBPublicIP` の IP アドレスを取得しています。
 
 ```azurecli
 az network public-ip show \
-    --resource-group myResourceGroupVMSS \
+    --resource-group myResourceGroupScaleSet \
     --name myScaleSetLBPublicIP \
     --query [ipAddress] \
     --output tsv
@@ -133,43 +137,66 @@ az network public-ip show \
 
 このパブリック IP アドレスを Web ブラウザーに入力します。 アプリが表示され、ロード バランサーによって負荷分散されたトラフィックの宛先となった VM のホスト名が表示されます。
 
-![実行中の Node.js アプリ](./media/tutorial-load-balance-nodejs/running-nodejs-app.png)
+![実行中の Node.js アプリ](./media/tutorial-create-vmss/running-nodejs-app.png)
 
-アプリが動作しているスケール セット内の VM すべてに対してロード バランサーからトラフィックが負荷分散されていることを確認するために、Web ブラウザーを強制的に最新の情報に更新します。
+動作しているスケール セットを確認するには、Web ブラウザーを強制的に最新の情報に更新して、アプリが動作しているすべての VM に対してロード バランサーからトラフィックが負荷分散されているのを見ることができます。
 
 
-## <a name="step-6---management-tasks"></a>手順 6 - 管理タスク
+## <a name="management-tasks"></a>管理タスク
 スケール セットのライフサイクルを通じて、1 つ以上の管理タスクを実行する必要がある場合があります。 さらに、各種ライフサイクルのタスクを自動化するスクリプトを作成するほうが便利な場合もあります。 Azure CLI 2.0 には、これらのタスクを簡単に実行するための方法が用意されています。 一般的なタスクには、次のようなものがあります。
 
-### <a name="increase-or-decrease-vm-instances"></a>VM インスタンスを増減させる
-[az vmss scale](/cli/azure/vmss#scale) を使用してスケール セット内の仮想マシンの数を手動で増減させることができます。 次の例は、スケール セット内の VM の数を `5` に増やしています。
+### <a name="view-vms-in-a-scale-set"></a>スケール セットの VM を表示する
+スケール セットで実行されている VM の一覧を表示するには、[az vmss list-instances](/cli/azure/vmss#list-instances) を次のように使います。
 
 ```azurecli
-az vmss scale --resource-group myResourceGroupVMSS --name myScaleSet --new-capacity 5
+az vmss list-instances \
+  --resource-group myResourceGroupScaleSet \
+  --name myScaleSet \
+  --output table
+```
+
+出力は次の例のようになります。
+
+```azurecli
+  InstanceId  LatestModelApplied    Location    Name          ProvisioningState    ResourceGroup            VmId
+------------  --------------------  ----------  ------------  -------------------  -----------------------  ------------------------------------
+           1  True                  westus      myScaleSet_1  Succeeded            MYRESOURCEGROUPSCALESET  c72ddc34-6c41-4a53-b89e-dd24f27b30ab
+           3  True                  westus      myScaleSet_3  Succeeded            MYRESOURCEGROUPSCALESET  44266022-65c3-49c5-92dd-88ffa64f95da
+```
+
+
+### <a name="increase-or-decrease-vm-instances"></a>VM インスタンスを増減させる
+現在スケール セット内にあるインスタンスの数を見るには、[az vmss show](/cli/azure/vmss#show) と `sku.capacity` に対するクエリを使います。
+
+```azurecli
+az vmss show \
+    --resource-group myResourceGroupScaleSet \
+    --name myScaleSet \
+    --query [sku.capacity] \
+    --output table
+```
+
+[az vmss scale](/cli/azure/vmss#scale) を使って、スケール セット内の仮想マシンの数を手動で増減させることができます。 次の例では、スケール セット内の VM の数を `5` に設定します。
+
+```azurecli
+az vmss scale \
+    --resource-group myResourceGroupScaleSet \
+    --name myScaleSet \
+    --new-capacity 5
 ```
 
 自動スケール ルールを使用すると、ネットワーク トラフィックや CPU の使用率に合わせてスケール セット内の VM の数をスケールアップまたはスケールダウンする方法を定義できます。 現時点では、これらのルールは Azure CLI 2.0 では設定できません。 自動スケールを構成するには [Azure Portal](https://portal.azure.com) を使用します。
 
 ### <a name="get-connection-info"></a>接続情報を取得する
-スケール セット内の VM に関する接続情報を取得するには、[az vmss list-instance-connection-info](/cli/azure/vmss#list-instance-connection-info) を使用します。 このコマンドは、パブリック IP アドレスと SSH を使用して接続を許可する各 VM のポートが出力されます。
+スケール セット内の VM に関する接続情報を取得するには、[az vmss list-instance-connection-info](/cli/azure/vmss#list-instance-connection-info) を使用します。 このコマンドでは、SSH での接続を許可する各 VM のパブリック IP アドレスとポートが出力されます。
 
 ```azurecli
-az vmss list-instance-connection-info --resource-group myResourceGroupVMSS --name myScaleSet
-```
-
-### <a name="delete-resource-group"></a>Delete resource group
-リソース グループを削除すると、そこに含まれているリソースもすべて削除されます。
-
-```azurecli
-az group delete --name myResourceGroupVMSS
+az vmss list-instance-connection-info --resource-group myResourceGroupScaleSet --name myScaleSet
 ```
 
 
 ## <a name="next-steps"></a>次のステップ
-このチュートリアルでは、**cloud-init** を使用して Web アプリを定義し、デプロイ中に各 VM を構成しました。 VM をキャプチャしてスケール セットでソース イメージを使用する方法について詳しくは、「[Linux 仮想マシンを一般化してキャプチャする方法](capture-image.md)」をご覧ください。
+このチュートリアルでは、仮想マシン スケール セットの作成方法を説明しました。 次のチュートリアルでは、仮想マシンでの負荷分散の概念について詳しく説明します。
 
-このチュートリアルで紹介した仮想マシン スケール セットのいくつかの機能について詳しくは、次の情報をご覧ください。
+[仮想マシンを負荷分散する](tutorial-load-balancer.md)
 
-- [Azure 仮想マシン スケール セットの概要](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)
-- [Azure Load Balancer の概要](../../load-balancer/load-balancer-overview.md)
-- [ネットワーク セキュリティ グループを使用したネットワーク トラフィック フローの制御](../../virtual-network/virtual-networks-nsg.md)

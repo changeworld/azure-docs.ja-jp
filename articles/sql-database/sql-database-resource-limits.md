@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 03/06/2017
+ms.date: 04/14/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: a2177926e76b25ceb5ecb4fd9471f961d3fa989f
-ms.lasthandoff: 04/15/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 90f2ea599dd97780d7ec43f09ab1b1497d6e87f5
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -52,7 +52,7 @@ Basic、Standard、Premium、および Premium RS サービス階層の設計目
 [!INCLUDE [SQL DB service tiers table](../../includes/sql-database-service-tiers-table.md)]
 
 > [!IMPORTANT]
-> P11 と P15 のパフォーマンス レベルを使用しているお客様は、追加料金なしで最大 4 TB の付属のストレージを使用できます。 この 4 TB のオプションは現在、米国東部 2、米国西部、西ヨーロッパ、東南アジア、東日本、オーストラリア東部、カナダ中部、カナダ東部の各リージョンで、パプリック プレビューの段階にあります。
+> P11 と P15 のパフォーマンス レベルを使用しているお客様は、追加料金なしで最大 4 TB の付属のストレージを使用できます。 この 4 TB のオプションは現在、米国東部 2、米国西部、西ヨーロッパ、東南アジア、東日本、オーストラリア東部、カナダ中部、カナダ東部の各リージョンで利用できます。
 >
 
 ### <a name="elastic-pools"></a>エラスティック プール

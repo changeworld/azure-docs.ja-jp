@@ -4,7 +4,7 @@ description: "SQL Server データベースを Azure SQL Database に移行す�
 services: sql-database
 documentationcenter: 
 author: janeng
-manager: jstrauss
+manager: jhubbard
 editor: 
 tags: 
 ms.assetid: 
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 04/04/2017
+ms.date: 04/20/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 842ca29e46aefbd58638ac642f000ef39c1202d1
-ms.lasthandoff: 04/13/2017
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: c6d965351f6f131ee342cea672fc4fa8771f8ede
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -40,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA)。
 - 移行するデータベース。 このチュートリアルでは SQL Server 2008 R2 以降のインスタンス上にある [SQL Server 2008 R2 AdventureWorks OLTP データベース](https://msftdbprodsamples.codeplex.com/releases/view/59211)を使用しますが、任意のデータベースを使用してかまいません。 
 
-## <a name="step-1---prepare-for-migration"></a>手順 1 - 移行を準備する
+## <a name="prepare-for-migration"></a>移行を準備する
 
 移行の準備をします。 **[Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595)** を使用して、Azure SQL Database に移行するデータベースの準備状態を評価するには、以下の手順に従います。
 
@@ -85,7 +85,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 10. 必要に応じて、**[Export report]** (レポートのエクスポート) をクリックして、レポートを JSON ファイルとして保存します。
 11. Data Migration Assistant を閉じます。
 
-## <a name="step-2---export-to-bacpac-file"></a>手順 2 - BACPAC ファイルにエクスポートする 
+## <a name="export-to-bacpac-file"></a>BACPAC ファイルへのエクスポート 
 
 BACPAC ファイルは、メタデータと SQL Server データベースからのデータを含み、BACPAC の拡張子を持つ ZIP ファイルです。 アーカイブ目的で、または SQL Server から Azure SQL Database などの移行目的で、BACPAC ファイルを Azure Blob Storage またはローカル ストレージに保存できます。 トランザクションの一貫性を維持してエクスポートするために、エクスポート中は書き込み処理が発生しないようにする必要があります。
 
@@ -103,11 +103,11 @@ SQLPackage コマンド ライン ユーティリティを使用して Adventure
 
 実行が完了すると、sqlpackage 実行可能ファイルが置かれているディレクトリに、生成された BCPAC ファイルが格納されます。 この例では、C:\Program Files (x86) \Microsoft SQL Server\130\DAC\bin に格納されます。 
 
-## <a name="step-3-log-in-to-the-azure-portal"></a>手順 3 - Azure Portal にログインする
+## <a name="log-in-to-the-azure-portal"></a>Azure ポータルにログインする
 
 [Azure ポータル](https://portal.azure.com/)にログインします。 SQLPackage コマンド ライン ユーティリティを実行しているコンピューターからログインすると、手順 5 でファイアウォール規則を簡単に作成できます。
 
-## <a name="step-4-create-a-sql-database-logical-server"></a>手順 4 - SQL Database 論理サーバーを作成する
+## <a name="create-a-sql-database-logical-server"></a>SQL Database 論理サーバーを作成する
 
 [Azure SQL Database 論理サーバー](sql-database-features.md)は、複数のデータベースの中央管理ポイントとして機能します。 移行後の Adventure Works OLTP SQL Server データベースを格納する SQL Database 論理サーバーを作成するには、以下の手順に従います。 
 
@@ -133,7 +133,7 @@ SQLPackage コマンド ライン ユーティリティを使用して Adventure
 
 5. **[作成]** をクリックして論理サーバーをプロビジョニングします。 プロビジョニングには数分かかります。 
 
-## <a name="step-5-create-a-server-level-firewall-rule"></a>手順 5 - サーバーレベルのファイアウォール規則を作成する
+## <a name="create-a-server-level-firewall-rule"></a>サーバーレベルのファイアウォール規則を作成する
 
 SQL Database サービスは、外部のアプリケーションやツールに、サーバーまたはサーバー上のすべてのデータベースへの接続を禁止する[ファイアウォールをサーバーレベルで](sql-database-firewall-configure.md)作成します。それらに接続するためには、特定の IP アドレスに対してファイアウォールを開放するファイアウォール規則が作成されている必要があります。 SQLPackage コマンド ライン ユーティリティを実行しているコンピューターの IP アドレスに対して SQL Database のサーバーレベルのファイアウォール規則を作成するには、以下の手順に従います。 これにより、SQLPackage から Azure SQL Database ファイアウォールを介して SQL Database 論理サーバーに接続できるようになります。 
 
@@ -155,7 +155,7 @@ SQL Database サービスは、外部のアプリケーションやツールに�
 > SQL Database の通信は、ポート 1433 上で行われます。 企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 1433 が開放されない限り、Azure SQL Database サーバーに接続することはできません。
 >
 
-## <a name="step-6---import-bacpac-file-to-azure-sql-database"></a>手順 6 - BACPAC ファイルを Azure SQL Database にインポートする 
+## <a name="import-bacpac-file-to-azure-sql-database"></a>BACPAC ファイルを Azure SQL Database にインポートする 
 
 最新バージョンの SQLPackage コマンド ライン ユーティリティでは、指定した[サービス レベルとパフォーマンス レベル](sql-database-service-tiers.md)で Azure SQL Database を作成できます。 インポート時はパフォーマンスを最大化するために、高いサービス レベルとパフォーマンス レベルを選択します。インポート後にそれほど高いサービス レベルとパフォーマンス レベルが直ちに必要ない場合は、スケールダウンします。
 
@@ -173,7 +173,7 @@ SQLPackage コマンド ライン ユーティリティを使用して Adventure
 > Azure SQL Database 論理サーバーは、ポート 1433 でリッスンします。 企業のファイアウォール内から Azure SQL Database 論理サーバーに接続する場合、企業のファイアウォールでこのポートが開放されていないと、正しく接続することができません。
 >
 
-## <a name="step-7---connect-using-sql-server-management-studio-ssms"></a>手順 7 - SQL Server Management Studio (SSMS) を使用して接続する
+## <a name="connect-using-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) を使用して接続する
 
 SQL Server Management Studio を使用して、Azure SQL Database サーバーと新しく移行したデータベースに対する接続を確立します。 SQLPackage を実行したコンピューターとは別のコンピューターで SQL Server Management Studio を実行している場合は、前述の手順に従って、このコンピューターに対するファイアウォール規則を作成してください。
 
@@ -192,7 +192,7 @@ SQL Server Management Studio を使用して、Azure SQL Database サーバー�
 
 4. オブジェクト エクスプローラーで、**Databases** フォルダー、**myMigratedDatabase** フォルダーの順に展開して、サンプル データベース内のオブジェクトを表示します。
 
-## <a name="step-8---change-database-properties"></a>手順 8 - データベースのプロパティを変更する
+## <a name="change-database-properties"></a>データベースのプロパティを変更する
 
 SQL Server Management Studio を使用して、サービス レベル、パフォーマンス レベル、互換性レベルを変更できます。
 

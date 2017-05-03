@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: meetb;carlrab;sstein
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: e39d108e9d6962647cbf76e50299b73939fe5977
-ms.lasthandoff: 04/19/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: d4d21297618d34aa301e4e1cc814afb15045d7f7
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -32,6 +32,9 @@ ms.lasthandoff: 04/19/2017
 - [DB の作成 - CLI](sql-database-get-started-cli.md)
 
 ## <a name="install-php-and-database-communications-software"></a>PHP とデータベースの通信ソフトウェアのインストール
+
+このセクションの手順では、PHP による開発には慣れているが、Azure SQL Database を初めて使用するユーザーを想定しています。 PHP による開発の経験がない場合は、「[Build an app using SQL Server (SQL Server を使用してアプリを構築する)](https://www.microsoft.com/en-us/sql-server/developer-get-started/)」に移動し、**PHP** を選択してから、使用しているオペレーティング システムを選択します。
+
 ### <a name="mac-os"></a>**Mac OS**
 ターミナルを開き、次のコマンドを入力して、**brew**、**Microsoft ODBC Driver for Mac**、および **Microsoft PHP Drivers for SQL Server** をインストールします。 
 
@@ -73,18 +76,18 @@ sudo echo "extension= sqlsrv.so" >> `php --ini | grep "Loaded Configuration" | s
 
 ## <a name="get-connection-information"></a>接続情報の取得
 
-Azure Portal で接続文字列を取得します。 その接続文字列は Azure SQL データベースに接続するために使用します。
+Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名、データベース名、ログイン情報が必要になります。
 
 1. [Azure ポータル](https://portal.azure.com/)にログインします。
 2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
-3. データベースの **[概要]** ページで、次の図に示すように、完全修飾サーバー名を確認します。 サーバー名をポイントすると、**[コピーするにはクリックします]** オプションが表示されます。  
+3. データベースの [**概要**] ページで、次の図に示すように、完全修飾サーバー名を確認します。 サーバー名をポイントすると、[**コピーするにはクリックします**] オプションが表示されます。  
 
    ![server-name](./media/sql-database-connect-query-dotnet/server-name.png) 
 
 4. Azure SQL Database サーバーのログイン情報を忘れた場合は、[SQL データベース サーバー] ページに移動して、サーバー管理者名を表示し、必要に応じて、パスワードをリセットします。     
     
 ## <a name="select-data"></a>データの選択
-次のコードを使用し、[sqlsrv_query()](https://docs.microsoft.com/sql/connect/php/sqlsrv-query) 関数と [SELECT](https://docs.microsoft.com/sql/t-sql/queries/select-transact-sql) Transact-SQL ステートメントを使用して Azure SQL Database のデータを照会します。 sqlsrv_query 関数は、SQL Database に対するクエリから結果セットを取得するために使います。 この関数は基本的に任意のクエリを受け取り、 [sqlsrv_fetch_array()](http://php.net/manual/en/function.sqlsrv-fetch-array.php) を使用して反復処理できる結果セットを返します。 サーバー、データベース、ユーザー名、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。 
+次のコードを使用して、カテゴリ別の上位 20 の製品を照会します。[sqlsrv_query()](https://docs.microsoft.com/sql/connect/php/sqlsrv-query) 関数と [SELECT](https://docs.microsoft.com/sql/t-sql/queries/select-transact-sql) Transact-SQL ステートメントを使用します。 sqlsrv_query 関数は、SQL Database に対するクエリから結果セットを取得するために使います。 この関数は基本的に任意のクエリを受け取り、 [sqlsrv_fetch_array()](http://php.net/manual/en/function.sqlsrv-fetch-array.php) を使用して反復処理できる結果セットを返します。 サーバー、データベース、ユーザー名、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。 
 
 ```PHP
 <?php
@@ -113,7 +116,7 @@ sqlsrv_free_stmt($getResults);
 
 
 ## <a name="insert-data"></a>データを挿入する
-次のコードを使用し、[sqlsrv_query()](https://docs.microsoft.com/sql/connect/php/sqlsrv-query) 関数と [INSERT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) Transact-SQL ステートメントを使用して、指定したデータベースの SalesLT.Product テーブルに新しい製品を挿入します。 サーバー、データベース、ユーザー名、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。 
+次のコードを使用して、SalesLT.Product テーブルに新しい製品を挿入します。このコードでは、[sqlsrv_query()](https://docs.microsoft.com/sql/connect/php/sqlsrv-query) 関数と [INSERT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) Transact-SQL ステートメントを使用します。 サーバー、データベース、ユーザー名、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。 
 
 ```PHP
 <?php
@@ -165,7 +168,7 @@ else{
 ```
 
 ## <a name="delete-data"></a>データの削除
-次のコードを使用し、[sqlsrv_query()](https://docs.microsoft.com/sql/connect/php/sqlsrv-query) 関数と [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL ステートメントを使用して、Azure SQL Database のデータを削除します。 サーバー、データベース、ユーザー名、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。
+次のコードを使用して、先ほど追加した新しい製品を削除します。[sqlsrv_query()](https://docs.microsoft.com/sql/connect/php/sqlsrv-query) 関数と [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL ステートメントを使用します。 サーバー、データベース、ユーザー名、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。
 
 ```PHP
 <?php

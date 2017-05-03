@@ -1,28 +1,26 @@
 ---
-title: "タスク失敗イベント - Azure | Microsoft Docs"
-ms.custom: 
-ms.date: 2017-02-01
-ms.prod: azure
-ms.reviewer: 
-ms.service: batch
-ms.suite: 
-ms.tgt_pltfrm: 
-ms.topic: reference
-ms.assetid: 8c16a533-1ac7-4b65-a84e-8eafb937b3d7
-caps.latest.revision: 3
+title: "Azure Batch タスク失敗イベント | Microsoft Docs"
+description: "Batch のタスク失敗イベントのリファレンスです。"
+services: batch
 author: tamram
-ms.author: tamram
 manager: timlt
+ms.assetid: 
+ms.service: batch
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: vm-windows
+ms.workload: big-compute
+ms.date: 04/20/2017
+ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 880fe1cfb0496311d7c386f25762c5d02a6c91f4
-ms.lasthandoff: 04/13/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 08feb4ec34bb1635f8ea744b54a10b677b94ab3e
+ms.lasthandoff: 04/22/2017
 
 ---
-# <a name="task-fail-event"></a>タスク失敗イベント
-タスク失敗イベント ログ本文
 
-## <a name="remarks"></a>解説
+# <a name="task-fail-event"></a>タスク失敗イベント
+
  このイベントは、タスクがエラーで完了したときに出力されます。 現在は、すべてが 0 以外の終了コードはエラーと見なされます。 このイベントは、タスク完了イベント*に加えて*出力され、タスクが失敗したときの検出に使用できます。
 
 
@@ -56,11 +54,11 @@ ms.lasthandoff: 04/13/2017
 
 |要素名|型|メモ|
 |------------------|----------|-----------|
-|jobId|文字列|タスクを含むジョブの ID です。|
+|jobId|String|タスクを含むジョブの ID です。|
 |id|String|タスクの ID です。|
-|taskType|文字列|タスクの型です。 ジョブ マネージャー タスクを示す 'JobManager' と、ジョブ マネージャー タスクでないことを示す 'User' のいずれかです。 このイベントは、ジョブ準備タスク、ジョブ リリース タスク、または開始タスクでは発生しません。|
-|systemTaskVersion|Int32|これは、タスクの内部再試行カウンターです。 Batch サービスは一時的問題に対応するタスクを内部で再試行できます。 これらの問題には、内部的なスケジュール エラーや、計算ノードを異常な状態から回復しようとする動作が含まれます。|
-|[nodeInfo](#nodeInfo)|複合型|タスクが実行された計算ノードに関する情報が含まれます。|
+|taskType|String|タスクの型です。 ジョブ マネージャー タスクを示す 'JobManager' と、ジョブ マネージャー タスクでないことを示す 'User' のいずれかです。 このイベントは、ジョブ準備タスク、ジョブ リリース タスク、または開始タスクでは発生しません。|
+|systemTaskVersion|Int32|これは、タスクの内部再試行カウンターです。 Batch サービスは一時的問題に対応するタスクを内部で再試行できます。 これらの問題には、内部的なスケジュール エラーや、コンピューティング ノードを異常な状態から回復しようとする動作が含まれます。|
+|[nodeInfo](#nodeInfo)|複合型|タスクが実行されたコンピューティング ノードに関する情報が含まれます。|
 |[multiInstanceSettings](#multiInstanceSettings)|複合型|このタスクが複数のコンピューティング ノードが必要な複数インスタンス タスクであることを指定します。  詳細は [multiInstanceSettings](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) をご覧ください。|
 |[constraints](#constraints)|複合型|このタスクに適用される実行の制約。|
 |[executionInfo](#executionInfo)|複合型|タスクの実行に関する情報が含まれます。|
@@ -70,7 +68,7 @@ ms.lasthandoff: 04/13/2017
 |要素名|型|メモ|
 |------------------|----------|-----------|
 |poolId|String|タスクが実行されたプールの ID。|
-|nodeId|String|タスクが実行されたノードの ID。|
+|nodeId|文字列|タスクが実行されたノードの ID。|
 
 ###  <a name="multiInstanceSettings"></a> multiInstanceSettings
 
@@ -82,7 +80,7 @@ ms.lasthandoff: 04/13/2017
 
 |要素名|型|メモ|
 |------------------|----------|-----------|
-|maxTaskRetryCount|Int32|タスクを再試行できる最大回数。 Batch サービスは、終了コードが 0 以外の場合にタスクを再試行します。<br /><br /> この値によって再試行の回数が限定されますのでご注意ください。 Batch サービスはタスクを 1 度試行してから、上限に達するまで再試行できます。 たとえば、最大再試行回数が 3 の場合、Batch はタスクを最大 4 回試行します (初回試行 1 回と再試行 3 回)。<br /><br /> 最大再試行回数が 0 の場合、Batch サービスはタスクを再試行しません。<br /><br /> 最大再試行回数が -1 の場合、Batch サービスはタスクを無制限に再試行します。<br /><br /> 既定値は 0 (再試行なし) です。|
+|maxTaskRetryCount|Int32|タスクを再試行できる最大回数。 Batch サービスは、終了コードが 0 以外の場合にタスクを再試行します。<br /><br /> この値によって再試行の回数が限定されますのでご注意ください。 Batch サービスはタスクを 1 回試行してから、上限に達するまで再試行できます。 たとえば、最大再試行回数が 3 の場合、Batch はタスクを最大 4 回試行します (初回試行 1 回と再試行 3 回)。<br /><br /> 最大再試行回数が 0 の場合、Batch サービスはタスクを再試行しません。<br /><br /> 最大再試行回数が -1 の場合、Batch サービスはタスクを無制限に再試行します。<br /><br /> 既定値は 0 (再試行なし) です。|
 
 
 ###  <a name="executionInfo"></a> executionInfo

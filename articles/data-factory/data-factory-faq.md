@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 2/24/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 14b7900a8b4fbf86e8a814def6fa8c7915832376
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: e0c999b2bf1dd38d8a0c99c6cdd4976cc896dd99
+ms.openlocfilehash: c212df3646dce24eb11542884c6ee5084325cb7d
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -95,7 +95,12 @@ MVP (Most Valued Professional) の一人である Reza Rad の「[Azure Data Fac
 パイプラインでは、関連する複数のアクティビティをまとめることが想定されています。 複数のアクティビティを接続するデータセットがパイプラインの外部の他のアクティビティによって使用されない場合は、1 つのパイプラインにそれらのアクティビティを保持できます。 これにより、パイプラインのアクティブな期間を揃えるためにこれを連結する必要はありません。 また、パイプライン内部のテーブルのデータの整合性が、パイプラインを更新するときに、よりうまく保持されるようになります。 パイプラインを更新するとき、基本的にパイプライン内のすべてのアクティビティが停止、削除された後、もう一度作成されます。 作成操作の観点では、パイプラインの 1 つの JSON ファイルで関連するアクティビティ内のデータのフローを簡単に見ることができるようになる可能性があります。
 
 ### <a name="what-are-the-supported-data-stores"></a>どのようなデータ ストアがサポートされますか。
+Data Factory のコピー アクティビティは、ソース データ ストアからシンク データ ストアにデータをコピーします。 Data Factory は次のデータ ストアをサポートしています。 また、任意のソースのデータを任意のシンクに書き込むことができます。 データ ストアをクリックすると、そのストアとの間でデータをコピーする方法がわかります。
+
 [!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
+
+> [!NOTE]
+> * が付いたデータ ストアは、オンプレミスと Azure IaaS のどちらでもサポートされます。ただし、オンプレミス/Azure IaaS のコンピューターに [Data Management Gateway](data-factory-data-management-gateway.md) をインストールする必要があります。
 
 ### <a name="what-are-the-supported-file-formats"></a>どのようなファイル形式がサポートされますか。
 [!INCLUDE [data-factory-file-format](../../includes/data-factory-file-format.md)]

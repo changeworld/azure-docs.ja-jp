@@ -1,6 +1,6 @@
 ---
 title: "PowerShell での Azure アプリ ID の作成 | Microsoft Docs"
-description: "Azure PowerShell を使用して、Active Directory アプリケーションやサービス プリンシパルを作成し、ロールベースのアクセス制御によって、リソースへのアクセス権を付与する方法について説明します。 パスワードまたは証明書を使ってアプリケーションを認証する方法を示します。"
+description: "Azure PowerShell を使用して、Azure Active Directory アプリケーションやサービス プリンシパルを作成し、ロールベースのアクセス制御によって、リソースへのアクセス権を付与する方法について説明します。 パスワードまたは証明書を使ってアプリケーションを認証する方法を示します。"
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 01/17/2017
+ms.date: 04/03/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
-ms.openlocfilehash: 31495f402b810c524bd7b906498774302500b732
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 775734ea55d1136e64afc713356b0f0bfc81ea9f
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -29,287 +29,319 @@ ms.lasthandoff: 01/24/2017
 > 
 > 
 
-リソースへのアクセスを必要とするアプリケーションやスクリプトがある場合は、そのアプリの ID を設定し、それをお客様自身の資格情報で認証できます。 この方法は、お客様自身の資格情報でアプリを実行するよりも推奨されます。
+リソースへのアクセスを必要とするアプリやスクリプトがある場合は、アプリの ID を設定し、アプリを独自の資格情報で認証できます。 この ID は、サービス プリンシパルと呼ばれます。 このアプローチを使用すると、以下のことを実行できます。
 
-* お客様自身のアクセス許可とは異なるアクセス許可を、アプリ ID に割り当てることができます。 通常、こうしたアクセス許可は、アプリが行う必要があることに制限されます。
-* お客様の責任が変わっても、アプリの資格情報を変更する必要はありません。 
-* 無人インストール用スクリプトを実行するときに、証明書を使用して認証を自動化できます。
+* ユーザー自身のアクセス許可とは異なるアクセス許可を、アプリケーション ID に割り当てることができます。 通常、こうしたアクセス許可は、アプリが行う必要があることに制限されます。
+* 無人スクリプトを実行するときに、証明書を使用して認証できます。
 
 このトピックでは、アプリケーションをその独自の資格情報と ID で実行させるために必要な設定をすべて [Azure PowerShell](/powershell/azureps-cmdlets-docs) で行う方法を紹介しています。
 
-PowerShell では、AD アプリケーションの認証に次の&2; つの選択肢を利用できます。
-
-* パスワード
-* 証明書
-
-このトピックでは、PowerShell でのこれらの選択肢の使用方法について説明します。 プログラミング フレームワーク (Python、Ruby、Node.js など) から Azure にログインする場合は、パスワード認証が最適な選択肢と考えられます。 パスワードと証明書のどちらを使用するか決める前に、「 [サンプル アプリケーション](#sample-applications) 」セクションで、各種フレームワークにおける認証の例を参照してください。
-
-## <a name="active-directory-concepts"></a>Active Directory の概念
-この記事では、Active Directory (AD) アプリケーションとサービス プリンシパルという&2; つのオブジェクトを作成します。 AD アプリケーションは、アプリケーションをグローバルに表現したものです。 資格情報としてアプリケーション ID と、パスワードまたは証明書のいずれかを保持します。 サービス プリンシパルは、Active Directory のアプリケーションをローカルに表現したものです。 こちらは、ロールの割り当てを保持します。 このトピックでは、シングル テナント アプリケーション (単一組織内でのみ実行するように意図されたアプリケーション) に焦点を絞って説明します。 一般に、組織内で実行される基幹業務アプリケーションには、シングル テナント アプリケーションが使用されます。 シングルテナント アプリケーションでは、1 つの AD アプリケーションと&1; つのサービス プリンシパルを設定します。
-
-両方のオブジェクトが必要になるわけを疑問に思う方もいるでしょう。 このような方法の利点は、マルチテナント アプリケーションについて考えるとはっきりします。 通常、マルチテナント アプリケーションは、さまざまなサブスクリプションでアプリケーションが実行されるサービスとしてのソフトウェア (SaaS) アプリケーションで使用します。 マルチテナント アプリケーションでは、1 つの AD アプリケーションと複数のサービス プリンシパル (1 つは Active Directory でアプリケーションにアクセスを付与するためのもの) を設定できます。 マルチテナント アプリケーションのセットアップについては、「 [Azure Resource Manager API を使用した承認の開発者ガイド](resource-manager-api-authentication.md)」を参照してください。
-
 ## <a name="required-permissions"></a>必要なアクセス許可
-このトピックを完了するには、Azure Active Directory と Azure サブスクリプションの両方で適切なアクセス許可を持っている必要があります。 具体的には、Active Directory でアプリケーションを作成し、ロールにサービス プリンシパルを割り当てることができる必要があります。 
+このトピックを完了するには、Azure Active Directory と Azure サブスクリプションの両方で適切なアクセス許可を持っている必要があります。 具体的には、Azure Active Directory でアプリケーションを作成し、ロールにサービス プリンシパルを割り当てることができる必要があります。 
 
 自分のアカウントに適切なアクセス許可があるかどうかを確認する最も簡単な方法は、ポータルを使用することです。 [必要なアクセス許可のチェック](resource-group-create-service-principal-portal.md#required-permissions)に関するページを参照してください。
 
 ここで、[パスワード](#create-service-principal-with-password)認証または[証明書](#create-service-principal-with-certificate)認証に関するセクションに進みます。
 
 ## <a name="create-service-principal-with-password"></a>パスワードを使用したサービス プリンシパルの作成
-このセクションでは次の手順を実行します。
-
-* パスワードを指定して AD アプリケーションを作成する
-* サービス プリンシパルを作成する
-* サービス プリンシパルに閲覧者ロールを割り当てる
-
-これらの手順をすぐに実行するには、次のコマンドレットを参照してください。
+次のスクリプトは、アプリケーションの ID を作成し、指定されたスコープの共同作成者ロールにそれを割り当てられます。
 
 ```powershell
-$app = New-AzureRmADApplication -DisplayName "{app-name}" -HomePage "https://{your-domain}/{app-name}" -IdentifierUris "https://{your-domain}/{app-name}" -Password "{your-password}"
-New-AzureRmADServicePrincipal -ApplicationId $app.ApplicationId
-Start-Sleep 15
-New-AzureRmRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $app.ApplicationId
+Param (
+
+ # Use to set scope to resource group. If no value is provided, scope is set to subscription.
+ [Parameter(Mandatory=$false)]
+ [String] $ResourceGroup,
+
+ # Use to set subscription. If no value is provided, default subscription is used. 
+ [Parameter(Mandatory=$false)]
+ [String] $SubscriptionId,
+
+ [Parameter(Mandatory=$true)]
+ [String] $ApplicationDisplayName,
+
+ [Parameter(Mandatory=$true)]
+ [String] $Password
+ )
+
+ Login-AzureRmAccount
+ Import-Module AzureRM.Resources
+
+ if ($SubscriptionId -eq "") 
+ {
+    $SubscriptionId = (Get-AzureRmContext).Subscription.SubscriptionId
+ }
+ else
+ {
+    Set-AzureRmContext -SubscriptionId $SubscriptionId
+ }
+
+ if ($ResourceGroup -eq "")
+ {
+    $Scope = "/subscriptions/" + $SubscriptionId
+ }
+ else
+ {
+    $Scope = (Get-AzureRmResourceGroup -Name $ResourceGroup -ErrorAction Stop).ResourceId
+ }
+
+ # Create Azure Active Directory application with password
+ $Application = New-AzureRmADApplication -DisplayName $ApplicationDisplayName -HomePage ("http://" + $ApplicationDisplayName) -IdentifierUris ("http://" + $ApplicationDisplayName) -Password $Password
+
+ # Create Service Principal for the AD app
+ $ServicePrincipal = New-AzureRMADServicePrincipal -ApplicationId $Application.ApplicationId 
+ Get-AzureRmADServicePrincipal -ObjectId $ServicePrincipal.Id 
+
+ $NewRole = $null
+ $Retries = 0;
+ While ($NewRole -eq $null -and $Retries -le 6)
+ {
+    # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
+    Sleep 15
+    New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $Application.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
+    $NewRole = Get-AzureRMRoleAssignment -ServicePrincipalName $Application.ApplicationId -ErrorAction SilentlyContinue
+    $Retries++;
+ }
 ```
 
-スクリプトは、新しいサービス プリンシパルが Active Directory 全体に反映されるまでの時間を設けるために、15 秒間スリープします。 スクリプトの待機時間が不足している場合、"PrincipalNotFound: プリンシパル {id} がディレクトリにありません" というエラーが表示されます。 このエラーが表示された場合は、ロールに割り当てるコマンドレットを再実行できます。
+このスクリプトには、次の注意事項があります。
 
-それでは、各プロセスについて理解できるように、これらの手順についてより細かく見ていきましょう。
+* 既定のサブスクリプションに ID アクセスを許可する場合は、ResourceGroup パラメーターも SubscriptionId パラメーターも指定する必要はありません。
+* ResourceGroup パラメーターはロールの割り当てスコープを特定のリソース グループに制限する場合にのみ指定します。
+* シングル テナント アプリケーションでは、ホーム ページと ID の URI は検証されません。
+*  この例では、共同作成者ロールにサービス プリンシパルを追加します。 その他のロールについては、「[RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」を参照してください。
+* スクリプトは、新しいサービス プリンシパルが Azure Active Directory 全体に反映されるまでの時間を設けるために、15 秒間スリープします。 スクリプトの待機時間が不足している場合、"PrincipalNotFound: プリンシパル {id} がディレクトリにありません" というエラーが表示されます。
+* サービス プリンシパルのアクセスを複数のサブスクリプションまたはリソース グループに許可する必要がある場合は、異なるスコープを指定して `New-AzureRMRoleAssignment` コマンドレットを再び実行します。
 
-1. ご使用のアカウントにサインインします。
-   
-   ```powershell
-   Login-AzureRmAccount
-   ```
-
-2. 表示名、アプリケーションを説明する URI、アプリケーションを識別する URI、およびアプリケーション ID のパスワードを指定して、新しい Active Directory アプリケーションを作成します。
-
-   ```powershell   
-   $app = New-AzureRmADApplication -DisplayName "exampleapp" -HomePage "https://www.contoso.org/exampleapp" -IdentifierUris "https://www.contoso.org/exampleapp" -Password "{Your_Password}"
-   ```
-
-     シングルテナント アプリケーションでは、URI の検証は行われません。
-   
-     Active Directory のアカウントに[必要なアクセス許可](#required-permissions)が設定されていない場合、"認証が承認されなかったこと" または "コンテキストにサブスクリプションが見つからなかったこと" を示すエラー メッセージが表示されます。
-3. 新しいアプリケーション オブジェクトを調べます。 
-   
-   ```powershell
-   $app
-   ```
-   
-     特に、サービス プリンシパルの作成、ロールの割り当て、アクセス トークンの取得に必要な `ApplicationId` プロパティがあることを確認します。
-   
-   ```powershell
-   DisplayName             : exampleapp
-   ObjectId                : c95e67a3-403c-40ac-9377-115fa48f8f39
-   IdentifierUris          : {https://www.contoso.org/example}
-   HomePage                : https://www.contoso.org
-   Type                    : Application
-   ApplicationId           : 8bc80782-a916-47c8-a47e-4d76ed755275
-   AvailableToOtherTenants : False
-   AppPermissions          : 
-   ReplyUrls               : {}
-   ```
-4. Active Directory アプリケーションのアプリケーション ID を渡して、アプリケーションのサービス プリンシパルを作成します。
-   
-   ```powershell
-   New-AzureRmADServicePrincipal -ApplicationId $app.ApplicationId
-   ```
-
-5. サブスクリプションに対する権限をサービス プリンシパルに付与します。 この例では、サブスクリプション内のすべてのリソースを読み取る権限である閲覧者ロールを、サービス プリンシパルに付与します。 その他のロールについては、「[RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」を参照してください。 `ServicePrincipalName` パラメーターには、アプリケーションの作成時に使用した `ApplicationId` を指定します。 このコマンドレットを実行する前に、新しいサービス プリンシパルが Active Directory 全体に反映されるまでの時間を設ける必要が必要があります。 これらのコマンドレットを手動で実行した場合、通常はコマンドレットとコマンドレットの間に十分な時間が経過しています。 スクリプトでは、コマンドレットとコマンドレットの間にスリープのための手順 (`Start-Sleep 15` など) を追加してください。 "PrincipalNotFound: プリンシパル {id} がディレクトリにありません" というエラーが表示された場合は、コマンドレットを再実行します。
-
-   ```powershell   
-   New-AzureRmRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $app.ApplicationId
-   ```
-
-    ロールを割り当てることのできるアクセス許可がアカウントに設定されていない場合は、エラー メッセージが表示されます。 このメッセージは、アカウントで、スコープ "/subscriptions/{guid} に対するアクション Microsoft.Authorization/roleAssignments/write の実行が承認されていない" ことを示しています。 
-
-これで完了です。 AD アプリケーションとサービス プリンシパルが設定されました。 次のセクションでは、PowerShell から資格情報を使ってログインする方法を紹介します。 コード アプリケーションの資格情報を使用する場合は、「 [サンプル アプリケーション](#sample-applications)」に進んでください。 
 
 ### <a name="provide-credentials-through-powershell"></a>PowerShell を使用して資格情報を渡す
-次に、操作を実行するアプリケーションとしてログインする必要があります。
+次に、操作を実行するアプリケーションとしてログインする必要があります。 ユーザー名には、アプリケーションのために作成した `ApplicationId` を使用します。 パスワードには、アカウントの作成時に指定したものを使用します。 
 
-1. `Get-Credential` コマンドを実行して、ユーザーの資格情報を含む `PSCredential` オブジェクトを作成します。 このコマンドを実行するには `ApplicationId` が必要ですので、この ID を貼り付けできるようにしておいてください。
-
-   ```powershell   
-   $creds = Get-Credential
-   ```
-
-2. 資格情報を入力するためのプロンプトが表示されます。 ユーザー名には、アプリケーションの作成時に使用した `ApplicationId` を使用します。 パスワードには、アカウントの作成時に指定したものを使用します。
-   
-     ![資格情報を入力](./media/resource-group-authenticate-service-principal/arm-get-credential.png)
-3. サービス プリンシパルとしてサインインするときは常に、AD アプリのディレクトリのテナント ID を指定する必要があります。 テナントは、Active Directory のインスタンスです。 所有するサブスクリプションが&1; つのみである場合は、次のコマンドを使用できます。
-
-   ```powershell   
-   $tenant = (Get-AzureRmSubscription).TenantId
-   ```
-   
-     サブスクリプションが複数ある場合は、Active Directory が関連付けられているサブスクリプションを指定します。 詳細については、「 [Azure サブスクリプションを Azure Active Directory に関連付ける方法](../active-directory/active-directory-how-subscriptions-associated-directory.md)」を参照してください。
-
-   ```powershell
-   $tenant = (Get-AzureRmSubscription -SubscriptionName "Contoso Default").TenantId
-   ```
-
-4. このアカウントがサービス プリンシパルであることを指定し、資格情報オブジェクトを提供することにより、サービス プリンシパルとしてログインします。 
-   
-   ```powershell
-   Login-AzureRmAccount -Credential $creds -ServicePrincipal -TenantId $tenant
-   ```
-   
-     これで、作成した Active Directory アプリケーションのサービス プリンシパルとして認証されました。
-
-### <a name="save-access-token-to-simplify-log-in"></a>アクセス トークンを保存してログインを簡略化する
-ログインの必要があるたびにサービス プリンシパルを指定しなくても済むように、アクセス トークンを保存することができます。
-
-1. 後のセッションで現在のアクセス トークンを使用するために、プロファイルを保存します。
-   
-   ```powershell
-   Save-AzureRmProfile -Path c:\Users\exampleuser\profile\exampleSP.json
-   ```
-   
-     プロファイルを開いて中身を確かめます。 アクセス トークンが含まれていることを確認します。 
-2. 手動でもう一度ログインするのではなく、プロファイルをロードするだけで済みます。
-   
-   ```powershell
-   Select-AzureRmProfile -Path c:\Users\exampleuser\profile\exampleSP.json
-   ```
-
-  > [!NOTE]
-  > アクセス トークンには有効期限があるため、保存したプロファイルを使用できるのはトークンが有効である間のみです。
-  >  
-
-また、PowerShell から REST 操作を呼び出して、ログインすることもできます。 認証の応答から、その他の操作で使用するためのアクセス トークンを取得できます。 REST 操作を呼び出してアクセス トークンを取得する例については、「[Generating an Access Token (アクセス トークンの生成)](resource-manager-rest-api.md#generating-an-access-token)」を参照してください。
-
-## <a name="create-service-principal-with-certificate"></a>証明書を使用したサービス プリンシパルの作成
-このセクションでは次の手順を実行します。
-
-* 自己署名証明書を作成する
-* 証明書を指定して AD アプリケーションを作成する
-* サービス プリンシパルを作成する
-* サービス プリンシパルに閲覧者ロールを割り当てる
-
-これらの手順をすぐに Windows 10 または Windows Server 2016 Technical Preview 上の Azure PowerShell 2.0 で実行するには、次のコマンドレットを参照してください。
-
-```powershell
-$cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=exampleapp" -KeySpec KeyExchange
-$keyValue = [System.Convert]::ToBase64String($cert.GetRawCertData())
-$app = New-AzureRmADApplication -DisplayName "exampleapp" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.contoso.org/example" -CertValue $keyValue -EndDate $cert.NotAfter -StartDate $cert.NotBefore
-New-AzureRmADServicePrincipal -ApplicationId $app.ApplicationId
-Start-Sleep 15
-New-AzureRmRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $app.ApplicationId
+```powershell   
+$creds = Get-Credential
+Login-AzureRmAccount -Credential $creds -ServicePrincipal -TenantId {tenant-id}
 ```
 
-スクリプトは、新しいサービス プリンシパルが Active Directory 全体に反映されるまでの時間を設けるために、15 秒間スリープします。 スクリプトの待機時間が不足している場合、"PrincipalNotFound: プリンシパル {id} がディレクトリにありません" というエラーが表示されます。 このエラーが表示された場合は、ロールに割り当てるコマンドレットを再実行できます。
+テナント ID は機密情報ではないため、スクリプトに直接埋め込むことができます。 テナント ID を取得する必要がある場合は、次のコマンドを使用します。
 
-それでは、各プロセスについて理解できるように、これらの手順についてより細かく見ていきましょう。 以前のバージョンの Azure PowerShell またはオペレーティング システムを使用してタスクを完了する方法についても説明します。
+```powershell
+(Get-AzureRmSubscription -SubscriptionName "Contoso Default").TenantId
+```
 
-### <a name="create-the-self-signed-certificate"></a>自己署名証明書を作成する
-Windows 10 および Windows Server 2016 Technical Preview に搭載されているバージョンの PowerShell では、`New-SelfSignedCertificate` コマンドレットが自己署名証明書を生成できるように更新されています。 New-SelfSignedCertificate コマンドレットは古いオペレーティング システムにも備わっていますが、このトピックに必要なパラメーターは使用できません。 この場合は、証明書を生成するモジュールをインポートする必要があります。 このトピックでは、お使いのオペレーティング システムに応じて証明書を生成する方法を紹介します。 
+## <a name="create-service-principal-with-self-signed-certificate"></a>自己署名証明書を使用したサービス プリンシパルの作成
+Windows 10 または Windows Server 2016 Technical Preview で Azure PowerShell 2.0 を使用して自己章署名証明書とサービス プリンシパルを生成するには、次のスクリプトを使用します。
 
-* **Windows 10 または Windows Server 2016 Technical Preview**をお使いの場合は、次のコマンドを実行して自己署名証明書を作成します。 
-   
-  ```powershell
-  $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=exampleapp" -KeySpec KeyExchange
-  ```
-* **Windows 10 または Windows Server 2016 Technical Preview をお使いでない**場合は、Microsoft スクリプト センターから [Self-signed certificate generator](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/) スクリプトをダウンロードします。 ダウンロードしたファイルを展開し、必要なコマンドレットをインポートします。
+```powershell
+Param (
 
-  ```powershell  
-  # Only run if you could not use New-SelfSignedCertificate
-  Import-Module -Name c:\ExtractedModule\New-SelfSignedCertificateEx.ps1
-  ```
+ # Use to set scope to resource group. If no value is provided, scope is set to subscription.
+ [Parameter(Mandatory=$false)]
+ [String] $ResourceGroup,
+
+ # Use to set subscription. If no value is provided, default subscription is used. 
+ [Parameter(Mandatory=$false)]
+ [String] $SubscriptionId,
+
+ [Parameter(Mandatory=$true)]
+ [String] $ApplicationDisplayName
+ )
+
+ Login-AzureRmAccount
+ Import-Module AzureRM.Resources
+
+ if ($SubscriptionId -eq "") 
+ {
+    $SubscriptionId = (Get-AzureRmContext).Subscription.SubscriptionId
+ }
+ else
+ {
+    Set-AzureRmContext -SubscriptionId $SubscriptionId
+ }
+
+ if ($ResourceGroup -eq "")
+ {
+    $Scope = "/subscriptions/" + $SubscriptionId
+ }
+ else
+ {
+    $Scope = (Get-AzureRmResourceGroup -Name $ResourceGroup -ErrorAction Stop).ResourceId
+ }
+
+ $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=exampleappScriptCert" -KeySpec KeyExchange
+ $keyValue = [System.Convert]::ToBase64String($cert.GetRawCertData())
+
+ # Use Key credentials
+ $Application = New-AzureRmADApplication -DisplayName $ApplicationDisplayName -HomePage ("http://" + $ApplicationDisplayName) -IdentifierUris ("http://" + $ApplicationDisplayName) -CertValue $keyValue -EndDate $cert.NotAfter -StartDate $cert.NotBefore
+
+ $ServicePrincipal = New-AzureRMADServicePrincipal -ApplicationId $Application.ApplicationId 
+ Get-AzureRmADServicePrincipal -ObjectId $ServicePrincipal.Id 
+
+ $NewRole = $null
+ $Retries = 0;
+ While ($NewRole -eq $null -and $Retries -le 6)
+ {
+    # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
+    Sleep 15
+    New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $Application.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
+    $NewRole = Get-AzureRMRoleAssignment -ServicePrincipalName $Application.ApplicationId -ErrorAction SilentlyContinue
+    $Retries++;
+ }
+```
+
+このスクリプトには、次の注意事項があります。
+
+* 既定のサブスクリプションに ID アクセスを許可する場合は、ResourceGroup パラメーターも SubscriptionId パラメーターも指定する必要はありません。
+* ResourceGroup パラメーターはロールの割り当てスコープを特定のリソース グループに制限する場合にのみ指定します。
+* シングル テナント アプリケーションでは、ホーム ページと ID の URI は検証されません。
+*  この例では、共同作成者ロールにサービス プリンシパルを追加します。 その他のロールについては、「[RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」を参照してください。
+* スクリプトは、新しいサービス プリンシパルが Azure Active Directory 全体に反映されるまでの時間を設けるために、15 秒間スリープします。 スクリプトの待機時間が不足している場合、"PrincipalNotFound: プリンシパル {id} がディレクトリにありません" というエラーが表示されます。
+* サービス プリンシパルのアクセスを複数のサブスクリプションまたはリソース グループに許可する必要がある場合は、異なるスコープを指定して `New-AzureRMRoleAssignment` コマンドレットを再び実行します。
+
+**Windows 10 または Windows Server 2016 Technical Preview をお使いでない**場合は、Microsoft スクリプト センターから [Self-signed certificate generator](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/) スクリプトをダウンロードします。 ダウンロードしたファイルを展開し、必要なコマンドレットをインポートします。
+
+```powershell  
+# Only run if you could not use New-SelfSignedCertificate
+Import-Module -Name c:\ExtractedModule\New-SelfSignedCertificateEx.ps1
+```
   
-     その後、証明書を生成します。
+このスクリプトでは、証明書を生成するために次の 2 行を置き換えます。
   
-  ```powershell
-  New-SelfSignedCertificateEx  -StoreLocation CurrentUser -StoreName My -Subject "CN=exampleapp" -KeySpec "Exchange" -FriendlyName "exampleapp"
-  $cert = Get-ChildItem -path Cert:\CurrentUser\my | where {$PSitem.Subject -eq 'CN=exampleapp' }
-  ```
-
-これで証明書を用意し、AD アプリケーションを作成できるようになりました。
-
-### <a name="create-the-active-directory-app-and-service-principal"></a>Active Directory アプリケーションとサービス プリンシパルを作成する
-1. 証明書からキーの値を取得します。
-   
-   ```powershell
-   $keyValue = [System.Convert]::ToBase64String($cert.GetRawCertData())
-   ```
-2. Azure アカウントにサインインします。
-   
-   ```powershell
-   Login-AzureRmAccount
-   ```
-3. 表示名、アプリケーションを説明する URI、アプリケーションを識別する URI、およびアプリケーション ID のパスワードを指定して、新しい Active Directory アプリケーションを作成します。
-   
-     Azure PowerShell 2.0 (2016 年 8 月以降) をお使いの場合は、次のコマンドレットを実行します。
-
-   ```powershell   
-   $app = New-AzureRmADApplication -DisplayName "exampleapp" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.contoso.org/example" -CertValue $keyValue -EndDate $cert.NotAfter -StartDate $cert.NotBefore      
-   ```
-   
-    Azure PowerShell 1.0 をお使いの場合は、次のコマンドレットを実行します。
-
-   ```powershell
-   $app = New-AzureRmADApplication -DisplayName "exampleapp" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.contoso.org/example" -KeyValue $keyValue -KeyType AsymmetricX509Cert  -EndDate $cert.NotAfter -StartDate $cert.NotBefore
-   ```
-   
-    シングルテナント アプリケーションでは、URI の検証は行われません。
-   
-    Active Directory のアカウントに[必要なアクセス許可](#required-permissions)が設定されていない場合、"認証が承認されなかったこと" または "コンテキストにサブスクリプションが見つからなかったこと" を示すエラー メッセージが表示されます。
-   
-    新しいアプリケーション オブジェクトを調べます。 
-   
-   ```powershell
-   $app
-   ```
-   
-    サービス プリンシパルの作成、ロールの割り当て、アクセス トークンの取得に必要な **ApplicationId** プロパティがあることを確認します。
-
-   ```powershell
-   DisplayName             : exampleapp
-   ObjectId                : c95e67a3-403c-40ac-9377-115fa48f8f39
-   IdentifierUris          : {https://www.contoso.org/example}
-   HomePage                : https://www.contoso.org
-   Type                    : Application
-   ApplicationId           : 8bc80782-a916-47c8-a47e-4d76ed755275
-   AvailableToOtherTenants : False
-   AppPermissions          : 
-   ReplyUrls               : {}
-   ```
-4. Active Directory アプリケーションのアプリケーション ID を渡して、アプリケーションのサービス プリンシパルを作成します。
-   
-   ```powershell
-   New-AzureRmADServicePrincipal -ApplicationId $app.ApplicationId
-   ```
-5. サブスクリプションに対する権限をサービス プリンシパルに付与します。 この例では、サブスクリプション内のすべてのリソースを読み取る権限である閲覧者ロールを、サービス プリンシパルに付与します。 その他のロールについては、「[RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」を参照してください。 `ServicePrincipalName` パラメーターには、アプリケーションの作成時に使用した `ApplicationId` を指定します。 このコマンドレットを実行する前に、新しいサービス プリンシパルが Active Directory 全体に反映されるまでの時間を設ける必要が必要があります。 これらのコマンドレットを手動で実行した場合、通常はコマンドレットとコマンドレットの間に十分な時間が経過しています。 スクリプトでは、コマンドレットとコマンドレットの間にスリープのための手順 (`Start-Sleep 15` など) を追加してください。 "PrincipalNotFound: プリンシパル {id} がディレクトリにありません" というエラーが表示された場合は、コマンドレットを再実行します。
-   
-   ```powershell
-   New-AzureRmRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $app.ApplicationId
-   ```
-   
-    ロールを割り当てることのできるアクセス許可がアカウントに設定されていない場合は、エラー メッセージが表示されます。 このメッセージは、アカウントで、スコープ "/subscriptions/{guid} に対するアクション Microsoft.Authorization/roleAssignments/write の実行が承認されていない" ことを示しています。
-
-これで完了です。 AD アプリケーションとサービス プリンシパルが設定されました。 次のセクションでは、PowerShell から証明書を使ってログインする方法を紹介します。
+```powershell
+New-SelfSignedCertificateEx  -StoreLocation CurrentUser -StoreName My -Subject "CN=exampleapp" -KeySpec "Exchange" -FriendlyName "exampleapp"
+$cert = Get-ChildItem -path Cert:\CurrentUser\my | where {$PSitem.Subject -eq 'CN=exampleapp' }
+```
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>自動化された PowerShell スクリプトから証明書を渡す
-サービス プリンシパルとしてサインインするときは常に、AD アプリのディレクトリのテナント ID を指定する必要があります。 テナントは、Active Directory のインスタンスです。 所有するサブスクリプションが&1; つのみである場合は、次のコマンドを使用できます。
+サービス プリンシパルとしてサインインするときは常に、AD アプリのディレクトリのテナント ID を指定する必要があります。 テナントは、Azure Active Directory のインスタンスです。 所有するサブスクリプションが 1 つのみである場合は、次のコマンドを使用できます。
 
 ```powershell
-$tenant = (Get-AzureRmSubscription).TenantId
+Param (
+ 
+ [Parameter(Mandatory=$true)]
+ [String] $CertSubject,
+ 
+ [Parameter(Mandatory=$true)]
+ [String] $ApplicationId,
+
+ [Parameter(Mandatory=$true)]
+ [String] $TenantId
+ )
+
+ $Thumbprint = (Get-ChildItem cert:\CurrentUser\My\ | Where-Object {$_.Subject -match $CertSubject }).Thumbprint
+ Login-AzureRmAccount -ServicePrincipal -CertificateThumbprint $Thumbprint -ApplicationId $ApplicationId -TenantId $TenantId
 ```
 
-サブスクリプションが複数ある場合は、Active Directory が関連付けられているサブスクリプションを指定します。 詳細については、[Azure AD ディレクトリの管理](../active-directory/active-directory-administer.md)に関するページを参照してください。
+アプリケーション ID とテナント ID は機密情報ではないため、スクリプトに直接埋め込むことができます。 テナント ID を取得する必要がある場合は、次のコマンドを使用します。
 
 ```powershell
-$tenant = (Get-AzureRmSubscription -SubscriptionName "Contoso Default").TenantId
+(Get-AzureRmSubscription -SubscriptionName "Contoso Default").TenantId
 ```
 
-スクリプトで認証するためには、アカウントがサービス プリンシパルであることを指定し、証明書の拇印、アプリケーション ID、およびテナント ID を提供します。 これらの値を環境変数に格納しておいて実行時に取得するか、スクリプトに記述することで、スクリプトを自動化することができます。
+アプリケーション ID を取得する必要がある場合は、次のコマンドを使用します。
 
 ```powershell
-Login-AzureRmAccount -ServicePrincipal -CertificateThumbprint $cert.Thumbprint -ApplicationId $app.ApplicationId -TenantId $tenant
+(Get-AzureRmADApplication -DisplayNameStartWith {display-name}).ApplicationId
 ```
 
-これで、作成した Active Directory アプリケーションのサービス プリンシパルとして認証されました。
+## <a name="create-service-principal-with-certificate-from-certificate-authority"></a>証明機関の証明書を使用したサービス プリンシパルの作成
+証明機関から発行された証明書を使用してサービス プリンシパルを作成するには、次のスクリプトを使用します。
+
+```powershell
+Param (
+ [Parameter(Mandatory=$true)]
+ [String] $ApplicationDisplayName,
+
+ [Parameter(Mandatory=$true)]
+ [String] $SubscriptionId,
+
+ [Parameter(Mandatory=$true)]
+ [String] $CertPath,
+
+ [Parameter(Mandatory=$true)]
+ [String] $CertPlainPassword
+ )
+
+ Login-AzureRmAccount
+ Import-Module AzureRM.Resources
+ Set-AzureRmContext -SubscriptionId $SubscriptionId
+
+ $KeyId = (New-Guid).Guid
+ $CertPassword = ConvertTo-SecureString $CertPlainPassword -AsPlainText -Force
+
+ $PFXCert = New-Object -TypeName System.Security.Cryptography.X509Certificates.X509Certificate2 -ArgumentList @($CertPath, $CertPassword)
+ $KeyValue = [System.Convert]::ToBase64String($PFXCert.GetRawCertData())
+
+ $KeyCredential = New-Object  Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADKeyCredential
+ $KeyCredential.StartDate = $PFXCert.NotBefore
+ $KeyCredential.EndDate= $PFXCert.NotAfter
+ $KeyCredential.KeyId = $KeyId
+ $KeyCredential.CertValue = $KeyValue
+
+ # Use Key credentials
+ $Application = New-AzureRmADApplication -DisplayName $ApplicationDisplayName -HomePage ("http://" + $ApplicationDisplayName) -IdentifierUris ("http://" + $KeyId) -KeyCredentials $keyCredential
+
+ $ServicePrincipal = New-AzureRMADServicePrincipal -ApplicationId $Application.ApplicationId 
+ Get-AzureRmADServicePrincipal -ObjectId $ServicePrincipal.Id 
+
+ $NewRole = $null
+ $Retries = 0;
+ While ($NewRole -eq $null -and $Retries -le 6)
+ {
+    # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
+    Sleep 15
+    New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $Application.ApplicationId | Write-Verbose -ErrorAction SilentlyContinue
+    $NewRole = Get-AzureRMRoleAssignment -ServicePrincipalName $Application.ApplicationId -ErrorAction SilentlyContinue
+    $Retries++;
+ }
+ 
+ $NewRole
+```
+
+このスクリプトには、次の注意事項があります。
+
+* アクセスのスコープは、サブスクリプションに制限されます。
+* シングル テナント アプリケーションでは、ホーム ページと ID の URI は検証されません。
+*  この例では、共同作成者ロールにサービス プリンシパルを追加します。 その他のロールについては、「[RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」を参照してください。
+* スクリプトは、新しいサービス プリンシパルが Azure Active Directory 全体に反映されるまでの時間を設けるために、15 秒間スリープします。 スクリプトの待機時間が不足している場合、"PrincipalNotFound: プリンシパル {id} がディレクトリにありません" というエラーが表示されます。
+* サービス プリンシパルのアクセスを複数のサブスクリプションまたはリソース グループに許可する必要がある場合は、異なるスコープを指定して `New-AzureRMRoleAssignment` コマンドレットを再び実行します。
+
+### <a name="provide-certificate-through-automated-powershell-script"></a>自動化された PowerShell スクリプトから証明書を渡す
+サービス プリンシパルとしてサインインするときは常に、AD アプリのディレクトリのテナント ID を指定する必要があります。 テナントは、Azure Active Directory のインスタンスです。
+
+```powershell
+Param (
+ 
+ [Parameter(Mandatory=$true)]
+ [String] $CertPath,
+
+ [Parameter(Mandatory=$true)]
+ [String] $CertPlainPassword,
+ 
+ [Parameter(Mandatory=$true)]
+ [String] $ApplicationId,
+
+ [Parameter(Mandatory=$true)]
+ [String] $TenantId
+ )
+
+ $CertPassword = ConvertTo-SecureString $CertPlainPassword -AsPlainText -Force
+ $PFXCert = New-Object -TypeName System.Security.Cryptography.X509Certificates.X509Certificate2 -ArgumentList @($CertPath, $CertPassword)
+ $Thumbprint = $PFXCert.Thumbprint
+
+ Login-AzureRmAccount -ServicePrincipal -CertificateThumbprint $Thumbprint -ApplicationId $ApplicationId -TenantId $TenantId
+```
+
+アプリケーション ID とテナント ID は機密情報ではないため、スクリプトに直接埋め込むことができます。 テナント ID を取得する必要がある場合は、次のコマンドを使用します。
+
+```powershell
+(Get-AzureRmSubscription -SubscriptionName "Contoso Default").TenantId
+```
+
+アプリケーション ID を取得する必要がある場合は、次のコマンドを使用します。
+
+```powershell
+(Get-AzureRmADApplication -DisplayNameStartWith {display-name}).ApplicationId
+```
 
 ## <a name="change-credentials"></a>資格情報の変更
 
@@ -332,6 +364,35 @@ New-AzureRmADAppCredential -ApplicationId 8bc80782-a916-47c8-a47e-4d76ed755275 -
 ```powershell
 New-AzureRmADAppCredential -ApplicationId 8bc80782-a916-47c8-a47e-4d76ed755275 -CertValue $keyValue -EndDate $cert.NotAfter -StartDate $cert.NotBefore
 ```
+
+## <a name="save-access-token-to-simplify-log-in"></a>アクセス トークンを保存してログインを簡略化する
+ログインの必要があるたびにサービス プリンシパルを指定しなくても済むように、アクセス トークンを保存することができます。
+
+後のセッションで現在のアクセス トークンを使用するために、プロファイルを保存します。
+   
+```powershell
+Save-AzureRmProfile -Path c:\Users\exampleuser\profile\exampleSP.json
+```
+   
+プロファイルを開いて中身を確かめます。 アクセス トークンが含まれていることを確認します。 手動でもう一度ログインするのではなく、プロファイルをロードするだけで済みます。
+   
+```powershell
+Select-AzureRmProfile -Path c:\Users\exampleuser\profile\exampleSP.json
+```
+
+> [!NOTE]
+> アクセス トークンには有効期限があるため、保存したプロファイルを使用できるのはトークンが有効である間のみです。
+>  
+
+また、PowerShell から REST 操作を呼び出して、ログインすることもできます。 認証の応答から、その他の操作で使用するためのアクセス トークンを取得できます。 REST 操作を呼び出してアクセス トークンを取得する例については、「[Generating an Access Token (アクセス トークンの生成)](resource-manager-rest-api.md#generating-an-access-token)」を参照してください。
+
+## <a name="debug"></a>デバッグ
+
+サービス プリンシパルの作成時に、以下のエラーが発生することがあります。
+
+* **"Authentication_Unauthorized"** または **"コンテキストにサブスクリプトが見つかりません"** - アカウントが Azure Active Directory でアプリを登録するために[必要なアクセス許可](#required-permissions)を持っていない場合に、このエラーが表示されます。 通常は、Azure Active Directory の管理者ユーザーのみがアプリを登録できるときに、自分のアカウントが管理者でない場合に、このエラーが発生します。 管理者に連絡して、自分を管理者ロールに割り当ててもらうか、ユーザーがアプリケーションを登録できるようにしてもらいます。
+
+* アカウントに**「'/subscriptions/{guid} ' をスコープとした 'Microsoft.Authorization/roleAssignments/write' のアクションを実行するためのアクセス権限がありません」:**このエラーは、自分のアカウントが ID にロールを割り当てるのに十分なアクセス許可を持っていない場合に表示されます。 サブスクリプション管理者に連絡して、自分をユーザー アクセス管理者ロールに追加してもらいます。
 
 ## <a name="sample-applications"></a>サンプル アプリケーション
 サービス プリンシパルとしてログインする方法については、以下のサンプル アプリケーションで紹介されています。
@@ -364,6 +425,6 @@ New-AzureRmADAppCredential -ApplicationId 8bc80782-a916-47c8-a47e-4d76ed755275 -
 ## <a name="next-steps"></a>次のステップ
 * アプリケーションを Azure に統合してリソースを管理する詳しい手順については、「 [Azure Resource Manager API を使用した承認の開発者ガイド](resource-manager-api-authentication.md)」を参照してください。
 * アプリケーションとサービス プリンシパルの詳細については、「[アプリケーションおよびサービス プリンシパル オブジェクト](../active-directory/active-directory-application-objects.md)」を参照してください。 
-* Active Directory 認証の詳細については、「[Azure AD の認証シナリオ](../active-directory/active-directory-authentication-scenarios.md)」をご覧ください。
+* Azure Active Directory 認証の詳細については、「[Azure AD の認証シナリオ](../active-directory/active-directory-authentication-scenarios.md)」をご覧ください。
 
 

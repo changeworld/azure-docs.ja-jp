@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/30/2017
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
-ms.openlocfilehash: 56a460fa8132d310352fbb7e085091c3ee7fa848
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
+ms.openlocfilehash: 9c9135e200cd1676b01895af4611bc71d5d27c4a
+ms.lasthandoff: 04/21/2017
 
 ---
 
@@ -58,7 +58,7 @@ New-AzureRmResourceGroup -Location westus2 -Name vmss-test-1
 
 ## <a name="create-from-azure-cli"></a>Azure CLI を使用して作成する
 
-Azure CLI を使用すると、最小限の作業で仮想マシン スケール セットを作成できます。 値を省略すると、自動的に提供されます。 たとえば、仮想ネットワークの情報を指定していない場合、仮想ネットワークが自動的に作成されます。 次の部分を省略すると、自動的に提供されます。 
+Azure CLI を使用すると、最小限の作業で仮想マシン スケール セットを作成できます。 既定値を省略すると、自動的に提供されます。 たとえば、仮想ネットワークの情報を指定していない場合、仮想ネットワークが自動的に作成されます。 次の部分を省略すると、自動的に提供されます。 
 - ロード バランサー
 - 仮想ネットワーク
 - パブリック IP アドレス

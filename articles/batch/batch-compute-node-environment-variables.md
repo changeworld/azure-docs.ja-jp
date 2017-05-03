@@ -1,24 +1,24 @@
 ---
 title: "Azure Batch コンピューティング ノードの環境変数 | Microsoft Docs"
-ms.custom: 
-ms.date: 2017-02-01
-ms.prod: azure
-ms.reviewer: 
-ms.service: batch
-ms.suite: 
-ms.tgt_pltfrm: 
-ms.topic: article
-ms.assetid: 3990f0c8-b627-432f-9551-5ce10f9bb0ca
-caps.latest.revision: 14
+description: "Azure 一括分析のコンピューティング ノードの環境変数に関するリファレンスです。"
+services: batch
 author: tamram
-ms.author: tamram
 manager: timlt
+ms.assetid: 
+ms.service: batch
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: vm-windows
+ms.workload: big-compute
+ms.date: 04/20/2017
+ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: e31f2a5e5186ea27d7da7d0d5d5837a2cda41a11
-ms.lasthandoff: 04/13/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 9a31288f4cf67e551db016aa3b56058f607ef13a
+ms.lasthandoff: 04/22/2017
 
 ---
+
 # <a name="azure-batch-compute-node-environment-variables"></a>Azure Batch コンピューティング ノードの環境変数
 [Azure Batch サービス](https://azure.microsoft.com/services/batch/)は、コンピューティング ノードで以下の環境変数を設定します。 これらの環境変数は、タスク コマンドラインと、コマンド ラインにより実行されるプログラムとスクリプトで参照できます。
 

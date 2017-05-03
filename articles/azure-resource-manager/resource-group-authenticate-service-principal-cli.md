@@ -1,6 +1,6 @@
 ---
 title: "Azure CLI での Azure アプリ ID の作成 | Microsoft Docs"
-description: "Azure CLI を使用して、Active Directory アプリケーションやサービス プリンシパルを作成し、ロールベースのアクセス制御によって、リソースへのアクセス権を付与する方法について説明します。 パスワードまたは証明書を使ってアプリケーションを認証する方法を示します。"
+description: "Azure CLI を使用して、Azure Active Directory アプリケーションやサービス プリンシパルを作成し、ロールベースのアクセス制御によって、リソースへのアクセス権を付与する方法について説明します。 パスワードまたは証明書を使ってアプリケーションを認証する方法を示します。"
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/31/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 4ea75e08a630ad777444ea3a3cb85f4bb0efe01f
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: c8a883dedee31d9efab6e2eb4c0ac67b467afe34
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -37,7 +37,7 @@ ms.lasthandoff: 04/03/2017
 この記事では、[Azure CLI 1.0](../cli-install-nodejs.md) を使用してアプリケーションをその独自の資格情報と ID で実行する設定方法について説明します。 [Azure CLI 1.0](../cli-install-nodejs.md) の最新バージョンをインストールし、自分の環境がこの記事の例と一致するかどうかを確認します。
 
 ## <a name="required-permissions"></a>必要なアクセス許可
-このトピックを完了するには、Azure Active Directory と Azure サブスクリプションの両方で適切なアクセス許可を持っている必要があります。 具体的には、Active Directory でアプリケーションを作成し、ロールにサービス プリンシパルを割り当てることができる必要があります。 
+このトピックを完了するには、Azure Active Directory と Azure サブスクリプションの両方で適切なアクセス許可を持っている必要があります。 具体的には、Azure Active Directory でアプリケーションを作成し、ロールにサービス プリンシパルを割り当てることができる必要があります。 
 
 自分のアカウントに適切なアクセス許可があるかどうかを確認する最も簡単な方法は、ポータルを使用することです。 [ポータルでの必要なアクセス許可のチェック](resource-group-create-service-principal-portal.md#required-permissions)に関するページをご覧ください。
 
@@ -72,7 +72,7 @@ ms.lasthandoff: 04/03/2017
      info:    ad sp create command OK
    ```
 
-3. サブスクリプションに対する権限をサービス プリンシパルに付与します。 この例では、サブスクリプション内のすべてのリソースを読み取る権限である閲覧者ロールを、サービス プリンシパルに付与します。 その他のロールについては、「[RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」を参照してください。 objectid パラメーターには、アプリケーションの作成時に使用した Object Id を指定します。 このコマンドを実行する前に、新しいサービス プリンシパルが Active Directory 全体に反映されるまでの時間を設ける必要が必要があります。 これらのコマンドを手動で実行した場合、通常はタスクとタスクの間に十分な時間が経過しています。 スクリプトでは、コマンドとコマンドの間にスリープのための手順 (`sleep 15` など) を追加してください。 プリンシパルがディレクトリに存在しないことを示すエラーが表示された場合は、コマンドを再実行してください。
+3. サブスクリプションに対する権限をサービス プリンシパルに付与します。 この例では、サブスクリプション内のすべてのリソースを読み取る権限である閲覧者ロールを、サービス プリンシパルに付与します。 その他のロールについては、「[RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」を参照してください。 objectid パラメーターには、アプリケーションの作成時に使用した Object ID を指定します。 このコマンドを実行する前に、新しいサービス プリンシパルが Azure Active Directory 全体に反映されるまでの時間を設ける必要が必要があります。 これらのコマンドを手動で実行した場合、通常はタスクとタスクの間に十分な時間が経過しています。 スクリプトでは、コマンドとコマンドの間にスリープのための手順 (`sleep 15` など) を追加してください。 プリンシパルがディレクトリに存在しないことを示すエラーが表示された場合は、コマンドを再実行してください。
    
    ```azurecli
    azure role assignment create --objectId ff863613-e5e2-4a6b-af07-fff6f2de3f4e -o Reader -c /subscriptions/{subscriptionId}/
@@ -83,7 +83,7 @@ ms.lasthandoff: 04/03/2017
 ### <a name="provide-credentials-through-azure-cli"></a>資格情報を Azure CLI で渡す
 次に、操作を実行するアプリケーションとしてログインする必要があります。
 
-1. サービス プリンシパルとしてサインインするときは常に、AD アプリのディレクトリのテナント ID を指定する必要があります。 テナントは、Active Directory のインスタンスです。 現在認証されているサブスクリプションのテナント ID を取得するには、次のコマンドを使用します。
+1. サービス プリンシパルとしてサインインするときは常に、AD アプリのディレクトリのテナント ID を指定する必要があります。 テナントは、Azure Active Directory のインスタンスです。 現在認証されているサブスクリプションのテナント ID を取得するには、次のコマンドを使用します。
    
    ```azurecli
    azure account show
@@ -192,7 +192,7 @@ ms.lasthandoff: 04/03/2017
      data:                      https://www.contoso.org/example
      info:    ad sp create command OK
    ```
-6. サブスクリプションに対する権限をサービス プリンシパルに付与します。 この例では、サブスクリプション内のすべてのリソースを読み取る権限である閲覧者ロールを、サービス プリンシパルに付与します。 その他のロールについては、「[RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」を参照してください。 objectid パラメーターには、アプリケーションの作成時に使用した Object ID を指定します。 このコマンドを実行する前に、新しいサービス プリンシパルが Active Directory 全体に反映されるまでの時間を設ける必要が必要があります。 これらのコマンドを手動で実行した場合、通常はタスクとタスクの間に十分な時間が経過しています。 スクリプトでは、コマンドとコマンドの間にスリープのための手順 (`sleep 15` など) を追加してください。 プリンシパルがディレクトリに存在しないことを示すエラーが表示された場合は、コマンドを再実行してください。
+6. サブスクリプションに対する権限をサービス プリンシパルに付与します。 この例では、サブスクリプション内のすべてのリソースを読み取る権限である閲覧者ロールを、サービス プリンシパルに付与します。 その他のロールについては、「[RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」を参照してください。 objectid パラメーターには、アプリケーションの作成時に使用した Object ID を指定します。 このコマンドを実行する前に、新しいサービス プリンシパルが Azure Active Directory 全体に反映されるまでの時間を設ける必要が必要があります。 これらのコマンドを手動で実行した場合、通常はタスクとタスクの間に十分な時間が経過しています。 スクリプトでは、コマンドとコマンドの間にスリープのための手順 (`sleep 15` など) を追加してください。 プリンシパルがディレクトリに存在しないことを示すエラーが表示された場合は、コマンドを再実行してください。
    
    ```azurecli
    azure role assignment create --objectId 7dbc8265-51ed-4038-8e13-31948c7f4ce7 -o Reader -c /subscriptions/{subscriptionId}/
@@ -201,7 +201,7 @@ ms.lasthandoff: 04/03/2017
 ### <a name="provide-certificate-through-automated-azure-cli-script"></a>自動化された Azure CLI スクリプトから証明書を渡す
 次に、操作を実行するアプリケーションとしてログインする必要があります。
 
-1. サービス プリンシパルとしてサインインするときは常に、AD アプリのディレクトリのテナント ID を指定する必要があります。 テナントは、Active Directory のインスタンスです。 現在認証されているサブスクリプションのテナント ID を取得するには、次のコマンドを使用します。
+1. サービス プリンシパルとしてサインインするときは常に、AD アプリのディレクトリのテナント ID を指定する必要があります。 テナントは、Azure Active Directory のインスタンスです。 現在認証されているサブスクリプションのテナント ID を取得するには、次のコマンドを使用します。
    
    ```azurecli
    azure account show
@@ -263,7 +263,7 @@ ms.lasthandoff: 04/03/2017
    azure login --service-principal --tenant {tenant-id} -u 4fd39843-c338-417d-b549-a545f584a745 --certificate-file C:\certificates\examplecert.pem --thumbprint {thumbprint}
    ```
 
-これで、作成した Active Directory アプリケーションのサービス プリンシパルとして認証されました。
+これで、作成した Azure Active Directory アプリケーションのサービス プリンシパルとして認証されました。
 
 ## <a name="change-credentials"></a>資格情報の変更
 
@@ -285,7 +285,7 @@ azure ad app set --applicationId 4fd39843-c338-417d-b549-a545f584a745 --cert-val
 
 サービス プリンシパルの作成時に、以下のエラーが発生することがあります。
 
-* **"Authentication_Unauthorized"** または **"コンテキストにサブスクリプトが見つかりません"** - アカウントが Active Directory でアプリを登録するために[必要なアクセス許可](#required-permissions)を持っていない場合に、このエラーが表示されます。 通常、Active Directory の管理者ユーザーしかアプリを登録できません。自分のアカウントが管理者でない場合に、このエラーが発生します。 管理者ロールに割り当てるか、ユーザーがアプリケーションを登録できるように、管理者に依頼します。
+* **"Authentication_Unauthorized"** または **"コンテキストにサブスクリプトが見つかりません"** - アカウントが Azure Active Directory でアプリを登録するために[必要なアクセス許可](#required-permissions)を持っていない場合に、このエラーが表示されます。 通常は、Azure Active Directory の管理者ユーザーのみがアプリを登録できるときに、自分のアカウントが管理者でない場合に、このエラーが発生します。 管理者ロールに割り当てるか、ユーザーがアプリケーションを登録できるように、管理者に依頼します。
 
 * アカウントに**「'/subscriptions/{guid} ' をスコープとした 'Microsoft.Authorization/roleAssignments/write' のアクションを実行するためのアクセス権限がありません」と表示される場合** -自分のアカウントが ID にロールを割り当てるのに十分なアクセス許可を持っていない場合に、このエラーが表示されます。 サブスクリプション管理者に連絡して、ユーザー アクセス管理者ロールに追加してもらいます。
 

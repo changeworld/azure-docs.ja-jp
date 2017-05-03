@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/29/2017
+ms.date: 04/19/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 24b575a3c32c9df963f889954abd152ada4f3102
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: d5552615bfa663f4604e29839ecf8f5fc25c328f
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -57,36 +57,41 @@ DocumentDB .NET Core SDK には最新バージョンの [DocumentDB .NET SDK](do
 > [!NOTE] 
 > DocumentDB .NET Core SDK は、現在のところ、ユニバーサル Windows プラットフォーム (UWP) アプリとの互換性はありません。 UWP アプリをサポートする .NET Core SDK については、[askdocdb@microsoft.com](mailto:askdocdb@microsoft.com) に電子メールでお問い合わせください。
 
-### <a name="a-name121121httpswwwnugetorgpackagesmicrosoftazuredocumentdbcore121"></a><a name="1.2.1"/>[1.2.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/1.2.1)
+### <a name="a-name122122"></a><a name="1.2.2"/>1.2.2
+
+* 集計クエリの FeedOptions 内に指定された PartitionKey 値が無視される問題を修正しました。
+* 中間クロス パーティション Order By クエリの実行時のパーティション管理の透過的な処理の問題を修正しました。
+
+### <a name="a-name121121"></a><a name="1.2.1"/>1.2.1
 
 * いくつかの非同期 API を ASP.NET のコンテキスト内で使用する場合にデッドロックの原因となった問題を修正しました。
 
-### <a name="a-name120120httpswwwnugetorgpackagesmicrosoftazuredocumentdbcore120"></a><a name="1.2.0"/>[1.2.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/1.2.0)
+### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
 
 * 特定の条件で自動フェールオーバーするために SDK の耐障害性を改善しました。
 
-### <a name="a-name112112httpswwwnugetorgpackagesmicrosoftazuredocumentdbcore112"></a><a name="1.1.2"/>[1.1.2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/1.1.2)
+### <a name="a-name112112"></a><a name="1.1.2"/>1.1.2
 
 * WebException を時々発生させる問題 (リモート名を解決できなかった) を修正しました。
 * ReadDocumentAsync API に新しいオーバーロードを追加することで、型指定されたドキュメントを直接読み取るサポートを追加しました。
 
-### <a name="a-name111111httpswwwnugetorgpackagesmicrosoftazuredocumentdbcore111"></a><a name="1.1.1"/>[1.1.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/1.1.1)
+### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
 
 * 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) の LINQ サポートを追加しました。
 * イベント ハンドラーの使用によって発生した ConnectionPolicy オブジェクトのメモリ リークの問題を修正しました。
 * ETag を使用した場合に UpsertAttachmentAsync が動作しなかった問題を修正しました。
 * 文字列フィールドの並べ替えで、パーティションを横断する order-by クエリの継続が動作しなかった問題を修正しました。
 
-### <a name="a-name110110httpswwwnugetorgpackagesmicrosoftazuredocumentdbcore110"></a><a name="1.1.0"/>[1.1.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/1.1.0)
+### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
 
 * 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。 [集計のサポート](documentdb-sql-query.md#Aggregates)に関するトピックを参照してください。
 * パーティション分割コレクションの最小スループットが 10,100 RU/秒から 2,500 RU/秒になりました。
 
-### <a name="a-name100100httpswwwnugetorgpackagesmicrosoftazuredocumentdbcore100"></a><a name="1.0.0"/>[1.0.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/1.0.0)
+### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 
 DocumentDB .NET Core SDK を使用すると、Windows、Mac、Linux で実行できるクロスプラットフォーム対応の高速な [ASP.NET Core](https://www.asp.net/core) アプリと [.NET Core](https://www.microsoft.com/net/core#windows) アプリを構築できるようになります。 DocumentDB .NET Core SDK の最新リリースは、[Xamarin](https://www.xamarin.com) との完全な互換性を持ち、iOS、Android、Mono (Linux) を対象とするアプリケーションの構築に使用されます。  
 
-### <a name="a-name010-preview010-previewhttpswwwnugetorgpackagesmicrosoftazuredocumentdbcore010-preview"></a><a name="0.1.0-preview"/>[0.1.0-preview](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/0.1.0-preview)
+### <a name="a-name010-preview010-preview"></a><a name="0.1.0-preview"/>0.1.0-preview
 
 DocumentDB .NET Core Preview SDK を使用すると、Windows、Mac、Linux で実行できるクロスプラットフォーム対応の高速な [ASP.NET Core](https://www.asp.net/core) アプリと [.NET Core](https://www.microsoft.com/net/core#windows) アプリを構築できるようになります。
 
@@ -102,6 +107,7 @@ DocumentDB .NET Core Preview SDK には最新バージョンの [DocumentDB .NET
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.2.2](#1.2.2) |2017 年 4 月 19 日 |--- |
 | [1.2.1](#1.2.1) |2017 年 3 月 29 日 |--- |
 | [1.2.0](#1.2.0) |2017 年 3 月 25 日 |--- |
 | [1.1.2](#1.1.2) |2017 年 3 月 20 日 |--- |

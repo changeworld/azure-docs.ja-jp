@@ -12,20 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2016
+ms.date: 04/20/2017
 ms.author: ashwink
 translationtype: Human Translation
-ms.sourcegitcommit: cc557c7139561345a201fa0cd45c803af3751acd
-ms.openlocfilehash: 25fa8749d4b23d3619829fa179a7c91da311bbd0
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: 6dad42f94d263d9dacedf145bf4e5d487d0aed77
+ms.lasthandoff: 04/21/2017
 
 
 ---
-# <a name="best-practices-autoscaling-virtual"></a>仮想環境の自動スケールに関するベスト プラクティス
+# <a name="best-practices-for-autoscale"></a>自動スケールのベスト プラクティス
 この記事では、Azure での自動スケールのベスト プラクティスについて説明します。 対象は、Virtual Machines、Virtual Machine Scale Sets、および Cloud Services です。  他の Azure サービスでは、異なるスケーリング方法が使用されています。
 
 ## <a name="autoscale-concepts"></a>自動スケールの概念
 * 1 つのリソースで使用できる自動スケール設定は *1 つ* に限られます。
-* 自動スケール設定では、1 つ以上のプロファイルを使用できます。また、プロファイルごとに&1; つ以上の自動スケール ルールを設定できます。
+* 自動スケール設定では、1 つ以上のプロファイルを使用できます。また、プロファイルごとに 1 つ以上の自動スケール ルールを設定できます。
 * 自動スケール設定では、インスタンスが水平方向にスケールされます。つまり、インスタンス数を増やしてスケール "*アウト*" し、インスタンス数を減らしてスケール "*イン*" します。
   自動スケール設定には、インタンスの最大値、最小値、既定値があります。
 * 自動スケール ジョブでは、スケールに使用する関連付けられたメトリックを常に読み取り、スケールアウトまたはスケールインの構成済みのしきい値を超えているかどうかをチェックします。 自動スケールで使用できるメトリックの一覧については、「[Azure Monitor の自動スケールの一般的なメトリック](insights-autoscale-common-metrics.md)」をご覧ください。
@@ -107,7 +108,7 @@ Cloud Services と App Services (Web Apps) の場合、Azure Portal (portal.azur
 2. 定期的プロファイル
 3. 既定の ("常時") プロファイル
 
-自動スケールでは、プロファイルの条件が満たされると、それより下位のプロファイルの条件はチェックされません。 自動スケールで処理されるプロファイルは一度に&1; つに限られます。 つまり、下位層のプロファイルの処理条件も含める場合は、現在のプロファイルにそれらのルールも含める必要があります。
+自動スケールでは、プロファイルの条件が満たされると、それより下位のプロファイルの条件はチェックされません。 自動スケールで処理されるプロファイルは一度に 1 つに限られます。 つまり、下位層のプロファイルの処理条件も含める場合は、現在のプロファイルにそれらのルールも含める必要があります。
 
 例を使用してこれを確認しましょう。
 
@@ -149,9 +150,4 @@ Cloud Services と App Services (Web Apps) の場合、Azure Portal (portal.azur
 * 自動スケール サービスがスケールを決定する際にメトリックを使用できない場合。
 * スケールを決定する際にメトリックを再び使用できるようになった (回復した) 場合。
   上記の状況に加え、スケール操作が正常に完了した場合に通知されるように、電子メールまたは Webhook の通知を構成できます。
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

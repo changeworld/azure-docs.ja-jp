@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: andrela;sstein;carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 04fc29fe21b77a34094bb89ecb8496f78856f56b
-ms.lasthandoff: 04/19/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: c8700b16f91f014205acb93d6b57f9b972546268
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -33,6 +33,8 @@ ms.lasthandoff: 04/19/2017
 - [DB の作成 - CLI](sql-database-get-started-cli.md)
 
 ## <a name="install-ruby-and-database-communication-libraries"></a>Ruby とデータベースの通信ライブラリをインストールする
+
+このセクションの手順では、Ruby による開発には慣れているが、Azure SQL Database を初めて使用するユーザーを想定しています。 Ruby による開発の経験がない場合は、「[Build an app using SQL Server (SQL Server を使用してアプリを構築する)](https://www.microsoft.com/en-us/sql-server/developer-get-started/)」に移動し、**Ruby** を選択してから、使用しているオペレーティング システムを選択します。
 
 ### <a name="mac-os"></a>**Mac OS**
 ターミナルを開き、Ruby スクリプトの作成先となるディレクトリに移動します。 次のコマンドを入力して、**brew**、**FreeTDS**、および **TinyTDS** をインストールします。
@@ -60,7 +62,7 @@ gem install tiny_tds
 
 ## <a name="get-connection-information"></a>接続情報の取得
 
-Azure Portal で接続文字列を取得します。 その接続文字列は Azure SQL データベースに接続するために使用します。
+Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名、データベース名、ログイン情報が必要になります。
 
 1. [Azure ポータル](https://portal.azure.com/)にログインします。
 2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
@@ -72,7 +74,7 @@ Azure Portal で接続文字列を取得します。 その接続文字列は Az
     
 
 ## <a name="select-data"></a>データの選択
-次のコードを使用し、[TinyTDS::Client](https://github.com/rails-sqlserver/tiny_tds) 関数と [SELECT](https://docs.microsoft.com/sql/t-sql/queries/select-transact-sql) Transact-SQL ステートメントを使用して、Azure SQL Database のデータを照会します。 TinyTDS::Client 関数は、クエリを受け入れて結果セットを返します。 [result.each do |row|](https://github.com/rails-sqlserver/tiny_tds)を使用することにより、結果セットが反復処理されます。 サーバー、データベース、ユーザー名、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。
+次のコードを使用して、[TinyTDS::Client](https://github.com/rails-sqlserver/tiny_tds) 関数と [SELECT](https://docs.microsoft.com/sql/t-sql/queries/select-transact-sql) Transact-SQL ステートメントを使用し、カテゴリ単位で上位 20 の製品を照会します。 TinyTDS::Client 関数は、クエリを受け入れて結果セットを返します。 [result.each do |row|](https://github.com/rails-sqlserver/tiny_tds)を使用することにより、結果セットが反復処理されます。 サーバー、データベース、ユーザー名、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。
 
 ```ruby
 require 'tiny_tds'
@@ -95,7 +97,7 @@ end
 ```
 
 ## <a name="insert-data"></a>データを挿入する
-次のコードを使用し、[TinyTDS::Client](https://github.com/rails-sqlserver/tiny_tds) 関数と [INSERT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) Transact-SQL ステートメントを使用して、指定したデータベースの SalesLT.Product テーブルに新しい製品を挿入します。 サーバー、データベース、ユーザー名、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。
+次のコードを使用し、[TinyTDS::Client](https://github.com/rails-sqlserver/tiny_tds) 関数と [INSERT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) Transact-SQL ステートメントを使用して、SalesLT.Product テーブルに新しい製品を挿入します。 サーバー、データベース、ユーザー名、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。
 
 この例では、INSERT ステートメントを安全に実行し、[SQL インジェクション](https://technet.microsoft.com/library/ms161953(v=sql.105).aspx)の脆弱性からアプリケーションを保護するパラメーターを渡し、自動生成された[プライマリ キー](https://docs.microsoft.com/sql/relational-databases/tables/primary-and-foreign-key-constraints)値を取得する方法について説明しています。    
   
@@ -133,7 +135,7 @@ insert('BrandNewProduct', '200989', 'Blue', 75, 80, '7/1/2016')
 ```
 
 ## <a name="update-data"></a>データの更新
-次のコードを使用し、[TinyTDS::Client](https://github.com/rails-sqlserver/tiny_tds) 関数と [UPDATE](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql) Transact-SQL ステートメントを使用して、Azure SQL Database のデータを更新します。 サーバー、データベース、ユーザー名、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。
+次のコードを使用し、[TinyTDS::Client](https://github.com/rails-sqlserver/tiny_tds) 関数と [UPDATE](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql) Transact-SQL ステートメントで、先ほど追加した新しい製品を更新します。 サーバー、データベース、ユーザー名、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。
 
 ```ruby
 require 'tiny_tds'
@@ -154,7 +156,7 @@ update('BrandNewProduct', 500, client)
 ```
 
 ## <a name="delete-data"></a>データの削除
-次のコードを使用し、[TinyTDS::Client](https://github.com/rails-sqlserver/tiny_tds) 関数と [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL ステートメントを使用して、Azure SQL Database のデータを削除します。 サーバー、データベース、ユーザー名、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。
+次のコードを使用し、[TinyTDS::Client](https://github.com/rails-sqlserver/tiny_tds) 関数と [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL ステートメントで、先ほど追加した新しい製品を削除します。 サーバー、データベース、ユーザー名、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。
 
 ```ruby
 require 'tiny_tds'
@@ -196,3 +198,4 @@ delete('BrandNewProduct', client)
 - Node.js を使用して接続とデータの照会を行うには、[Node.js を使った接続とデータの照会](sql-database-connect-query-nodejs.md)に関するページを参照してください。
 - Java を使用して接続とデータの照会を行うには、[Java を使った接続とデータの照会](sql-database-connect-query-java.md)に関するページを参照してください。
 - Python を使用して接続とデータの照会を行うには、[Python を使った接続とデータの照会](sql-database-connect-query-python.md)に関するページを参照してください。
+

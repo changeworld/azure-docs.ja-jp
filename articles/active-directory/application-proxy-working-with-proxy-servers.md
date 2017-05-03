@@ -11,12 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 04/12/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 64d06a67ee5480e6bdbac2f6745ea32faa2cf003
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: f31625783aa03dd01a73b5e5b39dd899e109b3b9
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -29,19 +29,13 @@ ms.lasthandoff: 04/18/2017
 * オンプレミスの送信プロキシをバイパスするようにコネクタを構成する。
 * 送信プロキシを使用して Azure AD アプリケーション プロキシにアクセスにするようにコネクタを構成する。
 
-コネクタの仕組みの詳細については、「[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started)」を参照してください。
-
-## <a name="configure-your-connectors"></a>コネクタの構成
-
-中核となるコネクタ サービスでは、Azure Service Bus を使用して Azure AD アプリケーション プロキシ サービスへの基本的な通信の一部を処理します。 Service Bus の使用により、構成要件が追加されます。
-
-Azure AD の接続の問題を解決する方法については、「[How to troubleshoot Azure AD Application Proxy connectivity problems (Azure AD アプリケーション プロキシの接続に関する問題のトラブルシューティング方法)](https://blogs.technet.microsoft.com/applicationproxyblog/2015/03/24/how-to-troubleshoot-azure-ad-application-proxy-connectivity-problems)」を参照してください。
+コネクタの動作方法について詳しくは、「[Azure AD アプリケーション プロキシ コネクタを理解する](application-proxy-understand-connectors.md)」をご覧ください。
 
 ## <a name="configure-the-outbound-proxy"></a>送信プロキシの構成
 
-お使いの環境に送信プロキシがある場合は、インストールを実行するアカウントが、送信プロキシを使用するように適切に構成されていることを確認します。 インストーラーはインストールを実行するユーザーのコンテキストで実行されるため、Microsoft Edge または別のインターネット ブラウザーを使用して構成を確認できます。
+環境内に送信プロキシがある場合は、適切なアクセス許可を持つアカウントを使って送信プロキシを構成します。 インストーラーはインストールを実行するユーザーのコンテキストで実行されるため、Microsoft Edge または別のインターネット ブラウザーを使用して構成を確認できます。
 
-Microsoft Edge を使用してプロキシ設定を構成するには、次の手順を実行します。
+Microsoft Edge でプロキシ設定を構成するには、次の手順を実行します。
 
 1. **[設定]** > **[詳細設定を表示]** > **[プロキシ セットアップを開く]** > **[手動プロキシ セットアップ]** の順に移動します。
 2. **[プロキシ サーバーを使う]** を **[オン]** に設定し、**[ローカル (イントラネット) のアドレスにはプロキシ サーバーを使わない]** チェック ボックスをオフにして、ローカル プロキシ サーバーを反映するようにアドレスとポートを変更します。
@@ -51,25 +45,25 @@ Microsoft Edge を使用してプロキシ設定を構成するには、次の�
 
 ## <a name="bypass-outbound-proxies"></a>送信プロキシをバイパス
 
-既定では、送信要求を行うためにコネクタが使用する基になる OS コンポーネントにより、ネットワーク上のプロキシ サーバーが自動的に検出されます。 Web プロキシ自動発見 (WPAD) は、環境で有効になっている場合に使用されます。
+コネクタには、送信要求を行う基になる OS コンポーネントがあります。 これらのコンポーネントは、自動的にネットワーク上のプロキシ サーバーの特定を試みます。 Web プロキシ自動発見 (WPAD) は、環境で有効になっている場合に使用されます。
 
 この OS コンポーネントは、wpad.domainsuffix の DNS 参照を実行することで、プロキシ サーバーの検出を試みます。 これが DNS で解決すると、wpad.dat の IP アドレスに対して HTTP 要求が作成されます。 この要求が、環境におけるプロキシ構成スクリプトになります。 コネクタは、このスクリプトを使用して送信プロキシ サーバーを選択します。 ただし、プロキシで追加の構成設定が必要なため、コネクタのトラフィックがプロキシを経由しないことがあります。
 
-次のセクションでは、トラフィックが送信プロキシを経由するようにするために必要な、送信プロキシの構成手順について説明します。 その前に、オンプレミス プロキシをバイパスして Azure サービスへの直接接続を使用するようにコネクタを構成する方法について見ていきましょう。 これは、管理する構成が 1 つ少なくて済むため、(ネットワーク ポリシーで許可されている場合) 推奨される方法です。
+オンプレミスのプロキシをバイパスして Azure サービスへの直接接続を使用するように、コネクタを構成できます。 管理する構成が 1 つ少なくて済むため、(ネットワーク ポリシーで許可されている場合) この方法をお勧めします。
 
-コネクタで送信プロキシの使用を無効にするには、次のコード例に示すように、C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config ファイルを編集し、[system.net] セクションを追加します。
+コネクタで送信プロキシの使用を無効にするには、次のコード例に示すように、C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config ファイルを編集し、*system.net* セクションを追加します。
 
 ```xml
- <?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <configuration>
-<system.net>
-<defaultProxy enabled="false"></defaultProxy>
-</system.net>
- <runtime>
-<gcServer enabled="true"/>
+  <system.net>
+    <defaultProxy enabled="false"></defaultProxy>
+  </system.net>
+  <runtime>
+    <gcServer enabled="true"/>
   </runtime>
   <appSettings>
-<add key="TraceFilename" value="AadAppProxyConnector.log" />
+    <add key="TraceFilename" value="AadAppProxyConnector.log" />
   </appSettings>
 </configuration>
 ```
@@ -79,44 +73,36 @@ Microsoft Edge を使用してプロキシ設定を構成するには、次の�
 
 ## <a name="use-the-outbound-proxy-server"></a>送信プロキシ サーバーの使用
 
-先ほど説明したように、一部のお客様の環境では、すべての送信トラフィックが例外なく送信プロキシを経由する必要がある場合があります。 そのような場合は、プロキシのバイパスは選択肢にありません。
+一部の環境では、すべての送信トラフィックが例外なく送信プロキシを経由する必要がある場合があります。 そのような場合は、プロキシのバイパスは選択肢にありません。
 
 次の図に示すように、コネクタのトラフィックが送信プロキシを経由するように構成できます。
 
  ![コネクタ トラフィックが送信プロキシを経由して Azure AD アプリケーション プロキシに到達するように構成する](./media/application-proxy-working-with-proxy-servers/configure-proxy-settings.png)
 
-送信トラフィックしかないため、コネクタ間で負荷分散を設定したり、ファイアウォール経由で受信アクセスを構成したりする必要はありません。
-
-いずれの場合も、次の手順を実行する必要があります。
-1. コネクタ アップデーター サービスが送信プロキシを経由するように構成します。
-2. Azure AD アプリケーション プロキシ サービスへの接続を許可するようにプロキシ設定を構成します。
+送信トラフィックしかないため、ファイアウォール経由で受信アクセスを構成する必要はありません。
 
 ### <a name="step-1-configure-the-connector-and-related-services-to-go-through-the-outbound-proxy"></a>手順 1: コネクタと関連サービスが送信プロキシを経由するように構成する
 
 先ほど説明したように、WPAD が環境内で有効になっていて、適切に構成されている場合、コネクタは送信プロキシ サーバーを自動的に検出して使用を試みます。 一方で、送信プロキシを経由するようにコネクタを明示的に構成することができます。
 
-これを行うには、次のコード例に示すように、C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config ファイルを編集し、[system.net] セクションを追加します。
+これを行うには、次のコード例に示すように、C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config ファイルを編集し、*system.net* セクションを追加します。 ローカルのプロキシ サーバー名または IP アドレスとリッスンしているポートを反映するように、*proxyserver:8080* を変更します。
 
 ```xml
- <?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <configuration>
-<system.net>  
+  <system.net>  
     <defaultProxy>   
       <proxy proxyaddress="http://proxyserver:8080" bypassonlocal="True" usesystemdefault="True"/>   
     </defaultProxy>  
-</system.net>
+  </system.net>
   <runtime>
-     <gcServer enabled="true"/>
+    <gcServer enabled="true"/>
   </runtime>
   <appSettings>
     <add key="TraceFilename" value="AadAppProxyConnector.log" />
   </appSettings>
 </configuration>
 ```
-
->[!NOTE]
->ローカルのプロキシ サーバー名または IP アドレスとリッスンしているポートを反映するように _proxyserver:8080_ を変更します。
->
 
 次に、C:\Program Files\Microsoft AAD App Proxy Connector Updater\ApplicationProxyConnectorUpdaterService.exe.config にあるファイルに同じような変更を加えて、コネクタ アップデーター サービスがプロキシを使用するように構成します。
 
