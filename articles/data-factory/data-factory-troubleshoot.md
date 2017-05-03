@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 05/02/2017
 ms.author: spelluru
 translationtype: Human Translation
 ms.sourcegitcommit: f78081d173bfe255a3ed8016d10a2deec87ac758
 ms.openlocfilehash: 684515213fc2533e56600cacf3bc0a3a33f337c2
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -150,9 +151,4 @@ Failed to create cluster. Exception: Unable to complete the cluster create opera
 [image-data-factory-troubleshoot-walkthrough2-slice-activity-runs]: ./media/data-factory-troubleshoot/Walkthrough2DataSliceActivityRuns.png
 
 [image-data-factory-troubleshoot-activity-run-details]: ./media/data-factory-troubleshoot/Walkthrough2ActivityRunDetails.png
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 
