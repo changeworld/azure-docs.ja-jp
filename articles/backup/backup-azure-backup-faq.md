@@ -181,7 +181,7 @@ Azure VM のバックアップ ジョブを取り消した場合、転送済み�
 はい、Backup サービスには、PowerShell スクリプトで使用できるイベント ベースのアラートがいくつかあります。 詳細については、[通知の構成](backup-azure-monitor-vms.md#configure-notifications)に関するページをご覧ください。
 
 ### <a name="are-there-limits-on-when-or-how-many-times-a-backup-job-can-be-scheduledbr"></a>バックアップ ジョブをスケジュール設定できる時刻や回数に制限はありますか。<br/>
-はい。 Windows Server または Windows ワークステーションでは、1 日に最大 3 回バックアップ ジョブを実行できます。 System Center DPM では、1 日に最大 2 回バックアップ ジョブを実行できます。 IaaS VM では、1 日に 1 回バックアップ ジョブを実行できます。 Windows Server または Windows ワークステーションのスケジューリング ポリシーを使用して毎日または毎週のスケジュールを指定することができます。 System Center DPM を使用した場合、スケジュールには毎日、毎週、毎月、毎年を指定できます。
+はい。 Windows Server または Windows ワークステーションでは、1 日に最大&3; 回バックアップ ジョブを実行できます。 System Center DPM では、1 日に最大&2; 回バックアップ ジョブを実行できます。 IaaS VM では、1 日に&1; 回バックアップ ジョブを実行できます。 Windows Server または Windows ワークステーションのスケジューリング ポリシーを使用して毎日または毎週のスケジュールを指定することができます。 System Center DPM を使用した場合、スケジュールには毎日、毎週、毎月、毎年を指定できます。
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-i-backed-upbr"></a>Recovery Services コンテナーに転送されたデータのサイズが、バックアップしたデータよりも小さいのはなぜでしょうか。<br/>
  Azure Backup エージェント、SCDPM、または Azure Backup Server からバックアップしたすべてのデータは、圧縮および暗号化されてから転送されます。 圧縮と暗号化が適用されると、バックアップ コンテナー内のデータは 30 ～ 40% 小さくなります。
