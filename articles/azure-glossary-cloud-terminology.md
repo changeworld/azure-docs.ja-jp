@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 08/03/2016
 ms.author: monicar
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 1842d55e2275560581cf2766cdf74e0939e68c98
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 1cf6be168c3e87bfd567c216679f608593673340
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -47,8 +47,8 @@ Azure でリソースをデプロイするときに使われる 2 つの [デプ
 Windows、OS X、Linux PC から Azure サービスを管理するための [コマンド ライン インターフェイス](cli-install-nodejs.md) 。
 
 ### <a name="powershell"></a>Azure PowerShell
-Windows PC からコマンド ラインを使って Azure サービスを管理するための [コマンド ライン インターフェイス](/powershell/azureps-cmdlets-docs) 。 サービスやサービスの機能によっては、PowerShell または CLI でしか管理できないものもあります。 リソースのデプロイにどのモデルを使えるかは、個々の Azure リソースのガイダンスに詳しくまとめられています。   
-「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)
+Windows PC からコマンド ラインを使って Azure サービスを管理するための [コマンド ライン インターフェイス](/powershell/azure/overview) 。 サービスやサービスの機能によっては、PowerShell または CLI でしか管理できないものもあります。 リソースのデプロイにどのモデルを使えるかは、個々の Azure リソースのガイダンスに詳しくまとめられています。   
+「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)
 
 ### <a name="arm-model"></a>Azure Resource Manager デプロイメント モデル
 Microsoft Azure でリソースをデプロイするために使用される 2 つの [デプロイ モデル](resource-manager-deployment-model.md) のうちの 1 つ (もう一方はクラシック デプロイ モデル)。 Azure リソースには、一方のモデルでしかデプロイできないものと、両方のモデルでデプロイできるものがあります。 リソースのデプロイにどのモデルを使えるかは、個々の Azure リソースのガイダンスに詳しくまとめられています。

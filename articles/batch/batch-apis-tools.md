@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 03/08/2017
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 9ed3e60679a0c637c99f8019119289c71be81f83
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 9d523044f5107eea9dfbba17564cc15ec05076c5
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -55,7 +55,7 @@ Batch ソリューションを開発するとき、Microsoft Azure で次のア�
 
 開発 API で用意されている機能は、コマンド ライン ツールを使用して利用することもできます。 
 
-* [Batch PowerShell コマンドレット][batch_ps]: [Azure PowerShell](/powershell/azureps-cmdlets-docs) モジュールの Azure Batch コマンドレットを利用すると、PowerShell で Batch リソースを管理できます。
+* [Batch PowerShell コマンドレット][batch_ps]: [Azure PowerShell](/powershell/azure/overview) モジュールの Azure Batch コマンドレットを利用すると、PowerShell で Batch リソースを管理できます。
 * [Azure CLI](/cli/azure/overview): Azure コマンド ライン インターフェイス (Azure CLI) は、Batch などの多くの Azure サービスを操作するためのシェル コマンドを提供するクロスプラットフォーム ツールセットです。
 
 ## <a name="batch-resource-management"></a>Batch リソース管理

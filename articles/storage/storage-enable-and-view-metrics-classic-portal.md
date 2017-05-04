@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/03/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 3c3c7924655f5b932be2a3d947a4df786fc0630d
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: b37b71888dc823f1de0ccc773c7402dbaf6ddc7b
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -47,7 +47,7 @@ Azure クラシック ポータルでは、現在のところ、ストレージ 
 * ServiceType: 指定可能な値は、Blob、Queue、Table です。
 * MetricsLevel: 指定可能な値は None (Azure クラシック ポータルの [オフ] と同じ)、Service (Azure クラシック ポータルの [最小] と同じ)、ServiceAndApi (Azure クラシック ポータルの [詳細] と同じ) です。
 
-たとえば、次のコマンドは、既定のストレージ アカウントの BLOB サービスの分単位メトリックを&5; 日間に設定されたリテンション期間でオンにします。
+たとえば、次のコマンドは、既定のストレージ アカウントの BLOB サービスの分単位メトリックを 5 日間に設定されたリテンション期間でオンにします。
 
 ```powershell
 Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5
@@ -57,7 +57,7 @@ Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -Me
 ```powershell
 Get-AzureStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob
 ```
-Azure サブスクリプションを処理するように Azure PowerShell コマンドレットを構成する方法と、使用する既定のストレージ アカウントを選択する方法については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」をご覧ください。
+Azure サブスクリプションを処理するように Azure PowerShell コマンドレットを構成する方法と、使用する既定のストレージ アカウントを選択する方法については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」をご覧ください。
 
 ## <a name="how-to-enable-storage-metrics-programmatically"></a>プログラムを利用してストレージ メトリックを有効にする方法
 次の C# スニペットは、.NET 用ストレージ クライアント ライブラリを使用して、BLOB サービスのメトリックとログ記録を有効にする方法を示しています。
@@ -124,7 +124,7 @@ blobClient.SetServiceProperties(properties);
 | 20140522T1100 |user;QueryEntity |2014-05-22T11:01:16.7650250Z |1 |1 |538 |633 |100 |3 |3 |100 |
 | 20140522T1100 |user;UpdateEntity |2014-05-22T11:01:16.7650250Z |1 |1 |771 |217 |100 |9 |6 |100 |
 
-この例の分単位メトリック データでは、パーティション キーは分単位解決の時間を使用しています。 行キーは、行に保存され、アクセス タイプと要求タイプという&2; つの情報から構成されるタイプの情報を識別します。
+この例の分単位メトリック データでは、パーティション キーは分単位解決の時間を使用しています。 行キーは、行に保存され、アクセス タイプと要求タイプという 2 つの情報から構成されるタイプの情報を識別します。
 
 * アクセス タイプは user と system のいずれかになります。user はストレージ サービスに対するすべてのユーザー要求を意味し、system は Storage Analytics により行われる要求を意味します。
 * 要求タイプは、概要行となる all か、QueryEntity や UpdateEntity など特定の API のいずれかになります。
@@ -191,3 +191,4 @@ private static string MetricsString(MetricsEntity entity, OperationContext opCon
 
 ## <a name="next-steps"></a>次のステップ:
 [Storage Analytics ログの有効化とログ データへのアクセス](https://msdn.microsoft.com/library/dn782840.aspx)
+

@@ -14,9 +14,9 @@ ms.workload: na
 ms.date: 02/07/2017
 ms.author: magoedte; eslesar
 translationtype: Human Translation
-ms.sourcegitcommit: 146fe63ba2c9efd8b734eb8cc8cb5dee82a94f2a
-ms.openlocfilehash: 97757f2cc78dc02f4efdcb3c09cee7741504448b
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: e0aa7db15451bd3ea868932455127e000619aa5d
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -53,13 +53,13 @@ Azure Automation を使用して、Desired State Configuration (DSC) 構成を�
 
 ## <a name="compiling-a-dsc-configuration-with-windows-powershell"></a>Windows PowerShell を使用した DSC 構成のコンパイル
 
-[`Start-AzureRmAutomationDscCompilationJob`](https://msdn.microsoft.com/library/mt244118.aspx) を使用して、Windows PowerShell を使用したコンパイルを開始できます。 次のサンプル コードは、 **SampleConfig**という名前の DSC 構成のコンパイルを開始します。
+[`Start-AzureRmAutomationDscCompilationJob`](/powershell/module/azurerm.automation/start-azurermautomationdsccompilationjob) を使用して、Windows PowerShell を使用したコンパイルを開始できます。 次のサンプル コードは、 **SampleConfig**という名前の DSC 構成のコンパイルを開始します。
 
 ```powershell
 Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -AutomationAccountName "MyAutomationAccount" -ConfigurationName "SampleConfig"
 ```
 
-`Start-AzureRmAutomationDscCompilationJob` は、ジョブの状態を追跡するのに使用できるコンパイル ジョブ オブジェクトを返します。 このコンパイル ジョブ オブジェクトを、[`Get-AzureRmAutomationDscCompilationJob`](https://msdn.microsoft.com/library/mt244120.aspx) と共に使用してコンパイル ジョブの状態を確認したり、[`Get-AzureRmAutomationDscCompilationJobOutput`](https://msdn.microsoft.com/library/mt244103.aspx) と共に使用してストリーム (出力) を表示したりすることができます。 次のサンプル コードでは、 **SampleConfig** 構成のコンパイルを開始し、コンパイルが完了するまで待機した後、ストリームを表示します。
+`Start-AzureRmAutomationDscCompilationJob` は、ジョブの状態を追跡するのに使用できるコンパイル ジョブ オブジェクトを返します。 このコンパイル ジョブ オブジェクトを、[`Get-AzureRmAutomationDscCompilationJob`](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjob) と共に使用してコンパイル ジョブの状態を確認したり、[`Get-AzureRmAutomationDscCompilationJobOutput`](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjoboutput) と共に使用してストリーム (出力) を表示したりすることができます。 次のサンプル コードでは、 **SampleConfig** 構成のコンパイルを開始し、コンパイルが完了するまで待機した後、ストリームを表示します。
 
 ```powershell
 $CompilationJob = Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -AutomationAccountName "MyAutomationAccount" -ConfigurationName "SampleConfig"
@@ -76,7 +76,7 @@ $CompilationJob | Get-AzureRmAutomationDscCompilationJobOutput –Stream Any
 ## <a name="basic-parameters"></a>基本パラメーター
 DSC 構成のパラメーターの宣言 (パラメーターの種類、プロパティなど) は、Azure Automation Runbook と同じように動作します。 Runbook のパラメーターの詳細については、「 [Azure Automation での Runbook を開始する](automation-starting-a-runbook.md) 」を参照してください。
 
-次の例では、コンパイル時に生成される、**ParametersExample.sample** ノード構成のプロパティの値を指定するために、**FeatureName** と **IsPresent** という&2; つのパラメーターを使用します。
+次の例では、コンパイル時に生成される、**ParametersExample.sample** ノード構成のプロパティの値を指定するために、**FeatureName** と **IsPresent** という 2 つのパラメーターを使用します。
 
 ```powershell
 Configuration ParametersExample
@@ -157,7 +157,7 @@ Configuration ConfigurationDataSample
 }
 ```
 
-上記の DSC 構成は PowerShell を使用してコンパイルできます。 以下の PowerShell では、**ConfigurationDataSample.MyVM1** と **ConfigurationDataSample.MyVM3** という&2; つのノード構成が Azure Automation DSC プル サーバーに追加されます。
+上記の DSC 構成は PowerShell を使用してコンパイルできます。 以下の PowerShell では、**ConfigurationDataSample.MyVM1** と **ConfigurationDataSample.MyVM3** という 2 つのノード構成が Azure Automation DSC プル サーバーに追加されます。
 
 ```powershell
 $ConfigData = @{
@@ -220,7 +220,7 @@ Configuration CredentialSample
 }
 ```
 
-上記の DSC 構成は PowerShell を使用してコンパイルできます。 以下の PowerShell では、**CredentialSample.MyVM1** と **CredentialSample.MyVM2** という&2; つのノード構成が Azure Automation DSC プル サーバーに追加されます。
+上記の DSC 構成は PowerShell を使用してコンパイルできます。 以下の PowerShell では、**CredentialSample.MyVM1** と **CredentialSample.MyVM2** という 2 つのノード構成が Azure Automation DSC プル サーバーに追加されます。
 
 ```powershell
 $ConfigData = @{
@@ -243,7 +243,7 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -A
 
 ## <a name="importing-node-configurations"></a>ノード構成のインポート
 
-Azure の外部でコンパイルしたノード構成 (MOF) をインポートすることもできます。 この処理の利点の&1; つは、ノード構成に署名できることです。
+Azure の外部でコンパイルしたノード構成 (MOF) をインポートすることもできます。 この処理の利点の 1 つは、ノード構成に署名できることです。
 署名済みのノード構成は DSC エージェントの管理ノードでローカルに検証され、ノードに適用されている構成が承認済みのソースから取得されたことを確認します。
 
 > [!NOTE]
@@ -268,7 +268,7 @@ Azure の外部でコンパイルしたノード構成 (MOF) をインポート�
 
 ### <a name="importing-a-node-configuration-with-powershell"></a>PowerShell でのノード構成のインポート
 
-[Import-AzureRmAutomationDscNodeConfiguration](https://docs.microsoft.com/en-us/powershell/resourcemanager/azurerm.automation/v1.0.12/import-azurermautomationdscnodeconfiguration) コマンドレットを使用して、ノード構成を Automation アカウントにインポートできます。
+[Import-AzureRmAutomationDscNodeConfiguration](/powershell/module/azurerm.automation/import-azurermautomationdscnodeconfiguration) コマンドレットを使用して、ノード構成を Automation アカウントにインポートできます。
 
 ```powershell
 Import-AzureRmAutomationDscNodeConfiguration -AutomationAccountName "MyAutomationAccount" -ResourceGroupName "MyResourceGroup" -ConfigurationName "MyNodeConfiguration" -Path "C:\MyConfigurations\TestVM1.mof"

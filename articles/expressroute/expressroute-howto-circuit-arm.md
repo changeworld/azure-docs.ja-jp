@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: ganesr;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: 15c08c950bc1dcd620f2943885e427991585d817
-ms.lasthandoff: 04/13/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 7254217bc6a7b782eb19c8f062c46923dc5e7506
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 04/13/2017
 この記事では、PowerShell コマンドレットと Azure Resource Manager デプロイメント モデルを使用して、Azure ExpressRoute 回線を作成する方法について説明します。 この記事では、回線の状態確認、更新、または削除およびプロビジョニング解除の方法も示します。
 
 ## <a name="before-you-begin"></a>開始する前に
-* Azure Resource Manager PowerShell コマンドレットの最新版をインストールしてください。 詳細については、[Azure PowerShell の概要](/powershell/azureps-cmdlets-docs)に関するページをご覧ください。
+* Azure Resource Manager PowerShell コマンドレットの最新版をインストールしてください。 詳細については、[Azure PowerShell の概要](/powershell/azure/overview)に関するページをご覧ください。
 * 構成を開始する前に、[前提条件](expressroute-prerequisites.md)と[ワークフロー](expressroute-workflows.md)を確認してください。
 
 

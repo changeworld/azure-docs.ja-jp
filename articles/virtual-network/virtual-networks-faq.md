@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 01/18/2017
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: e1f7b85308d7482e0066809737749e73029cd758
-ms.openlocfilehash: eed133ba2f0a5e1665afd39b2122d3aacd3cc40a
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 58ee6e9cc14b01f10e20dfc3f289bfc6cc386e2a
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -72,7 +73,7 @@ VNet を使用して次のことが行えます。
 サポートする最小のサブネットは /29 、最大は /8 です (CIDR サブネット定義を使用)。
 
 ### <a name="can-i-bring-my-vlans-to-azure-using-vnets"></a>VNet を使用して、VLAN を Azure に接続できるでしょうか。
-いいえ。 VNet はレイヤー&3; のオーバーレイです。 Azure では、任意のレイヤー&2; のセマンティクスはサポートされません。
+いいえ。 VNet はレイヤー 3 のオーバーレイです。 Azure では、任意のレイヤー 2 のセマンティクスはサポートされません。
 
 ### <a name="can-i-specify-custom-routing-policies-on-my-vnets-and-subnets"></a>私の Vnet とサブネットをカスタム ルーティング ポリシーを指定できますか。
 はい。 ユーザー定義のルーティング (UDR) を使用することができます。 UDR の詳細については、 [ユーザー定義のルートと IP 転送](virtual-networks-udr-overview.md)を参照してください。
@@ -161,7 +162,7 @@ Azure で提供される DNS は、Microsoft によって提供されるマル�
 ### <a name="what-happens-to-my-ip-addresses-if-i-stop-a-cloud-service-deployment-slot-or-shutdown-a-vm-from-within-the-operating-system"></a>クラウド サービス デプロイ スロットを停止した場合や、オペレーティング システム内から VM をシャットダウンした場合、IP アドレスはどうなりますか。
 何もありません。 IP アドレス (パブリック VIP、パブリック、プライベート) は、クラウド サービス デプロイ スロットまたは VM に割り当てられたままとなります。 動的アドレスは、VM が停止 (割り当て解除) または削除された場合、あるいはクラウド サービス デプロイ スロットが削除された場合にのみ解放されます。 Azure Portal 内の VM の **[停止]** ボタンをクリックすると、状態が [停止済み (割り当て解除)] に設定されます。 この場合、VM はその IP アドレスを失います。
 
-### <a name="can-i-move-vms-from-one-subnet-to-another-subnet-in-a-vnet-without-re-deploying"></a>VNet 内で&1; つのサブネットからもう&1; つのサブネットへと、再デプロイせずに移動できますか。
+### <a name="can-i-move-vms-from-one-subnet-to-another-subnet-in-a-vnet-without-re-deploying"></a>VNet 内で 1 つのサブネットからもう 1 つのサブネットへと、再デプロイせずに移動できますか。
 はい。 詳細については、「[VM またはロール インスタンスを別のサブネットに移動する方法](virtual-networks-move-vm-role-to-subnet.md)」を参照してください。
 
 ### <a name="can-i-configure-a-static-mac-address-for-my-vm"></a>VM に静的な MAC アドレスを構成できますか。
@@ -213,11 +214,6 @@ Vnet は、1 つの別の機能と、Azure インフラストラクチャでホ�
 ### <a name="is-there-tooling-support-for-vnets"></a>VNet に対するツール サポートはありますか。
 はい。 次のツールを使用できます。
 - Azure Portal。[Azure Resource Manager](virtual-networks-create-vnet-arm-pportal.md) および[クラシック](virtual-networks-create-vnet-classic-pportal.md) デプロイメント モデルを使用して VNet をデプロイするために使用します。
-- PowerShell。[Resource Manager](/powershell/resourcemanager/azurerm.network/v3.1.0/azurerm.network.md) および[クラシック](/powershell/servicemanagement/azure.networking/v3.1.0/azure.networking) デプロイメント モデルを使用してデプロイされた VNet を管理するために使用します。
+- PowerShell。[Resource Manager](/powershell/resourcemanager/azurerm.network/v3.1.0/azurerm.network.md) および[クラシック](/powershell/module/azure/?view=azuresmps-3.7.0) デプロイメント モデルを使用してデプロイされた VNet を管理するために使用します。
 - [Azure コマンド ライン インターフェイス (CLI)](../virtual-machines/azure-cli-arm-commands.md#azure-network-commands-to-manage-network-resources)。両方のデプロイメント モデルを使用してデプロイされた VNet を管理するために使用します。  
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 04/14/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 7d8f200799163a86f20efa100257d2ec006dd785
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: ba5e069fb57be9ed896c0454b011aabf5fd68a0b
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -36,7 +36,7 @@ ms.lasthandoff: 04/18/2017
 > [!IMPORTANT]
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、「[HDInsight コンポーネントのバージョン](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)」を参照してください。
 
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+* [Azure PowerShell](/powershell/azure/overview)
 
 ## <a name="recommendations"></a>Azure PowerShell を使用したリコメンデーションの生成
 

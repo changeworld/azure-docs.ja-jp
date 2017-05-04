@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 04/11/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 003a32f2ef67f8aa63ed7be2553fa0f0c3afc08a
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: f4d2535e929996101f6e22ffbd0b2105e8fbf2a8
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -49,7 +49,7 @@ ms.lasthandoff: 04/12/2017
   2. **クライアント ID** と**秘密キー**を取得します。 
   3. **テナント ID**を取得します。 
   4. **ADFCopyTutorialApp** アプリケーションを **Data Factory 共同作成者**ロールに割り当てます。  
-* [Azure PowerShell](/powershell/azureps-cmdlets-docs)をインストールします。  
+* [Azure PowerShell](/powershell/azure/overview)をインストールします。  
 * **PowerShell** を起動し、次の手順を実行します。 Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
   
   1. 次のコマンドを実行して、Azure Portal へのサインインに使用するユーザー名とパスワードを入力します。

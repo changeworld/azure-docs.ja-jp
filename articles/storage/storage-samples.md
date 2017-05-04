@@ -15,9 +15,9 @@ ms.workload: storage
 ms.date: 01/23/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: c5fedb8c4a6e3722e2f37dd432cec60513c73e0d
-ms.openlocfilehash: dc466ed5dbd7ad14dd1c84760d9205b940acf504
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
+ms.openlocfilehash: dd11ad70efd8f78805e74ad193fb9000abf6a3a8
+ms.lasthandoff: 04/29/2017
 
 
 ---
@@ -28,9 +28,12 @@ ms.lasthandoff: 01/24/2017
 ## <a name="azure-code-samples-library"></a>Azure のコード サンプル ライブラリ
 [Azure のコード サンプル ライブラリ](https://azure.microsoft.com/documentation/samples/?service=storage) には、ダウンロードしてローカルで実行できる Azure Storage のサンプルが用意されています。 コード サンプル ライブラリでは、サンプル コードが .zip 形式で提供されます。 また、各サンプルの GitHub リポジトリを参照して複製することもできます。
 
-## <a name="getting-started-samples"></a>入門サンプル
-* [Azure Storage を&5; 分で使い始める](storage-getting-started-guide.md)
-* [Azure Storage の Visual Studio クイック スタート](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/VisualStudioQuickStarts)
+<!--## Getting started samples-->
+<!-- after our quick starts are available, replace this link with a link to one of those. 
+Had to remove this article, it refers to the VS quickstarts, and they've stopped publishing them. Robin --> 
+<!--* [Get started with Azure Storage in five minutes](storage-getting-started-guide.md)
+* [Visual Studio Quick Starts for Azure Storage](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/VisualStudioQuickStarts)
+-->
 
 ## <a name="net-samples"></a>.NET のサンプル
 .NET のサンプルを調べるには、NuGet から [.NET ストレージ クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/) をダウンロードします。 .NET ストレージ クライアント ライブラリは、 [Azure SDK for .NET のページ](https://azure.microsoft.com/downloads/)にも用意されています。

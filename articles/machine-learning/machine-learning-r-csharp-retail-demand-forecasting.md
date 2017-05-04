@@ -1,24 +1,11 @@
 ---
-title: "(非推奨) 予測 - ETS + STL - Azure | Microsoft Docs"
-description: "(非推奨) 予測 - ETS + STL"
-services: machine-learning
-documentationcenter: 
-author: xueshanz
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 153eab4d-6293-45e1-9871-ec339e810dd9
-ms.service: machine-learning
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: deprecated
-ms.date: 01/06/2017
-ms.author: yijichen
+
 ROBOTS: NOINDEX, NOFOLLOW
+redirect_url: https://gallery.cortanaintelligence.com/
 translationtype: Human Translation
-ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
-ms.openlocfilehash: cdf6661a36e38bf7a6fca241682be796712bd5d9
-ms.lasthandoff: 01/11/2017
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 813a1fcedc7a421568aff6514474957057b5deb9
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -27,13 +14,13 @@ ms.lasthandoff: 01/11/2017
 > [!NOTE]
 > Microsoft DataMarket は間もなく提供終了となる予定です。この API は推奨されていません。 
 > 
-> [Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com)では、便利なサンプル実験や API が提供されています。 ギャラリーについて詳しくは、「 [Cortana Intelligence ギャラリーでリソースを共有および発見する](machine-learning-gallery-how-to-use-contribute-publish.md)」をご覧ください。
+> [Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com)では、便利なサンプル実験や API が多数提供されています。 ギャラリーについて詳しくは、「 [Cortana Intelligence ギャラリーでリソースを共有および発見する](machine-learning-gallery-how-to-use-contribute-publish.md)」をご覧ください。
 
 この [Web サービス](https://datamarket.azure.com/dataset/aml_labs/demand_forecast) は、季節的な傾向の分解 (STL) と指数平滑法モデル (ETS) を実装し、ユーザーが指定した履歴データに基づく予測を生成します。 今年、特定の製品の需要が増加するでしょうか。 クリスマス シーズンの製品販売を予測して、効果的な在庫計画を策定できるでしょうか。 予測モデルは、このような質問に答えることができます。 これらのモデルは、過去のデータを指定すると、隠れた傾向や季節性を検証し、将来の傾向を予測します。 
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-> この Web サービスは、モバイル アプリ、Web サイト、ローカル コンピューターなどからユーザーが使用できます。 この Web サービスのもう&1; つの目的は、Azure Machine Learning を使用して R コード上に Web サービスを作成する方法の例を示すことです。 数行の R コードを記述し、Azure Machine Learning Studio 内でボタンを何回かクリックするだけで、R コードで実験を作成し、Web サービスとして発行できます。 この Web サービスは Azure Marketplace に発行され、Web サービスの作成者がインフラストラクチャを設定することなく、世界中のユーザーやデバイスで使用されます。  
+> この Web サービスは、モバイル アプリ、Web サイト、ローカル コンピューターなどからユーザーが使用できます。 この Web サービスのもう 1 つの目的は、Azure Machine Learning を使用して R コード上に Web サービスを作成する方法の例を示すことです。 数行の R コードを記述し、Azure Machine Learning Studio 内でボタンを何回かクリックするだけで、R コードで実験を作成し、Web サービスとして発行できます。 この Web サービスは Azure Marketplace に発行され、Web サービスの作成者がインフラストラクチャを設定することなく、世界中のユーザーやデバイスで使用されます。  
 > 
 > 
 

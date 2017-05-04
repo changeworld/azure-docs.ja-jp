@@ -17,9 +17,9 @@ ms.date: 03/14/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: edc3cf6906bb535aec6e5203a5b306e33cd51599
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 7f86fb57d9082e19b506c42737aaa020d474d599
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -45,7 +45,7 @@ Windows MPI トラフィック用に Azure RDMA ネットワークにアクセ�
 * **MPI** -Microsoft MPI (MS-MPI) 2012 R2 以降、Intel MPI ライブラリ 5.x
 
   サポートされている MPI 実装では、インスタンス間の通信に Microsoft Network Direct インターフェイスが使用されます。 
-* **HpcVmDrivers 拡張機能** - RDMA 対応の VM で、HpcVmDrivers 拡張機能を追加して、RDMA 接続を有効にする Windows ネットワーク デバイス ドライバーをインストールする必要があります  (A8 インスタンスと A9 インスタンスの特定のデプロイでは、HpcVmDrivers 拡張機能は自動的に追加されます)。VM に VM 拡張機能を追加する必要がある場合は、[Azure PowerShell](/powershell/azureps-cmdlets-docs) コマンドレットを使用できます。 
+* **HpcVmDrivers 拡張機能** - RDMA 対応の VM で、HpcVmDrivers 拡張機能を追加して、RDMA 接続を有効にする Windows ネットワーク デバイス ドライバーをインストールする必要があります  (A8 インスタンスと A9 インスタンスの特定のデプロイでは、HpcVmDrivers 拡張機能は自動的に追加されます)。VM に VM 拡張機能を追加する必要がある場合は、[Azure PowerShell](/powershell/azure/overview) コマンドレットを使用できます。 
 
   
   たとえば、Resource Manager デプロイメント モデルでデプロイされている既存の RDMA 対応 VM (myVM) に HpcVMDrivers 拡張機能の最新バージョン 1.1 をインストールするには:

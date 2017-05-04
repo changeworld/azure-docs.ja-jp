@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 11/22/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: a78fc57d264e9f8074c94b334b24bbf1b7871d08
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: ee3a2e0fe4c8a554d763befc466d7fc0638964ce
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -32,10 +32,10 @@ ms.lasthandoff: 03/25/2017
 
 リモート デスクトップを使用して、Azure で実行されているロールのデスクトップにアクセスできます。 リモート デスクトップ接続を使用すると、アプリケーションの実行中にそのアプリケーションの問題のトラブルシューティングや診断を行うことができます。
 
-この記事では、PowerShell を使用して、クラウド サービスのロールでリモート デスクトップを有効にする方法について説明します。 この記事で求められる前提条件については、 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) に関するページを参照してください。 PowerShell では、リモート デスクトップ拡張機能を使用するため、アプリケーションのデプロイ後にリモート デスクトップを有効化できます。
+この記事では、PowerShell を使用して、クラウド サービスのロールでリモート デスクトップを有効にする方法について説明します。 この記事で求められる前提条件については、 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) に関するページを参照してください。 PowerShell では、リモート デスクトップ拡張機能を使用するため、アプリケーションのデプロイ後にリモート デスクトップを有効化できます。
 
 ## <a name="configure-remote-desktop-from-powershell"></a>PowerShell からリモート デスクトップを構成する
-[Set-AzureServiceRemoteDesktopExtension](https://msdn.microsoft.com/library/azure/dn495117.aspx) コマンドレットを使用すると、クラウド サービス デプロイの指定したロールまたはすべてのロールでリモート デスクトップを有効にすることができます。 このコマンドレットでは、PSCredential オブジェクトを受け入れる *Credential* パラメーターを使用してリモート デスクトップ ユーザーのユーザー名とパスワードを指定できます。
+[Set-AzureServiceRemoteDesktopExtension](/powershell/module/azure/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) コマンドレットを使用すると、クラウド サービス デプロイの指定したロールまたはすべてのロールでリモート デスクトップを有効にすることができます。 このコマンドレットでは、PSCredential オブジェクトを受け入れる *Credential* パラメーターを使用してリモート デスクトップ ユーザーのユーザー名とパスワードを指定できます。
 
 PowerShell を対話形式で使用している場合は、 [Get-Credentials](https://technet.microsoft.com/library/hh849815.aspx) コマンドレットを呼び出すことで、PSCredential オブジェクトを簡単に設定できます。
 
@@ -60,7 +60,7 @@ ConvertTo-SecureString -String "Password123" -AsPlainText -Force | ConvertFrom-S
 
 セキュリティで保護されたパスワード ファイルから資格情報オブジェクトを作成するには、ファイルの内容を読み取り、 [ConvertTo-SecureString](https://technet.microsoft.com/library/hh849818.aspx)を使用して、セキュリティで保護された文字列にもう一度変換する必要があります。
 
-[Set-AzureServiceRemoteDesktopExtension](https://msdn.microsoft.com/library/azure/dn495117.aspx) コマンドレットは、ユーザー アカウントの期限が切れる *日時* を指定する **Expiration** パラメーターも受け入れます。 たとえば、現在の日時から数日後にアカウントの期限が切れるように設定することもできます。
+[Set-AzureServiceRemoteDesktopExtension](/powershell/module/azure/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) コマンドレットは、ユーザー アカウントの期限が切れる *日時* を指定する **Expiration** パラメーターも受け入れます。 たとえば、現在の日時から数日後にアカウントの期限が切れるように設定することもできます。
 
 次の PowerShell の例では、クラウド サービスでリモート デスクトップ拡張機能を設定する方法を示しています。
 
@@ -77,7 +77,7 @@ Set-AzureServiceRemoteDesktopExtension -ServiceName $servicename -Credential $cr
 リモート デスクトップ拡張機能は、デプロイに関連付けられています。 サービスの新しいデプロイを作成した場合は、そのデプロイでリモート デスクトップを有効にする必要があります。 常にリモート デスクトップを有効にしておく必要がある場合は、PowerShell スクリプトをデプロイのワークフローに統合することを検討してください。
 
 ## <a name="remote-desktop-into-a-role-instance"></a>ロール インスタンスへのリモート デスクトップ接続
-クラウド サービスの特定のロール インスタンスにリモート デスクトップ接続するには、 [Get-AzureRemoteDesktopFile](https://msdn.microsoft.com/library/azure/dn495261.aspx) コマンドレットを使用します。 *LocalPath* パラメーターを使用すると、RDP ファイルをローカルにダウンロードできます。 *Launch* パラメーターを使用して、クラウド サービスのロール インスタンスにアクセスするための [リモート デスクトップ接続] ダイアログを直接起動することもできます。
+クラウド サービスの特定のロール インスタンスにリモート デスクトップ接続するには、 [Get-AzureRemoteDesktopFile](/powershell/module/azure/get-azureremotedesktopfile?view=azuresmps-3.7.0) コマンドレットを使用します。 *LocalPath* パラメーターを使用すると、RDP ファイルをローカルにダウンロードできます。 *Launch* パラメーターを使用して、クラウド サービスのロール インスタンスにアクセスするための [リモート デスクトップ接続] ダイアログを直接起動することもできます。
 
 ```
 Get-AzureRemoteDesktopFile -ServiceName $servicename -Name "WorkerRole1_IN_0" -Launch
@@ -85,7 +85,7 @@ Get-AzureRemoteDesktopFile -ServiceName $servicename -Name "WorkerRole1_IN_0" -L
 
 
 ## <a name="check-if-remote-desktop-extension-is-enabled-on-a-service"></a>サービスでリモート デスクトップ拡張機能が有効になっているかどうかを確認する
-[Get-AzureServiceRemoteDesktopExtension](https://msdn.microsoft.com/library/azure/dn495261.aspx) コマンドレットを使用すると、サービスのデプロイでリモート デスクトップが有効になっているか、無効になっているかが表示されます。 このコマンドレットによって、リモート デスクトップ ユーザーのユーザー名と、リモート デスクトップ拡張機能が有効になっているロールが返されます。 既定では、これはデプロイ スロットで行われるため、代わりにステージング スロットを使用することもできます。
+[Get-AzureServiceRemoteDesktopExtension](/powershell/module/azure/get-azureremotedesktopfile?view=azuresmps-3.7.0) コマンドレットを使用すると、サービスのデプロイでリモート デスクトップが有効になっているか、無効になっているかが表示されます。 このコマンドレットによって、リモート デスクトップ ユーザーのユーザー名と、リモート デスクトップ拡張機能が有効になっているロールが返されます。 既定では、これはデプロイ スロットで行われるため、代わりにステージング スロットを使用することもできます。
 
 ```
 Get-AzureServiceRemoteDesktopExtension -ServiceName $servicename
@@ -94,7 +94,7 @@ Get-AzureServiceRemoteDesktopExtension -ServiceName $servicename
 ## <a name="remove-remote-desktop-extension-from-a-service"></a>リモート デスクトップ拡張機能をサービスから削除する
 デプロイで既にリモート デスクトップ拡張機能を有効にしている状態で、リモート デスクトップ設定を更新する必要がある場合は、まず拡張機能を削除する必要があります。 次に、新しい設定でもう一度有効にします。 たとえば、リモート ユーザー アカウントに新しいパスワードを設定する必要がある場合や、ユーザー アカウントの有効期限が切れた場合などです。 これは、リモート デスクトップ拡張機能が有効になっている既存のデプロイで必要な操作です。 新しいデプロイの場合は、単に拡張機能を直接適用できます。
 
-リモート デスクトップ拡張機能をデプロイから削除するには、 [Remove-AzureServiceRemoteDesktopExtension](https://msdn.microsoft.com/library/azure/dn495280.aspx) コマンドレットを使用します。 また、必要に応じて、リモート デスクトップ拡張機能を削除するデプロイ スロットおよびロールを指定することもできます。
+リモート デスクトップ拡張機能をデプロイから削除するには、 [Remove-AzureServiceRemoteDesktopExtension](/powershell/module/azure/remove-azureserviceremotedesktopextension?view=azuresmps-3.7.0) コマンドレットを使用します。 また、必要に応じて、リモート デスクトップ拡張機能を削除するデプロイ スロットおよびロールを指定することもできます。
 
 ```
 Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallConfiguration

@@ -16,9 +16,9 @@ ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 18156086ca3eaf3ee99dfeb61096bc1eee49458b
-ms.openlocfilehash: 3d32518bed64ebe3dd1790bb511949624b5dcac1
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: deb528faa29a1e547286b0560d0f2b8decf3f90a
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -222,7 +222,7 @@ BLOB ストレージ用のコンテナーがまだない場合は、次の手順
 ![不正行為の検出: 不正なイベントをリアルタイムで表示](./media/stream-analytics-real-time-fraud-detection/stream-ananlytics-view-real-time-fraudent-events.png)
 
 ## <a name="get-support"></a>サポートを受ける
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)

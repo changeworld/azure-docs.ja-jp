@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 04/17/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 813217567c7e1fa5fc9ac11492933ad0c34553d1
-ms.lasthandoff: 04/19/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: cf652f1ba6b7d3aa0717a2e3a54000a4aebccc78
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -79,12 +79,12 @@ Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログイ�
 ![Service Fabric Explorer][service-fabric-explorer]
 
 ## <a name="connect-to-the-cluster-using-powershell"></a>PowerShell を使用してクラスターに接続する
-PowerShell を使用して接続することで、クラスターが実行されていることを確認します。  ServiceFabric PowerShell モジュールは、[Service Fabric SDK](service-fabric-get-started.md) と共にインストールされます。  クラスターへの接続は、[Connect-ServiceFabricCluster](/powershell/module/ServiceFabric/Connect-ServiceFabricCluster) コマンドレットで確立します。   
+PowerShell を使用して接続することで、クラスターが実行されていることを確認します。  ServiceFabric PowerShell モジュールは、[Service Fabric SDK](service-fabric-get-started.md) と共にインストールされます。  クラスターへの接続は、[Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) コマンドレットで確立します。   
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint localhost:19000
 ```
-その他の方法でクラスターに接続する例については、「[セキュリティ保護されたクラスターに接続する](service-fabric-connect-to-secure-cluster.md)」を参照してください。 クラスターに接続した後、[Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode) コマンドレットを使って、クラスターに含まれている一連のノードとノードごとの状態情報を表示します。 すべてのノードで **HealthState** が *OK* になっている必要があります。
+その他の方法でクラスターに接続する例については、「[セキュリティ保護されたクラスターに接続する](service-fabric-connect-to-secure-cluster.md)」を参照してください。 クラスターに接続した後、[Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) コマンドレットを使って、クラスターに含まれている一連のノードとノードごとの状態情報を表示します。 すべてのノードで **HealthState** が *OK* になっている必要があります。
 
 ```powershell
 PS C:\> Get-ServiceFabricNode |Format-Table
@@ -119,3 +119,4 @@ Azure Portal でリソース グループを削除するには:
 [cluster-status]: ./media/service-fabric-get-started-azure-cluster/clusterstatus.png
 [service-fabric-explorer]: ./media/service-fabric-get-started-azure-cluster/sfx.png
 [cluster-delete]: ./media/service-fabric-get-started-azure-cluster/delete.png
+

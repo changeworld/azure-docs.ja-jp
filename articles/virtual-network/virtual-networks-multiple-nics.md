@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 5e91f640ab72fd3a5fffcb0f9d7bac1e9e031249
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 5b26aecc7b9797d7bf604ea5e3d8bdece5bea17b
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -77,7 +77,7 @@ Azure に仮想マシン (VM) を作成し、複数のネットワーク イン�
 
 * Azure サブスクリプション。
 * 構成済みの仮想ネットワーク。 Vnet の詳細については、「 [仮想ネットワークの概要](virtual-networks-overview.md) 」を参照してください。
-* Azure PowerShell の最新バージョンをダウンロードしてインストールしていること。 「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」を参照してください。
+* Azure PowerShell の最新バージョンをダウンロードしてインストールしていること。 「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。
 
 複数 NIC を持つ VM を作成するには、1 つの PowerShell セッションに各コマンドを入力して次の手順を実行します。
 

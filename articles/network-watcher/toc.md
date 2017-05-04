@@ -54,7 +54,7 @@
 ## [オープン ソース ツールを使用して不正侵入検出を実行する](network-watcher-intrusion-detection-open-source-tools.md)
 ## [Azure Log Analytics で Application Gateway のログを分析する](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)
 # リファレンス
-## [PowerShell](https://docs.microsoft.com/powershell/resourcemanager)
+## [PowerShell](/powershell/azure/overview)
 ## [.NET](/dotnet/api)
 ## [REST ()](/rest/api/networkwatcher/)
 # 関連項目

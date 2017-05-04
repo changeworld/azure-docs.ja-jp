@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: asteen
 translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 569a8db4266182122e9da175840484473e9106e5
-ms.lasthandoff: 04/11/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: d244905089605bb8608085d3e0132590c927ef6f
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -31,9 +31,9 @@ ms.lasthandoff: 04/11/2017
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**または**共同管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[More services (その他のサービス)]** をクリックして **[Azure Active Directory Extension (Azure Active Directory 拡張機能)]** を開きます。
+2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** アイテムを選択します。
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
 4.  Azure Active Directory の左側にあるナビゲーション メニューで **[エンタープライズ アプリケーション]** をクリックします。
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 04/11/2017
 
 6.  Visual Studio の [ASP.net の認証方法](http://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions)または [接続済みサービス](http://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)を使用して開発しているアプリケーションを追加する場合。
 
-7.  [Azure AD PowerShell モジュール](https://docs.microsoft.com/powershell/azuread/v2/azureactivedirectory)を使用してサービス プリンシパル オブジェクトを作成する場合。
+7.  [Azure AD PowerShell モジュール](/powershell/azure/install-adv2?view=azureadps-2.0)を使用してサービス プリンシパル オブジェクトを作成する場合。
 
 8.  管理者として、テナントのデータを[アプリケーションが使用することに同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)する場合。
 
@@ -87,17 +87,17 @@ ms.lasthandoff: 04/11/2017
 
 ## <a name="i-want-to-delete-an-application-entirely"></a>アプリケーションを完全に削除する必要がある
 
-**アプリケーションを削除**するには、以下の手順に従います。
+**アプリケーションを削除する**には、以下の手順に従います。
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**または**共同管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[More services (その他のサービス)]** をクリックして **[Azure Active Directory Extension (Azure Active Directory 拡張機能)]** を開きます。
+2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** アイテムを選択します。
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
 4.  Azure Active Directory の左側にあるナビゲーション メニューで **[エンタープライズ アプリケーション]** をクリックします。
 
-5.  **[All Applications (すべてのアプリケーション)]** をクリックしてすべてのアプリケーションの一覧を表示します。
+5.  **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
 
   * ここに表示したいアプリケーションが表示されない場合は、**[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、**[表示]** オプションを **[All Applications (すべてのアプリケーション)]** に設定します。
 
@@ -107,15 +107,15 @@ ms.lasthandoff: 04/11/2017
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>すべてのアプリケーションに対して今後のユーザーの同意操作をすべて無効にする必要がある
 
-ディレクトリ全体でユーザーの同意を無効にすると、エンドユーザーはアプリケーションに同意できなくなります。 管理者は、依然としてユーザーに代わって同意できます。 アプリケーションの同意と、これを行う理由または行わない理由について詳しくは、[「ユーザーおよび管理者の同意について」](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)をご覧ください。
+ディレクトリ全体でユーザーの同意を無効にすると、エンドユーザーはすべてのアプリケーションに同意できなくなります。 管理者は、依然としてユーザーに代わって同意できます。 アプリケーションの同意と、これを行う理由または行わない理由の詳細については、「[ユーザーおよび管理者の同意について](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)」をご覧ください。
 
 **ディレクトリ全体で今後のユーザーの同意動作をすべて無効にする**には、以下の手順に従います。
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[More services (その他のサービス)]** をクリックして **[Azure Active Directory Extension (Azure Active Directory 拡張機能)]** を開きます。
+2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** アイテムを選択します。
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
 4.  ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
 

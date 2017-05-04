@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 0e9fa1b1397c60985de9d2e60b3f01146036801f
-ms.lasthandoff: 04/26/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a67ea630cc8b5a3e9deab7733aa5cd2055949ec0
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -32,7 +32,7 @@ ms.lasthandoff: 04/26/2017
 
 ## <a name="verify-using-powershell"></a>PowerShell を使用した確認
 
-PowerShell を使用して確認を行うには、Azure Resource Manager PowerShell コマンドレットの最新版をインストールします。 PowerShell コマンドレットのインストールについて詳しくは、「[Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」を参照してください。 Resource Manager コマンドレットの使用方法の詳細については、 [Resource Manager での Windows PowerShell の使用](../powershell-azure-resource-manager.md)に関するページをご覧ください。
+PowerShell を使用して確認を行うには、Azure Resource Manager PowerShell コマンドレットの最新版をインストールします。 PowerShell コマンドレットのインストールについて詳しくは、「[Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」を参照してください。 Resource Manager コマンドレットの使用方法の詳細については、 [Resource Manager での Windows PowerShell の使用](../powershell-azure-resource-manager.md)に関するページをご覧ください。
 
 ### <a name="log-in-to-your-azure-account"></a>Azure アカウントにログインする
 1. 昇格された特権で PowerShell コンソールを開き、アカウントに接続します。
@@ -87,7 +87,7 @@ Azure CLI を使用して確認するには、最新バージョンの CLI コ�
 
 
 ## <a name="verify-using-powershell-classic"></a>PowerShell を使用した確認 (クラシック)
-PowerShell を使用して確認を行うには、Azure PowerShell コマンドレットの最新版をインストールします。 Resouce Manager と Service Management (SM) の両方のバージョンをダウンロードしてインストールしてください。 PowerShell コマンドレットのインストールについて詳しくは、「[Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」を参照してください。 
+PowerShell を使用して確認を行うには、Azure PowerShell コマンドレットの最新版をインストールします。 Resouce Manager と Service Management (SM) の両方のバージョンをダウンロードしてインストールしてください。 PowerShell コマンドレットのインストールについて詳しくは、「[Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」を参照してください。 
 
 ### <a name="log-in-to-your-azure-account"></a>Azure アカウントにログインする
 1. 昇格された特権で PowerShell コンソールを開き、アカウントに接続します。

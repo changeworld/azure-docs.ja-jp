@@ -15,9 +15,9 @@ ms.workload: TBD
 ms.date: 02/02/2017
 ms.author: magoedte;eslesar
 translationtype: Human Translation
-ms.sourcegitcommit: f0d3a5c1929bb6dafef735ae3f4291e329861cc9
-ms.openlocfilehash: b750878703baf143a2e8247bdd01f358e462e598
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 852284ce7e82d782c31bb085d4878de25412411a
+ms.lasthandoff: 04/27/2017
 
 ---
 # <a name="azure-automation-dsc-overview"></a>Azure Automation DSC Overview
@@ -42,7 +42,7 @@ PowerShell DSC では、構成という新しい概念が導入されました�
 
 ![alt text](./media/automation-dsc-overview/AADSC_1.png)
 
-構成ブロック内では、ノード構成を定義して、環境内で同じ構成にするべきノード (コンピューター) のセット向けに、必要な構成を指定できます。 このようにして、ノード構成では想定される&1; つ以上のノードの「ロール」を示します。 ノードの構成ブロックはノード キーワードで始まります。 このキーワードの後にロール名 (変数または式の場合あり) を付加します。 ロール名の後に中かっこ {} を使用して、ノードの構成ブロックを区切ります。
+構成ブロック内では、ノード構成を定義して、環境内で同じ構成にするべきノード (コンピューター) のセット向けに、必要な構成を指定できます。 このようにして、ノード構成では想定される 1 つ以上のノードの「ロール」を示します。 ノードの構成ブロックはノード キーワードで始まります。 このキーワードの後にロール名 (変数または式の場合あり) を付加します。 ロール名の後に中かっこ {} を使用して、ノードの構成ブロックを区切ります。
 
 ![alt text](./media/automation-dsc-overview/AADSC_2.png)
 
@@ -57,7 +57,7 @@ DSC 構成を実行 (コンパイル) すると、1 つ以上の DSC ノード�
 Azure Automation DSC では、Azure Automation での DSC 構成のインポート、作成、およびコンパイルが可能です。これは、Azure Automation で Runbook をインポート、作成、および開始する方法に似ています。
 
 > [!IMPORTANT]
-> Azure Automation DSC では、構成にそれと同じ名前の構成ブロックを&1; つだけ含める必要があります。
+> Azure Automation DSC では、構成にそれと同じ名前の構成ブロックを 1 つだけ含める必要があります。
 
 ### <a name="node-configuration"></a>ノード構成
 
@@ -108,7 +108,7 @@ Azure Automation DSC のコンパイル ジョブは、1 つ以上のノード�
 * 従来の PowerShell DSC プル サーバーでは、**ModuleName_Version.zip"** という形式のモジュール zip をプル サーバーに配置する必要があります。 Azure Automation では、 **ModuleName.zip**という形式の名前の PowerShell モジュールをインポートする必要があります。 Azure Automation にモジュールをインポートするために必要な統合モジュールの詳細については、「 [このブログの投稿](https://azure.microsoft.com/blog/2014/12/15/authoring-integration-modules-for-azure-automation/) 」を参照してください。
 * Azure Automation にインポートした PowerShell モジュールには、.doc ファイルや .docx ファイルを含めることはできません。 DSC リソースを含むいくつかの PowerShell モジュールには、参照用にこれらのファイルが含まれます。 Azure Automation にインポートする前に、モジュールからこれらのファイルを削除してください。
 * ノードが初めて Azure Automation アカウントに登録されたとき、またはノードがサーバー側の別のノード構成にマップされるように変更されたときには、ノードの状態は "準拠" になります。 これは、ノードの状態が、現在マップされているノード構成に実際には準拠していない場合であっても当てはまります。 ノードが登録後またはノード構成のマッピング変更後に最初のレポートを送信した後であれば、ノードの状態を信頼できます。
-* いずれかの直接的なオンボーディング方法を使用して、Azure Automation DSC による管理のために Azure Windows VM の利用を開始する場合、Azure Automation に DSC ノードとして VM が表示されるまで最長&1; 時間かかる可能性があります。 これは、VM を Azure Automation DSC にオンボードするために必要な Windows Management Framework 5.0 を、Azure VM DSC 拡張機能が VM にインストールするためです。
+* いずれかの直接的なオンボーディング方法を使用して、Azure Automation DSC による管理のために Azure Windows VM の利用を開始する場合、Azure Automation に DSC ノードとして VM が表示されるまで最長 1 時間かかる可能性があります。 これは、VM を Azure Automation DSC にオンボードするために必要な Windows Management Framework 5.0 を、Azure VM DSC 拡張機能が VM にインストールするためです。
 * 登録すると、各ノードは、1 年後に有効期限が切れる認証用の一意の証明書を自動的にネゴシエートします。 現時点では、PowerShell DSC 登録プロトコルは、有効期限が近づいたときに証明書を自動的に更新することはできないため、1 年後にノードを再登録する必要があります。 再登録する前に、各ノードで Windows Management Framework 5.0 RTM が実行されていることを確認します。 ノードの認証証明書の有効期限が切れるときにノードが再登録されない場合、ノードは Azure Automation と通信できなくなり、[反応なし] とマークされます。 再登録は、ノードを初めて登録したのと同じ方法で実行されます。 証明書の有効期限が切れる 90 日以内または証明書の有効期限が切れた後で再登録を実行すると、新しい証明書が生成されて使用されます。
 
 
@@ -116,7 +116,7 @@ Azure Automation DSC のコンパイル ジョブは、1 つ以上のノード�
 
 * [Azure Automation DSC による管理のためのマシンのオンボード](automation-dsc-onboarding.md)
 * [Azure Automation DSC での構成のコンパイル](automation-dsc-compile.md)
-* [Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](https://msdn.microsoft.com/library/mt244122.aspx)
+* [Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](/powershell/module/azurerm.automation/#automation)
 * [Azure Automation DSC cmdlets (Azure Automation DSC の価格)](https://azure.microsoft.com/pricing/details/automation/)
 * [Azure Automation DSC と Chocolatey を使用した IaaS VM への継続的なデプロイ](automation-dsc-cd-chocolatey.md)
 

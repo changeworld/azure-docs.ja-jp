@@ -16,9 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 04/24/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 5a648173e8088b58ac5a38f4a3c9d3df06157c58
-ms.lasthandoff: 04/26/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: dcb7b326cbb4ed18769010d8061f80dc9f941c87
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -59,7 +59,7 @@ ms.lasthandoff: 04/26/2017
 
 **Azure PowerShell**:
 
-- [最新の Azure PowerShell コマンドをインストールします](/powershell/azureps-cmdlets-docs) (PowerShell で自動バックアップを構成する場合)。
+- [最新の Azure PowerShell コマンドをインストールします](/powershell/azure/overview) (PowerShell で自動バックアップを構成する場合)。
 
 > [!NOTE]
 > 自動バックアップは、SQL Server IaaS Agent 拡張機能に依存します。 現在の SQL 仮想マシン ギャラリー イメージでは、既定でこの拡張機能が追加されます。 詳細については、[SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)に関するページをご覧ください。

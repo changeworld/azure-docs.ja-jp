@@ -4,7 +4,6 @@
 
 # 作業の開始
 
-## [クイック スタート ガイド](storage-getting-started-guide.md)
 ## [ストレージ アカウントの作成](storage-create-storage-account.md)
 
 ## Blob Storage
@@ -166,7 +165,7 @@
 #### [ドライブ マニフェストのバックアップ](storage-import-export-backing-up-drive-manifests.md)
 #### [Import/Export ジョブの診断とエラーからの回復](storage-import-export-diagnostics-and-error-recovery.md)
 # リファレンス
-## [PowerShell](/powershell/storage)
+## [PowerShell](/powershell/module/azure.storage)
 ## [Azure CLI](/cli/azure/storage)
 ## .NET
 ### [リソース マネージャー](/dotnet/api/microsoft.azure.management.storage)
@@ -180,7 +179,7 @@
 ## [iOS](http://azure.github.io/azure-storage-ios/)
 ## [Android](http://azure.github.io/azure-storage-android)
 ## REST ()
-### [BLOB、キュー、テーブル、ファイル](/rest/api/storageservices/azure-storage-services-rest-api-reference)
+### [BLOB、キュー、テーブル、ファイル](/rest/api/storageservices)
 ### [リソース プロバイダー](/rest/api/storagerp)
 ### [Import/Export](/rest/api/storageimportexport)
 

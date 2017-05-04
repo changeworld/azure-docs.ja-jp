@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/21/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 3d52c0f5faf90dedf587fb270e9a160a374ed558
-ms.lasthandoff: 04/25/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 19cd1cf60a14f4a2087bcfdbb4b223039c82dec3
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -66,7 +66,7 @@ VNet 間接続の詳細については、この記事の最後にある「[VNet 
 ![v2v diagram](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
 ### <a name="before-you-begin"></a>開始する前に
-開始する前に、Azure Resource Manager PowerShell コマンドレットをインストールする必要があります。 PowerShell コマンドレットのインストールの詳細については、[Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)に関する記事を参照してください。 
+開始する前に、Azure Resource Manager PowerShell コマンドレットをインストールする必要があります。 PowerShell コマンドレットのインストールの詳細については、[Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)に関する記事を参照してください。 
 
 ### <a name="Step1"></a>手順 1 - IP アドレス範囲を決める
 以下の手順に従って、2 つの仮想ネットワークを、それぞれのゲートウェイ サブネットおよび構成と共に作成します。 その後、2 つの VNet 間の VPN 接続を作成します。 ネットワーク構成の IP アドレスの範囲を計画することが重要です。 VNet の範囲やローカル ネットワークの範囲が重複することは、どのような形であれ許容されないので注意してください。

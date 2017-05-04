@@ -17,9 +17,9 @@ ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 9c36ed4ed16b53a7cca2d2eba93ad5063e60569b
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 87246de343f5c810bf765b467ba0d131934f8526
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -104,7 +104,7 @@ ms.lasthandoff: 03/21/2017
 ## <a name="deploy-the-arm-template-by-using-powershell"></a>PowerShell を使用して ARM テンプレートをデプロイする
 PowerShell を使用してダウンロードした ARM テンプレートをデプロイするには、次の手順に従います。
 
-1. Azure PowerShell を初めて使用する場合は、「[Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」を参照してインストール、構成します。
+1. Azure PowerShell を初めて使用する場合は、「[Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」を参照してインストール、構成します。
 2. テンプレートを使用してリソース グループを作成するには、 **`New-AzureRmResourceGroup`** コマンドレットを実行します。
 
     ```powershell

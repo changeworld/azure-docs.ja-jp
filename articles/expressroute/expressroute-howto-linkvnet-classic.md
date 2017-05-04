@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2016
 ms.author: ganesr
 translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 9601ff3152e62baf95794919fdc5a7fc43204d52
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: c30f58079c9d8b8077b65881517178fa0ae0e598
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -40,7 +40,7 @@ ms.lasthandoff: 03/24/2017
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="configuration-prerequisites"></a>構成の前提条件
-1. Azure PowerShell モジュールの最新バージョンが必要になります。 [Azure ダウンロード ページ](https://azure.microsoft.com/downloads/)の PowerShell セクションから、最新の PowerShell モジュールをダウンロードすることができます。 Azure PowerShell モジュールを使用するようにコンピューターを構成する方法の手順については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs) 」の手順に従ってください。
+1. Azure PowerShell モジュールの最新バージョンが必要になります。 [Azure ダウンロード ページ](https://azure.microsoft.com/downloads/)の PowerShell セクションから、最新の PowerShell モジュールをダウンロードすることができます。 Azure PowerShell モジュールを使用するようにコンピューターを構成する方法の手順については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview) 」の手順に従ってください。
 2. 構成を開始する前に、[前提条件](expressroute-prerequisites.md)、[ルーティングの要件](expressroute-routing.md)、[ワークフロー](expressroute-workflows.md)を確認する必要があります。
 3. アクティブな ExpressRoute 回線が必要です。
    * 手順に従って、 [ExpressRoute 回線を作成](expressroute-howto-circuit-classic.md) し、接続プロバイダーに回線を有効にしてもらいます。

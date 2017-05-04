@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 02/22/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 938abf03191dec10da8d2fabf27c5db2415d6bc5
-ms.openlocfilehash: 6dd149808a89ccf7da2989751788e074d5340d5c
-ms.lasthandoff: 12/22/2016
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: fbd5c31a4ca1fa26d14001ba5765adfc91142a10
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -248,7 +248,7 @@ Java アプリケーションでこの情報を使用するには、「 [HDInsig
 * [HDInsight の概要](hdinsight-hadoop-linux-tutorial-get-started.md)
 * [HDInsight での空のエッジ ノードの使用](hdinsight-apps-use-edge-node.md)
 * [HDInsight での HBase レプリケーションの構成](hdinsight-hbase-replication.md)
-* [HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md)
+* [HDInsight で Hadoop クラスターを作成する](hdinsight-hadoop-provision-linux-clusters.md)
 * [HDInsight の Hadoop 環境での HBase の使用](hdinsight-hbase-tutorial-get-started.md)
 * [HDInsight 環境の HBase で Twitter のセンチメントをリアルタイム分析する](hdinsight-hbase-analyze-twitter-sentiment.md)
 * [Virtual Network の概要][vnet-overview]
@@ -282,7 +282,7 @@ Java アプリケーションでこの情報を使用するには、「 [HDInsig
 
 
 [hdinsight-customize-cluster]: hdinsight-hadoop-customize-cluster.md
-[hdinsight-provision]: hdinsight-provision-clusters.md
+[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
 [hdinsight-storage-powershell]: ../hdinsight-hadoop-use-blob-storage.md#powershell
 [hdinsight-analyze-flight-delay-data]: hdinsight-analyze-flight-delay-data.md

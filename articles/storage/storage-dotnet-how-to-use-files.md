@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 03/27/2017
 ms.author: renash
 translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: b835b04d6ef6d06e35add4f503e6800099e97383
-ms.lasthandoff: 04/07/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: e773fd4917c7a96201d94d31b2098a3486d27900
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -119,7 +119,7 @@ File Storage は、すべてのストレージ アカウントでサポートさ
 Azure PowerShell を使用して、ファイル共有を作成および管理することもできます。
 
 ### <a name="install-the-powershell-cmdlets-for-azure-storage"></a>Azure Storage 用の PowerShell コマンドレットのインストール
-PowerShell の使用を準備するために、Azure PowerShell コマンドレットをダウンロードしてインストールします。 インストール先とインストール方法については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」を参照してください。
+PowerShell の使用を準備するために、Azure PowerShell コマンドレットをダウンロードしてインストールします。 インストール先とインストール方法については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」を参照してください。
 
 > [!NOTE]
 > 最新の Azure PowerShell モジュールをダウンロードしてインストールするか、アップグレードすることをお勧めします。

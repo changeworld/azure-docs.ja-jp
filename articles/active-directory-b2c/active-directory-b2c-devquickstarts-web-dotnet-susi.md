@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/17/2017
 ms.author: parakhj
 translationtype: Human Translation
-ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
-ms.openlocfilehash: 4d7476156b51ca82b1f119becb1576a97d2bd457
-ms.lasthandoff: 03/23/2017
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 87b8b91fc5970bd127dfdc47e24d99a19471aa8c
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -54,10 +54,10 @@ Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポ�
 
 ## <a name="download-the-code"></a>コードのダウンロード
 
-このチュートリアルのコードは、[GitHub](https://github.com/Azure-Samples/b2c-dotnet-webapp-and-webapi) で管理されています。 次のコマンドを実行するとサンプルを複製できます。
+このチュートリアルのコードは、[GitHub](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi) で管理されています。 次のコマンドを実行するとサンプルを複製できます。
 
 ```console
-git clone https://github.com/Azure-Samples/b2c-dotnet-webapp-and-webapi.git
+git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
 ```
 
 サンプル コードをダウンロードした後、Visual Studio の .sln ファイルを開いて作業を開始します。 ソリューション ファイルには、`TaskWebApp` と `TaskService` の 2 つのプロジェクトが含まれています。 `TaskWebApp` は、ユーザーが操作する MVC Web アプリケーションです。 `TaskService` は、各ユーザーの To-Do List を格納する、アプリのバックエンド Web API です。 この記事では、`TaskWebApp` アプリケーションだけを取り上げます。 Azure AD B2C を使用して `TaskService` を構築する方法については、[.NET Web API のチュートリアル](active-directory-b2c-devquickstarts-api-dotnet.md)をご覧ください。

@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 04/20/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 52038c02901d49f787226ce629a1ca5942414e4a
-ms.lasthandoff: 04/21/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a3052e53c642ef3e6d9bb0489476274987707f91
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -38,7 +38,7 @@ HDInsight で Azure Virtual Network を使用して次のシナリオを有効�
 
 * Azure CLI 2.0: 詳細については、[Azure CLI 2.0 のインストールおよび構成](https://docs.microsoft.com/cli/azure/install-az-cli2)に関するページをご覧ください。
 
-* Azure PowerShell: 詳細については、[Azure PowerShell のインストールおよび構成](https://docs.microsoft.com/powershell/azure/overview)に関するページをご覧ください。
+* Azure PowerShell: 詳細については、[Azure PowerShell のインストールおよび構成](/powershell/azure/overview)に関するページをご覧ください。
 
 > [!NOTE]
 > このドキュメントには、Azure CLI および Azure PowerShell の最新バージョンが必要です。 以前のバージョンを使用している場合は、コマンドが異なる場合があります。 適切に実行するためには、前のリンクを使用して最新バージョンをインストールします。

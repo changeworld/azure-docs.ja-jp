@@ -15,9 +15,9 @@ ms.workload: required
 ms.date: 02/06/2017
 ms.author: ruturajd@microsoft.com
 translationtype: Human Translation
-ms.sourcegitcommit: 44b6ff6e588d529fd833a4a7fdd61df7e933ddd8
-ms.openlocfilehash: b4105e98323b5161a22fa65707d376a7155611d6
-ms.lasthandoff: 01/30/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: c91a1210e84d215449b98aae14bda490aa2cb156
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -26,10 +26,10 @@ ms.lasthandoff: 01/30/2017
 
 Azure Automation について聞いたことがない場合は、[こちら](https://azure.microsoft.com/services/automation/)でサインアップして、[こちら](https://azure.microsoft.com/documentation/scripts/)からサンプル スクリプトをダウンロードしてください。 [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) の詳細と、復旧計画を使用した Azure への復旧の調整方法については、[こちら](https://azure.microsoft.com/blog/?p=166264)を参照してください。
 
-この短いチュートリアルでは、Azure Automation Runbook を復旧計画に統合する方法を説明します。 以前は手動での介入を必要とした単純なタスクを自動化し、複数の手順の復旧を&1; 回のクリックの復旧アクションに変換する方法を説明します。 また、単純なスクリプトで問題が発生する場合に、トラブルシューティングする方法も説明します。
+この短いチュートリアルでは、Azure Automation Runbook を復旧計画に統合する方法を説明します。 以前は手動での介入を必要とした単純なタスクを自動化し、複数の手順の復旧を 1 回のクリックの復旧アクションに変換する方法を説明します。 また、単純なスクリプトで問題が発生する場合に、トラブルシューティングする方法も説明します。
 
 ## <a name="protect-the-application-to-azure"></a>Azure でのアプリケーションの保護
-はじめに、2 台の仮想マシンで構成される単純なアプリケーションについて説明します。 ここでは、Fabrikam の HRweb アプリケーションがあります。 Fabrikam-HRweb-frontend と Fabrikam-Hrweb-backend は、Azure Site Recovery を使用して Azure で保護されている&2; 台の仮想マシンです。 Azure Site Recovery を使用して仮想マシンを保護するには、次の手順に従います。
+はじめに、2 台の仮想マシンで構成される単純なアプリケーションについて説明します。 ここでは、Fabrikam の HRweb アプリケーションがあります。 Fabrikam-HRweb-frontend と Fabrikam-Hrweb-backend は、Azure Site Recovery を使用して Azure で保護されている 2 台の仮想マシンです。 Azure Site Recovery を使用して仮想マシンを保護するには、次の手順に従います。
 
 1. 仮想マシンの保護を有効にします。
 2. 仮想マシンが初期レプリケーションを完了し、レプリケートしていることを確認します。
@@ -91,7 +91,7 @@ Azure Automation は Azure PowerShell を使用して、サブスクリプショ
 
 ![](media/site-recovery-runbook-automation/11.png)
 
-PowerShell を使用してサブスクリプションに接続する方法の詳細については、 [ここ](/powershell/azureps-cmdlets-docs)を参照してください。
+PowerShell を使用してサブスクリプションに接続する方法の詳細については、 [ここ](/powershell/azure/overview)を参照してください。
 
 次に Azure Automation で、フェールオーバー後にフロントエンドの仮想マシンのエンドポイントを追加できる Runbook を作成します。
 
@@ -273,7 +273,7 @@ Runbook を計画に追加したら、テスト フェールオーバーを開�
 ![](media/site-recovery-runbook-automation/19.png)
 
 ## <a name="sample-scripts"></a>サンプルのスクリプト
-このチュートリアルでは、一般的に利用される、Azure 仮想マシンにエンドポイントを追加するためにタスクの自動化を、手順を追って説明しました。また、Azure Automation を使用して、その他の強力な自動化タスクを行うことができます。 Microsoft および Azure Automation コミュニティが提供するサンプル Runbook を使うと、独自のソリューションを作成できます。また、ユーティリティ Runbook は大きめのオートメーション タスクの構成ブロックとして使用できます。 これらをギャラリーから入手して使用を開始して、Azure Site Recovery を使用して&1; 回のクリックによる強力な復旧プランをアプリケーションに対して作成してください。
+このチュートリアルでは、一般的に利用される、Azure 仮想マシンにエンドポイントを追加するためにタスクの自動化を、手順を追って説明しました。また、Azure Automation を使用して、その他の強力な自動化タスクを行うことができます。 Microsoft および Azure Automation コミュニティが提供するサンプル Runbook を使うと、独自のソリューションを作成できます。また、ユーティリティ Runbook は大きめのオートメーション タスクの構成ブロックとして使用できます。 これらをギャラリーから入手して使用を開始して、Azure Site Recovery を使用して 1 回のクリックによる強力な復旧プランをアプリケーションに対して作成してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 [Azure Automation Overview (Azure Automation の概要) (Azure Automation の概要) (Azure Automation の概要)](http://msdn.microsoft.com/library/azure/dn643629.aspx "Azure Automation Overview (Azure Automation の概要) (Azure Automation の概要)")

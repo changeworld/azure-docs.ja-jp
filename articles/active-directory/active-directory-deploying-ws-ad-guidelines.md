@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 02/22/2017
 ms.author: femila
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 0bcde69385b74fa62a629159abfff4bb16d9da89
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 4e76a20c7c7eef9a51c6c0373785fd810c09e34a
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -394,7 +394,7 @@ Azure 仮想マシンには、"DHCP によってリースされたアドレス" 
 
 VM は VM 自体の DNS 名を起動時または名前変更時に自動的に登録します。
 
-この例の詳細と、最初の VM をプロビジョニングしてその VM に AD DS をインストールする別の例については、「 [Azure Virtual Network での新しい Active Directory フォレストのインストール](active-directory-new-forest-virtual-machine.md)」を参照してください。 Windows PowerShell の使用の詳細については、「[Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」および[Azure の管理コマンドレット](https://msdn.microsoft.com/library/azure/jj152841)に関するページをご覧ください。
+この例の詳細と、最初の VM をプロビジョニングしてその VM に AD DS をインストールする別の例については、「 [Azure Virtual Network での新しい Active Directory フォレストのインストール](active-directory-new-forest-virtual-machine.md)」を参照してください。 Windows PowerShell の使用の詳細については、「[Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」および[Azure の管理コマンドレット](/powershell/module/azurerm.compute/#virtual_machines)に関するページをご覧ください。
 
 ### <a name="BKMK_DistributedDCs"></a>地理的に分散された DC
 複数の DC をそれぞれ異なる仮想ネットワークでホストする利点は次のとおりです。

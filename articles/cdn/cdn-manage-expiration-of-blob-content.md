@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 7c6ca3789e9a5dcde799d9ef40b58bd2f3c8966c
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: f44119d651767881cfd999808925b0066a5e502b
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -42,7 +42,7 @@ ms.lasthandoff: 03/21/2017
 このチュートリアルでは、Azure Storage で TTL を設定する方法のいくつかを示します。  
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-[Azure PowerShell](/powershell/azureps-cmdlets-docs) は、Azure の各種サービスを管理する最も簡単で最も強力な方法の 1 つです。  `Get-AzureStorageBlob` コマンドレットを使用して BLOB への参照を取得し、`.ICloudBlob.Properties.CacheControl` プロパティを設定します。 
+[Azure PowerShell](/powershell/azure/overview) は、Azure の各種サービスを管理する最も簡単で最も強力な方法の 1 つです。  `Get-AzureStorageBlob` コマンドレットを使用して BLOB への参照を取得し、`.ICloudBlob.Properties.CacheControl` プロパティを設定します。 
 
 ```powershell
 # Create a storage context

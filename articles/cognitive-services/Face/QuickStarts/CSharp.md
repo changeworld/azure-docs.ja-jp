@@ -10,9 +10,9 @@ ms.topic: article
 ms.date: 03/21/2017
 ms.author: anroth
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: e4921c526fa3069f54e641c001eb6ee3437a52fa
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 396d6eb62b461284f477ab6195013ca61d2c9e06
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -22,7 +22,7 @@ This article provides information and code samples to help you quickly get start
 * [Create a Person Group](#Create)
 
 ## <a name="prerequisites"></a>Prerequisites
-* Get the Microsoft Face API Windows SDK [here](https://github.com/Microsoft/Cognitive-face-windows)
+* Get the Microsoft Face API Windows SDK [here](https://www.nuget.org/packages/Microsoft.ProjectOxford.Face/)
 * Learn more about obtaining free Subscription Keys [here](../../Computer-vision/Vision-API-How-to-Topics/HowToSubscribe.md)
 
 ## Detect Faces in Images With Face API Using C# <a name="Detect"> </a>

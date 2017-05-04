@@ -16,9 +16,9 @@ ms.workload: infrastructure
 ms.date: 03/30/2017
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: ae0fcbf3e8ba28f104e5b44ebe5676875065e2e9
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 61fd0dc45cfa2d320713819be3db811be58ab77e
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/04/2017
 
 ## <a name="step-1---azure-prerequisites"></a>手順 1 - Azure の前提条件
 
-このチュートリアルに取り組む前に、最新の [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) モジュールがインストールされていることを確認してください。
+このチュートリアルに取り組む前に、最新の [Azure PowerShell](/powershell/azure/overview) モジュールがインストールされていることを確認してください。
 
 最初に、Login-AzureRmAccount コマンドを使用して Azure サブスクリプションにログインし、画面上の指示に従います。
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 04/04/2017
 Login-AzureRmAccount
 ```
 
-Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 他の Azure リソースを作成する前に、[New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Resources/v2.0.3/new-azurermresourcegroup) を使用してリソース グループを作成する必要があります。 次の例では、`myResourceGroup` という名前のリソース グループを `westeurope` リージョンに作成します。 
+Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 他の Azure リソースを作成する前に、[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) を使用してリソース グループを作成する必要があります。 次の例では、`myResourceGroup` という名前のリソース グループを `westeurope` リージョンに作成します。 
 
 ```powershell
 New-AzureRmResourceGroup -ResourceGroupName myResourceGroup -Location westeurope
@@ -46,7 +46,7 @@ New-AzureRmResourceGroup -ResourceGroupName myResourceGroup -Location westeurope
 
 仮想マシンは、論理上の障害ドメインと更新ドメインにまたがって作成することができます。 それぞれの論理ドメインは、基盤となる Azure データセンターにおける特定のハードウェア領域を表します。 複数の VM を作成すると、それらの領域にまたがってコンピューティング リソースとストレージ リソースが分散されます。 ハードウェア コンポーネントをメンテナンスする必要がある場合でも、この分散によってアプリの可用性が保たれます。 こうした論理上の障害ドメインと更新ドメインは、可用性セットを通じて定義することができます。
 
-可用性セットを作成するには、[New-AzureRmAvailabilitySet](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/new-azurermavailabilityset) を使用します。 次の例では、`myAvailabilitySet` という名前の可用性セットを作成します。
+可用性セットを作成するには、[New-AzureRmAvailabilitySet](/powershell/module/azurerm.compute/new-azurermavailabilityset) を使用します。 次の例では、`myAvailabilitySet` という名前の可用性セットを作成します。
 
 ```powershell
 $availabilitySet = New-AzureRmAvailabilitySet `
@@ -64,7 +64,7 @@ Azure のロード バランサーは、定義されている一連の VM に対
 
 ### <a name="create-public-ip-address"></a>パブリック IP アドレスの作成
 
-インターネット上のアプリにアクセスするには、パブリック IP アドレスをロード バランサーに割り当てます。 [New-AzureRmPublicIpAddress](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.6.0/new-azurermpublicipaddress) を使用してパブリック IP アドレスを作成します。 `myPublicIP` という名前のパブリック IP アドレスを作成する例を次に示します。
+インターネット上のアプリにアクセスするには、パブリック IP アドレスをロード バランサーに割り当てます。 [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) を使用してパブリック IP アドレスを作成します。 `myPublicIP` という名前のパブリック IP アドレスを作成する例を次に示します。
 
 ```powershell
 $pip = New-AzureRmPublicIpAddress `
@@ -76,19 +76,19 @@ $pip = New-AzureRmPublicIpAddress `
 
 ### <a name="create-load-balancer"></a>ロード バランサーの作成
 
-[New-AzureRmLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.6.0/new-azurermloadbalancerfrontendipconfig) を使用して、フロントエンド IP アドレスを作成します。 次の例では、`myFrontEndPool` という名前のフロントエンド IP アドレスを作成します。 
+[New-AzureRmLoadBalancerFrontendIpConfig](/powershell/module/azurerm.network/new-azurermloadbalancerfrontendipconfig) を使用して、フロントエンド IP アドレスを作成します。 次の例では、`myFrontEndPool` という名前のフロントエンド IP アドレスを作成します。 
 
 ```powershell
 $frontendIP = New-AzureRmLoadBalancerFrontendIpConfig -Name myFrontEndPool -PublicIpAddress $pip
 ```
 
-[New-AzureRmLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.6.0/new-azurermloadbalancerbackendaddresspoolconfig) を使用して、バックエンド アドレス プールを作成します。 次の例では、`myBackEndPool` という名前のバックエンド アドレス プールを作成します。
+[New-AzureRmLoadBalancerBackendAddressPoolConfig](/powershell/module/azurerm.network/new-azurermloadbalancerbackendaddresspoolconfig) を使用して、バックエンド アドレス プールを作成します。 次の例では、`myBackEndPool` という名前のバックエンド アドレス プールを作成します。
 
 ```powershell
 $backendPool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name myBackEndPool
 ```
 
-次に、[New-AzureRmLoadBalancer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.6.0/new-azurermloadbalancer) を使用して、ロード バランサーを作成します。 `myPublicIP` アドレスを使用して `myLoadBalancer` という名前のロード バランサーを作成する例を次に示します。
+次に、[New-AzureRmLoadBalancer](/powershell/module/azurerm.network/new-azurermloadbalancer) を使用して、ロード バランサーを作成します。 `myPublicIP` アドレスを使用して `myLoadBalancer` という名前のロード バランサーを作成する例を次に示します。
 
 ```powershell
 $lb = New-AzureRmLoadBalancer `
@@ -103,7 +103,7 @@ $lb = New-AzureRmLoadBalancer `
 
 ロード バランサーでアプリの状態を監視するには、正常性プローブを使用します。 正常性プローブは、ロード バランサーのローテーションに含める VM を、正常性チェックへの応答に基づいて動的に追加したり削除したりする働きをします。 既定では、15 秒間隔のチェックが 2 回連続でエラーになった VM はロード バランサーのローテーションから外されます。
 
-[Add-AzureRmLoadBalancerProbeConfig](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.6.0/add-azurermloadbalancerprobeconfig) を使用して、正常性プローブを作成します。 次の例では、個々の VM を監視する `myHealthProbe` という名前の正常性プローブを作成しています。
+[Add-AzureRmLoadBalancerProbeConfig](/powershell/module/azurerm.network/add-azurermloadbalancerprobeconfig) を使用して、正常性プローブを作成します。 次の例では、個々の VM を監視する `myHealthProbe` という名前の正常性プローブを作成しています。
 
 ```powershell
 Add-AzureRmLoadBalancerProbeConfig -Name myHealthProbe `
@@ -118,7 +118,7 @@ Add-AzureRmLoadBalancerProbeConfig -Name myHealthProbe `
 
 ロード バランサー規則の目的は、一連の VM に対するトラフィックの分散方法を定義することです。
 
-[Add-AzureRmLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Network/v3.6.0/add-azurermloadbalancerruleconfig) を使用して、ロード バランサー規則を作成します。 次の例では、`myLoadBalancerRule` という名前のロード バランサー規則を、ポート `80` に作成します。
+[Add-AzureRmLoadBalancerRuleConfig](/powershell/module/azurerm.network/add-azurermloadbalancerruleconfig) を使用して、ロード バランサー規則を作成します。 次の例では、`myLoadBalancerRule` という名前のロード バランサー規則を、ポート `80` に作成します。
 
 ```powershell
 Add-AzureRmLoadBalancerRuleConfig -Name myLoadBalancerRule `
@@ -130,7 +130,7 @@ Add-AzureRmLoadBalancerRuleConfig -Name myLoadBalancerRule `
   -BackendPort 80
 ```
 
-[Set-AzureRmLoadBalancer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.6.0/set-azurermloadbalancer) を使用して、ロード バランサーを更新します。
+[Set-AzureRmLoadBalancer](/powershell/module/azurerm.network/set-azurermloadbalancer) を使用して、ロード バランサーを更新します。
 
 ```powershell
 Set-AzureRmLoadBalancer -LoadBalancer $lb
@@ -142,13 +142,13 @@ Set-AzureRmLoadBalancer -LoadBalancer $lb
 
 ### <a name="create-virtual-network"></a>Create virtual network
 
-最初に、[New-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.6.0/new-azurermvirtualnetworksubnetconfig) を使用してサブネットを構成します。 次の例では、`mySubnet` という名前のサブネットを作成します。
+最初に、[New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) を使用してサブネットを構成します。 次の例では、`mySubnet` という名前のサブネットを作成します。
 
 ```powershell
 $subnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix 192.168.1.0/24
 ```
 
-対象の VM にネットワーク接続を提供するには、[New-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.6.0/new-azurermvirtualnetwork) を使用して仮想ネットワークを作成します。 次の例では、`mySubnet` に `myVnet` という名前の仮想ネットワークを作成します。
+対象の VM にネットワーク接続を提供するには、[New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) を使用して仮想ネットワークを作成します。 次の例では、`mySubnet` に `myVnet` という名前の仮想ネットワークを作成します。
 
 ```powershell
 $vnet = New-AzureRmVirtualNetwork `
@@ -163,7 +163,7 @@ $vnet = New-AzureRmVirtualNetwork `
 
 Azure [ネットワーク セキュリティ グループ](../../virtual-network/virtual-networks-nsg.md) (NSG) は、仮想マシンの受信トラフィックと送信トラフィックを制御します。 特定のポートまたは特定のポート範囲に対するネットワーク トラフィックが、ネットワーク セキュリティ グループの規則によって許可または拒否されます。 また、これらの規則に送信元アドレス プレフィックスを含めれば、あらかじめ決められた送信元からのトラフィックにのみ仮想マシンとの通信を許可することができます。
 
-Web トラフィックを目的のアプリに誘導するには、[New-AzureRmNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.6.0/new-azurermnetworksecurityruleconfig) を使用して、ネットワーク セキュリティ グループの規則を作成します。 次の例では、`myNetworkSecurityGroupRule` という名前のネットワーク セキュリティ グループの規則を作成しています。
+Web トラフィックを目的のアプリに誘導するには、[New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig) を使用して、ネットワーク セキュリティ グループの規則を作成します。 次の例では、`myNetworkSecurityGroupRule` という名前のネットワーク セキュリティ グループの規則を作成しています。
 
 ```powershell
 $nsgRule = New-AzureRmNetworkSecurityRuleConfig `
@@ -178,7 +178,7 @@ $nsgRule = New-AzureRmNetworkSecurityRuleConfig `
   -Access Allow
 ```
 
-[New-AzureRmNetworkSecurityGroup](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.6.0/new-azurermnetworksecuritygroup) を使用して、ネットワーク セキュリティ グループを作成します。 次の例では、`myNetworkSecurityGroup` という名前の NSG を作成します。
+[New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup) を使用して、ネットワーク セキュリティ グループを作成します。 次の例では、`myNetworkSecurityGroup` という名前の NSG を作成します。
 
 ```powershell
 $nsg = New-AzureRmNetworkSecurityGroup `
@@ -188,7 +188,7 @@ $nsg = New-AzureRmNetworkSecurityGroup `
   -SecurityRules $nsgRule
 ```
 
-[Set-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.6.0/set-azurermvirtualnetworksubnetconfig) を使用して、仮想ネットワークのサブネットにネットワーク セキュリティ グループを追加します。
+[Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig) を使用して、仮想ネットワークのサブネットにネットワーク セキュリティ グループを追加します。
 
 ```powershell
 Set-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet `
@@ -197,7 +197,7 @@ Set-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet `
   -AddressPrefix 192.168.1.0/24
 ```
 
-[Set-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.6.0/set-azurermvirtualnetwork) を使用して、仮想ネットワークを更新します。
+[Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork) を使用して、仮想ネットワークを更新します。
 
 ```powershell
 Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
@@ -207,7 +207,7 @@ Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
 
 ロード バランサーは、VM そのものではなく仮想 NIC リソースと連動します。 仮想 NIC は、ロード バランサーに接続され、そのうえで VM に接続されます。
 
-[New-AzureRmNetworkInterface](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.6.0/new-azurermnetworkinterface) を使用して、仮想 NIC を作成します。 以下の例では、3 つの仮想 NIC を作成します  (以降の手順で、アプリ用に VM ごとに 1 つの仮想 NIC を作成します)。
+[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) を使用して、仮想 NIC を作成します。 以下の例では、3 つの仮想 NIC を作成します  (以降の手順で、アプリ用に VM ごとに 1 つの仮想 NIC を作成します)。
 
 
 ```powershell
@@ -232,7 +232,7 @@ for ($i=1; $i -le 3; $i++)
 $cred = Get-Credential
 ```
 
-[New-AzureRmVMConfig](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/new-azurermvmconfig)[Set-AzureRmVMOperatingSystem](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/set-azurermvmoperatingsystem)、[Set-AzureRmVMSourceImage](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/set-azurermvmsourceimage)、[Set-AzureRmVMOSDisk](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/set-azurermvmosdisk)、[Add-AzureRmVMNetworkInterface](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/add-azurermvmnetworkinterface)、および [New-AzureRmVM](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/new-azurermvm)を使用して、VM を作成します。 次の例では、3 台の VM を作成します。
+[New-AzureRmVMConfig](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/new-azurermvmconfig)[Set-AzureRmVMOperatingSystem](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/set-azurermvmoperatingsystem)、[Set-AzureRmVMSourceImage](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/set-azurermvmsourceimage)、[Set-AzureRmVMOSDisk](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/set-azurermvmosdisk)、[Add-AzureRmVMNetworkInterface](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/add-azurermvmnetworkinterface)、および [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm)を使用して、VM を作成します。 次の例では、3 台の VM を作成します。
 
 ```powershell
 for ($i=1; $i -le 3; $i++)
@@ -254,7 +254,7 @@ for ($i=1; $i -le 3; $i++)
 
 Azure 仮想マシン拡張機能を使用して、アプリケーションのインストールやオペレーティング システムの構成などの仮想マシンの構成タスクを自動化することができます。 [Windows のカスタム スクリプト拡張機能](./../virtual-machines-windows-extensions-customscript.md)を使用して、仮想マシンで任意の PowerShell スクリプトを実行することができます。 スクリプトは Azure Storage やアクセス可能な任意の HTTP エンドポイントに格納するか、カスタム スクリプト拡張機能の構成に埋め込むことができます。 カスタム スクリプト拡張機能を使用する場合は、Azure VM エージェントがスクリプトの実行を管理します。
 
-[Set-AzureRmVMExtension](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/set-azurermvmextension) を使用して、カスタム スクリプト拡張機能をインストールします。 拡張機能は、`powershell Add-WindowsFeature Web-Server` を実行して IIS Web サーバーをインストールします。
+[Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) を使用して、カスタム スクリプト拡張機能をインストールします。 拡張機能は、`powershell Add-WindowsFeature Web-Server` を実行して IIS Web サーバーをインストールします。
 
 ```powershell
 for ($i=1; $i -le 3; $i++)
@@ -272,7 +272,7 @@ for ($i=1; $i -le 3; $i++)
 
 ### <a name="test-your-app"></a>アプリケーションをテストする
 
-ロード バランサーのパブリック IP アドレスを取得するには、[Get-AzureRmPublicIPAddress](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.6.0/get-azurermpublicipaddress) を使用します。 次の例では、先ほど作成した `myPublicIP` の IP アドレスを取得しています。
+ロード バランサーのパブリック IP アドレスを取得するには、[Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) を使用します。 次の例では、先ほど作成した `myPublicIP` の IP アドレスを取得しています。
 
 ```powershell
 Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroup -Name myPublicIP | select IpAddress
@@ -290,7 +290,7 @@ Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroup -Name myPublicIP |
 
 ネットワーク インターフェイス カードの LoadBalancerBackendAddressPools プロパティをリセットすることで、バックエンド アドレス プールから VM を削除します。
 
-[Get-AzureRmNetworkInterface](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.6.0/get-azurermnetworkinterface) を使用して、ネットワーク インターフェイス カードを取得します。
+[Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface) を使用して、ネットワーク インターフェイス カードを取得します。
 
 ```powershell
 $nic = Get-AzureRmNetworkInterface -ResourceGroupName myResourceGroup -Name myNic2
@@ -333,3 +333,4 @@ Set-AzureRmNetworkInterface -NetworkInterface $nic
 ## <a name="next-steps"></a>次のステップ
 
 サンプル – [Azure 仮想マシンの PowerShell サンプル スクリプト](./../virtual-machines-windows-powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+

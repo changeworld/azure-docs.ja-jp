@@ -66,7 +66,7 @@
 ### [VM を再起動またはサイズ変更する](restart-resize-error-troubleshooting.md)
 
 # リファレンス
-## [PowerShell](/powershell/azureps-cmdlets-docs)
+## [PowerShell](/powershell/azure/overview)
 ## [Azure CLI](/cli/azure/vm)
 ## [Java](/java/api)
 ## [Resource Manager テンプレートの作成](../../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

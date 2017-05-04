@@ -46,7 +46,7 @@
 ###[Redis クラスターを使用してスケールイン/スケールアウトする](cache-how-to-premium-clustering.md)
 
 # リファレンス
-## [PowerShell](/powershell/resourcemanager/azurerm.rediscache/v2.3.0/azurerm.rediscache)
+## [PowerShell](/powershell/module/azurerm.rediscache)
 ## [Azure CLI 2.0 プレビュー](/cli/azure/redis)
 ## [.NET](/dotnet/api/microsoft.azure.management.redis)
 ## [Java](/java/api/com.microsoft.azure.management.redis._redis_cache)

@@ -28,7 +28,7 @@
 ### [クロスプラットフォーム通知を送信する](notification-hubs-aspnet-cross-platform-notification.md)
 ### サーバー スクリプトを使用する
 #### [.NET](https://msdn.microsoft.com/library/mt414893.aspx)
-#### [Node.js](notification-hubs-nodejs-push-notification-tutorial.md)
+#### [Node.JS](notification-hubs-nodejs-push-notification-tutorial.md)
 #### [Java](notification-hubs-java-push-notification-tutorial.md)
 #### [PHP](notification-hubs-php-push-notification-tutorial.md)
 #### [Python](notification-hubs-python-push-notification-tutorial.md)
@@ -59,7 +59,7 @@
 ### [診断ガイドライン](notification-hubs-push-notification-fixer.md)
 
 # リファレンス
-## [PowerShell](/powershell/resourcemanager/azurerm.notificationhubs/v2.3.0/azurerm.notificationhubs)
+## [PowerShell](/powershell/module/azurerm.notificationhubs)
 ## [.NET](/dotnet/api/microsoft.azure.notificationhubs)
 ## [REST ()](/rest/api/notificationhubs)
 
