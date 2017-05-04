@@ -17,9 +17,9 @@ ms.date: 04/27/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: 1bb49c0c03a3103194d068b511fa92ecb996caf3
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: d38adc6104337aa6cea9ee0f8042c22434624c9a
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -118,7 +118,7 @@ ms.lasthandoff: 03/22/2017
 
 PowerShell を使用してダウンロードしたテンプレートをデプロイするには、次の手順に従います。
 
-1. Azure PowerShell を初めて使用する場合は、「[Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」の手順を実行します。
+1. Azure PowerShell を初めて使用する場合は、「[Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」の手順を実行します。
 2. 必要に応じて、PowerShell コンソールで `New-AzureRmResourceGroup` コマンドレットを実行して、新しいリソース グループを作成します。 既に作成したリソース グループがある場合は、手順 3. に進みます。
 
     ```powershell

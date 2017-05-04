@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 96560927bd9dd93c9313be7392e0cea427a50980
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 88541f6054df1476866d68fdc1c9690a73ada83c
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.openlocfilehash: 96560927bd9dd93c9313be7392e0cea427a50980
 
 スケール セットで仮想マシンを管理するためのほとんどの作業で、管理するマシンのインスタンス ID が必要になります。 [Azure リソース エクスプローラー](https://resources.azure.com) を利用し、スケール セットの仮想マシンのインスタンス ID を検索できます。 リソース エクスプローラーを利用し、完了した作業の状態を確認することもできます。
 
-最新バージョンの Azure PowerShell をインストールし、サブスクリプションを選択して、ご利用のアカウントにサインインする方法については、「[Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」を参照してください。
+最新バージョンの Azure PowerShell をインストールし、サブスクリプションを選択して、ご利用のアカウントにサインインする方法については、「[Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」を参照してください。
 
 ## <a name="display-information-about-a-scale-set"></a>スケール セットに関する情報を表示する
 スケール セットに関する全般情報を取得できます。これは、インスタンス ビューとも呼ばれています。 あるいは、スケール セットのリソースに関する情報など、より具体的な情報を取得できます。
@@ -212,10 +213,5 @@ ms.openlocfilehash: 96560927bd9dd93c9313be7392e0cea427a50980
     Update-AzureRmVmss -ResourceGroupName "resource group name" -Name "scale set name" -VirtualMachineScaleSet $vmss 
 
 スケール セットから仮想マシンを削除する場合は、ID が最も大きい仮想マシンから順に削除されます。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

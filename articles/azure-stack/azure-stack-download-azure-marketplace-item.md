@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 03/01/2017
 ms.author: erikje
 translationtype: Human Translation
-ms.sourcegitcommit: 8f5638b198bd03b69663c554ebc80a5bf55fb86f
-ms.openlocfilehash: 32ecb645b7d5d4291893f3cc0d8d726e658bc22c
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: d0009e518ae025743bcdd52377129360b5d54829
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -28,7 +28,7 @@ As you decide what content to include in your Azure Stack marketplace, you shoul
 To download marketplace items, you must first [register Azure Stack with Azure](azure-stack-register.md). 
 
 ## <a name="download"></a>Download
-1. Sign in to the Azure Stack portal (https://portal.local.azurestack.external) as a service administrator.
+1. Sign in to the Azure Stack administrator portal (https://portal.local.azurestack.external) as a service administrator.
 2. Some marketplace items can be very large.  Check to make sure you have enough space on your system by clicking **Resource Providers** > **Storage**.
 
     ![](media/azure-stack-download-azure-marketplace-item/image01.png)

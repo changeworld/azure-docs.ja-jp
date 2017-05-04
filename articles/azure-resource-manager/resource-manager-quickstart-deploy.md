@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 02/16/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 41d9476d4ce6b7afc2ba9c757e96db7e8e72d5ae
-ms.openlocfilehash: a77354d0719240e5916b5ec945dad75e534802d3
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 3b3162c335be43c9bf2a3d1c14b86cdd9b5d46b9
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -43,7 +43,7 @@ Resource Manager の概念については、「[Azure Resource Manager の概要
 
 ## <a name="powershell"></a>PowerShell
 
-1. Azure PowerShell のインストール方法については、「[Azure PowerShell コマンドレットの使用開始](/powershell/azureps-cmdlets-docs)」をご覧ください。
+1. Azure PowerShell のインストール方法については、「[Azure PowerShell コマンドレットの使用開始](/powershell/azure/overview)」をご覧ください。
 
 2. デプロイを簡単に開始するには、次のコマンドレットを使用します。
 
@@ -71,20 +71,20 @@ Resource Manager の概念については、「[Azure Resource Manager の概要
   ...
   ```
 
-4. サブスクリプションにデプロイされたリソース グループとストレージ アカウントを表示するには、次のコマンドレットを使用します。
+4. サブスクリプションにデプロイされたリソース グループとストレージ アカウントを表示するには、次のコマンドを使用します。
 
   ```powershell
   Get-AzureRmResourceGroup -Name ExampleGroup
   Find-AzureRmResource -ResourceGroupNameEquals ExampleGroup
   ```
 
-5. テンプレートをデプロイするときに、PowerShell のパラメーターとしてテンプレートのパラメーターを指定できます。 前の例にはテンプレートのパラメーターが含まれていないので、テンプレートの既定値が使用されます。 別のストレージ アカウントをデプロイし、ストレージ名のプレフィックスとストレージ アカウント SKU のパラメーター値を指定するには、次のコマンドレットを使用します。
+5. テンプレートをデプロイするときに、PowerShell のパラメーターとしてテンプレートのパラメーターを指定できます。 前の例にはテンプレートのパラメーターが含まれていないので、テンプレートの既定値が使用されます。 別のストレージ アカウントをデプロイし、ストレージ名のプレフィックスとストレージ アカウント SKU のパラメーター値を指定するには、次のコマンドを使用します。
 
   ```powershell
   New-AzureRmResourceGroupDeployment -Name ExampleDeployment2 -ResourceGroupName ExampleGroup -TemplateFile c:\MyTemplates\azuredeploy.json -storageNamePrefix "contoso" -storageSKU "Standard_GRS"
   ```
 
-  これで、リソース グループに&2; つのストレージ アカウントが含まれるようになりました。 
+  これで、リソース グループに 2 つのストレージ アカウントが含まれるようになりました。 
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -125,7 +125,7 @@ Resource Manager の概念については、「[Azure Resource Manager の概要
   az group deployment create --name ExampleDeployment2 --resource-group ExampleGroup --template-file c:\MyTemplates\azuredeploy.json --parameters '{"storageNamePrefix":{"value":"contoso"},"storageSKU":{"value":"Standard_GRS"}}'
   ```
 
-  これで、リソース グループに&2; つのストレージ アカウントが含まれるようになりました。 
+  これで、リソース グループに 2 つのストレージ アカウントが含まれるようになりました。 
 
 ## <a name="example-storage-template"></a>サンプル ストレージ テンプレート
 

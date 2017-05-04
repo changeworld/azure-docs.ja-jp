@@ -16,9 +16,9 @@ ms.workload: data-services
 ms.date: 03/06/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: b2729dfdb6bf85e6d254b08669eeb259f4ab59d5
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: c1904b90e2e076c5e204a348b5882c7200bbace3
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -34,7 +34,7 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 
 * Visual Studio 2017 または 2015 のインストール。
 * [Azure .NET SDK](https://azure.microsoft.com/downloads/)のダウンロードとインストール。
-* サブスクリプションに Azure リソース グループを作成する。 次に、サンプルの Azure PowerShell スクリプトを示します。 Azure PowerShell については、「 [Azure PowerShell のインストールおよび構成](/powershell/azureps-cmdlets-docs)」を参照してください。  
+* サブスクリプションに Azure リソース グループを作成する。 次に、サンプルの Azure PowerShell スクリプトを示します。 Azure PowerShell については、「 [Azure PowerShell のインストールおよび構成](/powershell/azure/overview)」を参照してください。  
 
         # Log in to your Azure account
         Add-AzureAccount
@@ -295,7 +295,7 @@ Stream Analytics ジョブとその入力、出力、変換を作成したら、
     LongRunningOperationResponse jobDeleteResponse = client.StreamingJobs.Delete(resourceGroupName, streamAnalyticsJobName);
 
 ## <a name="get-support"></a>サポートを受ける
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 分析ジョブを作成して実行するために .NET SDK を使用する方法の基本を学習できました。 詳細については、次の記事を参照してください。

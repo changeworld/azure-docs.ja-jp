@@ -15,10 +15,6 @@ NC インスタンスは NVIDIA の Tesla K80 カードを備えています。 
 
 1 GPU = M60 カードの 2 分の 1 相当。
 
-**サポートされているオペレーティング システム**
-
-* Windows Server 2016、Windows Server 2012 R2。詳細については、[Windows 向けの N シリーズ ドライバーのセットアップ](../articles/virtual-machines/windows/n-series-driver-setup.md)に関するページをご覧ください。
-
 ## <a name="nc-instances"></a>NV インスタンス
 
 | サイズ | CPU コア数 | メモリ: GiB | ローカル SSD: GiB | GPU |
@@ -32,10 +28,4 @@ NC インスタンスは NVIDIA の Tesla K80 カードを備えています。 
 
 * RDMA 対応
 
-**サポートされているオペレーティング システム**
-
-* Windows Server 2016、Windows Server 2012 R2。詳細については、[Windows 向けの N シリーズ ドライバーのセットアップ](../articles/virtual-machines/windows/n-series-driver-setup.md)に関するページをご覧ください。
-* Ubuntu 16.04 LTS。詳細については、[Linux 向けの N シリーズ ドライバーのセットアップ](../articles/virtual-machines/linux/n-series-driver-setup.md)に関するページをご覧ください。
-
-<br>
 

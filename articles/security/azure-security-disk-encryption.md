@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 04/07/2017
 ms.author: kakhan
 translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: d2887e255e59c164bb6d733988053f514a118c7b
-ms.lasthandoff: 04/15/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 35a86a91ee60a81b5c743067fcd97da0f2dcc8f1
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -359,7 +359,7 @@ PFX のアップロードが完了したら、次のコマンドレットを使�
  ```
 
 #### <a name="set-up-the-key-vault-access-policy-for-the-azure-ad-application"></a>Azure AD アプリケーションの Key Vault アクセス ポリシーをセットアップする
-Azure AD アプリケーションには、Vault 内のキーまたはシークレットへのアクセス権が必要です。 [`Set-AzureKeyVaultAccessPolicy`](https://msdn.microsoft.com/library/azure/dn903607.aspx) コマンドレットで、_–ServicePrincipalName_ パラメーター値としてクライアント ID (アプリケーションの登録時に生成されたもの) を使用して、アプリケーションにアクセス許可を付与します。 詳しくは、ブログ投稿「[Azure Key Vault - Step by Step](http://blogs.technet.com/b/kv/archive/2015/06/02/azure-key-vault-step-by-step.aspx)」(Azure Key Vault - 手順) をご覧ください。 次に示すのは、PowerShell を使用してこのタスクを実行する方法の例です。
+Azure AD アプリケーションには、Vault 内のキーまたはシークレットへのアクセス権が必要です。 [`Set-AzureKeyVaultAccessPolicy`](/powershell/module/azure/set-azurekeyvaultaccesspolicy?view=azuresmps-3.7.0) コマンドレットで、_–ServicePrincipalName_ パラメーター値としてクライアント ID (アプリケーションの登録時に生成されたもの) を使用して、アプリケーションにアクセス許可を付与します。 詳しくは、ブログ投稿「[Azure Key Vault - Step by Step](http://blogs.technet.com/b/kv/archive/2015/06/02/azure-key-vault-step-by-step.aspx)」(Azure Key Vault - 手順) をご覧ください。 次に示すのは、PowerShell を使用してこのタスクを実行する方法の例です。
 
     $keyVaultName = '<yourKeyVaultName>'
     $aadClientID = '<yourAadAppClientID>'
@@ -382,7 +382,7 @@ Azure AD アプリケーションには、Vault 内のキーまたはシーク�
 | CLI | [Azure コマンド ライン インターフェイス](../cli-install-nodejs.md)に関する記事をご覧ください。 |
 | DM-Crypt |[DM Crypt](https://en.wikipedia.org/wiki/Dm-crypt) は、Linux IaaS VM でディスク暗号化を有効にするために使用される Linux ベースの透過的なディスク暗号化サブシステムです。 |
 | KEK | キー暗号化キーは、シークレットを保護またはラップするために使用できる非対称キー (RSA 2048) です。 ハードウェア セキュリティ モジュール (HSM) で保護されたキーまたはソフトウェアで保護されたキーを指定できます。 詳しくは、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) のドキュメントをご覧ください。 |
-| PS コマンドレット | [Azure PowerShell コマンドレット](/powershell/azureps-cmdlets-docs)に関する記事をご覧ください。 |
+| PS コマンドレット | [Azure PowerShell コマンドレット](/powershell/azure/overview)に関する記事をご覧ください。 |
 
 ### <a name="set-up-and-configure-your-key-vault-for-azure-disk-encryption"></a>Key Vault を Azure Disk Encryption 用にセットアップして構成する
 Azure Disk Encryption は、Key Vault のディスク暗号化キーとシークレットを保護するのに役立ちます。 Azure Disk Encryption の Key Vault をセットアップするには、以下のセクションの各手順を実行します。
@@ -391,7 +391,7 @@ Azure Disk Encryption は、Key Vault のディスク暗号化キーとシーク
 Key Vault を作成するには、次のオプションのいずれかを使用します。
 
 * ["101-Key-Vault-Create" Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
-* [Azure PowerShell の Key Vault コマンドレット](https://msdn.microsoft.com/library/dn868052.aspx)
+* [Azure PowerShell の Key Vault コマンドレット](/powershell/module/azurerm.keyvault/#key_vault)
 * Azure リソース マネージャー
 * [キー コンテナーをセキュリティで保護する](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-secure-your-key-vault)方法
 
@@ -401,7 +401,7 @@ Key Vault を作成するには、次のオプションのいずれかを使用�
 ![Azure Key Vault](./media/azure-security-disk-encryption/keyvault-portal-fig1.png)
 
 #### <a name="set-up-a-key-encryption-key-optional"></a>キー暗号化キーをセットアップする (省略可能)
-BitLocker 暗号化キーのセキュリティに対する追加レイヤーとして KEK を使用する場合は、Key Vault に KEK を追加します。 [`Add-AzureKeyVaultKey`](https://msdn.microsoft.com/library/dn868048.aspx) コマンドレットを使用して、Key Vault 内にキー暗号化キーを作成します。 オンプレミスのキー管理 HSM から KEK をインポートすることもできます。 詳しくは、「[Key Vault のドキュメント](https://azure.microsoft.com/documentation/services/key-vault/)」をご覧ください。
+BitLocker 暗号化キーのセキュリティに対する追加レイヤーとして KEK を使用する場合は、Key Vault に KEK を追加します。 [`Add-AzureKeyVaultKey`](/powershell/module/azurerm.keyvault/add-azurermkeyvaultkey) コマンドレットを使用して、Key Vault 内にキー暗号化キーを作成します。 オンプレミスのキー管理 HSM から KEK をインポートすることもできます。 詳しくは、「[Key Vault のドキュメント](https://azure.microsoft.com/documentation/services/key-vault/)」をご覧ください。
 
     Add-AzureKeyVaultKey [-VaultName] <string> [-Name] <string> -Destination <string> {HSM | Software}
 
@@ -494,7 +494,7 @@ Azure の Marketplace から作成された新しい IaaS Windows VM でのデ�
 | vmName | IaaS VM の名前。 |
 
 #### <a name="using-powershell-cmdlets"></a>PowerShell コマンドレットの使用
-暗号化された VHD でのディスク暗号化は、PowerShell コマンドレット [`Set-AzureRmVMOSDisk`](https://msdn.microsoft.com/library/azure/mt603746.aspx) を使用して有効化できます。  
+暗号化された VHD でのディスク暗号化は、PowerShell コマンドレット [`Set-AzureRmVMOSDisk`](/powershell/module/azurerm.compute/set-azurermvmosdisk) を使用して有効化できます。  
 
 #### <a name="using-cli-commands"></a>CLI コマンドの使用
 このシナリオのディスク暗号化を CLI コマンドによって有効化するには、次の操作を行います。
@@ -630,7 +630,7 @@ Azure 内にある既存または実行中の IaaS Linux VM でのディスク�
  ```
 
 ### <a name="get-the-encryption-status-of-an-encrypted-iaas-vm"></a>暗号化された IaaS VM の暗号化状態を取得する
-暗号化状態は、Azure Resource Manager、[PowerShell コマンドレット](https://msdn.microsoft.com/library/azure/mt622700.aspx)、または CLI コマンドを使用して取得できます。 以下のセクションでは、Azure クラシック ポータルと CLI コマンドを使用して暗号化状態を取得する方法について説明します。
+暗号化状態は、Azure Resource Manager、[PowerShell コマンドレット](/powershell/azure/overview)、または CLI コマンドを使用して取得できます。 以下のセクションでは、Azure クラシック ポータルと CLI コマンドを使用して暗号化状態を取得する方法について説明します。
 
 #### <a name="get-the-encryption-status-of-an-encrypted-windows-vm-by-using-azure-resource-manager"></a>暗号化された Windows VM の暗号化状態を、Azure Resource Manager を使用して取得する
 Azure Resource Manager から IaaS VM の暗号化状態を取得するには、次の操作を行います。
@@ -713,7 +713,7 @@ Linux VM の場合は、[Disable encryption on a running Linux VM](https://aka.m
 | sequenceVersion | BitLocker 操作のシーケンス バージョン。 ディスク暗号化解除操作が同じ VM で実行されるたびに、このバージョン番号をインクリメントします。 |
 
 ##### <a name="disable-encryption-on-an-existing-or-running-iaas-vm"></a>既存または実行中の VM での暗号化を無効にする
-既存または実行中の IaaS VM での暗号化を PowerShell コマンドレットによって無効化する方法については、[`Disable-AzureRmVMDiskEncryption`](https://msdn.microsoft.com/library/azure/mt715776.aspx) をご覧ください。 このコマンドレットは、Windows VM と Linux VM の両方をサポートします。 このコマンドレットを実行すると、暗号化を無効にするための拡張機能が仮想マシンにインストールされます。 _Name_ パラメーターが指定されなかった場合、拡張機能は既定の名前 (_AzureDiskEncryption for Windows VMs_) で作成されます。
+既存または実行中の IaaS VM での暗号化を PowerShell コマンドレットによって無効化する方法については、[`Disable-AzureRmVMDiskEncryption`](/powershell/module/azurerm.compute/disable-azurermvmdiskencryption) をご覧ください。 このコマンドレットは、Windows VM と Linux VM の両方をサポートします。 このコマンドレットを実行すると、暗号化を無効にするための拡張機能が仮想マシンにインストールされます。 _Name_ パラメーターが指定されなかった場合、拡張機能は既定の名前 (_AzureDiskEncryption for Windows VMs_) で作成されます。
 
 Linux VM では、AzureDiskEncryptionForLinux 拡張機能が使用されます。
 
@@ -1149,7 +1149,7 @@ BitLocker 暗号化または DM-Crypt 暗号化を有効にしたら、ローカ
 
 
 #### <a name="disk-encryption-secret-not-encrypted-with-a-kek"></a>KEK で暗号化されないディスク暗号化シークレット
-Key Vault でシークレットをセットアップするには、[Set-AzureKeyVaultSecret](https://msdn.microsoft.com/library/dn868050.aspx) を使用します。 Windows 仮想マシンがある場合は、bek ファイルが base64 文字列としてエンコードされ、その後、`Set-AzureKeyVaultSecret` コマンドレットを使用して Key Vault にアップロードされます。 Linux の場合は、パスフレーズが base64 文字列としてエンコードされ、その後 Key Vault にアップロードされます。 また、Key Vault でシークレットを作成する際には、以下のタグが設定されます。
+Key Vault でシークレットをセットアップするには、[Set-AzureKeyVaultSecret](/powershell/module/azurerm.keyvault/set-azurekeyvaultsecret) を使用します。 Windows 仮想マシンがある場合は、bek ファイルが base64 文字列としてエンコードされ、その後、`Set-AzureKeyVaultSecret` コマンドレットを使用して Key Vault にアップロードされます。 Linux の場合は、パスフレーズが base64 文字列としてエンコードされ、その後 Key Vault にアップロードされます。 また、Key Vault でシークレットを作成する際には、以下のタグが設定されます。
 
     # This is the passphrase that was provided for encryption during the distribution installation
     $passphrase = "contoso-password"
@@ -1165,7 +1165,7 @@ Key Vault でシークレットをセットアップするには、[Set-AzureKey
 [KEK を使用せずに OS ディスクをアタッチする](#without-using-a-kek)場合は、次の手順で `$secretUrl` を使用します。
 
 #### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>KEK で暗号化されるディスク暗号化シークレット
-必要であれば、シークレットを Key Vault にアップロードする前に、キー暗号化キーを使用してシークレットを暗号化できます。 最初にキー暗号化キーを使用してシークレットを暗号化するには、ラップ [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) を使用します。 このラップ操作の出力は、base64 URL エンコードされた文字列です。これは、[`Set-AzureKeyVaultSecret`](https://msdn.microsoft.com/library/dn868050.aspx) コマンドレットを使用してシークレットとしてアップロードできます。
+必要であれば、シークレットを Key Vault にアップロードする前に、キー暗号化キーを使用してシークレットを暗号化できます。 最初にキー暗号化キーを使用してシークレットを暗号化するには、ラップ [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) を使用します。 このラップ操作の出力は、base64 URL エンコードされた文字列です。これは、[`Set-AzureKeyVaultSecret`](/powershell/module/azurerm.keyvault/set-azurekeyvaultsecret) コマンドレットを使用してシークレットとしてアップロードできます。
 
     # This is the passphrase that was provided for encryption during the distribution installation
     $passphrase = "contoso-password"

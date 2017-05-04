@@ -15,9 +15,9 @@ ms.workload: big-data
 ms.date: 03/02/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: fe8a84d7e6d88f11498c288e0424ba204d7f06fd
-ms.lasthandoff: 04/05/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 0053f93218e9fec4d72fb229bfb2c6159d8b5bc7
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -44,7 +44,7 @@ PowerShell を使用して Data Lake Store を操作できるように HDInsight
 このチュートリアルを開始する前に、次の要件を満たしていることを確認します。
 
 * **An Azure サブスクリプション**: [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。
-* **Azure PowerShell 1.0 以上**: [PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)に関する記事をご覧ください。
+* **Azure PowerShell 1.0 以上**: [PowerShell のインストールおよび構成方法](/powershell/azure/overview)に関する記事をご覧ください。
 * **Windows ソフトウェア開発キット (SDK)**: Windows SDK のインストール方法については、「[Windows 10 用のダウンロードとツール](https://dev.windows.com/en-us/downloads)」をご覧ください。 Windows SDK は、セキュリティ証明書の作成に使用します。
 * **Azure Active Directory サービス プリンシパル**: このチュートリアルでは、Azure Active Directory (Azure AD) でサービス プリンシパルを作成する方法について説明します。 ただし、サービス プリンシパルを作成するには、Azure AD 管理者である必要があります。 管理者である場合は、この前提条件をスキップしてチュートリアルを進めることができます。
 

@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: narayan; annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 3fcd6583b415cea6b2151651297c55c93e59c796
-ms.openlocfilehash: b0375a99f5ea3d6af2d3ead382f9a43f1fd285f0
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 57991a59feb784fd2e5277e893110de2a776a060
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/22/2017
 
 PowerShell を使用して VNet ピアリングを作成するには、次の手順に従います。
 
-1. Azure PowerShell を初めて使用する場合は、 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
+1. Azure PowerShell を初めて使用する場合は、 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
 
     > [!NOTE]
     > VNet ピアリングを管理するための PowerShell コマンドレットは、 [Azure PowerShell 1.6](http://www.powershellgallery.com/packages/Azure/1.6.0)
@@ -44,7 +44,7 @@ PowerShell を使用して VNet ピアリングを作成するには、次の手
     $vnet2 = Get-AzureRmVirtualNetwork -ResourceGroupName vnet101 -Name vnet2
     ```
 
-3. VNET ピアリングを確立するには、2 つのリンク (各方向につき&1; つ) を作成する必要があります。 まず、VNet1 から VNet2 への VNET ピアリング リンクを次の手順で作成します。
+3. VNET ピアリングを確立するには、2 つのリンク (各方向につき 1 つ) を作成する必要があります。 まず、VNet1 から VNet2 への VNET ピアリング リンクを次の手順で作成します。
 
     ```powershell
     Add-AzureRmVirtualNetworkPeering -Name LinkToVNet2 -VirtualNetwork $vnet1 -RemoteVirtualNetworkId $vnet2.Id
@@ -176,7 +176,7 @@ PowerShell を使用してサブスクリプション間の VNet ピアリング
     ```
 
     > [!IMPORTANT]
-    > Azure Resource Manager デプロイメント モデルを使用して作成された&2; つの VNet の間にピアリングを作成している場合は、このセクションの残りの手順に進んでください。 2 つの VNet が異なるデプロイメント モデルを使用して作成されている場合は、このセクションの残りの手順を省略し、この記事の「[Peering virtual networks created through different deployment models (異なるデプロイメント モデルを使用して作成された仮想ネットワークのピアリング)](#x-model)」の手順を実行してください。
+    > Azure Resource Manager デプロイメント モデルを使用して作成された 2 つの VNet の間にピアリングを作成している場合は、このセクションの残りの手順に進んでください。 2 つの VNet が異なるデプロイメント モデルを使用して作成されている場合は、このセクションの残りの手順を省略し、この記事の「[Peering virtual networks created through different deployment models (異なるデプロイメント モデルを使用して作成された仮想ネットワークのピアリング)](#x-model)」の手順を実行してください。
 
 3. User-A のログイン セッションで次のコマンドを実行します。
 
@@ -234,7 +234,7 @@ PowerShell を使用してサブスクリプション間の VNet ピアリング
     $vnet1 = Get-AzureRmVirtualNetwork -ResourceGroupName vnet101 -Name vnet1
     ```
 
-3. このシナリオで VNet ピアリングを確立するには、リンクを&1; つだけ作成します。具体的には、**VNET1** から **VNET2** にリンクを作成します。 この手順では、クラシック VNet のリソース ID を知っておく必要があります。 リソース グループ ID の形式は、次の例のようになります。
+3. このシナリオで VNet ピアリングを確立するには、リンクを 1 つだけ作成します。具体的には、**VNET1** から **VNET2** にリンクを作成します。 この手順では、クラシック VNet のリソース ID を知っておく必要があります。 リソース グループ ID の形式は、次の例のようになります。
 
            subscriptions/{SubscriptionID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ClassicNetwork/virtualNetworks/{VirtualNetworkName}
 

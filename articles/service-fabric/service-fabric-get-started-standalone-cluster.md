@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 04/11/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 5e32f1e534057b5e8e0ed6d5c0a4631f9fefbca5
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a96150a6a7f83d1c220e0450f7704634a1f6ed1b
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -50,12 +50,12 @@ Service Fabric には、Service Fabric スタンドアロン クラスターを�
 Service Fabric ランタイム パッケージは、クラスターの作成時に自動でダウンロードされてインストールされます。
 
 ## <a name="connect-to-the-cluster"></a>クラスターへの接続
-これで開発用の 3 ノード クラスターが稼働状態となりました。 Service Fabric ランタイムをインストールすると、ServiceFabric PowerShell モジュールがインストールされます。  クラスターが同じコンピューターから実行されているか、リモート コンピューターから実行されているかは、この Service Fabric ランタイムを使って確認できます。  クラスターへの接続は、[Connect-ServiceFabricCluster](/powershell/module/ServiceFabric/Connect-ServiceFabricCluster) コマンドレットで確立します。   
+これで開発用の 3 ノード クラスターが稼働状態となりました。 Service Fabric ランタイムをインストールすると、ServiceFabric PowerShell モジュールがインストールされます。  クラスターが同じコンピューターから実行されているか、リモート コンピューターから実行されているかは、この Service Fabric ランタイムを使って確認できます。  クラスターへの接続は、[Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) コマンドレットで確立します。   
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint localhost:19000
 ```
-その他の方法でクラスターに接続する例については、「[セキュリティ保護されたクラスターに接続する](service-fabric-connect-to-secure-cluster.md)」を参照してください。 クラスターに接続した後、[Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode) コマンドレットを使って、クラスターに含まれている一連のノードとノードごとの状態情報を表示します。 すべてのノードで **HealthState** が *OK* になっている必要があります。
+その他の方法でクラスターに接続する例については、「[セキュリティ保護されたクラスターに接続する](service-fabric-connect-to-secure-cluster.md)」を参照してください。 クラスターに接続した後、[Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) コマンドレットを使って、クラスターに含まれている一連のノードとノードごとの状態情報を表示します。 すべてのノードで **HealthState** が *OK* になっている必要があります。
 
 ```powershell
 PS C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer> Get-ServiceFabricNode |Format-Table
@@ -95,3 +95,4 @@ Service Fabric ランタイムをコンピューターから削除するには�
 * [PowerShell を使ってアプリをデプロイ](service-fabric-deploy-remove-applications.md)します。
 
 [service-fabric-explorer]: ./media/service-fabric-get-started-standalone-cluster/sfx.png
+

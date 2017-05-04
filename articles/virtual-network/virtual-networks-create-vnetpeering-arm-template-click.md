@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: narayan;annahar
 translationtype: Human Translation
-ms.sourcegitcommit: d68c2f496cfdfa52c33243542ee141c44639e5c0
-ms.openlocfilehash: 7b4fda3ffb269c6a9de407bbd9af32d90768504f
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 86eec91025ae8ae553fa1f76a687e440784e7855
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/16/2017
 
 Resource Manager テンプレートを使用して VNet ピアリングを作成するには、次の手順を実行します。
 
-1. Azure PowerShell を初めて使用する場合は、 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
+1. Azure PowerShell を初めて使用する場合は、 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
 
    > [!NOTE]
    > VNet ピアリングを管理するための PowerShell コマンドレットは、 [Azure PowerShell 1.6](http://www.powershellgallery.com/packages/Azure/1.6.0)
@@ -193,7 +193,7 @@ Resource Manager テンプレートを使用して VNet ピアリングを作成
     ```
 
     > [!IMPORTANT]
-    > Azure Resource Manager デプロイメント モデルを使用して作成された&2; つの VNet の間にピアリングを作成している場合は、このセクションの残りの手順に進んでください。 2 つの VNet が異なるデプロイメント モデルを使用して作成されている場合は、このセクションの残りの手順を省略し、この記事の「[Peering virtual networks created through different deployment models (異なるデプロイメント モデルを使用して作成された仮想ネットワークのピアリング)](#x-model)」の手順を実行してください。
+    > Azure Resource Manager デプロイメント モデルを使用して作成された 2 つの VNet の間にピアリングを作成している場合は、このセクションの残りの手順に進んでください。 2 つの VNet が異なるデプロイメント モデルを使用して作成されている場合は、このセクションの残りの手順を省略し、この記事の「[Peering virtual networks created through different deployment models (異なるデプロイメント モデルを使用して作成された仮想ネットワークのピアリング)](#x-model)」の手順を実行してください。
 
 3. 次に、User-A のログイン セッションで次のコマンドレットを実行します。
 
@@ -339,7 +339,7 @@ Resource Manager テンプレートを使用して VNet ピアリングを作成
 1. "*同じ*" サブスクリプション内の異なるデプロイメント モデルを使用してデプロイされた VNet 間にピアリングを作成している場合は、手順 2. に進んでください。 "*異なる*" サブスクリプション内の異なるデプロイメント モデルを使用してデプロイされた VNet 間に VNet ピアリングを作成する機能は、**プレビュー** リリースに用意されています。 プレビュー リリースの機能は、一般向けリリースの機能と同等レベルの信頼性とサービス レベル アグリーメントを備えていません。 異なるサブスクリプション内の異なるデプロイメント モデルを使用してデプロイされた VNet 間にピアリングを作成している場合は、最初に次のタスクを完了する必要があります。
     - PowerShell から次のコマンドを入力して、Azure サブスクリプションにプレビュー機能を登録します: `Register-AzureRmProviderFeature -FeatureName AllowClassicCrossSubscriptionPeering -ProviderNamespace Microsoft.Network` および `Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network`
     - この記事の「[Peering across subscriptions (サブスクリプション間のピアリング)](#x-sub)」の手順 1. ～ 2. を実行します。
-2. 以下のテキストは、このシナリオにおける VNET1 から VNET2 への VNet ピアリング リンクの定義です。 クラシック仮想ネットワークから Azure Resource Manager 仮想ネットワークへのピアリングに必要なリンクは&1; つだけです。
+2. 以下のテキストは、このシナリオにおける VNET1 から VNET2 への VNet ピアリング リンクの定義です。 クラシック仮想ネットワークから Azure Resource Manager 仮想ネットワークへのピアリングに必要なリンクは 1 つだけです。
 
     クラシック仮想ネットワーク (VNET2) が属しているサブスクリプションのサブスクリプション ID を入力し、MyResouceGroup を適切なリソース グループ名に変更してください。
 

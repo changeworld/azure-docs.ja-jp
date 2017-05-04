@@ -16,9 +16,9 @@ ms.workload: billing
 ms.date: 04/18/2017
 ms.author: mobandyo;bryanla
 translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: eca1b3865fed9a00935a0e48ce70354d3440a0b2
-ms.lasthandoff: 04/26/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: d3e1dd894c1548b44257bcc02c12cfafe364d5eb
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -29,7 +29,7 @@ Azure Billing API を使用すると、使用状況やリソースに関する�
 ## <a name="azure-invoice-download-api-preview"></a>Azure Invoice Download API (プレビュー)
 [オプトインが完了したら](billing-manage-access.md#opt-in)、プレビュー版の [Invoice API](/rest/api/billing) を使用して請求書をダウンロードします。 機能は、次のとおりです。
 
-* **Azure ロールベースのアクセス制御** - [Azure Portal](https://portal.azure.com) または [Azure PowerShell コマンドレット](/powershell/azureps-cmdlets-docs)を使用して、アクセス ポリシーを構成し、サブスクリプションの使用状況データにアクセスできるユーザーやアプリケーションを指定できます。 呼び出し元は、認証に Azure Active Directory トークンを使用する必要があります。 また、呼び出し元が特定の Azure サブスクリプションの使用状況データにアクセスするには、請求閲覧者、閲覧者、所有者、共同作成者のいずれかのロールに呼び出し元を追加します。
+* **Azure ロールベースのアクセス制御** - [Azure Portal](https://portal.azure.com) または [Azure PowerShell コマンドレット](/powershell/azure/overview)を使用して、アクセス ポリシーを構成し、サブスクリプションの使用状況データにアクセスできるユーザーやアプリケーションを指定できます。 呼び出し元は、認証に Azure Active Directory トークンを使用する必要があります。 また、呼び出し元が特定の Azure サブスクリプションの使用状況データにアクセスするには、請求閲覧者、閲覧者、所有者、共同作成者のいずれかのロールに呼び出し元を追加します。
 * **日付のフィルタリング** - `$filter` パラメーターを使用して、新しい日付から順に請求期間終了日まですべての請求書を取得します。 
 
 > [!NOTE]
@@ -38,7 +38,7 @@ Azure Billing API を使用すると、使用状況やリソースに関する�
 ## <a name="azure-resource-usage-api-preview"></a>Azure Resource Usage API (プレビュー)
 [Azure Resource Usage API](https://msdn.microsoft.com/library/azure/mt219003) を使用すると、Azure の推定消費量データを取得できます。 この API には次の要素が含まれています。
 
-* **Azure ロールベースのアクセス制御** - [Azure Portal](https://portal.azure.com) または [Azure PowerShell コマンドレット](/powershell/azureps-cmdlets-docs)を使用して、アクセス ポリシーを構成し、サブスクリプションの使用状況データにアクセスできるユーザーやアプリケーションを指定できます。 呼び出し元は、認証に Azure Active Directory トークンを使用する必要があります。 また、呼び出し元が特定の Azure サブスクリプションの使用状況データにアクセスするには、請求閲覧者、閲覧者、所有者、共同作成者のいずれかのロールに呼び出し元を追加します。
+* **Azure ロールベースのアクセス制御** - [Azure Portal](https://portal.azure.com) または [Azure PowerShell コマンドレット](/powershell/azure/overview)を使用して、アクセス ポリシーを構成し、サブスクリプションの使用状況データにアクセスできるユーザーやアプリケーションを指定できます。 呼び出し元は、認証に Azure Active Directory トークンを使用する必要があります。 また、呼び出し元が特定の Azure サブスクリプションの使用状況データにアクセスするには、請求閲覧者、閲覧者、所有者、共同作成者のいずれかのロールに呼び出し元を追加します。
 * **時間単位または日単位の集計** - 呼び出し元は、時間単位のバケットまたは日単位のバケットのどちらで Azure 使用状況データを取得するかを指定できます。 既定値は日単位です。
 * **インスタンス メタデータ (リソース タグなど)** - 完全修飾リソース URI (/subscriptions/{subscription-id}/..) などのインスタンスレベルの詳細情報、リソース グループ情報、リソース タグを取得できます。 これらのメタデータを利用すると、クロス課金のようなユースケースにおいて、プログラムでタグを使って確定的に使用状況を割り当てることができます。
 * **リソース メタデータ** - 呼び出し元は、測定名、測定カテゴリ、測定サブカテゴリ、単位、リージョンなどのリソースの詳細情報をもとに、消費内容をより詳しく理解できます。 また、エクスペリエンス全体でデータを関連付けることができるように、現在、Azure Portal、Azure 使用状況 CSV、EA 課金 CSV など、一般公開されているエクスペリエンス全体でリソース メタデータの用語の調整を進めています。
@@ -47,7 +47,7 @@ Azure Billing API を使用すると、使用状況やリソースに関する�
 ## <a name="azure-resource-ratecard-api-preview"></a>Azure Resource RateCard API (プレビュー)
 [Azure Resource RateCard API](https://msdn.microsoft.com/library/azure/mt219005) を使用して、使用可能な Azure リソースの一覧と、それぞれの推定料金情報を取得できます。 この API には次の要素が含まれています。
 
-* **Azure ロールベースのアクセス制御** - [Azure Portal](https://portal.azure.com) または [Azure PowerShell コマンドレット](/powershell/azureps-cmdlets-docs)を使用して、アクセス ポリシーを構成し、RateCard データにアクセスできるユーザーやアプリケーションを指定できます。 呼び出し元は、認証に Azure Active Directory トークンを使用する必要があります。 また、呼び出し元が特定の Azure サブスクリプションの使用状況データにアクセスするには、リーダー、所有者、共同作成者のいずれかのロールに呼び出し元を追加します。
+* **Azure ロールベースのアクセス制御** - [Azure Portal](https://portal.azure.com) または [Azure PowerShell コマンドレット](/powershell/azure/overview)を使用して、アクセス ポリシーを構成し、RateCard データにアクセスできるユーザーやアプリケーションを指定できます。 呼び出し元は、認証に Azure Active Directory トークンを使用する必要があります。 また、呼び出し元が特定の Azure サブスクリプションの使用状況データにアクセスするには、リーダー、所有者、共同作成者のいずれかのロールに呼び出し元を追加します。
 * **従量課金制、MSDN、料金コミットメント、料金クレジット プランのサポート (EA はサポートされていません)** - この API は、Azure のプラン レベルの料金情報を提供します。  この API の呼び出し元は、プラン情報を渡してリソースの詳細と料金を取得する必要があります。 EA プランには登録ごとにカスタマイズされた料金があるため、現在は EA 料金を提供できません。 
 
 ## <a name="scenarios"></a>シナリオ

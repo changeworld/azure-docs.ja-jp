@@ -16,9 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 01/17/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 218d7dcf14ebbb28ac043e50e6f9248ecb942aaa
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a91122759bea12631fb83d631b21728d5a8f7403
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -38,7 +38,7 @@ ms.lasthandoff: 03/25/2017
 このチュートリアルには次のものが必要です。
 
 * Azure アカウントとサブスクリプション (作業の開始前)。 お持ちでない場合は、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
-* [Azure PowerShell](/powershell/azureps-cmdlets-docs)1.4.0 以降 (このチュートリアルの執筆に使用したバージョンは 1.5.0)。
+* [Azure PowerShell](/powershell/azure/overview)1.4.0 以降 (このチュートリアルの執筆に使用したバージョンは 1.5.0)。
   * バージョンを確認するには、「 **Get-Module Azure -ListAvailable**」と入力します。
 
 ## <a name="configure-your-subscription"></a>サブスクリプションの構成
@@ -115,14 +115,14 @@ Get-AzureRmVMImageOffer コマンドを使用すると、提供されている�
     Get-AzureRmVMImageSku -Location 'East US' -Publisher 'MicrosoftSQLServer' -Offer 'SQL2014SP1-WS2012R2' | Select Skus
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
-Resource Manager デプロイメント モデルで最初に作成するオブジェクトはリソース グループです。 ここでは [New-AzureRmResourceGroup](https://msdn.microsoft.com/library/mt759837.aspx) コマンドレットを使用して、Azure リソース グループとそのリソースを作成します。引数には、先ほど初期化した変数で定義したリソース グループの名前と場所を指定します。
+Resource Manager デプロイメント モデルで最初に作成するオブジェクトはリソース グループです。 ここでは [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) コマンドレットを使用して、Azure リソース グループとそのリソースを作成します。引数には、先ほど初期化した変数で定義したリソース グループの名前と場所を指定します。
 
 次のコマンドレットを実行すると、新しいリソース グループが作成されます。
 
     New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
-仮想マシンには、オペレーティング システム ディスク用と SQL Server (データおよびログ ファイル) 用のストレージ リソースが必要となります。 単純化するために、ここではその両方の用途を兼ねた単一のディスクを作成します。 SQL Server のデータ ファイルとログ ファイルを専用のディスクに格納する場合は、後から [Add-Azure Disk](https://msdn.microsoft.com/library/azure/dn495252.aspx) コマンドレットを使用して別途ディスクを接続することができます。 ここでは [New-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx) コマンドレットを使用して、新しいリソース グループに Standard ストレージ アカウントを作成します。引数には、先ほど初期化した変数で定義したストレージ アカウント名、ストレージ SKU 名、場所を指定します。
+仮想マシンには、オペレーティング システム ディスク用と SQL Server (データおよびログ ファイル) 用のストレージ リソースが必要となります。 単純化するために、ここではその両方の用途を兼ねた単一のディスクを作成します。 SQL Server のデータ ファイルとログ ファイルを専用のディスクに格納する場合は、後から [Add-Azure Disk](/powershell/module/azure/add-azuredisk) コマンドレットを使用して別途ディスクを接続することができます。 ここでは [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) コマンドレットを使用して、新しいリソース グループに Standard ストレージ アカウントを作成します。引数には、先ほど初期化した変数で定義したストレージ アカウント名、ストレージ SKU 名、場所を指定します。
 
 次のコマンドレットを実行すると、新しいストレージ アカウントが作成されます。
 
@@ -136,7 +136,7 @@ Resource Manager デプロイメント モデルで最初に作成するオブ�
 * パブリックまたはプライベートの IP アドレスを持つネットワーク インターフェイスが定義されている必要があります。
 
 ### <a name="create-a-virtual-network-subnet-configuration"></a>仮想ネットワークのサブネット構成の作成
-まず仮想ネットワークのサブネット構成を作成しましょう。 このチュートリアルでは、 [New-AzureRmVirtualNetworkSubnetConfig](https://msdn.microsoft.com/library/mt619412.aspx) コマンドレットを使用して既定のサブネットを作成します。 先ほど初期化した変数で定義したサブネット名とアドレス プレフィックスを引数に指定して、仮想ネットワークのサブネット構成を作成します。
+まず仮想ネットワークのサブネット構成を作成しましょう。 このチュートリアルでは、 [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) コマンドレットを使用して既定のサブネットを作成します。 先ほど初期化した変数で定義したサブネット名とアドレス プレフィックスを引数に指定して、仮想ネットワークのサブネット構成を作成します。
 
 > [!NOTE]
 > サブネット名とアドレス プレフィックス以外のプロパティもこのコマンドレットで定義できますが、このチュートリアルの範囲を超えるため、ここでは取り上げません。
@@ -148,14 +148,14 @@ Resource Manager デプロイメント モデルで最初に作成するオブ�
     $SubnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $VNetSubnetAddressPrefix
 
 ### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
-次に、 [New-AzureRmVirtualNetwork](https://msdn.microsoft.com/library/mt603657.aspx) コマンドレットを使用して仮想ネットワークを作成します。 仮想ネットワークは、先ほど初期化した変数で定義した名前、場所、アドレス プレフィックスに加え、前の手順で定義したサブネット構成を引数に指定して、新しいリソース グループに作成します。
+次に、 [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) コマンドレットを使用して仮想ネットワークを作成します。 仮想ネットワークは、先ほど初期化した変数で定義した名前、場所、アドレス プレフィックスに加え、前の手順で定義したサブネット構成を引数に指定して、新しいリソース グループに作成します。
 
 次のコマンドレットを実行して、仮想ネットワークを作成します。
 
     $VNet = New-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName -Location $Location -AddressPrefix $VNetAddressPrefix -Subnet $SubnetConfig
 
 ### <a name="create-the-public-ip-address"></a>パブリック IP アドレスの作成
-仮想ネットワークを定義したら、仮想マシンとの接続に使用する IP アドレスを構成する必要があります。 このチュートリアルでは、インターネット接続をサポートするために、動的 IP アドレス指定を使用してパブリック IP アドレスを作成します。 パブリック IP アドレスは、[New-AzureRmPublicIpAddress](https://msdn.microsoft.com/library/mt603620.aspx) コマンドレットを使用して、既に作成したリソース グループに作成します。引数には、先ほど初期化した変数で定義した名前、場所、割り当て方式、DNS ドメイン名ラベルを指定します。
+仮想ネットワークを定義したら、仮想マシンとの接続に使用する IP アドレスを構成する必要があります。 このチュートリアルでは、インターネット接続をサポートするために、動的 IP アドレス指定を使用してパブリック IP アドレスを作成します。 パブリック IP アドレスは、[New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) コマンドレットを使用して、既に作成したリソース グループに作成します。引数には、先ほど初期化した変数で定義した名前、場所、割り当て方式、DNS ドメイン名ラベルを指定します。
 
 > [!NOTE]
 > パブリック IP アドレスのプロパティもこのコマンドレットで定義できますが、このチュートリアルの範囲を超えるため、ここでは取り上げません。 またプライベート アドレスや静的アドレスを作成することもできますが、このチュートリアルの範囲を超えるため、同様に説明を省略します。
@@ -167,7 +167,7 @@ Resource Manager デプロイメント モデルで最初に作成するオブ�
     $PublicIp = New-AzureRmPublicIpAddress -Name $InterfaceName -ResourceGroupName $ResourceGroupName -Location $Location -AllocationMethod $TCPIPAllocationMethod -DomainNameLabel $DomainName
 
 ### <a name="create-the-network-interface"></a>ネットワーク インターフェイスの作成
-次に、仮想マシンで使用するネットワーク インターフェイスを作成します。 作成済みのリソース グループにネットワーク インターフェイスを作成するには、[New-AzureRmNetworkInterface](https://msdn.microsoft.com/library/mt619370.aspx) コマンドレットを使用します。引数には、先ほど定義した名前、場所、サブネット、パブリック IP アドレスを指定します。
+次に、仮想マシンで使用するネットワーク インターフェイスを作成します。 作成済みのリソース グループにネットワーク インターフェイスを作成するには、[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) コマンドレットを使用します。引数には、先ほど定義した名前、場所、サブネット、パブリック IP アドレスを指定します。
 
 次のコマンドレットを実行して、ネットワーク インターフェイスを作成します。
 
@@ -177,7 +177,7 @@ Resource Manager デプロイメント モデルで最初に作成するオブ�
 ストレージとネットワーク リソースを定義したら、仮想マシンのコンピューティング リソースを定義することができます。 このチュートリアルではまず、仮想マシン サイズと各種オペレーティング システムのプロパティを指定し、先ほど作成したネットワーク インターフェイスを指定して、Blob Storage を定義した後、オペレーティング システム ディスクを指定します。
 
 ### <a name="create-the-vm-object"></a>VM オブジェクトの作成
-最初に、仮想マシンのサイズを指定しましょう。 このチュートリアルでは DS13 を指定します。 構成可能な仮想マシン オブジェクトを作成するには、[New-AzureRmVMConfig](https://msdn.microsoft.com/library/mt603727.aspx) コマンドレットを使用します。引数には、先ほど初期化した変数で定義した名前とサイズを指定します。
+最初に、仮想マシンのサイズを指定しましょう。 このチュートリアルでは DS13 を指定します。 構成可能な仮想マシン オブジェクトを作成するには、[New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) コマンドレットを使用します。引数には、先ほど初期化した変数で定義した名前とサイズを指定します。
 
 次のコマンドレットを実行して、仮想マシン オブジェクトを作成します。
 
@@ -191,14 +191,14 @@ Resource Manager デプロイメント モデルで最初に作成するオブ�
     $Credential = Get-Credential -Message "Type the name and password of the local administrator account."
 
 ### <a name="set-the-operating-system-properties-for-the-virtual-machine"></a>仮想マシンに使用するオペレーティング システムのプロパティ設定
-次に、仮想マシンに使用するオペレーティング システムのプロパティを設定します。 この設定には [Set-AzureRmVMOperatingSystem](https://msdn.microsoft.com/library/mt603843.aspx) コマンドレットを使用します。オペレーティング システムの種類に Windows を指定し、[仮想マシン エージェント](../classic/agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)のインストールを要求すると共に、自動更新を有効にします。仮想マシン名、コンピューター名、資格情報は、先ほど初期化した変数で設定しています。
+次に、仮想マシンに使用するオペレーティング システムのプロパティを設定します。 この設定には [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) コマンドレットを使用します。オペレーティング システムの種類に Windows を指定し、[仮想マシン エージェント](../classic/agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)のインストールを要求すると共に、自動更新を有効にします。仮想マシン名、コンピューター名、資格情報は、先ほど初期化した変数で設定しています。
 
 次のコマンドレットを実行することで、仮想マシンに使用するオペレーティング システムのプロパティが設定されます。
 
     $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate
 
 ### <a name="add-the-network-interface-to-the-virtual-machine"></a>仮想マシンにネットワーク インターフェイスを追加する
-次に、先ほど作成したネットワーク インターフェイスを仮想マシンに追加しましょう。 [Add-AzureRmVMNetworkInterface](https://msdn.microsoft.com/library/mt619351.aspx) コマンドレットを使用してネットワーク インターフェイスを追加します。その際、定義済みのネットワーク インターフェイス変数を使います。
+次に、先ほど作成したネットワーク インターフェイスを仮想マシンに追加しましょう。 [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface) コマンドレットを使用してネットワーク インターフェイスを追加します。その際、定義済みのネットワーク インターフェイス変数を使います。
 
 次のコマンドレットを実行すると、仮想マシンにネットワーク インターフェイスが追加されます。
 
@@ -212,21 +212,21 @@ Blob Storage の場所は、次のコマンドレットを実行して設定し�
     $OSDiskUri = $StorageAccount.PrimaryEndpoints.Blob.ToString() + "vhds/" + $OSDiskName + ".vhd"
 
 ### <a name="set-the-operating-system-disk-properties-for-the-virtual-machine"></a>仮想マシンに使用するオペレーティング システムのディスクのプロパティ設定
-次に、仮想マシンに使用するオペレーティング システムのディスクのプロパティを設定します。 この設定には、[Set-AzureRmVMOSDisk](https://msdn.microsoft.com/library/mt603746.aspx) コマンドレットを使用します。仮想マシンのオペレーティング システムをイメージから作成するように設定し、キャッシュは読み取り専用に設定します (SQL Server を同じディスクにインストールするため)。また、仮想マシンの名前とオペレーティング システム ディスクは、定義済みの変数を使用して指定します。
+次に、仮想マシンに使用するオペレーティング システムのディスクのプロパティを設定します。 この設定には、[Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk) コマンドレットを使用します。仮想マシンのオペレーティング システムをイメージから作成するように設定し、キャッシュは読み取り専用に設定します (SQL Server を同じディスクにインストールするため)。また、仮想マシンの名前とオペレーティング システム ディスクは、定義済みの変数を使用して指定します。
 
 次のコマンドレットを実行することで、仮想マシンに使用するオペレーティング システムのディスクのプロパティが設定されます。
 
     $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -Name $OSDiskName -VhdUri $OSDiskUri -Caching ReadOnly -CreateOption FromImage
 
 ### <a name="specify-the-platform-image-for-the-virtual-machine"></a>仮想マシンのプラットフォーム イメージを指定する
-最後の構成手順は、仮想マシンに使用するプラットフォーム イメージの指定です。 このチュートリアルでは、最新の SQL Server 2016 CTP イメージを使用します。 [Set-AzureRmVMSourceImage](https://msdn.microsoft.com/library/mt619344.aspx) コマンドレットの引数に、先に定義しておいた変数を指定して、このイメージが使用されるようにします。
+最後の構成手順は、仮想マシンに使用するプラットフォーム イメージの指定です。 このチュートリアルでは、最新の SQL Server 2016 CTP イメージを使用します。 [Set-AzureRmVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage) コマンドレットの引数に、先に定義しておいた変数を指定して、このイメージが使用されるようにします。
 
 次のコマンドレットを実行すると、仮想マシンのプラットフォーム イメージが指定されます。
 
     $VirtualMachine = Set-AzureRmVMSourceImage -VM $VirtualMachine -PublisherName $PublisherName -Offer $OfferName -Skus $Sku -Version $Version
 
 ## <a name="create-the-sql-vm"></a>SQL VM の作成
-以上で構成関連の手順は終了です。いよいよ仮想マシンを作成することになります。 [New-AzureRmVM](https://msdn.microsoft.com/library/mt603754.aspx) コマンドレットの引数に、先に定義しておいた変数を指定して、仮想マシンを作成します。
+以上で構成関連の手順は終了です。いよいよ仮想マシンを作成することになります。 [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) コマンドレットの引数に、先に定義しておいた変数を指定して、仮想マシンを作成します。
 
 次のコマンドレットを実行すると仮想マシンが作成されます。
 

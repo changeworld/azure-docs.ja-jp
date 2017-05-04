@@ -16,9 +16,9 @@ ms.date: 04/17/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: ca5b67043843185ac40d02030f26fab8639a1f9f
-ms.lasthandoff: 04/25/2017
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: bf507fb21b314a6811db1c1e45a4356381caada1
+ms.lasthandoff: 05/03/2017
 
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>StorSimple Virtual Array をデプロイする - Azure Portal を介してファイル サーバーとしてセットアップする
@@ -102,7 +102,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
     4. **[Apply]**をクリックします。 これにより、構成済みの時刻設定が検証され、適用されます。
 11. デバイスのクラウドの設定を構成します。 この手順では、ローカル デバイスの構成を完了してから、StorSimple デバイス マネージャー サービスにそのデバイスを登録します。
     
-    1. StorSimple Virtual Array の「 **手順 2. サービス登録キーを取得する** 」で取得した [サービス登録キー](storsimple-ova-deploy1-portal-prep.md#step-2-get-the-service-registration-key) を入力します。
+    1. StorSimple Virtual Array の「 **手順 2. サービス登録キーを取得する** 」で取得した [サービス登録キー](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key) を入力します。
     2. このサービスに登録する最初のデバイスの場合は、**サービス データ暗号化キー**が提供されます。 このキーをコピーし、安全な場所に保存しておきます。 このキーは、StorSimple デバイス マネージャー サービスに追加のデバイスを登録するときに、サービス登録キーと共に必要になります。 
        
        このサービスに登録する最初のデバイスでない場合は、サービス データ暗号化キーを指定する必要があります。 詳しくは、ローカル Web UI の「 [サービス データ暗号化キーの取得](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) 」を参照してください。

@@ -16,9 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 01/18/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 5771c7d1716f126570759cd4a3c53ebd3d30adf4
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: b653aabc0a26c85d367abd578f67987f08d07629
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -58,7 +58,7 @@ ms.lasthandoff: 03/25/2017
 
 **Azure PowerShell**:
 
-* [最新の Azure PowerShell コマンドをインストールします](/powershell/azureps-cmdlets-docs)。
+* [最新の Azure PowerShell コマンドをインストールします](/powershell/azure/overview)。
 
 **SQL Server IaaS 拡張機能**:
 

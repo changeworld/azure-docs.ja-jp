@@ -173,7 +173,7 @@
 
 # リファレンス
 
-## [PowerShell モジュール (新規)](/powershell/resourcemanager/azurerm.machinelearning/v0.11.1/azurerm.machinelearning)
+## [PowerShell モジュール (新規)](/powershell/module/azurerm.machinelearning)
 ## [PowerShell モジュール (クラシック)](machine-learning-powershell-module.md)
 ## [アルゴリズムとモジュールのリファレンス](https://msdn.microsoft.com/library/azure/dn905974.aspx)
 ## [REST API リファレンス](/rest/api/machinelearning)

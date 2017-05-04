@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/06/2017
+ms.date: 04/26/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 0182d0d600af691daf8c2ac7a5cb93d7755f61da
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 2b25b4f4925962b1e4de681d268e78909a93eccd
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -56,7 +56,7 @@ Azure VM エージェントは、Azure 仮想マシンと Azure ファブリッ�
 Azure Virtual Machines と共に、多くのさまざまな VM 拡張機能を使用できます。 完全な一覧を表示するには、Azure CLI で次のコマンドを実行します。コマンド内の場所は、実際の場所に置き換えます。
 
 ```azurecli
-azure vm extension-image list westus
+az vm extension image list --location westus -o table
 ```
 
 ## <a name="run-vm-extensions"></a>VM 拡張機能の実行
@@ -67,12 +67,15 @@ Azure 仮想マシン拡張機能は既存の仮想マシンで実行できま�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-`azure vm extension set` コマンドを使用すると、既存の仮想マシンに対して Azure 仮想マシン拡張機能を実行できます。 次の例では、仮想マシンに対してカスタム スクリプト拡張機能を実行します。
+`az vm extension set` コマンドを使用すると、既存の仮想マシンに対して Azure 仮想マシン拡張機能を実行できます。 次の例では、仮想マシンに対してカスタム スクリプト拡張機能を実行します。
 
 ```azurecli
-azure vm extension set myResourceGroup myVM CustomScript Microsoft.Azure.Extensions 2.0 \
-  --auto-upgrade-minor-version \
-  --public-config '{"fileUris": ["https://gist.github.com/ahmetalpbalkan/b5d4a856fe15464015ae87d5587a4439/raw/466f5c30507c990a4d5a2f5c79f901fa89a80841/hello.sh"],"commandToExecute": "./hello.sh"}'
+az vm extension set `
+  --resource-group exttest `
+  --vm-name exttest `
+  --name customScript `
+  --publisher Microsoft.Azure.Extensions `
+  --settings '{"fileUris": ["https://gist.github.com/ahmetalpbalkan/b5d4a856fe15464015ae87d5587a4439/raw/466f5c30507c990a4d5a2f5c79f901fa89a80841/hello.sh"],"commandToExecute": "./hello.sh"}'
 ```
 
 このスクリプトでは、次のような出力が表示されます。
@@ -205,18 +208,15 @@ VM 拡張機能の実行時には、資格情報、ストレージ アカウン�
 仮想マシンに対して仮想マシン拡張機能を実行した後で、次の Azure CLI コマンドを使用して、拡張機能の状態を返します。 次のコマンドでは、パラメーター名を独自の値に置き換えてください。
 
 ```azurecli
-azure vm extension get myResourceGroup myVM
+az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
 出力は次のテキストのようになります。
 
 ```azurecli
-info:    Executing command vm extension get
-+ Looking up the VM "myVM"
-data:    Publisher                   Name             Version  State
-data:    --------------------------  ---------------  -------  ---------
-data:    Microsoft.Azure.Extensions  DockerExtension  1.0      Succeeded
-info:    vm extension get command OK         :
+AutoUpgradeMinorVersion    Location    Name          ProvisioningState    Publisher                   ResourceGroup      TypeHandlerVersion  VirtualMachineExtensionType
+-------------------------  ----------  ------------  -------------------  --------------------------  ---------------  --------------------  -----------------------------
+True                       westus      customScript  Succeeded            Microsoft.Azure.Extensions  exttest                             2  customScript
 ```
 
 拡張機能の実行の状態は、Azure Portal で確認することもできます。 拡張機能の状態を表示するには、仮想マシンを選択し、**[拡張機能]** を選択して目的の拡張機能を選択します。
@@ -226,7 +226,7 @@ info:    vm extension get command OK         :
 仮想マシン拡張機能の再実行が必要な場合があります。 拡張機能を再実行するには、その拡張機能を削除し、その後任意の実行方法で拡張機能を再実行します。 拡張機能を削除するには、Azure CLI を使用して次のコマンドを実行します。 次のコマンドでは、パラメーター名を独自の値に置き換えてください。
 
 ```azurecli
-azure vm extension set myResourceGroup myVM --uninstall CustomScript Microsoft.Azure.Extensions 2.0
+az vm extension delete --name customScript --resource-group myResourceGroup --vm-name myVM
 ```
 
 Azure Portal で次の手順を使用して拡張機能を削除できます。

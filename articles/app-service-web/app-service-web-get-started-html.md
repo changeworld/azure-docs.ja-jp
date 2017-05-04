@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 03/17/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 472353a2d099db869f43649cd46c8b004ebd53cc
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: ba9b9b780da74c44f6314fa289f1d6b8c231dd30
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -42,7 +42,7 @@ az login
 az group create --location "West Europe" --name myResourceGroup
 ```
 
-`---location` に使用できる値を確認するには、Azure CLI コマンド `az appservice list-locations` を使用してください。
+`--location` に使用できる値を確認するには、Azure CLI コマンド `az appservice list-locations` を使用してください。
 
 
 ## <a name="create-an-app-service-plan"></a>App Service プランを作成する

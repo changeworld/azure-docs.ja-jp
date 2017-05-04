@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: fdc53ee24c623218e218cdda1c24dffbbec50bc5
-ms.openlocfilehash: e7c7e9504985fa98185286ee9a28cec80fb87df6
-ms.lasthandoff: 01/05/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 9fc3b38b22c3a092dc2d932d2d7471872f5ba66d
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 01/05/2017
 <br>
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md)&2; 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 現在、Azure AD ドメイン サービスでは、Resource Manager モデルをサポートしていません。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 現在、Azure AD ドメイン サービスでは、Resource Manager モデルをサポートしていません。
 >
 >
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 01/05/2017
 
 これらの手順では、空白に記入する方式に従って Azure PowerShell コマンド セットを作成します。 この方法は、PowerShell を初めて使う場合や、構成を正しく行うためにどの値を指定するとよいかを知りたい場合に役立ちます。 PowerShell に慣れているユーザーは、コマンドの変数を独自の値で置き換えることができます ("$" で始まる行)。
 
-まだ完了していない場合は、 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs) に関するページの手順に従って、Azure PowerShell をご使用のローカル コンピューターにインストールします。 次に、Windows PowerShell コマンド プロンプトを開きます。
+まだ完了していない場合は、 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview) に関するページの手順に従って、Azure PowerShell をご使用のローカル コンピューターにインストールします。 次に、Windows PowerShell コマンド プロンプトを開きます。
 
 ## <a name="step-1-add-your-account"></a>手順 1: アカウントを追加する
 1. PowerShell プロンプトで、「**Add-AzureAccount**」と入力し、**Enter** キーを押します。

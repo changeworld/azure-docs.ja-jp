@@ -15,8 +15,9 @@ ms.workload: TBD
 ms.date: 10/05/2016
 ms.author: v-sharos@microsoft.com
 translationtype: Human Translation
-ms.sourcegitcommit: 78daa5a75b3414e2761333ea6ad91945596553c8
-ms.openlocfilehash: 3575e4f22e17608de7f3b66e9dd577a1d4a4c148
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 27231cef19e7f624c2c09b0aae2ea3d503fb8e3d
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -64,7 +65,7 @@ Microsoft Azure StorSimple ソリューションには、次のコンポーネ�
 * **StorSimple 仮想デバイス** - 物理ハイブリッド ストレージ デバイスのアーキテクチャと大部分の機能をそのまま再現したソフトウェア版の StorSimple デバイスです (別名 StorSimple 仮想アプライアンス)。 StorSimple 仮想デバイスは、Azure 仮想マシン内の単一ノードで動作します。 Azure Premium Storage を利用する Premium 仮想デバイスは、Update 2 以降で使用できます。
 * **StorSimple Manager サービス** - StorSimple デバイスまたは StorSimple 仮想デバイスを単一の Web インターフェイスから管理できる、Azure クラシック ポータルの拡張機能です。 StorSimple Manager サービスを使用して、サービスの作成と管理、デバイスの表示と管理、アラートの表示、ボリュームの管理、バックアップ ポリシーやバックアップ カタログの表示と管理を行うことができます。
 * **StorSimple 用 Windows PowerShell** - StorSimple デバイスの管理に使用するコマンドライン インターフェイスです。 StorSimple 用 Windows PowerShell の機能を使って、StorSimple デバイスの登録、デバイスのネットワーク インターフェイスの構成、特定の種類の更新プログラムのインストール、サポート セッションへのアクセスによるデバイスのトラブルシューティング、デバイスの状態の変更などを行うことができます。 StorSimple 用 Windows PowerShell には、シリアル コンソールに接続するか、Windows PowerShell リモート処理を使用してアクセスできます。
-* **StorSimple 用 Azure PowerShell コマンドレット** – コマンドラインからのサービス レベル タスクと移行タスクを自動化することができる Windows PowerShell コマンドレットのコレクションです。 StorSimple 用の Azure PowerShell コマンドレットの詳細については、「 [コマンドレット リファレンス](https://msdn.microsoft.com/library/dn920427.aspx)」を参照してください。
+* **StorSimple 用 Azure PowerShell コマンドレット** – コマンドラインからのサービス レベル タスクと移行タスクを自動化することができる Windows PowerShell コマンドレットのコレクションです。 StorSimple 用の Azure PowerShell コマンドレットの詳細については、「 [コマンドレット リファレンス](/powershell/module/azure/?view=azuresmps-3.7.0#azure)」を参照してください。
 * **StorSimple Snapshot Manager** - ボリューム グループと Windows ボリューム シャドウ コピー サービスを使用してアプリケーション整合性のあるバックアップを生成する MMC スナップインです。 また、StorSimple Snapshot Manager を使用して、バックアップ スケジュールを作成したり、ボリュームを複製または復元したりすることもできます。 
 * **SharePoint 用 StorSimple アダプター** - Microsoft Azure StorSimple のストレージとデータ保護を SharePoint サーバー ファームにまで透過的に拡張すると共に、SharePoint サーバーの全体管理ポータルで Azure StorSimple ストレージを表示して管理できるようにするツールです。
 
@@ -77,10 +78,10 @@ Microsoft Azure StorSimple ソリューションには、次のコンポーネ�
 ## <a name="storsimple-device"></a>StorSimple デバイス
 Microsoft Azure StorSimple デバイスは、プライマリ ストレージを備え、このストレージに保存されているデータに対する iSCSI アクセスをサポートするオンプレミス ハイブリッド ストレージ デバイスです。 また、クラウド ストレージとの通信を管理し、Microsoft Azure StorSimple ソリューションに格納されているすべてのデータのセキュリティと機密性の確保をサポートしています。
 
-StorSimple デバイスには、SSD とハード ディスク ドライブ (HDD) が含まれており、クラスタリングと自動フェールオーバーもサポートしています。 また、共有プロセッサ、共有ストレージ、および&2; つのミラーリングされたコントローラーが含まれています。 各コントローラーは、次の機能を提供しています。
+StorSimple デバイスには、SSD とハード ディスク ドライブ (HDD) が含まれており、クラスタリングと自動フェールオーバーもサポートしています。 また、共有プロセッサ、共有ストレージ、および 2 つのミラーリングされたコントローラーが含まれています。 各コントローラーは、次の機能を提供しています。
 
 * ホスト コンピューターへの接続
-* ローカル エリア ネットワーク (LAN) に接続するための最大&6; 個のネットワーク ポート
+* ローカル エリア ネットワーク (LAN) に接続するための最大 6 個のネットワーク ポート
 * ハードウェアの監視
 * 非揮発性ランダム アクセス メモリ (NVRAM) (停電した場合でも情報が保持されます)
 * クラスター対応更新: フェールオーバー クラスター内のサーバーでソフトウェアの更新を管理することで、更新によるサービスの可用性への影響を最小限にするか、まったくないようにします
@@ -133,7 +134,7 @@ StorSimple 用 Windows PowerShell には、(デバイスに直接接続されて
 詳細については、「 [Windows PowerShell for StorSimple を使用してデバイスを管理する](storsimple-windows-powershell-administration.md)」を参照してください。
 
 ## <a name="azure-powershell-storsimple-cmdlets"></a>StorSimple 用 Azure PowerShell コマンドレット
-StorSimple 用 Azure PowerShell コマンドレットは、コマンド ラインからのサービス レベル タスクと移行タスクを自動化することができる Windows PowerShell コマンドレットのコレクションです。 StorSimple 用の Azure PowerShell コマンドレットの詳細については、「 [コマンドレット リファレンス](https://docs.microsoft.com/powershell/servicemanagement/azure.storsimple/v3.1.0/azure.storsimple)」を参照してください。
+StorSimple 用 Azure PowerShell コマンドレットは、コマンド ラインからのサービス レベル タスクと移行タスクを自動化することができる Windows PowerShell コマンドレットのコレクションです。 StorSimple 用の Azure PowerShell コマンドレットの詳細については、「 [コマンドレット リファレンス](/powershell/module/azure/?view=azuresmps-3.7.0)」を参照してください。
 
 ## <a name="storsimple-snapshot-manager"></a>StorSimple Snapshot Manager
 StorSimple Snapshot Manager は、ローカル データとクラウド データについて、一貫性のある特定の時点のバックアップ コピーを作成するために使用できる Microsoft 管理コンソール (MMC) スナップインです。 スナップインは、Windows Server ベースのホストで動作します。 StorSimple Snapshot Manager には、次の機能があります。
@@ -261,7 +262,7 @@ Microsoft Azure StorSimple ソリューションをデプロイする前に、�
 | バイナリ ラージ オブジェクト (BLOB) |データベース管理システムに単一のエンティティとして格納されるバイナリ データのコレクション。 Blob は通常は画像、オーディオ、その他のマルチメディア オブジェクトですが、バイナリの実行可能コードが BLOB として保存されることもあります。 |
 | チャレンジ ハンドシェイク認証プロトコル (CHAP) |パスワードまたはシークレットを共有するピアに基づいて接続のピアを認証するために使用されるプロトコル。 CHAP は一方向または相互が可能です。 一方向 CHAP では、ターゲットがイニシエーターを認証します。 相互 CHAP では、ターゲットがイニシエーターを認証した後、イニシエーターがターゲットを認証します。 |
 | 複製 |ボリュームの重複コピー。 |
-| Cloud as a Tier (CaaT) |すべてのストレージが&1; つのエンタープライズ ストレージ ネットワークの一部として表示されるように、ストレージ アーキテクチャ内の階層として統合されたクラウド ストレージ。 |
+| Cloud as a Tier (CaaT) |すべてのストレージが 1 つのエンタープライズ ストレージ ネットワークの一部として表示されるように、ストレージ アーキテクチャ内の階層として統合されたクラウド ストレージ。 |
 | クラウド サービス プロバイダー (CSP) |クラウド コンピューティング サービスのプロバイダー。 |
 | クラウド スナップショット |クラウドに格納されているボリューム データの特定時点のコピー。 クラウド スナップショットは、別のオフサイト ストレージ システムにレプリケートされたスナップショットに相当します。 クラウド スナップショットは、障害復旧シナリオで特に役立ちます。 |
 | クラウド ストレージ暗号化キー |デバイスがクラウドに送信する暗号化されたデータにアクセスするために StorSimple デバイスによって使用されるパスワードまたはキー。 |
@@ -306,10 +307,5 @@ Microsoft Azure StorSimple ソリューションをデプロイする前に、�
 
 ## <a name="next-steps"></a>次のステップ
 [StorSimple のセキュリティ](storsimple-security.md)の詳細を確認します。
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

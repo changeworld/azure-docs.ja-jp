@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 10/07/2016
 ms.author: alfredop
 translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: bf586662d682b43538e74c08f960600a6bd3df4d
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 00a989b38c689a98cf55f20d780ff1566e2cc71c
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -95,7 +95,7 @@ You have now established your delegated provider. The next step is to create the
 > 
 
 ## <a name="delegated-provider-customizes-the-offer"></a>Delegated provider customizes the offer
-Sign in as the delegated provider and create a new offer using the delegated offer as a template.
+Sign in to the **tenant portal** as the delegated provider and create a new offer using the delegated offer as a template.
 
 1. Click **New** &gt; **Tenant Offers + Plans** &gt; **Offer**.
 

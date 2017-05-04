@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: saurinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 916722d64f191bc482b50ad4338f6a1da1045b77
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 6f4189cb30d528a106dd8889c06acd621aebb699
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -56,7 +56,7 @@ Azure PowerShell を使って、Azure HDInsight クラスター、Azure Active D
 * [Azure AD ドメイン サービス](https://azure.microsoft.com/services/active-directory-ds/)とその[料金](https://azure.microsoft.com/pricing/details/active-directory-ds/)体系を理解している。
 * サブスクリプションが、このパブリック プレビューのホワイトリストに登録されている。 登録するには、サブスクリプション ID を明記して、hdipreview@microsoft.com に電子メールを送信します。
 * ドメインの署名機関によって署名された SSL 証明書がある。 セキュリティで保護された LDAP を構成するために、証明書が必要です。 自己署名証明書を使用することはできません。
-* Azure PowerShell。  「[Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」を参照してください。
+* Azure PowerShell。  「[Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。
 
 ## <a name="create-an-azure-classic-vnet-for-your-azure-ad"></a>Azure AD 用に Azure クラシック VNet を作成します。
 手順については、[こちら](hdinsight-domain-joined-configure.md#create-an-azure-classic-vnet)を参照してください。

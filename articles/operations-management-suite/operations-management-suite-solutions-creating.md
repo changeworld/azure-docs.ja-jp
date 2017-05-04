@@ -16,9 +16,9 @@ ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: e1e915e07591ed104a30e9194ec6228b04519b8c
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: e391dc0f88bd7e065f968a490b3c1ddb1fa75978
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -56,7 +56,7 @@ ms.lasthandoff: 04/12/2017
 ### <a name="alerts"></a>Alerts
 [Log Analytics のアラート](../log-analytics/log-analytics-alerts.md)では、リポジトリ内のデータに対する[ログ検索](#log-searches)によって問題を特定します。  アラートが発生した場合、ユーザーに通知するか、アクションを自動的に実行します。 アプリケーションのさまざまなアラートの状態を特定し、対応するアラート ルールをソリューション ファイルに含める必要があります。
 
-自動化されたプロセスで問題を修正できる可能性がある場合は、通常、その修復を実行する Azure Automation の Runbook を作成します。  ほとんどの Azure サービスは、[コマンドレット](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)を使用して管理できます。Runbook では、コマンドレットを活用して、そうした機能を実行します。
+自動化されたプロセスで問題を修正できる可能性がある場合は、通常、その修復を実行する Azure Automation の Runbook を作成します。  ほとんどの Azure サービスは、[コマンドレット](/powershell/azure/overview)を使用して管理できます。Runbook では、コマンドレットを活用して、そうした機能を実行します。
 
 アラートに対する応答でソリューションに外部の機能が必要な場合は、[webhook の応答](../log-analytics/log-analytics-alerts-actions.md)を使用できます。  これにより、アラートから情報を送信する外部 Web サービスを呼び出すことができます。
 

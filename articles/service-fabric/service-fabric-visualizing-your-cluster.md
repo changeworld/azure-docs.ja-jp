@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/05/2017
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: cc61146e0353455c5c763297a002afb86b76887a
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 2bf6bd76b653e30f38595631eff576d8eeb8efda
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -44,16 +44,16 @@ Service Fabric Explorer の使用方法については、次の Microsoft Virtua
 ![Service Fabric Explorer のクラスター ダッシュボード][sfx-cluster-dashboard]
 
 ### <a name="view-the-clusters-layout"></a>クラスターのレイアウトを表示する
-Service Fabric クラスターのノードは、障害ドメインとアップグレード ドメインの&2; 次元グリッドにわたって配置されます。 このように配置することで、ハードウェアの障害やアプリケーションのアップグレード時にもアプリケーションを継続して利用できます。 現在のクラスターの配置を表示するには、クラスター マップを使用します。
+Service Fabric クラスターのノードは、障害ドメインとアップグレード ドメインの 2 次元グリッドにわたって配置されます。 このように配置することで、ハードウェアの障害やアプリケーションのアップグレード時にもアプリケーションを継続して利用できます。 現在のクラスターの配置を表示するには、クラスター マップを使用します。
 
 ![Service Fabric Explorer のクラスター マップ][sfx-cluster-map]
 
 ### <a name="view-applications-and-services"></a>アプリケーションとサービスを表示する
-クラスターには、2 つのサブツリーが含まれています。1 つはアプリケーション、もう&1; つはノードのサブツリーです。
+クラスターには、2 つのサブツリーが含まれています。1 つはアプリケーション、もう 1 つはノードのサブツリーです。
 
 アプリケーション ビューでは、Service Fabric の論理階層 (アプリケーション、サービス、パーティション、レプリカ) 内を移動できます。
 
-次の例では、**MyApp** アプリケーションは、**MyStatefulService** と **WebService** の&2; つのサービスで構成されています。 **MyStatefulService** はステートフルであるため、1 つのプライマリ レプリカと&2; つのセカンダリ レプリカがあるパーティションが&1; つ含まれています。 これに対して、WebSvcService はステートレスであり、インスタンスが&1; つだけ含まれています。
+次の例では、**MyApp** アプリケーションは、**MyStatefulService** と **WebService** の 2 つのサービスで構成されています。 **MyStatefulService** はステートフルであるため、1 つのプライマリ レプリカと 2 つのセカンダリ レプリカがあるパーティションが 1 つ含まれています。 これに対して、WebSvcService はステートレスであり、インスタンスが 1 つだけ含まれています。
 
 ![Service Fabric Explorer のアプリケーション ビュー][sfx-application-tree]
 
@@ -88,7 +88,7 @@ Service Fabric Explorer では、クラスター内のノード、アプリケ�
 | ノード | 非アクティブ化 (再開) | ノードからメモリ内のすべてのサービスを安全に移動し、永続的なサービスを終了します。 通常は、ホスト プロセスまたはコンピューターの再起動が必要な場合に使用されます。 | |
 | ノード | 非アクティブ化 (データを削除) | 十分なレプリカを作成した後、ノードで実行されているすべてのサービスを安全に閉じます。 通常は、ノード (または少なくともそのストレージ) が完全にコミットの対象から除外された場合に使用されます。 | |
 | ノード | ノードの状態の削除 | ノードのレプリカの知識をクラスターから削除します。 通常は、既に障害が発生したノードを回復不能と判断したときに使用されます。 | |
-| ノード | 再起動 | ノードを再起動することによって、ノード障害をシミュレートします。 詳細情報は[こちら](https://docs.microsoft.com/en-us/powershell/servicefabric/vlatest/Restart-ServiceFabricNode)です | |
+| ノード | 再起動 | ノードを再起動することによって、ノード障害をシミュレートします。 詳細情報は[こちら](/powershell/module/servicefabric/restart-servicefabricnode?view=azureservicefabricps)です | |
 
 多くの操作は破壊的であるため、アクションを実行する前に確認を求められることがあります。
 

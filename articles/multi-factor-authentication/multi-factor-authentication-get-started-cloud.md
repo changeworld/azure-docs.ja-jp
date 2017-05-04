@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 79c6ef627d20be52b6067d1f6dfea2a53505c590
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 554931e96e073ec2f2f68df2297e1ee21f5eda87
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -66,7 +66,7 @@ ms.lasthandoff: 03/18/2017
 有効にした後は、ユーザーにメールで通知することをお勧めします。 2 段階認証が有効になっているユーザーは、次回のサインイン時に、2 段階認証のためにアカウントの登録が必要であることを示すメッセージが表示されます。 このほか、ユーザーが 2 段階認証の使用を開始した後には、ブラウザー以外のアプリからロックアウトされないように、アプリのパスワードを設定する必要があります。
 
 ## <a name="use-powershell-to-automate-turning-on-two-step-verification"></a>PowerShell を使って 2 段階認証を自動でオンにする
-[Azure AD PowerShell](/powershell/azureps-cmdlets-docs) を使用して[状態](multi-factor-authentication-whats-next.md)を変更するには、次のようにします。  `$st.State` は、次のいずれかの状態と一致するように変更できます。
+[Azure AD PowerShell](/powershell/azure/overview) を使用して[状態](multi-factor-authentication-whats-next.md)を変更するには、次のようにします。  `$st.State` は、次のいずれかの状態と一致するように変更できます。
 
 * 有効
 * 適用

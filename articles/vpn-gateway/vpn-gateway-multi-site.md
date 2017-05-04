@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/20/2017
 ms.author: yushwang
 translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: bc39944e9232dffbc7dd02e2a300a90a23ec5273
-ms.lasthandoff: 04/22/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: c000669f4a45c7c4292154ce537c451dc70766e7
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -60,7 +60,7 @@ ms.lasthandoff: 04/22/2017
 
 * 各オンプレミスのロケーションと互換性のある VPN ハードウェア 「[Virtual Network に使用する VPN デバイスについて](vpn-gateway-about-vpn-devices.md)」を参照して、使用するデバイスが互換性のあるものであることを確認してください。
 * 各 VPN デバイスの外部接続用パブリック IPv4 IP アドレス。 IP アドレスを NAT の内側に割り当てることはできません。 これが要件です。
-* Azure PowerShell コマンドレットの最新版をインストールする必要があります。 必ずサービス管理 (SM) バージョンと Resource Manager バージョンをインストールしてください。 詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」ご覧ください。
+* Azure PowerShell コマンドレットの最新版をインストールする必要があります。 必ずサービス管理 (SM) バージョンと Resource Manager バージョンをインストールしてください。 詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」ご覧ください。
 * VPN ハードウェアの構成に詳しい作業者 そのため、VPN デバイスの構成に精通している必要があり、そうでなければ精通している人と一緒に作業を行ってください。
 * 仮想ネットワークに使用する予定の IP アドレス範囲 (まだ 1 つも作成していない場合)。
 * 接続する各ローカル ネットワークの IP アドレス範囲。 接続しようとしている各ローカル ネットワーク サイトの IP アドレス範囲が重複しないように確認する必要があります。 そうしないと、構成をアップロードする際に、ポータルまたは REST API によって拒否されます。<br>例えば、2 つのローカル ネットワーク サイトの両方が IP アドレス範囲 10.2.3.0/24 を含んでおり、送信先アドレスが 10.2.3.3 のパッケージを持っている場合、アドレス範囲が重複しているため、Azure はパッケージを送ろうとしているのがどちらのサイトなのかわかりません。 ルーティングの問題を避けるため、Azure は重複した範囲を持つ構成ファイルをアップロードすることを許可しません。

@@ -17,9 +17,9 @@ ms.date: 09/23/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 5edba79e5c65f0e9411a418ac1a121fd938feff2
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 16ea28d13ccbe559d7988032e162581cde363157
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -61,7 +61,7 @@ VM で Accelerated Networking が有効になっている場合のみ、その�
 これらの制限に対する変更については、「[Azure 仮想ネットワークの更新情報](https://azure.microsoft.com/updates/accelerated-networking-in-preview)」のページでお知らせします。
 
 ## <a name="create-a-windows-vm-with-accelerated-networking"></a>Accelerated Networking を使った Windows VM を作成する
-1. PowerShell コマンド プロンプトを開き、1 つの PowerShell セッション内で、このセクションの残りの手順を完了します。 まだ PowerShell をインストール、構成していない場合は、「 [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs) 」の手順を実行してください。
+1. PowerShell コマンド プロンプトを開き、1 つの PowerShell セッション内で、このセクションの残りの手順を完了します。 まだ PowerShell をインストール、構成していない場合は、「 [Azure PowerShell のインストールと構成](/powershell/azure/overview) 」の手順を実行してください。
 2. プレビューに登録するには、 [Accelerated Networkのサブスクリプション係](mailto:axnpreview@microsoft.com?subject=Request%20to%20enable%20subscription%20%3csubscription%20id%3e) まで、メールでサブスクリプション ID と使用目的をご連絡ください。 プレビューへの登録が受諾されたことを通知する電子メールを受け取るまでは、残りの手順は実行しないでください。
 3. 次のコマンドを入力し、サブスクリプションに機能を登録します。
    

@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: e2d70bbb2af4231a9ba7e4d9a843593ff5d9f7d3
-ms.lasthandoff: 04/14/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: ec3c593c0fb6a92b65284285b330e20f788b84c5
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -42,7 +42,7 @@ Azure で NIC と VM を初めて使用する場合は、この記事を読む�
 
 以降、この記事の各セクションで、NIC に関連したさまざまなタスクの手順を紹介します。 各セクションの内容は次のとおりです。
 - Azure Portal 内でタスクを実行する手順。 これらの手順を行うには、[Azure Portal](http://portal.azure.com) にログインする必要があります。 まだアカウントを持っていない場合は、[無料試用版アカウント](https://azure.microsoft.com/free)にサインアップしてください。
-- Azure PowerShell を使用してタスクを実行するためのコマンドとそのコマンド リファレンスへのリンク。 [Azure PowerShell のインストールと構成方法](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事の手順に従い、PowerShell をインストールして構成してください。 PowerShell コマンドのヘルプとサンプルを表示するには、「`get-help <command> -full`」と入力します。
+- Azure PowerShell を使用してタスクを実行するためのコマンドとそのコマンド リファレンスへのリンク。 [Azure PowerShell のインストールと構成方法](/powershell/azure/overview)に関する記事の手順に従い、PowerShell をインストールして構成してください。 PowerShell コマンドのヘルプとサンプルを表示するには、「`get-help <command> -full`」と入力します。
 - Azure コマンド ライン インターフェイス (CLI) を使用してタスクを実行するためのコマンドとそのコマンド リファレンスへのリンク。 [Azure CLI 2.0 のインストールと構成の方法](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事の手順に従って、Azure CLI をインストールしてください。 CLI コマンドのヘルプを表示するには、「`az <command> -h`」と入力します。
 
 ## <a name="nics"></a>ネットワーク インターフェイス
@@ -78,7 +78,7 @@ Azure Portal によって、動的プライベート IP アドレスを使った
 |**ツール**|**コマンド**|
 |:---|:---|
 |**CLI**|[az network nic create](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
-|**PowerShell**|[New-AzureRmNetworkInterface](/powershell/resourcemanager/azurerm.network/v3.4.0/new-azurermnetworkinterface/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
+|**PowerShell**|[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/nic)|
 
 ### <a name="view-nics"></a>ネットワーク インターフェイスと設定の表示および変更
 
@@ -100,7 +100,7 @@ Azure Portal によって、動的プライベート IP アドレスを使った
 |**ツール**|**コマンド**|
 |---|---|
 |**CLI**|[az network nic list](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#list) を使用して、サブスクリプションの NIC を表示します。[az network nic show](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#show) を使用して、NIC の設定を表示します。|
-|**PowerShell**|[Get-AzureRmNetworkInterface](/powershell/resourcemanager/azurerm.network/v3.4.0/get-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) を使用して、サブスクリプションの NIC または NIC の設定を表示します。|
+|**PowerShell**|[Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface) を使用して、サブスクリプションの NIC または NIC の設定を表示します。|
 
 ### <a name="dns"></a>NIC の DNS 設定の変更
 
@@ -116,7 +116,7 @@ NIC の DNS 設定を変更するには、次の手順を実行します。 DNS 
 |**ツール**|**コマンド**|
 |---|---|
 |**CLI**|[az network nic update](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
-|**PowerShell**|[Set-AzureRmNetworkInterface](/powershell/resourcemanager/azurerm.network/v3.4.0/set-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|**PowerShell**|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
 
 ### <a name="ip-forwarding"></a>NIC の IP 転送の変更
 
@@ -136,7 +136,7 @@ NIC の IP 転送設定を変更するには、次の手順を実行します。
 |**ツール**|**コマンド**|
 |---|---|
 |**CLI**|[az network nic update](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
-|**PowerShell**|[Set-AzureRmNetworkInterface](/powershell/resourcemanager/azurerm.network/v3.4.0/set-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|**PowerShell**|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
 
 ### <a name="subnet"></a>NIC の接続先サブネットの変更
 
@@ -153,7 +153,7 @@ NIC の接続先のサブネットは変更できますが、Vnet は変更で�
 |**ツール**|**コマンド**|
 |---|---|
 |**CLI**|[az network nic ip-config update](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
-|**PowerShell**|[Set-AzureRmNetworkInterfaceIpConfig](/powershell/resourcemanager/azurerm.network/v3.4.0/set-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|**PowerShell**|[Set-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig)|
 
 
 ### <a name="delete-nic"></a>ネットワーク インターフェイスの削除
@@ -169,7 +169,7 @@ NIC を削除すると、割り当てられていた MAC アドレスまたは I
 |**ツール**|**コマンド**|
 |---|---|
 |**CLI**|[az network nic delete](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#delete)|
-|**PowerShell**|[Remove-AzureRmNetworkInterface](/powershell/resourcemanager/azurerm.network/v3.1.0/remove-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|**PowerShell**|[Remove-AzureRmNetworkInterface](/powershell/module/azurerm.network/remove-azurermnetworkinterface)|
 
 ## <a name="ip-configs"></a>IP 構成
 各 NIC には少なくとも 1 つの IP 構成があり、これは**プライマリ**構成と呼ばれます。 NIC に、1 つ以上の*セカンダリ* IP 構成を関連付けることもできます。 NIC に割り当てられる IP アドレスの数には制限があります。 詳しくは、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関する記事をご覧ください。 各 IP 構成の内容は次のとおりです。
@@ -205,7 +205,7 @@ NIC に複数の IP アドレスを割り当てると、次のようなシナリ
 |**ツール**|**コマンド**|
 |---|---|
 |**CLI**|[az network nic ip-config create](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
-|**PowerShell**|[Add-AzureRmNetworkInterfaceIpConfig](/powershell/resourcemanager/azurerm.network/v3.4.0/add-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|**PowerShell**|[Add-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/add-azurermnetworkinterfaceipconfig)|
 
 ### <a name="change-ip-config"></a>IP 構成の変更
 
@@ -225,7 +225,7 @@ NIC に複数の IP アドレスを割り当てると、次のようなシナリ
 |**ツール**|**コマンド**|
 |---|---|
 |**CLI**|[az network nic ip-config update](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
-|**PowerShell**|[Set-AzureRMNetworkInterfaceIpConfig](/powershell/resourcemanager/azurerm.network/v3.4.0/set-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|**PowerShell**|[Set-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig)|
 
 ### <a name="delete-ip-config"></a>NIC からのセカンダリ IP 構成の削除
 
@@ -239,7 +239,7 @@ NIC からセカンダリ IP 構成を削除するには、次の手順を実行
 |**ツール**|**コマンド**|
 |---|---|
 |**CLI**|[az network nic ip-config delete](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#delete)|
-|**PowerShell**|[Remove-AzureRmNetworkInterfaceIpConfig](/powershell/resourcemanager/azurerm.network/v3.4.0/remove-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|**PowerShell**|[Remove-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/remove-azurermnetworkinterfaceipconfig)|
 
 
 ## <a name="nsgs"></a>ネットワーク セキュリティ グループ
@@ -259,7 +259,7 @@ NSG を NIC に関連付けたり、NSG と NIC の関連付けを解除する�
 |**ツール**|**コマンド**|
 |---|---|
 |**CLI**|[az network nic update](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
-|**PowerShell**|[Set-AzureRmNetworkInterface](/powershell/resourcemanager/azurerm.network/v3.4.0/set-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|**PowerShell**|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
 
 ## <a name="vms"></a>仮想ネットワークへの NIC のアタッチとデタッチ
 
@@ -286,7 +286,7 @@ PowerShell または CLI を使用すると、ポータルで対処できなか�
 既存の NIC の新しい VM へのアタッチ、または複数の NIC がアタッチされた VM の作成は、Azure Portal を使用して行うことはできません。 次の Azure CLI または PowerShell コマンドを使用すると、既存の 1 つ以上の NIC を VM の作成時にアタッチできます。
 
 - **CLI:** [az vm create](/cli/azure/vm?toc=%2fazure%2fvirtual-network%2ftoc.json#create)
-- **PowerShell:** [New-AzureRmVM](/powershell/resourcemanager/azurerm.compute/v2.5.0/new-azurermvm?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- **PowerShell:** [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm)
 
 ### <a name="vm-view-nic"></a> 仮想マシンにアタッチされている NIC の表示
 
@@ -298,21 +298,21 @@ PowerShell または CLI を使用すると、ポータルで対処できなか�
 |**ツール**|**コマンド**|
 |---|---|
 |**CLI**|[az vm show](/cli/azure/vm?toc=%2fazure%2fvirtual-network%2ftoc.json#show)|
-|**PowerShell**|[Get-AzureRmVM](/powershell/resourcemanager/azurerm.compute/v1.3.4/get-azurermvm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|**PowerShell**|[Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm)|
 
 ### <a name="vm-attach-nic"></a>既存仮想マシンへの NIC のアタッチ
 
 NIC をアタッチしようとする VM は、複数の NIC をサポートし、停止 (割り当て解除) 状態になっている必要があります。 Azure Portal を使用して既存の VM に NIC をアタッチすることはできません。 次の Azure CLI または PowerShell コマンドを使用して、NIC を VM にアタッチできます。
 
 - **CLI:** [az vm nic add](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#add)
-- **PowerShell:** [Add-AzureRmVMNetworkInterface](/powershell/resourcemanager/azurerm.compute/v2.5.0/add-azurermvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- **PowerShell:** [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface)
 
 ### <a name="vm-detach-nic"></a>既存仮想マシンからの NIC のデタッチ
 
 NIC をデタッチしようとする VM は、停止 (割り当て解除) 状態になっており、現時点で 2 つ以上の NIC がアタッチされている必要があります。 任意の NIC をデタッチできますが、VM には常に 1 つ以上の NIC がアタッチされている必要があります。 プライマリ NIC をデタッチした場合、残りの NIC の中で VM に最も長くアタッチされているものにプライマリ属性が割り当てられます。 自分で任意の NIC をプライマリに指定することもできます。 Azure Portal では NIC を VM からデタッチすることも、NIC のプライマリ属性を設定することもできませんが、どちらの操作も CLI または PowerShell を使用して行うことができます。 次の Azure CLI または PowerShell コマンドを使用して、NIC を VM からデタッチできます。
 
 - **CLI:** [az vm nic remove](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#remove)
-- **PowerShell:** [Remove-AzureRMVMNetworkInterface](/powershell/resourcemanager/azurerm.compute/v2.5.0/remove-azurermvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- **PowerShell:** [Remove-AzureRMVMNetworkInterface](/powershell/module/azurerm.compute/remove-azurermvmnetworkinterface)
 
 ## <a name="next-steps"></a>次のステップ
 スクリプトを使用して、複数の NIC または IP 構成を持つ VM を作成するには、次の記事をご覧ください。

@@ -13,8 +13,9 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 8236c1e4167e3b66edb1b410deb450d01c34d9f2
-ms.openlocfilehash: 9c083c08f73c5e2c8ed873f612c8695a9687a5a6
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: 21f24f387e96ac763419c37eeb16c75eab0bc452
+ms.lasthandoff: 04/28/2017
 
 ---
 #<a name="storsimple-documentation"></a>StorSimple のドキュメント
@@ -120,39 +121,32 @@ ms.openlocfilehash: 9c083c08f73c5e2c8ed873f612c8695a9687a5a6
 
 <ul class="panelContent cardsW">
     <li>
-        <a href="http://onlinehelp.storsimple.com/">
+        
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>その他の StorSimple ソリューション</h3>
-                        <p>StorSimple 5000/7000 シリーズ</p>
+                        <p><a href="http://onlinehelp.storsimple.com/">StorSimple 5000 - 7000 シリーズ</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/azure/storsimple/storsimple-update3-release-notes">
+        
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>リリース ノート</h3>
-                        <p>リリース ノート</p>
+                        <p><a href="/azure/storsimple/storsimple-update3-release-notes">リリース ノート</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

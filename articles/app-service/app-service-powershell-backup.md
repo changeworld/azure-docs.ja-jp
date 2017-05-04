@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 08/10/2016
 ms.author: nicking
 translationtype: Human Translation
-ms.sourcegitcommit: 4edd2696c9a5709ded6e2a3e352090775335f0d2
-ms.openlocfilehash: 172b55a68662dd98c4af946d51f3ece51f7835e1
-ms.lasthandoff: 12/07/2016
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 0d1c323155aae90e8a92d7a3b92b5ca1482e1ef5
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -50,7 +50,7 @@ PowerShell では、SAS URL を生成できます。 この記事で説明する
         $sasUrl = New-AzureStorageContainerSASToken -Name $blobContainerName -Permission rwdl -Context $context -ExpiryTime (Get-Date).AddMonths(1) -FullUri
 
 ## <a name="install-azure-powershell-132-or-greater"></a>Azure PowerShell 1.3.2 以上をインストールする
-Azure PowerShell のインストール手順と使用方法については、「 [Azure Resource Manager での Azure PowerShell の使用](/powershell/azureps-cmdlets-docs) 」を参照してください。
+Azure PowerShell のインストール手順と使用方法については、「 [Azure Resource Manager での Azure PowerShell の使用](/powershell/azure/overview) 」を参照してください。
 
 ## <a name="create-a-backup"></a>バックアップの作成
 Web アプリのバックアップを作成するには、New-AzureRmWebAppBackup コマンドレットを使用します。

@@ -14,9 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 3/13/2017
 ms.author: rclaus
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: f2449ffda80ec7cb7a73a6eac229d09c3a4a96cc
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 047d9191e2c844a591c35279ff7b143906087f56
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -105,7 +105,7 @@ blobxfer ツールの並列処理をテストするために、HANA バックア
 
 ![すべての関連 VHD は、**start-azurestorageblobcopy** PowerShell コマンドを使用してコピーしました](media/sap-hana-backup-file-level/image031.png)
 
-ローカル ソフトウェア RAID へのバックアップが完了した後、すべての関連 VHD は **start-azurestorageblobcopy** PowerShell コマンドを使用してコピーしました (「[Start-AzureStorageBlobCopy](/powershell/storage/azure.storage/v2.1.0/start-azurestorageblobcopy)」を参照)。 バックアップ ファイルを保持する専用ファイル システムにしか影響がないため、ディスク上の SAP HANA データまたはログ ファイルの整合性について心配する必要がありません。 このコマンドの長所は、VM を稼働したまま使用できる点です。 バックアップ ストライプ セットに対して書き込みを行うプロセスがないように、必ず BLOB コピーの前にマウントを解除し、後でマウントし直してください。 または、適切な方法を使用してファイル システムを &quot;フリーズ&quot; できます。 たとえば、XFS ファイル システムでは xfs\_freeze を使用できます。
+ローカル ソフトウェア RAID へのバックアップが完了した後、すべての関連 VHD は **start-azurestorageblobcopy** PowerShell コマンドを使用してコピーしました (「[Start-AzureStorageBlobCopy](/powershell/module/azure.storage/start-azurestorageblobcopy)」を参照)。 バックアップ ファイルを保持する専用ファイル システムにしか影響がないため、ディスク上の SAP HANA データまたはログ ファイルの整合性について心配する必要がありません。 このコマンドの長所は、VM を稼働したまま使用できる点です。 バックアップ ストライプ セットに対して書き込みを行うプロセスがないように、必ず BLOB コピーの前にマウントを解除し、後でマウントし直してください。 または、適切な方法を使用してファイル システムを &quot;フリーズ&quot; できます。 たとえば、XFS ファイル システムでは xfs\_freeze を使用できます。
 
 ![この Azure Portal のスクリーンショットは、vhds コンテナー中の BLOB の一覧を示しています](media/sap-hana-backup-file-level/image032.png)
 

@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 03/10/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 02a978402c8067105900ac50a2796000f8eef67f
-ms.lasthandoff: 04/11/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 9f1997175a8a0cf2adbcae1123de55894d3931ac
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -171,7 +171,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-azure-portal"></a>クラスターの作成時に Azure Portal からスクリプト アクションを使用する
 
-1. [HDInsight での Hadoop クラスターの作成](hdinsight-provision-clusters.md)に関する記事の説明に従って、クラスターの作成を開始します。
+1. [HDInsight での Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関する記事の説明に従って、クラスターの作成を開始します。
 2. **[オプションの構成]** の **[スクリプト アクション]** ブレードで、**[スクリプト アクションの追加]** をクリックし、次に示すように、スクリプト アクションの詳細を指定します。
 
     ![スクリプト アクションを使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-customize-cluster-linux/HDI.CreateCluster.8.png)
@@ -195,7 +195,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 #### <a name="before-you-begin"></a>開始する前に
 
-* コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、「 [Azure PowerShell のインストールおよび構成](/powershell/azureps-cmdlets-docs)」をご覧ください。
+* コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、「 [Azure PowerShell のインストールおよび構成](/powershell/azure/overview)」をご覧ください。
 * テンプレートを作成する方法の手順については、「 [Azure Resource Manager のテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」をご覧ください。
 * リソース マネージャーで Azure PowerShell を使用したことがない場合は、「 [Azure リソース マネージャーでの Azure PowerShell の使用](../azure-resource-manager/powershell-azure-resource-manager.md)」を参照してください。
 
@@ -405,7 +405,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>クラスターの作成時に Azure PowerShell からスクリプト アクションを使用する
 
-このセクションでは、 [Add-AzureRmHDInsightScriptAction](https://msdn.microsoft.com/library/mt603527.aspx) コマンドレットで、スクリプト アクションを使用し、クラスターのカスタマイズを行うスクリプトを呼び出します。 次に進む前に、Azure PowerShell をインストールして構成したことを確認します。 ワークステーションを構成して HDInsight PowerShell コマンドレットを実行する方法については、「 [Azure PowerShell のインストールおよび構成](/powershell/azureps-cmdlets-docs)」を参照してください。
+このセクションでは、 [Add-AzureRmHDInsightScriptAction](https://msdn.microsoft.com/library/mt603527.aspx) コマンドレットで、スクリプト アクションを使用し、クラスターのカスタマイズを行うスクリプトを呼び出します。 次に進む前に、Azure PowerShell をインストールして構成したことを確認します。 ワークステーションを構成して HDInsight PowerShell コマンドレットを実行する方法については、「 [Azure PowerShell のインストールおよび構成](/powershell/azure/overview)」を参照してください。
 
 次の手順に従います。
 
@@ -513,7 +513,7 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-azure-powershell"></a>実行中のクラスターに Azure PowerShell からスクリプト アクションを適用する
 
-次に進む前に、Azure PowerShell をインストールして構成したことを確認します。 ワークステーションを構成して HDInsight PowerShell コマンドレットを実行する方法については、「 [Azure PowerShell のインストールおよび構成](/powershell/azureps-cmdlets-docs)」を参照してください。
+次に進む前に、Azure PowerShell をインストールして構成したことを確認します。 ワークステーションを構成して HDInsight PowerShell コマンドレットを実行する方法については、「 [Azure PowerShell のインストールおよび構成](/powershell/azure/overview)」を参照してください。
 
 1. Azure PowerShell コンソールを開き、次のコマンドレットを使用して Azure サブスクリプションにログインし、PowerShell 変数をいくつか宣言します。
 

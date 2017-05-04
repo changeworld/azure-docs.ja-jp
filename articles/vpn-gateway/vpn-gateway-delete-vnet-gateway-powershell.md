@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: d2bb2422a8458f1577c14bad8d24d8c9cb3ead1b
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: f3b464350f027bb1966638542fcc64d6fdc00a71
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -39,7 +39,7 @@ VPN ゲートウェイ構成の仮想ネットワーク ゲートウェイを削
 ## <a name="before-beginning"></a>作業を開始する前に
 
 ### <a name="1-download-the-latest-azure-resource-manager-powershell-cmdlets"></a>1.最新の Azure Resource Manager PowerShell コマンドレットをダウンロードします。
-Azure Resource Manager PowerShell コマンドレットの最新版をダウンロードしてインストールします。 PowerShell コマンドレットのダウンロードとインストールの詳細については、[Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)に関するページを参照してください。
+Azure Resource Manager PowerShell コマンドレットの最新版をダウンロードしてインストールします。 PowerShell コマンドレットのダウンロードとインストールの詳細については、[Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)に関するページを参照してください。
 
 ### <a name="2-connect-to-your-azure-account"></a>2.Azure アカウントに接続します。 
 PowerShell コンソールを開き、アカウントに接続します。 接続については、次の例を参考にしてください。
@@ -325,3 +325,4 @@ Get-AzureRmResourceGroup -ResourceGroupName RG1
     ResourceGroupName : RG1
     Location          : eastus
     ProvisioningState : Succeeded
+

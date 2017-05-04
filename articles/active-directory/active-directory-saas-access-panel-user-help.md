@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 04/12/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: ff38f1536bf92911c18e0766ee655583c4d913d6
-ms.lasthandoff: 04/14/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 53ec54def52a6d0659dc12286148213d88e9ae24
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -25,7 +25,7 @@ ms.lasthandoff: 04/14/2017
 
 このページでは、MyApps ポータルの使用中に問題が発生を使用した場合のトラブルシューティングをお手伝いします。 問題を解決するにあたり、ヘルプ デスクまたは管理者に連絡しないと問題を解決できない場合もありますが、一般的な質問については、まずはこちらのトピックの手順をお試しください。
 
-パスワード管理に関連するヘルプについては、[こちら](active-directory-passwords-update-your-own-password.md#reset-my-password)をご覧ください。
+パスワード管理に関連するヘルプについては、[こちら](active-directory-passwords-update-your-own-password.md)をご覧ください。
 
 
 ## <a name="what-is-the-myapps-portal"></a>MyApps ポータルとは
@@ -49,7 +49,7 @@ MyApps とは、以下を行うことができる Web ポータルです。
 3.    古いパスワードを入力した後、新しいパスワードを入力して、それを確認します。
 4.    **[Submit]**をクリックします。
 
-詳細については、「[自分のパスワードを更新する方法](active-directory-passwords-update-your-own-password.md#reset-my-password)」を参照してください。
+詳細については、「[自分のパスワードを更新する方法](active-directory-passwords-update-your-own-password.md)」を参照してください。
 
 
 ## <a name="how-do-i-setup-password-reset"></a>パスワードのリセットの設定方法
@@ -58,7 +58,7 @@ MyApps とは、以下を行うことができる Web ポータルです。
 2.    **[アカウントの管理]** で、**[セルフ サービス パスワードのリセットを設定]** をクリックします。
 3.    ダイアログ ボックスの手順を実行して送信します。
 
-詳細については、「[パスワードをリセットする](active-directory-passwords-update-your-own-password.md#reset-my-password)」を参照してください。
+詳細については、「[パスワードをリセットする](active-directory-passwords-update-your-own-password.md)」を参照してください。
 
 
 ## <a name="how-can-i-add-a-new-app"></a>新しいアプリの追加方法

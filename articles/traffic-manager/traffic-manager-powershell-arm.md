@@ -14,9 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: c2fb44817f168eee8303d0c07473f043ae30d350
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a2a6ca04ca8043bc0ed142310ad3e7b55100d228
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -36,7 +36,7 @@ Azure Traffic Manager は、Traffic Manager プロファイルと呼ばれる設
 
 以下の手順では、Microsoft Azure PowerShell を使用します。 次の記事では、Azure PowerShell をインストールして構成する方法について説明します。
 
-* [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)
+* [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)
 
 この記事の例では、既存のリソース グループがあることを前提としています。 リソース グループを作成するには、次のコマンドを使用します。
 

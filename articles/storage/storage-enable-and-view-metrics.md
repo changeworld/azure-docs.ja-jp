@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/14/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 4036c994cb5be68b372a4f244f65a17ce173ecc2
-ms.lasthandoff: 04/25/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 78bb4826a8c487576a06b3fd3c9fab333be72ace
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -62,7 +62,7 @@ Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -Me
 Get-AzureStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob
 ```
 
-Azure サブスクリプションを処理するように Azure PowerShell コマンドレットを構成する方法と、使用する既定のストレージ アカウントを選択する方法については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」をご覧ください。
+Azure サブスクリプションを処理するように Azure PowerShell コマンドレットを構成する方法と、使用する既定のストレージ アカウントを選択する方法については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」をご覧ください。
 
 ## <a name="how-to-enable-storage-metrics-programmatically"></a>プログラムを利用してストレージ メトリックを有効にする方法
 次の C# スニペットは、.NET 用ストレージ クライアント ライブラリを使用して、BLOB サービスのメトリックとログ記録を有効にする方法を示しています。
@@ -215,3 +215,4 @@ private static string MetricsString(MetricsEntity entity, OperationContext opCon
 
 ## <a name="next-steps"></a>次のステップ
 [ストレージ ログの有効化とログ データへのアクセス](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data)
+

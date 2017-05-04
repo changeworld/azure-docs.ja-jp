@@ -10,9 +10,9 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: prrajan
 translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 5385042a72142aaf557b8e027ed0d1d096796fd2
-ms.lasthandoff: 04/22/2017
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 3caa6ac4bd7533df892918b75a05b6f70b54d811
+ms.lasthandoff: 05/02/2017
 
 ---
 
@@ -33,9 +33,9 @@ Microsoft uses Bing Speech API for Windows applications like [Cortana](https://w
 Bing Speech Recognition API provides the ability to convert spoken audio to text by sending audio to Microsoft’s servers in the cloud. Developers have a choice of using the REST API, Client Library or the Service Library. 
 
 ### <a name="speech-recognition---rest-api-versus-client-library-versus-service-library"></a>Speech Recognition - REST API versus Client Library versus Service Library
-* Using the REST API means getting only one reco result back with no partial results. Documentation for the REST API can be found [here](API-Reference-REST/BingVoiceRecognition.md) and code samples [here](https://oxfordportal.blob.core.windows.net/speech/doc/recognition/Program.cs). 
-*    Using the client library allows for real-time streaming, meaning that as audio is being sent or spoken to the server, partial recognition results are returned at the same time. Real-time streaming is supported on Android, iOS, and Windows. The client library also supports speech intent recognition in addition to returning recognized text from audio inputs.Structured information about the speech to apps that parse the intent of the speaker can also be retrieved to drive further actions. Models trained by [Project LUIS](https://www.luis.ai/) service are used to generate the intent. To use intent, you will need to train a model after getting an AppID and a Secret. Once you have a trained model, you can use the Speech Recognition API for intent parsing on reco results via the “WithIntent” clients.
-* Using the service library allows for real-time streaming audio from a service to the speech cloud allowing for partial results. Service Library is supported for Windows.  
+* Using the **REST API** means getting only one recognition result back with no partial results. Documentation for the REST API can be found [here](API-Reference-REST/BingVoiceRecognition.md) and code samples [here](https://oxfordportal.blob.core.windows.net/speech/doc/recognition/Program.cs). 
+*    Using the **client library** allows for real-time streaming, meaning that as audio is being sent or spoken to the server, partial recognition results are returned at the same time. Real-time streaming is supported on Android, iOS, and Windows. The client library also supports speech intent recognition in addition to returning recognized text from audio inputs. Structured information about the speech to apps that parse the intent of the speaker can also be retrieved to drive further actions. Models trained by [Project LUIS](https://www.luis.ai/) service are used to generate the intent. To use intent, you will need to train a model after getting an AppID and a Secret. Once you have a trained model, you can use the Speech Recognition API for intent parsing on reco results via the “WithIntent” clients.
+* Using the **service library** allows for real-time streaming audio from a service to the speech cloud allowing for partial results. Service Library is supported for Windows.  
 
 #### <a name="supported-languages"></a>Supported languages
 Locales supported by the Speech Recognition API include:
@@ -59,14 +59,18 @@ When applications need to “talk” back to their users, this API can be used t
 #### <a name="supported-languages"></a>Supported languages
 Locales supported by Text to Speech API include:
 
-language-Country |language-Country | language-Country 
----------|----------|------------
-ar-EG*   |   es-ES  | ko-KR    
-de-DE    |   es-MX  | pt-BR 
-en-AU    |   fr-CA  | ru-RU   
-en-CA    |   fr-FR  | zh-CN    
-en-GB    |   hi-IN  | zh-HK    
-en-IN    |   it-IT  |  zh-TW 
-en-US    |   ja-JP  |      
+language-Country |language-Country | language-Country | language-Country
+---------|----------|------------|------------
+ar-EG*   |   en-GB  |   hi-IN  |   pt-PT
+ar-SA    |   en-IE  |   hu-HU  |   ro-RO
+ca-ES    |   en-IN  |   id-ID  |   ru-RU
+cs-CZ    |   en-US  |   it-IT  |   sk-SK
+da-DK    |   es-ES  |   ja-JP  |   sv-SE
+de-AT    |   es-MX  |   ko-KR  |   th-TH
+de-CH    |   fi-FI  |   nb-NO  |   tr-TR
+de-DE    |   fr-CA  |   nl-NL  |   zh-CN
+el-GR    |   fr-CH  |   pl-PL  |   zh-HK
+en-AU    |   fr-FR  |   pt-BR  |   zh-TW     
+
 *ar-EG supports Modern Standard Arabic (MSA)
 

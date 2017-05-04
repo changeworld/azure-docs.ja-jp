@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/30/2017
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
-ms.openlocfilehash: 9c9135e200cd1676b01895af4611bc71d5d27c4a
-ms.lasthandoff: 04/21/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 736918ea310f276d961fa396f719b2b7809f0c0f
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 04/21/2017
 
 Azure CLI 2.0 または Azure PowerShell を使用してスケール セットを作成する場合、まずサブスクリプションにサインインする必要があります。
 
-Azure CLI または PowerShell を使用して Azure をインストールおよびセットアップし、Azure にサインインする方法の詳細については、[Azure CLI 2.0 の概要](/cli/azure/get-started-with-azure-cli.md)に関する記事または [Azure PowerShell コマンドレットの概要](/powershell/resourcemanager/)に関する記事をご覧ください。
+Azure CLI または PowerShell を使用して Azure をインストールおよびセットアップし、Azure にサインインする方法の詳細については、[Azure CLI 2.0 の概要](/cli/azure/get-started-with-azure-cli.md)に関する記事または [Azure PowerShell コマンドレットの概要](/powershell/azure/overview)に関する記事をご覧ください。
 
 ```azurecli
 az login
@@ -184,3 +184,4 @@ Azure Portal を使用すると、スケール セットをすばやく簡単に
 [データ ディスク](virtual-machine-scale-sets-attached-disks.md)についてさらに理解を深める。
 
 [アプリを管理する](virtual-machine-scale-sets-deploy-app.md)方法について学習する。
+

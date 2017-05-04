@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/22/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 1e897d98f561b24eafb95dfb620c3b5c7622ba0a
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 1b2b013fb29c66817aab2ea5e63917b59726b4e8
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -31,8 +31,8 @@ ms.lasthandoff: 03/31/2017
 ## <a name="before-you-begin"></a>開始する前に
 次のことを確認してください。
 
-* **コピー元とコピー先のストレージ アカウント**に関する情報があること。 コピー元の VM については、ストレージ アカウント名とコンテナー名が必要です。 通常、コンテナー名は **vhds** になります。 また、コピー先のストレージ アカウントも持っている必要があります。 まだ持っていない場合は、ポータルを使用する (**[その他のサービス]**、[ストレージ アカウント]、[追加] の順に選択する) か [New-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx) コマンドレットを使用して、作成できます。 
-* Azure [PowerShell 1.0](/powershell/azureps-cmdlets-docs) (以降) がインストールされていること。
+* **コピー元とコピー先のストレージ アカウント**に関する情報があること。 コピー元の VM については、ストレージ アカウント名とコンテナー名が必要です。 通常、コンテナー名は **vhds** になります。 また、コピー先のストレージ アカウントも持っている必要があります。 まだ持っていない場合は、ポータルを使用する (**[その他のサービス]**、[ストレージ アカウント]、[追加] の順に選択する) か [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) コマンドレットを使用して、作成できます。 
+* Azure [PowerShell 1.0](/powershell/azure/overview) (以降) がインストールされていること。
 * [AzCopy ツール](../../storage/storage-use-azcopy.md)をダウンロードしてインストール済みであること。 
 
 ## <a name="deallocate-the-vm"></a>VM の割り当てを解除する
