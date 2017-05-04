@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/10/2017
+ms.date: 05/03/2017
 ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: fb2fe0efe00a7ef7fd1c22ca94c76b2d5f4c5510
 ms.openlocfilehash: 9366bce634fd3855080d267c797e2fecb8ab4ce9
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -256,9 +257,4 @@ Azure Data Lake Analytics では、ログ データの処理と分析方法に�
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 
