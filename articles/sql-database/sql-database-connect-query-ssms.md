@@ -18,9 +18,9 @@ ms.topic: hero-article
 ms.date: 03/15/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: a08fe566f4962684bc4aad220687e9cd36fc4abf
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 9ffad92e668b76c9a4e2941b20d075bf52132d16
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -37,9 +37,9 @@ ms.lasthandoff: 04/18/2017
 
 ## <a name="get-connection-information"></a>接続情報の取得
 
-Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名を取得します。 その完全修飾サーバー名は、SQL Server Management Studio でのサーバーへの接続に使用します。
+Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名、データベース名、ログイン情報が必要になります。
 
-1. [Azure ポータル](https://portal.azure.com/)にログインします。
+1. [Azure Portal](https://portal.azure.com/) にログインします。
 2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
 3. データベースの **[概要]** ページで、次の図に示すように、完全修飾サーバー名を確認します。 サーバー名をポイントすると、**[コピーするにはクリックします]** オプションが表示されます。
 
@@ -78,7 +78,7 @@ SQL Server Management Studio を使用して、Azure SQL Database サーバー�
 
 ## <a name="query-data"></a>データのクエリを実行する
 
-[SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL ステートメントを使用して、Azure SQL データベースのデータを照会します。
+次のコードを使用して、カテゴリ別で上位 20 の製品を照会します。ここでは [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL ステートメントを使用します。
 
 1. オブジェクト エクスプローラーで **mySampleDatabase** を右クリックし、**[新しいクエリ]** をクリックします。 データベースに接続された空のクエリ ウィンドウが開きます。
 2. クエリ ウィンドウに次のクエリを入力します。
@@ -96,7 +96,7 @@ SQL Server Management Studio を使用して、Azure SQL Database サーバー�
 
 ## <a name="insert-data"></a>データを挿入する
 
-[INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL ステートメントを使用して、Azure SQL データベースにデータを挿入します。
+次のコードを使用して、SalesLT.Product テーブルに新しい製品を挿入します。ここでは [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL ステートメントを使用します。
 
 1. クエリ ウィンドウで、先ほどのクエリを次のクエリに置き換えます。
 
@@ -126,7 +126,7 @@ SQL Server Management Studio を使用して、Azure SQL Database サーバー�
 
 ## <a name="update-data"></a>データの更新
 
-[UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL ステートメントを使用して、Azure SQL データベースのデータを更新します。
+次のコードを使用して、先ほど追加した新しい製品を更新します。ここでは [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL ステートメントを使用します。
 
 1. クエリ ウィンドウで、先ほどのクエリを次のクエリに置き換えます。
 
@@ -142,7 +142,7 @@ SQL Server Management Studio を使用して、Azure SQL Database サーバー�
 
 ## <a name="delete-data"></a>データの削除
 
-[DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL ステートメントを使用して、Azure SQL データベースのデータを削除します。
+次のコードを使用して、先ほど追加した新しい製品を削除します。ここでは [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL ステートメントを使用します。
 
 1. クエリ ウィンドウで、先ほどのクエリを次のクエリに置き換えます。
 

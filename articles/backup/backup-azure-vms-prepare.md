@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure 仮想マシンをバックアップする環境の準備 | Microsoft Docs"
 description: "Azure で仮想マシンをバックアップするための環境を準備する方法について説明します"
 services: backup
@@ -13,12 +13,12 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/10/2017
+ms.date: 4/25/2017
 ms.author: markgal;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 2eb88bd81a46dbff9842887976c59d150ae4dad6
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 045dfff9a439674c220a962907d2fe91f2fe0b35
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -83,7 +83,7 @@ Azure 仮想マシン (VM) をバックアップするには、事前に 3 つ�
 | オプション | 長所 | 短所 |
 | --- | --- | --- |
 | IP 範囲をホワイトリストに登録する |追加のコストが発生しない。<br><br>NSG でアクセスを開くには、<i>Set-AzureNetworkSecurityRule</i> コマンドレットを使用する。 |影響を受ける IP の範囲が時間の経過と共に変化するため、管理が複雑である。<br><br>Storage だけでなく、Azure 全体へのアクセスを提供することになる。 |
-| HTTP プロキシ |許可するストレージ URL をプロキシで詳細に制御可能。<br>VM に対するインターネット アクセスを単一の場所で実現。<br>Azure の IP アドレスの変更の影響を受けない。 |プロキシ ソフトウェアで VM を実行するための追加のコストが発生する。 |
+| HTTP プロキシ |許可するストレージ URL をプロキシで詳細に制御可能。 プロキシにきめ細かい制御を設定するには、https://\*.blob.core.windows.net/\* URL パターンをホワイトリストに登録する必要があります。 VM で使用されるストレージ アカウントのみをホワイトリストに登録するには、https://\<storageAccount\>.blob.core.windows.net/\* URL パターンをホワイトリストに登録する必要があります。 <br>VM に対するインターネット アクセスを単一の場所で実現。<br>Azure の IP アドレスの変更の影響を受けない。 |プロキシ ソフトウェアで VM を実行するための追加のコストが発生する。 |
 
 ### <a name="whitelist-the-azure-datacenter-ip-ranges"></a>Azure データ センターの IP の範囲をホワイトリストに登録する
 Azure データ センターの IP 範囲をホワイトリストに登録する場合、IP 範囲の詳細と手順については、[Azure の Web サイト](http://www.microsoft.com/en-us/download/details.aspx?id=41653)を参照してください。

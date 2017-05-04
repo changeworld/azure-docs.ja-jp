@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/30/2017
+ms.date: 04/21/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 7c1532db4d58673add9b8076154c471554810614
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 1d712ef6987a4af2014bedb54378f288bcf535a8
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -48,10 +48,10 @@ Azure Active Directory を使用して Azure Data Lake Store でのサービス�
 
 ![Web アプリの作成](./media/data-lake-store-authenticate-using-active-directory/azure-active-directory-create-web-app.png "Web アプリの作成")
 
-## <a name="step-2-get-client-id-client-secret-and-tenant-id"></a>手順 2: クライアント ID、クライアント シークレット、およびテナント ID を取得する
+## <a name="step-2-get-application-id-authentication-key-and-tenant-id"></a>手順 2: アプリケーション ID、認証キー、テナント ID を取得する
 プログラムによってログインするときは、アプリケーションの ID が必要です。 アプリケーションがその独自の資格情報で動作する場合は、さらに認証キーが必要となります。
 
-* アプリケーションのクライアント ID とクライアント シークレットを取得する方法については、「[アプリケーション ID と認証キーを取得する](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)」を参照してください。
+* アプリケーションのアプリケーション ID と認証キー (クライアント シークレットとも呼ばれる) を取得する方法については、「[アプリケーション ID と認証キーを取得する](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)」を参照してください。
 
 * テナント ID を取得する方法については、「[テナント ID を取得する](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id)」を参照してください。
 
@@ -90,8 +90,7 @@ Azure Active Directory を使用して Azure Data Lake Store でのサービス�
 
 4. エンドポイントの一覧から、Oauth 2.0 トークン エンドポイントをコピーします。
 
-
-     ![OAuth トークン エンドポイント](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "OAuth トークン エンドポイント")   
+    ![OAuth トークン エンドポイント](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "OAuth トークン エンドポイント")   
 
 ## <a name="next-steps"></a>次のステップ
 この記事では、Azure AD Web アプリケーションを作成し、.NET SDK、Java SDK などを使用して作成するクライアント アプリケーションに必要な情報を収集しました。これで、以下の記事に進むことができます。これらの記事では、Azure AD Web アプリケーションを使用して、最初に Data Lake Store で認証を行ってからストアで他の操作を実行する方法について説明しています。

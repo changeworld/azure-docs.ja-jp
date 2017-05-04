@@ -16,20 +16,20 @@ ms.workload: infrastructure-services
 ms.date: 04/03/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: f5793f771553df78c1c335ad57e0d64078d98148
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: e16792bb762287bc16c280386981a4d442448674
+ms.lasthandoff: 04/22/2017
 
 
 ---
-# <a name="provision-a-sql-server-virtual-machine-in-the-azure-portal"></a>Azure ポータルでの SQL Server 仮想マシンのプロビジョニング
+# <a name="provision-a-sql-server-virtual-machine-in-the-azure-portal"></a>Azure Portal での SQL Server 仮想マシンのプロビジョニング
 > [!div class="op_single_selector"]
 > * [ポータル](virtual-machines-windows-portal-sql-server-provision.md)
 > * [PowerShell](virtual-machines-windows-ps-sql-create.md)
 > 
 > 
 
-このエンド ツー エンドのチュートリアルでは、Azure ポータルを使用して、SQL Server を実行する仮想マシンをプロビジョニングする方法について説明します。
+このエンド ツー エンドのチュートリアルでは、Azure Portal を使用して、SQL Server を実行する仮想マシンをプロビジョニングする方法について説明します。
 
 Azure 仮想マシン (VM) ギャラリーには、Microsoft SQL Server を含むイメージがいくつか用意されています。 わずか数クリックで、ギャラリーからいずれかの SQL VM イメージを選択し、Azure 環境に VM をプロビジョニングできます。
 
@@ -41,13 +41,12 @@ Azure 仮想マシン (VM) ギャラリーには、Microsoft SQL Server を含�
 * [SQL Server にリモート接続する](#connect-to-sql-server-remotely)
 
 ## <a name="select-a-sql-vm-image-from-the-gallery"></a>ギャラリーから SQL VM イメージを選択する
-1. アカウントを使用して [Azure ポータル](https://portal.azure.com) にログインします。
-   
+1. アカウントを使用して [Azure Portal](https://portal.azure.com) にログインします。
+
    > [!NOTE]
    > Azure アカウントを持っていない場合は、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)にアクセスしてください。
-   > 
-   > 
-2. Azure ポータルで、 **[新規]**をクリックします。 **[新規]** ブレードが開きます。 SQL Server VM リソースは、Marketplace の **[Compute]** グループにあります。
+
+2. Azure Portal で、**[新規]**をクリックします。 **[新規]** ブレードが開きます。 SQL Server VM リソースは、Marketplace の **[Compute]** グループにあります。
 3. **[新規]** ブレードで、**[Compute]** をクリックし、**[すべて表示]** をクリックします。
 4. **[フィルター]** ボックスに「SQL Server」と入力し、Enter キーを押します。
 
@@ -58,13 +57,13 @@ Azure 仮想マシン (VM) ギャラリーには、Microsoft SQL Server を含�
 
    > [!TIP]
    > このチュートリアルで Developer エディションを使用するのは、このエディションが SQL Server の完全版であり、開発テストを無料で実行できるためです。 ユーザーは VM を実行するコストに対してのみ課金されます。
-   
+
    > [!NOTE]
-   > SQL VM イメージでは、SQL Server のライセンス コストが、作成した VM の分単位の料金に含まれます (Developer エディションおよび Express エディションを除く)。 SQL Server Developer は、無料で開発/テストできる (運用ではなく) エディションで、SQL Express は、無料で軽量のワークロード (1 GB 未満のメモリ、10 GB 未満のストレージ) を利用できるエディションです。 また、ライセンス持ち込み (BYOL) により VM の料金のみを支払うという別のオプションもあります。 それらのイメージの名前には、{BYOL} というプレフィックスが付きます。 このオプションの詳細については、[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)に関するページを参照してください。
-   > 
-   > 
+   > SQL VM イメージでは、SQL Server のライセンス コストが、作成した VM の分単位の料金に含まれます (Developer エディションおよび Express エディションを除く)。 SQL Server Developer は、無料で開発/テストできる (運用ではなく) エディションで、SQL Express は、無料で軽量のワークロード (1 GB 未満のメモリ、10 GB 未満のストレージ) を利用できるエディションです。
+   > また、ライセンス持ち込み (BYOL) により VM の料金のみを支払うという別のオプションもあります。 それらのイメージの名前には、{BYOL} というプレフィックスが付きます。 これらのオプションの詳細については、「[Pricing guidance for SQL Server Azure VMs (SQL Server Azure VM の料金ガイダンス)](virtual-machines-windows-sql-server-pricing-guidance.md)」を参照してください。
+
 7. **[デプロイ モデルの選択]** で **[Resource Manager]** が選択されていることを確認します。 Resource Manager が、新しい仮想マシンに推奨されるデプロイ モデルです。 **[作成]**をクリックします。
-   
+
     ![Create SQL VM with Resource Manager](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-sql-deployment-model.png)
 
 ## <a name="configure-the-vm"></a>VM を構成する
@@ -100,7 +99,7 @@ SQL Server 仮想マシンを構成するための 5 つのブレードがあり
 この**サイズ**設定の手順では、**[サイズの選択]** ブレードで仮想マシンのサイズを選択します。 ブレードには、選択したイメージに基づいて推奨されるマシン サイズが最初に表示されます。
 
 > [!IMPORTANT]
-> **[サイズの選択]** ブレードに表示される月額料金の見積もりには、SQL Server のライセンス費用は含まれていません。 この料金は VM 単体の費用です。 SQL Server Express エディションと SQL Server Developer エディションでは、この料金が概算費用の合計になります。 他のエディションについては、「[Windows Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)」で、ターゲットの SQL Server エディションを選択して確認できます。 
+> **[サイズの選択]** ブレードに表示される月額料金の見積もりには、SQL Server のライセンス費用は含まれていません。 この料金は VM 単体の費用です。 SQL Server Express エディションと SQL Server Developer エディションでは、この料金が概算費用の合計になります。 他のエディションについては、「[Windows Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)」で、ターゲットの SQL Server エディションを選択して確認できます。 また、「[Pricing guidance for SQL Server Azure VMs (SQL Server Azure VM の料金ガイダンス)](virtual-machines-windows-sql-server-pricing-guidance.md)」も参照してください。
 
 ![SQL VM Size Options](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-vm-choose-a-size.png)
 
@@ -108,8 +107,6 @@ SQL Server 仮想マシンを構成するための 5 つのブレードがあり
 
 > [!NOTE]
 > 仮想マシン サイズの詳細については、 [仮想マシンのサイズ](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。 SQL Server VM のサイズに関する考慮事項については、「 [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)」を参照してください。
-> 
-> 
 
 マシン サイズを選択し、 **[選択]**をクリックします。
 
@@ -258,7 +255,7 @@ SQL Server の設定の構成が完了したら、 **[OK]**をクリックしま
 ## <a name="5-review-the-summary"></a>5.概要を確認する
 **[概要]** ブレードで概要を確認し、**[OK]** をクリックして、この VM に対して指定した SQL Server、リソース グループ、リソースを作成します。
 
-Azure ポータルでデプロイメントを監視できます。 画面の上部にある **[通知]** ボタンをクリックすると、デプロイの基本的な状態が表示されます。
+Azure Portal でデプロイメントを監視できます。 画面の上部にある **[通知]** ボタンをクリックすると、デプロイの基本的な状態が表示されます。
 
 > [!NOTE]
 > デプロイの時間について参考になるように、既定の設定で SQL VM を米国東部リージョンにデプロイしました。 このテスト デプロイには完了までに合計 26 分間かかりました。 ただし、リージョンや選択した設定によっては、デプロイに必要な時間が変わる可能性があります。

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 04/19/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: e0cd1eb986e137e1e8877286b2efe9a6924da931
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: d5e13e6a96828e7c303e4d870ee170b90a0c4308
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/27/2017
 > オンプレミス/Azure IaaS データ ストアと Azure DocumentDB 間でのデータのコピーは、Data Management Gateway バージョン 2.1 以降でサポートされています。
 
 ## <a name="supported-versions"></a>サポートされているバージョン
-この DocumentDB コネクタでは、DocumentDB の単一パーティション コレクションとパーティション分割コレクションとの間のデータのコピーをサポートします。 [MongoDB 用 DocDB](../documentdb/documentdb-protocol-mongodb.md) はサポートされていません。
+この DocumentDB コネクタでは、DocumentDB の単一パーティション コレクションとパーティション分割コレクションとの間のデータのコピーをサポートします。 [MongoDB 用 DocDB](../documentdb/documentdb-protocol-mongodb.md) はサポートされていません。 JSON ファイルまたは他の DocumentDB コレクションとの間でデータをそのままコピーするには、「[JSON ドキュメントのインポート/エクスポート](#importexport-json-documents)」を参照してください。
 
 ## <a name="getting-started"></a>使用の開始
 さまざまなツール/API を使用して、Azure DocumentDB との間でデータを移動するコピー アクティビティを含むパイプラインを作成できます。
@@ -114,7 +114,18 @@ DocumentDB などのスキーマのないデータ ストアの場合、Data Fac
 | --- | --- | --- | --- |
 | nestingSeparator |入れ子になった文書が必要であることを示すソース列名の特殊文字。 <br/><br/>上記の例の場合: 出力テーブルの `Name.First` は、DocumentDB ドキュメントで次の JSON 構造を生成します。<br/><br/>"Name": {<br/>    "First":"John"<br/>}, |入れ子レベルの分割に使用される文字。<br/><br/>既定値は `.` (ドット) です。 |入れ子レベルの分割に使用される文字。 <br/><br/>既定値は `.` (ドット) です。 |
 | writeBatchSize |DocumentDB サービスにドキュメントの作成を要求する並列要求の数。<br/><br/>このプロパティを使用して、DocumentDB との間でコピーするときのパフォーマンスを微調整できます。 writeBatchSize を増やすとパフォーマンスが良くなります。DocumentDB に送信される並列要求の数が増えるためです。 ただし、スロットルは回避する必要があります。「Request rate is large」というエラー メッセージをスローする可能性があります。<br/><br/>スロットルは、ドキュメントのサイズ、ドキュメント内の語句の数、ターゲット コレクションの索引作成ポリシーなど、さまざまな要因により決定されます。コピー操作の場合、もっとよいコレクションを利用し (S3 など)、最大のスループットを得ることができます (毎秒 2,500 要求単位)。 |Integer |いいえ (既定値: 5) |
-| writeBatchTimeout |タイムアウトする前に操作の完了を待つ時間です。 |timespan<br/><br/> 例: "00:30:00" (30 分)。 |いいえ |
+| writeBatchTimeout |タイムアウトする前に操作の完了を待つ時間です。 |timespan<br/><br/> 例: "00:30:00" (30 分)。 |なし |
+
+## <a name="importexport-json-documents"></a>JSON ドキュメントのインポート/エクスポート
+この DocumentDB コネクタを使用して、次の作業を簡単に実行できます。
+
+* Azure BLOB、Azure Data Lake、オンプレミスのファイル システム、Azure Data Factory でサポートされているその他のファイル ベースのストアなど、さまざまなソースから DocumentDB に JSON ドキュメントをインポートする。
+* JSON ドキュメントを DocumentDB コレクションからさまざまなファイル ベースのストアにエクスポートする。
+* 2 つの DocumentDB コレクション間でそのままデータを移行する。
+
+このようなスキーマに依存しないコピーを実現するには、次のようにします。 
+* コピー ウィザードを使用する場合は、**[Export as-is to JSON files or DocumentDB collection (JSON ファイルまたは DocumentDB コレクションにそのままエクスポートする)]** オプションを確認します。
+* JSON の編集を使用する場合は、コピー アクティビティで、DocumentDB データセットの "structure" セクションも DocumentDB ソース/シンクの "nestingSeparator" プロパティも指定しないでください。 JSON ファイルに対してインポート/エクスポートを行うには、ファイル ストア データセットで形式を "JsonFormat" に指定し、"filePattern" を構成し、その他の形式設定は省略します。詳細については、「[JSON 形式](data-factory-supported-file-and-compression-formats.md#json-format)」のセクションを参照してください。
 
 ## <a name="json-examples"></a>JSON の使用例
 以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 ここでは、Azure DocumentDB と Azure Blob Storage の間でデータをコピーする方法を示します。 ただし、Azure Data Factory のコピー アクティビティを使用して、**こちら**に記載されているいずれかのシンクに、任意のソースからデータを[直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats)コピーすることができます。
@@ -450,15 +461,6 @@ DocumentDB の JSON は次のようになります。
 }
 ```
 DocumentDB は JSON 文書の NoSQL ストアであり、入れ子構造が許可されます。 Azure Data Factory を利用すると、**nestingSeparator** で階層を示すことができます。 この例では「.」です。 区切り記号により、コピー アクティビティで「Name」オブジェクトが 3 つの子要素 (First、Middle、Last) で生成されます。これはテーブル定義の「Name.First」、「Name.Middle」、「Name.Last」に基づきます。
-
-## <a name="importexport-json-documents"></a>JSON ドキュメントのインポート/エクスポート
-この DocumentDB コネクタを使用して、次の作業を簡単に実行できます。
-
-* Azure BLOB、Azure Data Lake、オンプレミスのファイル システム、Azure Data Factory でサポートされているその他のファイル ベースのストアなど、さまざまなソースから DocumentDB に JSON ドキュメントをインポートする。
-* JSON ドキュメントを DocumentDB コレクションからさまざまなファイル ベースのストアにエクスポートする。
-* 2 つの DocumentDB コレクション間でそのままデータを移行する。
-
-スキーマに依存しないこのようなコピーを実現するには、コピー アクティビティで、入力データセットの "structure" セクションまたは DocumentDB ソース/シンクの "nestingSeparator" プロパティを指定しないでください。 JSON 形式の構成の詳細については、対応するファイル ベースのコネクタのトピックで、"形式の指定" に関するセクションを参照してください。
 
 ## <a name="appendix"></a>付録
 1. **質問:**

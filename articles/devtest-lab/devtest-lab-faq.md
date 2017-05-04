@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/22/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 7a9b8037967f0180d2f7d2a7d100d0cc3ad9e4a2
-ms.lasthandoff: 04/07/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 519f035b411f254e8412ba9a8868b226c63cccb6
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -228,7 +228,7 @@ Azure Portal でラボから VM を削除できる以外に、PowerShell スク�
 サブスクリプションごとに作成できるラボの数に特定の制限はありません。 ただし、使用できるリソースの数にはサブスクリプションごとの制限があります。 [Azure サブスクリプションに適用される制限とクォータ](../azure-subscription-service-limits.md)および[これらの制限を増やす方法](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests)に関する記事をご覧ください。
 
 ### <a name="how-many-vms-can-i-create-per-lab"></a>ラボごとにいくつの VM を作成できますか。
-ラボごとに作成できる VM の数に特定の制限はありません。 ただし、現時点のラボでは、Standard Storage で同時に実行できる VM の数は 40 個程度、Premium Storage で同時に実行できる VM の数は 25 個に限られています。 現在、これらの制限値を増やす作業に取り組んでいます。
+ラボごとに作成できる VM の数に特定の制限はありません。 ただし、使用できるリソースの数にはサブスクリプションごとの制限があります (VM コア、パブリック IP など)。 [Azure サブスクリプションに適用される制限とクォータ](../azure-subscription-service-limits.md)および[これらの制限を増やす方法](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests)に関する記事をご覧ください。
 
 ### <a name="how-do-i-share-a-direct-link-to-my-lab"></a>ラボへの直接リンクを共有するにはどうすればよいですか。
 直接リンクをラボ ユーザーと共有するには、次の手順を実行できます。

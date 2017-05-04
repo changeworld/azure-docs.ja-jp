@@ -16,8 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 01/09/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 407b189af12116d633ed505facf4bcfde9be5822
-ms.openlocfilehash: 1bd099ee9154e920fef5b99e27d2a9711c1d75d1
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 10840ee4ff070436e2c21d51846ea6363825abac
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -66,10 +67,13 @@ Azure VM で実行されている SQL Server は、リレーショナル デー�
 ## <a name="create-a-new-sql-vm"></a>新しい SQL VM の作成
 以下のセクションでは、SQL Server 仮想マシン ギャラリー イメージに関する、Azure Portal へのリンクを記載しています。 選択するイメージによっては、SQL Server のライセンス費用を支払って分単位の従量課金で利用するか、ライセンス持ち込み (BYOL) を利用するかを選択できます。
 
-このプロセスの詳細な手順については、チュートリアル「[Azure Portal での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」に記載されています。 また、[SQL Server VM のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)の記事も参照してください。ここでは、適切なマシンのサイズと、プロビジョニング中に使用できるその他の機能の選択方法を説明しています。
+新しい SQL VM を作成する詳細な手順については、チュートリアル「[Azure Portal での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」を参照してください。 また、[SQL Server VM のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)の記事も参照してください。ここでは、適切なマシンのサイズと、プロビジョニング中に使用できるその他の機能の選択方法を説明しています。
 
 ## <a name="option-1-create-a-sql-vm-with-per-minute-licensing"></a>オプション 1: 分単位のライセンスを利用した SQL VM の作成
 次の表には、仮想マシン ギャラリーの最新の SQL Server イメージのマトリックスが示されています。 指定したバージョン、エディション、およびオペレーティング システムで新しい SQL VM の作成を開始するには、いずれかのリンクをクリックします。 
+
+> [!TIP]
+> これらのイメージの VM と SQL の料金については、「[Pricing guidance for SQL Server Azure VMs (SQL Server Azure VM の料金ガイダンス)](virtual-machines-windows-sql-server-pricing-guidance.md)」を参照してください。
 
 | バージョン | オペレーティング システム | エディション |
 | --- | --- | --- |
@@ -80,8 +84,11 @@ Azure VM で実行されている SQL Server は、リレーショナル デー�
 
 この一覧のほかに、SQL Server のバージョンとオペレーティング システムの別の組み合わせも使用できます。 他のイメージを探すには、Azure Portal で Marketplace 検索を行います。 
 
-## <a name="a-idbyola-option-2-create-a-sql-vm-with-an-existing-license"></a><a id="BYOL"></a>オプション 2: 既存のライセンスを利用した SQL VM の作成
+## <a id="BYOL"></a>オプション 2: 既存のライセンスを利用した SQL VM の作成
 ライセンス持ち込み (BYOL) を利用することもできます。 このシナリオでは、SQL Server ライセンスに対する追加料金はなく、VM のみに対して料金を支払います。 所有するライセンスを使用するには、以下の SQL Server のバージョン、エディション、およびオペレーティング システムのマトリックスを使用します。 ポータルでは、これらのイメージ名に **{BYOL}**というプレフィックスが付きます。
+
+> [!TIP]
+> 自分のライセンスを持ち込むと、継続的な運用環境のワークロードの費用を時間と共に削減できます。 詳細については、「[Pricing guidance for SQL Server Azure VMs (SQL Server Azure VM の料金ガイダンス)](virtual-machines-windows-sql-server-pricing-guidance.md)」を参照してください。
 
 | バージョン | オペレーティング システム | エディション |
 | --- | --- | --- |
@@ -92,8 +99,7 @@ Azure VM で実行されている SQL Server は、リレーショナル デー�
 この一覧のほかに、SQL Server のバージョンとオペレーティング システムの別の組み合わせも使用できます。 他のイメージを探すには、Azure Portal で Marketplace 検索を行います ("{BYOL} SQL Server" を検索)。
 
 > [!IMPORTANT]
-> BYOL VM イメージを使用するには、[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility/)を伴うエンタープライズ契約が必要です。 使用する SQL Server のバージョン/エディションに有効なライセンスも必要です。 VM のプロビジョニングから [10](http://d36cz9buwru1tt.cloudfront.net/License_Mobility_Customer_Verification_Guide.pdf) 日以内に、 **必要な BYOL 情報を Microsoft に提供する** 必要があります。
-> 
+> BYOL VM イメージを使用するには、[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility/)を伴うエンタープライズ契約が必要です。 使用する SQL Server のバージョン/エディションに有効なライセンスも必要です。 VM のプロビジョニングから [10](http://d36cz9buwru1tt.cloudfront.net/License_Mobility_Customer_Verification_Guide.pdf) 日以内に、 **必要な BYOL 情報を Microsoft に提供する** 必要があります。 
 
 > [!NOTE]
 > SQL Server VM のライセンス モデルを分単位のライセンスから既存のライセンスに変更することはできません。 既存のライセンスを利用する場合は、BYOL VM を新規作成して、データベースを新しい VM に移行する必要があります。 
@@ -108,7 +114,7 @@ SQL Server VM をプロビジョニングした後、オプションの管理タ
 既存のデータベースがある場合は、新たにプロビジョニングした SQL VM にそれを移動することがあります。 移行オプションの一覧とガイダンスについては、 [Azure VM の SQL Server へのデータベースの移行](virtual-machines-windows-migrate-sql.md)に関するページを参照してください。
 
 ### <a name="configure-high-availability"></a>高可用性の構成
-高可用性が必要な場合は、SQL Server 高可用性グループの構成を検討してください。 そのために、1 つの仮想ネットワークで複数の Azure VM を使用します。 Azure ポータルには、この構成が事前に設定されたテンプレートがあります。 詳細については、 [Azure Resource Manager 仮想マシンでの AlwaysOn 可用性グループの構成](virtual-machines-windows-portal-sql-alwayson-availability-groups.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。 可用性グループおよび関連付けられているリスナーを手動で構成する場合は、 [Azure VM での AlwaysOn 可用性グループの構成](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)に関するページを参照してください。
+高可用性が必要な場合は、SQL Server 高可用性グループの構成を検討してください。 そのために、1 つの仮想ネットワークで複数の Azure VM を使用します。 Azure Portal には、この構成が事前に設定されたテンプレートがあります。 詳細については、 [Azure Resource Manager 仮想マシンでの AlwaysOn 可用性グループの構成](virtual-machines-windows-portal-sql-alwayson-availability-groups.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。 可用性グループおよび関連付けられているリスナーを手動で構成する場合は、 [Azure VM での AlwaysOn 可用性グループの構成](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)に関するページを参照してください。
 
 その他の高可用性構成については、「 [Azure の仮想マシン内の SQL Server の高可用性と障害復旧](virtual-machines-windows-sql-high-availability-dr.md)」を参照してください。
 
@@ -126,13 +132,8 @@ Azure VM では、 [自動修正](virtual-machines-windows-sql-automated-patchin
 ## <a name="next-steps"></a>次のステップ
 [ラーニング パスを調べます](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/) 。
 
-価格については、[料金](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)に関するページを参照してください。 **[OS/ソフトウェア]** ボックスの一覧で、SQL Server の目的のエディションを選択してください。 次に、さまざまなサイズの仮想マシンの価格を確認します。 
+料金については、「[Pricing guidance for SQL Server Azure VMs (SQL Server Azure VM の料金ガイダンス)](virtual-machines-windows-sql-server-pricing-guidance.md)」および [Azure の料金](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)に関するページを参照してください。 **[OS/ソフトウェア]** ボックスの一覧で、SQL Server の目的のエディションを選択してください。 次に、さまざまなサイズの仮想マシンの価格を確認します。
 
 質問がある場合は、 まず、「[Azure Virtual Machines における SQL Server に関する FAQ](virtual-machines-windows-sql-server-iaas-faq.md)」をご確認ください。 SQL VM に関するトピックのいずれかで、下部のセクションに質問またはコメントを追加して、Microsoft やコミュニティとやり取りすることもできます。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

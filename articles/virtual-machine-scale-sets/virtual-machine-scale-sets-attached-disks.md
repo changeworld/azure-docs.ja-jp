@@ -13,12 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 2/6/2017
+ms.date: 4/25/2017
 ms.author: guybo
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 91d36d5321f455a2af31093fa460ddf6640942d4
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: d991adb8fa8f71a8785327be244ad9749a837dfd
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -58,10 +58,21 @@ az vmss create --help
 [https://github.com/chagarw/MDPP/tree/master/101-vmss-os-data](https://github.com/chagarw/MDPP/tree/master/101-vmss-os-data) で、接続されたディスクが定義された、すぐにデプロイできる完全版のスケール セット テンプレートの例を確認できます。
 
 ## <a name="adding-a-data-disk-to-an-existing-scale-set"></a>既存のスケール セットへのデータ ディスクの追加
+> [!NOTE]
+>  データ ディスクは、[Azure Managed Disks](./virtual-machine-scale-sets-managed-disks.md) で作成されたスケール セットにのみアタッチできます。
+
 Azure CLI の _az vmss disk attach_ コマンドを使うと、データ ディスクを VM スケール セットに追加することができます。 まだ使用されていない LUN を指定していることを確認します。 次の CLI の例では、50 GB のドライブを LUN 3 に追加しています。
 ```bash
 az vmss disk attach -g dsktest -n dskvmss --size-gb 50 --lun 3
 ```
+
+次の PowerShell の例では、50 GB のドライブを LUN 3 に追加しています。
+```powershell
+$vmss = Get-AzureRmVmss -ResourceGroupName myvmssrg -VMScaleSetName myvmss
+$vmss = Add-AzureRmVmssDataDisk -VirtualMachineScaleSet $vmss -Lun 3 -Caching 'ReadWrite' -CreateOption Empty -DiskSizeGB 50 -StorageAccountType StandardLRS
+Update-AzureRmVmss -ResourceGroupName myvmssrg -Name myvmss -VirtualMachineScaleSet $vmss
+```
+
 > [!NOTE]
 > VM サイズが異なると、サポートされる接続されたドライブの数に関する制限も異なります。 新しいディスクを追加する前に、[仮想マシンのサイズ特性](../virtual-machines/windows/sizes.md)を確認してください。
 

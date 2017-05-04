@@ -13,51 +13,46 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/11/2017
+ms.date: 04/24/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 81eca4b41b6a0726e5fcf851074bfb7dfca16fb8
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: fd7c834e8e061ba51b116ade88769dde05abcf9a
+ms.lasthandoff: 04/25/2017
 
 
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Azure Portal を使用してサイト間接続を作成する (クラシック)
 
-サイト間 (S2S) VPN ゲートウェイ接続とは、IPsec/IKE (IKEv1 または IKEv2) VPN トンネルを介した接続です。 この種類の接続では、オンプレミスの VPN デバイスが必要です。そのデバイスは、パブリック IP アドレスを割り当てられていて、NAT の内側に配置されていない必要があります。 サイト間接続は、クロスプレミスおよびハイブリッド構成に使用できます。
-
-![クロスプレミスのサイト間 VPN Gateway 接続の図](./media/vpn-gateway-howto-site-to-site-classic-portal/site-to-site-diagram.png)
-
-この記事では、クラシック デプロイメント モデルと Azure Portal を使用して、仮想ネットワークと、オンプレミス ネットワークに対するサイト間 VPN ゲートウェイ接続を作成する手順について説明します。 Resource Manager デプロイメント モデルでは、次のリストから別の方法を選択して、この構成を作成することもできます。
+この記事では、Azure Portal を使用して、オンプレミス ネットワークから VNet へのサイト間 VPN Gateway 接続を作成する方法について説明します。 この記事のこの手順は、クラシック デプロイメント モデルに適用されます。 また、この構成の作成には、次のリストから別のオプションを選択して、別のデプロイ ツールまたはデプロイ モデルを使用することもできます。
 
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [Resource Manager - PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+> * [Resource Manager - CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [クラシック - Azure Portal](vpn-gateway-howto-site-to-site-classic-portal.md)
 > * [クラシック - クラシック ポータル](vpn-gateway-site-to-site-create.md)
->
+> 
 >
 
-#### <a name="additional-configurations"></a>追加の構成
-VNet どうしは接続しても、オンプレミスへの接続は作成しない場合は、 [VNet 間の接続の構成](virtual-networks-configure-vnet-to-vnet-connection.md)に関するページを参照してください。 既存の接続が存在する VNet にサイト間接続を追加する場合は、[VPN Gateway 接続が既に存在する VNet へのサイト間接続の追加](vpn-gateway-multi-site.md)に関するページを参照してください。
+![クロスプレミスのサイト間 VPN Gateway 接続の図](./media/vpn-gateway-howto-site-to-site-classic-portal/site-to-site-diagram.png)
+
+
+サイト間 VPN Gateway 接続は、IPsec/IKE (IKEv1 または IKEv2) VPN トンネルを介してオンプレミス ネットワークを Azure 仮想ネットワークに接続するために使用します。 この種類の接続では、外部接続用パブリック IP アドレスが割り当てられていてるオンプレミスの VPN デバイスが必要です。 VPN Gateway の詳細については、「[VPN Gateway について](vpn-gateway-about-vpngateways.md)」を参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-[!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
+構成を開始する前に、以下の条件を満たしていることを確認します。
 
-構成を開始する前に、以下が揃っていることを確認します。
-
-* 互換性のある VPN デバイスおよびデバイスを構成できる人員。 「 [VPN デバイスについて](vpn-gateway-about-vpn-devices.md)」を参照してください。 VPN デバイスの構成に詳しくない場合や、オンプレミス ネットワーク構成の IP アドレス範囲を把握していない場合は、詳細な情報を把握している担当者と協力して作業を行ってください。
+* クラシック デプロイメント モデルを使用することを確認します。 [!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)] 
+* 互換性のある VPN デバイスおよびデバイスを構成できる人員。 互換性のある VPN デバイスとデバイスの構成の詳細については、[VPN デバイスの概要](vpn-gateway-about-vpn-devices.md)に関する記事を参照してください。
 * VPN デバイスの外部接続用パブリック IPv4 IP アドレス。 この IP アドレスを NAT の内側に割り当てることはできません。
-* Azure サブスクリプション。 Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)を有効にするか、[無料アカウント](http://azure.microsoft.com/pricing/free-trial)にサインアップしてください。
+* オンプレミス ネットワーク構成の IP アドレス範囲を把握していない場合は、詳細な情報を把握している担当者と協力して作業を行ってください。 この構成を作成する場合は、Azure がオンプレミスの場所にルーティングする IP アドレス範囲のプレフィックスを指定する必要があります。 オンプレミス ネットワークのサブネットと接続先の仮想ネットワーク サブネットが重複しないようにしなければなりません。
 * 現時点では、共有キーの指定と VPN ゲートウェイ接続の作成に PowerShell が必要です。 Azure サービス管理 (SM) PowerShell コマンドレットの最新版をインストールしてください。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」を参照してください。 この構成に PowerShell を使用する場合は、必ず管理者として実行するようにしてください。 
 
-> [!NOTE]
-> サイト間接続を構成するときには、VPN デバイスに公開 IPv4 IP アドレスが必要です。
->
-
 ### <a name="values"></a>この演習のサンプル構成値
-以下の手順を練習として使用する場合は、次のサンプル構成値を使用してください。
+
+この記事の例では、次の値を使用します。 この値を使用して、テスト環境を作成できます。また、この値を参考にしながら、この記事の例を確認していくこともできます。
 
 * **VNet の名前:** TestVNet1
 * **アドレス空間:** 
@@ -151,7 +146,7 @@ VPN ゲートウェイのゲートウェイ サブネットを作成する必要
 3. **[ゲートウェイの構成]** ブレードで、**[サブネット] の [必要な設定の構成]** をクリックして、**[サブネットの追加]** ブレードを開きます。
 
     ![[ゲートウェイの構成] のゲートウェイ サブネット](./media/vpn-gateway-howto-site-to-site-classic-portal/subnetrequired.png "[ゲートウェイの構成] のゲートウェイ サブネット")
-4. **[サブネットの追加]** ブレードでゲートウェイ サブネットを追加します。 可能であれば、ゲートウェイ サブネットを追加するときに、/28 または /27 の CIDR ブロックを使用してゲートウェイ サブネットを作成することをお勧めします。 そうすることで、将来的な構成要件に対応するのに十分な IP アドレスを確保できます。  **[OK]** をクリックして設定を保存します。
+4. **[サブネットの追加]** ブレードでゲートウェイ サブネットを追加します。 指定したゲートウェイ サブネットのサイズは、作成する VPN ゲートウェイの構成によって異なります。 /29 と同程度の小規模なゲートウェイ サブネットを作成することはできますが、/28 または /27 を選択してさらに多くのアドレスが含まれる大規模なサブネットを作成することをお勧めします。 大規模なゲートウェイ サブネットを使用すると、将来の構成に対応するのに十分な IP アドレスを確保できます。
 
     ![ゲートウェイ サブネットの追加](./media/vpn-gateway-howto-site-to-site-classic-portal/addgwsubnet.png "ゲートウェイ サブネットの追加")
 
@@ -165,24 +160,13 @@ VPN ゲートウェイのゲートウェイ サブネットを作成する必要
 
 ## <a name="vpndevice"></a>7.VPN デバイスの構成
 
-オンプレミス ネットワークとのサイト間接続には VPN デバイスが必要です。 すべての VPN デバイスの構成手順を紹介することはできませんが、以下のリンクの情報が参考になるかと思います。
-
-- 適合する VPN デバイスについては、[VPN デバイス](vpn-gateway-about-vpn-devices.md)に関するページを参照してください。 
-- デバイスの構成設定へのリンクについては、「[検証済みの VPN デバイス](vpn-gateway-about-vpn-devices.md#devicetable)」を参照してください。 これらのリンクは、入手できる範囲で記載しています。 最新の構成情報については必ず、デバイスの製造元にご確認ください。
-- デバイス構成サンプルの編集については、[サンプルの編集](vpn-gateway-about-vpn-devices.md#editing)に関するセクションを参照してください。
-- IPsec/IKE のパラメーターについては、[パラメーター](vpn-gateway-about-vpn-devices.md#ipsec)に関するセクションを参照してください。
-- VPN デバイスを構成する前に、使用する VPN デバイスに関して、[デバイスの互換性に関する既知の問題](vpn-gateway-about-vpn-devices.md#known)がないかどうかを確認してください。
-
-VPN デバイスを構成する際に、次の情報が必要になります。
-
-- 仮想ネットワーク ゲートウェイのパブリック IP アドレス。 この IP アドレスを見つけるには、仮想ネットワークの **[概要]** ブレードに移動します。
-- 共有キー。 サイト間 VPN 接続を作成するときにも、これと同じ共有キーを指定します。 ここで紹介している例では、ごく基本的な共有キーを使用しています。 実際には、もっと複雑なキーを作成して使用してください。
+[!INCLUDE [vpn-gateway-configure-vpn-device-rm](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
 
 ## <a name="CreateConnection"></a>8.接続の作成
 この手順では、共有キーを設定して接続を作成します。 設定するキーは、VPN デバイスの構成で使用したものと同じである必要があります。
 
 > [!NOTE]
-> 現時点では、この手順は Azure Portal で実行できません。 サービス管理 (SM) バージョンの Azure PowerShell コマンドレットを使用する必要があります。                                        >
+> 現時点では、この手順は Azure Portal で実行できません。 サービス管理 (SM) バージョンの Azure PowerShell コマンドレットを使用する必要があります。
 >
 
 ### <a name="step-1-connect-to-your-azure-account"></a>手順 1. Azure アカウントに接続する

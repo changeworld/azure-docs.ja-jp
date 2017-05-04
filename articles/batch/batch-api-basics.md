@@ -16,9 +16,9 @@ ms.date: 03/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: c7090940192d9bd07fce96ad475b2239f5e9f2e8
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 23dfe112411ebc6f47e6a3f09baaf1aa746e6987
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -73,11 +73,12 @@ Batch アカウントは、Batch サービス内で一意に識別されるエ�
 
 Azure Batch アカウントは、[Azure Portal](batch-account-create-portal.md) またはプログラム ([Batch Management .NET ライブラリ](batch-management-dotnet.md)など) を使用して作成できます。 アカウントを作成する際は、Azure ストレージ アカウントを関連付けることができます。
 
-Batch では、"*プール割り当てモード*" プロパティに基づいて 2 つのアカウント構成をサポートしています。 この 2 つの構成では、Batch サービスで認証を行い、Batch [プール](#pool)をプロビジョニングして管理するための各種オプションが用意されています (この記事の後半参照)。 
+Batch では、"*プール割り当てモード*" プロパティに基づいて 2 つのアカウント構成をサポートしています。 2 つの構成では、Batch [プール](#pool)に関連するさまざまな機能を利用できます (この記事の後半を参照)。 
 
 
-* **Batch サービス** (既定): 共有キー認証または [Azure Active Directory 認証](batch-aad-auth.md)を使用して Batch API にアクセスできます。 Batch コンピューティング リソースは、Azure によって管理されているアカウントでバックグラウンドで割り当てられます。   
-* **ユーザー サブスクリプション**: [Azure Active Directory 認証](batch-aad-auth.md)でのみ Batch API にアクセスできます。 Batch コンピューティング リソースは、Azure サブスクリプションで直接割り当てられます。 このモードでは、コンピューティング ノードを構成して他のサービスと統合するための柔軟性が向上します。 このモードでは、Batch アカウント向けに Azure キー コンテナーを追加で設定する必要があります。
+* **Batch サービス**: これは既定オプションです。Azure で管理されているサブスクリプションで Batch プール VM がバックグラウンドで割り当てられます。 Cloud Services プールが必要な場合は、このアカウント構成を使用する必要があります。ただし、カスタム VM イメージから作成された仮想マシン プールまたは仮想ネットワークを使用する仮想マシン プールが必要な場合は使用できません。 共有キー認証または [Azure Active Directory 認証](batch-aad-auth.md)を使用して Batch API にアクセスできます。 
+
+* **ユーザー サブスクリプション**: カスタム VM イメージから作成された仮想マシン プールまたは仮想ネットワークを使用する仮想マシン プールが必要な場合は、このアカウント構成を使用する必要があります。 [Azure Active Directory 認証](batch-aad-auth.md)でのみ Batch API にアクセスできます。Cloud Services プールはサポートされません。 Batch コンピューティング VM は、Azure サブスクリプションで直接割り当てられます。 このモードでは、Batch アカウント向けに Azure キー コンテナーを設定する必要があります。
  
 
 ## <a name="compute-node"></a>コンピューティング ノード
@@ -415,7 +416,7 @@ Batch ソリューション内でタスク エラーとアプリケーション 
 ### <a name="debugging-application-failures"></a>アプリケーション エラーのデバッグ
 * `stderr` と `stdout`
 
-    アプリケーションの実行中に、問題のトラブルシューティングに利用できる診断情報が生成される場合があります。 前述の「[ファイルとディレクトリ](#files-and-directories)」セクションで説明したように、Batch サービスは、コンピューティング ノードのタスク ディレクトリにある `stdout.txt` ファイルと `stderr.txt` ファイルに標準出力と標準エラー出力を書き込みます。 これらのファイルは Azure ポータルまたはいずれかの Batch SDK を使用してダウンロードすることができます。 たとえば、Batch .NET ライブラリの [ComputeNode.GetNodeFile][net_getfile_node] や [CloudTask.GetNodeFile][net_getfile_task] でこれらのファイルを取得して、トラブルシューティングに利用できます。
+    アプリケーションの実行中に、問題のトラブルシューティングに利用できる診断情報が生成される場合があります。 前述の「[ファイルとディレクトリ](#files-and-directories)」セクションで説明したように、Batch サービスは、コンピューティング ノードのタスク ディレクトリにある `stdout.txt` ファイルと `stderr.txt` ファイルに標準出力と標準エラー出力を書き込みます。 これらのファイルは Azure Portal またはいずれかの Batch SDK を使用してダウンロードすることができます。 たとえば、Batch .NET ライブラリの [ComputeNode.GetNodeFile][net_getfile_node] や [CloudTask.GetNodeFile][net_getfile_task] でこれらのファイルを取得して、トラブルシューティングに利用できます。
 * **タスクの終了コード**
 
     前述したように、タスクによって実行されたプロセスからゼロ以外の終了コードが返された場合、そのタスクには、失敗したことを示すマークが Batch サービスによって設定されます。 タスクでプロセスが実行されると、Batch によって、そのタスクの終了コード プロパティに "*プロセスのリターン コード*" が設定されます。 タスクの終了コードを決めるのは Batch サービスでは**ない**ことに注意してください。 タスクの終了コードは、プロセス自体またはそのプロセスを実行したオペレーティング システムによって決定されます。
@@ -426,7 +427,7 @@ Batch ソリューション内でタスク エラーとアプリケーション 
 断続的に発生する問題によって、タスクが応答を停止したり、実行に長い時間がかかるようになる場合もあります。 このような場合は、タスクに最大実行間隔を設定することができます。 最大実効間隔を超過すると、Batch サービスによってタスク アプリケーションが中断されます。
 
 ### <a name="connecting-to-compute-nodes"></a>コンピューティング ノードへの接続
-リモートからコンピューティング ノードにサインインすることによって、さらに踏み込んだデバッグやトラブルシューティングを実行できます。 Azure ポータルを使用して、Windows ノードのリモート デスクトップ プロトコル (RDP) ファイルをダウンロードしたり、Linux ノードの Secure Shell (SSH) 接続情報を取得したりすることができます。 このような操作は、Batch API ([Batch .NET][net_rdpfile]、[Batch Python](batch-linux-nodes.md#connect-to-linux-nodes) など) で実行することもできます。
+リモートからコンピューティング ノードにサインインすることによって、さらに踏み込んだデバッグやトラブルシューティングを実行できます。 Azure Portal を使用して、Windows ノードのリモート デスクトップ プロトコル (RDP) ファイルをダウンロードしたり、Linux ノードの Secure Shell (SSH) 接続情報を取得したりすることができます。 このような操作は、Batch API ([Batch .NET][net_rdpfile]、[Batch Python](batch-linux-nodes.md#connect-to-linux-nodes) など) で実行することもできます。
 
 > [!IMPORTANT]
 > RDP や SSH を通じてノードに接続するには、まず、ノード上にユーザーを作成する必要があります。 Azure Portal から Batch REST API を使用して[ユーザー アカウントをノードに追加][rest_create_user]し、Batch .NET の [ComputeNode.CreateComputeNodeUser][net_create_user] メソッドを呼び出すか、Batch Python モジュールの [add_user][py_add_user] メソッドを呼び出してください。

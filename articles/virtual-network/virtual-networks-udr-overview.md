@@ -16,9 +16,9 @@ ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 1657f7c772b7039707a67c4abc788479cc08bdd0
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 93920075a8ad8de4fd650d9cbbfd13b7bc18bf52
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -46,7 +46,7 @@ Azure で仮想マシン (VM) を仮想ネットワーク (VNet) に追加する
 ![Azure でのシステム ルート](./media/virtual-networks-udr-overview/Figure2.png)
 
 > [!IMPORTANT]
-> ユーザー定義のルートは、サブネットから発信されるトラフィックにのみ適用されます。 たとえば、インターネットからサブネットにトラフィックがどのように到着するかを指定するためのルートは作成できません。 また、トラフィックの転送先であるアプライアンスは、トラフィックが発信されるサブネットに配置できません。 常に、アプライアンス用に別のサブネットを作成してください。 
+> ユーザー定義のルートは、サブネットから発信される、そのサブネット内の任意のリソース (VM に接続されたネットワーク インターフェイスなど) のトラフィックにのみ適用されます。 たとえば、インターネットからサブネットにトラフィックがどのように到着するかを指定するためのルートは作成できません。 また、トラフィックの転送先であるアプライアンスをトラフィックが発信されるサブネットに配置することもできません。 常に、アプライアンス用に別のサブネットを作成してください。 
 > 
 > 
 

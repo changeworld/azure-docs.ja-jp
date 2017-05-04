@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: jonatul
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 627f0004cd4d558150c1603681431e7638caef88
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 48f7ba325f61b4a91c0208b4c99058da801bee19
+ms.lasthandoff: 04/21/2017
 
 ---
 
 # <a name="get-started-with-azure-dns-using-powershell"></a>PowerShell で Azure DNS の使用を開始する
 
 > [!div class="op_single_selector"]
-> * [Azure ポータル](dns-getstarted-portal.md)
+> * [Azure Portal](dns-getstarted-portal.md)
 > * [PowerShell](dns-getstarted-powershell.md)
 > * [Azure CLI 1.0](dns-getstarted-cli-nodejs.md)
 > * [Azure CLI 2.0](dns-getstarted-cli.md)
@@ -35,6 +35,14 @@ ms.lasthandoff: 03/11/2017
 DNS ゾーンは、特定のドメインの DNS レコードをホストするために使用されます。 Azure DNS でドメインのホストを開始するには、そのドメイン名用に DNS ゾーンを作成する必要があります。 ドメインの DNS レコードはすべて、この DNS ゾーン内に作成されます。 最後に、DNS ゾーンをインターネットに公開するには、ドメインのネーム サーバーを構成する必要があります。 ここでは、その手順について説明します。
 
 以降の手順は、Azure PowerShell がインストール済みで、既にサインインしていることを前提としています。 詳細については、「[PowerShell を使用して DNS ゾーンを管理する方法](dns-operations-dnszones.md)」を参照してください。
+
+## <a name="create-the-resource-group"></a>リソース グループの作成
+
+DNS ゾーンを作成する前に、DNS ゾーンが含まれるリソース グループを作成します。 コマンドを次に示します。
+
+```powershell
+New-AzureRMResourceGroup -name MyResourceGroup -location "westus"
+```
 
 ## <a name="create-a-dns-zone"></a>DNS ゾーンの作成
 
@@ -84,6 +92,13 @@ MaxNumberOfRecordSets : 5000
 
 このネーム サーバーは、ドメイン名レジストラー (ドメイン名を購入した場所) で構成する必要があります。 レジストラーにより、ドメインのネーム サーバーを設定するオプションが提供されます。 詳細については、「[Azure DNS へのドメインの委任](dns-domain-delegation.md)」を参照してください。
 
+## <a name="delete-all-resources"></a>すべてのリソースの削除
+
+この記事で作成したすべてのリソースを削除するには、次の手順を実行します。
+
+```powershell
+Remove-AzureRMResourceGroup -Name MyResourceGroup
+```
 
 ## <a name="next-steps"></a>次のステップ
 

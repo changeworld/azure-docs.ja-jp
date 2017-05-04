@@ -16,15 +16,16 @@ ms.workload: na
 ms.date: 02/09/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 37a1653ca058c60a39df95f646127bd9e7fdd556
-ms.openlocfilehash: 57c7b895579e1c1e86224a60d961721d2d4cf638
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 1c8703d64ff45e589a7ce93f1f2176681e1bf331
+ms.lasthandoff: 04/25/2017
 
 
 ---
 [!INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
 ## <a name="azure-iot-suite"></a>Azure IoT Suite
-Microsoft Azure IoT Suite は、拡張可能な一連の事前構成済みソリューションを介してすばやく使用を開始できるエンタープライズ グレードのソリューションです。 これらのソリューションは、[リモート モニタリング][lnk-preconfigured-solutions]や[予測メンテナンス][lnk-predictive-maintenance]などの一般的な IoT シナリオに対処します。 これらのソリューションは、この記事で概説しているように、IoT ソリューションのアーキテクチャの実装です。
+Microsoft Azure IoT Suite は、拡張可能な一連の事前構成済みソリューションを介してすばやく使用を開始できるエンタープライズ グレードのソリューションです。 これらのソリューションは、[リモート監視][lnk-preconfigured-solutions]、[予測メンテナンス][lnk-predictive-maintenance]、[コネクテッド ファクトリ][lnk-connected-factory]などの一般的な IoT シナリオに対処します。 これらのソリューションは、この記事で概説しているように、IoT ソリューションのアーキテクチャの実装です。
 
 構成済みソリューションは、完全かつ実用的なエンド ツー エンドのソリューションであり、以下のものが含まれます。
 
@@ -52,9 +53,4 @@ IoT Suite と構成済みのソリューションについて引き続き学習�
 [Azure Machine Learning]: https://azure.microsoft.com/documentation/services/machine-learning/
 [Azure storage]: https://azure.microsoft.com/documentation/services/storage/
 [lnk-predictive-maintenance]: iot-suite-predictive-overview.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
-
+[lnk-connected-factory]: iot-suite-connected-factory-overview.md
