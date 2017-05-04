@@ -15,8 +15,9 @@ ms.workload: mobile
 ms.date: 10/05/2016
 ms.author: wesmc;ricksal
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 716d2d95b5d68dbb7fdd2ef50d220a8c8c2c9f5e
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: bf8cd0d645d8a5992864c8a3820ac2049a3ff630
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -43,7 +44,7 @@ API の要求を認証するには、すべての要求に Authorization ヘッ�
 ### <a name="one-time-setup-using-script"></a>1 回限りのセットアップ (スクリプトを使用)
 以下の説明に従って PowerShell スクリプトを使用してセットアップを実行するとセットアップにかかる時間は最短になりますが、許容できるほとんどの既定値を使用することになります。 あるいは、 [手動セットアップ](mobile-engagement-api-authentication-manual.md) の手順に従って Azure ポータルから直接行えば、さらにきめ細かく構成できます。 
 
-1. Azure PowerShell の最新バージョンを [こちら](http://aka.ms/webpi-azps)から入手します。 ダウンロードの手順の詳細については、この [リンク](/powershell/azureps-cmdlets-docs)を参照してください。  
+1. Azure PowerShell の最新バージョンを [こちら](http://aka.ms/webpi-azps)から入手します。 ダウンロードの手順の詳細については、この [リンク](/powershell/azure/overview)を参照してください。  
 2. Azure PowerShell をインストールした後は、次のコマンドを使用して、 **Azure モジュール** がインストールされていることを確認します。
    
     a. 使用可能なモジュールのリストで Azure PowerShell モジュールが使用可能であることを確認します。 
@@ -150,10 +151,5 @@ API の要求を認証するには、すべての要求に Authorization ヘッ�
 [4]: ./media/mobile-engagement-api-authentication/ad-app-creation.png
 
 
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

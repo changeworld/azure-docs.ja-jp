@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: fb6a74ba476d410f7545a3cfcbaf23190f0bd402
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 70cf84918898a65560ecd40d501b5fdc3775b0f6
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/31/2017
 
 この記事で紹介するシナリオを実現するには、次の手順に従います。
 
-1. Azure PowerShell をインストールします。 最新バージョンの Azure PowerShell をインストールし、サブスクリプションを選択して、ご利用のアカウントにサインインする方法については、「[Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」を参照してください。
+1. Azure PowerShell をインストールします。 最新バージョンの Azure PowerShell をインストールし、サブスクリプションを選択して、ご利用のアカウントにサインインする方法については、「[Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」を参照してください。
 2. 次の設定を使用してリソース グループを作成します。
 
     ```powershell

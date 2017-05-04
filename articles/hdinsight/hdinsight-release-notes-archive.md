@@ -17,9 +17,9 @@ ms.date: 4/06/2017
 ms.author: nitinme
 ROBOTS: NOINDEX
 translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: 8f82690170f4a861adf2fcb3a889919df6fa5d0d
-ms.lasthandoff: 04/10/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 5e1538ae0d4b1270040bd593cae66c1dd1046201
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -1249,7 +1249,7 @@ HDInsight で使用される Hortonworks Data Platform で YARN および MapRed
 Azure PowerShell と HDInsight SDK のエラー メッセージ: "*クラスターが HTTP サービスのアクセス用に構成されていません*" について
 
 * このエラーは既知の[互換性の問題](https://social.msdn.microsoft.com/Forums/azure/a7de016d-8de1-4385-b89e-d2e7a1a9d927/hdinsight-powershellsdk-error-cluster-is-not-configured-for-http-services-access?forum=hdinsight)であり、HDInsight SDK または Azure PowerShell のバージョンとクラスターのバージョンが異なることが原因で起こることがあります。 8 月 15 日以降に作成されたクラスターは、仮想ネットワークへの新しいプロビジョニング機能をサポートします。 ただし、HDInsight SDK または Azure PowerShell の以前のバージョンでは、この機能が正しく解釈されません。 一部のジョブ送信の操作で失敗する結果になります。 HDInsight SDK API または Azure PowerShell コマンドレット (**Use-AzureRmHDInsightCluster** または **Invoke-AzureRmHDInsightHiveJob**) を使用してジョブを送信する場合、エラー メッセージ "*<clustername> が HTTP サービスのアクセス用に構成されていません*"  または操作によっては、"*クラスターに接続できません*" などのその他のエラー メッセージが表示され、これらの操作が失敗する可能性があります。
-* これらの互換性の問題は、HDInsight SDK および Azure PowerShell の最新バージョンで解決されます。 HDInsight SDK をバージョン 1.3.1.6 以降に、Azure PowerShell ツールをバージョン 0.8.8 以降に更新することをお勧めします。 [NuGet](http://nuget.codeplex.com/wikipage?title=Getting%20Started) から最新の HDInsight SDK に、「[Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」から Azure PowerShell ツールにアクセスできます。
+* これらの互換性の問題は、HDInsight SDK および Azure PowerShell の最新バージョンで解決されます。 HDInsight SDK をバージョン 1.3.1.6 以降に、Azure PowerShell ツールをバージョン 0.8.8 以降に更新することをお勧めします。 [NuGet](http://nuget.codeplex.com/wikipage?title=Getting%20Started) から最新の HDInsight SDK に、「[Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」から Azure PowerShell ツールにアクセスできます。
 
 ## <a name="notes-for-9122014-release-of-hdinsight-31"></a>HDInsight 3.1 の 2014 年 9 月 12 日リリース
 * このリリースは、Hortonworks Data Platform (HDP) 2.1.5 に基づくものです。 このリリースで修正されたバグの一覧については、Hortonworks のサイトで「 [Fixed in this Release (このリリースでの修正点)](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.5/bk_releasenotes_hdp_2.1/content/ch_relnotes-hdp-2.1.5-fixed.html) 」ページをご覧ください。

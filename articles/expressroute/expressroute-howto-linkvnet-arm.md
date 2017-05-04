@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: ganesr
 translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: 77badf17502be6060b107521889f4b6ca7473b55
-ms.lasthandoff: 04/14/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: b8c23a623a5c6c65c5239e6af694bc92c4de4682
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -34,7 +34,7 @@ ms.lasthandoff: 04/14/2017
 この記事では、Resource Manager デプロイメント モデルと PowerShell を使用して Azure ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法について説明します。 仮想ネットワークは、同じサブスクリプションにあっても、別のサブスクリプションの一部であってもかいまいません。 この記事では、仮想ネットワークのリンクを更新する方法も示します。 
 
 ## <a name="before-you-begin"></a>開始する前に
-* Azure PowerShell モジュールの最新バージョンをインストールします。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」を参照してください。
+* Azure PowerShell モジュールの最新バージョンをインストールします。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。
 * 構成を開始する前に、[前提条件](expressroute-prerequisites.md)、[ルーティングの要件](expressroute-routing.md)、[ワークフロー](expressroute-workflows.md)を確認します。
 * アクティブな ExpressRoute 回線が必要です。 
   * 手順に従って、 [ExpressRoute 回線を作成](expressroute-howto-circuit-arm.md) し、接続プロバイダー経由で回線を有効にしてください。 
@@ -176,3 +176,4 @@ Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $con
 
 ## <a name="next-steps"></a>次のステップ
 ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
+

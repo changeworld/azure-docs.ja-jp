@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: aced1550a7b5b41b0a430c26f82c31c023f4d2d4
-ms.lasthandoff: 04/26/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 5fd017b6f7645220ee7572e50c02265de41e938c
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -35,7 +35,7 @@ Azure エコシステム内部から Network Watcher、アラート、関数を�
 
 ## <a name="prerequisites"></a>前提条件
 
-* 最新バージョンの [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-3.8.0) をインストールします
+* 最新バージョンの [Azure PowerShell](/powershell/azure/install-azurerm-ps) をインストールします
 * Network Watcher の既存インスタンスを用意するか、[Network Watcher のインスタンスを作成](network-watcher-create.md)します
 * 前の Network Watcher と同じリージョンに、[Windows 拡張機能](../virtual-machines/windows/extensions-nwa.md)または [Linux 仮想マシン拡張機能](../virtual-machines/linux/extensions-nwa.md)で既存の仮想マシンを用意します。
 

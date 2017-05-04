@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/22/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 519f035b411f254e8412ba9a8868b226c63cccb6
-ms.lasthandoff: 04/21/2017
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: e7dad0f943375f1bf2996564558e313416506506
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -136,7 +136,7 @@ VSTS を使用している場合は、Azure DevTest Labs でのリリース パ�
 * [Deploying a new VM in an existing AzureDevTestLab from VSTS (VSTS からの既存 AzureDevTestLab での新しい VM のデプロイ)](http://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
 * [Using VSTS Release Management for Continuous Deployments to AzureDevTestLabs (VSTS のリリース管理を使用した AzureDevTestLabs への継続的なデプロイメント)](http://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
 
-その他の CI/CD ツールチェーンについては、VSTS のタスク拡張機能で実施可能な前述のシナリオすべてを、[Azure PowerShell コマンドレット](../azure-resource-manager/resource-group-template-deploy.md)と [.NET SDKs](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/) を使用して、[Azure Resource Manager テンプレート](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)をデプロイすることによって同様に実施できます。 [DevTest Labs 用の REST API](http://aka.ms/dtlrestapis) を使用して、お使いのツール チェーンと統合することもできます。  
+その他の CI/CD ツールチェーンについては、VSTS のタスク拡張機能で実施可能な前述のシナリオすべてを、[Azure PowerShell コマンドレット](../azure-resource-manager/resource-group-template-deploy.md)と [.NET SDKs](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/) を使用して、[Azure Resource Manager テンプレート](https://aka.ms/dtlquickstarttemplate)をデプロイすることによって同様に実施できます。 [DevTest Labs 用の REST API](http://aka.ms/dtlrestapis) を使用して、お使いのツール チェーンと統合することもできます。  
 
 ### <a name="why-cant-i-see-certain-vms-in-the-azure-virtual-machines-blade-that-i-see-within-azure-devtest-labs"></a>Azure DevTest Labs で表示される特定の VM が Azure 仮想マシン ブレードに表示されないのはなぜですか。
 Azure DevTest Labs で VM を作成すると、その VM にアクセスするためのアクセス許可が付与されます。 この VM は、Labs のブレードと **Virtual Machines** のブレードの両方に表示されます。 DevTest Labs ロールのユーザーは、ラボの **[All Virtual Machines (すべての仮想マシン)]** ブレードで、ラボで作成されたすべての仮想マシンを確認することができます。 ただし、DevTest Labs ロールのユーザーには、他のユーザーによって作成された VM リソースへの読み取りアクセス許可は付与されません。 そのため、これらの VM は **Virtual Machines** のブレードに表示されません。
@@ -145,7 +145,7 @@ Azure DevTest Labs で VM を作成すると、その VM にアクセスする�
 カスタム イメージは VHD (仮想ハード ディスク) である一方、フォーミュラは保存して再現できる追加設定を構成可能なイメージです。 同じ基本的な不変のイメージで複数の環境をすばやく作成する場合は、カスタム イメージをお勧めします。 フォーミュラは、最新のビット、仮想ネットワーク/サブネット、または特定のサイズで VM の構成を再現する必要がある場合に適しています。 詳細については、記事「 [Comparing custom images and formulas in DevTest Labs (DevTest Labs のカスタム イメージとフォーミュラの比較)](devtest-lab-comparing-vm-base-image-types.md)」をご覧ください。
 
 ### <a name="how-do-i-create-multiple-vms-from-the-same-template-at-once"></a>同じテンプレートから複数の VM を一度に作成するにはどうすればよいですか。
-VM の作成中に [VSTS タスク拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)または [Azure Resource Manager テンプレートの生成](devtest-lab-add-vm-with-artifacts.md#save-azure-resource-manager-template)を使用し、[Windows PowerShell から Azure Resource Manager テンプレートをデプロイ](../azure-resource-manager/resource-group-template-deploy.md)することができます。
+VM の作成中に [VSTS タスク拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)または [Azure Resource Manager テンプレートの生成](devtest-lab-add-vm.md#save-azure-resource-manager-template)を使用し、[Windows PowerShell から Azure Resource Manager テンプレートをデプロイ](../azure-resource-manager/resource-group-template-deploy.md)することができます。
 
 ### <a name="how-do-i-move-my-existing-azure-vms-into-my-azure-devtest-labs-lab"></a>既存の Azure VM を Azure DevTest Labs ラボに移動するにはどうすればよいですか。
 当社では、Azure DevTest Labs に VM を直接移動するソリューションを設計中ですが、現時点では、既存の VM を Azure DevTest Labs に次のようにコピーすることで対処できます。
@@ -219,7 +219,7 @@ Azure Portal でラボから VM を削除できる以外に、PowerShell スク�
 アーティファクトは、最新のビットまたは開発用ツールを VM 上にデプロイするために使用できるカスタマイズ可能な要素です。 いくつかの簡単なクリック操作で作成時に VM に接続され、VM がプロビジョニングされると、アーティファクトによって VM がデプロイおよび構成されます。 [パブリック GitHub リポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)には、様々な既存のアーティファクトが存在しますが、[独自のアーティファクトの作成](devtest-lab-artifact-author.md)も簡単です。
 
 ### <a name="how-do-i-create-a-lab-from-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートからラボを作成するにはどうすればよいですか。
-弊社が提供する[ラボの Azure Resource Manager テンプレートの GitHub リポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)を、そのままの状態でデプロイしたり、修正してラボ用のカスタム テンプレートを作成したりできます。 各テンプレートにはリンクが含まれます。このリンクをクリックすると、Azure サブスクリプションにラボをそのままデプロイできます。また、テンプレートをカスタマイズし、[PowerShell や Azure CLI を使用してデプロイ](../azure-resource-manager/resource-group-template-deploy.md)することもできます。
+弊社が提供する[ラボの Azure Resource Manager テンプレートの GitHub リポジトリ](https://aka.ms/dtlquickstarttemplate)を、そのままの状態でデプロイしたり、修正してラボ用のカスタム テンプレートを作成したりできます。 各テンプレートにはリンクが含まれます。このリンクをクリックすると、Azure サブスクリプションにラボをそのままデプロイできます。また、テンプレートをカスタマイズし、[PowerShell や Azure CLI を使用してデプロイ](../azure-resource-manager/resource-group-template-deploy.md)することもできます。
 
 ### <a name="why-are-my-vms-created-in-different-resource-groups-with-arbitrary-names-can-i-rename-or-modify-these-resource-groups"></a>別々のリソース グループに作成した VM が任意の名前を持つのはなぜですか。 これらのリソース グループの名前や内容を変更できますか。
 リソース グループは、Azure DevTest Labs がユーザーのアクセス許可と仮想マシンへのアクセスを管理するため、ご質問で述べられたように作成されます。 VM を別のリソース グループに移動してご希望の名前を使用することはできますが、この方法はお勧めではありません。 柔軟性の向上を目指して、機能の改善に取り組んでいます。   

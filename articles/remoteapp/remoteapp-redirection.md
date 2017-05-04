@@ -11,12 +11,12 @@ ms.workload: compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 04/26/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: cab03e7765dc7116a7f974833871fae652e8363c
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 368bf16c77feed55c397052b63fde4ef3fb29447
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -49,7 +49,7 @@ RemoteApp を使用するとき、次のリダイレクトが既定で有効に�
 * USB リダイレクト: リモート セッション内で、ローカル コンピューターに接続されている USB デバイスを使用できます。
 
 ## <a name="change-your-redirection-settings-in-remoteapp"></a>RemoteApp でリダイレクトの設定を変更します。
-Microsoft Azure PowerShell と SDK を使用し、コレクションのデバイス リダイレクト設定を変更できます。 新しい PowerShell と SDK をインストールした後を構成したら、最初に「 [Azure PowerShell を構成する方法](/powershell/azureps-cmdlets-docs)」の説明に従い、サブスクリプションを管理するように設定します。
+Microsoft Azure PowerShell と SDK を使用し、コレクションのデバイス リダイレクト設定を変更できます。 新しい PowerShell と SDK をインストールした後を構成したら、最初に「 [Azure PowerShell を構成する方法](/powershell/azure/overview)」の説明に従い、サブスクリプションを管理するように設定します。
 
 次のようなコマンドを利用し、カスタム RDP プロパティを設定します。
 

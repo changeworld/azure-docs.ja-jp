@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/30/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 114a8cb31d2bd24baea12f7393bbc7f95c59e16e
-ms.lasthandoff: 04/22/2017
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 864526efd2bc90bdd4beeb4c81173e85eee6f34b
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -732,7 +732,7 @@ Data Factory ランチャーによって使用されるアセンブリのバー�
 ```
 
 
-この例では、2 つの拡張プロパティ (**SliceStart** と **DataFactoryName**) があります。 SliceStart の値は、SliceStart システム変数に基づいています。 サポートされているシステム変数の一覧については、 [システム変数](data-factory-scheduling-and-execution.md#data-factory-functions-and-system-variables) に関するページをご覧ください。 DataFactoryName の値は、CustomActivityFactory にハードコーディングされます。
+この例では、2 つの拡張プロパティ (**SliceStart** と **DataFactoryName**) があります。 SliceStart の値は、SliceStart システム変数に基づいています。 サポートされているシステム変数の一覧については、 [システム変数](data-factory-functions-variables.md) に関するページをご覧ください。 DataFactoryName の値は、CustomActivityFactory にハードコーディングされます。
 
 **Execute** メソッドでこれらの拡張プロパティにアクセスするには、次のようなコードを使用します。
 

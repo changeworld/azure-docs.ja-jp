@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/24/2017
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 788021a5b5715524a534ce3e9ff9019310450f4a
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: e8d6f7c41287f5f785a52ae82bb156008d7e2699
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -90,7 +90,7 @@ ms.lasthandoff: 03/25/2017
 > 
 > 
 
- クラスターの信頼性レベルはいつでも変更できます。 クラスターの信頼性レベルを変更すると、システム サービスのレプリカ セット数を変更するために必要なクラスターのアップグレードが開始されます。 ノードの追加など、クラスターにさらに変更を行う場合は、このアップグレードが完了してからにしてください。アップグレードの進行状況を監視するには、Service Fabric Explorer を使用するか、[Get-ServiceFabricClusterUpgrade](https://msdn.microsoft.com/library/mt126012.aspx) を実行します。
+ クラスターの信頼性レベルはいつでも変更できます。 クラスターの信頼性レベルを変更すると、システム サービスのレプリカ セット数を変更するために必要なクラスターのアップグレードが開始されます。 ノードの追加など、クラスターにさらに変更を行う場合は、このアップグレードが完了してからにしてください。アップグレードの進行状況を監視するには、Service Fabric Explorer を使用するか、[Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) を実行します。
 
 
 ## <a name="primary-node-type---capacity-guidance"></a>プライマリ ノード タイプ - 容量に関するガイダンス

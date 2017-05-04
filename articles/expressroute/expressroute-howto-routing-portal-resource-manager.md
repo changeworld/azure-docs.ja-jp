@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 5e33ffc313e7edfcf7243f1113e07b215dc5b10b
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 01fc643ce3fe82cd664cfca5ac02851611d7058e
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -34,10 +34,6 @@ ms.lasthandoff: 03/24/2017
 > 
 
 この記事では、Azure ポータルと Resource Manager のデプロイ モデルを使用して、ExpressRoute 回線のルーティング構成を作成して管理する手順について説明します。
-
-**Azure のデプロイ モデルについて**
-
-[!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="configuration-prerequisites"></a>構成の前提条件
 * 構成を開始する前に必ず、[前提条件](expressroute-prerequisites.md)ページ、[ルーティングの要件](expressroute-routing.md)ページおよび[ワークフロー](expressroute-workflows.md) ページを確認してください。
