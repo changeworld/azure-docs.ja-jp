@@ -85,7 +85,7 @@ Jupyter Notebook で実行しているアプリケーションについては、
 以下のスニペットは、Jupyter で実行しているアプリケーションの構成を変更する方法を示しています。
 
     %%configure
-    {"executorMemory": "3072M", "executorCores": 4, “numExecutors”:10}
+    {"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
 
 例の列で示されているように、構成パラメーターは JSON 文字列として渡し、マジックの後の次の行に置く必要があります。
 
