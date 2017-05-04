@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/14/2017
 ms.author: robmcm;asirveda
 translationtype: Human Translation
-ms.sourcegitcommit: d58166140c5de03462df07ea6ea83eb78ffa54ba
-ms.openlocfilehash: 1c60d3730aa2bbca63abf259727ec41ffc164b47
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 98c42ae7945d0cf29807319c7b777c5740fc8449
+ms.lasthandoff: 04/22/2017
 
 
 ---
-<!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh694271.aspx -->
 
 # <a name="azure-toolkit-for-eclipse"></a>Azure Toolkit for Eclipse
 Azure Toolkit for Eclipse は、Eclipse 開発環境を使って Azure アプリケーションを簡単に作成、開発、テスト、またデプロイできるテンプレートと機能を提供します。 これはオープン ソース プロジェクトであり、そのソース コードは、プロジェクト サイトから MIT License で入手できます。URL は次のとおりです。
@@ -37,6 +37,7 @@ Azure Toolkit for Eclipse は、Eclipse 開発環境を使って Azure アプリ
 
 * [Azure Toolkit for Eclipse の新機能]
 * [Azure Toolkit for Eclipse のインストール]
+* [Azure Toolkit for Eclipse のサインイン手順]
 * [Azure 向け Hello World クラウド サービスを Eclipse で作成する]
 * [Eclipse で Azure 用の Hello World Web アプリを作成する]
 
@@ -55,21 +56,23 @@ Azure Toolkit for Eclipse は、Eclipse 開発環境を使って Azure アプリ
 
 * [Java 用 Azure ライブラリ パッケージの Javadoc コンテンツの Eclipse での表示]
 * [大規模なデプロイ]
-* [Eclipse で Azure の Java Web アプリをデバッグする]
-* [Eclipse での Azure アプリケーションのデバッグ]
+<!-- * [Debug a Java Web App on Azure in Eclipse] -->
+<!-- * [Debugging Azure Applications in Eclipse] -->
 * [Eclipse 用の HDInsight Tools プラグインを使用して HDInsight Spark Linux クラスター向けの Spark アプリケーションを作成する][HDInsight Tools Plugin for Eclipse]
 
 ## <a name="see-also"></a>関連項目
 Azure Toolkits for Java IDE の詳細については、次のリンクをご覧ください。
 
 * *Azure Toolkit for Eclipse (この記事)*
+  * [Azure Toolkit for Eclipse の新機能]
   * [Azure Toolkit for Eclipse のインストール]
   * [Eclipse で Azure 用の Hello World Web アプリを作成する]
-  * [Azure Toolkit for Eclipse の新機能]
+  * [Azure Toolkit for Eclipse のサインイン手順]
 * [Azure Toolkit for IntelliJ]
+  * [Azure Toolkit for IntelliJ の新機能]
   * [Azure Toolkit for IntelliJ のインストール]
   * [IntelliJ で Azure 用の Hello World Web アプリを作成する]
-  * [Azure Toolkit for IntelliJ の新機能]
+  * [Azure Toolkit for IntelliJ のサインイン手順]
 
 Java での Azure の使用の詳細については、 [Azure Java デベロッパー センター] と[Java Tools for Visual Studio Team Services] を参照してください。
 
@@ -81,6 +84,8 @@ Java での Azure の使用の詳細については、 [Azure Java デベロッ�
 [IntelliJ で Azure 用の Hello World Web アプリを作成する]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
 [Azure Toolkit for Eclipse のインストール]: ./azure-toolkit-for-eclipse-installation.md
 [Azure Toolkit for IntelliJ のインストール]: ./azure-toolkit-for-intellij-installation.md
+[Azure Toolkit for Eclipse のサインイン手順]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
+[Azure Toolkit for IntelliJ のサインイン手順]: ./azure-toolkit-for-intellij-sign-in-instructions.md
 [Azure Toolkit for Eclipse の新機能]: ./azure-toolkit-for-eclipse-whats-new.md
 [Azure Toolkit for IntelliJ の新機能]: ./azure-toolkit-for-intellij-whats-new.md
 
@@ -92,14 +97,16 @@ Java での Azure の使用の詳細については、 [Azure Java デベロッ�
 [Azure サービス エンドポイント]: ./azure-toolkit-for-eclipse-azure-service-endpoints.md
 [Azure ストレージ アカウントの一覧]: ./azure-toolkit-for-eclipse-azure-storage-account-list.md
 [Azure 向け Hello World クラウド サービスを Eclipse で作成する]: ./azure-toolkit-for-eclipse-creating-a-hello-world-application.md
-[Eclipse での Azure アプリケーションのデバッグ]: ./azure-toolkit-for-eclipse-debugging-azure-applications.md
-[Eclipse で Azure の Java Web アプリをデバッグする]: ./app-service-web/app-service-web-debug-java-web-app-in-eclipse.md
+<!-- [Debugging Azure Applications in Eclipse]: ./azure-toolkit-for-eclipse-debugging-azure-applications.md -->
+<!-- [Debug a Java Web App on Azure in Eclipse]: ./app-service-web/app-service-web-debug-java-web-app-in-eclipse.md -->
 [大規模なデプロイ]: ./azure-toolkit-for-eclipse-deploying-large-deployments.md
 [Java 用 Azure ライブラリ パッケージの Javadoc コンテンツの Eclipse での表示]: ./azure-toolkit-for-eclipse-displaying-javadoc-content-for-azure-libraries.md
 [Azure デプロイ用にリモート アクセスを Eclipse で有効にする方法]: ./azure-toolkit-for-eclipse-enabling-remote-access-for-azure-deployments.md
 [セッション アフィニティを有効にする]: ./azure-toolkit-for-eclipse-enable-session-affinity.md
 [HDInsight Tools Plugin for Eclipse]: ./hdinsight/hdinsight-apache-spark-eclipse-tool-plugin.md
 [How to Authenticate Web Users with Azure Access Control Service Using Eclipse]: ./active-directory/active-directory-java-authenticate-users-access-control-eclipse.md
+
+<!-- Temporarily Deprecated URLs -->
 
 <!-- [How to Maintain Session Data with Session Affinity]: http://go.microsoft.com/fwlink/?LinkID=699539 -->
 <!-- [How to Use Co-located Caching]: http://go.microsoft.com/fwlink/?LinkID=699542 -->
@@ -109,8 +116,5 @@ Java での Azure の使用の詳細については、 [Azure Java デベロッ�
 <!-- [SSL Offloading]: http://go.microsoft.com/fwlink/?LinkID=699549 -->
 <!-- [Using the Azure Service Runtime Library in JSP]: http://go.microsoft.com/fwlink/?LinkID=699551 -->
 
-
-
-<!--HONumber=Jan17_HO2-->
-
+<!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh694271.aspx -->
 

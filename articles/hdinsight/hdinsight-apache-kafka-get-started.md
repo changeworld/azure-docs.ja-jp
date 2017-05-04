@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 02/14/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 1c7a95354358d91859ce9d2019cef93b6662811f
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: ceedbd6436e819a090e2033aec024034790dbecf
+ms.lasthandoff: 04/20/2017
 
 ---
 # <a name="get-started-with-apache-kafka-preview-on-hdinsight"></a>HDInsight での Apache Kafka (プレビュー) の概要
@@ -341,5 +341,4 @@ Kafka に格納されたレコードは、受信した順番でパーティシ�
 * [MirrorMaker を使用した HDInsight での Kafka のレプリカの作成](hdinsight-apache-kafka-mirroring.md)
 * [HDInsight での Kafka に Apache Storm を使用する](hdinsight-apache-storm-with-kafka.md)
 * [HDInsight での Kafka に Apache Spark を使用する](hdinsight-apache-spark-with-kafka.md)
-
-
+* [Azure 仮想ネットワーク経由で Kafka に接続する](hdinsight-apache-kafka-connect-vpn-gateway.md)

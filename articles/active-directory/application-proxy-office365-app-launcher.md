@@ -11,12 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2017
+ms.date: 04/15/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 28f100276511c1ae978466870ff48f885dd53c28
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: 31e8e39580ed83f13fd3ffb9981221765063a0b7
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -25,69 +25,60 @@ ms.lasthandoff: 04/03/2017
 
 この記事では、ユーザーが Azure Active Directory (Azure AD) アクセス パネルと Office 365 アプリ起動ツールからアプリにアクセスした場合に、ユーザーをカスタム ホーム ページに移動させるようにアプリを構成する方法について説明します。
 
->[!NOTE]
->アプリケーション プロキシ機能は、Azure Active Directory の Premium または Basic エディションにアップグレードした場合にのみ利用できます。 詳細については、「 [Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
+ユーザーがアプリを起動すると、既定では、発行されたアプリのルート ドメイン URL に移動します。 通常、ランディング ページがホーム ページの URL として設定されます。 たとえば、バックエンド アプリ http://ExpenseApp の URL が *https://expenseApp-contoso.msappproxy.net* として発行されているとします。 既定では、ホーム ページの URL は *https://expenseApp-contoso.msappproxy.net* に設定されます。
 
 アプリ ユーザーをアプリ内の特定のページに移動させたい場合などに、Azure AD PowerShell モジュールを使用すると、ホーム ページのカスタム URL (*https://expenseApp-contoso.msappproxy.net/login/login.aspx* など) を定義できます。
 
 >[!NOTE]
 >発行されたアプリにユーザーがアクセスできるようにすると、[Azure AD アクセス パネル](active-directory-saas-access-panel-introduction.md)と [Office 365 アプリ起動ツール](https://blogs.office.com/2016/09/27/introducing-the-new-office-365-app-launcher)にアプリが表示されます。
 
-ユーザーがアプリを起動すると、既定では、発行されたアプリのルート ドメイン URL に移動します。 通常、ランディング ページがホーム ページの URL として設定されます。 たとえば、バックエンド アプリ http://ExpenseApp の URL が *https://expenseApp-contoso.msappproxy.net* として発行されているとします。 既定では、ホーム ページの URL は *https://expenseApp-contoso.msappproxy.net* に設定されます。
+## <a name="before-you-start"></a>開始する前に
 
-## <a name="determine-the-home-page-url"></a>ホーム ページの URL を決定する
+### <a name="determine-the-home-page-url"></a>ホーム ページの URL を決定する
 
-ホーム ページの URL を設定する前に、次の点に注意してください。
+ホーム ページの URL を設定する前に、次の点にご注意ください。
 
 * 指定するパスがルート ドメイン URL のサブドメインのパスであることを確認してください。
 
- たとえば、発行したアプリにルート ドメイン URL (https://intranet-contoso.msappproxy.net/ など) からアクセスできる場合、構成するホーム ページの URL は https://intranet-contoso.msappproxy.net/ で始まる必要があります。
+  ルート ドメイン URL が https://apps.contoso.com/app1/ である場合、構成するホーム ページの URL は https://apps.contoso.com/app1/ で始まる必要があります。
 
-* ルート ドメイン URL が https://apps.contoso.com/app1/ である場合、構成するホーム ページの URL は https://apps.contoso.com/app1/ で始まる必要があります。
+* 発行されたアプリに変更を加えると、ホーム ページの URL の値がリセットされる可能性があります。 後でアプリを更新する場合は、ホーム ページの URL を再確認し、必要であれば更新してください。
 
-* 発行されたアプリに変更を加えると、ホーム ページの URL の値がリセットされる可能性があります。 したがって、アプリを更新する場合は、ホーム ページの URL を再確認し、必要であれば更新してください。
-
-次のセクションでは、発行されたアプリ向けのホーム ページのカスタム URL を設定する方法を説明します。 
-
-## <a name="install-the-azure-ad-powershell-module"></a>Azure AD PowerShell モジュールをインストールする
+### <a name="install-the-azure-ad-powershell-module"></a>Azure AD PowerShell モジュールをインストールする
 
 PowerShell を使用してホーム ページのカスタム URL を定義する前に、Azure AD PowerShell モジュールの非標準パッケージをインストールします。 このパッケージは、Graph API エンドポイントを使用する [PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureAD/1.1.23.0)からダウンロードできます。 
 
-PowerShell を使用してパッケージをインストールするには、次の手順を実行します。
+このパッケージをインストールするには、次の手順を実行します。
 
 1. 標準の PowerShell ウィンドウを開き、次のコマンドを実行します。
 
     ```
      Install-Module -Name AzureAD -RequiredVersion 1.1.23.0
     ```
-    コマンドを非管理者として実行している場合は、**-scope currentuser** オプションを使用します。
+    コマンドを非管理者として実行している場合は、`-scope currentuser` オプションを使用します。
 2. インストール中に **Y** を選択して、Nuget.org から 2 つのパッケージをインストールします。 両方のパッケージが必要です。 
 
-## <a name="set-a-custom-home-page-url-by-using-the-azure-ad-powershell-module"></a>Azure AD PowerShell モジュールを使用してホーム ページのカスタム URL を設定する
-
-Azure AD PowerShell モジュールのインストールが完了したので、ホーム ページの URL を設定する準備ができました。 これを行うには、次の 2 つのセクションの手順に従ってください。
-
-### <a name="step-1-find-the-objectid-of-the-app"></a>手順 1: アプリの ObjectID を取得する
+## <a name="step-1-find-the-objectid-of-the-app"></a>手順 1: アプリの ObjectID を取得する
 
 アプリの ObjectID を取得し、ホーム ページでアプリを検索します。
 
-1. PowerShell を開き、次のコマンドを使用して Azure AD モジュールをインポートします。
+1. PowerShell を開き、Azure AD モジュールをインポートします。
 
     ```
     Import-Module AzureAD
     ```
 
-2. 次のコマンドレットを使用して Azure AD モジュールにサインインし、画面の指示に従います。 必ずテナント管理者としてサインインしてください。
+2. Azure AD モジュールにテナント管理者としてサインインします。
 
     ```
     Connect-AzureAD
     ```
-3. 次のコマンドレットを使用して、*sharepoint-iddemo* を含むホーム ページに基づいたアプリを検索します。 アプリを編集するには、次の値をアプリの有効な値に置き換えます。
+3. ホーム ページの URL に基づいてアプリを検索します。 **[Azure Active Directory]** > **[エンタープライズ アプリケーション]** > **[All applications (すべてのアプリケーション)]** に移動して、ポータルの URL を確認できます。 この例では *sharepoint-iddemo* を使用します。
 
     ```
-    Get-AzureADApplications | where { $_.Homepage -like “*sharepoint-iddemo*” } | fl DisplayName, Homepage, ObjectID
+    Get-AzureADApplications | where { $_.Homepage -like “sharepoint-iddemo” } | fl DisplayName, Homepage, ObjectID
     ```
-4. 次のような結果が表示されます。 「手順 2: ホーム ページの URL を更新する」で使用できるように GUID (ObjectID) をコピーします。
+4. 次のような結果が表示されます。 次のセクションで使用するために ObjectID GUID をコピーします。
 
     ```
     DisplayName : SharePoint
@@ -95,9 +86,9 @@ Azure AD PowerShell モジュールのインストールが完了したので、
     ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
     ```
 
-### <a name="step-2-update-the-home-page-url"></a>手順 2: ホーム ページの URL を更新する
+## <a name="step-2-update-the-home-page-url"></a>手順 2: ホーム ページの URL を更新する
 
-「手順 1: アプリの ObjectID を取得する」で使用したのと同じ PowerShell モジュールで、次の手順を実行します。
+手順 1 で使用したのと同じ PowerShell モジュールで、次の手順を実行します。
 
 1. 正しいアプリであることを確認して、*8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4* を、前の手順でコピーした GUID (ObjectID) に置き換えます。
 
@@ -133,7 +124,7 @@ Azure AD PowerShell モジュールのインストールが完了したので、
     ```
 
 >[!NOTE]
->アプリを変更すると、ホーム ページの URL がリセットされる可能性があります。 このような場合は、「手順 2: ホーム ページの URL を更新する」の処理を繰り返します。
+>アプリを変更すると、ホーム ページの URL がリセットされる可能性があります。 このような場合は、手順 2 を繰り返します。
 
 ## <a name="next-steps"></a>次のステップ
 

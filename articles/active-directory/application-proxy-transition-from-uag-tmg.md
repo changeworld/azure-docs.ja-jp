@@ -11,24 +11,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2017
+ms.date: 04/17/2017
 ms.author: kgremban
+ROBOTS: NOINDEX
 translationtype: Human Translation
-ms.sourcegitcommit: c887adaae811972efd7fcea86eaa67a899f3f4c2
-ms.openlocfilehash: 542dd7df7e0b887298522f29cb597f1df73709cb
-ms.lasthandoff: 02/27/2017
-
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: 6e95e9abac988ae54a401927a92bdb397dd63eed
+ms.lasthandoff: 04/21/2017
 
 ---
 # <a name="transition-to-azure-ad-application-proxies-from-microsoft-forefront"></a>Microsoft Forefront から Azure AD アプリケーション プロキシへの切り替え
 
-この記事では、Microsoft Forefront の Threat Management Gateway (TMG) および United Access Gateway (UAG) ソリューションから、Azure Active Directory (Azure AD) アプリケーション プロキシ (Web アプリケーション プロキシと Azure AD アプリケーション プロキシ) に移行する方法について説明します。
+この記事では、Microsoft Forefront の Threat Management Gateway (TMG) および Unified Access Gateway (UAG) ソリューションから Azure AD アプリケーション プロキシに移行する方法について説明します。
 
-> [!NOTE]
-> Azure AD アプリケーション プロキシは、Azure AD の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。 詳細については、「 [Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
-
-
-Forefront の TMG および UAG から新しいアプリケーション プロキシへの切り替えの詳細については、[Microsoft から関連するホワイト ペーパーをダウンロード](http://download.microsoft.com/download/3/E/3/3E335D93-6DB8-4834-90A8-B86105419F05/Microsoft%20TMG%20and%20UAG%20EOL%20and%20transitioning%20to%20WAP%20and%20AADAP.docx)してください。
+Forefront の TMG および UAG からアプリケーション プロキシへの切り替えについて詳しくは、[Microsoft の関連するホワイト ペーパーをご覧ください](https://blogs.technet.microsoft.com/isablog/2015/06/30/modernizing-microsoft-application-access-with-web-application-proxy-and-azure-active-directory-application-proxy/)。
 
 ## <a name="functionality-details-for-the-conversion"></a>変換に関する機能の詳細
 

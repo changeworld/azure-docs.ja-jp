@@ -13,12 +13,12 @@ ms.topic: get-started-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
+ms.date: 04/19/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 5001cd47b6ee51967d1286414ccefedd8e7e7813
-ms.openlocfilehash: 888b9786de8302ccd2e11f271aa417bcbcc2620b
-ms.lasthandoff: 12/02/2016
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: c6944fd4f93d2daa9071bb27f76ea0f772bdb743
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -33,14 +33,14 @@ OMS のセキュリティと監査ソリューションでは、注意を必要�
 
 1. **Microsoft Operations Management Suite** のメイン ダッシュボードで、左側にある **[設定]** タイルをクリックします。
 2. **[設定]** ブレードで、**[ソリューション]** の下にある **[セキュリティおよび監視]** オプションをクリックします。
-3. **[セキュリティおよび監視]** ダッシュボードが表示されます。
+3. **[セキュリティおよび監査]** ダッシュボードが表示されます。
    
     ![OMS Security and Audit dashboard](./media/oms-security-getting-started/oms-getting-started-fig1-ga.png)
 
 このダッシュボードにアクセスするのが初めてで、OMS によって監視されているデバイスがない場合、タイルにはエージェントからの取得データが設定されません。 エージェントをインストールすると、データが設定されるまでに多少の時間がかかります。そのため、最初に表示される情報には、クラウドにアップロード中の一部のデータが不足していることがあります。  この場合は、一部のタイルに具体的な情報が含まれていなくても異常ではありません。 OMS エージェントを Windows システムにインストールする方法の詳細については、[OMS への Windows コンピューターの直接接続](https://technet.microsoft.com/library/mt484108.aspx)に関する記事を参照し、このタスクを Linux システムで実行する方法の詳細については、[OMS への Linux コンピューターの接続](https://technet.microsoft.com/library/mt622052.aspx)に関する記事を参照してください。
 
 > [!NOTE]
-> エージェントは、現在有効になっているイベントに基づいた情報 (インスタンス コンピューター名、IP アドレス、ユーザー名など) を収集します。 ただし、ドキュメントやファイル、データベース名、個人データは収集されません。   
+> エージェントは、現在有効になっているイベントに基づいて情報 (インスタンス コンピューター名、IP アドレス、ユーザー名など) を収集します。 ただし、ドキュメントやファイル、データベース名、個人データは収集されません。   
 > 
 > 
 
@@ -92,19 +92,19 @@ OMS のダッシュボードに表示されているその他のライブ タイ
 ![search result](./media/oms-security-getting-started/oms-getting-started-fig5.png)
 
 > [!NOTE]
-> *順位* とは保護の状態 (オン、オフ、更新済みなど) と検出された脅威を反映するために与えられるグレードです。 これを番号として付与することで集計がしやすくなります。
+> "*順位*" とは保護の状態 (オン、オフ、更新済みなど) と検出された脅威を反映するために与えられるグレードです。 これを番号として付与することで集計がしやすくなります。
 > 
 > 
 
 コンピューターの名前をクリックすると、このコンピューターの保護の状態についての時系列ビューが表示されます。 この機能は、過去にマルウェア対策がインストールされていて、ある時点でそれが削除されたようなケースを把握する必要がある場合に、非常に役に立ちます。   
 
 ### <a name="update-assessment"></a>[Update Assessment] \(更新の評価)
-このオプションでは、潜在的なセキュリティの問題に全体でどの程度さらされているか、これらの更新プログラムが環境にとって重要かどうか、その重要度はどの程度かをすばやく判断することができます。 OMS のセキュリティと監査ソリューションで提供するのは、これらの更新プログラムの視覚化機能のみであり、実際のデータは OMS 内の別のモジュールである[システムの更新ソリューション](https://technet.microsoft.com/library/mt484096.aspx)から提供されます。 次に更新プログラムの例を示します。
+このオプションでは、潜在的なセキュリティの問題に全体でどの程度さらされているか、これらの更新プログラムが環境にとって重要かどうか、その重要度はどの程度かをすばやく判断することができます。 OMS のセキュリティと監査ソリューションで提供されるのは、これらの更新プログラムの視覚化機能のみで、実際のデータは OMS 内の別のモジュールである[更新管理ソリューション](oms-solution-update-management.md)から提供されます。 次に更新プログラムの例を示します。
 
-![system updates](./media/oms-security-getting-started/oms-getting-started-fig6.png)
+![system updates](./media/oms-security-getting-started/oms-getting-started-fig6-new.png)
 
 > [!NOTE]
-> 更新ソリューションの詳細については、「 ["システムの更新" ソリューションでサーバーを更新する](https://technet.microsoft.com/library/mt484096.aspx)」を参照してください。
+> 更新管理ソリューションの詳細については、「[OMS の更新管理ソリューション](oms-solution-update-management.md)」を参照してください。
 > 
 > 
 
@@ -135,7 +135,15 @@ ID アクティビティを監視することにより、インシデントが�
 
 各コンピューターをクリックするとさらに詳細が表示され、フラグが設定されたセキュリティ イベントを確認することができます。
 
-### <a name="azure-security-center"></a>[Azure Security Center] \(Azure Security Center)
+### <a name="threat-intelligence"></a>[脅威インテリジェンス]
+
+IT 管理者は、OMS の [セキュリティおよび監査] で利用できる [脅威インテリジェンス] オプションを利用することで、特定のコンピューターがボットネットの一部であるかどうかを確認するなど、環境に対するセキュリティの脅威を特定することができます。 コンピューターをひそかにコマンド アンド コントロール サーバーに接続するマルウェアが攻撃者によって不正にインストールされた場合、そのコンピューターはボットネットのノードになる可能性があります。 また、ダークネットのようなアンダーグラウンド通信チャネルに由来する潜在的な脅威を特定することもできます。 脅威インテリジェンスの詳細については、「[Operations Management Suite のセキュリティと監査ソリューションでのセキュリティの警告に対する監視と応答](oms-security-responding-alerts.md)」を参照してください。
+
+### <a name="baseline-assessment"></a>ベースライン評価
+
+Microsoft は、世界中の業界団体や政府機関と協力して、安全性の高いサーバー全世界と共に安全性の高いサーバーのデプロイを表す Windows 構成を定義しています。 この構成は、レジストリ キー、監査ポリシーの設定、セキュリティ ポリシーの設定のセットで、これらの設定には Microsoft が推奨する値があります。 この規則のセットがセキュリティ ベースラインと呼ばれます。 このオプションの詳細については、「[Operations Management Suite のセキュリティと監査ソリューションでのベースライン評価](oms-security-baseline.md)」を参照してください。
+
+### <a name="azure-security-center"></a>[Azure Security Center] (Azure Security Center)
 このタイルは、基本的には Azure Security Center のダッシュボードにアクセスするためのショートカットです。 このソリューションの詳細については、 [Azure Security Center の概要](../security-center/security-center-get-started.md) に関するページを参照してください。
 
 ## <a name="notable-issues"></a>[Notable Issues] \(注目すべき問題)
@@ -153,7 +161,7 @@ ID アクティビティを監視することにより、インシデントが�
 また、このオプションを[インシデント対応調査](https://blogs.msdn.microsoft.com/azuresecurity/2016/11/30/investigating-suspicious-activity-in-a-hybrid-cloud-with-oms-security/)中に使用すると、評価を実行し、攻撃に関する詳細を入手できます。
 
 > [!NOTE]
-> インシデント対応に OMS を使用する方法の詳細については、「[How to Leverage the Azure Security Center & Microsoft Operations Management Suite for an Incident Response (インシデント対応に Azure Security Center と Microsoft Operations Management Suite を利用する方法)](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703)」を参照してください。
+> インシデント対応に OMS を使用する方法の詳細については、ビデオ「[How to Leverage the Azure Security Center & Microsoft Operations Management Suite for an Incident Response (インシデント対応に Azure Security Center と Microsoft Operations Management Suite を利用する方法)](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703)」を参照してください。
 > 
 > 
 

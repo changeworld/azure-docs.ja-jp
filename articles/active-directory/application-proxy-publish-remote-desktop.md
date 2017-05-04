@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory アプリケーション プロキシを使用したリモート デスクトップの公開 | Microsoft Docs"
+title: "Azure AD アプリ プロキシを使用したリモート デスクトップの発行 | Microsoft Docs"
 description: "Azure AD アプリケーション プロキシ コネクタの基本について説明します。"
 services: active-directory
 documentationcenter: 
@@ -11,76 +11,95 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2017
+ms.date: 04/11/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: fd0ecc62fd3cfc860423acd02108648e99f44753
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: e45d704e68c17d36fd5b195179730b80d0f53e0c
+ms.lasthandoff: 04/20/2017
 
 
 ---
 
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行
 
-この記事では、リモート ユーザーが Windows リモート デスクトップのデプロイにアクセスできるようにする方法について説明します。 リモート デスクトップのデプロイは、オンプレミスにもプライベート ネットワーク (IaaS デプロイなど) にも配置できます。
+この記事では、リモート ユーザーが生産性を維持できるようにアプリケーション プロキシを使用してリモート デスクトップ サービス (RDS) をデプロイする方法について説明します。 
 
-> [!NOTE]
-> アプリケーション プロキシ機能は、Azure Active Directory (Azure AD) の Premium または Basic エディションにアップグレードした場合にのみ利用できます。 詳細については、「 [Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
+この記事の対象読者は次のとおりです。
+- リモート デスクトップ サービスを通じてオンプレミスのアプリケーションを発行し、エンド ユーザーにより多くのアプリケーションを提供することを希望している、現在 Azure AD アプリケーション プロキシを使用しているお客様。 
+- Azure AD アプリケーション プロキシを使用してデプロイの攻撃対象領域を削減することを希望している、現在リモート デスクトップ サービスを使用しているお客様。 このシナリオでは、2 段階検証と条件付きアクセス制御の限定セットを RDS に付与します。
 
-リモート デスクトップ プロトコル (RDP) のトラフィックは、パススルー プロキシ アプリケーションとして Azure AD アプリケーション プロキシ経由で発行できます。 このソリューションは、接続の問題を解決し、ネットワークのバッファー処理、セキュリティを強化したインターネットのフロントエンド、分散型サービス拒否 (DDoS) 保護などの基本的なセキュリティ保護を提供します。
+## <a name="how-application-proxy-fits-in-the-standard-rds-deployment"></a>アプリケーション プロキシが RDS の標準デプロイにどのように適合するか
 
-## <a name="remote-desktop-deployment"></a>リモート デスクトップのデプロイメント
+RDS の標準デプロイには、Windows Server で実行されるさまざまなリモート デスクトップ ロール サービスが含まれています。 [リモート デスクトップ サービスのアーキテクチャ](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/desktop-hosting-logical-architecture)を見ると、複数のデプロイ オプションがあります。 [Azure AD アプリケーション プロキシを使用した RDS デプロイ](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/desktop-hosting-logical-architecture) (次の図に示します) とその他のデプロイ オプションの最も顕著な違いは、アプリケーション プロキシのシナリオには、コネクタ サービスを実行しているサーバーからの永続的な送信接続があることです。 その他のデプロイでは、ロード バランサーを介した着信接続が開いたままになります。 
 
-リモート デスクトップのデプロイ内で、リモート デスクトップ ゲートウェイが発行されると、RPC (リモート プロシージャ コール) over HTTPS トラフィックを、RDP over UDP (ユーザー データグラム プロトコル) トラフィックに変換できます。
+![アプリケーション プロキシは RDS VM とパブリック インターネットの間に位置する](./media/application-proxy-publish-remote-desktop/rds-with-app-proxy.png)
 
-MSTSC.exe などのリモート デスクトップ クライアントを使用して Azure AD アプリケーション プロキシにアクセスするようクライアントを構成できます。 この方法で、コネクタを使用してリモート デスクトップ ゲートウェイへの新しい HTTPS 接続を作成できます。 その結果、ゲートウェイはインターネットに直接公開されなくなり、すべての HTTPS 要求は最初にクラウドで終了します。
+RDS デプロイでは、RD Web ロールと RD ゲートウェイ ロールはインターネットに接続されたコンピューターで実行されます。 これらのエンドポイントは次の理由で公開されています。
+- RD Web は、アクセスできるさまざまなオンプレミスのアプリケーションとデスクトップにサインインして表示するためのパブリック エンドポイントをユーザーに提供します。 リソースを選ぶと、OS 上のネイティブ アプリを使用して RDP 接続が作成されます。
+- ユーザーが RDP 接続を起動すると、RD ゲートウェイが関与するようになります。 RD ゲートウェイは、インターネット経由で送信される暗号化された RDP トラフィックを処理し、ユーザーが接続しているオンプレミスのサーバーに渡します。 このシナリオでは、RD ゲートウェイの受信トラフィックは Azure AD アプリケーション プロキシからのものです。
 
-このトポロジを次の図に示します。
+>[!TIP]
+>これまでに RDS をデプロイしていないか、開始する前に詳細情報が必要な場合は、[Azure Resource Manager と Azure Marketplace で RDS をシームレスにデプロイする](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure)方法をご確認ください。
 
- ![Azure AD サービスのローカルの図](./media/application-proxy-publish-remote-desktop/remote-desktop-topology.png)
+## <a name="requirements"></a>必要条件
 
-## <a name="configure-the-remote-desktop-gateway-url"></a>リモート デスクトップ ゲートウェイの URL の構成
+RD Web と RD ゲートウェイの両方のエンドポイントが同じコンピューター上にあり、ルートが共通である必要があります。 RD Web と RD ゲートウェイは単一のアプリケーションとして発行されるため、2 つのアプリケーション間でシングル サインオン エクスペリエンスを実現できます。 
 
-ユーザーは、通常どおりに、リモート デスクトップ ゲートウェイの URL を構成し、RDP トラフィックをトリガーすると、ファイルとその他のメソッドにアクセスできます。
+[RDS をデプロイ](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure)し、[アプリケーション プロキシを有効にしている](active-directory-application-proxy-enable.md)必要があります。 
 
-アプリケーション プロキシ (msappproxy.net) で指定されるドメイン名、または Azure AD で構成されているカスタム ドメイン名 (rdg.contoso.com など) を使用して発行できます。
+エンド ユーザーは、RD Web ページを通じて接続する Windows 7 と Windows 10 のデスクトップからのみこのシナリオにアクセスできます。 Microsoft リモート デスクトップ アプリケーションを使用していても、このシナリオはその他のオペレーティング システムではサポートされていません。
 
-クライアント デバイスと RDP ファイルに既にリモート デスクトップ ゲートウェイの URL が構成されている場合は、同じドメイン名を使用して変更を回避することもできます。 この場合、このドメインを対象とする証明書をアプリケーション プロキシに提供し、その証明書失効リスト (CRL) をインターネット経由でアクセスできる必要があります。
+エンド ユーザーは、リソースへの接続時に Internet Explorer を使用し、RDS ActiveX アドオンを有効にする必要があります。 
 
-リモート デスクトップ ゲートウェイの URL が構成されていない場合は、ユーザーまたは管理者が、次のように、リモート デスクトップ クライアント (MSTSC) で [リモート デスクトップ接続] ダイアログ ボックスを使用して URL を指定できます。
+## <a name="deploy-the-joint-rds-and-application-proxy-scenario"></a>RDS とアプリケーション プロキシの共同デプロイのシナリオ
 
- ![[リモート デスクトップ接続] ダイアログ ボックス](./media/application-proxy-publish-remote-desktop/remote-desktop-connection-advanced.png)
+RDS と Azure AD アプリケーション プロキシを自分の環境用に設定した後、2 つのソリューションを結合する手順に従います。 これらの手順では、Web に接続された 2 つの RDS エンドポイント (RD Web と RD ゲートウェイ) をアプリケーションとして発行し、RDS 上のトラフィックをアプリケーション プロキシに転送する方法を説明します。
 
-**[詳細設定]** タブの **[設定]** をクリックすると、**[接続設定]** ダイアログ ボックスが表示されます。
+### <a name="publish-the-rd-host-endpoint"></a>RD ホスト エンドポイントを発行する
 
- ![[リモート デスクトップ接続] ダイアログ ボックスの [接続設定] ウィンドウ](./media/application-proxy-publish-remote-desktop/remote-desktop-connection-settings.png)
+1. 次の値で[新しいアプリケーション プロキシ アプリケーションを発行](application-proxy-publish-azure-portal.md)します。
+   - [内部 URL]: https://<rdhost>.com/。<rdhost> は、RD Web と RD ゲートウェイが共有する共通のルートです。 
+   - [外部 URL]: このフィールドは、アプリケーションの名前に基づいて自動的に設定されますが、変更することもできます。 ユーザーは、RDS にアクセスするときにこの URL に移動します。 
+   - [事前認証方法]: Azure Active Directory
+   - [ヘッダーの URL を変換する]: いいえ
+2. 発行した RD アプリケーションにユーザーを割り当てます。 すべてのユーザーが RDS へのアクセス権を持っていることもご確認ください。
+3. アプリケーションのシングル サインオン方式は、**[Azure AD シングル サインオンが無効]** のままにします。 ユーザーは、Azure AD に対して 1 回と RD Web に対して 1 回認証を求められますが、RD ゲートウェイに対してはシングル サインオンを使用できます。 
+4. **[Azure Active Directory]** > **[アプリの登録]** > *[Your application (アプリケーション)]* > **[設定]** に移動します。 
+5. **[プロパティ]** を選択し、RD Web エンドポイント (https://<rdhost>.com/RDWeb など) を指すように **[ホーム ページ URL]** フィールドを更新します。
 
-## <a name="remote-desktop-web-access"></a>リモート デスクトップの Web アクセス
+### <a name="direct-rds-traffic-to-application-proxy"></a>RDS トラフィックをアプリケーション プロキシに転送する
 
-リモート デスクトップ Web アクセス (RDWA) ポータルを使用している組織の場合は、Azure AD アプリケーション プロキシを使用して発行することもできます。 事前認証とシングル サインオン (SSO) を使用してこのポータルに公開できます。
+RDS デプロイに管理者として接続し、デプロイの RD ゲートウェイ サーバーの名前を変更します。 これにより、Azure AD アプリケーション プロキシを介して接続が行われるようになります。
 
-RDWA シナリオのトポロジを次の図に示します。
+1. RD 接続ブローカーのロールを実行している RDS サーバーに接続します。
+2. **サーバー マネージャー**を起動します。
+3. 左側のペインで **[リモート デスクトップ サービス]** を選択します。
+4. **[概要]** を選択します。
+5. [展開の概要] セクションで、ドロップダウン メニューを選択し、**[展開プロパティの編集]** を選択します。
+6. [RD ゲートウェイ] タブで、**[サーバー名]** フィールドを、アプリケーション プロキシで RD ホスト エンドポイントに対して設定した外部 URL に変更します。 
+7. **[ログオン方法]** フィールドを **[パスワード認証]** に変更します。
 
- ![RDWA シナリオの図](./media/application-proxy-publish-remote-desktop/remote-desktop-web-access-portal1.png)
+  ![RDS の [展開プロパティ] 画面](./media/application-proxy-publish-remote-desktop/rds-deployment-properties.png)
 
-上のケースでは、ユーザーは RDWA にアクセスする前に Azure AD で認証されます。 ユーザーは Azure AD で既に認証されている場合 (Office 365 を使用している場合など)、RDWA のために再認証する必要はありません。
+8. コレクションごとに、次のコマンドを実行します。 "*<yourcollectionname>*" と "*<proxyfrontendurl>*" は、実際の情報に置き換えてください。 このコマンドは、RD Web と RD ゲートウェイの間のシングル サインオンを有効にし、パフォーマンスを最適化します。
 
-ユーザーが RDP セッションを開始するときには、RDP チャネル経由で再認証する必要があります。 これは、RDWA からリモート デスクトップ ゲートウェイへの SSO が、ActiveX を使用したクライアントでのユーザーの資格情報の格納に基づいているためです。 RDWA フォームベースの認証から、このプロセスがトリガーされます。 RDWA 認証で Kerberos を使用しているときにはフォームベースの認証が行われず、RDWA から RDP への SSO は機能しません。
+   ```
+   Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s: <proxyfrontendurl> `n require pre-authentication:i:1"
+   ```
 
-RDWA で RDP トラフィックへの SSO が必要な場合、または RDWA のフォームベースの認証が大きくカスタマイズされている場合は、事前認証なしで RDWA を発行できます。
+リモート デスクトップを構成したため、Azure AD アプリケーション プロキシはインターネットに接続している RDS のコンポーネントを引き継ぎます。 RD Web と RD ゲートウェイのコンピューター上のインターネットに接続しているその他のパブリック エンドポイントは削除できます。 
 
-このシナリオのトポロジを次の図に示します。
+## <a name="test-the-scenario"></a>シナリオをテストする
 
- ![RDWA シナリオの図](./media/application-proxy-publish-remote-desktop/remote-desktop-web-access-portal2.png)
+Windows 7 または 10 のコンピューターで Internet Explorer を使用してシナリオをテストします。
 
-上のケースでは、ユーザーがフォームベースの認証を使用して RDWA に対する認証を行う必要がありますが、RDP 経由で認証する必要はありません。
-
->[!NOTE]
->上記のどちらの場合も、RDP トラフィックに対する事前認証は必要ありません。 そのため、ユーザーは最初に RDWA を経由せずにアクセスできます。
+1. 設定する外部 URL に移動するか、[MyApps パネル](https://myapps.microsoft.com)でアプリケーションを検索します。
+2. Azure Active Directory に対する認証を求められます。 アプリケーションに割り当てたアカウントを使用します。
+3. RD Web に対する認証を求められます。 
+4. RDS 認証が成功すると、目的のデスクトップまたはアプリケーションを選び、作業を開始できます。 
 
 ## <a name="next-steps"></a>次のステップ
 
 [Azure AD アプリケーション プロキシによる SharePoint へのリモート アクセスの有効化](application-proxy-enable-remote-access-sharepoint.md)  
-[Azure Portal でアプリケーション プロキシを有効にする](active-directory-application-proxy-enable.md)
-
+[Azure AD アプリケーション プロキシを使用したアプリへのリモート アクセス時のセキュリティに関する注意事項](application-proxy-security-considerations.md)

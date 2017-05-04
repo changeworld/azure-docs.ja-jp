@@ -12,16 +12,17 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2016
+ms.date: 04/19/2017
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: b159d3583c24e36c2803d7d02deca1415669d054
-ms.openlocfilehash: ebc5461177df5b5a16ab9b5668f5fda890ee11a4
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 2ba9676ed2afce7f18446642527971f5001b5ca7
+ms.lasthandoff: 04/20/2017
 
 
 ---
 # <a name="how-to-update-a-cloud-service"></a>クラウド サービスの更新方法
-## <a name="overview"></a>Overview
+
 クラウド上でロールとゲスト OS の両方を含むクラウド サービスを更新するには、次の 3 つの手順を実施します。 最初に、クラウド サービスまたは OS の新しいバージョン用のバイナリ ファイルと構成ファイルをアップロードする必要があります。 次に、Azure で、クラウド サービスの新しいバージョンの要件に基づいて、クラウド サービスのコンピューティング リソースとネットワーク リソースが予約されます。 最後に、Azure で、ローリング アップグレードが実行され、可用性を維持しながら、テナントが新しいバージョンまたは新しいゲスト OS に段階的に更新されます。 この記事では、この最後の手順であるローリング アップグレードの詳細について説明します。
 
 ## <a name="update-an-azure-service"></a>Azure サービスを更新する
@@ -66,9 +67,9 @@ Azure では、ロール インスタンスが、アップグレード ドメイ
 | 既存の証明書の変更 |はい |あり |はい |
 | 新しいコードのデプロイ |はい |あり |はい |
 
-<sup>1</sup>サイズ変更は、クラウド サービスで使用できるサイズのサブセットに制限されます。
+<sup>1</sup> サイズ変更は、クラウド サービスで使用できるサイズのサブセットに制限されます。
 
-<sup>2</sup>Azure SDK 1.5 以降のバージョンが必要です。
+<sup>2</sup> Azure SDK 1.5 以降のバージョンが必要です。
 
 > [!WARNING]
 > 仮想マシンのサイズを変更すると、ローカル データが破棄されます。
@@ -90,11 +91,11 @@ Azure では、ロール インスタンスが、アップグレード ドメイ
 
 次の図は、サービス内のすべてのロールをアップグレードする場合のアップグレードの処理のしくみを示しています。
 
-![サービスのアップグレード](media/cloud-services-update-azure-service/IC345879.png "Upgrade service")
+![サービスのアップグレード](media/cloud-services-update-azure-service/IC345879.png "サービスのアップグレード")
 
 この次の図では、単一のロールのみをアップグレードする場合の更新の処理のしくみを示しています。
 
-![ロールのアップグレード](media/cloud-services-update-azure-service/IC345880.png "Upgrade role")  
+![ロールのアップグレード](media/cloud-services-update-azure-service/IC345880.png "ロールのアップグレード")  
 
 自動更新中、Azure ファブリック コントローラーがクラウド サービスの正常性を定期的に評価し、次の UD に進む安全なタイミングを判断します。 この正常性の評価はロールごとに実行され、最新バージョンのインスタンス (つまり、処理済みの UD のインスタンス) のみが対象になります。 この評価では、ロールごとに、最小限の数のロール インスタンスが良好な最終状態になったかどうかが検証されます。
 
@@ -178,7 +179,7 @@ Azure では、設定された数のアップグレード ドメイン全体に�
 
 次の図は、サービスに 2 つのアップグレード ドメインが定義されているときに、2 つのロールで構成されるサービスが分配されるしくみを示しています。 サービスは、Web ロールの 8 個のインスタンスと worker ロールの 9 個のインスタンスを実行しています。
 
-![アップグレード ドメインの分配](media/cloud-services-update-azure-service/IC345533.png "Distribution of Upgrade Domains")
+![アップグレード ドメインの分配](media/cloud-services-update-azure-service/IC345533.png "アップグレード ドメインの分配")
 
 > [!NOTE]
 > 複数のアップグレード ドメインにインスタンスを割り当てる方法は、Azure が制御します。 どのインスタンスをどのドメインに割り当てるかを指定することはできません。
@@ -189,9 +190,4 @@ Azure では、設定された数のアップグレード ドメイン全体に�
 [Cloud Services の管理方法](cloud-services-how-to-manage.md)  
 [クラウド サービスの監視方法](cloud-services-how-to-monitor.md)  
 [Cloud Services の構成方法](cloud-services-how-to-configure.md)  
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

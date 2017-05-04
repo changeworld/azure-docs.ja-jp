@@ -12,25 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/13/2017
+ms.date: 04/20/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 7a2999b3b1a54668f6ef45433efabd5a495418fe
-ms.openlocfilehash: ec84df70d4a77e3b81a88aa286fc492d92e3e753
-ms.lasthandoff: 02/14/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 6765ea93dd4e4e2594fb147dd19120aec058a2f5
+ms.lasthandoff: 04/21/2017
 
 
 ---
 
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Azure Automation の Azure PowerShell モジュールを更新する方法
 
-各 Automation アカウントでは、最も一般的な Azure PowerShell モジュールが既定で提供されます。  Azure モジュールは Azure チームにより定期的に更新されるため、Automation アカウントでは、新しいバージョンが利用可能になったときにアカウント内の各モジュールを更新できるようになりました。
+各 Automation アカウントでは、最も一般的な Azure PowerShell モジュールが既定で提供されます。  Azure モジュールは Azure チームにより定期的に更新されるため、Automation アカウントでは、新しいバージョンがポータルから利用可能になったときにアカウント内の各モジュールを更新できるようになりました。  
 
 ## <a name="updating-azure-modules"></a>Azure モジュールの更新
 
 1. Automation アカウントの [モジュール] ブレードに、**Update Azure Modules (Azure モジュールの更新)** オプションが追加されました。  このオプションは常に有効です。<br><br> ![[モジュール] ブレードの [Update Azure Modules] (Azure モジュールの更新) オプション](media/automation-update-azure-modules/automation-update-azure-modules-option.png)
 
-2. **Update Azure Modules (Azure モジュールの更新)** をクリックすると、操作を続けるかどうかを尋ねる確認通知が表示されます。<br><br> ![Azure モジュールの更新通知](media/automation-update-azure-modules/automation-update-azure-modules-notification.png)
+2. **Update Azure Modules (Azure モジュールの更新)** をクリックすると、操作を続けるかどうかを尋ねる確認通知が表示されます。<br><br> ![Azure モジュールの更新通知](media/automation-update-azure-modules/automation-update-azure-modules-popup.png)
 
 3. **[はい]** をクリックすると、モジュールの更新プロセスが開始されます。  更新プロセスの所要時間は約 15 分から 20 分であり、以下のモジュールが更新されます。
 
@@ -45,9 +45,9 @@ ms.lasthandoff: 02/14/2017
 
     モジュールが既に最新の状態である場合、プロセスは数秒で完了します。  更新プロセスが完了すると通知が表示されます。<br><br> ![Azure モジュールの更新の更新状態](media/automation-update-azure-modules/automation-update-azure-modules-updatestatus.png)
 
-スケジュール済みの runbook がある場合、更新プロセスの一環として、最新バージョンのモジュールを使用するようにスケジュールが更新されます。
+スケジュールを作成するたびに、そのスケジュールで実行される後続のジョブは、スケジュール作成時の Automation アカウントのモジュールを使用します。  スケジュールされた Runbook で更新されたモジュールの使用を開始するには、その Runbook でスケジュールのリンクを解除し、もう一度リンクする必要があります。   
 
-runbook で Azure PowerShell モジュールのコマンドレットを使用して Azure リソースを管理する場合、モジュールを最新に保つために&1; か月に&1; 回程度この更新プロセスを実行する必要があります。
+runbook で Azure PowerShell モジュールのコマンドレットを使用して Azure リソースを管理する場合、モジュールを最新に保つために 1 か月に 1 回程度この更新プロセスを実行する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

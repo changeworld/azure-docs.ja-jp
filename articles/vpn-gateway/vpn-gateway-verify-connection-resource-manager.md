@@ -13,17 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/11/2017
+ms.date: 04/24/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: b5bad71095e4b7e3b26df15780467526200ffa10
-ms.openlocfilehash: 68d94a6402b1497f65c4d03fb987ba800e86c2a3
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 0e9fa1b1397c60985de9d2e60b3f01146036801f
+ms.lasthandoff: 04/26/2017
 
 
 ---
 # <a name="verify-a-vpn-gateway-connection"></a>VPN Gateway 接続の確認
-仮想ネットワーク VPN Gateway の接続は、ポータルと PowerShell のどちらを使用しても確認できます。 この記事では、Resouce Manager デプロイメント モデルとクラシック デプロイメント モデルの両方の手順について説明します。
+
+この記事では、Resource Manager とクラシック両方のデプロイメント モデルでの VPN ゲートウェイ接続を確認する方法について説明します。
 
 ## <a name="verify-using-the-azure-portal"></a>Azure Portal を使用した確認
 
@@ -52,7 +53,34 @@ PowerShell を使用して確認を行うには、Azure Resource Manager PowerSh
 
 ### <a name="verify-your-connection"></a>接続を確認する
 
-[!INCLUDE [Powershell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
+[!INCLUDE [PowerShell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
+
+## <a name="verify-using-the-azure-cli"></a>Azure CLI を使用した確認
+
+Azure CLI を使用して確認するには、最新バージョンの CLI コマンド (2.0 以降) をインストールします。 CLI コマンドのインストール方法については、「[Install Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)」(Azure CLI 2.0 のインストール) を参照してください。
+
+### <a name="log-in-to-your-azure-account"></a>Azure アカウントへのログイン
+
+1. [az login](/cli/azure/#login) コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
+
+  ```azurecli
+  az login
+  ```
+2. 複数の Azure サブスクリプションを所有している場合は、アカウントのサブスクリプションが一覧表示されます。
+
+  ```azurecli
+  Az account list --all
+  ```
+3. 使用するサブスクリプションを指定します。
+
+  ```azurecli
+  Az account set --subscription
+  <replace_with_your_subscription_id>
+  ```
+
+### <a name="verify-your-connection"></a>接続を確認する
+
+[!INCLUDE [CLI](../../includes/vpn-gateway-verify-connection-cli-rm-include.md)]
 
 ## <a name="verify-using-the-azure-portal-classic"></a>Azure Portal を使用した確認 (クラシック)
 [!INCLUDE [Azure portal](../../includes/vpn-gateway-verify-connection-azureportal-classic-include.md)]

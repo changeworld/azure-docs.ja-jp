@@ -8,15 +8,17 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: f284b6e3-5f3b-4a50-b455-917e77588069
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/09/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2d744e753224e4ce98680d3228914fd89e87eba4
-ms.openlocfilehash: 28d213fa23d480635fd4376e22ff54a5e6374350
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: a3ceca6cd0f470a5cd6849c345867f094b870a85
+ms.lasthandoff: 04/20/2017
 
 ---
 # <a name="introducing-apache-kafka-on-hdinsight-preview"></a>HDInsight での Apache Kafka の概要 (プレビュー)
@@ -39,9 +41,9 @@ Kafka には、次の機能が用意されています。
 
 ## <a name="use-cases"></a>ユース ケース
 
-* **メッセージング**: Kafka は、発行-購読のメッセージ パターンをサポートしているため、メッセージ ブローカーとしてよく使用されます。
+* **メッセージング**: Kafka は発行-購読のメッセージ パターンをサポートするため、メッセージ ブローカーとしてよく使用されます。
 
-* **アクティビティの追跡**: Kafka ではレコードの受信順序のログ記録が提供されるため、 Web サイトやアプリケーション内でのユーザーの操作などのアクティビティの追跡と再現に使用することができます。
+* **アクティビティの追跡**: Kafka ではレコードの受信順序のログ記録が提供されるため、アクティビティの追跡と再現に使用することができます。 たとえば、Web サイト上またはアプリケーション内のユーザー アクションです。
 
 * **集計**: ストリーム処理を使用して異なるストリームからの情報を集計し、情報をまとめて運用データに一元化することができます。
 
@@ -63,9 +65,4 @@ Kafka クラスターの作成と Kafka の使用 (プロデューサー、コ�
 
 * [HDInsight での Kafka に Apache Spark を使用する](hdinsight-apache-spark-with-kafka.md)
 
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-
+* [Azure 仮想ネットワーク経由で Kafka に接続する](hdinsight-apache-kafka-connect-vpn-gateway.md)

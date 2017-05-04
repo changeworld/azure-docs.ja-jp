@@ -16,9 +16,9 @@ ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: andrela;sstein;carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 368ffc65382c75b0fe5f4c20ce1c6a487a764ed3
-ms.lasthandoff: 04/19/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 119ffa3ac31e0ea6e76f8232f13b4dd8667f78aa
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -32,6 +32,8 @@ ms.lasthandoff: 04/19/2017
 - [DB の作成 - CLI](sql-database-get-started-cli.md)
 
 ## <a name="install-net"></a>.NET のインストール
+
+このセクションの手順では、.NET による開発には慣れているが、Azure SQL Database を初めて使用するユーザーを想定しています。 .NET による開発の経験がない場合は、「[Build an app using SQL Server (SQL Server を使用してアプリを構築する)](https://www.microsoft.com/en-us/sql-server/developer-get-started/)」に移動し、**C#** を選択してから、使用しているオペレーティング システムを選択します。
 
 ### <a name="windows-net-framework-and-net-core"></a>**Windows .NET Framework と .NET Core**
 
@@ -66,9 +68,9 @@ sudo apt-get install dotnet-dev-1.0.1
 
 ## <a name="get-connection-information"></a>接続情報の取得
 
-Azure Portal で接続文字列を取得します。 その接続文字列は Azure SQL データベースに接続するために使用します。
+Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名、データベース名、ログイン情報が必要になります。
 
-1. [Azure ポータル](https://portal.azure.com/)にログインします。
+1. [Azure Portal](https://portal.azure.com/) にログインします。
 2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
 3. データベースの **[概要]** ページで、次の図に示すように、完全修飾サーバー名を確認します。 サーバー名をポイントすると、**[コピーするにはクリックします]** オプションが表示されます。 
 
@@ -96,7 +98,8 @@ Azure Portal で接続文字列を取得します。 その接続文字列は Az
 1. 開発環境で、空のコード ファイルを開きます。
 2. ```using System.Data.SqlClient``` をコード ファイルに追加します ([System.Data.SqlClient 名前空間](https://msdn.microsoft.com/library/system.data.sqlclient.aspx))。 
 
-3. [SqlCommand.ExecuteReader](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executereader.aspx) と [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL ステートメントを使用して、Azure SQL データベースのデータを照会します。 サーバーの適切な値を追加します。
+3. 次のコードを使用して、カテゴリ別で上位 20 の製品を照会します。ここでは、[SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL ステートメントと共に [SqlCommand.ExecuteReader](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executereader.aspx) コマンドを使用します。 サーバー、データベース、ユーザー、パスワードの適切な値を入力してください。
+
 ```csharp
 using System;
 using System.Data;
@@ -152,7 +155,7 @@ namespace ConsoleApplication1
 
 ## <a name="insert-data"></a>データを挿入する
 
-[SqlCommand.ExecuteNonQuery](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executenonquery.aspx) と [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL ステートメントを使用して、Azure SQL データベースにデータを挿入します。
+次のコードを使用して、新しい製品を SalesLT.Product テーブルに挿入します。ここでは、[INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL ステートメントと共に [SqlCommand.ExecuteNonQuery](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executenonquery.aspx) を使用します。 サーバー、データベース、ユーザー、パスワードの適切な値を入力してください。
 
 ```csharp
 using System;
@@ -207,7 +210,7 @@ namespace ConsoleApplication1
 
 ## <a name="update-data"></a>データの更新
 
-[SqlCommand.ExecuteNonQuery](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executenonquery.aspx) と [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL ステートメントを使用して、Azure SQL データベースのデータを更新します。
+次のコードを使用して、先ほど追加した新しい製品を更新します。ここでは、[UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL ステートメントと共に [SqlCommand.ExecuteNonQuery](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executenonquery.aspx) を使用します。 サーバー、データベース、ユーザー、パスワードの適切な値を入力してください。
 
 ```csharp
 using System;
@@ -257,7 +260,7 @@ namespace ConsoleApplication1
 
 ## <a name="delete-data"></a>データの削除
 
-[SqlCommand.ExecuteNonQuery](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executenonquery.aspx) と [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL ステートメントを使用して、Azure SQL データベースのデータを削除します。
+次のコードを使用して、先ほど追加した新しい製品を削除します。ここでは、[DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL ステートメントと共に [SqlCommand.ExecuteNonQuery](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executenonquery.aspx) を使用します。 サーバー、データベース、ユーザー、パスワードの適切な値を入力してください。
 
 ```csharp
 using System;

@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/14/2017
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
-ms.openlocfilehash: eb1f4c815618e866e683b3fe2e3adf93a151ff5a
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: cd734c64ba6d1394cb261bace92dee9dd579dd08
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -36,7 +37,7 @@ Azure のロールには、次のプロパティ ページが用意されてい�
 * [Caching のプロパティ](#caching_properties)
 * [証明書のプロパティ](#certificates_properties)
 * [コンポーネントのプロパティ](#components_properties)
-* [デバッグのプロパティ](#debugging_properties)
+<!-- * [Debugging properties](#debugging_properties) -->
 * [エンドポイントのプロパティ](#endpoints_properties)
 * [環境変数のプロパティ](#environment_variables_properties)
 * [負荷分散/セッション アフィニティ (別名、"スティッキー セッション") のプロパティ](#session_affinity_properties)
@@ -85,7 +86,7 @@ Eclipse の [Project Explorer (プロジェクト エクスプローラー)] ウ
   * **[NeverExpires]:** キーには有効期限がありません。
   * **[SlidingWindow (スライド式)]**: **[Minutes to live (有効期間 (分))]** に指定された時間にわたってアクセスされない時間があると、キーが期限切れになります。有効期限の時間は、アクセスされるたびにリセットされます。
 * **[Minutes to live]:** 有効期限ポリシーが適用される memcached キーの有効期限 (分単位)。
-* **[High availability with replicated backups on different role instances]:** 有効にした場合、別のロール インスタンスにレプリケートされたバックアップを使用して高可用性が確保されます。 この機能を使用するには、デプロイに対して少なくとも&2; つのロール インスタンスが有効になっている必要があります。
+* **[High availability with replicated backups on different role instances]:** 有効にした場合、別のロール インスタンスにレプリケートされたバックアップを使用して高可用性が確保されます。 この機能を使用するには、デプロイに対して少なくとも 2 つのロール インスタンスが有効になっている必要があります。
 
 新しいキャッシュを追加するには、**[Caching (キャッシュ)]** プロパティ ページで **[Add (追加)]** ボタンをクリックして **[Configure Named Cache (名前付きキャッシュの構成)]** ダイアログ ボックスを開きます。 前述のプロパティの値を指定してください。
 
@@ -174,14 +175,14 @@ Java アプリケーション プロジェクト、特殊ファイル、実行�
 > 
 > 
 
-<a name="debugging_properties"></a> 
+<!-- <a name="debugging_properties"></a> -->
 
-### <a name="debugging-properties"></a>デバッグのプロパティ
-Eclipse の [Project Explorer (プロジェクト エクスプローラー)] ウィンドウで、ロールのコンテキスト メニューを開き、**[Azure]**、**[Debugging (デバッグ)]** の順にクリックします。 次の図に示すように、このダイアログ ボックスでリモート デバッグを有効または無効にしたり、デバッグ構成を作成したりできます。
+<!-- ### Debugging properties -->
+<!-- Open the context menu for the role in Eclipse's Project Explorer pane, click **Azure**, and then click **Debugging**. Within this dialog, you have the ability to enable or disable remote debugging, as well as create debug configurations, as shown in the following image. -->
 
-![][ic719504]
+<!-- ![][ic719504] -->
 
-デバッグの詳細については、「[Eclipse での Azure アプリケーションのデバッグ][Debugging Azure Applications in Eclipse]」を参照してください。
+<!-- For related information about debugging, see [Debugging Azure Applications in Eclipse][Debugging Azure Applications in Eclipse]. -->
 
 <a name="endpoints_properties"></a> 
 
@@ -198,7 +199,7 @@ Eclipse の [Project Explorer (プロジェクト エクスプローラー)] ウ
 
 エンドポイントの種類によっては、次のようにポート範囲を使用できます。
 
-* 入力インスタンス エンドポイントの場合、パブリック ポートにポート範囲を指定できます (たとえば、**2000 ～&2010;**)。プライベート ポートには固定値を使用します。
+* 入力インスタンス エンドポイントの場合、パブリック ポートにポート範囲を指定できます (たとえば、**2000 ～ 2010**)。プライベート ポートには固定値を使用します。
 * 内部エンドポイントの場合、パブリック ポートは使用されません。プライベート ポートに範囲を指定してください。空欄またはアスタリスクを指定して Azure で自動的にポートを設定することもできます。
 * 入力エンドポイントの場合、パブリック ポートに指定できるのは固定値のみです。プライベート ポートには固定値を指定できるほか、空欄またはアスタリスクを指定して Azure で自動的にポートを設定することもできます。
 
@@ -206,13 +207,13 @@ Eclipse の [Project Explorer (プロジェクト エクスプローラー)] ウ
 
 ポートの設定を自動で行う場合に実行時に実際に使用されるポートを調べるには、Azure サービス ランタイム API ([com.microsoft.windowsazure.serviceruntime パッケージの概要][com.microsoft.windowsazure.serviceruntime package summary]を参照) をアプリケーションで使用してください。
 
-複数インスタンス デプロイのデバッグにインスタンス入力エンドポイントを利用する方法については、[複数インスタンス デプロイでの特定のロール インスタンスのデバッグ][Debugging a specific role instance in a multi-instance deployment]に関するページを参照してください。
+<!-- To see how instance input endpoints can be used to help with debugging a multi-instance deployment, see [Debugging a specific role instance in a multi-instance deployment][Debugging a specific role instance in a multi-instance deployment]. -->
 
 エンドポイントに変更を加えるには、対象のエンドポイントを選択し、**[Endpoints (エンドポイント)]** プロパティ ページの **[Edit (編集)]** ボタンをクリックします。 エンドポイントの名前、種類、パブリック ポート、プライベート ポートを変更するためのダイアログ ボックスが開きます。 **[OK]** を押して、変更したエンドポイントの値を保存します。
 
 エンドポイントを削除するには、対象のエンドポイントを選択し、**[Endpoints (エンドポイント)]** プロパティ ページの **[Remove (削除)]** ボタンをクリックします。確認のメッセージが表示されるので、削除してかまわなければ **[Yes (はい)]** をクリックしてください。
 
-ロールのユーザーによって有効にされた機能 (キャッシュ、リモート デバッグ、セッション アフィニティ、SSL オフロードなど) を適切に構成するために、特殊なエンドポイントがツールキットによって自動的に構成されることがあります。これらのエンドポイントは、ユーザー定義のエンドポイントと共に一覧に表示されます。 関連付けられている機能が有効になっている限り、これらの自動生成されたエンドポイントをユーザーが編集または削除することはできません。
+ロールのユーザーによって有効にされた機能 (キャッシュ、セッション アフィニティ、SSL オフロードなど) を適切に構成するために、特殊なエンドポイントがツールキットによって自動的に構成されることがあります。これらのエンドポイントは、ユーザー定義のエンドポイントと共に一覧に表示されます。 関連付けられている機能が有効になっている限り、これらの自動生成されたエンドポイントをユーザーが編集または削除することはできません。
 
 <a name="environment_variables_properties"></a> 
 
@@ -293,7 +294,7 @@ Windows 上で Eclipse を使用している場合は、コンピューティン
 
 ![][ic789643]
 
-**[Cloud deployment]** セクションには、JDK パッケージのソースと種類に関して、使用しているオペレーティング システムに関係なく、次の&2; つのオプションがあります。
+**[Cloud deployment]** セクションには、JDK パッケージのソースと種類に関して、使用しているオペレーティング システムに関係なく、次の 2 つのオプションがあります。
 
 * **[Deploy a 3rd party JDK package available on Azure]** 
 * **[Deploy from a custom download]** 
@@ -457,9 +458,4 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 [ic719481]: ./media/azure-toolkit-for-eclipse-azure-role-properties/ic719481.png
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh690945.aspx -->
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 09/12/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 29c4c2a2818468a2fa8360eebd4b653bdcbbde19
-ms.openlocfilehash: 0749d371466226343227c79db544a8e3dca0cca8
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 75188a8f74b08d28b92259348626d5734ed4ce6c
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.openlocfilehash: 0749d371466226343227c79db544a8e3dca0cca8
 ## <a name="steps-to-create-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボを作成する手順
 次の手順は、Azure Portal を使用して Azure DevTest Labs でラボを作成する方法を示しています。 
 
-1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
+1. [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 2. **[その他のサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 3. **[DevTest ラボ]** ブレードで **[追加]** をクリックします。
    
@@ -40,9 +41,11 @@ ms.openlocfilehash: 0749d371466226343227c79db544a8e3dca0cca8
    2. ラボに関連付ける **[サブスクリプション]** を選択します。
    3. ラボを格納する **[場所]** を選択します。
    4. **[自動シャットダウン]** を選択し、ラボのすべての VM の自動シャットダウンを有効にする (およびそのパラメーターを定義する) かどうかを指定します。 
-   5. **[作成]**を選択します。
-      
-      ![Create a lab blade](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
+   5. ラボのショートカットをポータルのダッシュボードに表示したい場合、**[ダッシュボードにピン留めする]** チェック ボックスをオンにします。
+   6. **[Automation オプション]** を選択して、構成を自動化するための Azure Resource Manager テンプレートを取得します。 
+   7. **[作成]**を選択します。
+    
+    ![Create a lab blade](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
@@ -54,10 +57,5 @@ ms.openlocfilehash: 0749d371466226343227c79db544a8e3dca0cca8
 * [ラボ テンプレートを作成します](devtest-lab-create-template.md)。
 * [VM のカスタム アーティファクトを作成します](devtest-lab-artifact-author.md)。
 * [アーティファクトを含む VM をラボに追加します](devtest-lab-add-vm-with-artifacts.md)。
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

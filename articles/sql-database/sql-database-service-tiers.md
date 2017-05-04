@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-wms.date: 03/06/2017
+wms.date: 04/14/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 85b7336958c90b477eea8ea185a69bab2bd87a79
-ms.lasthandoff: 04/15/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 884cd19bdfb1bf53d75cb27e840c448eff8bc991
+ms.lasthandoff: 04/21/2017
 
 
 ---
 # <a name="sql-database-options-and-performance-understand-whats-available-in-each-service-tier"></a>SQL Database のオプションとパフォーマンス: 各サービス レベルで使用できる内容について理解する
 
-[Azure SQL Database](sql-database-technical-overview.md) には、**Basic**、**Standard**、**Premium**、**Premium RS** の 4 つのサービス レベルが用意されています。 各サービス レベルには、さまざまなワークロードに対応するために、いくつかのパフォーマンス レベルが用意されています。 パフォーマンス レベルが高くなるほど提供されるリソースが追加され、スループットが段階的に高くなるように設計されています。 ダウンタイムを発生させることなく、サービス レベルとパフォーマンス レベルは動的に変更できます。 Basic、Standard、Premium、および Premium RS のサービス レベルは、いずれも稼働時間の SLA が 99.99% で、柔軟なビジネス継続性のオプション、セキュリティ機能、時間単位の課金体系が用意されています。 Premium RS レベルでは、SLA が少ないにも関わらず、Premium レベルと同じレベルのパフォーマンス、セキュリティ機能およびビジネス継続性機能が用意されています。
+[Azure SQL Database](sql-database-technical-overview.md) には、**Basic**、**Standard**、**Premium**、**Premium RS** の 4 つのサービス レベルが用意されています。 各サービス レベルには、さまざまなワークロードに対応するために、いくつかのパフォーマンス レベルが用意されています。 パフォーマンス レベルが高くなるほど提供されるリソースが追加され、スループットが段階的に高くなるように設計されています。 ダウンタイムを発生させることなく、サービス レベルとパフォーマンス レベルは動的に変更できます。 Basic、Standard、Premium のサービス レベルは、いずれも稼働時間の SLA が 99.99% で、柔軟なビジネス継続性のオプション、セキュリティ機能、時間単位の課金体系が用意されています。 Premium RS レベルでは、SLA が少ないにも関わらず、Premium レベルと同じレベルのパフォーマンス、セキュリティ機能およびビジネス継続性機能が用意されています。
 
 > [!IMPORTANT]
 > Premium RS のデータベースは、Premium または Standard の各データベースよりも少ない冗長コピーで実行されます。 そのため、サービスで障害が発生した場合は、5 分以内にバックアップからデータベースを復旧する必要があります。
@@ -44,18 +44,18 @@ ms.lasthandoff: 04/15/2017
 | **Premium RS** | 最高レベルの可用性の保証を必要としない I/O 集中型のワークロード向けに設計されています。 例としては、高パフォーマンス ワークロードまたはデータベースがレコードのシステムではない分析ワークロードのテストが含まれます。 |
 |||
 
-まず、定義済みの容量を備えた専用リソースを持つ単一データベースを実行するか、データベースのグループ間でリソースのプールを共有するかを決定します。 [エラスティック プールの考慮事項](sql-database-elastic-pool-guidance.md)を確認してください。 サービス レベルを決定するには、まず、最低限必要なデータベース機能を確認します。
+まず、定義済みの容量を備えた専用リソースを持つ単一データベースを実行するか、データベースのグループ間でリソースのプールを共有するかを決定します。 [エラスティック プールの考慮事項](sql-database-elastic-pool.md)を確認してください。 サービス レベルを決定するには、まず、最低限必要なデータベース機能を確認します。
 
 | **サービス レベルの機能** | **Basic** | **Standard** | **Premium** | **Premium RS**|
 | :-- | --: | --: | --: | --: |
-| 各データベースの最大サイズ | 2 GB | 250 GB | 4 TB*  | 500 GB  |
-| エラスティック プール内の最大合計ストレージ | 117 GB | 1200 GB | 750 GB | 750 GB |
-| プールあたりのデータベースの最大数 | 400  | 400 | 50 | 50 |
+| 単一データベースの最大サイズ | 2 GB | 250 GB | 4 TB*  | 500 GB  |
+| エラスティック プール内のデータベースの最大サイズ | 156 GB | 2.9 TB | 500 GB | 500 GB |
+| プールあたりのデータベースの最大数 | 500  | 500 | 100 | 100 |
 | データベース バックアップのリテンション期間 | 7 日 | 35 日 | 35 日 | 35 日 |
 ||||||
 
 > [!IMPORTANT]
-> P11 と P15 のパフォーマンス レベルを使用しているお客様は、追加料金なしで最大 4 TB の付属のストレージを使用できます。 この 4 TB のオプションは現在、米国東部 2、米国西部、西ヨーロッパ、東南アジア、東日本、オーストラリア東部、カナダ中部、カナダ東部の各リージョンで、パプリック プレビューの段階にあります。 現在の制限については、[現在の 4 TB の制限事項](sql-database-service-tiers.md#current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize)に関するトピックを参照してください。
+> 最大 4 TB のデータベースは、P11 と P15 のパフォーマンス レベルを使用しているお客様に追加料金なしで提供されるパブリック プレビューです。 750 GB 以上のストレージが付属した Premium プールも提供されています。 これらの追加ストレージ オプションは現在、米国東部 2、米国西部、西ヨーロッパ、東南アジア、東日本、オーストラリア東部、カナダ中部、カナダ東部の各リージョンで利用できます。 詳細については、[4 TB のデータベースの現時点での制限事項](sql-database-service-tiers.md#current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize)に関するセクションを参照してください。
 >
 
 最小限のサービス レベルを決定したら、データベースのパフォーマンス レベル (DTU 数) を決定できるようになります。 多くの場合、出発点として Standard S2 および S3 というパフォーマンス レベルが適しています。 CPU または IO の要件が高いデータベースの場合は、Premium のパフォーマンス レベルが出発点として適しています。 Premium では、より多くの CPU が提供されるため、最も高い Standard パフォーマンス レベルと比較して 10 倍超える IO から始まります。
@@ -90,7 +90,7 @@ ms.lasthandoff: 04/15/2017
 
 ## <a name="elastic-pool-service-tiers-and-performance-in-edtus"></a>エラスティック プール サービス階層と eDTU のパフォーマンス
 
-プールでは、データベースが eDTU リソースを共有して使用することができ、プール内の各データベースに特定のパフォーマンス レベルを割り当てる必要はありません。 たとえば、Standard プール内の単一データベースで使用できるのは、0 eDTU から、プールの構成時に設定した最大データベース eDTU までとなります。 プールでは、多様なワークロードを持つ複数のデータベースが、プール全体で利用可能な eDTU リソースを効率的に使用できます。 詳細については、 [エラスティック プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md) に関する記事を参照してください。
+プールでは、データベースが eDTU リソースを共有して使用することができ、プール内の各データベースに特定のパフォーマンス レベルを割り当てる必要はありません。 たとえば、Standard プール内の単一データベースで使用できるのは、0 eDTU から、プールの構成時に設定した最大データベース eDTU までとなります。 プールでは、多様なワークロードを持つ複数のデータベースが、プール全体で利用可能な eDTU リソースを効率的に使用できます。 詳細については、 [エラスティック プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool.md) に関する記事を参照してください。
 
 次の表では、プールのサービス階層の特性について説明します。
 
@@ -144,7 +144,7 @@ ALTER DATABASE <myDatabaseName>
 
 ## <a name="next-steps"></a>次のステップ
 
-* [エラスティック プール](sql-database-elastic-pool-guidance.md)と、[エラスティック プールの価格とパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)の詳細を確認してください。
+* [エラスティック プール](sql-database-elastic-pool.md)と、[エラスティック プールの価格とパフォーマンスに関する考慮事項](sql-database-elastic-pool.md)の詳細を確認してください。
 * [エラスティック プールの監視、管理、およびサイズ変更](sql-database-elastic-pool-manage-portal.md)と[単一データベースのパフォーマンスの監視](sql-database-single-database-monitor.md)を行う方法を確認してください。
 * SQL Database の階層について理解できたら、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)で実際に試してみてください。また、[初めて SQL データベースを作成するにあたっての方法](sql-database-get-started-portal.md)を確認してください。
 * 移行のシナリオの場合は、[DTU Calculator](http://dtucalculator.azurewebsites.net/) を使用して必要な DTU 数を見積もります。 

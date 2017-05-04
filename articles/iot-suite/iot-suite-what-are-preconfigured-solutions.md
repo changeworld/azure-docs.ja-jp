@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/15/2017
+ms.date: 04/24/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: a3657f8bb60cd1181740b0700f503b5bd1bd559f
-ms.openlocfilehash: a3847f83af1f28e40572af95ff31f44d2f3d6dc4
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: fba7f5f33d1a0d39219a6790e1d5c6b4515b794c
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -43,6 +43,7 @@ Azure にソリューションをデプロイして実行するだけでなく�
 | --- | --- | --- | --- | --- | --- | --- |
 | [リモート監視][lnk-getstarted-preconfigured] |はい |あり |あり |あり |はい |- |
 | [予測的なメンテナンス][lnk-predictive-maintenance] |はい |あり |- |あり |あり |はい |
+| [コネクテッド ファクトリ][lnk-getstarted-factory] |あり |あり |あり |あり |はい |- |
 
 * *データの取り込み*: クラウドへの大規模なデータの取り込み。
 * "*デバイス ID*": 一意のデバイス ID を管理し、ソリューションへのデバイス アクセスを制御します。
@@ -59,7 +60,7 @@ Azure にソリューションをデプロイして実行するだけでなく�
 ![リモート監視の構成済みソリューションのアーキテクチャ][img-remote-monitoring-arch]
 
 ## <a name="devices"></a>デバイス
-リモート監視の構成済みソリューションをデプロイすると、冷却デバイスをシミュレートする&4; つのシミュレートされたデバイスがソリューション内で事前にプロビジョニングされます。 これらのシミュレートされたデバイスには、テレメトリを出力する温度と湿度モデルが組み込まれています。 シミュレートされたデバイスが組み込まれている目的を次に示します。
+リモート監視の構成済みソリューションをデプロイすると、冷却デバイスをシミュレートする 4 つのシミュレートされたデバイスがソリューション内で事前にプロビジョニングされます。 これらのシミュレートされたデバイスには、テレメトリを出力する温度と湿度モデルが組み込まれています。 シミュレートされたデバイスが組み込まれている目的を次に示します。
 - ソリューションを使用したエンド ツー エンドのデータ フローを示す。
 - テレメトリの便利なソースを提供する。
 - バックエンド開発者がソリューションをカスタム実装の開始点として使用する場合に、メソッドまたはコマンドのターゲットを提供する。
@@ -104,7 +105,7 @@ IoT Hub のデバイス管理機能を使用すると、ソリューション �
 - ファームウェアの更新
 
 ## <a name="azure-stream-analytics"></a>Azure Stream Analytics
-構成済みソリューションでは、次の&3; つの [Azure Stream Analytics][lnk-asa] (ASA) ジョブを使用して、デバイスのテレメトリ ストリームをフィルターします。
+構成済みソリューションでは、次の 3 つの [Azure Stream Analytics][lnk-asa] (ASA) ジョブを使用して、デバイスのテレメトリ ストリームをフィルターします。
 
 * "*DeviceInfo ジョブ*" - イベント ハブにデータを出力します。このイベント ハブにより、デバイス登録固有のメッセージが、ソリューションのデバイス レジストリ (DocumentDB データベース) にルーティングされます。 このメッセージは、デバイスが最初に接続するとき、または **デバイス状態の変更** コマンドに応答して送信されます。
 * *Telemetry ジョブ* - Azure Blob Storage にコールド ストレージの未加工のテレメトリをすべて送信し、ソリューションのダッシュボードに表示されるテレメトリの集計を行います。
@@ -166,4 +167,4 @@ IoT ソリューション アーキテクチャの詳細については、「[Mi
 [lnk-c2d-guidance]: ../iot-hub/iot-hub-devguide-c2d-guidance.md
 [lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
-
+[lnk-getstarted-factory]: iot-suite-connected-factory-overview.md

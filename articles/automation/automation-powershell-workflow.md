@@ -4,7 +4,7 @@ description: "この記事では、PowerShell に慣れている作成者を対�
 services: automation
 documentationcenter: 
 author: mgoedtel
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: 84bf133e-5343-4e0e-8d6c-bb14304a70db
 ms.service: automation
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 04/21/2017
 ms.author: magoedte;bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 480a40bd5ecd58f11b10c27e7e0d2828bcae1f17
-ms.openlocfilehash: 50966ed518b79f2033680790432e29b0c9e7b289
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 4de812c7f863e42a6ed10c2312d61b8377e06431
+ms.lasthandoff: 04/22/2017
 
 
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Automation Runbook 向けの Windows PowerShell ワークフローの基本的な概念の説明 
-Azure Automation の Runbook は Windows PowerShell ワークフローとして実装されています。  Windows PowerShell ワークフローは Windows PowerShell スクリプトと似ていますが、新規ユーザーにはわかりにくい大きな違いがいくつかあります。  この記事は、PowerShell ワークフローを使用して Runbook を作成するときに利用することを目的としていますが、チェックポイントを必要とする場合以外は、PowerShell を使用して Runbook を作成することをお勧めします。  PowerShell ワークフローの Runbook を作成する場合は構文の違いが多数あるため、効果的なワークフローを記述するにはさらに作業が必要になります。  
+Azure Automation の Runbook は Windows PowerShell ワークフローとして実装されています。  Windows PowerShell ワークフローは Windows PowerShell スクリプトと似ていますが、新規ユーザーにはわかりにくい大きな違いがいくつかあります。  この記事は、PowerShell ワークフローを使用して Runbook を作成するときに利用することを目的としていますが、チェックポイントを必要とする場合以外は、PowerShell を使用して Runbook を作成することをお勧めします。  PowerShell ワークフローの Runbook を作成する場合は構文の違いがいくつかあるため、効果的なワークフローを記述するにはさらに作業が必要になります。  
 
-ワークフローとは、時間のかかるタスクを実行したり、複数のデバイスや管理ノードにまたがる複数のステップで調整を必要としたりする手順を、プログラミングで連結してひとつながりにしたものです。 ワークフローが通常のスクリプトよりも優れている点としては、同時に複数のデバイスに対して操作を実行できることや、障害から自動的に復元できることなどがあります。 Windows PowerShell ワークフローは、Windows Workflow Foundation を活用した Windows PowerShell スクリプトです。 ワークフローは Windows PowerShell の構文で記述され、Windows PowerShell によって起動されますが、Windows Workflow Foundation によって処理されます。
+ワークフローとは、時間のかかるタスクを実行したり、複数のデバイスや管理ノードにまたがる複数のステップで調整を必要としたりする手順を、プログラミングで連結してひとつながりにしたものです。 ワークフローが通常のスクリプトよりも優れている点としては、同時に複数のデバイスに対して操作を実行できることや、障害から自動的に復元できることなどがあります。 Windows PowerShell ワークフローは、Windows Workflow Foundation を使用した Windows PowerShell スクリプトです。 ワークフローは Windows PowerShell の構文で記述され、Windows PowerShell によって起動されますが、Windows Workflow Foundation によって処理されます。
 
 この記事のトピックに関する詳細については、「 [Windows PowerShell ワークフローについて](http://technet.microsoft.com/library/jj134242.aspx)」をご覧ください。
 
@@ -36,7 +36,7 @@ PowerShell スクリプトを PowerShell ワークフローに変換する最初
        <Commands>
     }
 
-ワークフローの名前は、Automation の Runbook の名前と一致する必要があります。 Runbook がインポートされている場合、ファイル名はワークフロー名と一致していなければならず、末尾は .ps1 でなければなりません。
+ワークフローの名前は、Automation の Runbook の名前と一致する必要があります。 Runbook がインポートされている場合、ファイル名はワークフロー名と一致していなければならず、末尾は "*.ps1*" でなければなりません。
 
 ワークフローにパラメーターを追加するには、スクリプトの場合と同様に **Param** キーワードを使用します。
 
@@ -44,7 +44,7 @@ PowerShell スクリプトを PowerShell ワークフローに変換する最初
 PowerShell ワークフローのコードは PowerShell スクリプト コードとほぼ同じですが、いくつかの重要な変更点があります。  次のセクションでは、ワークフローで実行するための PowerShell スクリプトに対して行う必要がある変更について説明します。
 
 ### <a name="activities"></a>アクティビティ
-アクティビティとは、ワークフロー内の特定のタスクです。 スクリプトが&1; つ以上のコマンドで構成されているのと同様に、ワークフローも順番に実行される&1; つ以上のアクティビティで構成されます。 Windows PowerShell ワークフローでは、ワークフローの実行時に Windows PowerShell コマンドレットの多くが自動でアクティビティに変換されます。 Runbook でこれらのコマンドレットのいずれかを指定すると、対応するアクティビティは、実際には Windows Workflow Foundation で実行されます。 対応するアクティビティがないコマンドレットの場合、Windows PowerShell ワークフローは [InlineScript](#inlinescript) アクティビティ内のコマンドレットを自動的に実行します。 InlineScript ブロックに明示的に含めないと除外され、ワークフローでは使用できない一連のコマンドレットがあります。 これらの概念の詳細については、「 [スクリプト ワークフローでのアクティビティの使用](http://technet.microsoft.com/library/jj574194.aspx)」を参照してください。
+アクティビティとは、ワークフロー内の特定のタスクです。 スクリプトが 1 つ以上のコマンドで構成されているのと同様に、ワークフローも順番に実行される 1 つ以上のアクティビティで構成されます。 Windows PowerShell ワークフローでは、ワークフローの実行時に Windows PowerShell コマンドレットの多くが自動でアクティビティに変換されます。 Runbook でこれらのコマンドレットのいずれかを指定すると、対応するアクティビティは、Windows Workflow Foundation で実行されます。 対応するアクティビティがないコマンドレットの場合、Windows PowerShell ワークフローは [InlineScript](#inlinescript) アクティビティ内のコマンドレットを自動的に実行します。 InlineScript ブロックに明示的に含めないと除外され、ワークフローでは使用できない一連のコマンドレットがあります。 これらの概念の詳細については、「 [スクリプト ワークフローでのアクティビティの使用](http://technet.microsoft.com/library/jj574194.aspx)」を参照してください。
 
 ワークフロー アクティビティは、操作を構成するための一連の共通パラメーターを共有します。 ワークフローの共通パラメーターの詳細については、「[about_WorkflowCommonParameters](http://technet.microsoft.com/library/jj129719.aspx)」を参照してください。
 
@@ -70,7 +70,7 @@ PowerShell ワークフローのコードは PowerShell スクリプト コー�
 
 ワークフローでこれを実行しようとすると、「Windows PowerShell ワークフローでは、メソッド呼び出しはサポートされていません」というエラー メッセージが表示されます。  
 
-これに対処する&1; つの方法は、これら&2; つのコード行を [InlineScript](#inlinescript) ブロックにラップすることであり、この場合 $Service はブロック内のサービス オブジェクトです。
+これに対処する 1 つの方法は、これら 2 つのコード行を [InlineScript](#inlinescript) ブロックにラップすることであり、この場合 $Service はブロック内のサービス オブジェクトです。
 
     Workflow Stop-Service
     {
@@ -80,7 +80,7 @@ PowerShell ワークフローのコードは PowerShell スクリプト コー�
         }
     }
 
-もう&1; つの方法は、メソッドとして同じ機能を実行する別のコマンドレットがある場合は、それを使用することです。  このサンプルの場合、Stop-Service コマンドレットは Stop メソッドと同じ機能を提供し、ワークフローでは次のように使用できます。
+もう 1 つの方法は、メソッドとして同じ機能を実行する別のコマンドレットがある場合は、それを使用することです。  このサンプルでは、Stop-Service コマンドレットは Stop メソッドと同じ機能を提供し、ワークフローでは次のように使用できます。
 
     Workflow Stop-MyService
     {
@@ -90,7 +90,7 @@ PowerShell ワークフローのコードは PowerShell スクリプト コー�
 
 
 ## <a name="inlinescript"></a>InlineScript
-**InlineScript** アクティビティは、PowerShell ワークフローではなく従来の PowerShell スクリプトとして&1; つまたは複数のコマンドを実行する必要がある場合に便利です。  ワークフロー内のコマンドは Windows Workflow Foundation に送信されて処理されますが、InlineScript ブロック内のコマンドは Windows PowerShell によって処理されます。
+**InlineScript** アクティビティは、PowerShell ワークフローではなく従来の PowerShell スクリプトとして 1 つまたは複数のコマンドを実行する必要がある場合に便利です。  ワークフロー内のコマンドは Windows Workflow Foundation に送信されて処理されますが、InlineScript ブロック内のコマンドは Windows PowerShell によって処理されます。
 
 InlineScript は、次に示す構文を使用します。
 
@@ -135,12 +135,12 @@ InlineScript アクティビティは特定のワークフローにとって重�
 * InlineScript ブロックの内部で[並列実行](#parallel-processing)を使用することはできません。
 * InlineScript は、InlineScript ブロックの長さ全体について Windows PowerShell セッションを保持するため、ワークフローの拡張性に影響します。
 
-InlineScript の使用の詳細については、「[ワークフローでの Windows PowerShell コマンドの実行](http://technet.microsoft.com/library/jj574197.aspx)」および「[about_InlineScript](http://technet.microsoft.com/library/jj649082.aspx)」を参照してください。
+InlineScript の使用について詳しくは、「[ワークフローでの Windows PowerShell コマンドの実行](http://technet.microsoft.com/library/jj574197.aspx)」および「[about_InlineScript](http://technet.microsoft.com/library/jj649082.aspx)」をご覧ください。
 
 ## <a name="parallel-processing"></a>並列処理
-Windows PowerShell ワークフローの利点の&1; つは、一般的なスクリプトのように順番に実行するのでなく、一連のコマンドを並行して実行できることです。
+Windows PowerShell ワークフローの利点の 1 つは、一般的なスクリプトのように順番に実行するのでなく、一連のコマンドを並行して実行できることです。
 
-**Parallel** キーワードを使用して、同時に実行される複数のコマンドを含むスクリプト ブロックを作成できます。 これには、次に示す構文を使用します。 この場合、Activity1 と Activity2 は同時に開始されます。 Activity3 は、Activity1 と Activity2 の両方が完了した後にのみ開始されます。
+**Parallel** キーワードを使用して、同時に実行される複数のコマンドを含むスクリプト ブロックを作成できます。 これは、次に示す構文を使用します。 この場合、Activity1 と Activity2 は同時に開始されます。 Activity3 は、Activity1 と Activity2 の両方が完了した後にのみ開始されます。
 
     Parallel
     {
@@ -152,26 +152,26 @@ Windows PowerShell ワークフローの利点の&1; つは、一般的なスク
 
 例として、複数のファイルをネットワーク上にコピーする次の PowerShell コマンドを考えます。  これらのコマンドは、1 つのファイルのコピーが完了してから次へファイルのコピーが開始されるように、順番に実行されます。     
 
-    $Copy-Item -Path C:\LocalPath\File1.txt -Destination \\NetworkPath\File1.txt
-    $Copy-Item -Path C:\LocalPath\File2.txt -Destination \\NetworkPath\File2.txt
-    $Copy-Item -Path C:\LocalPath\File3.txt -Destination \\NetworkPath\File3.txt
+    Copy-Item -Path C:\LocalPath\File1.txt -Destination \\NetworkPath\File1.txt
+    Copy-Item -Path C:\LocalPath\File2.txt -Destination \\NetworkPath\File2.txt
+    Copy-Item -Path C:\LocalPath\File3.txt -Destination \\NetworkPath\File3.txt
 
-次のワークフローでは、すべてのコピーが同時に開始されるように、同じコマンドが並列実行されます。  すべてのファイルのコピーが完了してはじめて、完了メッセージが表示されます。
+次のワークフローでは、すべてのコピーが同時に開始されるように、同じコマンドが並列実行されます。  すべてのファイルがコピーされると、完了メッセージが表示されます。
 
     Workflow Copy-Files
     {
         Parallel
         {
-            $Copy-Item -Path "C:\LocalPath\File1.txt" -Destination "\\NetworkPath"
-            $Copy-Item -Path "C:\LocalPath\File2.txt" -Destination "\\NetworkPath"
-            $Copy-Item -Path "C:\LocalPath\File3.txt" -Destination "\\NetworkPath"
+            Copy-Item -Path "C:\LocalPath\File1.txt" -Destination "\\NetworkPath"
+            Copy-Item -Path "C:\LocalPath\File2.txt" -Destination "\\NetworkPath"
+            Copy-Item -Path "C:\LocalPath\File3.txt" -Destination "\\NetworkPath"
         }
 
         Write-Output "Files copied."
     }
 
 
-**ForEach -Parallel** の構文を使用することにより、コレクション内の各項目のコマンドを同時に処理できます。 コレクション内の項目は並行して処理され、スクリプト ブロック内のコマンドは順番に実行されます。 これには、次に示す構文を使用します。 この場合、Activity1 は、コレクション内のすべての項目に対して同時に開始されます。 各項目について、Activity1 が完了してから Activity2 が開始されます。 Activity3 は、すべての項目における Activity1 と Activity2 の両方が完了した後にのみ開始されます。
+**ForEach -Parallel** の構文を使用することにより、コレクション内の各項目のコマンドを同時に処理できます。 コレクション内の項目は並行して処理され、スクリプト ブロック内のコマンドは順番に実行されます。 これは、次に示す構文を使用します。 この場合、Activity1 は、コレクション内のすべての項目に対して同時に開始されます。 各項目について、Activity1 が完了してから Activity2 が開始されます。 Activity3 は、すべての項目における Activity1 と Activity2 の両方が完了した後にのみ開始されます。
 
     ForEach -Parallel ($<item> in $<collection>)
     {
@@ -188,7 +188,7 @@ Windows PowerShell ワークフローの利点の&1; つは、一般的なスク
 
         ForEach -Parallel ($File in $Files)
         {
-            $Copy-Item -Path $File -Destination \\NetworkPath
+            Copy-Item -Path $File -Destination \\NetworkPath
             Write-Output "$File copied."
         }
 
@@ -196,7 +196,7 @@ Windows PowerShell ワークフローの利点の&1; つは、一般的なスク
     }
 
 > [!NOTE]
-> 子 runbook を並列で実行することはお勧めしません。これを行うと、結果の信頼性が低くなることが示されているためです。  子 Runbook からの出力が表示されないことがあり、1 つの子 Runbook での設定が並列に実行されている他の子 Runbook に影響を与える可能性があります。
+> 子 runbook を並列で実行することはお勧めしません。これを行うと、結果の信頼性が低くなることが示されているためです。  子 Runbook からの出力が表示されないことがあり、1 つの子 Runbook での設定が並列に実行されている他の子 Runbook に影響を与える可能性があります
 >
 
 ## <a name="checkpoints"></a>チェックポイント
@@ -220,7 +220,7 @@ Windows PowerShell ワークフローの利点の&1; つは、一般的なスク
 
         ForEach ($File in $Files)
         {
-            $Copy-Item -Path $File -Destination \\NetworkPath
+            Copy-Item -Path $File -Destination \\NetworkPath
             Write-Output "$File copied."
             Checkpoint-Workflow
         }
