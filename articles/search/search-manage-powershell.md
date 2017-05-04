@@ -16,9 +16,9 @@ ms.tgt_pltfrm: powershell
 ms.date: 08/15/2016
 ms.author: seasa
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 76077d39f17df63abe6c08f91991095c53f5dbb8
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a635b214fcc9b37ac426df227420b643e2a02cc7
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 03/31/2017
 以下のコマンドにより、 [Azure Search 管理 REST API](http://msdn.microsoft.com/library/dn832684.aspx)で使用できる管理オプションを並列実行します。
 
 ## <a name="prerequisites"></a>前提条件
-* Azure PowerShell 1.0 以降をインストールする必要があります。 手順については、 [Azure PowerShell のインストールおよび構成に関するページ](/powershell/azureps-cmdlets-docs)を参照してください。
+* Azure PowerShell 1.0 以降をインストールする必要があります。 手順については、 [Azure PowerShell のインストールおよび構成に関するページ](/powershell/azure/overview)を参照してください。
 * 以下に示すように、PowerShell で Azure サブスクリプションにログインする必要があります。
 
 まず、次のコマンドで Azure にログインする必要があります。

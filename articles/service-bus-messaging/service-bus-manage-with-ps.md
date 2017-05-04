@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 04/06/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: b4acb01f4939b55317ac0c78eb467159d872f47a
-ms.lasthandoff: 04/11/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 02e4e58418e289eaf4b619a6cfc411fe1f50f48f
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>PowerShell モジュールで Service Bus リソースを管理する
 
-Microsoft Azure PowerShell は、Azure サービスのデプロイメントと管理を制御し自動化するために使用できるスクリプティング環境です。 この記事では、[Service Bus Resource Manager の PowerShell モジュール](/powershell/module/azurerm.servicebus/?view=azurermps-3.7.0#service_bus) を使用して、Service Bus エンティティ (名前空間、キュー、トピック、およびサブスクリプション) を、ローカルの Azure PowerShell コンソールまたはスクリプトでプロビジョニングおよび管理する方法について説明します。
+Microsoft Azure PowerShell は、Azure サービスのデプロイメントと管理を制御し自動化するために使用できるスクリプティング環境です。 この記事では、[Service Bus Resource Manager の PowerShell モジュール](/powershell/module/azurerm.servicebus) を使用して、Service Bus エンティティ (名前空間、キュー、トピック、およびサブスクリプション) を、ローカルの Azure PowerShell コンソールまたはスクリプトでプロビジョニングおよび管理する方法について説明します。
 
 Azure Resource Manager テンプレートでも Service Bus エンティティを管理できます。 詳細については、[「Azure Resource Manager テンプレートを使用して Service Bus リソースを作成する」](service-bus-resource-manager-overview.md)の記事を参照してください。
 
@@ -158,11 +158,11 @@ Set-AzureRmServiceBusQueue -ResourceGroup $ResGrpName -NamespaceName $Namespace 
 
 ## <a name="provisioning-other-service-bus-entities"></a>その他の Service Bus エンティティのプロビジョニング
 
-[Service Bus PowerShell モジュール](/powershell/module/azurerm.servicebus/?view=azurermps-3.7.0#service_bus) を使用してトピックやサブスクリプションなどの他のエンティティをプロビジョニングできます。 これらのコマンドレットは、前のセクションで説明したキュー作成コマンドレットに構文的に似ています。
+[Service Bus PowerShell モジュール](/powershell/module/azurerm.servicebus) を使用してトピックやサブスクリプションなどの他のエンティティをプロビジョニングできます。 これらのコマンドレットは、前のセクションで説明したキュー作成コマンドレットに構文的に似ています。
 
 ## <a name="next-steps"></a>次のステップ
 
-- Service Bus Manager PowerShell モジュールの全ドキュメントを[ここ](/powershell/module/azurerm.servicebus/?view=azurermps-3.7.0#service_bus)から参照してください。 このページには、利用可能なすべてのコマンドレットが一覧されています。
+- Service Bus Manager PowerShell モジュールの全ドキュメントを[ここ](/powershell/module/azurerm.servicebus)から参照してください。 このページには、利用可能なすべてのコマンドレットが一覧されています。
 - Azure Resource Manager テンプレートの使用の詳細については、「[Azure Resource Manager テンプレートを使用して Service Bus リソースを作成する](service-bus-resource-manager-overview.md)」の記事を参照してください。
 - [Service Bus .NET 管理ライブラリ](service-bus-management-libraries.md)に関する情報。
 

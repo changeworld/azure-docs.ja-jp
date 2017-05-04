@@ -18,9 +18,9 @@ ms.date: 02/06/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: e1933c5bf65f3e28d952213317413d0f65309c5b
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: caf50732ce19ded5016c6d5368f8b53b6ca3646f
+ms.lasthandoff: 04/27/2017
 
 ---
 # <a name="increase-vm-availability-by-creating-an-azure-availability-set"></a>Azure 可用性セットを作成することによる VM の可用性の向上 
@@ -71,7 +71,7 @@ VM を可用性セットに含めるには、まずその可用性セットを�
 ```powershell
 Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 ```
-詳細については、[Azure PowerShell のバージョン管理に関するページ](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/#azure-powershell-versioning)をご覧ください。
+詳細については、[Azure PowerShell のバージョン管理に関するページ](/powershell/azure/overview)をご覧ください。
 
 
 VM で管理対象ディスクを使用する場合は次のように入力します。
@@ -88,7 +88,7 @@ VM でストレージ アカウントを使用する場合は次のように入�
     -Name "myAvailabilitySet" -Location "West US" 
 ```
 
-詳細については、 [New-AzureRmAvailabilitySet](/powershell/resourcemanager/azurerm.compute/v2.8.0/new-azurermavailabilityset)を参照してください。
+詳細については、 [New-AzureRmAvailabilitySet](/powershell/module/azurerm.compute/new-azurermavailabilityset)を参照してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 * VM を作成するときに、必要な可用性セットがポータルのドロップダウン リストにない場合は、可用性セットが別のリソース グループに作成された可能性があります。 可用性セットのリソース グループがわからない場合は、ハブ メニューに移動し、[参照]、[可用性セット] をクリックして、可用性セットが属するリソース グループの一覧を確認します。

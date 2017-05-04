@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 119275f335344858cd20b6a17ef87e3ef32b6e12
-ms.openlocfilehash: 51ed9893aa0a49b2bde5069cfcad222b0bae4fdc
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 1d7f24b8a65347bc54b273d08c06b22320cbeb2c
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -51,7 +51,7 @@ Azure DNS における DNS レコードの詳細については、「[DNS ゾー
 
 レコード セットにレコードを追加するためのパラメーターは、レコード セットの種類によって異なります。 たとえば、"A" という種類のレコード セットを使う場合、`-IPv4Address` パラメーターを使って IP アドレスを指定する必要があります。 他のレコードの種類には他のパラメーターを使用します。 詳細については、[その他のレコードの種類の例](#additional-record-type-examples)に関するセクションを参照してください。
 
-下の例では、DNS ゾーン "contoso.com" に相対名 "www" を持つレコード セットを作成します。 レコード セットの完全修飾名は、"www.contoso.com" になります。 レコードの種類は "A" で、TTL は 3,600 秒です。 レコード セットには、"1.2.3.4" という IP アドレスの&1; つのレコードが含まれています。
+下の例では、DNS ゾーン "contoso.com" に相対名 "www" を持つレコード セットを作成します。 レコード セットの完全修飾名は、"www.contoso.com" になります。 レコードの種類は "A" で、TTL は 3,600 秒です。 レコード セットには、"1.2.3.4" という IP アドレスの 1 つのレコードが含まれています。
 
 ```powershell
 New-AzureRmDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "1.2.3.4") 
@@ -72,7 +72,7 @@ $aRecords += New-AzureRmDnsRecordConfig -IPv4Address "2.3.4.5"
 New-AzureRmDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName MyResourceGroup -Ttl 3600 -RecordType A -DnsRecords $aRecords
 ```
 
-[レコード セットのメタデータ](dns-zones-records.md#tags-and-metadata)を使用すると、アプリケーション固有のデータを、キーと値のペアとして各レコード セットに関連付けることができます。 次の例は、"dept=finance" と "environment=production" という&2; つのメタデータ エントリを含むレコード セットを作成する方法を示しています。
+[レコード セットのメタデータ](dns-zones-records.md#tags-and-metadata)を使用すると、アプリケーション固有のデータを、キーと値のペアとして各レコード セットに関連付けることができます。 次の例は、"dept=finance" と "environment=production" という 2 つのメタデータ エントリを含むレコード セットを作成する方法を示しています。
 
 ```powershell
 New-AzureRmDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "1.2.3.4") -Metadata @{ dept="finance"; environment="production" } 
@@ -201,7 +201,7 @@ $recordsets = Get-AzureRmDnsRecordSet -Zone $zone
 
 ## <a name="add-a-record-to-an-existing-record-set"></a>既存のレコード セットへのレコードの追加
 
-既存のレコード セットにレコードを追加するには、次の次の&3; つの手順を実行します。
+既存のレコード セットにレコードを追加するには、次の次の 3 つの手順を実行します。
 
 1. 既存のレコード セットの取得
 
@@ -385,5 +385,5 @@ Get-AzureRmDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -Resourc
 <br>
 Azure DNS の使用時に[ゾーンとレコードを保護する](dns-protect-zones-recordsets.md)方法について確認します。
 <br>
-[Azure DNS PowerShell のリファレンス ドキュメント](/powershell/resourcemanager/azurerm.dns/v2.3.0/azurerm.dns)を確認します。
+[Azure DNS PowerShell のリファレンス ドキュメント](/powershell/module/azurerm.dns)を確認します。
 

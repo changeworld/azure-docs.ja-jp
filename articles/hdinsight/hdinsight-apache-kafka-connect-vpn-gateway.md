@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 04/18/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 5da21de1f7b51a6ca38a3fe443531bab4091dd60
-ms.lasthandoff: 04/20/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 9ddf19c008c35525419a357436b1a969a4b19205
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -52,7 +52,7 @@ HDInsight クラスターは、Azure Virtual Network 内ではセキュリティ
 
 ## <a name="create-using-powershell"></a>作成: PowerShell の使用
 
-このセクションの手順では、[Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) を使用して次の構成を作成します。
+このセクションの手順では、[Azure PowerShell](/powershell/azure/overview) を使用して次の構成を作成します。
 
 * Azure Virtual Network
 * ポイント対サイト VPN ゲートウェイ

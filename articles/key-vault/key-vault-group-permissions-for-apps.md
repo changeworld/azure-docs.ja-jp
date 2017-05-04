@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/01/2016
 ms.author: ambapat
 translationtype: Human Translation
-ms.sourcegitcommit: f1a03a0553bc1acd013918f527458603d08cb0f7
-ms.openlocfilehash: 8d213455ad9c771d54c2334e4d31eb4f84c9ec15
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 1549eb40b0ca79522cc5475057c3af7ff4c7fd1c
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -28,7 +29,7 @@ Key Vault のアクセス制御ポリシーでは、エントリは 16 個まで
 
 前提条件は次のとおりです。
 * [Azure Active Directory V2 PowerShell モジュールのインストール](https://www.powershellgallery.com/packages/AzureAD/2.0.0.30)。
-* [Azure PowerShell のインストール](/powershell/azureps-cmdlets-docs)。
+* [Azure PowerShell のインストール](/powershell/azure/overview)。
 * 次のコマンドを実行するには、Azure Active Directory テナント内でグループを作成または編集するためのアクセス許可が必要です。 アクセス許可を持っていない場合は、Azure Active Directory 管理者に連絡する必要があります。
 
 PowerShell で次のコマンドを実行します。
@@ -57,9 +58,4 @@ Set-AzureRmKeyVaultAccessPolicy –VaultName ContosoVault –ObjectId $aadGroup.
 ## <a name="next-steps"></a>次のステップ
 
 [キー コンテナーをセキュリティ保護する](key-vault-secure-your-key-vault.md)方法について確認します。
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

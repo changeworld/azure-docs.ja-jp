@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 01/05/2017
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: a957a70be915459baa8c687c92e251c6011b6172
-ms.openlocfilehash: 6670076d14f1f3f3991dd004d488f69fb1c44cb6
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 32119a6ef586d616407c69e89a0d0f05758438bc
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -83,7 +84,7 @@ Resource Manager テンプレートを使用してクラスターを設定して
 ![inboundNatPools][InboundNatPools]
 
 ### <a name="after-cluster-deployment"></a>クラスター デプロイの後
-これは少し複雑で、VM がリサイクルされる可能性があります。 Azure PowerShell を使用して、新しい値を設定する必要があります。 Azure PowerShell 1.0 以降がコンピューターにインストールされていることを確認します。 まだインストールされていない場合は、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)
+これは少し複雑で、VM がリサイクルされる可能性があります。 Azure PowerShell を使用して、新しい値を設定する必要があります。 Azure PowerShell 1.0 以降がコンピューターにインストールされていることを確認します。 まだインストールされていない場合は、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)
 
 Azure アカウントにサインインします。 この PowerShell コマンドが何らかの理由で失敗する場合、Azure PowerShell が正しくインストールされているかどうかを確認することをお勧めします。
 
@@ -119,9 +120,4 @@ Set-AzureRmResource -PropertyObject $PropertiesObject -ResourceGroupName <RG nam
 [LBBlade]: ./media/service-fabric-cluster-nodetypes/LBBlade.png
 [NATRules]: ./media/service-fabric-cluster-nodetypes/NATRules.png
 [RDP]: ./media/service-fabric-cluster-nodetypes/RDP.png
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

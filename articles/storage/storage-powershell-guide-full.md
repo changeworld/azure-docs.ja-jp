@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/03/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: a47a806856be9e2daa9bcac8ce23da4d15386cc8
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: aef5820257334b0a3ac9c8b18690dfa0f6fd1d8f
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 04/06/2017
 ## <a name="overview"></a>概要
 Azure PowerShell は、Windows PowerShell から Azure を管理するコマンドレットを提供するモジュールです。 タスクベースのコマンドライン シェルとスクリプト言語であり、システム管理に特化して設計されています。 PowerShell を使用すると、Azure サービスやアプリケーションの管理を容易に制御して自動化できます。 たとえば、このコマンドレットを使用して、[Azure Portal](https://portal.azure.com) で実行できるタスクと同じタスクを実行できます。
 
-このガイドでは、[Azure Storage 用コマンドレット](https://msdn.microsoft.com/library/azure/mt269418.aspx)を使用して、Azure Storage でさまざまな開発タスクや管理タスクを実行する方法について説明します。
+このガイドでは、[Azure Storage 用コマンドレット](/powershell/module/azurerm.storage/#storage)を使用して、Azure Storage でさまざまな開発タスクや管理タスクを実行する方法について説明します。
 
 このガイドは、[Azure Storage](https://azure.microsoft.com/documentation/services/storage/) と [Windows PowerShell](http://technet.microsoft.com/library/bb978526.aspx) を使った経験がある読者を対象としています。 また、PowerShell と Azure Storage の使用方法を示すための多くのスクリプトを用意しています。 各スクリプトの実行前に、使用する構成に基づいてスクリプト変数を更新する必要があります。
 
@@ -137,7 +137,7 @@ Azure サブスクリプションの詳細については、「 [Azure Active Di
 ## <a name="prerequisites-for-using-azure-powershell-with-azure-storage"></a>Azure Storage で Azure PowerShell を使用するための前提条件
 このガイドで取り上げている PowerShell コマンドレットを実行するには、既に説明したように Azure サブスクリプションとアカウントが必要です。
 
-Azure PowerShell は、Windows PowerShell から Azure を管理するコマンドレットを提供するモジュールです。 Azure PowerShell のインストールと設定の詳細については、 [Azure PowerShell のインストールと構成方法](/powershell/azureps-cmdlets-docs)に関するページを参照してください。 このガイドを使用する前に、最新の Azure PowerShell モジュールをダウンロードしてインストールするか、アップグレードすることをお勧めします。
+Azure PowerShell は、Windows PowerShell から Azure を管理するコマンドレットを提供するモジュールです。 Azure PowerShell のインストールと設定の詳細については、 [Azure PowerShell のインストールと構成方法](/powershell/azure/overview)に関するページを参照してください。 このガイドを使用する前に、最新の Azure PowerShell モジュールをダウンロードしてインストールするか、アップグレードすることをお勧めします。
 
 コマンドレットは、標準の Windows PowerShell コンソールまたは Windows PowerShell Integrated Scripting Environment (ISE) から実行できます。 たとえば、 **Windows PowerShell ISE**を開くには、[スタート] メニューで、「管理ツール」と入力し、クリックして実行します。 [管理ツール] ウィンドウで、[Windows PowerShell ISE] を右クリックし、[管理者として実行] をクリックします。
 
@@ -146,7 +146,7 @@ Azure PowerShell は、Windows PowerShell から Azure を管理するコマン�
 PowerShell を使用した Azure でのストレージ アカウントの管理を見ていきましょう。
 
 ### <a name="how-to-set-a-default-azure-subscription"></a>既定の Azure サブスクリプションを設定する方法
-Azure PowerShell を使用して Azure Storage を管理するには、Azure Active Directory 認証または証明書ベースの認証を使用して、Azure でのクライアント環境を認証する必要があります。 詳細については、 [Azure PowerShell のインストールと構成方法](/powershell/azureps-cmdlets-docs) に関するページを参照してください。 このガイドでは、Azure Active Directory 認証を使用します。
+Azure PowerShell を使用して Azure Storage を管理するには、Azure Active Directory 認証または証明書ベースの認証を使用して、Azure でのクライアント環境を認証する必要があります。 詳細については、 [Azure PowerShell のインストールと構成方法](/powershell/azure/overview) に関するページを参照してください。 このガイドでは、Azure Active Directory 認証を使用します。
 
 1. Windows PowerShell ISE で、次のコマンドを入力し、Azure アカウントをローカルの PowerShell 環境に追加します。
 
@@ -234,11 +234,11 @@ Get-AzureStorageAccount | Format-Table -Property StorageAccountName, Location, A
 ```
 
 ### <a name="how-to-create-an-azure-storage-context"></a>Azure ストレージ コンテキストを作成する方法
-Azure ストレージ コンテキストは、ストレージ資格情報をカプセル化するための PowerShell 内のオブジェクトです。 後続のコマンドレットを実行する際にストレージ コンテキストを使用すると、ストレージ アカウントとそのアクセス キー明示的に指定しなくても、要求を認証できます。 ストレージ コンテキストは、ストレージ アカウント名とアクセス キーを使用する、Shared Access Signature (SAS) トークンを使用する、接続文字列または匿名を使用するなどのさまざまな方法で作成できます。 詳細については、「 [New-AzureStorageContext](http://msdn.microsoft.com/library/azure/dn806380.aspx)」を参照してください。  
+Azure ストレージ コンテキストは、ストレージ資格情報をカプセル化するための PowerShell 内のオブジェクトです。 後続のコマンドレットを実行する際にストレージ コンテキストを使用すると、ストレージ アカウントとそのアクセス キー明示的に指定しなくても、要求を認証できます。 ストレージ コンテキストは、ストレージ アカウント名とアクセス キーを使用する、Shared Access Signature (SAS) トークンを使用する、接続文字列または匿名を使用するなどのさまざまな方法で作成できます。 詳細については、「 [New-AzureStorageContext](/powershell/module/azure.storage/new-azurestoragecontext)」を参照してください。  
 
 次の 3 つの方法のいずれかを使用してストレージ コンテキストを作成します。
 
-* [Get-AzureStorageKey](http://msdn.microsoft.com/library/azure/dn495235.aspx) コマンドレットを実行し、Azure ストレージ アカウントのプライマリ ストレージ アクセス キーを確認します。 次に、 [New-AzureStorageContext](http://msdn.microsoft.com/library/azure/dn806380.aspx) コマンドレットを呼び出し、ストレージ コンテキストを作成します。
+* [Get-AzureStorageKey](/powershell/module/azure.storage/get-azurestoragekey) コマンドレットを実行し、Azure ストレージ アカウントのプライマリ ストレージ アクセス キーを確認します。 次に、 [New-AzureStorageContext](/powershell/module/azure.storage/new-azurestoragecontext) コマンドレットを呼び出し、ストレージ コンテキストを作成します。
 
     ```powershell
     $StorageAccountName = "yourstorageaccount"
@@ -253,7 +253,7 @@ Azure ストレージ コンテキストは、ストレージ資格情報をカ�
     $Ctx = New-AzureStorageContext -StorageAccountName $StorageAccountName -SasToken $sasToken
     ```
 
-    詳しくは、「[New-AzureStorageContainerSASToken](http://msdn.microsoft.com/library/azure/dn806416.aspx)」および「[Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)」をご覧ください。
+    詳しくは、「[New-AzureStorageContainerSASToken](/powershell/module/azure.storage/new-azurestoragecontainersastoken)」および「[Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)」をご覧ください。
 
 * 場合によっては、新しいストレージ コンテキストの作成時にサービスのエンドポイントを指定することもあります。 これは、BLOB サービスでストレージ アカウントのカスタム ドメイン名を登録した場合に必要になることがあります。または、アクセスしているストレージ リソースに対して Shared Access Signature を使用します。 次に示すように、接続文字列でサービスのエンドポイントを設定し、このエンドポイントを使用して新しいストレージ コンテキストを作成します。
 
@@ -308,16 +308,16 @@ New-AzureStorageContainer -Name $StorageContainerName -Permission Off
 ### <a name="how-to-upload-a-blob-into-a-container"></a>BLOB をコンテナーにアップロードする方法
 Azure Blob Storage では、ブロック BLOB とページ BLOB がサポートされています。 詳細については、「 [ブロック BLOB、追加 BLOB、ページ BLOB について](http://msdn.microsoft.com/library/azure/ee691964.aspx)」を参照してください。
 
-BLOB をコンテナーにアップロードする場合は、 [Set-AzureStorageBlobContent](http://msdn.microsoft.com/library/azure/dn806379.aspx) コマンドレットを使用します。 既定では、このコマンドにより、ローカル ファイルがブロック BLOB にアップロードされます。 BLOB の種類を指定する場合は、-BlobType パラメーターを使用します。
+BLOB をコンテナーにアップロードする場合は、 [Set-AzureStorageBlobContent](/powershell/module/azure.storage/set-azurestorageblobcontent) コマンドレットを使用します。 既定では、このコマンドにより、ローカル ファイルがブロック BLOB にアップロードされます。 BLOB の種類を指定する場合は、-BlobType パラメーターを使用します。
 
-次の例では、 [Get-ChildItem](http://technet.microsoft.com/library/hh849800.aspx) コマンドレットを実行して、指定したフォルダー内のすべてのファイルを取得し、パイプライン演算子を使用することでそれらを次のコマンドレットに渡します。 [Set-AzureStorageBlobContent](http://msdn.microsoft.com/library/azure/dn806379.aspx) コマンドレットは、ローカル ファイルをコンテナーにアップロードします。
+次の例では、 [Get-ChildItem](http://technet.microsoft.com/library/hh849800.aspx) コマンドレットを実行して、指定したフォルダー内のすべてのファイルを取得し、パイプライン演算子を使用することでそれらを次のコマンドレットに渡します。 [Set-AzureStorageBlobContent](/powershell/module/azure.storage/set-azurestorageblobcontent) コマンドレットは、ローカル ファイルをコンテナーにアップロードします。
 
 ```powershell
 Get-ChildItem –Path C:\Images\* | Set-AzureStorageBlobContent -Container "yourcontainername"
 ```
 
 ### <a name="how-to-download-blobs-from-a-container"></a>BLOB をコンテナーからダウンロードする方法
-次の例は、BLOB をコンテナーからダウンロードする方法を示しています。 この例では、まず、ストレージ アカウント コンテキストを使用して Azure Storage への接続を確立します。このコンテキストには、ストレージ アカウント名とそのプライマリ アクセス キーが含まれます。 次に、[Get-AzureStorageBlob](http://msdn.microsoft.com/library/azure/dn806392.aspx) コマンドレットを使って、BLOB の参照を取得します。 さらに、[Get-AzureStorageBlobContent](http://msdn.microsoft.com/library/azure/dn806418.aspx) コマンドレットを使って、BLOB をローカルの格納先フォルダーにダウンロードします。
+次の例は、BLOB をコンテナーからダウンロードする方法を示しています。 この例では、まず、ストレージ アカウント コンテキストを使用して Azure Storage への接続を確立します。このコンテキストには、ストレージ アカウント名とそのプライマリ アクセス キーが含まれます。 次に、[Get-AzureStorageBlob](/powershell/module/azure.storage/get-azurestorageblob) コマンドレットを使って、BLOB の参照を取得します。 さらに、[Get-AzureStorageBlobContent](/powershell/module/azure.storage/get-azurestorageblobcontent) コマンドレットを使って、BLOB をローカルの格納先フォルダーにダウンロードします。
 
 ```powershell
 #Define the variables.
@@ -338,7 +338,7 @@ $blobs | Get-AzureStorageBlobContent -Destination $DestinationFolder -Context $C
 ```
 
 ### <a name="how-to-copy-blobs-from-one-storage-container-to-another"></a>あるストレージ コンテナーから別のストレージ コンテナーに BLOB をコピーする方法
-BLOB は、ストレージ アカウントとリージョン間にまたがって非同期的にコピーできます。 次の例は、2 つの異なるストレージ アカウントで、BLOB をあるストレージ コンテナーから別のストレージ コンテナーにコピーする方法を示しています。 この例では、まずソースとコピー先のストレージ アカウントの変数を設定し、次にそれぞれのアカウントのストレージ コンテキストを作成します。 さらに、 [Start-AzureStorageBlobCopy](http://msdn.microsoft.com/library/azure/dn806394.aspx) コマンドレットを使用して、BLOB をソース コンテナーからコピー先のコンテナーにコピーします。 この例では、ソースとコピー先のストレージ アカウントとコンテナーが既に存在していると想定しています。
+BLOB は、ストレージ アカウントとリージョン間にまたがって非同期的にコピーできます。 次の例は、2 つの異なるストレージ アカウントで、BLOB をあるストレージ コンテナーから別のストレージ コンテナーにコピーする方法を示しています。 この例では、まずソースとコピー先のストレージ アカウントの変数を設定し、次にそれぞれのアカウントのストレージ コンテキストを作成します。 さらに、 [Start-AzureStorageBlobCopy](/powershell/module/azure.storage/start-azurestorageblobcopy) コマンドレットを使用して、BLOB をソース コンテナーからコピー先のコンテナーにコピーします。 この例では、ソースとコピー先のストレージ アカウントとコンテナーが既に存在していると想定しています。
 
 ```powershell
 #Define the source storage account and context.
@@ -360,7 +360,7 @@ $blobs = Get-AzureStorageBlob -Container $SrcContainerName -Context $SourceConte
 $blobs| Start-AzureStorageBlobCopy -DestContainer $DestContainerName -DestContext $DestContext
 ```
 
-この例で実行するのは非同期コピーです。 [Get-AzureStorageBlobCopyState](http://msdn.microsoft.com/library/azure/dn806406.aspx) コマンドレットを実行すると、各コピーの状態を監視できます。
+この例で実行するのは非同期コピーです。 [Get-AzureStorageBlobCopyState](/powershell/module/azure.storage/start-azurestorageblobcopystate) コマンドレットを実行すると、各コピーの状態を監視できます。
 
 ### <a name="how-to-copy-blobs-from-a-secondary-location"></a>セカンダリの場所から BLOB をコピーする方法
 RA-GRS が有効になっているアカウントのセカンダリの場所から BLOB をコピーすることができます。
@@ -372,7 +372,7 @@ Start-AzureStorageBlobCopy –Container *** -Blob *** -Context $SrcContext –De
 ```
 
 ### <a name="how-to-delete-a-blob"></a>BLOB を削除する方法
-BLOB を削除するには、まず BLOB の参照を取得し、次にその Remove-AzureStorageBlob コマンドレットを呼び出します。 次の例では、特定のコンテナー内のすべての BLOB を削除します。 この例では、まずストレージ アカウントの変数を設定し、次にストレージ コンテキストを作成します。 さらに、[Get-AzureStorageBlob](http://msdn.microsoft.com/library/azure/dn806392.aspx) コマンドレットを使って BLOB の参照を取得し、[Remove-AzureStorageBlob](http://msdn.microsoft.com/library/azure/dn806399.aspx) コマンドレットを実行して Azure Storage のコンテナーから BLOB を削除します。
+BLOB を削除するには、まず BLOB の参照を取得し、次にその Remove-AzureStorageBlob コマンドレットを呼び出します。 次の例では、特定のコンテナー内のすべての BLOB を削除します。 この例では、まずストレージ アカウントの変数を設定し、次にストレージ コンテキストを作成します。 さらに、[Get-AzureStorageBlob](/powershell/module/azure.storage/get-azurestorageblob) コマンドレットを使って BLOB の参照を取得し、[Remove-AzureStorageBlob](/powershell/module/azure.storage/remove-azurestorageblob) コマンドレットを実行して Azure Storage のコンテナーから BLOB を削除します。
 
 ```powershell
 #Define the storage account and context.
@@ -392,7 +392,7 @@ $blobs| Remove-AzureStorageBlob
 Azure では BLOB のスナップショットを作成できます。 スナップショットは、ある時点で作成された読み取り専用の BLOB です。 作成されたスナップショットは、読み取り、コピー、削除はできますが、変更はできません。 スナップショットを使用すると、BLOB をある時点での表示内容のままバックアップできます。 詳細については、「 [BLOB のスナップショットの作成](http://msdn.microsoft.com/library/azure/hh488361.aspx)」を参照してください。
 
 ### <a name="how-to-create-a-blob-snapshot"></a>BLOB のスナップショットを作成する方法
-BLOB のスナップショットを作成するには、まず BLOB の参照を取得し、次にその `ICloudBlob.CreateSnapshot` メソッドを呼び出します。 次の例では、まずストレージ アカウントの変数を設定し、次にストレージ コンテキストを作成します。 さらに、[Get-AzureStorageBlob](http://msdn.microsoft.com/library/azure/dn806392.aspx) コマンドレッドを使って BLOB の参照を取得し、[ICloudBlob.CreateSnapshot](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.icloudblob.aspx) メソッドを実行してスナップショットを作成します。
+BLOB のスナップショットを作成するには、まず BLOB の参照を取得し、次にその `ICloudBlob.CreateSnapshot` メソッドを呼び出します。 次の例では、まずストレージ アカウントの変数を設定し、次にストレージ コンテキストを作成します。 さらに、[Get-AzureStorageBlob](/powershell/module/azure.storage/get-azurestorageblob) コマンドレッドを使って BLOB の参照を取得し、[ICloudBlob.CreateSnapshot](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.icloudblob.aspx) メソッドを実行してスナップショットを作成します。
 
 ```powershell
 #Define the storage account and context.
@@ -410,7 +410,7 @@ $snap = $blob.ICloudBlob.CreateSnapshot()
 ```
 
 ### <a name="how-to-list-a-blobs-snapshots"></a>BLOB のスナップショットをリストする方法
-1 個の BLOB に対して必要な数だけスナップショットを作成できます。 BLOB に関連付けられたスナップショットをリストして、現在のスナップショットを追跡できます。 次の例では、事前定義済みの BLOB を使用し、 [Get-AzureStorageBlob](http://msdn.microsoft.com/library/azure/dn806392.aspx) コマンドレットを呼び出して、その BLOB のスナップショットをリストします。  
+1 個の BLOB に対して必要な数だけスナップショットを作成できます。 BLOB に関連付けられたスナップショットをリストして、現在のスナップショットを追跡できます。 次の例では、事前定義済みの BLOB を使用し、 [Get-AzureStorageBlob](/powershell/module/azure.storage/get-azurestorageblob) コマンドレットを呼び出して、その BLOB のスナップショットをリストします。  
 
 ```powershell
 #Define the blob name.
@@ -421,7 +421,7 @@ Get-AzureStorageBlob –Context $Ctx -Prefix $BlobName -Container $ContainerName
 ```
 
 ### <a name="how-to-copy-a-snapshot-of-a-blob"></a>BLOB のスナップショットをコピーする方法
-BLOB のスナップショットをコピーして復元できます。 詳細と制限については、「 [BLOB のスナップショットの作成](http://msdn.microsoft.com/library/azure/hh488361.aspx)」を参照してください。 次の例では、まずストレージ アカウントの変数を設定し、次にストレージ コンテキストを作成します。 さらに、コンテナーと BLOB 名変数を定義します。 また、[Get-AzureStorageBlob](http://msdn.microsoft.com/library/azure/dn806392.aspx) コマンドレットを使って BLOB の参照を取得し、[ICloudBlob.CreateSnapshot](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.icloudblob.aspx) メソッドを実行してスナップショットを作成します。 さらに、 [Start-AzureStorageBlobCopy](http://msdn.microsoft.com/library/azure/dn806394.aspx) コマンドレットを実行し、ソース BLOB に対して ICloudBlob オブジェクトを使用して BLOB のスナップショットをコピーします。 この例を実行する前に、必ず構成に基づいて変数を更新してください。 次の例では、ソースとコピー先のコンテナーとソース BLOB が既に存在していると想定しています。
+BLOB のスナップショットをコピーして復元できます。 詳細と制限については、「 [BLOB のスナップショットの作成](http://msdn.microsoft.com/library/azure/hh488361.aspx)」を参照してください。 次の例では、まずストレージ アカウントの変数を設定し、次にストレージ コンテキストを作成します。 さらに、コンテナーと BLOB 名変数を定義します。 また、[Get-AzureStorageBlob](/powershell/module/azure.storage/get-azurestorageblob) コマンドレットを使って BLOB の参照を取得し、[ICloudBlob.CreateSnapshot](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.icloudblob.aspx) メソッドを実行してスナップショットを作成します。 さらに、 [Start-AzureStorageBlobCopy](/powershell/module/azure.storage/start-azurestorageblobcopy) コマンドレットを実行し、ソース BLOB に対して ICloudBlob オブジェクトを使用して BLOB のスナップショットをコピーします。 この例を実行する前に、必ず構成に基づいて変数を更新してください。 次の例では、ソースとコピー先のコンテナーとソース BLOB が既に存在していると想定しています。
 
 ```powershell
 #Define the storage account and context.
@@ -453,7 +453,7 @@ Azure Table Storage サービスは NoSQL データストアであり、これ�
 以下のサブセクションでは、Azure PowerShell を使用して Azure Table Storage サービスを管理する方法について説明します。 **テーブル**の**作成**、**削除**、**取得**、**テーブル エンティティの追加**、**照会**、**削除**の各シナリオについて説明します。
 
 ### <a name="how-to-create-a-table"></a>テーブルの作成方法
-各テーブルは、Azure ストレージ アカウント内に存在します。 次の例は、Azure Storage にテーブルを作成する方法を示しています。 この例では、まず、ストレージ アカウント コンテキストを使用して Azure Storage への接続を確立します。このコンテキストには、ストレージ アカウント名とそのアクセス キーが含まれます。 次に、[New-AzureStorageTable](http://msdn.microsoft.com/library/azure/dn806417.aspx) コマンドレットを使って、Azure Storage にテーブルを作成します。
+各テーブルは、Azure ストレージ アカウント内に存在します。 次の例は、Azure Storage にテーブルを作成する方法を示しています。 この例では、まず、ストレージ アカウント コンテキストを使用して Azure Storage への接続を確立します。このコンテキストには、ストレージ アカウント名とそのアクセス キーが含まれます。 次に、[New-AzureStorageTable](/powershell/module/azure.storage/new-azurestoragetable) コマンドレットを使って、Azure Storage にテーブルを作成します。
 
 ```powershell
 #Define the storage account and context.
@@ -467,7 +467,7 @@ New-AzureStorageTable –Name $tabName –Context $Ctx
 ```
 
 ### <a name="how-to-retrieve-a-table"></a>テーブルを取得する方法
-あるストレージ アカウント内の 1 個またはすべてのテーブルを照会して取得できます。 次の例は、 [Get-AzureStorageTable](http://msdn.microsoft.com/library/azure/dn806411.aspx) コマンドレットを使用して特定のテーブルを取得する方法を示しています。
+あるストレージ アカウント内の 1 個またはすべてのテーブルを照会して取得できます。 次の例は、 [Get-AzureStorageTable](/powershell/module/azure.storage/get-azurestoragetable) コマンドレットを使用して特定のテーブルを取得する方法を示しています。
 
 ```powershell
 #Retrieve a table.
@@ -478,7 +478,7 @@ Get-AzureStorageTable –Name $tabName –Context $Ctx
 パラメーターなしで Get-AzureStorageTable コマンドレットを呼び出した場合は、ストレージ アカウントのすべてのストレージ テーブルを取得します。
 
 ### <a name="how-to-delete-a-table"></a>テーブルを削除する方法
-[Remove-AzureStorageTable](http://msdn.microsoft.com/library/azure/dn806393.aspx) コマンドレットを使用すると、ストレージ アカウントからテーブルを削除できます。  
+[Remove-AzureStorageTable](/powershell/module/azure.storage/remove-azurestoragetable) コマンドレットを使用すると、ストレージ アカウントからテーブルを削除できます。  
 
 ```powershell
 #Delete a table.
@@ -497,7 +497,7 @@ Remove-AzureStorageTable –Name $tabName –Context $Ctx
 
 1 個のエンティティに対して最大 252 個のカスタム プロパティを定義できます。 詳細については、「 [Table サービス データ モデルについて](http://msdn.microsoft.com/library/azure/dd179338.aspx)」を参照してください。
 
-次の例は、エンティティをテーブルに追加する方法を示しています。 この例では、employee テーブルを取得して、そこに複数のエンティティを追加する方法を取り上げます。 まず、ストレージ アカウント コンテキストを使用して Azure Storage への接続を確立します。このコンテキストには、ストレージ アカウント名とそのアクセス キーが含まれます。 次に、[Get-AzureStorageTable](http://msdn.microsoft.com/library/azure/dn806411.aspx) コマンドレットを使って特定のテーブルを取得します。 このテーブルが存在しない場合は、Azure Storage にテーブルを作成するために [New-AzureStorageTable](http://msdn.microsoft.com/library/azure/dn806417.aspx) コマンドレットが使われます。 次に、各エンティティのパーティションと行キーを指定することでテーブルにエンティティを追加する、カスタム関数 Add-Entity が定義されます。 この Add-Entity 関数は、[Microsoft.WindowsAzure.Storage.Table.DynamicTableEntity](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.table.dynamictableentity.aspx) クラスで [New-Object](http://technet.microsoft.com/library/hh849885.aspx) コマンドレットを呼び出し、エンティティ オブジェクトを作成します。 その後、このエンティティ オブジェクトで [Microsoft.WindowsAzure.Storage.Table.TableOperation.Insert](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.table.tableoperation.insert.aspx) メソッドを呼び出して、テーブルに追加します。
+次の例は、エンティティをテーブルに追加する方法を示しています。 この例では、employee テーブルを取得して、そこに複数のエンティティを追加する方法を取り上げます。 まず、ストレージ アカウント コンテキストを使用して Azure Storage への接続を確立します。このコンテキストには、ストレージ アカウント名とそのアクセス キーが含まれます。 次に、[Get-AzureStorageTable](/powershell/module/azure.storage/get-azurestoragetable) コマンドレットを使って特定のテーブルを取得します。 このテーブルが存在しない場合は、Azure Storage にテーブルを作成するために [New-AzureStorageTable](/powershell/module/azure.storage/new-azurestoragetable) コマンドレットが使われます。 次に、各エンティティのパーティションと行キーを指定することでテーブルにエンティティを追加する、カスタム関数 Add-Entity が定義されます。 この Add-Entity 関数は、[Microsoft.WindowsAzure.Storage.Table.DynamicTableEntity](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.table.dynamictableentity.aspx) クラスで [New-Object](http://technet.microsoft.com/library/hh849885.aspx) コマンドレットを呼び出し、エンティティ オブジェクトを作成します。 その後、このエンティティ オブジェクトで [Microsoft.WindowsAzure.Storage.Table.TableOperation.Insert](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.table.tableoperation.insert.aspx) メソッドを呼び出して、テーブルに追加します。
 
 ```powershell
 #Function Add-Entity: Adds an employee entity to a table.
@@ -541,7 +541,7 @@ Add-Entity -Table $table -PartitionKey Partition2 -RowKey Row2 -Name Steven -Id 
 ```
 
 #### <a name="how-to-query-table-entities"></a>テーブル エンティティを照会する方法
-テーブルを照会するには、[Microsoft.WindowsAzure.Storage.Table.TableQuery](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.table.tablequery.aspx) クラスを使います。 次の例では、このガイドのエンティティの追加方法に関するセクションで指定されたスクリプトを実行済みであると想定しています。 この例では、まず、ストレージ コンテキストを使用して Azure Storage への接続を確立します。このコンテキストには、ストレージ アカウント名とそのアクセス キーが含まれます。 次に、[Get-AzureStorageTable](http://msdn.microsoft.com/library/azure/dn806411.aspx) コマンドレットを使って、作成済みの "Employees" テーブルの取得を試みます。 Microsoft.WindowsAzure.Storage.Table.TableQuery クラスで [New-Object](http://technet.microsoft.com/library/hh849885.aspx) コマンドレットを呼び出すと、新しいクエリ オブジェクトが作成されます。 そして、文字列フィルターで指定されたとおりの 1 を値とする "ID" 列があるエンティティを見つけます。 詳しくは、「[テーブルおよびエンティティのクエリ](http://msdn.microsoft.com/library/azure/dd894031.aspx)」をご覧ください。 このクエリを実行すると、フィルター条件に一致するすべてのエンティティが返されます。
+テーブルを照会するには、[Microsoft.WindowsAzure.Storage.Table.TableQuery](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.table.tablequery.aspx) クラスを使います。 次の例では、このガイドのエンティティの追加方法に関するセクションで指定されたスクリプトを実行済みであると想定しています。 この例では、まず、ストレージ コンテキストを使用して Azure Storage への接続を確立します。このコンテキストには、ストレージ アカウント名とそのアクセス キーが含まれます。 次に、[Get-AzureStorageTable](/powershell/module/azure.storage/get-azurestoragetable) コマンドレットを使って、作成済みの "Employees" テーブルの取得を試みます。 Microsoft.WindowsAzure.Storage.Table.TableQuery クラスで [New-Object](http://technet.microsoft.com/library/hh849885.aspx) コマンドレットを呼び出すと、新しいクエリ オブジェクトが作成されます。 そして、文字列フィルターで指定されたとおりの 1 を値とする "ID" 列があるエンティティを見つけます。 詳しくは、「[テーブルおよびエンティティのクエリ](http://msdn.microsoft.com/library/azure/dd894031.aspx)」をご覧ください。 このクエリを実行すると、フィルター条件に一致するすべてのエンティティが返されます。
 
 ```powershell
 #Define the storage account and context.
@@ -575,7 +575,7 @@ $entities  | Format-Table PartitionKey, RowKey, @{ Label = "Name"; Expression={$
 ```
 
 #### <a name="how-to-delete-table-entities"></a>テーブル エンティティを削除する方法
-パーティション キーと行キーを使用してエンティティを削除できます。 次の例では、このガイドのエンティティの追加方法に関するセクションで指定されたスクリプトを実行済みであると想定しています。 この例では、まず、ストレージ コンテキストを使用して Azure Storage への接続を確立します。このコンテキストには、ストレージ アカウント名とそのアクセス キーが含まれます。 次に、[Get-AzureStorageTable](http://msdn.microsoft.com/library/azure/dn806411.aspx) コマンドレットを使って、作成済みの "Employees" テーブルの取得を試みます。 このテーブルが存在する場合は、[Microsoft.WindowsAzure.Storage.Table.TableOperation.Retrieve](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.table.tableoperation.retrieve.aspx) メソッドを呼び出し、パーティションと行キーの値に基づいてエンティティを取得します。 次に、このエンティティを [Microsoft.WindowsAzure.Storage.Table.TableOperation.Delete](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.table.tableoperation.delete.aspx) メソッドに渡して削除します。
+パーティション キーと行キーを使用してエンティティを削除できます。 次の例では、このガイドのエンティティの追加方法に関するセクションで指定されたスクリプトを実行済みであると想定しています。 この例では、まず、ストレージ コンテキストを使用して Azure Storage への接続を確立します。このコンテキストには、ストレージ アカウント名とそのアクセス キーが含まれます。 次に、[Get-AzureStorageTable](/powershell/module/azure.storage/get-azurestoragetable) コマンドレットを使って、作成済みの "Employees" テーブルの取得を試みます。 このテーブルが存在する場合は、[Microsoft.WindowsAzure.Storage.Table.TableOperation.Retrieve](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.table.tableoperation.retrieve.aspx) メソッドを呼び出し、パーティションと行キーの値に基づいてエンティティを取得します。 次に、このエンティティを [Microsoft.WindowsAzure.Storage.Table.TableOperation.Delete](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.table.tableoperation.delete.aspx) メソッドに渡して削除します。
 
 ```powershell
 #Define the storage account and context.
@@ -608,7 +608,7 @@ Azure Queue Storage は、HTTP または HTTPS を使用した認証された呼
 このセクションでは、Azure PowerShell を使用して Azure Queue Storage サービスを管理する方法を取り上げます。 キュー メッセージの**挿入**と**削除**、および**キューの作成**、**削除**、**取得**の各シナリオについて説明します。
 
 ### <a name="how-to-create-a-queue"></a>キューの作成方法
-次の例では、まず、ストレージ アカウント コンテキストを使用して Azure Storage への接続を確立します。このコンテキストには、ストレージ アカウント名とそのアクセス キーが含まれます。 次に、[New-AzureStorageQueue](http://msdn.microsoft.com/library/azure/dn806382.aspx) コマンドレットを呼び出して、"queuename" という名前のキューを作成します。
+次の例では、まず、ストレージ アカウント コンテキストを使用して Azure Storage への接続を確立します。このコンテキストには、ストレージ アカウント名とそのアクセス キーが含まれます。 次に、[New-AzureStorageQueue](/powershell/module/azure.storage/new-azurestoragequeue) コマンドレットを呼び出して、"queuename" という名前のキューを作成します。
 
 ```powershell
 #Define the storage account and context.
@@ -622,7 +622,7 @@ $Queue = New-AzureStorageQueue –Name $QueueName -Context $Ctx
 Azure Queue サービスでの名前付け規則の詳細については、「 [キューおよびメタデータの名前付け](http://msdn.microsoft.com/library/azure/dd179349.aspx)」を参照してください。
 
 ### <a name="how-to-retrieve-a-queue"></a>キューを取得する方法
-あるストレージ アカウント内の特定のキューまたはすべてのキューの一覧を照会して取得できます。 次の例は、 [Get-AzureStorageQueue](http://msdn.microsoft.com/library/azure/dn806377.aspx) コマンドレットを使用して特定のキューを取得する方法を示しています。
+あるストレージ アカウント内の特定のキューまたはすべてのキューの一覧を照会して取得できます。 次の例は、 [Get-AzureStorageQueue](/powershell/module/azure.storage/get-azurestoragequeue) コマンドレットを使用して特定のキューを取得する方法を示しています。
 
 ```powershell
 #Retrieve a queue.
@@ -630,7 +630,7 @@ $QueueName = "queuename"
 $Queue = Get-AzureStorageQueue –Name $QueueName –Context $Ctx
 ```
 
-パラメーターなしで [Get-AzureStorageQueue](http://msdn.microsoft.com/library/azure/dn806377.aspx) コマンドレットを呼び出した場合は、すべてのキューの一覧を取得します。
+パラメーターなしで [Get-AzureStorageQueue](/powershell/module/azure.storage/get-azurestoragequeue) コマンドレットを呼び出した場合は、すべてのキューの一覧を取得します。
 
 ### <a name="how-to-delete-a-queue"></a>キューを削除する方法
 キューとキューに含まれるすべてのメッセージを削除するには、Remove-AzureStorageQueue コマンドレットを呼び出します。 次の例は、Remove-AzureStorageQueue コマンドレットを使用して特定のキューを削除する方法を示しています。
@@ -717,7 +717,7 @@ Shared Access Signature の形式は、次の 2 つのいずれかです。
 次のセクションでは、Azure テーブルに対する Shared Access Signature トークンと保存されたアクセス ポリシーを作成する方法を学習します。 Azure PowerShell では、コンテナー、BLOB、キューに対して類似するコマンドレットが提供されます。 このセクションのスクリプトを実行するには、 [Azure PowerShell Version 0.8.14](http://go.microsoft.com/?linkid=9811175&clcid=0x409) 以降のバージョンをダウンロードしてください。
 
 ### <a name="how-to-create-a-policy-based-shared-access-signature-token"></a>ポリシー ベースの Shared Access Signature トークンを作成する方法
-New-AzureStorageTableStoredAccessPolicy コマンドレットを使用して新しい保存アクセス ポリシーを作成します。 次に、 [New-AzureStorageTableSASToken](http://msdn.microsoft.com/library/azure/dn806400.aspx) コマンドレットを呼び出し、Azure Storage テーブルに対する新しいポリシー ベースの共有アクセス署名トークンを作成します。
+New-AzureStorageTableStoredAccessPolicy コマンドレットを使用して新しい保存アクセス ポリシーを作成します。 次に、 [New-AzureStorageTableSASToken](/powershell/module/azure.storage/new-azurestoragetablesastoken) コマンドレットを呼び出し、Azure Storage テーブルに対する新しいポリシー ベースの共有アクセス署名トークンを作成します。
 
 ```powershell
 $policy = "policy1"
@@ -726,7 +726,7 @@ New-AzureStorageTableSASToken -Name $tableName -Policy $policy -Context $Ctx
 ```
 
 ### <a name="how-to-create-an-ad-hoc-non-revocable-shared-access-signature-token"></a>アドホック (取り消し不可) の Shared Access Signature トークンを作成する方法
-次のように [New-AzureStorageTableSASToken](http://msdn.microsoft.com/library/azure/dn806400.aspx) コマンドレットを使用して、Azure Storage テーブルに対する新しいアドホック (取り消し不可) の Shared Access Signature トークンを作成します。
+次のように [New-AzureStorageTableSASToken](/powershell/module/azure.storage/new-azurestoragetablesastoken) コマンドレットを使用して、Azure Storage テーブルに対する新しいアドホック (取り消し不可) の Shared Access Signature トークンを作成します。
 
 ```powershell
 New-AzureStorageTableSASToken -Name $tableName -Permission "rqud" -StartTime "2015-01-01" -ExpiryTime "2015-02-01" -Context $Ctx
@@ -759,7 +759,7 @@ Remove-AzureStorageTableStoredAccessPolicy -Policy $policy -Table $tableName -Co
 
 AzureChinaCloud で Azure Storage を使用するには、AzureChinaCloud に関連付けられたストレージ コンテキストを作成する必要があります。 次の手順に従って開始します。
 
-1. [Get-AzureEnvironment](https://msdn.microsoft.com/library/azure/dn790368.aspx) コマンドレットを実行し、使用できる Azure 環境を確認します。
+1. [Get-AzureEnvironment](/powershell/module/azure/get-azureenvironment?view=azuresmps-3.7.0) コマンドレットを実行し、使用できる Azure 環境を確認します。
    
     ```powershell
     Get-AzureEnvironment
@@ -779,7 +779,7 @@ AzureChinaCloud で Azure Storage を使用するには、AzureChinaCloud に関
 
 [U.S.Azure Government](https://azure.microsoft.com/features/gov/) で Azure Storage を使用するには、新しい環境を定義し、その環境で新しいストレージ コンテキストを作成する必要があります。
 
-1. [Get-AzureEnvironment](https://msdn.microsoft.com/library/azure/dn790368.aspx) コマンドレットを実行し、使用できる Azure 環境を確認します。
+1. [Get-AzureEnvironment](/powershell/module/azure/get-azureenvironment?view=azuresmps-3.7.0) コマンドレットを実行し、使用できる Azure 環境を確認します。
 
     ```powershell
     Get-AzureEnvironment
@@ -806,7 +806,7 @@ AzureChinaCloud で Azure Storage を使用するには、AzureChinaCloud に関
 このガイドでは、Azure PowerShell を使用して Azure Storage を管理する方法を確認しました。 詳細についての関連記事とリソースがあります。
 
 * [Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
-* [Azure Storage の PowerShell コマンドレット](http://msdn.microsoft.com/library/azure/dn806401.aspx)
+* [Azure Storage の PowerShell コマンドレット](/powershell/module/azurerm.storage/#storage)
 * [Windows PowerShell リファレンス](https://msdn.microsoft.com/library/ms714469.aspx)
 
 [Getting started with Azure Storage and PowerShell in 5 minutes]: #getstart

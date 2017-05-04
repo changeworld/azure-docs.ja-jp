@@ -12,12 +12,12 @@ ms.workload: multiple
 ms.tgt_pltfrm: powershell
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2016
+ms.date: 04/19/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 407e9a1e4a50b875fa65e61d3e9aae245dd907e5
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 674404b135d2e512840505ee0927db98824aa8b1
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -30,19 +30,20 @@ ms.lasthandoff: 03/04/2017
 >
 >
 
-このトピックでは、Azure PowerShell と Azure Resource Manager でソリューションを管理する方法について説明します。 Resource Manager に慣れていない場合は、[Resource Manager の概要](resource-group-overview.md)に関するページをご覧ください。 このトピックは管理タスクに重点を置いています。 このチュートリアルの内容は次のとおりです。
+この記事では、Azure PowerShell と Azure Resource Manager でソリューションを管理する方法について説明します。 Resource Manager に慣れていない場合は、[Resource Manager の概要](resource-group-overview.md)に関するページをご覧ください。 このトピックは管理タスクに重点を置いています。 このチュートリアルの内容は次のとおりです。
 
 1. リソース グループの作成
 2. リソース グループへのリソースの追加
 3. リソースへのタグの追加
 4. 名前とタグの値に基づいたリソースへのクエリ実行
 5. リソースへのロック適用と解除
-6. リソース グループからの Resource Manager テンプレートの作成
-7. リソース グループの削除
+6. リソース グループの削除
+
+この記事では、Resource Manager テンプレートをサブスクリプションにデプロイする方法については説明しません。 この情報については、「[Deploy resources with Resource Manager templates and Azure PowerShell (Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ)](resource-group-template-deploy.md)」を参照してください。
 
 ## <a name="get-started-with-azure-powershell"></a>Azure PowerShell の使用に関するページ
 
-Azure PowerShell がインストールされていない場合は、[Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)に関するページをご覧ください。
+Azure PowerShell がインストールされていない場合は、[Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)に関するページをご覧ください。
 
 前に Azure PowerShell をインストールしていても、最近更新していない場合は、最新バージョンをインストールすることを検討してください。 バージョンの更新は、インストールと同じ方法で行うことができます。 たとえば、Web Platform Installer を使用した場合は、それを再度起動して、更新プログラムを探します。
 
@@ -52,7 +53,7 @@ Azure Resource モジュールのバージョンを確認するには、次の�
 Get-Module -ListAvailable -Name AzureRm.Resources | Select Version
 ```
 
-このトピックは、バージョン 3.3.0 向けに更新されています。 以前のバージョンを使っている場合は、このトピックに示されている手順と一致しない可能性があります。 このバージョンのコマンドレットに関するドキュメントについては、「[AzureRM.Resources Module (AzureRM.Resources モジュール)](/en-us/powershell/resourcemanager/azurerm.resources/v3.3.0/azurerm.resources)」を参照してください。
+このトピックは、バージョン 3.3.0 向けに更新されています。 以前のバージョンを使っている場合は、このトピックに示されている手順と一致しない可能性があります。 このバージョンのコマンドレットに関するドキュメントについては、「[AzureRM.Resources Module (AzureRM.Resources モジュール)](/powershell/module/azurerm.resources)」を参照してください。
 
 ## <a name="log-in-to-your-azure-account"></a>Azure アカウントへのログイン
 ソリューションを操作する前に、ご使用のアカウントにログインする必要があります。
@@ -142,7 +143,7 @@ Get-AzureRmResourceGroup
 ## <a name="add-resources-to-a-resource-group"></a>リソース グループへのリソースの追加
 リソースをリソース グループに追加するには、**New-AzureRmResource** コマンドレット、または作成するリソースの種類に固有のコマンドレット (**New-AzureRmStorageAccount** など) を使用します。 リソースの種類に固有のコマンドレットには、新しいリソースが必要とするプロパティのパラメーターが含まれているため、ほとんどの場合、こちらを使用する方が簡単です。 **New-AzureRmResource** を使用するには、設定するすべてのプロパティを把握しておく必要があります。こうしたプロパティを入力するよう求めるメッセージは表示されません。
 
-ただし、コマンドレットを使ってリソースを追加した場合、その新しいリソースは Resource Manager テンプレートに存在しないため、将来的に混乱が生じる可能性があります。 Microsoft では、Azure ソリューションのインフラストラクチャは、Resource Manager テンプレートを使って定義することをお勧めします。 テンプレートを使用すると、ソリューションを繰り返し、かつ確実にデプロイすることができます。 このトピックでは、Resource Manager テンプレートをサブスクリプションにデプロイする方法については説明しません。 この情報については、「[Deploy resources with Resource Manager templates and Azure PowerShell (Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ)](resource-group-template-deploy.md)」を参照してください。 このトピックでは、PowerShell コマンドレットでストレージ アカウントを作成しますが、後でリソース グループからテンプレートを生成します。
+ただし、コマンドレットを使ってリソースを追加した場合、その新しいリソースは Resource Manager テンプレートに存在しないため、将来的に混乱が生じる可能性があります。 Microsoft では、Azure ソリューションのインフラストラクチャは、Resource Manager テンプレートを使って定義することをお勧めします。 テンプレートを使用すると、ソリューションを繰り返し、かつ確実にデプロイすることができます。 このトピックでは、PowerShell コマンドレットでストレージ アカウントを作成しますが、後でリソース グループからテンプレートを生成します。
 
 次のコマンドレットは、ストレージ アカウントを作成します。 この例で示されている名前ではなく、ストレージ アカウントの一意の名前を指定してください。 名前の長さは 3 ～ 24 文字で、使用できるのは数字と小文字のみです。 この例で示されている名前は既に使用済みのため、その名前を使うと、エラーが発生します。
 
@@ -166,7 +167,7 @@ Get-AzureRmResource -ResourceName mystoragename -ResourceGroupName TestRG1
 Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test" } -ResourceName mystoragename -ResourceGroupName TestRG1 -ResourceType Microsoft.Storage/storageAccounts
  ```
 
-タグは&1; つのオブジェクトとして更新されます。 タグが既に含まれているリソースにタグを追加するには、最初に既存のタグを取得します。 新しいタグを、既存のタグが含まれるオブジェクトに追加したら、すべてのタグをリソースに再度適用します。
+タグは 1 つのオブジェクトとして更新されます。 タグが既に含まれているリソースにタグを追加するには、最初に既存のタグを取得します。 新しいタグを、既存のタグが含まれるオブジェクトに追加したら、すべてのタグをリソースに再度適用します。
 
 ```powershell
 $tags = (Get-AzureRmResource -ResourceName mystoragename -ResourceGroupName TestRG1).Tags
@@ -221,25 +222,6 @@ Remove-AzureRmResourceLock -LockName LockStorage -ResourceName mystoragename -Re
 ```
 
 ロックの詳細については、[Azure Resource Manager でのリソースのロック](resource-group-lock-resources.md)に関するページをご覧ください。
-
-## <a name="export-resource-manager-template"></a>Resource Manager テンプレートのエクスポート
-(PowerShell または、ポータルなど、その他の方法でデプロイされた) 既存のリソース グループの場合、そのリソース グループのリソース マネージャーのテンプレートを参照できます。 テンプレートのエクスポートには、2 つの利点があります。
-
-1. ソリューションの将来のデプロイを簡単に自動化できます。すべてのインフラストラクチャがテンプレートに定義されているためです。
-2. ソリューションを表す JavaScript Object Notation (JSON) を見ることでテンプレートの構文に詳しくなります。
-
-> [!NOTE]
-> テンプレートのエクスポート機能はプレビューの段階にあり、現在のところ、一部の種類のリソースでは、テンプレートをエクスポートできません。 テンプレートのエクスポートを試行したとき、一部のリソースがエクスポートされなかったというエラーが表示されることがあります。 必要に応じて、ダウンロード後、エクスポートされなかったリソースをテンプレート内で手動で定義できます。
->
->
-
-リソース グループのテンプレートを表示するには、 **Export-AzureRmResourceGroup** コマンドレットを実行します。
-
-```powershell
-Export-AzureRmResourceGroup -ResourceGroupName TestRG1 -Path c:\Azure\Templates\Downloads\TestRG1.json
-```
-
-Resource Manager テンプレートをエクスポートするオプションとシナリオは多数あります。 詳細については、「[Export an Azure Resource Manager template from existing resources (既存のリソースから Azure Resource Manager テンプレートをエクスポートする)](resource-manager-export-template.md)」を参照してください。
 
 ## <a name="remove-resources-or-resource-group"></a>リソースまたはリソース グループの削除
 リソースまたはリソース グループを削除できます。 リソース グループを削除すると、そのリソース グループ内のリソースもすべて削除されます。
