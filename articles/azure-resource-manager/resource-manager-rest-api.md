@@ -30,7 +30,7 @@ ms.lasthandoff: 01/14/2017
 > 
 > 
 
-Azure Resource Manager、デプロイ済みのテンプレート、構成済みのストレージ アカウントを呼び出す裏では、必ず Azure Resource Manager の RESTful API が&1; 回以上呼び出されます。 このトピックでは、これらの API と、SDK を一切使わずにこれらの API を呼び出す方法について説明します。 この方法は、Azure への要求を完全に制御したい場合や、優先言語の SDK が利用できないか、必要な操作がその SDK でサポートされていない場合に、役に立ちます。
+Azure Resource Manager、デプロイ済みのテンプレート、構成済みのストレージ アカウントを呼び出す裏では、必ず Azure Resource Manager の RESTful API が 1 回以上呼び出されます。 このトピックでは、これらの API と、SDK を一切使わずにこれらの API を呼び出す方法について説明します。 この方法は、Azure への要求を完全に制御したい場合や、優先言語の SDK が利用できないか、必要な操作がその SDK でサポートされていない場合に、役に立ちます。
 
 この記事では Azure で公開されているすべての API については説明しませんが、一部の操作を接続例として取り上げます。 基本を理解できたら、[Azure Resource Manager REST API リファレンス](https://docs.microsoft.com/rest/api/resources/)で残りの API の使い方を調べることができます。
 
@@ -94,7 +94,7 @@ Invoke-RestMethod -Uri https://login.microsoftonline.com/<Azure AD Tenant ID>/oa
 このトピックでは、一部の API のみを使用して、REST 操作の基本的な使用方法を説明します。 すべての操作の詳細については、[Azure リソース マネージャー REST API](https://docs.microsoft.com/rest/api/resources/) に関する記事を参照してください。
 
 ### <a name="list-all-subscriptions"></a>すべてのサブスクリプションの一覧表示
-実行できる最も簡単な操作の&1; つに、アクセスできる利用可能なサブスクリプションの一覧表示があります。 次の要求には、アクセス トークンをヘッダーとして渡す方法が示されています。
+実行できる最も簡単な操作の 1 つに、アクセスできる利用可能なサブスクリプションの一覧表示があります。 次の要求には、アクセス トークンをヘッダーとして渡す方法が示されています。
 
 (YOUR_ACCESS_TOKEN を実際のアクセス トークンに置き換えてください)
 
