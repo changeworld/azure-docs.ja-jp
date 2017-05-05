@@ -103,7 +103,7 @@ ms.lasthandoff: 02/03/2017
 ### <a name="create-azure-hdinsight-linked-service"></a>Azure HDInsight のリンクされたサービスを作成する
 この手順では、オンデマンド HDInsight クラスターをデータ ファクトリにリンクします。 HDInsight クラスターは、実行時に自動的に作成されます。また、処理が終わり、アイドル状態が一定時間続くと削除されます。
 
-1. **Data Factory エディター**で **[...] (その他)**、**[新規計算]** の順にクリックし、**[On-demand HDInsight cluster (オンデマンド HDInsight クラスター)]** を選択します。
+1. **Data Factory エディター**で  **... (その他)**、**[新規計算]** の順にクリックし、**[On-demand HDInsight cluster (オンデマンド HDInsight クラスター)]** を選択します。
 
     ![New compute](./media/data-factory-build-your-first-pipeline-using-editor/new-compute-menu.png)
 2. 次のスニペットをコピーして、 **[Draft-1]** ウィンドウに貼り付けます。 この JSON スニペットは、HDInsight クラスターをオンデマンドで作成するために使用されるプロパティを記述します。
@@ -152,7 +152,7 @@ ms.lasthandoff: 02/03/2017
 この手順では、Hive 処理の入力データと出力データを表すデータセットを作成します。 これらのデータセットは、このチュートリアルで前に作成した **AzureStorageLinkedService** を参照します。 このリンクされたサービスは Azure ストレージ アカウントを指し、データセットは入力データと出力データを保持するストレージのコンテナー、フォルダー、ファイル名を指定します。   
 
 ### <a name="create-input-dataset"></a>入力データセットの作成
-1. **Data Factory エディター**のコマンド バーで **[...] (その他)** をクリックし、**[新しいデータセット]** をクリックして、**[Azure BLOB ストレージ]** を選択します。
+1. **Data Factory エディター**のコマンド バーで  **... (その他)** をクリックし、**[新しいデータセット]** をクリックして、**[Azure BLOB ストレージ]** を選択します。
 
     ![新しいデータセット](./media/data-factory-build-your-first-pipeline-using-editor/new-data-set.png)
 2. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。 この JSON スニペットでは、パイプラインのアクティビティの入力データを表す **AzureBlobInput** というデータセットを作成します。 さらに、**adfgetstarted** という BLOB コンテナーと **inputdata** というフォルダーに入力データが配置されるように指定します。
@@ -196,8 +196,8 @@ ms.lasthandoff: 02/03/2017
 ### <a name="create-output-dataset"></a>出力データセットの作成
 次に、Azure BLOB ストレージに格納される出力データを表す出力データセットを作成します。
 
-1. **Data Factory エディター**のコマンド バーで **[...] (その他)** をクリックし、**[新しいデータセット]** をクリックして、**[Azure BLOB ストレージ]** を選択します。  
-2. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。 この JSON スニペットでは、 **AzureBlobOutput**というデータセットを作成し、Hive スクリプトによって生成されるデータの構造を指定しています。 さらに、**adfgetstarted** という BLOB コンテナーと **partitioneddata** というフォルダーに結果が保存されるように指定します。 **availability** セクションでは、出力データセットが&1; か月ごとに生成されることを指定します。
+1. **Data Factory エディター**のコマンド バーで  **... (その他)** をクリックし、**[新しいデータセット]** をクリックして、**[Azure BLOB ストレージ]** を選択します。  
+2. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。 この JSON スニペットでは、 **AzureBlobOutput**というデータセットを作成し、Hive スクリプトによって生成されるデータの構造を指定しています。 さらに、**adfgetstarted** という BLOB コンテナーと **partitioneddata** というフォルダーに結果が保存されるように指定します。 **availability** セクションでは、出力データセットが 1 か月ごとに生成されることを指定します。
 
     ```JSON
     {
@@ -228,7 +228,7 @@ ms.lasthandoff: 02/03/2017
 ## <a name="create-pipeline"></a>パイプラインの作成
 この手順では、 **HDInsightHive** アクティビティを含む最初のパイプラインを作成します。 入力スライスは 1 か月ごと (frequency: Month、interval: 1) に使用可能であり、出力スライスは 1 か月ごとに生成されるため、アクティビティの scheduler プロパティも 1 か月ごとに設定します。 出力データセットとアクティビティの scheduler の設定は一致している必要があります。 現在、スケジュールは出力データセットによって開始されるため、アクティビティが出力を生成しない場合でも、出力データセットを作成する必要があります。 アクティビティが入力を受け取らない場合は、入力データセットの作成を省略できます。 次の JSON で使用されているプロパティについては、このセクションの最後で説明します。
 
-1. **Data Factory エディター**で、**省略記号 […] (その他のコマンド)** をクリックし、**[新しいパイプライン]** をクリックします。
+1. **Data Factory エディター**で、**省略記号 […]\(その他のコマンド)** をクリックし、**[新しいパイプライン]** をクリックします。
 
     ![[新しいパイプライン] ボタン](./media/data-factory-build-your-first-pipeline-using-editor/new-pipeline-button.png)
 2. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。
@@ -283,7 +283,7 @@ ms.lasthandoff: 02/03/2017
     }
     ```
 
-    この JSON スニペットでは、Hive を使用して HDInsight クラスターのデータを処理する&1; つのアクティビティで構成されるパイプラインを作成します。
+    この JSON スニペットでは、Hive を使用して HDInsight クラスターのデータを処理する 1 つのアクティビティで構成されるパイプラインを作成します。
 
     Hive スクリプト ファイル **partitionweblogs.hql** は、Azure ストレージ アカウント (scriptLinkedService によって指定され、**AzureStorageLinkedService** という名前) および **adfgetstarted** コンテナーの **script** フォルダーに格納されます。
 
@@ -375,10 +375,10 @@ ms.lasthandoff: 02/03/2017
 このチュートリアルでは、HDInsight Hadoop クラスター上で Hive スクリプトを実行してデータを処理するために、Azure データ ファクトリを作成しました。 以下の手順を実行するために、Azure ポータルで Data Factory エディターを使用しました。  
 
 1. Azure **データ ファクトリ**を作成しました。
-2. 次の&2; つの **リンクされたサービス**を作成しました。
+2. 次の 2 つの **リンクされたサービス**を作成しました。
    1. **Azure Storage** のリンクされたサービス。
    2. **Azure HDInsight** オンデマンドのリンクされたサービス。 Azure Data Factory は、入力データを処理し、出力データを生成するために、HDInsight Hadoop クラスターをジャストインタイムで作成します。
-3. パイプラインの HDInsight Hive アクティビティ向けの入出力データを記述する&2; つの **データセット**を作成しました。
+3. パイプラインの HDInsight Hive アクティビティ向けの入出力データを記述する 2 つの **データセット**を作成しました。
 4. **HDInsight Hive** アクティビティを持つ**パイプライン**を作成しました。
 
 ## <a name="next-steps"></a>次のステップ
