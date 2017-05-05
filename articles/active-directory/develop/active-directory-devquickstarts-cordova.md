@@ -17,6 +17,7 @@ ms.author: vittorib
 translationtype: Human Translation
 ms.sourcegitcommit: 0d7333f9752a9e03c1087a4bc588284b418d8926
 ms.openlocfilehash: 4a80252f139d653ff8788b3c1a6a075448cb48e7
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -98,7 +99,7 @@ Azure AD では、既知のアプリケーションにのみトークンを発�
 `DirSearchClient Sample` を実行するには、新しく作成されたアプリに Azure AD Graph API をクエリするためのアクセス許可を付与します。
 
 1. **[設定]** ページで、**[必要なアクセス許可]** を選択し、**[追加]** を選択します。  
-2. Azure Active Directory アプリケーションの場合は、API として **[Microsoft Graph] ** を選択し、**[デリゲートされたアクセス許可]** の下に **[サインイン ユーザーとしてディレクトリにアクセスする]** アクセス許可を追加します。  これにより、アプリケーションが Graph API を使用してユーザーをクエリできるようになります。
+2. Azure Active Directory アプリケーションの場合は、API として **[Microsoft Graph]** を選択し、 **[デリゲートされたアクセス許可]** の下に **[サインイン ユーザーとしてディレクトリにアクセスする]** アクセス許可を追加します。  これにより、アプリケーションが Graph API を使用してユーザーをクエリできるようになります。
 
 ## <a name="step-2-clone-the-sample-app-repository"></a>ステップ 2. サンプル アプリ リポジトリを複製する
 シェルまたはコマンド ラインから、次のコマンドを入力します。
@@ -127,7 +128,7 @@ Cordova アプリケーションを作成するには、複数の方法を使用
 
         cordova plugin add cordova-plugin-whitelist
 
-5. サポートが必要なすべてのプラットフォームを追加します。 実稼働するサンプルにするために、少なくとも次の&1; つのコマンドを実行する必要があります。 iOS を Windows 上で、または Windows を Mac 上でエミュレートすることはできないことに注意してください。
+5. サポートが必要なすべてのプラットフォームを追加します。 実稼働するサンプルにするために、少なくとも次の 1 つのコマンドを実行する必要があります。 iOS を Windows 上で、または Windows を Mac 上でエミュレートすることはできないことに注意してください。
 
         cordova platform add android
         cordova platform add ios
@@ -181,7 +182,7 @@ var authority = "https://login.windows.net/common",
     },
 ```
 この関数を、2 つの主要な部分に分解することによって調べてみましょう。
-このサンプルは、特定の&1; テナントに関連付けるのではなく、どのテナントでも機能するように設計されています。 これは "/common" エンドポイントを使用します。これによってユーザーは、認証時に任意のアカウントを入力することができ、認証要求は、そのアカウントが所属しているテナントに渡されます。
+このサンプルは、特定の 1 テナントに関連付けるのではなく、どのテナントでも機能するように設計されています。 これは "/common" エンドポイントを使用します。これによってユーザーは、認証時に任意のアカウントを入力することができ、認証要求は、そのアカウントが所属しているテナントに渡されます。
 
 メソッドの最初の部分で、トークンが ADAL キャッシュ内に既に格納されているかどうかを検査します。 格納されていた場合、このメソッドでは、トークンを取得したテナントを使用して ADAL の再初期化が行われます。 これは追加のプロンプトを回避するために必要です。"/common" を使用すると、必ずユーザーに新しいアカウントの入力が求められるからです。
 
@@ -193,7 +194,7 @@ var authority = "https://login.windows.net/common",
                 app.context = new Microsoft.ADAL.AuthenticationContext(authority);
             }
 ```
-メソッドの&2; 番目の部分では、適切なトークン要求を実行します。 `acquireTokenSilentAsync` メソッドは、ADAL に、UX を表示せずに指定されたリソースのトークンを返すように要求します。 これが起きる可能性があるのは、キャッシュに既に適切なアクセス トークンが保管されているか、またはプロンプトを表示せずに新しいアクセス トークンを取得するために使用できる更新トークンがある場合です。 試行に失敗する場合は、`acquireTokenAsync` に戻ります。これはユーザーにはっきりと認証を求めるプロンプトを表示します。
+メソッドの 2 番目の部分では、適切なトークン要求を実行します。 `acquireTokenSilentAsync` メソッドは、ADAL に、UX を表示せずに指定されたリソースのトークンを返すように要求します。 これが起きる可能性があるのは、キャッシュに既に適切なアクセス トークンが保管されているか、またはプロンプトを表示せずに新しいアクセス トークンを取得するために使用できる更新トークンがある場合です。 試行に失敗する場合は、`acquireTokenAsync` に戻ります。これはユーザーにはっきりと認証を求めるプロンプトを表示します。
 
 ```javascript
             // Attempt to authorize the user silently
@@ -290,9 +291,4 @@ var authority = "https://login.windows.net/common",
 ここからは上級のさらに興味深いシナリオに移動することができます。 「[Azure AD による Node.js Web API のセキュリティ保護](active-directory-devquickstarts-webapi-nodejs.md)」も試してみてください。
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 
