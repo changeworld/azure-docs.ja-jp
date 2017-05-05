@@ -1,6 +1,6 @@
 ---
 title: "Azure Automation のデータの管理 | Microsoft Docs"
-description: "この記事には、Azure Automation 環境の管理に関する複数のトピックが含まれています。  現在は、データの保持、Azure Automation のバックアップ、Azure Automation での障害復旧が含まれています。"
+description: "この記事には、Azure Automation 環境の管理に関する複数のトピックが含まれています。  現在は、データの保持、Azure Automation のバックアップ、Azure Automation でのディザスター リカバリー が含まれています。"
 services: automation
 documentationcenter: 
 author: SnehaGunda
