@@ -27,14 +27,14 @@ ms.lasthandoff: 02/14/2017
 ## <a name="how-can-i-further-protect-my-data-from-region-wide-disasters-or-accidental-deletions"></a>リージョン全体の障害または誤削除からデータをさらに保護するにはどうすればよいですか
 Azure Data Lake Store アカウントのデータは、リージョン内で発生する一時的なハードウェア障害に対して、自動レプリカによる回復性を備えています。 これにより、持続性と高可用性を確保し、Azure Data Lake Store の SLA を達成しています。 まれに発生するリージョン全体の障害や誤削除からデータをさらに保護する方法に関するガイダンスを以下に示します。
 
-### <a name="disaster-recovery-guidance"></a>障害復旧ガイダンス
-すべての顧客が独自の障害復旧計画を準備することが重要です。 障害復旧計画を作成する場合は、次の Azure ドキュメントをご覧ください。 独自の計画を作成する際に役立つリソースがあります。
+### <a name="disaster-recovery-guidance"></a>災害復旧ガイダンス
+すべての顧客が独自のディザスター リカバリー計画を準備することが重要です。ディザスター リカバリー計画を作成する場合は、次の Azure ドキュメントをご覧ください。独自の計画を作成する際に役立つリソースがあります。
 
-* [Azure アプリケーションの障害復旧と高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
+* [Azure アプリケーションのディザスター リカバリーと高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
 * [Azure の回復性技術ガイダンス](../resiliency/resiliency-technical-guidance.md)
 
 #### <a name="best-practices"></a>ベスト プラクティス
-障害復旧計画のニーズに合った頻度で、別のリージョンにある別の Data Lake Store アカウントに重要なデータをコピーすることをお勧めします。 [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md)、[Azure PowerShell](data-lake-store-get-started-powershell.md)、[Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md) など、データをコピーするさまざまな方法があります。 Azure Data Factory は、データ移動パイプラインを作成して定期的にデプロイできる便利なサービスです。
+ディザスター リカバリー計画のニーズに合った頻度で、別のリージョンにある別の Data Lake Store アカウントに重要なデータをコピーすることをお勧めします。 [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md)、[Azure PowerShell](data-lake-store-get-started-powershell.md)、[Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md) など、データをコピーするさまざまな方法があります。 Azure Data Factory は、データ移動パイプラインを作成して定期的にデプロイできる便利なサービスです。
 
 リージョンの障害が発生しても、データがコピーされているリージョンのデータにアクセスできます。また、[Azure サービス正常性ダッシュボード](https://azure.microsoft.com/status/)を監視することで、世界中の Azure サービスの状態を確認できます。
 
