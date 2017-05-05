@@ -85,7 +85,7 @@ ACS の障害から保護するには、Shared Access Signature (SAS) トーク�
 [Service Bus の仲介型メッセージを使用した geo レプリケーション][Geo-replication with Service Bus Brokered Messages] のサンプルでは、メッセージング エンティティのパッシブ レプリケーションについて説明しています。
 
 ## <a name="next-steps"></a>次のステップ
-障害復旧の詳細については、次の記事を参照してください。
+ディザスター リカバリーの詳細については、次の記事を参照してください。
 
 * [Azure SQL Database の継続性][Azure SQL Database Business Continuity]
 * [回復性に優れた Azure 用アプリケーションの設計][Azure resiliency technical guidance]
