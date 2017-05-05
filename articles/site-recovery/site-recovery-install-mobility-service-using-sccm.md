@@ -53,7 +53,7 @@ ms.lasthandoff: 04/03/2017
 
    `cd %ProgramData%\ASR\home\svsystems\puhsinstallsvc\repository`
 
-6. **Microsoft ASR\_UA\_*バージョン*\_Windows\_GA\_*日付*\_Release.exe **をネットワーク共有上の** MobSvcWindows * * フォルダーにコピーします。
+6. **Microsoft-ASR\_UA\_*バージョン*\_Windows\_GA\_*日付*\_Release.exe** をネットワーク共有上の **MobSvcWindows** フォルダーにコピーします。
 7. 次のコードをコピーして、**install.bat** という名前で **MobSvcWindows** フォルダーに保存します。
 
    > [!NOTE]

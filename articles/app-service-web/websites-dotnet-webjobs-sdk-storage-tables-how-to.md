@@ -32,7 +32,7 @@ ms.lasthandoff: 11/17/2016
 ## <a id="ingress"></a> エンティティをテーブルに追加する方法
 テーブルにエンティティを追加するには、`Table` 属性を `ICollector<T>` または `IAsyncCollector<T>` パラメーター (`T` は、追加するエンティティのスキーマ) に指定します。 この属性のコンストラクターは、テーブルの名前を指定する文字列パラメーターを受け取ります。 
 
-次のコード サンプルでは、`Person`Ingress* という名前のテーブルに * エンティティを追加しています。
+次のコード サンプルでは、 *Ingress* という名前のテーブルに `Person` エンティティを追加しています。
 
         [NoAutomaticTrigger]
         public static void IngressDemo(
