@@ -96,7 +96,7 @@ ADL URI は、Azure Portal と www.portal.azure.com で確認できます。
 CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
 WITH (
     TYPE = HADOOP,
-    LOCATION = 'adl://<AzureDataLake account_name>.azuredatalake.net',
+    LOCATION = 'adl://<AzureDataLake account_name>.azuredatalakestore.net',
     CREDENTIAL = ADLCredential
 );
 ```
