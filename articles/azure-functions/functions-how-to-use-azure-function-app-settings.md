@@ -12,127 +12,125 @@ ms.workload: na
 ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: article
-ms.date: 10/28/2016
-ms.author: rachelap
+ms.date: 04/23/2017
+ms.author: rachelap, glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: b7334f68e4526b716210b28388afcd0ee6e48940
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: e6f5798b260c4923452dcc96c18d4839f5c34bfc
+ms.lasthandoff: 04/25/2017
 
 
 ---
-# <a name="how-to-configure-azure-function-app-settings"></a>Azure Function App の設定の構成方法
-## <a name="settings-overview"></a>設定の概要
-ポータルの左下隅にある **[Function App の設定]** リンクをクリックすると、Azure Function App の設定を管理できます。 Azure Function App の設定は、アプリ内のすべての関数に適用されます。
+# <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Azure Portal で関数アプリを管理する方法 
 
-1. [Azure Portal](http://portal.azure.com) に移動し、Azure アカウントでサインインします。
-2. ポータルの左下隅にある **[Function App の設定]** をクリックします。 クリックすると、いくつかの構成オプションが表示されます。 
+Azure Functions では、関数アプリに個々の関数の実行コンテキストが用意されています。 関数アプリの動作は、特定の関数アプリによってホストされるすべての関数に適用されます。 このトピックでは、Azure Portal で関数アプリを構成して管理する方法について説明します。
 
-![Azure Function App の設定](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
+まず、[Azure Portal](http://portal.azure.com) に移動し、Azure アカウントにサインインします。 ポータルの上部にある検索バーで関数アプリの名前を入力し、一覧からその関数アプリを選択します。 関数アプリを選択すると、次のページが表示されます。
 
-## <a name="develop"></a>開発
-### <a name="app-service-editor"></a>App Service Editor
-App Service Editor は、Json 構成ファイルとコード ファイルを変更するために使用できる高度なポータル内エディターです。 このオプションを選択すると、別のブラウザー タブが基本的なエディターで起動します。 これにより、GitHub との統合、コードの実行とデバッグ、関数アプリの設定変更を行うことができます。
+![Azure Portal の関数アプリの概要](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
+
+## <a name="manage-app-service-settings"></a>関数アプリの [設定] タブ
+
+![Azure Portal の関数アプリの概要。](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
+
+**[設定]** タブでは、関数アプリで使用される関数のランタイム バージョンを更新できます。 また、関数アプリでホストされるすべての関数への HTTP アクセスを制限するホスト キーを管理します。
+
+Functions では、従量課金ホスティング プランと App Service ホスティング プランの両方がサポートされます。 詳細については、「[Azure Functions の適切なサービス プランを選択する](functions-scale.md)」を参照してください。 従量課金プランで予測しやすいように、Functions では、毎日の使用量クォータをギガバイト秒で設定してプラットフォームの使用量を制限できます。 毎日の使用量クォータに達すると、関数アプリは停止されます。 使用量クォータに達した結果として停止した関数アプリは、毎日の使用量クォータの設定と同じ手順で再び有効にすることができます。 課金の詳細については、[Azure Functions の価格のページ](http://azure.microsoft.com/pricing/details/functions/)をご覧ください。   
+
+## <a name="platform-features-tab"></a>[プラットフォーム機能] タブ
+
+![関数アプリの [プラットフォーム機能] タブ。](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-features-tab.png)
+
+関数アプリは、Azure App Service プラットフォームで実行され、管理されます。 このため、Azure の主要 Web ホスティング プラットフォームのほとんどの機能にアクセスできます。 **[プラットフォーム機能]** タブでは、関数アプリで使用できる App Service プラットフォームの多くの機能にアクセスできます。 
+
+> [!NOTE]
+> 関数アプリが従量課金ホスティング プランで実行されている場合は、一部の App Service 機能が使用できません。
+
+このトピックの残りの部分では、Azure Portal で使用できる次の App Service 機能について説明します。
+
++ [App Service Editor](#editor)
++ [アプリケーションの設定](#settings) 
++ [Console](#console)
++ [高度なツール (Kudu)](#kudu)
++ [デプロイ オプション](#deployment)
++ [CORS](#cors)
++ [認証](#auth)
++ [API の定義](#swagger)
+
+App Service の設定を使用する方法の詳細については、[Azure App Service の設定の構成](../app-service-web/web-sites-configure.md)に関するページをご覧ください。
+
+### <a name="editor"></a>App Service Editor
+
+| | |
+|-|-|
+| ![関数アプリの App Service Editor。](./media/functions-how-to-use-azure-function-app-settings/function-app-appsvc-editor.png)  | App Service Editor は、JSON 構成ファイルとコード ファイルを変更するために使用できる高度なポータル内エディターです。 このオプションを選択すると、別のブラウザー タブが基本的なエディターで起動します。 これにより、Git リポジトリとの統合、コードの実行とデバッグ、および関数アプリの設定変更を行うことができます。 このエディターでは、既定の関数アプリ ブレードと比較して、関数の開発環境が強化されています。    |
 
 ![App Service Editor](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
 
-### <a name="application-settings"></a>アプリケーションの設定
-環境変数、Framework バージョン、リモート デバッグ、アプリケーション設定、接続文字列、既定のドキュメントなどを管理します。これらの設定は、Function App に固有です。 
+### <a name="settings"></a>アプリケーションの設定
 
-アプリケーション設定を構成するには、**[アプリケーション設定の構成]** リンクをクリックします。 
+| | |
+|-|-|
+| ![関数アプリのアプリケーションの設定。](./media/functions-how-to-use-azure-function-app-settings/function-app-application-settings.png) | App Service の **[アプリケーションの設定]** ブレードでは、フレームワーク バージョン、リモート デバッグ、アプリ設定、および接続文字列を構成して管理します。 関数アプリとその他の Azure およびサードパーティのサービスを統合する場合、その設定をここで変更できます。 |
 
-![[アプリケーション設定の構成]](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-settings.png)
+![アプリケーション設定の構成](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-settings.png)
 
-### <a name="dev-console"></a>開発者コンソール
-Azure Functions のポータル内コンソールを使用して、DOS 形式のコマンドを実行できます。 一般的なコマンドには、ディレクトリやファイルの作成、ナビゲーション、バッチ ファイルやスクリプトの実行などがあります。 
+### <a name="console"></a>コンソール
 
-> [!NOTE]
-> スクリプトをアップロードできます。ただし、最初に Azure Function の **[詳細設定]** で FTP クライアントを構成する必要があります。
-> 
-> 
+| | |
+|-|-|
+| ![Azure Portal の関数アプリ コンソール](./media/functions-how-to-use-azure-function-app-settings/function-app-console.png) | ポータル内コンソールは、コマンド ラインから関数アプリを操作するのに適した開発者ツールです。 一般的なコマンドには、ディレクトリやファイルの作成、ナビゲーション、バッチ ファイルやスクリプトの実行などがあります。 |
 
-ポータル内コンソールを開くには、**[開発者コンソールを開く]** をクリックします。
+![関数アプリ コンソール](./media/functions-how-to-use-azure-function-app-settings/configure-function-console.png)
 
-![Function App のメモリ サイズの構成](./media/functions-how-to-use-azure-function-app-settings/configure-function-console.png)
+### <a name="kudu"></a>高度なツール (Kudu)
 
-> [!NOTE]
-> コンソールでの作業時にこのような ASCII アートを使用すると、見栄えがよくなります。
-> 
-> 
-
-## <a name="deploy"></a>デプロイ
-### <a name="continuous-integration"></a>継続的インテグレーション
-Function App と GitHub、Visual Studio Team Services などを統合できます。
-
-1. **[継続的インテグレーションの構成]** リンクをクリックします。 オプションが表示された **[デプロイ]** ウィンドウが開きます。
-2. **[デプロイ]** ウィンドウの **[セットアップ]** をクリックし、オプションが 1 つ表示された **[展開元]** ウィンドウを開きます。**[ソースの選択]** をクリックして、使用できるソースを表示します。 
-3. Visual Studio Team Services、OneDrive、ローカルの Git リポジトリ、GitHub、Bitbucket、DropBox、外部リポジトリのいずれかをクリックして、使用できるデプロイ ソースを選択します。 
-   
-    ![Function App の CI の構成](./media/functions-how-to-use-azure-function-app-settings/configure-function-ci.png)
-4. 各種のデプロイ ソースによって求められる資格情報とその他の情報を入力します。 求められる資格情報とその他の情報は、選択したソースによって多少異なることがあります。 
-
-CI をセットアップすると、構成済みのソースにプッシュした連結コードは自動的にこの Function App にデプロイされます。
-
-### <a name="kudu"></a>Kudu
-Kudu を使用すると、Function App の高度な管理機能にアクセスできます。
-
-Kudu を開くには、**[Kudu に移動]** をクリックします。 Kudu Web 管理機能を持つまったく新しいブラウザー ウィンドウが開きます。
-
-> [!NOTE]
-> または次に示すように、関数の URL に "scm" を挿入して **Kudu** を起動することもできます。```https://<YourFunctionName>.scm.azurewebsites.net/```
-> 
-> 
-
-Kudu の Web ページから、システム情報、アプリケーション設定、環境変数、HTTP ヘッダー、サーバー変数などを表示したり管理したりできます。
+| | |
+|-|-|
+| ![Azure Portal の関数アプリ Kudu](./media/functions-how-to-use-azure-function-app-settings/function-app-advanced-tools.png) | App Service 用の高度なツール (Kudu とも呼ばれます) を使用すると、関数アプリの高度な管理機能にアクセスできます。 Kudu から、システム情報、アプリ設定、環境変数、サイト拡張機能、HTTP ヘッダー、およびサーバー変数を管理します。 また、`https://<myfunctionapp>.scm.azurewebsites.net/` など、関数アプリの SCM エンドポイントにアクセスして、**Kudu** を起動することもできます |
 
 ![Kudu の構成](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-kudu.png)
 
-## <a name="manage-app-service-settings"></a>管理: App Service の設定
-他の App Service インスタンスのように Function App を管理します。 このオプションでは、これまでに説明したすべての設定に加えて、さらにいくつかの設定を行うことができます。  
 
-詳細設定を開くには、**[詳細設定]** リンクをクリックします。 
+### <a name="a-namedeploymentdeployment-options"></a><a name="deployment">デプロイ オプション
 
-![App Service の設定の構成](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-settings.png)
+| | |
+|-|-|
+| ![Azure Portal の関数アプリのデプロイ オプション](./media/functions-how-to-use-azure-function-app-settings/function-app-deployment-source.png) | Functions を使用すると、ローカル コンピューターで関数コードを開発できます。 その後、ローカル関数アプリ プロジェクトを Azure にアップロードすることができます。 Functions を使用すると、従来の FTP アップロード以外に、GitHub、VSTS、Dropbox、Bitbucket などの一般的な継続的インテグレーション ソリューションを使用して、関数アプリをデプロイできます。 詳細については、「[Azure Functions の継続的なデプロイ](functions-continuous-deployment.md)」を参照してください。 FTP またはローカル Git を使用して手動でアップロードするには、[デプロイ資格情報を構成](functions-continuous-deployment.md#credentials)する必要もあります。 |
 
-App Service の各設定を構成する方法の詳細については、[Azure App Service の設定の構成](../app-service-web/web-sites-configure.md)に関するページを参照してください。
 
-## <a name="manage-cors"></a>管理: CORS
-通常はセキュリティ上の理由から、ブラウザーからの Ajax 呼び出しなど、外部ソースからホスト (ドメイン) への呼び出しは許可されていません。 そうでなければ、悪意のあるコードが送信され、バックエンドで実行される可能性があります。 最も安全なルートは、信頼できるいくつかの独自のソースを除いて、すべてのコードのソースをブラックリストに登録することです。 クロス オリジン リソース共有 (CORS) を構成することにより、Azure Functions のどのソースからの呼び出しを受け入れるかを構成できます。 CORS を使用すると、Azure Function App で関数を呼び出すことができる JavaScript のソースとなるドメインを一覧表示できます。 
+### <a name="cors"></a>CORS
 
-1. CORS を構成するには、**[CORS の構成]** リンクをクリックします。 
-2. ホワイトリストに登録するドメインを入力します。
+| | |
+|-|-|
+| ![Azure Portal の関数アプリ CORS](./media/functions-how-to-use-azure-function-app-settings/function-app-cors.png) | 悪意のあるコードがサービスで実行されるのを防ぐために、App Service は、外部ソースから関数アプリへの呼び出しをブロックします。 Functions ではクロス オリジン リソース共有 (CORS) がサポートされ、許可されたオリジンの "ホワイトリスト" を定義できます。関数が受け入れるのは、このホワイトリストに登録されたソースからのリモート要求です。  |
 
 ![Function App の CORS の構成](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-cors.png)
 
-## <a name="manage-authenticationauthorization"></a>管理: 認証/承認
-HTTP トリガーを使用する関数について、呼び出しに認証を必須とすることができます。
+### <a name="auth"></a>認証
 
-1. 認証を構成するには、**[認証の構成]** リンクをクリックします。
-2. **[App Service 認証]** ボタンを **[オン]** に切り替えます。
+| | |
+|-|-|
+| ![Azure Portal の関数アプリの認証](./media/functions-how-to-use-azure-function-app-settings/function-app-authentication.png) | 関数が HTTP トリガーを使用するとき、呼び出しに、最初に認証を必須とすることができます。 App Service では、Azure Active Directory 認証と、Facebook、Microsoft、Twitter などのソーシャル プロバイダーを使用したサインインがサポートされます。 特定の認証プロバイダーの構成の詳細については、[Azure App Service での認証の概要](../app-service/app-service-authentication-overview.md)に関するページを参照してください。 |
 
-![Function App の CI の構成](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-authentication.png)
+![関数アプリの認証を構成](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-authentication.png)
 
-ほとんどの認証プロバイダーは API キー/クライアント ID とクライアント シークレットを要求しますが、Microsoft アカウントと Facebook のオプションではスコープ (特定の認証資格情報) を定義することもできます。 Active Directory では、高速または高度な構成設定をいくつか設定できます。
 
-特定の認証プロバイダーの構成の詳細については、[Azure App Service での認証の概要](../app-service/app-service-authentication-overview.md)に関するページを参照してください。
+### <a name="swagger"></a>API の定義
 
-## <a name="manage-api-definition"></a>管理: API の定義
-クライアントが HTTP によってトリガーされる関数をもっと簡単に使用できるようになります。
-
-1. API を設定するには、**[API メタデータの構成]** をクリックします。 
-2. Swagger json ファイルを指す URL を入力します。
+| | |
+|-|-|
+| ![Azure Portal の関数 アプリ API Swagger の定義](./media/functions-how-to-use-azure-function-app-settings/function-app-api-definition.png) | Functions では Swagger がサポートされ、クライアントが、HTTP によってトリガーされる関数をもっと簡単に使用できます。 Swagger を使用した API 定義の作成の詳細については、[Azure での API Apps、ASP.NET、Swagger の使用](../app-service-api/app-service-api-dotnet-get-started.md)に関するページを参照してください。 Functions Proxies を使用して、複数の関数に対して 1 つの API サーフェスを定義することをもできます。 詳細については、「[Azure Functions Proxies の操作](functions-proxies.md)」を参照してください。 |
 
 ![Function App の API の構成](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-apidef.png)
 
-Swagger を使用した API 定義の作成の詳細については、[Azure での API Apps、ASP.NET、Swagger の使用](../app-service-api/app-service-api-dotnet-get-started.md)に関するページを参照してください。
 
-## <a name="daily-usage-quota"></a>毎日の使用量クォータ
-
-Azure Functions では、毎日の利用量クォータを設定することで、プラットフォームの使用量を予想どおりに制限できます。 毎日の利用量クォータに達すると、Function App は停止されます。 利用量クォータに達した結果として停止した Function App は、毎日の利用量クォータの設定と同じ手順で再び有効にすることができます。 利用量クォータの単位は、課金単位であるギガバイト秒 (GB 秒) です。課金モデルの詳細については、[Azure Functions の価格](http://azure.microsoft.com/pricing/details/functions/)に関するページを参照してください。 
-
-![Function App のメモリ サイズの構成](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-quota.png)
 
 ## <a name="next-steps"></a>次のステップ
+
++ [Azure App Service の設定の構成](../app-service-web/web-sites-configure.md)
++ [Azure Functions の継続的なデプロイ](functions-continuous-deployment.md)
+
 [!INCLUDE [Getting Started Note](../../includes/functions-get-help.md)]
 
 

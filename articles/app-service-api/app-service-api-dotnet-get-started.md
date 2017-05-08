@@ -162,7 +162,7 @@ Swagger のメタデータは、ASP.NET Web API プロジェクトで [Swashbuck
    
     ![Swagger UI available methods](./media/app-service-api-dotnet-get-started/methods.png)
 9. リストの先頭にある **[Get]** ボタンをクリックします。
-10. **[Parameters (パラメーター)]** セクションに `owner` パラメーターの値としてアスタリスク (*) を入力し、**[Try it out (試してみる)]** をクリックします。
+10. **[Parameters (パラメーター)]** セクションに `owner` パラメーターの値としてアスタリスク を入力し、**[Try it out (試してみる)]** をクリックします。
     
     今後のチュートリアルで認証を追加すると、中間層からデータ層に実際のユーザー ID が渡されます。 ここで、すべてのタスクに、所有者 ID としてアスタリスクが割り当てられ、認証が無効な状態でアプリケーションが実行されます。
     

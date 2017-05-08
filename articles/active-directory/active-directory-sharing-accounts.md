@@ -3,7 +3,7 @@ title: "Azure AD を使用したアカウントの共有 | Microsoft Docs"
 description: "Azure Active Directory を使用してオンプレミスのアプリケーションおよびコンシューマー クラウド サービス用のアカウントを組織で安全に共有できるようにする方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: msStevenPo
+author: curtand
 manager: femila
 editor: 
 ms.assetid: e2d77104-d978-46a3-bfea-03ffdf3b61e6
@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2016
-ms.author: stevenpo
+ms.date: 05/04/2017
+ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: b689a0033103231d560c9ba4b349e675f304e35c
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -73,10 +74,5 @@ Multi-Factor Authentication (MFA) で共有アカウントの安全性を強化 
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 * [条件付きアクセスを使用したアプリケーションの保護](active-directory-conditional-access.md)
 * [セルフサービス グループの管理/SSAA](active-directory-accessmanagement-self-service-group-management.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

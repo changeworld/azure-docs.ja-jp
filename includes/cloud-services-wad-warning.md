@@ -13,8 +13,3 @@
 >
 > 更新されたロールのデプロイが完了したら、Azure Portal または PowerShell で拡張機能を再度有効化することができます。
 >
-
-
-<!--HONumber=Jan17_HO3-->
-
-

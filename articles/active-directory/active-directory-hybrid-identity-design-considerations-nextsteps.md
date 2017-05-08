@@ -15,8 +15,9 @@ ms.workload: identity
 ms.date: 02/14/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f64ced0a708516c12110bb6bbf3a70a438ddcbb5
+ms.sourcegitcommit: cfb4104dd58f2af8b3ffed7491c91ae6c6557ddc
+ms.openlocfilehash: ba0d31a8f718cc5577fe779061db2144d4295cbb
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -48,10 +49,5 @@ ms.openlocfilehash: f64ced0a708516c12110bb6bbf3a70a438ddcbb5
 
 ## <a name="see-also"></a>関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

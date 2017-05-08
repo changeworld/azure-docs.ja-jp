@@ -14,7 +14,3 @@ Azure Storage .NET クライアント ライブラリ向けのサンプル リ�
 * [REST API での Import/Export ジョブの管理](https://azure.microsoft.com/resources/samples/storage-dotnet-import-export-job-management/)
 * [MyDriving - Azure の IoT とモバイル アプリケーション サンプル](https://azure.microsoft.com/resources/samples/mydriving/)
 * [.NET ストレージ クライアント ライブラリのサンプル](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted)
-
-<!--HONumber=Jan17_HO3-->
-
-

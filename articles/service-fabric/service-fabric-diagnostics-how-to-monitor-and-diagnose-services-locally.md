@@ -12,12 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/04/2017
+ms.date: 04/24/2017
 ms.author: dekapur
 translationtype: Human Translation
-ms.sourcegitcommit: cf8f717d5343ae27faefdc10f81b4feaccaa53b9
-ms.openlocfilehash: 5421cf66449892bb7bbc46cd8727a0642b7d66f3
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 29dd21511b23e6dffdb1daf8b75ece28989c16e7
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -30,13 +30,13 @@ ms.lasthandoff: 01/24/2017
 
 監視、検出、診断、トラブルシューティングにより、ユーザー エクスペリエンスの中断を最小限に抑えてサービスを続行できます。 監視と診断は実際にデプロイされる運用環境で不可欠ですが、実際にセットアップに移るときに動作するように、サービスを開発している間に同様のモデルを採用するかどうかで、その有効性が左右されます。 Service Fabric により、サービスの開発者は、1 台のコンピューターのローカルの開発のセットアップと実際の運用クラスターのセットアップの両方でシームレスに操作できる診断を簡単に実装できます。
 
-## <a name="the-benefits-of-event-tracing-for-windows"></a>Windows イベント トレーシングの利点
-[Event Tracing for Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) では、Service Fabric のメッセージをトレースするための推奨されるテクノロジです。 その理由は、次のとおりです。
+## <a name="event-tracing-for-windows"></a>Windows イベント トレーシング
+[Event Tracing for Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) では、Service Fabric のメッセージをトレースするための推奨されるテクノロジです。 ETW を使用する利点は次のとおりです。
 
 * **ETW は、高速です。** コードの実行時間にほとんど影響を与えない追跡テクノロジとして構成されています。
 * **ETW トレースは、ローカル開発環境から実際のクラスターのセットアップに至るまでシームレスに機能します。** つまり、コードを実際のクラスターにデプロイする準備ができたら、トレース コードを書き直す必要はありません。
 * **Service Fabric のシステム コードも内部のトレースに ETW を使用します。** これを使用すると、アプリケーションのトレースと Service Fabric のシステム トレースを交互に配置した状態で表示できます。 また、アプリケーションのコードと基盤となるシステムのイベントの間の順序と相互関係が理解しやすくなります。
-* **ETW イベントを表示する Service Fabric のVisual Studio ツールが内蔵でサポートされます。**
+* **ETW イベントを表示する Service Fabric のVisual Studio ツールが内蔵でサポートされます。** ETW イベントは、Service Fabric で Visual Studio が正しく構成されていると、Visual Studio の診断イベント ビューで表示されます。 
 
 ## <a name="view-service-fabric-system-events-in-visual-studio"></a>Visual Studio で Service Fabric のシステム イベントを表示する
 Service Fabric は ETW イベントを出力して、アプリケーションの開発者が、プラットフォームで起こっていることを理解できるようにします。 まだ実行していない場合は、 [Visual Studio での初めてのアプリケーション作成](service-fabric-create-your-first-application-in-visual-studio.md)に関するページの手順に従ってください。 この情報は、アプリケーションを起動して実行し、診断イベント ビューアーにトレース メッセージを表示するのに役立ちます。

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 04/10/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: ba85ab354d051990d0a9bae089e45c8df7ade4ea
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 626b152b8511995413af39a41161c29c88429605
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -36,7 +36,7 @@ ms.lasthandoff: 04/12/2017
 ## <a name="checklist-before-moving-resources"></a>リソースの移動前のチェック リスト
 リソースを移動する前に実行すべき重要な手順がいくつかあります。 これらの条件を確認することにより、エラーの発生を回避できます。
 
-1. 移動元と移動先のサブスクリプションが同じ [Active Directory テナント](../active-directory/active-directory-howto-tenant.md)に存在している必要があります。 両方のサブスクリプションに同じテナント ID があることを確認するには、Azure PowerShell または Azure CLI を使用します。
+1. 移動元と移動先のサブスクリプションが同じ [Azure Active Directory テナント](../active-directory/active-directory-howto-tenant.md)内に存在している必要があります。 両方のサブスクリプションに同じテナント ID があることを確認するには、Azure PowerShell または Azure CLI を使用します。
 
   Azure PowerShell では、次を使用します。
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 04/12/2017
   az account show --subscription "Example Subscription" --query tenantId
   ```
 
-  移動元と移動先のサブスクリプションのテナント ID が同じでない場合は、サブスクリプションのディレクトリの変更を試みることができます。 ただし、このオプションは、(組織アカウントではなく) Microsoft アカウントでログインしているサービス管理者のみが使用できます。 ディレクトリの変更を試みるには、[クラシック ポータル](https://manage.windowsazure.com/)にログインし、**[設定]** を選択して、サブスクリプションを選択します。 **[ディレクトリの編集]** アイコンを使用できる場合は、そのアイコンを選択して、関連付けられている Active Directory を変更します。 
+  移動元と移動先のサブスクリプションのテナント ID が同じでない場合は、サブスクリプションのディレクトリの変更を試みることができます。 ただし、このオプションは、(組織アカウントではなく) Microsoft アカウントでログインしているサービス管理者のみが使用できます。 ディレクトリの変更を試みるには、[クラシック ポータル](https://manage.windowsazure.com/)にログインし、**[設定]** を選択して、サブスクリプションを選択します。 **[ディレクトリの編集]** アイコンを使用できる場合は、そのアイコンを選択して、関連付けられている Azure Active Directory を変更します。 
 
   ![ディレクトリを編集する](./media/resource-group-move-resources/edit-directory.png) 
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 04/12/2017
 
 次の場合はサポートに問い合わせる必要があります。
 
-* リソースを新しい Azure アカウント (および Active Directory テナント) に移動する。
+* リソースを新しい Azure アカウント (および Azure Active Directory テナント) に移動する。
 * クラシック リソースを移動するときに制限事項に関連する問題が発生した。
 
 ## <a name="services-that-enable-move"></a>移動が可能なサービス

@@ -1,6 +1,6 @@
 ---
 title: "Service Fabric と Linux におけるコンテナーのデプロイ | Microsoft Docs"
-description: "Service Fabric と、Docker コンテナーを使用してマイクロサービス アプリケーションをデプロイする方法。 この記事では、Service Fabric が提供するコンテナー用の機能と、クラスターに Docker コンテナー イメージをデプロイする方法について説明しています。"
+description: "Service Fabric と、Linux コンテナーを使用してマイクロサービス アプリケーションをデプロイする方法。 この記事では、Service Fabric がコンテナーに提供する機能と、クラスターに Linux コンテナー イメージをデプロイする方法について説明します"
 services: service-fabric
 documentationcenter: .net
 author: msfussell
@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 3/24/2017
 ms.author: msfussell
 translationtype: Human Translation
-ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
-ms.openlocfilehash: 01c0d7e8430df758749f7a524dd3b7771b24fac1
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: fb73507ed596a65607d60f59d6834cc8bf5734f7
+ms.lasthandoff: 04/26/2017
 
 
 ---
-# <a name="deploy-a-docker-container-to-service-fabric"></a>Service Fabric への Docker コンテナーのデプロイ
+# <a name="deploy-a-linux-container-to-service-fabric"></a>Service Fabric への Linux コンテナーのデプロイ
 > [!div class="op_single_selector"]
 > * [Windows コンテナーのデプロイ](service-fabric-deploy-container.md)
-> * [Docker コンテナーのデプロイ](service-fabric-deploy-container-linux.md)
+> * [Linux コンテナーのデプロイ](service-fabric-deploy-container-linux.md)
 >
 >
 

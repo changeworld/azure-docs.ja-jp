@@ -2,6 +2,7 @@
 ## [特権アクセスのセキュリティ保護](active-directory-securing-privileged-access.md)
 ## [Azure AD PIMとは](../active-directory-privileged-identity-management-configure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [ロール](../active-directory-privileged-identity-management-roles.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+## [Privileged Identity Management の承認ワークフロー](azure-ad-pim-approval-workflow.md)
 
 # 作業開始
 ## [サブスクリプションの要件](subscription-requirements.md)

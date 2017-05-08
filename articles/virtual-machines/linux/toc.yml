@@ -31,6 +31,8 @@
     href: tutorial-load-balancer.md
   - name: "8 - ネットワークの管理"
     href: tutorial-virtual-network.md
+  - name: "9 - VM のセキュリティの管理"
+    href: tutorial-azure-security.md
 - name: "サンプル"
   items:
   - name: "Azure CLI"

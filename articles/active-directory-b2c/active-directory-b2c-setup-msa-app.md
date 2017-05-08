@@ -17,6 +17,7 @@ ms.author: swkrish
 translationtype: Human Translation
 ms.sourcegitcommit: e37c48d6c92a8a2cd480458abdff0a3a1ca9338f
 ms.openlocfilehash: 866d2b54b0b517cb9984fd5e98840fe3a6c69965
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -59,10 +60,5 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Microso
 5. **[ID プロバイダーの種類]** をクリックし、**[Microsoft アカウント]** を選択して、**[OK]** をクリックします。
 6. **[この ID プロバイダーを設定する]** をクリックし、前に作成した Microsoft アカウント アプリケーションのアプリケーション ID とパスワードを入力します。
 7. **[OK]** をクリックし、**[作成]** をクリックして Microsoft アカウントの構成を保存します。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

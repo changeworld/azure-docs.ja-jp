@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 8ded51e2e34aa1583b249af11a260eaa4304f79f
-ms.lasthandoff: 04/19/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: fb660384f2f9f569bcfbe7fa7d5c1f7ce772cacd
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -83,6 +83,9 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 [Backup-ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/backup-asdatabase-cmdlet) コマンドレットを使用します。
 
 ## <a name="restore"></a>復元
+復元の際、バックアップ ファイルは、サーバー用に構成したストレージ アカウントにある必要があります。 バックアップ ファイルをオンプレミスの場所からストレージ アカウントに移動する必要がある場合は、[Microsoft Azure ストレージ エクスプローラー](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)か、[AzCopy](../storage/storage-use-azcopy.md) コマンドライン ユーティリティを使用してください。 
+
+オンプレミスの SQL Server Analysis Services サーバーから表形式の 1200 モデル データベースを復元する場合は、まずモデルのロールからすべてのドメイン ユーザーを削除し、それを Azure Active Directory ユーザーとしてロールに追加し直す必要があります。 ロールは同じものとなります。
 
 ### <a name="to-restore-by-using-ssms"></a>SSMS を使って復元するには
 
@@ -103,5 +106,8 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 
 
 ## <a name="related-information"></a>関連情報
-[Azure ストレージ アカウント](../storage/storage-create-storage-account.md)   
+
+[Azure ストレージ アカウント](../storage/storage-create-storage-account.md)  
+[高可用性](analysis-services-bcdr.md)     
 [Azure Analysis Services を管理する](analysis-services-manage.md)
+

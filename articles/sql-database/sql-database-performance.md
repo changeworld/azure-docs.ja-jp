@@ -16,15 +16,16 @@ ms.workload: data-management
 ms.date: 07/19/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: 071cc504cc4111e20391af86ffdc7819644ec434
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 155e9ddb48c65ad1648e18eb306c9badc2cb27e8
+ms.lasthandoff: 04/20/2017
 
 
 ---
 # <a name="sql-database-performance-insight"></a>SQL Database Performance Insight
 Azure SQL Database では、インテリジェントなチューニング操作と推奨事項を提供することにより、データベースのパフォーマンスを識別、向上するためのパフォーマンス ツールを提供します。 
 
-1. [Azure Portal](http://portal.azure.com) でデータベースを参照し、**[All settings]** > **[パフォーマンス]** > **[概要]** の順にクリックし、**[パフォーマンス]**ページを開きます。 
+1. [Azure Portal](http://portal.azure.com) でデータベースを参照し、**[すべての設定]** > **[パフォーマンス]** > **[概要]** の順にクリックし、**[パフォーマンス]** ページを開きます。 
 2. **[Recommendations]** をクリックして [[SQL Database Advisor]](#sql-database-advisor) を開き、**[Queries]** をクリックして [[Query Performance Insight]](#query-performance-insight) を開きます。
    
     ![ビュー パフォーマンス](./media/sql-database-performance/entries.png)
@@ -54,12 +55,7 @@ Azure SQL Database では、インテリジェントなチューニング操作�
 * クエリの詳細にドリルダウンする機能。 
 
 ## <a name="additional-resources"></a>その他のリソース
-* [データベースが&1; 台の場合の Azure SQL Database のパフォーマンス ガイダンス](sql-database-performance-guidance.md)
-* [エラスティック プールの使用に適した状況](sql-database-elastic-pool-guidance.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
+* [データベースが 1 台の場合の Azure SQL Database のパフォーマンス ガイダンス](sql-database-performance-guidance.md)
+* [エラスティック プールの使用に適した状況](sql-database-elastic-pool.md)
 
 

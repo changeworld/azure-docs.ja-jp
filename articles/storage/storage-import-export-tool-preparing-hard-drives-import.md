@@ -12,12 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2017
+ms.date: 04/21/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: d95aaf81ee4d9c19549a57dd1af0f79a1e1bffdd
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 04ac94a1c07c3ad2a9384f5cf5fca1341ebfa0d8
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -84,8 +84,8 @@ BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
 
 | フィールド | Description |
 | --- | --- |
-| BasePath | **[必須]**<br/>このパラメーターの値は、インポートするデータがあるソースを表します。ツールはこのパスにあるすべてのデータを繰り返しコピーします。<br><br/>**使用可能な値**: ローカル コンピューター上の有効なパスまたは有効な共有パスを指定する必要があります。ユーザーがアクセスできるパスを指定してください。 このディレクトリ パスには絶対パスを使用します (相対パスは不可)。末尾が "\\" のパスはディレクトリを表します。末尾が "\\" でないパスはファイルを表します。<br/>このフィールドでは正規表現を使用できません。 パスにスペースが含まれる場合は、"" で囲んでください。<br><br/>**例**: "c:\Directory\c\Directory\File.txt"<br>"\\\\FBaseFilesharePath.domain.net\sharename\directory 1"  |
-| DstBlobPathOrPrefix | **[必須]**<br/> Microsoft Azure ストレージ アカウントのインポート先の仮想ディレクトリへのパス。 既存の仮想ディレクトリがある場合とない場合があります。 仮想ディレクトリがない場合は、インポート/エクスポート サービスによって作成されます。<br/><br/>コピー先の仮想ディレクトリや BLOB を指定する場合は、有効なコンテナー名を使用してください。 コンテナー名は小文字にする必要があります。 コンテナーの名前付け規則については、「[Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/fileservices/naming-and-referencing-containers--blobs--and-metadata)」(コンテナー、BLOB、メタデータの命名および参照) を参照してください。ルートのみ指定すると、ソースのディレクトリ構造がインポート先の BLOB コンテナーにレプリケートされます。ソースとは別のディレクトリ構造が必要な場合は、CSV のマッピングの複数の行が使用されます。<br/><br/>コンテナーまたは BLOB プレフィックス (例: music/70s/) を指定できます。 インポート先のディレクトリの先頭はコンテナー名にして、その後にスラッシュ (/) を続けます。末尾が "/" の仮想 BLOB ディレクトリ (省略可能) を追加することもできます。<br/><br/>インポート先のコンテナーがルート コンテナーの場合は、スラッシュを含むルート コンテナーを明示的に指定する必要があります (例: $root/)。 ルート コンテナーにある BLOB の名前に "/" を含めることはできないため、インポート先のディレクトリがルート コンテナーの場合、ソース ディレクトリのサブディレクトリはコピーされません。<br/><br/>**例**<br/>インポート先の BLOB パスが https://mystorageaccount.blob.core.windows.net/video の場合、このフィールドの値は video/ になります。  |
+| BasePath | **[必須]**<br/>このパラメーターの値は、インポートするデータがあるソースを表します。ツールはこのパスにあるすべてのデータを繰り返しコピーします。<br><br/>**使用可能な値**: ローカル コンピューター上の有効なパスまたは有効な共有パスを指定する必要があります。ユーザーがアクセスできるパスを指定してください。 このディレクトリ パスには絶対パスを使用します (相対パスは不可)。末尾が "\\" のパスはディレクトリを表します。末尾が "\\" でないパスはファイルを表します。<br/>このフィールドでは正規表現を使用できません。 パスにスペースが含まれる場合は、"" で囲んでください。<br><br/>**例**: "c:\Directory\c\Directory\File.txt"<br>"\\\\FBaseFilesharePath.domain.net\sharename\directory\"  |
+| DstBlobPathOrPrefix | **[必須]**<br/> Microsoft Azure ストレージ アカウントのインポート先の仮想ディレクトリへのパス。 既存の仮想ディレクトリがある場合とない場合があります。 仮想ディレクトリがない場合は、インポート/エクスポート サービスによって作成されます。<br/><br/>コピー先の仮想ディレクトリや BLOB を指定する場合は、有効なコンテナー名を使用してください。 コンテナー名は小文字にする必要があります。 コンテナーの名前付け規則については、「[Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」(コンテナー、BLOB、メタデータの命名および参照) を参照してください。ルートのみ指定すると、ソースのディレクトリ構造がインポート先の BLOB コンテナーにレプリケートされます。ソースとは別のディレクトリ構造が必要な場合は、CSV のマッピングの複数の行が使用されます。<br/><br/>コンテナーまたは BLOB プレフィックス (例: music/70s/) を指定できます。 インポート先のディレクトリの先頭はコンテナー名にして、その後にスラッシュ (/) を続けます。末尾が "/" の仮想 BLOB ディレクトリ (省略可能) を追加することもできます。<br/><br/>インポート先のコンテナーがルート コンテナーの場合は、スラッシュを含むルート コンテナーを明示的に指定する必要があります (例: $root/)。 ルート コンテナーにある BLOB の名前に "/" を含めることはできないため、インポート先のディレクトリがルート コンテナーの場合、ソース ディレクトリのサブディレクトリはコピーされません。<br/><br/>**例**<br/>インポート先の BLOB パスが https://mystorageaccount.blob.core.windows.net/video の場合、このフィールドの値は video/ になります。  |
 | BlobType | **[省略可能]** block &#124; page<br/>現在、インポート/エクスポート サービスは 2 種類の BLOB をサポートしています  (ページ BLOB とブロック BLOB)。既定では、すべてのファイルがブロック BLOB としてインポートされます。 また、\*.vhd と \*.vhdx はページ BLOB としてインポートされます。ブロック BLOB と ページ BLOB に使用できるサイズには制限があります。 詳細については、[Azure Storage のスケーラビリティ ターゲット](storage-scalability-targets.md#scalability-targets-for-blobs-queues-tables-and-files)に関するページを参照してください。  |
 | Disposition | **[省略可能]** rename &#124; no-overwrite &#124; overwrite <br/> このフィールドは、インポート中 ( ディスクからストレージ アカウントへのデータのアップロード中) のコピー動作を指定します。使用可能なオプションは rename &#124; overwite &#124; no-overwrite です。何も指定しない場合、既定値は "rename" になります。 <br/><br/>**rename**: 同名のオブジェクトが存在する場合に、インポート先にコピーを作成します。<br/>overwrite: ファイルを新しいファイルで上書きします。 更新日の最も新しいファイルで上書きされます。<br/>**no-overwrite**: 既存のファイルがある場合は、ファイルの書き込みをスキップします。|
 | MetadataFile | **[省略可能]** <br/>このフィールドの値は、オブジェクトのメタデータを保持するか、またはカスタム メタデータを指定する必要がある場合に指定可能なメタデータ ファイルです。 インポート先の BLOB のメタデータ ファイルへのパスです。 詳細については、「[Import/Export サービスのメタデータとプロパティ ファイルの形式](storage-import-export-file-format-metadata-and-properties.md)」を参照してください。 |
