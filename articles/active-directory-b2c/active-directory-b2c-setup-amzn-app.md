@@ -17,6 +17,7 @@ ms.author: swkrish
 translationtype: Human Translation
 ms.sourcegitcommit: e37c48d6c92a8a2cd480458abdff0a3a1ca9338f
 ms.openlocfilehash: f3154968710384e3f6186b277c4cae33b25c77d2
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -47,10 +48,5 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Amazon 
 5. **[ID プロバイダーの種類]** をクリックし、**[Amazon]** を選択して、**[OK]** をクリックします。
 6. **[この ID プロバイダーを設定する]** をクリックし、先に作成した Amazon アプリケーションのクライアント ID とクライアント シークレットを入力します。
 7. **[OK]** をクリックし、**[作成]** をクリックして Amazon の構成を保存します。
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

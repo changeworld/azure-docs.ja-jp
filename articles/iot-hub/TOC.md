@@ -81,6 +81,7 @@
 ### ダイレクト メソッドの使用
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-direct-methods.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-direct-methods.md)
+#### [Java バックエンド/Java デバイス](iot-hub-java-java-direct-methods.md)
 ### デバイス管理の開始
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-device-management-get-started.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-device-management-get-started.md)

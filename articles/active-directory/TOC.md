@@ -1,9 +1,9 @@
 # 概要
 ## [Azure Active Directory とは](active-directory-whatis.md)
 ## [エディションの選択](active-directory-editions.md)
-## [Azure の ID 管理について](fundamentals-identity.md)
-## [Azure AD ポータルのエクスペリエンスをプレビューする](active-directory-preview-explainer.md)
 
+## [Azure の ID 管理について](identity-fundamentals.md)
+## [Azure ポータルのエクスペリエンスをプレビューします。](active-directory-preview-explainer.md)
 
 # 作業開始
 ## [Azure AD テナントを取得する](active-directory-howto-tenant.md)
@@ -58,6 +58,7 @@
 ### [グループをすべて表示する](active-directory-groups-view-azure-portal.md)
 ### [専用グループの有効化](active-directory-accessmanagement-dedicated-groups.md)
 ### [SaaS アプリへのグループ アクセスの追加](active-directory-accessmanagement-group-saasapps.md)
+### [削除された Office 365 グループを復元する](active-directory-groups-restore-azure-portal.md)
 ### グループ設定の管理
 #### [Azure Portal](active-directory-groups-settings-azure-portal.md)
 #### [コマンドレット](active-directory-accessmanagement-groups-settings-cmdlets.md)
@@ -110,24 +111,27 @@
 ##### [不明なソース](active-directory-reporting-sign-ins-from-unknown-sources.md)
 ##### [異常なサインイン](active-directory-reporting-users-with-anomalous-sign-in-activity.md)
 
-## [パスワードの管理](active-directory-manage-passwords.md)
-### [パスワードのリセットまたは変更](active-directory-passwords-update-your-own-password.md)
-### [セルフサービスのパスワード リセットのための登録](active-directory-passwords-reset-register.md)
-### [管理者によるセルフサービスのパスワード リセットの有効化](active-directory-passwords.md)
-### [パスワード管理について](active-directory-passwords-how-it-works.md)
-### [パスワードに関するポリシーと制限について](active-directory-passwords-policy.md)
-### パスワードをリセットする
-#### [Azure Portal](active-directory-users-reset-password-azure-portal.md)
-#### [クラシック ポータル](active-directory-create-users-reset-password.md)
-### [有効期限ポリシーの設定](active-directory-passwords-set-expiration-policy.md)
-### パスワード管理を有効にする
-#### [作業開始](active-directory-passwords-getting-started.md)
-#### [デプロイする](active-directory-passwords-best-practices.md)
-#### [カスタマイズ](active-directory-passwords-customize.md)
-#### [レポートを表示する](active-directory-passwords-get-insights.md)
-#### [詳細情報](active-directory-passwords-learn-more.md)
-#### [FAQ](active-directory-passwords-faq.md)
-#### [トラブルシューティング](active-directory-passwords-troubleshoot.md)
+## [パスワードの管理](active-directory-passwords.md)
+### ユーザー ドキュメント
+#### [パスワードのリセットまたは変更](active-directory-passwords-update-your-own-password.md)
+#### [セルフサービスのパスワード リセットのための登録](active-directory-passwords-reset-register.md)
+### [クイック スタート: セルフサービスのパスワード リセット](active-directory-passwords-getting-started.md)
+### [SSPR のライセンス](active-directory-passwords-licensing.md)
+### [SSPR のデプロイ](active-directory-passwords-best-practices.md)
+### IT 管理者: パスワードのリセット
+#### [Azure ポータル](active-directory-users-reset-password-azure-portal.md)
+#### [Azure クラシック ポータル](active-directory-create-users-reset-password.md)
+### [SSPR ポリシーについて](active-directory-passwords-policy.md)
+### [パスワード リセットについて](active-directory-passwords-how-it-works.md)
+### [SSPR のカスタマイズ](active-directory-passwords-customize.md)
+### [SSPR によって使用されるデータ](active-directory-passwords-data.md)
+### [SSPR のレポート](active-directory-passwords-reporting.md)
+### [Azure AD Connect](./connect/active-directory-aadconnect.md)
+### [パスワード ライトバック](active-directory-passwords-writeback.md)
+### [パスワード ハッシュの同期](./connect/active-directory-aadconnectsync-implement-password-synchronization.md#how-password-synchronization-works)
+### [トラブルシューティング](active-directory-passwords-troubleshoot.md)
+### [FAQ](active-directory-passwords-faq.md)
+
 
 ## デバイスを管理する
 ### [デバイスを登録する](active-directory-device-registration-overview.md)
@@ -289,6 +293,7 @@
 ##### [PowerShell](role-based-access-control-manage-access-powershell.md)
 ##### [REST](role-based-access-control-manage-access-rest.md)
 #### [トラブルシューティング](role-based-access-control-troubleshooting.md)
+#### [リソース プロバイダー操作](role-based-access-control-resource-provider-operations.md)
 ### [トークンの有効期間を構成する](active-directory-configurable-token-lifetimes.md)
 
 ## ID をセキュリティで保護する
@@ -341,7 +346,7 @@
 
 
 # リファレンス
-## [PowerShell コマンドレット](/powershell/ )
+## [PowerShell コマンドレット](/powershell/azure/overview)
 ## [Java API リファレンス](/java/api)
 ## [.NET API](/active-directory/adal/microsoft.identitymodel.clients.activedirectory)
 ## [サービスの制限と制約](active-directory-service-limits-restrictions.md)

@@ -9,14 +9,14 @@
 ## クイックスタート ガイド
 ### [iOS アプリを構築する](active-directory-b2c-devquickstarts-ios.md)
 ### [Android アプリを構築する](active-directory-b2c-devquickstarts-android.md)
-### [Node.Js Web API を構築する](active-directory-b2c-devquickstarts-api-node.md)
-### [.NET Web アプリを構築する](active-directory-b2c-devquickstarts-web-dotnet.md)
-#### [ASP.NET web アプリにサインアップおよびサインインする](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
+### .NET Web アプリを構築する
+#### [.NET Web アプリにサインアップおよびサインインする](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
+#### [.NET Web アプリから Web API を呼び出す](active-directory-b2c-devquickstarts-web-api-dotnet.md)
 ### [.NET Web API を構築する](active-directory-b2c-devquickstarts-api-dotnet.md)
-### [Windows デスクトップ アプリを構築する](active-directory-b2c-devquickstarts-native-dotnet.md)
-### [.NET Web アプリから Web API を呼び出す](active-directory-b2c-devquickstarts-web-api-dotnet.md)
+### [Node.Js Web アプリを構築する](active-directory-b2c-devquickstarts-web-node.md)
+### [Node.Js Web API を構築する](active-directory-b2c-devquickstarts-api-node.md)
+### [.NET デスクトップ アプリを構築する](active-directory-b2c-devquickstarts-native-dotnet.md)
 ### [Azure AD Graph API を使用する](active-directory-b2c-devquickstarts-graph-dotnet.md)
-### [サインインを Node JS Web アプリに追加する](active-directory-b2c-devquickstarts-web-node.md)
 ## [よく寄せられる質問](active-directory-b2c-faqs.md)
 
 # 方法
@@ -53,7 +53,7 @@
 
 # リソース
 ## [料金](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
-## [Azure フィードバック フォーラム](http://feedback.azure.com/forums/169401-azure-active-directory)
+## [Azure AD B2C フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c) 
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=active-directory-b2c)
 ## [サポート](active-directory-b2c-support.md)

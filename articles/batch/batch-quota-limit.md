@@ -12,13 +12,13 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 04/24/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 4d2ba8d3a5efad1be3395aae732874e7a770f64b
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 56e8f5579da2b5bed7975f25f0779c54d70cb886
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 04/06/2017
 
 他の Azure サービスと同様に、Batch サービスに関連付けられている特定のリソースにも制限があります。 これらの制限の多くは、Azure によって、サブスクリプションまたはアカウント レベルで適用される既定のクォータです。 ここでは、これらの既定の設定と、クォータの引き上げを要求する方法について説明します。
 
-Batch ワークロードの設計やスケールアップを行う際は、これらのクォータに留意してください。 たとえば、プールのコンピューティング ノード数がターゲットとして指定した数に満たない場合は、Batch アカウントのコア クォータ制限に達している可能性があります。
+Batch ワークロードの設計やスケールアップを行う際は、これらのクォータに留意してください。 たとえば、プールのコンピューティング ノード数がターゲットとして指定した数に満たない場合は、Batch アカウントのコア クォータ制限、またはサブスクリプションのリージョンの VM コア クォータの制限に達している可能性があります。
 
 1 つの Batch アカウントで複数の Batch ワークロードを実行することも、同じサブスクリプションで異なる Azure リージョンの複数の Batch アカウントにワークロードを分散することもできます。
 
@@ -39,6 +39,30 @@ Batch で実稼働ワークロードを実行する予定がある場合は、1 
 
 ## <a name="resource-quotas"></a>リソース クォータ
 [!INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
+
+## <a name="quotas-in-user-subscription-mode"></a>ユーザー サブスクリプション モードでのクォータ
+
+**ユーザー サブスクリプション**がプール割り当てモードに設定された Batch アカウントでは、Batch VM とその他のリソース (ストレージ アカウントなど) は、プールの作成時に直接サブスクリプションに作成されます。 このモードで作成されたアカウントには、Azure Batch のコア クォータは適用されません。 代わりに、リージョンのコンピューティング コアとその他のリソースにはサブスクリプションのクォータが適用されます。 これらのクォータの詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」をご覧ください。
+
+ユーザー サブスクリプション モードで作成したアカウントのリソース使用量を計画する場合は、Linux VM 40 台、または Windows VM 20 台ごとに、次の Batch リソースが (コンピューティング コア以外に) 必要な点に注意してください。
+
+| リソース | クォータ | プロバイダー |
+| --- | ---| --- |
+| 1 つのストレージ アカウント | ストレージ アカウント | Microsoft.Storage |
+| 1 つのパブリック IP アドレス | パブリック IP アドレス | Microsoft.Network | 
+| 1 つの仮想ネットワーク | Virtual Networks | Microsoft.Network | 
+| 1 つのネットワーク セキュリティ グループ | ネットワーク セキュリティ グループ | Microsoft.Network | 
+| 1 つの仮想マシン スケール セット | Virtual Machine Scale Sets | Microsoft.Compute | 
+| 1 つのロード バランサー | ロード バランサー | Microsoft.Network | 
+
+リージョン レベルまたは VM ファミリごとのコア クォータは、Batch プールに必要な VM サイズに応じて設定する必要があります。
+
+| クォータ | プロバイダー |
+| --- | ---- |
+| リージョン コアの合計 | Microsoft.Compute |
+| ... ファミリ コア | Microsoft.Compute |
+
+
 
 ## <a name="other-limits"></a>その他の制限
 | **リソース** | **上限** |
@@ -54,13 +78,25 @@ Batch で実稼働ワークロードを実行する予定がある場合は、1 
 Batch アカウントのクォータは、[Azure Portal][portal] で確認します。
 
 1. ポータルで **[Batch アカウント]** を選択し、目的の Batch アカウントを選択します。
-2. Batch アカウントのメニュー ブレードで **プロパティ** を選択します。
+2. Batch アカウントのメニュー ブレードで **[プロパティ]** を選択します。
 3. **[プロパティ]** ブレードに、Batch アカウントに現在適用されているクォータが表示されます。
    
     ![Batch アカウントのクォータ][account_quotas]
 
+ユーザー サブスクリプション モードで作成した Batch アカウントについては、Azure Portal で関連するサブスクリプションのクォータを表示します。
+
+1. **[サブスクリプション]** を選択し、Batch アカウントに使用しているサブスクリプションを選択します。
+
+2. **[サブスクリプション]** ブレードで、**[使用量 + クォータ]** を選択します。
+
+
+
 ## <a name="increase-a-quota"></a>クォータを増やす
-[Azure Portal][portal] を使用してクォータの引き上げを要求するには、次の手順に従います。
+次の手順を実行し、[Azure Portal][portal] を使用して、Batch アカウントまたはサブスクリプションに対するクォータの引き上げを要求します。 クォータの引き上げの種類は、Batch アカウントのプール割り当てモードによって異なります。
+
+### <a name="increase-a-batch-cores-quota"></a>Batch のコア クォータを増やす 
+
+Batch アカウントを **Batch サービス** モードで作成した場合は、次の手順を実行して Batch のコア クォータの引き上げを要求します。
 
 1. ポータルのダッシュボードで **[ヘルプとサポート]** タイルを選択します。または、ポータルの右上隅にある疑問符 (**[?]**) を選択します。
 2. **[新しいサポート要求]** > **[基本]** の順にクリックします。
@@ -91,6 +127,12 @@ Batch アカウントのクォータは、[Azure Portal][portal] で確認しま
     **[作成]** をクリックしてサポート要求を送信します。
 
 サポート要求を送信した後は、Azure サポートからの連絡を待ちます。 要求を完了するには最大で 2 営業日かかります。
+
+### <a name="increase-a-subscription-cores-quota"></a>サブスクリプションのコア クォータを増やす
+
+Batch アカウントを**ユーザー サブスクリプション** モードで作成し、リージョンまたは VM ファミリの追加のコアが必要な場合は、サブスクリプションのクォータの引き上げを要求します。 手順については、「[Azure Resource Manager のコア クォータを増やす要求](../azure-supportability/resource-manager-core-quotas-request.md)」をご覧ください。
+
+
 
 ## <a name="related-topics"></a>関連トピック
 * [Azure Portal で Azure Batch アカウントを作成して管理する](batch-account-create-portal.md)

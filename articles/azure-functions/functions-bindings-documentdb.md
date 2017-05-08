@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/10/2016
+ms.date: 04/18/2016
 ms.author: chrande; glenga
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 2ac78606f851068fa0fb7dcab3bac1c629b9cdb3
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: e38c9187be42946df1e8059ba44f10f76d32d984
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -37,34 +37,27 @@ DocumentDB の詳細については、[DocumentDB の概要](../documentdb/docum
 ## <a name="documentdb-input-binding"></a>DocumentDB 入力バインド
 DocumentDB 入力バインドでは、DocumentDB ドキュメントを取得して関数の名前付き入力パラメーターに渡します。 ドキュメント ID は、関数を呼び出したトリガーに基づいて決定することができます。 
 
-関数への DocumentDB 入力では、function.json の `bindings` 配列内にある次の JSON オブジェクトが使用されます。
+DocumentDB 入力バインドには、*function.json* に次のプロパティがあります。
 
-```json
-{
-  "name": "<Name of input parameter in function signature>",
-  "type": "documentDB",
-  "databaseName": "<Name of the DocumentDB database>",
-  "collectionName": "<Name of the DocumentDB collection>",
-  "id": "<Id of the DocumentDB document - see below>",
-  "connection": "<Name of app setting with connection string - see below>",
-  "direction": "in"
-},
-```
+- `name`: ドキュメントの関数コードで使用される識別子名
+- `type`: "documentdb" に設定する必要があります
+- `databaseName`: ドキュメントを含むデータベース
+- `collectionName`: ドキュメントを含むコレクション
+- `id`: 取得するドキュメントの ID。 このプロパティは、バインド パラメーターをサポートしています。「[Azure Functions でのトリガーとバインドの使用方法](functions-triggers-bindings.md)」の[バインド式でのカスタム入力プロパティへのバインド](functions-triggers-bindings.md#bind-to-custom-input-properties-in-a-binding-expression)に関する記事をご覧ください。
+- `sqlQuery`: 複数のドキュメントを取得するときに使用する DocumentDB SQL クエリ。 クエリでは、ランタイム バインドがサポートされます。 次に例を示します。`SELECT * FROM c where c.departmentId = {departmentId}`
+- `connection`: DocumentDB 接続文字列を含むアプリ設定の名前
+- `direction`: `"in"` に設定する必要があります。
 
-以下の点に注意してください。
+`id` と `sqlQuery` の両方のプロパティを指定することはできません。 `id` と `sqlQuery` をどちらも設定しないと、コレクション全体が取得されます。
 
-* `id` は、キュー メッセージの文字列値をドキュメント ID として使用する `{queueTrigger}` と同様のバインドをサポートします。
-* `connection` は、(値 `AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>` を使用して) DocumentDB アカウントのエンドポイントを指すアプリ設定の名前である必要があります。 Functions ポータルの UI を使用して DocumentDB アカウントを作成すると、アカウント作成プロセスによってアプリ設定が作成されます。 既存の DocumentDB アカウントを使用するには、[このアプリ設定を手動で構成する](functions-how-to-use-azure-function-app-settings.md)必要があります。 
-* 指定されたドキュメントが見つからない場合、関数の名前付き入力パラメーターは `null` に設定されます。 
+## <a name="using-a-documentdb-input-binding"></a>Azure DocumentDB 入力バインドの使用
 
-## <a name="input-usage"></a>入力の使用方法
-このセクションでは、DocumentDB 入力バインドを関数のコードで使用する方法について説明します。
-
-C# および F# の関数では、入力ドキュメント (名前付き入力パラメーター) に加えられた変更は、関数が正常に終了したときに、コレクションに自動的に送り返されます。 Node.js 関数では、入力バインド内のドキュメントに対する更新はコレクションに送り返されません。 ただし、`context.bindings.<documentName>In` と `context.bindings.<documentName>Out` を使用して入力ドキュメントを更新できます。 その方法については、[Node.js サンプル](#innodejs)を参照してください。
+* C# および F# 関数では、関数が正常に終了したときに、名前付き入力パラメーターを介した入力ドキュメントへの変更すべてが自動的に行われます。 
+* JavaScript 関数の場合、関数の終了時に更新が自動的に行われることはありません。 代わりに、`context.bindings.<documentName>In` と `context.bindings.<documentName>Out` を使用して、更新を行います。 [JavaScript のサンプル](#injavascript)を参照してください。
 
 <a name="inputsample"></a>
 
-## <a name="input-sample"></a>入力サンプル
+## <a name="input-sample-for-single-document"></a>1 つのドキュメントの入力サンプル
 function.json の `bindings` 配列に次の DocumentDB 入力バインドがあるとします。
 
 ```json
@@ -83,12 +76,13 @@ function.json の `bindings` 配列に次の DocumentDB 入力バインドがあ
 
 * [C#](#incsharp)
 * [F#](#infsharp)
-* [Node.JS](#innodejs)
+* [JavaScript](#injavascript)
 
 <a name="incsharp"></a>
 ### <a name="input-sample-in-c"></a>C での入力サンプル# #
 
 ```cs
+// Change input document contents using DocumentDB input binding 
 public static void Run(string myQueueItem, dynamic inputDocument)
 {   
   inputDocument.text = "This has changed.";
@@ -99,12 +93,13 @@ public static void Run(string myQueueItem, dynamic inputDocument)
 ### <a name="input-sample-in-f"></a>F での入力サンプル# #
 
 ```fsharp
+(* Change input document contents using DocumentDB input binding *)
 open FSharp.Interop.Dynamic
 let Run(myQueueItem: string, inputDocument: obj) =
   inputDocument?text <- "This has changed."
 ```
 
-`FSharp.Interop.Dynamic` と `Dynamitey` の NuGet 依存関係を指定する `project.json` ファイルを追加する必要があります。
+このサンプルには、`FSharp.Interop.Dynamic` と `Dynamitey` の NuGet 依存関係を指定する `project.json` ファイルが必要です。
 
 ```json
 {
@@ -121,11 +116,12 @@ let Run(myQueueItem: string, inputDocument: obj) =
 
 `project.json` ファイルの追加方法については、[のパッケージ管理](functions-reference-fsharp.md#package)に関するセクションを参照してください。
 
-<a name="innodejs"></a>
+<a name="injavascript"></a>
 
-### <a name="input-sample-in-nodejs"></a>Node.js での入力サンプル
+### <a name="input-sample-in-javascript"></a>JavaScript での入力サンプル
 
 ```javascript
+// Change input document contents using DocumentDB input binding, using context.bindings.inputDocumentOut
 module.exports = function (context) {   
   context.bindings.inputDocumentOut = context.bindings.inputDocumentIn;
   context.bindings.inputDocumentOut.text = "This was updated!";
@@ -133,29 +129,66 @@ module.exports = function (context) {
 };
 ```
 
-## <a id="docdboutput"></a>DocumentDB 出力バインド
-DocumentDB 出力バインドを使用すると、Azure DocumentDB データベースに新しいドキュメントを記述できます。 
+## <a name="input-sample-with-multiple-documents"></a>複数のドキュメントの入力サンプル
 
-出力バインドでは、function.json の `bindings` 配列内にある次の JSON オブジェクトが使用されます。 
+SQL クエリで指定されている複数のドキュメントを、キュー トリガーを使用してクエリ パラメーターをカスタマイズすることで取得するとします。 
 
-```json
+この例では、キュー トリガーには `departmentId` パラメーターが用意されており、`{ "departmentId" : "Finance" }` のキュー メッセージは財務部門のすべてのレコードを返します。 *function.json* で次を使用します。
+
+```
 {
-  "name": "<Name of output parameter in function signature>",
-  "type": "documentDB",
-  "databaseName": "<Name of the DocumentDB database>",
-  "collectionName": "<Name of the DocumentDB collection>",
-  "createIfNotExists": <true or false - see below>,
-  "connection": "<Value of AccountEndpoint in Application Setting - see below>",
-  "direction": "out"
+    "name": "documents",
+    "type": "documentdb",
+    "direction": "in",
+    "databaseName": "MyDb",
+    "collectionName": "MyCollection",
+    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}"
+    "connection": "DocumentDBConnection"
 }
 ```
 
-以下の点に注意してください。
+### <a name="input-sample-with-multiple-documents-in-c"></a>C での複数のドキュメントの入力サンプル#
 
-* データベースとコレクションが存在しない場合にこれを作成するには、`createIfNotExists` を `true` に設定します。 既定値は `false` です。 新しいコレクションは予約済みのスループットで作成されます。これにより、価格に影響が及びます。 詳細については、「 [DocumentDB の価格](https://azure.microsoft.com/pricing/details/documentdb/)」を参照してください。
-* `connection` は、(値 `AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>` を使用して) DocumentDB アカウントのエンドポイントを指すアプリ設定の名前である必要があります。 Functions ポータルの UI を使用して DocumentDB アカウントを作成すると、アカウント作成プロセスによって新しいアプリ設定が作成されます。 既存の DocumentDB アカウントを使用するには、[このアプリ設定を手動で構成する](functions-how-to-use-azure-function-app-settings.md)必要があります。 
+```csharp
+public static void Run(QueuePayload myQueueItem, IEnumerable<dynamic> documents)
+{   
+    foreach (var doc in documents)
+    {
+        // operate on each document
+    }    
+}
 
-## <a name="output-usage"></a>出力の使用方法
+public class QueuePayload
+{
+    public string departmentId { get; set; }
+}
+```
+
+### <a name="input-sample-with-multiple-documents-in-javascript"></a>JavaScript での複数のドキュメントの入力サンプル
+
+```javascript
+module.exports = function (context, input) {    
+    var documents = context.bindings.documents;
+    for (var i = 0; i < documents.length; i++) {
+        var document = documents[i];
+        // operate on each document
+    }        
+    context.done();
+};
+```
+
+## <a id="docdboutput"></a>DocumentDB 出力バインド
+DocumentDB 出力バインドを使用すると、Azure DocumentDB データベースに新しいドキュメントを記述できます。 *function.json* には次のプロパティがあります。
+
+- `name`: 新しいドキュメントの関数コードで使用される識別子
+- `type`: `"documentdb"` に設定する必要があります
+- `databaseName` : 新しいドキュメントが作成されるコレクションを含むデータベース。
+- `collectionName` : 新しいドキュメントが作成されるコレクション。
+- `createIfNotExists`: コレクションが存在しない場合に作成するかどうかを示すブール値。 既定値は *false* です。 新しいコレクションは予約済みのスループットで作成され、価格に影響が及ぶためです。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/documentdb/)を参照してください。
+- `connection`: DocumentDB 接続文字列を含むアプリ設定の名前
+- `direction`: `"out"` に設定する必要があります
+
+## <a name="using-a-documentdb-output-binding"></a>DocumentDB 出力バインドの使用
 このセクションでは、DocumentDB 出力バインドを関数のコードで使用する方法について説明します。
 
 関数の出力パラメーターに書き込むと、既定で新しい文書がデータベースに生成され、自動的に生成された GUID が文書 ID として割り当てられます。 出力ドキュメントのドキュメント ID は、出力パラメーターの `id` JSON プロパティを指定することによって指定できます。 
@@ -163,27 +196,11 @@ DocumentDB 出力バインドを使用すると、Azure DocumentDB データベ�
 >[!Note]  
 >既存のドキュメントの ID を指定した場合、既存のドキュメントは新しい出力ドキュメントによって上書きされます。 
 
-出力には、次のいずれかの型で書き込むことができます。
-
-* 任意の [Object](https://msdn.microsoft.com/library/system.object.aspx) - JSON でのシリアル化に有効です。
-  カスタム出力型を宣言した場合 (例: `out FooType paramName`)、Azure Functions は、オブジェクトを JSON にシリアル化しようとします。 関数の終了時に出力パラメーターが null の場合、Functions ランタイムは BLOB を null オブジェクトとして作成します。
-* 文字列 - (`out string paramName`) テキスト BLOB データに有効です。 Functions ランタイムは、関数の終了時に文字列パラメーターが null でない場合にのみ BLOB を作成します。
-
-C# 関数の場合は、次の型のいずれかに出力することもできます。
-
-* `TextWriter`
-* `Stream`
-* `CloudBlobStream`
-* `ICloudBlob`
-* `CloudBlockBlob` 
-* `CloudPageBlob` 
-
 複数のドキュメントを出力するために `ICollector<T>` または `IAsyncCollector<T>` にバインドすることもできます。`T` は、サポートされている型のいずれかです。
-
 
 <a name="outputsample"></a>
 
-## <a name="output-sample"></a>出力サンプル
+## <a name="documentdb-output-binding-sample"></a>DocumentDB 出力バインドのサンプル
 function.json の `bindings` 配列に次の DocumentDB 出力バインドがあるとします。
 
 ```json
@@ -223,7 +240,7 @@ function.json の `bindings` 配列に次の DocumentDB 出力バインドがあ
 
 * [C#](#outcsharp)
 * [F#](#outfsharp)
-* [Node.JS](#outnodejs)
+* [JavaScript](#outjavascript)
 
 <a name="outcsharp"></a>
 
@@ -276,7 +293,7 @@ let Run(myQueueItem: string, employeeDocument: byref<obj>, log: TraceWriter) =
       address = employee?address }
 ```
 
-`FSharp.Interop.Dynamic` と `Dynamitey` の NuGet 依存関係を指定する `project.json` ファイルを追加する必要があります。
+このサンプルには、`FSharp.Interop.Dynamic` と `Dynamitey` の NuGet 依存関係を指定する `project.json` ファイルが必要です。
 
 ```json
 {
@@ -293,9 +310,9 @@ let Run(myQueueItem: string, employeeDocument: byref<obj>, log: TraceWriter) =
 
 `project.json` ファイルの追加方法については、[のパッケージ管理](functions-reference-fsharp.md#package)に関するセクションを参照してください。
 
-<a name="outnodejs"></a>
+<a name="outjavascript"></a>
 
-### <a name="output-sample-in-nodejs"></a>Node.js での出力サンプル
+### <a name="output-sample-in-javascript"></a>JavaScript での出力サンプル
 
 ```javascript
 module.exports = function (context) {

@@ -6,6 +6,7 @@
 ## [グローバル配信](documentdb-distribute-data-globally.md)
 ## [リージョン間フェールオーバー](documentdb-regional-failovers.md)
 ## [セキュリティ](documentdb-nosql-database-security.md)
+## [保存時の暗号化](documentdb-nosql-database-encryption-at-rest.md)
 ## [NoSQL TCO 分析](https://aka.ms/documentdb-tco-paper)
 ## シナリオ
 ### [一般的なユース ケース](documentdb-use-cases.md)

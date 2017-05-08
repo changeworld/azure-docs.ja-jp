@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2017
+ms.date: 04/25/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017, end-user
 translationtype: Human Translation
-ms.sourcegitcommit: 6872b216ab2bfd5823b65b1bb70d503c7628ee13
-ms.openlocfilehash: 26d9f04f9d3019ab5fcad48ef1e9821a4dd6a724
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 6bcf667849a8cb52126f832eed0b99a893182150
+ms.lasthandoff: 04/26/2017
 
 ---
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリの概要
@@ -43,7 +43,7 @@ Microsoft Authenticator アプリに追加する各アカウントについて�
 
 ### <a name="add-a-work-or-school-account-to-the-app-using-the-qr-code-scanner"></a>QR コード スキャナーを使用して職場または学校アカウントをアプリに追加する
 1. セキュリティ確認の設定画面に移動します。  この画面の表示方法の詳細については、 [セキュリティ設定の変更](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page)に関するページを参照してください。
-2. **[Azure Authenticator アプリ]** の横のチェック ボックスをオンにし、**[構成]** を選択します。
+2. **[Authenticator アプリ]** の横のチェック ボックスをオンにし、**[構成]** を選択します。
 
     ![セキュリティ確認の設定画面の [構成] ボタン](./media/authenticator-app-how-to/azureauthe.png)
 
@@ -55,7 +55,7 @@ Microsoft Authenticator アプリに追加する各アカウントについて�
 
     カメラが適切に動作しない場合は、[QR コードと URL を手動で入力](#add-an-account-to-the-app-manually)できます。
 
-5. アプリにアカウント名とその下に&6; 桁のコードが表示されたら完了です。 
+5. アプリにアカウント名とその下に 6 桁のコードが表示されたら完了です。 
 
     ![[アカウント] 画面](./media/authenticator-app-how-to/accounts.png)
 
@@ -77,7 +77,7 @@ Microsoft Authenticator アプリに追加する各アカウントについて�
 
     ![コードと URL を入力する画面](./media/authenticator-app-how-to/manual.png)
 
-6. アプリにアカウント名とその下に&6; 桁のコードが表示されたら完了です。
+6. アプリにアカウント名とその下に 6 桁のコードが表示されたら完了です。
 
     ![[アカウント] 画面](./media/authenticator-app-how-to/accounts.png)
 

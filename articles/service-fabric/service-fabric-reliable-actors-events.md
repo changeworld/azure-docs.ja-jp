@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 03/02/2017
 ms.author: amanbha
 translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: b598b59dc3fa5b629b31f235fc0ea830338b1f84
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: eef9c1ab69153d3a2e4d8e7363108703819823a7
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -112,6 +112,7 @@ event.gameScoreUpdated(Id.getUUIDId(), score);
 * [アクターの再入](service-fabric-reliable-actors-reentrancy.md)
 * [アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)
 * [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [C# コード サンプル](https://github.com/Azure/servicefabric-samples)
+* [C# コード サンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [C# .NET Core コード サンプル](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)
 * [Java コード サンプル](http://github.com/Azure-Samples/service-fabric-java-getting-started)
 

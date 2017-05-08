@@ -11,7 +11,7 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/25/2076
+ms.date: 04/25/2017
 ms.author: sedusch
 translationtype: Human Translation
 ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
@@ -610,3 +610,4 @@ crm resource cleanup msl_SAPHana_<b>HDB</b>_HDB<b>03</b> <b>saphanavm1</b>
 * [SAP のための Azure Virtual Machines のデプロイ][deployment-guide]
 * [SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]
 * SAP HANA on Azure (L インスタンス) の高可用性を確保し、障害の復旧を計画する方法を確認するには、「[Azure での SAP HANA (L インスタンス) の高可用性と障害復旧](hana-overview-high-availability-disaster-recovery.md)」を参照してください。 
+

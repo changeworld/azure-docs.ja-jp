@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/03/2017
+ms.date: 04/21/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 514319dfcb532ab3708352b2467c095d7775b714
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 30edf20d7fc742da9b42d3ea9baafcce31141259
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -33,8 +33,8 @@ Azure Data Lake Store は、データの高スループット、可用性、耐�
 
 Data Lake Store は、HDFS 互換ファイル システムとして HDInsight に表示されるため、Storm-HDFS ボルトを使用して書き込むことができます。 HDInsight から Azure Data Lake を使用する場合は、`adl://` というファイル スキームを使用できます。
 
-* Data Lake Storage がクラスターのプライマリ ストレージである場合は、`adl:///` を使用します。 これは Azure Data Lake のクラスター ストレージのルートです。 これは、Data Lake Storage アカウントの /clusters/CLUSTERNAME のパスに変換されます。
-* Data Lake Storage がクラスターのセカンダリ ストレージである場合は、`adl://DATALAKEACCOUNT.azuredatalakestore.net/` を使用します。 この URI は、データが書き込まれる Data Lake Storage アカウントを指定します。 データは Data Lake Store のルートから書き込まれます。
+* Data Lake Store がクラスターのプライマリ ストレージである場合は、`adl:///` を使用します。 これは Azure Data Lake のクラスター ストレージのルートです。 これは、Data Lake Store アカウントの /clusters/CLUSTERNAME のパスに変換されます。
+* Data Lake Store がクラスターの追加ストレージである場合は、`adl://DATALAKEACCOUNT.azuredatalakestore.net/` を使用します。 この URI は、データが書き込まれる Data Lake Store アカウントを指定します。 データは Data Lake Store のルートから書き込まれます。
 
     > [!NOTE]
     > この URI 形式を使用して、クラスターのプライマリ ストレージを含む Data Lake Store アカウントにデータを保存することもできます。 これにより、HDInsight を含むディレクトリ パスの外部のデータを保存することができます。

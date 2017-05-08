@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2017
+ms.date: 04/20/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: f819992125f77897545ce3194870b1eadf400852
-ms.lasthandoff: 04/07/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: fc6e4eaa34694e2b20cb53b3e457803c59bf76b9
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -181,7 +181,7 @@ NOW+1HOUR-10MONTHS/MINUTE
 | MILLISECOND、MILLISECONDS、MILLI、MILLIS |現在のミリ秒に丸めるか、指定されたミリ秒数分オフセットします。 |
 
 ### <a name="field-facets"></a>フィールドのファセット
-フィールドのファセットを使用することで、インデックスのさまざまな用語に対する "フリー テキスト" のクエリを記述するのではなく、特定のフィールドに対する検索条件と正確な値を指定できます。 This differs from writing "free text" queries for various terms throughout the index. この手法は、これまでに挙げたいくつかの例の中で既に使用しています。 次に、さらに複雑な例を示します。
+フィールドのファセットを使用することで、特定のフィールドの検索条件と正確な値を指定できます。 これは、インデックスのさまざまな語句に対する "フリー テキスト" のクエリを記述することとは異なります。 この手法は、これまでに挙げたいくつかの例の中で既に使用しています。 次に、さらに複雑な例を示します。
 
 **構文**
 
@@ -610,6 +610,85 @@ Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | me
 
 この例では、EventID ごとに 1 つのイベント (最新のイベント) が返されます。
 
+### <a name="join"></a>Join (結合)
+2 つのクエリの結果を結合して、1 つの結果セットを作成します。  次の表に示す複数の結合の種類をサポートしています。
+  
+| 結合の種類 | Description |
+|:--|:--|
+| 内部 (inner) | 両方のクエリで一致する値が含まれたレコードだけを返します。 |
+| 外部 (outer) | 両方のクエリからすべてのレコードを返します。  |
+| 左 (left)  | 左のクエリからすべてのレコードを返し、右のクエリから一致するレコードを返します。 |
+
+
+- 結合では、**IN** キーワードまたは **Measure** コマンドを含むクエリは現在サポートされていません。
+- 現在、結合に含めることができるフィールドは 1 つだけです。
+- 1 つの検索に複数の結合を含めることはできません。
+
+**構文**
+
+```
+<left-query> | JOIN <join-type> <left-query-field-name> (<right-query>) <right-query-field-name>
+```
+
+**例**
+
+さまざまな結合の種類を示すために、MyBackup_CL というカスタム ログから収集されたデータ型と各コンピューターの Heartbeat の結合を考えてみましょう。  これらのデータ型には次のデータがあります。
+
+`Type = MyBackup_CL`
+
+| TimeGenerated | コンピューター | LastBackupStatus |
+|:---|:---|:---|
+| 4/20/2017 01:26:32.137 AM | srv01.contoso.com | 成功 |
+| 4/20/2017 02:13:12.381 AM | srv02.contoso.com | 成功 |
+| 4/20/2017 02:13:12.381 AM | srv03.contoso.com | 失敗 |
+
+`Type = Hearbeat`(表示されるフィールドのサブセットのみ)
+
+| TimeGenerated | コンピューター | ComputerIP |
+|:---|:---|:---|
+| 4/21/2017 12:01:34.482 PM | srv01.contoso.com | 10.10.100.1 |
+| 4/21/2017 12:02:21.916 PM | srv02.contoso.com | 10.10.100.2 |
+| 4/21/2017 12:01:47.373 PM | srv04.contoso.com | 10.10.100.4 |
+
+#### <a name="inner-join"></a>内部結合
+
+`Type=MyBackup_CL | join inner Computer (Type=Heartbeat) Computer`
+
+両方のデータ型の Computer フィールドが一致する次のレコードを返します。
+
+| コンピューター| TimeGenerated | LastBackupStatus | TimeGenerated_joined | ComputerIP_joined | Type_joined |
+|:---|:---|:---|:---|:---|:---|
+| srv01.contoso.com | 4/20/2017 01:26:32.137 AM | 成功 | 4/21/2017 12:01:34.482 PM | 10.10.100.1 | Heartbeat |
+| srv02.contoso.com | 4/20/2017 02:13:12.381 AM | 成功 | 4/21/2017 12:02:21.916 PM | 10.10.100.2 | Heartbeat |
+
+
+#### <a name="outer-join"></a>外部結合
+
+`Type=MyBackup_CL | join outer Computer (Type=Heartbeat) Computer`
+
+両方のデータ型の次のレコードを返します。
+
+| コンピューター| TimeGenerated | LastBackupStatus | TimeGenerated_joined | ComputerIP_joined | Type_joined |
+|:---|:---|:---|:---|:---|:---|
+| srv01.contoso.com | 4/20/2017 01:26:32.137 AM | 成功  | 4/21/2017 12:01:34.482 PM | 10.10.100.1 | Heartbeat |
+| srv02.contoso.com | 4/20/2017 02:14:12.381 AM | 成功  | 4/21/2017 12:02:21.916 PM | 10.10.100.2 | Heartbeat |
+| srv03.contoso.com | 4/20/2017 01:33:35.974 AM | 失敗  | 4/21/2017 12:01:47.373 PM | | |
+| srv04.contoso.com |                           |          | 4/21/2017 12:01:47.373 PM | 10.10.100.2 | Heartbeat |
+
+
+
+#### <a name="left-join"></a>左結合
+
+`Type=MyBackup_CL | join left Computer (Type=Heartbeat) Computer`
+
+Heartbeat の一致するフィールドを結合して MyBackup_CL の次のレコードを返します。
+
+| コンピューター| TimeGenerated | LastBackupStatus | TimeGenerated_joined | ComputerIP_joined | Type_joined |
+|:---|:---|:---|:---|:---|:---|
+| srv01.contoso.com | 4/20/2017 01:26:32.137 AM | 成功 | 4/21/2017 12:01:34.482 PM | 10.10.100.1 | Heartbeat |
+| srv02.contoso.com | 4/20/2017 02:13:12.381 AM | 成功 | 4/21/2017 12:02:21.916 PM | 10.10.100.2 | Heartbeat |
+| srv03.contoso.com | 4/20/2017 02:13:12.381 AM | 失敗 | | | |
+
 
 ### <a name="extend"></a>Extend
 クエリ内に実行時フィールドを作成できます。 集計を実行する場合は、Extend コマンドの後に Measure コマンドを使用することもできます。
@@ -665,7 +744,7 @@ Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | Ex
 | exp |x 乗されたオイラー数を返します。 |`exp(x)` |
 | floor |整数に切り下げます。 |`floor(x)`  <br> `floor(5.6)` 5 を返します。 |
 | hypo |中間のオーバーフローやアンダーフローなしに sqrt(sum(pow(x,2),pow(y,2))) を返します。 |`hypo(x,y)`  <br> ` |
-| if |条件付きの関数クエリを使用できます。 `if(test,value1,value2)` において、test は論理値または論理値 (TRUE か FALSE) を返す式を参照している or 関数です。 `value1` は、test から TRUE が導出された場合に関数によって返される値です。 `value2` は、test から FALSE が導出された場合に関数によって返される値です。 式は、ブール値を出力する任意の関数にも、数値または文字列を返す関数にもすることができます。 数値を返す関数の場合、値 0 は false と解釈され、文字列を返す関数の場合、空の文字列は false と解釈されます。 |`if(termfreq(cat,'electronics'),popularity,42)` この関数は、各ドキュメントをチェックして、cat フィールド内に "electronics" という語句が含まれているかどうかを確認します。 含まれている場合は popularity フィールドの値が返され、 それ以外の場合は値 42 が返されます。 |
+| if |条件付きの関数クエリを使用できます。 `if(test,value1,value2)` において、test は論理値または論理値 (TRUE か FALSE) を返す式を参照している or 関数です。 `value1` は、test から TRUE が導出された場合に関数によって返される値です。 `value2` は、test から FALSE が導出された場合に関数によって返される値です。 式には、ブール値を出力する関数を指定できます。 また、数値または文字列を返す関数を指定することもできます。数値を返す関数の場合、値 0 が false と解釈され、文字列を返す関数の場合、空の文字列が false と解釈されます。 |`if(termfreq(cat,'electronics'),popularity,42)` この関数は、各ドキュメントをチェックして、cat フィールド内に "electronics" という語句が含まれているかどうかを確認します。 含まれている場合は、popularity フィールドの値が返されます。 それ以外の場合は、値 42 が返されます。 |
 | linear |`m*x+c` を実装します。m と c は定数で、x は任意関数です。 これは `sum(product(m,x),c)` と等価ですが、単一の関数として実装されるため、少し効率的です。 |`linear(x,m,c) linear(x,2,4)` は `2*x+4` を返します。 |
 | ln |指定された関数の自然対数を返します。 |`ln(x)` |
 | log |指定された関数の 10 を底とする対数を返します。 |`log(x)   log(sum(x,100))` |
@@ -685,7 +764,7 @@ Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | Ex
 | sinh |角度の双曲サインを返します。 |`sinh(x)` |
 | scale |関数 x の値を、指定された minTarget ～ maxTarget の範囲内に収まるようにスケーリングします。 現在の実装では、正しいスケールを選択できるように、関数のすべての値を走査して最小値と最大値を取得しています。 現在の実装では、ドキュメントが削除されている場合、または値を持たない場合、それらを判別することができません。 このような場合には、値 0.0 が使用されます。 つまり、すべての値が通常どおりに 0.0 を越えている場合でも、最終的に 0.0 がマップ元の最小値になる可能性があります。 このような場合、適切な `map()` 関数を `scale(map(x,0,0,5),1,2)` のように対処法として使用し、0.0 を実際の範囲内の値に変更することができます。 |`scale(x,minTarget,maxTarget)`<br>`scale(x,1,2)` すべての値が 1 以上 2 以下になるように x の値をスケーリングします。 |
 | sqrt |指定された値または関数の平方根を返します。 |`sqrt(x)`<br>`sqrt(100)`<br>`sqrt(sum(x,100))` |
-| strdist |2 つの文字列間の距離を計算します。 Lucene スペル チェッカーの StringDistance インターフェイスを使用し、そのパッケージに含まれるすべての実装をサポートしているほか、 Solr のリソース読み込み機能を通じてアプリケーション独自の実装をプラグインとして使用できます。 strdist には `(string1, string2, distance measure)` (距離指標) を指定できます。 距離指標として指定できる値は、<ul><li>jw: Jaro-Winkler</li><li>edit: Levenstein または Edit distance</li><li>ngram: The NGramDistance です。NGramDistance を指定した場合、オプションとして ngram サイズも渡すことができます。 既定値は 2 です。</li><li>FQN: StringDistance インターフェイスの実装用の完全修飾クラス名。 引数なしのコンストラクターが必要です。</li></ul> |`strdist("SOLR",id,edit)` |
+| strdist |2 つの文字列間の距離を計算します。 Lucene スペル チェッカーの StringDistance インターフェイスを使用し、そのパッケージで提供されるすべての実装をサポートします。 また、Solr のリソース読み込み機能により、アプリケーションは独自の実装を接続することもできます。 strdist には `(string1, string2, distance measure)` (距離指標) を指定できます。 距離指標として指定できる値は、<ul><li>jw: Jaro-Winkler</li><li>edit: Levenstein または Edit distance</li><li>ngram: The NGramDistance です。NGramDistance を指定した場合、オプションとして ngram サイズも渡すことができます。 既定値は 2 です。</li><li>FQN: StringDistance インターフェイスの実装用の完全修飾クラス名。 引数なしのコンストラクターが必要です。</li></ul> |`strdist("SOLR",id,edit)` |
 | sub |`sub(x,y)`から x-y を返します。 |`sub(myfield,myfield2)`<br>`sub(100,sqrt(myfield))` |
 | Sum |コンマ区切りのリストで指定された複数の値または関数の合計を返します。 `add(...)` をこの関数のエイリアスとして使用できます。 |`sum(x,y,...)`<br>`sum(x,1)`<br>`sum(x,y)`<br>`sum(sqrt(x),log(y),z,0.5)`<br>`add(x,y)` |
 | termfreq |用語がドキュメントのフィールドに表示される回数を返します。 |termfreq(text,'memory') |
@@ -698,27 +777,27 @@ Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | Ex
 | フィールド | 検索の種類 | Description |
 | --- | --- | --- |
 | TenantId |すべて |データをパーティション分割するために使用されます。 |
-| TimeGenerated |すべて |(検索と他の画面で) タイムライン、タイムセレクターを動作させるために使用されます。 これは (通常はエージェント上で) データが生成された時間を表します。 時間は ISO 形式で表され、常に UTC です。 既存のインストルメンテーション (つまりログ内のイベント) に基づく "種類" の場合、通常これはログ エントリ/行/レコードが記録された実際の時間です。 その他、管理パック経由またはクラウド内で生成された何らかの種類 (推奨事項/アラートなど) の場合は、時間の表現がやや異なります。 何らかの構成のスナップショットを使用してこの新しいデータが収集された時間、またはそれに基づいて推奨事項/アラートが生成された時間となります。 |
+| TimeGenerated |すべて |(検索と他の画面で) タイムライン、タイムセレクターを動作させるために使用されます。 これは (通常はエージェント上で) データが生成された時間を表します。 時間は ISO 形式で表され、常に UTC です。 既存のインストルメンテーションに基づく種類 (つまり、ログのイベント) の場合、通常、これはログ エントリ/行/レコードが記録された実際の時間です。 管理パックによってまたはクラウド内で生成された他の種類 (推奨事項やアラートなど) の場合、時間は別のものを表します。 何らかの構成のスナップショットを使用してこの新しいデータが収集された時間、またはそれに基づいて推奨事項/アラートが生成された時間になります。 |
 | EventID |イベント |Windows イベント ログ内のイベント ID。 |
 | EventLog |イベント |Windows によってイベントが記録されたイベント ログ。 |
 | EventLevelName |イベント |重大/警告/情報/成功 |
 | EventLevel |イベント |重大/警告/情報/成功を表す数値 (より簡単で読みやすいクエリにするには EventLevelName を代わりに使用します)。 |
-| SourceSystem |すべて |データが (サービスとのアタッチ モードの観点で) どこから来たか。 たとえば、Microsoft System Center Operations Manager や Azure Storage が該当します。 |
+| SourceSystem |すべて |(サービスへの接続モードの観点での) データ ソース。 たとえば、Microsoft System Center Operations Manager や Azure Storage などがあります。 |
 | ObjectName |PerfHourly |Windows パフォーマンス オブジェクト名。 |
 | InstanceName |PerfHourly |Windows パフォーマンス カウンターのインスタンス名。 |
 | CounteName |PerfHourly |Windows パフォーマンス カウンターの名前。 |
-| ObjectDisplayName |PerfHourly、ConfigurationAlert、ConfigurationObject、ConfigurationObjectProperty |Operations Manager でパフォーマンス収集ルールの対象となったオブジェクトの表示名、 または Operational Insights によって検出またはアラートが生成されたオブジェクトの表示名。 |
-| RootObjectName |PerfHourly、ConfigurationAlert、ConfigurationObject、ConfigurationObjectProperty |Operations Manager でパフォーマンス収集ルールの対象となったオブジェクトの親の親の表示名 (二重ホスティング関係)、 または Operational Insights によって検出またはアラートが生成されたオブジェクトの表示名。 |
+| ObjectDisplayName |PerfHourly、ConfigurationAlert、ConfigurationObject、ConfigurationObjectProperty |Operations Manager でパフォーマンスの収集ルールの対象となったオブジェクトの表示名。 Operational Insights によって検出されたオブジェクトまたはアラートが生成されたオブジェクトの表示名の場合もあります。 |
+| RootObjectName |PerfHourly、ConfigurationAlert、ConfigurationObject、ConfigurationObjectProperty |Operations Manager でパフォーマンスの収集ルールの対象となったオブジェクトの親の親の表示名 (二重ホスティング関係)。 Operational Insights によって検出されたオブジェクトまたはアラートが生成されたオブジェクトの表示名の場合もあります。 |
 | コンピューター |ほとんどの種類 |データが属しているコンピューターの名前。 |
 | DeviceName |ProtectionStatus |データが属しているコンピューターの名前 ("Computer" と同じ)。 |
 | DetectionId |ProtectionStatus | |
-| ThreatStatusRank |ProtectionStatus |脅威の状態のランクは脅威の状態の数値表現であり、 HTTP 応答コードに似ています。ランクを表す数値の飛びは新しい状態を追加できる余地を残すためです (脅威なしを示す数値が 100 でも 0 でもなく 150 なのはこれが理由です)。 脅威の状態と保護の状態のロールアップでは、選択された期間内のコンピューターの状態で、最悪のものが表示されます。 数値を使用して異なる状態にランクを付けて、数値が最も高いレコードを検索できるようになっています。 |
+| ThreatStatusRank |ProtectionStatus |脅威の状態のランクは脅威の状態の数値表現です。 HTTP 応答コードと同様に、ランクを表す数値の飛びは新しい状態を追加できる余地を残すためです (脅威なしを示す数値が 100 でも 0 でもなく 150 なのはこのためです)。 脅威の状態と保護の状態のロールアップでは、選択された期間内のコンピューターの状態で、最悪のものが表示されます。 数値を使用して異なる状態にランクを付けて、数値が最も高いレコードを検索できるようになっています。 |
 | ThreatStatus |ProtectionStatus |ThreatStatus の説明。ThreatStatusRank と 1 対 1 で対応しています。 |
 | TypeofProtection |ProtectionStatus |コンピューターで検出されたマルウェア対策製品。なし、Microsoft Malware Removal Tool、Forefront など。 |
 | ScanDate |ProtectionStatus | |
 | SourceHealthServiceId |ProtectionStatus、RequiredUpdate |このコンピューターのエージェント用の HealthService ID。 |
 | HealthServiceId |ほとんどの種類 |このコンピューターのエージェント用の HealthService ID。 |
-| ManagementGroupName |ほとんどの種類 |Operations Manager に接続されたエージェントの管理グループの名前。 それ以外の場合は null/空白。 |
+| ManagementGroupName |ほとんどの種類 |Operations Manager に接続されたエージェントの管理グループの名前。 それ以外の場合は、null または空白です。 |
 | ObjectType |ConfigurationObject |Log Analytics の構成評価で検出されたこのオブジェクトの種類 (Operations Manager 管理パックの型/クラスに類似)。 |
 | UpdateTitle |RequiredUpdate |インストールされていないことが検出された更新プログラムの名前。 |
 | PublishDate |RequiredUpdate |更新プログラムが Microsoft Update に公開された日時。 |

@@ -21,10 +21,19 @@
     href: tutorial-manage-data-disk.md
   - name: "3 - 構成の自動化"
     href: tutorial-automate-vm-deployment.md
-  - name: "4 - VM の負荷分散"
+  - name: "4 - VM イメージの作成"
+    href: tutorial-custom-images.md
+  - name: "5 - 高可用性 VM"
+    href: tutorial-availability-sets.md
+  - name: "6 - VM スケール セットの作成"
+    href: tutorial-create-vmss.md
+  - name: "7 - VM の負荷分散"
     href: tutorial-load-balancer.md
-  - name: "5 - ネットワークの管理"
+  - name: "8 - ネットワークの管理"
     href: tutorial-virtual-network.md
+  - name: "9 - VM のセキュリティの管理"
+    href: tutorial-azure-security.md
+
 - name: "サンプル"
   items:
   - name: "PowerShell"

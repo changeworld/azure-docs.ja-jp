@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 12/12/2016
 ms.author: amsriva
 translationtype: Human Translation
-ms.sourcegitcommit: e20f7349f30c309059c2867d7473fa6fdefa9b61
-ms.openlocfilehash: d46c87480fd198bf4f09e48f4d2ea838a350190c
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: d42efa7d359f5c87c14afbfd138328b37c8ae6c2
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -45,7 +46,7 @@ ms.openlocfilehash: d46c87480fd198bf4f09e48f4d2ea838a350190c
 * **バックエンド サーバー プールの設定:** すべてのプールには、ポート、プロトコル、Cookie ベースのアフィニティなどの設定があります。 これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
 * **フロントエンド ポート:** このポートは、Application Gateway で開かれたパブリック ポートです。 このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
 * **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https で、値には大文字小文字の区別あり)、SSL 証明書名 (オフロードの SSL を構成する場合) があります。 複数サイト対応のアプリケーション ゲートウェイでは、ホスト名と SNI インジケーターも追加されます。
-* **ルール:** ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが特定のリスナーにヒットした際に送られるバックエンド サーバー プールを定義します。
+* **ルール:** ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが特定のリスナーにヒットした際に送られるバックエンド サーバー プールを定義します。 ルールはリストの順序どおりに処理され、トラフィックは、具体性にかかわらず最初に一致したルールによってリダイレクトされます。 たとえば、同一のポート上に基本リスナーを使用するルールとマルチサイト リスナーを使用するルールがある場合、マルチサイトのルールを適切に動作させるには、リストでマルチサイト リスナーのルールを基本リスナーのルールよりも前に配置する必要があります。
 
 ## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
 
@@ -158,7 +159,7 @@ $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-RG -name publicI
 
 ### <a name="step-1"></a>手順 1
 
-**gatewayIP01** という名前のアプリケーション ゲートウェイの IP 構成を作成します。 アプリケーション ゲートウェイが起動すると、構成されているサブネットから IP アドレスが取得されて、ネットワーク トラフィックがバックエンド IP プール内の IP アドレスにルーティングされます。 各インスタンスが IP アドレスを&1; つ取得することに注意してください。
+**gatewayIP01** という名前のアプリケーション ゲートウェイの IP 構成を作成します。 アプリケーション ゲートウェイが起動すると、構成されているサブネットから IP アドレスが取得されて、ネットワーク トラフィックがバックエンド IP プール内の IP アドレスにルーティングされます。 各インスタンスが IP アドレスを 1 つ取得することに注意してください。
 
 ```powershell
 $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $appgatewaysubnet
@@ -173,7 +174,7 @@ $pool1 = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIP
 $pool2 = New-AzureRmApplicationGatewayBackendAddressPool -Name pool02 -BackendIPAddresses 10.0.1.103, 10.0.1.104, 10.0.1.105
 ```
 
-この例では、要求されたサイトに基づいてネットワーク トラフィックをルーティングするためのバックエンド プールが&2; つあります。 1 つのプールは、サイト "contoso.com" からトラフィックを受信し、もう&1; つのプールはサイト "fabrikam.com" からトラフィックを受信します。 独自のアプリケーションの IP アドレス エンドポイントを追加するには、上記の IP アドレスを置き換える必要があります。 内部 IP アドレスの代わりに、バックエンド インスタンスにパブリック IP アドレス、FQDN、または VM の NIC も使用できます。 PowerShell で IP の代わりに FQDN を指定する場合は、"-BackendFQDNs" パラメーターを使用します。
+この例では、要求されたサイトに基づいてネットワーク トラフィックをルーティングするためのバックエンド プールが 2 つあります。 1 つのプールは、サイト "contoso.com" からトラフィックを受信し、もう 1 つのプールはサイト "fabrikam.com" からトラフィックを受信します。 独自のアプリケーションの IP アドレス エンドポイントを追加するには、上記の IP アドレスを置き換える必要があります。 内部 IP アドレスの代わりに、バックエンド インスタンスにパブリック IP アドレス、FQDN、または VM の NIC も使用できます。 PowerShell で IP の代わりに FQDN を指定する場合は、"-BackendFQDNs" パラメーターを使用します。
 
 ### <a name="step-3"></a>手順 3.
 
@@ -202,7 +203,7 @@ $fp01 = New-AzureRmApplicationGatewayFrontendPort -Name "fep01" -Port 443
 
 ### <a name="step-6"></a>手順 6.
 
-この例でサポートする&2; つの Web サイトのために、2 つの SSL 証明書を構成します。 1 つの証明書が contoso.com トラフィック用で、もう&1; つが fabrikam.com トラフィック用です。 これらの証明書は、Web サイトに対して証明機関によって発行された証明書である必要があります。 自己署名証明書もサポートされていますが、運用環境のトラフィックにはお勧めしません。
+この例でサポートする 2 つの Web サイトのために、2 つの SSL 証明書を構成します。 1 つの証明書が contoso.com トラフィック用で、もう 1 つが fabrikam.com トラフィック用です。 これらの証明書は、Web サイトに対して証明機関によって発行された証明書である必要があります。 自己署名証明書もサポートされていますが、運用環境のトラフィックにはお勧めしません。
 
 ```powershell
 $cert01 = New-AzureRmApplicationGatewaySslCertificate -Name contosocert -CertificateFile <file path> -Password <password>
@@ -211,7 +212,7 @@ $cert02 = New-AzureRmApplicationGatewaySslCertificate -Name fabrikamcert -Certif
 
 ### <a name="step-7"></a>手順 7.
 
-この例では、2 つの Web サイトのために&2; つのリスナーを構成します。 この手順では、着信トラフィックを受信するために使用するパブリック IP アドレス、ポート、およびホストのリスナーを構成します。 複数サイトのサポートには HostName パラメーターが必要であり、トラフィックの受信対象である適切な Web サイトに設定する必要があります。 複数ホストのシナリオで SSL のサポートを必要とする Web サイトでは、RequireServerNameIndication パラメーターを true に設定する必要があります。 SSL のサポートが必要な場合は、その Web アプリケーションへのトラフィックをセキュリティで保護するために使用される SSL 証明書も指定する必要があります。 FrontendIPConfiguration、FrontendPort、HostName の組み合わせは、リスナーに対して一意である必要があります。 リスナーごとに&1; つの証明書をサポートできます。
+この例では、2 つの Web サイトのために 2 つのリスナーを構成します。 この手順では、着信トラフィックを受信するために使用するパブリック IP アドレス、ポート、およびホストのリスナーを構成します。 複数サイトのサポートには HostName パラメーターが必要であり、トラフィックの受信対象である適切な Web サイトに設定する必要があります。 複数ホストのシナリオで SSL のサポートを必要とする Web サイトでは、RequireServerNameIndication パラメーターを true に設定する必要があります。 SSL のサポートが必要な場合は、その Web アプリケーションへのトラフィックをセキュリティで保護するために使用される SSL 証明書も指定する必要があります。 FrontendIPConfiguration、FrontendPort、HostName の組み合わせは、リスナーに対して一意である必要があります。 リスナーごとに 1 つの証明書をサポートできます。
 
 ```powershell
 $listener01 = New-AzureRmApplicationGatewayHttpListener -Name "listener01" -Protocol Https -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01 -HostName "contoso11.com" -RequireServerNameIndication true  -SslCertificate $cert01
@@ -220,7 +221,7 @@ $listener02 = New-AzureRmApplicationGatewayHttpListener -Name "listener02" -Prot
 
 ### <a name="step-8"></a>手順 8.
 
-この例では、2 つの Web アプリケーション用に&2; つのルール設定を作成します。 ルールによって、リスナー、バックエンド プール、および http 設定が相互に関連付けられます。 この手順では、Web サイトごとに&1; つ、基本のルーティング ルールを使用するようにアプリケーション ゲートウェイを構成します。 各 Web サイトへのトラフィックは、構成されたリスナーによって受信され、BackendHttpSettings で指定されたプロパティを使用して、構成されたバックエンド プールに送られます。
+この例では、2 つの Web アプリケーション用に 2 つのルール設定を作成します。 ルールによって、リスナー、バックエンド プール、および http 設定が相互に関連付けられます。 この手順では、Web サイトごとに 1 つ、基本のルーティング ルールを使用するようにアプリケーション ゲートウェイを構成します。 各 Web サイトへのトラフィックは、構成されたリスナーによって受信され、BackendHttpSettings で指定されたプロパティを使用して、構成されたバックエンド プールに送られます。
 
 ```powershell
 $rule01 = New-AzureRmApplicationGatewayRequestRoutingRule -Name "rule01" -RuleType Basic -HttpListener $listener01 -BackendHttpSettings $poolSetting01 -BackendAddressPool $pool1
@@ -281,10 +282,5 @@ DnsSettings              : {
 ## <a name="next-steps"></a>次のステップ
 
 [Application Gateway - Web アプリケーション ファイアウォール](application-gateway-webapplicationfirewall-overview.md)を使用して Web サイトを保護する方法について学びます。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

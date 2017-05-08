@@ -47,3 +47,4 @@
 ## トラブルシューティング
 ### [FAQ](multi-factor-authentication-faq.md)
 ### [質問する](https://social.msdn.microsoft.com/Forums/newthread?category=windowsazureplatform&forum=windowsazureactiveauthentication&prof=required)
+### [NPS 拡張機能のエラー](multi-factor-authentication-nps-errors.md)

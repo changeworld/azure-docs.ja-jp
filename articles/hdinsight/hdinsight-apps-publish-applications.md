@@ -9,15 +9,17 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 14aef891-7a37-4cf1-8f7d-ca923565c783
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 35a6c06bc4850f3fcfc6221d62998465f3b38251
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 1a7dabcbfdc1977e747fd30cfc0383d6c5f7f5a0
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -58,14 +60,10 @@ Azure Marketplace へのアプリケーションの発行は 2 つの段階を�
 | tiers |アプリケーションと適合するクラスターのプラン。 |Standard または Premium (またはその両方) |
 | versions |アプリケーションと適合する HDInsight クラスターの種類。 |3.4 |
 
-## <a name="package-application"></a>アプリケーションのパッケージ化
-HDInsight アプリケーションのインストールに必要なファイルをすべて含んだ zip ファイルを作成します。 この zip ファイルは、「 [アプリケーションの発行](#publish-application)」で使用します。
-
-* [createUiDefinition.json](#define-application)。
-* mainTemplate.json。 「 [カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)」でサンプルを参照してください。
-  
+## <a name="application-install-script"></a>アプリケーションのインストール スクリプト
+アプリケーションが (既存または新規の) クラスターにインストールされると必ず、エッジ ノードが作成され、アプリケーション インストール スクリプトはそのノードで実行されます。
   > [!IMPORTANT]
-  > アプリケーションのインストール スクリプトの名前は以下の形式とし、特定のクラスターにおいて一意であることが必要です。 さらに、インストールとアンインストールのいずれのスクリプト アクションもべき等である必要があります。つまり、スクリプトは、繰り返し呼び出すことができ、同じ結果を生成します。
+  > アプリケーションのインストール スクリプトの名前は以下の形式とし、特定のクラスターにおいて一意であることが必要です。
   > 
   > name": "[concat('hue-install-v0','-' ,uniquestring(‘applicationName’)]"
   > 
@@ -77,12 +75,22 @@ HDInsight アプリケーションのインストールに必要なファイル�
   > 
   > 上記の例の場合、保存されたスクリプト アクションの一覧では hue-install-v0-4wkahss55hlas となります。 JSON ペイロードのサンプルについては、[https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json) を参照してください。
   > 
-  > 
+インストール スクリプトに必要な特性を次に示します。
+1. べき等スクリプトにします。 スクリプトを複数回呼び出すと、同じ結果が生成されます。
+2. スクリプトのバージョンを適切に管理します。 アップグレードしたり変更をテストしたりするときは、アプリケーションをインストールしようとしているお客様が影響を受けないように、スクリプトの場所は別にします。 
+3. ポイントごとに適切なログ記録をスクリプトに追加します。 通常、スクリプト ログは、アプリケーション インストールに関する問題をデバッグする唯一の方法です。
+4. インストールがネットワークの一時的な問題に影響されないように、外部サービスやリソースへの呼び出しの再試行数は十分に確保します。
+5. スクリプトがノードでサービスを開始する場合は、サービスを確実に監視し、ノードの再起動時にサービスが自動的に開始されるように構成します。
+
+## <a name="package-application"></a>アプリケーションのパッケージ化
+HDInsight アプリケーションのインストールに必要なファイルをすべて含んだ zip ファイルを作成します。 この zip ファイルは、「 [アプリケーションの発行](#publish-application)」で使用します。
+
+* [createUiDefinition.json](#define-application)。
+* mainTemplate.json。 「 [カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)」でサンプルを参照してください。
 * 必要なすべてのスクリプト。
 
 > [!NOTE]
 > アプリケーション ファイル (もしあれば Web アプリケーション ファイルも含む) は、パブリックにアクセスできる任意のエンドポイントに配置できます。
-> 
 > 
 
 ## <a name="publish-application"></a>アプリケーションの発行
@@ -104,10 +112,5 @@ HDInsight アプリケーションのインストールに必要なファイル�
 * [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md): スクリプト アクションを使用してアプリケーションを追加インストールする方法を確認します。
 * [Azure Resource Manager テンプレートを使用して HDInsight で Linux ベースの Hadoop クラスターを作成する](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Resource Manager テンプレートを呼び出して HDInsight クラスターを作成する方法を確認します。
 * [HDInsight で空のエッジ ノードを使用する](hdinsight-apps-use-edge-node.md): HDInsight クラスター、テスト HDInsight アプリケーション、およびホスティング HDInsight アプリケーションにアクセスするために空のエッジ ノードを使用する方法を確認します。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

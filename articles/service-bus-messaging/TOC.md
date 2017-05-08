@@ -42,8 +42,10 @@
 ### [トランザクション処理](service-bus-transactions.md)
 ### [診断ログ](service-bus-diagnostic-logs.md)
 ### AMQP
+#### [AMQP の概要](service-bus-amqp-overview.md)
 #### [.NET](service-bus-amqp-dotnet.md)
 #### [Java](service-bus-amqp-java.md)
+#### [Java Message Service と AMQP](service-bus-java-how-to-use-jms-api-amqp.md)
 #### [AMQP プロトコル ガイド](service-bus-amqp-protocol-guide.md)
 #### [AMQP 要求応答ベースの操作](service-bus-amqp-request-response.md)
 
@@ -56,7 +58,7 @@
 ## .NET
 ### [Microsoft.ServiceBus.Messaging](/dotnet/api/microsoft.servicebus.messaging)
 ### [Microsoft.Azure.Management.ServiceBus](/dotnet/api/microsoft.azure.management.servicebus)
-## [PowerShell](/powershell/resourcemanager/azurerm.servicebus/v0.0.2/azurerm.servicebus)
+## [PowerShell](/powershell/module/azurerm.servicebus)
 ## [REST ()](/rest/api/servicebus)
 ## [例外](service-bus-messaging-exceptions.md)
 ## [クォータ](service-bus-quotas.md)

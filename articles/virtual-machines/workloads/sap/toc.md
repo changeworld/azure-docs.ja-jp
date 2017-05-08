@@ -8,19 +8,19 @@
 ## [SAP Netweaver との統合](../../../active-directory/active-directory-saas-sap-netweaver-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ## [SAP Business ByDesign との統合](../../../active-directory/active-directory-saas-sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 # Azure の SAP ソリューション
-## SAP HANA
+## SAP HANA L インスタンス
 ### [概要とアーキテクチャ](hana-overview-architecture.md)
 ### [インフラストラクチャと接続](hana-overview-infrastructure-connectivity.md)
 ### [SAP HANA のインストール](hana-installation.md)
 ### [高可用性と障害復旧](hana-overview-high-availability-disaster-recovery.md)
 ### [トラブルシューティングと監視](troubleshooting-monitoring.md)
+## Virtual Machines 上の SAP HANA
 ### [単一インスタンスの SAP HANA](hana-get-started.md)
 ### [S/4 HANA または BW/4 HANA のデプロイ ガイド](cal-s4h.md)
-### Backup
-#### [概要](sap-hana-backup-guide.md)
-#### [ファイル レベルのバックアップ](sap-hana-backup-file-level.md)
-#### [ストレージのスナップショット](sap-hana-backup-storage-snapshots.md)
-
+### [VM における高可用性] (sap-hana-high-availability.md)
+### [Backup の概要](sap-hana-backup-guide.md)
+### [ファイル レベルのバックアップ](sap-hana-backup-file-level.md)
+### [ストレージ スナップショット バックアップ](sap-hana-backup-storage-snapshots.md)
 ## SAP Netweaver
 ### [概要とアーキテクチャ](suse-quickstart.md)
 ### [計画と実装](planning-guide.md)

@@ -15,9 +15,9 @@ ms.workload:
 ms.date: 02/13/2017
 ms.author: ruturajd
 translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: b054245de2c5bf6019c2cb29409289f2ac8766ec
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 6629666eaa913321db3855438bb66d349d5c52bf
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -93,6 +93,12 @@ ms.lasthandoff: 03/31/2017
 
 "アプリケーション整合性" の復旧ポイントを選択した場合は、1 回の仮想マシン フェールバックで、候補として考えられる最新のアプリケーション整合性復旧ポイントまで復元されます。 レプリケーション グループを含んだ復旧計画の場合、それぞれのレプリケーション グループが、その共通の復旧ポイントまで復元されます。
 アプリケーション整合性の復旧ポイントは時間差を伴うことがあり、データの損失につながる場合があるので注意が必要です。
+
+### <a name="what-happens-to-vmware-tools-post-failback"></a>フェールバック後の VMware ツールの動作
+
+Azure へのフェールオーバー時は、VMware ツールを Azure 仮想マシンで実行することはできません。 Windows 仮想マシンの場合、フェールオーバー時に ASR によって VMware ツールが無効になります。 Linux 仮想マシンの場合、フェールオーバー時に ASR によって VMware ツールがアンインストールされます。 
+
+Windows 仮想マシンのフェールバック時に、フェールバックと同時に VMware ツールが再有効化されます。 同様に、Linux 仮想マシンの場合も、フェールバック時に VMware ツールがマシンに再インストールされます。
 
 ## <a name="next-steps"></a>次のステップ
 

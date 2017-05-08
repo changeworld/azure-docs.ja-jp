@@ -32,23 +32,33 @@
 
 ## Manage
 ### [ジョブの信頼性](stream-analytics-job-reliability.md)
-### [ジョブの監視](stream-analytics-monitoring.md)
-### [診断ログ](stream-analytics-job-diagnostic-logs.md)
 ### [プログラムでジョブを監視する](stream-analytics-monitor-jobs.md)
 ### [PowerShell でジョブを監視する](stream-analytics-monitor-and-manage-jobs-use-powershell.md)
 ### [スループット向上のためのスケール](stream-analytics-scale-jobs.md)
 ### [Machine Learning 関数のスケール](stream-analytics-scale-with-machine-learning-functions.md)
 ### [入出力の資格情報を交換する](stream-analytics-login-credentials-inputs-outputs.md)
 
+## トラブルシューティング
+### [トラブルシューティング ガイド](stream-analytics-troubleshooting-guide.md)
+### [ジョブの監視](stream-analytics-monitoring.md)
+### [リソース正常性ブレード](stream-analytics-resource-health.md)
+### [ジョブのダイアグラムとメトリック](stream-analytics-job-diagram-with-metrics.md)
+### [クエリをテストする](stream-analytics-test-query.md)
+### [サンプル入力データ](stream-analytics-sample-data-input.md)
+### [SELECT INTO によるデバッグ](stream-analytics-select-into.md)
+### [イベントの順序の処理](stream-analytics-out-of-order-and-late-events.md)
+### [イベント ハブ リーダーの制限](stream-analytics-event-hub-consumer-groups.md)
+### [ストリーミング ユニットを最適化する](stream-analytics-streaming-unit-consumption.md)
+### [診断ログ](stream-analytics-job-diagnostic-logs.md)
+
 ## 自動化
 ### [ワンクリック PowerShell](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick)
 
 # リファレンス
-## [PowerShell](/powershell/resourcemanager/azurerm.streamanalytics/v2.3.0/azurerm.streamanalytics)
+## [PowerShell](/powershell/module/azurerm.streamanalytics)
 ## [.NET](/dotnet/api/microsoft.azure.management.streamanalytics)
 ## [クエリ言語](https://msdn.microsoft.com/library/azure/dn834998)
 ## [REST ()](/rest/api/streamanalytics)
-
 
 # リソース
 ## [リリース ノート](stream-analytics-release-notes.md)
