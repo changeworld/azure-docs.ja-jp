@@ -12,9 +12,10 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/08/2017
 ms.author: joroja
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 4b2cbf5f62ee63bada42b2a06506b793d4349fdb
 ms.openlocfilehash: 7db9a45a4c80ea8d01937837dfa7a15c171fb66b
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/10/2017
 
 
