@@ -17,9 +17,9 @@ ms.date: 03/13/2017
 ms.author: guybo
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: 89db91d7ab8dc4340484054986b35583ed23b343
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
+ms.openlocfilehash: 5f02d36bfc5aa390bba345f084ce530c27bb6520
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -92,7 +92,7 @@ Visual Studio で仮想マシン スケール セットをデプロイするに�
 
 ![Cloud Explorer][cloud_explorer]
 
- ポータルの優れている点は、Azure のインフラストラクチャを Web ブラウザーを使って視覚的に管理できることです。一方、Azure リソース エクスプローラーの利点は、Azure のリソースを手軽に調査し、デバッグできることです。"インスタンス ビュー" を観察したり、着目しているリソースの PowerShell コマンドを表示したりすることができます。 仮想マシン スケール セットはプレビュー段階ですが、仮想マシン スケール セットのほとんどの詳細情報は、リソース エクスプローラーに表示されます。
+ ポータルの優れている点は、Azure のインフラストラクチャを Web ブラウザーを使って視覚的に管理できることです。一方、Azure Resource Explorer の利点は、Azure のリソースを手軽に調査し、デバッグできることです。"インスタンス ビュー" にウィンドウを追加したり、着目しているリソースの PowerShell コマンドを表示したりすることができます。 仮想マシン スケール セットはプレビュー段階ですが、仮想マシン スケール セットのほとんどの詳細情報は、リソース エクスプローラーに表示されます。
 
 ## <a name="next-steps"></a>次のステップ
 Visual Studio を使用して仮想マシン スケール セットを正常にデプロイしたら、実際のアプリケーションの要件に合わせてプロジェクトをさらにカスタマイズできます。 たとえば、**Insights** リソースの追加、テンプレートへのインフラストラクチャ (スタンドアロン VM など) の追加、またはカスタム スクリプト拡張機能を使用したアプリケーションのデプロイによって自動スケールを構成します。 サンプル テンプレートは、[Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates) GitHub リポジトリで入手できます ("vmss" で検索してください)。

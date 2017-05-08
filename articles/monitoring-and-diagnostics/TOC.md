@@ -56,15 +56,16 @@
 # リファレンス
 ## [サポートされるメトリックスの一覧](monitoring-supported-metrics.md)
 ## [監視データのソース](monitoring-data-sources.md)
-## [PowerShell](/powershell/resourcemanager/azurerm.insights/v1.0.12/azurerm.insights?redirectedfrom=msdn#40v=azure.200#41)
+## [PowerShell](/powershell/module/azurerm.insights)
 ## [.NET](https://msdn.microsoft.com/library/azure/dn802153)
 ## [REST ()](/rest/api/monitor/)
-## [Azure 診断のバージョン履歴](azure-diagnostics-versioning-history.md)
-## [Azure 診断スキーマ](azure-diagnostics-schema.md)
-### [診断スキーマ 1.0](azure-diagnostics-schema-1dot0.md)
-### [診断スキーマ 1.2](azure-diagnostics-schema-1dot2.md)
-### [診断スキーマ 1.3 ～ 1.7](azure-diagnostics-schema-1dot3-and-later.md)
+## [Azure 診断拡張機能のバージョン履歴](azure-diagnostics-versioning-history.md)
+## [Azure 診断拡張機能のスキーマ](azure-diagnostics-schema.md)
+### [1.0](azure-diagnostics-schema-1dot0.md)
+### [1.2](azure-diagnostics-schema-1dot2.md)
+### [1.3 ～ 1.7](azure-diagnostics-schema-1dot3-and-later.md)
 
 # リソース
 ## [PowerShell のサンプル](insights-powershell-samples.md)
 ## [Azure CLI 1.0 のサンプル](insights-cli-samples.md)
+## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=monitor)

@@ -11,27 +11,27 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 04/19/2017
 ms.author: v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: e75099e1ca7e3bbfc427883a8c343d773f3923ae
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 3879eb3d0c6fa9d74fff01b07f5c07d3991dfbbd
+ms.lasthandoff: 04/21/2017
 
 
 ---
 # <a name="azure-batch-service-for-machine-learning-jobs"></a>Machine Learning ジョブ用の Azure Batch サービス
 
-Machine Learning の Batch プール処理では、[Azure Batch サービス](../batch/batch-technical-overview.md)を使用して、Azure Machine Learning バッチ実行サービスのスケールをユーザーが管理できるようにしています。 クラシック バッチ処理はマルチ テナント環境で実行され、送信できる同時実行ジョブの数が制限されており、ジョブは先入れ先出しベースでキューに配置されます。 この不確定性により、ユーザーはジョブがいつ実行されるかを正確に予測することはできません。
+Machine Learning の Batch プール処理では、Azure Machine Learning バッチ実行サービスのスケールをユーザーが管理できるようにしています。 Machine Learning のクラシック バッチ処理はマルチ テナント環境で実行され、送信できる同時実行ジョブの数が制限されており、ジョブは先入れ先出しベースでキューに配置されます。 この不確定性により、ユーザーはジョブがいつ実行されるかを正確に予測することはできません。
 
-Batch プール処理では、バッチ ジョブを送信できる Azure Batch プールを作成できます。 プールのサイズと、ジョブの送信先となるプールはユーザーが制御します。 BES ジョブは独自の処理領域で実行されるため、処理パフォーマンスを予測し、送信する処理の負荷に対応するリソース プールを作成することができます。
+Batch プール処理では、バッチ ジョブを送信できるプールを作成できます。 プールのサイズと、ジョブの送信先となるプールはユーザーが制御します。 BES ジョブは独自の処理領域で実行されるため、処理パフォーマンスを予測し、送信する処理の負荷に対応するリソース プールを作成することができます。
 
 ## <a name="how-to-use-batch-pool-processing"></a>Batch プール処理を使用する方法
 
-Batch プール処理を使用するには、次が必要です。
+現時点では、Azure Portal で Batch プール処理を構成することはできません。 Batch プール処理を使用するには、以下が必要です。
 
--   プール サービスの URL と承認キーを持つ Batch プール アカウント
--   新しい Resource Manager ベースの Web サービスと料金プラン
+-   CSS に連絡して Batch プール アカウントを作成し、プール サービスの URL と承認キーを取得する
+-   新しい Resource Manager ベースの Web サービスと料金プランを作成する
 
 アカウントを作成するには、Microsoft カスタマー サービス & サポート (CSS) に連絡し、サブスクリプション ID を伝えます。 CSS が協力して、シナリオに適した容量を決定します。 次に、CSS は、作成できるプールの最大数と各プール内に配置できる仮想マシン (VM) の最大数を設定してアカウントを構成します。 アカウントが構成されると、プール サービスの URL と承認キーが提供されます。
 

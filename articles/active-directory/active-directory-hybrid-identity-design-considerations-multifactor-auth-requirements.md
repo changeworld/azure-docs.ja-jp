@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 02/14/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 4491d7385b9cfc2105e83f0e1099b68cde75feec
-ms.lasthandoff: 12/29/2016
+ms.sourcegitcommit: cfb4104dd58f2af8b3ffed7491c91ae6c6557ddc
+ms.openlocfilehash: f5006b6ce1b409fae5e540d8414e8e56651f9349
+ms.lasthandoff: 05/05/2017
 
 
 ---

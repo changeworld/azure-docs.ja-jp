@@ -7,11 +7,14 @@
 ## [Batch アカウントを作成する](batch-account-create-portal.md)
 ## [Batch .NET のチュートリアル](batch-dotnet-get-started.md)
 ## [Batch Python のチュートリアル](batch-python-tutorial.md)
+## [Batch Node.js のチュートリアル](batch-nodejs-get-started.md)
 # 方法
 ## 開発
 ### [アプリケーション パッケージ](batch-application-packages.md)
 ### [自動スケール コンピューティング ノード](batch-automatic-scaling.md)
-### [Add Azure AD 認証](batch-aad-auth.md)
+### Azure AD 認証
+#### [Batch サービスでの Azure AD](batch-aad-auth.md)
+#### [Batch Management での Azure AD](batch-aad-auth-management.md)
 ### [同時実行ノード タスク](batch-parallel-node-tasks.md)
 ### [効率的なリスト クエリ](batch-efficient-list-queries.md)
 ### [ジョブの準備と完了タスク](batch-job-prep-release.md)
@@ -27,7 +30,7 @@
 ### [Azure CLI](batch-cli-get-started.md)
 
 # リファレンス
-## [PowerShell](/powershell/resourcemanager/azurerm.batch/v2.5.0/azurerm.batch)
+## [PowerShell](/powershell/module/azurerm.batch)
 ## [Azure CLI](/cli/azure/batch)
 ## [.NET](/dotnet/api/microsoft.azure.batch)
 ## [Java](/java/api/com.microsoft.azure.batch)

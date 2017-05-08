@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: milanga;juliako;
 translationtype: Human Translation
-ms.sourcegitcommit: adaf2a71e022d6d29493ab0a679bd593ea40195e
-ms.openlocfilehash: acb3b4d4a14ea546e94ccc38806251460e21a6bc
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 5a604f3538a0749f7f951926f451cc91504255d6
+ms.lasthandoff: 04/21/2017
 
 
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Azure Media Analytics での顔と感情の検出
 ## <a name="overview"></a>概要
-**Azure Media Face Detector** メディア プロセッサ (MP) を使用すると、対象ユーザーを数えたり、動きを追跡したり、表情によって対象ユーザーの参加や反応を測定することさえできます。 このサービスには&2; つの機能があります。 
+**Azure Media Face Detector** メディア プロセッサ (MP) を使用すると、対象ユーザーを数えたり、動きを追跡したり、表情によって対象ユーザーの参加や反応を測定することさえできます。 このサービスには 2 つの機能があります。 
 
 * **顔検出**
   
@@ -57,9 +57,9 @@ ms.lasthandoff: 02/10/2017
 | 要素 | 説明 |
 | --- | --- |
 | バージョン |Video API のバージョンを示します。 |
-| タイムスケール |ビデオの&1; 秒あたりの "ティック数" です。 |
+| タイムスケール |ビデオの 1 秒あたりの "ティック数" です。 |
 | Offset |タイムスタンプの時間オフセットです。 Video API のバージョン 1.0 では、これは常に 0 になります。 今後サポートされるシナリオでは、変更される可能性があります。 |
-| Framerate |ビデオの&1; 秒あたりのフレーム数です。 |
+| Framerate |ビデオの 1 秒あたりのフレーム数です。 |
 | Fragments |メタデータは、フラグメントと呼ばれる複数のセグメントに分割されます。 各フラグメントには、開始、継続時間、間隔数、およびイベントが含まれます。 |
 | 開始 |最初のイベントの開始時間です ("ティック数")。 |
 | 時間 |フラグメントの長さです ("ティック数")。 |
@@ -85,14 +85,14 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
     {
       "version":"1.0",
       "options":{
-          "TrackingMode": "Faster"
+          "TrackingMode": "Fast"
       }
     }
 
 #### <a name="attribute-descriptions"></a>属性の説明
 | 属性名 | Description |
 | --- | --- |
-| Mode |Faster: 処理速度は速くなりますが、精度が低下します (既定値)。 <br/>Quality: 追跡の精度が高くなりますが、処理時間が長くなります。 |
+| Mode |Fast: 処理速度は速くなりますが、精度が低下します (既定値)。|
 
 
 ### <a name="json-output"></a>JSON 出力

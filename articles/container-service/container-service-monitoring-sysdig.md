@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 08/08/2016
 ms.author: saudas
 translationtype: Human Translation
-ms.sourcegitcommit: 5da28eecf2df764f71906897450ebe67b3048b3f
-ms.openlocfilehash: d57212a8c858c4fb53cc619a578b59da92176bb2
+ms.sourcegitcommit: 3f6bc85230b57d7b9523a87f90783c27039ef820
+ms.openlocfilehash: cee1bac89c30cae65790bd86498f0adec30da87d
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -55,9 +56,4 @@ Sysdig は監視サービスです。クラスター内のコンテナーを監�
 パッケージをインストールしたら、Sysdig の UI に戻ります。クラスター内のコンテナーの使用状況に関する各種メトリックを詳しく調査できる状態になっています。 
 
 [新しいダッシュボード ウィザード](https://app.sysdigcloud.com/#/dashboards/new)を使用して、Mesos と Marathon 固有のダッシュボードをインストールすることもできます。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

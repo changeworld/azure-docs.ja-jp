@@ -82,7 +82,7 @@ Azure Data Factory の**コピー ウィザード**を使用すると、デー�
    
    1. **[タスク名]** に「**CopyFromBlobToAzureSql**」と入力します。
    2. **説明** を入力します (省略可能)。
-   3. **[Start date time (開始日時)]** と **[End date time (終了日時)]** を変更します。終了日は今日の日付に、開始日はその&5; 日前の日付に設定してください。  
+   3. **[Start date time (開始日時)]** と **[End date time (終了日時)]** を変更します。終了日は今日の日付に、開始日はその 5 日前の日付に設定してください。  
    4. ページの下部にある **[次へ]**」を参照してください。  
       
       ![Copy Tool - Properties page](./media/data-factory-copy-data-wizard-tutorial/copy-tool-properties-page.png) 

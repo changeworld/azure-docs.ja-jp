@@ -17,6 +17,7 @@ ms.author: swkrish
 translationtype: Human Translation
 ms.sourcegitcommit: e37c48d6c92a8a2cd480458abdff0a3a1ca9338f
 ms.openlocfilehash: dbc544ad4dbb651aeb24faf2f89074c7aa59cf2a
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -58,10 +59,5 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Google+
 5. **[ID プロバイダーの種類]** をクリックし、**[Google]** を選択して、**[OK]** をクリックします。
 6. **[この ID プロバイダーを設定する]** をクリックし、前に作成した Google+ アプリケーションのクライアント ID とクライアント シークレットを入力します。
 7. **[OK]** をクリックし、**[作成]** をクリックして Google+ の構成を保存します。
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

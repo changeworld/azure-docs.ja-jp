@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 04/07/2017
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 3fa7b8d053d0193352776e94d2ab4796ba05e166
-ms.lasthandoff: 04/07/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 2b1b12666b71bf173342d5864772a94b9625d38b
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -41,7 +41,9 @@ Azure Service Fabric では、変更されたサービスのみをアップグ�
 
 ![Publishing a Service Fabric application][image2]
 
-これで、ダイアログ ボックスの **[発行]** をクリックできるようになりました。 [クラスターおよびアプリケーションを表示する Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)を使用できます。 Visual Objects アプリケーションには、ブラウザーのアドレス バーに「 [http://localhost:8082/visualobjects/](http://localhost:8082/visualobjects/) 」と入力すると移動できる Web サービスがあります。  画面上を動く 10 個のフローティング ビジュアル オブジェクトが表示されます。
+これで、ダイアログ ボックスの **[発行]** をクリックできるようになりました。 [クラスターおよびアプリケーションを表示する Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)を使用できます。 Visual Objects アプリケーションには、ブラウザーのアドレス バーに「[http://localhost:8081/visualobjects/](http://localhost:8081/visualobjects/)」と入力すると移動できる Web サービスがあります。  画面上を動く 10 個のフローティング ビジュアル オブジェクトが表示されます。
+
+**注:** `Cloud.xml` プロファイル (Azure Service Fabric) にデプロイする場合、アプリケーションは **http://{ServiceFabricName}.{Region}.cloudapp.azure.com:8081/visualobjects/** から入手できます。 ロード バランサーで `8081/TCP` が構成されていることを確認してください (ロード バランサーは Service Fabric インスタンスと同じリソース グループで検索します)。
 
 ## <a name="step-2-update-the-visual-objects-sample"></a>手順 2: ビジュアル オブジェクト サンプルの更新
 手順 1. でデプロイされたバージョンでは、ビジュアル オブジェクトが回転しないことに気付くかもしれません。 アプリケーションをアップグレードして、ビジュアル オブジェクトも回転させてみましょう。

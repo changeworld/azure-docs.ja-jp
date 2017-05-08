@@ -30,6 +30,7 @@
 
 ## ソリューションの使用
 ### [管理ソリューション](operations-management-suite-solutions.md)
+### [ターゲット ソリューション](operations-management-suite-solution-targeting.md)
 ### 洞察と分析
 #### [AD 評価](../log-analytics/log-analytics-ad-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [AD レプリケーションの状態](../log-analytics/log-analytics-ad-replication-status.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
@@ -58,6 +59,7 @@
 ### [Automation リソース](operations-management-suite-solutions-resources-automation.md)
 ### [ログ検索とアラート](operations-management-suite-solutions-resources-searches-alerts.md)
 ### [ビュー](operations-management-suite-solutions-resources-views.md)
+### [ベスト プラクティス](operations-management-suite-solutions-best-practices.md)
 
 ## [OMS との統合](operations-management-suite-integration.md)
 

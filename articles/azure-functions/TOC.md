@@ -30,6 +30,7 @@
 #### [Notification Hubs](functions-bindings-notification-hubs.md)
 #### [Mobile Apps](functions-bindings-mobile-apps.md)
 #### [外部ファイル](functions-bindings-external-file.md)
+#### [外部テーブル](functions-bindings-external-table.md)
 ### [関数プロキシを定義する](functions-proxies.md)
 ### [Azure Portal から関数アプリを作成する](functions-create-function-app-portal.md)
 ### [スケジュールされたクリーンアップ タスクを実行する](functions-scenario-database-table-cleanup.md)

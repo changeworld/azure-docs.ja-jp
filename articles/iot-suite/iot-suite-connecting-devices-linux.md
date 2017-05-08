@@ -59,7 +59,7 @@ git clone https://github.com/kgabis/parson.git
 ## <a name="prepare-your-project"></a>プロジェクトを準備する
 Ubuntu コンピューターで、**remote\_monitoring** という名前のフォルダーを作成します。 **remote\_monitoring** フォルダーで次の手順を実行します。
 
-- **main.c**、**remote\_monitoring.c**、**remote\_monitoring.h**、**CMakeLists.txt** の&4; ファイルを作成します。
+- **main.c**、**remote\_monitoring.c**、**remote\_monitoring.h**、**CMakeLists.txt** の 4 ファイルを作成します。
 - **parson** という名前のフォルダーを作成します。
 
 ファイル **parson.c** と **parson.h** を Parson リポジトリのローカル コピーから **remote\_monitoring/parson** フォルダーにコピーします。

@@ -12,7 +12,6 @@
 ## [前提条件](expressroute-prerequisites.md)
 ## [ワークフロー](expressroute-workflows.md)
 ## [ルーティングの要件](expressroute-routing.md)
-## [NAT の要件](expressroute-nat.md)
 ## [QoS の要件](expressroute-qos.md)
 ## [クラシックから Resource Manager への回線の移行について](expressroute-move.md)
 
@@ -38,8 +37,9 @@
 
 ## ベスト プラクティス
 ### [ネットワーク セキュリティとクラウド サービスのベスト プラクティス](../best-practices-network-security.md)
-## [ルーティングを最適化する](expressroute-optimize-routing.md)
+### [ルーティングを最適化する](expressroute-optimize-routing.md)
 ### [非対称ルーティング](expressroute-asymmetric-routing.md)
+### [ExpressRoute の NAT](expressroute-routing-nat.md)
 
 ## トラブルシューティング
 ### [ExpressRoute 接続の確認](expressroute-troubleshooting-expressroute-overview.md)
@@ -47,7 +47,7 @@
 ### [ARP テーブルの取得 (クラシック)](expressroute-troubleshooting-arp-classic.md)
 
 # リファレンス
-## [PowerShell](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.4.0/azurerm.network)
+## [PowerShell](/powershell/module/azurerm.network)
 ## [REST ()](https://msdn.microsoft.com/library/azure/mt586720)
 ## [REST (クラシック)](https://msdn.microsoft.com/library/azure/dn606310)
 

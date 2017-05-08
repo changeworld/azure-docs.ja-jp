@@ -48,6 +48,7 @@
 ### [アラート管理ソリューション](log-analytics-solution-alert-management.md)
 ## ソリューションの使用
 ### [ソリューションの概要](log-analytics-add-solutions.md)
+### [ターゲット ソリューション](../operations-management-suite/operations-management-suite-solution-targeting.md?toc=%2fazure%2flog-analytics%2ftoc.json)
 ### [アクティビティ ログ分析](log-analytics-activity.md)
 ### [AD 評価](log-analytics-ad-assessment.md)
 ### [AD レプリケーションの状態](log-analytics-ad-replication-status.md)
@@ -57,6 +58,8 @@
 ### [変更の追跡](log-analytics-change-tracking.md)
 ### [コンテナー](log-analytics-containers.md)
 ### [DNS 分析](log-analytics-dns.md)
+### [OMS の IT Service Management Connector](log-analytics-itsmc-overview.md)
+#### [OMS の IT Service Management 接続](log-analytics-itsmc-connections.md)
 ### [Key Vault](log-analytics-azure-key-vault.md)
 ### Logic Apps B2B メッセージ
 #### [Logic Apps B2B メッセージ ソリューション](../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json)
@@ -84,7 +87,7 @@
 ### [アラート API](log-analytics-api-alerts.md)
 
 # リファレンス
-## [PowerShell](/powershell/resourcemanager/azurerm.operationalinsights/v2.3.0/azurerm.operationalinsights)
+## [PowerShell](/powershell/module/azurerm.operationalinsights)
 ## [REST ()](/rest/api/loganalytics)
 
 # リソース

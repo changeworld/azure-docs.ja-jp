@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 03/06/2017
+ms.date: 04/19/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: a8a9d6efb299d0958d4024e62b2b24a76d768ddf
-ms.lasthandoff: 04/15/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: a022e7fc34cac85cb26cc6ca86a6941b1ccbfb95
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 04/15/2017
 Azure SQL Database には、Basic、Standard、Premium、Premium RS の 4 つの[サービス レベル](sql-database-service-tiers.md)が用意されています。 各サービス レベルでは、SQL データベースで使用できるリソースが厳密に分離されており、そのサービス レベルの予測可能なパフォーマンスが保証されています。 この記事では、アプリケーションに適したサービス レベルを選択する際に役立つガイダンスを提供します。 さらに、Azure SQL Database を最大限活用できるようにアプリケーションを調整する方法について説明します。
 
 > [!NOTE]
-> この記事では、Azure SQL Database のデータベースが 1 つの場合のパフォーマンス ガイダンスについて説明しています。 エラスティック プールに関連するパフォーマンス ガイダンスについては、[エラスティック プールの価格とパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)に関するトピックを参照してください。 ただし、この記事に記載されている調整の推奨事項の多くは、エラスティック プールのデータベースにも当てはまり、パフォーマンスに関して同様のメリットが得られることに注意してください。
+> この記事では、Azure SQL Database のデータベースが 1 つの場合のパフォーマンス ガイダンスについて説明しています。 エラスティック プールに関連するパフォーマンス ガイダンスについては、[エラスティック プールの価格とパフォーマンスに関する考慮事項](sql-database-elastic-pool.md)に関するトピックを参照してください。 ただし、この記事に記載されている調整の推奨事項の多くは、エラスティック プールのデータベースにも当てはまり、パフォーマンスに関して同様のメリットが得られることに注意してください。
 >
 >
 
@@ -58,7 +58,7 @@ SQL データベースに必要なサービス レベルは、リソース デ�
 [!INCLUDE [SQL DB service tiers table](../../includes/sql-database-service-tiers-table.md)]
 
 > [!IMPORTANT]
-> P11 と P15 のパフォーマンス レベルを使用しているお客様は、追加料金なしで最大 4 TB の付属のストレージを使用できます。 この 4 TB のオプションは現在、米国東部 2、米国西部、西ヨーロッパ、東南アジア、東日本、オーストラリア東部、カナダ中部、カナダ東部の各リージョンで、パプリック プレビューの段階にあります。
+> P11 と P15 のパフォーマンス レベルを使用しているお客様は、追加料金なしで最大 4 TB の付属のストレージを使用できます。 この 4 TB のオプションは現在、米国東部 2、米国西部、西ヨーロッパ、東南アジア、東日本、オーストラリア東部、カナダ中部、カナダ東部の各リージョンで利用できます。
 >
 
 ### <a name="maximum-in-memory-oltp-storage"></a>インメモリ OLTP ストレージの最大サイズ
@@ -435,5 +435,5 @@ Azure SQL Database 内でスケールアウト アーキテクチャを使用す
 ## <a name="next-steps"></a>次のステップ
 * サービス レベルの詳細については、 [SQL Database のオプションとパフォーマンス](sql-database-service-tiers.md)
 * エラスティック プールの詳細については、「[Azure エラスティック プールの概要](sql-database-elastic-pool.md)」を参照してください。
-* パフォーマンスとエラスティック プールの詳細については、[エラスティック プールの使用を検討する場合](sql-database-elastic-pool-guidance.md)に関するページを参照してください。
+* パフォーマンスとエラスティック プールの詳細については、[エラスティック プールの使用を検討する場合](sql-database-elastic-pool.md)に関するページを参照してください。
 

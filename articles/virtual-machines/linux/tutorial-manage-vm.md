@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI を使用した Linux 仮想マシンの管理 | Microsoft Docs"
-description: "チュートリアル - Azure CLI を使用した Linux 仮想マシンの管理"
+title: "Azure CLI を使用した Linux VM の作成と管理 | Microsoft Docs"
+description: "チュートリアル - Azure CLI を使用した Linux VM の作成と管理"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: neilpeterson
@@ -9,221 +9,273 @@ editor: tysonn
 tags: azure-service-management
 ms.assetid: 
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
+ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/28/2017
+ms.date: 04/25/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: c0f22806034eef1fc5ff37d547d066f554ec0a85
-ms.lasthandoff: 04/07/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: bcb075b320bab942c6421be72ea1445d5fa3f603
+ms.lasthandoff: 04/26/2017
 
 ---
 
-# <a name="manage-linux-virtual-machines-with-the-azure-cli"></a>Azure CLI を使用した Linux 仮想マシンの管理
+# <a name="create-and-manage-linux-vms-with-the-azure-cli"></a>Azure CLI を使用した Linux VM の作成と管理
 
-このチュートリアルでは、仮想マシンを作成し、ディスクの追加、ソフトウェアのインストールの自動化、仮想マシン スナップショットの作成などの日常的な管理タスクを実行します。 
+このチュートリアルでは、VM サイズや VM イメージの選択および VM のデプロイなど、Azure 仮想マシンの作成に関する基本事項について説明します。 また、状態の管理や VM の削除およびサイズ変更といった基本的な管理操作についても説明します。
 
-このチュートリアルに取り組む前に、最新の [Azure CLI 2.0](/cli/azure/install-azure-cli) がインストールされていることを確認してください。
+このチュートリアルの手順は、最新バージョンの [Azure CLI 2.0](/cli/azure/install-azure-cli) を使用して行うことができます。
 
-## <a name="step-1--log-in-to-azure"></a>手順 1 - Azure へのログイン
-
-まずターミナルを開き、[az login](/cli/azure/#login) コマンドで Azure サブスクリプションにログインします。
-
-```azurecli
-az login
-```
-
-## <a name="step-2--create-resource-group"></a>手順 2 - リソース グループの作成
+## <a name="create-resource-group"></a>Create resource group
 
 [az group create](https://docs.microsoft.com/cli/azure/group#create) コマンドでリソース グループを作成します。 
 
-Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 仮想マシンの前にリソース グループを作成する必要があります。 この例では、`myResourceGroup` という名前のリソース グループが `westeurope` リージョンに作成されます。 
+Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 仮想マシンの前にリソース グループを作成する必要があります。 この例では、`myResourceGroupVM` という名前のリソース グループが `westus` リージョンに作成されます。 
 
 ```azurecli
-az group create --name myResourceGroup --location westeurope
+az group create --name myResourceGroupVM --location westus
 ```
 
-## <a name="step-3---prepare-configuration"></a>手順 3 - 構成の準備
+チュートリアルの各手順で示しているように、VM の作成時や変更時にはこのリソース グループを指定します。
 
-仮想マシンのデプロイでは、パッケージのインストール、ファイルの作成、スクリプトの実行などの構成作業を **cloud-init** で自動化することができます。 このチュートリアルでは、次に示す 2 つの項目の構成を自動化します。
-
-- NGINX Web サーバーのインストール
-- VM に対する 2 台目のディスクのプロビジョニング
-
-**cloud-init** の構成は VM のデプロイ時に実行されます。そのため **cloud-init** の構成は、仮想マシンの作成前に定義しておく必要があります。
-
-`cloud-init.txt` という名前のファイルを作成し、次の内容をコピーします。 この構成は、NGINX パッケージをインストールし、2 台目のディスクをフォーマットしてマウントするためのコマンドを実行します。
-
-```yaml
-#cloud-config
-package_upgrade: true
-packages:
-  - nginx
-runcmd:
-  - (echo n; echo p; echo 1; echo ; echo ; echo w) | sudo fdisk /dev/sdc
-  - sudo mkfs -t ext4 /dev/sdc1
-  - sudo mkdir /datadrive
-  - sudo mount /dev/sdc1 /datadrive
-```
-
-## <a name="step-4---create-virtual-machine"></a>手順 4 - 仮想マシンの作成
+## <a name="create-virtual-machine"></a>仮想マシンの作成
 
 仮想マシンを作成するには、[az vm create](https://docs.microsoft.com/cli/azure/vm#create) コマンドを使用します。 
 
-仮想マシンを作成するときに、オペレーティング システム イメージ、ディスクのサイズ、管理者資格情報など、いくつかの選択肢があります。 この例では、Ubuntu を実行する `myVM` という名前の仮想マシンを作成します。 `--data-disk-sizes-gb` 引数で 50 GB のディスクを作成して VM に接続します。 `--custom-data` 引数に cloud-init 構成を指定すると、その構成が VM に反映されます。 最後に、SSH キーが存在しなければ、それも作成されます。
+仮想マシンを作成するときに、オペレーティング システム イメージ、ディスクのサイズ、管理者資格情報など、いくつかの選択肢があります。 この例では、Ubuntu Server を実行する `myVM` という名前の仮想マシンを作成します。 
 
 ```azurecli
-az vm create \
-  --resource-group myResourceGroup \
-  --name myVM \
-  --image Canonical:UbuntuServer:14.04.4-LTS:latest \
-  --generate-ssh-keys \
-  --data-disk-sizes-gb 50 \
-  --custom-data cloud-init.txt
+az vm create --resource-group myResourceGroupVM --name myVM --image UbuntuLTS --generate-ssh-keys
 ```
 
-VM が作成されると、Azure CLI で以下の情報が出力されます。 パブリック IP アドレスを書き留めておいてください。この仮想マシンにアクセスするときに、このアドレスが必要になります。 
+VM が作成されると、Azure CLI で VM に関する以下の情報が出力されます。 `publicIpAddress` を記録します。このアドレスは仮想マシンへのアクセスに使用します。 
 
 ```azurecli
 {
   "fqdns": "",
-  "id": "/subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
-  "location": "westeurope",
+  "id": "/subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroupVM/providers/Microsoft.Compute/virtualMachines/myVM",
+  "location": "westus",
   "macAddress": "00-0D-3A-23-9A-49",
   "powerState": "VM running",
   "privateIpAddress": "10.0.0.4",
   "publicIpAddress": "52.174.34.95",
-  "resourceGroup": "myResourceGroup"
+  "resourceGroup": "myResourceGroupVM"
 }
 ```
 
-VM がデプロイされている間、**cloud-init** の構成が完了するまでに数分かかる場合があります。 
+## <a name="connect-to-vm"></a>VM への接続
 
-## <a name="step-5--configure-firewall"></a>手順 5 - ファイアウォールの構成
+これで、SSH を使用して VM に接続できるようになりました。 サンプルの IP アドレスは、前の手順で記録した `publicIpAddress` に置き換えてください。
 
-Azure [ネットワーク セキュリティ グループ](../../virtual-network/virtual-networks-nsg.md) (NSG) は、仮想マシンの受信トラフィックと送信トラフィックを制御します。 特定のポートまたは特定のポート範囲に対するネットワーク トラフィックが、ネットワーク セキュリティ グループの規則によって許可または拒否されます。 また、これらの規則に送信元アドレス プレフィックスを含めれば、あらかじめ決められた送信元からのトラフィックにのみ仮想マシンとの通信を許可することができます。
+```bash
+ssh 52.174.34.95
+```
 
-前のセクションで、NGINX Web サーバーをインストールしました。 ポート 80 での受信トラフィックを許可するネットワーク セキュリティ グループの規則がなければ、この Web サーバーにインターネットからアクセスすることはできません。 次の手順で NSG の規則を作成し、ポート 80 で受信接続を許可してみましょう。
+VM での作業が完了したら SSH セッションを終了します。 
 
-### <a name="create-nsg-rule"></a>NSG 規則の作成
+```bash
+exit
+```
 
-受信 NSG 規則を作成するには、[az vm open-port](https://docs.microsoft.com/cli/azure/vm#open-port) コマンドを使用します。 次の例では、仮想マシンのポート `80` を開放しています。
+## <a name="understand-vm-images"></a>VM イメージについて
+
+Azure Marketplace には、新しい VM の作成に使用できるさまざまなイメージが用意されています。 前の手順では、Ubuntu のイメージを使用して仮想マシンを作成しました。 この手順では、Azure CLI を使用して Marketplace で CentOS のイメージを検索し、このイメージを使用して 2 台目の仮想マシンをデプロイします。  
+
+[az vm image list](/cli/azure/vm/image#list) コマンドを使用して、よく使用されるイメージのリストを表示します。
 
 ```azurecli
-az vm open-port --port 80 --resource-group myResourceGroup --name myVM 
+az vm image list --output table
 ```
 
-それではブラウザーで仮想マシンのパブリック IP アドレスにアクセスしてみましょう。 NSG 規則が適用され、既定の NGINX Web サイトが表示されます。
+このコマンドの出力では、Azure にあるよく使用される VM イメージが返されます。
 
-![NGINX の既定のサイト](./media/tutorial-manage-vm/nginx.png)  
+```bash
+Offer          Publisher               Sku                 Urn                                                             UrnAlias             Version
+-------------  ----------------------  ------------------  --------------------------------------------------------------  -------------------  ---------
+WindowsServer  MicrosoftWindowsServer  2016-Datacenter     MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest     Win2016Datacenter    latest
+WindowsServer  MicrosoftWindowsServer  2012-R2-Datacenter  MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:latest  Win2012R2Datacenter  latest
+WindowsServer  MicrosoftWindowsServer  2008-R2-SP1         MicrosoftWindowsServer:WindowsServer:2008-R2-SP1:latest         Win2008R2SP1         latest
+WindowsServer  MicrosoftWindowsServer  2012-Datacenter     MicrosoftWindowsServer:WindowsServer:2012-Datacenter:latest     Win2012Datacenter    latest
+UbuntuServer   Canonical               16.04-LTS           Canonical:UbuntuServer:16.04-LTS:latest                         UbuntuLTS            latest
+CentOS         OpenLogic               7.3                 OpenLogic:CentOS:7.3:latest                                     CentOS               latest
+openSUSE-Leap  SUSE                    42.2                SUSE:openSUSE-Leap:42.2:latest                                  openSUSE-Leap        latest
+RHEL           RedHat                  7.3                 RedHat:RHEL:7.3:latest                                          RHEL                 latest
+SLES           SUSE                    12-SP2              SUSE:SLES:12-SP2:latest                                         SLES                 latest
+Debian         credativ                8                   credativ:Debian:8:latest                                        Debian               latest
+CoreOS         CoreOS                  Stable              CoreOS:CoreOS:Stable:latest                                     CoreOS               latest
+```
 
-## <a name="step-6--snapshot-virtual-machine"></a>手順 6 - 仮想マシンのスナップショット
-
-ディスクのスナップショットを作成すると、特定の時点のディスクに対する読み取り専用のコピーが作成されます。 この手順では、VM のオペレーティング システム ディスクに対するスナップショットを作成します。 OS ディスクのスナップショットがあれば、仮想マシンをすばやく特定の状態に復元できます。また、スナップショットを使って同じ状態の仮想マシンを新たに作成することも可能です。
-
-### <a name="create-snapshot"></a>スナップショットの作成
-
-スナップショットを作成する前に、ディスクの ID または名前が必要です。 ディスク ID を取得するには、[az vm show](https://docs.microsoft.com/cli/azure/vm#show) コマンドを使用します。 この例ではディスク ID を変数に格納し、後の手順で使用します。
+`--all` 引数を追加すると、リスト全体を確認できます。 また、`--publisher` か `–offer` を使用してリストをフィルタリングすることも可能です。 この例では、`CentOS` に一致するプランがあるすべてのイメージを表示するように、リストをフィルタリングします。 
 
 ```azurecli
-osdiskid=$(az vm show -g myResourceGroup -n myVM --query "storageProfile.osDisk.managedDisk.id" -o tsv)
+az vm image list --offer CentOS --all --output table
 ```
 
-ディスクの ID を取得したら、次のコマンドでスナップショットを作成します。
-
-```azurcli
-az snapshot create -g myResourceGroup --source "$osdiskid" --name osDisk-backup
-```
-
-### <a name="create-disk-from-snapshot"></a>スナップショットからのディスクの作成
-
-このスナップショットをディスクに変換すれば、それを使って仮想マシンを作成し直すことができます。
+出力の一部を次に示します。
 
 ```azurecli
-az disk create --resource-group myResourceGroup --name mySnapshotDisk --source osDisk-backup
+Offer             Publisher         Sku   Urn                                     Version
+----------------  ----------------  ----  --------------------------------------  -----------
+CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.201501         6.5.201501
+CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.201503         6.5.201503
+CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.201506         6.5.201506
+CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20150904       6.5.20150904
+CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20160309       6.5.20160309
+CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20170207       6.5.20170207
 ```
 
-### <a name="restore-virtual-machine-from-snapshot"></a>スナップショットからの仮想マシンの復元
-
-実際に仮想マシンを復元してみましょう。既存の仮想マシンは削除します。 
+イメージを指定して VM をデプロイするために、`Urn` 列の値を記録します。 イメージを指定するときにイメージのバージョン数を "latest" で置き換えることもできます。このようにすると、ディストリビューションの最新バージョンが選択されます。 この例では、`--image` 引数を使用して、CentOS 6.5 イメージの最新バージョンを指定します。  
 
 ```azurecli
-az vm delete --resource-group myResourceGroup --name myVM
+az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:CentOS:6.5:latest --generate-ssh-keys
 ```
 
-仮想マシンを作成し直すと、既存のネットワーク インターフェイスが再利用されます。 これによってネットワークのセキュリティ構成が確実に維持されます。
+## <a name="understand-vm-sizes"></a>VM のサイズについて
 
-ネットワーク インターフェイス名を取得するには、[az network nic list](https://docs.microsoft.com/cli/azure/network/nic#list) コマンドを使用します。 この例では、この名前を `nic` という変数に格納しています。次の手順でこの変数を使用します。
+仮想マシンのサイズにより、CPU、GPU、メモリなど、仮想マシンで利用できるコンピューティング リソースの量が決定されます。 仮想マシンのサイズは、予定のワーク ロードに合ったものにする必要があります。 ワークロードが増えた場合は既存の仮想マシンのサイズを変更できます。
+
+### <a name="vm-sizes"></a>VM サイズ
+
+次の表に、各サイズをユース ケース別に示します。  
+
+| 型                     | サイズ           |    Description       |
+|--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| [汎用](sizes-general.md)         |DSv2、Dv2、DS、D、Av2、A0 ～ 7| CPU とメモリのバランスがとれています。 開発/テスト環境や、小中規模のアプリケーションとデータ ソリューションに最適です。  |
+| [コンピューティングの最適化](sizes-compute.md)   | Fs、F             | メモリに対する CPU の比が大きくなっています。 トラフィックが中程度のアプリケーション、ネットワーク アプライアンス、バッチ処理に適しています。        |
+| [メモリの最適化](../virtual-machines-windows-sizes-memory.md)    | GS、G、DSv2、DS、Dv2、D   | コアに対するメモリの比が大きくなっています。 リレーショナル データベース、中から大規模のキャッシュ、およびインメモリ分析に適しています。                 |
+| [ストレージの最適化](../virtual-machines-windows-sizes-storage.md)      | Ls                | 高いディスク スループットと IO。 ビッグ データ、SQL、および NoSQL のデータベースに最適です。                                                         |
+| [GPU](sizes-gpu.md)          | NV、NC            | 負荷の高いグラフィック処理やビデオ編集に特化した VM です。       |
+| [高性能](sizes-hpc.md) | H、A8 ～ 11          | 最も強力な CPU を備え、オプションで高スループットのネットワーク インターフェイス (RDMA) も搭載可能な VM です。 
+
+
+### <a name="find-available-vm-sizes"></a>使用可能な VM サイズを確認する
+
+特定の地域で利用可能な VM サイズのリストを確認するには、[az vm list-sizes](/cli/azure/vm#list-sizes) コマンドを使用します。 
 
 ```azurecli
-nic=$(az network nic list --resource-group myResourceGroup --query "[].[name]" -o tsv)
+az vm list-sizes --location westus --output table
 ```
 
-スナップショット ディスクから新しい仮想マシンを作成します。
+出力の一部を次に示します。
 
 ```azurecli
-az vm create --resource-group myResourceGroup --name myVM --attach-os-disk mySnapshotDisk --os-type linux --nics $nic
+  MaxDataDiskCount    MemoryInMb  Name                      NumberOfCores    OsDiskSizeInMb    ResourceDiskSizeInMb
+------------------  ------------  ----------------------  ---------------  ----------------  ----------------------
+                 2          3584  Standard_DS1                          1           1047552                    7168
+                 4          7168  Standard_DS2                          2           1047552                   14336
+                 8         14336  Standard_DS3                          4           1047552                   28672
+                16         28672  Standard_DS4                          8           1047552                   57344
+                 4         14336  Standard_DS11                         2           1047552                   28672
+                 8         28672  Standard_DS12                         4           1047552                   57344
+                16         57344  Standard_DS13                         8           1047552                  114688
+                32        114688  Standard_DS14                        16           1047552                  229376
+                 1           768  Standard_A0                           1           1047552                   20480
+                 2          1792  Standard_A1                           1           1047552                   71680
+                 4          3584  Standard_A2                           2           1047552                  138240
+                 8          7168  Standard_A3                           4           1047552                  291840
+                 4         14336  Standard_A5                           2           1047552                  138240
+                16         14336  Standard_A4                           8           1047552                  619520
+                 8         28672  Standard_A6                           4           1047552                  291840
+                16         57344  Standard_A7                           8           1047552                  619520
 ```
 
-新しいパブリック IP アドレスをメモしておき、そのアドレスにインターネット ブラウザーでアクセスします。 復元された仮想マシンで NGINX が実行されていることがわかります。 
+### <a name="create-vm-with-specific-size"></a>サイズを指定して VM を作成する
 
-### <a name="reconfigure-data-disk"></a>データ ディスクの再構成
-
-では、データ ディスクを仮想マシンに再度接続してみましょう。 
-
-まず、[az disk list](https://docs.microsoft.com/cli/azure/disk#list) コマンドでデータ ディスクの名前を見つけます。 この例では、このディスク名を `datadisk` という変数に格納しています。次の手順でこの変数を使用します。
+上記の VM 作成の例ではサイズを指定しなかったため、サイズは既定のものになっています。 VM のサイズは、作成時に `--size` 引数を付けて [az vm create](/cli/azure/vm#create) を使用することで指定できます。 
 
 ```azurecli
-datadisk=$(az disk list -g myResourceGroup --query "[?contains(name,'myVM')].[name]" -o tsv)
+az vm create --resource-group myResourceGroupVM --name myVM3 --image UbuntuLTS --size Standard_F4s --generate-ssh-keys
 ```
 
-ディスクを接続するには、[az vm disk attach](https://docs.microsoft.com/cli/azure/vm/disk#attach) コマンドを使用します。
+### <a name="resize-a-vm"></a>VM のサイズを変更する
+
+デプロイ後に VM のサイズを変更して、リソースの割り当てを増減できます。
+
+VM のサイズを変更する前に、現在の Azure クラスターで目的のサイズを利用可能であるか確認します。 [az vm list-vm-resize-options](/cli/azure/vm#list-vm-resize-options) コマンドでは、サイズのリストが返されます。 
 
 ```azurecli
-az vm disk attach –g myResourceGroup –-vm-name myVM –-disk $datadisk
+az vm list-vm-resize-options --resource-group myResourceGroupVM --name myVM --query [].name
+```
+目的のサイズが使用可能な場合は電源を入れた状態で VM のサイズを変更できます。ただし、この操作中に再起動が行われます。 [az vm resize]( /cli/azure/vm#resize) コマンドを使用してサイズ変更を実行します。
+
+```azurecli
+az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_DS4_v2
 ```
 
-さらにこのディスクをオペレーティング システムにマウントする必要があります。 ディスクをマウントするには、仮想マシンに接続して、たとえば `sudo mount /dev/sdc1 /datadrive` を実行します。マウント操作は、好きな方法で行ってください。 
+目的のサイズが現在のクラスターにない場合、サイズ変更を行うには VM の割り当てを解除する必要があります。 [az vm deallocate]( /cli/azure/vm#deallocate) コマンドを使用して、VM を停止し割り当てを解除します。 VM の電源を入れ直すと、一時ディスクのデータがすべて削除される可能性があることに注意してください。 また、静的な IP アドレスを使用している場合を除き、パブリック IP アドレスが変更されます。 
 
-## <a name="step-7--management-tasks"></a>手順 7 - 管理タスク
+```azurecli
+az vm deallocate --resource-group myResourceGroupVM --name myVM
+```
 
-仮想マシンのライフサイクルで、各種の管理タスクを実行する必要がある場合があります (仮想マシンの起動、停止、削除など)。 また、何度も行う作業や複雑な作業は、スクリプトを作成して自動化したい場合もあるでしょう。 日常的な管理タスクの多くは、Azure CLI を使ってコマンド ラインやスクリプトから実行できます。 
+割り当ての解除後、サイズ変更を行うことができます。 
+
+```azurecli
+az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_GS1
+```
+
+サイズの変更後、VM を起動できます。
+
+```azurecli
+az vm start --resource-group myResourceGroupVM --name myVM
+```
+
+## <a name="vm-power-states"></a>VM の電源の状態
+
+Azure VM にはさまざまな電源状態があり、そのうちの 1 つが設定されます。 この状態は、ハイパーバイザーから見た VM の現在の状態を表しています。 
+
+### <a name="power-states"></a>電源の状態
+
+| 電源の状態 | Description
+|----|----|
+| Starting | 仮想マシンが起動中であることを示します。 |
+| 実行中 | 仮想マシンが実行中であることを示します。 |
+| 停止中 | 仮想マシンが停止中であることを示します。 | 
+| 停止済み | 仮想マシンが停止されていることを示します。 仮想マシンが停止済みの状態でも、コンピューティング料金は発生します。  |
+| 割り当て解除中 | 仮想マシンの割り当てが解除中であることを示します。 |
+| 割り当て解除済み | 仮想マシンがハイパーバイザーから削除されているものの、コントロール プレーンでは使用可能であることを示します。 仮想マシンが割り当て解除済みの状態でも、コンピューティング料金は発生します。 |
+| - | 仮想マシンの電源状態が不明であることを示します。 |
+
+### <a name="find-power-state"></a>電源の状態を確認する
+
+特定の VM の状態を取得するには、[az vm get instance-view](/cli/azure/vm#get-instance-view) コマンドを使用します。 必ず仮想マシンとリソース グループの有効な名前を指定してください。 
+
+```azurecli
+az vm get-instance-view --name myVM --resource-group myResourceGroupVM --query instanceView.statuses[1] --output table
+```
+
+出力:
+
+```azurecli
+ode                DisplayStatus    Level
+------------------  ---------------  -------
+PowerState/running  VM running       Info
+```
+
+## <a name="management-tasks"></a>管理タスク
+
+仮想マシンのライフサイクルでは、各種の管理タスクを実行する必要がある場合があります (仮想マシンの起動、停止、削除など)。 また、何度も行う作業や複雑な作業は、スクリプトを作成して自動化したい場合もあるでしょう。 日常的な管理タスクの多くは、Azure CLI を使ってコマンド ラインやスクリプトから実行できます。 
 
 ### <a name="get-ip-address"></a>IP アドレスの取得
 
 仮想マシンのプライベート IP アドレスとパブリック IP アドレスを取得するには、次のコマンドを使用します。  
 
 ```azurecli
-az vm list-ip-addresses --resource-group myResourceGroup --name myVM
-```
-
-### <a name="resize-virtual-machine"></a>仮想マシンのサイズを変更する
-
-Azure 仮想マシンのサイズを変更するには、選択した Azure リージョンで利用できるサイズの名前を把握する必要があります。 これらのサイズは、[az vm list-sizes](https://docs.microsoft.com/cli/azure/vm#list-sizes) コマンドで確認できます。
-
-```azurecli
-az vm list-sizes --location westeurope --output table
-```
-
-仮想マシンのサイズを変更するには、[az vm resize](https://docs.microsoft.com/cli/azure/vm#resize) コマンドを使用します。 
-
-```azurecli
-az vm resize -g myResourceGroup -n myVM --size Standard_F4s
+az vm list-ip-addresses --resource-group myResourceGroupVM --name myVM --output table
 ```
 
 ### <a name="stop-virtual-machine"></a>仮想マシンの停止
 
 ```azurecli
-az vm stop --resource-group myResourceGroup --name myVM
+az vm stop --resource-group myResourceGroupVM --name myVM
 ```
 
 ### <a name="start-virtual-machine"></a>仮想マシンの起動
 
 ```azurecli
-az vm start --resource-group myResourceGroup --name myVM
+az vm start --resource-group myResourceGroupVM --name myVM
 ```
 
 ### <a name="delete-resource-group"></a>Delete resource group
@@ -231,10 +283,11 @@ az vm start --resource-group myResourceGroup --name myVM
 リソース グループを削除すると、そこに含まれているリソースもすべて削除されます。
 
 ```azurecli
-az group delete --name myResourceGroup
+az group delete --name myResourceGroupVM --no-wait --yes
 ```
 
 ## <a name="next-steps"></a>次のステップ
-このチュートリアルでは、個々の Azure リソースを使用して単一の仮想マシンを作成します。 次のチュートリアルでは、これらの概念に基づき、負荷分散され、メンテナンス イベントの回復力を高める高可用性アプリケーションを作成します。 その後、次のチュートリアルの「[Build a load balanced, highly available application on Linux virtual machines in Azure](tutorial-load-balance-nodejs.md)」 (Azure の Linux 仮想マシンで負荷分散された高可用性アプリケーションを作成する) に進みます。
 
-サンプル - [Azure CLI のサンプル スクリプト](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+このチュートリアルでは、基本的な VM の作成と管理について説明しました。 次のチュートリアルに進み、VM ディスクの詳細を確認してください。  
+
+[VM ディスクの作成と管理](./tutorial-manage-disks.md)

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: b7332aa2b2518bd926ee2221fd0129adcc25415b
-ms.lasthandoff: 04/13/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: f880aceb1657ffdfe909b73f175b9673d9ab02cd
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 04/13/2017
 車両テレメトリ分析ソリューションでは、自動車販売代理店、自動車メーカー、および保険会社が Cortana Intelligence の機能を使用して車両の状態と運転の習慣に関するリアルタイムの情報と予測情報を把握し、カスタマー エクスペリエンス、R&D、およびマーケティング キャンペーンの分野での向上を促進するための方法を紹介します。 このドキュメントには、サブスクリプション内でソリューションがデプロイされた後で Power BI のレポートとダッシュボードを構成する方法の詳細な手順が含まれています。 
 
 ## <a name="prerequisites"></a>前提条件
-1. [https://gallery.cortanaintelligence.com/Solution/Vehicle-Telemetry-Analytics-9](https://gallery.cortanaintelligence.com/Solution/Vehicle-Telemetry-Analytics-9) にアクセスして、車両テレメトリ分析ソリューションをデプロイします。  
+1. [テレメトリ分析](https://gallery.cortanaintelligence.com/Solution/5bdb23f3abb448268b7402ab8907cc90)ソリューションをデプロイします  
 2. [Microsoft Power BI Desktop をインストールします。](http://www.microsoft.com/download/details.aspx?id=45331)
 3. [Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/)。 Azure サブスクリプションを持っていない場合は、Azure 無料サブスクリプションで開始します
 4. Microsoft Power BI アカウント

@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 03/20/2017
 ms.author: jlian
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: c69334279e79352e3f7ad58d356f6891dd060b0a
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 539a3e628dfec1088f683652bc9b743b87875d36
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -44,7 +44,7 @@ Enterprise Agreement (EA)、クラウド ソリューション プロバイダ�
 
 ### <a name="check-your-subscription-and-access"></a>サブスクリプションとアクセスを確認する
 
-コストを表示するには、[サブスクリプション レベルのアクセス権](../active-directory/role-based-access-control-configure.md)が必要ですが、[アカウント センター](https://account.windowsazure.com/Home/Index)にアクセスし、課金情報を変更したり、サブスクリプションを管理したりできるのはアカウント管理者だけです。 アカウント管理者は、サインアップ プロセスを完了したユーザーです。 詳細については、「[Azure 管理者ロールを追加または変更する方法](billing-add-change-azure-subscription-administrator.md)」をご覧ください。
+コストを表示するには、[課金情報へのサブスクリプション レベルのアクセス権](billing-manage-access.md)が必要ですが、アカウント管理者のみが[アカウント センター](https://account.windowsazure.com/Home/Index)へのアクセス、課金情報の変更、サブスクリプションの管理を行うことができます。 アカウント管理者は、サインアップ プロセスを完了したユーザーです。 詳細については、「[サブスクリプションまたはサービスを管理する Azure 管理者ロールを追加または変更する](billing-add-change-azure-subscription-administrator.md)」をご覧ください。
 
 自分がアカウント管理者かどうかを確認するには、[Azure Portal の [サブスクリプション] ブレード](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)に移動し、アクセスできるサブスクリプションの一覧を確認します。 **[自分の役割]** を確認します。 ここに *[アカウント管理者]* と表示されていれば問題ありません。 *[所有者]* などの他の役割が表示されている場合は、すべての権限を持っているわけではありません。
 
