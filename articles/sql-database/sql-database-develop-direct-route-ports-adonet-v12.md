@@ -1,6 +1,6 @@
 ---
 title: "SQL Database における 1433 以外のポート | Microsoft Docs"
-description: "ADO.NET から Azure SQL Database V12 へのクライアント接続では、プロキシを使用せずに、データベースと直接やり取りする場合があります。 1433 以外のポートが重要になります。"
+description: "ADO.NET から Azure SQL Database へのクライアント接続では、プロキシを使用せずに、データベースと直接やり取りする場合があります。 1433 以外のポートが重要になります。"
 services: sql-database
 documentationcenter: 
 author: MightyPen
@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 08/17/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 1df9f3549db8417445a5a012d31ed662977a9990
-ms.openlocfilehash: 961b8b4eeeb8543c2adec60ff958a7f420c785b5
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: e47d8f71fbfe95027e1fbfebb0b7e91ffe653c62
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: 961b8b4eeeb8543c2adec60ff958a7f420c785b5
 このトピックでは、クライアントで ADO.NET 4.5 以降のバージョンが使用される場合の Azure SQL Database の接続動作について説明します。
 
 ## <a name="outside-vs-inside"></a>外部と内部
-Azure SQL Database への接続では、まずクライアント プログラムが Azure クラウドの境界の*外部*と*内部*のどちらで実行されているかを確認する必要があります。 サブセクションでは、次の&2; つの一般的なシナリオについて説明します。
+Azure SQL Database への接続では、まずクライアント プログラムが Azure クラウドの境界の*外部*と*内部*のどちらで実行されているかを確認する必要があります。 サブセクションでは、次の 2 つの一般的なシナリオについて説明します。
 
 #### <a name="outside-client-runs-on-your-desktop-computer"></a>*外部:* クライアントをデスクトップ コンピューターで実行
 ポート 1433 が、SQL Database クライアント アプリケーションをホストするデスクトップ コンピューターで開く必要がある唯一のポートです。
@@ -41,7 +42,7 @@ Azure クラウド境界内でクライアントを実行している場合、�
 2. ADO.NET は次に、ミドルウェアによって仲介することなく、SQL Database サーバーと直接接続します。
 3. クエリは、データベースに直接送信され、その結果もクライアントに直接返されます。
 
-11000 から 11999 および 14000 から 14999 のポート範囲が Azure クライアント コンピューター上で使用可能なまま残され、SQL Database V12 と ADO.NET 4.5 クライアントのやり取りに使用できることを確認します。
+11000 から 11999 および 14000 から 14999 のポート範囲が Azure クライアント コンピューター上で使用可能なまま残され、SQL Database と ADO.NET 4.5 クライアントのやり取りに使用できることを確認します。
 
 * 具体的には、対象の範囲のポートが他のすべての送信ブロッカーの影響を受けないようにします。
 * Azure VM では、 **高度なセキュリティを備えた Windows ファイアウォール** がポート設定を制御します。
@@ -64,10 +65,5 @@ Azure クラウド境界内でクライアントを実行している場合、�
 * [SQL Database の開発: 概要](sql-database-develop-overview.md)
 * [Azure SQL Database ファイアウォール](sql-database-firewall-configure.md)
 * [方法: ファイアウォール設定を構成する (SQL データベース)](sql-database-configure-firewall-settings.md)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

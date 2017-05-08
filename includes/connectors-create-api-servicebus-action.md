@@ -15,8 +15,3 @@
 8. ワークフローへの変更を保存します。   
    ![Service Bus アクション イメージ 4](./media/connectors-create-api-servicebus/action-4.png)     
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

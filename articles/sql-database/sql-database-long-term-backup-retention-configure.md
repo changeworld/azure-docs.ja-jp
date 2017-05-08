@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 04/10/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 5dee922184f0160d21da58b4aac321011df76ee9
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 5fea9dfcd323ecf497742173a66119be4f734909
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -154,7 +154,7 @@ Azure SQL データベースのバックアップを保存し、Azure Portal ま
 
 ### <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
-[New-AzureRmRecoveryServicesVault](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault?view=azurermps-3.7.0) を使用して Recovery Services コンテナーを作成します。
+[New-AzureRmRecoveryServicesVault](/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault) を使用して Recovery Services コンテナーを作成します。
 
 > [!IMPORTANT]
 > コンテナーは、Azure SQL 論理サーバーと同じリージョンに配置する必要があります。また、論理サーバーと同じリソース グループを使用する必要があります。
@@ -173,7 +173,7 @@ Set-AzureRmRecoveryServicesBackupProperties -BackupStorageRedundancy LocallyRedu
 
 ### <a name="set-your-server-to-use-the-recovery-vault-for-its-long-term-retention-backups"></a>長期保存のバックアップ向けに作成した Recovery コンテナーを使用するようサーバーを設定する
 
-[Set-AzureRmSqlServerBackupLongTermRetentionVault](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/set-azurermsqlserverbackuplongtermretentionvault) コマンドレットを使用して、以前に作成された Recovery Services コンテナーを特定の Azure SQL サーバーに関連付けます。
+[Set-AzureRmSqlServerBackupLongTermRetentionVault](/powershell/module/azurerm.sql/set-azurermsqlserverbackuplongtermretentionvault) コマンドレットを使用して、以前に作成された Recovery Services コンテナーを特定の Azure SQL サーバーに関連付けます。
 
 ```PowerShell
 # Set your server to use the vault to for long-term backup retention 
@@ -183,10 +183,10 @@ Set-AzureRmSqlServerBackupLongTermRetentionVault -ResourceGroupName $resourceGro
 
 ### <a name="create-a-retention-policy"></a>保持ポリシーを作成する
 
-保持ポリシーで、データベースのバックアップの保存期間を設定できます。 [Get-AzureRmRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/get-azurermrecoveryservicesbackupretentionpolicyobject) コマンドレットを使用して、新しいポリシーを作成するためのテンプレートとして使用する既定の保持ポリシーを取得します。 このテンプレートでは、保有期間は 2 年間に設定されています。 次に、[New-AzureRmRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/new-azurermrecoveryservicesbackupprotectionpolicy) を実行して最終的にポリシーを作成します。 
+保持ポリシーで、データベースのバックアップの保存期間を設定できます。 [Get-AzureRmRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/get-azurermrecoveryservicesbackupretentionpolicyobject) コマンドレットを使用して、新しいポリシーを作成するためのテンプレートとして使用する既定の保持ポリシーを取得します。 このテンプレートでは、保有期間は 2 年間に設定されています。 次に、[New-AzureRmRecoveryServicesBackupProtectionPolicy](/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy) を実行して最終的にポリシーを作成します。 
 
 > [!NOTE]
-> 一部のコマンドレットは実行する前にコンテナーのコンテキストを設定する必要があるため ([Set-AzureRmRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/resourcemanager/azurerm.recoveryservices/v2.3.0/set-azurermrecoveryservicesvaultcontext))、このコマンドレットは関連するいくつかのスニペットに見られます。 ポリシーはコンテナーに含まれるため、コンテキストを設定します。 コンテナーごとに複数の保持ポリシーを作成した後に、目的のポリシーを特定のデータベースに適用することができます。 
+> 一部のコマンドレットは実行する前にコンテナーのコンテキストを設定する必要があるため ([Set-AzureRmRecoveryServicesVaultContext](/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext))、このコマンドレットは関連するいくつかのスニペットに見られます。 ポリシーはコンテナーに含まれるため、コンテキストを設定します。 コンテナーごとに複数の保持ポリシーを作成した後に、目的のポリシーを特定のデータベースに適用することができます。 
 
 
 ```PowerShell
@@ -208,7 +208,7 @@ $policy
 
 ### <a name="configure-a-database-to-use-the-previously-defined-retention-policy"></a>以前に定義した保持ポリシーを使用するデータベースを構成する
 
-[Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/set-azurermsqldatabasebackuplongtermretentionpolicy) コマンドレットを使用して、新しいポリシーを特定のデータベースに適用します。
+[Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy](/powershell/module/azurerm.sql/set-azurermsqldatabasebackuplongtermretentionpolicy) コマンドレットを使用して、新しいポリシーを特定のデータベースに適用します。
 
 ```PowerShell
 # Enable long-term retention for a specific SQL database
@@ -225,9 +225,9 @@ Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName $resource
 
 次のコマンドレットを使用してバックアップに関する情報を確認します。
 
-- [Get-AzureRmRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/get-azurermrecoveryservicesbackupcontainer)
-- [Get-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/get-azurermrecoveryservicesbackupitem)
-- [Get-AzureRmRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/get-azurermrecoveryservicesbackuprecoverypoint)
+- [Get-AzureRmRecoveryServicesBackupContainer](/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer)
+- [Get-AzureRmRecoveryServicesBackupItem](/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupitem)
+- [Get-AzureRmRecoveryServicesBackupRecoveryPoint](/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackuprecoverypoint)
 
 ```PowerShell
 #$resourceGroupName = "{resource-group-name}"
@@ -252,7 +252,7 @@ $availableBackups
 
 ### <a name="restore-a-database-from-a-backup-in-long-term-backup-retention"></a>長期的なバックアップ保有期間内のバックアップからデータベースを復元する
 
-長期的なバックアップ保有期間から復元するには、[Restore-AzureRmSqlDatabase](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/restore-azurermsqldatabase) コマンドレットを使用します。
+長期的なバックアップ保有期間から復元するには、[Restore-AzureRmSqlDatabase](/powershell/module/azurerm.sql/restore-azurermsqldatabase) コマンドレットを使用します。
 
 ```PowerShell
 # Restore the most recent backup: $availableBackups[0]

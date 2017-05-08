@@ -1,84 +1,100 @@
 ---
-title: "Azure Logic Apps のオンプレミスのファイル システム フォルダーへの接続 | Microsoft Docs"
-description: "オンプレミス データ ゲートウェイを使用して、ロジック アプリ ワークフローのオンプレミス ファイル システムに接続する"
+title: "Azure Logic Apps からオンプレミスのファイル システム フォルダーへの接続 | Microsoft ドキュメント"
+description: "オンプレミスのデータ ゲートウェイおよびファイル システム コネクタを使用して、ロジック アプリ ワークフローからオンプレミスのファイル システムに接続します"
+keywords: "ファイル システム"
 services: logic-apps
-documentationcenter: dev-center-name
 author: derek1ee
 manager: anneta
+documentationcenter: 
+ms.assetid: 
 ms.service: logic-apps
-ms.devlang: wdl
+ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/27/2017
-ms.author: deli
+ms.author: deli; LADocs
 translationtype: Human Translation
-ms.sourcegitcommit: 336e3f2bba2fe3bb7abdd6959354349ff61ed6a8
-ms.openlocfilehash: 3bbcb5e9c7a4731eb8eb410a94fddb93b2ea8416
-
+ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
+ms.openlocfilehash: 9eab48d40c3d9db896724d3bdb574d89fdab2796
+ms.lasthandoff: 04/04/2017
 
 ---
-# <a name="use-the-file-system-connector-with-the-on-premises-data-gateway-in-a-logic-app"></a>ロジック アプリでのオンプレミス データ ゲートウェイによるファイル システム コネクタの使用
 
-ハイブリッド クラウドの接続は、Logic Apps の中核です。 オンプレミス データ ゲートウェイを使用すると、データを管理し、Logic Apps からオンプレミスのリソースに安全にアクセスできます。 この記事では、Dropbox、ファイル共有にアップロードされたファイルをコピーし、電子メールを送信するというシンプルなシナリオで、オンプレミスのファイル システムに接続する方法について説明します。
+# <a name="connect-to-on-premises-file-systems-from-logic-apps-with-the-file-system-connector"></a>ファイル システム コネクタを使用した、Logic Apps からオンプレミスのファイル システムへの接続
+
+ハイブリッド クラウド接続は、Logic Apps の中核です。オンプレミスのデータ ゲートウェイを使用すると、Logic Apps からデータを管理し、オンプレミスのリソースに安全にアクセスできます。 この記事では、Dropbox、ファイル共有にアップロードされたファイルをコピーし、電子メールを送信するという基本的なシナリオで、オンプレミスのファイル システムに接続する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
-- 最新の[オンプレミス データ ゲートウェイ](https://www.microsoft.com/en-us/download/details.aspx?id=53127)をインストールして構成します。
+
+- 最新の[オンプレミス データ ゲートウェイ](https://www.microsoft.com/download/details.aspx?id=53127)をインストールして構成します。
 - 最新のオンプレミス データ ゲートウェイのバージョン 1.15.6150.1 以降をインストールします。 [オンプレミス データ ゲートウェイへの接続](http://aka.ms/logicapps-gateway)に関するページに、この手順が記載されています。 残りの手順を続行する前に、オンプレミス コンピューターにゲートウェイをインストールする必要があります。
 
-## <a name="use-file-system-connector"></a>ファイル システム コネクタの使用
+## <a name="add-trigger-and-actions-for-connecting-to-your-file-system"></a>ファイル システムに接続するためのトリガーとアクションの追加
 
-1. Dropbox の "ファイルが作成されたとき" トリガーを作成し、すべてのサポートされたファイル コネクタ アクションが、検索機能に "File System" と入力するのと同じくらいシンプルであることを簡単に確認してみましょう。
+1. ロジック アプリを作成し、Dropbox の **[ファイルが作成されたとき]** トリガーを追加します。 
+2. トリガー内で、**[次のステップ]** > **[アクションの追加]** の順に選択します。 
+3. 検索ボックスで、「`file system`」と入力し、ファイル システム コネクタでサポートされているすべてのアクションを表示します。
 
- ![ファイル コネクタの検索](media/logic-apps-using-file-connector/search-file-connector.png)
+   ![ファイル コネクタの検索](media/logic-apps-using-file-connector/search-file-connector.png)
 
-2. 「ファイルの作成」を選択し、接続を作成します。
- - 既存の接続がない場合は、作成するよう求めるメッセージが表示されます。
- - [Connect via on-premises data gateway (オンプレミス データ ゲートウェイ経由で接続する)] オプションをオンにします。 その他のプロパティが表示されます。
- - ルート フォルダーを選択します。 ルート フォルダーには、オンプレミスのデータ ゲートウェイがインストールされているコンピューター上のローカル フォルダー、またはコンピューターがアクセスできるネットワーク共有を指定できます。
- - ゲートウェイのユーザー名とパスワードを入力します。
- - 前の手順でインストールしたゲートウェイを選択します。
-    
- > [!NOTE]
- > ルート フォルダーは、すべてのファイル関連のアクションの相対パスに使用されるメインの親フォルダーです。
+2. **[ファイルの作成]** アクションを選択し、ファイル システムへの接続を作成します。
 
- ![接続の構成](media/logic-apps-using-file-connector/create-file.png)
+   既存の接続がない場合は、作成するよう求めるメッセージが表示されます。
 
-3. すべての詳細を指定したら、[作成] をクリックします。 Logic Apps により、接続が構成およびテストされ、適切に機能していることが確認されます。 すべて確認したら、事前に選択したカードのオプションが表示されます。 これで、ファイル システム コネクタを使用する準備ができました。
+   1. **[オンプレミスのデータ ゲートウェイ経由で接続する]** を選択します。 その他のプロパティが表示されます。
+   2. ファイル システムのルート フォルダーを選択します。
+      
+       > [!NOTE]
+       > ルート フォルダーはメインの親フォルダーで、すべてのファイル関連のアクションの相対パスに使用されます。 このフォルダーには、オンプレミスのデータ ゲートウェイがインストールされているコンピューターのローカル フォルダー、またはコンピューターがアクセス可能なネットワーク共有を指定できます。
 
-4. Dropbox にアップロードされたファイルを取得し、オンプレミスのファイル共有のルート フォルダーにコピーします。
+   3. ゲートウェイのユーザー名とパスワードを入力します。
+   4. 前の手順でインストールしたゲートウェイを選択します。
 
- ![ファイル アクションの作成](media/logic-apps-using-file-connector/create-file-filled.png)
+       ![接続の構成](media/logic-apps-using-file-connector/create-file.png)
 
-5. ファイルがコピーされたら、それを対象のユーザーに知らせる電子メールを送信しましょう。 他のコネクタのように、前のアクションの出力が "動的なコンテンツ" セレクターで利用できるようになります。
- - 受信者、タイトル、および電子メールの本文を入力します。 "動的なコンテンツ" セレクターを使用して、ファイル コネクタの出力を選択して電子メールを拡張します。
+3. すべての詳細を入力したら、**[作成]** を選択します。 
 
- ![電子メール送信アクション](media/logic-apps-using-file-connector/send-email.png)
+   Logic Apps により、接続の構成とテストが行われ、適切に機能していることが確認されます。 
+   接続が正しくセットアップされると、事前に選択したアクションのオプションが表示されます。 
+   これで、ファイル システム コネクタを使用する準備ができました。
 
-6. Logic App を保存し、Dropbox にファイルをアップロードしてテストします。 オンプレミス ファイル共有にコピーされるファイルが表示され、アクションに関する電子メール通知が届きます。
+4. Dropbox からオンプレミスのファイル共有のルート フォルダーにコピーするファイルを指定します。
 
-    > [!TIP] 
-    > [Logic Apps を監視する](../logic-apps/logic-apps-monitor-your-logic-apps.md)方法を確認してください。
+   ![ファイル アクションの作成](media/logic-apps-using-file-connector/create-file-filled.png)
 
-7. これで完了です。ファイル システム コネクタを使用した Logic App が機能するようになりました。 提供されるその他の機能の探索を開始できます。
+5. ロジック アプリでファイルがコピーされたら、電子メールを送信する Outlook アクションを追加し、関連のユーザーに新しいファイルについて知らせます。 受信者、タイトル、および電子メールの本文を入力します。 
 
-    - ファイルを作成する
-    - フォルダー内のファイルを一覧表示する
-    - ファイルを追加する
-    - ファイルを削除する
-    - ファイルの内容を取得する
-    - パスを使用してファイルの内容を取得する
-    - ファイルのメタデータを取得する
-    - パスを使用してファイルのメタデータを取得する
-    - ルート フォルダー内のファイルを一覧表示する
-    - ファイルを更新する
+   動的コンテンツ セレクターで、ファイル コネクタからのデータ出力を選択し、電子メールに詳細を追加できます。
+
+   ![電子メール送信アクション](media/logic-apps-using-file-connector/send-email.png)
+
+6. ロジック アプリを保存し、 Dropbox にファイルをアップロードして、アプリをテストします。 ファイルはオンプレミスのファイル共有にコピーされ、操作に関す電子メール通知が届きます。
+
+   > [!TIP] 
+   > 「[Logic Apps を監視する](../logic-apps/logic-apps-monitor-your-logic-apps.md)」方法を確認してください。
+
+これで完了です。オンプレミスのファイル システムに接続するロジック アプリが機能するようになりました。 コネクタが提供するその他の機能をお試しください。機能の例は、次のとおりです。
+
+- ファイルを作成する
+- フォルダー内のファイルを一覧表示する
+- ファイルを追加する
+- ファイルを削除する
+- ファイルの内容を取得する
+- パスを使用してファイルの内容を取得する
+- ファイルのメタデータを取得する
+- パスを使用してファイルのメタデータを取得する
+- ルート フォルダー内のファイルを一覧表示する
+- ファイルを更新する
+
+## <a name="get-help"></a>問い合わせ
+
+[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)では、質問の投稿や質問への回答を行うことができるほか、他の Azure Logic Apps ユーザーがどのようなことを行っているかがわかります。
+
+[Azure Logic Apps ユーザー フィードバック サイト](http://aka.ms/logicapps-wish)でアイデアへの投票やアイデアの投稿を行って、Azure Logic Apps とコネクタの改善にご協力ください。
 
 ## <a name="next-steps"></a>次のステップ
-- [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) についての詳細情報をご覧ください。 
-- Logic Apps への[オンプレミス接続](../logic-apps/logic-apps-gateway-connection.md)を作成します。
 
-
-
-<!--HONumber=Jan17_HO5-->
-
+- ロジック アプリから[オンプレミスのデータへの接続](../logic-apps/logic-apps-gateway-connection.md)
+- [エンタープライズ統合](../logic-apps/logic-apps-enterprise-integration-overview.md)に関する情報をご覧ください
 

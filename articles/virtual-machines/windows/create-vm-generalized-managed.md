@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/7/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: a43ccbdd539caa66840e5f7206cb8163665614a6
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 157f8db0f0f7ac751b03b39e504bf0a5ec25effc
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -39,7 +39,7 @@ AzureRM.Compute PowerShell モジュールの最新バージョンがあるこ�
 ```powershell
 Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 ```
-詳細については、[Azure PowerShell のバージョン管理に関するページ](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/#azure-powershell-versioning)をご覧ください。
+詳細については、[Azure PowerShell のバージョン管理に関するページ](/powershell/azure/overview)をご覧ください。
 
 
 

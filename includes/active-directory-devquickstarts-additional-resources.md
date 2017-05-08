@@ -5,8 +5,3 @@
 
 ## <a name="get-security-updates-for-our-products"></a>Microsoft 製品のセキュリティ更新プログラムの取得
 セキュリティの問題が発生したときに通知を受け取ることをお勧めします。[マイクロソフト テクニカル セキュリティ情報通知に関する TechCenter のページ](https://technet.microsoft.com/security/dd252948) にアクセスし、セキュリティ アドバイザリ通知の受信登録を行ってください。
-
-
-<!--HONumber=Feb17_HO2-->
-
-

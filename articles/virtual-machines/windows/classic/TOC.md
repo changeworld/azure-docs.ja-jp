@@ -9,7 +9,7 @@
 # 作業開始
 ## [ポータルを使用して VM を作成する](tutorial.md)
 ## [VM へのログオン](connect-logon.md)
-## [Azure PowerShell をインストールするには](/powershell/azureps-cmdlets-docs)
+## [Azure PowerShell をインストールするには](/powershell/azure/overview)
 ## [Azure CLI のインストール](../../../cli-install-nodejs.md)
 
 # 方法
@@ -88,7 +88,7 @@
 ## [RDP パスワードをリセットする](reset-rdp.md)
 
 # リファレンス
-## [PowerShell](/powershell/azureps-cmdlets-docs)
+## [PowerShell](/powershell/azure/overview)
 ## [Azure CLI](/cli/azure/vm)
 ## [Java](/java/api)
 ## [.NET](/dotnet/api/microsoft.azure.management.compute)

@@ -1,10 +1,9 @@
 # 概要
 ## [Azure Data Factory の概要](data-factory-introduction.md)
 ## 概念
-### [データセット](data-factory-create-datasets.md)
 ### [パイプラインとアクティビティ](data-factory-create-pipelines.md)
+### [データセット](data-factory-create-datasets.md)
 ### [スケジュールと実行](data-factory-scheduling-and-execution.md)
-### [計算のリンクされたサービス](data-factory-compute-linked-services.md)
 
 # 作業の開始
 ## [チュートリアル: パイプラインを作成してデータをコピーする](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
@@ -21,6 +20,7 @@
 ### [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 ### [Azure Resource Manager テンプレート](data-factory-build-your-first-pipeline-using-arm.md)
 ### [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
+## [チュートリアル: オンプレミスとクラウドの間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)
 ## [FAQ](data-factory-faq.md)
 
 # 方法
@@ -29,6 +29,7 @@
 ### [Data Factory コピー ウィザード](data-factory-azure-copy-wizard.md)
 #### [1 TB を 15 分以内に読み込む](data-factory-load-sql-data-warehouse.md)
 ### [パフォーマンスとチューニングのガイド](data-factory-copy-activity-performance.md)
+### [セキュリティに関する考慮事項](data-factory-data-movement-security-considerations.md)
 ### コネクタ
 #### [Amazon Redshift](data-factory-amazon-redshift-connector.md)
 #### [Amazon S3](data-factory-amazon-simple-storage-service-connector.md)
@@ -60,7 +61,7 @@
 #### [Teradata](data-factory-onprem-teradata-connector.md)
 #### [Web テーブル](data-factory-web-table-connector.md)
 ### [Data Management Gateway](data-factory-data-management-gateway.md)
-### [オンプレミスとクラウドの間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)
+
 
 ## [データを変換する](data-factory-data-transformation-activities.md)
 ### [HDInsight Hive アクティビティ](data-factory-hive-activity.md)
@@ -75,6 +76,7 @@
 ### [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
 ### [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
 ### [Azure Analysis Services でモデルを処理する](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample)
+### [計算のリンクされたサービス](data-factory-compute-linked-services.md)
 
 ## 開発
 ### [Azure Resource Manager テンプレート](data-factory-how-to-use-resource-manager-templates.md)
@@ -90,7 +92,7 @@
 ### [Data Management Gateway の使用に関する問題のトラブルシューティング](data-factory-troubleshoot-gateway-issues.md)
 
 # リファレンス
-## [PowerShell](/powershell/resourcemanager/azurerm.datafactories/v2.3.0/azurerm.datafactories)
+## [PowerShell](/powershell/module/azurerm.datafactories)
 ## [.NET](/dotnet/api/microsoft.azure.management.datafactories.models)
 ## [REST ()](/rest/api/datafactory/)
 ## [JSON](data-factory-json-scripting-reference.md)

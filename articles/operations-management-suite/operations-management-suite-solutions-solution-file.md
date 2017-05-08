@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/17/2017
+ms.date: 04/30/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
@@ -44,7 +44,7 @@ Operations Management Suite (OMS) の管理ソリューションは、[Resource 
 
     {
        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-       "contentVersion": "",
+       "contentVersion": "1.0",
        "parameters": {  },
        "variables": {  },
        "resources": [  ],
@@ -144,6 +144,7 @@ Operations Management Suite (OMS) の管理ソリューションは、[Resource 
                 "category": "Schedule"
             }
         }
+    }
 
 
 ソリューション内のその他の要素のパラメーター値は、 **parameters('parameter name')**の構文を使用して参照します。  たとえば、ワークスペース名にアクセスするには、**parameters('workspaceName')** を使用します。

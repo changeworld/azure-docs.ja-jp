@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: compute
-ms.date: 11/23/2016
+ms.date: 04/26/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 9134b5893413abbc49e2332651fb4a8b549ce559
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 8bea98274f94853cb52fe8b51fdaa4f224c649e4
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -33,11 +33,11 @@ ms.lasthandoff: 03/31/2017
 - - -
 最初に Azure Powershell コマンドレットを[ここ](http://go.microsoft.com/?linkid=9811175)からダウンロードします。RemoteApp のコマンドレットもそこに含まれています。 
 
-詳細については、 [Azure RemoteApp コマンドレットのヘルプ](https://msdn.microsoft.com/library/mt428031.aspx)をご覧ください。
+詳細については、 [Azure RemoteApp コマンドレットのヘルプ](/powershell/module/azure?view=azuresmps-3.7.0)をご覧ください。
 
 ## <a name="configure-azure-cmdlets-to-use-your-subscription"></a>サブスクリプションを使用するために Azure コマンドレットを構成します。
 - - -
-[このガイド](/powershell/azureps-cmdlets-docs) に従うと、Azure サブスクリプションに対してコマンドレットを使用できるようになります。
+[このガイド](/powershell/azure/overview) に従うと、Azure サブスクリプションに対してコマンドレットを使用できるようになります。
 
 次の手順に従って、すぐに作業を開始できます。
 

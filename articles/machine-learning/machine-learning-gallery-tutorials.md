@@ -1,6 +1,6 @@
 ---
 title: "Cortana Intelligence ギャラリー チュートリアル | Microsoft Docs"
-description: "Cortana Intelligence ギャラリーでチュートリアルを共有および発見します。"
+description: "Cortana Intelligence ギャラリーでチュートリアルを共有および発見する"
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -15,72 +15,67 @@ ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 262ee4f092efa11150de61168e6b03c0477f0543
-ms.openlocfilehash: 6ab17943e3ce21fc309a2b8986e99823b316384f
-ms.lasthandoff: 01/10/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 9ed2aadb67b5b911ef35a28879f349586baa5462
+ms.lasthandoff: 04/15/2017
 
 
 ---
-# <a name="discover-and-share-tutorials-in-the-cortana-intelligence-gallery"></a>Cortana Intelligence ギャラリーでチュートリアルを共有および発見する
+# <a name="discover-and-share-tutorials-in-cortana-intelligence-gallery"></a>Cortana Intelligence ギャラリーでチュートリアルを共有および発見する
 [!INCLUDE [machine-learning-gallery-item-selector](../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="tutorials"></a>Tutorials (チュートリアル)
-Machine Learning のテクノロジと概念を紹介するか、Machine Learning に関する問題を解決するための高度な手法を説明するさまざまな **[チュートリアル](https://gallery.cortanaintelligence.com/tutorials)** を使用できます。
+Cortana Intelligence ギャラリーでは、機械学習のテクノロジと概念を学ぶことができるいくつかの[チュートリアル](https://gallery.cortanaintelligence.com/tutorials)を提供しています。 またチュートリアルは、機械学習の問題を解決するための高度な方法を説明している場合もあります。
 
 ## <a name="discover"></a>発見
-ギャラリーでチュートリアルを閲覧するには、[[ギャラリー]](http://gallery.cortanaintelligence.com) を開き、ギャラリー ホーム ページの上部にある **[詳細]** をマウスでポイントし、**[チュートリアル]** を選択します。
+[ギャラリーで](http://gallery.cortanaintelligence.com)チュートリアルを参照するには、**[More (詳細)]** の下の **[Tutorials (チュートリアル)]** を選択します。
 
-![ギャラリー ホーム ページからチュートリアルを選択する](media/machine-learning-gallery-tutorials/select-tutorials-in-gallery.png)
+![ギャラリー ホーム ページでチュートリアルを選択する](media/machine-learning-gallery-tutorials/select-tutorials-in-gallery.png)
 
- **[チュートリアル](https://gallery.cortanaintelligence.com/tutorials)**
- ページには、最近追加された、最も一般的なチュートリアルの一覧が表示されます。
-**[すべて表示]** をクリックし、すべてのチュートリアルを表示します。
-このページで、ギャラリー内のすべてのチュートリアルを見ることができます。 ページの左側にあるフィルター条件を選択し、上部に検索語句を入力して、検索することもできます。
+**[[Tutorials (チュートリアル)]](https://gallery.cortanaintelligence.com/tutorials)** ページには、最近追加された人気のあるチュートリアルの一覧が表示されます。 すべてのチュートリアルを表示するには、**[See all (すべて表示)]** ボタンをクリックします。 特定のチュートリアルを検索するには、**[See all (すべて表示)]** を選択し、フィルター条件を選択します。 ギャラリー ページの上部にある **[Search (検索)]** ボックスに検索語句を入力することもできます。
 
- 任意のチュートリアルをクリックし、チュートリアルの詳細ページを開いて、それについての詳細情報を参照します。
-このページで、コメント セクションから、意見を述べたり、フィードバックを提供したり、質問したりできます。 LinkedIn や Twitter アカウントの共有機能を使用して、友人や同僚とを共有することもできます。 チュートリアルへのリンクを電子メールで送信し、他のユーザーを招待してそのページを表示することもできます。
+チュートリアルの詳細ページでチュートリアルに関する詳細を取得できます。 チュートリアルの詳細ページを開くには、チュートリアルを選択します。 チュートリアルの詳細ページの **[Comments (コメント)]** セクションで、チュートリアルに関するコメント、フィードバックの提供、または質問の投稿ができます。 チュートリアルは、Twitter や LinkedIn で友人や同僚と共有することもできます。 チュートリアルの詳細ページへのリンクを電子メールで送信し、他のユーザーを招待してそのページを見せることもできます。
 
 ![この項目を友人と共有する](media/machine-learning-gallery-how-to-use-contribute-publish/share-links.png)
 
 ![独自のコメントを追加する](media/machine-learning-gallery-how-to-use-contribute-publish/comments.png)
 
 ## <a name="contribute"></a>投稿
-チュートリアルをギャラリーに投稿して、問題解決や概念を学ぶ他のユーザーを支援できます。
+チュートリアルをギャラリーに追加して、問題解決や概念を学ぶ他のユーザーを支援できます。
 
 ### <a name="create-a-tutorial"></a>チュートリアルを作成する
-次の手順に従って、チュートリアルを作成して Cortana Intelligence ギャラリーに投稿します。
 
-1. Microsoft アカウントを使用して、ギャラリーにサインインします
+1. Microsoft アカウントを使用して、ギャラリーにログインします。
 
-2. ウィンドウの上部にあるイメージをクリックしてから、ユーザー名をクリックする
+2. ページの上部にあるイメージを選択してから、名前を選択します。
   
-    ![アカウント名をクリックする](media/machine-learning-gallery-tutorials/click-account-name.png)
+    ![アカウント名を選択する](media/machine-learning-gallery-tutorials/click-account-name.png)
 
-3. **[新しい項目]** をクリックする
+3. **[New Item (新しい項目)]** を選択します。
   
-    ![[新しい項目] をクリックする](media/machine-learning-gallery-collections/click-new-item.png)
+    ![[New Item (新しい項目)] を選択する](media/machine-learning-gallery-collections/click-new-item.png)
 
-4. **[項目タイプ]** の **[コレクション]** を選択してから、コレクションの名前、簡単な概要、説明、およびユーザーがコレクションを検索する際に役立つタグを設定する
+4. **[Description (説明)]** ページで、**[ITEM TYPE (項目の種類)]** に対して、**[Tutorial (チュートリアル)]** を選択します。 チュートリアルの名前、簡単な概要、詳細説明、および他のユーザーにチュートリアルを見つけてもらうのに役立つ可能性がある任意のタグを入力します。
   
-    ![新しいコレクションの情報を入力する](media/machine-learning-gallery-tutorials/create-tutorial-page-1.png)
-5. **[次へ]** をクリックする: イメージ ファイルをアップロードするか、コレクションで表示されるストック イメージを選択できます。選択されたものは、ユーザーがコレクションの内容や目的を特定するのに役立ちま
+    ![新しいチュートリアルの情報を入力する](media/machine-learning-gallery-tutorials/create-tutorial-page-1.png)
+5. **[Image Selection (イメージの選択)]** ページで、コレクションと一緒に表示されるイメージを選択します。 独自のイメージ ファイルをアップロードしたり、ストック イメージを選択できます。 ユーザーがチュートリアルの内容と目的を特定するために役立つようなイメージを選択します。
   
-    ![新しいコレクションの情報を入力する](media/machine-learning-gallery-tutorials/create-tutorial-page-2.png)
+    ![新しいチュートリアルの情報を入力する](media/machine-learning-gallery-tutorials/create-tutorial-page-2.png)
 
-6. **[次へ]** をクリックする: チュートリアルを **[公開]** (任意のユーザーに表示できる) にするか **[非公開]** (ダイレクト リンクを使用するユーザーのみ、チュートリアルを表示できる) にするかを決定できます
+6. **[Settings (設定)]** ページの **[Visibility (表示)]** で、コレクションが **[Public (公開)]** (誰でもチュートリアルを表示できる) であるか、または **[Unlisted (非公開)]** (チュートリアルへの直接リンクを持つユーザーのみが見られる) であるかを選択します。
   
     > [!IMPORTANT]
-    > チュートリアルを **[公開]** に設定すると、**[非公開]** に設定できません。
+    > チュートリアルを **[Public (公開)]** に設定し、次に **[Create (作成)]** を選択すると、後でチュートリアルを **[Unlisted (非公開)]** に変更できません。
     > 
     > 
   
-    ![公開または非公開を選択する](media/machine-learning-gallery-tutorials/create-tutorial-page-3.png)
+    ![[Public (公開)] または [Unlisted (非公開)] を選択する](media/machine-learning-gallery-tutorials/create-tutorial-page-3.png)
 
-7. **[作成]**
+7. **[作成]**を選択します。
 
-これで、チュートリアルが Cortana Intelligence ギャラリーの一部になりました。 **[項目]** タブの下のアカウント ページに表示されます。
+これで、チュートリアルが Cortana Intelligence ギャラリーに含まれました。 チュートリアルは、アカウント ページの **[Items (項目)]** タブの下に表示されます。
 
-**[ギャラリーにアクセスする >>](http://gallery.cortanaintelligence.com)**
+**[ギャラリーに移動する](http://gallery.cortanaintelligence.com)**
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 

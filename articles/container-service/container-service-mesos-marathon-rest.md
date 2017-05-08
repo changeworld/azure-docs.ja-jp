@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2017
+ms.date: 04/04/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: b2b969500d20d0c840f201ed2cf13a6f2ab38ee5
-ms.openlocfilehash: 719f1ea6a6f51d4a787f0465a4bbadb1a6057a8b
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 26ea8dcdeb8be3142d5e8bbd477f6d4ab6c26cdd
+ms.lasthandoff: 04/06/2017
 
 
 ---
 # <a name="dcos-container-management-through-the-marathon-rest-api"></a>Marathon REST API を使用した DC/OS コンテナー管理
-DC/OS はクラスター化されたワークロードをデプロイし、スケールするための環境を提供すると共に、基礎となるハードウェアを抽象化します。 DC/OS に加え、コンピューティング ワークロードのスケジュールと実行を管理するフレームワークもあります。 一般的な各種ワークロードに対応したフレームワークがあるものの、このドキュメントでは、Marathon を使ってコンテナー デプロイを作成し、スケールする方法について説明します。 
+DC/OS はクラスター化されたワークロードをデプロイし、スケールするための環境を提供すると共に、基礎となるハードウェアを抽象化します。 DC/OS に加え、コンピューティング ワークロードのスケジュールと実行を管理するフレームワークもあります。 一般的な各種ワークロードに対応したフレームワークはいくつかありますが、このドキュメントでは、Marathon REST API を使用してコンテナーのデプロイを作成し、スケールする方法について説明します。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,7 +39,7 @@ Azure Container Service クラスターに接続したら、http://localhost:loc
 さまざまな API の詳細については、[Marathon API](https://mesosphere.github.io/marathon/docs/rest-api.html) と [Chronos API](https://mesos.github.io/chronos/docs/api.html) に関する Mesosphere ドキュメントと [Mesos Scheduler API](http://mesos.apache.org/documentation/latest/scheduler-http-api/) に関する Apache ドキュメントを参照してください。
 
 ## <a name="gather-information-from-dcos-and-marathon"></a>DC/OS と Marathon から情報を収集する
-DC/OS クラスターにコンテナーをデプロイする前に、DC/OS エージェントの名前や現在の状態など、DC/OS クラスターに関する情報を収集します。 DC/OS REST API の `master/slaves` エンドポイントに情報を照会してください。 問題がなければ、DC/OS エージェントの一覧と各エージェントのプロパティが返されます。
+DC/OS クラスターにコンテナーをデプロイする前に、DC/OS エージェントの名前や状態など、DC/OS クラスターに関する情報を収集します。 DC/OS REST API の `master/slaves` エンドポイントに情報を照会してください。 問題がなければ、DC/OS エージェントの一覧と各エージェントのプロパティが返されます。
 
 ```bash
 curl http://localhost/mesos/master/slaves
@@ -53,24 +54,21 @@ curl localhost/marathon/v2/apps
 ```
 
 ## <a name="deploy-a-docker-formatted-container"></a>Docker 形式のコンテナーのデプロイ
-Docker 形式のコンテナーは、意図するデプロイについて記述した JSON ファイルを利用して、Marathon 経由でデプロイします。 次のサンプルでは、Nginx コンテナーがデプロイされます。併せて、DC/OS エージェントのポート 80 がコンテナーのポート 80 に関連付けられます。 また、`acceptedResourceRoles` プロパティが `slave_public` に設定されていることに注目してください。 この設定により、パブリックに公開されたエージェント スケール セット内のエージェントにコンテナーがデプロイされます。
+Docker 形式のコンテナーは、対象のデプロイについて記述された JSON ファイルを利用して、Marathon REST API 経由でデプロイします。 次の例では、クラスター内のプライベート エージェントに Nginx コンテナーがデプロイされます。 
 
 ```json
 {
   "id": "nginx",
   "cpus": 0.1,
-  "mem": 16.0,
+  "mem": 32.0,
   "instances": 1,
-    "acceptedResourceRoles": [
-    "slave_public"
-  ],
   "container": {
     "type": "DOCKER",
     "docker": {
       "image": "nginx",
       "network": "BRIDGE",
       "portMappings": [
-        { "containerPort": 80, "hostPort": 80, "servicePort": 9000, "protocol": "tcp" }
+        { "containerPort": 80, "servicePort": 9000, "protocol": "tcp" }
       ]
     }
   }
@@ -95,16 +93,38 @@ curl -X POST http://localhost/marathon/v2/apps -d @marathon.json -H "Content-typ
 curl localhost/marathon/v2/apps
 ```
 
-`http://<containerServiceName>agents.<region>.cloudapp.azure.com` でエージェント プールの完全修飾ドメイン名に HTTP 要求を行うことによって、Nginx が実行されていることを確認できます。
+## <a name="reach-the-container"></a>コンテナーへの到達
+
+クラスター内のプライベート エージェントのいずれかのコンテナーで Nginx が稼働していることを確認できます。 コンテナーを実行しているホストとポートを確認するには、実行中のタスクの Marathon に対してクエリを実行します。 
+
+```bash
+curl localhost/marathon/v2/tasks
+```
+
+出力で `host` の値 (`10.32.0.x` と同様の IP アドレス) と `ports` の値を調べます。
+
+
+次に、クラスターの管理 FQDN への SSH ターミナル接続 (トンネル接続ではなく) を行います。 接続後は、次の要求を行って、`host` と `ports` の正しい値を代入します。
+
+```bash
+curl http://host:ports
+```
+
+Nginx サーバーの出力は、次のようになります。
+
+![コンテナーから Nginx](./media/container-service-mesos-marathon-rest/nginx.png)
+
+
+
 
 ## <a name="scale-your-containers"></a>コンテナーのスケール
-Marathon API を利用して、アプリケーションのデプロイをスケールアウトまたはスケールインすることができます。 前の例では、アプリケーションの&1; つのインスタンスをデプロイしました。 それをアプリケーションの&3; つのインスタンスにスケールアウトしてみましょう。 これを行うには、次の JSON テキストを使って JSON ファイルを作成し、それをアクセス可能な場所に保存します。
+Marathon API を利用して、アプリケーションのデプロイをスケールアウトまたはスケールインすることができます。 前の例では、アプリケーションの 1 つのインスタンスをデプロイしました。 それをアプリケーションの 3 つのインスタンスにスケールアウトしてみましょう。 これを行うには、次の JSON テキストを使って JSON ファイルを作成し、それをアクセス可能な場所に保存します。
 
 ```json
 { "instances": 3 }
 ```
 
-次のコマンドを実行してアプリケーションをスケールアウトします。
+トンネル接続から次のコマンドを実行して、アプリケーションをスケールアウトします。
 
 > [!NOTE]
 > URI は、http://localhost/marathon/v2/apps/ に、スケールするアプリケーションの ID が追加されたものになります。 ここで示す Nginx サンプルを使用する場合、URI は http://localhost/marathon/v2/apps/nginx になります。
@@ -136,7 +156,7 @@ Docker 形式のコンテナーは、意図するデプロイについて記述�
 {
   "id": "nginx",
   "cpus": 0.1,
-  "mem": 16.0,
+  "mem": 32.0,
   "instances": 1,
   "container": {
     "type": "DOCKER",
@@ -144,20 +164,20 @@ Docker 形式のコンテナーは、意図するデプロイについて記述�
       "image": "nginx",
       "network": "BRIDGE",
       "portMappings": [
-        { "containerPort": 80, "hostPort": 80, "servicePort": 9000, "protocol": "tcp" }
+        { "containerPort": 80, "servicePort": 9000, "protocol": "tcp" }
       ]
     }
   }
 }
 ```
 
-Docker 形式のコンテナーをデプロイするには、アクセスできる場所に JSON ファイルを保存します。 次に、コンテナーをデプロイするために、次のコマンドを実行します。 JSON ファイルの名前を指定します (この例では `marathon.json`)。
+Docker 形式のコンテナーをデプロイするには、アクセスできる場所に JSON ファイルを保存します。 次に、コンテナーをデプロイするために、次のコマンドを実行します。 JSON ファイル (この例では `marathon.json`) にパスを指定します。
 
 ```powershell
 Invoke-WebRequest -Method Post -Uri http://localhost/marathon/v2/apps -ContentType application/json -InFile 'c:\marathon.json'
 ```
 
-Marathon API を利用して、アプリケーションのデプロイをスケールアウトまたはスケールインすることもできます。 前の例では、アプリケーションの&1; つのインスタンスをデプロイしました。 それをアプリケーションの&3; つのインスタンスにスケールアウトしてみましょう。 これを行うには、次の JSON テキストを使って JSON ファイルを作成し、それをアクセス可能な場所に保存します。
+Marathon API を利用して、アプリケーションのデプロイをスケールアウトまたはスケールインすることもできます。 前の例では、アプリケーションの 1 つのインスタンスをデプロイしました。 それをアプリケーションの 3 つのインスタンスにスケールアウトしてみましょう。 これを行うには、次の JSON テキストを使って JSON ファイルを作成し、それをアクセス可能な場所に保存します。
 
 ```json
 { "instances": 3 }
@@ -177,10 +197,5 @@ Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -Cont
 ## <a name="next-steps"></a>次のステップ
 * [Mesos HTTP エンドポイントの詳細](http://mesos.apache.org/documentation/latest/endpoints/)
 * [Marathon REST API の詳細](https://mesosphere.github.io/marathon/docs/rest-api.html)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

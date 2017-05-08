@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2017
+ms.date: 05/04/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
-ms.openlocfilehash: 3ab6d21263ee2f4082cae8d772e715ed04d7d7c0
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 70c7e2334336be78d26784815fb988ce1d22eb12
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -41,9 +41,9 @@ SQL Server と同じオンプレミス コンピューターまたはクラウ�
 
 パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
 
-**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API** などのツールを使ってパイプラインを作成することもできます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
+次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
 
-ツールまたは API のいずれを使用した場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。 
+ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。 
 
 1. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
 2. コピー操作用の入力データと出力データを表す**データセット**を作成します。 
@@ -54,7 +54,7 @@ SQL Server と同じオンプレミス コンピューターまたはクラウ�
 次のセクションでは、SQL Server に固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。 
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
-サンプルでは、 **OnPremisesSqlServer** 型のリンクされたサービスを使用して、オンプレミスの SQL Server データベースをデータ ファクトリにリンクします。 次の表は、オンプレミスの SQL Server のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
+**OnPremisesSqlServer** 型のリンクされたサービスを作成し、オンプレミスの SQL Server データベースをデータ ファクトリにリンクします。 次の表は、オンプレミスの SQL Server のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
 次の表は、SQL Server のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
@@ -80,7 +80,7 @@ SQL Server と同じオンプレミス コンピューターまたはクラウ�
     "name": "MyOnPremisesSQLDB",
     "properties":
     {
-        "type": "OnPremisesSqlLinkedService",
+        "type": "OnPremisesSqlServer",
         "typeProperties": {
             "connectionString": "Data Source=<servername>;Initial Catalog=MarketingCampaigns;Integrated Security=False;User ID=<username>;Password=<password>;",
             "gatewayName": "<gateway name>"
@@ -97,7 +97,7 @@ SQL Server と同じオンプレミス コンピューターまたはクラウ�
      "Name": " MyOnPremisesSQLDB",
      "Properties":
      {
-         "type": "OnPremisesSqlLinkedService",
+         "type": "OnPremisesSqlServer",
          "typeProperties": {
              "ConnectionString": "Data Source=<servername>;Initial Catalog=MarketingCampaigns;Integrated Security=True;",
              "username": "<domain\\username>",
@@ -135,7 +135,7 @@ SQL Server データベースからデータを移動する場合は、コピー
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | SqlReaderQuery |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: Select * from MyTable。 入力データセットによって参照されるデータベースから複数のテーブルを参照する場合があります。 指定されていない場合に実行される SQL ステートメント: select from MyTable |いいえ |
-| sqlReaderStoredProcedureName |ソース テーブルからデータを読み取るストアド プロシージャの名前。 |ストアド プロシージャの名前。 |いいえ |
+| sqlReaderStoredProcedureName |ソース テーブルからデータを読み取るストアド プロシージャの名前。 |ストアド プロシージャの名前。 最後の SQL ステートメントはストアド プロシージャの SELECT ステートメントにする必要があります。 |いいえ |
 | storedProcedureParameters |ストアド プロシージャのパラメーター。 |名前と値のペア。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |いいえ |
 
 SqlSource に **sqlReaderQuery** が指定されている場合、コピー アクティビティでは、データを取得するために SQL Server Database ソースに対してこのクエリを実行します。
@@ -625,12 +625,12 @@ create table dbo.TargetTbl
 ソースとターゲット テーブルには異なるスキーマがあることに注意してください (ターゲットには ID を持つ追加の列があります)。 このシナリオでは、ターゲット データセット定義で **structure** プロパティを指定する必要があります。ここでは、ID 列は含みません。
 
 ## <a name="map-source-to-sink-columns"></a>ソース列からシンク列へのマップ
-ソース データセット列からシンク データセット列へのマッピングの詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。
+ソース データセット列のシンク データセット列へのマッピングの詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。
 
 ## <a name="repeatable-copy"></a>反復可能なコピー
 SQL Server Database にデータをコピーすると、既定では、コピー アクティビティによりデータがシンク テーブルに付加されます。 代わりに UPSERT を実行するには、「[SqlSink への反復可能な書き込み](data-factory-repeatable-copy.md#repeatable-write-to-sqlsink)」を参照してください。 
 
-リレーショナル データ ストアからデータをコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。 Azure Data Factory では、スライスを手動で再実行できます。 障害が発生したときにスライスを再実行できるように、データセットの再試行ポリシーを構成することもできます。 いずれかの方法でスライスが再実行された際は、何度スライスが実行されても同じデータが読み取られることを確認する必要があります。 「[リレーショナル ソースからの反復可能な読み取り](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)」を参照してください。
+リレーショナル データ ストアからデータをコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。 Azure Data Factory では、スライスを手動で再実行できます。 障害が発生したときにスライスを再実行できるように、データセットの再試行ポリシーを構成することもできます。 いずれかの方法でスライスが再実行された際は、何度スライスが実行されても同じデータが読み込まれることを確認する必要があります。 「[リレーショナル ソースからの反復可能な読み取り](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)」を参照してください。
 
 ## <a name="invoke-stored-procedure-from-sql-sink"></a>SQL シンクからのストアド プロシージャの呼び出し
 パイプラインのコピー アクティビティで SQL シンクからストアド プロシージャを呼び出す例については、[コピー アクティビティでの SQL シンクのストアド プロシージャの呼び出し](data-factory-invoke-stored-procedure-from-copy-activity.md)に関する記事をご覧ください。

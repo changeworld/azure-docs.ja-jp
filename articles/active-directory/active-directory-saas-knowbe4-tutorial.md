@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 03/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: ed2fc2b34ff10acc806daec84986f8db58e713c3
-ms.openlocfilehash: bc7ce4867180dd9f896b894b56a02bf033ed6bbb
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: deb4916d69ad9a447836b33711864c242e5c5dec
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 02/17/2017
 KnowBe4 と Azure AD の統合には、次の利点があります。
 
 * KnowBe4 にアクセスする Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントで自動的に KnowBe4 にサインオン (シングル サインオン) できるようにします。
+* ユーザーが自分の Azure AD アカウントで自動的に KnowBe4 にシングル サインオン (SSO) できるようにします。
 * 1 つの中央サイト (Azure Active Directory ポータル) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
@@ -46,15 +46,15 @@ KnowBe4 と Azure AD の統合を構成するには、次のものが必要で�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、[1 か月の試用版](https://azure.microsoft.com/pricing/free-trial/)を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。  
 
-このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 * ギャラリーから KnowBe4 を追加する
-* Azure AD シングル サインオンの構成とテスト
+* Azure AD SSO の構成とテスト
 
 ## <a name="add-knowbe4-from-the-gallery"></a>ギャラリーから KnowBe4 を追加する
 Azure AD への KnowBe4 の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に KnowBe4 を追加する必要があります。
@@ -180,7 +180,7 @@ KnowBe4 で Azure AD のシングル サインオンを構成してテストす�
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 このセクションの目的は、Britta Simon に KnowBe4 へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
 
-    ![Assign User][200] 
+   ![ユーザーの割り当て][200] 
 
 **KnowBe4 に Britta Simon を割り当てるには、次の手順に従います。**
 

@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 13ffe90e03dbe99366fb4f6e2788ba7a3c968a30
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: b067278389a364514067bcef7045542486e113c9
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -44,7 +45,7 @@ VM の NIC に適用されると、有効なセキュリティ規則を NSG か�
 ## <a name="detailed-troubleshooting-steps"></a>詳細なトラブルシューティングの手順
 VM の NSG のトラブルシューティングを行うには、次の手順を実行します。
 
-1. Azure PowerShell セッションを開始し、Azure にログインします。 Azure PowerShell の使用に慣れていない場合は、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」の記事をご覧ください。
+1. Azure PowerShell セッションを開始し、Azure にログインします。 Azure PowerShell の使用に慣れていない場合は、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」の記事をご覧ください。
 2. 次のコマンドを入力すると、リソース グループ *RG1* の *VM1-NIC1* という名前の NIC に適用されているすべての NSG 規則が返されます。
    
         Get-AzureRmEffectiveNetworkSecurityGroup -NetworkInterfaceName VM1-NIC1 -ResourceGroupName RG1
@@ -197,10 +198,5 @@ VM の NSG のトラブルシューティングを行うには、次の手順を
 * 既定では、VNet をピアリングした場合、VIRTUAL_NETWORK タグはピアリングされている VNet のプレフィックスを含めるように自動的に拡張されます。 これらのプレフィックスは、 **ExpandedAddressPrefix** の一覧で表示でき、VNet ピアリングの接続に関連する問題をトラブルシューティングする際に使用できます。 
 * 有効なセキュリティの規則は、VM の NIC やサブネットに関連付けられている NSG がある場合のみ表示されます。 
 * NIC やサブネットに関連付けられている NSG がなく、VM にパブリック IP アドレスを割り当てている場合は、着信/発信アクセス用にすべてのポートが開きます。 VM にパブリック IP アドレスがある場合は、NIC またはサブネットに NSG を適用することを強くお勧めします。  
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

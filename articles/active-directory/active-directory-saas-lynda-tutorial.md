@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/02/2017
+ms.date: 03/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 07b9df5ab5c7df0089f001a26200bb9c3fb1c508
-ms.openlocfilehash: 7f4f1c22e0b3382a9de770800ccb733c61d4f5b0
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: e7b71bec34aa9507d312eead52060d2c4b774432
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -39,7 +39,7 @@ ms.lasthandoff: 02/17/2017
 
 ![シナリオ](./media/active-directory-saas-lynda-tutorial/IC781046.png "Scenario")
 
-## <a name="enabling-the-application-integration-for-lyndacom"></a>Lynda.com のアプリケーション統合の有効化
+## <a name="enable-the-application-integration-for-lyndacom"></a>Lynda.com のアプリケーション統合の有効化
 このセクションでは、Lynda.com のアプリケーション統合を有効にする方法について説明します。
 
 **Lynda.com のアプリケーション統合を有効にするには、次の手順に従います。**
@@ -64,7 +64,7 @@ ms.lasthandoff: 02/17/2017
    
    ![Lynda.com](./media/active-directory-saas-lynda-tutorial/IC777525.png "Lynda.com")
    
-## <a name="configuring-single-sign-on"></a>シングル サインオンの構成
+## <a name="configure-single-sign-on"></a>Configure single sign-on
 
 このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Lynda.com に対する認証を行うことができるようにする方法を説明します。
 
@@ -91,7 +91,7 @@ ms.lasthandoff: 02/17/2017
    
    ![シングル サインオンの構成](./media/active-directory-saas-lynda-tutorial/IC777530.png "Configure single sign-on")
    
-## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
+## <a name="configure-user-provisioning"></a>[ユーザー プロビジョニングの構成]
 
 Lynda.com へのユーザー プロビジョニングの構成にあたって必要な操作はありません。  
 割り当て済みユーザーがアクセス パネルを使用して Lynda.com にログインしようとすると、そのユーザーが存在するかどうかが Lynda.com によって確認されます。  
@@ -102,7 +102,7 @@ Lynda.com へのユーザー プロビジョニングの構成にあたって必
 >Lynda.com から提供されている他の Lynda.com ユーザー アカウント作成ツールや API を使用して、AAD ユーザー アカウントをプロビジョニングできます。 
 > 
 
-## <a name="assigning-users"></a>ユーザーの割り当て
+## <a name="assign-users"></a>[ユーザーの割り当て]
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
 **ユーザーを Lynda.com に割り当てるには、次の手順に従います。**

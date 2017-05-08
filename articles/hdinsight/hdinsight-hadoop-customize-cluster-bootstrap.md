@@ -24,6 +24,7 @@ ms.lasthandoff: 02/22/2017
 
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>ブートストラップを使って HDInsight クラスターをカスタマイズする
+
 次を含む構成ファイルを構成することが必要な場合があります。
 
 * clusterIdentity.xml
@@ -139,7 +140,7 @@ Resource Manager テンプレートでは、ブートストラップを使用で
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts.md
 [hdinsight-write-script]: hdinsight-hadoop-script-actions.md
-[hdinsight-provision-cluster]: hdinsight-provision-clusters.md
+[hdinsight-provision-cluster]: hdinsight-hadoop-provision-linux-clusters.md
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
 
 

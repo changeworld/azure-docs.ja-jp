@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 11/17/2016
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 3a240ff317e1b3ea450703965629c08053668856
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: 3f050e2722091aa8b58591cc0c894a6ecb82c3fa
+ms.lasthandoff: 04/14/2017
 
 ---
 
@@ -203,7 +203,7 @@ APIConnection トリガーの基本的な機能は、HTTP トリガーに似て�
 |クエリ|いいえ|オブジェクト|URL に追加するクエリ パラメーターを表します。 たとえば、`"queries" : { "api-version": "2015-02-01" }` は `?api-version=2015-02-01` を URLに追加します。|  
 |headers|いいえ|オブジェクト|要求に送信される各ヘッダーを表します。 たとえば、言語と種類を要求に設定するには、次のようにします。`"headers" : { "Accept-Language": "en-us",  "Content-Type": "application/json" }`|  
 |body|いいえ|オブジェクト|エンドポイントに送信されるペイロードを表します。|  
-|retryPolicy|なし|オブジェクト|4 xx または 5 xx エラーの再試行動作をカスタマイズできます。|  
+|retryPolicy|いいえ|オブジェクト|4 xx または 5 xx エラーの再試行動作をカスタマイズできます。|  
 |authentication|いいえ|オブジェクト|要求の認証方法を表します。 このオブジェクトについて詳しくは、「[Scheduler 送信認証](https://docs.microsoft.com/azure/scheduler/scheduler-outbound-authentication)」をご覧ください。|  
   
 host のプロパティは次のとおりです。  
@@ -427,11 +427,11 @@ HTTP アクションは、指定されたエンドポイントを呼び出し、
 |----------------|------------|--------|---------------|  
 |method|はい|String|HTTP メソッド **GET**、**POST**、**PUT**、**DELETE**、**PATCH**、**HEAD** のいずれかを指定できます。|  
 |uri|はい|String|呼び出す http または https エンドポイントです。 最大長は 2 キロバイトです。|  
-|クエリ|なし|オブジェクト|URL に追加するクエリ パラメーターを表します。 たとえば、`"queries" : { "api-version": "2015-02-01" }` は `?api-version=2015-02-01` を URLに追加します。|  
+|クエリ|いいえ|オブジェクト|URL に追加するクエリ パラメーターを表します。 たとえば、`"queries" : { "api-version": "2015-02-01" }` は `?api-version=2015-02-01` を URLに追加します。|  
 |headers|いいえ|オブジェクト|要求に送信される各ヘッダーを表します。 たとえば、言語と種類を要求に設定するには、次のようにします。`"headers" : { "Accept-Language": "en-us",  "Content-Type": "application/json" }`|  
-|body|なし|オブジェクト|エンドポイントに送信されるペイロードを表します。|  
+|body|いいえ|オブジェクト|エンドポイントに送信されるペイロードを表します。|  
 |retryPolicy|いいえ|オブジェクト|4 xx または 5 xx エラーの再試行動作をカスタマイズできます。|  
-|operationsOptions|なし|String|オーバーライドする特殊な動作のセットを定義します。|  
+|operationsOptions|いいえ|String|オーバーライドする特殊な動作のセットを定義します。|  
 |authentication|いいえ|オブジェクト|要求の認証方法を表します。 このオブジェクトについて詳しくは、「[Scheduler 送信認証](https://docs.microsoft.com/azure/scheduler/scheduler-outbound-authentication)」をご覧ください。 スケジューラ以外にもう 1 つサポートされるプロパティ、`authority` があります。 指定しない場合の既定は `https://login.windows.net` ですが、`https://login.windows\-ppe.net` のような異なる対象を使うことができます。|  
   
 HTTP \(および APIConnection\) アクションは、再試行ポリシーをサポートします。 再試行ポリシーは、接続の例外に加えて、HTTP 状態コード 408、429、5 xx などの断続的エラーに適用されます。 このポリシーは、次のように定義される *retryPolicy* オブジェクトを使って記述します。
@@ -453,7 +453,7 @@ HTTP \(および APIConnection\) アクションは、再試行ポリシーを�
     "type": "http",
     "inputs": {
         "method": "GET",
-        "uri": "uri": "https://mynews.example.com/latest",
+        "uri": "https://mynews.example.com/latest",
         "retryPolicy" : {
             "type": "fixed",
             "interval": "PT30S",
@@ -658,6 +658,28 @@ Webhook アクションに対する制限は、[HTTP 非同期制限](#asynchron
 |ファイル|はい|array|ソース配列です。|
 |各値の説明:|はい|String|ソース配列の各要素に適用する条件です。|
 
+## <a name="select-action"></a>選択アクション
+
+`select` アクションでは、配列の各要素を新しい値に射影することができます。
+たとえば、数値の配列をオブジェクトの配列に変換するには、次を使用します。
+
+```json
+"SelectNumbers" : {
+    "type": "select",
+    "inputs": {
+        "from": [ 1, 3, 0, 5, 4, 2 ],
+        "select": { "number": "@item()" }
+    }
+}
+```
+
+`select` アクションの出力は、各要素が `select` プロパティによって定義されているとおりに変換された、入力配列と同じ基数を持つ配列です。 入力が空の配列の場合、出力も空の配列になります。
+
+|名前|必須|型|Description|
+|--------|------------|--------|---------------|
+|ファイル|はい|array|ソース配列です。|
+|select|はい|任意|ソース配列の各要素に適用するプロジェクションです。|
+
 ## <a name="terminate-action"></a>終了アクション
 
 終了アクションは、ワークフローの実行を停止し、実行中のアクションを中止して、残りのアクションをスキップします。 たとえば、状態 **Failed** で実行を終了するには、次のスニペットを使うことができます。
@@ -703,6 +725,71 @@ Webhook アクションに対する制限は、[HTTP 非同期制限](#asynchron
 
 > [!NOTE]
 > **Compose** アクションを使うと、オブジェクト、配列、およびロジック アプリによってネイティブにサポートされている XML やバイナリなどの他の型など、任意の出力を作成できます。
+
+## <a name="table-action"></a>テーブル アクション
+
+`table` アクションを使用して、アイテムの配列を **CVS** または **HTML** テーブルに変換できます。
+
+@triggerBody() が次であるとします。
+
+```json
+[{
+  "id": 0,
+  "name": "apples"
+},{
+  "id": 1, 
+  "name": "oranges"
+}]
+```
+
+さらに、アクションを次のように定義します。
+
+```json
+"ConvertToTable" : {
+    "type": "table",
+    "inputs": {
+        "from": "@triggerBody()",
+        "format": "html"
+    }
+}
+```
+
+上記によって、次が生成されます。
+
+<table><thead><tr><th>id</th><th>name</th></tr></thead><tbody><tr><td>0</td><td>apples</td></tr><tr><td>1</td><td>oranges</td></tr></tbody></table>"
+
+テーブルをカスタマイズするには、列を明示的に指定できます。 次に例を示します。
+
+```json
+"ConvertToTable" : {
+    "type": "table",
+    "inputs": {
+        "from": "@triggerBody()",
+        "format": "html",
+        "columns": [{
+          "header": "produce id",
+          "value": "@item().id"
+        },{
+          "header": "description",
+          "value": "@concat('fresh ', item().name)"
+        }]
+    }
+}
+```
+
+上記によって、次が生成されます。
+
+<table><thead><tr><th>produce id</th><th>description</th></tr></thead><tbody><tr><td>0</td><td>fresh apples</td></tr><tr><td>1</td><td>fresh oranges</td></tr></tbody></table>"
+
+`from` プロパティ値が空の配列の場合、出力は空のテーブルになります。
+
+|名前|必須|型|Description|
+|--------|------------|--------|---------------|
+|ファイル|はい|array|ソース配列です。|
+|BlobSink の format|はい|String|形式は、**CVS** または **HTML** のいずれかです。|
+|columns|なし|array|列です。 テーブルの既定の図形を上書きできます。|
+|column header|いいえ|String|列のヘッダーです。|
+|column value|はい|String|列の値です。|
 
 ## <a name="workflow-action"></a>ワークフロー アクション   
 
@@ -750,7 +837,7 @@ Webhook アクションに対する制限は、[HTTP 非同期制限](#asynchron
 
 `scope` アクションを使うと、ワークフロー内のアクションを論理的にグループ化できます。
 
-|名前|必須|型|説明|  
+|名前|必須|型|Description|  
 |--------|------------|--------|---------------|  
 |アクション|はい|オブジェクト|スコープ内で実行する内部アクションです。|
 
@@ -811,7 +898,7 @@ Webhook アクションに対する制限は、[HTTP 非同期制限](#asynchron
 
 このループ アクションは、条件が true になるまで内部アクションを実行します。
 
-|名前|必須|型|説明|  
+|名前|必須|型|Description|  
 |--------|------------|--------|---------------|  
 |アクション|はい|オブジェクト|ループ内で実行する内部アクションです。|
 |expression|はい|string|反復のたびに評価する式です。|
@@ -897,3 +984,4 @@ Webhook アクションに対する制限は、[HTTP 非同期制限](#asynchron
 ## <a name="next-steps"></a>次のステップ
 
 [ワークフロー サービスの REST API](https://docs.microsoft.com/rest/api/logic/workflows)
+

@@ -15,9 +15,9 @@ ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: a8334d146877ccc3988784c7a74a1c887dba68ab
-ms.openlocfilehash: 57027b97cebf8accccd91f135a13825047fd211e
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: e917385cb9afc13ba459aed48e5f06cc156efac5
+ms.lasthandoff: 05/01/2017
 
 ---
 
@@ -29,7 +29,7 @@ JavaScript ユーザー定義関数は、外部との接続を必要としない
 
 ここでは、JavaScript ユーザー定義関数が役立つ可能性があるシナリオをいくつか示します。
 * 正規表現関数を用いた文字列の解析と操作 (例: **Regexp_Replace()** and **Regexp_Extract()**)
-* データのデコードとエンコード (例: バイナリから&16; 進数への変換)
+* データのデコードとエンコード (例: バイナリから 16 進数への変換)
 * JavaScript の **Math** 関数を用いた数値計算の実行
 * 並び替え、結合、検索、塗りつぶしなどの配列操作の実行
 
@@ -140,7 +140,7 @@ FROM
 ```
 
 ## <a name="get-help"></a>問い合わせ
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)をご覧ください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)

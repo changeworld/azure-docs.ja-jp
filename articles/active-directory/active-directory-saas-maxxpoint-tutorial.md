@@ -5,18 +5,18 @@ services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: femila
-ms.assetid: d92e3edb-31aa-4d21-9bf8-6e5917d7bf5f
+ms.assetid: 15ba026e-96fc-4ae8-b135-0169da810e99
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2017
+ms.date: 04/13/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 6844a46978618d5dc3292168bbcc228480311d47
-ms.openlocfilehash: e84a3aeb9e7a8cddccb293ab2bb9d7fdc5fa82b4
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 8a7481b71df5ca407dbed5da3d3cc26991504c82
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -28,9 +28,9 @@ MaxxPoint と Azure AD の統合には、次の利点があります。
 
 - MaxxPoint にアクセスする Azure AD ユーザーを制御できます。
 - ユーザーが自分の Azure AD アカウントで自動的に MaxxPoint にサインオン (シングル サインオン) できるように設定できます。
-- 1 つの中央サイト (Microsoft Azure 管理ポータル) でアカウントを管理できます
+- 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,19 +39,16 @@ MaxxPoint と Azure AD の統合を構成するには、次のものが必要で
 - Azure AD サブスクリプション
 - MaxxPoint でのシングル サインオンが有効なサブスクリプション
 
-
 > [!NOTE]
 > このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の試用環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の試用版を入手できます。
-
+- Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの MaxxPoint の追加
 2. Azure AD シングル サインオンの構成とテスト
@@ -62,7 +59,7 @@ Azure AD への MaxxPoint の統合を構成するには、ギャラリーから
 
 **ギャラリーから MaxxPoint を追加するには、次の手順を実行します。**
 
-1. **[Microsoft Azure 管理ポータル](https://portal.azure.com)**の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
 
     ![Active Directory][1]
 
@@ -70,7 +67,7 @@ Azure AD への MaxxPoint の統合を構成するには、ギャラリーから
 
     ![アプリケーション][2]
     
-3. ダイアログの上部にある **[追加]** をクリックします。
+3. ダイアログの上部にある **[新しいアプリケーション]** ボタンをクリックして新しいアプリケーションを追加します。
 
     ![アプリケーション][3]
 
@@ -81,7 +78,6 @@ Azure AD への MaxxPoint の統合を構成するには、ギャラリーから
 5. 結果ウィンドウで **[MaxxPoint]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-maxxpoint-tutorial/tutorial_maxxpoint_0001.png)
-
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、MaxxPoint で Azure AD のシングル サインオンを構成し、テストします。
@@ -100,17 +96,17 @@ MaxxPoint で Azure AD のシングル サインオンを構成してテスト�
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-このセクションでは、Microsoft Azure 管理ポータルで Azure AD のシングル サインオンを有効にし、MaxxPoint アプリケーションでシングル サインオンを構成します。
+このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にし、MaxxPoint アプリケーションでシングル サインオンを構成します。
 
 **MaxxPoint で Azure AD シングル サインオンを構成するには、次の手順を実行します。**
 
-1. Microsoft Azure 管理ポータルの **MaxxPoint** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. Azure Portal の **MaxxPoint** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
     ![[シングル サインオンの構成]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![Configure Single Sign-On](./media/active-directory-saas-maxxpoint-tutorial/tutorial_general_300.png)
+    ![[シングル サインオンの構成]](./media/active-directory-saas-maxxpoint-tutorial/tutorial_general_300.png)
 
 3. **[MaxxPoint のドメインと URL]** セクションで、**IDP 開始モード**でアプリケーションを構成する場合は、手順を実行する必要はありません。
 
@@ -120,44 +116,34 @@ MaxxPoint で Azure AD のシングル サインオンを構成してテスト�
     
     ![[シングル サインオンの構成]](./media/active-directory-saas-maxxpoint-tutorial/tutorial_maxxpoint_03.png)
 
-    a. **[詳細な URL 設定の表示]** をクリックします。
+    a. **[詳細な URL 設定の表示]** オプションをクリックします。
 
     b. **[サインオン URL]** ボックスに、`https://maxxpoint.westipc.com/default/sso/login/entity/<customer-id>-azure` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
-    > これは実際の値ではないので注意してください。 この値は実際のサインオン URL で更新する必要があります。 これらの値を取得するには、[MaxxPoint サポート チーム](mailto:iumsupport@intercall.com)に問い合わせてください。
+    > これは実際の値ではないので注意してください。 この値は実際のサインオン URL で更新する必要があります。 この値については、MaxxPoint チームに電話 (**888-728-0950**) でお問い合わせください。
 
-5. **[SAML 署名証明書]** セクションで、**[新しい証明書の作成]** をクリックします。
+5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-maxxpoint-tutorial/tutorial_general_400.png)     
+    ![Configure Single Sign-On](./media/active-directory-saas-maxxpoint-tutorial/tutorial_maxxpoint_06.png) 
 
-6. **[新しい証明書の作成]** ダイアログで、カレンダー アイコンをクリックし、**期限日**を選択します。 **[保存]** をクリックします。
+6. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-maxxpoint-tutorial/tutorial_general_500.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-maxxpoint-tutorial/tutorial_general_400.png)
 
-7. **[SAML 署名証明書]** セクションで、**[Make new certificate active (新しい証明書を有効にする)]** をクリックし、**[保存]** をクリックします。
+7. アプリケーション用に構成された SSO を入手するために、MaxxPoint サポート チームに電話 (**888-728-0950**) で問い合わせます。指示された方法に従って、ダウンロードした **メタデータ XML** ファイルを提出してください。 
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-maxxpoint-tutorial/tutorial_maxxpoint_05.png)
-
-8. ポップアップ表示される **[Rollover certificate (ロール オーバー証明書)]** ウィンドウで、**[OK]** をクリックします。
-
-    ![[シングル サインオンの構成]](./media/active-directory-saas-maxxpoint-tutorial/tutorial_general_600.png)
-
-9. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
-
-    ![[シングル サインオンの構成]](./media/active-directory-saas-maxxpoint-tutorial/tutorial_maxxpoint_06.png) 
-
-10. アプリケーション用に構成された SSO を入手するには、[MaxxPoint サポート チーム](mailto:iumsupport@intercall.com)に連絡し、ダウンロードした**メタデータ**を提供してください。 
-
+> [!TIP]
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
-このセクションの目的は、Microsoft Azure 管理ポータルで Britta Simon というテスト ユーザーを作成することです。
+このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
 ![Azure AD ユーザーの作成][100]
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **Azure Portal** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-maxxpoint-tutorial/create_aaduser_01.png) 
 
@@ -181,12 +167,9 @@ MaxxPoint で Azure AD のシングル サインオンを構成してテスト�
 
     d. **[作成]**をクリックします。 
 
-
-
 ### <a name="creating-a-maxxpoint-test-user"></a>MaxxPoint のテスト ユーザーの作成
 
-このセクションでは、MaxxPoint で Britta Simon というユーザーを作成します。 [MaxxPoint サポート チーム](mailto:iumsupport@intercall.com)と連携し、MaxxPoint プラットフォームにユーザーを追加してください。
-
+このセクションでは、MaxxPoint で Britta Simon というユーザーを作成します。 MaxxPoint サポート チームに電話 (**888-728-0950**) し、MaxxPoint アプリケーションにユーザーを追加してください。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -196,7 +179,7 @@ MaxxPoint で Azure AD のシングル サインオンを構成してテスト�
 
 **MaxxPoint に Britta Simon を割り当てるには、次の手順を実行します。**
 
-1. Microsoft Azure 管理ポータルでアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
 
     ![ユーザーの割り当て][201] 
 
@@ -218,8 +201,6 @@ MaxxPoint で Azure AD のシングル サインオンを構成してテスト�
 
 7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
-
-
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。

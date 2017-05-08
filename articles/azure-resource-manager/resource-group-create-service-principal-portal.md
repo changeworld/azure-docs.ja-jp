@@ -1,6 +1,6 @@
 ---
 title: "ポータルでの Azure アプリ ID の作成 | Microsoft Docs"
-description: "Azure リソース マネージャーでロール ベースのアクセス制御と共に使用してリソースへのアクセスを管理できる、新しい Active Directory のアプリケーションとサービス プリンシパルを作成する方法について説明します。"
+description: "Azure Resource Manager でロール ベースのアクセス制御と共に使用してリソースへのアクセスを管理できる、新しい Azure Active Directory のアプリケーションとサービス プリンシパルを作成する方法について説明します。"
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -15,12 +15,13 @@ ms.workload: na
 ms.date: 01/17/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
-ms.openlocfilehash: 3b132bbc89f64928f971f92365691d40c1aab420
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 0b1d7bb2cbbeed2b41c22f19c1db49e81dadd4d7
+ms.lasthandoff: 04/19/2017
 
 
 ---
-# <a name="use-portal-to-create-active-directory-application-and-service-principal-that-can-access-resources"></a>リソースにアクセスできる Active Directory アプリケーションとサービス プリンシパルをポータルで作成する
+# <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルをポータルで作成する
 > [!div class="op_single_selector"]
 > * [PowerShell](resource-group-authenticate-service-principal.md)
 > * [Azure CLI](resource-group-authenticate-service-principal-cli.md)
@@ -28,7 +29,7 @@ ms.openlocfilehash: 3b132bbc89f64928f971f92365691d40c1aab420
 >
 >
 
-アプリケーションでリソースにアクセスしたり変更を加えたりするには、Active Directory (AD) アプリケーションをセットアップして、そこに必要な権限を割り当てる必要があります。 この方法は、お客様自身の資格情報でアプリを実行するよりも推奨されます。
+アプリケーションでリソースにアクセスしたり変更を加えたりするには、Azure Active Directory (AD) アプリケーションをセットアップして、そこに必要な権限を割り当てる必要があります。 この方法は、お客様自身の資格情報でアプリを実行するよりも推奨されます。
 
 * お客様自身のアクセス許可とは異なるアクセス許可を、アプリ ID に割り当てることができます。 通常、こうしたアクセス許可は、アプリが行う必要があることに制限されます。
 * お客様の責任が変わっても、アプリの資格情報を変更する必要はありません。 
@@ -37,20 +38,20 @@ ms.openlocfilehash: 3b132bbc89f64928f971f92365691d40c1aab420
 このトピックでは、それらの手順をポータルで行う方法について説明します。 ここでは、シングル テナント アプリケーション (1 つの組織内でのみ実行することを目的としたアプリケーション) に焦点を絞って説明します。 一般に、組織内で実行される基幹業務アプリケーションには、シングル テナント アプリケーションが使用されます。
  
 ## <a name="required-permissions"></a>必要なアクセス許可
-このトピックの手順を実行するには、アプリケーションを Active Directory に登録し、Azure サブスクリプションでアプリケーションをロールに割り当てるための十分なアクセス許可が必要です。 これらの手順を実行するための適切なアクセス許可があることを確認しましょう。
+このトピックの手順を実行するには、アプリケーションを Azure AD テナントに登録し、Azure サブスクリプションでアプリケーションをロールに割り当てるための十分なアクセス許可が必要です。 これらの手順を実行するための適切なアクセス許可があることを確認しましょう。
 
-### <a name="check-active-directory-permissions"></a>Active Directory のアクセス許可を確認する
+### <a name="check-azure-active-directory-permissions"></a>Azure Active Directory のアクセス許可を確認する
 1. [Azure Portal](https://portal.azure.com) で Azure アカウントにログインします。
 2. **[Azure Active Directory]**を選択します。
 
      ![[Azure Active Directory] を選択する](./media/resource-group-create-service-principal-portal/select-active-directory.png)
-3. Active Directory で **[ユーザー設定]** を選択します。
+3. Azure Active Directory で **[ユーザー設定]** を選択します。
 
      ![[ユーザー設定] を選択する](./media/resource-group-create-service-principal-portal/select-user-settings.png)
-4. **[アプリの登録]** 設定を確認します。 **[はい]** に設定されている場合は、管理者以外のユーザーが AD アプリを登録できます。 この設定は、Active Directory 内のすべてのユーザーがアプリを登録できることを意味します。 この場合、「[Azure サブスクリプションのアクセス許可を確認する](#check-azure-subscription-permissions)」に進んで構いません。
+4. **[アプリの登録]** 設定を確認します。 **[はい]** に設定されている場合は、管理者以外のユーザーが AD アプリを登録できます。 この設定は、Azure AD テナント内のすべてのユーザーがアプリを登録できることを意味します。 この場合、「[Azure サブスクリプションのアクセス許可を確認する](#check-azure-subscription-permissions)」に進んで構いません。
 
      ![[アプリの登録] を表示する](./media/resource-group-create-service-principal-portal/view-app-registrations.png)
-5. [アプリの登録] 設定が **[いいえ]** に設定されている場合は、管理者ユーザーだけがアプリを登録できます。 アカウントが Active Directory の管理者かどうかを確認する必要があります。 **[概要]** を選択し、[クイック タスク] の **[ユーザーを検索する]** を選択します。
+5. [アプリの登録] 設定が **[いいえ]** に設定されている場合は、管理者ユーザーだけがアプリを登録できます。 アカウントが Azure AD テナントの管理者かどうかを確認する必要があります。 **[概要]** を選択し、[クイック タスク] の **[ユーザーを検索する]** を選択します。
 
      ![ユーザーを検索する](./media/resource-group-create-service-principal-portal/find-user.png)
 6. アカウントを検索し、アカウントが見つかったら選択します。
@@ -59,7 +60,7 @@ ms.openlocfilehash: 3b132bbc89f64928f971f92365691d40c1aab420
 7. アカウントの **[ディレクトリ ロール]** を選択します。 
 
      ![ディレクトリ ロール](./media/resource-group-create-service-principal-portal/select-directory-role.png)
-8. Active Directory の割り当て済みのロールを表示します。 アカウントがユーザー ロールに割り当てられていても、(前の手順の) アプリの登録設定が管理者ユーザーに制限されている場合は、管理者に連絡して、管理者ロールに割り当ててもらうか、ユーザーがアプリを登録できるようにしてもらいます。
+8. Azure AD で割り当て済みのディレクトリ ロールを表示します。 アカウントがユーザー ロールに割り当てられていても、(前の手順の) アプリの登録設定が管理者ユーザーに制限されている場合は、管理者に連絡して、管理者ロールに割り当ててもらうか、ユーザーがアプリを登録できるようにしてもらいます。
 
      ![ロールを表示する](./media/resource-group-create-service-principal-portal/view-role.png)
 
@@ -68,9 +69,9 @@ Azure サブスクリプションで、AD アプリをロールに割り当て�
 
 サブスクリプションのアクセス許可を確認するには、次の手順に従います。
 
-1. 前の手順で Active Directory アカウントをまだ確認していない場合は、左側のウィンドウで **[Azure Active Directory]** を選択します。
+1. 前の手順で Azure AD アカウントをまだ確認していない場合は、左側のウィンドウで **[Azure Active Directory]** を選択します。
 
-2. Azure Active Directory アカウントを検索します。 **[概要]** を選択し、[クイック タスク] の **[ユーザーを検索する]** を選択します。
+2. Azure AD アカウントを検索します。 **[概要]** を選択し、[クイック タスク] の **[ユーザーを検索する]** を選択します。
 
      ![ユーザーを検索する](./media/resource-group-create-service-principal-portal/find-user.png)
 2. アカウントを検索し、アカウントが見つかったら選択します。
@@ -80,11 +81,11 @@ Azure サブスクリプションで、AD アプリをロールに割り当て�
 3. **[Azure リソース]** を選択します。
 
      ![リソースを選択する](./media/resource-group-create-service-principal-portal/select-azure-resources.png) 
-3. 割り当て済みのロールを表示し、AD アプリをロールに割り当てるための適切なアクセス許可があるかどうかを確認します。 ない場合は、サブスクリプション管理者に連絡して、ユーザー アクセス管理者ロールに追加してもらいます。 次の図では、ユーザーは&2; つのサブスクリプションの所有者ロールに割り当てられているので、このユーザーには適切なアクセス許可があります。 
+3. 割り当て済みのロールを表示し、AD アプリをロールに割り当てるための適切なアクセス許可があるかどうかを確認します。 ない場合は、サブスクリプション管理者に連絡して、ユーザー アクセス管理者ロールに追加してもらいます。 次の図では、ユーザーは 2 つのサブスクリプションの所有者ロールに割り当てられているので、このユーザーには適切なアクセス許可があります。 
 
      ![アクセス許可を表示する](./media/resource-group-create-service-principal-portal/view-assigned-roles.png)
 
-## <a name="create-an-active-directory-application"></a>Active Directory アプリケーションを作成する
+## <a name="create-an-azure-active-directory-application"></a>Azure Active Directory アプリケーションを作成する
 1. [Azure Portal](https://portal.azure.com) で Azure アカウントにログインします。
 2. **[Azure Active Directory]**を選択します。
 
@@ -106,7 +107,7 @@ Azure サブスクリプションで、AD アプリをロールに割り当て�
 ## <a name="get-application-id-and-authentication-key"></a>アプリケーション ID と認証キーを取得する
 プログラムによってログインするときは、アプリケーションの ID と認証キーが必要です。 これらの値を取得するには、次の手順に従います。
 
-1. Active Directory の **[アプリの登録]** で、アプリケーションを選択します。
+1. Azure Active Directory の **[アプリの登録]** で、アプリケーションを選択します。
 
      ![アプリケーションを選択する](./media/resource-group-create-service-principal-portal/select-app.png)
 2. **アプリケーション ID** をコピーし、アプリケーション コードに保存します。 「[サンプル アプリケーション](#sample-applications)」の各アプリケーションでは、この値をクライアント ID と呼んでいます。
@@ -126,9 +127,9 @@ Azure サブスクリプションで、AD アプリをロールに割り当て�
 ## <a name="get-tenant-id"></a>テナント ID を取得する
 プログラムによってログインするときは、認証要求と共にテナント ID を渡す必要があります。 
 
-1. テナント ID を取得するには、Active Directory の **[プロパティ]** を選択します。 
+1. テナント ID を取得するには、Azure AD テナントの **[プロパティ]** を選択します。 
 
-     ![Active Directory の [プロパティ] を選択する](./media/resource-group-create-service-principal-portal/select-ad-properties.png)
+     ![Azure AD のプロパティを選択する](./media/resource-group-create-service-principal-portal/select-ad-properties.png)
 
 2. **ディレクトリ ID** をコピーします。 この値がテナント ID です。
 
@@ -165,7 +166,7 @@ Azure サブスクリプションで、AD アプリをロールに割り当て�
 
 ## <a name="log-in-as-the-application"></a>アプリケーションとしてログイン
 
-Active Directory でアプリケーションがセットアップされました。 アプリケーションとしてサインインする際に使用する ID とキーも用意しました。 アプリケーションは、実行できる特定のアクションを提供するロールに割り当てられています。 
+Azure Active Directory でアプリケーションがセットアップされました。 アプリケーションとしてサインインする際に使用する ID とキーも用意しました。 アプリケーションは、実行できる特定のアクションを提供するロールに割り当てられています。 
 
 PowerShell でログインするには、「[Provide credentials through PowerShell (資格情報を PowerShell で渡す)](resource-group-authenticate-service-principal.md#provide-credentials-through-powershell)」を参照してください。
 
@@ -206,10 +207,5 @@ REST 操作のアクセス トークンを取得するには、「[Create the re
 ## <a name="next-steps"></a>次のステップ
 * マルチテナント アプリケーションのセットアップについては、「 [Azure Resource Manager API を使用した承認の開発者ガイド](resource-manager-api-authentication.md)」を参照してください。
 * セキュリティ ポリシーを指定する方法については、「[Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」を参照してください。  
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

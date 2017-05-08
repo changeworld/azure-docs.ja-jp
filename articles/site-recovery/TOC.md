@@ -8,17 +8,18 @@
 ## [概要を見る](https://azure.microsoft.com/resources/videos/index/?services=site-recovery)
 
 # 作業の開始
-## [VMware VM を Azure にレプリケートする](site-recovery-vmware-to-azure.md)
-## [マルチテナント デプロイで VMware VM を Azure にレプリケートする (CSP)](site-recovery-multi-tenant-support-vmware-using-csp.md)
+## [VMware VM を Azure にレプリケート](site-recovery-vmware-to-azure.md)
+## [物理サーバーを Azure にレプリケート](site-recovery-physical-servers-to-azure.md) 
 ## [Hyper-V VM を Azure にレプリケートする (VMM 使用)](site-recovery-vmm-to-azure.md)
 ## [Hyper-V VM を Azure にレプリケート](site-recovery-hyper-v-site-to-azure.md)
-## [VMware VM と物理サーバーをセカンダリ サイトにレプリケートする](site-recovery-vmware-to-vmware.md)
 ## [Hyper-V VM をセカンダリ サイトにレプリケートする (VMM 使用)](site-recovery-vmm-to-vmm.md)
+## [VMware VM と物理サーバーをセカンダリ サイトにレプリケートする](site-recovery-vmware-to-vmware.md)
+## [マルチテナント デプロイで VMware VM を Azure にレプリケートする (CSP)](site-recovery-multi-tenant-support-vmware-using-csp.md)
 
 # 方法
 ## プラン
 ### [デプロイメントの前提条件](site-recovery-prereq.md)
-### [ネットワーク インフラストラクチャの考慮事項](site-recovery-network-design.md)
+### [ネットワーク インフラストラクチャの計画](site-recovery-network-design.md)
 ### [容量の計画と Azure への VMware レプリケーションのスケーリング](site-recovery-plan-capacity-vmware.md)
 ### [Azure への VMware レプリケーションのための Deployment Planner](site-recovery-deployment-planner.md)
 ### [Hyper-V レプリケーションのための Capacity Planner](site-recovery-capacity-planner.md)
@@ -66,8 +67,8 @@
 ## [監視とトラブルシューティング](site-recovery-monitoring-and-troubleshooting.md)
 
 # リファレンス
-## [PowerShell](/powershell/resourcemanager/azurerm.siterecovery/v3.2.0/azurerm.siterecovery)
-## [PowerShell クラシック](/powershell/servicemanagement/azure.siterecovery/v3.1.0/azure.siterecovery)
+## [PowerShell](/powershell/module/azurerm.siterecovery)
+## [PowerShell クラシック](/powershell/module/azure/?view=azuresmps-3.7.0)
 ## [REST ()](https://msdn.microsoft.com/en-us/library/mt750497)
 
 # 関連項目

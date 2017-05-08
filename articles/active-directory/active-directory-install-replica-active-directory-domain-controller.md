@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 6e03b6072b5244aca2810f704c485384de5aedf8
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 7b267f11a2989b1e621906a46ea4e3bf7f58ca2b
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -70,7 +70,7 @@ UI ではなく Windows PowerShell を使用して VM を作成する方法に�
    |  **仮想マシンの構成** |<p><b>[VM エージェントのインストール]</b> と、必要な他の拡張機能を選択します。</p> |
 2. DC サーバーのロールを実行する各 VM にディスクを接続します。 AD データベース、ログ、SYSVOL を格納するには、追加のディスクが必要です。 ディスクのサイズを指定して (10 GB など)、**[ホスト キャッシュ設定]** は **[None]** のままにします。 手順については、「 [データ ディスクを Windows 仮想マシンに追加する方法](../virtual-machines/windows/classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
 3. 初めて VM にサインインした後、**[サーバー マネージャー]** > **[ファイル サービスとストレージ サービス]** の順に開いて、NTFS を使用してこのディスクにボリュームを作成します。
-4. DC ロールを実行する VM の静的 IP アドレスを予約します。 静的 IP アドレスを予約するには、Microsoft Web Platform Installer をダウンロードして、 [Azure PowerShell をインストール](/powershell/azureps-cmdlets-docs) し、Set-AzureStaticVNetIP コマンドレットを実行します。 次に例を示します。
+4. DC ロールを実行する VM の静的 IP アドレスを予約します。 静的 IP アドレスを予約するには、Microsoft Web Platform Installer をダウンロードして、 [Azure PowerShell をインストール](/powershell/azure/overview) し、Set-AzureStaticVNetIP コマンドレットを実行します。 次に例を示します。
 
     'Get-AzureVM -ServiceName AzureDC1 -Name AzureDC1 | Set-AzureStaticVNetIP -IPAddress 10.0.0.4 | Update-AzureVM
 
@@ -96,7 +96,7 @@ VM にサインインし、サイト間 VPN 接続または ExpressRoute 接続�
 
 UI ではなく Windows PowerShell を使用して VM を作成する方法については、「 [UAzure PowerShell を使用して Windows ベースの仮想マシンを作成と事前構成する](../virtual-machines/windows/classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
 
-Windows PowerShell の使い方の詳細については、「[Azure コマンドレットの概要](https://msdn.microsoft.com/library/azure/jj554332.aspx)」と「[Azure コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/jj554330.aspx)」をご覧ください。
+Windows PowerShell の使い方の詳細については、「[Azure コマンドレットの概要](/powershell/azure/overview)」と「[Azure コマンドレット リファレンス](/powershell/azure/get-started-azureps)」をご覧ください。
 
 ## <a name="additional-resources"></a>その他のリソース
 * [Azure Virtual Machines での Windows Server Active Directory の展開ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx)
@@ -105,8 +105,8 @@ Windows PowerShell の使い方の詳細については、「[Azure コマンド
 * [Azure Virtual Network](../virtual-network/virtual-networks-overview.md)
 * [Microsoft Azure IT Pro IaaS: (01) 仮想マシンの基礎](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/01)
 * [Microsoft Azure IT Pro IaaS: (05) 仮想ネットワークとクロスプレミス接続の作成](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/05)
-* [Azure PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx)
-* [Azure の管理コマンドレット](https://msdn.microsoft.com/library/azure/jj152841)
+* [Azure PowerShell](/powershell/azure/overview)
+* [Azure の管理コマンドレット](/powershell/module/azurerm.compute/#virtual_machines)
 
 <!--Image references-->
 [1]: ./media/active-directory-install-replica-active-directory-domain-controller/ReplicaDCsOnAzureVNet.png

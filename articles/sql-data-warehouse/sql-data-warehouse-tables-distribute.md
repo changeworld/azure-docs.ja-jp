@@ -12,23 +12,25 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: tables
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 5a101aa78dbac4f1a0edb7f414b44c14db392652
-ms.openlocfilehash: 4becdace365fce1fb70e9e870dd4c8b81d1c7496
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: fe47cc1e5489d094f08b771cc8ec89de84509972
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="distributing-tables-in-sql-data-warehouse"></a>SQL Data Warehouse のテーブルの分散
 > [!div class="op_single_selector"]
-> * [概要][概要]
-> * [データ型][データ型]
-> * [分散][分散]
-> * [Index][Index]
-> * [Partition][Partition]
-> * [統計][統計]
-> * [一時的な][一時]
+> * [概要][Overview]
+> * [データ型][Data Types]
+> * [分散][Distribute]
+> * [インデックス][Index]
+> * [パーティション][Partition]
+> * [統計][Statistics]
+> * [一時][Temporary]
 >
 >
 
@@ -180,7 +182,7 @@ null 値はすべて同一のディストリビューションに配置される
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 ```
 
-ただし、Azure SQL Data Warehouse 動的管理ビュー (DMV) を照会する場合は、さらに詳細な分析を実行できます。  最初に、[テーブルの概要][概要]に関する記事の SQL を使用して、[dbo.vTableSizes] [dbo.vTableSizes] ビューを作成します。  ビューを作成したら、次のクエリを実行して、どのテーブルでデータ傾斜が 10% を超えるかを識別します。
+ただし、Azure SQL Data Warehouse 動的管理ビュー (DMV) を照会する場合は、さらに詳細な分析を実行できます。  最初に、[テーブルの概要][Overview]に関する記事の SQL を使用して、[dbo.vTableSizes][dbo.vTableSizes] ビューを作成します。  ビューを作成したら、次のクエリを実行して、どのテーブルでデータ傾斜が 10% を超えるかを識別します。
 
 ```sql
 select *
@@ -198,7 +200,7 @@ order by two_part_name, row_count
 ```
 
 ### <a name="resolving-data-skew"></a>データ傾斜の解決
-すべての傾斜に修正プログラムが対応しているわけではありません。  場合によっては、一部のクエリのテーブルのパフォーマンスが、データ傾斜の問題を超える可能性があります。  テーブルでデータ傾斜を解決する必要があるかを決定するには、ワークロード内のデータ ボリュームとクエリについて可能な限り理解する必要があります。   傾斜の影響を確認する方法の 1 つに、[クエリ監視][クエリ監視]に関する記事の手順を使用して、クエリのパフォーマンス、特に個々のディストリビューションでのクエリの完了時間に対する影響を監視する方法があります。
+すべての傾斜に修正プログラムが対応しているわけではありません。  場合によっては、一部のクエリのテーブルのパフォーマンスが、データ傾斜の問題を超える可能性があります。  テーブルでデータ傾斜を解決する必要があるかを決定するには、ワークロード内のデータ ボリュームとクエリについて可能な限り理解する必要があります。   傾斜の影響を確認する方法の 1 つに、[クエリ監視][Query Monitoring]に関する記事の手順を使用して、クエリのパフォーマンス、特に個々のディストリビューションでのクエリの完了時間に対する影響を監視する方法があります。
 
 データの分散には、データ傾斜を最小限に抑え、データ移動を最小限に抑える適切なバランスを見つけることが重要です。 これらは相反する目標となる場合がありますが、場合によってはデータ移動を抑えるためにデータ傾斜を保持する必要があります。 たとえば、ディストリビューション列が頻繁に結合および集計に共有の列である場合は、データ移動を最小限に抑えます。 最小限のデータ移動による利点は、データ傾斜による影響を上回る可能性があることです。
 
@@ -283,31 +285,26 @@ RENAME OBJECT [dbo].[FactInternetSales_ROUND_ROBIN] TO [FactInternetSales];
 ```
 
 ## <a name="next-steps"></a>次のステップ
-テーブル デザインの詳細について、[分散][分散]、[Index][Index]、[Partition][Partition]、[データ型][データ型]、[統計][統計]、[一時テーブル][一時]に関する各記事をご覧ください。
+テーブル設計の詳細については、[分散][Distribute]、[インデックス][Index]、[パーティション][Partition]、[データ型][Data Types]、[統計][Statistics]、[一時テーブル][Temporary]に関する記事を参照してください。
 
-ベスト プラクティスの概要については、[SQL Data Warehouse のベスト プラクティス][SQL Data Warehouse のベスト プラクティス]をご覧ください。
+ベスト プラクティスの概要については、「[Azure SQL Data Warehouse のベスト プラクティス][SQL Data Warehouse Best Practices]」を参照してください。
 
 <!--Image references-->
 
 <!--Article references-->
-[概要]: ./sql-data-warehouse-tables-overview.md
-[データ型]: ./sql-data-warehouse-tables-data-types.md
-[分散]: ./sql-data-warehouse-tables-distribute.md
+[Overview]: ./sql-data-warehouse-tables-overview.md
+[Data Types]: ./sql-data-warehouse-tables-data-types.md
+[Distribute]: ./sql-data-warehouse-tables-distribute.md
 [Index]: ./sql-data-warehouse-tables-index.md
 [Partition]: ./sql-data-warehouse-tables-partition.md
-[統計]: ./sql-data-warehouse-tables-statistics.md
-[一時]: ./sql-data-warehouse-tables-temporary.md
-[SQL Data Warehouse のベスト プラクティス]: ./sql-data-warehouse-best-practices.md
-[クエリ監視]: ./sql-data-warehouse-manage-monitor.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
+[Temporary]: ./sql-data-warehouse-tables-temporary.md
+[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
+[Query Monitoring]: ./sql-data-warehouse-manage-monitor.md
 [dbo.vTableSizes]: ./sql-data-warehouse-tables-overview.md#table-size-queries
 
 <!--MSDN references-->
-[DBCC PDW_SHOWSPACEUSED]: https://msdn.microsoft.com/library/mt204028.aspx
+[DBCC PDW_SHOWSPACEUSED()]: https://msdn.microsoft.com/library/mt204028.aspx
 
 <!--Other Web references-->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

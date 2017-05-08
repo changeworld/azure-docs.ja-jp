@@ -44,7 +44,7 @@
 
     ![ディスクのストレージ アカウントの指定](./media/howto-attach-disk-windows-linux/existdiskstorageaccounts.png)
 
-5. **ストレージ アカウント**には、ディスク ドライブ (VHD) を含む&1; つまたは複数のコンテナーが保持されています。 一覧から適切なコンテナーを選択します。
+5. **ストレージ アカウント**には、ディスク ドライブ (VHD) を含む 1 つまたは複数のコンテナーが保持されています。 一覧から適切なコンテナーを選択します。
 
     ![Windows 仮想マシンのコンテナーの指定](./media/howto-attach-disk-windows-linux/existdiskcontainers.png)
 

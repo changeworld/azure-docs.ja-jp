@@ -12,11 +12,12 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 12/15/2016
+ms.date: 04/10/2017
 ms.author: eugenesh
 translationtype: Human Translation
-ms.sourcegitcommit: fc2f30569acc49dd383ba230271989eca8a14423
-ms.openlocfilehash: de7af5419aa423734ad06b236e0edf61fbb0cad1
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: c4a9e57cda4ba5b4db742c1a37686a802f58212f
+ms.lasthandoff: 04/11/2017
 
 ---
 
@@ -44,26 +45,47 @@ ms.openlocfilehash: de7af5419aa423734ad06b236e0edf61fbb0cad1
         { "id" : "3", "text" : "example 3" }
     ]
 
-それぞれ "id" と "text" のフィールドを持つ 3 つの独立したドキュメントを Azure Search インデックスに設定できます。
+それぞれ "id" および "text" フィールドを持つ 3 つの独立したドキュメントで Azure Search インデックスを作成できます。
 
 > [!IMPORTANT]
-> 現在この機能はプレビュー版です。 バージョン **2015-02-28-Preview** を使用した REST API でのみ利用できます。 プレビュー版の API は、テストと評価を目的としたものです。運用環境での使用は避けてください。
+> JSON 配列解析機能は、現在、プレビュー中です。 バージョン **2015-02-28-Preview** を使用した REST API でのみ利用できます。 プレビュー版の API は、テストと評価を目的としたものです。運用環境での使用は避けてください。
 >
 >
 
 ## <a name="setting-up-json-indexing"></a>JSON インデックス作成の設定
-JSON BLOB のインデックスを作成するには、`parsingMode` 構成パラメーターを `json` (1 つのドキュメントとして各 BLOB にインデックスを作成する場合) または `jsonArray` (BLOB に JSON 配列が含まれる場合) に設定します。
+JSON BLOB のインデックス作成は、通常のドキュメントの抽出と同様です。 まず、通常どおりに、データソースを作成します。 
+
+    POST https://[service name].search.windows.net/datasources?api-version=2016-09-01
+    Content-Type: application/json
+    api-key: [admin key]
+
+    {
+        "name" : "my-blob-datasource",
+        "type" : "azureblob",
+        "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
+        "container" : { "name" : "my-container", "query" : "optional, my-folder" }
+    }   
+
+次に、ターゲットの検索インデックスがまだない場合は、作成します。 
+
+最後にインデクサーを作成し、`parsingMode` パラメーターを `json` に設定するか (各 BLOB を 1 つのドキュメントとしてのインデックスする場合)、または `jsonArray` に設定します (BLOB に JSON 配列が含まれ、配列の各要素を個別のドキュメントとして扱う必要がある場合)。
+
+    POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
+    Content-Type: application/json
+    api-key: [admin key]
 
     {
       "name" : "my-json-indexer",
-      ... other indexer properties
-      "parameters" : { "configuration" : { "parsingMode" : "json" | "jsonArray" } }
+      "dataSourceName" : "my-blob-datasource",
+      "targetIndexName" : "my-target-index",
+      "schedule" : { "interval" : "PT2H" },
+      "parameters" : { "configuration" : { "parsingMode" : "json" } }
     }
 
-必要に応じて **フィールド マッピング** を使用し、ターゲットの検索インデックスへの設定に使用するソース JSON ドキュメントのプロパティを選択します。  これについては、以下で詳しく説明します。
+必要な場合は、次のセクションに示されているように、**フィールド マッピング**を使用して、ターゲットの検索インデックスの入力に使用するソース JSON ドキュメントのプロパティを選択します。
 
 > [!IMPORTANT]
-> `json` または `jsonArray` 解析モードを使用すると、Azure Search ではデータ ソース内のすべての BLOB が JSON になると見なされます。 JSON BLOB と JSON 以外の BLOB が混在するデータ ソースをサポートする必要がある場合は、 [UserVoice のサイト](https://feedback.azure.com/forums/263029-azure-search)でお知らせください。
+> `json` または `jsonArray` 解析モードを使用すると、Azure Search は、データ ソース内のすべての BLOB が JSON を含んでいるとみなします。 JSON BLOB と JSON 以外の BLOB が混在するデータ ソースをサポートする必要がある場合は、[UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search) でお知らせください。
 >
 >
 
@@ -80,7 +102,7 @@ JSON ドキュメントの例に戻りましょう。
         }
     }
 
-Edm.String 型の `text` フィールド、Edm.DateTimeOffset 型の `date` フィールド、コレクション (Edm.String) 型の `tags` フィールドを持つ検索インデックスがあるとします。 JSON を必要な形式にマッピングするには、次のフィールド マッピングを使用します。
+`Edm.String` 型の `text` フィールド、`Edm.DateTimeOffset` 型の `date` フィールド、および `Collection(Edm.String)` 型の `tags` フィールドを持つ検索インデックスがあるとします。 JSON を必要な形式にマッピングするには、次のフィールド マッピングを使用します。
 
     "fieldMappings" : [
         { "sourceFieldName" : "/article/text", "targetFieldName" : "text" },
@@ -88,7 +110,7 @@ Edm.String 型の `text` フィールド、Edm.DateTimeOffset 型の `date` フ�
         { "sourceFieldName" : "/article/tags", "targetFieldName" : "tags" }
       ]
 
-マッピング内のソース フィールド名は、 [JSON ポインター](http://tools.ietf.org/html/rfc6901) の表記を使用して指定されています。 スラッシュから開始して JSON ドキュメントのルートを参照し、その後はスラッシュ区切りのパスで目的のプロパティ (任意の入れ子レベル) まで指定します。
+マッピング内のソース フィールド名は、 [JSON ポインター](http://tools.ietf.org/html/rfc6901) の表記を使用して指定されています。 スラッシュから始めて、JSON ドキュメントのルートを参照し、その後、スラッシュ区切りのパスを使用して、目的のプロパティ (任意の入れ子レベル) まで指定します。
 
 0 から始まるインデックスを使用して個々の配列要素を参照することもできます。 たとえば、上の例から "tags" 配列の最初の要素を選択するには、次のようなフィールド マッピングを使用します。
 
@@ -99,7 +121,7 @@ Edm.String 型の `text` フィールド、Edm.DateTimeOffset 型の `date` フ�
 >
 >
 
-JSON ドキュメントに単純な最上位レベルのプロパティのみが含まれる場合、フィールド マッピングは必要ありません。 たとえば、次のような JSON の場合、最上位レベルのプロパティ "text"、"datePublished"、"tags" は検索インデックス内の対応する各フィールドに直接マッピングされます。
+JSON ドキュメントに単純な最上位レベルのプロパティのみが含まれる場合、フィールド マッピングは必要ありません。 たとえば、次のような JSON の場合、最上位レベルのプロパティ "text"、"datePublished"、および "tags" は、検索インデックス内の対応する各フィールドに直接マッピングされます。
 
     {
        "text" : "A hopefully useful article explaining how to parse JSON blobs",
@@ -107,47 +129,9 @@ JSON ドキュメントに単純な最上位レベルのプロパティのみが
        "tags" : [ "search", "storage", "howto" ]    
      }
 
-## <a name="indexing-nested-json-arrays"></a>入れ子になった JSON 配列のインデックス作成
-JSON オブジェクトの配列にインデックスを作成するときに、そのドキュメント内のどこかで配列が入れ子になっていたらどうすればよいでしょうか。 `documentRoot` 構成プロパティを使用して、入れ子になった配列が格納されているプロパティを選択できます。 たとえば、次のような BLOB があるとします。
+フィールド マッピングによる完全なインデクサ― ペイロードを次に示します。
 
-    {
-        "level1" : {
-            "level2" : [
-                { "id" : "1", "text" : "Use the documentRoot property" },
-                { "id" : "2", "text" : "to pluck the array you want to index" },
-                { "id" : "3", "text" : "even if it's nested inside the document" }  
-            ]
-        }
-    }
-
-次の構成を使用して、"level2" プロパティに格納されている配列のインデックスを作成します。
-
-    {
-        "name" : "my-json-array-indexer",
-        ... other indexer properties
-        "parameters" : { "configuration" : { "parsingMode" : "jsonArray", "documentRoot" : "/level1/level2" } }
-    }
-
-
-## <a name="request-examples"></a>要求例
-すべてをまとめた完全なペイロード例を次に示します。
-
-データソース:
-
-    POST https://[service name].search.windows.net/datasources?api-version=2015-02-28-Preview
-    Content-Type: application/json
-    api-key: [admin key]
-
-    {
-        "name" : "my-blob-datasource",
-        "type" : "azureblob",
-        "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
-        "container" : { "name" : "my-container", "query" : "optional, my-folder" }
-    }   
-
-インデクサー:
-
-    POST https://[service name].search.windows.net/indexers?api-version=2015-02-28-Preview
+    POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
     Content-Type: application/json
     api-key: [admin key]
 
@@ -164,11 +148,27 @@ JSON オブジェクトの配列にインデックスを作成するときに、
         ]
     }
 
+## <a name="indexing-nested-json-arrays"></a>入れ子になった JSON 配列のインデックス作成
+JSON オブジェクトの配列にインデックスを作成するときに、そのドキュメント内のどこかで配列が入れ子になっていたらどうすればよいでしょうか。 `documentRoot` 構成プロパティを使用して、入れ子になった配列が格納されているプロパティを選択できます。 たとえば、次のような BLOB があるとします。
+
+    {
+        "level1" : {
+            "level2" : [
+                { "id" : "1", "text" : "Use the documentRoot property" },
+                { "id" : "2", "text" : "to pluck the array you want to index" },
+                { "id" : "3", "text" : "even if it's nested inside the document" }  
+            ]
+        }
+    }
+
+この構成を使用して、`level2` プロパティに格納されている配列のインデックスを作成します。
+
+    {
+        "name" : "my-json-array-indexer",
+        ... other indexer properties
+        "parameters" : { "configuration" : { "parsingMode" : "jsonArray", "documentRoot" : "/level1/level2" } }
+    }
+
 ## <a name="help-us-make-azure-search-better"></a>Azure Search の品質向上にご協力ください
-ご希望の機能や品質向上のアイデアがありましたら、 [UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search/)にぜひお寄せください。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+ご希望の機能や品質向上のアイデアがありましたら、[UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search/)にぜひお寄せください。
 

@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 7f719fb38709f4bb7083b7f21a5979f7e0588d0f
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 0635120c4e16f3b8531039eee4c6651e7cdeca40
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/22/2017
 * [Windows 8.1 または Windows Server 2012 R2 から Azure File Storage にアクセスしたときにパフォーマンスが低下する](#windowsslow)
 * [Azure ファイル共有をマウントしようとしたときに、エラー 53 が発生する](#error53)
 * [エラー 87: Azure ファイル共有をマウントしようとしたときにパラメーターが正しくない](#error87)
-* [net use は成功したが、エクスプローラー UI で、マウントされた Azure ファイル共有またはドライブ文字が表示されない](#netuse)
+* [net use は成功したが、マウントされた Azure ファイル共有またはドライブ文字がエクスプローラー UI に表示されない](#netuse)
 * [ストレージ アカウントに "/" が含まれており、net use コマンドが失敗する](#slashfails)
 * [アプリケーション/サービスがマウントされた Azure Files ドライブにアクセスできない](#accessfiledrive)
 * [パフォーマンスを最適化するためのその他の推奨事項](#additional)
@@ -44,7 +44,7 @@ ms.lasthandoff: 03/22/2017
 
 **Linux クライアントの問題**
 
-* [断続的な IO エラー - マウント ポイントで list コマンドを実行すると、既存のファイル共有で "ホストがダウンしています (エラー 112)" というエラーが発生するか、シェルが応答を停止する](#errorhold)
+* [断続的な IO エラー - マウント ポイントで list コマンドを実行すると、既存のファイル共有で "ホストがダウンしています (エラー 112)" というエラーが発生するか、シェルが応答を停止する](#error112)
 * [Linux VM で Azure Files をマウントしようとしたときに、マウント エラー 115 が発生する](#error15)
 * [Linux VM にマウントされている Azure ファイル共有のパフォーマンスが低下している](#delayproblem)
 * [マウント エラー (11): Ubuntu 4.8+ カーネルにマウントするときにリソースが一時的に使用不能になる](#ubuntumounterror)
@@ -74,7 +74,7 @@ Linux では、次のようなエラー メッセージが表示されます。
 
 ## <a name="slow-performance-when-accessing-file-storage-from-windows-or-linux"></a>Windows または Linux から File Storage にアクセスしたときにパフォーマンスが低下する
 * 特定の最小 I/O サイズ要件がない場合は、最適なパフォーマンスを得るために I/O サイズとして 1 MB を使用することをお勧めします。
-* 書き込みによって大きくなるファイルの最終サイズがわかっており、まだ書き込まれていないファイル末尾にゼロが含まれていてもソフトウェアに互換性の問題がない場合は、書き込みによってサイズを増やすのではなく、事前にファイル サイズを設定します。
+* 書き込みによって大きくなるファイルの最終サイズがわかっており、まだ書き込まれていないファイル末尾にゼロが含まれていてもソフトウェアに互換性の問題がない場合は、書き込みごとにサイズを増やすのではなく、事前にファイル サイズを設定します。
 * 次のように適切なコピー方法を使用します。
       * 2 つのファイル共有間のすべての転送には、AZCopy を使用します。 詳細については、「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](https://docs.microsoft.com/en-us/azure/storage/storage-use-azcopy#file-copy)」を参照してください。
       * ファイル共有とオンプレミスのコンピューター間では、robocopy を使用します。 詳細については「[Multi-threaded robocopy for faster copies (マルチスレッドの robocopy を使用してコピーを高速化する)](https://blogs.msdn.microsoft.com/granth/2009/12/07/multi-threaded-robocopy-for-faster-copies/)」を参照してください。
@@ -101,7 +101,7 @@ Windows 8.1 または Windows Server 2012 R2 を実行しているクライア�
 
 ### <a name="how-to-trace-the-read-and-write-operations-in-azure-file-storage"></a>Azure File Storage で読み取りおよび書き込み操作をトレースする方法
 
-[Microsoft Message Analyzer](https://www.microsoft.com/en-us/download/details.aspx?id=44226) ではクライアントの要求をクリア テキストで表示でき、ネットワーク要求とトランザクションの間にとてもよい関係があります (SMB が REST ではない場合)。  欠点は、各クライアントでこれを実行する必要があることで、多くの IaaS VM ワーカーがある場合は時間がかかります。
+[Microsoft Message Analyzer](https://www.microsoft.com/en-us/download/details.aspx?id=44226) では、クライアントの要求をクリア テキストで表示でき、ネットワーク要求とトランザクションの間にとてもよい関係があります (SMB が REST ではない場合)。  欠点は、各クライアントでこれを実行する必要があることで、多くの IaaS VM ワーカーがある場合は時間がかかります。
 
 ProcMon で Message Analyze を使った場合、トランザクションの基になっているアプリ コードがよくわかります。
 
@@ -116,13 +116,13 @@ ProcMon で Message Analyze を使った場合、トランザクションの基�
 この問題は、次のような状況で発生する場合があります。
 
 ### <a name="cause-1"></a>原因 1
-"システム エラー 53 が発生しました。 アクセスが拒否されました。" セキュリティ上の理由により、通信チャネルが暗号化されていない場合や、接続の試行が Azure ファイル共有と同じデータ センターから行われていない場合、Azure ファイル共有への接続はブロックされます。 ユーザーのクライアント OS が SMB 暗号化をサポートしていない場合、通信チャネルの暗号化は提供されません。 このことは、ユーザーがオンプレミスまたは異なるデータ センターからファイル共有をマウントしようとしたときに、"システム エラー 53 が発生しました。 アクセスが拒否されました" というエラー メッセージによって示されます。 Windows 8、Windows Server 2012、およびそれ以降のバージョンの SMB 3.0 を含む各ネゴシエート要求は、暗号化をサポートします。
+"システム エラー 53 が発生しました。 アクセスが拒否されました。" セキュリティ上の理由により、通信チャネルが暗号化されていない場合や、接続の試行が Azure ファイル共有と同じ Azure リージョンから行われていない場合、Azure ファイル共有への接続はブロックされます。 ユーザーのクライアント OS が SMB 暗号化をサポートしていない場合、通信チャネルの暗号化は提供されません。 このことは、ユーザーがオンプレミスまたは異なるデータ センターからファイル共有をマウントしようとしたときに、"システム エラー 53 が発生しました。 アクセスが拒否されました" というエラー メッセージによって示されます。 Windows 8、Windows Server 2012、およびそれ以降のバージョンの SMB 3.0 を含む各ネゴシエート要求は、暗号化をサポートします。
 
 ### <a name="solution-for-cause-1"></a>原因 1 の解決策
-Windows 8、Windows Server 2012、またはそれ以降というバージョンの要件を満たすクライアントから接続するか、Azure ファイル共有に使用されている Azure ストレージ アカウントと同じデータ センターにある仮想マシンから接続します。
+Windows 8、Windows Server 2012、またはそれ以降というバージョンの要件を満たすクライアントから接続するか、Azure ファイル共有に使用されている Azure Storage アカウントと同じ Azure リージョンにある仮想マシンから接続します。
 
 ### <a name="cause-2"></a>原因 2
-"システム エラー 53" または "システム エラー 67" は、Azure ファイル共有をマウントするときに、ポート 445 から Azure Files データ センターへの送信方向の通信がブロックされている場合に表示されます。 [ここ](http://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx)をクリックして、ポート 445 からのアクセスを許可する ISP または許可しない ISP の概要を確認してください。
+"システム エラー 53" または "システム エラー 67" は、Azure ファイル共有をマウントするときに、ポート 445 から Azure Files Azure リージョンへの送信方向の通信がブロックされている場合に表示されます。 [ここ](http://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx)をクリックして、ポート 445 からのアクセスを許可する ISP または許可しない ISP の概要を確認してください。
 
 Comcast や一部の IT 組織ではこのポートがブロックされます。 これが "システム エラー 53" メッセージの原因であるかどうかを把握するために、Portqry を使用して、TCP:445 エンドポイントを照会できます。 TCP:445 エンドポイントがフィルター処理済みとして表示される場合、TCP ポートがブロックされています。 クエリの使用例を次に示します。
 
@@ -213,13 +213,13 @@ File Storage にファイルをコピーするには、最初にファイルの�
 
 ただし、レジストリ キーの設定は、ネットワーク共有に対するすべてのコピー操作に影響します。
 
-<a id="errorhold"></a>
+<a id="error112"></a>
 
 ## <a name="host-is-down-error-112-on-existing-file-shares-or-the-shell-hangs-when-you-run-list-commands-on-the-mount-point"></a>マウント ポイントで list コマンドを実行すると、既存のファイル共有で "ホストがダウンしています (エラー 112)" というエラーが発生するか、シェルが応答を停止する
 ### <a name="cause"></a>原因
 このエラーは、Linux クライアントがある長時間アイドル状態である場合に発生します。 クライアントが長時間アイドル状態である場合、クライアントが切断され、接続がタイムアウトになります。 
 
-接続は、さまざまな理由によりアイドル状態になります。 ネットワーク通信エラーの原因の 1 つは、既定である「ソフト」マウント オプションが使用されたときに、サーバーへの TCP 接続が再確立できなくなるためです。
+接続は、さまざまな理由によりアイドル状態になります。 ネットワーク通信エラーの原因の 1 つは、既定である「ソフト」マウント オプションが使用されたときに、サーバーへの TCP 接続が再確立できなくなることです。
 
 また、古いカーネルに再接続の問題の修正が存在しないことも原因の 1 つと考えられます。
 
@@ -251,7 +251,7 @@ Linux カーネルのこの再接続の問題は、次の変更に伴い解決�
 Linux ディストリビューションは、SMB 3.0 の暗号化機能を現時点ではサポートしていません。 いくつかのディストリビューションでは、ユーザーが SMB 3.0 を使用して Azure Files をマウントしようとしたときに、"115" エラー メッセージが表示される場合があります。これは、SMB 3.0 がサポートされていない機能であるためです。
 
 ### <a name="solution"></a>解決策
-使用している Linux SMB クライアントが暗号化をサポートしていない場合は、File ストレージ アカウントと同じデータ センターにある Linux VM から SMB 2.1 を使用して Azure Files をマウントします。
+使用している Linux SMB クライアントが暗号化をサポートしていない場合は、File Storage アカウントと同じ Azure リージョンにある Linux VM から SMB 2.1 を使用して Azure Files をマウントします。
 
 <a id="delayproblem"></a>
 
@@ -261,15 +261,17 @@ Linux ディストリビューションは、SMB 3.0 の暗号化機能を現時
 
 一部のシナリオでは、serverino マウント オプションを指定していると、ls コマンドによってすべてのディレクトリ エントリに対して stat が実行されます。そのため、大規模なディレクトリを一覧表示するときにパフォーマンスが低下します。 "/Etc/fstab" エントリでマウント オプションを確認できます。
 
-`//azureuser.file.core.windows.net/cifs        /cifs   cifs vers=3.0,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
+`//<storage-account-name>.file.core.windows.net/<file-share-name> <mount-point> cifs vers=3.0,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
 
-**sudo mount | grep cifs** コマンドを実行して出力を調べるだけで、正しいオプションが使われているかどうかを確認できます。
+`sudo mount | grep cifs` コマンドを実行するだけで、正しいオプションが使われているかどうかを確認できます (サンプル出力を以下に示します)。
 
-`//mabiccacifs.file.core.windows.net/cifs on /cifs type cifs
-(rw,relatime,vers=3.0,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777,
-dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
+`//<storage-account-name>.file.core.windows.net/<file-share-name> on <mount-point> type cifs
+(rw,relatime,vers=3.0,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,
+noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777,
+dir_mode=0777,persistenthandles,nounix,serverino,
+mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
 
-cache=strict または serverino オプションが指定されていない場合は、Azure ファイルをマウント解除してから mount コマンドで再マウントし ([ドキュメント](https://docs.microsoft.com/en-us/azure/storage/storage-how-to-use-files-linux#mount-the-file-share)を参照)、"/etc/fstab" エントリに適切なオプションがあることを確認します。
+cache=strict または serverino オプションが指定されていない場合は、Azure ファイルをマウント解除してから mount コマンドで再マウントし ([ドキュメント](https://docs.microsoft.com/en-us/azure/storage/storage-how-to-use-files-linux#mount-the-file-share)を参照)、"/etc/fstab" エントリで適切なオプションが指定されていることを確認します。
 
 <a id="ubuntumounterror"></a>
 ## <a name="mount-error11-resource-temporarily-unavailable-when-mounting-to-ubuntu-48-kernel"></a>マウント エラー (11): Ubuntu 4.8+ カーネルにマウントするときにリソースが一時的に使用不能になる
@@ -278,7 +280,7 @@ cache=strict または serverino オプションが指定されていない場�
 Ubuntu 16.10 カーネル (v.4.8) には、クライアントが暗号化のサポートを要求しているがサポートされていないという既知の問題があります。 
 
 ### <a name="solution"></a>解決策
-Ubuntu 16.10 が修正されるまでは、"vers=2.1" マウント オプションを指定するか Ubuntu 16.04 を使用します。
+Ubuntu 16.10 が修正されるまでは、"vers=2.1" マウント オプションを指定するか、Ubuntu 16.04 を使用します。
 ## <a name="learn-more"></a>詳細情報
 * [Windows で Azure File Storage を使用する](storage-dotnet-how-to-use-files.md)
 * [Linux で Azure File Storage を使用する](storage-how-to-use-files-linux.md)

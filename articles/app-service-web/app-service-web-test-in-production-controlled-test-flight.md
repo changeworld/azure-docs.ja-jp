@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/02/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 84b5f28fcd0640fd85b5f8c9d655105790c70d62
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: e652218e6579ef430a5dc49f77a26a7d97b8b966
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -26,9 +26,9 @@ ms.lasthandoff: 02/16/2017
 
 *フライト* は、運用環境で行われる主要なテストの一つとして、利用者数を実際よりも少ない状態で新機能や変更を検証するデプロイ プロセスです。 ベータ テストと酷似しており、"Controlled Test Flight (制御された環境で行われるテスト フライト)" と呼ばれることもあります。 Web プレゼンスを確立している多くの大企業が、 [アジャイル開発](https://en.wikipedia.org/wiki/Agile_software_development)の一工程として、アプリを更新したときにまずこの手法を用いて検証を行っています。 同じ DevOps シナリオは、Azure App Service を使用して、運用環境におけるテスト、継続的パブリッシング、Application Insights を統合することによって実現できます。 この手法には次のような利点があります。
 
-* **更新されたアプリを運用環境にリリースする "*前に*" リアルなフィードバックを得る** - フィードバックを得るタイミングとして、リリース直後に勝るものがあるとすれば、リリース前しかありません。 製品ライフ サイクルの中でいつでも自由に、実際のユーザーのトラフィックと振る舞いに基づいて更新版をテストすることができます。
+* **更新されたアプリを運用環境にリリースする*前に*リアルなフィードバックを得る** - フィードバックを得るタイミングとして、リリース直後に勝るものがあるとすれば、リリース前しかありません。 製品ライフ サイクルの中でいつでも自由に、実際のユーザーのトラフィックと振る舞いに基づいて更新版をテストすることができます。
 * **[CTDD (Continuous Test-Driven Development: 継続的テスト駆動開発)](https://en.wikipedia.org/wiki/Continuous_test-driven_development) が強化される** - 運用環境におけるテストに、Application Insights を使った継続的統合とインストルメンテーションを組み合わせることで、製品ライフ サイクルの初期段階で自動的にユーザーによる検証を実施することができます。 テストを手動で実施するよりも短時間で済みます。
-* **テストのワークフローを最適化する** - 継続的に監視するインストルメント (計器) を実装し、運用環境におけるテストを自動化することで、[統合](https://en.wikipedia.org/wiki/Integration_testing)、[回帰](https://en.wikipedia.org/wiki/Regression_testing)、[ユーザビリティ](https://en.wikipedia.org/wiki/Usability_testing)、アクセシビリティ、ローカリゼーション、[パフォーマンス](https://en.wikipedia.org/wiki/Software_performance_testing)、[セキュリティ](https://en.wikipedia.org/wiki/Security_testing)、[受け入れ](https://en.wikipedia.org/wiki/Acceptance_testing)など、さまざまな種類のテストを&1; つのプロセスで実行することができます。
+* **テストのワークフローを最適化する** - 継続的に監視するインストルメント (計器) を実装し、運用環境におけるテストを自動化することで、[統合](https://en.wikipedia.org/wiki/Integration_testing)、[回帰](https://en.wikipedia.org/wiki/Regression_testing)、[ユーザビリティ](https://en.wikipedia.org/wiki/Usability_testing)、アクセシビリティ、ローカリゼーション、[パフォーマンス](https://en.wikipedia.org/wiki/Software_performance_testing)、[セキュリティ](https://en.wikipedia.org/wiki/Security_testing)、[受け入れ](https://en.wikipedia.org/wiki/Acceptance_testing)など、さまざまな種類のテストを 1 つのプロセスで実行することができます。
 
 フライト デプロイの目的は単にライブ トラフィックをルーティングすることではありません。 この環境が目指しているのは、予期しないバグやパフォーマンスの低下、ユーザー エクスペリエンスの課題など、あらゆる問題の本質を短時間で捉えることです。 注目すべき点は、実際の利用者を対象にテストが実施されることです。 そのため次の段階でしかるべき情報に基づく判断を行うために必要なデータをすべて収集するようにフライト デプロイをセットアップする必要があります。 このチュートリアルでは、Application Insights でデータを収集する方法を紹介していますが、実際のシナリオに合わせて New Relic などのテクノロジを使用することもできます。
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 02/16/2017
 > [!NOTE]
 > このチュートリアルで使用するスクリプトは、GitHub リポジトリからの継続的パブリッシングを自動的に構成します。 これを行うには、GitHub 資格情報が既に Azure に保存されている必要があります。保存されていない場合、スクリプト化されたデプロイは、Web アプリに対するソース管理設定を構成しようとした時点で失敗します。
 >
-> GitHub 資格情報を Azure に保存するには、Web アプリを [Azure Portal](https://portal.azure.com/) で作成し、[GitHub のデプロイを構成](app-service-continuous-deployment.md)します。 この操作を行うのは&1; 回だけです。
+> GitHub 資格情報を Azure に保存するには、Web アプリを [Azure Portal](https://portal.azure.com/) で作成し、[GitHub のデプロイを構成](app-service-continuous-deployment.md)します。 この操作を行うのは 1 回だけです。
 >
 >
 
@@ -93,7 +93,7 @@ ms.lasthandoff: 02/16/2017
 7. スクリプトが終了したら、フロントエンドのアドレス (http://ToDoApp*&lt;your_suffix>*.azurewebsites.net/) を参照して、アプリケーションが運用環境で実行されていることを確認します。
 8. [Azure ポータル](https://portal.azure.com/) にログインして、何が作成されたかを調べます。
 
-   同じリソース グループ内に&2; つの Web アプリがあり、1 つは名前に `Api` サフィックスが付いていることを確認できます。 リソース グループ ビューを表示している場合は、SQL Database とサーバー、App Service プラン、および Web アプリのステージング スロットも表示されます。 さまざまなリソースを参照し、それらを *&lt;repository_root>*\ARMTemplates\ProdAndStage.json と比較して、テンプレート内にどのように構成されているかを確認します。
+   同じリソース グループ内に 2 つの Web アプリがあり、1 つは名前に `Api` サフィックスが付いていることを確認できます。 リソース グループ ビューを表示している場合は、SQL Database とサーバー、App Service プラン、および Web アプリのステージング スロットも表示されます。 さまざまなリソースを参照し、それらを *&lt;repository_root>*\ARMTemplates\ProdAndStage.json と比較して、テンプレート内にどのように構成されているかを確認します。
 
    ![](./media/app-service-web-test-in-production-controlled-test-flight/00.3-resource-group-view.png)
 
@@ -176,7 +176,7 @@ ToDoApp アプリケーションのコードによれば **BUTTON** イベント
 
 ここでの収集の対象となるのはクライアントの動作に関するデータであるため、index.cshtml の [JavaScript コードにテレメトリ初期化子を追加](../application-insights/app-insights-api-filtering-sampling.md) します。 サーバー側のパフォーマンスをテストする場合は、同様の作業をサーバー側のコードに対しても行ってください ( [カスタムのイベントとメトリックのための Application Insights API](../application-insights/app-insights-api-custom-events-metrics.md)に関するページを参照)。
 
-1. まず、先ほど `<heading>` タグに追加した JavaScript ブロックに、以下の&2; つの `//` コメントに挟まれたコードを追加します。
+1. まず、先ほど `<heading>` タグに追加した JavaScript ブロックに、以下の 2 つの `//` コメントに挟まれたコードを追加します。
 
         window.appInsights = appInsights;
 
@@ -299,7 +299,7 @@ ToDoApp アプリケーションのコードによれば **BUTTON** イベント
 変更内容がベータ スロットで実行されていることを確認できたら、フライト デプロイを実行することができます。
 
 ## <a name="validate-route-traffic-to-the-beta-app"></a>検証: ベータ版アプリにトラフィックをルーティングする
-このセクションでは、ベータ版のアプリにトラフィックをルーティングします。 デモンストレーションを単純化するために、ここではユーザー トラフィックの大部分をベータ版アプリにルーティングします。 実際には、ルーティングするトラフィックの量は、具体的な条件によって異なります。 たとえば、microsoft.com と同等の規模があるサイトでは、トラフィック全体の&1;% 未満でも、有益なデータを集めることが可能です。
+このセクションでは、ベータ版のアプリにトラフィックをルーティングします。 デモンストレーションを単純化するために、ここではユーザー トラフィックの大部分をベータ版アプリにルーティングします。 実際には、ルーティングするトラフィックの量は、具体的な条件によって異なります。 たとえば、microsoft.com と同等の規模があるサイトでは、トラフィック全体の 1% 未満でも、有益なデータを集めることが可能です。
 
 1. 運用環境のトラフィックをベータ スロットにルーティングするには、Git Shell セッションから次のコマンドを実行します。
 
@@ -355,6 +355,6 @@ Azure App Service を使用すると、中小規模の企業が顧客向けの�
 * [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)
 * [JSONLint - JSON Validator に関するページ](http://jsonlint.com/)
 * [Git のブランチ機能 - 基本的なブランチとマージに関するページ](http://www.git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
-* [Azure PowerShell](/powershell/azureps-cmdlets-docs)
+* [Azure PowerShell](/powershell/azure/overview)
 * [Project Kudu Wiki](https://github.com/projectkudu/kudu/wiki)
 

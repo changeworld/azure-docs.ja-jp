@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/14/2017
 ms.author: robmcm;asirveda;martinsawicki
 translationtype: Human Translation
-ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
-ms.openlocfilehash: a2006dbcf0d63ef38651a0859dc654d531fd875a
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 23714856f0f778be04cf321e0726b53ade430f57
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -28,6 +29,15 @@ ms.openlocfilehash: a2006dbcf0d63ef38651a0859dc654d531fd875a
 > Eclipse IDE 用の Azure Toolkit もあります。 詳細については、「 [Azure Toolkit for Eclipse]」をご覧ください。
 > 
 > 
+
+### <a name="april-14-2017"></a>2017 年 4 月 14 日
+Azure Toolkit for IntelliJ - April 2017 リリースでは、次の点が強化されています。
+
+* **Azure サインイン エクスペリエンスの向上**: Azure Toolkit for IntelliJ では、Azure アカウントへの 2 つのログイン方法 ("*対話型*" と "*自動*") がサポートされるようになりました。 詳しくは、「[Azure Toolkit for IntelliJ の Azure サインイン手順]」をご覧ください。
+* **Docker コンテナーを使用した発行**: Azure Toolkit for IntelliJ を使用して、Web アプリケーションを Docker コンテナーとして発行できるようになりました。 詳しくは、「[Azure Toolkit for IntelliJ を使用して、Web アプリを Docker コンテナーとして発行する方法]」をご覧ください。
+* **ストレージ アカウント管理**: Azure Toolkit for IntelliJ は、Azure Explorer ビューからのストレージ アカウントの管理をサポートするようになりました。 詳しくは、「[Azure Explorer for IntelliJ を使用してストレージ アカウントを管理する]」をご覧ください。
+* **仮想マシン管理**: Azure Toolkit for IntelliJ は、Azure Explorer ツール ウィンドウからの仮想マシンの管理をサポートするようになりました。 詳しくは、「[Azure Explorer for IntelliJ を使用して仮想マシンを管理する]」をご覧ください。
+* **リモート デバッグ サポートの削除**。 Azure App Service での Java Web アプリのリモート デバッグは、Azure Toolkit for IntelliJ から削除されました。これは、顧客がツールキットを使用するときに発生していたいくつかの問題を解決するために必要でした。
 
 ### <a name="august-26-2016"></a>2016 年 8 月 26 日
 Azure Toolkit for IntelliJ - August 2016 リリースでは、次の点が強化されています。
@@ -61,13 +71,15 @@ Azure Toolkit for IntelliJ - April 2016 リリースでは、次の点が強化�
 Azure Toolkits for Java IDE の詳細については、次のリンクをご覧ください。
 
 * [Azure Toolkit for Eclipse]
+  * [Azure Toolkit for Eclipse の新機能]
   * [Azure Toolkit for Eclipse のインストール]
   * [Eclipse で Azure 用の Hello World Web アプリを作成する]
-  * [Azure Toolkit for Eclipse の新機能]
+  * [Azure Toolkit for Eclipse のサインイン手順]
 * [Azure Toolkit for IntelliJ]
-  * [Azure Toolkit for IntelliJ のインストール]
-  * [IntelliJ で Azure 用の Hello World Web アプリを作成する]
   * *Azure Toolkit for IntelliJ の新機能 (この記事)*
+  * [Azure Toolkit for IntelliJ のインストール]
+  * [Azure Toolkit for IntelliJ のサインイン手順]
+  * [IntelliJ で Azure 用の Hello World Web アプリを作成する]
 
 Java での Azure の使用の詳細については、 [Azure Java デベロッパー センター]を参照してください。
 
@@ -79,15 +91,17 @@ Java での Azure の使用の詳細については、 [Azure Java デベロッ�
 [IntelliJ で Azure 用の Hello World Web アプリを作成する]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
 [Azure Toolkit for Eclipse のインストール]: ./azure-toolkit-for-eclipse-installation.md
 [Azure Toolkit for IntelliJ のインストール]: ./azure-toolkit-for-intellij-installation.md
+[Azure Toolkit for Eclipse のサインイン手順]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
+[Azure Toolkit for IntelliJ のサインイン手順]: ./azure-toolkit-for-intellij-sign-in-instructions.md
 [Azure Toolkit for Eclipse の新機能]: ./azure-toolkit-for-eclipse-whats-new.md
 [What's New in the Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
+
+[Azure Toolkit for IntelliJ の Azure サインイン手順]: ./azure-toolkit-for-intellij-sign-in-instructions.md
+[Azure Toolkit for IntelliJ を使用して、Web アプリを Docker コンテナーとして発行する方法]: ./azure-toolkit-for-intellij-publish-as-docker-container.md
+[Azure Explorer for IntelliJ を使用してストレージ アカウントを管理する]: ./azure-toolkit-for-intellij-managing-storage-accounts-using-azure-explorer.md
+[Azure Explorer for IntelliJ を使用して仮想マシンを管理する]: ./azure-toolkit-for-intellij-managing-virtual-machines-using-azure-explorer.md
 
 [Azure Java デベロッパー センター]: http://go.microsoft.com/fwlink/?LinkID=699547
 
 [IntelliJ 用の HDInsight Tools プラグイン]: ./hdinsight/hdinsight-apache-spark-intellij-tool-plugin.md
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

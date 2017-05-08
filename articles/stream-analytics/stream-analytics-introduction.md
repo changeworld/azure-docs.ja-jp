@@ -16,9 +16,9 @@ ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 2b4a10c77ae02ac0e9eeecf6d7d6ade6e4c33115
-ms.openlocfilehash: 493a915fb4e3de4cb70324b22beeaae6720a3492
-ms.lasthandoff: 01/25/2017
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: a6b1df79f4fc6b09b681755f5adbb7f56faaf225
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -42,7 +42,7 @@ Stream Analytics で活用されている、時間が重要となる処理向け
 * **接続**: Stream Analytics は、Azure Event Hubs と Azure IoT Hub に直接接続してストリームを取り込み、Azure BLOB サービスに直接接続して履歴データを取り込みます。 結果は、Stream Analytics から Azure Storage Blobs または Tables、Azure SQL DB、Azure Data Lake Store、DocumentDB、Event Hubs、Azure Service Bus Topics または Queues、Power BI に書き込まれます。そこで、視覚化、ワークフローによる処理、[Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) を介したバッチ分析での使用、一連のイベントとしての再処理を実行することができます。 Event Hubs を使用すると、計算処理のストリーミングの性質を失うことなく、複数の Stream Analytics を他のデータ ソースや処理エンジンとまとめて構成できます。  
 
 ## <a name="get-help"></a>問い合わせ
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>次のステップ
 モ ノのインターネットからのデータをストリーム分析する管理サービスである、 Stream Analytics の概要です。 このサービスの詳細については、以下の情報をご覧ください。

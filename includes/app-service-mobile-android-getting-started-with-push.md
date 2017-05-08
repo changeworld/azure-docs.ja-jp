@@ -1,4 +1,4 @@
-1. **アプリ** プロジェクトで、`AndroidManifest.xml` ファイルを開きます。 続く&2; つの手順では、コード内の *`**my_app_package**`* を、プロジェクトのアプリ パッケージの名前に置き換えます。 これは、`manifest` タグの `package` 属性の値です。
+1. **アプリ** プロジェクトで、`AndroidManifest.xml` ファイルを開きます。 続く 2 つの手順では、コード内の *`**my_app_package**`* を、プロジェクトのアプリ パッケージの名前に置き換えます。 これは、`manifest` タグの `package` 属性の値です。
 2. 次の新しいアクセス許可を、既存の `uses-permission` 要素の後に追加します。
 
         <permission android:name="**my_app_package**.permission.C2D_MESSAGE"
@@ -94,8 +94,3 @@
         NotificationsManager.handleNotifications(this, SENDER_ID, MyHandler.class);
 
     これで、アプリケーションがプッシュ通知をサポートするように更新されました。
-
-
-<!--HONumber=Dec16_HO2-->
-
-

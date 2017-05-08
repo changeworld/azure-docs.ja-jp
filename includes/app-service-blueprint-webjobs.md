@@ -24,8 +24,3 @@
 * [Web ジョブのスケール アウト](http://channel9.msdn.com/Shows/Azure-Friday/Azure-WebJobs-105-Scaling-out-Web-Jobs)
 * [Magnus Mårtensson 氏による Azure Web ジョブ ビデオ](https://www.youtube.com/playlist?list=PLqp1ZOYYUSd81yEzMYLTw8cz91wx_LU9r)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

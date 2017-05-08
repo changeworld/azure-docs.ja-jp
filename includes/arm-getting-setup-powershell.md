@@ -52,8 +52,3 @@ Azure PowerShell コマンド プロンプトで次のコマンドを実行し�
 
 Azure サブスクリプションとアカウントの詳細については、[サブスクリプションへの接続方法](/powershell/azureps-cmdlets-docs#step-3-connect)に関するトピックを参照してください。
 
-
-
-<!--HONumber=Dec16_HO1-->
-
-

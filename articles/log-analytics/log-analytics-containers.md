@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 04/24/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 45b07f5dd29b7e920ac2abe6765020e0337ecf95
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: f5c5abc988cd363cafe8c07f83eb2686a83ee1a2
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -43,6 +43,10 @@ OMS と共に Docker をインストールして使用する方法はいくつ�
 
 
 お使いのコンテナー ホストでサポートされている Docker および Linux オペレーティング システムのバージョンは、[GitHub](https://github.com/Microsoft/OMS-docker) で確認できます。
+
+Azure Container Service を使用する Kubernetes クラスターがある場合、詳細については、「[Microsoft Operations Management Suite (OMS) を使用して Azure Container Service クラスターを監視する](../container-service/container-service-kubernetes-oms.md)」をご覧ください。
+
+Azure Container Service DC/OS クラスターがある場合、詳細については、「[Operations Management Suite を使用した Azure Container Service DC/OS クラスターの監視](../container-service/container-service-monitoring-oms.md)」をご覧ください。
 
 Windows を実行しているコンピューターに Docker エンジンをインストールして構成する方法の詳細については、「[Windows 上の Docker エンジン](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon)」をご覧ください。
 

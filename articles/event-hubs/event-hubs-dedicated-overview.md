@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/21/2017
 ms.author: sethm;babanisa
 translationtype: Human Translation
-ms.sourcegitcommit: 9c1756d2c2c4dd73c60a71b24bfb4606cab289ed
-ms.openlocfilehash: 8e718e74443e3d51dc54edaf667e34875bc67c5d
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: fa0d49498db74ec81c98f3df9317d42cdd31ab46
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -55,7 +55,7 @@ Event Hubs Dedicated を使用することで実現する利点を次に示し�
 * メンテナンス不要: 負荷分散、OS の更新、セキュリティ パッチ、パーティション分割は Microsoft が管理。
 * 月額固定価格。
 
-Event Hubs Dedicated では、Standard プランのスループットの制限もいくつか削除されます。 Basic および Standard レベルのスループット単位では、1 秒あたり 1000 件のイベントまたは TU あたり 1 MBps の受信 (送信量の 2 倍) が提供されます。 Dedicated スケール プランには、イングレス イベントとエグレス イベントの数に制限はありません。 これらの制限は、購入した Event Hubs Dedicated の処理容量によってのみ決定されます。
+Event Hubs Dedicated では、Standard プランのスループットの制限もいくつか削除されます。 Basic および Standard レベルのスループット単位では、1 秒あたり 1000 件のイベントまたは TU あたり 1 MBps の受信 (送信量の 2 倍) が提供されます。 Dedicated スケール プランには、イングレス イベントとエグレス イベントの数に制限はありません。 これらの制限は、購入したイベント ハブの処理容量によってのみ決定されます。
 
 このサービスは最大規模のテレメトリ ユーザーを対象としており、エンタープライズ契約で提供されます。
 

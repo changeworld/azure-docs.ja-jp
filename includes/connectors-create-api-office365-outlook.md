@@ -17,8 +17,3 @@
 4. 接続が作成されたことを確認します。 これで、ロジック アプリで他の手順に進むことができます。   
     ![Office 365 の接続の作成手順](./media/connectors-create-api-office365-outlook/office365-sendemailproperties.png)  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

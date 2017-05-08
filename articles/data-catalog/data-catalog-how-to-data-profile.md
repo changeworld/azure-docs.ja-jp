@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 01/19/2017
+ms.date: 05/03/2017
 ms.author: spelluru
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 1d825277b63e00d93136161d50d780daa95ea8a7
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -92,9 +93,4 @@ ms.openlocfilehash: 1d825277b63e00d93136161d50d780daa95ea8a7
 ## <a name="see-also"></a>関連項目
 * [データ ソースの登録方法](data-catalog-how-to-register.md)
 * [Azure Data Catalog の概要](data-catalog-get-started.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

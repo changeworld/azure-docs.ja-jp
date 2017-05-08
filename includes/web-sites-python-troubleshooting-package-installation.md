@@ -5,7 +5,7 @@
 ### <a name="request-wheels"></a>wheel をリクエストする
 パッケージのインストールにコンパイラが必要な場合は、パッケージの所有者に連絡して、パッケージ用の wheel を使用可能にするようリクエストします。
 
-[Python 2.7 用の Microsoft Visual C++ コンパイラ][Python 2.7 用の Microsoft Visual C++ コンパイラ] が最近使用可能になり、Python 2.7 のネイティブなコードを使用しているパッケージのビルドが容易になりました。
+[PPython 2.7 用の Microsoft Visual C++ コンパイラ][PPython 2.7 用の Microsoft Visual C++ コンパイラ] が最近使用可能になり、Python 2.7 のネイティブなコードを使用しているパッケージのビルドが容易になりました。
 
 ### <a name="build-wheels-requires-windows"></a>wheel をビルドする (Windows が必要)
 このオプションを使用する際は、Azure App Service の Web アプリで使用しているプラットフォーム/アーキテクチャ/バージョン (Windows/32 ビット/2.7 または 3.4) に一致する Python 環境を使用して、パッケージをコンパイルしてください。
@@ -14,7 +14,7 @@
 
 Mac/Linux ユーザー: Windows コンピューターを使用できない場合は、Azure 上で VM を作成する方法について「[Windows を実行する仮想マシンの作成][Windows を実行する仮想マシンの作成]」を参照してください。  その方法に従って、wheel をビルドしてリポジトリに追加し、必要に応じて VM を破棄します。 
 
-Python 2.7 の場合、[Python 2.7 用の Microsoft Visual C++ コンパイラ][Python 2.7 用の Microsoft Visual C++ コンパイラ]をインストールできます。
+Python 2.7 の場合、[PPython 2.7 用の Microsoft Visual C++ コンパイラ][PPython 2.7 用の Microsoft Visual C++ コンパイラ]をインストールできます。
 
 Python 3.4 の場合、[Microsoft Visual C++ 2010 Express][Microsoft Visual C++ 2010 Express] をインストールできます。
 
@@ -60,10 +60,5 @@ requirements.txt を編集して先頭に `--find-links` オプションを追�
 仮想環境が自動的に管理された場合にファイルが残らないように、アプリ上の既存の仮想環境を削除することをお勧めします。
 
 [Windows を実行する仮想マシンの作成]: http://azure.microsoft.com/documentation/articles/virtual-machines-windows-hero-tutorial/
-[Python 2.7 用の Microsoft Visual C++ コンパイラ]: http://aka.ms/vcpython27
+[PPython 2.7 用の Microsoft Visual C++ コンパイラ]: http://aka.ms/vcpython27
 [Microsoft Visual C++ 2010 Express]: http://go.microsoft.com/?linkid=9709949
-
-
-<!--HONumber=Nov16_HO2-->
-
-

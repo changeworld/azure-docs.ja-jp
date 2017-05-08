@@ -82,8 +82,3 @@ Json 形式での DNS ゾーンの例:
 
 詳細については、 [DNS レコード セットの REST API ドキュメント](https://msdn.microsoft.com/library/azure/mt130627.aspx) を参照してください。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -3,7 +3,7 @@ title: "Azure Functions でのトリガーとバインドの使用 | Microsoft D
 description: "Azure Functions で、トリガーとバインドを使用してコード実行をオンライン イベントおよびクラウドベース サービスに接続する方法について説明します。"
 services: functions
 documentationcenter: na
-author: christopheranderson
+author: lindydonna
 manager: erikre
 editor: 
 tags: 
@@ -14,125 +14,288 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 01/23/2017
-ms.author: chrande
+ms.date: 04/14/2017
+ms.author: donnam
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: a56d71d437814ed08b2e0a05d9acc8448f6b9ae5
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: ed0ade96cc1cf6afc82787133d3fbcf874c43e0f
+ms.lasthandoff: 04/19/2017
 
 
 ---
 
-# <a name="learn-how-to-work-with-triggers-and-bindings-in-azure-functions"></a>Azure Functions でのトリガーとバインドの使用方法 
-このトピックでは、Azure Functions でトリガーおよびバインドを使用して、さまざまなトリガーや Azure サービス、その他のクラウドベース サービスにコードを接続する方法を示します。 主に、すべてのバインド タイプでサポートされる高度なバインド機能と構文について説明します。  
-
-特定の種類のトリガーまたはバインドを使用する方法の詳細については、次の参照トピックのいずれかを参照してください。
-
-| | | | |  
-| --- | --- | --- | --- |  
-| [HTTP/webhook](functions-bindings-http-webhook.md) | [Timer](functions-bindings-timer.md) | [Mobile Apps](functions-bindings-mobile-apps.md) | [Service Bus](functions-bindings-service-bus.md)  |  
-| [DocumentDB](functions-bindings-documentdb.md) |  [Storage Blob](functions-bindings-storage-blob.md) | [ストレージ キュー](functions-bindings-storage-queue.md) |  [ストレージ テーブル](functions-bindings-storage-table.md) |  
-| [Event Hubs](functions-bindings-event-hubs.md) | [Notification Hubs](functions-bindings-notification-hubs.md) | [SendGrid](functions-bindings-sendgrid.md) | [Twilio](functions-bindings-twilio.md) |   
-| | | | |  
-
-これらの記事は、「[Azure Functions developer reference (Azure Functions 開発者用リファレンス)](functions-reference.md)」と [C#](functions-reference-csharp.md)、[F#](functions-reference-fsharp.md)、または [Node.js](functions-reference-node.md) の開発者用リファレンスを既に読んでいることを前提としています。
+# <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions でのトリガーとバインドの概念
+Azure Functions では、*トリガー*と*バインド*を使用して、Azure やその他のサービスで発生したイベントに応答するコードを記述できます。 この記事では、サポートされているすべてのプログラミング言語でのトリガーとバインドの概念的な概要を説明します。 ここでは、すべてのバインドに共通する機能について説明します。
 
 ## <a name="overview"></a>概要
-トリガーは、カスタム コードをトリガーするために使用されるイベント応答です。 これにより、Azure プラットフォーム全体またはオンプレミスのイベントに応答できます。 バインドは、コードを目的のトリガーや関連する入出力データに接続するために使用される必要なメタデータを表します。 各関数の *function.json* ファイルには、すべての関連バインドが含まれます。 関数の入力バインドと出力バインドの数に制限はありません。 ただし、各関数でサポートされるトリガーのバインドは 1 つのみです。  
 
-Azure Function アプリに統合できるさまざまなバインドの詳細については、以下の表を参照してください。
+トリガーとバインドは、関数を呼び出す方法と、その関数で処理するデータを定義する宣言型の方法です。 *トリガー*は、関数を呼び出す方法を定義します。 1 つの関数には 1 つのトリガーしか含められません。 トリガーにはデータが関連付けられていて、通常そのデータは、その関数をトリガーしたペイロードです。 
 
-[!INCLUDE [dynamic compute](../../includes/functions-bindings.md)]
+入出力*バインド*によって、コード内からデータに接続する宣言型の方法が提供されます。 トリガーと同様に、関数の構成に接続文字列やその他のプロパティを指定します。 バインドは省略可能で、関数は複数の入出力バインドを持つことができます。 
 
-トリガーとバインド全般をより深く理解するために、Azure Storage キューにドロップされた新しい項目を処理するいくつかのコードを実行する必要があるとします。 Azure Functions には、これをサポートするための Azure キュー トリガーが用意されています。 キューを監視するには次の情報が必要です。
+トリガーとバインドを使用すると、より汎用性があり、操作するサービスの詳細をハードコードしないコードを記述できます。 サービスからのデータは、単純に関数コードの入力値になります。 別のサービスにデータを出力する (Azure Table Storage での新しい行の作成など) には、メソッドの戻り値を使用します。 また、複数の値を出力する必要がある場合は、ヘルパー オブジェクトを使用します。 トリガーとバインドには **name** プロパティがあります。このプロパティは、バインドにアクセスするためにコード内で使用する識別子です。
 
-* キューが存在するストレージ アカウント。
-* キュー名。
-* キューにドロップされた新しい項目を参照するためにコードで使用する変数名。  
+トリガーとバインドは、Azure Functions ポータルの **[統合]** タブで構成できます。 この UI は内部的に、function ディレクトリ内の *function.json* という名前のファイルを変更します。 **詳細エディター**に変更すると、このファイルを編集できます。
 
-1 つのキュー トリガー バインドには、1 つの Azure 関数についての上記の情報が含まれます。 1 つのキュー トリガー バインドを含んでいる *function.json* の例を次に示します。 
+次の表に、Azure Functions でサポートされているトリガーとバインドを示します。 
 
-```json
-{
-  "bindings": [
-    {
-      "name": "myNewUserQueueItem",
-      "type": "queueTrigger",
-      "direction": "in",
-      "queueName": "queue-newusers",
-      "connection": "MY_STORAGE_ACCT_APP_SETTING"
-    }
-  ],
-  "disabled": false
-}
-```
+[!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
 
-コードでは、新しいキュー項目の処理方法に応じてさまざまなタイプの出力を送信できます。 たとえば、Azure Storage テーブルに新しいレコードを書き込む必要があるとします。  これを行うには、Azure Storage テーブルへの出力バインドを作成します。 キュー トリガーに使用できるストレージ テーブルの出力バインドを含んでいる *function.json* の例を次に示します。 
+### <a name="example-queue-trigger-and-table-output-binding"></a>例: キュー トリガーとテーブルの出力バインド
 
-```json
-{
-  "bindings": [
-    {
-      "name": "myNewUserQueueItem",
-      "type": "queueTrigger",
-      "direction": "in",
-      "queueName": "queue-newusers",
-      "connection": "MY_STORAGE_ACCT_APP_SETTING"
-    },
-    {
-      "type": "table",
-      "name": "myNewUserTableBinding",
-      "tableName": "newUserTable",
-      "connection": "MY_TABLE_STORAGE_ACCT_APP_SETTING",
-      "direction": "out"
-    }
-  ],
-  "disabled": false
-}
-```
+Azure Queue Storage に新しいメッセージが表示されるたびに、Azure Table Storage に新しい行を書き込みたいと仮定します。 このシナリオは、Azure キュー トリガーとテーブルの出力バインドを使用して実装できます。 
 
-次の C# 関数は、キューにドロップされる新しい項目に応答し、Azure Storage テーブルに新しいユーザー エントリを書き込みます。
+キュー トリガーには、**[統合]** タブ内の以下の情報が必要です。
+
+* キューのストレージ アカウント接続文字列を含むアプリ設定の名前
+* キュー名
+* `order` など、キュー メッセージの内容を読み取るためのコード内の識別子
+
+Azure Table Storage に書き込むには、以下の詳細を含む出力バインドを使用します。
+
+* テーブルのストレージ アカウント接続文字列を含む、アプリ設定の名前
+* テーブル名
+* 関数から出力項目または戻り値を作成するための、コード内の識別子
+
+バインドでは、*function.json* がサービス シークレットを含まないというベスト プラクティスを適用する、接続文字列のアプリ設定を使用します。
+
+その後、指定した識別子を使用して、コードで Azure Storage と統合します。
 
 ```cs
 #r "Newtonsoft.Json"
 
-using System;
-using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
-public static async Task Run(string myNewUserQueueItem, IAsyncCollector<Person> myNewUserTableBinding, 
-                                TraceWriter log)
+// From an incoming queue message that is a JSON object, add fields and write to Table Storage
+// The method return value creates a new row in Table Storage
+public static Person Run(JObject order, TraceWriter log)
 {
-    // In this example the queue item is a JSON string representing an order that contains the name, 
-    // address and mobile number of the new customer.
-    dynamic order = JsonConvert.DeserializeObject(myNewUserQueueItem);
-
-    await myNewUserTableBinding.AddAsync(
-        new Person() { 
-            PartitionKey = "Test", 
-            RowKey = Guid.NewGuid().ToString(), 
-            Name = order.name,
-            Address = order.address,
-            MobileNumber = order.mobileNumber }
-        );
+    return new Person() { 
+            PartitionKey = "Orders", 
+            RowKey = Guid.NewGuid().ToString(),  
+            Name = order["Name"].ToString(),
+            MobileNumber = order["MobileNumber"].ToString() };  
 }
-
+ 
 public class Person
 {
     public string PartitionKey { get; set; }
     public string RowKey { get; set; }
     public string Name { get; set; }
-    public string Address { get; set; }
     public string MobileNumber { get; set; }
 }
 ```
 
-その他のコード例とサポート対象の Azure ストレージ タイプに関するさらに具体的な情報については、「[Azure Functions における Azure Storage のトリガーとバインド](functions-bindings-storage.md)」を参照してください。
+```javascript
+// From an incoming queue message that is a JSON object, add fields and write to Table Storage
+// The second parameter to context.done is used as the value for the new row
+module.exports = function (context, order) {
+    order.PartitionKey = "Orders";
+    order.RowKey = generateRandomId(); 
 
-より高度なバインド機能を Azure Portal で使用するには、関数の **[統合]** タブにある **[詳細エディター]** オプションをクリックします。 詳細エディターを使用すると、*function.json* を Portal で直接編集できます。
+    context.done(null, order);
+};
 
-## <a name="random-guids"></a>ランダム GUID
-Azure Functions には、バインドでランダム GUID を生成するための構文が用意されています。 次のバインド構文は、Storage コンテナー内の一意の名前を持つ新しい BLOB に出力を書き込みます。 
+function generateRandomId() {
+    return Math.random().toString(36).substring(2, 15) +
+        Math.random().toString(36).substring(2, 15);
+}
+```
+
+次に、上記のコードに対応する *function.json* を示します。 関数の実装言語に関係なく、同じ構成を使用できることに注意してください。
+
+```json
+{
+  "bindings": [
+    {
+      "name": "order",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "myqueue-items",
+      "connection": "MY_STORAGE_ACCT_APP_SETTING"
+    },
+    {
+      "name": "$return",
+      "type": "table",
+      "direction": "out",
+      "tableName": "outTable",
+      "connection": "MY_TABLE_STORAGE_ACCT_APP_SETTING"
+    }
+  ]
+}
+```
+Azure ポータルで *function.json* の内容を表示して編集するには、関数の **[統合]** タブにある **[詳細エディター]** オプションをクリックします。
+
+Azure Storage との統合のコード例と詳細については、「[Azure Functions における Azure Storage のトリガーとバインド](functions-bindings-storage.md)」を参照してください。
+
+### <a name="binding-direction"></a>バインドの方向
+
+すべてのトリガーとバインドには `direction` プロパティがあります。
+
+- トリガーの場合、方向は常に `in` です
+- 入出力バインドは `in` と `out` を使用します
+- 一部のバインドは、特殊な方向の `inout` をサポートしてします。 `inout` を使用する場合、**[統合]** タブで使用できるのは**詳細エディター**のみです。
+
+## <a name="using-the-function-return-type-to-return-a-single-output"></a>単一出力を返すための関数の戻り値の型の使用
+
+前の例は、関数の戻り値を使用してバインドに出力を提供する方法を示しています。これは、特殊な名前のパラメーター `$return` を使用して実現されます。 (このパラメーターは、C#、JavaScript、F# などの、戻り値がある言語でのみサポートされています。)1 つの関数に複数の出力バインドがある場合は、1 つの出力バインドに対してのみ `$return` を使用します。 
+
+```json
+// excerpt of function.json
+{
+    "name": "$return",
+    "type": "blob",
+    "direction": "out",
+    "path": "output-container/{id}"
+}
+```
+
+以下の例は、C#、JavaScript、および F# で、戻り値の型が出力バインドでどのように使用されるかを示しています。
+
+```cs
+// C# example: use method return value for output binding
+public static string Run(WorkItem input, TraceWriter log)
+{
+    string json = string.Format("{{ \"id\": \"{0}\" }}", input.Id);
+    log.Info($"C# script processed queue message. Item={json}");
+    return json;
+}
+```
+
+```cs
+// C# example: async method, using return value for output binding
+public static Task<string> Run(WorkItem input, TraceWriter log)
+{
+    string json = string.Format("{{ \"id\": \"{0}\" }}", input.Id);
+    log.Info($"C# script processed queue message. Item={json}");
+    return json;
+}
+```
+
+```javascript
+// JavaScript: return a value in the second parameter to context.done
+module.exports = function (context, input) {
+    var json = JSON.stringify(input);
+    context.log('Node.js script processed queue message', json);
+    context.done(null, json);
+}
+```
+
+```fsharp
+// F# example: use return value for output binding
+let Run(input: WorkItem, log: TraceWriter) =
+    let json = String.Format("{{ \"id\": \"{0}\" }}", input.Id)   
+    log.Info(sprintf "F# script processed queue message '%s'" json)
+    json
+```
+
+## <a name="resolving-app-settings"></a>アプリケーション設定の解決
+ベスト プラクティスとしては、シークレットや接続文字列は、構成ファイルではなくアプリ設定を使用して管理する必要があります。 これにより、これらのシークレットへのアクセスが制限され、パブリックなソース管理レポジトリに *function.json* を安全に格納できるようにします。
+
+環境に基づいて構成を変更するときには、アプリ設定も常に役立ちます。 たとえば、テスト環境で、別のキューや Blob Storage コンテナーを監視することもできます。
+
+アプリ設定は、`%MyAppSetting%` のように値がパーセント記号で囲まれたときには常に解決されます。 トリガーやバインドの `connection` プロパティは特殊ケースであり、値はアプリ設定として自動的に解決されることに注意してください。 
+
+次の例は、アプリ設定 `%input-queue-name%` を使用してトリガーの対象となるキューを定義するキュー トリガーです。
+
+```json
+{
+  "bindings": [
+    {
+      "name": "order",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "%input-queue-name%",
+      "connection": "MY_STORAGE_ACCT_APP_SETTING"
+    }
+  ]
+}
+```
+
+## <a name="trigger-metadata-properties"></a>トリガーのメタデータ プロパティ
+
+トリガーによって提供されるデータ ペイロード (関数をトリガーしたキュー メッセージなど) に加え、多くのトリガーは追加のメタデータ値を提供します。 これらの値は、C# および F# で入力パラメーターとして使用したり、JavaScript で `context.bindings` オブジェクトのプロパティとして使用したりできます。 
+
+たとえば、キュー トリガーは以下のプロパティをサポートしています。
+
+* QueueTrigger - 有効な文字列の場合はメッセージの内容をトリガーします
+* DequeueCount
+* ExpirationTime
+* ID
+* InsertionTime
+* NextVisibleTime
+* PopReceipt
+
+各トリガーのメタデータ プロパティの詳細については、対応するリファレンス トピックを参照してください。 ドキュメントは、ポータルの **[統合]** タブの、バインド構成領域の下の **[ドキュメント]** セクションでも参照できます。  
+
+たとえば、Blob トリガーには一定の遅延があるため、キュー トリガーを使用して関数を実行できます ([Blob Storage トリガー](functions-bindings-storage-blob.md#storage-blob-trigger)に関するページを参照)。 キュー メッセージにはトリガーする対象の Blob ファイル名が含まれます。 `queueTrigger` メタデータ プロパティを使用する場合は、この動作をすべて、コードではなく構成に指定できます。
+
+```json
+  "bindings": [
+    {
+      "name": "myQueueItem",
+      "type": "queueTrigger",
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnection",
+    },
+    {
+      "name": "myInputBlob",
+      "type": "blob",
+      "path": "samples-workitems/{queueTrigger}",
+      "direction": "in",
+      "connection": "MyStorageConnection"
+    }
+  ]
+```
+
+次のセクションで説明するように、別のバインドの*バインド式*でも、トリガーのメタデータ プロパティを使用できます。
+
+## <a name="binding-expressions-and-patterns"></a>バインド式とパターン
+
+トリガーとバインドの最も強力な機能の 1 つは、*バインド式*です。 バインド内にパターン式を定義して、それを他のバインドやコードで使用することができます。 トリガーのメタデータは、前のセクションのサンプルに示したように、バインド式でも使用できます。
+
+たとえば、**[新しい関数]** ページの **Image Resizer** テンプレートのように、特定の Blob Storage コンテナー内のイメージのサイズを変更するとします。 **[新しい関数]** -> [言語] として **[C#]** -> [シナリオ]として **[サンプル]** -> **ImageResizer CSharp** の順に選択します。 
+
+*function.json* の定義は次のようになります。
+
+```json
+{
+  "bindings": [
+    {
+      "name": "image",
+      "type": "blobTrigger",
+      "path": "sample-images/{filename}",
+      "direction": "in",
+      "connection": "MyStorageConnection"
+    },
+    {
+      "name": "imageSmall",
+      "type": "blob",
+      "path": "sample-images-sm/{filename}",
+      "direction": "out",
+      "connection": "MyStorageConnection"
+    }
+  ],
+}
+```
+
+`filename` パラメーターは、Blob トリガーの定義と Blob 出力バインドの両方で使用されることに注意してください。 このパラメーターは、関数コードでも使用できます。
+
+```csharp
+// C# example of binding to {filename}
+public static void Run(Stream image, string filename, Stream imageSmall, TraceWriter log)  
+{
+    log.Info($"Blob trigger processing: {filename}");
+    // ...
+} 
+```
+
+<!--TODO: add JavaScript example -->
+<!-- Blocked by bug https://github.com/Azure/Azure-Functions/issues/248 -->
+
+
+### <a name="random-guids"></a>ランダム GUID
+Azure Functions には、`{rand-guid}` バインド式を使用してバインドに GUID を生成するための便利な構文があります。 次の例では、これを使用して一意の Blob 名を生成しています。 
 
 ```json
 {
@@ -143,248 +306,91 @@ Azure Functions には、バインドでランダム GUID を生成するため�
 }
 ```
 
+## <a name="bind-to-custom-input-properties-in-a-binding-expression"></a>バインド式でのカスタム入力プロパティへのバインド
 
-## <a name="returning-a-single-output"></a>単一の出力を返す場合
-関数コードが単一の出力を返す場合、`$return` という名前の出力バインドを使用すると、より自然な関数シグネチャをコードで保持できます。 これは、戻り値がサポートされている言語 (C#、Node.js、F#) でのみ使用できます。 バインドは、キュー トリガーに使用される次の BLOB 出力バインドと同じようになります。
+バインド式は、トリガー ペイロード自体に定義されているプロパティも参照できます。 たとえば、webhook で提供されるファイル名から Blob Storage ファイルに動的にバインドすることもできます。
+
+たとえば、次の *function.json* では、トリガー ペイロードの `BlobName` という名前のプロパティを使用しています。
 
 ```json
 {
   "bindings": [
     {
-      "type": "queueTrigger",
-      "name": "input",
+      "name": "info",
+      "type": "httpTrigger",
       "direction": "in",
-      "queueName": "test-input-node"
+      "webHookType": "genericJson",
     },
     {
+      "name": "blobContents",
       "type": "blob",
-      "name": "$return",
-      "direction": "out",
-      "path": "test-output-node/{id}"
+      "direction": "in",
+      "path": "strings/{BlobName}",
+      "connection": "AzureWebJobsStorage"
+    },
+    {
+      "name": "res",
+      "type": "http",
+      "direction": "out"
     }
   ]
 }
 ```
 
-次の C# コードは、関数シグネチャで `out` パラメーターを使用せずに、より自然に出力を返します。
+C# および F# でこれを実現するには、トリガー ペイロードで逆シリアル化されるフィールドを定義する POCO を定義する必要があります。
 
-```cs
-public static string Run(WorkItem input, TraceWriter log)
+```csharp
+using System.Net;
+
+public class BlobInfo
 {
-    string json = string.Format("{{ \"id\": \"{0}\" }}", input.Id);
-    log.Info($"C# script processed queue message. Item={json}");
-    return json;
+    public string BlobName { get; set; }
+}
+  
+public static HttpResponseMessage Run(HttpRequestMessage req, BlobInfo info, string blobContents)
+{
+    if (blobContents == null) {
+        return req.CreateResponse(HttpStatusCode.NotFound);
+    } 
+
+    return req.CreateResponse(HttpStatusCode.OK, new {
+        data = $"{blobContents}"
+    });
 }
 ```
 
-非同期の例:
-
-```cs
-public static Task<string> Run(WorkItem input, TraceWriter log)
-{
-    string json = string.Format("{{ \"id\": \"{0}\" }}", input.Id);
-    log.Info($"C# script processed queue message. Item={json}");
-    return json;
-}
-```
-
-
-これと同じアプローチを Node.js で示すと次のようになります。
+JavaScript では、JSON のシリアル化解除は自動的に実行され、プロパティを直接使用することができます。
 
 ```javascript
-module.exports = function (context, input) {
-    var json = JSON.stringify(input);
-    context.log('Node.js script processed queue message', json);
-    context.done(null, json);
-}
-```
-
-F# の例を次に示します。
-
-```fsharp
-let Run(input: WorkItem, log: TraceWriter) =
-    let json = String.Format("{{ \"id\": \"{0}\" }}", input.Id)   
-    log.Info(sprintf "F# script processed queue message '%s'" json)
-    json
-```
-
-また、単一の出力を `$return` で指定することにより、これを複数の出力パラメーターで使用できます。
-
-## <a name="resolving-app-settings"></a>アプリケーション設定の解決
-アプリケーション設定を使用して、実行時環境の一部として機密情報を保存することをお勧めします。 機密情報をアプリケーションの構成ファイルとは別に保存することで、アプリケーション ファイルの格納にパブリック リポジトリを使用した場合にこれらの情報が危険にさらされるリスクを制限します。  
-
-Azure Functions ランタイムは、`%your app setting%` のようにアプリケーション設定の名前がパーセント記号で囲まれている場合に、アプリケーション設定を値に解決します。 次の [Twilio バインド](functions-bindings-twilio.md)では、`TWILIO_ACCT_PHONE` というアプリケーション設定の名前をバインドの `from` フィールド用に使用しています。 
-
-```json
-{
-  "type": "twilioSms",
-  "name": "$return",
-  "accountSid": "TwilioAccountSid",
-  "authToken": "TwilioAuthToken",
-  "to": "{mobileNumber}",
-  "from": "%TWILIO_ACCT_PHONE%",
-  "body": "Thank you {name}, your order was received Node.js",
-  "direction": "out"
-},
-```
-
-
-
-## <a name="parameter-binding"></a>パラメーターのバインド
-出力バインド プロパティの設定を静的に構成する代わりに、トリガーの入力バインドに含まれるデータに動的にバインドされるように設定を構成できます。 新しい注文が Azure Storage キューを使用して処理されるシナリオを考えてみましょう。 それぞれの新しいキュー項目は、少なくとも次のプロパティを含んでいる JSON 文字列です。
-
-```json
-{
-  "name" : "Customer Name",
-  "address" : "Customer's Address",
-  "mobileNumber" : "Customer's mobile number in the format - +1XXXYYYZZZZ."
-}
-```
-
-注文が受信されたことを示す更新情報として、Twilio アカウントを使用して顧客に SMS テキスト メッセージを送信します。  Twilio 出力バインドの `body` および `to` フィールドを、入力に含まれていた `name` および `mobileNumber` に動的にバインドされるように構成できます。
-
-```json
-{
-  "name": "myNewOrderItem",
-  "type": "queueTrigger",
-  "direction": "in",
-  "queueName": "queue-newOrders",
-  "connection": "orders_STORAGE"
-},
-{
-  "type": "twilioSms",
-  "name": "$return",
-  "accountSid": "TwilioAccountSid",
-  "authToken": "TwilioAuthToken",
-  "to": "{mobileNumber}",
-  "from": "%TWILIO_ACCT_PHONE%",
-  "body": "Thank you {name}, your order was received",
-  "direction": "out"
-},
-```
-
-あとは、関数コードで出力パラメータを次のように初期化するだけです。 実行時に、出力プロパティが目的の入力データにバインドされます。
-
-```cs
-#r "Newtonsoft.Json"
-#r "Twilio.Api"
-
-using System;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Twilio;
-
-public static async Task<SMSMessage> Run(string myNewOrderItem, TraceWriter log)
-{
-    log.Info($"C# Queue trigger function processed: {myNewOrderItem}");
-
-    dynamic order = JsonConvert.DeserializeObject(myNewOrderItem);    
-
-    // Even if you want to use a hard coded message and number in the binding, you must at least 
-    // initialize the SMSMessage variable.
-    SMSMessage smsText = new SMSMessage();
-
-    // The following isn't needed since we use parameter binding for this
-    //string msg = "Hello " + order.name + ", thank you for your order.";
-    //smsText.Body = msg;
-    //smsText.To = order.mobileNumber;
-
-    return smsText;
-}
-```
-
-Node.js:
-
-```javascript
-module.exports = function (context, myNewOrderItem) {    
-    context.log('Node.js queue trigger function processed work item', myNewOrderItem);    
-
-    // No need to set the properties of the text, we use parameters in the binding. We do need to 
-    // initialize the object.
-    var smsText = {};    
-
-    context.done(null, smsText);
-}
-```
-
-## <a name="advanced-binding-at-runtime-imperative-binding"></a>実行時の高度なバインド (命令型のバインド)
-
-*function.json* を使用した標準的な入出力バインドのパターンは "[*宣言型*](https://en.wikipedia.org/wiki/Declarative_programming)" のバインドと呼ばれます。バインドは JSON 宣言によって定義されます。 ただし、[命令型](https://en.wikipedia.org/wiki/Imperative_programming)のバインドも使用できます。 このパターンを使用すると、サポートされている任意の数の入力バインドと出力バインドに関数コード内でバインドできます。
-関数の設計時ではなく、関数の実行時にバインド パスまたは他の入力の計算が必要になった場合に、命令型のバインドが必要になることがあります。 
-
-次のように命令型のバインドを定義します。
-
-- 必要な命令型のバインドの *function.json* にエントリを**含めないで**ください。
-- 入力パラメーター [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) または [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs) を渡します。 
-- 次の C# パターンを使用してデータ バインドを実行します。
-
-```cs
-using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
-{
-    ...
-}
-```
-
-ここで、`BindingTypeAttribute` はバインドを定義する .NET 属性、`T` はそのバインドの種類でサポートされている入力または出力の型です。 `T` も `out` パラメーター型 (`out JObject` など) にすることはできません。 たとえば、Mobile Apps テーブルの出力バインドは [6 種類の出力](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)をサポートしますが、`T` に使用できるのは [ICollector<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) または [IAsyncCollector<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) のみです。
-    
-次のコード例は、実行時に BLOB パスが定義された [Storage Blob の出力バインド](functions-bindings-storage-blob.md#storage-blob-output-binding)を作成し、この BLOB に文字列を書き込みます。
-
-```cs
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host.Bindings.Runtime;
-
-public static async Task Run(string input, Binder binder)
-{
-    using (var writer = await binder.BindAsync<TextWriter>(new BlobAttribute("samples-output/path")))
-    {
-        writer.Write("Hello World!!");
+module.exports = function (context, info) {
+    if ('BlobName' in info) {
+        context.res = {
+            body: { 'data': context.bindings.blobContents }
+        }
     }
-}
-```
-
-[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) は [Storage Blob](functions-bindings-storage-blob.md) の入力バインドまたは出力バインドを定義します。[TextWriter](https://msdn.microsoft.com/library/system.io.textwriter.aspx) はサポートされている出力バインドの種類です。
-このコードは、ストレージ アカウントの接続文字列 (`AzureWebJobsStorage`) の既定のアプリケーション設定を取得します。 [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) を追加し、属性の配列を `BindAsync<T>()` に渡すことで、使用するカスタムなアプリケーション設定を指定できます。 たとえば、次のように入力します。
-
-```cs
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host.Bindings.Runtime;
-
-public static async Task Run(string input, Binder binder)
-{
-    var attributes = new Attribute[]
-    {    
-        new BlobAttribute("samples-output/path"),
-        new StorageAccountAttribute("MyStorageAccount")
-    };
-
-    using (var writer = await binder.BindAsync<TextWriter>(attributes))
-    {
-        writer.Write("Hello World!");
+    else {
+        context.res = {
+            status: 404
+        };
     }
+    context.done();
 }
 ```
-
-以下の表に、それぞれのバインドの種類で使われる対応する .NET 属性と参照するパッケージを示します。
-
-> [!div class="mx-codeBreakAll"]
-| バインド | Attribute | 参照の追加 |
-|------|------|------|
-| DocumentDB | [`Microsoft.Azure.WebJobs.DocumentDBAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.DocumentDB"` |
-| Event Hubs | [`Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs)、[`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.Jobs.ServiceBus"` |
-| Mobile Apps | [`Microsoft.Azure.WebJobs.MobileTableAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.MobileApps"` |
-| Notification Hubs | [`Microsoft.Azure.WebJobs.NotificationHubAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.NotificationHubs"` |
-| Service Bus | [`Microsoft.Azure.WebJobs.ServiceBusAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAttribute.cs)、[`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.WebJobs.ServiceBus"` |
-| ストレージ キュー | [`Microsoft.Azure.WebJobs.QueueAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs)、[`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
-| Storage Blob | [`Microsoft.Azure.WebJobs.BlobAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs)、[`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
-| ストレージ テーブル | [`Microsoft.Azure.WebJobs.TableAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs)、[`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
-| Twilio | [`Microsoft.Azure.WebJobs.TwilioSmsAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.Twilio"` |
-
-
 
 ## <a name="next-steps"></a>次のステップ
-詳細については、次のリソースを参照してください。
+特定のバインドの詳細については、以下の記事を参照してください。
 
-* [関数のテスト](functions-test-a-function.md)
-* [関数のスケール](functions-scale.md)
-
+- [HTTP と webhook](functions-bindings-http-webhook.md)
+- [Timer](functions-bindings-timer.md)
+- [Queue storage](functions-bindings-storage-queue.md)
+- [Blob Storage](functions-bindings-storage-blob.md)
+- [Table Storage](functions-bindings-storage-table.md)
+- [イベント ハブ](functions-bindings-event-hubs.md)
+- [Service Bus](functions-bindings-service-bus.md)
+- [DocumentDB](functions-bindings-documentdb.md)
+- [SendGrid](functions-bindings-sendgrid.md)
+- [Twilio](functions-bindings-twilio.md)
+- [Notification Hubs](functions-bindings-notification-hubs.md)
+- [Mobile Apps](functions-bindings-mobile-apps.md)
+- [外部ファイル](functions-bindings-external-file.md)
 

@@ -13,24 +13,18 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/11/2017
+ms.date: 04/21/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 4133e2e90f51d141044f2ac064c60df1263b498e
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 50934bcc065b4039467d7371d4bbac11f5933888
+ms.lasthandoff: 04/25/2017
 
 
 ---
-# <a name="configure-a-vnet-to-vnet-connection-using-the-azure-portal"></a>Azure Portal を使用した VNet 間接続の構成
+# <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-the-azure-portal"></a>Azure Portal を使用した VNet 間 VPN Gateway 接続を構成する
 
-仮想ネットワークどうし (VNet 間) の接続は、VNet をオンプレミス サイトの場所に接続することと似ています。 どちらの接続タイプでも、VPN ゲートウェイを使用して、IPsec/IKE を使った安全なトンネルが確保されます。 マルチサイト接続構成と VNet 間通信を組み合わせることもできます。 そのため、クロスプレミス接続と仮想ネットワーク間接続とを組み合わせたネットワーク トポロジを確立することができます。
-
-![v2v diagram](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/v2vrmps.png)
-
-この記事では、VPN Gateway と Azure Portal を使用して Resource Manager デプロイメント モデルで VNet 間の接続を作成する手順について説明します。 Azure Portal を使用して仮想ネットワーク間を接続する場合、各 VNet は同じサブスクリプションに属していることが必要です。 各仮想ネットワークが異なるサブスクリプションに属している場合でも、[PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) を使用した手順で接続することが可能です。
-
-[!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)] 別のデプロイメント モデルを使って VNet 間接続を作成したい場合や、異なるデプロイメント モデル間で VNet 間接続を作成したい場合、または別のデプロイ ツールを使用したい場合は、次のドロップダウン リストから目的の記事を選択してください。
+この記事では、仮想ネットワーク間で VPN Gateway 接続を確立する方法について説明します。 仮想ネットワークが属しているリージョンやサブスクリプションは異なっていてもかまいません。 この記事の手順は、Resource Manager デプロイメント モデルと Azure Portal に適用されます。 また、この構成の作成には、次のリストから別のオプションを選択して、別のデプロイ ツールまたはデプロイ モデルを使用することもできます。
 
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
@@ -41,17 +35,16 @@ ms.lasthandoff: 04/12/2017
 >
 >
 
-[!INCLUDE [vpn-gateway-vnetpeeringlink](../../includes/vpn-gateway-vnetpeeringlink-include.md)]
+![v2v diagram](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/v2vrmps.png)
 
+仮想ネットワークどうし (VNet 間) の接続は、VNet をオンプレミス サイトの場所に接続することと似ています。 どちらの接続タイプでも、VPN ゲートウェイを使用して、IPsec/IKE を使った安全なトンネルが確保されます。 複数の VNet が同じリージョンに存在する場合、それらを VNet ピアリングで接続することを検討してください。 VNet ピアリングは、VPN ゲートウェイを使用しません。 詳細については、「 [VNet ピアリング](../virtual-network/virtual-network-peering-overview.md)」を参照してください。
 
-## <a name="about-vnet-to-vnet-connections"></a>VNet 間接続の概要
-仮想ネットワークどうし (VNet 間) の接続は、VNet をオンプレミス サイトの場所に接続することと似ています。 どちらの接続タイプでも、Azure VPN ゲートウェイを使用し、IPsec/IKE を使った安全なトンネルが確保されます。 接続する VNet は、リージョンやサブスクリプションが異なっていてもかまいません。 対象となる VNet がそれぞれ異なるサブスクリプションに存在する場合、ポータルで接続を作成することはできません。 [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) を使用してください。
-
-マルチサイト構成と VNet 間通信を組み合わせることもできます。 そのため、クロスプレミス接続と仮想ネットワーク間接続を組み合わせたネットワーク トポロジを確立することができます (下図参照)。
+マルチサイト構成と VNet 間通信を組み合わせることができます。 そのため、クロスプレミス接続と仮想ネットワーク間接続を組み合わせたネットワーク トポロジを確立することができます (下図参照)。
 
 ![接続について](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/aboutconnections.png "接続について")
 
 ### <a name="why-connect-virtual-networks"></a>仮想ネットワークを接続する理由
+
 仮想ネットワークを接続するのは次のような場合です。
 
 * **リージョン間の geo 冗長性および geo プレゼンス**
@@ -62,10 +55,10 @@ ms.lasthandoff: 04/12/2017
   
   * 同じリージョン内で、分離または管理要件に基づいて相互に接続された複数の仮想ネットワークを利用し、多層アプリケーションをセットアップすることができます。
 
-VNet 間接続の詳細については、この記事の最後にある「[VNet 間の考慮事項](#faq)」を参照してください。
+VNet 間接続の詳細については、この記事の最後にある「[VNet 間接続に関してよく寄せられる質問](#faq)」を参照してください。 対象となる VNet がそれぞれ異なるサブスクリプションに存在する場合、ポータルで接続を作成することはできません。 [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) を使用してください。
 
 ### <a name="values"></a>設定例
-以下の手順を練習として使用する場合は、次のサンプル構成値を使用してください。 ここでは、例として示すために VNet ごとに複数のアドレス空間を使用しますが、 VNet 間構成に複数のアドレス空間は必要ありません。
+以下の手順を練習として使用する場合は、この例の設定値を使用できます。 ここでは、例として示すために VNet ごとに複数のアドレス空間を使用しますが、 VNet 間構成に複数のアドレス空間は必要ありません。
 
 **TestVNet1 の値:**
 
@@ -187,7 +180,7 @@ TestVNet1 と TestVNet4 の仮想ネットワーク ゲートウェイの作成�
 
 ![要点](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/essentials.png "要点")
 
-## <a name="faq"></a>VNet 間の考慮事項
+## <a name="faq"></a>VNet 間接続に関してよく寄せられる質問
 VNet 間接続に関するその他の情報についてよく寄せられる質問の詳細を示します。
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]

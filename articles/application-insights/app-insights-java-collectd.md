@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 08/24/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
-ms.openlocfilehash: e085f90d3f34d32d2e065ede6674842000e29fb8
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 5a39d4ec9bbf1c7672267c7e89c957ebc49f1f3a
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.openlocfilehash: e085f90d3f34d32d2e065ede6674842000e29fb8
 ![サンプルのグラフ](./media/app-insights-java-collectd/sample.png)
 
 ## <a name="get-your-instrumentation-key"></a>インストルメンテーション キーの取得
-[Microsoft Azure ポータル](https://portal.azure.com)で、データを表示する [Application Insights](app-insights-overview.md) リソースを開きます。 (または[新しいリソースを作成](app-insights-create-new-resource.md)します。)
+[Microsoft Azure Portal](https://portal.azure.com) で、データを表示する [Application Insights](app-insights-overview.md) リソースを開きます。 (または[新しいリソースを作成](app-insights-create-new-resource.md)します。)
 
 リソースを識別する、インストルメンテーション キーのコピーを取ります。
 
@@ -124,6 +125,14 @@ Application Insights のリソースで、[メトリックス エクスプロー
 * ターミナルを開き、詳細モードで collectd を起動して報告されている問題がないか確認します。
   * `sudo collectd -f`
 
+## <a name="known-issue"></a>既知の問題
+
+Application Insights の Write プラグインは特定の Read プラグインと互換性がありません。 一部のプラグインは "NaN" を送信することがありますが、Application Insights のプラグインでは浮動小数点数が想定されています。
+
+症状: 収集されたログに、"AI: ...SyntaxError: Unexpected token N" を含むエラーが示されています。
+
+対処法: 問題のある Write プラグインによって収集されるデータを除外します。 
+
 <!--Link references-->
 
 [api]: app-insights-api-custom-events-metrics.md
@@ -134,12 +143,6 @@ Application Insights のリソースで、[メトリックス エクスプロー
 [java]: app-insights-java-get-started.md
 [javalogs]: app-insights-java-trace-logs.md
 [metrics]: app-insights-metrics-explorer.md
-[usage]: app-insights-web-track-usage.md
 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

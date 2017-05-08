@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 05/02/2017
 ms.author: spelluru
 translationtype: Human Translation
 ms.sourcegitcommit: 445dd0dcd05aa25cc531e2d10cc32ad8f32a6e8c
 ms.openlocfilehash: def038842dc3c1037d5dd11ffef6a9e2de3cf09f
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -88,9 +89,4 @@ Azure Data Factory コピー ウィザードを使用すると、通常はエン
 
 ## <a name="next-steps"></a>次のステップ
 Data Factory コピー ウィザードを使用して、コピー アクティビティを含むパイプラインを作成する簡単なチュートリアルについては、 [コピー ウィザードを使用してパイプラインを作成する方法に関するチュートリアル](data-factory-copy-data-wizard-tutorial.md)をご覧ください。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

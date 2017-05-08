@@ -1,6 +1,6 @@
 ---
-title: "テーブル ストレージと Visual Studio 接続済みサービスの概要 (ASP.NET 5) | Microsoft Docs"
-description: "Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後で、Visual Studio の ASP.NET 5 プロジェクトで Azure テーブル ストレージの使用を開始する方法について説明します。"
+title: "テーブル ストレージと Visual Studio 接続済みサービスの概要 (ASP.NET Core) | Microsoft Docs"
+description: "Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後で、Visual Studio の ASP.NET Core プロジェクトで Azure テーブル ストレージの使用を開始する方法について説明します。"
 services: storage
 documentationcenter: 
 author: TomArcher
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/02/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5067bd03961387593c37a8d3b7eeae4e1e586539
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: b64d4f7e55977c7ce144987f7600e5ddcb25596c
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: 5067bd03961387593c37a8d3b7eeae4e1e586539
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
 ## <a name="overview"></a>概要
-この記事では、Visual Studio の **[接続済みサービスの追加]** ダイアログを使用して ASP.NET 5 プロジェクトで Azure ストレージ アカウントを参照または作成した後に、Visual Studio で Azure テーブル ストレージの使用を開始する方法について説明します。
+この記事では、Visual Studio の **[接続済みサービスの追加]** ダイアログを使用して ASP.NET Core プロジェクトで Azure ストレージ アカウントを参照または作成した後に、Visual Studio で Azure テーブル ストレージの使用を開始する方法について説明します。
 
 Azure テーブル ストレージ サービスを使用すると、大量の構造化データを格納できるようになります。 このサービスは、Azure クラウドの内部および外部からの認証された呼び出しを受け付ける NoSQL データストアです。 Azure のテーブルは、構造化された非リレーショナル データを格納するのに最適です。
 
@@ -34,12 +35,12 @@ Azure Table Storage の使用に関する全般的な情報については、「
 
 最初に、ストレージ アカウント内にテーブルを作成する必要があります。 コードで Azure テーブルを作成する方法を説明します。 テーブルおよびエンティティの基本的な操作についても説明します (テーブル エンティティの追加、変更、読み取りなど)。 例は C\# のコードで記述され、Azure .NET 用ストレージ クライアント ライブラリを利用しています。
 
-**注** - ASP.NET 5 で Azure ストレージへの呼び出しを実行する API の一部は非同期です。 詳細については、 [Async および Await を使用した非同期プログラミング](http://msdn.microsoft.com/library/hh191443.aspx) に関するページを参照してください。 次のコードでは、非同期のプログラミング方法を使用していることを前提としています。
+**注** - ASP.NET Core で Azure ストレージへの呼び出しを実行する API の一部は非同期です。 詳細については、 [Async および Await を使用した非同期プログラミング](http://msdn.microsoft.com/library/hh191443.aspx) に関するページを参照してください。 次のコードでは、非同期のプログラミング方法を使用していることを前提としています。
 
 ## <a name="access-tables-in-code"></a>コードでテーブルにアクセスする
-ASP.NET 5 プロジェクト内のテーブルにアクセスするには、Azure テーブル ストレージにアクセスする C# ソース ファイルに、次の項目を含める必要があります。
+ASP.NET Core プロジェクト内のテーブルにアクセスするには、Azure テーブル ストレージにアクセスする C# ソース ファイルに、次の項目を含める必要があります。
 
-1. C# ファイル冒頭の名前空間宣言に、次の **using** ステートメントが含まれていることを確認してください。
+1. C# ファイル冒頭の名前空間宣言に、次の **using** ステートメントが含まれていることを確認します。
    
         using Microsoft.Framework.Configuration;
         using Microsoft.WindowsAzure.Storage;
@@ -184,10 +185,5 @@ Azure テーブルは、 **CreateIfNotExistsAsync()**への呼び出しを追加
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [vs-storage-dotnet-tables-next-steps](../../includes/vs-storage-dotnet-tables-next-steps.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

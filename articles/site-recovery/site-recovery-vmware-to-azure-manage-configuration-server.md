@@ -15,9 +15,9 @@ ms.workload: backup-recovery
 ms.date: 2/14/2017
 ms.author: anoopkv
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 3a02171d52b6d963a93a654d2506269e29f1be8e
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
+ms.openlocfilehash: 3b03b59fd338fa31c3248b0798463ee659e7e5ff
+ms.lasthandoff: 04/12/2017
 
 ---
 
@@ -108,7 +108,7 @@ ProxyPassword="Password"
 
 ## <a name="re-register-a-configuration-server-with-the-same-recovery-services-vault"></a>同じ Recovery Services コンテナーを使用した構成サーバーの再登録
   1. 構成サーバーにログインします。
-  2. ショートカットを使用して cspsconfigtool.exe を起動します。
+  2. デスクトップのショートカットを使用して cspsconfigtool.exe を起動します。
   3. **[Vault Registration (コンテナーの登録)]** タブをクリックします。
   4. ポータルから新しい登録ファイルをダウンロードし、これをツールへの入力として指定します。
         ![register-configuration-server](./media/site-recovery-vmware-to-azure-manage-configuration-server/register-csonfiguration-server.png)

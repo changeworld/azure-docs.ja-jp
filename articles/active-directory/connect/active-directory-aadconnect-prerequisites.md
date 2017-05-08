@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2017
+ms.date: 03/30/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 9ee7213aa30a11b13d4aa091b403b8b27fb78197
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: bb6f3a7710c52a210ea8014430285ba8917cc895
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -31,9 +31,10 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 * Azure サブスクリプションまたは [Azure 試用版](https://azure.microsoft.com/pricing/free-trial/)サブスクリプション。 このサブスクリプションは、Azure Portal へのアクセスにのみ必要です。Azure AD Connect の使用には不要です。 PowerShell または Office 365 を使用している場合は、Azure サブスクリプションがなくても Azure AD Connect を使用できます。 Office 365 ライセンスを持っている場合は、Office 365 ポータルも使用できます。 有料の Office 365 ライセンスを使用して、Office 365 ポータルから Azure Portal にアクセスすることもできます。
   * また、[Azure Portal](https://portal.azure.com) で Azure AD プレビュー機能を使用することもできます。 このポータルでは、Azure ライセンスは必要ありません。
 * [ドメインを追加して検証](../active-directory-add-domain.md) します。 たとえば、ユーザー向けに contoso.com を使用する予定の場合は、そのドメインが検証されていることと、使用しているドメインが既定のドメインである contoso.onmicrosoft.com だけではないことを確認します。
-* Azure AD テナントでは、既定では 50,000 個のオブジェクトを使用できます。 ドメインを検証すると、制限が 300,000 個のオブジェクトに増加します。 Azure AD でさらに多くのオブジェクトが必要な場合は、制限を緩和するサポート ケースを開く必要があります。 500,000 個を超えるオブジェクトが必要な場合は、Office 365、Azure AD Basic、Azure AD Premium、Enterprise Mobility Suite などのライセンスが必要です。
+* Azure AD テナントでは、既定では 50,000 個のオブジェクトを使用できます。 ドメインを検証すると、制限が 300,000 個のオブジェクトに増加します。 Azure AD でさらに多くのオブジェクトが必要な場合は、制限を緩和するサポート ケースを開く必要があります。 500,000 個を超えるオブジェクトが必要な場合は、Office 365、Azure AD Basic、Azure AD Premium、Enterprise Mobility and Security などのライセンスが必要です。
 
 ### <a name="prepare-your-on-premises-data"></a>オンプレミスのデータの準備
+* Azure AD および Office 365 に同期する前に、[IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) を使用して、ディレクトリ内の重複部分や書式の問題などのエラーを特定してください。
 * [Azure AD で有効にできるオプションの同期機能](active-directory-aadconnectsyncservice-features.md) について確認し、どの機能を有効にする必要があるかを検討してください。
 
 ### <a name="on-premises-active-directory"></a>オンプレミスの Active Directory
@@ -42,13 +43,15 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 * Azure AD で使用されるドメイン コントローラーは、書き込み可能である必要があります。 RODC (読み取り専用ドメイン コントローラー) は**使用できません**。Azure AD Connect では、書き込みのリダイレクトを行いません。
 * SLD (シングル ラベル ドメイン) を使用するオンプレミスのフォレスト/ドメインは**使用できません**。
 * "ドット形式" (名前にピリオド "." が含まれる) の NetBios 名を使用するオンプレミスのフォレスト/ドメインは**使用できません**。
+* [Active Directory のごみ箱を有効にする](active-directory-aadconnectsync-recycle-bin.md)ことをお勧めします。
 
 ### <a name="azure-ad-connect-server"></a>Azure AD Connect サーバー
 * Small Business Server または Windows Server Essentials には、Azure AD Connect をインストールできません。 サーバーは Windows Server Standard 以上を使用する必要があります。
 * Azure AD Connect サーバーには、完全な GUI がインストールされている必要があります。 サーバー コアにインストールすることは**できません**。
 * Azure AD Connect は、Windows Server 2008 以降にインストールする必要があります。 このサーバーをドメイン コントローラーにすることができます。Express 設定を使用する場合はメンバー サーバーにすることもできます。 カスタム設定を使用する場合、サーバーはスタンドアロンにすることもでき、ドメインに参加する必要はありません。
-* Azure AD Connect を Windows Server 2008 にインストールする場合は、Windows Update から最新の修正プログラムが適用されていることを確認してください。 修正プログラムが適用されていないサーバーでインストールを開始することはできません。
+* Azure AD Connect を Windows Server 2008 または Windows Server 2008 R2 にインストールする場合は、Windows Update から最新の修正プログラムが適用されていることを確認してください。 修正プログラムが適用されていないサーバーでインストールを開始することはできません。
 * **パスワード同期**機能を使用する場合、Azure AD Connect サーバーが Windows Server 2008 R2 SP1 以降にインストールされている必要があります。
+* **グループ管理サービス アカウント**を使用する場合、Azure AD Connect サーバーが Windows Server 2012 以降にインストールされている必要があります。
 * Azure AD Connect サーバーには、[.NET Framework 4.5.1](#component-prerequisites) 以降と [Microsoft PowerShell 3.0](#component-prerequisites) 以降がインストールされている必要があります。
 * Active Directory Federation Services をデプロイする場合、AD FS または Web アプリケーション プロキシがインストールされるサーバーは、Windows Server 2012 R2 以降である必要があります。 [Windows リモート管理](#windows-remote-management) を有効にする必要があります。
 * Active Directory フェデレーション サービスがデプロイされている場合は、 [SSL 証明書](#ssl-certificate-requirements)が必要です。
@@ -56,7 +59,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 * 全体管理者が MFA を有効にしている場合は、URL **https://secure.aadcdn.microsoftonline-p.com** が信頼済みサイトの一覧に追加されている必要があります。 MFA チャレンジを求められたときに、この URL がまだ追加されていない場合は、信頼済みサイトの一覧に追加するように促されます。 信頼済みサイトへの追加には、Internet Explorer を使用できます。
 
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Azure AD Connect で使用される SQL Server
-* Azure AD Connect には、ID データを格納する SQL Server データベースが必要です。 既定では、SQL Server 2012 Express LocalDB (SQL Server Express の簡易バージョン) がインストールされ、サービスのサービス アカウントがローカル コンピューターに作成されます。 SQL Server Express のサイズ制限は 10 GB で、約 100,000 オブジェクトを管理できます。 さらに多くのディレクトリ オブジェクトを管理する必要がある場合は、インストール ウィザードで別の SQL Server インストール済み環境を指定する必要があります。
+* Azure AD Connect には、ID データを格納する SQL Server データベースが必要です。 既定では、SQL Server 2012 Express LocalDB (SQL Server Express の簡易バージョン) がインストールされています。 SQL Server Express のサイズ制限は 10 GB で、約 100,000 オブジェクトを管理できます。 さらに多くのディレクトリ オブジェクトを管理する必要がある場合は、インストール ウィザードで別の SQL Server インストール済み環境を指定する必要があります。
 * 別の SQL Server を使用する場合は、次の要件が適用されます。
   * Azure AD Connect では、SQL Server 2008 (最新の Service Pack) から SQL Server 2016 まで、すべてのエディションの Microsoft SQL Server がサポートされています。 Microsoft Azure SQL Database は、データベースとして **サポートされていません** 。
   * 大文字と小文字が区別されない SQL 照合順序を使用する必要があります。 これらの照合順序は、名前に含まれる \_CI_ で識別します。 大文字と小文字が区別される照合順序 (名前に含まれる \_CS_ で識別) は**サポートされていません**。
@@ -87,7 +90,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
     </system.net>
 ```
 
-* プロキシ サーバーで認証が必要な場合は、[サービス アカウント](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts)をドメイン内に配置する必要があり、カスタマイズした設定のインストール パスを使用して、[カスタム サービス アカウント](active-directory-aadconnect-get-started-custom.md#install-required-components)を指定する必要があります。 machine.config に別の変更も必要です。 この machine.config の変更によって、インストール ウィザードと同期エンジンは、プロキシ サーバーからの認証要求に応答します。 **[構成]** ページを除くインストール ウィザードのすべてのページで、サインインしたユーザーの資格情報を使用します。 インストール ウィザードの最後の **[構成]** ページで、コンテキストが、自分で作成した[サービス アカウント](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts)に切り替わります。 machine.config のセクションは、次のようになるはずです。
+* プロキシ サーバーで認証が必要な場合は、[サービス アカウント](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account)をドメイン内に配置する必要があり、カスタマイズした設定のインストール パスを使用して、[カスタム サービス アカウント](active-directory-aadconnect-get-started-custom.md#install-required-components)を指定する必要があります。 machine.config に別の変更も必要です。 この machine.config の変更によって、インストール ウィザードと同期エンジンは、プロキシ サーバーからの認証要求に応答します。 **[構成]** ページを除くインストール ウィザードのすべてのページで、サインインしたユーザーの資格情報を使用します。 インストール ウィザードの最後の **[構成]** ページで、コンテキストが、自分で作成した[サービス アカウント](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account)に切り替わります。 machine.config のセクションは、次のようになるはずです。
 
 ```
     <system.net>

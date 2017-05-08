@@ -16,13 +16,17 @@ ms.workload: iaas-sql-server
 ms.date: 04/05/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: dbf4b04ad92d9339b15d7f247b947dd58b17daa5
-ms.lasthandoff: 04/06/2017
-
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: e7e14b0243f82c672392d5ab4bb6aca01156465b
+ms.lasthandoff: 04/26/2017
 
 ---
+
 # <a name="automated-backup-v2-for-sql-server-2016-azure-virtual-machines-resource-manager"></a>SQL Server 2016 Azure Virtual Machines の自動バックアップ v2 (Resource Manager)
+
+> [!div class="op_single_selector"]
+> * [SQL Server 2014](virtual-machines-windows-sql-automated-backup.md)
+> * [SQL Server 2016](virtual-machines-windows-sql-automated-backup-v2.md)
 
 自動バックアップ v2 では、SQL Server 2016 Standard、Enterprise、または Developer エディションを実行する Azure VM 上の既存のデータベースと新しいデータベースのすべてを対象に、[Microsoft Azure へのマネージ バックアップ](https://msdn.microsoft.com/library/dn449496.aspx)が自動的に構成されます。 これにより、永続的な Azure BLOB ストレージを利用した日常的なデータベース バックアップを構成できます。 自動バックアップ v2 は、[SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)に依存します。
 
@@ -47,10 +51,9 @@ ms.lasthandoff: 04/06/2017
 
 **データベースの構成**:
 
-- ターゲット データベースでは、完全復旧モデルを使用する必要があります。
+- ターゲット データベースでは、完全復旧モデルを使用する必要があります。 バックアップに対する完全復旧モデルの影響の詳細については、「[完全復旧モデルでのバックアップ](https://technet.microsoft.com/library/ms190217.aspx)」を参照してください。
 - システム データベースでは、完全復旧モデルを使用する必要はありません。 ただし、モデルまたは MSDB のログのバックアップの作成を必要とする場合は、完全復旧モデルを使用する必要があります。
-
-バックアップに対する完全復旧モデルの影響の詳細については、「[完全復旧モデルでのバックアップ](https://technet.microsoft.com/library/ms190217.aspx)」を参照してください。
+- ターゲット データベースは、既定の SQL Server インスタンスに存在する必要があります。 SQL Server IaaS 拡張機能は、名前付きインスタンスをサポートしていません。
 
 **Azure デプロイメント モデル**:
 
@@ -122,9 +125,11 @@ ms.lasthandoff: 04/06/2017
 > 毎日のバックアップをスケジュールする場合は、すべてのデータベースが設定された時間内に確実にバックアップされるよう、時間枠に余裕を持たせることをお勧めします。 これは、大量のデータをバックアップする場合に特に重要です。
 
 ## <a name="configuration-in-the-portal"></a>ポータルでの構成
-Azure Portal を使用して、プロビジョニング時または既存の SQL Server 2016 VM 用に自動バックアップ v2 を構成することができます。 
+
+Azure Portal を使用して、プロビジョニング時または既存の SQL Server 2016 VM 用に自動バックアップ v2 を構成することができます。
 
 ### <a name="new-vms"></a>新しい VM
+
 Resource Manager デプロイメント モデルで新しい SQL Server 2016 仮想マシンを作成するときに、Azure Portal を使用して自動バックアップ v2 を構成します。 
 
 **[SQL Server の設定]** ブレードで、**[自動バックアップ]** を選択します。 次の Azure ポータルのスクリーンショットは、 **[SQL 自動バックアップ]** ブレードを示しています。
@@ -137,6 +142,7 @@ Resource Manager デプロイメント モデルで新しい SQL Server 2016 仮
 コンテキストについては、[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)に関するトピックをご覧ください。
 
 ### <a name="existing-vms"></a>既存の VM
+
 既存の SQL Server 仮想マシンの場合は、ご使用の SQL Server 仮想マシンを選択します。 **[設定]** ブレードの **[SQL Server の構成]** セクションを選択します。
 
 ![既存の VM の SQL 自動バックアップ](./media/virtual-machines-windows-sql-automated-backup-v2/sql-server-configuration.png)
@@ -150,6 +156,7 @@ Resource Manager デプロイメント モデルで新しい SQL Server 2016 仮
 自動バックアップを初めて有効にすると、バックグラウンドで SQL Server IaaS エージェントが構成されます。 この間、自動バックアップが構成されていることは、Azure ポータルに示されない可能性があります。 エージェントがインストールされ、構成されるまで数分待ちます。 その後、Azure ポータルに新しい設定が反映されます。
 
 ## <a name="configuration-with-powershell"></a>PowerShell での構成
+
 PowerShell を使用して自動バックアップ v2 を構成できます。 開始する前に、次の操作を行う必要があります。
 
 - [最新の Azure PowerShell をダウンロードしてインストールします](http://aka.ms/webpi-azps)。
@@ -176,7 +183,7 @@ Set-AzureRmVMSqlServerExtension -VMName $vmname `
     -Version "1.2" -Location $region 
 ```
 
-### <a name="a-idverifysettings-verify-current-settings"></a><a id="verifysettings"> 現在の設定の確認
+### <a id="verifysettings"></a> 現在の設定の確認
 プロビジョニング中に自動バックアップを有効にすると、PowerShell を使って現在の構成を確認することができます。 **Get-AzureRmVMSqlServerExtension** コマンドを実行して **AutoBackupSettings** プロパティを調べます。
 
 ```powershell

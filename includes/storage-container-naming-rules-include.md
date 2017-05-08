@@ -15,8 +15,3 @@ Azure Storage のどの BLOB もコンテナーに格納する必要がありま
 > 
 > 
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

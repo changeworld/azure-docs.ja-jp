@@ -13,13 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 03/27/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 0051bbeaac458e8df07e5c7aa186fbefb526f50e
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: f02fbbfb0e8704445d9bfdaba634dbf558ceef02
+ms.lasthandoff: 04/07/2017
 
 ---
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/15/2017
 * Windows サービス コンソールを開き、**Microsoft AAD アプリケーション プロキシ コネクタ** サービスが有効で実行されていることを確認します。 次の図のように、アプリケーション プロキシ サービスのプロパティ ページで確認することもできます。  
   ![Microsoft AAD アプリケーション プロキシ コネクタのプロパティのスクリーンショット](./media/active-directory-application-proxy-troubleshoot/connectorproperties.png)
 * イベント ビューアーを開き、**[アプリケーションとサービス ログ]** > **[Microsoft]** > **[AadApplicationProxy]** > **[コネクタ]** > **[Admin]** の順に移動して、[Admin] の下にあるアプリケーション プロキシ コネクタ イベントを探します。
-* 必要に応じて、分析およびデバッグ ログを有効にし、サービス アプリケーション プロキシ コネクタのセッション ログを有効にすることで、より詳細なログを使用できます。
+* 必要に応じて、[アプリケーション プロキシ コネクタのセッション ログを有効にする](application-proxy-understand-connectors.md#under-the-hood)ことで、より詳細なログを使用できます。
 
 Azure AD のトラブルシューティング ツールについて詳しくは、「[Troubleshooting tool to validate connector networking prerequisites (コネクタのネットワークの前提条件を検証するためのトラブルシューティング ツール)](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/03/troubleshooting-tool-to-validate-connector-networking-prerequisites)」をご覧ください。
 

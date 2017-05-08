@@ -13,9 +13,9 @@ ms.workload: identity
 ms.date: 04/24/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: c8c6c105c2142dac1b3df6c26838ba8626161092
-ms.openlocfilehash: d818cd3a243fb78228706b21a002f295782189be
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: e0adbb9f7c427c08e59841a598b4f0fc99e43f26
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -44,11 +44,11 @@ ms.lasthandoff: 02/10/2017
 
 - 各証明機関には、インターネットに接続する URL から参照できる証明書失効リスト (CRL) が必要です。  
 
-- Azure Active Directory で少なくとも&1; つの証明機関が構成されている必要があります。 この手順については、「[証明機関を構成する](#step-2-configure-the-certificate-authorities)」セクションをご覧ください。  
+- Azure Active Directory で少なくとも 1 つの証明機関が構成されている必要があります。 この手順については、「[証明機関を構成する](#step-2-configure-the-certificate-authorities)」セクションをご覧ください。  
 
 - Exchange ActiveSync クライアントの場合、クライアント証明書では、サブジェクト代替名フィールドのプリンシパル名または RFC822 名の値のいずれかで、Exchange Online のユーザーのルーティング可能な電子メール アドレスが必要になります。 Azure Active Directory は、ディレクトリ内のプロキシ アドレス属性に RFC822 値をマップします。  
 
-- クライアント デバイスから、クライアント証明書を発行する証明機関の少なくとも&1; つにアクセスできる必要があります。  
+- クライアント デバイスから、クライアント証明書を発行する証明機関の少なくとも 1 つにアクセスできる必要があります。  
 
 - クライアント認証用のクライアント証明書が、クライアントに対して発行されている必要があります。  
 
@@ -99,7 +99,7 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
         IntermediateAuthority = 1 
     } 
 
-構成には、[Azure Active Directory PowerShell バージョン 2](https://docs.microsoft.com/powershell/azuread/) を使用できます。  
+構成には、[Azure Active Directory PowerShell バージョン 2](/powershell/azure/install-adv2?view=azureadps-2.0) を使用できます。  
 
 1. Windows PowerShell を管理者特権で起動します。 
 2. Azure AD モジュールをインストールします。 バージョン [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) 以降をインストールする必要があります。  
@@ -110,21 +110,21 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
 
 ### <a name="connect"></a>接続
 
-テナントとの接続を確立するには、[Connect-AzureAD](https://docs.microsoft.com/powershell/azuread/v2/connect-azuread) コマンドレットを使用します。
+テナントとの接続を確立するには、[Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) コマンドレットを使用します。
 
     Connect-AzureAD 
 
 
 ### <a name="retrieve"></a>デバイス ハンドルの 
 
-ディレクトリに定義されている信頼された証明機関を取得するには、[Get-AzureADTrustedCertificateAuthority](https://docs.microsoft.com/powershell/azuread/v2/get-azureadtrustedcertificateauthority) コマンドレットを使用します。 
+ディレクトリに定義されている信頼された証明機関を取得するには、[Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0) コマンドレットを使用します。 
 
     Get-AzureADTrustedCertificateAuthority 
  
 
 ### <a name="add"></a>Add
 
-信頼された証明機関を作成するには、[New-AzureADTrustedCertificateAuthority](https://docs.microsoft.com/powershell/azuread/v2/new-azureadtrustedcertificateauthority) コマンドレットを使用します。 
+信頼された証明機関を作成するには、[New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) コマンドレットを使用します。 
    
     $cert=Get-Content -Encoding byte "[LOCATION OF THE CER FILE]" 
     $new_ca=New-Object -TypeName Microsoft.Open.AzureAD.Model.CertificateAuthorityInformation 
@@ -135,7 +135,7 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
 
 ### <a name="remove"></a>Remove
 
-信頼された証明機関を削除するには、[Remove-AzureADTrustedCertificateAuthority](https://docs.microsoft.com/powershell/azuread/v2/remove-azureadtrustedcertificateauthority) コマンドレットを使用します。
+信頼された証明機関を削除するには、[Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) コマンドレットを使用します。
    
     $c=Get-AzureADTrustedCertificateAuthority 
     Remove-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[2] 
@@ -143,7 +143,7 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
 
 ### <a name="modfiy"></a>変更
 
-信頼された証明機関を変更するには、[Set-AzureADTrustedCertificateAuthority](https://docs.microsoft.com/powershell/azuread/v2/set-azureadtrustedcertificateauthority) コマンドレットを使用します。
+信頼された証明機関を変更するには、[Set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority?view=azureadps-2.0) コマンドレットを使用します。
 
     $c=Get-AzureADTrustedCertificateAuthority 
     $c[0].AuthorityType=1 

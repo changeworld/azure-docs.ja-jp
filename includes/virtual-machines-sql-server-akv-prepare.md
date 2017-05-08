@@ -32,8 +32,3 @@ Azure Key Vault を使用して VM の暗号化に使用する鍵を保存する
 
 Key Vault ID は後に PowerShell スクリプトの **$akvURL** パラメーターに割り当てられ、Azure Key Vault 統合を有効にします。
 
-
-
-<!--HONumber=Dec16_HO1-->
-
-

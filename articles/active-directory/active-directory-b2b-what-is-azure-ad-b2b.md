@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory B2B コラボレーション プレビューについて | Microsoft Docs"
+title: "Azure Active Directory B2B コラボレーションとは | Microsoft Docs"
 description: "Azure Active Directory B2B コラボレーションは、会社のアプリケーションにビジネス パートナーが選択的にアクセスできるようにすることで会社間のリレーションシップをサポートします。"
 services: active-directory
 documentationcenter: 
@@ -13,90 +13,97 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 03/18/2017
+ms.date: 04/12/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 4bfd76a00ba694096ef0b045b14beb757ba0809f
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: 9cd8edf47059a5f574489a604156890d157c8b1a
+ms.lasthandoff: 04/13/2017
 
 
 ---
 
-# <a name="about-the-azure-ad-b2b-collaboration-preview"></a>Azure AD B2B コラボレーション プレビューについて
-この記事では、Azure Active Directory (Azure AD) B2B コラボレーションのパブリック プレビュー更新の目標、機能、および 利点について説明します。
+# <a name="what-is-azure-ad-b2b-collaboration"></a>Azure AD B2B コラボレーションとは
 
-IT プロフェッショナルのユーザーもインフォメーション ワーカーのユーザーも、Azure AD B2B コラボレーション機能の多数の機能を利用できます。 その所在地、規模、業界、コンプライアンス要件、ガバナンス要件に関係なく、他の組織のパートナーと密接に連携することができます。 内部データの完全な制御を維持しながら、他の組織にドキュメント、リソース、アプリケーションへのアクセスを提供できます。
+<iframe width="560" height="315" src="https://www.youtube.com/embed/AhwrweCBdsc" frameborder="0" allowfullscreen></iframe>
 
-開発者の場合は、Azure AD B2B API を使用して、組織をまとめるアプリケーションを安全に作成することができます。 インフォメーション ワーカー ユーザーにとっては、プロセスとナビゲーションは単純です。
+Azure AD を利用する組織は、Azure AD B2B (Business-To-Business) コラボレーション機能を通じて、他の任意の組織のユーザーと安全に共同作業を行うことができます。相手となる組織の規模の大小や Azure AD の有無は関係がなく、実際 IT 組織の介入も特に必要ありません。 
 
-## <a name="how-b2b-collaboration-works"></a>B2B コラボレーションのしくみ
+Azure AD を使用する組織は、社内のデータに対するコントロールをすべて維持した状態で、そのパートナーに対してドキュメントやリソース、アプリケーションへのアクセスを提供することができます。 Azure AD B2B API を使えば、エンド ユーザーがシームレスかつ直感的に操作できるような形で、2 つの組織を安全につなぐアプリケーションを開発することができます。
 
-現在のプレビュー リリースでは、IT プロフェッショナルとインフォメーション ワーカーは、パートナー組織のユーザーを Azure Portal または Invitation Manager API を使用して一度に 1 人または数人追加することで、その組織との関係を確立しています。
+Microsoft のお客様の実に **97%** が、Azure AD B2B コラボレーションがきわめて重要な意味を持つと回答しています。
 
-管理者は、Azure Portal の新しいポータル エクスペリエンス (https://portal.azure.com) と PowerShell を使用して、関係を確立できます。
+![円グラフ](media/active-directory-b2b-what-is-azure-ad-b2b/97-percent-support.png)
 
-インフォメーション ワーカーは、http://myapps.microsoft.com でアクセス パネル エクスペリエンスを使用できます。
+2017 年 4 月上旬の時点で、既に 300 万ユーザーが Azure AD B2B コラボレーションの機能を利用しています。 さらにその機能は、ユーザー数が 10 人を超える Azure AD 組織の 23% 以上で既に利用されています。
 
-開発者は、Azure AD の B2B Invitation Manager API を使用して、B2B コラボレーション ユーザーの追加と招待および参加ワークフローのカスタマイズを行うアプリケーションを作成できます。
+## <a name="the-key-benefits-of-azure-ad-b2b-collaboration-to-your-organization"></a>Azure AD B2B コラボレーションが組織にもたらす主な利点
 
-通常、B2B コラボレーション ユーザーは、招待および受諾プロセスを通して追加されます。 しくみは次のとおりです。
+### <a name="work-with-any-user-from-any-partner"></a>あらゆるパートナーのユーザーと連携可能
 
-1. WoodGrove の John Doe は、Sam Oogle を、彼の Gmail アドレス (gsamoogle@gmail.com) を使用して、ユーザーとして追加したいと考えています。
+* パートナーはそれぞれ独自の資格情報を使用する
 
-2. John Doe は WoodGrove ポータル (portal.azure.com) またはアクセス パネル (myapps.microsoft.com) に移動してサインインし、WoodGrove ディレクトリ、グループ、またはアプリケーションにユーザー Sam Oogle を追加します。
+* Azure AD を使用するパートナーには負担が一切ない
 
-3. John Doe は Sam Oogle に送信するカスタムの招待メールを指定します。
+* 外部のディレクトリや複雑なセットアップが不要
 
-4. John doe が招待状を送信すると、次に示すように、ユーザー Sam Oogle が WoodGrove の Azure AD 内に作成されます。
+### <a name="simple-and-secure-collaboration"></a>単純かつ安全なコラボレーション
 
-  ![portal.azure.com の管理ユーザー インターフェイス](media/active-directory-b2b-what-is-azure-ad-b2b/user-is-added.png)
+* 完成度の高い Azure AD の強力な承認ポリシーを適用しながら会社のあらゆるアプリやデータへのアクセスを提供
 
-5. ユーザーが作成された後、Azure AD が Sam Oogle に招待メールを送信します。
+* シームレスなユーザー エクスペリエンス
 
-  ![Sam Oogle 宛の招待メール](media/active-directory-b2b-what-is-azure-ad-b2b/invitation-mail-sent-to-sam.png)
+* エンタープライズ レベルのセキュリティをアプリとデータに確保
 
-6. Sam Oogle は、招待状の **[開始]** を選択します。  
-Azure Portal が開きます。
+### <a name="no-management-overhead"></a>管理のオーバーヘッドを排除
 
-7. Sam Oogle は、Azure Portal にサインインします。
+* 外部アカウントやパスワードの管理が不要
 
-8. Azure AD は、次に示すように、Azure AD 内のユーザー オブジェクト Sam Oogle を、彼のトークンの情報を使用して更新します。
+* 同期や手動によるアカウント ライフサイクル管理が不要
 
-  ![Azure Portal でのユーザー Sam Oogle のプロファイル](media/active-directory-b2b-what-is-azure-ad-b2b/user-profile-is-populated.png)
+* 外部の管理オーバーヘッドが発生しない
 
-9. これで、ユーザー Sam Oogle は招待を受諾したため、WoodGrove リソースにアクセスすることができます。 Azure AD のその他のユーザーと同じように、ユーザー Sam Oogle は、管理者が管理できます。 ユーザーの一覧を次に示します。
+## <a name="you-can-easily-add-b2b-collaboration-users-to-your-organization"></a>B2B コラボレーションのユーザーを自社組織に簡単に追加できる
 
-  ![Azure AD ユーザーの一覧](media/active-directory-b2b-what-is-azure-ad-b2b/sam-now-user-in-azure-ad.png)
+B2B コラボレーションの (ゲスト) ユーザーは、管理者が [Azure Portal](https://portal.azure.com) から追加できます。
 
-## <a name="public-preview-features"></a>パブリック プレビュー機能
-ユーザーからのフィードバックに基づき、B2B コラボレーションのパブリック プレビュー更新は、次を含む主要な機能を提供します。
+![円グラフ](media/active-directory-b2b-what-is-azure-ad-b2b/adding-b2b-users-admin.png)
 
-* 管理者向け: [Azure Portal](https://portal.azure.com) のユーザー インターフェイスの機能が強化されました。 たとえば、管理者は、B2B ユーザーをディレクトリ、任意のグループ、またはアプリケーションに招待できます。  
+### <a name="enable-your-collaborators-to-bring-their-own-identity"></a>コラボレーターによる ID の持ち込みの実現
 
-* インフォメーション ワーカー向け: [アクセス パネル](https://myapps.microsoft.com)で、B2B コラボレーション セルフサービス招待機能を使用できます。 インフォメーション ワーカーは、各自が管理するセルフサービス グループまたはアプリケーションに B2B コラボレーション ユーザーを招待できます。
+B2B のコラボレーターは、自分が選んだ任意の ID でサインインすることができます。 Microsoft アカウントも Azure AD アカウントも持っていなければ、オファーに応じた時点でシームレスに作成されます。
 
-* 招待したユーザーに電子メール アドレスの設定を許可します。 ユーザーは、Office 365 またはオンプレミスの Microsoft Exchange のアドレス、outlook.com アドレス、またはソーシャル アドレス (Gmail、Yahoo! など) を使用して招待された組織にアクセスし、Azure AD または Microsoft アカウントを作成することができます。
+![サインイン ID の選択](media/active-directory-b2b-what-is-azure-ad-b2b/sign-in-identity-choice.png)
 
-* テナントによってブランド化されたプロフェッショナルな外観の招待メールを作成できます。
+### <a name="delegate-to-application-and-group-owners"></a>アプリケーションとグループの所有者への委任 
+アプリケーションとグループの所有者は、Microsoft のアプリケーションであるかどうかに関係なく、自分が管理する任意のアプリケーションに対して B2B ユーザーを直接追加することができます。 管理者は、非管理者ユーザーに対し、B2B ユーザーを追加する権限を委任することができます。 非管理者は、[Azure AD のアプリケーション アクセス パネル](https://myapps.microsoft.com)を使って B2B コラボレーション ユーザーをアプリケーションまたはグループに追加できます。
 
-* 招待 API を使用して、ユーザーのオリエンテーションをカスタマイズできます。
+![アクセス パネル](media/active-directory-b2b-what-is-azure-ad-b2b/access-panel.png)
 
-* B2B コラボレーション ユーザーに対する多要素認証を招待元組織内に設定できます。
+![メンバーの追加](media/active-directory-b2b-what-is-azure-ad-b2b/add-member.png)
 
-* 管理者以外のユーザーに招待を委任できます。
+### <a name="authorization-policies-protect-your-corporate-content"></a>承認ポリシーによる会社のコンテンツの保護
 
-* B2B コラボレーション用の PowerShell のサポートを提供します。
+管理者は会社のアプリとデータを保護するために、条件付きアクセス ポリシー (Multi-Factor Authentication など) をテナント レベルやアプリケーション レベルで適用できるほか、特定のユーザーに対して適用することができます。
 
-* 監査およびレポート機能を提供します。
+![メンバーの追加](media/active-directory-b2b-what-is-azure-ad-b2b/add-member.png)
 
-## <a name="help-us-shape-your-features"></a>機能に関するフィードバック送信のお願い
- 
-B2B コラボレーションを向上させる方法に関するフィードバックは絶えず受け付けています。 マイクロソフトはお客様に、ディスカッションや、ユーザー シナリオ、ベスト プラクティス、また Azure AD B2B コラボレーションに関するご意見の共有への参加を [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b) で招待しています。
- 
-また、[B2B Collaboration Ideas](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B-Ideas/idb-p/AzureAD_B2B_Ideas) サイトでも、ご意見の送信や、今後の機能への投票を行うことができます。
+### <a name="use-our-apis-and-sample-code-to-easily-build-applications-to-onboard"></a>Microsoft 提供の API とサンプル コードを使用した、ユーザー受け入れのためのアプリケーションの容易な構築
+貴社のニーズに応じて、外部のパートナーの受け入れ方法をカスタマイズすることができます。
+
+オンボーディング環境は、[Azure AD B2B 招待 API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) を使用してきめ細かくカスタマイズすることができます。たとえばセルフ サービスのサインアップ ポータルを作成することも可能です。Github に公開されているサンプル コードをご覧ください (<https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web>)。
+
+![サインアップ ポータル](media/active-directory-b2b-what-is-azure-ad-b2b/sign-up-portal.png)
+
+Azure AD B2B コラボレーションを利用すれば、Azure AD の強みをフルに活かしながら、エンド ユーザーにとって簡単かつ直感的な方法でパートナー関係を保護することができます。 Azure AD B2B を使った外部とのコラボレーションは、既に数千の企業によって使用されている実績があります。ぜひご利用ください。
 
 ## <a name="next-steps"></a>次のステップ
+
+* 管理者の操作は [Azure Portal](https://portal.azure.com) から実行できます。
+
+* インフォメーション ワーカーの操作は[アクセス パネル](https://myapps.microsoft.com)から実行できます。
+
+* また、フィードバックやご意見、ご提案があれば、[Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b) からいつでも製品チームにお寄せください。
 
 Azure AD B2B コラボレーションに関する他の記事を参照してください。
 

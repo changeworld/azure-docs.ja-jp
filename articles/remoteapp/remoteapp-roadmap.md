@@ -11,7 +11,7 @@ ms.workload: compute
 ms.tgt_pltfrm: NA
 ms.devlang: NA
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 04/26/2017
 ms.author: mbaldwin
 translationtype: Human Translation
 ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68

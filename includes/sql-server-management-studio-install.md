@@ -5,8 +5,3 @@
 
   ![SQL Server Management Studio](./media/sql-server-management-studio-install/ssms.png)
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

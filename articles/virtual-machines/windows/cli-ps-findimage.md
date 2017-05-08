@@ -16,9 +16,9 @@ ms.workload: infrastructure
 ms.date: 08/23/2016
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: b36fb2b94dcee94eb299221bbb5c82080d23bfb1
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 28bb214570fcca94c5ceb6071c4851b81ec00c8d
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -41,7 +41,7 @@ ms.lasthandoff: 03/31/2017
 
 ## <a name="find-azure-images-with-powershell"></a>PowerShell を使った Azure イメージの検索
 > [!NOTE]
-> [最新の Azure PowerShell](/powershell/azureps-cmdlets-docs)をインストールして構成します。 バージョン 1.0 より前の Azure PowerShell を使用する場合でも以下のコマンドを使用できますが、初めに `Switch-AzureMode AzureResourceManager`を実行する必要があります。 
+> [最新の Azure PowerShell](/powershell/azure/overview)をインストールして構成します。 バージョン 1.0 より前の Azure PowerShell を使用する場合でも以下のコマンドを使用できますが、初めに `Switch-AzureMode AzureResourceManager`を実行する必要があります。 
 > 
 > 
 
@@ -134,3 +134,4 @@ Windows-Server-Technical-Preview
 
 ## <a name="next-steps"></a>次のステップ
 これで、使用するイメージを正確に選択できます。 検出したイメージ情報を使用して仮想マシンをすばやく作成する方法や、そのイメージ情報のあるテンプレートを使用する方法については、「[Resource Manager と PowerShell を使用して Windows VM を作成する](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
+

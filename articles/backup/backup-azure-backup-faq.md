@@ -1,4 +1,4 @@
-﻿
+
 ---
 title: "Azure Backup の FAQ | Microsoft Docs"
 description: "一般的な質問への回答: サービスの動作、Azure Backup エージェント、Recovery Services コンテナー、バックアップとリテンション期間の制限。"
@@ -17,9 +17,9 @@ ms.topic: get-started-article
 ms.date: 3/10/2017
 ms.author: markgal;giridham;arunak;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 87d500d886feb2dbd61d15d5a980ab2c4018c2f2
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: aabd0481e6dd264e9a5e91c2e4b2b83f01227db1
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -56,7 +56,7 @@ ms.lasthandoff: 04/03/2017
 残念ながら、Backup コンテナーの内容を Recovery Services コンテナーに移行することはできません。 この機能の追加に取り組んでいますが、現在は使用できません。
 
 ### <a name="do-recovery-services-vaults-support-classic-vms-or-resource-manager-based-vms-br"></a>Recovery Services コンテナーでサポートされるのはクラシック VM と Resource Manager ベースの VM のどちらですか。 <br/>
-Recovery Services コンテナーでは両方のモデルがサポートされています。 (クラシック ポータルで作成された) クラシック VM または (Azure Portal で作成された) Resource Manager VM を、Recovery Services コンテナーにバックアップできます。
+Recovery Services コンテナーでは両方のモデルがサポートされています。  (クラシック ポータルで作成された) クラシック VM または (Azure Portal で作成された) Resource Manager VM を、Recovery Services コンテナーにバックアップできます。
 
 ### <a name="i-backed-up-my-classic-vms-in-a-backup-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>クラシック VM をバックアップ コンテナーにバックアップしてあります。 クラシック モードから Resource Manager モードに VM を移行して、Recovery Services コンテナーで保護することはできますか。
 バックアップ コンテナーのクラシック VM の回復ポイントは、VM をクラシックから Resource Manager モードに移行しても、Recovery Services コンテナーに自動的に移行されません。 VM バックアップを移行するには、次の手順に従います。
@@ -181,7 +181,7 @@ Azure VM のバックアップ ジョブを取り消した場合、転送済み�
 はい、Backup サービスには、PowerShell スクリプトで使用できるイベント ベースのアラートがいくつかあります。 詳細については、[通知の構成](backup-azure-monitor-vms.md#configure-notifications)に関するページをご覧ください。
 
 ### <a name="are-there-limits-on-when-or-how-many-times-a-backup-job-can-be-scheduledbr"></a>バックアップ ジョブをスケジュール設定できる時刻や回数に制限はありますか。<br/>
-はい。 Windows Server または Windows ワークステーションでは、1 日に最大 3 回バックアップ ジョブを実行できます。 System Center DPM では、1 日に最大 2 回バックアップ ジョブを実行できます。 IaaS VM では、1 日に 1 回バックアップ ジョブを実行できます。 Windows Server または Windows ワークステーションのスケジューリング ポリシーを使用して毎日または毎週のスケジュールを指定することができます。 System Center DPM を使用した場合、スケジュールには毎日、毎週、毎月、毎年を指定できます。
+はい。 Windows Server または Windows ワークステーションでは、1 日に最大&3; 回バックアップ ジョブを実行できます。 System Center DPM では、1 日に最大&2; 回バックアップ ジョブを実行できます。 IaaS VM では、1 日に&1; 回バックアップ ジョブを実行できます。 Windows Server または Windows ワークステーションのスケジューリング ポリシーを使用して毎日または毎週のスケジュールを指定することができます。 System Center DPM を使用した場合、スケジュールには毎日、毎週、毎月、毎年を指定できます。
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-i-backed-upbr"></a>Recovery Services コンテナーに転送されたデータのサイズが、バックアップしたデータよりも小さいのはなぜでしょうか。<br/>
  Azure Backup エージェント、SCDPM、または Azure Backup Server からバックアップしたすべてのデータは、圧縮および暗号化されてから転送されます。 圧縮と暗号化が適用されると、バックアップ コンテナー内のデータは 30 ～ 40% 小さくなります。
@@ -205,6 +205,7 @@ Azure Backup では、ファイルとフォルダーのほか、Azure Backup Ser
 | Windows Server 2016 |64 ビット |Standard、Datacenter、Essentials |
 | Windows Server 2012 R2 と最新 SP |64 ビット |Standard、Datacenter、Foundation |
 | Windows Server 2012 と最新 SP |64 ビット |Datacenter、Foundation、Standard |
+| Windows Storage Server 2016 と最新 SP |64 ビット |Standard、Workgroup | 
 | Windows Storage Server 2012 R2 と最新 SP |64 ビット |Standard、Workgroup |
 | Windows Storage Server 2012 と最新 SP |64 ビット |Standard、Workgroup |
 | Windows Server 2012 R2 と最新 SP |64 ビット |Essential |

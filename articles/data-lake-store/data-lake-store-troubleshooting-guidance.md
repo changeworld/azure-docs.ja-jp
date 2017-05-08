@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Data Lake Store に関してよく寄せられる質問 | Microsoft Docs"
 description: "Azure Data Lake Store に関する問題のトラブルシューティングまたは問題を軽減する方法に関するガイダンス"
 services: data-lake-store

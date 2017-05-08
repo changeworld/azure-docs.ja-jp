@@ -14,8 +14,3 @@
 4. 接続が作成されたら、ロジック アプリで他の手順を自由に実行できるようになります。  
    ![](./media/connectors-create-api-yammer/yammer-4.png)   
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

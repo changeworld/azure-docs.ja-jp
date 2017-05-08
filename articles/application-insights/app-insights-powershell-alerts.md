@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 80e2ac4235492d727e2034f37f9a85eb2873625c
-ms.openlocfilehash: f479ae38e446c3404592901c416990ab6e39126b
-ms.lasthandoff: 02/04/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 298e0218c51385caa2de6a684ac40503fc07f5fa
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -39,7 +39,7 @@ ms.lasthandoff: 02/04/2017
 * このインストーラーを使用して Microsoft Azure PowerShell をインストールする。
 
 ## <a name="connect-to-azure"></a>Connect to Azure
-Azure PowerShell を起動して、 [サブスクリプションに接続](/powershell/azureps-cmdlets-docs)します。
+Azure PowerShell を起動して、 [サブスクリプションに接続](/powershell/azure/overview)します。
 
 ```PowerShell
 
@@ -108,14 +108,14 @@ GUID は、サブスクリプション ID です (アプリケーションのイ
 | `clientPerformance.sendRequest.value` |要求送信時間 |ブラウザーが要求を送信するのに要する時間。 |
 | `clientPerformance.total.value` |ブラウザーのページ読み込み時間 |ユーザーが要求を出してから DOM、スタイル シート、スクリプト、およびイメージが読み込まれるまでの時間。 |
 | `performanceCounter.available_bytes.value` |使用可能なメモリ |プロセスまたはシステムの用途で、すぐに利用できる物理メモリ。 |
-| `performanceCounter.io_data_bytes_per_sec.value` |IO 処理速度 |ファイル、ネットワーク、およびデバイスに対する読み書きで&1; 秒あたりに処理される合計バイト数。 |
+| `performanceCounter.io_data_bytes_per_sec.value` |IO 処理速度 |ファイル、ネットワーク、およびデバイスに対する読み書きで 1 秒あたりに処理される合計バイト数。 |
 | `performanceCounter.number_of_exceps_thrown_per_sec.value` |例外レート |1 秒あたりにスローされる例外。 |
 | `performanceCounter.percentage_processor_time.value` |プロセス CPU |アプリケーション プロセスの実行命令に対してプロセッサが使用するすべてのプロセス スレッドの経過時間の割合。 |
 | `performanceCounter.percentage_processor_total.value` |プロセッサ時間 |プロセッサが非アイドル スレッドで費やす時間の割合。 |
 | `performanceCounter.process_private_bytes.value` |プロセスのプライベート バイト |監視対象のアプリケーション プロセスに対して専用に割り当てられるメモリ。 |
 | `performanceCounter.request_execution_time.value` |ASP.NET 要求の実行時間 |最新の要求の実行時間。 |
 | `performanceCounter.requests_in_application_queue.value` |実行キュー内の ASP.NET 要求 |アプリケーション要求キューの長さ。 |
-| `performanceCounter.requests_per_sec.value` |ASP.NET 要求レート |ASP.NET からの&1; 秒あたりのアプリケーションへのすべての要求のレート。 |
+| `performanceCounter.requests_per_sec.value` |ASP.NET 要求レート |ASP.NET からの 1 秒あたりのアプリケーションへのすべての要求のレート。 |
 | `remoteDependencyFailed.durationMetric.count` |依存関係の障害 |サーバー アプリケーションによる外部リソースの呼び出しが失敗した回数。 |
 | `request.duration` |サーバーの応答時間 |HTTP 要求を受信してから、応答の送信を終了するまでの時間。 |
 | `request.rate` |要求レート |1 秒あたりのアプリケーションに出されるすべての要求のレート。 |

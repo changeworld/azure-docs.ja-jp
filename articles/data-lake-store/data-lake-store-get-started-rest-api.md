@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/03/2017
+ms.date: 04/21/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 650ff05715c8c0d915c82f9de49756530b8f3138
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: de04bf367f9f9f92756202cf6c1571f811a0f1f7
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -55,7 +55,7 @@ Azure Active Directory を使用した認証方法には 2 つあります。
 
 1. アプリケーションでユーザーを次の URL にリダイレクトします。
    
-        https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<CLIENT-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
+        https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
    
    > [!NOTE]
    > \<REDIRECT-URI> は、URL で使用できるようにエンコードする必要があります。 そのため、https://localhost の場合、`https%3A%2F%2Flocalhost` を使用します。
@@ -71,7 +71,7 @@ Azure Active Directory を使用した認証方法には 2 つあります。
         -F redirect_uri=<REDIRECT-URI> \
         -F grant_type=authorization_code \
         -F resource=https://management.core.windows.net/ \
-        -F client_id=<CLIENT-ID> \
+        -F client_id=<APPLICATION-ID> \
         -F code=<AUTHORIZATION-CODE>
    
    > [!NOTE]
@@ -86,7 +86,7 @@ Azure Active Directory を使用した認証方法には 2 つあります。
         curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
              -F grant_type=refresh_token \
              -F resource=https://management.core.windows.net/ \
-             -F client_id=<CLIENT-ID> \
+             -F client_id=<APPLICATION-ID> \
              -F refresh_token=<REFRESH-TOKEN>
 
 対話型ユーザー認証の詳細については、 [承認コード付与フロー](https://msdn.microsoft.com/library/azure/dn645542.aspx)に関するページを参照してください。
@@ -128,7 +128,7 @@ Azure Active Directory を使用した認証方法には 2 つあります。
 
 次の cURL コマンドを使用します。 **\<yourstorename>** を実際の Data Lake Store 名に置き換えます。
 
-    curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/?op=MKDIRS
+    curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/?op=MKDIRS'
 
 上記のコマンドで、\<`REDACTED`\> を以前に取得した承認トークンに置き換えます。 このコマンドを実行すると、Data Lake Store アカウントのルート フォルダーの下に **mytempdir** という名前のディレクトリが作成されます。
 
@@ -141,7 +141,7 @@ Azure Active Directory を使用した認証方法には 2 つあります。
 
 次の cURL コマンドを使用します。 **\<yourstorename>** を実際の Data Lake Store 名に置き換えます。
 
-    curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/?op=LISTSTATUS
+    curl -i -X GET -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/?op=LISTSTATUS'
 
 上記のコマンドで、\<`REDACTED`\> を以前に取得した承認トークンに置き換えます。
 
@@ -167,33 +167,24 @@ Azure Active Directory を使用した認証方法には 2 つあります。
 ## <a name="upload-data-into-a-data-lake-store-account"></a>Data Lake Store アカウントにデータをアップロードする
 この操作は、 [ここ](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Create_and_Write_to_a_File)で定義されている WebHDFS REST API 呼び出しをベースにしています。
 
-WebHDFS REST API を使用したデータのアップロードは、次に説明するように 2 段階のプロセスとなります。
+次の cURL コマンドを使用します。 **\<yourstorename>** を実際の Data Lake Store 名に置き換えます。
 
-1. アップロードするファイル データを送信することなく、HTTP PUT 要求を送信します。 次のコマンドで、**\<yourstorename>** を実際の Data Lake Store 名に置き換えます。
+    curl -i -X PUT -L -T 'C:\temp\list.txt' -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/list.txt?op=CREATE'
+
+上記の構文の **-T** パラメーターは、ファイルのアップロード先となる場所です。
+
+次のように出力されます。
    
-        curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/?op=CREATE
-   
-    このコマンドの出力には、次に示すように、一時的なリダイレクト URL が含まれます。
-   
-        HTTP/1.1 100 Continue
-   
-        HTTP/1.1 307 Temporary Redirect
-        ...
-        ...
-        Location: https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/somerandomfile.txt?op=CREATE&write=true
-        ...
-        ...
-2. 次に、応答内の **Location** プロパティに関して一覧表示された URL に対して別の HTTP PUT 要求を送信する必要があります。 **\<yourstorename>** を実際の Data Lake Store 名に置き換えます。
-   
-        curl -i -X PUT -T myinputfile.txt -H "Authorization: Bearer <REDACTED>" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=CREATE&write=true
-   
-    出力は次のようになります。
-   
-        HTTP/1.1 100 Continue
-   
-        HTTP/1.1 201 Created
-        ...
-        ...
+    HTTP/1.1 307 Temporary Redirect
+    ...
+    Location: https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/list.txt?op=CREATE&write=true
+    ...
+    Content-Length: 0
+
+    HTTP/1.1 100 Continue
+
+    HTTP/1.1 201 Created
+    ...
 
 ## <a name="read-data-from-a-data-lake-store-account"></a>Data Lake Store アカウントからデータを読み取る
 この操作は、 [ここ](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Open_and_Read_a_File)で定義されている WebHDFS REST API 呼び出しをベースにしています。
@@ -205,7 +196,7 @@ Data Lake Store アカウントからのデータの読み取りは、2 段階�
 
 ただし、1 番目の手順と 2 番目の手順の間に入力パラメーターの違いはないため、 `-L` パラメーターを使用して最初の要求を送信できます。 `-L` オプションは、基本的に 2 つの要求を 1 つの要求に結合し、新しい場所で cURL により要求をやり直します。 最後に、次のように、すべての要求呼び出しの出力が表示されます。 **\<yourstorename>** を実際の Data Lake Store 名に置き換えます。
 
-    curl -i -L GET -H "Authorization: Bearer <REDACTED>" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN
+    curl -i -L GET -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN'
 
 次のような出力が表示されます。
 
@@ -224,7 +215,7 @@ Data Lake Store アカウントからのデータの読み取りは、2 段階�
 
 ファイルの名前を変更するには、次の cURL コマンドを使用します。 **\<yourstorename>** を実際の Data Lake Store 名に置き換えます。
 
-    curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=RENAME&destination=/mytempdir/myinputfile1.txt
+    curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=RENAME&destination=/mytempdir/myinputfile1.txt'
 
 次のような出力が表示されます。
 
@@ -238,7 +229,7 @@ Data Lake Store アカウントからのデータの読み取りは、2 段階�
 
 次の cURL コマンドを使用して、ファイルを削除します。 **\<yourstorename>** を実際の Data Lake Store 名に置き換えます。
 
-    curl -i -X DELETE -H "Authorization: Bearer <REDACTED>" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile1.txt?op=DELETE
+    curl -i -X DELETE -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile1.txt?op=DELETE'
 
 出力は次のように表示されます。
 

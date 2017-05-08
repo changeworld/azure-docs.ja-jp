@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 04/21/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: df4340ce5185405334f08f6098590f84b067dafd
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: 2e7c1ddedaa11fb614f2e8cf6d1644ae2a2beae3
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -86,7 +86,7 @@ Azure 多要素認証プロバイダーを介して MFA 管理ポータルにア
 3. 電話を切ります。
 
 ### <a name="view-fraud-reports"></a>不正アクセスの通報を表示する
-1. [Azure クラシック ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 2. 左側で、[Active Directory] を選択します。
 3. 上部にある **[多要素認証プロバイダー]** を選択します。 Multi-Factor Authentication プロバイダーの一覧が表示されます。
 4. 多要素認証プロバイダーを選択し、ページ下部にある **[管理]** をクリックします。 Azure Multi-Factor Authentication 管理ポータルが開きます。
@@ -98,7 +98,7 @@ Azure 多要素認証プロバイダーを介して MFA 管理ポータルにア
 ワンタイム バイパスは、2 段階認証の実行なしでユーザーを 1 回だけ認証できるようにします。 このバイパスは一時的なものであり、指定された秒数が経過すると無効になります。 モバイル アプリまたは電話で通知または通話に対応しない状況でも、ワンタイム バイパスを有効にすることで、ユーザーは目的のリソースにアクセスできるようになります。
 
 ### <a name="create-a-one-time-bypass"></a>ワンタイム バイパスを作成する
-1. [Azure クラシック ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 2. このページの上部にある指示に従って、MFA 管理ポータルに移動します。
 3. Azure Multi-Factor Authentication 管理ポータルで、左側にテナントまたは Azure MFA プロバイダーの名前と **+** 記号が表示されている場合は、**+** 記号をクリックすると、別の MFA Server レプリケーション グループと Azure の既定のグループが表示されます。 適切なグループを選択します。
 4. [ユーザー管理] で **[ワンタイム バイパス]** をクリックします。
@@ -110,7 +110,7 @@ Azure 多要素認証プロバイダーを介して MFA 管理ポータルにア
 7. 制限時間はすぐに有効になるため、ユーザーはワンタイム バイパスの有効期限が切れる前にサインインする必要があります。 
 
 ### <a name="view-the-one-time-bypass-report"></a>ワンタイム バイパス レポートを表示する
-1. [Azure クラシック ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 2. 左側で、[Active Directory] を選択します。
 3. 上部にある **[多要素認証プロバイダー]** を選択します。 Multi-Factor Authentication プロバイダーの一覧が表示されます。
 4. 多要素認証プロバイダーを選択し、ページ下部にある **[管理]** をクリックします。 Azure Multi-Factor Authentication 管理ポータルが開きます。
@@ -134,7 +134,7 @@ Azure 多要素認証プロバイダーを介して MFA 管理ポータルにア
 カスタム メッセージをアップロードするには:
 
 1. サポートされているファイル形式のいずれかを使用してカスタム音声メッセージを作成します。
-2. [Azure クラシック ポータル](https://portal.azure.com/)にサインインします。
+2. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 3. このページの上部にある指示に従って、MFA 管理ポータルに移動します。
 4. Azure Multi-Factor Authentication 管理ポータルで、[構成] セクションの **[音声メッセージ]** をクリックします。
 5. [Configure: Voice Messages page (構成: 音声メッセージ)] ページで、**[New Voice Message (新しい音声メッセージ)]** をクリックします。
@@ -164,7 +164,7 @@ Azure 多要素認証プロバイダーを介して MFA 管理ポータルにア
 キャッシュは Azure AD へのサインインに使用するためのものではありません。
 
 ### <a name="set-up-caching"></a>キャッシュを設定する 
-1. [Azure クラシック ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 2. このページの上部にある指示に従って、MFA 管理ポータルに移動します。
 3. Azure Multi-Factor Authentication 管理ポータルで、[構成] セクションの **[キャッシュ]** をクリックします。
 4. [キャッシュの構成] ページで **[新しいキャッシュ]** をクリックします。
@@ -193,7 +193,7 @@ Azure 多要素認証プロバイダーを介して MFA 管理ポータルにア
 [信頼できる IP] が有効であっても無効であっても、ブラウザー フローでは 2 段階認証が必要であり、以前のリッチ クライアント アプリではアプリ パスワードが必要です。 
 
 ### <a name="to-enable-trusted-ips"></a>信頼できる IP アドレスを有効にするには
-1. [Azure クラシック ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 2. この記事の始めにある指示に従って [MFA サービス設定] ページに移動します。
 3. [サービス設定] ページの [信頼できる IP] には、次の 2 つのオプションがあります。
    
@@ -255,7 +255,7 @@ Azure AD は、オンプレミスの Windows Server Active Directory Domain Serv
 ### <a name="allow-app-password-creation"></a>アプリ パスワードを作成できるようにする
 既定では、ユーザーはアプリ パスワードを作成できません。 この機能を有効にする必要があります。 ユーザーがアプリ パスワードを作成できるようにするには、次の手順を使用します。
 
-1. [Azure クラシック ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 2. この記事の始めにある指示に従って [MFA サービス設定] ページに移動します。
 3. **[ブラウザーではないアプリケーションへのサインイン用にアプリケーション パスワードの作成を許可する]** の横のラジオ ボタンをオンにします。
 
@@ -283,7 +283,7 @@ Multi-Factor Authentication の記憶機能は、ブラウザーでユーザー�
 >Azure MFA サーバーまたはサードパーティの MFA ソリューションを介して AD FS の 2 段階認証を行うとき、Multi-Factor Authentication の記憶機能は、AD FS の "サインインしたままにする" 機能とは互換性がありません。 ユーザーが AD FS の "サインインしたままにする" を選択したうえでさらに、MFA に対して信頼済みデバイスとして指定した場合、"MFA の記憶" 日数が過ぎると本人確認ができなくなります。 Azure AD からは新たに 2 段階認証を行うよう要求されますが、AD FS からは、2 段階認証を再実行するように求められるのではなく、元の MFA クレームと日付を含んだトークンが返されます。 その結果、Azure AD と AD FS との間で本人確認がループ状態に陥ります。 
 
 ### <a name="enable-remember-multi-factor-authentication"></a>Multi-Factor Authentication の記憶を有効にする
-1. [Azure クラシック ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 2. この記事の始めにある指示に従って [MFA サービス設定] ページに移動します。
 3. [サービス設定] ページの [ユーザーのデバイス設定の管理] で、**[信頼済みデバイスでユーザーが多要素認証を記憶できるようにする]** をオンにします。
    ![デバイスの記憶](./media/multi-factor-authentication-whats-next/remember.png)
@@ -310,7 +310,7 @@ Multi-Factor Authentication の記憶機能は、ブラウザーでユーザー�
 | モバイル アプリからの確認コード |Microsoft Authenticator アプリは、30 秒ごとに新しい OATH 確認コードを生成します。 ユーザーは、この確認コードをサインイン インターフェイスに入力します。<br>Microsoft Authenticator アプリは、[Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)、[Android](http://go.microsoft.com/fwlink/?Linkid=825072)、[IOS](http://go.microsoft.com/fwlink/?Linkid=825073) で利用できます。 |
 
 ### <a name="how-to-enabledisable-authentication-methods"></a>認証方法を有効または無効にする方法
-1. [Azure クラシック ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 2. この記事の始めにある指示に従って [MFA サービス設定] ページに移動します。
 3. [サービスの設定] ページの検証オプションで、使用するオプションをオンまたはオフにします。
    ![検証オプション](./media/multi-factor-authentication-whats-next/authmethods.png)

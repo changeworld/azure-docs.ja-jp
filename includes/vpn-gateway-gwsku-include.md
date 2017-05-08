@@ -15,8 +15,3 @@ SKU の選択にあたっては、以下の事項を考慮してください。
 * ExpressRoute と VPN Gateway が共存する構成は、Basic SKU ではサポートされていません。
 * アクティブ/アクティブ S2S VPN ゲートウェイ接続は、HighPerformance SKU のみで構成できます。
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-

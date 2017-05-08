@@ -1,6 +1,6 @@
 ---
-title: "Azure Service Fabric の災害復旧 | Microsoft Docs"
-description: "Azure Service Fabric では、あらゆる種類の障害に対処するために必要な機能が提供されています。 この記事では、発生する可能性がある災害の種類とそれらに対処する方法について説明します。"
+title: "Azure Service Fabric のディザスター リカバリー | Microsoft Docs"
+description: "Azure Service Fabric では、あらゆる種類の災害に対処するために必要な機能が提供されています。 この記事では、発生する可能性がある災害の種類とそれらに対処する方法について説明します。"
 services: service-fabric
 documentationcenter: .net
 author: seanmck
@@ -21,7 +21,7 @@ ms.lasthandoff: 12/14/2016
 
 
 ---
-# <a name="disaster-recovery-in-azure-service-fabric"></a>Azure Service Fabric での災害復旧
+# <a name="disaster-recovery-in-azure-service-fabric"></a>Azure Service Fabric での障害復旧
 高可用性クラウド アプリケーションの提供において重要な部分は、管理者がどうすることもできないものも含めて、あらゆる種類の障害を切り抜けられるようにすることです。 この記事では、潜在的障害のコンテキストでの Azure Service Fabric クラスターの物理レイアウト、およびダウンタイムやデータ損失のリスクを制限または排除するためにそのような障害に対処する方法のガイダンスについて説明します。
 
 ## <a name="physical-layout-of-service-fabric-clusters-in-azure"></a>Azure での Service Fabric クラスターの物理的レイアウト
@@ -37,11 +37,11 @@ Azure で Service Fabric クラスターを作成するときは、クラスタ�
 ![Service Fabric Explorer での障害ドメインに分散されたノードの表示][sfx-cluster-map]
 
 > [!NOTE]
-> クラスター マップのもう 1 つの軸には、アップグレード ドメインが表示されます。これは、計画的なメンテナンス アクティビティに基づいてノードを論理的にグループ化するものです。 Azure の Service Fabric クラスターは常に、5 つのアップグレード ドメインにレイアウトされます。
+> クラスター マップにもう 1 つの軸には、アップグレード ドメインが表示されます。これは、計画的なメンテナンス アクティビティに基づいてノードを論理的にグループ化するものです。 Azure の Service Fabric クラスターは常に、5 つのアップグレード ドメインにレイアウトされます。
 > 
 > 
 
-### <a name="geographic-distribution"></a>地理分散
+### <a name="geographic-distribution"></a>地理的な分散
 現在、[世界中に 30 の Azure リージョン][azure-regions]があり、さらに追加のリージョンが発表されています。 個々のリージョンは、さまざまな要因の中でも特に需要と適切な場所の可用性に応じて、1 つまたは複数の物理的データ センターを持つことができます。 ただし、複数の物理データ センターを持つリージョンであっても、クラスターの VM がこれらの物理的な場所に均等に分散されるという保証はありません。 実際、現時点では、特定のクラスターのすべての VM は 1 つの物理サイトにプロビジョニングされます。
 
 ## <a name="dealing-with-failures"></a>障害への対処
@@ -68,7 +68,7 @@ Azure で Service Fabric クラスターを作成するときは、クラスタ�
 #### <a name="minimizing-the-risk-of-quorum-loss"></a>クォーラム損失のリスクを最小限に抑える
 サービスのターゲット レプリカ セットのサイズを大きくすることで、クォーラム損失のリスクを最小限に抑えることができます。 他のノードは書き込みに使用できるものとして、同時にいくつのノードが使用できなくなっても許容できるかという観点から、必要なレプリカの数を考えることをお勧めします。アプリケーションまたはクラスターのアップグレードを行うと、ハードウェア障害に加えて、ノードが一時的に使用できなくなることに注意してください。
 
-運用サービスに推奨されるレプリカの最小数である MinReplicaSetSize を 3 にしてサービスが構成されているものとして、次の例を検討してください。 TargetReplicaSetSize が 3 では (プライマリが 1、セカンダリが2)、アップグレードの間にハードウェア障害が発生すると (2 つのレプリカがダウン)、クォーラム損失状態になり、サービスは読み取り専用になります。 レプリカを 5 つにすると、アップグレードの間に 2 つのレプリカで障害が発生しても (3 つのレプリカがダウン)、残りの 2 つのレプリカが最小のレプリカ セット内のクォーラムを形成するので耐えられます。
+運用サービスに推奨されるレプリカの最小数である MinReplicaSetSize を 3 にしてサービスが構成されているものとして、次の例を検討してください。 TargetReplicaSetSize が 3 では (プライマリが 1、セカンダリが 2)、アップグレードの間にハードウェア障害が発生すると (2 つのレプリカがダウン)、クォーラム損失状態になり、サービスは読み取り専用になります。 レプリカを 5 つにすると、アップグレードの間に 2 つのレプリカで障害が発生しても (3 つのレプリカがダウン)、残りの 2 つのレプリカが最小のレプリカ セット内のクォーラムを形成するので耐えられます。
 
 ### <a name="data-center-outages-or-destruction"></a>データ センターの停止または破壊
 まれに、停電やネットワーク切断のために、物理的なデータ センターが一時的に使用できなくなることがあります。 このような場合は、Service Fabric クラスターとアプリケーションも同様に使用できなくなりますが、データは保存されます。 Azure で実行されているクラスターの場合、[Azure ステータス ページ][azure-status-dashboard]で停止時の更新を確認できます。
@@ -91,10 +91,10 @@ protected virtual Task<bool> OnDataLoss(CancellationToken cancellationToken)
 
 ## <a name="next-steps"></a>次のステップ
 * [Testability フレームワーク](service-fabric-testability-overview.md)
-* 災害復旧と高可用性に関する他のリソースを読みます。 Microsoft は、これらのトピックに関して多数のガイダンスを公開しています。 これらのドキュメントの一部は他の製品で使用するための具体的な方法に関するものですが、Service Fabric にも適用できる多くの一般的なベスト プラクティスが含まれます。
+* 障害復旧と高可用性に関する他のリソースを読みます。 Microsoft は、これらのトピックに関して多数のガイダンスを公開しています。 これらのドキュメントの一部は他の製品で使用するための具体的な方法に関するものですが、Service Fabric にも適用できる多くの一般的なベスト プラクティスが含まれます。
   * [可用性のチェックリスト](../best-practices-availability-checklist.md)
-  * [災害復旧訓練の実行](../sql-database/sql-database-disaster-recovery-drills.md)
-  * [Azure アプリケーションの災害復旧と高可用性][dr-ha-guide]
+  * [障害復旧訓練の実行](../sql-database/sql-database-disaster-recovery-drills.md)
+  * [Azure アプリケーションの障害復旧と高可用性][dr-ha-guide]
 * [Service Fabric のサポート オプション](service-fabric-support.md)について学びます。
 
 <!-- External links -->

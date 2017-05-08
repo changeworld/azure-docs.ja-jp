@@ -44,9 +44,11 @@
 ### [複数の IP 構成の使用 (PowerShell)](load-balancer-multiple-ip-powershell.md)
 ## [Azure Load Balancer のログ分析](load-balancer-monitor-log.md)
 ## [Linux VM の DHCPv6 の設定](load-balancer-ipv6-for-linux.md)
+## トラブルシューティング
+### [Azure Load Balancer のトラブルシューティング](load-balancer-troubleshoot.md)
 
 # リファレンス
-## [PowerShell](/powershell/resourcemanager/azurerm.network/v3.1.0/azurerm.network)
+## [PowerShell](/powershell/module/azurerm.network)
 ## [Azure CLI 2.0](/cli/azure/network/lb)
 ## [.NET](/dotnet/api/microsoft.azure.management.network.models)
 ## [Java](/java/api/com.microsoft.azure.management.network)

@@ -11,7 +11,3 @@ Azure リソース マネージャーを使用して、テンプレートのデ�
     "logicAppName": {
         "type": "string"
     }
-
-<!--HONumber=Nov16_HO3-->
-
-

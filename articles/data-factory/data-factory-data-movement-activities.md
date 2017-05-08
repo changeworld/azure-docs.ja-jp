@@ -13,18 +13,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 03/30/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 25e266441e902a06d980b3b51abdd4fcf668d4d2
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: b60105297fb84ce1240a33d576653f5fa7c950e9
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="move-data-by-using-copy-activity"></a>コピー アクティビティを使用したデータの移動
-## <a name="overview"></a>Overview
-Azure Data Factory では、コピー アクティビティを使用して、さまざまな形式のデータを、オンプレミスやクラウドの各種データ ソースから Azure にコピーできます。 コピーしたデータは、高度な変換や分析を実行できます。 また、コピー アクティビティを使用して、変換や分析の結果を発行し、ビジネス インテリジェンス (BI) やアプリケーションで使用することもできます。
+## <a name="overview"></a>概要
+Azure Data Factory では、コピー アクティビティを使用して、オンプレミスとクラウド データ ストア間でデータをコピーできます。 コピーされたデータをさらに変換して分析することができます。 また、コピー アクティビティを使用して、変換や分析の結果を発行し、ビジネス インテリジェンス (BI) やアプリケーションで使用することもできます。
 
 ![コピー アクティビティの役割](media/data-factory-data-movement-activities/copy-activity.png)
 
@@ -60,19 +60,27 @@ Azure Data Factory では、コピー アクティビティを使用して、さ
 Data Management Gateway を使用すると、Azure IaaS 仮想マシン (VM) でホストされている、サポートされるデータ ストア間でデータを移動することもできます。 この場合、Data Management Gateway は、データ ストア自体と同じ VM、またはデータ ストアにアクセスできる別の VM にインストールできます。
 
 ## <a name="supported-data-stores-and-formats"></a>サポートされるデータ ストアと形式
+Data Factory のコピー アクティビティは、ソース データ ストアからシンク データ ストアにデータをコピーします。 Data Factory は次のデータ ストアをサポートしています。 また、任意のソースのデータを任意のシンクに書き込むことができます。 データ ストアをクリックすると、そのストアとの間でデータをコピーする方法がわかります。
+
+> [!NOTE] 
+> コピー アクティビティでサポートされていないデータ ストアとの間でデータを移動する必要がある場合は、データのコピーと移動に独自のロジックを使用した、Data Factory の **カスタム アクティビティ** を使用します。 カスタム アクティビティの作成と使用の詳細については、「 [Azure Data Factory パイプラインでカスタム アクティビティを使用する](data-factory-use-custom-activities.md)」をご覧ください。
+
 [!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
 
-コピー アクティビティでサポートされていないデータ ストアとの間でデータを移動する必要がある場合は、データのコピーと移動に独自のロジックを使用した、Data Factory の **カスタム アクティビティ** を使用します。 カスタム アクティビティの作成と使用の詳細については、「 [Azure Data Factory パイプラインでカスタム アクティビティを使用する](data-factory-use-custom-activities.md)」をご覧ください。
+> [!NOTE]
+> * が付いたデータ ストアは、オンプレミスと Azure IaaS のどちらでもサポートされます。ただし、オンプレミス/Azure IaaS のコンピューターに [Data Management Gateway](data-factory-data-management-gateway.md) をインストールする必要があります。
 
 ### <a name="supported-file-formats"></a>サポートされるファイル形式
-コピー アクティビティを使用すると、Azure BLOB、Azure Data Lake Store、Amazon S3、FTP、ファイル システム、HDFS などを含む 2 つのファイル ベース データ ストアの間で**ファイルをそのままコピー**できます。 これを行うには、入力と出力の両方のデータセット定義で [format セクション](data-factory-create-datasets.md) をスキップします。 これにより、シリアル化/逆シリアル化を実行することなく、データが効率的にコピーされます。
+コピー アクティビティを使用して、2 つのファイル ベースのデータ ストア間で**ファイルをそのままコピー**することができ、入力および出力の両方のデータセット定義の [format セクション](data-factory-create-datasets.md)をスキップすることもできます。 これにより、シリアル化/逆シリアル化を実行することなく、データが効率的にコピーされます。
 
-また、コピー アクティビティは、指定された形式 (**テキスト、Avro、ORC、Parquet、JSON**) でのファイルの読み取りと書き込みも行います。圧縮コーデック **GZip、Deflate、BZip2、および ZipDeflate** がサポートされています。 コピー アクティビティの例をいくつか示します。
+また、コピー アクティビティは、指定された形式 (**テキスト、JSON、Avro、ORC、Parquet**) でファイルの読み取りと書き込みを行い、圧縮コーデック **GZip、Deflate、BZip2、および ZipDeflate** がサポートされています。 詳細については、「[サポートされているファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md)」を参照してください。
 
-* Azure BLOB から GZip 圧縮テキスト (CSV) 形式でデータをコピーし、Azure SQL Database に書き込む。
-* オンプレミスのファイル システムからテキスト (CSV) 形式でファイルをコピーし、Azure BLOB に Avro 形式で書き込む。
+たとえば、次のようなコピー アクティビティを実行できます。
+
 * オンプレミスの SQL Server のデータをコピーし、Azure Data Lake Store に ORC 形式で書き込む。
+* オンプレミスのファイル システムからテキスト (CSV) 形式でファイルをコピーし、Azure BLOB に Avro 形式で書き込む。
 * オンプレミスのファイルシステムから zip ファイルをコピーし、圧縮を解除したうえで Azure Data Lake Store 書き込む。
+* Azure BLOB から GZip 圧縮テキスト (CSV) 形式でデータをコピーし、Azure SQL Database に書き込む。
 
 ## <a name="global"></a>グローバルに使用できるデータの移動
 Azure Data Factory は、米国西部、米国東部、北ヨーロッパ リージョンでのみ使用できます。 ただし、コピー アクティビティを実行するサービスは、以下のリージョンと場所でグローバルに使用できます。 グローバルに使用できるトポロジでは効率的なデータ移動が保証されます。このデータ移動では、通常、リージョンをまたがるホップが回避されます。 特定のリージョンにおける Data Factory とデータ移動の提供状況については、[リージョン別のサービス](https://azure.microsoft.com/regions/#services)に関するページをご覧ください。
@@ -180,7 +188,7 @@ JSON 定義のサンプルを次に示します。
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因については、「 [コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。 このガイドでは、内部テスト実行時の実際のパフォーマンスを一覧表示すると共に、コピー アクティビティのパフォーマンスを最適化するさまざまな方法についても説明します。
 
 ## <a name="scheduling-and-sequential-copy"></a>スケジュール設定と順次コピー
-Data Factory でのスケジュール設定と実行のしくみに関する詳細については、 [スケジュール設定と実行のしくみ](data-factory-scheduling-and-execution.md) に関するページをご覧ください。 複数のコピー操作を、順番にまたは順序を指定して 1 つずつ実行できます。 [順次コピー](data-factory-scheduling-and-execution.md#run-activities-in-a-sequence)に関するセクションを参照してください。
+Data Factory でのスケジュール設定と実行のしくみに関する詳細については、 [スケジュール設定と実行のしくみ](data-factory-scheduling-and-execution.md) に関するページをご覧ください。 複数のコピー操作を、順番にまたは順序を指定して 1 つずつ実行できます。 [順次コピー](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)に関するセクションを参照してください。
 
 ## <a name="type-conversions"></a>型の変換
 データ ストアが異なると、ネイティブな型システムも異なります。 コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。

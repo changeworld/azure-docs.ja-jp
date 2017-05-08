@@ -17,9 +17,9 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: telmos
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: e3c8f61be72309354471451a33664c4b5497eb0e
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 6dd2433bf744dd207375e92fd6f24b14cd3f828c
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -56,7 +56,7 @@ Azure には、次の 2 つのポータルがあります。
 リソースや機能によっては、一方のポータルでしか作成および構成できない場合があります。 また、どちらのポータルでも作成および構成できないリソースや機能もあります。このようなリソースや機能の構成には、PowerShell、CLI、またはその両方を使用できます。 各 Azure リソースのドキュメントでは、リソースの作成に使用できる方法について詳しく説明します。 
 
 ## <a name="powershell"></a>PowerShell
-[PowerShell](/powershell/azureps-cmdlets-docs) がある場合は、コマンド ラインを使用するかスクリプトを作成して、Windows コンピューターから Azure リソースを作成および構成できます。  個々の Azure リソースには、[Resource Manager コマンドレット](https://msdn.microsoft.com/library/azure/mt125356.aspx)、[サービス管理コマンドレット](https://msdn.microsoft.com/library/azure/dn708504.aspx)、またはその両方があります。  一部のリソースと機能は、作成や構成に PowerShell または CLI のみを使用できます。 リソースによっては、リソース マネージャーの PowerShell コマンドレットを使用するときに、Azure リソースを作成および構成するためのオプションが 2 つあります。
+[PowerShell](/powershell/azureps-cmdlets-docs) がある場合は、コマンド ラインを使用するかスクリプトを作成して、Windows コンピューターから Azure リソースを作成および構成できます。  個々の Azure リソースには、[Resource Manager コマンドレット](/powershell/azure/overview)、[サービス管理コマンドレット](/powershell/azure/overview?view=azuresmps-3.7.0)、またはその両方があります。  一部のリソースと機能は、作成や構成に PowerShell または CLI のみを使用できます。 リソースによっては、リソース マネージャーの PowerShell コマンドレットを使用するときに、Azure リソースを作成および構成するためのオプションが 2 つあります。
 
 * **PowerShell コマンドレットのみ:** 各リソースにコマンドレットを使用して、各 Azure リソースを個別に作成および構成できます。 これはコマンドラインから実行するか、保存とバージョン管理が可能な PowerShell スクリプトに複数のコマンドを含めることによって実行できます。
 * **Azure Resource Manager のテンプレートを使用した PowerShell コマンドレット:** PowerShell を使用すると、Azure Resource Manager のテンプレートを使用して Azure リソースを作成できます。 これらのテンプレートは、保存とバージョン管理が可能です。 詳細については、[Azure Resource Manager のテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)に関する記事を参照してください。 一般的なソリューション向けの [Azure のクイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)が複数あります。これらは、ダウンロードして変更することも可能です。

@@ -30,8 +30,3 @@ File ストレージには次の構成要素があります。
   `http://samples.file.core.windows.net/logs/CustomLogs/Log1.txt`
 
 共有、ディレクトリ、およびファイルの詳しい命名方法については、「 [Naming and Referencing Shares, Directories, Files, and Metadata (共有、ディレクトリ、ファイル、およびメタデータの命名と参照)](http://msdn.microsoft.com/library/azure/dn167011.aspx)」を参照してください。
-
-
-<!--HONumber=Nov16_HO3-->
-
-

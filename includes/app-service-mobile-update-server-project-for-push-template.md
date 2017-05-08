@@ -2,7 +2,7 @@
 
 バックエンド プロジェクトの種類 ([.NET バックエンド](#dotnet)または [Node.js バックエンド](#nodejs)) に応じた次のいずれかの手順を選択します。
 
-### <a name="a-namedotnetanet-back-end-project"></a><a name="dotnet"></a>.NET バックエンド プロジェクト
+### <a name="dotnet"></a>.NET バックエンド プロジェクト
 1. Visual Studio でサーバー プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 `Microsoft.Azure.NotificationHubs` を検索し、**[インストール]** をクリックします。 これにより、バックエンドから通知を送信するために Notification Hubs ライブラリがインストールされます。
 2. サーバー プロジェクトで、**Controllers** > **TodoItemController.cs** の順に開き、次の using ステートメントを追加します。
 
@@ -48,7 +48,7 @@
     これにより、新しい項目が挿入された場合には item.Text を含むテンプレート通知が送信されます。
 4. サーバー プロジェクトを発行します。
 
-### <a name="a-namenodejsanodejs-back-end-project"></a><a name="nodejs"></a>Node.js バックエンド プロジェクト
+### <a name="nodejs"></a>Node.js バックエンド プロジェクト
 1. これをまだ行っていない場合は、[クイック スタート バックエンド プロジェクトをダウンロードする](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)か、[Azure Portal でオンライン エディター](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor)を使用します。
 2. todoitem.js 内の既存のコードを次のコードに置き換えます。
 
@@ -93,8 +93,3 @@
 
     これにより、新しい項目が挿入された場合には item.Text を含むテンプレート通知が送信されます。
 3. ローカル コンピューターでファイルを編集するときは、サーバー プロジェクトを再発行します。
-
-
-<!--HONumber=Dec16_HO2-->
-
-

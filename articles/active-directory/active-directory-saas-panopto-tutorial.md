@@ -11,17 +11,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/25/2017
+ms.date: 03/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 41e04425a291c9f89bc58341c6bad22ad1bdb8ef
-ms.openlocfilehash: 90f962fbd19f125cfb609e439f157c4822acfce4
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 078a2ea0db006cf976f89a55c65a536a7b9f04aa
+ms.lasthandoff: 04/03/2017
 
 
 ---
 
 # <a name="tutorial-azure-active-directory-integration-with-panopto"></a>チュートリアル: Azure Active Directory と Panopto の統合
-このチュートリアルでは、Azure と Panopto の統合について説明します。 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+このチュートリアルでは、Azure と Panopto の統合について説明します。 
+
+このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 * 有効な Azure サブスクリプション
 * Panopto テナント
@@ -31,13 +34,13 @@ ms.openlocfilehash: 90f962fbd19f125cfb609e439f157c4822acfce4
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
 1. Panopto のアプリケーション統合の有効化
-2. シングル サインオンの構成
+2. シングル サインオン (SSO) の構成
 3. ユーザー プロビジョニングの構成
 4. ユーザーの割り当て
 
 ![シナリオ](./media/active-directory-saas-panopto-tutorial/IC777665.png "Scenario")
 
-## <a name="enabling-the-application-integration-for-panopto"></a>Panopto のアプリケーション統合の有効化
+## <a name="enable-the-application-integration-for-panopto"></a>Panopto のアプリケーション統合の有効化
 このセクションでは、Panopto のアプリケーション統合を有効にする方法について説明します。
 
 **Panopto のアプリケーション統合を有効にするには、次の手順に従います。**
@@ -66,10 +69,11 @@ ms.openlocfilehash: 90f962fbd19f125cfb609e439f157c4822acfce4
 
 このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD のアカウントで Panopto に対する認証を行えるようにする方法を説明します。  
 
-この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。  
+この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。 
+
 この手順に慣れていない場合は、「 [How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
-**シングル サインオンを構成するには、次の手順に従います。**
+**構成された SSO を取得するには、次の手順を実行します。**
 
 1. Azure クラシック ポータルの **Panopto** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
@@ -111,21 +115,21 @@ ms.openlocfilehash: 90f962fbd19f125cfb609e439f157c4822acfce4
  ![保存](./media/active-directory-saas-panopto-tutorial/IC777673.png "保存")
 9. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
    
-   ![シングル サインオンの構成](./media/active-directory-saas-panopto-tutorial/IC777674.png "Configure single sign-on")
+  ![シングル サインオンの構成](./media/active-directory-saas-panopto-tutorial/IC777674.png "Configure single sign-on")
    
-## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
+## <a name="configure-user-provisioning"></a>[ユーザー プロビジョニングの構成]
 
 Panopto へのユーザー プロビジョニングの構成にあたって必要な操作はありません。  
 割り当てられたユーザーがアクセス パネルを使用して Panopto にログインしようとすると、そのユーザーが存在するかどうかが Panopto によって確認されます。  
 
 使用可能なユーザー アカウントがない場合、ユーザー アカウントは Panopto により自動的に作成されます。
 
-> [!NOTE]
-> Panopto から提供されている他の Panopto ユーザー アカウント作成ツールまたは API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
-> 
+>[!NOTE]
+>Panopto から提供されている他の Panopto ユーザー アカウント作成ツールまたは API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
+>
+>
 
-
-## <a name="assigning-users"></a>ユーザーの割り当て
+## <a name="assign-users"></a>[ユーザーの割り当て]
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
 **ユーザーを Panopto に割り当てるには、次の手順に従います。**
@@ -138,11 +142,6 @@ Panopto へのユーザー プロビジョニングの構成にあたって必�
    
    ![はい](./media/active-directory-saas-panopto-tutorial/IC767830.png "Yes")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
+SSO の設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
 

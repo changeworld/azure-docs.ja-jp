@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 74fe2d241dfcd6e572f0f20714f91c6aff970f34
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 0caac0c7ad76df7e7fa657227339d1df8b4a3c77
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -100,13 +100,13 @@ Azure CLI は、Azure サービスを管理できるクロスプラットフォ�
 >
 
 ### <a id="powershell"></a>Azure PowerShell
-Azure PowerShell は、Azure のワークロードのデプロイと管理を制御し自動化するために使用できるスクリプティング環境です。 ワークステーションを構成して Azure PowerShell を実行する方法については、「 [Azure PowerShell のインストールおよび構成](/powershell/azureps-cmdlets-docs)」をご覧ください。
+Azure PowerShell は、Azure のワークロードのデプロイと管理を制御し自動化するために使用できるスクリプティング環境です。 ワークステーションを構成して Azure PowerShell を実行する方法については、「 [Azure PowerShell のインストールおよび構成](/powershell/azure/overview)」をご覧ください。
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell.md)]
 
 **ローカル ファイルを Azure BLOB ストレージにアップロードするには**
 
-1. Azure PowerShell コンソールを開きます。手順については「[Azure PowerShell のインストールおよび構成](/powershell/azureps-cmdlets-docs)」をご覧ください。
+1. Azure PowerShell コンソールを開きます。手順については「[Azure PowerShell のインストールおよび構成](/powershell/azure/overview)」をご覧ください。
 2. 次のスクリプトで最初の 5 つの変数の値を設定します。
 
         $resourceGroupName = "<AzureResourceGroupName>"
@@ -295,7 +295,7 @@ Ambari の使用について詳しくは、「[Ambari Web UI を使用した HDI
 
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
-[hdinsight-provision]: hdinsight-provision-clusters.md
+[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 
 [sqldatabase-create-configure]: ../sql-database-create-configure.md
 

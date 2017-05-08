@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 01/24/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 9dcac84fdc33515ef12ab5b8154f700bb8618290
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: 627f9dccb48712fced81f2c6dc694043f7162205
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -125,7 +125,7 @@ HDInsight の Apache Storm を使用して、ユーザーは複数のストー�
 Stream Analytics では、処理するデータのボリュームと必要な (ジョブが実行されている 1 時間あたりの) ストリーミング ユニットの数によって請求されます。
                 </p>
                 <p>
-                    <a href="http://azure.microsoft.com/en-us/pricing/details/stream-analytics/">価格についての詳細は、こちらをご覧ください。</a>
+                    <a href="http://azure.microsoft.com/pricing/details/stream-analytics/">価格についての詳細は、こちらをご覧ください。</a>
                 </p>
             </td>
             <td width="246" valign="top">
@@ -133,7 +133,7 @@ Stream Analytics では、処理するデータのボリュームと必要な (�
 HDInsight の Apache Storm では、購入単位はクラスター ベースであり、デプロイされるジョブとは無関係に、実行されるクラスターの時間に基づいて請求されます。
                 </p>
                 <p>
-                    <a href="http://azure.microsoft.com/en-us/pricing/details/hdinsight/">価格についての詳細は、こちらをご覧ください。</a>
+                    <a href="http://azure.microsoft.com/pricing/details/hdinsight/">価格についての詳細は、こちらをご覧ください。</a>
                 </p>
             </td>
         </tr>

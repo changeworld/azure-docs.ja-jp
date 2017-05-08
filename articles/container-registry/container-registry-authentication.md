@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: how-to-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/14/2016
+ms.date: 03/24/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 774c844375df89864274e3376ed07dd565c8ecff
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: ae6af47c82a5c0425f6cd53b8ba1134797505e6c
+ms.lasthandoff: 04/18/2017
 
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>プライベート Docker コンテナー レジストリによる認証
@@ -43,7 +43,14 @@ docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my
 >
 
 
-サービス プリンシパルを使用すると、レジストリへの[ロールベースのアクセス](../active-directory/role-based-access-control-configure.md)が可能になります。 使用可能なロールは、閲覧者 (プルのみアクセス)、共同作成者 (プルおよびプッシュ)、および所有者 (プル、プッシュ、および他のユーザーへのロールの割り当て) です。 サービス プリンシパルは 1 つのレジストリに対して複数個割り当てることができます。これにより、異なるユーザーまたはアプリケーションのアクセスを定義できます。 また、サービス プリンシパルを使用すると、次のような開発者または DevOps のシナリオでレジストリへの "ヘッドレス" 接続を可能にします。
+サービス プリンシパルを使用すると、レジストリへの[ロールベースのアクセス](../active-directory/role-based-access-control-configure.md)が可能になります。 使用可能なロールは次のとおりです。
+  * リーダー (プルのみのアクセス)。
+  * 共同作成者 (プルとプッシュ)。
+  * 所有者 (プル、プッシュ、および他のユーザーへのロールの割り当て)。
+
+匿名アクセスは、Azure コンテナー レジストリでは使用できません。 パブリック イメージでは、[Docker Hub](https://docs.docker.com/docker-hub/) を使用できます。
+
+サービス プリンシパルは 1 つのレジストリに対して複数個割り当てることができます。これにより、異なるユーザーまたはアプリケーションのアクセスを定義できます。 また、サービス プリンシパルを使用すると、次に示す例のような開発者または DevOps のシナリオでレジストリへの "ヘッドレス" 接続を可能にします。
 
   * レジストリから DC/OS、Docker Swarm、Kubernetes などのオーケストレーション システムへのコンテナーのデプロイ。 さらに、[Container Service](../container-service/index.md)、[App Service](../app-service/index.md)、[Batch](../batch/index.md)、[Service Fabric](../service-fabric/index.md) などの関連する Azure サービスにコンテナー レジストリをプルすることもできます。
 
@@ -54,10 +61,10 @@ docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my
 
 
 ## <a name="admin-account"></a>管理者アカウント
-ユーザーが作成するレジストリごとに管理者アカウントが自動的に作成されます。 既定でこのアカウントは無効になっていますが、[ポータル](container-registry-get-started-portal.md#manage-registry-settings)や [Azure CLI 2.0 コマンド](container-registry-get-started-azure-cli.md#manage-admin-credentials)などを使ってこのアカウントを有効にし、資格情報を管理できます。 アカウントが有効になっている場合、ユーザー名とパスワードを `docker login` コマンドに渡してレジストリに対する基本認証を行うことができます。 次に例を示します。
+ユーザーが作成するレジストリごとに管理者アカウントが自動的に作成されます。 既定でこのアカウントは無効になっていますが、[ポータル](container-registry-get-started-portal.md#manage-registry-settings)や [Azure CLI 2.0 コマンド](container-registry-get-started-azure-cli.md#manage-admin-credentials)などを使ってこのアカウントを有効にし、資格情報を管理できます。 各管理者アカウントには、どちらも再生成できる 2 つのパスワードを指定します。 2 つのパスワードにより、パスワードを再生成している間に、もう 1 つのパスワードを使用してレジストリに対する接続を維持することができます。 アカウントが有効になっている場合、ユーザー名とどちらかのパスワードを `docker login` コマンドに渡してレジストリに対する基本認証を行うことができます。 For example:
 
 ```
-docker login myregistry.azurecr.io -u myAdminName -p myPassword
+docker login myregistry.azurecr.io -u myAdminName -p myPassword1
 ```
 
 > [!IMPORTANT]

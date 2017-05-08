@@ -2,8 +2,3 @@ Azure で仮想マシン (VM) を作成し、パブリック IP アドレスを�
 
 VM に静的パブリック IP を実装するには、静的パブリック IP を使用できる状況とその使用方法を理解しておく必要があります。 Azure での IP アドレス指定の詳細については、 [IP アドレス指定の概要](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md) に関するページをご覧ください。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

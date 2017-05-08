@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/20/2016
+ms.date: 04/03/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 7b5df25f46a2824acb361401ab90c960b8e5978f
-ms.openlocfilehash: 8ce47dd649d1d945df506ed65c871cf3afe2f004
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 0c3a11e9a86767641533b16de1b96b4c59bfdf51
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -28,10 +29,9 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 ## <a name="available-sql-service-and-data-recommendations"></a>SQL サービスとデータに関する利用可能な推奨事項
 | 推奨 | Description |
 | --- | --- |
-| [サーバーの SQL 監査の有効化](security-center-enable-auditing-on-sql-servers.md) |Azure SQL サーバーの監査を有効にすることをお勧めします (Azure SQL サービスのみ。仮想マシンで実行されている SQL を除く)。 |
-| [データベースの SQL 監査の有効化](security-center-enable-auditing-on-sql-databases.md) |Azure SQL データベースの監査を有効にすることをお勧めします (Azure SQL サービスのみ。仮想マシンで実行されている SQL を除く)。 |
+| [SQL サーバーの監査と脅威検出を有効にする](security-center-enable-auditing-on-sql-servers.md) |Azure SQL サーバーの監査と脅威検出を有効にすることをお勧めします (Azure SQL サービスのみ。仮想マシンで実行されている SQL を除く)。 |
+| [SQL データベースの監査と脅威検出を有効にする](security-center-enable-auditing-on-sql-databases.md) |Azure SQL データベースの監査と脅威検出を有効にすることをお勧めします (Azure SQL サービスのみ。仮想マシンで実行されている SQL を除く)。 |
 | [SQL データベースでの透過的なデータ暗号化の有効化](security-center-enable-transparent-data-encryption.md) |SQL データベース (Azure SQL のサービスのみ) に対して暗号化を有効にすることをお勧めします。 |
-| [Azure Storage アカウント暗号化の有効化](security-center-enable-encryption-for-storage-account.md) | Azure Storage Service Encryption for Data at Rest を有効化することを推奨します。 Storage Service Encryption (SSE) は、データが Azure ストレージに書き込まれたときに暗号化し、取得される前に復号化します。 現在、SSE は Azure Blob service のみに対応し、ブロック BLOB、ページ BLOB、追加 BLOB で使用できます。 詳細については、「[Storage Service Encryption for Data at Rest](../storage/storage-service-encryption.md)」を参照してください。</br>SSE は Resource Manager ストレージ アカウントでのみサポートされます。 現在、クラシック ストレージ アカウントはサポートされていません。 クラシック デプロイ モデルと Resource Manager デプロイ モデルについて理解するには、[Azure デプロイ モデル](../azure-classic-rm.md)に関する記事を参照してください。 |
 
 ## <a name="see-also"></a>関連項目
 その他の Azure リソースの種類に適用される推奨事項の詳細については、次をご覧ください。
@@ -45,9 +45,4 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 * [Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md) 」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
 * [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」-- セキュリティの警告の管理と対応の方法について説明しています。
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」-- このサービスの使用に関してよく寄せられる質問が記載されています。
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

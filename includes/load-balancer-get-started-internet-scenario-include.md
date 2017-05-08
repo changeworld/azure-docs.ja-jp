@@ -5,8 +5,3 @@
 * 正常性プローブを作成する
 
 ![ロード バランサーのシナリオ](./media/load-balancer-get-started-internet-scenario-include/scenario-classic.png)
-
-
-<!--HONumber=Nov16_HO2-->
-
-

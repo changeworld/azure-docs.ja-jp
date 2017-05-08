@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 10/12/2016
 ms.author: kasing
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 44235e32b7cf5b2be90f6d460ac22d7c0350f894
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: ba02fb8385afeefd0162ff79074352bb02275b55
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/27/2017
 Azure PowerShell コマンドレットを使用すると、VM を管理するために日常的に行う多くのタスクを自動化できます。 この記事では、比較的単純なタスクにはコマンド例を示し、より複雑なタスクには、コマンドが記載されている記事へのリンクを示します。
 
 > [!NOTE]
-> まだ Azure PowerShell をインストール、構成していない場合は、 [「Azure PowerShell のインストールおよび構成方法」](/powershell/azureps-cmdlets-docs)の記事に手順が記載されています。
+> まだ Azure PowerShell をインストール、構成していない場合は、 [「Azure PowerShell のインストールおよび構成方法」](/powershell/azure/overview)の記事に手順が記載されています。
 > 
 > 
 

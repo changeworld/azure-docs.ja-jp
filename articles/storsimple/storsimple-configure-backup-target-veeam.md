@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 12/06/2016
 ms.author: hkanna
 translationtype: Human Translation
-ms.sourcegitcommit: 83dc91972ad5fec85e562e45227747568b1fea75
-ms.openlocfilehash: 3d9ca83e2672d9022e4f887b84555f0bf95f6da9
-ms.lasthandoff: 01/26/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: d4a0dfbfab052e98e0dd641e8cab8fc143c2ff41
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -79,7 +79,7 @@ StorSimple には次の利点があります。
 -   クラウドのデータ暗号化
 -   障害復旧とコンプライアンスの強化
 
-StorSimple には&2; つの主要なデプロイメント シナリオ (プライマリ バックアップ ターゲットとセカンダリ バックアップ ターゲット) が用意されていますが、基本的にはシンプルなブロック ストレージ デバイスです。 StorSimple では、すべての圧縮と重複除去が行われます。 クラウドとアプリケーションおよびファイル システムの間で、データはシームレスに送受信されます。
+StorSimple には 2 つの主要なデプロイメント シナリオ (プライマリ バックアップ ターゲットとセカンダリ バックアップ ターゲット) が用意されていますが、基本的にはシンプルなブロック ストレージ デバイスです。 StorSimple では、すべての圧縮と重複除去が行われます。 クラウドとアプリケーションおよびファイル システムの間で、データはシームレスに送受信されます。
 
 StorSimple の詳細については、「[StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション](storsimple-overview.md)」をご覧ください。 また、[StorSimple 8000 シリーズの技術仕様](storsimple-technical-specifications-and-compliance.md)に関するページも参照してください。
 
@@ -244,15 +244,15 @@ Veeam のインストールにおけるベスト プラクティスについて�
 
 ## <a name="retention-policies"></a>リテンション期間ポリシー
 
-最も一般的なタイプのバックアップ保持ポリシーの&1; つが、Grandfather-Father-Son (GFS) ポリシーです。 GFS ポリシーでは、増分バックアップを&1; 日&1; 回実行し、完全バックアップは週&1; 回および月&1; 回実行します。 このポリシーでは StorSimple 階層化ボリュームを&6; 個使用します。ボリュームの&1; つには週単位、月単位、および年単位の完全バックアップを格納し、残りの&5; 個には日単位の増分バックアップを格納します。
+最も一般的なタイプのバックアップ保持ポリシーの 1 つが、Grandfather-Father-Son (GFS) ポリシーです。 GFS ポリシーでは、増分バックアップを 1 日 1 回実行し、完全バックアップは週 1 回および月 1 回実行します。 このポリシーでは StorSimple 階層化ボリュームを 6 個使用します。ボリュームの 1 つには週単位、月単位、および年単位の完全バックアップを格納し、残りの 5 個には日単位の増分バックアップを格納します。
 
 次の例では、GFS 方式を使用しています。 この例では、次の条件を前提としています。
 
 -   非重複除去または圧縮データを使用します。
 -   完全バックアップはそれぞれ 1 TiB です。
 -   毎日の増分バックアップはそれぞれ 500 GiB です。
--   4 個の週単位バックアップは&1; か月間保持します。
--   12 個の月単位バックアップは&1; 年間保持します。
+-   4 個の週単位バックアップは 1 か月間保持します。
+-   12 個の月単位バックアップは 1 年間保持します。
 -   1 個の年単位バックアップは 10 年間保持します。
 
 上記の前提条件に基づき、月単位と年単位の完全バックアップ用に 26 TiB の StorSimple 階層化ボリュームを作成します。 日単位の増分バックアップそれぞれに対し、5 TiB の StorSimple 階層化ボリュームを作成します。
@@ -260,11 +260,11 @@ Veeam のインストールにおけるベスト プラクティスについて�
 | バックアップ タイプとリテンション | サイズ (TiB) | GFS 乗数\* | 合計容量 (TiB)  |
 |---|---|---|---|
 | 週単位 - 完全 | 1 | 4  | 4 |
-| 毎日 - 増分 | 0.5 | 20 (1 か月あたり同じ週数をサイクルする) | 12 (追加のクォータに対し&2;) |
+| 毎日 - 増分 | 0.5 | 20 (1 か月あたり同じ週数をサイクルする) | 12 (追加のクォータに対し 2) |
 | 月単位 - 完全 | 1 | 12 | 12 |
 | 年単位 - 完全 | 1  | 10 | 10 |
 | GFS 要件 |   | 38 |   |
-| 追加のクォータ  | 4  |   | GFS 要件合計&42;  |
+| 追加のクォータ  | 4  |   | GFS 要件合計 42  |
 \* GFS 乗数は、バックアップ ポリシー要件を遵守するために保護および保持する必要があるコピー数を指します。
 
 ## <a name="set-up-veeam-storage"></a>Veeam ストレージのセットアップ
@@ -283,7 +283,7 @@ Veeam のインストールにおけるベスト プラクティスについて�
 
     ![Veeam 管理コンソール、バックアップ リポジトリのタイプを選択する](./media/storsimple-configure-backup-target-using-veeam/veeamimage3.png)
 
-4.  **[Location] \(場所)** の指定では、目的のボリュームを参照して選択します。 **[Limit maximum concurrent tasks to:] \(最大同時実行タスク数を次に制限する:)** チェック ボックスをオンにして、値を **4** に設定します。 これにより、各仮想マシン (VM) の処理時に同時処理される仮想ディスクの数が&4; つに制限されます。 **[Advanced] \(詳細設定)** ボタンを選択します。
+4.  **[Location] \(場所)** の指定では、目的のボリュームを参照して選択します。 **[Limit maximum concurrent tasks to:] \(最大同時実行タスク数を次に制限する:)** チェック ボックスをオンにして、値を **4** に設定します。 これにより、各仮想マシン (VM) の処理時に同時処理される仮想ディスクの数が 4 つに制限されます。 **[Advanced] \(詳細設定)** ボタンを選択します。
 
     ![Veeam 管理コンソール、ボリュームを選択する](./media/storsimple-configure-backup-target-using-veeam/veeamimage4.png)
 
@@ -358,7 +358,7 @@ Veeam のインストールにおけるベスト プラクティスについて�
 
     ![Veeam 管理コンソール、新しいバックアップ ジョブのゲスト プロセス ページ](./media/storsimple-configure-backup-target-using-veeam/veeamimage14.png)
 
-8.  1 日に&1; 度、指定した時間で実行するようスケジュールを設定します。
+8.  1 日に 1 度、指定した時間で実行するようスケジュールを設定します。
 
     ![Veeam 管理コンソール、新しいバックアップ ジョブのスケジュール ページ](./media/storsimple-configure-backup-target-using-veeam/veeamimage15.png)
 
@@ -466,7 +466,7 @@ StorSimple クラウド スナップショットは、StorSimple デバイスに
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>クラウド スナップショットを開始または削除する方法
 
-1. [Azure PowerShell をインストールします](https://docs.microsoft.com/en-us/powershell/azureps-cmdlets-docs/)。
+1. [Azure PowerShell をインストールします](/powershell/azure/overview)。
 2. [発行設定とサブスクリプション情報をダウンロードしてインポートします](https://msdn.microsoft.com/library/dn385850.aspx)。
 3. Azure クラシック ポータルで、StorSimple Manager サービス用のリソース名と[登録キーを取得します](storsimple-deployment-walkthrough-u2.md#step-2-get-the-service-registration-key)。
 4. スクリプトを実行するサーバーで PowerShell を管理者として実行します。 次のコマンドを入力します。

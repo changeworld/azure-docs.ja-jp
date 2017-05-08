@@ -40,8 +40,3 @@ Azure Websites では、逆引き DNS はサポートされていません。 �
 ### <a name="can-i-send-emails-to-external-domains-from-my-azure-compute-services"></a>Azure コンピューティング サービスから外部ドメインに電子メールを送信できますか?
 
 いいえ。 [Azure コンピューティング サービスでは、外部ドメインへの電子メールの送信はサポートされていません](https://blogs.msdn.microsoft.com/mast/2016/04/04/sending-e-mail-from-azure-compute-resource-to-external-domains/)。
-
-
-<!--HONumber=Nov16_HO3-->
-
-

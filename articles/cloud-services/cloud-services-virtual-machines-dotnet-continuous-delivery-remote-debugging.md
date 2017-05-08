@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 11/18/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: d011223dbb1ad7b5752875e94a4822be1b6cbe6e
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 7a9ef4098fec7b464e654a429c8c854ed4bb73fd
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -48,7 +48,7 @@ ms.lasthandoff: 03/25/2017
 1. Azure 仮想マシンを作成します。 [Windows Server を実行する仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事または [Visual Studio での Azure 仮想マシンの作成と管理](../virtual-machines/windows/classic/manage-visual-studio.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関する記事を参照してください。
 2. [Azure クラシック ポータル ページ](http://go.microsoft.com/fwlink/p/?LinkID=269851)で、仮想マシンのダッシュボードを表示し、仮想マシンの **RDP 証明書の拇印**を確認します。 この値は、拡張機能構成の `ServerThumbprint` の値に使用されます。
 3. 「 [Azure Cloud Services の証明書の概要](cloud-services-certs-create.md) 」の説明に従って、クライアント証明書を作成します (.pfx および RDP 証明書の拇印を保持)。
-4. 「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」の説明に従って、Azure PowerShell (バージョン 0.7.4 以降) をインストールします。
+4. 「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」の説明に従って、Azure PowerShell (バージョン 0.7.4 以降) をインストールします。
 5. 次のスクリプトを実行して RemoteDebug 拡張機能を有効にします。 パスおよび個人用データを自分自身のサブスクリプション名、サービス名、拇印などで置き換えます。
    
    > [!NOTE]

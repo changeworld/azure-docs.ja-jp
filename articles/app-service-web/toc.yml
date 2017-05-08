@@ -21,18 +21,22 @@
     href: app-service-web-get-started-python.md
   - name: "静的な HTML サイトの作成"
     href: app-service-web-get-started-html.md
+- name: "Tutorials (チュートリアル)"
+  items:
+  - name: "1 - .NET と SQL DB"
+    href: app-service-web-tutorial-dotnet-sqldatabase.md
+  - name: "1 - Node.js と MongoDB"
+    href: app-service-web-tutorial-nodejs-mongodb-app.md
+  - name: "2 - カスタム ドメインのマップ"
+    href: app-service-web-tutorial-custom-domain.md
+  - name: "3 - SSL 証明書のバインド"
+    href: app-service-web-tutorial-custom-ssl.md
 - name: "サンプル"
   items:
   - name: "Azure CLI"
     href: app-service-cli-samples.md
   - name: "PowerShell"
     href: app-service-powershell-samples.md
-- name: "Tutorials (チュートリアル)"
-  items:
-  - name: ".NET と SQL Database"
-    href: app-service-web-tutorial-dotnet-sqldatabase.md
-  - name: "Node.js と MongoDB"
-    href: app-service-web-tutorial-nodejs-mongodb-app.md
 - name: "概念"
   items:
   - name: "App Service の特長"
@@ -174,8 +178,6 @@
         href: web-sites-dotnet-entity-framework-row-level-security.md
     - name: "カスタム SSL の割り当て"
       items:
-      - name: "SSL 証明書の購入"
-        href: web-sites-purchase-ssl-web-site.md
       - name: "サード パーティの SSL 証明書の構成"
         href: web-sites-configure-ssl-certificate.md
     - name: "HTTPS の適用"

@@ -15,9 +15,9 @@ ms.workload: compute
 ms.date: 11/23/2016
 ms.author: piotrci
 translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 20f9e9b31498f20c2a27f0d82d434abad73d2454
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 7970fb624fcf76d9cba6e60c9766e39b63f175ba
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -50,7 +50,7 @@ ms.lasthandoff: 03/31/2017
 ## <a name="how-to-get-azure-remoteapp-powershell-cmdlets"></a>Azure RemoteApp PowerShell コマンドレットを取得する方法
 新しいプレビュー機能を試すには、Azure PowerShell コマンドレットを使用する必要があります。 現在、Azure 管理ポータルを使用して新しいアプリケーション発行モードを有効にすることはできません。
 
-最初に、 [Azure PowerShell モジュール](/powershell/azureps-cmdlets-docs) がインストールされていることを確認します。
+最初に、 [Azure PowerShell モジュール](/powershell/azure/overview) がインストールされていることを確認します。
 
 次に、PowerShell コンソールを管理者モードで起動し、次のコマンドレットを実行します。
 

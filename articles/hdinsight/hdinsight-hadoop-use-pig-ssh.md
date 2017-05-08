@@ -14,118 +14,106 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/17/2017
+ms.date: 04/14/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 22862d87562e9d9ec9d509eab2f65c850f4aa6d6
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: edda959693061850248ba97795c2390a592cbb21
+ms.lasthandoff: 04/18/2017
 
 
 ---
 # <a name="run-pig-jobs-on-a-linux-based-cluster-with-the-pig-command-ssh"></a>Pig コマンド (SSH) を使用して Linux ベースのクラスターで Pig ジョブを実行する
+
 [!INCLUDE [pig-selector](../../includes/hdinsight-selector-use-pig.md)]
 
-このドキュメントでは、Secure Shell (SSH) を使用して Linux ベースの Azure HDInsight クラスターに接続し、Pig コマンドを使用して Pig Latin ステートメントを対話的にまたはバッチ ジョブとして実行する方法を順を追って説明します。
+HDInsight クラスターへの SSH 接続を使用して、Pig ジョブを対話的に実行する方法について説明します。 Pig Latin プログラミング言語では、入力データに適用される変換を記述し、目的の出力を生成することができます。
 
-Pig Latin プログラミング言語では、入力データに適用される変換を記述し、目的の出力を生成することができます。
-
-> [!NOTE]
-> Linux ベースの Hadoop サーバーは使い慣れているが HDInsight は初めてという場合は、「 [Linux での HDInsight の使用方法](hdinsight-hadoop-linux-information.md)」をご覧ください。
-
-
-## <a id="prereq"></a>前提条件
-この記事の手順を完了するには、次のものが必要です。
-
-* Linux ベースの HDInsight (HDInsight で Hadoop を使用) クラスター
-
-  > [!IMPORTANT]
-  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。
-
-* SSH クライアント SSH クライアントを備えた Linux、Unix、および Mac OS Windows ユーザーは [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) などのクライアントをダウンロードする必要があります。
+> [!IMPORTANT]
+> このドキュメントの手順では、Linux ベースの HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、「[HDInsight コンポーネントのバージョン](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)」を参照してください。
 
 ## <a id="ssh"></a>SSH を使用した接続
-SSH コマンドを使用して、HDInsight クラスターの完全修飾ドメイン名 (FQDN) に接続します。 FQDN はクラスターに指定した名前で、その後、 **.azurehdinsight.net**が続きます。 以下の例では、 **myhdinsight**という名前のクラスターに接続します。
 
-    ssh admin@myhdinsight-ssh.azurehdinsight.net
+SSH を使用して、HDInsight クラスターに接続します。 次の例では、**myhdinsight** という名前のクラスターに **sshuser** という名前のアカウントとして接続します。
+
+    ssh sshuser@myhdinsight-ssh.azurehdinsight.net
 
 **HDInsight クラスターの作成時に SSH 認証に証明書キーを指定した場合は** 、クライアント システムの秘密キーの場所を指定する必要があることがあります。
 
-    ssh admin@myhdinsight-ssh.azurehdinsight.net -i ~/mykey.key
+    ssh sshuser@myhdinsight-ssh.azurehdinsight.net -i ~/mykey.key
 
-**HDInsight クラスターの作成時に SSH 認証のパスワードを指定した場合は** 、パスワードの入力を求められます。
+**HDInsight クラスターの作成時に SSH 認証のパスワードを指定した場合は**、パスワードの入力を求められます。
 
 SSH の使用方法の詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページをご覧ください。
 
 ## <a id="pig"></a>Pig コマンドの使用
+
 1. 接続したら、次のコマンドを使用して Pig コマンド ライン インターフェイス (CLI) を起動します。
 
         pig
 
     少し経ってから `grunt>` プロンプトが表示されます。
+
 2. 次のステートメントを入力します。
 
-        LOGS = LOAD 'wasbs:///example/data/sample.log';
+        LOGS = LOAD '/example/data/sample.log';
 
-    このコマンドは、sample.log ファイルの内容をログに読み込みます。 ファイルの内容を表示するには、次のコマンドを使用します。
+    このコマンドは、sample.log ファイルの内容をログに読み込みます。 ファイルの内容を表示するには、次のステートメントを使用します。
 
         DUMP LOGS;
-3. 次のコマンドを使用して、正規表現を適用してデータを変換し、各レコードのログ レベルのみを抽出します。
+
+3. 次のステートメントを使用して、正規表現を適用してデータを変換し、各レコードのログ レベルのみを抽出します。
 
         LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
 
     変換後のデータを表示するには、 **DUMP** を使用します。 例では `DUMP LEVELS;`が使用されます。
-4. 次のステートメントを使用して、変換を適用します。 各手順の後に `DUMP` を使用して、変換の結果を表示します。
 
-    <table>
-    <tr>
-    <th>ステートメント</th><th>実行内容</th>
-    </tr>
-    <tr>
-    <td>FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;</td><td>ログ レベルに null 値を含む行を削除し、結果を FILTEREDLEVELS に格納します。</td>
-    </tr>
-    <tr>
-    <td>GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;</td><td>ログ レベルで列をグループ化し、結果を GROUPEDLEVELS に格納します。</td>
-    </tr>
-    <tr>
-    <td>FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;</td><td>一意のログ レベル値とそれが出現した回数を含む新しい データ セットを作成します。 これは FREQUENCIES に格納されます。</td>
-    </tr>
-    <tr>
-    <td>RESULT = order FREQUENCIES by COUNT desc;</td><td>数が多い順にログ レベルを並べ替えて、RESULT に格納します。</td>
-    </tr>
-    </table>
-5. 変換の結果は `STORE` ステートメントで保存することもできます。 たとえば、以下では `RESULT` がクラスターの既定のストレージ コンテナーの **/example/data/pigout** ディレクトリに保存されます。
+4. 次の表のステートメントを使用して、変換を適用します。
 
-        STORE RESULT into 'wasbs:///example/data/pigout';
+    | Pig Latin ステートメント | ステートメントの実行内容 |
+    | ---- | ---- |
+    | `FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;` | ログ レベルに null 値を含む行を削除し、結果を `FILTEREDLEVELS` に格納します。 |
+    | `GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;` | ログ レベルで列をグループ化し、結果を `GROUPEDLEVELS` に格納します。 |
+    | `FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;` | 一意のログ レベル値とそれが出現した回数を含む データ セットを作成します。 データ セットは `FREQUENCIES` に格納されます。 |
+    | `RESULT = order FREQUENCIES by COUNT desc;` | 数が多い順にログ レベルを並べ替えて、`RESULT` に格納します。 |
+
+    > [!TIP]
+    > 各手順の後に `DUMP` を使用して、変換の結果を表示します。
+
+5. 変換の結果は `STORE` ステートメントで保存することもできます。 たとえば、以下のステートメントでは `RESULT` がクラスターの既定のストレージの `/example/data/pigout` ディレクトリに保存されます。
+
+        STORE RESULT into '/example/data/pigout';
 
    > [!NOTE]
-   > データは、 **part-nnnnn**という名前のファイルの指定したディレクトリに保存されます。 ディレクトリが既に存在する場合は、エラーが発生します。
-   >
-   >
+   > データは、`part-nnnnn` という名前のファイルの指定したディレクトリに保存されます。 ディレクトリが既に存在する場合は、エラーが発生します。
+
 6. エラーを解決するには、次のステートメントを入力します。
 
         QUIT;
 
 ### <a name="pig-latin-batch-files"></a>Pig Latin バッチ ファイル
+
 Pig コマンドを使用して、ファイルに含まれた Pig Latin を実行することもできます。
 
-1. エラーを解決したら、次のコマンドを使用して、STDIN を **pigbatch.pig**という名前のファイルにパイプします。 このファイルは、SSH セッションでログインしているアカウントのホーム ディレクトリに作成されます。
+1. エラーを解決したら、次のコマンドを使用して、STDIN を `pigbatch.pig` という名前のファイルにパイプします。 このファイルは、SSH ユーザー アカウントのホーム ディレクトリに作成されます。
 
         cat > ~/pigbatch.pig
+
 2. 次の行を入力または貼り付けて、Ctrl + D キーを押します。
 
-        LOGS = LOAD 'wasbs:///example/data/sample.log';
+        LOGS = LOAD '/example/data/sample.log';
         LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
         FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;
         GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;
         FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;
         RESULT = order FREQUENCIES by COUNT desc;
         DUMP RESULT;
-3. 次の Pig コマンドを使用して、 **pigbatch.pig** ファイルを実行します。
+
+3. 次の Pig コマンドを使用して、`pigbatch.pig` ファイルを実行します。
 
         pig ~/pigbatch.pig
 
-    バッチ ジョブが完了したら、次の出力が表示されます (前の手順の `DUMP RESULT;` での出力と同じ内容です)。
+    バッチ ジョブが完了すると、次の出力が表示されます。
 
         (TRACE,816)
         (DEBUG,434)
@@ -134,15 +122,14 @@ Pig コマンドを使用して、ファイルに含まれた Pig Latin を実�
         (ERROR,6)
         (FATAL,2)
 
-## <a id="summary"></a>概要
-このように、Pig コマンドでは、Pig Latin を使用して MapReduce 操作を対話的に実行できるだけでなく、バッチ ファイルに格納されたステートメントも実行できます。
 
 ## <a id="nextsteps"></a>次のステップ
-HDInsight での Pig に関する全般的な情報
+
+HDInsight での Pig に関する全般的な情報について詳しくは、次のドキュメントを参照してください。
 
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 
-HDInsight での Hadoop のその他の使用方法に関する情報
+HDInsight での Hadoop の操作について詳しくは、次のドキュメントを参照してください。
 
 * [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)

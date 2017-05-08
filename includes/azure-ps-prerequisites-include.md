@@ -4,8 +4,3 @@
 
 > [!NOTE]
 > Azure アカウントをお持ちでない場合は、取得する必要があります。 [ここで無料試用版](../articles/active-directory/sign-up-organization.md)にサインアップしてください。
-
-
-<!--HONumber=Dec16_HO1-->
-
-

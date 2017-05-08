@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: charwen
 translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 7e866a218c003390e0281f1adce7c0d843d006c0
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 594dee64f49e83949403fc85903ec66f9cf0d996
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -82,7 +82,7 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 ## <a name="new"></a>新しい仮想ネットワークおよび共存する接続を作成するには
 この手順では、VNet を作成し、共存するサイト間接続と ExpressRoute 接続を作成します。
 
-1. Azure PowerShell コマンドレットの最新版をインストールする必要があります。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」を参照してください。 この構成に使用するコマンドレットは、使い慣れたコマンドレットとは少し異なる場合があることにご注意ください。 必ず、これらの手順で指定されているコマンドレットを使用してください。 
+1. Azure PowerShell コマンドレットの最新版をインストールする必要があります。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」を参照してください。 この構成に使用するコマンドレットは、使い慣れたコマンドレットとは少し異なる場合があることにご注意ください。 必ず、これらの手順で指定されているコマンドレットを使用してください。 
 2. 仮想ネットワークのスキーマを作成します。 構成スキーマの詳細については、「 [Azure Virtual Network の構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100.aspx)」を参照してください。
    
     スキーマを作成する場合は、次の値を使用していることを確認します。
@@ -195,7 +195,7 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 > 
 > 
 
-1. Azure リソース マネージャー PowerShell コマンドレットの最新版をインストールする必要があります。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」を参照してください。 この構成に使用するコマンドレットは、使い慣れたコマンドレットとは少し異なる場合があることにご注意ください。 必ず、これらの手順で指定されているコマンドレットを使用してください。 
+1. Azure リソース マネージャー PowerShell コマンドレットの最新版をインストールする必要があります。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」を参照してください。 この構成に使用するコマンドレットは、使い慣れたコマンドレットとは少し異なる場合があることにご注意ください。 必ず、これらの手順で指定されているコマンドレットを使用してください。 
 2. 既存の ExpressRoute またはサイト間 VPN ゲートウェイを削除します。 次のコマンドレットを使用して、自身の値に置き換えます。
    
         Remove-AzureVNetGateway –VnetName MyAzureVNET

@@ -12,22 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2017
+ms.date: 03/26/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 20afeb3ba290ddf728d2b52c076c7a57fadc77c6
-ms.openlocfilehash: dfbb5e2358cd857c2a16ded5d4d82c1f246cbe20
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 12b67d92fb955d9d20b0e86a38baa47a3717a333
+ms.lasthandoff: 03/31/2017
 
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication についてよく寄せられる質問
-この FAQ では、Azure Multi-Factor Authentication と Multi-Factor Authentication サービスの利用について、課金モデルや使いやすさに関する疑問を含め、よく寄せられる質問に答えます。
+この FAQ では、Azure Multi-Factor Authentication と Multi-Factor Authentication サービスの利用について、よく寄せられる質問に回答します。 FAQ の内容は、サービス全般、課金モデル、ユーザー エクスペリエンス、トラブルシューティングに分けてまとめられています。 
 
 ## <a name="general"></a>全般
 **Q: Azure Multi-Factor Authentication Server ではどのようにユーザー データが処理されますか。**
 
-Multi-Factor Authentication Server では、ユーザーのデータはオンプレミス サーバーのみに格納されます。 永続的なユーザー データはクラウドに格納されません。 ユーザーが&2; 段階認証を実行すると、Multi-Factor Authentication Server から Azure Multi-Factor Authentication クラウド サービスにデータが送信され、認証が要求されます。 Multi-Factor Authentication Server と Multi-Factor Authentication クラウド サービス間の通信には、送信方向のポート 443 経由で Secure Sockets Layer (SSL) またはトランスポート層セキュリティ (TLS) が使用されます。
+Multi-Factor Authentication Server では、ユーザーのデータはオンプレミス サーバーのみに格納されます。 永続的なユーザー データはクラウドに格納されません。 ユーザーが 2 段階認証を実行すると、Multi-Factor Authentication Server から Azure Multi-Factor Authentication クラウド サービスにデータが送信され、認証が要求されます。 Multi-Factor Authentication Server と Multi-Factor Authentication クラウド サービス間の通信には、送信方向のポート 443 経由で Secure Sockets Layer (SSL) またはトランスポート層セキュリティ (TLS) が使用されます。
 
 認証要求がクラウド サービスに送信されると、認証レポートと使用状況レポート用のデータが収集されます。 2 段階認証のログに含まれるデータ フィールドは次のとおりです。
 
@@ -44,105 +44,140 @@ Multi-Factor Authentication Server では、ユーザーのデータはオンプ
 
 オプション フィールドを Multi-Factor Authentication Server で構成できます。
 
-認証結果 (成功または拒否) と、拒否された場合の拒否理由も、認証データと共に格納され、認証レポートと使用状況レポートで使用できます。
+認証データと共に、認証結果 (成功または拒否) と、拒否された場合はその理由が保存されます。 このデータは、認証と使用状況のレポートで確認できます。
 
 ## <a name="billing"></a>課金
-課金に関する質問の大半は、「[Multi-Factor Authentication の価格](https://azure.microsoft.com/pricing/details/multi-factor-authentication/)」を参照することで答えを得ることができます。
+課金に関するほとんどの疑問は、「[Multi-Factor Authentication の価格](https://azure.microsoft.com/pricing/details/multi-factor-authentication/)」ページか「[Azure Multi-Factor Authentication の入手方法](multi-factor-authentication-versions-plans.md)」のドキュメントを参照することで解決します。
 
-**Q: ユーザーを認証するために使用される通話やテキスト メッセージの料金は組織に請求されますか。**
+**Q: 認証用の電話呼び出しやテキスト メッセージの送信について、自分の組織に料金が請求されることはありますか。**
 
-Azure Multi-Factor Authentication 経由でユーザーに対して行われる通話や送信されるテキスト メッセージの料金が組織に請求されることはありません。 電話の所有者が受け取る通話やテキスト メッセージの料金は、所有者が契約している電話サービスに従って請求される場合があります。
+いいえ。Azure Multi-Factor Authentication 経由でユーザーに対して行われる電話呼び出しや送信されるテキスト メッセージの料金が個別に請求されることはありません。 認証ごとの MFA プロバイダーを使用している場合は認証ごとに料金が請求されますが、認証の手段に対する請求は行われません。
 
-**Q: 「ユーザーごと」の課金モデルは、Multi-Factor Authentication を使用できるように構成されているユーザー数に基づきますか、それとも確認を実行するユーザー数に基づいて課金されるのでしょうか。**
+ユーザーが受ける電話呼び出しやテキスト メッセージの料金は、個人で契約している電話サービスに従って請求されます。
 
-請求は、Multi-Factor Authentication を使用できるように構成されているユーザーの数に基づいて行われます。
+**Q: ユーザーごとの課金モデルで、課金の対象となるのは有効化されているすべてのユーザーですか、それとも 2 段階認証を実行したユーザーのみですか。**
+
+料金の請求は Multi-Factor Authentication を使用するように構成されているユーザーの数に基づいて行われ、そのユーザーが該当月に認証を開始したかどうかは関係ありません。 
 
 **Q: Multi-Factor Authentication の請求はどのように行われますか。**
 
-"ユーザーごと" または"認証ごと" のモデルを使用している場合、Azure MFA は使用量ベースのリソースです。 課金は、仮想マシンや Web サイトなどと同じように、組織の Azure サブスクリプションに対して行われます。
+(ユーザーごと、または認証ごとの MFA プロバイダーを作成して) Azure Multi-Factor Authentication をスタンドアロン サービスとして購入した場合、組織の Azure サブスクリプションに対して使用量に基づく料金が毎月請求されます。 この課金モデルは、仮想マシンと Web サイトの使用量に対する Azure の課金方法に似ています。
 
-ライセンス モデルを使用する場合は、Azure Multi-Factor Authentication ライセンスを購入してユーザーに割り当てます。これは、Office 365 や他のサブスクリプション製品と同様です。
+(ユーザーごとの年間ライセンスや、Office 365、Azure AD Premium の一部、または Enterprise Mobility + Security バンドルとして) Azure Multi-Factor Authentication のサブスクリプションを購入した場合、組織では各ユーザーの年間ライセンス料金のみを支払うことになります。
 
-オプションについて詳しくは、「[Azure Multi-Factor Authentication のしくみ](multi-factor-authentication-how-it-works.md)」をご覧ください
+料金オプションの詳細については、「[Azure Multi-Factor Authentication の入手方法](multi-factor-authentication-versions-plans.md)」を参照してください。
 
-**Q: 管理者用の Azure Multi-Factor Authentication の無料版はありますか。**
+**Q: Azure Multi-Factor Authentication の無料版はありますか。**
 
-場合によります。 Multi-Factor Authentication for Azure Administrators は、Azure MFA の機能の一部を無料で提供します。 このプランは、使用量ベースの Azure Multi-Factor Authentication プロバイダーにリンクされていない Azure Active Directory インスタンスの Azure グローバル管理者グループのメンバーに適用されます。 Multi-Factor Authentication プロバイダーを使用すると、Multi-Factor Authentication を使用できるように構成されているディレクトリ内のすべての管理者とユーザーが、Azure Multi-Factor Authentication のフル バージョンにアップグレードされます。
+場合によります。 
 
-**Q: Office 365 ユーザー用の Azure Multi-Factor Authentication の無料版はありますか。**
+Azure 管理者向けの Multi-Factor Authentication では、一部の Azure MFA 機能を無料で利用し、Azure と Office 365 管理者ポータルを含む Microsoft オンライン サービスにアクセスできます。 このプランは、Azure Active Directory インスタンスの Azure 管理者のうち、MFA ライセンス、バンドル、またはスタンドアロンの使用量ベースのプロバイダーを通じて提供される、通常版の Azure MFA を所有していない管理者に適用されます。 管理者が無料版を使用している場合、Multi-Factor Authentication プロバイダーを作成すると、Multi-Factor Authentication を使用するように構成されているディレクトリ内のすべての管理者とユーザーが、通常版の Azure Multi-Factor Authentication を使用できるようになります。
 
-場合によります。 Multi-Factor Authentication for Office 365 は、Azure MFA の機能の一部を無料で提供します。 このプランは、使用量ベースの Azure Multi-Factor Authentication プロバイダーが対応する Azure Active Directory インスタンスにリンクされていない場合に、Office 365 ライセンスが割り当てられているユーザーに適用されます。 Multi-Factor Authentication プロバイダーを使用すると、Multi-Factor Authentication を使用できるように構成されているディレクトリ内のすべての管理者とユーザーが、Azure Multi-Factor Authentication のフル バージョンにアップグレードされます。
+Office 365 ユーザー向けの Multi-Factor Authentication では、一部の Azure MFA 機能を無料で利用し、Exchange Online、SharePoint Online などの Office 365 サービスを含む Microsoft オンライン サービスにアクセスできます。 このプランは、Office 365 ライセンスに対応する Azure Active Directory インスタンスに、MFA ライセンス、バンドル、またはスタンドアロンの使用量ベースのプロバイダーを通じて提供される通常版の Azure MFA がない場合、その Office 365 ライセンスが割り当てられているユーザーに適用されます。 
 
 **Q: ユーザーごとと認証ごとの使用量課金モデルは、組織でいつでも切り替えることができますか。**
 
-組織でリソースを作成するときに課金モデルを選択します。 リソースをプロビジョニングした後に課金モデルを変更することはできません。 ただし、別の Multi-Factor Authentication リソースを作成して元のリソースを置き換えることは可能です。 ユーザー設定と構成オプションを新しいリソースに転送することはできません。
+使用量ベースの課金方法により、スタンドアロン サービスとして組織で MFA を購入する場合は、MFA プロバイダーを作成する際に課金モデルを選択します。 MFA プロバイダーの作成後に課金モデルを変更することはできません。 ただし、MFA プロバイダーを削除すれば、新しい MFA プロバイダーを別の課金モデルで作成できます。 
 
-**Q: 使用量課金とライセンス モデルは、組織でいつでも切り替えることができますか。**
+MFA プロバイダーは、作成時に Azure Active Directory (別名 "Azure AD テナント") にリンクすることができます。 現在の MFA プロバイダーが Azure AD テナントにリンクされている場合は、その MFA プロバイダーを安全に削除し、同じ Azure AD テナントにリンクされた新しい MFA プロバイダーを作成することができます。 また、MFA が有効化されているすべてのユーザーに対応できる、十分な数の MFA、Azure AD Premium、または Enterprise Mobility + Security (EMS) ライセンスを購入している場合は、MFA プロバイダーをすべて削除することもできます。
 
-既にユーザーごとの Azure Multi-Factor Authentication プロバイダーを持っているディレクトリにライセンスが追加されると、所有ライセンス数分が使用量ベース課金から差し引かれます。 Multi-Factor Authentication を使用できるように構成されているすべてのユーザーにライセンスが割り当てられている場合、管理者は Azure Multi-Factor Authentication プロバイダーを削除できます。
+ただし、MFA プロバイダーが Azure AD テナントにリンクされていない場合、または新しい MFA プロバイダーを別の Azure AD テナントにリンクする場合、新しい MFA プロバイダーにユーザー設定と構成オプションは転送されません。 また、既存の Azure MFA Server は、新しい MFA プロバイダーによって生成されるアクティブ化資格情報を使用して再アクティブ化する必要があります。 MFA Server を新しい MFA プロバイダーにリンクするために再アクティブ化しても、電話呼び出しやテキスト メッセージによる認証には影響ありませんが、モバイル アプリ通知は、各ユーザーがモバイル アプリを再アクティブ化するまで機能しなくなります。
 
-認証ごとの使用量課金とライセンス モデルを混在させることはできません。 認証ごとの Multi-Factor Authentication プロバイダーがディレクトリにリンクされている場合、組織は所有しているライセンスに関係なく、すべての Multi-Factor Authentication 確認要求に対して課金されます。
+MFA プロバイダーの詳細については、「[Azure Multi-Factor Auth プロバイダーの概要](multi-factor-authentication-get-started-auth-provider.md)」を参照してください。
+
+**Q: 使用量ベースの課金とサブスクリプション (ライセンスベースのモデル) は、組織でいつでも切り替えることができますか。**
+
+場合によります。 
+
+ディレクトリに "*ユーザーごと*" の Azure Multi-Factor Authentication プロバイダーがある場合は、MFA ライセンスを追加できます。 ライセンスを所有しているユーザーは、ユーザーごとの使用量ベースの課金にはカウントされません。 ライセンスのないユーザーに対しては、MFA プロバイダーを通じて MFA を有効化できます。 Multi-Factor Authentication を使用するように構成されているすべてのユーザーにライセンスを購入して割り当てた場合は、Azure Multi-Factor Authentication プロバイダーを削除できます。 将来、ユーザー数がライセンス数を上回るような場合には、ユーザーごとの MFA プロバイダーをいつでも別に作成できます。 
+
+ディレクトリに "*認証ごと*" の Azure Multi-Factor Authentication プロバイダーがある場合は、その MFA プロバイダーがサブスクリプションにリンクされている限り、認証ごとに常に料金が請求されます。 MFA ライセンスをユーザーに割り当てることはできますが、2 段階認証の要求が行われると、それが MFA ライセンスの割り当てられたユーザーによる要求かどうかに関係なく、毎回料金が請求されます。 
 
 **Q: 組織が Azure Multi-Factor Authentication を使用するには、ID の使用と同期が必要ですか。**
 
-組織で使用量ベースの課金モデルを使用する場合、Azure Active Directory は必要ありません。 ディレクトリへの Multi-Factor Authentication プロバイダーのリンクはオプションです。 組織がディレクトリにリンクされていない場合は、オンプレミスの Azure Multi-Factor Authentication Server または Azure Multi-factor Authentication SDK をデプロイできます。
+組織で使用量ベースの課金モデルを使用する場合、Azure Active Directory の利用は任意であり、必須ではありません。 MFA プロバイダーが Azure AD テナントにリンクされていない場合は、Azure Multi-Factor Authentication Server または Azure Multi-factor Authentication SDK をオンプレミスにのみデプロイできます。
 
-ライセンス モデルでは Azure Active Directory が必要です。これは、ライセンスが購入されてディレクトリ内のユーザーに割り当てられると、ライセンスがディレクトリに追加されるためです。
+ライセンス モデルでは Azure Active Directory が必要です。これは、ライセンスを購入してディレクトリ内のユーザーに割り当てると、そのライセンスが Azure AD テナントに追加されるためです。
 
-## <a name="usability"></a>使いやすさ
-**Q: ユーザーの携帯電話に応答が届かない場合、またはユーザーが携帯電話を利用できない場合はどうすればよいですか。**
+## <a name="manage-and-support-user-accounts"></a>ユーザー アカウントの管理とサポート
 
-ユーザーが予備の電話番号を構成している場合は、サインインをもう一度実行し、サインイン ページでその電話番号を選択します。 ユーザーが別の方法を構成していない場合は、組織の管理者がユーザーのメインの電話に割り当てられている番号を更新できます。
+**Q: ユーザーの携帯電話に応答が届かない場合、または携帯電話が手元にない場合にはどのように対処するようユーザーに伝えればよいですか。**
 
-**Q: アクセスできなくなったアカウントについてユーザーから問い合わせがあった場合、管理者はどうすればよいですか。**
+すべてのユーザーが複数の認証方法を構成していることが前提となります。 再度サインインを試すようユーザーに伝えますが、その際にサインイン ページで別の認証方法を選択してもらいます。 
 
-管理者は、ユーザーに登録プロセスを再度実行するように依頼することで、ユーザーのアカウントをリセットできます。 詳細については、 [クラウドでの Azure Multi-Factor Authentication によるユーザーおよびデバイスの設定の管理](multi-factor-authentication-manage-users-and-devices.md)に関するページを参照してください。
+[エンドユーザー向けトラブルシューティング ガイド](./end-user/multi-factor-authentication-end-user-troubleshoot.md)を参照用としてユーザーに示すこともできます。
 
-**Q: アプリ パスワードが使用されている電話をユーザーが紛失した場合や盗難された場合は、管理者はどうすればよいでしょうか。**
 
-管理者は、そのユーザーのすべてのアプリ パスワードを削除して、承認されていないアクセスを防ぐことできます。 ユーザーは、代わりのデバイスを入手したら、パスワードを再作成できます。 詳細については、 [クラウドでの Azure Multi-Factor Authentication によるユーザーおよびデバイスの設定の管理](multi-factor-authentication-manage-users-and-devices.md)に関するページを参照してください。
+**Q: アカウントに入れないユーザーがいる場合はどうすればよいですか。**
 
-**Q: ユーザーが非ブラウザー アプリにサインインできない場合はどうすればよいでしょうか。**
+ユーザーに登録プロセスを再度実行してもらうことで、ユーザーのアカウントをリセットできます。 詳細については、 [クラウドでの Azure Multi-Factor Authentication によるユーザーおよびデバイスの設定の管理](multi-factor-authentication-manage-users-and-devices.md)に関するページを参照してください。
 
-Multi-Factor Authentication を使用できるように構成されているユーザーが一部の非ブラウザー アプリにサインインするには、アプリ パスワードが必要になります。 ユーザーは、サインイン情報のクリア (削除)、アプリの再起動、ユーザー名とアプリ パスワードを使用したサインインを行う必要があります。
+**Q: アプリ パスワードを使用している携帯電話を紛失したユーザーがいる場合は、どうすればよいですか。**
 
-アプリ パスワードの作成や [アプリ パスワードに関するヘルプ](multi-factor-authentication-end-user-app-passwords.md)についての詳細を確認してください。
+未承認のアクセスを防ぐには、そのユーザーのアプリ パスワードをすべて削除します。 ユーザーは、代わりのデバイスを入手した後に、パスワードを再作成できます。 詳細については、 [クラウドでの Azure Multi-Factor Authentication によるユーザーおよびデバイスの設定の管理](multi-factor-authentication-manage-users-and-devices.md)に関するページを参照してください。
+
+**Q: ユーザーがブラウザー以外のアプリにサインインできない場合はどうすればよいですか。**
+
+組織でまだ従来型クライアントを使用しており、かつ[アプリ パスワードの使用を許可している](multi-factor-authentication-whats-next.md#app-passwords)場合、ユーザーがこのような従来型のクライアントにユーザー名とパスワードでサインインすることはできません。 代わりに、ユーザーは[アプリ パスワードを設定する](./end-user/multi-factor-authentication-end-user-app-passwords.md)必要があります。 ユーザーはサインイン情報をクリア (削除) してアプリを再起動し、ユーザー名と、通常のパスワードではなく "*アプリ パスワード*" を使用してサインインしなければなりません。 
+
+組織で従来型クライアントを使用していない場合は、アプリ パスワードの作成をユーザーに許可しないようにしてください。 
 
 > [!NOTE]
 > Office 2013 クライアントのための最新の認証
 > 
-> Office 2013 クライアント (Outlook など) では、新しい認証プロトコルがサポートされます。 Multi-Factor Authentication をサポートするように Office 2013 を構成することができます。 Office 2013 を構成すると、Office 2013 クライアントのアプリ パスワードが不要になります。 詳しくは、「 [Office 2013 modern authentication public preview announcement (Office 2013 の最新の認証のパブリック プレビューに関する発表)](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/)」を参照してください。
-> 
-> 
+> アプリ パスワードは、先進認証をサポートしていないアプリにのみ必要になります。 Office 2013 クライアントでは、先進認証プロトコルがサポートされますが、構成が必要です。 さらに新しいバージョンの Office クライアントでは、先進認証プロトコルが自動的にサポートされます。 詳しくは、「 [Office 2013 modern authentication public preview announcement (Office 2013 の最新の認証のパブリック プレビューに関する発表)](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/)」を参照してください。
 
-**Q: テキスト メッセージを受信しない場合、または双方向のテキスト メッセージに返信したが確認がタイムアウトになる場合は、どうすればよいでしょうか。**
+**Q: テキスト メッセージが届かない場合や、双方向テキスト メッセージに返信しても認証がタイムアウトになる場合があるとユーザーが訴えています。**
 
 双方向 SMS でのテキスト メッセージの配信と応答の受信は保証されませんが、これはサービスの信頼性に影響しかねない制御不能な要因があるためです。 これらの要因には、相手国、携帯電話会社、信号の強さなどがあります。
 
-テキスト メッセージを確実に受信することが難しいユーザーは、モバイル アプリまたは電話による方法を選択する必要があります。 モバイル アプリは、携帯電話と Wi-fi 接続の両方で通知を受け取ることができます。 さらに、デバイスに信号がまったくない場合でも、モバイル アプリは検証コードを生成できます。 Microsoft Authenticator アプリは、[Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)、[Android](http://go.microsoft.com/fwlink/?Linkid=825072)、[IOS](http://go.microsoft.com/fwlink/?Linkid=825073) で利用できます。
+テキスト メッセージがユーザーに確実に届かない問題が頻発する場合は、代わりにモバイル アプリか電話呼び出しによる認証方法を使用するようユーザーに指示してください。 モバイル アプリは、携帯電話と Wi-fi 接続の両方で通知を受け取ることができます。 さらに、デバイスに信号がまったくない場合でも、モバイル アプリは検証コードを生成できます。 Microsoft Authenticator アプリは、[Android](http://go.microsoft.com/fwlink/?Linkid=825072)、[IOS](http://go.microsoft.com/fwlink/?Linkid=825073)、[Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071) で利用できます。
 
 テキスト メッセージを使用する必要がある場合は、できるだけ双方向の SMS ではなく一方向の SMS を使用することをお勧めします。 一方向の SMS は、信頼性が高く、別の国から送信されたテキスト メッセージに応答して高額な国際 SMS 料金をユーザーが課金されるのを防ぐことができます。
 
+**Q: ユーザーが認証コードを入力しなければならない、テキスト メッセージを受信してからシステムがタイムアウトになるまでの制限時間は変更できますか。**
+
+場合によりますが、変更できます。 Azure MFA Server 7.0 以降では、双方向テキスト メッセージのタイムアウト設定を構成できます。 
+
+Azure MFA Server では、ワンタイム パスコードが既定で 300 秒 (5 分) 間保管されます。 300 秒が経過してからユーザーがコードを入力すると、認証は拒否されます。 タイムアウトはレジストリ キーを設定することにより調整できます。 
+
+1. HKLM\Software\Wow6432Node\Positive Networks\PhoneFactor に移動します。
+2. **pfsvc_pendingSmsTimeoutSeconds** という名前の DWORD レジストリ キーを作成し、Azure MFA Server でワンタイム パスコードを保管する時間を秒単位で設定します。
+
+単方向テキスト メッセージの場合、MFA Server ではワンタイム パスコードが 300 秒間保管され、Azure AD のクラウドベースの MFA では 180 秒間保管されます。 この設定は構成できません。 
+
 **Azure Multi-Factor Authentication Server でハードウェア トークンを使用できますか。**
 
-Azure Multi-Factor Authentication Server を使用している場合、サード パーティにによるオープン認証 (OATH) の時間ベースのワンタイム パスワード (TOTP) トークンをインポートして&2; 段階認証で使用できます。
+Azure Multi-Factor Authentication Server を使用している場合、サード パーティにによるオープン認証 (OATH) の時間ベースのワンタイム パスワード (TOTP) トークンをインポートして 2 段階認証で使用できます。
 
-CSV ファイルにシークレット キー ファイルを配置して Azure Multi-Factor Authentication Server にインポートしている場合は、OATH TOTP トークンである ActiveIdentity トークンを使用できます。 OATH トークンと Active Directory フェデレーション サービス (ADFS)、リモート認証ダイヤルイン ユーザー サービス (RADIUS) (クライアント システムがアクセス チャレンジ応答を処理できる場合)、インターネット インフォメーション サーバー (IIS) のフォーム ベース認証を使用できます。
+CSV ファイル内に秘密キーを配置して Azure Multi-Factor Authentication Server にインポートすると、OATH TOTP トークンである ActiveIdentity トークンを使用できます。 OATH トークンは、Active Directory フェデレーション サービス (ADFS)、インターネット インフォメーション サーバー (IIS) のフォームベース認証、リモート認証ダイヤルイン ユーザー サービス (RADIUS) (クライアント システムでアクセス チャレンジ応答を処理できる場合) で使用できます。
 
-次の形式のサードパーティによる OATH TOTP トークンをインポートできます。  
+以下の形式のサードパーティによる OATH TOTP トークンをインポートできます。  
 
-* 移植可能な対称キー コンテナー (PSKC)  
-* CSV。シリアル番号、Base 32 形式の秘密キー、および時間間隔がファイルに含まれている場合  
+- 移植可能な対称キー コンテナー (PSKC)  
+- CSV。シリアル番号、Base 32 形式の秘密キー、および時間間隔がファイルに含まれている場合  
 
 **Q: Azure Multi-Factor Authentication Server を使用してターミナル サービスをセキュリティで保護することはできますか。**
 
-はい。ただし、Windows Server 2012 R2 以降を使用している場合は、リモート デスクトップ ゲートウェイ (RD ゲートウェイ) を使用してのみ可能です。
+はい。ただし、Windows Server 2012 R2 以降を使用している場合は、リモート デスクトップ ゲートウェイ (RD ゲートウェイ) の使用によってのみターミナル サービスをセキュリティで保護できます。
 
-Windows Server 2012 R2 におけるセキュリティの変更により、Azure Multi-Factor Authentication Server から、Windows Server 2012 以前のバージョンのローカル セキュリティ機関 (LSA) のセキュリティ パッケージに接続する方法が変更されました。 Windows 2012 以前のターミナル サービスのバージョンでは、[Windows 認証でアプリケーションをセキュリティで保護する](multi-factor-authentication-get-started-server-windows.md#to-secure-an-application-with-windows-authentication-use-the-following-procedure)ことができます。 Windows Server 2012 R2 を使用している場合は、RD ゲートウェイが必要です。
+Windows Server 2012 R2 におけるセキュリティの変更により、Azure Multi-Factor Authentication Server から Windows Server 2012 以前のバージョンのローカル セキュリティ機関 (LSA) のセキュリティ パッケージに接続する方法が変わりました。 Windows 2012 以前のターミナル サービスのバージョンでは、[Windows 認証でアプリケーションをセキュリティで保護する](multi-factor-authentication-get-started-server-windows.md#to-secure-an-application-with-windows-authentication-use-the-following-procedure)ことができます。 Windows Server 2012 R2 を使用している場合は、RD ゲートウェイが必要です。
 
-**Q: 発信者 ID を設定した後に、ユーザーが Multi-Factor Authentication 呼び出しを匿名の発信者から受けるのはなぜですか。**
+**Q: MFA Server で発信者 ID を構成しましたが、ユーザーがまだ匿名の発信者から Multi-Factor Authentication の呼び出しを受けます。**
 
 公衆電話網経由で Multi-Factor Authentication の呼び出しが行われた場合、発信者 ID をサポートしていない通信事業者を通じて呼び出しがルーティングされることがあります。 このため、Multi-Factor Authentication システムが常に発信者 ID を送信していても、発信者 ID は保証されません。
+
+**Q: セキュリティ情報の登録を求めるメッセージがユーザーに表示されるのはなぜでしょうか。**
+セキュリティ情報の登録を求めるメッセージがユーザーに表示される場合、以下のようないくつかの理由が考えられます。
+
+- そのユーザーは Azure AD の管理者によって MFA が有効化されているが、まだアカウントにセキュリティ情報を登録していない。 
+- そのユーザーに対して、Azure AD でのセルフサービスによるパスワードのリセットが有効化されている。 セキュリティ情報は、将来パスワードを忘れた場合に、それをリセットするために役立ちます。
+- そのユーザーは事前に MFA への登録を行わずに、MFA を要求する条件付きアクセス ポリシーのあるアプリケーションにアクセスした。
+- そのユーザーは Azure AD (Azure AD Join を含む) にデバイスを登録しようとしており、ユーザーの組織ではデバイスの登録に MFA を要求しているが、ユーザーは事前に MFA への登録を行っていない。
+- そのユーザーは Windows 10 で Windows Hello for Business を生成 (この操作に MFA が必要) しようとしているが、事前に MFA への登録を行っていない。
+- 組織で作成および有効化されている MFA 登録ポリシーが、そのユーザーに適用されている。
+- そのユーザーは事前に MFA への登録を行っているが、選択した認証方法が、その後管理者によって無効化されている。 このため、ユーザーはもう一度 MFA 登録を行い、新しい既定の認証方法を選択する必要があります。
+
 
 ## <a name="errors"></a>エラー
 **Q: モバイル アプリ通知を使用して認証を行うときに、"認証しようとしているアカウントはアクティブ化されていません" というエラー メッセージが表示された場合、ユーザーはどうすればよいでしょうか。**
@@ -156,7 +191,7 @@ Windows Server 2012 R2 におけるセキュリティの変更により、Azure 
 
 **Q: ブラウザー以外のアプリケーションでサインインしたときに 0x800434D4L エラー メッセージが表示された場合、ユーザーはどうすればよいでしょうか。**
 
-現時点では、ユーザーは、ブラウザーからアクセスできるアプリケーションとサービスでのみ、追加のセキュリティ確認を使用することができます。 Windows PowerShell など、ローカル コンピューターにインストールされている非ブラウザー アプリケーション ("*リッチ クライアント アプリケーション*" とも呼ばれます) は、追加のセキュリティ確認を必要とするアカウントでは機能しません。 この場合、アプリケーションで 0x800434D4L エラーがユーザーに表示される可能性があります。
+0x800434D4L エラーは、2 段階認証を要求するアカウントでは機能しない、ローカル コンピューターにインストールされているブラウザー以外のアプリケーションにサインインしようとすると発生します。 
 
 これを回避するには、管理関連の操作用と管理以外の操作用に異なるユーザー アカウントを使用します。 非管理アカウントを使用して Outlook にサインインできるように、後ほど、管理アカウントと非管理アカウントのメールボックスにリンクを作成することができます。 詳細については、「 [管理者がユーザーのメールボックスの内容を開いたり表示したりできるようにする](http://help.outlook.com/141/gg709759.aspx?sl=1)」を参照してください。
 

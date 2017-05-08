@@ -11,7 +11,3 @@ Azure Portal で目的の接続に移動することで、クラシック VNet V
 5. 接続の詳細を表示するには、接続の名前をクリックして **[サイト対サイト VPN 接続]** ブレードを開きます。
 
     ![接続状態に関する詳細情報](./media/vpn-gateway-verify-connection-azureportal-classic/connections4.png "接続状態に関する詳細情報")
-
-<!--HONumber=Jan17_HO5-->
-
-

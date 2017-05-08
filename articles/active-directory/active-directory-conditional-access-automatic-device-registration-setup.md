@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 96fb170e7a079fbb4bcfb4a6b1e98970a709406f
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 0fb7e8fe778c8d6f7e12b1c8a75c95941da3d4d9
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="how-to-configure-automatic-registration-of-windows-domain-joined-devices-with-azure-active-directory"></a>Azure Active Directory への Windows ドメイン参加済みデバイスの自動登録の構成方法
 
-[Azure Active Directory のデバイスベースの条件付きアクセス](active-directory-conditional-access-azure-portal.md)を使用するためには、コンピューターを Azure Active Directory (Azure AD) に登録する必要があります。 [Azure Active Directory PowerShell モジュール](https://docs.microsoft.com/en-us/powershell/msonline/)の [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) コマンドレットを使用して、組織内の登録済みデバイスの一覧を取得できます。 
+[Azure Active Directory のデバイスベースの条件付きアクセス](active-directory-conditional-access-azure-portal.md)を使用するためには、コンピューターを Azure Active Directory (Azure AD) に登録する必要があります。 [Azure Active Directory PowerShell モジュール](/powershell/azure/install-msonlinev1?view=azureadps-2.0)の [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) コマンドレットを使用して、組織内の登録済みデバイスの一覧を取得できます。 
 
 この記事では、ユーザーの組織において、Azure AD による Windows ドメイン参加デバイスの自動登録を構成する手順について説明します。
 
@@ -302,7 +302,7 @@ Windows Server 2008 またはそれ以前のバージョンが実行されてい
 
 
 確認済みのドメイン名の詳細については、「[Azure Active Directory へのカスタム ドメイン名の追加](active-directory-add-domain.md)」を参照してください。  
-確認済みの会社のドメインの一覧を取得するには、[Get-msoldomain](https://docs.microsoft.com/powershell/msonline/v1/get-msoldomain) コマンドレットを使用できます。 
+確認済みの会社のドメインの一覧を取得するには、[Get-msoldomain](/powershell/module/msonline/get-msoldomain?view=azureadps-1.0) コマンドレットを使用できます。 
 
 ![Get-MsolDomain](./media/active-directory-conditional-access-automatic-device-registration-setup/01.png)
 
@@ -418,7 +418,7 @@ Windows Server 2008 またはそれ以前のバージョンが実行されてい
     ]
     => issue(
         Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", 
-        Value = "http://<verified-domain-name>/adfs/services/trust/"
+        Value = "http://' + $oneOfVerifiedDomainNames + '/adfs/services/trust/"
     );'
     }
 
@@ -461,7 +461,7 @@ Windows Server 2008 またはそれ以前のバージョンが実行されてい
         c:[Type == "http://schemas.xmlsoap.org/claims/UPN"]
         => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)",  "http://${domain}/adfs/services/trust/")); 
 
-- 既にユーザー アカウントの **ImmutableID** 要求を発行した場合は、スクリプトで **$oneOfVerifiedDomainNames** の値を **$true** に設定します。
+- ユーザー アカウントの **ImmutableID** 要求を既に発行している場合は、スクリプトの **$immutableIDAlreadyIssuedforUsers** の値を **$true** に設定します。
 
 ## <a name="step-3-enable-windows-down-level-devices"></a>手順 3: ダウンレベルの Windows デバイスの有効化
 
@@ -565,7 +565,7 @@ System Center Configuration Manager などのソフトウェア ディストリ�
 
 ## <a name="step-5-verify-registered-devices"></a>手順 5: 登録されたデバイスの検証
 
-[Azure Active Directory PowerShell モジュール](https://docs.microsoft.com/en-us/powershell/msonline/)の [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) コマンドレットを使用して、組織内の正常に登録されたデバイスを確認できます。
+[Azure Active Directory PowerShell モジュール](/powershell/azure/install-msonlinev1?view=azureadps-2.0)の [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) コマンドレットを使用して、組織内の正常に登録されたデバイスを確認できます。
 
 このコマンドレットの出力には、Azure AD に登録されているデバイスが表示されます。 すべてのデバイスを取得するには、**-All** パラメーターを使用し、その後で **deviceTrustType** プロパティを使用してフィルター処理します。 ドメイン参加済みデバイスの値は、**Domain Joined** です。
 

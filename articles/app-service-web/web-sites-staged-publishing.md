@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 8ec4e8699eb2f2e060db264634b04abfacf40e34
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a51be4038ef6f9890645a71cd10cc86cb58929f3
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -187,7 +187,7 @@ ms.lasthandoff: 03/27/2017
 ## <a name="azure-powershell-cmdlets-for-deployment-slots"></a>デプロイ スロット用の Azure PowerShell コマンドレット
 Azure PowerShell は、Windows PowerShell から Azure を管理するためのコマンドレットを提供するモジュールです (Azure App Service のデプロイ スロットを管理するためのサポートなど)。
 
-* Azure PowerShell のインストールと構成、Azure サブスクリプションを使用した Azure PowerShell の認証については、「 [Microsoft Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」を参照してください。  
+* Azure PowerShell のインストールと構成、Azure サブスクリプションを使用した Azure PowerShell の認証については、「 [Microsoft Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」を参照してください。  
 
 - - -
 ### <a name="create-a-web-app"></a>Web アプリを作成する

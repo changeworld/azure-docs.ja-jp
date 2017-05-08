@@ -12,16 +12,11 @@
    4. 8 ～ 32 文字の **[クラウド ストレージ暗号化キー]** を指定し、確定します。 このキーは、デバイス が暗号化されたデータにアクセスするために使用されます。
    5. 利用可能な帯域幅をすべて使用する場合は、**[帯域幅の指定]** ボックスの一覧で **[無制限]** を選択します。 このオプションを **[カスタム]** に設定して帯域幅の制御を利用し、1 ～ 1,000 Mbps の範囲の値を指定することもできます。 
       帯域幅の使用状況に関する情報がある場合は、 **[帯域幅テンプレートの選択]**を指定して、スケジュールに基づいて帯域幅を割り当てることもできます。 詳細な手順については、[帯域幅テンプレートの追加](../articles/storsimple/storsimple-manage-bandwidth-templates.md#add-a-bandwidth-template)に関する記事をご覧ください。
-   6. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-create-volume-container/HCS_CheckIcon-include.png)  をクリックし、ボリューム コンテナーを保存してウィザードを終了します。 
+   6. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-create-volume-container/HCS_CheckIcon-include.png) をクリックし、ボリューム コンテナーを保存してウィザードを終了します。 
    
    新しく作成されたボリューム コンテナーが、 **[ボリューム コンテナー]** ページの一覧に表示されます。
 
 ![ビデオ](./media/storsimple-create-volume-container/Video_icon.png) **ビデオ**
 
 StorSimple ソリューションでボリューム コンテナーを作成する方法を説明したビデオについては、 [こちら](https://azure.microsoft.com/documentation/videos/create-a-volume-container-in-your-storsimple-solution/)を参照してください。
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

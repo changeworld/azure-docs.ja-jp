@@ -16,9 +16,9 @@ ms.workload: NA
 ms.date: 11/02/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: 8323aa27c93c1c460b31f7f7c822644f5eee929a
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: d849eeedae65c8cc35271c2e9b63236760c4629c
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -38,11 +38,6 @@ SQL Database は SQL Server 技術を利用し、[完全](https://msdn.microsoft
 * 別の地理的リージョンにデータベースを復元します。 これにより、サーバーやデータベースにアクセスできないときに、地理的な障害から復旧できます。 世界中のどこでも、あらゆる既存のサーバーで新しいデータベースを作成します。 
 * Azure Recovery Services コンテナーに格納されている特定のバックアップからデータベースを復元します。 これにより、データベースの古いバージョンに復元でき、コンプライアンスの要求を満たし、またはアプリケーションの古いバージョンを実行できます。 [長期保存](sql-database-long-term-retention.md)に関する記事を参照してください。
 * 復元を実行するには、[バックアップからのデータベースの復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
-
-> [!TIP]
-> チュートリアルについては、「[データの保護と回復のためのバックアップと復元の概要](sql-database-get-started-backup-recovery-portal.md)」を参照してください。
->
-
 
 > [!NOTE]
 > Azure Storage の " *レプリケーション* " という用語は、ある場所から別の場所にファイルをコピーすることを表します。 SQL の " *データベース レプリケーション* " は、複数のセカンダリ データベースとプライマリ データベースとの同期を保つことを意味します。 
@@ -82,14 +77,14 @@ Basic サービス レベルから Standard または Premium にデータベー
 Azure Portal または API を使用して LTR ポリシーをデータベースに追加すると、週単位のデータベースの完全バックアップが自動的にユーザー独自の Azure Backup サービス コンテナーにコピーされます。 データベースが TDE で暗号化されている場合、バックアップは保存中に自動的に暗号化されます。  期限切れのバックアップは、そのタイムスタンプおよび LTR ポリシーに基づいて、サービス コンテナーによって自動的に削除されます。  そのため、バックアップのスケジュールを管理したり、古いファイルのクリーンアップについて心配したりする必要はありません。 復元の API は、資格情報コンテナーが SQL Database と同じサブスクリプションにある限り、資格情報コンテナーに格納されているバックアップをサポートします。 Azure Portal または PowerShell を使用してこれらのバックアップにアクセスできます。
 
 > [!TIP]
-> チュートリアルについては、「[データの保護と回復のためのバックアップと復元の概要](sql-database-get-started-backup-recovery-portal.md)」を参照してください。
+> ハウツー ガイドについては、「[Azure SQL Database を構成して長期のバックアップ リテンション期間から復元する](sql-database-long-term-backup-retention-configure.md)」を参照してください
 >
 
 ## <a name="next-steps"></a>次のステップ
 
 - データの不慮の破損または削除から保護するデータベース バックアップは、ビジネス継続性および障害復旧戦略の最も重要な部分です。 その他の Azure SQL Database ビジネス継続性ソリューションの概要については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
-- Azure Portal を使用して特定の時点に復元する方法については、[Azure Portal を使用したデータベースのポイントインタイム リストア](sql-database-point-in-time-restore-portal.md)に関するページをご覧ください。
+- Azure Portal を使用して特定の時点に復元する方法については、[Azure Portal を使用したデータベースのポイントインタイム リストア](sql-database-recovery-using-backups.md)に関するページをご覧ください。
 - PowerShell を使用して特定の時点に復元する方法については、[PowerShell を使用したデータベースのポイントインタイム リストア](scripts/sql-database-restore-database-powershell.md)に関するページをご覧ください。
-- Azure Portal を使用して、Azure Recovery Services コンテナー内で長期保存されている自動バックアップを構成、管理、および復元する方法については、[Azure Portal を使用した長期バックアップ保存の管理](sql-database-manage-long-term-backup-retention-portal.md)に関する記事を参照してください。
-- PowerShell を使用して、Azure Recovery Services コンテナー内で長期保存されている自動バックアップを構成、管理、および復元する方法については、[PowerShell を使用した長期バックアップ保存の管理](sql-database-manage-long-term-backup-retention-powershell.md)に関する記事を参照してください。
+- Azure Portal を使用して、Azure Recovery Services コンテナー内で長期保存されている自動バックアップを構成、管理、および復旧する場合、[Azure Portal を使用した長期バックアップ保存の管理](sql-database-long-term-backup-retention-configure.md)に関する記事を参照してください。
+- PowerShell を使用して、Azure Recovery Services コンテナー内で長期保存されている自動バックアップを構成、管理、および復旧する場合、[PowerShell を使用した長期バックアップ保存の管理](sql-database-long-term-backup-retention-configure.md)に関する記事を参照してください。
 

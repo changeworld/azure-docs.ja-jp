@@ -15,25 +15,28 @@ ms.workload: integration
 ms.date: 07/05/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 23b806556667539156ee399e90c7bd4af808804f
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: b9971117d5f61669a5161a28c96b11b2fd600b61
+ms.lasthandoff: 04/14/2017
 
 
 ---
 # <a name="install-an-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps 向けのオンプレミス データ ゲートウェイのインストール
 
-オンプレミス データ ゲートウェイでは、以下のデータ ソース接続がサポートされています。
+オンプレミス データ ゲートウェイでは、以下の接続がサポートされています。
 
 *   BizTalk Server
-*    DB2  
+*   DB2  
 *   ファイル システム
 *   Informix
 *   MQ
-*    Oracle Database 
+*   MySQL
+*   Oracle Database 
 *   SAP アプリケーション サーバー 
 *   SAP メッセージ サーバー
-*    SQL Server
+*   SharePoint (HTTP のみ。HTTPS は対象外)
+*   SQL Server
+*   Teradata
 
 これらの接続の詳細については、[Azure Logic Apps のコネクタ](https://docs.microsoft.com/azure/connectors/apis-list)に関するページを参照してください。
 
@@ -61,7 +64,7 @@ ms.lasthandoff: 03/10/2017
 
 * オンプレミス データ ゲートウェイを Azure Active Directory ベースのアカウントに関連付けることができるように、使用できる電子メールアドレスは Azure での職場または学校の電子メール アドレスのみに限定されています。
 
-    @outlook.com などの Microsoft アカウントを使用している場合は、Azure アカウントを使用して  [職場または学校の電子メール アドレスを作成](../virtual-machines/virtual-machines-windows-create-aad-work-id.md#locate-your-default-directory-in-the-azure-classic-portal)できます。
+    @outlook.com などの Microsoft アカウントを使用している場合は、Azure アカウントを使用して  [職場または学校の電子メール アドレスを作成](../virtual-machines/windows/create-aad-work-id.md#locate-your-default-directory-in-the-azure-classic-portal)できます。
 
 ### <a name="install-the-gateway"></a>ゲートウェイのインストール
 
@@ -126,7 +129,7 @@ Azure Service Bus から Azure データ センターへの接続も、ファイ
 | --- | --- | --- |
 | *. analysis.windows.net | 使用します | HTTPS | 
 | *.login.windows.net | 443 | HTTPS | 
-| *.servicebus.windows.net | 5671 -&5672; | Advanced Message Queuing Protocol (AMQP) | 
+| *.servicebus.windows.net | 5671 - 5672 | Advanced Message Queuing Protocol (AMQP) | 
 | *.servicebus.windows.net | 443、9350 - 9354 | TCP 経由での Service Bus Relay のリスナー (Access Control トークンの取得には 443 が必要) | 
 | *. frontend.clouddatahub.net | 使用します | HTTPS | 
 | *.core.windows.net | 443 | HTTPS | 

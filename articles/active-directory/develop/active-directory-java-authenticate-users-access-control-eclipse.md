@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/25/2017
 ms.author: robmcm
 translationtype: Human Translation
 ms.sourcegitcommit: 3e0f8d92495c976040113f8edc0d4c789920c549
 ms.openlocfilehash: e22dca7b666720edfcbfd1b871d98b9468441fbd
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -236,7 +237,7 @@ Web アプリケーションのデプロイ後、開いているブラウザー 
 
 ACS Hello World アプリケーションの使用後は展開を削除することを忘れないでください (展開の削除方法については、「 [Creating a Hello World Application for Azure in Eclipse (Azure 用の Hello World アプリケーションを Eclipse で作成する方法)](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx) 」を参照)。
 
-## <a name="a-namenextstepsanext-steps"></a><a name="next_steps"></a>次のステップ
+## <a name="next_steps"></a>次のステップ
 ACS によってアプリケーションに返される SAML (Security Assertion Markup Language) を調べる場合は、「[How to view SAML returned by the Azure Access Control Service (Azure の Access Control サービスによって返される SAML を表示する方法)][How to view SAML returned by the Azure Access Control Service]」を参照してください。 さらに ACS の機能を調べたり、より洗練されたシナリオを試してみたりする場合は、「[Access Control Service 2.0][Access Control Service 2.0]」を参照してください。
 
 また、この例では **[Embed the certificate in the WAR file]** オプションも使用しています。 このオプションを使用すると証明書のデプロイが簡単になります。 代わりに WAR ファイル以外からの署名証明書を保存する場合は、次の手法を使用できます。
@@ -296,10 +297,5 @@ ACS によってアプリケーションに返される SAML (Security Assertion
 [add_jsp_file_acs]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddJSPFileACS.png
 [create_acs_hello_world]: ./media/active-directory-java-authenticate-users-access-control-eclipse/CreateACSHelloWorld.png
 [add_token_signing_cert]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddTokenSigningCertificate.png
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

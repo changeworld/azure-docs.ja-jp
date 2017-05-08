@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 08/08/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: f7a2066f43219e8748b5c5356ff6c81535b7842a
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
+ms.openlocfilehash: 0d909f6272cc9dcfd13bd9c18affa8d1e249efe4
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 03/17/2017
 
 この記事では、 [Azure App Service](../app-service/app-service-value-prop-what-is.md) でカスタム ドメイン名を使用している Web アプリ、モバイル アプリ バックエンド、または API アプリに対して HTTPS を有効にする方法について説明します。 サーバーのみの認証について取り上げます。 相互認証 (クライアント認証を含む) を使用する必要がある場合は、「 [Web アプリの TLS 相互認証を構成する方法](app-service-web-configure-tls-mutual-auth.md)」を参照してください。
 
-カスタム ドメイン名を使用しているアプリのセキュリティを HTTPS で保護するには、そのドメイン名の証明書を追加します。 Azure の既定では、1 つの SSL 証明書を使用して **\*.azurewebsites.net** というワイルドカード ドメインをセキュリティで保護しているため、クライアントは最初から **https://*&lt;アプリ名>*.azurewebsites.net**のアプリにアクセスできるようになっています。ただし、**contoso.com**、**www.contoso.com**、**\*.contoso.com** のようなカスタム ドメインを使用する場合、既定の証明書ではセキュリティを確保できません。 さらに、すべての[ワイルドカード証明書](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/)がそうであるように、既定の証明書は、カスタム ドメインを使用し、そのカスタム ドメイン用の証明書を使用する場合ほど安全性は高くありません。   
+カスタム ドメイン名を使用しているアプリのセキュリティを HTTPS で保護するには、そのドメイン名の証明書を追加します。 Azure の既定では、1 つの SSL 証明書を使用して **\*.azurewebsites.net** というワイルドカード ドメインをセキュリティで保護しているため、クライアントは最初から **https://*&lt;アプリ名>*.azurewebsites.net** のアプリにアクセスできるようになっています。 ただし、**contoso.com**、**www.contoso.com**、**\*.contoso.com**のようなカスタム ドメインを使用する場合、既定の証明書ではセキュリティを確保できません。 さらに、すべての[ワイルドカード証明書](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/)がそうであるように、既定の証明書は、カスタム ドメインを使用し、そのカスタム ドメイン用の証明書を使用する場合ほど安全性は高くありません。   
 
 > [!NOTE]
 > [Azure フォーラム](https://azure.microsoft.com/support/forums/)では、Azure の専門家からいつでもアドバイスを得ることができます。 個別対応のサポートが必要な場合は、 [Azure のサポート](https://azure.microsoft.com/support/options/) にアクセスし、 **[サポートの要求]**をクリックしてください。
@@ -64,8 +64,8 @@ HTTPS でカスタム ドメイン名をセキュリティで保護するには�
 <a name="bkmk_getcert"></a>
 
 ## <a name="step-1-get-an-ssl-certificate"></a>手順 1. SSL 証明書を取得する
-さまざまな種類の SSL 証明書が、さまざまな価格で CA から提供されているため、購入する SSL 証明書の種類を決めることからまず始めます。 1 つのドメイン名 (**www.contoso.com**) を保護する場合は、基本的な証明書で十分です。 複数のドメイン名 (**contoso.com**、**www.contoso.com**、 
-**mail.contoso.com** のすべて) を保護する場合は、[ワイルドカード証明書](http://en.wikipedia.org/wiki/Wildcard_certificate)、または[サブジェクト代替名](http://en.wikipedia.org/wiki/SubjectAltName) (`subjectAltName`) を使用した証明書が必要です****。
+さまざまな種類の SSL 証明書が、さまざまな価格で CA から提供されているため、購入する SSL 証明書の種類を決めることからまず始めます。 1 つのドメイン名 (**www.contoso.com**) を保護する場合は、基本的な証明書で十分です。 複数のドメイン名 (**contoso.com** *と* **www.contoso.com** 
+*と* **mail.contoso.com** のすべて) を保護する場合は、[ワイルドカード証明書](http://en.wikipedia.org/wiki/Wildcard_certificate)、または[サブジェクト代替名](http://en.wikipedia.org/wiki/SubjectAltName) (`subjectAltName`) を使用した証明書が必要です。
 
 どの SSL 証明書を購入するかが決まったら、証明書署名要求 (CSR) を CA に送信します。 要求した証明書が CA から送信されてきたら、証明書から .pfx ファイルを生成します。 この手順は任意のツールを使用して実行できます。 一般的なツールでの手順は次のとおりです。
 
@@ -474,7 +474,7 @@ HTTPS でカスタム ドメイン名をセキュリティで保護するには�
 <a name="bkmk_enforce"></a>
 
 ## <a name="enforce-https-on-your-app"></a>アプリに HTTPS を適用する
-HTTP によるアプリへのアクセスを許可する場合は、この手順をスキップしてください。 App Service では HTTPS の使用が強制されないため、訪問者は引き続き HTTP を使用してアプリにアクセスできます**。 アプリで HTTPS を強制する場合は、アプリの `web.config` ファイルで書き換え規則を定義することができます。 このファイルは、アプリの言語フレームワークに関係なく、すべての App Service アプリに存在します。
+HTTP によるアプリへのアクセスを許可する場合は、この手順をスキップしてください。 App Service では HTTPS の使用が強制*されない*ため、訪問者は引き続き HTTP を使用してアプリにアクセスできます。 アプリで HTTPS を強制する場合は、アプリの `web.config` ファイルで書き換え規則を定義することができます。 このファイルは、アプリの言語フレームワークに関係なく、すべての App Service アプリに存在します。
 
 > [!NOTE]
 > 言語に固有の要求のリダイレクトがあります。 ASP.NET MVC では、`web.config` 内の書き換え規則の代わりに [RequireHttps](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) フィルターを使用できます ([セキュリティで保護された ASP.NET MVC 5 アプリを Web アプリにデプロイする方法](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)に関するページを参照してください)。

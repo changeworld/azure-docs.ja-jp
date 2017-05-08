@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 3/24/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 45bf19b4c8406cfc09624bef2b9c0f1c443d8fd6
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 15b6f6c85c5a5accbd31225c277de87346a2e16f
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -64,18 +64,18 @@ Visual Studio 2015 を使用して、アプリケーションを作成する場�
 
 ![Visual Studio でアプリケーションをパッケージングする][vs-package-command]
 
-パッケージ化が完了したら、[ **出力** ] ウィンドウにパッケージの場所が表示されます。 アプリケーションを Visual Studio でデプロイまたはデバッグする場合、パッケージ化の手順は自動で行われることにご注意ください。
+パッケージ化が完了したら、**[出力]** ウィンドウにパッケージの場所が表示されます。 アプリケーションを Visual Studio でデプロイまたはデバッグする場合、パッケージ化の手順は自動で行われます。
 
 ### <a name="build-a-package-by-command-line"></a>コマンド ラインを使用したパッケージ構築
-`msbuild.exe` を使用して、アプリケーションをプログラムによってパッケージ化することもできます。 これは内部的には Visual Studio で実行されているため、出力は同じになります。
+`msbuild.exe` を使用して、アプリケーションをプログラムによってパッケージ化することもできます。 これは内部的には Visual Studio で実行されているため、出力は同じです。
 
 ```shell
 D:\Temp> msbuild HelloWorld.sfproj /t:Package
 ```
 
 ## <a name="test-the-package"></a>パッケージのテスト
-パッケージ構造を PowerShell の [Test-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage) コマンドを使用して、ローカルで検証することができます。
-このコマンドは、マニフェストの解析の問題がチェックし、すべての参照を検証します。 このコマンドは、パッケージ内のディレクトリとファイルの構造的な正確性を検証するだけです。
+パッケージ構造を PowerShell の [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) コマンドを使用して、ローカルで検証することができます。
+このコマンドは、マニフェストの解析の問題をチェックし、すべての参照を検証します。 このコマンドは、パッケージ内のディレクトリとファイルの構造的な正確性を検証するだけです。
 コードやデータ パッケージのコンテンツのいずれについても検証は行われず、それらがすべてそろっているかどうかは確認されません。
 
 ```
@@ -111,7 +111,7 @@ True
 PS D:\temp>
 ```
 
-アプリケーションで[アプリケーション パラメーター](service-fabric-manage-multiple-environment-app-configuration.md)が定義されている場合、それらのパラメーターを [Test-ServiceFabricApplicationPackage](https://docs.microsoft.com/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage) に渡して適切に検証できます。
+アプリケーションで[アプリケーション パラメーター](service-fabric-manage-multiple-environment-app-configuration.md)が定義されている場合、それらのパラメーターを [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) に渡して適切に検証できます。
 
 アプリケーションがデプロイされるクラスターが明らかな場合は、イメージ ストア接続文字列を渡すことをお勧めします。 この場合、パッケージは、既にクラスターで実行されている以前のバージョンのアプリケーションに対しても検証されます。 たとえば、この検証によって、バージョンは同じでコンテンツが異なるパッケージが既にデプロイされているかどうかを検出できます。  
 
@@ -124,9 +124,9 @@ PS D:\temp>
 デプロイ メカニズムは、圧縮されているパッケージでも圧縮されていないパッケージでも変わりません。 パッケージが圧縮されている場合、パッケージはクラスター イメージ ストアに格納され、アプリケーションが実行される前にノード上で圧縮解除されます。
 圧縮によって、有効な Service Fabric パッケージが、圧縮されたバージョンで置き換えられます。 フォルダーへの書き込みのアクセス許可を与える必要があります。 既に圧縮済みのパッケージの圧縮を実行しても、変化はありません。 
 
-[Copy-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) Powershell コマンドを `CompressPackage` スイッチで実行して、パッケージを圧縮することができます。 `UncompressPackage` スイッチを使用して同じコマンドを実行すると、パッケージの圧縮を解除することができます。
+[Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) Powershell コマンドを `CompressPackage` スイッチで実行して、パッケージを圧縮することができます。 `UncompressPackage` スイッチを使用して同じコマンドを実行すると、パッケージの圧縮を解除することができます。
 
-次のコマンドでは、パッケージをイメージ ストアにコピーせずに圧縮しています。 必要に応じて、[Copy-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) を `SkipCopy` フラグを指定せずに実行して、圧縮されたパッケージを 1 つまたは複数の Service Fabric クラスターにコピーすることができます。 このパッケージには、`code`、`config` および `data` の各パッケージの圧縮されたファイルが含まれています。 アプリケーション マニフェストとサービス マニフェストは、多くの内部操作 (パッケージ共有、特定の検証のためのアプリケーションの種類名とバージョンの抽出など) に必要なため、圧縮されません。
+次のコマンドでは、パッケージをイメージ ストアにコピーせずに圧縮しています。 必要に応じて、[Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) を `SkipCopy` フラグを指定せずに実行して、圧縮されたパッケージを 1 つまたは複数の Service Fabric クラスターにコピーすることができます。 このパッケージには、`code`、`config` および `data` の各パッケージの圧縮されたファイルが含まれています。 アプリケーション マニフェストとサービス マニフェストは、多くの内部操作 (パッケージ共有、特定の検証のためのアプリケーションの種類名とバージョンの抽出など) に必要なため、圧縮されません。
 マニフェストを zip 圧縮すると、これらの操作が非効率的になります。
 
 ```
@@ -162,15 +162,16 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 ```
 
-または、[Copy-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) を使用して 1 ステップでパッケージを圧縮してコピーできます。
+または、[Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) を使用して 1 ステップでパッケージを圧縮してコピーできます。
 パッケージのサイズが大きい場合は、パッケージの圧縮とクラスターへのアップロードの両方の時間を確保するのに十分な大きいタイムアウト値を指定してください。
 ```
 PS D:\temp> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\MyApplicationType -ApplicationPackagePathInImageStore MyApplicationType -ImageStoreConnectionString fabric:ImageStore -CompressPackage -TimeoutSec 5400
 ```
 
 内部的に、Service Fabric がアプリケーション パッケージのチェックサムを計算して検証を行います。 圧縮を使用すると、各パッケージの zip 圧縮バージョンでチェックサムが計算されます。
-圧縮されていないアプリケーション パッケージのバージョンをコピーし、同じパッケージの圧縮を使用する場合は、チェックサムの不一致を避けるために、アプリケーション マニフェストのバージョンを変更する必要があります。
-同様に、パッケージの圧縮バージョンをアップロードし、圧縮されていないパッケージを使用する場合は、アプリケーション マニフェストのバージョンを更新する必要があります。
+圧縮されていないアプリケーション パッケージのバージョンをコピーし、同じパッケージの圧縮を使用する場合は、チェックサムの不一致を避けるために、`code`、`config`、および `data` パッケージのバージョンを変更する必要があります。 パッケージが変更されていない場合は、バージョンを変更する代わりに、[diff プロビジョニング](service-fabric-application-upgrade-advanced.md)を使用します。 このオプションでは、変更されていないパッケージを含めず、サービス マニフェストから参照するだけです。
+
+同様に、パッケージの圧縮バージョンをアップロードし、圧縮されていないパッケージを使用する場合は、チェックサムの不一致を避けるために、バージョンを更新する必要があります。
 
 これでパッケージは正しくパッケージ化、検証、および (必要に応じて) 圧縮されたため、1 つまたは複数の Service Fabric クラスターに[デプロイ](service-fabric-deploy-remove-applications.md)する準備ができました。
 

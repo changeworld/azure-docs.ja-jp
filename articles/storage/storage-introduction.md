@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 02/24/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 44f40aebe8418b0cfcf2c2708469d586d1dd4c4c
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
+ms.openlocfilehash: eec53d5dea1255572d515f1ab2796da681579d19
+ms.lasthandoff: 04/29/2017
 
 
 ---
@@ -32,7 +32,9 @@ Azure Storage は、持続性、可用性、スケーラビリティで顧客の
 * 冗長性およびレプリケーションによって Azure Storage データを永続的にする方法
 * Azure Storage アプリケーションを初めて構築する場合に役立つ詳細情報
 
-Azure Storage の使用を今すぐ開始するための情報については、「 [Azure Storage を 5 分で使い始める](storage-getting-started-guide.md)」をご覧ください。
+<!-- after our quick starts are available, replace this link with a link to one of those. 
+Had to remove this article, it refers to the VS quickstarts, and they've stopped publishing them. Robin --> 
+<!-- To get up and running with Azure Storage quickly, see [Get started with Azure Storage in five minutes](storage-getting-started-guide.md). -->
 
 Azure Storage の使用に必要なツール、ライブラリ、およびその他のリソースの詳細については、下記「 [次のステップ](#next-steps) 」をご覧ください。
 
@@ -185,12 +187,12 @@ Azure Storage のリソースは、HTTP/HTTPS 要求が可能な任意の言語�
 * [PHP 用ストレージ クライアント ライブラリ](https://azure.microsoft.com/develop/php/)
 * [Ruby 用ストレージ クライアント ライブラリ](https://azure.microsoft.com/develop/ruby/)
 * [Python 用ストレージ クライアント ライブラリ](https://azure.microsoft.com/develop/python/)
-* [PowerShell 1.0 用ストレージ コマンドレット](https://msdn.microsoft.com/library/azure/mt269418.aspx)
+* [PowerShell 1.0 用ストレージ コマンドレット](/powershell/module/azurerm.storage/#storage)
 
 ### <a name="azure-storage-management-services"></a>Azure Storage 管理サービス
 * [Storage Resource Provider REST API リファレンス](/rest/api/storagerp/)
 * [.NET 用 Storage Resource Provider クライアント ライブラリ](/dotnet/api/microsoft.azure.management.storage)
-* [PowerShell 1.0 用 Storage Resource Provider コマンドレット](/powershell/storage/)
+* [PowerShell 1.0 用 Storage Resource Provider コマンドレット](/powershell/module/azure.storage)
 * [Storage Service Management REST API (Classic)](https://msdn.microsoft.com/library/azure/ee460790.aspx)
 
 ### <a name="azure-storage-data-movement-services"></a>Azure Storage データ移動サービス
@@ -202,7 +204,7 @@ Azure Storage のリソースは、HTTP/HTTPS 要求が可能な任意の言語�
 * [Azure Storage クライアント ツール](storage-explorers.md)
 * [Azure SDK とツール](https://azure.microsoft.com/tools/)
 * [Azure ストレージ エミュレーター](http://www.microsoft.com/download/details.aspx?id=43709)
-* [Azure PowerShell](/powershell/azureps-cmdlets-docs)
+* [Azure PowerShell](/powershell/azure/overview)
 * [AzCopy コマンド ライン ユーティリティ](http://aka.ms/downloadazcopy)
 
 ## <a name="next-steps"></a>次のステップ
@@ -211,7 +213,11 @@ Azure Storage についてさらに学習するには、次のリソースを参
 ### <a name="documentation"></a>ドキュメント
 * [Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
 * [ストレージ アカウントの作成](storage-create-storage-account.md)
-* [Azure Storage を 5 分で使い始める](storage-getting-started-guide.md)
+
+<!-- after our quick starts are available, replace this link with a link to one of those. 
+Had to remove this article, it refers to the VS quickstarts, and they've stopped publishing them. Robin --> 
+<!--* [Get started with Azure Storage in five minutes](storage-getting-started-guide.md)
+-->
 
 ### <a name="for-administrators"></a>管理者向け
 * [Azure Storage での Azure PowerShell の使用](storage-powershell-guide-full.md)

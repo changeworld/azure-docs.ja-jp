@@ -68,7 +68,7 @@ Azure Monitor は、Azure リソースを監視するための 1 つのソース
     
     ![[診断ログ] ブレード](./media/monitoring-get-started/monitor-diaglogs-blade.png)
     
-    [**Azure 診断ログ**](monitoring-overview-of-diagnostic-logs.md)は、リソースによって出力されるログです。このログでは、その特定のリソースの操作に関するデータを確認できます。** たとえば、ネットワーク セキュリティ グループの規則の数とロジック アプリ ワークフロー ログの種類は両方とも診断ログです。 こうしたログは、ストレージ アカウントに格納したり、Event Hub にストリーミングしたり、[Log Analytics](../log-analytics/log-analytics-overview.md) に送信したりできます。 Log Analytics は、高度な検索およびアラート機能を備えた Microsoft のオペレーション インテリジェンス製品です。
+    [**Azure 診断ログ**](monitoring-overview-of-diagnostic-logs.md)は、リソース*によって*出力されるログです。このログでは、その特定のリソースの操作に関するデータを確認できます。 たとえば、ネットワーク セキュリティ グループの規則の数とロジック アプリ ワークフロー ログの種類は両方とも診断ログです。 こうしたログは、ストレージ アカウントに格納したり、Event Hub にストリーミングしたり、[Log Analytics](../log-analytics/log-analytics-overview.md) に送信したりできます。 Log Analytics は、高度な検索およびアラート機能を備えた Microsoft のオペレーション インテリジェンス製品です。
     
     ポータルでは、サブスクリプションのリソースの一覧を表示およびフィルター処理して、診断ログが有効になっているかどうかを確認できます。
 11. 診断ログ ブレードのリソースをクリックします。 診断ログがストレージ アカウントに保存されている場合は、時間単位のログの一覧が表示されます。このログは直接ダウンロードできます。

@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 01/18/2017
+ms.date: 04/27/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: add228c8a24fbd36ab05f55570abf1374f519822
-ms.openlocfilehash: 28b6a2432219b1de7751b6311339ae0ec4c9e018
-ms.lasthandoff: 01/19/2017
+ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
+ms.openlocfilehash: 7dc72dbdf944432fff7635665c8a1d27def3aa94
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -74,7 +74,7 @@ Endpoint=[yourEndpoint];SharedSecretIssuer=[Default Issuer];SharedSecretValue=[D
 
 * 接続文字列を直接渡す
 * **CloudConfigurationManager (CCM)** を使用して複数の外部ソースに対して接続文字列を確認する
-  * 既定では&1; つの外部ソース (環境変数) のみサポートされています。
+  * 既定では 1 つの外部ソース (環境変数) のみサポートされています。
   * `ConnectionStringSource` クラスを拡張して新しいソースを追加できます。
 
 ここで概説している例では、接続文字列が直接渡されます。
@@ -156,7 +156,7 @@ catch(ServiceException $e){
 ```
 
 ### <a name="create-subscriptions-with-filters"></a>フィルターを適用したサブスクリプションの作成
-トピックに送信されたメッセージのうち、特定のトピック サブスクリプション内に表示されるメッセージを指定できるフィルターを設定することもできます。 サブスクリプションでサポートされるフィルターのうち、最も柔軟性の高いものが、SQL92 のサブセットを実装する [SqlFilter](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sqlfilter) です。 SQL フィルターは、トピックに発行されるメッセージのプロパティに対して適用されます。 SqlFilter について詳しくは、「[SqlFilter.SqlExpression プロパティ][sqlfilter]」をご覧ください。
+トピックに送信されたメッセージのうち、特定のトピック サブスクリプション内に表示されるメッセージを指定できるフィルターを設定することもできます。 サブスクリプションでサポートされるフィルターのうち、最も柔軟性の高いものが、SQL92 のサブセットを実装する [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter#microsoft_servicebus_messaging_sqlfilter) です。 SQL フィルターは、トピックに発行されるメッセージのプロパティに対して適用されます。 SqlFilter について詳しくは、「[SqlFilter.SqlExpression プロパティ][sqlfilter]」をご覧ください。
 
 > [!NOTE]
 > サブスクリプションのルールごとに受信メッセージが個別に処理され、処理後のメッセージがサブスクリプションに追加されます。 さらに、新しいサブスクリプションにはそれぞれ、既定の**ルール** オブジェクトがあり、トピックからのすべてのメッセージをサブスクリプションに追加するフィルターが設定されています。 独自のフィルターに一致するメッセージのみ受信するには、この既定のルールを削除する必要があります。 `ServiceBusRestProxy->deleteRule` メソッドを使用して既定のルールを削除できます。
@@ -243,11 +243,11 @@ for($i = 0; $i < 5; $i++){
 Service Bus トピックでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 1 つのトピックで保持されるメッセージ数に上限はありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。 このトピック サイズの上限は 5 GB です。 クォータについて詳しくは、「[Service Bus のクォータ][Service Bus quotas]」をご覧ください。
 
 ## <a name="receive-messages-from-a-subscription"></a>サブスクリプションからメッセージを受信する
-サブスクリプションからメッセージを受信する最適な方法は、`ServiceBusRestProxy->receiveSubscriptionMessage` メソッドを使用する方法です。 メッセージは、[*ReceiveAndDelete* と *PeekLock*](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) の&2; つの異なるモードで受信できます。 **PeekLock** が既定値です。
+サブスクリプションからメッセージを受信する最適な方法は、`ServiceBusRestProxy->receiveSubscriptionMessage` メソッドを使用する方法です。 メッセージは、[*ReceiveAndDelete* と *PeekLock*](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) の 2 つの異なるモードで受信できます。 **PeekLock** が既定値です。
 
-[ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) モードを使用する場合、受信は&1; 回ずつの動作になります。つまり、Service Bus は、サブスクリプション内のメッセージに対する読み取り要求を受け取ると、メッセージを読み取り中としてマークし、アプリケーションに返します。 [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) * モードは最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus はメッセージを読み取り済みとしてマークするため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされることになります。
+[ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) モードを使用する場合、受信は 1 回ずつの動作になります。つまり、Service Bus は、サブスクリプション内のメッセージに対する読み取り要求を受け取ると、メッセージを読み取り中としてマークし、アプリケーションに返します。 [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) * モードは最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus はメッセージを読み取り済みとしてマークするため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされることになります。
 
-既定の [PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) モードでは、メッセージの受信処理が&2; 段階の動作になり、メッセージが失われることが許容できないアプリケーションに対応することができます。 Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。 アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、受信したメッセージを `ServiceBusRestProxy->deleteMessage` に渡すことで受信処理の第&2; 段階を完了します。 Service Bus が `deleteMessage` の呼び出しを確認すると、メッセージが読み取り中としてマークされ、キューから削除されます。
+既定の [PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) モードでは、メッセージの受信処理が 2 段階の動作になり、メッセージが失われることが許容できないアプリケーションに対応することができます。 Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。 アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、受信したメッセージを `ServiceBusRestProxy->deleteMessage` に渡すことで受信処理の第 2 段階を完了します。 Service Bus が `deleteMessage` の呼び出しを確認すると、メッセージが読み取り中としてマークされ、キューから削除されます。
 
 次の例は、[PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) モード (既定のモード) を使用したメッセージの受信および処理の方法を示しています。 
 
@@ -295,7 +295,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 キュー内でロックされているメッセージには、タイムアウトも設定されています。アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージの処理に失敗した場合は、Service Bus によってメッセージのロックが自動的に解除され、再度受信できる状態に変わります。
 
-メッセージが処理された後、`deleteMessage` 要求が発行される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 一般的に、この動作は *1 回以上*の処理と呼ばれます。つまり、すべてのメッセージが&1; 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。 通常、この問題はメッセージの `getMessageId` メソッドを使用して対処します。このプロパティは配信が試行された後も同じ値を保持します。
+メッセージが処理された後、`deleteMessage` 要求が発行される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 一般的に、この動作は *1 回以上*の処理と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。 通常、この問題はメッセージの `getMessageId` メソッドを使用して対処します。このプロパティは配信が試行された後も同じ値を保持します。
 
 ## <a name="delete-topics-and-subscriptions"></a>トピックとサブスクリプションを削除する
 トピックやサブスクリプションを削除するには、それぞれ `ServiceBusRestProxy->deleteTopic` メソッドまたは `ServiceBusRestProxy->deleteSubscripton` を使用します。 トピックを削除すると、そのトピックに登録されたサブスクリプションもすべて削除されることに注意してください。
@@ -337,7 +337,7 @@ $serviceBusRestProxy->deleteSubscription("mytopic", "mysubscription");
 
 [BrokeredMessage]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[sqlfilter]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sqlfilter#Microsoft_ServiceBus_Messaging_SqlFilter_SqlExpression
+[sqlfilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter#microsoft_servicebus_messaging_sqlfilter
 [require-once]: http://php.net/require_once
 [Service Bus quotas]: service-bus-quotas.md
 

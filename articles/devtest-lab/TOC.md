@@ -1,7 +1,6 @@
 # 概要
-## [DevTest ラボとは](devtest-lab-overview.md)
-## [DevTest ラボを使用する理由](devtest-lab-why.md)
-## [DevTest ラボの概念](devtest-lab-concepts.md)
+## [Azure DevTest Labs とは](devtest-lab-overview.md)
+## [概念](devtest-lab-concepts.md)
 
 # 作業の開始
 ## [ラボの作成](devtest-lab-create-lab.md)

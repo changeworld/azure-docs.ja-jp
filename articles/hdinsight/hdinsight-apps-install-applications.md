@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/06/2017
+ms.date: 04/25/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 3b2a18232a9ab8c1b587cfa4fa14ced0c3b515ba
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: cb9753500dc9ed13ef10a757b247b703bc7f1644
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -34,8 +34,8 @@ HDInsight アプリケーションは、ユーザーが Linux ベースの HDIns
 * **DATAIKU DDS on HDInsight**: Dataiku DSS (Data Science Studio) は、データの専門家 (データ サイエンティスト、ビジネス アナリスト、開発者など) が、生データをインパクトのある景気予測に変換する特異性の高いサービスのプロトタイプ作成、構築、デプロイを実行できるようにするソフトウェアです。
 * **Datameer**: [Datameer](http://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft) を利用すると、アナリストはビッグ データ上の結果を対話形式で検索、分析、視覚化できるようになります。 追加のデータ ソースを簡単に取り込んで新たな関係性を発見し、必要な答えをすぐに得られます。
 * **Streamsets Data Collector for HDnsight**: フル機能を備えた統合開発環境 (IDE) を備えており、これを使用すると、ストリーム データとバッチ データを調和させる任意の環境間の取り込みパイプラインを設計、テスト、デプロイ、管理したり、ストリーム内のさまざまな変換を含めたりできます。どの処理でも、カスタム コードを記述する必要はありません。 
-* **Cask CDAP 3.5 for HDInsight**: ビッグ データ用に初めて一元管理された統合プラットフォームを提供します。ビッグ データにより、データ アプリケーションや Data Lake の作成にかかる時間が 80% 短縮されます。 このアプリケーションは、標準の HBase 3.4 クラスターのみをサポートします。
-
+* **Cask CDAP 3.5/4.0/4.1 for HDInsight**: ビッグ データ用に初めて一元管理された統合プラットフォームを提供します。ビッグ データにより、データ アプリケーションや Data Lake の作成にかかる時間が 80% 短縮されます。 このアプリケーションは、標準の HBase 3.4 クラスターのみをサポートします。
+* **H2O Artificial Intelligence for HDInsight (ベータ)**: H2O Sparkling Water は、GLM、Naïve Bayes、Distributed Random Forest、Gradient Boosting Machine、Deep Neural Networks 、Deep learning、K-means、PCA、Generalized Low Rank Models、Anomaly Detection、Autoencoders などの分散アルゴリズムをサポートしています。
 
 この記事で説明する手順では、Azure Portal を使用します。 また、ポータルから Azure Resource Manager テンプレートをエクスポートしたり、ベンダーから Resource Manager テンプレートのコピーを入手したりして、Azure PowerShell と Azure CLI を使ってテンプレートをデプロイできます。  [Resource Manager テンプレートを使用した HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-create-linux-clusters-arm-templates.md)に関するページを参照してください。
 

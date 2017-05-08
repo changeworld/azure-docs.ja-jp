@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/31/2017
+ms.date: 05/02/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 408dfd655db7a4a5fa33920e0c8bc8b7a065e886
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: d47a28b31569d26a7752fc830989e8050153be46
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -47,7 +47,7 @@ ms.lasthandoff: 03/21/2017
 Azure リソースのプロビジョニングと管理は、[Microsoft Azure Portal](https://portal.azure.com) を使って 1 か所で行うことができます。 Azure Portal は、_ブレード_を使用してそのコンテンツを整理します。 IoT Hub チュートリアルの一部では、[Azure クラシック ポータル](https://manage.windowsazure.com)を使用することが求められる場合があります。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-[Azure PowerShell](/powershell/azureps-cmdlets-docs) は、Windows PowerShell で Azure を管理するために使用できるコマンドレットのコレクションです。 このコマンドレットを使用して、Azure Platform から配信されるソリューションやサービスを、作成、テスト、デプロイ、管理できます。
+[Azure PowerShell](/powershell/azure/overview) は、Windows PowerShell で Azure を管理するために使用できるコマンドレットのコレクションです。 このコマンドレットを使用して、Azure Platform から配信されるソリューションやサービスを、作成、テスト、デプロイ、管理できます。
 
 ## <a name="azure-resource-manager"></a>Azure リソース マネージャー
 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) を使用すると、ソリューション内の複数のリソースを 1 つのグループとして作業できます。 ソリューションのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。
@@ -257,3 +257,4 @@ Azure サブスクリプションでは、課金が発生します。 作成す�
 
 ## <a name="x509-client-certificate"></a>X.509 クライアント証明書
 デバイスは X.509 証明書を使用して [IoT Hub](#iot-hub) で認証を受けることができます。 [SAS トークン](#shared-access-signature)の代わりに X.509 証明書を使用できます。
+

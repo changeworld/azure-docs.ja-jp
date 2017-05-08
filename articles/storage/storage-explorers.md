@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: 3203358dce9cba95d325ec786e7ba12dd45f5ca1
-ms.openlocfilehash: eb7e798120ea9075dba92da76826ff621882c32a
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 85ef906d680df8f6848b323d79a09b8414ed0817
+ms.lasthandoff: 04/06/2017
 
 
 ---
 # <a name="azure-storage-client-tools"></a>Azure Storage クライアント ツール
-Azure Storage のユーザーのご要望に多いのが、Azure Storage クライアント ツールを使用したデータの表示や処理についてです。 次の表に、これを実現するツールの一覧を示します。 データ抽象化を列挙できる場合、またはデータ抽象化にアクセスできる場合は、各ブロックに “X” を入力しました。 ツールの有料/無料も記載されています。 “試用版” とは、無料試用版があることを示します。ただし、完全な製品は有料です。 “Y/N” は、バージョンの有料/無料を示します。
+Azure Storage のユーザーのご要望に多いのが、Azure Storage クライアント ツールを使用したデータの表示や処理についてです。 次の表に、これを実現するツールの一覧を示します。 データ抽象化を列挙できる場合、またはデータ抽象化にアクセスできる場合は、各ブロックに "X" を入力しました。 ツールの有料/無料も記載されています。 "試用版" とは、無料試用版があることを示します。ただし、完全な製品は有料です。 "Y/N" は、バージョンの有料/無料を示します。
 
 利用できる Azure Storage クライアント ツールのスナップショットのみを提供しました。 これらのツールは開発が続いており、機能が追加されることがあります。 修正や更新がございましたら、コメントを投稿してお知らせください。 ここに記載するべきツールがある場合もお知らせください。
 

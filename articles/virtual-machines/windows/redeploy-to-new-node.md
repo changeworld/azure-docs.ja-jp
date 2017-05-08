@@ -15,9 +15,9 @@ ms.workload: infrastructure
 ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 7ca51ce26e009d18b4519a5e7ba16df64ec984ef
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 8682c7707f489aafd55a6673420bafa2ba5f4ade
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -29,7 +29,7 @@ Windows ベースの Azure 仮想マシン (VM) へのリモート デスクト�
 
 
 ## <a name="using-azure-powershell"></a>Azure PowerShell の使用
-マシンに最新の Azure PowerShell 1.x がインストールされていることを確認します。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」を参照してください。
+マシンに最新の Azure PowerShell 1.x がインストールされていることを確認します。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。
 
 次の例では、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM をデプロイします。
 

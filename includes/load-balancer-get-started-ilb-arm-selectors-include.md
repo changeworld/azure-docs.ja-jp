@@ -3,8 +3,3 @@
 > [PowerShell](../articles/load-balancer/load-balancer-get-started-ilb-arm-ps.md)
 > [Azure CLI](../articles/load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 > [テンプレート](../articles/load-balancer/load-balancer-get-started-ilb-arm-template.md)
-
-
-<!--HONumber=Jan17_HO3-->
-
-

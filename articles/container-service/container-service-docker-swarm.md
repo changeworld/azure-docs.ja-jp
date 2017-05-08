@@ -19,11 +19,14 @@ ms.author: rogardle
 translationtype: Human Translation
 ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
 ms.openlocfilehash: bd20dc4eb3948d08e3c2dd2ad2bb42d18df67796
+ms.lasthandoff: 02/17/2017
 
 
 ---
 # <a name="container-management-with-docker-swarm"></a>Docker Swarm でのコンテナーの管理
 Docker Swarm は、コンテナーにまとめたワークロードをプールされた Docker ホストのセット全体にデプロイする環境を提供します。 Docker Swarm では、ネイティブの Docker API を使用します。 Docker Swarm 上のコンテナーを管理するワークフローは、1 つのコンテナー ホスト上の場合とほぼ同じです。 このドキュメントでは、Docker Swarm の Azure コンテナー サービス インスタンスで、コンテナーにまとめたワークロードをデプロイする簡単な例について説明します。 Docker Swarm の詳細なドキュメントについては、 [Docker.com の Docker Swarm](https://docs.docker.com/swarm/)を参照してください。
+
+[!INCLUDE [container-service-swarm-mode-note](../../includes/container-service-swarm-mode-note.md)]
 
 このドキュメントで行う演習の前提条件:
 
@@ -115,10 +118,5 @@ caf185d221b7        adtd/web:0.1        "apache2-foreground"   2 minutes ago    
 
 ## <a name="next-steps"></a>次のステップ
 [Docker Swarm の詳細](https://docs.docker.com/swarm/)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

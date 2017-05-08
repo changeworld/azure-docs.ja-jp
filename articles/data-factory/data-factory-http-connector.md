@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2016
+ms.date: 03/30/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: d01dd1fdeed4aa809ba5118f79968f7719b11865
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 4870d2a0bbe35f3980864d8b4f3d011a189b650e
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -35,7 +35,7 @@ ms.lasthandoff: 03/27/2017
 
 - パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
 
-- パイプラインの作成には、**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API** というツールを使用することもできます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。 HTTP ソースから Azure Blob Storage にデータをコピーする JSON サンプルについては、この記事の「[JSON の使用例](#json-examples)」セクションを参照してください。
+- 次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。 HTTP ソースから Azure Blob Storage にデータをコピーする JSON サンプルについては、この記事の「[JSON の使用例](#json-examples)」セクションを参照してください。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 次の表は、HTTP のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
@@ -145,13 +145,12 @@ ms.lasthandoff: 03/27/2017
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | データセットの型を指定します。 `Http` に設定する必要があります。 | はい |
-| relativeUrl | データを含むリソースへの相対 URL。 パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 | なし |
+| relativeUrl | データを含むリソースへの相対 URL。 パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 <br><br> 動的 URL を構築するには、[データ ファクトリ関数とシステム変数](data-factory-functions-variables.md)を利用できます。たとえば、"relativeUrl": "$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)" です。 | いいえ |
 | requestMethod | Http メソッド。 使用できる値は、**GET** または **POST** です。 | いいえ。 既定値は `GET`です。 |
 | additionalHeaders | 追加の HTTP 要求ヘッダー。 | なし |
-| requestBody | HTTP 要求の本文。 | なし |
-| partitionedBy | partitionedBy を使用して時系列データに動的な folderPath と fileName を指定できます。 たとえば、1 時間ごとのデータに対して folderPath がパラメーター化されます。 | いいえ |
-| BlobSink の format | **HTTP エンドポイントからデータをそのまま取得する**だけで、解析しない場合は、この形式の設定を省略してください。 <br><br> コピー中に HTTP 応答の内容を解析する場合、サポートされている形式は、**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](#specifying-textformat)、[Json Format](#specifying-jsonformat)、[Avro Format](#specifying-avroformat)、[Orc Format](#specifying-orcformat)、[Parquet Format](#specifying-parquetformat) の各セクションを参照してください。  |なし |
-| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は **GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。サポートされるレベルは **Optimal** と **Fastest** です。 詳細については、「[圧縮の指定](#specifying-compression)」セクションを参照してください。 |なし |
+| requestBody | HTTP 要求の本文。 | いいえ |
+| BlobSink の format | **HTTP エンドポイントからデータをそのまま取得する**だけで、解析しない場合は、この形式の設定を省略してください。 <br><br> コピー中に HTTP 応答の内容を解析する場合、サポートされている形式は、**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 |なし |
+| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |なし |
 
 ### <a name="example-using-the-get-default-method"></a>例: GET (既定) メソッドを使用する
 
@@ -196,20 +195,19 @@ ms.lasthandoff: 03/27/2017
 }
 ```
 
-[!INCLUDE [data-factory-file-format](../../includes/data-factory-file-format.md)]
-
-[!INCLUDE [data-factory-compression](../../includes/data-factory-compression.md)]
-
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
 
 一方、アクティビティの **typeProperties** セクションで使用できるプロパティは、各アクティビティの種類によって異なります。 コピー アクティビティの場合、ソースとシンクの種類によって異なります。
 
-現時点では、コピー アクティビティのソースが **Http** 型の場合、次のプロパティがサポートされています。
+現時点では、コピー アクティビティのソースが **HttpSource** 型の場合、次のプロパティがサポートされています。
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
 | httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト (TimeSpan)。 応答データの読み取りのタイムアウトではなく、応答の取得のタイムアウトです。 | いいえ。 既定値: 00:01:40 |
+
+## <a name="supported-file-and-compression-formats"></a>サポートされているファイル形式と圧縮形式
+詳細については、[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md)に関する記事を参照してください。
 
 ## <a name="json-examples"></a>JSON の使用例
 次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、HTTP ソースから Azure Blob Storage にデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、 **こちら** に記載されているいずれかのシンクに、任意のソースからデータを [直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats) コピーすることができます。
@@ -267,7 +265,7 @@ ms.lasthandoff: 03/27/2017
         "type": "Http",
         "linkedServiceName": "HttpLinkedService",
         "typeProperties": {
-            "relativeUrl": "XXX/test.xml",
+            "relativeUrl": "$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)",
             "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
         },
         "external": true,

@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: db3285bcdfb93c0c2b9f8972edb04e7064cfa31c
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: e6efa8c05c51b0438912738c3c5fcad4bc12b8f4
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -35,7 +35,7 @@ ms.lasthandoff: 04/12/2017
 グラフとグリッドをカスタマイズし、ダッシュボードにピン留めできます。 これにより、さまざまなアプリの重要なテレメトリをまとめて、中央のダッシュボードに表示することができます。
 
 ## <a name="dashboards"></a>ダッシュボード
-[Microsoft Azure ポータル](https://portal.azure.com) にサインインすると、まず、ダッシュボードが表示されます。 ここでは、 [Azure Application Insights](app-insights-overview.md) のテレメトリなどを含む、すべての Azure リソースから最も重要なグラフをまとめて表示することができます。
+[Microsoft Azure Portal](https://portal.azure.com) にサインインすると、まず、ダッシュボードが表示されます。 ここでは、 [Azure Application Insights](app-insights-overview.md) のテレメトリなどを含む、すべての Azure リソースから最も重要なグラフをまとめて表示することができます。
 
 ![カスタマイズされたダッシュボード](./media/app-insights-dashboards/31.png)
 
@@ -56,8 +56,16 @@ ms.lasthandoff: 04/12/2017
 
 グラフはタイルにグループ化されます。1 つのタイルに複数のグラフを含めることができます。 タイル全体をダッシュボードにピン留めします。
 
+グラフは、以下に示すグラフの時間範囲に応じた頻度で自動的に更新されます。
+
+* 1 時間までの時間範囲: 5 分ごとに更新
+* 1 ～ 24 時間の時間範囲: 15 分ごとに更新
+* 24 時間を超える時間範囲: (時間範囲)/60
+
 ### <a name="pin-any-query-in-analytics"></a>Analytics の任意のクエリをピン留めする
 [共有](#share-dashboards-with-your-team)ダッシュボードに [Analytics のグラフをピン留め](app-insights-analytics-using.md#pin-to-dashboard)することもできます。 これにより、任意のクエリのグラフを標準的なメトリックの横に追加できます。 (この機能は課金対象です。)
+
+結果は 1 時間ごとに自動的に再計算されます。 すぐに再計算するには、グラフ上の更新アイコンをクリックします。 (ブラウザーを更新しても再計算は実行されません)。
 
 ## <a name="adjust-a-tile-on-the-dashboard"></a>ダッシュボード上のタイルの調整
 タイルをダッシュボード上に追加すると、タイルを調整することができます。

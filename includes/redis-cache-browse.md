@@ -12,8 +12,3 @@
 
 ![Redis Cache のすべての設定](media/redis-cache-browse/redis-cache-blade.png)
 
-
-
-<!--HONumber=Dec16_HO3-->
-
-

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 2/9/2017
 ms.author: cwatson
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 620c9223106c06cf6ea2b80fce87d81ea44d02ca
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: bb913050fd3388d4632e6f75b36415006f370cbd
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -32,7 +32,7 @@ PowerShell を使用する場合は、AzureRM.Compute PowerShell モジュール
 ```
 Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 ```
-詳細については、[Azure PowerShell のバージョン管理に関するページ](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/#azure-powershell-versioning)をご覧ください。
+詳細については、[Azure PowerShell のバージョン管理に関するページ](/powershell/azure/overview)をご覧ください。
 
 ## <a name="copy-the-vhd-with-a-snapshot"></a>スナップショットを使用して VHD をコピーする
 Managed Disk のスナップショットを作成するには、Azure Portal またはPowerShell を使います。

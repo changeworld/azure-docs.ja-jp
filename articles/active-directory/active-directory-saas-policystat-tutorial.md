@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/20/2017
+ms.date: 02/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 04a045f41965b093aab71e59cd9b5f328b44de84
-ms.openlocfilehash: 8290d90f22a80d5c585192b17cfa0aeba00aa891
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: ecd58d8f1df60aff99d9ac2e0245d06f61e0b6bb
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -33,13 +33,13 @@ ms.lasthandoff: 02/03/2017
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
 1. PolicyStat のアプリケーション統合の有効化
-2. シングル サインオンの構成
+2. シングル サインオン (SSO) の構成
 3. ユーザー プロビジョニングの構成
 4. ユーザーの割り当て
 
 ![シナリオ](./media/active-directory-saas-policystat-tutorial/IC808662.png "Scenario")
 
-## <a name="enabling-the-application-integration-for-policystat"></a>PolicyStat のアプリケーション統合の有効化
+## <a name="enable-the-application-integration-for-policystat"></a>PolicyStat のアプリケーション統合の有効化
 このセクションでは、PolicyStat のアプリケーション統合を有効にする方法を説明します。
 
 **PolicyStat のアプリケーション統合を有効にするには、次の手順に従います。**
@@ -64,7 +64,7 @@ ms.lasthandoff: 02/03/2017
    
    ![PolicyStat](./media/active-directory-saas-policystat-tutorial/IC810430.png "PolicyStat")
    
-## <a name="configuring-single-sign-on"></a>シングル サインオンの構成
+## <a name="configure-single-sign-on"></a>Configure single sign-on
 
 このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで PolicyStat に対する認証を行えるようにする方法を説明します。  
 
@@ -125,21 +125,20 @@ PolicyStat アプリケーションは、特定の形式の SAML アサーショ
    2. **[属性名]** ボックスに、「**uid**」と入力します。
    3. **[属性値]** ボックスで、**[ExtractMailPrefix()]** を選択します。    
    4. **[メール]** 一覧で **[User.mail]** を選択します。
-   5. **[完了]** をクリックします。
+   5. ページの下部にある **[完了]**」を参照してください。
 
-##<a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
+##<a name="configure-user-provisioning"></a>[ユーザー プロビジョニングの構成]
 
 Azure AD ユーザーが PolicyStat にログインできるようにするには、ユーザーを PolicyStat にプロビジョニングする必要があります。  
 
-PolicyStat は、ジャストインタイム ユーザー プロビジョニングをサポートしています。 つまり、PolicyStat にユーザーを手動で追加する必要はありません。  
-ユーザーはシングル サインオンの最初のログイン時に自動的に追加されます。
+PolicyStat は、ジャストインタイム ユーザー プロビジョニングをサポートしています。 つまり、PolicyStat にユーザーを手動で追加する必要はありません。 ユーザーはシングル サインオン (SSO) の最初のログイン時に自動的に追加されます。
 
-> [!NOTE]
-> PolicyStat から提供されている他の PolicyStat ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[!NOTE]
+>PolicyStat から提供されている他の PolicyStat ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 > 
 > 
 
-## <a name="assigning-users"></a>ユーザーの割り当て
+## <a name="assign-users"></a>[ユーザーの割り当て]
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
 **ユーザーを PolicyStat に割り当てるには、次の手順に従います。**
@@ -152,6 +151,6 @@ PolicyStat は、ジャストインタイム ユーザー プロビジョニン�
    
    ![はい](./media/active-directory-saas-policystat-tutorial/IC767830.png "Yes")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
+SSO の設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
 

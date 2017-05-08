@@ -12,7 +12,7 @@ ms.devlang: csharp
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/31/2017
+ms.date: 05/02/2017
 ms.author: dobett
 translationtype: Human Translation
 ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b

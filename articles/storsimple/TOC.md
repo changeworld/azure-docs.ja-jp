@@ -197,7 +197,7 @@
 ### [リリース - 一般公開](storsimple-july-2014-release-notes.md)
 
 ## リファレンス
-### [Azure PowerShell](/powershell/servicemanagement)
+### [Azure PowerShell](/powershell/azure/overview?view=azuresmps-3.7.0)
 ### [StorSimple 用 Windows PowerShell のコマンドレット](https://technet.microsoft.com/library/dn688168.aspx)
 
 # StorSimple Data Manager (プライベート プレビュー)

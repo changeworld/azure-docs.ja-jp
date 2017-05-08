@@ -14,19 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
-ms.date: 09/15/2016
+ms.date: 04/05/2017
 ms.author: zachal
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: c0d9ea4f506371ca21a08f6e1d6128c00123cbac
+ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
+ms.openlocfilehash: b61b0acf3072569ab733a13defb465c921d26187
+ms.lasthandoff: 04/07/2017
 
 
 ---
 # <a name="using-virtual-machine-scale-sets-with-the-azure-dsc-extension"></a>仮想マシン スケール セットと Azure DSC 拡張機能の使用
-[仮想マシンのスケール セット (VMSS)](virtual-machine-scale-sets-overview.md) は、[Azure Desired State Configuration (DSC)](../virtual-machines/virtual-machines-windows-extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 拡張機能ハンドラーと共に使用できます。 VMSS は多数の仮想マシンをデプロイおよび管理する手段であり、そのスケールは負荷に応じて柔軟に拡大および縮小することができます。 DSC は、オンラインで運用ソフトウェアを実行できるように VM を構成するときに使用されます。
+[仮想マシン スケール セット](virtual-machine-scale-sets-overview.md) は、[Azure Desired State Configuration (DSC)](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 拡張機能ハンドラーとともに使用できます。 仮想マシン スケール セットは、多数の仮想マシンをデプロイおよび管理する手段であり、負荷に応じて柔軟にスケールインおよびスケールアウトができます。 DSC は、オンラインで運用ソフトウェアを実行できるように VM を構成するときに使用されます。
 
-## <a name="differences-between-deploying-to-vm-and-vmss"></a>VM へのデプロイと VMSS へのデプロイの違い
-VMSS の基本テンプレートの構造は、1 つの VM とは少し異なります。 具体的には、1 つの VM では、"virtualMachines" ノードに拡張機能がデプロイされます。 エントリ タイプ "extensions" があり、ここで DSC がテンプレートに追加されます
+## <a name="differences-between-deploying-to-virtual-machines-and-virtual-machine-scale-sets"></a>仮想マシンへのデプロイと仮想マシン スケール セットへのデプロイの違い
+仮想マシン スケール セットの基本テンプレートの構造は、1 つの VM の場合とは少し異なります。 具体的には、1 つの VM では、"virtualMachines" ノードに拡張機能がデプロイされます。 エントリ タイプ "extensions" があり、ここで DSC がテンプレートに追加されます
 
 ```
 "resources": [
@@ -65,7 +66,7 @@ VMSS の基本テンプレートの構造は、1 つの VM とは少し異なり
       ]
 ```
 
-VMSS ノードには、"VirtualMachineProfile" を備えた "properties" セクション、"extensionProfile" 属性があります。 DSC は "extensions" の下に追加します
+仮想マシン スケール セット ノードには、"VirtualMachineProfile" を備えた "properties" セクション、"extensionProfile" 属性があります。 DSC は "extensions" の下に追加します
 
 ```
 "extensionProfile": {
@@ -96,21 +97,16 @@ VMSS ノードには、"VirtualMachineProfile" を備えた "properties" セク�
             ]
 ```
 
-## <a name="behavior-for-vmss"></a>VMSS の動作
-VMSS の動作は、1 つの VM の動作と同じです。 新しく作成された VM は、DSC 拡張機能で自動的にプロビジョニングされます。 拡張機能に新しいバージョンの WMF が必要な場合、VM はオンラインになる前に再起動されます。 オンラインになると、DSC 構成 .zip がダウンロードされ、VM 上でプロビジョニングされます。 詳細については、 [Azure DSC 拡張機能の概要](../virtual-machines/virtual-machines-windows-extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
+## <a name="behavior-for-a-virtual-machine-scale-set"></a>仮想マシン スケール セットの動作
+仮想マシン スケール セットの動作は、1 つの VM の動作と同じです。 新しく作成された VM は、DSC 拡張機能で自動的にプロビジョニングされます。 拡張機能に新しいバージョンの WMF が必要な場合、VM はオンラインになる前に再起動されます。 オンラインになると、DSC 構成 .zip がダウンロードされ、VM 上でプロビジョニングされます。 詳細については、 [Azure DSC 拡張機能の概要](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-[DSC 拡張機能用の Azure Resource Manager テンプレート](../virtual-machines/virtual-machines-windows-extensions-dsc-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
+[DSC 拡張機能用の Azure Resource Manager テンプレート](../virtual-machines/windows/extensions-dsc-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
 
-[DSC 拡張機能で資格情報を安全に処理する方法](../virtual-machines/virtual-machines-windows-extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを確認してください。 
+[DSC 拡張機能で資格情報を安全に処理する方法](../virtual-machines/windows/extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを確認してください。 
 
-Azure DSC 拡張機能ハンドラーの詳細については、「 [Azure Desired State Configuration 拡張機能ハンドラーの概要](../virtual-machines/virtual-machines-windows-extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。 
+Azure DSC 拡張機能ハンドラーの詳細については、「 [Azure Desired State Configuration 拡張機能ハンドラーの概要](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。 
 
 PowerShell DSC の詳細については、 [PowerShell ドキュメント センター](https://msdn.microsoft.com/powershell/dsc/overview)を参照してください。 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

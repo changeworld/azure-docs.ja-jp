@@ -5,8 +5,3 @@
     ![ポータルで WNS キーを設定する](./media/app-service-mobile-configure-wns/mobile-push-wns-credentials.png)
 
 バックエンドは WNS を使用してプッシュ通知を送信するよう構成されました。
-
-
-<!--HONumber=Dec16_HO2-->
-
-

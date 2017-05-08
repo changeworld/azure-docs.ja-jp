@@ -1,6 +1,6 @@
 ---
 title: "Java を使用して Azure SQL Database に接続する | Microsoft Docs"
-description: "Azure SQL Database への接続に使用できる Java コード サンプルについて説明します。"
+description: "Azure SQL Database への接続とデータの照会に使用できる Java コード サンプルについて説明します。"
 services: sql-database
 documentationcenter: 
 author: ajlam
@@ -8,37 +8,37 @@ manager: jhubbard
 editor: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: quick start
+ms.custom: quick start connect
 ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 03/27/2017
+ms.date: 04/17/2017
 ms.author: andrela;carlrab;sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: a047d4cdf869fff0d2afaf11f124370c0eae98e4
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 6ba2880b1ce9eed0f5c3b8e3ed4255c7e4ec7f29
+ms.lasthandoff: 04/21/2017
 
 
 ---
 # <a name="azure-sql-database-use-java-to-connect-and-query-data"></a>Azure SQL Database: Java を使って接続とデータの照会を行う
 
-[Java](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) を使用して Azure SQL Database に接続し、クエリを実行します。 このガイドでは、Java を使用して Azure SQL Database に接続し、照会、挿入、更新、削除の各ステートメントを実行する方法について詳しく説明します。
+このクイック スタートでは、Mac OS、Ubuntu Linux、Windows の各プラットフォームから [Java](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) を使って Azure SQL Database に接続し、Transact-SQL ステートメントを使ってデータベース内のデータを照会、挿入、更新、削除する方法について説明します。
 
 このクイック スタートでは、次のクイック スタートで作成されたリソースが出発点として使用されます。
 
 - [DB の作成 - ポータル](sql-database-get-started-portal.md)
 - [DB の作成 - CLI](sql-database-get-started-cli.md)
 
-## <a name="configure-development-environment"></a>開発環境の設定
+## <a name="install-java-software"></a>Java ソフトウェアのインストール
 
-次のセクションでは、既存の Mac OS、Linux (Ubuntu)、および Windows 開発環境で Azure SQL Database を使用するように設定する方法について説明します。
+このセクションの手順では、Java による開発には慣れているが、Azure SQL Database を初めて使用するユーザーを想定しています。 Java による開発の経験がない場合は、「[Build an app using SQL Server (SQL Server を使用してアプリを構築する)](https://www.microsoft.com/en-us/sql-server/developer-get-started/)」に移動し、**Java** を選択してから、使用しているオペレーティング システムを選択します。
 
 ### <a name="mac-os"></a>**Mac OS**
 ターミナルを開き、Java プロジェクトの作成先となるディレクトリに移動します。 次のコマンドを入力して、**brew** と **Maven** をインストールします。 
 
-```
+```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew update
 brew install maven
@@ -47,32 +47,33 @@ brew install maven
 ### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
 ターミナルを開き、Java プロジェクトの作成先となるディレクトリに移動します。 次のコマンドを入力して、**Maven** をインストールします。 
 
-```
+```bash
 sudo apt-get install maven
 ```
 
 ### <a name="windows"></a>**Windows**
-公式インストーラーを使用して [Maven](https://maven.apache.org/download.cgi) をインストールします。  
+公式インストーラーを使用して [Maven](https://maven.apache.org/download.cgi) をインストールします。 Maven を使用して、Java プロジェクトの依存関係の管理、ビルド、テスト、および実行を行うことができます。 
 
 ## <a name="get-connection-information"></a>接続情報の取得
 
-Azure Portal で接続文字列を取得します。 その接続文字列は Azure SQL データベースに接続するために使用します。
+Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名、データベース名、ログイン情報が必要になります。
 
 1. [Azure ポータル](https://portal.azure.com/)にログインします。
 2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
-3. データベースの **[要点]** ウィンドウで、完全修飾サーバー名を確認します。 
+3. データベースの [**概要**] ページで、次の図に示すように、完全修飾サーバー名を確認します。 サーバー名をポイントすると、[**コピーするにはクリックします**] オプションが表示されます。 
 
-    <img src="./media/sql-database-connect-query-dotnet/server-name.png" alt="server name" style="width: 780px;" />
+   ![server-name](./media/sql-database-connect-query-dotnet/server-name.png) 
 
-4. **[データベース接続文字列の表示]** をクリックします。
+4. Azure SQL Database サーバーのログイン情報を忘れた場合は、[SQL データベース サーバー] ページに移動して、サーバー管理者名を表示し、必要に応じてパスワードをリセットします。
+5. **[データベース接続文字列の表示]** をクリックします。
 
-5. 完全な **JDBC** 接続文字列を確認します。
+6. 完全な **JDBC** 接続文字列を確認します。
 
-    <img src="./media/sql-database-connect-query-jdbc/jdbc-connection-string.png" alt="JDBC connection string" style="width: 780px;" />
+    ![JDBC 接続文字列](./media/sql-database-connect-query-jdbc/jdbc-connection-string.png)    
 
 ### <a name="create-maven-project"></a>**Maven プロジェクトの作成**
 ターミナルから新しい Maven プロジェクトを作成します。 
-```
+```bash
 mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=SqlDbSample" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0"
 ```
 
@@ -88,7 +89,7 @@ mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=SqlDbSample" "
 
 ## <a name="select-data"></a>データの選択
 
-[接続](https://docs.microsoft.com/sql/connect/jdbc/working-with-a-connection)と [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL ステートメントを使用し、Java を使って Azure SQL Database のデータを照会します。
+次のコードを使用して、カテゴリ別の上位 20 の製品を照会します。このコードでは、[connection](https://docs.microsoft.com/sql/connect/jdbc/working-with-a-connection) クラスと [SELECT](https://docs.microsoft.com/sql/t-sql/queries/select-transact-sql) Transact-SQL ステートメントを使用します。 hostHame、dbName、ユーザー、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。 
 
 ```java
 package com.sqldbsamples;
@@ -104,10 +105,10 @@ public class App {
     public static void main(String[] args) {
     
         // Connect to database
-        String hostName = "yourserver";
-        String dbName = "yourdatabase";
-        String user = "yourusername";
-        String password = "yourpassword";
+        String hostName = "your_server.database.windows.net";
+        String dbName = "your_database";
+        String user = "your_username";
+        String password = "your_password";
         String url = String.format("jdbc:sqlserver://%s.database.windows.net:1433;database=%s;user=%s;password=%s;encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostName, dbName, user, password);
         Connection connection = null;
 
@@ -123,17 +124,19 @@ public class App {
                 String selectSql = "SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName " 
                     + "FROM [SalesLT].[ProductCategory] pc "  
                     + "JOIN [SalesLT].[Product] p ON pc.productcategoryid = p.productcategoryid";
-                Statement statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery(selectSql);
+                
+                try (Statement statement = connection.createStatement();
+                    ResultSet resultSet = statement.executeQuery(selectSql)) {
 
-                // Print results from select statement
-                System.out.println("Top 20 categories:");
-                while (resultSet.next())
-                {
-                    System.out.println(resultSet.getString(1) + " "
-                        + resultSet.getString(2));
+                        // Print results from select statement
+                        System.out.println("Top 20 categories:");
+                        while (resultSet.next())
+                        {
+                            System.out.println(resultSet.getString(1) + " "
+                                + resultSet.getString(2));
+                        }
                 }
-            }
+        }
         catch (Exception e) {
                 e.printStackTrace();
         }
@@ -143,7 +146,7 @@ public class App {
 
 ## <a name="insert-data"></a>データを挿入する
 
-[準備されたステートメント](https://docs.microsoft.com/sql/connect/jdbc/using-statements-with-sql)と [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL ステートメントを使用して、Azure SQL Database にデータを挿入します。
+次のコードを使用して、SalesLT.Product テーブルに新しい製品を挿入します。このコードでは、[Prepared Statements](https://docs.microsoft.com/sql/connect/jdbc/using-statements-with-sql) クラスと [INSERT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) Transact-SQL ステートメントを使用します。 hostHame、dbName、ユーザー、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。 
 
 ```java
 package com.sqldbsamples;
@@ -157,10 +160,10 @@ public class App {
     public static void main(String[] args) {
     
         // Connect to database
-        String hostName = "yourserver";
-        String dbName = "yourdatabase";
-        String user = "yourusername";
-        String password = "yourpassword";
+        String hostName = "your_server.database.windows.net";
+        String dbName = "your_database";
+        String user = "your_username";
+        String password = "your_password";
         String url = String.format("jdbc:sqlserver://%s.database.windows.net:1433;database=%s;user=%s;password=%s;encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostName, dbName, user, password);
         Connection connection = null;
 
@@ -173,22 +176,23 @@ public class App {
                 System.out.println("=========================================");
 
                 // Prepared statement to insert data
-                String insertSql = "INSERT INTO SalesLT.Product (Name, ProductNumber, Color, )" 
+                String insertSql = "INSERT INTO SalesLT.Product (Name, ProductNumber, Color, " 
                     + " StandardCost, ListPrice, SellStartDate) VALUES (?,?,?,?,?,?);";
 
                 java.util.Date date = new java.util.Date();
                 java.sql.Timestamp sqlTimeStamp = new java.sql.Timestamp(date.getTime());
 
-                PreparedStatement prep = connection.prepareStatement(insertSql);
-                prep.setString(1, "BrandNewProduct");
-                prep.setInt(2, 200989);
-                prep.setString(3, "Blue");
-                prep.setDouble(4, 75);
-                prep.setDouble(5, 80);
-                prep.setTimestamp(6, sqlTimeStamp);
+                try (PreparedStatement prep = connection.prepareStatement(insertSql)) {
+                        prep.setString(1, "BrandNewProduct");
+                        prep.setInt(2, 200989);
+                        prep.setString(3, "Blue");
+                        prep.setDouble(4, 75);
+                        prep.setDouble(5, 80);
+                        prep.setTimestamp(6, sqlTimeStamp);
 
-                int count = prep.executeUpdate();
-                System.out.println("Inserted: " + count + " row(s)");
+                        int count = prep.executeUpdate();
+                        System.out.println("Inserted: " + count + " row(s)");
+                }
         }
         catch (Exception e) {
                 e.printStackTrace();
@@ -198,7 +202,7 @@ public class App {
 ```
 ## <a name="update-data"></a>データの更新
 
-[準備されたステートメント](https://docs.microsoft.com/sql/connect/jdbc/using-statements-with-sql)と [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL ステートメントを使用して、Azure SQL Database のデータを更新します。
+次のコードを使用して、先ほど追加した新しい製品を更新します。このコードでは、[Prepared Statements](https://docs.microsoft.com/sql/connect/jdbc/using-statements-with-sql) クラスと [UPDATE](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql) Transact-SQL ステートメントを使用して、Azure SQL Database のデータを更新します。 hostHame、dbName、ユーザー、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。 
 
 ```java
 package com.sqldbsamples;
@@ -212,10 +216,10 @@ public class App {
     public static void main(String[] args) {
     
         // Connect to database
-        String hostName = "yourserver";
-        String dbName = "yourdatabase";
-        String user = "yourusername";
-        String password = "yourpassword";
+        String hostName = "your_server.database.windows.net";
+        String dbName = "your_database";
+        String user = "your_username";
+        String password = "your_password";
         String url = String.format("jdbc:sqlserver://%s.database.windows.net:1433;database=%s;user=%s;password=%s;encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostName, dbName, user, password);
         Connection connection = null;
 
@@ -230,12 +234,13 @@ public class App {
                 // Prepared statement to update data
                 String updateSql = "UPDATE SalesLT.Product SET ListPrice = ? WHERE Name = ?";
 
-                PreparedStatement prep = connection.prepareStatement(updateSql);
-                prep.setString(1, "500");
-                prep.setString(2, "BrandNewProduct");
+                try (PreparedStatement prep = connection.prepareStatement(updateSql)) {
+                        prep.setString(1, "500");
+                        prep.setString(2, "BrandNewProduct");
 
-                int count = prep.executeUpdate();
-                System.out.println("Updated: " + count + " row(s)")
+                        int count = prep.executeUpdate();
+                        System.out.println("Updated: " + count + " row(s)")
+                }
         }
         catch (Exception e) {
                 e.printStackTrace();
@@ -248,7 +253,7 @@ public class App {
 
 ## <a name="delete-data"></a>データの削除
 
-[準備されたステートメント](https://docs.microsoft.com/sql/connect/jdbc/using-statements-with-sql)と [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL ステートメントを使用して、Azure SQL Database のデータを削除します。
+次のコードを使用して、先ほど追加した新しい製品を削除します。[Prepared Statements](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql)と [DELETE](https://docs.microsoft.com/sql/connect/jdbc/using-statements-with-sql) Transact-SQL ステートメントを使用します。 hostHame、dbName、ユーザー、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。 
 
 ```java
 package com.sqldbsamples;
@@ -262,10 +267,10 @@ public class App {
     public static void main(String[] args) {
     
         // Connect to database
-        String hostName = "yourserver";
-        String dbName = "yourdatabase";
-        String user = "yourusername";
-        String password = "yourpassword";
+        String hostName = "your_server.database.windows.net";
+        String dbName = "your_database";
+        String user = "your_username";
+        String password = "your_password";
         String url = String.format("jdbc:sqlserver://%s.database.windows.net:1433;database=%s;user=%s;password=%s;encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostName, dbName, user, password);
         Connection connection = null;
 
@@ -280,12 +285,13 @@ public class App {
                 // Prepared statement to delete data
                 String deleteSql = "DELETE SalesLT.Product WHERE Name = ?";
 
-                PreparedStatement prep = connection.prepareStatement(deleteSql);
-                prep.setString(1, "BrandNewProduct");
+                try (PreparedStatement prep = connection.prepareStatement(deleteSql)) {
+                        prep.setString(1, "BrandNewProduct");
 
-                int count = prep.executeUpdate();
-                System.out.println("Deleted: " + count + " row(s)");
-            }        
+                        int count = prep.executeUpdate();
+                        System.out.println("Deleted: " + count + " row(s)");
+                }
+        }        
         catch (Exception e) {
                 e.printStackTrace();
         }
@@ -294,9 +300,15 @@ public class App {
 ```
 
 ## <a name="next-steps"></a>次のステップ
-* [SQL Database の開発の概要](sql-database-develop-overview.md)の確認。
-* GitHub リポジトリの [SQL Server 用 Microsoft JDBC ドライバー](https://github.com/microsoft/mssql-jdbc)。
-* [問題/質問を登録します](https://github.com/microsoft/mssql-jdbc/issues)。
-* [SQL Database の機能](https://azure.microsoft.com/services/sql-database/)すべてを確認します。
+
+- GitHub レポジトリの [SQL Server 用 Microsoft JDBC ドライバー](https://github.com/microsoft/mssql-jdbc)。
+- [問題/質問を登録します](https://github.com/microsoft/mssql-jdbc/issues)。
+- SQL Server Management Studio を使用して接続とクエリを実行するには、[SSMS を使用した接続とクエリ](sql-database-connect-query-ssms.md)に関するページを参照してください。
+- Visual Studio を使用して接続とデータの照会を行うには、[Visual Studio Code を使った接続とデータの照会](sql-database-connect-query-vscode.md)に関するページを参照してください。
+- .NET を使用して接続とデータの照会を行うには、[.NET を使った接続とデータの照会](sql-database-connect-query-dotnet.md)に関するページを参照してください。
+- PHP を使用して接続とデータの照会を行うには、[PHP を使った接続とデータの照会](sql-database-connect-query-php.md)に関するページを参照してください。
+- Node.js を使用して接続とデータの照会を行うには、[Node.js を使った接続とデータの照会](sql-database-connect-query-nodejs.md)に関するページを参照してください。
+- Python を使用して接続とデータの照会を行うには、[Python を使った接続とデータの照会](sql-database-connect-query-python.md)に関するページを参照してください。
+- Ruby を使用して接続とデータの照会を行うには、[Ruby を使った接続とデータの照会](sql-database-connect-query-ruby.md)に関するページを参照してください。
 
 

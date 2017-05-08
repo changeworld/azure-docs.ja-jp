@@ -14,58 +14,52 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/19/2017
+ms.date: 04/14/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 4ee75cac7fb4c8e6903b73150ec7b1acfc9cb9f9
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: ba5e069fb57be9ed896c0454b011aabf5fd68a0b
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-hadoop-in-hdinsight-powershell"></a>HDInsight で Apache Mahout と Hadoop を使用して映画のリコメンデーションを生成する (PowerShell)
+
 [!INCLUDE [mahout-selector](../../includes/hdinsight-selector-mahout.md)]
 
-[Apache Mahout](http://mahout.apache.org) 機械学習ライブラリを使用して Azure HDInsight で映画のリコメンデーションを生成する方法について説明します。 このドキュメントでは、Azure PowerShell を使用して Mahout をリモートで実行する方法について説明します。
-
-Mahout は、Apache Hadoop の[機械学習][ml]ライブラリの 1 つです。 Mahout には、フィルター処理、分類、クラスタリングなどデータを処理するためのアルゴリズムが含まれています。 この記事では、リコメンデーション エンジンを使用し、友人たちが鑑賞した映画に基づいて映画のリコメンデーションを生成します。
+[Apache Mahout](http://mahout.apache.org) 機械学習ライブラリを使用して Azure HDInsight で映画のリコメンデーションを生成する方法について説明します。 このドキュメントの例では、Azure PowerShell を使用して、Mahout ジョブを実行します。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Linux ベースの HDInsight クラスター。 作成の詳細については、「[Hadoop チュートリアル: HDInsight で Linux ベースの Hadoop を使用する][getstarted]」を参照してください。
 
 > [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、「[HDInsight コンポーネントのバージョン](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)」を参照してください。
 
-* **Azure PowerShell を実行できるワークステーション**。
-
-    > [!IMPORTANT]
-    > Azure サービス マネージャーを使用した HDInsight リソースの管理に関する Azure PowerShell のサポートは、2017 年 1 月 1 日までに**廃止**される予定です。 このドキュメントの手順では、Azure Resource Manager で機能する新しい HDInsight コマンドレットを使用します。
-    >
-    > [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs) に関するページの手順に従い、Azure PowerShell の最新バージョンをインストールしてください。 Azure Resource Manager で機能する新しいコマンドレットを使用するようにスクリプトを変更する必要がある場合、詳細については、「[Migrating to Azure Resource Manager-based development tools for HDInsight clusters (HDInsight クラスターの Azure Resource Manager ベースの開発ツールへの移行)](hdinsight-hadoop-development-using-azure-resource-manager.md)」をご覧ください。
+* [Azure PowerShell](/powershell/azure/overview)
 
 ## <a name="recommendations"></a>Azure PowerShell を使用したリコメンデーションの生成
 
-> [!NOTE]
-> このセクションで使用されるジョブは Azure PowerShell で動作しますが、Mahout で提供されるクラスの多くは現在 Azure PowerShell で動作しないため、Hadoop コマンド ラインを使用して実行する必要があります。 Azure PowerShell で動作しないクラスの一覧については、「[トラブルシューティング](#troubleshooting)」セクションを参照してください。
+> [!WARNING]
+> このセクションのジョブは Azure PowerShell を使用することによって機能します。 Mahout で提供されるクラスの多くは Azure PowerShell では現在動作しません。 Azure PowerShell で動作しないクラスの一覧については、「[トラブルシューティング](#troubleshooting)」セクションを参照してください。
 >
 > SSH を使用した HDInsight への接続とクラスターでの Mahout サンプルの直接的な実行の例については、[Mahout と HDInsight を使用した映画のリコメンデーションの生成 (SSH)](hdinsight-hadoop-mahout-linux-mac.md)に関するページを参照してください。
 
-Mahout で提供される機能の 1 つが、リコメンデーション エンジンです。 データは、`userID`、`itemId`、`prefValue` (項目に対するユーザーの嗜好) の形式で受け付けられます。 Mahout では、共起分析を実行して、*ある項目を嗜好するユーザーが他の項目も嗜好する*ということを判断できます。 次に Mahout は、項目の嗜好が似ているユーザーを特定します。これはリコメンデーションの作成に使用できます。
+Mahout で提供される機能の 1 つが、リコメンデーション エンジンです。 データは、`userID`、`itemId`、`prefValue` (項目に対するユーザーの嗜好) の形式で受け付けられます。 Mahout はデータを使用して、項目の嗜好が似ているユーザーを特定します。これはリコメンデーションの作成に使用できます。
 
-映画を使用した非常にシンプルな例を次に示します。
+次の例は、リコメンデーション処理のしくみを示す簡略化されたチュートリアルです。
 
 * **共起**: Joe、Alice、Bob は全員、好きな映画として「*Star Wars (スター ウォーズ)*」、「*The Empire Strikes Back (帝国の逆襲)*」、「*Return of the Jedi (ジェダイの帰還)*」を挙げました。 Mahout では、これらの映画のいずれかを好きなユーザーが他の 2 作品も好きであると判断します。
 
-* **共起**: Bob と Alice は「*The Phantom Menace (ファントム メナス)*」、「*Attack of the Clones (クローンの攻撃)*」、「*Revenge of the Sith (シスの復讐)*」も好きな映画として選びました。 Mahout では、この例の最初の 3 作品を好きなユーザーがこれらの 3 作品も好きであると判断します。
+* **共起**: Bob と Alice は「*The Phantom Menace (ファントム メナス)*」、「*Attack of the Clones (クローンの攻撃)*」、「*Revenge of the Sith (シスの復讐)*」も好きな映画として選びました。 Mahout では、この例の最初の 3 作品を好きなユーザーがこれらの作品も好きであると判断します。
 
 * **類似性のリコメンデーション**: Joe は、この例の最初の 3 作品を好きな映画として選びました。Mahout では、嗜好が似ている他のユーザーが好きな映画の中で、Joe がまだ観ていない映画を調べます (好み/順位)。 この場合、Mahout では、「*The Phantom Menace (ファントム メナス)*」、「*Attack of the Clones (クローンの攻撃)*」、「*Revenge of the Sith (シスの復讐)*」を推薦します。
 
 ### <a name="understanding-the-data"></a>データの説明
 
-[GroupLens Research][movielens] では利便性を高めるために、Mahout と互換性のある形式で映画の評価データを提供します。 このデータは、クラスターの既定の記憶域 ( `/HdiSamples//HdiSamples/MahoutMovieData`) にあります。
+[GroupLens Research][movielens] では、Mahout と互換性のある形式で映画の評価データを提供します。 このデータは、クラスターの既定の記憶域 ( `/HdiSamples//HdiSamples/MahoutMovieData`) にあります。
 
-2 つのファイル `moviedb.txt` (映画に関する情報) と `user-ratings.txt` があります。 user-ratings.txt ファイルは分析中に使用されます。moviedb.txt は、分析の結果を表示するときに、わかりやすいテキスト情報を提供するために使用されます。
+2 つのファイル `moviedb.txt` (映画に関する情報) と `user-ratings.txt` があります。 `user-ratings.txt` ファイルは分析時に使用されます。 `moviedb.txt` ファイルは、分析の結果を表示するときにわかりやすいテキストを提供するために使用されます。
 
 user-ratings.txt に含まれているデータの構造は `userID`、`movieID`、`userRating`、および `timestamp` です。これは、各ユーザーによって映画に対してどれだけ高い評価が付けられているか示しています。 次にデータの例を示します。
 
@@ -93,7 +87,7 @@ if(-not($sub))
 
 # Get cluster info
 $clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
-$creds=Get-Credential -Message "Enter the login for the cluster (the default name is usually 'admin')"
+$creds=Get-Credential -UserName "admin" -Message "Enter the login for the cluster"
 
 #Get the cluster info so we can get the resource group, storage, etc.
 $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
@@ -114,7 +108,7 @@ $context = New-AzureStorageContext `
 $queryString = "!ls /usr/hdp/current/mahout-client"
 $hiveJobDefinition = New-AzureRmHDInsightHiveJobDefinition -Query $queryString
 $hiveJob=Start-AzureRmHDInsightJob -ClusterName $clusterName -JobDefinition $hiveJobDefinition -HttpCredential $creds
-$dummy = wait-azurermhdinsightjob -ClusterName $clusterName -JobId $hiveJob.JobId -HttpCredential $creds
+wait-azurermhdinsightjob -ClusterName $clusterName -JobId $hiveJob.JobId -HttpCredential $creds > $null
 #Get the files returned from Hive
 $files=get-azurermhdinsightjoboutput -clustername $clusterName -JobId $hiveJob.JobId -DefaultContainer $container -DefaultStorageAccountName $storageAccountName -DefaultStorageAccountKey $storageAccountKey -HttpCredential $creds
 #Find the file that starts with mahout-examples and ends in job.jar
@@ -180,7 +174,7 @@ Get-AzureStorageBlobContent -blob "HdiSamples/HdiSamples/MahoutMovieData/user-ra
 
 Mahout ジョブは出力を STDOUT に返しません。 代わりに、指定された出力ディレクトリに **part-r-00000**として格納します。 このファイルは、ワークステーションの現在のディレクトリ内の **output.txt** にダウンロードされます。
 
-ファイルの内容の例を次に示します。
+次のテキストは、ファイルの内容の例です。
 
     1    [234:5.0,347:5.0,237:5.0,47:5.0,282:5.0,275:5.0,88:5.0,515:5.0,514:5.0,121:5.0]
     2    [282:5.0,210:5.0,237:5.0,234:5.0,347:5.0,121:5.0,258:5.0,515:5.0,462:5.0,79:5.0]
@@ -193,7 +187,7 @@ Mahout ジョブは出力を STDOUT に返しません。 代わりに、指定�
 
 ### <a name="view-the-output"></a>出力を表示する
 
-生成された出力はアプリケーションで使用できるものですが、人間が判読するのは困難です。 サーバーの `moviedb.txt` を使用して、`movieId`を映画名に解決できます。 次の PowerShell スクリプトを使用して、映画名とリコメンデーションを表示します。
+生成された出力はアプリケーションで使用できるものですが、わかりやすいものではありません。 サーバーの `moviedb.txt` を使用して、`movieId`を映画名に解決できます。 次の PowerShell スクリプトを使用して、映画名とリコメンデーションを表示します。
 
 ```powershell
 <#
@@ -279,11 +273,13 @@ $recommendationFormat = @{Expression={$_.Name};Label="Movie";Width=40}, `
 $recommendations | format-table $recommendationFormat
 ```
 
-スクリプトを実行する例を次に示します。
+リコメンデーションをわかりやすい形式で表示するには、次のコマンドを使用します。 
 
-    PS C:\> show-recommendation.ps1 -userId 4 -userDataFile .\user-ratings.txt -movieFile .\moviedb.txt -recommendationFile .\output.txt
+```powershell
+.\show-recommendation.ps1 -userId 4 -userDataFile .\user-ratings.txt -movieFile .\moviedb.txt -recommendationFile .\output.txt
+```
 
-出力は次のようになります。
+出力は次のテキストのようになります。
 
     Reading movies descriptions
     Reading rated movies
@@ -320,7 +316,7 @@ $recommendations | format-table $recommendationFormat
 
 Mahout ジョブは、処理中に作成された一時ファイルをクリーンアップしません。 さらに、このジョブは既存の出力ファイルを上書きしません。
 
-Mahout ジョブの実行中のエラーを回避するには、実行と実行の間で一時ファイルと出力ファイルを削除するか、一時ディレクトリと出力ディレクトリに一意の名前を使用します。 次の PowerShell スクリプトを使用して、このドキュメントのここまでのスクリプトによって作成されたファイルを削除します。
+Mahout ジョブの実行中のエラーを回避するには、実行と実行の間で一時ファイルと出力ファイルを削除します。 このドキュメントのここまでのスクリプトによって作成されたファイルを削除するには、次の PowerShell スクリプトを使用します。
 
 ```powershell
 # Login to your Azure subscription

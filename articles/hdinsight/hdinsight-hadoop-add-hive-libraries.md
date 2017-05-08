@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/27/2017
+ms.date: 04/14/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: bf15644cbf3a640bb706292c17cddbefa0574605
-ms.lasthandoff: 04/11/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: dd5df541c0362b8fe8265fd26dc73908215076ad
+ms.lasthandoff: 04/18/2017
 
 ---
 # <a name="add-custom-hive-libraries-when-creating-your-hdinsight-cluster"></a>HDInsight クラスター作成時のカスタム Hive ライブラリの追加
@@ -34,8 +34,8 @@ HDInsight の Hive で頻繁に使用するライブラリがある場合、こ�
 > [!NOTE]
 > この記事のスクリプト アクションを使用すると、次のシナリオでライブラリを使用できます。
 >
-> * **Linux ベースの HDInsight** - **Hive コマンド ライン**、**WebHCat**、および **HiveServer2** を使用する場合。
-> * **Windows ベースの HDInsight** - **Hive コマンド ライン**および **WebHCat** を使用する場合。
+> * **Linux ベースの HDInsight** - Hive クライアント、**WebHCat**、および **HiveServer2** を使用する場合。
+> * **Windows ベースの HDInsight** - Hive クライアントおよび **WebHCat** を使用する場合。
 
 ## <a name="the-script"></a>スクリプト
 

@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 02/08/2017
 ms.author: mbaldwin;bryanla
 translationtype: Human Translation
-ms.sourcegitcommit: 57383c11682342cb0a6446c79e603843a698fc8c
-ms.openlocfilehash: 835e1c494de59576fd8ac529240729cb33eaa50b
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: e8cc9b790224891a0770b18fe2edb8e1bbfd5b72
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 03/01/2017
 
 この記事では、Azure AD でアプリケーションを追加、更新、削除する方法を説明します。 また、Azure AD と統合できるさまざまな種類のアプリケーション、Web API などの他のリソースにアクセスするようにアプリケーションを構成する方法などについても説明します。
 
-登録されたアプリケーションおよびそれらの間の関係を表す&2; つの Azure AD オブジェクトの詳細については、[アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト](active-directory-application-objects.md)に関するページを参照してください。Azure Active Directory でアプリケーションを開発するときに使用するブランド化ガイドラインの詳細については、[統合アプリケーションのブランド化に関するガイドライン](active-directory-branding-guidelines.md)を参照してください。
+登録されたアプリケーションおよびそれらの間の関係を表す 2 つの Azure AD オブジェクトの詳細については、[アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト](active-directory-application-objects.md)に関するページを参照してください。Azure Active Directory でアプリケーションを開発するときに使用するブランド化ガイドラインの詳細については、[統合アプリケーションのブランド化に関するガイドライン](active-directory-branding-guidelines.md)を参照してください。
 
 ## <a name="adding-an-application"></a>アプリケーションの追加
 Azure AD の機能を使用するアプリケーションは、まず Azure AD テナントに登録する必要があります。 この登録プロセスでは、アプリケーションが配置されている URL、ユーザーの認証後の応答の送信先となる URL、アプリケーションを識別する URI など、アプリケーションの詳細を Azure AD に提供します。

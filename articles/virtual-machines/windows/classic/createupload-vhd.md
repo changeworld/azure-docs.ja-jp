@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 07/21/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 8cae78052a4433f0a26d774a7085c110e32911c9
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 62c428215c5bd89789ae65bd420281a2f16f33a1
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -32,7 +32,7 @@ ms.lasthandoff: 03/27/2017
 この記事では、以下のことを前提としています。
 
 * **Azure サブスクリプション** - サブスクリプションがない場合は、 [Azure アカウントを無料で作成](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)できます。
-* **[Microsoft Azure PowerShell](/powershell/azureps-cmdlets-docs)** - Microsoft Azure PowerShell モジュールをインストールし、サブスクリプションを使用するように構成しておきます。
+* **[Microsoft Azure PowerShell](/powershell/azure/overview)** - Microsoft Azure PowerShell モジュールをインストールし、サブスクリプションを使用するように構成しておきます。
 * **.vhd ファイル** - .vhd ファイルに格納され、仮想マシンに接続された、Windows オペレーティング システムでサポートされている。 VHD で実行されているサーバー ロールが Sysprep でサポートされていることを確認してください。 詳しくは、「 [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)」 (サーバー ロールに対する Sysprep サポート) をご覧ください。
 
     > [!IMPORTANT]
@@ -88,7 +88,7 @@ VHD を Azure にアップロードする前に、Sysprep ツールを使用し�
     ```
 
 ## <a name="step-3-upload-the-vhd-file"></a>手順 3: .vhd ファイルをアップロードする
-[Add-AzureVhd](http://msdn.microsoft.com/library/dn495173.aspx) を使用して VHD をアップロードします。
+[Add-AzureVhd](https://docs.microsoft.com/en-us/powershell/module/azure/add-azurevhd) を使用して VHD をアップロードします。
 
 前の手順で使用した Azure PowerShell ウィンドウから次のコマンドを入力し、角かっこ (&lsaquo;&rsaquo;) 内の変数を実際の情報に置き換えます。
 
@@ -97,7 +97,7 @@ Add-AzureVhd -Destination "https://<StorageAccountName>.blob.core.windows.net/<C
 ```
 
 ## <a name="step-4-add-the-image-to-your-list-of-custom-images"></a>手順 4: カスタム イメージの一覧にイメージを追加する
-[Add-AzureVMImage](https://msdn.microsoft.com/library/mt589167.aspx) コマンドレットを使用して、カスタム イメージの一覧にイメージを追加します。
+[Add-AzureVMImage](https://docs.microsoft.com/en-us/powershell/module/azure/add-azurevmimage) コマンドレットを使用して、カスタム イメージの一覧にイメージを追加します。
 
 ```powershell
 Add-AzureVMImage -ImageName <ImageName> -MediaLocation "https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/<vhdName>.vhd" -OS "Windows"

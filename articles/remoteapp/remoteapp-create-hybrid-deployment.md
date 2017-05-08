@@ -12,12 +12,12 @@ ms.workload: compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 04/26/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: ae8c26069503a24f3ba17a86160801c60a68d668
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 2c4a3ee9ec97dac78485e0f275fbb78412e7cb98
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -52,7 +52,7 @@ Azure RemoteApp のコレクションには、次の 2 種類があります。
 * [サインアップ](https://azure.microsoft.com/services/remoteapp/) します。
 * Azure RemoteApp サービス アカウントとして使用するためのユーザー アカウントを Active Directory に作成します。 ドメインへのマシンの参加のみが実行可能になるように、このアカウントのアクセス許可を制限します。
 * オンプレミスのネットワークに関する情報、つまり IP アドレス情報と VPN デバイスの詳細情報を収集します。
-* [Azure PowerShell](/powershell/azureps-cmdlets-docs) モジュールをインストールします。
+* [Azure PowerShell](/powershell/azure/overview) モジュールをインストールします。
 * アクセス権を付与するユーザーに関する情報を集めます。 ユーザーごとに Azure Active Directory のユーザー プリンシパル名 (たとえば、name@contoso.com) が必要です。 Azure AD と Active Directory 間で UPN が一致していることを確認します。
 * テンプレート イメージを選択します。 Azure RemoteApp テンプレート イメージには、ユーザーに発行するアプリケーションとプログラムが含まれます。 詳細については、 [Azure RemoteApp イメージのオプション](remoteapp-imageoptions.md) に関するページを参照してください。
 * Office 365 ProPlus イメージを使用する必要がありますか。 [こちら](remoteapp-officesubscription.md)で詳細を確認できます。

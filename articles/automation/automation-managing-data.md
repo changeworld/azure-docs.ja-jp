@@ -1,6 +1,6 @@
----
+﻿---
 title: "Azure Automation のデータの管理 | Microsoft Docs"
-description: "この記事には、Azure Automation 環境の管理に関する複数のトピックが含まれています。  現在は、データの保持、Azure Automation のバックアップ、Azure Automation での災害復旧が含まれています。"
+description: "この記事には、Azure Automation 環境の管理に関する複数のトピックが含まれています。  現在は、データの保持、Azure Automation のバックアップ、Azure Automation でのディザスター リカバリー が含まれています。"
 services: automation
 documentationcenter: 
 author: SnehaGunda
@@ -64,8 +64,8 @@ Azure Automation から証明書をエクスポートすることはできませ
 ### <a name="dsc-configurations"></a>DSC の構成
 Microsoft Azure 管理ポータルまたは Windows PowerShell の [Export-AzureRmAutomationDscConfiguration](https://msdn.microsoft.com/library/mt603485.aspx) コマンドレットを使用して、構成をスクリプト ファイルにエクスポートできます。 これらの構成は、別のオートメーション アカウントでインポートして使用できます。
 
-## <a name="geo-replication-in-azure-automation"></a>Azure Automation での地理レプリケーション
-Azure Automation アカウントでの標準である地理レプリケーションでは、アカウント データを別の地理的リージョンにバックアップして冗長性を確保します。 アカウントのセットアップ時にはプライマリ リージョンを選択できます。アカウントにはセカンダリ リージョンが自動的に割り当てられます。 プライマリ リージョンからコピーされた、セカンダリ データは、データの損失が発生した場合にも継続的に更新されます。  
+## <a name="geo-replication-in-azure-automation"></a>Azure Automation での geo レプリケーション
+Azure Automation アカウントでの標準である geo レプリケーションでは、アカウント データを別の地理的リージョンにバックアップして冗長性を確保します。 アカウントのセットアップ時にはプライマリ リージョンを選択できます。アカウントにはセカンダリ リージョンが自動的に割り当てられます。 プライマリ リージョンからコピーされた、セカンダリ データは、データの損失が発生した場合にも継続的に更新されます。  
 
 次の表に、使用可能なプライマリ リージョンとセカンダリ リージョンのペアを示します。
 
@@ -77,7 +77,7 @@ Azure Automation アカウントでの標準である地理レプリケーショ
 | 東南アジア |東アジア |
 | 東日本 |西日本 |
 
-万一、プライマリ リージョンのデータが失われた場合、Microsoft はその復旧を試みます。 プライマリ リージョンを復元できない場合は、地理フェールオーバーが実行されます。影響を受けた顧客には、サブスクリプションを通じてこのことが通知されます。
+万一、プライマリ リージョンのデータが失われた場合、Microsoft はその復旧を試みます。 プライマリ リージョンを復元できない場合は、geo フェールオーバーが実行されます。影響を受けた顧客には、サブスクリプションを通じてこのことが通知されます。
 
 
 

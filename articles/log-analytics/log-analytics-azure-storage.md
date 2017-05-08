@@ -16,9 +16,9 @@ ms.date: 04/12/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 04bab3024474ae521090a8693b6c095e1704d4dc
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 350aa79cf1f41084c33e16b6fcf2ada971b22626
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -74,9 +74,9 @@ Azure サービスのログとメトリックを収集する方法は 4 種類�
 * 利用できるログの詳細については、「[診断ログでサポートされているサービスとスキーマ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#supported-services-and-schema-for-diagnostic-logs)」を参照してください。
 
 ### <a name="enable-diagnostics-with-powershell"></a>PowerShell を使用して診断を有効にする
-2016 年 11 月 (v2.3.0) 以降のリリースの [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) が必要です。
+2016 年 11 月 (v2.3.0) 以降のリリースの [Azure PowerShell](/powershell/azure/overview) が必要です。
 
-次の PowerShell の例は、[Set-AzureRmDiagnosticSetting](https://docs.microsoft.com/powershell/resourcemanager/azurerm.insights/v2.3.0/set-azurermdiagnosticsetting) を使用してネットワーク セキュリティ グループで診断を有効にする方法を示しています。 同じ方法をサポート対象のすべてのリソースで利用できます。診断を有効にするリソースのリソース ID に `$resourceId` を設定します。
+次の PowerShell の例は、[Set-AzureRmDiagnosticSetting](/powershell/module/azurerm.insights/set-azurermdiagnosticsetting) を使用してネットワーク セキュリティ グループで診断を有効にする方法を示しています。 同じ方法をサポート対象のすべてのリソースで利用できます。診断を有効にするリソースのリソース ID に `$resourceId` を設定します。
 
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"

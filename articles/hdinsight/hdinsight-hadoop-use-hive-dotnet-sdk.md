@@ -149,7 +149,7 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 * [HDInsight での Sqoop の使用](hdinsight-use-sqoop-mac-linux.md)
 * [非対話型認証 .NET HDInsight アプリケーションを作成する](hdinsight-create-non-interactive-authentication-dotnet-applications.md)
 
-[hdinsight-provision]: hdinsight-provision-clusters.md
+[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
 
 

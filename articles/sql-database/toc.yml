@@ -33,18 +33,19 @@
       href: sql-database-connect-query-python.md
     - name: "Ruby"
       href: sql-database-connect-query-ruby.md
+- name: "Tutorials (チュートリアル)"
+  items:
+  - name: "1 - 新しい SQL DB の作成/設定"
+    href: sql-database-design-first-database.md
+  - name: "2 - 既存の SQL Server の移行"
+    href: sql-database-migrate-your-sql-server-database.md 
 - name: "サンプル"
   items:
   - name: "Azure CLI"
     href: sql-database-cli-samples.md
   - name: "PowerShell"
     href: sql-database-powershell-samples.md
-- name: "Tutorials (チュートリアル)"
-  items:
-  - name: "データベースの設計"
-    href: sql-database-design-first-database.md
-  - name: "データベースの移行"
-    href: sql-database-migrate-your-sql-server-database.md  
+ 
 - name: "概念"
   items:
   - name: "データベースとサーバー"
@@ -55,8 +56,6 @@
       href: sql-database-server-overview.md
     - name: "エラスティック プール"
       href: sql-database-elastic-pool.md
-    - name: "エラスティック プールの使用"
-      href: sql-database-elastic-pool-guidance.md
   - name: "リソース"
     items:
     - name: "サービス階層"

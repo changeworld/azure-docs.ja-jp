@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 01/20/2017
 ms.author: daleche
 translationtype: Human Translation
-ms.sourcegitcommit: a6489fd5ff5e60bc3a1c06485d330556250c21cd
-ms.openlocfilehash: eddbdda847d7d0cc12f3e1c6128ce76d15f6f39f
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 608cbc0fd1cc1d73d28056909ed06618457bd9c0
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -167,7 +167,7 @@ SQL Database サーバーは、クライアント プログラムのホストと
 
 IP アドレスの構成を怠った場合、必要な IP アドレスを示した親切なエラー メッセージがプログラムで表示されます。
 
-[!INCLUDE [sql-database-include-ip-address-22-v12portal](../../includes/sql-database-include-ip-address-22-v12portal.md)]
+[!INCLUDE [sql-database-include-ip-address-22-portal](../../includes/sql-database-include-ip-address-22-v12portal.md)]
 
 詳細については、「 [ファイアウォール設定の構成方法 (Azure SQL Database)](sql-database-configure-firewall-settings.md)
 
@@ -186,7 +186,7 @@ IP アドレスの構成を怠った場合、必要な IP アドレスを示し�
 6. &gt; [アクション]
 7. &gt; [新しい規則]
 
-Azure 仮想マシン (VM) でクライアント プログラムがホストされている場合、次のように表示されます。<br/>[Ports beyond 1433 for ADO.NET 4.5, and SQL Database V12 (ADO.NET 4.5、SQL Database V12 における 1433 以外のポート)](sql-database-develop-direct-route-ports-adonet-v12.md)
+Azure 仮想マシン (VM) でクライアント プログラムがホストされている場合は、<br/>「[ADO.NET 4.5 用の 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)」を参照してください。
 
 ポートと IP アドレスの構成に関する背景情報については、 [Azure SQL Database のファイアウォール](sql-database-firewall-configure.md)
 
@@ -212,7 +212,7 @@ ADO.NET 4.0 以前のバージョンを使用している場合、最新の ADO.
 <a id="d-test-whether-utilities-can-connect" name="d-test-whether-utilities-can-connect"></a>
 
 ### <a name="diagnostics-test-whether-utilities-can-connect"></a>診断: ユーティリティから接続できるかどうかをテストする
-プログラムから Azure SQL Database に接続できないときの診断方法として&1; つ考えられるのは、ユーティリティ プログラムを使用して接続する方法です。 診断対象のプログラムと同じライブラリを使用して接続するユーティリティがあれば理想的です。
+プログラムから Azure SQL Database に接続できないときの診断方法として 1 つ考えられるのは、ユーティリティ プログラムを使用して接続する方法です。 診断対象のプログラムと同じライブラリを使用して接続するユーティリティがあれば理想的です。
 
 任意の Windows コンピューターで、次のユーティリティを試すことができます。
 
@@ -321,7 +321,7 @@ Enterprise Library 6 (EntLib60) は、.NET クラスのフレームワークで�
 
 * [Enterprise Library 6 – 2013 年 4 月](http://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx)
 
-一時エラーを処理するための再試行ロジックは、EntLib60 を利用できる&1; つの領域です。
+一時エラーを処理するための再試行ロジックは、EntLib60 を利用できる 1 つの領域です。
 
 * [4 - Perseverance, Secret of All Triumphs: Using the Transient Fault Handling Application Block (忍耐力、すべての勝利の秘訣: 一時的エラー処理アプリケーション ブロックの使用)](http://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx)
 
@@ -335,7 +335,7 @@ Enterprise Library 6 (EntLib60) は、.NET クラスのフレームワークで�
 ### <a name="entlib60-classes-for-transient-errors-and-retry"></a>一時エラーと再試行に関連した EntLib60 のクラス
 再試行ロジックで特に利用する機会の多い EntLib60 のクラスは次のとおりです。 いずれのクラス (そのメソッドなども含む) も、**Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling** 名前空間に属しています。
 
-* **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling**名前空間に属しています。*
+*名前空間 **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling**:*
 
 * **RetryPolicy** クラス
   

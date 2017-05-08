@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/27/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: c2a9a14891f197ae442c41668229d4a7610ba248
-ms.openlocfilehash: 75c2c51e6ed55c0f8bb152aa09b11c95b5dd8025
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a8f1bf660c44f7716767d3244a7d6e7f7acf8a83
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -44,7 +45,7 @@ ms.openlocfilehash: 75c2c51e6ed55c0f8bb152aa09b11c95b5dd8025
     ![UpdateDeployment](./media/cloud-services-how-to-manage-portal/update-blade.png)
 
 4. **必要に応じて** 、デプロイメント ラベルとストレージ アカウントを更新します。
-5. ロール インスタンスが&1; つしかないロールがある場合は、 **[1 つ以上のロールに単一のインスタンスが含まれている場合でもデプロイする]** をオンにして、アップグレードを続行できるようにします。
+5. ロール インスタンスが 1 つしかないロールがある場合は、 **[1 つ以上のロールに単一のインスタンスが含まれている場合でもデプロイする]** をオンにして、アップグレードを続行できるようにします。
 
     Azure でクラウド サービスの更新中に 99.95% の可用性を保証できるのは、各ロールに少なくとも 2 つのロール インスタンス (仮想マシン) がある場合だけです。 2 つのロール インスタンスがある場合は、一方の仮想マシンでクライアント要求を処理している間に、もう一方が更新されます。
 
@@ -75,17 +76,17 @@ ms.openlocfilehash: 75c2c51e6ed55c0f8bb152aa09b11c95b5dd8025
 
 **デプロイをスワップするための前提条件は何にですか。**
 
-デプロイのスワップを成功させるための重要な前提条件は&2; つあります。
+デプロイのスワップを成功させるための重要な前提条件は 2 つあります。
 
 - 運用スロット用の静的 IP アドレスを使用する場合は、ステージング スロット用の静的 IP アドレスも予約する必要があります。 これを行わなかった場合、スワップは失敗します。
 
-- スワップを実行する前に、ロールのすべてのインスタンスを実行する必要があります。 インスタンスの状態は、Azure Portal の [概要] ブレードで、または [Windows PowerShell の Get-AzureRole コマンド](https://docs.microsoft.com/en-us/powershell/servicemanagement/azure.service/v3.1.0/get-azurerole)を使用して確認できます。
+- スワップを実行する前に、ロールのすべてのインスタンスを実行する必要があります。 インスタンスの状態は、Azure Portal の [概要] ブレードで、または [Windows PowerShell の Get-AzureRole コマンド](/powershell/module/azure/get-azurerole?view=azuresmps-3.7.0)を使用して確認できます。
 
 ゲスト OS の更新とサービス復旧操作も、デプロイのスワップを失敗させる可能性があります。 詳細については、「[クラウド サービスのデプロイメントに関する問題のトラブルシューティング](cloud-services-troubleshoot-deployment-problems.md)」を参照してください。
 
 **スワップで、アプリケーションのダウンタイムは発生しますか。どのように対応する必要がありますか。**
 
-直前のセクションで説明したように、デプロイのスワップは、Azure ロード バランサーの構成を変更するだけなので、通常は非常に高速で実行されます。 ただし、場合によっては&10; 数秒かかることがあり、その結果、一時的な接続エラーが発生します。 お客様への影響を制限するために、[クライアント再試行ロジック](../best-practices-retry-general.md)の実装を検討してください。
+直前のセクションで説明したように、デプロイのスワップは、Azure ロード バランサーの構成を変更するだけなので、通常は非常に高速で実行されます。 ただし、場合によっては 10 数秒かかることがあり、その結果、一時的な接続エラーが発生します。 お客様への影響を制限するために、[クライアント再試行ロジック](../best-practices-retry-general.md)の実装を検討してください。
 
 ## <a name="how-to-link-a-resource-to-a-cloud-service"></a>方法: クラウド サービスに対するリソースのリンク
 Azure ポータルでは、現在の Azure クラシック ポータルとは異なり、リソースが一緒にリンクされません。 代わりに、追加のリソースを、クラウド サービスで使用されている同じリソース グループにデプロイしてください。
@@ -121,9 +122,4 @@ Azure ポータルでは、現在の Azure クラシック ポータルとは異
 * 方法: [クラウド サービスをデプロイする](cloud-services-how-to-create-deploy-portal.md)
 * [カスタム ドメイン名を構成する](cloud-services-custom-domain-name-portal.md)
 * [SSL 証明書を構成する](cloud-services-configure-ssl-certificate-portal.md)
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

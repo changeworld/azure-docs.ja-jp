@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 3a0ac3de9828903b7ca66c15e5422d1228e2a731
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: d373d2a0e601f2796719fc5efb8761f276ab24d9
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -67,7 +67,7 @@ REST API を使用して Microsoft Azure Import/Export サービスのインポ�
 
  次の手順に従って、送付先を取得します。
 
--   ストレージ アカウントの場所名を特定します。 この値は、Azure ポータルでストレージ アカウントの **ダッシュボード**の **[場所]** フィールドを見て確認するか、サービス管理 API の [Get Storage Account Properties](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties) 操作を使用して照会することができます。
+-   ストレージ アカウントの場所名を特定します。 この値は、Azure Portal でストレージ アカウントの**ダッシュボード**の **[場所]** フィールドを見て確認するか、サービス管理 API の [Get Storage Account Properties](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties) 操作を使用して照会することができます。
 
 -   `Get Location` 操作を呼び出して、このストレージ アカウントを処理できる場所を取得します。
 

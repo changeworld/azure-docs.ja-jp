@@ -11,13 +11,13 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 03/21/2017
+ms.date: 04/18/2017
 ms.topic: get-started-article
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: f861f2ba0376f00ff21e03cbb81a04a266f38630
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 3c5520f30b75c0e0a2b1aee890f79d01d325d543
+ms.lasthandoff: 04/20/2017
 
 ---
 
@@ -109,7 +109,7 @@ ms.lasthandoff: 03/22/2017
 
 1. JSON のコピー元となった[ストレージ アカウントのテンプレート リファレンス](/azure/templates/microsoft.storage/storageaccounts)をもう一度参照してください。 プロパティと、それに使用可能な値を説明したテーブルがいくつかあります。 
 
-2. **properties** 要素にある **customDomain**、**encryption**、**accessTier** の&3; つはいずれも、必ずしも必要ないことがわかります。 シナリオによってはこの&3; つの値が重要になることもありますが、例を簡潔にするため、今回は削除します。
+2. **properties** 要素にある **customDomain**、**encryption**、**accessTier** の 3 つはいずれも、必ずしも必要ないことがわかります。 シナリオによってはこの 3 つの値が重要になることもありますが、例を簡潔にするため、今回は削除します。
 
    ```json
    "resources": [
@@ -137,7 +137,7 @@ ms.lasthandoff: 03/22/2017
   
    ![IntelliSense の表示](./media/resource-manager-create-first-template/intellisense.png)
 
-   VS Code を使用していない場合には、ストレージ アカウントのテンプレート リファレンス ページを参照してください。 説明のところに、有効な値として上の&2; つが書かれています。 要素を **Storage** に設定します。
+   VS Code を使用していない場合には、ストレージ アカウントのテンプレート リファレンス ページを参照してください。 説明のところに、有効な値として上の 2 つが書かれています。 要素を **Storage** に設定します。
 
    ```json
    "kind": "Storage",
@@ -214,7 +214,7 @@ ms.lasthandoff: 03/22/2017
 ```
 
 ## <a name="add-parameters-and-variables"></a>パラメーターと変数の追加
-テンプレートに設定する値はあと&2; つだけです。具体的には、**name** と **sku.name** です。 この&2; つのプロパティには、デプロイ時に値をカスタマイズできるパラメーターを追加します。 
+テンプレートに設定する値はあと 2 つだけです。具体的には、**name** と **sku.name** です。 この 2 つのプロパティには、デプロイ時に値をカスタマイズできるパラメーターを追加します。 
 
 ストレージ アカウント名には制約がいくつもあるため、設定の難易度が高くなっています。 名前の長さは 3 ～ 24 文字で、使用できるのは数字と小文字のみです。また、一意になっている必要があります。 ここでは、制約に抵触しない一意の値を当て推量で設定するのではなく、[uniqueString](resource-group-template-functions.md#uniquestring) 関数を使ってハッシュ値を生成することにしましょう。 プレフィックスを追加してこのハッシュ値に意味を持たせると、ハッシュ値がストレージ アカウントを示すものであることがデプロイ後にわかりやすくなります。 
 
@@ -288,7 +288,9 @@ ms.lasthandoff: 03/22/2017
 
 4. ファイルを保存します。
 
-ここまでの作業が終わった時点で、テンプレートは以下のようになります。
+## <a name="final-template"></a>最終的なテンプレート
+
+この記事の手順を完了すると、テンプレートは次のようになります。
 
 ```json
 {

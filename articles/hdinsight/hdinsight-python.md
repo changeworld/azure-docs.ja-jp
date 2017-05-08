@@ -17,9 +17,9 @@ ms.date: 02/27/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 1fc13142d3e4f54e0945032a404eb497746ee5a0
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 985f14ce7b8249c8e80deb1851cfee8c89651786
+ms.lasthandoff: 04/27/2017
 
 ---
 # <a name="use-python-user-defined-functions-udf-with-hive-and-pig-in-hdinsight"></a>HDInsight における Hive および Pig での Python ユーザー定義関数 (UDF) の使用
@@ -268,7 +268,7 @@ SSH の使用方法の詳細については、[HDInsight での SSH の使用](h
 
 ### <a name="powershell"></a>PowerShell
 
-次の手順では、Azure PowerShell を使用します。 Azure PowerShell の使用方法の詳細については、「[Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」をご覧ください。
+次の手順では、Azure PowerShell を使用します。 Azure PowerShell の使用方法の詳細については、「[Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」をご覧ください。
 
 1. Python の例の [streaming.py](#streamingpy) と [pig_python.py](#jythonpy) を使用して、開発用コンピューターにファイルのローカル コピーを作成します。
 2. 次の PowerShell スクリプトを使用して、**streaming.py** ファイルと **pig\_python.py** ファイルをサーバーにアップロードします。 スクリプトの最初の 3 行に、Azure HDInsight クラスターの名前と、**streaming.py** ファイルおよび **pig\_python.py** ファイルへのパスを入力します。

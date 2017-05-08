@@ -6,8 +6,3 @@
    ![iOS で実行されているクイック スタート アプリ](./media/app-service-mobile-ios-quickstart/mobile-quickstart-startup-ios.png)
 
 [Azure ポータル]: https://portal.azure.com/
-
-
-<!--HONumber=Nov16_HO3-->
-
-

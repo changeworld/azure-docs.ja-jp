@@ -79,7 +79,8 @@
 #### [Traffic Manager でのカスタム ドメイン](../app-service-web/web-sites-traffic-manager-custom-domain-name.md?toc=%2fazure%2fapp-service%2ftoc.json)
 
 ### [既存のアプリを複製する](../app-service-web/app-service-web-app-cloning-portal.md?toc=%2fazure%2fapp-service%2ftoc.json)
-### [オンプレミス接続](../app-service-web/web-sites-hybrid-connection-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)
+### [ハイブリッド接続](../app-service-web/web-sites-hybrid-connection-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)
+### [ハイブリッド接続 v2](app-service-hybrid-connections.md)
 ### [Azure Virtual Network](../app-service-web/web-sites-integrate-with-vnet.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [詳細な構成](../app-service-web/web-sites-transform-extend.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [リソース グループ](../app-service-web/app-service-move-resources.md?toc=%2fazure%2fapp-service%2ftoc.json)

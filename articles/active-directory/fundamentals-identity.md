@@ -2,8 +2,8 @@
 title: Azure ID | Microsoft Docs
 description: "Azure Active Directory の使用について説明します。"
 services: active-directory
-documentationcenter: .net
-author: curtand
+documentationcenter: 
+author: jeffgilb
 manager: femila
 editor: 
 ms.assetid: 30867693-9851-4551-b3d3-df583365207f
@@ -12,8 +12,8 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
-ms.author: curtand
+ms.date: 04/26/2017
+ms.author: Jeff.Gilbert
 ROBOTS: NOINDEX,NOFOLLOW
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f

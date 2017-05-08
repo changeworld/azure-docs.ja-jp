@@ -16,8 +16,9 @@ ms.tgt_pltfrm: na
 ms.date: 08/29/2016
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 197e5eba551d60ec33bcb5705bfa13f145554b74
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: e7cbbdc606920b9698b30e4b7a9c3325a0f866e2
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -42,8 +43,8 @@ Medihoo は、医療検索 Web サイトの大規模な計画を持つ新興企�
 ## <a name="weichert-realtorshttpscustomersmicrosoftcompagescustomerstoryaspxrecid21252"></a>[Weichert Realtors](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=21252)
 Weichert Realtors はクラウドに移行中です。また、それによって業務方法も大幅に変化しています。 高価なオンプレミス ハードウェアとソフトウェアから Microsoft Azure に移行することで、運用コストが 60% 削減されました。また、CRM ソリューションを堅牢な検索機能で全面的に改良し、将来のビジネスに重要な新しい各種データ サービスを利用できるようになりました。 [詳細情報](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=21252)
 
-## <a name="whattopediacomsearch-dev-case-study-whattopediamd"></a>[Whattopedia.com](search-dev-case-study-whattopedia.md)
-スウェーデンの新興企業が、関連性の高い範囲指定検索エクスペリエンスを通して、買い物客と小売業者との接続をサポートする情報メディア ポータルを構築しました。これは、旅行ポータルによって旅行者を見知らぬ土地でホテル、レストラン、エンターテイメントと結び付ける方法と似ています。[詳細情報](search-dev-case-study-whattopedia.md)
+## <a name="whattopediacom"></a>Whattopedia.com
+スウェーデンの新興企業が、関連性の高い範囲指定検索エクスペリエンスを通して、買い物客と小売業者との接続をサポートする情報メディア ポータルを構築しました。これは、旅行ポータルによって旅行者を見知らぬ土地でホテル、レストラン、エンターテイメントと結び付ける方法と似ています。
 
 <!--Image References -- here for future reference. Had to -->
 [1]: ./media/search-case-studies/autotrader_m.png
@@ -52,9 +53,4 @@ Weichert Realtors はクラウドに移行中です。また、それによっ�
 [4]: ./media/search-case-studies/medihoo_m.png
 [5]: ./media/search-case-studies/weichert_m.png
 [xomni]: ./media/search-case-studies/xomni_m.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

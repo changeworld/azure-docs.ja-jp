@@ -12,20 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/20/2017
+ms.date: 03/23/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 04a045f41965b093aab71e59cd9b5f328b44de84
-ms.openlocfilehash: ac73b5c2ece8044d9f75e017428c43259f8a9357
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 610c731195ffa92ccd915b93e8c901f47b2ff16a
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promapp"></a>チュートリアル: Azure Active Directory と Promapp の統合
-このチュートリアルの目的は、Promapp と Azure Active Directory (Azure AD) を統合する方法を説明することです。  
+このチュートリアルの目的は、Promapp と Azure Active Directory (Azure AD) を統合する方法を説明することです。
+
 Promapp と Azure AD の統合には、次の利点があります。 
 
 * Promapp にアクセスする Azure AD ユーザーを制御できます。 
-* ユーザーが自分の Azure AD アカウントで自動的に Promapp にサインオン (シングル サインオン) できるようにします。
+* ユーザーが自分の Azure AD アカウントで自動的に Promapp にサインオン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Active Directory クラシック ポータル) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
@@ -34,25 +36,25 @@ SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active
 Promapp と Azure AD の統合を構成するには、次のものが必要です。
 
 * Azure AD サブスクリプション
-* Promapp でのシングル サインオンが有効なサブスクリプション
+* Promapp でのシングル サインオン (SSO) が有効なサブスクリプション
 
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+>[!NOTE]
+>このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 > 
 > 
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。 
+* Azure AD の評価環境がない場合は、[1 か月の試用版](https://azure.microsoft.com/pricing/free-trial/)を入手できます。 
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。 このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
+このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーから Promapp を追加する 
-2. Azure AD シングル サインオンの構成とテスト
+2. Azure AD シングル サインオン (SSO) の構成とテスト
 
-## <a name="adding-promapp-from-the-gallery"></a>ギャラリーから Promapp を追加する
+## <a name="add-promapp-from-the-gallery"></a>ギャラリーから Promapp を追加する
 Azure AD への Promapp の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Promapp を追加する必要があります。
 
 **ギャラリーから Promapp を追加するには、次の手順を実行します。**
@@ -77,13 +79,14 @@ Azure AD への Promapp の統合を構成するには、ギャラリーから�
    
     ![アプリケーション][500]
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、Promapp で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、Promapp で Azure AD の SSO を構成し、テストする方法を説明することです。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Promapp ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Promapp の関連ユーザーの間で、リンク関係が確立されている必要があります。  
+SSO を機能させるには、Azure AD ユーザーに対応する Promapp ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Promapp の関連ユーザーの間で、リンク関係が確立されている必要があります。  
+
 このリンク関係を確立するには、Azure AD の **[ユーザー名]** の値を Promapp の **[Username]** の値として割り当てます。
 
-Promapp で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+Promapp で Azure AD の SSO を構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
@@ -91,14 +94,14 @@ Promapp で Azure AD のシングル サインオンを構成してテストす�
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
 5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
-このセクションの目的は、Azure AD クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、Promapp アプリケーションでシングル サインオンを構成することです。
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+このセクションの目的は、Azure AD クラシック ポータルで Azure AD の SSO を有効にすることと、Promapp アプリケーションで SSO を構成することです。
 
-**Promapp で Azure AD シングル サインオンを構成するには、次の手順を実行します。**
+**Promapp で Azure AD SSO を構成するには、次の手順に従います。**
 
 1. Azure AD クラシック ポータルの **Promapp** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
-    ![Configure Single Sign-On][6] 
+    ![[シングル サインオンの構成]][6] 
 2. **[ユーザーの Promapp へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
    
     ![Azure AD のシングル サインオン][7] 
@@ -137,7 +140,7 @@ Promapp で Azure AD のシングル サインオンを構成してテストす�
    
     ![Azure AD のシングル サインオン][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。
 
 ![Azure AD ユーザーの作成][20]
@@ -182,12 +185,11 @@ Promapp で Azure AD のシングル サインオンを構成してテストす�
    1. **[新しいパスワード]** の値を書き留めます。
    2. ページの下部にある **[完了]**」を参照してください。   
 
-### <a name="creating-a-promapp-test-user"></a>Promapp のテスト ユーザーの作成
-Promapp アプリケーションでは、ジャストインタイム プロビジョニングがサポートされています。
-そのため、アクセス パネルを使用してアプリケーションにアクセスを試みると、必要に応じてユーザー アカウントが自動的に作成されます。  
+### <a name="create-a-promapp-test-user"></a>Promapp のテスト ユーザーの作成
+Promapp アプリケーションでは、ジャストインタイム プロビジョニングがサポートされています。 そのため、アクセス パネルを使用してアプリケーションにアクセスを試みると、必要に応じてユーザー アカウントが自動的に作成されます。  
 
-### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-このセクションの目的は、Britta Simon に Promapp へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+このセクションの目的は、Britta Simon に Promapp へのアクセスを許可することによって、このユーザーが Azure の SSO を使用できるようにすることです。
 
 ![ユーザーの割り当て][200] 
 
@@ -207,8 +209,9 @@ Promapp アプリケーションでは、ジャストインタイム プロビ�
    
     ![ユーザーの割り当て][205]
 
-### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
-このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。  
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+このセクションの目的は、アクセス パネルを使用して Azure AD の SSO 構成をテストすることです。
+
 アクセス パネルで [Promapp] タイルをクリックすると、自動的に Promapp アプリケーションにサインオンします。
 
 ## <a name="additional-resources"></a>その他のリソース
@@ -248,9 +251,4 @@ Promapp アプリケーションでは、ジャストインタイム プロビ�
 [400]: ./media/active-directory-saas-promapp-tutorial/tutorial_promapp_400.png
 [401]: ./media/active-directory-saas-promapp-tutorial/tutorial_promapp_401.png
 [402]: ./media/active-directory-saas-promapp-tutorial/tutorial_promapp_402.png
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

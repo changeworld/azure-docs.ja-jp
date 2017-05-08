@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 01/19/2017
+ms.date: 05/03/2017
 ms.author: spelluru
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 2e84eb020b46fe89426e547b389715d6190fc03c
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -35,10 +36,5 @@ GitHub に以下のサンプルがあります。
 * [Import/Export ツール](https://azure.microsoft.com/documentation/samples/data-catalog-dotnet-import-export/)
   
   Data Catalog REST API を使用して Azure Data Catalog からアセットを取得し、ファイルにシリアル化する方法を示すサンプルです。 また、JSON としてシリアル化されたアセットのセットを取得して、それらをカタログにプッシュする方法も示します。 検索クエリを使用したカタログのサブセットのエクスポートをサポートします。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

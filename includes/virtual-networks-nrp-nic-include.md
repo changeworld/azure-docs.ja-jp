@@ -6,7 +6,7 @@
 | **virtualMachine** |NIC が関連付けられるVM。 |/subscriptions/{guid}/../Microsoft.Compute/virtualMachines/vm1 |
 | **macAddress** |NIC の MAC アドレス |4 ～ 30 の任意の値 |
 | **networkSecurityGroup** |NIC に関連付けられている NSG |/subscriptions/{guid}/../Microsoft.Network/networkSecurityGroups/myNSG1 |
-| **dnsSettings** |NIC の DNS 設定 | [PIP](#Public-IP-address) |
+| **dnsSettings** |NIC の DNS 設定 |[PIP](#Public-IP-address) |
 
 ネットワーク インターフェイス カード (NIC) は、仮想マシン (VM) に関連するネットワーク インターフェイスを表します。 VM には、1 つ以上の NIC を含めることができます。
 
@@ -22,7 +22,7 @@ NIC には、以下のプロパティを含む **ipConfigurations** という名
 | **privateIPAllocationMethod** |IP の割り当て方法 |動的または静的 |
 | **enableIPForwarding** |ルーティングに NIC を使用できるかどうか |true または false |
 | **primary** |NIC は VM のプライマリ NIC であるかどうか |true または false |
-| **publicIPAddress** |NIC に関連付けられた PIP | [DNS の設定](#DNS-settings) |
+| **publicIPAddress** |NIC に関連付けられた PIP |[DNS の設定](#DNS-settings) |
 | **loadBalancerBackendAddressPools** |NIC が関連付けられたバックエンド アドレス プール | |
 | **loadBalancerInboundNatRules** |NIC が関連付けられた受信ロード バランサーの NAT 規則 | |
 
@@ -74,9 +74,4 @@ JSON 形式でのパブリック IP アドレスのサンプル:
 
 ### <a name="additional-resources"></a>その他のリソース
 * NIC に関する [REST API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/mt163579.aspx) も参照してください。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

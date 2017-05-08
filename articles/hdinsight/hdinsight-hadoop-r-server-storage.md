@@ -16,9 +16,9 @@ ms.workload: data-services
 ms.date: 02/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 2df17cddf629cb72b7fa4d590dfaa69311c96aa4
-ms.openlocfilehash: 3e47a7e0382009a07b885a28c6e8d90f9bff9cfb
-ms.lasthandoff: 01/10/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 18dcb3a319f78639b27f9e70a2177423192e5958
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -28,7 +28,10 @@ HDInsight の Microsoft R Server は、データ、コード、分析の結果�
 HDInsight で Hadoop クラスターを作成するときに、Azure ストレージ アカウントまたは Data Lake Store を指定します。 そのアカウントの特定のストレージ コンテナーが、作成したクラスターのファイル システム (Hadoop 分散ファイル システムなど) を保持します。 パフォーマンス上の理由から、HDInsight クラスターは、指定したプライマリ ストレージ アカウントと同じデータ センターに作成されます。 詳細については、「 [HDInsight での Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md "HDInsight での Azure BLOB ストレージの使用")」をご覧ください。   
 
 ## <a name="use-multiple-azure-blob-storage-accounts"></a>複数の Azure BLOB ストレージ アカウントの使用
-必要に応じて、HDI クラスターを持つ複数の Azure ストレージ アカウントまたはコンテナーにアクセスすることができます。 そのためには、クラスターの作成時に UI で追加のストレージ アカウントを指定し、次の手順に従ってそのストレージ アカウントを R で使用する必要があります。  
+必要に応じて、HDI クラスターを持つ複数の Azure ストレージ アカウントまたはコンテナーにアクセスすることができます。 そのためには、クラスターの作成時に UI で追加のストレージ アカウントを指定し、次の手順に従ってそのストレージ アカウントを R で使用する必要があります。
+
+> [!WARNING]
+> HDInsight クラスター以外の場所でストレージ アカウントを使用することはできません。
 
 1. **storage1** というストレージ アカウント名で、**container1** という名前の既定のコンテナーを持つ HDInsight クラスターを作成します。
 2. **storage2**という名前の追加のストレージ アカウントを指定します。  
@@ -126,9 +129,9 @@ HDInsight クラスターに関連付けられている Azure Active Directory (
 
 サービス プリンシパルに名前を付けてパスワードを設定したら、**[ADLS アクセスを管理する]** をクリックして、サービス プリンシパルを Data Lake Store と関連付けます。
 
-また、クラスター作成後に&1; つ以上の Data Lake Store へのクラスター アクセスを追加することもできます。そのためには、Data Lake Store の Azure Portal エントリを開き、**[データ エクスプローラー]、[アクセス]、[追加]** の順に移動します。 
+また、クラスター作成後に 1 つ以上の Data Lake Store へのクラスター アクセスを追加することもできます。そのためには、Data Lake Store の Azure Portal エントリを開き、**[データ エクスプローラー]、[アクセス]、[追加]** の順に移動します。 
 
-Data Lake Store への HDI クラスター アクセスの追加について詳しくは、「[Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-hdinsight-hadoop-use-portal#create-an-hdinsight-cluster-with-access-to-azure-data-lake-store)」をご覧ください。
+Data Lake Store への HDI クラスター アクセスの追加について詳しくは、「[Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-hdinsight-hadoop-use-portal#create-an-hdinsight-cluster-with-access-to-azure-data-lake-store)」をご覧ください。
 
 ## <a name="use-the-data-lake-store-with-r-server"></a>Data Lake Store と R Server の使用
 Data Lake Store へのアクセスを付与したら、Azure セカンダリ ストレージ アカウントと同様に、HDInsight の R Server で Store を使用できます。 唯一の違いは、プレフィックスが次のように **wasb://** から **adl://** に変わることです。

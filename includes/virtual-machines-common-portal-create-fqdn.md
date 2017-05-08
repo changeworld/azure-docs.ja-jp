@@ -15,8 +15,3 @@
    
    ![新しい DNS ラベルが設定されていることを確認](./media/virtual-machines-common-portal-create-fqdn/fqdnCreated.PNG)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

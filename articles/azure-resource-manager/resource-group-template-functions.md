@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/14/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 1ed23fc5a69cea70636de8b18911c1b11119d3a3
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 591749e2a91f8dcc080b5fa697c1f9bf953d836f
+ms.lasthandoff: 04/15/2017
 
 
 ---

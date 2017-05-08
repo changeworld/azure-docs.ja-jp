@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/24/2017
 ms.author: singhkay
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: b55ad97235a05bd579177c7ef944bca801a6aaae
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: fed612a354d45f34619f2a66bd40d78740c43ac7
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -32,7 +32,7 @@ Azure Resource Manager スタックでは、Key Vault のリソースプロバ�
 - [Azure CLI 2.0](../windows/key-vault-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - Resource Manager デプロイメント モデル用の次世代 CLI
 
 ## <a name="use-cli-10-to-set-up-key-vault"></a>CLI 1.0 を使用して Key Vault を設定する
-コマンド ライン インターフェイス (CLI) を使用して Key Vault を作成するには、「 [CLI を使用した Key Vault の管理](../../key-vault/key-vault-manage-with-cli.md#create-a-key-vault)」を参照してください。
+コマンド ライン インターフェイス (CLI) を使用して Key Vault を作成するには、「 [CLI を使用した Key Vault の管理](../../key-vault/key-vault-manage-with-cli2.md#create-a-key-vault)」を参照してください。
 
 CLI 1.0 の場合、デプロイ ポリシーを割り当てる前に Key Vault を作成する必要があります。 作成後、次のコマンドを使用してポリシーを割り当てることができます。
 
@@ -54,5 +54,4 @@ CLI 1.0 の場合、デプロイ ポリシーを割り当てる前に Key Vault 
     }
 
 テンプレートを使用して、Key Vault の作成時に構成できるその他のオプションについては、「 [Create a Key Vault](https://azure.microsoft.com/documentation/templates/101-key-vault-create/)」を参照してください。
-
 

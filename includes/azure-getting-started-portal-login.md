@@ -26,8 +26,3 @@ Azure アカウントがまだない場合は、次のいずれかの方法で�
    
    ![[サインイン]](./media/azure-getting-started-portal-login/login.png)
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

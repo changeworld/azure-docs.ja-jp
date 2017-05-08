@@ -219,8 +219,3 @@ Application Gateway は、レイヤ 7 の負荷分散に基づく、Azure で管
 ### <a name="additional-resources"></a>その他のリソース
 詳細については、「 [ Azure Application Gateway REST API Reference (Azure Application Gateway REST API リファレンス)](https://msdn.microsoft.com/library/azure/mt299388.aspx) 」を参照してください。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

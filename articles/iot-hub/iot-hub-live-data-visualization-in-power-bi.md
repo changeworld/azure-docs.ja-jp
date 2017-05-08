@@ -16,13 +16,16 @@ ms.workload: na
 ms.date: 03/29/2017
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 6a99749a96a6239428e5b018a26a6e8fd440c9d2
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: ba25cdee46ce4ceb5acd5ff9da683a057f2bd733
+ms.lasthandoff: 04/25/2017
 
 
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Power BI を使用して Azure IoT Hub からのリアルタイム センサー データを視覚化する
+
+![エンド ツー エンド ダイアグラム](media/iot-hub-get-started-e2e-diagram/4.png)
+
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
@@ -38,22 +41,13 @@ Azure IoT ハブが受信したリアルタイム センサー データを Powe
 
 ## <a name="what-you-need"></a>必要なもの
 
-- 次の要件を対象とする [ESP8266 を Azure IoT Hub に接続](iot-hub-arduino-huzzah-esp8266-get-started.md)するためのチュートリアルを完了します。
+- 次の要件に対応するために、[デバイスのセットアップ](iot-hub-raspberry-pi-kit-node-get-started.md)に関するチュートリアルを完了しておきます。
   - 有効な Azure サブスクリプション
   - サブスクリプションの Azure IoT Hub。
   - Azure IoT ハブにメッセージを送信するクライアント アプリケーション。
 - Power BI アカウント  ([Power BI を無料で試す](https://powerbi.microsoft.com/))
 
-## <a name="add-a-consumer-group-to-your-iot-hub"></a>IoT ハブへのコンシューマー グループの追加
-
-コンシューマー グループは、Azure IoT Hub からデータをプルするアプリケーションによって使用されます。 このレッスンでは、IoT ハブからデータを読み取る Stream Analytics ジョブによって使用されるコンシューマー グループを作成します。
-
-コンシューマー グループを IoT ハブに追加するには、次の手順に従います。
-
-1. [Azure Portal](https://ms.portal.azure.com/) で、IoT ハブを開きます。
-1. 左側のウィンドウで **[エンドポイント]** をクリックし、中央のウィンドウで **[イベント]** を選択します。次に、右側のウィンドウの **[コンシューマー グループ]** で名前を入力し、**[保存]** をクリックします。
-
-   ![Azure IoT Hub でのコンシューマー グループの作成](media/iot-hub-live-data-visualization-in-power-bi/1_iot-hub-create-consumer-group-azure.png)
+[!INCLUDE [iot-hub-get-started-create-consumer-group](../../includes/iot-hub-get-started-create-consumer-group.md)]
 
 ## <a name="create-configure-and-run-a-stream-analytics-job"></a>Stream Analytics ジョブの作成、構成、実行
 

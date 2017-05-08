@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 01/13/2017
 ms.author: magoedte; bwren
 translationtype: Human Translation
-ms.sourcegitcommit: c86ec1d328d3cbf62c1a563766574a006299b232
-ms.openlocfilehash: 8bbd077108ba6ca6df67b64ab3fa24c81bf0ab00
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: bfb479020238bb4c2763f439c744aeddf97c8908
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -32,14 +32,14 @@ Automation の接続資産には、Runbook または DSC 構成から外部サ�
 
 ## <a name="windows-powershell-cmdlets"></a>Windows PowerShell コマンドレット
 
-Windows PowerShell で Automation 接続を作成および管理するには、次の表のコマンドレットを使用します。 これらのコマンドレットは、Automation Runbook と DSC 構成に使用できる [Azure PowerShell モジュール](/powershell/azureps-cmdlets-docs) に付属しています。
+Windows PowerShell で Automation 接続を作成および管理するには、次の表のコマンドレットを使用します。 これらのコマンドレットは、Automation Runbook と DSC 構成に使用できる [Azure PowerShell モジュール](/powershell/azure/overview) に付属しています。
 
 |コマンドレット|説明|
 |:---|:---|
-|[Get-AzureRmAutomationConnection](https://docs.microsoft.com/powershell/resourcemanager/azurerm.automation/v1.0.12/get-azurermautomationconnection)|接続を取得します。 接続のフィールドの値のハッシュ テーブルが含まれます。|
-|[New-AzureRmAutomationConnection](https://docs.microsoft.com/powershell/resourcemanager/azurerm.automation/v1.0.12/new-azurermautomationconnection)|新しい接続を作成します。|
-|[Remove-AzureRmAutomationConnection](https://docs.microsoft.com/powershell/resourcemanager/azurerm.automation/v1.0.12/remove-azurermautomationconnection)|既存の接続を削除します。|
-|[Set-AzureRmAutomationConnectionFieldValue](https://docs.microsoft.com/powershell/resourcemanager/azurerm.automation/v1.0.12/Set-AzureRmAutomationConnectionFieldValue?redirectedfrom=msdn)|既存の接続の特定のフィールドの値を設定します。|
+|[Get-AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection)|接続を取得します。 接続のフィールドの値のハッシュ テーブルが含まれます。|
+|[New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection)|新しい接続を作成します。|
+|[Remove-AzureRmAutomationConnection](/powershell/module/azurerm.automation/remove-azurermautomationconnection)|既存の接続を削除します。|
+|[Set-AzureRmAutomationConnectionFieldValue](/powershell/module/azurerm.automation/set-azurermautomationconnectionfieldvalue)|既存の接続の特定のフィールドの値を設定します。|
 
 ## <a name="activities"></a>アクティビティ
 
@@ -47,7 +47,7 @@ Windows PowerShell で Automation 接続を作成および管理するには、�
 
 |アクティビティ|説明|
 |---|---|
-|[Get-AutomationConnection](https://docs.microsoft.com/powershell/servicemanagement/azure.automation/v1.6.1/Get-AzureAutomationConnection?redirectedfrom=msdn)|使用する接続を取得します。 接続のプロパティのハッシュ テーブルを返します。|
+|[Get-AutomationConnection](/powershell/module/azure/get-azureautomationconnection?view=azuresmps-3.7.0)|使用する接続を取得します。 接続のプロパティのハッシュ テーブルを返します。|
 
 >[!NOTE] 
 >**Get-AutomationConnection** の –Name パラメーターには変数を使用しないでください。変数を使用すると、設計時に Runbook または DSC と接続資産間の依存関係の検出が複雑になる可能性があります。
@@ -72,7 +72,7 @@ Windows PowerShell で Automation 接続を作成および管理するには、�
 
 ### <a name="to-create-a-new-connection-with-windows-powershell"></a>Windows PowerShell で新しい接続を作成するには
 
-Windows PowerShell の [New-AzureRmAutomationConnection](https://docs.microsoft.com/powershell/resourcemanager/azurerm.automation/v1.0.12/new-azurermautomationconnection) コマンドレットを使用して新しい接続を作成します。 このコマンドレットには、接続の種類で定義されている各プロパティの値を定義している **ハッシュ テーブル** を受け取る [ConnectionFieldValues](http://technet.microsoft.com/library/hh847780.aspx) という名前のパラメーターがあります。
+Windows PowerShell の [New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection) コマンドレットを使用して新しい接続を作成します。 このコマンドレットには、接続の種類で定義されている各プロパティの値を定義している **ハッシュ テーブル** を受け取る [ConnectionFieldValues](http://technet.microsoft.com/library/hh847780.aspx) という名前のパラメーターがあります。
 
 Automation の [Run As アカウント](automation-sec-configure-azure-runas-account.md)でサービス プリンシパルを使用した Runbook の認証に慣れている場合は、ポータルから Run As アカウントを作成するための代替方法として用意されている PowerShell スクリプトを使用して、新しい接続資産を作成できます。次のサンプル コマンドを使用できます。  
 
@@ -108,3 +108,4 @@ Automation の [Run As アカウント](automation-sec-configure-azure-runas-acc
 - [グラフィカル オーサリング内のリンク](automation-graphical-authoring-intro.md#links-and-workflow)に関する記事を参照して、Runbook のロジック フローを制御する方法を理解します。  
 
 - Azure Automation での PowerShell モジュールの使用方法と Azure Automation 内で統合モジュールとして動作する独自の PowerShell モジュールを作成するためのベスト プラクティスについては、「[Azure Automation 統合モジュール](automation-integration-modules.md)」を参照してください。  
+

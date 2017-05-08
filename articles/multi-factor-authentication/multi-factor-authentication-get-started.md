@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/23/2017
+ms.date: 04/23/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 92c552f42f2645281f5039242825cfdaf6b683c9
-ms.openlocfilehash: 1a42c137204c2d2f6fff9a005b2b0e885c2002b2
-ms.lasthandoff: 01/25/2017
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 8c3cc27f1fa708371d415d00cdff59f77712cd41
+ms.lasthandoff: 05/03/2017
 
 
 ---
 # <a name="choose-the-azure-multi-factor-authentication-solution-for-you"></a>ニーズに応じた Azure Multi-Factor Authentication ソリューションを選択する
-Azure Multi-Factor Authentication (MFA) にはさまざまな種類があるため、使用に適したバージョンを特定するには、いくつかの項目を検討する必要があります。  その項目とは、以下の&3; つです。
+Azure Multi-Factor Authentication (MFA) にはさまざまな種類があるため、使用に適したバージョンを特定するには、いくつかの項目を検討する必要があります。  その項目とは、以下の 3 つです。
 
 * [セキュリティで保護しようとしている対象](#what-am-i-trying-to-secure)
 * [ユーザーが位置する場所](#where-are-the-users-located)
@@ -31,13 +31,13 @@ Azure Multi-Factor Authentication (MFA) にはさまざまな種類があるた�
 以下のセクションでは、ここに挙げた項目の判断に役立つガイダンスを提供します。
 
 ## <a name="what-am-i-trying-to-secure"></a>セキュリティで保護しようとしている対象
-適切な&2; 段階認証ソリューションを選ぶにあたっては、まず&2; 番目の認証方法で保護しようとしている対象は何かという点を考える必要があります。  Azure のアプリケーションですか。  それとも、リモート アクセス システムでしょうか。  何をセキュリティで保護しようとしているかがわかれば、Multi-Factor Authentication をどこで有効にする必要があるかがわかります。  
+適切な 2 段階認証ソリューションを選ぶにあたっては、まず 2 番目の認証方法で保護しようとしている対象は何かという点を考える必要があります。  Azure のアプリケーションですか。  それとも、リモート アクセス システムでしょうか。  何をセキュリティで保護しようとしているかがわかれば、Multi-Factor Authentication をどこで有効にする必要があるかがわかります。  
 
 | セキュリティで保護しようとしている対象 | クラウドでの MFA | MFA サーバー |
 | --- |:---:|:---:|
 | ファーストパーティの Microsoft アプリ |● |● |
-| アプリ ギャラリー内の SaaS アプリ |● |● |
-| Azure AD アプリケーション プロキシ経由で公開される Web アプリケーション |● |● |
+| アプリ ギャラリー内の SaaS アプリ |● |  |
+| Azure AD アプリケーション プロキシ経由で公開される Web アプリケーション |● |  |
 | Azure AD アプリケーション プロキシ経由で公開されない IIS アプリケーション  | |● |
 | VPN、RDG などのリモート アクセス | |● |
 
@@ -59,10 +59,10 @@ Azure Multi-Factor Authentication (MFA) にはさまざまな種類があるた�
 | --- |:---:|:---:|
 | 2 番目の要素としてのモバイル アプリ通知 | ● | ● |
 | 2 番目の要素としてのモバイル アプリ確認コード | ● | ● |
-| 第&2; 要素としての音声通話 | ● | ● |
-| 第&2; 要素としての単方向 SMS | ● | ● |
-| 第&2; 要素としての双方向 SMS | | ● |
-| 第&2; 要素としてのハードウェア トークン | | ● |
+| 第 2 要素としての音声通話 | ● | ● |
+| 第 2 要素としての単方向 SMS | ● | ● |
+| 第 2 要素としての双方向 SMS | | ● |
+| 第 2 要素としてのハードウェア トークン | | ● |
 | MFA をサポートしていない Office 365 クライアントのアプリ パスワード | ● | |
 | 認証方法の管理制御 | ● | ● |
 | PIN モード | | ● |

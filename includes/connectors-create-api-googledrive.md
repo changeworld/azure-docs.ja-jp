@@ -18,8 +18,3 @@ GoogleDrive アカウントに接続するロジック アプリを承認する�
 6. 接続が作成されたら、ロジック アプリで他の手順を自由に実行できるようになります。  
    ![GoogleDrive の接続の作成手順](./media/connectors-create-api-googledrive/googledrive-6.png)  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

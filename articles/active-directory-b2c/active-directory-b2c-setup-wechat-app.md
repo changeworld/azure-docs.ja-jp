@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 3/26/2017
 ms.author: parakhj
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: d1c18a3cf8ca9d55e4bca224cce8d6dba75fcb0d
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 3195ce5830a3bcd862c524b4133d45626a6ab270
+ms.lasthandoff: 04/07/2017
 
 
 ---

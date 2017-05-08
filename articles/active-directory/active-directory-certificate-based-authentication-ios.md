@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/15/2017
+ms.date: 03/30/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: 28c2ef4878305d5cdb37ab8c0802644b1f236337
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: e30d5c81817eb3501615763553d501509c559f0c
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/07/2017
 
 この機能を構成すると、モバイル デバイスで特定のメールおよび Microsoft Office アプリケーションにユーザー名とパスワードの組み合わせを入力する必要がなくなります。 
 
-このトピックでは、Android デバイスで CBA を構成する場合の要件や対応シナリオについて説明します。Office 365 Enterprise、Business、Education、US Government の各プランにおけるテナントのユーザーが対象です。 
+このトピックでは、iOS デバイスで CBA を構成する場合の要件や対応シナリオについて説明します。Office 365 Enterprise、Business、Education、US Government の各プランにおけるテナントのユーザーが対象です。 
 
 Office 365 US Government Defense プランと Federal プランでは、この機能はプレビュー版として提供されています。
 
@@ -71,7 +71,7 @@ Azure Active Directory は、ADFS トークン (またはその他の SAML ト�
 
 詳細については、「 [AD FS サインイン ページのカスタマイズ](https://technet.microsoft.com/library/dn280950.aspx)」を参照してください。
 
-(先進認証が有効になった) 一部の Office アプリは、要求で *prompt=login* を Azure AD に送信します。 既定では、Azure AD は、ADFS への要求でこれを *wauth=usernamepassworduri* (ADFS に U/P 認証を実行するように要求) と *wfresh=0* (ADFS に SSO 状態を無視して、新しい認証を実行するように要求) に変換します。 これらのアプリに対して証明書ベースの認証を有効にするには、既定の Azure AD の動作を変更する必要があります。 フェデレーション ドメイン設定の *PromptLoginBehavior* を '*無効*' に設定するだけです。 このタスクを実行するには、[MSOLDomainFederationSettings](https://docs.microsoft.com/en-us/powershell/msonline/v1/set-msoldomainfederationsettings) コマンドレットを使用します。
+(先進認証が有効になった) 一部の Office アプリは、要求で *prompt=login* を Azure AD に送信します。 既定では、Azure AD は、ADFS への要求でこれを *wauth=usernamepassworduri* (ADFS に U/P 認証を実行するように要求) と *wfresh=0* (ADFS に SSO 状態を無視して、新しい認証を実行するように要求) に変換します。 これらのアプリに対して証明書ベースの認証を有効にするには、既定の Azure AD の動作を変更する必要があります。 フェデレーション ドメイン設定の *PromptLoginBehavior* を '*無効*' に設定するだけです。 このタスクを実行するには、[MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) コマンドレットを使用します。
 
 `Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`
   

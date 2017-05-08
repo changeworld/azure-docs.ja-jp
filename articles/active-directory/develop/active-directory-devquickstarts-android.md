@@ -15,16 +15,19 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: xerners
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 9ae8852c02361ff11c302f86cb5c53e01a48068a
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 590e2bc759567cf3d679e261592dff1e699ba295
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="integrate-azure-ad-into-an-android-app"></a>Azure AD の Android アプリへの統合
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
 
-[!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
+> [!TIP]
+> Azure AD をほんの数分で稼働するために役立つ、新しい[開発者ポータル](https://identity.microsoft.com/Docs/Android)のプレビュー版をお試しください。 開発者ポータルでは、アプリを登録して、コードに Azure AD を統合するプロセスを説明してあります。 完了すると、テナント内のユーザーを認証できる単純なアプリケーションと、トークンを受け取って検証を実行できるバックエンドを手に入れることになります。
+>
+>
 
 デスクトップ アプリケーションを開発する場合、Azure Active Directory (Azure AD) を使用すると、オンプレミスの Active Directory アカウントを使ってユーザーの認証処理を容易に行うことができます。 また、Office 365 API や Azure API などの Azure AD によって保護された任意の Web API をアプリケーションで安全に使用することもできます。
 
@@ -35,11 +38,6 @@ ms.lasthandoff: 03/18/2017
 * ユーザーをサインアウトします。
 
 作業を開始するには、ユーザーを作成し、アプリケーションを登録できるようにするために Azure AD テナントが必要になります。 テナントを所有していない場合は、「 [How to get an Azure Active Directory tenant (Azure Active Directory テナントの取得方法)](active-directory-howto-tenant.md)」を参照して取得してください。
-
-> [!TIP]
-> Azure AD をほんの数分で稼働するために役立つ、新しい[開発者ポータル](https://identity.microsoft.com/Docs/Android)のプレビュー版をお試しください。 開発者ポータルでは、アプリを登録して、コードに Azure AD を統合するプロセスを説明してあります。 完了すると、テナント内のユーザーを認証できる単純なアプリケーションと、トークンを受け取って検証を実行できるバックエンドを手に入れることになります。
->
->
 
 ## <a name="step-1-download-and-run-the-nodejs-rest-api-todo-sample-server"></a>手順 1. Node.js REST API の TODO サンプル サーバーをダウンロードして実行する
 この Node.js REST API の TODO サンプルは、Azure AD の単一のテナント To-Do REST API の作成用の既存のサンプルを扱うために、特別に作成されました。 これはクイック スタートの前提条件です。

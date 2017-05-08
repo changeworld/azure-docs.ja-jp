@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/24/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 052785aa225086e55a40c061765770b9eebaa154
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 9ac43f4ac0a58ae3326c63ab53259d7621577d34
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -48,7 +48,9 @@ VM は、"*ベース*" ([カスタム イメージ](devtest-lab-create-template.
 1. **[仮想マシン サイズ]** を選択し、定義済みの項目の中から、作成する VM のプロセッサ コア、RAM サイズ、ハード ドライブ サイズを指定するものを選びます。
 1. **[アーティファクト]** を選択し、アーティファクトの一覧から基本イメージに追加するアーティファクトを選択して構成します。
     **注:** DevTest Labs やアーティファクトの構成に関する経験がない場合は、「[既存のアーティファクトの VM への追加](./devtest-lab-add-vm-with-artifacts.md#add-an-existing-artifact-to-a-vm)」セクションを参照し、終了してからここに戻ってください。
-1. **[詳細設定]** を選択して VM のネットワーク オプションと有効期限のオプションを構成します。
+1. **[詳細設定]** を選択して VM のネットワーク オプションと有効期限のオプションを構成します。 
+
+   有効期限オプションを設定するには、予定表アイコンを選択して、VM が自動的に削除される日付を指定します。  既定では、VM は無期限に設定されます。 
 1. Azure Resource Manager テンプレートを表示またはコピーする場合は、「[Azure Resource Manager テンプレートの保存](./devtest-lab-add-vm-with-artifacts.md#save-azure-resource-manager-template)」セクションを参照し、終了してからここに戻ってください。
 1. **[作成]** を選択して、指定した VM をラボに追加します。
 1. ラボのブレードには VM の作成状況が表示されます。最初は **[作成中]**、VM が起動した後は **[実行中]** と表示されます。

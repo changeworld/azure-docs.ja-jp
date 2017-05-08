@@ -9,16 +9,11 @@
    
      ![[サービス登録キー] ダイアログ ボックス](./media/storsimple-get-service-registration-key-gov/HCS_ServiceRegistrationKey-gov-include.png)
 3. サービス登録キーを探します。
-4. コピー アイコン  ![StorSimple のコピー アイコン](./media/storsimple-get-service-registration-key-gov/HCS_CopyIcon-include.png)  をクリックしてキーをコピーし、後で使用できるように保存します。
+4. コピー アイコン  ![StorSimple のコピー アイコン](./media/storsimple-get-service-registration-key-gov/HCS_CopyIcon-include.png) をクリックしてキーをコピーし、後で使用できるように保存します。
 5. チェック マーク アイコン ![StorSimple のチェック マーク アイコン](./media/storsimple-get-service-registration-key-gov/HCS_CheckIcon-include.png) をクリックしてこのダイアログ ボックスを閉じ、 **[クイック スタート]** ページに戻ります。
 
 > [!NOTE]
 > StorSimple Manager サービスに登録する必要があるすべてのデバイスの登録に、サービス登録キーを使用します。
 > 
 > 
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

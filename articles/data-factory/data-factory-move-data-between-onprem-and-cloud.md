@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/19/2017
+ms.date: 05/04/2017
 ms.author: abnarain
 translationtype: Human Translation
 ms.sourcegitcommit: e1d44f85b36d08944351a79d7a4b39cc8de61201
 ms.openlocfilehash: 13044cc92a1577185b2aebc3a0ff8be0ec5eca60
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -219,7 +220,7 @@ ms.openlocfilehash: 13044cc92a1577185b2aebc3a0ff8be0ec5eca60
             }
         }
     }     
-    ```     
+    ```       
    次の点に注意してください。
 
    * **type** は **SqlServerTable** に設定されています。
@@ -396,9 +397,4 @@ ms.openlocfilehash: 13044cc92a1577185b2aebc3a0ff8be0ec5eca60
 ## <a name="next-steps"></a>次のステップ
 * Data Management Gateway の詳細については、「 [Data Management Gateway](data-factory-data-management-gateway.md) 」をご覧ください。
 * コピー アクティビティを使用して、ソース データ ストアからシンク データ ストアにデータを移動する方法については、 [Azure BLOB から Azure SQL へのデータのコピー](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) に関する記事をご覧ください。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

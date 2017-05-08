@@ -10,8 +10,3 @@
 
 
 <!-- images -->
-
-
-<!--HONumber=Dec16_HO2-->
-
-

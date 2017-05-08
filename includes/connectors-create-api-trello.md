@@ -16,8 +16,3 @@
 5. 接続が作成されたら、ロジック アプリで他の手順を自由に実行できるようになります。  
    ![](./media/connectors-create-api-trello/trello-5.png)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

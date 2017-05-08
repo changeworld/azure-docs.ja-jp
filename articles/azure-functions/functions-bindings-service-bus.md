@@ -14,19 +14,21 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/31/2016
+ms.date: 04/01/2017
 ms.author: chrande; glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 6aed248b91d25572c4eae691f4e5392e37c01400
-ms.openlocfilehash: e2d81d140c194a33ea6f1462effb09a9e283d3af
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 1afc4d0c04929fdf55cc9f336e50d90ff7c66172
+ms.lasthandoff: 04/25/2017
 
 
 ---
 # <a name="azure-functions-service-bus-bindings"></a>Azure Functions における Service Bus のバインド
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-この記事では、Azure Functions で Azure Service Bus のバインドを構成およびコーディングする方法について説明します。 Azure Functions は、Notification Hubs キューおよびトピックのトリガーおよび出力バインドをサポートしています。
+この記事では、Azure Functions で Azure Service Bus のバインドを構成および操作する方法について説明します。 
+
+Azure Functions は、Service Bus のキューおよびトピックのトリガーおよび出力バインドをサポートしています。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -35,7 +37,7 @@ ms.lasthandoff: 02/22/2017
 ## <a name="service-bus-trigger"></a>Service Bus トリガー
 Service Bus トリガーを使用して、Service Bus キューまたはトピックからのメッセージに応答します。 
 
-関数への Notification Hubs キューおよびトピック トリガーでは、function.json の `bindings` 配列内にある次の JSON オブジェクトが使用されます。
+Service Bus のキューおよびトピック トリガーは、function.json の `bindings` 配列内にある次の JSON オブジェクトによって定義されます。
 
 * "*キュー*" トリガー:
 
@@ -66,14 +68,14 @@ Service Bus トリガーを使用して、Service Bus キューまたはトピ�
 
 以下の点に注意してください。
 
-* `connection` に対しては、Service Hub 名前空間への接続文字列を含む[アプリ設定を Function App で作成]()し、トリガーの `connection` プロパティでアプリ設定の名前を指定します。 接続文字列は、「[管理資格情報の取得](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials)」の手順に従って取得します。
+* `connection` に対しては、Service Bus 名前空間への接続文字列を含む[アプリ設定を Function App で作成](functions-how-to-use-azure-function-app-settings.md)し、トリガーの `connection` プロパティでアプリ設定の名前を指定します。 接続文字列は、「[管理資格情報の取得](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials)」の手順に従って取得します。
   接続文字列は、特定のキューまたはトピックに限らず、Service Bus 名前空間のものである必要があります。
   `connection` を空にした場合、既定の Service Bus 接続文字列が `AzureWebJobsServiceBus` という名前のアプリ設定に指定されているとものと見なされます。
-* `accessRights` で使用できる値は `manage` および `listen` です。 既定値は `manage` で、`connection` が**管理**アクセス許可を持つことを示します。 **管理**アクセス許可を持たない接続文字列を使用する場合は、`accessRights` を `listen` に設定します。 そうしないと、Functions ランタイムは、管理権限を必要とする操作を試行し、失敗する可能性があります。
+* `accessRights` で使用できる値は `manage` および `listen` です。 既定値は `manage` で、`connection` が**管理**アクセス許可を持つことを示します。 **管理**アクセス許可を持たない接続文字列を使用する場合は、`accessRights` を `listen` に設定します。 設定しないと、Functions ランタイムが管理権限を必要とする操作の試行に失敗する可能性があります。
 
 ## <a name="trigger-behavior"></a>トリガーの動作
 * **シングル スレッド** - Functions ランタイムは、既定で複数のメッセージを同時に処理します。 一度に 1 つのキューまたはトピックのメッセージのみを処理するようにランタイムに指示するには、*host.json* ファイルで `serviceBus.maxConcurrentCalls` を 1 に設定します。 
-  *host.json* の詳細については、「[フォルダー構造](functions-reference.md#folder-structure)」および「[host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json)」を参照してください。
+  *host.json* については、「[フォルダー構造](functions-reference.md#folder-structure)」および「[host.json](https://git .com/Azure/azure-webjobs-sdk-script/wiki/host.json)」をご覧ください。
 * **有害メッセージの処理** - Service Bus では、Azure Functions の構成やコードで制御または構成することができない、独自の有害メッセージを処理します。 
 * **PeekLock 動作** - Functions ランタイムは、[`PeekLock` モード](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode)でメッセージを受信して、関数が正常に終了した場合はメッセージの `Complete` を呼び出し、関数が失敗した場合は `Abandon` を呼び出します。 
   関数の実行時間が `PeekLock` タイムアウトよりも長くなると、ロックが自動的に更新されます。
@@ -81,17 +83,17 @@ Service Bus トリガーを使用して、Service Bus キューまたはトピ�
 <a name="triggerusage"></a>
 
 ## <a name="trigger-usage"></a>トリガーの使用方法
-このセクションでは、Service Hub トリガーを関数のコードで使用する方法について説明します。 
+このセクションでは、Service Bus トリガーを関数のコードで使用する方法について説明します。 
 
 C# および F# では、Service Bus トリガー メッセージを、次のいずれかの入力型に逆シリアル化できます。
 
 * `string` - 文字列メッセージに有効です。
 * `byte[]` - バイナリ データに有効です。
 * すべての[オブジェクト](https://msdn.microsoft.com/library/system.object.aspx) - JSON でシリアル化されたデータに有効です。
-  カスタム入力型を宣言した場合 (例: `FooType`)、Azure Functions は、指定した型に JSON データを逆シリアル化しようとします。
+  カスタム入力型を宣言した場合 (例: `CustomType`)、Azure Functions は、指定した型に JSON データを逆シリアル化しようとします。
 * `BrokeredMessage` - [BrokeredMessage.GetBody<T>()](https://msdn.microsoft.com/library/hh144211.aspx) メソッドで逆シリアル化されたメッセージを返します。
 
-Node.js では、Service Bus トリガー メッセージは、文字列として (JSON メッセージの場合は JavaScript オブジェクトとして) 関数に渡されます。
+Node.js では、Service Bus トリガー メッセージが文字列または JSON オブジェクトとして関数に渡されます。
 
 <a name="triggersample"></a>
 
@@ -153,7 +155,7 @@ module.exports = function(context, myQueueItem) {
 <a name="output"></a>
 
 ## <a name="service-bus-output-binding"></a>Service Bus 出力バインド
-関数への Notification Hubs キューおよびトピック出力では、function.json の `bindings` 配列内にある次の JSON オブジェクトが使用されます。
+関数への Service Bus キューおよびトピック出力では、function.json の `bindings` 配列内にある次の JSON オブジェクトが使用されます。
 
 * "*キュー*" 出力:
 
@@ -162,7 +164,7 @@ module.exports = function(context, myQueueItem) {
         "name" : "<Name of output parameter in function signature>",
         "queueName" : "<Name of the queue>",
         "connection" : "<Name of app setting that has your queue's connection string - see below>",
-        "accessRights" : "<Access rights for the connection string - see below>"
+        "accessRights" : "<Access rights for the connection string - see below>",
         "type" : "serviceBus",
         "direction" : "out"
     }
@@ -183,10 +185,10 @@ module.exports = function(context, myQueueItem) {
 
 以下の点に注意してください。
 
-* `connection` に対しては、Service Hub 名前空間への接続文字列を含む[アプリ設定を Function App で作成]()し、出力バインドの `connection` プロパティでアプリ設定の名前を指定します。 接続文字列は、「[管理資格情報の取得](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials)」の手順に従って取得します。
+* `connection` に対しては、Service Bus 名前空間への接続文字列を含む[アプリ設定を Function App で作成](functions-how-to-use-azure-function-app-settings.md)し、出力バインドの `connection` プロパティでアプリ設定の名前を指定します。 接続文字列は、「[管理資格情報の取得](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials)」の手順に従って取得します。
   接続文字列は、特定のキューまたはトピックに限らず、Service Bus 名前空間のものである必要があります。
   `connection` を空にした場合、既定の Service Bus 接続文字列が `AzureWebJobsServiceBus` という名前のアプリ設定に指定されているとものと見なされます。
-* `accessRights` で使用できる値は `manage` および `listen` です。 既定値は `manage` で、`connection` が**管理**アクセス許可を持つことを示します。 **管理**アクセス許可を持たない接続文字列を使用する場合は、`accessRights` を `listen` に設定します。 そうしないと、Functions ランタイムは、管理権限を必要とする操作を試行し、失敗する可能性があります。
+* `accessRights` で使用できる値は `manage` および `listen` です。 既定値は `manage` で、`connection` が**管理**アクセス許可を持つことを示します。 **管理**アクセス許可を持たない接続文字列を使用する場合は、`accessRights` を `listen` に設定します。 設定しないと、Functions ランタイムが管理権限を必要とする操作の試行に失敗する可能性があります。
 
 <a name="outputusage"></a>
 

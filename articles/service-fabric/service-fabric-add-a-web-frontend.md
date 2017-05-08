@@ -12,11 +12,12 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/29/2016
+ms.date: 03/30/2017
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: faa452d3ba407d5e1ffb3fc4b60b71b2bc64113b
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: d7084624b7242a8dfc60f49d38f1808116206b46
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -29,9 +30,8 @@ ms.openlocfilehash: faa452d3ba407d5e1ffb3fc4b60b71b2bc64113b
 ASP.NET Core は軽量のクロスプラットフォーム Web 開発フレームワークであり、これを使用すると、最新の Web UI と Web API を作成できます。 ASP.NET Web API プロジェクトを既存のアプリケーションに追加してみましょう。
 
 > [!NOTE]
-> このチュートリアルを実行するには、[.NET Core 1.0 をインストール][dotnetcore-install]する必要があります。
-> 
-> 
+> このチュートリアルは、[Visual Studio 2017 用の ASP.NET Core ツール](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app/start-mvc)に基づいています。 Visual Studio 2015 用の .NET Core ツールは、更新されなくなりました。
+
 
 1. ソリューション エクスプローラーで、アプリケーション プロジェクトの **[サービス]** を右クリックし、**[追加]、[Service Fabric サービスの新規作成]** の順に選択します。
    
@@ -39,22 +39,22 @@ ASP.NET Core は軽量のクロスプラットフォーム Web 開発フレー�
 2. **サービスの作成**ページで、**[ASP.NET Core]** を選択し、名前を付けます。
    
     ![Choosing ASP.NET web service in the new service dialog][vs-new-service-dialog]
-3. 次のページには、一連の ASP.NET Core プロジェクト テンプレートが表示されます。 これらは、Service Fabric アプリケーションの外部で ASP.NET Core プロジェクトを作成した場合に表示されるテンプレートと同じです。 このチュートリアルでは、 **[Web API]**を選択します。 ただし、完全な Web アプリケーションの作成にも同じ概念を適用できます。
+
+3. 次のページには、一連の ASP.NET Core プロジェクト テンプレートが表示されます。 これらは、Service Fabric アプリケーションの外部で ASP.NET Core プロジェクトを作成した場合に表示されるテンプレートと同じですが、サービスを Service Fabric ランタイムに登録するための少量の追加コードが含まれています。 このチュートリアルでは、 **[Web API]**を選択します。 ただし、完全な Web アプリケーションの作成にも同じ概念を適用できます。
    
     ![ASP.NET プロジェクトの種類の選択][vs-new-aspnet-project-dialog]
    
     作成した Web API プロジェクトでは、2 つのサービスがアプリケーションに含まれます。 アプリケーションの作成を続けながら、まったく同じ方法でさらにサービスを追加することができます。 それぞれを個別にバージョン管理およびアップグレードできます。
 
 > [!TIP]
-> ASP.NET Core サービスの構築の詳細については、 [ASP.NET Core のドキュメント](https://docs.asp.net)を参照してください。
-> 
+> ASP.NET Core サービスの構築の詳細については、 [ASP.NET Core のドキュメント](https://docs.microsoft.com/aspnet/core/)を参照してください。
 > 
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 手順を把握できるように、新しいアプリケーションをデプロイし、ASP.NET Core Web API テンプレートによって提供される既定の動作を見てみます。
 
 1. Visual Studio で F5 キーを押してアプリをデバッグします。
-2. デプロイが完了すると、Visual Studio はブラウザーを起動して ASP.NET Web API サービスのルート (例: http://localhost:33003) を開きます。 ポート番号はランダムに割り当てられるため、お使いのコンピューターでは異なる場合があります。 ASP.NET Core Web API テンプレートではルートの既定の動作が指定されないため、ブラウザーでエラーが発生します。
+2. デプロイが完了すると、Visual Studio はブラウザーを起動して、ASP.NET Web API サービスのルート (既定では、ポート 8966 でリッスン) を開きます。 ASP.NET Core Web API テンプレートではルートの既定の動作が指定されないため、ブラウザーでエラーが発生します。
 3. ブラウザーの場所に `/api/values` を追加します。 これにより、Web API テンプレート内の ValuesController に対して `Get` メソッドが呼び出されます。 テンプレートで指定される既定の応答として、2 つの文字列を格納する JSON 配列が返されます。
    
     ![Default values returned from ASP.NET Core Web API template][browser-aspnet-template-values]
@@ -73,14 +73,16 @@ Service Fabric は、Reliable Services との通信方法において完全な�
 2. 左側のナビゲーション ウィンドウで **[Visual C#]** エントリを選択し、**[クラス ライブラリ]** テンプレートを選択します。 .NET Framework のバージョンが **4.5.2**に設定されていることを確認します。
    
     ![ステートフル サービス用のインターフェイス プロジェクトの作成][vs-add-class-library-project]
+
 3. インターフェイスを `ServiceProxy`で使用可能にするには、そのインターフェイスが IService インターフェイスから派生している必要があります。 このインターフェイスは、Service Fabric NuGet パッケージの 1 つに含まれます。 パッケージを追加するには、新しいクラス ライブラリ プロジェクトを右クリックして、 **[NuGet パッケージの管理]**を選択します。
 4. **Microsoft.ServiceFabric.Services** パッケージを探してインストールします。
    
     ![Services NuGet パッケージの追加][vs-services-nuget-package]
+
 5. クラス ライブラリで、1 つのメソッド `GetCountAsync`を含むインターフェイスを作成し、IService からインターフェイスを拡張します。
    
     ```c#
-    namespace MyStatefulService.Interfaces
+    namespace MyStatefulService.Interface
     {
         using Microsoft.ServiceFabric.Services.Remoting;
    
@@ -100,7 +102,7 @@ Service Fabric は、Reliable Services との通信方法において完全な�
 2. `StatefulService` から継承したクラス (`MyStatefulService` など) を探し、そのクラスを拡張して `ICounter` インターフェイスを実装します。
    
     ```c#
-    using MyStatefulService.Interfaces;
+    using MyStatefulService.Interface;
    
     ...
    
@@ -156,18 +158,13 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 ステートフル サービスでは、他のサービスからトラフィックを受信する準備ができました。 残りの手順は、サービスと通信するためのコードを ASP.NET Web サービスから追加するだけです。
 
 1. ASP.NET プロジェクトで、 `ICounter` インターフェイスを含むクラス ライブラリへの参照を追加します。
-2. **[ビルド]** メニューの **[構成マネージャー]** を開きます。 次のような結果が表示されます。
-   
-    ![任意の CPU としてクラス ライブラリを示す構成マネージャー][vs-configuration-manager]
-   
-    クラス ライブラリ プロジェクト **MyStatefulService.Interface**は、任意の CPU を構築するために構成されます。 Service Fabric を正常に機能させるには、明示的に x64 を対象にする必要があります。 プラットフォームのドロップダウンをクリックし、 **[新規]**を選択して、x64 プラットフォーム構成を作成します。
-   
-    ![クラス ライブラリの新しいプラットフォームを作成する][vs-create-platform]
-3. 前にクラス ライブラリ プロジェクトで行ったのと同様に、ASP.NET プロジェクトに Microsoft.ServiceFabric.Services パッケージを追加します。 これにより、 `ServiceProxy` クラスが提供されます。
+
+2. 前にクラス ライブラリ プロジェクトで行ったのと同様に、ASP.NET プロジェクトに Microsoft.ServiceFabric.Services パッケージを追加します。 これにより、 `ServiceProxy` クラスが提供されます。
+
 4. **Controllers** フォルダーで `ValuesController` クラスを開きます。 現時点では、`Get` メソッドはハードコーディングされた文字列配列 "value1" と "value2" を返すだけであることに注意してください。これらは、先にブラウザーに表示されていたものと一致します。 この実装を次のコードに置き換えます。
    
     ```c#
-    using MyStatefulService.Interfaces;
+    using MyStatefulService.Interface;
     using Microsoft.ServiceFabric.Services.Remoting.Client;
    
     ...
@@ -192,16 +189,19 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
     これら 2 つの情報により、Service Fabric は要求送信先のコンピューターを一意に識別できます。 また、 `ServiceProxy` クラスは、ステートフル サービス パーティションをホストするコンピューターで障害が発生したため、別のコンピューターを昇格させてその代わりにする必要がある状況をシームレスに処理します。 この抽象化により、他のサービスを処理するクライアント コードの作成が大幅に簡略化されます。
    
     プロキシを作成した後は、 `GetCountAsync` メソッドを呼び出して結果を返すだけです。
+
 5. もう一度 F5 キーを押して、変更したアプリケーションを実行します。 前と同じように、Visual Studio はブラウザーを自動的に起動して Web プロジェクトのルートを表示します。 "api/values" パスを追加すると、現在のカウンター値が返されることがわかります。
    
     ![ブラウザーに表示されたステートフル カウンター値][browser-aspnet-counter-value]
    
     定期的にブラウザーを更新して、カウンターの値が更新されるのを確認します。
 
-> [!WARNING]
-> テンプレートで提供される Kestrel という ASP.NET Core Web サーバーは、 [現在、インターネットに直接接続するトラフィックを処理することはできません](https://docs.asp.net/en/latest/fundamentals/servers.html#kestrel)。 運用環境のシナリオでは、[API Management][api-management-landing-page] の背後にある ASP.NET Core エンドポイントまたは他のインターネット接続ゲートウェイをホストすることを検討してください。 IIS 内でのデプロイメントでは、Service Fabric がサポートされていないことに注意してください。
-> 
-> 
+## <a name="kestrel-and-weblistener"></a>Kestrel と WebListener
+
+Kestrel という既定の ASP.NET Core Web サーバーは、[現在、インターネットに直接接続するトラフィックを処理](https://docs.asp.net/en/latest/fundamentals/servers.html#kestrel)することはできません。 そのため、Service Fabric 用の ASP.NET テンプレートでは、既定で [WebListener](https://docs.microsoft.com/aspnet/core/fundamentals/servers/weblistener) が使用されます。 
+
+インターネットに直接接続するトラフィックを処理せず、Web サーバーとして Kestrel を使用したい場合は、サービス リスナー構成で変更できます。 `return new WebHostBuilder().UseWebListener()` を `return new WebHostBuilder().UseKestrel()` に置き換えるだけです。 Web ホスト上のその他すべての構成は、同じままでかまいません。
+ 
 
 ## <a name="what-about-actors"></a>アクターについて
 このチュートリアルではステートフル サービスと通信する Web フロントエンドの追加を取り上げました。 ただし、非常によく似たモデルに従ってアクターと対話することもできます。 実際にはもう少し簡単です。
@@ -232,16 +232,9 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 [vs-add-class-library-reference]: ./media/service-fabric-add-a-web-frontend/vs-add-class-library-reference.png
 [vs-services-nuget-package]: ./media/service-fabric-add-a-web-frontend/vs-services-nuget-package.png
 [browser-aspnet-counter-value]: ./media/service-fabric-add-a-web-frontend/browser-aspnet-counter-value.png
-[vs-configuration-manager]: ./media/service-fabric-add-a-web-frontend/vs-configuration-manager.png
 [vs-create-platform]: ./media/service-fabric-add-a-web-frontend/vs-create-platform.png
 
 
 <!-- external links -->
 [dotnetcore-install]: https://www.microsoft.com/net/core#windows
-[api-management-landing-page]: https://azure.microsoft.com/en-us/services/api-management/
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

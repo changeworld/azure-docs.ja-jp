@@ -16,16 +16,16 @@ ms.workload: identity
 ms.date: 03/06/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: 62804019a8c2c5e719c36021ee04cbd20e03dd05
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: db219c8bd8d9bf1ba343fe363047a23eabad823c
+ms.lasthandoff: 04/14/2017
 
 
 ---
 # <a name="conditional-access-in-azure-active-directory---preview"></a>Azure Active Directory の条件付きアクセス - プレビュー
 
 > [!div class="op_single_selector"]
-> * [Azure ポータル](active-directory-conditional-access-azure-portal.md)
+> * [Azure Portal](active-directory-conditional-access-azure-portal.md)
 > * [Azure クラシック ポータル](active-directory-conditional-access.md)
 
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 03/07/2017
 
 ![コントロール](./media/active-directory-conditional-access-azure-portal/10.png)
 
-この&2; 回出現する “*this*” を現実世界の情報に置き換えれば、次のような一般的なポリシー ステートメントの例になります。
+この 2 回出現する “*this*” を現実世界の情報に置き換えれば、次のような一般的なポリシー ステートメントの例になります。
 
 *請負業者が信頼されていないネットワークから会社のクラウド アプリにアクセスしようとしている場合は、アクセスをブロックします。*
 
@@ -66,7 +66,7 @@ Azure Active Directory の条件付きアクセスの文脈では、
 
 条件付きアクセス ポリシーでは、条件文が満たされた場合に何をすべきであるかをコントロールが定義します。  
 コントロールを使用して、アクセスをブロックするか、追加要件付きでアクセスを許可することができます。
-アクセスを許可するポリシーを構成するときは、少なくとも&1; つの要件を選択する必要があります。   
+アクセスを許可するポリシーを構成するときは、少なくとも 1 つの要件を選択する必要があります。   
 
 ### <a name="grant-controls"></a>許可コントロール
 Azure Active Directory の現在の実装では、次の許可コントロール要件を構成できます。
@@ -145,9 +145,9 @@ Azure Active Directory の現在の実装では、次の領域の条件を定義
 
 ### <a name="do-i-need-to-assign-a-user-to-my-policy"></a>ポリシーにユーザーを割り当てる必要がありますか。
 
-条件付きアクセス ポリシーを構成するときは、少なくとも&1; つのグループを割り当てる必要があります。 ユーザーとグループが割り当てられていない条件付きアクセス ポリシーは、トリガーされることはありません。
+条件付きアクセス ポリシーを構成するときは、少なくとも 1 つのグループを割り当てる必要があります。 ユーザーとグループが割り当てられていない条件付きアクセス ポリシーは、トリガーされることはありません。
 
-ポリシーに複数のユーザーとグループを割り当てる予定の場合は、ユーザーまたはグループを&1; つだけ割り当てて構成をテストすることから始めてください。 ポリシーが期待どおりに動作したら、追加の割り当てを行うことができます。  
+ポリシーに複数のユーザーとグループを割り当てる予定の場合は、ユーザーまたはグループを 1 つだけ割り当てて構成をテストすることから始めてください。 ポリシーが期待どおりに動作したら、追加の割り当てを行うことができます。  
 
 
 ### <a name="how-are-assignments-evaluated"></a>割り当てはどのように評価されますか。

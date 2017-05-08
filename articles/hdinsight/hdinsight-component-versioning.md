@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Hadoop コンポーネントとバージョン - Azure HDInsight | Microsoft Docs"
 description: "HDInsight での Hadoop コンポーネントおよびバージョンと、このクラウド ディストリビューションの HortonWorks Data Platform で使用できるサービス レベルについて説明します。"
 services: hdinsight
@@ -14,12 +14,12 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2017
+ms.date: 04/14/2017
 ms.author: bprakash
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: c753eac8caed139250a0db85b639fca57c1e9ea6
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 990ac507c0d0f26483dc0db7ec4bce793100cb60
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -43,9 +43,9 @@ Azure HDInsight では、**Standard** と **Premium** の 2 つのカテゴリ�
 ### <a name="cluster-types-supported-for-hdinsight-premium"></a>HDInsight Premium でサポートされるクラスターの種類
 次の表に、HDInsight クラスターの種類と Premium のサポート状況を示します。
 
-| クラスターの種類 | Standard | Premium |
+| クラスターの種類 | Standard | Premium (プレビュー) |
 | --- | --- | --- |
-| Hadoop は、 |はい |はい (HDInsight 3.5 のみ) |
+| Hadoop は、 |はい |はい (HDInsight 3.5 および 3.6 のみ) |
 | Spark |はい |いいえ |
 | HBase |あり |いいえ |
 | Storm |あり |いいえ |
@@ -73,23 +73,28 @@ Azure HDInsight は、いつでもデプロイできる Hadoop クラスター �
 >
 
 
-| コンポーネント | HDInsight Version 3.5 (既定) | HDInsight Version 3.4 | HDInsight Version 3.3 | HDInsight Version 3.2 | HDInsight Version 3.1 | HDInsight Version 3.0 |
-| --- | --- | --- | --- | --- | --- | --- |
-| Hortonworks Data Platform |2.5 |2.4 |2.3 |2.2 |2.1.7 |2.0 |
-| Apache Hadoop & YARN |2.7.3 |2.7.1 |2.7.1 |2.6.0 |2.4.0 |2.2.0 |
-| Apache Tez |0.7.0 |0.7.0 |0.7.0 |0.5.2 |0.4.0 |-|
-| Apache Pig |0.16.0 |0.15.0 |0.15.0 |0.14.0 |0.12.1 |0.12.0 |
-| Apache Hive & HCatalog |1.2.1.2.5 |1.2.1 |1.2.1 |0.14.0 |0.13.1 |0.12.0 |
-| Apache HBase |1.1.2 |1.1.2 |1.1.1 |0.98.4 |0.98.0 |-|
-| Apache Sqoop |1.4.6 |1.4.6 |1.4.6 |1.4.5 |1.4.4 |1.4.4 |
-| Apache Oozie |4.2.0 |4.2.0 |4.2.0 |4.1.0 |4.0.0 |4.0.0 |
-| Apache Zookeeper |3.4.6 |3.4.6 |3.4.6 |3.4.6 |3.4.5 |3.4.5 |
-| Apache Storm |1.0.1 |0.10.0 |0.10.0 |0.9.3 |0.9.1 |-|
-| Apache Mahout |0.9.0+ |0.9.0+ |0.9.0+ |0.9.0 |0.9.0 |-|
-| Apache Phoenix |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 |-|
-| Apache Spark |1.6.2 + 2.0 (Linux のみ) |1.6.0 (Linux のみ) |1.5.2 (Linux のみ/試験的ビルド) |1.3.1 (Windows のみ) |-|-|
-| Apache Kafka | 0.10.0 | 0.9.0 |-|-|-|-|
-| Mono |4.2.1 |3.2.8 |-|-|-|-|
+| コンポーネント | HDInsight Version 3.6 | HDInsight Version 3.5 (既定) | HDInsight Version 3.4 | HDInsight Version 3.3 | HDInsight Version 3.2 | HDInsight Version 3.1 | HDInsight Version 3.0 |
+| --- | --- | --- | --- | --- | --- | --- |--- |
+| Hortonworks Data Platform |2.6 |2.5 |2.4 |2.3 |2.2 |2.1.7 |2.0 |
+| Apache Hadoop & YARN |2.7.3 |2.7.3 |2.7.1 |2.7.1 |2.6.0 |2.4.0 |2.2.0 |
+| Apache Tez |0.7.0 |0.7.0 |0.7.0 |0.7.0 |0.5.2 |0.4.0 |-|
+| Apache Pig |0.16.0 |0.16.0 |0.15.0 |0.15.0 |0.14.0 |0.12.1 |0.12.0 |
+| Apache Hive & HCatalog |1.2.1 |1.2.1 |1.2.1 |1.2.1 |0.14.0 |0.13.1 |0.12.0 |
+| Apache Hive2 | 2.1.0 |-|-|-|-|-|-|
+| Apache Tez-Hive2 | 0.8.4 |-|-|-|-|-|-|
+| Apache Ranger | 0.7.0 |0.6.0 |-|-|-|-|-|
+| Apache HBase |1.1.2 |1.1.2 |1.1.2 |1.1.1 |0.98.4 |0.98.0 |-|
+| Apache Sqoop |1.4.6 |1.4.6 |1.4.6 |1.4.6 |1.4.5 |1.4.4 |1.4.4 |
+| Apache Oozie |4.2.0 |4.2.0 |4.2.0 |4.2.0 |4.1.0 |4.0.0 |4.0.0 |
+| Apache Zookeeper |3.4.6 |3.4.6 |3.4.6 |3.4.6 |3.4.6 |3.4.5 |3.4.5 |
+| Apache Storm |1.1.0 |1.0.1 |0.10.0 |0.10.0 |0.9.3 |0.9.1 |-|
+| Apache Mahout |0.9.0+ |0.9.0+ |0.9.0+ |0.9.0+ |0.9.0 |0.9.0 |-|
+| Apache Phoenix |4.7.0 |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 |-|
+| Apache Spark |2.1.0 (Linux のみ) |1.6.2 + 2.0 (Linux のみ) |1.6.0 (Linux のみ) |1.5.2 (Linux のみ/試験的ビルド) |1.3.1 (Windows のみ) |-|-|
+| Apache Kafka | 0.10.0 | 0.10.0 | 0.9.0 |-|-|-|-|
+| Apache Ambari | 2.5.0 | 2.4.0 | 2.2.1 | 2.1.0 |-|-|-|
+| Apache Zeppelin | 0.7.0 |-|-|-|-|-|-|
+| Mono |4.2.1 |4.2.1 |3.2.8 |-|-|-|
 
 **現在のコンポーネントのバージョンの取得**
 
@@ -107,21 +112,18 @@ HDInsight の最新バージョンに関する追加のリリース ノートは
 
 | HDInsight のバージョン | HDP のバージョン | VM の OS | 高可用性 | リリース日 | Azure ポータルでの利用 | サポート有効期限 | 非推奨となる日 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDI 3.6 プレビュー |HDP 2.6 |Ubuntu 16 |はい |2017 年 2 月 28 日 |はい | | |
-| HDI 3.5 |HDP 2.5 |Ubuntu 16 |はい |9/30/2016 |はい | | |
+| HDI 3.6 |HDP 2.6 |Ubuntu 16 |はい |04/06/2017 |はい | | |
+| HDI 3.5 |HDP 2.5 |Ubuntu 16 |はい |9/30/2016 |はい |07/05/2017 |05/31/2018 |
 | HDI 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |あり |2016 年 3 月 29 日 |はい |12/29/2016 |1/9/2018 |
 | HDI 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS または Windows Server 2012R2 |あり |2015 年 12 月 2 日 |あり |2016 年 6 月 27 日 |2017 年 7 月 31 日 |
-| HDI 3.2 |HDP 2.2 |Ubuntu 12.04 LTS または Windows Server 2012R2 |あり |2015 年 2 月 18 日 |あり |2016 年 3 月 1 日 |2017 年 4 月 1 日 |
+| HDI 3.2 |HDP 2.2 |Ubuntu 12.04 LTS または Windows Server 2012R2 |あり |2015 年 2 月 18 日 |いいえ |2016 年 3 月 1 日 |2017 年 4 月 1 日 |
 | HDI 3.1 |HDP 2.1 |Windows Server 2012R2 |あり |2014 年 6 月 24 日 |いいえ |2015 年 5 月 18 日 |2016 年 6月 30 日 |
 | HDI 3.0 |HDP 2.0 |Windows Server 2012R2 |あり |02/11/2014 |いいえ |09/17/2014 |06/30/2015 |
 | HDI 2.1 |HDP 1.3 |Windows Server 2012R2 |あり |10/28/2013 |いいえ |05/12/2014 |05/31/2015 |
 | HDI 1.6 |HDP 1.1 | |いいえ |10/28/2013 |いいえ |04/26/2014 |05/31/2015 |
 
-##<a name="hdi-36-preview-with-apache-spark-21"></a>Apache Spark 2.1 でのHDI 3.6 プレビュー
-プレビューの HDI 3.6 は、2017 年 2 月 28 日にリリースされます。 これは、Apache Spark 2.1 のプレビューで使用できます。 詳細については、[Apache Spark 2.1 でのHDI 3.6 プレビュー](https://azure.microsoft.com/en-us/blog/announcing-preview-of-azure-hdinsight-3-6-with-apache-spark-2-1/)に関するページを参照してください。
-
-##<a name="hdi-version-32-and-33-nearing-deprecation-date"></a>非推奨となる日が近づいている HDI バージョン 3.2 および 3.3
-HDI 3.2 クラスターは、2016 年 3 月 1 日にサポート期間が終了しており、2017 年 4 月 1 日に非推奨となります。 HDI 3.3 クラスターは、2016 年 6 月 27 日にサポート期間が終了しており、2017 年 7 月 31 日に非推奨となります。 HDI 3.2 または HDI 3.3 クラスターを利用している場合は、すぐにクラスターを HDI 3.5 (最新バージョン) にアップグレードしてください。
+##<a name="hdi-version-33-nearing-deprecation-date"></a>非推奨となる日が近づいている HDI バージョン 3.3
+HDI 3.3 クラスターは、2016 年 6 月 27 日にサポート期間が終了しており、2017 年 7 月 31 日に非推奨となります。 HDI 3.3 クラスターを利用している場合は、すぐにクラスターを HDI 3.5 または HDI 3.6 にアップグレードしてください。 HDI 3.3 Windows の非推奨となるタイムラインは、地域によって異なる場合があります。 お客様の地域で計画されている非推奨となる日がこの通信で特定されている日と異なる場合、お客様には別の通信が届きます。
 
 ### <a name="the-service-level-agreement-for-hdinsight-cluster-versions"></a>HDInsight クラスター バージョンのサービス レベル アグリーメント
 SLA は、"サポート ウィンドウ" の条件で定義されます。 サポート ウィンドウとは、HDInsight クラスターのバージョンが Microsoft カスタマー サービス & サポートによってサポートされる期間を指しています。 HDInsight クラスターは、そのバージョンの **サポート有効期限** が現在の日付を過ぎている場合、サポート対象外となります。 サポートされている HDInsight クラスターのバージョンの一覧は上記のテーブルに示されています。 所定の HDInsight Version X (新しい X+1 バージョンが利用可能なった後) のサポート有効期限は、次の数式で計算した日付のうち、遅い方とされます。  
@@ -129,7 +131,7 @@ SLA は、"サポート ウィンドウ" の条件で定義されます。 サ�
 * 数式 1: HDInsight クラスター バージョン X がリリースされた日に 180 日を加える。
 * 数式 2: HDInsight クラスター バージョン X+1 (X の次のバージョン) がポータルで使用可能になった日付に 90 日を加える。
 
-**非推奨となる日** は、それ以降 HDInsight でそのクラスター バージョンが作成できなくなる日付です。 2017 年 7 月 31 日以降、非推奨となる日より後にクラスターのサイズは変更できません。
+**非推奨となる日** は、それ以降 HDInsight でそのクラスター バージョンが作成できなくなる日付です。 2017 年 7 月 31 日以降、非推奨となる日より後にクラスターのサイズは変更できません。 
 
 > [!NOTE]
 > Windows ベースの HDInsight クラスター (バージョン 2.1、3.0、3.1、3.2、および 3.3 を含む) は Azure ゲスト OS ファミリ 4 で実行されます。この OS は Windows Server 2012 R2 の 64 ビット版を使用し、.NET Framework 4.0、4.5、4.5.1、および 4.5.2 をサポートします。

@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/07/2017
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 2038ffd2651be7f8dc3653a58673f33e6f32d3db
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: b011f51e7b5aa921c43c906fb36fa3020a2dc7e6
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -165,7 +165,7 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
 最新の API バージョンを取得するには、次の方法を使用してください。
 
 - REST API - [すべてのリソース プロバイダーの一覧を表示する](https://docs.microsoft.com/rest/api/resources/providers#Providers_List)
-- PowerShell - [Get-AzureRmResourceProvider](https://docs.microsoft.com/powershell/resourcemanager/Azurerm.Resources/v3.1.0/Get-AzureRmResourceProvider?redirectedfrom=msdn)
+- PowerShell - [Get-AzureRmResourceProvider](/powershell/module/azurerm.resources/get-azurermresourceprovider)
 - Azure CLI 2.0 - [az provider show](https://docs.microsoft.com/cli/azure/provider#show)
 
 ## <a name="parameters-and-variables"></a>パラメーターと変数
@@ -461,3 +461,4 @@ start.ps1 スクリプトは、多くの構成タスクを実行できます。 
 - 「[Azure Resource Manager のテンプレートの作成](../../resource-group-authoring-templates.md)」を使用して、独自のテンプレートを作成します。
 - 「[Resource Manager テンプレートで Windows 仮想マシンを作成する](ps-template.md)」を使用して作成したテンプレートをデプロイします。
 - [Azure Resource Manager と PowerShell を使用した仮想マシンの管理](ps-manage.md)に関する記事を読んで、作成した VM を管理する方法を確認します。
+

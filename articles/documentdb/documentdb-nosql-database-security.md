@@ -13,19 +13,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 04/19/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 9cf87aa75b2ef65719a38e446a81086d265e7f4d
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: d04c670daac243119b47cece2df18335c7af972c
+ms.lasthandoff: 04/19/2017
 
 
 ---
 
 # <a name="documentdb-nosql-database-security"></a>DocumentDB NoSQL データベースのセキュリティ
 
- この記事では、NoSQL データベースのセキュリティに関するベスト プラクティスと、データベース侵害を防止、検出、および対応するために役立つ Azure DocumentDB の主な機能について説明します。
+この記事では、NoSQL データベースのセキュリティに関するベスト プラクティスと、データベース侵害を防止、検出、および対応するために役立つ Azure DocumentDB の主な機能について説明します。
+ 
+## <a name="whats-new-in-documentdb-security"></a>DocumentDB セキュリティの新機能
+
+保存時の暗号化が、政府関係リージョン、中国での Azure、およびドイツでの Azure を除く、すべての Azure リージョンの DocumentDB に保存されたドキュメントに利用できるようになりました。 その他のリージョンは、バックアップの保存時の暗号化と共に、来週から有効になります。 保存時の暗号化は、これらのリージョンの新規顧客と既存の顧客の両方に自動的に適用されます。 何も構成する必要はありません。従来通り、保存時の暗号化によってデータが安全にセキュリティで保護されるメリットと同様に素晴らしい待機時間、スループット、可用性、および機能を手に入れることができます。
 
 ## <a name="how-do-i-secure-my-nosql-database"></a>NoSQL データベースをセキュリティ保護する方法 
 
@@ -72,7 +76,7 @@ ms.lasthandoff: 04/03/2017
 |ローカル レプリケーション|DocumentDB は、1 つのデータセンター内でも、高可用性を維持するためにデータを自動的にレプリケートします。[一貫性レベル](documentdb-consistency-levels.md)は顧客自身が選択できます。 これにより、 [99.99% の稼働時間の可用性 (SLA)](https://azure.microsoft.com/support/legal/sla/documentdb/v1_1/) が保証され、金銭的な保証も受けられます。これは他の NoSQL データベース サービスが提供できないものです。|
 |オンライン バックアップの自動化|DocumentDB データベースは定期的にバックアップされ、ジオリダンダント ストアに格納されます。 <br><br>詳細については、「[DocumentDB での自動オンライン バックアップと復元](documentdb-online-backup-and-restore.md)」を参照してください。|
 |削除されたデータの復元|自動化されたオンライン バックアップを使用して、誤って削除したデータを最大 30 日以内に回復することができます。 <br><br>詳細については、「[DocumentDB での自動オンライン バックアップと復元](documentdb-online-backup-and-restore.md)」を参照してください。|
-|機密データの保護と分離|PII と他の機密データを特定のコレクションと読み取り/書き込みに分離するか、読み取り専用アクセスを特定のユーザーに限定することができます。|
+|機密データの保護と分離|「[新機能](#whats-new)」に示されているリージョンのすべてのデータが保存時に暗号化されます。<br><br>PII と他の機密データを特定のコレクションと読み取り/書き込みに分離するか、読み取り専用アクセスを特定のユーザーに限定することができます。|
 |攻撃の監視|監査ログとアクティビティ ログを使用することで、アカウントの通常のアクティビティと異常なアクティビティを監視できます。 リソースに対して実行された操作、操作を開始した人物、操作の発生日時、操作の状態などを確認できます。<br><br>![Azure DocumentDB のアクティビティ ログ](./media/documentdb-nosql-database-security/nosql-database-security-application-logging.png)|
 |攻撃への対応|Azure のサポートに連絡して攻撃の可能性を報告すると、5 段階のインシデント対応プロセスが開始されます。 この 5 段階のプロセスの目標は、問題が検出され、調査が開始された後、通常のサービスのセキュリティと操作を可能な限り早急に復元することです。<br><br>詳細については、「[Microsoft Azure Security Response in the Cloud (クラウドでの Microsoft Azure のセキュリティへの対応)](https://aka.ms/securityresponsepaper)」を参照してください。|
 |ジオフェンス|DocumentDB は、主権地域 (ドイツ、中国、米国政府など) に対するデータ ガバナンスとコンプライアンスを保証します。|
@@ -87,3 +91,4 @@ ms.lasthandoff: 04/03/2017
 マスター キーとリソース トークンの詳細については、「[DocumentDB のデータへのアクセスのセキュリティ保護](documentdb-secure-access-to-data.md)」を参照してください。
 
 マイクロソフトが取得している認証の詳細については、[Azure セキュリティ センター](https://azure.microsoft.com/en-us/support/trust-center/)に関するページを参照してください。
+

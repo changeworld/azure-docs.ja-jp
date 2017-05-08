@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 02/27/2017
+ms.date: 04/17/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 3539da8afe5781d74cbf723090050b767373f268
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: d1cb0751633f1a190d8ecfe1888ab6cdd8736480
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -33,10 +33,6 @@ Microsoft SQL Server Analysis Services の実績のある分析エンジン上�
 >
 >
 
-> [!IMPORTANT]
-> Azure Analysis Services は**プレビュー**段階です。 まだ動作しない部分がいくつかあります。 後の「[プレビューでの考慮事項](#preview-expectations)」をご覧ください。 また、[Azure Analysis Services ブログ](https://go.microsoft.com/fwlink/?linkid=830920)で最新情報に注意してください。
-> 
-> 
 
 ## <a name="built-on-sql-server-analysis-services"></a>SQL Server Analysis Services が基礎
 Azure Analysis Services は SQL Server 2016 Analysis Services Enterprise Edition と互換性があります。 Azure Analysis Services は、互換性レベル 1200 の表形式モデルをサポートしています。 DirectQuery、パーティション、行レベル セキュリティ、双方向リレーションシップ、翻訳をすべてサポートします。
@@ -53,14 +49,12 @@ Azure のサーバーにデプロイされるデータ モデルは、組織の�
 
 サーバーはクラウド内にあるため、クラウドのデータ ソースへの接続はシームレスです。 オンプレミス データ ソースに接続するときは、[オンプレミス データ ゲートウェイ](analysis-services-gateway.md)によってクラウドの Analysis Services サーバーとの高速で安全な接続が保証されます。  
 
- \* プレビューでは一部のデータ ソースはまだサポートされていません。 詳しくは、後の「[プレビューでの考慮事項](#preview-expectations)」をご覧ください。
 
 ## <a name="explore-your-data-from-anywhere"></a>任意の場所からデータを取得
-ほとんどどこからでもサーバーに接続して[データを取得](analysis-services-connect.md)します。 Azure Analysis Services は、Power BI Desktop、Excel、カスタム アプリ、ブラウザー ベースのツールからの接続をサポートします。
+ほとんどどこからでもサーバーに接続してデータを取得します。 Azure Analysis Services は、Power BI Desktop、Excel、カスタム アプリ、ブラウザー ベースのツールからの接続をサポートします。
 
 ![データ可視化](./media/analysis-services-overview/aas-overview-visualization.png)
 
- \* Power BI Embedded はプレビューではまだサポートされていません。
 
 ## <a name="secure"></a>セキュリティ保護
 #### <a name="user-authentication"></a>ユーザー認証
@@ -93,31 +87,6 @@ Analysis Services には活気のあるユーザー コミュニティがあり�
 提案や機能の要求がある場合は、 [Azure Analysis Services のフィードバック](https://aka.ms/azureanalysisservicesfeedback)にコメントをお送りください。
 
 ドキュメントに関する指摘がある場合は、 各記事の下部にある DISQUS を使ってコメントを追加できます。
-
-## <a name="preview-expectations"></a>プレビューでの考慮事項
-Azure Analysis Services は現在プレビュー段階です。 いくつかの注意事項があります。
-
-##### <a name="server-modes"></a>サーバー モード
-現在、Azure Analysis Services は互換性レベル 1200 の表形式モデルの表形式モードをサポートしています。 多次元およびデータ マイニング モードと SharePoint モードの Power Pivot はサポートされていません。
-
-##### <a name="data-sources"></a>データ ソース
-プレビューでは、次のデータ ソースは Azure Analysis Services サーバーにデプロイされた表形式の 1200 モデルでサポートされます。
-
-| **クラウド** | **オンプレミス (データ ゲートウェイが必要)** |
-| --- | --- |
-| SQL データベース |SQL Server |
-| SQL Data Warehouse |APS |
-| Oracle | Oracle |
-| Teradata | |
-
-### <a name="data-source-providers"></a>データ ソース プロバイダー
-Azure Analysis Services のデータ モデルでデータ ソースに接続するには、SQL Server Analysis Services のデータ モデルとは異なるデータ プロバイダーが必要な場合があります。 データ プロバイダーの要件は、データ ソースがクラウドとオンプレミスのどちらに存在するか、およびデータ モデルの種類 (メモリか直接クエリか) によって異なります。 詳しくは、「[データ ソースの接続](analysis-services-datasource.md)」をご覧ください。
-
-### <a name="client-connections"></a>クライアント接続
-
-クライアント アプリケーションには、Azure Analysis Services に接続するための最新のクライアント [データ プロバイダー](analysis-services-data-providers.md) が必要です。
-
-Azure Analysis Services サーバーへのライブ接続を含み、OneDrive または SharePoint Online に保存される Excel ブックはサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 Azure Analysis Services について理解できたら、実際に始めてみてください。 Azure で[サーバーを作成する](analysis-services-create-server.md)方法およびサーバーに[表形式モデルをデプロイする](analysis-services-deploy.md)方法を学習してください。

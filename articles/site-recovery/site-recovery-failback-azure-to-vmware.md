@@ -15,15 +15,15 @@ ms.workload: required
 ms.date: 03/27/2017
 ms.author: ruturajd
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: ba801c69cf2d0d542bebf54e99ef981854284ab0
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 3bd182a775377f912914c0c7a63fe41811146e1a
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="fail-back-vmware-virtual-machines-and-physical-servers-to-the-on-premises-site"></a>VMware 仮想マシンと物理サーバーをオンプレミス サイトにフェールバックする
 > [!div class="op_single_selector"]
-> * [Azure から VMware/物理マシン](site-recovery-failback-azure-to-vmware.md)
+> * [Azure から VMware/物理マシン](site-recovery-how-to-failback-azure-to-vmware.md)
 > * [Azure から Hyper-V VM](site-recovery-failback-from-azure-to-hyper-v.md)
 
 この記事では、Azure からオンプレミス サイトへ Azure Virtual Machines をフェールバックする方法について説明します。 ここに示す手順は、[こちら](site-recovery-how-to-reprotect.md)を参照してコンピューターを再保護した後に、VMware 仮想マシンまたは Windows/Linux 物理サーバーをフェールバックする準備ができたときに実行します。

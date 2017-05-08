@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/03/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: d23b400d8e6db66bc596731770a98e2833302543
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: ba9c673676fd0b742eb8bd780b67930333b151b3
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -101,6 +101,9 @@ REST API、PowerShell コマンドレット、Azure CLI、または [Azure Porta
 
 料金は、1 時間あたりのゲートウェイ インスタンスの料金とデータ処理の料金に基づいています。 WAF SKU の 1 時間あたりのゲートウェイの料金は、Standard SKU の料金とは異なります。[Application Gateway の価格の詳細](https://azure.microsoft.com/pricing/details/application-gateway/)に関するページを参照してください。 データ処理の料金は同じです。
 
+## <a name="faq"></a>FAQ
+
+Application Gateway に関してよく寄せられる質問については、[Application Gateway の FAQ](application-gateway-faq.md) に関する記事を参照してください。
 ## <a name="next-steps"></a>次のステップ
 
 アプリケーション ゲートウェイについて学習すると、[アプリケーション ゲートウェイを作成](application-gateway-create-gateway-portal.md)することも、[アプリケーション ゲートウェイ SSL オフロードを作成](application-gateway-ssl-arm.md)して HTTPS 接続を負荷分散することもできるようになります。

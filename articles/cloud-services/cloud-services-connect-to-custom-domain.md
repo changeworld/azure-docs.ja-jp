@@ -1,6 +1,6 @@
 ---
 title: "カスタムのドメイン コント ローラーにクラウド サービスを接続する | Microsoft Docs"
-description: "PowerShell と AD ドメイン拡張機能を使用してカスタム AD ドメインに Web ロールまたは worker ロールを接続する方法について説明します"
+description: "PowerShell と AD ドメイン拡張機能を使ってカスタム AD ドメインに Web ロールまたは worker ロールを接続する方法について説明します"
 services: cloud-services
 documentationcenter: 
 author: Thraka
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/04/2017
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 0b404af5b638ec2d543ce98b562b7df538652f70
-ms.openlocfilehash: 39ee9cc1027958d85b2af2781adab0fe06c9a433
-ms.lasthandoff: 01/05/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 5489762a7a392e4e4098d85cba22d560e9858267
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 01/05/2017
 
 作業を開始するにあたり、いくつか注意することがあります。
 
-1. このチュートリアルでは PowerShell を使用します。Azure PowerShell がインストールされ、使用する準備が整っていることを確認してください。 Azure PowerShell の設定方法については、「[Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」を参照してください。
+1. このチュートリアルでは PowerShell を使用します。Azure PowerShell がインストールされ、使用する準備が整っていることを確認してください。 Azure PowerShell の設定方法については、「[Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。
 2. AD ドメイン コントローラーと Web ロールまたは worker ロールのインスタンスは VNet 内にある必要があります。
 
 このステップ バイ ステップ ガイドに従って作業しているときに問題が発生した場合はコメントを残してください。 私たちはコメントを必ず読んでいるので、だれかが対応します。

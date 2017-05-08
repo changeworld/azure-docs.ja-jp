@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
-ms.openlocfilehash: d89135c8f3d5011d7549158a29050e3569defbcc
-ms.lasthandoff: 03/23/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: fe01be4f57766a556ff3a27a0cbba0293675cac7
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -34,6 +34,61 @@ Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的�
 Azure AD Connect からのアップグレード手順 | Azure AD Connect の [以前のバージョンから最新バージョンにアップグレード](active-directory-aadconnect-upgrade-previous-version.md) するさまざまな方法を説明しています。
 必要なアクセス許可 | 更新プログラムの適用に必要なアクセス許可については、[アカウントとアクセス許可](./active-directory-aadconnect-accounts-permissions.md#upgrade)に関するページを参照してください。
 ダウンロード| [Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)。
+
+## <a name="114860"></a>1.1.486.0
+リリース: 2017 年 4 月
+
+**修正された問題:**
+* Azure AD Connect がローカライズ版の Windows Server に正常にインストールされない問題を修正しました。
+
+## <a name="114840"></a>1.1.484.0
+リリース: 2017 年 4 月
+
+**既知の問題:**
+
+* 次の条件がすべて当てはまる場合、このバージョンの Azure AD Connect は正常にインストールされません。
+   1. Azure AD Connect の DirSync インプレース アップグレードまたは新規インストールのどちらかを実行している。
+   2. サーバー上の組み込みの管理者グループの名前が "Administrators" でないローカライズ版の Windows Server を使用している。
+   3. 独自の完全な SQL を提供するのではなく、Azure AD Connect と共にインストールされた既定の SQL Server 2012 Express LocalDB を使用している。 
+
+**修正された問題:**
+
+Azure AD Connect Sync
+* 1 つ以上のコネクタに同期手順の実行プロファイルがない場合、同期スケジューラがその同期手順全体をスキップする問題を修正しました。 たとえば、差分インポート実行プロファイルを作成せずに、Synchronization Service Manager を使用してコネクタを手動で追加した場合です。 この解決策により、同期スケジューラが引き続き他のコネクタの差分インポートを実行することが保証されます。
+* いずれかの実行手順で問題が発生した場合、同期サービスが直ちに実行プロファイルの処理を停止する問題を修正しました。 この解決策により、同期サービスがその実行手順をスキップし、残りの処理を続行することが保証されます。 たとえば、複数の実行手順 (オンプレミス AD ドメインごとに 1 つ) を含む AD コネクタ用の差分インポート実行プロファイルがあります。 そのいずれかにネットワーク接続に関する問題が発生した場合でも、同期サービスは他の AD ドメインの差分インポートを実行します。
+* 自動アップグレード中に Azure AD Connector の更新がスキップされる問題を修正しました。
+* セットアップ中にサーバーがドメイン コントローラであるかどうかを Azure AD Connect が誤って判定し、そのために DirSync アップグレードが失敗する問題を修正しました。
+* DirSync インプレース アップグレードで Azure AD Connector の実行プロファイルが作成されない問題を修正しました。
+* Generic LDAP コネクタを構成しようとしたときに Synchronization Service Manager ユーザー インターフェイスが無応答になる問題を修正しました。
+
+AD FS の管理
+* AD FS プライマリ ノードが別のサーバーに移動されている場合、Azure AD Connect ウィザードが失敗する問題を修正しました。
+
+デスクトップ SSO
+* 新規インストール中に [サインイン] オプションとして [パスワードの同期] を選択した場合、[サインイン] 画面で [デスクトップ SSO] 機能を有効にできない Azure AD Connect ウィザードの問題を修正しました。
+
+**新機能/改善点:**
+
+Azure AD Connect Sync
+* Azure AD Connect 同期は現在、そのサービス アカウントとして仮想サービス アカウント、管理サービス アカウント、およびグループ管理サービス アカウントの使用をサポートしています。 これは、Azure AD Connect の新規インストールにのみ適用されます。 Azure AD Connect をインストールしている場合:
+    * 既定では、Azure AD Connect ウィザードは仮想サービス アカウントを作成し、それをそのサービス アカウントとして使用します。
+    * ドメイン コントローラ上にインストールしている場合、Azure AD Connect は、ドメイン ユーザー アカウントを作成する前の動作にフォールバックし、代わりにそれをそのサービス アカウントとして使用します。
+    * 次のいずれかを指定することによって、既定の動作を上書きできます。
+      * グループ管理サービス アカウント
+      * 管理サービス アカウント
+      * ドメイン ユーザー アカウント
+      * ローカル ユーザー アカウント
+* 以前は、コネクタの更新または同期規則の変更を含む Azure AD Connect の新しいビルドにアップグレードすると、Azure AD Connect は完全同期サイクルをトリガーしました。 現在、Azure AD Connect は、更新を含むコネクタに対してのみフル インポート手順を、同期規則の変更を含むコネクタに対してのみ完全同期手順を選択的にトリガーします。
+* 以前は、エクスポート削除しきい値は、同期スケジューラからトリガーされたエクスポートにのみ適用されました。 現在、この機能は、顧客が Synchronization Service Manager を使用して手動でトリガーしたエクスポートを含むように拡張されています。
+* Azure AD テナント上に、そのテナントで [パスワードの同期] 機能が有効になっているかどうかを示すサービス構成が存在します。 以前は、アクティブなステージング サーバーがある場合、Azure AD Connect はサービス構成を簡単に誤って構成しました。 現在、Azure AD Connect は、サービス構成をアクティブな Azure AD Connect サーバーだけと整合性のある状態に保持しようとします。
+* Azure AD Connect ウィザードは現在、オンプレミス AD で AD のごみ箱が有効になっていないかどうかを検出し、警告を返します。
+* 以前は、バッチ内のオブジェクトの合計サイズが特定のしきい値を超えている場合、Azure AD へのエクスポートはタイムアウトし、失敗しました。 現在、この問題が発生した場合、同期サービスは個別の、より小さなバッチでのオブジェクトの再送信を再度試みます。
+* 同期サービス キー管理アプリケーションが Windows の [スタート] メニューから削除されました。 暗号化キーの管理は、miiskmu.exe を使用してコマンド ライン インターフェイス経由で引き続きサポートされます。 暗号化キーの管理については、[Azure AD Connect 同期の暗号化キーの破棄](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-change-serviceacct-pass#abandoning-the-azure-ad-connect-sync-encryption-key)の記事を参照してください。
+* 以前は、Azure AD Connect 同期サービス アカウントのパスワードを変更すると、暗号化キーを破棄し、Azure AD Connect 同期サービス アカウントのパスワードを再初期化するまで、同期サービスを正常に開始できなくなります。 現在、これは必要なくなりました。
+
+デスクトップ SSO
+
+* Azure AD Connect ウィザードでは、パススルー認証およびデスクトップ SSO を構成する場合、ネットワーク上でポート 9090 を開く必要がなくなりました。 ポート 443 のみが必要です。 
 
 ## <a name="114430"></a>1.1.443.0
 リリース: 2017 年 3 月
@@ -268,7 +323,14 @@ AD FS の管理
   * 同期に含める新しい OU を選択する際に、完全なパスワード同期は必要ありません。
   * 無効なユーザーが有効になっても、パスワードは同期されません。
   * パスワード再試行キューは無制限です。5,000 個のオブジェクトを上限として削除されるという以前の制限は削除されました。
-  * [トラブルシューティングが改善されました](active-directory-aadconnectsync-implement-password-synchronization.md#troubleshooting-password-synchronization)。
+<<<<<<< HEAD <<<<<<< HEAD
+  * [トラブルシューティングが改善されました](active-directory-aadconnectsync-implement-password-synchronization.md#troubleshoot-password-synchronization)。
+=======
+  * [トラブルシューティングが改善されました](active-directory-aadconnectsync-troubleshoot-password-synchronization.md)。
+>>>>>>> <a name="487b660b6d3bb5ce9e64b6fdbde2ae621cb91922"></a>487b660b6d3bb5ce9e64b6fdbde2ae621cb91922
+=======
+  * [トラブルシューティングが改善されました](active-directory-aadconnectsync-troubleshoot-password-synchronization.md)。
+>>>>>>> 4b2e846c2cd4615f4e4be7195899de11e3957c83
 * Windows Server 2016 フォレスト機能レベルを使用して Active Directory に接続することはできなくなりました。
 * 最初のインストール後にグループ フィルターに使用したグループを変更できなくなりました。
 * パスワード ライトバックを有効にしてパスワードを変更した各ユーザーについては、Azure AD Connect の新しいユーザー プロファイルを作成しなくなりました。

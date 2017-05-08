@@ -12,12 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/01/2017
+ms.date: 04/16/2017
 ms.author: juliako;
 translationtype: Human Translation
-ms.sourcegitcommit: 5b8d989d950c17d867f30a6fa8a464a8750e2303
-ms.openlocfilehash: 98922addf7aa8bfc77033be29bf137b362378661
-ms.lasthandoff: 02/02/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 2600c5cec36a8a44a85a62d6672d6ae57343f20c
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -32,7 +32,7 @@ ms.lasthandoff: 02/02/2017
 ## <a name="face-redaction-modes"></a>顔編集モード
 顔編集は、ビデオのフレームごとに顔を検出し、その顔オブジェクトを時間軸の前後にわたって追跡することで、同一の人間を他の角度からも処理します。 自動修正のプロセスは非常に複雑で、常に 100% 満足のいく結果になるとは限りません。そのため、Media Analytics には最終的なアウトプットを変更する方法がいくつか用意されています。
 
-完全な自動モードに加え、2 パス ワークフローというものがあり、これによって、検出された顔を ID リストを使って選択または選択解除することができます。 また、任意のフレームごとの調整をするには、JSON 形式でメタデータ ファイルを使用します。 このワークフローは、**分析**モードと**編集**モードに分かれています。 単一のパスに&2; つのモードを結合して、両方のタスクを&1; つのジョブで実行します。このモードは**結合**と呼ばれます。
+完全な自動モードに加え、2 パス ワークフローというものがあり、これによって、検出された顔を ID リストを使って選択または選択解除することができます。 また、任意のフレームごとの調整をするには、JSON 形式でメタデータ ファイルを使用します。 このワークフローは、**分析**モードと**編集**モードに分かれています。 単一のパスに 2 つのモードを結合して、両方のタスクを 1 つのジョブで実行します。このモードは**結合**と呼ばれます。
 
 ### <a name="combined-mode"></a>結合モード
 手作業なしで、自動的に修正された mp4 が生成されます。
@@ -92,10 +92,10 @@ ms.lasthandoff: 02/02/2017
           ]
         },
 
-... 省略
+    … truncated
 
 ### <a name="redact-mode"></a>編集モード
-ワークフローの&2; 番目のパスでは、単一の資産に結合する必要のある大量の入力を受け取ります。
+ワークフローの 2 番目のパスでは、単一の資産に結合する必要のある大量の入力を受け取ります。
 
 これには、ぼかす対象となる Id の一覧、元のビデオ、JSON の注釈が含まれます。 このモードでは、注釈を使用して入力ビデオにぼかし効果を適用します。
 
@@ -104,16 +104,22 @@ Analyze パスからの出力は、元のビデオを含みません。 ビデ�
 | 段階 | ファイル名 | メモ |
 | --- | --- | --- |
 | 入力資産 |foo.bar |WMV、MPV、MP4 形式のビデオ 手順 1 と同じビデオです。 |
-| 入力資産 |foo_annotations.json |フェーズ&1; からの注釈メタデータ ファイルで、変更可能です。 |
+| 入力資産 |foo_annotations.json |フェーズ 1 からの注釈メタデータ ファイルで、変更可能です。 |
 | 入力資産 |foo_IDList.txt (Optional) |行で区切られた、編集する顔 ID の新しい一覧です (オプション)。 空白の場合、すべての顔をぼかします。 |
 | 入力 config |ジョブ構成プリセット |{'version':'1.0', 'options': {'mode':'redact'}} |
 | 出力資産 |foo_redacted.mp4 |注釈に基づいてぼかし効果を適用したビデオ |
 
 #### <a name="example-output"></a>出力例
-これは&1; つの ID を選択した場合の IDList からの出力です。
+これは 1 つの ID を選択した場合の IDList からの出力です。
 
 [ビデオ](http://ampdemo.azureedge.net/?url=http%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fad6e24a2-4f9c-46ee-9fa7-bf05e20d19ac%2Fdance_redacted1.mp4)
 
+foo_IDList.txt の例
+ 
+     1
+     2
+     3
+ 
 ## <a name="attribute-descriptions"></a>属性の説明
 Redaction MP は、高精度の顔位置検出と追跡を行い、ビデオ フレーム内で最大 64 個の人の顔を検出できます。 顔が正面を向いているときに最善の結果が得られ、横顔や小さい顔 (24 x 24 ピクセル以下) のときは精度が低下することがあります。
 

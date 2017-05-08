@@ -2,8 +2,3 @@ NSG を使用して、仮想ネットワーク内の 1 つまたは複数の仮�
 
 NSG の詳細については、「 [what is an NSG (NSG の概要)](../articles/virtual-network/virtual-networks-nsg.md)」を参照してください。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

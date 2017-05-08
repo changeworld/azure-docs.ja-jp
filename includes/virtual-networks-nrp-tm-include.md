@@ -80,8 +80,3 @@ Json 形式での Traffic Manager のサンプル:
 ## <a name="additional-resources"></a>その他のリソース
 詳細については、 [Traffic Manager の REST API ドキュメント](https://msdn.microsoft.com/library/azure/mt163664.aspx) を参照してください。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -17,9 +17,9 @@ ms.workload: NA
 ms.date: 12/22/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
-ms.openlocfilehash: 768a630e1652a48fa4478ec2c25173d536ea6c09
-ms.lasthandoff: 03/23/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 043a1779ac694b0b3cbb5f1fd00117f716583669
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -33,7 +33,10 @@ ms.lasthandoff: 03/23/2017
 > [!NOTE]
 > 資格情報コンテナーあたり 24 時間で最大 200 個のデータベースを有効にできます。 したがって、この制限の影響を最小限に抑えるため、サーバーごとに個別の資格情報コンテナーを使用することをお勧めします。 
 > 
-> 
+
+
+
+ 
 ## <a name="how-does-sql-database-long-term-backup-retention-work"></a>SQL Database の長期的なバックアップ保有期間のしくみ
 
 バックアップの長期的なバックアップ保有期間を使うと、Azure SQL Database サーバーを Azure Recovery Services コンテナーに関連付けることができます。 
@@ -43,7 +46,7 @@ ms.lasthandoff: 03/23/2017
 * サブスクリプション内のあらゆるサーバーの新しいデータベースに、これらのバックアップのいずれかから復元することができます。 コピーは、Azure ストレージによって既存のバックアップから実行され、既存のデータベースのパフォーマンスには影響を与えません。
 
 > [!TIP]
-> チュートリアルについては、「[データの保護と回復のためのバックアップと復元の概要](sql-database-get-started-backup-recovery-portal.md)」、または「[PowerShell を使用したデータの保護と回復のためのバックアップと復元の概要](sql-database-get-started-backup-recovery-powershell.md)」をご覧ください
+> ハウツー ガイドについては、「[Azure SQL Database を構成して長期のバックアップ リテンション期間から復元する](sql-database-long-term-backup-retention-configure.md)」を参照してください
 
 ## <a name="how-do-i-enable-long-term-backup-retention"></a>長期的なバックアップ保有期間を有効にする方法
 
@@ -54,7 +57,13 @@ ms.lasthandoff: 03/23/2017
 3. Azure Recovery Services の保護ポリシーを作成します。
 4. 長期的なバックアップの保有を必要とするデータベースに、保護ポリシーを適用します。
 
-Azure Portal を使って、Azure Recovery Services コンテナーで自動バックアップの長期的なバックアップ保有期間を構成、管理、および復元する方法については、[Azure Portal を使った長期的なバックアップ保有期間の管理に関する記事](sql-database-manage-long-term-backup-retention-portal.md)をご覧ください。 PowerShell を使って、Azure Recovery Services コンテナーで自動バックアップの長期的なバックアップ保有期間を構成、管理、および復元する方法については、[PowerShell を使った長期的なバックアップ保有期間の管理に関する記事](sql-database-manage-long-term-backup-retention-powershell.md)をご覧ください。
+### <a name="azure-portal"></a>Azure ポータル
+
+Azure Portal を使って、Azure Recovery Services コンテナーで自動バックアップの長期的なバックアップ保有期間を構成、管理、および復元する方法については、**[Long-term backup retention](長期的なバックアップ保有期間)** をクリックし、データベースを選択して、**[Configure](構成)** をクリックします。 
+
+   ![長期的なバックアップ保有期間の対象となるデータベースの選択](./media/sql-database-get-started-backup-recovery/select-database-for-long-term-backup-retention.png)
+
+PowerShell を使って、Azure Recovery Services コンテナーで自動バックアップの長期的なバックアップ保有期間を構成、管理、および復元する方法については、[Azure SQL Database を構成して長期のバックアップ リテンション期間から復元する](sql-database-long-term-backup-retention-configure.md)を参照してください。
 
 ## <a name="how-do-i-restore-a-database-stored-with-the-long-term-backup-retention-feature"></a>長期的なバックアップ保有期間機能で保存されたデータベースを復元する方法
 
@@ -66,7 +75,7 @@ Azure Portal を使って、Azure Recovery Services コンテナーで自動バ�
 4. 復元に使用できる回復ポイントを一覧表示します
 5. サブスクリプション内で、回復ポイントからターゲット サーバーに復元します
 
-Azure Portal を使って、Azure Recovery Services コンテナーで自動バックアップの長期的なバックアップ保有期間を構成、管理、および復元する方法については、[Azure Portal を使った長期的なバックアップ保有期間の管理に関する記事](sql-database-manage-long-term-backup-retention-portal.md)をご覧ください。 PowerShell を使って、Azure Recovery Services コンテナーで自動バックアップの長期的なバックアップ保有期間を構成、管理、および復元する方法については、[PowerShell を使った長期的なバックアップ保有期間の管理に関する記事](sql-database-manage-long-term-backup-retention-powershell.md)をご覧ください。
+Azure Portal を使って、Azure Recovery Services コンテナーで自動バックアップの長期的なバックアップ保有期間を構成、管理、および復元する方法については、[Azure Portal を使った長期的なバックアップ保有期間の管理に関する記事](sql-database-long-term-backup-retention-configure.md)をご覧ください。 PowerShell を使って、Azure Recovery Services コンテナーで自動バックアップの長期的なバックアップ保有期間を構成、管理、および復元する方法については、[PowerShell を使った長期的なバックアップ保有期間の管理に関する記事](sql-database-long-term-backup-retention-configure.md)をご覧ください。
 
 ## <a name="how-much-does-long-term-backup-retention-cost"></a>長期的なバックアップ保有期間のコスト
 
@@ -76,7 +85,7 @@ Azure SQL Database サーバーを資格情報コンテナーに登録した後�
 
 ## <a name="view-available-backups-stored-in-long-term-backup-retention"></a>長期のバックアップ リテンション期間で保存されている、利用可能なバックアップを表示する
 
-Azure Portal を使って、Azure Recovery Services コンテナーで自動バックアップの長期的なバックアップ保有期間を構成、管理、および復元する方法については、[Azure Portal を使った長期的なバックアップ保有期間の管理に関する記事](sql-database-manage-long-term-backup-retention-portal.md)をご覧ください。 PowerShell を使って、Azure Recovery Services コンテナーで自動バックアップの長期的なバックアップ保有期間を構成、管理、および復元する方法については、[PowerShell を使った長期的なバックアップ保有期間の管理に関する記事](sql-database-manage-long-term-backup-retention-powershell.md)をご覧ください。
+Azure Portal を使って、Azure Recovery Services コンテナーで自動バックアップの長期的なバックアップ保有期間を構成、管理、および復元する方法については、[Azure Portal を使った長期的なバックアップ保有期間の管理に関する記事](sql-database-long-term-backup-retention-configure.md)をご覧ください。 PowerShell を使って、Azure Recovery Services コンテナーで自動バックアップの長期的なバックアップ保有期間を構成、管理、および復元する方法については、[PowerShell を使った長期的なバックアップ保有期間の管理に関する記事](sql-database-long-term-backup-retention-configure.md)をご覧ください。
 
 ## <a name="disabling-long-term-retention"></a>長期保存の無効化
 
@@ -91,16 +100,15 @@ Recovery Service は、指定した保持ポリシーに基づいてバックア
 > [!NOTE]
 > 既に資格情報コンテナーにあるバックアップは影響を受けません。 保有期間を超過すると、これらのデータベースはRecovery Service によって自動的に削除されます。
 
-
 ## <a name="removing-long-term-backup-retention-backups-from-the-azure-recovery-services-vault"></a>Azure Recovery Services コンテナーからの長期的なバックアップ保有期間バックアップの削除
 
-長期的なバックアップ保有期間のバックアップをコンテナーから削除するには、「[長期保存のバックアップを削除する](sql-database-manage-long-term-backup-retention-powershell.md)」をご覧ください
+長期的なバックアップ保有期間のバックアップをコンテナーから削除するには、「[長期保存のバックアップを削除する](sql-database-long-term-backup-retention-configure.md)」をご覧ください
 
 ## <a name="long-term-backup-retention-faq"></a>長期的なバックアップ保有期間の FAQ:
 
 1. Q: 資格情報コンテナー内の特定のバックアップを手動で削除することはできますか。
 
-    A: 現時点ではできません。資格情報コンテナーは、リテンション期間を超過したバックアップを自動的にクリーンアップします。
+    A: 現時点ではできません。 資格情報コンテナーは、リテンション期間を超過したバックアップを自動的にクリーンアップします。
 2. Q: 複数の資格情報コンテナーにバックアップを保存するためにサーバーを登録することはできますか。
 
     A: いいえ。現時点では、一度にバックアップを格納できるのは 1 つの資格情報コンテナーのみです。

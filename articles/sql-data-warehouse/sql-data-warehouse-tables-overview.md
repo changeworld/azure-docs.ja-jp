@@ -12,23 +12,25 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: tables
 ms.date: 10/31/2016
 ms.author: barbkess;jrj
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fe62d672ebd4c6d9f5e161e337dbace0c80f67a5
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 914d85267e82ce6a2e60f3841889935046f17c87
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="overview-of-tables-in-sql-data-warehouse"></a>SQL Data Warehouse のテーブルの概要
 > [!div class="op_single_selector"]
-> * [概要][概要]
-> * [データ型][データ型]
-> * [分散][分散]
-> * [Index][Index]
-> * [Partition][Partition]
-> * [統計][統計]
-> * [一時的な][一時]
+> * [概要][Overview]
+> * [データ型][Data Types]
+> * [分散][Distribute]
+> * [インデックス][Index]
+> * [パーティション][Partition]
+> * [統計][Statistics]
+> * [一時][Temporary]
 > 
 > 
 
@@ -40,45 +42,45 @@ CREATE TABLE Customers (FirstName VARCHAR(25), LastName VARCHAR(25))
 
 上の例では、FirstName と LastName の 2 つの列を持つ Customers という名前のテーブルが作成されます。  各列は、データ型 VARCHAR(25) で定義されており、データは 25 文字に制限されます。  テーブルなどの基本的な属性は、ほぼ他のデータベースと同じです。  データ型は、列ごとに定義して、データの整合性を確保します。  インデックスは、I/O を減らすことでパフォーマンスを向上させるために追加できます。  パーティション分割は、データを変更する必要があるときに、パフォーマンスを向上させるために追加できます。
 
-SQL Data Warehouse のテーブルの[名前の変更][RENAME]は次のように実行します。
+SQL Data Warehouse のテーブルの[名前の変更][RENAME]は、次のように実行します。
 
 ```sql  
 RENAME OBJECT Customer TO CustomerOrig; 
  ```
 
 ## <a name="distributed-tables"></a>分散テーブル
-SQL Data Warehouse のような分散システムで新たに導入された基本的な属性が、 **ディストリビューション列**です。  ディストリビューション列は、その名前のとおりです。  データをバックグラウンドで分散または分割する方法を決定する列のことです。  ディストリビューション列を指定しないでテーブルを作成すると、テーブルは **ラウンド ロビン**を使用して自動的に分散されます。  一部のシナリオではラウンド ロビン テーブルで十分ですが、ディストリビューション列を定義すると、クエリを実行するときのデータ移動を大幅に削減してパフォーマンスを最適化できます。  ディストリビューション列を選択する方法の詳細については、 [テーブルの分散][分散] に関するページを参照してください。
+SQL Data Warehouse のような分散システムで新たに導入された基本的な属性が、 **ディストリビューション列**です。  ディストリビューション列は、その名前のとおりです。  データをバックグラウンドで分散または分割する方法を決定する列のことです。  ディストリビューション列を指定しないでテーブルを作成すると、テーブルは **ラウンド ロビン**を使用して自動的に分散されます。  一部のシナリオではラウンド ロビン テーブルで十分ですが、ディストリビューション列を定義すると、クエリを実行するときのデータ移動を大幅に削減してパフォーマンスを最適化できます。  ディストリビューション列を選択する方法の詳細については、[テーブルの分散][Distribute] に関するページを参照してください。
 
 ## <a name="indexing-and-partitioning-tables"></a>テーブルのインデックス作成とパーティション分割
-SQL Data Warehouse を使用するスキルが高くなり、パフォーマンスの最適化が必要になると、テーブル設計の詳細について学ぶ必要性が生じます。  詳細については、[テーブルのデータ型][データ型]、[テーブルの分散][分散]、[テーブルのインデックス作成][Index]、[テーブルのパーティション分割][Partition]に関する各記事をご覧ください。
+SQL Data Warehouse を使用するスキルが高くなり、パフォーマンスの最適化が必要になると、テーブル設計の詳細について学ぶ必要性が生じます。  詳細については、[テーブルのデータ型][Data Types]、[テーブルの分散][Distribute]、[テーブルのインデックス作成][Index]、[テーブルのパーティション分割][Partition]に関する各記事をご覧ください。
 
 ## <a name="table-statistics"></a>テーブルの統計
-統計は、SQL Data Warehouse で最高のパフォーマンスを実現するために非常に重要です。  Azure SQL Database で期待していたかもしれませんが、SQL Data Warehouse では統計はまだ自動的に作成および更新されないため、[統計][統計]に関する記事を読んでください。この記事は、クエリで最高のパフォーマンスを得るために読む必要がある最も重要な記事の 1 つです。
+統計は、SQL Data Warehouse で最高のパフォーマンスを実現するために非常に重要です。  Azure SQL Database で期待していたような統計が SQL Data Warehouse ではまだ自動的に作成および更新されないため、[統計][Statistics]に関する記事を読んでください。クエリで最高のパフォーマンスを得るために読む最も重要な記事の 1 つです。
 
 ## <a name="temporary-tables"></a>一時テーブル
-一時テーブルは、ログオン時間中にのみ存在するテーブルであり、他のユーザーが表示することはできません。  一時テーブルは、一時的な結果を他のユーザーが確認できないようにし、クリーンアップの必要性を減らすこともできる優れた手段です。  一時テーブルはローカル ストレージも活用するため、一部の操作でパフォーマンスを向上させることができます。  一時テーブルの詳細については、 [一時テーブル][一時] に関する記事を参照してください。
+一時テーブルは、ログオン時間中にのみ存在するテーブルであり、他のユーザーが表示することはできません。  一時テーブルは、一時的な結果を他のユーザーが確認できないようにし、クリーンアップの必要性を減らすこともできる優れた手段です。  一時テーブルはローカル ストレージも活用するため、一部の操作でパフォーマンスを向上させることができます。  一時テーブルの詳細については、[一時テーブル][Temporary] に関する記事を参照してください。
 
 ## <a name="external-tables"></a>外部テーブル
-外部テーブルは、PolyBase テーブルとも呼ばれ、SQL Data Warehouse からクエリを実行できますが、SQL Data Warehouse の外部のデータをポイントします。  たとえば、Azure BLOB ストレージのファイルを指す外部テーブルを作成できます。  外部テーブルを作成および照会する方法の詳細については、[PolyBase でのデータの読み込み] [PolyBase でのデータの読み込み]に関するページをご覧ください。  
+外部テーブルは、PolyBase テーブルとも呼ばれ、SQL Data Warehouse からクエリを実行できますが、SQL Data Warehouse の外部のデータをポイントします。  たとえば、Azure BLOB ストレージのファイルを指す外部テーブルを作成できます。  外部テーブルを作成および照会する方法の詳細については、[PolyBase でのデータの読み込み][Load data with Polybase]に関するページを参照してください。  
 
 ## <a name="unsupported-table-features"></a>サポートされていないテーブルの機能
 SQL Data Warehouse には、他のデータベースで提供されているのと同じテーブルの機能の多くが含まれますが、まだサポートされていない機能もあります。  まだサポートされていないテーブル機能の一部を以下の一覧に示します。
 
 | サポートされていない機能 |
 | --- |
-| [ID プロパティ][ID プロパティ] ([代理キーの回避策の割り当て][代理キーの回避策の割り当て]をご覧ください) |
-| PRIMARY KEY、FOREIGN KEY、UNIQUE、CHECK の各[テーブル制約][テーブル制約] |
-| [一意のインデックス][一意のインデックス] |
-| [計算列][計算列] |
-| [スパース列][スパース列] |
-| [ユーザー定義型][ユーザー定義型] |
-| [シーケンス][シーケンス] |
-| [トリガー][トリガー] |
-| [インデックス付きビュー][インデックス付きビュー] |
-| [シノニム][シノニム] |
+| [ID プロパティ][Identity Property] ([代理キーの回避策の割り当て][Assigning Surrogate Key Workaround]を参照してください) |
+| PRIMARY KEY、FOREIGN KEY、UNIQUE、CHECK の各 [テーブル制約][Table Constraints] |
+| [一意のインデックス][Unique Indexes] |
+| [計算列][Computed Columns] |
+| [スパース列][Sparse Columns] |
+| [ユーザー定義型][User-Defined Types] |
+| [シーケンス][Sequence] |
+| [トリガー][Triggers] |
+| [インデックス付きビュー][Indexed Views] |
+| [シノニム][Synonyms] |
 
 ## <a name="table-size-queries"></a>テーブル サイズのクエリ
-60 個のディストリビューションのそれぞれで各テーブルによって消費される領域と行を簡単に識別する方法の 1 つが、[DBCC PDW_SHOWSPACEUSED][DBCC PDW_SHOWSPACEUSED] です。
+60 個の各ディストリビューションでテーブルによって消費される領域と行を簡単に識別する方法の 1 つが、[DBCC PDW_SHOWSPACEUSED][DBCC PDW_SHOWSPACEUSED] です。
 
 ```sql
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
@@ -273,41 +275,36 @@ ORDER BY    distribution_id
 ```
 
 ## <a name="next-steps"></a>次のステップ
-[テーブルのデータ型][データ型]、[テーブルの分散][分散]、[テーブルのインデックス作成][Index]、[テーブルのパーティション分割][Partition]、[テーブル統計の更新][統計]、[一時テーブル][一時]に関する各記事で詳細をご覧ください。  その他のベスト プラクティスについては、[SQL Data Warehouse のベスト プラクティス][SQL Data Warehouse のベスト プラクティス]に関するページをご覧ください。
+詳細については、[テーブルのデータ型][Data Types]、[テーブルの分散][Distribute]、[テーブルのインデックス作成][Index]、[テーブルのパーティション分割][Partition]、[テーブルの統計の管理][Statistics]、[一時テーブル][Temporary]に関する各記事を参照してください。  [SQL Data Warehouse のベスト プラクティス][SQL Data Warehouse Best Practices]に関する記事でベスト プラクティスの詳細を確認します。
 
 <!--Image references-->
 
 <!--Article references-->
-[概要]: ./sql-data-warehouse-tables-overview.md
-[データ型]: ./sql-data-warehouse-tables-data-types.md
-[分散]: ./sql-data-warehouse-tables-distribute.md
+[Overview]: ./sql-data-warehouse-tables-overview.md
+[Data Types]: ./sql-data-warehouse-tables-data-types.md
+[Distribute]: ./sql-data-warehouse-tables-distribute.md
 [Index]: ./sql-data-warehouse-tables-index.md
 [Partition]: ./sql-data-warehouse-tables-partition.md
-[統計]: ./sql-data-warehouse-tables-statistics.md
-[一時]: ./sql-data-warehouse-tables-temporary.md
-[SQL Data Warehouse のベスト プラクティス]: ./sql-data-warehouse-best-practices.md
-[PolyBase でのデータの読み込み]: ./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
+[Temporary]: ./sql-data-warehouse-tables-temporary.md
+[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
+[Load data with Polybase]: ./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
 
 <!--MSDN references-->
 [CREATE TABLE]: https://msdn.microsoft.com/library/mt203953.aspx
 [RENAME]: https://msdn.microsoft.com/library/mt631611.aspx
 [DBCC PDW_SHOWSPACEUSED]: https://msdn.microsoft.com/library/mt204028.aspx
-[ID プロパティ]: https://msdn.microsoft.com/library/ms186775.aspx
-[代理キーの回避策の割り当て]: https://blogs.msdn.microsoft.com/sqlcat/2016/02/18/assigning-surrogate-key-to-dimension-tables-in-sql-dw-and-aps/
-[テーブル制約]: https://msdn.microsoft.com/library/ms188066.aspx
-[計算列]: https://msdn.microsoft.com/library/ms186241.aspx
-[スパース列]: https://msdn.microsoft.com/library/cc280604.aspx
-[ユーザー定義型]: https://msdn.microsoft.com/library/ms131694.aspx
-[シーケンス]: https://msdn.microsoft.com/library/ff878091.aspx
-[トリガー]: https://msdn.microsoft.com/library/ms189799.aspx
-[インデックス付きビュー]: https://msdn.microsoft.com/library/ms191432.aspx
-[シノニム]: https://msdn.microsoft.com/library/ms177544.aspx
-[一意のインデックス]: https://msdn.microsoft.com/library/ms188783.aspx
+[Identity Property]: https://msdn.microsoft.com/library/ms186775.aspx
+[Assigning Surrogate Key Workaround]: https://blogs.msdn.microsoft.com/sqlcat/2016/02/18/assigning-surrogate-key-to-dimension-tables-in-sql-dw-and-aps/
+[Table Constraints]: https://msdn.microsoft.com/library/ms188066.aspx
+[Computed Columns]: https://msdn.microsoft.com/library/ms186241.aspx
+[Sparse Columns]: https://msdn.microsoft.com/library/cc280604.aspx
+[User-Defined Types]: https://msdn.microsoft.com/library/ms131694.aspx
+[Sequence]: https://msdn.microsoft.com/library/ff878091.aspx
+[Triggers]: https://msdn.microsoft.com/library/ms189799.aspx
+[Indexed Views]: https://msdn.microsoft.com/library/ms191432.aspx
+[Synonyms]: https://msdn.microsoft.com/library/ms177544.aspx
+[Unique Indexes]: https://msdn.microsoft.com/library/ms188783.aspx
 
 <!--Other Web references-->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

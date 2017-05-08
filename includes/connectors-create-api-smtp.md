@@ -12,8 +12,3 @@ SMTP アカウントに接続するロジック アプリを承認する手順�
 3. 接続が作成されたら、ロジック アプリで他の手順を自由に実行できるようになります。  
    ![](./media/connectors-create-api-smtp/smtp-3.png)  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

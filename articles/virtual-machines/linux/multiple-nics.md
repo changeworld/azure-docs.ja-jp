@@ -8,16 +8,16 @@ manager: timlt
 editor: 
 ms.assetid: 5d2d04d0-fc62-45fa-88b1-61808a2bc691
 ms.service: virtual-machines-linux
-ms.devlang: na
+ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/10/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 48abd505b0c8c7b5ef6c6fbf58c45275a82b2da3
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: 94bcd9543f231b11930962a0dc86a8ead13ad968
+ms.lasthandoff: 04/14/2017
 
 
 ---
@@ -25,9 +25,6 @@ ms.lasthandoff: 04/03/2017
 Azure では、複数の仮想ネットワーク インターフェイス (NIC) を持つ仮想マシン (VM) を作成できます。 一般的なシナリオは、フロント エンドおよびバック エンド接続用に別々のサブネットを使用するか、監視またはバックアップ ソリューション専用のネットワークを用意することです。 この記事では、複数の NIC を持つ VM を作成するためのクイック コマンドを紹介します。 独自の Bash スクリプト内に複数の NIC を作成する方法など、詳しくは、「[Azure CLI を使用した複数の NIC VM のデプロイ](../../virtual-network/virtual-network-deploy-multinic-arm-cli.md)」をご覧ください。 [VM のサイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)によってサポートされる NIC の数が異なります。VM のサイズを決める際はご注意ください。
 
 この記事では、Azure CLI 2.0 を使用して複数の NIC を持つ VM を作成する方法について説明します。 これらの手順は、[Azure CLI 1.0](multiple-nics-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して実行することもできます。
-
-> [!WARNING]
-> VM の作成時に複数の NIC をアタッチする必要があります。既存の VM に NIC を追加することはできません。 [元の仮想ディスクに基づいて VM を作成](copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)し、VM をデプロイするときに複数の NIC を作成できます。
 
 
 ## <a name="create-supporting-resources"></a>関連リソースを作成する
@@ -113,8 +110,4 @@ Azure Resource Manager テンプレートで宣言型の JSON ファイルを使
 完全な例については、「 [Resource Manager テンプレートを使用して複数の NIC を作成する](../../virtual-network/virtual-network-deploy-multinic-arm-template.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-複数の NIC を持つ VM を作成する際は、 [Linux VM のサイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を必ず確認してください。 VM の各サイズでサポートされている NIC の最大数に注意してください。 
-
-既存の VM に NIC を追加することはできません。VM をデプロイするときに、すべての NIC を作成する必要があります。 デプロイメントの計画時に、初めから必要なすべてのネットワーク接続があることを確認してください。
-
-
+複数の NIC を持つ VM を作成する際は、 [Linux VM のサイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を確認してください。 VM の各サイズでサポートされている NIC の最大数に注意してください。 

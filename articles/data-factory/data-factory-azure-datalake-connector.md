@@ -12,39 +12,42 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/13/2017
+ms.date: 03/30/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 1d7ba169675e822ae08a6c679301a0db01e6e338
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 3f0575a170eb20d136858bedc1f87d4f4375c812
+ms.lasthandoff: 04/15/2017
 
 
 ---
 # <a name="move-data-to-and-from-azure-data-lake-store-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Data Lake Store との間でのデータの移動
-この記事では、Azure Data Factory のコピー アクティビティを使って、Azure Data Lake Store との間でデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。 
+この記事では、Azure Data Factory のコピー アクティビティを使って、Azure Data Lake Store との間でデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
 
 サポートされる任意のソース データ ストアのデータを、Azure Data Lake Store にコピーしたり、Azure Data Lake Store のデータを、サポートされる任意のシンク データ ストアにコピーしたりできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)の表をご覧ください。  
 
 > [!NOTE]
 > Azure Data Lake Store との間でデータを移動するには、コピー アクティビティを含むパイプラインを作成する前に Azure Data Lake Store アカウントを作成します。 Azure Data Lake Store の詳細については、 [Azure Data Lake Store の概要](../data-lake-store/data-lake-store-get-started-portal.md)に関する記事をご覧ください。
 
+## <a name="supported-authentication-types"></a>サポートされている認証の種類
+Azure Data Lake Store コネクタでは、**サービス プリンシパル**認証と**ユーザー資格情報** (OAuth) 認証がサポートされています。 特にスケジュールされたデータ コピーについては前者を使用し、後者でのトークンの有効期限の動作を避けることをお勧めします。 「[リンクされたサービスのプロパティ](#linked-service-properties)」セクションの構成詳細を参照してください。
+
 ## <a name="getting-started"></a>使用の開始
 さまざまなツール/API を使用して、Azure Data Lake Store との間でデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
 パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
 
-**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API** などのツールを使ってパイプラインを作成することもできます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
+次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
-ツールまたは API のいずれを使用した場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。 
+ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
 1. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
-2. コピー操作用の入力データと出力データを表す**データセット**を作成します。 
-3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 
+2. コピー操作用の入力データと出力データを表す**データセット**を作成します。
+3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 ツール/API (.NET API を除く) を使う場合、こうした Data Factory エンティティは、JSON 形式で定義します。  Azure Data Lake Store との間でデータをコピーするときに使用する Data Factory エンティティの JSON 定義のサンプルについては、この記事の「[JSON の使用例](#json-examples)」を参照してください。 
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 ツール/API (.NET API を除く) を使う場合、こうした Data Factory エンティティは、JSON 形式で定義します。  Azure Data Lake Store との間でデータをコピーするときに使用する Data Factory エンティティの JSON 定義のサンプルについては、この記事の「[JSON の使用例](#json-examples)」を参照してください。
 
-次のセクションでは、Azure Data Lake Store に固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。 
+次のセクションでは、Azure Data Lake Store に固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 リンクされたサービスは、データ ストアをデータ ファクトリにリンクします。 Azure Data Lake Store データ ストアをデータ ファクトリにリンクするには、**AzureDataLakeStore** 型のリンクされたサービスを作成します。 次の表では、Azure Data Lake Store のリンクされたサービスに固有の JSON 要素について説明します。**サービス プリンシパル**または**ユーザー資格情報**のいずれかの認証を選択できます。
@@ -57,7 +60,7 @@ ms.lasthandoff: 03/24/2017
 | resourceGroupName | Data Lake Store が所属する Azure リソース グループの名前。 | シンクでは必須 |
 
 ### <a name="using-service-principal-authentication-recommended"></a>サービス プリンシパル認証の使用 (推奨)
-サービス プリンシパル認証を使用するには、Azure Active Directory (AAD) でアプリケーション エンティティを登録して、Data Lake Store へのアクセス権を付与します。 詳細な手順については、[サービス間認証](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)に関するページをご覧ください。 **アプリケーション ID**、**アプリケーション キー**、および**テナント ID** の値をメモします。 この情報は、リンクされたサービスを定義するときに使用します。 
+サービス プリンシパル認証を使用するには、Azure Active Directory (AAD) でアプリケーション エンティティを登録して、Data Lake Store へのアクセス権を付与します。 詳細な手順については、[サービス間認証](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)に関するページをご覧ください。 **アプリケーション ID**、**アプリケーション キー**、および**テナント ID** の値をメモします。 この情報は、リンクされたサービスを定義するときに使用します。
 
 > [!IMPORTANT]
 > コピー ウィザードを使用してデータ パイプラインを作成する場合は、サービス プリンシパルに、少なくとも Data Lake Store アカウントに対するアクセス制御 (IAM) の閲覧者ロールと、Data Lake Store ルート ("/") とその子に対する読み取りおよび実行アクセス許可を必ず付与します。 付与されていない場合、"提供された資格情報が無効" であることを示すエラーが表示されることがあります。
@@ -115,7 +118,7 @@ ms.lasthandoff: 03/24/2017
 
 #### <a name="token-expiration"></a>トークンの有効期限
 **[承認する]** ボタンを使用して生成した承認コードは、いずれ有効期限が切れます。 さまざまな種類のユーザー アカウントの有効期限については、次の表を参照してください。 認証**トークンの有効期限が切れる**と、次のエラー メッセージが表示される場合があります。
- 
+
 ```
 "Credential operation error: invalid_grant - AADSTS70002: Error validating credentials. AADSTS70008: The provided access grant is expired or revoked. Trace ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 Correlation ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Timestamp: 2015-12-15 21-09-31Z".
 ```
@@ -158,7 +161,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 コードで使用する Data Factory クラスの詳細については、「[AzureDataLakeStoreLinkedService Class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)」、「[AzureDataLakeAnalyticsLinkedService クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)」、および「[AuthorizationSessionGetResponse クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)」をご覧ください。 このコードで使用されている WindowsFormsWebAuthenticationDialog クラスの **Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll** のバージョン **2.9.10826.1824** に参照を追加します。
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
-データセットを指定して Azure Blob Storage の入力データを表すには、そのデータセットの type プロパティを **AzureDataLakeStore** に設定します。 また、データセットの **linkedServiceName** プロパティは、Azure Data Lake Store のリンクされたサービスの名前に設定します。 データセットの定義に利用できる JSON のセクションとプロパティの完全一覧については、[データセットの作成](data-factory-create-datasets.md)に関する記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。 **typeProperties** セクションは、データセットの型ごとに異なり、データ ストアのデータの場所や書式などに関する情報を提供します。 **AzureDataLakeStore** 型のデータセットの typeProperties セクションには、次のプロパティがあります。
+Azure Data Lake Store の入力データを表すデータセットを指定するには、データセットの type プロパティを **AzureDataLakeStore** に設定します。 また、データセットの **linkedServiceName** プロパティは、Azure Data Lake Store のリンクされたサービスの名前に設定します。 データセットの定義に利用できる JSON のセクションとプロパティの完全一覧については、[データセットの作成](data-factory-create-datasets.md)に関する記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。 **typeProperties** セクションは、データセットの型ごとに異なり、データ ストアのデータの場所や書式などに関する情報を提供します。 **AzureDataLakeStore** 型のデータセットの typeProperties セクションには、次のプロパティがあります。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -214,6 +217,9 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | copyBehavior |コピー動作を指定します。 |<b>PreserveHierarchy</b>: ターゲット フォルダー内でファイル階層を保持します。 ソース フォルダーに対するソース ファイルの相対パスと、ターゲット フォルダーに対するターゲット ファイルの相対パスが一致します。<br/><br/><b>FlattenHierarchy</b>: ソース フォルダーのすべてのファイルがターゲット フォルダーの最初のレベルに作成されます。 ターゲット ファイルは、自動生成された名前で作成されます。<br/><br/><b>MergeFiles</b>: ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイル/Blob の名前を指定した場合、マージされたファイル名は指定した名前になります。それ以外は自動生成されたファイル名になります。 |いいえ |
+
+## <a name="supported-file-and-compression-formats"></a>サポートされているファイル形式と圧縮形式
+詳細については、[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md)に関する記事を参照してください。
 
 ## <a name="json-examples"></a>JSON の使用例
 以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 ここでは、Azure Data Lake Store と Azure BLOB Storage との間でデータをコピーする方法を示します。 ただし、任意のソースのデータを、サポートされている任意のシンクに**直接**コピーできます。 詳細については、「[コピー アクティビティを使用したデータの移動](data-factory-data-movement-activities.md)」の「サポートされるデータ ストアと形式」のセクションを参照してください。  
@@ -350,11 +356,11 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 ```
 
 
-**BLOB ソースおよび Azure Data Lake Store シンクを使用するパイプラインでのコピー アクティビティ:** 
+**BLOB ソースおよび Azure Data Lake Store シンクを使用するパイプラインでのコピー アクティビティ:**
 
 パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、**source** 型が **BlobSource** に設定され、**sink** 型が **AzureDataLakeStoreSink** に設定されています。
 
-```JSON
+```json
 {  
     "name":"SamplePipeline",
     "properties":
@@ -415,7 +421,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 **Azure Data Lake Store のリンクされたサービス:**
 
-```JSON
+```json
 {
     "name": "AzureDataLakeStoreLinkedService",
     "properties": {
@@ -451,7 +457,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 **"external": true** の設定により、このテーブルが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 
-```JSON
+```json
 {
     "name": "AzureDataLakeStoreInput",
       "properties":
@@ -546,7 +552,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、**source** の型が **AzureDataLakeStoreSource** に設定され、**sink** の型が **BlobSink** に設定されています。
 
-```JSON
+```json
 {  
     "name":"SamplePipeline",
     "properties":{  

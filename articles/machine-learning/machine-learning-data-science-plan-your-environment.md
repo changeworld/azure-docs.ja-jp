@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: f497366f8e66ba79b0e5978fde54d0b33048aa8d
-ms.openlocfilehash: d11f023f263b0bb504e2ecb0ff69bb0cc726618b
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a712baabf2674bda0a53de63e7c204b08ba9d105
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -94,7 +94,7 @@ Azure Machine Learning 環境を例とします。
    * SQL
 2. **データ分析にはどのツールを使用する必要がありますか。**
    
-   * [Microsoft Azure Powershell](/powershell/azureps-cmdlets-docs) - Azure リソースを管理するために使用されるスクリプト言語。
+   * [Microsoft Azure Powershell](/powershell/azure/overview) - Azure リソースを管理するために使用されるスクリプト言語。
    * [Azure Machine Learning Studio](machine-learning-what-is-ml-studio.md)
    * [Revolution Analytics](http://www.revolutionanalytics.com/revolution-r-open)
    * [RStudio](http://www.rstudio.com)

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: ea6b80e289f039a5924fcc2ccf9d71dbbb432982
-ms.openlocfilehash: 2f2676d85a513a152832cfd336c3b643577341b9
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: 7d58748c4b0195246fffafe2e5544678b83dfd60
+ms.lasthandoff: 04/14/2017
 
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management の FAQ
@@ -44,6 +44,8 @@ Azure API Management についてよく寄せられる質問の回答、パタ�
 * [バックエンドに自己署名 SSL 証明書を使用できますか。](#can-i-use-a-self-signed-ssl-certificate-for-a-back-end)
 * [リポジトリを複製しようとすると認証に失敗します。原因は何でしょうか。](#why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository)
 * [API Management は Azure ExpressRoute と共に使用できますか。](#does-api-management-work-with-azure-expressroute)
+* [Resource Manager スタイルの VNET に API Management をデプロイする場合、その VNET 内に専用サブネットが必要なのはなぜですか。](#why-do-we-require-a-dedicated-subnet-in-resource-manager-style-vnets-when-api-management-is-deployed-into-them)
+* [API Management を VNET にデプロイする場合に必要な最小サブネット サイズはどれくらいですか。](#what-is-the-minimum-subnet-size-needed-when-deploying-api-management-into-a-vnet)
 * [あるサブスクリプションから別のサブスクリプションに API Management サービスを移動できますか。](#can-i-move-an-api-management-service-from-one-subscription-to-another)
 * [API のインポートには制限事項や既知の問題はありますか。](#are-there-restrictions-on-or-known-issues-with-importing-my-api)
 
@@ -98,11 +100,11 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 ### <a name="how-do-i-use-api-versioning-in-api-management"></a>API Management で API のバージョン管理を使用するにはどうすればよいですか。
 API Management では API のバージョン管理を複数の方法で使用できます。
 
-* API Management では、バージョンが異なる複数の API を構成できます。 たとえば、MyAPIv1 と MyAPIv2 という&2; つの API を構成できます。 こうすれば、開発者は自分でバージョンを選ぶことができます。
+* API Management では、バージョンが異なる複数の API を構成できます。 たとえば、MyAPIv1 と MyAPIv2 という 2 つの API を構成できます。 こうすれば、開発者は自分でバージョンを選ぶことができます。
 * バージョン セグメントを含まないサービス URL で API を構成することもできます (例: https://my.api )。 その後で、各操作の[書き換え URL](https://msdn.microsoft.com/library/azure/dn894083.aspx#RewriteURL) テンプレートでバージョン セグメントを構成できます。 たとえば、/resource という [URL](api-management-howto-add-operations.md#url-template) テンプレートと /v1/Resource という[書き換え URL](api-management-howto-add-operations.md#rewrite-url-template) テンプレートで操作を作成することができます。 バージョン セグメントの値は各操作で個別に変更できます。
 * API のサービス URL 内に "既定" のバージョン セグメントを保持する場合は、選択した操作に対して、[バックエンド サービスの設定](https://msdn.microsoft.com/library/azure/dn894083.aspx#SetBackendService) ポリシーを使用してバックエンド要求パスを変更するポリシーを設定できます。
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>1 つの API で複数の環境をセットアップするにはどうすればよいですか。
-テスト環境と運用環境など、複数の環境を&1; つの API でセットアップする方法は&2; つあります。 そのための方法は次のとおりです。
+テスト環境と運用環境など、複数の環境を 1 つの API でセットアップする方法は 2 つあります。 そのための方法は次のとおりです。
 
 * 同じテナントで複数の API をホストする。
 * 異なるテナントで同じ API をホストする。
@@ -114,12 +116,12 @@ API Management では API のバージョン管理を複数の方法で使用で
 Standard レベルと Premium レベルでは、API Management テナントのパブリック IP アドレス (VIP) は、テナントの有効期間中、静的です。ただし、いくつかの例外があります。 IP アドレスは次の状況では変化します。
 
 * サービスが削除された後、再作成された。
-* サービスのサブスクリプションが (未払いなどの理由により) 中断された後、復元された。
-* Azure Virtual Network を追加または削除した (Virtual Network は Premium レベルでのみ使用できます)。
+* サービスのサブスクリプションが (未払いなどの理由により) [中断](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states)または[警告あり](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states)となり、その後復元された。
+* Azure Virtual Network を追加または削除した (Virtual Network は Developer および Premium レベルでのみ使用できます)。
 
 複数のリージョンにデプロイしている場合、リージョンが廃止された後で再開されると、リージョンのアドレスが変わります (複数リージョンのデプロイは Premium レベルでのみ使用できます)。
 
-複数リージョンのデプロイ用に構成された Premium レベルのテナントには、リージョンごとに&1; つのパブリック IP アドレスが割り当てられます。
+複数リージョンのデプロイ用に構成された Premium レベルのテナントには、リージョンごとに 1 つのパブリック IP アドレスが割り当てられます。
 
 IP アドレス (複数リージョンのデプロイの場合は複数個) は Azure Portal のテナント ページで取得できます。
 
@@ -144,6 +146,13 @@ Git Credential Manager を使用しているか、Visual Studio を使用して 
 
 ### <a name="does-api-management-work-with-azure-expressroute"></a>API Management は Azure ExpressRoute と共に使用できますか。
 はい。 API Management は Azure ExpressRoute と共に使用できます。
+
+### <a name="why-do-we-require-a-dedicated-subnet-in-resource-manager-style-vnets-when-api-management-is-deployed-into-them"></a>Resource Manager スタイルの VNET に API Management をデプロイする場合、その VNET 内に専用サブネットが必要なのはなぜですか。
+API Management に専用サブネットが必要な理由は、それがクラシック (PAAS V1 レイヤー) デプロイメント モデルを基に構築されているためです。 Resource Manager VNET (V2 レイヤー) へのデプロイは可能ですが、それによる影響も無視できません。 Azure のクラシック デプロイメント モデルは Resource Manager モデルと緊密に結び付いていないため、V2 レイヤーにリソースを作成しても V1 レイヤーではそれを認識できず、既に NIC (V2 上に構築) に割り当てられている IP を API Management が使用しようとするなど、問題が生じる可能性があります。
+クラシック モデルと Resource Manager モデルの違いの詳細については、[デプロイメント モデル間の差異](../azure-resource-manager/resource-manager-deployment-model.md)に関するページを参照してください。
+
+### <a name="what-is-the-minimum-subnet-size-needed-when-deploying-api-management-into-a-vnet"></a>API Management を VNET にデプロイする場合に必要な最小サブネット サイズはどれくらいですか。
+API Management のデプロイに必要な最小サブネット サイズは、Azure でサポートされている最小サブネット サイズである [/29](../virtual-network/virtual-networks-faq.md#configuration) です。
 
 ### <a name="can-i-move-an-api-management-service-from-one-subscription-to-another"></a>あるサブスクリプションから別のサブスクリプションに API Management サービスを移動できますか。
 はい。 方法の詳細については、「[Move resources to a new resource group or subscription (新しいリソース グループまたはサブスクリプションへのリソースの移動)](../azure-resource-manager/resource-group-move-resources.md)」を参照してください。

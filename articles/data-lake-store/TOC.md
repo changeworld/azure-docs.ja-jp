@@ -30,8 +30,9 @@
 ### [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
 ### [サービス間認証](data-lake-store-authenticate-using-active-directory.md)
 ### [エンドユーザー認証](data-lake-store-end-user-authenticate-using-active-directory.md)
+### [暗号化](data-lake-store-encryption.md)
 
-## パフォーマンス
+## [パフォーマンス]
 ### [Azure Data Lake Store のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-guidance.md)
 ### [HDInsight のSpark と Azure Data Lake Store のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-spark.md)
 ### [HDInsight の Hive と Azure Data Lake Store のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-hive.md)
@@ -58,7 +59,7 @@
 ### [高可用性向けの計画](data-lake-store-troubleshooting-guidance.md)
 
 # リファレンス
-## [PowerShell](/powershell/resourcemanager/azurerm.datalakestore/v3.1.0/azurerm.datalakestore)
+## [PowerShell](/powershell/module/azurerm.datalakestore)
 ## [.NET](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.datalake.store)
 ## [Java](/java/api/com.microsoft.azure.datalake.store)
 ## [Node.JS](https://www.npmjs.com/package/azure-arm-datalake-store)

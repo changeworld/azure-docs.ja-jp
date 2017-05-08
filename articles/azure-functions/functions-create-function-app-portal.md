@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/15/2017
+ms.date: 04/11/2017
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: f9eea56f7f7b4f8f47a159c0c444d0d0aacc99cc
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 60c387331f0d47ddcc0dd2da8831911618c002b7
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -34,11 +34,13 @@ Azure Function App では、Azure App Service のインフラストラクチャ�
 
 ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。 ストレージ アカウント名は Azure 内で一意である必要があります。 
 
-関数アプリを作成したら、1 つ以上の言語で個々の関数を作成できます。 関数を作成するには、[ポータルを使用](functions-create-first-azure-function-azure-portal.md#create-a-function)するか、[継続的なデプロイ](functions-continuous-deployment.md)を使用するか、[FTP でアップロード](https://github.com/projectkudu/kudu/wiki/Accessing-files-via-ftp)します。  
+関数アプリを作成したら、1 つ以上の言語で個々の関数を作成できます。 関数を作成するには、[ポータルを使用](functions-create-first-azure-function.md#create-a-function)するか、[継続的なデプロイ](functions-continuous-deployment.md)を使用するか、[FTP でアップロード](https://github.com/projectkudu/kudu/wiki/Accessing-files-via-ftp)します。  
 
 ## <a name="service-plans"></a>サービス プラン
 
 Azure Functions には、従量課金プランと App Service プランの 2 つの異なるサービス プランがあります。 従量課金プランでは、コードの実行時にコンピューティング能力を自動的に割り当て、負荷の処理の必要性に応じてスケールアウトし、コードを実行していないときはスケールインします。 App Service プランでは、関数アプリが App Service のすべての機能にアクセスできます。 サービス プランは関数アプリの作成時に選択する必要があり、現時点では変更できません。 詳細については、[Azure Functions のホスティング プランの選択](functions-scale.md)に関するページをご覧ください。
+
+App Service プランで JavaScript 関数を実行する場合、コアの少ないプランを選択してください。 詳細については、[JavaScript 関数リファレンス](functions-reference-node.md#choose-single-core-app-service-plans) ページを参照してください。 
 
 ## <a name="storage-account-requirements"></a>ストレージ アカウントの要件
 

@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure サブスクリプションの制限とクォータ | Microsoft Docs"
 description: "一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。 制限を引き上げる方法と、最大値に関する情報も記載されています。"
 services: 
@@ -13,12 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2017
+ms.date: 04/19/2017
 ms.author: byvinyal
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: e26a37fbe783c2ca95679b5bdcc9b0ba0beec76b
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 2450eada5a49763542c95799a381f2029fec7575
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -34,9 +34,9 @@ Azure の価格については、 [Azure の価格の概要](https://azure.micro
 > 
 
 ## <a name="limits-and-the-azure-resource-manager"></a>制限と Azure リソース マネージャー
-複数の Azure リソースを&1; つの Azure リソース グループに結合できるようになりました。 リソース グループを使用するとき、グローバルになった制限が Azure リソース マネージャーによりリージョン レベルでの管理対象になります。 Azure リソース グループの詳細については、「 [Azure Resource Manager の概要](azure-resource-manager/resource-group-overview.md)」を参照してください。
+複数の Azure リソースを 1 つの Azure リソース グループに結合できるようになりました。 リソース グループを使用するとき、グローバルになった制限が Azure リソース マネージャーによりリージョン レベルでの管理対象になります。 Azure リソース グループの詳細については、「 [Azure Resource Manager の概要](azure-resource-manager/resource-group-overview.md)」を参照してください。
 
-次の制限では、Azure リソース マネージャーを使用する際の制限の相違点を反映するために新しい表が追加されました。 たとえば、**サブスクリプションの制限**の表と、**サブスクリプションの制限 - Azure Resource Manager**の表などがあります。 制限が&2; つのシナリオに適用される場合、制限は最初の表にのみ表示されます。 特に記載のない限り、制限はすべてのリージョンに適用されます。
+次の制限では、Azure リソース マネージャーを使用する際の制限の相違点を反映するために新しい表が追加されました。 たとえば、**サブスクリプションの制限**の表と、**サブスクリプションの制限 - Azure Resource Manager**の表などがあります。 制限が 2 つのシナリオに適用される場合、制限は最初の表にのみ表示されます。 特に記載のない限り、制限はすべてのリージョンに適用されます。
 
 > [!NOTE]
 > Azure リソース グループ内のリソースのクォータは、サブスクリプションごとではなく、サブスクリプションのリージョンごとにアクセスできることに注意してください。また、サービス管理クォータも同様です。 コア クォータを例に説明します。 コア対応のクォータの増量をリクエストする場合、どのリージョンでいくつのコアを使用するかを決めてから、Azure リソース グループのコア クォータの数量と目的のリージョンをリクエストする必要があります。 したがって、西ヨーロッパで 30 のコアを使用してアプリケーションを実行する必要がある場合、具体的に、西ヨーロッパで 30 のコアをリクエストしてください。 この場合、他のリージョンのコア クォータは増量されません -- 西ヨーロッパでのみ 30 コア クォータが増量されます。
@@ -71,9 +71,10 @@ Azure の価格については、 [Azure の価格の概要](https://azure.micro
 * [Media Services](#media-services-limits)
 * [Mobile Engagement](#mobile-engagement-limits)
 * [Mobile Services](#mobile-services-limits)
-* [監視](#monitoring-limits)
+* [監視](#monitor-limits)
 * [Multi-Factor Authentication](#multi-factor-authentication)
 * [ネットワーク](#networking-limits)
+* [Network Watcher](#network-watcher-limits)
 * [Notification Hub Service](#notification-hub-service-limits)
 * [リソース グループ](#resource-group-limits)
 * [Scheduler](#scheduler-limits)
@@ -123,6 +124,9 @@ Resource Manager 要求の処理制限については、[Throttling Resource Man
 
 #### <a name="application-gateway-limits"></a>Application Gateway の制限
 [!INCLUDE [application-gateway-limits](../includes/application-gateway-limits.md)]
+
+#### <a name="network-watcher-limits"></a>Network Watcher の制限
+[!INCLUDE [network-watcher-limits](../includes/network-watcher-limits.md)]
 
 #### <a name="traffic-manager-limits"></a>Traffic Manager の制限
 [!INCLUDE [traffic-manager-limits](../includes/traffic-manager-limits.md)]
@@ -206,7 +210,7 @@ DocumentDB は世界規模のデータベースであり、アプリケーショ
 ### <a name="mobile-services-limits"></a>Mobile Services の制限
 [!INCLUDE [mobile-services-limits](../includes/mobile-services-limits.md)]
 
-### <a name="monitoring-limits"></a>監視の制限
+### <a name="monitor-limits"></a>監視の制限
 [!INCLUDE [monitoring-limits](../includes/monitoring-limits.md)]
 
 ### <a name="notification-hub-service-limits"></a>Notification Hubs サービスの制限

@@ -16,9 +16,9 @@ ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: eec8c82857ef9e2806c953ae996f9e7970e64392
-ms.openlocfilehash: 4d6bfebd9faa4e37de148539e7248f88e711bf43
-ms.lasthandoff: 02/07/2017
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: 74d33505b777925a19830d1eda2eca9776ecaf61
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -99,7 +99,7 @@ Stream Analytics には **BLOB あたり 100 MB の制限**がありますが、
 3. 場合によって、ジョブは時間をさかのぼる必要があります。したがって、参照データの BLOB は変更することも削除することもできません。
 
 ## <a name="get-help"></a>問い合わせ
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>次のステップ
 モ ノのインターネットからのデータをストリーム分析する管理サービスである、 Stream Analytics の概要です。 このサービスの詳細については、以下の情報をご覧ください。

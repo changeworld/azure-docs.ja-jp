@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: fced31b28b4b8e5835033243719e6eb87aa3f0d4
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 3b9d6eb9bcc4afe0e68920bbd5da7c259ceb0c67
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -36,9 +36,9 @@ Azure の仮想マシンでは、その他のコンピューターとまった�
 どの仮想マシンにも 1 つのオペレーティング システム ディスクが取り付けられています。 これは SATA ドライブとして登録され、C ドライブのラベルが付けられます。 このディスクの最大容量は 1023 ギガバイトです。 
 
 ### <a name="temporary-disk"></a>一時ディスク
-各 VM には、一時ディスクが含まれています。 一時ディスクは、アプリケーションとプロセスのための一時的なストレージを提供し、ページ ファイルやスワップ ファイルなどのデータのみを格納するためのものです。 一時ディスクのデータは、[メンテナンス イベント](../virtual-machines/virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-planned-vs-unplanned-maintenance)中、または [VM の再デプロイ](../virtual-machines/virtual-machines-windows-redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)時に失われる可能性があります。 VM の標準的な再起動中は、一時ドライブのデータは保持されます。
+各 VM には、一時ディスクが含まれています。 一時ディスクは、アプリケーションとプロセスのための一時的なストレージを提供し、ページ ファイルやスワップ ファイルなどのデータのみを格納するためのものです。 一時ディスクのデータは、[メンテナンス イベント](../virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-planned-vs-unplanned-maintenance)中、または [VM の再デプロイ](../virtual-machines/windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)時に失われる可能性があります。 VM の標準的な再起動中は、一時ドライブのデータは保持されます。
 
-この一時ディスクには D ドライブのラベルが付けられ、pagefile.sys を保存するために使用されます。 このディスクを再マッピングするには、 [Windows 一時ディスクのドライブ文字を変更する方法](../virtual-machines/virtual-machines-windows-change-drive-letter.md)に関するページを参照してください。 仮想マシンのサイズに基づいて、一時ディスクのサイズは異なります。 詳細については、「 [Azure の仮想マシンのサイズ](../virtual-machines/virtual-machines-windows-sizes.md)」を参照してください。
+この一時ディスクには D ドライブのラベルが付けられ、pagefile.sys を保存するために使用されます。 このディスクを再マッピングするには、 [Windows 一時ディスクのドライブ文字を変更する方法](../virtual-machines/windows/change-drive-letter.md)に関するページを参照してください。 仮想マシンのサイズに基づいて、一時ディスクのサイズは異なります。 詳細については、「 [Azure の仮想マシンのサイズ](../virtual-machines/windows/sizes.md)」を参照してください。
 
 Azure による一時ディスクの使用方法については、「 [Understanding the temporary drive on Microsoft Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
 
@@ -47,12 +47,12 @@ Azure による一時ディスクの使用方法については、「 [Understan
 データ ディスクは仮想マシンに取り付けられる VHD であり、ユーザーが保存しておく必要があるアプリケーションなどのデータを格納するためのものです。 データ ディスクは SCSI ドライブとして登録され、ユーザーが選択した文字のラベルが付けられます。 各ディスクの最大容量は 1023 ギガバイトです。 仮想マシンのサイズにより、そこに取り付けできるデータ ディスクの数と、ディスクをホストするために使用できるストレージの種類が決まります。
 
 > [!NOTE]
-> 仮想マシンの容量については、「 [Azure の Windows 仮想マシンのサイズ](../virtual-machines/virtual-machines-windows-sizes.md)」を参照してください。
+> 仮想マシンの容量については、「 [Azure の Windows 仮想マシンのサイズ](../virtual-machines/windows/sizes.md)」を参照してください。
 > 
 
 ユーザーがイメージから仮想マシンを作成するときに、Azure はオペレーティング システム ディスクを作成します。 ユーザーがデータ ディスクを含むイメージを使用する場合、Azure は仮想マシンの作成時にデータ ディスクも作成します。 それ以外の場合は、仮想マシンを作成した後にデータ ディスクを追加してください。
 
-仮想マシンにディスクを**取り付ける**ことで、ユーザーは仮想マシンにデータ ディスクをいつでも追加できます。 ユーザーがアップロードした VHD やストレージ アカウントにコピーした VHD を使用できます。または Azure が作成する VHD も使用できます。 データ ディスクを取り付けると、VHD ファイルが VM に関連付けられます。VHD で「リース」を設定しておけば、仮想マシンに取り付けている間にストレージから削除することはできなくなります。
+仮想マシンにディスクを**取り付ける**ことで、ユーザーは仮想マシンにデータ ディスクをいつでも追加できます。 ユーザーがアップロードした VHD やストレージ アカウントにコピーした VHD を使用できます。または Azure が作成する VHD も使用できます。 データ ディスクを取り付けると、VHD ファイルが VM に関連付けられます。VHD で "リース" を設定しておけば、仮想マシンに取り付けている間にストレージから削除することはできなくなります。
 
 
 [!INCLUDE [storage-about-vhds-and-disks-windows-and-linux](../../includes/storage-about-vhds-and-disks-windows-and-linux.md)]
@@ -75,8 +75,8 @@ fsutil behavior set DisableDeleteNotify 0
 
 <!-- Might want to match next-steps from overview of managed disks -->
 ## <a name="next-steps"></a>次のステップ
-* [ディスクのアタッチ](../virtual-machines/virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) による VM 用のストレージの追加。
-* [Windows VM イメージを Azure にアップロード](../virtual-machines/virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) します。
-* [Windows 一時ディスクのドライブ文字を変更する方法](../virtual-machines/virtual-machines-windows-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) します。
+* [ディスクのアタッチ](../virtual-machines/windows/attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) による VM 用のストレージの追加。
+* [Windows VM イメージを Azure にアップロード](../virtual-machines/windows/upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) します。
+* [Windows 一時ディスクのドライブ文字を変更する方法](../virtual-machines/windows/change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) します。
 
 

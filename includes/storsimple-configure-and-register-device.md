@@ -74,8 +74,3 @@
 
 StorSimple 用 Windows PowerShell でデバイスを構成および登録する方法を説明したビデオについては、 [こちら](https://azure.microsoft.com/documentation/videos/initialize-the-storsimple-appliance/)を参照してください。
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

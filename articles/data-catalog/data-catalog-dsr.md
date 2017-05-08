@@ -16,9 +16,9 @@ ms.workload: data-catalog
 ms.date: 03/14/2017
 ms.author: maroche
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: b92db8dd81af0c58861644cc02ca9e56b6a6a832
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: d68ed62022834c9417d820a7a64e30b47f71a1bd
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -416,6 +416,24 @@ ms.lasthandoff: 03/17/2017
   
     <tr>
       <td>Azure DocumentDB コレクション</td>
+      <td>✓</td>
+      <td>✓ </td>
+      <td>✓</td>
+      <td><font size=2></font></td>
+      <td><font size=2></font></td>
+    </tr>
+
+    <tr>
+      <td>汎用 ODBC テーブル</td>
+      <td>✓</td>
+      <td>✓ </td>
+      <td>✓</td>
+      <td><font size=2></font></td>
+      <td><font size=2></font></td>
+    </tr>
+
+    <tr>
+      <td>汎用 ODBC ビュー</td>
       <td>✓</td>
       <td>✓ </td>
       <td>✓</td>
@@ -918,6 +936,22 @@ ms.lasthandoff: 03/17/2017
       <td>コレクション</td>
       <td>
         <font size=2> protocol: document-db <br>authentication: {azure-access-key} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; コレクション </font>
+      </td>
+    </tr>
+    <tr>
+      <td>汎用 ODBC</td>
+      <td>コンテナー</td>
+      <td>データベース</td>
+      <td>
+        <font size=2> プロトコル: odbc <br>authentication: {basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オプション <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース </font>
+      </td>
+    </tr>
+    <tr>
+      <td>汎用 ODBC</td>
+      <td>テーブル</td>
+      <td>テーブル、ビュー</td>
+      <td>
+        <font size=2> プロトコル: odbc <br>authentication: {basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オプション <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ </font>
       </td>
     </tr>
     <tr>

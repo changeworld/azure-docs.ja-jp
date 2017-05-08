@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 04/12/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 0a6b5115a4eebfcce14094d82cdcc9579f80def6
-ms.lasthandoff: 04/15/2017
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: 5b4a2b7646a2ead1df459c5d9a17d125821c86a5
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -82,7 +82,7 @@ Log Analytics ワークスペースへのアクセスを制御するアクセス
 
 次の表には、各アクセス許可モデルを使用して設定できるアクセス権がまとめてあります。
 
-|                          | Log Analytics ポータル | Azure ポータル | API (PowerShell を含む) |
+|                          | Log Analytics ポータル | Azure Portal | API (PowerShell を含む) |
 |--------------------------|----------------------|--------------|----------------------------|
 | Log Analytics ユーザー ロール | はい                  | なし           | いいえ                         |
 | Azure のロールベースのアクセス  | はい                  | あり          | はい                        |
@@ -94,13 +94,15 @@ Log Analytics ワークスペースへのアクセスを制御するアクセス
 
 従来の Log Analytics ユーザー ロールでは、[Log Analytics ポータル](https://mms.microsoft.com)で実行されたアクティビティへのアクセスしか制御できません。
 
-Log Analytics ポータルの次のアクティビティにも、Azure のアクセス許可が必要です。
+次のアクティビティにも、Azure のアクセス許可が必要です。
 
 | アクション                                                          | 必要とされる Azure のアクセス許可 | メモ |
 |-----------------------------------------------------------------|--------------------------|-------|
-| 管理ソリューションの追加と削除                        | リソース グループの書き込み <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | |
+| 管理ソリューションの追加と削除                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | |
 | 価格レベルの変更                                       | `Microsoft.OperationalInsights/workspaces/*/write` | |
 | *Backup* ソリューション タイルと *Site Recovery* ソリューション タイルのデータの表示 | 管理者/共同管理者 | クラシック デプロイメント モデルを使用してデプロイされたリソースにアクセスします |
+| Azure Portal でのワークスペースの作成                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/workspaces/*` ||
+
 
 ### <a name="managing-access-to-log-analytics-using-azure-permissions"></a>Azure のアクセス許可を使用した Log Analytics へのアクセスの管理
 Azure のアクセス許可を使用して Log Analytics ワークスペースへのアクセス権を付与するには、「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../active-directory/role-based-access-control-configure.md)」の手順に従ってください。
@@ -177,7 +179,7 @@ OMS アカウントに関連付けられているユーザーのアカウント 
 4. 確認のダイアログ ボックスで **[はい]** をクリックします。
 
 ### <a name="remove-a-user-from-a-workspace"></a>ワークスペースからユーザーを削除する
-次の手順でワークスペースからユーザーを削除します。 ユーザーを削除しても、ワークスペースは閉じません。 ユーザーとワークスペース間の関連付けが削除されます。 1 人のユーザーが複数のワークスペースに関連付けられている場合、そのユーザーは、OMS にサインインして、自分の他のワークスペースを表示することができます。
+次の手順でワークスペースからユーザーを削除します。 ユーザーを削除しても、ワークスペースは閉じません。 ユーザーとワークスペース間の関連付けが削除されます。 1 人のユーザーが複数のワークスペースに関連付けられている場合、そのユーザーは、OMS にサインインして、他のワークスペースを表示することができます。
 
 1. OMS ポータルで、**[設定]** タイルをクリックします。
 2. **[アカウント]** タブ、**[ユーザーの管理]** タブの順にクリックします。
@@ -203,7 +205,7 @@ OMS アカウントに関連付けられているユーザーのアカウント 
     > ワークスペースをリンクするためには、リンクするワークスペースに Azure アカウントが既にアクセスしていることが必要です。  つまり、Azure Portal へのアクセスに使用するアカウントは、ワークスペースへのアクセスに使用するアカウントと **同じ** アカウントである必要があります。 それ以外の場合は、「[既存のワークスペースへのユーザーの追加](#add-a-user-to-an-existing-workspace)」をご覧ください。
 
 ### <a name="to-link-a-workspace-to-an-azure-subscription-in-the-azure-portal"></a>Azure Portal でワークスペースを Azure サブスクリプションにリンクするには
-1. [Azure ポータル](http://portal.azure.com)にサインインします。
+1. [Azure Portal](http://portal.azure.com) にサインインします。
 2. **[Log Analytics]** を探して選択します。
 3. 既存のワークスペースの一覧が表示されます。 **[追加]**をクリックします。  
    ![ワークスペースの一覧](./media/log-analytics-manage-access/manage-access-link-azure01.png)
@@ -256,7 +258,7 @@ Azure サブスクリプションがリンクされているエンタープラ�
 ワークスペースがリンクされている Azure サブスクリプションを変更する必要がある場合は、Azure PowerShell の [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx) コマンドレットを使用します。  
 
 ### <a name="change-a-workspace-to-a-paid-pricing-tier-in-the-azure-portal"></a>Azure Portal でワークスペースを有料の価格レベルに変更する
-1. [Azure ポータル](http://portal.azure.com)にサインインします。
+1. [Azure Portal](http://portal.azure.com) にサインインします。
 2. **[Log Analytics]** を探して選択します。
 3. 既存のワークスペースの一覧が表示されます。 ワークスペースを選択します。  
 4. ワークスペース ブレードの **[全般]** で、**[価格レベル]** をクリックします。  
@@ -296,7 +298,7 @@ Standalone および OMS 価格レベルをご利用の場合、データは最�
 
 データ保持の期間を変更するには、次の手順に従います。
 
-1. [Azure ポータル](http://portal.azure.com)にサインインします。
+1. [Azure Portal](http://portal.azure.com) にサインインします。
 2. **[Log Analytics]** を探して選択します。
 3. 既存のワークスペースの一覧が表示されます。 ワークスペースを選択します。  
 4. ワークスペース ブレードの **[全般]** で、**[リテンション期間]** をクリックします。  
@@ -322,7 +324,7 @@ Log Analytics ワークスペースを削除すると、そのワークスペー
 ユーザーが管理者で、ワークスペースに関連付けられている複数のユーザーが存在する場合は、それらのユーザーとワークスペースの間の関連付けがなくなります。 ユーザーが他のワークスペースに関連付けられている場合は、その他のワークスペースを使用して OMS を継続して使用できます。 ただし、他のワークスペースに関連付けられていない場合は、OMS を使用するには、ワークスペースを作成する必要があります。
 
 ### <a name="to-delete-a-workspace"></a>ワークスペースを削除するには
-1. [Azure ポータル](http://portal.azure.com)にサインインします。
+1. [Azure Portal](http://portal.azure.com) にサインインします。
 2. **[Log Analytics]** を探して選択します。
 3. 既存のワークスペースの一覧が表示されます。 削除するワークスペースを選択します。
 4. ワークスペース ブレードで、**[削除]** をクリックします。  

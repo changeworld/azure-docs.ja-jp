@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/21/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 2c41c2df135caaead328d8fe05407cfa75cbcb91
-ms.openlocfilehash: a486fbe46f9892f6f70dcdcf27edbac63728af6e
-ms.lasthandoff: 02/14/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 223edfde090c9b77467e032198c2150fbaa56a5b
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -62,7 +62,7 @@ Azure Portal を使用すると、次の操作を行うことができます。
    ![Data Factory ブレード](./media/data-factory-monitor-manage-pipelines/data-factory-blade.png)
 
 #### <a name="diagram-view-of-your-data-factory"></a>Data Factory のダイアグラム ビュー
-データ ファクトリの**ダイアグラム** ビューでは、データ ファクトリとその資産を監視および管理する&1; つのウィンドウが提供されます。
+データ ファクトリの**ダイアグラム** ビューでは、データ ファクトリとその資産を監視および管理する 1 つのウィンドウが提供されます。
 
 データ ファクトリの**ダイアグラム** ビューを表示するには、データ ファクトリのホーム ページで **[ダイアグラム]** をクリックします。
 
@@ -74,7 +74,7 @@ Azure Portal を使用すると、次の操作を行うことができます。
 1. パイプラインを右クリックして **[パイプラインを開く]** をクリックすると、パイプライン内のすべてのアクティビティとアクティビティの入力データセットおよび出力データセットが表示されます。 この機能は、パイプラインに複数のアクティビティが含まれる場合に、1 つのパイプラインの動作系列を理解するときに便利です。
 
     ![パイプラインを開くメニュー](./media/data-factory-monitor-manage-pipelines/open-pipeline-menu.png)     
-2. 次の例では、パイプラインの&2; つのアクティビティとその入力および出力がわかります。 このサンプル パイプラインには、**JoinData** という名前の HDInsight Hive 型アクティビティと、**EgressDataAzure** という名前のコピー型アクティビティがあります。
+2. 次の例では、パイプラインのコピー アクティビティ、入力、出力を確認できます。 
 
     ![パイプライン内のアクティビティ](./media/data-factory-monitor-manage-pipelines/activities-inside-pipeline.png)
 3. 左上隅の階層リンクの **[データ ファクトリ]** リンクをクリックして、データ ファクトリのホーム ページに戻ることができます。
@@ -84,11 +84,9 @@ Azure Portal を使用すると、次の操作を行うことができます。
 ### <a name="view-the-state-of-each-activity-inside-a-pipeline"></a>パイプライン内の各アクティビティの状態を表示する
 アクティビティによって生成されるデータセットのステータスを表示することにより、アクティビティの現在の状態を確認できます。
 
-次の例では、**BlobPartitionHiveActivity** は正常に実行され、**PartitionedProductsUsageTable** という名前で **Ready** 状態のデータセットを生成しました。
+**ダイアグラム**の **OutputBlobTable** をダブルクリックすると、パイプライン内のさまざまなアクティビティの実行によって生成されたすべてのスライスが表示されます。 コピー アクティビティは過去 8 時間正常に実行され、**Ready** 状態のスライスを生成したことがわかります。  
 
 ![パイプラインの状態](./media/data-factory-monitor-manage-pipelines/state-of-pipeline.png)
-
-**ダイアグラム**の **PartitionedProductsUsageTable** をダブルクリックすると、パイプライン内のさまざまなアクティビティの実行によって生成されたすべてのスライスが表示されます。 **BlobPartitionHiveActivity** は過去&8; か月間毎月正常に実行され、**Ready** 状態のスライスを生成したことがわかります。
 
 データ ファクトリのデータセット スライスは、次のいずれかの状態になります。
 
@@ -164,7 +162,7 @@ Azure Portal を使用すると、次の操作を行うことができます。
 ![準備のできていないアップストリーム スライス](./media/data-factory-monitor-manage-pipelines/upstream-slices-not-ready.png)
 
 ### <a name="dataset-state-diagram"></a>データセット状態ダイアグラム
-データ ファクトリをデプロイした後、パイプラインに有効なアクティブ期間があると、データセット スライスは&1; つの状態から別の状態に遷移します。 現在、スライスのステータスは、次の状態ダイアグラムに従います。
+データ ファクトリをデプロイした後、パイプラインに有効なアクティブ期間があると、データセット スライスは 1 つの状態から別の状態に遷移します。 現在、スライスのステータスは、次の状態ダイアグラムに従います。
 
 ![状態ダイアグラム](./media/data-factory-monitor-manage-pipelines/state-diagram.png)
 
@@ -525,7 +523,7 @@ Data Factory では、さまざまなメトリックを収集し、メトリッ�
 * **失敗した実行**
 * **成功した実行**
 
-これらのメトリックは便利であり、データ ファクトリ全体での失敗および成功した実行の概要を取得できます。 メトリックは、スライスが実行するたびに生成されます。 毎時&0; 分に、メトリックは集計されて、ストレージ アカウントにプッシュされます。 メトリックを有効にするには、ストレージ アカウントを設定します。
+これらのメトリックは便利であり、データ ファクトリ全体での失敗および成功した実行の概要を取得できます。 メトリックは、スライスが実行するたびに生成されます。 毎時 0 分に、メトリックは集計されて、ストレージ アカウントにプッシュされます。 メトリックを有効にするには、ストレージ アカウントを設定します。
 
 #### <a name="enable-metrics"></a>メトリックの有効化
 メトリックを有効にするには、**[データ ファクトリ]** ブレードから次のようにクリックします。
@@ -538,7 +536,7 @@ Data Factory では、さまざまなメトリックを収集し、メトリッ�
 
 ![Diagnostics blade](./media/data-factory-monitor-manage-pipelines/diagnostics-blade.png)
 
-メトリックの集計は&1; 時間ごとに行われるので、メトリックが **[監視]** ブレードに表示されるまでに最大で&1; 時間かかることがあります。
+メトリックの集計は 1 時間ごとに行われるので、メトリックが **[監視]** ブレードに表示されるまでに最大で 1 時間かかることがあります。
 
 ### <a name="set-up-an-alert-on-metrics"></a>メトリックに対するアラートを設定する
 **[データ ファクトリ メトリックス]** タイルをクリックします。
@@ -623,7 +621,7 @@ Data Factory では、さまざまなメトリックを収集し、メトリッ�
 
 サンプルの *subscriptionId*、*resourceGroupName*、*dataFactoryName* を、適切な値に置き換えます。
 
-*metricName* が現在サポートしている値は次の&2; つです。
+*metricName* が現在サポートしている値は次の 2 つです。
 
 * FailedRuns
 * SuccessfulRuns

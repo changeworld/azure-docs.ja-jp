@@ -1,6 +1,6 @@
 ---
 title: "Azure Security Center のデータ収集を有効にする | Microsoft Docs"
-description: " Azure Security Center のデータ収集を有効にする方法について説明します。. "
+description: " Azure Security Center のデータ収集を有効にする方法について説明します。 "
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/08/2017
+ms.date: 04/12/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 57c0228c398ba4ba3fd18a1088472749bed3ac69
-ms.openlocfilehash: 9ebbed56bdbc8385bb651c7aa1e77f369da1d727
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: b942f934ecb25083d779096dc628e342870edc26
+ms.lasthandoff: 04/13/2017
 
 
 ---
 # <a name="enable-data-collection-in-azure-security-center"></a>Azure Security Center のデータ収集を有効にする
-Azure Security Center では、脅威に対する防御と検出、対応を支援するために、構成情報、メタデータ、イベント ログなど、Azure 仮想マシンに関するさまざまなデータを収集、処理しています。 最初にセキュリティ センターにアクセスするときは、サブスクリプション内のすべての仮想マシンに対してデータ収集が有効になっています。 データ収集は有効にしておくことをお勧めしますが、Security Center のポリシーでデータ収集をオフにして、オプトアウトすることもできます (「[データ収集の無効化](#disabling-data-collection)」を参照)。 データ収集を無効にすると、そのサブスクリプションのセキュリティ ポリシーでデータ収集を有効にするよう Security Center から提案されます。
+Azure Security Center では、脅威に対する防御と検出、対応を支援するために、構成情報、メタデータ、イベント ログなど、Azure Virtual Machines に関するさまざまなデータを収集、処理しています。 最初にセキュリティ センターにアクセスするときは、サブスクリプション内のすべての仮想マシンに対してデータ収集が有効になっています。 データ収集は有効にしておくことをお勧めしますが、Security Center のポリシーでデータ収集をオフにして、オプトアウトすることもできます (「[データ収集の無効化](#disabling-data-collection)」を参照)。 データ収集を無効にすると、そのサブスクリプションのセキュリティ ポリシーでデータ収集を有効にするよう Security Center から提案されます。
 
 > [!NOTE]
 > このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。 ステップ バイ ステップ ガイドではありません。

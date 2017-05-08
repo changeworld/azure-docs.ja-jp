@@ -8,6 +8,7 @@
 ## [事前に構成されたソリューションを使ってみる](iot-suite-getstarted-preconfigured-solutions.md)
 ## [azureiotsuite.com のアクセス許可](iot-suite-permissions.md)
 ## [予測的なメンテナンス ソリューションの概要](iot-suite-predictive-overview.md)
+## [コネクティッド ファクトリ ソリューションの概要](iot-suite-connected-factory-overview.md)
 ## [リモート監視ソリューションのチュートリアル](iot-suite-remote-monitoring-sample-walkthrough.md)
 ## [予測的なメンテナンス ソリューションのチュートリアル](iot-suite-predictive-walkthrough.md)
 
@@ -21,6 +22,7 @@
 ## [リモート監視ソリューションでの動的テレメトリを使用する](iot-suite-dynamic-telemetry.md)
 ## [リモート監視ソリューションでカスタム規則を作成する](iot-suite-custom-rule.md)
 ## [リモート監視ソリューションでのデバイス情報](iot-suite-remote-monitoring-device-info.md)
+## [コネクティッド ファクトリ用のゲートウェイをデプロイする](iot-suite-connected-factory-gateway-deployment.md)
 
 # リファレンス
 ## [セキュリティのアーキテクチャ](iot-security-architecture.md)
@@ -39,10 +41,5 @@
 ## [IoT Suite ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/iot-suite/)
 
 
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

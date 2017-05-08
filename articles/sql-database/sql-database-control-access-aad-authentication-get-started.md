@@ -1,6 +1,6 @@
 ---
 title: "AAD 認証: Azure SQL Database のファイアウォール、認証、アクセス | Microsoft Docs"
-description: "この入門用チュートリアルでは、SQL Server Management Studio と Transact-SQL を使用して、サーバーレベルとデータベースレベルのファイアウォール規則、Azure Active Directory 認証、ログイン、ユーザー、ロールを操作し、Azure SQL Database サーバーおよびデータベースへのアクセスと制御を許可する方法について説明します。"
+description: "このハウツー ガイドでは、SQL Server Management Studio と Transact-SQL を使用して、サーバーレベルとデータベースレベルのファイアウォール規則、Azure Active Directory 認証、ログイン、ユーザー、ロールを操作し、Azure SQL Database サーバーおよびデータベースへのアクセスと制御を許可する方法について説明します。"
 keywords: 
 services: sql-database
 documentationcenter: 
@@ -9,7 +9,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 67797b09-f5c3-4ec2-8494-fe18883edf7f
 ms.service: sql-database
-ms.custom: authentication and authorization
+ms.custom: security-access
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,14 +17,14 @@ ms.topic: article
 ms.date: 01/17/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: b97872ed00746009a800817b345f31937309ed67
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: ca679a820eefc7acbb08eed6b8f809f46aacd3a3
+ms.lasthandoff: 04/15/2017
 
 
 ---
 # <a name="azure-ad-authentication-access-and-database-level-firewall-rules"></a>Azure AD 認証、アクセス、データベースレベルのファイアウォール規則
-このチュートリアルでは、SQL Server Management Studio を使用して、Azure Active Directory 認証、ログイン、ユーザー、データベース ロールを操作し、Azure SQL Database サーバーとデータベースへのアクセス権とアクセス許可を付与する方法を学習します。 学習内容は、次のとおりです。
+このハウツー ガイドでは、SQL Server Management Studio を使用して、Azure Active Directory 認証、ログイン、ユーザー、データベース ロールを操作し、Azure SQL Database サーバーとデータベースへのアクセス権とアクセス許可を付与する方法を学習します。 学習内容は、次のとおりです。
 
 - master データベースとユーザー データベースのユーザー アクセス許可を表示する
 - Azure Active Directory 認証に基づいたログインとユーザーを作成する
@@ -33,7 +33,7 @@ ms.lasthandoff: 03/10/2017
 - データベース ユーザー用のデータベースレベルのファイアウォール規則を作成する
 - サーバー管理者用のサーバーレベルのファイアウォール規則を作成する
 
-**推定所要時間**: このチュートリアルの完了には約 45 分かかります (既に前提条件を満たしていることが前提です)。
+**推定所要時間**: このハウツー ガイドの完了には約 45 分かかります (既に前提条件を満たしていることが前提です)。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -43,18 +43,18 @@ ms.lasthandoff: 03/10/2017
 
 * **SQL Server Management Studio**。 最新バージョンの SQL Server Management Studio (SSMS) は、「[SQL Server Management Studio (SSMS) のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)」からダウンロードしてインストールすることができます。 新機能が継続的にリリースされているため、Azure SQL Database に接続する場合は、常に最新バージョンの SSMS を使用してください。
 
-* **基本サーバーおよびデータベース**。このチュートリアルで使用するサーバーと&2; つのデータベースをインストールして構成するには、**[Deploy to Azure (Azure へのデプロイ)]** ボタンをクリックします。 ボタンをクリックすると **[Deploy from a template (テンプレートからのデプロイ)]** ブレードが開くので、新しいリソース グループを作成し、作成予定の新しいサーバーの **[管理者ログイン パスワード]** を指定します。
+* **基本サーバーおよびデータベース**。このハウツー ガイドで使用するサーバーと 2 つのデータベースをインストールして構成するには、**[Deploy to Azure](Azure へのデプロイ)** ボタンをクリックします。 ボタンをクリックすると **[Deploy from a template (テンプレートからのデプロイ)]** ブレードが開くので、新しいリソース グループを作成し、作成予定の新しいサーバーの **[管理者ログイン パスワード]** を指定します。
 
    [![ダウンロード](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fsqldbtutorial.blob.core.windows.net%2Ftemplates%2Fsqldbgetstarted.json)
 
    > [!NOTE]
-   > SQL Server 認証用の関連チュートリアル、「[SQL 認証、ログインとユーザー アカウント、データベース ロール、アクセス許可、サーバーレベルのファイアウォール規則、データベースレベルのファイアウォール規則](sql-database-control-access-sql-authentication-get-started.md)」の完了は任意ですが、そのチュートリアルで説明されている概念については、ここでは繰り返し説明していません。 サーバーレベルとデータベースレベルのファイアウォールに関連した、このチュートリアルの手順は、この関連チュートリアルを同じコンピューター (同じ IP アドレスを使用) 上で完了済みの場合は不要です。そのため、オプションとしてマークしてあります。 また、このチュートリアルのスクリーンショットは、この関連チュートリアルが完了していることを前提としています。 
+   > SQL Server 認証用の関連ハウツー ガイド、「[SQL 認証、ログインとユーザー アカウント、データベース ロール、アクセス許可、サーバーレベルのファイアウォール規則、データベースレベルのファイアウォール規則](sql-database-control-access-sql-authentication-get-started.md)」の完了は任意ですが、そのハウツー ガイドで説明されている概念については、ここでは繰り返し説明していません。 サーバーレベルとデータベースレベルのファイアウォールに関連した、このハウツー ガイドの手順は、この関連ハウツー ガイドを同じコンピューター (同じ IP アドレスを使用) 上で完了済みの場合は不要です。そのため、オプションとしてマークしてあります。 また、このハウツー ガイドのスクリーンショットは、この関連ハウツー ガイドが完了していることを前提としています。 
    >
 
 * Azure Active Directory を作成、設定済みである。 詳細については、「[オンプレミス ID と Azure Active Directory の統合](../active-directory/active-directory-aadconnect.md)」、[Azure AD への独自のドメイン名の追加](../active-directory/active-directory-add-domain.md)に関するページ、「[Microsoft Azure now supports federation with Windows Server Active Directory](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)」(Microsoft Azure が Windows Server Active Directory とのフェデレーションに対応)、「[Azure AD ディレクトリの管理](https://msdn.microsoft.com/library/azure/hh967611.aspx)」、[Windows PowerShell を使用した Azure AD の管理](https://msdn.microsoft.com/library/azure/jj151815.aspx)に関するページ、および「[Hybrid Identity Required Ports and Protocols](../active-directory/active-directory-aadconnect-ports.md)」(ハイブリッド ID の必須ポートとプロトコル) を参照してください。
 
 > [!NOTE]
-> このチュートリアルは、[SQL Database のアクセスと制御](sql-database-control-access.md)、[ログイン、ユーザー、データベース ロール](sql-database-manage-logins.md)、[プリンシパル](https://msdn.microsoft.com/library/ms181127.aspx)、[データベース ロール](https://msdn.microsoft.com/library/ms189121.aspx)、[SQL Database ファイアウォール規則](sql-database-firewall-configure.md)、[Azure Active Directory 認証](sql-database-aad-authentication.md) という学習トピックの内容を理解する際に役立ちます。 
+> このハウツー ガイドは、[SQL Database のアクセスと制御](sql-database-control-access.md)、[ログイン、ユーザー、データベース ロール](sql-database-manage-logins.md)、[プリンシパル](https://msdn.microsoft.com/library/ms181127.aspx)、[データベース ロール](https://msdn.microsoft.com/library/ms189121.aspx)、[SQL Database ファイアウォール規則](sql-database-firewall-configure.md)、[Azure Active Directory 認証](sql-database-aad-authentication.md) という学習トピックの内容を理解する際に役立ちます。 
 >  
 
 ## <a name="sign-in-to-the-azure-portal-using-your-azure-account"></a>Azure アカウントを使用して Azure Portal にサインインする
@@ -64,14 +64,9 @@ ms.lasthandoff: 03/10/2017
 2. [Azure ポータル](https://portal.azure.com/)にサインインします。
 3. **[サインイン]** ページが表示されたら、サブスクリプションの資格情報を入力します。
    
-   ![[サインイン]](./media/sql-database-get-started-portal/login.png)
-
-
-<a name="create-logical-server-bk"></a>
-
 ## <a name="provision-an-azure-active-directory-admin-for-your-sql-logical-server"></a>SQL 論理サーバーの Azure Active Directory 管理者をプロビジョニングする
 
-チュートリアルのこのセクションでは、Azure Portal で論理サーバーのセキュリティ構成に関する情報を確認します。
+ハウツー ガイドのこのセクションでは、Azure Portal で論理サーバーのセキュリティ構成に関する情報を確認します。
 
 1. 論理サーバーの **[SQL Server]** ブレードを開き、**[概要]** ページの情報を確認します。 Azure Active Directory 管理者が構成されていないことに注意してください。
 
@@ -90,7 +85,7 @@ ms.lasthandoff: 03/10/2017
    ![選択した AAD 管理者アカウントを保存する](./media/sql-database-control-access-aad-authentication-get-started/aad_admin_save.png)
 
 > [!NOTE]
-> このサーバーの接続情報を確認するには、[サーバーの管理](sql-database-manage-servers-portal.md)に関するページを参照してください。 このチュートリアル シリーズでは、完全修飾サーバー名は 'sqldbtutorialserver.database.windows.net' です。
+> このサーバーの接続情報を確認するには、[SSMS による接続](sql-database-connect-query-ssms.md)に関するページを参照してください。 このハウツー ガイド シリーズでは、完全修飾サーバー名は 'sqldbtutorialserver.database.windows.net' です。
 >
 
 ## <a name="connect-to-sql-server-using-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) を使用して SQL Server に接続する
@@ -112,7 +107,7 @@ ms.lasthandoff: 03/10/2017
    ![AAD でサーバーに接続されました](./media/sql-database-control-access-aad-authentication-get-started/connected_to_server_with_aad.png)
 
 ## <a name="view-the-server-admin-account-and-its-permissions"></a>サーバー管理者アカウントとそのアクセス許可を表示する 
-チュートリアルのこのセクションでは、master データベースとユーザー データベースのサーバー管理者アカウントとそのアクセス許可に関する情報を表示します。
+ハウツー ガイドのこのセクションでは、master データベースとユーザー データベースのサーバー管理者アカウントとそのアクセス許可に関する情報を表示します。
 
 1. オブジェクト エクスプローラーで、**[データベース]**、**[システム データベース]**、**[master]**、**[セキュリティ]**、**[ユーザー]** の順に展開します。 master データベースに Active Directory 管理者のユーザー アカウントが作成されていることがわかります。 また、Active Directory 管理者ユーザー アカウントのログインは作成されなかったこともわかります。
 
@@ -189,14 +184,14 @@ ms.lasthandoff: 03/10/2017
 
    ![blankdb データベースのサーバー管理者のアクセス許可](./media/sql-database-control-access-aad-authentication-get-started/aad_admin_permissions_in_blankdb_database.png)
 
-10. 必要に応じて、AdventureWorksLT ユーザー データベースに対して前の&3; つの手順を繰り返します。
+10. 必要に応じて、AdventureWorksLT ユーザー データベースに対して前の 3 つの手順を繰り返します。
 
 ## <a name="create-a-new-user-in-the-adventureworkslt-database-with-select-permissions"></a>AdventureWorksLT データベースで SELECT アクセス許可を持つ新しいユーザーを作成する
 
-チュートリアルのこのセクションでは、ユーザーの Azure AD ユーザーのプリンシパル名または Azure AD グループの表示名に基づいて AdventureWorksLT データベースにユーザー アカウントを作成し、このユーザーのアクセス許可を public ロールのメンバーとしてテストします。その後、このユーザーに SELECT アクセス許可を付与し、このユーザーのアクセス許可をもう一度テストします。
+ハウツー ガイドのこのセクションでは、ユーザーの Azure AD ユーザーのプリンシパル名または Azure AD グループの表示名に基づいて AdventureWorksLT データベースにユーザー アカウントを作成し、このユーザーのアクセス許可を public ロールのメンバーとしてテストします。その後、このユーザーに SELECT アクセス許可を付与し、このユーザーのアクセス許可をもう一度テストします。
 
 > [!NOTE]
-> データベースレベルのユーザー ([包含ユーザー](https://msdn.microsoft.com/library/ff929188.aspx)) の場合は、データベースの移植性 (以降のチュートリアルで説明する機能) が向上します。
+> データベースレベルのユーザー ([包含ユーザー](https://msdn.microsoft.com/library/ff929188.aspx)) の場合は、データベースの移植性 (以降のハウツー ガイドで説明する機能) が向上します。
 >
 
 1. オブジェクト エクスプローラーで **[AdventureWorksLT]** を右クリックし、**[新しいクエリ]** をクリックして、AdventureWorksLT データベースに接続されているクエリ ウィンドウを開きます。
@@ -261,13 +256,13 @@ ms.lasthandoff: 03/10/2017
 ## <a name="create-a-database-level-firewall-rule-for-adventureworkslt-database-users"></a>AdventureWorksLT データベース ユーザー用のデータベースレベルのファイアウォール規則を作成する
 
 > [!NOTE]
-> SQL Server 認証の関連チュートリアル「[SQL の認証と承認](sql-database-control-access-sql-authentication-get-started.md)」で同様の手順を完了していて、同じ IP アドレスを使用する同じコンピューターを使用して学習を進めている場合は、この手順を完了する必要はありません。
+> SQL Server 認証の関連ハウツー ガイド「[SQL の認証と承認](sql-database-control-access-sql-authentication-get-started.md)」で同様の手順を完了していて、同じ IP アドレスを使用する同じコンピューターを使用して学習を進めている場合は、この手順を完了する必要はありません。
 >
 
-チュートリアルのこのセクションでは、別の IP アドレスを使用するコンピューターから新しいユーザー アカウントを使用してログインを試みた後、サーバー管理者としてデータベースレベルのファイアウォール規則を作成し、この新しいデータベースレベルのファイアウォール規則を使用して正常にログインします。 
+ハウツー ガイドのこのセクションでは、別の IP アドレスを使用するコンピューターから新しいユーザー アカウントを使用してログインを試みた後、サーバー管理者としてデータベースレベルのファイアウォール規則を作成し、この新しいデータベースレベルのファイアウォール規則を使用して正常にログインします。 
 
 > [!NOTE]
-> [データベースレベルのファイアウォール規則](sql-database-firewall-configure.md)を使用すると、データベースの移植性 (以降のチュートリアルで説明する機能) が向上します。
+> [データベースレベルのファイアウォール規則](sql-database-firewall-configure.md)を使用すると、データベースの移植性 (以降のハウツー ガイドで説明する機能) が向上します。
 >
 
 1. まだサーバーレベルのファイアウォール規則を作成していない別のコンピューターで、SQL Server Management Studio を開きます。
@@ -278,17 +273,17 @@ ms.lasthandoff: 03/10/2017
 
 2. **[サーバーへの接続]** ウィンドウで、サーバー名と認証情報を入力し、SQL Server 認証と aaduser1@microsoft.com アカウントを使用して接続します。 
     
-   ![ファイアウォール規則なしで aaduser1@microsoft.com として接続する&1;](./media/sql-database-control-access-aad-authentication-get-started/connect_aaduser1_no_rule1.png)
+   ![ファイアウォール規則なしで aaduser1@microsoft.com として接続する 1](./media/sql-database-control-access-aad-authentication-get-started/connect_aaduser1_no_rule1.png)
 
-3. **[オプション]** をクリックして接続先のデータベースを指定し、**[接続のプロパティ]** タブの **[データベースへの接続]** ボックスの一覧で「**AdventureWorksLT**」と入力します。
+3. **[サーバーへの接続]** ダイアログ ボックスの **[オプション]** をクリックして接続先のデータベースを指定し、**[接続のプロパティ]** タブの **[データベースへの接続]** ボックスの一覧で「**AdventureWorksLT**」と入力します。
    
-   ![ファイアウォール規則なしで aaduser1 として接続する&2;](./media/sql-database-control-access-aad-authentication-get-started/connect_aaduser1_no_rule2.png)
+   ![ファイアウォール規則なしで aaduser1 として接続する 2](./media/sql-database-control-access-aad-authentication-get-started/connect_aaduser1_no_rule2.png)
 
-4. **[接続]**をクリックします。 SQL Database への接続元のコンピューターにデータベースへのアクセスを有効にするファイアウォール規則がないことを示すダイアログ ボックスが表示されます。 表示されるダイアログ ボックスには、ファイアウォールに対して前に実行した手順に応じて&2; つの種類がありますが、通常は最初のダイアログ ボックスが表示されます。
+4. **[接続]**をクリックします。 SQL Database への接続元のコンピューターにデータベースへのアクセスを有効にするファイアウォール規則がないことを示すダイアログ ボックスが表示されます。 表示されるダイアログ ボックスには、ファイアウォールに対して前に実行した手順に応じて 2 つの種類がありますが、通常は最初のダイアログ ボックスが表示されます。
 
-   ![ファイアウォール規則なしで user1 として接続する&3;](./media/sql-database-control-access-aad-authentication-get-started/connect_aaduser1_no_rule3.png)
+   ![ファイアウォール規則なしで user1 として接続する 3](./media/sql-database-control-access-aad-authentication-get-started/connect_aaduser1_no_rule3.png)
 
-   ![ファイアウォール規則なしで user1 として接続する&4;](./media/sql-database-control-access-aad-authentication-get-started/connect_aaduser1_no_rule4.png)
+   ![ファイアウォール規則なしで user1 として接続する 4](./media/sql-database-control-access-aad-authentication-get-started/connect_aaduser1_no_rule4.png)
 
    > [!NOTE]
    > SSMS の最新バージョンには、サブスクリプション所有者と共同作成者が Microsoft Azure にサインインしてサーバーレベルのファイアウォール規則を作成できるようにする機能が含まれています。
@@ -304,11 +299,11 @@ ms.lasthandoff: 03/10/2017
      @start_ip_address = 'x.x.x.x', @end_ip_address = 'x.x.x.x';
    ```
 
-   ![データベースレベルのファイアウォール規則を追加する&4;](./media/sql-database-control-access-aad-authentication-get-started/aaduser1_add_rule_aw.png)
+   ![データベースレベルのファイアウォール規則を追加する 4](./media/sql-database-control-access-aad-authentication-get-started/aaduser1_add_rule_aw.png)
 
 8. コンピューターを再度切り替えて、**[サーバーへの接続]** ダイアログ ボックスの **[接続]** をクリックし、aaduser1 として AdventureWorksLT に接続します。 
 
-9. オブジェクト エクスプローラーで、**[データベース]**、**[AdventureWorksLT]**、**[テーブル]** の順に展開します。 user1 には、**SalesLT.ProductCategory** テーブルという&1; つのテーブルを表示するアクセス許可しかないことがわかります。 
+9. オブジェクト エクスプローラーで、**[データベース]**、**[AdventureWorksLT]**、**[テーブル]** の順に展開します。 user1 には、**SalesLT.ProductCategory** テーブルという 1 つのテーブルを表示するアクセス許可しかないことがわかります。 
 
 10. オブジェクト エクスプローラーで、**[SalesLT.ProductCategory]** を右クリックし、**[上位 1000 行の選択]** をクリックします。   
 

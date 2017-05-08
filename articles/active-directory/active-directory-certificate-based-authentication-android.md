@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/15/2017
+ms.date: 04/12/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: c4d95068b5e6472dbb809e675a47cb9eada7ca66
-ms.openlocfilehash: 112f28517196b3b656611a03ed12a40f2e049174
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 0e2bbb2a94986ca93035aa553db0f9b54af635d5
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -44,6 +44,8 @@ Office 365 US Government Defense プランと Federal プランでは、この�
 | Outlook |![○][1] |
 | Yammer |![○][1] |
 | Skype for Business |![○][1] |
+| Azure Information Protection アプリ |![○][1] |
+
 
 ### <a name="implementation-requirements"></a>実装要件
 
@@ -63,7 +65,7 @@ Azure Active Directory は、ADFS トークン (またはその他の SAML ト�
 ベスト プラクティスとして、ユーザー証明書を取得する手順で ADFS エラー ページを更新することをお勧めします。  
 詳細については、「 [AD FS サインイン ページのカスタマイズ](https://technet.microsoft.com/library/dn280950.aspx)」を参照してください。  
 
-(先進認証が有効になった) 一部の Office アプリは、要求で *prompt=login* を Azure AD に送信します。 既定では、Azure AD は、ADFS への要求でこれを *wauth=usernamepassworduri* (ADFS に U/P 認証を実行するように要求) と *wfresh=0* (ADFS に SSO 状態を無視して、新しい認証を実行するように要求) に変換します。 これらのアプリに対して証明書ベースの認証を有効にするには、既定の Azure AD の動作を変更する必要があります。 フェデレーション ドメイン設定の *PromptLoginBehavior* を '*無効*' に設定するだけです。 このタスクを実行するには、[MSOLDomainFederationSettings](https://docs.microsoft.com/en-us/powershell/msonline/v1/set-msoldomainfederationsettings) コマンドレットを使用します。
+(先進認証が有効になった) 一部の Office アプリは、要求で *prompt=login* を Azure AD に送信します。 既定では、Azure AD は、ADFS への要求でこれを *wauth=usernamepassworduri* (ADFS に U/P 認証を実行するように要求) と *wfresh=0* (ADFS に SSO 状態を無視して、新しい認証を実行するように要求) に変換します。 これらのアプリに対して証明書ベースの認証を有効にするには、既定の Azure AD の動作を変更する必要があります。 フェデレーション ドメイン設定の *PromptLoginBehavior* を '*無効*' に設定するだけです。 このタスクを実行するには、[MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) コマンドレットを使用します。
 
 `Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`
 

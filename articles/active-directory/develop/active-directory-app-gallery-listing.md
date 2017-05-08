@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/07/2017
-ms.author: mbaldwin
+ms.date: 04/27/2017
+ms.author: bryanla
 translationtype: Human Translation
 ms.sourcegitcommit: 28712a9898bf2449de53d21fd87f1ce53da71ff8
 ms.openlocfilehash: df60c4737954e79ff860601412dffa58d4dbb471
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -93,10 +94,5 @@ SAML 2.0 をサポートするすべてのアプリケーションは、 [この
 > アプリケーションのロゴ (PNG ファイル、150 x 122px、透明の背景色) を添付してください:
 > 
 > 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

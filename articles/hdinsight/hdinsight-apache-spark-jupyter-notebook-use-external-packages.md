@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: 2dd0d456d0c6b1c83a409fead63dacff26c03198
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: db2e8391bcae98b2ef0fb93fb4e4e98a287b4846
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -78,7 +78,7 @@ HDInsight 上の Apache Spark クラスターにある Jupyter Notebook を、�
    
     a. Maven リポジトリから目的のパッケージを探します。 このチュートリアルでは [spark-csv](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) を使用します。
    
-    b. リポジトリで **GroupId**、**ArtifactId**、**Version** の値を確認します。
+    b. リポジトリで **GroupId**、**ArtifactId**、**Version** の値を確認します。 収集した値が、クラスターに一致することを確認します。 この例では、Scala 2.10 と Spark 1.4.0 パッケージを使用していますが、クラスター内の適切な Scala または Spark のバージョンに対して別のバージョンを選択しなければならないことがあります。 クラスター上の Scala のバージョンを確認するには、Spark Jupyter カーネルまたは Spark 送信に対して `scala.util.Properties.versionString` を実行します。 クラスター上の Spark のバージョンを確認するには、Jupyter Notebook に対して `sc.version` を実行します。
    
     ![Jupyter Notebook で外部パッケージを使用する](./media/hdinsight-apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Jupyter Notebook で外部パッケージを使用する")
    

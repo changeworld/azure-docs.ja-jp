@@ -13,19 +13,32 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/23/2017
+ms.date: 04/21/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 92479ddca2c69f1b8630374e88cc5eda9ac8c9ef
-ms.openlocfilehash: 59b2205fcddf48cfbfb8d15e174c385482a21ec9
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 260208e7c7a08110eb3c885ef86ec4c18ff42fc9
+ms.openlocfilehash: 87486f94bee474b13680e9a90716f09399a95e16
+ms.lasthandoff: 04/23/2017
 
 
 ---
 # <a name="use-the-azure-documentdb-emulator-for-development-and-testing"></a>開発とテストでの Azure DocumentDB Emulator の使用
 
-[**Emulator をダウンロードする**](https://aka.ms/documentdb-emulator)
-
+<table>
+<tr>
+  <td><strong>バイナリ</strong></td>
+  <td>[MSI のダウンロード](https://aka.ms/documentdb-emulator)</td>
+</tr>
+<tr>
+  <td><strong>Docker</strong></td>
+  <td>[Docker Hub](https://hub.docker.com/r/microsoft/azure-documentdb-emulator/)</td>
+</tr>
+<tr>
+  <td><strong>Docker ソース</strong></td>
+  <td>[Github](https://github.com/azure/azure-documentdb-emulator-docker)</td>
+</tr>
+</table>
+  
 Azure DocumentDB Emulator では、Azure DocumentDB サービスを開発目的でエミュレートするローカル環境を利用できます。 DocumentDB Emulator を使用すると、ローカルでのアプリケーションの開発とテストが、Azure サブスクリプションを作成したりコストをかけたりせずに実施できます。 DocumentDB Emulator でのアプリケーションの動作に満足できたら、クラウドでの Azure DocumentDB アカウントの使用に切り替えることができます。
 
 最初に、Kirill Gavrylyuk が DocumentDB Emulator の使用のいろはを解説している次のビデオを視聴することをお勧めします。
@@ -34,7 +47,7 @@ Azure DocumentDB Emulator では、Azure DocumentDB サービスを開発目的�
 > 
 > 
 
-## <a name="documentdb-emulator-system-requirements"></a>DocumentDB Emulator のシステム要件
+## <a name="system-requirements"></a>システム要件
 DocumentDB Emulator のハードウェア要件とソフトウェア要件は、次のとおりです。
 
 * ソフトウェア要件
@@ -43,25 +56,64 @@ DocumentDB Emulator のハードウェア要件とソフトウェア要件は、
   *    2 GB RAM
   *    10 GB のハードディスク空き容量
 
-## <a name="installing-the-documentdb-emulator"></a>DocumentDB Emulator のインストール
+## <a name="installation"></a>インストール
 [Microsoft ダウンロード センター](https://aka.ms/documentdb-emulator)で DocumentDB Emulator をダウンロードしてインストールできます。 
 
 > [!NOTE]
 > DocumentDB Emulator をインストール、構成、実行するには、コンピューターの管理特権が必要です。
 
-## <a name="checking-for-documentdb-emulator-updates"></a>DocumentDB Emulator の更新プログラムの確認
+## <a name="running-on-docker-for-windows"></a>Docker for Windows での実行
+
+DocumentDB Emulator は、Docker for Windows 上で実行できます。 Emulator は、Docker for Oracle Linux では機能しません。
+
+[Docker for Windows](https://www.docker.com/docker-windows) をインストールした後、お気に入りのシェル (cmd.exe、PowerShell など) から次のコマンドを実行することによって、Docker Hub から Emulator イメージをプルできます。
+
+```      
+docker pull microsoft/azure-documentdb-emulator 
+```
+イメージを起動するには、次のコマンドを実行します。
+
+``` 
+md %LOCALAPPDATA%\DocumentDBEmulatorCert 2>nul
+docker run -v %LOCALAPPDATA%\DocumentDBEmulatorCert:c:\DocumentDBEmulator\DocumentDBEmulatorCert -P -t -i mominag/documentdb_emulator
+```
+
+応答は次のようになります。
+
+```
+Starting Emulator
+Emulator Endpoint: https://172.20.229.193:8081/
+Master Key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
+Exporting SSL Certificate
+You can import the SSL certificate from an administrator command prompt on the host by running:
+cd /d %LOCALAPPDATA%\DocumentDBEmulatorCert
+powershell .\importcert.ps1
+--------------------------------------------------------------------------------------------------
+Starting interactive shell
+``` 
+
+Emulator の起動後に対話型シェルを閉じると、Emulator のコンテナーがシャットダウンします。
+
+クライアントで応答からのエンドポイントとマスター_キーを使用して、SSL 証明書をホストにインポートします。 SSL 証明書をインポートするには、admin コマンド プロンプトから以下を実行します。
+
+```
+cd %LOCALAPPDATA%\DocumentDBEmulatorCert
+powershell .\importcert.ps1
+```
+
+## <a name="checking-for-updates"></a>更新プログラムの確認
 DocumentDB Emulator には Azure DocumentDB データ エクスプローラーが組み込まれており、DocumentDB に格納されたデータを表示したり、新しいコレクションを作成したりできるほか、新しい更新プログラムをダウンロードして使用できる場合に通知を受けられます。 
 
 > [!NOTE]
 > DocumentDB Emulator のあるバージョンで作成したデータは、他のバージョンを使用してアクセスできない可能性があります。 データを永続化して長期にわたって保持する必要がある場合、そのデータは DocumentDB Emulator ではなく Azure DocumentDB アカウントに格納することをお勧めします。 
 
-## <a name="how-the-documentdb-emulator-works"></a>DocumentDB Emulator の機能
-DocumentDB Emulator には、DocumentDB サービスを忠実に再現するエミュレーションが用意されています。 JSON ドキュメントの作成とクエリ、コレクションのプロビジョニングとスケーリング、ストアド プロシージャとトリガーの実行のサポートなど、Azure DocumentDB と同じ機能がサポートされています。 DocumentDB Emulator を使用してアプリケーションの開発とテストを行い、DocumentDB の接続エンドポイントの構成を&1; つ変更するだけで、世界規模で Azure にデプロイすることができます。
+## <a name="how-the-emulator-works"></a>Emulator の機能
+DocumentDB Emulator には、DocumentDB サービスを忠実に再現するエミュレーションが用意されています。 JSON ドキュメントの作成とクエリ、コレクションのプロビジョニングとスケーリング、ストアド プロシージャとトリガーの実行のサポートなど、Azure DocumentDB と同じ機能がサポートされています。 DocumentDB Emulator を使用してアプリケーションの開発とテストを行い、DocumentDB の接続エンドポイントの構成を 1 つ変更するだけで、世界規模で Azure にデプロイすることができます。
 
-Microsoft は実際の DocumentDB サービスを忠実に再現したローカル エミュレーションを作成しましたが、DocumentDB Emulator の実装は実際のサービスのそれとは異なります。 たとえば DocumentDB Emulator では、永続化用のローカル ファイル システムや接続用の HTTPS プロトコル スタックなど、標準的な OS コンポーネントが使用されます。 つまり、グローバル レプリケーション、読み取り/書き取りの&10; ミリ秒を下回る待機時間、調整可能な一貫性レベルなど、Azure インフラストラクチャを使用する一部の機能は、DocumentDB Emulator では使用できません。
+Microsoft は実際の DocumentDB サービスを忠実に再現したローカル エミュレーションを作成しましたが、DocumentDB Emulator の実装は実際のサービスのそれとは異なります。 たとえば DocumentDB Emulator では、永続化用のローカル ファイル システムや接続用の HTTPS プロトコル スタックなど、標準的な OS コンポーネントが使用されます。 つまり、グローバル レプリケーション、読み取り/書き取りの 10 ミリ秒を下回る待機時間、調整可能な一貫性レベルなど、Azure インフラストラクチャを使用する一部の機能は、DocumentDB Emulator では使用できません。
 
 
-## <a name="authenticating-requests-against-the-documentdb-emulator"></a>DocumentDB Emulator に対する要求の認証
+## <a name="authenticating-requests"></a>要求の認証
 クラウドの Azure Document と同様に、DocumentDB Emulator に対する各要求は認証される必要があります。 DocumentDB Emulator では、マスター キー認証について、単一の固定アカウントと既知の認証キーがサポートされています。 DocumentDB Emulator ではこのアカウントとキーのみが資格情報として使用できます。 次に例を示します。
 
     Account name: localhost:<port>
@@ -72,7 +124,7 @@ Microsoft は実際の DocumentDB サービスを忠実に再現したローカ�
 
 さらに、Azure DocumentDB サービスと同様に、DocumentDB Emulator では SSL 経由のセキュリティ保護された通信のみサポートされています。
 
-## <a name="start-and-initialize-the-documentdb-emulator"></a>DocumentDB Emulator の起動と初期化
+## <a name="start-and-initialize-the-emulator"></a>Emulator の起動と初期化
 
 Azure DocumentDB Emulator を起動するには、[スタート] ボタンをクリックするか、Windows キーを押します。 「**DocumentDB Emulator**」と入力して、アプリケーションの一覧からエミュレーターを選択します。 
 
@@ -84,13 +136,13 @@ Azure DocumentDB Emulator を起動するには、[スタート] ボタンをク
 
 DocumentDB Emulator は既定では `C:\Program Files\DocumentDB Emulator` ディレクトリにインストールされます。 コマンドラインを使ってエミュレーターを起動したり停止したりすることもできます。 詳細については、[コマンドライン ツールのリファレンス](#command-line)に関するセクションを参照してください。
 
-## <a name="start-the-documentdb-emulator-data-explorer"></a>DocumentDB Emulator のデータ エクスプローラーの起動
+## <a name="start-data-explorer"></a>データ エクスプローラーの起動
 
 DocumentDB Emulator が起動すると、ブラウザーで DocumentDB データ エクスプローラーが自動的に開きます。 アドレスは、[https://localhost:8081/_explorer/index.html](https://localhost:8081/_explorer/index.html) になります。 エクスプローラーを閉じた後にもう一度開きたくなった場合は、ブラウザーで URL を開くか、次に示すように Windows トレイ アイコンの DocumentDB Emulator から起動することができます。
 
 ![DocumentDB ローカル エミュレーターのデータ エクスプローラー起動ツール](./media/documentdb-nosql-local-emulator/azure-documentdb-database-local-emulator-data-explorer-launcher.png)
 
-## <a name="developing-with-the-documentdb-emulator"></a>DocumentDB Emulator を使用した開発
+## <a name="developing-with-the-emulator"></a>DocumentDB Emulator を使用した開発
 デスクトップで DocumentDB Emulator を実行している間、サポートされている [DocumentDB SDK](documentdb-sdk-dotnet.md) または [DocumentDB REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を使用して Emulator を操作できます。 DocumentDB Emulator にはデータ エクスプローラーも組み込まれており、コードを記述することなくコレクションを作成したり、ドキュメントの表示と編集を行ったりできます。 
 
     // Connect to the DocumentDB Emulator running locally
@@ -106,7 +158,7 @@ DocumentDB Emulator に接続するには、[DocumentDB Studio](https://github.c
 
 DocumentDB Emulator を使用して、既定で最大 25 個の単一パーティション コレクションまたは 1 つのパーティション分割コレクションを作成できます。 この値を変更する方法の詳細については、[PartitionCount 値の設定](#set-partitioncount)に関するトピックを参照してください。
 
-## <a name="export-the-documentdb-emulator-ssl-certificate"></a>DocumentDB Emulator SSL 証明書のエクスポート
+## <a name="export-the-ssl-certificate"></a>SSL 証明書のエクスポート
 
 .NET 言語とランタイムでは、DocumentDB ローカル エミュレーターに安全に接続するために Windows 証明書ストアが使用されます。 その他の言語では、証明書の管理と使用について独自の方法があります。 Java の場合は独自の[証明書ストア](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html)が使用され、Python の場合は[ソケット ラッパー](https://docs.python.org/2/library/ssl.html)が使用されます。
 
@@ -118,7 +170,7 @@ X.509 証明書を Java 証明書ストアにインポートするには、「[�
 
 Python SDK および Node.js SDK からエミュレーターに接続すると、SSL 検証が無効になります。
 
-## <a id="command-line"></a>DocumentDB Emulator コマンドライン ツールのリファレンス
+## <a id="command-line"></a> コマンドライン ツールのリファレンス
 インストール先では、コマンドラインを使用することで、エミュレーターの開始と停止やオプションの構成などの操作を実行できます。
 
 ### <a name="command-line-syntax"></a>コマンドライン構文
@@ -259,7 +311,7 @@ DocumentDB Emulator で使用可能なコレクションの数を変更するに
 デバッグ トレースを収集するには、管理コマンド プロンプトから次のコマンドを実行します。
 
 1. `cd /d "%ProgramFiles%\DocumentDB Emulator"`
-2. `DocumentDB.Emulator.exe /shutdown`」を参照してください。 プログラムがシャットダウンしたことをシステム トレイで確認します。シャットダウンに&1; 分かかる場合があります。 DocumentDB Emulator のユーザー インターフェイスで **[終了]** をクリックすることもできます。
+2. `DocumentDB.Emulator.exe /shutdown`」を参照してください。 プログラムがシャットダウンしたことをシステム トレイで確認します。シャットダウンに 1 分かかる場合があります。 DocumentDB Emulator のユーザー インターフェイスで **[終了]** をクリックすることもできます。
 3. `DocumentDB.Emulator.exe /starttraces`
 4. `DocumentDB.Emulator.exe`
 5. 問題を再現します。 データ エクスプローラーが動作していない場合は、エラーを捕捉するために、ブラウザーが開くまで数秒間待つだけです。

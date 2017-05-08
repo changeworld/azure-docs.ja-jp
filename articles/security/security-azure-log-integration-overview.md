@@ -12,33 +12,37 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/03/2017
+ms.date: 03/29/2017
 ms.author: TomSh
 translationtype: Human Translation
-ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
-ms.openlocfilehash: 434961f7d25195eee3310461a3a97e03ffdd8917
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 931105183156efc958d4daef50a6858ea36ea3bb
+ms.lasthandoff: 04/13/2017
 
 
 ---
 # <a name="introduction-to-microsoft-azure-log-integration"></a>Microsoft Azure ログ統合の概要
 Azure ログ統合と、その主な機能およびしくみについて紹介します。
 
-## <a name="overview"></a>Overview
-Azure でホストされるサービスとしてのプラットフォーム (PaaS) とサービスとしてのインフラストラクチャ (IaaS) によって、大量のデータがセキュリティ ログに生成されます。 このログには、ポリシー違反、内部および外部の脅威、法規制遵守に関する問題、および異常なネットワーク、ホスト、ユーザー アクティビティに関する強力な洞察、およびインテリジェンスを提供する重要な情報が含まれます。
+## <a name="overview"></a>概要
 
-Azure ログ統合は無料のソリューションで、未加工のログを、Azure リソースからオンプレミスのセキュリティ情報/イベント管理 (SIEM) システムに統合できるようにします。 Azure ログ統合では、Windows *(WAD)* 仮想マシン、Azure アクティビティ ログ、Azure Security Center の警告、および Azure リソース プロバイダーのログから Azure 診断を収集します。 この統合は、すべての資産に対してオンプレミスまたはクラウドの統合ダッシュボードを提供します。これによりセキュリティ イベントの集計、関連付け、分析を実行し、警告を生成できます。
+Azure ログ統合は無料のソリューションで、未加工のログを、Azure リソースからオンプレミスのセキュリティ情報/イベント管理 (SIEM) システムに統合できるようにします。 
+
+Azure ログ統合では、Windows イベント ビューアー チャネルからの Windows イベント、[Azure アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)、[Azure Security Center アラート](../security-center/security-center-intro.md)、および Azure リソースからの [Azure 診断ログ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)を収集します。 この統合は、SIEM ソリューションですべての資産についてのオンプレミスまたはクラウドの統合ダッシュボードを提供する助けとなります。これによりセキュリティ イベントの集計、関連付け、分析を実行し、アラートを生成できます。
+
+>[!NOTE]
+現時点でサポートされているクラウドは、Azure 商用クラウドおよび Azure Government クラウドのみです。 その他のクラウドは現時点ではサポートされていません。
 
 ![Azure ログ統合][1]
 
 ## <a name="what-logs-can-i-integrate"></a>統合できるログ
-Azure サービスでは、すべてのサービスの広範なログ記録を作成します。 これらのログは、主に次のタイプに分類されます。
+Azure サービスでは、すべてのサービスの広範なログ記録を作成します。 これらのログは、次の 3 種類のログを表しています。
 
-* **コントロール/管理ログ**は、Azure Resource Manager の CREATE、UPDATE、および DELETE 操作の可視性を提供します。 Azure アクティビティ ログは、このタイプのログです。
-* **データ プレーン ログ**は、Azure リソース使用の一環として発生するイベントの可視性を提供します。 仮想マシンの Windows イベント システム ログ、セキュリティ ログ、アプリケーション ログや、Azure Monitor によって構成される診断ログは、このタイプのログです。
-* **処理済みイベント**は、ユーザーに代わって処理された分析済みのイベント/アラートを提供します。Azure Security Center がユーザーのサブスクリプションを処理して分析し、非常に簡潔なセキュリティ アラートを提供する Azure Security Center アラートは、このタイプのログです。
+* **コントロール/管理ログ**は、[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) の CREATE、UPDATE、および DELETE 操作の可視性を提供します。 Azure アクティビティ ログは、このタイプのログです。
+* **データ プレーン ログ**は、Azure リソース使用の一環として発生するイベントの可視性を提供します。 このタイプのログの例は、Windows 仮想マシンにおける Windows イベント ビューアーの**システム**、**セキュリティ**、および**アプリケーション**の各チャンネルです。 もう 1 つの例は、Azure Monitor によって構成される診断ログです。
+* **処理済みイベント**は、ユーザーに代わって処理された分析済みのイベントとアラートを提供します。 このタイプのイベントの例は、Azure Security Center アラートです。Azure Security Center は、ユーザーのサブスクリプションを処理および分析して、ユーザーの現在のセキュリティ体制に関するアラートを提供します。
 
-現在、Azure ログ統合は、Azure アクティビティ ログ、Azure サブスクリプション内の Windows 仮想マシンからの Windows イベント ログ、Azure Security Center アラート、Azure 診断ログ、および Azure Active Directory 監査ログの統合をサポートします。
+現在のところ Azure ログ統合は、Azure アクティビティ ログ、Azure サブスクリプション内の Windows 仮想マシンからの Windows イベント ログ、Azure Security Center アラート、Azure 診断ログ、および Azure Active Directory 監査ログの統合をサポートしています。
 
 次の表では、ログのカテゴリと SIEM 統合の詳細について説明します。
 
@@ -50,20 +54,22 @@ Azure サービスでは、すべてのサービスの広範なログ記録を�
 | 診断ログ (リソース ログ) | はい | エンド ユーザーは FlexConnector JSON パーサー ファイルを作成する必要があります。 方法については ArcSight のドキュメントをご覧ください。 | ログ ソース拡張機能を作成する必要があります。 詳しくは、QRadar のドキュメントをご覧ください。 |
 | VM ログ | はい (JSON 経由ではなく転送されたイベントの場合) | はい (転送されたイベントの場合) | はい (転送されたイベントの場合) |
 
-Azure ログ統合は無料のソリューションで、Azure ログ統合バイナリに対して料金を支払う必要はありません。 ただし、ログ ファイル情報に必要な Azure Storage に関連するコストがあります。
+>[!NOTE]
+Azure ログの統合は無料のソリューションですが、ログ ファイル情報の保存によって Azure Storage のコストが発生します。
 
-Azure ログ統合に関する質問がある場合は、 [AzSIEMteam@microsoft.com](mailto:AzSIEMteam@microsoft.com)
+[Azure ログ統合に関する MSDN フォーラム](https://social.msdn.microsoft.com/Forums/office/home?forum=AzureLogIntegration)を通して、コミュニティの支援を受けることができます。 このフォーラムでは、AzLog コミュニティに、Azure ログ統合を最大限に活用する方法についての質問、回答、ヒント、およびコツによる相互サポート機能を提供しています。 さらに、Azure ログ統合チームがこのフォーラムを監視しており、可能なときにはいつでも支援を提供します。 
+
+[サポート要求](../azure-supportability/how-to-create-azure-support-request.md)を出すこともできます。 これを行うには、サポートを依頼しようとしているサービスとして **[ログ統合]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Azure ログ統合について紹介しました。 Azure ログ統合と、サポートされているログのタイプの詳細については、次をご覧ください。
 
-* [Azure ログ用の Microsoft Azure ログ統合](https://www.microsoft.com/download/details.aspx?id=53324) – Azure ログ統合の詳細情報、システム要件、およびインストール手順のダウンロード センター。
+* [Microsoft Azure ログ統合](https://www.microsoft.com/download/details.aspx?id=53324) – Azure ログ統合の詳細情報、システム要件、およびインストール手順のダウンロード センター。
 * [Azure ログ統合の使用](security-azure-log-integration-get-started.md) – このチュートリアルでは、Azure ログ統合のインストール、Azure WAD ストレージのログ、Azure アクティビティ ログ、Azure Security Center の警告、および Azure Active Directory の監査ログの統合について説明します。
-* [Integrate Diagnostics Logs (診断ログの統合)](https://blogs.msdn.microsoft.com/azuresecurity/2016/09/25/integrate-azure-logs-streamed-to-event-hubs-to-siem/) – このブログ投稿では、Azure ログ統合を使って診断ログを統合する手順が示されています
 * [パートナーの構成手順](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) – このブログ投稿では、Splunk、HP ArcSight、IBM QRadar などのパートナー ソリューションを使用できるように、Azure ログ統合を構成する方法について説明します。
 * [Activity and ASC alerts over syslog to QRadar (QRadar に syslog 経由で送られるアクティビティ アラートと ASC アラート)](https://blogs.msdn.microsoft.com/azuresecurity/2016/09/24/integrate-azure-logs-to-qradar/)– このブログ投稿では、アクティビティ アラートと Azure Security Center アラートを syslog 経由で QRadar に送信する手順が示されています
 * [Azure ログ統合のよく寄せられる質問 (FAQ)](security-azure-log-integration-faq.md) – この FAQ は、Azure ログ統合について寄せられる質問とその回答です。
-* [Azure ログ統合への Security Center の警告の統合](../security-center/security-center-integrating-alerts-with-log-integration.md) – このドキュメントでは、Azure Security Center の警告を、Azure 診断および Azure 監査ログによって収集された仮想マシンのセキュリティ イベントとともに、ログ分析または SIEM ソリューションと同期させる方法について説明します。
+* [Security Center の警告と Azure ログの統合](../security-center/security-center-integrating-alerts-with-log-integration.md) – このドキュメントでは、Azure Security Center の警告を Azure ログ統合と同期させる方法について説明しています。
 
 <!--Image references-->
 [1]: ./media/security-azure-log-integration-overview/azure-log-integration.png

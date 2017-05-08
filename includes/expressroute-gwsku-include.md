@@ -6,8 +6,3 @@ ExpressRoute の仮想ネットワーク ゲートウェイでは、次の SKU �
 * HighPerformance
 * UltraPerformance
 
-
-
-<!--HONumber=Dec16_HO1-->
-
-

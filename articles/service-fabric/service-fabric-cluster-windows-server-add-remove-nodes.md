@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 2/02/2017
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: af121309be44852ee51f34130330533adf19d586
-ms.openlocfilehash: 68474b24519a46db71fe59b5d0574cc4700efccb
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: fa59bae2b824e6b75e120ab2b61027746ee1ea78
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -36,7 +36,7 @@ ms.lasthandoff: 02/16/2017
 .\AddNode.ps1 -NodeName VM5 -NodeType NodeType0 -NodeIPAddressorFQDN 182.17.34.52 -ExistingClientConnectionEndpoint 182.17.34.50:19000 -UpgradeDomain UD1 -FaultDomain fd:/dc1/r0 -AcceptEULA
 
 ```
-新しいノードが追加されたかどうかは、[Get-ServiceFabricNode](https://docs.microsoft.com/powershell/servicefabric/vlatest/Get-ServiceFabricNode) コマンドレットを実行して確認できます。
+新しいノードが追加されたかどうかは、[Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) コマンドレットを実行して確認できます。
 
 
 ## <a name="remove-nodes-from-your-cluster"></a>クラスターからのノードの削除

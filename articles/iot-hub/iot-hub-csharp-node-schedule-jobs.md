@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/24/2017
+ms.date: 03/30/2017
 ms.author: juanpere
 translationtype: Human Translation
-ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
-ms.openlocfilehash: fd53e73d6a686581ea2b807ae66716fc36a99ad4
-ms.lasthandoff: 12/07/2016
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 659a1df454f7085b1f6e2cea3ae1e18d386a09f7
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -25,13 +25,13 @@ ms.lasthandoff: 12/07/2016
 [!INCLUDE [iot-hub-selector-schedule-jobs](../../includes/iot-hub-selector-schedule-jobs.md)]
 
 ## <a name="introduction"></a>はじめに
-Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更新するジョブのバックエンド アプリによる作成や追跡を可能にする完全に管理されたサービスです。  ジョブは次のアクションに使用できます。
+Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更新するジョブをバックエンド アプリで作成したり追跡したりできるようにする完全に管理されたサービスです。  ジョブは次のアクションに使用できます。
 
 * 必要なプロパティを更新する
 * タグを更新する
 * ダイレクト メソッドを呼び出す
 
-概念的には、ジョブはこれらのアクションのいずれかをラップし、デバイス ツイン クエリで定義される一連のデバイスに対して実行の進行状況を追跡します。  たとえば、ジョブを使用すると、バックエンド アプリは 10,000 台のデバイスに対して reboot メソッドを呼び出すことができます。これは、デバイス ツイン クエリで指定され、将来の時刻にスケジュールされます。  次に、このアプリケーションを使用して、これらの各デバイスが reboot メソッドを受信し実行する進行状況を追跡できます。
+概念的には、ジョブはこれらのアクションのいずれかをラップし、デバイス ツイン クエリで定義される一連のデバイスに対して実行の進行状況を追跡します。  たとえば、バックエンド アプリでは、ジョブを使用して、10,000 台のデバイスに対して reboot メソッドを呼び出すことができます。これは、デバイス ツイン クエリで指定され、将来の時刻にスケジュールされます。  これで、これらの各デバイスが reboot メソッドを受信し、実行する進行状況を追跡できます。
 
 これらの各機能について詳しくは、次の記事をご覧ください。
 
@@ -51,9 +51,9 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 
 このチュートリアルを完了するには、以下が必要です。
 
-* Microsoft Visual Studio 2015
-* Node.js バージョン 0.12.x 以降。 <br/>  「[Prepare your development environment (開発環境を準備する)][lnk-dev-setup]」では、このチュートリアルのために Node.js を Windows または Linux にインストールする方法が説明されています。
-* アクティブな Azure アカウント。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
+* Visual Studio 2015 または Visual Studio 2017。
+* Node.js バージョン 0.12.x 以降。 「[Prepare your development environment (開発環境を準備する)][lnk-dev-setup]」では、このチュートリアルのために Node.js を Windows または Linux にインストールする方法が説明されています。
+* アクティブな Azure アカウント。 アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
@@ -66,21 +66,26 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 
     ![New Visual C# Windows Classic Desktop project][img-createapp]
 
-2. ソリューション エクスプローラーで **ScheduleJob** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
-3. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**microsoft.azure.devices** を検索します。**[インストール]** を選択して **Microsoft.Azure.Devices** パッケージをインストールし、使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT service SDK][lnk-nuget-service-sdk] NuGet パッケージへの参照とその依存関係が追加されます。
+1. ソリューション エクスプローラーで **ScheduleJob** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
+1. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**microsoft.azure.devices** を検索します。**[インストール]** を選択して **Microsoft.Azure.Devices** パッケージをインストールし、使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT service SDK][lnk-nuget-service-sdk] NuGet パッケージへの参照とその依存関係が追加されます。
 
     ![NuGet Package Manager window][img-servicenuget]
-4. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
+1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
    
         using Microsoft.Azure.Devices;
+        using Microsoft.Azure.Devices.Shared;
+
+1. 既定のステートメント内に存在しない場合は、次の `using` ステートメントを追加します。
+
+        using System.Threading.Tasks;
         
-5. **Program** クラスに次のフィールドを追加します。 プレースホルダーは、前のセクションで作成したハブの IoT Hub 接続文字列に置き換えてください。
+1. **Program** クラスに次のフィールドを追加します。 プレースホルダーは、前のセクションで作成したハブの IoT Hub 接続文字列に置き換えてください。
    
         static string connString = "{iot hub connection string}";
         static ServiceClient client;
         static JobClient jobClient;
         
-6. **Program** クラスに次のメソッドを追加します。
+1. **Program** クラスに次のメソッドを追加します。
    
         public static async Task MonitorJob(string jobId)
         {
@@ -93,7 +98,7 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
             } while ((result.Status != JobStatus.Completed) && (result.Status != JobStatus.Failed));
         }
                 
-7. **Program** クラスに次のメソッドを追加します。
+1. **Program** クラスに次のメソッドを追加します。
 
         public static async Task StartMethodJob(string jobId)
         {
@@ -108,7 +113,7 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
             Console.WriteLine("Started Method Job");
         }
 
-8. **Program** クラスに次のメソッドを追加します。
+1. **Program** クラスに次のメソッドを追加します。
 
         public static async Task StartTwinUpdateJob(string jobId)
         {
@@ -127,7 +132,7 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
         }
  
 
-9. 最後に、 **Main** メソッドに次の行を追加します。
+1. 最後に、 **Main** メソッドに次の行を追加します。
    
         jobClient = JobClient.CreateFromConnectionString(connString);
 
@@ -144,8 +149,8 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
         MonitorJob(twinUpdateJobId).Wait();
         Console.WriteLine("Press ENTER to exit.");
         Console.ReadLine();
-                   
-10. ソリューションをビルドします。
+
+1. ソリューション エクスプ ローラーで、**[スタートアップ プロジェクトの設定...]** を開き、**ScheduleJob** プロジェクトの **[アクション]** が **[開始]** になっていることを確認します。 ソリューションをビルドします。
 
 ## <a name="create-a-simulated-device-app"></a>シミュレート対象デバイス アプリの作成
 このセクションでは、クラウドで呼び出されたダイレクト メソッドに応答する Node.js コンソール アプリを作成します。このアプリによってシミュレートされたデバイスの再起動が開始され、報告されるプロパティを使用してデバイスと最後の再起動時間をデバイス ツインのクエリで識別できるようになります。
@@ -155,13 +160,13 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
     ```
     npm init
     ```
-2. コマンド プロンプトで、**simDevice** フォルダーに移動し、次のコマンドを実行して、**azure-iot-device** Device SDK パッケージと **azure-iot-device-mqtt** パッケージをインストールします。
+1. コマンド プロンプトで、**simDevice** フォルダーに移動し、次のコマンドを実行して、**azure-iot-device** パッケージと **azure-iot-device-mqtt** パッケージをインストールします。
    
     ```
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
-3. テキスト エディターを使用して、**simDevice** フォルダーに新しい **simDevice.js** ファイルを作成します。
-4. **simDevice.js** ファイルの先頭に、次の 'require' ステートメントを追加します。
+1. テキスト エディターを使用して、**simDevice** フォルダーに新しい **simDevice.js** ファイルを作成します。
+1. **simDevice.js** ファイルの先頭に、次の 'require' ステートメントを追加します。
    
     ```
     'use strict';
@@ -169,13 +174,13 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
-5. **connectionString** 変数を追加し、それを使用して **Client** インスタンスを作成します。  
+1. **connectionString** 変数を追加し、それを使用して **Client** インスタンスを作成します。 プレース ホルダーをセットアップに適切な値に置き換えるのを忘れないようにします。
    
     ```
     var connectionString = 'HostName={youriothostname};DeviceId={yourdeviceid};SharedAccessKey={yourdevicekey}';
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
-6. **lockDoor** メソッドを処理する次の関数を追加します。
+1. **lockDoor** メソッドを処理する次の関数を追加します。
    
     ```
     var onLockDoor = function(request, response) {
@@ -192,7 +197,7 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
         console.log('Locking Door!');
     };
     ```
-7. **lockDoor** メソッドのハンドラーを登録する次のコードを追加します。
+1. **lockDoor** メソッドのハンドラーを登録する次のコードを追加します。
    
     ```
     client.open(function(err) {
@@ -204,7 +209,7 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
         }
     });
     ```
-8. **simDevice.js** ファイルを保存して閉じます。
+1. **simDevice.js** ファイルを保存して閉じます。
 
 > [!NOTE]
 > わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。 運用環境のコードでは、[一時的な障害処理][lnk-transient-faults]に関する MSDN の記事で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
@@ -219,22 +224,23 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
     ```
     node simDevice.js
     ```
-2. C# コンソール アプリ **ScheduleJob** を実行します。**ScheduleJob** プロジェクトを右クリックし、**[デバッグ]**、**[新しいインスタンスを開始]** を選択します。
+1. C# コンソール アプリ **ScheduleJob** を実行します。**ScheduleJob** プロジェクトを右クリックし、**[デバッグ]**、**[新しいインスタンスを開始]** の順に選択します。
 
-3. デバイスとバックエンド アプリの両方からの出力が表示されます。
+1. デバイスとバックエンド アプリの両方からの出力が表示されます。
+
+    ![アプリを実行して、ジョブをスケジュールします。][img-schedulejobs]
 
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、ジョブを使用して、デバイスへのダイレクト メソッドと、デバイス ツインのプロパティの更新をスケジュールしました。
 
-ファームウェアのリモートでのワイヤレス更新などの IoT Hub による他のデバイス管理パターンを確認するには、次の記事を参照してください。
-
-[チュートリアル: ファームウェアを更新する方法][lnk-fwupdate]
+IoT Hub およびリモートによるファームウェアのワイヤレス更新などの他のデバイス管理パターンを確認するには、「[チュートリアル: ファームウェアを更新する方法][lnk-fwupdate]」を参照してください。
 
 引き続き IoT Hub の使用方法を確認するには、[IoT Gateway SDK の使用][lnk-gateway-SDK]に関する記事を参照してください。
 
 <!-- images -->
 [img-servicenuget]: media/iot-hub-csharp-node-schedule-jobs/servicesdknuget.png
 [img-createapp]: media/iot-hub-csharp-node-schedule-jobs/createnetapp.png
+[img-schedulejobs]: media/iot-hub-csharp-node-schedule-jobs/schedulejobs.png
 
 [lnk-get-started-twin]: iot-hub-node-node-twin-getstarted.md
 [lnk-twin-props]: iot-hub-node-node-twin-how-to-configure.md

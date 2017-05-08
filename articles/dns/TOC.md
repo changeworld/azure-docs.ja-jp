@@ -1,6 +1,8 @@
 # 概要
 ## [Azure DNS とは](dns-overview.md)
 ## [DNS ゾーンとレコード](dns-zones-records.md)
+## [Azure DNS による DNS 委任](dns-domain-delegation.md)
+## [DNS に関する FAQ](dns-faq.md)
 
 # 作業の開始
 
@@ -10,7 +12,7 @@
 ### [Azure CLI 1.0](dns-getstarted-cli-nodejs.md)
 ### [Azure CLI 2.0](dns-getstarted-cli.md)
 
-## [Azure DNS にドメインを委任する](dns-domain-delegation.md)
+## [Azure DNS にドメインを委任する](dns-delegate-domain-azure-dns.md)
 ## [Web アプリのカスタム DNS レコードの作成](dns-web-sites-custom-domain.md)
 
 # 方法
@@ -37,7 +39,7 @@
 ### [トラブルシューティング ガイド](dns-troubleshoot.md)
 
 # リファレンス
-## [PowerShell](/powershell/resourcemanager/azurerm.dns/v2.3.0/azurerm.dns)
+## [PowerShell](/powershell/module/azurerm.dns)
 ## [Azure CLI](/cli/azure/network/dns)
 ## [.NET](/dotnet/api/microsoft.azure.management.dns.models)
 ## [Java](/java/api/com.microsoft.azure.management.dns)
@@ -59,3 +61,4 @@
 ## [料金](https://azure.microsoft.com/pricing/details/dns/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [ネットワークのブログ](http://azure.microsoft.com/blog/topics/networking)
+## [機能に関する要求](https://feedback.azure.com/forums/217313-networking/category/77466-domain-name-service-dns-traffic-manager)

@@ -17,9 +17,9 @@ ms.workload: sqldb-migrate
 ms.date: 02/08/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: 272b5eade0a80b1f46af4e4df1c7801d86fee175
-ms.lasthandoff: 04/10/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 9fb1d12f5895e27929b2698edbf8c207aa2ee377
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -34,7 +34,7 @@ ms.lasthandoff: 04/10/2017
 
 ## <a name="method-1-migration-with-downtime-during-the-migration"></a>方法 1: 移行中にダウンタイムを伴う移行
 
- ある程度のダウンタイムが許容される場合、または将来の移行に備えて運用データベースの移行をテストする場合には、この方法を使用してください。
+ ある程度のダウンタイムが許容される場合、または将来の移行に備えて運用データベースの移行をテストする場合には、この方法を使用してください。 チュートリアルについては、[SQL Server データベースを移行する](sql-database-migrate-your-sql-server-database.md)を参照してください。
 
 次の一覧は、この方法を使用した SQL Server データベース移行の一般的なワークフローを示します。
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 04/10/2017
 3. トランザクション上の一貫性が維持された、移行されるソース データベースのコピーを作成し、ソース データベースにそれ以上変更が行われないようにします (または、移行が完了した後に、このような変更を手動で適用することもできます)。 クライアント接続を無効にしたり、 [データベース スナップショット](https://msdn.microsoft.com/library/ms175876.aspx)を作成したりするなど、データベースはさまざまな方法で停止できます。
 4. Transact-SQL スクリプトをデプロイして、データベースのコピーに修正を適用します。
 5. データベースのコピーをローカル ドライブの .BACPAC ファイルに[エクスポート](sql-database-export.md)します。
-6. 任意の BACPAC インポート ツールを使用して、.BACPAC ファイルを新しい Azure SQL データベースとして[インポート](sql-database-import-sqlpackage.md)します。最適なパフォーマンスを得るには、SQLPackage.exe の使用をお勧めします。
+6. 任意の BACPAC インポート ツールを使用して、.BACPAC ファイルを新しい Azure SQL データベースとして[インポート](sql-database-import.md)します。最適なパフォーマンスを得るには、SQLPackage.exe の使用をお勧めします。
 
 ### <a name="optimizing-data-transfer-performance-during-migration"></a>移行中のデータ転送パフォーマンスの最適化 
 

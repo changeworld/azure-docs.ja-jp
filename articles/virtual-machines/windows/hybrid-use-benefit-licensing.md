@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 3/10/2017
+ms.date: 4/10/2017
 ms.author: georgem
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 76459acd75cc09a315b0dad219990a830a6ad111
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: 04f5fab5a27a28a0881d59b93451f4c3615692b4
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -32,30 +32,31 @@ ms.lasthandoff: 03/31/2017
 ## <a name="ways-to-use-azure-hybrid-use-benefit"></a>Azure Hybrid Use Benefit の使用方法
 Windows VM を Azure Hybrid Use Benefit でデプロイする方法はいくつかあります。
 
-1. エンタープライズ契約サブスクリプションをご利用の場合は、Azure Hybrid Use Benefit で事前構成済みの[特定の Marketplace イメージから VM をデプロイ](#deploy-a-vm-using-the-azure-marketplace)できます。
-2. エンタープライズ契約をご利用でない場合は、[カスタム VM](#upload-a-windows-vhd) をアップロードし、[Resource Manager テンプレート](#deploy-a-vm-via-resource-manager)または [Azure PowerShell](#detailed-powershell-deployment-walkthrough) を使ってデプロイできます。
+1. Azure Hybrid Use Benefit (Windows Server 2016、Windows Server 2012R2、Windows Server 2012、および Windows Server 2008SP1) で事前構成された[特定の Marketplace イメージ](#deploy-a-vm-using-the-azure-marketplace)から VM をデプロイできます。
+2. [カスタム VM をアップロード](#upload-a-windows-vhd)し、[Resource Manager テンプレート](#deploy-a-vm-via-resource-manager)または [Azure PowerShell](#detailed-powershell-deployment-walkthrough) を使ってデプロイできます。
 
 ## <a name="deploy-a-vm-using-the-azure-marketplace"></a>Azure Marketplace を使って VM をデプロイする
-[エンタープライズ契約サブスクリプション](https://www.microsoft.com/Licensing/licensing-programs/enterprise.aspx)をご利用のお客様は、Azure Hybrid Use Benefit で事前構成済みのイメージを Marketplace で入手できます。 これらのイメージのデプロイは、Azure Portal、Resource Manager テンプレート、Azure PowerShell などから直接行うことができます。 Marketplace のイメージは、次のように `[HUB]` の名前で示されます。
-
-![Azure Marketplace の Azure Hybrid Use Benefit イメージ](./media/hybrid-use-benefit-licensing/ahub-images-portal.png)
+次のイメージは Azure Hybrid Use Benefit (Windows Server 2016、Windows Server 2012R2、Windows Server 2012、および Windows Server 2008SP1) で事前構成された Marketplace で使用できます。 これらのイメージのデプロイは、Azure Portal、Resource Manager テンプレート、またはAzure PowerShell から直接行うことができます。
 
 これらのイメージは、Azure Portal から直接デプロイできます。 Resource Manager テンプレートと Azure PowerShell で使う場合は、次のようにイメージの一覧を表示します。
 
 Windows Server:
 ```powershell
-Get-AzureRMVMImageSku -Location "West US" -Publisher "MicrosoftWindowsServer" `
-    -Offer "WindowsServer-HUB"
+Get-AzureRmVMImagesku -Location westus -PublisherName MicrosoftWindowsServer -Offer WindowsServer
 ```
+2016-Datacenter バージョン 2016.127.20170406 以上
+
+2012-R2-Datacenter バージョン 4.127.20170406 以上
+
+2012-Datacenter バージョン 3.127.20170406 以上
+
+2008-R2-SP1 バージョン 2.127.20170406 以上
 
 Windows クライアント：
 ```powershell
 Get-AzureRMVMImageSku -Location "West US" -Publisher "MicrosoftWindowsServer" `
     -Offer "Windows-HUB"
 ```
-
-エンタープライズ契約サブスクリプションをご利用でない場合は、カスタム VM をアップロードして Azure Hybrid Use Benefit でデプロイする手順をお読みください。
-
 
 ## <a name="upload-a-windows-vhd"></a>Windows VHD をアップロードする
 Windows VM を Azure にデプロイするには、先に Windows の基本ビルドを含む VHD を作成する必要があります。 この VHD は、Sysprep を使用して適切に準備した後、Azure にアップロードする必要があります。 [VHD 要件と Sysprep プロセスの詳細](upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)や「[Sysprep Support for Server Role (サーバー ロールに対する Sysprep サポート)](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)」を参照してください。 Sysprep を実行する前に、VM をバックアップします。 
@@ -220,4 +221,6 @@ New-AzureRmVM -ResourceGroupName $resourceGroupName -Location $location -VM $vm 
 [Azure Hybrid Use Benefit](https://azure.microsoft.com/pricing/hybrid-use-benefit/)について確認します。
 
 [Resource Manager テンプレートの使用方法](../../azure-resource-manager/resource-group-overview.md)の詳細を参照します。
+
+[Azure Hybrid Use Benefit と Azure Site Recovery によって、Azure へのアプリケーションの移行のコスト効率を高める方法](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/)の詳細を参照します。
 

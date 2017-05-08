@@ -13,17 +13,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2017
-ms.author: bradsev
+ms.date: 04/13/2017
+ms.author: gokuma
 translationtype: Human Translation
-ms.sourcegitcommit: 6c664a055e577881d4fcccd5b0ba4047d88aa9ef
-ms.openlocfilehash: 64b413451c6ce47cc3aa14322b2aa0342e1e3ffe
-ms.lasthandoff: 02/02/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 77b4f634c2a30d0cbec92d34a7f83866541d7d84
+ms.lasthandoff: 04/15/2017
 
 
 ---
 # <a name="introduction-to-the-cloud-based-data-science-virtual-machine-for-linux-and-windows"></a>Linux および Windows 用のクラウド ベースのデータ サイエンス仮想マシンの概要
-データ サイエンス仮想マシンとは、データ サイエンス専用に構築された Microsoft の Azure クラウド上にあるカスタマイズされた VM イメージです。 多くのよく使われるデータ サイエンス ツールや他のツールが事前にインストールおよび構成されており、高度な分析のためのインテリジェントなアプリケーションの構築をすぐに始めることができます。 Windows Server 2012 または OpenLogic 7.2 CentOS ベースの Linux バージョンで利用できます。 
+データ サイエンス仮想マシン (DSVM) とは、データ サイエンス専用に構築された Microsoft の Azure クラウド上にあるカスタマイズされた VM イメージです。 多くのよく使われるデータ サイエンス ツールや他のツールが事前にインストールおよび構成されており、高度な分析のためのインテリジェントなアプリケーションの構築をすぐに始めることができます。 Windows Server 2012 と Linux で使用できます。 Linux エディションの DSVM は、Ubuntu 16.04 LTS または OpenLogic 7.2 CentOS ベースの Linux ディストリビューションで提供しています。 
 
 このトピックは、データ サイエンス VM でできることを説明し、VM を使う主なシナリオの概要を示し、Windows および Linux バージョンで使用できる主な機能の一覧を示し、使い始める方法について説明します。
 
@@ -47,27 +47,77 @@ ms.lasthandoff: 02/02/2017
 ### <a name="short-term-experimentation-and-evaluation"></a>短期的な実験と評価
 データ サイエンス VM は、Microsoft R Server、SQL Server、Visual Studio ツール、Jupyter、ディープ ラーニング/ML ツールキット、およびコミュニティで人気のあるセットアップ作業が最小限の新しいツールなど、ツールの学習と評価のために使用できます。 データ サイエンス VM は迅速にセットアップできるので、公開された実験の複製、デモの実行、オンライン セッションでのチュートリアルの実施、会議チュートリアルなど、他の短期的な使用シナリオに適用できます。
 
-## <a name="whats-included-in-the-data-science-vm"></a>データ サイエンス VM に含まれるもの
-データ サイエンス仮想マシンには、多くの一般的なデータ サイエンス ツールが既にインストールおよび構成されています。 また、Azure のさまざまなデータおよび分析製品を簡単に使用できるようにするツールも含まれます。 Microsoft R Server または SQL Server 2016 を使って、大規模なデータ セットに対する予測モデルを研究および構築できます。 オープン ソース コミュニティや Microsoft の他のツールのホスト、およびサンプル コードとノートブックも含まれます。 次の表は、データ サイエンス仮想マシンの Windows エディションと Linux エディションに含まれる主要なコンポーネントを列記して比較したものです。
+### <a name="deep-learning"></a>ディープ ラーニング
+データ サイエンス VM は、GPU (グラフィック処理装置) ベースのハードウェアで、ディープ ラーニング アルゴリズムを使用したトレーニング モデルに使用できます。 DSVM により、大きなモデルをトレーニングする必要がある場合や GPU の能力を活用する高速計算が必要な場合に、必要に応じて、クラウドで GPU ベースのハードウェアを使用できます。  Windows では現在、DSVM への個別のアドオンとして、[DSVM のディープ ラーニング ツールキット](http://aka.ms/dsvm/deeplearning)を提供しています。 このアドオンにより、VM インスタンスの作成中に、ディープ ラーニング アルゴリズムの GPU ドライバー、フレームワーク、および、 GPU バージョンが自動的にインストールされます。 Linux では、GPU のディープ ラーニングは [Linux (Ubuntu) エディション用のデータ サイエンス仮想マシン](http://aka.ms/dsvm/ubuntu)でのみ有効です。 データ サイエンス VM の Ubuntu エディションは GPU ベースでない Azure 仮想マシンに展開できます。その場合、すべてのディープ ラーニング フレームワークは CPU モードにフォールバックします。 DSVM の CentOS ベースの Linux エディションには、一部のディープ ラーニング ツール (CNTK、Tensorflow、MXNet) の CPU ビルドのみが含まれていますが、GPU ドライバーやフレームワークがプレインストールされていません。 
 
-| **Windows エディション** | **Linux エディション** |
-| -- | --|
-| 人気のパッケージがプレインストールされた Microsoft R Open | 人気のパッケージがプレインストールされた Microsoft R Open |
-| MicrosoftML アルゴリズムと Microsoft R Operationalization を搭載した Microsoft R Server Developer エディション  |Microsoft R Server Developer エディション |
-| Anaconda Python 2.7、3.5 |人気のパッケージがプレインストールされた Anaconda Python 2.7、3.5|
-| 人気のパッケージがプレインストールされた JuliaPro | 人気のパッケージがプレインストールされた JuliaPro |
-| Jupyter Notebook Server (R、Python、Julia) |JupyterHub: マルチユーザー Jupyter ノートブック (R、Python、Julia、PySpark) |
-| SQL Server 2016 SP1 Developer エディション: R サービスによるスケーラブルなデータベース内分析 |PostgreSQL、SQuirreL SQL (データベース ツール)、SQL Server ドライバー、コマンド ライン (bcp、sqlcmd) |
-|-  Visual Studio Community エディション 2015 (IDE) </br> - Azure HDInsight (Hadoop)、Data Lake、SQL Server Data Tools </br> - Node.js、Python、R Tools for Visual Studio (RTVS 0.5) </br>- R Studio Desktop|IDE とエディター </br> - Eclipse と Azure ツールキット プラグイン </br> - Emacs (ESS、auctex 付属) gedit </br> - IntelliJ IDEA</br> - PyCharm</br> - Atom</br> - Visual Studio Code|
-| Power BI Desktop |-- |
-| 機械学習ツール </br> - Azure Machine Learning との統合 </br> - Microsoft Cognitive Toolkit (CNTK 2.0) ディープ ラーニング/AI </br> - Xgboost (データ サイエンス競技で人気の ML ツール) </br> - Vowpal Wabbit (高速オンライン学習製品) </br> - Rattle (ビジュアルなクイック スタート データおよび分析ツール) </br> - Mxnet (ディープ ラーニング/AI) </br> - Tensorflow  |機械学習ツール </br> - Azure Machine Learning との統合 </br> - CNTK (ディープ ラーニング/AI) </br> - Xgboost (データ サイエンス競技で人気の ML ツール) </br> - Vowpal Wabbit (高速オンライン学習製品) </br> - Rattle (ビジュアルなクイック スタート データおよび分析ツール) </br> - Mxnet (ディープ ラーニング/AI)|
-| Azure および Cortana Intelligence Suite のサービスにアクセスするための SDK |Azure および Cortana Intelligence Suite のサービスにアクセスするための SDK |
-| Azure およびビッグ データ リソースのデータの移動と管理のためのツール: Azure Storage エクスプローラー、CLI、PowerShell、AdlCopy (Azure Data Lake)、AzCopy、dtui (DocumentDB 用)、Microsoft データ管理ゲートウェイ |Azure およびビッグ データ リソースのデータの移動と管理のためのツール: Azure Storage エクスプローラー、CLI |
-| Git、Visual Studio Team Services プラグイン |Git |
-| GitBash/コマンド プロンプトからアクセスできる最も普及している Linux/Unix コマンドライン ユーティリティの Windows ポート |-- |
-| Weka | Weka |
-| Drill | Drill |
-| --| Spark ローカル |
+## <a name="whats-included-in-the-data-science-vm"></a>データ サイエンス VM に含まれるもの
+データ サイエンス仮想マシンには、多くの一般的なデータ サイエンスおよびディープ ラーニング ツールが既にインストールされ、構成されています。 また、Azure のさまざまなデータおよび分析製品を簡単に使用できるようにするツールも含まれます。 Microsoft R Server または SQL Server 2016 を使って、大規模なデータ セットに対する予測モデルを研究および構築できます。 オープン ソース コミュニティや Microsoft の他のツールのホスト、およびサンプル コードとノートブックも含まれます。 次の表は、データ サイエンス仮想マシンの Windows エディションと Linux エディションに含まれる主要なコンポーネントを列記して比較したものです。
+
+
+| **ツール**                                                           | **Windows エディション** | **Linux エディション** |
+| :------------------------------------------------------------------ |:-------------------:|:------------------:|
+| 人気のパッケージがプレインストールされた [Microsoft R Open](https://mran.microsoft.com/open/)   |Y                      | Y             |
+| [Microsoft R Server](https://msdn.microsoft.com/microsoft-r/) Developer エディションには次のものが含まれます。 <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-getting-started) 並列および分散ハイ パフォーマンス R フレームワーク<br />  &nbsp;&nbsp;&nbsp;&nbsp;* [MicrosoftML](https://msdn.microsoft.com/microsoft-r/microsoftml-introduction) - Microsoft の新しい最先端 ML アルゴリズム <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [R の運用化](https://msdn.microsoft.com/microsoft-r/operationalize/about)                                            |Y                      | Y <br/> (MicrosoftML はまだ使用できません)|
+| 人気のパッケージがプレインストールされた [Anaconda Python](https://www.continuum.io/) 2.7、3.5    |Y                      |Y              |
+| Julia 言語用の人気のパッケージがプレインストールされた [JuliaPro](https://juliacomputing.com/products/juliapro.html)                         |Y                      |Y              |
+| リレーショナル データベース                                                            | [SQL Server 2016 SP1](https://www.microsoft.com/sql-server/sql-server-2016) <br/> Developer エディション| [PostgreSQL](https://www.postgresql.org/) |
+| データベース ツール                                                       | * SQL Server Management Studio <br/>* SQL Server Integration Services<br/>* [bcp、sqlcmd](https://docs.microsoft.com/sql/tools/command-prompt-utility-reference-database-engine)<br /> * ODBC/JDBC ドライバー| * [SQuirreL SQL](http://squirrel-sql.sourceforge.net/) (クエリ ツール)、 <br /> * bcp、sqlcmd <br /> * ODBC/JDBC ドライバー|
+| SQL Server R サービスによるスケーラブルなデータベース内分析 | Y     |N              |
+| 次のカーネルを備えた **[Jupyter Notebook Server](http://jupyter.org/)**                                  | Y     | Y |
+|     &nbsp;&nbsp;&nbsp;&nbsp;* R | Y | Y |
+|     &nbsp;&nbsp;&nbsp;&nbsp;* Python 2.7 および 3.5 | Y | Y |
+|     &nbsp;&nbsp;&nbsp;&nbsp;* Julia | Y | Y |
+|     &nbsp;&nbsp;&nbsp;&nbsp;* PySpark | N | Y |
+|     &nbsp;&nbsp;&nbsp;&nbsp;* [Sparkmagic](https://github.com/jupyter-incubator/sparkmagic) | N | Y (Ubuntu のみ) |
+|     &nbsp;&nbsp;&nbsp;&nbsp;* SparkR     | N | Y |
+| JupyterHub (マルチ ユーザー Notebook サーバー)| N | Y |
+| **開発ツール、IDE、およびコード エディター**| | |
+| &nbsp;&nbsp;&nbsp;&nbsp;* Git プラグイン、Azure HDInsight (Hadoop)、Data Lake、SQL Server データ ツール、[Node.js](https://github.com/Microsoft/nodejstools)、[Python](http://aka.ms/ptvs)、および [R Tools for Visual Studio (RTVS)](http://microsoft.github.io/RTVS-docs/)を備えた [Visual Studio 2015 (Community Edition)](https://www.visualstudio.com/community/) | Y | N |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Visual Studio Code](https://code.visualstudio.com/) | Y | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop) | Y | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [RStudio Server](https://www.rstudio.com/products/rstudio/#Server) | N | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [PyCharm](https://www.jetbrains.com/pycharm/) | N | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Atom](https://atom.io/) | N | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Juno (Julia IDE)](http://junolab.org/)| Y | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* Vim および Emacs | Y | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* Git および GitBash | Y | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* OpenJDK | Y | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* .Net Framework | Y | N |
+| PowerBI Desktop | Y | N |
+| Azure および Cortana Intelligence Suite のサービスにアクセスするための SDK | Y | Y |
+| **データ移動および管理ツール** | | |
+| &nbsp;&nbsp;&nbsp;&nbsp;* Azure Storage Explorer | Y | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Azure CLI](https://docs.microsoft.com/cli/azure/overview) | Y | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* Azure Powershell | Y | N |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Azcopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy) | Y | N |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Adlcopy(Azure Data Lake Storage)](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob) | Y | N |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [DocDB データ移行ツール](https://docs.microsoft.com/azure/documentdb/documentdb-import-data) | Y | N |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Microsoft Data Management Gateway](https://msdn.microsoft.com/library/dn879362.aspx) : オンプレミスとクラウドの間でのデータの移動 | Y | N |
+| &nbsp;&nbsp;&nbsp;&nbsp;* Unix/Linux コマンド ライン ユーティリティ | Y | Y |
+| データ探索用 [Apache Drill](http://drill.apache.org) | Y | Y |
+| **Machine Learning ツール** |||
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) との統合 (R、Python) | Y | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Xgboost](https://github.com/dmlc/xgboost) | Y | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit) | Y | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Weka](http://www.cs.waikato.ac.nz/ml/weka/) | Y | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Rattle](http://rattle.togaware.com/) | Y | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [LightGBM](https://github.com/Microsoft/LightGBM) | N | Y (Ubuntu のみ) |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [H2O](https://www.h2o.ai/h2o/) | N | Y (Ubuntu のみ) |
+| **GPU ベースのディープ ラーニング ツール** |[DSVM 用ディープ ラーニング ツールキット](http://aka.ms/dsvm/deeplearning)の使用 |Ubuntu Edition のみ|
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Microsoft Cognitive Toolkit (CNTK)](http://cntk.ai) | Y | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Tensorflow](https://www.tensorflow.org/) | Y | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [MXNet](http://mxnet.io/) | Y | Y|
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Caffe および Caffe2](https://github.com/caffe2/caffe2) | N | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Torch](http://torch.ch/) | N | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Theano](https://github.com/Theano/Theano) | N | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Keras](https://keras.io/)| N | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [NVidia Digits](https://github.com/NVIDIA/DIGITS) | N | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [CUDA、CUDNN、Nvidia Driver](https://developer.nvidia.com/cuda-toolkit) | Y | Y |
+| **ビッグ データ プラットフォーム (Devtest のみ)**|||
+| &nbsp;&nbsp;&nbsp;&nbsp;* ローカル [Spark](http://spark.apache.org/) Standalone | N | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* ローカル [Hadoop](http://hadoop.apache.org/) (HDFS、YARN) | N | Y |
+
+
 
 ## <a name="how-to-get-started-with-the-windows-data-science-vm"></a>Windows データ サイエンス仮想マシンを使う方法
 * [このページ](https://azure.microsoft.com/marketplace/partners/microsoft-ads/standard-data-science-vm/)に移動し、緑の **[仮想マシンの作成]** ボタンを選んで、Windows 上に VM のインスタンスを作成します。
@@ -75,7 +125,9 @@ ms.lasthandoff: 02/02/2017
 * 使用できるツールを見つけて起動するには、**[Start]** (開始) メニューをクリックします。
 
 ## <a name="get-started-with-the-linux-data-science-vm"></a>Linux データ サイエンス仮想マシンを使う
-* [このページ](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/)に移動し、**[仮想マシンの作成]** ボタンを選んで、Linux (OpenLogic CentOS ベース) 上に VM のインスタンスを作成します。
+* Linux で VM のインスタンスを作成します
+  * OpenLogic CentOS ベースのエディションの場合、[このページ](http://aka.ms/dsvm/centos)に移動して、**[今すぐ入手する]** ボタンをクリックします。
+  * Ubuntu エディションの場合は、[このページ](http://aka.ms/dsvm/ubuntu)に移動し、**[今すぐ入手する]** ボタンをクリックします。
 * VM を作成するときに指定した資格情報を使って、Putty や SSH Command などの SSH クライアントから VM にサインインします。
 * シェル プロンプトで、「dsvm-more-info」と入力します。
 * グラフィカルなデスクトップの場合、[こちら](http://wiki.x2go.org/doku.php/doc:installation:x2goclient)からお使いのクライアント プラットフォーム用の X2Go クライアントをダウンロードし、Linux データ サイエンス VM のドキュメント「[Linux データ サイエンス仮想マシンのプロビジョニング](machine-learning-data-science-linux-dsvm-intro.md#installing-and-configuring-x2go-client)」の説明に従います。
@@ -83,7 +135,7 @@ ms.lasthandoff: 02/02/2017
 ## <a name="next-steps"></a>次のステップ
 ### <a name="for-the-windows-data-science-vm"></a>Windows データ サイエンス VM の場合
 * Windows バージョンで利用可能な特定のツールを実行する方法について詳しくは、「[Microsoft データ サイエンス仮想マシンのプロビジョニング](machine-learning-data-science-provision-vm.md)」をご覧ください。
-* Windows VM のデータ サイエンス プロジェクトに必要なさまざまなタスクを実行する方法について詳しくは、「[データ サイエンス仮想マシンでできる&10; のこと](machine-learning-data-science-vm-do-ten-things.md)」をご覧ください。
+* Windows VM のデータ サイエンス プロジェクトに必要なさまざまなタスクを実行する方法について詳しくは、「[データ サイエンス仮想マシンでできる 10 のこと](machine-learning-data-science-vm-do-ten-things.md)」をご覧ください。
 
 ### <a name="for-the-linux-data-science-vm"></a>Linux データ サイエンス VM の場合
 * Linux バージョンで利用可能な特定のツールを実行する方法について詳しくは、「[Linux データ サイエンス仮想マシンのプロビジョニング](machine-learning-data-science-linux-dsvm-intro.md)」をご覧ください。

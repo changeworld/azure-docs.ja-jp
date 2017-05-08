@@ -5,8 +5,3 @@ Azure を利用するのが初めてであれば、 [無料の Azure アカウ�
 
 [![Get started with Azure DevTest Labs in minutes](./media/devtest-lab-try-it-out/get-started.png)](http://go.microsoft.com/fwlink/?LinkID=627034&clcid=0x409)
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

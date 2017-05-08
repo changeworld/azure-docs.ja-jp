@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/03/2017
 ms.author: alainl
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 5649895d1ae39d9a7fa863407b5341f1cdf567ee
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: a5e84ded4e7b574a24583be507902f9537328153
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -29,10 +29,10 @@ Azure SQL Database は、数十万のデータベースをさまざまな互換�
 
 これまでの SQL のバージョンと互換性レベルの既定の設定は次のようになっています。
 
-* 100: SQL Server 2008 と Azure SQL Database V11。
-* 110: SQL Server 2012 と Azure SQL Database V11。
-* 120: SQL Server 2014 と Azure SQL Database V12。
-* 130: SQL Server 2016 と Azure SQL Database V12。
+* 100: SQL Server 2008 と Azure SQL Database。
+* 110: SQL Server 2012 と Azure SQL Database。
+* 120: SQL Server 2014 と Azure SQL Database。
+* 130: SQL Server 2016 と Azure SQL Database。
 
 > [!IMPORTANT]
 > **新しく作成された**データベースの既定の互換性レベルは 130 です。
@@ -63,11 +63,11 @@ SELECT compatibility_level
   * 列ストア インデックス付きのテーブルでの並べ替えは、バッチ モードで実行されるようになりました。
   * ウィンドウ集計は、TSQL LAG/LEAD ステートメントなどのバッチ モードで実行されるようになりました。
   * 重複しない句が複数ある列ストア テーブルでのクエリは、Batch モードで動作します。
-  * DOP =&1; または直列プランで実行されるクエリも、Batch モードで実行されます。
+  * DOP = 1 または直列プランで実行されるクエリも、Batch モードで実行されます。
 * 最後に、基数推定の機能強化は互換性レベル 120 で行われていますが、それより低い互換性レベル (100 または 110) を実行中のユーザーは、互換性レベル 130 に移行することでその機能強化を利用できるようになり、アプリケーションのクエリ パフォーマンスを向上させることができます。
 
 ## <a name="practicing-compatibility-level-130"></a>互換性レベル 130 の検証
-いくつかの新しい機能を検証するために、複数のテーブル、インデックス、およびランダム データを作成することから始めましょう。 ここで示す TSQL スクリプトの例は、SQL Server 2016 または Azure SQL Database で実行できます。 ただし、Azure SQL Database を作成するときは、最低でも P2 データベースを必ず選択してください。これは、マルチスレッド化を可能にしてそれらの機能からメリットを得るには、少なくとも&2; つのコアが必要であるためです。
+いくつかの新しい機能を検証するために、複数のテーブル、インデックス、およびランダム データを作成することから始めましょう。 ここで示す TSQL スクリプトの例は、SQL Server 2016 または Azure SQL Database で実行できます。 ただし、Azure SQL Database を作成するときは、最低でも P2 データベースを必ず選択してください。これは、マルチスレッド化を可能にしてそれらの機能からメリットを得るには、少なくとも 2 つのコアが必要であるためです。
 
 ```
 -- Create a Premium P2 Database in Azure SQL Database
@@ -151,7 +151,7 @@ SET STATISTICS XML OFF;
 ![図 1](./media/sql-database-compatibility-level-query-performance-130/figure-1.jpg)
 
 ## <a name="serial-batch-mode"></a>シリアル バッチ モード
-同様に、互換性レベル 130 に移行すると、データ行を処理するときにバッチ モード処理が可能になります。 まず、バッチ モード操作は、列ストア インデックスが存在する場合にのみ使用できます。 次に、バッチは、通常は&900; 未満の行に相当し、マルチコア CPU 用に最適化されたコード ロジックを使用するため、メモリのスループットが高くなります。そして、可能な場合は常に列ストアの圧縮データを直接利用します。 これらの条件下で、SQL Server 2016 は、1 度に 1 行ではなく 900 未満の行をまとめて処理でき、その結果、操作の全体的なオーバーヘッド コストがバッチ全体で共有され、行単位の全体的なコストが削減されます。 この共有操作と列ストアの圧縮の組合せによって、SELECT バッチ モード操作に関係する待機時間が根本的に短縮されます。 列ストアとバッチ モードの詳細については、「[列ストア インデックスの説明](https://msdn.microsoft.com/library/gg492088.aspx)」をご覧ください。
+同様に、互換性レベル 130 に移行すると、データ行を処理するときにバッチ モード処理が可能になります。 まず、バッチ モード操作は、列ストア インデックスが存在する場合にのみ使用できます。 次に、バッチは、通常は 900 未満の行に相当し、マルチコア CPU 用に最適化されたコード ロジックを使用するため、メモリのスループットが高くなります。そして、可能な場合は常に列ストアの圧縮データを直接利用します。 これらの条件下で、SQL Server 2016 は、1 度に 1 行ではなく 900 未満の行をまとめて処理でき、その結果、操作の全体的なオーバーヘッド コストがバッチ全体で共有され、行単位の全体的なコストが削減されます。 この共有操作と列ストアの圧縮の組合せによって、SELECT バッチ モード操作に関係する待機時間が根本的に短縮されます。 列ストアとバッチ モードの詳細については、「[列ストア インデックスの説明](https://msdn.microsoft.com/library/gg492088.aspx)」をご覧ください。
 
 ```
 -- Serial batch mode execution
@@ -405,7 +405,7 @@ SET STATISTICS XML OFF;
 
 実際の結果セットは 200,704 行です (ただし、すべての数値は、上のサンプル クエリを何回実行したかによって異なりますが、それよりも重要なのは、TSQL では RAND() ステートメントを使用するため、返される実際の値は実行するたびに変化するということです)。 したがって、この特定の例では、202,877 のほうが 194,284 よりも 200,704 に近いため、新しい基数推定のほうが行数の推定を的確に実行しています。 最後に、WHERE 句の述語を (たとえば ">" ではなく) 等価に変更した場合、新旧の基数推定機能による推定の差は、取得できる一致の数によってはさらに広がる可能性があります。
 
-もちろん、この例では、実際の行数との&6000; 未満の差は、状況によっては大量のデータを表すものではありません。 ここで、この差を複数のテーブルとより複雑なクエリに当てはめて考えると、推定の差が数百万行になる可能性があり、それによって間違った実行プランの選択や、不十分なメモリ許可の要求による TempDB 溢れと大量の I/O が発生するリスクが非常に高くなります。
+もちろん、この例では、実際の行数との 6000 未満の差は、状況によっては大量のデータを表すものではありません。 ここで、この差を複数のテーブルとより複雑なクエリに当てはめて考えると、推定の差が数百万行になる可能性があり、それによって間違った実行プランの選択や、不十分なメモリ許可の要求による TempDB 溢れと大量の I/O が発生するリスクが非常に高くなります。
 
 機会があれば、この比較を、ご自身の最も一般的なクエリとデータセットを使用して実際に行って、新旧の推定の差をご自身で検証してください。実際と推定の差が大きいもの、結果セットに返された実際の行数に近いものなどが混在している可能性があります。 すべては、クエリの形、Azure SQL Database の特性、データセットの性質とサイズ、およびそれらに関する統計によって決まります。 Azure SQL Database インスタンスを作成したばかりであれば、クエリ オプティマイザーは、これまでのクエリの実行によって作成された統計を再利用するのではなく、白紙の状態から知識を構築する必要があります。 このように、推定はそれぞれのサーバーとアプリケーションに非常に依存しており、同じものはほとんどないと考えることができます。 これは、常に留意する必要がある重要な点です。
 
@@ -414,7 +414,7 @@ SET STATISTICS XML OFF;
 
 1. 互換性レベル 130 に移行し、処理状態を観察します。 後退が見受けられる場合は、互換性レベルを元のレベルに戻すか、互換性レベルは 130 にしたままで基数推定のみをレガシ モードに戻します (前述のように、これだけで問題が解決する可能性があります)。
 2. 運用環境に導入する前に、運用環境と同じような負荷をかけて既存のアプリケーションを徹底的にテストし、微調整を行ってパフォーマンスを検証します。 問題が発生した場合、上記と同じように、いつでも元の互換性レベルに戻すか、基数推定をレガシ モードに戻すことができます。
-3. 最後のオプションである、これらの疑問に対応するための最新の方法は、クエリ ストアを活用することです。 それが、今日の推奨されるオプションです。 120 以下の互換レベルでは、130 で推奨されるクエリ ストアを使用したクエリ分析の支援はお勧めできません。 クエリ ストアは、最新バージョンである Azure SQL Database V12 で使用可能であり、クエリ パフォーマンスのトラブルシューティングに役立つように設計されています。 クエリ ストアは、すべてのクエリに関する詳細な履歴情報の収集と提示を行う、データベースのフライト データ レコーダーと考えてください。 これは、問題を診断して解決するための時間を短縮することで、パフォーマンスのフォレンジクスを大幅に簡略化します。 詳細については、「 [Query Store: A flight data recorder for your database](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database/)」(クエリ ストア: データベース用のフライト データ レコーダー) を参照してください。
+3. 最後のオプションである、これらの疑問に対応するための最新の方法は、クエリ ストアを活用することです。 それが、今日の推奨されるオプションです。 120 以下の互換レベルでは、130 で推奨されるクエリ ストアを使用したクエリ分析の支援はお勧めできません。 クエリ ストアは、最新バージョンである Azure SQL Database で使用可能であり、クエリ パフォーマンスのトラブルシューティングに役立つように設計されています。 クエリ ストアは、すべてのクエリに関する詳細な履歴情報の収集と提示を行う、データベースのフライト データ レコーダーと考えてください。 これは、問題を診断して解決するための時間を短縮することで、パフォーマンスのフォレンジクスを大幅に簡略化します。 詳細については、「 [Query Store: A flight data recorder for your database](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database/)」(クエリ ストア: データベース用のフライト データ レコーダー) を参照してください。
 
 大まかに言って、互換性レベル 120 以下で実行中の一連のデータベースが既に存在するときに、その一部を 130 に移行する予定であるか、既定で 130 に設定される新しいデータベースがワークロードによって自動的にプロビジョニングされる場合は、以下を検討してください。
 
@@ -432,7 +432,7 @@ Azure SQL Database を使用して、すべての SQL Server 2016 の機能強�
 * [Blog: Query Store: A flight data recorder for your database, by Borko Novakovic, June 8 2016](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database/)
 * [ALTER TABLE 互換性レベル (Transact-SQL)](https://msdn.microsoft.com/library/bb510680.aspx)
 * [ALTER DATABASE SCOPED CONFIGURATION](https://msdn.microsoft.com/library/mt629158.aspx)
-* [Compatibility Level 130 for Azure SQL Database V12](https://azure.microsoft.com/updates/compatibility-level-130-for-azure-sql-database-v12/)
+* [Azure SQL Database の互換性レベル 130](https://azure.microsoft.com/updates/compatibility-level-130-for-azure-sql-database-v12/)
 * [Optimizing Your Query Plans with the SQL Server 2014 Cardinality Estimator](https://msdn.microsoft.com/library/dn673537.aspx)
 * [列ストア インデックスの説明](https://msdn.microsoft.com/library/gg492088.aspx)
 * [Blog: Improved Query Performance with Compatibility Level 130 in Azure SQL Database, by Alain Lissoir, May 6 2016](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/05/06/improved-query-performance-with-compatibility-level-130-in-azure-sql-database/)

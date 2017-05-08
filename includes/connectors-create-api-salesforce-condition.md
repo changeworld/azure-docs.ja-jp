@@ -16,8 +16,3 @@
    ![Salesforce 条件イメージ 7](./media/connectors-create-api-salesforce/condition-7.png)  
 8. ロジック アプリを保存する。  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

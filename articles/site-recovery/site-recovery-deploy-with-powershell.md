@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: bsiva
 translationtype: Human Translation
-ms.sourcegitcommit: a084cecddc2af36ee087b2e0e63a2b18b20f07f0
-ms.openlocfilehash: d5fed9feb2292002a06c426cdd9e4e18f67bd3ec
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 51065a48c2f797b0ab764bf1b57425bd0696e2bd
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -40,7 +40,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 このシナリオの設定時に問題が発生した場合は、 [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に質問を投稿してください。
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の&2; 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。
 >
 >
 
@@ -54,10 +54,10 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 
 ### <a name="vmm-prerequisites"></a>VMM の前提条件
 * System Center 2012 R2 で実行される VMM サーバーが必要です。
-* 保護する VMM サーバーにクラウドが少なくとも&1; つ必要です。 このクラウドには以下のものが含まれている必要があります。
+* 保護する VMM サーバーにクラウドが少なくとも 1 つ必要です。 このクラウドには以下のものが含まれている必要があります。
   * 1 つ以上の VMM ホスト グループ。
-  * 各ホスト グループ内に&1; つ以上の Hyper-V ホスト サーバーまたはクラスター。
-  * ソース Hyper-V サーバー上に配置された&1; つ以上の仮想マシン。
+  * 各ホスト グループ内に 1 つ以上の Hyper-V ホスト サーバーまたはクラスター。
+  * ソース Hyper-V サーバー上に配置された 1 つ以上の仮想マシン。
 
 ### <a name="hyper-v-prerequisites"></a>Hyper-V の前提条件
 * ホスト Hyper-V サーバーは、Hyper-V ロールを持つ **Windows Server 2012** 以降か、**Microsoft Hyper-V Server 2012** が実行され、最新の更新プログラムがインストールされている必要があります。
@@ -77,9 +77,9 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 * レプリケートされた仮想マシンがフェールオーバー後に接続できる Azure ネットワーク。 フェールオーバー時にこのネットワークを選択します。 ネットワークは Azure Site Recovery サブスクリプションと同じリージョンにある必要があります。
 
 ### <a name="powershell-prerequisites"></a>PowerShell の前提条件
-Azure PowerShell を使用する準備が整っていることを確認してください。 PowerShell を使用している場合は、0.8.10 以降のバージョンにアップグレードする必要があります。 PowerShell の設定方法の詳細については、 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)に関するページを参照してください。 PowerShell を設定して構成したら、サービスで使用可能なすべてのコマンドレットを [ここ](https://msdn.microsoft.com/library/dn850420.aspx)に表示できます。
+Azure PowerShell を使用する準備が整っていることを確認してください。 PowerShell を使用している場合は、0.8.10 以降のバージョンにアップグレードする必要があります。 PowerShell の設定方法の詳細については、 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)に関するページを参照してください。 PowerShell を設定して構成したら、サービスで使用可能なすべてのコマンドレットを [ここ](/powershell/azure/overview)に表示できます。
 
-Azure PowerShell でのパラメーター値、入力、出力の一般的な処理方法など、コマンドレットの使用に役立つヒントについては、「 [Azure コマンドレットの概要](https://msdn.microsoft.com/library/azure/jj554332.aspx)」を参照してください。
+Azure PowerShell でのパラメーター値、入力、出力の一般的な処理方法など、コマンドレットの使用に役立つヒントについては、「 [Azure コマンドレットの概要](/powershell/azure/get-started-azureps)」を参照してください。
 
 ## <a name="step-1-set-the-subscription"></a>ステップ 1: サブスクリプションを設定する
 PowerShell で、次のコマンドレットを実行します。
@@ -269,7 +269,7 @@ marsagentinstaller.exe /q /nu
 操作の完了を確認するには、 [アクティビティを監視する](#monitor)の手順に従います。
 
 ## <a name="step-8-configure-network-mapping"></a>ステップ 8: ネットワーク マッピングを構成する
-ネットワーク マッピングを開始する前に、ソース VMM サーバー上の仮想マシンが VM ネットワークに接続されていることを確認してください。 さらに、1 つまたは複数の Azure 仮想ネットワークを作成します。 複数の VM ネットワークを&1; つの Azure ネットワークにマップできることに注意してください。
+ネットワーク マッピングを開始する前に、ソース VMM サーバー上の仮想マシンが VM ネットワークに接続されていることを確認してください。 さらに、1 つまたは複数の Azure 仮想ネットワークを作成します。 複数の VM ネットワークを 1 つの Azure ネットワークにマップできることに注意してください。
 
 ターゲット ネットワークに複数のサブネットがあり、そのサブネットのいずれかが、ソースの仮想マシンが配置されているサブネットと同じ名前である場合、フェールオーバー後、レプリカの仮想マシンはそのターゲット サブネットに接続することに注意してください。 ターゲットのサブネットで名前が一致するものがなければ、仮想マシンはネットワークの最初のサブネットに接続されます。
 
@@ -383,7 +383,7 @@ marsagentinstaller.exe /q /nu
         $jobIDResult = Start-AzureSiteRecoveryTestFailoverJob -RecoveryPlan $RPObject -Direction PrimaryToRecovery;
 
 
-## <a name="a-namemonitora-monitor-activity"></a><a name=monitor></a> アクティビティを監視する
+## <a name=monitor></a> アクティビティを監視する
 アクティビティを監視するには、次のコマンドを使用します。 ジョブの処理が終了するまで待機する必要があります。
 
     Do
@@ -404,5 +404,5 @@ marsagentinstaller.exe /q /nu
 
 
 ## <a name="next-steps"></a>次のステップ
-Azure Site Recovery PowerShell コマンドレットの詳細を[確認します](https://msdn.microsoft.com/library/dn850420.aspx)。 </a>」を参照してください。
+Azure Site Recovery PowerShell コマンドレットの詳細を[確認します](/powershell/azure/overview)。 </a>」を参照してください。
 

@@ -16,8 +16,3 @@
 5. 最後に、**[Authorize (承認)]** ボタンを選択します。  
    ![](./media/connectors-create-api-wunderlist/wunderlist-5.png)  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

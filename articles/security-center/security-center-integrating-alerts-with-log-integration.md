@@ -15,22 +15,22 @@ ms.workload: na
 ms.date: 03/23/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: fcd14b6b0afe08db82f2b8050beaf03ece7fd212
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: d13e5b87c446e587091551b22d80fe568d5d8093
+ms.lasthandoff: 04/07/2017
 
 
 ---
 # <a name="integrating-azure-security-center-alerts-with-azure-log-integration"></a>Azure Security Center の警告と Azure ログの統合
-セキュリティ操作およびインシデント対応チームの多くが、セキュリティ情報イベント管理 (SIEM) ソリューションを、セキュリティ警告のトリアージと調査の開始点として使用します。 Azure ログ統合により、お客様は、Security Center の警告を、Azure 診断および Azure 監査ログによって収集された仮想マシンのセキュリティ イベントと共に、ログ分析または SIEM ソリューションとほぼリアルタイムで同期させることができます。
+セキュリティ操作およびインシデント対応チームの多くが、セキュリティ情報イベント管理 (SIEM) ソリューションを、セキュリティ警告のトリアージと調査の開始点として使用します。 Azure ログ統合により、Azure Security Center の警告を SIEM ソリューションに統合することができます。
 
-Azure ログ統合は、HP ArcSight、Splunk、IBM Qradar などで動作します。
+Azure ログ統合は、現在、HP ArcSight、Splunk、および IBM QRadar をサポートしています。
 
 ## <a name="what-logs-can-i-integrate"></a>統合できるログ
 Azure では、すべてのサービスの広範なログ記録を作成します。 これらのログは、次のように分類されます。
 
-* **コントロール/管理ログ**。Azure Resource Manager の CREATE、UPDATE、および DELETE 操作の可視性を提供します。
-* **データ プレーン ログ**。Azure リソースの使用時に発生したイベントの可視性を提供します。 仮想マシンの Windows イベント ログ (セキュリティ ログとアプリケーション ログ) はその例です。
+* **コントロール/管理ログ**。Azure Resource Manager の CREATE、UPDATE、および DELETE 操作の可視性を提供します。 これらのコントロール プレーン イベントは、Azure アクティビティ ログに表示されます。
+* **データ プレーン ログ**。Azure リソースの使用時に発生したイベントの可視性を提供します。 Windows イベント ログはその一例であり、イベント ビューアーの セキュリティ チャネルからセキュリティ イベント情報を取得できます。 データ プレーン イベント (仮想マシンまたは Azure サービスによって生成) は、Azure 診断ログに表示されます。
 
 Azure ログ統合では、現在、次のログの統合をサポートしています。
 
@@ -78,15 +78,12 @@ Azure ログ統合サービスは、インストール先のマシンから利�
 
    * **c:\Users\azlog\ AzureSecurityCenterJson**
    * **c:\Users\azlog\AzureSecurityCenterJsonLD**
-6. 標準的な SIEM ファイル フォワーダー コネクタで、SIEM インスタンスにデータをパイプ処理する適切なフォルダーをポイントします。 SIEM 構成については、[SIEM 構成](https://azsiempublicdrops.blob.core.windows.net/drops/ALL.htm)に関するページをご覧ください。
-
-Azure ログ統合に関する質問がある場合は、[AzSIEMteam@microsoft.com](mailto:AzSIEMteam@microsoft.com) 宛てに電子メールを送信してください。
+6. SIEM ファイル フォワーダー コネクタを適切なフォルダーに構成します。 手順は、使用している SIEM によって異なります。
 
 ## <a name="next-steps"></a>次のステップ
-Azure 監査ログとプロパティ定義の詳細については、次をご覧ください。
+Azure アクティビティ ログとプロパティ定義の詳細については、次をご覧ください。
 
 * [リソース マネージャーの監査操作](../azure-resource-manager/resource-group-audit.md)
-* [List the management events in a subscription (サブスクリプションでの管理イベントを一覧表示する) (サブスクリプションでの管理イベントを一覧表示する)](https://msdn.microsoft.com/library/azure/dn931934.aspx) 」-- 監査ログのイベントを取得する方法です。
 
 セキュリティ センターの詳細については、次を参照してください。
 

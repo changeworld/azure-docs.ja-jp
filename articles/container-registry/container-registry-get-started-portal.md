@@ -49,12 +49,11 @@ Azure Portal を使用して、コンテナー レジストリを作成し、そ
 
     d. **[Admin user (管理者ユーザー)]** - 必要に応じて、レジストリにアクセスする管理者ユーザーを有効にします。 この設定は、レジストリの作成後に変更できます。
 
-    > [!IMPORTANT]
-    > Container Registr では、管理者ユーザー アカウントによるアクセス権の提供だけでなく、Azure Active Directory サービス プリンシパルによる認証もサポートしています。 詳細と考慮事項については、「[Authenticate with a container registry (コンテナー レジストリによる認証)](container-registry-authentication.md)」を参照してください。
-
+      > [!IMPORTANT]
+      > Container Registr では、管理者ユーザー アカウントによるアクセス権の提供だけでなく、Azure Active Directory サービス プリンシパルによる認証もサポートしています。 詳細と考慮事項については、「[Authenticate with a container registry (コンテナー レジストリによる認証)](container-registry-authentication.md)」を参照してください。
+      >
 
     e. **ストレージ アカウント** - 既定の設定を使用して[ストレージ アカウント](../storage/storage-introduction.md)を作成するか、同じ場所にある既存のストレージ アカウントを選択します。 現在、Premium Storage はサポートされていません。
-
 
 ## <a name="manage-registry-settings"></a>レジストリ設定の管理
 レジストリを作成すると、ポータルの **[Container Registries (コンテナー レジストリ)]** ブレードからレジストリ設定を検索できます。 たとえば、レジストリにログインするための設定が必要な場合や、管理者ユーザーを有効または無効にすることが必要な場合があります。

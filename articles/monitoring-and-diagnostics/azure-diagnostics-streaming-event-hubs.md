@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/28/2017
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 7e6053c8a737674f0e8d9816d3ee228c118a722e
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 97ed0ae7cf9f741155c57053bc8b34a0246d0586
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -139,7 +139,7 @@ Visual Studio には、アプリケーションと Event Hubs シンク構成を
 
 アプリケーションと Azure 診断構成をデプロイすると、直後にイベント ハブのダッシュボードにアクティビティが表示されます。 これは、選択したリスナー クライアントまたは分析ツールでホットパス データを表示できるようになったことを示します。  
 
-次の図のイベント ハブのダッシュボードでは、午後 11 時以降のある時点から、診断データがイベント ハブへ正常に送信されていることがわかります。 この時点が、更新された *.wadcfgx* ファイルを使用してアプリケーションがデプロイされ、シンクが適切に構成されたタイミングです。
+次の図の Event Hubs ダッシュボードでは、午後 11 時以降のある時点から、診断データがイベント ハブへ正常に送信されていることがわかります。 この時点が、更新された *.wadcfgx* ファイルを使用してアプリケーションがデプロイされ、シンクが適切に構成されたタイミングです。
 
 ![][0]  
 
@@ -218,7 +218,7 @@ namespace EventHubListener
         static void Main(string[] args)
         {
             string eventHubConnectionString = "Endpoint= <your connection string>”
-            string eventHubName = "<Event Hub name>";
+            string eventHubName = "<Event hub name>";
             string storageAccountName = "<Storage account name>";
             string storageAccountKey = "<Storage account key>”;
             string storageConnectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}", storageAccountName, storageAccountKey);
@@ -323,7 +323,7 @@ namespace EventHubListener
 Event Hubs の詳細については、次のリンク先を参照してください:
 
 * [Event Hubs の概要](../event-hubs/event-hubs-what-is-event-hubs.md)
-* [Event Hub を作成する](../event-hubs/event-hubs-create.md)
+* [イベント ハブの作成](../event-hubs/event-hubs-create.md)
 * [Event Hubs の FAQ](../event-hubs/event-hubs-faq.md)
 
 <!-- Images. -->

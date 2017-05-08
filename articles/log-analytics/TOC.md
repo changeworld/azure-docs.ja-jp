@@ -56,6 +56,7 @@
 ### [容量とパフォーマンス](log-analytics-capacity.md)
 ### [変更の追跡](log-analytics-change-tracking.md)
 ### [コンテナー](log-analytics-containers.md)
+### [DNS 分析](log-analytics-dns.md)
 ### [Key Vault](log-analytics-azure-key-vault.md)
 ### Logic Apps B2B メッセージ
 #### [Logic Apps B2B メッセージ ソリューション](../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json)

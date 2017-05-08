@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 5bff7fa34fd8ce14a35018dfd3c13b9ca2019f2e
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 000eaead1805ff06278b312a240aca07035e7289
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -82,6 +82,9 @@ Azure Resource Manager または[新しい Azure Portal](https://portal.azure.co
 
 ## <a name="when-i-migrate-my-resources-from-one-subscription-to-another-does-my-cleardb-mysql-database-get-migrated-as-well"></a>サブスクリプションから別のサブスクリプションにリソースを移行すると、ClearDB MySQL データベースも移行されますか。
 サブスクリプション間でリソースの移行を実行する場合、いくつかの [制限事項](app-service-web/app-service-move-resources.md) が適用されます。 ClearDB MySQL データベースは、サード パーティのサービスであるため、Azure サブスクリプションの移行時にこのデータベースは移行されません。 Azure リソースを移行する前に MySQL データベースの移行に対処していない場合、ClearDB MySQL データベースが無効化される可能性があります。 事前に手動でデータベースを移行してから、Web アプリの Azure サブスクリプションを移行してください。 
+
+## <a name="i-hit-the-spending-limit-on-my-subscription-i-removed-the-limit-and-my-app-service-is-online-however-the-database-is-not-accessible-how-do-i-re-enable-the-cleardb-database"></a>サブスクリプションで使用制限に達しました。 制限を削除し、App Service はオンラインになっていますが、データベースにアクセスできません。 ClearDB データベースを再有効化するには、どうしたらいいですか。
+データベースを再有効化するには、[ClearDB サポート](https://www.cleardb.com/developers/help/support)にお問い合わせください。 その際、Azure サブスクリプションの情報とデータベース名をサポートに提供してください。
 
 ## <a name="can-i-transfer-a-cleardb-database-from-a-credit-card-subscription-to-an-ea-subscription"></a>ClearDB データベースのサブスクリプションをクレジット カードから EA に移行できますか。
 既存の ClearDB データベースには、既存のサブスクリプションに関連付けられているクレジット カードが引き続き使われます。 EA サブスクリプションを使用するには、次の方法で新しいデータベースにデータを移行する必要があります。

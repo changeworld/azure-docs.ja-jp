@@ -15,8 +15,3 @@
 他のプラットフォームを追加する際は、手順 3. ～ 5. を繰り返します。
 
 [Azure Portal]: https://portal.azure.com/
-
-
-<!--HONumber=Dec16_HO1-->
-
-

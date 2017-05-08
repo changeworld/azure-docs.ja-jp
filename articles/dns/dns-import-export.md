@@ -14,9 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: f06bf515accd8507189ecd5f1759f14f4f06fd33
-ms.openlocfilehash: faac9909993895b3e8a27b2cbaa7b62b3e508933
-ms.lasthandoff: 01/05/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 765a30f360cf8d3f8bde08aa94b20eba0d4537c9
+ms.lasthandoff: 04/19/2017
 
 ---
 
@@ -32,6 +32,9 @@ Azure DNS では、Azure コマンドライン インターフェイス (CLI) �
 
 Azure CLI は、Azure サービスを管理するためのクロスプラットフォーム コマンド ライン ツールです。 Azure CLI は Windows、Mac、Linux のプラットフォームに対応しており、[Azure ダウンロード ページ](https://azure.microsoft.com/downloads/)から入手できます。 このクロスプラットフォームのサポートは、ゾーン ファイルのインポートおよびエクスポートで特に重要となります。それは最も一般的なネーム サーバー ソフトウェアである [BIND](https://www.isc.org/downloads/bind/) が、通常、Linux 上で実行されるからです。
 
+> [!NOTE]
+> 現在、Azure CLI には 2 つのバージョンがあります。 CLI1.0 は、Node.js に基づいており、"azure" で始まるコマンドがあります。
+> CLI2.0 は、Python に基づいており、"az" で始まるコマンドがあります。 ゾーン ファイルのインポートは両方のバージョンでサポートされていますが、このページに記載されているとおり CLI1.0 のコマンドを使用することをお勧めします。
 
 ## <a name="obtain-your-existing-dns-zone-file"></a>既存の DNS ゾーン ファイルの取得
 
@@ -41,9 +44,13 @@ Azure DNS に DNS ゾーン ファイルをインポートするには、事前�
 * DNS ゾーンが Windows DNS にホストされている場合、ゾーン ファイルは既定のフォルダー **%systemroot%\system32\dns** にあります。 各ゾーン ファイルへの完全パスは、DNS サービスの管理コンソールの **[全般]** タブにも表示されます。
 * DNS ゾーンが BIND を使用してホストされている場合、各ゾーンのゾーン ファイルの場所は、 **named.conf**という名前の BIND 構成ファイルに指定されています。
 
-**GoDaddy のゾーン ファイルを使用する**
-
-GoDaddy からダウンロードされるゾーン ファイルは標準形式と若干異なります。 これらのゾーン ファイルを Azure DNS にインポートする前に修正する必要があります。 各 DNS レコードの RDATA にある DNS 名は、完全修飾名として指定されますが、接尾辞 "." がありません。このため、このような DNS 名は他の DNS システムで相対名として解釈されます。 Azure DNS にインポートする前に、ゾーン ファイルを編集してその名前に接尾辞 "." を付加する必要があります。
+> [!NOTE]
+> GoDaddy からダウンロードされるゾーン ファイルは標準形式と若干異なります。 これらのゾーン ファイルを Azure DNS にインポートする前に修正する必要があります。
+>
+> 各 DNS レコードの RDATA にある DNS 名は、完全修飾名として指定されますが、接尾辞 "." がありません。このため、このような DNS 名は他の DNS システムで相対名として解釈されます。 Azure DNS にインポートする前に、ゾーン ファイルを編集してその名前に接尾辞 "." を付加する必要があります。
+>
+> たとえば、CNAME レコード "www 3600 IN CNAME contoso.com" は "www 3600 IN CNAME contoso.com."
+> (接尾辞 "." 付き) に変更する必要があります。
 
 ## <a name="import-a-dns-zone-file-into-azure-dns"></a>Azure DNS への DNS ゾーン ファイルのインポート
 
@@ -62,7 +69,7 @@ GoDaddy からダウンロードされるゾーン ファイルは標準形式�
 
 次に、ゾーンのインポート プロセスに関するその他の技術的詳細を説明します。
 
-* `$TTL` ディレクティブは省略可能であり、サポートされています。 `$TTL` ディレクティブを指定しなかった場合、明示的な TTL を持たないレコードは、既定の TTL である 3600 秒が設定されてインポートされます。 同じレコード セット内の&2; つのレコードで別々の TTL を指定した場合は、小さい方の値が使用されます。
+* `$TTL` ディレクティブは省略可能であり、サポートされています。 `$TTL` ディレクティブを指定しなかった場合、明示的な TTL を持たないレコードは、既定の TTL である 3600 秒が設定されてインポートされます。 同じレコード セット内の 2 つのレコードで別々の TTL を指定した場合は、小さい方の値が使用されます。
 * `$ORIGIN` ディレクティブは省略可能であり、サポートされています。 `$ORIGIN` を設定しないと、コマンドラインで指定したゾーン名 (に加えて接尾辞 ".") が既定値として使用されます。
 * `$INCLUDE` と `$GENERATE` ディレクティブはサポートされていません。
 * A、AAAA、CNAME、MX、NS、SOA、SRV、および TXT のレコード タイプはサポートされています。
@@ -110,7 +117,7 @@ azure network dns zone import [options] <resource group> <zone name> <zone file 
     azure config mode arm
     ```
 
-4. Azure DNS サービスを使用する前に、Microsoft.Network リソース プロバイダーを使用するようにご使用のサブスクリプションを登録する必要があります  (この操作は、各サブスクリプションで&1; 回だけ行うことができます)。
+4. Azure DNS サービスを使用する前に、Microsoft.Network リソース プロバイダーを使用するようにご使用のサブスクリプションを登録する必要があります  (この操作は、各サブスクリプションで 1 回だけ行うことができます)。
 
     ```azurecli
     azure provider register Microsoft.Network

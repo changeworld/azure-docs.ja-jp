@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/09/2017
+ms.date: 04/24/2017
 ms.author: jroth
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 8ac408675404fe16042ec4338a8bce37f6e00643
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 328b7cff01b485a908be65f52425ff4e81a96b53
+ms.lasthandoff: 04/27/2017
 
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-resource-manager"></a>SQL Server Agent 拡張機能 (Resource Manager) による Azure Virtual Machines での管理タスクの自動化
@@ -61,21 +61,19 @@ VM で SQL Server IaaS Agent 拡張機能を使用するための要件:
 
 **Azure PowerShell**:
 
-* [最新の Azure PowerShell コマンドをダウンロードして構成します](/powershell/azureps-cmdlets-docs)
+* [最新の Azure PowerShell コマンドをダウンロードして構成します](/powershell/azure/overview)
 
 ## <a name="installation"></a>インストール
 SQL Server IaaS Agent 拡張機能は、SQL Server 仮想マシン ギャラリー イメージのいずれかをプロビジョニングしたときに自動的にインストールされます。
 
-OS 専用の Windows Server 仮想マシンを作成する場合は、 **Set-AzureVMSqlServerExtension** PowerShell コマンドレットを使用して、拡張機能を手動でインストールできます。 たとえば、次のコマンドは、OS 専用の Windows Server VM に拡張機能をインストールし、"SQLIaaSExtension" という名前を付けます。
+SQL Server IaaS Agent 拡張機能を OS 専用の Windows Server Virtual Machine にインストールすることもできます。 これは、そのマシンに SQL Server を手動でインストールした場合のみ可能です。 **Set-AzureVMSqlServerExtension** PowerShell コマンドレットを使用して、拡張機能を手動でインストールしてください。 たとえば、次のコマンドは、OS 専用の Windows Server VM に拡張機能をインストールし、"SQLIaaSExtension" という名前を付けます。
 
     Set-AzureRmVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmname" -Name "SQLIaasExtension" -Version "1.2" -Location "East US 2"
 
-最新バージョンの SQL IaaS Agent 拡張機能に更新する場合は、拡張機能の更新後、仮想マシンを再起動する必要があります。
-
 > [!NOTE]
-> SQL Server IaaS Agent 拡張機能を Windows Server VM で手動でインストールする場合は、PowerShell コマンドを使用して、その機能を使用および管理する必要があります。 ポータルのインターフェイスは、SQL Server のギャラリー イメージに対してのみ使用できます。
-> 
-> 
+> SQL Server IaaS Agent 拡張機能を手動でインストールした場合、SQL Server 構成の設定を Azure Portal で管理できません。 このシナリオでは、すべての変更を PowerShell を使用して行う必要があります。
+
+最新バージョンの SQL IaaS Agent 拡張機能に更新する場合は、拡張機能の更新後、仮想マシンを再起動する必要があります。
 
 ## <a name="status"></a>状態
 拡張機能がインストールされていることを確認する 1 つの方法は、Azure ポータルにエージェントの状態を表示することです。 仮想マシンのブレードで **[すべての設定]** を選択し、**[拡張機能]** をクリックします。 **SQLIaaSExtension** 拡張機能が表示されます。

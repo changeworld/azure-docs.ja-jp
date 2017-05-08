@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/08/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 94f0a741be663aae9f2ec4ee221a4b2b58e390e2
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 73cd37a83ba31f428b3d0262230e4c650692a842
+ms.lasthandoff: 04/10/2017
 
 ---
 
@@ -67,9 +67,9 @@ Data Management Gateway では、安全かつ管理された方法でオンプ�
 
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
-アクティビティの定義に使用できるセクションとプロパティの完全な一覧については、 [パイプラインの作成](data-factory-create-pipelines.md) に関する記事をご覧ください。 名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。 一方、アクティビティの typeProperties セクションで使用できるプロパティは、各アクティビティの種類によって異なります。 コピー アクティビティの場合、ソースとシンクの種類によって異なります。
+アクティビティの定義に使用できるセクションとプロパティの完全な一覧については、 [パイプラインの作成](data-factory-create-pipelines.md) に関する記事をご覧ください。 名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。 一方、typeProperties セクションで使用できるプロパティは各アクティビティの種類によって異なります。 コピー アクティビティの場合、ソースとシンクの種類によって異なります。
 
-コピー アクティビティで、source の種類が **AzureSearchIndexSink** である場合は、typeProperties セクションで次のプロパティを使用できます。
+コピー アクティビティで、シンクの種類が **AzureSearchIndexSink** である場合は、typeProperties セクションで次のプロパティを使用できます。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- |
@@ -250,7 +250,7 @@ Azure Search サービスでは、バッチとしてのドキュメントの書�
 }
 ```
 
-クラウド データ ストアからAzure Search へデータをコピーする場合は、`executionLocation` プロパティが必要です。 コピー アクティビティの下にある `typeProperties` を例として、必要な変更を以下に示します。 「[クラウド データ ストア間でのデータのコピー](data-factory-data-movement-activities.md#global)」セクションで、サポートされている値および詳細を確認してください。
+クラウド データ ストアからAzure Search へデータをコピーする場合は、`executionLocation` プロパティが必要です。 たとえば、コピー アクティビティ `typeProperties` で必要となる変更は次の JSON スニペットのようになります。 「[クラウド データ ストア間でのデータのコピー](data-factory-data-movement-activities.md#global)」セクションで、サポートされている値および詳細を確認してください。
 
 ```JSON
 "typeProperties": {
@@ -266,7 +266,7 @@ Azure Search サービスでは、バッチとしてのドキュメントの書�
 
 
 ## <a name="copy-from-a-cloud-source"></a>クラウド ソースからコピー
-クラウド データ ストアからAzure Search へデータをコピーする場合は、`executionLocation` プロパティが必要です。 コピー アクティビティの下にある `typeProperties` を例として、必要な変更を以下に示します。 「[クラウド データ ストア間でのデータのコピー](data-factory-data-movement-activities.md#global)」セクションで、サポートされている値および詳細を確認してください。
+クラウド データ ストアからAzure Search へデータをコピーする場合は、`executionLocation` プロパティが必要です。 たとえば、コピー アクティビティ `typeProperties` で必要となる変更は次の JSON スニペットのようになります。 「[クラウド データ ストア間でのデータのコピー](data-factory-data-movement-activities.md#global)」セクションで、サポートされている値および詳細を確認してください。
 
 ```JSON
 "typeProperties": {

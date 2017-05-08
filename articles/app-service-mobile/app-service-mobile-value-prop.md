@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 43ad434b21fd358b8d72702445126dea5ce179cb
+ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
+ms.openlocfilehash: 8ce0a0e7b06f85090c07052056ddd67b97b2ee8b
+ms.lasthandoff: 04/29/2017
 
 
 ---
@@ -68,7 +69,7 @@ Azure App Service は、プロの開発者のための完全に管理された [
   [App Service 環境]の詳細を確認してください。
 
 ## <a name="getting-started"></a>Getting Started (概要)
-Mobile Apps の使用を開始するには、 [作業の開始] に関するチュートリアルに従ってください。  このチュートリアルでは、モバイル バックエンドと任意のクライアントを生成した後、認証、オフライン同期、およびプッシュ通知を統合する方法の基礎を取り上げます。  [作業の開始] に関するチュートリアルは、クライアント アプリケーションごとに&1; 回ずつ、複数回行うことができます。
+Mobile Apps の使用を開始するには、 [作業の開始] に関するチュートリアルに従ってください。  このチュートリアルでは、モバイル バックエンドと任意のクライアントを生成した後、認証、オフライン同期、およびプッシュ通知を統合する方法の基礎を取り上げます。  [作業の開始] に関するチュートリアルは、クライアント アプリケーションごとに 1 回ずつ、複数回行うことができます。
 
 Azure Mobile Apps の詳細については、 [学習マップ]を確認してください。
 Azure App Service プラットフォームの詳細については、 [Azure App Service]に関するページを参照してください。
@@ -82,7 +83,7 @@ Azure App Service プラットフォームの詳細については、 [Azure App
 [Migrate your Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
 [Azure App Service]: ../app-service/app-service-value-prop-what-is.md
 [作業の開始]: app-service-mobile-ios-get-started.md
-[Azure Table Storage]: ../storage/storage-getting-started-guide.md
+[Azure Table Storage]: ../storage/storage-dotnet-how-to-use-tables.md
 [DocumentDB]: ../documentdb/documentdb-get-started.md
 [認証機能]: ./app-service-mobile-auth.md
 [データ機能]: ./app-service-mobile-offline-data-sync.md
@@ -101,9 +102,4 @@ Azure App Service プラットフォームの詳細については、 [Azure App
 [ExpressRoute]: ../app-service-web/app-service-app-service-environment-network-configuration-expressroute.md
 [App Service 環境]: ../app-service-web/app-service-app-service-environment-intro.md
 [学習マップ]: https://azure.microsoft.com/en-us/documentation/learning-paths/appservice-mobileapps/
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

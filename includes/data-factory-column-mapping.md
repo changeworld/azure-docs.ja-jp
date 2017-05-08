@@ -158,8 +158,3 @@
 
 ![列マッピングのフロー - 2](./media/data-factory-data-stores-with-rectangular-tables/column-mapping-flow-2.png)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/15/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 2bca90f45e994752ddc3569635ea053f9ef1adaf
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 51ed17ab8f036f00b285232500dc9f606f2a7e2f
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -71,7 +71,7 @@ ms.lasthandoff: 03/17/2017
 }
 ```
 
-このセクションでは、スタンドアロンの Windows クラスターをセキュリティで保護するために必要な証明書に関する情報が示されています。 クラスター証明書を指定する場合は、**ClusterCredentialType** の値を _**X509**_ に設定します。 外部接続用にサーバー証明書を指定する場合は、**ClusterCredentialType** を _**X509**_ に設定します。 必須ではありませんが、これらの証明書はどちらも、正しくセキュリティで保護されたクラスターにすることをお勧めします。 これらの値を *X509* に設定する場合は、対応する証明書を指定する必要があります。または、Service Fabric が例外をスローします。 一部のシナリオでは、_ClientCertificateThumbprints_ または _ReverseProxyCertificate_ のみを指定することがあります。 これらのシナリオでは、_ClusterCredentialType_ または _ServerCredentialType_ を _X509_ に設定する必要がありません。
+このセクションでは、スタンドアロンの Windows クラスターをセキュリティで保護するために必要な証明書に関する情報が示されています。 クラスター証明書を指定する場合は、**ClusterCredentialType** の値を  _**X509**_ に設定します。 外部接続用にサーバー証明書を指定する場合は、**ClusterCredentialType** を  _**X509**_ に設定します。 必須ではありませんが、これらの証明書はどちらも、正しくセキュリティで保護されたクラスターにすることをお勧めします。 これらの値を *X509* に設定する場合は、対応する証明書を指定する必要があります。または、Service Fabric が例外をスローします。 一部のシナリオでは、_ClientCertificateThumbprints_ または _ReverseProxyCertificate_ のみを指定することがあります。 これらのシナリオでは、_ClusterCredentialType_ または _ServerCredentialType_ を _X509_ に設定する必要がありません。
 
 
 > [!NOTE]
@@ -189,7 +189,7 @@ ms.lasthandoff: 03/17/2017
 テスト目的で使用するクラスターの場合は、自己署名証明書を選択することができます。
 
 ## <a name="optional-create-a-self-signed-certificate"></a>省略可能: 自己署名証明書の作成
-正しく保護できる自己署名証明書を作成する方法の 1 つが、*C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure* ディレクトリの Service Fabric SDK フォルダーにある *CertSetup.ps1* スクリプトを使用する方法です。 このファイルを編集して、証明書のデフォルト名を変更します (*CN = ServiceFabricDevClusterCert* の値を探します)。 このスクリプトを `.\CertSetup.ps1 -Install` として実行します。
+正しく保護できる自己署名証明書を作成する方法の 1 つが、*C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure* ディレクトリの Service Fabric SDK フォルダーにある *CertSetup.ps1* スクリプトを使用する方法です。 このファイルを編集して、証明書のデフォルト名を変更します ( *CN = ServiceFabricDevClusterCert*  の値を探します)。 このスクリプトを `.\CertSetup.ps1 -Install` として実行します。
 
 次に、保護されたパスワードを含む PFX ファイルにその証明書をエクスポートします。 まず、証明書の拇印を取得します。 *[スタート]* メニューから、*[コンピューター証明書の管理]* を実行します。 **Local Computer\Personal** フォルダーに移動して、先ほど作成した証明書を探します。 その証明書をダブルクリックして開き、 [*詳細*] タブを選択して、下にスクロールして [*拇印*] を表示します。 拇印の値を次の PowerShell コマンドにコピーします。スペースは削除してください。  保護のために `String` 値を適切で安全なパスワードに変更して、PowerShell で以下を実行します。
 
@@ -271,7 +271,7 @@ $ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $Tru
 Connect-ServiceFabricCluster $ConnectArgs
 ```
 
-これでこのクラスターで動作する他の PowerShell コマンドを実行できます。 たとえば、[Get-ServiceFabricNode](/powershell/servicefabric/vlatest/get-servicefabricnode.md) を実行すると、セキュリティで保護されたこのクラスターのノードが一覧表示されます。
+これでこのクラスターで動作する他の PowerShell コマンドを実行できます。 たとえば、[Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode.md?view=azureservicefabricps) を実行すると、セキュリティで保護されたこのクラスターのノードが一覧表示されます。
 
 
 クラスターを削除するには、Service Fabric パッケージをダウンロードしたクラスターのノードに接続し、コマンド ラインを開いてパッケージ フォルダーに移動します。 そして次のコマンドを実行します。

@@ -12,11 +12,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/31/2017
+ms.date: 05/02/2017
 ms.author: dobett
 translationtype: Human Translation
 ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
 ms.openlocfilehash: 4f12a4b3ba9c1d0b7ed10cf5d766bcea60205d24
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -65,10 +66,5 @@ Azure IoT Hub は、以下を提供します。
 [devguide-pricing]: iot-hub-devguide-pricing.md
 [lnk-c2d-guidance]: iot-hub-devguide-c2d-guidance.md
 [lnk-d2c-guidance]: iot-hub-devguide-d2c-guidance.md
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

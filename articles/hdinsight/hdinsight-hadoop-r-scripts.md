@@ -17,13 +17,14 @@ ms.date: 02/28/2017
 ms.author: jgao
 ROBOTS: NOINDEX
 translationtype: Human Translation
-ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
-ms.openlocfilehash: 8b74f2e4169ac97e09da12d5ed85e0e24b50e150
-ms.lasthandoff: 12/08/2016
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 48a606b796ab87a44d8139039953da2fdb8be180
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="install-and-use-r-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに R をインストールして使用する
+
 Script Action を使用して Windows ベースの HDInsight クラスターを R でカスタマイズする方法と、HDInsight クラスターで R を使用する方法について説明します。 [HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/) サービスには、HDInsight クラスターの一部として R Server が含まれています。 これにより、R スクリプトで MapReduce と Spark を使用して、分散計算を実行することができます。 詳細については、「 [Get started using R Server on HDInsight (HDInsight で R Server を使ってみる)](hdinsight-hadoop-r-server-get-started.md)」をご覧ください。 Linux ベースのクラスターでの R の操作については、「 [HDInsight Hadoop クラスターに R をインストールして使用する (Linux)](hdinsight-hadoop-r-scripts-linux.md)」を参照してください。
 
 *Script Action*を使用し、Azure HDInsight の任意の種類のクラスター (Hadoop、Storm、HBase、Spark) に R をインストールできます。 HDInsight クラスターに R をインストールするサンプル スクリプトは、 [https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1)の読み取り専用の Azure ストレージ BLOB から入手できます。
@@ -31,7 +32,7 @@ Script Action を使用して Windows ベースの HDInsight クラスターを 
 **関連記事:**
 
 * [HDInsight Hadoop クラスターに R をインストールして使用する (Linux)](hdinsight-hadoop-r-scripts-linux.md)
-* [HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md): HDInsight クラスターの作成に関する一般情報。
+* [HDInsight で Hadoop クラスターを作成する](hdinsight-hadoop-provision-linux-clusters.md): HDInsight クラスターの作成に関する一般情報。
 * [スクリプト アクションを使用して HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]: スクリプト アクションを使用した HDInsight クラスターのカスタマイズに関する一般情報
 * [HDInsight 用の Script Action スクリプトの開発](hdinsight-hadoop-script-actions.md)
 
@@ -102,7 +103,7 @@ Azure PowerShell や HDInsight .NET SDK を使用して、HDInsight に R をイ
 
 ## <a name="see-also"></a>関連項目
 * [HDInsight Hadoop クラスターに R をインストールして使用する (Linux)](hdinsight-hadoop-r-scripts-linux.md)
-* [HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md): HDInsight クラスターの作成に関する一般情報。
+* [HDInsight で Hadoop クラスターを作成する](hdinsight-hadoop-provision-linux-clusters.md): HDInsight クラスターの作成に関する一般情報。
 * [スクリプト アクションを使用して HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]: スクリプト アクションを使用した HDInsight クラスターのカスタマイズに関する一般情報
 * [HDInsight 用の Script Action スクリプトの開発](hdinsight-hadoop-script-actions.md)
 * [HDInsight クラスターに Spark をインストールし、使用する][hdinsight-install-spark]: Spark のインストールに関する Script Action サンプル
