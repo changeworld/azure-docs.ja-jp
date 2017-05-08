@@ -1,4 +1,4 @@
----
+﻿---
 title: "HBase レプリケーションの構成 | Microsoft Docs"
 description: "負荷分散、高可用性、ダウンタイムなしの移行/HDInsight バージョンの更新、および障害復旧を実現するために HBase レプリケーションを構成する方法について説明します。"
 services: hdinsight,virtual-network
