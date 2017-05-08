@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Security Center 入門 | Microsoft Docs"
 description: "Azure Security Center の主な機能とそのしくみについて説明します。"
 services: security-center
