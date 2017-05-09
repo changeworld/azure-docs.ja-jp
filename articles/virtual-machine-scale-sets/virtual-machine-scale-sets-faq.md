@@ -16,9 +16,10 @@ ms.topic: article
 ms.date: 4/10/2017
 ms.author: negat
 ms.custom: na
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: 1c7b4c4b7675bfc33e102c9abb4f942a1dd33ad4
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/12/2017
 
 
@@ -410,7 +411,7 @@ Update-AzureRmVmss -ResourceGroupName $vmssResourceGroup -Name $vmssName -Virtua
                                 "properties": {
                                     "publisher": "Microsoft.Compute",
                                     "type": "JsonADDomainExtension",
-                                    "typeHandlerVersion": "1.0",
+                                    "typeHandlerVersion": "1.3",
                                     "settings": {
                                         "Name": "[parameters('domainName')]",
                                         "OUPath": "[variables('ouPath')]",
