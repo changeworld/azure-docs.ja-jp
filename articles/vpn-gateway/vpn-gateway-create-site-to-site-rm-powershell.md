@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/24/2017
+ms.date: 05/01/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 4ec11ffeae94b4a8e5a65566f0f0c067f45a0134
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: f485dc6a52488b44bbd0e68432d3fd2bcdb060a9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -48,7 +49,7 @@ ms.lasthandoff: 04/25/2017
 * 互換性のある VPN デバイスおよびデバイスを構成できる人員。 互換性のある VPN デバイスとデバイスの構成の詳細については、[VPN デバイスの概要](vpn-gateway-about-vpn-devices.md)に関する記事を参照してください。
 * VPN デバイスの外部接続用パブリック IPv4 アドレス。 この IP アドレスを NAT の内側に割り当てることはできません。
 * オンプレミス ネットワーク構成の IP アドレス範囲を把握していない場合は、詳細な情報を把握している担当者と協力して作業を行ってください。 この構成を作成する場合は、Azure がオンプレミスの場所にルーティングする IP アドレス範囲のプレフィックスを指定する必要があります。 オンプレミス ネットワークのサブネットと接続先の仮想ネットワーク サブネットが重複しないようにしなければなりません。
-* Azure Resource Manager PowerShell コマンドレットの最新版。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」を参照してください。
+* Azure Resource Manager PowerShell コマンドレットの最新版。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」を参照してください。
 
 ### <a name="example-values"></a>値の例
 
@@ -76,23 +77,8 @@ ConnectionName          = myGWConnection
 ```
 
 ## <a name="Login"></a>1.サブスクリプションへの接続
-リソース マネージャー コマンドレットを使用するように PowerShell モードを切り替えてください。 詳細については、「 [リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
 
-1. PowerShell コンソールを開き、アカウントに接続します。 接続については、次の例を参考にしてください。
-
-  ```powershell
-  Login-AzureRmAccount
-  ```
-2. アカウントのサブスクリプションを確認します。
-
-  ```powershell
-  Get-AzureRmSubscription
-  ```
-3. 使用するサブスクリプションを指定します。
-
-  ```powershell
-  Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
-  ```
+[!INCLUDE [vpn-gateway-ps-login](../../includes/vpn-gateway-ps-login-include.md)]
 
 ## <a name="VNet"></a>2.仮想ネットワークとゲートウェイ サブネットを作成する
 
@@ -171,19 +157,18 @@ New-AzureRmResourceGroup -Name testrg -Location 'West US'
 - ローカル ネットワーク ゲートウェイ用の IP アドレスのプレフィックスを変更するには<br>
 ローカル ネットワーク ゲートウェイのプレフィックスは変わる場合があります。 IP アドレス プレフィックスを変更する手順は、VPN ゲートウェイ接続を作成したかどうかによって異なります。 「 [ローカル ネットワーク ゲートウェイ用の IP アドレスのプレフィックスを変更するには](#modify) 」セクションを参照してください。
 
-## <a name="PublicIP"></a>4.パブリック IP アドレスの要求
+## <a name="PublicIP"></a>4.パブリック IP アドレスを要求する
 
-次に、仮想ネットワーク VPN ゲートウェイに割り当てるパブリック IP アドレスを要求します。 この IP アドレスに接続するように VPN デバイスを構成します。
+VPN ゲートウェイには、パブリック IP アドレスが必要です。 これにはまず IP アドレスのリソースを要求したうえで、仮想ネットワーク ゲートウェイの作成時にそのリソースを参照する必要があります。 IP アドレスは、VPN ゲートウェイの作成時にリソースに対して動的に割り当てられます。 VPN Gateway では現在、パブリック IP アドレスの "*動的*" 割り当てのみサポートしています。 静的パブリック IP アドレスの割り当てを要求することはできません。 もっとも、VPN ゲートウェイに割り当てられた IP アドレスが後から変わることは基本的にありません。 パブリック IP アドレスが変わるのは、ゲートウェイが削除され、再度作成されたときのみです。 VPN ゲートウェイのサイズ変更、リセット、その他の内部メンテナンス/アップグレードでは、IP アドレスは変わりません。
 
-Resource Manager デプロイメント モデルの仮想ネットワーク ゲートウェイでは、現在、動的割り当て方法を使用したパブリック IP アドレスのみをサポートしています。 ただし、これは IP アドレスが変更されるという意味ではありません。 VPN ゲートウェイの IP アドレスが変更されるのは、ゲートウェイが削除され、再度作成されたときのみです。 仮想ネットワーク ゲートウェイのパブリック IP アドレスは、VPN ゲートウェイのサイズ変更、リセット、その他の内部メンテナンス/アップグレードの際には変更されません。
-
-次の PowerShell サンプルを使用します。
+仮想ネットワークの VPN ゲートウェイに割り当てるパブリック IP アドレスを要求します。
 
 ```powershell
 $gwpip= New-AzureRmPublicIpAddress -Name gwpip -ResourceGroupName testrg -Location 'West US' -AllocationMethod Dynamic
 ```
 
 ## <a name="GatewayIPConfig"></a>5.ゲートウェイ IP アドレス指定の構成を作成する
+
 ゲートウェイの構成で、使用するサブネットとパブリック IP アドレスを定義します。 次の例を使用して、ゲートウェイの構成を作成します。
 
 ```powershell
@@ -210,7 +195,7 @@ New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 ## <a name="ConfigureVPNDevice"></a>7.VPN デバイスの構成
 
-[!INCLUDE [vpn-gateway-configure-vpn-device-rm](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
+[!INCLUDE [Configure VPN device](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
 
 PowerShell を使用して仮想ネットワーク ゲートウェイのパブリック IP アドレスを検索するには、次の例を使用します。
 
@@ -219,6 +204,7 @@ Get-AzureRmPublicIpAddress -Name GW1PublicIP -ResourceGroupName TestRG
 ```
 
 ## <a name="CreateConnection"></a>8.VPN 接続を作成する
+
 次に、仮想ネットワーク ゲートウェイと VPN デバイスの間にサイト間 VPN 接続を作成します。 サンプルの値は必ず実際の値に変更してください。 共有キーは、VPN デバイスの構成に使用したものと同じ値にする必要があります。 サイト間接続の "-ConnectionType" は *IPsec* です。
 
 1. 変数を設定します。
@@ -239,17 +225,25 @@ Get-AzureRmPublicIpAddress -Name GW1PublicIP -ResourceGroupName TestRG
 ## <a name="toverify"></a>9.VPN 接続の確認
 VPN 接続を検証する方法はいくつかあります。
 
-[!INCLUDE [vpn-gateway-verify-connection-ps-rm](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
+[!INCLUDE [Verify connection](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
-## <a name="modify"></a>ローカル ネットワーク ゲートウェイの IP アドレスのプレフィックスを変更するには
-ローカル ネットワーク ゲートウェイのプレフィックスを変更する必要がある場合は、以下の手順に従います。 2 種類の手順があります。 どちらの手順を選択するかは、既にゲートウェイ接続を作成しているかどうかによって異なります。
+## <a name="connectVM"></a>仮想マシンへの接続
 
-[!INCLUDE [vpn-gateway-modify-ip-prefix-rm](../../includes/vpn-gateway-modify-ip-prefix-rm-include.md)]
+[!INCLUDE [Connect to VM](../../includes/vpn-gateway-connect-vm-s2s-include.md)]
 
-## <a name="modifygwipaddress"></a>ローカル ネットワーク ゲートウェイの IP アドレスを変更するには
-[!INCLUDE [vpn-gateway-modify-lng-gateway-ip-rm](../../includes/vpn-gateway-modify-lng-gateway-ip-rm-include.md)]
+
+## <a name="modify"></a>ローカル ネットワーク ゲートウェイの IP アドレス プレフィックスの変更
+
+オンプレミスの場所にルーティングする IP アドレス プレフィックスが変更された場合には、ローカル ネットワーク ゲートウェイを変更できます。 2 種類の手順があります。 どちらの手順を選択するかは、既にゲートウェイ接続を作成しているかどうかによって異なります。
+
+[!INCLUDE [Modify prefixes](../../includes/vpn-gateway-modify-ip-prefix-rm-include.md)]
+
+## <a name="modifygwipaddress"></a>ローカル ネットワーク ゲートウェイのゲートウェイ IP アドレスの変更
+
+[!INCLUDE [Modify gw IP](../../includes/vpn-gateway-modify-lng-gateway-ip-rm-include.md)]
 
 ## <a name="next-steps"></a>次のステップ
+
 *  接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) に関するページを参照してください。
 * BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関する記事と [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関する記事を参照してください。
 

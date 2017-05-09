@@ -11,11 +11,13 @@ ms.devlang: na
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 12/08/2016
+ms.date: 04/26/2017
 ms.author: ashmaka
-translationtype: Human Translation
-ms.sourcegitcommit: 455c4847893175c1091ae21fa22215fd1dd10c53
-ms.openlocfilehash: 1e18f20e202c199036ff2012dcc6d415898cac7f
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a6e9e504f4ccb8fb1e0a151dcfe76339fcc8051a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -28,12 +30,12 @@ ms.openlocfilehash: 1e18f20e202c199036ff2012dcc6d415898cac7f
 > 
 > 
 
-Azure Search に検索要求を送信する際には、アプリケーションの検索ボックスに入力される実際の語句のほかにも、さまざまなパラメーターを指定できます。 これらのクエリ パラメーターを使用すると、フルテキスト検索の機能をよりきめ細かく制御できます。
+Azure Search に検索要求を送信する際には、アプリケーションの検索ボックスに入力される実際の語句のほかにも、さまざまなパラメーターを指定できます。 これらのクエリ パラメーターを使用すると、[フルテキスト検索の機能](search-lucene-query-architecture.md)をよりきめ細かく制御できます。
 
 以下の一覧で、Azure Search におけるクエリ パラメーターの一般的な使用方法について簡単に説明します。 クエリ パラメーターとその動作を網羅した説明については、[REST API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) および [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters#microsoft_azure_search_models_searchparameters#properties_summary) 向けの詳細ページを参照してください。
 
 ## <a name="types-of-queries"></a>クエリの種類
-Azure Search では、非常に強力なクエリを作成できる多くのオプションが用意されています。 主に使用するクエリの種類は、`search` と `filter` の&2; 種類です。 `search` クエリは、インデックスのすべての*検索可能*フィールドで&1; つ以上の語句を検索し、Google や Bing などの検索エンジンに期待するのと同様に機能します。 `filter` クエリは、インデックスのすべての *フィルター処理可能* フィールドでブール式を評価します。 `search` クエリとは異なり、`filter` クエリはフィールドの内容を厳密に照合します。つまり、文字列フィールドでは大文字と小文字が区別されます。
+Azure Search では、非常に強力なクエリを作成できる多くのオプションが用意されています。 主に使用するクエリの種類は、`search` と `filter` の 2 種類です。 `search` クエリは、インデックスのすべての*検索可能*フィールドで 1 つ以上の語句を検索し、Google や Bing などの検索エンジンに期待するのと同様に機能します。 `filter` クエリは、インデックスのすべての *フィルター処理可能* フィールドでブール式を評価します。 `search` クエリとは異なり、`filter` クエリはフィールドの内容を厳密に照合します。つまり、文字列フィールドでは大文字と小文字が区別されます。
 
 検索とフィルターは、一緒に使用することも、別々に使用することもできます。 一緒に使用した場合、フィルターが最初にインデックス全体に適用され、次にフィルター処理の結果に対して検索が実行されます。 フィルターはクエリのパフォーマンス向上に役立つ手法です。フィルターを使うと、検索クエリで処理が必要なドキュメントの数が減ります。
 
@@ -59,10 +61,5 @@ Azure Search では、検索結果のページングを簡単に実装できま�
 
 ## <a name="hit-highlighting"></a>検索結果の強調表示
 Azure Search では、検索クエリに一致する検索結果の特定の部分を正確に強調表示できます。これは、`highlight`、`highlightPreTag`、`highlightPostTag` の各パラメーターを使用して簡単に行えます。 一致するテキストを強調表示する*検索可能*フィールドを指定できるほか、Azure Search から返される一致テキストの先頭と末尾に追加する文字列タグを正確に指定することもできます。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

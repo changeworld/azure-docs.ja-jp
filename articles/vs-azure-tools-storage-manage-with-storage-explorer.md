@@ -14,16 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 07b62cd6f6deb0cf3ff1c806204ebc26c773a164
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: fbcd35529c5d2360f5b0c9de4d3c9c4a08a0cc8f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
-# <a name="getting-started-with-storage-explorer-preview"></a>ストレージ エクスプローラー (プレビュー) の概要
+# <a name="get-started-with-storage-explorer-preview"></a>ストレージ エクスプローラー (プレビュー) の概要
 ## <a name="overview"></a>概要
-Microsoft Azure ストレージ エクスプローラー (プレビュー) は、Windows、macOS、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。 この記事では、Azure ストレージ アカウントへの接続と管理に関するさまざまな方法を紹介します。
+Azure ストレージ エクスプローラー (プレビュー) は、Windows、macOS、Linux で Azure Storage のデータを簡単に操作できるスタンドアロン アプリです。 この記事では、Azure ストレージ アカウントへの接続と管理に関するさまざまな方法を紹介します。
 
 ![Microsoft Azure ストレージ エクスプローラー (プレビュー)][15]
 
@@ -31,13 +32,18 @@ Microsoft Azure ストレージ エクスプローラー (プレビュー) は�
 * [ストレージ エクスプローラー (プレビュー) をダウンロードしてインストールする](http://www.storageexplorer.com)
 
 ## <a name="connect-to-a-storage-account-or-service"></a>ストレージ アカウントまたはサービスに接続する
-ストレージ エクスプローラー (プレビュー) には、ストレージ アカウントへの多数の接続方法が用意されています。 たとえば、Azure サブスクリプションに関連付けられているストレージ アカウントへの接続、他の Azure サブスクリプションから共有されているストレージ アカウントおよびサービスへの接続、Azure ストレージ エミュレーターを使ったローカル ストレージへの接続と管理などです。 さらに、国内外の Azure のストレージ アカウントを使用できます。
+ストレージ エクスプローラー (プレビュー) には、ストレージ アカウントに対する接続方法がいくつか用意されています。 たとえば、次のようなことができます。
+* 自分の Azure サブスクリプションに関連付けられているストレージ アカウントに接続する。
+* 他の Azure サブスクリプションから共有されているストレージ アカウントとサービスに接続する。
+* Azure ストレージ エミュレーターを使ってローカル ストレージに接続し、そのローカル ストレージを管理する。 
 
-* [Azure サブスクリプションに接続する](#connect-to-an-azure-subscription) - Azure サブスクリプションに属するストレージ リソースを管理します。
-* [ローカル開発ストレージを操作する](#work-with-local-development-storage) - Azure ストレージ エミュレーターを使ってローカル ストレージを管理します。
-* [外部ストレージにアタッチする](#attach-or-detach-an-external-storage-account) - ストレージ アカウントの名前、キー、およびエンドポイントを使って、別の Azure サブスクリプションに属するストレージ リソースや国内の Azure クラウドにあるストレージ リソースを管理します。
-* [SAS を使ってストレージ アカウントをアタッチする](#attach-storage-account-using-sas) - SAS を使って、別の Azure サブスクリプションに属するストレージ リソースを管理します。
-* [SAS を使ってサービスをアタッチする](#attach-service-using-sas) - SAS を使って、別の Azure サブスクリプションに属する特定のストレージ サービス (BLOB コンテナー、キュー、またはテーブル) を管理します。
+さらに、国内外の Azure のストレージ アカウントを使用できます。
+
+* [Azure サブスクリプションに接続する](#connect-to-an-azure-subscription): 自分の Azure サブスクリプションに属するストレージ リソースを管理します。
+* [ローカル開発ストレージを操作する](#work-with-local-development-storage): Azure ストレージ エミュレーターを使ってローカル ストレージを管理します。
+* [外部ストレージにアタッチする](#attach-or-detach-an-external-storage-account): ストレージ アカウントの名前、キー、およびエンドポイントを使って、別の Azure サブスクリプションに属するストレージ リソースや国内の Azure クラウドにあるストレージ リソースを管理します。
+* [SAS を使ってストレージ アカウントをアタッチする](#attach-storage-account-using-sas): Shared Access Signature (SAS) を使って、別の Azure サブスクリプションに属するストレージ リソースを管理します。
+* [SAS を使ってサービスをアタッチする](#attach-service-using-sas): SAS を使って、別の Azure サブスクリプションに属する特定のストレージ サービス (BLOB コンテナー、キュー、またはテーブル) を管理します。
 
 ## <a name="connect-to-an-azure-subscription"></a>Azure サブスクリプションに接続する
 > [!NOTE]
@@ -48,80 +54,98 @@ Microsoft Azure ストレージ エクスプローラー (プレビュー) は�
 1. ストレージ エクスプローラー (プレビュー) で、 **[Azure アカウントの設定]**を選択します。
 
     ![[Azure アカウントの設定]][0]
-2. 左側のウィンドウに、ログインしている Microsoft アカウントがすべて表示されます。 別のアカウントに接続するには、 **[アカウントの追加]**を選択し、ダイアログに従って、少なくとも 1 つのアクティブな Azure サブスクリプションと関連付けられている Microsoft アカウントでサインインします。
-> [!NOTE]
->サインインを利用した国内の Azure (Black Forest Azure、Fairfax Azure、Mooncake Azure など) への接続は、現在サポートされていません。 国内の Azure ストレージ アカウントに接続する方法については、「**外部ストレージ アカウントをアタッチまたはデタッチする**」を参照してください。
 
-3. Microsoft アカウントでのサインインに成功すると、左側のウィンドウに、そのアカウントに関連付けられた Azure サブスクリプションが表示されます。 操作する Azure サブスクリプションを選択してから、**[適用]** を選択します  (**[すべてのサブスクリプション]** チェック ボックスをオンまたはオフにすることで、一覧の Azure サブスクリプションがすべて選択された状態と、1 つも選択されていない状態を切り替えることができます)。
+2. 左側のウィンドウに、サインインしている Microsoft アカウントがすべて表示されます。 別のアカウントに接続するには、**[アカウントの追加]** を選択し、表示される指示に従って、少なくとも 1 つのアクティブな Azure サブスクリプションと関連付けられている Microsoft アカウントでサインインします。
 
-    ![Select Azure subscriptions][3]
-4. 左側のウィンドウに、選択した Azure サブスクリプションに関連付けられているストレージ アカウントが表示されます。
+    >[!NOTE]
+    >特定の国のみを対象に提供している Azure への接続 (Azure ドイツ、Azure Government、Azure 中国などにサインインして接続すること) は現在、サポートされていません。 特定の国の Azure ストレージ アカウントに接続する方法については、「外部ストレージ アカウントをアタッチまたはデタッチする」を参照してください。
+
+3. Microsoft アカウントでのサインインに成功すると、左側のウィンドウに、そのアカウントに関連付けられている Azure サブスクリプションが表示されます。 操作する Azure サブスクリプションを選択してから、**[適用]** を選択します  (**[すべてのサブスクリプション]** チェック ボックスをオンまたはオフにすることで、一覧の Azure サブスクリプションがすべて選択された状態と、1 つも選択されていない状態を切り替えることができます)。
+
+    ![Select Azure subscriptions][3]  
+    左側のウィンドウに、選択した Azure サブスクリプションに関連付けられているストレージ アカウントが表示されます。
 
     ![選択された Azure サブスクリプション][4]
 
 ## <a name="connect-to-an-azure-stack-subscription"></a>Azure Stack サブスクリプションに接続する
 
-1. ストレージ エクスプローラーでは、リモートで Azure Stack サブスクリプションに接続するために VPN 接続が必要です。 Azure Stack への VPN 接続を設定する方法の詳細については、[VPN を使用した Azure Stack への接続](azure-stack/azure-stack-connect-azure-stack.md#connect-with-vpn)に関するセクションを参照してください。
+ストレージ エクスプローラーでは、リモートで Azure Stack サブスクリプションにアクセスするうえで VPN 接続が必要になります。 Azure Stack への VPN 接続を設定する方法の詳細については、[VPN を使用した Azure Stack への接続](azure-stack/azure-stack-connect-azure-stack.md#connect-with-vpn)に関するページを参照してください。
 
-2. Azure Stack POC では、Azure Stack の証明機関のルート証明書をエクスポートする必要があります。 MAS-CON01 (Azure Stack に VPN 接続された、Azure Stack のホスト コンピューターまたはローカル コンピューター) で `mmc.exe` を開きます。 **[ファイル]** で **[スナップインの追加と削除]** を選択し、**[証明書]** を追加して、**ローカル コンピューター**の**コンピューター アカウント**を管理します。
+Azure Stack の概念実証 (POC) では、Azure Stack の証明機関のルート証明書をエクスポートする必要があります。 そのためには、次の手順を実行します。
 
-   ![Azure Stack のルート証明書を mmc.exe で読み込む][25]   
+1. MAS-CON01 (Azure Stack に VPN 接続された、Azure Stack のホスト コンピューターまたはローカル コンピューター) で `mmc.exe` を開きます。 
 
-   **Console Root\Certificated (Local Computer)\Trusted Root Certification Authorities\Certificates** の直下で **AzureStackCertificationAuthority** を探します。 項目を右クリックし、**[すべてのタスク] > [エクスポート]** の順に選択します。 その後、ダイアログの指示に従い、**Base 64 でエンコードされた X.509 (.CER)** 形式の証明書をエクスポートします。 エクスポートした証明書は、次の手順で使用します。   
+2. **[ファイル]** で **[スナップインの追加と削除]** を選択し、**[証明書]** を追加して、**ローカル コンピューター**の**コンピューター アカウント**を管理します。
 
-   ![Azure Stack の証明機関のルート証明書をエクスポートする][26]   
+    ![Azure Stack のルート証明書を mmc.exe で読み込む][25]   
 
-3. ストレージ エクスプローラー (プレビュー) で、**[編集]** メニュー、**[SSL 証明書]**、**[証明書のインポート]** の順に選択します。 ファイル ピッカー ダイアログを使用して、前の手順で調べた証明書を検索し、開きます。 インポートした後、ストレージ エクスプローラーを再起動するように求められます。
+3. **Console Root\Certificated (Local Computer)\Trusted Root Certification Authorities\Certificates** の直下で **AzureStackCertificationAuthority** を探します。 
 
-   ![ストレージ エクスプローラー (プレビュー) に証明書をインポートする][27]
+4. 項目を右クリックし、**[すべてのタスク]** > **[エクスポート]** の順に選択したら、表示される手順に従って **Base-64 encoded X.509 (.CER)** で証明書をエクスポートします。  
 
-4. ストレージ エクスプローラー (プレビュー) が再起動したら、**[編集]** メニューを選択し、**[Target Azure Stack (Azure Stack を対象にする)]** が選択されていることを確認します。 選択されていない場合は、選択してからストレージ エクスプローラーを再起動し、この変更を反映させます。 この構成は、Azure Stack 環境との互換性を持たせるために必要です。
+    エクスポートした証明書は、次の手順で使用します。   
 
-   ![[Target Azure Stack (Azure Stack を対象にする)] が選択されていることを確認する][28]
+    ![Azure Stack のルート証明機関のルート証明書をエクスポートする][26]   
 
-5. 左側のバーで、**[アカウントの管理]** を選択します。 左側のウィンドウに、ログインしている Microsoft アカウントがすべて表示されます。 Azure Stack アカウントに接続するには、**[アカウントの追加]** を選択します。
+5. ストレージ エクスプローラー (プレビュー) の **[編集]** メニューで、**[SSL 証明書]**、**[証明書のインポート]** の順に選択します。 ファイル ピッカー ダイアログ ボックスを使用して、前の手順でエクスポートした証明書を検索し、開きます。  
 
-   ![Azure Stack アカウントを追加する][29]
+    インポート後は、ストレージ エクスプローラーの再起動を求めるメッセージが表示されます。
 
-6. **[新しいアカウントを追加]** ダイアログで **[Azure 環境]** 内の **[Create Custom Environment (カスタム環境の作成)]** を選択し、**[次へ]** をクリックします。
+    ![ストレージ エクスプローラー (プレビュー) に証明書をインポートする][27]
 
-7. Azure Stack のカスタム環境に必要なすべての情報を入力し、**[サインイン]** をクリックします。  少なくとも 1 つのアクティブな Azure Stack サブスクリプションと関連付けられた Azure Stack アカウントでサインインするために、**[Sign in to a Custom Cloud environment (カスタム クラウド環境にサインインする)]** ダイアログに情報を入力します。 ダイアログの各フィールドの詳細は次のとおりです。
+6. ストレージ エクスプローラー (プレビュー) が再起動したら、**[編集]** メニューを選択し、**[Target Azure Stack (Azure Stack を対象にする)]** が選択されていることを確認します。 選択されていない場合は、選択してからストレージ エクスプローラーを再起動し、この変更を反映させます。 この構成は、Azure Stack 環境との互換性を確保するために必要です。
 
-    * **[環境名]** – このフィールドはユーザーがカスタマイズできます。
-    * **[機関]** – 値は https://login.windows.net である必要があります。 Azure China (Mooncake) の場合は、https://login.chinacloudapi.cn を使用してください。
-    * **[Sign in resource id (サインイン リソース ID)]** – 次の PowerShell を実行して、値を取得します。
+    ![[Target Azure Stack (Azure Stack を対象にする)] が選択されていることを確認する][28]
 
-    クラウド管理者の場合:
+7. 左側のウィンドウで、**[アカウントの管理]** を選択します。  
+    サインインしている Microsoft アカウントがすべて表示されます。
 
-    ```powershell
-    PowerShell (Invoke-RestMethod -Uri https://adminmanagement.local.azurestack.external/metadata/endpoints?api-version=1.0 -Method Get).authentication.audiences[0]
-    ```
+8. Azure Stack アカウントに接続するには、**[アカウントの追加]** を選択します。
 
-    テナントの場合:
+    ![Azure Stack アカウントを追加する][29]
 
-    ```powershell
-    PowerShell (Invoke-RestMethod -Uri https://management.local.azurestack.external/metadata/endpoints?api-version=1.0 -Method Get).authentication.audiences[0]
-    ```
+9. **[新しいアカウントを追加]** ダイアログ ボックスで、**[Azure 環境]** 内の **[Create Custom Environment (カスタム環境の作成)]** を選択し、**[次へ]** をクリックします。
 
-    * **[Graph のエンドポイント]** – 値は https://graph.windows.net である必要があります。 Azure China (Mooncake) の場合は、https://graph.chinacloudapi.cn を使用してください。
-    * **[ARM resource id (ARM リソース ID)]** – [Sign in resource id (サインイン リソース ID)] と同じ値を使用します。
-    * **[ARM resource endpoint (ARM リソース エンドポイント)]** – [ARM resource endpoint (ARM リソース エンドポイント)] の例は次のとおりです。
+10. Azure Stack のカスタム環境に必要なすべての情報を入力し、**[サインイン]** をクリックします。 
 
-    クラウド管理者の場合: https://adminmanagement.local.azurestack.external   
-    テナントの場合: https://management.local.azurestack.external
+11. 少なくとも 1 つのアクティブな Azure Stack サブスクリプションと関連付けられた Azure Stack アカウントでサインインするために、**[Sign in to a Custom Cloud environment (カスタム クラウド環境にサインインする)]** ダイアログ ボックスに情報を入力します。  
+
+    各フィールドの詳細は次のとおりです。
+
+    * **[環境名]**: このフィールドはユーザーがカスタマイズできます。
+    * **[機関]**: 値は https://login.windows.net である必要があります。 Azure 中国の場合は、https://login.chinacloudapi.cn を使用してください。
+    * **[Sign in resource id (サインイン リソース ID)]**: 次のいずれかの PowerShell スクリプトを実行して、値を取得します。
+
+        クラウド管理者の場合:
+
+        ```powershell
+        PowerShell (Invoke-RestMethod -Uri https://adminmanagement.local.azurestack.external/metadata/endpoints?api-version=1.0 -Method Get).authentication.audiences[0]
+        ```
+
+        テナントの場合:
+
+        ```powershell
+        PowerShell (Invoke-RestMethod -Uri https://management.local.azurestack.external/metadata/endpoints?api-version=1.0 -Method Get).authentication.audiences[0]
+        ```
+
+    * **[Graph のエンドポイント]**: 値は https://graph.windows.net である必要があります。 Azure 中国の場合は、https://graph.chinacloudapi.cn を使用してください。
+    * **[ARM resource id (ARM リソース ID)]**: **[Sign in resource id (サインイン リソース ID)]** と同じ値を使用します。
+    * **[ARM resource endpoint (ARM リソース エンドポイント)]**: Azure Resource Manager リソース エンドポイントの例は次のとおりです。
+
+        * クラウド管理者の場合: https://adminmanagement.local.azurestack.external   
+        * テナントの場合: https://management.local.azurestack.external
  
-    * **[Tenant Ids (テナント ID)]** – 省略可能です。 ディレクトリを指定する必要がある場合にのみ値を入力します。
+    * **[Tenant Ids (テナント ID)]**: 省略可能です。 ディレクトリを指定する必要がある場合にのみ値を入力します。
 
-8. Azure Stack アカウントでのサインインに成功すると、左側のウィンドウに、そのアカウントに関連付けられた Azure Stack サブスクリプションが表示されます。 操作する Azure Stack サブスクリプションを選択してから、**[適用]** を選択します  (**[すべてのサブスクリプション]** チェック ボックスをオンまたはオフにすることで、一覧の Azure Stack サブスクリプションがすべて選択された状態と、1 つも選択されていない状態を切り替えることができます)。
+12. Azure Stack アカウントでのサインインに成功すると、左側のウィンドウに、そのアカウントに関連付けられている Azure Stack サブスクリプションが表示されます。 操作する Azure Stack サブスクリプションを選択してから、**[適用]** を選択します  (**[すべてのサブスクリプション]** チェック ボックスをオンまたはオフにすることで、一覧の Azure Stack サブスクリプションがすべて選択された状態と、1 つも選択されていない状態を切り替えることができます)。
 
-   ![カスタム クラウド環境のダイアログに情報を入力した後、Azure Stack サブスクリプションを選択する][30]
+    ![カスタム クラウド環境のダイアログ ボックスに情報を入力した後、Azure Stack サブスクリプションを選択する][30]  
+    左側のウィンドウに、選択した Azure Stack サブスクリプションに関連付けられているストレージ アカウントが表示されます。
 
-9. 左側のウィンドウに、選択した Azure Stack サブスクリプションに関連付けられているストレージ アカウントが表示されます。
-
-   ![Azure Stack サブスクリプション アカウントを含むストレージ アカウントの一覧][31]
+    ![Azure Stack サブスクリプション アカウントを含むストレージ アカウントの一覧][31]
 
 ## <a name="work-with-local-development-storage"></a>ローカル開発ストレージを操作する
-ストレージ エクスプローラー (プレビュー) では、Azure ストレージ エミュレーターを使ってローカル ストレージを操作することができます。 そのため、Azure にデプロイされたストレージ アカウントがなくても、ストレージ関連のコードを記述したり、ストレージをテストしたりできます (ストレージ アカウントが Azure ストレージ エミュレーターによってエミュレートされるため)。
+ストレージ エクスプローラー (プレビュー) では、Azure ストレージ エミュレーターを使ってローカル ストレージを操作することができます。 この方法を使えば、Azure ストレージ エミュレーターによってストレージ アカウントがエミュレートされるため、Azure にデプロイされたストレージ アカウントがなくても、ストレージ関連のコードを記述したり、ストレージをテストしたりできます。
 
 > [!NOTE]
 > 現時点では、Azure ストレージ エミュレーターは Windows に対してのみサポートされています。
@@ -131,120 +155,154 @@ Microsoft Azure ストレージ エクスプローラー (プレビュー) は�
 1. ストレージ エクスプローラー (プレビュー) の左側のウィンドウで、**[(Local and Attached) ((ローカルおよびアタッチ済み))]** > **[ストレージ アカウント]** > **[(開発)]** ノードの順に展開します。
 
     ![Local development node][21]
-2. Azure ストレージ エミュレーターをインストールしていない場合は、情報バーを使用してインストールするよう求められます。 情報バーが表示されている場合は、 **[最新バージョンのダウンロード]**を選択し、エミュレーターをインストールします。
+
+2. Azure ストレージ エミュレーターをインストールしていない場合は、情報バーを使用してインストールするよう求められます。 情報バーが表示されている場合は、**[最新バージョンのダウンロード]** を選択し、エミュレーターをインストールします。
 
     ![Download Azure Storage Emulator prompt][22]
-3. エミュレーターがインストールされたら、ローカルの BLOB、キュー、テーブルを作成および操作できるようになります。 それぞれの種類のストレージ アカウントを操作する方法については、以下のいずれかのリンクを選択してください。
 
-   * [Azure Blob Storage リソースの管理](vs-azure-tools-storage-explorer-blobs.md)
-   * Azure ファイル共有ストレージ リソースの管理 - " *近日公開予定*
-   * Azure Queue Storage リソースの管理 - " *近日公開予定*
-   * Azure Table Storage リソースの管理 - " *近日公開予定*
+3. エミュレーターがインストールされたら、ローカルの BLOB、キュー、テーブルを作成および操作できるようになります。 それぞれの種類のストレージ アカウントを操作する方法については、以下のいずれかを参照してください。
+
+    * [Azure Blob Storage リソースの管理](vs-azure-tools-storage-explorer-blobs.md)
+    * Azure ファイル共有ストレージ リソースの管理: "*近日公開予定*"
+    * Azure Queue Storage リソースの管理: "*近日公開予定*"
+    * Azure Table Storage リソースの管理: "*近日公開予定*"
 
 ## <a name="attach-or-detach-an-external-storage-account"></a>外部ストレージ アカウントをアタッチまたはデタッチする
 ストレージ エクスプローラー (プレビュー) には、ストレージ アカウントを簡単に共有できるように、外部ストレージ アカウントにアタッチする機能が用意されています。 このセクションでは、外部ストレージ アカウントにアタッチ (または外部ストレージ アカウントからデタッチ) する方法について説明します。
 
 ### <a name="get-the-storage-account-credentials"></a>ストレージ アカウントの資格情報を取得する
-外部ストレージ アカウントを共有するには、まずそのアカウントの所有者がアカウントの資格情報 (アカウント名とキー) を取得し、その情報を、その (外部) アカウントへのアタッチを望んでいるユーザーと共有する必要があります。 ストレージ アカウントの資格情報は、Azure ポータルを使って次の手順で取得できます。
+外部ストレージ アカウントを共有するには、まずそのアカウントの所有者がアカウントの資格情報 (アカウント名とキー) を取得し、その情報を、その (外部) アカウントへのアタッチを望んでいるユーザーと共有する必要があります。 Azure Portal からストレージ アカウントの資格情報を取得する手順は、以下のとおりです。
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
+
 2. **[参照]**を選択します。
+
 3. **[ストレージ アカウント]**を選択します。
+
 4. **[ストレージ アカウント]** ブレードで目的のストレージ アカウントを選択します。
+
 5. 選択したストレージ アカウントの **[設定]** ブレードで、**[アクセス キー]** を選択します。
 
-   ![Access Keys option][5]
-6. **[アクセス キー]** ブレードで、ストレージ アカウントにアタッチするときに使用する、**[ストレージ アカウント名]** と **[キー 1]** の値をコピーします。
+    ![Access Keys option][5]
 
-   ![[アクセス キー]][6]
+6. **[アクセス キー]** ブレードで、ストレージ アカウントにアタッチするときに使用する **[ストレージ アカウント名]** と **[key1]** の値をコピーします。
+
+    ![アクセス キー][6]
 
 ### <a name="attach-to-an-external-storage-account"></a>外部ストレージ アカウントにアタッチする
-外部ストレージ アカウントにアタッチするには、アカウントの名前とキーが必要になります。 セクション「 *ストレージ アカウントの資格情報を取得する* 」に、Azure ポータルからこれらの値を取得する方法が記載されています。 ただし、アカウント キーはポータルでは "キー 1" と呼ばれているため、ストレージ エクスプローラー (プレビュー) からアカウント キーを要求された場合は、"キー 1" の値を入力するか、貼り付けます。
+外部ストレージ アカウントにアタッチするには、アカウントの名前とキーが必要になります。 「ストレージ アカウントの資格情報を取得する」セクションでは、Azure Portal からこれらの値を取得する方法を説明しました。 ただし、ポータルでは、アカウント キーが **key1** という名前になっています。 このため、ストレージ エクスプローラーでアカウント キーの入力が必要な局面があれば、**key1** の値を入力してください。
 
 1. ストレージ エクスプローラー (プレビュー) で、 **[Connect to Azure storage (Azure ストレージに接続)]**を選択します。
 
-   ![Connect to Azure storage option][23]
-2. **[Azure Storage へ接続]** ダイアログで、アカウント キー (Azure Portal から取得した "キー 1" の値) を指定し、**[次へ]** を選択します。
-> [!NOTE]
-> 国内の Azure のストレージ アカウントのストレージ接続文字列を入力できます。 たとえば、Azure Black Forest ストレージ アカウントに接続するには、DefaultEndpointsProtocol=https;AccountName=cawatest03;AccountKey=<storage_account_key>;EndpointSuffix=core.cloudapi.de; のような接続文字列を入力します。Azure Portal の接続文字列は、「**ストレージ アカウントの資格情報を取得する**」セクションで説明されているのと同じ方法で取得できます。
+    ![Connect to Azure storage option][23]
 
-   ![Connect to Azure storage dialog][24]
+2. **[Azure Storage へ接続]** ダイアログ ボックスで、アカウント キー (Azure Portal から取得した **key1** の値) を指定し、**[次へ]** を選択します。
 
-3. **[外部ストレージのアタッチ]** ダイアログで、**[アカウント名]** ボックスにストレージ アカウント名を入力し、必要な他の設定を指定してから、**[次へ]** を選択します。
+    > [!NOTE]
+    > 特定の国の Azure のストレージ アカウントのストレージ接続文字列を入力できます。 たとえば、Azure ドイツのストレージ アカウントに接続するには、次のような接続文字列を入力します。 
+    >
+    >* DefaultEndpointsProtocol=https
+    >* AccountName=cawatest03
+    >* AccountKey=<storage_account_key>
+    >* EndpointSuffix=core.cloudapi.de
+    
+    >接続文字列は、「ストレージ アカウントの資格情報を取得する」セクションで説明した方法で Azure Portal から取得できます。
 
-   ![Attach external storage dialog][8]
-4. **[Connection Summary (接続の概要)]** ダイアログで、情報を確認します。 設定を変更する場合は、**[戻る]** を選択し、必要な設定をもう一度入力します。 完了したら、 **[接続]**を選択します。
-5. 接続されると、ストレージ アカウント名に "**(外部)**" というテキストが追加された状態で外部ストレージ アカウントが表示されます。
+    ![[Azure Storage へ接続] ダイアログ][24]
 
-   ![Result of connecting to an external storage account][9]
+3. **[Attach External Storage (外部ストレージのアタッチ)]** ダイアログ ボックスで、**[アカウント名]** ボックスにストレージ アカウント名を入力し、必要な他の設定を指定してから、**[次へ]** を選択します。
+
+    ![[Attach External Storage (外部ストレージのアタッチ)] ダイアログ][8]
+
+4. **[接続の概要]** ダイアログ ボックスで、情報を確認します。 設定を変更する場合は、**[戻る]** を選択し、必要な設定をもう一度入力します。 
+
+5. **[接続]**を選択します。
+
+6. 接続が正常に完了すると、外部ストレージ アカウントが表示されます。外部ストレージ アカウントの場合には、ストレージ アカウント名に "**(外部)**" というテキストが付きます。
+
+    ![Result of connecting to an external storage account][9]
 
 ### <a name="detach-from-an-external-storage-account"></a>外部ストレージ アカウントからデタッチする
-1. デタッチする外部ストレージ アカウントを右クリックし、コンテキスト メニューの **[デタッチ]**を選択します。
+1. デタッチする外部ストレージ アカウントを右クリックし、**[デタッチ]** を選択します。
 
-   ![Detach from storage option][10]
-2. 確認のメッセージ ボックスが表示されたら、 **[はい]** を選択して外部ストレージ アカウントからのデタッチを確定します。
+    ![Detach from storage option][10]
 
-## <a name="attach-storage-account-using-sas"></a>SAS を使ってストレージ アカウントをアタッチする
-Azure サブスクリプションの管理者は、 [SAS (Shared Access Signature)](storage/storage-dotnet-shared-access-signature-part-1.md) を使うことで、Azure サブスクリプションの資格情報を提供しなくてもストレージ アカウントへのアクセスを一時的に許可できます。
+2. 確認メッセージで **[はい]** を選択して、外部ストレージ アカウントからのデタッチを確定します。
 
-これをわかりやすく説明するために、Azure サブスクリプションの管理者である UserA が UserB に特定のアクセス許可を付与し、一時的にストレージ アカウントへのアクセスを許可する場面を考えてみます。
+## <a name="attach-a-storage-account-by-using-an-sas"></a>SAS を使ってストレージ アカウントをアタッチする
+[SAS](storage/storage-dotnet-shared-access-signature-part-1.md) を使うと、Azure サブスクリプションの管理者が Azure サブスクリプションの資格情報を提供しなくても、ストレージ アカウントへのアクセスを一時的に許可できるようになります。
+
+このシナリオをわかりやすく説明するために、Azure サブスクリプションの管理者である UserA が UserB に特定のアクセス許可を付与し、一時的にストレージ アカウントへのアクセスを許可する場面を考えてみます。
 
 1. UserA は、目的のアクセス許可と一定の期間が設定された SAS (ストレージ アカウントへの接続文字列で構成) を生成します。
+
 2. UserA は、ストレージ アカウントへのアクセスを希望しているユーザー (この例では UserB) と SAS を共有します。  
-3. UserB は、ストレージ エクスプローラー (プレビュー) で、提供された SAS を使って UserA に属するアカウントにアタッチします。
 
-### <a name="get-a-sas-for-the-account-you-want-to-share"></a>共有するアカウント用の SAS を取得する
-1. ストレージ エクスプローラー (プレビュー) で、共有するストレージ アカウントを右クリックし、コンテキスト メニューの **[Get Shared Access Signature (Shared Access Signature の取得)]**を選択します。
+3. UserB はストレージ エクスプローラー (プレビュー) からその SAS を使用し、UserA に属するアカウントにアタッチします。
 
-   ![Get SAS context menu option][13]
-2. **[Shared Access Signature]** ダイアログで、アカウントに対して期間とアクセス許可を指定し、**[作成]** を選択します。
+### <a name="get-an-sas-for-the-account-you-want-to-share"></a>共有するアカウントの SAS を取得する
+1. ストレージ エクスプローラー (プレビュー) で、共有するストレージ アカウントを右クリックし、**[Get Shared Access Signature (Shared Access Signature の取得)]**を選択します。
 
-    ![Get SAS dialog][14]
-3. 2 つ目の **[Shared Access Signature]** ダイアログに SAS が示されます。 **[接続文字列]** の横にある **[コピー]** を選択してクリップボードにコピーします。 **[閉じる]** を選択してダイアログを閉じます。
+    ![Get SAS context menu option][13]
 
-### <a name="attach-to-the-shared-account-using-the-sas"></a>SAS を使って共有アカウントにアタッチする
+2. **[Shared Access Signature]** ダイアログ ボックスで、アカウントに対して期間とアクセス許可を指定し、**[作成]** を選択します。
+
+    ![SAS の取得ダイアログ ボックス][14]  
+    **[Shared Access Signature]** ダイアログ ボックスが開き、SAS が表示されます。
+
+3. **[接続文字列]** の横にある **[コピー]** を選択してクリップボードにコピーし、**[閉じる]** を選択します。
+
+### <a name="attach-to-the-shared-account-by-using-the-sas"></a>SAS を使って共有アカウントにアタッチする
 1. ストレージ エクスプローラー (プレビュー) で、 **[Connect to Azure storage (Azure ストレージに接続)]**を選択します。
 
-   ![Connect to Azure storage option][23]
-2. **[Azure Storage へ接続]** ダイアログで、接続文字列を指定し、**[次へ]** を選択します。
+    ![Connect to Azure storage option][23]
 
-   ![Connect to Azure storage dialog][24]
-3. **[Connection Summary (接続の概要)]** ダイアログで、情報を確認します。 設定を変更する場合は、**[戻る]** を選択し、必要な設定をもう一度入力します。 完了したら、 **[接続]**を選択します。
-4. アタッチされると、指定したアカウント名に "(SAS)" というテキストが追加された状態でストレージ アカウントが表示されます。
+2. **[Azure Storage へ接続]** ダイアログ ボックスで、接続文字列を指定し、**[次へ]** を選択します。
 
-   ![Result of attached to an account using SAS][17]
+    ![[Azure Storage へ接続] ダイアログ][24]
 
-## <a name="attach-service-using-sas"></a>SAS を使ってサービスをアタッチする
-「 [SAS を使ってストレージ アカウントをアタッチする](#attach-storage-account-using-sas) 」セクションでは、Azure サブスクリプションの管理者がストレージ アカウントの SAS を生成 (および共有) してストレージ アカウントへの一時的なアクセスを許可する方法を示しています。 同様に、SAS は、ストレージ アカウント内の特定のサービス (BLOB コンテナー、キュー、またはテーブル) に対して生成できます。  
+3. **[接続の概要]** ダイアログ ボックスで、情報を確認します。 変更する場合は、**[戻る]** を選択して、必要な設定を入力します。 
 
-### <a name="generate-a-sas-for-the-service-you-want-to-share"></a>共有するサービスの SAS を生成する
-この場合のサービスは、BLOB、コンテナー、キュー、またはテーブルです。 次のセクションで、一覧にあるサービスの SAS を生成する方法を説明します。
+4. **[接続]**を選択します。
+
+5. アタッチされると、指定したアカウント名に **(SAS)** というテキストが追加された状態でストレージ アカウントが表示されます。
+
+    ![SAS を使ってアカウントをアタッチした結果][17]
+
+## <a name="attach-a-service-by-using-an-sas"></a>SAS を使ってサービスをアタッチする
+「SAS を使ってストレージ アカウントをアタッチする」セクションでは、Azure サブスクリプションの管理者がストレージ アカウントの SAS を生成および共有し、ストレージ アカウントへの一時的なアクセスを許可する方法を説明しました。 これと同じように、ストレージ アカウント内の特定のサービス (BLOB コンテナー、キュー、またはテーブル) の SAS を生成できます。  
+
+### <a name="generate-an-sas-for-the-service-that-you-want-to-share"></a>共有するサービスの SAS を生成する
+この場合のサービスは、BLOB、コンテナー、キュー、またはテーブルです。 表示されているサービスの SAS を生成するには、以下のいずれかを参照してください。
 
 * [BLOB コンテナーの SAS を取得する](vs-azure-tools-storage-explorer-blobs.md#get-the-sas-for-a-blob-container)
-* ファイル共有の SAS を取得する - " *近日公開予定*
-* キューの SAS を取得する - " *近日公開予定*
-* テーブルの SAS を取得する - " *近日公開予定*
+* ファイル共有の SAS を取得する: "*近日公開予定*"
+* キューの SAS を取得する: "*近日公開予定*"
+* テーブルの SAS を取得する: "*近日公開予定*"
 
-### <a name="attach-to-the-shared-account-service-using-the-sas"></a>SAS を使って共有アカウント サービスにアタッチする
+### <a name="attach-to-the-shared-account-service-by-using-the-sas"></a>SAS を使って共有アカウント サービスにアタッチする
 1. ストレージ エクスプローラー (プレビュー) で、 **[Connect to Azure storage (Azure ストレージに接続)]**を選択します。
 
-   ![Connect to Azure storage option][23]
-2. **[Azure Storage へ接続]** ダイアログで SAS URI を指定し、**[次へ]** を選択します。
+    ![Connect to Azure storage option][23]
 
-   ![Connect to Azure storage dialog][24]
-3. **[Connection Summary (接続の概要)]** ダイアログで、情報を確認します。 設定を変更する場合は、**[戻る]** を選択し、必要な設定をもう一度入力します。 完了したら、 **[接続]**を選択します。
-4. アタッチされると、新たにアタッチされたサービスが **[(Service SAS) ((サービス SAS))]** ノードに表示されます。
+2. **[Azure Storage へ接続]** ダイアログ ボックスで SAS の URI を指定し、**[次へ]** を選択します。
 
-   ![Result of attaching to a shared service using SAS][20]
+    ![[Azure Storage へ接続] ダイアログ][24]
+
+3. **[接続の概要]** ダイアログ ボックスで、情報を確認します。 変更する場合は、**[戻る]** を選択して、必要な設定を入力します。 
+
+4. **[接続]**を選択します。
+
+5. アタッチが終わると、新たにアタッチされたサービスが **[(Service SAS) ((サービス SAS))]** ノードに表示されます。
+
+    ![SAS を使って共有サービスをアタッチした結果][20]
 
 ## <a name="search-for-storage-accounts"></a>ストレージ アカウントを検索する
 多数のストレージ アカウントがある場合は、左側のウィンドウの上部にある検索ボックスを使用すると、特定のストレージ アカウントをすばやく見つけることができます。
 
-検索ボックスへの入力中、左側のウィンドウには、その時点で入力してある検索の値に一致するストレージ アカウントのみが表示されます。 次のスクリーンショットは、ストレージ アカウント名に "tarcher" というテキストが含まれるすべてのストレージ アカウントを検索したときの例です。
+検索ボックスへの入力中、左側のウィンドウには、その時点で入力してある検索の値に一致するストレージ アカウントが表示されます。 たとえば、**tarcher** という文字が含まれるストレージ アカウントをすべて検索した場合の表示は、以下のスクリーンショットのようになります。
 
 ![Storage account search][11]
-
-検索をクリアするには、検索ボックスの **[x]** ボタンを選択します。
 
 ## <a name="next-steps"></a>次のステップ
 * [ストレージ エクスプローラー (プレビュー) を使用した Azure Blob Storage リソースの管理](vs-azure-tools-storage-explorer-blobs.md)

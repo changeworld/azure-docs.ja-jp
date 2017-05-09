@@ -13,36 +13,26 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
-ms.date: 04/03/2017
+ms.date: 04/27/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: ba9c673676fd0b742eb8bd780b67930333b151b3
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: e9dfb5a744a7c63ef9805b1341236c4f3c57ec4d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/02/2017
 
 
 ---
 # <a name="overview-of-application-gateway"></a>Application Gateway の概要
 
-Microsoft Azure Application Gateway は、アプリケーション配信コントローラー (ADC) をサービスとして提供する専用仮想アプライアンスで、さまざまなレイヤー 7 負荷分散機能をアプリケーションで利用できるようにします。 スケーラビリティと高可用性のための複数の worker インスタンスで構成されています。 これにより、CPU を集中的に使用する SSL 終了をお客様が Application Gateway にオフロードし、Web ファームの生産性を最適化できます。 また、着信トラフィックのラウンド ロビン分散、Cookie ベースのセッション アフィニティ、URL パス ベースのルーティング、単一の Application Gateway の背後で複数の Web サイトをホストする機能など、その他のレイヤー 7 ルーティング機能も用意されています。 Application Gateway は、インターネット接続ゲートウェイ、または内部的にのみ使用されるゲートウェイのいずれかとして構成できるほか、この両方を組み合わせて使用することも可能です。 Application Gateway は Azure によって完全に管理され、非常にスケーラブルで、高い可用性を備えています。 管理しやすいように診断機能とログ機能が豊富に用意されているほか、 アプリケーション ゲートウェイを作成すると、エンドポイント (パブリック VIP または内部 ILB IP) が関連付けられ、イングレス ネットワーク トラフィックに使用されます。 この VIP または ILB IP は、Azure Load Balancer によって提供されます。Azure Load Balancer は、トランスポート レベル (TCP/UDP) で機能し、すべての受信ネットワーク トラフィックの負荷を Application Gateway worker インスタンスに分散します。 その後、Application Gateway は、仮想マシン、クラウド サービス、内部または外部 IP アドレスのいずれであるかにかかわらず、その構成に基づいて HTTP/HTTPS トラフィックをルーティングします。
+Microsoft Azure Application Gateway は、アプリケーション配信コントローラー (ADC) をサービスとして提供する専用仮想アプライアンスで、さまざまなレイヤー 7 負荷分散機能をアプリケーションで利用できるようにします。 これにより、CPU を集中的に使用する SSL 終了をお客様が Application Gateway にオフロードし、Web ファームの生産性を最適化できます。 また、着信トラフィックのラウンド ロビン分散、Cookie ベースのセッション アフィニティ、URL パス ベースのルーティング、単一の Application Gateway の背後で複数の Web サイトをホストする機能など、その他のレイヤー 7 ルーティング機能も用意されています。 Web アプリケーション ファイアウォール (WAF) も Application Gateway の WAF SKU の一部として提供されています。WAF は、一般的な Web の脆弱性や悪用から Web アプリケーションを保護します。 Application Gateway は、インターネット接続ゲートウェイ、または内部的にのみ使用されるゲートウェイのいずれかとして構成できるほか、この両方を組み合わせて使用することも可能です。 
 
-Web アプリケーション ファイアウォール (WAF) も Application Gateway の WAF SKU の一部として提供されています。WAF は、一般的な Web の脆弱性や悪用から Web アプリケーションを保護します。 Web アプリケーション ファイアウォールでは、[OWASP コア ルール セット](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 または 2.2.9 の規則に基づいて保護を行います。
-
-## <a name="differences-between-application-gateway-skus"></a>Application Gateway の SKU の違い
-
-Application Gateway には、2 つの SKU があります。 Standard SKU と Web アプリケーション ファイアウォール (WAF) SKU です。
-
-### <a name="standard"></a>Standard
-
-Standard SKU は、SSL 終了、Cookie ベースのセッション アフィニティ、ラウンドロビンの負荷分散、コンテンツ ベースのルーティング、複数の Web サイトをホストする機能、セキュリティ強化機能を提供します。 Application Gateway で実現するセキュリティの強化には、SSL ポリシーの管理、エンド ツー エンド SSL のサポート、SSL 終了が含まれます。
-
-### <a name="web-application-firewall-waf"></a>Web アプリケーション ファイアウォール (WAF)
-
-WAF SKU では、Standard SKU で提供されるすべての機能に加え、[Web アプリケーション ファイアウォール](application-gateway-web-application-firewall-overview.md)が提供されます。 一般的な Web の脆弱性や悪用から Web アプリケーションを保護するための攻撃検出規則が用意されています。
+![scenario](./media/application-gateway-introduction/scenario.png)
 
 ## <a name="features"></a>Features (機能)
 
-Application Gateway は現在、次の機能でレイヤー 7 アプリケーションの配信をサポートします。
+現在、Application Gateway には次の機能があります。
+
 
 * **[Web アプリケーション ファイアウォール](application-gateway-webapplicationfirewall-overview.md)** - Azure Application Gateway の Web アプリケーション ファイアウォール (WAF) は、SQL インジェクション、クロスサイト スクリプティング攻撃、セッション ハイジャックなどの一般的な Web ベースの攻撃から Web アプリケーションを保護します。
 * **HTTP の負荷分散** - Application Gateway は、ラウンド ロビン負荷分散を提供します。 負荷分散は、レイヤー 7 で実行され、HTTP(S) トラフィックのみに使用されます。
@@ -64,6 +54,9 @@ Application Gateway は、以下の用途に便利です。
 * 実行時間の長い同じ TCP 接続で複数の HTTP 要求を異なるバックエンド サーバーにルーティング/負荷分散する必要があるアプリケーション (コンテンツ配信ネットワークなど)。
 * WebSocket トラフィックをサポートするアプリケーション
 * SQL インジェクション、クロスサイト スクリプティング攻撃、セッション ハイジャックなどの一般的な Web ベースの攻撃に対する Web アプリケーションの保護。
+* URL パスやドメイン ヘッダーなど、さまざまなルーティング条件に基づいたトラフィックの論理的な分散。
+
+Application Gateway は Azure によって完全に管理され、非常にスケーラブルで、高い可用性を備えています。 管理しやすいように診断機能とログ機能が豊富に用意されているほか、 アプリケーション ゲートウェイを作成すると、エンドポイント (パブリック VIP または内部 ILB IP) が関連付けられ、イングレス ネットワーク トラフィックに使用されます。 この VIP または ILB IP は、Azure Load Balancer によって提供されます。Azure Load Balancer は、トランスポート レベル (TCP/UDP) で機能し、すべての受信ネットワーク トラフィックの負荷を Application Gateway worker インスタンスに分散します。 その後、Application Gateway は、仮想マシン、クラウド サービス、内部または外部 IP アドレスのいずれであるかにかかわらず、その構成に基づいて HTTP/HTTPS トラフィックをルーティングします。
 
 Azure で管理されるサービスとしての Application Gateway の負荷分散により、Azure のソフトウェア ロード バランサーの背後でレイヤー 7 ロード バランサーをプロビジョニングできます。 Traffic Manager を使用して、次の図のようなシナリオを作成します。このシナリオでは、Traffic Manager は、さまざまなリージョンの複数のアプリケーション ゲートウェイ リソースに対するトラフィックにリダイレクトと可用性を提供し、アプリケーション ゲートウェイは、リージョン間でレイヤー 7 の負荷分散を実現します。 このシナリオの例については、「[Using load balancing services in the Azure cloud (Azure クラウドの負荷分散サービスの使用)](../traffic-manager/traffic-manager-load-balancing-azure.md)」を参照してください
 
@@ -104,6 +97,7 @@ REST API、PowerShell コマンドレット、Azure CLI、または [Azure Porta
 ## <a name="faq"></a>FAQ
 
 Application Gateway に関してよく寄せられる質問については、[Application Gateway の FAQ](application-gateway-faq.md) に関する記事を参照してください。
+
 ## <a name="next-steps"></a>次のステップ
 
 アプリケーション ゲートウェイについて学習すると、[アプリケーション ゲートウェイを作成](application-gateway-create-gateway-portal.md)することも、[アプリケーション ゲートウェイ SSL オフロードを作成](application-gateway-ssl-arm.md)して HTTPS 接続を負荷分散することもできるようになります。

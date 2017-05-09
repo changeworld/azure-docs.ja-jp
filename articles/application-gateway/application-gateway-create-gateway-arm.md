@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/04/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: 11ecfc993f17c89d4ac4431e9a835000d30afe76
-ms.lasthandoff: 04/05/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 8a0eb841b1a41a14e443b6ce93e6b8fb8985a803
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -107,7 +108,7 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 > [!NOTE]
 > アプリケーション ゲートウェイのカスタム プローブを構成する必要がある場合は、[PowerShell を使用したカスタム プローブとアプリケーション ゲートウェイの作成](application-gateway-create-probe-ps.md)に関するページを参照してください。 詳細については、 [カスタム プローブと正常性監視](application-gateway-probe-overview.md) に関するページを参照してください。
 
-## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>アプリケーション ゲートウェイの仮想ネットワークとサブネットを作成します。
+## <a name="create-a-virtual-network-and-a-subnet"></a>仮想ネットワークとサブネットの作成
 
 次の例では、リソース マネージャーを使用して仮想ネットワークを作成する方法を示します。 この例では、アプリケーション ゲートウェイ用の VNET を作成します。 アプリケーション ゲートウェイには独自のサブネットが必要です。そのため、アプリケーション ゲートウェイ用に作成するサブネットは、VNET のアドレス空間よりも小さくします。 サブネットを小さくすることで、VNET を他のリソースのために活用できます。一例としては、同じ VNET 内で Web サーバーを構成できます。
 
@@ -135,7 +136,7 @@ $vnet = New-AzureRmVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -L
 $subnet=$vnet.Subnets[0]
 ```
 
-## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>フロントエンド構成のパブリック IP アドレスの作成
+## <a name="create-a-public-ip-address"></a>パブリック IP アドレスの作成
 
 米国西部リージョンのリソース グループ **appgw-rg** に、パブリック IP リソース **publicIP01** を作成します。 Application Gateway では、パブリック IP アドレス、内部 IP アドレス、またはその両方を、負荷分散の要求の受信に使用できます。  この例で使用するのはパブリック IP アドレスだけです。 次の例でのパブリック IP アドレスの作成では、DNS 名の構成を行いません。  Application Gateway では、パブリック IP アドレスのカスタム DNS 名はサポートされていません。  パブリック エンドポイントにカスタム名が必要な場合は、CNAME レコードを作成し、パブリック IP アドレス用に自動生成される DNS 名を指定する必要があります。
 
@@ -219,7 +220,7 @@ $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Cap
 > [!NOTE]
 > **InstanceCount** の既定値は 2、最大値は 10 です。 **GatewaySize** の既定値は Medium です。 **Standard_Small**、**Standard_Medium**、**Standard_Large** のいずれかを選択できます。
 
-## <a name="create-an-application-gateway-by-using-new-azurermapplicationgateway"></a>New-AzureRmApplicationGateway を使用した Application Gateway の作成
+## <a name="create-the-application-gateway"></a>アプリケーション ゲートウェイの作成
 
 前の手順の構成項目をすべて使用して、アプリケーション ゲートウェイを作成します。 この例では、アプリケーション ゲートウェイは **appgwtest** という名前です。
 
@@ -233,7 +234,7 @@ $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-
 Get-AzureRmPublicIpAddress -Name publicIP01 -ResourceGroupName appgw-rg  
 ```
 
-## <a name="delete-an-application-gateway"></a>Application Gateway の削除
+## <a name="delete-the-application-gateway"></a>Application Gateway の削除
 
 Application Gateway を削除するには、次の手順を実行します。
 
@@ -296,6 +297,14 @@ IpConfiguration          : {
 DnsSettings              : {
                                 "Fqdn": "00000000-0000-xxxx-xxxx-xxxxxxxxxxxx.cloudapp.net"
                             }
+```
+
+## <a name="delete-all-resources"></a>すべてのリソースの削除
+
+この記事で作成したリソースをすべて削除するには、次の手順を実行します。
+
+```powershell
+Remove-AzureRmResourceGroup -Name appgw-RG
 ```
 
 ## <a name="next-steps"></a>次のステップ
