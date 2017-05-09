@@ -1,6 +1,6 @@
 ---
-title: "Azure での Windows VM の VM 保護メンテナンス | Microsoft Docs"
-description: "メモリ保護更新のためのインプレース VM 移行。"
+title: "Azure での Windows VM の VM 保持メンテナンス | Microsoft Docs"
+description: "メモリ保持更新のためのインプレース VM 移行。"
 services: virtual-machines-windows
 documentationcenter: 
 author: 
@@ -25,11 +25,11 @@ ms.lasthandoff: 03/31/2017
 
 
 
-# <a name="vm-preserving-maintenance-with-in-place-vm-migration"></a>インプレース VM 移行による VM 保護メンテナンス
+# <a name="vm-preserving-maintenance-with-in-place-vm-migration"></a>インプレース VM 移行による VM 保持メンテナンス
 
 多くの更新はホステッド VM に影響がありませんが、コンポーネントまたはサービスの更新によって、実行中の VM に対する干渉が最小限になる (仮想マシンの完全な再起動が不要になる) ことがあります。
 
-これらの更新は、インプレース ライブ移行 ("メモリ保護" 更新とも呼ばれます) を実現するテクノロジによって達成されます。 ホストの更新時、仮想マシンは "一時停止" 状態になり、RAM 内のメモリは保護されます。一方、ホスティング環境 (基礎となるホスト オペレーティング システム) は必要な更新プログラムと修正プログラムを適用します。
+これらの更新は、インプレース ライブ移行 ("メモリ保持" 更新とも呼ばれます) を実現するテクノロジによって達成されます。 ホストの更新時、仮想マシンは "一時停止" 状態になり、RAM 内のメモリは保持されます。一方、ホスティング環境 (基礎となるホスト オペレーティング システム) は必要な更新プログラムと修正プログラムを適用します。
 仮想マシンは、30 秒以内の一時停止で再開されます。
 再開後、仮想マシンのクロックは自動的に同期されます。
 
