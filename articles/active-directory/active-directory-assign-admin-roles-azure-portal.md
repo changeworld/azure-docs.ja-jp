@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 05/08/2017
 ms.author: femila
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
 ms.openlocfilehash: e8d3eb7e336383eb639e55656b26d881e8c2adb0
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/29/2017
 
 

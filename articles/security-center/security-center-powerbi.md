@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
+ms.date: 05/08/2017
 ms.author: yurid
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
 ms.openlocfilehash: 1091abef19121ac4ce65fdaf7299b091bf41eb1c
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/31/2017
 
 
@@ -31,7 +32,7 @@ Azure Security Center ダッシュボードを使用して、Power BI レポー�
 
 1. **Azure Security Center** ダッシュボードで **[Power BI]** ボタンをクリックします。
 
-    ![Connect to Azure Security Center using Power BI](./media/security-center-powerbi/security-center-powerbi-fig1-new10-2017.png)
+    ![Connect to Azure Security Center using Power BI](./media/security-center-powerbi/security-center-powerbi-fig1-newUI-2017.png)
 2. 次の画面に示すように、**Power BI** ブレードが右側に表示されます。
 
     ![Connect to Azure Security Center using Power BI](./media/security-center-powerbi/security-center-powerbi-fig1-new11-2017.png)
