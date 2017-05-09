@@ -15,10 +15,11 @@ ms.workload: big-compute
 ms.date: 03/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 23dfe112411ebc6f47e6a3f09baaf1aa746e6987
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: d05739a4d9f0712c2b4b47432bff97594a11b121
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -337,7 +338,7 @@ Azure Batch でコンピューティング ノードのプールを作成する�
 
 * コンピューティング ノードのタスクのスケジュールを設定できるように、Batch サービスからの通信を指定したサブネットで許可する必要があります。 VNet に関連付けられた**ネットワーク セキュリティ グループ (NSG)** によってコンピューティング ノードとの通信が拒否された場合、コンピューティング ノードの状態は Batch サービスによって**使用不可**に設定されます。 
 
-* 指定した VNet に NSG が関連付けられている場合は、受信通信を有効にする必要があります。 Linux プールの場合、ポート 29876、29877、および 22 を有効にする必要があります。 Windows プールの場合、ポート 3389 を有効にする必要があります。
+* 指定した VNet に NSG が関連付けられている場合は、受信通信を有効にする必要があります。 Linux と Windows のどちらのプールでも、ポート 29876 と 29877 を有効にする必要があります。 必要に応じて、Linux プールでは SSH 用に、Windows プールでは RDP 用にそれぞれポート 22 または 3389 を有効に (または選択してフィルター処理) できます。
 
 VNet の追加設定は、Batch アカウントのプール割り当てモードによって異なります。
 

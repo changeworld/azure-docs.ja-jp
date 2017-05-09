@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 05/02/2017
 ms.author: ganesr
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 945923d9858ec0ed31272c23268b263f77b5c7a4
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 7f8386b518ada850fc03e23c5cae3b159b3b213e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>クラシック デプロイメント モデルから Resource Manager デプロイメント モデルへの ExpressRoute 回線の移行
 この記事では、Azure ExpressRoute 回線をクラシック デプロイメント モデルから Azure Resource Manager デプロイメント モデルに移行する意味について概説します。
-
-[!INCLUDE [vpn-gateway-sm-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 クラシック デプロイメント モデルでデプロイされた仮想ネットワークと Resource Manager デプロイメント モデルでデプロイされた仮想ネットワークにはどちらも、単一の ExpressRoute 回線を使用して接続できます。 この両方のデプロイメント モデルにまたがって、その作成方法を問わず、ExpressRoute 回線を仮想ネットワークにリンクできるようになりました。
 
@@ -87,11 +87,11 @@ ExpressRoute 回線は、クラシック デプロイメント モデルと Reso
 * ExpressRoute 回線を Resource Manager デプロイメント モデルに移行すると、ExpressRoute 回線のライフ サイクルの管理は Resource Manager デプロイメント モデルを使用してのみ行えるようになります。 これは、ピアリングの追加、更新、削除、回線のプロパティ (帯域幅、SKU、課金タイプなど) の更新、回線の削除などの操作を行うことができるのが Resource Manager デプロイメント モデルに限られることを意味します。
 * ExpressRoute 回線は、クラシック デプロイメント モデルと Resource Manager デプロイメント モデルとの間の橋渡し的な役割を果たします。 クラシック デプロイメント モデルの仮想ネットワーク内の仮想マシンと Resource Manager デプロイメント モデルの仮想ネットワーク内の仮想マシンとの間のトラフィックは、両方の仮想ネットワークが同じ ExpressRoute 回線にリンクされている場合は ExpressRoute を通過します。
 * サブスクリプションの境界を越えた接続は、クラシック デプロイメント モデルと Resource Manager デプロイメント モデルの両方でサポートされます。
+* ExpressRoute 回線をクラシック モデルから Azure Resource Manager モデルに移動した後、[その ExpressRoute 回線にリンクされている仮想ネットワークを移行する](expressroute-migration-classic-resource-manager.md)ことができます。
 
 ## <a name="whats-not-supported"></a>サポートされていないもの
 ここでは、ExpressRoute 回線でサポートされない操作について説明します。
 
-* クラシック デプロイメント モデルから Resource Manager デプロイメント モデルへの回線リンク、ゲートウェイ、仮想ネットワークの移行。
 * クラシック デプロイメント モデルからの ExpressRoute 回線のライフ サイクルの管理。
 * クラシック デプロイメント モデルでのロールベースのアクセス制御 (RBAC)。 クラシック デプロイメント モデルの回線に対して RBAC 制御を行うことはできません。 回線に対する仮想ネットワークのリンクとリンク解除は、サブスクリプションの管理者/共同管理者が実施できます。
 
@@ -99,16 +99,12 @@ ExpressRoute 回線は、クラシック デプロイメント モデルと Reso
 「 [クラシック デプロイメント モデルから Resource Manager デプロイメント モデルへの ExpressRoute 回線の移行](expressroute-howto-move-arm.md)」に説明されている手順を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
+* [ExpressRoute 回線にリンクされている仮想ネットワークをクラシック モデルから Azure Resource Manager モデルに移行します](expressroute-migration-classic-resource-manager.md)
 * ワークフロー情報については、「 [ExpressRoute 回線のプロビジョニング ワークフローと回線の状態](expressroute-workflows.md)」を参照してください。
 * ExpressRoute 接続を構成します。
   
   * [ExpressRoute 回線の作成](expressroute-howto-circuit-arm.md)
   * [ルーティングの構成](expressroute-howto-routing-arm.md)
   * [ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-arm.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

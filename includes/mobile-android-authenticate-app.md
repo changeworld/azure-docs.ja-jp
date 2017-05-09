@@ -1,5 +1,7 @@
 
-1. Android Studio の **Project Explorer** で ToDoActivity.java ファイルを開き、次の import ステートメントを追加します。
+1. Android Studio でプロジェクトを開きます。
+
+2. Android Studio の **Project Explorer** で ToDoActivity.java ファイルを開き、次の import ステートメントを追加します。
 
         import java.util.concurrent.ExecutionException;
         import java.util.concurrent.atomic.AtomicBoolean;
@@ -10,16 +12,17 @@
 
         import com.microsoft.windowsazure.mobileservices.authentication.MobileServiceAuthenticationProvider;
         import com.microsoft.windowsazure.mobileservices.authentication.MobileServiceUser;
-2. **ToDoActivity** クラスに次のメソッドを追加します。
+
+3. **ToDoActivity** クラスに次のメソッドを追加します。
 
         // You can choose any unique number here to differentiate auth providers from each other. Note this is the same code at login() and onActivityResult().
         public static final int GOOGLE_LOGIN_REQUEST_CODE = 1;
- 
+
         private void authenticate() {
             // Login using the Google provider.
             mClient.login("Google", "{url_scheme_of_your_app}", GOOGLE_LOGIN_REQUEST_CODE);
         }
-         
+
         @Override
         protected void onActivityResult(int requestCode, int resultCode, Intent data) {
             // When request completes
@@ -40,17 +43,18 @@
             }
         }
 
-    これで、認証プロセスを処理する新しいメソッドが作成されます。 ユーザーは、Google サインインを使用して認証されます。 ダイアログに認証されたユーザーの ID が表示されます。 認証が成功しないと、次に進むことはできません。
+    このコードで、Google 認証プロセスを処理するメソッドが作成されます。 ダイアログに認証されたユーザーの ID が表示されます。 認証に成功した場合のみ続行できます。
 
     > [!NOTE]
-    > Google 以外の ID プロバイダーを使用している場合は、上の **login** メソッドに渡す値を、_MicrosoftAccount_、_Facebook_、_Twitter_、_windowsazureactivedirectory_ のいずれかに変更します。
+    > Google 以外の ID プロバイダーを使用している場合は、**login** メソッドに渡す値を、_MicrosoftAccount_、_Facebook_、_Twitter_、_windowsazureactivedirectory_ のいずれかに変更します。
 
-3. **onCreate** メソッドで、`MobileServiceClient` オブジェクトをインスタンス化するコードの後に、次のコード行を追加します。
+4. **onCreate** メソッドで、`MobileServiceClient` オブジェクトをインスタンス化するコードの後に、次のコード行を追加します。
 
         authenticate();
 
     この呼び出しで、認証プロセスが開始されます。
-4. **onCreate** メソッド内の `authenticate();` の後の残りのコードを新しい **createTable** メソッドに移動します。 次に例を示します。
+
+5. **onCreate** メソッド内の `authenticate();` の後の残りのコードを新しい **createTable** メソッドに移動します。
 
         private void createTable() {
 
@@ -68,8 +72,8 @@
             refreshItemsFromTable();
         }
 
-5. リダイレクトを確実に行うために、次に示す _RedirectUrlActivity_ のスニペットを _AndroidManifest.xml_ に追加します。
- 
+6. リダイレクトが適切に機能するように、次に示す _RedirectUrlActivity_ のスニペットを _AndroidManifest.xml_ に追加します。
+
         <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -80,8 +84,8 @@
             </intent-filter>
         </activity>
 
-6.  Android アプリケーションの _build.gradle_ に redirectUriScheme を追加します。
- 
+7. Android アプリケーションの _build.gradle_ に redirectUriScheme を追加します。
+
         android {
             buildTypes {
                 release {
@@ -95,10 +99,13 @@
             }
         }
 
-7. build.gradle の依存関係に com.android.support:customtabs:23.0.1 を追加します。
+8. build.gradle の依存関係に com.android.support:customtabs:23.0.1 を追加します。
 
       dependencies {        // ...        compile 'com.android.support:customtabs:23.0.1'    }
 
-8. **[Run (実行)]** メニューの **[Run app (アプリの実行)]** をクリックしてアプリを開始し、選択した ID プロバイダーでサインインします。
+9. **[Run (実行)]** メニューの **[Run app (アプリの実行)]** をクリックしてアプリを開始し、選択した ID プロバイダーでサインインします。
+
+> [!WARNING]
+> 記載されている URL スキームは、大文字と小文字が区別されます。  `{url_scheme_of_you_app}` のすべての出現箇所で大文字と小文字を同じように使用してください。
 
 サインインに成功すると、アプリはエラーなしで実行されます。また、バックエンド サービスにクエリを実行したり、データを更新したりできるようになります。

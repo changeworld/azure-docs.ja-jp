@@ -12,17 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/04/2017
+ms.date: 04/24/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 1222223f8c45249402bfdd04c8754074f877e132
-ms.openlocfilehash: 1236489212b2a9c421972599a12511d5bc42efdf
-ms.lasthandoff: 02/16/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: 97845748ef44469d1ec6a91ff8184288dc6350d9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/28/2017
 
 
 ---
 # <a name="deploy-the-user-portal-for-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server のユーザー ポータルのデプロイ
-管理者はユーザー ポータルを使用して、Azure Multi-Factor Authentication ユーザー ポータルをインストールおよび構成することができます。 ユーザー ポータルは、ユーザーが Azure Multi-Factor Authentication に登録を行い、アカウントを保守するための IIS Web サイトです。 ユーザーは次のサインイン時に、電話番号の変更、PIN の変更、または 2 段階認証をバイパスを行うことができます。
+ユーザー ポータルは、ユーザーが Azure Multi-Factor Authentication に登録を行い、アカウントを保守するための IIS Web サイトです。 ユーザーは次のサインイン時に、電話番号の変更、PIN の変更、または 2 段階認証をバイパスを行うことができます。
 
 ユーザーは、通常のユーザー名とパスワードを使用してユーザー ポータルにサインインし、2 段階認証呼び出しを完了するか、セキュリティに関する質問に回答して認証を完了します。 ユーザー登録が許可されている場合、ユーザー ポータルに最初にサインインする際にユーザーは電話番号と PIN を構成します。
 
@@ -30,13 +31,18 @@ ms.lasthandoff: 02/16/2017
 
 <center>![セットアップ](./media/multi-factor-authentication-get-started-portal/install.png)</center>
 
+>[!NOTE] 
+>ユーザー ポータルは Multi-Factor Authentication Server でのみ使用できます。 Multi-Factor Authentication をクラウドで使用する場合、[2 段階認証のためのアカウント設定](./end-user/multi-factor-authentication-end-user-first-time.md)に関するページか「[2 段階認証設定の管理](./end-user/multi-factor-authentication-end-user-manage-settings.md)」をユーザーに参照してもらってください。
+
+
 ## <a name="deploy-the-user-portal-on-the-same-server-as-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server と同じサーバーにユーザー ポータルをデプロイする
-Azure Multi-Factor Authentication Server と同じサーバーにユーザー ポータルをインストールするには、次の前提条件が必要です。
+Azure Multi-Factor Authentication Server と同じサーバーにユーザー ポータルをインストールするには、前提条件となる次のものが必要です。
 
 * asp.net と IIS 6 メタベース互換性を含む IIS (IIS 7 以降の場合)
-* ログインしているユーザーに、コンピューターとドメイン (該当する場合) に対する管理者権限が必要です。  このアカウントには Active Directory セキュリティ グループを作成するためのアクセス許可が必要だからです。
+* コンピューターとドメイン (該当する場合) に対する管理者権限が付与されたアカウント。 このアカウントには Active Directory セキュリティ グループを作成するためのアクセス許可が必要です。
 
-### <a name="to-deploy-the-user-portal"></a>ユーザー ポータルをデプロイするには
+ユーザー ポータルをデプロイするには、次の手順を実行します。
+
 1. Azure Multi-Factor Authentication Server 内で、左側のメニューの **[ユーザー ポータル]** アイコンをクリックし、**[ユーザー ポータルのインストール]** をクリックします。
 2. **[次へ]**をクリックします。
 3. **[次へ]**をクリックします。
@@ -48,22 +54,23 @@ Azure Multi-Factor Authentication Server と同じサーバーにユーザー �
 
 <center>![セットアップ](./media/multi-factor-authentication-get-started-portal/portal.png)</center>
 
-## <a name="deploy-the-azure-multi-factor-authentication-server-user-portal-on-a-separate-server"></a>別のサーバーに Azure Multi-Factor Authentication Server ユーザー ポータルをデプロイする
-Microsoft Authenticator アプリにユーザー ポータルとの通信を許可するには、次の要件を満たしてください。 
+## <a name="deploy-the-user-portal-on-a-separate-server"></a>ユーザー ポータルを別のサーバーにデプロイする
+Azure Multi-Factor Authentication Server が実行されているサーバーがインターネットに接続していない場合、ユーザー ポータルはインターネットに接続している別のサーバーにインストールする必要があります。 
 
-* Azure Multi-Factor Authentication Server の V6.0 以降を使用している必要があります。
-* Microsoft® インターネット インフォメーション サービス (IIS) 6.x、IIS 7.x 以降を実行している、インターネットに接続された Web サーバーに、ユーザー ポータルがインストールされている必要があります。
+認証方法の 1 つとして Microsoft Authenticator アプリが組織で使用されていて、ユーザー ポータルを独自のサーバーにデプロイしたい場合、次の要件を満たす必要があります。 
+
+* v6.0 以上の Azure Multi-Factor Authentication Server を使用します。
+* Microsoft インターネット インフォメーション サービス (IIS) 6.x 以上を実行している、インターネットに接続された Web サーバーにユーザー ポータルをインストールします。
 * IIS 6.x を使用している場合は、ASP.NET v2.0.50727 がインストールおよび登録され、**[許可]** に設定されていることを確認します。
-* IIS 7.x 以降を使用するときに必要な役割サービスには、ASP.NET および IIS 6 メタベース互換が含まれます。
-* ユーザー ポータルは、SSL 証明書で保護されている必要があります。
-* Azure Multi-Factor Authentication Web サービス SDK が、Azure Multi-Factor Authentication Server がインストールされているサーバー上の IIS 6.x または IIS 7.x 以降にインストールされている必要があります。
-* Azure Multi-Factor Authentication Web サービス SDK は、SSL 証明書で保護されている必要があります。
-* ユーザー ポータルは、SSL 経由で Azure Multi-Factor Authentication Web サービス SDK に接続できる必要があります。
-* ユーザー ポータルは、"PhoneFactor Admins" セキュリティ グループのサービス アカウントの資格情報を使用して、Azure Multi-Factor Authentication Web サービス SDK で認証できる必要があります。 このサービス アカウントとグループは、Azure Multi-Factor Authentication Server がドメインに参加しているサーバーで実行されている場合は、Active Directory に存在します。 このサービス アカウントとグループは、Azure Multi-Factor Authentication Server がドメインに参加していない場合、Azure Multi-Factor Authentication Server のローカルに存在します。
+* IIS 7.x 以上を使用している場合、ASP.NET と IIS 6 メタベース互換の役割サービスが必要です。
+* ユーザー ポータルを SSL 証明書でセキュリティ保護します。
+* Azure Multi-Factor Authentication Web サービス SDK を SSL 証明書でセキュリティ保護します。
+* ユーザー ポータルが SSL 経由で Azure Multi-Factor Authentication Web サービス SDK に接続できるようにします。
+* "PhoneFactor Admins" セキュリティ グループのサービス アカウントの資格情報を使用して、Azure Multi-Factor Authentication Web サービス SDK でユーザー ポータルを認証できるようにします。 このサービス アカウントとグループは、Azure Multi-Factor Authentication Server がドメインに参加しているサーバーで実行されている場合は、Active Directory に存在します。 このサービス アカウントとグループは、Azure Multi-Factor Authentication Server がドメインに参加していない場合、Azure Multi-Factor Authentication Server のローカルに存在します。
 
 Azure Multi-Factor Authentication Server 以外のサーバーでユーザー ポータルをインストールするには、次の 3 つの手順が必要です。
 
-1. Web サービス SDK のインストール
+1. Azure Multi-Factor Authentication Server と同じサーバーへの Web サービス SDK のインストール
 2. ユーザー ポータルのインストール
 3. Azure Multi-Factor Authentication Server のユーザー ポータル設定の構成
 
@@ -83,12 +90,14 @@ Web サービス SDK は、SSL 証明書で保護されている必要があり�
     `<add key="SSL_REQUIRED" value="false"/>`
 
 #### <a name="to-install-the-user-portal"></a>ユーザー ポータルをインストールするには
-1. Azure Multi-Factor Authentication Server サーバーで Windows エクスプ ローラーを開き、Azure Multi-Factor Authentication Server がインストールされているフォルダーに移動します (C:\Program Files\Multi-Factor Authentication Server など)。 ユーザー ポータルがインストールされるサーバーに応じて、MultiFactorAuthenticationUserPortalSetup インストール ファイルの 32 ビットまたは 64 ビット バージョンを選択します。 インターネットに接続されたサーバーにインストール ファイルをコピーします。
-2. インターネットに接続された Web サーバーで、セットアップ ファイルを管理者権限で実行する必要があります。 これを最も簡単に行うには、管理者としてコマンド プロンプトを開き、インストール ファイルがコピーされた場所に移動します。
+1. Azure MFA Server が実行されているサーバーでエクスプローラーを開き、Azure Multi-Factor Authentication Server がインストールされているフォルダー (例: C:\Program Files\Multi-Factor Authentication Server) に移動します。 32 ビット バージョンまたは 64 ビット バージョンの MultiFactorAuthenticationUserPortalSetup インストール ファイルを、インターネットに接続されたサーバーにコピーします。
+2. インターネットに接続された Web サーバーで、そのファイルを管理者権限で実行します。 これを最も簡単に行うには、管理者としてコマンド プロンプトを開き、インストール ファイルがコピーされた場所に移動します。
 3. MultiFactorAuthenticationUserPortalSetup64 のインストール ファイルを実行し、必要に応じて、サイトと仮想ディレクトリの名前を変更します。
 4. ユーザー ポータルのインストールを完了したら、C:\inetpub\wwwroot\MultiFactorAuth (または仮想ディレクトリ名に基づく適切なディレクトリ) に移動し、web.config ファイルを編集します。
-5. USE_WEB_SERVICE_SDK キーを見つけて、値を false から true に変更します。 WEB_SERVICE_SDK_AUTHENTICATION_USERNAME キーと WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD キーを見つけ、PhoneFactor Admins セキュリティ グループのサービス アカウントのユーザー名とパスワードに値を設定します (要件のセクションを参照)。 行末尾 (value=””/>) の引用符の間にユーザー名およびパスワードを入力するようにしてください。 修飾されたユーザー名 (domain\username や machine\username など) を使用する必要があります。
-6. pfup_pfwssdk_PfWsSdk 設定を見つけ、値を「http://localhost:4898/PfWsSdk.asmx」から Azure Multi-Factor Authentication Server で実行している Web サービス SDK の URL に変更します (https://computer1.domain.local/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx など)。 この接続には SSL が使用されているため、SSL 証明書がサーバー名に対して発行された後は、IP アドレスではなくサーバー名を使用して Web サービス SDK を参照してください。 サーバー名がインターネットに接続されているサーバーで IP アドレスに解決されない場合、そのサーバーの hosts ファイルにエントリを追加し、Azure Multi-Factor Authentication Server の名前を IP アドレスにマッピングします。 変更を行ったら、web.config ファイルを保存します。
+5. USE_WEB_SERVICE_SDK キーを見つけて、値を **false** から **true** に変更します。 
+6. WEB_SERVICE_SDK_AUTHENTICATION_USERNAME キーを見つけ、PhoneFactor Admins セキュリティ グループのサービス アカウントのユーザー名に値を設定します。 修飾されたユーザー名 (domain\username や machine\username など) を使用します。 
+7. WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD キーを見つけ、PhoneFactor Admins セキュリティ グループのサービス アカウントのパスワードに値を設定します。
+8. pfup_pfwssdk_PfWsSdk 設定を見つけ、値を「http://localhost:4898/PfWsSdk.asmx」から Azure Multi-Factor Authentication Server で実行している Web サービス SDK の URL に変更します (https://computer1.domain.local/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx など)。 この接続には SSL が使用されているため、SSL 証明書がサーバー名に対して発行された後は、IP アドレスではなくサーバー名を使用して Web サービス SDK を参照してください。 サーバー名がインターネットに接続されているサーバーで IP アドレスに解決されない場合、そのサーバーの hosts ファイルにエントリを追加し、Azure Multi-Factor Authentication Server の名前を IP アドレスにマッピングします。 変更を行ったら、web.config ファイルを保存します。
 
     config ファイルの編集の詳細については、[Azure Multi-Factor Authentication Server と AD FS を使用したリソースのセキュリティ保護](multi-factor-authentication-get-started-adfs-w2k12.md#edit-the-multifactorauthenticationadfsadapterconfig-file)に関する記事を参照してください。
 
@@ -121,29 +130,29 @@ Azure Multi-Factor Authentication Server にはユーザー ポータル用の�
 
 ### <a name="to-configure-the-user-portal-settings-in-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server のユーザー ポータル設定を構成するには
 1. Azure Multi-Factor Authentication Server で、**[ユーザー ポータル]** アイコンをクリックします。 [設定] タブで、**[ユーザー ポータル URL]** ボックスにユーザー ポータルの URL を入力します。 電子メール機能が有効な場合、この URL は、ユーザーが Azure Multi-Factor Authentication Server にインポートされるときに送信される電子メールに含まれます。
-2. ユーザー ポータルで使用する設定を選択します。 たとえば、ユーザーによる認証方法の制御を許可する場合は、ユーザーが選択できる方法と共に、**[ユーザーに認証方法の選択を許可する]** をオンにします。
+2. ユーザー ポータルで使用する設定を選択します。 たとえば、認証方法の選択をユーザーに許可する場合は、ユーザーが選択できる方法と共に、**[ユーザーに認証方法の選択を許可する]** をオンにします。
 3. 表示される設定について理解するには、右上隅の **[ヘルプ]** リンクをクリックします。
 
 <center>![セットアップ](./media/multi-factor-authentication-get-started-portal/config.png)</center>
 
 
 ## <a name="administrators-tab"></a>[管理者] タブ
-このタブでは、管理者特権を持つユーザーを追加できます。  管理者を追加するときに、管理者が受け取るアクセス許可を微調整できます。 **[追加]** ボタンをクリックし、ユーザーとアクセス許可を選択して、**[追加]** をクリックします。
+**[管理者]** タブを使用すると、管理特権が付与されるユーザーを追加できます。  管理者を追加するときに、管理者が受け取るアクセス許可を微調整できます。 **[追加]** ボタンをクリックし、ユーザーとアクセス許可を選択して、**[追加]** をクリックします。
 
 ![ユーザー ポータル管理者](./media/multi-factor-authentication-get-started-portal/admin.png)
 
 ## <a name="security-questions"></a>セキュリティの質問
-このタブでは、**[代替認証にセキュリティの質問を使用する]** オプションが選択されている場合にユーザーが回答する必要があるセキュリティの質問を指定できます。  Azure Multi-Factor Authentication Server には、既定の質問が用意されています。 質問の順序を変更したり、独自の質問を追加したりできます。  独自の質問を追加する場合は、質問の表示に使用する言語も指定できます。
+**[セキュリティの質問]** タブを使用すると、**[代替認証にセキュリティの質問を使用する]** オプションが選択されている場合にユーザーが回答する必要があるセキュリティの質問を指定できます。  Azure Multi-Factor Authentication Server には、既定の質問が用意されています。 質問の順序を変更したり、独自の質問を追加したりできます。  独自の質問を追加する場合は、質問の表示に使用する言語も指定できます。
 
 ![ユーザー ポータルのセキュリティの質問](./media/multi-factor-authentication-get-started-portal/secquestion.png)
 
 ## <a name="saml"></a>SAML
-このタブを使用して、SAML を使用する ID プロバイダーからの要求を受け入れるようにユーザー ポータルを構成します。  タイムアウト セッション、検証証明書、ログアウト リダイレクト URL を指定できます。
+**[SAML]** タブを使用すると、SAML を使用する ID プロバイダーからの要求を受け入れるようにユーザー ポータルを構成できます。  タイムアウト セッション、検証証明書、ログアウト リダイレクト URL を指定できます。
 
 ![SAML](./media/multi-factor-authentication-get-started-portal/saml.png)
 
-## <a name="trusted-ips"></a>信頼される IP
-このタブでは、追加できる単一の IP アドレスまたは IP アドレス範囲を指定できます。これにより、指定した IP アドレスの 1 つからサインインしたユーザーは 2 段階認証を完了する必要がなくなります。
+## <a name="trusted-ips"></a>信頼できる IP
+**[信頼できる IP]** タブを使用すると、追加できる単一の IP アドレスまたは IP アドレス範囲を指定できます。これにより、指定した IP アドレスの 1 つからサインインしたユーザーは 2 段階認証を完了する必要がなくなります。
 
 ![ユーザー ポータルの信頼できる IP](./media/multi-factor-authentication-get-started-portal/trusted.png)
 
