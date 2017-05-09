@@ -14,9 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2017
 ms.author: dekapur
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
 ms.openlocfilehash: 29dd21511b23e6dffdb1daf8b75ece28989c16e7
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/26/2017
 
 

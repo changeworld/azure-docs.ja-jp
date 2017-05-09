@@ -14,9 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/02/2017
 ms.author: amanbha
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
 ms.openlocfilehash: eef9c1ab69153d3a2e4d8e7363108703819823a7
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/20/2017
 
 

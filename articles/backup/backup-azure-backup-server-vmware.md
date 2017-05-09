@@ -13,9 +13,10 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 04/20/2017
 ms.author: markgal;
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
 ms.openlocfilehash: 34146bd110661c12c4ec1e11d34d7bdfa3cac688
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/21/2017
 
 

@@ -15,9 +15,10 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: lbosq
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
 ms.openlocfilehash: 4de9eb8f55bfda8b223417f5c1ed4e71b0f063c6
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/21/2017
 
 

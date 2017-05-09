@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: robinsh
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
 ms.openlocfilehash: 284b239860481cf76f647d78f6a7b5e2b7cf9a3b
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/26/2017
 
 

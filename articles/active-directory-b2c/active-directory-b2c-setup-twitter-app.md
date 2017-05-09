@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/06/2017
 ms.author: parakhj
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
 ms.openlocfilehash: f9e35ef2f0c3d6352e9dc7ea716a79fd61f1b949
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/22/2017
 
 

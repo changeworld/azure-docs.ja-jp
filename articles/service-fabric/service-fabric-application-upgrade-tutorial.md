@@ -14,9 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/07/2017
 ms.author: subramar
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
 ms.openlocfilehash: 2b1b12666b71bf173342d5864772a94b9625d38b
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/25/2017
 
 
