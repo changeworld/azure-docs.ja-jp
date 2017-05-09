@@ -14,9 +14,10 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
 ms.openlocfilehash: 331d82a987aebe422ca2f560d856dad9f1b733f3
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/05/2017
 
 
@@ -73,7 +74,7 @@ node.js には、コア ランタイムの最小限の機能セットが含ま�
        PS C:\node\expressapp\WebRole1> copy bin/www server.js
    
    このコマンドが完了すると、WebRole1 ディレクトリ内に **server.js** ファイルが作成されています。
-5. **server.js** を変更して、次の行から '.' 文字を&1; つ削除します。
+5. **server.js** を変更して、次の行から '.' 文字を 1 つ削除します。
    
        var app = require('../app');
    
