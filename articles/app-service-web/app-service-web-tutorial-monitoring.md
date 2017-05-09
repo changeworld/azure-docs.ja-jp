@@ -8,9 +8,10 @@ ms.author: byvinyal
 ms.date: 04/04/2017
 ms.topic: article
 ms.service: app-service-web
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
 ms.openlocfilehash: 8d9b4a4fa3b62659fc7e2aa1c6329fdc5e01fe39
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/21/2017
 
 ---

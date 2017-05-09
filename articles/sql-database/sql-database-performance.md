@@ -15,9 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 07/19/2016
 ms.author: sstein
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
 ms.openlocfilehash: 155e9ddb48c65ad1648e18eb306c9badc2cb27e8
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/20/2017
 
 

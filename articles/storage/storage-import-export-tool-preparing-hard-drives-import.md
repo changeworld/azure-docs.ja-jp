@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2017
 ms.author: muralikk
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
 ms.openlocfilehash: 04ac94a1c07c3ad2a9384f5cf5fca1341ebfa0d8
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/25/2017
 
 

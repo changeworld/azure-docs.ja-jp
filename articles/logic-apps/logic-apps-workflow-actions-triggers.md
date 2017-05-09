@@ -14,9 +14,10 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/17/2016
 ms.author: mandia
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
 ms.openlocfilehash: ff86340f18a2d3d13d55b7e0bcd4122d9b85ccd9
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/20/2017
 
 ---

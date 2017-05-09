@@ -14,9 +14,10 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: milanga;juliako;
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
 ms.openlocfilehash: 5a604f3538a0749f7f951926f451cc91504255d6
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/21/2017
 
 

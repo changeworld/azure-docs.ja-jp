@@ -15,9 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2017
 ms.author: jlian
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
 ms.openlocfilehash: 539a3e628dfec1088f683652bc9b743b87875d36
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/26/2017
 
 

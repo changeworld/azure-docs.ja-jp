@@ -16,9 +16,10 @@ ms.topic: article
 ms.date: 03/13/2017
 ms.author: guybo
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
 ms.openlocfilehash: 5f02d36bfc5aa390bba345f084ce530c27bb6520
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/21/2017
 
 
