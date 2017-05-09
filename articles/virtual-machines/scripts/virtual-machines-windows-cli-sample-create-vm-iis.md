@@ -10,14 +10,15 @@ tags:
 ms.assetid: 
 ms.service: virtual-machines-Windows
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: vm-Windows
 ms.workload: infrastructure
 ms.date: 02/28/2017
 ms.author: nepeters
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
 ms.openlocfilehash: ab824eca29dd0957199b708be818a451e94bdbbc
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/06/2017
 
 ---
