@@ -3,7 +3,7 @@ title: "Azure Active Directory でのカスタム ドメイン名の概念の概
 description: "シングル サインオン用のフェデレーションを含む、Azure Active Directory でカスタム ドメイン名を使用するための概念的なフレームワークについて説明します"
 services: active-directory
 documentationcenter: 
-author: jeffsta
+author: curtand
 manager: femila
 editor: 
 ms.assetid: fd0c5def-0da2-43af-81bc-76f4cfe86afd
@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 05/04/2017
 ms.author: curtand;jeffsta
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 12d41a77655c4892a9dc20979ef98b1bd39f94c5
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 028c1cab4f0229a06d37d2f325b384ee78a2b8f9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -55,16 +57,11 @@ Azure AD のカスタム ドメイン名を構成することによって、オ�
 Azure Web アプリでは、独自のメカニズムを使用して、ドメインの所有権を確認します。 ドメイン名は、Azure AD を使用しているサブスクリプションで Azure Web アプリによる使用について以前確認したことがあった場合でも、その Azure AD での使用について確認する必要があります。 Azure Web アプリでは、Web アプリをセキュリティで保護するディレクトリとは別のディレクトリで確認済みのドメイン名を使用できます。
 
 ## <a name="managing-domain-names"></a>ドメイン名を管理する
-ドメイン管理タスクは、Azure クラシック ポータルおよび PowerShell から実行できます。 多くのタスクは、Azure AD Graph API を (パブリック プレビューで) 使用して実行できます。
+ドメイン管理タスクは、Azure クラシック ポータルおよび PowerShell から実行できます。 多くのタスクは、Azure AD Graph API を使用して実行できます。
 
 * [カスタム ドメイン名を追加および確認する](active-directory-add-domain.md)
 * [Azure クラシック ポータルでドメインを管理する](active-directory-add-manage-domain-names.md)
 * [PowerShell を使用して Azure AD のドメイン名を管理する](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
 * [Azure AD Graph API を使用して Azure AD のドメイン名を管理する](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
