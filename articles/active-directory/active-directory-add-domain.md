@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/30/2016
+ms.date: 05/08/2016
 ms.author: curtand;jeffsta
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f1f3d6fa1ba29b0d43d29c7d9cccfc430fdd6f1e
 ms.openlocfilehash: 9803b4e41223bc979e4c0b0a4f22586a441c28df
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/22/2017
 
 

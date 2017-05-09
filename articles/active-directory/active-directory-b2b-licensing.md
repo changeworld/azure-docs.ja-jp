@@ -15,9 +15,10 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 04/12/2017
 ms.author: sasubram
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
 ms.openlocfilehash: 4e620f3d76caa25ac0e5afb134f37ffe263935f0
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/13/2017
 
 
@@ -52,7 +53,7 @@ B2B ゲスト ユーザーとは、パートナー組織から招待されてホ
 1. ホストがコンシューマー アドレスを使用して従業員を招待する場合
   1. これはライセンス ポリシーに準拠しておらず、現在は推奨できません。
 
-2.    ホスト組織が別の複合組織からユーザーを追加する場合
+2. ホスト組織が別の複合組織からユーザーを追加する場合
   1. このケースでユーザーは B2B API を使用して招待されますが、これは従来型の B2B ではありません。 理想として、これらの組織は他の組織ユーザーをメンバーとして招待するべきです (当社の API もこれなら可能です)。 この場合、これらのメンバーにライセンスを割り当てて、招待側組織のリソースにアクセスできるようにしなければなりません。
 
   2. 組織の中には、他の組織のユーザーをポリシー上「ゲスト」として追加したい場合もあるでしょう。 次の 2 つのケースがあります。
