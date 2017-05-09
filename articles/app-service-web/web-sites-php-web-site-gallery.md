@@ -14,9 +14,10 @@ ms.devlang: PHP
 ms.topic: hero-article
 ms.date: 04/25/2017
 ms.author: robmcm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 83ef925a8268873d09c4a1611a1f2341acd92ba7
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/20/2017
 
 
@@ -61,7 +62,7 @@ Azure Marketplace には、Microsoft、サード パーティ企業、および�
 5. **[Web アプリ]** ボックスに Web アプリの名前を入力します。
    
     Web アプリの URL は {name}.azurewebsites.net のようになるため、この名前は azurewebsites.net ドメイン内で一意である必要があります。 入力した名前が一意でない場合は、テキスト ボックスに赤色の感嘆符が表示されます。
-6. サブスクリプションが複数ある場合には、使用するものを&1; つ選択します。 
+6. サブスクリプションが複数ある場合には、使用するものを 1 つ選択します。 
 7. **リソース グループ** を選択するか、新しく作成します。
    
     リソース グループの詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。
@@ -82,7 +83,7 @@ Azure Marketplace には、Microsoft、サード パーティ企業、および�
     
      ![Web アプリの構成](./media/web-sites-php-web-site-gallery/configure.png)
     
-     Azure App Service によって、通常は&1; 分以内に Web アプリが作成されます。 進捗状況を監視するには、ポータル ページの上部にあるベル アイコンをクリックします。
+     Azure App Service によって、通常は 1 分以内に Web アプリが作成されます。 進捗状況を監視するには、ポータル ページの上部にあるベル アイコンをクリックします。
     
      ![進捗状況インジケーター](./media/web-sites-php-web-site-gallery/progress.png)
 
