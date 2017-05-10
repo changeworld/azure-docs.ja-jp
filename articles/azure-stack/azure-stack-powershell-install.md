@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: sngun
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
 ms.openlocfilehash: 3acfd728af944efef6e82dfe14ad52e726b5d635
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/21/2017
 
 
@@ -46,23 +47,28 @@ To learn about API version profiles and the cmdlets provided by them, refer to t
 
   ```powershell
   # Install the AzureRM.Bootstrapper module
-  Install-Module -Name AzureRm.BootStrapper
+  Install-Module `
+    -Name AzureRm.BootStrapper
   ```
 2. Run the following command to install the **2017-03-09-profile** version of the AzureRM modules for Compute, Storage, Network, Key Vault etc.  
 
   ```powershell
   # Installs and imports the API Version Profile required by Azure Stack into the current PowerShell session.
-  Use-AzureRmProfile -Profile 2017-03-09-profile
+  Use-AzureRmProfile `
+    -Profile 2017-03-09-profile
   ```
 3. In addition to the AzureRM modules, you should also install the Azure Stack-specific PowerShell modules such as AzureStackAdmin, and AzureStackStorage by running the following command:  
 
   ```powershell
-  Install-Module -Name AzureStack -RequiredVersion 1.2.9
+  Install-Module `
+    -Name AzureStack `
+    -RequiredVersion 1.2.9
   ```
 4. To confirm the installation, run the following command:  
 
   ```powershell
-  Get-Module -ListAvailable | where-Object {$_.Name -like “Azure*”}
+  Get-Module `
+    -ListAvailable | where-Object {$_.Name -like “Azure*”}
   ```
   If the installation is successful, the AzureRM and AzureStack modules are displayed in the output.
 

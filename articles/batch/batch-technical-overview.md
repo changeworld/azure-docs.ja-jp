@@ -12,12 +12,13 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/08/2017
+ms.date: 05/05/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
 ms.openlocfilehash: 8a850f8b1cccda631786f89f2c88647604fba9ed
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/15/2017
 
 

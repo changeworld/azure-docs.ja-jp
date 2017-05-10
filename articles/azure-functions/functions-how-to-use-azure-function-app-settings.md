@@ -132,6 +132,6 @@ App Service の設定を使用する方法の詳細については、[Azure App 
 + [Azure App Service の設定の構成](../app-service-web/web-sites-configure.md)
 + [Azure Functions の継続的なデプロイ](functions-continuous-deployment.md)
 
-[!INCLUDE [Getting Started Note](../../includes/functions-get-help.md)]
+
 
 

@@ -15,9 +15,10 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 03/14/2017
 ms.author: maroche
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
 ms.openlocfilehash: d68ed62022834c9417d820a7a64e30b47f71a1bd
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/31/2017
 
 

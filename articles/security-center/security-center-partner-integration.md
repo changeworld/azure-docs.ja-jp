@@ -12,7 +12,7 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/08/2017
+ms.date: 05/09/2017
 ms.author: yurid
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
@@ -58,7 +58,7 @@ Azure 環境の構成と定義されたセキュリティ ポリシーに応じ�
 
 パートナー ソリューションのデプロイが完了したら、Security Center のメイン ダッシュボードにあるパートナー ソリューションのタイルから、ソリューションの正常性に関する情報を確認したり、基本的な管理タスクを実行したりできます。 Security Center でのパートナー ソリューションの管理の詳細については、「[Monitoring partner solutions with Azure Security Center (Azure Security Center を使用したパートナー ソリューションの監視)](security-center-partner-solutions.md)」を参照してください。
 
-![パートナー統合](./media/security-center-partner-integration/security-center-partner-integration-fig1-newUI.png)
+![パートナー統合](./media/security-center-partner-integration/security-center-partner-integration-fig1-1-newUI.png)
 
 
 ## <a name="see-also"></a>関連項目
