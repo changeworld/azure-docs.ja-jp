@@ -51,7 +51,7 @@ Flow を使えば、オフィスの従業員がだれでも、開発者や IT �
 | デザイン ツール |ブラウザー上、UI のみ |ブラウザー上のほか、[Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md)、[コード ビュー](../logic-apps/logic-apps-author-definitions.md)が利用可能 |
 | DevOps |実稼働環境でのアドホックな開発 |[Azure リソース管理](../logic-apps/logic-apps-arm-provision.md) |
 | 管理者向けエクスペリエンス |[https://flow.microsoft.com](https://flow.microsoft.com) |[https://portal.azure.com](https://portal.azure.com) |
-| セキュリティ |標準的なプラクティス: [データ主権の確保](https://wikipedia.org/wiki/Technological_Sovereignty)、[機密性の高い保存データの暗号化](https://wikipedia.org/wiki/Data_at_rest#Encryption)など |Azure によるセキュリティ保証: [Azure セキュリティ](https://www.microsoft.com/trustcenter/Security/AzureSecurity)、[Security Center](https://azure.microsoft.com/services/security-center/)、[監査ログ](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/)など |
+| セキュリティ |標準的な実務慣行: [データの主権性の確保](https://wikipedia.org/wiki/Technological_Sovereignty)、[機密性の高い保存データの暗号化](https://wikipedia.org/wiki/Data_at_rest#Encryption)など |Azure によるセキュリティ保証: [Azure セキュリティ](https://www.microsoft.com/trustcenter/Security/AzureSecurity)、[Security Center](https://azure.microsoft.com/services/security-center/)、[監査ログ](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/)など |
 
 <a name="function"></a>
 
@@ -66,7 +66,7 @@ Azure Functions と Azure App Service WebJobs はどちらも開発者向けに�
 Functions は WebJobs の最も良い点を引き継ぎ、さらに改善しているという点で、WebJobs を自然な形で進化させたものとなっています。 WebJobs からの改善点は、以下のとおりです。 
 
 * 開発、テスト、コードの実行をブラウザー上で直接行えるよう合理化
-* [GitHub Webｈook](https://developer.github.com/webhooks/creating/)など、さらに多くの Azure サービスとサードパーティ サービスを統合済み
+* [GitHub webhook](https://developer.github.com/webhooks/creating/)など、さらに多くの Azure サービスとサードパーティ サービスを統合済み
 * 従量課金制を採用し、 [App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)の購入が不要
 * 自動の [動的スケーリング](functions-scale.md)
 * App Service を既にお使いのお客様については、App Service プランでの実行も可能 (このため、利用の少ないリソースを有効活用できます)
@@ -90,7 +90,7 @@ Functions は WebJobs の最も良い点を引き継ぎ、さらに改善して�
 | Python |試験段階 |○ |
 | JavaScript |○ |○ |
 
-最終的には、現時点で App Service を使って何をしているかに応じて、Functions と WebJobs のどちらを使用するかが変わります。 ある App Service アプリのコード スニペットを実行する必要があり、そのコード スニペットをアプリと同じ DevOps 環境で管理したい場合には、WebJobs を使用します。 他の Azure サービスまたはサードパーティ製アプリのコード スニペットを実行する必要がある場合、App Service アプリとは別の環境で統合コード スニペットを管理したい場合、または Logic Apps からコード スニペットを呼び出す必要がある場合には、Functions で改善された機能を使用します。  
+最終的には、現時点で App Service を使って何をしているかに応じて、Functions と WebJobs のどちらを使用するかが変わります。 ある App Service アプリのコード スニペットを実行する必要があり、そのコード スニペットをアプリと同じ DevOps 環境で管理したい場合には、WebJobs を使用します。 他の Azure サービスまたはサードパーティ製アプリのコード スニペットを実行する必要がある場合、App Service アプリとは別の環境で統合コード スニペットを管理したい場合、またはロジック アプリからコード スニペットを呼び出す必要がある場合には、Functions で改善された機能を使用します。  
 
 <a name="together"></a>
 
@@ -99,17 +99,17 @@ Functions は WebJobs の最も良い点を引き継ぎ、さらに改善して�
 
 * 単純なビジネスの最適化では、Flow を使用します。
 * 統合のシナリオが高度で Flow では対応できない場合、または DevOps 機能やセキュリティ コンプライアンス機能が必要な場合には、Logic Apps を使用します。
-* 統合シナリオのどこかのステップで大幅なカスタマイズまたは特殊なコードの使用が必要になる場合には、Functions アプリを作成し、ロジック アプリ内のアクションとして関数をトリガーします。
+* 統合シナリオのどこかのステップで大幅なカスタマイズまたは特殊なコードの使用が必要になる場合には、Function App を作成し、ロジック アプリ内のアクションとして関数をトリガーします。
 
-Flow では、Logic Apps を呼び出すことができます。 また、Logic Apps で Functions を呼び出したり、Functions で Logic Apps を呼び出したりすることもできます。 Flow、Logic Apps、Functions の統合は、今後ますます強まっていきます。 あるサービスで作成したものは、別のサービスで使用できます。 このため、これら 3 つのテクノロジに対する投資が無駄になることはありません。
+フローでは、ロジック アプリを呼び出すことができます。 また、ロジック アプリで関数を呼び出したり、関数でロジック アプリを呼び出したりすることもできます。 Flow、Logic Apps、Functions の統合は、今後ますます強まっていきます。 あるサービスで作成したものは、別のサービスで使用できます。 このため、これら 3 つのテクノロジに対する投資が無駄になることはありません。
 
 ## <a name="next-steps"></a>次のステップ
-最初の Flow、Logic Apps、Functions アプリ、または WebJobs を作成して、それぞれのサービスを使ってみましょう。 以下のリンクのなかから、お好きなものをクリックしてください。
+最初のフロー、ロジック アプリ、Function App、または Web ジョブを作成して、それぞれのサービスを使ってみましょう。 以下のリンクのなかから、お好きなものをクリックしてください。
 
 * [Get started with Microsoft Flow (Microsoft Flow の概要)](https://flow.microsoft.com/en-us/documentation/getting-started/)
-* [Logic Apps を作成します](../logic-apps/logic-apps-create-a-logic-app.md)
-* [初めての Azure Functions の作成](functions-create-first-azure-function.md)
-* [Visual Studio を使用して WebJobs を展開する](../app-service-web/websites-dotnet-deploy-webjobs.md)
+* [ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)
+* [初めての Azure 関数の作成](functions-create-first-azure-function.md)
+* [Visual Studio を使用した Web ジョブの展開](../app-service-web/websites-dotnet-deploy-webjobs.md)
 
 ここで紹介した統合サービスの詳しい情報については、以下のリンクを参照してください。
 
