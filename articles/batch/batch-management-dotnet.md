@@ -13,13 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 03/15/2017
+ms.date: 04/24/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: f635bbd8652b97c1067473e56565bf7c6520a2ba
-ms.lasthandoff: 03/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: eafde9258222a2ab09ade2e366f9cc595a303dec
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -173,7 +174,7 @@ Batch Management .NET の動作を確認するには、GitHub の [AccountManagm
 
 新しく作成した Batch アカウントとリソース グループを削除する前に、[Azure Portal][azure_portal] でこれらを確認できます。
 
-サンプル アプリケーションを正常に実行するには、Azure Portal で Azure AD テナントに登録し、Azure Resource Manager API にアクセス許可を付与しておく必要があります。 [Azure AD を使用した Batch 管理アプリケーションの認証](batch-aad-auth.md#use-azure-ad-with-batch-service-solutions)に関するセクションに記載されている手順に従います。
+サンプル アプリケーションを正常に実行するには、Azure Portal で Azure AD テナントに登録し、Azure Resource Manager API にアクセス許可を付与しておく必要があります。 「[Batch 管理ソリューションの認証に Active Directory を使用する](batch-aad-auth-management.md)」に記載されている手順に従います。
 
 
 [aad_about]: ../active-directory/active-directory-whatis.md "Azure Active Directory とは"

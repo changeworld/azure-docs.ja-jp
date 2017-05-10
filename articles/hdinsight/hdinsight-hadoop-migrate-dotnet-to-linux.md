@@ -16,10 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/12/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: a1cf0b1c7be5e23046c4217965b2ca75ae4b313c
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 538b0064fef8d54c5cac9d4dd43f70ebf1772819
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -29,7 +30,7 @@ Linux ベースの HDInsight クラスターは、[Mono (https://mono-project.co
 
 ## <a name="mono-compatibility-with-net"></a>Mono と .NET の互換性
 
-Mono バージョン 4.2.1 は HDInsight バージョン 3.5 に付属しています。 HDInsight に付属する Mono のバージョンの詳細については、「[HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md)」を参照してください。
+Mono バージョン 4.2.1 は HDInsight バージョン 3.5 に付属しています。 HDInsight に付属する Mono のバージョンの詳細については、「[HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md)」を参照してください。 特定のバージョンの Mono をインストールするには、[Mono のインストールと更新](hdinsight-hadoop-install-mono.md)に関するドキュメントを参照してください。
 
 Mono と .NET 間の互換性の詳細については、[Mono の互換性に関するドキュメント (http://www.mono-project.com/docs/about-mono/compatibility/)](http://www.mono-project.com/docs/about-mono/compatibility/) を参照してください。
 
