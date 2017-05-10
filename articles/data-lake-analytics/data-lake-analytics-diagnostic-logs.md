@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/03/2017
 ms.author: larryfr
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: fb2fe0efe00a7ef7fd1c22ca94c76b2d5f4c5510
 ms.openlocfilehash: 9366bce634fd3855080d267c797e2fecb8ab4ce9
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/11/2017
 
 
@@ -73,7 +74,7 @@ ms.lasthandoff: 02/11/2017
 
 ## <a name="view-logs"></a>ログを表示する。
 
-Data Lake Analytics アカウントのログ データを確認する方法は&2; つあります。
+Data Lake Analytics アカウントのログ データを確認する方法は 2 つあります。
 
 * Data Lake Analytics アカウントの設定から
 * データが格納されている Azure Storage アカウントから
@@ -95,7 +96,7 @@ Data Lake Analytics アカウントのログ データを確認する方法は&2
 
 ### <a name="from-the-azure-storage-account-that-contains-log-data"></a>ログ データを含む Azure Storage アカウントから
 
-1. ログ記録用の Data Lake Analytics が関連付けられている [Azure Storage アカウント] ブレードを開き、[BLOB] をクリックします。 **[BLOB サービス]** ブレードに&2; つのコンテナーが一覧表示されます。
+1. ログ記録用の Data Lake Analytics が関連付けられている [Azure Storage アカウント] ブレードを開き、[BLOB] をクリックします。 **[BLOB サービス]** ブレードに 2 つのコンテナーが一覧表示されます。
 
     ![診断ログの表示](./media/data-lake-analytics-diagnostic-logs/view-diagnostic-logs-storage-account.png "診断ログの表示")
 
@@ -120,7 +121,7 @@ Data Lake Analytics アカウントのログ データを確認する方法は&2
                                     PT1H.json
 
    > [!NOTE]
-   > パスのエントリの `##` の部分には、ログを作成した年、月、日、時間の情報が入ります。 Data Lake Analytics では、ログのファイルを&1; 時間に&1; つ作成します。このため、`m=` の値は常に `00` となります。
+   > パスのエントリの `##` の部分には、ログを作成した年、月、日、時間の情報が入ります。 Data Lake Analytics では、ログのファイルを 1 時間に 1 つ作成します。このため、`m=` の値は常に `00` となります。
 
     たとえば、監査ログへの完全パスは以下のようになります。
 
@@ -136,7 +137,7 @@ Data Lake Analytics アカウントのログ データを確認する方法は&2
 
 ### <a name="request-logs"></a>要求ログ
 
-JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB には、ログ オブジェクトの配列を含む、 **レコード** と呼ばれるルート オブジェクトが&1; つあります。
+JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB には、ログ オブジェクトの配列を含む、 **レコード** と呼ばれるルート オブジェクトが 1 つあります。
 
     {
     "records":
@@ -193,7 +194,7 @@ JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB
 
 ### <a name="audit-logs"></a>監査ログ
 
-JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB には、ログ オブジェクトの配列を含む、 **レコード** と呼ばれるルート オブジェクトが&1; つあります。
+JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB には、ログ オブジェクトの配列を含む、 **レコード** と呼ばれるルート オブジェクトが 1 つあります。
 
     {
     "records":
@@ -232,7 +233,7 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 | プロパティ |JSON |詳しくは、次のセクション (「監査ログのプロパティのスキーマ」) をご覧ください |
 
 > [!NOTE]
-> **resultType** と **resultSignature** は、操作の結果に関する情報を示すものであり、操作が完了した場合にのみ値が入ります。 この&2; つには、たとえば **operationName** の値が **JobStarted** または **JobEnded** の場合に値が入ります。
+> **resultType** と **resultSignature** は、操作の結果に関する情報を示すものであり、操作が完了した場合にのみ値が入ります。 この 2 つには、たとえば **operationName** の値が **JobStarted** または **JobEnded** の場合に値が入ります。
 >
 >
 
@@ -249,7 +250,7 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 | 並列処理 |文字列 |このジョブの送信中にこのジョブについて要求された Data Lake Analytics ユニットの数。 |
 
 > [!NOTE]
-> **SubmitTime**、**StartTime**、**EndTime**、**Parallelism** の&4; つは、操作に関する情報を提供するものであり、操作が開始または完了した場合にのみ値が入ります。 たとえば、**SubmitTime** であれば、**operationName** が **JobSubmitted** になった後に値が入ります。
+> **SubmitTime**、**StartTime**、**EndTime**、**Parallelism** の 4 つは、操作に関する情報を提供するものであり、操作が開始または完了した場合にのみ値が入ります。 たとえば、**SubmitTime** であれば、**operationName** が **JobSubmitted** になった後に値が入ります。
 
 ## <a name="process-the-log-data"></a>ログ データの処理
 
