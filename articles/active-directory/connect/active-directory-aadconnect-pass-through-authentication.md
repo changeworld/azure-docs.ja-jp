@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/21/2017
+ms.date: 04/24/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 0f54fb7d2d8cf010baf79409bc6a528d34982500
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: d3c3f6ba0da73a8297f437a56f190f90274957ab
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -34,6 +35,7 @@ Azure AD パススルー認証は、このような組織にシンプルなソ�
 - 使いやすさ
   - 複雑なオンプレミス デプロイやネットワーク構成を必要とせずに、パスワード検証が実行されます。
   - パスワード検証要求をリッスンし、要求に応答する軽量オンプレミス コネクタのみが使用されます。
+  - オンプレミス コネクタには自動更新機能があるため、機能の改善とバグの修正を自動的に受信できます。
   - [Azure AD Connect](active-directory-aadconnect.md) と共に構成できます。 軽量オンプレミス コネクタは、Azure AD Connect と同じサーバーにインストールされます。
 - セキュリティ保護
   - オンプレミス パスワードが何らかの形でクラウドに保存されることはありません。
@@ -63,7 +65,7 @@ Azure AD パススルー認証は、このような組織にシンプルなソ�
 - Windows 10 デバイスの Azure AD Join。
 
 >[!IMPORTANT]
->パススルー認証で現在サポートされていないシナリオ (従来の Office クライアント アプリケーション、Exchange ActiveSync、Window 10 デバイスの Azure AD Join) に対処するために、パススルー認証を有効にすると、パスワード同期も既定で有効になります。 パスワード同期は、これらの特定のシナリオでのみフォールバックとして機能します。 これが不要な場合は、Azure AD Connect の [[オプション機能]](active-directory-aadconnect-get-started-custom.md#optional-features) ページでパスワード同期を無効にすることができます。
+>パススルー認証機能で現在サポートされていないシナリオ (従来の Office クライアント アプリケーション、Exchange ActiveSync、Window 10 デバイスの Azure AD Join) に対処するために、パススルー認証を有効にすると、パスワード同期も既定で有効になります。 パスワード同期は、これらの特定のシナリオでのみフォールバックとして機能します。 これが不要な場合は、Azure AD Connect ウィザードの [[オプション機能]](active-directory-aadconnect-get-started-custom.md#optional-features) ページでパスワード同期を無効にすることができます。
 
 ## <a name="how-to-enable-azure-ad-pass-through-authentication"></a>Azure AD パススルー認証を有効にする方法
 
@@ -74,25 +76,27 @@ Azure AD パススルー認証を有効にするには、次の前提条件を�
 - 自分がグローバル管理者である Azure AD テナント。
 
 >[!NOTE]
->オンプレミス サービスが失敗したり利用できなくなった場合にテナントの構成を管理できるように、グローバル管理者アカウントはクラウド専用のアカウントにすることをお勧めします。 クラウド専用のグローバル管理者アカウントを追加する手順については、[こちら](../active-directory-users-create-azure-portal.md)をご覧ください。
+>オンプレミス サービスが失敗したり利用できなくなった場合にテナントの構成を管理できるように、グローバル管理者アカウントはクラウド専用のアカウントにすることを強くお勧めします。 クラウド専用のグローバル管理者アカウントを追加する手順については、[こちら](../active-directory-users-create-azure-portal.md)をご覧ください。
 
-- Azure AD Connect バージョン 1.1.484.0 以降。 最新バージョンの [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) を使用することをお勧めします。
+- Azure AD Connect バージョン 1.1.486.0 以降。 最新バージョンの [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) を使用することをお勧めします。
 - Azure AD Connect を実行するための、Windows Server 2012 R2 以降を実行しているサーバー。
   - このサーバーは、パスワードを検証する必要があるユーザーと同じ AD フォレストのメンバーである必要があります。
-  - コネクタは、Azure AD Connect と同じサーバーにインストールされます。
+  - パススルー認証コネクタは Azure AD Connect と同じサーバーにインストールされることに注意してください。 コネクタのバージョンが 1.5.58.0 以上であることを確認してください。
 
 >[!NOTE]
 >AD フォレスト間にフォレストの信頼があり、名前サフィックス ルーティングが正しく構成されていれば、複数フォレスト環境がサポートされます。
 
-- 高可用性を実現する場合は、スタンドアロン コネクタをインストールするために、Windows Server 2012 R2 以降を実行する追加のサーバーが必要になります。
+- 高可用性を実現する場合は、スタンドアロン コネクタ (1.5.58.0 以降のバージョンである必要があります) をインストールするために、Windows Server 2012 R2 以降を実行する追加のサーバーが必要になります。
 - コネクタと Azure AD の間にファイアウォールがある場合は、次の点を確認してください。
     - URL フィルタリングが有効になっている場合は、コネクタが次の URL と通信できることを確認します。
         -  \*.msappproxy.net
         -  \*.servicebus.windows.net
     - また、コネクタは [Azure データ センターの IP 範囲](https://www.microsoft.com/en-us/download/details.aspx?id=41653)に対して直接 IP 接続します。
     - コネクタがクライアント証明書を使用して Azure AD と通信する際に、ファイアウォールによって SSL 検査が実行されていないことを確認します。
-    - コネクタがポート 80 およびポート 443 経由で Azure AD に対する HTTPS (TCP) 要求を実行できることを確認します。
+    - コネクタがポート 80 およびポート 443 経由で Azure AD に対する送信要求を実行できることを確認します。
       - ファイアウォールが送信元ユーザーに応じて規則を適用している場合は、ネットワーク サービスとして実行されている Windows サービスからのトラフィックに対してこれらのポートを開放します。
+      - コネクタは、SSL 証明書失効リストをダウンロードするために、ポート 80 で HTTP 要求を行います。 これは、自動更新機能が正常に機能するためにも必要です。
+      - コネクタは、機能の有効化と無効化、コネクタの登録、コネクタ更新プログラムのダウンロード、すべてのユーザー サインイン要求の処理など、他のすべての操作についてはポート 443 で HTTPS 要求を行います。
 
 >[!NOTE]
 >コネクタがサービスと通信する際に必要なポートの数を減らすために、最近改善が行われました。 古いバージョンの Azure AD Connect やスタンドアロン コネクタを実行している場合は、その他のポート (5671、8080、9090、9091、9350、9352、10100 ～ 10120) を引き続き開いておく必要があります。
@@ -122,7 +126,7 @@ Azure AD Connect を既にインストールしている場合は、[高速イ�
 
 この手順では、コネクタ ソフトウェアをサーバーにダウンロードしてインストールします。
 
-1.    最新のコネクタを[ダウンロード](https://go.microsoft.com/fwlink/?linkid=837580)します。
+1.    最新のコネクタを[ダウンロード](https://go.microsoft.com/fwlink/?linkid=837580)します。 コネクタのバージョンが 1.5.58.0 以上であることを確認してください。
 2.    管理者としてコマンド プロンプトを開きます。
 3.    次のコマンドを実行します (/q はサイレント インストールを意味します。このインストールでは、使用許諾契約書への同意を求めるメッセージは表示されません)。
 
@@ -173,7 +177,7 @@ AADApplicationProxyConnectorInstaller.exe REGISTERCONNECTOR="false" /q
 
 #### <a name="an-unexpected-error-occured"></a>予期しないエラーが発生する
 
-サーバーから[コネクタのログを収集](#how-to-collect-pass-through-authentication-connector-logs?)し、問題について Microsoft サポートに連絡してください。
+サーバーから[コネクタのログを収集](#collecting-pass-through-authentication-connector-logs)し、問題について Microsoft サポートに連絡してください。
 
 ### <a name="issues-during-registration-of-connectors"></a>コネクタの登録時の問題
 
@@ -181,9 +185,13 @@ AADApplicationProxyConnectorInstaller.exe REGISTERCONNECTOR="false" /q
 
 コネクタがインストールされているサーバーが、[こちら](#pre-requisites)に記載されているサービス URL およびポートと通信できることを確認します。
 
+#### <a name="registration-of-the-connector-failed-due-to-token-or-account-authorization-errors"></a>トークンまたはアカウント認証エラーのため、コネクタの登録に失敗した
+
+すべての Azure AD Connect またはスタンドアロンコネクタのインストールおよび登録操作に、クラウド専用グローバル管理者アカウントを使用していることを確認します。 MFA 対応グローバル管理者アカウントには既知の問題があります。回避策として、MFA を一時的にオフにします (操作を完了するためのみ)。
+
 #### <a name="an-unexpected-error-occurred"></a>予期しないエラーが発生する
 
-サーバーから[コネクタのログを収集](#how-to-collect-pass-through-authentication-connector-logs?)し、問題について Microsoft サポートに連絡してください。
+サーバーから[コネクタのログを収集](#collecting-pass-through-authentication-connector-logs)し、問題について Microsoft サポートに連絡してください。
 
 ### <a name="issues-during-un-installation-of-connectors"></a>コネクタのアンインストール時の問題
 
@@ -197,11 +205,15 @@ Azure AD Connect をアンインストールする前に、[高可用性](#ensur
 
 #### <a name="the-enabling-of-the-feature-failed-because-there-were-no-connectors-available"></a>使用できるコネクタがないため、機能を有効にすることができない
 
-テナントでパススルー認証を有効にするには、アクティブなコネクタ サーバーが少なくとも 1 つは必要です。 コネクタをインストールするには、Azure AD Connect をインストールするか、スタンドアロン コネクタをインストールします。
+テナントでパススルー認証を有効にするには、アクティブなコネクタが少なくとも 1 つは必要です。 コネクタをインストールするには、Azure AD Connect またはスタンドアロン コネクタをインストールします。
 
 #### <a name="the-enabling-of-the-feature-failed-due-to-blocked-ports"></a>ポートがブロックされているため、機能を有効にすることができない
 
 Azure AD Connect がインストールされているサーバーが、[こちら](#pre-requisites)に記載されているサービス URL およびポートと通信できることを確認します。
+
+#### <a name="the-enabling-of-the-feature-failed-due-to-token-or-account-authorization-errors"></a>トークンまたはアカウント認証エラーのため、機能の有効化に失敗した
+
+機能を有効にする場合は、クラウド専用グローバル管理者アカウントを使用するようにします。 Multi-Factor Authentication (MFA) 対応グローバル管理者アカウントには既知の問題があります。回避策として、MFA を一時的にオフにします (操作を完了するためのみ)。
 
 ### <a name="issues-while-operating-the-pass-through-authentication-feature"></a>パススルー認証機能の動作中の問題
 
@@ -217,7 +229,7 @@ Azure AD サインイン画面でユーザーに表示されるエラーがあ�
 |AADSTS80005|Validation encountered unpredictable WebException (検証で予測外の WebException が発生しました)|これは一時的なエラーの可能性があります。 要求をやり直してください。 引き続きエラーが発生する場合は、Microsoft サポートに連絡してください。
 |AADSTS80007|An error occurred communicating with Active Directory (Active Directory との通信中にエラーが発生しました)|Check the connector logs for more information and verify that Active Directory is operating as expected. (コネクタ ログで詳細を確認し、Active Directory が期待通りに動作していることを確認してください)
 
-### <a name="how-to-collect-pass-through-authentication-connector-logs"></a>パススルー認証コネクタのログを収集する方法
+### <a name="collecting-pass-through-authentication-connector-logs"></a>パススルー認証コネクタのログの収集
 
 発生する問題の種類に応じて、異なる場所にあるパススルー認証コネクタのログを確認する必要があります。
 

@@ -16,10 +16,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: f141d4f58727696c5f493c9e8eb19feb518e8968
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: d5854a623f656f08c428cd2f6792f25582362990
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -53,6 +54,8 @@ Hive と Pig では、両方とも、外部のアプリケーションにデー�
 * [Mono (https://mono-project.com)](https://mono-project.com) を使用した __Linux ベースの HDInsight__ クラスターで .NET アプリケーションを実行します。 Mono バージョン 4.2.1 は HDInsight バージョン 3.5 に付属しています。
 
     .NET Framework のバージョンと Mono の互換性の詳細については、「[Mono compatibility](http://www.mono-project.com/docs/about-mono/compatibility/)」 (Mono の互換性) を参照してください。
+
+    特定のバージョンの Mono を使用する方法については、[Mono のインストールと更新](hdinsight-hadoop-install-mono.md)に関するドキュメントを参照してください。
 
 * __Windows ベースの HDInsight__ クラスターでは、Microsoft .NET CLR を使用して、.NET アプリケーションを実行します。
 
@@ -167,13 +170,13 @@ HDInsight バージョンに付属する Mono と .NET framework のバージョ
 
 3. 入力を求められた場合は、Azure サブスクリプションの資格情報を入力し、 **[サインイン]**をクリックします。
 
-4. このアプリケーションをデプロイする HDInsight クラスターを展開します。 "__(既定のストレージ アカウント)__" のテキストが表示されたエントリが一覧表示されます。
+4. このアプリケーションをデプロイする HDInsight クラスターを展開します。 エントリとテキスト __(既定のストレージ アカウント)__ が一覧表示されます。
 
     ![クラスターのストレージ アカウントを表示するサーバー エクスプローラー](./media/hdinsight-hadoop-hive-pig-udf-dotnet-csharp/storage.png)
 
-    * このエントリを展開できる場合は、クラスターの既定のストレージとして __Azure ストレージ アカウント__を使用しています。 クラスターの既定のストレージにファイルを表示するには、エントリを展開し、[__(既定のコンテナー)__] をダブルクリックします。
+    * このエントリを展開できる場合は、クラスターの既定のストレージとして __Azure Storage アカウント__を使用します。 クラスターの既定のストレージにファイルを表示するには、エントリを展開し、__[(既定のコンテナー)]__ をダブルクリックします。
 
-    * このエントリを展開できない場合は、クラスターの既定のストレージとして __Azure Data Lake Store__ を使用しています。 クラスターの既定のストレージにファイルを表示するには、[__(既定のコンテナー)__] エントリをダブルクリックします。
+    * このエントリを展開できない場合は、クラスターの既定のストレージとして __Azure Data Lake Store__ を使用します。 クラスターの既定のストレージにファイルを表示するには、__(既定のストレージ アカウント)__ エントリをダブルクリックします。
 
 6. .exe ファイルをアップロードするには、次のいずれかの方法を使用します。
 

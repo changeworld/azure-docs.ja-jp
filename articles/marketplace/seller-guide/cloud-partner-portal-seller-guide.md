@@ -12,10 +12,11 @@ ms.workload: na
 ms.date: 03/30/2017
 ms.author: rupesk@microsoft.com
 ms.robots: NOINDEX, NOFOLLOW
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: e302a87a25926a1ab48eb8168d26352d4c259c3f
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 59a0f0ec1b7b576339a45be26be8543ac0650a8a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 
 

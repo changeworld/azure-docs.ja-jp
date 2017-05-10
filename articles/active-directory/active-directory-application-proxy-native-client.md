@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 04/23/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 164e3b0af47cd98f2d20fce7344230608e9fbe8c
-ms.openlocfilehash: 6762a5c88b7a3bbc0424729865ae312d74f9059f
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: 24396f7c82bcc0fb076c4fceca0ec4b0963d36e8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -35,7 +37,7 @@ Azure Active Directory アプリケーション プロキシは、SharePoint、O
 
 1. Azure クラシック ポータルにサインインします。
 2. 左側のメニューの [Active Directory] アイコンを選択し、次にディレクトリを選択します。
-3. 上部のメニューで、 **[アプリケーション]**をクリックします。 ディレクトリに追加されているアプリケーションがない場合、このページには **[アプリケーションの追加]** リンクだけが表示されます。 このリンクをクリックします。または、コマンド バーの **[追加]** をクリックすることもできます。
+3. 上部のメニューで、 **[アプリケーション]**をクリックします。 アプリケーションがディレクトリに追加されていない場合は、このページには **[アプリケーションの追加]** リンクのみが表示されます。 リンクをクリックするか、コマンド バーの **[追加]** ボタンをクリックします。
 4. **[実行する作業を選択してください]** ページで、**[組織で開発中のアプリケーションを追加]** リンクをクリックします。
 5. **[アプリケーション情報の指定]** ページで、アプリケーションの名前を指定し、**[ネイティブ クライアント アプリケーション]** を選択します。 矢印アイコンをクリックして続行します。
 6. **[アプリケーション情報]** ページで、ネイティブ クライアント アプリケーションの**リダイレクト URI** を指定し、チェックマークをクリックして完了します。
@@ -51,7 +53,7 @@ Azure Active Directory アプリケーション プロキシは、SharePoint、O
 ![[他のアプリケーションに対するアクセス許可] のスクリーンショット - アプリケーションの追加](./media/active-directory-application-proxy-native-client/delegate_native_app.png)
 
 ## <a name="step-4-edit-the-active-directory-authentication-library"></a>手順 4: Active Directory 認証ライブラリの編集
-Active Directory Authentication Library (ADAL) の認証コンテキストのネイティブ アプリケーション コードを編集して、次の情報を含めます。
+Active Directory Authentication Library (ADAL) の認証コンテキストのネイティブ アプリケーション コードを編集して、次のテキストを含めます。
 
         // Acquire Access Token from AAD for Proxy Application
         AuthenticationContext authContext = new AuthenticationContext("https://login.microsoftonline.com/<TenantId>");
@@ -83,9 +85,4 @@ Active Directory Authentication Library (ADAL) の認証コンテキストのネ
 * [シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)
 
 最新のニュースと更新情報については、 [アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
