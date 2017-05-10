@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2017
 ms.author: ashwink
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: f0ab9d4bea3a3f7f1e1a0af2206e7b5641be1288
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/03/2017
 
 
@@ -35,7 +36,7 @@ Azure ポータルから Cloud Services とサーバー ファーム (Web Apps) 
 
 * **[スケールの基準]** メトリックを選択します。
 
-![[スケールの基準]](./media/insights-autoscale-to-webhook-email/insights-autoscale-scale-by.png)
+![[スケールの基準]](./media/insights-autoscale-to-webhook-email/insights-autoscale-notify.png)
 
 ## <a name="virtual-machine-scale-sets"></a>仮想マシン スケール セット
 Resource Manager で作成された比較的新しい仮想マシン (仮想マシン スケール セット) の場合、REST API、Resource Manager テンプレート、PowerShell、CLI を使用してこれを構成できます。 ポータルのインターフェイスはまだ使用できません。
@@ -126,5 +127,4 @@ webhook はトークンベースの認証を利用して認証できます。ク
 | oldCapacity |○ |自動スケールによってスケール操作が実行された時点の (以前の) インスタンス数。 |
 | newCapacity |○ |自動スケールによってリソースがスケールされた後の新しいインスタンス数。 |
 | プロパティ |いいえ |省略可能。 <Key, Value> ペアのセット (例: Dictionary <String, String>)。 properties フィールドは省略可能です。 カスタム ユーザー インターフェイスまたはロジック アプリ ベースのワークフローでは、ペイロードを使用して渡すことのできるキーと値を入力できます。 Webhook URI 自体を (クエリ パラメーターとして) 使用して、カスタム プロパティを送信 Webhook 呼び出しに戻すこともできます。 |
-
 

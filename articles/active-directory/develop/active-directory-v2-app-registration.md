@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 05/01/2017
 ms.author: dastrock
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ba958d029e5bf1bc914a2dff4b6c09282d578c67
 ms.openlocfilehash: 4a71d02d37e55ae08035632c323283438b3f66c6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -36,7 +38,6 @@ Microsoft の個人または職場/学校アカウントのいずれかでサイ
 サインアップできましたか? おそらく空の Microsoft アプリの一覧が表示されているはずです。  これを変更してみましょう。
 
 **[アプリの追加]** をクリックし、名前を付けます。  ポータルにより、アプリにグローバルに一意のアプリケーション ID が割り当てられます。これは、後ほどコードで使用します。  アプリに API を呼び出すためのアクセス トークンが必要なサーバー側コンポーネントが含まれる場合 (Office、Azure、独自の Web API など)、**アプリケーションのシークレット**を作成することもできます。
-<!-- TODO: Link for app secrets -->
 
 次に、アプリで使用するプラットフォームを追加します。
 
@@ -54,10 +55,5 @@ Microsoft の個人または職場/学校アカウントのいずれかでサイ
 Microsoft アプリを構築したら、いずれかの v2.0 クイック スタート チュートリアルを実行します。  以下に、推奨事項をいくつか示します。
 
 [!INCLUDE [active-directory-v2-quickstart-table](../../../includes/active-directory-v2-quickstart-table.md)]
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

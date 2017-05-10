@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2017
 ms.author: sngun
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
 ms.openlocfilehash: 98540c8cdd47958f14ed5156cc60ce4955b615e5
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/06/2017
 
 
@@ -46,10 +47,14 @@ To download the tools folder, run the following command:
 cd \
 
 # Download the tools archive
-invoke-webrequest https://github.com/Azure/AzureStack-Tools/archive/master.zip -OutFile master.zip
+invoke-webrequest `
+  https://github.com/Azure/AzureStack-Tools/archive/master.zip `
+  -OutFile master.zip
 
 # Expand the downloaded files
-expand-archive master.zip -DestinationPath . -Force
+expand-archive master.zip `
+  -DestinationPath . `
+  -Force
 
 # Change to the tools directory
 cd AzureStack-Tools-master

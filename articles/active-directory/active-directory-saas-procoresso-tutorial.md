@@ -13,9 +13,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: jeedes
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: 042a41eaa6bb21670b4c12068f1b017222f64b99
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/12/2017
 
 
@@ -133,7 +134,7 @@ Procore SSO で Azure AD のシングル サインオンを構成してテスト
 
 7. **Procore SSO** 側のシングル サインオンを構成するために、Procore の企業サイトに管理者としてログインします。
 
-8. [TOOLBOX] (ツールボックス) ドロップ ダウンから **[Admin] (管理)** をクリックして、SSO 設定ページを開きます。
+8. [TOOLBOX] \(ツールボックス) ドロップ ダウンから **[Admin] \(管理)** をクリックして、SSO 設定ページを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-procoresso-tutorial/procore_tool_admin.png)
 
@@ -141,13 +142,13 @@ Procore SSO で Azure AD のシングル サインオンを構成してテスト
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-procoresso-tutorial/procore_setting_admin.png)    
 
-    a. **[Single Sign On Issuer URL] (シングル サインオン発行者の URL)** ボックスに、Azure Portal でコピーした SAML エンティティ ID を貼り付けます。
+    a. **[Single Sign On Issuer URL] \(シングル サインオン発行者の URL)** ボックスに、Azure Portal でコピーした SAML エンティティ ID を貼り付けます。
 
-    b. **[SAML Sign On Target URL] (SAML サインオンのターゲット URL)** ボックスに、Azure Portal でコピーした SAML シングル サインオン サービスの URL を貼り付けます。
+    b. **[SAML Sign On Target URL] \(SAML サインオンのターゲット URL)** ボックスに、Azure Portal でコピーした SAML シングル サインオン サービスの URL を貼り付けます。
 
-    c. 次に、先ほど Azure Portal からダウンロードした **Metadata XML** を開いて、**X509Certificate** という名前のタグの証明書をコピーします。 コピーした値を、**[Single Sign On x509 Certificate] (シングル サインオン x509 証明書)** ボックスに貼り付けます。
+    c. 次に、先ほど Azure Portal からダウンロードした **Metadata XML** を開いて、**X509Certificate** という名前のタグの証明書をコピーします。 コピーした値を、**[Single Sign On x509 Certificate] \(シングル サインオン x509 証明書)** ボックスに貼り付けます。
 
-10. **[Save Changes] (変更を保存)** をクリックします。
+10. **[Save Changes] \(変更を保存)** をクリックします。
 
 11. 上記の設定後、Procore へのログインで経由する**ドメイン名** (例: **contoso.com**) を [Procore のサポート チーム](https://support.procore.com/)に送信して、このドメインのフェデレーション SSO を有効化してもらう必要があります。
 
@@ -201,21 +202,21 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
 
 1. Procore 企業サイトに管理者としてログインします。    
 
-2. [TOOLBOX] (ツールボックス) ドロップ ダウンで **[Directory] (ディレクトリ)** をクリックして、企業のディレクトリ ページを開きます。
+2. [TOOLBOX] \(ツールボックス) ドロップ ダウンで **[Directory] \(ディレクトリ)** をクリックして、企業のディレクトリ ページを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-procoresso-tutorial/Procore_sso_directory.png)
 
-3. **[Add a Person] (ユーザーの追加)** オプションをクリックしてフォームを開き、次の手順を実行します。
+3. **[Add a Person] \(ユーザーの追加)** オプションをクリックしてフォームを開き、次の手順を実行します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-procoresso-tutorial/Procore_user_add.png)
 
-    a. **[First Name] (名)** テキストボックスに、ユーザーの名を入力します (この例では **Britta**).
+    a. **[First Name] \(名)** テキストボックスに、ユーザーの名を入力します (この例では **Britta**).
 
-    b. **[Last Name] (姓)** テキストボックスに、ユーザーの姓を入力します (この例では **Simon**).
+    b. **[Last Name] \(姓)** テキストボックスに、ユーザーの姓を入力します (この例では **Simon**).
 
-    c. **[Email Address] (メール アドレス)** テキストボックスに、ユーザーのメール アドレスを入力します (この例では **BrittaSimon@contoso.com**)。
+    c. **[Email Address] \(メール アドレス)** テキストボックスに、ユーザーのメール アドレスを入力します (この例では **BrittaSimon@contoso.com**)。
 
-    d. **[Permission Template] (アクセス許可テンプレート)** で **[Apply Permission Template Later] (アクセス許可テンプレートは後で適用する)** を選択します。
+    d. **[Permission Template] \(アクセス許可テンプレート)** で **[Apply Permission Template Later] \(アクセス許可テンプレートは後で適用する)** を選択します。
 
     e. **[作成]**をクリックします。
 
@@ -223,7 +224,7 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-procoresso-tutorial/Procore_user_check.png)
 
-5. メールによる招待状が必要な場合は **[Save and Send Invitiation] (保存して招待状を送信)** を、直接保存する場合は **[Save] (保存)** をクリックして、ユーザー登録を完了します。
+5. メールによる招待状が必要な場合は **[Save and Send Invitiation] \(保存して招待状を送信)** を、直接保存する場合は **[Save] \(保存)** をクリックして、ユーザー登録を完了します。
     
     ![[シングル サインオンの構成]](./media/active-directory-saas-procoresso-tutorial/Procore_user_save.png)    
 
