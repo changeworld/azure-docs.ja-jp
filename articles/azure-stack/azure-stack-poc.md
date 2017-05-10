@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/1/2017
+ms.date: 4/11/2017
 ms.author: helaw
-translationtype: Human Translation
-ms.sourcegitcommit: bf2c13691901b09c6553953022a1117279ffb6e0
-ms.openlocfilehash: b9e229d1c600d1883cfbe676402ebd97ad452b75
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 44db8042d6364328ec9b88a75ba6d26dbc4d32c8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -36,6 +37,6 @@ Microsoft Azure Stack is a hybrid cloud platform that lets you deliver Azure ser
 ## <a name="next-steps"></a>Next steps
 [Key features and concepts](azure-stack-key-features.md)
 
-[Taking the cloud to your datacenter whitepaper (pdf)](http://download.microsoft.com/download/3/F/3/3F3811C0-969D-422C-9EDA-42CB79BABA96/Bring-the-cloud-to-your-datacenter-Microsoft-Azure-Stack.pdf)
+[Hybrid Application innovation with Azure and Azure Stack (pdf)](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409)
 
 

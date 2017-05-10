@@ -10,10 +10,11 @@ ms.technology: bing-image-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 84012e3821068c0840f394a2ede3d13038bae13f
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: ce0f79f7c50786d21c648ed747cbd90e9f3f790d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/04/2017
 
 ---
 
@@ -51,7 +52,7 @@ Trending Images supports only the following markets:
 -   en-AU (English, Australia)  
 -   zh-CN (Chinese, China)
 
-The response contains a [TrendingImages](https://docs.microsoft.com/rest/api/cognitiveservices/bing-image-api-v5-reference#trendingimages) object that lists images by category. Use the category's `title` to group the images in your user experience. The categories may change daily.  
+The response contains a [TrendingImages](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#trendingimages) object that lists images by category. Use the category's `title` to group the images in your user experience. The categories may change daily.  
   
 ```  
 {  
@@ -102,7 +103,7 @@ The response contains a [TrendingImages](https://docs.microsoft.com/rest/api/cog
   
 Each tile contains an image and options for getting related images. To get the related images, you can use the query `text` to call the [Image Search API](./search-the-web.md) and display the related images yourself. Or, you can use the URL in `webSearchUrl` to take the user to Bing's images search results page, which contains the related images. 
 
-If you call the Image Search API to get the related images, set the [id](https://docs.microsoft.com/rest/api/cognitiveservices/bing-image-api-v5-reference#id) query parameter to the ID in the `id` field. Specifying the ID ensures that the response contains the image (it is the first image in the response) and its related images. Also, set the [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-image-api-v5-reference#q) query parameter to the text in the `query` object's `text` field.
+If you call the Image Search API to get the related images, set the [id](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#id) query parameter to the ID in the `id` field. Specifying the ID ensures that the response contains the image (it is the first image in the response) and its related images. Also, set the [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#q) query parameter to the text in the `query` object's `text` field.
 
 The following example shows how to use the image ID to get related images of Mr. Smith in the preceding trending images response.
 

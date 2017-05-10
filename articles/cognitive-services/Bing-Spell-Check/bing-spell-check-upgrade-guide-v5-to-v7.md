@@ -10,10 +10,11 @@ ms.technology: bing-spell-check
 ms.topic: article
 ms.date: 06/21/2016
 ms.author: scottwhi
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 0a023f189ef2826cadd1b9c77b326f38697f593d
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 1acd9c29834ba1bddf32dce33a01af7d45943060
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/04/2017
 
 ---
 
@@ -32,7 +33,7 @@ This upgrade guide identifies the changes between version 5 and version 7 of the
 
 ### <a name="endpoints"></a>Endpoints
 
-- The endpoint's version number changed from v5 to v7. For example, https://api.cognitive.microsoft.com/bing/\**v7.0**/spellcheck.
+- The endpoint's version number changed from v5 to v7. For example, https://api.cognitive.microsoft.com/bing/\*\*v7.0**/spellcheck.
 
 ### <a name="error-response-objects-and-error-codes"></a>Error response objects and error codes
 

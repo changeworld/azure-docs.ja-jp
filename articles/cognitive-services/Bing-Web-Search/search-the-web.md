@@ -10,10 +10,11 @@ ms.technology: bing-web-search
 ms.topic: article
 ms.date: 01/12/2017
 ms.author: scottwhi
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 3e977da071968069152ff52e3e3892a6d8db7eca
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 8206620c8fa0af26a6005d407b135aea4e379833
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/04/2017
 
 ---
 
@@ -131,7 +132,7 @@ For details about the image answer and images, see [Image Search API](../bing-im
 
 ### <a name="related-searches-answer"></a>Related searches answer
 
-The [relatedSearches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v5-reference#relatedsearches) answer contains a list of the most popular related queries made by other users. Each [query](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v5-reference#query_obj) in the list includes a query string (`text`), a query string with hit highlighting characters (`displayText`), and a URL (`webSearchUrl`) to Bing's search results page for that query.
+The [relatedSearches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v5-reference#searchresponse-relatedsearches) answer contains a list of the most popular related queries made by other users. Each [query](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v5-reference#query_obj) in the list includes a query string (`text`), a query string with hit highlighting characters (`displayText`), and a URL (`webSearchUrl`) to Bing's search results page for that query.
 
 ```
         {
@@ -152,7 +153,7 @@ The following shows an example of the related queries usage in Bing.com.
 
 ### <a name="videos-answer"></a>Videos answer
 
-The [videos](https://docs.microsoft.com/rest/api/cognitiveservices/bing-videos-api-v5-reference#videos) answer contains a list of videos that Bing thought were relevant to the query. Each [video](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#video) in the list includes the URL of the video, its duration, its dimensions, and its encoding format. The video object also includes the URL of a thumbnail of the video and the thumbnail's dimensions.
+The [videos](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v5-reference#videos) answer contains a list of videos that Bing thought were relevant to the query. Each [video](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v5-reference#video) in the list includes the URL of the video, its duration, its dimensions, and its encoding format. The video object also includes the URL of a thumbnail of the video and the thumbnail's dimensions.
 
 ```
         {

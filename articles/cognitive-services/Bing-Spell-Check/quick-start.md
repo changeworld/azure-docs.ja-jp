@@ -10,10 +10,11 @@ ms.technology: bing-spell-check
 ms.topic: article
 ms.date: 06/21/2016
 ms.author: scottwhi
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: b49dc764ec2fe0cf587dfdd2024f790ebef153a2
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 53f5965a31df11d5430dcfb6377d5a872efbb7eb
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/04/2017
 
 ---
 
@@ -126,6 +127,6 @@ BingAPIs-Market: en-US
 
 Try out the API. Go to [Spell Check API Testing Console](https://dev.cognitive.microsoft.com/docs/services/56e73033cf5ff80c2008c679/operations/57855119bca1df1c647bc358). 
 
-For details about consuming the response objects, see [Proofing Text Strings](./proof-text.md).
+For details about consuming the response objects, see [Spell check text strings](./proof-text.md).
 
 

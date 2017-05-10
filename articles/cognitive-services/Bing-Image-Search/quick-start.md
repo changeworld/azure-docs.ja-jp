@@ -10,10 +10,11 @@ ms.technology: bing-image-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 6ad0834623e5a61684490937154bd034effd548a
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: d4858b25aa54f24eea792a09b3f009bed125a7f5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/04/2017
 
 ---
 
@@ -36,7 +37,7 @@ https://api.cognitive.microsoft.com/bing/v5.0/images/search
   
 The request must use the HTTPS protocol, and all requests must be made from a server (calls may not be made from a client).  
   
-The request must specify the [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#query) query parameter, which contains the user's search term. Although it's optional, the request should also specify the [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#mkt) query parameter, which identifies the market where you want the results to come from. For a list of optional query parameters such as `freshness` and `size`, see [Query Parameters]((https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#query-parameters). All query parameter values must be URL encoded.  
+The request must specify the [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#query) query parameter, which contains the user's search term. Although it's optional, the request should also specify the [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#mkt) query parameter, which identifies the market where you want the results to come from. For a list of optional query parameters such as `freshness` and `size`, see [Query Parameters](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#query-parameters). All query parameter values must be URL encoded.  
   
 The request must specify the [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#subscriptionkey) header. Although optional, you are encouraged to also specify the following headers:  
   
