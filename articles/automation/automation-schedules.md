@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: magoedte
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: 823d1155bc011466d0f3bd0ccd8650be161fd28b
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/27/2017
 
 
@@ -106,7 +107,7 @@ Runbook の新しいスケジュールは、Azure ポータル、クラシック
 2. **[Runbook]** タブを選択します。
 3. Runbook の名前をクリックして、スケジュールを設定します。
 4. **[スケジュール]** タブをクリックします。
-5. 現在、Runbook がスケジュールにリンクされていない場合、**[新しいスケジュールへのリンク]** または **[既存のスケジュールへのリンク]** というオプションが表示されます。  If the runbook is currently linked to a schedule, click **Link** at the bottom of the window to access these options.
+5. 現在、Runbook がスケジュールにリンクされていない場合、**[新しいスケジュールへのリンク]** または **[既存のスケジュールへのリンク]** というオプションが表示されます。  現在、Runbook がスケジュールにリンクされている場合、ウィンドウの下部にある **[リンク]** をクリックし、これらのオプションにアクセスします。
 6. Runbook がパラメーターを持っている場合は、その値を入力するように求められます。  
 
 ### <a name="to-link-a-schedule-to-a-runbook-with-windows-powershell"></a>Windows PowerShell で Runbook にスケジュールをリンクするには
@@ -143,8 +144,8 @@ Runbook の新しいスケジュールは、Azure ポータル、クラシック
 Azure クラシック ポータルで、スケジュール用の [スケジュールの詳細] ページからスケジュールを無効にすることができます。
 
 1. Azure クラシック ポータルで、[Automation] を選択し、次に Automation アカウントの名前をクリックします。
-2. Select the Assets tab.
-3. Click the name of a schedule to open its detail page.
+2. 資産 タブを選択します。
+3. スケジュールの名前をクリックして、その詳細ページを開きます。
 4. Change **Enabled** to **No**.
 
 ### <a name="to-disable-a-schedule-with-windows-powershell"></a>Windows PowerShell でスケジュールを無効にするには
