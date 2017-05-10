@@ -16,9 +16,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/13/2016
 ms.author: rogardle
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
 ms.openlocfilehash: bd20dc4eb3948d08e3c2dd2ad2bb42d18df67796
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/17/2017
 
 
@@ -59,7 +60,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 既定では、Load Balancer 用にポート 80、8080、443 が開放されています。 別のポートに接続する場合は、エージェント プール用に Azure Load Balancer でそのポートを開く必要があります。
 
 ## <a name="deploy-multiple-containers"></a>複数のコンテナーをデプロイする
-"docker run" を複数回実行して複数のコンテナーを起動した場合、 `docker ps` コマンドを使用して、コンテナーが実行されているホストを確認できます。 次の例では、3 つのコンテナーが&3; つの Swarm エージェントに均等に配分されます。  
+"docker run" を複数回実行して複数のコンテナーを起動した場合、 `docker ps` コマンドを使用して、コンテナーが実行されているホストを確認できます。 次の例では、3 つのコンテナーが 3 つの Swarm エージェントに均等に配分されます。  
 
 ```bash
 user@ubuntu:~$ docker ps
