@@ -9,10 +9,11 @@ ms.technology: video
 ms.topic: article
 ms.date: 01/20/2017
 ms.author: chbryant
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 048ebbab7cc65ea87bac14e38d87cc019ba6ab7d
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: c3717bae67b2a0b7428a35fb496af268e1fff947
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 ---
 
@@ -63,7 +64,7 @@ var videoServiceClient = new VideoServiceClient("Your subscription key");
 
 ```
  
-To obtain a subscription key, see [Subscriptions](https://www.microsoft.com/cognitive-services/en-us/sign-up).
+To obtain a subscription key, see [Subscriptions](https://azure.microsoft.com/en-us/try/cognitive-services/).
 
 ## <a name="step2"></a>Step 2: Upload a video to the service and check the status
 

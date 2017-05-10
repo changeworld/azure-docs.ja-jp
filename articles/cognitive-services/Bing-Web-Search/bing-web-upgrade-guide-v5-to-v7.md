@@ -10,10 +10,11 @@ ms.technology: bing-web-search
 ms.topic: article
 ms.date: 0151/2017
 ms.author: scottwhi
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: d745f7f0e98e01081fdcd1b02715d4c43a15b81e
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 88bbfa1f546800d44c801835c56bcf6698af13e3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/04/2017
 
 ---
 
@@ -32,7 +33,7 @@ This upgrade guide identifies the changes between version 5 and version 7 of the
 
 ### <a name="endpoints"></a>Endpoints
 
-- The endpoint's version number changed from v5 to v7. For example, https://api.cognitive.microsoft.com/bing/\**v7.0**/search.
+- The endpoint's version number changed from v5 to v7. For example, https://api.cognitive.microsoft.com/bing/\*\*v7.0**/search.
 
 ### <a name="error-response-objects-and-error-codes"></a>Error response objects and error codes
 

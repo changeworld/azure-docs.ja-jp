@@ -6,20 +6,21 @@ author: swhite-msft
 manager: ehansen
 ms.assetid: EA388F72-FA43-493B-967C-9560B3243C62
 ms.service: cognitive-services
-ms.technology: bing-video-search
+ms.technology: bing-news-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 8a7f11d337beefd4e0d54bf1d911c03f14d3e30b
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 1b881d045df7a537d76b54578c98f68e11c3bd2f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/04/2017
 
 ---
 
 # <a name="paging-news"></a>Paging News
 
-When you call the News Search API, Bing returns a list of results. The list is a subset of the total number of results that may be relevant to the query. To get the estimated total number of available results, access the answer object's [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference#totalestimatedmatches) field.  
+When you call the News Search API, Bing returns a list of results. The list is a subset of the total number of results that may be relevant to the query. To get the estimated total number of available results, access the answer object's [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference#news-totalmatches) field.  
   
 The following example shows the `totalEstimatedMatches` field that a News answer includes.  
   

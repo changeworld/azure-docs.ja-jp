@@ -9,16 +9,17 @@ ms.technology: academic-knowledge
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: alch
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: aec35368cb602af305ece93a037dd911cd29e216
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: e1bf8a6cb60b90ea5b7629ba1eb043adac473d4c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/04/2017
 
 ---
 
 # <a name="conference-instance-entity"></a>Conference Instance Entity
 
-<sub> *Below attributes are specific to conference instance entity. (Ty = '4') </sub>
+<sub> *Following attributes are specific to conference instance entity. (Ty = '4') </sub>
 
 Name    |Description                            |Type       | Operations
 ------- | ------------------------------------- | --------- | ----------------------------
@@ -38,7 +39,7 @@ PCS.CN    |Conference series name of the instance |String     |Equals
 PCS.CId    |Conference series ID of the instance |Int64     |Equals
 CC        |Conference instance total citation count            |Int32        |none  
 ECC        |Conference instance total estimated citation count    |Int32        |none
-SSD        |Satori data                             |String        |none
+
 
 ## <a name="extended-metadata-attributes"></a>Extended Metadata Attributes ##
 

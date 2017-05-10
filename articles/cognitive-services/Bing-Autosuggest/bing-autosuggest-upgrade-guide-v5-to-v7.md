@@ -10,10 +10,11 @@ ms.technology: bing-autosuggest
 ms.topic: article
 ms.date: 01/12/2017
 ms.author: scottwhi
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 2638cfaa658beb8ac140daf69e0ee9521bb352a8
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: c110f344179fce18643e0c33dc8ee5b3dcfd6045
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/04/2017
 
 ---
 
@@ -32,7 +33,7 @@ This upgrade guide identifies the changes between version 5 and version 7 of the
 
 ### <a name="endpoints"></a>Endpoints
 
-- The endpoint's version number changed from v5 to v7. For example, https://api.cognitive.microsoft.com/bing/\**v7.0**/autosuggest.
+- The endpoint's version number changed from v5 to v7. For example, https://api.cognitive.microsoft.com/bing/\*\*v7.0**/autosuggest.
 
 ### <a name="error-response-objects-and-error-codes"></a>Error response objects and error codes
 

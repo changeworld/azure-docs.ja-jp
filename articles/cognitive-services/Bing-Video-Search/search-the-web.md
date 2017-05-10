@@ -10,10 +10,11 @@ ms.technology: bing-video-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: ad211451605a2299bce7bf85b2444f9200d77138
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 4e26253d2a56434691e6cbb30a42906c31c40cb8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/04/2017
 
 ---
 
@@ -158,12 +159,12 @@ By default, the Video Search API returns all videos that are relevant to the que
   
 -   [videoLength](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v5-reference#videolength)&mdash;Filter videos by video length (for example, videos that are less than five minutes in length)  
     
--   [freshness]((https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v5-reference#freshness)&mdash;Filter videos by age (for example, videos discovered by Bing in the past week) 
+-   [freshness](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v5-reference#freshness)&mdash;Filter videos by age (for example, videos discovered by Bing in the past week) 
   
 To get videos from a specific domain, include the [site:](http://msdn.microsoft.com/library/ff795613.aspx) query operator in the query string.
 
 > [!NOTE] 
-> Depending on the query, if you use the `site:` query operator, there is the chance that the response contains adult content regardless of the [safeSearch]((https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v5-reference#safesearch) setting. You should use `site:` only if you are aware of the content on the site and your scenario supports the possibility of adult content.   
+> Depending on the query, if you use the `site:` query operator, there is the chance that the response contains adult content regardless of the [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v5-reference#safesearch) setting. You should use `site:` only if you are aware of the content on the site and your scenario supports the possibility of adult content.   
   
 The following example shows how to get free videos from ContosoSailing.com that have a resolution of 720p or better and that Bing has discovered in the past month.  
   
@@ -285,7 +286,7 @@ You can use the `text` and `thumbnail` fields to display the expanded query stri
 
 To get started quickly with your first request, see [Making Your First Request](./quick-start.md).
 
-To get your subscription key, see [Subscription Keys](https://www.microsoft.com/cognitive-services/subscriptions?mode=NewTrials).
+To get your subscription key, see [Subscription Keys](https://azure.microsoft.com/try/cognitive-services/?api=bing-video-search-api).
 
 Familiarize yourself with the [Videos Search API Reference](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v5-reference). The reference contains the list of endpoints, headers, and query parameters that you'd use to request search results. It also includes definitions of the response objects. 
 

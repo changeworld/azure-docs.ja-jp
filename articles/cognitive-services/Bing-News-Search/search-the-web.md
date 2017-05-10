@@ -10,10 +10,11 @@ ms.technology: bing-news-search
 ms.topic: article
 ms.date: 06/21/2016
 ms.author: scottwhi
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 3f34763f25be56e39826a05d487cdd7b569b79a4
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 1ee80a665673ecb3583ef80ec452f36480f1e54d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/04/2017
 
 ---
 
@@ -215,7 +216,7 @@ Host: api.cognitive.microsoft.com
 > Host: api.cognitive.microsoft.com  
 > ```  
 
-Do not include the (https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference#category) query parameter. 
+Do not include the [category](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference#category) query parameter. 
 
 The response is the same as top news response. If the article is a headline article, its `headline` field is set to **true**.
 
