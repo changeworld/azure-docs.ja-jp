@@ -15,9 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/17/2017
 ms.author: genli
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6d438cde704323a07cc125eb75d08cb64b2432ec
 ms.openlocfilehash: 00b71701c4c114007e2d9a6d23f20b3df5fb2534
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/21/2017
 
 
@@ -95,13 +96,13 @@ Azure アカウントの所有権を別のアカウントに譲渡するには�
   4. **[プロパティ]**を選択します。 サブスクリプションのアカウント管理者が、 **[アカウント管理者]** ボックスに表示されます。  
 
 ## <a name="types-of-azure-admin-accounts"></a>Azure 管理者アカウントの種類
- Microsoft Azure の管理者ロールには、アカウント管理者、サービス管理者、共同管理者の&3; 種類があります。 次の表では、これら&3; つの管理ロールの違いについて説明します。
+ Microsoft Azure の管理者ロールには、アカウント管理者、サービス管理者、共同管理者の 3 種類があります。 次の表では、これら 3 つの管理ロールの違いについて説明します。
 
 | 管理ロール | 制限 | Description |
 | --- | --- | --- |
-| アカウント管理者 (AA) |1 Azure アカウントに&1; 人 |Azure サブスクリプションをサインアップまたは購入し、 [アカウント センター](https://account.windowsazure.com/Home/Index) にアクセスして多様な管理タスクを実行する権限を持っている個人。 管理タスクには、サブスクリプションの作成、サブスクリプションの取り消し、サブスクリプションの料金の変更、サービス管理者の変更などがあります。 |
-| サービス管理者 (SA) |1 Azure サブスクリプションに&1; 人 |このロールには、 [Azure ポータル](https://portal.azure.com)でのサービスの管理が許可されます。 既定で、新しいサブスクリプションのアカウント管理者はサービス管理者でもあります。 |
-| [Azure クラシック ポータル](https://manage.windowsazure.com) |サブスクリプションあたり&200; 人 |サービス管理者と同じアクセス権を持っているものの、サブスクリプションと Azure ディレクトリとの関連付けを変更することはできないロール。 |
+| アカウント管理者 (AA) |1 Azure アカウントに 1 人 |Azure サブスクリプションをサインアップまたは購入し、 [アカウント センター](https://account.windowsazure.com/Home/Index) にアクセスして多様な管理タスクを実行する権限を持っている個人。 管理タスクには、サブスクリプションの作成、サブスクリプションの取り消し、サブスクリプションの料金の変更、サービス管理者の変更などがあります。 |
+| サービス管理者 (SA) |1 Azure サブスクリプションに 1 人 |このロールには、 [Azure ポータル](https://portal.azure.com)でのサービスの管理が許可されます。 既定で、新しいサブスクリプションのアカウント管理者はサービス管理者でもあります。 |
+| [Azure クラシック ポータル](https://manage.windowsazure.com) |サブスクリプションあたり 200 人 |サービス管理者と同じアクセス権を持っているものの、サブスクリプションと Azure ディレクトリとの関連付けを変更することはできないロール。 |
 
 Azure Active Directory のロールベースのアクセス制御 (RBAC) では、ユーザーを複数のロールに追加できます。 詳細については、「 [Azure Active Directory のロールベースの Access Control](../active-directory/role-based-access-control-configure.md)」を参照してください。
 
@@ -113,8 +114,8 @@ Azure Active Directory のロールベースのアクセス制御 (RBAC) では�
 
   | サインイン方法 | Microsoft アカウントまたは既定のディレクトリ内のユーザーを CA または SA として追加できる | 同じ組織内の組織アカウントを CA または SA として追加できる | 異なる組織内の組織アカウントを CA または SA として追加できる |
   | --- | --- | --- | --- |
-  |  Microsoft アカウント |はい |なし |なし |
-  |  組織アカウント |はい |あり |いいえ |
+  |  Microsoft アカウント |はい |いいえ |いいえ |
+  |  組織アカウント |はい |はい |いいえ |
 
 ## <a name="learn-more-about-resource-access-control-and-active-directory"></a>リソースのアクセス制御と Active Directory の詳細
 * Microsoft Azure でリソース アクセスを制御する方法の詳細については、「[Azure でのリソース アクセスについて](../active-directory/active-directory-understanding-resource-access.md)」を参照してください。
