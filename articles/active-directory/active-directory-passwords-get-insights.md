@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2017
 ms.author: joflore
-translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: b010891a177f27eef99bd65e0d940c83375aa5ec
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 7375d2d3c237c3b1c2dcdab44b2fcb0000ff961c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/04/2017
 
 
 ---
@@ -202,16 +203,12 @@ Azure AD レポートおよびイベント API を直接使用する方法に加
 4. **[動作状況のログ]** セクションの下で、
 5. **[パスワード リセット アクティビティ]** レポートまたは **[パスワード リセット登録アクティビティ]** レポートのいずれかを選択します。
 
-   ![][001]
-
 ## <a name="view-password-reset-registration-activity-in-the-classic-portal"></a>クラシック ポータルでのパスワード リセット登録アクティビティの表示
 パスワード リセット登録アクティビティ レポートでは、組織で実行されたすべてのパスワード リセットの登録が表示されます。  パスワード リセットの登録は、パスワード リセット登録ポータル ([http://aka.ms/ssprsetup](http://aka.ms/ssprsetup)) で認証情報を正常に登録したユーザーについて、このレポートに表示されます
 
 * **最大期間**: 30 日
 * **最大行数**: 75,000
 * **ダウンロードの可否**: CSV ファイルでダウンロードできます。
-
-    ![][002]
 
 ### <a name="description-of-report-columns"></a>レポートの列の説明
 次の一覧では、レポートの各列について詳細に説明します。
@@ -234,8 +231,6 @@ Azure AD レポートおよびイベント API を直接使用する方法に加
 * **最大期間**: 30 日
 * **最大行数**: 75,000
 * **ダウンロードの可否**: CSV ファイルでダウンロードできます。
-
-    ![][003]
 
 ### <a name="description-of-report-columns"></a>レポートの列の説明
 次の一覧では、レポートの各列について詳細に説明します。
@@ -308,8 +303,4 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 * [**FAQ**](active-directory-passwords-faq.md) -よく寄せられる質問の回答を得ます。
 * [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - サービスに関する問題を迅速にトラブルシューティングする方法について説明します。
 * [**詳細情報**](active-directory-passwords-learn-more.md) - サービスの機能の技術的な詳細を掘り下げます。
-
-[001]: ./media/active-directory-passwords-get-insights/001.jpg "Image_001.jpg"
-[002]: ./media/active-directory-passwords-get-insights/002.jpg "Image_002.jpg"
-[003]: ./media/active-directory-passwords-get-insights/003.jpg "Image_003.jpg"
 
