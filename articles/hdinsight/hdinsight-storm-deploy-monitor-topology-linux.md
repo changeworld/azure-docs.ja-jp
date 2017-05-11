@@ -15,9 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/22/2017
 ms.author: larryfr
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: 53092b0cfcf2bf9a09b36f6425724669f770e7fb
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/12/2017
 
 
@@ -85,7 +86,7 @@ HDInsight Tools は、C# またはハイブリッド トポロジを Storm ク�
 
 2. 次のコマンドを実行してトポロジの例を開始します。
 
-        storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar storm.starter.WordCountTopology WordCount
+        storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology WordCount
 
     このコマンドにより、クラスターで WordCount トポロジの例が開始されます。 このトポロジは、ランダムに文を生成し、文中の各単語の出現回数をカウントします。
 
