@@ -13,9 +13,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: jeedes
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
 ms.openlocfilehash: 5325f3cca00167e6b7b687509ce43435447ad2f4
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/07/2017
 
 
@@ -83,7 +84,7 @@ Azure AD への Velpic SAML の統合を構成するには、ギャラリーか�
 
 シングル サインオンを機能させるには、Azure AD ユーザーに対応する Velpic SAML ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Velpic SAML の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
-このリンク関係を確立するには、Azure AD の **[ユーザー名]** の値を Velpic SAML の **[Username] (ユーザー名)** の値として割り当てます。
+このリンク関係を確立するには、Azure AD の **[ユーザー名]** の値を Velpic SAML の **[Username] \(ユーザー名)** の値として割り当てます。
 
 Velpic SAML で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
@@ -130,15 +131,15 @@ Velpic SAML で Azure AD のシングル サインオンを構成してテスト
 
 7. 別の Web ブラウザーのウィンドウで、Velpic SAML 企業サイトに管理者としてログインします。
 
-8. **[Manage] (管理)** タブをクリックして **[Integration] (統合)** セクションに移動します。ここで、**[Plugins] (プラグイン)** をクリックして、サインイン用の新しいプラグインを作成する必要があります。
+8. **[Manage] \(管理)** タブをクリックして **[Integration] \(統合)** セクションに移動します。ここで、**[Plugins] \(プラグイン)** をクリックして、サインイン用の新しいプラグインを作成する必要があります。
 
     ![プラグイン](./media/active-directory-saas-velpicsaml-tutorial/velpic_1.png)
 
-9. **[Add plugin] (プラグインの追加)** をクリックします。
+9. **[Add plugin] \(プラグインの追加)** をクリックします。
     
     ![プラグイン](./media/active-directory-saas-velpicsaml-tutorial/velpic_2.png)
 
-10. [Add plugin] (プラグインの追加) ページで **[SAML]** タイルをクリックします。
+10. [Add plugin] \(プラグインの追加) ページで **[SAML]** タイルをクリックします。
     
     ![プラグイン](./media/active-directory-saas-velpicsaml-tutorial/velpic_3.png)
 
@@ -154,9 +155,9 @@ Velpic SAML で Azure AD のシングル サインオンを構成してテスト
 
     b. **[発行者の URL]** テキストボックスに、Azure Portal の **[サインオンの構成]** ウィンドウからコピーした **SAML エンティティ ID** を貼り付けます。
 
-    c. **[Provider Metadata Config] (Provider メタデータ構成)** で、Azure Portal からダウンロードしたメタデータ XML ファイルをアップロードします。
+    c. **[Provider Metadata Config] \(Provider メタデータ構成)** で、Azure Portal からダウンロードしたメタデータ XML ファイルをアップロードします。
 
-    d. **Auto create new users (新規ユーザーの自動作成)** チェックボックスをオンにして、SAML のジャストインタイム プロビジョニングを有効にすることもできます。 Velpic にユーザーが存在せず、このチェックボックスがオンになっていない場合は、Azure からのログインに失敗します。 このチェックボックスがオンになっている場合、ユーザーは、ログイン時に Velpic に自動的にプロビジョニングされます。 
+    d. **Auto create new users \(新規ユーザーの自動作成)** チェックボックスをオンにして、SAML のジャストインタイム プロビジョニングを有効にすることもできます。 Velpic にユーザーが存在せず、このチェックボックスがオンになっていない場合は、Azure からのログインに失敗します。 このチェックボックスがオンになっている場合、ユーザーは、ログイン時に Velpic に自動的にプロビジョニングされます。 
 
     e. テキストボックスから**シングル サインオン URL** をコピーして、Azure Portal に貼り付けます。
     
@@ -199,19 +200,19 @@ Velpic SAML で Azure AD のシングル サインオンを構成してテスト
 
 Velpic SAML 企業サイトに管理者としてログインし、次の手順を実行します。
     
-1. [Manage] (管理) タブをクリックして [Users] (ユーザー) セクションに移動し、[New] (新規) をクリックしてユーザーを追加します。
+1. [Manage] \(管理) タブをクリックして [Users] \(ユーザー) セクションに移動し、[New] \(新規) をクリックしてユーザーを追加します。
 
     ![add user](./media/active-directory-saas-velpicsaml-tutorial/velpic_7.png)
 
-2. **[Create New User] (新しいユーザーの作成)** ダイアログ ページで、次の手順を実行します。
+2. **[Create New User] \(新しいユーザーの作成)** ダイアログ ページで、次の手順を実行します。
 
     ![ユーザー](./media/active-directory-saas-velpicsaml-tutorial/velpic_8.png)
     
-    a. **[First Name] (名)** テキストボックスに、Britta Simon の名を入力します。
+    a. **[First Name] \(名)** テキストボックスに、Britta Simon の名を入力します。
 
-    b. **[Last Name] (姓)** テキストボックスに、Britta Simon の姓を入力します。
+    b. **[Last Name] \(姓)** テキストボックスに、Britta Simon の姓を入力します。
 
-    c. **[User Name] (ユーザー名)** テキストボックスに、Britta Simon のユーザーを入力します。
+    c. **[User Name] \(ユーザー名)** テキストボックスに、Britta Simon のユーザーを入力します。
 
     d. **[Email (電子メール)]** ボックスに、Britta Simon アカウントの電子メール アドレスを入力します。
 
@@ -253,11 +254,11 @@ Velpic SAML 企業サイトに管理者としてログインし、次の手順�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-1. アクセス パネルで [Velpic SAML] タイルをクリックすると、Velpic SAML アプリケーションのログイン ページが表示されます。 サインイン ページに **[Log In With Azure AD] (Azure AD でログイン)** と表示されます。
+1. アクセス パネルで [Velpic SAML] タイルをクリックすると、Velpic SAML アプリケーションのログイン ページが表示されます。 サインイン ページに **[Log In With Azure AD] \(Azure AD でログイン)** と表示されます。
 
     ![プラグイン](./media/active-directory-saas-velpicsaml-tutorial/velpic_6.png)
 
-2. **[Log In With Azure AD] (Azure AD でログイン)** をクリックし、Azure AD アカウントを使用して Velpic にログインします。
+2. **[Log In With Azure AD] \(Azure AD でログイン)** をクリックし、Azure AD アカウントを使用して Velpic にログインします。
 
 
 ## <a name="additional-resources"></a>その他のリソース
