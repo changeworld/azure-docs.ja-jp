@@ -13,9 +13,10 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/25/2017
 ms.author: sedusch
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
 ms.openlocfilehash: 6304f01fd5f97dd528054f8c4909593dd062e16b
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/26/2017
 
 
@@ -325,30 +326,30 @@ Github にあるいずれかのクイック スタート テンプレートを�
 1. [A] HANA DVD から hdblcm を実行します
     * Choose installation (インストールの選択) -> 1
     * Select additional components for installation (追加でインストールするコンポーネントの選択) -> 1
-    * Enter Installation Path [/hana/shared] (インストールのパス (/hana/shared) の入力): -> ENTER
-    * Enter Local Host Name [..] (ローカルのホスト名 (..) の入力): -> ENTER
-    * Do you want to add additional hosts to the system? (y/n) [n] (システムに別のホストを追加しますか? (y/n) (n)): -> ENTER
+    * Enter Installation Path [/hana/shared] \(インストールのパス (/hana/shared) の入力): -> ENTER
+    * Enter Local Host Name [..] \(ローカルのホスト名 (..) の入力): -> ENTER
+    * Do you want to add additional hosts to the system? (y/n) [n] \(システムに別のホストを追加しますか? (y/n) (n)): -> ENTER
     * Enter SAP HANA System ID (SAP HANA のシステム ID を入力): <SID of HANA e.g. HDB>
-    * Enter Instance Number [00] (インスタンス番号 (00) の入力):   
+    * Enter Instance Number [00] \(インスタンス番号 (00) の入力):   
   HANA のインスタンス番号です。 Azure テンプレートを使用した場合、または上記サンプルに従った場合は、「03」を使用します
-    * Select Database Mode / Enter Index [1] (データベース モードの選択/インデックス (1) の入力): -> ENTER
-    * Select System Usage / Enter Index [4] (システム使用率の選択/インデックス (4) の入力):  
+    * Select Database Mode / Enter Index [1] \(データベース モードの選択/インデックス (1) の入力): -> ENTER
+    * Select System Usage / Enter Index [4] \(システム使用率の選択/インデックス (4) の入力):  
   システムの使用率を選択します
-    * Enter Location of Data Volumes [/hana/data/HDB] (データ ボリュームの場所 (/hana/data/HDB) の入力): -> ENTER
-    * Enter Location of Log Volumes [/hana/log/HDB] (ログ ボリュームの場所 (/hana/log/HDB) の入力): -> ENTER
-    * Restrict maximum memory allocation? [n] (メモリの最大割り当てを制限しますか? (n) ): -> ENTER
-    * Enter Certificate Host Name For Host '...' [...] (ホスト '...' の証明書のホスト名 (...) を入力): -&gt; ENTER
+    * Enter Location of Data Volumes [/hana/data/HDB] \(データ ボリュームの場所 (/hana/data/HDB) の入力): -> ENTER
+    * Enter Location of Log Volumes [/hana/log/HDB] \(ログ ボリュームの場所 (/hana/log/HDB) の入力): -> ENTER
+    * Restrict maximum memory allocation? [n] \(メモリの最大割り当てを制限しますか? (n) ): -> ENTER
+    * Enter Certificate Host Name For Host '...'  [...] \(ホスト '...' の証明書のホスト名 (...) を入力): -> ENTER
     * Enter SAP Host Agent User (sapadm) Password (SAP ホスト エージェントのユーザー (sapadm) パスワードを入力):
     * Confirm SAP Host Agent User (sapadm) Password (SAP ホスト エージェントのユーザー (sapadm) パスワードを確認):
     * Enter System Administrator (hdbadm) Password (システム管理者 (hdbadm) のパスワードを入力):
     * Confirm System Administrator (hdbadm) Password (システム管理者 (hdbadm) のパスワードを確認):
-    * Enter System Administrator Home Directory [/usr/sap/HDB/home] (システム管理者のホーム ディレクトリ (/usr/sap/HDB/home) を入力): -> ENTER
-    * Enter System Administrator Login Shell [/bin/sh] (システム管理者のログイン シェル (/bin/sh) を入力): -> ENTER
-    * Enter System Administrator User ID [1001] (システム管理者のユーザー ID (1001) を入力): -> ENTER
-    * Enter ID of User Group (sapsys) [79] (ユーザー グループ (sapsys) の ID (79) を入力): -> ENTER
+    * Enter System Administrator Home Directory [/usr/sap/HDB/home] \(システム管理者のホーム ディレクトリ (/usr/sap/HDB/home) を入力): -> ENTER
+    * Enter System Administrator Login Shell [/bin/sh] \(システム管理者のログイン シェル (/bin/sh) を入力): -> ENTER
+    * Enter System Administrator User ID [1001] \(システム管理者のユーザー ID (1001) を入力): -> ENTER
+    * Enter ID of User Group (sapsys) [79] \(ユーザー グループ (sapsys) の ID (79) を入力): -> ENTER
     * Enter Database User (SYSTEM) Password (データベース ユーザー (SYSTEM) のパスワードを入力):
     * Confirm Database User (SYSTEM) Password (データベース ユーザー (SYSTEM) のパスワードを確認):
-    * Restart system after machine reboot? [n] (コンピューターの再起動後にシステムを再起動しますか?(n)): -> ENTER
+    * Restart system after machine reboot? [n] \(コンピューターの再起動後にシステムを再起動しますか?(n)): -> ENTER
     * Do you want to continue? (y/n) (続行しますか? (y/n) ):  
   内容を確認し、「y」を入力して続行します
 1. [A] SAP Host Agent をアップグレードします  
@@ -422,14 +423,14 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 1. 名前を入力して、アプリケーションの種類に [Web アプリ/API] を選択し、サインオン URL (例: http://localhost) を入力します。その後、[作成] をクリックします
 1. サインオン URL は使用されず、任意の有効な URL を指定することができます
 1. 新しいアプリを選択し、[設定] タブで [キー] をクリックします
-1. 新しいキーの説明を入力し、[Never expires] (有効期限なし) を選択して [保存] をクリックします
+1. 新しいキーの説明を入力し、[Never expires] \(有効期限なし) を選択して [保存] をクリックします
 1. 値をメモします。 この値は、サービス プリンシパルの**パスワード**として使用します
 1. アプリケーション ID をメモします。 この値は、サービス プリンシパルのユーザー名 (下記の手順の**ログイン ID**) として使用します
 
 既定では、サービス プリンシパルには、Azure のリソースにアクセスする権限はありません。 クラスターのすべての仮想マシンを開始および停止 (割り当て解除) する権限を、サービス プリンシパルに付与する必要があります。
 
 1. https://portal.azure.com に移動します
-1. [All resources] (すべてのリソース) ブレードを開きます
+1. [All resources] \(すべてのリソース) ブレードを開きます
 1. 仮想マシンを選択します
 1. [アクセス制御 (IAM)] を選択します
 1. [追加] をクリックします。
