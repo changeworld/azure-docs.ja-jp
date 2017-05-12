@@ -15,9 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/12/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
 ms.openlocfilehash: 2cdfbadfc4cc28afe34b4d558f40bba6451f7388
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/25/2017
 
 
@@ -125,7 +126,7 @@ Azure Logic Apps は、一連の手順として、プロセスを自動化する
 ### <a name="configure-the-logic-app"></a>ロジック アプリを構成する
 
 1. Logic Apps デザイナーに表示されるロジック アプリを開きます。
-1. Logic Apps デザイナーで、[**Blank Logic App**] (空のロジック アプリ) をクリックします。
+1. Logic Apps デザイナーで、[**Blank Logic App**] \(空のロジック アプリ) をクリックします。
 
    ![Azure Portal で空のロジック アプリを開始する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/5_start-with-blank-logic-app-azure-portal.png)
 
@@ -141,7 +142,7 @@ Azure Logic Apps は、一連の手順として、プロセスを自動化する
       ![Azure Portal でロジック アプリ用の Service Bus 接続を作成する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/7_create-service-bus-connection-in-logic-app-azure-portal.png)
 
    1. サービス バス接続が作成されたら、[**続行**] をクリックします。
-   1. 作成したキューを選択し、[**Maximum message count**] (最大メッセージ数) に「`175`」と入力する
+   1. 作成したキューを選択し、[**Maximum message count**] \(最大メッセージ数) に「`175`」と入力する
 
       ![ロジック アプリで Service Bus 接続の最大メッセージ数を指定する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/8_specify-maximum-message-count-for-service-bus-connection-logic-app-azure-portal.png)
 
@@ -163,7 +164,7 @@ Azure Logic Apps は、一連の手順として、プロセスを自動化する
 
 ## <a name="test-the-logic-app"></a>ロジック アプリをテストする
 
-1. [[Connect ESP8266 to Azure IoT Hub]](iot-hub-arduino-huzzah-esp8266-get-started.md) (Azure IoT Hub に ESP8266 を接続する) で、デバイスにデプロイするクライアント アプリケーションを開始します。
+1. [[Connect ESP8266 to Azure IoT Hub]](iot-hub-arduino-huzzah-esp8266-get-started.md) \(Azure IoT Hub に ESP8266 を接続する) で、デバイスにデプロイするクライアント アプリケーションを開始します。
 1. SensorTag の周囲でろうそくに火を付けるなど、SensorTag の周囲の環境の温度を 30 °C を超えるまで上昇させます。
 1. これにより、ロジック アプリからメール通知が送信されます。
 
