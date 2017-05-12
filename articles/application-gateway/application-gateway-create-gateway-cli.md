@@ -13,12 +13,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/27/2017
+ms.date: 05/03/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 1481fcb070f383d158c5a6ae32504e498de4a66b
-ms.openlocfilehash: 68d3e3ee9b35f2d6d88cde68365cef91d9683462
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 14dab2197ff7c1eaff012066e321ef1b99f05bb3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -76,7 +77,8 @@ Azure Application Gateway には、専用のサブネットが必要です。 �
 az login -u "username"
 ```
 
->[メモ] aka.ms/devicelogin へのコード入力が必要なデバイス スイッチを用いずに、`az login` を使用することもできます。
+> [!NOTE]
+> aka.ms/devicelogin へのコード入力が必要なデバイス スイッチを用いずに、`az login` を使用することもできます。
 
 上記の例に従って入力すると、コードが表示されます。 ブラウザーで https://aka.ms/devicelogin に移動して、ログイン プロセスを続行します。
 
@@ -129,8 +131,7 @@ az network application-gateway create \
 --cert-file /mnt/c/Users/username/Desktop/application-gateway/fabrikam.pfx \
 --cert-password P@ssw0rd \
 --capacity 2 \
---sku-tier Standard \
---sku-name Standard_Small \
+--sku Standard_Small \
 --http-settings-cookie-based-affinity Enabled \
 --http-settings-protocol Http \
 --frontend-port 443 \
@@ -145,6 +146,14 @@ az network application-gateway create \
 この例では、リスナー、バックエンド プール、バックエンド http 設定、規則の既定の設定を持つ基本的なアプリケーション ゲートウェイを作成しています。 さらに、SSL オフロードの構成も行われます。 プロビジョニングが成功したら、独自のデプロイに合わせて、これらの設定を変更することができます。
 前の手順でバックエンド プールに対して既に Web アプリケーションを定義している場合、アプリケーション ゲートウェイを作成すると負荷分散が開始されます。
 
+## <a name="delete-all-resources"></a>すべてのリソースの削除
+
+この記事で作成したリソースをすべて削除するには、次の手順を実行します。
+
+```azurecli
+az group delete --name AdatumAppGatewayRG
+```
+ 
 ## <a name="next-steps"></a>次のステップ
 
 [カスタムの正常性プローブの作成](application-gateway-create-probe-portal.md)

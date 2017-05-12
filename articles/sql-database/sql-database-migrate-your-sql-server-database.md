@@ -16,9 +16,10 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 04/20/2017
 ms.author: janeng
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
 ms.openlocfilehash: c6d965351f6f131ee342cea672fc4fa8771f8ede
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/21/2017
 
 
@@ -117,17 +118,17 @@ SQLPackage コマンド ライン ユーティリティを使用して Adventure
 
     ![論理サーバーを選択する](./media/sql-database-migrate-your-sql-server-database/logical-server.png)
 
-3. **[Everything]** (すべて) ページで、**[SQL server (logical server)]** (SQL Server (論理サーバー)) をクリックしてから、**[SQL Server (logical server)]** (SQL Server (論理サーバー)) ページで **[Create]** (作成) をクリックします。
+3. **[Everything]** \(すべて) ページで、**[SQL server (logical server)]** \(SQL Server (論理サーバー)) をクリックしてから、**[SQL Server (logical server)]** \(SQL Server (論理サーバー)) ページで **[Create]** \(作成) をクリックします。
 
     ![論理サーバーを作成する](./media/sql-database-migrate-your-sql-server-database/logical-server-create.png)
 
-4. 前の画像で示されているように、[SQL server (logical server)] (SQL Server (論理サーバー)) のフォームに次の情報を入力します。     
+4. 前の画像で示されているように、[SQL server (logical server)] \(SQL Server (論理サーバー)) のフォームに次の情報を入力します。     
 
-   - [Server name] (サーバー名): グローバルに一意なサーバー名を指定します
-   - [Server admin login] (サーバー管理者ログイン): サーバー管理者ログインの名前を指定します
-   - [Password] (パスワード): 任意のパスワードを指定します
+   - [Server name] \(サーバー名): グローバルに一意なサーバー名を指定します
+   - [Server admin login] \(サーバー管理者ログイン): サーバー管理者ログインの名前を指定します
+   - [Password] \(パスワード): 任意のパスワードを指定します
    - [リソース グループ]: **[新規作成]** を選択し、「**myResourceGroup**」と指定します
-   - [Location] (場所): データ センターの場所を選択します
+   - [Location] \(場所): データ センターの場所を選択します
 
     ![論理サーバー作成フォームへの入力](./media/sql-database-migrate-your-sql-server-database/logical-server-create-completed.png)
 

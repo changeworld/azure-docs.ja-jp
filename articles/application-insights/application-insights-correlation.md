@@ -4,45 +4,46 @@ description: "Application Insights におけるテレメトリの相関付け"
 services: application-insights
 documentationcenter: .net
 author: SergeyKanzhelev
-manager: azakonov-ms
+manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 04/25/2017
 ms.author: sergkanz
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 279b673930a2011fef4d36e83a771b9ab654c663
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: c48dc5cb5dd6dfa09ff9718e78f8d560886851be
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights におけるテレメトリの相関付け
 
-マイクロ サービスの世界では、すべての論理操作は、さまざまなサービス コンポーネントで作業を実行する必要があります。 UI コンポーネントは、ユーザーの資格情報を検証するためにプロバイダー コンポーネントと通信し、視覚化するためのデータを取得するために API コンポーネントと通信します。 API コンポーネントは、他のサービスからデータのクエリを行ってキャッシュ プロバイダー コンポーネントを使用でき、この呼び出しについて課金コンポーネントに通知できます。 Application Insights は、分散しているテレメトリの相関付けをサポートします。 これにより、UI エラーやパフォーマンス低下を発生させているコンポーネントを検出することができます。
+マイクロ サービスの世界では、すべての論理操作は、さまざまなサービス コンポーネントで作業を実行する必要があります。 これらの各コンポーネントは、[Application Insights](app-insights-overview.md) によって個別に監視できます。 Web アプリ コンポーネントは、ユーザーの資格情報を検証するためにプロバイダー コンポーネントと通信し、視覚化するためのデータを取得するために API コンポーネントと通信します。 API コンポーネントは、他のサービスからデータのクエリを行ってキャッシュ プロバイダー コンポーネントを使用でき、この呼び出しについて課金コンポーネントに通知できます。 Application Insights は、分散しているテレメトリの相関付けをサポートします。 これにより、エラーやパフォーマンス低下を発生させているコンポーネントを検出することができます。
 
-この記事では、Application Insights で使用しているデータ モデルについて説明します。 コンテキスト反映技法とプロトコルの説明があります。 また、さまざまな言語とプラットフォームにおける相関付けの概念の実装も扱います。
+この記事では、複数のコンポーネントから送信されるテレメトリを関連付けるために Application Insights によって使用されるデータ モデルについて説明します。 コンテキスト反映技法とプロトコルの説明があります。 また、さまざまな言語とプラットフォームにおける相関付けの概念の実装も扱います。
 
 ## <a name="telemetry-correlation-data-model"></a>テレメトリ相関付けデータ モデル
 
-Application Insights は、分散しているテレメトリを相関付けるための[データ モデル](/application-insights-data-model.md)を定義しています。 テレメトリを論理操作と関連付けるために、すべてのテレメトリ項目には `operation_Id` と呼ばれるコンテキスト フィールドがあります。 この ID は、分散トレース内のすべてのテレメトリ項目で共有されます。 このため、1 つのレイヤーからテレメトリが失われた場合でも、他のコンポーネントから報告されたテレメトリを関連付けることができます。
+Application Insights は、分散しているテレメトリを相関付けるための[データ モデル](application-insights-data-model.md)を定義しています。 テレメトリを論理操作と関連付けるために、すべてのテレメトリ項目には `operation_Id` と呼ばれるコンテキスト フィールドがあります。 この ID は、分散トレース内のすべてのテレメトリ項目で共有されます。 このため、1 つのレイヤーからテレメトリが失われた場合でも、他のコンポーネントから報告されたテレメトリを関連付けることができます。
 
-分散型論理操作は、通常は、一連の小さな操作 (いずれかのコンポーネントによって処理される要求) で構成されます。 これらの操作は、[要求テレメトリ](/application-insights-data-model-request-telemetry.md)によって定義されます。 すべての要求テレメトリには、それをグローバルに一意に識別する独自の `id` があります。 この要求に関連付けられるすべてのテレメトリ (トレースや例外など) では、`operation_parentId` が要求の `id` に設定されます。
+分散型論理操作は、通常は、一連の小さな操作 (いずれかのコンポーネントによって処理される要求) で構成されます。 これらの操作は、[要求テレメトリ](application-insights-data-model-request-telemetry.md)によって定義されます。 すべての要求テレメトリには、それをグローバルに一意に識別する独自の `id` があります。 この要求に関連付けられるすべてのテレメトリ (トレースや例外など) では、`operation_parentId` が要求の `id` に設定されます。
 
-HTTP 呼び出しのような別のコンポーネントへのすべての発信操作は、[依存関係テレメトリ](/application-insights-data-model-dependency-telemetry.md)で表されます。 依存関係テレメトリも、グローバルに一意である独自の `id` を定義します。 この依存関係呼び出しによって開始された要求テレメトリは、それを `operation_parentId` として使用します。
+HTTP 呼び出しのような別のコンポーネントへのすべての発信操作は、[依存関係テレメトリ](application-insights-data-model-dependency-telemetry.md)で表されます。 依存関係テレメトリも、グローバルに一意である独自の `id` を定義します。 この依存関係呼び出しによって開始された要求テレメトリは、それを `operation_parentId` として使用します。
 
 `operation_Id`、`operation_parentId`、および `request.id` を `dependency.id` と共に使用して、分散型論理操作のビューを構築できます。 これらのフィールドは、テレメトリ呼び出しの因果関係の順序も定義します。
 
 マイクロ サービス環境では、コンポーネントのトレースが別の記憶域に移動する可能性があります。 すべてのコンポーネントが、Application Insights 内に独自のインストルメンテーション キーを持っている可能性があります。 論理操作のテレメトリを取得するには、すべての記憶域からデータのクエリを行う必要があります。 記憶域の数が膨大な場合は、次の検索場所に関するヒントを用意する必要があります。
 
-Application Insights データ モデルでは、2 つのフィールド (`request.source` と `dependency.target`) を定義して、この問題を解決しています。 最初のフィールドは要求を開始したコンポーネントを定義し、2 つ目のフィールドは依存関係呼び出しの応答を返したコンポーネントを定義します。
+Application Insights データ モデルでは、2 つのフィールド (`request.source` と `dependency.target`) を定義して、この問題を解決しています。 最初のフィールドは依存関係要求を開始したコンポーネントを識別し、2 つ目のフィールドは依存関係呼び出しの応答を返したコンポーネントを識別します。
 
 
 ## <a name="example"></a>例
 
-STOCKS API という名前の外部 API を使用して株の現在の市場価格を表示する STOCK PRICES アプリケーションの例を挙げてみましょう。 STOCK PRICES アプリケーションには、サーバーに対して AJAX 呼び出し `GET /Home/Stock` を行う `Stock page` ページがあります。この AJAX 呼び出しは呼び出されたサーバーによって処理されます。 結果を返すために、アプリケーションは、HTTP 呼び出し `GET /api/stock/value` を使用して STOCK API のクエリを行います。
+STOCKS API という名前の外部 API を使用して株の現在の市場価格を表示する STOCK PRICES アプリケーションの例を挙げてみましょう。 STOCK PRICES アプリケーションのページ `Stock page` は、クライアント Web ブラウザーが `GET /Home/Stock` を使用して開きます。 アプリケーションは、HTTP 呼び出し `GET /api/stock/value` を使用して STOCK API にクエリを実行します。
 
 クエリを実行したテレメトリの結果を分析することができます。
 
@@ -84,7 +85,7 @@ Application Insights は、相関付け HTTP プロトコル用の[拡張機能]
 - `operation_Id` は **TraceId** にマップします
 - `operation_ParentId` は `ChileOf` 型の **Reference** にマップします
 
-Application Insights の型とデータ モデルについては、[データ モデル](/application-insights-data-model.md)に関するページを参照してください。
+Application Insights の型とデータ モデルについては、[データ モデル](application-insights-data-model.md)に関するページを参照してください。
 
 Open Tracing の概念の定義については、[仕様](https://github.com/opentracing/specification/blob/master/specification.md) と [semantic_conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md) に関するページを参照してください。
 
@@ -107,7 +108,8 @@ Application Insights SDK は、バージョン `2.4.0-beta1` から DiagnosticsS
 
 ## <a name="next-steps"></a>次のステップ
 
-- Application Insights でマイクロ サービスのすべてのコンポーネントの利用を開始します。 [サポートされているプラットフォームを調べます](/app-insights-platforms.md)。
-- Application Insights の型とデータ モデルについては、[データ モデル](/application-insights-data-model.md)に関するページを参照してください。
-- [テレメトリの拡張とフィルター処理](/app-insights-api-filtering-sampling.md)を行う方法を確認します。
+- [カスタム テレメトリを記述します](app-insights-api-custom-events-metrics.md)。
+- Application Insights でマイクロ サービスのすべてのコンポーネントの利用を開始します。 [サポートされているプラットフォームを調べます](app-insights-platforms.md)。
+- Application Insights の型とデータ モデルについては、[データ モデル](application-insights-data-model.md)に関するページを参照してください。
+- [テレメトリの拡張とフィルター処理](app-insights-api-filtering-sampling.md)を行う方法を確認します。
 

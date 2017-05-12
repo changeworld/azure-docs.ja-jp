@@ -4,24 +4,25 @@ description: "メトリック テレメトリ用の Application Insights デー�
 services: application-insights
 documentationcenter: .net
 author: SergeyKanzhelev
-manager: azakonov-ms
+manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 04/25/2017
 ms.author: sergkanz
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: e27301a4815d16396518ddfc7487b064892e7631
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 1bedede1934141927a770c97b61aeb5218652b3e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>メトリック テレメトリ: Application Insights データ モデル
 
-Application Insights でサポートされるメトリック テレメトリには、単一測定と事前集計メトリックの 2 種類があります。 単一測定は名前と値だけのテレメトリです。 事前集計メトリックは、集計間隔中のメトリックの最小値と最大値と、その標準偏差を指定します。
+[Application Insights](app-insights-overview.md) でサポートされるメトリック テレメトリには、単一測定と事前集計メトリックの 2 種類があります。 単一測定は名前と値だけのテレメトリです。 事前集計メトリックは、集計間隔中のメトリックの最小値と最大値と、その標準偏差を指定します。
 
 事前集計メトリック テレメトリは、その集計期間が 1 分間であることを前提としています。
 
@@ -71,7 +72,7 @@ Application Insights ポータルと UI に表示するメトリックの名前�
 
 ## <a name="next-steps"></a>次のステップ
 
-- Application Insights の型とデータ モデルについては、[データ モデル](/application-insights-data-model.md)に関するページを参照してください。
-- [カスタムのイベントとメトリックのための Application Insights API](/app-insights-asp-net-dependencies.md) の使用方法を確認します。
-- Application Insights でサポートされている[プラットフォーム](/app-insights-platforms.md)を確認します。
+- [カスタムのイベントとメトリックのための Application Insights API](app-insights-api-custom-events-metrics.md#send-metrics) の使用方法を確認します。
+- Application Insights の型とデータ モデルについては、[データ モデル](application-insights-data-model.md)に関するページを参照してください。
+- Application Insights でサポートされている[プラットフォーム](app-insights-platforms.md)を確認します。
 

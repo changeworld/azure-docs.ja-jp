@@ -4,7 +4,7 @@ description: "依存関係テレメトリ用の Application Insights データ �
 services: application-insights
 documentationcenter: .net
 author: SergeyKanzhelev
-manager: azakonov-ms
+manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
@@ -12,16 +12,17 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: sergkanz
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: b86b1e1ff7c0370918b2509f98ad65265eb4186e
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: e71730ffe7e42ce5658189baca92ced3a54d269d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>依存関係テレメトリ: Application Insights データ モデル
 
-依存関係テレメトリは、監視対象のコンポーネントと、SQL や HTTP エンドポイントのようなリモート コンポーネントとのやりとりを表します。
+依存関係テレメトリ ([Application Insights](app-insights-overview.md)) は、監視対象のコンポーネントと、SQL や HTTP エンドポイントのようなリモート コンポーネントとのやりとりを表します。
 
 ## <a name="name"></a>名前
 
@@ -29,7 +30,7 @@ ms.lasthandoff: 04/22/2017
 
 ## <a name="id"></a>ID
 
-依存関係呼び出しインスタンスの識別子。 この依存関係の呼び出しに対応する要求テレメトリ項目の相関付けに使用されます。 詳細については、[相関付け](/correlation.md)に関するページを参照してください。
+依存関係呼び出しインスタンスの識別子。 この依存関係の呼び出しに対応する要求テレメトリ項目の相関付けに使用されます。 詳細については、[相関付け](application-insights-correlation.md)に関するページを参照してください。
 
 ## <a name="data"></a>データ
 
@@ -41,7 +42,7 @@ ms.lasthandoff: 04/22/2017
 
 ## <a name="target"></a>ターゲット
 
-依存関係呼び出しのターゲット サイト。 例: サーバー名、ホスト アドレス。 詳細については、[相関付け](/correlation.md)に関するページを参照してください。
+依存関係呼び出しのターゲット サイト。 例: サーバー名、ホスト アドレス。 詳細については、[相関付け](application-insights-correlation.md)に関するページを参照してください。
 
 ## <a name="duration"></a>時間
 
@@ -66,8 +67,9 @@ ms.lasthandoff: 04/22/2017
 
 ## <a name="next-steps"></a>次のステップ
 
-- Application Insights の型とデータ モデルについては、[データ モデル](/application-insights-data-model.md)に関するページを参照してください。
-- [.NET](/app-insights-asp-net-dependencies.md) の依存関係追跡を設定します。
-- [Java](/app-insights-java-agent.md) の依存関係追跡を設定します。
-- Application Insights でサポートされている[プラットフォーム](/app-insights-platforms.md)を確認します。
+- [.NET](app-insights-asp-net-dependencies.md) の依存関係追跡を設定します。
+- [Java](app-insights-java-agent.md) の依存関係追跡を設定します。
+- [カスタム依存関係テレメトリを記述します](app-insights-api-custom-events-metrics.md#trackdependency)。
+- Application Insights の型とデータ モデルについては、[データ モデル](application-insights-data-model.md)に関するページを参照してください。
+- Application Insights でサポートされている[プラットフォーム](app-insights-platforms.md)を確認します。
 
