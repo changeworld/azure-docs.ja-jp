@@ -1,8 +1,7 @@
 ---
-title: "Azure Active Directory 開発者ガイド | Microsoft Docs"
-description: "この記事は、Azure Active Directory の開発者向けリソースの包括的なガイドです。"
+title: "開発者のための Azure Active Directory | Microsoft Docs"
+description: "この記事では、Azure Active Directory を使用した Microsoft の職場および学校アカウントのサインインの概要について説明します。"
 services: active-directory
-documentationcenter: dev-center-name
 author: bryanla
 manager: mbaldwin
 editor: 
@@ -12,129 +11,65 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/09/2016
-ms.author: mbaldwin
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 45ff2ff08cb36f9a4bf49ff04de149accf157e0e
-ms.lasthandoff: 03/31/2017
-
+ms.date: 04/07/2017
+ms.author: bryanla
+ms.custom: aaddev
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: 375fdf142f7ecf5881876858178f663f516a6a71
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/28/2017
 
 ---
-# <a name="azure-active-directory-developers-guide"></a>Azure Active Directory 開発者ガイド
-## <a name="overview"></a>Overview
-Identity Management As A Service (IDMaaS) プラットフォームとして Azure Active Directory (AD) を使用することにより、開発者は ID 管理をアプリケーションに効果的に統合することができます。 次の記事では、Azure AD の実装と重要な機能の概要について説明しています。 これらの記事を順番に読むことをお勧めします。実作業に取りかかる準備ができている場合は、「[使用の開始](#getting-started)」に進んでください。
+# <a name="azure-active-directory-for-developers"></a>開発者のための Azure Active Directory
+Azure Active Directory は、開発者が、Microsoft によってサポートされる職場または学校アカウントでユーザーが安全にサインインできるようにすることができるクラウド ID サービスです。  このドキュメントでは、業界標準の認証プロトコルである OAuth と OpenID Connect を使用して、アプリケーションに Azure AD のサポートを追加する方法を示します。
 
-1. [Azure AD 統合のメリット](active-directory-how-to-integrate.md): Azure AD との統合が、セキュリティで保護されたサインインと承認に最適なソリューションである理由を説明します。
-2. [Azure AD の認証シナリオ](active-directory-authentication-scenarios.md): Azure AD の簡素化された認証を利用して、アプリケーションにサインオン機能を組み込む方法を説明します。
-3. [アプリケーションと Azure AD の統合](active-directory-integrating-applications.md): Azure AD にアプリケーションを追加し、それを更新および削除する方法と、統合されたアプリのブランド化のガイドラインについて説明します。
-4. [Microsoft Graph](https://graph.microsoft.io/) と [Azure AD Graph API](active-directory-graph-api.md): REST API エンドポイント経由でプログラムから Azure AD にアクセスします。 **Azure Active Directory リソースにアクセスする場合、Azure AD Graph API ではなく Microsoft Graph を使用することを強くお勧めします。** 開発作業は現在 Microsoft Graph に集中しており、Azure AD Graph API の追加の機能強化は予定されていません。 Azure AD Graph API の使用が適切なシナリオの数は非常に限られています。詳しくは、Office デベロッパー センターのブログ投稿「[Microsoft Graph or the Azure AD Graph (Microsoft Graph または Azure AD Graph)](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph)」をご覧ください。
-5. [Azure AD 認証ライブラリ](active-directory-authentication-libraries.md): Azure AD 認証ライブラリ (.NET、JavaScript、Objective-C、Android などに対応) を使用して、ユーザーの認証とアクセス トークンの取得を簡単に実行する方法について説明します。
+| | |
+| --- | --- |
+|[認証の基本](active-directory-authentication-scenarios.md) | Azure AD での認証の概要 |
+|[アプリケーションの種類](active-directory-authentication-scenarios.md#application-types-and-scenarios) | Azure AD でサポートされる認証シナリオの概要 |                                
+                                                                              
+## <a name="get-started"></a>作業開始
+これらのガイド付きの手順では、認証ライブラリを使用して、Azure Active Directory ユーザーがサインインできるようにする方法について説明します。
 
-## <a name="getting-started"></a>使用の開始
-次のチュートリアルは複数のプラットフォームに対応しているため、Azure Active Directory を使用した開発をすぐに開始できます。 前提条件として、 [Azure Active Directory テナントを取得](active-directory-howto-tenant.md)する必要があります。
+|  |  |  |  |
+| --- | --- | --- | --- |
+| <center>![モバイル アプリとデスクトップ アプリ](./media/active-directory-developers-guide/NativeApp_Icon.png)<br />モバイル アプリとデスクトップ アプリ</center> | [概要](active-directory-authentication-scenarios.md#native-application-to-web-api)<br /><br />[iOS](active-directory-devquickstarts-ios.md)<br /><br />[Android](active-directory-devquickstarts-android.md) | [.NET](active-directory-devquickstarts-dotnet.md)<br /><br />[Windows](active-directory-devquickstarts-windowsstore.md)<br /><br />[Xamarin](active-directory-devquickstarts-xamarin.md) | [Cordova](active-directory-devquickstarts-cordova.md)<br /><br />[OAuth 2.0](active-directory-protocols-oauth-code.md) |
+| <center>![Web Apps](./media/active-directory-developers-guide/Web_app.png)<br />Web Apps</center> | [概要](active-directory-authentication-scenarios.md#web-browser-to-web-application)<br /><br />[ASP.NET](active-directory-devquickstarts-webapp-dotnet.md)<br /><br />[Java](active-directory-devquickstarts-webapp-java.md) | [NodeJS](active-directory-devquickstarts-openidconnect-nodejs.md)<br /><br />[OpenID Connect 1.0](active-directory-protocols-openid-connect-code.md) |  |
+| <center>![シングル ページ アプリ](./media/active-directory-developers-guide/SPA.png)<br />シングル ページ アプリ</center> | [概要](active-directory-authentication-scenarios.md#single-page-application-spa)<br /><br />[AngularJS](active-directory-devquickstarts-angular.md)<br /><br />[JavaScript]((https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi)) |  |  |
+| <center>![Web API](./media/active-directory-developers-guide/Web_API.png)<br />Web API</center> | [概要](active-directory-authentication-scenarios.md#web-application-to-web-api)<br /><br />[ASP.NET](active-directory-devquickstarts-webapi-dotnet.md)<br /><br />[NodeJS](active-directory-devquickstarts-webapi-nodejs.md) | &nbsp; |
+| <center>![サービス間](./media/active-directory-developers-guide/Service_App.png)<br />サービス間</center> | [概要](active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api)<br /><br />[.NET](active-directory-code-samples.md#server-or-daemon-application-to-web-api)<br /><br />[OAuth 2.0 クライアント資格情報](active-directory-protocols-oauth-service-to-service.md) |  |
 
-### <a name="mobile-and-pc-application-quick-start-guides"></a>モバイル アプリケーションと PC アプリケーションのクイック スタート ガイド
-| [![iOS](./media/active-directory-developers-guide/ios.png)](active-directory-devquickstarts-ios.md) | [![Android](./media/active-directory-developers-guide/android.png)](active-directory-devquickstarts-android.md) | [![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-dotnet.md) | [![Windows ユニバーサル](./media/active-directory-developers-guide/windows.png)](active-directory-devquickstarts-windowsstore.md) | 
-|:---:|:---:|:---:|:---:|:---:|
-| [iOS](active-directory-devquickstarts-ios.md) |[Android](active-directory-devquickstarts-android.md) |[.NET](active-directory-devquickstarts-dotnet.md) |[Windows</br>ユニバーサル](active-directory-devquickstarts-windowsstore.md) |
+## <a name="guides"></a>ガイド
+次の記事では、Azure Active Directory を使用して一般的なタスクを実行する方法について説明しています。
 
-|[![Xamarin](./media/active-directory-developers-guide/xamarin.png)](active-directory-devquickstarts-xamarin.md) | [![Cordova](./media/active-directory-developers-guide/cordova.png)](active-directory-devquickstarts-cordova.md) | [![OAuth 2.0](./media/active-directory-developers-guide/oauth-2.png)](active-directory-protocols-oauth-code.md) |
-|:---:|:---:|:---:|
-|[Xamarin](active-directory-devquickstarts-xamarin.md) |[Cordova](active-directory-devquickstarts-cordova.md) |[OAuth 2.0 と</br>直接統合する](active-directory-protocols-oauth-code.md) |
-
-### <a name="web-application-quick-start-guides"></a>Web アプリケーション クイック スタート ガイド
-| [![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-webapp-dotnet.md) | [![Java](./media/active-directory-developers-guide/java.png)](active-directory-devquickstarts-webapp-java.md) | [![AngularJS](./media/active-directory-developers-guide/angularjs.png)](active-directory-devquickstarts-angular.md) |
-|:---:|:---:|:---:|
-| [.NET](active-directory-devquickstarts-webapp-dotnet.md) |[Java](active-directory-devquickstarts-webapp-java.md) |[AngularJS](active-directory-devquickstarts-angular.md) |[JavaScript](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |[Node.JS](active-directory-devquickstarts-openidconnect-nodejs.md) |[OpenID Connect と</br>直接統合する](active-directory-protocols-openid-connect-code.md) |
-
-| [![Javascript](./media/active-directory-developers-guide/javascript.png)](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) | [![Node.JS](./media/active-directory-developers-guide/nodejs.png)](active-directory-devquickstarts-openidconnect-nodejs.md) | [![OpenID Connect](./media/active-directory-developers-guide/openid-connect.png)](active-directory-protocols-openid-connect-code.md) |
-|:---:|:---:|:---:|
-|[JavaScript](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |[Node.JS](active-directory-devquickstarts-openidconnect-nodejs.md) |[OpenID Connect と</br>直接統合する](active-directory-protocols-openid-connect-code.md) |
-
-### <a name="web-api-quick-start-guides"></a>Web API クイック スタート ガイド
-| [![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-webapi-dotnet.md) | [![Node.JS](./media/active-directory-developers-guide/nodejs.png)](active-directory-devquickstarts-webapi-nodejs.md) |
-|:---:|:---:|
-| [.NET](active-directory-devquickstarts-webapi-dotnet.md) |[Node.JS](active-directory-devquickstarts-webapi-nodejs.md) |
-
-### <a name="microsoft-graph-and-azure-ad-graph-api-quick-start-guides"></a>Microsoft Graph と Azure AD Graph API のクイック スタート ガイド
-| [![Microsoft Graph](./media/active-directory-developers-guide/msgraph.png)](https://developer.microsoft.com/graph/quick-start) | [![Azure AD Graph API](./media/active-directory-developers-guide/graph.png)](active-directory-graph-api-quickstart.md) |
-|:---:|:---:|
-| [Microsoft Graph](https://developer.microsoft.com/graph/quick-start) | [Azure AD Graph API](active-directory-graph-api-quickstart.md) |
-
-## <a name="how-tos"></a>方法
-次の記事では、Azure Active Directory を使用して特定のタスクを実行する方法について説明しています。
-
-* [Azure AD テナントを取得する](active-directory-howto-tenant.md)
-* [マルチテナント アプリケーション パターンを使用して Azure AD ユーザーをサインインさせる](active-directory-devhowto-multi-tenant-overview.md)
-* [シークレットの代わりに証明書を使用してアプリケーション ID を認証する](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/)
-* [Android](active-directory-sso-android.md) デバイスおよび [iOS](active-directory-sso-ios.md) デバイスで ADAL を使用してクロスアプリ SSO を有効にする
-* [Azure AD の AppSource 認定を取得する](active-directory-devhowto-appsource-certified.md)
-* [Azure AD アプリケーション ギャラリーでアプリケーションを一覧表示する](active-directory-app-gallery-listing.md)
-* [Submit Web apps for Office 365 to the Seller Dashboard (販売者ダッシュボードへの Office 365 用 Web アプリの送信)](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)
-* [Azure Portal を使って Azure Active Directory にアプリケーションを登録する](../active-directory-app-registration.md)
-* [Azure Active Directory のアプリケーション マニフェストについて理解する](active-directory-application-manifest.md)
-* [クライアント アプリケーションでサインインおよびアプリ取得ボタンをブランド化するためのガイドラインを理解する](active-directory-branding-guidelines.md)
-* [プレビュー: ユーザーが、個人カウント、および職場または学校のアカウントの両方でサインインできるアプリを構築する方法](active-directory-appmodel-v2-overview.md)
-* [プレビュー: コンシューマーをサインアップおよびサインインさせるアプリケーションを作成する方法](../../active-directory-b2c/active-directory-b2c-overview.md)
-* [プレビュー: Azure AD でのトークンの有効期間の構成](../active-directory-configurable-token-lifetimes.md) (PowerShell を使用)。 Azure AD Graph API による構成の詳細については、[ポリシーの操作](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations)と[ポリシー エンティティ](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#policy-entity)についてのページを参照してください。
+|                                                                           |  |
+|---------------------------------------------------------------------------| --- |
+|[アプリの登録](active-directory-integrating-applications.md)           | Azure AD にアプリを登録する方法 |
+|[マルチテナント アプリ](active-directory-devhowto-multi-tenant-overview.md)    | Microsoft の職場アカウントでサインインできるようにする方法 |
+|[OAuth と OpenID Connect](active-directory-protocols-openid-connect-code.md)| 最新の認証プロトコルを使用して、ユーザーがサインインできるようにし、Web API を呼び出す方法 |
+|[その他のガイド...](active-directory-developers-guide-index.md#guides)        |     |
 
 ## <a name="reference"></a>リファレンス
-以下の記事は、REST と認証ライブラリ API、プロトコル、エラー、コード サンプル、エンドポイントの基礎的なリファレンスです。  
+次の記事には、Azure Active Directory で使用される API、プロトコル メッセージ、および用語に関する詳細な情報が記載されています。
 
-### <a name="support"></a>サポート
-* [タグ付けされた質問](http://stackoverflow.com/questions/tagged/azure-active-directory)に関するページ: Stack Overflow で [azure-active-directory](http://stackoverflow.com/questions/tagged/azure-active-directory) タグと [adal](http://stackoverflow.com/questions/tagged/adal) タグを検索すると、Azure Active Directory 関連のソリューションが見つかります。
-* アプリケーションの開発と統合に関連があり、一般的に使用される一部の用語の定義については、 [Azure AD 開発者向け用語集](active-directory-dev-glossary.md) に関するページを参照してください。
+|                                                                                   | |
+| ----------------------------------------------------------------------------------| --- |
+| [認証ライブラリ (ADAL)](active-directory-authentication-libraries.md)   | Azure AD が提供するライブラリと SDK の概要 |
+| [コード サンプル](active-directory-code-samples.md)                                  | Azure AD のコード サンプルの全一覧 |
+| [用語集](active-directory-dev-glossary.md)                                      | このドキュメント全体で使用されている用語と語句の定義 |
+| [その他の参考資料...](active-directory-developers-guide-index.md#reference)|     |
 
-### <a name="code"></a>コード
-* [Azure Active Directory オープン ソース ライブラリ](http://github.com/AzureAD): [ライブラリ リスト](active-directory-authentication-libraries.md)を使用すると、ライブラリのソースを最も簡単に見つけることができます。
-* [Azure Active Directory のサンプル](https://github.com/azure-samples?query=active-directory): [コード サンプルのインデックス](active-directory-code-samples.md)を使用すると、サンプルのリスト内を最も簡単に移動できます。
-* [.NET 用 Active Directory Authentication Library (ADAL)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet): [最新のメジャー バージョン](https://docs.microsoft.com/active-directory/adal/microsoft.identitymodel.clients.activedirectory)と[前のメジャー バージョン](https://docs.microsoft.com/active-directory/adal/v2/microsoft.identitymodel.clients.activedirectory)の両方の参照ドキュメントを使用できます。
+## <a name="help--support"></a>ヘルプとサポート
+これらは、Azure Active Directory での開発に関するサポートを求めるのに最適な場所です。
 
-### <a name="microsoft-graph-and-azure-ad-graph-api"></a>Microsoft Graph と Azure AD Graph API
-> [!IMPORTANT]
-> Azure Active Directory リソースにアクセスする場合、Azure AD Graph API ではなく [Microsoft Graph](https://graph.microsoft.io/) を使用することを強くお勧めします。 開発作業は現在 Microsoft Graph に集中しており、Azure AD Graph API の追加の機能強化は予定されていません。 Azure AD Graph API の使用が適切なシナリオの数は非常に限られています。詳しくは、Office デベロッパー センターのブログ投稿「[Microsoft Graph or the Azure AD Graph (Microsoft Graph または Azure AD Graph)](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph)」をご覧ください。
-> 
+|  |  
+|---|
+|[Stack Overflow の `azure-active-directory` タグと `adal` タグ](http://stackoverflow.com/questions/tagged/azure-active-directory+or+adal)      |
+|[Azure Active Directory に関するフィードバック](https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences)|
 
-* [Microsoft Graph](https://graph.microsoft.io/): Microsoft Graph のドキュメント、リファレンス、サンプル、SDK です。 
-* [Azure AD Graph API リファレンス](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog): Azure Active Directory Graph API の REST リファレンスです。 
-* [Azure AD Graph API のアクセス許可スコープ](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes): テナント内のディレクトリ データに対するアプリケーションのアクセス権を制御するために使用される、OAuth 2.0 アクセス許可スコープです。
+<br />
 
-### <a name="authentication-and-authorization-protocols"></a>認証および承認のプロトコル
-* [Azure AD の署名キーのロールオーバー](active-directory-signing-key-rollover.md): Azure AD の署名キーのロールオーバーの周期と、最も一般的なアプリケーション シナリオでのキーの更新方法について説明します。
-* [OAuth 2.0 プロトコルでの承認コード付与の使用](active-directory-protocols-oauth-code.md): OAuth 2.0 プロトコルの承認コード付与を使用して、Azure Active Directory テナントの Web アプリケーションと Web API へのアクセスを承認できます。
-* [OAuth 2.0 プロトコルでの暗黙的な許可に関する解説](active-directory-dev-understanding-oauth2-implicit-grant.md): 暗黙的な許可についての概要と、この許可の方法に適したアプリケーションの種類について解説しています。
-* [OAuth 2.0 プロトコルでの、クライアント資格情報を使用したサービス間の呼び出し](active-directory-protocols-oauth-service-to-service.md): OAuth 2.0 クライアント資格情報付与により、Web サービス (機密性の高いクライアント) が別の Web サービスを呼び出すときに、ユーザーを偽装するのではなく、独自の資格情報を使用して認証することが許可されます。 このシナリオでは、クライアントは通常、中間層の Web サービス、デーモン サービス、または Web サイトです。
-* [OpenID Connect 1.0 プロトコルでのサインインと認証](active-directory-protocols-openid-connect-code.md): OpenID Connect 1.0 プロトコルによって OAuth 2.0 が拡張され、認証プロトコルとして使用できるようになります。 クライアント アプリケーションでは、id_token を受信してサインイン プロセスを管理できるほか、承認コード フローを強化して id_token と承認コードの両方を受信することもできます。
-* [SAML 2.0 プロトコル リファレンス](active-directory-saml-protocol-reference.md): SAML 2.0 プロトコルにより、アプリケーションでユーザーにシングル サインオン エクスペリエンスを提供できます。
-* [WS-Federation 1.2 プロトコル](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html): Azure Active Directory では、Web Services Federation バージョン 1.2 仕様に準拠して WS-Federation 1.2 がサポートされています。 フェデレーション メタデータ ドキュメントについては、「 [フェデレーション メタデータ](active-directory-federation-metadata.md)」を参照してください。
-* [サポートされているトークンと要求の種類](active-directory-token-and-claims.md): このガイドを使用すると、SAML 2.0 トークンと JSON Web Tokens (JWT) トークンの要求を理解し、評価することができます。
-
-## <a name="videos"></a>ビデオ
-### <a name="build"></a>構築
-Azure Active Directory を使用したアプリケーションの開発に関する次の概要プレゼンテーションには、エンジニアリング チームで実務に携わっている話し手が登場します。 プレゼンテーションでは、IDMaaS、認証、ID フェデレーション、シングル サインオンなどの基本的なトピックを取り上げています。
-
-* [Microsoft ID: 連合と今後の方向性の状況](https://azure.microsoft.com/documentation/videos/build-2016-microsoft-identity-state-of-the-union-and-future-direction/)
-* [Azure Active Directory: モダン アプリケーション向けのサービスとしての ID 管理](https://azure.microsoft.com/documentation/videos/build-2015-azure-active-directory-identity-management-as-a-service-for-modern-applications/)
-* [Azure Active Directory を使ったモダン Web アプリケーションの開発](https://azure.microsoft.com/documentation/videos/build-2015-develop-modern-web-applications-with-azure-active-directory/)
-* [Azure Active Directory を使ったモダン ネイティブ Web アプリケーションの開発](https://azure.microsoft.com/documentation/videos/build-2015-develop-modern-native-applications-with-azure-active-directory/)
-
-### <a name="azure-friday"></a>Azure Friday
-[Azure Friday](https://azure.microsoft.com/documentation/videos/azure-friday/) は、金曜日ごとに定期的に配信される 1 対 1 の対話形式のビデオ シリーズで、Azure のさまざまなトピックに関する専門家への短いインタビュー (10 ～ 15 分) で構成されています。  ページにあるサービス フィルター機能を使用すると、すべての Azure Active Directory ビデオを視聴することができます。
-
-* [Azure Identity 101](https://azure.microsoft.com/documentation/videos/azure-identity-basics/)
-* [Azure Identity 102](https://azure.microsoft.com/documentation/videos/azure-identity-creating-active-directory/)
-* [Azure Identity 103](https://azure.microsoft.com/documentation/videos/azure-identity-application-to-authenticate/)
-
-## <a name="social"></a>ソーシャル
-* [Active Directory チームのブログ](http://blogs.technet.com/b/ad/): Azure Active Directory の世界における最新の開発状況を紹介します。
-* [Azure Active Directory Graph チームのブログ](https://blogs.msdn.microsoft.com/aadgraphteam): Graph API に固有の Azure Active Directory 情報を提供します。
-* [Cloud Identity](http://www.cloudidentity.net): Azure Active Directory のプリンシパル PM による、サービスとしての ID 管理に関する考察を読むことができます。  
-* [Twitter での Azure Active Directory](https://twitter.com/azuread): Azure Active Directory に関するお知らせを 140 文字以内で受け取ることができます。
-
-## <a name="windows-server-on-premises-development"></a>Windows Server オンプレミス開発
-Windows Server の使用と Active Directory フェデレーション サービス (AD FS) の開発のガイダンスについては、以下のページを参照してください。
-
-* [開発者向けの AD FS のシナリオ](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/overview/ad-fs-scenarios-for-developers): AD FS コンポーネントとその動作の概要です。サポートされている認証/承認のシナリオについて詳しく取り上げています。
-* [AD FS のチュートリアル](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/ad-fs-development): 一連のチュートリアル記事です。関連する認証/承認フローの実装に関する具体的な手順を紹介しています。
+> [!NOTE]
+> Microsoft の個人アカウントでサインインできるようにする必要がある場合は、[Azure AD v2.0 エンドポイント](active-directory-appmodel-v2-overview.md)の使用を検討してください。  Azure AD v2.0 エンドポイントは、(Azure AD から) Microsoft の個人アカウントと Microsoft の職場アカウントを 1 つの認証システムに統合します。
 

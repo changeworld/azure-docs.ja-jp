@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 05/04/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 59e12d70d46d45fb7dc4244ac2968838cb29dbec
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 9d10ebf9d7bd07bd126302a6ecf442d809e00196
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -366,17 +367,6 @@ Microsoft Identity Manager サーバー ソフトウェアの使用権は、Wind
 **詳細:**
 
 * [Enterprise State Roaming](active-directory-windows-enterprise-state-roaming-overview.md)
-
-## <a name="azure-ad-preview-features"></a>Azure AD プレビュー機能
-Azure AD には、Free、Basic、Premium (P1 および P2) の各エディションの一般提供されている機能に加え、一連のプレビュー機能も用意されています。 プレビュー機能を使用すると、近い将来に公開予定の機能を体験し、これらの機能が環境の改善に役立つかどうかを判断できます。
-
-**使用可能なプレビュー機能**
-
-* [B2B コラボレーション](active-directory-b2b-collaboration-overview.md)
-* [管理単位](active-directory-administrative-units-management.md)
-* [HR アプリケーションの統合](active-directory-saas-workday-inbound-tutorial.md)
-* [iOS の証明書ベースの認証](active-directory-certificate-based-authentication-ios.md)
-* [Android の証明書ベースの認証](active-directory-certificate-based-authentication-android.md)
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Active Directory Premium の概要](active-directory-get-started-premium.md)

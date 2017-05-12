@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/20/2017
+ms.date: 05/02/2017
 ms.author: magoedte
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: b0624bde9ab53231768beb0c832a4a49b21a8975
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 03a6c1f20632691c08f5de4afe74eacc6f79608e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -87,9 +88,14 @@ System Center Operations Manager 管理グループが OMS ワークスペース
 ただし、このソリューションと Hybrid Runbook Worker グループ メンバーシップの両方に同じアカウントを使用すれば、Windows コンピューターを Automation アカウントの Hybrid Runbook Worker に追加して Automation Runbook をサポートすることができます。  この機能は、Hybrid Runbook Worker のバージョン 7.2.12024.0 に追加されました。  
 
 ## <a name="configuration"></a>構成
-OMS ワークスペースに更新管理ソリューションを追加し、エージェントがレポートしていることを確認するには、次の手順を実行します。 Windows エージェントは、そのままの構成で自動的に追加されます。 
+OMS ワークスペースに更新管理ソリューションを追加し、エージェントがレポートしていることを確認するには、次の手順を実行します。 ワークスペースに既に接続されている Windows エージェントは、そのままの構成で自動的に追加されます。 
 
-このソリューションを追加する方法は、3 つあります。Azure Portal の Azure Marketplace でオートメーションと制御サービスを選択する、同じく更新管理ソリューションを選択する、OMS ワークスペースで OMS ソリューション ギャラリーから追加する、という方法です。  既に Automation アカウントと OMS ワークスペースが同じリソース グループとリージョンにリンクされている場合は、[オートメーションと制御] を選択すると、構成を確認し、ソリューションをインストールするだけで、両方のサービスでソリューションが構成されます。  Azure Marketplace で更新管理ソリューションを選択した場合も、同じようにして構成されます。  サブスクリプションにどちらかのサービスがデプロイされている場合は、**[新しいソリューションの作成]** ブレードの手順に従って、事前に選択された他の推奨ソリューションをインストールする必要があるかどうかを確認します。  また、必要に応じて、[OMS ソリューションの追加](../log-analytics/log-analytics-add-solutions.md)に関するページで説明されているプロセスをソリューション ギャラリーで実行して、更新管理ソリューションを OMS ワークスペースに追加できます。  
+このソリューションのデプロイには、次の方法を使用できます。
+
+* Azure Portal の Azure Marketplace でオートメーションと制御サービスまたは更新管理ソリューションを選択する
+* OMS ワークスペースで OMS ソリューション ギャラリーから追加する
+
+既に Automation アカウントと OMS ワークスペースが同じリソース グループとリージョンにリンクされている場合は、[オートメーションと制御] を選択すると、構成を確認し、ソリューションをインストールするだけで、両方のサービスでソリューションが構成されます。  Azure Marketplace で更新管理ソリューションを選択した場合も、同じようにして構成されます。  サブスクリプションにどちらかのサービスがデプロイされている場合は、**[新しいソリューションの作成]** ブレードの手順に従って、事前に選択された他の推奨ソリューションをインストールする必要があるかどうかを確認します。  また、必要に応じて、[OMS ソリューションの追加](../log-analytics/log-analytics-add-solutions.md)に関するページで説明されているプロセスをソリューション ギャラリーで実行して、更新管理ソリューションを OMS ワークスペースに追加できます。  
 
 ### <a name="confirm-oms-agents-and-operations-manager-management-group-connected-to-oms"></a>OMS エージェントと Operations Manager 管理グループが OMS に接続されていることを確認する
 
@@ -144,7 +150,7 @@ OMS ワークスペースに更新管理ソリューションを追加すると�
 > [!NOTE]
 > Azure Marketplace からデプロイされた Windows VM は、既定で Windows Update Service から自動更新を受信するように設定されています。  このソリューションまたは Windows VM をワークスペースに追加した後も、この動作は変更されません。  このソリューションで更新プログラムを能動的に管理しない場合は、既定の動作 (更新プログラムが自動的に適用される) が適用されます。  
 
-Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise Linux (RHEL) イメージから作成した仮想マシンは、Azure にデプロイされた [Red Hat Update Infrastructure (RHUI)](../virtual-machines/linux/update-infrastructure-redhat.md) にアクセスするよう登録されています。  その他の Linux ディストリビューションは、サポートされている方式に従ったディストリビューション オンライン ファイル リポジトリから更新する必要があります。  
+Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise Linux (RHEL) イメージから作成した仮想マシンは、Azure にデプロイされた [Red Hat Update Infrastructure (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) にアクセスするよう登録されています。  その他の Linux ディストリビューションは、サポートされている方式に従ったディストリビューション オンライン ファイル リポジトリから更新する必要があります。  
 
 ### <a name="viewing-update-deployments"></a>更新プログラムの展開の表示
 **[Update Deployment (更新プログラムの展開)]** タイルをクリックすると、既存の更新プログラムの展開の一覧が表示されます。  これらは状態別 (**スケジュール**、**実行中**、**Completed (完了)**) にグループ化されています。<br><br> ![更新プログラムの展開スケジュールのページ](./media/oms-solution-update-management/update-updatedeployment-schedule-page.png)<br>  

@@ -1,21 +1,18 @@
 ## <a name="create-a-device-identity"></a>デバイス ID の作成
-このセクションでは、[IoT Hub Explorer][iot-hub-explorer] という名前の Node.js ツールを使用して、このチュートリアル用のデバイス ID を作成します。
+
+このセクションでは、[iothub-explorer][iot-hub-explorer] という Node.js ツールを使用して、このチュートリアル用のデバイス ID を作成します。
 
 1. コマンドライン環境で次のコマンドを実行します。
-   
-    ```
-    npm install -g iothub-explorer@latest
-    ```
-2. その後、次のコマンドを実行してハブにログインします。 このとき、`{iot hub connection string}` を前にコピーしておいた IoT Hub の接続文字列と置き換えてください。
 
-    ```
-    iothub-explorer login "{iot hub connection string}"
-    ```
-3. 最後に、次のコマンドを実行して、`myDeviceId` という新しいデバイス ID を作成します。
-   
-    ```
-    iothub-explorer create myDeviceId --connection-string
-    ```
+    `npm install -g iothub-explorer@latest`
+
+1. その後、次のコマンドを実行してハブにログインします。 このとき、`{iot hub connection string}` を前にコピーしておいた IoT Hub の接続文字列と置き換えてください。
+
+    `iothub-explorer login "{iot hub connection string}"`
+
+1. 最後に、次のコマンドを実行して、`myDeviceId` という新しいデバイス ID を作成します。
+
+    `iothub-explorer create myDeviceId --connection-string`
 
 結果として得られたデバイスの接続文字列をメモしておきます。 このデバイス接続文字列は、デバイス アプリからデバイスとして IoT Hub に接続する際に使用します。
 

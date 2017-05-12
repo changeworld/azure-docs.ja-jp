@@ -14,9 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
-ms.sourcegitcommit: 57d00f2192fed7a2e89ac94e110ebb7e84c83b72
-ms.openlocfilehash: 02d0270c5763eb9dd2190bc24b793022ea536746
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
+ms.openlocfilehash: c207d780857a61d4b1fc0f39e6185cae67abc955
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/29/2017
 
 
 ---
@@ -30,7 +32,7 @@ ms.openlocfilehash: 02d0270c5763eb9dd2190bc24b793022ea536746
 パブリックにアクセス可能な任意の配信元 Web サーバーのファイルは、その有効期間 (TTL) が経過するまで、Azure CDN でキャッシュできます。  TTL は、配信元サーバーからの HTTP 応答の [*Cache-Control* ヘッダー](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)によって決まります。  この記事では、Azure Web Apps、Azure Cloud Services、ASP.NET アプリケーション、インターネット インフォメーション サービス サイトの `Cache-Control` ヘッダーの設定方法について説明します。これらはすべて同様に構成されます。
 
 > [!TIP]
-> ファイルに TTL を設定しなくてもかまいません。  その場合は、Azure CDN が既定の&7; 日間の TTL を自動的に適用します。
+> ファイルに TTL を設定しなくてもかまいません。  その場合は、Azure CDN が既定の 7 日間の TTL を自動的に適用します。
 > 
 > ファイルとその他のリソースへのアクセスを高速化する Azure CDN のしくみの詳細については、[Azure CDN の概要](cdn-overview.md)に関するページをご覧ください。
 > 
@@ -71,10 +73,5 @@ Response.Cache.SetLastModified(DateTime.Now);
 * [**clientCache** 要素の詳細を確認する](http://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)
 * [**HttpResponse.Cache** プロパティのドキュメントを参照する](http://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx) 
 * [**HttpCachePolicy クラス**のドキュメントを参照する](http://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx)。  
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

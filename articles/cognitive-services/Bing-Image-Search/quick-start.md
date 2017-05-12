@@ -10,14 +10,15 @@ ms.technology: bing-image-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 6ad0834623e5a61684490937154bd034effd548a
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 6c0b774ec95e11f61441d9fb1053185f16718f0c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 
-# <a name="your-first-images-search-query"></a>Your First Images Search Query
+# <a name="your-first-images-search-query"></a>Your first images search query
 
 Before you can make your first call, you need to get a Bing Search Cognitive Services subscription key. To get a key, see [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api).
 
@@ -28,7 +29,7 @@ https://api.cognitive.microsoft.com/bing/v5.0/images/search
 ```
 
 > [!NOTE]
-> Version 7 Preview endpoint:
+> V7 Preview endpoint:
 > 
 > ```
 > https://api.cognitive.microsoft.com/bing/v7.0/images/search
@@ -36,7 +37,7 @@ https://api.cognitive.microsoft.com/bing/v5.0/images/search
   
 The request must use the HTTPS protocol, and all requests must be made from a server (calls may not be made from a client).  
   
-The request must specify the [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#query) query parameter, which contains the user's search term. Although it's optional, the request should also specify the [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#mkt) query parameter, which identifies the market where you want the results to come from. For a list of optional query parameters such as `freshness` and `size`, see [Query Parameters]((https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#query-parameters). All query parameter values must be URL encoded.  
+The request must specify the [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#query) query parameter, which contains the user's search term. Although it's optional, the request should also specify the [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#mkt) query parameter, which identifies the market where you want the results to come from. For a list of optional query parameters such as `freshness` and `size`, see [Query Parameters](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#query-parameters). All query parameter values must be URL encoded.  
   
 The request must specify the [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#subscriptionkey) header. Although optional, you are encouraged to also specify the following headers:  
   
@@ -49,7 +50,7 @@ The client IP and location headers are important for returning location aware co
 
 For a list of all request and response headers, see [Headers](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#headers).
 
-## <a name="the-request"></a>The Request
+## <a name="the-request"></a>The request
 
 The following shows a search request that includes all the suggested query parameters and headers. If it's is your first time calling any of the Bing APIs, don't include the client ID header. Only include the client ID if you've previously called a Bing API and Bing returned a client ID for the user and device combination. 
   
@@ -64,7 +65,7 @@ Host: api.cognitive.microsoft.com
 ```  
 
 > [!NOTE]
-> Version 7 Preview request:
+> V7 Preview request:
 >
 > ```  
 > GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghies&mkt=en-us HTTP/1.1  
@@ -153,14 +154,14 @@ BingAPIs-Market: en-US
 ```
 
 > [!NOTE]
-> Version 7 Preview response change:
+> V7 Preview response change:
 >
 > Renamed the `nextOffsetAddCount` to `nextOffset`. You use the field to page images. In v7, you set the [offset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#offset) query parameter to the value of `nextOffset`. For more information, see [Paging Images](./paging-images.md).
 
 
   
 
-## <a name="next-steps"></a>Next Steps
+## <a name="next-steps"></a>Next steps
 
 Try out the API. Go to [Image Search API Testing Console](https://dev.cognitive.microsoft.com/docs/services/56b43f0ccf5ff8098cef3808/operations/571fab09dbe2d933e891028f). 
 

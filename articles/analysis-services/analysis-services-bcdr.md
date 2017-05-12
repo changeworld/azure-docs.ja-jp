@@ -12,12 +12,13 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2017
+ms.date: 05/02/2017
 ms.author: owend
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: c4eb1162edc42baafe96e6c33699805ffc121204
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: d71bf041585af101d6aa67ba2697f5192bdfd048
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -35,11 +36,10 @@ ms.lasthandoff: 04/20/2017
 
 いずれの場合も、プライマリ サーバーで障害が発生したら、レポート クライアントの接続文字列を変更して、別のリージョンのデータセンターのサーバーに接続する必要があります。 この変更は、致命的なデータ センターの停止が発生した場合の最終手段にしてください。 プライマリ サーバーをホストしているデータ センターが停止した場合、そのデータ センターの復旧は、すべてのクライアントの接続更新よりも先に完了することはよくあります。 
 
-組織によるサービス中断の処理方法を決めるときは、データの最新性とセキュリティがどのように確保されているかを考慮てください。 
 
 
 ## <a name="related-information"></a>関連情報
-[バックアップと復元](analysis-services-backup.md) 
+[バックアップと復元](analysis-services-backup.md)   
 [Azure Analysis Services を管理する](analysis-services-manage.md) 
 
 

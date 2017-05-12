@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/04/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: 2fc966e7c93e44007f15c3129fbe709beddb21af
-ms.lasthandoff: 04/05/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 43f18fb3ce873eef5c2d96a89ab41fc6efc443d8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -97,6 +98,10 @@ Microsoft は特殊な地政学的領域と顧客区分のために隔離され�
   * Azure パブリックと Azure プライベートのピアリングのルート上限の増加 (4,000 ルートから 10,000 ルートに)。
   * サービスのグローバル接続。 (国内のクラウドを除く) あらゆる地域で作成された ExpressRoute 回線に与えられる世界中の他の地域にあるリソースへのアクセス。 たとえば、西ヨーロッパで作成された仮想ネットワークにシリコン バレーでプロビジョニングされた ExpressRoute 回線からアクセスできます。
   * ExpressRoute ごとの VNet リンクの増加 (回線の帯域幅にもよりますが、10 からそれ以上に)。
+
+## <a name="faq"></a>FAQ
+
+ExpressRoute に関してよく寄せられる質問については、「[ExpressRoute の FAQ](expressroute-faqs.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

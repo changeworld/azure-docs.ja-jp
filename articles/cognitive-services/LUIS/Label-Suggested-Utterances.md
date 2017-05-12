@@ -9,16 +9,17 @@ ms.technology: luis
 ms.topic: article
 ms.date: 03/01/2017
 ms.author: cahann
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: c60f01b3ad8c998515bd84dcae7726219cb066d6
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: e95b7f1bfde4b4820333c3c6f271acc7e00b425a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 
 # <a name="label-suggested-utterances"></a>Label Suggested Utterances
-## <a name="suggested-utterances-demonstrate-active-machine-learning"></a>Suggested utterances demonstrate active machine learning 
-The breakthrough feature of LUIS is active learning. Once your application is deployed and traffic starts to flow into the system, LUIS uses active learning to improve itself. In the active learning process, LUIS examines all the utterances that have been sent to it, and calls to your attention the ones that it would like you to label. LUIS identifies the utterances that it is relatively unsure of and asks you to label them. Suggested utterances are the utterances that your LUIS app suggests for labeling. If you label these utterances, this will give your application the biggest boost in performance.
+
+The breakthrough feature of LUIS is active learning. Once your application is deployed and traffic starts to flow into the system, LUIS uses active learning to improve itself. In the active learning process, LUIS examines all the utterances that have been sent to it, and calls to your attention the ones that it would like you to label. LUIS identifies the utterances that it is relatively unsure of and asks you to label them. Suggested utterances are the utterances that your LUIS app suggests for labeling. If you label these utterances, this will give your application the biggest boost in performance. 
 
 ## <a name="view-suggested-utterances"></a>View suggested utterances
 Suggested utterances are taken from end-user queries on the application’s HTTP endpoint. If your app is not published or has not received hits yet, you will not have any suggested utterances. Also, you will not get suggested utterances for an intent/entity if no endpoint hits are received on this intent/entity. 
@@ -76,3 +77,7 @@ The following are the possible cases you may have, along with the actions you ca
  
     ![Edit or remove entity label](./Images/SuggUtter-entitylabeling.JPG)
 
+
+## <a name="next-steps"></a>Next steps
+
+To test how performance improves after you label suggested utterances, you can access the test console by clicking **Train & Test** in the left panel. For instructions on how to test your app using the test console, see [Train and test your app](Train-Test.md).

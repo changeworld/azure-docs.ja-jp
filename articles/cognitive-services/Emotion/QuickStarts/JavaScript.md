@@ -9,10 +9,11 @@ ms.technology: emotion
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: anroth
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 7b12b1b7066481855151abdc931ce62f94eb3b4e
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 6dcd1e2b703b77399f1d59fbda4fd6b21eb10135
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 ---
 
@@ -20,7 +21,7 @@ ms.lasthandoff: 04/12/2017
 This article provides information and code samples to help you quickly get started using the [Emotion API Recognize method](https://dev.projectoxford.ai/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) with JavaScript to recognize the emotions expressed by one or more people in an image.
 
 ## <a name="prerequisite"></a>Prerequisite
-* Get your free Subscription Key [here](https://www.microsoft.com/cognitive-services/en-us/sign-up)
+* Get your free Subscription Key [here](https://azure.microsoft.com/en-us/try/cognitive-services/)
 
 ## <a name="recognize-emotions-javascript-example-request"></a>Recognize Emotions JavaScript Example Request
 

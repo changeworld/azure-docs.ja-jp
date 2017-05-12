@@ -10,16 +10,17 @@ ms.technology: bing-image-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: a958eb57e5a4c10a1b933ed03b8fc7456740acf6
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: f992fbeef1fd3d049670f7ea915b1cb28e6fd797
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 
-# <a name="paging-results"></a>Paging Results
+# <a name="paging-results"></a>Paging results
 
-When you call the Image Search API, Bing returns a list of results. The list is a subset of the total number of results that are relevant to the query. To get the estimated total number of available results, access the answer object's [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-image-api-v5-reference#totalestimatedmatches) field.  
+When you call the Image Search API, Bing returns a list of results. The list is a subset of the total number of results that are relevant to the query. To get the estimated total number of available results, access the answer object's [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#totalestimatedmatches) field.  
   
 The following example shows the `totalEstimatedMatches` field that an Images answer includes.  
   
@@ -32,7 +33,7 @@ The following example shows the `totalEstimatedMatches` field that an Images ans
 }  
 ```  
   
-To page through the available images, use the [count](https://docs.microsoft.com/rest/api/cognitiveservices/bing-image-api-v5-reference#count) and [offset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-image-api-v5-reference#offset) query parameters.  
+To page through the available images, use the [count](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#count) and [offset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#offset) query parameters.  
   
 The `count` parameter specifies the number of results to return in the response. The maximum number of results that you may request in the response is 150. The default is 35. The actual number delivered may be less than requested.
 
@@ -49,7 +50,7 @@ Host: api.cognitive.microsoft.com
 ```  
 
 > [!NOTE]
-> Version 7 Preview request:
+> V7 Preview request:
 
 > ```  
 > GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghies&count=20&offset=40&mkt=en-us HTTP/1.1  
@@ -66,7 +67,7 @@ Host: api.cognitive.microsoft.com
 ```  
 
 > [!NOTE]
-> Version 7 Preview request:
+> V7 Preview request:
 
 > ```  
 > GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghies&offset=40&mkt=en-us HTTP/1.1  
@@ -76,14 +77,14 @@ Host: api.cognitive.microsoft.com
   
 Typically, if you page 35 images at a time, you would set the `offset` query parameter to 0 on your first request, and then increment `offset` by 35 on each subsequent request. However, some of the results in the subsequent response may be duplicates of the previous response. For example, the first two images in the response may be the same as the last two images from the previous response.
 
-To eliminate duplicate results, use the [nextOffsetAddCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-image-api-v5-reference#totalestimatedmatches) field of the `Images` object. The `nextOffsetAddCount` field tells you the number to add to your next `offset`.
+To eliminate duplicate results, use the [nextOffsetAddCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#nextoffsetaddcount) field of the `Images` object. The `nextOffsetAddCount` field tells you the number to add to your next `offset`.
 
 For example, if you want to page 30 images at a time, you'd set `count` to 30 and `offset` to 0 in your first request. In your next request, you'd set 'count' to 30 and `offset` to 30 plus the value of `nextOffsetAddCount`. The value of `nextOffsetAddCount` is zero (0) if there are no duplicates or it may be 2 if there are two duplicates.
 
 > [!NOTE]
-> Version 7 Preview changes to paging:
+> V7 Preview changes to paging:
 >
-> Renamed the `nextOffsetAddCount` field of [Images](https://docs.microsoft.com/rest/api/cognitiveservices/bing-image-api-v7-reference#images) to `nextOffset`. In v7, you set the `offset` query parameter to the `nextOffset` value.
+> Renamed the `nextOffsetAddCount` field of [Images](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#images) to `nextOffset`. In v7, you set the `offset` query parameter to the `nextOffset` value.
 
 > [!NOTE]
 > Paging applies only to image search (/images/search), and not to image insights or trending images (/images/trending).

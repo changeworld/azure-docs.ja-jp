@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2017
 ms.author: marsma
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
 ms.openlocfilehash: e9601830a2444772dd268160c9ad821a772bc1b4
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/25/2017
 
 

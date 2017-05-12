@@ -9,10 +9,11 @@ ms.technology: emotion
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: anroth
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: c81d6fcbf2fe3790e654a1be0de1ed5c93154448
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 1c6ddae54f998673a911506168310133831f95cd
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 ---
 
@@ -26,7 +27,7 @@ To make it easy to get started with Emotion API, the Jupyter notebook linked bel
 
 To use the notebook interactively, you will need to clone it and run it in Jupyter. To learn how to get started with interactive Jupyter notebooks, follow the instructions at http://jupyter.readthedocs.org/en/latest/install.html. 
 
-To use this notebook, you will need a subscription key for the Emotion API. Visit the [Subscription page](https://www.microsoft.com/cognitive-services/en-us/sign-up) to sign up. On the “Sign in” page, use your Microsoft account to sign in and you will be able to subscribe and get free keys. After completing the sign-up process, paste your key into the variables section shown below. Either the primary or the secondary key works.
+To use this notebook, you will need a subscription key for the Emotion API. Visit the [Subscription page](https://azure.microsoft.com/en-us/try/cognitive-services/) to sign up. On the “Sign in” page, use your Microsoft account to sign in and you will be able to subscribe and get free keys. After completing the sign-up process, paste your key into the variables section shown below. Either the primary or the secondary key works.
 
 ```
 Python Example 

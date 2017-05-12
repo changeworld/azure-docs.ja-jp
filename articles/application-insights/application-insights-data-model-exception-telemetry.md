@@ -4,24 +4,25 @@ description: "例外テレメトリ用の Application Insights データ モデ�
 services: application-insights
 documentationcenter: .net
 author: SergeyKanzhelev
-manager: azakonov-ms
+manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 04/25/2017
 ms.author: sergkanz
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 17a39660fce598610ff9a95e886282e6b3faffe4
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 49d2429c01fe3fde2e51e4344904f55e43eea1cd
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="exception-telemetry-application-insights-data-model"></a>例外テレメトリ: Application Insights データ モデル
 
-例外のインスタンスは、監視対象のアプリケーションの実行中に発生したハンドルされるまたはハンドルされない例外を表します。
+[Application Insights](app-insights-overview.md)で、例外のインスタンスは、監視対象のアプリケーションの実行中に発生したハンドルされるまたはハンドルされない例外を表します。
 
 ## <a name="problem-id"></a>問題 ID
 
@@ -35,7 +36,7 @@ ms.lasthandoff: 04/22/2017
 
 ## <a name="exception-details"></a>例外の詳細
 
-このセクションは現在作成中です...
+(拡張予定)
 
 ## <a name="custom-properties"></a>カスタム プロパティ
 
@@ -47,7 +48,7 @@ ms.lasthandoff: 04/22/2017
 
 ## <a name="next-steps"></a>次のステップ
 
-- Application Insights の型とデータ モデルについては、[データ モデル](/application-insights-data-model.md)に関するページを参照してください。
-- [Application Insights で Web アプリの例外を診断する](/app-insights-asp-net-exceptions.md)方法を確認します。
-- Application Insights でサポートされている[プラットフォーム](/app-insights-platforms.md)を確認します。
+- Application Insights の型とデータ モデルについては、[データ モデル](application-insights-data-model.md)に関するページを参照してください。
+- [Application Insights で Web アプリの例外を診断する](app-insights-asp-net-exceptions.md)方法を確認します。
+- Application Insights でサポートされている[プラットフォーム](app-insights-platforms.md)を確認します。
 

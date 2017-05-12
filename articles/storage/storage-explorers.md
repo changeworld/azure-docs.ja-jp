@@ -3,7 +3,7 @@ title: "Azure Storage 向けのツール | Microsoft Docs"
 description: "Azure Storage のデータの表示/操作を可能にするツールの一覧。"
 services: storage
 documentationcenter: 
-author: seguler
+author: dineshmurthy
 manager: jahogg
 editor: tysonn
 ms.assetid: e4748642-98c4-437e-b0ed-4f9641c2e894
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2017
-ms.author: seguler
-translationtype: Human Translation
+ms.date: 05/11/2017
+ms.author: dineshmurthy
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
 ms.openlocfilehash: 85ef906d680df8f6848b323d79a09b8414ed0817
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/06/2017
 
 

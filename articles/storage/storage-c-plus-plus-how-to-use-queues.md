@@ -3,20 +3,21 @@ title: "Queue Storage を使用する方法 (C++) | Microsoft Docs"
 description: "Azure で Queue ストレージ サービスを使用する方法について説明します。 サンプルは C++ で記述されています。"
 services: storage
 documentationcenter: .net
-author: seguler
+author: cbrooksmsft
 manager: jahogg
 editor: tysonn
 ms.assetid: c8a36365-29f6-404d-8fd1-858a7f33b50a
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: cpp
 ms.topic: article
-ms.date: 02/28/2017
-ms.author: seguler
-translationtype: Human Translation
+ms.date: 05/11/2017
+ms.author: cbrooksmsft
+ms.translationtype: Human Translation
 ms.sourcegitcommit: bc97472a07ac4c27c60fbe2cb803f2360a3362c4
 ms.openlocfilehash: ca4b5428279291c0b3fe4fb52f6dc4e2c1208bf2
+ms.contentlocale: ja-jp
 ms.lasthandoff: 11/22/2016
 
 

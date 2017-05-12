@@ -13,78 +13,68 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 04/26/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: 14b715013b4154a1fa079c0dc470e675d7cf4c1f
-ms.lasthandoff: 01/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a12e9d342daf41ee9f83cadb9e29ee867be055de
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>ポータルを使用して Application Gateway 用カスタム プローブを作成する
+
 > [!div class="op_single_selector"]
 > * [Azure ポータル](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager の PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Classic PowerShell (Azure クラシック PowerShell)](application-gateway-create-probe-classic-ps.md)
 
-[!INCLUDE [azure-probe-intro-include](../../includes/application-gateway-create-probe-intro-include.md)]
+この記事では、Azure Portal を使用して既存の Application Gateway にカスタム プローブを追加します。 カスタム プローブは、特定の正常性チェック ページがあるアプリケーションや、既定の Web アプリケーションに対して正常な応答を返さないアプリケーションに役立ちます。
 
-## <a name="scenario"></a>シナリオ
+## <a name="before-you-begin"></a>開始する前に
 
-次のシナリオでは、既存のアプリケーション ゲートウェイに、カスタムの正常性プローブを作成します。
-このシナリオでは、 [アプリケーション ゲートウェイの作成](application-gateway-create-gateway-portal.md)に関する手順を既に実行したことを前提としています。
+Application Gateway がまだない場合は、[Application Gateway の作成](application-gateway-create-gateway-portal.md)に関する記事を参照して、使用する Application Gateway を作成します。
 
-## <a name="a-namecreateprobeacreate-the-probe"></a><a name="createprobe"></a>プローブの作成
+## <a name="createprobe"></a>プローブの作成
 
-プローブは、ポータルを通じて&2; 段階の手順で構成されます。 最初の手順で、プローブを作成します。 次に、アプリケーション ゲートウェイのバックエンド http 設定にプローブを追加します。
+プローブは、ポータルを通じて 2 段階の手順で構成されます。 最初の手順で、プローブを作成します。 次の手順で、Application Gateway のバックエンド http 設定にプローブを追加します。
 
-### <a name="step-1"></a>手順 1
+1. [Azure ポータル](https://portal.azure.com)にログインします。 まだアカウントを持っていない場合は、[1 か月間の無料試用版](https://azure.microsoft.com/free)にサインアップできます。
 
-[Azure ポータル](http://portal.azure.com)に移動し、既存のアプリケーション ゲートウェイを選択します。
+1. Azure Portal の [お気に入り] ウィンドウで [すべてのリソース] をクリックします。 [すべてのリソース] ブレードで Application Gateway をクリックします。 選択したサブスクリプションに既存のリソースがいくつもある場合は、[名前でフィルター] ボックスに「partners.contoso.net」と入力すると、 目的のアプリケーション ゲートウェイがすぐに見つかります。
 
-![Application Gateway の概要][1]
+1. **[プローブ]** をクリックし、**[追加]** ボタンをクリックしてプローブを追加します。
 
-### <a name="step-2"></a>手順 2.
+  ![Add Probe blade with information filled out][1]
 
-**[プローブ]** をクリックし、**[追加]** ボタンをクリックしてプローブを追加します。
+1. **[正常性プローブの追加]** ブレードでプローブに必要な情報を入力し、完了したら **[OK]** をクリックします。
 
-![Add Probe blade with information filled out][2]
+  |**設定** | **値** | **詳細**|
+  |---|---|---|
+  |**名前**|customProbe|この値は、ポータルでアクセス可能なプローブのフレンドリ名です。|
+  |**プロトコル**|HTTP または HTTPS | 正常性プローブが使用するプロトコルです。|
+  |**Host**|つまり  contoso.com|この値は、プローブに使用されるホスト名です。 Application Gateway でマルチサイトが構成されている場合にのみ適用されます。それ以外の場合は、"127.0.0.1" を使用します。 この値は VM ホスト名とは異なります。|
+  |**パス**|/ または別のパス|カスタム プローブの完全な URL の残りの部分です。 パスは先頭が "/" である必要があります。 既定のパス http://contoso.com では "/" のみを使用します。 |
+  |**間隔 (秒)**|30|正常性を確認するためにプローブを実行する頻度です。 30 秒未満に設定しないようにすることをお勧めします。|
+  |**タイムアウト (秒)**|30|タイムアウトまでにプローブが待機する時間です。 タイムアウトまでの時間は、バックエンドの正常性ページが利用可能であることを確認するために HTTP 呼び出しを実行できるだけの長さである必要があります。|
+  |**異常のしきい値**|3|異常であると見なされるまでの試行の失敗回数です。 しきい値を 0 に設定すると、正常性チェックが失敗した場合に、バックエンドが異常であると即座に判断されます。|
 
-### <a name="step-3"></a>手順 3.
-
-プローブに必要な情報を入力し、完了したら **[OK]**をクリックします。
-
-* **[名前]** - この値は、ポータルでアクセス可能なプローブのフレンドリ名です。
-* **[ホスト]** - この値は、プローブに使用されるホスト名です。 Application Gateway でマルチサイトが構成されている場合にのみ適用されます。それ以外の場合は、"127.0.0.1" を使用します。 この値は VM ホスト名とは異なります。
-* **[パス]** - カスタム プローブの完全な URL の残りの部分です。 パスは先頭が "/" である必要があります。
-* **[間隔 (秒)]** - 正常性を確認するためにプローブを実行する頻度です。 30 秒未満に設定しないようにすることをお勧めします。
-* **[タイムアウト (秒)]** - タイムアウトまでにプローブが待機する時間です。 タイムアウトまでの時間は、バックエンドの正常性ページが利用可能であることを確認するために HTTP 呼び出しを実行できるだけの長さである必要があります。
-* **[異常しきい値]** - 異常であると見なされるまでの試行の失敗回数です。 しきい値を 0 に設定すると、正常性チェックが失敗した場合に、バックエンドが異常であると即座に判断されます。
-
-> [!IMPORTANT]
-> ホスト名はサーバー名と同じではありません。 この値は、アプリケーション サーバーで実行されている仮想ホストの名前です。 プローブは、http://(ホスト名):(httpsetting のポート)/urlPath に送信されます。
-
-![probe configuration settings][3]
+  > [!IMPORTANT]
+  > ホスト名はサーバー名と同じではありません。 この値は、アプリケーション サーバーで実行されている仮想ホストの名前です。 プローブは、http://(ホスト名):(httpsetting のポート)/urlPath に送信されます。
 
 ## <a name="add-probe-to-the-gateway"></a>ゲートウェイへのプローブの追加
 
 プローブが作成されたら、ゲートウェイに追加します。 プローブの設定は、アプリケーション ゲートウェイのバックエンド http 設定で行います。
 
-### <a name="step-1"></a>手順 1
+1. Application Gateway の **[HTTP 設定]** をクリックし、ウィンドウに表示される現在のバックエンド http 設定をクリックして、構成ブレードを表示します。
 
-アプリケーション ゲートウェイの **[HTTP 設定]** をクリックし、ウィンドウで現在のバックエンド http 設定をクリックして、構成ブレードを表示します。
+  ![https settings window][2]
 
-![https settings window][4]
+1. **appGatewayBackEndHttpSettings** 設定ブレードで、**[カスタム プローブの使用]** チェックボックスをオンにし、「[プローブの作成](#createprobe)」セクションで作成したプローブを **[カスタム プローブ]** ドロップダウンで選択します。
+完了したら、**[保存]** をクリックし、設定を適用します。
 
-### <a name="step-2"></a>手順 2.
-
-**appGatewayBackEndHttp** 設定ブレードで、**[カスタム プローブの使用]** をクリックし、「[プローブの作成](#createprobe)」で作成したプローブを選択します。
-完了したら、 **[OK]** をクリックし、設定を適用します。
-
-![appgatewaybackend settings blade][5]
-
-既定のプローブでは、Web アプリケーションへの既定のアクセスがチェックされます。 カスタム プローブが作成されたら、アプリケーション ゲートウェイは、定義されているカスタム パスを使用して、選択されているバックエンドの正常性を監視します。 定義された条件に基づいて、アプリケーション ゲートウェイは、プローブで指定されているファイルをチェックします。 host:Port/path への呼び出しによって HTTP 200 OK という状態の応答が返されない場合は、異常のしきい値に達した後、サーバーがローテーションから除外されます。 プローブは、もう一度正常になるタイミングを判断するために、異常なインスタンス上で続行します。 インスタンスが正常なサーバー プールに戻されると、トラフィックはもう一度そこに流れ始め、インスタンスへのプローブは、通常どおり、ユーザーが指定した間隔で続行します。
+既定のプローブでは、Web アプリケーションへの既定のアクセスがチェックされます。 カスタム プローブが作成されたら、Application Gateway は、定義されているカスタム パスを使用して、バックエンド サーバーの正常性を監視します。 定義された条件に基づいて、Application Gateway は、プローブで指定されているパスをチェックします。 host:Port/path への呼び出しによって HTTP 200-299 という状態の応答が返されない場合は、異常のしきい値に達した後、サーバーがローテーションから除外されます。 プローブは、もう一度正常になるタイミングを判断するために、異常なインスタンス上で続行します。 インスタンスが正常なサーバー プールに戻されると、トラフィックはもう一度そこに流れ始め、インスタンスへのプローブは、通常どおり、ユーザーが指定した間隔で続行します。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -92,7 +82,5 @@ Azure Application Gateway で SSL オフロードを構成する方法を学習�
 
 [1]: ./media/application-gateway-create-probe-portal/figure1.png
 [2]: ./media/application-gateway-create-probe-portal/figure2.png
-[3]: ./media/application-gateway-create-probe-portal/figure3.png
-[4]: ./media/application-gateway-create-probe-portal/figure4.png
-[5]: ./media/application-gateway-create-probe-portal/figure5.png
+
 

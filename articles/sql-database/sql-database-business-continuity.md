@@ -14,11 +14,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/13/2016
+ms.date: 04/07/2017
 ms.author: sashan
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
 ms.openlocfilehash: 2ddbe1766a978f9849c310a72086f95cbb68cd83
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/14/2017
 
 
@@ -68,8 +69,7 @@ SQL Database は、データ損失からビジネスを守るために、デー�
 
 > [!IMPORTANT]
 > アクティブ geo レプリケーションと自動フェールオーバー グループを使用するには、サブスクリプション所有者であるか、SQL Server の管理アクセス許可を持っている必要があります。 Azure ポータル、PowerShell、または REST API で構成およびフェールオーバーを行う場合は、サブスクリプションでアクセス許可を使用します。Transact-SQL で行う場合は、SQL Server 内でアクセス許可を使用します。
->
->
+> 
 
 アクティブ geo レプリケーションは、アプリケーションが次のいずれかの条件を満たす場合に使用します。
 
@@ -131,8 +131,8 @@ SQL Database は、データ損失からビジネスを守るために、デー�
 アクティブ geo レプリケーションと自動フェールオーバー グループを復旧メカニズムとして使用している場合は、自動フェールオーバー ポリシーを構成するか[手動フェールオーバー](sql-database-disaster-recovery.md#failover-to-geo-replicated-secondary-database)を使用できます。 いったん開始すると、フェールオーバーによってセカンダリは新しいプライマリになり、新しいトランザクションを記録してクエリに応答できるようになります。失われるのは、レプリケートされなかった最小限のデータだけです。 フェールオーバー プロセスの設計については、[クラウド障害復旧用のアプリケーション設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)に関するページをご覧ください。
 
 > [!NOTE]
-> データ センターがオンラインに戻ると、古いプライマリは自動的に新しいプライマリに再接続し、セカンダリ データベースになります。 プライマリを元のリージョンに再配置する場合は、計画されたフェールオーバーを手動で開始することができます (フェールバック)。
->
+> データ センターがオンラインに戻ると、古いプライマリは自動的に新しいプライマリに再接続し、セカンダリ データベースになります。 プライマリを元のリージョンに再配置する場合は、計画されたフェールオーバーを手動で開始することができます (フェールバック)。 
+> 
 
 ### <a name="perform-a-geo-restore"></a>geo リストアを実行する
 Geo 冗長ストレージ レプリケーションによる自動バックアップを復旧メカニズムとして使用している場合は、[geo リストアを使用してデータベース復旧を開始](sql-database-disaster-recovery.md#recover-using-geo-restore)します。 ほとんどの場合、12 時間以内に復旧が実行され、最大 1 時間分のデータ損失が発生します。これは 1 時間ごとの差分バックアップによって、最後のバックアップが実行およびレプリケートされたタイミングによって決まります。 復旧処理が完了するまで、データベースは、トランザクションを記録したり、クエリに応答したりすることはできません。

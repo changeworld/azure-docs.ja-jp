@@ -3,7 +3,7 @@ title: "Microsoft Azure Storage での同時実行制御の管理"
 description: "BLOB、キュー、テーブル、およびファイル サービスの同時実行制御を管理する方法"
 services: storage
 documentationcenter: 
-author: jasonnewyork
+author: jasontang501
 manager: tadb
 editor: tysonn
 ms.assetid: cc6429c4-23ee-46e3-b22d-50dd68bd4680
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/28/2017
-ms.author: jahogg
-translationtype: Human Translation
+ms.date: 05/11/2017
+ms.author: jasontang501
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
 ms.openlocfilehash: b5b8346c6a645ae18fd0c23a8956274f764710e0
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/06/2017
 
 

@@ -15,9 +15,10 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 04/18/2017
 ms.author: owend
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
 ms.openlocfilehash: e47fa44d87ad29054b833ee4bf201ac4d72e1e6e
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/20/2017
 
 

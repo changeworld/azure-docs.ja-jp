@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2017
+ms.date: 05/08/2017
 ms.author: terrylan
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 9c20ace9112c62e733b7b679e3f0be717144f3c2
 ms.openlocfilehash: 933a485e36b3cf0f514f28fc069d49161605af3a
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/23/2017
 
 

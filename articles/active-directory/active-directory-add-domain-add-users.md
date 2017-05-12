@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 05/08/2016
 ms.author: curtand
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: ccfa8d72b51c43e04d924d2b096e3cbc407af043
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -49,10 +51,5 @@ ms.openlocfilehash: ccfa8d72b51c43e04d924d2b096e3cbc407af043
 * [カスタム ドメイン名を使用してユーザーのサインインを省力化する](active-directory-add-domain.md)
 * [カスタム ドメイン名を管理する](active-directory-add-manage-domain-names.md)
 * [Azure AD のドメイン管理の概念を理解する](active-directory-add-domain-concepts.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

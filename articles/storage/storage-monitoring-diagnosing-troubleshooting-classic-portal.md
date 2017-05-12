@@ -3,8 +3,8 @@ title: "Storage の監視、診断、およびトラブルシューティング 
 description: "ストレージ分析、クライアント側ログ、他のサード パーティのツールなどの機能を使用して、Azure Storage 関連の問題を特定、診断、およびトラブルシューティングします。"
 services: storage
 documentationcenter: 
-author: jasonnewyork
-manager: tadb
+author: fhryo-msft
+manager: jahogg
 editor: tysonn
 ms.assetid: da57e844-705d-449d-8ed5-5607d2a6170b
 ms.service: storage
@@ -13,10 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2017
-ms.author: jahogg
-translationtype: Human Translation
+ms.author: fhryo-msft
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
 ms.openlocfilehash: 84ecd480b57a8ef12440f5e5cd98a78c4bf09059
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/06/2017
 
 

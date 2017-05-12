@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure HDInsight における Apache Spark クラスターの概要 | Microsoft Docs"
 description: "HDInsight に Apache Spark クラスターをすばやく作成し、Jupyter Notebook から Spark SQL を使用して対話型クエリを実行する手順を説明します。"
 services: hdinsight
@@ -16,10 +16,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/13/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: f43a08a7096476fea79884163f89441e7e0c34cf
-ms.lasthandoff: 03/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: e2a9802e76579a523897d8904add6b317652ff05
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -153,7 +154,7 @@ HDInsight で [Apache Spark](hdinsight-apache-spark-overview.md) クラスター
 ここでは、HDInsight クラスターを使用しているときに遭遇する可能性のある一般的な問題を取り上げます。
 
 ### <a name="access-control-requirements"></a>アクセス制御の要件
-[!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
+HDInsight クラスターの作成で問題が発生した場合は、[アクセス制御の要件](hdinsight-administer-use-portal-linux.md#create-clusters)に関するページを参照してください。
 
 ## <a name="delete-the-cluster"></a>クラスターを削除する
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]

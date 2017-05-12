@@ -16,9 +16,10 @@ ms.workload: na
 ms.date: 4/17/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
 ms.openlocfilehash: 231d9f2e4a501f20a47b1cec55c75fba4c2e57c8
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/20/2017
 
 

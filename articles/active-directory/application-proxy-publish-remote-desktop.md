@@ -11,12 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2017
+ms.date: 04/21/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: e45d704e68c17d36fd5b195179730b80d0f53e0c
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 9724ad2e460837157c7677d2c91493cebc8f7012
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -59,14 +60,14 @@ RDS と Azure AD アプリケーション プロキシを自分の環境用に�
 ### <a name="publish-the-rd-host-endpoint"></a>RD ホスト エンドポイントを発行する
 
 1. 次の値で[新しいアプリケーション プロキシ アプリケーションを発行](application-proxy-publish-azure-portal.md)します。
-   - [内部 URL]: https://<rdhost>.com/。<rdhost> は、RD Web と RD ゲートウェイが共有する共通のルートです。 
+   - [内部 URL]: https://\<rdhost\>.com/。\<rdhost\> は、RD Web と RD ゲートウェイが共有する共通のルートです。 
    - [外部 URL]: このフィールドは、アプリケーションの名前に基づいて自動的に設定されますが、変更することもできます。 ユーザーは、RDS にアクセスするときにこの URL に移動します。 
    - [事前認証方法]: Azure Active Directory
    - [ヘッダーの URL を変換する]: いいえ
 2. 発行した RD アプリケーションにユーザーを割り当てます。 すべてのユーザーが RDS へのアクセス権を持っていることもご確認ください。
 3. アプリケーションのシングル サインオン方式は、**[Azure AD シングル サインオンが無効]** のままにします。 ユーザーは、Azure AD に対して 1 回と RD Web に対して 1 回認証を求められますが、RD ゲートウェイに対してはシングル サインオンを使用できます。 
 4. **[Azure Active Directory]** > **[アプリの登録]** > *[Your application (アプリケーション)]* > **[設定]** に移動します。 
-5. **[プロパティ]** を選択し、RD Web エンドポイント (https://<rdhost>.com/RDWeb など) を指すように **[ホーム ページ URL]** フィールドを更新します。
+5. **[プロパティ]** を選択し、RD Web エンドポイント (https://\<rdhost\>.com/RDWeb など) を指すように **[ホーム ページ URL]** フィールドを更新します。
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>RDS トラフィックをアプリケーション プロキシに転送する
 
@@ -82,7 +83,7 @@ RDS デプロイに管理者として接続し、デプロイの RD ゲートウ
 
   ![RDS の [展開プロパティ] 画面](./media/application-proxy-publish-remote-desktop/rds-deployment-properties.png)
 
-8. コレクションごとに、次のコマンドを実行します。 "*<yourcollectionname>*" と "*<proxyfrontendurl>*" は、実際の情報に置き換えてください。 このコマンドは、RD Web と RD ゲートウェイの間のシングル サインオンを有効にし、パフォーマンスを最適化します。
+8. コレクションごとに、次のコマンドを実行します。 *\<yourcollectionname\>* と *\<proxyfrontendurl\>* は、実際の情報に置き換えてください。 このコマンドは、RD Web と RD ゲートウェイの間のシングル サインオンを有効にし、パフォーマンスを最適化します。
 
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s: <proxyfrontendurl> `n require pre-authentication:i:1"
@@ -103,3 +104,4 @@ Windows 7 または 10 のコンピューターで Internet Explorer を使用�
 
 [Azure AD アプリケーション プロキシによる SharePoint へのリモート アクセスの有効化](application-proxy-enable-remote-access-sharepoint.md)  
 [Azure AD アプリケーション プロキシを使用したアプリへのリモート アクセス時のセキュリティに関する注意事項](application-proxy-security-considerations.md)
+

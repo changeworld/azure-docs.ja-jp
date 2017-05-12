@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2017
 ms.author: sethm;jotaub;shvija
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
 ms.openlocfilehash: 7bae4ae6d41e6dc6515a3fcdf574ffd193ae1aa3
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/14/2017
 
 ---
@@ -27,7 +28,7 @@ ms.lasthandoff: 03/14/2017
 
 ### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>Event Hubs の Basic レベルと Standard レベルは何が違いますか。
 Azure Event Hubs の Standard レベルは、Basic レベルでは使用できない機能を提供します。 Standard レベルには次の機能が含まれています。
-* 長いイベント 保有期間
+* 長いイベント保有期間
 * 追加の仲介型接続。提供される数を超える場合は超過料金が適用されます
 * 複数のコンシューマー グループ
 * [アーカイブ](https://docs.microsoft.com/azure/event-hubs/event-hubs-archive-overview)

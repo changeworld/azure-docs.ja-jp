@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory プレビューでサインイン ページをカスタマイズする | Microsoft Docs"
+title: "Azure Active Directory でサインイン ページをカスタマイズする | Microsoft Docs"
 description: "Azure サインイン ページに会社のブランドを追加する方法について説明します。"
 services: active-directory
 documentationcenter: 
@@ -12,16 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 05/04/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 48f85fd7e50c1cb3ece7f8b75779fe7cde92c7da
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 27590c018ea55e9793246c7a4cab10f934ea502b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/05/2017
 
 
 ---
-# <a name="add-company-branding-to-your-sign-in-page-in-the-azure-active-directory-preview"></a>Azure Active Directory プレビューでサインイン ページに会社のブランドを追加する
-多くの企業は、管理下にある Web サイトとサービスに関して利用者が戸惑わないよう、そのすべての外観に統一感を持たせたいと考えています。 Azure Active Directory プレビューでは、会社のロゴや独自の配色でサインイン ページの外観をカスタマイズできるようにすることでこれを実現します。 [プレビューの機能については、こちらの記事をご覧ください。](active-directory-preview-explainer.md) サインイン ページは、Office 365 など、Azure AD を ID プロバイダーとして使用する Web ベースのアプリケーションにサインインするときに表示されるページです。 このページを使用して資格情報を入力します。
+# <a name="add-company-branding-to-your-sign-in-page-in-the-azure-active-directory"></a>Azure Active Directory でサインイン ページに会社のブランドを追加する
+多くの企業は、管理下にある Web サイトとサービスに関して利用者が戸惑わないよう、そのすべての外観に統一感を持たせたいと考えています。 Azure Active Directory では、会社のロゴや独自の配色でサインイン ページの外観をカスタマイズできるようにすることでこれを実現します。 サインイン ページは、Office 365 など、Azure AD を ID プロバイダーとして使用する Web ベースのアプリケーションにサインインするときに表示されるページです。 このページを使用して資格情報を入力します。
 
 このページに会社のブランド、色、およびその他のカスタマイズ可能な要素を表示する場合は、次の画像を参照して、2 つのエクスペリエンスの違いを理解してください。
 
@@ -81,9 +83,4 @@ ms.openlocfilehash: 48f85fd7e50c1cb3ece7f8b75779fe7cde92c7da
 
 ## <a name="next-steps"></a>次のステップ
 [言語固有の会社のブランドを追加する](active-directory-branding-localize-azure-portal.md)
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-wms.date: 04/14/2017
+wms.date: 04/26/2017
 ms.author: janeng
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 884cd19bdfb1bf53d75cb27e840c448eff8bc991
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 0ab804ee1dc25f1e44be856564ac8ffa87c54dea
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -55,7 +56,7 @@ ms.lasthandoff: 04/21/2017
 ||||||
 
 > [!IMPORTANT]
-> 最大 4 TB のデータベースは、P11 と P15 のパフォーマンス レベルを使用しているお客様に追加料金なしで提供されるパブリック プレビューです。 750 GB 以上のストレージが付属した Premium プールも提供されています。 これらの追加ストレージ オプションは現在、米国東部 2、米国西部、西ヨーロッパ、東南アジア、東日本、オーストラリア東部、カナダ中部、カナダ東部の各リージョンで利用できます。 詳細については、[4 TB のデータベースの現時点での制限事項](sql-database-service-tiers.md#current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize)に関するセクションを参照してください。
+> 追加ストレージ オプションは現在、米国東部 2、米国西部、西ヨーロッパ、東南アジア、東日本、オーストラリア東部、カナダ中部、カナダ東部の各リージョンで利用できます。 詳細については、[4 TB のデータベースの現時点での制限事項](sql-database-service-tiers.md#current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize)に関するセクションを参照してください。
 >
 
 最小限のサービス レベルを決定したら、データベースのパフォーマンス レベル (DTU 数) を決定できるようになります。 多くの場合、出発点として Standard S2 および S3 というパフォーマンス レベルが適しています。 CPU または IO の要件が高いデータベースの場合は、Premium のパフォーマンス レベルが出発点として適しています。 Premium では、より多くの CPU が提供されるため、最も高い Standard パフォーマンス レベルと比較して 10 倍超える IO から始まります。

@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 04/23/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 7ed296a6773763f7aaae55e9a1667efca7d9e590
-ms.openlocfilehash: d84eaf5abc80270325e34ec6b5d1ee3edfac637a
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: d37f37f77a32f388fac4271af2a5ebda21c014eb
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -29,7 +31,7 @@ ms.openlocfilehash: d84eaf5abc80270325e34ec6b5d1ee3edfac637a
 
 コネクタ グループは、次のようなさまざまなシナリオで役立ちます。
 
-* 複数のデータセンターが相互接続されたサイト。 この場合、データセンター間リンクは一般的にコストがかかり低速であるため、できるだけ多くのトラフィックをデータセンター内に留める必要があります。 各データセンターにコネクタをデプロイし、データセンター内にあるアプリケーションのみにサービスを提供できます。 この方法で、データセンター間のリンクを最小限に抑えて、ユーザーに完全に透過的なエクスペリエンスを提供できます。
+* 複数のデータセンターが相互接続されたサイト。 この場合、データセンター間リンクはコストがかかり、低速であるため、できるだけ多くのトラフィックをデータセンター内に留める必要があります。 各データセンターにコネクタをデプロイして、データセンター内にあるアプリケーションにのみサービスを提供できます。 この方法で、データセンター間のリンクを最小限に抑えて、ユーザーに完全に透過的なエクスペリエンスを提供できます。
 * メインの企業ネットワークに属していない分離されたネットワークにインストールされているアプリケーションの管理。 コネクタ グループを使用して、分離されたネットワークに専用のコネクタをインストールし、そのネットワークに対してアプリケーションの分離も実現できます。
 * クラウド アクセスを実現するためにアプリケーションが IaaS 上にインストールされている場合。コネクタ グループは、すべてのアプリケーションへのアクセスをセキュリティで保護する共通サービスを提供します。 コネクタ グループによって、企業ネットワークに対する追加の依存関係が生じることも、アプリケーション エクスペリエンスが分断されることもありません。 各クラウド データセンターにコネクタをインストールし、このネットワーク上にあるアプリケーションにのみサービスを提供できます。 複数のコネクタをインストールして、高可用性を実現できます。
 * マルチ フォレスト環境のサポート。フォレストごとに専用のコネクタをデプロイし、特定のアプリケーションにサービスを提供するよう設定できます。
@@ -37,14 +39,14 @@ ms.openlocfilehash: d84eaf5abc80270325e34ec6b5d1ee3edfac637a
 * コネクタ グループを使用して、シングル テナントから複数の企業にサービスを提供できます。
 
 ## <a name="prerequisite-create-your-connectors"></a>前提条件: コネクタの作成
-コネクタをグループ化するには、 [複数のコネクタがインストールされている](active-directory-application-proxy-enable.md)ことを確認し、それらに名前を付けてから、グループ化します。 最後に、特定のアプリに割り当てる必要があります。
+コネクタをグループ化するには、[複数のコネクタをインストール](active-directory-application-proxy-enable.md)してから、それらに名前を付けてグループ化します。 最後に、特定のアプリに割り当てる必要があります。
 
 ## <a name="step-1-create-connector-groups"></a>手順 1: コネクタ グループを作成する
 必要な数のコネクタ グループを作成します。 コネクタ グループの作成は、Azure クラシック ポータルで実行します。
 
 1. ディレクトリを選択し、 **[構成]**をクリックします。  
     ![アプリケーション プロキシの構成のスクリーンショット - [コネクタ グループの管理] をクリック](./media/active-directory-application-proxy-connectors/app_proxy_connectors_creategroup.png)
-2. [アプリケーション プロキシ] の **[コネクタ グループの管理]** をクリックし、グループに名前を付けて、新しいコネクタ グループを作成します。  
+2. [アプリケーション プロキシ] の **[コネクタ グループの管理]** をクリックし、グループに名前を付けて、コネクタ グループを作成します。  
     ![アプリケーション プロキシ コネクタ グループのスクリーンショット - 新しいグループに名前を付ける](./media/active-directory-application-proxy-connectors/app_proxy_connectors_namegroup.png)
 
 ## <a name="step-2-assign-connectors-to-your-groups"></a>手順 2: コネクタをグループに割り当てる
@@ -68,9 +70,4 @@ ms.openlocfilehash: d84eaf5abc80270325e34ec6b5d1ee3edfac637a
 * [アプリケーション プロキシで発生した問題のトラブルシューティングを行う](active-directory-application-proxy-troubleshoot.md)
 
 最新のニュースと更新情報については、 [アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

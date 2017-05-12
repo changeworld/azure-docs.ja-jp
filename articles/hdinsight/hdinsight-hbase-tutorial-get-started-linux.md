@@ -16,10 +16,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/22/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 21d8dff230e045607b70013f4eabf1bfe8ec3993
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 4e9ee21a7eac240cccdfac650992063244364185
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -35,9 +36,6 @@ HDInsight で HBase クラスターを作成する方法、HBase テーブルを
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 * [Secure Shell(SSH)](hdinsight-hadoop-linux-use-ssh-unix.md)。 
 * [curl](http://curl.haxx.se/download.html)。
-
-### <a name="access-control-requirements"></a>アクセス制御の要件
-[!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
 ## <a name="create-hbase-cluster"></a>HBase クラスターの作成
 次の手順では、Azure Resource Manager テンプレートを使用して、バージョン 3.4 Linux ベースの HBase クラスターと依存する既定の Azure Storage アカウントを作成します。 この手順で使用するパラメーターとその他のクラスター作成方法について理解するには、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
@@ -253,6 +251,10 @@ HDInsight の HBase には、クラスターを監視するための Web UI が�
 不整合を回避するために、クラスターを削除する前に HBase テーブルを無効にしておくことをお勧めします。
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+
+## <a name="troubleshoot"></a>トラブルシューティング
+
+HDInsight クラスターの作成で問題が発生した場合は、[アクセス制御の要件](hdinsight-administer-use-portal-linux.md#create-clusters)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 この HDInsight の HBase のチュートリアルでは、HBase クラスターの作成方法と、テーブルを作成してそのテーブルのデータを HBase シェルから表示する方法について学習しました。 また、HBase テーブルのデータに対して Hive クエリを使用する方法と、HBase C# REST API を使用して HBase テーブルを作成し、テーブルからデータを取得する方法についても学習しました。

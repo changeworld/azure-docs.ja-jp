@@ -15,10 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/11/2017
 ms.author: glenga
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 60c387331f0d47ddcc0dd2da8831911618c002b7
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: fb8eaa4bb122cd6bb7e3f72bb5f7000103bffb29
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -34,7 +35,7 @@ Azure Function App では、Azure App Service のインフラストラクチャ�
 
 ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。 ストレージ アカウント名は Azure 内で一意である必要があります。 
 
-関数アプリを作成したら、1 つ以上の言語で個々の関数を作成できます。 関数を作成するには、[ポータルを使用](functions-create-first-azure-function.md#create-a-function)するか、[継続的なデプロイ](functions-continuous-deployment.md)を使用するか、[FTP でアップロード](https://github.com/projectkudu/kudu/wiki/Accessing-files-via-ftp)します。  
+関数アプリを作成したら、1 つ以上の言語で個々の関数を作成できます。 関数を作成するには、[ポータルを使用](functions-create-first-azure-function.md#create-function)するか、[継続的なデプロイ](functions-continuous-deployment.md)を使用するか、[FTP でアップロード](https://github.com/projectkudu/kudu/wiki/Accessing-files-via-ftp)します。  
 
 ## <a name="service-plans"></a>サービス プラン
 
@@ -49,11 +50,11 @@ App Service で関数アプリを作成するときに、BLOB、キュー、お�
 >[!NOTE]
 >従量課金ホスティング プランを使用する場合、関数コード ファイルおよびバインディング構成ファイルは、メイン ストレージ アカウントの Azure File Storage に保存されます。 メイン ストレージ アカウントを削除すると、このコンテンツは削除され、復元できません。
 
-ストレージ アカウントの種類の詳細については、Azure Storage サービスの概要に関する記事 (../storage/storage-introduction.md#introducing-the-azure-storage-services) をご覧ください。
+ストレージ アカウントの種類の詳細については、[Azure Storage サービスの概要に関する記事](../storage/storage-introduction.md#introducing-the-azure-storage-services) をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [Functions quickstart next steps](../../includes/functions-quickstart-next-steps.md)]
 
-[!INCLUDE [Getting Started Note](../../includes/functions-get-help.md)]
+
 
 

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/25/2016
 ms.author: dhanyahk;markvi
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: dce65678f9fc96d5802a7b705689cc63e6532c84
-ms.lasthandoff: 03/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 077c39d1a6f61aba7b184ee616a93f30cdb7d12c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -34,9 +35,18 @@ Azure AD レポートは、コードまたは関連ツールを使用してサ�
 質問、問題点、またはフィードバックについては、 [AAD レポート ヘルプ](mailto:aadreportinghelp@microsoft.com)にお問い合わせください。
 
 ## <a name="who-can-access-the-api-data"></a>誰が API データにアクセスできますか。
-* セキュリティ管理者またはセキュリティ リーダーの役割のユーザー
+* セキュリティ管理者またはセキュリティ リーダーの役割が割り当てられたユーザーおよびサービス プリンシパル
 * グローバル管理者
 * API へのアクセスを承認するすべてのアプリ (アプリの承認は、グローバル管理者のアクセス許可に基づいてのみ設定できます)
+
+イベントの署名などのセキュリティ API にアクセスするようにアプリケーションのアクセスを構成するには、次の PowerShell を使用して、サービス プリンシパルのアプリケーションをセキュリティ リーダーの役割に追加します。
+
+```PowerShell
+Connect-MsolService
+$servicePrincipal = Get-MsolServicePrincipal -AppPrincipalId "<app client id>"
+$role = Get-MsolRole | ? Name -eq "Security Reader"
+Add-MsolRoleMember -RoleObjectId $role.ObjectId -RoleMemberType ServicePrincipal -RoleMemberObjectId $servicePrincipal.ObjectId
+```
 
 ## <a name="prerequisites"></a>前提条件
 Reporting API を使用してこのレポートにアクセスするには、次が必要です。

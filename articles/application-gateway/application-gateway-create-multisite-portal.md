@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
 ms.openlocfilehash: 84bd62ae17b7f7ba4cd815ef1f9880679607ebce
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/20/2017
 
 

@@ -15,9 +15,10 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
 ms.openlocfilehash: d430febee23081b26eee0a68d4beb43228549f52
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/11/2017
 
 
@@ -64,7 +65,7 @@ ms.lasthandoff: 04/11/2017
 Azure では、ソリューション全体のギャラリー イメージを提供します。 テンプレートを見つけるには、次を実行します。
 
 1. アカウントを使用して Azure Portal にサインインします。
-2. Azure Portal で、**[+New] (+新規)** をクリックして**[新規]** ブレードを開きます。
+2. Azure Portal で、**[+New] \(+新規)** をクリックして**[新規]** ブレードを開きます。
 3. **[新規]** ブレードで **AlwaysOn** を検索します。
    ![AlwaysOn テンプレートを見つける](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/16-findalwayson.png)
 4. 検索結果から **[SQL Server AlwaysOn Cluster (SQL Server AlwaysOn クラスター)]** を見つけます。
@@ -89,7 +90,7 @@ Azure では、ソリューション全体のギャラリー イメージを提�
 ### <a name="domain-and-network-settings"></a>ドメインおよびネットワークの設定
 この Azure ギャラリー テンプレートでは、ドメインとドメイン コントローラーを作成します。 また、ネットワークと 2 つのサブネットも作成します。 このテンプレートでは、既存のドメインまたは仮想ネットワークには、サーバーを作成できません。 次の手順では、ドメインおよびネットワーク設定を構成します。
 
-**[Domain and network settings] (ドメインおよびネットワークの設定)** ブレードで、ドメインとネットワークの設定の、事前設定されている次の値を確認します。
+**[Domain and network settings] \(ドメインおよびネットワークの設定)** ブレードで、ドメインとネットワークの設定の、事前設定されている次の値を確認します。
 
 * **[フォレスト ルート ドメイン名]** は、クラスターをホストする Active Directory ドメインのドメイン名です。 このチュートリアルでは **contoso.com** を使用します。
 * **[仮想ネットワーク名]** は、Azure の仮想ネットワークのネットワーク名です。 このチュートリアルでは **autohaVNET** を使用します。
@@ -98,7 +99,7 @@ Azure では、ソリューション全体のギャラリー イメージを提�
 
 Azure の仮想ネットワークの詳細については、[仮想ネットワークの概要](../../../virtual-network/virtual-networks-overview.md)に関する記事をご覧ください。  
 
-**[Domain and network settings] (ドメインおよびネットワークの設定)** は次のスクリーンショットのようになります。
+**[Domain and network settings] \(ドメインおよびネットワークの設定)** は次のスクリーンショットのようになります。
 
 ![ドメインおよびネットワークの設定](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/2-domain.png)
 
@@ -120,7 +121,7 @@ Azure の仮想ネットワークの詳細については、[仮想ネットワ�
 **[OK]**をクリックします。
 
 ### <a name="virtual-machine-size-storage-settings"></a>VM サイズおよび記憶域の設定
-**[VM size, storage settings] (VM サイズおよび記憶域の設定)** では、SQL Server 仮想マシンのサイズを選択し、その他の設定を確認します。
+**[VM size, storage settings] \(VM サイズおよび記憶域の設定)** では、SQL Server 仮想マシンのサイズを選択し、その他の設定を確認します。
 
 * **[SQL Server virtual machine size] (SQL Server 仮想マシンのサイズ)** は、SQL Server を実行する両方の仮想マシンのサイズです。 ワークロードに適した仮想マシンのサイズを選択します。 このチュートリアル用に環境を構築する場合は **DS2** を使用します。 実稼働ワークロードでは、ワークロードをサポートできる仮想マシン サイズを選択します。 多くの実稼働ワークロードでは、**DS4** 以上が必要です。 このテンプレートでは、このサイズの仮想マシンを 2 つ構築し、それぞれに SQL Server をインストールします。 詳細については、 [仮想マシンのサイズ](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
 
@@ -136,11 +137,11 @@ Azure の仮想ネットワークの詳細については、[仮想ネットワ�
 * **[SQL Server data disk size in TB (SQL Server のデータ ディスク サイズ (TB))]** は、SQL Server のデータ ディスクの TB 単位でのサイズです。 1 から 4 までの数字を指定します。 このチュートリアルでは **1** を使用します。
 * **[Storage optimization (記憶域の最適化)]** では、ワークロードの種類に基づいて SQL Server の仮想マシンの特定の記憶域の構成を設定します。 このシナリオのすべての SQL Server 仮想マシンでは、Azure ディスクのホスト キャッシュが読み取り専用に設定された Premium ストレージを使用します。 また、次の 3 つのいずれかの設定を選択すると、ワークロード用に SQL Server の設定を最適化できます。
 
-  * **[General workload] (一般的なワークロード)** では、特定の構成は設定しません。
+  * **[General workload] \(一般的なワークロード)** では、特定の構成は設定しません。
   * **[トランザクション処理]** では、トレース フラグ 1117 と 1118 を設定します。
   * **[データ ウェアハウス]** では、トレース フラグ 1117 と 610 を設定します。
 
-このチュートリアルでは **[General workload] (一般的なワークロード)** を使用します。
+このチュートリアルでは **[General workload] \(一般的なワークロード)** を使用します。
 
 ![VM サイズの記憶域の設定](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/4-vm.png)
 
@@ -169,11 +170,11 @@ SQL Server の構成のベスト プラクティスについては、「[Azure V
 ### <a name="sql-server-settings"></a>SQL Server の設定
 **[SQL Server の設定]** では、SQL Server 仮想マシン名のプレフィックス、SQL Server のバージョン、SQL Server のサービス アカウントとパスワード、SQL の自動修正メンテナンス スケジュールを確認および変更できます。
 
-* **[SQL Server Name Prefix] (SQL Server 名のプレフィックス)** は、各 SQL Server 仮想マシンの名前を作成するために使用します。 このチュートリアルでは **sqlserver** を使用します。 テンプレートにより、SQL Server 仮想マシンに *sqlserver-0* および *sqlserver-1* という名前が付けられます。
+* **[SQL Server Name Prefix] \(SQL Server 名のプレフィックス)** は、各 SQL Server 仮想マシンの名前を作成するために使用します。 このチュートリアルでは **sqlserver** を使用します。 テンプレートにより、SQL Server 仮想マシンに *sqlserver-0* および *sqlserver-1* という名前が付けられます。
 * **[SQL Server のバージョン]** は、SQL Server のバージョンです。 このチュートリアルでは **[SQL Server 2014]**を使用します。 **[SQL Server 2012]** または **[SQL Server 2016]** を選択することもできます。
 * **[SQL Server service account user name (SQL Server サービス アカウント ユーザー名)]** は、SQL Server サービスのドメイン アカウント名です。 このチュートリアルでは **sqlservice** を使用します。
 * **[パスワード]** は、SQL Server サービス アカウントのパスワードです。  複雑なパスワードを使用します。 パスワードを確認入力します。
-* **[SQL Auto Patching maintenance schedule] (SQL 自動修正メンテナンス スケジュール)** では、Azure が SQL Server に修正を自動的に適用する曜日を特定します。 このチュートリアルでは、「**日曜日**」と入力します。
+* **[SQL Auto Patching maintenance schedule] \(SQL 自動修正メンテナンス スケジュール)** では、Azure が SQL Server に修正を自動的に適用する曜日を特定します。 このチュートリアルでは、「**日曜日**」と入力します。
 * **[SQL Auto Patching maintenance start hour (SQL 自動修正メンテナンスの開始時間)]** は、Azure リージョンで自動修正が開始される時間です。
 
 > [!NOTE]

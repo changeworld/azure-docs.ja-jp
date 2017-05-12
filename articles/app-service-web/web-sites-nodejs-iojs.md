@@ -14,9 +14,10 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 5c14bd2ae2effd554f52662961c2e219433f8cd8
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/16/2017
 
 
@@ -24,7 +25,7 @@ ms.lasthandoff: 02/16/2017
 # <a name="how-to-use-iojs-with-azure-app-service-web-apps"></a>Azure App Service Web Apps で io.js を使用する方法
 広く普及している Node フォークの [io.js] には、よりオープンなガバナンス モデル、より迅速なリリース サイクル、新しく実験的な JavaScript 機能のより迅速な導入など、Joyent の Node.js とはさまざまな違いがあります。
 
-[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web Apps には多くの Node.js バージョンがプレインストールされていますが、ユーザー指定の Node.js バイナリを使用することもできます。 この記事では、App Service Web Apps で io.js を使用できるようにする&2; つの方法を紹介します。1 つは、拡張デプロイメント スクリプトを使用して、利用可能な最新の io.js バージョンを使用するよう Azure を自動的に構成する方法です。もう&1; つは、io.js バイナリを手動でアップロードする方法です。 
+[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web Apps には多くの Node.js バージョンがプレインストールされていますが、ユーザー指定の Node.js バイナリを使用することもできます。 この記事では、App Service Web Apps で io.js を使用できるようにする 2 つの方法を紹介します。1 つは、拡張デプロイメント スクリプトを使用して、利用可能な最新の io.js バージョンを使用するよう Azure を自動的に構成する方法です。もう 1 つは、io.js バイナリを手動でアップロードする方法です。 
 
 <a id="deploymentscript"></a>
 
@@ -43,7 +44,7 @@ Node.js アプリケーションをデプロイすると、App Service Web Apps 
 <a id="manualinstallation"></a>
 
 ## <a name="using-manual-installation"></a>手動インストールの使用
-カスタム io.js バージョンを手動でインストールする手順は&2; つだけです。 まずは、 **win-x64** バイナリを [io.js の配布]ページから直接ダウンロードします。 必要なのは、**iojs.exe** と **iojs.lib** の&2; つのファイルです。 両方のファイルを Web アプリ内のフォルダー (例: **bin/iojs**) に保存します。
+カスタム io.js バージョンを手動でインストールする手順は 2 つだけです。 まずは、 **win-x64** バイナリを [io.js の配布]ページから直接ダウンロードします。 必要なのは、**iojs.exe** と **iojs.lib** の 2 つのファイルです。 両方のファイルを Web アプリ内のフォルダー (例: **bin/iojs**) に保存します。
 
 プレインストールされている Node バージョンの代わりに **iojs.exe** を使用するよう Web Apps を構成する場合は、アプリケーションのルートに **IISNode.yml** ファイルを作成して、以下の行を追加します。
 
@@ -52,7 +53,7 @@ Node.js アプリケーションをデプロイすると、App Service Web Apps 
 <a id="nextsteps"></a>
 
 ## <a name="next-steps"></a>次のステップ
-この記事では、App Service Web Apps で io.js を使用する方法として、提供されているデプロイメント スクリプトと手動インストールの&2; つについて説明しました。 
+この記事では、App Service Web Apps で io.js を使用する方法として、提供されているデプロイメント スクリプトと手動インストールの 2 つについて説明しました。 
 
 > [!NOTE]
 > io.js は開発途上のもので、Node.js に比べて、より頻繁に更新されます。 多くの Node.js モジュールが io.js で動作しない可能性があります。トラブルシューティングについては、[GitHub の io.js] に関するページを参照してください。

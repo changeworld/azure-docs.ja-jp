@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/14/2017
+ms.date: 05/02/2017
 ms.author: magoedte
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 0f80ac93e3ff1ee95477e4fa5dbe21d61ddf8ead
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 8a04fda8eaf6e14a278941e7bb55b23012f67850
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 ---
 
@@ -98,8 +99,6 @@ Azure Portal で Automation アカウントを作成すると、次の 2 つの�
 
 ロール ベースのアクセス制御は、Azure AD ユーザー アカウントおよび実行アカウントに対して許可されたアクションを付与し、そのサービス プリンシパルを認証するために、Azure Resource Manager で使用できます。  Automation アクセス許可を管理するためのモデルの開発に役立つ詳細については、「[Azure Automation におけるロールベースのアクセス制御](automation-role-based-access-control.md)」を参照してください。  
 
-
-
 #### <a name="authentication-methods"></a>認証方法
 次の表は、Azure Automation によってサポートされる各環境のさまざまな認証方法をまとめたものです。
 
@@ -136,6 +135,13 @@ Automation アカウントが特定のリージョンに対して定義されて
 | オーストラリア東南部 |ase-jobruntimedata-prod-su1.azure-automation.net |
 | 英国南部 | uks-jobruntimedata-prod-su1.azure-automation.net |
 | 米国政府バージニア州 | usge-jobruntimedata-prod-su1.azure-automation.us |
+
+名前ではなく、IP アドレスの一覧を確認するには、Microsoft ダウンロード センターから [Azure データ センターの IP アドレス](https://www.microsoft.com/download/details.aspx?id=41653) xml ファイルをダウンロードして確認してください。 
+
+> [!NOTE]
+> このファイルには、Microsoft Azure データ センターで使用される IP アドレス範囲 (Compute、SQL、および Storage の範囲を含む) が含まれています。 毎週投稿される最新のファイルには、現在デプロイされている範囲と今後変更される IP 範囲が反映されています。 ファイルに含まれている新しい範囲は、少なくとも 1 週間はデータ センターで使用されません。 Azure で実行されているサービスを正しく識別するために、毎週新しい xml ファイルをダウンロードし、サイトで必要な変更を実行してください。 ExpressRoute ユーザーは、このファイルを使用して、毎月第 1 週に Azure 領域の BGP アドバタイズが更新されていることに注目してください。 
+> 
+
 
 ## <a name="implementation"></a>実装
 
@@ -191,27 +197,6 @@ Automation の推奨されるオンボード方法は、Marketplace から [Auto
 8. **[作成]** をクリックして、Automation と OMS ワークスペースのオンボードを続行します。 すべての設定が検証された後、ご利用のサブスクリプションへのサービスのデプロイが試行されます。  このプロセスは、完了までに数秒かかる場合があります。進行状況は、メニューの **[通知]** で確認してください。 
 
 サービスがオンボードされた後は、Runbook の作成、有効にした管理ソリューションの利用を開始することや、[Log Analytics](https://docs.microsoft.com/azure/log-analytics) を使用して、クラウドまたはオンプレミス環境のリソースによって生成されたデータの収集を開始することができます。   
-
-### <a name="resources-included"></a>含まれるリソース
-Automation アカウントが正常に作成されると、いくつかのリソースが自動的に作成されます。 これらのリソースの概要を以下の 2 つの表に示します。<br>
-
-#### <a name="run-as-account-resources"></a>実行アカウントのリソース
-
-| リソース | Description |
-| --- | --- |
-| AzureAutomationTutorial Runbook | 実行アカウントを使用した認証の方法と、すべての Resource Manager リソースの取得方法を示す、サンプルのグラフィカルな Runbook。 |
-| AzureAutomationTutorialScript Runbook | 実行アカウントを使用した認証の方法と、すべての Resource Manager リソースの取得方法を示す、サンプルの PowerShell Runbook。 |
-| AzureRunAsCertificate | Automation アカウントの作成時に自動的に作成される証明書資産、または既存のアカウント用に PowerShell スクリプト (後述) を使用して作成される証明書資産。 この証明書により、Azure に対する認証を行い、Runbook から Azure Resource Manager リソースを管理できるようになります。 この証明書には、1 年の有効期間があります。 |
-| AzureRunAsConnection | Automation アカウントの作成時に自動的に作成される接続資産、または既存のアカウント用に PowerShell スクリプトを使用して作成される接続資産。 |
-
-#### <a name="classic-run-as-account-resources"></a>クラシック実行アカウントのリソース
-
-| リソース | Description |
-| --- | --- |
-| AzureClassicAutomationTutorial Runbook | クラシック デプロイメント モデルを使ってサブスクリプションに作成されたすべての VM をクラシック実行アカウント (証明書) を使って取得し、その VM の名前と状態を出力するサンプルのグラフィカルな Runbook。 |
-| AzureClassicAutomationTutorial Script Runbook | サブスクリプション内のすべてのクラシック VM をクラシック実行アカウント (証明書) を使って取得し、その VM の名前と状態を出力するサンプルの PowerShell Runbook。 |
-| AzureClassicRunAsCertificate | Runbook から Azure のクラシック リソースを管理できるよう、Azure に対する認証に使用される自動的に作成される証明書資産。 この証明書には、1 年の有効期間があります。 |
-| AzureClassicRunAsConnection | Runbook から Azure のクラシック リソースを管理できるよう、Azure に対する認証に使用される自動的に作成される接続資産。|
 
 ## <a name="next-steps"></a>次のステップ
 * 新しい Automation アカウントが Azure リソースに対して認証できることを確認するには、「[Azure Automation 実行アカウントの認証をテストする](automation-verify-runas-authentication.md)」を参照してください。

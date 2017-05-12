@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2017
+ms.date: 04/25/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: ee4a47cf53898803e0080d3f9d00cf7617fe4ce8
-ms.lasthandoff: 03/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: adf358a130fd20674cbf2585de93005a9e1cb3ec
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -78,20 +79,18 @@ ms.lasthandoff: 03/27/2017
 ### <a name="table-6a---pass-through-authentication-with-sso"></a>表 6a - SSO でのパススルー認証のトラブルシューティング
 |プロトコル|ポート番号|説明
 | --- | --- | ---
-|HTTP|80|SSL などのセキュリティ検証用の送信 HTTP トラフィックに使用されます。
-|HTTPS|443|    Azure AD に対するユーザー認証に使用されます。
-|HTTPS|10100–10120|    コネクタから Azure AD への応答に使用されます。 
-|Azure Service Bus|9352、5671|    コネクタと Azure サービスの間で受信要求の通信に使用されます。
-|HTTPS|9350|    省略可能。受信要求のパフォーマンス向上に使用されます。
-|HTTPS|8080/443|    コネクタのブートストラップ シーケンスのほか、コネクタの自動更新に使用されます。
-|HTTPS|9090|    コネクタの登録に使用されます (コネクタ登録プロセスでのみ必要)。
-|HTTPS|9091|    コネクタの信頼証明書の自動更新に使用されます。
+|HTTP|80|SSL などのセキュリティ検証用の送信 HTTP トラフィックに使用されます。 コネクタの自動更新機能が正常に機能するためにも必要です。
+|HTTPS|443|    機能の有効化と無効化、コネクタの登録、コネクタ更新プログラムのダウンロード、およびすべてのユーザー サインイン要求の処理などの操作のために、送信 HTTPS トラフィックを有効にします。
+
+さらに、Azure AD コネクタが [Azure データ センターの IP 範囲](https://www.microsoft.com/en-us/download/details.aspx?id=41653)に対して直接 IP 接続できる必要があります。
 
 ### <a name="table-6b---password-hash-sync-with-sso"></a>表 6b - SSO でのパスワード ハッシュ同期
 
 |プロトコル|ポート番号|説明
 | --- | --- | ---
-|HTTPS|9090|    SSO 登録を有効にします (SSO 登録プロセスでのみ必要です)。
+|HTTPS|443|    SSO 登録を有効にします (SSO 登録プロセスでのみ必要です)。
+
+さらに、Azure AD コネクタが [Azure データ センターの IP 範囲](https://www.microsoft.com/en-us/download/details.aspx?id=41653)に対して直接 IP 接続できる必要があります。 ここでも、これは SSO 登録プロセスでのみ必要です。
 
 ## <a name="table-7a--7b---azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>表 7a & 7b - Azure AD Connect Health エージェント (AD FS/Sync) と Azure AD
 次の表は、Azure AD Connect Health エージェントと Azure AD 間の通信に必要なエンドポイント、ポート、プロトコルについて説明しています。

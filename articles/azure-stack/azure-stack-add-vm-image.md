@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/21/2017
+ms.date: 05/03/2017
 ms.author: sngun
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 35a877a4a0c1eae679bc12f63519bb868b1276bf
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 897b2c1c4e622ebe74a21643317c9b6270c3ae2c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -45,7 +46,9 @@ If the VM image VHD is available locally on the console VM (or another externall
 
 3. Create the Azure Stack administrator's AzureRM environment by using the following cmdlet:
    ```powershell
-   Add-AzureStackAzureRmEnvironment -Name "AzureStackAdmin" -ArmEndpoint "https://adminmanagement.local.azurestack.external" 
+   Add-AzureStackAzureRmEnvironment `
+     -Name "AzureStackAdmin" `
+     -ArmEndpoint "https://adminmanagement.local.azurestack.external" 
    ```
 
 4. Get the GUID value of the Active Directory(AD) tenant that is used to deploy the Azure Stack. If your Azure Stack environment is deployed by using:  
@@ -53,23 +56,37 @@ If the VM image VHD is available locally on the console VM (or another externall
     a. **Azure Active Directory**, use the following cmdlet:
     
     ```PowerShell
-    $TenantID = Get-DirectoryTenantID -AADTenantName "<myaadtenant>.onmicrosoft.com" -EnvironmentName AzureStackAdmin
+    $TenantID = Get-DirectoryTenantID `
+      -AADTenantName "<myaadtenant>.onmicrosoft.com" `
+      -EnvironmentName AzureStackAdmin
     ```
     b. **Active Directory Federation Services**, use the following cmdlet:
     
     ```PowerShell
-    $TenantID = Get-DirectoryTenantID -ADFS -EnvironmentName AzureStackAdmin 
+    $TenantID = Get-DirectoryTenantID `
+      -ADFS `
+      -EnvironmentName AzureStackAdmin 
     ```
 
-5. Add the VM image by invoking the **Add-VMImage** cmdlet. In the Add-VMImage cmdlet, specify the osType as Windows or Linux. Include the publisher, offer, SKU, and version for the VM image. These parameters are used by Azure Resource Manager templates that reference the VM image. Following is an example invocation of the script:
+5. Add the VM image by invoking the `Add-VMImage` cmdlet. In the Add-VMImage cmdlet, specify the osType as Windows or Linux. Include the publisher, offer, SKU, and version for the VM image. These parameters are used by Azure Resource Manager templates that reference the VM image. Following is an example invocation of the script:
      
      ```powershell
      # Store the service administrator account credentials in a variable 
      $UserName='<Username of the service administrator account>'
-     $Password='<Admin password provided when deploying Azure Stack>'|ConvertTo-SecureString -Force -AsPlainText
+     $Password='<Admin password provided when deploying Azure Stack>'| `
+       ConvertTo-SecureString -Force -AsPlainText
      $Credential=New-Object PSCredential($UserName,$Password)
 
-     Add-VMImage -publisher "Canonical" -offer "UbuntuServer" -sku "14.04.3-LTS" -version "1.0.0" -osType Linux -osDiskLocalPath 'C:\Users\AzureStackAdmin\Desktop\UbuntuServer.vhd' -TenantId $TenantID -EnvironmentName "AzureStackAdmin" -azureStackCredentials $Credential
+     Add-VMImage `
+       -publisher "Canonical" `
+       -offer "UbuntuServer" `
+       -sku "14.04.3-LTS" `
+       -version "1.0.0" `
+       -osType Linux `
+       -osDiskLocalPath 'C:\Users\AzureStackAdmin\Desktop\UbuntuServer.vhd' `
+       -TenantId $TenantID `
+       -EnvironmentName "AzureStackAdmin" `
+       -azureStackCredentials $Credential
      ```
 
 The command does the following:

@@ -9,10 +9,11 @@ ms.technology: emotion
 ms.topic: article
 ms.date: 01/25/2017
 ms.author: anroth
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 49e705038d46309d27acbc38963f282ce29a702b
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 393f666ea0bd742ef4f92c213680db2cebc101c6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 ---
 
@@ -180,10 +181,10 @@ In most modes, there will be a visible delay between the live video on the left,
 ### <a name="integrating-into-your-codebase"></a>Integrating into your codebase
 To get started with this sample, follow these steps:
 
-1. Get API keys for the Vision APIs from [microsoft.com/cognitive](https://www.microsoft.com/cognitive-services/en-us/sign-up). For video frame analysis, the applicable APIs are:
-    - [Computer Vision API](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api)
-    - [Emotion API](https://www.microsoft.com/cognitive-services/en-us/emotion-api)
-    - [Face API](https://www.microsoft.com/cognitive-services/en-us/face-api)
+1. Get API keys for the Vision APIs from [Subscriptions](https://azure.microsoft.com/en-us/try/cognitive-services/). For video frame analysis, the applicable APIs are:
+    - [Computer Vision API](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/home)
+    - [Emotion API](https://docs.microsoft.com/en-us/azure/cognitive-services/emotion/home)
+    - [Face API](https://docs.microsoft.com/en-us/azure/cognitive-services/face/overview)
 2. Clone the [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) GitHub repo
 
 3. Open the sample in Visual Studio 2015, build and run the sample applications:
@@ -196,18 +197,14 @@ When you're ready to integrate, **simply reference the VideoFrameAnalyzer librar
 
 
 ## <a name="developer-code-of-conduct"></a>Developer Code of Conduct
-As with all the Cognitive Services, Developers developing with our APIs and samples are required to follow the "[Developer Code of Conduct for Microsoft Cognitive Services](http://go.microsoft.com/fwlink/?LinkId=698895)." 
+As with all the Cognitive Services, Developers developing with our APIs and samples are required to follow the "[Developer Code of Conduct for Microsoft Cognitive Services](https://azure.microsoft.com/en-us/support/legal/developer-code-of-conduct/)." 
 
 
 The image, voice, video or text understanding capabilities of VideoFrameAnalyzer uses Microsoft Cognitive Services. Microsoft will receive the images, audio, video, and other data that you upload (via this app) and may use them for service improvement purposes. We ask for your help in protecting the people whose data your app sends to Microsoft Cognitive Services. 
- 
-
-To report abuse of the Microsoft Cognitive Services to Microsoft, please visit the [Microsoft Cognitive Services website](https://www.microsoft.com/cognitive-services), and use the "Report Abuse" link at the bottom of the page to contact Microsoft. For more information about Microsoft privacy policies please see their privacy statement here: [https://go.microsoft.com/fwlink/?LinkId=521839](https://go.microsoft.com/fwlink/?LinkId=521839). 
-
 
 
 ## <a name="summary"></a>Summary
-In this guide, you learned how to run near-real-time analysis on live video streams using the Face, Computer Vision, and Emotion APIs, and how you can use our sample code to get started.  You can get started building your app with free API keys at the [Microsoft Cognitive Services sign-up page](https://www.microsoft.com/cognitive-services/en-us/sign-up). 
+In this guide, you learned how to run near-real-time analysis on live video streams using the Face, Computer Vision, and Emotion APIs, and how you can use our sample code to get started.  You can get started building your app with free API keys at the [Microsoft Cognitive Services sign-up page](https://azure.microsoft.com/en-us/try/cognitive-services/). 
 
 Please feel free to provide feedback and suggestions in the [GitHub repository](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/), or for more broad API feedback, on our [UserVoice site](https://cognitive.uservoice.com/).
 

@@ -4,7 +4,7 @@ description: "このドキュメントでは、Azure Security Center とパー�
 services: security-center
 documentationcenter: na
 author: YuriDio
-manager: swadhwa
+manager: mbaldwin
 editor: 
 ms.assetid: 6af354da-f27a-467a-8b7e-6cbcf70fdbcb
 ms.service: security-center
@@ -12,12 +12,13 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
+ms.date: 05/09/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 5001cd47b6ee51967d1286414ccefedd8e7e7813
-ms.openlocfilehash: 095b5c9d1a888a4061450234f80c52c5834fbf53
-ms.lasthandoff: 02/16/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: 8dddfc8929ab1a0c44522ed2a2596e2c82e3987d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -37,10 +38,10 @@ Security Center でパートナー統合を利用する主な理由は、次の 
 ## <a name="what-partners-are-integrated-with-security-center"></a>Security Center と統合されているパートナー
 Security Center は現在、次のパートナーと統合されています。
 
-- エンドポイント保護 (Trend Micro) 
-- Web アプリケーション ファイアウォール (Barracuda、F5、Imperva のほか、間もなく Microsoft WAF と Fortinet が追加) 
-- 次世代ファイアウォール ソリューション (Check Point、Barracuda のほか、間もなく Fortinet と Cisco が追加) 
-- 脆弱性評価ソリューション (Qualys - プレビュー) 
+- エンドポイント保護 ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html)) 
+- Web アプリケーション ファイアウォール ([Barracuda](https://www.barracuda.com/products/webapplicationfirewall)、[F5](https://support.f5.com/kb/en-us/products/big-ip_asm/manuals/product/bigip-ve-web-application-firewall-microsoft-azure-12-0-0.html)、[Imperva](https://www.imperva.com/Products/WebApplicationFirewall-WAF)、[Fortinet](https://www.fortinet.com/resources.html?limit=10&search=&document-type=data-sheets)、[App Gateway WAF](https://azure.microsoft.com/en-us/blog/azure-web-application-firewall-waf-generally-available/)) 
+- 次世代ファイアウォール ([Check Point](https://www.checkpoint.com/products/vsec-microsoft-azure/)、[Barracuda](https://campus.barracuda.com/product/nextgenfirewallf/article/NGF/AzureDeployment/)、[Fortinet](http://docs.fortinet.com/d/fortigate-fortios-handbook-the-complete-guide-to-fortios-5.2)、[Cisco](http://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/azure/ftdv-azure-qsg.html)) 
+- 脆弱性評価 ([Qualys](https://www.qualys.com/public-clouds/microsoft-azure/) - プレビュー)  
 
 Security Center では、これらの既存のカテゴリに含まれるパートナーの数を徐々に拡大し、新しいカテゴリを追加する予定です。 
 
@@ -57,7 +58,7 @@ Azure 環境の構成と定義されたセキュリティ ポリシーに応じ�
 
 パートナー ソリューションのデプロイが完了したら、Security Center のメイン ダッシュボードにあるパートナー ソリューションのタイルから、ソリューションの正常性に関する情報を確認したり、基本的な管理タスクを実行したりできます。 Security Center でのパートナー ソリューションの管理の詳細については、「[Monitoring partner solutions with Azure Security Center (Azure Security Center を使用したパートナー ソリューションの監視)](security-center-partner-solutions.md)」を参照してください。
 
-![パートナー統合](./media/security-center-partner-integration/security-center-partner-integration-fig1-new.png)
+![パートナー統合](./media/security-center-partner-integration/security-center-partner-integration-fig1-1-newUI.png)
 
 
 ## <a name="see-also"></a>関連項目

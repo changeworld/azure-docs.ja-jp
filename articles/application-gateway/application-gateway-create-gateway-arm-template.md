@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: 58b3d4a84c06a17eee41385509aa80e820399716
-ms.lasthandoff: 04/05/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 0786e54c288f30b0039c1d0b88f5c5b5965eecef
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -74,10 +75,6 @@ GitHub から既存の Azure リソース マネージャー テンプレート�
   | **wafMode** | Web アプリケーション ファイアウォールのモード。  使用できるオプションは、**[防止]** または **[検出]** です。|
   | **wafRuleSetType** | WAF のルールセットの種類。  現在、サポートされているオプションは、OWASP だけです。 |
   | **wafRuleSetVersion** |ルールセットのバージョン。 現在、サポートされているオプションは、OWASP CRS 2.2.9 および 3.0 です。 |
-
-
-  > [!IMPORTANT]
-  > GitHub で管理される Azure リソース マネージャー テンプレートは、今後変更される可能性があります。 使用する前に、必ずテンプレートを確認してください。
 
 1. **resources** の内容を確認し、次のプロパティを参照します。
 
@@ -136,102 +133,80 @@ GitHub から既存の Azure リソース マネージャー テンプレート�
 
 ## <a name="deploy-the-azure-resource-manager-template-by-using-powershell"></a>PowerShell を使用した Azure リソース マネージャー テンプレートのデプロイ
 
-Azure PowerShell を初めて使用する場合は、[Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)に関するページを参照してください。手順に従って Azure にサインインし、サブスクリプションを選択します。
+Azure PowerShell を初めて使用する場合は、[Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)に関するページを参照してください。手順に従って Azure にサインインし、サブスクリプションを選択します。
 
-### <a name="step-1"></a>手順 1
+1. PowerShell にログイン
 
-```powershell
-Login-AzureRmAccount
-```
+    ```powershell
+    Login-AzureRmAccount
+    ```
 
-### <a name="step-2"></a>手順 2.
+1. アカウントのサブスクリプションを確認します。
 
-アカウントのサブスクリプションを確認します。
+    ```powershell
+    Get-AzureRmSubscription
+    ```
 
-```powershell
-Get-AzureRmSubscription
-```
+    資格情報を使用して認証を行うように求めるメッセージが表示されます。
 
-資格情報を使用して認証を行うように求めるメッセージが表示されます。
+1. 使用する Azure サブスクリプションを選択します。
 
-### <a name="step-3"></a>手順 3.
+    ```powershell
+    Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
+    ```
 
-使用する Azure サブスクリプションを選択します。
+1. 必要に応じて、 **New-AzureResourceGroup** コマンドレットを使用してリソース グループを作成します。 以下の例では、米国東部に AppgatewayRG という名前のリソース グループを作成します。
 
-```powershell
-Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
-```
+    ```powershell
+    New-AzureRmResourceGroup -Name AppgatewayRG -Location "West US"
+    ```
 
-### <a name="step-4"></a>手順 4.
-
-必要に応じて、 **New-AzureResourceGroup** コマンドレットを使用してリソース グループを作成します。 以下の例では、米国東部に AppgatewayRG という名前のリソース グループを作成します。
-
-```powershell
-New-AzureRmResourceGroup -Name AppgatewayRG -Location "West US"
-```
-
-**New-AzureRmResourceGroupDeployment** コマンドレットを実行し、先ほどダウンロードして変更したテンプレート ファイルとパラメーター ファイルを使用して、新しい仮想ネットワークをデプロイします。
-
-```powershell
-New-AzureRmResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroupName AppgatewayRG `
--TemplateFile C:\ARM\azuredeploy.json -TemplateParameterFile C:\ARM\azuredeploy-parameters.json
-```
+1. **New-AzureRmResourceGroupDeployment** コマンドレットを実行し、先ほどダウンロードして変更したテンプレート ファイルとパラメーター ファイルを使用して、新しい仮想ネットワークをデプロイします。
+    
+    ```powershell
+    New-AzureRmResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroupName AppgatewayRG `
+    -TemplateFile C:\ARM\azuredeploy.json -TemplateParameterFile C:\ARM\azuredeploy-parameters.json
+    ```
 
 ## <a name="deploy-the-azure-resource-manager-template-by-using-the-azure-cli"></a>Azure CLI を使用した Azure リソース マネージャー テンプレートのデプロイ
 
 Azure CLI を使用してダウンロードした Azure Resource Manager テンプレートをデプロイするには、次の手順に従います。
 
-### <a name="step-1"></a>手順 1
+1. Azure CLI を初めて使用する場合は、 [Azure CLI のインストールと構成](/cli/azure/install-azure-cli) に関するページを参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
 
-Azure CLI を初めて使用する場合は、 [Azure CLI のインストールと構成](/cli/azure/install-azure-cli) に関するページを参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+1. 必要に応じて、次のコード スニペットに示されているように、`az group create` コマンドを実行してリソース グループを作成します。 コマンドの出力が表示されます。 出力の後に表示される一覧では、使用されたパラメーターについて説明されています。 リソース グループの詳細については、「 [Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。
 
-### <a name="step-2"></a>手順 2.
+    ```azurecli
+    az group create --location westus --name appgatewayRG
+    ```
+    
+    **-n (または --name)**。 新しいリソース グループの名前です。 このシナリオでは、 *appgatewayRG*です。
+    
+    **-l (または --location)**。 新しいリソース グループが作成される Azure リージョンです。 このシナリオでは、*westus* です。
 
-必要に応じて、次のコード スニペットに示されているように、`az group create` コマンドを実行してリソース グループを作成します。 コマンドの出力が表示されます。 出力の後に表示される一覧では、使用されたパラメーターについて説明されています。 リソース グループの詳細については、「 [Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。
+1. `az group deployment create` コマンドレットを実行し、前の手順でダウンロードおよび変更したテンプレート ファイルとパラメーター ファイルを使用して、新しい仮想ネットワークをデプロイします。 出力の後に表示される一覧では、使用されたパラメーターについて説明されています。
 
-```azurecli
-az group create --location westus --name appgatewayRG
-```
-
-**-n (または --name)**。 新しいリソース グループの名前です。 このシナリオでは、 *appgatewayRG*です。
-
-**-l (または --location)**。 新しいリソース グループが作成される Azure リージョンです。 このシナリオでは、*westus* です。
-
-### <a name="step-4"></a>手順 4.
-
-`az group deployment create` コマンドレットを実行し、前の手順でダウンロードおよび変更したテンプレート ファイルとパラメーター ファイルを使用して、新しい仮想ネットワークをデプロイします。 出力の後に表示される一覧では、使用されたパラメーターについて説明されています。
-
-```azurecli
-az group deployment create --resource-group appgatewayRG --name TestAppgatewayDeployment --template-file azuredeploy.json --parameters @azuredeploy-parameters.json
-```
+    ```azurecli
+    az group deployment create --resource-group appgatewayRG --name TestAppgatewayDeployment --template-file azuredeploy.json --parameters @azuredeploy-parameters.json
+    ```
 
 ## <a name="deploy-the-azure-resource-manager-template-by-using-click-to-deploy"></a>"クリックしてデプロイ" を使用した Azure リソース マネージャー テンプレートのデプロイ
 
 "クリックしてデプロイ" は、Azure リソース マネージャー テンプレートを使用するもう 1 つの方法です。 これは、Azure ポータルでテンプレートを使用する簡単な方法です。
 
-### <a name="step-1"></a>手順 1
+1. 「[Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する](https://azure.microsoft.com/documentation/templates/101-application-gateway-waf/)」に移動します。
 
-「[Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する](https://azure.microsoft.com/documentation/templates/101-application-gateway-waf/)」に移動します。
+1. [ **Azure へのデプロイ**] をクリックします。
 
-### <a name="step-2"></a>手順 2.
+    ![Azure へのデプロイ](./media/application-gateway-create-gateway-arm-template/deploytoazure.png)
+    
+1. ポータルでのデプロイ テンプレートのパラメーターを入力し、 **[OK]**をクリックします。
 
-[ **Azure へのデプロイ**] をクリックします。
+    ![parameters](./media/application-gateway-create-gateway-arm-template/ibiza1.png)
+    
+1. **[上記の使用条件に同意する]** を選択し、**[購入]** をクリックします。
 
-![Azure へのデプロイ](./media/application-gateway-create-gateway-arm-template/deploytoazure.png)
-
-### <a name="step-3"></a>手順 3.
-
-ポータルでのデプロイ テンプレートのパラメーターを入力し、 **[OK]**をクリックします。
-
-![parameters](./media/application-gateway-create-gateway-arm-template/ibiza1.png)
-
-### <a name="step-4"></a>手順 4.
-
-**[上記の使用条件に同意する]** を選択し、**[購入]** をクリックします。
-
-### <a name="step-5"></a>手順 5.
-
-[カスタム デプロイ] ブレードで、 **[作成]**をクリックします。
+1. [カスタム デプロイ] ブレードで、 **[作成]**をクリックします。
 
 ## <a name="providing-certificate-data-to-resource-manager-templates"></a>証明書データを Resource Manager テンプレートに提供する
 
@@ -239,6 +214,22 @@ az group deployment create --resource-group appgatewayRG --name TestAppgatewayDe
 
 ```powershell
 [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes("<certificate path and name>.pfx"))
+```
+
+## <a name="delete-all-resources"></a>すべてのリソースの削除
+
+この記事で作成したリソースをすべて削除するには、次の手順の 1 つを実行します。
+
+### <a name="powershell"></a>PowerShell
+
+```powershell
+Remove-AzureRmResourceGroup -Name appgatewayRG
+```
+
+### <a name="azure-cli"></a>Azure CLI
+
+```azurecli
+az group delete --name appgatewayRG
 ```
 
 ## <a name="next-steps"></a>次のステップ

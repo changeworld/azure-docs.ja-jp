@@ -14,15 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: fd3a08f227ade7589bbc7a17fa600e5a283d8054
-ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: 4c9991baf3fbcf3b8ea01f8dd573e2336db88b68
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/02/2017
 
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management のアクセス制限ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](http://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。  
   
-##  <a name="a-nameaccessrestrictionpoliciesa-access-restriction-policies"></a><a name="AccessRestrictionPolicies"></a> アクセス制限ポリシー  
+##  <a name="AccessRestrictionPolicies"></a> アクセス制限ポリシー  
   
 -   [HTTP ヘッダーを確認する](api-management-access-restriction-policies.md#CheckHTTPHeader) - HTTP ヘッダーの存在と値の両方、またはそのどちらかを適用します。  
   
@@ -38,8 +40,8 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
   
 -   [JWT を検証する](api-management-access-restriction-policies.md#ValidateJWT) - 指定された HTTP ヘッダーまたは指定されたクエリ パラメーターから抽出した JWT の存在と有効性を適用します。  
   
-##  <a name="a-namecheckhttpheadera-check-http-header"></a><a name="CheckHTTPHeader"></a> HTTP ヘッダーを確認する  
- 指定した HTTP ヘッダーが要求に含まれることを必須にするには、`check-header` ポリシーを使用します。 必要に応じて、ヘッダーの値が特定のものであるかどうか、または許可される値の範囲に含まれるかどうかを確認できます。 チェックに失敗した場合、このポリシーは要求の処理を中断し、ポリシーで指定した HTTP 状態コードとエラー メッセージを返します。  
+##  <a name="CheckHTTPHeader"></a> HTTP ヘッダーを確認する  
+ `check-header` ポリシーを使用して、HTTP ヘッダーの指定がもれなく要求に含まれるようにします。 必要に応じて、ヘッダーに特定の値が指定されているかどうか、または許可されている範囲内の値かどうかを確認できます。 チェックに失敗した場合、このポリシーに従って要求の処理は終了し、ポリシーで指定した HTTP 状態コードとエラー メッセージが返されます。  
   
 ### <a name="policy-statement"></a>ポリシー ステートメント  
   
@@ -69,10 +71,10 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
   
 |名前|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
-|failed-check-error-message|ヘッダーが存在しないかヘッダーの値が無効なものである場合に HTTP 応答本文で返されるエラー メッセージ。 このメッセージ内の特殊文字は適切にエスケープする必要があります。|はい|該当なし|  
-|failed-check-httpcode|ヘッダーが存在しないかヘッダーの値が無効なものである場合に返される HTTP 状態コード。|はい|該当なし|  
+|failed-check-error-message|ヘッダーが存在しないかヘッダーが無効な値である場合に HTTP 応答本文で返されるエラー メッセージ。 このメッセージ内では、特殊文字を適切にエスケープする必要があります。|はい|該当なし|  
+|failed-check-httpcode|ヘッダーが存在しないかヘッダーが無効な値である場合に返される HTTP 状態コード。|はい|該当なし|  
 |header-name|チェックする HTTP ヘッダーの名前。|はい|該当なし|  
-|ignore-case|True または False に設定できます。 True に設定した場合、ヘッダー値と許可される値セットを比較するときに大文字と小文字は区別されません。|はい|該当なし|  
+|ignore-case|True または False に設定できます。 True に設定した場合、ヘッダー値と許容される値セットとの比較時に大文字と小文字は区別されません。|はい|該当なし|  
   
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
@@ -81,11 +83,11 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
   
 -   **ポリシー スコープ:** グローバル、製品、API、操作  
   
-##  <a name="a-namelimitcallratea-limit-call-rate-by-subscription"></a><a name="LimitCallRate"></a> 呼び出しレートをサブスクリプション別に制限する  
+##  <a name="LimitCallRate"></a> 呼び出しレートをサブスクリプション別に制限する  
  `rate-limit` ポリシーは、指定期間あたりの呼び出しレートを指定数に制限することで、サブスクリプションごとに API 使用量の急増を防ぎます。 このポリシーがトリガーされると、呼び出し元は `429 Too Many Requests` 応答状態コードを受け取ります。  
   
 > [!IMPORTANT]
->  このポリシーは、ポリシー ドキュメントごとに&1; 回のみ使用できます。  
+>  このポリシーは、ポリシー ドキュメントごとに 1 回のみ使用できます。  
 >   
 >  このポリシー内のポリシー属性では、[ポリシー式](api-management-policy-expressions.md)は使用できません。  
   
@@ -118,15 +120,15 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
 |名前|説明|必須|  
 |----------|-----------------|--------------|  
 |set-limit|ルート要素。|はい|  
-|api|製品内の API に対して呼び出しレート制限をかけるには、これらの要素を&1; つまたは複数追加します。 製品と API の呼び出しレート制限は別々に適用されます。|なし|  
-|operation|API 内の操作に対して呼び出しレート制限をかけるには、これらの要素を&1; つまたは複数追加します。 製品、API、および操作の呼び出しレート制限は別々に適用されます。|いいえ|  
+|api|製品内の API に対して呼び出しレート制限をかけるには、これらの要素を 1 つまたは複数追加します。 製品と API の呼び出しレート制限は別々に適用されます。|なし|  
+|operation|API 内の操作に対して呼び出しレート制限をかけるには、これらの要素を 1 つまたは複数追加します。 製品、API、および操作の呼び出しレート制限は別々に適用されます。|いいえ|  
   
 ### <a name="attributes"></a>属性  
   
 |名前|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
 |name|レート制限の適用対象になる API の名前。|はい|該当なし|  
-|calls|`renewal-period` で指定した期間中に許可する最大合計呼び出し数。|はい|該当なし|  
+|calls|`renewal-period` で指定した期間中に許容する最大呼び出し総数。|はい|該当なし|  
 |renewal-period|クォータのリセット間隔 (秒単位)。|はい|該当なし|  
   
 ### <a name="usage"></a>使用法  
@@ -136,13 +138,13 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
   
 -   **ポリシー スコープ:** 製品  
   
-##  <a name="a-namelimitcallratebykeya-limit-call-rate-by-key"></a><a name="LimitCallRateByKey"></a> 呼び出しレートをキー別に制限する  
+##  <a name="LimitCallRateByKey"></a> 呼び出しレートをキー別に制限する  
  `rate-limit-by-key` ポリシーは、指定期間あたりの呼び出しレートを指定数に制限することで、キーごとに API 使用量の急増を防ぎます。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。 必要に応じて増分条件を追加し、制限に対してカウントする要求を指定することもできます。 このポリシーがトリガーされると、呼び出し元は `429 Too Many Requests` 応答状態コードを受け取ります。  
   
  このポリシーの詳細と例については、「[Azure API Management を使用した高度な要求スロットル](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/)」を参照してください。  
   
 > [!IMPORTANT]
->  このポリシーは、ポリシー ドキュメントごとに&1; 回のみ使用できます。  
+>  このポリシーは、ポリシー ドキュメントごとに 1 回のみ使用できます。  
   
 ### <a name="policy-statement"></a>ポリシー ステートメント  
   
@@ -182,7 +184,7 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
   
 |名前|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
-|calls|`renewal-period` で指定した期間中に許可する最大合計呼び出し数。|はい|該当なし|  
+|calls|`renewal-period` で指定した期間中に許容する最大呼び出し総数。|はい|該当なし|  
 |counter-key|レート制限ポリシーに使用するキー。|はい|該当なし|  
 |increment-condition|クォータに対して要求の件数をカウントするかどうかを指定するブール式です (`true`)。|いいえ|該当なし|  
 |renewal-period|クォータのリセット間隔 (秒単位)。|はい|該当なし|  
@@ -194,7 +196,7 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
   
 -   **ポリシー スコープ:** グローバル、製品、API、操作  
   
-##  <a name="a-namerestrictcalleripsa-restrict-caller-ips"></a><a name="RestrictCallerIPs"></a> 呼び出し元 IP を制限する  
+##  <a name="RestrictCallerIPs"></a> 呼び出し元 IP を制限する  
  `ip-filter` ポリシーは、特定の IP アドレスやアドレス範囲からの呼び出しをフィルター処理 (許可または拒否) します。  
   
 ### <a name="policy-statement"></a>ポリシー ステートメント  
@@ -220,8 +222,8 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
 |名前|説明|必須|  
 |----------|-----------------|--------------|  
 |ip-filter|ルート要素。|はい|  
-|address|フィルターを適用する単一の IP アドレスを指定します。|`address` 要素または `address-range` 要素は少なくとも&1; つ必要です。|  
-|address-range from="address" to="address"|フィルターを適用する IP アドレスの範囲を指定します。|`address` 要素または `address-range` 要素は少なくとも&1; つ必要です。|  
+|address|フィルターを適用する単一の IP アドレスを指定します。|`address` 要素または `address-range` 要素は少なくとも 1 つ必要です。|  
+|address-range from="address" to="address"|フィルターを適用する IP アドレスの範囲を指定します。|`address` 要素または `address-range` 要素は少なくとも 1 つ必要です。|  
   
 ### <a name="attributes"></a>属性  
   
@@ -237,11 +239,11 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
   
 -   **ポリシー スコープ:** グローバル、製品、API、操作  
   
-##  <a name="a-namesetusagequotaa-set-usage-quota-by-subscription"></a><a name="SetUsageQuota"></a> 使用量のクォータをサブスクリプション別に設定する  
+##  <a name="SetUsageQuota"></a> 使用量のクォータをサブスクリプション別に設定する  
  `quota` ポリシーは、更新可能な呼び出しまたは有効期間中の呼び出しのボリュームと帯域幅クォータの両方またはそのどちらかをサブスクリプションに基づいて適用します。  
   
 > [!IMPORTANT]
->  このポリシーは、ポリシー ドキュメントごとに&1; 回のみ使用できます。  
+>  このポリシーは、ポリシー ドキュメントごとに 1 回のみ使用できます。  
 >   
 >  このポリシー内のポリシー属性では、[ポリシー式](api-management-policy-expressions.md)は使用できません。  
   
@@ -274,8 +276,8 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
 |名前|説明|必須|  
 |----------|-----------------|--------------|  
 |quota|ルート要素。|はい|  
-|api|製品内の API に対してクォータをかけるには、これらの要素を&1; つまたは複数追加します。 製品と API のクォータは別々に適用されます。|いいえ|  
-|operation|API 内の操作に対してクォータをかけるには、これらの要素を&1; つまたは複数追加します。 製品、API、および操作のクォータは別々に適用されます。|いいえ|  
+|api|製品内の API に対してクォータをかけるには、これらの要素を 1 つまたは複数追加します。 製品と API のクォータは別々に適用されます。|いいえ|  
+|operation|API 内の操作に対してクォータをかけるには、これらの要素を 1 つまたは複数追加します。 製品、API、および操作のクォータは別々に適用されます。|いいえ|  
   
 ### <a name="attributes"></a>属性  
   
@@ -283,7 +285,7 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
 |----------|-----------------|--------------|-------------|  
 |name|クォータを適用する API または操作の名前。|はい|該当なし|  
 |bandwidth|`renewal-period` で指定した期間中に許可する最大合計キロバイト数。|`calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。|該当なし|  
-|calls|`renewal-period` で指定した期間中に許可する最大合計呼び出し数。|`calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。|該当なし|  
+|calls|`renewal-period` で指定した期間中に許容する最大呼び出し総数。|`calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。|該当なし|  
 |renewal-period|クォータのリセット間隔 (秒単位)。|はい|該当なし|  
   
 ### <a name="usage"></a>使用法  
@@ -293,13 +295,13 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
   
 -   **ポリシー スコープ:** 製品  
   
-##  <a name="a-namesetusagequotabykeya-set-usage-quota-by-key"></a><a name="SetUsageQuotaByKey"></a> 使用量のクォータをキー別に設定する  
+##  <a name="SetUsageQuotaByKey"></a> 使用量のクォータをキー別に設定する  
  `quota-by-key` ポリシーは、更新可能な呼び出しまたは有効期間中の呼び出しのボリュームと帯域幅クォータの両方またはそのどちらかをキーに基づいて適用します。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。 必要に応じて増分条件を追加し、クォータに対してカウントする要求を指定することもできます。  
   
  このポリシーの詳細と例については、「[Azure API Management を使用した高度な要求スロットル](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/)」を参照してください。  
   
 > [!IMPORTANT]
->  このポリシーは、ポリシー ドキュメントごとに&1; 回のみ使用できます。  
+>  このポリシーは、ポリシー ドキュメントごとに 1 回のみ使用できます。  
 >   
 >  このポリシー内のポリシー属性では、[ポリシー式](api-management-policy-expressions.md)は使用できません。  
   
@@ -342,7 +344,7 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
 |名前|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
 |bandwidth|`renewal-period` で指定した期間中に許可する最大合計キロバイト数。|`calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。|該当なし|  
-|calls|`renewal-period` で指定した期間中に許可する最大合計呼び出し数。|`calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。|該当なし|  
+|calls|`renewal-period` で指定した期間中に許容する最大呼び出し総数。|`calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。|該当なし|  
 |counter-key|クォータ ポリシーに使用するキー。|はい|該当なし|  
 |increment-condition|クォータに対して要求の件数をカウントするかどうかを指定するブール式 (`true`)|いいえ|該当なし|  
 |renewal-period|クォータのリセット間隔 (秒単位)。|はい|該当なし|  
@@ -354,7 +356,7 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
   
 -   **ポリシー スコープ:** グローバル、製品、API、操作  
   
-##  <a name="a-namevalidatejwta-validate-jwt"></a><a name="ValidateJWT"></a> JWT を検証する  
+##  <a name="ValidateJWT"></a> JWT を検証する  
  `validate-jwt` ポリシーは、指定した HTTP ヘッダーまたは指定したクエリ パラメーターのどちらかから抽出した JWT が存在し、有効であることを必須にします。  
   
 > [!IMPORTANT]
@@ -419,7 +421,27 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
   
 ```xml  
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">  
-    <openid-config url="https://login.windows.net/contoso.onmicrosoft.com/.well-known/openid-configuration" />  
+    <openid-config url="https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration" />  
+    <audiences>
+        <audience>25eef6e4-c905-4a07-8eb4-0d08d5df8b3f</audience>
+    </audiences>
+    <required-claims>  
+        <claim name="id" match="all">  
+            <value>insert claim here</value>  
+        </claim>  
+    </required-claims>  
+</validate-jwt>  
+```  
+
+  
+#### <a name="azure-active-directory-b2c-token-validation"></a>Azure Active Directory B2C のトークン検証  
+  
+```xml  
+<validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">  
+    <openid-config url="https://login.microsoftonline.com/tfp/contoso.onmicrosoft.com/b2c_1_signin/v2.0/.well-known/openid-configuration" />
+    <audiences>
+        <audience>d313c4e4-de5f-4197-9470-e509a2f0b806</audience>
+    </audiences>
     <required-claims>  
         <claim name="id" match="all">  
             <value>insert claim here</value>  
@@ -474,11 +496,11 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
 |要素|Description|必須|  
 |-------------|-----------------|--------------|  
 |validate-jwt|ルート要素。|はい|  
-|audiences|トークン上に存在する可能性がある、許容される対象ユーザー クレームの一覧を記載します。 対象ユーザー値が複数存在する場合は、すべての値が消費される (この場合検証は失敗します) かいずれかの値の検証が成功するまで、各値について検証が行われます。 少なくとも&1; つの対象ユーザーを指定する必要があります。|いいえ|  
+|audiences|トークン上に存在する可能性がある、許容される対象ユーザー クレームの一覧を記載します。 対象ユーザー値が複数存在する場合は、すべての値が消費される (この場合検証は失敗します) かいずれかの値の検証が成功するまで、各値について検証が行われます。 少なくとも 1 つの対象ユーザーを指定する必要があります。|いいえ|  
 |issuer-signing-keys|署名付きトークンの検証に使用する base64 でエンコードされたセキュリティ キーの一覧。 セキュリティ キーが複数存在する場合は、すべてのキーが消費される (この場合検証は失敗します) かいずれかのキーの検証が成功する (トークンのロールオーバーに使用されます) まで、各キーについて検証が行われます。 キー要素には、`kid` クレームとの照合に使用される `id` 属性を必要に応じて設定できます。|なし|  
 |issuers|トークンを発行した、許容されるプリンシパルの一覧。 発行者の値が複数存在する場合は、すべての値が消費される (この場合検証は失敗します) かいずれかの値の検証が成功するまで、各値について検証が行われます。|なし|  
 |openid-config|署名キーと発行者を取得可能な適合 Open ID 構成エンドポイントを指定するために使用する要素。|なし|  
-|required-claims|トークン上に存在すると予測される、有効とみなすクレームの一覧を記載します。 `match` 属性を `all` に設定した場合、検証が成功するにはポリシー内のクレーム値がすべてトークン内に存在する必要があります。 `match` 属性を `any` に設定した場合、検証が成功するには少なくとも&1; つのクレームがトークン内に存在する必要があります。|いいえ|  
+|required-claims|トークン上に存在すると予測される、有効とみなすクレームの一覧を記載します。 `match` 属性を `all` に設定した場合、検証が成功するにはポリシー内のクレーム値がすべてトークン内に存在する必要があります。 `match` 属性を `any` に設定した場合、検証が成功するには少なくとも 1 つのクレームがトークン内に存在する必要があります。|いいえ|  
 |zumo-master-key|Azure Mobile Services によって発行されたトークンのマスター キー|いいえ|  
   
 ### <a name="attributes"></a>属性  
@@ -486,16 +508,16 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
 |名前|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
 |clock-skew|期間。 トークン内にトークンの有効期限クレームが存在し、このクレームが現在の日時よりも前であった場合に備えて短時間の猶予を設けます。|なし|0 秒|  
-|failed-validation-error-message|JWT が検証で不合格となった場合に HTTP 応答本文で返すエラー メッセージ。 このメッセージ内の特殊文字は適切にエスケープする必要があります。|なし|既定のエラー メッセージは検証の問題によって異なります ("JWT not present" (JWT が存在しません) など)。|  
+|failed-validation-error-message|JWT が検証で不合格となった場合に HTTP 応答本文で返すエラー メッセージ。 このメッセージ内では、特殊文字を適切にエスケープする必要があります。|なし|既定のエラー メッセージは検証の問題によって異なります ("JWT not present" (JWT が存在しません) など)。|  
 |failed-validation-httpcode|JWT が検証で不合格となった場合に返す HTTP 状態コード。|いいえ|401|  
 |header-name|トークンを保持する HTTP ヘッダーの名前。|`header-name` と `query-paremeter-name` はどちらかを指定する必要がありますが、両方を指定する必要はありません。|該当なし|  
 |id|`key` 要素の `id` 属性を使用すると、署名検証用の適切なキーを確認するためにトークン内の `kid` クレーム (存在する場合) と照合する文字列を指定できます。|なし|該当なし|  
-|match|`claim` 要素の `match` 属性では、検証が成功するためにポリシー内のクレーム値がすべてトークン内に存在する必要があるかどうかを指定します。 次のいずれかの値になります。<br /><br /> -                          `all` - 検証が成功するには、ポリシー内のクレーム値がすべてトークン内に存在する必要があります。<br /><br /> -                          `any` - 検証が成功するには、ポリシー内のクレーム値が少なくとも&1; つトークン内に存在する必要があります。|なし|すべて|  
+|match|`claim` 要素の `match` 属性では、検証が成功するためにポリシー内のクレーム値がすべてトークン内に存在する必要があるかどうかを指定します。 次のいずれかの値になります。<br /><br /> -                          `all` - 検証が成功するには、ポリシー内のクレーム値がすべてトークン内に存在する必要があります。<br /><br /> -                          `any` - 検証が成功するには、ポリシー内のクレーム値が少なくとも 1 つトークン内に存在する必要があります。|なし|すべて|  
 |query-paremeter-name|トークンを保持するクエリ パラメーターの名前。|`header-name` と `query-paremeter-name` はどちらかを指定する必要がありますが、両方を指定する必要はありません。|該当なし|  
 |require-expiration-time|ブール値。 トークン内に有効期限クレームが存在する必要があるかどうかを指定します。|いいえ|true|
 |require-scheme|トークン スキームの名前 (例: "Bearer")。 この属性が設定されている場合、ポリシーは指定したスキームが承認ヘッダーの値に存在していることを確認します。|いいえ|該当なし|
 |require-signed-tokens|ブール値。 トークンに署名が必要かどうかを指定します。|いいえ|true|  
-|url|Open ID 構成メタデータを取得可能な Open ID 構成エンドポイントの URL。 Azure Active Directory の場合は、`https://login.windows.net/{tenant-name}/.well-known/openid-configuration` という URL をご使用のディレクトリ テナント名 (`contoso.onmicrosoft.com` など) に置き換えて使用します。|はい|該当なし|  
+|url|Open ID 構成メタデータを取得可能な Open ID 構成エンドポイントの URL。 Azure Active Directory の場合は、`https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` という URL をご使用のディレクトリ テナント名 (`contoso.onmicrosoft.com` など) に置き換えて使用します。|はい|該当なし|  
   
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
@@ -506,9 +528,4 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
   
 ## <a name="next-steps"></a>次のステップ
 ポリシーを使用する方法の詳細については、「[Azure API Management のポリシー](api-management-howto-policies.md)」を参照してください。  
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

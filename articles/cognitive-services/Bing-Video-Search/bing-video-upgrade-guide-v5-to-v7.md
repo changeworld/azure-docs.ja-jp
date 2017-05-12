@@ -10,29 +10,26 @@ ms.technology: bing-video-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 0dae0a52b0b7c1074a0b9fbf9eb3cc4129e22920
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 541cdb488a27abadf09f15d365504bcf96c8be6c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 
-# <a name="video-search-api-upgrade-guide"></a>Video Search API Upgrade Guide
+# <a name="video-search-api-upgrade-guide"></a>Video Search API upgrade guide
 
 > [!NOTE]
-> Version 7 is a Preview release. All aspects of the API and documentation are subject to change. Use only for testing in a non-production environment.
+> V7 is a Preview release. All aspects of the API and documentation are subject to change. Use only for testing in a non-production environment.
 
 This upgrade guide identifies the changes between version 5 and version 7 of the Bing Video Search API. Use this guide to help you identify the parts of your application that you need to update to use version 7.
 
-## <a name="subscription-keys"></a>Subscription Keys
-
-- Your version 5 paid and free trial subscription key will continue working with version 7.
-
-## <a name="breaking-changes"></a>Breaking Changes
+## <a name="breaking-changes"></a>Breaking changes
 
 ### <a name="endpoints"></a>Endpoints
 
-- The endpoint's version number changed from v5 to v7. For example, https://api.cognitive.microsoft.com/bing/\**v7.0**/videos/search.
+- The endpoint's version number changed from v5 to v7. For example, https://api.cognitive.microsoft.com/bing/\*\*v7.0**/videos/search.
 
 ### <a name="error-response-objects-and-error-codes"></a>Error response objects and error codes
 
@@ -78,12 +75,12 @@ Blocked|InvalidRequest.Blocked
 
 ### <a name="query-parameters"></a>Query parameters
 
-- Renamed the `modulesRequested` query parameter to [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#modules).  
+- Renamed the `modulesRequested` query parameter to [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#modulesrequested).  
 
 ### <a name="object-changes"></a>Object changes
 
-- Renamed the `nextOffsetAddCount` field of [Videos](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#videos) to `nextOffset`. The way you use the offset has also changed. Previously, you would set the [offset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#offset) query parameter to the `nextOffset` value plus the previous offset value plus the number of videos in the result. Now, you simply set the `offset` query parameter to the `nextOffset` value.  
+- Renamed the `nextOffsetAddCount` field of [Videos](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) to `nextOffset`. The way you use the offset has also changed. Previously, you would set the [offset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#offset) query parameter to the `nextOffset` value plus the previous offset value plus the number of videos in the result. Now, you simply set the `offset` query parameter to the `nextOffset` value.  
   
-- Changed the data type of the `relatedVideos` field from `Video[]` to [VideosModule](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#videosmodule) (see [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#videodetails)).
+- Changed the data type of the `relatedVideos` field from `Video[]` to [VideosModule](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videosmodule) (see [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videodetails)).
 
 

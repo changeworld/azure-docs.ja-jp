@@ -10,14 +10,15 @@ ms.technology: bing-autosuggest
 ms.topic: article
 ms.date: 01/12/2017
 ms.author: scottwhi
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 8010b05766eca6889683e93d243041b3bc0b537e
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 0184a095c128aa10308b48a5ec4638a212bcfd0c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 
-# <a name="getting-suggested-search-query-terms"></a>Getting Suggested Search Query Terms
+# <a name="getting-suggested-search-query-terms"></a>Getting suggested search query terms
 
 Your user experience must provide a search box where the user enters a search query term. To improve the search box experience, you'd call the Autosuggest API to get back a list of suggested queries based on the partial query string the user has entered. You'd then display the suggestions in a drop-down list. The suggested terms are based on suggested queries that other users have searched on and user intent. 
 
@@ -36,7 +37,7 @@ Host: api.cognitive.microsoft.com
 
 
 > [!NOTE]
-> Version 7 Preview request:
+> V7 Preview request:
 
 > ```  
 > GET https://api.cognitive.microsoft.com/bing/v7.0/suggestions?q=sail&mkt=en-us HTTP/1.1  
@@ -68,12 +69,12 @@ The following shows an example of drop-down search box with suggested query term
 If the user selects a suggested query from the drop-down list, you'd use the query term in the `query` field to call the [Bing Search API](../bing-web-search/search-the-web.md) and display the results yourself. Or, you could use the URL in the `url` field to send the user to the Bing search results page instead.  
   
 
-## <a name="throttling-requests"></a>Throttling Requests
+## <a name="throttling-requests"></a>Throttling requests
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../includes/cognitive-services-bing-throttling-requests.md)]
 
 
-## <a name="next-steps"></a>Next Steps
+## <a name="next-steps"></a>Next steps
 
 To get started quickly with your first request, see [Making Your First Query](./quick-start.md).
 

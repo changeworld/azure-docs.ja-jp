@@ -15,10 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 04/05/2017
 ms.author: markgal;trinadhk
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: b179588d29c5dd8cc5bd2469e7f1dfe669027eca
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 6b90f0232d0fc527d0232a19f9251519250687f0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -144,8 +145,8 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
 
 
-## <a name="backup-azure-vms"></a>Azure VM のバックアップ
-これで Recovery Services コンテナーが作成されました。このコンテナーを使用して仮想マシンを保護できます。 ただし、保護を行う前に、コンテナーのコンテキストを設定し、保護ポリシーを確認する必要があります。 コンテナーのコンテキストは、コンテナーで保護されるデータの種類を定義するものです。 保護ポリシーは、バックアップ ジョブが実行される時間と各バックアップ スナップショットの保持期間を設定するためのスケジュールです。
+## <a name="back-up-azure-vms"></a>Azure VM のバックアップ
+新しい Recovery Services コンテナーを使用して仮想マシンを保護します。 保護を適用する前に、資格情報コンテナーのコンテキスト (資格情報コンテナーで保護されているデータの種類) を設定し、保護ポリシーを確認します。 保護ポリシーは、バックアップ ジョブが実行される時間と各バックアップ スナップショットの保持期間を設定するスケジュールです。
 
 VM に対する保護を有効にする前に、資格情報コンテナーのコンテキストを設定する必要があります。 設定したコンテキストは、この後のすべてのコマンドレットに適用されます。
 
@@ -310,7 +311,7 @@ BackupManagementType        : AzureVM
 
 
 ### <a name="restore-the-disks"></a>ディスクの復元
-**[Restore-AzureRmRecoveryServicesBackupItem](https://msdn.microsoft.com/library/mt723316.aspx)** コマンドレットを使用して、復旧ポイントまでバックアップ項目のデータと構成を復元します。 復旧ポイントの特定が終わったら、その復旧ポイントを **-RecoveryPoint** パラメーターの値として使用します。 前のコード例では、使用する復旧ポイントとして **$rp[0]** が選択されていました。 次のコード例では、 **$rp[0]** は、ディスクの復元に使用する復旧ポイントとして指定されています。
+**[Restore-AzureRmRecoveryServicesBackupItem](https://msdn.microsoft.com/library/mt723316.aspx)** コマンドレットを使用して、復旧ポイントまでバックアップ項目のデータと構成を復元します。 復旧ポイントの特定が終わったら、その復旧ポイントを **-RecoveryPoint** パラメーターの値として使用します。 前のサンプル コードでは、使用する復旧ポイントとして **$rp[0]** が選択されていました。 次のサンプル コードでは、 **$rp[0]** をディスクの復元に使用する復旧ポイントとして指定しています。
 
 ディスクと構成情報を復元するには
 
@@ -341,18 +342,19 @@ PS C:\> $details = Get-AzureRmRecoveryServicesBackupJobDetails -Job $restorejob
 ディスクの復元が完了したら、次の手順を使用してディスクから仮想マシンを作成し、構成します。
 
 > [!NOTE]
-> 復元されたディスクを使用して暗号化された VM を作成する場合は、ロールに **Microsoft.KeyVault/vaults/deploy/action** の実行が許可されている必要があります。 ロールにこのアクセス許可がない場合は、この操作でカスタム ロールを作成します。 詳細については、「[Azure RBAC のカスタム ロール](../active-directory/role-based-access-control-custom-roles.md)を参照してください。
+> 復元されたディスクを使用して暗号化された VM を作成する場合は、Azure のロールに **Microsoft.KeyVault/vaults/deploy/action** の実行が許可されている必要があります。 ロールにこのアクセス許可がない場合は、この操作でカスタム ロールを作成します。 詳細については、「[Azure RBAC のカスタム ロール](../active-directory/role-based-access-control-custom-roles.md)」を参照してください。
 >
 >
 
 1. 復元されたディスクのプロパティに対し、ジョブの詳細を照会します。
 
-    ```
-    PS C:\> $properties = $details.properties
-    PS C:\> $storageAccountName = $properties["Target Storage Account Name"]
-    PS C:\> $containerName = $properties["Config Blob Container Name"]
-    PS C:\> $blobName = $properties["Config Blob Name"]
-    ```
+  ```
+  PS C:\> $properties = $details.properties
+  PS C:\> $storageAccountName = $properties["Target Storage Account Name"]
+  PS C:\> $containerName = $properties["Config Blob Container Name"]
+  PS C:\> $blobName = $properties["Config Blob Name"]
+  ```
+
 2. Azure Storage コンテキストを設定し、JSON 構成ファイルを復元します。
 
     ```
@@ -361,30 +363,37 @@ PS C:\> $details = Get-AzureRmRecoveryServicesBackupJobDetails -Job $restorejob
     PS C:\> Get-AzureStorageBlobContent -Container $containerName -Blob $blobName -Destination $destination_path
     PS C:\> $obj = ((Get-Content -Path $destination_path -Raw -Encoding Unicode)).TrimEnd([char]0x00) | ConvertFrom-Json
     ```
+
 3. JSON 構成ファイルを使用して VM 構成を作成します。
 
     ```
    PS C:\> $vm = New-AzureRmVMConfig -VMSize $obj.HardwareProfile.VirtualMachineSize -VMName "testrestore"
     ```
+
 4. OS ディスクとデータ ディスクを接続します。
 
-      暗号化されていない VM の場合
+  暗号化されていない VM の場合
 
-      ```
-      PS C:\> Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.StorageProfile.OSDisk.VirtualHardDisk.Uri -CreateOption “Attach”
-      PS C:\> $vm.StorageProfile.OsDisk.OsType = $obj.StorageProfile.OSDisk.OperatingSystemType
-      PS C:\> foreach($dd in $obj.StorageProfile.DataDisks)
-       {
-       $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.VirtualHardDisk.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption Attach
-       }
-       ```
-       
-      For encrypted VMs, you need to specify [Key vault information](https://msdn.microsoft.com/library/dn868052.aspx) before you can attach disks.
+    ```
+    PS C:\> Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.StorageProfile.OSDisk.VirtualHardDisk.Uri -CreateOption “Attach”
+    PS C:\> $vm.StorageProfile.OsDisk.OsType = $obj.StorageProfile.OSDisk.OperatingSystemType
+    PS C:\> foreach($dd in $obj.StorageProfile.DataDisks)
+     {
+     $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.VirtualHardDisk.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption Attach
+     }
+    ```
 
-      ```
-      PS C:\> Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.StorageProfile.OSDisk.VirtualHardDisk.Uri -DiskEncryptionKeyUrl "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007" -DiskEncryptionKeyVaultId "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault" -KeyEncryptionKeyUrl "https://ContosoKeyVault.vault.azure.net:443/keys/ContosoKey007" -KeyEncryptionKeyVaultId "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault" -CreateOption "Attach" -Windows    PS C:\> $vm.StorageProfile.OsDisk.OsType = $obj.StorageProfile.OSDisk.OperatingSystemType    PS C:\> foreach($dd in $obj.StorageProfile.DataDisks)     {     $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.VirtualHardDisk.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption Attach     }
-       ```
-       
+    暗号化されている VM の場合は、ディスクをアタッチする前に [キー コンテナーの情報](https://msdn.microsoft.com/library/dn868052.aspx) を指定する必要があります。
+
+    ```
+    PS C:\> Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.StorageProfile.OSDisk.VirtualHardDisk.Uri -DiskEncryptionKeyUrl "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007" -DiskEncryptionKeyVaultId "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault" -KeyEncryptionKeyUrl "https://ContosoKeyVault.vault.azure.net:443/keys/ContosoKey007" -KeyEncryptionKeyVaultId "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault" -CreateOption "Attach" -Windows
+    PS C:\> $vm.StorageProfile.OsDisk.OsType = $obj.StorageProfile.OSDisk.OperatingSystemType
+    PS C:\> foreach($dd in $obj.StorageProfile.DataDisks)
+     {
+     $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.VirtualHardDisk.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption Attach
+     }
+    ```
+
 5. ネットワーク設定を設定します。
 
     ```
@@ -401,5 +410,5 @@ PS C:\> $details = Get-AzureRmRecoveryServicesBackupJobDetails -Job $restorejob
     ```
 
 ## <a name="next-steps"></a>次のステップ
-PowerShell を使用して Azure リソースを操作する場合は、Windows Server の保護について記載されている、[Windows Server のバックアップのデプロイと管理](backup-client-automation.md)に関する PowerShell の記事をご覧ください。 [DPM のバックアップのデプロイと管理](backup-dpm-automation.md)に関する PowerShell の記事で、DPM バックアップの管理について確認することもできます。 両方の記事で、Resource Manager デプロイとクラシック デプロイの両方のモデルについて説明しています。  
+PowerShell を使用して Azure リソースを操作する場合は、[Windows Server のバックアップのデプロイと管理](backup-client-automation.md)に関する PowerShell の記事をご覧ください。 [DPM のバックアップのデプロイと管理](backup-dpm-automation.md)に関する PowerShell の記事で、DPM バックアップの管理について確認することもできます。 両方の記事で、Resource Manager デプロイとクラシック デプロイの両方のモデルについて説明しています。  
 

@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 04/26/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 1fcec43ad50b9c78443ada116b9ca444605c4730
-ms.openlocfilehash: fa2a2f8ee61b6edf92db8d1f92ab9aca8bc673c5
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: b0454ad51a2d0edecb6f7e7748ec3b74eeefa1da
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/28/2017
 
 ---
 
@@ -58,9 +60,4 @@ Azure Active Directory アプリケーション プロキシを使用してオ�
 ## <a name="next-steps"></a>次のステップ
 
 [アプリケーション プロキシを使用したシングル サインオン](active-directory-application-proxy-sso-using-kcd.md)を実装するための他の方法を参照します。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

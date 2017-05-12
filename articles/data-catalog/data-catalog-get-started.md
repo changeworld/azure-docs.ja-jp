@@ -15,9 +15,10 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 05/03/2017
 ms.author: spelluru
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2b128e2771ea89d1c0d6b8d52357d1bcc993115a
 ms.openlocfilehash: a9629d0a4bfc44f5d035a29f8e97d76922cc0060
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/16/2017
 
 
@@ -29,7 +30,7 @@ Azure Data Catalog は、完全に管理されたクラウド サービスで、
 
 | 手順 | 説明 |
 |:--- |:--- |
-| [データ カタログのプロビジョニング](#provision-data-catalog) |この手順では、Azure Data Catalog をプロビジョニングまたはセットアップします。 この手順は、これまでにカタログを設定したことがない場合のみ実行します。 Azure アカウントに関連付けられているサブスクリプションが複数ある場合でも、持つことができるデータ カタログは組織 (Microsoft Azure Active Directory ドメイン) ごとに&1; つだけです。 |
+| [データ カタログのプロビジョニング](#provision-data-catalog) |この手順では、Azure Data Catalog をプロビジョニングまたはセットアップします。 この手順は、これまでにカタログを設定したことがない場合のみ実行します。 Azure アカウントに関連付けられているサブスクリプションが複数ある場合でも、持つことができるデータ カタログは組織 (Microsoft Azure Active Directory ドメイン) ごとに 1 つだけです。 |
 | [データ資産の登録](#register-data-assets) |この手順では、AdventureWorks2014 サンプル データベースのデータ資産をデータ カタログに登録します。 登録とは、データ ソースから重要な構造メタデータ (名前、型、場所など) を抽出し、そのメタデータをカタログにコピーするプロセスです。 データ ソースとデータ資産はそのままの場所に残りますが、メタデータは、それらを簡単に検出して理解できるようにカタログで使用されます。 |
 | [データ資産の検出](#discover-data-assets) |この手順では、Azure Data Catalog ポータルを使用して、前の手順で登録したデータ資産を検出します。 データ ソースが Azure Data Catalog に登録されると、そのメタデータにはサービスによってインデックスが付けられます。これにより、ユーザーは必要なデータを簡単に検索できるようになります。 |
 | [データ資産への注釈付け](#annotate-data-assets) |この手順では、データ資産に注釈 (説明、タグ、ドキュメント、エキスパートなどの情報) を指定します。 この情報は、データ ソースから抽出されたメタデータを補足し、より多くの人がデータ ソースについて理解できるようにします。 |
@@ -62,7 +63,7 @@ Azure Data Catalog ポータルにはサインインできるものの、デー�
 詳細については、「 [認証ポリシーの構成](https://technet.microsoft.com/library/dn486781.aspx)」を参照してください。
 
 ## <a name="provision-data-catalog"></a>データ カタログのプロビジョニング
-組織 (Azure Active Directory ドメイン) ごとにプロビジョニングできるデータ カタログは&1; つだけです。 そのため、この Azure Active Directory ドメインに属している、Azure サブスクリプションの所有者または共同所有者が既にカタログを作成している場合、複数の Azure サブスクリプションを所有していても、もう一度カタログを作成することはできません。 データ カタログが Azure Active Directory ドメイン内のユーザーによって作成されているかどうかをテストするには、 [Azure Data Catalog ホーム ページ](http://azuredatacatalog.com) に移動し、カタログが表示されるかどうかを確認してください。 カタログが既に作成されている場合は、以下の手順をスキップし、次のセクションに進んでください。    
+組織 (Azure Active Directory ドメイン) ごとにプロビジョニングできるデータ カタログは 1 つだけです。 そのため、この Azure Active Directory ドメインに属している、Azure サブスクリプションの所有者または共同所有者が既にカタログを作成している場合、複数の Azure サブスクリプションを所有していても、もう一度カタログを作成することはできません。 データ カタログが Azure Active Directory ドメイン内のユーザーによって作成されているかどうかをテストするには、 [Azure Data Catalog ホーム ページ](http://azuredatacatalog.com) に移動し、カタログが表示されるかどうかを確認してください。 カタログが既に作成されている場合は、以下の手順をスキップし、次のセクションに進んでください。    
 
 1. [Data Catalog サービス ページ](https://azure.microsoft.com/services/data-catalog) に移動し、 **[はじめる]**をクリックします。
    
@@ -156,7 +157,7 @@ Adventure Works サンプル データベースのインストール方法を次
 この演習では、組織全体のユーザーがオブジェクトを簡単に検出できるように、Adventure Works サンプル データベースからオブジェクトを登録しました。 次の演習では、登録されているデータ資産を検出する方法を学習します。
 
 ## <a name="discover-data-assets"></a>データ資産の検出
-Azure Data Catalog での検出では、検索とフィルター処理という&2; つの主要なメカニズムを使用します。
+Azure Data Catalog での検出では、検索とフィルター処理という 2 つの主要なメカニズムを使用します。
 
 検索は、直感的かつ強力な検出方法です。 既定では、検索語句はカタログ内の任意のプロパティと照合されます (ユーザーが指定した注釈を含む)。
 
@@ -169,13 +170,13 @@ Azure Data Catalog での検出では、検索とフィルター処理という&
 カタログ内のデータ資産の検出方法について、いくつかの例を以下に示します。  
 
 ### <a name="discover-data-assets-with-basic-search"></a>基本的な検索を使用したデータ資産の検出
-基本的な検索では、1 つ以上の検索語句を使用してカタログを検索できます。 任意のプロパティで、指定した&1; つまたは複数の語句と一致する任意の資産が返されます。
+基本的な検索では、1 つ以上の検索語句を使用してカタログを検索できます。 任意のプロパティで、指定した 1 つまたは複数の語句と一致する任意の資産が返されます。
 
 1. Azure Data Catalog ポータルの **[ホーム]** をクリックします。 Web ブラウザーを閉じた場合は、もう一度開いて [Azure Data Catalog ホーム ページ](https://www.azuredatacatalog.com)に移動します。
 2. 検索ボックスに「 `cycles` 」と入力し、 **Enter**キーを押します。
    
     ![Azure Data Catalog--basic text search](media/data-catalog-get-started/data-catalog-basic-text-search.png)
-3. 結果に&4; つのテーブルとデータベース (AdventureWorks2014) が表示されることを確認します。 以下の画像に示すように、ツール バーのボタンをクリックすることで、**グリッド ビュー**と**リスト ビュー**を切り替えることができます。 **[ハイライト]** オプションが**オン**になっているため、検索結果内で検索キーワードが強調表示されています。 検索結果で、 **ページごとの結果** の数を指定することもできます。
+3. 結果に 4 つのテーブルとデータベース (AdventureWorks2014) が表示されることを確認します。 以下の画像に示すように、ツール バーのボタンをクリックすることで、**グリッド ビュー**と**リスト ビュー**を切り替えることができます。 **[ハイライト]** オプションが**オン**になっているため、検索結果内で検索キーワードが強調表示されています。 検索結果で、 **ページごとの結果** の数を指定することもできます。
    
     ![Azure Data Catalog--basic text search results](media/data-catalog-get-started/data-catalog-basic-text-search-results.png)
    
@@ -196,7 +197,7 @@ Azure Data Catalog での検出では、検索とフィルター処理という&
 
 1. **[フィルター]** で、**[オブジェクトの種類]** の **[テーブル]** フィルターをオフにします。  
 2. 検索ボックスに「 `tags:cycles` 」と入力し、 **Enter**キーを押します。 データ カタログの検索に使用できるすべてのプロパティについては、「 [Data Catalog Search syntax reference (Data Catalog の検索構文のリファレンス)](https://msdn.microsoft.com/library/azure/mt267594.aspx) 」を参照してください。
-3. 結果に&4; つのテーブルとデータベース (AdventureWorks2014) が表示されることを確認します。  
+3. 結果に 4 つのテーブルとデータベース (AdventureWorks2014) が表示されることを確認します。  
    
     ![Data Catalog--property scoping search results](media/data-catalog-get-started/data-catalog-property-scoping-results.png)
 

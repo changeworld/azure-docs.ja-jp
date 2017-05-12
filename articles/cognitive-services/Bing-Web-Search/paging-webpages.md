@@ -10,14 +10,15 @@ ms.technology: bing-web-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 6e5831956fb457e572373d1e40e221ea2f8ac794
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 40a3921e4eddcb228b71f8353b656fd0de4ca69e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 
-# <a name="paging-webpages"></a>Paging Webpages 
+# <a name="paging-webpages"></a>Paging webpages 
 
 When you call the Web Search API, Bing returns a list of results. The list is a subset of the total number of results that may be relevant to the query. To get the estimated total number of available results, access the answer object's [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v5-reference#totalestimatedmatches) field.  
   
@@ -51,7 +52,7 @@ Host: api.cognitive.microsoft.com
 ```  
 
 > [!NOTE]
-> Version 7 Preview request:
+> V7 Preview request:
 
 > ```  
 > GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&count=15&offset=45&mkt=en-us HTTP/1.1  
@@ -68,7 +69,7 @@ Host: api.cognitive.microsoft.com
 ```  
 
 > [!NOTE]
-> Version 7 Preview request:
+> V7 Preview request:
 
 > ```  
 > GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&offset=45&mkt=en-us HTTP/1.1  

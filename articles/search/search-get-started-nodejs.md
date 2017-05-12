@@ -1,6 +1,6 @@
 ---
-title: "NodeJS での Azure Search の使用 | Microsoft Docs"
-description: "プログラミング言語として NodeJS を使用して Azure でホスト型クラウド検索アプリケーションを作成する手順を示します。"
+title: "Node.js での Azure Search の使用 | Microsoft Docs"
+description: "プログラミング言語として Node.js を使用して Azure のホスト型クラウド検索サービスに基づいた検索アプリケーションを作成する手順を示します。"
 services: search
 documentationcenter: 
 author: EvanBoyle
@@ -12,24 +12,26 @@ ms.devlang: na
 ms.workload: search
 ms.topic: hero-article
 ms.tgt_pltfrm: na
-ms.date: 07/14/2016
+ms.date: 04/26/2017
 ms.author: evboyle
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8a66c8f6079671b16c1c60467e6d458ed54be5af
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 32865ed986f5eea961ef2c3813dcc6531498c90a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
-# <a name="get-started-with-azure-search-in-nodejs"></a>NodeJS での Azure Search の使用
+# <a name="get-started-with-azure-search-in-nodejs"></a>Node.js での Azure Search の使用
 > [!div class="op_single_selector"]
 > * [ポータル](search-get-started-portal.md)
 > * [.NET](search-howto-dotnet-sdk.md)
 > 
 > 
 
-検索エクスペリエンスとして Azure Search を使用するカスタム NodeJS 検索アプリケーションを作成する方法を説明します。 このチュートリアルでは、 [Azure Search サービス REST API](https://msdn.microsoft.com/library/dn798935.aspx) を使用して、この演習で使用するオブジェクトおよび操作を作成します。
+検索エクスペリエンスとして Azure Search を使用するカスタム Node.js 検索アプリケーションを作成する方法を説明します。 このチュートリアルでは、 [Azure Search サービス REST API](https://msdn.microsoft.com/library/dn798935.aspx) を使用して、この演習で使用するオブジェクトおよび操作を作成します。
 
-[NodeJS](https://nodejs.org) と NPM、[Sublime Text 3](http://www.sublimetext.com/3)、および Windows 8.1 の Windows PowerShell を使用して、このコードを開発しテストしました。
+[Node.js](https://Nodejs.org) と NPM、[Sublime Text 3](http://www.sublimetext.com/3)、および Windows 8.1 の Windows PowerShell を使用して、このコードを開発しテストしました。
 
 このサンプルを実行するには、Azure Search サービスが必要です。このサービスには、[Azure Portal](https://portal.azure.com) でサインアップできます。 詳しい手順については、[ポータルでの Azure Search サービスの作成](search-create-service-portal.md)に関するページを参照してください。
 
@@ -45,26 +47,24 @@ ms.openlocfilehash: 8a66c8f6079671b16c1c60467e6d458ed54be5af
 
 <a id="sub-2"></a>
 
-## <a name="find-the-service-name-and-apikey-of-your-azure-search-service"></a>Azure Search サービスのサービス名と API キーの取得
+## <a name="find-the-service-name-and-api-key-of-your-azure-search-service"></a>Azure Search サービスのサービス名と API キーの取得
 サービスを作成したら、ポータルに戻って URL または `api-key`を取得します。 Search サービスに接続するには、URL に加えて、呼び出しを認証するための `api-key` が必要になります。
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. ジャンプ バーで、 **[Search サービス]** をクリックして、サブスクリプション用にプロビジョニングされたすべての Azure Search サービスの一覧を表示します。
+2. ジャンプ バーで、**[Search サービス]** をクリックして、サブスクリプション用にプロビジョニングされたすべての Azure Search サービスの一覧を表示します。
 3. 使用するサービスを選択します。
 4. サービスのダッシュボードには、基本情報のタイルのほか、管理者キーにアクセスするためのキー アイコンが表示されます。
-   
-      ![][3]
 5. サービスの URL、管理キー、クエリ キーをコピーします。 後で config.js ファイルに追加するときにこれら 3 つがすべて必要になります。
 
 ## <a name="download-the-sample-files"></a>サンプル ファイルのダウンロード
 次のいずれかの方法を使用してサンプルをダウンロードします。
 
-1. [AzureSearchNodeJSIndexerDemo](https://github.com/AzureSearch/AzureSearchNodeJSIndexerDemo)に移動します。
+1. [AzureSearchNodeJSIndexerDemo](https://github.com/AzureSearch/AzureSearchNodejsIndexerDemo)に移動します。
 2. **[Download ZIP]**をクリックして .zip ファイルを保存した後、すべてのファイルをコンテナーに抽出します。
 
 以降のすべてのファイル変更および実行ステートメントは、このフォルダー内のファイルに対して行われます。
 
-## <a name="update-the-configjs-with-your-search-service-url-and-apikey"></a>config.js の更新  (Search サービスの URL と API キーを使用)
+## <a name="update-the-configjs-with-your-search-service-url-and-api-key"></a>config.js の更新  (Search サービスの URL と API キーを使用)
 先にコピーした URL と API キーを使用し、構成ファイルで URL、管理キー、クエリ キーを指定します。
 
 管理キーは、インデックスの作成または削除やドキュメントの読み込みなど、サービス操作に対する完全な制御を付与します。 これに対し、クエリ キーは読み取り専用の操作用であり、通常は、Azure Search に接続するクライアント アプリケーションによって使用されます。
@@ -93,7 +93,7 @@ PowerShell ウィンドウを使用して次のコマンドを実行します。
 ## <a name="search-on-usgs-data"></a>USGS データの検索
 USGS データ セットには、ロードアイランド州に関連するレコードが含まれています。 検索ボックスが空の状態で **[Search]** をクリックすると、既定で、上位 50 のエントリが取得されます。
 
-検索語句を入力すると、検索エンジンに処理するものが提供されます。 地域の名前を入力してみてください。 "Roger Williams" はロードアイランド州の最初の州知事でした。 多数の公園、建造物、および学校に彼の名前が付けられています。
+検索語句を入力すると、検索エンジンに処理するものが渡されます。 地域の名前を入力してみてください。 "Roger Williams" はロードアイランド州の最初の州知事でした。 多数の公園、建造物、および学校に彼の名前が付けられています。
 
 ![][9]
 
@@ -104,21 +104,16 @@ USGS データ セットには、ロードアイランド州に関連するレ�
 * goose +cape
 
 ## <a name="next-steps"></a>次のステップ
-これは、NodeJS と USGS データセットに基づく最初の Azure Search チュートリアルです。 カスタム ソリューションで使用できる他の検索機能を紹介できるように、時間をかけてこのチュートリアルを拡張する予定です。
+これは、Node.js と USGS データセットに基づく最初の Azure Search チュートリアルです。 カスタム ソリューションで使用できる他の検索機能を紹介できるように、時間をかけてこのチュートリアルを拡張する予定です。
 
 Azure Search についての知識が既にある場合は、このサンプルを基にして、サジェスター (先行入力またはオートコンプリート クエリ)、フィルター、ファセット ナビゲーションなどを試すことができます。 また、件数を追加してドキュメントを一括処理することで検索結果の表示を改善し、ユーザーが結果をページ移動できるようにすることもできます。
 
 Azure Search を初めて使用する場合は、 他のチュートリアルも試して、作成できるものについての理解を深めることをお勧めします。 他のリソースについては、[ドキュメントのページ](https://azure.microsoft.com/documentation/services/search/)を参照してください。 [ビデオとチュートリアルの一覧](search-video-demo-tutorial-list.md)のリンクから、さらに多くの情報にアクセスすることもできます。
 
 <!--Image references-->
-[1]: ./media/search-get-started-nodejs/create-search-portal-1.PNG
-[2]: ./media/search-get-started-nodejs/create-search-portal-2.PNG
-[3]: ./media/search-get-started-nodejs/create-search-portal-3.PNG
-[5]: ./media/search-get-started-nodejs/AzSearch-NodeJS-configjs.png
-[9]: ./media/search-get-started-nodejs/rogerwilliamsschool.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+[1]: ./media/search-get-started-Nodejs/create-search-portal-1.PNG
+[2]: ./media/search-get-started-Nodejs/create-search-portal-2.PNG
+[3]: ./media/search-get-started-Nodejs/create-search-portal-3.PNG
+[5]: ./media/search-get-started-Nodejs/AzSearch-Nodejs-configjs.png
+[9]: ./media/search-get-started-Nodejs/rogerwilliamsschool.png
 

@@ -15,9 +15,10 @@ ms.tgt_pltfrm: NA
 ms.workload: sql-database
 ms.date: 10/12/2016
 ms.author: bonova
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
 ms.openlocfilehash: 3870a6ddb8c40a619e3aa6ed1a040f2070e2598c
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/20/2017
 
 

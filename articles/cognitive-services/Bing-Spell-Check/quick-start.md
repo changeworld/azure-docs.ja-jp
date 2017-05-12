@@ -10,14 +10,15 @@ ms.technology: bing-spell-check
 ms.topic: article
 ms.date: 06/21/2016
 ms.author: scottwhi
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: b49dc764ec2fe0cf587dfdd2024f790ebef153a2
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: b913f044017f27f56533475f428f5ede4eb58ae3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 
-# <a name="your-first-spell-check-request"></a>Your First Spell Check Request
+# <a name="your-first-spell-check-request"></a>Your first spell check request
 
 Before you can make your first call, you need to get a Cognitive Services subscription key. To get a key, see [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api).
 
@@ -28,7 +29,7 @@ https://api.cognitive.microsoft.com/bing/v5.0/spellcheck
 ```
 
 > [!NOTE]
-> Version 7 Preview endpoint:
+> V7 Preview endpoint:
 > 
 > ```
 > https://api.cognitive.microsoft.com/bing/v7.0/spellcheck
@@ -47,7 +48,7 @@ The request must specify the [Ocp-Apim-Subscription-Key](https://docs.microsoft.
 
 For a list of all request and response headers, see [Headers](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v5-reference#headers).
 
-## <a name="the-request"></a>The Request
+## <a name="the-request"></a>The request
 
 The following shows a request that includes all the suggested query parameters and headers. If it's your first time calling any of the Bing APIs, don't include the client ID header. Only include the client ID if you've previously called a Bing API and Bing returned a client ID for the user and device combination. 
   
@@ -62,7 +63,7 @@ Host: api.cognitive.microsoft.com
 ```  
 
 > [!NOTE]
-> Version 7 Preview request:
+> V7 Preview request:
 
 > ```  
 > GET https://api.cognitive.microsoft.com/bing/v7.0/spellcheck?text=when+its+your+turn+turn,+john,+come+runing&mkt=en-us HTTP/1.1
@@ -122,10 +123,10 @@ BingAPIs-Market: en-US
 ```  
 
 
-## <a name="next-steps"></a>Next Steps
+## <a name="next-steps"></a>Next steps
 
 Try out the API. Go to [Spell Check API Testing Console](https://dev.cognitive.microsoft.com/docs/services/56e73033cf5ff80c2008c679/operations/57855119bca1df1c647bc358). 
 
-For details about consuming the response objects, see [Proofing Text Strings](./proof-text.md).
+For details about consuming the response objects, see [Spell check text strings](./proof-text.md).
 
 

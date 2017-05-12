@@ -9,10 +9,11 @@ ms.technology: face
 ms.topic: article
 ms.date: 02/24/2017
 ms.author: anroth
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: c8f47c62d86c8066d02813d387065d9dadf087b8
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 4e76b3318857fb4b359c362efc19b6b8c89bfff3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 ---
 
@@ -32,7 +33,7 @@ To use the tutorial, you will need to do the following:
 pip install cognitive_face
 ```
 
-- Obtain a [subscription key](https://www.microsoft.com/cognitive-services/en-us/sign-up) for Microsoft Cognitive Services (formerly Project Oxford). You can use either your primary or your secondary key in this tutorial. (Note that to use any Face API, you must have a valid subscription key.)
+- Obtain a [subscription key](https://azure.microsoft.com/en-us/try/cognitive-services/) for Microsoft Cognitive Services. You can use either your primary or your secondary key in this tutorial. (Note that to use any Face API, you must have a valid subscription key.)
 
 ## <a name="sdk-example"></a> Detect a Face in an Image
 

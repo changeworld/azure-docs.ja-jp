@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/31/2017
+ms.date: 05/10/2017
 ms.author: nitinme
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f33ccee7dd520adf074856616005c929040116dd
 ms.openlocfilehash: 091ab246826c96b9d816c87b27014c1e54039429
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/01/2017
 
 
 ---
@@ -147,10 +149,5 @@ filesystemClient.fileSystem.listFileStatus(accountName, pathToEnumerate, functio
 ## <a name="see-also"></a>関連項目
 * [Microsoft Azure SDK for Node.js](https://github.com/azure/azure-sdk-for-node)
 * [Microsoft Azure SDK for Node.js - Data Lake Analytics の管理](https://www.npmjs.com/package/azure-arm-datalake-analytics)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

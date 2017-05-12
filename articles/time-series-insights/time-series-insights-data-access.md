@@ -5,7 +5,7 @@ keywords:
 services: time-series-insights
 documentationcenter: 
 author: op-ravi
-manager: santoshb
+manager: jhubbard
 editor: cgronlun
 ms.assetid: 
 ms.service: time-series-insights
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/21/2017
+ms.date: 05/01/2017
 ms.author: omravi
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 5e9ee102c0375c8c1ac0e0ff6bc93989115b7cfa
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 143d48b9fc551ade0d0fd043cdb0cf1f3340a9af
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/02/2017
 
 ---
 
@@ -29,7 +30,7 @@ Time Series Insights 環境には、2 種類の独立したアクセス ポリ�
 * 管理アクセス ポリシー
 * データ アクセス ポリシー
 
-どちらの種類のポリシーでも、特定の環境に対するさまざまなアクセス許可が Azure Active Directory プリンシパル (ユーザーおよびアプリ) に付与されます。 このプリンシパル (ユーザーおよびアプリ) は、その環境が含まれているサブスクリプションに関連付けられたアクティブなディレクトリ (つまり "Azure テナント") に属している必要があります。
+どちらのポリシーでも、特定の環境に対するさまざまなアクセス許可が Azure Active Directory プリンシパル (ユーザーおよびアプリ) に付与されます。 このプリンシパル (ユーザーおよびアプリ) は、その環境が含まれているサブスクリプションに関連付けられたアクティブなディレクトリ (つまり "Azure テナント") に属している必要があります。
 
 管理アクセス ポリシーは、次のような、環境の構成に関連したアクセス許可を付与します。
 *    環境、イベント ソース、参照データ セットの作成と削除。
@@ -39,6 +40,7 @@ Time Series Insights 環境には、2 種類の独立したアクセス ポリ�
 
 この 2 種類のポリシーにより、環境の管理へのアクセスと環境内のデータへのアクセスを明確に分離できます。 たとえば、環境の所有者または作成者がデータ アクセスから除外されるように環境を設定することが可能です。 また、環境からのデータの読み取りを許可されているユーザーとサービスに環境の構成へのアクセスを許可しないことも可能です。
 
+## <a name="grant-data-access"></a>データ アクセスの許可
 次の手順では、ユーザー プリンシパルにデータ アクセスを許可する方法を示します。
 
 1.    [Azure Portal](https://portal.azure.com) にサインインします。

@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2015
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1e680679086d54a2c6b10be7635e997ac61bacd5
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 8f1c94ae5389739e03a7b1a70421e538516c873f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -33,11 +35,9 @@ ms.openlocfilehash: 1e680679086d54a2c6b10be7635e997ac61bacd5
 > 
 
 ## <a name="scaling-manually"></a>手動によるスケール変更
-1. [Azure Portal](https://portal.azure.com/) で、**[参照]** をクリックし、**App Service プラン**など、スケール変更するリソースに移動します。
-2. **[操作]** の **[スケール]** タイルには、スケール変更の状態が表示されます。手動でスケール変更している場合は "**オフ**"、1 つ以上のパフォーマンス メトリックでスケールを変更している場合は "**オン**" と表示されます。
-   
-    ![Scale tile](./media/insights-how-to-scale/Insights_UsageLens.png)
-3. このタイルをクリックすると、 **[スケール]** ブレードに移動します。 [スケール] ブレードの上部には、サービスに対する自動スケール アクションの履歴が表示されます。
+1. [Azure Portal](https://portal.azure.com/) で、**[参照]** をクリックし、**[App Service プラン]** など、スケール変更するリソースに移動します。
+2. **[設定] > [スケール アウト (App Service のプラン)]** をクリックします。
+3. **[スケール]** ブレードの上部に、サービスに対する自動スケール アクションの履歴が表示されます。
    
     ![[スケール] ブレード](./media/insights-how-to-scale/Insights_ScaleBladeDayZero.png)
    
@@ -129,10 +129,5 @@ ms.openlocfilehash: 1e680679086d54a2c6b10be7635e997ac61bacd5
 * [アプリケーションのパフォーマンスを監視](../application-insights/app-insights-azure-web-apps.md) します。
 * [イベントとアクティビティ ログを表示](insights-debugging-with-events.md)して、サービスで発生したすべてのことを理解します。
 * [Web ページの可用性と応答性を監視](../application-insights/app-insights-monitor-web-app-availability.md) すると、ページがダウンしているかどうかを検出できます。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

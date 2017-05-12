@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: raynew
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
 ms.openlocfilehash: e093b78980f5f1aacfdf7be278ef58906eedc634
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/25/2017
 
 

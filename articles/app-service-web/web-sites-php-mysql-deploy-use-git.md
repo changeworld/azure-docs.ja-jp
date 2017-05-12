@@ -15,9 +15,10 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 1b1da346a253443c0b5eaf6f8a9a5a399923e760
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/20/2017
 
 
@@ -83,7 +84,7 @@ Web Apps で実行されている MySQL データベースに接続するには�
 ## <a name="build-and-test-your-app-locally"></a>アプリケーションの作成とローカル テスト
 Web アプリを作成したので、アプリケーションをローカルで作成し、それをテストした後にデプロイすることができます。
 
-Registration アプリケーションは、名前と電子メール アドレスを入力してイベントに登録するための、単純な PHP アプリケーションです。 それまでの登録者情報がテーブルに表示されます。 登録情報は MySQL データベースに保存されます。 アプリケーションを構成するファイルは&1; つです (下にあるコードをコピーし、貼り付けて使用できます)。
+Registration アプリケーションは、名前と電子メール アドレスを入力してイベントに登録するための、単純な PHP アプリケーションです。 それまでの登録者情報がテーブルに表示されます。 登録情報は MySQL データベースに保存されます。 アプリケーションを構成するファイルは 1 つです (下にあるコードをコピーし、貼り付けて使用できます)。
 
 * **index.php**: 登録用のフォームと登録者情報が含まれたテーブルを表示します。
 

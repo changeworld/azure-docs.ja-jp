@@ -15,10 +15,11 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/12/2016
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 119275f335344858cd20b6a17ef87e3ef32b6e12
-ms.openlocfilehash: 8b72a3f26e356af588e9f5c2039bcc525366ce11
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 79e373a69f3b899dea1f10ac447a0284931648f4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -31,7 +32,7 @@ ms.lasthandoff: 03/01/2017
 > * [Azure Resource Manager テンプレート](application-gateway-create-gateway-arm-template.md)
 > * [Azure CLI](application-gateway-create-gateway-cli.md)
 
-Azure Application Gateway はレイヤー&7; のロード バランサーです。 クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。 Application Gateway は、HTTP 負荷分散、Cookie ベースのセッション アフィニティ、Secure Sockets Layer (SSL) オフロード、カスタムの正常性プローブ、マルチサイトのサポートなどの多くのアプリケーション配信コントローラー (ADC) 機能を備えています。 サポートされている機能の完全な一覧については、「 [Application Gateway の概要](application-gateway-introduction.md)
+Azure Application Gateway はレイヤー 7 のロード バランサーです。 クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。 Application Gateway は、HTTP 負荷分散、Cookie ベースのセッション アフィニティ、Secure Sockets Layer (SSL) オフロード、カスタムの正常性プローブ、マルチサイトのサポートなどの多くのアプリケーション配信コントローラー (ADC) 機能を備えています。 サポートされている機能の完全な一覧については、「 [Application Gateway の概要](application-gateway-introduction.md)
 
 この記事では、Application Gateway を作成、構成、起動、および削除する手順について説明します。
 
@@ -106,11 +107,11 @@ DnsName       :
 
 Application Gateway は、XML または構成オブジェクトを使用して構成できます。
 
-## <a name="configure-the-application-gateway-by-using-xml"></a>XML を使用して Application Gateway を構成する
+### <a name="configure-the-application-gateway-by-using-xml"></a>XML を使用して Application Gateway を構成する
 
 次の例では、XML ファイルを使用して、アプリケーション ゲートウェイの設定すべてを構成し、アプリケーション ゲートウェイのリソースにコミットします。  
 
-### <a name="step-1"></a>手順 1
+#### <a name="step-1"></a>手順 1
 
 次のテキストをメモ帳にコピーします。
 
@@ -211,7 +212,7 @@ Application Gateway は、XML または構成オブジェクトを使用して�
 </ApplicationGatewayConfiguration>
 ```
 
-### <a name="step-2"></a>手順 2.
+#### <a name="step-2"></a>手順 2.
 
 次に、Application Gateway を設定します。 `Set-AzureApplicationGatewayConfig` コマンドレットと構成 XML ファイルを使用してください。
 
@@ -219,14 +220,14 @@ Application Gateway は、XML または構成オブジェクトを使用して�
 Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile "D:\config.xml"
 ```
 
-## <a name="configure-the-application-gateway-by-using-a-configuration-object"></a>構成オブジェクトを使用して Application Gateway を構成する
+### <a name="configure-the-application-gateway-by-using-a-configuration-object"></a>構成オブジェクトを使用して Application Gateway を構成する
 
 次の例では、構成オブジェクトを使用して Application Gateway を構成する方法を示します。 すべての構成項目は個別に構成した後に、アプリケーション ゲートウェイの構成オブジェクトに追加する必要があります。 構成オブジェクトを作成したら、`Set-AzureApplicationGateway` コマンドを使用して、前の手順で作成したアプリケーション ゲートウェイのリソースに構成をコミットします。
 
 > [!NOTE]
 > 各構成オブジェクトに値を割り当てる前に、PowerShell でストレージとして使用するオブジェクトの種類を宣言する必要があります。 個々の項目を作成する最初の行では、どの `Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model(object name)` を使用するかを定義しています。
 
-### <a name="step-1"></a>手順 1
+#### <a name="step-1"></a>手順 1
 
 すべての個別の構成項目を作成します。
 
@@ -297,7 +298,7 @@ $rule.Listener = "listener1"
 $rule.BackendAddressPool = "pool1"
 ```
 
-### <a name="step-2"></a>手順 2.
+#### <a name="step-2"></a>手順 2.
 
 Application Gateway の構成オブジェクト ($appgwconfig) にすべての個別の構成項目を割り当てます。
 
@@ -385,7 +386,7 @@ Vip           : 138.91.170.26
 DnsName       : appgw-1b8402e8-3e0d-428d-b661-289c16c82101.cloudapp.net
 ```
 
-## <a name="delete-an-application-gateway"></a>Application Gateway の削除
+## <a name="delete-the-application-gateway"></a>Application Gateway の削除
 
 Application Gateway を削除するには:
 

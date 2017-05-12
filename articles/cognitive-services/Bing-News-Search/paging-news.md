@@ -6,20 +6,21 @@ author: swhite-msft
 manager: ehansen
 ms.assetid: EA388F72-FA43-493B-967C-9560B3243C62
 ms.service: cognitive-services
-ms.technology: bing-video-search
+ms.technology: bing-news-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 8a7f11d337beefd4e0d54bf1d911c03f14d3e30b
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: cdf9c1cf548d0e626cec227c1f2cf8307db7f258
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 
-# <a name="paging-news"></a>Paging News
+# <a name="paging-news"></a>Paging news
 
-When you call the News Search API, Bing returns a list of results. The list is a subset of the total number of results that may be relevant to the query. To get the estimated total number of available results, access the answer object's [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference#totalestimatedmatches) field.  
+When you call the News Search API, Bing returns a list of results. The list is a subset of the total number of results that may be relevant to the query. To get the estimated total number of available results, access the answer object's [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference#news-totalmatches) field.  
   
 The following example shows the `totalEstimatedMatches` field that a News answer includes.  
   
@@ -49,7 +50,7 @@ Host: api.cognitive.microsoft.com
 ```  
 
 > [!NOTE]
-> Version 7 Preview request:
+> V7 Preview request:
 
 > ```  
 > GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies&count=20&offset=40&mkt=en-us HTTP/1.1  
@@ -66,7 +67,7 @@ Host: api.cognitive.microsoft.com
 ```  
 
 > [!NOTE]
-> Version 7 Preview request:
+> V7 Preview request:
 
 > ```  
 > GET https://api.cognitive.microsoft.com/bing/v7.0/news/search??q=sailing+dinghies&offset=40&mkt=en-us HTTP/1.1  

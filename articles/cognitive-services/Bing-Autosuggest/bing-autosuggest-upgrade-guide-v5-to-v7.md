@@ -10,29 +10,26 @@ ms.technology: bing-autosuggest
 ms.topic: article
 ms.date: 01/12/2017
 ms.author: scottwhi
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 2638cfaa658beb8ac140daf69e0ee9521bb352a8
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 9a845a4a20dae843be9c29363bd0ee86de7dd5ad
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 
-# <a name="autosuggest-api-upgrade-guide"></a>Autosuggest API Upgrade Guide
+# <a name="autosuggest-api-upgrade-guide"></a>Autosuggest API upgrade guide
 
 > [!NOTE]
-> Version 7 is a Preview release. All aspects of the API and documentation are subject to change. Use only for testing in a non-production environment.
+> V7 is a Preview release. All aspects of the API and documentation are subject to change. Use only for testing in a non-production environment.
 
 This upgrade guide identifies the changes between version 5 and version 7 of the Bing Autosuggest API. Use this guide to help you identify the parts of your application that you need to update to use version 7.
 
-## <a name="subscription-keys"></a>Subscription Keys
-
-- Your version 5 paid and free trial subscription key will continue working with version 7.
-
-## <a name="breaking-changes"></a>Breaking Changes
+## <a name="breaking-changes"></a>Breaking changes
 
 ### <a name="endpoints"></a>Endpoints
 
-- The endpoint's version number changed from v5 to v7. For example, https://api.cognitive.microsoft.com/bing/\**v7.0**/autosuggest.
+- The endpoint's version number changed from v5 to v7. For example, https://api.cognitive.microsoft.com/bing/\*\*v7.0**/autosuggest.
 
 ### <a name="error-response-objects-and-error-codes"></a>Error response objects and error codes
 

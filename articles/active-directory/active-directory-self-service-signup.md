@@ -1,5 +1,5 @@
 ---
-title: "Azure のセルフサービス サインアップについて  | Microsoft Docs"
+title: "Azure のセルフサービス サインアップについて | Microsoft Docs"
 description: "Azure のセルフサービス サインアップの概要、サインアップ プロセスの管理方法、および DNS ドメイン名の引き継ぎ方法。"
 services: active-directory
 documentationcenter: 
@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/13/2017
+ms.date: 05/08/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: d517f434fe81617061d37a5b60f4e49806948005
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 63818878e01dd52a988e10a6e4f624638ea1cfae
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -91,7 +93,7 @@ Azure AD のディレクトリで作業するには、DNS ドメインの所有�
 
 管理対象ディレクトリの管理者としてドメインを追加したとき、そのドメインに、管理されていないディレクトリが偶然関連付けられていたと考えてください。
 
-たとえば IT 管理者が、contoso.com の管理対象ディレクトリを既に所有しているとします。contoso.com は IT 管理者の所属組織に登録されています。 その組織の複数ユーザーが、電子メールのドメイン名 user@contoso.co.uk, を使用してセルフサービス サインアップを実行したことをその IT 管理者は知ります。これは、この組織が所有する別のドメイン名です。 これらのユーザーは現在、contoso.co.uk の管理されていないディレクトリのアカウントを持っています。
+たとえば IT 管理者が、contoso.com の管理対象ディレクトリを既に所有しているとします。contoso.com は IT 管理者の所属組織に登録されています。 その組織の複数ユーザーが、電子メールのドメイン名 user@contoso.co.uk を使用してセルフサービス サインアップを実行したことをその IT 管理者は知ります。これは、この組織が所有する別のドメイン名です。 これらのユーザーは現在、contoso.co.uk の管理されていないディレクトリのアカウントを持っています。
 
 2 つのディレクトリの管理は避けたいため、 IT 管理者は contoso.co.uk の管理されていないディレクトリを、contoso.com の既存の IT 管理対象ディレクトリにマージします。
 
@@ -193,19 +195,14 @@ Azure AD のディレクトリで作業するには、DNS ドメインの所有�
 
 ![][1]
 
-これらのパラメーターの使用方法についての詳細は、「 [Set-MsolCompanySettings](https://msdn.microsoft.com/library/azure/dn194127.aspx)」を参照してください。
+これらのパラメーターの使用方法についての詳細は、「 [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)」を参照してください。
 
 ## <a name="see-also"></a>関連項目
-* [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)
-* [Azure PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx)
-* [Azure コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/jj554330.aspx)
-* [Set-MsolCompanySettings](https://msdn.microsoft.com/library/azure/dn194127.aspx)
+* [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)
+* [Azure PowerShell](/powershell/azure/overview)
+* [Azure コマンドレット リファレンス](/powershell/azure/get-started-azureps)
+* [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
 
 <!--Image references-->
 [1]: ./media/active-directory-self-service-signup/SelfServiceSignUpControls.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

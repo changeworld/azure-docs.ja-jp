@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/31/2017
 ms.author: vakarand
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: a1190f0ab4caf749cce0b5c9ba45e55f7e6ca8ec
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
+ms.openlocfilehash: d270d7cc3ceeef29aaaf1c9f984e69984049f815
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/29/2017
 
 
 ---
@@ -212,10 +213,10 @@ Azure Active Directory スキーマで設定されている、使用可能なサ
 * proxyAddresses
 
 ### <a name="possible-scenarios"></a>考えられるシナリオ
-1. Bob の userCertificate 属性に格納されている、Bob に割り当てられた証明書の数が多すぎます。 期限切れの古い証明書が含まれている可能性があります。 ハード制限は、証明書 15 個です。
+1. Bob の userCertificate 属性に格納されている、Bob に割り当てられた証明書の数が多すぎます。 期限切れの古い証明書が含まれている可能性があります。 ハード制限は、証明書 15 個です。 userCertificate 属性による LargeObject エラーを処理する方法の詳細については、[userCertificate 属性による LargeObject エラーの処理](active-directory-aadconnectsync-largeobjecterror-usercertificate.md)に関する記事をご覧ください。
 2. Bob の userSMIMECertificate 属性に格納されている、Bob に割り当てられた証明書の数が多すぎます。 期限切れの古い証明書が含まれている可能性があります。 ハード制限は、証明書 15 個です。
 3. Active Directory で設定された Bob の thumbnailPhoto が大きすぎ、Azure AD で同期できません。
-4. Active Directory での ProxyAddresses 属性の自動作成時に、500 を超える ProxyAddresses がオブジェクトに割り当てられました。
+4. Active Directory での ProxyAddresses 属性の自動作成時に、オブジェクトに割り当てられた ProxyAddresses が多すぎます。
 
 ### <a name="how-to-fix"></a>修正方法
 1. エラーを引き起こした属性が、許可されている制限内になるようにします。

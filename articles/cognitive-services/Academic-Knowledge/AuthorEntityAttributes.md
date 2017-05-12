@@ -9,15 +9,16 @@ ms.technology: academic-knowledge
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: alch
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: cf7a0bd3f1ece12ee2b00d32ae80e5b4c82f6bcf
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 30b53524834e7e83edfa917b9ec3329cc34354dd
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/04/2017
 
 ---
 
 # <a name="author-entity"></a>Author Entity
-<sub> *Below attributes are specific to author entity. (Ty = '1') </sub>
+<sub> *Following attributes are specific to author entity. (Ty = '1') </sub>
 
 Name    |Description                            |Type       | Operations
 ------- | ------------------------------------- | --------- | ----------------------------
@@ -26,8 +27,8 @@ AuN        |Author normalized name                    |String        |Equals
 DAuN    |Author display name                    |String        |none
 CC        |Author total citation count            |Int32        |none  
 ECC        |Author total estimated citation count    |Int32        |none
-E        |Extended metadata (see table below)     |String     |none  
-SSD        |Satori data                             |String        |none
+E        |Extended metadata (see "Extended Meta Attributes" table )     |String     |none  
+
 
 ## <a name="extended-metadata-attributes"></a>Extended Metadata Attributes ##
 

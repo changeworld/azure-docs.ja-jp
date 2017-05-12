@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: tomfitz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
 ms.openlocfilehash: 1e3cea027b599e2b1af1ced0fdf14e2cc8a0db82
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/21/2017
 
 

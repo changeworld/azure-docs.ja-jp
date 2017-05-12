@@ -9,10 +9,11 @@ ms.technology: computer-vision
 ms.topic: article
 ms.date: 02/20/2017
 ms.author: juliakuz
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 8ac89b716f07c1f2a7463a872900fcd36c8a84bd
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: af84f68839084e8c35ee85bab7760193f7546d11
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 ---
 
@@ -26,11 +27,11 @@ This article provides information and code samples to help you quickly get start
 
 ## <a name="prerequisites"></a>Prerequisites
 * Get the Microsoft Computer Vision API Windows SDK [here](https://github.com/Microsoft/Cognitive-vision-windows).
-* To use the Computer Vision API, you need a subscription key. You can get free subscription keys [here](https://www.microsoft.com/cognitive-services/en-us/Computer-Vision-API/documentation/vision-api-how-to-topics/HowToSubscribe).
+* To use the Computer Vision API, you need a subscription key. You can get free subscription keys [here](https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/Vision-API-How-to-Topics/HowToSubscribe).
 
 ## Analyze an Image With Computer Vision API Using C# <a name="AnalyzeImage"> </a>
 With the [Analyze Image method](https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fa), you can extract visual features based on image content. You can upload an image or specify an image URL and choose which features to return, including:
-* The category defined in this [taxonomy](https://www.microsoft.com/cognitive-services/en-us/Computer-Vision-API/documentation/Category-Taxonomy).
+* The category defined in this [taxonomy](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/category-taxonomy).
 * A detailed list of tags related to the image content.
 * A description of image content in a complete sentence.
 * The coordinates, gender, and age of any faces contained in the image.

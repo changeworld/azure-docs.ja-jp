@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/16/2017
 ms.author: dobett
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2e4220bedcb0091342fd9386669d523d4da04d1c
 ms.openlocfilehash: 312e9081c8597f59c32e99d594f2e729410986d8
+ms.contentlocale: ja-jp
 ms.lasthandoff: 12/16/2016
 
 
@@ -35,7 +36,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
 クラウドからデバイスへのメッセージの詳細については、[IoT Hub 開発者ガイド][IoT Hub developer guide - C2D]を参照してください。
 
-このチュートリアルの最後には、次の&2; つの Node.js コンソール アプリを実行します。
+このチュートリアルの最後には、次の 2 つの Node.js コンソール アプリを実行します。
 
 * **SimulatedDevice**。「[IoT Hub の概要]」で作成されたアプリケーションの修正バージョン。これは、IoT Hub に接続し、クラウドからデバイスへのメッセージを受け取ります。
 * **SendCloudToDeviceMessage**。クラウドからデバイスへのメッセージを IoT Hub を介してシミュレートされたデバイス アプリに送信し、その配信確認を受け取ります。

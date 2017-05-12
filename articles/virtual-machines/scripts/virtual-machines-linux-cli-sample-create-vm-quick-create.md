@@ -10,14 +10,15 @@ tags: azure-service-management
 ms.assetid: 
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: nepeters
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
 ms.openlocfilehash: a566755ada800890db2ad3352def14f526094e72
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/06/2017
 
 ---
