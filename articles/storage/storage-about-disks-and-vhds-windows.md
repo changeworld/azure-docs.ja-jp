@@ -1,4 +1,4 @@
----
+﻿---
 title: "Microsoft Azure Windows VM 用のディスクと VHD について | Microsoft Docs"
 description: "Azure での Windows 仮想マシン用のディスクと VHD の基本について説明します。"
 services: storage
