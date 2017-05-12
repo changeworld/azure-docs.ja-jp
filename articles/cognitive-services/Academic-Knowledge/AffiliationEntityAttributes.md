@@ -9,16 +9,17 @@ ms.technology: academic-knowledge
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: alch
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: cffceaf1b0b9dc15d0cc8d58877b5e6f68055433
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 3fd9a584297289628cfd49169878efca2b402299
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/04/2017
 
 ---
 
 # <a name="affiliation-entity"></a>Affiliation Entity
 
-<sub> *Below attributes are specific to affiliation entity. (Ty = '5') </sub>
+<sub> *Following attributes are specific to affiliation entity. (Ty = '5') </sub>
 
 Name    |Description                            |Type       | Operations
 ------- | ------------------------------------- | --------- | ----------------------------
@@ -27,4 +28,3 @@ AfN        |Affiliation normalized name        |String        |Equals
 DAfN    |Affiliation display name        |String        |none
 CC        |Affiliation total citation count            |Int32        |none  
 ECC        |Affiliation total estimated citation count    |Int32        |none
-SSD        |Satori data                             |String        |none

@@ -12,12 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2017
+ms.date: 04/26/2017
 ms.author: magoedte
-translationtype: Human Translation
-ms.sourcegitcommit: 5ae60cb8ba3d391d3babd1ab575b4f32e139a185
-ms.openlocfilehash: f2c9a5ef2a8f517b9b2072be57f4d8c51b7694c6
-ms.lasthandoff: 02/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 2d6ef39ad4678d331eadd2c0bfd6ff93c99da501
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -29,7 +30,7 @@ ms.lasthandoff: 02/15/2017
 
 - [Azure 実行アカウント](automation-sec-configure-azure-runas-account.md)を使用した Runbook。  認証方法としては、実行アカウントの使用をお勧めします。有効期限が切れたり頻繁に変わったりするパスワードではなく証明書を使った認証が使用されます。  
 
-- このソリューションで管理できる VM は、Automation アカウントと同じサブスクリプションとリソース グループに属している VM に限られます。  
+- このソリューションで管理できる VM は、Automation アカウントと同じサブスクリプションに属している VM に限られます。  
 
 - このソリューションがデプロイされる Azure リージョンは、オーストラリア南東部、米国東部、東南アジア、西ヨーロッパだけです。  VM のスケジュールを管理する Runbook は、任意のリージョンの VM を対象にすることができます。  
 

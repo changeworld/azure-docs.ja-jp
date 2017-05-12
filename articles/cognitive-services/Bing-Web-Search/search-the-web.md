@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 01/12/2017
 ms.author: scottwhi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: 8206620c8fa0af26a6005d407b135aea4e379833
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: e37c112f395f29c8aaf758001cae001d167328e8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 05/10/2017
 
 ---
 
-# <a name="search-the-web"></a>Search the Web
+# <a name="search-the-web"></a>Search the web
 
 The Web Search API provides a similar (but not exact) experience to Bing.com/Search by returning search results that Bing determines are relevant to the specified user's query. The results include webpages and may include images, videos, and more. 
 
@@ -29,7 +29,7 @@ If Bing didn't find content from one of the content-specific APIs relevant enoug
 If you don't need webpages but you do need answers from more than one of the other APIs, such as images and news, you'd still call this API. For example, if you only wanted Images and News, you'd call this API and set [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v5-reference#responsefilter) query parameter to limit the results to only Images and News. For more information, see [Filtering Answers](./filter-answers.md).
 
 
-## <a name="search-query-term"></a>Search Query Term
+## <a name="search-query-term"></a>Search query term
 
 Your user experience must provide a search box where the user enters a search query term. You can determine the maximum length of the term that you allow, but the maximum length of all your query parameters should be less than 1,500 characters.
 
@@ -49,7 +49,7 @@ You can use this information to let the user know that you modified their query 
 
 ![Query context UX example](./media/cognitive-services-bing-web-api/bing-query-context.PNG)
 
-## <a name="the-search-response"></a>The Search Response
+## <a name="the-search-response"></a>The search response
 
 When you send Bing a search request, it sends back a response that contains a [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v5-reference#searchresponse) object in the body of the response. The object includes a field for each answer that Bing thought was relevant to the user's query term. The following shows an example of the response object if Bing returned all answers.
 
@@ -466,13 +466,13 @@ The following shows how Bing uses the spelling suggestion.
 ![Bing spelling suggestion example](./media/cognitive-services-bing-web-api/bing-web-spellingsuggestion.GIF)
 
 
-## <a name="throttling-requests"></a>Throttling Requests
+## <a name="throttling-requests"></a>Throttling requests
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../includes/cognitive-services-bing-throttling-requests.md)]
 
 
 
-## <a name="next-steps"></a>Next Steps
+## <a name="next-steps"></a>Next steps
 
 To get started quickly with your first request, see [Making Your First Query](./quick-start.md).
 

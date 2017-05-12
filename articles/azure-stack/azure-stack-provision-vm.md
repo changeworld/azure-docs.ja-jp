@@ -1,6 +1,6 @@
 ---
-title: Provision a VM in Azure Stack | Microsoft Docs
-description: Learn how to provision a VM in Azure Stack.
+title: Create a test VM in Azure Stack | Microsoft Docs
+description: Learn how to provision a test VM in Azure Stack as an administrator.
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -12,25 +12,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 3/1/2017
+ms.date: 5/10/2017
 ms.author: erikje
-translationtype: Human Translation
-ms.sourcegitcommit: 33592f5cf36308eb900b555c9ae1d583dff91e03
-ms.openlocfilehash: 6e396679adce46107a72d576698f0a2ad047295b
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 9e3503a1f44a19f87927251cbd7359a8218607d3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="provision-a-virtual-machine"></a>Provision a virtual machine
-As an administrator, you can create virtual machines to evaluate resources before offering them in plans.
+# <a name="create-a-test-virtual-machine-in-azure-stack"></a>Create a test virtual machine in Azure Stack
+As an administrator, you can create a test virtual machine to validate your Azure Stack deployment.
 
 > [!NOTE]
-> Before you can provision virtual machines, you must [add the Windows Server 2016 Eval image to the Azure Stack marketplace](azure-stack-add-default-image.md).
+> Before you can provision virtual machines, you must [add the Windows Server 2016 Evaluation image to the Azure Stack marketplace](azure-stack-add-default-image.md).
 > 
 > 
 
-## <a name="provision-a-virtual-machine"></a>Provision a virtual machine
-1. On the Azure Stack POC computer, log in to `https://portal.local.azurestack.external` as [an admin](azure-stack-connect-azure-stack.md), and then click **New** > **Virtual machines** > **Windows Server 2016 Datacenter Eval**.  
+## <a name="create-a-virtual-machine"></a>Create a virtual machine
+1. On the Azure Stack POC computer, sign in to `https://adminportal.local.azurestack.external` as [an admin](azure-stack-connect-azure-stack.md), and then click **New** > **Virtual machines** > **Windows Server 2016 Datacenter Eval**.  
 
 2. In the **Basics** blade, type a **Name**, **User name**, and **Password**. For **VM disk type**, choose **HDD**. Choose a **Subscription**. Create a **Resource group**, or select an existing one, and then click **OK**.  
 3. In the **Choose a size** blade, click **A1 Basic**, and then click **Select**.  
@@ -43,5 +44,5 @@ As an administrator, you can create virtual machines to evaluate resources befor
     ![](media/azure-stack-provision-vm/image06.png)
 
 ## <a name="next-steps"></a>Next steps
-[Storage accounts](azure-stack-provision-storage-account.md)
+[Using the administrator and user portals in Azure Stack](azure-stack-manage-portals.md)
 

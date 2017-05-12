@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 01/12/2017
 ms.author: scottwhi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: e66ae66a40762640009faf4817e2f5029ea1db06
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 761f2940b1f2184a9a6702b0e2878ddc1b0b9fe7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 05/10/2017
 
 ---
 
-# <a name="filtering-the-answers-that-the-search-response-includes"></a>Filtering the Answers that the Search Response Includes  
+# <a name="filtering-the-answers-that-the-search-response-includes"></a>Filtering the answers that the search response includes  
 
 When you query the web, Bing returns all content that it thinks is relevant to the search. For example, if the search query is "sailing+dinghies", the response might contain the following answers:
 

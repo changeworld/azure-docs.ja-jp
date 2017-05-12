@@ -10,14 +10,15 @@ ms.technology: bing-spell-check
 ms.topic: article
 ms.date: 06/21/2016
 ms.author: scottwhi
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 091663b171339e335b4e2d80831010542b66abc4
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 7e462b93aa56616aaba2e0e662cd06b7b0348ee4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 
-# <a name="spell-check-text-strings"></a>Spell Check Text Strings
+# <a name="spell-check-text-strings"></a>Spell check text strings
 
 The Spell Check API lets you perform contextual grammar and spell checking.  
 
@@ -35,7 +36,7 @@ This spell-checker can handle any word-processing scenario:
 *   Words that sound the same but differ in meaning and spelling, for example “see” and “sea.”
 
 
-## <a name="spell-check-modes"></a>Spell Check Modes
+## <a name="spell-check-modes"></a>Spell check modes
 
 The API supports two proofing modes, Proof and Spell. The default mode is Proof. The Proof spelling mode provides the most comprehensive checks, but it's available only in the en-US (English-United States) market. For all other markets, set the [mode](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v5-reference#mode) query parameter to Spell. The Spell mode finds most spelling mistakes but doesn't find some of the grammar errors that Proof catches (for example, capitalization and repeated words).
 
@@ -59,7 +60,7 @@ text=when+its+your+turn+turn,+john,+come+runing
 ```  
 
 > [!NOTE]
-> Version 7 Preview request.
+> V7 Preview request.
 >
 > ```  
 > POST https://api.cognitive.microsoft.com/bing/v5.0/spellcheck?mode=proof&mkt=en-us HTTP/1.1  
@@ -125,12 +126,12 @@ The [flaggedTokens](https://docs.microsoft.com/rest/api/cognitiveservices/bing-s
 If the `type` field is RepeatedToken, you'd still replace the token with `suggestion` but you'd also likely need to remove the trailing space.
 
 
-## <a name="throttling-requests"></a>Throttling Requests
+## <a name="throttling-requests"></a>Throttling requests
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../includes/cognitive-services-bing-throttling-requests.md)]
 
 
-## <a name="next-steps"></a>Next Steps
+## <a name="next-steps"></a>Next steps
 
 To get started quickly with your first request, see [Making Your First Request](./quick-start.md).
 

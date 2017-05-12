@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 02/06/2017
+ms.date: 05/08/2017
 ms.author: raynew
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 4149c5e06f1a23864ca0f92f1b7b73f4f66949df
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 1e48b0848c9f286f3bb0b3758403135a4f280bc0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -27,9 +28,9 @@ ms.lasthandoff: 04/03/2017
 コメントや質問はこの記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)で投稿してください。
 
 ## <a name="overview"></a>Overview
-組織には、予定されたダウンタイムと予定外のダウンタイムの間にワークロードとデータの安全性と可用性を維持し、できるだけ早く通常の動作状態に復旧させる、ビジネス継続性と障害復旧 (BCDR) の戦略が必要です。
+組織には、計画ダウンタイムと計画外ダウンタイムの間にワークロードとデータの安全性と可用性を維持し、できるだけ早く通常の動作状態に復旧させる、ビジネス継続性とディザスター リカバリー (BCDR) の戦略が必要です。
 
-Site Recovery は、BCDR 戦略に貢献する Azure サービスです。 Site Recovery を使用することで、アプリケーションに対応したレプリケーションをクラウドまたはセカンダリ サイトにデプロイできます。 アプリが Windows ベースと Linux ベースのどちらであっても、また、物理サーバー、VMware、Hyper-V のいずれで実行されていても、Site Recovery を使用して、レプリケートの調整、障害復旧テスト、フェールオーバーとフェールバックを実行できます。
+Site Recovery は、BCDR 戦略に貢献する Azure サービスです。 Site Recovery を使用することで、アプリケーションに対応したレプリケーションをクラウドまたはセカンダリ サイトにデプロイできます。 アプリが Windows ベースと Linux ベースのどちらであっても、また、物理サーバー、VMware、Hyper-V のいずれで実行されていても、Site Recovery を使用して、レプリケートの調整、ディザスター リカバリー テスト、フェールオーバーとフェールバックを実行できます。
 
 Site Recovery は、SharePoint、Exchange、Dynamics、SQL Server、Active Directory などの Microsoft アプリケーションと統合されています。 Microsoft はまた、Oracle、SAP、IBM、Red Hat などの主要なベンダーと密接に連携しています。 レプリケーション ソリューションをアプリケーションごとにカスタマイズすることができます。
 
@@ -89,7 +90,7 @@ Azure Site Recovery は、SharePoint デプロイの保護に次のように役�
 * テストやデバッグ用に必要に応じて運用環境に似たレプリカ環境のコピーを作成することで、SharePoint アプリケーションの開発とテストが簡単になります。
 * Site Recovery を使用して SharePoint のデプロイメントを Azure に移行することで、クラウドへの移行が簡単になります。
 
-[こちら](https://gallery.technet.microsoft.com/SharePoint-DR-Solution-f6b4aeae) を参照してください。
+[こちら](site-recovery-sharepoint.md) を参照してください。
 
 ## <a name="protect-dynamics-ax"></a>Dynamics AX の保護
 Azure Site Recovery は、次のような点で Dynamics AX ERP ソリューションの保護に役立ちます。
@@ -98,7 +99,7 @@ Azure Site Recovery は、次のような点で Dynamics AX ERP ソリューシ�
 * クラウド (Azure) への Dynamics AX デプロイメントの移行が簡略化されます。
 * 必要に応じてテストやデバッグ用に運用環境に似たコピーを作成することで、Dynamics AX アプリケーションの開発とテストが簡単になります。
 
-[こちら](https://gallery.technet.microsoft.com/Dynamics-AX-DR-Solution-b2a76281) を参照してください。
+[こちら](site-recovery-dynamicsax.md) を参照してください。
 
 ## <a name="protect-rds"></a>RDS の保護
 リモート デスクトップ サービス (RDS) を使用すると、ユーザーが仮想デスクトップ インフラストラクチャ (VDI)、セッションベースのデスクトップ、アプリケーションを使用して、どこにいても作業できるようになります。 Azure Site Recovery を使用すると、次のことができます。

@@ -12,10 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2017
 ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: ed685f0a4ed26fb8d1c766f87210a99d2b5270ac
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 13a2883c59092c964cf3c353e767839c5f9ef788
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -43,6 +44,8 @@ ms.lasthandoff: 04/12/2017
 プロファイラーの停止や再起動を行う必要がある場合は、**対象の App Service リソース**の **Web ジョブ**で実行できます。 また、削除する場合は、**[拡張機能]** で実行できます。
 
 Web アプリケーションに対する変更を WebDeploy を使用してデプロイする場合は、デプロイ中の削除対象から **App_Data** フォルダーを除外してください。 除外しなかった場合、次に Web アプリケーションを Azure にデプロイするときにプロファイラーの拡張機能のファイルが削除されます。
+
+**[更新]** Application Insights サイト拡張機能は、2.3 リリースからプロファイラー エージェントを統合しました。 これによって、元の Application Insights プロファイラー サイト拡張機能が置き換えらえます。 **[構成]** ウィザードを使用して最新バージョンに移行できます。
 
 ## <a name="viewing-profiler-data"></a>プロファイラー データを表示する
 
@@ -172,7 +175,7 @@ Application Insights プロファイラーを有効にすると、Azure サー�
 2. [.Net Framework バージョン] を [v4.6] に設定します。
 3. [Always On] を [オン] に設定します。
 4. アプリ設定 "__APPINSIGHTS_INSTRUMENTATIONKEY__" を追加し、その値を SDK によって使用されたのと同じインストルメンテーション キーに設定します。
-5. **[拡張機能]** に "Application Insights プロファイラー" を追加します。 インストールは 2、3 分で終了します。
+5. **[拡張機能]** で、[Application Insights] を追加します。 インストールは数分で終了します。
 
 ## <a id="aspnetcore"></a>ASP.NET Core のサポート
 

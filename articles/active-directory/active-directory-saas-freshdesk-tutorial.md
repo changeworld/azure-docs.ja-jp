@@ -13,10 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: f35da063fc637f315b52ea38b63d2c8222cecd21
-ms.lasthandoff: 04/05/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 0a8f2de60ab60b980b29c4dbc78045bd20693b9d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -195,31 +196,31 @@ FreshDesk の場合、プロビジョニングは手動で行います。
 **ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 
 1. **Freshdesk** テナントにログインします。
-2. 上部のメニューで **[管理者]**をクリックします。
+2. 上部のメニューで **[Admin]**をクリックします。
    
-       ![Admin](./media/active-directory-saas-freshdesk-tutorial/IC776772.png "Admin")
+   ![管理](./media/active-directory-saas-freshdesk-tutorial/IC776772.png "Admin")
 
 3. **[全般設定]** タブで **[エージェント]** をクリックします。
    
-       ![Agents](./media/active-directory-saas-freshdesk-tutorial/IC776773.png "Agents")
+   ![Agents](./media/active-directory-saas-freshdesk-tutorial/IC776773.png "Agents")
 
 4. **[新しいエージェント]**をクリックします。
    
-       ![New Agent](./media/active-directory-saas-freshdesk-tutorial/IC776774.png "New Agent")
+    ![New Agent](./media/active-directory-saas-freshdesk-tutorial/IC776774.png "New Agent")
 
 5. [エージェント情報] ダイアログで、次の手順を実行します。
    
-       ![Agent Information](./media/active-directory-saas-freshdesk-tutorial/IC776775.png "Agent Information")
+   ![Agent Information](./media/active-directory-saas-freshdesk-tutorial/IC776775.png "Agent Information")
    
-       a. In the **Full Name** textbox, type the name of the Azure AD account you want to provision.
+   a. **[フル ネーム]** ボックスに、プロビジョニングする Azure AD のアカウントの名前を入力します。
 
-       b. In the **Email** textbox, type the Azure AD email address of the Azure AD account you want to provision.
+   b. **[電子メール]** ボックスに、プロビジョニングする Azure AD アカウントの Azure AD 電子メール アドレスを入力します。
 
-       c. In the **Title** textbox, type the title of the Azure AD account you want to provision.
+   c. **[タイトル]** ボックスに、プロビジョニングする Azure AD アカウントのタイトルを入力します。
 
-       d. Select **Agents role**, and then click **Assign**.
+   d. **[エージェント ロール]** を選択し、**[割り当て]** をクリックします。
        
-       e. Click **Save**.     
+   e. [ **Save**] をクリックします。     
    
     >[!NOTE]
     >Azure AD のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。 

@@ -15,9 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 4e9412caa9fed15f42a04260f12fa802caf7a2e2
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/03/2017
 
 
@@ -87,7 +88,7 @@ Azure AD Connect は同期サービスの一部として、暗号化キーを使
 2. **[コネクタ]** タブに移動します。
 3. オンプレミス AD に対応する **AD コネクタ** を選択します。 AD コネクタが複数ある場合は、各コネクタについて次の手順を繰り返します。
 4. **[アクション]** の **[プロパティ]** を選択します。
-5. ポップアップ ダイアログで、**[Connect to Active Directory Forest] (Active Directory フォレストに接続)** を選択します。
+5. ポップアップ ダイアログで、**[Connect to Active Directory Forest] \(Active Directory フォレストに接続)** を選択します。
 6. AD DS アカウントのパスワードを **[パスワード]** テキストボックスに入力します。 パスワードがわからない場合は、この手順を実行する前に既知の値に設定する必要があります。
 7. **[OK]** をクリックして新しいパスワードを保存し、ポップアップ ダイアログを閉じます。
 ![Azure AD Connect 同期の暗号化キー破棄ユーティリティ](media/active-directory-aadconnectsync-encryption-key/key6.png)
@@ -106,7 +107,7 @@ Azure AD Connect は同期サービスの一部として、暗号化キーを使
 
 
 1. Windows サービス コントロール マネージャーにアクセスします ([スタート]、[サービス] の順に移動します)。
-2. **[Microsoft Azure AD Sync] (Microsoft Azure AD 同期)** を選択して [再起動] をクリックします。
+2. **[Microsoft Azure AD Sync] \(Microsoft Azure AD 同期)** を選択して [再起動] をクリックします。
 
 ## <a name="next-steps"></a>次のステップ
 **概要トピック**

@@ -10,18 +10,19 @@ ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 04/25/2017
 ms.author: sergkanz
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: f22b6dbdcc02b1182163f140d9ff13d2876dc0d8
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 5036ce23e602c7723f5fafef60ab45d533c1fe7d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>要求テレメトリ: Application Insights データ モデル
 
-要求テレメトリは、外部からトリガーされたコードの実行と、論理コードの実行のカプセル化を表します。 すべての要求の実行は、一意の `ID` と、すべての実行パラメーターが含まれる `url` によって識別されます。 要求は、論理的な `name` によってグループ化でき、要求の `source` が定義されます。 コードの実行は、`success` または失敗という結果になる可能性があり、特定の `duration` を持っています。 成功した実行と失敗した実行は、どちらも `resultCode` によってさらにグループ化することができます。 要求テレメトリの開始時刻は、エンベロープ レベルで定義されます。
+要求テレメトリ項目 ([Application Insights](app-insights-overview.md)) は、アプリケーションに対する外部要求によってトリガーされた実行の論理シーケンスを表します。 すべての要求の実行は、一意の `ID` と、すべての実行パラメーターが含まれる `url` によって識別されます。 要求は、論理的な `name` によってグループ化でき、要求の `source` が定義されます。 コードの実行は、`success` または `fail`という結果になる可能性があり、特定の `duration` を持っています。 成功した実行と失敗した実行は、どちらも `resultCode` によってさらにグループ化することができます。 要求テレメトリの開始時刻は、エンベロープ レベルで定義されます。
 
 要求テレメトリは、カスタムの `properties` と `measurements` を使用する標準的な機能拡張モデルをサポートします。
 
@@ -35,7 +36,7 @@ Application Insights Web SDK は、要求の名前の大文字小文字を "そ�
 
 ## <a name="id"></a>ID
 
-要求呼び出しインスタンスの識別子。 要求とその他のテレメトリ項目を相関付けるために使用されます。 ID はグローバルに一意である必要があります。 詳細については、[相関付け](/correlation)に関するページを参照してください。
+要求呼び出しインスタンスの識別子。 要求とその他のテレメトリ項目を相関付けるために使用されます。 ID はグローバルに一意である必要があります。 詳細については、[相関付け](application-insights-correlation.md)に関するページを参照してください。
 
 最大長: 128 文字
 
@@ -47,7 +48,7 @@ Application Insights Web SDK は、要求の名前の大文字小文字を "そ�
 
 ## <a name="source"></a>ソース
 
-要求のソース。 例: 呼び出し元のインストルメンテーション キーや呼び出し元の IP アドレス。 詳細については、[相関付け](/correlation.md)に関するページを参照してください。
+要求のソース。 例: 呼び出し元のインストルメンテーション キーや呼び出し元の IP アドレス。 詳細については、[相関付け](application-insights-correlation.md)に関するページを参照してください。
 
 最大長: 1,024 文字
 
@@ -81,7 +82,8 @@ Web アプリケーションでは、応答コードが `400` 未満または `4
 
 ## <a name="next-steps"></a>次のステップ
 
-- Application Insights の型とデータ モデルについては、[データ モデル](/application-insights-data-model.md)に関するページを参照してください。
-- Application Insights で [ASP.NET Core を構成する](/app-insights-asp-net-core.md)方法を確認します。
-- Application Insights でサポートされている[プラットフォーム](/app-insights-platforms.md)を確認します。
+- [カスタム要求テレメトリを記述します](app-insights-api-custom-events-metrics.md#trackrequest)。
+- Application Insights の型とデータ モデルについては、[データ モデル](application-insights-data-model.md)に関するページを参照してください。
+- Application Insights で [ASP.NET Core を構成する](app-insights-asp-net.md)方法を確認します。
+- Application Insights でサポートされている[プラットフォーム](app-insights-platforms.md)を確認します。
 

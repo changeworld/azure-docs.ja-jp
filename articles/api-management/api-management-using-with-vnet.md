@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 43618268aa0b234d271dcee7f95dfad2f2a1bb2b
-ms.lasthandoff: 03/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 21cdfbbc457aad1cd3b1a5b20745eee4286a78bb
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -78,9 +79,9 @@ API Management サービスがプロビジョニングされているすべて�
 ## <a name="enable-vnet-powershell"> </a>PowerShell コマンドレットを使用して VNET 接続を有効にする
 PowerShell コマンドレットを使用して VNET 接続を有効にすることもできます。
 
-* **VNET 内に API Management サービスを作成する**: コマンドレット [New-AzureRmApiManagement](https://docs.microsoft.com/en-us/powershell/resourcemanager/azurerm.apimanagement/v3.1.0/new-azurermapimanagement) を使用して、VNET 内に Azure API Management サービスを作成します。
+* **VNET 内に API Management サービスを作成する**: コマンドレット [New-AzureRmApiManagement](/powershell/module/azurerm.apimanagement/new-azurermapimanagement) を使用して、VNET 内に Azure API Management サービスを作成します。
 
-* **VNET 内に既存の API Management サービスをデプロイする**: コマンドレット [Update-AzureRmApiManagementDeployment](https://docs.microsoft.com/en-us/powershell/resourcemanager/azurerm.apimanagement/v3.1.0/update-azurermapimanagementdeployment) を使用して、既存の Azure API Management サービスを Virtual Network 内に移動します。
+* **VNET 内に既存の API Management サービスをデプロイする**: コマンドレット [Update-AzureRmApiManagementDeployment](/powershell/module/azurerm.apimanagement/update-azurermapimanagementdeployment) を使用して、既存の Azure API Management サービスを Virtual Network 内に移動します。
 
 ## <a name="connect-vnet"> </a>仮想ネットワーク内でホストされる Web サービスに接続する
 API Management サービスが VNET に接続された後で VNET 内のバックエンド サービスにアクセスする方法は、パブリック サービスにアクセスする方法と同じです。 単に、新しい API を作成するときや既存の API を編集するときに Web サービスのローカル IP アドレスまたはホスト名 (VNET に対して DNS サーバーが構成されている場合) を **[Web サービスの URL]** ボックスに入力するだけです。

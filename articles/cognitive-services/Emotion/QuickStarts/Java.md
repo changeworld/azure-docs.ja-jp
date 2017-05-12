@@ -9,10 +9,11 @@ ms.technology: emotion
 ms.topic: article
 ms.date: 03/02/2017
 ms.author: anroth
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: c5d38d881624e956b897cbc993f8a4622de3e324
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: f2db5ec671f1a441712d71104aadf63b2b2f1f21
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 ---
 
@@ -21,7 +22,7 @@ This article provides information and a code sample to help you quickly get star
 
 ## <a name="prerequisites"></a>Prerequisites
 * Get the Emotion API Java for Android SDK [here](https://github.com/Microsoft/Cognitive-emotion-android)
-* Get your free subscription key [here](https://www.microsoft.com/cognitive-services/en-us/sign-up)
+* Get your free subscription key [here](https://azure.microsoft.com/en-us/try/cognitive-services/)
 
 ## <a name="recognize-emotions-java-for-android-example-request"></a>Recognize Emotions Java for Android Example Request
 

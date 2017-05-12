@@ -9,16 +9,27 @@ ms.technology: face
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: anroth
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 7ce661e08ce1166d08b56875e17c972b0fe73c90
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 555f7a66839586a71c5bcccefde0a4cfa4e4c224
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 
 # <a name="face-api-release-notes"></a>Face API Release Notes
 
 This article pertains to Microsoft Face API Service version 1.0.
+
+### <a name="release-changes-in-may-2017"></a>Release changes in May 2017
+
+* **New Attribute** Hair, makeup, accessories, occlusion, blur, exposure, and noise attributes could be returned from [Face - Detect](https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) if `hair`, `makeup`, `accessory`, `occlusion`, `blur`, `exposure` or `noise` are specified in `returnFaceAttributes`.
+
+* **Enhancement** Support 10K persons in a person group, [Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) and [Face - Find Similar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) are also supported for the scale.
+
+* **List Persons API** Pagination is supported in [Person - List Persons in a Person Group](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395241) with extra optional parameters, `start` and `top`.
+
+* **Enhancement** Concurrency is supported in adding/deleting faces against different face lists or different persons in person group.
 
 ### <a name="release-changes-in-march-2017"></a>Release changes in March 2017
 * **New Attribute** Emotion attribute could be returned from [Face - Detect](https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) if `emotion` is specified in `returnFaceAttributes`.
@@ -38,7 +49,7 @@ This article pertains to Microsoft Face API Service version 1.0.
 
 * **Finding Similar Face API**: Added optional mode field enabling selection of two working modes, default matchPerson works the same as before, and new mode matchFace removes the same person filtering. If mode field is not specified, the behavior is the same as the past release. More details can be found here: [Face - Find Similar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
 
-* **Face Identification API**: Optional user-specified confidenceThreshold is enabled for user to define the confidence threshold of whether one face belong to a person object. More details can be found here: [Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
+* **Face Identification API**: Optional user-specified confidenceThreshold is enabled for user to define the confidence threshold of whether one face belongs to a person object. More details can be found here: [Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
 
 * **List Person Groups**: New optional start and top parameters in list person groups to support user specifying the start point and the total person groups number to list. More details can be found here: [Person Group - List Person Groups](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395248).
 

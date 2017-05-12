@@ -15,10 +15,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: adrianha
-translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: bad95e1700c1f85d6b4764e8edc3af98f2f5f804
-ms.lasthandoff: 03/09/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: fcbaa0df29fac22917695046ebc4015f3abf108f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -29,14 +30,14 @@ ms.lasthandoff: 03/09/2017
 
 > [!TIP]
 > [Azure Mobile Apps 向け .NET サーバー SDK][2] は、オープン ソースとして GitHub で公開されています。 リポジトリには、サーバー全体の SDK ユニット テスト スイートといくつかのサンプル プロジェクトを含むすべてのソース コードが含まれています。
-> 
-> 
+>
+>
 
 ## <a name="reference-documentation"></a>リファレンス ドキュメント
 サーバー SDK のリファレンス ドキュメントについては、「[Azure Mobile Apps .NET リファレンス][1]」を参照してください。
 
 ## <a name="create-app"></a>方法: .NET モバイル アプリ バックエンドを作成する
-新しいプロジェクトを開始する場合は、 [Azure ポータル] または Visual Studio を使用して、App Service アプリケーションを作成できます。 App Service アプリケーションをローカルで実行することも、プロジェクトをクラウドベースの App Service モバイル アプリに発行することもできます。  
+新しいプロジェクトを開始する場合は、 [Azure ポータル] または Visual Studio を使用して、App Service アプリケーションを作成できます。 App Service アプリケーションをローカルで実行することも、プロジェクトをクラウドベースの App Service モバイル アプリに発行することもできます。
 
 既存のプロジェクトにモバイル機能を追加する場合は、「 [SDK をダウンロードして初期化する](#install-sdk) 」セクションを参照してください。
 
@@ -64,7 +65,7 @@ SDK は [NuGet.org]で入手できます。 このパッケージには、SDK �
 SDK をインストールするには、Visual Studio でサーバー プロジェクトを右クリックして **[NuGet パッケージの管理]** を選択し、[Microsoft.Azure.Mobile.Server] パッケージを検索してから、**[インストール]** をクリックします。
 
 ### <a name="server-project-setup"></a> サーバー プロジェクトの初期化
-.NET バックエンド サーバー プロジェクトは、他の ASP.NET プロジェクトと同じように、OWIN スタートアップ クラスを組み込むことによって初期化します。 NuGet パッケージ `Microsoft.Owin.Host.SystemWeb`が参照されていることを確認します。 Visual Studio でこのクラスを追加するには、サーバー プロジェクトを右クリックして、**[追加]** > 
+.NET バックエンド サーバー プロジェクトは、他の ASP.NET プロジェクトと同じように、OWIN スタートアップ クラスを組み込むことによって初期化します。 NuGet パッケージ `Microsoft.Owin.Host.SystemWeb`が参照されていることを確認します。 Visual Studio でこのクラスを追加するには、サーバー プロジェクトを右クリックして、**[追加]** >
 **[新しい項目]**、**[Web]** > **[全般]** > **[OWIN スタートアップ クラス]** の順に選択します。  次の属性を持つクラスが生成されます。
 
     [assembly: OwinStartup(typeof(YourServiceName.YourStartupClassName))]
@@ -123,31 +124,31 @@ Azure ポータルからのサーバーのクイックスタートは **UseDefau
    データ処理のためのクラスが含まれており、データ パイプラインを設定します。 構成に追加するには、 **AddTables** 拡張メソッドを呼び出します。
 * [Microsoft.Azure.Mobile.Server.Entity](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Entity/)
    Entity Framework で SQL Database のデータにアクセスできるようにします。 構成に追加するには、 **AddTablesWithEntityFramework** 拡張メソッドを呼び出します。
-* [Microsoft.Azure.Mobile.Server.Authentication] 認証を有効にし、トークンの検証に使用する OWIN ミドルウェアを設定します。 構成に追加するには、**AddAppServiceAuthentication** 
+* [Microsoft.Azure.Mobile.Server.Authentication] 認証を有効にし、トークンの検証に使用する OWIN ミドルウェアを設定します。 構成に追加するには、**AddAppServiceAuthentication**
    拡張メソッドと **IAppBuilder**.**UseAppServiceAuthentication** 拡張メソッドを呼び出します。
 * [Microsoft.Azure.Mobile.Server.Notifications] プッシュ通知を有効にし、プッシュ登録エンドポイントを定義します。 構成に追加するには、 **AddPushNotifications** 拡張メソッドを呼び出します。
 * [Microsoft.Azure.Mobile.Server.CrossDomain](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.CrossDomain/)
    モバイル アプリから従来の Web ブラウザーにデータを提供するコントローラーを作成します。 構成に追加するには、  **MapLegacyCrossDomainController** 拡張メソッドを呼び出します。
-* [Microsoft.Azure.Mobile.Server.Login] カスタム認証シナリオで使用される静的メソッドである AppServiceLoginHandler.CreateToken() メソッドを提供します。   
+* [Microsoft.Azure.Mobile.Server.Login] カスタム認証シナリオで使用される静的メソッドである AppServiceLoginHandler.CreateToken() メソッドを提供します。
 
 ## <a name="publish-server-project"></a>方法: サーバー プロジェクトを発行する
 このセクションでは、Visual Studio から .NET バックエンド プロジェクトを発行する方法を示します。 [Azure App Service のデプロイに関するドキュメント](../app-service-web/web-sites-deploy.md)に記載されている Git などの方法を使用して、バックエンド プロジェクトをデプロイすることもできます。
 
 1. Visual Studio でプロジェクトをリビルドして、NuGet パッケージを復元します。
 2. ソリューション エクスプローラーで目的のプロジェクトを右クリックし、 **[発行]**をクリックします。 初めて発行するときには、発行プロファイルを定義する必要があります。 既に定義したプロファイルがある場合は、それを選択し、**[発行]** をクリックします。
-3. 発行先の選択を求められた場合は、**[Microsoft Azure App Service]** > **[次へ]** の順にクリックして、必要であれば Azure の資格情報でサインインします。 
+3. 発行先の選択を求められた場合は、**[Microsoft Azure App Service]** > **[次へ]** の順にクリックして、必要であれば Azure の資格情報でサインインします。
    Visual Studio によって Azure から発行設定が直接ダウンロードされ、安全に保存されます。
-   
+
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-wizard-1.png)
 4. **サブスクリプション**を選択し、**[表示]** で **[リソースの種類]** を選択して、**[モバイル アプリ]** を展開します。次に、モバイル アプリ バックエンドをクリックし、**[OK]** をクリックします。
-   
+
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-wizard-2.png)
 5. 発行プロファイル情報を確認し、 **[発行]**をクリックします。
-   
+
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-wizard-3.png)
-   
+
     モバイル アプリ バックエンドが正常に発行されると、そのことを示すランディング ページが表示されます。
-   
+
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-success.png)
 
 ## <a name="define-table-controller"></a> 方法: テーブル コントローラーを定義する
@@ -198,7 +199,7 @@ Azure SDK をインストール済みの場合は、テンプレート テーブ
 
 クイックスタート サーバー プロジェクトには、シンプルな **TodoItemController**の例が含まれています。
 
-### <a name="how-to-adjust-the-table-paging-size"></a>方法: テーブルのページング サイズを調整する
+### <a name="adjust-pagesize"></a>方法: テーブルのページング サイズを調整する
 既定では、Azure Mobile Apps は、要求ごとに 50 個のレコードを返します。  ページングにより、クライアントが長期間 UI スレッドまたはサーバーを占有することがなくなるため、優れたユーザー エクスペリエンスが保証されます。 テーブルのページング サイズを変更するには、サーバー側の "許可されているクエリ サイズ" とクライアント側のページ サイズを大きくします。サーバー側の "許可されているクエリ サイズ" は、`EnableQuery` 属性を使用して調整します。
 
     [EnableQuery(PageSize = 500)]
@@ -211,17 +212,17 @@ PageSize が、クライアントから要求されるサイズ以上になる�
 1. Visual Studio で、Controllers フォルダーを右クリックして、**[追加]** > **[コントローラー]** の順にクリックし、**[Web API 2 コントローラー &mdash; 空]** を選択して **[追加]** をクリックします。
 2. **コントローラー名** (`CustomController` など) を指定し、**[追加]** をクリックします。
 3. 新しいコントローラーのクラス ファイルに、次の using ステートメントを追加します。
-   
+
         using Microsoft.Azure.Mobile.Server.Config;
 4. 次の例に従って、API コントローラーのクラス定義に **[MobileAppController]** 属性を適用します。
-   
+
         [MobileAppController]
         public class CustomController : ApiController
         {
               //...
         }
 5. 次の例に示すように、App_Start/Startup.MobileApp.cs ファイルに **MapApiControllers** 拡張メソッドの呼び出しを追加します。
-   
+
         new MobileAppConfiguration()
             .MapApiControllers()
             .ApplyTo(config);
@@ -241,18 +242,18 @@ Azure Mobile Apps は、App Service 認証/承認を使用してモバイル バ
 
 1. Visual Studio で、 [Microsoft.Azure.Mobile.Server.Authentication] パッケージをインストールします。
 2. Startup.cs プロジェクト ファイルで、 **Configuration** メソッドの先頭に次のコード行を追加します。
-   
+
         app.UseAppServiceAuthentication(config);
-   
+
     この OWIN ミドルウェア コンポーネントは、関連付けられている App Service ゲートウェイによって発行されたトークンを検証します。
-3. 認証が必要なすべてのコントローラーまたはメソッドに `[Authorize]` 属性を追加します。 
+3. 認証が必要なすべてのコントローラーまたはメソッドに `[Authorize]` 属性を追加します。
 
 Mobile Apps バックエンドに対してクライアントを認証する方法については、「 [アプリケーションに認証を追加する](app-service-mobile-ios-get-started-users.md)」をご覧ください。
 
 ### <a name="custom-auth"></a>方法: アプリケーションにカスタム認証を使用する
 App Service 認証/承認プロバイダーの中に使用したいものがない場合は、独自のログイン システムを実装できます。 認証トークンの生成に役立つ [Microsoft.Azure.Mobile.Server.Login] パッケージをインストールします。  ユーザー資格情報を検証するための独自のコードを指定します。 たとえば、データベース内のソルトを使用してハッシュ化されたパスワードと照合することができます。 次の例では、(他の場所に定義されている) `isValidAssertion()` メソッドがこれらの照合を実行します。
 
-カスタム認証を公開するには、ApiController を作成し、`register` アクションと `login` アクションを公開します。 クライアントは、カスタム UI を使用してユーザーから情報を収集する必要があります。  その後、この情報は、標準の HTTP POST 呼び出しで API に送信されます。 サーバーでアサーションを検証したら、 `AppServiceLoginHandler.CreateToken()` メソッドを使用してトークンを発行します。  ApiController で `[MobileAppController]` 属性を使用することは**できません**。 
+カスタム認証を公開するには、ApiController を作成し、`register` アクションと `login` アクションを公開します。 クライアントは、カスタム UI を使用してユーザーから情報を収集する必要があります。  その後、この情報は、標準の HTTP POST 呼び出しで API に送信されます。 サーバーでアサーションを検証したら、 `AppServiceLoginHandler.CreateToken()` メソッドを使用してトークンを発行します。  ApiController で `[MobileAppController]` 属性を使用することは**できません**。
 
 `login` アクションの例:
 
@@ -296,8 +297,8 @@ App Service 認証/承認プロバイダーの中に使用したいものがな�
 
 > [!TIP]
 > `loginAsync()` アプローチを使用すると、後続のサービスのすべての呼び出しに認証トークンが添付されます。
-> 
-> 
+>
+>
 
 ### <a name="user-info"></a>方法: 認証されたユーザー情報を取得する
 ユーザーが App Service によって認証されると、.NET バックエンド コードで、割り当てられたユーザー ID とその他の情報にアクセスできます。 このユーザー情報を使用して、バックエンドで承認の決定を行うことができます。 次のコードは、要求に関連付けられているユーザー ID を取得します。
@@ -351,26 +352,26 @@ App Service では、ログイン プロバイダーからの特定の要求を�
 ## <a name="how-to-add-push-notifications-to-a-server-project"></a>方法: サーバー プロジェクトにプロジェクトを追加する
 **MobileAppConfiguration** オブジェクトを拡張し、Notification Hubs クライアントを作成して、サーバー プロジェクトにプッシュ通知を追加します。
 
-1. Visual Studio でサーバー プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックして `Microsoft.Azure.Mobile.Server.Notifications` を見つけ、**[インストール]** をクリックします。 
+1. Visual Studio でサーバー プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックして `Microsoft.Azure.Mobile.Server.Notifications` を見つけ、**[インストール]** をクリックします。
 2. 上記の手順を繰り返して、Notification Hubs クライアント ライブラリが含まれる `Microsoft.Azure.NotificationHubs` パッケージをインストールします。
 3. App_Start/Startup.MobileApp.cs で、初期化中に **AddPushNotifications()** 拡張メソッドの呼び出しを追加します。
-   
+
         new MobileAppConfiguration()
             // other features...
             .AddPushNotifications()
             .ApplyTo(config);
 4. Notification Hubs クライアントを作成する次のコードを追加します。
-   
+
         // Get the settings for the server project.
         HttpConfiguration config = this.Configuration;
         MobileAppSettingsDictionary settings =
             config.GetMobileAppSettingsProvider().GetMobileAppSettings();
-   
+
         // Get the Notification Hubs credentials for the Mobile App.
         string notificationHubName = settings.NotificationHubName;
         string notificationHubConnection = settings
             .Connections[MobileAppSettingsKeys.NotificationHubConnectionString].ConnectionString;
-   
+
         // Create a new Notification Hub client.
         NotificationHubClient hub = NotificationHubClient
             .CreateClientFromConnectionString(notificationHubConnection, notificationHubName);
@@ -395,7 +396,7 @@ Notification Hubs では、タグを使用して、ターゲットを絞った�
         }
     });
 
-インストールを作成するときは、プッシュ通知の登録時にクライアントから提供されたタグはすべてバックエンドで無視されます。 クライアントがインストールにタグを追加できるようにするには、前述のパターンを使用してタグを追加するカスタム API を作成する必要があります。 
+インストールを作成するときは、プッシュ通知の登録時にクライアントから提供されたタグはすべてバックエンドで無視されます。 クライアントがインストールにタグを追加できるようにするには、前述のパターンを使用してタグを追加するカスタム API を作成する必要があります。
 
 例については、App Service Mobile Apps の完成したクイックスタート サンプルの[クライアントによって追加されるプッシュ通知タグ][5]に関するセクションを参照してください。
 
@@ -429,10 +430,10 @@ Azure App Service には、ASP.NET アプリケーションのデバッグとト
 
 1. 「 [診断を有効にする方法](../app-service-web/web-sites-enable-diagnostic-log.md#enablediag)」の手順に従います。
 2. 次の using ステートメントをコード ファイルに追加します。
-   
+
         using System.Web.Http.Tracing;
 3. .NET バックエンドから診断ログに書き込むために、次のようにトレース ライターを作成します。
-   
+
         ITraceWriter traceWriter = this.Configuration.Services.GetTraceWriter();
         traceWriter.Info("Hello, World");
 4. サーバー プロジェクトを再発行し、モバイル アプリ バックエンドにアクセスして、ログ記録付きでコード パスを実行します。
@@ -453,12 +454,13 @@ App Service Authentication/Authorization を使用してクラウド ベース�
             TokenHandler = config.GetAppServiceTokenHandler()
         });
 
-前の例では、Web.config ファイル内のアプリケーション設定 *authAudience* と *authIssuer* を、HTTPS スキームを使用して、それぞれアプリケーション ルートの URL に構成する必要があります。 同様に、*authSigningKey* をアプリケーションの署名キーの値に設定する必要があります。 署名キーを取得するには、次の手順を実行します。
+前の例では、Web.config ファイル内のアプリケーション設定 *authAudience* と *authIssuer* を、HTTPS スキームを使用して、それぞれアプリケーション ルートの URL に構成する必要があります。 同様に、*authSigningKey* をアプリケーションの署名キーの値に設定する必要があります。
+署名キーを取得するには、次の手順を実行します。
 
-1. [Azure ポータル] 
+1. [Azure ポータル]
 2. **[ツール]**、**[Kudu]**、**[移動]** の順にクリックします。
 3. Kudu 管理サイトで、 **[環境]**をクリックします。
-4. *WEBSITE\_AUTH\_SIGNING\_KEY* の値を見つけます。 
+4. *WEBSITE\_AUTH\_SIGNING\_KEY* の値を見つけます。
 
 ローカル アプリケーション構成で、*authSigningKey* パラメーターの署名キーを使用します。  モバイル バックエンドは、ローカルで実行されているときに、クライアントがクラウドベースのエンドポイントから取得するトークンを検証できるようになりました。
 

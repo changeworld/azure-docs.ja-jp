@@ -9,10 +9,11 @@ ms.technology: luis
 ms.topic: article
 ms.date: 03/01/2017
 ms.author: cahann
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: d8e0f25d5dad4bf5651dd73144cde3a5435baa63
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 0ea1844c7a1edd0fb1cb323114d420083354c5a0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 
@@ -51,9 +52,13 @@ You can either publish your app directly to the **Production Slot** where end us
     >If the **Publish** button is disabled, then either your app does not have an assigned an endpoint key, or you have not trained your app yet.
 
 
-To test how your published app works, you can access the test console by clicking **Train & Test** in the left panel. For instructions on how to test your app using the test console, see [Train and test your app](Train-Test.md).
+
 
 If you want to test your published endpoint in a browser using the generated URL, you can click the URL to open it in your browser, then set the URL parameter "&q" to your test query (for example: "&q=Book me a flight to Boston on May 4"), and then press Enter. You will get the JSON response of your HTTP endpoint. 
 
 ![JSON response of published HTTP endpoint](./Images/PublishApp-JSONresponse.JPG)
 
+
+## <a name="next-steps"></a>Next steps
+
+To test how your published app works, you can access the test console by clicking **Train & Test** in the left panel. For instructions on how to test your app using the test console, see [Train and test your app](Train-Test.md).

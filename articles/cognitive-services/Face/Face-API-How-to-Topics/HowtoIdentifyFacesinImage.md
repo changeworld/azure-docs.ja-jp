@@ -9,10 +9,11 @@ ms.technology: face
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: anroth
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 178a1d1314d739a7f01b395e9f0ffb90f0221b29
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: a4dd68369c308be1ac13d6e04626a9ffc13cc355
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 ---
 
@@ -54,7 +55,7 @@ As an alternative, the subscription key can also be specified in the HTTP reques
 faceServiceClient = new FaceServiceClient("Your subscription key");
 ```
  
-The subscription key can be obtained from the Marketplace page of your Azure management portal. See [Subscriptions](https://www.microsoft.com/cognitive-services/en-us/sign-up).
+The subscription key can be obtained from the Marketplace page of your Azure management portal. See [Subscriptions](https://azure.microsoft.com/en-us/try/cognitive-services/).
 
 ## <a name="step2"></a> Step 2: Create the person group
 

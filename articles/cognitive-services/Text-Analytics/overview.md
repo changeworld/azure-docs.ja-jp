@@ -1,5 +1,5 @@
 ---
-title: Text Analytics API | Microsoft Docs
+title: Azure Text Analytics API | Microsoft Docs
 description: Use the Text Analytics API for sentiment analysis, key phrase extraction, topic detection for English text, and much more.
 services: cognitive-services
 author: LuisCabrer
@@ -9,10 +9,11 @@ ms.technology: text-analytics
 ms.topic: article
 ms.date: 05/02/2017
 ms.author: onewth
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: efda57d2ce4afa2ffcf6086cccf387971033a3b5
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 6ec62b4f87602faffc90374f095eea18a6654a95
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 
@@ -47,6 +48,7 @@ The supported languages are as follows:
 | Feature | Supported language codes |
 |:--- |:--- |
 | Sentiment |`en` (English), `es` (Spanish), `fr` (French), `pt` (Portuguese) |
-| Key Phrases |`en` (English), `es` (Spanish), `de` (German), `ja` (Japanese) |
+| Sentiment (additional preview languages) |`da` (Danish), `de` (German), `el` (Greek), `fi` (Finnish), `it` (Italian), `nl` (Dutch), `no` (Norwegian), `pl` (Polish), `ru` (Russian), `sv` (Swedish), `tr` (Turkish) |
+| Key Phrases |`de` (German), `en` (English), `es` (Spanish), `ja` (Japanese) |
 | Topics |`en` (English) |
 

@@ -10,14 +10,15 @@ ms.technology: bing-video-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 6d85975d3a80cece0409999964338f18ce34893d
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 903adb8b4d276a853a0f0197a4a7c2f1353d3521
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 
-# <a name="paging-videos"></a>Paging Videos
+# <a name="paging-videos"></a>Paging videos
 
 When you call the Video Search API, Bing returns a list of results. The list is a subset of the total number of results that are relevant to the query. To get the estimated total number of available results, access the answer object's [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v5-reference#videos-totalestimatedmatches) field.  
   
@@ -49,7 +50,7 @@ Host: api.cognitive.microsoft.com
 ```  
 
 > [!NOTE]
-> Version 7 Preview request:
+> V7 Preview request:
 
 > ```  
 > GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghies&count=20&offset=40&mkt=en-us HTTP/1.1  
@@ -66,7 +67,7 @@ Host: api.cognitive.microsoft.com
 ```  
 
 > [!NOTE]
-> Version 7 Preview request:
+> V7 Preview request:
 
 > ```  
 > GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghies&offset=40&mkt=en-us HTTP/1.1  
@@ -81,7 +82,7 @@ To eliminate duplicate results, use the [nextOffsetAddCount](https://docs.micros
 For example, if you want to page 30 videos at a time, you'd set `count` to 30 and `offset` to 0 in your first request. In your next request, you'd set 'count' to 30 and `offset` to 30 plus the value of `nextOffsetAddCount`. The value of `nextOffsetAddCount` is zero (0) if there are no duplicates or it may be 2 if there are two duplicates.
 
 > [!NOTE]
-> Version 7 Preview changes to paging:
+> V7 Preview changes to paging:
 >
 > Renamed the `nextOffsetAddCount` field of [Videos](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) to `nextOffset`. In v7, you set the `offset` query parameter to the `nextOffset` value.
 

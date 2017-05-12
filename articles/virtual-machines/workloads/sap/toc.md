@@ -17,7 +17,7 @@
 ## Virtual Machines 上の SAP HANA
 ### [単一インスタンスの SAP HANA](hana-get-started.md)
 ### [S/4 HANA または BW/4 HANA のデプロイ ガイド](cal-s4h.md)
-### [VM における高可用性] (sap-hana-high-availability.md)
+### [VM の高可用性](sap-hana-high-availability.md)
 ### [Backup の概要](sap-hana-backup-guide.md)
 ### [ファイル レベルのバックアップ](sap-hana-backup-file-level.md)
 ### [ストレージ スナップショット バックアップ](sap-hana-backup-storage-snapshots.md)

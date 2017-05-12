@@ -15,9 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/21/2016
 ms.author: jehollan; LADocs
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
 ms.openlocfilehash: fbfef291334109c6dcfcde80741874549fb7929f
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/10/2017
 
 
@@ -89,7 +90,7 @@ webhook でサポートされているトリガーとアクションの詳細を
 #### <a name="http-webhook"></a>HTTP Webhook
 
 コールバック URL をサービスにサブスクライブします。サービスは、必要に応じてこの URL を呼び出してロジック アプリを起動することができます。
-* は必須フィールドを意味します。
+\* は必須フィールドを意味します。
 
 | 表示名 | プロパティ名 | 説明 |
 | --- | --- | --- |
@@ -125,7 +126,7 @@ Webhook 要求
 #### <a name="http-webhook"></a>HTTP Webhook
 
 コールバック URL をサービスにサブスクライブします。サービスは、必要に応じてこの URL を呼び出してワークフロー ステップを再開できます。
-* は必須フィールドを意味します。
+\* は必須フィールドを意味します。
 
 | 表示名 | プロパティ名 | 説明 |
 | --- | --- | --- |

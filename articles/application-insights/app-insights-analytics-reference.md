@@ -11,12 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2017
+ms.date: 04/26/2017
 ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 7f6c71056bca7beebc02313409aabe386d191e23
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
+ms.openlocfilehash: 93831bb163f67bbf40026faf3096ff5b7c581dfe
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -664,7 +665,7 @@ requests
            | where Name == "Stop"
            | project StopTime=timestamp, ActivityId)
         on ActivityId
-    | project City, ActivityId, StartTime, StopTime, Duration, StopTime, StartTime
+    | project City, ActivityId, StartTime, StopTime, Duration=StopTime-StartTime
 
 ```
 
@@ -2750,7 +2751,8 @@ Application Insights の例外に対するクエリの結果を次に示しま�
 * `parsejson('21')` - 数値を示す、動的な型の単一の値
 * `parsejson('"21"')` - 文字列を示す、動的な型の単一の値
 
-JavaScript とは異なり、JSON では文字列の前後で二重引用符 (`"`) の使用が必須であることに注意してください。 そのため、一般的に、JSON 形式でエンコードされた文字列リテラルを単一引用符 (`'`) で囲む方がより簡単です。
+> ![メモ] JSON ではラベルと文字列値を囲むために二重引用符 (`"`) を使用する必要があります。 そのため、一般的に、JSON 形式でエンコードされた文字列リテラルを単一引用符 (`'`) で囲む方がより簡単です。
+> 
 
 この例では、動的な値を作成した後、そのフィールドを使用します。
 
@@ -2927,21 +2929,23 @@ arraylength(parsejson('21')) == null
 
 **例**
 
-次の例では、`context_custom_metrics` が `string` である場合、次のようになります。 
+次の例では、`customDimensions.person` が次に示す `string` です。 
 
 ```
-{"duration":{"value":118.0,"count":5.0,"min":100.0,"max":150.0,"stdDev":0.0,"sampledValue":118.0,"sum":118.0}}
+"\"addresses\":[{\"postcode\":\"C789\",\"street\":\"high st\",\"town\":\"Cardigan\"},{\"postcode\":\"J456\",\"street\":\"low st\",\"town\":\"Jumper\"}],\"name\":\"Ada\""
 ```
 
 その後、次のフラグメントがオブジェクトの `duration` スロットの値を取得し、そこから 2 つのスロット `duration.value` および  `duration.min` (それぞれ `118.0` と `110.0`) を取得します。
 
 ```AIQL
-T
-| ...
+customEvents
+| where name == "newMember"
 | extend d=parsejson(context_custom_metrics) 
 | extend duration_value=d.duration.value, duration_min=d["duration"]["min"]
 ```
 
+> ![メモ] JSON ではラベルと文字列値を囲むために二重引用符を使用する必要があります。 
+>
 
 
 ### <a name="range"></a>range

@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: f18fa84aedbf05e52fb8d42033a7bdd44c85e04d
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: f992fbeef1fd3d049670f7ea915b1cb28e6fd797
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 05/10/2017
 
 ---
 
-# <a name="paging-results"></a>Paging Results
+# <a name="paging-results"></a>Paging results
 
 When you call the Image Search API, Bing returns a list of results. The list is a subset of the total number of results that are relevant to the query. To get the estimated total number of available results, access the answer object's [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#totalestimatedmatches) field.  
   
@@ -50,7 +50,7 @@ Host: api.cognitive.microsoft.com
 ```  
 
 > [!NOTE]
-> Version 7 Preview request:
+> V7 Preview request:
 
 > ```  
 > GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghies&count=20&offset=40&mkt=en-us HTTP/1.1  
@@ -67,7 +67,7 @@ Host: api.cognitive.microsoft.com
 ```  
 
 > [!NOTE]
-> Version 7 Preview request:
+> V7 Preview request:
 
 > ```  
 > GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghies&offset=40&mkt=en-us HTTP/1.1  
@@ -82,7 +82,7 @@ To eliminate duplicate results, use the [nextOffsetAddCount](https://docs.micros
 For example, if you want to page 30 images at a time, you'd set `count` to 30 and `offset` to 0 in your first request. In your next request, you'd set 'count' to 30 and `offset` to 30 plus the value of `nextOffsetAddCount`. The value of `nextOffsetAddCount` is zero (0) if there are no duplicates or it may be 2 if there are two duplicates.
 
 > [!NOTE]
-> Version 7 Preview changes to paging:
+> V7 Preview changes to paging:
 >
 > Renamed the `nextOffsetAddCount` field of [Images](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#images) to `nextOffset`. In v7, you set the `offset` query parameter to the `nextOffset` value.
 

@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2017
 ms.author: banders
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
 ms.openlocfilehash: cfdc507d5e45fc716940bd4607631ba500bf4c59
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/15/2017
 
 
@@ -78,7 +79,7 @@ OMS ポータルを使用してソリューションを追加する場合は、�
 
 ## <a name="using-the-solution"></a>ソリューションの使用
 
-Activity Log Analytics ソリューションをワークスペースに追加すると、**[Azure Activity Logs]**(Azure アクティビティ ログ) タイルが [Overview](概要) ダッシュボードに追加されます。 このタイルには、ソリューションにアクセスできる Azure サブスクリプションの Azure アクティビティ レコードのカウント数が表示されます。
+Activity Log Analytics ソリューションをワークスペースに追加すると、**[Azure Activity Logs]**(Azure アクティビティ ログ) タイルが [Overview] \(概要) ダッシュボードに追加されます。 このタイルには、ソリューションにアクセスできる Azure サブスクリプションの Azure アクティビティ レコードのカウント数が表示されます。
 
 ![Azure アクティビティ ログのタイル](./media/log-analytics-activity/azure-activity-logs-tile.png)
 
@@ -90,10 +91,10 @@ Activity Log Analytics ソリューションをワークスペースに追加す
 
 | ブレード | Description |
 | --- | --- |
-| [Azure Activity Log Entries](Azure のアクティビティ ログ エントリ) | 選択した日付範囲の Azure アクティビティ ログ エントリ レコード合計上位の棒グラフが表示され、アクティビティの呼び出し元上位 10 個のリストも表示されます。 棒グラフをクリックすると、<code>Type=AzureActivity</code> のログ検索が実行されます。 呼び出し元の項目をクリックするとログ検索が実行され、その項目のアクティビティ ログ エントリがすべて返されます。 |
-| [Activity Logs by Status](状態ごとのアクティビティ ログ) | 選択した日付範囲の Azure アクティビティ ログ状態のドーナツ グラフが表示されます。 状態レコード上位 10 個のリストも表示されます。 グラフをクリックすると、<code>Type=AzureActivity &#124; measure count() by ActivityStatus</code> のログ検索が実行されます。 状態の項目をクリックするとログ検索が実行され、その状態レコードのアクティビティ ログ エントリがすべて返されます。 |
-| [Activity Logs by Resource](リソースごとのアクティビティ ログ) | アクティビティ ログのあるリソースの合計数が表示され、上位 10 個のリソースと各リソースのレコード カウントも表示されます。 合計領域をクリックすると、<code>Type=AzureActivity &#124; measure count() by Resource</code> のログ検索が実行され、ソリューションで使用可能なすべての Azure リソースが表示されます。 リソースをクリックするとログ検索が実行され、そのリソースのアクティビティ レコードがすべて返されます。 |
-| [Activity Logs by Resource Provider](リソース プロバイダーごとのアクティビティ ログ) | アクティビティ ログを生成するリソース プロバイダーの合計数が表示され、上位 10 個も表示されます。 合計領域をクリックすると、<code>Type=AzureActivity &#124; measure count() by ResourceProvider</code> のログ検索が実行され、Azure のリソース プロバイダーがすべて表示されます。 リソース プロバイダーをクリックするとログ検索が実行され、プロバイダーのアクティビティ レコードがすべて返されます。 |
+| [Azure Activity Log Entries] \(Azure のアクティビティ ログ エントリ) | 選択した日付範囲の Azure アクティビティ ログ エントリ レコード合計上位の棒グラフが表示され、アクティビティの呼び出し元上位 10 個のリストも表示されます。 棒グラフをクリックすると、<code>Type=AzureActivity</code> のログ検索が実行されます。 呼び出し元の項目をクリックするとログ検索が実行され、その項目のアクティビティ ログ エントリがすべて返されます。 |
+| [Activity Logs by Status] \(状態ごとのアクティビティ ログ) | 選択した日付範囲の Azure アクティビティ ログ状態のドーナツ グラフが表示されます。 状態レコード上位 10 個のリストも表示されます。 グラフをクリックすると、<code>Type=AzureActivity &#124; measure count() by ActivityStatus</code> のログ検索が実行されます。 状態の項目をクリックするとログ検索が実行され、その状態レコードのアクティビティ ログ エントリがすべて返されます。 |
+| [Activity Logs by Resource] \(リソースごとのアクティビティ ログ) | アクティビティ ログのあるリソースの合計数が表示され、上位 10 個のリソースと各リソースのレコード カウントも表示されます。 合計領域をクリックすると、<code>Type=AzureActivity &#124; measure count() by Resource</code> のログ検索が実行され、ソリューションで使用可能なすべての Azure リソースが表示されます。 リソースをクリックするとログ検索が実行され、そのリソースのアクティビティ レコードがすべて返されます。 |
+| [Activity Logs by Resource Provider] \(リソース プロバイダーごとのアクティビティ ログ) | アクティビティ ログを生成するリソース プロバイダーの合計数が表示され、上位 10 個も表示されます。 合計領域をクリックすると、<code>Type=AzureActivity &#124; measure count() by ResourceProvider</code> のログ検索が実行され、Azure のリソース プロバイダーがすべて表示されます。 リソース プロバイダーをクリックするとログ検索が実行され、プロバイダーのアクティビティ レコードがすべて返されます。 |
 
 ![Azure のアクティビティ ログのダッシュボード](./media/log-analytics-activity/activity-log-dash.png)
 
