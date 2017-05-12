@@ -10,14 +10,15 @@ ms.technology: bing-video-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 52ede334fb097e1d2a889f95c20dcfd1f0a646f5
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: ec8e0382d44f946021e99147b0df44d56b062176
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 
-# <a name="get-trending-videos"></a>Get Trending Videos  
+# <a name="get-trending-videos"></a>Get trending videos  
 
 To get today's trending videos, send the following GET request:  
   
@@ -32,7 +33,7 @@ Host: api.cognitive.microsoft.com
 ```
 
 > [!NOTE]
-> Version 7 Preview request:
+> V7 Preview request:
 >
 > ```  
 > GET https://api.cognitive.microsoft.com/bing/v7.0/videos/trending?mkt=en-us HTTP/1.1  

@@ -11,25 +11,21 @@ ms.topic: article
 ms.date: 06/21/2016
 ms.author: scottwhi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: 1acd9c29834ba1bddf32dce33a01af7d45943060
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 6ca0be075ab15c3436071d9679862af722619417
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 05/10/2017
 
 ---
 
-# <a name="spell-check-api-upgrade-guide"></a>Spell Check API Upgrade Guide
+# <a name="spell-check-api-upgrade-guide"></a>Spell Check API upgrade guide
 
 > [!NOTE]
-> Version 7 is a Preview release. All aspects of the API and documentation are subject to change. Use only for testing in a non-production environment.
+> V7 is a Preview release. All aspects of the API and documentation are subject to change. Use only for testing in a non-production environment.
 
 This upgrade guide identifies the changes between version 5 and version 7 of the Bing Spell Check API. Use this guide to help you identify the parts of your application that you need to update to use version 7.
 
-## <a name="subscription-keys"></a>Subscription Keys
-
-- Your version 5 paid and free trial subscription key will continue working with version 7.
-
-## <a name="breaking-changes"></a>Breaking Changes
+## <a name="breaking-changes"></a>Breaking changes
 
 ### <a name="endpoints"></a>Endpoints
 

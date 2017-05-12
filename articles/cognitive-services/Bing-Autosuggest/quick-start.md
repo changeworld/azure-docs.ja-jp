@@ -10,14 +10,15 @@ ms.technology: bing-autosuggest
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 4293152044b7d19a747eb43b83d98e561626bcdf
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 04df2250021fae35007e5b9c58c256fb6f8a4bdd
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 
-# <a name="making-your-first-autosuggest-query"></a>Making Your First Autosuggest Query
+# <a name="making-your-first-autosuggest-query"></a>Making your first Autosuggest query
 
 Before you can make your first call, you need to get a Cognitive Services subscription key. To get a key, see [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api).
 
@@ -28,7 +29,7 @@ https://api.cognitive.microsoft.com/bing/v5.0/Suggestions
 ```  
 
 > [!NOTE]
-> Version 7 Preview endpoint:
+> V7 Preview endpoint:
 > 
 > ```
 > https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
@@ -49,7 +50,7 @@ The client IP and location headers are important for returning location aware co
 
 For a list of all request and response headers, see [Headers](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#headers).
 
-## <a name="the-request"></a>The Request
+## <a name="the-request"></a>The request
 
 The request should include all the suggested query parameters and headers. You'd call this API each time the user types a new character in the search box. The completeness of the query string impacts the relevance of the suggested query terms that the API returns. The more complete the query string, the more relevant that the list of suggested query terms are. For example, the suggestions that the API may return for *s* are likely to be less relevant than the queries it returns for *sailing dinghies*. 
 
@@ -65,7 +66,7 @@ Host: api.cognitive.microsoft.com
 ```  
 
 > [!NOTE]
-> Version 7 Preview request:
+> V7 Preview request:
 
 > ```  
 > GET https://api.cognitive.microsoft.com/bing/v7.0/suggestions?q=sail&mkt=en-us HTTP/1.1  
@@ -149,7 +150,7 @@ BingAPIs-Market: en-US
 }  
 ```
 
-## <a name="next-steps"></a>Next Steps
+## <a name="next-steps"></a>Next steps
 
 Try out the API. Go to [Autosuggest API Testing Console](https://dev.cognitive.microsoft.com/docs/services/56c7694ecf5ff801a090fbd1/operations/56c769a2cf5ff801a090fbd2). 
 

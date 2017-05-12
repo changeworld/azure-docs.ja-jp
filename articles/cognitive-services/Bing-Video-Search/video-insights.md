@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: ee5de9e0ab6e9a28b2b9e1b9d4f12b3ca848d3fd
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: b9a1234fa5bcafbb26abdff938b1f3e5acf981dd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 05/10/2017
 
 ---
 
-# <a name="get-insights-about-a-video"></a>Get Insights about a Video
+# <a name="get-insights-about-a-video"></a>Get insights about a video
 
 Each video includes a video ID that you can use to get more information about the video, such as related videos.  
   
@@ -50,7 +50,7 @@ Host: api.cognitive.microsoft.com
 ``` 
 
 > [!NOTE]
-> Version 7 Preview request:
+> V7 Preview request:
 >
 > To get all video insights, set the [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#modulesrequested) query parameter to All.
 >
@@ -63,7 +63,7 @@ Host: api.cognitive.microsoft.com
 > Host: api.cognitive.microsoft.com  
 > ```  
 
-## <a name="getting-related-videos-insights"></a>Getting Related Videos Insights  
+## <a name="getting-related-videos-insights"></a>Getting related videos insights  
 
 To get videos that are related to the specified video, set the [modulesRequested](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v5-reference#modulesrequested) query parameter to RelatedVideos.
   
@@ -110,7 +110,7 @@ The following is the response to the previous request. The top-level object is a
 ```
 
 > [!NOTE]
-> Version 7 Preview request:
+> V7 Preview request:
 >
 > To get related video insights, set the [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#modulesrequested) query parameter to RelatedVideos.
 >

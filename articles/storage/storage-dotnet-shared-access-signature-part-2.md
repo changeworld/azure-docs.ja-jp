@@ -14,9 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: marsma
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 931503f56b32ce9d1b11283dff7224d7e2f015ae
 ms.openlocfilehash: 62ad4d3edeca07f1c4fe11fb6904dcbfb8f91435
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/09/2016
 
 
 ---
@@ -95,7 +97,7 @@ static string GetContainerSasUri(CloudBlobContainer container)
     //Set the expiry time and permissions for the container.
     //In this case no start time is specified, so the shared access signature becomes valid immediately.
     SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy();
-    sasConstraints.SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24);
+    sasConstraints.SharedAccessExpiryTime = DateTimeOffset.UtcNow.AddHours(24);
     sasConstraints.Permissions = SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.List;
 
     //Generate the shared access signature on the container, setting the constraints directly on the signature.
@@ -146,8 +148,8 @@ static string GetBlobSasUri(CloudBlobContainer container)
     //In this case the start time is specified as a few minutes in the past, to mitigate clock skew.
     //The shared access signature will be valid immediately.
     SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy();
-    sasConstraints.SharedAccessStartTime = DateTime.UtcNow.AddMinutes(-5);
-    sasConstraints.SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24);
+    sasConstraints.SharedAccessStartTime = DateTimeOffset.UtcNow.AddMinutes(-5);
+    sasConstraints.SharedAccessExpiryTime = DateTimeOffset.UtcNow.AddHours(24);
     sasConstraints.Permissions = SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Write;
 
     //Generate the shared access signature on the blob, setting the constraints directly on the signature.
@@ -188,7 +190,7 @@ static void CreateSharedAccessPolicy(CloudBlobClient blobClient, CloudBlobContai
     //Create a new shared access policy and define its constraints.
     SharedAccessBlobPolicy sharedPolicy = new SharedAccessBlobPolicy()
     {
-        SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24),
+        SharedAccessExpiryTime = DateTimeOffset.UtcNow.AddHours(24),
         Permissions = SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.List | SharedAccessBlobPermissions.Read
     };
 
@@ -584,9 +586,4 @@ static void Main(string[] args)
 
 [sas-console-output-1]: ./media/storage-dotnet-shared-access-signature-part-2/sas-console-output-1.PNG
 [sas-console-output-2]: ./media/storage-dotnet-shared-access-signature-part-2/sas-console-output-2.PNG
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

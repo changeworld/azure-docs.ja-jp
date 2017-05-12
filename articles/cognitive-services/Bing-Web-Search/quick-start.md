@@ -10,14 +10,15 @@ ms.technology: bing-web-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: bac657669bae589e2c16674418b13e7aebef85be
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: d50325dd64352da17890fac34e7be7d29a9da2ed
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 
-# <a name="your-first-bing-search-query"></a>Your First Bing Search Query
+# <a name="your-first-bing-search-query"></a>Your first Bing search query
 
 Before you can make your first call, you need to get a Cognitive Services subscription key. To get a key, see [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
 
@@ -28,7 +29,7 @@ https://api.cognitive.microsoft.com/bing/v5.0/search
 ```
 
 > [!NOTE]
-> Version 7 Preview endpoint:
+> V7 Preview endpoint:
 > 
 > ```
 > https://api.cognitive.microsoft.com/bing/v7.0/search
@@ -50,7 +51,7 @@ The client IP and location headers are important for returning location aware co
 
 For a list of all request and response headers, see [Headers](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v5-reference#headers).
 
-## <a name="the-request"></a>The Request
+## <a name="the-request"></a>The request
 
 The following shows a search request that includes all the suggested query parameters and headers. If it's your first time calling any of the Bing APIs, don't include the client ID header. Only include the client ID if you've previously called a Bing API and Bing returned a client ID for the user and device combination. 
   
@@ -65,7 +66,7 @@ Host: api.cognitive.microsoft.com
 ```  
 
 > [!NOTE]
-> Version 7 Preview request:
+> V7 Preview request:
 >
 > ```  
 > GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+lessons+seattle&mkt=en-us HTTP/1.1  
@@ -282,7 +283,7 @@ BingAPIs-Market: en-US
 }
 ```
 
-## <a name="next-steps"></a>Next Steps
+## <a name="next-steps"></a>Next steps
 
 Try out the API. Go to [Web Search API Testing Console](https://dev.cognitive.microsoft.com/docs/services/56b43eeccf5ff8098cef3807/operations/56b4447dcf5ff8098cef380d). 
 

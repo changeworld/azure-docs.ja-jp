@@ -10,13 +10,14 @@ ms.technology: bing-news-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 673048d309443314ed7a67aceea9f7ac3f100b41
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 281206a96206f00da7449b72556f955b774bacac
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 
-# <a name="resizing-and-cropping-thumbnail-images"></a>Resizing and Cropping Thumbnail Images
+# <a name="resizing-and-cropping-thumbnail-images"></a>Resizing and cropping thumbnail images
 
 [!INCLUDE [cognitive-services-bing-resize-crop-thumbnails](../../../includes/cognitive-services-bing-resize-crop-thumbnails.md)]

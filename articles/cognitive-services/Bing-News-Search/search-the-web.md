@@ -11,21 +11,21 @@ ms.topic: article
 ms.date: 06/21/2016
 ms.author: scottwhi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: 1ee80a665673ecb3583ef80ec452f36480f1e54d
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 03c180674e7c4a480c83e807ced788710689ab2b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 05/10/2017
 
 ---
 
-# <a name="searching-the-web-for-news"></a>Searching the Web for News
+# <a name="searching-the-web-for-news"></a>Searching the web for news
 
 The News API provides a similar (but not exact) experience to Bing.com/News. The News API lets you send a search query to Bing and get back a list of relevant news articles.  
 
 If you're building a news-only search results page to find news that's relevant to the user's search query, call this API instead of calling the more general [Web Search API](../bing-web-search/search-the-web.md). If you want news and other types of content such as webpages, images, and videos, then call the Web Search API.
 
 
-## <a name="search-query-term"></a>Search Query Term
+## <a name="search-query-term"></a>Search query term
 
 If you're requesting general news from Bing, your user experience must provide a search box where the user enters a search query term. You can determine the maximum length of the term that you allow, but the maximum length of all your query parameters should be less than 1,500 characters.
 
@@ -43,7 +43,7 @@ If the query term contains a spelling mistake, the search response includes a [Q
 
 You could use `originalQuery` and `alteredQuery` to let the user know the actual query term that Bing used.
 
-## <a name="general-news"></a>General News
+## <a name="general-news"></a>General news
 
 To get general news articles related to the user's search term from the web, send the following GET request:
 
@@ -58,7 +58,7 @@ Host: api.cognitive.microsoft.com
 ```  
 
 > [!NOTE]
-> Version 7 Preview request:
+> V7 Preview request:
 >
 > ```  
 > GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies&mkt=en-us HTTP/1.1  
@@ -131,7 +131,7 @@ Each [news article](https://docs.microsoft.com/rest/api/cognitiveservices/bing-n
 
 If Bing can determine the category of news article, the article includes the `category` field.
 
-## <a name="top-news"></a>Top News
+## <a name="top-news"></a>Top news
 
 To get today's top news articles, you'd make the same request as getting general news except that you'd leave `q` unset.
 
@@ -146,7 +146,7 @@ Host: api.cognitive.microsoft.com
 ``` 
 
 > [!NOTE]
-> Version 7 Preview request:
+> V7 Preview request:
 >
 > ```  
 > GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=&mkt=en-us HTTP/1.1  
@@ -159,7 +159,7 @@ Host: api.cognitive.microsoft.com
 
 The response is the same response that general news returns except that the `news` answer does not include the `totalEstimatedMatches` field because there's a set number of results. The number of top news articles may vary depending on the news cycle. Be sure to use `provider` to attribute the article.
 
-## <a name="news-by-category"></a>News by Category
+## <a name="news-by-category"></a>News by category
 
 To get news articles by category, such as the top sports or entertainment articles, send the following GET request to Bing:
 
@@ -174,7 +174,7 @@ Host: api.cognitive.microsoft.com
 ```  
 
 > [!NOTE]
-> Version 7 Preview request:
+> V7 Preview request:
 >
 > ```  
 > GET https://api.cognitive.microsoft.com/bing/v7.0/news?category=sports&mkt=en-us HTTP/1.1  
@@ -190,7 +190,7 @@ Use the [category](https://docs.microsoft.com/rest/api/cognitiveservices/bing-ne
 The response is the same as top news except that the articles are all the specified category.
 
 
-## <a name="headline-news"></a>Headline News
+## <a name="headline-news"></a>Headline news
 
 To request headline news articles and get articles from all news categories, send the following GET request to Bing: 
  
@@ -205,7 +205,7 @@ Host: api.cognitive.microsoft.com
 ```  
 
 > [!NOTE]
-> Version 7 Preview request:
+> V7 Preview request:
 >
 > ```  
 > GET https://api.cognitive.microsoft.com/bing/v7.0/news?mkt=en-us HTTP/1.1  
@@ -225,7 +225,7 @@ By default, the response includes up to 12 headline articles. To change the numb
 The response counts clusters as one article. Because a cluster may contain multiple articles, the response may include more than 12 headline articles and more than four non-headline articles per category.  
 
 
-## <a name="trending-news"></a>Trending News
+## <a name="trending-news"></a>Trending news
 
 To get news topics that are trending on social networks, send the following GET request to Bing:  
   
@@ -241,7 +241,7 @@ Host: api.cognitive.microsoft.com
 ```  
 
 > [!NOTE]
-> Version 7 Preview request:
+> V7 Preview request:
 >
 > ```  
 > GET https://api.cognitive.microsoft.com/bing/v7.0/news/trendingtopics?mkt=en-us HTTP/1.1  
@@ -297,7 +297,7 @@ The following is the response to the preceding request. Each trending news topic
 }    
 ```
 
-## <a name="clustered-news-article"></a>Clustered News Article
+## <a name="clustered-news-article"></a>Clustered news article
   
 If there are other articles that are related to a news article, the news article may include the [clusteredArticles](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference#newsarticle-clusteredarticles) field. The following shows an article with clustered articles.
 
@@ -334,12 +334,12 @@ If there are other articles that are related to a news article, the news article
 ```
 
 
-## <a name="throttling-requests"></a>Throttling Requests
+## <a name="throttling-requests"></a>Throttling requests
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../includes/cognitive-services-bing-throttling-requests.md)]
 
 
-## <a name="next-steps"></a>Next Steps
+## <a name="next-steps"></a>Next steps
 
 To get started quickly with your first request, see [Making Your First Request](./quick-start.md).
 

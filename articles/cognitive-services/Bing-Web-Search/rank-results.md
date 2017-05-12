@@ -10,14 +10,15 @@ ms.technology: bing-web-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 675faed9738cdd5c1b0fd041122b6be928adf781
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 8d85970fd0be757d45967063506731dd77650ccc
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 
-# <a name="using-ranking-to-display-results"></a>Using Ranking to Display Results  
+# <a name="using-ranking-to-display-results"></a>Using ranking to display results  
 
 Each search response includes a [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v5-reference#rankingresponse) answer, that specifies how you must display the search results. The ranking response groups results by mainline content and sidebar content for a traditional search results page. If you do not display the results in a traditional mainline and sidebar format, you must provide the mainline content higher visibility than the sidebar content.  
   
@@ -215,7 +216,7 @@ And the sidebar would display the following search results:
 -   All the related searches  
   
 
-## <a name="next-steps"></a>Next Steps
+## <a name="next-steps"></a>Next steps
 
 For information about promoting unranked results, see [Promoting answers that are not ranked](./filter-answers.md#promoting-answers-that-are-not-ranked).
 
