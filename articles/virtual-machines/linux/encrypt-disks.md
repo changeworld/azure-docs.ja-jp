@@ -16,9 +16,9 @@ ms.workload: infrastructure
 ms.date: 03/23/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 814f6c9df0dea145e27a2bf5cc43649bc88e070a
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 62122105288d9d625079c385edb9760be31071dd
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -123,10 +123,10 @@ VM 暗号化のプロセスは次のとおりです。
 ## <a name="encryption-process"></a>暗号化プロセス
 ディスクの暗号化は、以下の他のコンポーネントに依存します。
 
-* **Azure Key Vault** - ディスクの暗号化/暗号化解除プロセスに使われる暗号化キーとシークレットの保護に使われます。 
+* **Azure Key Vault** - ディスクの暗号化/暗号化解除プロセスに使われる暗号化キーとシークレットの保護に使われます。
   * Azure Key Vault が既に存在する場合は、それを使うことができます。 Key Vault をディスク暗号化専用にする必要はありません。
   * 管理境界とキーの可視性を分離するため、専用の Key Vault を作成してもかまいません。
-* **Azure Active Directory** - 必要な暗号化キーの安全な交換と、要求されたアクションの認証を処理します。 
+* **Azure Active Directory** - 必要な暗号化キーの安全な交換と、要求されたアクションの認証を処理します。
   * 通常は、既存の Azure Active Directory インスタンスを使ってアプリケーションを保持できます。
   * サービス プリンシパルは、適切な暗号化キーを要求し、発行するセキュリティで保護されたメカニズムを提供します。 Azure Active Directory と統合する実際のアプリケーションを開発しているのではありません。
 
@@ -149,7 +149,7 @@ VM 暗号化のプロセスは次のとおりです。
 
 コマンドの例全体を通して、パラメーターの例を実際の名前、場所、およびキーの値に置き換えます。 以下の例では、`myResourceGroup`、`myKey`、`myVM` などの表記を使います。
 
-最初に、暗号化キーを格納する Azure Key Vault を作成します。 Azure Key Vault は、キー、シークレット、パスワードを格納して、アプリケーションとサービスに安全に実装できるようにします。 仮想ディスクの暗号化では、仮想ディスクの暗号化または暗号化解除に使われる暗号化キーを格納するために Key Vault を使います。 
+最初に、暗号化キーを格納する Azure Key Vault を作成します。 Azure Key Vault は、キー、シークレット、パスワードを格納して、アプリケーションとサービスに安全に実装できるようにします。 仮想ディスクの暗号化では、仮想ディスクの暗号化または暗号化解除に使われる暗号化キーを格納するために Key Vault を使います。
 
 [az provider register](/cli/azure/provider#register) を使用して Azure サブスクリプションで Azure Key Vault プロバイダーを有効にし、[az group create](/cli/azure/group#create) を使用してリソース グループを作成します。 次の例では、`myResourceGroup` という名前のリソース グループを `WestUS` の場所に作成します。
 
@@ -166,7 +166,7 @@ az keyvault create --name $keyvault_name --resource-group myResourceGroup \
   --location WestUS --enabled-for-disk-encryption True
 ```
 
-ソフトウェアまたはハードウェア セキュリティ モデル (HSM) の保護を使って、暗号化キーを格納できます。 HSM を使うには、Premium Key Vault が必要です。 ソフトウェアで保護されたキーを格納する Standard Key Vault ではなく Premium Key Vault を作成するには、追加コストがかかります。 Premium Key Vault を作成するには、前の手順で `--sku Premium` をコマンドに追加します。 ここでは Standard Key Vault を作成したので、次の例ではソフトウェアで保護されたキーを使います。 
+ソフトウェアまたはハードウェア セキュリティ モデル (HSM) の保護を使って、暗号化キーを格納できます。 HSM を使うには、Premium Key Vault が必要です。 ソフトウェアで保護されたキーを格納する Standard Key Vault ではなく Premium Key Vault を作成するには、追加コストがかかります。 Premium Key Vault を作成するには、前の手順で `--sku Premium` をコマンドに追加します。 ここでは Standard Key Vault を作成したので、次の例ではソフトウェアで保護されたキーを使います。
 
 どちらの保護モデルでも、VM が起動して仮想ディスクを復号化するときに、Azure プラットフォームは暗号化キーを要求するためのアクセスを許可される必要があります。 [az keyvault key create](/cli/azure/keyvault/key#create) を使用して、Key Vault に暗号化キーを作成します。 次の例では、`myKey` という名前のキーを作成します。
 
@@ -278,7 +278,6 @@ az vm encryption enable --resource-group myResourceGroup --name myVM \
 
 
 ## <a name="next-steps"></a>次のステップ
-* 暗号化キーや Vault の削除など、Azure Key Vault の管理について詳しくは、「[CLI を使用した Key Vault の管理](../../key-vault/key-vault-manage-with-cli.md)」をご覧ください。
+* 暗号化キーや Vault の削除など、Azure Key Vault の管理について詳しくは、「[CLI を使用した Key Vault の管理](../../key-vault/key-vault-manage-with-cli2.md)」をご覧ください。
 * 暗号化されたカスタム VM を Azure にアップロードするための準備など、ディスクの暗号化について詳しくは、「[Azure Disk Encryption](../../security/azure-security-disk-encryption.md)」をご覧ください。
-
 

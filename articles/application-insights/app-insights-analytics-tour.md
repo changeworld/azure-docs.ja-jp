@@ -11,11 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2017
+ms.date: 05/06/2017
 ms.author: awills
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
 ms.openlocfilehash: baa8880e47c827e09f6027637d73f2522fec60b9
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/07/2017
 
 

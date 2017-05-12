@@ -29,15 +29,19 @@
 ### [場所を設定する](resource-manager-template-location.md)
 ### [タグを割り当てる](resource-manager-template-tags.md)
 ### [子リソースの名前と種類を設定する](resource-manager-template-child-resource.md)
+### [リソースを更新する](resource-manager-update.md)
+### [パラメーターにオブジェクトを使用する](resource-manager-objects-as-parameters.md)
 ### [リンク済みテンプレート間の状態を共有する](best-practices-resource-manager-state.md)
 ### [テンプレートの設計パターン](best-practices-resource-manager-design-templates.md)
 ## デプロイ
 ### PowerShell
 #### [テンプレートのデプロイ](resource-group-template-deploy.md)
 #### [SAS トークンを使用したプライベート テンプレートのデプロイ](resource-manager-powershell-sas-token.md)
+#### [テンプレートをエクスポートして再デプロイする](resource-manager-export-template-powershell.md)
 ### Azure CLI
 #### [テンプレートのデプロイ](resource-group-template-deploy-cli.md)
 #### [SAS トークンを使用したプライベート テンプレートのデプロイ](resource-manager-cli-sas-token.md)
+#### [テンプレートをエクスポートして再デプロイする](resource-manager-export-template-cli.md)
 ### [ポータル](resource-group-template-deploy-portal.md)
 ### [REST API](resource-group-template-deploy-rest.md)
 ### [Visual Studio Team Services を使用した継続的インテグレーション](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
@@ -72,7 +76,13 @@
 
 # リファレンス
 ## [テンプレート関数](resource-group-template-functions.md)
-## [PowerShell](/powershell/resourcemanager/azurerm.resources/v3.5.0/azurerm.resources)
+### [配列とオブジェクトの関数](resource-group-template-functions-array.md)
+### [比較関数](resource-group-template-functions-comparison.md)
+### [デプロイ関数](resource-group-template-functions-deployment.md)
+### [数値関数](resource-group-template-functions-numeric.md)
+### [リソース関数](resource-group-template-functions-resource.md)
+### [文字列関数](resource-group-template-functions-string.md)
+## [PowerShell](/powershell/module/azurerm.resources)
 ## [Azure 2.0 CLI](/cli/azure/resource)
 ## [.NET](/dotnet/api/microsoft.azure.management.resourcemanager)
 ## [Java](/java/api/com.microsoft.azure.management.resources)

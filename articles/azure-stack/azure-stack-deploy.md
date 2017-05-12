@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/10/2017
 ms.author: erikje
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 0af0f951c7bb1b11cff88ae2d5345ad9ce480264
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 72967558b2ab362e19e7039e9d95a4b7b6990364
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="azure-stack-deployment-prerequisites"></a>Azure Stack deployment prerequisites
 Before you deploy Azure Stack POC ([Proof of Concept](azure-stack-poc.md)), make sure your computer meets the following requirements.
-Therefore, you can use the same hardware that you used for the previous single-box preview.
+You can use the same hardware that you used for the previous single-box preview.
 
 ## <a name="hardware"></a>Hardware
 | Component | Minimum | Recommended |

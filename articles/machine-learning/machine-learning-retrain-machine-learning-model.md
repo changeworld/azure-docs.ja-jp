@@ -33,7 +33,7 @@ Machine Learning を使って作成するモデルは、通常、静的ではあ
 ## <a name="why-retrain-defining-the-problem"></a>再トレーニングを行う理由: 問題の定義
 Machine Learning のトレーニング プロセスの一環として、モデルのトレーニングではデータのセットを使用します。 Machine Learning を使って作成するモデルは、通常、静的ではありません。 新しいデータが使用可能になるか、API のコンシューマーに独自のデータがある場合は、モデルを再トレーニングする必要があります。
 
-これらのシナリオでは、開発者または API のコンシューマーはプログラムによる API を通じて簡単にクライアントを作成でき、独自のデータを使用して&1; 回のみまたは定期的に、モデルの再トレーニングを行うことができます。 その後再トレーニングの結果を評価し、さらに Web サービス API を更新して、新しくトレーニングを行ったモデルを使用できます。
+これらのシナリオでは、開発者または API のコンシューマーはプログラムによる API を通じて簡単にクライアントを作成でき、独自のデータを使用して 1 回のみまたは定期的に、モデルの再トレーニングを行うことができます。 その後再トレーニングの結果を評価し、さらに Web サービス API を更新して、新しくトレーニングを行ったモデルを使用できます。
 
 > [!NOTE]
 > 既存のトレーニング実験と新しい Web サービスがある場合は、次のセクションで説明したチュートリアルの手順ではなく、既存の予測 Web サービスの再トレーニングを確認することができます。
@@ -93,7 +93,7 @@ Web サービスを再トレーニングします。
 
 ## <a name="other-resources"></a>その他のリソース
 * [Azure Data Factory を使用した Azure Machine Learning モデルの再トレーニングと更新](https://azure.microsoft.com/blog/retraining-and-updating-azure-machine-learning-models-with-azure-data-factory/)
-* [PowerShell を使用して&1; つの実験から複数の Machine Learning モデルと Web サービス エンドポイントを作成する](machine-learning-create-models-and-endpoints-with-powershell.md)
+* [PowerShell を使用して 1 つの実験から複数の Machine Learning モデルと Web サービス エンドポイントを作成する](machine-learning-create-models-and-endpoints-with-powershell.md)
 * [API を使用した AML 再トレーニング モデル](https://www.youtube.com/watch?v=wwjglA8xllg) ビデオでは、再トレーニング API と PowerShell を使用して Azure Machine Learning で作成された Machine Learning モデルの再トレーニング方法が示されます。
 
 <!--image links-->

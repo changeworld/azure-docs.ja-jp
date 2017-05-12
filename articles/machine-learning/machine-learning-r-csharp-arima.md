@@ -1,24 +1,11 @@
 ---
-title: "(非推奨) 予測 - 自己回帰統合の移動平均 (ARIMA) - Azure | Microsoft Docs"
-description: "(非推奨) 予測 - 自己回帰統合の移動平均 (ARIMA)"
-services: machine-learning
-documentationcenter: 
-author: yijichen
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 1e0d525f-8a9e-4b42-87e0-c9423f059f8c
-ms.service: machine-learning
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: deprecated
-ms.date: 01/06/2017
-ms.author: yijichen
+
 ROBOTS: NOINDEX, NOFOLLOW
+redirect_url: https://gallery.cortanaintelligence.com/
 translationtype: Human Translation
-ms.sourcegitcommit: b1ee1eae91185c1893b55be2046343d78dd6c48b
-ms.openlocfilehash: 169331fc08c8d378fbb0c9869e69a9eb132224ba
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: be75a60762674ab347ab7adaddfb17c4208a2b9e
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -34,7 +21,7 @@ ms.lasthandoff: 02/16/2017
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-> この Web サービスは、モバイル アプリ、Web サイト、ローカル コンピューターなどからユーザーが使用できます。 この Web サービスのもう&1; つの目的は、Azure Machine Learning を使用して R コード上に Web サービスを作成する方法の例を示すことです。 数行の R コードを記述し、Azure Machine Learning Studio 内でボタンを何回かクリックするだけで、R コードで実験を作成し、Web サービスとして発行できます。 この Web サービスは Azure Marketplace に発行され、Web サービスの作成者がインフラストラクチャを設定することなく、世界中のユーザーやデバイスで使用されます。
+> この Web サービスは、モバイル アプリ、Web サイト、ローカル コンピューターなどからユーザーが使用できます。 この Web サービスのもう 1 つの目的は、Azure Machine Learning を使用して R コード上に Web サービスを作成する方法の例を示すことです。 数行の R コードを記述し、Azure Machine Learning Studio 内でボタンを何回かクリックするだけで、R コードで実験を作成し、Web サービスとして発行できます。 この Web サービスは Azure Marketplace に発行され、Web サービスの作成者がインフラストラクチャを設定することなく、世界中のユーザーやデバイスで使用されます。
 > 
 > 
 

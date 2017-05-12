@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/09/2016
 ms.author: rupisure
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ebc5dbf790ca6012cfe9a7ea9ccee9fdacb46ffd
 ms.openlocfilehash: 20925a3f6532b9aa0dccbee3f3965c5aa6303ee4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/22/2016
 
 
 ---
@@ -71,7 +73,8 @@ ms.openlocfilehash: 20925a3f6532b9aa0dccbee3f3965c5aa6303ee4
 2. On the client virtual machine in the Microsoft Azure Stack environment, ensure that your PowerShell session is set up with your service administrator credentials. You can find instructions for how to authenticate PowerShell in Azure Stack in [Deploy a template with PowerShell](azure-stack-deploy-template-powershell.md).
 3. Use the **Add-AzureRMGalleryItem** PowerShell cmdlet to publish the Marketplace item to Azure Stack. For example:
    
-       Add-AzureRMGalleryItem -SubscriptionId (Get-AzureRmSubscription -SubscriptionName 'Default Provider Subscription').SubscriptionId -GalleryItemUri https://sample.blob.core.windows.net/gallerypackages/Microsoft.SimpleTemplate.1.0.0.azpkg  -Apiversion "2015-04-01" –Verbose
+       Add-AzureRMGalleryItem -GalleryItemUri `
+       https://sample.blob.core.windows.net/gallerypackages/Microsoft.SimpleTemplate.1.0.0.azpkg –Verbose
    
    | Parameter | Description |
    | --- | --- |
@@ -87,7 +90,7 @@ ms.openlocfilehash: 20925a3f6532b9aa0dccbee3f3965c5aa6303ee4
 5. Your Marketplace item has now been saved to the Azure Stack Marketplace. You can choose to delete it from your Blob storage location.
 6. You can remove a Marketplace item by using the **Remove-AzureRMGalleryItem** cmdlet. Example:
    
-        Remove-AzureRMGalleryItem -SubscriptionId (Get-AzureRmSubscription -SubscriptionName 'Default Provider Subscription').SubscriptionId -Name Microsoft.SimpleTemplate.1.0.0 -Apiversion "2015-04-01" –Verbose
+        Remove-AzureRMGalleryItem -Name Microsoft.SimpleTemplate.1.0.0  –Verbose
    
    > [!NOTE]
    > The Marketplace UI may show an error after you remove an item. To fix this, click **Settings** in the portal. Then, select **Discard modifications** under **Portal customization**.
@@ -155,10 +158,5 @@ Icons and text for Marketplace items as seen in the Azure Stack portal are as fo
 
 ### <a name="marketplace-item-details-blade"></a>Marketplace item details blade
 ![Marketplace item details blade](media/azure-stack-marketplace-item-ui-reference/image3.png)
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

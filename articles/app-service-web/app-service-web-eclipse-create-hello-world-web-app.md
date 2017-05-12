@@ -14,9 +14,10 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm;asirveda
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 9bb0b5fa32cd6dabd6c41106db38a587b0a55eed
 ms.openlocfilehash: 18299966173f030f615049eaf11a55a1f71305a0
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/24/2017
 
 
@@ -136,7 +137,7 @@ Java Web アプリケーションを Azure にデプロイする方法はいく�
     Web アプリを Azure にデプロイするプロセスは、わずか数秒で完了します。 アプリケーションの準備ができると、 **[Published (発行済み)]** in the **[Published (発行済み)]** というリンクが表示されます。 リンクをクリックすると、デプロイした Web アプリのホーム ページが表示されます。
 
 ## <a name="updating-your-web-app"></a>Web アプリの更新
-既存の実行中の Azure Web アプリを更新するプロセスは短時間で簡単です。更新には&2; つのオプションがあります。
+既存の実行中の Azure Web アプリを更新するプロセスは短時間で簡単です。更新には 2 つのオプションがあります。
 
 * 既存の Java Web アプリのデプロイを更新できます。
 * 同じ Web アプリ コンテナーに追加の Java アプリケーションを発行できます。

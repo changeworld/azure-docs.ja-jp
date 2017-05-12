@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: cabailey
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 51732acdad74dd6dbfc47fae62efc87df6ce5c15
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 924fce8245a88fd7c12636182336e503237fe4dc
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -35,11 +35,11 @@ Key Vault の操作を行ってから、遅くとも 10 分後には、ログ情
 このチュートリアルでは、Azure Key Vault のログ記録を開始する際に役立つ情報を提供し、ストレージ アカウントを作成し、ログ記録を有効にし、収集されたログ情報を解釈します。  
 
 > [!NOTE]
-> Key Vault、キー、またはシークレットの作成方法については、このチュートリアルに含まれていません。 詳細については、「 [Azure Key Vault の概要](key-vault-get-started.md)」を参照してください。 また、クロスプラットフォーム コマンドライン インターフェイスの手順については、 [対応するチュートリアル](key-vault-manage-with-cli.md)をご覧ください。
-> 
+> Key Vault、キー、またはシークレットの作成方法については、このチュートリアルに含まれていません。 詳細については、「 [Azure Key Vault の概要](key-vault-get-started.md)」を参照してください。 また、クロスプラットフォーム コマンドライン インターフェイスの手順については、 [対応するチュートリアル](key-vault-manage-with-cli2.md)をご覧ください。
+>
 > 現時点では、Azure ポータルで Azure Key Vault を構成できません。 代わりに、Azure PowerShell 命令を使用します。
-> 
-> 
+>
+>
 
 Azure Key Vault の概要については、「 [Azure Key Vault とは](key-vault-whatis.md)
 
@@ -47,7 +47,7 @@ Azure Key Vault の概要については、「 [Azure Key Vault とは](key-vaul
 このチュートリアルを完了するには、以下が必要です。
 
 * 使用している既存の Key Vault。  
-* Azure PowerShell **1.0.1 以降のバージョン**。 Azure PowerShell をインストールして、Azure サブスクリプションに関連付けるには、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」を参照してください。 Azure PowerShell をインストール済みで、バージョンがわからない場合は、Azure PowerShell コンソールで「 `(Get-Module azure -ListAvailable).Version`」と入力します。  
+* Azure PowerShell **1.0.1 以降のバージョン**。 Azure PowerShell をインストールして、Azure サブスクリプションに関連付けるには、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」を参照してください。 Azure PowerShell をインストール済みで、バージョンがわからない場合は、Azure PowerShell コンソールで「 `(Get-Module azure -ListAvailable).Version`」と入力します。  
 * Azure 上に確保された Key Vault のログを格納するための十分なストレージ。
 
 ## <a id="connect"></a>サブスクリプションへの接続
@@ -57,7 +57,7 @@ Azure PowerShell セッションを開始し、次のコマンドで Azure ア�
 
 ポップアップ ブラウザー ウィンドウで、Azure アカウントのユーザー名とパスワードを入力します。 Azure PowerShell は、このアカウントに関連付けられているすべてのサブスクリプションを取得し、既定で最初のサブスクリプションを使用します。
 
-複数のサブスクリプションをお持ちの場合は、Azure Key Vault を作成するときに使用した特定の&1; つを指定することが必要なことがあります。 アカウントのサブスクリプションを確認するには、次を入力します。
+複数のサブスクリプションをお持ちの場合は、Azure Key Vault を作成するときに使用した特定の 1 つを指定することが必要なことがあります。 アカウントのサブスクリプションを確認するには、次を入力します。
 
     Get-AzureRmSubscription
 
@@ -66,11 +66,11 @@ Azure PowerShell セッションを開始し、次のコマンドで Azure ア�
     Set-AzureRmContext -SubscriptionId <subscription ID>
 
 > [!NOTE]
-> これは重要な手順で、アカウントに複数のサブスクリプションが関連付けられている場合に特に便利です。 この手順をスキップすると、Microsoft.Insights を登録する際にエラーが発生する可能性があります。 
+> これは重要な手順で、アカウントに複数のサブスクリプションが関連付けられている場合に特に便利です。 この手順をスキップすると、Microsoft.Insights を登録する際にエラーが発生する可能性があります。
 >   
 >
 
-Azure PowerShell の構成の詳細については、「[Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」をご覧ください。
+Azure PowerShell の構成の詳細については、「[Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」をご覧ください。
 
 ## <a id="storage"></a>ログ用に新しいストレージ アカウントを作成する
 既存のストレージ アカウントをログのために使用できますが、Key Vault のログ専用に新しいストレージ アカウントを作成することにします。 後でこれを指定することが必要になる場合に備えて、詳細情報を **sa**という名前の変数に格納します。
@@ -82,8 +82,8 @@ Azure PowerShell の構成の詳細については、「[Azure PowerShell のイ
 
 > [!NOTE]
 > 既存のストレージ アカウントを使用する場合、そのストレージ アカウントでは、目的の Key Vault と同じサブスクリプションを使用する必要があります。また、クラシック デプロイメント モデルではなく、リソース マネージャー デプロイメント モデルを使用する必要があります。
-> 
-> 
+>
+>
 
 ## <a id="identify"></a>ログに対する Key Vault を識別する
 入門チュートリアルで、Key Vault の名前は **ContosoKeyVault** としたので、この名前を引き続き使用し、詳細情報を **kv** という名前の変数に格納します。
@@ -163,21 +163,21 @@ Key Vault のログは、指定したストレージ アカウント内の **ins
 
     $blobs | Get-AzureStorageBlobContent -Destination 'C:\Users\username\ContosoKeyVaultLogs'
 
-この&2; 番目のコマンドを実行すると、BLOB 名に含まれる **/** 区切り記号によって、宛先フォルダーの下にフォルダー構造全体が作成されます。このフォルダー構造は、BLOB をファイルとしてダウンロードし、保存するために使用されます。
+この 2 番目のコマンドを実行すると、BLOB 名に含まれる **/** 区切り記号によって、宛先フォルダーの下にフォルダー構造全体が作成されます。このフォルダー構造は、BLOB をファイルとしてダウンロードし、保存するために使用されます。
 
 BLOB を選択的にダウンロードするには、ワイルドカードを使用します。 For example:
 
 * 複数の Key Vault を持っている場合に、CONTOSOKEYVAULT3 という名前の Key Vault のみについてログをダウンロードするには、次のようにします。
-  
+
         Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
 * 複数のリソース グループを持っている場合、1 つのリソース グループのみについてログをダウンロードするには、次のように `-Blob '*/RESOURCEGROUPS/<resource group name>/*'`を使用します。
-  
+
         Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
 * 2016 年 1 月のすべてのログをダウンロードする場合は、次のように `-Blob '*/year=2016/m=01/*'`を使用します。
-  
+
         Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
 
-これで、ログの内容を検討する準備が整いました。 ただし、ログの内容の検討に入る前に、Get-AzureRmDiagnosticSetting 用のさらに&2; つのパラメーターを把握しておく必要があります。
+これで、ログの内容を検討する準備が整いました。 ただし、ログの内容の検討に入る前に、Get-AzureRmDiagnosticSetting 用のさらに 2 つのパラメーターを把握しておく必要があります。
 
 * Key Vault リソースの診断設定の状態のクエリを実行するためのパラメーター: `Get-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId`
 * Key Vault リソースのログ記録を無効にするためのパラメーター: `Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories AuditEvent`
@@ -272,8 +272,7 @@ Web アプリケーションでの Azure Key Vault の使用方法に関する�
 
 プログラミング リファレンスについては、「 [Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照してください。
 
-Azure Key Vault の Azure PowerShell 1.0 のコマンドレットの一覧については、「 [Azure Key Vault Cmdlets (Azure Key Vault コマンドレット)](https://msdn.microsoft.com/library/azure/dn868052.aspx)」を参照してください。
+Azure Key Vault の Azure PowerShell 1.0 のコマンドレットの一覧については、「 [Azure Key Vault Cmdlets (Azure Key Vault コマンドレット)](/powershell/module/azurerm.keyvault/#key_vault)」を参照してください。
 
 Azure Key Vault を使用したキーのローテーションとログの監査のチュートリアルについては、「 [エンド ツー エンドのキーのローテーションと監査で Key Vault を設定する方法](key-vault-key-rotation-log-monitoring.md)」を参照してください。
-
 

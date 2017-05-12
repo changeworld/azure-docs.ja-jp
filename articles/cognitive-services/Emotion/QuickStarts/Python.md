@@ -9,10 +9,11 @@ ms.technology: emotion
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: anroth
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 74656b37d39d2a3a36bf02196293836a577e5163
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 354c6f2fa73c30cc0ca1d575adc4de71e28d1a3f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 ---
 
@@ -20,7 +21,7 @@ ms.lasthandoff: 04/12/2017
 This article provides information and code samples to help you quickly get started using the [Emotion API Recognize method](https://dev.projectoxford.ai/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) with Python to recognize the emotions expressed by one or more people in an image. 
 
 ## <a name="prerequisite"></a>Prerequisite
-* Get your free Subscription Key [here](https://www.microsoft.com/cognitive-services/en-us/sign-up)
+* Get your free Subscription Key [here](https://azure.microsoft.com/en-us/try/cognitive-services/)
 
 ## <a name="recognize-emotions-python-example-request"></a>Recognize Emotions Python Example Request
 

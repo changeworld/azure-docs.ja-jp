@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: ganesr;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 6315e0fda231f2bfd3a92cf03cea7cd558bfda37
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: fab0a7b7ef3fd54194d719f49537a98416107e8a
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -41,8 +41,9 @@ ms.lasthandoff: 03/24/2017
 
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
+
 ## <a name="configuration-prerequisites"></a>構成の前提条件
-* Azure サービス管理 (SM) PowerShell コマンドレットの最新版が必要です。 詳細については、[Azure PowerShell コマンドレットの概要](/powershell/azureps-cmdlets-docs)に関するページをご覧ください。  
+* Azure サービス管理 (SM) PowerShell コマンドレットの最新版が必要です。 詳細については、[Azure PowerShell コマンドレットの概要](/powershell/azure/overview)に関するページをご覧ください。  
 * 構成を開始する前に必ず、[前提条件](expressroute-prerequisites.md)ページ、[ルーティングの要件](expressroute-routing.md)ページおよび[ワークフロー](expressroute-workflows.md) ページを確認してください。
 * アクティブな ExpressRoute 回線が必要です。 手順に従って、[ExpressRoute 回線を作成](expressroute-howto-circuit-classic.md)し、接続プロバイダー経由で回線を有効にしてから続行してください。 ExpressRoute 回線をプロビジョニングされ、有効になっている状態にする必要があります。そうすれば、以下で説明されているコマンドレットを実行できます。
 

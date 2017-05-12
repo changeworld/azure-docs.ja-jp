@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/30/2017
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
-ms.openlocfilehash: 56a460fa8132d310352fbb7e085091c3ee7fa848
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 736918ea310f276d961fa396f719b2b7809f0c0f
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/31/2017
 
 Azure CLI 2.0 または Azure PowerShell を使用してスケール セットを作成する場合、まずサブスクリプションにサインインする必要があります。
 
-Azure CLI または PowerShell を使用して Azure をインストールおよびセットアップし、Azure にサインインする方法の詳細については、[Azure CLI 2.0 の概要](/cli/azure/get-started-with-azure-cli.md)に関する記事または [Azure PowerShell コマンドレットの概要](/powershell/resourcemanager/)に関する記事をご覧ください。
+Azure CLI または PowerShell を使用して Azure をインストールおよびセットアップし、Azure にサインインする方法の詳細については、[Azure CLI 2.0 の概要](/cli/azure/get-started-with-azure-cli.md)に関する記事または [Azure PowerShell コマンドレットの概要](/powershell/azure/overview)に関する記事をご覧ください。
 
 ```azurecli
 az login
@@ -58,7 +58,7 @@ New-AzureRmResourceGroup -Location westus2 -Name vmss-test-1
 
 ## <a name="create-from-azure-cli"></a>Azure CLI を使用して作成する
 
-Azure CLI を使用すると、最小限の作業で仮想マシン スケール セットを作成できます。 値を省略すると、自動的に提供されます。 たとえば、仮想ネットワークの情報を指定していない場合、仮想ネットワークが自動的に作成されます。 次の部分を省略すると、自動的に提供されます。 
+Azure CLI を使用すると、最小限の作業で仮想マシン スケール セットを作成できます。 既定値を省略すると、自動的に提供されます。 たとえば、仮想ネットワークの情報を指定していない場合、仮想ネットワークが自動的に作成されます。 次の部分を省略すると、自動的に提供されます。 
 - ロード バランサー
 - 仮想ネットワーク
 - パブリック IP アドレス
@@ -184,3 +184,4 @@ Azure Portal を使用すると、スケール セットをすばやく簡単に
 [データ ディスク](virtual-machine-scale-sets-attached-disks.md)についてさらに理解を深める。
 
 [アプリを管理する](virtual-machine-scale-sets-deploy-app.md)方法について学習する。
+

@@ -13,9 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/14/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: bf5588885de9c280eb70712dbf800efe509ee912
-ms.openlocfilehash: 96eb66f35a91e769418d179b0997cd32e02cdc97
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 21372b8554901594f6770ef1ad18467801ef5fea
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -73,7 +75,7 @@ ms.openlocfilehash: 96eb66f35a91e769418d179b0997cd32e02cdc97
 この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。  
 この手順に慣れていない場合は、「 [How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>シングル サインオンを構成するには、次の手順を実行します。
+### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>シングル サインオンを構成するには、次の手順に従います。
 1. Azure クラシック ポータルの **Gigya** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
     ![シングル サインオンの構成](./media/active-directory-saas-gigya-tutorial/IC789528.png "Configure Single Sign-On")
@@ -125,36 +127,15 @@ ms.openlocfilehash: 96eb66f35a91e769418d179b0997cd32e02cdc97
    
 ## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
 
-Azure AD ユーザーが Gigya にログインできるようにするには、ユーザーを Gigya にプロビジョニングする必要があります。  
-Gigya の場合、プロビジョニングは手動で行います。
+Azure AD ユーザーは、Gigya に初めてログインしたときに自動的にプロビジョニングされます。
 
-### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>ユーザー アカウントをプロビジョニングするには、次の手順に従います。
-1. **Gigya** 企業サイトに管理者としてログインします。
-2. **[管理者] \> [ユーザーの管理]** の順にクリックし、**[ユーザーの招待]** をクリックします。
-   
-    ![Manage Users](./media/active-directory-saas-gigya-tutorial/IC789535.png "Manage Users")
-
-3. [ユーザーの招待] ダイアログで、次の手順を実行します。
-   
-    ![ユーザーの招待](./media/active-directory-saas-gigya-tutorial/IC789536.png "ユーザーの招待")
-   
-    a. **[電子メール]** テキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの電子メール エイリアスを入力します。
-    
-    b. **[ユーザーの招待]**をクリックします。
-      
-    > [!NOTE]
-    > Azure Active Directory のアカウント所有者には、アカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
-    > 
-    > 
-
- 
 
 ## <a name="assigning-users"></a>ユーザーの割り当て
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
 ### <a name="to-assign-users-to-gigya-perform-the-following-steps"></a>ユーザーを Gigya に割り当てるには、次の手順を実行します。
 1. Azure クラシック ポータルで、テスト アカウントを作成します。
-2. **Gigya** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2. **Gigya ** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
    
     ![ユーザーの割り当て](./media/active-directory-saas-gigya-tutorial/IC789537.png "Assign Users")
 
@@ -163,10 +144,5 @@ Gigya の場合、プロビジョニングは手動で行います。
     ![はい](./media/active-directory-saas-gigya-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

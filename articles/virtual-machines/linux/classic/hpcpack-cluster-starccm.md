@@ -16,9 +16,9 @@ ms.workload: big-compute
 ms.date: 09/13/2016
 ms.author: xpillons
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: c83d39c87f789397116601e3e775a4f0ed3eac72
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 9a2796c66fa49c543e52b654e583ade7625a7f31
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -32,7 +32,7 @@ Microsoft HPC Pack は、Microsoft Azure 仮想マシンのクラスター上で
 ## <a name="set-up-an-hpc-pack-cluster"></a>HPC Pack クラスターをセットアップする
 HPC Pack IaaS デプロイ スクリプトを [ダウンロード センター](https://www.microsoft.com/en-us/download/details.aspx?id=44949) からダウンロードして、ローカルに抽出します。
 
-Azure PowerShell は必須です。 Azure PowerShell をローカル コンピューターでまだ構成していない場合は、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」の記事を参照してください。
+Azure PowerShell は必須です。 Azure PowerShell をローカル コンピューターでまだ構成していない場合は、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」の記事を参照してください。
 
 Azure Marketplace から入手できる Linux イメージ (Azure 用の InfiniBand ドライバーを含んでいる) は、本記事の執筆時点では SLES 12、CentOS 6.5、CentOS 7.1 用となります。 この記事は SLES 12 の使用を前提としています。 HPC をサポートしているすべての Linux イメージの名前を Marketplace から取得するには、次の PowerShell コマンドを実行します。
 

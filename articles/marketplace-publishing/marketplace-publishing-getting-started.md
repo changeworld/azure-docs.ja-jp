@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 9d7176b018d25b2a60b2175c289dde7490f8d101
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
+ms.openlocfilehash: 49ffe988867ba70df5bd7757a64edc9aa813071d
+ms.lasthandoff: 04/29/2017
 
 
 ---
@@ -87,7 +87,6 @@ Azure の発行元にとって、Azure Marketplace は、クラウド ベース�
 * [課金モデルを運用時の運用時の値に戻す方法](marketplace-publishing-vm-image-post-publishing.md#9-how-to-revert-billing-model-to-production-values)
 * [表示されている SKU の可視性の設定を運用時の値に戻す方法](marketplace-publishing-vm-image-post-publishing.md#10-how-to-revert-visibility-setting-of-a-listed-sku-to-the-production-value)
 * [How to change your Cloud Solution Provider reseller incentive (Cloud Solution Provider のリセラー インセンティブを変更する方法)](marketplace-publishing-csp-incentive.md)
-* [Seller Insights レポートの概要](marketplace-publishing-report-seller-insights.md)
 * [支払いレポートを理解する](marketplace-publishing-report-payout.md)
 * [Get support as a publisher (発行元としてサポートを受ける)](marketplace-publishing-get-publisher-support.md)
 

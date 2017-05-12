@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/13/2017
+ms.date: 04/11/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: becb179da6bc6b6df629a07d3ddb5d50edbaa577
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: a3d958e1a37ddf6821d41afe7427faec1b8259b2
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="track-software-changes-in-your-environment-with-the-change-tracking-solution"></a>変更の追跡ソリューションを使用してユーザーの環境内のソフトウェアの変更を追跡する
 
-この記事では、Log Analytics の変更の追跡ソリューションを使用して、環境の変更箇所を簡単に識別する方法を説明します。 このソリューションは、Windows および Linux ソフトウェア、Windows ファイル、Windows サービス、および Linux デーモンに対する変更を追跡します。 構成の変更を識別することで、運用上の問題を特定できるようになります。
+この記事では、Log Analytics の変更の追跡ソリューションを使用して、環境の変更箇所を簡単に識別する方法を説明します。 このソリューションは、Windows および Linux ソフトウェア、Windows ファイルおよびレジストリ、Windows サービス、および Linux デーモンに対する変更を追跡します。 構成の変更を識別することで、運用上の問題を特定できるようになります。
 
 このソリューションをインストールすると、インストールしたエージェントの種類が更新されます。 監視対象サーバーにインストールされているソフトウェア、Windows サービス、および Linux デーモンの変更が読み取られた後、そのデータがクラウドの Log Analytics サービスに送信され、処理されます。 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。 [変更の追跡] ダッシュボードの情報を使用して、サーバー インフラストラクチャで行われた変更を簡単に確認できます。
 
@@ -43,6 +43,15 @@ ms.lasthandoff: 03/14/2017
 4. [ **Save**] をクリックします。  
    ![Windows ファイルの変更追跡](./media/log-analytics-change-tracking/windows-file-change-tracking.png)
 
+### <a name="configure-windows-registry-keys-to-track"></a>追跡する Windows レジストリ キーを構成する
+次の手順を使用して、Windows コンピューターで追跡するレジストリ キーを構成します。
+
+1. OMS ポータルで、**[設定]** (歯車アイコン) をクリックします。
+2. **[設定]** ページで **[データ]** をクリックし、**[Windows レジストリの追跡]** をクリックします。
+3. [Windows レジストリの変更追跡] の下に、追跡するキー全体を入力し、**[追加]** 記号をクリックします。
+4. **[保存]** をクリックします。  
+   ![Windows レジストリの変更追跡](./media/log-analytics-change-tracking/windows-registry-change-tracking.png)
+
 ### <a name="limitations"></a>制限事項
 現在、変更の追跡ソリューションでは以下に対応していません。
 
@@ -56,7 +65,7 @@ ms.lasthandoff: 03/14/2017
 
 * **[最大ファイル サイズ]** 列と値は現在の実装では使用されません。
 * 30 分間の収集サイクルで収集するファイル数が 2500 を超えると、ソリューションのパフォーマンスが低下する可能性があります。
-* ネットワーク トラフィックが高いとき、変更レコードが表示されるまでに最長で&6; 時間かかることがあります。
+* ネットワーク トラフィックが高いとき、変更レコードが表示されるまでに最長で 6 時間かかることがあります。
 * コンピューターのシャットダウン中に構成を変更した場合、そのコンピューターからは前の構成に対応するファイル変更が送信される可能性があります。
 
 ## <a name="change-tracking-data-collection-details"></a>変更の追跡データ収集の詳細
@@ -73,13 +82,52 @@ ms.lasthandoff: 03/14/2017
 
 | **変更の種類** | **frequency** | **変更が検出されたときに****エージェント****から相違点が送信されるか** |
 | --- | --- | --- |
-| Windows レジストリ | 50 分 | × |
+| Windows レジストリ | 50 分 | なし |
 | Windows ファイル | 30 分 | はい。 24 時間以内に変更がない場合は、スナップショットが送信されます。 |
-| Linux ファイル | 約&15; 分 | はい。 24 時間以内に変更がない場合は、スナップショットが送信されます。 |
+| Linux ファイル | 約 15 分 | はい。 24 時間以内に変更がない場合は、スナップショットが送信されます。 |
 | Windows サービス | 30 分 | はい。変更が検出されたときに 30 分ごとに送信されます。 スナップショットは、変更の有無に関係なく 24 時間おきに送信されます。 つまり変更が生じていなくてもスナップショットが送信されます。 |
 | Linux デーモン | 5 分 | はい。 24 時間以内に変更がない場合は、スナップショットが送信されます。 |
 | Windows ソフトウェア | 30 分 | はい。変更が検出されたときに 30 分ごとに送信されます。 スナップショットは、変更の有無に関係なく 24 時間おきに送信されます。 つまり変更が生じていなくてもスナップショットが送信されます。 |
 | Linux ソフトウェア | 5 分 | はい。 24 時間以内に変更がない場合は、スナップショットが送信されます。 |
+
+### <a name="registry-key-change-tracking"></a>レジストリ キーの変更追跡
+
+Log Analytics は、変更の追跡ソリューションを使用して、Windows レジストリの監視と追跡を実行します。 レジストリ キーへの変更を監視する目的は、サード パーティのコードやマルウェアがアクティブ化できる拡張性のポイントを正確に特定することです。 次の一覧は、ソリューションが追跡する既定のレジストリ キーとそれぞれが追跡される理由を示しています。
+
+- HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup
+    - スタートアップ時に実行されるスクリプトを監視します。
+- HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown
+    - シャットアップ時に実行されるスクリプトを監視します。
+- HKEY\_LOCAL\_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run
+    - 64 ビット コンピューターで実行される 32 ビット プログラム用の Windows アカウントでユーザーがサインインする前に読み込まれるキーを監視します。
+- HKEY\_LOCAL\_MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components
+    - アプリケーションの設定の変更を監視します。
+- HKEY\_LOCAL\_MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers
+    - Windows Explorer に直接フックされ、通常は Explorer.exe でインプロセスで実行される共通自動開始エントリを監視します。
+- HKEY\_LOCAL\_MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers
+    - Windows Explorer に直接フックされ、通常は Explorer.exe でインプロセスで実行される共通自動開始エントリを監視します。
+- HKEY\_LOCAL\_MACHINE\Software\Classes\Directory\Background\ShellEx\ContextMenuHandlers
+    - Windows Explorer に直接フックされ、通常は Explorer.exe でインプロセスで実行される共通自動開始エントリを監視します。
+- HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers
+    - アイコン オーバーレイ ハンドラーの登録を監視します。
+- HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers
+    - 64 ビット コンピューターで実行される 32 ビット プログラムのアイコン オーバーレイ ハンドラーの登録を監視します。
+- HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects
+    - 現在のページのドキュメント オブジェクト モデル (DOM) にアクセスし、ナビゲーションを制御するために使用できる、Internet Explorer の新しいブラウザー ヘルパー オブジェクト プラグインを監視します。
+- HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects
+    - 64 ビットコンピューターで実行される 32 ビット プログラムの現在のページのドキュメント オブジェクト モデル (DOM) にアクセスし、ナビゲーションを制御するために使用できる、Internet Explorer の新しいブラウザー ヘルパー オブジェクト プラグインを監視します。
+- HKEY\_LOCAL\_MACHINE\Software\Microsoft\Internet Explorer\Extensions
+    - カスタム ツール メニューやカスタム ツール バー ボタンなどの新しい Internet Explorer の拡張機能を監視します。
+- HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Internet Explorer\Extensions
+    - 64 ビットコンピューターで実行される 32 ビット プログラムのカスタム ツールのメニューや 64 ビット コンピューター上で実行する 32 ビット プログラムのカスタム ツール バー ボタンなどの新しい Internet Explorer の拡張機能を監視します。
+- HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    - wavemapper、wave1、wave2、msacm.imaadpcm、.msadpcm、.msgsm610、および vidc に関連付けられている 32 ビット ドライバーを監視します。 SYSTEM.INI ファイルの [drivers] セクションに似ています。
+- HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    - 64 ビットコンピューターで実行される 32 ビット プログラムの wavemapper、wave1、wave2、msacm.imaadpcm、.msadpcm、.msgsm610、および vidc に関連付けられている 32 ビット ドライバーを監視します。 SYSTEM.INI ファイルの [drivers] セクションに似ています。
+- HKEY\_LOCAL\_MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    - 既知のまたは一般的に使用されるシステムの DLL の一覧を監視します。このシステムは、システム DLL のトロイの木馬バージョンを削除することで、弱いアプリケーション ディレクトリのアクセス許可が悪用されることを防止します。
+- HKEY\_LOCAL\_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify
+    - Windows オペレーティング システムの対話型ログオン サポート モデルである Winlogon からイベント通知を受信できるパッケージの一覧を監視します。
 
 
 ## <a name="use-change-tracking"></a>変更の追跡を使用する
@@ -102,7 +150,7 @@ ms.lasthandoff: 03/14/2017
 
 ### <a name="to-view-changes-for-any-change-type"></a>変更の種類別に変更を表示するには
 1. **[概要]** ページで、**[変更の追跡]** タイルをクリックします。
-2. **[変更の追跡]** ダッシュボードにあるいずれかの変更の種類ブレードで概要情報を確認し、**ログの検索**ページで、詳細情報を表示する変更の&1; つをクリックします。
+2. **[変更の追跡]** ダッシュボードにあるいずれかの変更の種類ブレードで概要情報を確認し、**ログの検索**ページで、詳細情報を表示する変更の 1 つをクリックします。
 3. どのログの検索ページでも、時間、詳細結果、ログ検索履歴を表示することができます。 結果を絞り込むファセットを使用してフィルター処理することもできます。
 
 ## <a name="next-steps"></a>次のステップ

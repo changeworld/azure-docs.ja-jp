@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: c62f8d077906ce8ad1b5501864a21ee369b2314a
-ms.lasthandoff: 04/07/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 0635120c4e16f3b8531039eee4c6651e7cdeca40
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -261,15 +261,17 @@ Linux ディストリビューションは、SMB 3.0 の暗号化機能を現時
 
 一部のシナリオでは、serverino マウント オプションを指定していると、ls コマンドによってすべてのディレクトリ エントリに対して stat が実行されます。そのため、大規模なディレクトリを一覧表示するときにパフォーマンスが低下します。 "/Etc/fstab" エントリでマウント オプションを確認できます。
 
-`//azureuser.file.core.windows.net/cifs        /cifs   cifs vers=3.0,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
+`//<storage-account-name>.file.core.windows.net/<file-share-name> <mount-point> cifs vers=3.0,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
 
-**sudo mount | grep cifs** コマンドを実行して出力を調べるだけで、正しいオプションが使われているかどうかを確認できます。
+`sudo mount | grep cifs` コマンドを実行するだけで、正しいオプションが使われているかどうかを確認できます (サンプル出力を以下に示します)。
 
-`//mabiccacifs.file.core.windows.net/cifs on /cifs type cifs
-(rw,relatime,vers=3.0,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777,
-dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
+`//<storage-account-name>.file.core.windows.net/<file-share-name> on <mount-point> type cifs
+(rw,relatime,vers=3.0,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,
+noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777,
+dir_mode=0777,persistenthandles,nounix,serverino,
+mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
 
-cache=strict または serverino オプションが指定されていない場合は、Azure ファイルをマウント解除してから mount コマンドで再マウントし ([ドキュメント](https://docs.microsoft.com/en-us/azure/storage/storage-how-to-use-files-linux#mount-the-file-share)を参照)、"/etc/fstab" エントリに適切なオプションがあることを確認します。
+cache=strict または serverino オプションが指定されていない場合は、Azure ファイルをマウント解除してから mount コマンドで再マウントし ([ドキュメント](https://docs.microsoft.com/en-us/azure/storage/storage-how-to-use-files-linux#mount-the-file-share)を参照)、"/etc/fstab" エントリで適切なオプションが指定されていることを確認します。
 
 <a id="ubuntumounterror"></a>
 ## <a name="mount-error11-resource-temporarily-unavailable-when-mounting-to-ubuntu-48-kernel"></a>マウント エラー (11): Ubuntu 4.8+ カーネルにマウントするときにリソースが一時的に使用不能になる

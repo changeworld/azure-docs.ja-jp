@@ -12,11 +12,12 @@ ms.devlang: csharp
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/31/2017
+ms.date: 05/02/2017
 ms.author: dobett
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
 ms.openlocfilehash: ff0b234f27e2d5068cc0dcdc73e32e60f8622633
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/06/2017
 
 
@@ -30,7 +31,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
 このチュートリアルは、「[IoT Hub の使用]」チュートリアルに基づいて作成されています。このチュートリアルでは、ルーティング規則を使用して、簡単な構成ベースの方法でデバイスからクラウドへのメッセージをディスパッチする方法を説明します。 このチュートリアルでは、さらに処理するために早急な対応を必要とするメッセージを、ソリューションのバックエンドから分離する方法を示しています。 たとえば、デバイスは、CRM システムへのチケットの挿入をトリガーするアラーム メッセージを送信する場合があります。 これに対して、データポイント メッセージは、分析エンジンにフィードされるだけです。 たとえば、後の分析用に保存されるデバイスの温度テレメトリはデータポイント メッセージです。
 
-このチュートリアルの最後に、次の&3; つの .NET コンソール アプリを実行します。
+このチュートリアルの最後に、次の 3 つの .NET コンソール アプリを実行します。
 
 * **SimulatedDevice**: [IoT Hub の使用]に関するチュートリアルで作成したアプリを変更したものです。デバイスからクラウドへのデータ ポイント メッセージを 1 秒ごとに送信し、デバイスからクラウドへの対話型メッセージを 10 秒ごとに送信します。 このアプリでは、IoT Hub との通信に AMQP プロトコルを使用します。
 * **ReadDeviceToCloudMessages**。シミュレート デバイス アプリから送信された、重大ではないテレメトリを表示します。
@@ -170,7 +171,7 @@ Service Bus キューのメッセージを処理する方法の詳細につい�
 これで、アプリケーションを実行する準備が整いました。
 
 1. Visual Studio のソリューション エクスプローラーでソリューションを右クリックし、 **[スタートアップ プロジェクトの設定]**を選択します。 **[マルチ スタートアップ プロジェクト]** を選択し、**ReadDeviceToCloudMessages** プロジェクト、**SimulatedDevice** プロジェクト、および **ReadCriticalQueue** プロジェクトの [アクション] として **[開始]** を選択します。
-2. **F5** キーを押して&3; つのコンソール アプリを起動します。 **ReadDeviceToCloudMessages** アプリには、**SimulatedDevice** アプリケーションから送信された重大でないメッセージのみが、**ReadCriticalQueue** アプリには重大なメッセージのみが含まれます。
+2. **F5** キーを押して 3 つのコンソール アプリを起動します。 **ReadDeviceToCloudMessages** アプリには、**SimulatedDevice** アプリケーションから送信された重大でないメッセージのみが、**ReadCriticalQueue** アプリには重大なメッセージのみが含まれます。
    
    ![3 つのコンソール アプリ][50]
 

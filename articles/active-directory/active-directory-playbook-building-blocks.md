@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 4/12/2017
 ms.author: dstefan
 translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: 03b7e184d26ceccd12f40b4935d7c451b7eee01e
-ms.lasthandoff: 04/14/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: b6f26a338450619cef012467bf78b9469622ba08
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -395,7 +395,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | 手順 2. で構成した "セルフサービスによるパスワードのリセット" データを指定します。 | http://aka.ms/ssprsetup |
 | ブラウザーを閉じます。 |  |
 | 手順 4. で使用したインフォメーション ワーカーとしてログイン プロセスを最初からやり直します。 |  |
-| パスワードをリセットします。 | [自分のパスワードを更新する: パスワードをリセットする](active-directory-passwords-update-your-own-password.md#reset-my-password) |
+| パスワードをリセットします。 | [自分のパスワードを更新する: パスワードをリセットする](active-directory-passwords-update-your-own-password.md) |
 | 新しいパスワードで Azure AD とオンプレミス リソースにログインします。 |  |
 
 ### <a name="considerations"></a>考慮事項

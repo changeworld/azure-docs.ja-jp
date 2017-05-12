@@ -4,7 +4,7 @@ description: "この記事では、ローカル データ センター内のコ�
 services: automation
 documentationcenter: 
 author: mgoedtel
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: 06227cda-f3d1-47fe-b3f8-436d2b9d81ee
 ms.service: automation
@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/31/2017
+ms.date: 05/02/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 3a958b790b4501153aad86310c3783d49733dd90
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 66e749106ba1031eef19b12f06d5bd16ffa9d09e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 ---
 
@@ -69,6 +70,7 @@ Automation アカウントが特定のリージョンに対して定義されて
 | --- | --- |
 | 米国中南部 |scus-jobruntimedata-prod-su1.azure-automation.net |
 | 米国東部 2 |eus2-jobruntimedata-prod-su1.azure-automation.net |
+| 米国中西部 | wcus-jobruntimedata-prod-su1.azure-automation.net |
 | 西ヨーロッパ |we-jobruntimedata-prod-su1.azure-automation.net |
 | 北ヨーロッパ |ne-jobruntimedata-prod-su1.azure-automation.net |
 | カナダ中部 |cc-jobruntimedata-prod-su1.azure-automation.net |
@@ -76,6 +78,14 @@ Automation アカウントが特定のリージョンに対して定義されて
 | インド中部 |cid-jobruntimedata-prod-su1.azure-automation.net |
 | 東日本 |jpe-jobruntimedata-prod-su1.azure-automation.net |
 | オーストラリア東南部 |ase-jobruntimedata-prod-su1.azure-automation.net |
+| 英国南部 | uks-jobruntimedata-prod-su1.azure-automation.net |
+| 米国政府バージニア州 | usge-jobruntimedata-prod-su1.azure-automation.us |
+
+名前ではなく、IP アドレスの一覧を確認するには、Microsoft ダウンロード センターから [Azure データ センターの IP アドレス](https://www.microsoft.com/download/details.aspx?id=41653) xml ファイルをダウンロードして確認してください。 
+
+> [!NOTE]
+> このファイルには、Microsoft Azure データ センターで使用される IP アドレス範囲 (Compute、SQL、および Storage の範囲を含む) が含まれています。 毎週投稿される最新のファイルには、現在デプロイされている範囲と今後変更される IP 範囲が反映されています。 ファイルに含まれている新しい範囲は、少なくとも 1 週間はデータ センターで使用されません。 Azure で実行されているサービスを正しく識別するために、毎週新しい xml ファイルをダウンロードし、サイトで必要な変更を実行してください。 ExpressRoute ユーザーは、このファイルを使用して、毎月第 1 週に Azure 領域の BGP アドバタイズが更新されていることに注目してください。 
+> 
 
 ## <a name="installing-hybrid-runbook-worker"></a>Hybrid Runbook Worker のインストール
 

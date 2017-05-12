@@ -16,9 +16,9 @@ ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
-ms.openlocfilehash: cc8942dacee60d6243e91a3b4360c0c07956fa66
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 65c9d6c2b7a7c994a262d463d6a32b41c7e5c33a
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -26,24 +26,24 @@ ms.lasthandoff: 02/28/2017
 
 Batch API、Azure ポータル、Azure コマンド ライン インターフェイス (CLI) を使用して実行するタスクの多くは、Azure Batch PowerShell コマンドレットで実行したりスクリプト化したりすることができます。 この記事では、Batch アカウントを管理したり、プール、ジョブ、タスクといった Batch リソースを操作したりするときに使用できるコマンドレットについて説明します。
 
-すべての Batch コマンドレットの一覧およびコマンドレットの詳細な構文については、 [Azure Batch コマンドレットのリファレンス](https://msdn.microsoft.com/library/azure/mt125957.aspx)を参照してください。
+すべての Batch コマンドレットの一覧およびコマンドレットの詳細な構文については、 [Azure Batch コマンドレットのリファレンス](/powershell/module/azurerm.batch/#batch)を参照してください。
 
 この記事は、Azure PowerShell バージョン 3.0.0 のコマンドレットに基づいています。 最新のサービスや機能強化を活かすためにも、Azure PowerShell は定期的に更新することをお勧めします。
 
 ## <a name="prerequisites"></a>前提条件
 Azure PowerShell を使用して Batch リソースを管理するために、次の操作を実行します。
 
-* [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs)
+* [Azure PowerShell のインストールと構成](/powershell/azure/overview)
 * **Login-AzureRmAccount** コマンドレットを実行してサブスクリプションに接続します (Azure Batch コマンドレットは、Azure Resource Manager モジュールに付属しています)。
   
     `Login-AzureRmAccount`
-* **Batch プロバイダーの名前空間に登録します**。 この操作は、**サブスクリプションごとに&1; 回だけ**実行する必要があります。
+* **Batch プロバイダーの名前空間に登録します**。 この操作は、**サブスクリプションごとに 1 回だけ**実行する必要があります。
   
     `Register-AzureRMResourceProvider -ProviderNamespace Microsoft.Batch`
 
 ## <a name="manage-batch-accounts-and-keys"></a>Batch アカウントとキーを管理する
 ### <a name="create-a-batch-account"></a>Batch アカウントを作成する
-**New-AzureRmBatchAccount** は、指定したリソース グループに Batch アカウントを作成します。 リソース グループがまだない場合は、[New-AzureRmResourceGroup](https://msdn.microsoft.com/library/azure/mt603739.aspx) コマンドレットを実行して作成します。 **location** パラメーターで Azure リージョンのいずれか (例: "Central US") を指定します。 For example:
+**New-AzureRmBatchAccount** は、指定したリソース グループに Batch アカウントを作成します。 リソース グループがまだない場合は、[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) コマンドレットを実行して作成します。 **location** パラメーターで Azure リージョンのいずれか (例: "Central US") を指定します。 For example:
 
     New-AzureRmResourceGroup –Name MyBatchResourceGroup –location "Central US"
 
@@ -100,7 +100,7 @@ Batch アカウントでリソースを作成するには、**New-AzureBatchPool
 以下の例を見るとわかるように、これらのコマンドレットの多くは、その使用時に、BatchContext オブジェクトを渡すことに加え、リソースの詳細な設定を含んだオブジェクトを作成するか、引数として渡す必要があります。 その他の例については、各コマンドレットの詳細なヘルプを参照してください。
 
 ### <a name="create-a-batch-pool"></a>Create a Batch pool
-Batch プールを作成または更新する際は、コンピューティング ノードのオペレーティング システムに関してクラウド サービスの構成または仮想マシンの構成を選択します ( [Batch 機能の概要](batch-api-basics.md#pool)を参照)。 そのどちらを選択したかによって、コンピューティング ノードのイメージ化に、 [Azure ゲスト OS のリリース](../cloud-services/cloud-services-guestos-update-matrix.md#releases) の&1; つを使用するか、Azure Marketplace でサポートされている Linux や Windows の VM イメージの&1; つを使用するかが決まります。
+Batch プールを作成または更新する際は、コンピューティング ノードのオペレーティング システムに関してクラウド サービスの構成または仮想マシンの構成を選択します ( [Batch 機能の概要](batch-api-basics.md#pool)を参照)。 そのどちらを選択したかによって、コンピューティング ノードのイメージ化に、 [Azure ゲスト OS のリリース](../cloud-services/cloud-services-guestos-update-matrix.md#releases) の 1 つを使用するか、Azure Marketplace でサポートされている Linux や Windows の VM イメージの 1 つを使用するかが決まります。
 
 オペレーティング システムの設定は、**New-AzureBatchPool** を実行するときに、PSCloudServiceConfiguration オブジェクトまたは PSVirtualMachineConfiguration オブジェクトで渡します。 たとえば以下のコマンドレットは、Small サイズのコンピューティング ノードで新しい Batch プールを作成しています。オペレーティング システムにはクラウド サービス構成を選び、最新バージョンであるファミリー 3 (Windows Server 2012) のイメージを使用しています。 ここでは、**CloudServiceConfiguration** パラメーターに PSCloudServiceConfiguration オブジェクトとして *$configuration* 変数を指定しています。 **BatchContext** パラメーターには、先ほど定義した *$context* 変数を BatchAccountContext オブジェクトとして指定しています。
 
@@ -187,7 +187,7 @@ Batch コマンドレットは、コマンドレット間でデータを送信�
 > 
 
 ### <a name="deploy-an-application-package"></a>アプリケーション パッケージをデプロイする
-プールの作成時に、デプロイ用の&1; つ以上のアプリケーション パッケージを指定できます。 プールの作成時にパッケージを指定すると、ノードがプールに参加する際にパッケージが各ノードにデプロイされます。 ノードが再起動または再イメージ化されるときにも、パッケージがデプロイされます。
+プールの作成時に、デプロイ用の 1 つ以上のアプリケーション パッケージを指定できます。 プールの作成時にパッケージを指定すると、ノードがプールに参加する際にパッケージが各ノードにデプロイされます。 ノードが再起動または再イメージ化されるときにも、パッケージがデプロイされます。
 
 プールのノードがそこに参加するタイミングでアプリケーション パッケージをデプロイするには、`-ApplicationPackageReference` オプションを指定してプールを作成します。 まず、**PSApplicationPackageReference** オブジェクトを作成し、アプリケーション ID とプールのコンピューティング のノードにデプロイするパッケージのバージョンでオブジェクトを構成します。
 
@@ -237,7 +237,7 @@ Batch コマンドレットは、コマンドレット間でデータを送信�
 > 
 
 ## <a name="next-steps"></a>次のステップ
-* コマンドレットの詳しい構文と例については、 [Azure Batch コマンドレットのリファレンス](https://msdn.microsoft.com/library/azure/mt125957.aspx)を参照してください。
+* コマンドレットの詳しい構文と例については、 [Azure Batch コマンドレットのリファレンス](/powershell/module/azurerm.batch/#batch)を参照してください。
 * Batch におけるアプリケーションとアプリケーション パッケージの詳細については、「[Azure Batch アプリケーション パッケージを使用したアプリケーションのデプロイ](batch-application-packages.md)」をご覧ください。
 
 

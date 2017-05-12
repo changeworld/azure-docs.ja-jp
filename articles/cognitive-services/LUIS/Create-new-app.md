@@ -9,15 +9,16 @@ ms.technology: luis
 ms.topic: article
 ms.date: 03/01/2017
 ms.author: cahann
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: d45dbabd06d7bfc79163125e63f623c116761a01
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: abbf909455f0b6b74373ac7b4eb044d04397551e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 
 # <a name="create-a-new-app"></a>Create a New App
-You can create and manage your applications on **My Apps** page. You can always access this page by clicking **My Apps** on the top navigation bar of LUIS web page. We are going to create the TravelAgent app and use it as an example application to work on throughout LUIS help topics.
+You can create and manage your applications on **My Apps** page. You can always access this page by clicking **My Apps** on the top navigation bar of LUIS web page. This article shows you how to create a LUIS app and use it as an example application to work on throughout the LUIS help topics.
 
 **To create a new app:**
 
@@ -30,7 +31,11 @@ You can create and manage your applications on **My Apps** page. You can always 
     >[!NOTE]
     >The culture cannot be changed once the application is created. 
 
-LUIS creates the TravelAgent app and opens its main page which looks like the following screen. Use the navigation links in the left panel to move through your app pages to define data and work on your app. Your first task in the app is to add intents. For more info on how to add intents, see [Add intents](Add-intents.md).
+LUIS creates the TravelAgent app and opens its main page which looks like the following screen. Use the navigation links in the left panel to move through your app pages to define data and work on your app. 
 
 ![TravelAgent app created and Opened](./Images/AppCreated_Opened.JPG)
 
+
+## <a name="next-steps"></a>Next steps
+
+Your first task in the app is to add intents. For more info on how to add intents, see [Add intents](Add-intents.md).

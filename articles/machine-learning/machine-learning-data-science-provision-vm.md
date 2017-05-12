@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-translationtype: Human Translation
-ms.sourcegitcommit: e1563db23e687f772eaff2e90ce9853c9d8b87de
-ms.openlocfilehash: f87df28a5a44b7ab3c1d9a48d43c8d1354c48830
-ms.lasthandoff: 11/23/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 8df9fbf4b09cb63cafc9d43592edc68068a28f14
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -47,6 +48,9 @@ Microsoft データ サイエンス用仮想マシンは、プレインストー
 Microsoft データ サイエンス仮想マシンは分析プロジェクトの活性剤となります。 R、Python、SQL、C# など、さまざまな言語でタスクを処理できます。 Visual Studio には、コードの開発やテストを行うための使いやすい IDE が用意されています。 VM に含まれている Azure SDK を使用すると、Microsoft のクラウド プラットフォームにあるさまざまなサービスを利用してアプリケーションを構築できます。 
 
 このデータ サイエンス VM イメージにソフトウェア課金はありません。 Azure の利用料金は、プロビジョニングする仮想マシンのサイズにのみ依存します。 コンピューティング料金の詳細については、 [Data Science Virtual Machine](https://azure.microsoft.com/marketplace/partners/microsoft-ads/standard-data-science-vm/) ページに記載されている [価格の詳細] セクションをご覧ください。 
+
+## <a name="other-versions-of-the-data-science-virtual-machine"></a>データ サイエンス仮想マシンのその他のバージョン
+Windows イメージと同じツールが多数含まれている、[CentOS](machine-learning-data-science-linux-dsvm-intro.md) イメージも利用できます。 [Ubuntu](machine-learning-data-science-dsvm-ubuntu-intro.md) イメージも利用できます。同様のツールが多数あるほか、ディープ ラーニング フレームワークが含まれています。
 
 ## <a name="prerequisites"></a>前提条件
 Microsoft データ サイエンス仮想マシンを作成する前に、次を用意する必要があります。

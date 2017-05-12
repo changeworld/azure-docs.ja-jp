@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 04/07/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 566a8d7fc595975e065c5a8a42c7f7c94997821b
-ms.lasthandoff: 04/19/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: d7006a50d35412021f7e475df526661854b23dc8
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 04/19/2017
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="step-1---download-the-sample"></a>手順 1. サンプルをダウンロードする
+## <a name="download-the-sample"></a>サンプルのダウンロード
 この手順では、サンプルの ASP.NET アプリケーションをダウンロードします。
 
 ### <a name="get-the-sample-project"></a>サンプル プロジェクトを入手する
@@ -65,7 +65,7 @@ ms.lasthandoff: 04/19/2017
 
 データベース コンテキストでは、`MyDbConnection` という接続文字列を使用します。 この接続文字列は、`Web.config` で定義され、`Models\MyDatabaseContext.cs` で参照されます。 後で Azure Web アプリを Azure SQL Database に接続する際に必要になるのは、この接続文字列名のみです。 
 
-## <a name="step-2---publish-to-azure-with-sql-database"></a>手順 2. SQL Database を使用して Azure に発行する
+## <a name="publish-to-azure-with-sql-database"></a>SQL Database を使用して Azure に発行する
 
 **ソリューション エクスプローラー**で **DotNetAppSqlDb** プロジェクトを右クリックし、**[発行]** を選択します。
 
@@ -168,7 +168,7 @@ Azure Web アプリには、"_App Service プラン_" も必要です。
 
 ご利用ありがとうございます。 データ主導の ASP.NET アプリケーションを Azure App Services でライブ実行することができました。
 
-## <a name="step-3---access-the-sql-database-locally"></a>手順 3. SQL データベースにローカルでアクセスする
+## <a name="access-the-sql-database-locally"></a>SQL データベースにローカルでアクセスする
 
 Visual Studio では、**SQL Server オブジェクト エクスプローラー**を使用して、新しい SQL データベースの確認と管理が簡単にできます。
 
@@ -204,7 +204,7 @@ Visual Studio で SQL Server インスタンスのファイアウォール設定
 
 ![SQL Database オブジェクトを確認する](./media/app-service-web-tutorial-dotnet-sqldatabase/explore-sql-database.png)
 
-## <a name="step-4---update-app-with-code-first-migrations"></a>手順 4. Code First Migrations を使用してアプリを更新する
+## <a name="update-app-with-code-first-migrations"></a>Code First Migrations を使用してアプリを更新する
 
 この手順では、Entity Framework の Code First Migrations を使用して、データベース スキーマに変更を加え、Azure に発行します。
 
@@ -329,7 +329,7 @@ Azure Web アプリで Code First Migrations を有効にしたので、後は�
 >
 >
 
-## <a name="step-6---stream-application-logs"></a>手順 6. アプリケーション ログをストリーミングする
+## <a name="stream-application-logs"></a>アプリケーション ログをストリーミングする
 
 Azure Web アプリから Visual Studio に、トレース メッセージを直接ストリーミングすることができます。
 
@@ -389,7 +389,7 @@ Application: 2017-04-06T23:30:54  PID[8132] Verbose     GET /Todos/Index
 
 ![ログ ストリーミングを停止する](./media/app-service-web-tutorial-dotnet-sqldatabase/stop-streaming.png)
 
-## <a name="step-7---manage-your-azure-web-app"></a>手順 7. Azure Web アプリを管理する
+## <a name="manage-your-azure-web-app"></a>Azure Web アプリを管理する
 
 Azure Portal に移動し、作成した Web アプリを表示します。 
 

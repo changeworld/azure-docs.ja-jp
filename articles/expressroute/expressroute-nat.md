@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: a7b3f8addbba21e60be0076784ae954f4cedb0b8
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: d29cf81747390fe153c3c6dc330ef738de0cd83a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -48,7 +49,7 @@ Azure パブリック ピアリング パスを利用すれば、パブリック
 > 
 
 ## <a name="nat-requirements-for-microsoft-peering"></a>Microsoft ピアリングの NAT 要件
-Microsoft ピアリング パスにより、Azure パブリック ピアリング パスでサポートされていない Microsoft クラウド サービスに接続できます。 そのようなサービスには、Exchange Online、SharePoint Online、Skype for Business、CRM Online のような Office 365 サービスがあります。 Microsoft は今後、Microsoft ピアリングで双方向の接続をサポートする予定です。 Microsoft クラウド サービスに向かうトラフィックは有効な IPv4 アドレスに SNAT 変換しないと、Microsoft ネットワークに入れません。 Microsoft クラウド サービスからご利用のネットワーク方向のトラフィックは SNAT 変換しないと、ネットワークに入れません。 下の図は、Microsoft ピアリングのために NAT をセットアップするしくみを上のレベルで示しています。
+Microsoft ピアリング パスにより、Azure パブリック ピアリング パスでサポートされていない Microsoft クラウド サービスに接続できます。 そのようなサービスには、Exchange Online、SharePoint Online、Skype for Business、CRM Online のような Office 365 サービスがあります。 Microsoft は今後、Microsoft ピアリングで双方向の接続をサポートする予定です。 Microsoft クラウド サービスに向かうトラフィックは有効な IPv4 アドレスに SNAT 変換しないと、Microsoft ネットワークに入れません。 Microsoft クラウド サービスからご利用のネットワークに送信されるトラフィックは、[非対称ルーティング](expressroute-asymmetric-routing.md)を回避するためにインターネット エッジで SNAT 変換する必要があります。 下の図は、Microsoft ピアリングのために NAT をセットアップするしくみを上のレベルで示しています。
 
 ![](./media/expressroute-nat/expressroute-nat-microsoft.png) 
 
@@ -63,7 +64,9 @@ Microsoft ピアリング パスにより、Azure パブリック ピアリン�
 
 ### <a name="traffic-originating-from-microsoft-destined-to-your-network"></a>Microsoft からあなたのネットワークに送信されるトラフィック
 * 一部のシナリオでは、あなたのネットワーク内でホストされているサービス エンドポイントへの接続を Microsoft が開始する必要があります。 そのようなシナリオの典型的な例は、Office 365 からあなたのネットワークでホストされている ADFS サービスに接続する場合です。 そのような場合は、ネットワークから Microsoft ピアリングに適切なプレフィックスをリークする必要があります。 
-* Microsoft からあなたのネットワーク内にある IP アドレスに送信されるトラフィックを SNAT 変換する必要があります。 
+* [非対称ルーティング](expressroute-asymmetric-routing.md)を回避するために、ご利用のネットワーク内のサービス エンドポイント向けのインターネット エッジで Microsoft トラフィックを SNAT 変換する必要があります。 ExpressRoute 経由で受信したルートと一致する宛先 IP を持つ要求**と応答**は、常に ExpressRoute 経由で送信されます。 要求がインターネット経由で受信され、応答が ExpressRoute 経由で送信される場合に、非対称ルーティングが見られます。 インターネット エッジで受信した Microsoft トラフィックを SNAT 変換すると、応答トラフィックは強制的にインターネット エッジに返されるため、問題は解決します。
+
+![ExpressRoute を使用した非対称ルーティング](./media/expressroute-asymmetric-routing/AsymmetricRouting2.png)
 
 ## <a name="next-steps"></a>次のステップ
 * [ルーティング](expressroute-routing.md)と [QoS](expressroute-qos.md) の要件を参照してください。

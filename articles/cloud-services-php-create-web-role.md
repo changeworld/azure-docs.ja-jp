@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 8dc7ea843ea316fa4659a8e6575adbfd045f7a70
-ms.openlocfilehash: b6b802092165926cdfeab67849df26167ad96ebf
-ms.lasthandoff: 01/26/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 89092e75d10ece044be61ceba0baf16c9e1599be
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -26,12 +26,12 @@ ms.lasthandoff: 01/26/2017
 このガイドでは、Windows 開発環境で PHP Web ロールまたは worker ロールを作成し、使用可能な "ビルトイン" バージョンから特定バージョンの PHP を選択して、PHP 構成を変更し、拡張機能を有効にして、最後に Azure にデプロイする方法を示します。 また、指定した PHP ランタイムを (カスタムの構成および拡張機能と共に) 使用できるように Web ロールまたは worker ロールを構成する方法についても説明します。
 
 ## <a name="what-are-php-web-and-worker-roles"></a>PHP Web ロールと worker ロールについて
-Azure にはアプリケーションを実行するためのコンピューティング モデルとして、Azure App Service、Azure Virtual Machines、および Azure Cloud Services の&3; 種類があります。 これら&3; つのモデルはすべて、PHP をサポートしています。 Web ロールと worker ロールを含む Cloud Services は、 *サービスとしてのプラットフォーム (PaaS)*を提供します。 クラウド サービス内で、Web ロールはフロントエンド Web アプリケーションをホストする専用のインターネット インフォメーション サービス (IIS) Web サーバーを提供します。 worker ロールは、ユーザーの操作や入力とは関係なく、非同期タスク、長時間かかるタスク、または常駐タスクを実行できます。
+Azure にはアプリケーションを実行するためのコンピューティング モデルとして、Azure App Service、Azure Virtual Machines、および Azure Cloud Services の 3 種類があります。 これら 3 つのモデルはすべて、PHP をサポートしています。 Web ロールと worker ロールを含む Cloud Services は、 *サービスとしてのプラットフォーム (PaaS)*を提供します。 クラウド サービス内で、Web ロールはフロントエンド Web アプリケーションをホストする専用のインターネット インフォメーション サービス (IIS) Web サーバーを提供します。 worker ロールは、ユーザーの操作や入力とは関係なく、非同期タスク、長時間かかるタスク、または常駐タスクを実行できます。
 
 これらのオプションの詳細については、[Azure が提供するコンピューティング ホスティング オプション](cloud-services/cloud-services-choose-me.md)に関するページを参照してください。
 
 ## <a name="download-the-azure-sdk-for-php"></a>Azure SDK for PHP をダウンロードする
-[Azure SDK for PHP] は、いくつかのコンポーネントで構成されています。 この記事では、そのうち Azure PowerShell と Azure エミュレーターの&2; つを使用します。 これら&2; つのコンポーネントは、Microsoft Web Platform Installer を使用してインストールできます。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」を参照してください。
+[Azure SDK for PHP] は、いくつかのコンポーネントで構成されています。 この記事では、そのうち Azure PowerShell と Azure エミュレーターの 2 つを使用します。 これら 2 つのコンポーネントは、Microsoft Web Platform Installer を使用してインストールできます。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。
 
 ## <a name="create-a-cloud-services-project"></a>Cloud Services プロジェクトを作成する
 PHP Web ロールまたは worker ロールを作成するための最初のステップは、Azure サービス プロジェクトを作成することです。 Azure サービス プロジェクトは、Web ロールおよび worker ロールの論理コンテナーとして機能し、プロジェクトの[サービス定義ファイル (.csdef)] と[サービス構成ファイル (.cscfg)] を格納します。
@@ -201,7 +201,7 @@ Web ブラウザーを開き、出力に示されているローカル アドレ
     PS C:\MyProject> Stop-AzureEmulator
 
 ## <a name="publish-your-application"></a>アプリケーションの発行
-アプリケーションを発行するには、まず、 [Import-AzurePublishSettingsFile](https://msdn.microsoft.com/library/azure/dn790370.aspx) コマンドレットを使用して発行設定をインポートする必要があります。 次に [Publish-AzureServiceProject](https://msdn.microsoft.com/library/azure/dn495166.aspx) コマンドレットを使用して、アプリケーションを発行できます。 サインインの詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」を参照してください。
+アプリケーションを発行するには、まず、 [Import-AzurePublishSettingsFile](https://msdn.microsoft.com/library/azure/dn790370.aspx) コマンドレットを使用して発行設定をインポートする必要があります。 次に [Publish-AzureServiceProject](https://msdn.microsoft.com/library/azure/dn495166.aspx) コマンドレットを使用して、アプリケーションを発行できます。 サインインの詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 詳細については、 [PHP デベロッパー センター](/develop/php/)を参照してください。

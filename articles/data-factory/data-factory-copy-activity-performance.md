@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 04/14/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: bf864e0d9922e8e842945db9964899d602fd7eed
-ms.lasthandoff: 04/15/2017
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 0637fb4d7c6cb8c3cfd4aab5d06571bd83f59683
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -234,7 +234,7 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 ## <a name="performance-tuning-steps"></a>パフォーマンス チューニングの手順
 Data Factory サービスとコピー アクティビティのパフォーマンスをチューニングするには、次の手順を実行することをお勧めします。
 
-1. **ベースラインを確立する**。 開発フェーズでは、代表的なデータ サンプルに対してコピー アクティビティを使用して、パイプラインをテストします。 Data Factory の [スライシング モデル](data-factory-scheduling-and-execution.md#time-series-datasets-and-data-slices) を使用することで、操作するデータの量を制限できます。
+1. **ベースラインを確立する**。 開発フェーズでは、代表的なデータ サンプルに対してコピー アクティビティを使用して、パイプラインをテストします。 Data Factory の [スライシング モデル](data-factory-scheduling-and-execution.md) を使用することで、操作するデータの量を制限できます。
 
    **監視と管理アプリ**を使用して、実行時間とパフォーマンス特性を収集します。 Data Factory のホーム ページで、**[監視と管理]** を選択します。 ツリー ビューで、 **出力データセット**を選択します。 **[Activity Windows (アクティビティ ウィンドウ)]** の一覧で、コピー アクティビティの実行を選択します。 **[Activity Windows (アクティビティ ウィンドウ)]** には、コピー アクティビティの期間とコピーされるデータのサイズが表示されます。 スループットは、 **[Activity Window Explorer (アクティビティ ウィンドウ エクスプローラー)]**に一覧表示されます。 このアプリの詳細については、 [新しい監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事を参照してください。
 

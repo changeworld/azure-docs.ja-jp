@@ -12,12 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2017
+ms.date: 03/19/2017
 ms.author: robinsh
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 1a462b8d557ad23bda912ddf9431195a8cfe909e
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 284b239860481cf76f647d78f6a7b5e2b7cf9a3b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -121,6 +122,11 @@ Managed Disks では 3 つの重要な既定のロールがサポートされま
 
 現在、Azure Managed Disks ではローカル冗長ストレージ (LRS) しかサポートされていません。
 
+**Managed Disks を縮小/ダウンサイズできますか?**
+いいえ。 現在、この機能はサポートされていません。 
+
+**専用の (sysprep で作成されていない、または汎用の) OS ディスクを使用して VM をプロビジョニングする場合、コンピューター名プロパティを変更することはできますか?** いいえ。 コンピューター名プロパティを更新することはできません。 新しい VM のコンピューター名プロパティは、OS ディスクの作成に使用した親 VM から継承されます。 
+
 ## <a name="managed-disks-and-port-8443"></a>Managed Disks とポート 8443
 
 **Azure Managed Disks を使用している VM のポート 8443 で送信トラフィックのブロックを解除しなければならないのはなぜですか?**
@@ -189,8 +195,13 @@ DS シリーズのキャッシュとローカル SSD の制限の合計は、コ
 
 ローカル SSD とは、Managed Disks VM に含まれている一時的なストレージです。 この一時ストレージに追加の料金は発生しません。 これは Azure Blob Storage に永続化されないため、アプリケーション データの保存にこのローカル SSD を使用しないことをお勧めします。
 
+**Premium ディスクで TRIM を使用することで何らかの影響はありますか?**
+
+Premium ディスクまたは Standard ディスク上の Azure ディスクで TRIM を使用することに不都合な点はありません。
+
 ## <a name="what-if-my-question-isnt-answered-here"></a>ここに質問の答えがない場合はどうすればいいですか。
 
 質問がここに表示されていない場合はご連絡ください。答えを見つけるお手伝いをします。 この記事に関する質問は、この記事の末尾のコメント欄、または MSDN [Azure Storage フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)に投稿して、Azure Storage チームや他のコミュニティ メンバーと意見を交わすことができます。
 
 機能についてのご要望がある場合は、ご要望やアイデアを [Azure Storage フィードバック フォーラム](https://feedback.azure.com/forums/217298-storage)までお送りください。
+

@@ -15,15 +15,15 @@ ms.workload: big-data
 ms.date: 01/27/2017
 ms.author: stewu
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: 34b449b251672619aec6e86b9343343a9404126a
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a0eecbb50b001325c91d1d721bf8de7244f04674
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="migrate-data-lake-store-across-regions"></a>リージョン間で Data Lake Store を移行する
 
-Azure Data Lake Store が新しいリージョンで利用できるようになった時点で、新しいリージョンを利用するために&1; 回限りの移行を実行できます。 移行の計画および実行時に考慮すべき事項について説明します。
+Azure Data Lake Store が新しいリージョンで利用できるようになった時点で、新しいリージョンを利用するために 1 回限りの移行を実行できます。 移行の計画および実行時に考慮すべき事項について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -48,7 +48,7 @@ Azure Data Lake Store が新しいリージョンで利用できるようにな�
 
 * **帯域幅の料金**。 Azure リージョンからデータが転送されるため、[帯域幅の料金](https://azure.microsoft.com/en-us/pricing/details/bandwidth/)が適用されます。
 
-* **データの ACL**。 ファイルとフォルダーに ACL を適用して、新しいリージョンのデータをセキュリティで保護します。 詳細については、「[Data Lake Store に格納されているデータのセキュリティ保護](data-lake-store-secure-data.md)」をご覧ください。 移行を ACL の更新と調整に使用することをお勧めします。 現在の設定と同様の設定を使用することもできます。 Azure Portal、[PowerShell コマンドレット](https://docs.microsoft.com/en-us/powershell/resourcemanager/azurerm.datalakestore/v3.1.0/get-azurermdatalakestoreitempermission)、または SDK を使用して、ファイルに適用されている ACL を表示できます。  
+* **データの ACL**。 ファイルとフォルダーに ACL を適用して、新しいリージョンのデータをセキュリティで保護します。 詳細については、「[Data Lake Store に格納されているデータのセキュリティ保護](data-lake-store-secure-data.md)」をご覧ください。 移行を ACL の更新と調整に使用することをお勧めします。 現在の設定と同様の設定を使用することもできます。 Azure Portal、[PowerShell コマンドレット](/powershell/module/azurerm.datalakestore/get-azurermdatalakestoreitempermission)、または SDK を使用して、ファイルに適用されている ACL を表示できます。  
 
 * **分析サービスの場所**。 最良のパフォーマンスを得るには、Azure Data Lake Analytics や Azure HDInsight などの分析サービスをデータと同じリージョンに配置する必要があります。  
 

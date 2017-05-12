@@ -12,12 +12,13 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/23/2017
+ms.date: 05/04/2017
 ms.author: subramar
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 516b8e517a16dd0d87e02189260166696225fbab
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: d01e141ec8ee8da18d38a216f3b13c88f3632801
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -74,6 +75,13 @@ apt get を実行して SDK および関連付けられたランタイム パッ
     ```bash
     sudo apt-get install servicefabricsdkcommon
     ```
+    インストールを自動化する場合は、Service Fabric パッケージの debconf の選択内容を設定することで、ライセンス契約のプロンプトをスキップできます。 次の 2 つのコマンドを実行することができます。
+    
+    ```bash
+    echo "servicefabric servicefabric/accepted-eula-v1 select true" | debconf-set-selections
+    echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-v1 select true" | debconf-set-selections
+    ```
+
 2. SDK のセットアップ スクリプトを実行します。
 
     ```bash
@@ -203,6 +211,11 @@ SDK とランタイムを最新バージョンに更新するには、次の手�
    sudo apt-get update
    sudo apt-get install servicefabric servicefabricsdkcommon servicefabricsdkcsharp servicefabricsdkjava
    ```
+   
+> [!NOTE]
+> 上記のパッケージを更新すると、ローカルの開発クラスターが停止する可能性があります。 このページの手順に従って、アップグレード後にローカル クラスターを再起動してください。
+>
+>
 
 CLI を更新する場合は、CLI をクローンしたディレクトリに移動し、`git pull` を実行して更新します。  更新に追加の手順が必要な場合は、リリース ノートで確認できます。 
 

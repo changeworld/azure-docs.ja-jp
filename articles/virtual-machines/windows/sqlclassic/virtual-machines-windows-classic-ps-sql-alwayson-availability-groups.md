@@ -16,9 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: fa5467f38944435cc21d4d3ebd5a645c4f268b9b
-ms.lasthandoff: 04/05/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: c4948d83b5eff5280f6a0d16535f3eb29d680f04
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -46,7 +46,7 @@ Azure 仮想マシン (VM) を使用すると、データベース管理者は�
 このチュートリアルでは、冒頭に挙げたソリューションをセットアップするために必要な手順を紹介します。個々の手順について深く掘り下げて説明することはしません。 したがって、GUI での構成手順は示さず、それぞれの手順を手早く実行できるように PowerShell スクリプトを使用しています。 このチュートリアルでは、次のことを前提としています。
 
 * 仮想マシン サブスクリプション付きの Azure アカウントを既に所有している。
-* [Azure PowerShell コマンドレット](/powershell/azureps-cmdlets-docs)がインストール済みである。
+* [Azure PowerShell コマンドレット](/powershell/azure/overview)がインストール済みである。
 * オンプレミス ソリューションにおける AlwaysOn 可用性グループについて十分に理解している。 詳細については、「 [AlwaysOn 可用性グループ (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx)」をご覧ください。
 
 ## <a name="connect-to-your-azure-subscription-and-create-the-virtual-network"></a>Azure サブスクリプションへの接続と仮想ネットワークの作成

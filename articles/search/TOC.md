@@ -14,14 +14,13 @@
 ## [インデックスの検索](search-query-overview.md)
 ### [Azure Portal](search-explorer.md)
 ### [.NET](search-query-dotnet.md)
-### [REST](search-query-rest-api.md)
-## [検索結果の処理方法](search-pagination-page-layout.md)
-## Tutorials (チュートリアル)
-### [.NET](search-howto-dotnet-sdk.md)
-### [.NET のシノニムのプレビュー](search-synonyms-tutorial-sdk.md)
-### [ポータル](search-get-started-portal.md)
-### [NodeJS](search-get-started-nodejs.md)
-### [Java](search-get-started-java.md)
+### [REST ()](search-query-rest-api.md)
+# Tutorials (チュートリアル)
+## [.NET](search-howto-dotnet-sdk.md)
+## [.NET のシノニムのプレビュー](search-synonyms-tutorial-sdk.md)
+## [ポータル](search-get-started-portal.md)
+## [Node.JS](search-get-started-nodejs.md)
+## [Java](search-get-started-java.md)
 # 方法
 ## 計画と設計
 ### [サービスの制限](search-limits-quotas-capacity.md)
@@ -59,14 +58,16 @@
 ### カスタム検索
 #### [言語アナライザー](https://docs.microsoft.com/rest/api/searchservice/language-support)
 #### [カスタム アナライザー](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)
+### [ページングの結果](search-pagination-page-layout.md)
 ### [スコア付け](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
 ### [検索候補](https://docs.microsoft.com/rest/api/searchservice/suggesters)
 ### [ファセット ナビゲーション](search-faceted-navigation.md)
 ### [シノニムのプレビュー](search-synonyms.md)
 
 # リファレンス
-## [.NET](/dotnet/api/microsoft.azure.search)
-## [.NET (管理)](/dotnet/api/microsoft.azure.management.search)
+
+## [.NET](/dotnet/api/?term=microsoft.azure.search)
+## [.NET (管理)](/dotnet/api/?term=microsoft.azure.management.search)
 ## [Python (管理)](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html)
 ## [REST ()](/rest/api/searchservice)
 ## [REST (管理)](/rest/api/searchmanagement)

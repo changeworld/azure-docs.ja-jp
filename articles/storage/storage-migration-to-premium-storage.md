@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: yuemlu
 translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: cbf4f1a3bce53844e032c49637d4cfd9dd722679
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 56f4245b63cecd51bf81863e15e4e72d73e671d6
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -48,7 +48,7 @@ Azure Premium Storage は、高負荷の I/O ワークロードを実行する�
 
 ### <a name="prerequisites"></a>前提条件
 * Azure サブスクリプションが必要です。 サブスクリプションがない場合は、1 か月間の[無料試用版](https://azure.microsoft.com/pricing/free-trial/)サブスクリプションを作成するか、「[Azure の価格](https://azure.microsoft.com/pricing/)」でさらに多くのオプションを利用することができます。
-* PowerShell コマンドレットを実行するには、Microsoft Azure PowerShell モジュールが必要です。 インストール先とインストール方法については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」を参照してください。
+* PowerShell コマンドレットを実行するには、Microsoft Azure PowerShell モジュールが必要です。 インストール先とインストール方法については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」を参照してください。
 * Premium Storage で実行されている Azure VM を使う予定がある場合は、Premium Storage 対応の VM を使う必要があります。 Premium Storage 対応の VM では、Standard Storage ディスクと Premium Storage ディスクの両方を使えます。 Premium Storage ディスクの方が、将来的により多くの VM の種類を使用できます。 使用可能な Azure VM ディスクの種類とサイズの詳細については、「[仮想マシンのサイズ](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」と「[Cloud Services のサイズ](../cloud-services/cloud-services-sizes-specs.md)」を参照してください。
 
 ### <a name="considerations"></a>考慮事項

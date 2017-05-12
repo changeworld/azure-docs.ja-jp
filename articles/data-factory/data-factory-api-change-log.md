@@ -169,7 +169,7 @@ ms.lasthandoff: 03/29/2017
     var pipelines = new List<Pipeline>(response.Pipelines);
 
     string nextLink = response.NextLink;
-    while (string.IsNullOrEmpty(response.NextLink))
+    while (!string.IsNullOrEmpty(nextLink))
     {
         PipelineListResponse nextResponse = client.Pipelines.ListNext(nextLink);
         pipelines.AddRange(nextResponse.Pipelines);

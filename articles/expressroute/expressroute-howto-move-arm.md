@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2017
 ms.author: ganesr;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 6d11b75fdd33260be3d975d9bc25fdac3cf22b49
-ms.openlocfilehash: 73f42b25d667f07205e7e67556c367f1a0e6e215
-ms.lasthandoff: 02/06/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 7f04ac92d7a9eff9db49ff493cdaa8693ce188c6
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/06/2017
 ExpressRoute 回線をクラシック デプロイ モデルと Resource Manager デプロイ モデルの両方で使用するには、その回線を Resource Manager デプロイ モデルに移行する必要があります。 以降のセクションでは、PowerShell を使用して、回線を移動する手順を説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
-* Azure PowerShell モジュールの最新バージョン (バージョン 1.0 以降) があることを確認します。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」を参照してください。
+* Azure PowerShell モジュールの最新バージョン (バージョン 1.0 以降) があることを確認します。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。
 * 構成を開始する前に、必ず、[前提条件](expressroute-prerequisites.md)、[ルーティングの要件](expressroute-routing.md)、および[ワークフロー](expressroute-workflows.md)を確認してください。
 * [クラシックから Resource Manager への ExpressRoute 回線の移行](expressroute-move.md)に関する記事に記載されている情報を確認してください。 制限および制約事項について完全に理解していることを確認します。
 * 回路がクラシック デプロイメント モデルで完全に動作できることを確認します。

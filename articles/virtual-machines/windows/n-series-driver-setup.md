@@ -17,9 +17,9 @@ ms.date: 04/03/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: 1767a2db05abd3abadfedbef86c38e55c5a57980
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 717f4969a91209576a504c94c31993b938770432
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -70,7 +70,7 @@ GPU デバイスの状態を照会するには、ドライバーとともにイ�
 
 ## <a name="rdma-network-for-nc24r-vms"></a>NC24r VM の RDMA ネットワーク
 
-RDMA ネットワーク接続は、同じ可用性セットにデプロイされた NC24r VM で有効にすることができます。 RDMA 接続を有効にする Windows ネットワーク デバイス ドライバーをインストールするには、HpcVmDrivers 拡張機能を追加する必要があります。 VM 拡張機能を NC24r VM に追加するには、Azure Resource Manager 用の [Azure PowerShell](/powershell/azureps-cmdlets-docs) コマンドレットを使用します。
+RDMA ネットワーク接続は、同じ可用性セットにデプロイされた NC24r VM で有効にすることができます。 RDMA 接続を有効にする Windows ネットワーク デバイス ドライバーをインストールするには、HpcVmDrivers 拡張機能を追加する必要があります。 VM 拡張機能を NC24r VM に追加するには、Azure Resource Manager 用の [Azure PowerShell](/powershell/azure/overview) コマンドレットを使用します。
 
 > [!NOTE]
 > 現時点では、NC24r VM 上で RDMA ネットワークをサポートしているのは、Windows Server 2012 R2 のみです。

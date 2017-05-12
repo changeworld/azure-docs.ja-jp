@@ -1,9 +1,9 @@
 ---
-title: "Azure Application Insights を使用して Node.js アプリを監視する | Microsoft Docs"
-description: "オンプレミスまたは Microsoft Azure Web アプリケーションの使用状況、可用性、パフォーマンスを Application Insights を使用して分析します。"
+title: "Azure Application Insights を使用して Node.js サービスを監視する | Microsoft Docs"
+description: "Application Insights を使用して Node.js サービスのパフォーマンスを監視して問題を診断します。"
 services: application-insights
-documentationcenter: 
-author: alancameronwills
+documentationcenter: nodejs
+author: joshgav
 manager: carmonm
 ms.assetid: 2ec7f809-5e1a-41cf-9fcd-d0ed4bebd08c
 ms.service: application-insights
@@ -11,191 +11,197 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/14/2017
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 310ada88bb4d9b39eeaa10f303b9e1bd3b1f927f
-ms.lasthandoff: 04/13/2017
+ms.date: 05/01/2017
+ms.author: joshgav
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 76a8025cd2a67533beb321c88e924517c1977dfc
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/02/2017
 
 
 ---
-# <a name="add-application-insights-sdk-to-monitor-your-nodejs-app"></a>Application Insights SDK を追加して Node.js アプリを監視する
 
+# <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Application Insights を使用して Node.js サービスとアプリを監視する
 
-[Azure Application Insights](app-insights-overview.md) は、実行中のアプリケーションを監視し、[パフォーマンスの問題や例外の検出と診断](app-insights-detect-triage-diagnose.md)、[アプリの使用方法の把握](app-insights-web-track-usage.md)に役立ちます。 Azure Web Apps に加えて、独自のオンプレミス IIS サーバーや Azure の仮想マシンでホストされているアプリに対しても機能します。
+[Azure Application Insights](app-insights-overview.md) では、[パフォーマンスなどの問題を検出し、迅速に診断](app-insights-detect-triage-diagnose.md)できるように、デプロイしたバックエンド サービスとコンポーネントを監視します。 Application Insights を、任意の場所 (データ センター、Azure VM と Web Apps、その他のパブリック クラウド) でホストされている Node.js サービスに対して使用します。
 
-SDK では、受信 HTTP 要求レートと応答、パフォーマンス カウンター (CPU、メモリ、RPS)、ハンドルされない例外の自動収集機能が提供されます。 さらに、カスタム呼び出しを追加して、依存関係、メトリック、またはその他のイベントを追跡することができます。
+監視データの受け取り、保存、探索を行うためには、次の手順に従って、コードにエージェントを含め、Azure の対応する Application Insights リソースを設定します。 エージェントは、詳細な分析と探索のために、そのリソースにデータを送信します。
+
+Node.js エージェントでは、受信と発信 HTTP 要求、システムのいくつかのメトリック、および例外を自動的に監視できます。 v0.20 以降では、`mongodb`、`mysql`、`redis` などの一般的なサード パーティ パッケージも監視できます。 受信 HTTP 要求に関連するすべてのイベントは、トラブルシューティングを迅速に行えるように関連付けられます。
+
+後で説明するエージェント API を使用して手動でインストルメント化することで、アプリとシステムのさまざまな側面を監視できます。
 
 ![Example performance monitoring charts](./media/app-insights-nodejs/10-perf.png)
 
-#### <a name="before-you-start"></a>開始する前に
-必要なもの:
+## <a name="getting-started"></a>Getting Started (概要)
 
-* [Microsoft Azure](http://azure.com) サブスクリプション。 チームまたは組織で Azure サブスクリプションを取得している場合、所有者は [Microsoft アカウント](http://live.com)を使用してあなたを追加できます。
+アプリまたはサービスの監視を設定する手順について説明します。
 
-## <a name="add"></a>Application Insights リソースの作成
-[Azure Portal][portal] にサインインし、Application Insights の新しいリソースを作成します。 Azure の [リソース][roles] は、サービスのインスタンスです。 このリソースでは、アプリのテレメトリが分析されて画面に表示されます。
+### <a name="resource"></a> App Insights リソースを設定する
 
-![[新規]、[Application Insights] の順にクリックする](./media/app-insights-nodejs/01-new-asp.png)
+**開始する前に**、Azure サブスクリプションがあることを確認するか、[無償で新しい Azure サブスクリプションを取得][azure-free-offer]してください。 組織に Azure サブスクリプションが既にある場合は、管理者が[これらの手順][add-aad-user]に従って、あなたを追加できます。
 
-アプリケーションの種類として [全般] を選択します。 アプリケーションの種類を選択すると、[リソース] ブレードの既定のコンテンツと [メトリックス エクスプローラー][metrics]に表示されるプロパティが設定されます。
+[azure-free-offer]: https://azure.microsoft.com/en-us/free/
+[add-aad-user]: https://docs.microsoft.com/en-us/azure/active-directory/active-directory-users-create-azure-portal
 
-#### <a name="copy-the-instrumentation-key"></a>インストルメンテーション キーのコピー
-これはリソースを識別するキーです。データをリソースに送信するために SDK の後の手順でインストールします。
+[Azure Portal][portal] にログインし、次の図に示すように、[新規] > [開発者ツール] > [Application Insights] の順にクリックして、Application Insights リソースを作成します。 このリソースには、テレメトリ データを受信するためのエンドポイント、そのデータのストレージ、保存済みのレポートとダッシュボード、ルールとアラートの構成などが含まれています。
 
-![[プロパティ] をクリックし、キーを選択して、Ctrl キーを押しながら C キーを押す](./media/app-insights-nodejs/02-props-asp.png)
+![App Insights リソースを作成する](./media/app-insights-nodejs/03-new_appinsights_resource.png)
 
-## <a name="sdk"></a> アプリケーションに SDK をインストールする
-```
+リソース作成ページで、アプリケーションの種類のドロップダウン リストから [Node.js アプリケーション] を選択します。 アプリの種類により、自動的に作成されるダッシュボードとレポートの既定のセットが決定されます。 しかし、心配は不要です。実のところ、どの App Insights リソースでも、言語やプラットフォームに関係なくデータを収集できます。
+
+![新しい App Insights リソースのフォーム](./media/app-insights-nodejs/04-create_appinsights_resource.png)
+
+### <a name="agent"></a> Node.js エージェントを設定する
+
+次に、データを収集できるように、アプリにエージェントを含めます。
+まず、以下に示すように、ポータルからリソースのインストルメンテーション キー (以降は `ikey` と呼びます) をコピーします。 App Insights システムでは、このキーを使用して、データを Azure リソースにマップします。そのため、エージェントが使用する環境変数やコードでこのキーを指定する必要があります。  
+
+![インストルメンテーション キーのコピー](./media/app-insights-nodejs/05-appinsights_ikey_portal.png)
+
+次に、package.json を使用して、Node.js エージェント ライブラリをアプリの依存関係に追加します。 アプリのルート フォルダーから次を実行します。
+
+```bash
 npm install applicationinsights --save
 ```
 
-## <a name="usage"></a>使用法
-これにより、要求の監視、ハンドルされない例外の追跡、システム パフォーマンスの監視 (CPU/Memory/RPS) が有効になります。
+次に、コードでライブラリを明示的に読み込む必要があります。 エージェントはインストルメンテーションを他のさまざまなライブラリに挿入するため、できる限り早く (`require` ステートメントよりも前に) ライブラリを読み込む必要があります。 まず、最初の .js ファイルの先頭に次を追加します。
 
 ```javascript
-
-var appInsights = require("applicationinsights");
-appInsights.setup("<instrumentation_key>").start();
+const appInsights = require("applicationinsights");
+appInsights.setup("<instrumentation_key>");
+appInsights.start();
 ```
 
-インストルメンテーション キーは、APPINSIGHTS_INSTRUMENTATIONKEY 環境変数でも設定できます。 この設定が済むと、`appInsights.setup()` または `appInsights.getClient()` を呼び出すときに引数が不要になります。
+`setup` メソッドは、インストルメンテーション キー (および Azure リソース) をすべての追跡項目で既定で使用するよう構成します。 構成の終了後に `start` を呼び出して、テレメトリ データの収集と送信を開始します。
 
-インストルメンテーション キーを空でない文字列に設定することで、テレメトリを送信せずに SDK を試してみることができます。
+ikey は、`setup()` または `getClient()` に手動で渡す代わりに、APPINSIGHTS\_INSTRUMENTATIONKEY 環境変数を使用して渡すこともできます。 この方法では、コミットされたソース コードに ikey を含めず、異なる環境に合わせて異なる ikey を指定できます。
 
-## <a name="run"></a> プロジェクトの実行
-アプリケーションを実行して動作を確認します。さまざまなページを開き、テレメトリをいくつか生成します。
+その他の構成オプションについては、以下で説明しています。
 
-## <a name="monitor"></a> 利用統計情報を表示する
-[Azure ポータル](https://portal.azure.com) に戻り、Application Insights のリソースを参照します。
+インストルメンテーション キーを空でない文字列に設定することで、テレメトリを送信せずにエージェントを試してみることができます。
 
-[概要] ページでデータを探します。 最初、1 つまたは 2 つのポイントだけが表示されます。 次に例を示します。
+### <a name="monitor"></a> アプリを監視する
 
-![クリックしてより多くのデータを表示する](./media/app-insights-nodejs/12-first-perf.png)
+エージェントは、Node.js ランタイムおよび一般的なサード パーティ モジュールに関するテレメトリを自動的に収集します。 今アプリケーションを使用して、そうしたデータを生成します。
 
-任意のグラフをクリックして、より詳細なメトリックを表示します。 [メトリックの詳細についてはこちらをご覧ください。][perf]
+次に、[Azure Portal][portal] で、前に作成した Application Insights リソースを参照し、次の図に示すように、概要タイムラインで最初のいくつかのデータ ポイントを探します。 グラフをクリックすると、詳細が表示されます。
+
+![最初のデータ ポイント](./media/app-insights-nodejs/12-first-perf.png)
+
+[アプリケーション マップ] ボタンをクリックすると、次の図に示すように、アプリの検出されたトポロジが表示されます。 マップ内のコンポーネントをクリックすると、詳細が表示されます。
+
+![簡単なアプリ マップ](./media/app-insights-nodejs/06-appinsights_appmap.png)
+
+[調査] セクションにある利用可能なその他のビューを使用すると、アプリの詳細を確認することや、問題のトラブルシューティングを行うことができます。
+
+![[調査] セクション](./media/app-insights-nodejs/07-appinsights_investigate_blades.png)
 
 #### <a name="no-data"></a>データが表示されない場合
-* アプリケーションを使用して、テレメトリがいくつか生成されるようにさまざまなページを開きます。
-* [[検索]](app-insights-diagnostic-search.md) タイルを開き、個々のイベントを表示します。 メトリック パイプラインを経由すると、イベントの取得に少し時間がかかる場合があります。
-* 数秒待機してから **[最新の情報に更新]**をクリックします。 グラフは周期的に自動で更新されますが、データの表示を待機している場合、手動で更新することもできます。
-* [トラブルシューティング][qna]に関するページを参照してください。
 
-## <a name="publish-your-app"></a>アプリケーションの発行
-ここで、アプリケーションを IIS または Azure にデプロイし、データ累積を確認します。
+エージェントでは送信するデータをバッチ処理するため、ポータルに項目が表示されるまでに遅延が発生する場合があります。 リソースのデータが表示されない場合は、次の対処方法を試してください。
 
-#### <a name="no-data-after-you-publish-to-your-server"></a>サーバーに発行した後でデータはありませんか。
-[必要なファイアウォール ポートが開かれている](app-insights-ip-addresses.md)ことを確認します。
+* アプリケーションをもう少し使用します。操作を実行して、テレメトリをもっと生成します。
+* ポータルのリソース ビューで **[最新の情報に更新]** をクリックします。 グラフは定期的に自動的に更新されますが、クリックすると、すぐに更新されます。
+* [必要な送信ポート](app-insights-ip-addresses.md)が開いていることを確認します。
+* [[検索]](app-insights-diagnostic-search.md) タイルを開き、個々のイベントを探します。
+* [よく寄せられる質問][]を確認します。
 
-#### <a name="trouble-on-your-build-server"></a>ビルド サーバーで問題が発生した場合
-[このトラブルシューティング項目](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild)を参照してください。
 
-## <a name="customized-usage"></a>カスタマイズした使用状況
-### <a name="disabling-auto-collection"></a>自動収集の無効化
+## <a name="agent-configuration"></a>エージェントの構成
+
+エージェントの構成方法とその既定値を次に示します。
+
+サービスのイベントを完全に関連付けるには、必ず `.setAutoDependencyCorrelation(true)` を設定します。 これにより、エージェントで Node.js の非同期コールバック全体のコンテキストを追跡できます。
+
 ```javascript
-import appInsights = require("applicationinsights");
+const appInsights = require("applicationinsights");
 appInsights.setup("<instrumentation_key>")
-    .setAutoCollectRequests(false)
-    .setAutoCollectPerformance(false)
-    .setAutoCollectExceptions(false)
-    // no telemetry will be sent until .start() is called
+    .setAutoDependencyCorrelation(false)
+    .setAutoCollectRequests(true)
+    .setAutoCollectPerformance(true)
+    .setAutoCollectExceptions(true)
+    .setAutoCollectDependencies(true)
     .start();
 ```
 
-### <a name="custom-monitoring"></a>カスタム監視
-```javascript
-import appInsights = require("applicationinsights");
-var client = appInsights.getClient();
+## <a name="agent-api"></a>エージェント API
 
-client.trackEvent("custom event", {customProperty: "custom property value"});
+<!-- TODO: Fully document agent API. -->
+
+.NET エージェント API については、[こちら](app-insights-api-custom-events-metrics.md)で詳しく説明しています。
+
+Application Insights の Node.js クライアントを使用して、任意の要求、イベント、メトリック、または例外を追跡できます。 次に、使用できる API の使用例を示します。
+
+```javascript
+let appInsights = require("applicationinsights");
+appInsights.setup().start(); // assuming ikey in env var
+let client = appInsights.getClient();
+
+client.trackEvent("my custom event", {customProperty: "custom property value"});
 client.trackException(new Error("handled exceptions can be logged with this method"));
 client.trackMetric("custom metric", 3);
 client.trackTrace("trace message");
-```
 
-[テレメトリ API の詳細については、こちらを参照してください](app-insights-api-custom-events-metrics.md)。
-
-### <a name="using-multiple-instrumentation-keys"></a>複数のインストルメンテーション キーの使用
-```javascript
-import appInsights = require("applicationinsights");
-
-// configure auto-collection with one instrumentation key
-appInsights.setup("<instrumentation_key>").start();
-
-// get a client for another instrumentation key
-var otherClient = appInsights.getClient("<other_instrumentation_key>");
-otherClient.trackEvent("custom event");
-```
-
-## <a name="examples"></a>例
-### <a name="tracking-dependency"></a>依存関係の追跡
-```javascript
-import appInsights = require("applicationinsights");
-var client = appInsights.getClient();
-
-var startTime = Date.now();
-// execute dependency call
-var endTime = Date.now();
-
-var elapsedTime = endTime - startTime;
-var success = true;
-client.trackDependency("dependency name", "command name", elapsedTime, success);
-```
-
-
-
-### <a name="manual-request-tracking-of-all-get-requests"></a>すべての "GET" 要求の手動要求トラッキング
-```javascript
-var http = require("http");
-var appInsights = require("applicationinsights");
-appInsights.setup("<instrumentation_key>")
-    .setAutoCollectRequests(false) // disable auto-collection of requests for this example
-    .start();
-
-// assign common properties to all telemetry sent from the default client
-appInsights.client.commonProperties = {
-    environment: process.env.SOME_ENV_VARIABLE
-};
-
-// track a system startup event
-appInsights.client.trackEvent("server start");
-
-// create server
-var port = process.env.port || 1337
-var server = http.createServer(function (req, res) {
-    // track all "GET" requests
-    if(req.method === "GET") {
-        appInsights.client.trackRequest(req, res);
-    }
-
-    res.writeHead(200, { "Content-Type": "text/plain" });
-    res.end("Hello World\n");
-}).listen(port);
-
-// track startup time of the server as a custom metric
-var start = +new Date;
-server.on("listening", () => {
-    var end = +new Date;
-    var duration = end - start;
-    appInsights.client.trackMetric("StartupTime", duration);
+let http = require("http");
+http.createServer( (req, res) => {
+  client.trackRequest(req, res); // Place at the beginning of your request handler
 });
 ```
 
-## <a name="video"></a>ビデオ
+### <a name="track-your-dependencies"></a>依存関係を追跡する
 
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
+```javascript
+let appInsights = require("applicationinsights");
+let client = appInsights.getClient();
 
-## <a name="next-steps"></a>次のステップ
+var success = false;
+let startTime = Date.now();
+// execute dependency call here....
+let duration = Date.now() - startTime;
+success = true;
+
+client.trackDependency("dependency name", "command name", duration, success);
+```
+
+### <a name="add-a-custom-property-to-all-events"></a>すべてのイベントにカスタム プロパティを追加する
+
+```javascript
+appInsights.client.commonProperties = {
+    environment: process.env.SOME_ENV_VARIABLE
+};
+```
+
+### <a name="track-http-get-requests"></a>HTTP GET 要求を追跡する
+
+```javascript
+var server = http.createServer((req, res) => {
+    if ( req.method === "GET" ) {
+            appInsights.client.trackRequest(req, res);
+    }
+    // other work here....
+    res.end();
+});
+```
+
+### <a name="track-server-startup-time"></a>サーバーの起動時間を追跡する
+
+```javascript
+let start = Date.now();
+server.on("listening", () => {
+    let duration = Date.now() - start;
+    appInsights.client.trackMetric("server startup time", duration);
+});
+```
+
+## <a name="more-resources"></a>その他のリソース
+
 * [ポータル内でテレメトリを監視する](app-insights-dashboards.md)
 * [テレメトリに関する分析クエリを記述する](app-insights-analytics-tour.md)
 
-<!--Link references-->
+<!--references-->
 
-[knowUsers]: app-insights-web-track-usage.md
-[metrics]: app-insights-metrics-explorer.md
-[perf]: app-insights-web-monitor-performance.md
-[portal]: http://portal.azure.com/
-[qna]: app-insights-troubleshoot-faq.md
-[roles]: app-insights-resources-roles-access-control.md
+[portal]: https://portal.azure.com/
+[よく寄せられる質問]: app-insights-troubleshoot-faq.md
 

@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/13/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: bf245d8885e6d6628f182e36e0a9c99a4854873a
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: bf5b1c0a6e76f712e0be1f16ed1a6b2ac78d68de
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -36,13 +37,9 @@ HDInsight には、HDInsight クラスターに R Server を統合するオプ�
 > このドキュメントの手順では、パスワードを使用していることを想定しています。
 
 
-### <a name="access-control-requirements"></a>アクセス制御の要件
-
-[!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
-
 ## <a name="automated-cluster-creation"></a>自動クラスター作成
 
-ARM テンプレート、SDK、および PowerShell を使用して、HDInsight R Server の作成を自動化できます。
+Azure Resource Manager テンプレート、SDK のほか、PowerShell も使用して、HDInsight R Server の作成を自動化できます。
 
 * Azure Resource Manager テンプレートを使用して R Server を作成するには、「[Deploy an R-server HDInsight cluster (R Server HDInsight クラスターのデプロイ)](https://azure.microsoft.com/resources/templates/101-hdinsight-rserver/)」を参照してください。
 * .NET SDK テンプレートを使用して R Server を作成するには、「[.NET SDK を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)」を参照してください。
@@ -629,6 +626,10 @@ Microsoft R Server は、現時点では Yarn を通じて管理されません�
 * "URI" セクションを見つけて、ワーカー ノードの IP とポートの詳細を追加します。
 
 ![ワーカー ノードの使用停止のコマンドライン](./media/hdinsight-hadoop-r-server-get-started/get-started-op-cmd.png)
+
+## <a name="troubleshoot"></a>トラブルシューティング
+
+HDInsight クラスターの作成で問題が発生した場合は、[アクセス制御の要件](hdinsight-administer-use-portal-linux.md#create-clusters)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

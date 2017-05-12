@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
 translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 3b946c9c482015483c929127ff3b42b6059f5e52
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: b86f13f49c6390a90609bba9141564d2ac69246d
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -31,7 +31,7 @@ Azure の仮想マシンを使用すると、対話型のジョブ、バッチ �
 
 ## <a name="prerequisites"></a>前提条件
 * **クライアント コンピューター** : デプロイ後の Azure と MATLAB Distributed Computing Server クラスターとの通信に、Windows ベースのクライアント コンピューターが必要です。
-* **Azure PowerShell** : クライアント コンピューターにインストールする方法については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」を参照してください。
+* **Azure PowerShell** : クライアント コンピューターにインストールする方法については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」を参照してください。
 * **Azure サブスクリプション** - サブスクリプションがない場合は、 [無料アカウント](https://azure.microsoft.com/free/) を数分で作成することができます。 大規模なクラスターでは、従量課金制のサブスクリプションまたはその他の購入オプションを検討してください。
 * **コア クォータ** : 大規模なクラスターまたは複数の MATLAB Distributed Computing Server クラスターをデプロイするには、コア クォータを増やす必要があります。 クォータを増やすには、 [オンライン カスタマー サポートに申請](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) (無料) してください。
 * **MATLAB の Parallel Computing Toolbox および MATLAB Distributed Computing Server ライセンス** : このスクリプトでは、すべてのライセンスで [MathWorks Hosted License Manager](http://www.mathworks.com/products/parallel-computing/mathworks-hosted-license-manager/) が使用されていることを想定しています。  

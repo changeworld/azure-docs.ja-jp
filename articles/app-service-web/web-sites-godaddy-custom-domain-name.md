@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/12/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: fe8b4b097f7ff157d624c09b8dbf26f94401395c
-ms.lasthandoff: 01/20/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 158c5dc06f83e16633d3c2fbb4eb27d3e8af030c
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -42,7 +42,7 @@ Azure App Service Web Apps からドメインを購入した場合は、「 [Web
 ## <a name="add-a-dns-record-for-your-custom-domain"></a>カスタム ドメインの DNS レコードの追加
 カスタム ドメインを App Service の Web アプリケーションに関連付けるには、GoDaddy のツールを使用して、新しいエントリをカスタム ドメインの DNS テーブルに追加する必要があります。 次の手順を使用して GoDaddy.com の DNS ツールを見つけます。
 
-1. GoDaddy.com のアカウントにログオンし、**[My Account]**、**[Manage my domains]** の順に選択します。 最後に、Azure Web アプリで使用するドメイン名をドロップダウン メニューで選択し、 **[Manage DNS]**を選択します。
+1. GoDaddy.com のアカウントにログオンし、**[My Account]**、**[Manage my domains]** の順に選択します。 Azure Web アプリで使用するドメイン名をドロップダウン メニューで選択し、 **[Manage DNS]**を選択します。
    
     ![GoDaddy のカスタム ドメイン ページ](./media/web-sites-godaddy-custom-domain-name/godaddy-customdomain.png)
 2. **[Domain details]** ページの **[DNS Zone File]** タブまでスクロールします。 このセクションを使用して、ドメイン名の DNS レコードを追加したり変更したりします。

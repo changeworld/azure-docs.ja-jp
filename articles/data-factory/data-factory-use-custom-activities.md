@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/30/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 780c7b90fc97a38b69b9a30abe920e083562e238
-ms.lasthandoff: 04/19/2017
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 864526efd2bc90bdd4beeb4c81173e85eee6f34b
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -43,12 +43,13 @@ Azure Data Factory パイプラインでは、2 種類のアクティビティ�
 
 Data Factory でサポートされていないデータ ストアとの間でデータを移動するには、独自のデータ移動ロジックで**カスタム アクティビティ**を作成し、パイプラインでそのアクティビティを使用します。 同じように、Data Factory でサポートされていない方法でデータを変換/処理するには、独自のデータ変換ロジックでカスタム アクティビティを作成し、パイプラインでそのアクティビティを使用します。 
 
-仮想マシンの **Azure Batch** プールまたは **Azure HDInsight** クラスターで実行するカスタム アクティビティを構成することができます。 Azure Batch を使用する場合は、既存の Azure Batch プールのみを使用できます。 一方、HDInsight を使用する場合は、既存の HDInsight クラスター、またはランタイムにオンデマンドで自動的に作成されるクラスターを使用できます。  
+仮想マシンの **Azure Batch** プールまたは Windows ベースの **Azure HDInsight** クラスターで実行するカスタム アクティビティを構成することができます。 Azure Batch を使用する場合は、既存の Azure Batch プールのみを使用できます。 一方、HDInsight を使用する場合は、既存の HDInsight クラスター、またはランタイムにオンデマンドで自動的に作成されるクラスターを使用できます。  
 
 以下のチュートリアルでは、カスタム .NET アクティビティを作成し、パイプラインでそのカスタム アクティビティを使用する手順について説明します。 このチュートリアルでは、**Azure Batch** のリンクされたサービスを使用します。 代わりに Azure HDInsight のリンクされたサービスを使用するには、型が **HDInsight** (独自の HDInsight クラスター) または **HDInsightOnDemand** (Data Factory によってオンデマンドで作成される HDInsight クラスター) のリンクされたサービスを作成します。 次に、HDInsight のリンクされたサービスを使用するようにカスタム アクティビティを構成します。 Azure HDInsight を使用してカスタム アクティビティを実行する方法の詳細については、「 [Azure HDInsight のリンクされたサービスの使用](#use-hdinsight-compute-service) 」セクションを参照してください。
 
-> [!NOTE]
-> カスタム アクティビティからデータ管理ゲートウェイを使用してオンプレミスのデータ ソースにアクセスすることはできません。 現時点では、[データ管理ゲートウェイ](data-factory-data-management-gateway.md)でサポートされるのは Data Factory でのコピー アクティビティとストアド プロシージャ アクティビティのみです。   
+> [!IMPORTANT]
+> - カスタム .NET アクティビティは、Windows ベースの HDInsight クラスター上でのみ実行します。 この制限を回避するには、Map Reduce アクティビティを使って、Linux ベースの HDInsight クラスター上でカスタム Java コードを実行します。 もう 1 つの方法は、HDInsight クラスターを使う代わりに仮想マシンの Azure Batch プールを使ってカスタム アクティビティを実行します。
+> - カスタム アクティビティからデータ管理ゲートウェイを使用してオンプレミスのデータ ソースにアクセスすることはできません。 現時点では、[データ管理ゲートウェイ](data-factory-data-management-gateway.md)でサポートされるのは Data Factory でのコピー アクティビティとストアド プロシージャ アクティビティのみです。   
 
 ## <a name="walkthrough"></a>チュートリアル
 ### <a name="prerequisites"></a>前提条件
@@ -706,7 +707,7 @@ Data Factory サービスによって、Azure Batch に **adf-poolname: job-xxx*
     プロジェクトをビルドします。 bin\Debug フォルダーからバージョン 4.3.0 より新しい Azure.Storage アセンブリを削除します。 バイナリと PDB ファイルを含む zip ファイルを作成します。 BLOB コンテナー (customactivitycontainer) 内で元の zip ファイルをこの zip ファイルで置き換えます。 失敗したスライスを再実行します (スライスを右クリックし、[実行] をクリックします)。   
 8. このカスタム アクティビティでは、パッケージ内の **app.config** ファイルは使用されません。 そのためこの構成ファイルから接続文字列を読み取るようにコードを記述した場合、実行時に正しく機能しません。 Azure Batch を使用するときは、すべてのシークレットを **Azure KeyVault** に保持し、証明書ベースのサービス プリンシパルを使用して **keyvault** を保護したうえで、Azure Batch プールに証明書を配布するのがベスト プラクティスです。 こうすることで .NET カスタム アクティビティが実行時に KeyVault 内のシークレットにアクセスすることができます。 これは一般的な手法であり、接続文字列に限らず、あらゆる種類のシークレットに応用できます。
 
-   ベスト プラクティスではありませんが、同じことをもっと簡単に行うこともできます。接続文字列設定を使用して **Azure SQL のリンクされたサービス**を作成し、そのリンクされたサービスを使用するデータセットを作成して、カスタム .NET アクティビティにダミーの入力データセットとして連結します。 リンクされたサービスの接続文字列にカスタム アクティビティのコード内からアクセスすれば、実行時に適切に機能します。  
+   ベスト プラクティスではありませんが、同じことをもっと簡単に行うこともできます。接続文字列設定を使用して **Azure SQL のリンクされたサービス**を作成し、そのリンクされたサービスを使用するデータセットを作成して、カスタム .NET アクティビティにダミーの入力データセットとして連結します。 その後は、カスタム アクティビティのコードで、リンクされたサービスの接続文字列にアクセスできます。  
 
 ## <a name="update-custom-activity"></a>カスタム アクティビティを更新する
 カスタム アクティビティのコードを更新する場合は、カスタム アクティビティを構築し、新しいバイナリを含む zip ファイルを BLOB ストレージにアップロードします。
@@ -731,7 +732,7 @@ Data Factory ランチャーによって使用されるアセンブリのバー�
 ```
 
 
-この例では、2 つの拡張プロパティ (**SliceStart** と **DataFactoryName**) があります。 SliceStart の値は、SliceStart システム変数に基づいています。 サポートされているシステム変数の一覧については、 [システム変数](data-factory-scheduling-and-execution.md#data-factory-functions-and-system-variables) に関するページをご覧ください。 DataFactoryName の値は、CustomActivityFactory にハードコーディングされます。
+この例では、2 つの拡張プロパティ (**SliceStart** と **DataFactoryName**) があります。 SliceStart の値は、SliceStart システム変数に基づいています。 サポートされているシステム変数の一覧については、 [システム変数](data-factory-functions-variables.md) に関するページをご覧ください。 DataFactoryName の値は、CustomActivityFactory にハードコーディングされます。
 
 **Execute** メソッドでこれらの拡張プロパティにアクセスするには、次のようなコードを使用します。
 
@@ -769,7 +770,11 @@ $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 プールで既定の [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx)を使用する場合、Batch サービスがカスタム アクティビティを実行する前に VM を準備するのに 15 ～ 30 分かかることがあります。  プールが異なる 　autoScaleEvaluationInterval を使用する場合、Batch サービスは autoScaleEvaluationInterval + 10 分を要することがあります。
 
 ## <a name="use-hdinsight-compute-service"></a>HDInsight コンピューティング サービスを使用する
-このチュートリアルでは、Azure Batch コンピューティングを使用して、カスタム アクティビティを実行しました。 独自の HDInsight クラスターを使用するか、Data Factory によってオンデマンド HDInsight クラスターを作成してから、HDInsight クラスターでカスタム アクティビティを実行することもできます。 ここでは、HDInsight クラスターを使用するための手順の概要を示します。  
+このチュートリアルでは、Azure Batch コンピューティングを使用して、カスタム アクティビティを実行しました。 独自の Windows ベースの HDInsight クラスターを使うか、Data Factory によってオンデマンドの Windows ベースの HDInsight クラスターを作成してから、HDInsight クラスターでカスタム アクティビティを実行することもできます。 ここでは、HDInsight クラスターを使用するための手順の概要を示します。
+
+> [!IMPORTANT]
+> カスタム .NET アクティビティは、Windows ベースの HDInsight クラスター上でのみ実行します。 この制限を回避するには、Map Reduce アクティビティを使って、Linux ベースの HDInsight クラスター上でカスタム Java コードを実行します。 もう 1 つの方法は、HDInsight クラスターを使う代わりに仮想マシンの Azure Batch プールを使ってカスタム アクティビティを実行します。
+ 
 
 1. Azure HDInsight のリンクされたサービスを作成します。   
 2. パイプライン JSON 内の **AzureBatchLinkedService** の代わりに HDInsight のリンクされたサービスを使用します。
@@ -808,6 +813,10 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
            }
         }
         ```
+
+    > [!IMPORTANT]
+    > カスタム .NET アクティビティは、Windows ベースの HDInsight クラスター上でのみ実行します。 この制限を回避するには、Map Reduce アクティビティを使って、Linux ベースの HDInsight クラスター上でカスタム Java コードを実行します。 もう 1 つの方法は、HDInsight クラスターを使う代わりに仮想マシンの Azure Batch プールを使ってカスタム アクティビティを実行します。
+
 4. コマンド バーの **[デプロイ]** をクリックして、リンク サービスをデプロイします。
 
 ##### <a name="to-use-your-own-hdinsight-cluster"></a>独自の HDInsight クラスターを使用するには
@@ -870,6 +879,247 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 }
 ```
 
+## <a name="create-a-custom-activity-by-using-net-sdk"></a>.NET SDK を使ってカスタム アクティビティを作成する
+次のコードでは、.NET SDK を使って、この記事のチュートリアルからデータ ファクトリを作成します。 SDK を使ってプログラムでパイプラインを作成する方法について詳しくは、[こちらの記事](data-factory-copy-activity-tutorial-using-dotnet-api.md)をご覧ください。
+
+```csharp
+using System;
+using System.Configuration;
+using System.Collections.ObjectModel;
+using System.Threading;
+using System.Threading.Tasks;
+
+using Microsoft.Azure;
+using Microsoft.Azure.Management.DataFactories;
+using Microsoft.Azure.Management.DataFactories.Models;
+using Microsoft.Azure.Management.DataFactories.Common.Models;
+
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using System.Collections.Generic;
+
+namespace DataFactoryAPITestApp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // create data factory management client
+
+            // TODO: replace ADFTutorialResourceGroup with the name of your resource group.
+            string resourceGroupName = "ADFTutorialResourceGroup";
+
+            // TODO: replace APITutorialFactory with a name that is globally unique. For example: APITutorialFactory04212017
+            string dataFactoryName = "APITutorialFactory";
+
+            TokenCloudCredentials aadTokenCredentials = new TokenCloudCredentials(
+                ConfigurationManager.AppSettings["SubscriptionId"],
+                GetAuthorizationHeader().Result);
+
+            Uri resourceManagerUri = new Uri(ConfigurationManager.AppSettings["ResourceManagerEndpoint"]);
+
+            DataFactoryManagementClient client = new DataFactoryManagementClient(aadTokenCredentials, resourceManagerUri);
+
+            Console.WriteLine("Creating a data factory");
+            client.DataFactories.CreateOrUpdate(resourceGroupName,
+                new DataFactoryCreateOrUpdateParameters()
+                {
+                    DataFactory = new DataFactory()
+                    {
+                        Name = dataFactoryName,
+                        Location = "westus",
+                        Properties = new DataFactoryProperties()
+                    }
+                }
+            );
+
+            // create a linked service for input data store: Azure Storage
+            Console.WriteLine("Creating Azure Storage linked service");
+            client.LinkedServices.CreateOrUpdate(resourceGroupName, dataFactoryName,
+                new LinkedServiceCreateOrUpdateParameters()
+                {
+                    LinkedService = new LinkedService()
+                    {
+                        Name = "AzureStorageLinkedService",
+                        Properties = new LinkedServiceProperties
+                        (
+                            // TODO: Replace <accountname> and <accountkey> with name and key of your Azure Storage account.
+                            new AzureStorageLinkedService("DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>")
+                        )
+                    }
+                }
+            );
+
+            // create a linked service for output data store: Azure SQL Database
+            Console.WriteLine("Creating Azure Batch linked service");
+            client.LinkedServices.CreateOrUpdate(resourceGroupName, dataFactoryName,
+                new LinkedServiceCreateOrUpdateParameters()
+                {
+                    LinkedService = new LinkedService()
+                    {
+                        Name = "AzureBatchLinkedService",
+                        Properties = new LinkedServiceProperties
+                        (
+                            // TODO: replace <batchaccountname> and <yourbatchaccountkey> with name and key of your Azure Batch account
+                            new AzureBatchLinkedService("<batchaccountname>", "https://westus.batch.azure.com", "<yourbatchaccountkey>", "myazurebatchpool", "AzureStorageLinkedService")
+                        )
+                    }
+                }
+            );
+
+            // create input and output datasets
+            Console.WriteLine("Creating input and output datasets");
+            string Dataset_Source = "InputDataset";
+            string Dataset_Destination = "OutputDataset";
+
+            Console.WriteLine("Creating input dataset of type: Azure Blob");
+            client.Datasets.CreateOrUpdate(resourceGroupName, dataFactoryName,
+
+                new DatasetCreateOrUpdateParameters()
+                {
+                    Dataset = new Dataset()
+                    {
+                        Name = Dataset_Source,
+                        Properties = new DatasetProperties()
+                        {
+                            LinkedServiceName = "AzureStorageLinkedService",
+                            TypeProperties = new AzureBlobDataset()
+                            {
+                                FolderPath = "adftutorial/customactivityinput/",
+                                Format = new TextFormat()
+                            },
+                            External = true,
+                            Availability = new Availability()
+                            {
+                                Frequency = SchedulePeriod.Hour,
+                                Interval = 1,
+                            },
+
+                            Policy = new Policy() { }
+                        }
+                    }
+                });
+
+            Console.WriteLine("Creating output dataset of type: Azure Blob");
+            client.Datasets.CreateOrUpdate(resourceGroupName, dataFactoryName,
+                new DatasetCreateOrUpdateParameters()
+                {
+                    Dataset = new Dataset()
+                    {
+                        Name = Dataset_Destination,
+                        Properties = new DatasetProperties()
+                        {
+                            LinkedServiceName = "AzureStorageLinkedService",
+                            TypeProperties = new AzureBlobDataset()
+                            {
+                                FileName = "{slice}.txt",
+                                FolderPath = "adftutorial/customactivityoutput/",
+                                PartitionedBy = new List<Partition>()
+                                {
+                                    new Partition()
+                                    {
+                                        Name = "slice",
+                                        Value = new DateTimePartitionValue()
+                                        {
+                                            Date = "SliceStart",
+                                            Format = "yyyy-MM-dd-HH"
+                                        }
+                                    }
+                                }
+                            },
+                            Availability = new Availability()
+                            {
+                                Frequency = SchedulePeriod.Hour,
+                                Interval = 1,
+                            },
+                        }
+                    }
+                });
+
+            Console.WriteLine("Creating a custom activity pipeline");
+            DateTime PipelineActivePeriodStartTime = new DateTime(2017, 3, 9, 0, 0, 0, 0, DateTimeKind.Utc);
+            DateTime PipelineActivePeriodEndTime = PipelineActivePeriodStartTime.AddMinutes(60);
+            string PipelineName = "ADFTutorialPipelineCustom";
+
+            client.Pipelines.CreateOrUpdate(resourceGroupName, dataFactoryName,
+                new PipelineCreateOrUpdateParameters()
+                {
+                    Pipeline = new Pipeline()
+                    {
+                        Name = PipelineName,
+                        Properties = new PipelineProperties()
+                        {
+                            Description = "Use custom activity",
+
+                            // Initial value for pipeline's active period. With this, you won't need to set slice status
+                            Start = PipelineActivePeriodStartTime,
+                            End = PipelineActivePeriodEndTime,
+                            IsPaused = false,
+
+                            Activities = new List<Activity>()
+                            {
+                                new Activity()
+                                {
+                                    Name = "MyDotNetActivity",
+                                    Inputs = new List<ActivityInput>()
+                                    {
+                                        new ActivityInput() {
+                                            Name = Dataset_Source
+                                        }
+                                    },
+                                    Outputs = new List<ActivityOutput>()
+                                    {
+                                        new ActivityOutput()
+                                        {
+                                            Name = Dataset_Destination
+                                        }
+                                    },
+                                    LinkedServiceName = "AzureBatchLinkedService",
+                                    TypeProperties = new DotNetActivity()
+                                    {
+                                        AssemblyName = "MyDotNetActivity.dll",
+                                        EntryPoint = "MyDotNetActivityNS.MyDotNetActivity",
+                                        PackageLinkedService = "AzureStorageLinkedService",
+                                        PackageFile = "customactivitycontainer/MyDotNetActivity.zip",
+                                        ExtendedProperties = new Dictionary<string, string>()
+                                        {
+                                            { "SliceStart", "$$Text.Format('{0:yyyyMMddHH-mm}', Time.AddMinutes(SliceStart, 0))"}
+                                        }
+                                    },
+                                    Policy = new ActivityPolicy()
+                                    {
+                                        Concurrency = 2,
+                                        ExecutionPriorityOrder = "OldestFirst",
+                                        Retry = 3,
+                                        Timeout = new TimeSpan(0,0,30,0),
+                                        Delay = new TimeSpan()
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+        }
+
+        public static async Task<string> GetAuthorizationHeader()
+        {
+            AuthenticationContext context = new AuthenticationContext(ConfigurationManager.AppSettings["ActiveDirectoryEndpoint"] + ConfigurationManager.AppSettings["ActiveDirectoryTenantId"]);
+            ClientCredential credential = new ClientCredential(
+                ConfigurationManager.AppSettings["ApplicationId"],
+                ConfigurationManager.AppSettings["Password"]);
+            AuthenticationResult result = await context.AcquireTokenAsync(
+                resource: ConfigurationManager.AppSettings["WindowsManagementUri"],
+                clientCredential: credential);
+
+            if (result != null)
+                return result.AccessToken;
+
+            throw new InvalidOperationException("Failed to acquire token");
+        }
+    }
+}
+```
+
+
 ## <a name="examples"></a>例
 | サンプル | カスタム アクティビティの動作 |
 | --- | --- |
@@ -878,6 +1128,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 | [R スクリプトの実行](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample) |既に R がインストールされている HDInsight クラスターで RScript.exe を実行し、R スクリプトを呼び出します。 |
 | [クロス AppDomain .NET アクティビティ](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) |Data Factory 起動ツールによって使用されているアセンブリ バージョンとは別のバージョンを使用します。 |
 | [Azure Analysis Services でモデルを再処理する](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample) |  Azure Analysis Services でモデルを再処理します。 |
+| [カスタム アクティビティをローカルにデバッグする](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFCustomActivityRunner) | カスタム アクティビティ ランナーを使うと、パイプラインで構成されている情報を使うことで、Azure Data Factory (ADF) のカスタム .NET アクティビティにステップインしてデバッグできます。 | 
 
 
 [batch-net-library]: ../batch/batch-dotnet-get-started.md

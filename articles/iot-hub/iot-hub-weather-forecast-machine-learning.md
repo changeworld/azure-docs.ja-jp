@@ -15,16 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/29/2017
 ms.author: xshi
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: a8c4987066e0439f8775d823e91666a006a9fca9
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 872930fd127729e0f444942ad1ee6fa11465ceb9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/25/2017
 
 
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Azure Machine Learning で IoT Hub からのセンサー データを使用して天気予報を行う
 
-![センサー、IoT デバイス、IoT Hub、Stream Analytics ジョブ、Azure Machine Learning、Blob Storage 間の接続](media/iot-hub-weather-forecast-machine-learning/1_Connection-azure-machine-learning-iot-hub.png)
+![エンド ツー エンド ダイアグラム](media/iot-hub-get-started-e2e-diagram/6.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
@@ -46,11 +47,11 @@ Azure Machine Learning で Azure IoT Hub から取得した気温と湿度のデ
 
 ## <a name="what-you-need"></a>必要なもの
 
-- 次の要件を対象とする [ESP8266 を Azure IoT Hub に接続](iot-hub-arduino-huzzah-esp8266-get-started.md)するためのチュートリアルを完了します。
+- 次の要件に対応するために、[デバイスのセットアップ](iot-hub-raspberry-pi-kit-node-get-started.md)に関するチュートリアルを完了しておきます。
   - 有効な Azure サブスクリプション
   - サブスクリプションの Azure IoT Hub。
   - Azure IoT Hub にメッセージを送信するクライアント アプリケーション。
-- Azure Machine Learning Studio アカウント  ([Machine Learning Studio を無料で試す](https://studio.azureml.net/))。
+- Azure Machine Learning Studio アカウント。 ([Machine Learning Studio の無料試用版](https://studio.azureml.net/))。
 
 ## <a name="deploy-the-weather-prediction-model-as-a-web-service"></a>天気予報モデルを Web サービスとしてデプロイする
 
@@ -75,16 +76,7 @@ Azure Machine Learning で Azure IoT Hub から取得した気温と湿度のデ
 
 1. Excel ブックを開いて、**Web サービス URL** と**アクセス キー**をメモします。
 
-## <a name="add-a-consumer-group-to-your-iot-hub"></a>IoT ハブへのコンシューマー グループの追加
-
-コンシューマー グループは、Azure IoT Hub からデータを読み取るアプリケーションによって使用されます。 このレッスンでは、IoT Hub からデータを読み取る Web サービスによって使用されるコンシューマー グループを作成します。
-
-コンシューマー グループを IoT ハブに追加するには、次の手順に従います。
-
-1. [Azure Portal](https://ms.portal.azure.com/) で、IoT ハブを開きます。
-1. 左側のウィンドウで **[エンドポイント]** をクリックし、中央のウィンドウで **[イベント]** を選択します。次に、右側のウィンドウの **[コンシューマー グループ]** で名前を入力し、**[保存]** をクリックします。
-
-   ![IoT ハブへのコンシューマー グループの追加](media/iot-hub-weather-forecast-machine-learning/6_add-consumer-group-iot-hub-azure.png)
+[!INCLUDE [iot-hub-get-started-create-consumer-group](../../includes/iot-hub-get-started-create-consumer-group.md)]
 
 ## <a name="create-configure-and-run-a-stream-analytics-job"></a>Stream Analytics ジョブの作成、構成、実行
 

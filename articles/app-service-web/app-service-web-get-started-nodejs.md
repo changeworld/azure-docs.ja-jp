@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 03/28/2017
 ms.author: cfowler
 translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: 22966659db3951316dca11fd555e07a183114062
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: c32cb52e4bb7bacde20e21820f277b4e86877e74
+ms.lasthandoff: 04/25/2017
 
 ---
 # <a name="create-a-nodejs-application-on-web-app"></a>Web アプリでの Node.js アプリケーションの作成
@@ -148,7 +148,7 @@ App Service プランが作成されると、Azure CLI によって、次の例�
 
 App Service プランは作成したので、`quickStartPlan` App Service プラン内に Web アプリを作成します。 Web アプリにより、コードをデプロイするためのホスト領域が取得され、デプロイされたアプリケーションを表示するための URL が提供されます。 Web アプリを作成するには、[az appservice web create](/cli/azure/appservice/web#create) コマンドを使用します。
 
-次のコマンドで、<app_name> プレースホルダーを独自の一意のアプリ名に置き換えてください。 <app_name> は、Web アプリの既定の DNS サイトとして使用されます。そのため、名前は Azure のすべてのアプリ間で一意である必要があります。 後で、Web アプリをユーザーに公開する前に、任意のカスタム DNS エントリを Web アプリにマップできます。
+次のコマンドで、`<app_name>` プレースホルダーを独自の一意のアプリ名に置き換えてください。 `<app_name>` は、Web アプリの既定の DNS サイトとして使用されます。そのため、名前は Azure のすべてのアプリ間で一意である必要があります。 後で、Web アプリをユーザーに公開する前に、任意のカスタム DNS エントリを Web アプリにマップできます。
 
 ```azurecli
 az appservice web create --name <app_name> --resource-group myResourceGroup --plan quickStartPlan
@@ -296,7 +296,7 @@ Azure Portal に移動し、作成したばかりの Web アプリを表示し�
 
 そのためには、[https://portal.azure.com](https://portal.azure.com) にサインインします。
 
-左側のメニューで **[App Service]** をクリックした後、Azure Web アプリの名前をクリックします。
+左側のメニューで **[App Services (App Services)]** をクリックした後、Azure Web アプリの名前をクリックします。
 
 ![Azure Web アプリへのポータル ナビゲーション](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-list.png)
 
@@ -321,3 +321,4 @@ Web アプリの "_ブレード_" (水平方向に開かれるポータル ペ�
 ## <a name="next-steps"></a>次のステップ
 
 事前作成されている [Web Apps の CLI スクリプト](app-service-cli-samples.md)を調べます。
+

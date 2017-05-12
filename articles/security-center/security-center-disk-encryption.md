@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomsh
 translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: ac0d2e6891d916febb3eeee736288454c2b92c2d
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 859c0bf3afec46e07b8b8da73fffbc37f3f7959d
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -48,7 +48,7 @@ Azure Security Center で暗号化が必要と識別された Azure 仮想マシ
 >
 
 ## <a name="install-and-configure-azure-powershell"></a>Azure PowerShell のインストールおよび構成
-お使いのコンピューターに Azure PowerShell Version 1.2.1 以降がインストールされている必要があります。 「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」には、Azure PowerShell を操作するためにコンピューターをプロビジョニングする際に必要な手順がすべて記載されています。 最も簡単なのは、この記事で説明されている Web PI によるインストール方法です。 既に Azure PowerShell がインストールされている場合でも、Azure PowerShell の最新バージョンを入手するために Web PI による方法を使用して再インストールしてください。
+お使いのコンピューターに Azure PowerShell Version 1.2.1 以降がインストールされている必要があります。 「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」には、Azure PowerShell を操作するためにコンピューターをプロビジョニングする際に必要な手順がすべて記載されています。 最も簡単なのは、この記事で説明されている Web PI によるインストール方法です。 既に Azure PowerShell がインストールされている場合でも、Azure PowerShell の最新バージョンを入手するために Web PI による方法を使用して再インストールしてください。
 
 ## <a name="obtain-and-run-the-azure-disk-encryption-prerequisites-configuration-script"></a>Azure Disk Encryption の前提条件となる構成スクリプトの取得と実行
 Azure Disk Encryption の前提条件となる構成スクリプトを使用すると、Azure 仮想マシンの暗号化に必要な必須コンポーネントすべてが設定されます。

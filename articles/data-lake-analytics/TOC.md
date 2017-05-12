@@ -19,6 +19,7 @@
 ### [U-SQL ウィンドウ機能](data-lake-analytics-use-window-functions.md)
 ### [U-SQL ユーザー定義演算子](data-lake-analytics-u-sql-develop-user-defined-operators.md)
 ### [U-SQL Python 拡張機能](data-lake-analytics-u-sql-python-extensions.md)
+### [U-SQL R 拡張機能](data-lake-analytics-u-sql-r-extensions.md)
 ### [U-SQL Cognitive 機能](data-lake-analytics-u-sql-cognitive.md)
 
 ## ソリューションを作成する
@@ -40,7 +41,7 @@
 ### [頂点実行ビューを使用する](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
 
 # リファレンス
-## [PowerShell](/powershell/resourcemanager/azurerm.datalakeanalytics/v2.3.0/azurerm.datalakeanalytics)
+## [PowerShell](/powershell/module/azurerm.datalakeanalytics)
 ## [.NET](/dotnet/api/microsoft.azure.management.datalake.analytics)
 ## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-analytics)
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-analytics.html)

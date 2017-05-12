@@ -17,9 +17,9 @@ ms.topic: support-article
 ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 82515c2ee27e4866a167619f193620786b72cedf
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 25e19b14e1cad41a365ee88ed317078bf551c36a
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -114,12 +114,12 @@ Windows ベースの Azure 仮想マシン (VM) に対するリモート デス�
 RDP の問題が解決しない場合は、[サポート要求を申請](https://azure.microsoft.com/support/options/)するか、[RDP トラブルシューティングの考え方と手順](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。
 
 ## <a name="troubleshoot-using-azure-powershell"></a>Azure PowerShell を使用したトラブルシューティング
-まだインストールしていない場合は、 [最新の Azure PowerShell をインストールして構成します](/powershell/azureps-cmdlets-docs)。
+まだインストールしていない場合は、 [最新の Azure PowerShell をインストールして構成します](/powershell/azure/overview)。
 
 次の例では、`myResourceGroup`、`myVM`、`myVMAccessExtension` などの変数を使用します。 これらの変数の名前と場所は、実際の値に置き換えてください。
 
 > [!NOTE]
-> [Set-AzureRmVMAccessExtension](https://msdn.microsoft.com/library/mt619447.aspx) PowerShell コマンドレットを使用して、ユーザーの資格情報と RDP 構成をリセットします。 次の例では、`myVMAccessExtension` がプロセスの一部として指定した名前になります。 VMAccessAgent を前に操作したことがある場合は、`Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"` を使用して VM のプロパティをチェックすることで、既存の拡張機能の名前を取得できます。 名前を確認するには、出力の 'Extensions' セクションを調べます。
+> [Set-AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) PowerShell コマンドレットを使用して、ユーザーの資格情報と RDP 構成をリセットします。 次の例では、`myVMAccessExtension` がプロセスの一部として指定した名前になります。 VMAccessAgent を前に操作したことがある場合は、`Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"` を使用して VM のプロパティをチェックすることで、既存の拡張機能の名前を取得できます。 名前を確認するには、出力の 'Extensions' セクションを調べます。
 > 
 > 
 

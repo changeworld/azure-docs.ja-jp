@@ -15,10 +15,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: lbosq
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 7365945818c56279bd5945fee8d0048ef425bfc7
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 4de9eb8f55bfda8b223417f5c1ed4e71b0f063c6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -32,6 +33,8 @@ ms.lasthandoff: 04/19/2017
 - [DB の作成 - CLI](sql-database-get-started-cli.md)
 
 ## <a name="install-nodejs"></a>Node.js のインストール 
+
+このセクションの手順では、Node.js による開発には慣れているが、Azure SQL Database を初めて使用するユーザーを想定しています。 Node.js による開発の経験がない場合は、「[Build an app using SQL Server (SQL Server を使用してアプリを構築する)](https://www.microsoft.com/en-us/sql-server/developer-get-started/)」に移動し、**Node.js** を選択してから、使用しているオペレーティング システムを選択します。
 
 ### <a name="mac-os"></a>**Mac OS**
 次のコマンドを入力して **brew** をインストールします。これは、Mac OS X と **Node.js** に対応する使いやすいパッケージ マネージャーです。
@@ -63,7 +66,7 @@ npm install tedious
 
 ## <a name="get-connection-information"></a>接続情報の取得
 
-Azure Portal で接続文字列を取得します。 その接続文字列は Azure SQL データベースに接続するために使用します。
+Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名、データベース名、ログイン情報が必要になります。
 
 1. [Azure ポータル](https://portal.azure.com/)にログインします。
 2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
@@ -75,7 +78,7 @@ Azure Portal で接続文字列を取得します。 その接続文字列は Az
     
 ## <a name="select-data"></a>データの選択
 
-Azure SQL Database を照会するには、次のコードを使用します。 まず、tedious ドライバー ライブラリからドライバー Connect クラスと Request クラスをインポートします。 その後、構成オブジェクトを作成し、**ユーザー名**、**パスワード**、**サーバー**、および**データベース**の変数を、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。 指定された `config` オブジェクトを使用して `Connection` オブジェクト作成します。 その後、`queryDatabase()` 関数を実行する `connection` オブジェクトの `connect` イベントのコールバックを定義します。
+次のコードを使用して、Azure SQL データベースに対してカテゴリ単位で上位 20 の製品を照会します。 まず、tedious ドライバー ライブラリからドライバー Connect クラスと Request クラスをインポートします。 その後、構成オブジェクトを作成し、**ユーザー名**、**パスワード**、**サーバー**、および**データベース**の変数を、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。 指定された `config` オブジェクトを使用して `Connection` オブジェクト作成します。 その後、`queryDatabase()` 関数を実行する `connection` オブジェクトの `connect` イベントのコールバックを定義します。
 
 ```js
 var Connection = require('tedious').Connection;
@@ -125,7 +128,7 @@ function queryDatabase(){
 ```
 
 ## <a name="insert-data-into-the-database"></a>データベースへのデータの挿入
-SalesLT.Product テーブルに新しい製品を挿入するには、次のコードを使用します。 **ユーザー名**、**パスワード**、**サーバー**、**データベース**の変数を、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。 今回は、`insertIntoDatabase()` 関数で **INSERT ステートメント**を使用します。
+次のコードを使用して、`insertIntoDatabase()` 関数と [INSERT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) Transact-SQL ステートメントを使用し、SalesLT.Product テーブルに新しい製品を挿入します。 **ユーザー名**、**パスワード**、**サーバー**、**データベース**の変数を、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。 
 
 ```js
 var Connection = require('tedious').Connection;
@@ -167,7 +170,7 @@ function insertIntoDatabase(){
 ```
 
 ## <a name="update-data-in-the-database"></a>データベース内のデータの更新
-データベース内のデータを更新するには、次のコードを使用します。 **ユーザー名**、**パスワード**、**サーバー**、**データベース**の変数を、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。 今回は、`updateInDatabase()` 関数で **UPDATE ステートメント**を使用します。 このサンプルでは、前の例で挿入された製品名を使用します。
+次のコードを使用して、`updateInDatabase()` 関数と [UPDATE](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql) Transact-SQL ステートメントを使用し、先ほど追加した新しい製品を更新します。 **ユーザー名**、**パスワード**、**サーバー**、**データベース**の変数を、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。 このサンプルでは、前の例で挿入された製品名を使用します。
 
 ```js
 var Connection = require('tedious').Connection;

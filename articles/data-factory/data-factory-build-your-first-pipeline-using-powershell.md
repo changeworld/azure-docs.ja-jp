@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: fbf77e9848ce371fd8d02b83275eb553d950b0ff
-ms.openlocfilehash: 2d1a4cf1ab1f66f51eb29a4b8cee07dca8d88719
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: c7062721017176b4caacbd48a513c2610058b835
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -41,8 +41,8 @@ ms.lasthandoff: 02/03/2017
 
 ## <a name="prerequisites"></a>前提条件
 * 「 [チュートリアルの概要](data-factory-build-your-first-pipeline.md) 」に目を通し、 **前提条件** の手順を完了する必要があります。
-* 「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」に記載されている手順に従って、コンピューターに Azure PowerShell の最新バージョンをインストールします。
-* (省略可能) この記事では、すべての Data Factory コマンドレットを取り上げているわけではありません。 Data Factory コマンドレットに関する包括的なドキュメントについては、「 [Data Factory コマンドレット リファレンス](/powershell/resourcemanager/azurerm.datafactories/v2.5.0/azurerm.datafactories) 」を参照してください。
+* 「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」に記載されている手順に従って、コンピューターに Azure PowerShell の最新バージョンをインストールします。
+* (省略可能) この記事では、すべての Data Factory コマンドレットを取り上げているわけではありません。 Data Factory コマンドレットに関する包括的なドキュメントについては、「 [Data Factory コマンドレット リファレンス](/powershell/module/azurerm.datafactories) 」を参照してください。
 
 ## <a name="create-data-factory"></a>データ ファクトリの作成
 この手順では、Azure PowerShell を使用して、 **FirstDataFactoryPSH**という名前の Azure データ ファクトリを作成します。 データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインには、1 つまたは複数のアクティビティを含めることができます。 たとえば、コピー元からコピー先のデータ ストアにデータをコピーするコピー アクティビティや、Hive スクリプトを実行して入力データを変換する HDInsight Hive アクティビティなどを含めることができます。 それでは、この手順でデータ ファクトリの作成から始めましょう。
@@ -247,7 +247,7 @@ ms.lasthandoff: 02/03/2017
       }
     }
     ```
-    この JSON では、**AzureBlobOutput** という名前のデータセットを定義します。これは、パイプラインのアクティビティの出力データを表します。 さらに、**adfgetstarted** という BLOB コンテナーと **partitioneddata** というフォルダーに結果が保存されるように指定します。 **availability** セクションでは、出力データセットが&1; か月ごとに生成されることを指定します。
+    この JSON では、**AzureBlobOutput** という名前のデータセットを定義します。これは、パイプラインのアクティビティの出力データを表します。 さらに、**adfgetstarted** という BLOB コンテナーと **partitioneddata** というフォルダーに結果が保存されるように指定します。 **availability** セクションでは、出力データセットが 1 か月ごとに生成されることを指定します。
 2. 次のコマンドを Azure PowerShell で実行して、Data Factory データセットを作成します。
 
     ```PowerShell
@@ -308,7 +308,7 @@ ms.lasthandoff: 02/03/2017
         }
     }
     ```
-    この JSON スニペットでは、Hive を使用して HDInsight クラスターのデータを処理する&1; つのアクティビティで構成されるパイプラインを作成します。
+    この JSON スニペットでは、Hive を使用して HDInsight クラスターのデータを処理する 1 つのアクティビティで構成されるパイプラインを作成します。
 
     Hive スクリプト ファイル **partitionweblogs.hql** は、(**StorageLinkedService** という scriptLinkedService によって指定された) Azure ストレージ アカウントと **adfgetstarted** コンテナーの **script** フォルダーに格納されます。
 
@@ -397,10 +397,10 @@ ms.lasthandoff: 02/03/2017
 このチュートリアルでは、HDInsight Hadoop クラスター上で Hive スクリプトを実行してデータを処理するために、Azure データ ファクトリを作成しました。 以下の手順を実行するために、Azure ポータルで Data Factory エディターを使用しました。
 
 1. Azure **データ ファクトリ**を作成しました。
-2. 次の&2; つの **リンクされたサービス**を作成しました。
+2. 次の 2 つの **リンクされたサービス**を作成しました。
    1. **Azure Storage** のリンクされたサービス。
    2. **Azure HDInsight** オンデマンドのリンクされたサービス。 Azure Data Factory は、入力データを処理し、出力データを生成するために、HDInsight Hadoop クラスターをジャストインタイムで作成します。
-3. パイプラインの HDInsight Hive アクティビティ向けの入出力データを記述する&2; つの **データセット**を作成しました。
+3. パイプラインの HDInsight Hive アクティビティ向けの入出力データを記述する 2 つの **データセット**を作成しました。
 4. **HDInsight Hive** アクティビティを持つ**パイプライン**を作成しました。
 
 ## <a name="next-steps"></a>次のステップ
@@ -409,7 +409,7 @@ ms.lasthandoff: 02/03/2017
 ## <a name="see-also"></a>関連項目
 | トピック | 説明 |
 |:--- |:--- |
-| [Data Factory コマンドレット リファレンス](/powershell/resourcemanager/azurerm.datafactories/v2.5.0/azurerm.datafactories) |Data Factory コマンドレットに関する包括的なドキュメントです。 |
+| [Data Factory コマンドレット リファレンス](/powershell/module/azurerm.datafactories) |Data Factory コマンドレットに関する包括的なドキュメントです。 |
 | [パイプライン](data-factory-create-pipelines.md) |この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法を説明します。 |
 | [データセット](data-factory-create-datasets.md) |この記事では、Azure Data Factory のデータセットについて説明します。 |
 | [スケジュールと実行](data-factory-scheduling-and-execution.md) |この記事では、Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。 |

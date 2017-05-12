@@ -29,6 +29,7 @@
 ### [Data Factory コピー ウィザード](data-factory-azure-copy-wizard.md)
 #### [1 TB を 15 分以内に読み込む](data-factory-load-sql-data-warehouse.md)
 ### [パフォーマンスとチューニングのガイド](data-factory-copy-activity-performance.md)
+### [セキュリティに関する考慮事項](data-factory-data-movement-security-considerations.md)
 ### コネクタ
 #### [Amazon Redshift](data-factory-amazon-redshift-connector.md)
 #### [Amazon S3](data-factory-amazon-simple-storage-service-connector.md)
@@ -91,7 +92,7 @@
 ### [Data Management Gateway の使用に関する問題のトラブルシューティング](data-factory-troubleshoot-gateway-issues.md)
 
 # リファレンス
-## [PowerShell](/powershell/resourcemanager/azurerm.datafactories/v2.3.0/azurerm.datafactories)
+## [PowerShell](/powershell/module/azurerm.datafactories)
 ## [.NET](/dotnet/api/microsoft.azure.management.datafactories.models)
 ## [REST ()](/rest/api/datafactory/)
 ## [JSON](data-factory-json-scripting-reference.md)

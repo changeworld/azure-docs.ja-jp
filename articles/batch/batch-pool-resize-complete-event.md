@@ -1,28 +1,27 @@
 ---
-title: "プールのサイズ変更の完了イベント - Azure | Microsoft Docs"
-ms.custom: 
-ms.date: 2017-02-01
-ms.prod: azure
-ms.reviewer: 
-ms.service: batch
-ms.suite: 
-ms.tgt_pltfrm: 
-ms.topic: reference
-ms.assetid: dfee89e3-510f-41a0-ace7-737527f40d20
-caps.latest.revision: 4
+title: "Azure Batch プールのサイズ変更の完了イベント | Microsoft Docs"
+description: "Batch プールのサイズ変更完了イベントのリファレンスです。"
+services: batch
 author: tamram
-ms.author: tamram
 manager: timlt
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 623b6cae00ee0f3b0c5073b1a8bee68d2bf17b72
-ms.lasthandoff: 04/13/2017
+ms.assetid: 
+ms.service: batch
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: vm-windows
+ms.workload: big-compute
+ms.date: 04/20/2017
+ms.author: tamram
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 7072293d98526812cb42ce9c2f8e33bfcafaa149
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/22/2017
 
 ---
-# <a name="pool-resize-complete-event"></a>プールのサイズ変更の完了イベント
-プールのサイズ変更の完了イベントのログ本文
 
-## <a name="remarks"></a>解説
+# <a name="pool-resize-complete-event"></a>プールのサイズ変更の完了イベント
+
  このイベントは、プールのサイズ変更が完了または失敗したときに出力されます。
 
  次の例では、あるプールについてサイズを増加し、正常に完了した、プールのサイズ変更完了イベントの本文を示しています。

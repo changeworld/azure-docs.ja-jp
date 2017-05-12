@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/27/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: f5ddfdb01e6bc50c1d0799ec1119c8a696ced251
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: c3f5a66605b1a7059a7820ddda9463cb4277f055
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -63,7 +63,7 @@ VM からイメージを直接作成すると、OS ディスクやすべての�
 ```powershell
 Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 ```
-詳しくは、[Azure PowerShell のバージョン管理に関するページ](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/#azure-powershell-versioning)をご覧ください。
+詳しくは、[Azure PowerShell のバージョン管理に関するページ](/powershell/azure/overview)をご覧ください。
 
 
 1. 変数をいくつか作成します。 

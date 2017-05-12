@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/30/2016
+ms.date: 04/20/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: d7fe552e0c8856a8d7799ae8a7732e57a350fee3
-ms.openlocfilehash: 2a42605c75fe183d57030e4a3ff3f3218a7dbc2b
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: 4f7860b906ab988c918de31d53f4a958e4dea83b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -30,8 +32,8 @@ Azure AD アプリケーション プロキシでは、オンプレミスのア�
 
 > [!NOTE]
 > アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。 詳細については、「 [Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
-> 
-> 
+
+アプリケーション プロキシのパブリック プレビューを使用する場合は、[Azure Portal でアプリケーションを発行](application-proxy-publish-azure-portal.md)できます。
 
 ## <a name="publish-an-app-using-the-wizard"></a>ウィザードを使用してアプリを発行する
 1. [Azure クラシック ポータル](https://manage.windowsazure.com/)に管理者としてサインインします。
@@ -102,10 +104,5 @@ Azure Active Directory アプリケーション プロキシを使用してア�
 * [要求に対応するアプリケーションを利用する](active-directory-application-proxy-claims-aware-apps.md)
 
 最新のニュースと更新情報については、 [アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

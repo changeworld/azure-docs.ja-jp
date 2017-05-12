@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 04/11/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 09d8634d8d1b16edb058d0bb259b089a54748279
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 8b5cb66ea958cf6643fa34abb8d484b97b212373
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -39,7 +39,7 @@ ms.lasthandoff: 04/12/2017
 コピー アクティビティ機能により、Data Factory でデータ移動が実行されます。 このアクティビティは、安全で信頼性の高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。 コピー アクティビティの詳細については、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事を参照してください。   
 
 > [!NOTE]
-> この記事では、すべての Data Factory コマンドレットを取り上げているわけではありません。 これらのコマンドレットに関する包括的なドキュメントについては、[Data Factory コマンドレット リファレンス](/powershell/resourcemanager/azurerm.datafactories/v2.5.0/azurerm.datafactories)を参照してください。
+> この記事では、すべての Data Factory コマンドレットを取り上げているわけではありません。 これらのコマンドレットに関する包括的なドキュメントについては、[Data Factory コマンドレット リファレンス](/powershell/module/azurerm.datafactories)を参照してください。
 >
 > このチュートリアルのデータ パイプラインでは、ソース データ ストアからターゲット データ ストアにデータをコピーします。 入力データを変換して出力データを生成するのではありません。 Azure Data Factory を使用してデータを変換する方法のチュートリアルについては、[Hadoop クラスターを使用してデータを変換する最初のパイプラインを作成する方法に関するチュートリアル](data-factory-build-your-first-pipeline.md)を参照してください。
 
@@ -482,7 +482,7 @@ Data Factory コマンドレットに関する包括的なドキュメントに�
 ## <a name="see-also"></a>関連項目
 | トピック | 説明 |
 |:--- |:--- |
-| [Data Factory コマンドレット リファレンス](/powershell/resourcemanager/azurerm.datafactories/v2.5.0/azurerm.datafactories) | このセクションでは、すべての Data Factory コマンドレットに関する情報を提供します |
+| [Data Factory コマンドレット リファレンス](/powershell/module/azurerm.datafactories) | このセクションでは、すべての Data Factory コマンドレットに関する情報を提供します |
 | [パイプライン](data-factory-create-pipelines.md) |この記事では、Azure Data Factory のパイプラインとアクティビティについて説明します。 |
 | [datasets](data-factory-create-datasets.md) |この記事では、Azure Data Factory のデータセットについて説明します。 |
 | [スケジュールと実行](data-factory-scheduling-and-execution.md) |この記事では、Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。 |

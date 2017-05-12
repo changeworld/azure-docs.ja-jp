@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: b2565bef6643decd1b96fc3cc5b01003916e9685
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 30d8a26f337c00390b1da51e85a0c01ea0d816e3
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -42,7 +42,7 @@ ms.lasthandoff: 03/31/2017
 Resource Manager のリソースの詳細については、「[Azure Resource Manager vs. classic deployment (Azure Resource Manager 対クラシック デプロイ)](../azure-resource-manager/resource-manager-deployment-model.md)」を参照してください。
 
 ## <a name="step-1-install-azure-powershell"></a>手順 1: Azure PowerShell をインストールする
-最新バージョンの Azure PowerShell をインストールし、サブスクリプションを選択して、Azure にサインインする方法については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」を参照してください。
+最新バージョンの Azure PowerShell をインストールし、サブスクリプションを選択して、Azure にサインインする方法については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」を参照してください。
 
 ## <a name="step-2-create-a-resource-group-and-a-storage-account"></a>手順 2: リソース グループとストレージ アカウントを作成する
 1. **リソース グループを作成します**。リソースはすべてリソース グループにデプロイする必要があります。 **vmsstestrg1** という名前のリソース グループを作成するには、[New-AzureRmResourceGroup](https://msdn.microsoft.com/library/mt603739.aspx) を使用します。

@@ -12,17 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/03/2017
+ms.date: 04/13/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
-ms.openlocfilehash: aa31b373e67d4742f7697e2ec6958e108535f746
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 06daecfe8cd61cbb3ab9d2307acb07e30270d921
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="get-started-with-role-based-access-control-in-the-azure-portal"></a>Azure Portal でのロールベースの Access Control の基礎を確認する
-セキュリティを重視する企業は、実際に必要となるアクセス許可を従業員に付与することに注力する必要があります。 アクセス許可が多すぎると、アカウントが攻撃者による悪用の対象になりかねません。 アクセス許可が少なすぎると、従業員は業務を効率的に遂行できなくなる可能性があります。 Azure のロールベースのアクセス制御 (RBAC) は、Azure のアクセス許可を詳細に管理を実現することでこの問題に対処できます。
+セキュリティを重視する企業は、実際に必要となるアクセス許可を従業員に付与することに注力する必要があります。 アクセス許可が多すぎると、アカウントが攻撃者による悪用の対象になりかねません。 アクセス許可が少なすぎると、従業員は業務を効率的に遂行できなくなる可能性があります。 Azure のロールベースの Access Control (RBAC) は、Azure のアクセス許可を詳細に管理を実現することでこの問題に対処できます。
 
 RBAC を使用して、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与します。 すべてのユーザーに Azure サブスクリプションまたはリソースで無制限のアクセス許可を付与するのではなく、特定の操作のみを許可することができます。 たとえば、RBAC を使用して、ある従業員にはサブスクリプションで仮想マシンを管理できるようにし、他の従業員にも同じサブスクリプション内で SQL データベースを管理できるようにします。
 
@@ -42,7 +43,7 @@ Azure RBAC には、すべてのリソースの種類に適用される 3 つの
 * **共同作成者** は、Azure リソースのすべてのタイプを作成および管理できますが、他のユーザーへアクセス権を付与することはできません。
 * **閲覧者** は、既存の Azure リソースを表示できます。
 
-残りの Azure RBAC ロールでは、特定の Azure リソースの管理が許可されます。 たとえば、仮想マシンの共同作成者ロールが割り当てられたユーザーには、仮想マシンの作成と管理が許可されます。 その一方で、仮想マシンが接続する仮想ネットワークまたはサブネットへのアクセス権は付与されません。
+残りの Azure RBAC ロールでは、特定の Azure リソースの管理が許可されます。 たとえば、仮想マシンの共同作成者ロールが割り当てられたユーザーには、仮想マシンの作成と管理が許可されます。 その一方で、仮想マシンが接続する仮想ネットワークまたはサブネットへのアクセス権は付与されません。 
 
 [RBAC: 組み込みのロール](role-based-access-built-in-roles.md) 」に、Azure で使用できる RBAC ロールが記載されています。 各組み込みロールによってユーザーに付与される操作とスコープが説明されています。 制御を強化するために独自のロールを定義する場合は、 [Azure RBAC でカスタム ロール](role-based-access-control-custom-roles.md)を作成する方法を参照してください。
 
@@ -57,7 +58,7 @@ Azure RBAC には、すべてのリソースの種類に適用される 3 つの
 * 共同作成者ロールをリソース グループ スコープでアプリケーションに割り当てると、 そのアプリケーションでは、そのリソース グループ内のすべてのタイプのリソースを管理できるようになりますが、サブスクリプション内の他のリソース グループは管理できません。
 
 ## <a name="azure-rbac-vs-classic-subscription-administrators"></a>Azure RBAC と従来のサブスクリプションの管理者の比較
-従来のサブスクリプションの管理者と共同管理者には、Azure サブスクリプションへのフル アクセス権があります。 リソースの管理には、[Azure ポータル](https://portal.azure.com)と Azure Resource Manager API の組み合わせ、または [Azure クラシック ポータル](https://manage.windowsazure.com)と Azure クラシック デプロイメント モデルの組み合わせを使用できます。 RBAC モデルで、従来の管理者は、サブスクリプション スコープで所有者ロールを割り当てられます。
+従来のサブスクリプションの管理者と共同管理者には、Azure サブスクリプションへのフル アクセス権があります。 リソースの管理には、[Azure Portal](https://portal.azure.com)と Azure Resource Manager API の組み合わせ、または [Azure クラシック ポータル](https://manage.windowsazure.com)と Azure クラシック デプロイメント モデルの組み合わせを使用できます。 RBAC モデルで、従来の管理者は、サブスクリプション スコープで所有者ロールを割り当てられます。
 
 Azure RBAC は Azure ポータルと新しい Azure Resource Manager API の組み合わせのみでサポートされています。 RBAC ロールを割り当てられているユーザーとアプリケーションは、クラシック管理ポータルと Azure クラシック デプロイメント モデルを使用できません。
 

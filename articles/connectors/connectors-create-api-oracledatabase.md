@@ -89,7 +89,7 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 
 ### <a name="workflow-ideas"></a>ワークフローについて
 
-* #oracle というハッシュタグを監視し、データベースにツイートを入力して、そのツイートに対してクエリを実行できるようにするほか、他のアプリケーションで使用できるようにします。 ロジック アプリで `Twitter - When a new tweet is posted` トリガーを追加し、**#oracle** ハッシュタグを入力します。 次に、`Oracle Database - Insert row` アクションを追加し、テーブルを選択します。
+* oracle というハッシュタグを監視し、データベースにツイートを入力して、そのツイートに対してクエリを実行できるようにするほか、他のアプリケーションで使用できるようにします。 ロジック アプリで `Twitter - When a new tweet is posted` トリガーを追加し、**#oracle** ハッシュタグを入力します。 次に、`Oracle Database - Insert row` アクションを追加し、テーブルを選択します。
 
     ![](./media/connectors-create-api-oracledatabase/twitter-oracledb.png)
 

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 04/11/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 280737097038ff328d487477279ce4f204b0ac0c
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 8fcd609da46e88f7db90692c7e67011df64c9b4e
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -99,7 +99,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
     ```
 
    > [!NOTE]
-   > **resourcegroupname** は Azure リソース グループの名前に置き換えます。 リソース グループを作成するには、 [New-AzureResourceGroup](https://msdn.microsoft.com/library/Dn654594.aspx) コマンドレットを使用します。
+   > **resourcegroupname** は Azure リソース グループの名前に置き換えます。 リソース グループを作成するには、 [New-AzureResourceGroup](/powershell/module/azure/new-azureresourcegroup?view=azuresmps-3.7.0) コマンドレットを使用します。
 7. **データ ファクトリ**を作成する次のコードを **Main** メソッドに追加します。
 
     ```csharp
@@ -445,7 +445,7 @@ TokenCloudCredentials aadTokenCredentials =
 アプリケーション ID とパスワード (クライアント シークレット) を書き留めて、チュートリアルで使用します。
 
 ## <a name="get-azure-subscription-and-tenant-ids"></a>Azure サブスクリプションとテナント ID を入手する
-コンピューターに PowerShell の最新バージョンをインストールしていない場合は、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」に記載されている手順に従ってインストールします。
+コンピューターに PowerShell の最新バージョンをインストールしていない場合は、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」に記載されている手順に従ってインストールします。
 
 1. Azure PowerShell を起動し、次のコマンドを実行します。
 2. 次のコマンドを実行して、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。

@@ -47,7 +47,7 @@
 ### [Azure Monitor を使用して監視する](api-management-howto-use-azure-monitor.md)
 ### [ロールベースのアクセス制御を使用する](api-management-role-based-access-control.md)
 # リファレンス
-## [PowerShell](/powershell/azureps-cmdlets-docs)
+## [PowerShell](/powershell/azure/overview)
 ## [REST ()](/rest/api/apimanagement/)
 ## [REST (オリジナル)](/rest/api/apimanagement/ApiManagementREST/api-management-REST)
 ## [ポリシー](api-management-policies.md)

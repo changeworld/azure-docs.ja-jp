@@ -16,15 +16,15 @@ ms.topic: article
 ms.date: 03/20/2017
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: de3f8cb4a603b3aab7cef21b06f9615ce7d892cb
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: f07b3116d062d5089446fb66d8683aae7024327f
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="install-the-azure-cli-10"></a>Azure CLI 1.0 のインストール
 > [!div class="op_single_selector"]
-> * [PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs)
+> * [PowerShell](/powershell/azure/overview)
 > * [Azure CLI 1.0](cli-install-nodejs.md)
 > * [Azure CLI 2.0](/cli/azure/install-azure-cli)
 

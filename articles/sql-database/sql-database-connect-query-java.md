@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: andrela;carlrab;sstein
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 17202bfc03e9b60d12f1a071eff427520a0dce83
-ms.lasthandoff: 04/19/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 6ba2880b1ce9eed0f5c3b8e3ed4255c7e4ec7f29
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -32,6 +32,8 @@ ms.lasthandoff: 04/19/2017
 - [DB の作成 - CLI](sql-database-get-started-cli.md)
 
 ## <a name="install-java-software"></a>Java ソフトウェアのインストール
+
+このセクションの手順では、Java による開発には慣れているが、Azure SQL Database を初めて使用するユーザーを想定しています。 Java による開発の経験がない場合は、「[Build an app using SQL Server (SQL Server を使用してアプリを構築する)](https://www.microsoft.com/en-us/sql-server/developer-get-started/)」に移動し、**Java** を選択してから、使用しているオペレーティング システムを選択します。
 
 ### <a name="mac-os"></a>**Mac OS**
 ターミナルを開き、Java プロジェクトの作成先となるディレクトリに移動します。 次のコマンドを入力して、**brew** と **Maven** をインストールします。 
@@ -50,24 +52,24 @@ sudo apt-get install maven
 ```
 
 ### <a name="windows"></a>**Windows**
-公式インストーラーを使用して [Maven](https://maven.apache.org/download.cgi) をインストールします。  
+公式インストーラーを使用して [Maven](https://maven.apache.org/download.cgi) をインストールします。 Maven を使用して、Java プロジェクトの依存関係の管理、ビルド、テスト、および実行を行うことができます。 
 
 ## <a name="get-connection-information"></a>接続情報の取得
 
-Azure Portal で接続文字列を取得します。 その接続文字列は Azure SQL データベースに接続するために使用します。
+Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名、データベース名、ログイン情報が必要になります。
 
 1. [Azure ポータル](https://portal.azure.com/)にログインします。
 2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
-3. データベースの **[概要]** ページで、次の図に示すように、完全修飾サーバー名を確認します。 サーバー名をポイントすると、**[コピーするにはクリックします]** オプションが表示されます。 
+3. データベースの [**概要**] ページで、次の図に示すように、完全修飾サーバー名を確認します。 サーバー名をポイントすると、[**コピーするにはクリックします**] オプションが表示されます。 
 
    ![server-name](./media/sql-database-connect-query-dotnet/server-name.png) 
 
-4. Azure SQL Database サーバーのログイン情報を忘れた場合は、[SQL データベース サーバー] ページに移動して、サーバー管理者名を表示し、必要に応じて、パスワードをリセットします。
+4. Azure SQL Database サーバーのログイン情報を忘れた場合は、[SQL データベース サーバー] ページに移動して、サーバー管理者名を表示し、必要に応じてパスワードをリセットします。
 5. **[データベース接続文字列の表示]** をクリックします。
 
 6. 完全な **JDBC** 接続文字列を確認します。
 
-    ![JDBC 接続文字列](./media/sql-database-connect-query-jdbc/jdbc-connection-string.png)
+    ![JDBC 接続文字列](./media/sql-database-connect-query-jdbc/jdbc-connection-string.png)    
 
 ### <a name="create-maven-project"></a>**Maven プロジェクトの作成**
 ターミナルから新しい Maven プロジェクトを作成します。 
@@ -87,7 +89,7 @@ mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=SqlDbSample" "
 
 ## <a name="select-data"></a>データの選択
 
-次のコードを使用し、[connection](https://docs.microsoft.com/sql/connect/jdbc/working-with-a-connection) クラスと [SELECT](https://docs.microsoft.com/sql/t-sql/queries/select-transact-sql) Transact-SQL ステートメントを使用して Azure SQL Database のデータを照会します。 hostHame、dbName、ユーザー、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。 
+次のコードを使用して、カテゴリ別の上位 20 の製品を照会します。このコードでは、[connection](https://docs.microsoft.com/sql/connect/jdbc/working-with-a-connection) クラスと [SELECT](https://docs.microsoft.com/sql/t-sql/queries/select-transact-sql) Transact-SQL ステートメントを使用します。 hostHame、dbName、ユーザー、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。 
 
 ```java
 package com.sqldbsamples;
@@ -144,7 +146,7 @@ public class App {
 
 ## <a name="insert-data"></a>データを挿入する
 
-次のコードを使用し、[Prepared Statements](https://docs.microsoft.com/sql/connect/jdbc/using-statements-with-sql) クラスと [INSERT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) Transact-SQL ステートメントを使用して、指定したデータベースの SalesLT.Product テーブルに新しい製品を挿入します。 hostHame、dbName、ユーザー、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。 
+次のコードを使用して、SalesLT.Product テーブルに新しい製品を挿入します。このコードでは、[Prepared Statements](https://docs.microsoft.com/sql/connect/jdbc/using-statements-with-sql) クラスと [INSERT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) Transact-SQL ステートメントを使用します。 hostHame、dbName、ユーザー、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。 
 
 ```java
 package com.sqldbsamples;
@@ -174,7 +176,7 @@ public class App {
                 System.out.println("=========================================");
 
                 // Prepared statement to insert data
-                String insertSql = "INSERT INTO SalesLT.Product (Name, ProductNumber, Color, )" 
+                String insertSql = "INSERT INTO SalesLT.Product (Name, ProductNumber, Color, " 
                     + " StandardCost, ListPrice, SellStartDate) VALUES (?,?,?,?,?,?);";
 
                 java.util.Date date = new java.util.Date();
@@ -200,7 +202,7 @@ public class App {
 ```
 ## <a name="update-data"></a>データの更新
 
-次のコードを使用し、 [Prepared Statements](https://docs.microsoft.com/sql/connect/jdbc/using-statements-with-sql) クラスと [UPDATE](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql) Transact-SQL ステートメントを使用して、Azure SQL Database のデータを更新します。 hostHame、dbName、ユーザー、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。 
+次のコードを使用して、先ほど追加した新しい製品を更新します。このコードでは、[Prepared Statements](https://docs.microsoft.com/sql/connect/jdbc/using-statements-with-sql) クラスと [UPDATE](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql) Transact-SQL ステートメントを使用して、Azure SQL Database のデータを更新します。 hostHame、dbName、ユーザー、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。 
 
 ```java
 package com.sqldbsamples;
@@ -251,7 +253,7 @@ public class App {
 
 ## <a name="delete-data"></a>データの削除
 
-次のコードを使用し、[Prepared Statements](https://docs.microsoft.com/sql/connect/jdbc/using-statements-with-sql) と [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL ステートメントを使用して、Azure SQL Database のデータを削除します。 hostHame、dbName、ユーザー、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。 
+次のコードを使用して、先ほど追加した新しい製品を削除します。[Prepared Statements](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql)と [DELETE](https://docs.microsoft.com/sql/connect/jdbc/using-statements-with-sql) Transact-SQL ステートメントを使用します。 hostHame、dbName、ユーザー、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。 
 
 ```java
 package com.sqldbsamples;

@@ -68,7 +68,7 @@ SQL Data Warehouse には、他のデータベースで提供されているの�
 
 | サポートされていない機能 |
 | --- |
-| [ID プロパティ][ Identity Property] ([代理キーの回避策の割り当て][Assigning Surrogate Key Workaround]を参照してください) |
+| [ID プロパティ][Identity Property] ([代理キーの回避策の割り当て][Assigning Surrogate Key Workaround]を参照してください) |
 | PRIMARY KEY、FOREIGN KEY、UNIQUE、CHECK の各 [テーブル制約][Table Constraints] |
 | [一意のインデックス][Unique Indexes] |
 | [計算列][Computed Columns] |

@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2017
 ms.author: joflore
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: ff26d568624a712cf86db962193c8f631065c004
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 7375d2d3c237c3b1c2dcdab44b2fcb0000ff961c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/04/2017
 
 
 ---
 # <a name="how-to-get-operational-insights-with-password-management-reports"></a>パスワード管理レポートで運用情報を把握する方法
 > [!IMPORTANT]
-> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#reset-my-password)にお進みください。
+> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#reset-or-unlock-my-password-for-a-work-or-school-account)にお進みください。
 >
 >
 
@@ -202,16 +203,12 @@ Azure AD レポートおよびイベント API を直接使用する方法に加
 4. **[動作状況のログ]** セクションの下で、
 5. **[パスワード リセット アクティビティ]** レポートまたは **[パスワード リセット登録アクティビティ]** レポートのいずれかを選択します。
 
-   ![][001]
-
 ## <a name="view-password-reset-registration-activity-in-the-classic-portal"></a>クラシック ポータルでのパスワード リセット登録アクティビティの表示
 パスワード リセット登録アクティビティ レポートでは、組織で実行されたすべてのパスワード リセットの登録が表示されます。  パスワード リセットの登録は、パスワード リセット登録ポータル ([http://aka.ms/ssprsetup](http://aka.ms/ssprsetup)) で認証情報を正常に登録したユーザーについて、このレポートに表示されます
 
 * **最大期間**: 30 日
 * **最大行数**: 75,000
 * **ダウンロードの可否**: CSV ファイルでダウンロードできます。
-
-    ![][002]
 
 ### <a name="description-of-report-columns"></a>レポートの列の説明
 次の一覧では、レポートの各列について詳細に説明します。
@@ -234,8 +231,6 @@ Azure AD レポートおよびイベント API を直接使用する方法に加
 * **最大期間**: 30 日
 * **最大行数**: 75,000
 * **ダウンロードの可否**: CSV ファイルでダウンロードできます。
-
-    ![][003]
 
 ### <a name="description-of-report-columns"></a>レポートの列の説明
 次の一覧では、レポートの各列について詳細に説明します。
@@ -300,7 +295,7 @@ Azure AD レポートおよびイベント API を直接使用する方法に加
 ## <a name="next-steps"></a>次のステップ
 Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
-* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#reset-my-password)にお進みください。
+* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#reset-or-unlock-my-password-for-a-work-or-school-account)にお進みください。
 * [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
 * [**概要**](active-directory-passwords-getting-started.md) - ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
 * [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。
@@ -308,8 +303,4 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 * [**FAQ**](active-directory-passwords-faq.md) -よく寄せられる質問の回答を得ます。
 * [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - サービスに関する問題を迅速にトラブルシューティングする方法について説明します。
 * [**詳細情報**](active-directory-passwords-learn-more.md) - サービスの機能の技術的な詳細を掘り下げます。
-
-[001]: ./media/active-directory-passwords-get-insights/001.jpg "Image_001.jpg"
-[002]: ./media/active-directory-passwords-get-insights/002.jpg "Image_002.jpg"
-[003]: ./media/active-directory-passwords-get-insights/003.jpg "Image_003.jpg"
 

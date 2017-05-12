@@ -15,9 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: cynthn
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
 ms.openlocfilehash: 1bfce97dba3cfc371900c0e3c6a93369e768c181
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/19/2017
 
 
@@ -70,7 +71,7 @@ MySQL Server の Community バージョンをインストール、構成、と�
 13. **[Windows Service]** ページで、Windows サービスとして MySQL Server を実行するための、既定の設定に対する変更を必要に応じて指定し、**[Next]** をクリックします。
 
     ![](./media/mysql-2008r2/MySQL_WindowsService.png)
-14. [**Plugins and Extensions**] (プラグインと拡張機能) ページでの選択は省略可能です。 [**次へ**] をクリックして続行します。
+14. [**Plugins and Extensions**] \(プラグインと拡張機能) ページでの選択は省略可能です。 [**次へ**] をクリックして続行します。
 15. **[Advanced Options]** ページで、必要に応じてログ オプションに対する変更を指定し、**[Next]** をクリックします。
 
     ![](./media/mysql-2008r2/MySQL_AdvOptions.png)

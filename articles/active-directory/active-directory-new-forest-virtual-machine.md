@@ -16,9 +16,9 @@ ms.workload: identity
 ms.date: 04/06/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 46e248112985b2e8f58f90e15cf885839d3cfcc8
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 516240ccc82a522a414d837ec334712196edf7dd
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -70,7 +70,7 @@ UI ではなく Windows PowerShell を使用して VM を作成する方法に�
    |  **仮想マシンの構成** |<p><b>[VM エージェントのインストール]</b> と、必要な他の拡張機能を選択します。</p> |
 2. DC サーバーのロールを実行する各 VM にディスクを接続します。 AD データベース、ログ、SYSVOL を格納するには、追加のディスクが必要です。 ディスクのサイズを指定して (10 GB など)、**[ホスト キャッシュ設定]** は **[None]** のままにします。 手順については、「 [データ ディスクを Windows 仮想マシンに追加する方法](../virtual-machines/windows/classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
 3. 初めて VM にサインインした後、**[サーバー マネージャー]** > **[ファイル サービスとストレージ サービス]** の順に開いて、NTFS を使用してこのディスクにボリュームを作成します。
-4. DC ロールを実行する VM の静的 IP アドレスを予約します。 静的 IP アドレスを予約するには、Microsoft Web Platform Installer をダウンロードして、 [Azure PowerShell をインストール](/powershell/azureps-cmdlets-docs) し、Set-AzureStaticVNetIP コマンドレットを実行します。 次に例を示します。
+4. DC ロールを実行する VM の静的 IP アドレスを予約します。 静的 IP アドレスを予約するには、Microsoft Web Platform Installer をダウンロードして、 [Azure PowerShell をインストール](/powershell/azure/overview) し、Set-AzureStaticVNetIP コマンドレットを実行します。 次に例を示します。
 
     `Get-AzureVM -ServiceName AzureDC1 -Name AzureDC1 | Set-AzureStaticVNetIP -IPAddress 10.0.0.4 | Update-AzureVM`
 
@@ -104,7 +104,7 @@ DC のインストールが完了したら、仮想マシンに再び接続し�
 
 UI ではなく Windows PowerShell を使用して VM を作成する方法については、「 [UAzure PowerShell を使用して Windows ベースの仮想マシンを作成と事前構成する](../virtual-machines/windows/classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
 
-Windows PowerShell の使い方の詳細については、「[Azure コマンドレットの概要](https://msdn.microsoft.com/library/azure/jj554332.aspx)」と「[Azure コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/jj554330.aspx)」をご覧ください。
+Windows PowerShell の使い方の詳細については、「[Azure コマンドレットの概要](/powershell/azure/overview)」と「[Azure コマンドレット リファレンス](/powershell/azure/get-started-azureps)」をご覧ください。
 
 ## <a name="see-also"></a>関連項目
 * [How to install a new Active Directory forest on an Azure virtual network (Azure Virtual Network に新しい Active Directory フォレストをインストールする方法)](http://channel9.msdn.com/Series/Microsoft-Azure-Tutorials/How-to-install-a-new-Active-Directory-forest-on-an-Azure-virtual-network)
@@ -114,9 +114,9 @@ Windows PowerShell の使い方の詳細については、「[Azure コマンド
 * [Microsoft Azure IT Pro IaaS: (01) 仮想マシンの基礎](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/01)
 * [Microsoft Azure IT Pro IaaS: (05) Virtual Network とクロスプレミス接続の作成](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/05)
 * [Virtual Network の概要](../virtual-network/virtual-networks-overview.md)
-* [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)
-* [Azure PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx)
-* [Azure コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/jj554330.aspx)
+* [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)
+* [Azure PowerShell](/powershell/azure/overview)
+* [Azure コマンドレット リファレンス](/powershell/azure/get-started-azureps)
 * [Set Azure VM Static IP Address (Azure の VM の静的 IP アドレスの設定)](http://windowsitpro.com/windows-azure/set-azure-vm-static-ip-address)
 * [Azure VM への静的 IP アドレスの割り当て方法](http://www.bhargavs.com/index.php/2014/03/13/how-to-assign-static-ip-to-azure-vm/)
 * [Install a New Active Directory Forest (新しい Active Directory フォレストのインストール)](https://technet.microsoft.com/library/jj574166.aspx)

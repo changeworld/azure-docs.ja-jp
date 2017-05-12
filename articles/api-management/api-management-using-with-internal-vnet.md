@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 456c541be7aadcce494bbd54e97deb6f30d5141b
-ms.openlocfilehash: dc9af7e4ef9599886d1be6676f88f71f80c20474
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: b9df2c3e7f49a47bfd714f28c5ab53590ca9a719
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="using-azure-api-management-service-with-internal-virtual-network"></a>内部仮想ネットワークでの Azure API Management サービスの使用
-Azure Virtual Networks (VNET) では、API Management はインターネットでアクセスできない API を管理できます。 多数の VPN テクノロジを利用して、接続を行うことができます。また、VNET 内の&2; つの主なモードで API Management をデプロイすることが可能です。
+Azure Virtual Networks (VNET) では、API Management はインターネットでアクセスできない API を管理できます。 多数の VPN テクノロジを利用して、接続を行うことができます。また、VNET 内の 2 つの主なモードで API Management をデプロイすることが可能です。
 * 外部
 * 内部
 
@@ -48,11 +50,11 @@ API Management を内部モードで使用することにより、次のシナ�
 ### <a name="enable-vnet-connection-using-powershell-cmdlets"></a>PowerShell コマンドレットを使用した VNET 接続の有効化
 PowerShell コマンドレットを使用して VNET 接続を有効にすることもできます。
 
-* **VNET 内に API Management サービスを作成する**: コマンドレット [New-AzureRmApiManagement](https://docs.microsoft.com/en-us/powershell/resourcemanager/azurerm.apimanagement/v3.1.0/new-azurermapimanagement) を使用して、VNET 内に Azure API Management サービスを作成し、このサービスが内部 VNET の種類を使用するように構成します。
+* **VNET 内に API Management サービスを作成する**: コマンドレット [New-AzureRmApiManagement](/powershell/module/azurerm.apimanagement/new-azurermapimanagement) を使用して、VNET 内に Azure API Management サービスを作成し、このサービスが内部 VNET の種類を使用するように構成します。
 
-* **VNET 内に既存の API Management サービスをデプロイする**: コマンドレット [Update-AzureRmApiManagementDeployment](https://docs.microsoft.com/en-us/powershell/resourcemanager/azurerm.apimanagement/v3.1.0/update-azurermapimanagementdeployment) を使用して、既存の Azure API Management サービスを仮想ネットワーク内に移動し、このサービスが内部 VNET の種類を使用するように構成します。
+* **VNET 内に既存の API Management サービスをデプロイする**: コマンドレット [Update-AzureRmApiManagementDeployment](/powershell/module/azurerm.apimanagement/update-azurermapimanagementdeployment) を使用して、既存の Azure API Management サービスを仮想ネットワーク内に移動し、このサービスが内部 VNET の種類を使用するように構成します。
 
-## <a name="a-nameapim-dns-configurationadns-configuration"></a><a name="apim-dns-configuration"></a>DNS の構成
+## <a name="apim-dns-configuration"></a>DNS の構成
 API Management を外部仮想ネットワーク モードを使用する場合、DNS は Azure によって管理されます。 内部仮想ネットワーク モードの場合は、自身で DNS を管理する必要があります。
 
 > [!NOTE]
@@ -61,23 +63,23 @@ API Management を外部仮想ネットワーク モードを使用する場合�
 ### <a name="access-on-default-host-names"></a>既定のホスト名へのアクセス
 "contoso" という名前のパブリック Azure クラウドで API Management サービスを作成すると、次のサービス エンドポイントが既定で構成されます。
 
->   ゲートウェイ/プロキシ - contoso.azure-api.net
+>    ゲートウェイ/プロキシ - contoso.azure-api.net
 
 > パブリッシャー ポータルと開発者ポータル - contoso.portal.azure-api.net
 
 > ダイレクト管理エンドポイント - contoso.management.azure-api.net
 
->   Git - contoso.scm.azure-api.net
+>    Git - contoso.scm.azure-api.net
 
 これらの API Management サービス エンドポイントにアクセスするために、API Management がデプロイされている仮想ネットワークに接続しているサブネットで Virtual Machine を作成できます。 サービスの内部仮想 IP アドレスを 10.0.0.5 と仮定すると、ホスト ファイルのマッピング (%SystemDrive%\drivers\etc\hosts) を次のように行うことができます。
 
-> 10.0.0.5    contoso.azure-api.net
+> 10.0.0.5      contoso.azure-api.net
 
-> 10.0.0.5    contoso.portal.azure-api.net
+> 10.0.0.5      contoso.portal.azure-api.net
 
-> 10.0.0.5    contoso.management.azure-api.net
+> 10.0.0.5      contoso.management.azure-api.net
 
-> 10.0.0.5    contoso.scm.azure-api.net
+> 10.0.0.5      contoso.scm.azure-api.net
 
 これで、すべてのサービス エンドポイントに、作成した Virtual Machine からアクセスできるようになります。 また仮想ネットワーク内でカスタム DNS サーバーを使用している場合、DNS レコードを作成して、仮想ネットワーク内のどこからでもこれらのエンドポイントにアクセスすることができます。 
 
@@ -99,9 +101,4 @@ API Management を外部仮想ネットワーク モードを使用する場合�
 
 [Create API Management service]: api-management-get-started.md#create-service-instance
 [Common Network Configuration Issues]: api-management-using-with-vnet.md#network-configuration-issues
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

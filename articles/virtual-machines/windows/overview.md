@@ -16,9 +16,9 @@ ms.topic: get-started-article
 ms.date: 03/01/2017
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: d128d1f5bdf054accac87631a5d6a65f3bb15ea6
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: e1e09f4f75da05ca051b78e57979600fd3e36006
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -59,7 +59,7 @@ Azure で作成されるすべてのリソースは、世界各地の複数の[�
 | メソッド | 説明 |
 | --- | --- |
 | Azure ポータル |VM を作成するときに一覧から場所を選択します。 |
-| Azure PowerShell |[Get-AzureRmLocation](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.5.0/get-azurermlocation) コマンドを使用します。 |
+| Azure PowerShell |[Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation) コマンドを使用します。 |
 | REST API |[場所の一覧表示](https://docs.microsoft.com/rest/api/resources/subscriptions#Subscriptions_ListLocations)操作を使用します。 |
 
 ### <a name="vm-size"></a>VM サイズ
@@ -80,7 +80,7 @@ Azure には、Windows Server オペレーティング システムのさまざ�
 | メソッド | 説明 |
 | --- | --- |
 | Azure ポータル |値は、使用するイメージを選択する際に自動的に指定されます。 |
-| Azure PowerShell |[Get-AzureRMVMImagePublisher](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/get-azurermvmimagepublisher) -Location "場所"<BR>[Get-AzureRMVMImageOffer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/get-azurermvmimageoffer) -Location "場所" -Publisher "発行元名"<BR>[Get-AzureRMVMImageSku](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/get-azurermvmimagesku) -Location "場所" -Publisher "発行元名" -Offer "プラン名" |
+| Azure PowerShell |[Get-AzureRMVMImagePublisher](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/get-azurermvmimagepublisher) -Location "場所"<BR>[Get-AzureRMVMImageOffer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/get-azurermvmimageoffer) -Location "場所" -Publisher "発行元名"<BR>[Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) -Location "場所" -Publisher "発行元名" -Offer "プラン名" |
 | REST API |[イメージ発行元の一覧表示](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[イメージ プランの一覧表示](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[イメージ SKU の一覧表示](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
 
 [独自のイメージをアップロードして使用](upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)することができますが、そのとき、発行元名、プラン、SKU は使用されません。

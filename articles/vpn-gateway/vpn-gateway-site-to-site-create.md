@@ -13,34 +13,36 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/11/2017
+ms.date: 04/24/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: ff70484dff03a44d23d2cf34ce115fd57c4b0390
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: d0cedf73aa3f73e672a73b6abaca5eb8c22a76a7
+ms.lasthandoff: 04/25/2017
 
 
 ---
-# <a name="create-a-vnet-with-a-site-to-site-connection-using-the-classic-portal"></a>クラシック ポータルを使用してサイト間接続を備えた VNet を作成する
+# <a name="create-a-vnet-with-a-site-to-site-connection-using-the-classic-portal-classic"></a>クラシック ポータルを使用してサイト間接続を備えた VNet を作成する (クラシック)
 
-サイト間 (S2S) VPN ゲートウェイ接続とは、IPsec/IKE (IKEv1 または IKEv2) VPN トンネルを介した接続です。 この種類の接続では、オンプレミスの VPN デバイスが必要です。そのデバイスは、パブリック IP アドレスを割り当てられていて、NAT の内側に配置されていない必要があります。 サイト間接続は、クロスプレミスおよびハイブリッド構成に使用できます。
-
-![クロスプレミスのサイト間 VPN Gateway 接続の図](./media/vpn-gateway-site-to-site-create/site-to-site-connection-diagram.png)
-
-この記事では、クラシック デプロイメント モデルとクラシック ポータルを使用して、仮想ネットワークと、オンプレミス ネットワークに対するサイト間 VPN ゲートウェイ接続を作成する手順について説明します。 サイト間接続は、クロスプレミスおよびハイブリッド構成に使用できます。 Resource Manager デプロイメント モデルでは、次のリストから別の方法を選択して、この構成を作成することもできます。
+この記事では、クラシック ポータルを使用して、オンプレミス ネットワークから VNet へのサイト間 VPN Gateway 接続を作成する方法について説明します。 この記事のこの手順は、クラシック デプロイメント モデルに適用されます。 また、この構成の作成には、次のリストから別のオプションを選択して、別のデプロイ ツールまたはデプロイ モデルを使用することもできます。
 
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [Resource Manager - PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+> * [Resource Manager - CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [クラシック - Azure Portal](vpn-gateway-howto-site-to-site-classic-portal.md)
 > * [クラシック - クラシック ポータル](vpn-gateway-site-to-site-create.md)
+> 
 >
->
+
+![クロスプレミスのサイト間 VPN Gateway 接続の図](./media/vpn-gateway-site-to-site-create/site-to-site-connection-diagram.png)
+
+
+サイト間 VPN Gateway 接続は、IPsec/IKE (IKEv1 または IKEv2) VPN トンネルを介してオンプレミス ネットワークを Azure 仮想ネットワークに接続するために使用します。 この種類の接続では、外部接続用パブリック IP アドレスが割り当てられていてるオンプレミスの VPN デバイスが必要です。 VPN Gateway の詳細については、「[VPN Gateway について](vpn-gateway-about-vpngateways.md)」を参照してください。
 
 #### <a name="additional-configurations"></a>追加の構成
-VNet どうしを接続する場合は、「 [クラシック デプロイメント モデルで VNet 対 VNet 接続を構成する](virtual-networks-configure-vnet-to-vnet-connection.md)」を参照してください。 既存の接続が存在する VNet にサイト間接続を追加する場合は、[VPN Gateway 接続が既に存在する VNet へのサイト間接続の追加](vpn-gateway-multi-site.md)に関するページを参照してください。
 
+VNet どうしを接続する場合は、「 [クラシック デプロイメント モデルで VNet 対 VNet 接続を構成する](virtual-networks-configure-vnet-to-vnet-connection.md)」を参照してください。 既存の接続が存在する VNet にサイト間接続を追加する場合は、[VPN Gateway 接続が既に存在する VNet へのサイト間接続の追加](vpn-gateway-multi-site.md)に関するページを参照してください。
 ## <a name="before-you-begin"></a>開始する前に
 
 [!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
@@ -70,7 +72,7 @@ VNet どうしを接続する場合は、「 [クラシック デプロイメン
 * **[ローカル ネットワーク]**: ローカル ネットワークとは、物理的なオンプレミスの場所を表します。 ここでは、以前作成したローカル ネットワークを選択するか、または新しいローカル ネットワークを作成することができます。 ただし、以前作成したローカル ネットワークを使用する場合は、VPN デバイスの IP アドレス (外部に公開されている IPv4 アドレス) が正確であるかどうかを **[ローカル ネットワーク]** 構成ページで確認します。
 
 ## <a name="Connectivity"></a>[サイト間接続] ページ
-ローカル ネットワークを新しく作成する場合は、 **[サイト間接続]** ページが表示されます。 以前作成したローカル ネットワークを使用する場合は、このページはウィザードで表示されず次のセクションに進みます。
+ローカル ネットワークを新しく作成する場合は、**[サイト間接続]** ページが表示されます。 以前作成したローカル ネットワークを使用する場合は、このページはウィザードで表示されず次のセクションに進みます。
 
 次の情報を入力して、次へ進む矢印をクリックします。
 
@@ -90,7 +92,7 @@ VNet どうしを接続する場合は、「 [クラシック デプロイメン
 * **[サブネットの追加]**: IP アドレスの開始点とアドレス数を指定します。 追加サブネットは必須ではありませんが、VM 用に静的 DIP を持つ別のサブネットを作成することをお勧めします。 または、他のロール インスタンスとは分離したサブネットに VM を配置することができます。
 * **ゲートウェイ サブネットの追加**: ゲートウェイ サブネットを追加する場合はクリックします。 ゲートウェイ サブネットは仮想ネットワーク ゲートウェイにのみ適用されます。この構成では、ゲートウェイ サブネットは必須です
 
-ページ下部のチェックマークをクリックすると、仮想ネットワークの作成が開始されます。 完了すると、Azure クラシック ポータルの **[ネットワーク]** ページにある **[状態]** に **[作成済み]** と表示されます。 VNet の作成が完了したら、仮想ネットワーク ゲートウェイを構成できます。
+ページ下部のチェックマークをクリックして、仮想ネットワークを作成します。 完了すると、Azure クラシック ポータルの **[ネットワーク]** ページにある **[状態]** に **[作成済み]** と表示されます。 VNet の作成が完了したら、仮想ネットワーク ゲートウェイを構成できます。
 
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 

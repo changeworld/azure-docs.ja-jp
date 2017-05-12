@@ -22,9 +22,11 @@
 ## [Traffic Manager のパフォーマンスの測定](traffic-manager-performance-considerations.md)
 ## [PowerShell を使用した Traffic Manager の管理](traffic-manager-powershell-arm.md)
 ## [インターネット ドメインが Traffic Manager を指すように指定する](traffic-manager-point-internet-domain.md)
+## トラブルシューティング
+### [Azure Traffic Manager での機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)
 
 # リファレンス
-## [PowerShell](/powershell/resourcemanager/azurerm.trafficmanager/v2.5.0/azurerm.trafficmanager)
+## [PowerShell](/powershell/module/azurerm.trafficmanager)
 ## [Azure CLI](/cli/azure/network/traffic-manager)
 ## [Java](/java/api/com.microsoft.azure.management.trafficmanager)
 ## [Node.JS](http://azure.github.io/azure-sdk-for-node/azure-arm-trafficmanager/latest/)

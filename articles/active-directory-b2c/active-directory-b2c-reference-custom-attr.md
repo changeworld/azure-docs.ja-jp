@@ -17,6 +17,7 @@ ms.author: swkrish
 translationtype: Human Translation
 ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
 ms.openlocfilehash: f7b21cc941f17d0815316dfe7013e9f97a95c223
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -54,10 +55,5 @@ Azure Active Directory (Azure AD) B2C ディレクトリには、組み込みの
 ## <a name="notes"></a>メモ
 * サインアップ ポリシーと共に、カスタム属性をサインアップ/サインイン ポリシーおよびプロファイル編集ポリシーとして使用することもできます。
 * カスタム属性には既知の制限があります。 カスタム属性が作成されるのは、いずれかのポリシーで初めて使用されるときだけであり、 **[ユーザー属性]**の一覧に追加されるときではありません。
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

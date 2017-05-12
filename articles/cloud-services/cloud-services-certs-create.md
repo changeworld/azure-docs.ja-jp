@@ -12,12 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2016
+ms.date: 04/19/2017
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 885180e9759d0702d4e0988a7a1b4eb9097d4433
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 7e68a738feff2eb2330b74d942b0a7f42d07df78
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -58,8 +58,10 @@ Azure クラシック ポータルまたは Azure クラシック デプロイ�
 * X.509 証明書。
 * 秘密キーが含まれている。
 * キー交換用に作成される (.pfx ファイル)。
-* 証明書の件名はクラウド サービスへのアクセスに使用されるドメインと一致する必要があります。 
+* 証明書の件名はクラウド サービスへのアクセスに使用されるドメインと一致する必要があります。
+
     > cloudapp.net ドメイン (または Azure に関連するドメイン) の SSL 証明書を取得することはできません。証明書の件名は、アプリケーションへの接続に使用されるカスタム ドメイン名と一致している必要があります。 たとえば、**contoso.cloudapp.net** ではなく、**contoso.net** を使います。
+
 * 最大で 2048 ビットの暗号化。
 * **サービス証明書のみ**: クライアント側の証明書は *個人* 証明書ストアに格納されている必要があります。
 
@@ -77,8 +79,7 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 
 > [!NOTE]
 > ドメインではなく IP アドレスを持つ証明書を使用する場合は、-DnsName パラメーターで IP アドレスを使用します。
-> 
-> 
+
 
 この [証明書を管理ポータルで](../azure-api-management-certs.md)使用する場合は、 **.cer** ファイルにエクスポートしてください。
 
@@ -98,11 +99,6 @@ Java を使用して [証明書を作成](../app-service-web/java-create-azure-w
 ## <a name="next-steps"></a>次のステップ
 [サービス証明書を Azure クラシック ポータルにアップロード](cloud-services-configure-ssl-certificate.md)します (または [Azure Portal](cloud-services-configure-ssl-certificate-portal.md) にアップロードします)。
 
-[管理 API 証明書](../azure-api-management-certs.md) を Azure クラシック ポータルにアップロードします。
-
-> [!NOTE]
-> Azure ポータルは、API へのアクセスに管理証明書を使用しないで、代わりにユーザー アカウントを使用します。
-> 
-> 
+[管理 API 証明書](../azure-api-management-certs.md) を Azure クラシック ポータルにアップロードします。 Azure Portal では、認証用の管理証明書は使用しません。
 
 

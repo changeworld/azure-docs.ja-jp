@@ -1,5 +1,5 @@
 ---
-title: "Azure の監視と診断のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+title: "Azure Monitor のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "監視と診断のサービスを使用して、パフォーマンスの追跡、セキュリティの維持、傾向の把握を行う方法について説明します。 API リファレンスやベスト プラクティスなどを提供します。"
 services: monitoring-and-diagnostics
 author: carolz
@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: 0d57ccb26a3dde16c50d2e837d392ab8e6fea979
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 475353f5a5abca1e9d6b5fdf4980d0cf33acc744
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 ---
-# <a name="monitoring-and-diagnostics-documentation"></a>Monitoring and Diagnostics のドキュメント
+# <a name="azure-monitor-documentation"></a>Azure Monitor のドキュメント
 
 Azure の監視と診断のサービスを使用して、パフォーマンスの追跡、セキュリティの維持、傾向の把握を行う方法について説明します。 チュートリアル、API リファレンス、ベスト プラクティスなどのドキュメントでは、監視と診断の使用方法や、スケーラブルで信頼性の高いソリューションを計画してデプロイする方法を紹介します。
 

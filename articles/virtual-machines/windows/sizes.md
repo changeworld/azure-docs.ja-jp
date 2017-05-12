@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 63d99e77b762e16ce31e6d68a99710de8330891d
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 6f9fe94e11e47580b406ff9d91029db41faceb8e
+ms.lasthandoff: 05/03/2017
 
 ---
 

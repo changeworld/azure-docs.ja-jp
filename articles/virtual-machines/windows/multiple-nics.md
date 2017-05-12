@@ -15,9 +15,9 @@ ms.workload: infrastructure
 ms.date: 03/14/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 0095c9aeea3ab118fc212ee1ccbb71dcd84aae29
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: f04ac382521c7268d0eb03d1b3bfc78ee0b07d40
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -25,7 +25,7 @@ ms.lasthandoff: 03/31/2017
 Azure では、複数の仮想ネットワーク インターフェイス (NIC) を持つ仮想マシン (VM) を作成できます。 一般的なシナリオは、フロント エンドおよびバック エンド接続用に別々のサブネットを使用するか、監視またはバックアップ ソリューション専用のネットワークを用意することです。 この記事では、複数の NIC を持つ VM を作成するためのクイック コマンドを紹介します。 独自の PowerShell スクリプト内に複数の NIC を作成する方法など、詳しくは、[複数 NIC の VM のデプロイ](../../virtual-network/virtual-network-deploy-multinic-arm-ps.md)に関する記事を参照してください。 [VM のサイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)によってサポートされる NIC の数が異なります。VM のサイズを決める際はご注意ください。
 
 ## <a name="create-core-resources"></a>コア リソースの作成
-[最新の Azure PowerShell がインストールおよび構成](/powershell/azureps-cmdlets-docs)されていることを確認します。 Azure アカウントにログインします。
+[最新の Azure PowerShell がインストールおよび構成](/powershell/azure/overview)されていることを確認します。 Azure アカウントにログインします。
 
 ```powershell
 Login-AzureRmAccount

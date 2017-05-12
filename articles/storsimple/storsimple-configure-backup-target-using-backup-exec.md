@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: hkanna
-translationtype: Human Translation
-ms.sourcegitcommit: 83dc91972ad5fec85e562e45227747568b1fea75
-ms.openlocfilehash: db05fb35fdcbcf6691cc3ffc99d201383706592f
-ms.lasthandoff: 01/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 38a5bee31483cbb91b0278ea6c750e5ff7780b7c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -77,7 +78,7 @@ StorSimple には次の利点があります。
 -   クラウドのデータ暗号化
 -   障害復旧とコンプライアンスの強化
 
-StorSimple には&2; つの主要なデプロイメント シナリオ (プライマリ バックアップ ターゲットとセカンダリ バックアップ ターゲット) が用意されていますが、基本的にはシンプルなブロック ストレージ デバイスです。 StorSimple では、すべての圧縮と重複除去が行われます。 クラウドとアプリケーションおよびファイル システムの間で、データはシームレスに送受信されます。
+StorSimple には 2 つの主要なデプロイメント シナリオ (プライマリ バックアップ ターゲットとセカンダリ バックアップ ターゲット) が用意されていますが、基本的にはシンプルなブロック ストレージ デバイスです。 StorSimple では、すべての圧縮と重複除去が行われます。 クラウドとアプリケーションおよびファイル システムの間で、データはシームレスに送受信されます。
 
 StorSimple の詳細については、「[StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション](storsimple-overview.md)」をご覧ください。 また、[StorSimple 8000 シリーズの技術仕様](storsimple-technical-specifications-and-compliance.md)に関するページも参照してください。
 
@@ -232,21 +233,21 @@ Backup Exec のインストールのベスト プラクティスについては�
 -   StorSimple では、Backup Exec の完全バックアップと増分バックアップがサポートされています。 合成バックアップや差分バックアップは使用しないことをお勧めします。
 -   バックアップ データ ファイルに含めるデータは、特定のジョブのものだけに限定する必要があります。 たとえば、複数のジョブにまたがってメディアを追加することはできません。
 -   ジョブの検証を無効にします。 必要に応じて、最近のバックアップ ジョブの後に検証をスケジュールします。 このジョブがバックアップの時間帯に影響を与えることを理解しておくことが重要です。
--   **[Storage] (ストレージ)** > **[Your disk] (ディスク)** > **[Details] (詳細)** > **[Properties] (プロパティ)** の順に選択します。 **[Pre-allocate disk space] (ディスク領域の事前割当)** を無効にします。
+-   **[Storage] \(ストレージ)** > **[Your disk] \(ディスク)** > **[Details] \(詳細)** > **[Properties] \(プロパティ)** の順に選択します。 **[Pre-allocate disk space] \(ディスク領域の事前割当)** を無効にします。
 
 これらの要件を実装するための最新の Backup Exec 設定およびベスト プラクティスについては、[Veritas 社の Web サイト](https://www.veritas.com)をご覧ください。
 
 ## <a name="retention-policies"></a>リテンション期間ポリシー
 
-最も一般的なタイプのバックアップ保持ポリシーの&1; つが、Grandfather-Father-Son (GFS) ポリシーです。 GFS ポリシーでは、増分バックアップを&1; 日&1; 回実行し、完全バックアップは週&1; 回および月&1; 回実行します。 このポリシーでは&6; つの StorSimple 階層化ボリュームを使用します。 1 つのボリュームには、週、月、年単位の完全バックアップが格納されます。 残りの&5; つのボリュームには、日単位の増分バックアップが格納されます。
+最も一般的なタイプのバックアップ保持ポリシーの 1 つが、Grandfather-Father-Son (GFS) ポリシーです。 GFS ポリシーでは、増分バックアップを 1 日 1 回実行し、完全バックアップは週 1 回および月 1 回実行します。 このポリシーでは 6 つの StorSimple 階層化ボリュームを使用します。 1 つのボリュームには、週、月、年単位の完全バックアップが格納されます。 残りの 5 つのボリュームには、日単位の増分バックアップが格納されます。
 
 次の例では、GFS 方式を使用しています。 この例では、次の条件を前提としています。
 
 -   非重複除去または圧縮データを使用します。
 -   完全バックアップはそれぞれ 1 TiB です。
 -   毎日の増分バックアップはそれぞれ 500 GiB です。
--   4 個の週単位バックアップは&1; か月間保持します。
--   12 個の月単位バックアップは&1; 年間保持します。
+-   4 個の週単位バックアップは 1 か月間保持します。
+-   12 個の月単位バックアップは 1 年間保持します。
 -   1 個の年単位バックアップは 10 年間保持します。
 
 上記の前提条件に基づき、月単位と年単位の完全バックアップ用に 26 TiB の StorSimple 階層化ボリュームを作成します。 日単位の増分バックアップそれぞれに対し、5 TiB の StorSimple 階層化ボリュームを作成します。
@@ -254,22 +255,22 @@ Backup Exec のインストールのベスト プラクティスについては�
 | バックアップ タイプとリテンション | サイズ (TiB) | GFS 乗数\* | 合計容量 (TiB)  |
 |---|---|---|---|
 | 週単位 - 完全 | 1 | 4  | 4 |
-| 毎日 - 増分 | 0.5 | 20 (1 か月あたり同じ週数をサイクルする) | 12 (追加のクォータに対し&2;) |
+| 毎日 - 増分 | 0.5 | 20 (1 か月あたり同じ週数をサイクルする) | 12 (追加のクォータに対し 2) |
 | 月単位 - 完全 | 1 | 12 | 12 |
 | 年単位 - 完全 | 1  | 10 | 10 |
 | GFS 要件 |   | 38 |   |
-| 追加のクォータ  | 4  |   | GFS 要件合計&42;  |
+| 追加のクォータ  | 4  |   | GFS 要件合計 42  |
 \* GFS 乗数は、バックアップ ポリシー要件を遵守するために保護および保持する必要があるコピー数を指します。
 
 ## <a name="set-up-backup-exec-storage"></a>Backup Exec ストレージのセットアップ
 
 ### <a name="to-set-up-backup-exec-storage"></a>Backup Exec ストレージのセットアップ方法
 
-1.  Backup Exec 管理コンソールで、**[Storage] (ストレージ)** > **[Configure Storage] (ストレージの構成)** > **[Disk-Based Storage] (ディスクベース ストレージ)** > **[Next] (次へ)** の順に選択します。
+1.  Backup Exec 管理コンソールで、**[Storage] \(ストレージ)** > **[Configure Storage] \(ストレージの構成)** > **[Disk-Based Storage] \(ディスクベース ストレージ)** > **[Next] \(次へ)** の順に選択します。
 
     ![Backup Exec 管理コンソール、ストレージの構成ページ](./media/storsimple-configure-backup-target-using-backup-exec/image4.png)
 
-2.  **[Disk Storage] (ディスク ストレージ)** を選択して、**[Next] (次へ)** を選択します。
+2.  **[Disk Storage] \(ディスク ストレージ)** を選択して、**[Next] \(次へ)** を選択します。
 
     ![Backup Exec 管理コンソール、ストレージの選択ページ](./media/storsimple-configure-backup-target-using-backup-exec/image5.png)
 
@@ -277,15 +278,15 @@ Backup Exec のインストールのベスト プラクティスについては�
 
     ![Backup Exec 管理コンソール、名前と説明のページ](./media/storsimple-configure-backup-target-using-backup-exec/image7.png)
 
-4.  ディスク ストレージ デバイスの作成先になるディスクを選択して、**[Next] (次へ)** を選択します。
+4.  ディスク ストレージ デバイスの作成先になるディスクを選択して、**[Next] \(次へ)** を選択します。
 
     ![Backup Exec 管理コンソール、ストレージ ディスクの選択ページ](./media/storsimple-configure-backup-target-using-backup-exec/image9.png)
 
-5.  書き込み操作の数を **16** に増やして、**[Next] (次へ)** を選択します。
+5.  書き込み操作の数を **16** に増やして、**[Next] \(次へ)** を選択します。
 
     ![Backup Exec 管理コンソール、同時書き込み操作の設定ページ](./media/storsimple-configure-backup-target-using-backup-exec/image10.png)
 
-6.  設定を確認し、**[Finish] (完了)** を選択します。
+6.  設定を確認し、**[Finish] \(完了)** を選択します。
 
     ![Backup Exec 管理コンソール、ストレージ構成の概要ページ](./media/storsimple-configure-backup-target-using-backup-exec/image11.png)
 
@@ -321,17 +322,17 @@ Backup Exec のインストールのベスト プラクティスについては�
 
 #### <a name="to-assign-storsimple-volumes-to-a-backup-exec-backup-job"></a>StorSimple ボリュームを Backup Exec バックアップ ジョブに割り当てる方法
 
-1.  Backup Exec 管理コンソールで、**[Host] (ホスト)** > **[Backup] (バックアップ)** > **[Backup to Disk] (ディスクへのバックアップ)** の順に選択します。
+1.  Backup Exec 管理コンソールで、**[Host] \(ホスト)** > **[Backup] \(バックアップ)** > **[Backup to Disk] \(ディスクへのバックアップ)** の順に選択します。
 
     ![Backup Exec 管理コンソール、ホスト、バックアップ、ディスクへのバックアップの選択](./media/storsimple-configure-backup-target-using-backup-exec/image14.png)
 
-2.  **[Backup Definition Properties] (バックアップ定義のプロパティ)** ダイアログ ボックスの **[Backup] (バックアップ)** で、**[Edit] (編集)** を選択します。
+2.  **[Backup Definition Properties] \(バックアップ定義のプロパティ)** ダイアログ ボックスの **[Backup] \(バックアップ)** で、**[Edit] \(編集)** を選択します。
 
     ![Backup Exec 管理コンソール、バックアップ定義のプロパティ ダイアログ ボックス](./media/storsimple-configure-backup-target-using-backup-exec/image15.png)
 
 3.  完全バックアップと増分バックアップを、RPO 要件および RTO 要件と Veritas のベスト プラクティスに合うよう設定します。
 
-4.  **[Backup Options] (バックアップ オプション)** ダイアログ ボックスで、**[Storage] (ストレージ)** を選択します。
+4.  **[Backup Options] \(バックアップ オプション)** ダイアログ ボックスで、**[Storage] \(ストレージ)** を選択します。
 
     ![Backup Exec 管理コンソール、バックアップ オプションのストレージ ダイアログ ボックス](./media/storsimple-configure-backup-target-using-backup-exec/image16.png)
 
@@ -340,7 +341,7 @@ Backup Exec のインストールのベスト プラクティスについては�
     > [!NOTE]
     > **[圧縮]** と **[暗号化の種類]** は、**[なし]** に設定します。
 
-6.  **[Verify] (検証)** で、**[Do not verify data for this job] (このジョブのデータは検証しない)** チェック ボックスをオンにします。 このオプションを使用すると、StorSimple 階層化に影響する可能性があります。
+6.  **[Verify] \(検証)** で、**[Do not verify data for this job] \(このジョブのデータは検証しない)** チェック ボックスをオンにします。 このオプションを使用すると、StorSimple 階層化に影響する可能性があります。
 
     > [!NOTE]
     > 最適化、インデックス作成とバックグラウンドの検証は、StorSimple 階層化に悪影響を与えます。
@@ -392,23 +393,23 @@ Backup Exec のインストールのベスト プラクティスについては�
 
 #### <a name="to-assign-storsimple-volumes-to-a-backup-exec-archive-and-duplication-job"></a>StorSimple ボリュームを Backup Exec のアーカイブおよび重複除去ジョブに割り当てる方法
 
-1.  Backup Exec 管理コンソールで、StorSimple ボリュームへのアーカイブを行うように設定するジョブを右クリックして、**[Backup Definition Properties] (バックアップ定義のプロパティ)** > **[Edit] (編集)** の順に選択します。
+1.  Backup Exec 管理コンソールで、StorSimple ボリュームへのアーカイブを行うように設定するジョブを右クリックして、**[Backup Definition Properties] \(バックアップ定義のプロパティ)** > **[Edit] \(編集)** の順に選択します。
 
     ![Backup Exec 管理コンソール、バックアップ定義のプロパティ タブ](./media/storsimple-configure-backup-target-using-backup-exec/image19.png)
 
-2.  **[Add Stage] (ステージの追加)** > **[Duplicate to Disk] (ディスクに複製)** > **[Edit] (編集)** の順に選択します。
+2.  **[Add Stage] \(ステージの追加)** > **[Duplicate to Disk] \(ディスクに複製)** > **[Edit] \(編集)** の順に選択します。
 
     ![Backup Exec 管理コンソール、ステージの追加](./media/storsimple-configure-backup-target-using-backup-exec/image20.png)
 
-3.  **[Duplicate Options] (複製のオプション)** ダイアログ ボックスで、**[Source] (ソース)** および **[Schedule] (スケジュール)** について使用する値を選択します。
+3.  **[Duplicate Options] \(複製のオプション)** ダイアログ ボックスで、**[Source] \(ソース)** および **[Schedule] \(スケジュール)** について使用する値を選択します。
 
     ![Backup Exec 管理コンソール、バックアップ定義のプロパティと複製のオプション](./media/storsimple-configure-backup-target-using-backup-exec/image21.png)
 
-4.  **[Storage] (ストレージ)** ドロップダウン リストから、アーカイブ ジョブでデータを格納する StorSimple ボリュームを選択します。
+4.  **[Storage] \(ストレージ)** ドロップダウン リストから、アーカイブ ジョブでデータを格納する StorSimple ボリュームを選択します。
 
     ![Backup Exec 管理コンソール、バックアップ定義のプロパティと複製のオプション](./media/storsimple-configure-backup-target-using-backup-exec/image22.png)
 
-5.  **[Verify] (検証)** を選択し、**[Do not verify data for this job] (このジョブのデータは検証しない)** チェック ボックスをオンにします。
+5.  **[Verify] \(検証)** を選択し、**[Do not verify data for this job] \(このジョブのデータは検証しない)** チェック ボックスをオンにします。
 
     ![Backup Exec 管理コンソール、バックアップ定義のプロパティと複製のオプション](./media/storsimple-configure-backup-target-using-backup-exec/image23.png)
 
@@ -445,7 +446,7 @@ StorSimple クラウド スナップショットは、StorSimple デバイスに
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>クラウド スナップショットを開始または削除する方法
 
-1.  [Azure PowerShell をインストールします](https://docs.microsoft.com/en-us/powershell/azureps-cmdlets-docs/)。
+1.  [Azure PowerShell をインストールします](/powershell/azure/overview)。
 2.  [発行設定とサブスクリプション情報をダウンロードしてインポートします](https://msdn.microsoft.com/library/dn385850.aspx)。
 3.  Azure クラシック ポータルで、StorSimple Manager サービス用のリソース名と[登録キーを取得します](storsimple-deployment-walkthrough-u2.md#step-2-get-the-service-registration-key)。
 4.  スクリプトを実行するサーバーで PowerShell を管理者として実行します。 次のコマンドを入力します。

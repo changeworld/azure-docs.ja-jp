@@ -16,9 +16,9 @@ ms.date: 02/21/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: bb8d390a6ab045dc418bf80ec4fc218e0a35282b
-ms.lasthandoff: 04/11/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 73c38182f4caa92f5aa561b10a30c60efc8cfdae
+ms.lasthandoff: 04/26/2017
 
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Azure のロールベースのアクセス制御のための組み込みロール
@@ -40,6 +40,7 @@ Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、
 | [バックアップの共同作業者](#backup-contributor) | Recovery Services コンテナーのバックアップを管理できます |
 | [バックアップ オペレーター](#backup-operator) | バックアップの削除を除き、Recovery Services コンテナーのバックアップを管理できます |
 | [バックアップ リーダー](#backup-reader) | すべてのバックアップ管理サービスを表示できます  |
+| [課金リーダー](#billing-reader) | すべての課金情報を見ることができます  |
 | [BizTalk の共同作業者](#biztalk-contributor) |BizTalk Services を管理できます |
 | [ClearDB MySQL DB の共同作業者](#cleardb-mysql-db-contributor) |ClearDB MySQL データベースを管理できます |
 | [共同作成者](#contributor) |アクセス権以外のすべてを管理できます。 |
@@ -215,6 +216,15 @@ Recovery Services コンテナーでのバックアップ管理を監視でき�
 | Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read  | コンテナーの登録済みアイテムに対して実行された操作の結果の読み取り |
 | Microsoft.RecoveryServices/Vaults/registeredIdentities/read  | コンテナーの登録済みアイテムの読み取り |
 | Microsoft.RecoveryServices/Vaults/usages/read  |  Recovery Services コンテナーの使用状況の読み取り |
+
+## <a name="billing-reader"></a>課金リーダー
+すべての課金情報を見ることができます
+
+| **アクション** |  |
+| --- | --- |
+| Microsoft.Authorization/*/read |ロールとロール割り当ての読み取り |
+| Microsoft.Billing/*/read |課金情報の読み取り |
+| Microsoft.Support/* |サポート チケットの作成と管理 |
 
 ### <a name="biztalk-contributor"></a>BizTalk の共同作業者
 BizTalk Services を管理できます

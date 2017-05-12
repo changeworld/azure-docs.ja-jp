@@ -13,10 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: asteen
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: c0283282c0f19c3a0e0f4304de2b5ab4768d3290
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: d24031955f57794d6796ea37d8d1b0984f066286
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -38,6 +39,8 @@ Azure Portal では、左側のナビゲーション ウィンドウのエンタ
 ## <a name="configuring-an-application-for-automatic-provisioning"></a>自動プロビジョニング用にアプリケーションを構成する
 
 "*自動*" とは、このアプリケーション用の Azure AD プロビジョニング コネクタが開発済みであることを意味します。 Azure AD プロビジョニング サービスとそのしくみの詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning)」を参照してください。
+
+特定のユーザーとグループをアプリケーションにプロビジョニングする方法の詳細については、[エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning)に関するページを参照してください。
 
 自動プロビジョニングを有効にし、構成するために実際に必要な手順は、アプリケーションによって異なります。
 

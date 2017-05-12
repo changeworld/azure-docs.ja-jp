@@ -9,10 +9,11 @@ ms.technology: emotion
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: anroth
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 381c77c06127b96f74bc2903fa1f2afb5a388a2a
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: fe005e8d952a282fb46d1bad2e8c0250f0e37a8e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 ---
 
@@ -20,7 +21,7 @@ ms.lasthandoff: 04/12/2017
 This article provides information and code samples to help you quickly get started using PHP and the [Emotion API Recognize method](https://dev.projectoxford.ai/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) to recognize the emotions expressed by one or more people in an image. 
 
 ## <a name="prerequisite"></a>Prerequisite
-* Get your free Subscription Key [here](https://www.microsoft.com/cognitive-services/en-us/sign-up)
+* Get your free Subscription Key [here](https://azure.microsoft.com/en-us/try/cognitive-services/)
 
 ## <a name="recognize-emotions-php-example-request"></a>Recognize Emotions PHP Example Request
 

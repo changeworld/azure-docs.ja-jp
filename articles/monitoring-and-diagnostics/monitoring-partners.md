@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 2/10/2017
+ms.date: 4/20/2017
 ms.author: johnkem
 translationtype: Human Translation
-ms.sourcegitcommit: 7a3b8c4d373a97db1a1fae4af6d6ee4d8c35d4c4
-ms.openlocfilehash: ae3d9963045749f5487b4baac77e5eacc16ac9fc
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: b2eb107d3d4279b5e2ac0612561f613fdb7ba006
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -86,12 +87,12 @@ OpsGenie は、Azure によって生成されたアラートのディスパッ�
 [ドキュメントを確認する。][pagerduty-doc]
 
 ## <a name="sciencelogic"></a>ScienceLogic
-ScienceLogic は、あらゆるテクノロジーをあらゆる場所で管理する、次世代の IT サービス保証プラットフォームを提供します。  IT リソース、サービス、アプリケーションは絶えず変化し、それらを管理するタスクは拡大し続けています。ScienceLogic では&1; つのプラットフォームで、そのタスクを単純化するのに必要なスケール、セキュリティ、自動化、および回復性を提供します。  ScienceLogic プラットフォームでは、Microsoft Azure とのインターフェイスに Azure API を使用しています。  ScienceLogic では、お使いの Azure サービスとリソースをリアルタイムで把握できるので、何か不具合があればすぐに気づいて修正することができます。 他のクラウド、データ センターのシステムおよびサービスと共に、Azure を管理することもできます。
+ScienceLogic は、あらゆるテクノロジーをあらゆる場所で管理する、次世代の IT サービス保証プラットフォームを提供します。  IT リソース、サービス、アプリケーションは絶えず変化し、それらを管理するタスクは拡大し続けています。ScienceLogic では 1 つのプラットフォームで、そのタスクを単純化するのに必要なスケール、セキュリティ、自動化、および回復性を提供します。  ScienceLogic プラットフォームでは、Microsoft Azure とのインターフェイスに Azure API を使用しています。  ScienceLogic では、お使いの Azure サービスとリソースをリアルタイムで把握できるので、何か不具合があればすぐに気づいて修正することができます。 他のクラウド、データ センターのシステムおよびサービスと共に、Azure を管理することもできます。
 
 [詳細情報。][sciencelogic-doc]
 
-## <a name="splunk-add-on-for-microsoft-cloud-services"></a>Microsoft Cloud Services 用の Splunk アドオン
-Microsoft Cloud Services 用の Splunk アドオンは、[こちらの Splunkbase で使用できます](https://splunkbase.splunk.com/app/3110/)。
+## <a name="azure-monitor-add-on-for-splunk"></a>Splunk 向けの Azure Monitor アドオン
+Splunk 向けの Azure Monitor アドオンは、[こちら](https://splunkbase.splunk.com/app/3534/)の Splunkbase で入手できます。
 
 [ドキュメントを確認する。][splunk-doc]
 
@@ -119,7 +120,7 @@ Sumo Logic は、セキュリティで保護されたクラウド ネイティ�
 [opsgenie-anchor]: #opsgenie "OpsGenie"
 [pagerduty-anchor]: #pagerduty "PagerDuty"
 [sciencelogic-anchor]: #sciencelogic "ScienceLogic"
-[splunk-anchor]: #splunk-add-on-for-microsoft-cloud-services "Splunk"
+[splunk-anchor]: #azure-monitor-add-on-for-splunk "Splunk"
 [sumologic-anchor]: #sumo-logic "Sumo Logic"
 
 <!--Icon references-->
@@ -151,11 +152,6 @@ Sumo Logic は、セキュリティで保護されたクラウド ネイティ�
 [opsgenie-doc]: https://www.opsgenie.com/docs/integrations/azure-integration "OpsGenie ドキュメント。"
 [pagerduty-doc]: https://www.pagerduty.com/docs/guides/azure-integration-guide/ "PagerDuty ドキュメント。"
 [sciencelogic-doc]: https://www.sciencelogic.com/product/technologies/microsoft/azure "ScienceLogic ドキュメント。"
-[splunk-doc]: http://docs.splunk.com/Documentation/AddOns/released/MSCloudServices/About "Splunk ドキュメント。"
+[splunk-doc]: https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk "Splunk ドキュメント。"
 [sumologic-doc]: https://www.sumologic.com/azure "SumoLogic ドキュメント。"
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 04/14/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 96ab414f6fb58908f253e9f1cf29ab3a57ca2a90
-ms.lasthandoff: 04/15/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: d34bb4a285f77f5c21a4af2d544bda3221d59e8d
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 04/15/2017
 ## <a name="prerequisites"></a>前提条件
 
 * このスクリプトは、Azure Resource Manager モジュール 2.01 以降がインストールされた Windows 10 と Windows Server 2016 でのみ実行できます。 前のバージョンの Windows ではサポートされません。
-* Azure PowerShell 1.0 以降。 PowerShell 1.0 リリースについては、[Azure PowerShell のインストールと構成方法](/powershell/azureps-cmdlets-docs)に関するページを参照してください。
+* Azure PowerShell 1.0 以降。 PowerShell 1.0 リリースについては、[Azure PowerShell のインストールと構成方法](/powershell/azure/overview)に関するページを参照してください。
 * Automation アカウント。このアカウントは、後述の PowerShell スクリプトの *–AutomationAccountName* パラメーターと *-ApplicationDisplayName* パラメーターの値として参照されます。
 
 スクリプトの必須パラメーターである *SubscriptionID*、*ResourceGroup*、*AutomationAccountName* の値を取得するには、次の手順に従います。
@@ -271,3 +271,4 @@ ms.lasthandoff: 04/15/2017
 ## <a name="next-steps"></a>次のステップ
 * サービス プリンシパルの詳細については、 [アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト](../active-directory/active-directory-application-objects.md)に関するページを参照してください。
 * 証明書と Azure サービスの詳細については、「[Azure Cloud Services の証明書の概要](../cloud-services/cloud-services-certs-create.md)」を参照してください。
+

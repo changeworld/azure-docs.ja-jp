@@ -15,18 +15,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/03/2017
 ms.author: nepeters
-translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: d051382954db989ce4152602d249383e7b9dfa46
-ms.lasthandoff: 04/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 08fcde4f5bddccb9de5564455937a637054ebb60
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 ---
 
 # <a name="create-a-linux-virtual-machine-with-the-azure-cli"></a>Azure CLI で Linux 仮想マシンを作成する
 
-Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このガイドでは、Azure CLI を使用して、Ubuntu 16.04 LTS を実行する仮想マシンをデプロイする方法について詳しく説明します。 サーバーがデプロイされたら、NGINX をインストールするために VM に SSH で接続します。 
+Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このガイドでは、Azure CLI を使用して、Ubuntu 16.04 LTS を実行する仮想マシンをデプロイする方法について詳しく説明します。 サーバーがデプロイされたら、NGINX をインストールするために SSH を使用して VM に接続します。 
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/en-us/free/?WT.mc_id=A261C142F) を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 また、Azure CLI がインストールされていることを確認してください。 詳細については、[Azure CLI インストール ガイド](https://docs.microsoft.com/cli/azure/install-azure-cli)を参照してください。 
 
@@ -42,7 +43,7 @@ az login
 
 [az group create](/cli/azure/group#create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
-次の例では、`myResourceGroup` という名前のリソース グループを `westeurope` の場所に作成します。
+次の例では、*myResourceGroup* という名前のリソース グループを *westeurope* の場所に作成します。
 
 ```azurecli
 az group create --name myResourceGroup --location westeurope
@@ -52,7 +53,7 @@ az group create --name myResourceGroup --location westeurope
 
 [az vm create](/cli/azure/vm#create) コマンドで VM を作成します。 
 
-次の例では、`myVM` という名前の VM を作成し、既定のキーの場所にまだ SSH キーが存在しない場合は SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。  
+次の例では、*myVM* という名前の VM を作成し、既定のキーの場所にまだ SSH キーが存在しない場合は SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。  
 
 ```azurecli
 az vm create --resource-group myResourceGroup --name myVM --image UbuntuLTS --generate-ssh-keys
@@ -75,7 +76,7 @@ VM が作成されると、Azure CLI によって次の例のような情報が�
 
 ## <a name="open-port-80-for-web-traffic"></a>Web トラフィック用にポート 80 を開く 
 
-Azure にデプロイされている Linux 仮想マシンに対しては、既定で SSH 接続のみが許可されます。 この VM を Web サーバーとして使用する場合は、インターネットからポート 80 を開く必要があります。  目的のポートを開くには、1 つのコマンドを実行するだけで済みます。  
+Azure にデプロイされている Linux 仮想マシンに対しては、既定で SSH 接続のみが許可されます。 この VM を Web サーバーとして使用する場合は、インターネットからポート 80 を開く必要があります。 [az vm open-port](/cli/azure/vm#open-port) コマンドを使用して、目的のポートを開きます。  
  
  ```azurecli 
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
@@ -83,7 +84,7 @@ az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 
 ## <a name="ssh-into-your-vm"></a>VM への SSH 接続
 
-次のコマンドを使用して、仮想マシンとの SSH セッションを作成します。 `<publicIpAddress>` を仮想マシンの正しいパブリック IP アドレスに置き換えます。  上記の例の IP アドレスは `40.68.254.142` でした。
+次のコマンドを使用して、仮想マシンとの SSH セッションを作成します。 *<publicIpAddress>* を仮想マシンの正しいパブリック IP アドレスに置き換えます。  上記の例の IP アドレスは *40.68.254.142* でした。
 
 ```bash 
 ssh <publicIpAddress>
@@ -105,14 +106,14 @@ apt-get -y install nginx
 
 ## <a name="view-the-ngix-welcome-page"></a>NGIX のようこそページの表示
 
-NGINX をインストールし、VM のポート 80 をインターネットから開いたら、任意の Web ブラウザーを使用して NGINX の既定のようこそページを表示することができます。 上の手順で指定した `publicIpAddress` を使用して既定のページにアクセスします。 
+NGINX をインストールし、VM のポート 80 をインターネットから開いたら、任意の Web ブラウザーを使用して NGINX の既定のようこそページを表示することができます。 上の手順で指定した *publicIpAddress* を使用して既定のページにアクセスします。 
 
 ![NGINX の既定のサイト](./media/quick-create-cli/nginx.png) 
 
 
 ## <a name="delete-virtual-machine"></a>仮想マシンの削除
 
-必要がなくなったら、次のコマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
+必要がなくなったら、[az group delete](/cli/azure/group#delete) コマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
 
 ```azurecli
 az group delete --name myResourceGroup

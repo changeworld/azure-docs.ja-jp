@@ -15,8 +15,9 @@ ms.workload: TBD
 ms.date: 11/18/2016
 ms.author: alkohli@microsoft.com
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 562e20d274079d221360d45302ff288190c1cd6e
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: f9e97bb2352231b46bdf66b1165bf22ec639fddf
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -34,7 +35,7 @@ Windows PowerShell for StorSimple は、Microsoft Azure StorSimple デバイス�
 
 > [!NOTE]
 > * Windows PowerShell for StorSimple コマンドレットを使用すると、シリアル コンソールから、または Windows PowerShell リモート処理経由で StorSimple デバイスを管理できます。 このインターフェイスで使用できる個々のコマンドレットの詳細については、「 [Windows PowerShell for StorSimple コマンドレット リファレンス](https://technet.microsoft.com/library/dn688168.aspx)」を参照してください。
-> * Azure PowerShell StorSimple コマンドレットは、StorSimple サービス レベルのタスクと移行タスクをコマンド ラインから自動化できるコレクションです。 StorSimple に対する Azure PowerShell コマンドレットの詳細については、「 [Azure StorSimple コマンドレット リファレンス](https://docs.microsoft.com/powershell/servicemanagement/azure.storsimple/v3.1.0/azure.storsimple)」を参照してください。
+> * Azure PowerShell StorSimple コマンドレットは、StorSimple サービス レベルのタスクと移行タスクをコマンド ラインから自動化できるコレクションです。 StorSimple に対する Azure PowerShell コマンドレットの詳細については、「 [Azure StorSimple コマンドレット リファレンス](/powershell/module/azure/?view=azuresmps-3.7.0)」を参照してください。
 > 
 > 
 
@@ -174,10 +175,5 @@ Windows PowerShell インターフェイスのヘルプは簡単に更新でき�
 
 ## <a name="next-steps"></a>次のステップ
 上記のワークフローのいずれかを実行したときに、StorSimple デバイスで問題が発生した場合は、「 [StorSimple デプロイメントのトラブルシューティング用ツール](storsimple-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments)」をご覧ください。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

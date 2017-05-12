@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/07/2017
 ms.author: cherylmc;ganesr
 translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 4880d63223055026a4fb1a906fb15f263d2a16df
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 2e6c204a1b520f5994c30c518f7ced11d77bde24
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -32,9 +32,6 @@ ms.lasthandoff: 03/24/2017
 
 この記事では、Azure ポータルと Azure Resource Manager デプロイ モデルを使用して、Azure ExpressRoute 回線を作成する方法について説明します。 以下の手順では、回線の状態確認、更新、または削除およびプロビジョニング解除の方法も示します。
 
-**Azure のデプロイ モデルについて**
-
-[!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
 * 構成を開始する前に、[前提条件](expressroute-prerequisites.md)と[ワークフロー](expressroute-workflows.md)を確認してください。

@@ -14,14 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/01/2017
 ms.author: seanmck
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6d8f489ac053db4898741671df73b6abfabeb0dd
 ms.openlocfilehash: 73f5413fb7dd0ca179bf5012478a453963e996a1
+ms.contentlocale: ja-jp
 ms.lasthandoff: 12/14/2016
 
 
 ---
-# <a name="disaster-recovery-in-azure-service-fabric"></a>Azure Service Fabric での障害復旧
+# <a name="disaster-recovery-in-azure-service-fabric"></a>Azure Service Fabric でのディザスター リカバリー
 高可用性クラウド アプリケーションの提供において重要な部分は、管理者がどうすることもできないものも含めて、あらゆる種類の障害を切り抜けられるようにすることです。 この記事では、潜在的障害のコンテキストでの Azure Service Fabric クラスターの物理レイアウト、およびダウンタイムやデータ損失のリスクを制限または排除するためにそのような障害に対処する方法のガイダンスについて説明します。
 
 ## <a name="physical-layout-of-service-fabric-clusters-in-azure"></a>Azure での Service Fabric クラスターの物理的レイアウト

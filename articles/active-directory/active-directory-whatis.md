@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2017
+ms.date: 05/08/2017
 ms.author: curtand
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b40ae90ea313638cbd0b60792dc4803d3d08aa0a
 ms.openlocfilehash: 03c1442daf07f57476af64491229f1f38f6ffeff
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/24/2017
 
 

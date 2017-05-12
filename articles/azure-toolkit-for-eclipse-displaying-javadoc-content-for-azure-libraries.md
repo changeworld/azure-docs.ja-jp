@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/14/2017
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
-ms.openlocfilehash: d52054de2ac5119db39e1cd3c927a790db7524aa
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: b44deb773b2159cba1d5d957455409f10fc49334
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -27,14 +28,23 @@ Java 用 Azure ライブラリの Javadoc コンテンツは、Javadoc コンテ
 
 ## <a name="to-display-javadoc-content-in-eclipse-for-the-azure-libraries-for-java"></a>Java 用 Azure ライブラリの Javadoc コンテンツを Eclipse で表示するには
 * Eclipse の [Project Explorer (プロジェクト エクスプローラー)] で、プロジェクトの **[Referenced Libraries (参照ライブラリ)]** セクションにある Java JAR 用 Azure ライブラリ (例: **microsoft-windowsazure-api-0.1.0.jar** (インストールされているバージョンによって、バージョン番号が異なることがあります)) のコンテキスト メニューを開きます。
+
 * **[プロパティ]**をクリックします。
+
 * **[Properties (プロパティ)]** ダイアログの左側のウィンドウで、**[Javadoc Location (Javadoc の場所)]** をクリックします。 **[Javadoc Location]** ダイアログが表示されます。
+
 * **[Javadoc URL (Javadoc の URL)]** または **[Javadoc in archive (アーカイブの Javadoc)]** を指定できます。
-  * **[Javadoc URL (Javadoc の URL)]** を選択した場合は、**http://dl.windowsazure.com/javadoc** または **http://dl.windowsazure.com/storage/javadoc** などの URL を使用します。
-  * **[Javadoc in archive]**を使用する場合は、外部ファイルまたはワークスペース ファイルを指定できます。
-    選択したら、必要に応じて参照または検証します。 次の例では、Java 用 Azure ライブラリを、**c:\MyAzureJARs** という名前のローカル フォルダーにダウンロードされている対応する Javadoc JAR に関連付けています。
-    ![][ic553487]
-* *省略可能*: **[Validate]**をクリックします。 Javadoc JAR に関する潜在的な問題があれば、ここに表示されます。
+
+   * **[Javadoc URL (Javadoc の URL)]** を選択した場合は、**http://dl.windowsazure.com/javadoc** または **http://dl.windowsazure.com/storage/javadoc** などの URL を使用します。
+
+   * **[Javadoc in archive]**を使用する場合は、外部ファイルまたはワークスペース ファイルを指定できます。
+
+   選択したら、必要に応じて参照または検証します。 次の例では、Java 用 Azure ライブラリを、**c:\MyAzureJARs** という名前のローカル フォルダーにダウンロードされている対応する Javadoc JAR に関連付けています。
+
+   ![][ic553487]
+
+* "*省略可能な手順*": **[検証]**をクリックします。 Javadoc JAR に関する潜在的な問題があれば、ここに表示されます。
+
 * **[OK]**をクリックします。
 
 ライブラリに関連付けると、Javadoc コンテンツが Eclipse IDE 内で表示されます。 たとえば、コードで `CloudBlockBlob` 型の `blob` が定義されている場合、コードに「`blob.acquireLease`」と入力すると、次のような Javadoc コンテンツが表示されます。
@@ -63,9 +73,4 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 [ic553488]: ./media/azure-toolkit-for-eclipse-displaying-javadoc-content-for-azure-libraries/ic553488.png
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh698319.aspx -->
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

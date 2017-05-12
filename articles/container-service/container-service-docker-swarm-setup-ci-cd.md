@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/08/2016
 ms.author: jucoriol
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c5e05a8693bd000010013922ed6f2a127e998efe
 ms.openlocfilehash: db58703f573c09ba45abed87547c5e80ef58638b
+ms.contentlocale: ja-jp
 ms.lasthandoff: 12/14/2016
 
 
@@ -24,9 +25,9 @@ ms.lasthandoff: 12/14/2016
 
 # <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-visual-studio-team-services"></a>Docker Swarm と Visual Studio Team Services を使用して、Azure Container Service に複数コンテナー アプリケーションをデプロイする完全な CI/CD パイプライン
 
-クラウド向けの最新のアプリケーションを開発する際の最も大きな課題の&1; つは、これらのアプリケーションを継続的に配信できるようにすることです。 この記事では、Azure Container Service、Docker Swarm、Azure Container Registry、および Visual Studio Team Services のビルドとリリース管理を使用して、完全な CI/CD (継続的な統合とデプロイ) パイプラインを実装する方法について説明します。
+クラウド向けの最新のアプリケーションを開発する際の最も大きな課題の 1 つは、これらのアプリケーションを継続的に配信できるようにすることです。 この記事では、Azure Container Service、Docker Swarm、Azure Container Registry、および Visual Studio Team Services のビルドとリリース管理を使用して、完全な CI/CD (継続的な統合とデプロイ) パイプラインを実装する方法について説明します。
 
-この記事は、[GitHub](https://github.com/jcorioland/MyShop/tree/acs-docs) から入手できる、ASP.NET Core で開発された単純なアプリケーションに基づいています。 このアプリケーションは、4 つの異なるサービス、3 つの Web API、および&1; つの Web フロント エンドで構成されています。
+この記事は、[GitHub](https://github.com/jcorioland/MyShop/tree/acs-docs) から入手できる、ASP.NET Core で開発された単純なアプリケーションに基づいています。 このアプリケーションは、4 つの異なるサービス、3 つの Web API、および 1 つの Web フロント エンドで構成されています。
 
 ![MyShop サンプル アプリケーション](./media/container-service-docker-swarm-setup-ci-cd/myshop-application.png)
 
@@ -57,7 +58,7 @@ ms.lasthandoff: 12/14/2016
 
 [!INCLUDE [container-service-swarm-mode-note](../../includes/container-service-swarm-mode-note.md)]
 
-Docker がインストールされた Ubuntu (14.04 または 16.04) マシンも必要です。 このマシンは、Visual Studio Team Services がビルドおよびリリース プロセス中に使用します。 このマシンを作成する方法の&1; つに、[Azure Marketplace](https://azure.microsoft.com/marketplace/partners/canonicalandmsopentech/dockeronubuntuserver1404lts/) から入手できるイメージを使用する方法があります。 
+Docker がインストールされた Ubuntu (14.04 または 16.04) マシンも必要です。 このマシンは、Visual Studio Team Services がビルドおよびリリース プロセス中に使用します。 このマシンを作成する方法の 1 つに、[Azure Marketplace](https://azure.microsoft.com/marketplace/partners/canonicalandmsopentech/dockeronubuntuserver1404lts/) から入手できるイメージを使用する方法があります。 
 
 ## <a name="step-1-configure-your-visual-studio-team-services-account"></a>手順 1: Visual Studio Team Services アカウントの構成 
 
@@ -136,7 +137,7 @@ CI/CD パイプラインに進む前の最後の手順として、Azure でコ�
     ![Visual Studio Team Services - ビルドのトリガーの構成](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-trigger-conf.png)
 
 ### <a name="define-the-build-workflow"></a>ビルド ワークフローの定義
-次の手順では、ビルド ワークフローを定義します。 *MyShop* アプリケーションの場合、ビルドするコンテナー イメージが&5; つあります。 各イメージは、プロジェクト フォルダーにある Dockerfile を使用してビルドされます。
+次の手順では、ビルド ワークフローを定義します。 *MyShop* アプリケーションの場合、ビルドするコンテナー イメージが 5 つあります。 各イメージは、プロジェクト フォルダーにある Dockerfile を使用してビルドされます。
 
 * ProductsApi
 * プロキシ
@@ -144,13 +145,13 @@ CI/CD パイプラインに進む前の最後の手順として、Azure でコ�
 * RecommandationsApi
 * ShopFront
 
-イメージごとに&2; つの Docker ステップ (イメージをビルドするステップと Azure コンテナー レジストリにイメージをプッシュするステップ) を追加する必要があります。 
+イメージごとに 2 つの Docker ステップ (イメージをビルドするステップと Azure コンテナー レジストリにイメージをプッシュするステップ) を追加する必要があります。 
 
 1. ビルド ワークフローにステップを追加するには、**[+ ビルド ステップの追加]** をクリックし、**[Docker]** を選択します。
 
     ![Visual Studio Team Services - ビルド ステップの追加](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-add-task.png)
 
-2. 各イメージについて、`docker build` コマンドを使用する&1; つ目のステップを構成します。
+2. 各イメージについて、`docker build` コマンドを使用する 1 つ目のステップを構成します。
 
     ![Visual Studio Team Services - Docker のビルド](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-build.png)
 
@@ -158,13 +159,13 @@ CI/CD パイプラインに進む前の最後の手順として、Azure でコ�
     
     前の画面に示すように、イメージ名の先頭に Azure コンテナー レジストリの URI を付けます (ビルド変数を使用して、イメージのタグ (この例のビルド識別子など) をパラメーター化することもできます)。
 
-3. 各イメージについて、`docker push` コマンドを使用する&2; つ目のステップを構成します。
+3. 各イメージについて、`docker push` コマンドを使用する 2 つ目のステップを構成します。
 
     ![Visual Studio Team Services - Docker のプッシュ](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-push.png)
 
     プッシュ操作については、Azure コンテナー レジストリ、**[Push an image (イメージのプッシュ)]** アクションを選択し、前のステップでビルドした**イメージ名**を入力します。
 
-4. 5 つの各イメージのビルド ステップとプッシュ ステップを構成したら、ビルド ワークフローにステップをもう&2; つ追加します。
+4. 5 つの各イメージのビルド ステップとプッシュ ステップを構成したら、ビルド ワークフローにステップをもう 2 つ追加します。
 
     a. bash スクリプトを使用して、docker-compose.yml ファイル内に出現する *BuildNumber* を現在のビルド ID に置き換えるコマンド ライン タスク。 詳細については、次の画面を参照してください。
 
@@ -196,19 +197,19 @@ Visual Studio Team Services を使用すると、[複数の環境のリリース
 
 ### <a name="define-the-release-workflow"></a>リリース ワークフローの定義
 
-リリース ワークフローは、追加する&2; つのタスクで構成されます。
+リリース ワークフローは、追加する 2 つのタスクで構成されます。
 
 1. 前に構成した SSH 接続を使用して、Docker Swarm マスター ノード上の *deploy* フォルダーに compose ファイルを安全にコピーするタスクを構成します。 詳細については、次の画面を参照してください。
 
     ![Visual Studio Team Services - リリースの SCP](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-scp.png)
 
-2. bash コマンドを実行して、マスター ノードで `docker` コマンドと `docker-compose` コマンドを実行する&2; つ目のタスクを構成します。 詳細については、次の画面を参照してください。
+2. bash コマンドを実行して、マスター ノードで `docker` コマンドと `docker-compose` コマンドを実行する 2 つ目のタスクを構成します。 詳細については、次の画面を参照してください。
 
     ![Visual Studio Team Services - リリースの bash](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-bash.png)
 
     マスターで実行されるコマンドでは、Docker CLI と Docker-Compose CLI を使用して、次のタスクを実行します。
 
-    - Azure コンテナー レジストリにログインします (**[変数]** タブで定義されている&3; つのビルド変数を使用します)。
+    - Azure コンテナー レジストリにログインします (**[変数]** タブで定義されている 3 つのビルド変数を使用します)。
     - Swarm エンドポイント (:2375) を使用するよう **DOCKER_HOST** 変数を定義します。
     - 前の安全なコピー タスクによって作成された、docker-compose.yml ファイルを含む *deploy* フォルダーに移動します。 
     - 新しいイメージの取得、サービスの停止、サービスの削除、コンテナーの作成を行う `docker-compose` コマンドを実行します。

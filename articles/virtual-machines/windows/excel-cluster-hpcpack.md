@@ -16,9 +16,9 @@ ms.workload: big-compute
 ms.date: 04/11/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: b37aecc5ac13210234efee624018ae783dea7820
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 8c40a0d44463c75e92444b393336db1daf270ee1
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -91,7 +91,7 @@ HPC Pack IaaS デプロイ スクリプトは、HPC Pack クラスターをデ�
 
 **追加の前提条件**
 
-* **Azure PowerShell** - [Azure PowerShell をインストールして構成します](/powershell/azureps-cmdlets-docs) (バージョン 0.8.10 以降)。
+* **Azure PowerShell** - [Azure PowerShell をインストールして構成します](/powershell/azure/overview) (バージョン 0.8.10 以降)。
 * **HPC Pack IaaS デプロイ スクリプト** - [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=44949)から最新版のスクリプトをダウンロードし、解凍します。 `New-HPCIaaSCluster.ps1 –Version`を実行して、スクリプトのバージョンを確認します。 この記事はバージョン 4.5.0 以降のスクリプトに基づきます。
 
 **構成ファイルを作成する**

@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 05/04/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: f29c3ed47c772609cfeca0ad2b5078001b6d0737
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 9d10ebf9d7bd07bd126302a6ecf442d809e00196
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -145,7 +146,7 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 **詳細:**
 
-* [自分のパスワードを更新する方法](active-directory-passwords-update-your-own-password.md#reset-my-password)
+* [自分のパスワードを更新する方法](active-directory-passwords-update-your-own-password.md#reset-or-unlock-my-password-for-a-work-or-school-account)
 
 #### <a name="connect--sync-engine-that-extends-on-premises-directories-to-azure-active-directory"></a>接続 (オンプレミスのディレクトリを Azure Active Directory に拡張する同期エンジン)
 **種類:** 共通機能
@@ -366,17 +367,6 @@ Microsoft Identity Manager サーバー ソフトウェアの使用権は、Wind
 **詳細:**
 
 * [Enterprise State Roaming](active-directory-windows-enterprise-state-roaming-overview.md)
-
-## <a name="azure-ad-preview-features"></a>Azure AD プレビュー機能
-Azure AD には、Free、Basic、Premium (P1 および P2) の各エディションの一般提供されている機能に加え、一連のプレビュー機能も用意されています。 プレビュー機能を使用すると、近い将来に公開予定の機能を体験し、これらの機能が環境の改善に役立つかどうかを判断できます。
-
-**使用可能なプレビュー機能**
-
-* [B2B コラボレーション](active-directory-b2b-collaboration-overview.md)
-* [管理単位](active-directory-administrative-units-management.md)
-* [HR アプリケーションの統合](active-directory-saas-workday-inbound-tutorial.md)
-* [iOS の証明書ベースの認証](active-directory-certificate-based-authentication-ios.md)
-* [Android の証明書ベースの認証](active-directory-certificate-based-authentication-android.md)
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Active Directory Premium の概要](active-directory-get-started-premium.md)

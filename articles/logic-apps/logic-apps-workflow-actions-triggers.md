@@ -14,10 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/17/2016
 ms.author: mandia
-translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: 3f050e2722091aa8b58591cc0c894a6ecb82c3fa
-ms.lasthandoff: 04/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: ff86340f18a2d3d13d55b7e0bcd4122d9b85ccd9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/20/2017
 
 ---
 
@@ -406,6 +407,8 @@ Webhook アクションに対する制限は、[HTTP 非同期制限](#asynchron
 -   **Wait** \- この簡単なアクションは、一定の時間または特定の時刻まで待機します。  
   
 -   **Workflow** \- このアクションは、入れ子になったワークフローを表します。  
+
+-   **Function** \- このアクションは Azure 関数を表します。
 
 ### <a name="collection-actions"></a>コレクション アクション
 
@@ -828,6 +831,47 @@ Webhook アクションに対する制限は、[HTTP 非同期制限](#asynchron
 ワークフロー \(より具体的にはトリガー\) に対するアクセス チェックが行われます。つまり、ワークフローに対するアクセス権が必要です。  
   
 `workflow` アクションからの出力は、子ワークフローの `response` アクションで定義されているアクションに基づきます。 `response` アクションを定義していない場合、出力は空になります。  
+
+## <a name="function-action"></a>Function アクション   
+
+|名前|必須|型|Description|  
+|--------|------------|--------|---------------|  
+|function id|はい|String|呼び出す関数のリソース ID。|  
+|method|いいえ|String|関数の呼び出しに使用する HTTP メソッド。 指定されていない場合、既定値は `POST` です。|  
+|クエリ|いいえ|オブジェクト|URL に追加するクエリ パラメーターを表します。 たとえば、`"queries" : { "api-version": "2015-02-01" }` は `?api-version=2015-02-01` を URLに追加します。|  
+|headers|いいえ|オブジェクト|要求に送信される各ヘッダーを表します。 たとえば、要求で言語と種類を設定するには、次のようにします。`"headers" : { "Accept-Language": "en-us" }`|  
+|body|いいえ|オブジェクト|エンドポイントに送信されるペイロードを表します。|  
+
+```json
+"myfunc" : {
+    "type" : "Function",
+    "inputs" : {
+        "function" : {
+            "id" : "/subscriptions/xxxxyyyyzzz/resourceGroups/rg001/providers/Microsoft.Web/sites/myfuncapp/functions/myfunc"
+        },
+        "queries" : {
+            "extrafield" : "specialValue"
+        },  
+        "headers" : {
+            "x-ms-date" : "@utcnow()"
+        },
+        "method" : "POST",
+    "body" : {
+            "contentFieldOne" : "value100",
+            "anotherField" : 10.001
+        }
+    },
+    "runAfter": {}
+}
+```
+
+ロジック アプリを保存すると、参照先の関数でいくつかのチェックが実行されます。
+-   その関数にアクセスできる必要があります。
+-   使用できるのは、標準 HTTP トリガーまたは汎用 JSON webhook トリガーだけです。
+-   ルートを定義することはできません。
+-   使用できる承認レベルは、"function" と "anonymous" だけです。
+
+トリガー URL は実行時に取得され、キャッシュされて使用されます。 そのため、操作でキャッシュされた URL を無効にすると、実行時にアクションが失敗します。 これを回避するには、ロジック アプリをもう一度保存します。これにより、ロジック アプリはトリガー URL を再度取得し、キャッシュするようになります。
 
 ## <a name="collection-actions-scopes-and-loops"></a>コレクション アクション (スコープとループ)
 

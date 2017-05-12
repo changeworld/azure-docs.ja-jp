@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/30/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: ef3fc25ed06eb498600df4fc8fcad37f0f0dc676
-ms.lasthandoff: 04/19/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 8dcb006a8cf167cdbfb67de5a11dabf0edbbe41c
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -37,7 +37,7 @@ ms.lasthandoff: 04/19/2017
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="step-1---test-local-mongodb-database"></a>手順 1 - ローカルの MongoDB データベースをテストする
+## <a name="test-local-mongodb-database"></a>ローカルの MongoDB データベースをテストする
 この手順では、ローカルの MongoDB データベースが稼働していることを確認します。
 
 ターミナル ウィンドウを開き、`CD` コマンドで MongoDB インストールの `bin` ディレクトリに移動します。 
@@ -54,7 +54,7 @@ MongoDB データベースのテストが完了したら、ターミナルで `C
 
 <a name="step2"></a>
 
-## <a name="step-2---create-local-nodejs-application"></a>手順 2 - ローカル Node.js アプリケーションを作成する
+## <a name="create-local-nodejs-application"></a>ローカル Node.js アプリケーションを作成する
 この手順では、ローカル Node.js プロジェクトを設定します。
 
 ### <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
@@ -103,7 +103,7 @@ MEAN.js サンプル アプリケーションでは、ユーザー データを�
 
 任意のタイミングで Node.js を停止するには、ターミナルで `Ctrl` + `C` キーを押します。 
 
-## <a name="step-3---create-a-production-mongodb-database"></a>手順 3 - 運用 MongoDB データベースを作成する
+## <a name="create-a-production-mongodb-database"></a>運用 MongoDB データベースを作成する
 
 この手順では、Azure で MongoDB データベースを作成します。 アプリを Azure にデプロイすると、このデータベースは運用ワークロードに使用されます。
 
@@ -163,7 +163,7 @@ DB/databaseAccounts/<documentdb_name>",
 } 
 ```
 
-## <a name="step-4---connect-your-nodejs-application-to-the-database"></a>手順 4 - データベースに Node.js アプリケーションを接続する
+## <a name="connect-your-nodejs-application-to-the-database"></a>データベースに Node.js アプリケーションを接続する
 
 この手順では、MongoDB 接続文字列を使用して、MEAN.js サンプル アプリケーションを、先ほど作成した DocumentDB データベースに接続します。 
 
@@ -242,7 +242,7 @@ MEAN.JS version: 0.5.0
 
 ブラウザーで `http://localhost:8443` にアクセスします。 前と同じように、上部のメニューの **[Sign Up (サインアップ)]** をクリックし、ダミーのユーザーを作成します。 作成すると、データが Azure の DocumentDB データベースに書き込まれます。 
 
-## <a name="step-5---deploy-the-nodejs-application-to-azure"></a>手順 5 - Azure に Node.js アプリケーションをデプロイする
+## <a name="deploy-the-nodejs-application-to-azure"></a>Azure に Node.js アプリケーションをデプロイする
 この手順では、MongoDB に接続している Node.js アプリケーションを Azure App Service にデプロイします。
 
 ### <a name="create-an-app-service-plan"></a>App Service プランを作成する
@@ -435,7 +435,7 @@ http://<app_name>.azurewebsites.net
 
 **お疲れさまでした。** データ主導型の Node.js アプリが Azure App Service で実行されています。
 
-## <a name="step-6---update-data-model-and-redeploy"></a>手順 6 - データ モデルを更新し、再デプロイする
+## <a name="update-data-model-and-redeploy"></a>データ モデルを更新し、再デプロイする
 
 この手順では、`article` データ モデルに変更をいくつか加え、変更内容を Azure に発行します。
 
@@ -569,7 +569,7 @@ git push azure master
 >
 >
 
-## <a name="step-7---stream-diagnostic-logs"></a>手順 7 - 診断ログをストリーミングする 
+## <a name="stream-diagnostic-logs"></a>診断ログをストリーミングする 
 
 Azure App Service で Node.js アプリケーションを実行している場合、コンソール ログをターミナルに直接パイプできます。 このようにすると、アプリケーション エラーのデバッグに役立つ同じ診断メッセージを取得できます。
 
@@ -583,7 +583,7 @@ az appservice web log tail --name <app_name> --resource-group myResourceGroup
 
 任意のタイミングでログのストリーミングを停止するには、`Ctrl` + `C` キーを押します。 
 
-## <a name="step-8---manage-your-azure-web-app"></a>手順 8 - Azure Web アプリを管理する
+## <a name="manage-your-azure-web-app"></a>Azure Web アプリを管理する
 
 Azure Portal に移動し、作成した Web アプリを表示します。
 

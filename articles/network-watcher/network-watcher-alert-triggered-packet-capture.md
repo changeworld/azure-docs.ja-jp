@@ -1,5 +1,5 @@
 ---
-title: "パケット キャプチャを使用して Azure Functions によるプロアクティブなネットワーク監視を実行する | Microsoft Docs"
+title: "パケット キャプチャを使用してアラートと Azure Functions によるプロアクティブなネットワーク監視を実行する | Microsoft Docs"
 description: "この記事では、Azure Network Watcher を使用して、アラートでトリガーされるパケット キャプチャを作成する方法について説明します"
 services: network-watcher
 documentationcenter: na
@@ -15,55 +15,90 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: 941a795c4c83e05ec3c5bb55790f8fcc72829a65
-ms.lasthandoff: 04/10/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 5fd017b6f7645220ee7572e50c02265de41e938c
+ms.lasthandoff: 04/27/2017
 
 
 ---
-# <a name="use-packet-capture-to-do-proactive-network-monitoring-with-azure-functions"></a>パケット キャプチャを使用して Azure Functions によるプロアクティブなネットワーク監視を実行する
+# <a name="use-packet-capture-to-do-proactive-network-monitoring-with-alerts-and-azure-functions"></a>パケット キャプチャを使用してアラートと Azure Functions によるプロアクティブなネットワーク監視を実行する
 
-Network Watcher のパケット キャプチャを使用すると、仮想マシンとの間で送受信されるトラフィックを追跡するキャプチャ セッションを作成できます。 キャプチャ ファイルには、監視したいトラフィックのみを追跡するために定義したフィルターを設定できます。 このデータは、ストレージ BLOB に格納されるか、ローカルのゲスト マシンに格納されます。 この機能は、Azure Functions と同様に他の自動化のシナリオからリモートで開始できます。 パケット キャプチャを使用すると、定義したネットワークの異常に基づいて、プロアクティブなキャプチャを実行できます。 その他の用途には、ネットワーク統計の収集、ネットワークへの侵入に関する情報の取得などがあり、クライアントとサーバーの間で行われる通信のデバッグなどに役立ちます。
+Network Watcher のパケット キャプチャを使用すると、仮想マシンとの間で送受信されるトラフィックを追跡するキャプチャ セッションを作成できます。 キャプチャ ファイルには、監視したいトラフィックのみを追跡するために定義したフィルターを設定できます。 このデータは、ストレージ BLOB に格納されるか、ローカルのゲスト マシンに格納されます。
+
+この機能は、Azure Functions と同様に他の自動化のシナリオからリモートで開始できます。 パケット キャプチャを使用すると、定義したネットワークの異常に基づいて、プロアクティブなキャプチャを実行できます。 その他の用途には、ネットワーク統計の収集、ネットワークへの侵入に関する情報の取得などがあり、クライアントとサーバーの間で行われる通信のデバッグなどに役立ちます。
 
 Azure でデプロイされたリソースは、24 時間 365 日実行されています。 その間、お客様とそのスタッフがすべてのリソースの状態を常に監視し続けることはできません。 もし午前 2 時に問題が発生したら、どのように対応すればよいでしょうか。
 
 Azure エコシステム内部から Network Watcher、アラート、関数を使用すれば、問題を解決するためのデータとツールを使ってネットワークに存在する問題にプロアクティブに対応できます。
 
-## <a name="before-you-begin"></a>開始する前に
+![scenario][scenario]
 
-この例では、VM が送信している TCP セグメントが普段よりも多い場合にアラートが届くようにします。 TCP セグメントが例として使用されていますが、任意のアラート条件を使用することができます。 アラートを受け取ったら、マシンを通常の通信状態に戻すための措置を取れるように、パケット レベルのデータを取得して通信量が増加した理由を把握する必要があります。
-このシナリオでは、Network Watcher の既存のインスタンスがあり、有効な仮想マシンが含まれたリソース グループが使用されることを前提としています。
+## <a name="prerequisites"></a>前提条件
+
+* 最新バージョンの [Azure PowerShell](/powershell/azure/install-azurerm-ps) をインストールします
+* Network Watcher の既存インスタンスを用意するか、[Network Watcher のインスタンスを作成](network-watcher-create.md)します
+* 前の Network Watcher と同じリージョンに、[Windows 拡張機能](../virtual-machines/windows/extensions-nwa.md)または [Linux 仮想マシン拡張機能](../virtual-machines/linux/extensions-nwa.md)で既存の仮想マシンを用意します。
 
 ## <a name="scenario"></a>シナリオ
 
-このプロセスを自動化するには、問題が発生した際にトリガーされる VM のアラートと、Network Watcher を呼び出す Azure 関数を作成して接続します。
+この例では、VM が送信している TCP セグメントが普段よりも多い場合にアラートが届くようにします。 ここで使う TCP セグメントはあくまでも例であり、任意のアラート条件を使うことができます。
 
-このシナリオは次のとおりです。
+アラートを受け取った場合、通信が増えた理由を理解するためにパケット レベルのデータが必要です。 それを利用して、仮想マシンを通常の通信状態に戻すための手順を実行できます。
 
-* パケット キャプチャを開始する Azure 関数を作成する。
-* 仮想マシンのアラート ルールを作成する。
-* Azure 関数を呼び出すアラート ルールを構成する。
+このシナリオでは、Network Watcher の既存のインスタンスがあり、有効な仮想マシンのリソース グループを使うことができるものとします。
 
-## <a name="creating-an-azure-function-and-overview"></a>Azure 関数の作成と概要
-
-最初の手順では、アラートを処理してパケット キャプチャを作成する Azure 関数を作成します。
+この例では、VM が送信している TCP セグメントが普段よりも多い場合にアラートが届くようにします。 TCP セグメントが例として使用されていますが、任意のアラート条件を使用することができます。 アラートを受け取ったら、マシンを通常の通信状態に戻すための措置を取れるように、パケット レベルのデータを取得して通信量が増加した理由を把握する必要があります。
 
 次の一覧は、実行されるワークフローの概要です。
 
 1. アラートが VM でトリガーされる。
 1. アラートが webhook 経由で Azure 関数を呼び出す。
 1. Azure 関数がアラートを処理し、Network Watcher のパケット キャプチャ セッションを開始する。
-1. パケット キャプチャが VM で実行され、トラフィックが収集される。 
-1. キャプチャ ファイルが確認と診断のためにストレージ アカウントにアップロードされる。 
+1. パケット キャプチャが VM で実行され、トラフィックが収集される。
+1. パケット キャプチャ ファイルが確認と診断のためにストレージ アカウントにアップロードされる。
 
-Azure 関数の作成は、「[初めての Azure 関数の作成](../azure-functions/functions-create-first-azure-function.md)」の手順に従ってポータルで実行できます。 この例では、HttpTrigger-PowerShell 型の関数を使用しました。 この例で必要となるカスタマイズについては、次の手順で説明します。
+このプロセスを自動化するには、問題が発生した際にトリガーされる VM のアラートと、Network Watcher を呼び出す関数を作成して接続します。
+
+このシナリオでは、次の処理が実行されます。
+
+* パケット キャプチャを開始する Azure 関数を作成する。
+* 仮想マシンでアラート ルールを作成し、Azure 関数を呼び出すようにアラート ルールを構成します。
+
+## <a name="creating-an-azure-function"></a>Azure 関数の作成
+
+最初の手順では、アラートを処理してパケット キャプチャを作成する Azure 関数を作成します。
+
+1. [Azure Portal](https://portal.azure.com) で、**[新規]** > **[Compute]** > **[Function App]** の順にクリックします。
+
+    ![Function App を作成する][1-1]
+
+2. **[Function App]** で、次の値を入力して **[OK]** をクリックし、Function App を作成します。
+
+    |**設定** | **値** | **詳細** |
+    |---|---|---|
+    |**アプリ名**|PacketCaptureExample|Function App の名前。|
+    |**サブスクリプション**|[該当するサブスクリプション]|Function App の作成先となるサブスクリプションを選びます。||
+    |**リソース グループ**|PacketCaptureRG|Function App を格納するリソース グループの名前を指定します。|
+    |**ホスティング プラン**|従量課金プラン| Function App で使うプランの種類。 オプションは、[従量課金プラン] と [App Service プラン] です。 |
+    |**場所**|米国中央部| Function App を作成するリージョン。|
+    |**ストレージ アカウント**|{自動生成}| 一般的な記憶のために Azure Functions が必要とするストレージ アカウントです。|
+
+3. **PacketCaptureExample** Function App ブレードで、**[関数]** > **[カスタム関数]** の **[+]** をクリックします。 **HttpTrigger-Powershell** を選び、残りの情報を指定して **[作成]** をクリックし、関数を作成します。
+
+    |**設定** | **値** | **詳細** |
+    |---|---|---|
+    |**シナリオ**|試験段階|シナリオの種類|
+    |**関数名の指定**|AlertPacketCapturePowerShell|関数の名前|
+    |**承認レベル**|関数|関数の承認レベル。|
 
 ![関数の例][functions1]
 
 > [!NOTE]
 > PowerShell テンプレートは試験段階であり、まだ完全にはサポートされていません。
 
-## <a name="adding-modules"></a>モジュールの追加
+この例で必要となるカスタマイズについては、次の手順で説明します。
+
+### <a name="adding-modules"></a>モジュールの追加
 
 Network Watcher PowerShell コマンドレットを使用するには、最新の PowerShell モジュールを Function App にアップロードする必要があります。
 
@@ -105,14 +140,14 @@ Network Watcher PowerShell コマンドレットを使用するには、最新�
 
     ![PowerShell ファイル][functions7]
 
-## <a name="authentication"></a>認証
+### <a name="authentication"></a>認証
 
 PowerShell コマンドレットを使用するには、認証する必要があります。 認証は、Function App で構成されている必要があります。 認証を構成するには、環境変数が構成されており、暗号化されたキー ファイルが Function App にアップロードされている必要があります。
 
 > [!NOTE]
 > このシナリオでは、Azure Functions を使用した認証の実装方法を一例として取り上げます。この他の実装方法もあります。
 
-### <a name="encrypted-credentials"></a>暗号化された資格情報
+#### <a name="encrypted-credentials"></a>暗号化された資格情報
 
 次の PowerShell スクリプトでは、**PassEncryptKey.key** という名前のキー ファイルが作成され、暗号化されたパスワードが取得されます。  このパスワードは、認証に使用される Azure AD アプリケーション用に定義されたパスワードと同じものです。
 
@@ -137,7 +172,7 @@ Function App の App Service Editor で、**AlertPacketCapturePowerShell** 下�
 
 ![関数とキー][functions8]
 
-### <a name="retrieving-values-for-environment-variables"></a>環境変数の値の取得
+### <a name="retrieve-values-for-environment-variables"></a>環境変数の値の取得
 
 最終的な構成では、認証用の値にアクセスするために必要となる環境変数を設定する必要があります。 次に示すのは、作成される環境変数の一覧です。
 
@@ -201,7 +236,7 @@ $Encryptedpassword = $secPw | ConvertFrom-SecureString -Key $AESKey
 $Encryptedpassword
 ```
 
-### <a name="storing-the-environment-variables"></a>環境変数の格納
+### <a name="store-the-environment-variables"></a>環境変数の格納
 
 1. Function App に移動し、**[Function App の設定]** > **[アプリケーション設定の構成]** をクリックします。
 
@@ -211,7 +246,7 @@ $Encryptedpassword
 
     ![アプリケーション設定][functions12]
 
-## <a name="processing-the-alert-and-starting-a-packet-capture-session"></a>アラートの処理とパケット キャプチャ セッションの開始
+### <a name="add-powershell-to-the-function"></a>関数への PowerShell の追加
 
 次に、Azure 関数の内部から Network Watcher を呼び出します。 この関数の実装は要件によって異なりますが、 コードのフローは一般的に次のようになります。
 
@@ -282,7 +317,7 @@ if($requestBody.context.resourceType -eq "Microsoft.Compute/virtualMachines")
 } 
 ``` 
 
-関数を作成したら、その関数に関連付けられた URL を呼び出すようにアラートを構成する必要があります。 この値を取得するには、**[</> 関数の URL の取得]** をクリックします。 
+関数を作成した後は、その関数に関連付けられた URL を呼び出すようにアラートを構成します。 この値を取得するには、Function App から関数の URL をコピーします。
 
 ![関数の URL の検索 1][functions13]
 
@@ -294,37 +329,46 @@ webhook POST 要求のペイロードでカスタム プロパティが必要な
 
 ## <a name="configure-an-alert-on-a-vm"></a>VM のアラートの構成
 
-アラートは、特定のメトリックが割り当て済みのしきい値を超えた場合に個々のユーザーに通知が届くように、構成することができます。 この例のアラートは、送信された TCP セグメントに基づいていますが、多数の他のメトリックを使用してトリガーできます。 この例では、webhook を呼び出して関数を呼び出すようにアラートを構成します。
+アラートは、特定のメトリックが割り当て済みのしきい値を超えた場合に個々のユーザーに通知が届くように、構成することができます。 この例では、アラートは送信される TCP セグメントに関するものですが、他の多くのメトリックに対してアラートをトリガーできます。 この例では、webhook を呼び出して関数を呼び出すようにアラートを構成します。
 
 ### <a name="create-the-alert-rule"></a>アラート ルールの作成
 
-既存の仮想マシンに移動してアラート ルールを追加します。 アラートの構成に関する詳細なドキュメントは、[Azure Portal を使用した Azure サービス用のアラートの作成](../monitoring-and-diagnostics/insights-alerts-portal.md)に関するページにあります。 
+既存の仮想マシンに移動してアラート ルールを追加します。 アラートの構成について詳しくは、「[Azure Monitorでの Azure サービス アラートの作成 - Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)」をご覧ください。 ブレードで次の値を入力して、**[OK]** をクリックします。
 
-![仮想マシンへの VM アラート ルールの追加][1]
+  |**設定** | **値** | **詳細** |
+  |---|---|---|
+  |**名前**|TCP_Segments_Sent_Exceeded|アラート ルールの名前。|
+  |**説明**|送信された TCP セグメント数がしきい値を超えました|アラート ルールの説明。||
+  |**メトリック**|送信した TCP セグメント数| アラートのトリガーに使うメトリック。 |
+  |**Condition**|より大きい| メトリックを評価するときに使う条件。|
+  |**しきい値**|100| アラートをトリガーするメトリックの値です。環境で有効な値に設定する必要があります。|
+  |**期間**|直近 5 分| メトリックでしきい値を調べる期間を決定します。|
+  |**webhook**|[Function App の webhook URL]| 前の手順で作成した Function App の webhook の URL です。|
 
 > [!NOTE]
 > TCP セグメントのメトリックは、既定では無効です。 追加のメトリックを有効にする方法の詳細については、「[監視と診断の有効化](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md)」を参照してください。
 
-最後に、前の手順で取得した URL をアラートの [webhook] ボックスに貼り付けます。 **[OK]** をクリックして、アラート ルールを保存します。
+## <a name="review-the-results"></a>結果の確認
 
-![アラート ルールへの URL の貼り付け][3]
+アラートの条件がトリガーされた後、パケット キャプチャが作成されます。 Network Watcher に移動し、**[パケット キャプチャ]** をクリックします。 このページからは、パケット キャプチャ ファイルのリンクをクリックしてパケット キャプチャをダウンロードできます。
 
-## <a name="downloading-and-viewing-the-capture-file"></a>キャプチャ ファイルのダウンロードと表示
+![パケット キャプチャを表示する][functions14]
 
-キャプチャをストレージ アカウントに保存したら、ポータルまたはプログラムを使用してキャプチャ ファイルをダウンロードできます。 キャプチャ ファイルがローカルに格納されている場合は、仮想マシンにログインして取得します。 
+キャプチャ ファイルがローカルに格納されている場合は、仮想マシンにログインして取得します。
 
-Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure BLOB ストレージを使用する](../storage/storage-dotnet-how-to-use-blobs.md)」を参照してください。 使用できるツールとして他に Storage Explorer があります。 ストレージ エクスプローラーの詳細については、[ストレージ エクスプローラー](http://storageexplorer.com/)に関するページを参照してください。
+Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure Blob Storage を使用する](../storage/storage-dotnet-how-to-use-blobs.md)」をご覧ください。 他のツールとしては、ストレージ エクスプローラーを使うことができます。 ストレージ エクスプローラーについて詳しくは、[ストレージ エクスプローラー](http://storageexplorer.com/)に関するページをご覧ください。
 
-ダウンロードしたキャプチャは、**.cap** ファイルを読み取れる任意のツールを使って表示できます。 そのようなツールを 2 つ、次のリンクで紹介します。
+ダウンロードしたキャプチャは、**.cap** ファイルを読み取ることができる任意のツールを使って表示できます。 次に示すのはそのような 2 つのツールへのリンクです。
 
-[Microsoft Message Analyzer](https://technet.microsoft.com/en-us/library/jj649776.aspx)  
-[Wireshark](https://www.wireshark.org/)  
+- [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx)
+- [Wireshark](https://www.wireshark.org/)
 
 ## <a name="next-steps"></a>次のステップ
 
-パケット キャプチャを表示する方法については、[Wireshark によるパケット キャプチャ分析](network-watcher-alert-triggered-packet-capture.md)に関するページを参照してください。
+パケット キャプチャを表示する方法については、[Wireshark によるパケット キャプチャ分析](network-watcher-alert-triggered-packet-capture.md)に関するページをご覧ください。
 
 [1]: ./media/network-watcher-alert-triggered-packet-capture/figure1.png
+[1-1]: ./media/network-watcher-alert-triggered-packet-capture/figure1-1.png
 [2]: ./media/network-watcher-alert-triggered-packet-capture/figure2.png
 [3]: ./media/network-watcher-alert-triggered-packet-capture/figure3.png
 [functions1]:./media/network-watcher-alert-triggered-packet-capture/functions1.png
@@ -340,3 +384,6 @@ Azure ストレージ アカウントからファイルをダウンロードす�
 [functions11]:./media/network-watcher-alert-triggered-packet-capture/functions11.png
 [functions12]:./media/network-watcher-alert-triggered-packet-capture/functions12.png
 [functions13]:./media/network-watcher-alert-triggered-packet-capture/functions13.png
+[functions14]:./media/network-watcher-alert-triggered-packet-capture/functions14.png
+[scenario]:./media/network-watcher-alert-triggered-packet-capture/scenario.png
+

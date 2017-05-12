@@ -9,10 +9,11 @@ ms.technology: computer-vision
 ms.topic: article
 ms.date: 02/14/2017
 ms.author: juliakuz
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 61cc4e5a2e59a13369527f42e0525994da810bf1
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 9691a9b3dfe1b792090b7ec7e46448ec0ec48ee7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 ---
 
@@ -25,7 +26,7 @@ Explore a basic Windows application that uses Computer Vision API to perform opt
 The below example has been developed for the .NET Framework using [Visual Studio 2015, Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs). 
 
 #### <a name="subscribe-to-computer-vision-api-and-get-a-subscription-key"></a>Subscribe to Computer Vision API and get a subscription key 
-Before creating the example, you must subscribe to Computer Vision API which is part of the Microsoft Cognitive Services (formerly Project Oxford). For subscription and key management details, see [Subscriptions](https://www.microsoft.com/cognitive-services/en-us/sign-up). Both the primary and secondary key can be used in this tutorial. 
+Before creating the example, you must subscribe to Computer Vision API which is part of the Microsoft Cognitive Services (formerly Project Oxford). For subscription and key management details, see [Subscriptions](https://azure.microsoft.com/en-us/try/cognitive-services/). Both the primary and secondary key can be used in this tutorial. 
 
 #### <a name="get-the-client-library-and-example"></a>Get the client library and example
 You may clone the Computer Vision API client library and example application to your computer via [SDK](https://www.github.com/microsoft/cognitive-vision-windows). Don't download it as a ZIP.
@@ -45,7 +46,7 @@ You can choose to persist your subscription key on your PC or laptop by clicking
 
     ![Vision Subscription Key](../Images/Vision_UI_Subscription.PNG)
 
-3. Under "Select Scenario" click to use one of the six scenarios, then follow the instructions on the screen. Microsoft receives the images you upload and may use them to improve Computer Vision API and related services. By submitting an image, you confirm that you have followed our Developer Code of Conduct.
+3. Under "Select Scenario" click to use one of the six scenarios, then follow the instructions on the screen. Microsoft receives the images you upload and may use them to improve Computer Vision API and related services. By submitting an image, you confirm that you have followed our [Developer Code of Conduct](https://azure.microsoft.com/en-us/support/legal/developer-code-of-conduct/).
 
     ![Analyze Image Interface](../Images/Analyze_Image_Example.PNG)
 

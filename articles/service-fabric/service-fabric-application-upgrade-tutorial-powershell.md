@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 03/02/2017
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: 3cd1c20151d02fb2a520c5b6d510597828847234
-ms.openlocfilehash: 0a9460e25b54ad51c0b0cb0db39be75dac01ed51
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: c685deaa008cfdba5971cef4cfc7dfa41b1df64d
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -34,7 +34,7 @@ ms.lasthandoff: 02/24/2017
 
 監視付きアプリケーション アップグレードは、マネージ API またはネイティブ API、PowerShell、および REST を使用して実行できます。 Visual Studio を使用してアップグレードを実行する方法の詳細については、 [Visual Studio を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial.md)に関するページをご覧ください。
 
-Service Fabric による監視付きローリング アップグレードを使用することにより、アプリケーション管理者は、アプリケーションの正常性を判断するために Service Fabric が使用する正常性評価ポリシーを構成できます。 また、管理者は、正常性評価が失敗した場合 (たとえば、自動ロールバック時) に実行するアクションを構成できます。このセクションでは、PowerShell を使用した SDK サンプルの&1; つの監視付きアップグレードについて説明します。 次の Microsoft Virtual Academy のビデオでも、アプリのアップグレードの手順を説明しています。<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=OrHJH66yC_6406218965">
+Service Fabric による監視付きローリング アップグレードを使用することにより、アプリケーション管理者は、アプリケーションの正常性を判断するために Service Fabric が使用する正常性評価ポリシーを構成できます。 また、管理者は、正常性評価が失敗した場合 (たとえば、自動ロールバック時) に実行するアクションを構成できます。このセクションでは、PowerShell を使用した SDK サンプルの 1 つの監視付きアップグレードについて説明します。 次の Microsoft Virtual Academy のビデオでも、アプリのアップグレードの手順を説明しています。<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=OrHJH66yC_6406218965">
 <img src="./media/service-fabric-application-upgrade-tutorial-powershell/AppLifecycleVid.png" WIDTH="360" HEIGHT="244">
 </a></center>
 
@@ -46,9 +46,9 @@ Service Fabric による監視付きローリング アップグレードを使�
 > 
 > 
 
-Visual Studio でプロジェクトをビルドした後に、PowerShell コマンド [Copy-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) を使用してアプリケーション パッケージを ImageStore にコピーできます。 アプリケーション パッケージをローカルで検証する場合は、[Test-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage) コマンドレットを使用します。 次に、 [Register-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) コマンドレットを使用して、Service Fabric ランタイムにアプリケーションを登録します。 最後に、 [New-ServiceFabricApplication](/powershell/servicefabric/vlatest/new-servicefabricapplication) コマンドレットを使用して、アプリケーションのインスタンスを開始します。  これら&3; つの手順は、Visual Studio の **[配置]** メニュー項目を使用する場合と似ています。
+Visual Studio でプロジェクトをビルドした後に、PowerShell コマンド [Copy-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) を使用してアプリケーション パッケージを ImageStore にコピーできます。 アプリケーション パッケージをローカルで検証する場合は、[Test-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage) コマンドレットを使用します。 次に、 [Register-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) コマンドレットを使用して、Service Fabric ランタイムにアプリケーションを登録します。 最後に、 [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) コマンドレットを使用して、アプリケーションのインスタンスを開始します。  これら 3 つの手順は、Visual Studio の **[配置]** メニュー項目を使用する場合と似ています。
 
-これで、 [クラスターおよびアプリケーションを表示する Service Fabric エクスプローラー](service-fabric-visualizing-your-cluster.md)を使用できます。 このアプリケーションには Web サービスが設けられており、Internet explorer のアドレス バーに「 [http://localhost:8081/visualobjects](http://localhost:8081/visualobjects) 」と入力して移動できます。  画面上を動くフローティング ビジュアル オブジェクトが表示されます。  さらに、 [Get-ServiceFabricApplication](/powershell/servicefabric/vlatest/get-servicefabricapplication) を使用すると、アプリケーションの状態を確認できます。
+これで、 [クラスターおよびアプリケーションを表示する Service Fabric エクスプローラー](service-fabric-visualizing-your-cluster.md)を使用できます。 このアプリケーションには Web サービスが設けられており、Internet explorer のアドレス バーに「 [http://localhost:8081/visualobjects](http://localhost:8081/visualobjects) 」と入力して移動できます。  画面上を動くフローティング ビジュアル オブジェクトが表示されます。  さらに、 [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) を使用すると、アプリケーションの状態を確認できます。
 
 ## <a name="step-2-update-the-visual-objects-sample"></a>手順 2: ビジュアル オブジェクト サンプルの更新
 手順 1. でデプロイされたバージョンでは、ビジュアル オブジェクトが回転しないことにお気付きになったことでしょう。 アプリケーションをアップグレードして、ビジュアル オブジェクトも回転させてみましょう。
@@ -93,7 +93,7 @@ UpgradeDomainTimeoutSec = 1200
 UpgradeTimeout = 3000
 
 ## <a name="step-4-prepare-application-for-upgrade"></a>手順 4: アプリケーションのアップグレードの準備
-アプリケーションはビルドされ、アップグレードの準備は完了しています。 PowerShell ウィンドウを管理者として開き、[「Get-ServiceFabricApplication」](/powershell/servicefabric/vlatest/get-servicefabricapplication)と入力すると、デプロイされているのが **VisualObjects** のアプリケーションの種類 1.0.0.0 であることが表示されます。  
+アプリケーションはビルドされ、アップグレードの準備は完了しています。 PowerShell ウィンドウを管理者として開き、[「Get-ServiceFabricApplication」](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps)と入力すると、デプロイされているのが **VisualObjects** のアプリケーションの種類 1.0.0.0 であることが表示されます。  
 
 アプリケーション パッケージは、Service Fabric SDK を圧縮解除した次の相対パスの下に格納されています - *Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug*。 そのディレクトリ内に "パッケージ" フォルダーが見つかるはずです。このフォルダーにアプリケーション パッケージが格納されます。 タイムスタンプを確認して、最新のビルドであることを確かめます (場合によっては、パスも適切に変更する必要があります)。
 
@@ -104,7 +104,7 @@ Copy-ServiceFabricApplicationPackage  -ApplicationPackagePath .\Samples\Services
 -ImageStoreConnectionString fabric:ImageStore   -ApplicationPackagePathInImageStore "VisualObjects\_V2"
 ```
 
-次の手順では、Service Fabric を使用して、このアプリケーションを登録します。これは、[Register-ServiceFabricApplicationType](/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) コマンドを使用して実行できます。
+次の手順では、Service Fabric を使用して、このアプリケーションを登録します。これは、[Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) コマンドを使用して実行できます。
 
 ```powershell
 Register-ServiceFabricApplicationType -ApplicationPathInImageStore "VisualObjects\_V2"
@@ -113,7 +113,7 @@ Register-ServiceFabricApplicationType -ApplicationPathInImageStore "VisualObject
 前のコマンドが成功しなかった場合、すべてのサービスのリビルドが必要な可能性があります。 手順 2 で説明したとおり、WebService のバージョンの更新が必要な場合もあります。
 
 ## <a name="step-5-start-the-application-upgrade"></a>手順 5: アプリケーションのアップグレード開始
-これで、[Start-ServiceFabricApplicationUpgrade](/powershell/servicefabric/vlatest/start-servicefabricapplicationupgrade) コマンドを使用して、アプリケーションのアップグレードを開始できます。
+これで、[Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps) コマンドを使用して、アプリケーションのアップグレードを開始できます。
 
 ```powershell
 Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -ApplicationTypeVersion 2.0.0.0 -HealthCheckStableDurationSec 60 -UpgradeDomainTimeoutSec 1200 -UpgradeTimeout 3000   -FailureAction Rollback -Monitored
@@ -122,7 +122,7 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -Ap
 
 アプリケーション名は、 *ApplicationManifest.xml* ファイルに記述されている名前と同じです。 Service Fabric はこの名前を使用して、アップグレードが実行されるアプリケーションを識別します。 タイムアウトを短く設定しすぎている場合、問題を示すエラー メッセージが表示されることがあります。 トラブルシューティングのセクションを参照するか、タイムアウトの時間を長くします。
 
-アプリケーションのアップグレード処理の進行状況は、Service Fabric Explorer を使用するか、[Get-ServiceFabricApplicationUpgrade](/powershell/servicefabric/vlatest/get-servicefabricapplicationupgrade) PowerShell コマンドを使用して監視できます。 
+アプリケーションのアップグレード処理の進行状況は、Service Fabric Explorer を使用するか、[Get-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/get-servicefabricapplicationupgrade?view=azureservicefabricps) PowerShell コマンドを使用して監視できます。 
 
 ```powershell
 Get-ServiceFabricApplicationUpgrade fabric:/VisualObjects

@@ -132,8 +132,9 @@
 ## クラスターを拡張する
 ### [ブートストラップを使用してクラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-bootstrap.md)
 ### [スクリプト アクションを使用したクラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)
-### [Hive ライブラリを追加する](hdinsight-hadoop-add-hive-libraries.md)
 ### [スクリプト アクションを開発する](hdinsight-hadoop-script-actions-linux.md)
+### [Mono のインストールまたは更新](hdinsight-hadoop-install-mono.md)
+### [Hive ライブラリを追加する](hdinsight-hadoop-add-hive-libraries.md)
 ### [Giraph の使用](hdinsight-hadoop-giraph-install-linux.md)
 ### [Hue を使用する](hdinsight-hadoop-hue-linux.md)
 ### [R を使用する](hdinsight-hadoop-r-scripts-linux.md)
@@ -190,7 +191,7 @@
 #### [Hive クエリのパフォーマンス](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
 
 # リファレンス
-## [PowerShell](/powershell/resourcemanager/azurerm.hdinsight/v2.3.0/azurerm.hdinsight)
+## [PowerShell](/powershell/module/azurerm.hdinsight)
 ## [.NET (Hadoop)](https://msdn.microsoft.com/library/mt271028.aspx)
 ## [.NET (HBase)](https://www.nuget.org/packages/Microsoft.HBase.Client/)
 ## [.NET (Avro)](https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library)

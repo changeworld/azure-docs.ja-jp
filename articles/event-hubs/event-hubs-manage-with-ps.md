@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 04/06/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 9ca861788d9c327237c8637e11312fb099837e56
-ms.lasthandoff: 04/11/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a3ba385e15510139929735adb5e50b6291846356
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="use-powershell-to-manage-event-hubs-resources"></a>PowerShell を使用した Event Hubs リソースの管理
 
-Microsoft Azure PowerShell は、Azure サービスのデプロイメントと管理を制御し自動化するために使用できるスクリプティング環境です。 この記事では、[Event Hubs Resource Manager の PowerShell モジュール](/powershell/module/azurerm.eventhub/?view=azurermps-3.7.0#event_hub) で、ローカルの Azure PowerShell コンソールまたはスクリプトを使用して Event Hubs エンティティ (名前空間、Event Hubs、およびコンシューマー グループ) をプロビジョニングおよび管理する方法について説明します。
+Microsoft Azure PowerShell は、Azure サービスのデプロイメントと管理を制御し自動化するために使用できるスクリプティング環境です。 この記事では、[Event Hubs Resource Manager の PowerShell モジュール](/powershell/module/azurerm.eventhub) で、ローカルの Azure PowerShell コンソールまたはスクリプトを使用して Event Hubs エンティティ (名前空間、Event Hubs、およびコンシューマー グループ) をプロビジョニングおよび管理する方法について説明します。
 
 Azure Resource Manager テンプレートを使用して Event Hubs リソースを管理することもできます。 詳細については、記事「[イベント ハブとコンシューマー グループを含んだ Event Hubs 名前空間を Azure Resource Manager テンプレートで作成する](event-hubs-resource-manager-namespace-event-hub.md)」を参照してください。
 
@@ -151,7 +151,7 @@ Remove-AzureRmEventHubNamespace -ResourceGroupName $ResGrpName -NamespaceName $N
 
 ## <a name="next-steps"></a>次のステップ
 
-- Event Hubs の Resource Manager の PowerShell モジュールに関する全ドキュメントは、[ここ](/powershell/module/azurerm.eventhub/?view=azurermps-3.7.0#event_hub)から参照してください。 このページには、利用可能なすべてのコマンドレットが一覧されています。
+- Event Hubs の Resource Manager の PowerShell モジュールに関する全ドキュメントは、[ここ](/powershell/module/azurerm.eventhub)から参照してください。 このページには、利用可能なすべてのコマンドレットが一覧されています。
 - Azure Resource Manager テンプレートの使用の詳細については、記事「[イベント ハブとコンシューマー グループを含んだ Event Hubs 名前空間を Azure Resource Manager テンプレートで作成する](event-hubs-resource-manager-namespace-event-hub.md)」を参照してください。
 - [Event Hubs .NET 管理ライブラリ](event-hubs-management-libraries.md)に関する情報。
 

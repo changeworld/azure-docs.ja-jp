@@ -3,8 +3,8 @@ title: "Storage の監視、診断、およびトラブルシューティング 
 description: "ストレージ分析、クライアント側ログ、他のサード パーティのツールなどの機能を使用して、Azure Storage 関連の問題を特定、診断、およびトラブルシューティングします。"
 services: storage
 documentationcenter: 
-author: jasonnewyork
-manager: tadb
+author: fhryo-msft
+manager: jahogg
 editor: tysonn
 ms.assetid: da57e844-705d-449d-8ed5-5607d2a6170b
 ms.service: storage
@@ -13,10 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2017
-ms.author: jahogg
-translationtype: Human Translation
+ms.author: fhryo-msft
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
 ms.openlocfilehash: 84ecd480b57a8ef12440f5e5cd98a78c4bf09059
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/06/2017
 
 
@@ -243,9 +244,9 @@ Storage Client Library for .NET では、アプリケーションで実行され
 ### <a name="client-request-id"></a>クライアント要求 ID
 ストレージ クライアント ライブラリは、要求ごとに固有のクライアント要求 ID を自動生成します。
 
-* ストレージ クライアント ライブラリが作成するクライアント側のログの場合、クライアント要求 ID は、その要求に関連したすべてのログ エントリの **[クライアント要求 ID]** フィールドに表示されます。
+* ストレージ クライアント ライブラリが作成するクライアント側のログの場合、クライアント要求 ID は、その要求に関連したすべてのログ エントリの **クライアント要求 ID** フィールドに表示されます。
 * Fiddler などによってキャプチャされたネットワーク トレースの場合、クライアント要求 ID は、要求メッセージの **x-ms-client-request-id** HTTP ヘッダー値として表示されます。
-* サーバー側の Storage Logging ログの場合、クライアント要求 ID は [クライアント要求 ID] 列に表示されます。
+* サーバー側の Storage Logging ログの場合、クライアント要求 ID は クライアント要求 ID 列に表示されます。
 
 > [!NOTE]
 > 複数の要求が同じクライアント要求 ID を共有する可能性があります。クライアントがこの値を割り当てることができるからです (一方、ストレージ クライアント ライブラリは新しい値を自動的に割り当てます)。 クライアントから再試行する場合には、必ず同じクライアント要求 ID を共有します。 クライアントからの送信されるバッチの場合、バッチのクライアント要求 ID は 1 つだけです。

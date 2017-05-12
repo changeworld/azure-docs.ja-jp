@@ -9,10 +9,11 @@ ms.technology: face
 ms.topic: article
 ms.date: 02/24/2017
 ms.author: anroth
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 3bdab5eaf6ffeda9b6c524051e7e13e55591f5e7
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: ac664011b24a2e4bf6814b7ca7925f630ef7d6c2
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 ---
 
@@ -31,7 +32,7 @@ To use the tutorial, you will need the following prerequisites:
 
 ## <a name="step1"></a>Step 1: Subscribe for Face API and get your subscription key
 
-Before using any Face API, you must sign up to subscribe to Face API in the Microsoft Cognitive Services (formerly Project Oxford) portal. See [subscriptions](https://www.microsoft.com/cognitive-services/en-us/sign-up). Both primary and secondary key can be used in this tutorial.
+Before using any Face API, you must sign up to subscribe to Face API in the Microsoft Cognitive Services portal. See [subscriptions](https://azure.microsoft.com/en-us/try/cognitive-services/). Both primary and secondary key can be used in this tutorial.
 
 ## <a name="step2"></a>Step 2: Create the application framework
 

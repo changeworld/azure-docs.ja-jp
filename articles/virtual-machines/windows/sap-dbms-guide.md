@@ -18,9 +18,9 @@ ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 9313065c82ec4c395f71d5af7ad8f7b20b68015e
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
+ms.openlocfilehash: cc7c85382d8f8183ef3eb3cc7496b012808148e5
+ms.lasthandoff: 04/29/2017
 
 
 ---
@@ -78,7 +78,22 @@ ms.lasthandoff: 04/03/2017
 [azure-subscription-service-limits]:../../azure-subscription-service-limits.md
 [azure-subscription-service-limits-subscription]:../../azure-subscription-service-limits.md#subscription-limits
 
-[dbms-guide]:sap-dbms-guide.md (Azure Virtual Machines (VM) 上の SAP NetWeaver – DBMS デプロイ ガイド) [dbms-guide-2.1]:#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f (VM と VHD のキャッシング) [dbms-guide-2.2]:#c8e566f9-21b7-4457-9f7f-126036971a91 (ソフトウェア RAID) [dbms-guide-2.3]:#10b041ef-c177-498a-93ed-44b3441ab152 (Microsoft Azure Storage) [dbms-guide-2]:#65fa79d6-a85f-47ee-890b-22e794f51a64 (RDBMS デプロイの構造) [dbms-guide-3]:#871dfc27-e509-4222-9370-ab1de77021c3 (Azure VM の高可用性と障害復旧) [dbms-guide-5.5.1]:#0fef0e79-d3fe-4ae2-85af-73666a6f7268 (SQL Server 2012 SP1 CU4 以降) [dbms-guide-5.5.2]:#f9071eff-9d72-4f47-9da4-1852d782087b (SQL Server 2012 SP1 CU3 以前のリリース) [dbms-guide-5.6]:#1b353e38-21b3-4310-aeb6-a77e7c8e81c8 (Microsoft Azure Marketplace から SQL Server イメージを使用する) [dbms-guide-5.8]:#9053f720-6f3b-4483-904d-15dc54141e30 (Azure 上の SAP の一般的な SQL Server のまとめ) [dbms-guide-5]:#3264829e-075e-4d25-966e-a49dad878737 (SQL Server RDBMS の仕様) [dbms-guide-8.4.1]:#b48cfe3b-48e9-4f5b-a783-1d29155bd573 (ストレージ構成) [dbms-guide-8.4.2]:#23c78d3b-ca5a-4e72-8a24-645d141a3f5d (バックアップと復元) [dbms-guide-8.4.3]:#77cd2fbb-307e-4cbf-a65f-745553f72d2c (バックアップと復元におけるパフォーマンスの考慮事項) [dbms-guide-8.4.4]:#f77c1436-9ad8-44fb-a331-8671342de818 (その他) [dbms-guide-900-sap-cache-server-on-premises]:#642f746c-e4d4-489d-bf63-73e80177a0a8
+[dbms-guide]:sap-dbms-guide.md 
+[dbms-guide-2.1]:#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f 
+[dbms-guide-2.2]:#c8e566f9-21b7-4457-9f7f-126036971a91 
+[dbms-guide-2.3]:#10b041ef-c177-498a-93ed-44b3441ab152 
+[dbms-guide-2]:#65fa79d6-a85f-47ee-890b-22e794f51a64 
+[dbms-guide-3]:#871dfc27-e509-4222-9370-ab1de77021c3 
+[dbms-guide-5.5.1]:#0fef0e79-d3fe-4ae2-85af-73666a6f7268 
+[dbms-guide-5.5.2]:#f9071eff-9d72-4f47-9da4-1852d782087b 
+[dbms-guide-5.6]:#1b353e38-21b3-4310-aeb6-a77e7c8e81c8 
+[dbms-guide-5.8]:#9053f720-6f3b-4483-904d-15dc54141e30 
+[dbms-guide-5]:#3264829e-075e-4d25-966e-a49dad878737 
+[dbms-guide-8.4.1]:#b48cfe3b-48e9-4f5b-a783-1d29155bd573 
+[dbms-guide-8.4.2]:#23c78d3b-ca5a-4e72-8a24-645d141a3f5d 
+[dbms-guide-8.4.3]:#77cd2fbb-307e-4cbf-a65f-745553f72d2c 
+[dbms-guide-8.4.4]:#f77c1436-9ad8-44fb-a331-8671342de818 
+[dbms-guide-900-sap-cache-server-on-premises]:#642f746c-e4d4-489d-bf63-73e80177a0a8
 
 [dbms-guide-figure-100]:./media/virtual-machines-shared-sap-dbms-guide/100_storage_account_types.png
 [dbms-guide-figure-200]:./media/virtual-machines-shared-sap-dbms-guide/200-ha-set-for-dbms-ha.png
@@ -90,10 +105,27 @@ ms.lasthandoff: 04/03/2017
 [dbms-guide-figure-800]:./media/virtual-machines-shared-sap-dbms-guide/800-azure-vm-sap-content-server.png
 [dbms-guide-figure-900]:./media/virtual-machines-shared-sap-dbms-guide/900-sap-cache-server-on-premises.png
 
-[deployment-guide]:sap-deployment-guide.md (Azure Virtual Machines (VMs) 上の SAP NetWeaver – デプロイ ガイド) [deployment-guide-2.2]:sap-deployment-guide.md#42ee2bdb-1efc-4ec7-ab31-fe4c22769b94 (SAP リソース) [deployment-guide-3.1.2]:sap-deployment-guide.md#3688666f-281f-425b-a312-a77e7db2dfab (カスタム イメージによる VM のデプロイ) [deployment-guide-3.2]:sap-deployment-guide.md#db477013-9060-4602-9ad4-b0316f8bb281 (シナリオ 1: SAP の Azure Marketplace からの VM のデプロイ) [deployment-guide-3.3]:sap-deployment-guide.md#54a1fc6d-24fd-4feb-9c57-ac588a55dff2 (シナリオ 2: SAP のカスタム イメージからの VM のデプロイ) [deployment-guide-3.4]:sap-deployment-guide.md#a9a60133-a763-4de8-8986-ac0fa33aa8c1 (シナリオ 3: 汎用化されていない Azure VHD と SAP を使用したオンプレミスからの VM の移動) [deployment-guide-3]:sap-deployment-guide.md#b3253ee3-d63b-4d74-a49b-185e76c4088e (Microsoft Azure 上の SAP 用の VM のデプロイ シナリオ) [deployment-guide-4.1]:sap-deployment-guide.md#604bcec2-8b6e-48d2-a944-61b0f5dee2f7 (Azure PowerShell コマンドレットのデプロイ) [deployment-guide-4.2]:sap-deployment-guide.md#7ccf6c3e-97ae-4a7a-9c75-e82c37beb18e (SAP 関連の PowerShell コマンドレットのダウンロードとインポート) [deployment-guide-4.3]:sap-deployment-guide.md#31d9ecd6-b136-4c73-b61e-da4a29bbc9cc (オンプレミス ドメインへの VM の結合 - Windows のみ) [deployment-guide-4.4.2]:sap-deployment-guide.md#6889ff12-eaaf-4f3c-97e1-7c9edc7f7542 (Linux) [deployment-guide-4.4]:sap-deployment-guide.md#c7cbb0dc-52a4-49db-8e03-83e7edc2927d (Azure VM エージェントのダウンロード、インストール、および有効化) [deployment-guide-4.5.1]:sap-deployment-guide.md#987cf279-d713-4b4c-8143-6b11589bb9d4 (Azure PowerShell) [deployment-guide-4.5.2]:sap-deployment-guide.md#408f3779-f422-4413-82f8-c57a23b4fc2f (Azure CLI) [deployment-guide-4.5]:sap-deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca (SAP 用の Azure Enhanced Monitoring 拡張機能の構成) [deployment-guide-5.1]:sap-deployment-guide.md#bb61ce92-8c5c-461f-8c53-39f5e5ed91f2 (SAP 用の Azure Enhanced Monitoring の適合性チェック) [deployment-guide-5.2]:sap-deployment-guide.md#e2d592ff-b4ea-4a53-a91a-e5521edb6cd1 (Azure 監視インフラストラクチャ構成のヘルス チェック) [deployment-guide-5.3]:sap-deployment-guide.md#fe25a7da-4e4e-4388-8907-8abc2d33cfd8 (SAP 用の Azure 監視インフラストラクチャの詳細なトラブルシューティング)
+[deployment-guide]:sap-deployment-guide.md 
+[deployment-guide-2.2]:sap-deployment-guide.md#42ee2bdb-1efc-4ec7-ab31-fe4c22769b94 
+[deployment-guide-3.1.2]:sap-deployment-guide.md#3688666f-281f-425b-a312-a77e7db2dfab 
+[deployment-guide-3.2]:sap-deployment-guide.md#db477013-9060-4602-9ad4-b0316f8bb281 
+[deployment-guide-3.3]:sap-deployment-guide.md#54a1fc6d-24fd-4feb-9c57-ac588a55dff2 
+[deployment-guide-3.4]:sap-deployment-guide.md#a9a60133-a763-4de8-8986-ac0fa33aa8c1
+[deployment-guide-3]:sap-deployment-guide.md#b3253ee3-d63b-4d74-a49b-185e76c4088e 
+[deployment-guide-4.1]:sap-deployment-guide.md#604bcec2-8b6e-48d2-a944-61b0f5dee2f7 
+[deployment-guide-4.2]:sap-deployment-guide.md#7ccf6c3e-97ae-4a7a-9c75-e82c37beb18e
+[deployment-guide-4.3]:sap-deployment-guide.md#31d9ecd6-b136-4c73-b61e-da4a29bbc9cc 
+[deployment-guide-4.4.2]:sap-deployment-guide.md#6889ff12-eaaf-4f3c-97e1-7c9edc7f7542 
+[deployment-guide-4.4]:sap-deployment-guide.md#c7cbb0dc-52a4-49db-8e03-83e7edc2927d 
+[deployment-guide-4.5.1]:sap-deployment-guide.md#987cf279-d713-4b4c-8143-6b11589bb9d4 
+[deployment-guide-4.5.2]:sap-deployment-guide.md#408f3779-f422-4413-82f8-c57a23b4fc2f 
+[deployment-guide-4.5]:sap-deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca 
+[deployment-guide-5.1]:sap-deployment-guide.md#bb61ce92-8c5c-461f-8c53-39f5e5ed91f2 
+[deployment-guide-5.2]:sap-deployment-guide.md#e2d592ff-b4ea-4a53-a91a-e5521edb6cd1 
+[deployment-guide-5.3]:sap-deployment-guide.md#fe25a7da-4e4e-4388-8907-8abc2d33cfd8 
 
-[deployment-guide-configure-monitoring-scenario-1]:sap-deployment-guide.md#ec323ac3-1de9-4c3a-b770-4ff701def65b (Configure Monitoring)
-[deployment-guide-configure-proxy]:sap-deployment-guide.md#baccae00-6f79-4307-ade4-40292ce4e02d (Configure Proxy)
+[deployment-guide-configure-monitoring-scenario-1]:sap-deployment-guide.md#ec323ac3-1de9-4c3a-b770-4ff701def65b 
+[deployment-guide-configure-proxy]:sap-deployment-guide.md#baccae00-6f79-4307-ade4-40292ce4e02d 
 [deployment-guide-figure-100]:./media/virtual-machines-shared-sap-deployment-guide/100-deploy-vm-image.png
 [deployment-guide-figure-1000]:./media/virtual-machines-shared-sap-deployment-guide/1000-service-properties.png
 [deployment-guide-figure-11]:sap-deployment-guide.md#figure-11
@@ -116,7 +148,7 @@ ms.lasthandoff: 04/03/2017
 [deployment-guide-figure-azure-cli-installed]:sap-deployment-guide.md#402488e5-f9bb-4b29-8063-1c5f52a892d0
 [deployment-guide-figure-azure-cli-version]:sap-deployment-guide.md#0ad010e6-f9b5-4c21-9c09-bb2e5efb3fda
 [deployment-guide-install-vm-agent-windows]:sap-deployment-guide.md#b2db5c9a-a076-42c6-9835-16945868e866
-[deployment-guide-troubleshooting-chapter]:sap-deployment-guide.md#564adb4f-5c95-4041-9616-6635e83a810b (Checks and Troubleshooting for End-to-End Monitoring Setup for SAP on Azure)
+[deployment-guide-troubleshooting-chapter]:sap-deployment-guide.md#564adb4f-5c95-4041-9616-6635e83a810b 
 
 [deploy-template-cli]:../../resource-group-template-deploy-cli.md
 [deploy-template-portal]:../../resource-group-template-deploy-portal.md
@@ -147,7 +179,33 @@ ms.lasthandoff: 04/03/2017
 
 [msdn-set-azurermvmaemextension]:https://msdn.microsoft.com/library/azure/mt670598.aspx
 
-[planning-guide]:sap-planning-guide.md (Azure Virtual Machines (VMs) 上の SAP NetWeaver – 計画および実装ガイド) [planning-guide-1.2]:sap-planning-guide.md#e55d1e22-c2c8-460b-9897-64622a34fdff (Resources) [planning-guide-11]:sap-planning-guide.md#7cf991a1-badd-40a9-944e-7baae842a058 (Azure Virtual Machines で実行されている SAP NetWeaver の高可用性 (HA) とディザスター リカバリー (DR)) [planning-guide-11.4.1]:sap-planning-guide.md#5d9d36f9-9058-435d-8367-5ad05f00de77 (SAP アプリケーション サーバーの高可用性) [planning-guide-11.5]:sap-planning-guide.md#4e165b58-74ca-474f-a7f4-5e695a93204f (SAP インスタンスでの自動開始の使用) [planning-guide-2.1]:sap-planning-guide.md#1625df66-4cc6-4d60-9202-de8a0b77f803 (クラウドのみ - Azure への仮想マシンのデプロイ (オンプレミスの顧客のネットワークにおける依存関係なし)) [planning-guide-2.2]:sap-planning-guide.md#f5b3b18c-302c-4bd8-9ab2-c388f1ab3d10 (クロスプレミス - Azure への単一または複数の SAP 仮想マシンのデプロイ (オンプレミスのネットワークへの完全統合が必要)) [planning-guide-3.1]:sap-planning-guide.md#be80d1b9-a463-4845-bd35-f4cebdb5424a (Azure リージョン) [planning-guide-3.2.1]:sap-planning-guide.md#df49dc09-141b-4f34-a4a2-990913b30358 (障害ドメイン) [planning-guide-3.2.2]:sap-planning-guide.md#fc1ac8b2-e54a-487c-8581-d3cc6625e560 (アップグレード ドメイン) [planning-guide-3.2.3]:sap-planning-guide.md#18810088-f9be-4c97-958a-27996255c665 (Azure の可用性セット) [planning-guide-3.2]:sap-planning-guide.md#8d8ad4b8-6093-4b91-ac36-ea56d80dbf77 (Microsoft Azure Virtual Machine の概念) [planning-guide-3.3.2]:sap-planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 (Azure Premium Storage) [planning-guide-5.1.1]:sap-planning-guide.md#4d175f1b-7353-4137-9d2f-817683c26e53 (汎用化されていないディスクを使用したオンプレミスから Azure への VM の移動) [planning-guide-5.1.2]:sap-planning-guide.md#e18f7839-c0e2-4385-b1e6-4538453a285c (顧客固有のイメージを使用した VM のデプロイ) [planning-guide-5.2.1]:sap-planning-guide.md#1b287330-944b-495d-9ea7-94b83aff73ef (Preparation for moving a VM from on-premises to Azure with a non-generalized disk) [planning-guide-5.2.2]:sap-planning-guide.md#57f32b1c-0cba-4e57-ab6e-c39fe22b6ec3 (SAP 用の顧客固有のイメージを使用した VM のデプロイの準備) [planning-guide-5.2]:sap-planning-guide.md#6ffb9f41-a292-40bf-9e70-8204448559e7 (Azure 用の SAP を使用した VM の準備) [planning-guide-5.3.1]:sap-planning-guide.md#6e835de8-40b1-4b71-9f18-d45b20959b79 (Azure ディスクと Azure イメージの違い) [planning-guide-5.3.2]:sap-planning-guide.md#a43e40e6-1acc-4633-9816-8f095d5a7b6a (VHD のオンプレミスから Azure へのアップロード) [planning-guide-5.4.2]:sap-planning-guide.md#9789b076-2011-4afa-b2fe-b07a8aba58a1 (Azure Storage アカウント間でのディスクのコピー) [planning-guide-5.5.1]:sap-planning-guide.md#4efec401-91e0-40c0-8e64-f2dceadff646 (SAP デプロイ用の VM/VHD の構造) [planning-guide-5.5.3]:sap-planning-guide.md#17e0d543-7e8c-4160-a7da-dd7117a1ad9d (接続されたディスクの自動マウントの設定) [planning-guide-7.1]:sap-planning-guide.md#3e9c3690-da67-421a-bc3f-12c520d99a30 (単一の VM の SAP NetWeaver のデモ/トレーニング シナリオ) [planning-guide-7]:sap-planning-guide.md#96a77628-a05e-475d-9df3-fb82217e8f14 (SAP インスタンスのクラウドのみのデプロイの概念) [planning-guide-9.1]:sap-planning-guide.md#6f0a47f3-a289-4090-a053-2521618a28c3 (Azure Monitoring Solution for SAP) [planning-guide-azure-premium-storage]:sap-planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 (Azure Premium Storage)
+[planning-guide]:sap-planning-guide.md  
+[planning-guide-1.2]:sap-planning-guide.md#e55d1e22-c2c8-460b-9897-64622a34fdff 
+[planning-guide-11]:sap-planning-guide.md#7cf991a1-badd-40a9-944e-7baae842a058 
+[planning-guide-11.4.1]:sap-planning-guide.md#5d9d36f9-9058-435d-8367-5ad05f00de77 
+[planning-guide-11.5]:sap-planning-guide.md#4e165b58-74ca-474f-a7f4-5e695a93204f 
+[planning-guide-2.1]:sap-planning-guide.md#1625df66-4cc6-4d60-9202-de8a0b77f803 
+[planning-guide-2.2]:sap-planning-guide.md#f5b3b18c-302c-4bd8-9ab2-c388f1ab3d10
+[planning-guide-3.1]:sap-planning-guide.md#be80d1b9-a463-4845-bd35-f4cebdb5424a 
+[planning-guide-3.2.1]:sap-planning-guide.md#df49dc09-141b-4f34-a4a2-990913b30358 
+[planning-guide-3.2.2]:sap-planning-guide.md#fc1ac8b2-e54a-487c-8581-d3cc6625e560 
+[planning-guide-3.2.3]:sap-planning-guide.md#18810088-f9be-4c97-958a-27996255c665 
+[planning-guide-3.2]:sap-planning-guide.md#8d8ad4b8-6093-4b91-ac36-ea56d80dbf77 
+[planning-guide-3.3.2]:sap-planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 
+[planning-guide-5.1.1]:sap-planning-guide.md#4d175f1b-7353-4137-9d2f-817683c26e53 
+[planning-guide-5.1.2]:sap-planning-guide.md#e18f7839-c0e2-4385-b1e6-4538453a285c 
+[planning-guide-5.2.1]:sap-planning-guide.md#1b287330-944b-495d-9ea7-94b83aff73ef 
+[planning-guide-5.2.2]:sap-planning-guide.md#57f32b1c-0cba-4e57-ab6e-c39fe22b6ec3 
+[planning-guide-5.2]:sap-planning-guide.md#6ffb9f41-a292-40bf-9e70-8204448559e7 
+[planning-guide-5.3.1]:sap-planning-guide.md#6e835de8-40b1-4b71-9f18-d45b20959b79 
+[planning-guide-5.3.2]:sap-planning-guide.md#a43e40e6-1acc-4633-9816-8f095d5a7b6a 
+[planning-guide-5.4.2]:sap-planning-guide.md#9789b076-2011-4afa-b2fe-b07a8aba58a1 
+[planning-guide-5.5.1]:sap-planning-guide.md#4efec401-91e0-40c0-8e64-f2dceadff646 
+[planning-guide-5.5.3]:sap-planning-guide.md#17e0d543-7e8c-4160-a7da-dd7117a1ad9d 
+[planning-guide-7.1]:sap-planning-guide.md#3e9c3690-da67-421a-bc3f-12c520d99a30 
+[planning-guide-7]:sap-planning-guide.md#96a77628-a05e-475d-9df3-fb82217e8f14 
+[planning-guide-9.1]:sap-planning-guide.md#6f0a47f3-a289-4090-a053-2521618a28c3 
+[planning-guide-azure-premium-storage]:sap-planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 
 
 [planning-guide-figure-100]:./media/virtual-machines-shared-sap-planning-guide/100-single-vm-in-azure.png
 [planning-guide-figure-1300]:./media/virtual-machines-shared-sap-planning-guide/1300-ref-config-iaas-for-sap.png
@@ -172,14 +230,14 @@ ms.lasthandoff: 04/03/2017
 [planning-guide-figure-600]:./media/virtual-machines-shared-sap-planning-guide/600-s2s-details.png
 [planning-guide-figure-700]:./media/virtual-machines-shared-sap-planning-guide/700-decision-tree-deploy-to-azure.png
 [planning-guide-figure-800]:./media/virtual-machines-shared-sap-planning-guide/800-portal-vm-overview.png
-[planning-guide-microsoft-azure-networking]:sap-planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd (Microsoft Azure Networking)
-[planning-guide-storage-microsoft-azure-storage-and-data-disks]:sap-planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f (Storage: Microsoft Azure Storage and Data Disks)
+[planning-guide-microsoft-azure-networking]:sap-planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd 
+[planning-guide-storage-microsoft-azure-storage-and-data-disks]:sap-planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
 [powershell-install-configure]:/powershell/azureps-cmdlets-docs
 [resource-group-authoring-templates]:../../resource-group-authoring-templates.md
 [resource-group-overview]:../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../virtual-network/resource-groups-networking.md
-[sap-pam]:https://support.sap.com/pam (SAP Product Availability Matrix)
+[sap-pam]:https://support.sap.com/pam 
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
 [sap-templates-2-tier-user-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-image%2Fazuredeploy.json
@@ -246,7 +304,7 @@ ms.lasthandoff: 04/03/2017
 [xplat-cli]:../../cli-install-nodejs.md
 [xplat-cli-azure-resource-manager]:../../xplat-cli-azure-resource-manager.md
 
-このガイドは Microsoft Azure への SAP ソフトウェアの実装およびデプロイに関するドキュメントの一部です。 このガイドを読む前に、[計画および実装ガイド][planning-guide]をお読みください。 このドキュメントでは、Azure のサービスとしてのインフラストラクチャ (IaaS) 機能を使用して Microsoft Azure Virtual Machines (VM) 上の SAP とさまざまなリレーショナル データベース管理システム (RDBMS) および関連製品を組み合わせてデプロイする方法について説明します。
+このガイドは Microsoft Azure への SAP ソフトウェアの実装およびデプロイに関するドキュメントの一部です。 このガイドを読む前に、「[計画および実装ガイド][planning-guide]」をお読みください。 このドキュメントでは、Azure のサービスとしてのインフラストラクチャ (IaaS) 機能を使用して Microsoft Azure Virtual Machines (VM) 上の SAP とさまざまなリレーショナル データベース管理システム (RDBMS) および関連製品を組み合わせてデプロイする方法について説明します。
 
 特定のプラットフォームに SAP ソフトウェアをインストールしてデプロイするときの主要なリソースである SAP インストール ドキュメントと SAP Notes を補足する内容となっています。
 
@@ -276,8 +334,8 @@ ms.lasthandoff: 04/03/2017
 ### <a name="resources"></a>リソース
 Azure での SAP デプロイのトピックを記載した次のガイドが提供されています。
 
-* [Azure Virtual Machines (VM) 上の SAP NetWeaver – 計画および実装ガイド][planning-guide]
-* [Azure Virtual Machines (VM) 上の SAP NetWeaver – デプロイ ガイド][deployment-guide]
+* [Azure Virtual Machines (VMs) への SAP NetWeaver の導入 – 計画/導入ガイド][planning-guide]
+* [Azure Virtual Machines (VM) への SAP NetWeaver の導入 – デプロイ ガイド][deployment-guide]
 * [Azure Virtual Machines (VM) 上の SAP NetWeaver – DBMS デプロイ ガイド (本書)][dbms-guide]
 * [Azure Virtual Machines (VM) への SAP NetWeaver の導入 - 高可用性ガイド][ha-guide]
 
@@ -318,7 +376,7 @@ Microsoft Azure のアーキテクチャと Microsoft Azure Virtual Machines の
 * Azure IaaS での高可用性。
 
 ## <a name="65fa79d6-a85f-47ee-890b-22e794f51a64"></a>RDBMS デプロイの構造
-以降の章に進むにあたって、[デプロイ ガイド][deployment-guide]の[この章][deployment-guide-3]で説明した内容を理解しておく必要があります。 この章を読む前に、別の VM シリーズとその相違点、および Azure Standard と Premium Storage の違いについての知識を理解しておく必要があります。
+以降の章に進むにあたって、「[デプロイ ガイド][deployment-guide]」の[この章][deployment-guide-3]で説明した内容を理解しておく必要があります。 この章を読む前に、別の VM シリーズとその相違点、および Azure Standard と Premium Storage の違いについての知識を理解しておく必要があります。
 
 2015 年 3 月まで、オペレーティング システムを含む Azure VHD のサイズは 127 GB に制限されていました。 この制限は、2015 年 3 月に解除されました。(詳細については、<https://azure.microsoft.com/blog/2015/03/25/azure-vm-os-drive-limit-octupled/> をご覧ください)。 その時点から、オペレーティング システムを含む VHD をその他の VHD と同じサイズにできるようになりました。 ただし現在でも、オペレーティング システム、DBMS、および最終的に導入する SAPバイナリとデータベース ファイルとを分けたデプロイ構造にすることをお勧めしています。 そのため、Microsoft は、Azure Virtual Machines で実行する SAP システムに、オペレーティング システムとともにインストールされるベース VM (または VHD)、データベース管理システムの実行可能ファイル、および SAP の実行可能ファイルが含まれていると想定しています。 DBMS のデータとログ ファイルは別の VHD ファイルの Azure Storage (Standard または Premium Storage) に格納され、元の Azure オペレーティング システム イメージ VM に論理ディスクとして接続されます。
 
@@ -419,10 +477,10 @@ Microsoft Azure Storage は、ベース VM (OS を含む) と VHD または BLOB
 
 Azure Storage のローカル レプリケーション (ローカル冗長) は、インフラストラクチャの障害によるデータ損失に対する保護のレベルを提供します。これは、ほとんどのお客様が導入する余裕のないものでしょう。 上記のように、4 つの異なるオプションがあり、5 番目は最初の 3 つのいずれかのバリエーションです。 それらについて詳しく説明すると次のようになります。
 
-* **Premium ローカル冗長ストレージ (LRS)**: Azure Premium Storage は、高負荷の I/O ワークロードを実行する仮想マシン向けに高パフォーマンスで待ち時間の少ないディスク サポートを提供します。 Azure リージョンの同じ Azure データ センター内にデータのレプリカが 3 つあります。 コピーはさまざまなフォールト ドメインとアップグレード ドメイン内に置かれます (概念については、[計画ガイド][planning-guide]の[この章][planning-guide-3.2]をご覧ください)。 ストレージ ノードの障害またはディスクの障害によってデータのレプリカが停止した場合、新しいレプリカが自動的に生成されます。
-* **ローカル冗長ストレージ (LRS)**: Azure リージョンの同じ Azure データ センター内にデータのレプリカが 3 つあります。 コピーはさまざまなフォールト ドメインとアップグレード ドメイン内に置かれます (概念については、[計画ガイド][planning-guide]の[この章][planning-guide-3.2]をご覧ください)。 ストレージ ノードの障害またはディスクの障害によってデータのレプリカが停止した場合、新しいレプリカが自動的に生成されます。
+* **Premium ローカル冗長ストレージ (LRS)**: Azure Premium Storage は、高負荷の I/O ワークロードを実行する仮想マシン向けに高パフォーマンスで待ち時間の少ないディスク サポートを提供します。 Azure リージョンの同じ Azure データ センター内にデータのレプリカが 3 つあります。 コピーはさまざまなフォールト ドメインとアップグレード ドメイン内に置かれます (概念については、「[計画ガイド][planning-guide]」の[この章][planning-guide-3.2]をご覧ください)。 ストレージ ノードの障害またはディスクの障害によってデータのレプリカが停止した場合、新しいレプリカが自動的に生成されます。
+* **ローカル冗長ストレージ (LRS)**: Azure リージョンの同じ Azure データ センター内にデータのレプリカが 3 つあります。 コピーはさまざまなフォールト ドメインとアップグレード ドメイン内に置かれます (概念については、「[計画ガイド][planning-guide]」の[この章][planning-guide-3.2]をご覧ください)。 ストレージ ノードの障害またはディスクの障害によってデータのレプリカが停止した場合、新しいレプリカが自動的に生成されます。
 * **Geo 冗長ストレージ (GRS)**: この場合、たいていは同じ地理的リージョン (北ヨーロッパ、西ヨーロッパなど) 内にある別の Azure リージョンにある追加の 3 つのデータ レプリカを提供する非同期のレプリケーションがあります。 これにより、追加の 3 つのレプリカが生成されるため、合計で 6 つのレプリカがあります。 このバリエーションの 1 つは、Geo レプリケーションされた Azure リージョンのデータを読み取り目的で使用できる (読み取りアクセス Geo 冗長) という追加機能です。
-* **ゾーン冗長ストレージ (ZRS)**: この場合、同じ Azure リージョンに 3 つのデータ レプリカが残ります。 [計画ガイド][planning-guide]の[この章][planning-guide-3.1]で説明したように、Azure リージョンは近接する場所にある複数のデータ センターになる場合があります。 LRS の場合、レプリカが、1 つの Azure リージョンを構成するさまざまなデータ センターに分散されます。
+* **ゾーン冗長ストレージ (ZRS)**: この場合、同じ Azure リージョンに 3 つのデータ レプリカが残ります。 「[計画ガイド][planning-guide]」の[この章][planning-guide-3.1]で説明したように、Azure リージョンは近接する場所にある複数のデータ センターになる場合があります。 LRS の場合、レプリカが、1 つの Azure リージョンを構成するさまざまなデータ センターに分散されます。
 
 詳しくは、[こちら][storage-redundancy]をご覧ください。
 
@@ -450,7 +508,7 @@ DS シリーズまたは GS シリーズの Azure VM を使用すると、Azure 
 
 顧客のデプロイメントとテストに基づき、単一の Azure Standard Storage アカウントではデータベース データ ファイルとログ ファイルを含む約 30 ～ 40 の VHD を許容可能なパフォーマンスでプロビジョニングすることができます。 前述のように、Azure Premium Storage アカウントの制限は、IOPS ではなく、保持できるデータの容量に適用される可能性があります。
 
-オンプレミスの SAN デバイスと同様に、共有では、最終的に Azure ストレージ アカウント上のボトルネックを検出するために何らかの監視が必要です。 Azure Monitoring Extension for SAP と Azure ポータルを使用すると、ビジー状態の Azure ストレージ アカウント検出することができるため、最適な IO パフォーマンスを提供できます。  このような状況が検出された場合、ビジー状態の VM を別の Azure ストレージ アカウントに移動することが推奨されます。 SAP ホスト管理機能をアクティブ化する方法については、[デプロイ ガイド][deployment-guide]をご覧ください。
+オンプレミスの SAN デバイスと同様に、共有では、最終的に Azure ストレージ アカウント上のボトルネックを検出するために何らかの監視が必要です。 Azure Monitoring Extension for SAP と Azure ポータルを使用すると、ビジー状態の Azure ストレージ アカウント検出することができるため、最適な IO パフォーマンスを提供できます。  このような状況が検出された場合、ビジー状態の VM を別の Azure ストレージ アカウントに移動することが推奨されます。 SAP ホスト管理機能をアクティブ化する方法については、「[デプロイ ガイド][deployment-guide]」をご覧ください。
 
 Azure Standard Storage と Azure Standard Storage アカウントに関するベスト プラクティスを要約した別の記事は、こちら (<https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx>) をご覧ください。
 
@@ -516,7 +574,7 @@ DBMS デプロイメントの高可用性構成 (使用する個別の DBMS HA �
 ## <a name="deployment-of-host-monitoring"></a>ホスト監視のデプロイ
 Azure Virtual Machines での SAP アプリケーションを実稼働環境で使用する場合、SAP には Azure Virtual Machines を実行する物理ホストからホスト監視データを取得する機能が必要です。 SAPOSCOL および SAP HostAgent でこの機能を有効にする、特定の SAP HostAgent パッチ レベルが必要になります。 正確なパッチ レベルは SAP Note [1409604]に記載されています。
 
-ホストのデータを SAPOSCOL および SAPHostAgent に配信するコンポーネントのデプロイと、それらのコンポーネントのライフ サイクル管理に関する詳細については、[デプロイ ガイド][deployment-guide]をご覧ください。
+ホストのデータを SAPOSCOL および SAPHostAgent に配信するコンポーネントのデプロイと、それらのコンポーネントのライフ サイクル管理の詳細については、「[デプロイ ガイド][deployment-guide]」をご覧ください。
 
 ## <a name="3264829e-075e-4d25-966e-a49dad878737"></a>Microsoft SQL Server の特記事項
 ### <a name="sql-server-iaas"></a>SQL Server IaaS
@@ -781,7 +839,7 @@ Azure ストレージがコンテンツを保護しているという事実を�
 7. 常に名前解決を使用して、IP アドレスに依存しないようにする。
 8. 考えられる最高のデータベースの圧縮を使用する。 SQL Server の場合、これはページの圧縮。
 9. Azure Marketplace の SQL Server イメージを使用するよう注意してください。 いずれかの SQL Server を使用する場合は、SAP NetWeaver システムをインストールする前にインスタンスの照合順序を変更する必要があります。
-10. [デプロイ ガイド][deployment-guide]に従い、SAP Host Monitoring for Azure をインストールして構成します。
+10. 「[デプロイ ガイド][deployment-guide]」に従い、SAP Host Monitoring for Azure をインストールして構成します。
 
 ## <a name="specifics-to-sap-ase-on-windows"></a>Windows 上の SAP ASE の仕様
 Microsoft Azure 以降では、既存の SAP ASE アプリケーションを Azure Virtual Machines に簡単に移行できます。 Virtual Machine の SAP ASE では、さまざまなエンタープライズ アプリケーションを Microsoft Azure に簡単に移行できるため、これらのアプリケーションのデプロイメント、管理、およびメンテナンスの総所有コストを削減することができます。 Azure Virtual Machine の SAP ASE では、管理者および開発者はオンプレミスで提供されているものと同じ開発ツールや管理ツールを引き続き使用できます。
@@ -1105,7 +1163,7 @@ NTFS でフォーマットされたディスクを使用した単一インスタ
 
 は Oracle データベースのファイルではサポートされて **いません** 。
 
-Azure Page BLOB Storage に基づく Azure VHD の使用では、このドキュメントの[VM と VHD のキャッシング][dbms-guide-2.1]の章と[Microsoft Azure Storage][dbms-guide-2.3]の章の説明が Oracle Database によるデプロイにも適用されます。
+Azure Page BLOB Storage に基づく Azure VHD の使用では、このドキュメントの「[VM と VHD のキャッシング][dbms-guide-2.1]」の章と「[Microsoft Azure Storage][dbms-guide-2.3]」の章の説明が Oracle Database によるデプロイにも適用されます。
 
 ドキュメント前半の全般的な部分で説明したように、Azure VHD の IOPS スループットにクォータが存在します。 正確なクォータは、使用する VM タイプによって異なります。 VM タイプとそのクォータの一覧は、[こちら][virtual-machines-sizes]に記載されています。
 
@@ -1113,7 +1171,7 @@ Azure Page BLOB Storage に基づく Azure VHD の使用では、このドキュ
 
 ディスクあたりの現在の IOPS クォータが要件を満たしているかぎり、マウントされた単一の Azure VHD 上のすべてのデータベース ファイルを格納することができます。
 
-高い IOPS が必要な場合は、Windows 記憶域プール (Windows Server 2012 以降でのみ提供) または Windows 2008 R2 の Windows ストライピングを使用して、複数のマウントされた VHD ディスク上で 1 つの大きな論理デバイスを作成することを強くお勧めします。 このドキュメントの[ソフトウェア RAID][dbms-guide-2.2]の章もご覧ください。 この方法では、ディスク領域を管理する管理オーバーヘッドを合理化でき、複数のマウントされた VHD ファイル全体でファイルを手動で分散させるための努力を回避できます。
+高い IOPS が必要な場合は、Windows 記憶域プール (Windows Server 2012 以降でのみ提供) または Windows 2008 R2 の Windows ストライピングを使用して、複数のマウントされた VHD ディスク上で 1 つの大きな論理デバイスを作成することを強くお勧めします。 このドキュメントの「[ソフトウェア RAID][dbms-guide-2.2]」の章もご覧ください。 この方法では、ディスク領域を管理する管理オーバーヘッドを合理化でき、複数のマウントされた VHD ファイル全体でファイルを手動で分散させるための努力を回避できます。
 
 #### <a name="backup--restore"></a>バックアップと復元
 バックアップと復元機能については、SAP BR*Tools for Oracle が標準の Windows Server オペレーティング システムと Hyper-V と同様にサポートされています。 ディスクへのバックアップとディスクからの復元については Oracle Recovery Manager (RMAN) もサポートされます。
@@ -1143,7 +1201,7 @@ Microsoft Windows オペレーティング システムの最新バージョン�
 
 ### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Azure VM で SAP をインストールするための SAP MaxDB 構成ガイドライン
 #### <a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>ストレージの構成
-SAP MaxDB 向けの Azure Storage のベスト プラクティスについては、[RDBMS デプロイの構造][dbms-guide-2]の章に記載されている一般的な推奨事項に従ってください。
+SAP MaxDB 向けの Azure Storage のベスト プラクティスについては、「[RDBMS デプロイの構造][dbms-guide-2]」の章に記載されている一般的な推奨事項に従ってください。
 
 > [!IMPORTANT]
 > 他のデータベースと同様に、SAP MaxDB にはデータとログ ファイルもあります。 ただし、SAP MaxDB 用語では正しい用語は「ボリューム」(「ファイル」ではない) です。 たとえば、SAP MaxDB のデータ ボリュームとログ ボリュームがあります。 OS ディスクのボリュームとこれらを混同しないでください。
@@ -1152,11 +1210,11 @@ SAP MaxDB 向けの Azure Storage のベスト プラクティスについては
 
 要するに、次のことを行う必要があります。
 
-* SAP MaxDB データ ボリュームとログ ボリューム (ファイル) を保持する Azure ストレージ アカウントを、[Microsoft Azure Storage][dbms-guide-2.3]の章に記載したように、**ローカル冗長ストレージ (LRS)** に設定します。
+* SAP MaxDB データ ボリュームとログ ボリューム (ファイル) を保持する Azure ストレージ アカウントを、「[Microsoft Azure Storage][dbms-guide-2.3]」の章に記載されているように、**ローカル冗長ストレージ (LRS)** に設定します。
 * ログ ボリューム (ファイル) の IO パスと SAP MaxDB データ ボリューム (ファイル) の IO パスを分けます。 つまり、SAP MaxDB データ ボリューム (ファイル) を 1 つの論理ドライブにインストールし、SAP MaxDB ログ ボリューム (ファイル) を別の論理ドライブにインストールする必要があります。
-* SAP MaxDB データ ボリューム用に使用するのかログ ボリューム (ファイル) 用に使用するかにどうか、Azure Standard または Azure Premium Storage を使用するかどうかに応じて、[VM のキャッシュ][dbms-guide-2.1]の章で記載されているように、各 Azure Blob に適切なファイル キャッシュを設定します。
+* 何向けに使用するか (SAP MaxDB データ用またはログ ボリューム (ファイル) 用) と使用するソリューション (Azure Standard または Azure Premium Storage ) に応じて、各 Azure Blob の適切なファイル キャッシュを、「[VM のキャッシュ][dbms-guide-2.1]」の章に記載されているように設定します。
 * ディスクあたりの現在の IOPS クォータが要件を満たしている限り、すべてのデータ ボリュームを 1 つのマウント Azure VHD に格納し、また別の 1 つのマウント Azure VHD にデータベースのすべてのログ ボリュームを格納することが可能です。
-* 高い IOPS が必要な場合は、Microsoft Windows 記憶域プール (Windows Server 2012 以降でのみ提供) または Windows 2008 R2 の Windows ストライピングを使用して、複数のマウントされた VHD ディスク上で 1 つの大きな論理デバイスを作成することを強くお勧めします。 このドキュメントの[ソフトウェア RAID][dbms-guide-2.2]の章もご覧ください。 この方法では、ディスク領域を管理する管理オーバーヘッドを合理化でき、複数のマウントされた VHD ファイル全体でファイルを手動で分散させるための努力を回避できます。
+* 高い IOPS が必要な場合は、Microsoft Windows 記憶域プール (Windows Server 2012 以降でのみ提供) または Windows 2008 R2 の Windows ストライピングを使用して、複数のマウントされた VHD ディスク上で 1 つの大きな論理デバイスを作成することを強くお勧めします。 このドキュメントの「[ソフトウェア RAID][dbms-guide-2.2]」の章もご覧ください。 この方法では、ディスク領域を管理する管理オーバーヘッドを合理化でき、複数のマウントされた VHD ファイル全体でファイルを手動で分散させるための努力を回避できます。
 * 最も高い IOPS 要件については、DS シリーズと GS シリーズの VM で提供されている Azure Premium Storage を使用できます。
 
 ![SAP MaxDB DBMS 用の Azure IaaS VM の参照の構成][dbms-guide-figure-600]
@@ -1182,7 +1240,7 @@ Azure でのデータベースのバックアップと復元はオンプレミ�
   * SAP MaxDB データ ボリューム (ファイル)
   * SAP MaxDB ログ ボリューム (ファイル)
 
-ボリュームを複数のマウントされた VHD でストライピングする方法は、このドキュメントの前半の[ソフトウェア RAID][dbms-guide-2.2]の章で取り上げられてきました。
+ボリュームを複数のマウントされた VHD でストライピングする方法は、このドキュメントの前半の「[ソフトウェア RAID][dbms-guide-2.2]」の章で取り上げています。
 
 #### <a name="f77c1436-9ad8-44fb-a331-8671342de818"></a>その他
 このドキュメントの最初の 3 つの章で説明したように、SAP MaxDB データベースを使用した VM のデプロイについては Azure 可用性セットまたは SAP の監視などその他のすべての一般的なトピックが適用されます。
@@ -1215,7 +1273,7 @@ SAP でサポートされている Azure VM の種類 (SAP Note [1928533]) に�
 この観点から、新しい D シリーズまたは DS シリーズ (Azure Premium Storage と組み合わせる) Azure VM タイプを使用することを強くお勧めします。これらは A シリーズよりもプロセッサが 60% 高速であるためです。 最大 RAM と CPU の負荷については、G シリーズと GS シリーズ (Azure Premium Storage と組み合わせる) VM を最新の Intel® Xeon® プロセッサ E5 v3 ファミリと合わせて使用できます。この VM は D/DS シリーズと比べ、メモリが 2 倍で、ソリッド ステート ドライブ ストレージ (SSD) が 4 倍です。
 
 #### <a name="storage-configuration"></a>ストレージの構成
-SAP liveCache は SAP MaxDB テクノロジをベースとしているため、[ストレージの構成][dbms-guide-8.4.1]の章で SAP MaxDB について説明したすべての Azure Storage のベスト プラクティスの推奨事項が SAP liveCache に対しても有効です。
+SAP liveCache は SAP MaxDB テクノロジをベースとしているため、「[ストレージの構成][dbms-guide-8.4.1]」の章で SAP MaxDB について説明したすべての Azure Storage のベスト プラクティスの推奨事項が SAP liveCache に対しても有効です。
 
 #### <a name="dedicated-azure-vm-for-livecache"></a>liveCache 専用の Azure VM
 SAP liveCache は、計算能力を集中的に使用するため、実稼働で使用する場合は、専用の Azure Virtual Machine をデプロイすることを強くお勧めします。
@@ -1223,7 +1281,7 @@ SAP liveCache は、計算能力を集中的に使用するため、実稼働で
 ![実稼働ユース ケースでの liveCache 専用 Azure VM][dbms-guide-figure-700]
 
 #### <a name="backup-and-restore"></a>バックアップと復元
-パフォーマンスの考慮事項を含め、バックアップと復元については、[バックアップと復元][dbms-guide-8.4.2]の章と[バックアップと復元のパフォーマンスに関する考慮事項][dbms-guide-8.4.3]の章の関連する SAP MaxDB の部分で既に説明しました。
+パフォーマンスの考慮事項を含め、バックアップと復元については、「[バックアップと復元][dbms-guide-8.4.2]」の章と「[バックアップと復元のパフォーマンスに関する考慮事項][dbms-guide-8.4.3]」の章の関連する SAP MaxDB の部分で既に説明しています。
 
 #### <a name="other"></a>その他
 その他のすべての一般的なトピックは、[この章][dbms-guide-8.4.4]の関連する SAP MaxDB の部分に記述されています。
@@ -1252,9 +1310,9 @@ Azure での SAP コンテンツ サーバー向けにサポートされてい�
 
 ### <a name="sap-content-server-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Azure VM で SAP をインストールするための SAP コンテンツ サーバー構成ガイドライン
 #### <a name="storage-configuration"></a>ストレージの構成
-SAP MaxDB データベースのファイルを格納するように SAP コンテンツ サーバーを構成する場合、[ストレージの構成][dbms-guide-8.4.1]の章で SAP MaxDB について説明したすべての Azure Storage のベスト プラクティスの推奨事項が SAP コンテンツ サーバーに対しても有効です。
+SAP MaxDB データベースのファイルを格納するように SAP コンテンツ サーバーを構成する場合、「[ストレージの構成][dbms-guide-8.4.1]」の章で SAP MaxDB について説明したすべての Azure Storage のベスト プラクティスの推奨事項が SAP コンテンツ サーバーに対しても有効です。
 
-ファイル システムのファイルを格納するように SAP コンテンツ サーバーを構成する場合、専用の論理ドライブを使用することをお勧めします。 記憶域スペースを使用することで、[ソフトウェア RAID][dbms-guide-2.2]の章で説明したように、論理ディスク サイズと IOPS スループットを向上させることができます。
+ファイル システムのファイルを格納するように SAP コンテンツ サーバーを構成する場合、専用の論理ドライブを使用することをお勧めします。 記憶域スペースを使用することで、「[ソフトウェア RAID][dbms-guide-2.2]」の章で説明したように、論理ディスク サイズと IOPS スループットを向上させることができます。
 
 #### <a name="sap-content-server-location"></a>SAP コンテンツ サーバーの場所
 SAP コンテンツ サーバーは、SAP システムがデプロイされたときと同じ Azure リージョンと Azure VNET にデプロイする必要があります。 専用の Azure VM または SAP システムが実行されているのと同じ VM に SAP コンテンツ サーバー コンポーネントを展開するかどうかを自由に決めることができます。
@@ -1275,7 +1333,7 @@ SAP キャッシュ サーバーは、(キャッシュされた) ドキュメン
 <a name="642f746c-e4d4-489d-bf63-73e80177a0a8"></a>
 
 #### <a name="backup--restore"></a>バックアップと復元
-SAP MaxDB データベースのファイルを格納するように SAP コンテンツ サーバーを構成する場合、バックアップと復元の手順、およびパフォーマンスに関する考慮事項については、[バックアップと復元][dbms-guide-8.4.2]の章と[バックアップと復元のパフォーマンスに関する考慮事項][dbms-guide-8.4.3]の章の SAP MaxDB の部分で既に説明しました。
+SAP MaxDB データベースのファイルを格納するように SAP コンテンツ サーバーを構成する場合、バックアップと復元の手順、およびパフォーマンスに関する考慮事項については、「[バックアップと復元][dbms-guide-8.4.2]」の章と「[バックアップと復元のパフォーマンスに関する考慮事項][dbms-guide-8.4.3]」の章の SAP MaxDB の部分で既に説明しています。
 
 ファイル システムのファイルを格納するように SAP コンテンツ サーバーを構成する場合、ドキュメントが置かれているファイル構造全体の手動バックアップ/復元を実行するという選択肢があります。 SAP MaxDB のバックアップ/復元と同様に、バックアップ専用のディスク ボリュームを用意することをお勧めします。
 
@@ -1304,7 +1362,7 @@ Microsoft Azure Virtual Machine サービスにおける SAP on IBM DB2 for LUW 
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx>
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
 
-Azure ページ BLOB Storage に基づいて Azure VHD を使用する場合、このドキュメントの[RDBMS デプロイの構造][dbms-guide-2]の章の説明が、IBM DB2 for LUW データベースでのデプロイにも適用されます。
+Azure ページ BLOB Storage に基づいて Azure VHD を使用する場合、このドキュメントの「[RDBMS デプロイの構造][dbms-guide-2]」の章の説明が、IBM DB2 for LUW データベースでのデプロイにも適用されます。
 
 ドキュメント前半の全般的な部分で説明したように、Azure VHD の IOPS スループットにクォータが存在します。 正確なクォータは使用する VM タイプによって異なります。 VM タイプとそのクォータの一覧は、[こちら][virtual-machines-sizes]に記載されています。
 
@@ -1312,7 +1370,7 @@ Azure ページ BLOB Storage に基づいて Azure VHD を使用する場合、�
 
 パフォーマンスに関する考慮事項についても、SAP インストール ガイドの「データベース ディレクトリのデータの安全性とパフォーマンスに関する考慮事項」の章を参照してください。
 
-または、このドキュメントの[ソフトウェア RAID][dbms-guide-2.2]の章に記載されているように、Windows 記憶域プール (Windows Server 2012 以降でのみ提供) または Windows 2008 R2 の Windows ストライピングを使用して、複数のマウントされた VHD ディスク上で 1 つの大きな論理デバイスを作成することができます。
+または、このドキュメントの「[ソフトウェア RAID][dbms-guide-2.2]」の章に記載されているように、Windows 記憶域プール (Windows Server 2012 以降でのみ提供) または Windows 2008 R2 の Windows ストライピングを使用して、複数のマウントされた VHD ディスク上で 1 つの大きな論理デバイスを作成することができます。
 Sapdata と saptmp ディレクトリに対する DB2 ストレージ パスを含むディスクについては、512 KB の物理ディスクのセクター サイズを指定する必要があります。 Windows 記憶域プールを使用する場合は、コマンド ライン インターフェイスで ”-LogicalSectorSizeDefault“ パラメーターを使用して、手動で記憶域プールを作成する必要があります。 詳細については、<https://technet.microsoft.com/library/hh848689.aspx>をご覧ください。
 
 #### <a name="backuprestore"></a>バックアップ/復元
@@ -1336,10 +1394,10 @@ Microsoft Cluster Server (MSCS) はサポートされていません。
 
 DB2 の高可用性と障害復旧 (HADR) がサポートされています。 HA 構成に参加している VM で名前解決を行えているのであれば、Azure でのセットアップはオンプレミスのセットアップとなんら変わりません。 IP 解決のみに依存することはお勧めしません。
 
-Azure ストアの Geo レプリケーションを使用しないでください。 詳細については、[Microsoft Azure Storage][dbms-guide-2.3]の章と[Azure VM の高可用性と障害復旧][dbms-guide-3]の章をご覧ください。
+Azure ストアの Geo レプリケーションを使用しないでください。 詳細については、「[Microsoft Azure Storage][dbms-guide-2.3]」の章と「[Azure VM の高可用性と障害復旧][dbms-guide-3]」の章をご覧ください。
 
-#### <a name="other"></a>その他
+#### <a name="other"></a>他の
 このドキュメントの最初の 3 つの章で説明したように、IBM DB2 for LUW を使用した VM のデプロイについては Azure 可用性セットまたは SAP の監視などその他のすべての一般的なトピックが適用されます。
 
-[Azure での一般的な SAP 用 SQL Server の概要][dbms-guide-5.8]の章をご覧ください。
+「[Azure での一般的な SAP 用 SQL Server の概要][dbms-guide-5.8]」の章をご覧ください。
 

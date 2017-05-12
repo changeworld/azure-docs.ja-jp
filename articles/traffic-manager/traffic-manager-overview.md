@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 1da8051f96107310b821c4f88f4725987b81f732
-ms.lasthandoff: 03/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 3f1f19f8d8a4f2e6e892ba3ede67f3749cedb11b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/22/2017
 
 ---
 
@@ -104,6 +105,10 @@ Contoso Corp が、新しいパートナー ポータルを開発しました。
 ## <a name="pricing"></a>価格
 
 価格情報については、「[Traffic Manager の価格](https://azure.microsoft.com/pricing/details/traffic-manager/)」をご覧ください。
+
+## <a name="faq"></a>FAQ
+
+Traffic Manager に関してよく寄せられる質問については、[Traffic Manager に関する FAQ](traffic-manager-FAQs.md) のページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

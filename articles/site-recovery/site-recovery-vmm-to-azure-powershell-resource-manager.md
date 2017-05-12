@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: rajanaki
 translationtype: Human Translation
-ms.sourcegitcommit: 2c070a6f46e41023ecd2ff7fb5c39b0d021aaef0
-ms.openlocfilehash: 0a900d4ddf6a751a4bf54720d3b62cf9e59e0a71
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 933cb8692abea1f66192605208ddd9c0b9057235
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -48,7 +48,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 このシナリオの設定時に問題が発生した場合は、 [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に質問を投稿してください。
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の&2; 種類のデプロイメント モデルがあります。 この記事では、リソース マネージャーのデプロイメント モデルの使用について説明します。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、リソース マネージャーのデプロイメント モデルの使用について説明します。
 >
 >
 
@@ -69,10 +69,10 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 ### <a name="vmm-prerequisites"></a>VMM の前提条件
 * System Center 2012 R2 で実行される VMM サーバーが必要です。
 * 保護する仮想マシンを含むすべての VMM サーバーが Azure Site Recovery プロバイダーを実行している必要があります。 このプロバイダーは Azure Site Recovery のデプロイ時にインストールされます。
-* 保護する VMM サーバーにクラウドが少なくとも&1; つ必要です。 このクラウドには以下のものが含まれている必要があります。
+* 保護する VMM サーバーにクラウドが少なくとも 1 つ必要です。 このクラウドには以下のものが含まれている必要があります。
   * 1 つ以上の VMM ホスト グループ。
-  * 各ホスト グループ内に&1; つ以上の Hyper-V ホスト サーバーまたはクラスター。
-  * ソース Hyper-V サーバー上に配置された&1; つ以上の仮想マシン。
+  * 各ホスト グループ内に 1 つ以上の Hyper-V ホスト サーバーまたはクラスター。
+  * ソース Hyper-V サーバー上に配置された 1 つ以上の仮想マシン。
 * VMM クラウドの設定について理解を深めます。
   * プライベート VMM クラウドの詳細については、[System Center 2012 R2 VMM のプライベート クラウドの新機能に関するページ](http://go.microsoft.com/fwlink/?LinkId=324952)および [VMM 2012 とクラウドに関するページ](http://go.microsoft.com/fwlink/?LinkId=324956)を参照してください。
   * [VMM クラウド ファブリックの構成に関するページ](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric)
@@ -103,9 +103,9 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 * [How to configure and monitor virtual networks in Azure (Azure で仮想ネットワークを構成および監視する方法)](https://azure.microsoft.com/documentation/services/virtual-network/)
 
 ### <a name="powershell-prerequisites"></a>PowerShell の前提条件
-Azure PowerShell を使用する準備が整っていることを確認してください。 PowerShell を使用している場合は、0.8.10 以降のバージョンにアップグレードする必要があります。 PowerShell の設定については、 [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs)に関するページをご覧ください。 PowerShell を設定して構成したら、サービスで使用可能なすべてのコマンドレットを [ここ](https://msdn.microsoft.com/library/dn850420.aspx)に表示できます。
+Azure PowerShell を使用する準備が整っていることを確認してください。 PowerShell を使用している場合は、0.8.10 以降のバージョンにアップグレードする必要があります。 PowerShell の設定については、 [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs)に関するページをご覧ください。 PowerShell を設定して構成したら、サービスで使用可能なすべてのコマンドレットを [ここ](/powershell/azure/overview)に表示できます。
 
-Azure PowerShell でのパラメーター値、入力、出力の一般的な処理方法など、コマンドレットの使用に役立つヒントについては、「 [Azure コマンドレットの概要](https://msdn.microsoft.com/library/azure/jj554332.aspx)」をご覧ください。
+Azure PowerShell でのパラメーター値、入力、出力の一般的な処理方法など、コマンドレットの使用に役立つヒントについては、「 [Azure コマンドレットの概要](/powershell/azure/get-started-azureps)」をご覧ください。
 
 ## <a name="step-1-set-the-subscription"></a>ステップ 1: サブスクリプションを設定する
 1. Azure PowerShell から次のコマンドレットを使用して、Azure アカウントにログインします。
@@ -223,7 +223,7 @@ Azure ストレージ アカウントを持っていない場合、次のコマ�
 
 Azure Resource Manager と PowerShell を使用して仮想ネットワークを作成する方法の詳細については、「 [PowerShell と Azure Resource Manager を使用してサイト間 VPN 接続で仮想ネットワークを作成する](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 
-複数の仮想マシン ネットワークを&1; つの Azure ネットワークにマップできることに注意してください。 ターゲット ネットワークに複数のサブネットがあり、そのサブネットのいずれかが、ソースの仮想マシンが配置されているサブネットと同じ名前である場合、フェールオーバー後、レプリカの仮想マシンはそのターゲット サブネットに接続されます。 ターゲットのサブネットで名前が一致するものがなければ、仮想マシンはネットワークの最初のサブネットに接続されます。
+複数の仮想マシン ネットワークを 1 つの Azure ネットワークにマップできることに注意してください。 ターゲット ネットワークに複数のサブネットがあり、そのサブネットのいずれかが、ソースの仮想マシンが配置されているサブネットと同じ名前である場合、フェールオーバー後、レプリカの仮想マシンはそのターゲット サブネットに接続されます。 ターゲットのサブネットで名前が一致するものがなければ、仮想マシンはネットワークの最初のサブネットに接続されます。
 
 1. 最初のコマンドは、現在の Azure Site Recovery コンテナーのサーバーを取得します。 このコマンドは、$Servers 配列変数に、Microsoft Azure Site Recovery のサーバーを格納します。
 
@@ -286,7 +286,7 @@ Azure Resource Manager と PowerShell を使用して仮想ネットワークを
 
         $jobIDResult =  Start-AzureRmSiteRecoveryUnPlannedFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity -AzureVMNetworkId <string>  
 
-## <a name="a-namemonitora-monitor-activity"></a><a name=monitor></a> アクティビティを監視する
+## <a name=monitor></a> アクティビティを監視する
 アクティビティを監視するには、次のコマンドを使用します。 ジョブの処理が終了するまで待機する必要があります。
 
     Do
@@ -307,5 +307,5 @@ Azure Resource Manager と PowerShell を使用して仮想ネットワークを
 
 
 ## <a name="next-steps"></a>次のステップ
-[詳細を確認](https://msdn.microsoft.com/library/azure/mt637930.aspx) します。
+[詳細を確認](/powershell/module/azurerm.recoveryservices.backup/#recovery) します。
 

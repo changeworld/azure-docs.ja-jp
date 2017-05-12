@@ -14,10 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: 48ce80d2a25c6ad55e0520ea4cbdbc82db23f919
-ms.lasthandoff: 04/04/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
+ms.openlocfilehash: eac9c5b0d8d0f7802d88e6f4f27d9d23c406e025
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/28/2017
 
 
 ---

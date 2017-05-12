@@ -9,10 +9,11 @@ ms.technology: face
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: anroth
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 14bbab24c34136fb41f5470dfc00109c4daa1ade
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 6757ec0ab08ba81ee86e926ccb56bffcffc4a6fc
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 ---
 
@@ -52,7 +53,6 @@ As an alternative, the subscription key can also be specified in the HTTP reques
 ```CSharp
 faceServiceClient = new FaceServiceClient("Your subscription key");
 ```
-See [subscription and key management](https://www.microsoft.com/cognitive-services/en-US/subscriptions).
 
 ## <a name="step2"></a> Step 2: Upload an image to the service and execute face detection
 

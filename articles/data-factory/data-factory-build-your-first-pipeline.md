@@ -33,20 +33,20 @@ ms.lasthandoff: 02/03/2017
 
 このチュートリアルでは、データ パイプラインを備えた最初の Azure Data Factory を作成します。 パイプラインによって、Azure HDInsight (Hadoop) クラスターで Hive スクリプトを実行して出力データを生成することで、入力データを変換します。  
 
-この記事では、チュートリアルの概要と前提条件について説明します。 前提条件を満たせたら、Azure Portal、Visual Studio、PowerShell、Resource Manager テンプレート、REST API のいずれかのツールまたは SDK を使用してチュートリアルを実行できます。 この記事の最初にあるドロップダウン リストのオプションの&1; つ、または最後にあるリンクの&1; つを選択してチュートリアルを実行します。    
+この記事では、チュートリアルの概要と前提条件について説明します。 前提条件を満たせたら、Azure Portal、Visual Studio、PowerShell、Resource Manager テンプレート、REST API のいずれかのツールまたは SDK を使用してチュートリアルを実行できます。 この記事の最初にあるドロップダウン リストのオプションの 1 つ、または最後にあるリンクの 1 つを選択してチュートリアルを実行します。    
 
 ## <a name="tutorial-overview"></a>チュートリアルの概要
 このチュートリアルでは、以下の手順を実行します。
 
-1. **Data Factory**を作成します。 データ ファクトリには、データを移動および変換するデータ パイプラインを&1; つ以上含めることができます。 
+1. **Data Factory**を作成します。 データ ファクトリには、データを移動および変換するデータ パイプラインを 1 つ以上含めることができます。 
 
-    このチュートリアルでは、データ ファクトリ内にパイプラインを&1; つ作成します。 
+    このチュートリアルでは、データ ファクトリ内にパイプラインを 1 つ作成します。 
 2. **パイプライン**を作成する。 パイプラインには、1 つまたは複数のアクティビティを含めることができます (例: コピー アクティビティ、HDInsight Hive アクティビティ)。 このサンプルでは、HDInsight Hadoop クラスターで Hive スクリプトを実行する HDInsight Hive アクティビティを使用します。 このスクリプトでは、まず Azure BLOB ストレージに格納されている生の Web ログ データを参照するテーブルを作成し、その後、年月別に生データを分割します。
 
     このチュートリアルでは、パイプラインで Hive アクティビティを使用して、Azure HDInsight Hadoop クラスターで Hive クエリを実行することでデータを変換します。 
 3. **リンクされたサービス**を作成します。 データ ストアまたはコンピューティング サービスをデータ ファクトリにリンクする、リンクされたサービスを作成します。 Azure Storage などのデータ ストアには、パイプラインのアクティビティの入力データや出力データが保持されます。 HDInsight Hadoop クラスターなどのコンピューティング サービスがデータを処理または変換します。
 
-    このチュートリアルでは、リンクされたサービスを&2; つ作成します。**Azure Storage** と **Azure HDInsight** です。 Azure Storage のリンクされたサービスでは、入出力データを保持する Azure ストレージ アカウントをデータ ファクトリにリンクします。 Azure HDInsight のリンクされたサービスでは、データの変換に使用する Azure HDInsight クラスターをデータ ファクトリにリンクします。 
+    このチュートリアルでは、リンクされたサービスを 2 つ作成します。**Azure Storage** と **Azure HDInsight** です。 Azure Storage のリンクされたサービスでは、入出力データを保持する Azure ストレージ アカウントをデータ ファクトリにリンクします。 Azure HDInsight のリンクされたサービスでは、データの変換に使用する Azure HDInsight クラスターをデータ ファクトリにリンクします。 
 3. 入力 **データセット**と出力データセットを作成する。 入力データセットはパイプラインのアクティビティの入力を表し、出力データセットはアクティビティの出力を表します。
 
     このチュートリアルでは、入力データセットと出力データセットで Azure Blob Storage の入力データと出力データの場所を指定します。 Azure Storage のリンクされたサービスで、どの Azure ストレージ アカウントを使用するかを指定します。 入力データセットで、入力ファイルを配置する場所を指定し、出力データセットで、出力ファイルを配置する場所を指定します。 
@@ -54,12 +54,12 @@ ms.lasthandoff: 02/03/2017
 
 Azure Data Factory の詳細については、[Azure Data Factory の概要](data-factory-introduction.md)に関する記事をご覧ください。
   
-次に示すのは、このチュートリアルで構築するサンプル データ ファクトリの **ダイアグラム ビュー** です。 **MyFirstPipeline** には Hive 型の&1; つのアクティビティがあり、**AzureBlobInput** データセットを入力として使用し、**AzureBlobOutput** データセットを出力として生成します。 
+次に示すのは、このチュートリアルで構築するサンプル データ ファクトリの **ダイアグラム ビュー** です。 **MyFirstPipeline** には Hive 型の 1 つのアクティビティがあり、**AzureBlobInput** データセットを入力として使用し、**AzureBlobOutput** データセットを出力として生成します。 
 
 ![Diagram view in Data Factory tutorial](media/data-factory-build-your-first-pipeline/data-factory-tutorial-diagram-view.png)
 
 
-このチュートリアルでは、**adfgetstarted** Azure BLOB コンテナーの **inputdata** フォルダーに、input.log という名前のファイルが&1; つ含まれています。 このログ ファイルには、2016 年の 1 月、2 月、および 3 月の 3 か月間のエントリが含まれています。 入力ファイル内の各月のサンプル行を次に示します。 
+このチュートリアルでは、**adfgetstarted** Azure BLOB コンテナーの **inputdata** フォルダーに、input.log という名前のファイルが 1 つ含まれています。 このログ ファイルには、2016 年の 1 月、2 月、および 3 月の 3 か月間のエントリが含まれています。 入力ファイル内の各月のサンプル行を次に示します。 
 
 ```
 2016-01-01,02:01:09,SAMPLEWEBSITE,GET,/blogposts/mvc4/step2.png,X-ARR-LOG-ID=2ec4b8ad-3cf0-4442-93ab-837317ece6a1,80,-,1.54.23.196,Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36,-,http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx,\N,200,0,0,53175,871 
@@ -67,7 +67,7 @@ Azure Data Factory の詳細については、[Azure Data Factory の概要](dat
 2016-03-01,02:01:10,SAMPLEWEBSITE,GET,/blogposts/mvc4/step7.png,X-ARR-LOG-ID=d7472a26-431a-4a4d-99eb-c7b4fda2cf4c,80,-,1.54.23.196,Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36,-,http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx,\N,200,0,0,30184,871
 ```
 
-HDInsight Hive アクティビティを含むパイプラインによってファイルが処理されると、アクティビティによって HDInsight クラスターで Hive スクリプトが実行され、入力データが年月別に分割されます。 このスクリプトでは、各月のエントリが含まれているファイルを格納した&3; つの出力フォルダーが作成されます。  
+HDInsight Hive アクティビティを含むパイプラインによってファイルが処理されると、アクティビティによって HDInsight クラスターで Hive スクリプトが実行され、入力データが年月別に分割されます。 このスクリプトでは、各月のエントリが含まれているファイルを格納した 3 つの出力フォルダーが作成されます。  
 
 ```
 adfgetstarted/partitioneddata/year=2016/month=1/000000_0

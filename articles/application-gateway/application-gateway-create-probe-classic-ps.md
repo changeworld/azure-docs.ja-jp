@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 04/26/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: 4787a382b837b71a28c45211a26aa512e8fb177e
-ms.lasthandoff: 01/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: bf190741b10c10e885d927ad21a9f2b25107943f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -29,11 +30,10 @@ ms.lasthandoff: 01/24/2017
 > * [Azure Resource Manager の PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Classic PowerShell (Azure クラシック PowerShell)](application-gateway-create-probe-classic-ps.md)
 
-
-[!INCLUDE [azure-probe-intro-include](../../includes/application-gateway-create-probe-intro-include.md)]
+この記事では、PowerShell を使用して既存の Application Gateway にカスタム プローブを追加します。 カスタム プローブは、特定の正常性チェック ページがあるアプリケーションや、既定の Web アプリケーションに対して正常な応答を返さないアプリケーションに役立ちます。
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の&2; 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルを使用してこれらの手順を実行する](application-gateway-create-probe-ps.md)方法について説明します。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルを使用してこれらの手順を実行する](application-gateway-create-probe-ps.md)方法について説明します。
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
@@ -43,9 +43,9 @@ Application Gateway を作成するには:
 
 1. Application Gateway のリソースを作成します。
 2. 構成 XML ファイルまたは構成オブジェクトを作成します。
-3. 新しく作成したアプリケーション ゲートウェイのリソースに構成をコミットします。
+3. 新しく作成した Application Gateway のリソースに構成をコミットします。
 
-### <a name="create-an-application-gateway-resource"></a>アプリケーション ゲートウェイのリソースの作成
+### <a name="create-an-application-gateway-resource-with-a-custom-probe"></a>カスタム プローブを設定した Application Gateway リソースの作成
 
 ゲートウェイを作成するには、`New-AzureApplicationGateway` コマンドレットを使用して、値を独自の値に置き換えて使用します。 この時点ではゲートウェイの課金は開始されません。 課金は後の手順でゲートウェイが正しく起動されたときに開始します。
 
@@ -68,15 +68,9 @@ Get-AzureApplicationGateway AppGwTest
 
 ゲートウェイがまだ起動していないため、*VirtualIPs* と *DnsName* は空白のまま表示されます。 これらの値は、ゲートウェイが実行中の状態になったときに作成されます。
 
-## <a name="configure-an-application-gateway"></a>アプリケーション ゲートウェイの構成
-
-アプリケーション ゲートウェイは、XML または構成オブジェクトを使用して構成できます。
-
-## <a name="configure-an-application-gateway-by-using-xml"></a>XML を使用してアプリケーション ゲートウェイを構成する
+### <a name="configure-an-application-gateway-by-using-xml"></a>XML を使用してアプリケーション ゲートウェイを構成する
 
 次の例では、XML ファイルを使用して、アプリケーション ゲートウェイの設定すべてを構成し、アプリケーション ゲートウェイのリソースにコミットします。  
-
-### <a name="step-1"></a>手順 1
 
 次のテキストをメモ帳にコピーします。
 
@@ -155,32 +149,30 @@ Get-AzureApplicationGateway AppGwTest
 
 構成パラメーターは次のとおりです。
 
-* **Name** - カスタム プローブの参照名。
-* **Protocol** - 使用されるプロトコル (有効な値は HTTP または HTTPS です)。
-* **Host** と **Path** - インスタンスの状態を判断するためにアプリケーション ゲートウェイによって呼び出される完全な URL パス。 たとえば、http://contoso.com/ という Web サイトがある場合、HTTP 応答が正常かどうかをプローブでチェックするために、"http://contoso.com/path/custompath.htm" に対してカスタム プローブを構成します。
-* **Interval** - プローブのチェック間隔を秒単位で指定します。
-* **Timeout** - プローブの HTTP 応答チェックのタイムアウト期間を定義します。
-* **UnhealthyThreshold** - バックエンド インスタンスに " *異常*" というフラグを設定するために必要な HTTP 応答の失敗数。
+|パラメーターが含まれる必要があります。|Description|
+|---|---|
+|**名前** |カスタム プローブの参照名。 |
+* **Protocol** | 使用されるプロトコル (有効な値は HTTP または HTTPS です)。|
+| **Host** と **Path** | インスタンスの状態を判断するためにアプリケーション ゲートウェイによって呼び出される完全な URL パス。 たとえば、http://contoso.com/ という Web サイトがある場合、HTTP 応答が正常かどうかをプローブでチェックするために、"http://contoso.com/path/custompath.htm" に対してカスタム プローブを構成します。|
+| **間隔** | プローブのチェック間隔を秒単位で指定します。|
+| **タイムアウト** | プローブの HTTP 応答チェックのタイムアウト期間を定義します。|
+| **UnhealthyThreshold** | バックエンド インスタンスに "*異常*" というフラグを設定するために必要な HTTP 応答の失敗数。|
 
 プローブの名前は、どのバックエンド プールがカスタム プローブ設定を使用するかを割り当てる \<BackendHttpSettings\> 構成で参照されます。
 
-## <a name="add-a-custom-probe-configuration-to-an-existing-application-gateway"></a>既存のアプリケーション ゲートウェイにカスタム プローブ構成を追加する
+## <a name="add-a-custom-probe-to-an-existing-application-gateway"></a>既存の Application Gateway へのカスタム プローブの追加
 
-アプリケーション ゲートウェイの現在の構成を変更するには、現在の XML 構成ファイルの取得、カスタム プローブを追加するための変更、新しい XML 設定を使用したアプリケーション ゲートウェイの構成という&3; つの手順を行う必要があります。
+アプリケーション ゲートウェイの現在の構成を変更するには、現在の XML 構成ファイルの取得、カスタム プローブを追加するための変更、新しい XML 設定を使用したアプリケーション ゲートウェイの構成という 3 つの手順を行う必要があります。
 
-### <a name="step-1"></a>手順 1
+1. `Get-AzureApplicationGatewayConfig` を使用して XML ファイルを取得します。 このコマンドレットにより、プローブ設定を追加するために変更される XML 構成ファイルがエクスポートされます。
 
-`Get-AzureApplicationGatewayConfig` を使用して XML ファイルを取得します。 このコマンドレットにより、プローブ設定を追加するために変更される XML 構成ファイルがエクスポートされます。
+  ```powershell
+  Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofile "<path to file>"
+  ```
 
-```powershell
-Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofile "<path to file>"
-```
+1. テキスト エディターで XML ファイルを開きます。 `<frontendport>` の後に `<probe>` セクションを追加します。
 
-### <a name="step-2"></a>手順 2.
-
-テキスト エディターで XML ファイルを開きます。 `<frontendport>` の後に `<probe>` セクションを追加します。
-
-```xml
+  ```xml
 <Probes>
     <Probe>
         <Name>Probe01</Name>
@@ -192,11 +184,11 @@ Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofi
         <UnhealthyThreshold>5</UnhealthyThreshold>
     </Probe>
 </Probes>
-```
+  ```
 
-XML の backendHttpSettings セクションで、次の例に示すようにプローブ名を追加します。
+  XML の backendHttpSettings セクションで、次の例に示すようにプローブ名を追加します。
 
-```xml
+  ```xml
     <BackendHttpSettings>
         <Name>setting1</Name>
         <Port>80</Port>
@@ -205,13 +197,11 @@ XML の backendHttpSettings セクションで、次の例に示すようにプ�
         <RequestTimeout>120</RequestTimeout>
         <Probe>Probe01</Probe>
     </BackendHttpSettings>
-```
+  ```
 
-XML ファイルを保存します。
+  XML ファイルを保存します。
 
-### <a name="step-3"></a>手順 3.
-
-`Set-AzureApplicationGatewayConfig` を使用して、新しい XML ファイルでアプリケーション ゲートウェイの構成を更新します。 このコマンドレットにより、新しい構成でアプリケーション ゲートウェイが更新されます。
+1. `Set-AzureApplicationGatewayConfig` を使用して、新しい XML ファイルでアプリケーション ゲートウェイの構成を更新します。 このコマンドレットにより、新しい構成でアプリケーション ゲートウェイが更新されます。
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile "<path to file>"

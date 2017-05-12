@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/30/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 4387dc52b756e919c482deacf826ebafd3709126
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: e2ccb78da419b12a9845d720efb5b0229d4f455b
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -59,7 +59,7 @@ Trend Micro のオンプレミスのソリューション用サブスクリプ�
 ## <a name="install-the-deep-security-agent-on-an-existing-vm"></a>既存の VM に Deep Security Agent をインストールする
 既存の VM にエージェントをインストールするには、次の条件が必要です。
 
-* Azure PowerShell モジュール Version 0.8.2 以降がローカル コンピューターにインストールされていること。 インストールした Azure PowerShell のバージョンは、 **Get-Module azure | format-table version** コマンドを使用して確認できます。 最新バージョンの説明とダウンロード用リンクについては、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」を参照してください。 `Add-AzureAccount`を使用して Azure サブスクリプションにログインします。
+* Azure PowerShell モジュール Version 0.8.2 以降がローカル コンピューターにインストールされていること。 インストールした Azure PowerShell のバージョンは、 **Get-Module azure | format-table version** コマンドを使用して確認できます。 最新バージョンの説明とダウンロード用リンクについては、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」を参照してください。 `Add-AzureAccount`を使用して Azure サブスクリプションにログインします。
 * VM エージェントがターゲットの仮想マシンにインストールされていること。
 
 最初に、VM エージェントがインストールされていることを確認します。 クラウド サービス名と仮想マシン名を入力して、管理者レベルの Azure PowerShell のコマンド プロンプトで、次のコマンドを実行します。 引用符内のすべての文字 (< および > を含む) を置き換えます。

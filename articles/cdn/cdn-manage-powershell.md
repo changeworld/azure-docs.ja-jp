@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 109ca4a4672d21969096af26a094390673de25d9
-ms.openlocfilehash: 9b0912edc5adf804e7a3e6dcc6b440fc165d3673
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 647e3de08dd8d3b520705f0d52ba2bb674eda0bf
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: 9b0912edc5adf804e7a3e6dcc6b440fc165d3673
 PowerShell により、Azure CDN プロファイルとエンドポイントを柔軟に管理することができます。  この PowerShell は対話的に使用することも、スクリプトを記述して、管理タスクを自動化することもできます。  このチュートリアルでは、Azure CDN のプロファイルとエンドポイントを管理するために、PowerShell で実行できる一般的なタスクをいくつか紹介します。
 
 ## <a name="prerequisites"></a>前提条件
-PowerShell を使用して Azure CDN のプロファイルとエンドポイントを管理するには、Azure PowerShell モジュールをインストールする必要があります。  `Login-AzureRmAccount` コマンドレットを使用して Azure PowerShell をインストールし、Azure に接続する方法については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」を参照してください。
+PowerShell を使用して Azure CDN のプロファイルとエンドポイントを管理するには、Azure PowerShell モジュールをインストールする必要があります。  `Login-AzureRmAccount` コマンドレットを使用して Azure PowerShell をインストールし、Azure に接続する方法については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」を参照してください。
 
 > [!IMPORTANT]
 > Azure PowerShell コマンドレットを実行する前に、`Login-AzureRmAccount` でログインする必要があります。
@@ -244,10 +245,5 @@ Remove-AzureRmCdnProfile -ProfileName CdnPoshDemo -ResourceGroupName CdnDemoRG
 [.NET](cdn-app-dev-net.md) または [Node.js](cdn-app-dev-node.md) を使用して Azure CDN を自動化する方法について学習します。
 
 CDN 機能の詳細については、[CDN の概要](cdn-overview.md)に関するページをご覧ください。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

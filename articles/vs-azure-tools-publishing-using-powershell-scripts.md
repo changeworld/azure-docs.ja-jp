@@ -15,9 +15,9 @@ ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 6041c627d87f0223b9c718f3883a709ff81c28e1
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: d5e9a300dcea137bf0d3db2da2dfb5c2e6a152af
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -31,7 +31,7 @@ Visual Studio で Web アプリケーションを作成するときに、Azure �
 
 Web プロジェクトのスクリプトの生成に Azure SDK は不要です。 この機能は、クラウド サービスの Web ロールではなく、Web プロジェクトを対象としています。
 
-* Azure PowerShell 0.7.4 以降。 詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」ご覧ください。
+* Azure PowerShell 0.7.4 以降。 詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」ご覧ください。
 * [Windows PowerShell 3.0](http://go.microsoft.com/?linkid=9811175) 以降。
 
 ## <a name="additional-tools"></a>その他のツール
@@ -47,7 +47,7 @@ Visual Studio では、**PublishScripts** というソリューション レベ�
 発行スクリプトには、Web サイトまたは仮想マシンへのデプロイに必要な発行手順が含まれています。 Visual Studio では、Windows PowerShell の開発で構文の色を使用できます。 関数にはヘルプが用意されています。また、要件の変更に合わせて、スクリプトの関数を自由に編集できます。
 
 ### <a name="windows-powershell-module"></a>Windows PowerShell モジュール
-Visual Studio によって生成される Windows PowerShell モジュールには、発行スクリプトで使用する関数が含まれています。 これらは Azure PowerShell 関数であり、変更することを想定したものではありません。 詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」ご覧ください。
+Visual Studio によって生成される Windows PowerShell モジュールには、発行スクリプトで使用する関数が含まれています。 これらは Azure PowerShell 関数であり、変更することを想定したものではありません。 詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」ご覧ください。
 
 ### <a name="json-configuration-file"></a>JSON 構成ファイル
 JSON ファイルは **[構成]** フォルダーに作成されます。このファイルには、Azure にデプロイするリソースを正確に指定した構成データが含まれています。 Visual Studio によって生成されるファイルの名前は、プロジェクト名-WAWS-dev.json (Web サイトを作成した場合)、またはプロジェクト名-VM-dev.json (仮想マシンを作成した場合) です。 Web サイトの作成時に生成される JSON 構成ファイルの例を次に示します。 ほとんどの値がわかりやすく記述されています。 Web サイト名は Azure によって生成されるので、プロジェクト名と一致しない場合があります。
@@ -168,7 +168,7 @@ Azure に運用サイトが 1 つだけ存在するのでなく、複数のデ�
 
     メッセージが表示されたら、ユーザー名とパスワードを入力します。
 
-    スクリプトを自動化すると、この方法で Azure 資格情報を提供できなくなります。 代わりに、.publishsettings ファイルを使用して、資格情報を提供する必要があります。 1 回だけ、**Get-AzurePublishSettingsFile** コマンドを使用してこのファイルを Azure からダウンロードしたら、それ以降は **Import-AzurePublishSettingsFile** を使用してファイルをインポートします。 詳しい手順については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」をご覧ください。
+    スクリプトを自動化すると、この方法で Azure 資格情報を提供できなくなります。 代わりに、.publishsettings ファイルを使用して、資格情報を提供する必要があります。 1 回だけ、**Get-AzurePublishSettingsFile** コマンドを使用してこのファイルを Azure からダウンロードしたら、それ以降は **Import-AzurePublishSettingsFile** を使用してファイルをインポートします。 詳しい手順については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」をご覧ください。
 
 4. (省略可能) Web アプリケーションを発行せずに、仮想マシン、データベース、Web サイトなどの Azure リソースを作成する場合は、**-Configuration** 引数を JSON 構成ファイルに設定した **Publish-WebApplication.ps1** コマンドを使用します。 このコマンド ラインでは、JSON 構成ファイルを使用して作成するリソースを指定します。 他のコマンド ライン引数には既定の設定を使用するため、リソースは作成されますが、Web アプリケーションは発行されません。 –Verbose オプションを使用すると、進行状況の詳細情報が得られます。
 

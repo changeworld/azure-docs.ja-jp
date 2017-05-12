@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: ganesr;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: efdec32e565bf1d11b562d283e56bd8ed5d292b9
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a0ce5cf6a48d3dfd68e1696d93aac7c55a442900
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -45,7 +45,7 @@ ms.lasthandoff: 03/24/2017
 構成を開始する前に、必ず、[前提条件](expressroute-prerequisites.md)と[ワークフロー](expressroute-workflows.md)を確認してください。  
 
 ### <a name="step-2-install-the-latest-versions-of-the-azure-service-management-sm-powershell-modules"></a>手順 2. Azure サービス管理 (SM) PowerShell モジュールの最新版をインストールしてください
-Azure PowerShell モジュールを使用するようにコンピューターを構成する方法の手順については、「[Azure PowerShell コマンドレットの概要](/powershell/azureps-cmdlets-docs)」の手順に従ってください。
+Azure PowerShell モジュールを使用するようにコンピューターを構成する方法の手順については、「[Azure PowerShell コマンドレットの概要](/powershell/azure/overview)」の手順に従ってください。
 
 ### <a name="step-3-log-in-to-your-azure-account-and-select-a-subscription"></a>手順 3. Azure アカウントにログインしてサブスクリプションを選択する
 1. 管理者特権で PowerShell コンソールを開き、アカウントに接続します。 接続については、次の例を参考にしてください。

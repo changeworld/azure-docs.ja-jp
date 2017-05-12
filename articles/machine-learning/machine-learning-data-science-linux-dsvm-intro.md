@@ -14,15 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: c041802cd86f9e8b07771413f867691d76b01abf
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: b94b8b84ae2cf26a1680f816460cc86c4d79e885
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/20/2017
 
 
 ---
 # <a name="provision-the-linux-data-science-virtual-machine"></a>Linux データ サイエンス仮想マシンのプロビジョニング
-Linux データ サイエンス仮想マシンは、一連のツールがプレインストールされた Azure 仮想マシンです。 これらのツールは、データ分析と機械学習に一般的に使用されます。 含まれている主なソフトウェア コンポーネントは次のとおりです。
+Linux データ サイエンス仮想マシンは、一連のツールがプレインストールされた CentOS ベースの Azure 仮想マシンです。 これらのツールは、データ分析と機械学習に一般的に使用されます。 含まれている主なソフトウェア コンポーネントは次のとおりです。
 
 * Microsoft R Server Developer エディション
 * 一般的なデータ分析ライブラリを含む Anaconda Python ディストリビューション (バージョン 2.7 および 3.5)
@@ -53,6 +54,9 @@ Linux データ サイエンス仮想マシンは、一連のツールがプレ�
 Linux データ サイエンス仮想マシンはそうした問題の大部分を解決します。 この仮想マシンを使うと、分析プロジェクトをすぐに開始し、 R、Python、SQL、Java、C++ など、さまざまな言語でタスクを処理できます。 Eclipse には、コードの開発やテストを行うための使いやすい IDE が用意されています。 VM に含まれている Azure SDK を使用すると、Microsoft クラウド プラットフォームのさまざまなサービスを Linux で使用してアプリケーションを構築できます。 また、プレインストールされた Ruby、Perl、PHP、node.js などの他の言語も利用できます。
 
 このデータ サイエンス VM イメージにソフトウェア課金はありません。 支払うのは、VM イメージでプロビジョニングした仮想マシンのサイズを基に評価された Azure のハードウェアの利用料金のみです。 コンピューティング料金の詳細については、[Azure Marketplace の VM リストのページ](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/)をご覧ください。
+
+## <a name="other-versions-of-the-data-science-virtual-machine"></a>データ サイエンス仮想マシンのその他のバージョン
+[Ubuntu](machine-learning-data-science-dsvm-ubuntu-intro.md) イメージも利用できます。CentOS イメージと同じツールが多数あるほか、ディープ ラーニング フレームワークが含まれています。 また、[Windows](machine-learning-data-science-provision-vm.md) イメージも利用できます。
 
 ## <a name="prerequisites"></a>前提条件
 Linux データ サイエンス仮想マシンを作成する前に、次を用意する必要があります。

@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/21/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 8e113a78519444fd1e0a9da89ec95aa0dccebb2b
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 4eaae725c62f66de1b50fd2c7094f3e6e89281be
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -46,7 +46,7 @@ SAS を使用するには、名前空間、キュー、トピックで、次の�
 Service Bus の SAS 認証サポートは、Azure .NET SDK バージョン 2.0 以降に含まれています。 SAS には、 [SharedAccessAuthorizationRule](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)のサポートが含まれています。 接続文字列をパラメーターとして受け取るすべての API では、SAS 接続文字列がサポートされています。
 
 ## <a name="acs-authentication"></a>ACS 認証
-ACS を使用した Service Bus の認証は、付属の "-sb" ACS 名前空間を通じて管理されます。 付属の ACS 名前空間を Service Bus 名前空間用に作成すると、Azure クラシック ポータルを使用して Service Bus 名前空間を作成することはできません。この場合、この名前空間は、PowerShell コマンドレット [New-AzureSBNamespace](/powershell/servicemanagement/azure.compute/v1.6.1/New-AzureSBNamespace) を使用して作成する必要があります。 次に例を示します。
+ACS を使用した Service Bus の認証は、付属の "-sb" ACS 名前空間を通じて管理されます。 付属の ACS 名前空間を Service Bus 名前空間用に作成すると、Azure クラシック ポータルを使用して Service Bus 名前空間を作成することはできません。この場合、この名前空間は、PowerShell コマンドレット [New-AzureSBNamespace](/powershell/module/azure/new-azuresbnamespace?view=azuresmps-3.7.0) を使用して作成する必要があります。 次に例を示します。
 
 ```powershell
 New-AzureSBNamespace <namespaceName> "<Region>” -CreateACSNamespace $true

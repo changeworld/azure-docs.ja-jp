@@ -9,10 +9,11 @@ ms.technology: luis
 ms.topic: article
 ms.date: 03/01/2017
 ms.author: cahann
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 4df450d5c78d5963ceb01b255edffb6ddbb110a9
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 3c8fe094e2a63f85dce71f085951e46684116aa8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 
@@ -23,7 +24,7 @@ You should continuously work on your application to refine it and improve its la
 
 **To train your current model:**
 
-1. Access your app (e.g. TravelAgent) by clicking its name on **My Apps** page. 
+1. Access your app by clicking its name on **My Apps** page. 
 
 2. In your app, click **Train & Test** in the left panel. 
 3. On the **Test App** page, click **Train Application** to train the current model on the latest updates.
@@ -38,7 +39,7 @@ LUIS provides two types of testing; interactive testing and batch testing. You c
 
 **To access the Test App page:**
 
-1. Access your app (e.g. TravelAgent) by clicking its name on **My Apps** page, 
+1. Access your app  by clicking its name on **My Apps** page, 
 2. Click **Train & Test** in your application's left panel to access the **Test App** page. 
 
 - If you haven't already trained your current model on recent updates, then your test page will look like this screenshot:
@@ -58,7 +59,7 @@ The **Interactive Testing** tab is divided into two sections (as in the screensh
 
 * **The test view**, on the left side of the screen, where you can type the test utterance in the text box and press Enter to submit it to your app. 
 
-* **The result view**, on the right side of the screen, where your LUIS app returns the test result; i.e. the predicted interpretation of the utterance. 
+* **The result view**, on the right side of the screen, where your LUIS app returns the test result, which is the predicted interpretation of the utterance. 
 
 In an interactive test, you submit individual test utterances and view the returned result for each utterance separately. 
 
@@ -99,7 +100,7 @@ In case of interactive testing on both trained and published models together, an
 
 
 ### <a name="batch-testing"></a>Batch Testing
-Batch testing enables you to run a comprehensive test on your current trained model to measure its performance in language understanding. In batch testing, you submit a large number of test utterances collectively in a batch file, known as "dataset". The dataset file should be written in JSON format and contains a maximum of 1000 utterances. All you need to do is to import this file to your app and run it to perform the test. Your LUIS app will return the result, enabling you to access detailed analysis of all utterances included in the batch.
+Batch testing enables you to run a comprehensive test on your current trained model to measure its performance in language understanding. In batch testing, you submit a large number of test utterances collectively in a batch file, known as a *dataset*. The dataset file should be written in JSON format and contains a maximum of 1000 utterances. All you need to do is to import this file to your app and run it to perform the test. Your LUIS app will return the result, enabling you to access detailed analysis of all utterances included in the batch.
 
 You can import up to 10 dataset files to a single LUIS app. It is recommended that the utterances included in the dataset should be different from the example utterances you previously added while building your app. 
  

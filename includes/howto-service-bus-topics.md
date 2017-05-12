@@ -41,8 +41,3 @@ Azure で Service Bus のトピックとサブスクリプションの使用を�
 [connection-string]: ./media/howto-service-bus-topics/connection-string.png
 
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-

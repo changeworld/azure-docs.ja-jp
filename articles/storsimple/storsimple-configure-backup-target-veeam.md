@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
 ms.author: hkanna
-translationtype: Human Translation
-ms.sourcegitcommit: 83dc91972ad5fec85e562e45227747568b1fea75
-ms.openlocfilehash: 3d9ca83e2672d9022e4f887b84555f0bf95f6da9
-ms.lasthandoff: 01/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: d4a0dfbfab052e98e0dd641e8cab8fc143c2ff41
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -238,9 +239,9 @@ Veeam のインストールにおけるベスト プラクティスについて�
 -   圧縮は無効にします。
 -   バックアップ ジョブでの重複除去は無効にします。
 -   **LAN ターゲット**の最適化を設定します。
--   **[Create active full backup] (アクティブな完全バックアップの作成)** (2 週間ごと) を有効にします。
--   バックアップ リポジトリで、**[Use per-VM backup files] (VM ごとのバックアップ ファイルを使用)** を設定します。
--   **[Use multiple upload streams per job] (ジョブごとの複数のアップロード ストリームを使用)** を **8** (最大 16) に設定します。 この設定値は、StorSimple デバイスの CPU 使用率に合わせて調整してください。
+-   **[Create active full backup] \(アクティブな完全バックアップの作成)** (2 週間ごと) を有効にします。
+-   バックアップ リポジトリで、**[Use per-VM backup files] \(VM ごとのバックアップ ファイルを使用)** を設定します。
+-   **[Use multiple upload streams per job] \(ジョブごとの複数のアップロード ストリームを使用)** を **8** (最大 16) に設定します。 この設定値は、StorSimple デバイスの CPU 使用率に合わせて調整してください。
 
 ## <a name="retention-policies"></a>リテンション期間ポリシー
 
@@ -271,15 +272,15 @@ Veeam のインストールにおけるベスト プラクティスについて�
 
 ### <a name="to-set-up-veeam-storage"></a>Veeam ストレージのセットアップ方法
 
-1.  Veeam バックアップおよびレプリケーション コンソールの **[Repository Tools] (レポジトリ ツール)** で、**[Backup Infrastructure] (バックアップ インフラストラクチャ)** に移動します。 **[Backup Repositories] (バックアップ リポジトリ)** を右クリックして、**[Add Backup Repository] (バックアップ リポジトリの追加)** を選択します。
+1.  Veeam バックアップおよびレプリケーション コンソールの **[Repository Tools] \(レポジトリ ツール)** で、**[Backup Infrastructure] \(バックアップ インフラストラクチャ)** に移動します。 **[Backup Repositories] \(バックアップ リポジトリ)** を右クリックして、**[Add Backup Repository] \(バックアップ リポジトリの追加)** を選択します。
 
     ![Veeam 管理コンソール、バックアップ リポジトリ ページ](./media/storsimple-configure-backup-target-using-veeam/veeamimage1.png)
 
-2.  **[New Backup Repository] (新しいバックアップ リポジトリ)** ダイアログ ボックスで、レポジトリの名前と説明を入力します。 **[次へ]**を選択します。
+2.  **[New Backup Repository] \(新しいバックアップ リポジトリ)** ダイアログ ボックスで、レポジトリの名前と説明を入力します。 **[次へ]**を選択します。
 
     ![Veeam 管理コンソール、名前と説明ページ](./media/storsimple-configure-backup-target-using-veeam/veeamimage2.png)
 
-3.  タイプについて、**[Microsoft Windows server] (Microsoft Windows サーバー)** を選択します。 Veeam サーバーを選択します。 **[次へ]**を選択します。
+3.  タイプについて、**[Microsoft Windows server] \(Microsoft Windows サーバー)** を選択します。 Veeam サーバーを選択します。 **[次へ]**を選択します。
 
     ![Veeam 管理コンソール、バックアップ リポジトリのタイプを選択する](./media/storsimple-configure-backup-target-using-veeam/veeamimage3.png)
 
@@ -328,11 +329,11 @@ Veeam のインストールにおけるベスト プラクティスについて�
 
 #### <a name="to-assign-storsimple-volumes-to-a-veeam-backup-job"></a>StorSimple ボリュームを Veeam バックアップ ジョブに割り当てる方法
 
-1.  [Veeam Backup and Replication] (Veeam バックアップとレプリケーション) コンソールで、**[Backup & Replication] (バックアップとレプリケーション)** を選択します。 **[Backup] (バックアップ)** を右クリックし、ご使用の環境に合わせて **[VMware]** または **[Hyper-V]** を選択します。
+1.  [Veeam Backup and Replication] \(Veeam バックアップとレプリケーション) コンソールで、**[Backup & Replication] \(バックアップとレプリケーション)** を選択します。 **[Backup] \(バックアップ)** を右クリックし、ご使用の環境に合わせて **[VMware]** または **[Hyper-V]** を選択します。
 
     ![Veeam 管理コンソール、新しいバックアップ ジョブ](./media/storsimple-configure-backup-target-using-veeam/veeamimage8.png)
 
-2.  **[New Backup Repository] (新しいバックアップ リポジトリ)** ダイアログ ボックスで、日単位のバックアップ ジョブの名前と説明を入力します。
+2.  **[New Backup Repository] \(新しいバックアップ リポジトリ)** ダイアログ ボックスで、日単位のバックアップ ジョブの名前と説明を入力します。
 
     ![Veeam 管理コンソール、新しいバックアップ ジョブ ページ](./media/storsimple-configure-backup-target-using-veeam/veeamimage9.png)
 
@@ -340,21 +341,21 @@ Veeam のインストールにおけるベスト プラクティスについて�
 
     ![Veeam 管理コンソール、新しいバックアップ ジョブ ページ](./media/storsimple-configure-backup-target-using-veeam/veeamimage10.png)
 
-4.  **[Backup proxy] (バックアップ プロキシ)** と **[Backup repository] (バックアップ リポジトリ)** で目的の値を選択します。 ローカル接続ストレージの環境の RPO および RTO 定義に合わせて、**[Restore points to keep on disk] (ディスクに維持する復元ポイント)** の値を選択します。 **[Advanced] (詳細設定)** を選択します。
+4.  **[Backup proxy] \(バックアップ プロキシ)** と **[Backup repository] \(バックアップ リポジトリ)** で目的の値を選択します。 ローカル接続ストレージの環境の RPO および RTO 定義に合わせて、**[Restore points to keep on disk] \(ディスクに維持する復元ポイント)** の値を選択します。 **[Advanced] \(詳細設定)** を選択します。
 
     ![Veeam 管理コンソール、新しいバックアップ ジョブ ページ](./media/storsimple-configure-backup-target-using-veeam/veeamimage11.png)
 
-5. **[Advanced Settings] (詳細設定)** ダイアログ ボックスの **[Backup] (バックアップ)** タブで、**[Incremental] (増分)** を選択します。 **[Create synthetic full backups periodically] (定期的に合成完全バックアップを作成する)** チェック ボックスがオフになっていることを確認します。 **[Create active full backups periodically] (定期的にアクティブ完全バックアップを作成する)** チェック ボックスをオンにします。 **[Active full backup] (アクティブ完全バックアップ)** の下にある **[毎週の選択した曜日]** チェック ボックスで [Saturday] (土曜日) を選択します。
+5. **[Advanced Settings] \(詳細設定)** ダイアログ ボックスの **[Backup] \(バックアップ)** タブで、**[Incremental] \(増分)** を選択します。 **[Create synthetic full backups periodically] \(定期的に合成完全バックアップを作成する)** チェック ボックスがオフになっていることを確認します。 **[Create active full backups periodically] \(定期的にアクティブ完全バックアップを作成する)** チェック ボックスをオンにします。 **[Active full backup] \(アクティブ完全バックアップ)** の下にある **[毎週の選択した曜日]** チェック ボックスで [Saturday] \(土曜日) を選択します。
 
     ![Veeam 管理コンソール、新しいバックアップ ジョブの詳細設定ページ](./media/storsimple-configure-backup-target-using-veeam/veeamimage12.png)
 
-6. **[Storage] (ストレージ)** タブで、**[Enable inline data deduplication] (インライン データ重複除去を有効にする)** チェック ボックスがオフになっていることを確認します。 **[Exclude swap file blocks] (スワップ ファイル ブロックを除外する)** チェック ボックスと **[Exclude deleted file blocks] (削除済みのファイル ブロックを除外する)** チェック ボックスをオンにします。 **[Compression level] (圧縮レベル)** を **[None] (なし)** に設定します。 パフォーマンスと重複除去のバランスを取るために、**[Storage optimization] (ストレージの最適化)** を **[LAN target] (LAN ターゲット)** に設定します。 **[OK]**を選択します。
+6. **[Storage] \(ストレージ)** タブで、**[Enable inline data deduplication] \(インライン データ重複除去を有効にする)** チェック ボックスがオフになっていることを確認します。 **[Exclude swap file blocks] \(スワップ ファイル ブロックを除外する)** チェック ボックスと **[Exclude deleted file blocks] \(削除済みのファイル ブロックを除外する)** チェック ボックスをオンにします。 **[Compression level] \(圧縮レベル)** を **[None] \(なし)** に設定します。 パフォーマンスと重複除去のバランスを取るために、**[Storage optimization] \(ストレージの最適化)** を **[LAN target] \(LAN ターゲット)** に設定します。 **[OK]**を選択します。
 
     ![Veeam 管理コンソール、新しいバックアップ ジョブの詳細設定ページ](./media/storsimple-configure-backup-target-using-veeam/veeamimage13.png)
 
     Veeam の重複除去と圧縮の設定については、「[Data Compression and Deduplication](https://helpcenter.veeam.com/backup/vsphere/compression_deduplication.html)」(データの圧縮と重複除去) をご覧ください。
 
-7.  必要に応じて、**[Edit Backup Job] (バックアップ ジョブの編集)** ダイアログ ボックスで **[Enable application-aware processing] (アプリケーション対応処理を有効にする)** チェック ボックスをオンにします。
+7.  必要に応じて、**[Edit Backup Job] \(バックアップ ジョブの編集)** ダイアログ ボックスで **[Enable application-aware processing] \(アプリケーション対応処理を有効にする)** チェック ボックスをオンにします。
 
     ![Veeam 管理コンソール、新しいバックアップ ジョブのゲスト プロセス ページ](./media/storsimple-configure-backup-target-using-veeam/veeamimage14.png)
 
@@ -404,31 +405,31 @@ Veeam のインストールにおけるベスト プラクティスについて�
 
 #### <a name="to-assign-storsimple-volumes-to-a-veeam-copy-job"></a>StorSimple ボリュームを Veeam コピー ジョブに割り当てる方法
 
-1.  [Veeam Backup and Replication] (Veeam バックアップとレプリケーション) コンソールで、**[Backup & Replication] (バックアップとレプリケーション)** を選択します。 **[Backup] (バックアップ)** を右クリックし、ご使用の環境に合わせて **[VMware]** または **[Hyper-V]** を選択します。
+1.  [Veeam Backup and Replication] \(Veeam バックアップとレプリケーション) コンソールで、**[Backup & Replication] \(バックアップとレプリケーション)** を選択します。 **[Backup] \(バックアップ)** を右クリックし、ご使用の環境に合わせて **[VMware]** または **[Hyper-V]** を選択します。
 
     ![Veeam 管理コンソール、新しいバックアップ コピー ジョブのページ](./media/storsimple-configure-backup-target-using-veeam/veeamimage16.png)
 
-2.  **[New Backup Copy Job] (新しいバックアップ コピー ジョブ)** ダイアログ ボックスで、ジョブの名前と説明を入力します。
+2.  **[New Backup Copy Job] \(新しいバックアップ コピー ジョブ)** ダイアログ ボックスで、ジョブの名前と説明を入力します。
 
     ![Veeam 管理コンソール、新しいバックアップ コピー ジョブのページ](./media/storsimple-configure-backup-target-using-veeam/veeamimage17.png)
 
-3.  処理する VM を選択します。 [From backups] (バックアップから) を選択し、先ほど作成した日単位のバックアップを選択します。
+3.  処理する VM を選択します。 [From backups] \(バックアップから) を選択し、先ほど作成した日単位のバックアップを選択します。
 
     ![Veeam 管理コンソール、新しいバックアップ コピー ジョブのページ](./media/storsimple-configure-backup-target-using-veeam/veeamimage18.png)
 
 4.  必要に応じてバックアップ コピー ジョブからオブジェクトを除外します。
 
-5.  使用するバックアップ リポジトリを選択し、**[Restore points to keep] (維持する復元ポイント)** の値を設定します。 **[Keep the following restore points for archival purposes] (以下の復元ポイントをアーカイブ用に維持する)** チェック ボックスをオンにします。 バックアップの頻度を指定し、**[Advanced] (詳細設定)** を選択します。
+5.  使用するバックアップ リポジトリを選択し、**[Restore points to keep] \(維持する復元ポイント)** の値を設定します。 **[Keep the following restore points for archival purposes] \(以下の復元ポイントをアーカイブ用に維持する)** チェック ボックスをオンにします。 バックアップの頻度を指定し、**[Advanced] \(詳細設定)** を選択します。
 
     ![Veeam 管理コンソール、新しいバックアップ コピー ジョブのページ](./media/storsimple-configure-backup-target-using-veeam/veeamimage19.png)
 
 6.  次の詳細設定を指定します。
 
-    * **[Maintenance] (メンテナンス)** タブで、ストレージ レベルの破損保護を無効にします。
+    * **[Maintenance] \(メンテナンス)** タブで、ストレージ レベルの破損保護を無効にします。
 
     ![Veeam 管理コンソール、新しいバックアップ コピー ジョブの詳細設定ページ](./media/storsimple-configure-backup-target-using-veeam/veeamimage20.png)
 
-    * **[Storage] (ストレージ)** タブで、重複除去と圧縮が無効になっていることを確認します。
+    * **[Storage] \(ストレージ)** タブで、重複除去と圧縮が無効になっていることを確認します。
 
     ![Veeam 管理コンソール、新しいバックアップ コピー ジョブの詳細設定ページ](./media/storsimple-configure-backup-target-using-veeam/veeamimage21.png)
 
@@ -466,7 +467,7 @@ StorSimple クラウド スナップショットは、StorSimple デバイスに
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>クラウド スナップショットを開始または削除する方法
 
-1. [Azure PowerShell をインストールします](https://docs.microsoft.com/en-us/powershell/azureps-cmdlets-docs/)。
+1. [Azure PowerShell をインストールします](/powershell/azure/overview)。
 2. [発行設定とサブスクリプション情報をダウンロードしてインポートします](https://msdn.microsoft.com/library/dn385850.aspx)。
 3. Azure クラシック ポータルで、StorSimple Manager サービス用のリソース名と[登録キーを取得します](storsimple-deployment-walkthrough-u2.md#step-2-get-the-service-registration-key)。
 4. スクリプトを実行するサーバーで PowerShell を管理者として実行します。 次のコマンドを入力します。

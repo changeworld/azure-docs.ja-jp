@@ -14,8 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 12/14/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: efa52b5f30cab16bfde4202dbfe2c95f4464e2c4
-ms.openlocfilehash: c86004a14983e9eea543fbd3aa09f2a447414291
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: fc2da5800988fb262990d3a630f25c6252da5f3b
+ms.lasthandoff: 04/27/2017
 
 ---
 # <a name="how-to-manage-dns-zones-using-powershell"></a>PowerShell を使用して DNS ゾーンを管理する方法
@@ -41,7 +42,7 @@ DNS ゾーンは、 `New-AzureRmDnsZone` コマンドレットを使用して作
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 ```
 
-次の例では、*project = demo* と *env = test* の&2; つ [Azure Resource Manager タグ](dns-zones-records.md#tags)を含む DNS ゾーンの作成方法を示します。
+次の例では、*project = demo* と *env = test* の 2 つ [Azure Resource Manager タグ](dns-zones-records.md#tags)を含む DNS ゾーンの作成方法を示します。
 
 ```powershell
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Tag @{ project="demo"; env="test" }
@@ -82,7 +83,7 @@ $zoneList = Get-AzureRmDnsZone
 
 DNS ゾーンのリソースへの変更は、 `Set-AzureRmDnsZone`を使用して行うことができます。 このコマンドレットによって、ゾーン内の DNS レコード セットが更新されることはありません (「[DNS レコードの管理方法](dns-operations-recordsets.md)」を参照)。 この操作は、ゾーンのリソース自体のプロパティを更新するためだけに使用します。 現在、書き込み可能ゾーンのプロパティは、[ゾーンのリソースの Azure Resource Manager の "タグ"](dns-zones-records.md#tags) に限定されています。
 
-DNS ゾーンを更新するには、次の&2; つの方法のいずれかを使用します。
+DNS ゾーンを更新するには、次の 2 つの方法のいずれかを使用します。
 
 ### <a name="specify-the-zone-using-the-zone-name-and-resource-group"></a>ゾーン名とリソース グループを使用してゾーンを指定する
 
@@ -122,7 +123,7 @@ DNS ゾーンを削除するには、`Remove-AzureRmDnsZone` コマンドレッ�
 >ゾーンを誤って削除しないようにするには、「[DNS ゾーンとレコードを保護する](dns-protect-zones-recordsets.md)」をご覧ください。
 
 
-DNS ゾーンを削除するには、次の&2; つの方法のいずれかを使用します。
+DNS ゾーンを削除するには、次の 2 つの方法のいずれかを使用します。
 
 ### <a name="specify-the-zone-using-the-zone-name-and-resource-group-name"></a>ゾーン名とリソース グループ名を使用してゾーンを指定する
 
@@ -166,11 +167,6 @@ DNS ゾーンでレコード セットとレコードを管理する方法につ
 <br>
 Azure DNS にドメインを委任する方法については[こちら](dns-domain-delegation.md)をご覧ください。
 <br>
-[Azure DNS PowerShell のリファレンス ドキュメント](/powershell/resourcemanager/azurerm.dns/v2.3.0/azurerm.dns)を確認します。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
+[Azure DNS PowerShell のリファレンス ドキュメント](/powershell/module/azurerm.dns)を確認します。
 
 

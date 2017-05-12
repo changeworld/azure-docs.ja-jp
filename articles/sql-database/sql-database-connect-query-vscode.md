@@ -18,9 +18,9 @@ ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 5b623c78f8b8eac846c5ca244f1e0b25ee4f400f
-ms.lasthandoff: 04/19/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 45405c7bb9993d1fd529b25b599c3cd7f459843c
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -35,7 +35,7 @@ ms.lasthandoff: 04/19/2017
 
 開始する前に、必ず最新バージョンの [Visual Studio Code](https://code.visualstudio.com/Download) をインストールして [mssql 拡張機能](https://aka.ms/mssql-marketplace)を読み込んでおいてください。 mssql 拡張機能のインストール ガイダンスについては、「[Install VS Code (VS コードのインストール)](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-vs-code)」と「[mssql for Visual Studio Code (Visual Studio Code 用 mssql)](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql)」を参照してください。 
 
-## <a name="configure-vs-code-mac-os-only"></a>VS コードの構成 (Mac OS のみ)
+## <a name="configure-vs-code"></a>VS Code の構成 
 
 ### <a name="mac-os"></a>**Mac OS**
 macOS では、mssql 拡張機能で使用される DotNet Core の前提条件として、OpenSSL をインストールする必要があります。 使用するターミナルを開き、次のコマンドを入力して、**brew** と **OpenSSL** をインストールします。 
@@ -49,11 +49,19 @@ ln -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/
 ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 ```
 
+### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
+
+特別な構成は必要ありません。
+
+### <a name="windows"></a>**Windows**
+
+特別な構成は必要ありません。
+
 ## <a name="get-connection-information"></a>接続情報の取得
 
-Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名を取得します。 その完全修飾サーバー名は、Visual Studio Code でのサーバーへの接続に使用します。
+Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名、データベース名、ログイン情報が必要になります。
 
-1. [Azure ポータル](https://portal.azure.com/)にログインします。
+1. [Azure Portal](https://portal.azure.com/) にログインします。
 2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
 3. データベースの **[概要]** ページで、次の図に示すように、完全修飾サーバー名を確認します。 サーバー名をポイントすると、**[コピーするにはクリックします]** オプションが表示されます。
 
@@ -108,7 +116,7 @@ Visual Studio Code を使用して、Azure SQL Database サーバーに対する
 
 ## <a name="query-data"></a>データのクエリを実行する
 
-[SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL ステートメントを使用して、Azure SQL データベースのデータを照会します。
+次のコードを使用して、カテゴリ別で上位 20 の製品を照会します。ここでは [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL ステートメントを使用します。
 
 1. **エディター** ウィンドウで、空のクエリ ウィンドウに次のクエリを入力します。
 
@@ -125,7 +133,7 @@ Visual Studio Code を使用して、Azure SQL Database サーバーに対する
 
 ## <a name="insert-data"></a>データを挿入する
 
-[INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL ステートメントを使用して、Azure SQL データベースにデータを挿入します。
+次のコードを使用して、SalesLT.Product テーブルに新しい製品を挿入します。ここでは [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL ステートメントを使用します。
 
 1. **エディター** ウィンドウで、前のクエリを削除して次のクエリを入力します。
 
@@ -153,7 +161,7 @@ Visual Studio Code を使用して、Azure SQL Database サーバーに対する
 
 ## <a name="update-data"></a>データの更新
 
-[UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL ステートメントを使用して、Azure SQL データベースのデータを更新します。
+次のコードを使用して、先ほど追加した新しい製品を更新します。ここでは [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL ステートメントを使用します。
 
 1.  **エディター** ウィンドウで、前のクエリを削除して次のクエリを入力します。
 
@@ -167,7 +175,7 @@ Visual Studio Code を使用して、Azure SQL Database サーバーに対する
 
 ## <a name="delete-data"></a>データの削除
 
-[DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL ステートメントを使用して、Azure SQL データベースのデータを削除します。
+次のコードを使用して、先ほど追加した新しい製品を削除します。ここでは [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL ステートメントを使用します。
 
 1. **エディター** ウィンドウで、前のクエリを削除して次のクエリを入力します。
 

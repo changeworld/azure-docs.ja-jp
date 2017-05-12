@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/29/2017
+ms.date: 04/19/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: c953615ef370dc89ed09bb8a32dc2caf7a7bcc3b
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: b0e43aa89dbed801e5e212279582223b09eb9854
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -52,43 +52,47 @@ ms.lasthandoff: 03/30/2017
 
 ## <a name="release-notes"></a>リリース ノート
 
-### <a name="a-name11311131httpswwwnugetorgpackagesmicrosoftazuredocumentdb1131"></a><a name="1.13.1"/>[1.13.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.13.1)
+### <a name="a-name11321132"></a><a name="1.13.2"/>1.13.2
+* 集計クエリの FeedOptions 内に指定された PartitionKey 値が無視される問題を修正しました。
+* 中間クロス パーティション Order By クエリの実行時のパーティション管理の透過的な処理の問題を修正しました。
+
+### <a name="a-name11311131"></a><a name="1.13.1"/>1.13.1
 * いくつかの非同期 API を ASP.NET のコンテキスト内で使用する場合にデッドロックの原因となった問題を修正しました。
 
-### <a name="a-name11301130httpswwwnugetorgpackagesmicrosoftazuredocumentdb1130"></a><a name="1.13.0"/>[1.13.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.13.0)
+### <a name="a-name11301130"></a><a name="1.13.0"/>1.13.0
 * 特定の条件で自動フェールオーバーするために SDK の耐障害性を改善しました。
 
-### <a name="a-name11221122httpswwwnugetorgpackagesmicrosoftazuredocumentdb1122"></a><a name="1.12.2"/>[1.12.2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.12.2)
+### <a name="a-name11221122"></a><a name="1.12.2"/>1.12.2
 * WebException を時々発生させる問題 (リモート名を解決できなかった) を修正しました。
 * ReadDocumentAsync API に新しいオーバーロードを追加することで、型指定されたドキュメントを直接読み取るサポートを追加しました。
 
-### <a name="a-name11211121httpswwwnugetorgpackagesmicrosoftazuredocumentdb1121"></a><a name="1.12.1"/>[1.12.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.12.1)
+### <a name="a-name11211121"></a><a name="1.12.1"/>1.12.1
 * 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) の LINQ サポートを追加しました。
 * イベント ハンドラーの使用によって発生した ConnectionPolicy オブジェクトのメモリ リークの問題を修正しました。
 * ETag を使用した場合に UpsertAttachmentAsync が動作しなかった問題を修正しました。
 * 文字列フィールドの並べ替えで、パーティションを横断する order-by クエリの継続が動作しなかった問題を修正しました。
 
-### <a name="a-name11201120httpswwwnugetorgpackagesmicrosoftazuredocumentdb1120"></a><a name="1.12.0"/>[1.12.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.12.0)
+### <a name="a-name11201120"></a><a name="1.12.0"/>1.12.0
 * 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。 [集計のサポート](documentdb-sql-query.md#Aggregates)に関するトピックを参照してください。
 * パーティション分割コレクションの最小スループットが 10,100 RU/秒から 2,500 RU/秒になりました。
 
-### <a name="a-name11141114httpswwwnugetorgpackagesmicrosoftazuredocumentdb1114"></a><a name="1.11.4"/>[1.11.4](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.11.4)
+### <a name="a-name11141114"></a><a name="1.11.4"/>1.11.4
 * 32 ビット ホスト プロセスでクロス パーティション クエリの一部が失敗する問題を修正しました。
 * ゲートウェイ モード中に失敗した要求のトークンでセッション コンテナーが更新されない問題を修正しました。
 * プロジェクションでの UDF 呼び出しによるクエリが場合によっては失敗する問題を修正しました。
 * クライアント側のパフォーマンスを修正し、要求の読み取りと書き込みのスループットを向上させました。
 
-### <a name="a-name11131113httpswwwnugetorgpackagesmicrosoftazuredocumentdb1113"></a><a name="1.11.3"/>[1.11.3](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.11.3)
+### <a name="a-name11131113"></a><a name="1.11.3"/>1.11.3
 * 失敗した要求のトークンでセッション コンテナーが更新されない問題を修正しました。
 * 32 ビット ホスト プロセスで動作する SDK のサポートが追加されました。 クロス パーティション クエリを使用する場合は、パフォーマンスを向上させるために 64 ビット ホスト処理をお勧めします。
 * IN 式で大量のパーティション キー値を使用するクエリを含むシナリオのパフォーマンスを改善しました。
 * PopulateQuotaInfo 要求オプションが設定されている場合、ドキュメント コレクションの読み取り要求の ResourceResponse に、リソース クォータのさまざまな統計情報が含まれるようになりました。
 
-### <a name="a-name11111111httpswwwnugetorgpackagesmicrosoftazuredocumentdb1111"></a><a name="1.11.1"/>[1.11.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.11.1)
+### <a name="a-name11111111"></a><a name="1.11.1"/>1.11.1
 * 1.11.0 で導入された CreateDocumentCollectionIfNotExistsAsync API のパフォーマンスが少し改善されました。
 * 高度な同時要求を伴うシナリオのために、SDK のパフォーマンスが改善されました。
 
-### <a name="a-name11101110httpswwwnugetorgpackagesmicrosoftazuredocumentdb1110"></a><a name="1.11.0"/>[1.11.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.11.0)
+### <a name="a-name11101110"></a><a name="1.11.0"/>1.11.0
 * コレクションに含まれるドキュメントの [Change Feed](documentdb-change-feed.md) を処理する新しいクラスと方法をサポートしました。
 * クロス パーティション クエリの継続と、クロス パーティション クエリの一部のパフォーマンスの向上をサポートしました。
 * CreateDatabaseIfNotExistsAsync と CreateDocumentCollectionIfNotExistsAsync メソッドを追加しました。
@@ -96,26 +100,26 @@ ms.lasthandoff: 03/30/2017
 * project.json ツールがあるプロジェクトの Nuget パッケージを使用する際の、Microsoft.Azure.Documents.ServiceInterop.dll と DocumentDB.Spatial.Sql.dll アセンブリのアプリケーションのビン フォルダーへの自動 Binplace 処理を修正しました。
 * デバッグ シナリオで役に立つクライアント側の ETW トレースの出力をサポートしました。
 
-### <a name="a-name11001100httpswwwnugetorgpackagesmicrosoftazuredocumentdb1100"></a><a name="1.10.0"/>[1.10.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.10.0)
+### <a name="a-name11001100"></a><a name="1.10.0"/>1.10.0
 * パーティション分割コレクションへの直接接続のサポートを追加しました。
 * "Bounded Staleness"一貫性レベルのパフォーマンスが向上しました。
 * ジオフェンシング空間クエリに対してコレクションのインデックス作成ポリシーを指定する際の Polygon および LineString データ型を追加しました。
 * 述語変換中の StringEnumConverter、IsoDateTimeConverter、および UnixDateTimeConverter に対する LINQ のサポートを追加しました。
 * さまざまなバグを修正しました。
 
-### <a name="a-name195195httpswwwnugetorgpackagesmicrosoftazuredocumentdb195"></a><a name="1.9.5"/>[1.9.5](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.9.5)
+### <a name="a-name195195"></a><a name="1.9.5"/>1.9.5
 * 次の NotFoundException の原因となった問題が修正されました。認証トークンは現在の時刻で無効です。 地理的に分散したアカウントの読み取り領域にクエリを実行すると、例外が発生する場合があります。
 * ResourceResponse クラスで公開されている ResponseStream により、応答から基になるストリームへの直接アクセスが有効になります。
 
-### <a name="a-name194194httpswwwnugetorgpackagesmicrosoftazuredocumentdb194"></a><a name="1.9.4"/>[1.9.4](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.9.4)
+### <a name="a-name194194"></a><a name="1.9.4"/>1.9.4
 * ResourceResponse、FeedResponse、StoredProcedureResponse、および MediaResponse クラスが変更され、テスト駆動型デプロイ (TDD) の手本にできるように、対応するパブリック インターフェイスが実装されました。
 * カスタム オブジェクトの JsonSerializerSettings をデータのシリアル化に使用するときにパーティション キー ヘッダーの形式が正しくなくなる原因となっていた問題を修正しました。
 
-### <a name="a-name193193httpswwwnugetorgpackagesmicrosoftazuredocumentdb193"></a><a name="1.9.3"/>[1.9.3](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.9.3)
+### <a name="a-name193193"></a><a name="1.9.3"/>1.9.3
 * 実行時間の長いクエリがエラーのために失敗した原因となった問題を修正しました。認証トークンは現在の時刻で無効です。
 * クロス パーティションの TOP クエリおよび ORDER BY クエリから元の SqlParameterCollection を削除する問題が修正されました。
 
-### <a name="a-name192192httpswwwnugetorgpackagesmicrosoftazuredocumentdb192"></a><a name="1.9.2"/>[1.9.2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.9.2)
+### <a name="a-name192192"></a><a name="1.9.2"/>1.9.2
 * パーティション分割コレクションの並列クエリのサポートを追加しました。
 * パーティション分割コレクションのクロス パーティションの ORDER BY および TOP クエリに対するサポートを追加しました。
 * DocumentDB NuGet パッケージについての参照で、 DocumentDB プロジェクトを参照するときに必要なDocumentDB.Spatial.Sql.dll と Microsoft.Azure.Documents.ServiceInterop.dll への参照の不足を修正しました。
@@ -127,39 +131,39 @@ ms.lasthandoff: 03/30/2017
   * querySpec をパラメーターとして受け取る CreateOfferQuery メソッド
 * IDocumentClient インターフェースで公開されているパブリック クラスのシールを解除しました。
 
-### <a name="a-name180180httpswwwnugetorgpackagesmicrosoftazuredocumentdb180"></a><a name="1.8.0"/>[1.8.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.8.0)
+### <a name="a-name180180"></a><a name="1.8.0"/>1.8.0
 * 複数リージョンのデータベース アカウントのサポートを追加しました。
 * 調整された要求での再試行のサポートを追加しました。  ユーザーは、ConnectionPolicy.RetryOptions プロパティを構成することで、再試行の回数と最大待機時間をカスタマイズできます。
 * すべての DocumenClient プロパティおよびメソッドの署名を定義できる新しい IDocumentClient インターフェイスを追加しました。  また、この変更の一環として、IQueryable と IOrderedQueryable を作成する拡張メソッドを DocumentClient クラス自体のメソッドに変更しました。
 * 特定の DocumentDB エンドポイント URI の ServicePoint.ConnectionLimit を設定する構成オプションを追加しました。  ConnectionPolicy.MaxConnectionLimit を使用して既定値 (50) を変更できます。
 * IPartitionResolver とその実装を廃止しました。  IPartitionResolver のサポートは廃止されました。 大量のストレージとスループットを必要とする場合は、パーティション分割コレクションの使用をお勧めします。
 
-### <a name="a-name171171httpswwwnugetorgpackagesmicrosoftazuredocumentdb171"></a><a name="1.7.1"/>[1.7.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.7.1)
+### <a name="a-name171171"></a><a name="1.7.1"/>1.7.1
 * RequestOptions をパラメーターとして受け取る Uri ベースの ExecuteStoredProcedureAsync メソッドにオーバーロードを追加しました。
 
-### <a name="a-name170170httpswwwnugetorgpackagesmicrosoftazuredocumentdb170"></a><a name="1.7.0"/>[1.7.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.7.0)
+### <a name="a-name170170"></a><a name="1.7.0"/>1.7.0
 * ドキュメントの有効期限 (TTL) サポートを追加しました。
 
-### <a name="a-name163163httpswwwnugetorgpackagesmicrosoftazuredocumentdb163"></a><a name="1.6.3"/>[1.6.3](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.6.3)
+### <a name="a-name163163"></a><a name="1.6.3"/>1.6.3
 * .NET SDK を Azure クラウド サービス ソリューションの一部としてパッケージ化するための Nuget パッケージ化のバグを修正しました。
 
-### <a name="a-name162162httpswwwnugetorgpackagesmicrosoftazuredocumentdb162"></a><a name="1.6.2"/>[1.6.2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.6.2)
+### <a name="a-name162162"></a><a name="1.6.2"/>1.6.2
 * [パーティション分割コレクション](documentdb-partition-data.md)と[ユーザー定義のパフォーマンス レベル](documentdb-performance-levels.md)を実装しました。 
 
-### <a name="a-name153153httpswwwnugetorgpackagesmicrosoftazuredocumentdb153"></a><a name="1.5.3"/>[1.5.3](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.5.3)
+### <a name="a-name153153"></a><a name="1.5.3"/>1.5.3
 * **[修正済み]** DocumentDB エンドポイントのクエリを実行すると、"System.Net.Http.HttpRequestException: コンテンツをストリームにコピーしている間にエラーが発生しました" というエラーがスローされます。
 
-### <a name="a-name152152httpswwwnugetorgpackagesmicrosoftazuredocumentdb152"></a><a name="1.5.2"/>[1.5.2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.5.2)
+### <a name="a-name152152"></a><a name="1.5.2"/>1.5.2
 * ページング、条件付きの式、および範囲比較用の新しい演算子を使用できるように LINQ を拡張しました。
   * LINQ で SELECT TOP 動作を有効にする Take 演算子
   * 文字列の範囲の比較を有効にする CompareTo 演算子
   * 条件付き (?) および合体演算子 (??)
 * **[修正済み]** linq クエリでモデル プロジェクションを Where-In と組み合わせると ArgumentOutOfRangeException が発生します。  [#81](https://github.com/Azure/azure-documentdb-dotnet/issues/81)
 
-### <a name="a-name151151httpswwwnugetorgpackagesmicrosoftazuredocumentdb151"></a><a name="1.5.1"/>[1.5.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.5.1)
+### <a name="a-name151151"></a><a name="1.5.1"/>1.5.1
 * **[修正済み]** Select が最後の式ではない場合、LINQ プロバイダーはプロジェクションがないものと想定し、SELECT * を不適切に生成しました。  [#58](https://github.com/Azure/azure-documentdb-dotnet/issues/58)
 
-### <a name="a-name150150httpswwwnugetorgpackagesmicrosoftazuredocumentdb150"></a><a name="1.5.0"/>[1.5.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.5.0)
+### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0
 * 実装された Upsert、追加された UpsertXXXAsync メソッド
 * すべての要求のパフォーマンス改善
 * LINQ プロバイダーによる文字列の条件、結合、CompareTo メソッドのサポート
@@ -167,10 +171,10 @@ ms.lasthandoff: 03/30/2017
 * **[修正済み]** BackoffRetryUtility は、再試行時に新規作成する代わりに、同じ HttpRequestMessage をもう一度使用します
 * **[廃止]** UriFactory.CreateCollection --> 今後は UriFactory.CreateDocumentCollection を使用する必要があります
 
-### <a name="a-name141141httpswwwnugetorgpackagesmicrosoftazuredocumentdb141"></a><a name="1.4.1"/>[1.4.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.4.1)
+### <a name="a-name141141"></a><a name="1.4.1"/>1.4.1
 * **[修正済み]** nl-NL など、非英語文化情報の使用時のローカリゼーション問題 
 
-### <a name="a-name140140httpswwwnugetorgpackagesmicrosoftazuredocumentdb140"></a><a name="1.4.0"/>[1.4.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.4.0)
+### <a name="a-name140140"></a><a name="1.4.0"/>1.4.0
 * ID ベースのルーティング
   * ID ベースのリソース リンクの構築に役立つ新しい UriFactory ヘルパー
   * URI に取り入れる DocumentClient の新しいオーバーロード
@@ -181,7 +185,7 @@ ms.lasthandoff: 03/30/2017
   * **配列** - Concat、Contains、Count
   * **IN** 演算子
 
-### <a name="a-name130130httpswwwnugetorgpackagesmicrosoftazuredocumentdb130"></a><a name="1.3.0"/>[1.3.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.3.0)
+### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
 * インデックス作成ポリシーを変更するためのサポートを追加
   * DocumentClient の新しい ReplaceDocumentCollectionAsync メソッド
   * インデックス ポリシー変更の進捗状況 (%) を追跡するための ResourceResponse<T> の新しい IndexTransformationProgress プロパティ
@@ -191,7 +195,7 @@ ms.lasthandoff: 03/30/2017
   * DocumentDB に格納されている GeoJSON データにインデックスを作成するための新しい SpatialIndex クラス
 * **[修正済み]** : 間違った SQL クエリが linq 式から生成される [#38](https://github.com/Azure/azure-documentdb-net/issues/38)
 
-### <a name="a-name120120httpswwwnugetorgpackagesmicrosoftazuredocumentdb120"></a><a name="1.2.0"/>[1.2.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.2.0)
+### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
 * Newtonsoft.Json v5.0.7 の依存関係 
 * Order By 対応になりました
   
@@ -202,13 +206,13 @@ ms.lasthandoff: 03/30/2017
     
     カスタム インデックス作成ポリシーを使用してコレクションをプロビジョニングする既存のコードがある場合、新しい IndexingPolicy クラスをサポートするために既存のコードを更新する必要があります。 カスタム インデックス作成ポリシーがない場合は、この変更による影響はありません。
 
-### <a name="a-name110110httpswwwnugetorgpackagesmicrosoftazuredocumentdb110"></a><a name="1.1.0"/>[1.1.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.1.0)
+### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
 * 新しい HashPartitionResolver クラス、RangePartitionResolver クラス、IPartitionResolver を使用し、データをパーティショニング
 * DataContract シリアル化
 * LINQ プロバイダーの GUID サポート
 * LINQ の UDF サポート
 
-### <a name="a-name100100httpswwwnugetorgpackagesmicrosoftazuredocumentdb100"></a><a name="1.0.0"/>[1.0.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.0.0)
+### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 * GA SDK
 
 ## <a name="release--retirement-dates"></a>リリース日と提供終了日
@@ -222,6 +226,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.13.2](#1.13.2) |2017 年 4 月 19 日 |--- |
 | [1.13.1](#1.13.1) |2017 年 3 月 29 日 |--- |
 | [1.13.0](#1.13.0) |2017 年 3 月 24 日 |--- |
 | [1.12.2](#1.12.2) |2017 年 3 月 20 日 |--- |

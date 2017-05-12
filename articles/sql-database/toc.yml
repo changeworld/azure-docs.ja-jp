@@ -38,7 +38,9 @@
   - name: "1 - 新しい SQL DB の作成/設定"
     href: sql-database-design-first-database.md
   - name: "2 - 既存の SQL Server の移行"
-    href: sql-database-migrate-your-sql-server-database.md 
+    href: sql-database-migrate-your-sql-server-database.md
+  - name: "3 - SQL DB をセキュリティ保護する"
+    href: sql-database-security-tutorial.md
 - name: "サンプル"
   items:
   - name: "Azure CLI"

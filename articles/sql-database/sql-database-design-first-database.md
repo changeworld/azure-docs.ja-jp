@@ -17,9 +17,9 @@ ms.workload:
 ms.date: 03/30/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 933b262f3c587229a194c3259fc5c13b75ecd050
-ms.lasthandoff: 04/13/2017
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: 0d02954829ebac9275c014f7dac7e1ec423b0fc1
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -30,11 +30,11 @@ ms.lasthandoff: 04/13/2017
 
 このチュートリアルを実行するには、最新バージョンの [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) をインストールしておく必要があります。 
 
-## <a name="step-1-log-in-to-the-azure-portal"></a>手順 1 - Azure Portal にログインする
+## <a name="log-in-to-the-azure-portal"></a>Azure ポータルにログインする
 
 [Azure ポータル](https://portal.azure.com/)にログインします。
 
-## <a name="step-2-create-a-blank-sql-database-in-azure"></a>手順 2 - Azure で空の SQL データベースを作成する
+## <a name="create-a-blank-sql-database-in-azure"></a>Azure で空の SQL データベースを作成する
 
 Azure SQL データベースは、定義済みの一連の[コンピューティング リソースとストレージ リソース](sql-database-service-tiers.md)を使って作成されます。 データベースは、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内と [Azure SQL Database 論理サーバー](sql-database-features.md)内に作成されます。 
 
@@ -70,7 +70,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
     ![通知](./media/sql-database-get-started-portal/notification.png)
 
 
-## <a name="step-3-create-a-server-level-firewall-rule"></a>手順 3 - サーバーレベルのファイアウォール規則を作成する
+## <a name="create-a-server-level-firewall-rule"></a>サーバーレベルのファイアウォール規則を作成する
 
 Azure SQL Database は、ファイアウォールによって保護されます。 既定では、サーバーとサーバー内部のデータベースに対する接続はすべて拒否されます。 クライアントの IP アドレスからの接続を許可できるよう、次の手順に従って [SQL Database サーバー レベルのファイアウォール規則](sql-database-firewall-configure.md)を作成します。 
 
@@ -92,7 +92,7 @@ Azure SQL Database は、ファイアウォールによって保護されます�
 > SQL Database の通信は、ポート 1433 上で行われます。 企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 1433 が開放されない限り、Azure SQL Database サーバーに接続することはできません。
 >
 
-## <a name="step-4---get-connection-information"></a>手順 4 - 接続情報を取得する
+## <a name="get-connection-information"></a>接続情報の取得
 
 Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名を取得します。 その完全修飾サーバー名は、SQL Server Management Studio でのサーバーへの接続に使用します。
 
@@ -102,7 +102,7 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 
     ![接続情報](./media/sql-database-connect-query-ssms/connection-information.png) 
 
-## <a name="step-5---connect-to-your-database-using-sql-server-management-studio"></a>手順5 - SQL Server Management Studio を使用してデータベースに接続する
+## <a name="connect-to-your-database-using-sql-server-management-studio"></a>SQL Server Management Studio を使用してデータベースに接続する
 
 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) を使用して、Azure SQL Database サーバーに対する接続を確立します。
 
@@ -128,7 +128,7 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 
    ![データベース オブジェクト](./media/sql-database-connect-query-ssms/connected.png)  
 
-## <a name="step-6---create-tables-in-the-database"></a>手順 6 - データベースのテーブルを作成する 
+## <a name="create-tables-in-the-database"></a>データベースのテーブルを作成する 
 
 [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference) を用いた大学の生徒管理システムを構成する、4 つのテーブルのデータベース スキーマを作成します。
 
@@ -199,7 +199,7 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 
    ![作成済み SSMS テーブル](./media/sql-database-design-first-database/ssms-tables-created.png)
 
-## <a name="step-7---load-data-into-the-tables"></a>手順 7 - テーブルにデータを読み込む
+## <a name="load-data-into-the-tables"></a>テーブルにデータを読み込む
 
 1. Downloads フォルダーに **SampleTableData** という名前のフォルダーを作成し 、データベースのサンプル データを格納します。 
 
@@ -223,7 +223,7 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 
 これで、先ほど作成したテーブルにサンプル データが読み込まれました。
 
-## <a name="step-8---query-the-tables"></a>手順 8 - テーブルを照会する
+## <a name="query-the-tables"></a>テーブルを照会する
 
 データベース テーブルから情報を取得するには、次のクエリを実行します。 SQL クエリの記述に関する詳細は、[SQL クエリの記述](https://technet.microsoft.com/library/bb264565.aspx)を参照してください。 最初のクエリでは 4 つのテーブルをすべて結合し、'Dominick Pope' のクラスで 75% 以上の成績の生徒をすべて検索し ます。 次のクエリでは 4 つのテーブルをすべて結合し、'Noe Coleman' がこれまでに登録したコースをすべて検索します。
 
@@ -260,7 +260,7 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
         AND person.LastName = 'Coleman'
    ```
 
-## <a name="step-9---restore-a-database-to-a-previous-point-in-time"></a>手順 9 - データベースを以前の状態に復元する 
+## <a name="restore-a-database-to-a-previous-point-in-time"></a>データベースを以前の状態に復元する 
 
 テーブルを誤って削除した場合を想定してください。 データの復元は容易なことではありません。 Azure SQL Database では、過去最長 35 日間における任意の時点に戻り、新しいデータベースに過去のデータを復元することができます。 このデータベースを用いることで、削除済みデータの復元が可能です。 次の手順を実行して、テーブルが追加される前の状態にサンプル データベースを復元します。
 

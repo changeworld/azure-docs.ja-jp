@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: yushwang
 translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 8560f91ed42855b4bfe935e858a6ff932a6f6274
-ms.lasthandoff: 04/13/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: ea5546a636bd567853438ae2620ae24ce2d7da23
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -54,7 +54,7 @@ ms.lasthandoff: 04/13/2017
 
 ### <a name="before-you-begin"></a>開始する前に
 * Azure サブスクリプションを持っていることを確認します。 Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
-* Azure リソース マネージャー PowerShell コマンドレットをインストールする必要があります。 PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell の概要](/powershell/azureps-cmdlets-docs)」を参照してください。
+* Azure リソース マネージャー PowerShell コマンドレットをインストールする必要があります。 PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell の概要](/powershell/azure/overview)」を参照してください。
 
 ### <a name="step-1---create-and-configure-vnet1"></a>手順 1 - VNet1 を作成して構成する
 #### <a name="1-declare-your-variables"></a>1.変数を宣言する

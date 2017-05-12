@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 2969e6063d7bc59a6c8ca733912904abeeb7e7e8
-ms.openlocfilehash: afecb15f36525c53a66f30047dffe8a3e8f36107
-ms.lasthandoff: 02/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a310236179677046ec49930b07cfdffdadc37974
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -31,15 +32,15 @@ Azure Event Hubs は、1 秒間に数百万件のイベントを取り込むこ�
 
 ![イベント ハブの作成][create-event-hub]
 
-次に、新しいイベント ハブの **[構成]** タブに移動し、**共有アクセス ポリシー**を&2; つ作成します。 1 つは "**Sending**" という名前を付けて、**送信**アクセス許可を与えます。
+次に、新しいイベント ハブの **[構成]** タブに移動し、**共有アクセス ポリシー**を 2 つ作成します。 1 つは "**Sending**" という名前を付けて、**送信**アクセス許可を与えます。
 
 ![Sending policy][sending-policy]
 
-もう&1; つには "**Receiving**" という名前を付けて**リッスン** アクセス許可を追加し、**[保存]** をクリックします。
+もう 1 つには "**Receiving**" という名前を付けて**リッスン** アクセス許可を追加し、**[保存]** をクリックします。
 
 ![Receiving policy][receiving-policy]
 
-アプリケーションは、この&2; つの共有アクセス ポリシーによって、イベント ハブにイベントを送信したり、イベント ハブからイベントを受信したりすることができます。 これらのポリシーの接続文字列にアクセスするには、イベント ハブの **[ダッシュボード]** タブに移動し、**[接続情報]** をクリックします。
+アプリケーションは、この 2 つの共有アクセス ポリシーによって、イベント ハブにイベントを送信したり、イベント ハブからイベントを受信したりすることができます。 これらのポリシーの接続文字列にアクセスするには、イベント ハブの **[ダッシュボード]** タブに移動し、**[接続情報]** をクリックします。
 
 ![接続文字列][event-hub-dashboard]
 
@@ -48,9 +49,9 @@ Azure Event Hubs は、1 秒間に数百万件のイベントを取り込むこ�
 ![接続文字列][event-hub-connection-string]
 
 ## <a name="create-an-api-management-logger"></a>API Management ロガーの作成
-イベント ハブが完成したら、そこにイベントを記録できるようにするための構成を API Management サービスの [ロガー](https://msdn.microsoft.com/library/azure/mt592020.aspx) に対して行います。
+イベント ハブが完成したら、そこにイベントを記録できるようにするための構成を API Management サービスの [ロガー](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity) に対して行います。
 
-API Management のロガーは、 [API Management REST API](http://aka.ms/smapi)を使用して構成します。 REST API を初めて使用する前には、[前提条件](https://msdn.microsoft.com/library/azure/dn776326.aspx#Prerequisites)を確認し、[REST API へのアクセスを有効化](https://msdn.microsoft.com/library/azure/dn776326.aspx#EnableRESTAPI)してください。
+API Management のロガーは、 [API Management REST API](http://aka.ms/smapi)を使用して構成します。 REST API を初めて使用する前には、[前提条件](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest#Prerequisites)を確認し、[REST API へのアクセスを有効化](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest#EnableRESTAPI)してください。
 
 ロガーを作成するには、次の URL テンプレートを使用して HTTP PUT 要求を送信します。
 
@@ -62,8 +63,8 @@ API Management のロガーは、 [API Management REST API](http://aka.ms/smapi)
 次のヘッダーを要求に追加します。
 
 * Content-Type : application/json
-* Authorization : SharedAccessSignature uid=...
-  * `SharedAccessSignature` を生成する手順については、 [Azure API Management REST API の認証に関するページ](https://msdn.microsoft.com/library/azure/dn798668.aspx)を参照してください。
+* Authorization : SharedAccessSignature 58...
+  * `SharedAccessSignature` を生成する手順については、 [Azure API Management REST API の認証に関するページ](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-authentication)を参照してください。
 
 次のテンプレートを使用して要求の本文を指定します。
 
@@ -85,7 +86,7 @@ API Management のロガーは、 [API Management REST API](http://aka.ms/smapi)
 要求を実行したとき、ロガーが作成されると、状態コード `201 Created` が返されます。
 
 > [!NOTE]
-> その他のリターン コードとその理由については、 [ロガーの作成に関するページ](https://msdn.microsoft.com/library/azure/mt592020.aspx#PUT)を参照してください。 その他、リスト、更新、削除など、各種操作の実行方法については、 [ロガー](https://msdn.microsoft.com/library/azure/mt592020.aspx) エンティティのドキュメントを参照してください。
+> その他のリターン コードとその理由については、 [ロガーの作成に関するページ](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity#PUT)を参照してください。 その他、リスト、更新、削除など、各種操作の実行方法については、 [ロガー](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity) エンティティのドキュメントを参照してください。
 >
 >
 
@@ -122,8 +123,8 @@ API Management でロガーを構成したら、必要なイベントを記録�
   * [EventProcessorHost を使用したメッセージの受信](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
   * [Event Hubs のプログラミング ガイド](../event-hubs/event-hubs-programming-guide.md)
 * API Management と Event Hubs の統合の詳細
-  * [ロガーのエンティティ リファレンス](https://msdn.microsoft.com/library/azure/mt592020.aspx)
-  * [log-to-eventhub ポリシー リファレンス](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub)
+  * [ロガーのエンティティ リファレンス](https://docs.microsoft.com/rest/api/apimanagement/loggers)
+  * [log-to-eventhub ポリシー リファレンス](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#log-to-eventhub)
   * [Azure API Management、Event Hubs、Runscope を使用した API の監視](api-management-log-to-eventhub-sample.md)    
 
 ## <a name="watch-a-video-walkthrough"></a>ビデオ チュートリアルを視聴する

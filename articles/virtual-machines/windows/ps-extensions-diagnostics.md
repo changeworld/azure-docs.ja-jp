@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 658480c7827e8a703fb25d3062197fedcbe30520
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 0a4c7df2ef385b8bdec467859af64fc243241d77
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>PowerShell を使用して Windows を実行している仮想マシンで Azure 診断を有効にする
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-Azure 診断は、デプロイされたアプリケーションで診断データを収集できるようにする Azure 内の機能です。 診断拡張機能を使用して、Windows を実行している Azure 仮想マシン (VM) から、アプリケーション ログやパフォーマンス カウンターなどの診断データを収集できます。 この記事では、Windows PowerShell を使用して VM の診断拡張機能を有効にする方法について説明します。 この記事で求められる前提条件については、 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) に関するページを参照してください。
+Azure 診断は、デプロイされたアプリケーションで診断データを収集できるようにする Azure 内の機能です。 診断拡張機能を使用して、Windows を実行している Azure 仮想マシン (VM) から、アプリケーション ログやパフォーマンス カウンターなどの診断データを収集できます。 この記事では、Windows PowerShell を使用して VM の診断拡張機能を有効にする方法について説明します。 この記事で求められる前提条件については、 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) に関するページを参照してください。
 
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-resource-manager-deployment-model"></a>リソース マネージャー デプロイ モデルを使用している場合の診断拡張機能の有効化
 Azure リソース マネージャー デプロイ モデルを使用して Windows VM を作成するときに、リソース マネージャー テンプレートに拡張機能構成を追加することで、診断拡張機能を有効にすることができます。 「[Azure Resource Manager テンプレートを使用して監視および診断を含む Windows 仮想マシンを登録する](extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 
-Resource Manager デプロイ モデルを使用して作成された既存の VM で診断拡張機能を有効にするには、次のように [Set-AzureRMVMDiagnosticsExtension](https://msdn.microsoft.com/library/mt603499.aspx) PowerShell コマンドレットを使用します。
+Resource Manager デプロイ モデルを使用して作成された既存の VM で診断拡張機能を有効にするには、次のように [Set-AzureRMVMDiagnosticsExtension](/powershell/module/azurerm.compute/set-azurermvmdiagnosticsextension) PowerShell コマンドレットを使用します。
 
     $vm_resourcegroup = "myvmresourcegroup"
     $vm_name = "myvm"
@@ -48,7 +48,7 @@ Resource Manager デプロイ モデルを使用して作成された既存の V
 
     Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName $diagnosticsstorage_name -StorageAccountKey $diagnosticsstorage_key
 
-VM で診断拡張機能を有効にしたら、 [Get-AzureRMVmDiagnosticsExtension](https://msdn.microsoft.com/library/mt603678.aspx) コマンドレットを使用して現在の設定を取得できます。
+VM で診断拡張機能を有効にしたら、 [Get-AzureRMVmDiagnosticsExtension](/powershell/module/azurerm.compute/get-azurermvmdiagnosticsextension) コマンドレットを使用して現在の設定を取得できます。
 
     Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name
 
@@ -59,17 +59,17 @@ VM で診断拡張機能を有効にしたら、 [Get-AzureRMVmDiagnosticsExtens
     $xmlconfig = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($encodedconfig))
     Write-Host $xmlconfig
 
-[Remove-AzureRMVmDiagnosticsExtension](https://msdn.microsoft.com/library/mt603782.aspx) コマンドレットを使用すると、VM から診断拡張機能を削除できます。  
+[Remove-AzureRMVmDiagnosticsExtension](/powershell/module/azurerm.compute/remove-azurermvmdiagnosticsextension) コマンドレットを使用すると、VM から診断拡張機能を削除できます。  
 
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-classic-deployment-model"></a>クラシック デプロイ モデルを使用している場合の診断拡張機能の有効化
-クラシック デプロイ モデルを使用して作成した VM で診断拡張機能を有効にするには、 [Set-AzureVMDiagnosticsExtension](https://msdn.microsoft.com/library/mt589189.aspx) コマンドレットを使用します。 次の例は、診断拡張機能を有効にしたクラシック デプロイ モデルを使用して、新しい VM を作成する方法を示しています。
+クラシック デプロイ モデルを使用して作成した VM で診断拡張機能を有効にするには、 [Set-AzureVMDiagnosticsExtension](/powershell/module/azure/set-azurevmdiagnosticsextension) コマンドレットを使用します。 次の例は、診断拡張機能を有効にしたクラシック デプロイ モデルを使用して、新しい VM を作成する方法を示しています。
 
     $VM = New-AzureVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
     $VM = Add-AzureProvisioningConfig -VM $VM -AdminUsername $Username -Password $Password -Windows
     $VM = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
     New-AzureVM -Location $Location -ServiceName $Service_Name -VM $VM
 
-クラシック デプロイ モデルを使用して作成された既存の VM で診断拡張機能を有効にするには、まず、 [Get-AzureVM](https://msdn.microsoft.com/library/mt589152.aspx) コマンドレットを使用して VM 構成を取得します。 次に、 [Set-AzureVMDiagnosticsExtension](https://msdn.microsoft.com/library/mt589189.aspx) コマンドレットを使用して、診断拡張機能を含めるように VM 構成を更新します。 最後に、 [Update-AzureVM](https://msdn.microsoft.com/library/mt589121.aspx)を使用して、更新された構成を VM に適用します。
+クラシック デプロイ モデルを使用して作成された既存の VM で診断拡張機能を有効にするには、まず、 [Get-AzureVM](/powershell/module/azure/get-azurevm) コマンドレットを使用して VM 構成を取得します。 次に、 [Set-AzureVMDiagnosticsExtension](/powershell/module/azure/set-azurevmdiagnosticsextension) コマンドレットを使用して、診断拡張機能を含めるように VM 構成を更新します。 最後に、 [Update-AzureVM](/powershell/module/azure/update-azurevm)を使用して、更新された構成を VM に適用します。
 
     $VM = Get-AzureVM -ServiceName $Service_Name -Name $VM_Name
     $VM_Update = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context

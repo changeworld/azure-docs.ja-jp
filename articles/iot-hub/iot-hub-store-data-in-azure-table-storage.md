@@ -15,14 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: xshi
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: ef5d4af5d5dad2b548ab01be5ba9c4769b21416a
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 4918648906212ea9708b6c6f0e89d1f4bb7bdcc5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="save-iot-hub-messages-that-contain-information-like-sensor-data-to-azure-table-storage"></a>センサー データなどの情報が含まれた IoT Hub メッセージを Azure テーブル ストレージに保存する
+
+![エンド ツー エンド ダイアグラム](media/iot-hub-get-started-e2e-diagram/3.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
@@ -38,7 +41,7 @@ Azure ストレージ アカウントと Azure Function App を作成し、IoT H
 
 ## <a name="what-you-will-need"></a>前提条件
 
-- 次の要件を対象とする [ESP8266 を Azure IoT Hub に接続](iot-hub-arduino-huzzah-esp8266-get-started.md)するためのチュートリアルを完了します。
+- 次の要件に対応するために、[デバイスのセットアップ](iot-hub-raspberry-pi-kit-node-get-started.md)に関するチュートリアルを完了しておきます。
   - 有効な Azure サブスクリプション
   - サブスクリプションの Azure IoT ハブ。
   - Azure IoT ハブにメッセージを送信する実行中のアプリケーション。
@@ -127,29 +130,15 @@ IoT Hub は、アプリケーションによる IoT Hub メッセージの読み
       ![Azure Portal でテーブル ストレージを Function App に追加する](media\iot-hub-store-data-in-azure-table-storage\4_azure-portal-function-app-add-output-table-storage.png)
    1. 必要な情報を入力します。
 
+      **[テーブル パラメーター名]**: `outputTable` を名前として使用します。これは Azure Functions のコードで使用されます。
+      
       **[テーブル名]**: `deviceData` を名前として使用します。
 
-      **[ストレージ アカウント接続]**: **[新規]** をクリックしてストレージ アカウントを選択します。
-   1. [ **Save**] をクリックします。
+      **[ストレージ アカウント接続]**: **[新規]** をクリックして、ストレージ アカウントを選択または入力します。
+   1. **[Save]**をクリックします。
 1. **[トリガー]** で **[Azure Event Hub (myEventHubTrigger) (Azure イベント ハブ (myEventHubTrigger))]** をクリックします。
 1. **[イベント ハブ コンシューマー グループ]** で、作成したコンシューマー グループの名前を入力し、**[保存]** をクリックします。
 1. **[開発]** をクリックし、**[ファイルの表示]** をクリックします。
-1. **[追加]** をクリックして `package.json` という名前の新しいファイルを追加し、次の情報を貼り付けてから **[保存]** をクリックします。
-
-   ```json
-   {
-      "name": "iothub_save_message_to_table",
-      "version": "0.0.1",
-      "private": true,
-      "main": "index.js",
-      "author": "Microsoft Corp.",
-      "dependencies": {
-         "azure-iothub": "1.0.9",
-         "azure-iot-common": "1.0.7",
-         "moment": "2.14.1"
-      }
-   }
-   ```
 1. `index.js` のコードを次の内容に置き換えて、**[保存]** をクリックします。
 
    ```javascript
@@ -157,34 +146,20 @@ IoT Hub は、アプリケーションによる IoT Hub メッセージの読み
 
    // This function is triggered each time a message is revieved in the IoTHub.
    // The message payload is persisted in an Azure Storage Table
-   var moment = require('moment');
-
+ 
    module.exports = function (context, iotHubMessage) {
-      context.log('Message received: ' + JSON.stringify(iotHubMessage));
-      context.bindings.outputTable = {
-      "partitionKey": moment.utc().format('YYYYMMDD'),
-         "rowKey": moment.utc().format('hhmmss') + process.hrtime()[1] + '',
-         "message": JSON.stringify(iotHubMessage)
-      };
-      context.done();
+    context.log('Message received: ' + JSON.stringify(iotHubMessage));
+    var date = Date.now();
+    var partitionKey = Math.floor(date / (24 * 60 * 60 * 1000)) + '';
+    var rowKey = date + '';
+    context.bindings.outputTable = {
+     "partitionKey": partitionKey,
+     "rowKey": rowKey,
+     "message": JSON.stringify(iotHubMessage)
+    };
+    context.done();
    };
    ```
-1. **[Function App の設定]** > **[開発者コンソールを開く]** の順にクリックします。
-
-   最初の場所は Function App の `wwwroot` フォルダーです。
-1. 次のコマンドを実行して関数フォルダーに移動します。
-
-   ```bash
-   cd <your function name>
-   ```
-1. 次のコマンドを実行して、npm パッケージをインストールします。
-
-   ```bash
-   npm install
-   ```
-
-   > [!Note]
-   > インストールが完了するまで時間がかかる場合があります。
 
 ここまでで、Function App の作成が完了しました。 このアプリは、IoT ハブが受信したメッセージを Azure テーブル ストレージに格納します。
 
@@ -205,3 +180,4 @@ IoT Hub は、アプリケーションによる IoT Hub メッセージの読み
 Azure ストレージ アカウントと Azure Function App を作成し、IoT ハブが受信したメッセージを Azure テーブル ストレージに格納することができました。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
+

@@ -16,9 +16,9 @@ ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: d1c327e90ca3343703784c22aba93280d4599723
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: bdb36e6397951d2d3298dbfe9e80a0b678ecfdaf
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -27,6 +27,7 @@ ms.lasthandoff: 04/03/2017
 > [!div class="op_single_selector"]
 > * [.NET](batch-dotnet-get-started.md)
 > * [Python](batch-python-tutorial.md)
+> * [Node.JS](batch-nodejs-get-started.md)
 >
 >
 

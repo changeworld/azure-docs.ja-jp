@@ -1,144 +1,244 @@
 ---
-title: "Azure IoT への Intel Edison (C) の接続 - 作業開始 | Microsoft Docs"
-description: "Intel Edison を使用し、Azure IoT ハブを作成して、その IoT ハブに Edison を接続します。"
+title: "Intel Edison からクラウドへの接続 (C) - Intel Edison を Azure IoT Hub に接続する | Microsoft Docs"
+description: "Intel Edison から Azure クラウドにデータを送信するために、Intel Edison を Azure IoT Hub に接続します。"
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timtl
 tags: 
-keywords: "Intel Edison 開発, Azure IoT Hub, モノのインターネットの概要, モノのインターネットのチュートリアル, Adafruit モノのインターネット, Intel Edison Arduino, Arduino の概要"
+keywords: "azure iot intel edison, intel edison iot hub, intel edison からクラウドへのデータの送信, intel edison からクラウドへの接続"
 ms.assetid: 4885fa2c-c2ee-4253-b37f-ccd55f92b006
 ms.service: iot-hub
 ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/21/2017
+ms.date: 4/17/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 7adde91586f5fbbffd0aeaf0efb0810cc891ac0b
-ms.openlocfilehash: 248bc4c309ed61ae00ef144ebdb4c820f285783d
-ms.lasthandoff: 03/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: fd6d04159c46439b5f1a91be7d2fa1b500bc92b3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/20/2017
 
 
 ---
-# <a name="connect-your-intel-edison-device-to-your-iot-hub-using-c"></a>C を使用した Intel Edison デバイスの IoT Hub への接続
-> [!div class="op_single_selector"]
-> * [Node.JS](iot-hub-intel-edison-kit-node-get-started.md)
-> * [C](iot-hub-intel-edison-kit-c-get-started.md)
+# <a name="connect-intel-edison-to-azure-iot-hub-c"></a>Intel Edison を Azure IoT Hub に接続する (C)
+
+[!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
 このチュートリアルでは、Intel Edison の操作の基本を学習することから始めます。 次に、[Azure IoT Hub](iot-hub-what-is-iot-hub.md) を使って、デバイスをクラウドにシームレスに接続する方法について説明します。
 
 キットをお持ちでない場合は、 [ここ](https://azure.microsoft.com/develop/iot/starter-kits)から開始
 
-## <a name="lesson-1-configure-your-device"></a>レッスン 1: デバイスの構成
-![レッスン 1 のエンド ツー エンドのダイアグラム](media/iot-hub-intel-edison-lessons/e2e-lesson1.png)
+## <a name="what-you-do"></a>作業内容
 
-このレッスンでは、Intel Edison デバイスにオペレーティング システムをインストールして構成し、開発環境をセットアップして、Edison にアプリケーションをデプロイします。
+* Intel Edison と Grove モジュールをセットアップします。
+* IoT Hub を作成します。
+* Edison のデバイスを IoT Hub に登録します。
+* Edison でサンプル アプリケーションを実行して、センサー データを IoT Hub に送信します。
 
-### <a name="configure-your-device"></a>デバイスを構成する
-ボードを組み立て、電源をオンにして、デスクトップ OS に構成ツールをインストールすることで Intel Edison の初回使用時の構成を行い、Edison のファームウェアをフラッシュし、パスワードを設定して Wi-Fi に接続します。  
+作成した IoT Hub に Intel Edison を接続します。 次に、Edison でサンプル アプリケーションを実行して、Grove 温度センサーから気温と湿度のデータを収集します。 最後に、センサー データを IoT Hub に送信します。
 
-*推定所要時間: 30 分*
+## <a name="what-you-learn"></a>学習内容
 
-[デバイスの構成][configure-your-device]に関するページに移動してください。
+* Azure IoT Hub を作成し、新しいデバイス接続文字列を取得する方法。
+* Edison を Grove 温度センサーと接続する方法。
+* Edison でサンプル アプリケーションを実行してセンサー データを収集する方法。
+* センサー データを IoT Hub に送信する方法。
 
-### <a name="get-the-tools"></a>ツールを入手する
-Intel Edison の最初のアプリケーションをビルドしてデプロイするためのツールとソフトウェアをダウンロードします。
+## <a name="what-you-need"></a>必要なもの
 
-*推定所要時間: 20 分*
+![必要なもの](media/iot-hub-intel-edison-kit-c-get-started/0_kit.png)
 
-「[ツールの入手][get-the-tools]」に移動してください。
+* Intel Edison ボード
+* Arduino 拡張ボード
+* 有効な Azure サブスクリプション Azure アカウントがない場合は、[無料試用版の Azure アカウント](https://azure.microsoft.com/free/)を数分で作成できます。
+* Mac PC または Windows か Linux を実行している PC。
+* インターネット接続。
+* マイクロ B - タイプ A のUSB ケーブル
+* 直流 (DC) 電源。 電源の定格は以下のとおり。
+  - 7-15V DC
+  - 1500mA 以上
+  - 中心/内部ピンが電源の正極
 
-### <a name="create-and-deploy-the-blink-application"></a>点滅アプリケーションを作成してデプロイする
-GitHub のサンプル点滅アプリケーションを複製し、gulp を使ってこのアプリケーションを Intel Edison ボードにデプロイします。 このサンプル アプリケーションでは、ボードに接続された LED を&2; 秒間隔で点滅させます。
+省略可能な品目を次に示します。
 
-*推定所要時間: 5 分*
+* Grove ベース シールド V2
+* Grove 温度センサー
+* Grove ケーブル
+* パッケージに含まれているスペーサー バーやネジ (拡張ボードにモジュールを固定するための2本のネジ、ネジ、プラスチック スペーサー 4 セットなど)
 
-「[点滅アプリケーションを作成してデプロイする][create-and-deploy-the-blink-application]」に移動してください。
+> [!NOTE] 
+サンプル コードはシミュレートされたセンサー データをサポートしているため、これらの品目は省略可能です。
 
-## <a name="lesson-2-create-your-iot-hub"></a>レッスン 2: IoT ハブの作成
-![レッスン 2 のエンド ツー エンドのダイアグラム](media/iot-hub-intel-edison-lessons/e2e-lesson2.png)
+[!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
-このレッスンでは、無料の Azure アカウントを作成し、Azure IoT ハブをプロビジョニングして、その IoT ハブに最初のデバイスを作成します。
+## <a name="setup-intel-edison"></a>Intel Edison をセットアップする
 
-このレッスンを開始する前に、レッスン 1 を完了してください。
+### <a name="assemble-your-board"></a>ボードを取り付ける
 
-### <a name="get-the-azure-tools"></a>Azure ツールの入手
-Azure コマンド ライン インターフェイス (Azure CLI) をインストールします。
+このセクションでは、Intel® Edison モジュールを拡張ボードに接続する手順を説明します。
 
-*推定所要時間: 10 分*
+1. Intel® Edison モジュールを拡張ボードの白枠内に置いて、拡張ボードにあるネジをモジュールの穴に通します。
 
-「[Azure ツールの入手][get-azure-tools]」に移動してください。
+2. カチッとはまるまで、モジュールの `What will you make?` という文字のすぐ下を押し下げます。
 
-### <a name="create-your-iot-hub-and-register-intel-edison"></a>IoT ハブの作成と Intel Edison の登録
-リソース グループを作成し、最初の Azure IoT ハブをプロビジョニングして、Azure CLI を使って IoT ハブに最初のデバイスを追加します。
+   ![assemble board 2](media/iot-hub-intel-edison-kit-c-get-started/1_assemble_board2.jpg)
 
-*推定所要時間: 10 分*
+3. 2 本の六角ナット (パッケージに同梱) を使用して、モジュールを拡張ボードに固定します。
 
-「[IoT ハブの作成と Intel Edison の登録](iot-hub-intel-edison-kit-c-lesson2-prepare-azure-iot-hub.md)」に移動してください。
+   ![assemble board 3](media/iot-hub-intel-edison-kit-c-get-started/2_assemble_board3.jpg)
 
-## <a name="lesson-3-send-device-to-cloud-messages"></a>レッスン 3: デバイスからクラウドへのメッセージの送信
-![レッスン 3 のエンド ツー エンドのダイアグラム](media/iot-hub-intel-edison-lessons/e2e-lesson3.png)
+4. 拡張ボードの四隅にある穴の 1 つにネジを差し込みます。 ネジをプラスチック スペーサーの 1 つでしっかり固定します。
 
-このレッスンでは、Edison から IoT ハブにメッセージを送信します。 また、IoT ハブから受信メッセージを取得して、Azure Table Storage に書き込む Azure Function App を作成します。
+   ![assemble board 4](media/iot-hub-intel-edison-kit-c-get-started/3_assemble_board4.jpg)
 
-このレッスンを開始する前に、レッスン 1 と 2 を完了してください。
+5. 他の 3 つの隅でも同様に繰り返します。
 
-### <a name="create-an-azure-function-app-and-azure-storage-account"></a>Azure Function App と Azure ストレージ アカウントの作成
-Azure Resource Manager テンプレートを使用して、Azure Function App と Azure ストレージ アカウントを作成します。
+   ![assemble board 5](media/iot-hub-intel-edison-kit-c-get-started/4_assemble_board5.jpg)
 
-*推定所要時間: 10 分*
+ボードを取り付けました。
 
-「[Azure Function App と Azure ストレージ アカウントの作成][create-an-azure-function-app-and-azure-storage-account]」に移動してください。
+   ![assemble board 5](media/iot-hub-intel-edison-kit-c-get-started/5_assembled_board.jpg)
 
-### <a name="run-a-sample-application-to-send-device-to-cloud-messages"></a>デバイスからクラウドへのメッセージを送信するサンプル アプリケーションの実行
-IoT ハブにメッセージを送信するサンプル アプリケーションを Intel Edison デバイスにデプロイして実行します。
+### <a name="connect-the-grove-base-shield-and-the-temperature-sensor"></a>Grove ベース シールドと温度センサーを接続する
 
-*推定所要時間: 10 分*
+1. Grove ベース シールドをボードに取り付けます。 すべてのピンがボードにしっかり差し込まれていることを確認します。
+   
+   ![Grove ベース シールド](media/iot-hub-intel-edison-kit-c-get-started/6_grove_base_sheild.jpg)
 
-「[デバイスからクラウドへのメッセージを送信するサンプル アプリケーションの実行][send-device-to-cloud-messages]」に移動してください。
+2. Grove ケーブルを使用して、Grove 温度センサーを Grove ベース シールドの **A0** ポートに接続します。
 
-### <a name="read-messages-persisted-in-azure-storage"></a>Azure Storage に保持されたメッセージの読み取り
-Azure Storage に書き込まれた、デバイスからクラウドへのメッセージを監視します。
+   ![温度センサーへの接続](media/iot-hub-intel-edison-kit-c-get-started/7_temperature_sensor.jpg)
+   
+   ![Edison とセンサーの接続](media/iot-hub-intel-edison-kit-c-get-started/16_edion_sensor.png)
 
-*推定所要時間: 5 分*
+これでセンサーの準備ができました。
 
-「[Azure Storage に保持されたメッセージの読み取り][read-messages-persisted-in-azure-storage]」に移動してください。
+### <a name="power-up-edison"></a>Edison の電源をオンにする
 
-## <a name="lesson-4-send-cloud-to-device-messages"></a>レッスン 4: クラウドからデバイスへのメッセージの送信
-![レッスン 4 のエンド ツー エンドのダイアグラム](media/iot-hub-intel-edison-lessons/e2e-lesson4.png)
+1. 電源を接続します。
 
-このレッスンでは、Azure IoT ハブから Intel Edison にメッセージを送信する方法を紹介します。 メッセージにより、Edison に接続されている LED のオンとオフの動作を制御します。 サンプル アプリケーションは、このタスクを実行するための準備が整っています。
+   ![Plug in power supply](media/iot-hub-intel-edison-kit-c-get-started/8_plug_power.jpg)
 
-このレッスンを開始する前に、レッスン 1、2、3 を完了してください。
+2. (Arduino * 拡張ボードで DS1 というラベルが付いている) 緑色の LED が点灯して、そのまま点灯を続けます。
 
-### <a name="run-the-sample-application-to-receive-cloud-to-device-messages"></a>クラウドからデバイスへのメッセージを受信するサンプル アプリケーションの実行
-レッスン 4 のサンプル アプリケーションは Edison 上で動作し、IoT ハブからの受信メッセージを監視します。 新しい gulp タスクを使って IoT ハブから Edison にメッセージを送信して、LED を点滅させます。
+3. ボードの起動が完了するまで 1 分待ちます。
 
-*推定所要時間: 10 分*
+   > [!NOTE]
+   > DC 電源を使用していない場合でも、USB ポートを介してボードに電源を供給できます。 詳細については、`Connect Edison to your computer` セクションをご覧ください。 この方法でボードに給電すると、Wi-Fi またはモーターを使用している場合は特に、ボードで予期せぬ動作が発生することがあります。
 
-「[クラウドからデバイスへのメッセージを受信するサンプル アプリケーションの実行][receive-cloud-to-device-messages]」に移動してください。
+### <a name="connect-edison-to-your-computer"></a>Edison をコンピューターに接続する
 
-### <a name="optional-section-change-the-on-and-off-behavior-of-the-led"></a>省略可能なセクション: LED のオンとオフの動作の変更
-LED のオンとオフの動作を変更するメッセージをカスタマイズします。
+1. Edison がデバイス モードになるように、マイクロ スイッチを 2 つのマイクロ USB ポート側に切り替えます。 デバイス モードとホスト モードの違いについては、[こちら](https://software.intel.com/en-us/node/628233#usb-device-mode-vs-usb-host-mode)をご覧ください。
 
-*推定所要時間: 10 分*
+   ![Toggle down the microswitch](media/iot-hub-intel-edison-kit-c-get-started/9_toggle_down_microswitch.jpg)
 
-省略可能なセクション「[LED のオンとオフの動作の変更][change-the-on-and-off-behavior-of-the-led]」に移動してください。
+2. 上のマイクロ USB ポートにマイクロ USB ケーブルを接続します。
 
-## <a name="troubleshooting"></a>トラブルシューティング
-レッスン中に問題が発生した場合は、「[トラブルシューティング][troubleshooting]」で解決策を探してください。
-<!-- Images and links -->
+   ![上部のマイクロ USB ポート](media/iot-hub-intel-edison-kit-c-get-started/10_top_usbport.jpg)
 
-[configure-your-device]: iot-hub-intel-edison-kit-c-lesson1-configure-your-device.md
-[get-the-tools]: iot-hub-intel-edison-kit-c-lesson1-get-the-tools-win32.md
-[create-and-deploy-the-blink-application]: iot-hub-intel-edison-kit-c-lesson1-deploy-blink-app.md
-[get-azure-tools]: iot-hub-intel-edison-kit-c-lesson2-get-azure-tools-win32.md
-[create-an-azure-function-app-and-azure-storage-account]: iot-hub-intel-edison-kit-c-lesson3-deploy-resource-manager-template.md
-[send-device-to-cloud-messages]: iot-hub-intel-edison-kit-c-lesson3-run-azure-blink.md
-[read-messages-persisted-in-azure-storage]: iot-hub-intel-edison-kit-c-lesson3-read-table-storage.md
-[receive-cloud-to-device-messages]:iot-hub-intel-edison-kit-c-lesson4-send-cloud-to-device-messages.md
-[change-the-on-and-off-behavior-of-the-led]: iot-hub-intel-edison-kit-c-lesson4-change-led-behavior.md
-[troubleshooting]: iot-hub-intel-edison-kit-c-troubleshooting.md
+3. USB ケーブルのもう一方の端をコンピューターに接続します。
+
+   ![Computer USB](media/iot-hub-intel-edison-kit-c-get-started/11_computer_usb.jpg)
+
+4. お使いのコンピューターに新しいドライブがマウントされると、ボードが完全に初期化されていることがわかります (コンピューターに SD カードを挿入するのと同様)。
+
+## <a name="download-and-run-the-configuration-tool"></a>構成ツールをダウンロードして実行する
+`Installers` という見出しの下に一覧表示されている[こちらのリンク](https://software.intel.com/en-us/iot/hardware/edison/downloads)から最新の構成ツールを入手します。 ツールを実行し、画面の指示に従って、必要に応じて [次へ] をクリックします。
+
+### <a name="flash-firmware"></a>ファームウェアのフラッシュ
+1. `Set up options` ページで `Flash Firmware` をクリックします。
+2. 次のいずれかを実行して、ボードにフラッシュするイメージを選択します。
+   - Intel から入手できる最新のファームウェア イメージをダウンロードしてボードをフラッシュするには、`Download the latest image version xxxx` を選択します。
+   - お使いのコンピューターに保存してあるイメージでボードをフラッシュするには、`Select the local image` を選択します。 ボードにフラッシュする画像を探して選択します。
+3. セットアップ ツールがボードのフラッシュを試みます。 フラッシュのプロセス全体は最大 10 分を要します。
+
+### <a name="set-password"></a>パスワードの設定
+1. `Set up options` ページで `Enable Security` をクリックします。
+2. Intel® Edison ボードのカスタム名を設定できます。 これは省略可能です。
+3. ボードのパスワードを入力してから、`Set password` をクリックします。
+4. 後で使用するため、パスワードをメモしておきます。
+
+### <a name="connect-wi-fi"></a>Wi-Fi の接続
+1. `Set up options` ページで `Connect Wi-Fi` をクリックします。 コンピューターが利用できる Wi-Fi ネットワークをスキャンするまで、最大1分間待ちます。
+2. `Detected Networks` ドロップダウン リストで、ネットワークを選択します。
+3. `Security` ドロップダウン リストで、ネットワークのセキュリティ タイプを選択します。
+4. ログイン名とパスワード情報を入力してから、`Configure Wi-Fi` をクリックします。
+5. 後で使用するため、IP アドレスをメモしておきます。
+
+> [!NOTE]
+> 必ず Edison をコンピューターと同じネットワークに接続してください。 お使いのコンピューターは、IP アドレスを使用して Edison に接続します。
+
+   ![温度センサーへの接続](media/iot-hub-intel-edison-kit-c-get-started/12_configuration_tool.png)
+
+ご利用ありがとうございます。 Edison を適切に構成できました。
+
+## <a name="run-a-sample-application-on-intel-edison"></a>Intel Edison でサンプル アプリケーションを実行する
+
+### <a name="prepare-the-azure-iot-device-sdk"></a>Azure IoT Device SDK を準備する
+
+1. 次の SSH クライアントのいずれかを使用して、ホスト コンピューターから Intel Edison に接続します。 構成ツールの IP アドレスと、そのツールで設定済みのパスワードを使用します。
+    - Windows では [PuTTY](http://www.putty.org/)。
+    - Ubuntu または macOS では組み込みの SSH クライアント。
+
+2. サンプル クライアント アプリケーションをデバイスに複製します。 
+   
+   ```bash
+   git clone https://github.com/Azure-Samples/iot-hub-c-intel-edison-client-app.git
+   ```
+
+3. レポジトリ フォルダーに移動し、次のコマンドを実行して Azure IoT SDK をビルドします。
+
+   ```bash
+   cd iot-hub-c-intel-edison-client-app
+   sed -i -e 's/\r$//' buildSDK.sh
+   chmod 755 buildSDK.sh
+   ./buildSDK.sh
+   ```
+
+### <a name="configure-the-sample-application"></a>サンプル アプリケーションを構成する
+
+1. 次のコマンドを実行して、config ファイルを開きます。
+
+   ```bash
+   nano config.h
+   ```
+
+   ![config ファイル](media/iot-hub-intel-edison-kit-c-get-started/13_configure_file.png)
+
+   このファイルには、構成可能な 2 つのマクロがあります。 1 つ目は `INTERVAL` で、クラウドに送信する 2 つのメッセージの時間間隔を定義します。 2 つ目は `SIMULATED_DATA` で、シミュレートされたセンサー データを使用するかどうかを表すブール値です。
+
+   **センサーがない**場合は、`SIMULATED_DATA` 値を `1` に設定し、シミュレートされたセンサー データをサンプル アプリケーションで作成して使用します。
+
+2. Control + O キー、Enter キー、Control + X キーの順に押し、保存して終了します。
+
+### <a name="build-and-run-the-sample-application"></a>サンプル アプリケーションをビルドして実行する
+
+1. 次のコマンドを実行して、サンプル アプリケーションをビルドします。
+
+   ```bash
+   cmake . && make
+   ```
+   ![ビルド出力](media/iot-hub-intel-edison-kit-c-get-started/14_build_output.png)
+
+1. 次のコマンドを実行して、サンプル アプリケーションを実行します。
+
+   ```bash
+   sudo ./app '<your Azure IoT hub device connection string>'
+   ```
+
+   > [!NOTE] 
+   デバイスの接続文字列をコピーして貼り付け、必ず一重引用符で囲んでください。
+
+IoT Hub に送信されるセンサー データとメッセージを示す次の出力が表示されます。
+
+![出力 - Intel Edison から IoT Hub に送信されるセンサー データ](media/iot-hub-intel-edison-kit-c-get-started/15_message_sent.png)
+
+## <a name="next-steps"></a>次のステップ
+
+サンプル アプリケーションを実行してセンサー データを収集し、IoT Hub に送信します。
+
+[!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

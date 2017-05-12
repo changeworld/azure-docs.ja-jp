@@ -15,10 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 03/02/2017
 ms.author: asaxton
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: beadcbfa4907d68a687ec5144136132d8b0439e1
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: c3cb1763f807220a4a829f410d7eb77974b25776
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -44,16 +45,17 @@ ms.lasthandoff: 03/29/2017
 2. Visual Studio で **PowerBI-embedded.sln** を開きます。 NuGet パッケージ マネージャー コンソールで **Update-Package** コマンドを実行して、このソリューションで使用するパッケージを更新する必要のある場合があります。
 3. ソリューションをビルドします。
 4. **ProvisionSample** コンソール アプリを実行します。 サンプルのコンソール アプリで、ワークスペースのプロビジョニングを行って、PBIX ファイルをインポートします。
-5. 新しい**ワークスペース**をプロビジョニングするには、オプション 2 の **[Report management (レポート管理)]** を選択し、オプション 3 の **[Import PBIX Desktop file into a workspace (ワークスペースに PBIX デスクトップ ファイルをインポートする)]** を選択します。
+5. 新しい**ワークスペース**をプロビジョニングするには、オプション 1 の **[Collection management (コレクション管理)]** を選択し、オプション 6 の **[Provision a new Workspace (新しいワークスペースをプロビジョニングする)]** を選択します。
+6. 新しい**レポート**をインポートするには、オプション 2 の **[Report management (レポート管理)]** を選択し、オプション 3 の **[Import PBIX Desktop file into a workspace (ワークスペースに PBIX デスクトップ ファイルをインポートする)]** を選択します。
 
-6. **ワークスペース コレクション**名と**アクセス キー**を入力します。 これらは **Azure ポータル**で確認できます。 **アクセス キー**を取得する方法の詳細については、「Microsoft Power BI Embedded の概要」の「 [Power BI API のアクセス キーの表示](power-bi-embedded-get-started.md#view-power-bi-api-access-keys) 」をご覧ください。
+7. **ワークスペース コレクション**名と**アクセス キー**を入力します。 これらは **Azure ポータル**で確認できます。 **アクセス キー**を取得する方法の詳細については、「Microsoft Power BI Embedded の概要」の「 [Power BI API のアクセス キーの表示](power-bi-embedded-get-started.md#view-power-bi-api-access-keys) 」をご覧ください。
 
     ![](media/powerbi-embedded-get-started-sample/azure-portal.png)
-7. 新しく作成された **ワークスペース ID** を、この記事の後半で使用するためにコピーして保存します。 作成された**ワークスペース ID** は **Azure Portal** で確認できます。
+8. 新しく作成された **ワークスペース ID** を、この記事の後半で使用するためにコピーして保存します。 作成された**ワークスペース ID** は **Azure Portal** で確認できます。
 
     ![](media/powerbi-embedded-get-started-sample/workspace-id.png)
-8. PBIX ファイルを**ワークスペース**にインポートするために、オプション **[6.Import PBIX Desktop file into an existing workspace]** を選択します。 PBIX ファイルがない場合は、[Retail Analysis Sample PBIX](http://go.microsoft.com/fwlink/?LinkID=780547) をダウンロードできます。
-9. メッセージが表示されたら、分かりやすい **データセット**名を入力します。
+9. PBIX ファイルを**ワークスペース**にインポートするために、オプション **[6.Import PBIX Desktop file into an existing workspace]** を選択します。 PBIX ファイルがない場合は、[Retail Analysis Sample PBIX](http://go.microsoft.com/fwlink/?LinkID=780547) をダウンロードできます。
+10. メッセージが表示されたら、分かりやすい **データセット**名を入力します。
 
 次のように、応答が表示されます。
 

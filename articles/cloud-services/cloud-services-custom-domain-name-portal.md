@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2016
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: 2b020004762125aad201cf7eb454da5cf73288ae
-ms.openlocfilehash: 7d509e9606c0a2f599f511c011ab775b2ea6f7b0
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 55fc4e5c88568cca8a2842590dfd24e082139699
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -76,7 +78,7 @@ CNAME レコードを作成するには、レジストラーから提供され�
        ![サイトの URL を表示する [概要] セクション][csurl]
      
        **OR**
-   * [Azure Powershell](/powershell/azureps-cmdlets-docs)をインストールして構成し、次のコマンドを使用します。
+   * [Azure Powershell](/powershell/azure/overview)をインストールして構成し、次のコマンドを使用します。
      
        ```powershell
        Get-AzureDeployment -ServiceName yourservicename | Select Url
@@ -97,7 +99,7 @@ CNAME レコードを作成するには、レジストラーから提供され�
 > [!NOTE]
 > **www.contoso.com** の訪問者が本当のホスト (contoso.cloudapp.net) を識別することはないため、転送プロセスはエンド ユーザーから見えなくなります。
 > 
-> 上の例は、 **www** サブドメインのトラフィックのみに該当します。 CNAME レコードにはワイルドカードを使用できないため、各ドメインおよびサブドメインに 1 つの CNAME を作成する必要があります。 サブドメイン (*.contoso.com など) からトラフィックを cloudapp.net アドレスに転送するには、DNS 設定の **URL リダイレクト** エントリまたは **URL 転送**エントリを構成するか、または A レコードを作成します。
+> 上の例は、 **www** サブドメインのトラフィックのみに該当します。 CNAME レコードにはワイルドカードを使用できないため、各ドメインおよびサブドメインに 1 つの CNAME を作成する必要があります。 トラフィックをサブドメイン (*.contoso.com など) から cloudapp.net アドレスに転送するには、DNS 設定の **URL リダイレクト** エントリまたは **URL 転送**エントリを構成するか、または A レコードを作成します。
 > 
 > 
 
@@ -111,7 +113,7 @@ A レコードを作成するには、まず、クラウド サービスの仮�
        ![VIP を表示する [概要] セクション][vip]
      
        **OR**
-   * [Azure Powershell](/powershell/azureps-cmdlets-docs)をインストールして構成し、次のコマンドを使用します。
+   * [Azure Powershell](/powershell/azure/overview)をインストールして構成し、次のコマンドを使用します。
      
        ```powershell
        get-azurevm -servicename yourservicename | get-azureendpoint -VM {$_.VM} | select Vip
@@ -153,9 +155,4 @@ A レコードを作成するには、まず、クラウド サービスの仮�
 [Azure Portal]: https://portal.azure.com
 [vip]: ./media/cloud-services-custom-domain-name-portal/csvip.png
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

@@ -14,9 +14,10 @@ ms.devlang: python
 ms.topic: hero-article
 ms.date: 11/16/2016
 ms.author: adegeo
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: 6b21f38ddd64278db26d7042349470805b799203
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/18/2017
 
 
@@ -346,7 +347,7 @@ Web ロールまたは worker ロールから Azure Storage や Service Bus な�
 
 [クラウド サービスとは]: cloud-services-choose-me.md
 [execution model-web sites]: ../app-service-web/app-service-web-overview.md
-[execution model-vms]:../virtual-machines/windows/about.md
+[execution model-vms]:../virtual-machines/windows/overview.md
 [execution model-cloud services]: cloud-services-choose-me.md
 [Python Developer Center]: /develop/python/
 

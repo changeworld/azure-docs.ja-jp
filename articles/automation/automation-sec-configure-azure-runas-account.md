@@ -18,10 +18,11 @@ ms.author: magoedte
 ROBOTS: NOINDEX
 redirect_url: /azure/automation/automation-offering-get-started
 redirect_document_id: TRUE
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: fbca3d195290551d37606e231b997a40a602351f
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 90570886b3a1ae0c48683691cb438b5a61195d76
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -66,7 +67,7 @@ Automation アカウントの作成を開始する前に、以下の事柄を理
 >[!NOTE]
 >Automation アカウントを作成するためには、サービス管理者ロールのメンバーであるか、サブスクリプションのアクセス権を付与できる共同管理者である必要があります。 また、そのサブスクリプションの既定の Active Directory インスタンスにユーザーとして追加されている必要があります。 このアカウントを特権ロールに割り当てる必要はありません。
 >
->サブスクリプションの Active Directory インスタンスのメンバーになっていない状態で、サブスクリプションの共同管理者ロールに追加された場合、Active Directory にゲストとして追加されることになります。 この場合、"…を作成するためのアクセス許可がありません" という警告が **[Automation アカウントの追加]** ブレードに表示されます。
+>サブスクリプションの Active Directory インスタンスのメンバーになっていない状態で、サブスクリプションの共同管理者ロールに追加された場合、Active Directory にゲストとして追加されることになります。 この場合、"…を作成するためのアクセス許可がありません" という 警告が **[Automation アカウントの追加]** ブレードに表示されます。
 >
 >先に共同管理者ロールに追加されていたユーザーは、サブスクリプションの Active Directory インスタンスから削除した後、Active Directory の完全なユーザーとして再度追加できます。 このような状況を検証するには、Azure Portal の **[Azure Active Directory]** ウィンドウで、**[ユーザーとグループ]**、**[すべてのユーザー]**、特定のユーザー、**[プロファイル]** の順に選択します。 ユーザーのプロファイルの下部にある **[ユーザー タイプ]** 属性の値は、**[ゲスト]** と一致しないようにする必要があります。
 >
@@ -140,7 +141,7 @@ Automation アカウントが正常に作成されると、いくつかのリソ
 3. **AzureAutomationTutorialScript** Runbook を選択し、**[開始]** をクリックして、Runbook を開始します。 次のイベントが発生します。
  * [Runbook ジョブ](automation-runbook-execution.md)が作成されると、**[ジョブ]** ブレードが表示され、ジョブの状態が **[ジョブの概要]** タイルに表示されます。
  * 最初のジョブの状態は "**キュー登録済み**" であり、クラウドの runbook worker が使用できるようになるのを待っていることを示します。
- * その後、ワーカーがジョブを要求すると**開始中**になり、
+ * その後、worker がジョブを要求すると**開始中**になり、
  * Runbook が実行を開始すると**実行中**になります。
  * Runbook ジョブの実行が完了すると、状態は **[完了]** と表示されます。
 
@@ -163,7 +164,7 @@ Automation アカウントが正常に作成されると、いくつかのリソ
 
  * [Runbook ジョブ](automation-runbook-execution.md)が作成されると、**[ジョブ]** ブレードが表示され、ジョブの状態が **[ジョブの概要]** タイルに表示されます。
  * 最初のジョブの状態は "**キュー登録済み**" であり、クラウドの runbook worker が使用できるようになるのを待っていることを示します。
- * その後、ワーカーがジョブを要求すると**開始中**になり、
+ * その後、worker がジョブを要求すると**開始中**になり、
  * Runbook が実行を開始すると**実行中**になります。
  * Runbook ジョブの実行が完了すると、状態は **[完了]** と表示されます。
 
@@ -176,7 +177,7 @@ Automation アカウントが正常に作成されると、いくつかのリソ
 6. **[ジョブの概要]** ブレードと、対応する **[AzureAutomationTutorialScript]** Runbook ブレードを閉じます。
 
 ## <a name="managing-your-run-as-account"></a>実行アカウントを管理する
-証明書は、Automation アカウントの有効期限が切れる前のどこかの時点で書き換える必要があります。 また、実行アカウントが侵害されたと思われる場合は、実行アカウントを削除して再作成することができます。 このセクションでは、これらの操作を実行する方法について説明します。
+証明書は、Automation アカウントの有効期限が切れる前のどこかの時点で更新する必要があります。 また、実行アカウントが侵害されたと思われる場合は、実行アカウントを削除して再作成することができます。 このセクションでは、これらの操作を実行する方法について説明します。
 
 ### <a name="self-signed-certificate-renewal"></a>自己署名証明書の書き換え
 実行アカウント用に作成された自己署名証明書は、作成日から 1 年後に有効期限が切れます。 期限切れになる前に、いつでも書き換えることができます。 証明書を書き換えるとき、実行待ちまたは実行中の Runbook が悪影響を受けないようにすると共に、その実行アカウントでの認証に支障をきたさないよう、現行の有効な証明書は保持されます。 証明書は、有効期限日を迎えるまで存在し続けます。
@@ -245,7 +246,7 @@ Automation アカウントが正常に作成されると、いくつかのリソ
 このスクリプトには、以下の前提条件があります。
 
 * このスクリプトは、Azure Resource Manager モジュール 2.01 以降がインストールされた Windows 10 と Windows Server 2016 でのみ実行できます。 前のバージョンの Windows ではサポートされません。
-* Azure PowerShell 1.0 以降。 PowerShell 1.0 リリースについては、[Azure PowerShell のインストールと構成方法](/powershell/azureps-cmdlets-docs)に関するページを参照してください。
+* Azure PowerShell 1.0 以降。 PowerShell 1.0 リリースについては、[Azure PowerShell のインストールと構成方法](/powershell/azure/overview)に関するページを参照してください。
 * Automation アカウント。このアカウントは、後述の PowerShell スクリプトの *–AutomationAccountName* パラメーターと *-ApplicationDisplayName* パラメーターの値として参照されます。
 
 スクリプトの必須パラメーターである *SubscriptionID*、*ResourceGroup*、*AutomationAccountName* の値を取得するには、次の手順に従います。
@@ -515,7 +516,7 @@ Automation アカウントが正常に作成されると、いくつかのリソ
          }
     }
 
-複数のサブスクリプション間での作業がしやすいよう、スクリプトには、サブスクリプション コンテキストの参照をサポートする 2 つのコード行が追加されています。 *SubscriptionId* という名前の変数資産には、サブスクリプションの ID が格納されています。 `Add-AzureRmAccount` コマンドレット ステートメントの後に、[`Set-AzureRmContext`](https://msdn.microsoft.com/library/mt619263.aspx) コマンドレットと *-SubscriptionId* パラメーター セットが記述されています。 変数名が一般的すぎる場合は、識別しやすい名前になるよう、プレフィックスやその他の名前付け規則を含むように変数名を変更してください。 また、*-SubscriptionId* の代わりに、*-SubscriptionName* パラメーター セットを対応する変数資産と共に使用することもできます。
+複数のサブスクリプション間での作業がしやすいよう、スクリプトには、サブスクリプション コンテキストの参照をサポートする 2 つのコード行が追加されています。 *SubscriptionId* という名前の変数資産には、サブスクリプションの ID が格納されています。 `Add-AzureRmAccount` コマンドレット ステートメントの後に、[`Set-AzureRmContext`](/powershell/module/azurerm.profile/set-azurermcontext) コマンドレットと *-SubscriptionId* パラメーター セットが記述されています。 変数名が一般的すぎる場合は、識別しやすい名前になるよう、プレフィックスやその他の名前付け規則を含むように変数名を変更してください。 また、*-SubscriptionId* の代わりに、*-SubscriptionName* パラメーター セットを対応する変数資産と共に使用することもできます。
 
 Runbook での認証に使用されるコマンドレット (`Add-AzureRmAccount`) は、*ServicePrincipalCertificate* パラメーター セットを使用します。 認証に使用するのはサービス プリンシパル証明書であり、ユーザーの資格情報ではありません。
 

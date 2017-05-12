@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: d9b713460f98104017ae73ea27f30b0d8d1ca7ee
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 8b823c42743bc477dceaa3270836de8ebd92c28f
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -38,7 +38,7 @@ ms.lasthandoff: 03/27/2017
 
 これらの手順では、空白に記入する方式に従って Azure PowerShell コマンド セットを作成します。 この方法は、PowerShell を初めて使う場合や、構成を正しく行うためにどの値を指定するとよいかを知りたい場合に役立ちます。 PowerShell に慣れているユーザーは、コマンドの変数を独自の値で置き換えることができます ("$" で始まる行)。
 
-まだ完了していない場合は、 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs) に関するページの手順に従って、Azure PowerShell をご使用のローカル コンピューターにインストールします。 次に、Windows PowerShell コマンド プロンプトを開きます。
+まだ完了していない場合は、 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview) に関するページの手順に従って、Azure PowerShell をご使用のローカル コンピューターにインストールします。 次に、Windows PowerShell コマンド プロンプトを開きます。
 
 ## <a name="step-1-add-your-account"></a>手順 1: アカウントを追加する
 1. PowerShell プロンプトで、「**Add-AzureAccount**」と入力し、**Enter** キーを押します。 
@@ -122,7 +122,7 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
     $domacctdomain="<domain of the account that has permission to add the machine to the domain>"
     $vm1 | Add-AzureProvisioningConfig -AdminUsername $cred1.Username -Password $cred1.GetNetworkCredential().Password -WindowsDomain -Domain $domacctdomain -DomainUserName $cred2.Username -DomainPassword $cred2.GetNetworkCredential().Password -JoinDomain $domaindns
 
-これ以外の Windows ベースの事前構成の追加方法については、「[Add-AzureProvisioningConfig](https://msdn.microsoft.com/library/azure/dn495299.aspx)」で **Windows** パラメーター セットと **WindowsDomain** パラメーター セットの構文を参照してください。
+これ以外の Windows ベースの事前構成の追加方法については、「[Add-AzureProvisioningConfig](/powershell/module/azure/add-azureprovisioningconfig)」で **Windows** パラメーター セットと **WindowsDomain** パラメーター セットの構文を参照してください。
 
 必要に応じて、次のように、"静的 DIP" と呼ばれる特定の IP アドレスを仮想マシンに割り当てます。
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/13/2017
+ms.date: 04/20/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: 938f6e4bf7d9d6418c9b10531725807a0a9dbce4
-ms.lasthandoff: 04/14/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a3052e53c642ef3e6d9bb0489476274987707f91
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -38,7 +38,7 @@ HDInsight で Azure Virtual Network を使用して次のシナリオを有効�
 
 * Azure CLI 2.0: 詳細については、[Azure CLI 2.0 のインストールおよび構成](https://docs.microsoft.com/cli/azure/install-az-cli2)に関するページをご覧ください。
 
-* Azure PowerShell: 詳細については、[Azure PowerShell のインストールおよび構成](https://docs.microsoft.com/powershell/azure/overview)に関するページをご覧ください。
+* Azure PowerShell: 詳細については、[Azure PowerShell のインストールおよび構成](/powershell/azure/overview)に関するページをご覧ください。
 
 > [!NOTE]
 > このドキュメントには、Azure CLI および Azure PowerShell の最新バージョンが必要です。 以前のバージョンを使用している場合は、コマンドが異なる場合があります。 適切に実行するためには、前のリンクを使用して最新バージョンをインストールします。
@@ -116,6 +116,8 @@ HDInsight サービスは管理されたサービスで、プロビジョニン�
 | ブラジル | ブラジル南部 | 191.235.84.104</br>191.235.87.113 | 443 |
 | カナダ | カナダ東部 | 52.229.127.96</br>52.229.123.172 | 443 |
 | &nbsp; | カナダ中部 | 52.228.37.66</br>52.228.45.222 | 443 |
+| ドイツ | ドイツ中部 | 51.4.146.68</br>51.4.146.80 | 443 |
+| &nbsp; | ドイツ北東部 | 51.5.150.132</br>51.5.144.101 | 443 |
 | インド | インド中部 | 52.172.153.209</br>52.172.152.49 | 443 |
 | 英国 | 英国西部 | 51.141.13.110</br>51.141.7.20 | 443 |
 | &nbsp; | 英国南部 | 51.140.47.39</br>51.140.52.16 | 443 |

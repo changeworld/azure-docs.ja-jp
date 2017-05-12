@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 5274ffe641768e0725623c2acf38d432a97eea9f
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 9e65a61b2b156611e998f266068ab5e1e306143d
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 04/03/2017
 
 以降、この記事の各セクションで、パブリック IP アドレスに関連したすべてのタスクの手順を紹介します。 各セクションの内容は次のとおりです。
 - Azure Portal 内でタスクを実行する手順。 これらの手順を行うには、[Azure Portal](http://portal.azure.com) にログインする必要があります。 まだアカウントを持っていない場合は、[無料試用版アカウント](https://azure.microsoft.com/free)にサインアップしてください。
-- Azure PowerShell を使用してタスクを実行するためのコマンドとそのコマンド リファレンスへのリンク。 [Azure PowerShell のインストールと構成方法](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事の手順に従い、PowerShell をインストールして構成してください。 PowerShell コマンドのヘルプとサンプルを表示するには、「`get-help <command> -full`」と入力します。
+- Azure PowerShell を使用してタスクを実行するためのコマンドとそのコマンド リファレンスへのリンク。 [Azure PowerShell のインストールと構成方法](/powershell/azure/overview)に関する記事の手順に従い、PowerShell をインストールして構成してください。 PowerShell コマンドのヘルプとサンプルを表示するには、「`get-help <command> -full`」と入力します。
 - Azure コマンド ライン インターフェイス (CLI) を使用してタスクを実行するためのコマンドとそのコマンド リファレンスへのリンク。 [Azure CLI 2.0 のインストールと構成の方法](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事の手順に従って、Azure CLI をインストールしてください。 CLI コマンドのヘルプを表示するには、「`az <command> -h`」と入力します。
 
 パブリック IP アドレスには、わずかですが料金が発生します。 料金については、「[IP アドレスの料金](https://azure.microsoft.com/pricing/details/ip-addresses)」ページを参照してください。 サブスクリプション内で使用できるパブリック IP アドレスの数には制限があります。 これらの制限については、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関する記事を参照してください。 
@@ -61,7 +61,7 @@ ms.lasthandoff: 04/03/2017
 |**ツール**|**コマンド**|
 |---|---|
 |**CLI**|[az network public-ip-create](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
-|**PowerShell**|[New-AzureRmPublicIpAddress](/powershell/resourcemanager/azurerm.network/v3.4.0/new-azurermpublicipaddress?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|**PowerShell**|[New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress)|
 
 ## <a name="change"></a>パブリック IP アドレスの設定変更または削除
 
@@ -80,7 +80,7 @@ ms.lasthandoff: 04/03/2017
 |**ツール**|**コマンド**|
 |---|---|
 |**CLI**|[az network public-ip update](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#update) (更新)、[az network public-ip delete](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#delete) (削除)|
-|**PowerShell**|[Set-AzureRmPublicIpAddress](/powershell/resourcemanager/azurerm.network/v3.4.0/set-azurermpublicipaddress?toc=%2fazure%2fvirtual-network%2ftoc.json) (更新)、[Remove-AzureRmPublicIpAddress](/powershell/resourcemanager/azurerm.network/v3.4.0/remove-azurermpublicipaddress?toc=%2fazure%2fvirtual-network%2ftoc.json) (削除)|
+|**PowerShell**|[Set-AzureRmPublicIpAddress](/powershell/resourcemanager/azurerm.network/v3.4.0/set-azurermpublicipaddress?toc=%2fazure%2fvirtual-network%2ftoc.json) (更新)、[Remove-AzureRmPublicIpAddress](/powershell/module/azurerm.network/remove-azurermpublicipaddress) (削除)|
 
 ## <a name="next-steps"></a>次のステップ
 次の Azure リソースの作成時にパブリック IP アドレスを割り当てます。
@@ -90,3 +90,4 @@ ms.lasthandoff: 04/03/2017
 - [Azure Application Gateway](../application-gateway/application-gateway-create-gateway-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Azure VPN Gateway を使用したサイト間接続](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Azure Virtual Machine Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+

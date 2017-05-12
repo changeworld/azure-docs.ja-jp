@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
 translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 3297fec53e97c33461b7fa5bfd9e813c30a3da9d
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: e0c74ef9fa2fa2e0b69a3730d7af30969d60e3f8
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -29,8 +29,8 @@ ms.lasthandoff: 04/18/2017
 ## <a name="dependency-agent-downloads"></a>Dependency Agent のダウンロード
 | ファイル | OS | バージョン | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.0.4 | EF9BF7106BD6856384CDAF704FDE5872DD0A6D0C3BE26F62EAB17BA5D50702DD |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.0.4 | D685A2BAEEE30151EAD074F2BF5774F32446EAAB89B0FC04DC36D24A8A6397AC |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.0.5 | 73B3F6A2A76A08D58F72A550947FF839B588591C48E6EDDD6DDF73AA3FD82B43 |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.0.5 | A1BAD0B36EBF79F2B69113A07FCF48C68D90BD169C722689F9C83C69FC032371 |
 
 
 ## <a name="connected-sources"></a>接続先ソース

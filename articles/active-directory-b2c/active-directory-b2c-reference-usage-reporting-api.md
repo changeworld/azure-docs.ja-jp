@@ -12,9 +12,10 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/08/2017
 ms.author: joroja
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 4b2cbf5f62ee63bada42b2a06506b793d4349fdb
 ms.openlocfilehash: 7db9a45a4c80ea8d01937837dfa7a15c171fb66b
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/10/2017
 
 
@@ -23,7 +24,7 @@ ms.lasthandoff: 02/10/2017
 
 Azure Active Directory B2C は、ID プロバイダー全体のアプリケーション ファミリーの全エンド ユーザーに、ログインおよび MFA ベースの認証を提供します。  テナントに登録されているユーザー数、登録に使用したプロバイダー、およびタイプ別の認証の数を把握することで、次のような質問に対する回答が得られます。
 * 過去 10 日間で各タイプの ID プロバイダー (Microsoft アカウント、LinkedIn など) から何人のユーザーが登録したか。
-* 過去&1; か月間で正常に完了した多要素認証は何件か。
+* 過去 1 か月間で正常に完了した多要素認証は何件か。
 * 今月完了したログインベースの認証は何件か。 日別ではどうか。 アプリケーション別ではどうか。
 * B2C テナントのアクティビティの月間予想コストはどのように見積もることができるか。
 
@@ -34,7 +35,7 @@ Azure Active Directory B2C は、ID プロバイダー全体のアプリケー�
 開始する前に、[Azure AD Reporting API にアクセスするための前提条件](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/)を完了する必要があります。  アプリケーションを作成し、それに対するシークレットを取得して、それに Azure AD B2C テナントのレポートにアクセスする権限を付与します。 ここでは "*Bash スクリプト*" と "*Python スクリプト*" の例も提供します。
 
 ## <a name="powershell-script"></a>PowerShell スクリプト
-このスクリプトは、**TimeStamp** パラメーターと **-ApplicationId** フィルターを使用した&4; つの使用状況レポートを実行します。
+このスクリプトは、**TimeStamp** パラメーターと **-ApplicationId** フィルターを使用した 4 つの使用状況レポートを実行します。
 
 ```
 # This script will require the Web Application and permissions setup in Azure Active Directory

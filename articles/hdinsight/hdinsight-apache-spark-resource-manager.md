@@ -14,11 +14,12 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/03/2017
+ms.date: 05/10/2017
 ms.author: nitinme
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
 ms.openlocfilehash: 68972d9422dd0861318b0f26a4543f7596d9a680
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/24/2017
 
 
@@ -85,7 +86,7 @@ Jupyter Notebook で実行しているアプリケーションについては、
 以下のスニペットは、Jupyter で実行しているアプリケーションの構成を変更する方法を示しています。
 
     %%configure
-    {"executorMemory": "3072M", "executorCores": 4, “numExecutors”:10}
+    {"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
 
 例の列で示されているように、構成パラメーターは JSON 文字列として渡し、マジックの後の次の行に置く必要があります。
 
