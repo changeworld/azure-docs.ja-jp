@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/25/2017
 ms.author: robmcm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: a04c7129cd2e16c129f3e4b8e8e40f76ff37114d
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/20/2017
 
 
@@ -68,7 +69,7 @@ Azure Marketplace には、Microsoft、サード パーティ企業、および�
     Web アプリの URL は *{name}*.azurewebsites.net のようになるため、この名前は azurewebsites.net ドメイン内で一意である必要があります。 入力した名前が一意でない場合は、テキスト ボックスに赤色の感嘆符が表示されます。
    
     ![Configure the WordPress web app name][ConfigAppName]
-3. サブスクリプションが複数ある場合には、使用するものを&1; つ選択します。
+3. サブスクリプションが複数ある場合には、使用するものを 1 つ選択します。
    
     ![Configure the subscription for the web app][ConfigSubscription]
 4. **リソース グループ** を選択するか、新しく作成します。
@@ -98,7 +99,7 @@ Azure Marketplace には、Microsoft、サード パーティ企業、および�
    
     ![Finish the web app settings and click OK][ConfigFinished]
    
-    Azure App Service によって、通常は&1; 分以内に Web アプリが作成されます。 進捗状況を監視するには、ポータル ページの上部にあるベル アイコンをクリックします。
+    Azure App Service によって、通常は 1 分以内に Web アプリが作成されます。 進捗状況を監視するには、ポータル ページの上部にあるベル アイコンをクリックします。
    
     ![進捗状況インジケーター][ConfigProgress]
 
