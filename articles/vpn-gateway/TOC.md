@@ -1,7 +1,7 @@
 # 概要
 ## [VPN Gateway について](vpn-gateway-about-vpngateways.md)
 ## [VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md)
-## [サブスクリプションとサービスの制限](../azure-subscription-service-limits.md)
+## [サブスクリプションとサービスの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 
 # 作業の開始
 ## [VPN Gateway の計画と設計](vpn-gateway-plan-design.md)

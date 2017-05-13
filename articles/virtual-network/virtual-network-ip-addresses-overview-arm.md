@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2016
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 0506de98119576aae8f55cc6067f0bee95334c87
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 1156135200e05f8a2585467f37805a72d67279ba
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -72,7 +73,7 @@ IP アドレスを*パブリック* IP リソースに割り当てる方法に�
 >
 
 ### <a name="virtual-machines"></a>仮想マシン
-パブリック IP アドレスは、その**ネットワーク インターフェイス**に割り当てることで、[Windows](../virtual-machines/windows/about.md) または [Linux](../virtual-machines/virtual-machines-linux-about.md) の VM に関連付けることができます。 複数のネットワーク インターフェイスを備える VM の場合、*プライマリ* ネットワーク インターフェイスのみに割り当てることができます。 VM には、動的または静的のどちらかのパブリック IP アドレスを割り当てることができます。
+パブリック IP アドレスは、その**ネットワーク インターフェイス**に割り当てることで、[Windows](../virtual-machines/windows/overview.md) または [Linux](../virtual-machines/virtual-machines-linux-about.md) の VM に関連付けることができます。 複数のネットワーク インターフェイスを備える VM の場合、*プライマリ* ネットワーク インターフェイスのみに割り当てることができます。 VM には、動的または静的のどちらかのパブリック IP アドレスを割り当てることができます。
 
 ### <a name="internet-facing-load-balancers"></a>インターネットに接続するロード バランサー
 パブリック IP アドレスをロード バランサーの [フロント エンド](../load-balancer/load-balancer-overview.md)構成に割り当てることで、 **Azure Load Balancer** に関連付けることができます。 このパブリック IP アドレスは、負荷分散された仮想 IP アドレス (VIP) として機能します。 ロード バランサーのフロント エンドには、動的または静的のどちらかのパブリック IP アドレスを割り当てることができます。 複数のパブリック IP アドレスをロード バランサーのフロント エンドに割り当てて、SSL ベースの Web サイトを含むマルチテナント環境のような [マルチ VIP](../load-balancer/load-balancer-multivip.md) シナリオを有効にすることもできます。
@@ -116,7 +117,7 @@ IP アドレスが変わらないようにするため、割り当て方法を *
 * IP アドレスを使用して他のアプリ/リソースからアクセスされるリソース。
 
 ### <a name="virtual-machines"></a>仮想マシン
-プライベート IP アドレスは、[Windows](../virtual-machines/windows/about.md) または [Linux](../virtual-machines/virtual-machines-linux-about.md) の VM の**ネットワーク インターフェイス**に割り当てます。 複数のネットワーク インターフェイスを備える VM の場合、各インターフェイスにプライベート IP アドレスが割り当てられます。 ネットワーク インターフェイスに対して動的または静的のどちらかの割り当て方法を指定できます。
+プライベート IP アドレスは、[Windows](../virtual-machines/windows/overview.md) または [Linux](../virtual-machines/virtual-machines-linux-about.md) の VM の**ネットワーク インターフェイス**に割り当てます。 複数のネットワーク インターフェイスを備える VM の場合、各インターフェイスにプライベート IP アドレスが割り当てられます。 ネットワーク インターフェイスに対して動的または静的のどちらかの割り当て方法を指定できます。
 
 #### <a name="internal-dns-hostname-resolution-for-vms"></a>内部 DNS ホスト名の解決 (VM の場合)
 カスタムの DNS サーバーを明示的に構成しない限り、既定ではすべての Azure VM が [Azure で管理される DNS サーバー](virtual-networks-name-resolution-for-vms-and-role-instances.md#azure-provided-name-resolution) で構成されます。 これらの DNS サーバーは、同じ VNet 内に存在する VM の内部名前解決を可能にします。

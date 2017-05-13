@@ -24,7 +24,6 @@
 
 ## 自動化
 ### [Azure Automation](automation-manage-key-vault.md)
-### [CLI を使用した作成と管理](key-vault-manage-with-cli.md)
 ### [CLI 2.0 を使用した作成と管理](key-vault-manage-with-cli2.md)
 
 # リファレンス
