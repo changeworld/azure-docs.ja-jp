@@ -3,8 +3,8 @@ title: "Azure Active Directory B2C: Graph API を使用する | Microsoft Docs"
 description: "アプリケーション ID を使用して B2C テナント用の Graph API を呼び出してプロセスを自動化する方法。"
 services: active-directory-b2c
 documentationcenter: .net
-author: dstrockis
-manager: mbaldwin
+author: gsacavdm
+manager: krassk
 editor: bryanla
 ms.assetid: f9904516-d9f7-43b1-ae4f-e4d9eb1c67a0
 ms.service: active-directory-b2c
@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/07/2017
-ms.author: dastrock
-translationtype: Human Translation
-ms.sourcegitcommit: e65393c9582056f84530a32804e0d82fd451b688
-ms.openlocfilehash: a932b617d57184ef714bf18f1e1e23599db52487
+ms.date: 03/22/2017
+ms.author: gsacavdm
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 27a331562d659212dcd1b775ac06e1e1e4686517
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -33,63 +35,55 @@ B2C テナントでは、主に 2 つのモードで Graph API と通信しま�
 ## <a name="get-an-azure-ad-b2c-tenant"></a>Azure AD B2C テナントを取得する
 アプリケーションまたはユーザーを作成する前に、あるいは Azure AD と対話する前に、Azure AD B2C テナントとそのテナントのグローバル管理者アカウントを用意する必要があります。 テナントがまだない場合は、 [Azure AD B2C の使用開始](active-directory-b2c-get-started.md)に関するページを参照してください。
 
-## <a name="register-a-service-application-in-your-tenant"></a>サービス アプリケーションをテナントに登録する
-B2C テナントが用意できたら、Azure AD PowerShell コマンドレットを使用してサービス アプリケーションを作成する必要があります。
-最初に、 [Microsoft Online Services サインイン アシスタント](http://go.microsoft.com/fwlink/?LinkID=286152)をダウンロードしてインストールします。 次に、 [64-bit Azure Active Directory Module for Windows PowerShell](http://go.microsoft.com/fwlink/p/?linkid=236297)をダウンロードしてインストールします。
+## <a name="register-your-application-in-your-tenant"></a>アプリケーションをテナントに登録する
+B2C テナントを取得後、[Azure ポータル](https://portal.azure.com)を通じてアプリケーションを登録する必要があります。
 
 > [!IMPORTANT]
-> B2C テナントで Graph API を使用するには、PowerShell を使用して専用のアプリケーションを登録する必要があります。 この記事の指示に従い、それを行います。 Azure ポータルに登録済みの既存の B2C アプリケーションを再利用することはできません。
-> 
-> 
+> B2C テナントを持つ Graph API を使用するには、Azure AD B2C の *[アプリケーション]* ブレード**ではなく**、Azure ポータルの汎用 *[アプリケーション登録]* ブレードを使用して専用アプリケーションを登録する必要があります。 Azure AD B2C の *[アプリケーション]* ブレードに登録済みの既存の B2C アプリケーションを再利用することはできません。
+
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
+2. ページの右上隅のアカウント名を選択して、Azure AD B2C テナントを選択します。
+3. 左側のナビゲーション ウィンドウで **[More Services (その他のサービス)]** を選択し、**[アプリの登録]**、**[追加]** の順にクリックします。
+4. 画面の指示に従い、新しいアプリケーションを作成します。 
+    1. アプリケーション タイプとして **[Web App / API]** (Web アプリ/API) を選択します。    
+    2. **任意のリダイレクト URI** (例: https://B2CGraphAPI) を入力します。ただし、この例には関係ありません。  
+5. この時点でアプリケーションの一覧に表示されたアプリケーションをクリックして、**アプリケーション ID** (クライアント ID とも呼ばれます) を取得します。 後のセクションで必要になるため、この ID をコピーします。
+6. [設定] ブレードで、**キー**をクリックして、新しいキー (クライアント シークレットとも呼ばれます) を追加します。 後のセクションで必要になるため、このキーもコピーします。
+
+## <a name="configure-create-read-and-update-permissions-for-your-application"></a>アプリケーション用に作成、読み取り、および更新アクセス許可を構成する
+ここでは、ユーザーの作成、読み取り、更新、および削除に必要なすべてのアクセス許可を取得するようにアプリケーションを構成する必要があります。
+
+1. Azure ポータルの [アプリケーション登録] ブレードで手順を続行し、アプリケーションを選択します。
+2. [設定] ブレードで **[必要なアクセス許可]** をクリックします。
+3. [必要なアクセス許可] ブレードで、**[Windows Azure Active Directory]** をクリックします。
+4. [アクセスの有効化] ブレードで、**[アプリケーション アクセス許可]** から **[ディレクトリ データの読み取りと書き込み]** を選択し、**[保存]** をクリックします。
+5. 最後に、[必要なアクセス許可] ブレードに戻り、**[アクセス許可の付与]** ボタンをクリックします。
+
+これで B2C テナントに対してユーザーの作成、読み取り、更新を実行する権限を持つアプリケーションが用意されました。
+
+## <a name="configure-delete-permissions-for-your-application"></a>アプリケーション用に削除アクセス許可を構成する
+現時点では、*ディレクトリ データの読み取りと書き込み*アクセス許可には、ユーザーの削除など、削除を行う機能は含まれて**いません**。 アプリケーションにユーザーを削除する権限を付与する場合は、PowerShell に関連する下記の追加手順を実行する必要がありますそれ以外の場合、次のセクションにスキップできます。
+
+最初に、 [Microsoft Online Services サインイン アシスタント](http://go.microsoft.com/fwlink/?LinkID=286152)をダウンロードしてインストールします。 次に、 [64-bit Azure Active Directory Module for Windows PowerShell](http://go.microsoft.com/fwlink/p/?linkid=236297)をダウンロードしてインストールします。
 
 PowerShell モジュールをインストールした後、PowerShell を開き、B2C テナントに接続します。 `Get-Credential` を実行すると、ユーザー名とパスワードの入力を求められます。B2C テナント管理者アカウントのユーザー名とパスワードを入力します。
 
-```
-> $msolcred = Get-Credential
-> Connect-MsolService -credential $msolcred
-```
+> [!IMPORTANT]
+> B2C テナントに**固有**の B2C テナントの管理者アカウントを使用する必要があります。 これらのアカウントは、次のようになりますmyusername@myb2ctenant.onmicrosoft.com。
 
-アプリケーションを作成する前に、新しい **クライアント シークレット**を生成する必要があります。  アプリケーションはこのクライアント シークレットを使用し、Azure AD に対する認証を行ってアクセス トークンを取得します。 PowerShell で有効なシークレットを生成できます。
-
-```
-> $bytes = New-Object Byte[] 32
-> $rand = [System.Security.Cryptography.RandomNumberGenerator]::Create()
-> $rand.GetBytes($bytes)
-> $rand.Dispose()
-> $newClientSecret = [System.Convert]::ToBase64String($bytes)
-> $newClientSecret
+```powershell
+Connect-MsolService
 ```
 
-最後のコマンドによって新しいクライアント シークレットが出力されます。 これを安全な場所にコピーします。 この情報は後で必要になります。 これで、新しいクライアント シークレットをアプリの資格情報として指定して、アプリケーションを作成できます。
+ここで、下記スクリプトで**アプリケーション ID** を使用して、ユーザーの削除を許可するユーザー アカウント管理者のロールをアプリケーションに割り当てます。 これらのロールには、よく知られた識別子が用意されているため、下記スクリプトに**アプリケーション ID** を入力するだけです。
 
-```
-> New-MsolServicePrincipal -DisplayName "My New B2C Graph API App" -Type password -Value $newClientSecret
-
-DisplayName           : My New B2C Graph API App
-ServicePrincipalNames : {dd02c40f-1325-46c2-a118-4659db8a55d5}
-ObjectId              : e2bde258-6691-410b-879c-b1f88d9ef664
-AppPrincipalId        : dd02c40f-1325-46c2-a118-4659db8a55d5
-TrustedForDelegation  : False
-AccountEnabled        : True
-Addresses             : {}
-KeyType               : Password
-KeyId                 : a261e39d-953e-4d6a-8d70-1f915e054ef9
-StartDate             : 9/2/2015 1:33:09 AM
-EndDate               : 9/2/2016 1:33:09 AM
-Usage                 : Verify
+```powershell
+$applicationId = "<YOUR_APPLICATION_ID>"
+$sp = Get-MsolServicePrincipal -AppPrincipalId $applicationId
+Add-MsolRoleMember -RoleObjectId fe930be7-5e62-47db-91af-98c3a49a38b1 -RoleMemberObjectId $sp.ObjectId -RoleMemberType servicePrincipal
 ```
 
-アプリケーションが作成できたら、上記のようなアプリケーションのプロパティが出力されます。 `ObjectId` と `AppPrincipalId` の両方が必要になるため、これらの値もコピーしてください。
-
-B2C テナント内にアプリケーションを作成したら、ユーザーの CRUD 操作を実行するために必要なアクセス許可をそのアプリケーションに割り当てる必要があります。 アプリケーションにディレクトリ リーダー (ユーザーを読み取るため)、ディレクトリ ライター (ユーザーを作成し、更新するため)、ユーザー アカウント管理者 (ユーザーを削除するため) という 3 つのロールを割り当てます。 これらのロールには既知の識別子があるため、`-RoleMemberObjectId` パラメーターを前述の `ObjectId` に置き換え、次のコマンドを実行できます。 すべてのディレクトリ ロールの一覧を表示するには、 `Get-MsolRole`を実行してみてください。
-
-```
-> Add-MsolRoleMember -RoleObjectId 88d8e3e3-8f55-4a1e-953a-9b9898b8876b -RoleMemberObjectId <Your-ObjectId> -RoleMemberType servicePrincipal
-> Add-MsolRoleMember -RoleObjectId 9360feb5-f418-4baa-8175-e2a00bac4301 -RoleMemberObjectId <Your-ObjectId> -RoleMemberType servicePrincipal
-> Add-MsolRoleMember -RoleObjectId fe930be7-5e62-47db-91af-98c3a49a38b1 -RoleMemberObjectId <Your-ObjectId> -RoleMemberType servicePrincipal
-```
-
-これで B2C テナントに対してユーザーの作成、読み取り、更新、削除を実行する権限を持つアプリケーションが用意されました。
+これで、アプリケーションにも、B2C テナントからユーザーを削除するアクセス許可が付与されました。
 
 ## <a name="download-configure-and-build-the-sample-code"></a>サンプル コードをダウンロード、構成、ビルドする
 まず、サンプル コードをダウンロードして実行します。 次に、それを詳しく観察します。  [サンプル コードは .zip ファイルとしてダウンロード](https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet/archive/master.zip)できます。 選択したディレクトリで複製することもできます。
@@ -102,9 +96,9 @@ git clone https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet.git
 
 ```
 <appSettings>
-    <add key="b2c:Tenant" value="contosob2c.onmicrosoft.com" />
-    <add key="b2c:ClientId" value="{The AppPrincipalId from above}" />
-    <add key="b2c:ClientSecret" value="{The client secret you generated above}" />
+    <add key="b2c:Tenant" value="{Your Tenant Name}" />
+    <add key="b2c:ClientId" value="{The ApplicationID from above}" />
+    <add key="b2c:ClientSecret" value="{The Key from above}" />
 </appSettings>
 ```
 
@@ -355,15 +349,10 @@ B2C テナント内に定義されたカスタム属性は、 `B2CGraphClient`�
 `B2CGraphClient`を使用することで、B2C テナント ユーザーをプログラムで管理できるサービス アプリケーションが得られます。 `B2CGraphClient` は、それ自体のアプリケーション ID を Azure AD Graph API への認証に使用します。 また、クライアント シークレットを使用してトークンが取得されます。 アプリケーションにこの機能を組み込むときは、B2C アプリに関するいくつかの重要な点に注意してください。
 
 * テナントの適切なアクセス許可をアプリケーションに付与する必要があります。
-* 現時点では、ADAL v2 を使用してアクセス トークンを取得する必要があります。 (ライブラリを使用せず、プロトコル メッセージを直接送信することもできます。)
+* 現時点では、ADAL (MSAL ではありません) を使用してアクセス トークンを取得する必要があります。 (ライブラリを使用せず、プロトコル メッセージを直接送信することもできます。)
 * Graph API を呼び出す場合は、`api-version=1.6` を使用します。
 * コンシューマー ユーザーを作成し、更新するとき、上述のようにいくつかのプロパティが必要になります。
 
 B2C テナントで Graph API を利用して実行するアクションに関するご質問やご要望がございましたら、この記事にコメントを投稿するか、GitHub コード サンプル リポジトリで問題を提出してください。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

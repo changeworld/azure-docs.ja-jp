@@ -1,5 +1,5 @@
 ---
-title: "障害復旧に対応したネットワーク インフラストラクチャの設計 | Microsoft Docs"
+title: "ディザスター リカバリー に対応したネットワーク インフラストラクチャの設計 | Microsoft Docs"
 description: "この記事では、Azure Site Recovery を使用するためのネットワーク設計の考慮事項について説明します。"
 services: site-recovery
 documentationcenter: 
@@ -22,11 +22,11 @@ ms.lasthandoff: 02/22/2017
 
 
 ---
-# <a name="designing-your-network-for-disaster-recovery"></a>障害復旧に対応したネットワークの設計
-この記事は IT プロフェッショナルを読者として想定しています。ビジネス継続性と障害復旧 (BCDR: Business Continuity and Disaster Recovery) インフラストラクチャの構築、実装、サポートを担当する方や、BCDR サービスのサポートと強化に Microsoft Azure Site Recovery (ASR) を活用したいと考えている方が対象となります。 ここでは、System Center Virtual Machine Manager サーバーのデプロイ、拡張サブネットとサブネット フェールオーバーの長所と欠点、Microsoft Azure 内の仮想サイトに障害復旧を構築する方法について実際的な見地から考察します。
+# <a name="designing-your-network-for-disaster-recovery"></a>ディザスター リカバリー に対応したネットワークの設計
+この記事は IT プロフェッショナルを読者として想定しています。ビジネス継続性とディザスター リカバリー (BCDR: Business Continuity and Disaster Recovery) インフラストラクチャの構築、実装、サポートを担当する方や、BCDR サービスのサポートと強化に Microsoft Azure Site Recovery (ASR) を活用したいと考えている方が対象となります。 ここでは、System Center Virtual Machine Manager サーバーのデプロイ、拡張サブネットとサブネット フェールオーバーの長所と欠点、Microsoft Azure 内の仮想サイトにディザスター リカバリー を構築する方法について実際的な見地から考察します。
 
 ## <a name="overview"></a>概要
-[Azure Site Recovery (ASR)](https://azure.microsoft.com/services/site-recovery/) は、ビジネス継続性と障害復旧 (BCDR) を目的に、仮想化されたアプリケーションの保護と復旧をつかさどる Microsoft Azure サービスです。 このドキュメントでは、Site Recovery を使って仮想マシン (VM) をレプリケートするネットワークの設計プロセスを、障害復旧サイトに対する IP 範囲とサブネットの設計を中心にわかりやすく説明します。
+[Azure Site Recovery (ASR)](https://azure.microsoft.com/services/site-recovery/) は、ビジネス継続性とディザスター リカバリー (BCDR) を目的に、仮想化されたアプリケーションの保護と復旧をつかさどる Microsoft Azure サービスです。 このドキュメントでは、Site Recovery を使って仮想マシン (VM) をレプリケートするネットワークの設計プロセスを、ディザスター リカバリー サイトに対する IP 範囲とサブネットの設計を中心にわかりやすく説明します。
 
 また、テスト時や障害発生時に BCDR サービスをサポートするマルチサイトの仮想データセンターを Site Recovery で実際に設計、導入する方法についても取り上げます。
 
