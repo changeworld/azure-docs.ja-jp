@@ -16,9 +16,10 @@ ms.workload: na
 ms.date: 4/13/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
 ms.openlocfilehash: 387dcace5be29de52b465bc53fa81a3dbf876390
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/19/2017
 
 
@@ -93,7 +94,7 @@ microSD カードに Raspbian イメージをインストールするための�
 ### <a name="enable-ssh-and-spi"></a>SSH および SPI の有効化
 
 1. Pi にモニター、キーボード、マウスを接続し、Pi を起動してから、`pi` をユーザー名として、`raspberry` をパスワードとして使用して Raspbian にログインします。
-1. Raspberry アイコン > **[Preferences](設定)** > **[Raspberry Pi Configuration](Raspberry Pi 構成)** の順にクリックします。
+1. Raspberry アイコン > **[Preferences]\(設定)** > **[Raspberry Pi Configuration]\(Raspberry Pi 構成)** の順にクリックします。
 
    ![[Raspbian Preferences] (Raspbian 設定)メニュー](media/iot-hub-raspberry-pi-kit-c-get-started/1_raspbian-preferences-menu.png)
 
