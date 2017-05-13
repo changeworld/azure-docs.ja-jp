@@ -67,6 +67,7 @@
 ### [OpenID Connect](active-directory-protocols-openid-connect-code.md)
 ### [Oauth](active-directory-protocols-oauth-code.md)
 ### [サービス間の呼び出し](active-directory-protocols-oauth-service-to-service.md)
+### [On-Behalf-Of フロー](active-directory-protocols-oauth-on-behalf-of.md)
 ### [サポートされているトークンと要求の種類](active-directory-token-and-claims.md)
 ### [署名キーのロールオーバー](active-directory-signing-key-rollover.md)
 ### [フェデレーション メタデータ](active-directory-federation-metadata.md)
@@ -104,4 +105,5 @@
 #### [OpenID Connect](active-directory-v2-protocols-oidc.md)
 #### [暗黙的なフロー](active-directory-v2-protocols-implicit.md)
 #### [OAuth 2.0 クライアントの資格情報](active-directory-v2-protocols-oauth-client-creds.md)
+#### [OAuth 2.0 の On-Behalf-Of フロー](active-directory-v2-protocols-oauth-on-behalf-of.md)
 ### [スコープ](active-directory-v2-scopes.md)

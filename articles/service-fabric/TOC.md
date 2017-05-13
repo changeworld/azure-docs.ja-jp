@@ -20,6 +20,7 @@
 ## [ローカル クラスターへのアプリのデプロイ](service-fabric-get-started-with-a-local-cluster.md)
 ## [Azure で初めてのクラスターを作成する](service-fabric-get-started-azure-cluster.md)
 ## [初めてのスタンドアロン クラスターを作成する](service-fabric-get-started-standalone-cluster.md)
+## [初めてのコンテナー アプリを作成する](service-fabric-get-started-containers.md)
 
 # 方法
 ## アプリケーションのビルド
@@ -50,14 +51,19 @@
 #### 概念
 ##### [Reliable Services のライフサイクル - C#](service-fabric-reliable-services-lifecycle.md)
 ##### [Reliable Services のライフサイクル - Java](service-fabric-reliable-services-lifecycle-java.md)
+
+#### Reliable Collection
 ##### [Reliable Collection](service-fabric-reliable-services-reliable-collections.md)
+##### [Reliable Collection のガイドラインと推奨事項](service-fabric-reliable-services-reliable-collections-guidelines.md)
+##### [Reliable Collection での作業](service-fabric-work-with-reliable-collections.md)
+##### [トランザクションとロック](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
+##### [Reliable State Manager と Reliable Collection の内部](service-fabric-reliable-services-reliable-collections-internals.md)
 
 #### 作業開始
 ##### [Windows での C# ](service-fabric-reliable-services-quick-start.md)
 ##### [Linux での Java](service-fabric-reliable-services-quick-start-java.md)
 
 #### Reliable Services のライフサイクル
-#### [Reliable Collections の使用](service-fabric-work-with-reliable-collections.md)
 #### [構成](service-fabric-reliable-services-configuration.md)
 #### [通知の送信](service-fabric-reliable-services-notifications.md)
 #### [バックアップと復元](service-fabric-reliable-services-backup-restore.md)

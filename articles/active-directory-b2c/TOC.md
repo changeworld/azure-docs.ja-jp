@@ -44,6 +44,7 @@
 ## [拡張ポリシー フレームワーク](active-directory-b2c-reference-policies.md)
 ## [認証プロトコル](active-directory-b2c-reference-protocols.md)
 ## [トークン](active-directory-b2c-reference-tokens.md)
+## [言語のカスタマイズ](active-directory-b2c-reference-language-customization.md)
 
 ## [脅威管理](active-directory-b2c-reference-threat-management.md)
 

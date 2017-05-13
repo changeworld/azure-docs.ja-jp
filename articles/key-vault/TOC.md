@@ -29,10 +29,12 @@
 
 # リファレンス
 ## [PowerShell](/powershell/module/azurerm.keyvault)
-## [Azure CLI 2.0](/cli/azure/keyvault)
+## [Azure CLI 2](/cli/azure/keyvault)
 ## [.NET](/dotnet/api/microsoft.azure.keyvault)
 ## [Java](/java/api/com.microsoft.azure.keyvault)
-## [Node.JS](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest)
+## Node.js
+### [コンテナーの管理](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest)
+### [コンテナーの内容の管理](http://azure.github.io/azure-sdk-for-node/azure-keyvault/latest)
 ## [REST ()](/rest/api/keyvault)
 
 # 関連項目

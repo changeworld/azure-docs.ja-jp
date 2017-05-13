@@ -15,12 +15,12 @@
 
 # 方法
 ## 開発
-### [U-SQL](data-lake-analytics-u-sql-get-started.md)
+### [U-SQL の基本](data-lake-analytics-u-sql-get-started.md)
 ### [U-SQL ウィンドウ機能](data-lake-analytics-use-window-functions.md)
 ### [U-SQL ユーザー定義演算子](data-lake-analytics-u-sql-develop-user-defined-operators.md)
 ### [U-SQL Python 拡張機能](data-lake-analytics-u-sql-python-extensions.md)
 ### [U-SQL R 拡張機能](data-lake-analytics-u-sql-r-extensions.md)
-### [U-SQL Cognitive 機能](data-lake-analytics-u-sql-cognitive.md)
+### [U-SQL Cognitive 拡張機能](data-lake-analytics-u-sql-cognitive.md)
 
 ## ソリューションを作成する
 ### [Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)

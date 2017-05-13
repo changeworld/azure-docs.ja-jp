@@ -1,4 +1,4 @@
-# [概要](security-get-started-overview.md)
+# [概要](azure-security.md)
 ## [ネットワークのセキュリティ](security-network-overview.md)
 ## [Storage のセキュリティ](security-storage-overview.md)
 ## [コンピューティングのセキュリティ](security-virtual-machines-overview.md)
@@ -6,6 +6,10 @@
 ## [ID 管理](security-identity-management-overview.md)
 ## [IoT のセキュリティ](../iot-suite/iot-security-architecture.md#security-in-iot)
 ## [セキュリティのアーキテクチャ](azure-security-architecture-overview.md)
+### [運用上のセキュリティ](azure-operational-security.md)
+### [高度な脅威検出](azure-threat-detection.md)
+### [ログ記録と監査](azure-log-audit.md)
+### [パブリック クラウドでの分離](azure-isolation.md)
 
 # 作業の開始
 ## [Azure のセキュリティの概要](azure-security-getting-started.md)
