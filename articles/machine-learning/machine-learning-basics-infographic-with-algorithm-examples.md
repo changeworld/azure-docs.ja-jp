@@ -15,9 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: garye
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 9e738c4e5f43ae6c939f7c6da90c258498943e73
 ms.openlocfilehash: 717889a476d8f3a1ceccfcff737c1c9c5259ffa1
+ms.contentlocale: ja-jp
 ms.lasthandoff: 12/14/2016
 
 
@@ -26,7 +27,7 @@ ms.lasthandoff: 12/14/2016
 機械学習の基礎の概要については、このわかりやすいインフォグラフィックをダウンロードしていただけます。よく使用されるアルゴリズムについて説明し、機械学習に関する一般的な質問に答えるものとなっています。 機械学習の初心者向けに、使用するアルゴリズムの選択や目的を理解するうえで役立つ使用例が用意されています。
 
 ## <a name="popular-algorithms-in-machine-learning-studio"></a>Machine Learning Studio でよく使用されるアルゴリズム
-[Azure Machine Learning Studio](https://studio.azureml.net/) には、予測分析の多様なアルゴリズムのライブラリが用意されています。 このインフォグラフィックは、regression、anomaly detection、clustering、classification という、よく使用されるアルゴリズム ファミリを明らかにして、[Cortana Intelligence ギャラリー](https://gallery.cortanaintelligence.com/).の実行例へのリンクを提供しています。 ギャラリーには、実際の多くのソリューションでこれらのアルゴリズムをどのように適用できるかを示す実行例とチュートリアルが用意されています。
+[Azure Machine Learning Studio](https://studio.azureml.net/) には、予測分析の多様なアルゴリズムのライブラリが用意されています。 このインフォグラフィックは、回帰、異常検出、クラスタリング、分類という、よく使用されるアルゴリズム ファミリを明らかにして、[Cortana Intelligence ギャラリー](https://gallery.cortanaintelligence.com/) の実行例へのリンクを提供しています。 ギャラリーには、実際の多くのソリューションでこれらのアルゴリズムをどのように適用できるかを示す実行例とチュートリアルが用意されています。
 
 ## <a name="download-the-infographic-with-algorithm-examples"></a>インフォグラフィックとアルゴリズムの例をダウンロードする
 **[ダウンロード: 機械学習の基礎に関するインフォグラフィックとアルゴリズム使用例へのリンク (PDF)](http://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
