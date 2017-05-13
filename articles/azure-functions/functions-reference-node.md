@@ -1,6 +1,6 @@
 ---
 title: "Azure Functions 用 JavaScript 開発者向けリファレンス | Microsoft Docs"
-description: "JavaScript を使用して Azure Functions を開発する方法について説明します。"
+description: "JavaScript を使用して関数を開発する方法について説明します。"
 services: functions
 documentationcenter: na
 author: christopheranderson
@@ -16,10 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/06/2017
 ms.author: chrande, glenga
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 060e1145246952c18f89e1088ed28ffb0036e6c5
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: ff8a92c66303c81075c8a42baaa841301d65daf1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -31,7 +32,7 @@ ms.lasthandoff: 04/06/2017
 > 
 > 
 
-Azure Functions の JavaScript エクスペリエンスを利用すると、ランタイムと通信したり、バインディングを介してデータの送受信を行ったりする場合に `context` オブジェクトが渡される関数を簡単にエクスポートできます。
+Azure Functions の JavaScript エクスペリエンスを利用すると、ランタイムと通信したり、バインディングを介してデータの送受信を行ったりする場合に `context` オブジェクトとして渡される関数を簡単にエクスポートできます。
 
 この記事では、「 [Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)」を既に読んでいることを前提としています。
 
@@ -52,11 +53,11 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
 };
 ```
 
-`direction === "in"` のバインドが関数の引数と一緒に渡されます。つまり、[`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) を使用して、新しい入力を動的に処理できます (たとえば、`arguments.length` を使用して、すべての入力を繰り返し処理できます)。 この機能は、トリガーのみがあり、追加の入力がない場合に便利です。これは、`context` オブジェクトを参照しなくてもトリガーのデータに予測どおりにアクセスできるためです。
+`direction === "in"` のバインディングが関数の引数と一緒に渡されます。つまり、[`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) を使用して、新しい入力を動的に処理できます (たとえば、`arguments.length` を使用して、すべての入力を繰り返し処理できます)。 この機能は、トリガーのみがあり、追加の入力がない場合に便利です。これは、`context` オブジェクトを参照しなくてもトリガーのデータに予測どおりにアクセスできるためです。
 
-引数は、exports ステートメントで順序を指定していなくても、 *function.json*に出現する順序で常に関数に渡されます。 たとえば、`function(context, a, b)` があり、それを `function(context, a)` に変更しても、`arguments[3]` を参照することで、関数コードの `b` の値を取得できます。
+引数は、exports ステートメントで順序を指定していなくても、*function.json*に出現する順序で常に関数に渡されます。 たとえば、`function(context, a, b)` があり、それを `function(context, a)` に変更しても、`arguments[3]` を参照することで、関数コードの `b` の値を取得できます。
 
-すべてのバインドも、方向に関係なく、 `context` オブジェクトと一緒に渡されます (以下を参照)。 
+すべてのバインディングも、方向に関係なく、`context` オブジェクトと一緒に渡されます (以下のスクリプトを参照)。 
 
 ## <a name="context-object"></a>context オブジェクト
 ランタイムでは、`context` オブジェクトを使用して、関数との間でデータをやり取りし、ユーザーがランタイムと通信できるようにします。
@@ -87,7 +88,7 @@ context.bindings
 ```
 
 ```javascript
-// myInput contains the input data which may have properties such as "name"
+// myInput contains the input data, which may have properties such as "name"
 var author = context.bindings.myInput.name;
 // Similarly, you can set your output data
 context.bindings.myOutput = { 
@@ -100,7 +101,7 @@ context.bindings.myOutput = {
 context.done([err],[propertyBag])
 ```
 
-コードが完了したことをランタイムに通知します。 ユーザーは `context.done` を呼び出す必要があります。さもないと、ランタイムに関数の完了が通知されず、実行がタイムアウトになります。 
+コードが完了したことをランタイムに通知します。 ユーザーは `context.done` を呼び出す必要があります。そうしないと、ランタイムに関数の完了が通知されず、実行がタイムアウトになります。 
 
 `context.done` メソッドを使用すると、ユーザー定義のエラーに加えて、`context.bindings` オブジェクトのプロパティを上書きするプロパティのプロパティ バッグをランタイムに渡すことができます。
 
@@ -122,7 +123,7 @@ context.log(message)
 既定のトレース レベルでストリーミング コンソール ログに書き込むことができます。 `context.log` で利用可能な、他のトレース レベルでコンソール ログに書き込むことができるログ記録方法が他にあります。
 
 
-| 方法                 | Description                                |
+| メソッド                 | Description                                |
 | ---------------------- | ------------------------------------------ |
 | **error(_message_)**   | エラー レベルのログ、またはそれ以下に書き込みます。   |
 | **warn(_message_)**    | 警告レベルのログ、またはそれ以下に書き込みます。 |
@@ -168,7 +169,7 @@ context.log('Node.js HTTP trigger function processed a request. RequestUri=' + r
 context.log('Request Headers = ' + JSON.stringify(req.headers));
 ```
 
-これと同じコードを次の形式で記述することもできます。
+同じコードを次の形式で記述することもできます。
 
 ```javascript
 context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', req.originalUrl);
@@ -177,7 +178,7 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
 
 ### <a name="configure-the-trace-level-for-console-logging"></a>コンソール ログのトレース レベルを構成する
 
-関数を使用して、コンソールに書き込むためのしきい値のトレース レベルを定義できます。 これによって、関数からコンソールにトレースを書き込む方法を簡単に制御できます。 host.json ファイルの `tracing.consoleLevel` プロパティを使用して、コンソールに書き込まれるすべてのトレースのしきい値を設定します。 この設定は、関数アプリのすべての関数に適用されます。 次の例では、詳細ログ記録が有効になるようにトレースのしきい値を設定します。
+関数を使用して、コンソールに書き込むためのしきい値のトレース レベルを定義できます。これによって、関数からコンソールにトレースを書き込む方法を簡単に制御できます。 コンソールに書き込まれるすべてのトレースのしきい値を設定するには、host.json ファイルの `tracing.consoleLevel` プロパティを使用します。 この設定は、関数アプリのすべての関数に適用されます。 次の例では、詳細ログ記録が有効になるようにトレースのしきい値を設定します。
 
 ```json
 { 
@@ -232,13 +233,13 @@ HTTP トリガーを使用する場合、HTTP 要求オブジェクトと応答�
 + `context` オブジェクトの `req` プロパティと `res` プロパティから。 この方法で、完全な `context.bindings.name` パターンを使用する代わりに、従来のパターンを使用して context オブジェクトから HTTP データにアクセスできます。 次の例では、`context` の `req` オブジェクトと `res` オブジェクトにアクセスする方法を示します。
 
     ```javascript
-    // You can access your http request off of the context ...
+    // You can access your http request off the context ...
     if(context.req.body.emoji === ':pizza:') context.log('Yay!');
     // and also set your http response
     context.res = { status: 202, body: 'You successfully ordered more coffee!' }; 
     ```
 
-+ `context.done()` の呼び出し。 `context.done()` メソッドに渡される応答を返す特殊な種類の HTTP バインディングがあります。 次の HTTP 出力バインディングで、`$return` 出力パラメーターを定義します。
++ `context.done()` の呼び出しで。 これは、`context.done()` メソッドに渡される応答を返す特殊な種類の HTTP バインディングです。 次の HTTP 出力バインディングで、`$return` 出力パラメーターを定義します。
 
     ```json
     {
@@ -255,20 +256,20 @@ HTTP トリガーを使用する場合、HTTP 要求オブジェクトと応答�
     context.done(null, res);   
     ```  
 
-## <a name="node-version--package-management"></a>Node のバージョンとパッケージの管理
+## <a name="node-version-and-package-management"></a>Node のバージョンとパッケージの管理
 Node のバージョンは、現在、 `6.5.0`にロックされています。 現在、さまざまなバージョンのサポートを追加して構成できるようにするために、調査しています。
 
 次の手順で、関数アプリにパッケージを含めることができます。 
 
-1. `https://<function_app_name>.scm.azurewebsites.net`に移動します。
+1. `https://<function_app_name>.scm.azurewebsites.net` にアクセスします。
 
-2. **[デバッグ コンソール]、[CMD]** の順にクリックします。
+2. **[デバッグ コンソール]** > **[CMD]** をクリックします。
 
 3. `D:\home\site\wwwroot` に移動し、ページの上半分にある **wwwroot** フォルダーに package.json ファイルをドラッグします。  
-
     関数アプリにファイルをアップロードする方法は、他にもあります。 詳細については、「[関数アプリ ファイルを更新する方法](functions-reference.md#a-idfileupdatea-how-to-update-function-app-files)」を参照してください。 
 
-4. package.json ファイルがアップロードされたら、**Kudu リモート実行コンソール**で `npm install` コマンドを実行します。 これによって、package.json ファイルに示されているパッケージがダウンロードされ、関数アプリが再起動されます。
+4. package.json ファイルがアップロードされたら、**Kudu リモート実行コンソール**で `npm install` コマンドを実行します。  
+    この操作によって、package.json ファイルに示されているパッケージがダウンロードされ、関数アプリが再起動されます。
 
 必要なパッケージがインストールされたら、次の例に示すように `require('packagename')` を呼び出すことで、インストールされたパッケージを関数にインポートします。
 
@@ -283,7 +284,7 @@ module.exports = function(context) {
         .where(context.bindings.myInput.names, {first: 'Carla'});
 ```
 
-関数アプリのルートに `package.json` ファイルを定義する必要があります。 これによって、アプリのすべての関数を同じキャッシュされたパッケージで共有し、最高クラスのパフォーマンスを得ることができます。 バージョンの競合がある場合は、個別の関数のフォルダーに `package.json` ファイルを追加することで競合を解決できます。  
+関数アプリのルートに `package.json` ファイルを定義する必要があります。 このファイルを定義することによって、アプリのすべての関数を同じキャッシュされたパッケージで共有し、最高クラスのパフォーマンスを得ることができます。 バージョンの競合がある場合は、個別の関数のフォルダーに `package.json` ファイルを追加することで競合を解決できます。  
 
 ## <a name="environment-variables"></a>環境変数
 環境変数またはアプリ設定値を取得するには、次のコード例のように、 `process.env`を使用します。
@@ -306,13 +307,13 @@ function GetEnvironmentVariable(name)
 ```
 ## <a name="considerations-for-javascript-functions"></a>JavaScript 関数に関する考慮事項
 
-JavaScript 関数を使用する場合、次の項目に注意する必要があります。
+JavaScript 関数を使用するときは、以下の 2 つのセクションに記載されている事柄に注意する必要があります。
 
 ### <a name="choose-single-core-app-service-plans"></a>シングルコア App Service プランを選択する
 
 App Service プランを使用する関数アプリを作成するときは、複数のコアを持つプランではなく、シングルコア プランを選択することをお勧めします。 今日では、関数を使用して、シングルコア VM で JavaScript 関数をより効率的に実行できるようになりました。そのため、大規模な VM を使用しても、期待以上にパフォーマンスが向上することはありません。 必要な場合は、シングルコア VM インスタンスを追加することで手動でスケールアウトするか、自動スケールを有効にすることができます。 詳細については、「[手動または自動によるインスタンス数のスケール変更](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json)」を参照してください。    
 
-### <a name="typescriptcoffeescript-support"></a>TypeScript/CoffeeScript のサポート
+### <a name="typescript-and-coffeescript-support"></a>TypeScript と CoffeeScript のサポート
 ランタイムによる TypeScript/CoffeeScript の自動コンパイルはまだ直接サポートされていません。そのため、デプロイ時にランタイムの外部ですべて処理する必要があります。 
 
 ## <a name="next-steps"></a>次のステップ

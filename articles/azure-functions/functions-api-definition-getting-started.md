@@ -14,10 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: alkarche
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: ad82c1a552d9d77259c44b938975eebc44933b86
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: 9fd5b63259c7771d8b1e346ba3a6c10a4399532a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -120,5 +121,5 @@ ms.lasthandoff: 04/26/2017
 * [Azure Functions 開発者向けリファレンス](functions-reference.md)  
   * 関数のコーディングとトリガーおよびバインドの定義に関するプログラマ向けリファレンスです。
 * [Azure Functions GitHub リポジトリ](https://github.com/Azure/Azure-Functions/)
-  * API 定義のサポート プレビューについてフィードバックを提供するには、Functions Github を参照してください。 更新が必要な内容については、Github の問題を作成してください。
+  * API 定義のサポート プレビューについてフィードバックを提供するには、Functions GitHub を参照してください。 更新が必要な内容については、GitHub の問題を作成してください。
 

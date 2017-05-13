@@ -15,10 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/17/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
-ms.openlocfilehash: 8f86f812cd708d8122ecc507d02fb2ec2c73689f
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 188c4758843a49ca38a151835d561c5f2d58d3a0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 ---
 
@@ -31,7 +32,7 @@ ms.lasthandoff: 04/21/2017
 ## <a name="cloud-init-overview"></a>cloud-init の概要
 [cloud-Init](https://cloudinit.readthedocs.io) は、Linux VM を初回起動時にカスタマイズするために広く使用されているアプローチです。 cloud-init を使って、パッケージをインストールしてファイルを書き込んだり、ユーザーとセキュリティを構成したりすることができます。 初回起動処理中に cloud-init が実行されるので、構成を適用するために追加の手順や必要なエージェントはありません。
 
-cloud-init はディストリビューション全体でも有効です。 たとえば、パッケージをインストールするために、`apt-get install` や `yum install` は使用しません。 代わりに、cloud-init ではインストールするパッケージの一覧をユーザーが定義でき、選択したディストリビューションに対してネイティブのパッケージ管理ツールが自動的に使用されます。
+cloud-init はディストリビューション全体でも有効です。 たとえば、パッケージをインストールするときに **apt-get install** や **yum install** は使用しません。 代わりに、cloud-init ではインストールするパッケージの一覧をユーザーが定義でき、選択したディストリビューションに対してネイティブのパッケージ管理ツールが自動的に使用されます。
 
 Microsoft ではパートナーと協力して、パートナーから Azure に提供されたイメージに cloud-init を含めて、使用できるようにしています。 次の表は、Azure プラットフォーム イメージでの最新の cloud-init の可用性の概要を示しています。
 
@@ -41,10 +42,10 @@ Microsoft ではパートナーと協力して、パートナーから Azure に
 | CoreOS |CoreOS |CoreOS |安定版 |最新 |
 
 
-## <a name="create-config-file"></a>構成ファイルの作成
+## <a name="create-cloud-init-config-file"></a>cloud-init 構成ファイルを作成する
 cloud-init が動作していることを確認するには、NGINX をインストールして単純な "Hello World" Node.js アプリを実行する VM を作成します。 次の cloud-init 構成によって、必要なパッケージのインストール、Node.js アプリの作成、アプリの初期化と起動が行われます。
 
-`cloud-init.txt` というファイルを作成し、次の構成を貼り付けます。
+*cloud-init.txt* というファイルを作成し、次の構成を貼り付けます。
 
 ```yaml
 #cloud-config
@@ -90,15 +91,14 @@ runcmd:
 
 cloud-init 構成オプションの詳細については、[cloud-init の構成例](https://cloudinit.readthedocs.io/en/latest/topics/examples.html)に関するページを参照してください。
 
-
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
-VM を作成する前に、[az group create](/cli/azure/group#create) を使用してリソース グループを作成します。 次の例では、`myResourceGroupAutomate` という名前のリソース グループを `westus` の場所に作成します。
+VM を作成する前に、[az group create](/cli/azure/group#create) を使用してリソース グループを作成します。 次の例では、*myResourceGroupAutomate* という名前のリソース グループを場所 *westus* に作成します。
 
 ```azurecli
 az group create --name myResourceGroupAutomate --location westus
 ```
 
-ここで [az vm create](/cli/azure/vm#create) を使用して VM を作成します。 `--custom-data` パラメーターを使用して、cloud-init 構成ファイルを渡します。 現在の作業ディレクトリの外部に `cloud-init.txt` 構成を保存した場合は、このファイルへの完全パスを指定します。 次の例では、`myAutomatedVM` という名前の VM を作成します。
+ここで [az vm create](/cli/azure/vm#create) を使用して VM を作成します。 `--custom-data` パラメーターを使用して、cloud-init 構成ファイルを渡します。 現在の作業ディレクトリの外部に構成ファイル *cloud-init.txt* を保存していた場合には、このファイルの完全パスを指定します。 次の例では、*myAutomatedVM* という名前の VM を作成します。
 
 ```azurecli
 az vm create \
@@ -119,7 +119,7 @@ az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myVM
 ```
 
 ## <a name="test-web-app"></a>Web アプリのテスト
-Web ブラウザーを開き、アドレス バーに「`http://<publicIpAddress>`」と入力できるようになりました。 VM 作成処理で取得した独自のパブリック IP アドレスを指定します。 Node.js アプリは次の例のように表示されます。
+Web ブラウザーを開き、アドレス バーに「*http://<publicIpAddress>*」と入力できるようになりました。 VM 作成処理で取得した独自のパブリック IP アドレスを指定します。 Node.js アプリは次の例のように表示されます。
 
 ![実行中の NGINX サイトの表示](./media/tutorial-automate-vm-deployment/nginx.png)
 
@@ -127,7 +127,7 @@ Web ブラウザーを開き、アドレス バーに「`http://<publicIpAddress
 ## <a name="inject-certificates-from-key-vault"></a>Key Vault の証明書の挿入
 省略可能なこのセクションでは、証明書を Azure Key Vault に安全に格納し、VM のデプロイ時に挿入する方法を説明します。 組み込みの証明書を含むカスタム イメージを使用するのではなく、この処理を使用することによって、初回起動時に最新の証明書が VM に挿入されます。 処理の際に、証明書が Azure プラットフォームから流出したり、スクリプト、コマンドラインの履歴、またはテンプレートで公開されたりすることはありません。
 
-Azure Key Vault では、証明書やパスワードなどの暗号化キーとシークレットが保護されます。 Key Vault は、キー管理プロセスを合理化し、データにアクセスして暗号化するキーの制御を維持するのに役立ちます。 このシナリオでは、証明書を作成して使用するための Key Vault の概念をいくつか紹介します。ただし、これは Key Vault の使用方法に関する網羅的な概要ではありません。
+Azure Key Vault では、証明書やパスワードなどの暗号化キーと秘密が保護されます。 Key Vault は、キー管理プロセスを合理化し、データにアクセスして暗号化するキーの制御を維持するのに役立ちます。 このシナリオでは、証明書を作成して使用するための Key Vault の概念をいくつか紹介します。ただし、これは Key Vault の使用方法に関する網羅的な概要ではありません。
 
 以下の手順では、次の操作方法を説明します。
 
@@ -137,11 +137,14 @@ Azure Key Vault では、証明書やパスワードなどの暗号化キーと�
 - VM を作成して証明書を挿入する
 
 ### <a name="create-an-azure-key-vault"></a>Azure Key Vault を作成する
-最初に、[az keyvault create](/cli/azure/keyvault#create) を使用して Key Vault を作成し、VM をデプロイするときに使用できるようにします。 各 Key Vault には一意の名前が必要であり、その名前はすべて小文字にする必要があります。 次の例の `<mykeyvault>` は一意の Key Vault 名で置き換えてください。
+最初に、[az keyvault create](/cli/azure/keyvault#create) を使用して Key Vault を作成し、VM をデプロイするときに使用できるようにします。 各 Key Vault には一意の名前が必要であり、その名前はすべて小文字にする必要があります。 次の例の *<mykeyvault>* は一意の Key Vault 名で置き換えてください。
 
 ```azurecli
 keyvault_name=<mykeyvault>
-az keyvault create --resource-group myResourceGroupAutomate --name $keyvault_name --enabled-for-deployment
+az keyvault create \
+    --resource-group myResourceGroupAutomate \
+    --name $keyvault_name \
+    --enabled-for-deployment
 ```
 
 ### <a name="generate-certificate-and-store-in-key-vault"></a>証明書を生成して Key Vault に格納する
@@ -168,9 +171,9 @@ vm_secret=$(az vm format-secret --secret "$secret")
 
 
 ### <a name="create-cloud-init-config-to-secure-nginx"></a>NGINX をセキュリティで保護する cloud-init 構成を作成する
-VM を作成するとき、証明書とキーは、保護された `/var/lib/waagent/` ディレクトリに格納されます。 VM への証明書の追加と NGINX の構成を自動化するために、前の例の cloud-init 構成を拡張することができます。
+VM を作成するとき、証明書とキーは、保護された */var/lib/waagent/* ディレクトリに格納されます。 VM への証明書の追加と NGINX の構成を自動化するために、前の例の cloud-init 構成を拡張することができます。
 
-`cloud-init-secured.txt` というファイルを作成し、次の構成を貼り付けます。
+*cloud-init-secured.txt* というファイルを作成し、次の構成を貼り付けます。
 
 ```yaml
 #cloud-config
@@ -240,11 +243,14 @@ VM が作成され、パッケージがインストールされて、アプリ�
 セキュリティで保護された Web トラフィックが VM にアクセスできるようにするには、[az vm open-port](/cli/azure/vm#open-port) を使用してインターネットからポート 443 を開きます。
 
 ```azurecli
-az vm open-port --port 443 --resource-group myResourceGroupAutomate --name myVMSecured
+az vm open-port \
+    --resource-group myResourceGroupAutomate \
+    --name myVMSecured \
+    --port 443
 ```
 
 ### <a name="test-secure-web-app"></a>セキュリティで保護された Web アプリをテストする
-Web ブラウザーを開き、アドレス バーに「`https://<publicIpAddress>`」と入力できるようになりました。 VM 作成処理で取得した独自のパブリック IP アドレスを指定します。 自己署名証明書を使用した場合は、セキュリティ警告を受け入れます。
+Web ブラウザーを開き、アドレス バーに「*https://<publicIpAddress>*」と入力できるようになりました。 VM 作成処理で取得した独自のパブリック IP アドレスを指定します。 自己署名証明書を使用した場合は、セキュリティ警告を受け入れます。
 
 ![Web ブラウザーのセキュリティ警告を受け入れる](./media/tutorial-automate-vm-deployment/browser-warning.png)
 

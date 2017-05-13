@@ -1,5 +1,5 @@
 ---
-title: ".NET を使用した Azure Media Services コンテンツの発行"
+title: ".NET を使用した Azure Media Services コンテンツの発行 | Microsoft Docs"
 description: "ストリーミング URL の構築に使用するロケーターを作成する方法について説明します。 コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。"
 author: juliako
 manager: erikre
@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2016
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 5598a16511713a76193c13c4521e4884d8f5b75d
-ms.lasthandoff: 03/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 37f6cd3a25c36fe27c9c711a430a2fc11e50906e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -39,7 +40,7 @@ ms.lasthandoff: 03/14/2017
 
 また、オンデマンド ストリーミング ロケーターを使って、プログレッシブ ダウンロードができる MP4 ファイルの URL を作成できます。  
 
-このトピックでは、オンデマンド ストリーミング ロケーターを作成してアセットを発行し、 Smooth、MPEG DASH、HLS ストリーミング URL を作成する方法について説明します。 また、プログレッシブ ダウンロードを行う URL を作成する方法についても説明します。 
+このトピックでは、オンデマンド ストリーミング ロケーターを作成してアセットを発行し、Smooth、MPEG DASH、HLS ストリーミング URL を作成する方法について説明します。 また、プログレッシブ ダウンロードを行う URL を作成する方法についても説明します。 
 
 ## <a name="create-an-ondemand-streaming-locator"></a>オンデマンド ストリーミング ロケーターを作成する
 オンデマンド ストリーミング ロケーターを作成して URL を取得するには、次の手順に従います。
@@ -53,7 +54,7 @@ ms.lasthandoff: 03/14/2017
 
 
 >[!NOTE]
->さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、 [こちらの](media-services-dotnet-manage-entities.md#limit-access-policies) トピックを参照してください。
+>さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可を使用する場合は、同じポリシー ID を使用します。 たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー) に対してです。 詳細については、 [こちらの](media-services-dotnet-manage-entities.md#limit-access-policies) トピックを参照してください。
 
 ### <a name="use-media-services-net-sdk"></a>Media Services .NET SDK を使用する
 ストリーミング URL を構築する 
@@ -95,7 +96,7 @@ ms.lasthandoff: 03/14/2017
         Console.WriteLine();
     }
 
-コードの出力:
+次のような出力が表示されます。
 
     URL to manifest for client streaming using Smooth Streaming protocol:
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest
@@ -106,7 +107,7 @@ ms.lasthandoff: 03/14/2017
 
 
 > [!NOTE]
-> SSL 接続経由でコンテンツのストリーミングもできます。 そのためには、ストリーミング URL の先頭が HTTPS になっていることをご確認ください。 なお、現在のところ、AMS ではカスタム ドメインを使用した SSL はサポートされていません。  
+> SSL 接続経由でコンテンツのストリーミングもできます。 そのためには、ストリーミング URL の先頭が HTTPS になっていることをご確認ください。 現在のところ、AMS ではカスタム ドメインを使用した SSL はサポートされていません。
 > 
 > 
 
@@ -140,7 +141,7 @@ ms.lasthandoff: 03/14/2017
             Console.WriteLine(originLocator.Path + pd.Name);
     }
 
-コードの出力:
+次のような出力が表示されます。
 
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_400kbps_AAC_und_ch2_96kbps.mp4
@@ -175,8 +176,8 @@ ms.lasthandoff: 03/14/2017
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>関連項目
-[資産をダウンロードする](media-services-deliver-asset-download.md)
-[資産配信ポリシーを構成する](media-services-dotnet-configure-asset-delivery-policy.md)
+## <a name="next-steps"></a>次のステップ
+* [資産をダウンロードする](media-services-deliver-asset-download.md)
+* [資産配信ポリシーを構成する](media-services-dotnet-configure-asset-delivery-policy.md)
 
 

@@ -11,12 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2017
+ms.date: 05/1/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: a6241afa7398684d9315ab401ecdb5b2abd824c5
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 1370fa64c2ddc25d3121c567ceea4828b1e50921
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -98,7 +99,7 @@ Nexonia で Azure AD のシングル サインオンを構成してテストす�
 このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にし、Nexonia アプリケーションでシングル サインオンを構成します。
 
 >[!Note]
->統合に問題がある場合、トラブルシューティング ガイドについては、この[リンク](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?WT.mc_id=UI_AAD_Enterprise_Apps_SupportOrTroubleshooting)を参照してください。 トラブルシューティング ガイドで解決策が見つからない場合は、Azure Portal からサポート要求を送信してください。
+>統合に問題がある場合、トラブルシューティング ガイドについては、この[リンク](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?WT.mc_id=UI_AAD_Enterprise_Apps_SupportOrTroubleshooting)を参照してください。 トラブルシューティング ガイドで解決策が見つからない場合は、Azure ポータルからサポート要求を送信してください。
 
 **Nexonia で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
@@ -117,7 +118,7 @@ Nexonia で Azure AD のシングル サインオンを構成してテストす�
     **[応答 URL]** ボックスに、`https://system.nexonia.com/assistant/saml.do?orgCode=<organizationcode>` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
-    > これは実際の値ではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[Nexonia サポート チーム](http://www.nexonia.com/contact-us/)に連絡してください。 
+    > これは実際の値ではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[Nexonia サポート チーム](https://nexonia.zendesk.com/hc/requests/new)に連絡してください。 
 
 
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
@@ -132,7 +133,7 @@ Nexonia で Azure AD のシングル サインオンを構成してテストす�
 
     ![Configure Single Sign-On](./media/active-directory-saas-nexonia-tutorial/tutorial_nexonia_configure.png) 
 
-7. アプリケーションの SSO を構成するために、[Nexonia サポート チーム](http://www.nexonia.com/contact-us/)に連絡し、次のものを情報として提供します。
+7. アプリケーションの SSO を構成するために、[Nexonia サポート チーム](https://nexonia.zendesk.com/hc/requests/new)に連絡し、次のものを情報として提供します。
 
     • ダウンロードした **証明書**
 
@@ -180,7 +181,7 @@ Nexonia で Azure AD のシングル サインオンを構成してテストす�
  
 ### <a name="creating-a-nexonia-test-user"></a>Nexonia テスト ユーザーの作成
 
-このセクションでは、Nexonia で Britta Simon というユーザーを作成します。 [Nexonia サポート チーム](http://www.nexonia.com/contact-us/)と連携して、Nexonia プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Nexonia で Britta Simon というユーザーを作成します。 [Nexonia サポート チーム](https://nexonia.zendesk.com/hc/requests/new)と連携して、Nexonia プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て

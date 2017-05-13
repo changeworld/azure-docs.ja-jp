@@ -14,17 +14,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: alkarche
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 1ab9b7e306fda89235f4e9388fdbae4ea54307df
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 4400ebce2fbed709dcadf41cd2b834fd36416c15
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/02/2017
 
 
 ---
 # <a name="azure-functions-external-file-bindings-preview"></a>Azure Functions 外部ファイル バインディング (プレビュー)
-この記事では、Azure Functions の外部ファイル バインディングを構成および使用する方法について説明します。 Azure Functions は、外部ファイルのトリガー、入力、および出力のバインディングをサポートしています。
+この記事では、関数から組み込みのバインディングを利用し、各種 SaaS プロバイダー (OneDrive、Dropbox など) にあるファイルを操作する方法について説明します。 Azure Functions は、外部ファイルのトリガー、入力、および出力のバインディングをサポートしています。
 
-外部ファイル バインディングにより、Azure の外部でホストされているファイルに関数がアクセスできるようになります。 このバインディングでは、新しい API 接続を作成するか、または Function App のリソース グループにある既存の API 接続を使用します。
+このバインディングでは、SaaS プロバイダーへの API 接続を作成するか、または Function App のリソース グループにある既存の API 接続を使用します。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -254,76 +255,6 @@ C# 関数の場合、入力ファイル データにバインドするには、�
 * `CloudBlockBlob`
 * `CloudPageBlob`
 
-<a name="inputsample"></a>
-
-## <a name="input-sample"></a>入力サンプル
-[Storage キュー トリガー](functions-bindings-storage-queue.md)、外部ファイル入力、外部ファイル出力を定義する、次の function.json があるとします。
-
-```json
-{
-  "bindings": [
-    {
-      "queueName": "myqueue-items",
-      "connection": "MyStorageConnection",
-      "name": "myQueueItem",
-      "type": "queueTrigger",
-      "direction": "in"
-    },
-    {
-      "name": "myInputFile",
-      "type": "apiHubFile",
-      "path": "samples-workitems/{queueTrigger}",
-      "connection": "<name of external file connection>",
-      "direction": "in"
-    },
-    {
-      "name": "myOutputFile",
-      "type": "apiHubFile",
-      "path": "samples-workitems/{queueTrigger}-Copy",
-      "connection": "<name of external file connection>",
-      "direction": "out"
-    }
-  ],
-  "disabled": false
-}
-```
-
-入力ファイルを出力ファイルにコピーする言語固有のサンプルを参照してください。
-
-* [C#](#incsharp)
-* [Node.JS](#innodejs)
-
-<a name="incsharp"></a>
-
-### <a name="input-usage-in-c"></a>C での入力の使用方法# #
-
-```cs
-public static void Run(string myQueueItem, string myInputFile, out string myOutputFile, TraceWriter log)
-{
-    log.Info($"C# Queue trigger function processed: {myQueueItem}");
-    myOutputFile = myInputFile;
-}
-```
-
-<!--
-<a name="infsharp"></a>
-### Input usage in F# ##
-```fsharp
-
-```
--->
-
-<a name="innodejs"></a>
-
-### <a name="input-usage-in-nodejs"></a>Node.js での入力の使用方法
-
-```javascript
-module.exports = function(context) {
-    context.log('Node.js Queue trigger function processed', context.bindings.myQueueItem);
-    context.bindings.myOutputFile = context.bindings.myInputFile;
-    context.done();
-};
-```
 
 <a name="output"></a>
 
@@ -368,8 +299,76 @@ C# 関数の場合は、次の型のいずれかに出力することもでき�
 
 <a name="outputsample"></a>
 
-## <a name="output-sample"></a>出力サンプル
-「[入力サンプル](#inputsample)」を参照してください。
+<a name="sample"></a>
+
+## <a name="input--output-sample"></a>入力と出力のサンプル
+[Storage キュー トリガー](functions-bindings-storage-queue.md)、外部ファイル入力、外部ファイル出力を定義する、次の function.json があるとします。
+
+```json
+{
+  "bindings": [
+    {
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnection",
+      "name": "myQueueItem",
+      "type": "queueTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "myInputFile",
+      "type": "apiHubFile",
+      "path": "samples-workitems/{queueTrigger}",
+      "connection": "<name of external file connection>",
+      "direction": "in"
+    },
+    {
+      "name": "myOutputFile",
+      "type": "apiHubFile",
+      "path": "samples-workitems/{queueTrigger}-Copy",
+      "connection": "<name of external file connection>",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+入力ファイルを出力ファイルにコピーする言語固有のサンプルを参照してください。
+
+* [C#](#incsharp)
+* [Node.JS](#innodejs)
+
+<a name="incsharp"></a>
+
+### <a name="usage-in-c"></a>C での使用方法# #
+
+```cs
+public static void Run(string myQueueItem, string myInputFile, out string myOutputFile, TraceWriter log)
+{
+    log.Info($"C# Queue trigger function processed: {myQueueItem}");
+    myOutputFile = myInputFile;
+}
+```
+
+<!--
+<a name="infsharp"></a>
+### Input usage in F# ##
+```fsharp
+
+```
+-->
+
+<a name="innodejs"></a>
+
+### <a name="usage-in-nodejs"></a>Node.js での使用方法
+
+```javascript
+module.exports = function(context) {
+    context.log('Node.js Queue trigger function processed', context.bindings.myQueueItem);
+    context.bindings.myOutputFile = context.bindings.myInputFile;
+    context.done();
+};
+```
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]

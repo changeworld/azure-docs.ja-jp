@@ -14,10 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 8dcb006a8cf167cdbfb67de5a11dabf0edbbe41c
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 6db07ed122d8dbd9edaa3b4d25680863778a6adf
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -32,6 +33,7 @@ ms.lasthandoff: 04/22/2017
 
 1. [Git をダウンロードし、インストールします](https://git-scm.com/)
 1. [Node.js と NPM をダウンロードし、インストールします](https://nodejs.org/)
+1. [Gulp.js のインストール](http://gulpjs.com/)
 1. [MongoDB Community Edition をダウンロードし、インストールして、実行します](https://docs.mongodb.com/manual/administration/install-community/) 
 1. [Azure CLI 2.0 をダウンロードし、インストールします](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
@@ -40,7 +42,7 @@ ms.lasthandoff: 04/22/2017
 ## <a name="test-local-mongodb-database"></a>ローカルの MongoDB データベースをテストする
 この手順では、ローカルの MongoDB データベースが稼働していることを確認します。
 
-ターミナル ウィンドウを開き、`CD` コマンドで MongoDB インストールの `bin` ディレクトリに移動します。 
+ターミナル ウィンドウを開き、`cd` コマンドで MongoDB インストールの `bin` ディレクトリに移動します。 
 
 ターミナルで `mongo` を実行して、ローカルの MongoDB サーバーに接続します。
 
@@ -59,7 +61,7 @@ MongoDB データベースのテストが完了したら、ターミナルで `C
 
 ### <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
-ターミナル ウィンドウを開き、`CD` コマンドで作業ディレクトリに移動します。  
+ターミナル ウィンドウを開き、`cd` コマンドで作業ディレクトリに移動します。  
 
 次のコマンドを実行して、サンプル リポジトリを複製します。 
 
@@ -107,7 +109,7 @@ MEAN.js サンプル アプリケーションでは、ユーザー データを�
 
 この手順では、Azure で MongoDB データベースを作成します。 アプリを Azure にデプロイすると、このデータベースは運用ワークロードに使用されます。
 
-MongoDB のために、このチュートリアルでは、[Azure DocumentDB](/azure/documentdb/) を使用します。これにより、MongoDB のクライアント接続をサポートできます。 言い換えると、Node.js アプリケーションのみが MongoDB データベースに接続していることを認識します。 接続が DocumentDB データベースによって提供されるという事実は、アプリケーションに対して透過的です。
+このチュートリアルでは、MongoDB に [Azure DocumentDB](/azure/documentdb/) を使用します。 Azure DocumentDB は MongoDB クライアント接続をサポートしています。これは Node.js アプリケーションが MongoDB データベースに接続していることのみを認識していることを意味します。 接続が DocumentDB データベースによって提供されるという事実は、アプリケーションに対して透過的です。
 
 ### <a name="log-in-to-azure"></a>Azure へのログイン
 
@@ -193,11 +195,11 @@ Azure CLI によって次の例のような情報が出力されます。
 
 MEAN.js リポジトリにある `config/env/production.js` を開きます。
 
-次の例に示すように、`db` オブジェクトの `uri` の値を置き換えます。 2 つの `<documentdb_name>` プレースホルダーを DocumentDB データベース名に、`<primary_maste_key>` プレースホルダーを前の手順でコピーしたキーに置き換えます。
+次の例に示すように、`db` オブジェクトの `uri` の値を置き換えます。 2 つの `<documentdb_name>` プレースホルダーを DocumentDB データベース名に、`<primary_master_key>` プレースホルダーを前の手順でコピーしたキーに置き換えます。
 
 ```javascript
 db: {
-  uri: 'mongodb://<documentdb_name>:<primary_maste_key>@<documentdb_name>.documents.azure.com:10250/mean?ssl=true&sslverifycertificate=false',
+  uri: 'mongodb://<documentdb_name>:<primary_master_key>@<documentdb_name>.documents.azure.com:10250/mean?ssl=true&sslverifycertificate=false',
   ...
 },
 ```
@@ -211,7 +213,7 @@ db: {
 
 ### <a name="test-the-application-in-production-mode"></a>運用モードでのアプリケーションのテスト 
 
-他の Node.js アプリケーションと同様、MEAN.js では `gulp prod` を使用して、運用環境用のスクリプトを小さくしてバンドルします。 これにより、運用環境に必要なファイルが生成されます。 
+他の Node.js Web フレームワークと同様、MEAN.js では `gulp prod` を使用して、運用環境用のスクリプトを小さくしてバンドルします。 これにより、運用環境に必要なファイルが生成されます。 
 
 `gulp prod` を今すぐ実行します。
 
@@ -241,6 +243,8 @@ MEAN.JS version: 0.5.0
 ```
 
 ブラウザーで `http://localhost:8443` にアクセスします。 前と同じように、上部のメニューの **[Sign Up (サインアップ)]** をクリックし、ダミーのユーザーを作成します。 作成すると、データが Azure の DocumentDB データベースに書き込まれます。 
+
+ターミナルで、「`Ctrl`+`C`」と入力して Node.js を停止します。 
 
 ## <a name="deploy-the-nodejs-application-to-azure"></a>Azure に Node.js アプリケーションをデプロイする
 この手順では、MongoDB に接続している Node.js アプリケーションを Azure App Service にデプロイします。
@@ -353,7 +357,7 @@ db: {
 > App Service への FTP とローカル Git のデプロイには、デプロイ ユーザーが必要です。 このデプロイ ユーザーは、アカウント レベルです。 そのため、Azure サブスクリプション アカウントとは異なります。 このデプロイ ユーザーは、1 回だけ構成する必要があります。
 
 ```azurecli
-az appservice web deployment user set --user-name <specify-a-username> --password <mininum-8-char-captital-lowercase-number>
+az appservice web deployment user set --user-name <specify-a-username> --password <minimum-8-char-capital-lowercase-number>
 ```
 
 Azure Web アプリへのローカル Git アクセスを構成するには、[az appservice web source-control config-local-git](/cli/azure/appservice/web/source-control#config-local-git) コマンドを使用します。 
@@ -441,7 +445,7 @@ http://<app_name>.azurewebsites.net
 
 ### <a name="update-the-data-model"></a>データ モデルの更新
 
-`modules/articles/server/models/articles.server.controller.js`を開きます。
+`modules/articles/server/models/article.server.model.js`を開きます。
 
 `ArticleSchema` に `comment` という `String` 型を追加します。 完了すると、スキーマ コードは次のようになります。
 
@@ -484,7 +488,7 @@ exports.update = function (req, res) {
 };
 ```
 
-次に、`modules/client/views/view-article.client.view.js` を開きます。
+次に、`modules/articles/client/views/view-article.client.view.html` を開きます。
 
 `</section>` 終了タグのすぐ上に、`comment` と残りの記事データを表示する次の行を追加します。
 
@@ -492,7 +496,7 @@ exports.update = function (req, res) {
 <p class="lead" ng-bind="vm.article.comment"></p>
 ```
 
-次に、`modules/client/views/list-articles.client.view.js` を開きます。
+次に、`modules/articles/client/views/list-articles.client.view.html` を開きます。
 
 `</a>` 終了タグのすぐ上に、`comment` と残りの記事データを表示する次の行を追加します。
 
@@ -500,7 +504,7 @@ exports.update = function (req, res) {
 <p class="list-group-item-text" ng-bind="article.comment"></p>
 ```
 
-次に、`modules/client/views/admin/list-articles.client.view.js` を開きます。
+次に、`modules/articles/client/views/admin/list-articles.client.view.html` を開きます。
 
 `<div class="list-group">` タグ内の `</a>` 終了タグのすぐ上に、`comment` と残りの記事データを表示する次の行を追加します。
 
@@ -508,7 +512,7 @@ exports.update = function (req, res) {
 <p class="list-group-item-text" data-ng-bind="article.comment"></p>
 ```
 
-最後に、`modules/client/views/admin/list-articles.client.view.js` を開きます。
+最後に、`modules/articles/client/views/admin/form-article.client.view.html` を開きます。
 
 次のような送信ボタンを含む `<div class="form-group">` タグを探します。
 
@@ -551,6 +555,8 @@ NODE_ENV=production node server.js
 
 ![記事に追加されたコメント フィールド](./media/app-service-web-tutorial-nodejs-mongodb-app/added-comment-field.png)
 
+ターミナルで、「`Ctrl`+`C`」と入力して Node.js を停止します。 
+
 ### <a name="publish-changes-to-azure"></a>Azure への変更の発行
 
 変更を Git にコミットし、コード変更を Azure にプッシュします。
@@ -581,7 +587,7 @@ az appservice web log tail --name <app_name> --resource-group myResourceGroup
 
 ログのストリーミングが開始されたら、ブラウザーで Azure Web アプリを最新の情報に更新して、Web トラフィックを取得します。 ターミナルにパイプされたコンソール ログが表示されます。
 
-任意のタイミングでログのストリーミングを停止するには、`Ctrl` + `C` キーを押します。 
+「`Ctrl`+`C`」と入力して、任意のタイミングでログのストリーミングを停止します。 
 
 ## <a name="manage-your-azure-web-app"></a>Azure Web アプリを管理する
 
