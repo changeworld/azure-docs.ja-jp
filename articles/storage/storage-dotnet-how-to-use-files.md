@@ -14,9 +14,10 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 03/27/2017
 ms.author: renash
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: e773fd4917c7a96201d94d31b2098a3486d27900
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/27/2017
 
 
