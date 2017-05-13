@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 626b152b8511995413af39a41161c29c88429605
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: cc2a24b26b152671173770adfd4aefcfcb2512d4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -75,6 +76,7 @@ ms.lasthandoff: 04/21/2017
 
 * API Management
 * App Service アプリ (Web Apps) - 「 [App Service の制限事項](#app-service-limitations)
+* Application Insights
 * Automation
 * Batch
 * Bing Maps
@@ -124,7 +126,6 @@ ms.lasthandoff: 04/21/2017
 
 * AD Hybrid Health Service
 * Application Gateway
-* Application Insights
 * BizTalk Services
 * Container Service
 * ExpressRoute
@@ -147,12 +148,12 @@ App Service アプリを使用している場合、App Service プランのみ�
 * App Service プランとそのリソース グループ内の他のすべての App Service リソースを、まだ App Service リソースが含まれていない新しいリソース グループに移動する。 この要件により、App Service プランに関連付けられていない App Service リソースも移動する必要があります。 
 * アプリを別のリソース グループに移動し、元のリソース グループにも App Service プランをすべて保持する。
 
-元のリソース グループに Application Insights のリソースも含まれている場合、現在 Application Insights では移動操作を実行できないため、このリソースを移動できません。 App Service アプリを移動する際に Application Insights のリソースも含めると、移動操作自体が失敗します。 ただし、アプリが正常に動作するために、Application Insights と App Service プランがそのアプリと同じリソース グループ内に存在する必要はありません。
+ただし、アプリが正常に動作するために、App Service プランがそのアプリと同じリソース グループ内に存在する必要はありません。
 
 たとえば、リソース グループに次のものが含まれているとします。
 
-* **plan-a** と **app-insights-a** に関連付けられた **web-a**
-* **plan-b** と **app-insights-b** に関連付けられた **web-b**
+* **plan-a** に関連付けられた **web-a**
+* **plan-b** に関連付けられた **web-b**
 
 オプションは次のとおりです。
 
@@ -161,7 +162,7 @@ App Service アプリを使用している場合、App Service プランのみ�
 * **web-a**
 * **web-b**
 
-これ以外のすべての組み合わせでは、移動できないリソースの種類 (Application Insights) の移動、または App Service プランの移動時に残しておくことができないリソースの種類 (すべての種類の App Service リソース) の保持のどちらかが行われます。
+これ以外の組み合わせでは、App Service プランの移動時に、残しておくことができないリソースの種類 (すべての種類の App Service リソース) が残されます。
 
 Web アプリがその App Service プランとは異なるリソース グループに存在するが、その両方を新しいリソース グループに移動する場合、移動を 2 段階で行う必要があります。 次に例を示します。
 

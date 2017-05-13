@@ -13,41 +13,321 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 04/26/2017
 ms.author: jingwang
-translationtype: Human Translation
-ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
-ms.openlocfilehash: 16a094b8a311c43658aad299e206d79e29bafed0
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: 07916e9c05b06c6998daf54467ee97ba9d9d0a64
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/28/2017
 
 
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー
 この記事では、Azure Data Factory のコピー アクティビティを使って、Azure Blob Storage との間でデータをコピーする方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
 
-サポートされる任意のソース データ ストアのデータを、Azure Blob Storage にコピーしたり、Azure Blob Storage のデータを、サポートされる任意のシンク データ ストアにコピーしたりできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関するページの表をご覧ください。
+## <a name="overview"></a>概要
+サポートされる任意のソース データ ストアのデータを、Azure Blob Storage にコピーしたり、Azure Blob Storage のデータを、サポートされる任意のシンク データ ストアにコピーしたりできます。 次の表は、コピー アクティビティによってコピー元またはシンクとしてサポートされているデータ ストアの一覧です。 たとえば、SQL Database データベースまたは Azure SQL データベース**から** Azure Blob Storage **に**データを移動できます。 また、Azure Blob Storage **から** Azure SQL Data Warehouse または Azure DocumentDB コレクション**に**データをコピーできます。 
 
-> [!IMPORTANT]
-> コピー アクティビティによって、汎用 Azure Strage アカウントとコールド/ホット Blob Storage との間でデータをコピーできるようになりました。 このアクティビティは、**ブロック BLOB、追加 BLOB、ページ BLOB** を読み取りますが、**書き込みはブロック BLOB のみ**をサポートしています。 Azure Premium Storage はページ BLOB によって提供されるため、シンクとしてはサポートされていません。
->
-> コピー アクティビティでは、コピー先にデータが正常にコピーされた後に、ソースからデータが削除されることはありません。 コピーが成功した後にソース データを削除する必要がある場合は、ファイルを削除するカスタム アクティビティを作成し、パイプライン内でそのアクティビティを使用します。
+[!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
 
-## <a name="getting-started"></a>使用の開始
-さまざまなツール/API を使用して、Azure BLOB ストレージとの間でデータを移動するコピー アクティビティでパイプラインを作成できます。
+コピー アクティビティによって、汎用 Azure Strage アカウントとコールド/ホット Blob Storage との間でデータをコピーできるようになりました。 このアクティビティは、**ブロック BLOB、追加 BLOB、ページ BLOB** を読み取りますが、**書き込みはブロック BLOB のみ**をサポートしています。 Azure Premium Storage はページ BLOB によって提供されるため、シンクとしてはサポートされていません。
 
-パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
+> [!NOTE]
+> コピー アクティビティでは、コピー先にデータが正常にコピーされた後に、ソースからデータが削除されることはありません。 コピーが成功した後、コピー元データを削除する必要がある場合は、ファイルを削除する[カスタム アクティビティ](data-factory-use-custom-activities.md)を作成し、パイプライン内でそのアクティビティを使用します。
 
-次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
+## <a name="walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage"></a>チュートリアル: コピー ウィザードを使用して Blob Storage との間でデータをコピする
+Azure Blob Storage との間でデータをすばやくコピーする方法を確認してみましょう。 このチュートリアルでは、コピー元データ ストアとコピー先データ ストアの両方の種類が Azure Blob Storage です。 このチュートリアルのパイプラインは、同じ BLOB コンテナー内のフォルダー間でデータをコピーします。 ここではチュートリアルを意図的にシンプルにして、Blob Storage をコピー元またはシンクとして使用するときの設定とプロパティを示しています。 
 
-ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
+### <a name="prerequisites"></a>前提条件
+1. 汎用 **Azure ストレージ アカウント**を作成します (お持ちでない場合)。 このチュートリアルでは、**コピー元**データ ストアおよび**コピー先データ ストア**として Blob Storage を使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「 [ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account) 」をご覧ください。
+2. ストレージ アカウントに **adfblobconnector** という名前の BLOB コンテナーを作成します。 
+4. **adfblobconnector** コンテナーに **input** という名前のフォルダーを作成します。
+5. 次のコンテンツを含む **emp.txt** という名前のファイルを作成し、[Azure ストレージ エクスプローラー](https://azurestorageexplorer.codeplex.com/)などのツールを使って、**input** フォルダーにアップロードします
+    ```json
+    John, Doe
+    Jane, Doe
+    ```
+### <a name="create-the-data-factory"></a>Data Factory の作成
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
+2. 左上隅の **[+ 新規]** をクリックし、**[インテリジェンス + 分析]** をクリックし、**[Data Factory]** をクリックします。
+3. **[新しいデータ ファクトリ]** ブレードで以下の手順を実行します。   
+    1. **[名前]** に「**ADFBlobConnectorDF**」と入力します。 Azure Data Factory の名前はグローバルに一意にする必要があります。 エラー `*Data factory name “ADFBlobConnectorDF” is not available` が発生した場合は、データ ファクトリの名前を変更して (yournameADFBlobConnectorDF など) 作成し直してください。 Data Factory アーティファクトの名前付け規則については、「 [Azure Data Factory - 名前付け規則](data-factory-naming-rules.md) 」を参照してください。
+    2. Azure **サブスクリプション**を選択します。
+    3. リソース グループについては、**[Use existing (既存のものを使用)]** を選択して、既存のリソース グループを選択するか、**[新規作成]** を選択して、リソース グループの名前を入力します。
+    4. データ ファクトリの**場所**を選択します。
+    5. ブレードの一番下にある **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。
+    6. **[作成]**をクリックします。
+3. 作成が完了すると、次の図に示すような **[Data Factory]** ブレードが表示されます。![Data Factory のホーム ページ](./media/data-factory-azure-blob-connector/data-factory-home-page.png)
 
-1. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
-2. コピー操作用の入力データと出力データを表す**データセット**を作成します。
-3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。
+### <a name="copy-wizard"></a>コピー ウィザード
+1. Data Factory のホーム ページで **[データのコピー (プレビュー)]** タイルをクリックして、新しいタブで**データのコピー ウィザード**を起動します。    
+    
+    > [!NOTE]
+    >    承認中であることを示すメッセージが表示されたまま Web ブラウザーが停止してしまう場合は、**サード パーティの Cookie とサイト データをブロック**する設定を無効にしてください。または、有効な状態のまま **login.microsoftonline.com** に対する例外を作成し、そのうえで、もう一度ウィザードを起動してください。
+2. **[プロパティ]** ページで次の操作を実行します。
+    1. **[タスク名]** に「**CopyPipeline**」と入力します。 タスク名は、データ ファクトリのパイプラインの名前です。
+    2. タスクの**説明**を入力します (省略可能)。
+    3. **タスクの周期またはスケジュール**については、**[Run regularly on schedule (スケジュールに従って定期的に実行する)]** オプションをそのままにします。 スケジュールに従って繰り返し実行するのではなく、1 回だけ実行する場合は、**[Run once now (今すぐ 1 回実行する)]** を選択します。 **[Run once now (今すぐ 1 回実行する)]** オプションを選択すると、[ワンタイム パイプライン](data-factory-create-pipelines.md#onetime-pipeline)が作成されます。 
+    4. **[再実行のパターン]** の設定はそのままにします。 このタスクは、次の手順で指定する開始時間と終了時間の間に毎日実行されます。
+    5. **開始日時**を **04/21/2017** に変更します。 
+    6. **終了日時**を **04/25/2017** に変更します。 日付はカレンダーから選択する代わりに、直接入力することもできます。     
+    8. **[次へ]**をクリックします。
+      ![コピー ツール - [プロパティ] ページ](./media/data-factory-azure-blob-connector/copy-tool-properties-page.png) 
+3. **[Source data store (ソース データ ストア)]** ページで、**[Azure Blob Storage]** タイルをクリックします。 このページを使用して、コピー タスクのソース データ ストアを指定します。 既存のデータ ストアのリンクされたサービスを使用するか、新しいデータ ストアを指定できます。 既存のリンクされたサービスを使用するには、**[FROM EXISTING LINKED SERVICES (既存のリンクされたサービスから)]** を選択し、適切なリンクされたサービスを選択します。 
+    ![コピー ツール - [ソース データ ストア] ページ](./media/data-factory-azure-blob-connector/copy-tool-source-data-store-page.png)
+4. **[Specify the Azure Blob storage account (Azure BLOB ストレージ アカウントの指定)]** ページで次の操作を実行します。
+   1. **[接続名]** は、自動生成された名前のままにします。 接続名は、リンクされたサービスの種類の名前である Azure Storage です。 
+   2. **[Account selection method (アカウントの選択方法)]** で **[From Azure subscriptions (Azure サブスクリプションから)]** オプションが選択されていることを確認します。
+   3. 使用している Azure サブスクリプションを選択するか、**[Azure サブスクリプション]** で設定されている **[すべて選択]** をそのまま使用します。   
+   4. 選択したサブスクリプションで利用できる Azure ストレージ アカウントの一覧から、使用する **Azure ストレージ アカウント**を選択します。 ストレージ アカウント設定を手動で入力することもできます。その場合は、**[Account selection method (アカウントの選択方法)]** で **[手動で入力]** オプションを選択します。
+   5. **[次へ]**をクリックします。 
+      ![コピー ツール - Azure BLOB ストレージ アカウントの指定](./media/data-factory-azure-blob-connector/copy-tool-specify-azure-blob-storage-account.png)
+5. **[Choose the input file or folder (入力ファイルまたはフォルダーの選択)]** ページで次の操作を実行します。
+   1. **[adfblobcontainer]** をダブルクリックします。
+   2. **[input]** を選択し、**[選択]** をクリックします。 このチュートリアルでは、input フォルダーを選択します。 フォルダーではなく、emp.txt ファイルも選択することもできます。 
+      ![コピー ツール - 入力ファイルまたはフォルダーの選択](./media/data-factory-azure-blob-connector/copy-tool-choose-input-file-or-folder.png)
+6. **[Choose the input file or folder (入力ファイルまたはフォルダーの選択)]** ページで次の操作を実行します。
+    1. **[ファイルまたはフォルダー]** が **adfblobconnector/input** に設定されていることを確認します。 ファイルがサブフォルダー内にある場合は、ファイルまたはフォルダーの名前として、adfblobconnector/input/{年}/{月}/{日} (例: 2017/04/01、2017/04/02、...) と入力します。 テキスト ボックスの外で Tab キーを押すと、3 つのドロップダウン リストが表示され、年 (yyyy)、月 (MM)、および日 (dd) の形式を選択できます。 
+    2. **[Copy file recursively (再帰的にファイルをコピーする)]** は設定しないでください。 このオプションは、フォルダーを再帰的にスキャンして、ファイルをコピーするときに選択します。 
+    3. **[バイナリ コピー]** オプションは選択しないでください。 このオプションは、コピー元ファイルをバイナリ コピーするときに選択します。 次のページで他のオプションが表示されるように、このチュートリアルでは選択しません。 
+    4. **[圧縮の種類]** が **[なし]** に設定されていることを確認します。 サポートされている形式のいずれかでコピー元ファイルが圧縮されている場合は、このオプションで値を選択します。 
+    5. **[次へ]**をクリックします。
+    ![コピー ツール - 入力ファイルまたはフォルダーの選択](./media/data-factory-azure-blob-connector/chose-input-file-folder.png) 
+7. **[File format settings (ファイル形式の設定)]** ページに、ウィザードがファイルを解析することによって自動的に検出した区切り記号とスキーマが表示されます。 
+    1. **[ファイル形式]** が **[テキスト形式]** に設定されていることを確認します。 ドロップダウン リストには、サポートされているすべての形式が表示されます。 例: JSON、Avro、ORC、Parquet。 
+    2. **[列区切り記号]** が `Comma (,)` に設定されていることを確認します。 ドロップダウン リストには、Data Factory でサポートされているその他の列区切り記号が表示されます。 また、独自の区切り記号を指定することもできます。 
+    3. **[行区切り記号]** が `Carriage Return + Line feed (\r\n)` に設定されていることを確認します。 ドロップダウン リストには、Data Factory でサポートされているその他の行区切り記号が表示されます。 また、独自の区切り記号を指定することもできます。 
+    4. **[skip line count (スキップ行数)]** が **0** に設定されていることを確認します。 ファイルの先頭で行をスキップする場合は、ここにその行数を入力します。 
+    5. **[The first data row contains column names (先頭データ行に列名を使用する)]** が設定されていないことを確認します。 コピー元ファイルの先頭行に列名が使用されている場合は、このオプションを選択します。 
+    6. **[Treat empty column value as null (空の列の値を null として処理する)]** オプションが設定されていることを確認します。 
+    7. **[詳細設定]** を展開して、利用可能な詳細オプションを表示します。 
+    8. ページの下部で、emp.txt ファイルのデータの**プレビュー**を確認します。 
+    9. 下部の **[スキーマ]** タブをクリックし、コピー元ファイルのデータからコピー ウィザードが推測したスキーマを確認します。 
+    10. 区切り記号を確認し、データをプレビューしたら、**[次へ]** をクリックします。
+    ![コピー ツール - ファイル形式の設定](./media/data-factory-azure-blob-connector/copy-tool-file-format-settings.png)  
+8. **[Destination data store (コピー先データ ストア)]** ページで **[Azure Blob Storage]** を選択し、**[次へ]** をクリックします。 このチュートリアルでは、コピー元データ ストアおよびコピー先データ ストアとして Azure Blob Storage を使用しています。    
+    ![コピー ツール - コピー先データ ストアの選択](media/data-factory-azure-blob-connector/select-destination-data-store.png)
+9. **[Specify the Azure Blob storage account (Azure BLOB ストレージ アカウントの指定)]** ページで次の操作を実行します。
+   1. **[接続名]** フィールドに「**AzureStorageLinkedService**」と入力します。
+   2. **[Account selection method (アカウントの選択方法)]** で **[From Azure subscriptions (Azure サブスクリプションから)]** オプションが選択されていることを確認します。
+   3. Azure **サブスクリプション**を選択します。  
+   4. [Azure ストレージ アカウント] を選択します。 
+   5. **[次へ]**をクリックします。     
+10. **[Choose the output file or folder (出力ファイルまたはフォルダーの選択)]** ページで次の操作を実行します。 
+    1. **[フォルダー パス]** で **adfblobconnector/output/{year}/{month}/{day}** を指定します。 **Tab** キーを押します。 
+    2. **[年]** では **[yyyy]** を選択します。 
+    3. **[月]** で、**[MM]** が設定されていることを確認します。 
+    4. **[日]** で、**[dd]** が設定されていることを確認します。 
+    5. **[圧縮の種類]** が **[なし]** に設定されていることを確認します。 
+    6. **[コピー動作]** が **[Merge files (ファイルを結合)]** に設定されていることを確認します。 同じ名前の出力ファイルが既に存在する場合は、最後にある同じファイルに新しいコンテンツが追加されます。  
+    7. **[次へ]**をクリックします。 
+    ![コピー ツール - 出力ファイルまたはフォルダーの選択](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
+11. **[File format settings (ファイル形式設定)]** ページで設定を確認し、**[次へ]** をクリックします。 ここで使用できる追加オプションの 1 つが、ヘッダーを出力ファイルに追加するオプションです。 このオプションを選択すると、ヘッダー行が、コピー元のスキーマの列名で追加されます。 既定の列名は、コピー元のスキーマを表示するときに変更できます。 たとえば、最初の列を "名" に、2 番目の列を "姓" に変更できます。 その後、出力ファイルが生成され、そのファイルのヘッダーでは、この名前が列名として使用されます。 
+    ![コピー ツール - コピー先のファイル形式の設定](media/data-factory-azure-blob-connector/file-format-destination.png)
+12. **[パフォーマンス設定]** ページで、**[Cloud units (クラウド単位)]** と **[Parallel copies (並列コピー)]** が **[自動]** に設定されていることを確認し、[次へ] をクリックします。 こうした設定の詳細については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md#parallel-copy)」を参照してください。
+    ![コピー ツール - パフォーマンス設定](media/data-factory-azure-blob-connector/copy-performance-settings.png) 
+14. **[概要**] ページで、すべての設定 (タスクのプロパティ、コピー元とコピー先の設定、コピーの設定) を確認し、**[次へ]** をクリックします。
+    ![コピー ツール - [概要] ページ](media/data-factory-azure-blob-connector/copy-tool-summary-page.png)
+15. **[概要]** ページの内容を確認し、**[完了]** をクリックします。 これにより、2 つのリンクされたサービス、2 つのデータセット (入力と出力)、1 つのパイプラインが (コピー ウィザードを起動した場所から) データ ファクトリに作成されます。
+    ![コピー ページ - [デプロイ] ページ](media/data-factory-azure-blob-connector/copy-tool-deployment-page.png)
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 ツール/API (.NET API を除く) を使う場合、こうした Data Factory エンティティは、JSON 形式で定義します。  Azure Blob Storage との間でデータをコピーするときに使用する Data Factory エンティティの JSON 定義のサンプルについては、この記事の「[JSON の使用例](#json-examples)」を参照してください。
+### <a name="monitor-the-pipeline-copy-task"></a>パイプラインの監視 (コピー タスク)
 
-次のセクションでは、Azure Blob Storage に固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。
+1. **[デプロイ]** ページで `Click here to monitor copy pipeline` リンクをクリックします。 
+2. 新しいタブで **[Monitor and Manage application (アプリケーションの監視および管理)]** が表示されます。 
+    ![アプリの監視および管理](media/data-factory-azure-blob-connector/monitor-manage-app.png)
+3. **開始**時間を `04/19/2017` に、**終了**時間を `04/27/2017` に変更し、**[適用]** をクリックします。 
+4. **[ACTIVITY WINDOWS (アクティビティ ウィンドウ)]** リストに 5 つのアクティビティ ウィンドウが表示されます。 **[Window Start (ウィンドウの開始)]** 時間には、すべての日付のパイプライン開始時間からパイプライン終了時間が表示されます。 
+5. すべてのアクティビティ ウィンドウの状態が [準備完了] に設定されるまで、**[ACTIVITY WINDOWS (アクティビティ ウィンドウ)]** リストの **[更新]** を何度かクリックします。 
+6. 次に、出力ファイルが adfblobconnector コンテナーの出力フォルダーに生成されていることを確認します。 出力フォルダーのフォルダー構造は次のとおりです。 
+    ```
+    2017/04/21
+    2017/04/22
+    2017/04/23
+    2017/04/24
+    2017/04/25    
+    ```
+データ ファクトリの監視と管理の詳細については、[Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事をご覧ください。 
+ 
+### <a name="data-factory-entities"></a>Data Factory のエンティティ
+ここで、Data Factory のホーム ページのタブに戻ります。 現在データ ファクトリには、2 つのリンクされたサービス、2 つのデータセット、および 1 つのパイプラインがあります。 
+
+![Data Factory のホーム ページとそのエンティティ](media/data-factory-azure-blob-connector/data-factory-home-page-with-numbers.png)
+
+**[作成およびデプロイ]** をクリックして、Data Factory エディターを起動します。 
+
+![Data Factory エディター](media/data-factory-azure-blob-connector/data-factory-editor.png)
+
+データ ファクトリに次の Data Factory エンティティが表示されます。 
+
+ - 2 つのリンクされたサービス。 1 つはコピー元を、もう 1 つはコピー先を対象としています。 このチュートリアルでは、両方のリンクされたサービスが同じ Azure ストレージ アカウントを参照しています。 
+ - 2 つのデータセット。 入力データセットと出力データセット。 このチュートリアルでは、両方が同じ BLOB コンテナーを使用していますが、それぞれ異なるフォルダー (入力と出力) を参照しています。
+ - パイプライン。 パイプラインには、BLOB コピー元と BLOB シンクを使用して、Azure BLOB の場所から別の Azure BLOB の場所にデータをコピーするコピー アクティビティが含まれています。 
+
+以降のセクションでは、こうしたエンティティについて詳しく説明します。 
+
+#### <a name="linked-services"></a>リンクされたサービス
+2 つのリンクされたサービスが表示されます。 1 つはコピー元を、もう 1 つはコピー先を対象としています。 このチュートリアルでは、両方の定義が同じに見えますが、名前が異なります。 リンクされたサービスの**種類**は **AzureStorage** に設定されています。 リンクされたサービス定義で最も重要なプロパティは **connectionString** です。このプロパティは、実行時に Azure ストレージ アカウントに接続するときに、Data Factory によって使用されます。 定義の hubName プロパティは無視します。 
+
+##### <a name="source-blob-storage-linked-service"></a>コピー元 Blob Storage のリンクされたサービス
+```json
+{
+    "name": "Source-BlobStorage-z4y",
+    "properties": {
+        "type": "AzureStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=**********"
+        }
+    }
+}
+```
+
+##### <a name="destination-blob-storage-linked-service"></a>コピー先 Blob Storage のリンクされたサービス
+
+```json
+{
+    "name": "Destination-BlobStorage-z4y",
+    "properties": {
+        "type": "AzureStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=**********"
+        }
+    }
+}
+```
+
+Azure Storage のリンクされたサービスの詳細については、「[リンクされたサービスのプロパティ](#linked-service-properties)」を参照してください。 
+
+#### <a name="datasets"></a>データセット
+データセットには、入力データセットと出力データセットの 2 つがあります。 データセットの型は両方とも **AzureBlob** に設定されています。 
+
+入力データセットは、**adfblobconnector** BLOB コンテナーの **input** フォルダーを指定します。 このデータセットについては、**external** プロパティは **true** に設定されています。データは、このデータセットを入力として使用するコピー アクティビティでは、パイプラインによって生成されないためです。 
+
+出力データセットは、同じ BLOB コンテナーの **output** フォルダーを指定します。 出力データセットも、**SliceStart** システム変数の年、月、および日を使用して、出力ファイルのパスを動的に評価します。 Data Factory でサポートされている関数とシステム変数の一覧については、[Data Factory の関数とシステム変数](data-factory-functions-variables.md)に関するページをご覧ください。 このデータセットはパイプラインによって生成されるため、**external** プロパティは **false** (既定値) に設定されています。 
+
+Azure BLOB データセットでサポートされるプロパティの詳細については、「[データセットのプロパティ](#dataset-properties)」を参照してください。
+
+##### <a name="input-dataset"></a>入力データセット
+
+```json
+{
+    "name": "InputDataset-z4y",
+    "properties": {
+        "structure": [
+            { "name": "Prop_0", "type": "String" },
+            { "name": "Prop_1", "type": "String" }
+        ],
+        "type": "AzureBlob",
+        "linkedServiceName": "Source-BlobStorage-z4y",
+        "typeProperties": {
+            "folderPath": "adfblobconnector/input/",
+            "format": {
+                "type": "TextFormat",
+                "columnDelimiter": ","
+            }
+        },
+        "availability": {
+            "frequency": "Day",
+            "interval": 1
+        },
+        "external": true,
+        "policy": {}
+    }
+}
+```
+
+##### <a name="output-dataset"></a>出力データセット
+
+```json
+{
+    "name": "OutputDataset-z4y",
+    "properties": {
+        "structure": [
+            { "name": "Prop_0", "type": "String" },
+            { "name": "Prop_1", "type": "String" }
+        ],
+        "type": "AzureBlob",
+        "linkedServiceName": "Destination-BlobStorage-z4y",
+        "typeProperties": {
+            "folderPath": "adfblobconnector/output/{year}/{month}/{day}",
+            "format": {
+                "type": "TextFormat",
+                "columnDelimiter": ","
+            },
+            "partitionedBy": [
+                { "name": "year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
+                { "name": "month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } },
+                { "name": "day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } }
+            ]
+        },
+        "availability": {
+            "frequency": "Day",
+            "interval": 1
+        },
+        "external": false,
+        "policy": {}
+    }
+}
+```
+
+#### <a name="pipeline"></a>パイプライン
+パイプラインに含まれるアクティビティは 1 つだけです。 アクティビティの **type** は **Copy** に設定されています。  アクティビティの type プロパティには 2 つのセクションがあり、1 つはコピー元、もう 1 つはシンクを対象としています。 アクティビティは Blob Storage からデータをコピーするため、コピー元の種類は **BlobSource** に設定されています。 アクティビティは Blob Storage にデータをコピーするため、シンクの種類は **BlobSink** に設定されています。 コピー アクティビティは、入力として InputDataset-z4y を使用し、出力として OutputDataset-z4y を使用します。 
+
+BlobSource と BlobSink でサポートされるプロパティの詳細については、「[コピー アクティビティのプロパティ](#copy-activity-properties)」を参照してください。 
+
+```json
+{
+    "name": "CopyPipeline",
+    "properties": {
+        "activities": [
+            {
+                "type": "Copy",
+                "typeProperties": {
+                    "source": {
+                        "type": "BlobSource",
+                        "recursive": false
+                    },
+                    "sink": {
+                        "type": "BlobSink",
+                        "copyBehavior": "MergeFiles",
+                        "writeBatchSize": 0,
+                        "writeBatchTimeout": "00:00:00"
+                    }
+                },
+                "inputs": [
+                    {
+                        "name": "InputDataset-z4y"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "OutputDataset-z4y"
+                    }
+                ],
+                "policy": {
+                    "timeout": "1.00:00:00",
+                    "concurrency": 1,
+                    "executionPriorityOrder": "NewestFirst",
+                    "style": "StartOfInterval",
+                    "retry": 3,
+                    "longRetry": 0,
+                    "longRetryInterval": "00:00:00"
+                },
+                "scheduler": {
+                    "frequency": "Day",
+                    "interval": 1
+                },
+                "name": "Activity-0-Blob path_ adfblobconnector_input_->OutputDataset-z4y"
+            }
+        ],
+        "start": "2017-04-21T22:34:00Z",
+        "end": "2017-04-25T05:00:00Z",
+        "isPaused": false,
+        "pipelineMode": "Scheduled"
+    }
+}
+```
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 Azure Storage を Azure Data Factory にリンクするときに使用できるリンクされたサービスは 2 種類あります。 それらは、**AzureStorage** のリンクされたサービスと **AzureStorageSas** のリンクされたサービスです。 Azure Storage のリンクされたサービスは、Azure Storage へのグローバル アクセスを Data Factory に提供します。 一方、Azure Storage SAS (Shared Access Signature) のリンクされたサービスは、Azure Storage への制限付き/期限付きアクセスを Data Factory に提供します。 これら 2 つのリンクされたサービスには、これ以外の相違点はありません。 ニーズに適したリンクされたサービスを選択します。 以下のセクションで、これら 2 つのリンクされたサービスについて詳しく説明します。
@@ -152,13 +432,24 @@ Data Factory は、Azure BLOB などの読み取りデータ ソースのスキ�
 | false |flattenHierarchy |ソース フォルダー Folder1 が次のような構造の場合:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>ターゲット フォルダー Folder1 は、次の構造で作成されます。<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 の自動生成された名前<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 の自動生成された名前<br/><br/><br/>Subfolder1 と File3、File4、File5 は取得されません。 |
 | false |mergeFiles |ソース フォルダー Folder1 が次のような構造の場合:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>ターゲット フォルダー Folder1 は、次の構造で作成されます。<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1、File2 の内容は、自動生成されたファイル名を持つ 1 つのファイルにマージされます。 File1 の自動生成された名前<br/><br/>Subfolder1 と File3、File4、File5 は取得されません。 |
 
-## <a name="supported-file-and-compression-formats"></a>サポートされているファイル形式と圧縮形式
-詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md)」に関する記事を参照してください。
+## <a name="toolssdks-to-create-a-pipeline"></a>パイプラインを作成するためのツール/SDK  
+さまざまなツール/API を使用して、Azure BLOB ストレージとの間でデータを移動するコピー アクティビティでパイプラインを作成できます。
 
-## <a name="json-examples"></a>JSON の使用例
+この記事では、Azure BLOB ストアの同じコンテナー内のフォルダー間でデータをコピーするためのチュートリアルを紹介しています。 Azure Blob Storage から Azure SQL Server データベースにデータをコピーするための、パイプライン作成に関する簡単なチュートリアルについては、[コピー ウィザードを使用したパイプライン作成に関するチュートリアル](data-factory-copy-data-wizard-tutorial.md)をご覧ください。 
+
+次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
+
+ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
+
+1. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
+2. コピー操作用の入力データと出力データを表す**データセット**を作成します。
+3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。
+
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  
+
 以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 ここでは、Azure Blob Storage と Azure SQL Database の間でデータをコピーする方法を示します。 ただし、Azure Data Factory のコピー アクティビティを使用して、 **こちら** に記載されているいずれかのシンクに、任意のソースからデータを [直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats) コピーすることができます。
 
-## <a name="example-copy-data-from-blob-storage-to-sql-database"></a>例: Blob Storage から SQL Database へのデータのコピー
+## <a name="json-example-copy-data-from-blob-storage-to-sql-database"></a>JSON の例: Blob Storage から SQL Database へのデータのコピー
 次のサンプルは以下を示しています。
 
 1. [AzureSqlDatabase](data-factory-azure-sql-connector.md#linked-service-properties)型のリンクされたサービス。
@@ -211,38 +502,10 @@ Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2
       "folderPath": "mycontainer/myfolder/yearno={Year}/monthno={Month}/dayno={Day}/",
       "fileName": "{Hour}.csv",
       "partitionedBy": [
-        {
-          "name": "Year",
-          "value": {
-            "type": "DateTime",
-            "date": "SliceStart",
-            "format": "yyyy"
-          }
-        },
-        {
-          "name": "Month",
-          "value": {
-            "type": "DateTime",
-            "date": "SliceStart",
-            "format": "MM"
-          }
-        },
-        {
-          "name": "Day",
-          "value": {
-            "type": "DateTime",
-            "date": "SliceStart",
-            "format": "dd"
-          }
-        },
-        {
-          "name": "Hour",
-          "value": {
-            "type": "DateTime",
-            "date": "SliceStart",
-            "format": "HH"
-          }
-        }
+        { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
+        { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } },
+        { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } },
+        { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "HH" } }
       ],
       "format": {
         "type": "TextFormat",
@@ -334,7 +597,7 @@ Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2
    }
 }
 ```
-## <a name="example-copy-data-from-azure-sql-to-azure-blob"></a>例: Azure SQL から Azure BLOB へのデータのコピー
+## <a name="json-example-copy-data-from-azure-sql-to-azure-blob"></a>JSON の例: Azure SQL から Azure BLOB へのデータのコピー
 次のサンプルは以下を示しています。
 
 1. [AzureSqlDatabase](data-factory-azure-sql-connector.md#linked-service-properties)型のリンクされたサービス。
@@ -419,36 +682,10 @@ Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2
       "partitionedBy": [
         {
           "name": "Year",
-          "value": {
-            "type": "DateTime",
-            "date": "SliceStart",
-            "format": "yyyy"
-          }
-        },
-        {
-          "name": "Month",
-          "value": {
-            "type": "DateTime",
-            "date": "SliceStart",
-            "format": "MM"
-          }
-        },
-        {
-          "name": "Day",
-          "value": {
-            "type": "DateTime",
-            "date": "SliceStart",
-            "format": "dd"
-          }
-        },
-        {
-          "name": "Hour",
-          "value": {
-            "type": "DateTime",
-            "date": "SliceStart",
-            "format": "HH"
-          }
-        }
+          "value": { "type": "DateTime",  "date": "SliceStart", "format": "yyyy" } },
+        { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } },
+        { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } },
+        { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "HH" } }
       ],
       "format": {
         "type": "TextFormat",

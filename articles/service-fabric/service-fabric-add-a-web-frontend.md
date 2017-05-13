@@ -1,9 +1,9 @@
 ---
-title: "ASP.NET Core を使用したアプリケーション用の Web フロントエンドの作成 | Microsoft Docs"
-description: "ASP.NET Core Web API プロジェクト、および ServiceProxy を介したサービス間通信を使用して、Web に Service Fabric アプリケーションを公開します。"
+title: "ASP.NET Core を使用した Azure Service Fabric アプリ用の Web フロントエンドの作成 | Microsoft Docs"
+description: "ASP.NET Core プロジェクト、およびサービスのリモート処理を介したサービス間通信を使用して、Web に Service Fabric アプリケーションを公開します。"
 services: service-fabric
 documentationcenter: .net
-author: seanmck
+author: vturecek
 manager: timlt
 editor: 
 ms.assetid: 96176149-69bb-4b06-a72e-ebbfea84454b
@@ -12,12 +12,13 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/30/2017
-ms.author: seanmck
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: d7084624b7242a8dfc60f49d38f1808116206b46
-ms.lasthandoff: 03/31/2017
+ms.date: 04/28/2017
+ms.author: vturecek
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: 68ca454aebbad30d5ea2511b030f260a6a18b1ca
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -27,7 +28,10 @@ ms.lasthandoff: 03/31/2017
 このチュートリアルでは、 [Visual Studio での初めてのアプリケーションの作成](service-fabric-create-your-first-application-in-visual-studio.md) に関するチュートリアルで取り上げなかった部分について説明し、ステートフルなカウンター サービスの前に Web サービスを追加します。 Visual Studio での初めてのアプリケーションの作成に関するチュートリアルをまだ終了していない場合は、先にそちらのチュートリアルを進めてください。
 
 ## <a name="add-an-aspnet-core-service-to-your-application"></a>アプリケーションへの ASP.NET Core サービスの追加
-ASP.NET Core は軽量のクロスプラットフォーム Web 開発フレームワークであり、これを使用すると、最新の Web UI と Web API を作成できます。 ASP.NET Web API プロジェクトを既存のアプリケーションに追加してみましょう。
+ASP.NET Core は軽量のクロスプラットフォーム Web 開発フレームワークであり、これを使用すると、最新の Web UI と Web API を作成できます。 Service Fabric と ASP.NET Core を統合する方法を完全に理解するには、「[Service Fabric リライアブル サービスでの ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)」の記事全体を読むことを強くお勧めします。ただし、差し当たり、このガイドに従えば、すぐに開始することができます。
+
+ASP.NET Web API プロジェクトを既存のアプリケーションに追加してみましょう。
+
 
 > [!NOTE]
 > このチュートリアルは、[Visual Studio 2017 用の ASP.NET Core ツール](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app/start-mvc)に基づいています。 Visual Studio 2015 用の .NET Core ツールは、更新されなくなりました。
@@ -47,7 +51,7 @@ ASP.NET Core は軽量のクロスプラットフォーム Web 開発フレー�
     作成した Web API プロジェクトでは、2 つのサービスがアプリケーションに含まれます。 アプリケーションの作成を続けながら、まったく同じ方法でさらにサービスを追加することができます。 それぞれを個別にバージョン管理およびアップグレードできます。
 
 > [!TIP]
-> ASP.NET Core サービスの構築の詳細については、 [ASP.NET Core のドキュメント](https://docs.microsoft.com/aspnet/core/)を参照してください。
+> ASP.NET Core の詳細については、[ASP.NET Core のドキュメント](https://docs.microsoft.com/aspnet/core/)を参照してください。
 > 
 
 ## <a name="run-the-application"></a>アプリケーションの実行
@@ -198,12 +202,11 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 ## <a name="kestrel-and-weblistener"></a>Kestrel と WebListener
 
-Kestrel という既定の ASP.NET Core Web サーバーは、[現在、インターネットに直接接続するトラフィックを処理](https://docs.asp.net/en/latest/fundamentals/servers.html#kestrel)することはできません。 そのため、Service Fabric 用の ASP.NET テンプレートでは、既定で [WebListener](https://docs.microsoft.com/aspnet/core/fundamentals/servers/weblistener) が使用されます。 
+Kestrel という既定の ASP.NET Core Web サーバーは、[現在、インターネットに直接接続するトラフィックを処理](https://docs.microsoft.com/aspnet/core/fundamentals/servers/kestrel)することはできません。 そのため、Service Fabric 用の ASP.NET Core ステートレス サービス テンプレートでは、既定で [WebListener](https://docs.microsoft.com/aspnet/core/fundamentals/servers/weblistener) が使用されます。 
 
-インターネットに直接接続するトラフィックを処理せず、Web サーバーとして Kestrel を使用したい場合は、サービス リスナー構成で変更できます。 `return new WebHostBuilder().UseWebListener()` を `return new WebHostBuilder().UseKestrel()` に置き換えるだけです。 Web ホスト上のその他すべての構成は、同じままでかまいません。
- 
+Service Fabric サービスの Kestrel および WebListener の詳細については、「[Service Fabric リライアブル サービスでの ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)」を参照してください。
 
-## <a name="what-about-actors"></a>アクターについて
+## <a name="connecting-to-a-reliable-actors-service"></a>Reliable Actors サービスへの接続
 このチュートリアルではステートフル サービスと通信する Web フロントエンドの追加を取り上げました。 ただし、非常によく似たモデルに従ってアクターと対話することもできます。 実際にはもう少し簡単です。
 
 アクター プロジェクトを作成すると、Visual Studio によってインターフェイス プロジェクトが自動的に生成されます。 そのインターフェイスを使用して Web プロジェクトでアクター プロキシを生成し、アクターと通信できます。 通信チャネルは自動的に指定されます。 そのため、このチュートリアルでステートフル サービスに関して行ったような `ServiceRemotingListener` の確立に相当することは何も行う必要がありません。
@@ -218,9 +221,11 @@ Kestrel という既定の ASP.NET Core Web サーバーは、[現在、イン�
 異なる環境で異なる値を構成する方法については、「 [複数の環境のアプリケーション パラメーターを管理する](service-fabric-manage-multiple-environment-app-configuration.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-* [アプリケーションをクラウドにデプロイするために Azure にクラスターを作成します](service-fabric-cluster-creation-via-portal.md)
-* [サービスとの通信について学習します](service-fabric-connect-and-communicate-with-services.md)
-* [ステートフル サービスのパーティション分割について学習します](service-fabric-concepts-partitioning.md)
+ASP.NET Core を使用したアプリケーションの Web フロントエンドの設定が完了したので、ASP.NET Core と Service Fabric を統合する方法の詳細について、[Service Fabric リライアブル サービスでの ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)に関するこの記事を参照してください。
+
+次に、一般的な[サービスとの通信の詳細](service-fabric-connect-and-communicate-with-services.md)を学習して、Service Fabric でのサービス通信のしくみの全体像を把握してください。
+
+サービス通信のしくみを十分に理解したら、[Azure でクラスターを作成し、クラウドにアプリケーションをデプロイ](service-fabric-cluster-creation-via-portal.md)してください。
 
 <!-- Image References -->
 

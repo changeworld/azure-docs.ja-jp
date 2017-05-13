@@ -16,10 +16,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/22/2016
 ms.author: sashan
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 043a1779ac694b0b3cbb5f1fd00117f716583669
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: e47c10c2c979622fba254757d3f7b9f19d3240f8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -59,7 +60,7 @@ ms.lasthandoff: 04/15/2017
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-Azure Portal を使って、Azure Recovery Services コンテナーで自動バックアップの長期的なバックアップ保有期間を構成、管理、および復元する方法については、**[Long-term backup retention](長期的なバックアップ保有期間)** をクリックし、データベースを選択して、**[Configure](構成)** をクリックします。 
+Azure Portal を使って、Azure Recovery Services コンテナーで自動バックアップの長期的なバックアップ保有期間を構成、管理、および復元する方法については、**[Long-term backup retention]\(長期的なバックアップ保有期間)** をクリックし、データベースを選択して、**[Configure]\(構成)** をクリックします。 
 
    ![長期的なバックアップ保有期間の対象となるデータベースの選択](./media/sql-database-get-started-backup-recovery/select-database-for-long-term-backup-retention.png)
 
@@ -99,10 +100,6 @@ Recovery Service は、指定した保持ポリシーに基づいてバックア
 
 > [!NOTE]
 > 既に資格情報コンテナーにあるバックアップは影響を受けません。 保有期間を超過すると、これらのデータベースはRecovery Service によって自動的に削除されます。
-
-## <a name="removing-long-term-backup-retention-backups-from-the-azure-recovery-services-vault"></a>Azure Recovery Services コンテナーからの長期的なバックアップ保有期間バックアップの削除
-
-長期的なバックアップ保有期間のバックアップをコンテナーから削除するには、「[長期保存のバックアップを削除する](sql-database-long-term-backup-retention-configure.md)」をご覧ください
 
 ## <a name="long-term-backup-retention-faq"></a>長期的なバックアップ保有期間の FAQ:
 
