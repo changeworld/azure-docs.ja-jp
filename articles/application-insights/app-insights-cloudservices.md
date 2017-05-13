@@ -12,12 +12,13 @@ ms.devlang: na
 ms.tgt_pltfrm: ibiza
 ms.topic: get-started-article
 ms.workload: tbd
-ms.date: 03/14/2017
+ms.date: 05/05/2017
 ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: 5ea258a8c790dd94e019243e77f2ff694c2515d7
-ms.lasthandoff: 03/16/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: bfae0fcf992c38d7afef6140fdd79d87ab0ecb4f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -239,6 +240,7 @@ Web ロールの場合、以下のカウンターも収集されます。
 * [Application Insights に Azure 診断を送信するための構成](app-insights-azure-diagnostics.md)
 * [Application Insights リソースの作成の自動化](app-insights-powershell.md)
 * [Azure 診断の自動化](app-insights-powershell-azure-diagnostics.md)
+* [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)
 
 [api]: app-insights-api-custom-events-metrics.md
 [availability]: app-insights-monitor-web-app-availability.md
