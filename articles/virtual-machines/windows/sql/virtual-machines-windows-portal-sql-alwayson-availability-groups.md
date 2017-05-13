@@ -123,7 +123,7 @@ Azure の仮想ネットワークの詳細については、[仮想ネットワ�
 ### <a name="virtual-machine-size-storage-settings"></a>VM サイズおよび記憶域の設定
 **[VM size, storage settings] \(VM サイズおよび記憶域の設定)** では、SQL Server 仮想マシンのサイズを選択し、その他の設定を確認します。
 
-* **[SQL Server virtual machine size] (SQL Server 仮想マシンのサイズ)** は、SQL Server を実行する両方の仮想マシンのサイズです。 ワークロードに適した仮想マシンのサイズを選択します。 このチュートリアル用に環境を構築する場合は **DS2** を使用します。 実稼働ワークロードでは、ワークロードをサポートできる仮想マシン サイズを選択します。 多くの実稼働ワークロードでは、**DS4** 以上が必要です。 このテンプレートでは、このサイズの仮想マシンを 2 つ構築し、それぞれに SQL Server をインストールします。 詳細については、 [仮想マシンのサイズ](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
+* **[SQL Server virtual machine size] \(SQL Server 仮想マシンのサイズ)** は、SQL Server を実行する両方の仮想マシンのサイズです。 ワークロードに適した仮想マシンのサイズを選択します。 このチュートリアル用に環境を構築する場合は **DS2** を使用します。 実稼働ワークロードでは、ワークロードをサポートできる仮想マシン サイズを選択します。 多くの実稼働ワークロードでは、**DS4** 以上が必要です。 このテンプレートでは、このサイズの仮想マシンを 2 つ構築し、それぞれに SQL Server をインストールします。 詳細については、 [仮想マシンのサイズ](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
 
 > [!NOTE]
 > Azure によって、SQL Server Enterprise Edition がインストールされます。 価格は、エディションと仮想マシンのサイズによって異なります。 現在の価格の詳細については、「[Virtual Machines の料金](http://azure.microsoft.com/pricing/details/virtual-machines/#Sql)」を参照してください。
