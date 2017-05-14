@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 04/26/2017
 ms.author: joflore
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: d53fb9003ed3b6805c3ee5cfda966e556844e0ff
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: f9dc195040d0fa1321dff9ec97d9ca1e4770d325
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/08/2017
 
 
 ---
 # <a name="password-writeback-overview"></a>パスワード ライトバックの概要
 
-パスワード ライトバックを使用すると、オンプレミスの Active Directory にパスワードを書き戻すように Azure AD を構成できます。 これにより、複雑なオンプレミスのセルフサービス パスワード リセット ソリューションを設定して管理する必要がなくなります。ユーザーはどこにいても、便利なクラウドベースの方法で自分のオンプレミスのパスワードをリセットできます。 パスワード ライトバックは [Azure Active Directory Connect](connect/active-directory-aadconnect.md) のコンポーネントです。Premium の [Azure Active Directory のエディション](active-directory-editions.md)の現在のサブスクライバーによって有効にされ、使用されます。
+パスワード ライトバックを使用すると、オンプレミスの Active Directory にパスワードを書き戻すように Azure AD を構成できます。 これにより、複雑なオンプレミスのセルフサービス パスワード リセット ソリューションを設定して管理する必要がなくなります。ユーザーはどこにいても、便利なクラウドベースの方法で自分のオンプレミスのパスワードをリセットできます。 パスワード ライトバックは [Azure Active Directory Connect](./connect/active-directory-aadconnect.md) のコンポーネントです。Premium の [Azure Active Directory のエディション](active-directory-editions.md)の現在のサブスクライバーによって有効にされ、使用されます。
 
 パスワード ライトバックには、次の機能が用意されています。
 
 * **ゼロ遅延フィードバック** - パスワード ライトバックは同期操作です。 ユーザーのパスワードがポリシーに合わなかった場合や、何らかの理由でリセットまたは変更できなかった場合は、すぐにユーザーに通知します。
 * **AD FS または他のフェデレーション技術によるユーザーのパスワードのリセット** - パスワード ライトバック使うと、フェデレーション ユーザー アカウントと Azure AD テナントが同期している限り、クラウドからオンプレミスの AD パスワードを管理できます。
-* **[パスワード ハッシュ同期](/connect/active-directory-aadconnectsync-implement-password-synchronization.md)によるユーザーのパスワードのリセット** - パスワード リセット サービスは、同期されているユーザー アカウントでパスワード ハッシュ同期が有効になっていることを検出すると、このアカウントのオンプレミスのパスワードとクラウドのパスワードの両方を同時にリセットします。
+* **[パスワード ハッシュ同期](./connect/active-directory-aadconnectsync-implement-password-synchronization.md)によるユーザーのパスワードのリセット** - パスワード リセット サービスは、同期されているユーザー アカウントでパスワード ハッシュ同期が有効になっていることを検出すると、このアカウントのオンプレミスのパスワードとクラウドのパスワードの両方を同時にリセットします。
 * **アクセス パネルと Office 365 からのパスワード変更のサポート** - フェデレーション ユーザーかパスワード同期されたユーザーが有効期限切れまたは有効期限切れでないパスワードを変更すると、これらのパスワードはローカル AD 環境に書き戻されます。
 * **管理者が Azure Portal でパスワードをリセットする際のパスワードのライトバックのサポート** - 管理者が [Azure Portal](https://portal.azure.com)でユーザーのパスワードをリセットするときに、そのユーザーがフェデレーションまたはパスワード同期されている場合は、ローカル AD で管理者が選択するパスワードも設定されます。 現時点で、これは Office の管理ポータルではサポートされていません。
 * **オンプレミスの AD パスワード ポリシーの強制** - ユーザーが自分のパスワードをリセットする場合、パスワードがオンプレミスの AD ポリシーに準拠していることを確認してから、そのディレクトリにコミットします。 このポリシーには、履歴、複雑さ、年齢、パスワード フィルター、ローカル AD で定義された他のパスワード制限が含まれます。
@@ -76,7 +76,7 @@ ms.lasthandoff: 05/03/2017
 
 ## <a name="scenarios-supported-for-password-writeback"></a>パスワード ライトバックでサポートされるシナリオ
 
-パスワード ライトバックを使用する場合、マイクロソフトでは [Azure AD Connect](/connect/active-directory-aadconnect-get-started-express.md) の自動更新機能を使用することをお勧めしています。
+パスワード ライトバックを使用する場合、マイクロソフトでは [Azure AD Connect](./connect/active-directory-aadconnect-get-started-express.md) の自動更新機能を使用することをお勧めしています。
 
 [DirSync と Azure AD Sync のサポート ライフサイクル](connect/active-directory-aadconnect-dirsync-deprecated.md)に関する追加情報
 
@@ -181,6 +181,6 @@ ms.lasthandoff: 05/03/2017
 * [**レポート**](active-directory-passwords-reporting.md) - ユーザーが SSPR 機能にアクセスしたかどうかや、アクセスしたタイミングと場所を検出します。
 * [**技術的詳細**](active-directory-passwords-how-it-works.md) - しくみを詳しく説明しています。
 * [**よく寄せられる質問**](active-directory-passwords-faq.md) - どのようにですか? なぜですか? 何ですか? どこですか? 誰がですか? いつですか? - ずっと確認したかった質問に対する回答
-* [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - SSPR の一般的な問題を解決する方法について説明します。
+* [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - SSPR の一般的な問題を解決する方法について説明しています
 
 

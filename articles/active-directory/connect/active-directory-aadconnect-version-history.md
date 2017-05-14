@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/08/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: fe01be4f57766a556ff3a27a0cbba0293675cac7
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 7983ffa4bf7cb63f985d1a8f14d6dd834e679cf5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/04/2017
 
 
 ---
@@ -49,7 +50,7 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 * 次の条件がすべて当てはまる場合、このバージョンの Azure AD Connect は正常にインストールされません。
    1. Azure AD Connect の DirSync インプレース アップグレードまたは新規インストールのどちらかを実行している。
    2. サーバー上の組み込みの管理者グループの名前が "Administrators" でないローカライズ版の Windows Server を使用している。
-   3. 独自の完全な SQL を提供するのではなく、Azure AD Connect と共にインストールされた既定の SQL Server 2012 Express LocalDB を使用している。 
+   3. 独自の完全な SQL を提供するのではなく、Azure AD Connect と共にインストールされた既定の SQL Server 2012 Express LocalDB を使用している。
 
 **修正された問題:**
 
@@ -310,7 +311,7 @@ AD FS の管理
 **新しいプレビュー機能:**
 
 * [Azure AD Connect Health for Sync](../connect-health/active-directory-aadconnect-health-sync.md)。
-* [Azure AD Domain Services](../active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords) のパスワード同期がサポートされました。
+* [Azure AD Domain Services](../active-directory-passwords-update-your-own-password.md) のパスワード同期がサポートされました。
 
 **新しくサポートされたシナリオ:**
 

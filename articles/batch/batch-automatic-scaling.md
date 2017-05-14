@@ -16,10 +16,10 @@ ms.date: 04/03/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
-ms.openlocfilehash: 0563f6c3aa4508ef2acac6b17dc85ecbf11bb154
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: f1156572dece1dd59d5a258b670c8fb4f3e3d0e6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/07/2017
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -35,8 +35,8 @@ ms.lasthandoff: 04/07/2017
 
 > [!IMPORTANT]
 > 各 Azure Batch アカウントは、処理に使用できる最大コア (コンピューティング ノード) 数に制限されています。 Batch サービスは、そのコア数の制限に達するまで、新しいノードを作成します。 Batch サービスによる計算ノードの数が、数式によって指定された目標数に到達しない場合があります。 アカウントのクォータを表示する方法および増やす方法については、「 [Azure Batch サービスのクォータと制限](batch-quota-limit.md) 」を参照してください。
-> 
-> 
+>
+>
 
 ## <a name="automatic-scaling-formulas"></a>自動スケールの数式
 自動スケーリングの数式は、ユーザーが定義する文字列値であり、1 つまたは複数のステートメントが含まれています。 自動スケールの数式は、プールの [autoScaleFormula][rest_autoscaleformula] 要素 (Batch REST) または [CloudPool.AutoScaleFormula][net_cloudpool_autoscaleformula] プロパティ (Batch .NET) に割り当てられます。 Batch サービスは、定義された数式を使用して、次の処理期間中のプール内の計算ノードの目標数を決定します。 この数式はサイズが 8 KB 以下の文字列で、最大 100 個のステートメントをセミコロンで区切って指定できます。また、改行やコメントを使用することもできます。
@@ -111,8 +111,8 @@ $TargetDedicated=min(maxNumberofVMs, pendingTaskSamples);
 
 > [!TIP]
 > 上記の読み取り専用のサービス定義変数は、それぞれに関連付けられたデータにアクセスするさまざまなメソッドを指定する " *オブジェクト* " です。 詳細については、「[サンプル データの取得](#getsampledata)」をご覧ください。
-> 
-> 
+>
+>
 
 ## <a name="types"></a>型
 次の **型** が数式でサポートされています。
@@ -122,7 +122,7 @@ $TargetDedicated=min(maxNumberofVMs, pendingTaskSamples);
 * doubleVecList
 * string
 * timestamp -- timestamp は次のメンバーを含む複合構造になっています。
-  
+
   * year
   * month (1 ～ 12)
   * day (1 ～ 31)
@@ -131,7 +131,7 @@ $TargetDedicated=min(maxNumberofVMs, pendingTaskSamples);
   * minute (00 ～ 59)
   * second (00 ～ 59)
 * timeinterval
-  
+
   * TimeInterval_Zero
   * TimeInterval_100ns
   * TimeInterval_Microsecond
@@ -254,8 +254,8 @@ $runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * Ti
 
 > [!IMPORTANT]
 > **自動スケールの数式では "*`GetSample(1)` にのみ依存する*" ことは避ける**ことを**強くお勧め**します。 理由は、`GetSample(1)` は基本的には "どれほど前に取得したのかに関係なく、最後に取得したサンプルを渡す" よう Batch サービスに指示するためです。 それは単一のサンプルであり、また以前のサンプルであるため、最近のタスクまたはリソースの状態を表す情報として十分でない可能性があります。 `GetSample(1)`を使用する場合は、より大きなステートメントの一部であり、数式が依存する唯一のデータ ポイントになっていないことを確認してください。
-> 
-> 
+>
+>
 
 ## <a name="metrics"></a>メトリック
 数式を定義するときは、**リソース**と**タスク**の両方のメトリックを使用できます。 プール内の専用ノードの目標数は、収集して評価したメトリック データに基づいて調整します。 各メトリックの詳細については、前述の「 [変数](#variables) 」をご覧ください。
@@ -368,12 +368,12 @@ pool.AutoScaleEvaluationInterval = TimeSpan.FromMinutes(30);
 pool.Commit();
 ```
 
-Batch REST API と .NET SDK のほか、その他の [Batch SDK](batch-apis-tools.md#batch-development-apis)、[Batch PowerShell コマンドレット](batch-powershell-cmdlets-get-started.md)、[Batch CLI](batch-cli-get-started.md) のいずれかを使用して自動スケールの操作を行うこともできます。
+Batch REST API と .NET SDK のほか、その他の [Batch SDK](batch-apis-tools.md#azure-accounts-for-batch-development)、[Batch PowerShell コマンドレット](batch-powershell-cmdlets-get-started.md)、[Batch CLI](batch-cli-get-started.md) のいずれかを使用して自動スケールの操作を行うこともできます。
 
 > [!IMPORTANT]
 > 自動スケール対応のプールを作成する場合は、`targetDedicated` パラメーターを指定**しない**ようにしてください。 また、自動スケール対応のプールのサイズを手動で変更する場合 ([BatchClient.PoolOperations.ResizePool][net_poolops_resizepool] など)、最初にプールで自動スケールを**無効**にしてから、プールのサイズを変更する必要があります。
-> 
-> 
+>
+>
 
 ### <a name="automatic-scaling-interval"></a>自動スケールの間隔
 既定では、Batch サービスは自動スケールの数式に従って **15 分**ごとにプールのサイズを調整します。 ただし、この間隔は、次のプール プロパティを使用して構成することができます。
@@ -385,8 +385,8 @@ Batch REST API と .NET SDK のほか、その他の [Batch SDK](batch-apis-tool
 
 > [!NOTE]
 > 現行の自動スケール機能は、1 分以内に起こった変化に対応するというよりは、ワークロードを実行する過程でプールのサイズを少しずつ調整することを意図しています。
-> 
-> 
+>
+>
 
 ## <a name="enable-autoscaling-on-an-existing-pool"></a>既存のプールでの自動スケールの有効化
 *targetDedicated* パラメーターを使用して所定のコンピューティング ノード数でプールを既に作成してある場合、引き続きプールの自動スケールを有効にできます。 各 Batch SDK には、"自動スケールを有効にする" 操作が用意されています。たとえば、次のものがあります。
@@ -398,14 +398,14 @@ Batch REST API と .NET SDK のほか、その他の [Batch SDK](batch-apis-tool
 
 * "自動スケールを有効にする" 要求を発行する時点でプールの自動スケールが**無効**になっている場合、要求の発行時に有効な自動スケールの数式を指定する "*必要*" があります。 "*必要に応じて*"、自動スケール評価の間隔を指定できます。 指定しない場合、間隔は既定の値である 15 分になります。
 * プールの自動スケールが現在**有効**になっている場合、自動スケールの数式または評価の間隔を指定できます。両方とも指定することも可能です。 これらのプロパティを両方とも省略することはできません。
-  
+
   * 自動スケール評価の間隔を新しく指定すると、既存の評価スケジュールが停止し、新しいスケジュールが開始します。 新しいスケジュールの開始時刻は、"自動スケールを有効にする" 要求を発行した時間です。
   * 自動スケールの数式と評価の間隔のいずれかを省略すると、引き続き Batch サービスではその設定の現在の値が使用されます。
 
 > [!NOTE]
 > プールの作成時に値を *targetDedicated* パラメーターに指定した場合、自動スケールの数式の評価時に無視されます。
-> 
-> 
+>
+>
 
 次の C# コード スニペットでは、[Batch .NET][net_api] ライブラリを使用して、既存のプールの自動スケールを有効にします。
 
@@ -444,10 +444,10 @@ myBatchClient.PoolOperations.EnableAutoScale(
 自動スケールの数式を評価するにはまず、**有効な数式**を使用して、プールの**自動スケールを有効**にする必要があります。 自動スケールをまだ有効にしていないプールで数式をテストしたい場合は、初めて自動スケールを有効にするときに、1 行の数式 `$TargetDedicated = 0` を使用できます。 その後、次のいずれかを使用してテスト対象の数式を評価します。
 
 * [BatchClient.PoolOperations.EvaluateAutoScale](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.evaluateautoscale.aspx) または [EvaluateAutoScaleAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.evaluateautoscaleasync.aspx)
-  
+
     これらの Batch .NET メソッドでは、既存のプールの ID のほか、評価する自動スケールの数式が含まれた文字列が必要になります。 評価の結果は、返される [AutoScaleEvaluation](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.autoscaleevaluation.aspx) インスタンスに含まれます。
 * [自動スケールの数式の評価](https://msdn.microsoft.com/library/azure/dn820183.aspx)
-  
+
     この REST API 要求では、URI にプール ID、要求本文の *autoScaleFormula* 要素に自動スケールの数式を指定します。 操作の応答には、数式に関連する可能性があるすべてのエラー情報が含まれています。
 
 この [Batch .NET][net_api] コード スニペットでは、[CloudPool][net_cloudpool] に適用する前に数式を評価します。 プールで自動スケールが有効になっていない場合、先に有効にします。

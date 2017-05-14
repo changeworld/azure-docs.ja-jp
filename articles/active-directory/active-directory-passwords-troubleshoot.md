@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/26/2017
 ms.author: joflore
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 90846b3bd83b65a3fdfef2a1c8183b7143b5b247
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 4dae8b87904fff2f2f8665d235bf790fb1e073d0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 05/03/2017
 | --- | --- |
 | Azure ポータルで Azure AD の下に **[パスワードのリセット]** セクションが表示されません | これは、この操作を実行する管理者に割り当てられる Azure AD Premium または Azure AD Basic のライセンスを持っていない場合に発生します。 <br> この問題は、[ライセンスの割り当て、検証、および問題の解決](active-directory-licensing-group-assignment-azure-portal.md#step-1-assign-the-required-licenses)に関する記事に従って、対象の管理者アカウントにライセンスを割り当てることで解決する場合があります。 |
 | 特定の構成オプションが表示されません | UI の多くの要素は、必要になるまで表示されません。 表示する必要のあるすべてのオプションを有効にしてください。 |
-| **[オンプレミスの統合]** タブが表示されません | このオプションは、Azure AD Connect をダウンロードし、パスワード ライトバックを構成した場合にのみ表示されます。 このトピックについて詳しくは、「[簡単設定を使用した Azure AD Connect の開始](/connect/active-directory-aadconnect-get-started-express.md)」をご覧ください。 |
+| **[オンプレミスの統合]** タブが表示されません | このオプションは、Azure AD Connect をダウンロードし、パスワード ライトバックを構成した場合にのみ表示されます。 このトピックについて詳しくは、「[簡単設定を使用した Azure AD Connect の開始](./connect/active-directory-aadconnect-get-started-express.md)」をご覧ください。 |
 
 ## <a name="troubleshoot-password-reset-reporting"></a>パスワード リセット レポートのトラブルシューティング
 
