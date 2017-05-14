@@ -11,15 +11,16 @@ keywords: "デプロイのエラー、Azure へのデプロイ、Azure へのデ
 ms.assetid: c002a9be-4de5-4963-bd14-b54aa3d8fa59
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: support-article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: bfbb3356454b9ef8b1834d03e7b76de9860a12c9
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 7dfd3f7f0bebd0dbe20ffc9952d83cb8b4fcfe3e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -285,7 +286,7 @@ Message=Cannot find ServerFarm with name exampleplan.
 
 依存関係に関するエラーのトラブルシューティングのヒントについて詳しくは、「[デプロイの順序の確認](#check-deployment-sequence)」をご覧ください。
 
-また、このエラーは、そのリソースがデプロイ先のリソース グループとは異なるリソース グループに存在する場合にも表示されます。 この場合は、[resourceId 関数](resource-group-template-functions.md#resourceid)を使用して、リソースの完全修飾名を取得します。
+また、このエラーは、そのリソースがデプロイ先のリソース グループとは異なるリソース グループに存在する場合にも表示されます。 この場合は、[resourceId 関数](resource-group-template-functions-resource.md#resourceid)を使用して、リソースの完全修飾名を取得します。
 
 ```json
 "properties": {
@@ -294,7 +295,7 @@ Message=Cannot find ServerFarm with name exampleplan.
 }
 ```
 
-解決できないリソースで [reference](resource-group-template-functions.md#reference) または [listKeys](resource-group-template-functions.md#listkeys) 関数を使用しようとした場合、次のエラーが発生します。
+解決できないリソースで [reference](resource-group-template-functions-resource.md#reference) または [listKeys](resource-group-template-functions-resource.md#listkeys) 関数を使用しようとした場合、次のエラーが発生します。
 
 ```
 Code=ResourceNotFound;
@@ -339,7 +340,7 @@ Code=StorageAccountAlreadyTaken
 Message=The storage account named mystorage is already taken.
 ```
 
-一意の名前を作成するには、使用している命名規則に、 [uniqueString](resource-group-template-functions.md#uniquestring) 関数の結果を連結します。
+一意の名前を作成するには、使用している命名規則に、 [uniqueString](resource-group-template-functions-string.md#uniquestring) 関数の結果を連結します。
 
 ```json
 "name": "[concat('storage', uniqueString(resourceGroup().id))]",
@@ -349,7 +350,7 @@ Message=The storage account named mystorage is already taken.
 ストレージ アカウントをデプロイするとき、ご利用のサブスクリプションに既に存在するストレージ アカウントと同じ名前を使用したうえで別の場所にデプロイすると、ストレージ アカウントが既に別の場所に存在しているというエラーが表示されます。 既存のストレージ アカウントを削除するか、既存のストレージ アカウントと同じ場所を指定してください。
 
 ### <a name="accountnameinvalid"></a>AccountNameInvalid
-**AccountNameInvalid** エラーは、禁止文字を含むストレージ アカウント名を付けようとしたときに発生します。 ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用する必要があります。 [uniqueString](resource-group-template-functions.md#uniquestring) 関数は 13 文字を返します。 **uniqueString** の結果にプレフィックスを連結する場合は、11 文字以下のプレフィックスを指定してください。
+**AccountNameInvalid** エラーは、禁止文字を含むストレージ アカウント名を付けようとしたときに発生します。 ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用する必要があります。 [uniqueString](resource-group-template-functions-string.md#uniquestring) 関数は 13 文字を返します。 **uniqueString** の結果にプレフィックスを連結する場合は、11 文字以下のプレフィックスを指定してください。
 
 ### <a name="badrequest"></a>BadRequest
 
@@ -626,7 +627,7 @@ az policy definition show --name regionPolicyAssignment
 
 リソースが予期しない順序でデプロイされると、多数のデプロイ エラーが発生します。 これらのエラーは、依存関係が正しく設定されていない場合に発生します。 必要な依存関係がないと、あるリソースが別のリソースの値を使用しようとしても、そのリソースがまだ存在しません。 リソースが見つからなかったことを示すエラー メッセージが表示されます。 リソースのデプロイ時間はそれぞれ異なるため、この種のエラーは断続的に発生する可能性があります。 たとえば、最初のリソースのデプロイの試行は成功しました。これは、必要なリソースがランダムで時間内に完了したためです。 しかし、2 回目の試行は失敗しました。これは、必要なリソースが時間内に完了しなかったためです。 
 
-また、不要な依存関係を設定するのは望ましくありません。 不要な依存関係があると、相互に依存していないリソースを並行してデプロイすることを妨げるため、デプロイ時間が長くなります。 さらに、循環依存関係が作成されてデプロイがブロックされる恐れがあります。 あるリソースが同じテンプレートにデプロイされている場合、[参照](resource-group-template-functions.md#reference)関数はパラメーターとして指定するそのリソースに対する暗黙的な依存関係を作成します。 このため、**dependsOn** プロパティで指定したよりも多くの依存関係が作成されることがあります。 [resourceId](resource-group-template-functions.md#resourceid) 関数は暗黙的な依存関係を作成しません。また、リソースの存在を検証することもしません。
+また、不要な依存関係を設定するのは望ましくありません。 不要な依存関係があると、相互に依存していないリソースを並行してデプロイすることを妨げるため、デプロイ時間が長くなります。 さらに、循環依存関係が作成されてデプロイがブロックされる恐れがあります。 あるリソースが同じテンプレートにデプロイされている場合、[参照](resource-group-template-functions-resource.md#reference)関数はパラメーターとして指定するそのリソースに対する暗黙的な依存関係を作成します。 このため、**dependsOn** プロパティで指定したよりも多くの依存関係が作成されることがあります。 [resourceId](resource-group-template-functions-resource.md#resourceid) 関数は暗黙的な依存関係を作成しません。また、リソースの存在を検証することもしません。
 
 依存関係の問題が発生した場合は、リソースのデプロイ順序を把握する必要があります。 デプロイ操作の順序を確認するには、次の手順に従います。
 
