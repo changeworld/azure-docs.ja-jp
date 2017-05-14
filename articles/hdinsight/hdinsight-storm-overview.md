@@ -1,4 +1,4 @@
-﻿---
+---
 title: "HDInsight での Apache Storm の概要 | Microsoft Docs"
 description: "HDInsight の Apache Storm について紹介しています。"
 services: hdinsight
@@ -16,9 +16,10 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/31/2017
 ms.author: larryfr
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
 ms.openlocfilehash: 73e524bf9e7d51cee841a3c5599ab33aa31cbc37
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/06/2017
 
 
@@ -63,7 +64,7 @@ HDInsight における Storm の主なメリットは次のとおりです。
 
     * Azure SQL Database
 
-    * Azure Storage (Azure Storage)
+    * Azure Storage
 
     * Azure DocumentDB
 
