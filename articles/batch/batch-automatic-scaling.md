@@ -15,9 +15,10 @@ ms.workload: multiple
 ms.date: 04/03/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
 ms.openlocfilehash: 0563f6c3aa4508ef2acac6b17dc85ecbf11bb154
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/07/2017
 
 
@@ -38,7 +39,7 @@ ms.lasthandoff: 04/07/2017
 > 
 
 ## <a name="automatic-scaling-formulas"></a>自動スケールの数式
-自動スケーリングの数式は、ユーザーが定義する文字列値であり、1 つまたは複数のステートメントが含まれています。 自動スケールの数式は、プールの [autoScaleFormula][ rest_autoscaleformula] 要素 (Batch REST) または [CloudPool.AutoScaleFormula][net_cloudpool_autoscaleformula] プロパティ (Batch .NET) に割り当てられます。 Batch サービスは、定義された数式を使用して、次の処理期間中のプール内の計算ノードの目標数を決定します。 この数式はサイズが 8 KB 以下の文字列で、最大 100 個のステートメントをセミコロンで区切って指定できます。また、改行やコメントを使用することもできます。
+自動スケーリングの数式は、ユーザーが定義する文字列値であり、1 つまたは複数のステートメントが含まれています。 自動スケールの数式は、プールの [autoScaleFormula][rest_autoscaleformula] 要素 (Batch REST) または [CloudPool.AutoScaleFormula][net_cloudpool_autoscaleformula] プロパティ (Batch .NET) に割り当てられます。 Batch サービスは、定義された数式を使用して、次の処理期間中のプール内の計算ノードの目標数を決定します。 この数式はサイズが 8 KB 以下の文字列で、最大 100 個のステートメントをセミコロンで区切って指定できます。また、改行やコメントを使用することもできます。
 
 自動スケールの数式は、Batch 自動スケール "言語" を使用することと考えることができます。 数式は自由形式のステートメントになっていて、サービス定義の変数 (Batch サービスによって定義された変数) とユーザー定義の変数 (ユーザーによって定義された変数) の両方を含めることができます。 組み込みの型、演算子、関数を使用して、これらの値に対する各種の操作を実行できます。 たとえば、ステートメントは次の形式を使用する場合があります。
 
