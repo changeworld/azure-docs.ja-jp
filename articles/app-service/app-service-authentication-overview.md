@@ -14,9 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: mahender
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b75f7aa757679a29a42cdfc04799873ee30bab2e
 ms.openlocfilehash: e89ba5613c615c41af93e8f63b3703da8395095c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -24,7 +26,7 @@ ms.openlocfilehash: e89ba5613c615c41af93e8f63b3703da8395095c
 ## <a name="what-is-app-service-authentication--authorization"></a>App Service の認証および承認とは
 App Service の認証および承認は、アプリケーションで、アプリのバックエンドでコードを変更する必要がないように、ユーザーをサインインさせる方法を提供する機能です。 これにより、アプリケーションの保護が容易になり、またユーザーごとのデータにも対応できるようになります。
 
-App Service では、サード パーティの ID プロバイダーがアカウントを格納しユーザーを認証する、フェデレーション ID を使用しています。 アプリケーションは、プロバイダーの ID 情報を、自身には格納する必要がないように使用します。 App Service では、標準で Azure Active Directory、Facebook、Google、Microsoft アカウント、および Twitter の&5; つの ID プロバイダーをサポートしています。 アプリで使用可能な ID プロバイダーには制限がないため、ユーザーのサインイン方法に合わせたオプションを提供できます。 組み込みのサポートを拡張するために、他の ID プロバイダーや[独自のカスタム ID ソリューション][custom-auth]を統合できます。
+App Service では、サード パーティの ID プロバイダーがアカウントを格納しユーザーを認証する、フェデレーション ID を使用しています。 アプリケーションは、プロバイダーの ID 情報を、自身には格納する必要がないように使用します。 App Service では、標準で Azure Active Directory、Facebook、Google、Microsoft アカウント、および Twitter の 5 つの ID プロバイダーをサポートしています。 アプリで使用可能な ID プロバイダーには制限がないため、ユーザーのサインイン方法に合わせたオプションを提供できます。 組み込みのサポートを拡張するために、他の ID プロバイダーや[独自のカスタム ID ソリューション][custom-auth]を統合できます。
 
 すぐに開始する場合は、以下のチュートリアルのいずれかを参照してください。
 
@@ -42,7 +44,7 @@ Web ブラウザーを使用してアプリケーションとやり取りする�
 App Service は、アプリケーションが発行したすべての Cookie とトークンを検証して、ユーザーを認証します。 アプリケーションにアクセスできるユーザーを制限するには、この記事で後述する [認証](#authorization) に関するセクションを参照してください。
 
 ### <a name="mobile-authentication-with-a-provider-sdk"></a>プロバイダー SDK を使用したモバイル認証
-バックエンドですべてを構成したら、App Service にサインインできるようにモバイル クライアントを変更できます。 これには&2; つの方法はあります。
+バックエンドですべてを構成したら、App Service にサインインできるようにモバイル クライアントを変更できます。 これには 2 つの方法はあります。
 
 * 特定の ID プロバイダーが発行する SDK を使用して、ID を確立し、App Service にアクセスできるようにします。
 * 1 行のコードを使用して、Mobile Apps クライアント SDK でユーザーがサインインできるようにします。
@@ -73,9 +75,9 @@ SDK プロバイダーを設定しない場合は、Azure App Service の Mobile
 
 App Service 認証を使用して、サービス間のシナリオを処理する場合、クライアント証明書または基本認証を利用することができます。 Azure のクライアント証明書の詳細については、「 [Web Apps の TLS 相互認証を構成する方法](../app-service-web/app-service-web-configure-tls-mutual-auth.md)」を参照してください。 ASP.NET での基本認証の詳細については、「 [Authentication Filters in ASP.NET Web API 2 (ASP.NET Web API 2 の認証フィルター)](http://www.asp.net/web-api/overview/security/authentication-filters)」を参照してください。
 
-App Service ロジック アプリから API アプリへのサービス アカウント認証は特殊なケースであり、「 [App Service でホストされたカスタム API のロジック アプリでの使用](../logic-apps/logic-apps-custom-hosted-api.md)」で説明されています。
+App Service ロジック アプリから API アプリへのサービス アカウント認証は特殊なケースであり、 [App Service でホストされたカスタム API の Logic Apps での使用に関するページ](../logic-apps/logic-apps-custom-hosted-api.md) で説明されています。
 
-## <a name="a-nameauthorizationahow-authorization-works-in-app-service"></a><a name="authorization"></a>App Service の認証のしくみ
+## <a name="authorization"></a>App Service の認証のしくみ
 アプリケーションにアクセスできる要求を完全に制御することができます。 App Service の認証/承認は、次の動作のいずれかになるように構成できます。
 
 * 認証済みの要求のみアプリケーションへの到達を許可する。
@@ -90,7 +92,7 @@ App Service ロジック アプリから API アプリへのサービス アカ�
   
     この場合、認証/承認の機能は無効になります。 認証と承認に伴う一切の処理をアプリケーション コードに委ねることになります。
 
-前述の動作は、Azure ポータルの [ **要求が認証されない場合に実行するアクション** ] オプションによって制御します。 **[*<プロバイダー名>* でのログイン]** を選択した場合、すべての要求が認証される必要があります。**[要求の許可 (操作不要)]** では、認証に関する決定がコードに委ねられますが、認証情報も提供されます。 コードですべてを処理する場合は、認証/承認の機能を無効にすることができます。
+前述の動作は、Azure ポータルの [ **要求が認証されない場合に実行するアクション** ] オプションによって制御します。 **[*<プロバイダー名>* でのログイン] **を選択した場合、すべての要求が認証される必要があります。**[要求の許可 (操作不要)]** では、認証に関する決定がコードに委ねられますが、認証情報も提供されます。 コードですべてを処理する場合は、認証/承認の機能を無効にすることができます。
 
 ## <a name="working-with-user-identities-in-your-application"></a>アプリケーションでのユーザー ID の使用
 App Service では、特殊なヘッダーを使用して、アプリケーションにユーザー情報の一部を渡します。 外部要求ではこれらのヘッダーが禁じられており、App Service の認証/承認によって設定された場合にのみ、使用できます。 いくつかのヘッダーの例は次のとおりです。
@@ -180,9 +182,4 @@ Google のクライアント主導のフローを使用する場合は、次の�
 [ADAL-Android]: ../app-service-mobile/app-service-mobile-android-how-to-use-client-library.md#adal
 [ADAL-iOS]: ../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#adal
 [ADAL-dotnet]: ../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#adal
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 
