@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/21/2017
+ms.date: 04/26/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 294a7b7de5c0a95f9f0784f315f202ae2c062e57
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: b3eebdd714b38ffd9432404944829d05ef3c3dc6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -25,7 +26,7 @@ ms.lasthandoff: 04/22/2017
 
 ## <a name="what-is-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオンとは
 
-Azure Active Directory シームレス シングル サインオン (Azure AD シームレス SSO) は、企業ネットワークに接続された会社のコンピューターでサインインするユーザーに真のシングル サインオンを提供します。 この機能を有効にすると、ユーザーは Azure AD にサインインするためにパスワードを入力する必要はなくなります。また、ほとんどの場合、ユーザー名を入力する必要もありません。 この機能により、追加のオンプレミス コンポーネントを必要とせずに、ユーザーはクラウド ベースのサービスに簡単にアクセスできるようになります。
+Azure Active Directory シームレス シングル サインオン (Azure AD シームレス SSO) は、企業ネットワークに接続された会社のデスクトップでサインインするユーザーに真のシングル サインオンを提供します。 この機能を有効にすると、ユーザーは Azure AD にサインインするためにパスワードを入力する必要はなくなります。また、ほとんどの場合、ユーザー名を入力する必要もありません。 この機能により、追加のオンプレミス コンポーネントを必要とせずに、ユーザーはクラウド ベースのサービスに簡単にアクセスできるようになります。
 
 シームレス SSO は、Azure AD Connect を使用して有効にすることができ、[パスワード同期](active-directory-aadconnectsync-implement-password-synchronization.md)または[パススルー認証](active-directory-aadconnect-pass-through-authentication.md)と組み合わせることができます。
 
@@ -48,31 +49,37 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 >[!NOTE]
 >Azure AD シームレス SSO は現在プレビュー段階です。 これは無料の機能であり、この機能を使用するために Azure AD の有料エディションは不要です。
 
-シームレス SSO は、Web ブラウザー ベースのクライアントと、Kerberos 認証に対応したデスクトップ (Windows ベースのコンピューターなど) での[最新の認証](https://aka.ms/modernauthga)をサポートする Office クライアントでサポートされています。 次の表は、オペレーティング システム別のブラウザー ベースのクライアントの詳細を示しています。
+シームレス SSO は、Web ブラウザー ベースのクライアントと、Kerberos 認証に対応したデスクトップ (Windows ベースのデスクトップなど) での[最新の認証](https://aka.ms/modernauthga)をサポートする Office クライアントでサポートされています。 次の表は、オペレーティング システム別のブラウザー ベースのクライアントの詳細を示しています。
 
-| OS\ブラウザー |Internet Explorer|Chrome|Firefox|Edge
+| OS\ブラウザー |Internet Explorer|Google Chrome|Mozilla Firefox|Edge
 | --- | --- |--- | --- | --- |
-|Windows 10|はい|はい|はい*|なし
-|Windows 8.1|はい|はい|はい*|該当なし
-|Windows 8|はい|はい|はい*|該当なし
-|Windows 7|はい|はい|はい*|該当なし
-|Mac|該当なし|いいえ|いいえ|該当なし
+|Windows 10|はい|はい|はい\*|いいえ
+|Windows 8.1|はい|はい|はい\*|該当なし
+|Windows 8|はい|はい|はい\*|該当なし
+|Windows 7|はい|はい|はい\*|該当なし 
+|Mac OS X|該当なし|はい\*|はい\*|該当なし
 
 \*追加構成が必要です。
 
 >[!NOTE]
 >Windows 10 の場合、Azure AD で最適なエクスペリエンスを実現するために、[Azure AD Join](../active-directory-azureadjoin-overview.md) を使用することをお勧めします。
 
+Azure AD サインイン要求に `domain_hint` または `login_hint` パラメーターが含まれている場合 (テナントのアプリケーションによって開始された)、シームレス SSO でそれが使われるため、ユーザーはユーザー名とパスワードの入力が不要になります。
+
 ## <a name="how-does-azure-ad-seamless-sso-work"></a>Azure AD シームレス SSO のしくみ
 
 [後述](#how-to-enable-azure-ad-seamless-sso?)するように、シームレス SSO は Azure AD Connect で有効にすることができます。 シームレス SSO を有効にすると、オンプレミス Active Directory (AD) に AZUREADSSOACCT という名前のコンピューター アカウントが作成され、Kerberos の復号化キーが Azure AD と安全に共有されます。 また、Azure AD のサインイン時に使用される 2 つのサービス URL を表す、2 つの Kerberos サービス プリンシパル名 (SPN) も作成されます。
+
+>[!NOTE]
+> (Azure AD Connect を使用して) Azure AD と同期する各 AD フォレストとシームレス SSO を有効にするユーザーに、コンピューター アカウントと Kerberos SPN を作成する必要があります。 AD フォレストに、コンピューター アカウントの組織単位 (OU) がある場合は、シームレス SSO 機能を有効にした後に、AZUREADSSOACCT コンピューター アカウントを OU に移動して、それが削除されることなく、他のコンピューター アカウントと同じように管理されるようにします。
 
 このセットアップが完了すると、Azure AD サインインは、統合 Windows 認証 (IWA) を使用するその他のサインインと同様に機能します。 シームレス SSO プロセスは次のように機能します。
 
 ユーザーが、Azure AD によって保護されたクラウド ベースのリソース (SharePoint Online など) にアクセスしようとしているとします。 SharePoint Online は、サインインのためにユーザーのブラウザーを Azure AD にリダイレクトします。
 
-- Azure AD に対するサインイン要求に、`domain_hint` パラメーター (Azure AD テナント (例: contoso.onmicrosoft.com) を識別) または `login_hint` パラメーター (ユーザーのユーザー名 (例: user@contoso.onmicrosoft.com 、user@contoso.com) を識別) が含まれている場合は、次の手順が発生します。
-- Azure AD サインイン要求にどちらのパラメーターも含まれていない場合、ユーザーはユーザー名の入力を求められ、その後に次の手順が発生します。
+Azure AD に対するサインイン要求に、`domain_hint` パラメーター (Azure AD テナント (例: contoso.onmicrosoft.com) を識別) または `login_hint` パラメーター (ユーザーのユーザー名 (例: user@contoso.onmicrosoft.com、user@contoso.com) を識別) が含まれている場合は、手順 1 ～ 5 が発生します。
+
+要求にどちらのパラメーターも含まれていない場合、ユーザーは Azure AD サインイン ページでユーザー名の入力を求められます。 ユーザーがユーザー名フィールドの外部をタップするか、または [続行] ボタンをクリックした後にのみ手順 1 ～ 5 が発生します。
 
 1. Azure AD は、Kerberos チケットを提供するよう、401 認証エラーを通じてクライアントに要求します。
 2. クライアントは、Active Directory から (以前にセットアップされたコンピューター アカウントで表される) Azure AD 用のチケットを要求します。
@@ -80,9 +87,9 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 4. クライアントは、Active Directory から取得した Kerberos チケットを Azure AD に送信します。
 5. Azure AD は、以前の共有キーを使用して Kerberos チケットを復号化します。 正常に復号化されると、Azure AD はトークンを返すか、リソースで必要とされる多要素認証などの他の検査を実行するようユーザーに要求します。
 
-シームレス SSO は便宜的な機能であり、何らかの理由で失敗しても、ユーザーがこれまでと同様にサインイン ページでパスワードを入力すれば済みます。
+シームレス SSO は便宜的な機能であり、何らかの理由で失敗した場合、ユーザーのサインイン エクスペリエンスはその通常の動作に戻ります。つまり、ユーザーはサインイン ページでパスワードを入力する必要があります。
 
-このプロセス全体を次の図に示します。
+このプロセスを次の図にも示します。
 
 ![シームレス シングル サインオン](./media/active-directory-aadconnect-sso/sso2.png)
 
@@ -96,6 +103,7 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 
 - Azure AD Connect サーバーが `*.msappproxy.net` と通信できる。
 - Azure AD Connect (バージョン 1.1.484.0 以上) が、Azure AD に対する HTTPS 要求をポート 443 経由で実行できる。 これは機能の有効化にのみ使用されます。実際のユーザー サインインには使用されません。
+- Azure AD コネクタが [Azure データ センターの IP 範囲](https://www.microsoft.com/en-us/download/details.aspx?id=41653)に対して直接 IP 接続できる。 ここでも、これは機能の有効化にのみ使用されます。
 
 >[!NOTE]
 > 古いバージョンの Azure AD Connect (1.1.484.0 より前) は、ポート 9090 経由で Azure AD と通信できる必要があります。
@@ -118,9 +126,15 @@ Azure AD Connect を既にインストールしている場合は、[高速イ�
 
 ## <a name="rolling-the-feature-out-to-your-users"></a>ユーザーへの機能のロールアウト
 
+シームレス SSO 機能をユーザーに展開するには、Active Directory のグループ ポリシーによって、2 つの Azure AD URL (https://autologon.microsoftazuread-sso.com および https://aadg.windows.net.nsatc.net) をユーザーのイントラネット ゾーン設定に追加する必要があります。 これは Internet Explorer と Google Chrome (Internet Explorer と同じ信頼済みサイト URL のセットを共有する場合) でのみ機能することに注意してください。 Mozilla Firefox については別途構成する必要があります。
+
+### <a name="why-do-you-need-this"></a>これが必要な理由
+
 既定では、クラウド エンドポイントの URL がブラウザーのイントラネット ゾーンの一部として定義されていない場合、ブラウザーは Kerberos チケットをクラウド エンドポイントに送信しません。 ブラウザーは、URL から適切なゾーン (インターネットまたはイントラネット) を自動的に判断します。 たとえば、http://contoso/ はイントラネット ゾーンにマップされ、http://intranet.contoso.com/ はインターネット ゾーンにマップされます (URL にピリオドが含まれているため)。
 
-Azure AD でのシームレス SSO に使用するサービス URL にはピリオドが含まれるため、各ユーザーのブラウザーのイントラネット ゾーン設定にこれらの URL を明示的に追加する必要があります。 これにより、ブラウザーは現在ログインしているユーザーの Kerberos チケットを Azure AD に自動的に送信するようになります。 URL の追加はコンピューターごとに手動で行うこともできますが、すべてのユーザーを対象に必要な URL をイントラネット ゾーンに追加する最も簡単な方法は、Active Directory でグループ ポリシーを作成することです。
+シームレス SSO に使用する Azure AD URL にはピリオドが含まれるため、各ブラウザーのイントラネット ゾーン設定にこれらの URL を明示的に追加する必要があります。 これにより、ブラウザーは現在ログインしているユーザーの Kerberos チケットを Azure AD に自動的に送信するようになります。 URL の追加はデスクトップごとに手動で行うこともできますが、すべてのユーザーを対象に必要な URL をイントラネット ゾーンに追加する最も簡単な方法は、Active Directory でグループ ポリシーを作成することです。
+
+### <a name="detailed-steps"></a>詳細な手順
 
 1. グループ ポリシー管理ツールを開きます。
 2. **既定のドメイン ポリシー**など、すべてのユーザーに適用されるグループ ポリシーを編集します。
@@ -134,7 +148,9 @@ Azure AD でのシームレス SSO に使用するサービス URL にはピリ�
         Data: 1  
 5. **[OK]** をクリックし、もう一度 **[OK]** をクリックします。
 
-次のようになります。![シングル サインオン](./media/active-directory-aadconnect-sso/sso7.png)
+次のようになります。
+
+![シングル サインオン](./media/active-directory-aadconnect-sso/sso7.png)
 
 >[!NOTE]
 >既定では、Chrome は Internet Explorer と同じ信頼済みサイトの URL セットを使用します。 Chrome に別の設定を構成している場合は、それらの設定を個別に更新する必要があります。
@@ -147,10 +163,11 @@ Azure AD でのシームレス SSO に使用するサービス URL にはピリ�
 2. 両方のサービス URL (https://autologon.microsoftazuread-sso.com と https://aadg.windows.net.nsatc.net) がイントラネット ゾーン設定の一部として定義されていることを確認します。
 3. 会社のデスクトップが AD ドメインに参加していることを確認します。
 4. ユーザーが AD ドメイン アカウントを使用してデスクトップにログオンしていることを確認します。
-5. デスクトップが企業ネットワークに接続されていることを確認します。
-6. デスクトップの時刻が Active Directory の時刻およびドメイン コントローラーの時刻と同期されており、時刻のずれが 5 分以内であることを確認します。
-7. デスクトップから既存の Kerberos チケットを消去します。 これを行うには、コマンド プロンプトで **klist purge** コマンドを実行します。
-8. 潜在的な問題の特定に役立つ、ブラウザーのコンソール ログ ([開発者ツール] の下) を確認します。
+5. ユーザーのアカウントが、シームレス SSO が設定されている AD フォレストからのものであることを確認します。
+6. デスクトップが企業ネットワークに接続されていることを確認します。
+7. デスクトップの時刻が Active Directory の時刻およびドメイン コントローラーの時刻と同期されており、時刻のずれが 5 分以内であることを確認します。
+8. デスクトップから既存の Kerberos チケットを消去します。 これを行うには、コマンド プロンプトで **klist purge** コマンドを実行します。
+9. 潜在的な問題の特定に役立つ、ブラウザーのコンソール ログ ([開発者ツール] の下) を確認します。
 
 ### <a name="domain-controller-logs"></a>ドメイン コントローラーのログ
 
