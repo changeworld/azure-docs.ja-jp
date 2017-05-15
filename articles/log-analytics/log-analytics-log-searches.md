@@ -15,9 +15,10 @@ ms.topic: article
 ms.date: 04/12/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
 ms.openlocfilehash: d4935af0647f0629cca327a7e87c29f1252af382
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/28/2017
 
 

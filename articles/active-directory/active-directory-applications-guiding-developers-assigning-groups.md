@@ -15,9 +15,11 @@ ms.topic: article
 ms.date: 02/27/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+robots: noindex
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 015cc28903bfd366c653a51b0f73512bf8b578ea
 ms.openlocfilehash: f58c051bc25544d2811738b8ade483c82f3901b2
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/28/2017
 
 ---
