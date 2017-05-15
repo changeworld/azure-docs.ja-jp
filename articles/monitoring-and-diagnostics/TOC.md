@@ -1,5 +1,6 @@
 # 概要
-## [Azure Monitor の概要](monitoring-overview.md)
+## [Azure の監視ツール](monitoring-overview.md)
+## [Azure Monitor](monitoring-overview-azure-monitor.md)
 ## [メトリック](monitoring-overview-metrics.md)
 ## [アラート](monitoring-overview-alerts.md)
 ## [Autoscale](monitoring-overview-autoscale.md)
@@ -7,12 +8,14 @@
 ## [アクション グループ](monitoring-action-groups.md)
 ## [診断ログ](monitoring-overview-of-diagnostic-logs.md)
 ## [パートナー統合](monitoring-partners.md)
-## [Azure 診断](azure-diagnostics.md)
+## [Azure 診断拡張機能](azure-diagnostics.md)
 
 
 # 作業の開始
 ## [Azure Monitor を使ってみる](monitoring-get-started.md)
+## [自動スケールの概要](monitoring-autoscale-get-started.md)
 ## [ロールのアクセス許可とセキュリティ](monitoring-roles-permissions-security.md)
+
 
 # 方法
 ## アラートの使用
@@ -24,6 +27,8 @@
 ## 自動スケールの使用
 ### [自動スケールのベスト プラクティス](insights-autoscale-best-practices.md)
 ### [自動スケールの一般的なメトリック](insights-autoscale-common-metrics.md)
+### [自動スケールの一般的なパターン](monitoring-autoscale-common-scale-patterns.md)
+### [カスタム メトリックを使用した自動スケール](monitoring-autoscale-scale-by-custom-metric.md)
 ### [Resource Manager テンプレートを使用した VM Scale Sets の自動スケール](insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [仮想マシン スケール セットでのマシンの自動スケール](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
 ### [自動スケールで webhook と電子メール通知を構成する](insights-autoscale-to-webhook-email.md)
@@ -48,7 +53,7 @@
 ### [Resource Manager テンプレートを使用して診断設定を有効にする](monitoring-enable-diagnostic-logs-using-template.md)
 ## REST API の使用
 ### [REST API を使用したチュートリアル](monitoring-rest-api-walkthrough.md)
-## Azure 診断の使用
+## Azure 診断拡張機能の使用
 ### [Application Insights への送信](azure-diagnostics-configure-application-insights.md)
 ### [Event Hubs への送信](azure-diagnostics-streaming-event-hubs.md)
 ### [トラブルシューティング](azure-diagnostics-troubleshooting.md)

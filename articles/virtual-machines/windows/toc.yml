@@ -206,7 +206,7 @@
       - name: "Azure PowerShell"
         href: attach-disk-ps.md
       - name: "Azure ポータル"
-        href: attach-disk-portal.md
+        href: attach-managed-disk-portal.md
     - name: "データ ディスクを切断する"
       href: detach-disk.md
     - name: "OS ディスクを拡張する"
@@ -227,6 +227,8 @@
         href: vhd-copy.md
       - name: "特殊化した VHD から VM を作成する"
         href: create-vm-specialized.md
+      - name: "非管理対象データ ディスクを接続する"
+        href: attach-disk-portal.md
   - name: "VM ネットワーク"
     href: ps-common-network-ref.md
     items:
@@ -396,9 +398,9 @@
   - name: "Java"
     href: /java/api
   - name: "Node.js"
-    href: https://azure.microsoft.com/en-us/develop/nodejs/#azure-sdk
+    href: https://azure.microsoft.com/develop/nodejs/#azure-sdk
   - name: "Python"
-    href: http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.compute.html
+    href: https://azure.microsoft.com/develop/python/
   - name: "Compute REST"
     href: /rest/api/compute
   - name: "Managed Disks REST"

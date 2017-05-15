@@ -43,6 +43,24 @@
     href: sql-database-security-tutorial.md
   - name: "4 - SQL DB のパフォーマンス向上"
     href: sql-database-performance-tutorial.md
+  - name: "5 - マルチテナント アプリの実装"
+    href: sql-database-multi-tenant-application.md
+  - name: "6 - マルチテナント アプリのデプロイ"
+    href: sql-database-saas-tutorial.md
+  - name: "7 - 新しいテナントのプロビジョニング/カタログ登録"
+    href: sql-database-saas-tutorial-provision-and-catalog.md
+  - name: "8 - パフォーマンスの監視"
+    href: sql-database-saas-tutorial-performance-monitoring.md
+  - name: "9 - 単一のテナントの復元"
+    href: sql-database-saas-tutorial-restore-single-tenant.md
+  - name: "10 - テナント スキーマの管理"
+    href: sql-database-saas-tutorial-schema-management.md
+  - name: "11 - アドホック分析の実行"
+    href: sql-database-saas-tutorial-adhoc-analytics.md
+  - name: "12 - Log Analytics による監視"
+    href: sql-database-saas-tutorial-log-analytics.md
+  - name: "13 - テナント分析の管理"
+
 - name: "サンプル"
   items:
   - name: "Azure CLI"
@@ -144,7 +162,7 @@
       href: sql-database-long-term-retention.md
     - name: "データベースの回復"
       href: sql-database-recovery-using-backups.md
-    - name: "geo レプリケーション"
+    - name: "自動フェールオーバーと geo レプリケーション"
       href: sql-database-geo-replication-overview.md
     - name: "ログイン"
       href: sql-database-geo-replication-security-config.md

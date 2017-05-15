@@ -3,7 +3,6 @@
 ## [エディションの選択](active-directory-editions.md)
 
 ## [Azure の ID 管理について](identity-fundamentals.md)
-## [Azure ポータルのエクスペリエンスをプレビューします。](active-directory-preview-explainer.md)
 
 # 作業開始
 ## [Azure AD テナントを取得する](active-directory-howto-tenant.md)
@@ -82,7 +81,7 @@
 ### [危険な状態のユーザー](active-directory-reporting-security-user-at-risk.md)
 ### [リスクの高いサインイン](active-directory-reporting-security-risky-sign-ins.md)
 ### [リスク イベント](active-directory-reporting-risk-events.md)
-### [名前付きネットワーク](active-directory-known-networks-azure-portal.md)
+### [名前付きの場所](active-directory-named-locations.md)
 ### [レポートの移行](active-directory-reporting-migration.md)
 ### [保持](active-directory-reporting-retention.md)
 ### [待機時間](active-directory-reporting-latencies-azure-portal.md)

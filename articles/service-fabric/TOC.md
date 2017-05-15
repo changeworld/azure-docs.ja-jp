@@ -18,6 +18,7 @@
 ### [Linux での Java](service-fabric-create-your-first-linux-application-with-java.md)
 ### [Linux での C#](service-fabric-create-your-first-linux-application-with-csharp.md)
 ## [ローカル クラスターへのアプリのデプロイ](service-fabric-get-started-with-a-local-cluster.md)
+## [コンテナーに .NET アプリをデプロイする](service-fabric-host-app-in-a-container.md)
 ## [Azure で初めてのクラスターを作成する](service-fabric-get-started-azure-cluster.md)
 ## [初めてのスタンドアロン クラスターを作成する](service-fabric-get-started-standalone-cluster.md)
 ## [初めてのコンテナー アプリを作成する](service-fabric-get-started-containers.md)
@@ -28,6 +29,7 @@
 ### 概念
 #### [サポートされるプログラミング モデル](service-fabric-choose-framework.md)
 #### [アプリケーション モデル](service-fabric-application-model.md)
+#### [ホスティング モデル](service-fabric-hosting-model.md)
 #### [サービス マニフェスト リソース](service-fabric-service-manifest-resources.md)
 #### [サービスの状態](service-fabric-concepts-state.md)
 #### [サービスのパーティション分割](service-fabric-concepts-partitioning.md)
@@ -45,6 +47,8 @@
 #### [概要](service-fabric-containers-overview.md)
 #### [Windows コンテナーのデプロイ](service-fabric-deploy-container.md)
 #### [Linux コンテナーのデプロイ](service-fabric-deploy-container-linux.md)
+#### [Docker Compose (プレビュー)](service-fabric-docker-compose.md)
+#### [コンテナーとサービスのリソース ガバナンス](service-fabric-resource-governance.md)
 
 ### Reliable Services サービスの構築
 #### [概要](service-fabric-reliable-services-introduction.md)
@@ -57,6 +61,8 @@
 ##### [Reliable Collection のガイドラインと推奨事項](service-fabric-reliable-services-reliable-collections-guidelines.md)
 ##### [Reliable Collection での作業](service-fabric-work-with-reliable-collections.md)
 ##### [トランザクションとロック](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
+##### [Reliable Concurrent Queue](service-fabric-reliable-services-reliable-concurrent-queue.md)
+##### [Reliable Collection のシリアル化](service-fabric-reliable-services-reliable-collections-serialization.md)
 ##### [Reliable State Manager と Reliable Collection の内部](service-fabric-reliable-services-reliable-collections-internals.md)
 
 #### 作業開始
@@ -100,6 +106,7 @@
 
 ### サービスとの通信
 #### [サービス通信](service-fabric-connect-and-communicate-with-services.md)
+#### [DNS サービス](service-fabric-dnsservice.md)
 #### [リバース プロキシ](service-fabric-reverseproxy.md)
 
 ### [Web フロントエンドの追加](service-fabric-add-a-web-frontend.md)

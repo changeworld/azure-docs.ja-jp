@@ -78,32 +78,27 @@
 ## [サービスの制限](../active-directory-service-limits-restrictions.md)
 # v2.0 エンドポイント
 ## [概要](active-directory-appmodel-v2-overview.md)
-### [相違点](active-directory-v2-compare.md)
 ### [アプリの種類](active-directory-v2-flows.md)
 ### [制限事項](active-directory-v2-limitations.md)
-## クイック スタート
-### Mobile Apps
-#### [iOS](active-directory-v2-devquickstarts-ios.md)
-#### [Windows Phone](active-directory-v2-devquickstarts-wpf.md)
-#### [Android](active-directory-v2-devquickstarts-android.md)
-### Web アプリと API
-#### [AngularJS と NodeJS](active-directory-v2-devquickstarts-angular-node.md)
-#### [AngularJS と .NET](active-directory-v2-devquickstarts-angular-dotnet.md)
-#### [.NET Web アプリ](active-directory-v2-devquickstarts-dotnet-web.md)
-#### [.NET Web API](active-directory-v2-devquickstarts-dotnet-api.md)
-#### [NodeJS API](active-directory-v2-devquickstarts-node-api.md)
+### [v1 と v2 の比較](active-directory-v2-compare.md)
+## 作業の開始
+### モバイル アプリとデスクトップ アプリ
+#### [iOS](https://github.com/Azure-Samples/active-directory-msal-ios-swift)
+#### [Android](guidedsetups/active-directory-android.md)
+#### [Windows デスクトップ .NET](guidedsetups/active-directory-windesktop.md)
+### Web Apps
+#### [JavaScript SPA](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2)
+#### [ASP.NET Web サーバー](guidedsetups/active-directory-aspnetwebapp.md)
 #### [NodeJS Web アプリ](active-directory-v2-devquickstarts-node-web.md)
-#### [.NET Web アプリからの Web API](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md)
 ## ガイド
 ### [アプリを登録する](active-directory-v2-app-registration.md)
 ## リファレンス
-### [アプリ登録のリファレンス](active-directory-v2-registration-portal.md)
 ### [認証ライブラリ](active-directory-v2-libraries.md)
 ### [v2.0 認証プロトコル](active-directory-v2-protocols.md)
-#### [トークンのリファレンス](active-directory-v2-tokens.md)
-#### [OAuth 2.0 承認コード フロー](active-directory-v2-protocols-oauth-code.md)
 #### [OpenID Connect](active-directory-v2-protocols-oidc.md)
-#### [暗黙的なフロー](active-directory-v2-protocols-implicit.md)
-#### [OAuth 2.0 クライアントの資格情報](active-directory-v2-protocols-oauth-client-creds.md)
+#### [OAuth 2.0 承認コード付与](active-directory-v2-protocols-oauth-code.md)
+#### [OAuth 2.0 の暗黙的な付与](active-directory-v2-protocols-implicit.md)
+#### [OAuth 2.0 クライアント資格情報の付与](active-directory-v2-protocols-oauth-client-creds.md)
 #### [OAuth 2.0 の On-Behalf-Of フロー](active-directory-v2-protocols-oauth-on-behalf-of.md)
+#### [トークンのリファレンス](active-directory-v2-tokens.md)
 ### [スコープ](active-directory-v2-scopes.md)
