@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: jodehavi;stgriffi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
 ms.openlocfilehash: 38c342802ed687985ac6f84f5a590a1a0dcc6c6a
+ms.contentlocale: ja-jp
 ms.lasthandoff: 05/03/2017
 
 

@@ -14,9 +14,10 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/03/2016
 ms.author: hascipio;
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
 ms.openlocfilehash: 766e686170c35f3899e070671654c337d3dc642f
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/29/2017
 
 
