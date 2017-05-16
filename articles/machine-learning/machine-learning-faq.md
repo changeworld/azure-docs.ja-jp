@@ -235,13 +235,13 @@ RRS の場合は通常、Web サービスの応答に結果が表示されます
 
 **Web サービスを作成できるのは Machine Learning Studio で作成されたモデルからのみですか?**
 
-いいえ。Jupyter ノートブックと RStudio から直接 Web サービスを作成することもできます。
+いいえ。Jupyter Notebooks と RStudio から直接 Web サービスを作成することもできます。
 
 **エラー コードの詳細はどこで入手できますか?**
 
 エラー コードと説明の一覧は、「 [Machine Learning Module Error Codes (Machine Learning モジュールのエラー コード)](https://msdn.microsoft.com/library/azure/dn905910.aspx) 」を参照してください。
 
-## <a name="scalability"></a>スケーラビリティ
+## <a name="scalability"></a>拡張性
 **Web サービスのスケーラビリティはどれくらいですか。**
 
 現時点では、既定のエンドポイントは 1 つのエンドポイントにつき 20 件の同時 RRS 要求でプロビジョニングされます。 これは、[Web サービスのスケーリング](machine-learning-scaling-webservice.md)に関するページで説明されているように、エンドポイントあたりの同時要求を 200 件まで拡張でき、Web サービスごとのエンドポイント数は 10,000 個まで拡張できます。 BES の場合、各エンドポイントは一度に 40 件の要求を処理でき、40 件を超えた要求はキューに登録されます。 これらのキューに登録された要求は、キューから放出されると自動的に実行されます。
@@ -284,13 +284,13 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 
 Web サービスがデプロイされた後に、そのサービスに対して既定のエンドポイントが作成されます。 既定のエンドポイントは、その API キーを使用して呼び出すことができます。 エンドポイントの追加は、Azure クラシック ポータルからそれぞれのキーを使用して行うか、Web Service Management API を使用してプログラム的に行うことができます。 Web サービスを呼び出すには、アクセス キーが必要です。 詳細については、「 [Machine Learning Web サービスへの接続](machine-learning-connect-to-azure-machine-learning-web-service.md)」をご覧ください。
 
-**Azure Storage アカウントが見つからない場合はどうなりますか?**
+**Azure ストレージ アカウントが見つからない場合はどうなりますか?**
 
-Machine Learning Studio は、ワークフローの実行時に中間データを保存する際、ユーザーが指定した Azure Storage アカウントを使用します。 この Storage アカウントは、ワークスペースの作成時に Machine Learning Studio に提供されます。 ワークスペースの作成後に Storage アカウントが削除され、見つけることができない場合は、ワークスペースが機能しなくなり、そのワークスペースのすべての実験が失敗します。
+Machine Learning Studio は、ワークフローの実行時に中間データを保存する際、ユーザーが指定した Azure ストレージ アカウントを使用します。 このストレージ アカウントは、ワークスペースの作成時に Machine Learning Studio に提供されます。 ワークスペースの作成後にストレージ アカウントが削除され、見つけることができない場合は、ワークスペースが機能しなくなり、そのワークスペースのすべての実験が失敗します。
 
-誤って Storage アカウントを削除した場合は、削除された Storage アカウントと同じリージョンに同じ名前の Storage アカウントを再作成します。 その後、アクセス キーを再同期します。
+誤ってストレージ アカウントを削除した場合は、削除されたストレージ アカウンと同じリージョンに同じ名前のストレージ アカウントを再作成します。 その後、アクセス キーを再同期します。
 
-**Storage アカウントのアクセス キーの同期が失われてしまった場合はどうなりますか?**
+**ストレージ アカウントのアクセス キーの同期が失われてしまった場合はどうなりますか?**
 
 Machine Learning Studio は、ワークフローの実行時に中間データを格納する際、ユーザーが指定した Azure Storage アカウントを使用します。 この Storage アカウントは、ワークスペースの作成時に Machine Learning Studio に提供され、アクセス キーはそのワークスペースに関連付けられます。 ワークスペースの作成後にアクセス キーが変更されると、ワークスペースは Storage アカウントにアクセスできなくなります。 その場合、機能が停止し、そのワークスペース内のすべての実験が失敗します。
 
@@ -365,7 +365,7 @@ Resource Manager ベースの Web サービスでは、課金プランのプロ�
 
 **ストレージには別に課金されますか?**
 
-Machine Learning の Free レベルでは、別個のストレージは必要ありませんし、使用することもできません。 Machine Learning の Standard レベルでは、ユーザーが Azure Storage アカウントを持っていることが必要です。 Azure Storage の料金は[別途請求されます](https://azure.microsoft.com/pricing/details/storage/)。
+Machine Learning の Free レベルでは、別個のストレージは必要ありませんし、使用することもできません。 Machine Learning の Standard レベルでは、ユーザーが Azure ストレージ アカウントを持っていることが必要です。 Azure Storage の料金は[別途請求されます](https://azure.microsoft.com/pricing/details/storage/)。
 
 **Machine Learning では高可用性がサポートされますか?**
 
