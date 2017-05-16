@@ -13,11 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 01/23/2017
+ms.date: 05/15/2017
 ms.author: maroche
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 8cf7ea7ca69753c12469dff9dc352d616c276ddd
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -67,9 +69,4 @@ ms.openlocfilehash: 8cf7ea7ca69753c12469dff9dc352d616c276ddd
 
 ## <a name="summary"></a>概要
 データ ソースを **Azure Data Catalog** に登録すると、そのデータ ソースの探索や理解が簡単になります。 ビッグ データ ファイルと、論理データ セットを表すディレクトリを登録して注釈を付けることで、ユーザーが必要なビッグ データを見つけて使用することを支援できます。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

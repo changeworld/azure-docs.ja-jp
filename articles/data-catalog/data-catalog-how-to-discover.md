@@ -13,11 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 01/23/2017
+ms.date: 05/15/2017
 ms.author: maroche
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 0c90aff38ebe33e8c26f9e46db7e61786ea9a7dd
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -66,9 +68,4 @@ ms.openlocfilehash: 0c90aff38ebe33e8c26f9e46db7e61786ea9a7dd
 
 ## <a name="see-also"></a>関連項目
 * [Azure Data Catalog の概要](data-catalog-get-started.md) 」チュートリアルをご覧ください。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

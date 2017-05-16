@@ -4,7 +4,7 @@ description: "Application Insights で利用できる言語、プラットフォ
 services: application-insights
 documentationcenter: 
 author: OlegAnaniev-MSFT
-manager: douge
+manager: carmonm
 ms.assetid: 974db106-54ff-4318-9f8b-f7b3a869e536
 ms.service: application-insights
 ms.workload: tbd
@@ -12,7 +12,7 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/01/2016
-ms.author: awills
+ms.author: cfreeman
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: b78c574e9edf6ce28e8deb80d264858d480f5861

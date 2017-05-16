@@ -13,11 +13,13 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 01/23/2017
+ms.date: 05/15/2017
 ms.author: maroche
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 15e72950ef30b8540d0303292fb9882f500c875e
 ms.openlocfilehash: 646a7611f5680a4c08e9a5f5ff4e2a3e5631276f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -166,9 +168,4 @@ Nancy と彼女のチームがどのように容易に価値の高いデータ �
 * [データ ソースの検索](data-catalog-get-started.md)
 * [データ ソースの注釈付け](data-catalog-get-started.md)
 * [メタデータのクラウドソーシング](data-catalog-get-started.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
