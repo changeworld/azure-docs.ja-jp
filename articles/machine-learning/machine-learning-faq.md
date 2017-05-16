@@ -36,7 +36,7 @@ Azure Machine Learning は、クラウドで予測分析ソリューションを
 
 Machine Learning Studio は、Web ブラウザーを使用してアクセスするワークベンチ環境です。 Machine Learning Studio は、視覚的な構成インターフェイスにモジュールのパレットを備えており、実験の形式でエンド ツー エンドのデータサイエンス ワークフローを容易に構築できます。
 
-Machine Learning Studio の詳細については、「 [Machine Learning Studio とは](machine-learning-what-is-ml-studio.md)
+Machine Learning Studio の詳細については、「 [Machine Learning Studio とは](machine-learning-what-is-ml-studio.md)」をご覧ください。
 
 **Machine Learning API サービスとは**
 
@@ -154,7 +154,7 @@ Machine Learning Studio は、拡張性の高い強化された意思決定ツ�
 
 **提供されているアルゴリズムから 1 つのアルゴリズムを選ぶ際のガイドラインはありますか。**
 
-[アルゴリズムの選択方法](machine-learning-algorithm-choice.md)」に関するページをご覧ください。
+「[アルゴリズムの選択方法](machine-learning-algorithm-choice.md)」に関するページをご覧ください。
 
 **提供されているアルゴリズムは、R または Python で記述されていますか。**
 
@@ -213,10 +213,10 @@ Machine Learning Studio では Jupyter Notebooks を使用できます。 詳細
 
 [Azure サブスクリプションの制限](../azure-subscription-service-limits.md)に関するページをご覧ください。
 
-### <a name="use"></a>最初の起動時にドメインに参加しているマシンになるように VM をプロビジョニングするには、
+### <a name="use"></a>使用
 **バッチ実行サービスと要求応答サービスとして予測モデルを実行するのはいつがいいですか。**
 
-要求応答サービス (RRS) は、待ち時間が短く、拡張性の高い Web サービスで、実験環境で作成、デプロイされたステートレスなモデルへのインターフェイスを提供するために使用されます。 バッチ実行サービス (BES) は、データ レコードのバッチに対して非同期でスコアを付けるサービスです。 BES への入力は、RRS で使用されるデータ入力と似ています。 主な違いは、BES が、Azure Blob Storage、Azure Table Storage、Azure SQL Database、HDInsight (Hive Query)、HTTP ソースなど、さまざまなソースからレコードのブロックを読み取る点です。 詳細については、「 [How to consume Machine Learning web services (Machine Learning Web サービスを使用する方法)](machine-learning-consume-web-services.md)」をご覧ください。
+要求応答サービス (RRS) は、待ち時間が短く、拡張性の高い Web サービスで、実験環境で作成、デプロイされたステートレスなモデルへのインターフェイスを提供するために使用されます。 バッチ実行サービス (BES) は、データ レコードのバッチに対して非同期でスコアを付けるサービスです。 BES への入力は、RRS で使用されるデータ入力と似ています。 主な違いは、BES が、Azure Blob Storage、Azure Table Storage、Azure SQL Database、HDInsight (Hive クエリ)、HTTP ソースなど、さまざまなソースからレコードのブロックを読み取る点です。 詳細については、「 [How to consume Machine Learning web services (Machine Learning Web サービスを使用する方法)](machine-learning-consume-web-services.md)」をご覧ください。
 
 **Web サービスにデプロイされたモデルはどのように更新できますか。**
 
@@ -235,13 +235,13 @@ RRS の場合は通常、Web サービスの応答に結果が表示されます
 
 **Web サービスを作成できるのは Machine Learning Studio で作成されたモデルからのみですか?**
 
-いいえ。Jupyter Notebooks と RStudio から直接 Web サービスを作成することもできます。
+いいえ。Jupyter ノートブックと RStudio から直接 Web サービスを作成することもできます。
 
 **エラー コードの詳細はどこで入手できますか?**
 
 エラー コードと説明の一覧は、「 [Machine Learning Module Error Codes (Machine Learning モジュールのエラー コード)](https://msdn.microsoft.com/library/azure/dn905910.aspx) 」を参照してください。
 
-## <a name="scalability"></a>拡張性
+## <a name="scalability"></a>スケーラビリティ
 **Web サービスのスケーラビリティはどれくらいですか。**
 
 現時点では、既定のエンドポイントは 1 つのエンドポイントにつき 20 件の同時 RRS 要求でプロビジョニングされます。 これは、[Web サービスのスケーリング](machine-learning-scaling-webservice.md)に関するページで説明されているように、エンドポイントあたりの同時要求を 200 件まで拡張でき、Web サービスごとのエンドポイント数は 10,000 個まで拡張できます。 BES の場合、各エンドポイントは一度に 40 件の要求を処理でき、40 件を超えた要求はキューに登録されます。 これらのキューに登録された要求は、キューから放出されると自動的に実行されます。
@@ -284,17 +284,17 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 
 Web サービスがデプロイされた後に、そのサービスに対して既定のエンドポイントが作成されます。 既定のエンドポイントは、その API キーを使用して呼び出すことができます。 エンドポイントの追加は、Azure クラシック ポータルからそれぞれのキーを使用して行うか、Web Service Management API を使用してプログラム的に行うことができます。 Web サービスを呼び出すには、アクセス キーが必要です。 詳細については、「 [Machine Learning Web サービスへの接続](machine-learning-connect-to-azure-machine-learning-web-service.md)」をご覧ください。
 
-**Azure ストレージ アカウントが見つからない場合はどうなりますか?**
+**Azure Storage アカウントが見つからない場合はどうなりますか?**
 
-Machine Learning Studio は、ワークフローの実行時に中間データを保存する際、ユーザーが指定した Azure ストレージ アカウントを使用します。 このストレージ アカウントは、ワークスペースの作成時に Machine Learning Studio に提供されます。 ワークスペースの作成後にストレージ アカウントが削除され、見つけることができない場合は、ワークスペースが機能しなくなり、そのワークスペースのすべての実験が失敗します。
+Machine Learning Studio は、ワークフローの実行時に中間データを保存する際、ユーザーが指定した Azure Storage アカウントを使用します。 この Storage アカウントは、ワークスペースの作成時に Machine Learning Studio に提供されます。 ワークスペースの作成後に Storage アカウントが削除され、見つけることができない場合は、ワークスペースが機能しなくなり、そのワークスペースのすべての実験が失敗します。
 
-誤ってストレージ アカウントを削除した場合は、削除されたストレージ アカウンと同じリージョンに同じ名前のストレージ アカウントを再作成します。 その後、アクセス キーを再同期します。
+誤って Storage アカウントを削除した場合は、削除された Storage アカウントと同じリージョンに同じ名前の Storage アカウントを再作成します。 その後、アクセス キーを再同期します。
 
-**ストレージ アカウントのアクセス キーの同期が失われてしまった場合はどうなりますか?**
+**Storage アカウントのアクセス キーの同期が失われてしまった場合はどうなりますか?**
 
-Machine Learning Studio は、ワークフローの実行時に中間データを格納する際、ユーザーが指定した Azure ストレージ アカウントを使用します。 このストレージ アカウントは、ワークスペースの作成時に Machine Learning Studio に提供され、アクセス キーはそのワークスペースに関連付けられます。 ワークスペースの作成後にアクセス キーが変更されると、ワークスペースはストレージ アカウントにアクセスできなくなります。 その場合、機能が停止し、そのワークスペース内のすべての実験が失敗します。
+Machine Learning Studio は、ワークフローの実行時に中間データを格納する際、ユーザーが指定した Azure Storage アカウントを使用します。 この Storage アカウントは、ワークスペースの作成時に Machine Learning Studio に提供され、アクセス キーはそのワークスペースに関連付けられます。 ワークスペースの作成後にアクセス キーが変更されると、ワークスペースは Storage アカウントにアクセスできなくなります。 その場合、機能が停止し、そのワークスペース内のすべての実験が失敗します。
 
-ストレージ アカウントのアクセス キーを変更した場合は、Azure クラシック ポータルを使用してワークスペースのアクセス キーを再同期します。  
+Storage アカウントのアクセス キーを変更した場合は、Azure クラシック ポータルを使用してワークスペースのアクセス キーを再同期します。  
 
 ## <a name="support-and-training"></a>サポートとトレーニング
 **どこで Azure Machine Learning のトレーニングを受講できますか?**
@@ -355,9 +355,9 @@ API コンピューティング時間は、Machine Learning コンピューテ�
 
 実稼働 API 呼び出しにかかる時間は状況により大幅に異なりますが、一般的には数百ミリ秒から数秒までの範囲です。 データ処理と機械学習モデルの複雑さによっては、API 呼び出しに数分かかることもあります。 実稼働 API 呼び出しにかかる時間を推定するための最適な方法は、Machine Learning サービスでモデルのベンチマークを実行することです。
 
-**スタジオ コンピューティング時間とは何ですか?**
+**Studio コンピューティング時間とは何ですか?**
 
-スタジオ コンピューティング時間は、スタジオでコンピューティング リソースを実験に使用した時間の総計を表す課金単位です。
+Studio コンピューティング時間は、Studio でコンピューティング リソースを実験に使用した時間の総計を表す課金単位です。
 
 **新しい (Azure Resource Manager ベースの) Web サービスでの開発/テスト レベルとは何のためのものですか?**
 
@@ -365,7 +365,7 @@ Resource Manager ベースの Web サービスでは、課金プランのプロ�
 
 **ストレージには別に課金されますか?**
 
-Machine Learning の Free レベルでは、別個のストレージは必要ありませんし、使用することもできません。 Machine Learning の Standard レベルでは、ユーザーが Azure ストレージ アカウントを持っていることが必要です。 Azure Storage の料金は[別途請求されます](https://azure.microsoft.com/pricing/details/storage/)。
+Machine Learning の Free レベルでは、別個のストレージは必要ありませんし、使用することもできません。 Machine Learning の Standard レベルでは、ユーザーが Azure Storage アカウントを持っていることが必要です。 Azure Storage の料金は[別途請求されます](https://azure.microsoft.com/pricing/details/storage/)。
 
 **Machine Learning では高可用性がサポートされますか?**
 
