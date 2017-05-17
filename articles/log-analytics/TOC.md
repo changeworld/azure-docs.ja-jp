@@ -5,7 +5,6 @@
 # 作業の開始
 ## [Log Analytics にサインアップする](log-analytics-get-started.md)
 ## [アクセスの管理](log-analytics-manage-access.md)
-## [プロキシとファイアウォール](log-analytics-proxy-firewall.md)
 ## [使用状況データ](log-analytics-usage.md)
 ## [Log Analytics FAQ](log-analytics-faq.md)
 ## [サービス プロバイダー](log-analytics-service-providers.md)
@@ -14,7 +13,7 @@
 ## データを収集する
 ### 接続先ソース
 #### [Windows エージェント](log-analytics-windows-agents.md)
-#### [Linux エージェント](log-analytics-linux-agents.md)
+#### [Linux エージェント](log-analytics-agent-linux.md)
 #### [Azure Virtual Machines](log-analytics-azure-vm-extension.md)
 #### [Azure リソース](log-analytics-azure-storage.md)
 #### [Operations Manager](log-analytics-om-agents.md)
@@ -23,8 +22,12 @@
 ### データ ソース
 #### [データ ソースの概要](log-analytics-data-sources.md)
 #### [Windows イベント](log-analytics-data-sources-windows-events.md)
+#### [カスタム JSON データ](log-analytics-data-sources-json.md)
+#### [収集されたパフォーマンス データ](log-analytics-data-sources-collectd.md)
+#### [Nagios と Zabbix のアラート](log-analytics-data-sources-alerts-nagios-zabbix.md)
 #### [Syslog](log-analytics-data-sources-syslog.md)
 #### [パフォーマンス カウンター](log-analytics-data-sources-performance-counters.md)
+#### [Linux アプリケーション パフォーマンス](log-analytics-data-sources-linux-applications.md)
 #### [IIS ログ](log-analytics-data-sources-iis-logs.md)
 #### [カスタム ログ](log-analytics-data-sources-custom-logs.md)
 #### [カスタム フィールド](log-analytics-custom-fields.md)
@@ -32,6 +35,7 @@
 ### [ログ検索の概要](log-analytics-log-searches.md)
 ### [検索リファレンス](log-analytics-search-reference.md)
 #### [正規表現](log-analytics-log-searches-regex.md)
+### [検索結果からのアクションの実行](log-analytics-log-search-takeaction.md)
 ### [コンピューター グループ](log-analytics-computer-groups.md)
 ## データを分析する
 ### [ダッシュボード](log-analytics-dashboards.md)

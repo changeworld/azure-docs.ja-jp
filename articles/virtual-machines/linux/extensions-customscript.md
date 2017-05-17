@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/22/2016
+ms.date: 04/26/2017
 ms.author: nepeters
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: f06ec73f2b03dcdf5ac4069f28ee8653537f72f8
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 16d04d0f470dde3917f5a12f527ecceb493b2a57
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -63,33 +64,35 @@ ms.lasthandoff: 04/03/2017
 カスタム スクリプト拡張機能を実行するために Azure CLI を使用している場合は、少なくともファイルの URI およびスクリプト実行コマンドが含まれている構成ファイルを作成します。
 
 ```azurecli
-azure vm extension set myResourceGroup myVM CustomScript Microsoft.Azure.Extensions 2.0 \
-  --auto-upgrade-minor-version --public-config-path /script-config.json
+az vm extension set --resource-group myResourceGroup --vm-name myVM --name customScript --publisher Microsoft.Azure.Extensions --settings ./script-config.json
 ```
 
-必要に応じて、`--public-config` および `--private-config` オプションを使用してコマンドを実行できます。そのようにすると、実行中に構成を指定することができ、個別の構成ファイルが不要になります。
+必要に応じて、コマンドから JSON 形式の文字列として設定を指定することもできます。 そのようにすると、実行中に構成を指定することができ、個別の構成ファイルが不要になります。
 
 ```azurecli
-azure vm extension set myResourceGroup myVM CustomScript Microsoft.Azure.Extensions 2.0 \
-  --auto-upgrade-minor-version \
-  --public-config '{"fileUris": ["https://gist.github.com/ahmetalpbalkan/b5d4a856fe15464015ae87d5587a4439/raw/466f5c30507c990a4d5a2f5c79f901fa89a80841/hello.sh"],"commandToExecute": "./hello.sh"}'
+az vm extension set '
+  --resource-group exttest `
+  --vm-name exttest `
+  --name customScript `
+  --publisher Microsoft.Azure.Extensions `
+  --settings '{"fileUris": ["https://raw.githubusercontent.com/neilpeterson/test-extension/master/test.sh"],"commandToExecute": "./test.sh"}'
 ```
 
 ### <a name="azure-cli-examples"></a>Azure CLI の例
+
 **例 1** - スクリプト ファイルを持つパブリック構成。
 
 ```json
 {
-  "fileUris": ["https://gist.github.com/ahmetalpbalkan/b5d4a856fe15464015ae87d5587a4439/raw/466f5c30507c990a4d5a2f5c79f901fa89a80841/hello.sh"],
-  "commandToExecute": "./hello.sh"
+  "fileUris": ["https://raw.githubusercontent.com/neilpeterson/test-extension/master/test.sh"],
+  "commandToExecute": "./test.sh"
 }
 ```
 
 Azure CLI コマンド:
 
 ```azurecli
-azure vm extension set myResourceGroup myVM CustomScript Microsoft.Azure.Extensions 2.0 \
-  --auto-upgrade-minor-version --public-config-path /public.json
+az vm extension set --resource-group myResourceGroup --vm-name myVM --name customScript --publisher Microsoft.Azure.Extensions --settings ./script-config.json
 ```
 
 **例 2** - スクリプト ファイルを持たないパブリック構成。
@@ -103,8 +106,7 @@ azure vm extension set myResourceGroup myVM CustomScript Microsoft.Azure.Extensi
 Azure CLI コマンド:
 
 ```azurecli
-azure vm extension set myResourceGroup myVM CustomScript Microsoft.Azure.Extensions 2.0 \
-  --auto-upgrade-minor-version --public-config-path /public.json
+az vm extension set --resource-group myResourceGroup --vm-name myVM --name customScript --publisher Microsoft.Azure.Extensions --settings ./script-config.json
 ```
 
 **例 3** - スクリプト ファイルの URI を指定するためにパブリック構成ファイルを使用し、実行するコマンドを指定するために、保護された構成ファイルを使用します。
@@ -128,8 +130,7 @@ azure vm extension set myResourceGroup myVM CustomScript Microsoft.Azure.Extensi
 Azure CLI コマンド:
 
 ```azurecli
-azure vm extension set myResourceGroup myVM CustomScript Microsoft.Azure.Extensions 2.0 \
-  --auto-upgrade-minor-version --public-config-path ./public.json --private-config-path ./protected.json
+az vm extension set --resource-group myResourceGroup --vm-name myVM --name customScript --publisher Microsoft.Azure.Extensions --settings ./script-config.json --protected-settings
 ```
 
 ## <a name="resource-manager-template"></a>Resource Manager テンプレート
@@ -214,7 +215,7 @@ Azure スクリプト拡張機能ではログが生成され、そのログも�
 カスタム スクリプト拡張機能の実行状態も、Azure CLI で取得できます。
 
 ```azurecli
-azure vm extension get myResourceGroup myVM
+az vm extension list -g myResourceGroup --vm-name myVM
 ```
 
 出力は次のテキストのようになります。

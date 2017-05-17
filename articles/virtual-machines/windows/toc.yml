@@ -31,7 +31,11 @@
     href: tutorial-load-balancer.md
   - name: "8 - ネットワークの管理"
     href: tutorial-virtual-network.md
-  - name: "9 - VM のセキュリティの管理"
+  - name: "9 - 仮想マシンのバックアップ"
+    href: tutorial-backup-vms.md
+  - name: "10 - 仮想マシンの監視"
+    href: tutorial-monitoring.md
+  - name: "11 - VM のセキュリティの管理"
     href: tutorial-azure-security.md
 
 - name: "サンプル"
@@ -126,7 +130,7 @@
       href: creation-choices.md
     - name: "テンプレートを使用した VM の作成"
       href: ps-template.md
-    - name: "C を使用した VM の作成#"
+    - name: "C# を使用した VM の作成"
       href: csharp.md
     - name: "C# とテンプレートを使用した VM の作成"
       href: csharp-template.md
@@ -159,7 +163,7 @@
       href: cli-manage.md
     - name: "CLI を使用して VM を管理する"
       href: cli-deploy-templates.md
-    - name: "C を使用して VM を管理する#"
+    - name: "C# を使用して VM を管理する"
       href: csharp-manage.md
   - name: "RDP を使用した接続"
     items:
@@ -202,7 +206,7 @@
       - name: "Azure PowerShell"
         href: attach-disk-ps.md
       - name: "Azure ポータル"
-        href: attach-disk-portal.md
+        href: attach-managed-disk-portal.md
     - name: "データ ディスクを切断する"
       href: detach-disk.md
     - name: "OS ディスクを拡張する"
@@ -223,6 +227,8 @@
         href: vhd-copy.md
       - name: "特殊化した VHD から VM を作成する"
         href: create-vm-specialized.md
+      - name: "非管理対象データ ディスクを接続する"
+        href: attach-disk-portal.md
   - name: "VM ネットワーク"
     href: ps-common-network-ref.md
     items:
@@ -392,9 +398,9 @@
   - name: "Java"
     href: /java/api
   - name: "Node.js"
-    href: https://azure.microsoft.com/en-us/develop/nodejs/#azure-sdk
+    href: https://azure.microsoft.com/develop/nodejs/#azure-sdk
   - name: "Python"
-    href: http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.compute.html
+    href: https://azure.microsoft.com/develop/python/
   - name: "Compute REST"
     href: /rest/api/compute
   - name: "Managed Disks REST"

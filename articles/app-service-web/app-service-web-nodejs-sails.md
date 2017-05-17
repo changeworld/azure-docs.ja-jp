@@ -14,10 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: ff5deaa15d1f78df249e9e89b1f0ffc82076fee1
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 197e4c1873ecdc80c7eed3427449e2ea0d1605ba
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -183,11 +184,11 @@ App Service で何らかの理由により Sails.js アプリケーションの�
 stdout ログの粒度は [config/log.js](http://sailsjs.org/#!/documentation/concepts/Logging) ファイルで制御することができます。
 
 ## <a name="connect-to-a-database-in-azure"></a>Azure のデータベースへの接続
-Azure のデータベースに接続するには、Azure SQL Database、MySQL、MongoDB、Azure (Redis) Cache など、Azure で任意のデータベースを作成し、対応する [データストア アダプター](https://github.com/balderdashy/sails#compatibility) を使用してそのデータベースに接続します。 このセクションの手順では、MongoDB のクライアント接続をサポートできる [Azure DocumentDB](../documentdb/documentdb-protocol-mongodb.md) データベースを使用して、MongoDB に接続する方法を説明します。
+Azure のデータベースに接続するには、Azure SQL Database、MySQL、MongoDB、Azure (Redis) Cache など、Azure で任意のデータベースを作成し、対応する [データストア アダプター](https://github.com/balderdashy/sails#compatibility) を使用してそのデータベースに接続します。 このセクションの手順では、MongoDB のクライアント接続をサポートできる [Azure Cosmos DB](../documentdb/documentdb-protocol-mongodb.md) データベースを使用して、MongoDB に接続する方法を説明します。
 
-1. [MongoDB プロトコル対応の DocumentDB アカウントを作成します](../documentdb/documentdb-create-mongodb-account.md)。
-2. [DocumentDB のコレクションとデータベースを作成します](../documentdb/documentdb-create-collection.md)。 コレクションの名前は重要ではありませんが、Sails.js からの接続時にデータベースの名前が必要になります。
-3. [DocumentDB データベースの接続情報を取得します](../documentdb/documentdb-connect-mongodb-account.md#a-idgetcustomconnectiona-get-the-mongodb-connection-string-to-customize)。
+1. [MongoDB プロトコル対応の Cosmos DB アカウントを作成します](../documentdb/documentdb-create-mongodb-account.md)。
+2. [Cosmos DB のコレクションとデータベースを作成します](../documentdb/documentdb-create-collection.md)。 コレクションの名前は重要ではありませんが、Sails.js からの接続時にデータベースの名前が必要になります。
+3. [Cosmos DB データベースの接続情報を取得します](../documentdb/documentdb-connect-mongodb-account.md#a-idgetcustomconnectiona-get-the-mongodb-connection-string-to-customize)。
 2. コマンド ライン ターミナルから、MongoDB アダプターをインストールします。
 
         npm install sails-mongo --save
@@ -205,11 +206,11 @@ Azure のデータベースに接続するには、Azure SQL Database、MySQL、
         },
 
     > [!NOTE] 
-    > `ssl: true` オプションは、[Azure DocumentDB の必須要件](../documentdb/documentdb-connect-mongodb-account.md#connection-string-requirements)なので重要です。 
+    > [Cosmos DB では SSL が必須](../documentdb/documentdb-connect-mongodb-account.md#connection-string-requirements)なので、`ssl: true` オプションは重要です。 
     >
     >
 
-4. 環境変数 (`process.env.*`) ごとに、App Service で設定する必要があります。 そのためには、ターミナルから次のコマンドを実行します。 DocumentDB データベースの接続情報を使用します。
+4. 環境変数 (`process.env.*`) ごとに、App Service で設定する必要があります。 そのためには、ターミナルから次のコマンドを実行します。 Cosmos DB の接続情報を使用します。
 
         az appservice web config appsettings update --settings dbuser="<database user>" --name <app_name> --resource-group my-sailsjs-app-group
         az appservice web config appsettings update --settings dbpassword="<database password>" --name <app_name> --resource-group my-sailsjs-app-group
@@ -230,7 +231,7 @@ Azure のデータベースに接続するには、Azure SQL Database、MySQL、
             },
         },
 
-    ローカル環境の config/connections.js ファイルに含まれている設定は、この構成によって上書きされます。 このファイルは、プロジェクトの既定の .gitignore によって除外され、Git には保管されません。 これで、Azure Web アプリとローカル開発環境のどちらからでも、DocumentDB (MongoDB) データベースに接続できるようになりました。
+    ローカル環境の config/connections.js ファイルに含まれている設定は、この構成によって上書きされます。 このファイルは、プロジェクトの既定の .gitignore によって除外され、Git には保管されません。 これで、Azure Web アプリとローカル開発環境のどちらからでも、Cosmos DB (MongoDB) データベースに接続できるようになりました。
 6. config/env/production.js を開いて運用環境を構成し、次の `models` オブジェクトを追加します。
 
         models: {
@@ -266,11 +267,11 @@ Azure のデータベースに接続するには、Azure SQL Database、MySQL、
          git push azure master
          az appservice web browse --name <app_name> --resource-group my-sailsjs-app-group
 
-11. Azure Web アプリの blueprint API にアクセスします。 For example:
+11. Azure Web アプリの blueprint API にアクセスします。 例:
 
          http://<appname>.azurewebsites.net/mywidget/create
 
-     API から別の新しいエントリが返されれば、Azure Web アプリが DocumentDB (MongoDB) データベースと対話しているということです。
+     API から別の新しいエントリが返されれば、Azure Web アプリが Cosmos DB (MongoDB) データベースと対話しているということです。
 
 ## <a name="more-resources"></a>その他のリソース
 * [Get started with Node.js web apps in Azure App Service (Azure App Service で Node.js Web アプリの使用を開始する)](app-service-web-get-started-nodejs.md)

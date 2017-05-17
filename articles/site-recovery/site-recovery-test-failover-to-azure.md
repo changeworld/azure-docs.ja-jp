@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 2/15/2017
 ms.author: pratshar
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 2aed07ff82c33111ef1abc9c9cc6b0ba2a9d3718
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 0df4b3535449c88f11fa7a58811f68c82549558f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -31,7 +32,7 @@ ms.lasthandoff: 03/25/2017
 
 コメントや質問はこの記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)で投稿してください。
 
-テスト フェールオーバーは、データの損失またはダウンタイムを発生させることなく、レプリケーション戦略の検証または災害復旧の訓練を行うために実行します。 テスト フェールオーバーを行うことで、実行中のレプリケーションまたは運用環境に影響が及ぶことはありません。 テスト フェールオーバーは、仮想マシンまたは[復旧計画](site-recovery-create-recovery-plans.md)で行うことができます。 テスト フェールオーバーをトリガーするときは、テスト仮想マシンの接続先のネットワークを指定する必要があります。 テスト フェールオーバーをトリガーした後は、**[ジョブ]** ページで進行状況を追跡できます。  
+テスト フェールオーバーは、データの損失またはダウンタイムを発生させることなく、レプリケーション戦略の検証またはディザスター リカバリーの訓練を行うために実行します。 テスト フェールオーバーを行うことで、実行中のレプリケーションまたは運用環境に影響が及ぶことはありません。 テスト フェールオーバーは、仮想マシンまたは [復旧計画](site-recovery-create-recovery-plans.md) で行うことができます。 テスト フェールオーバーをトリガーするときは、テスト仮想マシンの接続先のネットワークを指定する必要があります。 テスト フェールオーバーをトリガーした後は、**ジョブ** ページで進行状況を追跡できます。  
 
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
@@ -71,6 +72,24 @@ ms.lasthandoff: 03/25/2017
 1. 前提条件チェック: フェールオーバーに必要な条件がすべて満たされていることが、この手順で確認されます。
 1. フェールオーバー: この手順でデータが処理され、Azure 仮想マシンを作成する準備が整います。 復旧ポイントとして "**Latest (最新)**" を選択した場合は、Site Recovery サービスに送信済みのデータから復旧ポイントが作成されます。
 1. 開始: 前の手順で処理されたデータを使って Azure 仮想マシンが作成されます。
+
+## <a name="time-taken-for-failover"></a>フェールオーバーにかかる時間
+
+一部のケースでは、仮想マシンのフェールオーバーに、通常 8 ～ 10 分かかる特別な中間ステップが必要となります。 次のケースが該当します。
+
+* VMware 仮想マシンで使用されているモビリティ サービスのバージョンが 9.8 未満
+* 物理サーバー 
+* VMware Linux 仮想マシン
+* 物理サーバーとして保護されている Hyper-V 仮想マシン
+* ブート ドライバーとして次のドライバーが存在していない VMware 仮想マシン 
+    * storvsc 
+    * vmbus 
+    * storflt 
+    * intelide 
+    * atapi
+* DHCP サービス (DHCP と静的 IP アドレスのどちらでも可) が有効になっていない VMware 仮想マシン
+
+その他すべてのケースでは、この中間ステップは不要であり、フェールオーバーに要する時間は大幅に短くなります。 
 
 
 ## <a name="creating-a-network-for-test-failover"></a>テスト フェールオーバー用のネットワークを作成する

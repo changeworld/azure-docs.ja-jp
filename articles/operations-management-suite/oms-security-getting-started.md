@@ -15,9 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: yurid
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
 ms.openlocfilehash: c6944fd4f93d2daa9071bb27f76ea0f772bdb743
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/20/2017
 
 
@@ -143,7 +144,7 @@ IT 管理者は、OMS の [セキュリティおよび監査] で利用できる
 
 Microsoft は、世界中の業界団体や政府機関と協力して、安全性の高いサーバー全世界と共に安全性の高いサーバーのデプロイを表す Windows 構成を定義しています。 この構成は、レジストリ キー、監査ポリシーの設定、セキュリティ ポリシーの設定のセットで、これらの設定には Microsoft が推奨する値があります。 この規則のセットがセキュリティ ベースラインと呼ばれます。 このオプションの詳細については、「[Operations Management Suite のセキュリティと監査ソリューションでのベースライン評価](oms-security-baseline.md)」を参照してください。
 
-### <a name="azure-security-center"></a>[Azure Security Center] (Azure Security Center)
+### <a name="azure-security-center"></a>[Azure Security Center] \(Azure Security Center)
 このタイルは、基本的には Azure Security Center のダッシュボードにアクセスするためのショートカットです。 このソリューションの詳細については、 [Azure Security Center の概要](../security-center/security-center-get-started.md) に関するページを参照してください。
 
 ## <a name="notable-issues"></a>[Notable Issues] \(注目すべき問題)

@@ -16,9 +16,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2017
 ms.author: carlrab
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
 ms.openlocfilehash: ca679a820eefc7acbb08eed6b8f809f46aacd3a3
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/15/2017
 
 
@@ -43,7 +44,7 @@ ms.lasthandoff: 04/15/2017
 
 * **SQL Server Management Studio**。 最新バージョンの SQL Server Management Studio (SSMS) は、「[SQL Server Management Studio (SSMS) のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)」からダウンロードしてインストールすることができます。 新機能が継続的にリリースされているため、Azure SQL Database に接続する場合は、常に最新バージョンの SSMS を使用してください。
 
-* **基本サーバーおよびデータベース**。このハウツー ガイドで使用するサーバーと 2 つのデータベースをインストールして構成するには、**[Deploy to Azure](Azure へのデプロイ)** ボタンをクリックします。 ボタンをクリックすると **[Deploy from a template (テンプレートからのデプロイ)]** ブレードが開くので、新しいリソース グループを作成し、作成予定の新しいサーバーの **[管理者ログイン パスワード]** を指定します。
+* **基本サーバーおよびデータベース**。このハウツー ガイドで使用するサーバーと 2 つのデータベースをインストールして構成するには、**[Deploy to Azure] \(Azure へのデプロイ)** ボタンをクリックします。 ボタンをクリックすると **[Deploy from a template (テンプレートからのデプロイ)]** ブレードが開くので、新しいリソース グループを作成し、作成予定の新しいサーバーの **[管理者ログイン パスワード]** を指定します。
 
    [![ダウンロード](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fsqldbtutorial.blob.core.windows.net%2Ftemplates%2Fsqldbgetstarted.json)
 

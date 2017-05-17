@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/21/2016
+ms.date: 05/12/2017
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: b5f6a535068f7a2cac4bac607dc56e356a97567e
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/03/2017
 
 

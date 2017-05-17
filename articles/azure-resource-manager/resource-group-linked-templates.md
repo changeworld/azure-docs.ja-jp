@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/14/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: a6c3e0150a60777d9f824cb1e0768bd44a8c981e
-ms.lasthandoff: 03/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 78b8902927977c3b7dca3bd6e24633858ef8e6e9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -133,7 +134,7 @@ Resource Manager では、各リンクされたテンプレートは個別のデ
 }
 ```
 
-[deployment()](resource-group-template-functions.md#deployment) を使用して、現在のテンプレートのベース URL を取得したり、同じ場所にある他のテンプレートの URL を取得したりすることもできます。 この方法は、テンプレートの場所が変更された場合 (バージョン管理などのため) や、テンプレート ファイルのハード コーディング URL を回避する必要がある場合に便利です。 
+[deployment()](resource-group-template-functions-deployment.md#deployment) を使用して、現在のテンプレートのベース URL を取得したり、同じ場所にある他のテンプレートの URL を取得したりすることもできます。 この方法は、テンプレートの場所が変更された場合 (バージョン管理などのため) や、テンプレート ファイルのハード コーディング URL を回避する必要がある場合に便利です。 
 
 ```json
 "variables": {

@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/02/2016
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 62bafc9bc58811cd9bd314639e3c2a609f4935d3
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: ed9bfe928699d040aa4283da5a8690318932738c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -43,8 +44,11 @@ Azure Monitor の自動スケールは、[Virtual Machine Scale Sets](https://az
 次の説明は、上の図の各部分に適用されます。   
 
 ## <a name="resource-metrics"></a>リソース メトリック
-リソースは、メトリックを出力します。このメトリックが、後で規則によって処理されます。 メトリックは、さまざまな方法で取得されます。
+リソースは、メトリックを出力します。これらのメトリックは、後でルールに従って処理されます。 メトリックは、さまざまな方法で取得されます。
 仮想マシン スケール セットは、Azure 診断エージェントからのテレメトリ データを使用します。一方、Web アプリおよびクラウド サービスのテレメトリは、Azure インフラストラクチャから直接取得されます。 一般的に使用される統計情報として、CPU 使用率、メモリ使用量、スレッド数、キューの長さ、ディスク使用量などがあります。 使用できるテレメトリ データの一覧については、[自動スケールの一般的なメトリック](insights-autoscale-common-metrics.md)に関するページを参照してください。
+
+## <a name="custom-metrics"></a>カスタム メトリック
+アプリケーションから出力されている可能性のある独自のカスタム メトリックを利用することもできます。 メトリックを Application Insights に送信するようにアプリケーションを構成している場合は、これらのメトリックを利用して、スケールするかどうかを決定することができます。 
 
 ## <a name="time"></a>Time
 スケジュール ベースの規則は、UTC に基づいています。 規則を設定する際に、タイム ゾーンを正しく設定する必要があります。  

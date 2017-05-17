@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/21/2017
+ms.date: 04/21/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 73c38182f4caa92f5aa561b10a30c60efc8cfdae
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: b600b7d67de24eab5395f085a2a424159b14ff28
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Azure のロールベースのアクセス制御のための組み込みロール
@@ -27,14 +28,21 @@ Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、
 ## <a name="roles-in-azure"></a>Azure におけるロール
 次の表に、組み込みのロールについての簡単な説明を示します。 ロール名をクリックすると、そのロールの **actions** と **notactions** の詳細な一覧を確認できます。 **actions** プロパティは、Azure リソースに対して許可するアクションを指定します。 アクションの文字列にワイルドカード文字を使用できます。 **notactions** プロパティは、許可するアクションから除外されるアクションを指定します。
 
+アクションは、指定したリソースの種類で実行できる操作の種類を定義します。 次に例を示します。
+- **Write** を使用すると、PUT、POST、PATCH、および DELETE 操作を実行できます。
+- **Read** を使用すると、GET 操作を実行できます。 
+
+この記事では、現在存在するさまざまなロールについてのみ説明します。 ユーザーにロールを割り当てるとき、許可されているアクションをさらを制限するには、スコープを定義します。 これは、1 つのリソース グループについてのみ、あるユーザーを Web サイトの共同作業者として指定する場合に便利です。 
+
 > [!NOTE]
-> Azure のロール定義は常に進化しています。 この記事は、最新の状態であることを心掛けておりますが、Azure PowerShell で常に最新のロール定義を見つけることができます。 適宜、コマンドレット `(get-azurermroledefinition "<role name>").actions` または `(get-azurermroledefinition "<role name>").notactions` を使用します。
->
->
+> Azure のロール定義は常に進化しています。 この記事は、最新の状態であることを心掛けておりますが、Azure PowerShell で常に最新のロール定義を見つけることができます。 現在のロールの一覧を表示するには、[Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) コマンドレットを使用します。 特定のロールの詳細を確認するには、適宜 `(get-azurermroledefinition "<role name>").actions` または `(get-azurermroledefinition "<role name>").notactions` を使用します。 [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) を使用すると、特定の Azure リソース プロバイダーの操作が一覧表示されます。 
+
 
 | ロール名 | Description |
 | --- | --- |
-| [API 管理サービスの共同作業者](#api-management-service-contributor) |API Management サービスを管理できます |
+| [API 管理サービスの共同作業者](#api-management-service-contributor) |API Management サービスと API を管理できます |
+| [API Management サービスのオペレーター ロール](#api-management-service-operator-role) | API Management サービスを管理できます。ただし、API 自体を管理することはできません |
+| [API Management サービスのリーダー ロール](#api-management-service-reader-role) | API Management のサービスと API への読み取り専用アクセス |
 | [Application Insights コンポーネントの共同作業者](#application-insights-component-contributor) |Application Insights コンポーネントを管理できます |
 | [オートメーション オペレーター](#automation-operator) |ジョブを開始、停止、中断、および再開できます |
 | [バックアップの共同作業者](#backup-contributor) | Recovery Services コンテナーのバックアップを管理できます |
@@ -80,6 +88,40 @@ API Management サービスを管理できます
 | **アクション** |  |
 | --- | --- |
 | Microsoft.ApiManagement/Service/* |API Management サービスの作成と管理 |
+| Microsoft.Authorization/*/read |承認の読み取り |
+| Microsoft.Insights/alertRules/* |アラート ルールの作成と管理 |
+| Microsoft.ResourceHealth/availabilityStatuses/read |リソースの正常性の読み取り |
+| Microsoft.Resources/deployments/* |リソース グループ デプロイの作成と管理 |
+| Microsoft.Resources/subscriptions/resourceGroups/read |ロールとロール割り当ての読み取り |
+| Microsoft.Support/* |サポート チケットの作成と管理 |
+
+### <a name="api-management-service-operator-role"></a>API Management サービスのオペレーター ロール
+API Management サービスを管理できます
+
+| **アクション** |  |
+| --- | --- |
+| Microsoft.ApiManagement/Service/*/read | API Management サービス インスタンスの読み取り |
+| Microsoft.ApiManagement/Service/backup/action | ユーザーが指定したストレージ アカウント内の指定されたコンテナーへの API Management サービスのバックアップ |
+| Microsoft.ApiManagement/Service/delete | API Management サービス インスタンスの削除 |
+| Microsoft.ApiManagement/Service/managedeployments/action | SKU/ユニット数の変更、API Management サービスのリージョン デプロイの追加または削除 |
+| Microsoft.ApiManagement/Service/read | API Management サービス インスタンスのメタデータの読み取り |
+| Microsoft.ApiManagement/Service/restore/action | ユーザーが指定したストレージ アカウント内の指定されたコンテナーからの API Management サービスの復元 |
+| Microsoft.ApiManagement/Service/updatehostname/action | API Management サービスのカスタム ドメイン名の設定、更新、または削除 |
+| Microsoft.ApiManagement/Service/write | API Management サービスの新しいインスタンスの作成 |
+| Microsoft.Authorization/*/read |承認の読み取り |
+| Microsoft.Insights/alertRules/* |アラート ルールの作成と管理 |
+| Microsoft.ResourceHealth/availabilityStatuses/read |リソースの正常性の読み取り |
+| Microsoft.Resources/deployments/* |リソース グループ デプロイの作成と管理 |
+| Microsoft.Resources/subscriptions/resourceGroups/read |ロールとロール割り当ての読み取り |
+| Microsoft.Support/* |サポート チケットの作成と管理 |
+
+### <a name="api-management-service-reader-role"></a>API Management サービスのリーダー ロール
+API Management サービスを管理できます
+
+| **アクション** |  |
+| --- | --- |
+| Microsoft.ApiManagement/Service/*/read | API Management サービス インスタンスの読み取り |
+| Microsoft.ApiManagement/Service/read | API Management サービス インスタンスのメタデータの読み取り |
 | Microsoft.Authorization/*/read |承認の読み取り |
 | Microsoft.Insights/alertRules/* |アラート ルールの作成と管理 |
 | Microsoft.ResourceHealth/availabilityStatuses/read |リソースの正常性の読み取り |

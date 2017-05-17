@@ -13,11 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 05/16/2017
 ms.author: markvi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 70610ec2c5a056d63ed854b33d84e29951940c2f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -46,10 +48,5 @@ Windows 7 または Windows 8 を使用しているコンピューターやデ�
 * [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD 参加の設定](active-directory-azureadjoin-setup.md)
 * [Microsoft Passport 経由でのパスワードを使用しない ID の認証](active-directory-azureadjoin-passport.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

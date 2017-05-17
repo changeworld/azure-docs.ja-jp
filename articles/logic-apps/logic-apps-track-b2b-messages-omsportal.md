@@ -14,15 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2016
 ms.author: padmavc
-translationtype: Human Translation
-ms.sourcegitcommit: 2aa32d692da81dc34fafbc9cb6ea72a806f31e5c
-ms.openlocfilehash: a4068c70a01f80086ff3fb55f8e101c7dce95dea
-ms.lasthandoff: 02/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: 4d68fde29e85fcf9aa623b4d798262bcd486a8bb
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/28/2017
 
 
 ---
 # <a name="track-b2b-messages-in-the-operations-management-suite-portal"></a>Operations Management Suite ポータルで B2B メッセージを追跡する
-B2B 通信では、実行中の&2; つのビジネス プロセスまたはアプリケーション間でメッセージ交換が行われます。 Operations Management Suite ポータルで次の Web ベースの追跡機能を使用して、メッセージが正しく処理されたかどうかを確認します。
+B2B 通信では、実行中の 2 つのビジネス プロセスまたはアプリケーション間でメッセージ交換が行われます。 Operations Management Suite ポータルで次の Web ベースの追跡機能を使用して、メッセージが正しく処理されたかどうかを確認します。
 
 * メッセージの数と状態
 * 受信確認の状態
@@ -80,7 +81,7 @@ B2B 通信では、実行中の&2; つのビジネス プロセスまたはア�
 | 送信者 | AS2 契約の受信設定で構成されているゲスト パートナーまたは送信設定で構成されているホスト パートナー。 |
 | 受信者 | AS2 契約の受信設定で構成されているホスト パートナーまたは送信設定で構成されているゲスト パートナー。 |
 | ロジック アプリ | AS2 アクションが構成されているロジック アプリ。 |
-| 状態 | AS2 メッセージの状態 <br>成功 = 適切な AS2 メッセージ受信済みまたは送信済み、MDN 未構成 <br>成功 = 適切な AS2 メッセージ受信済みまたは送信済み、MDN 構成済みで受信済み、または MDN 送信済み <br>失敗 = 無効な AS2 メッセージ受信済み、MDN 未構成 <br>保留中 = 適切な AS2 メッセージ受信済みまたは送信済み、MDN 構成済みで機能確認待ち |
+| 状態 | AS2 メッセージの状態 <br>成功 = 適切な AS2 メッセージ受信済みまたは送信済み、MDN 未構成 <br>成功 = 適切な AS2 メッセージ受信済みまたは送信済み、MDN 構成済みで受信済み、または MDN 送信済み <br>失敗 = 無効な AS2 メッセージ受信済み、MDN 未構成 <br>保留中 = 適切な AS2 メッセージ受信済みまたは送信済み、MDN 構成済みで MDN 待ち |
 | Ack | MDN メッセージの状態 <br>承認済み = 肯定の MDN 受信済みまたは送信済み <br>保留中 = MDN の送受信待ち <br>拒否 = 否定の MDN 受信済みまたは送信済み <br>必要なし = 契約で MDN 未構成 |
 | 方向 | AS2 メッセージの方向。 |
 | 関連付け ID | ロジック アプリ内ですべてのトリガーとアクションを関連付けるための ID。 |

@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 729c89e26e0c2da3ec88b554645091997dea4552
 ms.openlocfilehash: 1f0406b131957500c303172409cafa6be8fb3228
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -30,7 +32,7 @@ ms.openlocfilehash: 1f0406b131957500c303172409cafa6be8fb3228
 
 ExpressRoute 回線は物理エンティティにはマップされません。 回線は、サービス キー (s キー) という標準 GUID によって一意に識別されます。 サービス キーは、Microsoft、接続プロバイダー、およびユーザー間で交換される情報のほんの一部です。 s キーは、セキュリティ目的のシークレットではありません。 ExpressRoute 回線と s キーは 1 対 1 で対応しています。
 
-ExpressRoute 回線では、Azure パブリック、Azure プライベート、および Microsoft という最大&3; つの独立したピアリングを使用することができます。 各ピアリングは独立した BGP セッションのペアで、高可用性を実現するためにセッションはそれぞれ冗長的に構成されています。 ExpressRoute 回線とルーティング ドメインは 1 対 N (1 <= N <= 3) で対応しています。 ExpressRoute 回線 は、回線ごとに 1 つ、2 つ、または 3 つすべてのピアリングを使用することができます。
+ExpressRoute 回線では、Azure パブリック、Azure プライベート、および Microsoft という最大 3 つの独立したピアリングを使用することができます。 各ピアリングは独立した BGP セッションのペアで、高可用性を実現するためにセッションはそれぞれ冗長的に構成されています。 ExpressRoute 回線とルーティング ドメインは 1 対 N (1 <= N <= 3) で対応しています。 ExpressRoute 回線 は、回線ごとに 1 つ、2 つ、または 3 つすべてのピアリングを使用することができます。
 
 各接続には固定帯域幅 (50 Mbps、100 Mbps、200 Mbps、500 Mbps、1 Gbps、10 Gbps) があり、接続プロバイダーとピアリング場所にマップされます。 選択する帯域幅は、この回線のすべてのピアリング間で共有されます。 
 
@@ -85,10 +87,5 @@ ExpressRoute 回線の一部として 1 つ以上のルーティング ドメイ
   * [ExpressRoute 回線の作成](expressroute-howto-circuit-classic.md)
   * [ルーティング (回線ピアリング) の構成](expressroute-howto-routing-classic.md)
   * [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/04/2016
 ms.author: saah;kenhoff
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 90006121e4b3392f6e3ecffb4a56aca330feb02f
+ms.contentlocale: ja-jp
 ms.lasthandoff: 05/05/2017
 
 

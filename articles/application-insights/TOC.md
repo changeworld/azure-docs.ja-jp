@@ -18,12 +18,13 @@
 ### [Web アプリ - ランタイム](app-insights-java-live.md)
 ### [Docker アプリ](app-insights-docker.md)
 
+## Node.js アプリの監視
+### [Node.JS](app-insights-nodejs.md)
 
 ## Web ページの監視
 ### [JavaScript](app-insights-javascript.md)
-
+ 
 ## その他のプラットフォームの監視
-### [Node.js アプリ](app-insights-nodejs.md)
 ### [SharePoint サイト](app-insights-sharepoint.md)
 ### [その他のプラットフォーム](app-insights-platforms.md)
 
@@ -32,7 +33,6 @@
 ## 計画と設計
 ### [Web アプリおよびサービスの詳細な診断](app-insights-devops.md)
 ### [Web アプリケーションのパフォーマンスを監視する](app-insights-web-monitor-performance.md)
-### [Application Insights による利用状況分析](app-insights-web-track-usage.md)
 ### [Application Insights リソースの分離](app-insights-separate-resources.md)
 ### [Application Insights での作業](app-insights-how-do-i.md)
 
@@ -50,7 +50,7 @@
 #### [依存関係](app-insights-asp-net-dependencies.md)
 #### [リリース注釈](app-insights-annotations.md)
 #### [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md)
-
+#### [スナップショット デバッガー](app-insights-snapshot-debugger.md)
 
 ### J2EE
 #### [ログ トレース](app-insights-java-trace-logs.md)
@@ -86,6 +86,11 @@
 #### [F5 による洞察](app-insights-visual-studio.md)
 #### [傾向](app-insights-visual-studio-trends.md)
 #### [CodeLens](app-insights-visual-studio-codelens.md)
+
+### 使用法
+#### [概要](app-insights-usage-overview.md)
+#### [保持](app-insights-usage-retention.md)
+#### [ユーザー、セッション、イベント](app-insights-usage-segmentation.md)
 
 ### 分析
 
@@ -152,14 +157,14 @@
 ## ニュース
 
 ### [ブログ](https://azure.microsoft.com/blog/tag/application-insights/)
-### [サービスの更新情報](https://azure.microsoft.com/en-us/updates/?product=application-insights) 
+### [サービスの更新情報](https://azure.microsoft.com/updates/?product=application-insights) 
 ### [SDK リリース ノート](app-insights-release-notes.md)
 ### [Developer Analytics Tools のリリース ノート](app-insights-release-notes-vsix.md)
 
 ## [FAQ](app-insights-troubleshoot-faq.md)
 
 ## [ヘルプ]
-### [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=ApplicationInsights)  
+### [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=ApplicationInsights)  
 ### [Stack Overflow](http://stackoverflow.com/questions/tagged/az-application-insights)
 ### [ユーザーの声](https://visualstudio.uservoice.com/forums/357324-application-insights)
 ### [サポート](https://azure.microsoft.com/support/)

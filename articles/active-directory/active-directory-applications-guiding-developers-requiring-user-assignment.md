@@ -3,7 +3,7 @@ title: "ユーザー割り当ての要求 - Azure AD | Microsoft Docs"
 description: "Azure アプリケーションにユーザーの割り当てを要求する方法です。"
 services: active-directory
 documentationcenter: 
-author: IHenkel
+author: kgremban
 manager: femila
 editor: 
 ms.assetid: 30b78cba-1e0f-472f-8314-f2250a9b91c3
@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
-ms.author: inhenk
-translationtype: Human Translation
+ms.date: 05/16/2017
+ms.author: kgremban
+robots: noindex
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e66b606433f8924a509f2d04dae67ff00ded6dca
 ms.openlocfilehash: f5804d258c609f2bf289dcf4d173dc67137e7691
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/07/2017
-
 
 ---
 # <a name="azure-ad-and-applications-require-user-assignment"></a>Azure AD とアプリケーション: ユーザー割り当ての要求

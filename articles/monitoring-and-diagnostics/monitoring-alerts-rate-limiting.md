@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: ancav
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 93f8d0f32a851d530df84186d419bd8e2d47f1bc
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 1b4196d3b1d41458c7dd20b6986cc09100ae318c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/02/2017
 
 
 ---

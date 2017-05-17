@@ -46,20 +46,22 @@
 #### [PowerShell](virtual-networks-create-vnetpeering-arm-ps.md)
 #### [テンプレート](virtual-networks-create-vnetpeering-arm-template-click.md)
 
-### [ネットワーク インターフェイス](virtual-network-network-interface.md)
+### ネットワーク インターフェイス
+#### [追加、変更、削除](virtual-network-network-interface.md)
+#### [IP アドレスの追加、変更、削除](virtual-network-network-interface-addresses.md)
 
 ### [パブリック IP アドレス](virtual-network-public-ip-address.md)
 
 ### 仮想マシン
-
-#### 静的パブリック IP アドレス
+#### [ネットワーク インターフェイスの追加または削除](virtual-network-network-interface-vm.md) 
+#### 静的パブリック IP アドレスを持つ VM を作成する
 ##### [ポータル](virtual-network-deploy-static-pip-arm-portal.md)
 ##### [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
 ##### [CLI](virtual-network-deploy-static-pip-arm-cli.md)
 ##### [テンプレート](virtual-network-deploy-static-pip-arm-template.md)
 ##### [PowerShell (クラシック)](virtual-networks-reserved-public-ip.md)
 
-#### 静的プライベート IP アドレス
+#### 静的プライベート IP アドレスを持つ VM を作成する
 ##### [ポータル](virtual-networks-static-private-ip-arm-pportal.md)
 ##### [PowerShell](virtual-networks-static-private-ip-arm-ps.md)
 ##### [CLI](virtual-networks-static-private-ip-arm-cli.md)
@@ -67,14 +69,13 @@
 ##### [PowerShell (クラシック)](virtual-networks-static-private-ip-classic-ps.md)
 ##### [CLI (クラシック)](virtual-networks-static-private-ip-classic-cli.md)
 
-#### 複数のネットワーク インターフェイス
-##### [PowerShell](virtual-network-deploy-multinic-arm-ps.md)
-##### [CLI](virtual-network-deploy-multinic-arm-cli.md)
-##### [テンプレート](virtual-network-deploy-multinic-arm-template.md)
+#### 複数のネットワーク インターフェイスを持つ VM を作成する
+##### [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+##### [CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 ##### [PowerShell (クラシック)](virtual-network-deploy-multinic-classic-ps.md)
 ##### [CLI (クラシック)](virtual-network-deploy-multinic-classic-cli.md)
 
-#### 複数の IP アドレス
+#### 複数の IP アドレスを持つ VM を作成する
 ##### [Azure ポータル](virtual-network-multiple-ip-addresses-portal.md)
 ##### [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
 ##### [CLI](virtual-network-multiple-ip-addresses-cli.md)

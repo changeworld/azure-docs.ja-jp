@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/21/2017
+ms.date: 05/09/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 68d74cfde8146007930a4c340b7412fca00afc39
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 9663535cc301ecd2c26c1cf318dbf9420758e245
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -110,7 +111,7 @@ ms.lasthandoff: 04/22/2017
 
 前述の推奨事項の表で推奨事項を選択し、推奨事項を適用する方法の一例として手順を確認してください。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 このドキュメントでは、セキュリティ センターのセキュリティに関する推奨事項について説明しました。 セキュリティ センターの詳細については、次を参照してください。
 
 * [Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md) -- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。

@@ -38,7 +38,7 @@ Azure で Service Fabric クラスターを作成するときは、クラスタ�
 ![Service Fabric Explorer での障害ドメインに分散されたノードの表示][sfx-cluster-map]
 
 > [!NOTE]
-> クラスター マップにもう 1 つの軸には、アップグレード ドメインが表示されます。これは、計画的なメンテナンス アクティビティに基づいてノードを論理的にグループ化するものです。 Azure の Service Fabric クラスターは常に、5 つのアップグレード ドメインにレイアウトされます。
+> クラスター マップのもう 1 つの軸には、アップグレード ドメインが表示されます。これは、計画的なメンテナンス アクティビティに基づいてノードを論理的にグループ化するものです。 Azure の Service Fabric クラスターは常に、5 つのアップグレード ドメインにレイアウトされます。
 > 
 > 
 
@@ -92,10 +92,10 @@ protected virtual Task<bool> OnDataLoss(CancellationToken cancellationToken)
 
 ## <a name="next-steps"></a>次のステップ
 * [Testability フレームワーク](service-fabric-testability-overview.md)
-* 障害復旧と高可用性に関する他のリソースを読みます。 Microsoft は、これらのトピックに関して多数のガイダンスを公開しています。 これらのドキュメントの一部は他の製品で使用するための具体的な方法に関するものですが、Service Fabric にも適用できる多くの一般的なベスト プラクティスが含まれます。
+* ディザスター リカバリーと高可用性に関する他のリソースを読みます。 Microsoft は、これらのトピックに関して多数のガイダンスを公開しています。 これらのドキュメントの一部は他の製品で使用するための具体的な方法に関するものですが、 Service Fabric にも適用できる多くの一般的なベスト プラクティスが含まれます。
   * [可用性のチェックリスト](../best-practices-availability-checklist.md)
-  * [障害復旧訓練の実行](../sql-database/sql-database-disaster-recovery-drills.md)
-  * [Azure アプリケーションの障害復旧と高可用性][dr-ha-guide]
+  * [ディザスター リカバリー訓練の実行](../sql-database/sql-database-disaster-recovery-drills.md)
+  * [Azure アプリケーションのディザスター リカバリーと高可用性][dr-ha-guide]
 * [Service Fabric のサポート オプション](service-fabric-support.md)について学びます。
 
 <!-- External links -->

@@ -4,7 +4,7 @@ description: "Stream Analytics を使用して Application Insights データを
 services: application-insights
 documentationcenter: 
 author: noamben
-manager: douge
+manager: carmonm
 ms.assetid: 48903032-2c99-4987-9948-d6e4559b4a63
 ms.service: application-insights
 ms.workload: tbd
@@ -12,10 +12,11 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2015
-ms.author: awills
-translationtype: Human Translation
+ms.author: cfreeman
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: 6fc9394cbc60a1ea9bc9989d271f1008acf0379b
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/12/2017
 
 

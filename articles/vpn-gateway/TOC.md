@@ -1,7 +1,7 @@
 # 概要
 ## [VPN Gateway について](vpn-gateway-about-vpngateways.md)
 ## [VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md)
-## [サブスクリプションとサービスの制限](../azure-subscription-service-limits.md)
+## [サブスクリプションとサービスの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 
 # 作業の開始
 ## [VPN Gateway の計画と設計](vpn-gateway-plan-design.md)
@@ -46,7 +46,9 @@
 ### [Azure ポータル](vpn-gateway-delete-vnet-gateway-portal.md)
 ### [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 ### [PowerShell (クラシック)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-## [ポイント対サイトの自己署名証明書の作成](vpn-gateway-certificates-point-to-site.md)
+## ポイント対サイトの自己署名証明書の作成
+### [PowerShell](vpn-gateway-certificates-point-to-site.md)
+### [Makecert](vpn-gateway-certificates-point-to-site-makecert.md)
 ## [VPN ゲートウェイの構成 (クラシック)](vpn-gateway-configure-vpn-gateway-mp.md)
 ## トラブルシューティング
 ### [VNet への VPN スループットの確認](vpn-gateway-validate-throughput-to-vnet.md)

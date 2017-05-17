@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
-translationtype: Human Translation
-ms.sourcegitcommit: 3047ba6bb363e087bfdf767a32c92a503000f11e
-ms.openlocfilehash: c97343008b5af378ed9d441e242018849e2ab69a
-ms.lasthandoff: 11/17/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: ab71da3b7cc77cfe6bf78caf358ddd0a4a10321b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="how-to-use-table-storage-from-c"></a>C++ から Table ストレージを使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-
-[!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
+[!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
 ## <a name="overview"></a>Overview
 このガイドでは、Azure テーブル ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。 サンプルは C++ で記述され、 [C++ 用 Azure ストレージ クライアント ライブラリ](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)を利用しています。 紹介するシナリオは、**テーブルの作成と削除**、**テーブル エンティティの操作**などです。
@@ -452,10 +452,10 @@ azure::storage::table_result delete_result = table.execute(delete_operation);
 ## <a name="next-steps"></a>次のステップ
 これで、Table ストレージの基本を学習できました。Azure Storage の詳細については、次のリンク先を参照してください。  
 
+* [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 * [C++ から BLOB ストレージを使用する方法](storage-c-plus-plus-how-to-use-blobs.md)
 * [C++ から Queue ストレージを使用する方法](storage-c-plus-plus-how-to-use-queues.md)
 * [C++ での Azure Storage のリソース一覧の取得](storage-c-plus-plus-enumeration.md)
 * [C++ 用ストレージ クライアント ライブラリ リファレンス](http://azure.github.io/azure-storage-cpp)
 * [Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
-
 

@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/09/2017
+ms.date: 05/02/2017
 ms.author: sethm;jotaub
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 2c9b6676c1a4cfe008235da6746d403555e1bf08
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 7f3ddc2d7036b9951d4796cf4664f870a0c5f4b6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -56,7 +57,11 @@ ms.lasthandoff: 04/26/2017
 * Express エンティティ
 
 ## <a name="pricing"></a>価格
-このセクションでは、Service Bus の価格体系についてよく寄せられる質問 (FAQ) とその回答を紹介します。 Microsoft Azure の全般的な価格情報については、 [Azure サポートに関する FAQ](http://go.microsoft.com/fwlink/?LinkID=185083) も参照してください。 Service Bus の価格の詳細については、 [Service Bus の価格の詳細](https://azure.microsoft.com/pricing/details/service-bus/)に関するページを参照してください。
+このセクションでは、Service Bus の価格体系についてよく寄せられる質問 (FAQ) とその回答を紹介します。
+
+「[Service Bus の料金と課金](service-bus-pricing-billing.md)」の記事で、Service Bus の課金の計算方法について説明しています。Service Bus の価格オプションの詳細については、[Service Bus の価格の詳細](https://azure.microsoft.com/pricing/details/service-bus/)に関するページを参照してください。
+
+Azure の全般的な価格情報については、[Azure サポートに関する FAQ](http://go.microsoft.com/fwlink/?LinkID=185083) も参照してください。 
 
 ### <a name="how-do-you-charge-for-service-bus"></a>Service Bus の課金方法を教えてください
 Service Bus の価格について詳しくは、[Service Bus の価格の詳細][Pricing overview]に関するページをご覧ください。 既に説明した価格に加え、ご利用のアプリケーションがプロビジョニングされているデータ センターから外部に送信される関連データ転送に料金が発生します。

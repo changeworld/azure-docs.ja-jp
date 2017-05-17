@@ -4,7 +4,7 @@ description: "Azure で実行されている Windows および Linux 仮想マ�
 services: log-analytics
 documentationcenter: 
 author: richrundmsft
-manager: jochan
+manager: ewinner
 editor: 
 ms.assetid: ca39e586-a6af-42fe-862e-80978a58d9b1
 ms.service: log-analytics
@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 04/27/2017
 ms.author: richrund
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 87e888bf3d7355b36c42e8787abe9bf1cb191fcd
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
+ms.openlocfilehash: 1cab9d2f814e0c36dadcdd7bbc3cdc736de0af49
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -36,7 +37,7 @@ Linux 仮想マシンの場合は、*OMS Agent For Linux* という仮想マシ�
 ログ データにエージェント ベースの収集を使用する場合は、[Log Analytics のデータ ソース](log-analytics-data-sources.md)を構成して、収集するログとメトリックを指定する必要があります。
 
 > [!IMPORTANT]
-> [Azure 診断](log-analytics-azure-storage.md)を使用してログ データのインデックスを作成するように Log Analytics を構成したうえで、さらに同じログを収集するようにエージェントを構成した場合、ログは 2 回収集されます。 両方のデータ ソースに対して料金が発生します。 エージェントをインストールした場合は、エージェントのみでログ データを収集することをお勧めします。ログ データを Azure 診断から収集するように Log Analytics を構成することは避けてください。
+> [Azure 診断](log-analytics-azure-storage.md)を使用してログ データのインデックスを作成するように Log Analytics を構成したうえで、さらに同じログを収集するようにエージェントを構成した場合、ログは 2 回収集されます。 両方のデータ ソースに対して料金が発生します。 エージェントをインストールした場合は、エージェントのみでログ データを収集します。ログ データを Azure 診断から収集するように Log Analytics を構成することは避けてください。
 >
 >
 
@@ -74,7 +75,7 @@ Azure のクラシック仮想マシンと Resource Manager 仮想マシンと�
 
 クラシック仮想マシンの場合は、次の PowerShell の例を使用します。
 
-```
+```PowerShell
 Add-AzureAccount
 
 $workspaceId = "enter workspace ID here"
@@ -90,9 +91,14 @@ $vm = Get-AzureVM –ServiceName $hostedService
 # Set-AzureVMExtension -VM $vm -Publisher 'Microsoft.EnterpriseCloud.Monitoring' -ExtensionName 'OmsAgentForLinux' -Version '1.*' -PublicConfiguration "{'workspaceId': '$workspaceId'}" -PrivateConfiguration "{'workspaceKey': '$workspaceKey' }" | Update-AzureVM -Verbose
 ```
 
+Resource Manager の Linux VM の場合は、次の CLI を使用します。
+```azurecli
+az vm extension set --resource-group myRGMonitor --vm-name myMonitorVM --name OmsAgentForLinux --publisher Microsoft.EnterpriseCloud.Monitoring --version 1.3 --protected-settings ‘{"workspaceKey": "<workspace-key>"}’ --settings ‘{"workspaceId": "<workspace-id>"}’ 
+```
+
 Resource Manager 仮想マシンの場合は、次の PowerShell の例を使用します。
 
-```
+```PowerShell
 Login-AzureRMAccount
 Select-AzureSubscription -SubscriptionId "**"
 
@@ -122,8 +128,9 @@ $location = $vm.Location
 
 ```
 
+
 ## <a name="deploy-the-vm-extension-using-a-template"></a>テンプレートを使用して VM 拡張機能をデプロイする
-Azure Resource Manager で、アプリケーションのデプロイと構成を定義する JSON 形式の単純なテンプレートを作成できます。 このテンプレートはリソース マネージャー テンプレートと呼ばれ、デプロイの定義を宣言できます。 テンプレートを使用すると、アプリケーションをアプリのライフサイクルを通して繰り返しデプロイできるほか、常にリソースが一貫した状態でデプロイされます。
+Azure Resource Manager で、アプリケーションのデプロイと構成を定義する JSON 形式のテンプレートを作成できます。 このテンプレートはリソース マネージャー テンプレートと呼ばれ、デプロイの定義を宣言できます。 テンプレートを使用すると、アプリケーションをアプリのライフサイクルを通して繰り返しデプロイできるほか、常にリソースが一貫した状態でデプロイされます。
 
 Log Analytics エージェントを Resource Manager テンプレートの一部として含めることで、Log Analytics ワークスペースにレポートするように各仮想マシンを事前構成することができます。
 
@@ -135,7 +142,7 @@ Resource Manager テンプレートの詳細については、「[Azure Resource
 * Microsoft.EnterpriseCloud.Monitoring リソース拡張機能セクション
 * workspaceId と workspaceSharedKey を検索するための出力
 
-```
+```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -362,20 +369,20 @@ Resource Manager テンプレートの詳細については、「[Azure Resource
 
 次の PowerShell コマンドを使用して、テンプレートをデプロイすることができます。
 
-```
+```PowerShell
 New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile $templateFilePath
 ```
 
 ## <a name="troubleshooting-the-log-analytics-vm-extension"></a>Log Analytics VM 拡張機能のトラブルシューティング
 通常、何らかの問題が発生すると、Azure Portal または Azure PowerShell からメッセージが送信されます。
 
-1. [Azure ポータル](http://portal.azure.com)にサインインします。
+1. [Azure Portal](http://portal.azure.com) にサインインします。
 2. VM を検索し、VM の詳細を表示します。
 3. **[拡張機能]** をクリックして、OMS 拡張機能が有効になっているかどうかを確認します。
 
    ![VM の拡張機能の表示](./media/log-analytics-azure-vm-extension/oms-vmview-extensions.png)
 
-4. *MicrosoftMonitoringAgent* (Windows) 拡張機能または *OmsAgentForLinux* (Linux) 拡張機能をクリックして詳細を表示します。 
+4. *[MicrosoftMonitoringAgent]* (Windows) 拡張機能または *[OmsAgentForLinux]* (Linux) 拡張機能をクリックして詳細を表示します。 
 
    ![VM の拡張機能の詳細](./media/log-analytics-azure-vm-extension/oms-vmview-extensiondetails.png)
 
@@ -394,10 +401,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -Templa
 3. `C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent` で Microsoft Monitoring Agent VM 拡張機能のログ ファイルを確認します。
 4. 仮想マシンで PowerShell スクリプトを実行できることを確認します。
 5. C:\Windows\temp に対するアクセス許可が変更されていないことを確認します。
-6. 仮想マシン上の管理者特権の PowerShell ウィンドウで「`  (New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List`」と入力し、Microsoft Monitoring Agent の状態を確認します。
+6. 仮想マシン上の管理者特権の PowerShell ウィンドウで次のコマンドを入力し、Microsoft Monitoring Agent の状態を確認します。`  (New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List`
 7. `C:\Windows\System32\config\systemprofile\AppData\Local\SCOM\Logs` にある Microsoft Monitoring Agent のセットアップ ログ ファイルを確認します。
 
-詳細については、[Windows 拡張機能のトラブルシューティング](../virtual-machines/windows/extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
+詳細については、[Windows 拡張機能のトラブルシューティング](../virtual-machines/windows/extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
 
 ### <a name="troubleshooting-linux-virtual-machines"></a>Linux 仮想マシンのトラブルシューティング
 *OMS Agent for Linux* VM エージェント拡張機能のインストールまたはレポートが正しく機能しない場合は、以下の手順で問題をトラブルシューティングしてください。
@@ -408,7 +415,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -Templa
 2. それ以外の異常な状態については、OMS Agent for Linux VM 拡張機能のログ ファイル (`/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` および `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log`) を確認してください。
 3. 拡張機能が正常な状態であるにもかかわらず、データがアップロードされない場合は、OMS Agent for Linux のログ ファイル (`/var/opt/microsoft/omsagent/log/omsagent.log`) を確認してください。
 
-詳細については、[Linux 拡張機能のトラブルシューティング](../virtual-machines/linux/extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。
+詳細については、[Linux 拡張機能のトラブルシューティング](../virtual-machines/linux/extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 * 収集するログとメトリックを指定するために、 [Log Analytics のデータ ソース](log-analytics-data-sources.md) を構成します。

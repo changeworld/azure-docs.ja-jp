@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2017
 ms.author: dobett
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: ac3f4d2220c1902f00049ce237468ddee992209d
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/03/2017
 
 
@@ -394,7 +395,7 @@ IoT Hub でメッセージを送受信する方法を理解できたら、次の
 [lnk-event-hubs-consuming-events]: ../event-hubs/event-hubs-programming-guide.md#event-consumers
 [lnk-management-portal]: https://portal.azure.com
 [lnk-servicebus]: http://azure.microsoft.com/documentation/services/service-bus/
-[lnk-eventhub-partitions]: ../event-hubs/event-hubs-overview.md#partitions
+[lnk-eventhub-partitions]: ../event-hubs/event-hubs-features.md#partitions
 [lnk-portal]: iot-hub-create-through-portal.md
 [lnk-getstarted-eh]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md
 [lnk-getstarted-queue]: ../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md
@@ -435,5 +436,5 @@ IoT Hub でメッセージを送受信する方法を理解できたら、次の
 [lnk-getstarted-tutorial]: iot-hub-csharp-csharp-getstarted.md
 [lnk-c2d-tutorial]: iot-hub-csharp-csharp-c2d.md
 [lnk-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
-[lnk-event-hub-partitions]: ../event-hubs/event-hubs-what-is-event-hubs.md#partitions
+[lnk-event-hub-partitions]: ../event-hubs/event-hubs-features.md#partitions
 

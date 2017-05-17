@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 04/27/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 24375a7c56cdad59363803ef3aae724977961b44
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
+ms.openlocfilehash: 4e145740f8485e4a02c70f2c9d3a9fa6057da635
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -65,7 +66,7 @@ Azure モジュールは、Service Bus に接続するために必要な情報�
 
 Azure Cloud Service の構成ファイルで環境変数を設定する例については、[Storage を使用する Node.js Cloud Service に関するトピック][Node.js Cloud Service with Storage]をご覧ください。
 
-Azure Web サイトの [Azure クラシック ポータル][Azure classic portal]で環境変数を設定する例については、「[ストレージを使用する Node.js Web アプリケーション][Node.js Web Application with Storage]」をご覧ください。
+Azure Web サイトの Azure クラシック ポータル[Azure classic portal]で環境変数を設定する例については、「[ストレージを使用する Node.js Web アプリケーション][Node.js Web Application with Storage]」をご覧ください。
 
 ## <a name="create-a-topic"></a>トピックを作成する
 **ServiceBusService** オブジェクトを使用すると、トピックを操作できます。 次のコードでは、**ServiceBusService** オブジェクトを作成します。 **server.js** ファイルの先頭付近の、azure モジュールをインポートするステートメントの後に、このコードを追加します。
@@ -254,7 +255,7 @@ for (i = 0;i < 5;i++) {
 Service Bus トピックでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 1 つのトピックで保持されるメッセージ数に上限はありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。 このトピックのサイズはトピックの作成時に定義します。上限は 5 GB です。
 
 ## <a name="receive-messages-from-a-subscription"></a>サブスクリプションからメッセージを受信する
-サブスクリプションからメッセージを受信するには、**ServiceBusService** オブジェクトの **receiveSubscriptionMessage** メソッドを使用します。 既定では、メッセージは読み取られるときにサブスクリプションから削除されますが、省略可能な **isPeekLock** パラメーターを **true** に設定することによって、サブスクリプションからメッセージを削除せずに、メッセージを読み取って (ピークして) ロックすることができます。
+サブスクリプションからメッセージを受信するには、**ServiceBusService** オブジェクトの  **receiveSubscriptionMessage** メソッドを使用します。 既定では、メッセージは読み取られるときにサブスクリプションから削除されますが、省略可能な **isPeekLock** パラメーターを **true** に設定することによって、サブスクリプションからメッセージを削除せずに、メッセージを読み取って (ピークして) ロックすることができます。
 
 受信操作の中で行われるメッセージの読み取りと削除の既定の動作は、最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus はメッセージを読み取り済みとしてマークするため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされることになります。
 
@@ -289,10 +290,10 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 サブスクリプション内でロックされているメッセージにはタイムアウトも設定されています。アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージの処理に失敗した場合には、Service Bus によりメッセージのロックが自動的に解除され、再度受信できる状態に変わります。
 
-メッセージが処理された後、**deleteMessage** メソッドが呼び出される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 一般的に、この動作は **1 回以上の処理** と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。 通常、この問題はメッセージの **MessageId** プロパティを使用して対処します。このプロパティは配信が試行された後も同じ値を保持します。
+メッセージが処理された後、**deleteMessage** メソッドが呼び出される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 一般的に、この動作は *1 回以上の処理* と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。 通常、この問題はメッセージの **MessageId** プロパティを使用して対処します。このプロパティは配信が試行された後も同じ値を保持します。
 
 ## <a name="delete-topics-and-subscriptions"></a>トピックとサブスクリプションを削除する
-トピックおよびサブスクリプションは永続的であり、[Azure クラシック ポータル][Azure classic portal]またはプログラムによって明示的に削除する必要があります。
+トピックおよびサブスクリプションは永続的であり、[Azure ポータル][Azure portal]またはプログラムによって明示的に削除する必要があります。
 次の例では、`MyTopic` という名前のトピックを削除する方法を示します。
 
 ```javascript
@@ -321,10 +322,10 @@ serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error)
 * GitHub の [Azure SDK for Node][Azure SDK for Node] リポジトリ。
 
 [Azure SDK for Node]: https://github.com/Azure/azure-sdk-for-node
-[Azure classic portal]: https://manage.windowsazure.com
-[SqlFilter.SqlExpression]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sqlfilter#Microsoft_ServiceBus_Messaging_SqlFilter_SqlExpression
+[Azure portal]: https://portal.azure.com
+[SqlFilter.SqlExpression]: service-bus-messaging-sql-filter.md
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[SqlFilter]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sqlfilter
+[SqlFilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: ../app-service-web/app-service-web-get-started-nodejs.md
 [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md

@@ -12,6 +12,7 @@
       "type_mapping": {
         "Conceptual": "Content",
         "ManagedReference": "Content",
+        "LandingData": "Content",
         "RestApi": "Content"
       },
       "build_entry_point": "docs",
@@ -41,12 +42,12 @@
     },
     {
       "path_to_root": "cli_scripts",
-      "url": "https://github.com/Azure/azure-docs-cli-python-samples.git",
+      "url": "https://github.com/Azure/azure-docs-cli-python-samples",
       "branch": "master"
     },
     {
       "path_to_root": "powershell_scripts",
-      "url": "https://github.com/Azure/azure-docs-powershell-samples.git",
+      "url": "https://github.com/Azure/azure-docs-powershell-samples",
       "branch": "master"
     },
     {

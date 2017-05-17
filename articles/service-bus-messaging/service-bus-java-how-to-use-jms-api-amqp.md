@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 01/11/2017
+ms.date: 04/27/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: f0b0c3bc9daf1e44dfebecedf628b09c97394f94
-ms.openlocfilehash: eb22b8e8c2d2b4a619e50b94321d4f819764bdaa
-ms.lasthandoff: 01/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
+ms.openlocfilehash: cfd4822820270dbaf44a25f3e0fe749492765df8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -26,7 +27,7 @@ Advanced Message Queuing Protocol (AMQP) 1.0 は、堅牢なクロスプラッ�
 
 Service Bus での AMQP 1.0 のサポートにより、仲介型メッセージング機能 (キューおよびトピック発行/サブスクライブ) をさまざまなプラットフォームから効率的なバイナリ プロトコルを使って利用できます。 さらに、さまざまな言語、フレームワーク、およびオペレーティング システムを使って作成されたコンポーネントで構成されたアプリケーションを作成できます。
 
-この記事では、一般的な Java Message Service (JMS) API 規格を使用して Java アプリケーションから Service Bus のメッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法について説明します。 Service Bus .NET API を使用して同じ作業を実行する方法が説明されている[関連記事](service-bus-dotnet-advanced-message-queuing.md)があります。 これら 2 種類のガイドを使用して、AMQP 1.0 を使用したクロスプラットフォームのメッセージングについて学習できます。
+この記事では、一般的な Java Message Service (JMS) API 規格を使用して Java アプリケーションから Service Bus のメッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法について説明します。 Service Bus .NET API を使用して同じ作業を実行する方法が説明されている[関連記事](service-bus-amqp-dotnet.md)があります。 これら 2 種類のガイドを使用して、AMQP 1.0 を使用したクロスプラットフォームのメッセージングについて学習できます。
 
 ## <a name="get-started-with-service-bus"></a>Service Bus の概要
 このガイドは、**queue1** という名前のキューが含まれている Service Bus 名前空間が既にあることを前提としています。 まだない場合は、[Azure ポータル](https://portal.azure.com)を使用して[名前空間とキュー](service-bus-create-namespace-portal.md)を作成できます。 Service Bus 名前空間とキューの作成方法の詳細については、「[Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)」を参照してください。
@@ -110,7 +111,7 @@ topic.[jndi_name] = [physical_name]
 * **[physical_name]**: アプリケーションでのメッセージの送受信に使用する Service Bus エンティティの名前。
 
 > [!NOTE]
-> Service Bus トピック サブスクリプションから受信した場合は、JNDI で指定された物理名がトピックの名前になります。 サブスクリプション名は、JMS アプリケーション コードで永続的なサブスクリプションが作成されるときに指定されます。 「[Service Bus AMQP 1.0 開発者ガイド](service-bus-amqp-dotnet.md)」では、JMS からのサービス バス トピック サブスクリプションの使用の詳細について説明しています。
+> Service Bus トピック サブスクリプションから受信した場合は、JNDI で指定された物理名がトピックの名前になります。 サブスクリプション名は、JMS アプリケーション コードで永続的なサブスクリプションが作成されるときに指定されます。 「[Service Bus AMQP 1.0 開発者ガイド](service-bus-amqp-dotnet.md)」では、JMS からの Service Bus トピックの使用の詳細について説明しています。
 > 
 > 
 
@@ -118,7 +119,7 @@ topic.[jndi_name] = [physical_name]
 JMS と Service Bus の使用時に必要になる特殊な API やオプションはありません。 ただし、この後で取り上げているようないくつかの制限があります。 いずれの JMS アプリケーションでも、まず、**ConnectionFactory** と送信先の名前解決が可能になるように JNDI 環境を構成する必要があります。
 
 #### <a name="configure-the-jndi-initialcontext"></a>JNDI InitialContext の構成
-JNDI 環境を構成するには、構成情報のハッシュ テーブルを javax.naming.InitialContext クラスのコンストラクターに渡します。 ハッシュ テーブル内の&2; つの必須の要素は Initial Context Factory と Provider URL です。 次のコードでは、Qpid Properties File JNDI Provider と、**servicebus.properties** という名前のプロパティ ファイルを使用して、JNDI 環境を構成する方法を示しています。
+JNDI 環境を構成するには、構成情報のハッシュ テーブルを javax.naming.InitialContext クラスのコンストラクターに渡します。 ハッシュ テーブル内の 2 つの必須の要素は Initial Context Factory と Provider URL です。 次のコードでは、Qpid Properties File JNDI Provider と、**servicebus.properties** という名前のプロパティ ファイルを使用して、JNDI 環境を構成する方法を示しています。
 
 ```java
 Hashtable<String, String> env = new Hashtable<String, String>(); 
@@ -248,9 +249,7 @@ exit
 ## <a name="cross-platform-messaging-between-jms-and-net"></a>JMS と .NET の間のクロスプラットフォーム メッセージング
 このガイドでは、JMS を使用して Service Bus との間でメッセージを送信および受信する方法について説明しました。 しかし、AMQP 1.0 の主な利点の 1 つは、さまざまな言語で書かれたコンポーネントからアプリケーションを作成して、高い信頼性と完全な忠実度でメッセージ交換を行えることにあります。
 
-ここで示したサンプル JMS アプリケーションと、「[.NET サービス バス API で AMQP 1.0 を使用する方法](service-bus-dotnet-advanced-message-queuing.md)」に示されている類似の .NET アプリケーションを使用すると、.NET と Java の間でメッセージ交換を行うことができます。 
-
-サービス バスと AMQP 1.0 を使ったクロスプラットフォーム メッセージングの詳細については、「[Service Bus AMQP 1.0 開発者ガイド](service-bus-amqp-dotnet.md)」を参照してください。
+ここで示したサンプル JMS アプリケーションと、関連記事「[AMQP 1.0 で .NET から Service Bus を使用する](service-bus-amqp-dotnet.md)」に示されている類似の .NET アプリケーションを使用すると、.NET と Java の間でメッセージ交換を行うことができます。 Service Bus と AMQP 1.0 を使ったクロスプラットフォーム メッセージングの詳細については、この記事をご覧ください。
 
 ### <a name="jms-to-net"></a>JMS から .NET
 JMS から .NET のメッセージングを試してみるには、次の手順を実行します。
@@ -311,7 +310,7 @@ exit
 ## <a name="unsupported-features-and-restrictions"></a>サポートされていない機能および制限
 JMS を AMQP 1.0 と Service Bus で使用する場合は、次の制限があります。
 
-* **Session** ごとに作成できる **MessageProducer** または **MessageConsumer** は&1; つのみです。 アプリケーションで複数の **MessageProducers** または **MessageConsumers** を作成する必要がある場合は、それぞれに専用の**セッション**を作成してください。
+* **Session** ごとに作成できる **MessageProducer** または **MessageConsumer** は 1 つのみです。 アプリケーションで複数の **MessageProducers** または **MessageConsumers** を作成する必要がある場合は、それぞれに専用の**セッション**を作成してください。
 * 揮発性トピック サブスクリプションは現在サポートされていません。
 * **MessageSelectors** は現在サポートされていません。
 * 一時的な送信先である **TemporaryQueue** と **TemporaryTopic**、およびそれらを使用する **QueueRequestor** API と **TopicRequestor** API は現在サポートされていません。
@@ -320,7 +319,7 @@ JMS を AMQP 1.0 と Service Bus で使用する場合は、次の制限があ�
 ## <a name="summary"></a>概要
 このガイドでは、一般的な JMS API と AMQP 1.0 を使って Java から Service Bus の仲介型メッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法について説明しました。
 
-Service Bus AMQP 1.0 のサポートは、.NET、C、Python、PHP など、その他の言語からも使用できます。 Service Bus で AMQP 1.0 のサポートを使用すると、これらのさまざまな言語を使って作成されたコンポーネントで高い信頼性と十分な忠実度のメッセージ交換が実現されます。 詳細については、「[Service Bus AMQP 1.0 開発者ガイド](service-bus-amqp-dotnet.md)」を参照してください。
+Service Bus AMQP 1.0 のサポートは、.NET、C、Python、PHP など、その他の言語からも使用できます。 Service Bus で AMQP 1.0 のサポートを使用すると、これらのさまざまな言語を使って作成されたコンポーネントで高い信頼性と十分な忠実度のメッセージ交換が実現されます。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Service Bus での AMQP 1.0 サポート](service-bus-amqp-overview.md)

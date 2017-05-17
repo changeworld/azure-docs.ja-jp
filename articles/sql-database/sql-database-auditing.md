@@ -15,9 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/3/2017
 ms.author: giladm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
 ms.openlocfilehash: 20b46682471addfdaf563c55e989bb5d2271979f
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/15/2017
 
 
@@ -33,7 +34,7 @@ Azure SQL Database の監査では、データベース イベントを追跡し
 * [データベースに対する監査を設定する]
 * [監査ログとレポートを分析する]
 
-## <a id="subheading-1">Azure SQL Database 監査の概要</a>
+## <a id="subheading-1"></a>Azure SQL Database 監査の概要
 SQL Database 監査により、以下のことが可能になります。
 
 * **保持** 。 監査するデータベース活動のカテゴリを定義できます。

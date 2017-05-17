@@ -12,10 +12,11 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: awills
-translationtype: Human Translation
+ms.author: cfreeman
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: 717269a2c0e0b1a3d332e627154eacd2d2c5001e
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/12/2017
 
 

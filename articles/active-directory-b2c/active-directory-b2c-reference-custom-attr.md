@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
 ms.openlocfilehash: f7b21cc941f17d0815316dfe7013e9f97a95c223
+ms.contentlocale: ja-jp
 ms.lasthandoff: 05/05/2017
 
 

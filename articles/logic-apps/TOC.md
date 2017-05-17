@@ -80,6 +80,16 @@
 ### [料金](https://azure.microsoft.com/pricing/details/logic-apps/)
 ### [使用量の測定](logic-apps-pricing.md)
 
+# サーバーレス
+## 概要
+### [Azure でのサーバーレス](logic-apps-serverless-overview.md)
+## 作業の開始
+### [Visual Studio でサーバーレス アプリを作成する](logic-apps-serverless-get-started-vs.md)
+## シナリオとチュートリアル
+### [カスタマー フィードバックを収集する](logic-apps-scenario-social-serverless.md)
+### [自動メール送信](https://channel9.msdn.com/Blogs/Microsoft-Integration/Build-and-Deploy-Serverless-Part-1)
+### [B2B/EDI 注文処理](logic-apps-enterprise-integration-overview.md)
+
 # リファレンス
 ## [ワークフロー定義言語](logic-apps-workflow-definition-language.md)
 ## [ワークフローのアクションとトリガー](logic-apps-workflow-actions-triggers.md)

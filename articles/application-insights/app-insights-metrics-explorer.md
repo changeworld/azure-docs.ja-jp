@@ -4,7 +4,7 @@ description: "メトリック エクスプローラーでグラフを解釈す�
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 1f471176-38f3-40b3-bc6d-3f47d0cbaaa2
 ms.service: application-insights
 ms.workload: tbd
@@ -12,10 +12,11 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
-ms.author: awills
-translationtype: Human Translation
+ms.author: cfreeman
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
 ms.openlocfilehash: 9457b4628414400849198222d361d1b51c682ec0
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/13/2017
 
 

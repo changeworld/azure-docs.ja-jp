@@ -4,7 +4,7 @@ description: "Application Insights で利用できる言語、プラットフォ
 services: application-insights
 documentationcenter: 
 author: OlegAnaniev-MSFT
-manager: douge
+manager: carmonm
 ms.assetid: 974db106-54ff-4318-9f8b-f7b3a869e536
 ms.service: application-insights
 ms.workload: tbd
@@ -12,11 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/01/2016
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: c0ae2357d670a43547a9eb257c634b073cb5d325
-ms.lasthandoff: 04/26/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: b78c574e9edf6ce28e8deb80d264858d480f5861
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -41,6 +42,7 @@ ms.lasthandoff: 04/26/2017
 * [Android](https://github.com/Microsoft/ApplicationInsights-Android) (HockeyApp)
 * [Azure Web Apps](app-insights-azure-web-apps.md)
 * [Azure Cloud Services](app-insights-cloudservices.md)&#151; Web ロールと worker ロールの両方を含む
+* [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)
 * [Docker](app-insights-docker.md)
 * [Glimpse](https://azure.microsoft.com/blog/glimpse-application-insights/)
 * [iOS](https://github.com/Microsoft/ApplicationInsights-iOS) (HockeyApp)

@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
-ms.date: 01/11/2017
+ms.date: 04/27/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 43197f7402795c37fa7ed43658bc3b8858a41080
-ms.openlocfilehash: c083d8ac0d16de40de4a2a9908cdcf2e02ed3d6a
-ms.lasthandoff: 01/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
+ms.openlocfilehash: a71b3f455c2e84cd6aa4401621a24d5585e0da3c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -34,7 +35,7 @@ ms.lasthandoff: 01/13/2017
 手順については、[Microsoft Azure での Ruby アプリケーションの作成](../virtual-machines/linux/classic/virtual-machines-linux-classic-ruby-rails-web-app.md) に関するページを参照してください。
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Service Bus を使用するようにアプリケーションを構成する
-Service Bus を使用するには、Ruby Azure パッケージをダウンロードして使用します。このパッケージには、ストレージ REST サービスと通信するための便利なライブラリのセットが含まれています。
+Service Bus を使用するには、Azure Ruby パッケージをダウンロードして使用します。このパッケージには、ストレージ REST サービスと通信するための便利なライブラリのセットが含まれています。
 
 ### <a name="use-rubygems-to-obtain-the-package"></a>RubyGems を使用してパッケージを取得する
 1. **PowerShell** (Windows)、**ターミナル** (Mac)、**Bash** (Unix) などのコマンド ライン インターフェイスを使用します。
@@ -94,7 +95,7 @@ subscription = azure_service_bus_service.create_subscription("test-topic", "all-
 ### <a name="create-subscriptions-with-filters"></a>フィルターを適用したサブスクリプションの作成
 トピックに送信されたメッセージのうち、特定のサブスクリプション内に表示されるメッセージを指定するフィルターを定義することもできます。
 
-サブスクリプションでサポートされるフィルターのうち、最も柔軟性の高いものが、SQL92 のサブセットを実装する **Azure::ServiceBus::SqlFilter** です。 SQL フィルターは、トピックに発行されるメッセージのプロパティに対して適用されます。 SQL フィルターで使用できる式の詳細については、[SqlFilter.SqlExpression](http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx) 構文の説明を参照してください。
+サブスクリプションでサポートされるフィルターのうち、最も柔軟性の高いものが、SQL92 のサブセットを実装する **Azure::ServiceBus::SqlFilter** です。 SQL フィルターは、トピックに発行されるメッセージのプロパティに対して適用されます。 SQL フィルターで使用できる式の詳細については、[SqlFilter](service-bus-messaging-sql-filter.md) 構文の説明をご覧ください。
 
 **Azure::ServiceBusService** オブジェクトの **create\_rule()** メソッドを使用して、サブスクリプションにフィルターを追加できます。 このメソッドでは、新しいフィルターを既存のサブスクリプションに追加できます。
 
@@ -133,7 +134,7 @@ rule = azure_service_bus_service.create_rule(rule)
 ## <a name="send-messages-to-a-topic"></a>メッセージをトピックに送信する
 メッセージを Service Bus トピックに送信するには、アプリケーションで **Azure::ServiceBusService** オブジェクトの **send\_topic\_message()** メソッドを使用する必要があります。 Service Bus トピックに送信されたメッセージは、**Azure::ServiceBus::BrokeredMessage** オブジェクトのインスタンスです。 **Azure::ServiceBus::BrokeredMessage** オブジェクトには、一連の標準的なプロパティ (**label**、**time\_to\_live** など)、アプリケーションに特有のカスタム プロパティの保持に使用するディクショナリ、および文字列データの本体が備わっています。 アプリケーションでは、文字列値を **send\_topic\_message()** メソッドに渡すことによってメッセージの本文を設定できます。必須の標準プロパティは既定値に設定されます。
 
-次の例では、"test-topic" に&5; 件のテスト メッセージを送信する方法を示します。 各メッセージの **message_number** カスタム プロパティの値が、ループの反復回数に応じて変化することに注意してください (これによってメッセージを受信するサブスクリプションが決定されます)。
+次の例では、"test-topic" に 5 件のテスト メッセージを送信する方法を示します。 各メッセージの **message_number** カスタム プロパティの値が、ループの反復回数に応じて変化することに注意してください (これによってメッセージを受信するサブスクリプションが決定されます)。
 
 ```ruby
 5.times do |i|
@@ -148,7 +149,7 @@ Service Bus トピックでサポートされているメッセージの最大�
 ## <a name="receive-messages-from-a-subscription"></a>サブスクリプションからメッセージを受信する
 サブスクリプションからメッセージを受信するには、**Azure::ServiceBusService** オブジェクトの **receive\_subscription\_message()** メソッドを使用します。 既定では、メッセージは読み取られて (ピークされて) ロックされますが、サブスクリプションからは削除されません。 **peek\_lock** オプションを **false** に設定すると、サブスクリプションからメッセージを読み取って削除できます。
 
-既定の動作では、読み取りと削除が&2; 段階の操作になるため、メッセージが失われることを許容できないアプリケーションにも対応することができます。 Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。 アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、**delete\_subscription\_message()** メソッドを呼び出し、削除するメッセージをパラメーターとして指定して、受信処理の第&2; 段階を完了します。 **delete\_subscription\_message()** メソッドによって、メッセージが読み取り中としてマークされ、サブスクリプションから削除されます。
+既定の動作では、読み取りと削除が 2 段階の操作になるため、メッセージが失われることを許容できないアプリケーションにも対応することができます。 Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。 アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、**delete\_subscription\_message()** メソッドを呼び出し、削除するメッセージをパラメーターとして指定して、受信処理の第 2 段階を完了します。 **delete\_subscription\_message()** メソッドによって、メッセージが読み取り中としてマークされ、サブスクリプションから削除されます。
 
 **:peek\_lock** パラメーターを **false** に設定すると、メッセージの読み取りと削除は最もシンプルなモデルになります。これは、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus はメッセージを読み取り済みとしてマークするため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされることになります。
 
@@ -167,7 +168,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 サブスクリプション内でロックされているメッセージには、タイムアウトも設定されています。アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージの処理に失敗した場合は、Service Bus によってメッセージのロックが自動的に解除され、再度受信できる状態に変わります。
 
-メッセージが処理された後、**delete\_subscription\_message()** メソッドが呼び出される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動するときにメッセージが再配信されます。 一般的に、この動作は **1 回以上の処理** と呼ばれます。つまり、すべてのメッセージが&1; 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。 通常、このロジックはメッセージの **message\_id** プロパティを使用して対処します。このプロパティは配信が試行された後も同じ値を保持します。
+メッセージが処理された後、**delete\_subscription\_message()** メソッドが呼び出される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動するときにメッセージが再配信されます。 一般的に、この動作は *1 回以上の処理* と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。 通常、このロジックはメッセージの **message\_id** プロパティを使用して対処します。このプロパティは配信が試行された後も同じ値を保持します。
 
 ## <a name="delete-topics-and-subscriptions"></a>トピックとサブスクリプションを削除する
 トピックおよびサブスクリプションは永続的であり、[Azure ポータル][Azure portal]またはプログラムによって明示的に削除する必要があります。 次の例では、"test-topic" という名前のトピックを削除する方法を示します。
@@ -186,7 +187,7 @@ azure_service_bus_service.delete_subscription("test-topic", "high-messages")
 これで、サービス バス トピックの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先をご覧ください。
 
 * [Service Bus のキュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)。
-* [SqlFilter](http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx) の API のリファレンス。
+* [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter#microsoft_servicebus_messaging_sqlfilter) の API のリファレンス。
 * GitHub の [Azure SDK for Ruby](https://github.com/Azure/azure-sdk-for-ruby) リポジトリ。
 
 [Azure portal]: https://portal.azure.com

@@ -16,9 +16,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2016
 ms.author: saudas
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 3f6bc85230b57d7b9523a87f90783c27039ef820
 ms.openlocfilehash: cee1bac89c30cae65790bd86498f0adec30da87d
+ms.contentlocale: ja-jp
 ms.lasthandoff: 05/05/2017
 
 

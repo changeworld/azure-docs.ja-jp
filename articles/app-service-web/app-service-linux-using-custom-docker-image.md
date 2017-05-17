@@ -1,6 +1,6 @@
 ---
-title: "Azure App Service on Linux 向けにカスタム Docker イメージを使用する方法 | Microsoft Docs"
-description: "App Service on Linux 向けにカスタム Docker イメージを使用する方法を説明します。"
+title: "Azure Web App on Linux 向けにカスタム Docker イメージを使用する方法 | Microsoft Docs"
+description: "Azure Web App on Linux 向けにカスタム Docker イメージを使用する方法。"
 keywords: "Azure App Service, Web アプリ, Linux, Docker, コンテナー"
 services: app-service
 documentationcenter: 
@@ -15,15 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: naziml;wesmc
-translationtype: Human Translation
-ms.sourcegitcommit: bb4c7ea7adfe1326ae8259782b5de2762c8c2bf5
-ms.openlocfilehash: 7e4aab65feac187b48ccca65b35bb94185323506
-ms.lasthandoff: 02/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 9962766b0a1fdfe313b70ea65e08785ec8a97996
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
 
-# <a name="using-a-custom-docker-image-for-app-service-on-linux"></a>App Service on Linux でのカスタム Docker イメージの使用 #
+# <a name="using-a-custom-docker-image-for-azure-web-app-on-linux"></a>Azure Web App on Linux 向けのカスタム Docker イメージを使用する #
+
+[!INCLUDE [app-service-linux-preview](../../includes/app-service-linux-preview.md)]
+
 
 App Service は、事前定義済みのアプリケーション スタックを Linux 上で提供し、PHP 7.0 や Node.js 4.5 などの特定のバージョンをサポートします。 App Service on Linux では、これらの構成済みのアプリケーション スタックをホストするために Docker コンテナーを使用します。 まだ Azure で定義されていないアプリケーション スタックに Web アプリをデプロイする場合にも、カスタム Docker イメージを使用できます。 カスタム Docker イメージは、パブリック Docker リポジトリとプライベート Docker リポジトリのどちらでもホストできます。
 
@@ -98,12 +102,12 @@ SCM サイトには、**[開発ツール]** メニューの **[Advanced Tools]**
 
 ## <a name="next-steps"></a>次のステップ ##
 
-App Service on Linux の使用を開始するには、次のリンクを参照してください。   
+Web App on Linux の使用を開始するには、次のリンクを参照してください。   
 
 * [App Service on Linux の概要](./app-service-linux-intro.md)
-* [App Service on Linux での Web Apps の作成](./app-service-linux-how-to-create-a-web-app.md)
-* [Web Apps on Linux での Node.js 向け PM2 構成の使用](./app-service-linux-using-nodejs-pm2.md)
-* [Azure App Service Web Apps on Linux の FAQ](app-service-linux-faq.md)
+* [Azure Web App on Linux で Web Apps を作成する](./app-service-linux-how-to-create-web-app.md)
+* [Azure Web App on Linuxで Node.js の PM2 構成を使用する](./app-service-linux-using-nodejs-pm2.md)
+* [Azure App Service Web App on Linux の FAQ](app-service-linux-faq.md)
 
 質問や問題は、[フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)に投稿してください。
 

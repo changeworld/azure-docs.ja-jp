@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2017
+ms.date: 05/16/2017
 ms.author: dhanyahk;markvi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 665b613db31b15b6f6d2826a0795be6275c832ca
 ms.openlocfilehash: 8216fa7ab092b2d0225d075d933fa56fbab56f40
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -166,10 +168,5 @@ EU リージョン内にテナントがある場合、アプリの認証は行�
 * このトピックに掲載されているサンプルをカスタマイズしますか。 [Azure Active Directory 監査 API リファレンス](active-directory-reporting-api-audit-reference.md)を確認してください。 
 * Azure Active Directory Reporting API の使用に関する網羅的な概要を参照するには、 [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md)を参照してください。
 * Azure Active Directory のレポート作成に関する詳細については、「 [Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)」を参照してください。  
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

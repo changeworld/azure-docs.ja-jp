@@ -13,11 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 05/16/2017
 ms.author: markvi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: a6227096559af9b9beba7081ba770db80189dc18
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -56,10 +58,5 @@ Windows 10 Professional または Windows 10 Enterprise のいずれかのエデ
 * [Azure AD 参加の使用シナリオについて](active-directory-azureadjoin-deployment-aadjoindirect.md)
 * [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD Join の設定](active-directory-azureadjoin-setup.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

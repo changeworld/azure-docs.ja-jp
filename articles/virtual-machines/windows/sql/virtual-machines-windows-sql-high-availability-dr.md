@@ -15,9 +15,10 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: 65e3564111b1f291bead685ae0c831951460c827
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/31/2017
 
 
@@ -70,7 +71,7 @@ Azure 内の SQL Server データベースの災害復旧ソリューション�
 | **AlwaysOn 可用性グループ** |クロスサイト障害復旧のために、いくつかの可用性レプリカが Azure VM で実行され、その他のレプリカがオンプレミスで実行されます。 実稼働サイトは、オンプレミスに置くことも、Azure データセンターに置くこともできます。<br/>![AlwaysOn 可用性グループ](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_alwayson.gif)<br/>すべての可用性レプリカは同じフェールオーバー クラスターに存在する必要があるため、クラスターは両方のネットワークにまたがっている必要があります (マルチサブネット フェールオーバー クラスター)。 この構成には、Azure とオンプレミス ネットワークの間の VPN 接続が必要です。<br/><br/>データベースの障害復旧を成功させるには、障害復旧サイトにレプリカ ドメイン コントローラーもインストールする必要があります。<br/><br/>SSMS のレプリカの追加ウィザードを使用して、既存の AlwaysOn 可用性グループに Azure レプリカを追加できます。 詳細については、Azure への AlwaysOn 可用性グループの拡張に関するチュートリアルをご覧ください。 |
 | **データベース ミラーリング** |サーバー証明書を使用するクロスサイト障害復旧のために、1 つのパートナーが Azure VM で実行され、もう 1 つがオンプレミスで実行されます。 パートナーは、同じ Active Directory ドメイン内にある必要がなく、VPN 接続も必要ありません。<br/>![データベース ミラーリング](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_dbmirroring.gif)<br/>もう 1 つのデータベース ミラーリング シナリオとして、クロスサイト障害復旧のために、1 つのパートナーを Azure VM で実行し、もう 1 つを同じ Active Directory ドメイン内のオンプレミスで実行するという形式があります。 [Azure Virtual Network とオンプレミス ネットワークの間の VPN 接続](../../../vpn-gateway/vpn-gateway-site-to-site-create.md)が必要です。<br/><br/>データベースの障害復旧を成功させるには、障害復旧サイトにレプリカ ドメイン コントローラーもインストールする必要があります。 |
 | **ログ配布** |クロスサイト障害復旧のために、1 つのサーバーが Azure VM で実行され、もう 1 つがオンプレミスで実行されます。 ログ配布は Windows ファイル共有に依存しているため、Azure Virtual Network とオンプレミス ネットワークの間の VPN 接続が必要です。<br/>![ログ配布](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_log_shipping.gif)<br/>データベースの障害復旧を成功させるには、障害復旧サイトにレプリカ ドメイン コントローラーもインストールする必要があります。 |
-| **Azure BLOB ストレージ サービスを使用したバックアップと復元** |オンプレミスの実稼働データベースが、災害復旧のために、Azure Blob Storage に直接バックアップされます。<br/>![バックアップと復元](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_backup_restore.gif)<br/>詳細については、「[Azure Virtual Machines における SQL Server のバックアップと復元](virtual-machines-windows-sql-backup-recovery.md)」を参照してください。 |
+| **Azure BLOB ストレージ サービスを使用したバックアップと復元** |オンプレミスの実稼働データベースが、ディザスター リカバリーのために、Azure Blob Storage に直接バックアップされます。<br/>![バックアップと復元](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_backup_restore.gif)<br/>詳細については、「[Azure Virtual Machines における SQL Server のバックアップと復元](virtual-machines-windows-sql-backup-recovery.md)」を参照してください。 |
 
 ## <a name="important-considerations-for-sql-server-hadr-in-azure"></a>Azure での SQL Server HADR の重要な考慮事項
 Azure の VM、ストレージ、およびネットワークには、オンプレミスの非仮想化 IT インフラストラクチャとは異なる動作特性があります。 Azure での HADR SQL Server ソリューションの実装を成功させるには、これらの違いを理解し、それに対応したソリューションを設計する必要があります。

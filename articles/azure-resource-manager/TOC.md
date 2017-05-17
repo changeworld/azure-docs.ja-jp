@@ -53,6 +53,7 @@
 ### [REST API](resource-manager-rest-api.md)
 ### [タグを使用してリソースを整理する](resource-group-using-tags.md)
 ### [リソースを新しいグループまたはサブスクリプションに移動する](resource-group-move-resources.md)
+### [UI 定義を作成する](managed-application-createuidefinition-overview.md)
 ## アクセスを制御する
 ### [PowerShell でサービス プリンシパルを作成する](resource-group-authenticate-service-principal.md)
 ### [Azure CLI 2.0 でサービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
@@ -82,6 +83,7 @@
 ### [数値関数](resource-group-template-functions-numeric.md)
 ### [リソース関数](resource-group-template-functions-resource.md)
 ### [文字列関数](resource-group-template-functions-string.md)
+## [UI 定義関数](managed-application-createuidefinition-functions.md)
 ## [PowerShell](/powershell/module/azurerm.resources)
 ## [Azure 2.0 CLI](/cli/azure/resource)
 ## [.NET](/dotnet/api/microsoft.azure.management.resourcemanager)

@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2017
 ms.author: trinadhk;markgal;jpallavi;
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 024b0019150c4d9117151d8faedb08ea3181d8c4
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: f89375510cdcb89d800edc2513f34e601f52efe9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/04/2017
 
 
 ---
@@ -49,10 +50,10 @@ ms.lasthandoff: 04/26/2017
 | VSS ライターの状態が正しくないため、スナップショット操作に失敗しました |状態が正しくない VSS (ボリューム シャドウ コピー サービス) ライターを再起動する必要があります。 これを実現するには、管理者特権でのコマンド プロンプトから、_vssadmin list writers_ を実行します。 出力には、すべての VSS ライターとそれらの状態が含まれています。 "[1] 安定" 状態ではない VSS ライターすべてに対して、管理者特権でのコマンド プロンプトから次のコマンドを実行して、VSS ライターを再起動します。<br> _net stop serviceName_ <br> _net start serviceName_|
 | 構成の解析に失敗したため、スナップショット操作に失敗しました |これは、次の MachineKeys ディレクトリでアクセス許可が変更されたことで発生します。_%systemdrive%\programdata\microsoft\crypto\rsa\machinekeys。_ <br>次のコマンドを実行し、MachineKeys ディレクトリのアクセス許可が既定のものであることを確認してください。<br>_icacls %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys_ <br><br> 既定のアクセス許可は、次のとおりです。<br>Everyone:(R,W) <br>BUILTIN\Administrators:(F)<br><br>MachineKeys ディレクトリで既定以外のアクセス許可が表示される場合は、以下の手順に従い、アクセス許可の修正、証明書の削除、バックアップのトリガーを行ってください。<ol><li>MachineKeys ディレクトリのアクセス許可を修正します。<br>ディレクトリで Explorer のセキュリティ プロパティやセキュリティの詳細設定を使用して、アクセス許可を既定値にリセットし、ディレクトリに追加 (既定値以外) のユーザー オブジェクトがある場合は削除し、次の項目で "Everyone" アクセス許可に特殊なアクセス許可が設定されていることを確認します。<br>- フォルダーの一覧、データの読み取り <br>- 属性の読み取り <br>- 拡張属性の読み取り <br>- ファイルの作成、データの書き込み <br>-フォルダーの作成、データの追加<br>- 属性の書き込み<br>- 拡張属性の書き込み<br>- アクセス許可の読み取り<br><br><li>[発行先] フィールドが [Windows Azure Service Management for Extensions] または [Windows Azure CRP Certificate Generator] になっている証明書を削除します<ul><li>[証明書 (ローカル コンピューター) コンソールを開く](https://msdn.microsoft.com/library/ms788967(v=vs.110).aspx)<li>[個人用] -> [証明書] の [発行先] フィールドが [Windows Azure Service Management for Extensions] または [Windows Azure CRP Certificate Generator] になっている証明書を削除します</ul><li>VM のバックアップをトリガーします。 </ol>|
 | 仮想マシンが BEK だけで暗号化されているため、検証に失敗しました。 バックアップは、BEK と KEK の両方を使って暗号化した仮想マシンに限り、有効にすることができます。 |仮想マシンは、BitLocker 暗号化キーとキー暗号化キーの両方を使って暗号化する必要があります。 それが済んだら、バックアップを有効にしてください。 |
-| Azure Backup サービスには、暗号化された仮想マシンのバックアップ用 Key Vault に対する十分な権限がありません。 |[PowerShell ドキュメント](backup-azure-vms-automation.md#backup-azure-vms)の「**バックアップの有効化**」セクションの手順に従い、PowerShell を使って Backup サービスに適切なアクセス許可を付与する必要があります。 |
+| Azure Backup サービスには、暗号化された仮想マシンのバックアップ用 Key Vault に対する十分な権限がありません。 |[PowerShell ドキュメント](backup-azure-vms-automation.md)の「**バックアップの有効化**」セクションの手順に従い、PowerShell を使って Backup サービスに適切なアクセス許可を付与する必要があります。 |
 |"COM+ が Microsoft 分散トランザクション コーディネーターと通信できませんでした" というエラーでスナップショット拡張機能のインストールが失敗しました | Windows サービス "COM+ システム アプリケーション" を起動してみてください (管理者特権のコマンド プロンプトで _net start COMSysApp_ を実行します)。 <br>起動中に失敗した場合は、以下の手順に従ってください。<ol><li> サービスのログオン アカウントが "分散トランザクション コーディネーター" または "ネットワーク サービス" であることを確認します。 そうでない場合は、"ネットワーク サービス" に変更してサービスを再度起動し、"COM+ システム アプリケーション" サービスを起動してみてください。<li>それでも起動できない場合は、以下の手順に従って、"分散トランザクション コーディネーター" サービスのアンインストールとインストールを行ってください。<br> - MSDTC サービスを停止します<br> - コマンド プロンプト (cmd) を開きます <br> - コマンド “msdtc -uninstall” を実行します <br> - コマンド “msdtc -install” を実行します <br> - MSDTC サービスを起動します<li>Windows サービスの "COM + システム アプリケーション" を起動し、サービスが起動されたら、ポータルからバックアップをトリガーします。</ol> |
 | ファイル システムの一貫性のあるスナップショットの取得で VM の 1 つまたは複数のマウント ポイントをフリーズできませんでした | <ol><li>_'tune2fs'_ コマンドを使用して、マウントされているすべてのデバイスのファイル システムの状態を確認します。<br> 例: tune2fs -l /dev/sdb1 \| grep "Filesystem state" <li>ファイル システムの状態がクリーンではないデバイスを、_'umount'_ コマンドを使用してマウント解除します。 <li> これらのデバイスで、_'fsck'_ コマンドを使用して FileSystemConsistency チェックを実行します。 <li> デバイスを再度マウントして、バックアップをやり直します。</ol> |
-| セキュリティで保護されたネットワーク通信チャネルを作成できないため、スナップショット操作が失敗しました | <ol><Li> 管理者特権モードで regedit.exe を実行してレジストリ エディターを開きます。 <li> システムに存在するすべてのバージョンの .NetFramework を識別します。 それらは、レジストリ キーの階層 "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft" の下にあります。 <li> レジストリ キー内に存在する各 .NetFramework に対して、次のキーを追加します。 <br> "SchUseStrongCrypto"=dword:00000001 </ol>| 
+| セキュリティで保護されたネットワーク通信チャネルを作成できないため、スナップショット操作が失敗しました | <ol><Li> 管理者特権モードで regedit.exe を実行してレジストリ エディターを開きます。 <li> システムに存在するすべてのバージョンの .NetFramework を識別します。 それらは、レジストリ キーの階層 "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft" の下にあります。 <li> レジストリ キー内に存在する各 .NetFramework に対して、次のキーを追加します。 <br> "SchUseStrongCrypto"=dword:00000001 </ol>|
 | Visual Studio 2012 用の Visual C++ 再配布可能プログラムをインストールできないため、スナップショット操作が失敗しました | C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion に移動し、vcredist2012_x64 をインストールします。 このサービスのインストールを許可するレジストリ キー値が正しい値に設定されていることを確認します。つまり、_HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver_ は  4 ではなく 3 に設定されている必要があります。 インストールに関する問題が解消されない場合は、管理者特権でコマンド プロンプトから _MSIEXEC /UNREGISTER_ と _MSIEXEC /REGISTER_ を続けて実行して、インストール サービスを再起動します。  |
 
 
@@ -80,7 +81,7 @@ ms.lasthandoff: 04/26/2017
 | Backup サービスは、サブスクリプション内のリソースへのアクセスが承認されていません。 |これを解決するには、「[VM の復元構成の選択](backup-azure-arm-restore-vms.md#choosing-a-vm-restore-configuration)」の**バックアップされたディスクの復元**に関するセクションで説明されている手順に従って、最初にディスクを復元します。 その後、「[復元されたディスクからの VM の作成](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)」で説明されている PowerShell の手順を使用して、復元されたディスクから完全な VM を作成します。 |
 
 ## <a name="backup-or-restore-taking-time"></a>バックアップまたは復元に要する時間
-バックアップが 12 時間以上、復元が 6 時間以上かかる場合は、[バックアップのベスト プラクティス](backup-azure-vms-introduction.md#best-practices)に関するページの指示に従っているかどうかを確認してください。 さらに、アプリケーションが、[Azure Storage をバックアップのために最適化された方法](backup-azure-vms-introduction.md#total-vm-backup-time)で使用していることを確認します。 
+バックアップが 12 時間以上、復元が 6 時間以上かかる場合は、[バックアップのベスト プラクティス](backup-azure-vms-introduction.md#best-practices)に関するページの指示に従っているかどうかを確認してください。 さらに、アプリケーションが、[Azure Storage をバックアップのために最適化された方法](backup-azure-vms-introduction.md#total-vm-backup-time)で使用していることを確認します。
 
 ## <a name="vm-agent"></a>VM エージェント
 ### <a name="setting-up-the-vm-agent"></a>VM エージェントの設定

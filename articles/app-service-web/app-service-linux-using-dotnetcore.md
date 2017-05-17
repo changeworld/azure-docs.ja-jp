@@ -1,6 +1,6 @@
 ---
 title: "Azure App Service Web Apps on Linux での .NET Core の使用 | Microsoft Docs"
-description: "Azure App Service Web Apps on Linux での .NET Core の使用について説明します。"
+description: "Azure App Service Web Apps on Linux で .NET Core を使用します。"
 keywords: "Azure App Service, Web アプリ, .NET, コア, Linux, OSS"
 services: app-service
 documentationCenter: 
@@ -13,24 +13,28 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/16/2017
+ms.date: 05/07/2017
 ms.author: aelnably;wesmc
-translationtype: Human Translation
-ms.sourcegitcommit: bb4c7ea7adfe1326ae8259782b5de2762c8c2bf5
-ms.openlocfilehash: 769de52a85d1d5078b2ba583e94cabd22b0fde65
-ms.lasthandoff: 02/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 3608ddf86c3d8010b577e6f745dcd5cef016acd9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
 
-# <a name="using-net-core-in-web-apps-on-linux"></a>Web Apps on Linux での .NET Core の使用 #
+# <a name="using-net-core-in-azure-web-app-on-linux"></a>Azure Web App on Linux で .NET Core を使用する #
+
+[!INCLUDE [app-service-linux-preview](../../includes/app-service-linux-preview.md)]
+
 
 バックエンドの最新の更新で、.NET Core v.1.0 のサポートが導入されました。 Linux の Web アプリの構成を設定することで、アプリケーション スタックを変更できます。
 
 
-## <a name="using-xplat-cli"></a>XPlat CLI の使用 ##
+## <a name="using-the-azure-cli"></a>Azure CLI の使用 ##
 
-最新の Azure クロス プラットフォーム CLI を使用することで、**azure webapp config set** コマンドを使用し、アプリケーション スタックを変更することができます。 たとえば次のようになります。
+[最新の Azure コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli) を使用することで、**azure webapp config set** コマンドを使用してアプリケーション スタックを変更することができます。 たとえば次のようになります。
 
         azure webapp config set --name ContosoAppServicePlan --resource-group ContosoLinuxAzureResourceGroup --netframeworkversion v1.0 --appcommandline aspnetcore.dll
 
@@ -41,7 +45,7 @@ ms.lasthandoff: 02/17/2017
         azure webapp config show --name ContosoAppServicePlan --resource-group ContosoLinuxAzureResourceGroup
 
 ## <a name="next-steps"></a>次のステップ
-* [App Service on Linux とは](app-service-linux-intro.md)
-* [App Service on Linux での Web Apps の作成](./app-service-linux-how-to-create-a-web-app.md)
+* [Azure Web App on Linux とは](app-service-linux-intro.md)
+* [Azure Web App on Linux で Web Apps を作成する](./app-service-linux-how-to-create-web-app.md)
 * [Azure Web アプリのクロス プラットフォーム CLI](app-service-web-app-azure-resource-manager-xplat-cli.md)
-* [Azure App Service Web Apps on Linux の FAQ](app-service-linux-faq.md)
+* [Azure App Service Web App on Linux の FAQ](app-service-linux-faq.md)

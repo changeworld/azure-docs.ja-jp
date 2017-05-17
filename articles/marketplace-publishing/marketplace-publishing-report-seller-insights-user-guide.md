@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2017
 ms.author: v-dabosl
-translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: 63153ca5c0f5e3c68db09d0e59fa26ee8cb1e465
-ms.lasthandoff: 04/04/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: e168e9610cbe493618121c688e349064c877fc8a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -26,6 +27,8 @@ ms.lasthandoff: 04/04/2017
 
 >[!NOTE]
 >管理者のみ
+
+このセクションでは、初めて Seller Insights Portal にアクセスするときの方法について説明します。
 
 ###<a name="overview-of-roles"></a>ロールの概要
 
@@ -44,7 +47,7 @@ Seller Insights Portal のユーザーは、組織で利用できるすべての
 サービスをアクティブ化するには、管理者は招待メールに表示されている URL (https://reports.azure.com) に移動する必要があります。
 
 >[!NOTE]
->注: 管理者の電子メールが Microsoft アカウントとして表示されており、招待の送信元の電子メール アドレスに関連付けられた Microsoft アカウントをまだ作成していない場合は、https://signup.live.command に移動してサインオンする前に、その電子メール アドレスを使用して Microsoft アカウントを作成する必要があります。
+>管理者の電子メールが Microsoft アカウントとして表示されており、招待の送信元の電子メール アドレスに関連付けられた Microsoft アカウントをまだ作成していない場合は、https://signup.live.command に移動してサインオンする前に、その電子メール アドレスを使用して Microsoft アカウントを作成する必要があります。
 
 ###<a name="sign-in-to-the-portal"></a>Portal にサインインする
 
@@ -61,7 +64,13 @@ Seller Insights Portal のユーザーは、組織で利用できるすべての
 管理者からの電子メールで、販売者のアカウントが作成されたことと、Seller Insights Portal の URL (https://reports.azure.com) が通知されます。
 
 >[!NOTE]
->管理者は、実際に Azure Marketplace にソリューションを発行するアカウントの所有者です。  このアカウントの所有者は、他のユーザーにアクセスを提供できます。  
+>管理者は、実際に Azure Marketplace にソリューションを発行するアカウントの所有者です。  このアカウントの所有者は、他のユーザーにアクセスを提供できます。  発行ポータルに共同管理者としてアクセスできる場合は、次の手順に従って管理者のアドレスを見つけることができます。
+>1. 発行ポータルにログインします。
+>2. [発行元] タブをクリックします。
+>3. 対象の発行元を開きます (通常は 1 人しかいません)。
+>4. 左下の [管理者] をクリックします。
+>5. お探しの管理者の電子メール アドレスには、"所有者" のラベルが付いています。
+
 
 Seller Insights Portal にログインするには、個人の Microsoft アカウントを使用するか、会社用のアカウントを使用します。これは、管理者がプロフィールの設定にどちらのアカウントを使用したかによって決まります。  管理者が使用するアカウントを知らせるはずです。
 
@@ -195,7 +204,7 @@ D. "*パネル D*": このパネルには、各サブスクリプションに関
 
   ![パネルのマップ C][12]
 
-  1. [Trend View (傾向ビュー)] を選択します。
+  1. [Trend View] (傾向ビュー) を選択します。
   2. [サブジェクト領域] ボックスの一覧から、表示する項目を選択し、[適用] をクリックします。  既定値は [すべて選択] です。
 
   ![使用状況の月単位ビュー (パネル C) のサブジェクト領域ドロップダウン][17]
@@ -219,12 +228,12 @@ D. "*パネル D*": このパネルには、各サブスクリプションに関
   3. ページごとに表示する項目数を 10、20、または 50 から選択します。
   4. オフライン分析のために、Excel 形式または CSV 形式でデータをダウンロードできます。
 
-![使用状況の月単位ビュー - パネル D1][24]
-![使用状況の月単位ビュー - パネル D2][25]
+![使用状況の月単位ビュー パネル D][24]
+![使用状況の月単位ビュー パネル D - ダウンロード結果][25]
 
 ###<a name="accessing-detailed-customer-data"></a>詳細な顧客データへのアクセス
 
-  1. [Orders (注文)] または [Usage (使用状況)] の下の [注文の詳細] パネルで、興味のある Azure サブスクリプション ID をクリックします。  クリックできるのは BYOL (ライセンス持ち込み) 以外の Marketplace ライセンス タイプのみで、BYOL サブスクリプション ID はセキュリティ上の理由でハッシュされます。
+  1. [Orders] (注文) または [Usage] (使用状況) の下の [注文の詳細] パネルで、興味のある Azure サブスクリプション ID をクリックします。  クリックできるのは BYOL (ライセンス持ち込み) 以外の Marketplace ライセンス タイプのみで、BYOL サブスクリプション ID はセキュリティ上の理由でハッシュされます。
 
   ![注文および使用状況の顧客詳細パネルの詳細情報][26]
   2. [顧客] タブにリダイレクトされ、そのサブスクリプション ID が関連付けられている顧客の詳細データが取得されます。
@@ -249,6 +258,8 @@ D. "*パネル D*": このパネルには、各サブスクリプションに関
 
 >[!NOTE]
 >管理者のみ
+
+このセクションでは、Seller Insights Portal に新しいユーザーを追加したり、ユーザーのアクセス許可を変更する方法について説明します。
 
 ###<a name="add-user"></a>ユーザーの追加
 
@@ -340,7 +351,7 @@ D. "*パネル D*": このパネルには、各サブスクリプションに関
 
 
 
-[1]: ./media/marketplace-publishing-report-seller-insights-user-guide/type-of-account.png
+[1]: ./media/marketplace-publishing-report-seller-insights-user-guide/type-of-account-v2.png
 [2]: ./media/marketplace-publishing-report-seller-insights-user-guide/default-sign-in-page.png
 [3]: ./media/marketplace-publishing-report-seller-insights-user-guide/password-reset-microsoft-account.png
 [4]: ./media/marketplace-publishing-report-seller-insights-user-guide/password-reset-work-or-school-account.png

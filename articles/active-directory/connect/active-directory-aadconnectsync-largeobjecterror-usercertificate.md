@@ -36,7 +36,7 @@ LargeObject エラーに関するテナント内のオブジェクトの一覧�
  * Azure AD Connect Health for Sync でテナントが有効になっている場合、提供される[同期エラー レポート](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-sync#object-level-synchronization-error-report-preview)を参照できます。
  
  * 各同期サイクルの最後に送信される、ディレクトリ同期エラーの通知メールには、LargeObject エラーのあるオブジェクトのリストが含まれています。 
- * 最新の [Export to Azure AD] (Azure AD へのエクスポート) 操作をクリックすると、[Synchronization Service Manager の [操作] タブ](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-operations)に、LargeObject エラーのあるオブジェクトの一覧が表示されます。
+ * 最新の [Export to Azure AD] \(Azure AD へのエクスポート) 操作をクリックすると、[Synchronization Service Manager の [操作] タブ](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-operations)に、LargeObject エラーのあるオブジェクトの一覧が表示されます。
  
 ## <a name="mitigation-options"></a>対応策オプション
 LargeObject エラーが解決されるまで、同じオブジェクトで他の属性を変更しても、Azure AD にエクスポートすることはできません。 エラーを解決する際、以下のオプションを検討できます。
@@ -98,7 +98,7 @@ userCertificate 属性が原因で発生した LargeObject エラーを解決す
 3. Azure AD コネクタに OOB (標準) の同期規則を使用しており、User オブジェクトの userCertficiate 属性をエクスポートする場合は、 *[Out to AAD – User ExchangeOnline]* 規則に戻す必要があります。
 4. この同期規則の**優先順位**値をメモします。
 5. 同期規則を選択し、**[編集]** をクリックします。
-6. *[Edit Reserved Rule Confirmation] (予約済みのルール編集の確認)* ポップアップ ダイアログで、**[いいえ]** をクリックします。 (問題ありません。この同期規則は変更されません)。
+6. *[Edit Reserved Rule Confirmation] \(予約済みのルール編集の確認)* ポップアップ ダイアログで、**[いいえ]** をクリックします。 (問題ありません。この同期規則は変更されません)。
 7. [編集] 画面で、**[スコープ フィルター]** タブを選択します。
 8. スコープ フィルターの構成をメモします。 OOB 同期規則を使用している場合、**2 つの句を含む 1 つのスコープ フィルター グループ**が存在する必要があります。これには、以下が含まれます。
 
@@ -137,14 +137,14 @@ userCertificate 属性が原因で発生した LargeObject エラーを解決す
 ### <a name="step-4----verify-the-new-sync-rule-on-an-existing-object-with-largeobject-error"></a>手順 4.    LargeObject エラーがある既存のオブジェクトで新しい同期規則を検証する
 これは、作成した同期規則を他のオブジェクトに適用する前に、LargeObject エラーがある既存の AD オブジェクトで正しく動作していることを検証するためです。
 1. Synchronization Service Manager の **[操作]** タブに進みます。
-2. 最新の [Export to Azure AD] (Azure AD へのエクスポート) 操作を選択し、LargeObject エラーのあるオブジェクトのいずれかをクリックします。
+2. 最新の [Export to Azure AD] \(Azure AD へのエクスポート) 操作を選択し、LargeObject エラーのあるオブジェクトのいずれかをクリックします。
 3.    [コネクタ スペース オブジェクトのプロパティ] ポップアップ画面で、**[プレビュー]** ボタンをクリックします。
 4. [プレビュー] ポップアップ画面で、**[完全同期]** を選択し、**[コミット プレビュー]** をクリックします。
 5. [プレビュー] 画面と [コネクタ スペース オブジェクトのプロパティ] 画面を閉じます。
 6. Synchronization Service Manager の **[コネクタ]** タブに進みます。
 7. **Azure AD** コネクタで右クリックし、**[実行]** を選択します。
 8. [コネクタの実行] ポップアップで、**[エクスポート]** 手順を選択し、**[OK]** をクリックします。
-9. [Export to Azure AD] (Azure AD へのエクスポート) が完了するまで待ち、このオブジェクトで LargeObject エラーが存在しなくなったことを確認します。
+9. [Export to Azure AD] \(Azure AD へのエクスポート) が完了するまで待ち、このオブジェクトで LargeObject エラーが存在しなくなったことを確認します。
 
 ### <a name="step-5----apply-the-new-sync-rule-to-remaining-objects-with-largeobject-error"></a>手順 5.    LargeObject エラーがある残りのオブジェクトに新しい同期規則を適用する
 同期規則が追加されたら、AD コネクタで完全な同期の手順を実行する必要があります。
@@ -158,7 +158,7 @@ userCertificate 属性が原因で発生した LargeObject エラーを解決す
 1. Synchronization Service Manager の **[コネクタ]** タブに進みます。
 2. **Azure AD** コネクタで右クリックし、**[コネクタ スペースの検索]** を選択します。
 3. [コネクタ スペースの検索] ポップアップで以下を実行します。
-    1. スコープを **[Pending Export] (保留中のエクスポート)** に設定します。
+    1. スコープを **[Pending Export] \(保留中のエクスポート)** に設定します。
     2. **[追加]**、**[変更]**、**[削除]** を含む、3 つすべてのチェックボックスをチェックします。
     3. **[検索]** ボタンをクリックして、変更が Azure AD にエクスポートされるを待っているすべてのオブジェクトを返します。
     4. 予期しない変更がないことを確認します。 指定したオブジェクトの変更を検証するには、オブジェクトをダブルクリックします。
@@ -168,7 +168,7 @@ userCertificate 属性が原因で発生した LargeObject エラーを解決す
 1. Synchronization Service Manager の **[コネクタ]** タブに進みます。
 2. **Azure AD** コネクタで右クリックし、**[実行]** を選択します。
 4. [コネクタの実行] ポップアップで、**[エクスポート]** 手順を選択し、**[OK]** をクリックします。
-5. [Export to Azure AD] (Azure AD へのエクスポート) が完了するまで待ち、LargeObject エラーが存在しなくなったことを確認します。
+5. [Export to Azure AD] \(Azure AD へのエクスポート) が完了するまで待ち、LargeObject エラーが存在しなくなったことを確認します。
 
 ### <a name="step-8----re-enable-sync-scheduler"></a>手順 8.    同期スケジューラを再度有効にする
 問題が解決したので、組み込みスケジューラを以下のように再度有効にします。

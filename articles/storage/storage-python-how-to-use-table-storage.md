@@ -14,20 +14,20 @@ ms.devlang: python
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: marsma
-translationtype: Human Translation
-ms.sourcegitcommit: 931503f56b32ce9d1b11283dff7224d7e2f015ae
-ms.openlocfilehash: 98b02e8faa21e6d0e04d2f2c70bee6b8b018c010
-ms.lasthandoff: 12/09/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 34d075658514045e28d6a784c579528bb3eac376
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="how-to-use-table-storage-from-python"></a>Python から Table ストレージを使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-
-[!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
+[!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
 ## <a name="overview"></a>概要
-このガイドでは、Azure Table ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。 サンプルは Python で作成され、 [Microsoft Azure Storage SDK for Python]を使用しています。 紹介するシナリオは、テーブルのエンティティの挿入とクエリ実行のほか、テーブルの作成と削除などがあります。
+このガイドでは、Azure Table ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。 サンプルは Python で作成され、 [Microsoft Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python)を使用しています。 紹介するシナリオは、テーブルのエンティティの挿入とクエリ実行のほか、テーブルの作成と削除などがあります。
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
@@ -164,13 +164,8 @@ table_service.delete_table('tasktable')
 ```
 
 ## <a name="next-steps"></a>次のステップ
-これで、Table Storage の基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
+* [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 * [Python デベロッパー センター](/develop/python/)
 * [Azure Storage Services REST API (Azure Storage サービスの REST API)](http://msdn.microsoft.com/library/azure/dd179355)
-* [Azure Storage チーム ブログ]
-* [Microsoft Azure Storage SDK for Python]
-
-[Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
-[Microsoft Azure Storage SDK for Python]: https://github.com/Azure/azure-storage-python
-
+* [Microsoft Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python)

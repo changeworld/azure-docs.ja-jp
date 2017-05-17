@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/14/2017
+ms.date: 04/26/2017
 ms.author: nepeters
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: c2d14be5f27a775a14039bd63c5ccb5cd7b10f9a
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 05f823955eb5c47ce024c2b7d246e361e1302d78
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -144,13 +145,16 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 
 ## <a name="azure-cli-deployment"></a>Azure CLI でのデプロイ
 
-Azure CLI を使用して、OMS Agent VM 拡張機能を既存の仮想マシンにデプロイすることができます。 OMS Agent 拡張機能をデプロイする前に、public.json ファイルと protected.json ファイルを作成します。 これらのファイルのスキーマについては、このドキュメントで既に説明しています。
+Azure CLI を使用して、OMS Agent VM 拡張機能を既存の仮想マシンにデプロイすることができます。 OMS キーと OMS ID は、実際の OMS ワークスペースのものに置き換えてください。 
 
 ```azurecli
-azure vm extension set myResourceGroup myVM \
-  OmsAgentForLinux Microsoft.EnterpriseCloud.Monitoring 1.3 \
-  --public-config-path public.json  \
-  --private-config-path protected.json
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name OmsAgentForLinux \
+  --publisher Microsoft.EnterpriseCloud.Monitoring \
+  --version 1.0 --protected-settings '{"workspaceKey": "omskey"}' \
+  --settings '{"workspaceId": "omsid"}'
 ```
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート
@@ -160,7 +164,7 @@ azure vm extension set myResourceGroup myVM \
 拡張機能のデプロイ状態に関するデータを取得するには、Azure Portal か Azure CLI を使用します。 特定の VM の拡張機能のデプロイ状態を確認するには、Azure CLI を使用して次のコマンドを実行します。
 
 ```azurecli
-azure vm extension get myResourceGroup myVM
+az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
 拡張機能の実行の出力は、次のファイルにログ記録されます。

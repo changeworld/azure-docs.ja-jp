@@ -12,11 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 8485fd9350672dd0f41e2d5dada57a1940c43f16
-ms.lasthandoff: 04/13/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 6c8df6b9804d082c8044cdb2420cc5ea42b9774f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -123,6 +124,16 @@ IntelliSense によって、使用できる演算子と、式の要素が示さ�
 種類が適切な複数の列がある場合は、x 軸と y 軸を選択して、結果を分割するディメンションの列を選択できます。
 
 既定では、結果は最初にテーブルとして表示されるので、ダイアグラムを手動で選択します。 ただし、クエリの末尾に [render ディレクティブ](app-insights-analytics-reference.md#render-directive) を使用して、ダイアグラムを選択できます。
+
+### <a name="analytics-diagnostics"></a>Analytics Diagnostics
+
+
+時間グラフでデータの急激な増加や変化がある場合、線上に強調表示された点が表示されることがあります。 これは、Analytics Diagnostics によって、急激な変化をフィルターで除外するプロパティの組み合わせが特定されたことを示しています。 点をクリックしてフィルターの詳細を取得し、フィルター処理されたバージョンを確認します。 これにより、変化の原因を特定できる場合があります。 
+
+Analytics Diagnostics の詳細については、[こちら](app-insights-analytics-diagnostics.md)をご覧ください。
+
+
+![Analytics Diagnostics](./media/app-insights-analytics-using/analytics-diagnostics.png)
 
 ## <a name="pin-to-dashboard"></a>Pin to dashboard
 ピン アイコンをクリックするだけで、いずれかの[共有ダッシュボード](app-insights-dashboards.md)にダイアグラムまたはテーブルをピン留めすることができます。 (この機能を有効にするには、[アプリの料金パッケージのアップグレード](app-insights-pricing.md)が必要になる場合があります)。 

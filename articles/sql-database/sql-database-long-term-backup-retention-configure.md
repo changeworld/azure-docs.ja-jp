@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: carlrab
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 5fea9dfcd323ecf497742173a66119be4f734909
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: a293c06f2e9bca8790832ecb851c89b04e76bb24
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -33,10 +34,6 @@ Azure SQL データベースのバックアップを保存し、Azure Portal ま
 ### <a name="configure-the-vault-register-the-server-and-select-databases"></a>コンテナーを構成する、サーバーを登録する、データベースを選択する
 
 ご利用のサービス レベルの保有期間より長い間、[自動バックアップを保持するよう Azure Recovery Services コンテナーを構成](sql-database-long-term-retention.md)します。 
-
-> [!TIP]
-> 長期的なバックアップ リテンション期間のバックアップを削除する方法については、[長期的なバックアップ リテンション期間の構成と使用](sql-database-long-term-backup-retention-configure.md)に関する記事をご覧ください。
->
 
 1. 指定のサーバーの **[SQL Server]** ページを開きます。
 
@@ -216,9 +213,6 @@ $policyState = "enabled"
 Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName -State $policyState -ResourceId $policy.Id
 ```
 
-> [!IMPORTANT]
-> 構成が完了すると、その後 7 日以内に、コンテナーにバックアップが表示されます。 バックアップがコンテナーに表示されたら、このチュートリアルを先に進めてください。
-
 ### <a name="view-backup-info-and-backups-in-long-term-retention"></a>バックアップ情報と、長期的な保有期間内のバックアップを確認する
 
 [長期的なバックアップ保有期間](sql-database-long-term-retention.md)内のデータベース バックアップに関する情報を確認します。 
@@ -269,7 +263,7 @@ $restoredDb
 
 
 > [!NOTE]
-> ここから、SQL Server Management Studio を使用して、復元されたデータベースに接続し、必要なタスクを実行できます。たとえば、[復元されたデータベースからデータを少し抽出して既存のデータベースにコピーしたり、既存のデータベースを削除し、復元されたデータベースの名前を既存のデータベース名に変更したり](sql-database-recovery-using-backups.md#point-in-time-restore)できます。
+> ここから、SQL Server Management Studio を使用して、復元されたデータベースに接続し、必要なタスクを実行できます。たとえば、復元されたデータベースからデータを少し抽出して既存のデータベースにコピーしたり、既存のデータベースを削除し、復元されたデータベースの名前を既存のデータベース名に変更したりできます。 [ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

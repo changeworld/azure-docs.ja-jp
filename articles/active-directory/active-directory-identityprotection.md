@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2017
+ms.date: 05/02/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: f09aa6cffbbaa2a3df7f84edee2d3e03aa23a719
-ms.lasthandoff: 03/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 483e77f598beaeb924197e3eb301a26da33a3f1f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -70,6 +71,25 @@ Azure Active Directory Identity Protection は単なる監視とレポート作�
 * サインインのブロックまたは多要素認証チャレンジの要求によりリスクの高いサインインを軽減するポリシー
 * リスクの高いユーザー アカウントをブロックまたはセキュリティ保護するためのポリシー
 * 多要素認証用に登録するようユーザーに要求するポリシー
+
+
+
+## <a name="identity-protection-roles"></a>Identity Protection のロール
+
+Identity Protection 実装の管理アクティビティの負荷を分散するため、いくつかのロールを割り当てることができます。 Azure AD Identity Protection は、3 つのディレクトリ ロールをサポートします。
+
+| 役割                         | できること                          | できないこと
+| :--                          | ---                                |  ---   |
+| グローバル管理者         | Identity Protection へのフル アクセス、Identity Protection の配布準備| |
+| セキュリティ管理者       | Identity Protection へのフル アクセス | Identity Protection の配布準備、ユーザーのパスワードのリセット |
+| セキュリティ閲覧者              | Identity Protection への読み取り専用アクセス | Identity Protection の配布準備、ユーザーの修復、ポリシーの構成、パスワードのリセット |
+
+
+
+
+詳細については、「[Azure Active Directory での管理者ロールの割り当て](active-directory-assign-admin-roles-azure-portal.md)」を参照してください。
+
+
 
 ## <a name="detection"></a>検出
 

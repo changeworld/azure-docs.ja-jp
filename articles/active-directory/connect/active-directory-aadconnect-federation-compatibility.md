@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/21/2017
+ms.date: 05/01/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 5c7c6c8568115093f3a7568b6d318f985705691c
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 6f91f732b7579c9f14458dab9be49c027debfac1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -58,8 +59,8 @@ Microsoft 以外のフェデレーション ソリューションに投資して
 * [Sailpoint IdentityNow](#sailpoint-identitynow)
 * [SecureAuth IdP 7.2.0](#secureauth-idp-720) 
 * [Sign&go 5.3](#signgo-53) 
-* [SoftBank](#softbank)
-* [VMware Identity Manager](#vmware-identity-manager)
+* [SoftBank Technology Online Service Gate](#softbank)
+* [VMware Workspace One](#vmware-workspace-one)
 * [VMware  Workspace Portal version 2.1](#vmware--workspace-portal-version-21) 
 
 
@@ -340,7 +341,7 @@ SecureAuth の詳細については、 [SecureAuth IdP](http://go.microsoft.com/
 
 Sign&go 5.3 は、Kerberos Contract の構成を介した Kerberos 認証をサポートしています。  この構成に関するサポートについては、Ilex に問い合わせるか、 [こちら](http://www.ilex-international.com/docs/sign&go_wsfederation_en.pdf)
 
-## <a name="softbank"></a>SoftBank
+## <a name="softbank-technology-online-service-gate"></a>SoftBank Technology Online Service Gate
 
 このシングル サインオン エクスペリエンスのシナリオにおけるサポート状況を次に示します。
 
@@ -350,9 +351,9 @@ Sign&go 5.3 は、Kerberos Contract の構成を介した Kerberos 認証をサ�
 | Lync、Office サブスクリプション、CRM などのリッチ クライアント アプリケーション |サポートされています |統合 Windows 認証はサポートされていません |
 | Outlook や ActiveSync などの電子メール リッチ クライアント |サポートされています |なし |
 
-BitGlass の詳細については、[こちら](https://www.softbanktech.jp/service/list/osg-pro-ent/)をご覧ください。
+SoftBank Technology Online Service Gate の詳細については、[こちら](https://www.softbanktech.jp/service/list/osg-pro-ent/)をご覧ください。
 
-## <a name="vmware-identity-manager"></a>VMware Identity Manager
+## <a name="vmware-workspace-one"></a>VMware Workspace One
 
 このシングル サインオン エクスペリエンスのシナリオにおけるサポート状況を次に示します。
 

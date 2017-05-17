@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2017
 ms.author: tomfitz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
 ms.openlocfilehash: bf4e400e30cc93ca8fa0cc727ada0f1b224b05cb
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/21/2017
 
 
@@ -33,8 +34,7 @@ Azure ポータルとクラシック ポータルでサポートされている�
 ## <a name="compute"></a>計算
 | サービス | リソース マネージャーが有効 | REST API | テンプレートの形式 |
 | --- | --- | --- | --- |
-| Batch
- |あり |[Batch REST](/rest/api/batchservice) |[バッチのリソース](/azure/templates/microsoft.batch/batchaccounts) |
+| Batch |あり |[Batch REST](/rest/api/batchservice) |[バッチのリソース](/azure/templates/microsoft.batch/batchaccounts) |
 | Container Registry |はい |[Container Registry の REST](/rest/api/containerregistry) |[Container Registry のリソース](/azure/templates/microsoft.containerregistry/registries) |
 | Container Service |はい |[コンテナー サービスの REST](/rest/api/compute/containerservices) |[コンテナー サービスのリソース](/azure/templates/microsoft.containerservice/containerservices) |
 | Dynamics Lifecycle Services |あり | | |

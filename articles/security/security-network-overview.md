@@ -12,62 +12,51 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/28/2017
+ms.date: 04/27/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 7fe9111061fed4af6aa720d0b158e5b4f2becd90
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: e74f3f7ed4ab0a7a37047b1277e76b6695f3884f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/28/2017
 
 
 ---
 # <a name="azure-network-security-overview"></a>Azure のネットワーク セキュリティの概要
 Microsoft Azure には、アプリケーションとサービスの接続要件をサポートする堅牢なネットワーク インフラストラクチャが組み込まれています。 ネットワーク接続は、Azure に配置されているリソース間、オンプレミスのリソースと Azure でホストされているリソース間、インターネットと Azure 間で可能です。
 
-この記事は、Microsoft Azure がネットワーク セキュリティ分野で提供している機能をより分かりやすくすることを目的としています。 ここではコア ネットワーク セキュリティの概念と要件の基本について説明します。 また、それぞれの分野で Azure が提供している機能についても説明します。 関心がある分野についての理解を深めるのに役立つ他のコンテンツへのリンクも多数記載されています。
+この記事は、Microsoft Azure がネットワーク セキュリティ分野で提供している機能をより分かりやすくすることを目的としています。 ここではコア ネットワーク セキュリティの概念と要件の基本について説明します。 また、Azure がこのような各領域で提供する機能に関する情報と、ユーザーが関心のある領域をより深く理解する上で役立つリンクも提供しています。
 
-この「Azure のネットワーク セキュリティの概要」の記事では、以下の点を重点的に取り上げます。
+この「Azure のネットワーク セキュリティの概要」の記事では、以下の領域を重点的に取り上げます。
 
 * Azure のネットワーク
-* Azure Network Watcher
 * ネットワーク アクセス制御
 * セキュリティで保護されたリモート アクセスとクロスプレミス接続
 * 可用性
-* ログの記録
 * 名前解決
 * DMZ アーキテクチャ
-* [Azure Security Center] \(Azure Security Center)
+* 監視と脅威の検出
+
 
 ## <a name="azure-networking"></a>Azure のネットワーク
 仮想マシンには、ネットワーク接続が必要です。 その要件に対応するため、Azure では、仮想マシンによる Azure Virtual Network への接続が必要となります。 Azure Virtual Network は、物理的な Azure ネットワーク ファブリック上に構築される論理的な構築物です。 各論理 Azure Virtual Network は、他のすべての Azure Virtual Network から分離されています。 これは、自分のデプロイ内のネットワーク トラフィックに他の Microsoft Azure ユーザーがアクセスすることを防ぐ上で役立ちます。
 
 詳細情報:
 
-* [Virtual Network の概要](../virtual-network/virtual-networks-overview.md)
+* [仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)
 
-## <a name="azure-network-watcher"></a>Azure Network Watcher
-Azure Network Watcher に含まれる多数のネットワーク監視機能は、問題のトラブルシューティングに役立つだけでなく、セキュリティの問題の特定に利用できるまったく新しいツール セットも提供します。
-
-[セキュリティ グループ ビュー](/network-watcher/network-watcher-security-group-view-overview.md)は、仮想マシンの監査とセキュリティのコンプライアンス対応をサポートし、プログラムによる監査を実行して、組織で定義されている基準ポリシーと VM ごとの有効な規則を比較できます。 構成のずれを特定するときにこの機能が役立ちます。
-
-[パケット キャプチャ](/network-watcher/network-watcher-packet-capture-overview.md)を使用すると、仮想マシンとの間のネットワーク トラフィックをキャプチャすることができます。 パケット キャプチャは、ネットワーク統計情報を収集して、アプリケーションに関する問題のトラブルシューティングを支援するだけでなく、ネットワーク不正侵入の調査でも重要な機能を発揮します。 この機能を Azure Functions と一緒に使用することで、Azure の特定のアラートに反応してネットワーク キャプチャを開始することができます。
-
-Azure Network Watcher と、ラボで機能の一部のテストを開始する方法の詳細については、[Azure Network Watcher の監視の概要](/network-watcher/network-watcher-monitoring-overview.md)に関するページを参照してください。
-
->[!NOTE]
-Azure Network Watcher は現在もパブリック プレビュー中であるため、一般公開リリースのサービスと同じレベルの可用性と信頼性がない場合があります。 特定の機能はサポート対象ではなく、機能が制限されることもあります。また、Azure の場所によっては、利用できない場合もあります。 このサービスの可用性とステータスに関する最新の通知については、[Azure の更新情報](https://azure.microsoft.com/updates/?product=network-watcher)に関するページをご覧ください。
 
 ## <a name="network-access-control"></a>ネットワーク アクセス制御
-ネットワーク アクセス制御は、Azure Virtual Network 内の特定のデバイスまたはサブネットとの間の接続を制限する機能です。 ネットワーク アクセス制御は、アクセスを許可したユーザーとデバイスのみが、仮想マシンとサービスにアクセスできるようにすることを目的としています。 アクセス制御は、仮想マシンまたはサービスとの間の接続を許可する、または拒否する決定に基づきます。
+ネットワーク アクセス制御は、Azure Virtual Network 内の特定のデバイスまたはサブネットとの間の接続を制限する機能です。 ネットワーク アクセス制御の目的は、承認済みのユーザーとデバイスのみが、仮想マシンとサービスにアクセスできるようにすることです。 アクセス制御は、仮想マシンまたはサービスとの間の接続を許可する、または拒否する決定に基づきます。
 
-Azure では、いくつかの種類のネットワーク アクセス制御がサポートされています。 チェックの内容は次のとおりです
+Azure では、次のように、いくつかの種類のネットワーク アクセス制御がサポートされています。
 
 * ネットワーク層制御
 * ルート制御と強制トンネリング
 * 仮想ネットワークのセキュリティ アプライアンス
 
 ### <a name="network-layer-control"></a>ネットワーク層制御
-セキュリティで保護されたデプロイにはいずれも、ある程度のネットワーク アクセス制御が必要です。 ネットワーク アクセス制御は、仮想マシンや、仮想マシン上で実行されるネットワーク サービスを、本当に通信する必要のある他のネットワーク接続デバイスとだけ通信させ、他のすべての接続の試みをブロックすることを目的としています。
+セキュリティで保護されたデプロイにはいずれも、ある程度のネットワーク アクセス制御が必要です。 ネットワーク アクセス制御の目的は、必要なシステムのみが仮想マシンと通信できるようにし、その他の通信試行をブロックすることです。
 
 基本レベルのネットワーク アクセス制御 (IP アドレス、TCP または UDP プロトコルに基づくもの) を必要とする場合には、ネットワーク セキュリティ グループを使用できます。 ネットワーク セキュリティ グループ (NSG) とは基本的なステートフル パケット フィルタリング ファイアウォールであり、 [5 タプル](https://www.techopedia.com/definition/28190/5-tuple)に基づいてアクセスを制御します。 NSG はアプリケーション層検査も、認証済みのアクセス制御も提供しません。
 
@@ -76,9 +65,9 @@ Azure では、いくつかの種類のネットワーク アクセス制御が�
 * [ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)
 
 ### <a name="route-control-and-forced-tunneling"></a>ルート制御と強制トンネリング
-Azure Virtual Network におけるルーティング動作を制御する機能は、ネットワーク セキュリティとアクセス制御の重要な機能です。 ルーティングを正しく構成しないと、仮想マシンでホストされるアプリケーションとサービスが、接続を許すつもりのないデバイスに接続する可能性があります。これには潜在的な攻撃者が所有および操作するデバイスが含まれます。
+Azure Virtual Network におけるルーティング動作を制御する機能は、ネットワーク セキュリティとアクセス制御の重要な機能です。 ルーティングを正しく構成しないと、仮想マシンでホストされるアプリケーションとサービスが、未承認のデバイスに接続する可能性があります。これには潜在的な攻撃者が所有および操作するシステムが含まれます。
 
-Azure ネットワークは、Azure Virtual Network 上のネットワーク トラフィックのルーティング動作をカスタマイズする機能をサポートしています。 これにより、ユーザーは Azure Virtual Network 内の既定のルーティング テーブル エントリを変更できます。 ルーティング動作を制御すると、特定のデバイス、またはデバイスのグループから Azure Virtual Network に出入りするすべてのトラフィックに、特定の場所を経由させる上で役立ちます。
+Azure ネットワークは、Azure Virtual Network 上のネットワーク トラフィックのルーティング動作をカスタマイズする機能をサポートしています。 これにより、ユーザーは Azure Virtual Network 内の既定のルーティング テーブル エントリを変更できます。 ルーティング動作を制御すると、特定のデバイス、またはデバイスのグループから仮想ネットワークに出入りするすべてのトラフィックに、特定の場所を経由させる上で役立ちます。
 
 たとえば、Azure Virtual Network に仮想ネットワーク セキュリティ アプライアンスがあるとします。 Azure Virtual Network との間のすべてのトラフィックに仮想セキュリティ アプライアンスを経由させたいと考えています。 これは、Azure で [ユーザー定義のルート](../virtual-network/virtual-networks-udr-overview.md) を構成することで実現できます。
 
@@ -106,7 +95,7 @@ Azure ネットワークは、Azure Virtual Network 上のネットワーク ト
 * アプリケーション アクセス制御
 * 追加の DDoS 保護 (Azure ファブリック自体によって提供される DDoS 保護に追加される保護)
 
-Azure パートナー ソリューションを使用すれば、これらの拡張ネットワーク セキュリティ機能を利用できます。 最新の Azure パートナー ネットワーク セキュリティ ソリューションについては、 [Azure Marketplace](https://azure.microsoft.com/marketplace/) にアクセスし、"security" および "network security" を検索すると見つかります。
+Azure パートナー ソリューションを使用すれば、これらの拡張ネットワーク セキュリティ機能を利用できます。 最新の Azure パートナー ネットワーク セキュリティ ソリューションについては、[Azure Marketplace](https://azure.microsoft.com/marketplace/) にアクセスし、"security" および "network security" を検索すると見つかります。
 
 ## <a name="secure-remote-access-and-cross-premises-connectivity"></a>セキュリティで保護されたリモート アクセスとクロスプレミス接続
 Azure リソースのセットアップ、構成、管理は、リモートで実行する必要があります。 また、オンプレミスと Azure パブリック クラウドの両方にコンポーネントがある [ハイブリッド IT](http://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx) ソリューションをデプロイする場合もあります。 こうしたシナリオの場合、セキュリティで保護されたリモート アクセスが必要になります。
@@ -141,7 +130,7 @@ Azure の仮想マシンとサービスの管理を個々の開発者や運用�
 ポイント対サイト VPN 接続とサイト間 VPN 接続は、クロスプレミス接続を有効にする上で効果的です。 しかし、これらの方法には次の欠点があると考える組織もあります。
 
 * VPN 接続ではデータがインターネットを移動します。その結果、これらの接続は、データがパブリック ネットワークを移動することに関する潜在的なセキュリティ問題にさらされます。 また、インターネット接続の信頼性と可用性が保証できません。
-* Azure Virtual Network への VPN 接続の最大発信速度は約 200 Mbps であるため、アプリケーションや目的によっては帯域幅に制約があると見なされる可能性があります。
+* Azure Virtual Networks への VPN 接続の最大発信速度は約 200 Mbps であるため、アプリケーションや目的によっては帯域幅に制約があると見なされる可能性があります。
 
 クロスプレミス接続で最高レベルのセキュリティと可用性を必要とする企業は、専用 WAN リンクを使用してリモート サイトに接続するのが一般的です。 Azure なら専用の WAN リンクを使用して、オンプレミスのネットワークを Azure Virtual Network に接続できます。 Azure ExpressRoute によってこれを有効にできます。
 
@@ -156,7 +145,7 @@ Azure の仮想マシンとサービスの管理を個々の開発者や運用�
 
 Azure Virtual Network どうしの間でサイト間 VPN を作成するほうが優れた選択肢となる可能性があります。 この Azure Virtual Network どうしのサイト間 VPN では、前述のクロスプレミスのサイト間 VPN 接続と同じ [IPsec トンネル モード](https://technet.microsoft.com/library/cc786385.aspx) プロトコルを使用します。
 
-Azure Virtual Network どうしでサイト間 VPN 接続を使用する利点は、VPN 接続が Azure ネットワーク ファブリックを介して確立され、インターネットを介して接続することがないという点です。 これによって、インターネットを介して接続するサイト間 VPN に比べてセキュリティ レベルが高まります。
+Azure Virtual Network どうしでサイト間 VPN 接続を使用する利点は、インターネットを介して接続する代わりに、VPN 接続が Azure ネットワーク ファブリックを介して確立されるという点です。 これによって、インターネットを介して接続するサイト間 VPN に比べてセキュリティ レベルが高まります。
 
 詳細情報:
 
@@ -214,19 +203,6 @@ Azure におけるネットワーク レベルの負荷分散の利点を活用�
 
 * [Traffic Manager について](../traffic-manager/traffic-manager-overview.md)
 
-## <a name="logging"></a>ログの記録
-ネットワーク レベルにおけるログ記録は、あらゆるネットワーク セキュリティ シナリオの主要な機能です。 Azure では、ネットワーク セキュリティ グループに関して入手した情報をログに記録して、ネットワーク レベルのログ情報を取得できます。 NSG ログ記録によって、次のログから情報を取得します。
-
-* [アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) – このログは、Azure サブスクリプションに送信されたすべての操作を確認する場合に使用します。 このログは既定で有効になっており、Azure ポータルで使用できます。 以前は "監査ログ" や "操作ログ" と呼ばれていました。
-* イベント ログ – これらのログは、適用された NSG ルールについての情報を提供します。
-* カウンター ログ – このログを使用すると、トラフィックを拒否または許可するために各 NSG ルールが適用された回数が分かります。
-
-優れたデータ視覚化ツールである [Microsoft Power BI](https://powerbi.microsoft.com/what-is-power-bi/)を使用して、これらのログを表示および分析することもできます。
-
-詳細情報:
-
-* [ネットワーク セキュリティ グループ (NSG) のためのログ分析](../virtual-network/virtual-network-nsg-manage-log.md)
-
 
 ## <a name="name-resolution"></a>名前解決
 名前解決は、Azure でホストするすべてのサービスにとって重要な機能です。 セキュリティ上の観点からすると、名前解決機能が危害を受けると、攻撃者によって、要求がユーザー サイトから攻撃者のサイトにリダイレクトされる可能性があります。 名前解決がセキュリティで保護されていることは、クラウドでホストされているすべてのサービスにとって必要条件となっています。
@@ -270,8 +246,25 @@ DMZ の設計と DMZ をデプロイする決定には多数のバリエーシ�
 
 * [Microsoft クラウド サービスとネットワーク セキュリティ](../best-practices-network-security.md)
 
-## <a name="azure-security-center"></a>[Azure Security Center] \(Azure Security Center)
-Security Center は、脅威の回避、検出、対応に役立つサービスで、Azure リソースのセキュリティを高度に視覚化して制御できます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
+
+## <a name="monitoring-and-threat-detection"></a>監視と脅威の検出
+
+Azure では、この重要な分野で、早期検出、監視、ネットワーク トラフィックの収集および確認に役立つ機能を提供しています。
+
+### <a name="azure-network-watcher"></a>Azure Network Watcher
+Azure Network Watcher には、トラブルシューティングに役立つ多数の機能が含まれるだけでなく、セキュリティの問題の特定を支援するまったく新しいツール セットも提供します。
+
+[セキュリティ グループ ビュー](/network-watcher/network-watcher-security-group-view-overview.md)は、仮想マシンの監査とセキュリティのコンプライアンス対応をサポートし、プログラムによる監査を実行して、組織で定義されている基準ポリシーと VM ごとの有効な規則を比較できます。 構成のずれを特定するときにこの機能が役立ちます。
+
+[パケット キャプチャ](/network-watcher/network-watcher-packet-capture-overview.md)を使用すると、仮想マシンとの間のネットワーク トラフィックをキャプチャすることができます。 パケット キャプチャは、ネットワーク統計情報を収集して、アプリケーションに関する問題のトラブルシューティングを支援するだけでなく、ネットワーク不正侵入の調査でも重要な機能を発揮します。 この機能を Azure Functions と一緒に使用することで、Azure の特定のアラートに反応してネットワーク キャプチャを開始することができます。
+
+Azure Network Watcher と、ラボで機能の一部のテストを開始する方法の詳細については、[Azure Network Watcher の監視の概要](/network-watcher/network-watcher-monitoring-overview.md)に関するページを参照してください。
+
+>[!NOTE]
+Azure Network Watcher は現在もパブリック プレビュー中であるため、一般公開リリースのサービスと同じレベルの可用性と信頼性がない場合があります。 特定の機能はサポート対象ではなく、機能が制限されることもあります。また、Azure の場所によっては、利用できない場合もあります。 このサービスの可用性とステータスに関する最新の通知については、[Azure の更新情報](https://azure.microsoft.com/updates/?product=network-watcher)に関するページをご覧ください。
+
+### <a name="azure-security-center"></a>[Azure Security Center] \(Azure Security Center)
+Security Center は、脅威の回避、検出、対応に役立つサービスで、Azure リソースのセキュリティを高度に視覚化して制御できます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、多数のセキュリティ ソリューションと連動します。
 
 Azure Security Center は、ネットワーク セキュリティの最適化と監視に役立つ次の機能を備えています。
 
@@ -282,4 +275,18 @@ Azure Security Center は、ネットワーク セキュリティの最適化と
 詳細情報:
 
 * [Azure Security Center 入門](../security-center/security-center-intro.md)
+
+
+### <a name="logging"></a>ログの記録
+ネットワーク レベルにおけるログ記録は、あらゆるネットワーク セキュリティ シナリオの主要な機能です。 Azure では、ネットワーク セキュリティ グループに関して入手した情報をログに記録して、ネットワーク レベルのログ情報を取得できます。 NSG ログ記録によって、次のログから情報を取得します。
+
+* [アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) – このログは、Azure サブスクリプションに送信されたすべての操作を確認する場合に使用します。 このログは既定で有効になっており、Azure ポータルで使用できます。 以前は "監査ログ" や "操作ログ" と呼ばれていました。
+* イベント ログ – これらのログは、適用された NSG ルールについての情報を提供します。
+* カウンター ログ – このログを使用すると、トラフィックを拒否または許可するために各 NSG ルールが適用された回数が分かります。
+
+優れたデータ視覚化ツールである [Microsoft Power BI](https://powerbi.microsoft.com/what-is-power-bi/)を使用して、これらのログを表示および分析することもできます。
+
+詳細情報:
+
+* [ネットワーク セキュリティ グループ (NSG) のためのログ分析](../virtual-network/virtual-network-nsg-manage-log.md)
 

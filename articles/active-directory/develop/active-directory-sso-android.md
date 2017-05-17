@@ -3,7 +3,7 @@ title: "Android で ADAL を使用してクロス アプリ SSO を有効にす�
 description: "ADAL SDK の機能を使用して、複数のアプリケーションでシングル サインオンを有効にする方法。 "
 services: active-directory
 documentationcenter: 
-author: xerners
+author: brandwe
 manager: mbaldwin
 editor: 
 ms.assetid: 40710225-05ab-40a3-9aec-8b4e96b6b5e7
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: android
 ms.devlang: java
 ms.topic: article
 ms.date: 04/07/2017
-ms.author: xerners
+ms.author: brandwe
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
 ms.openlocfilehash: 510a1827f432c4db2190deff016a886dd79eebc9

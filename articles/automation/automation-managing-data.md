@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2016
 ms.author: bwren;sngun
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: d8ac93de19685c11dd25fd746e69ba1066fb35af
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -78,10 +80,5 @@ Azure Automation アカウントでの標準である geo レプリケーショ�
 | 東日本 |西日本 |
 
 万一、プライマリ リージョンのデータが失われた場合、Microsoft はその復旧を試みます。 プライマリ リージョンを復元できない場合は、geo フェールオーバーが実行されます。影響を受けた顧客には、サブスクリプションを通じてこのことが通知されます。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

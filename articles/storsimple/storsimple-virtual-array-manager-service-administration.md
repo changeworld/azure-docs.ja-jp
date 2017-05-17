@@ -1,4 +1,4 @@
----
+﻿---
 title: "Microsoft Azure StorSimple Manager Virtual Array の管理 | Microsoft Docs"
 description: "Azure Portal で StorSimple デバイス マネージャー サービスを使用して、オンプレミスの StorSimple Virtual Array を管理する方法について説明します。"
 services: storsimple
@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 638e3e59f91202d55347c830542801ccead1b90f
 ms.openlocfilehash: a74a160eae88a2d03460a1346479c333d8f9d524
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/01/2016
 
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple Virtual Array を管理する
@@ -55,7 +57,7 @@ StorSimple デバイス マネージャー サービスは Microsoft Azure で�
 | サービスを作成する</br>サービスの削除</br>サービス登録キーを取得する</br>サービス登録キーを再生成する |[StorSimple デバイス マネージャー サービスをデプロイする](storsimple-virtual-array-manage-service.md) |
 | アクティビティ ログを表示する |[StorSimple サービスの概要を使用する](storsimple-virtual-array-service-summary.md) |
 | 仮想アレイを非アクティブ化する</br>仮想アレイを削除する |[仮想アレイを非アクティブ化または削除する](storsimple-virtual-array-deactivate-and-delete-device.md) |
-| 障害復旧とデバイスのフェールオーバー</br>フェールオーバーの前提条件</br>ビジネス継続性障害復旧 (BCDR)</br>災害復旧時のエラー |[StorSimple Virtual Array の障害復旧とデバイスのフェールオーバー](storsimple-virtual-array-failover-dr.md) |
+| ディザスター リカバリーとデバイスのフェールオーバー</br>フェールオーバーの前提条件</br>事業継続とディザスター リカバリー (BCDR)</br>ディザスター リカバリー時のエラー |[StorSimple Virtual Array のディザスター リカバリーとデバイスのフェールオーバー](storsimple-virtual-array-failover-dr.md) |
 | 共有やボリュームをバックアップする</br>手動バックアップの取得</br>バックアップのスケジュールを変更する</br>既存のバックアップを表示する |[StorSimple Virtual Array をバックアップする](storsimple-virtual-array-backup.md) |
 | バックアップ セットから共有を複製する</br>バックアップ セットからボリュームを複製する</br>項目レベルの回復 (ファイル サーバーのみ) |[StorSimple Virtual Array のバックアップから複製する](storsimple-virtual-array-clone.md) |
 | ストレージ アカウントについて</br>ストレージ アカウントの追加</br>ストレージ アカウントの編集</br>ストレージ アカウントの削除 |[StorSimple Virtual Array のストレージ アカウントを管理する](storsimple-virtual-array-manage-storage-accounts.md) |
@@ -76,10 +78,5 @@ StorSimple デバイス マネージャー サービスは Microsoft Azure で�
 
 ## <a name="next-steps"></a>次のステップ
 Web UI とその使用方法については、「 [StorSimple Web UI を使用した StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)」をご覧ください。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

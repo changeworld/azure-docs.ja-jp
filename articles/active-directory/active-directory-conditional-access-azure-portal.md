@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/06/2017
+ms.date: 05/02/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: db219c8bd8d9bf1ba343fe363047a23eabad823c
-ms.lasthandoff: 04/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 85a59eddf3c453ee112f279d439c94853b2f62b5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -171,7 +172,7 @@ Azure Active Directory によって両方のポリシーが適用されます。
 
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>条件付きアクセスは、Exchange ActiveSync と連携しますか。
 
-いいえ。現時点では、条件付きアクセス ポリシーで Exchange ActiveSync を使用することはできません。
+はい。条件付きアクセス ポリシーで Exchange ActiveSync を使用できます。
 
 
 ### <a name="what-happens-if-i-require-multi-factor-authentication-or-a-compliant-device"></a>多要素認証または準拠デバイスが必要な場合は、どうなりますか。

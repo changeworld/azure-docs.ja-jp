@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: fe52ced5e4dc829b5d1421bf0edcd58cffcaad19
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 24c2b27948e9373bc3957f706ed802cc36c04148
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -48,7 +49,7 @@ Resource Manager では、一般に、次の 3 種類のリソース名を使用
 
 <sup>1</sup> ストレージ アカウント名も、小文字で 24 文字以下にする必要があり、ハイフンを含めることはできません。
 
-リソース名をパラメーターで指定する場合は、リソースをデプロイするときに一意な名前を指定する必要があります。 必要に応じて、名前を生成する [uniqueString()](resource-group-template-functions.md#uniquestring) 関数を使用する変数を作成することができます。 
+リソース名をパラメーターで指定する場合は、リソースをデプロイするときに一意な名前を指定する必要があります。 必要に応じて、名前を生成する [uniqueString()](resource-group-template-functions-string.md#uniquestring) 関数を使用する変数を作成することができます。 
 
 **uniqueString** の結果に、プレフィックスまたはサフィックスを追加することもできます。 一意の名前を変更すると、リソースの種類を名前から簡単に識別するのに役立ちます。 たとえば、次の変数を使用してストレージ アカウントの一意の名前を生成できます。
 
@@ -174,7 +175,7 @@ Resource Manager では、一般に、次の 3 種類のリソース名を使用
 変数を使用する場合は、次の情報を活用してください。
 
 * テンプレート内で複数回使用する必要のある値には、変数を使用してください。 1 回しか使用しない値は、ハードコーディングすることでテンプレートが読みやすくなります。
-* テンプレートの **variables** セクションでは [reference](resource-group-template-functions.md#reference) 関数は使用できません。 **reference** 関数は、リソースのランタイム状態からその値を取得します。 ただし、変数が解決されるのは、テンプレートの初期解析時です。 **reference** 関数を必要とする値は、テンプレートの **resources** セクションまたは **outputs** セクションに直接作成してください。
+* テンプレートの **variables** セクションでは [reference](resource-group-template-functions-resource.md#reference) 関数は使用できません。 **reference** 関数は、リソースのランタイム状態からその値を取得します。 ただし、変数が解決されるのは、テンプレートの初期解析時です。 **reference** 関数を必要とする値は、テンプレートの **resources** セクションまたは **outputs** セクションに直接作成してください。
 * 「[リソース名](#resource-names)」で説明しているように、一意である必要のあるリソース名には変数を含めてください。
 * 変数は複合オブジェクトにまとめてください。 複合オブジェクトの値は、**variable.subentry** 形式を使用して参照できます。 変数をグループ化すると、関連する変数を追跡しやすくなります。 テンプレートの読みやすさも向上します。 次に例を示します。
    

@@ -1,8 +1,8 @@
 ---
-title: "Azure AD: セルフサービスによるパスワードのリセットの登録 | Microsoft Docs"
-description: "セルフサービスによるパスワードのリセット用の認証データを登録する"
+title: "Azure AD: SSPR 登録 | Microsoft Docs"
+description: "Azure AD セルフサービスによるパスワードのリセット用の認証データを登録する"
 services: active-directory
-keywords: "Active Directory パスワード管理, パスワード管理, Azure AD セルフサービスによるパスワードのリセット, SSPR"
+keywords: 
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
@@ -11,30 +11,31 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 03/16/2017
+ms.topic: article
+ms.date: 04/26/2017
 ms.author: joflore
 ms.custom: end-user
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: c6d3d9d8f399816928e794e8956bc35825462fb9
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: bd0175558a94a146a365e8c1a32522f1e54c184e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 
 ---
 # <a name="register-for-self-service-password-reset"></a>セルフサービスによるパスワードのリセットを登録する
 
-セルフサービスによるパスワードのリセット (SSPR) が管理者によって有効化されている場合は、それを利用することで、エンド ユーザーがパスワードのリセットやアカウントのロック解除を自分自身で実行できます。 この機能を利用する前に、認証方法を登録するか、管理者によって設定されている定義済みの認証方法を確認する必要があります。
+エンド ユーザーは、セルフサービスによるパスワードのリセット (SSPR) を使用してパスワードのリセットやアカウントのロック解除を自分自身で実行できます。 この機能を利用する前に、認証方法を登録するか、管理者によって設定されている定義済みの認証方法を確認する必要があります。
 
 ## <a name="register-or-confirm-authentication-data-with-sspr"></a>SSPR への認証データの登録または確認
 
 1. デバイスで Web ブラウザーを開き、[パスワードのリセット登録ページ](http://aka.ms/ssprsetup)にアクセスします
 2. 管理者から提供されているユーザー名とパスワードを入力します
-3. パスワードのリセットが必要な場合に使用されるものとして構成または確認すべき以下の項目が、管理者の承認したオプションに応じて 1 つ以上表示されます
-    * [会社電話] - このオプションは管理者のみが設定できます
-    * [認証用電話] - このオプションには、テキスト メッセージや音声通話を受信できる携帯電話など、ユーザーが利用できる別の電話番号を設定する必要があります (携帯電話番号の情報を使用することについて既にユーザーの同意が得られている場合は、管理者がこのオプションにその番号を設定することもできます)
-    * [認証用メール] - このオプションには、リセットが必要なパスワードを使用しなくてもアクセスできる、別の電子メール アドレスを設定する必要があります
-    * [セキュリティの質問] - このオプションでは、ユーザーが回答することを管理者が承認した質問のリストが提示されます。 複数の質問に対して同じ回答を使用することはできません。
+3. IT スタッフがどのように構成したかに応じて、次のオプションの 1 つ以上を構成および確認できます。 管理者が情報を使用するアクセス許可を持っている場合は、管理者がこの一部をユーザーに代わって設定している可能性があります。
+    * [会社電話] は管理者のみが設定できます
+    * [認証用電話] には、テキストまたは通話を受信できる携帯電話など、ユーザーが利用できる別の電話番号を設定する必要があります。
+    * [認証用メール] には、リセットが必要なパスワードを使用しなくてもアクセスできる、別の電子メール アドレスを設定する必要があります。
+    * [セキュリティの質問] では、ユーザーが回答することを管理者が承認した質問のリストが提示されます。 同じ質問や回答を複数回使用することはできません。
 4. 管理者から要求されている情報を入力および確認します。 複数のオプションを指定できる場合は、別の認証方法が利用できないとき (たとえば、移動中のため会社の電話にアクセスできないなど) に柔軟に対応できるように、複数の方法を登録することをお勧めします
 
     ![認証方法を登録して [完了] をクリックする][Register]
@@ -53,4 +54,5 @@ ms.lasthandoff: 04/26/2017
 * [Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)
 
 [Register]: ./media/active-directory-passwords-reset-register/register-2-methods.png "登録済みの方法と [完了] ボタンが表示されているパスワードのリセット登録ページ"
+
 

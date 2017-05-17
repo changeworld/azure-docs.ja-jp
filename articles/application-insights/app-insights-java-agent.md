@@ -4,7 +4,7 @@ description: "Application Insights を使用した Java Web サイトのパフ�
 services: application-insights
 documentationcenter: java
 author: harelbr
-manager: douge
+manager: carmonm
 ms.assetid: 84017a48-1cb3-40c8-aab1-ff68d65e2128
 ms.service: application-insights
 ms.workload: tbd
@@ -12,10 +12,11 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2016
-ms.author: awills
-translationtype: Human Translation
+ms.author: cfreeman
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
 ms.openlocfilehash: a481c7c62383c92a5dfab0e3f2b1b4f4f0e5ddf5
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/25/2017
 
 
