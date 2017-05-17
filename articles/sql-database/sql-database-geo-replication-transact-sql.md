@@ -13,12 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/13/2016
+ms.date: 04/14/2017
 ms.author: carlrab
-translationtype: Human Translation
-ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
-ms.openlocfilehash: 07593e7f1d92a9a5943714f662568fec10a8886a
-ms.lasthandoff: 02/16/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 1005f776ae85a7fc878315225c45f2270887771f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.lasthandoff: 02/16/2017
 Transact-SQL を使用してフェールオーバーを開始するには、「 [Transact-SQL を使用した Azure SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーの開始](sql-database-geo-replication-failover-transact-sql.md)」を参照してください。
 
 > [!NOTE]
-> すべてのサービス レベルのすべてのデータベースでアクティブ geo レプリケーション (読み取り可能なセカンダリ) を使用できるようになりました。 2017 年 4 月に、読み取り不能なタイプのセカンダリが廃止され、既存の読み取り不能なデータベースは読み取り可能なセカンダリに自動的にアップグレードされます。
+> ディザスター リカバリーにアクティブ geo レプリケーション (読み取り可能セカンダリ) を使用するときには、アプリケーション内のすべてのデータベースに対してフェールオーバー グループを構成して、自動および透過的なフェールオーバーを有効にしてください。 この機能はプレビュー段階にあります。 詳しくは、[自動フェールオーバー グループと geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事をご覧ください。
 > 
 > 
 
@@ -53,23 +54,6 @@ Transact-SQL を使用してアクティブ geo レプリケーションを構�
 > [!NOTE]
 > 指定したパートナー サーバーにプライマリ データベースと同じ名前のデータベースが存在する場合、コマンドは失敗します。
 > 
-> 
-
-### <a name="add-non-readable-secondary-single-database"></a>読み取り不可のセカンダリ (単一データベース) の追加
-読み取り不可のセカンダリを単一データベースとして作成するには、次の手順に従います。
-
-1. バージョン 13.0.600.65 以降の SQL Server Management Studio を使用します。
-   
-   > [!IMPORTANT]
-   > [最新](https://msdn.microsoft.com/library/mt238290.aspx) バージョンの SQL Server Management Studio をダウンロードします。 常に最新バージョンの Management Studio を使用して、Azure ポータルの更新プログラムとの同期を維持することをお勧めします。
-   > 
-   > 
-2. [データベース] フォルダーを開き、**[システム データベース]** フォルダーを展開し、**[master]** を右クリックして、**[新しいクエリ]** をクリックします。
-3. 次の **ALTER DATABASE** ステートメントを使用して、ローカル データベースを、MySecondaryServer1 上に読み取り不可のセカンダリ データベースを持つ geo レプリケーション プライマリにします (MySecondaryServer1 は、サーバーのフレンドリ名です)。
-   
-        ALTER DATABASE <MyDB>
-           ADD SECONDARY ON SERVER <MySecondaryServer1> WITH (ALLOW_CONNECTIONS = NO);
-4. **[実行]** をクリックしてクエリを実行します。
 
 ### <a name="add-readable-secondary-single-database"></a>読み取り可能なセカンダリ (単一データベース) の追加
 読み取り可能なセカンダリを単一データベースとして作成するには、次の手順に従います。
@@ -80,18 +64,6 @@ Transact-SQL を使用してアクティブ geo レプリケーションを構�
    
         ALTER DATABASE <MyDB>
            ADD SECONDARY ON SERVER <MySecondaryServer2> WITH (ALLOW_CONNECTIONS = ALL);
-4. **[実行]** をクリックしてクエリを実行します。
-
-### <a name="add-non-readable-secondary-elastic-pool"></a>読み取り不可のセカンダリ (エラスティック プール) の追加
-読み取り不可のセカンダリをエラスティック プールに作成するには、次の手順に従います。
-
-1. Management Studio で Azure SQL Database 論理サーバーに接続します。
-2. [データベース] フォルダーを開き、**[システム データベース]** フォルダーを展開し、**[master]** を右クリックして、**[新しいクエリ]** をクリックします。
-3. 次の **ALTER DATABASE** ステートメントを使用して、ローカル データベースを、セカンダリ サーバー上のエラスティック プール内に読み取り不可のセカンダリ データベースを持つ geo レプリケーション プライマリにします。
-   
-        ALTER DATABASE <MyDB>
-           ADD SECONDARY ON SERVER <MySecondaryServer3> WITH (ALLOW_CONNECTIONS = NO
-           , SERVICE_OBJECTIVE = ELASTIC_POOL (name = MyElasticPool1));
 4. **[実行]** をクリックしてクエリを実行します。
 
 ### <a name="add-readable-secondary-elastic-pool"></a>読み取り可能なセカンダリ (エラスティック プール) の追加
@@ -141,22 +113,6 @@ geo レプリケートされたセカンダリを geo レプリケーション �
         SELECT * FROM sys.dm_operation_status where major_resource_id = 'MyDB'
         ORDER BY start_time DESC
 9. **[実行]** をクリックしてクエリを実行します。
-
-## <a name="upgrade-a-non-readable-secondary-to-readable"></a>読み取り可能なセカンダリへの読み取り不能なセカンダリのアップグレード
-2017 年 4 月に、読み取り不能なタイプのセカンダリが廃止され、既存の読み取り不能なデータベースは読み取り可能なセカンダリに自動的にアップグレードされます。 読み取り不能なセカンダリを使用している場合、読み取り可能なセカンダリにアップグレードするには、各セカンダリで次の簡単な手順を実行します。
-
-> [!IMPORTANT]
-> 読み取り不能なセカンダリを読み取り可能なセカンダリにアップグレードする、インプレース アップグレードのセルフ サービスは用意されていません。 セカンダリだけを削除した場合、新しいセカンダリが完全に同期されるまで、プライマリ データベースは保護されていない状態で残ります。 アプリケーションの SLA によりプライマリを常に保護することが求められている場合は、上記のアップグレード手順を適用する前に、別のサーバーで並列セカンダリを作成することを検討してください。 各プライマリで使用できるセカンダリ データベースの数は最大 4 つです。
-> 
-> 
-
-1. 最初に、*セカンダリ* サーバーに接続し、読み取り不能なセカンダリ データベースを削除します。  
-   
-        DROP DATABASE <MyNonReadableSecondaryDB>;
-2. これで、*プライマリ* サーバーに接続して、新しい読み取り可能なセカンダリを追加できます
-   
-        ALTER DATABASE <MyDB>
-            ADD SECONDARY ON SERVER <MySecondaryServer> WITH (ALLOW_CONNECTIONS = ALL);
 
 ## <a name="next-steps"></a>次のステップ
 * アクティブ geo レプリケーションの詳細については、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。

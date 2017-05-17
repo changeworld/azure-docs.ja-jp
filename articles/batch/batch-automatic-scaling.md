@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: multiple
-ms.date: 04/03/2017
+ms.date: 05/05/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: f1156572dece1dd59d5a258b670c8fb4f3e3d0e6
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 85a2fac77cf5beae6debad044df169301d43f4ca
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -108,6 +108,7 @@ $TargetDedicated=min(maxNumberofVMs, pendingTaskSamples);
 | $SucceededTasks |正常に完了したタスクの数。 |
 | $FailedTasks |失敗したタスクの数。 |
 | $CurrentDedicated |専用コンピューティング ノードの現在の数。 |
+| $PreemptedNodeCount | 割り込み状態にあるプール内のノードの数。 |
 
 > [!TIP]
 > 上記の読み取り専用のサービス定義変数は、それぞれに関連付けられたデータにアクセスするさまざまなメソッドを指定する " *オブジェクト* " です。 詳細については、「[サンプル データの取得](#getsampledata)」をご覧ください。

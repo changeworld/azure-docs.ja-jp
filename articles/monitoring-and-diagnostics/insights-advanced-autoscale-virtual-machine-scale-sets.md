@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2016
 ms.author: ashwink
-translationtype: Human Translation
-ms.sourcegitcommit: b521c3bb99c9a6980df46eacec4e1ebe72fb01a1
-ms.openlocfilehash: 00f6a7af021029d1795071c930e05f200578fa14
-ms.lasthandoff: 02/23/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 6f1234381a6aad9632d88825aab1a5bf304a20fb
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.lasthandoff: 02/23/2017
 Virtual Machine Scale Sets では、パフォーマンス メトリックのしきい値、定期的なスケジュール、または特定の日付に基づいてスケールインおよびスケールアウトを行うことができます。 また、スケール アクションに対して電子メール通知や webhook 通知を構成することもできます。 このチュートリアルでは、これらすべてのオブジェクトを VM スケール セットで Resource Manager テンプレートを使用して構成する例を示します。
 
 > [!NOTE]
-> このチュートリアルでは VM スケール セットの手順について説明しますが、この情報は Cloud Services や Web Apps の自動スケールを設定する場合にも適用されます。
+> このチュートリアルでは VM スケール セットの手順について説明しますが、この情報は [Cloud Services](https://azure.microsoft.com/services/cloud-services/) や [App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/) の自動スケールを設定する場合にも適用されます。
 > CPU などシンプルなパフォーマンス メトリックに基づいて VM スケール セットに単純なスケールイン/スケールアウトを設定する方法については、[Linux](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) や [Windows](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) のドキュメントを参照してください。
 >
 >
@@ -59,7 +60,7 @@ Virtual Machine Scale Sets では、パフォーマンス メトリックのし�
     * **メッセージ キュー サイズ** - アプリケーションへの受信メッセージ用の Service Bus キューを使用します。 キューのメッセージ数と CPU 使用率を使用して、メッセージ数または CPU 使用率のいずれかがしきい値に達したときにスケール アクションをトリガーするように既定のプロファイルを構成します。*
     * **週と日の時間帯** - "平日の午前中" という名前の、毎週特定の時間帯に実行されるプロファイルを使用します。 履歴データから、この時間帯に一定数の VM インスタンスでアプリケーションの負荷を処理すると効率が良くなることがわかっています。*
     * **特別な日** - "製品の発売日" プロファイルを追加しました。 前もって特定の日の計画を立てておくことで、市場への発表やアプリケーションへの新製品の設定による負荷にアプリケーションを備えさせることができます。*
-    * *最後の&2; つのプロファイルには、その他のパフォーマンス メトリックに基づくルールも含まれる可能性があります。そのような場合は、該当するルールではなく、既定のパフォーマンス メトリックに基づくルールを使用することに決めました。定期的なプロファイルと日付ベースのプロファイルでは、ルールの使用は任意です。*
+    * *最後の 2 つのプロファイルには、その他のパフォーマンス メトリックに基づくルールも含まれる可能性があります。そのような場合は、該当するルールではなく、既定のパフォーマンス メトリックに基づくルールを使用することに決めました。定期的なプロファイルと日付ベースのプロファイルでは、ルールの使用は任意です。*
 
     自動スケール エンジンにおけるプロファイルとルールの優先順位付けは、[自動スケールのベスト プラクティス](insights-autoscale-best-practices.md)に関する記事にも記載されています。
     自動スケールの一般的なメトリックの一覧については、[自動スケールの一般的なメトリック](insights-autoscale-common-metrics.md)に関するページを参照してください。
@@ -202,7 +203,7 @@ Virtual Machine Scale Sets では、パフォーマンス メトリックのし�
             }
           }
     ```
-    サポートされているフィールドとその値については、[自動スケールの REST API](https://msdn.microsoft.com/en-us/library/azure/dn931928.aspx) に関するドキュメントを参照してください。 これで、自動スケール設定に、前述の&3; つのプロファイルを含めることができました。
+    サポートされているフィールドとその値については、[自動スケールの REST API](https://msdn.microsoft.com/en-us/library/azure/dn931928.aspx) に関するドキュメントを参照してください。 これで、自動スケール設定に、前述の 3 つのプロファイルを含めることができました。
 
 7. 最後に、自動スケールの**通知**セクションを見てみます。 自動スケールの通知を使用すると、スケールアウトまたはスケールインのアクションが正常にトリガーされたときに、3 つのことを実行できます。
    - サブスクリプションの管理者と共同管理者に通知する。

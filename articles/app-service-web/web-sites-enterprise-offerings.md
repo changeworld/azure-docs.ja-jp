@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2016
 ms.author: anwestg
-translationtype: Human Translation
-ms.sourcegitcommit: 4d3b3096e42736fddd3bb5b9f39376271d193c58
-ms.openlocfilehash: 980eb9ff0990d532a77614be571e3f6d24a1dfee
-ms.lasthandoff: 12/07/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 4d46654f42a3fd5c9b491f1b565c2acfa0dc52c4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 
@@ -112,7 +113,7 @@ Web Apps は、世界各地にある 24 のデータ センターでグローバ
 
 移行プロセスの次の手順は、App Service の Web アプリと Azure SQL Database の作成です。 異なるサイズの Web Apps インスタンスがあり、Web アプリケーションの要件に基づいて CPU コアの数や RAM 容量を、さまざまな選択肢から選択できます。 価格については、[https://azure.microsoft.com/pricing/details/app-service/](https://azure.microsoft.com/pricing/details/app-service/) を参照してください。 同様に、Microsoft Azure SQL Database は要求を満たすための様々なサービス層やパフォーマンス レベルによって、ビジネス ニーズに対応します。 詳細については、[https://azure.microsoft.com/pricing/details/sql-database/](https://azure.microsoft.com/pricing/details/sql-database/) を参照してください。 作成されたアプリケーションは、FTP または WebDeploy によって App Service Web Apps にアップロードされ、その後、データベースに移動されます。
 
-この移行でのソリューションは Azure SQL Database を使用していますが、Azure でサポートされているデータベースは他にもあります。 [Azure ストア](/marketplace/partner-program/)から購入できるアドオンによって、MySQL、MongoDB、Azure DocumentDB など、多くのデータベースを使用することもできます。
+この移行でのソリューションは Azure SQL Database を使用していますが、Azure でサポートされているデータベースは他にもあります。 [Azure ストア](/marketplace/partner-program/)から購入できるアドオンによって、MySQL、MongoDB、Azure Cosmos DB など、多くのデータベースを使用することもできます。
 
 Azure SQL Database を作成する場合、多数のオプションを使用して、既存のデータベースをオンプレミスのサーバーからインポートできます。たとえば、既存のデータベースのスクリプトを生成する、[データ層アプリケーション エクスポートおよびインポート](http://aka.ms/dacpac)を使用する、などのオプションがあります。
 
