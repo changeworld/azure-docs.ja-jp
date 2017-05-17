@@ -1,5 +1,5 @@
----
-title: "SQL Server 可用性グループ - Azure Virtual Machines - 障害復旧 | Microsoft Docs"
+﻿---
+title: "SQL Server 可用性グループ - Azure Virtual Machines - 災害復旧 | Microsoft Docs"
 description: "この記事では、別のリージョンのレプリカを使って、Azure Virtual Machines に SQL Server 可用性グループを構成する方法について説明します。"
 services: virtual-machines
 documentationCenter: na
@@ -26,7 +26,7 @@ ms.lasthandoff: 04/21/2017
 
 # <a name="configure-a-sql-server-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>異なるリージョンの Azure Virtual Machines に SQL Server Always On 可用性グループを構成する
 
-この記事では、リモートの Azure の場所にある Azure Virtual Machines に SQL Server Always On 可用性グループのレプリカを構成する方法について説明します。 障害復旧をサポートするには、この構成を使います。
+この記事では、リモートの Azure の場所にある Azure Virtual Machines に SQL Server Always On 可用性グループのレプリカを構成する方法について説明します。 災害復旧をサポートするには、この構成を使います。
 
 この記事は、Resource Manager モードの Azure Virtual Machines に適用されます。
 

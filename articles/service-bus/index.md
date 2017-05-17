@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Service Bus のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "オンプレミスとクラウド環境の間でアプリケーションやサービスを接続するメッセージングを設定する方法について説明します。  チュートリアル、ビデオ、API リファレンスなどを提供します。"
 services: service-bus

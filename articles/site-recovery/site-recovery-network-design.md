@@ -1,4 +1,4 @@
----
+﻿---
 title: "ディザスター リカバリー に対応したネットワーク インフラストラクチャの設計 | Microsoft Docs"
 description: "この記事では、Azure Site Recovery を使用するためのネットワーク設計の考慮事項について説明します。"
 services: site-recovery
