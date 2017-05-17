@@ -1,6 +1,6 @@
 ---
-title: "Web Apps on Linux での Node.js 向け PM2 構成の使用 | Microsoft Docs"
-description: "Web Apps on Linux での Node.js 向け PM2 構成の使用"
+title: "Azure Web Apps on Linux での Node.js 向け PM2 構成の使用 | Microsoft Docs"
+description: "Azure Web App on Linuxで Node.js の PM2 構成を使用します"
 keywords: "Azure App Service, Web アプリ, Node.js, PM2, Linux, OSS"
 services: app-service
 documentationcenter: 
@@ -15,15 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: naziml;wesmc
-translationtype: Human Translation
-ms.sourcegitcommit: bb4c7ea7adfe1326ae8259782b5de2762c8c2bf5
-ms.openlocfilehash: c4af07e79ae066f916c15aa239cb5dfdd3fef2a8
-ms.lasthandoff: 02/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 7ad48d42f8cc847ece199a2372c20430c4c8424e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="use-pm2-configuration-for-nodejs-in-web-apps-on-linux"></a>Web Apps on Linux での Node.js 向け PM2 構成の使用
-Web Apps on Linux 向けにアプリケーション スタックを Node.js に設定した場合、Node.js スタートアップ ファイルを設定するためのオプションが次の図のように表示されます。
+# <a name="use-pm2-configuration-for-nodejs-in-azure-web-app-on-linux"></a>Azure Web App on Linuxで Node.js の PM2 構成を使用する
+
+[!INCLUDE [app-service-linux-preview](../../includes/app-service-linux-preview.md)]
+
+
+Azure Web Apps on Linux 向けにアプリケーション スタックを Node.js に設定した場合、Node.js スタートアップ ファイルを設定するためのオプションが次の図のように表示されます。
 
 ![Node.js スタートアップ ファイルの設定][1]
 
@@ -61,8 +66,8 @@ Node.js の[プロセス ファイルのドキュメント](http://pm2.keymetric
 * "watch_options" には、現時点では "usePolling" を true として指定する必要があります。これはアプリケーションのコンテンツのマウント方法が原因です。
 
 ## <a name="next-steps"></a>次のステップ
-* [App Service on Linux とは](app-service-linux-intro.md)
-* [Azure App Service Web Apps on Linux の FAQ](app-service-linux-faq.md)
+* [Azure Web App on Linux とは](app-service-linux-intro.md)
+* [Azure App Service Web App on Linux の FAQ](app-service-linux-faq.md)
 
 <!--Image references-->
 [1]: ./media/app-service-linux-using-nodejs-pm2/nodejs-startup-file.png

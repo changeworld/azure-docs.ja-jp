@@ -3,22 +3,21 @@ title: "Azure Marketplace から Web アプリを作成する | Microsoft Docs"
 description: "Azure ポータルを使用して Azure Marketplace から新しい WordPress Web アプリを作成する方法について説明します。"
 services: app-service\web
 documentationcenter: 
-author: rmcmurray
+author: sunbuild
 manager: erikre
 editor: 
-ms.assetid: 972a296d-f927-470b-8534-0f2cb9eac223
 ms.service: app-service-web
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 04/25/2017
-ms.author: robmcm
+ms.topic: article
+ms.date: 05/10/2017
+ms.author: sunbuild
 ms.translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: a04c7129cd2e16c129f3e4b8e8e40f76ff37114d
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 9515a2ff614161cd28ad80b26ff793f81e41b9a3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 01/20/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -27,144 +26,138 @@ ms.lasthandoff: 01/20/2017
 
 [!INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
 
-Azure Marketplace には、Microsoft、サード パーティ企業、およびオープン ソース ソフトウェア活動によって開発された多種多様な人気の Web アプリが用意されています。 たとえば、WordPress、Umbraco CMS、Drupal などです。これらの Web アプリは、この WordPress の例で使用される [PHP] をはじめ、[.NET]、[Node.js]、[Java]、[Python] など、さまざまなよく知られたフレームワーク上に構築されています。 Azure Marketplace から Web アプリを作成するために必要なソフトウェアは、 [Azure ポータル]に使用するブラウザーだけです。
+Azure Marketplace では、オープン ソース ソフトウェア コミュニティよって開発されたさまざまな一般的な Web アプリ (WordPress や Umbraco CMS など) を提供しています。 このチュートリアルでは、Azure Marketplace から WordPress アプリを作成する方法について説明します。
+ここでは、Azure Web アプリと MySQL データベースを作成します。 
 
-このチュートリアルで学習する内容は次のとおりです。
+![WordPress Wep アプリのダッシュボードの例](./media/app-service-web-create-web-app-from-marketplace/wpdashboard2.png)
 
-* Azure App Service で Azure Marketplace テンプレートに基づく Web アプリを検索および作成します。
-* 新しい Web アプリの Azure App Service 設定を構成します。
-* Web アプリを起動して管理します。
+## <a name="before-you-begin"></a>開始する前に 
 
-このチュートリアルでは、WordPress ブログ サイトを Azure Marketplace からデプロイします。 このチュートリアルの手順を完了すると、独自の WordPress サイトをクラウドで運用できるようになります。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-![Example WordPress wep app dashboard][WordPressDashboard1]
+## <a name="deploy-from-azure-marketplace"></a>Azure Marketplace からデプロイする
+Azure Marketplace から WordPress をデプロイするには、次の手順に従います。
 
-このチュートリアルでデプロイする WordPress サイトは、データベースに MySQL を使用します。 代わりに SQL Database を使用する場合は、[Project Nami] を参照してください。これは Azure Marketplace からも入手できます。
+### <a name="sign-in-to-azure"></a>Azure にサインインする
+[Azure Portal](https://portal.azure.com) にログインします。
+
+### <a name="deploy-wordpress-template"></a>WordPress テンプレートをデプロイする
+Azure Marketplace には、リソースを設定するためのテンプレートが用意されています。[WordPress](https://portal.azure.com/#create/WordPress.WordPress) テンプレートの設定から始めます。
+   
+WordPress アプリとそのリソースをデプロイするには、次の情報を入力します。
+
+  ![WordPress 作成フロー](./media/app-service-web-create-web-app-from-marketplace/wordpress-portal-create.png)
+
+
+| フィールド         | 推奨値           | 説明  |
+| ------------- |-------------------------|-------------|
+| アプリ名      | mywordpressapp          | **Web アプリ**の一意のアプリ名を入力します。 この名前は、アプリの既定の DNS 名 (`<app_name>.azurewebsites.net`) の一部として使用されます。そのため、Azure のすべてのアプリ間で一意である必要があります。 アプリをユーザーに公開する前に、カスタム ドメイン名をアプリにマップできます。 |
+| サブスクリプション  | 従量課金制             | **サブスクリプション**を選択します。 複数のサブスクリプションがある場合は、適切なサブスクリプションを選択します。 |
+| リソース グループ| mywordpressappgroup                 |    **リソース グループ**を入力します。 リソース グループとは、Web アプリやデータベース、ストレージ アカウントなどの Azure リソースのデプロイと管理に使用する論理コンテナーです。 新しいリソース グループを作成するか、既存のリソース グループを使用できます。 |
+| App Service プラン | myappplan          | App Service プランは、アプリをホストするために使用する物理リソースのコレクションを表しています。 **場所**と**価格レベル**を選択します。 価格の詳細については、「[App Service 価格レベル](https://azure.microsoft.com/pricing/details/app-service/)」を参照してください。 |
+| データベース      | mywordpressapp          | MySQL の適切なデータベース プロバイダーを選択します。 Web Apps では、**ClearDB****Azure Database for MySQL**、および **アプリ内 MySQL** をサポートしています。 詳細については、次の「[データベースの構成](#database-config)」セクションを参照してください。 |
+| Application Insights | [オン] または [オフ]          | これは省略可能です。 **[オン]** をクリックすると、[Application Insights](https://azure.microsoft.com/en-us/services/application-insights/) による Web アプリの監視サービスが提供されます。|
+
+<a name="database-config"></a>
+
+### <a name="database-configuration"></a>データベースの構成
+MySQL データベース プロバイダーの選択に基づいて、次の手順に従います。  Web アプリと MySQL データベースは、同じ場所に配置することをお勧めします。
+
+#### <a name="cleardb"></a>ClearDB 
+[ClearDB](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/SuccessBricksInc.ClearDBMySQLDatabase?tab=Overview) は、Azure で MySQL サービスに完全に統合されたサード パーティのソリューションです。 ClearDB データベースを使用するには、クレジット カードを [Azure アカウント](http://account.windowsazure.com/subscriptions)に関連付ける必要があります。 ClearDB データベース プロバイダーを選択した場合は、既存のデータベースを一覧を表示して選択するか、**[新規作成]** ボタンをクリックしてデータベースを作成することができます。
+
+![ClearDB の作成](./media/app-service-web-create-web-app-from-marketplace/mysqldbcreate.png)
+
+#### <a name="azure-database-for-mysql-preview"></a>Azure Database for MySQL (Preview)
+[Azure Database for MySQL](https://azure.microsoft.com/en-us/services/mysql) は、アプリの開発とデプロイを行うための管理されたデータベース サービスを提供します。このサービスでは、MySQL データベースを数分で起動し、最も信頼しているクラウドにすばやくスケールできます。 包括的な価格モデルによって、高可用性やセキュリティ、回復などの組み込みのすべての機能を追加コストなしで利用できます。 別の[価格レベル](https://azure.microsoft.com/pricing/details/mysql)を選択するには、**[価格レベル]** をクリックします。 既存のデータベースまたは既存の MySQL サーバーを使用するには、サーバーが存在する既存のリソース グループを使用します。 
+
+![Web アプリ用のデータベース設定の構成](./media/app-service-web-create-web-app-from-marketplace/wordpress-azure-database.PNG)
 
 > [!NOTE]
-> このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。 アカウントを持っていない場合は、[Visual Studio サブスクライバーの特典を有効にする][activate]か、[無料試用版にサインアップ][free trial]してください。
-> 
-> Azure アカウントにサインアップする前に Azure App Service を開始する場合は、[App Service の試用]に関するページにアクセスしてください。 有効期間が短いスターター Web アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードや契約は必要ありません。
-> 
-> 
+>  Azure Database for MySQL (Preview) と Web App on Linux (Preview) は、すべてのリージョンで利用できるわけではありません。 [Azure Database for MySQL (Preview)](https://docs.microsoft.com/en-us/azure/mysql) と [Web App on Linux](./app-service-linux-intro.md) の制限事項については、該当するページを参照してください。 
 
-## <a name="find-and-create-a-web-app-in-azure-app-service"></a>Azure App Service での Web アプリの検索と作成
-1. [Azure ポータル]にログインします。
-2. **[新規]**をクリックします。
-   
-    ![Create a new Azure resource][MarketplaceStart]
-3. **WordPress** を検索し、**[WordPress]** をクリックします。 MySQL の代わりに SQL Database を使用する場合は、 **Project Nami**を検索してください。
-   
-    ![Search for WordPress in the Marketplace][MarketplaceSearch]
-4. WordPress アプリの説明を読んだら、 **[作成]**をクリックします。
-   
-    ![Create WordPress web app][MarketplaceCreate]
+#### <a name="mysql-in-app"></a>アプリ内 MySQL
+[アプリ内 MySQL](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app) は、MySql をプラットフォームでネイティブに実行できるようにする App Service の機能です。 機能のリリースでサポートされる主要な機能は次のとおりです。
 
-## <a name="configure-azure-app-service-settings-for-your-new-web-app"></a>新しい Web アプリの Azure App Service 設定の構成
-1. 新しい Web アプリを作成すると、WordPress の設定ブレードが表示されます。以降の手順は、このブレードを使用して実行します。
-   
-    ![Configure WordPress web app settings][ConfigStart]
-2. **[Web アプリ]** ボックスに Web アプリの名前を入力します。
-   
-    Web アプリの URL は *{name}*.azurewebsites.net のようになるため、この名前は azurewebsites.net ドメイン内で一意である必要があります。 入力した名前が一意でない場合は、テキスト ボックスに赤色の感嘆符が表示されます。
-   
-    ![Configure the WordPress web app name][ConfigAppName]
-3. サブスクリプションが複数ある場合には、使用するものを 1 つ選択します。
-   
-    ![Configure the subscription for the web app][ConfigSubscription]
-4. **リソース グループ** を選択するか、新しく作成します。
-   
-    リソース グループの詳細については、[Azure Resource Manager の概要][ResourceGroups]に関するページをご覧ください。
-   
-    ![Configure the resource group for the web app][ConfigResourceGroup]
-5. **App Service プラン/場所** を選択するか、新しく作成します。
-   
-    App Service プランの詳細については、[Azure App Service プランの概要][AzureAppServicePlans]に関するページをご覧ください。
-   
-    ![Configure the service plan for the web app][ConfigServicePlan]
-6. **[データベース]** をクリックし、**[新しい MySQL データベース]** ブレードで、MySQL データベースを構成するために必要な値を指定します。
-   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 新しい名前を入力するか、既定の名前をそのまま使用します。
-   
-    b. **[データベースの種類]** は **[共有]** のままにします。
-   
-    c. Web アプリ用に選択したのと同じ場所を選択します。
-   
-    d. 価格レベルを選択します。 このチュートリアルでは、**Mercury** (無料で、最小限の接続とディスク領域を使用可能) で問題ありません。
-   
-    e. **[新しい MySQL データベース]** ブレードで、法律条項に同意し、**[OK]** をクリックします。
-   
-    ![Configure the database settings for the web app][ConfigDatabase]
-7. **[WordPress]** ブレードで法律条項に同意し、**[作成]** をクリックします。
-   
-    ![Finish the web app settings and click OK][ConfigFinished]
-   
-    Azure App Service によって、通常は 1 分以内に Web アプリが作成されます。 進捗状況を監視するには、ポータル ページの上部にあるベル アイコンをクリックします。
-   
-    ![進捗状況インジケーター][ConfigProgress]
+- MySQL サーバーは、サイトをホストする Web サーバーと同じインスタンスでサイド バイ サイドで実行されます。 これにより、アプリケーションのパフォーマンスが大幅に向上します。
+- 記憶域は、MySQL と web アプリ ファイルの間で共有されます。 Free プランと Shared プランでは、実行するアクションに基づいてサイトを使用する場合は、クォータ制限に達する可能性があることに注意してください。 Free プランと Shared プランの[クォータ制限](https://azure.microsoft.com/en-us/pricing/details/app-service/plans/)を確認してください。
+- MySQL の低速クエリ ログと全般的なログ記録をオンにすることができます。 これはサイトのパフォーマンスに影響を与える可能性があるため、常時オンにはしないでください。 ログ記録機能は、アプリケーションの問題を調査するために役立ちます。 
 
-## <a name="launch-and-manage-your-wordpress-web-app"></a>WordPress Web アプリの起動と管理
-1. Web アプリの作成が完了したら、Azure ポータルで、アプリケーションを作成したリソース グループに移動し、Web アプリとデータベースを確認できます。
-   
-    電球のアイコンが表示された追加のリソースは [Application Insights][ApplicationInsights] であり、Web アプリの監視サービスを提供します。
-2. **[リソース グループ]** ブレードで、Web アプリの行をクリックします。
-   
-    ![Select your WordPress web app][WordPressSelect]
-3. Web アプリ ブレードで **[参照]**をクリックします。
-   
-    ![Browse to your WordPress web app][WordPressBrowse]
-4. WordPress ブログ用の言語を選択するように求めるメッセージが表示されたら、使用する言語を選択し、 **[続行]**をクリックします。
-   
-    ![Configure the language for your WordPress web app][WordPressLanguage]
-5. WordPress の **[ようこそ]** ページで、WordPress に必要な構成情報を入力し、**[WordPress をインストール]** をクリックします。
-   
-    ![Configure the settings your WordPress web app][WordPressConfigure]
-6. **[ようこそ]** ページで作成した資格情報を使用して、ログインします。  
-7. サイトのダッシュボード ページが開き、入力した情報が表示されます。    
-   
-    ![View your WordPress dashboard][WordPressDashboard2]
+詳細については、[こちらの記事](https://blogs.msdn.microsoft.com/appserviceteam/2016/08/18/announcing-mysql-in-app-preview-for-web-apps/ )を参照してください。
+
+![アプリ内 MySQL の管理](./media/app-service-web-create-web-app-from-marketplace/mysqlinappmanage.PNG)
+
+WordPress のデプロイ中は、ポータル ページの上部にあるベル アイコンをクリックすることで、進捗状況を監視できます。    
+![進捗状況インジケーター](./media/app-service-web-create-web-app-from-marketplace/deploy-success.png)
+
+## <a name="manage-your-new-azure-web-app"></a>新しい Azure Web アプリを管理する
+
+Azure Portal に移動し、作成したばかりの Web アプリを表示します。
+
+そのためには、[https://portal.azure.com](https://portal.azure.com) にサインインします。
+
+左側のメニューで **[App Services (App Services)]** をクリックした後、Azure Web アプリの名前をクリックします。
+
+![Azure Web アプリへのポータル ナビゲーション](./media/app-service-web-create-web-app-from-marketplace/nodejs-docs-hello-world-app-service-list.png)
+
+
+Web アプリの "_ブレード_" (水平方向に開かれるポータル ページ) が表示されます。
+
+既定では、Web アプリのブレードは **[概要]** ページを表示します。 このページでは、アプリの動作状態を見ることができます。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクも行うことができます。 ブレードの左側にあるタブは、開くことができるさまざまな構成ページを示しています。
+
+![Azure Portal の App Service ブレード](./media/app-service-web-create-web-app-from-marketplace/nodejs-docs-hello-world-app-service-detail.png)
+
+ブレードのこれらのタブは、Web アプリに追加することができるさまざまな優れた機能を示しています。 次の一覧では、ほんの一部の例を示しています。
+
+* カスタム DNS 名をマップする
+* カスタム SSL 証明書をバインドする
+* 継続的なデプロイを構成する
+* スケールアップとスケールアウトを行う
+* ユーザー認証を追加する
+
+WordPress アプリを起動して実行するには、5 分で終了する WordPress インストール ウィザードに従います。 Web アプリの開発については、[Wordpress のドキュメント](https://codex.WordPress.org/)を参照してください。
+
+![Wordpress インストール ウィザード](./media/app-service-web-create-web-app-from-marketplace/wplanguage.png)
+
+## <a name="configuring-your-app"></a>アプリの構成 
+WordPress アプリを運用環境で使用する前に、複数の管理手順を実行する必要があります。 次の手順に従って、WordPress アプリを構成して管理します。
+
+| 目的 | 方法 |
+| --- | --- |
+| **大きいファイルのアップロードまたは保存** |[Blob Storage を使用するための WordPress プラグイン](https://wordpress.org/plugins/windows-azure-storage/)|
+| **電子メールの送信** |[SendGrid](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/SendGrid.SendGrid?tab=Overview) 電子メール サービスを購入し、[SendGrid を使用するための WordPress プラグイン](https://wordpress.org/plugins/sendgrid-email-delivery-simplified/)を使用して構成します。|
+| **カスタム ドメイン名** |[Azure App Service のカスタム ドメイン名の構成](app-service-web-tutorial-custom-domain.md) |
+| **HTTPS** |[Web アプリに対する HTTPS を Azure App Service で有効にします](app-service-web-tutorial-custom-ssl.md) |
+| **運用前検証** |[Azure App Service で Web アプリのステージングと開発環境を設定します](web-sites-staged-publishing.md)|
+| **監視とトラブルシューティング** |[Azure App Service で Web Apps の診断ログ記録を有効にし](web-sites-enable-diagnostic-log.md)、[Azure App Service で Web Apps を監視します](app-service-web-tutorial-monitoring.md)。 |
+| **サイトのデプロイ** |[Azure App Service で Web アプリをデプロイします](app-service-deploy-local-git.md) |
+
+
+## <a name="secure-your-app"></a>アプリをセキュリティで保護する 
+WordPress アプリを運用環境で使用する前に、複数の管理手順を実行する必要があります。 次の手順に従って、WordPress アプリを構成して管理します。
+
+| 目的 | 方法 |
+| --- | --- |
+| **強力なユーザー名とパスワード**|  パスワードは頻繁に変更してください。 *admin*や *wordpress* のような一般的に使用されるユーザー名は使用しないでください。すべての WordPress ユーザーが一意のユーザー名と強力なパスワードを使用することを強制します。 |
+| **常に最新にする** | WordPress のコア、テーマ、プラグインを最新の状態にします。 Azure App service で利用できる最新の PHP ランタイムを使用してください。 |
+| **WordPress のセキュリティ キーの更新** | [WordPress のセキュリティ キー](https://codex.wordpress.org/Editing_wp-config.php#Security_Keys)を更新して、Cookie に格納される暗号化を向上させます。|
+
+## <a name="improve-performance"></a>パフォーマンスを向上させる
+クラウドのパフォーマンスは、主にキャッシュとスケール アウトに依存します。 ただし、Web Apps ホスティングのメモリ、帯域幅、その他の属性も考慮する必要があります。
+
+| 目的 | 方法 |
+| --- | --- |
+| **App Service インスタンス機能について学ぶ** |[App Service 階層 の機能と料金の詳細](https://azure.microsoft.com/en-us/pricing/details/app-service/)|
+| **キャッシュ リソース** |[Azure Redis Cache](https://azure.microsoft.com/en-us/services/cache/) を使用するか、[Azure Store](https://azuremarketplace.microsoft.com) のその他のキャッシュ製品のいずれかを使用します。 |
+| **アプリケーションのスケール** |[Azure App Service で Web アプリ](web-sites-scale.md)と MySQL データベースをスケールする必要があります。 アプリ内 MySQL はスケール アウトをサポートしないため、ClearDB または Azure Database for MySQL (Preview) を選択してください。 [Azure database for MySQL (Preview) をスケーリングする](https://azure.microsoft.com/en-us/pricing/details/mysql/)か、[ClearDB High Availability Routing](http://w2.cleardb.net/faqs/) を使用してデータベースをスケールアップします。 |
+
+## <a name="availability-and-disaster-recovery"></a>高可用性と障害復旧
+高可用性には、ビジネス継続性を維持するためのディザスター リカバリーの側面が含まれています。 クラウドのエラーや障害に備えるには、障害を短時間で見分ける能力が必要です。 これらのソリューションは、高可用性を実現するための戦略の実装に役立ちます。
+
+| 目的 | 方法 |
+| --- | --- |
+| **サイトの負荷分散**、**サイトの地理的な分散** |[Azure Traffic Manager を使用してトラフィックをルーティングします](https://azure.microsoft.com/en-us/services/traffic-manager/)。 |
+| **バックアップおよび復元** |[Azure App Service で Web アプリをバックアップし](web-sites-backup.md)、[Azure App Service で Web アプリを復元します](web-sites-restore.md)。 |
 
 ## <a name="next-steps"></a>次のステップ
-このチュートリアルでは、Azure Marketplace から Web アプリの例を作成してデプロイする方法を説明しました。
-
-App Service Web Apps の使用方法の詳細については、ページの左側 (ワイド ブラウザー ウィンドウの場合) またはページの上部 (幅の狭いブラウザー ウィンドウの場合) に表示されるリンクを参照してください。
-
-Azure での WordPress Web アプリの開発の詳細については、「[Azure App Service での WordPress の開発][WordPressOnAzure]」をご覧ください。
-
-<!-- URL List -->
-
-[PHP]: https://azure.microsoft.com/develop/php/
-[.NET]: https://azure.microsoft.com/develop/net/
-[Node.js]: https://azure.microsoft.com/develop/nodejs/
-[Java]: https://azure.microsoft.com/develop/java/
-[Python]: https://azure.microsoft.com/develop/python/
-[activate]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
-[free trial]: https://azure.microsoft.com/pricing/free-trial/
-[App Service の試用]: https://azure.microsoft.com/try/app-service/
-[ResourceGroups]: ../azure-resource-manager/resource-group-overview.md
-[AzureAppServicePlans]: ../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md
-[ApplicationInsights]: https://azure.microsoft.com/services/application-insights/
-[Azure ポータル]: https://portal.azure.com/
-[Project Nami]: http://projectnami.org/
-[WordPressOnAzure]: ./develop-wordpress-on-app-service-web-apps.md
-
-<!-- IMG List -->
-
-[MarketplaceStart]: ./media/app-service-web-create-web-app-from-marketplace/marketplacestart.png
-[MarketplaceSearch]: ./media/app-service-web-create-web-app-from-marketplace/marketplacesearch.png
-[MarketplaceCreate]: ./media/app-service-web-create-web-app-from-marketplace/marketplacecreate.png
-[ConfigStart]: ./media/app-service-web-create-web-app-from-marketplace/configstart.png
-[ConfigAppName]: ./media/app-service-web-create-web-app-from-marketplace/configappname.png
-[ConfigSubscription]: ./media/app-service-web-create-web-app-from-marketplace/configsubscription.png
-[ConfigResourceGroup]: ./media/app-service-web-create-web-app-from-marketplace/configresourcegroup.png
-[ConfigServicePlan]: ./media/app-service-web-create-web-app-from-marketplace/configserviceplan.png
-[ConfigDatabase]: ./media/app-service-web-create-web-app-from-marketplace/configdatabase.png
-[ConfigFinished]: ./media/app-service-web-create-web-app-from-marketplace/configfinished.png
-[ConfigProgress]: ./media/app-service-web-create-web-app-from-marketplace/configprogress.png
-[WordPressSelect]: ./media/app-service-web-create-web-app-from-marketplace/wpselect.png
-[WordPressBrowse]: ./media/app-service-web-create-web-app-from-marketplace/wpbrowse.png
-[WordPressLanguage]: ./media/app-service-web-create-web-app-from-marketplace/wplanguage.png
-[WordPressDashboard1]: ./media/app-service-web-create-web-app-from-marketplace/wpdashboard1.png
-[WordPressDashboard2]: ./media/app-service-web-create-web-app-from-marketplace/wpdashboard2.png
-[WordPressConfigure]: ./media/app-service-web-create-web-app-from-marketplace/wpconfigure.png
-
+[開発とスケールを行うための App Service のさまざまな機能](/app-service-web/)について学習します。
