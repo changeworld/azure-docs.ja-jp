@@ -11,12 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 05/16/2017
 ms.author: markvi
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
 ms.openlocfilehash: c5a0f3f958d42d514a95477c1e39f02c78307d4d
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/06/2017
 
 

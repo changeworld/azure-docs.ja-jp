@@ -11,11 +11,12 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/19/21017
+ms.date: 04/19/2017
 ms.author: adegeo
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
 ms.openlocfilehash: 26e2becf7810950fd5734fd70c1fed225149ec4d
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/24/2017
 
 

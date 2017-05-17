@@ -43,15 +43,15 @@ Mono と .NET 間の互換性の詳細については、[Mono の互換性に関
 
 1. [.NET Portability Analyzer](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer) をインストールします。 インストール時に、使用する Visual Studio のバージョンを選択します。
 
-2. Visual Studio 2015 以降では、__[Analyze](分析)__ > __[Portability Analyzer Settings](移植性アナライザー設定)__を選択し、__[Mono]__ セクションで __[4.5]__ がオンに設定されていることを確認します。
+2. Visual Studio 2015 以降では、__[Analyze] \(分析)__ > __[Portability Analyzer Settings] \(移植性アナライザー設定)__を選択し、__[Mono]__ セクションで __[4.5]__ がオンに設定されていることを確認します。
 
     ![Analyzer 設定の [Mono] セクションで [4.5] がチェックされた状態](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-settings.png)
 
     __[OK]__ をクリックして構成を保存します。
 
-3. __[Analyze](分析)__ > __[Analyze Assembly Portability](アセンブリ移植性の分析)__を選択します。 ソリューションを含むアセンブリを選択して、__[開く](Open)__を選択して分析を開始します。
+3. __[Analyze] \(分析)__ > __[Analyze Assembly Portability] \(アセンブリ移植性の分析)__を選択します。 ソリューションを含むアセンブリを選択して、__[開く] \(Open)__を選択して分析を開始します。
 
-4. 分析が完了したら、__[Analyze](分析)__ > __[View analysis reports](分析レポートを表示)__を選択します。 __[Portability Analysis Results](移植性分析の結果)__で、__[Open report](レポートを開く)__を選択してレポートを開きます。
+4. 分析が完了したら、__[Analyze] \(分析)__ > __[View analysis reports] \(分析レポートを表示)__を選択します。 __[Portability Analysis Results] \(移植性分析の結果)__で、__[Open report] \(レポートを開く)__を選択してレポートを開きます。
 
     ![移植性アナライザーの結果ダイアログ](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png)
 

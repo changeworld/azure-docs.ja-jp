@@ -13,11 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 01/23/2017
+ms.date: 05/15/2017
 ms.author: maroche
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 412063692e87fe71890f62bcc18b99b317a80986
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -50,9 +52,4 @@ Azure Active Directory (Azure AD) は、企業がクラウドとオンプレミ�
  ![Active Directory グローバル認証ポリシー](./media/data-catalog-prerequisites/global-auth-policy.png)
 
 詳細については、「 [認証ポリシーの構成](https://technet.microsoft.com/library/dn486781.aspx)」を参照してください。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -61,7 +61,7 @@ Azure のリージョンと Geo を理解することは、使用可能なスト
 
 詳細については、 [Azure ストレージのレプリケーション オプションのページ](../articles/storage/storage-redundancy.md)を参照してください。 管理ディスクについて詳しくは、「[Azure Managed Disks overview](../articles/storage/storage-managed-disks-overview.md)」(Azure Managed Disks の概要) をご覧ください。
 
-### <a name="storage-costs"></a>ストレージ コスト
+### <a name="storage-costs"></a>ストレージのコスト
 価格は、ストレージの種類と選択した可用性によって異なります。
 
 **Azure Managed Disks**

@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 05/03/2017
 ms.author: kgremban
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 081e45e0256134d692a2da7333ddbaafc7366eaa
 ms.openlocfilehash: ff07a52f6a503f07f5919b63f345878571742cac
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/06/2017
 
 
 ---
@@ -48,10 +50,5 @@ ms.openlocfilehash: ff07a52f6a503f07f5919b63f345878571742cac
 * [アプリケーション プロキシで発生した問題のトラブルシューティングを行う](active-directory-application-proxy-troubleshoot.md)
 * [ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにする](active-directory-application-proxy-native-client.md)
 
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

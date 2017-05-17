@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 05/16/2017
 ms.author: markvi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: d08131936f856ed671a2358867918d5ba40a5897
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -69,10 +71,5 @@ Azure AD では、Salesforce のようなアプリケーションをシングル
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 * [条件付きアクセスを使用したアプリケーションの保護](active-directory-conditional-access.md)
 * [セルフサービス グループの管理/SSAA](active-directory-accessmanagement-self-service-group-management.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

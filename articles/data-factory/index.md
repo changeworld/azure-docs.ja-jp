@@ -12,10 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: faa31345c423191591b392cdfdf1e2d9169b88fc
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: bf280db3ab7f9a4b3742dafcdbb0fb7c79cc963c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 # <a name="azure-data-factory-documentation"></a>Azure Data Factory のドキュメント
@@ -119,7 +120,7 @@ ms.lasthandoff: 04/12/2017
                 <div class="card">
                     <div class="cardText">
                         <h3>言語</h3>
-                        <p><a href="/dotnet/api/microsoft.azure.management.datafactories.models">.NET</a></p>
+                        <p><a href="/dotnet/api/index?view=azuremgmtdatafactories-4.12.1">.NET</a></p>
                         <p><a href="/azure/data-factory/data-factory-json-scripting-reference">JSON</a></p>
                    </div>
                 </div>

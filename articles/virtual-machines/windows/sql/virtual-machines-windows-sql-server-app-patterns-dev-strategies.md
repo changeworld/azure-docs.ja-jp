@@ -15,10 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/15/2016
 ms.author: lvargas
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 1bbcc8517b0e7bf3836e79a3861f83e181eb67e7
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: c5d0b7b466c65fb218acd010c13bde061a3abfbf
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -171,7 +172,7 @@ Azure で運用コードを実行しているお客様のほとんどは Azure �
 High Availability and Disaster Recovery 手法に関する包括的な情報とチュートリアルについては、「[Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](virtual-machines-windows-sql-high-availability-dr.md)」をご覧ください。
 
 ## <a name="2-tier-and-3-tier-using-azure-vms-and-cloud-services"></a>2 層および 3 層 (Azure VM と Cloud Services の使用)
-このアプリケーション パターンでは、[Azure Cloud Services](../../../cloud-services/cloud-services-choose-me.md#tellmecs) (Web ロールと worker ロール - サービスとしてのプラットフォーム (PaaS)) と [Azure Virtual Machines](../about.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (サービスとしてのインフラストラクチャ (IaaS)) の両方を使用して、2 層または 3 層アプリケーションを Azure にデプロイします。 プレゼンテーション層とビジネス層に [Azure Cloud Services](https://azure.microsoft.com/documentation/services/cloud-services/) を使用し、データ層に [Azure Virtual Machines](../about.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 内の SQL Server を使用すると、Azure で実行されるほとんどのアプリケーションにとってメリットがあります。 その理由は、Cloud Services で実行されるコンピューティング インスタンスにより、管理、デプロイ、監視、およびスケールアウトが簡単になるためです。
+このアプリケーション パターンでは、[Azure Cloud Services](../../../cloud-services/cloud-services-choose-me.md#tellmecs) (Web ロールと worker ロール - サービスとしてのプラットフォーム (PaaS)) と [Azure Virtual Machines](../overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (サービスとしてのインフラストラクチャ (IaaS)) の両方を使用して、2 層または 3 層アプリケーションを Azure にデプロイします。 プレゼンテーション層とビジネス層に [Azure Cloud Services](https://azure.microsoft.com/documentation/services/cloud-services/) を使用し、データ層に [Azure Virtual Machines](../overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 内の SQL Server を使用すると、Azure で実行されるほとんどのアプリケーションにとってメリットがあります。 その理由は、Cloud Services で実行されるコンピューティング インスタンスにより、管理、デプロイ、監視、およびスケールアウトが簡単になるためです。
 
 Cloud Services を使用すると、Azure がユーザーに代わってインフラストラクチャの保守と日常的な保守を行い、オペレーティング システムにパッチを適用し、サービスとハードウェアの障害時には回復を図ります。 アプリケーションでスケールアウトが必要な場合、クラウド サービス プロジェクトでは、アプリケーションで使用するインスタンスまたは仮想マシンの数を増減させることで、自動および手動のスケールアウト オプションを使用できます。 また、オンプレミスの Visual Studio を使用して、アプリケーションを Azure のクラウド サービス プロジェクトにデプロイすることもできます。
 

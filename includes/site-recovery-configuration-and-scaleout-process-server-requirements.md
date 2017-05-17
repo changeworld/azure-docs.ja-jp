@@ -8,7 +8,7 @@
 | **ソフトウェア** | |
 | オペレーティング システムのバージョン | Windows Server 2012 R2 |
 | オペレーティング システムのロケール | 英語 (en-us)|
-| VMware vSphere PowerCLI のバージョン | [PowerCLI 6.0](https://developercenter.vmware.com/tool/vsphere_powercli/6.0 "PowerCLI 6.0")|
+| VMware vSphere PowerCLI のバージョン | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0")|
 | Windows Server の役割 | 次の役割を有効にしないでください。 <br> - Active Directory Domain Services <br>- インターネット インフォメーション サービス <br> - Hyper-V |
 | **ネットワーク** | |
 | ネットワーク インターフェイス カードの種類 | VMXNET3 |

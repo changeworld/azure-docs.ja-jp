@@ -15,10 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 04/24/2017
 ms.author: pajosh;markgal;trinadhk
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: da6c497e10d31dbc98703090a8f7699d0841faa8
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: d76fb43a1b045b98a14ae91ac339d53e9a48f1de
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/04/2017
 
 
 ---
@@ -83,11 +84,11 @@ ms.lasthandoff: 04/26/2017
 バックアップ ジョブをトリガーする手順については、「[Recovery Services コンテナーへの Azure VM のバックアップ](backup-azure-arm-vms.md)」を参照してください。
 
 ### <a name="continue-backups-of-already-backed-up-vms-with-encryption-enabled"></a>暗号化が有効なバックアップ済み VM を引き続きバックアップ  
-Recovery Services コンテナーで VM が既にバックアップ中で、後の暗号化に対して有効になっている場合は、バックアップを継続して行うために、バックアップ サービスに対するアクセス許可を、アクセス キー コンテナーに付与する必要があります。 PowerShell でこうしたアクセス許可を付与するには、[PowerShell ドキュメント](backup-azure-vms-automation.md#backup-azure-vms)の**バックアップの有効化**に関するセクションに記載されている手順を使用します。 
+Recovery Services コンテナーで VM が既にバックアップ中で、後の暗号化に対して有効になっている場合は、バックアップを継続して行うために、バックアップ サービスに対するアクセス許可を、アクセス キー コンテナーに付与する必要があります。 PowerShell でこうしたアクセス許可を付与するには、[PowerShell ドキュメント](backup-azure-vms-automation.md)の**バックアップの有効化**に関するセクションに記載されている手順を使用します。 
 
 ## <a name="restore-encrypted-vm"></a>暗号化された VM の復元
 暗号化された VM を復元するには、「[VM の復元構成の選択](backup-azure-arm-restore-vms.md#choosing-a-vm-restore-configuration)」の**バックアップされたディスクの復元**に関するセクションで説明されている手順に従って、最初にディスクを復元します。 その後、次のいずれかのオプションを使用できます。
-* 「[復元されたディスクからの VM の作成](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)」で説明されている PowerShell の手順を使用して、復元されたディスクから完全な VM を作成する。 
+* 「[復元されたディスクからの VM の作成](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)」で説明されている PowerShell の手順を使用して、復元されたディスクから完全な VM を作成する。
 * [ディスク復元の一環として生成されたテンプレートを使用](backup-azure-arm-restore-vms.md#use-templates-to-customize-restore-vm)して、復元されたディスクから VM を作成する。 テンプレートは、2017年 4 月 26 日より後に作成された回復ポイントに対してのみ使用できます。
 
 ## <a name="troubleshooting-errors"></a>エラーのトラブルシューティング

@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/09/2017
+ms.date: 05/11/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 1bd7e8b6ba9e2f7f1150c8d88c46a4828ac078d4
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 7eb5903a5b010c7a6c2f1e427c596b931c6ec1a1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.lasthandoff: 04/03/2017
 ## <a name="next-steps"></a>次のステップ
 次の記事で、ネットワーク セキュリティ グループを使用するためのクイック スタート ガイドと共に、この記事で取り上げるテクノロジに関する詳細情報を参照することができます。
 
-* [クイック スタート - Azure CLI を使用してネットワーク セキュリティ グループと ACL ルールを作成する](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)  
+* [クイック スタート - Azure CLI を使用してネットワーク セキュリティ グループと ACL ルールを作成する](nsg-quickstart.md)  
 * [Azure リソース マネージャーの概要](../../azure-resource-manager/resource-group-overview.md)  
 * [ネットワーク セキュリティ グループ (NSG) について](../../virtual-network/virtual-networks-nsg.md)  
 * [ロード バランサー用の Azure Resource Manager の概要](../../load-balancer/load-balancer-arm.md) 

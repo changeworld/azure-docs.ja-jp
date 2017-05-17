@@ -63,7 +63,7 @@
 ## [ネットワークのブログ](https://azure.microsoft.com/blog/topics/networking/)
 ## [ケース スタディ](https://customers.microsoft.com/Pages/advancedsearch.aspx?mrmcproducts=More%20Products)
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
-## [サブスクリプションとサービスの制限](../azure-subscription-service-limits.md)
+## [サブスクリプションとサービスの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fexpressroute%2ftoc.json)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=expressroute)
 ### [ExpressRoute 回線の作成](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit/)
 ### [回線のプライベート ピアリングを設定する方法](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit/)

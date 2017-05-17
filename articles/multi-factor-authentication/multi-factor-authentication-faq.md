@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/26/2017
+ms.date: 04/26/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 12b67d92fb955d9d20b0e86a38baa47a3717a333
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
+ms.openlocfilehash: d9fffa2058120f067c631a900eb8db4738f73778
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/28/2017
 
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication についてよく寄せられる質問
@@ -71,9 +72,9 @@ Multi-Factor Authentication Server では、ユーザーのデータはオンプ
 
 場合によります。 
 
-Azure 管理者向けの Multi-Factor Authentication では、一部の Azure MFA 機能を無料で利用し、Azure と Office 365 管理者ポータルを含む Microsoft オンライン サービスにアクセスできます。 このプランは、Azure Active Directory インスタンスの Azure 管理者のうち、MFA ライセンス、バンドル、またはスタンドアロンの使用量ベースのプロバイダーを通じて提供される、通常版の Azure MFA を所有していない管理者に適用されます。 管理者が無料版を使用している場合、Multi-Factor Authentication プロバイダーを作成すると、Multi-Factor Authentication を使用するように構成されているディレクトリ内のすべての管理者とユーザーが、通常版の Azure Multi-Factor Authentication を使用できるようになります。
+Azure 管理者向けの Multi-Factor Authentication では、一部の Azure MFA 機能を無料で利用し、Azure と Office 365 管理者ポータルを含む Microsoft オンライン サービスにアクセスできます。 このプランは、Azure Active Directory インスタンスのグローバル管理者のうち、MFA ライセンス、バンドル、またはスタンドアロンの使用量ベースのプロバイダーを通じて提供される、通常版の Azure MFA を所有していない管理者に適用されます。 管理者が無料版を使用している場合、Multi-Factor Authentication プロバイダーを作成すると、Multi-Factor Authentication を使用するように構成されているディレクトリ内のすべての管理者とユーザーが、通常版の Azure Multi-Factor Authentication を使用できるようになります。
 
-Office 365 ユーザー向けの Multi-Factor Authentication では、一部の Azure MFA 機能を無料で利用し、Exchange Online、SharePoint Online などの Office 365 サービスを含む Microsoft オンライン サービスにアクセスできます。 このプランは、Office 365 ライセンスに対応する Azure Active Directory インスタンスに、MFA ライセンス、バンドル、またはスタンドアロンの使用量ベースのプロバイダーを通じて提供される通常版の Azure MFA がない場合、その Office 365 ライセンスが割り当てられているユーザーに適用されます。 
+Office 365 ユーザー向けの Multi-Factor Authentication では、一部の Azure MFA 機能を無料で利用し、Exchange Online と SharePoint Online を含む Office 365 サービスにアクセスできます。 このプランは、Office 365 ライセンスに対応する Azure Active Directory インスタンスに、MFA ライセンス、バンドル、またはスタンドアロンの使用量ベースのプロバイダーを通じて提供される通常版の Azure MFA がない場合、その Office 365 ライセンスが割り当てられているユーザーに適用されます。 
 
 **Q: ユーザーごとと認証ごとの使用量課金モデルは、組織でいつでも切り替えることができますか。**
 

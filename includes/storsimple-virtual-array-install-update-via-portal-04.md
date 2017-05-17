@@ -50,6 +50,4 @@
 
     ![デバイスの更新](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate16m1.png)
 
-9. 更新プログラムが正常にインストールされると、その旨のメッセージが **[デバイスの更新プログラム]** ブレードに表示されます。 ソフトウェアのバージョンも **10.0.10289.0** に変更されます。
-
-    ![デバイスの更新](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate17m1.png)
+9. 更新プログラムが正常にインストールされると、その旨のメッセージが **[デバイスの更新プログラム]** ブレードに表示されます。 

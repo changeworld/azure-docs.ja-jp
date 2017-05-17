@@ -13,11 +13,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/22/2017
+ms.date: 05/16/2017
 ms.author: markvi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0480c4f89b6036897bc8d7eff81b56262ea8806c
 ms.openlocfilehash: e4e0fa77552c4df2ea5bb9ddae916e7c661824d1
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/23/2017
 
 

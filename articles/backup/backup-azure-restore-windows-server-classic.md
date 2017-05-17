@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/31/2017
 ms.author: saurse;trinadhk;markgal;
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: be6bc58ab856309004904626db166331b29199a8
 ms.openlocfilehash: aa8ccc15971bed76d7ce8fd554e6a0f89d985fb8
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/02/2017
 
 
@@ -54,7 +55,7 @@ ms.lasthandoff: 02/02/2017
 
     ![データの回復](./media/backup-azure-restore-windows-server/recover.png)
 
-3. 同じサーバーまたはコンピューターにデータを復元するには、**[作業の開始]** ウィンドウで、**[このサーバー] (`<server name>`)** を選択し、**[次へ]** をクリックします。
+3. 同じサーバーまたはコンピューターにデータを復元するには、**[作業の開始]** ウィンドウで、**[このサーバー] \(`<server name>`)** を選択し、**[次へ]** をクリックします。
 
     ![[このサーバー] オプションを選択すると、データが同じマシンに復元されます](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
 

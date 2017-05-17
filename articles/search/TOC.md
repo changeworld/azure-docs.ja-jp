@@ -43,7 +43,7 @@
 ### [Azure Blob Storage インデクサー](search-howto-indexing-azure-blob-storage.md)
 ### [Azure Table Storage インデクサー](search-howto-indexing-azure-tables.md)
 ### [Azure SQL インデクサー](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-### [Azure DocumentDB インデクサー](search-howto-index-documentdb.md)
+### [Azure Cosmos DB インデクサー](search-howto-index-documentdb.md)
 ### [CSV BLOB のインデックスを作成する](search-howto-index-csv-blobs.md)
 ### [JSON BLOB のインデックスを作成する](search-howto-index-json-blobs.md)
 ### [Azure VM で SQL Server へのインデクサーの接続を構成する](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)

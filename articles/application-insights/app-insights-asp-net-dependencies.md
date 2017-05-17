@@ -11,12 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2017
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: 35817adde713995ec82eead033f058ee109bf900
-ms.lasthandoff: 03/16/2017
+ms.date: 05/04/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: c31abf49a05f7911d4ec82db59efa2724ab7b49b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -31,7 +32,7 @@ ms.lasthandoff: 03/16/2017
   * SQL データベース
   * HTTP ベースのバインドを使用する ASP.NET Web および WCF サービス
   * ローカルまたはリモートの HTTP 呼び出し
-  * Azure DocumentDb、テーブル、Blob Storage、およびキュー
+  * Azure Cosmos DB、テーブル、Blob Storage、およびキュー
 * Web ページ
   * AJAX 呼び出し
 
@@ -119,9 +120,9 @@ ms.lasthandoff: 03/16/2017
 
 最初の依存関係呼び出しの後に大きな隔たりがあるようです。コードを参照してその理由を調べる必要があります。
 
-### <a name="profiling-your-live-site"></a>ライブ サイトのプロファイリング
+### <a name="profile-your-live-site"></a>ライブ サイトのプロファイリング
 
-時間がどこに使われているのか見当がつかないでしょうか。 Application Insights プロファイラーは、ライブ サイトへの HTTP 呼び出しをトレースし、コード内の関数のうち最も時間がかかったものを示します。 現在、このプロファイラーは限定プレビュー中です。[サインアップして試す](https://aka.ms/AIProfilerPreview)ことができます。
+時間がどこに使われているのか見当がつかないでしょうか。 [Application Insights プロファイラー](app-insights-profiler.md)は、ライブ サイトへの HTTP 呼び出しをトレースし、コード内の関数のうち最も時間がかかったものを示します。
 
 ## <a name="failed-requests"></a>失敗した要求
 失敗した要求も、依存関係への失敗した呼び出しに関連している可能性があります。 この場合も、クリック操作で問題を追跡することができます。

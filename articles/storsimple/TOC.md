@@ -1,4 +1,5 @@
 # StorSimple Virtual Array
+
 ## 概要
 ### [ソリューションとは](storsimple-ova-overview.md)
 
@@ -8,7 +9,7 @@
 #### [制限について](storsimple-ova-limits.md)
 #### [ベスト プラクティスを確認する](storsimple-ova-best-practices.md)
 
-### デプロイ (Azure Portal)
+### デプロイ
 #### [デプロイの準備をする](storsimple-virtual-array-deploy1-portal-prep.md)
 ##### [StorSimple Manager サービスをデプロイする](storsimple-virtual-array-manage-service.md)
 #### [Hyper-V でプロビジョニングする](storsimple-virtual-array-deploy2-provision-hyperv.md)
@@ -16,17 +17,10 @@
 #### [ファイル サーバーとして設定する](storsimple-virtual-array-deploy3-fs-setup.md)
 #### [iSCSI サーバーとして設定する](storsimple-virtual-array-deploy3-iscsi-setup.md)
 
-### デプロイ (クラシック ポータル)
-#### [デプロイの準備をする](storsimple-ova-deploy1-portal-prep.md)
-##### [StorSimple Manager サービスをデプロイする](storsimple-ova-manage-service.md)
-#### [Hyper-V でプロビジョニングする](storsimple-ova-deploy2-provision-hyperv.md)
-#### [VMware でプロビジョニングする](storsimple-ova-deploy2-provision-vmware.md)
-#### [ファイル サーバーとして設定する](storsimple-ova-deploy3-fs-setup.md)
-#### [iSCSI サーバーとして設定する](storsimple-ova-deploy3-iscsi-setup.md)
-
 ## 方法
 ### [Azure Portal で管理する](storsimple-virtual-array-manager-service-administration.md)
-#### [最新の更新プログラムをインストールする](storsimple-virtual-array-install-update-04.md)
+#### [最新の更新プログラムをインストールする](storsimple-virtual-array-install-update-05.md)
+##### [Update 0.4 をインストールする](storsimple-virtual-array-install-update-04.md)
 ##### [Update 0.3 のインストール](storsimple-virtual-array-install-update.md)
 #### [バックアップを作成および管理する](storsimple-virtual-array-backup.md)
 #### [バックアップから複製する](storsimple-virtual-array-clone.md)
@@ -44,22 +38,11 @@
 #### [診断とトラブルシューティング](storsimple-virtual-array-diagnose-problems.md)
 #### [サポート要求を記録する](storsimple-virtual-array-log-support-ticket.md)
 
-### [Azure クラシック ポータルで管理する](storsimple-ova-manager-service-administration.md)
-#### [最新の更新プログラムをインストールする](storsimple-ova-install-update-01.md)
-#### [バックアップを作成および管理する](storsimple-ova-backup.md)
-#### [バックアップから復元する](storsimple-ova-restore.md)
-#### [フェールオーバーと DR](storsimple-ova-failover-dr.md)
-#### [非アクティブ化および削除](storsimple-ova-deactivate-and-delete-device.md)
-#### [サービス ダッシュボードを監視する](storsimple-ova-service-dashboard.md)
-#### [デバイスのパスワードを変更する](storsimple-ova-change-device-admin-password.md)
-#### [ACR を管理する](storsimple-ova-manage-acrs.md)
-#### [ストレージ アカウントを管理する](storsimple-ova-manage-storage-accounts.md)
-#### [ジョブを管理する](storsimple-ova-manage-jobs.md)
-#### [Windows Server ホストで MPIO を構成する](storsimple-ova-configure-mpio-windows-server.md)
 ### [ローカル Web UI で構成する](storsimple-ova-web-ui-admin.md)
 
 ## リリース ノート
-### [Update 0.4 - 最新](storsimple-virtual-array-update-04-release-notes.md)
+### [Update 0.5 - 最新](storsimple-virtual-array-update-05-release-notes.md)
+### [Update 0.4](storsimple-virtual-array-update-04-release-notes.md)
 ### [Update 0.3](storsimple-ova-update-03-release-notes.md)
 ### [Update 0.2 および 0.1](storsimple-ova-update-01-release-notes.md)
 
@@ -71,6 +54,7 @@
 ### [セキュリティに関する考慮事項](storsimple-security.md)
 
 ## 作業開始
+
 ### プラン
 #### [要件を確認する](storsimple-system-requirements.md)
 #### [技術仕様を確認する](storsimple-technical-specifications-and-compliance.md)
@@ -80,7 +64,6 @@
 ### [インストール]
 #### [安全性を確認する](storsimple-safety.md)
 #### [8100 を開梱、ラック設置、ケーブル接続する](storsimple-8100-hardware-installation.md)
-
 #### [8600 を開梱、ラック設置、ケーブル接続する](storsimple-8600-hardware-installation.md)
 #### [10 GbE ネットワーク インターフェイスでサポートされるハードウェア](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
 
@@ -96,6 +79,7 @@
 #### [SharePoint 用 StorSimple アダプター](storsimple-adapter-for-sharepoint.md)
 
 ## 方法
+
 ### [管理]
 #### [StorSimple Manager サービスの使用](storsimple-manager-service-administration.md)
 ##### [バックアップから復元する](storsimple-restore-from-backup-set-u2.md)
@@ -214,6 +198,7 @@
 ### [既定の BLOB パスの変更](storsimple-data-manager-change-default-blob-path.md)
 
 # パートナー向け StorSimple
+
 ## 概要
 ### [ソリューションとは](storsimple-partner-csp-overview.md)
 

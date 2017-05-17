@@ -20,6 +20,9 @@
 #### [シミュレートされたデータ](iot-suite-raspberry-pi-kit-node-get-started-simulator.md)
 #### [実際のセンサーを使用する](iot-suite-raspberry-pi-kit-node-get-started-basic.md)
 #### [ファームウェアの更新プログラムを実装する](iot-suite-raspberry-pi-kit-node-get-started-advanced.md)
+## Intel NUC ゲートウェイを接続する
+### [シミュレートされたデータ](iot-suite-gateway-kit-get-started-simulator.md)
+### [実際のセンサーを使用する](iot-suite-gateway-kit-get-started-sensortag.md)
 
 # 方法
 ## シミュレートされたデバイスの接続
@@ -33,6 +36,7 @@
 ## [リモート監視ソリューションでカスタム規則を作成する](iot-suite-custom-rule.md)
 ## [リモート監視ソリューションでのデバイス情報](iot-suite-remote-monitoring-device-info.md)
 ## [コネクティッド ファクトリ用のゲートウェイをデプロイする](iot-suite-connected-factory-gateway-deployment.md)
+## [コネクテッド ファクトリをカスタマイズする](iot-suite-connected-factory-customize.md)
 
 # リファレンス
 ## [セキュリティのアーキテクチャ](iot-security-architecture.md)

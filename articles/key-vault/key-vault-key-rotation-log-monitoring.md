@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: jodehavi;stgriffi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
 ms.openlocfilehash: 38c342802ed687985ac6f84f5a590a1a0dcc6c6a
+ms.contentlocale: ja-jp
 ms.lasthandoff: 05/03/2017
 
 
@@ -435,7 +436,7 @@ Logic App が作成されたら、そのアプリに移動し、**[編集]** を
 
 ![Azure Logic App 選択アクション](./media/keyvault-keyrotation/Azure_LogicApp_Condition.png)
 
-アクションで、[Office 365 - send email (Office 365 - メール送信)] ****を選択します。 フィールドに入力して、定義された条件が **false** を返したときに送信する電子メールを作成します。 Office 365 がない場合は、同じ結果を実現するために他の方法を確認してください。
+アクションで、**[Office 365 - send email (Office 365 - メール送信)]**を選択します。 フィールドに入力して、定義された条件が **false** を返したときに送信する電子メールを作成します。 Office 365 がない場合は、同じ結果を実現するために他の方法を確認してください。
 
 この時点では、1 分ごとに新しい Key Vault 監査ログを確認するエンド ツー エンドのパイプラインがあります。 これは検出した新しいログを Service Bus キューにプッシュします。 新しいメッセージがキューに届くと、ロジック アプリがトリガーされます。 イベント内の *appid* が呼び出し元アプリケーションのアプリケーション ID と一致しない場合、電子メールが送信されます。
 

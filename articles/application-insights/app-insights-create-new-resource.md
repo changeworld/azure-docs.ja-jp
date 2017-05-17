@@ -4,7 +4,7 @@ description: "新しいライブ アプリケーションを対象にした Appl
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 878b007e-161c-4e36-8ab2-3d7047d8a92d
 ms.service: application-insights
 ms.workload: tbd
@@ -12,10 +12,11 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
-ms.author: awills
-translationtype: Human Translation
+ms.author: cfreeman
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 003db6e1479be1007dd292555ce5997f1c138809
 ms.openlocfilehash: f73a24993fdeaced422b2f7a1283722a82c2be77
+ms.contentlocale: ja-jp
 ms.lasthandoff: 12/13/2016
 
 

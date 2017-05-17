@@ -3,7 +3,6 @@
 ## [エディションの選択](active-directory-editions.md)
 
 ## [Azure の ID 管理について](identity-fundamentals.md)
-## [Azure ポータルのエクスペリエンスをプレビューします。](active-directory-preview-explainer.md)
 
 # 作業開始
 ## [Azure AD テナントを取得する](active-directory-howto-tenant.md)
@@ -18,7 +17,9 @@
 
 # 方法
 ## 計画と設計
+### [Azure AD のアーキテクチャを理解する](active-directory-architecture.md)
 ### [ハイブリッド ID ソリューションをデプロイする](active-directory-hybrid-identity-design-considerations-overview.md)
+
 #### 要件を確認する
 ##### [ID](active-directory-hybrid-identity-design-considerations-business-needs.md)
 ##### [ディレクトリ同期](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)
@@ -80,7 +81,7 @@
 ### [危険な状態のユーザー](active-directory-reporting-security-user-at-risk.md)
 ### [リスクの高いサインイン](active-directory-reporting-security-risky-sign-ins.md)
 ### [リスク イベント](active-directory-reporting-risk-events.md)
-### [名前付きネットワーク](active-directory-known-networks-azure-portal.md)
+### [名前付きの場所](active-directory-named-locations.md)
 ### [レポートの移行](active-directory-reporting-migration.md)
 ### [保持](active-directory-reporting-retention.md)
 ### [待機時間](active-directory-reporting-latencies-azure-portal.md)
@@ -91,6 +92,7 @@
 ###    プログラムによるアクセス
 #### [監査のリファレンス](active-directory-reporting-api-audit-reference.md)
 #### [監査のサンプル](active-directory-reporting-api-audit-samples.md)
+#### [データの取得](active-directory-reporting-api-with-certificates.md)
 #### [前提条件](active-directory-reporting-api-prerequisites.md)
 #### [サインインの参照](active-directory-reporting-api-sign-in-activity-reference.md)
 #### [サインインのサンプル](active-directory-reporting-api-sign-in-activity-samples.md)
@@ -114,6 +116,7 @@
 ## [パスワードの管理](active-directory-passwords.md)
 ### ユーザー ドキュメント
 #### [パスワードのリセットまたは変更](active-directory-passwords-update-your-own-password.md)
+#### [パスワードのベスト プラクティス](active-directory-secure-passwords.md)
 #### [セルフサービスのパスワード リセットのための登録](active-directory-passwords-reset-register.md)
 ### [クイック スタート: セルフサービスのパスワード リセット](active-directory-passwords-getting-started.md)
 ### [SSPR のライセンス](active-directory-passwords-licensing.md)
@@ -159,33 +162,37 @@
 #### [レジストリ設定の更新](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
 #### [セキュリティとプライバシーについて](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
 
-### [アプリへのリモート アクセス権の付与](active-directory-application-proxy-get-started.md)
-#### [アプリケーション プロキシを有効にする](active-directory-application-proxy-enable.md)
-#### [コネクタについて](application-proxy-understand-connectors.md)
-#### [アプリを発行する](application-proxy-publish-azure-portal.md)
-#### [セキュリティ](application-proxy-security-considerations.md)
-#### [ネットワーク](application-proxy-network-topology-considerations.md)
-#### [リモート デスクトップ](application-proxy-publish-remote-desktop.md)
-#### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
-#### [異なるネットワークに発行する](active-directory-application-proxy-connectors-azure-portal.md)
-#### [プロキシ サーバー](application-proxy-working-with-proxy-servers.md)
-#### [カスタム ドメイン](active-directory-application-proxy-custom-domains.md)
-#### [アプリへのアクセス](active-directory-appssoaccess-whatis.md)
-##### [Azure ポータル](application-proxy-sso-azure-portal.md)
-#### [KCD を使用した SSO](active-directory-application-proxy-sso-using-kcd.md)
-#### [ヘッダーを使用した SSO](application-proxy-ping-access.md)
-#### [要求に対応するアプリケーション](active-directory-application-proxy-claims-aware-apps.md)
-#### [ネイティブ クライアント アプリ](active-directory-application-proxy-native-client.md)
-#### [カスタム ホーム ページ](application-proxy-office365-app-launcher.md)
-#### [条件付きアクセス](active-directory-application-proxy-conditional-access.md)
-#### [サイレント インストール](active-directory-application-proxy-silent-installation.md)
-#### [Microsoft Forefront](application-proxy-transition-from-uag-tmg.md)
+### [アプリ プロキシを使用してリモートでアプリにアクセスする](active-directory-application-proxy-get-started.md)
+#### 作業開始
+##### [アプリケーション プロキシを有効にする](active-directory-application-proxy-enable.md)
+##### [アプリを発行する](application-proxy-publish-azure-portal.md)
+##### [カスタム ドメイン](active-directory-application-proxy-custom-domains.md)
+#### [SSO アクセス](active-directory-appssoaccess-whatis.md)
+##### [KCD を使用した SSO](active-directory-application-proxy-sso-using-kcd.md)
+##### [ヘッダーを使用した SSO](application-proxy-ping-access.md)
+##### [パスワード保管を使用した SSO](application-proxy-sso-azure-portal.md)
+#### ベスト プラクティスについて
+##### [コネクタ](application-proxy-understand-connectors.md)
+##### [セキュリティ](application-proxy-security-considerations.md)
+##### [ネットワーク](application-proxy-network-topology-considerations.md)
+#### 
+#### 詳細な構成
+##### [異なるネットワークに発行する](active-directory-application-proxy-connectors-azure-portal.md)
+##### [プロキシ サーバー](application-proxy-working-with-proxy-servers.md)
+##### [要求に対応するアプリケーション](active-directory-application-proxy-claims-aware-apps.md)
+##### [ネイティブ クライアント アプリ](active-directory-application-proxy-native-client.md)
+##### [サイレント インストール](active-directory-application-proxy-silent-installation.md)
+##### [カスタム ホーム ページ](application-proxy-office365-app-launcher.md)
+#### 発行に関するチュートリアル
+##### [リモート デスクトップ](application-proxy-publish-remote-desktop.md)
+##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
+##### [Microsoft Forefront](application-proxy-transition-from-uag-tmg.md)
 #### [トラブルシューティング](active-directory-application-proxy-troubleshoot.md)
 #### クラシック ポータルの使用
 ##### [コネクタをダウンロードする](application-proxy-enable-classic-portal.md)
 ##### [アプリを発行する](active-directory-application-proxy-publish.md)
 ##### [コネクタを使用する](active-directory-application-proxy-connectors.md)
-
+##### [条件付きアクセス](active-directory-application-proxy-conditional-access.md)
 
 ### エンタープライズ アプリの管理
 #### [ユーザーを割り当てる](active-directory-coreapps-assign-user-azure-portal.md)
@@ -297,14 +304,18 @@
 ### [トークンの有効期間を構成する](active-directory-configurable-token-lifetimes.md)
 
 ## ID をセキュリティで保護する
-### [条件付きアクセス](active-directory-conditional-access.md)
-#### [作業開始](active-directory-conditional-access-azuread-connected-apps.md)
+### [条件付きアクセス](active-directory-conditional-access-azure-portal.md)
+#### [作業開始](active-directory-conditional-access-azure-portal-get-started.md)
 #### [サポート対象アプリ](active-directory-conditional-access-supported-apps.md)
 #### [デバイス ポリシーについて](active-directory-conditional-access-device-policies.md)
 #### [接続されているアプリに対するアクセスのセットアップ](active-directory-conditional-access-policy-connected-applications.md)
+#### [テクニカル リファレンス](active-directory-conditional-access-technical-reference.md)
 #### [FAQ](active-directory-conditional-faqs.md)
-#### [トラブルシューティング](active-directory-conditional-access-device-remediation.md)
-#### [リファレンス](active-directory-conditional-access-technical-reference.md)
+#### [修復](active-directory-conditional-access-device-remediation.md)
+#### [クラシック ポータル](active-directory-conditional-access.md)
+##### [作業開始](active-directory-conditional-access-azuread-connected-apps.md)
+
+
 ### Windows Hello
 #### [パスワードを使用せずに認証する](active-directory-azureadjoin-passport.md)
 #### [Windows Hello for Business の有効化](active-directory-azureadjoin-passport-deployment.md)
