@@ -27,9 +27,9 @@ ms.lasthandoff: 04/06/2017
 Microsoft では、サービスがいつでも使用できるように取り組んでいますが、 やむを得ない事情により、計画されていないサービス停止が 1 つまたは複数のリージョンで発生することがあります。 こうした状況はほとんど発生しませんが、発生した場合は、次のガイダンスに従って対応してください。
 
 ## <a name="how-to-prepare"></a>準備する方法
-すべての顧客が独自の障害復旧計画を準備することが重要です。 ストレージの停止から復旧し、アプリケーションをアクティブ化して、機能している状態に戻すには、通常、運用担当者の操作と自動処理の両方が必要です。 障害復旧計画を作成するには、次の Azure ドキュメントをご覧ください。
+すべての顧客が独自のディザスター リカバリー計画を準備することが重要です。 ストレージの停止から復旧し、アプリケーションをアクティブ化して、機能している状態に戻すには、通常、運用担当者の操作と自動処理の両方が必要です。 ディザスター リカバリー計画を作成するには、次の Azure ドキュメントをご覧ください。
 
-* [Azure アプリケーションの障害復旧と高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
+* [Azure アプリケーションのディザスター リカバリーと高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
 * [Azure の回復性技術ガイダンス](../resiliency/resiliency-technical-guidance.md)
 * [Azure Site Recovery サービス](https://azure.microsoft.com/services/site-recovery/)
 * [Azure Storage のレプリケーション](storage-redundancy.md)
@@ -56,10 +56,10 @@ Azure サービスの状態は、 [Azure サービス正常性ダッシュボー
 
 * ストレージ geo フェールオーバーは、Azure Storage チームによってのみトリガーされます。顧客の操作は不要です。
 * BLOB、テーブル、キュー、およびファイルに対する既存のストレージ サービス エンドポイントは、フェールオーバー後も同じままです。プライマリ リージョンからセカンダリ リージョンに切り替えるには、DNS エントリを更新する必要があります。
-* geo フェールオーバー前と geo フェールオーバー中は、障害の影響によりストレージ アカウントに書き込みアクセスできません。ただし、ストレージ アカウントが RA-GRS として構成されている場合、セカンダリ リージョンからの読み取りは引き続き可能です。
+* 地理フェールオーバー前と地理フェールオーバー中は、障害の影響により Storage アカウントに書き込みアクセスできません。ただし、Storage アカウントが RA-GRS として構成されている場合、セカンダリ リージョンからの読み取りは引き続き可能です。
 * geo フェールオーバーが完了し、DNS の変更が反映されたら、ストレージ アカウントに再度読み取り/書き込みアクセスできるようになります。ポイント先は、以前のセカンダリ エンドポイントです。 
 * ストレージ アカウントに GRS または RA-GRS を構成した場合は、書き込みアクセス権があることに注意してください。 
-* 詳細情報は、[ストレージ アカウントの "最終 geo フェールオーバー時刻"](https://msdn.microsoft.com/library/azure/ee460802.aspx) で確認できます。
+* 詳細情報は、 [ストレージ アカウントの "Last Geo Failover Time"](https://msdn.microsoft.com/library/azure/ee460802.aspx) で確認できます。
 * フェールオーバー後、ストレージ アカウントは完全に機能しますが、"低下" 状態になります。実際は、geo レプリケーションを利用できないスタンドアロン リージョンでホストされているためです。 このリスクを軽減するために、Microsoft では、元のプライマリ リージョンを復元してから、geo フェールバックを実行し、元の状態を復元します。 元のプライマリ リージョンが復旧できない場合は、別のセカンダリ リージョンを割り当てます。
   Azure Storage geo レプリケーションのインフラストラクチャの詳細については、[冗長オプションと RA-GRS](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/) に関する Storage チーム ブログの記事をご覧ください。
 
