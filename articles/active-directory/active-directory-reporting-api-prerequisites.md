@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/25/2016
+ms.date: 05/16/2017
 ms.author: dhanyahk;markvi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: b0f23cc578fb946247d492b9dee92cf7a9daafa1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -164,10 +166,5 @@ Reporting API への呼び出しを構成するときに、これらの値が必
 ## <a name="next-steps"></a>次のステップ
 * プログラムによる方法で Azure AD Reporting API からデータにアクセスしますか。 「 [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md)」を確認してください。
 * Azure Active Directory のレポート作成に関する詳細については、「 [Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)」を参照してください。  
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 
