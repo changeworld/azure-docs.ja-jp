@@ -14,17 +14,17 @@ ms.devlang: php
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: marsma
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: e9fd8855cf0c51df5f3ec4f80a733e778996fb82
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 15d3216ef5bb1d7ff312bd886837a3a7b0335afd
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="how-to-use-table-storage-from-php"></a>PHP から Table ストレージを使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-
-[!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
+[!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
 ## <a name="overview"></a>Overview
 このガイドでは、Azure Table サービスを使用して一般的なシナリオを実行する方法について説明します。 サンプルは PHP で記述され、[Azure SDK for PHP][download] を利用しています。 紹介するシナリオは、 **テーブルの作成と削除、テーブルのエンティティの挿入、削除、および照会**などです。 Azure Table サービスの詳細については、「 [次のステップ](#next-steps) 」を参照してください。
@@ -200,7 +200,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="retrieve-a-single-entity"></a>単一のエンティティを取得する
-**TableRestProxy->getEntity`RowKey` メソッドを使用して、その** と `PartitionKey` を照会することで、1 つのエンティティを取得できます。 次の例では、パーティション キー `tasksSeattle` と行キー `1` を **getEntity** メソッドに渡しています。
+**TableRestProxy->getEntity`RowKey` メソッドを使用して、その**  と `PartitionKey` を照会することで、1 つのエンティティを取得できます。 次の例では、パーティション キー `tasksSeattle` と行キー `1` を **getEntity** メソッドに渡しています。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -484,9 +484,9 @@ catch(ServiceException $e){
 ## <a name="next-steps"></a>次のステップ
 これで、Azure Table サービスの基本を学習できました。さらに複雑なストレージ タスクについては、次のリンク先を参照してください。
 
-* [Azure Storage チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/)
+* [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 
-詳細については、 [PHP デベロッパー センター](/develop/php/)も参照してください。
+* [PHP デベロッパー センター](/develop/php/)
 
 [download]: http://go.microsoft.com/fwlink/?LinkID=252473
 [require_once]: http://php.net/require_once

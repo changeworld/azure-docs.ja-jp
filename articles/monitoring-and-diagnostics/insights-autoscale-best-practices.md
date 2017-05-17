@@ -14,15 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: ashwink
-translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: 6dad42f94d263d9dacedf145bf4e5d487d0aed77
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: f1e4a60cd98d40794c63dc334f242415445e0d6d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="best-practices-for-autoscale"></a>自動スケールのベスト プラクティス
-この記事では、Azure での自動スケールのベスト プラクティスについて説明します。 対象は、Virtual Machines、Virtual Machine Scale Sets、および Cloud Services です。  他の Azure サービスでは、異なるスケーリング方法が使用されています。
+この記事では、Azure での自動スケールのベスト プラクティスについて説明します。 Azure Monitor の自動スケールは、[Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[Cloud Services](https://azure.microsoft.com/services/cloud-services/)、および [App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/) にのみ適用されます。 他の Azure サービスでは、異なるスケーリング方法が使用されています。
 
 ## <a name="autoscale-concepts"></a>自動スケールの概念
 * 1 つのリソースで使用できる自動スケール設定は *1 つ* に限られます。
@@ -118,7 +119,7 @@ Cloud Services と App Services (Web Apps) の場合、Azure Portal (portal.azur
 
 同様に、自動スケールが既定のプロファイルに切り替えたときに、最小数と最大数の条件が満たされているかどうかが最初にチェックされます。 その時点でインスタンス数が 12 の場合、既定のプロファイルで許可されている最大数の 10 にスケールインされます。
 
-![自動スケール設定](./media/insights-autoscale-best-practices/insights-autoscale-best-practices.png)
+![自動スケール設定](./media/insights-autoscale-best-practices/insights-autoscale-best-practices-2.png)
 
 ### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>プロファイルに複数のルールが構成されている場合のスケーリングに関する考慮事項
 プロファイルに複数のルールを設定することが必要な場合があります。 複数のルールが設定されている場合、サービスで自動スケール ルールの次のセットが使用されます。

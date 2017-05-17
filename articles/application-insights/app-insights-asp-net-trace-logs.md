@@ -4,19 +4,20 @@ description: "Trace、NLog、または Log4Net で生成されたログを検索
 services: application-insights
 documentationcenter: .net
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 0c2a084f-6e71-467b-a6aa-4ab222f17153
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 07/21/2016
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: f803b44172b068b7ba65047c769421e39445ce10
-ms.lasthandoff: 03/15/2017
+ms.date: 05/3/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 1b0c902adff1d60a04fb3cddef5862256d54f813
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -48,7 +49,6 @@ System.Diagnostics.Trace を使用している場合は、web.config にエン�
      </system.diagnostics>
    </configuration>
 ```
-
 ## <a name="configure-application-insights-to-collect-logs"></a>ログを収集するよう Application Insights を構成する
 **[Application Insights をプロジェクトに追加](app-insights-asp-net.md)**します (まだ追加していない場合)。 Log Collector を含めるオプションが表示されます。
 
@@ -62,11 +62,11 @@ Application Insights インストーラーでサポートされていない種�
 1. log4Net または NLog を使用する場合は、プロジェクト内にインストールします。
 2. ソリューション エクスプローラーでプロジェクトを右クリックし、[ **NuGet パッケージの管理**] を選択します。
 3. Search for "Application Insights"
-
-    ![適切なパッケージのプレリリース バージョンを入手する](./media/app-insights-asp-net-trace-logs/appinsights-36nuget.png)
 4. 次のいずれかの適切なパッケージを選択します。
 
    * Microsoft.ApplicationInsights.TraceListener (System.Diagnostics.Trace コールをキャプチャするため)
+   * Microsoft.ApplicationInsights.EventSourceListener (EventSource イベントをキャプチャする)
+   * Microsoft.ApplicationInsights.EtwListener (ETW イベントをキャプチャする)
    * Microsoft.ApplicationInsights.NLogTarget
    * Microsoft.ApplicationInsights.Log4NetAppender
 
@@ -77,10 +77,45 @@ System.Diagnostics.Trace を使用する場合、通常の呼び出しは次の�
 
     System.Diagnostics.Trace.TraceWarning("Slow response - database01");
 
-log4net、または NLog を使用する場合
+log4net または NLog を使用する場合:
 
     logger.Warn("Slow response - database01");
 
+## <a name="using-eventsource-events"></a>EventSource イベントを使用する
+Application Insights にトレースとして送信する [System.Diagnostics.Tracing.EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) イベントを構成できます。 まず、`Microsoft.ApplicationInsights.EventSourceListener` NuGet パッケージをインストールします。 次に、[ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) ファイルの `TelemetryModules` セクションを編集します。
+
+```xml
+    <Add Type="Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule, Microsoft.ApplicationInsights.EventSourceListener">
+      <Sources>
+        <Add Name="MyCompany" Level="Verbose" />
+      </Sources>
+    </Add>
+```
+
+ソースごとに、次のパラメーターを設定できます。
+ * `Name` では、収集する EventSource の名前を指定します。
+ * `Level` では、収集するログ レベルを指定します。 `Critical`、`Error`、`Informational`、`LogAlways`、`Verbose`、`Warning` のいずれかを指定できます。
+ * `Keywords` (省略可能) では、使用するキーワードの組み合わせの整数値を指定します。
+
+## <a name="using-etw-events"></a>ETW イベントを使用する
+Application Insights にトレースとして送信される ETW イベントを構成できます。 まず、`Microsoft.ApplicationInsights.EtwCollector` NuGet パッケージをインストールします。 次に、[ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) ファイルの `TelemetryModules` セクションを編集します。
+
+> [!NOTE] 
+> ETW イベントを収集できるのは、SDK をホストしているプロセスが、"Performance Log Users" または Administrators のメンバーである ID で実行されている場合だけです。
+
+```xml
+    <Add Type="Microsoft.ApplicationInsights.EtwCollector.EtwCollectorTelemetryModule, Microsoft.ApplicationInsights.EtwCollector">
+      <Sources>
+        <Add ProviderName="MyCompanyEventSourceName" Level="Verbose" />
+      </Sources>
+    </Add>
+```
+
+ソースごとに、次のパラメーターを設定できます。
+ * `ProviderName` は、収集する ETW プロバイダーの名前です。
+ * `ProviderGuid` では、収集する ETW プロバイダーの GUID を指定します。これは `ProviderName` の代わりに使用できます。
+ * `Level` では、収集するログ レベルを設定します。 `Critical`、`Error`、`Informational`、`LogAlways`、`Verbose`、`Warning` のいずれかを指定できます。
+ * `Keywords` (省略可能) では、使用するキーワードの組み合わせの整数値を設定します。
 
 ## <a name="using-the-trace-api-directly"></a>トレース API を直接利用する
 Application Insights トレース API を直接呼び出すことができます。 ログ記録のアダプターはこの API を使用します。
@@ -149,7 +184,7 @@ Application Insights をインストールしないでログ アダプターの 
 すべてのイベントと要求がパイプラインを通過するまで時間がかかることがあります。
 
 ### <a name="limits"></a>保持されるデータの量はどのくらいですか
-各アプリケーションで、1 秒あたり 500 イベントまでです。 イベントは&7; 日間保持されます。
+各アプリケーションで、1 秒あたり 500 イベントまでです。 イベントは 7 日間保持されます。
 
 ### <a name="im-not-seeing-some-of-the-log-entries-that-i-expect"></a>予期されるログ エントリの一部が表示されません
 アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。 [サンプリングの詳細については、こちらを参照してください。](app-insights-sampling.md)

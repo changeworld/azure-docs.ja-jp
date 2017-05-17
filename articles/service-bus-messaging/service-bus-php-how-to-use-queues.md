@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 01/18/2017
+ms.date: 04/27/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 23be0f9cbfb37fe3f5b30ec67595d67f0568a527
-ms.openlocfilehash: c5db806969a6e018596c1ff0a0861423df19b61c
-ms.lasthandoff: 01/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
+ms.openlocfilehash: a8866119b631ec9776d6587a078c8e54c311071a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -74,7 +75,7 @@ Endpoint=[yourEndpoint];SharedSecretIssuer=[Default Issuer];SharedSecretValue=[D
 
 * 接続文字列を直接渡す
 * **CloudConfigurationManager (CCM)** を使用して複数の外部ソースに対して接続文字列を確認する
-  * 既定では&1; つの外部ソース (環境変数) のみがサポートされています。
+  * 既定では 1 つの外部ソース (環境変数) のみがサポートされています。
   * `ConnectionStringSource` クラスを拡張して新しいソースを追加できます。
 
 ここで概説している例では、接続文字列を直接渡します。
@@ -158,16 +159,16 @@ catch(ServiceException $e){
 
 Service Bus キューに送信されたメッセージ (および Service Bus キューから受信したメッセージ) は、[BrokeredMessage][BrokeredMessage] クラスのインスタンスになります。 [BrokeredMessage][BrokeredMessage] オブジェクトには、アプリケーションに特有のカスタム プロパティの保持に使用する標準的なプロパティやメソッド、および任意のアプリケーション データの本体が含まれています。
 
-Service Bus キューでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 キューで保持されるメッセージ数には上限がありませんが、キュー&1; つあたりが保持できるメッセージの合計サイズには上限があります。 このキュー サイズの上限は 5 GB です。
+Service Bus キューでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。 このキュー サイズの上限は 5 GB です。
 
 ## <a name="how-to-receive-messages-from-a-queue"></a>キューからメッセージを受信する方法
-キューからメッセージを受信する最適な方法は、`ServiceBusRestProxy->receiveQueueMessage` メソッドを使用する方法です。 メッセージは、[*ReceiveAndDelete* と *PeekLock*](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) の&2; つの異なるモードで受信できます。 **PeekLock** が既定値です。
+キューからメッセージを受信する最適な方法は、`ServiceBusRestProxy->receiveQueueMessage` メソッドを使用する方法です。 メッセージは、[*ReceiveAndDelete*](/dotnet/api/microsoft.servicebus.messaging.receivemode.receiveanddelete) と [*PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode.peeklock) の 2 つの異なるモードで受信できます。 **PeekLock** が既定値です。
 
-[ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) モードを使用する場合、受信が&1; 回ずつの動作になります。つまり、Service Bus はキュー内のメッセージに対する読み取り要求を受け取ると、メッセージを読み取り中としてマークし、アプリケーションに返します。 [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) モードは最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus はメッセージを読み取り済みとしてマークするため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされることになります。
+[ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode.receiveanddelete) モードを使用する場合、受信が 1 回ずつの動作になります。つまり、Service Bus はキュー内のメッセージに対する読み取り要求を受け取ると、メッセージを読み取り中としてマークし、アプリケーションに返します。 [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode.receiveanddelete) モードは最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus はメッセージを読み取り済みとしてマークするため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされることになります。
 
-既定の [PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) モードでは、メッセージの受信処理が&2; 段階の動作になり、メッセージが失われることが許容できないアプリケーションに対応することができます。 Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。 アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、受信したメッセージを `ServiceBusRestProxy->deleteMessage` に渡すことで受信処理の第&2; 段階を完了します。 Service Bus が `deleteMessage` の呼び出しを確認すると、メッセージが読み取り中としてマークされ、キューから削除されます。
+既定の [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode.peeklock) モードでは、メッセージの受信処理が 2 段階の動作になり、メッセージが失われることが許容できないアプリケーションに対応することができます。 Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。 アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、受信したメッセージを `ServiceBusRestProxy->deleteMessage` に渡すことで受信処理の第 2 段階を完了します。 Service Bus が `deleteMessage` の呼び出しを確認すると、メッセージが読み取り中としてマークされ、キューから削除されます。
 
-次の例は、[PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) モード (既定のモード) を使用したメッセージの受信および処理の方法を示しています。
+次の例は、[PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode.peeklock) モード (既定のモード) を使用したメッセージの受信および処理の方法を示しています。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -212,14 +213,14 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 キュー内でロックされているメッセージには、タイムアウトも設定されています。アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージの処理に失敗した場合は、Service Bus によってメッセージのロックが自動的に解除され、再度受信できる状態に変わります。
 
-メッセージが処理された後、`deleteMessage` 要求が発行される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 一般的に、この動作は *1 回以上*の処理と呼ばれます。つまり、すべてのメッセージが&1; 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加することをお勧めします。 通常、この問題はメッセージの `getMessageId` メソッドを使用して対処します。このプロパティは配信が試行された後も同じ値を保持します。
+メッセージが処理された後、`deleteMessage` 要求が発行される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 一般的に、この動作は *1 回以上*の処理と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加することをお勧めします。 通常、この問題はメッセージの `getMessageId` メソッドを使用して対処します。このプロパティは配信が試行された後も同じ値を保持します。
 
 ## <a name="next-steps"></a>次のステップ
 これで、Service Bus キューの基本を学習できました。詳しくは、[キュー、トピック、およびサブスクリプション][Queues, topics, and subscriptions]に関する記事をご覧ください。
 
 詳しくは、[PHP デベロッパー センター](https://azure.microsoft.com/develop/php/)もご覧ください。
 
-[BrokeredMessage]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage
+[BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [require_once]: http://php.net/require_once
 

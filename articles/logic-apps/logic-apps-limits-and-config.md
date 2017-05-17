@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2016
 ms.author: jehollan
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: f09c231baecf2452a6e3abd196748629f13885ff
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 2a270ba8ae17077c55c6b1473d4955dfb5f79ca1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -83,6 +84,9 @@ ms.lasthandoff: 03/29/2017
 |名前|制限|メモ|
 |----|----|----|
 |5 分間のアクション実行数 |100,000|必要に応じて複数のアプリにワークロードを分散することができます。|
+|ランタイム エンドポイントの 5 分間の読み取り呼び出し数 |60,000|必要に応じて複数のアプリにワークロードを分散することができます。|
+|ランタイム エンドポイントの 5 分間の起動呼び出し数 |45,000|必要に応じて複数のアプリにワークロードを分散することができます。|
+|ランタイム エンドポイントでブロックされた同時呼び出し数 |～ 1,000|必要に応じて、同時要求数を削減するか期間を短縮します。|
 
 通常の処理でこの制限を超える、または一定期間でこの制限を超える可能性があるロード テストを実行することが見込まれる場合の要件の詳細については、[お問い合わせ](mailto://logicappsemail@microsoft.com)ください。
 
@@ -111,6 +115,9 @@ ms.lasthandoff: 03/29/2017
 |----|----|----|
 |スキーマ|8 MB|[BLOB URI](logic-apps-enterprise-integration-schemas.md) を使用すると、2 MB を超えるファイルをアップロードできます。 |
 |マップ (XSLT ファイル)|2 MB| |
+|ランタイム エンドポイントの 5 分間の読み取り呼び出し数 |60,000|必要に応じて複数のアカウントにワークロードを分散できます。|
+|ランタイム エンドポイントの 5 分間の起動呼び出し数 |90,000|必要に応じて複数のアカウントにワークロードを分散できます。|
+|ランタイム エンドポイントでブロックされた同時呼び出し数 |～ 1,000|必要に応じて、同時要求数を削減するか期間を短縮します。|
 
 ### <a name="b2b-protocols-as2-x12-edifact-message-size"></a>B2B プロトコル (AS2、X12、EDIFACT) のメッセージのサイズ
 

@@ -15,10 +15,11 @@ ms.topic: article
 ms.date: 04/20/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: fc6e4eaa34694e2b20cb53b3e457803c59bf76b9
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
+ms.openlocfilehash: 47fb74c608315b256e88dd774af7cb5260529607
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/29/2017
 
 
 ---
@@ -620,7 +621,7 @@ Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | me
 | 左 (left)  | 左のクエリからすべてのレコードを返し、右のクエリから一致するレコードを返します。 |
 
 
-- 結合では、**IN** キーワードまたは **Measure** コマンドを含むクエリは現在サポートされていません。
+- **IN** キーワード、**Measure** コマンド、または **Extend** コマンドが右のクエリのフィールドを対象にする場合、結合ではこれらを含むクエリを現在サポートしていません。
 - 現在、結合に含めることができるフィールドは 1 つだけです。
 - 1 つの検索に複数の結合を含めることはできません。
 

@@ -56,7 +56,7 @@ ms.lasthandoff: 05/10/2017
 <h2 style="margin-top: 36px">Free PluralSight Video Training</h2>
 <ul class="panelContent cardsW">
     <li style="flex: 0 1 25%">
-        <a href="https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02"> 
+        <a href="https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card">

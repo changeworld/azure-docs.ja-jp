@@ -14,10 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/02/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 5b5095610085019ad3fee7f4394f0c87f3740bed
-ms.openlocfilehash: 8d78a0f93a1e65eda7bfefbf910b56e0218a42c5
-ms.lasthandoff: 02/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 4327a3e3f67369a61eb945791ca1011fab6fb01d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -42,12 +43,13 @@ ms.lasthandoff: 02/02/2017
 >
 
 ### <a name="attribute-descriptions"></a>属性の説明
-| 属性名 | Description |
+| 属性名 | 説明 |
 | --- | --- |
+|AdvancedOutput| AdvancedOutput を true に設定すると、JSON 出力には各単語ごとに (語句とリージョンに加えて) 位置指定データが含まれます。 これらの詳細を表示しないようにするには、フラグを false に設定します。 既定値は false です。 詳細については、 [このブログ](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/)をご覧ください。|
 | 言語 |(省略可能) 検索対象テキストの言語です。 次のいずれかを指定します: AutoDetect (既定)、Arabic、ChineseSimplified、ChineseTraditional、Czech、Danish、Dutch、English、Finnish、French、German、Greek、Hungarian、Italian、Japanese、Korean、Norwegian、Polish、Portuguese、Romanian、Russian、SerbianCyrillic、SerbianLatin、Slovak、Spanish、Swedish、Turkish。 |
 | TextOrientation |(省略可能) 検索対象テキストの向きです。  "Left" は、すべての文字の上部が左を指していることを意味します。  既定のテキスト (書籍など) は "Up"、つまり上を指しています。  次のいずれかを指定します: AutoDetect (既定)、Up、Right、Down、Left。 |
 | TimeInterval |(省略可能) サンプリング レートです。  既定値は、毎 0.5 秒です。<br/>JSON 形式 – HH:mm:ss.SSS (既定値 00:00:00.500)<br/>XML 形式 – W3C XSD プリミティブ期間 (既定値 PT0.5) |
-| DetectRegions |(省略可能)テキストを検出するビデオ フレーム内の領域を指定する DetectRegion オブジェクトの配列。<br/>DetectRegion オブジェクトは、次の&4; つの整数値で構成されます。<br/>Left: 左余白からのピクセル<br/>Top: 上余白からのピクセル<br/>Width: 領域の幅 (ピクセル)<br/>Height: 領域の高さ (ピクセル) |
+| DetectRegions |(省略可能)テキストを検出するビデオ フレーム内の領域を指定する DetectRegion オブジェクトの配列。<br/>DetectRegion オブジェクトは、次の 4 つの整数値で構成されます。<br/>Left: 左余白からのピクセル<br/>Top: 上余白からのピクセル<br/>Width: 領域の幅 (ピクセル)<br/>Height: 領域の高さ (ピクセル) |
 
 #### <a name="json-preset-example"></a>JSON プリセットの例
 
@@ -55,6 +57,7 @@ ms.lasthandoff: 02/02/2017
         "Version":1.0, 
         "Options": 
         {
+            "AdvancedOutput":"true"
             "Language":"English", 
             "TimeInterval":"00:00:01.5",
             "TextOrientation":"Up",
@@ -74,6 +77,7 @@ ms.lasthandoff: 02/02/2017
     <?xml version=""1.0"" encoding=""utf-16""?>
     <VideoOcrPreset xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" Version=""1.0"" xmlns=""http://www.windowsazure.com/media/encoding/Preset/2014/03"">
       <Options>
+         <AdvancedOutput>true</AdvancedOutput>
          <Language>English</Language>
          <TimeInterval>PT1.5S</TimeInterval>
          <DetectRegions>
@@ -98,9 +102,9 @@ OCR メディア プロセッサの出力は、JSON ファイルです。
 
 | 要素 | Description |
 | --- | --- |
-| タイムスケール |ビデオの&1; 秒あたりの "ティック数" |
+| タイムスケール |ビデオの 1 秒あたりの "ティック数" |
 | Offset |タイムスタンプの時間オフセット。 Video API のバージョン 1.0 では、これは常に 0 になります。 |
-| Framerate |ビデオの&1; 秒あたりのフレーム数 |
+| Framerate |ビデオの 1 秒あたりのフレーム数 |
 | width |ビデオの幅 (ピクセル単位) |
 | height |ビデオの高さ (ピクセル単位) |
 | Fragments |ビデオの時間ベースのチャンクの配列。メタデータはこのチャンク配列単位で分割されます |

@@ -1,0 +1,128 @@
+- name: "Functions のドキュメント"
+  href: index.yml
+- name: "概要"
+  items:
+  - name: "Functions について"
+    href: functions-overview.md
+  - name: "Functions ランタイム"
+    href: functions-runtime-overview.md
+  - name: "Flow、Logic Apps、Functions、WebJobs の比較"
+    href: functions-compare-logic-apps-ms-flow-webjobs.md
+- name: "クイック スタート"
+  expanded: true
+  items:
+  - name: "関数の作成 - ポータル"
+    href: functions-create-first-azure-function.md
+  - name: "関数の作成 - Azure CLI"
+    href: functions-create-first-azure-function-azure-cli.md
+#  - name: Create function - Visual Studio
+#    href: functions-create-your-first-function-visual-studio.md
+  - name: "トリガー"
+    items:
+    - name: "Timer"
+      href: functions-create-scheduled-function.md
+    - name: "GitHub webhook"
+      href: functions-create-github-webhook-triggered-function.md
+    - name: "BLOB ストレージ"
+      href: functions-create-storage-blob-triggered-function.md
+    - name: "Queue Storage"
+      href: functions-create-storage-queue-triggered-function.md
+  - name: "統合"
+    items:
+    - name: "Storage"
+      href: functions-integrate-storage-queue-output-binding.md
+#    - name: Cosmos DB
+#      href: functions-integrate-store-unstructured-data-cosmosdb.md
+- name: "サンプル"
+  items:
+  - name: "Azure CLI"
+    href: functions-cli-samples.md
+- name: "Tutorials (チュートリアル)"
+  items:
+  - name: "1 - Functions と Logic Apps"
+    href: functions-twitter-email.md
+  - name: "2 - サーバーレス API の作成"
+    href: functions-create-serverless-api.md
+- name: "概念"
+  items:
+  - name: "ホスティング プラン"
+    href: functions-scale.md
+  - name: "トリガーとバインド"
+    href: functions-triggers-bindings.md
+- name: "ハウツー ガイド"
+  items:
+  - name: "Azure Functions のテスト"
+    href: functions-test-a-function.md
+  - name: "ローカルでの開発とデバッグ"
+    href: functions-run-local.md
+  - name: "Function App の設定の構成"
+    href: functions-how-to-use-azure-function-app-settings.md
+  - name: "Azure Functions の継続的なデプロイ"
+    href: functions-continuous-deployment.md
+  - name: "コードとしてのインフラストラクチャを使用した Functions のデプロイ"
+    href: functions-infrastructure-as-code.md
+  - name: "Azure Functions の監視"
+    href: functions-monitoring.md
+  - name: "Functions ランタイムのインストール"
+    href: functions-runtime-install.md
+- name: "リファレンス"
+  items:
+  - name: "関数アプリを開発する"
+    href: functions-reference.md
+    items:
+    - name: "Open API 2.0"
+      href: functions-api-definition.md
+  - name: "Azure Functions のベスト プラクティス"
+    href: functions-best-practices.md
+  - name: "バインド"
+    items:
+    - name: "DocumentDB のバインド"
+      href: functions-bindings-documentdb.md
+    - name: "Event Hub のバインド"
+      href: functions-bindings-event-hubs.md
+    - name: "HTTP と webhook のバインド"
+      href: functions-bindings-http-webhook.md
+    - name: "Mobile Apps のバインド"
+      href: functions-bindings-mobile-apps.md
+    - name: "Notification Hub 出力バインド"
+      href: functions-bindings-notification-hubs.md
+    - name: "キューとトピックの Service Bus トリガーとバインド"
+      href: functions-bindings-service-bus.md
+    - name: "SendGrid のバインド"
+      href: functions-bindings-sendgrid.md
+    - name: "Storage のバインド"
+      items:
+      - name: "BLOB のバインド"
+        href: functions-bindings-storage-blob.md
+      - name: "キューのバインド"
+        href: functions-bindings-storage-queue.md
+      - name: "テーブルのバインド"
+        href: functions-bindings-storage-table.md
+      - name: "外部ファイルのバインド"
+        href: functions-bindings-external-file.md
+    - name: "SendGrid のバインド"
+      href: functions-bindings-sendgrid.md
+    - name: "タイマー トリガー"
+      href: functions-bindings-timer.md
+    - name: "Twilio 出力のバインド"
+      href: functions-bindings-twilio.md
+  - name: "フレームワーク"
+    items:
+    - name: "C#"
+      href: functions-reference-csharp.md
+    - name: "F#"
+      href: functions-reference-fsharp.md
+    - name: "JavaScript"
+      href: functions-reference-node.md
+- name: "リソース"
+  items:
+  - name: "価格"
+    href: https://azure.microsoft.com/pricing/details/functions/
+  - name: "MSDN フォーラム"
+    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions
+  - name: "スタック オーバーフロー"
+    href: http://stackoverflow.com/questions/tagged/azure-functions
+  - name: "Azure Functions GitHub リポジトリ"
+    href: https://github.com/Azure/Azure-Functions/
+  - name: "サービスの更新情報"
+    href: https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=

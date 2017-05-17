@@ -11,7 +11,7 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
-ms.author: sergkanz
+ms.author: cfreeman
 ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: 7dd240c4e1a6fcc9c89bf4418e635e7ef8ef0617

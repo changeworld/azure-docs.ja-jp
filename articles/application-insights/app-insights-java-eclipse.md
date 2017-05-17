@@ -4,7 +4,7 @@ description: "Eclipse プラグインを使用して、Java Web サイトのパ�
 services: application-insights
 documentationcenter: java
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: e88c9f53-cd90-4abc-b097-1f170937908e
 ms.service: application-insights
 ms.workload: tbd
@@ -12,10 +12,11 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2016
-ms.author: awills
-translationtype: Human Translation
+ms.author: cfreeman
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
 ms.openlocfilehash: 8922c65a1755343e19072a0594b800838a5e1cf9
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/13/2017
 
 

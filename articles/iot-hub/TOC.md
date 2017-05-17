@@ -106,6 +106,7 @@
 ### ファイルのアップロードを構成する
 #### [ポータルの使用](iot-hub-configure-file-upload.md)
 #### [PowerShell の使用](iot-hub-configure-file-upload-powershell.md)
+#### [CLI 2.0 の使用](iot-hub-configure-file-upload-cli.md)
 ### [IoT デバイスの一括管理](iot-hub-bulk-identity-mgmt.md)
 ### [使用状況のメトリック](iot-hub-metrics.md)
 ### [操作の監視](iot-hub-operations-monitoring.md)

@@ -138,7 +138,7 @@ Runbook の新しいスケジュールは、Azure ポータル、クラシック
 1. Azure Portal で、Automation アカウントから **[資産]** タイルをクリックして、**[資産]** ブレードを開きます。
 2. **[スケジュール]** タイルをクリックして、**[スケジュール]** ブレードを開きます。
 3. スケジュールの名前をクリックして、その詳細ブレードを開きます。
-4. Change **Enabled** to **No**.
+4. **有効** を **いいえ** に変更します
 
 ### <a name="to-disable-a-schedule-from-the-azure-classic-portal"></a>Azure クラシック ポータルからスケジュールを無効にするには
 Azure クラシック ポータルで、スケジュール用の [スケジュールの詳細] ページからスケジュールを無効にすることができます。
@@ -146,7 +146,7 @@ Azure クラシック ポータルで、スケジュール用の [スケジュ�
 1. Azure クラシック ポータルで、[Automation] を選択し、次に Automation アカウントの名前をクリックします。
 2. 資産 タブを選択します。
 3. スケジュールの名前をクリックして、その詳細ページを開きます。
-4. Change **Enabled** to **No**.
+4. **有効** を **いいえ** に変更します
 
 ### <a name="to-disable-a-schedule-with-windows-powershell"></a>Windows PowerShell でスケジュールを無効にするには
 クラシック Runbook 用の既存のスケジュールのプロパティを変更するには、[Set-AzureAutomationSchedule](http://msdn.microsoft.com/library/azure/dn690270.aspx) コマンドレットを使用します。Azure ポータルの Runbook 用には、[Set-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/set-azurermautomationschedule) コマンドレットを使用します。 To disable the schedule, specify **false** for the **IsEnabled** parameter.

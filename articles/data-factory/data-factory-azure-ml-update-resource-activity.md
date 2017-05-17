@@ -11,11 +11,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/16/2017
+ms.date: 05/16/2017
 ms.author: shlo
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
 ms.openlocfilehash: f78c735ec9a0bb34921e2ce03a4b96478480bcd0
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/14/2017
 
 

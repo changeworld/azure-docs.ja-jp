@@ -1,6 +1,6 @@
 ---
-title: "Azure Functions における DocumentDB のバインド | Microsoft Docs"
-description: "Azure Functions で Azure DocumentDB のバインドを使用する方法について説明します。"
+title: "Azure Functions における Cosmos DB のバインド | Microsoft Docs"
+description: "Azure Functions で Azure Cosmos DB のバインドを使用する方法について説明します。"
 services: functions
 documentationcenter: na
 author: christopheranderson
@@ -16,49 +16,50 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/18/2016
 ms.author: chrande; glenga
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: e38c9187be42946df1e8059ba44f10f76d32d984
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 2c0cb8ee1690f9b36b76c87247e3c7223876b269
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="azure-functions-documentdb-bindings"></a>Azure Functions における DocumentDB のバインド
+# <a name="azure-functions-cosmos-db-bindings"></a>Azure Functions における Cosmos DB のバインド
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-この記事では、Azure Functions で Azure DocumentDB のバインドを構成したりコーディングしたりする方法について説明します。 Azure Functions は、DocumentDB の入力および出力バインドをサポートしています。
+この記事では、Azure Functions で Azure Cosmos DB のバインドを構成したりコーディングしたりする方法について説明します。 Azure Functions は、Cosmos DB の入力および出力バインドをサポートしています。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-DocumentDB の詳細については、[DocumentDB の概要](../documentdb/documentdb-introduction.md)に関するページおよび [DocumentDB コンソール アプリケーションの作成](../documentdb/documentdb-get-started.md)に関するページを参照してください。
+Cosmos DB の詳細については、[Cosmos DB の概要](../documentdb/documentdb-introduction.md)と[Cosmos DB コンソール アプリケーションの作成](../documentdb/documentdb-get-started.md)に関するページを参照してください。
 
 <a id="docdbinput"></a>
 
-## <a name="documentdb-input-binding"></a>DocumentDB 入力バインド
-DocumentDB 入力バインドでは、DocumentDB ドキュメントを取得して関数の名前付き入力パラメーターに渡します。 ドキュメント ID は、関数を呼び出したトリガーに基づいて決定することができます。 
+## <a name="documentdb-api-input-binding"></a>DocumentDB API 入力バインド
+DocumentDB API 入力バインドでは、Cosmos DB ドキュメントを取得して関数の名前付き入力パラメーターに渡します。 ドキュメント ID は、関数を呼び出したトリガーに基づいて決定することができます。 
 
-DocumentDB 入力バインドには、*function.json* に次のプロパティがあります。
+DocumentDB API 入力バインドには、*function.json* に次のプロパティがあります。
 
 - `name`: ドキュメントの関数コードで使用される識別子名
 - `type`: "documentdb" に設定する必要があります
 - `databaseName`: ドキュメントを含むデータベース
 - `collectionName`: ドキュメントを含むコレクション
 - `id`: 取得するドキュメントの ID。 このプロパティは、バインド パラメーターをサポートしています。「[Azure Functions でのトリガーとバインドの使用方法](functions-triggers-bindings.md)」の[バインド式でのカスタム入力プロパティへのバインド](functions-triggers-bindings.md#bind-to-custom-input-properties-in-a-binding-expression)に関する記事をご覧ください。
-- `sqlQuery`: 複数のドキュメントを取得するときに使用する DocumentDB SQL クエリ。 クエリでは、ランタイム バインドがサポートされます。 次に例を示します。`SELECT * FROM c where c.departmentId = {departmentId}`
-- `connection`: DocumentDB 接続文字列を含むアプリ設定の名前
+- `sqlQuery`: 複数のドキュメントを取得するときに使用する Cosmos DB SQL クエリ。 クエリでは、ランタイム バインドがサポートされます。 次に例を示します。`SELECT * FROM c where c.departmentId = {departmentId}`
+- `connection`: Cosmos DB 接続文字列を含むアプリ設定の名前
 - `direction`: `"in"` に設定する必要があります。
 
 `id` と `sqlQuery` の両方のプロパティを指定することはできません。 `id` と `sqlQuery` をどちらも設定しないと、コレクション全体が取得されます。
 
-## <a name="using-a-documentdb-input-binding"></a>Azure DocumentDB 入力バインドの使用
+## <a name="using-a-documentdb-api-input-binding"></a>Azure DocumentDB API 入力バインドの使用
 
-* C# および F# 関数では、関数が正常に終了したときに、名前付き入力パラメーターを介した入力ドキュメントへの変更すべてが自動的に行われます。 
+* C# および F# 関数では、関数が正常に終了したときに、名前付き入力パラメーターを介した入力ドキュメントへの変更がすべて自動的に保持されます。 
 * JavaScript 関数の場合、関数の終了時に更新が自動的に行われることはありません。 代わりに、`context.bindings.<documentName>In` と `context.bindings.<documentName>Out` を使用して、更新を行います。 [JavaScript のサンプル](#injavascript)を参照してください。
 
 <a name="inputsample"></a>
 
 ## <a name="input-sample-for-single-document"></a>1 つのドキュメントの入力サンプル
-function.json の `bindings` 配列に次の DocumentDB 入力バインドがあるとします。
+function.json の `bindings` 配列に次の DocumentDB API 入力バインドがあるとします。
 
 ```json
 {
@@ -67,7 +68,7 @@ function.json の `bindings` 配列に次の DocumentDB 入力バインドがあ
   "databaseName": "MyDatabase",
   "collectionName": "MyCollection",
   "id" : "{queueTrigger}",
-  "connection": "MyAccount_DOCUMENTDB",     
+  "connection": "MyAccount_COSMOSDB",     
   "direction": "in"
 }
 ```
@@ -79,10 +80,10 @@ function.json の `bindings` 配列に次の DocumentDB 入力バインドがあ
 * [JavaScript](#injavascript)
 
 <a name="incsharp"></a>
-### <a name="input-sample-in-c"></a>C での入力サンプル# #
+### <a name="input-sample-in-c"></a>C# での入力サンプル #
 
 ```cs
-// Change input document contents using DocumentDB input binding 
+// Change input document contents using DocumentDB API input binding 
 public static void Run(string myQueueItem, dynamic inputDocument)
 {   
   inputDocument.text = "This has changed.";
@@ -90,10 +91,10 @@ public static void Run(string myQueueItem, dynamic inputDocument)
 ```
 <a name="infsharp"></a>
 
-### <a name="input-sample-in-f"></a>F での入力サンプル# #
+### <a name="input-sample-in-f"></a>F# での入力サンプル #
 
 ```fsharp
-(* Change input document contents using DocumentDB input binding *)
+(* Change input document contents using DocumentDB API input binding *)
 open FSharp.Interop.Dynamic
 let Run(myQueueItem: string, inputDocument: obj) =
   inputDocument?text <- "This has changed."
@@ -121,7 +122,7 @@ let Run(myQueueItem: string, inputDocument: obj) =
 ### <a name="input-sample-in-javascript"></a>JavaScript での入力サンプル
 
 ```javascript
-// Change input document contents using DocumentDB input binding, using context.bindings.inputDocumentOut
+// Change input document contents using DocumentDB API input binding, using context.bindings.inputDocumentOut
 module.exports = function (context) {   
   context.bindings.inputDocumentOut = context.bindings.inputDocumentIn;
   context.bindings.inputDocumentOut.text = "This was updated!";
@@ -143,11 +144,11 @@ SQL クエリで指定されている複数のドキュメントを、キュー 
     "databaseName": "MyDb",
     "collectionName": "MyCollection",
     "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}"
-    "connection": "DocumentDBConnection"
+    "connection": "CosmosDBConnection"
 }
 ```
 
-### <a name="input-sample-with-multiple-documents-in-c"></a>C での複数のドキュメントの入力サンプル#
+### <a name="input-sample-with-multiple-documents-in-c"></a>C# での複数のドキュメントの入力サンプル
 
 ```csharp
 public static void Run(QueuePayload myQueueItem, IEnumerable<dynamic> documents)
@@ -177,19 +178,19 @@ module.exports = function (context, input) {
 };
 ```
 
-## <a id="docdboutput"></a>DocumentDB 出力バインド
-DocumentDB 出力バインドを使用すると、Azure DocumentDB データベースに新しいドキュメントを記述できます。 *function.json* には次のプロパティがあります。
+## <a id="docdboutput"></a>DocumentDB API 出力バインド
+DocumentDB API 出力バインドを使用すると、Azure Cosmos DB データベースに新しいドキュメントを記述できます。 *function.json* には次のプロパティがあります。
 
 - `name`: 新しいドキュメントの関数コードで使用される識別子
 - `type`: `"documentdb"` に設定する必要があります
 - `databaseName` : 新しいドキュメントが作成されるコレクションを含むデータベース。
 - `collectionName` : 新しいドキュメントが作成されるコレクション。
 - `createIfNotExists`: コレクションが存在しない場合に作成するかどうかを示すブール値。 既定値は *false* です。 新しいコレクションは予約済みのスループットで作成され、価格に影響が及ぶためです。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/documentdb/)を参照してください。
-- `connection`: DocumentDB 接続文字列を含むアプリ設定の名前
+- `connection`: Cosmos DB 接続文字列を含むアプリ設定の名前
 - `direction`: `"out"` に設定する必要があります
 
-## <a name="using-a-documentdb-output-binding"></a>DocumentDB 出力バインドの使用
-このセクションでは、DocumentDB 出力バインドを関数のコードで使用する方法について説明します。
+## <a name="using-a-documentdb-api-output-binding"></a>DocumentDB API 出力バインドの使用
+このセクションでは、DocumentDB API 出力バインドを関数のコードで使用する方法について説明します。
 
 関数の出力パラメーターに書き込むと、既定で新しい文書がデータベースに生成され、自動的に生成された GUID が文書 ID として割り当てられます。 出力ドキュメントのドキュメント ID は、出力パラメーターの `id` JSON プロパティを指定することによって指定できます。 
 
@@ -200,8 +201,8 @@ DocumentDB 出力バインドを使用すると、Azure DocumentDB データベ�
 
 <a name="outputsample"></a>
 
-## <a name="documentdb-output-binding-sample"></a>DocumentDB 出力バインドのサンプル
-function.json の `bindings` 配列に次の DocumentDB 出力バインドがあるとします。
+## <a name="documentdb-api-output-binding-sample"></a>DocumentDB API 出力バインドのサンプル
+function.json の `bindings` 配列に次の DocumentDB API 出力バインドがあるとします。
 
 ```json
 {
@@ -210,7 +211,7 @@ function.json の `bindings` 配列に次の DocumentDB 出力バインドがあ
   "databaseName": "MyDatabase",
   "collectionName": "MyCollection",
   "createIfNotExists": true,
-  "connection": "MyAccount_DOCUMENTDB",     
+  "connection": "MyAccount_COSMOSDB",     
   "direction": "out"
 }
 ```
@@ -225,7 +226,7 @@ function.json の `bindings` 配列に次の DocumentDB 出力バインドがあ
 }
 ```
 
-ここで、各レコードに対して次の形式の DocumentDB ドキュメントを作成するとします。
+ここで、各レコードに対して次の形式の Cosmos DB ドキュメントを作成するとします。
 
 ```json
 {
@@ -244,7 +245,7 @@ function.json の `bindings` 配列に次の DocumentDB 出力バインドがあ
 
 <a name="outcsharp"></a>
 
-### <a name="output-sample-in-c"></a>C での出力サンプル# #
+### <a name="output-sample-in-c"></a>C# での出力サンプル #
 
 ```cs
 #r "Newtonsoft.Json"
@@ -270,7 +271,7 @@ public static void Run(string myQueueItem, out object employeeDocument, TraceWri
 
 <a name="outfsharp"></a>
 
-### <a name="output-sample-in-f"></a>F での出力サンプル# #
+### <a name="output-sample-in-f"></a>F# での出力サンプル #
 
 ```fsharp
 open FSharp.Interop.Dynamic

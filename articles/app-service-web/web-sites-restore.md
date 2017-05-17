@@ -14,15 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 71d07e64480d4b4eaff7fdef53c8f5ff7a97a944
-ms.lasthandoff: 01/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 49aa35a42e4f6dab2f8d556f7b1b10bfdef7b7db
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="restore-an-app-in-azure"></a>Azure でのアプリの復元
-この記事では、[Azure App Service](../app-service/app-service-value-prop-what-is.md) でアプリをバックアップから復元する方法を示します (バックアップについては「[Azure App Service での Web アプリのバックアップ](web-sites-backup.md)」を参照してください)。 リンクされたデータベース (SQL Database または MySQL) をオンデマンドで使用してアプリを以前の状態に戻したり、元のアプリのいずれかのバックアップに基づいて新しいアプリを作成したりすることができます。 最新バージョンと並行して実行される新しいアプリを作成すると、A/B テストを実施する場合に役立ちます。
+この記事では、[Azure App Service](../app-service/app-service-value-prop-what-is.md) でアプリをバックアップから復元する方法を示します (バックアップについては「[Azure App Service での Web アプリのバックアップ](web-sites-backup.md)」を参照してください)。 リンクされたデータベースをオンデマンドで使用してアプリを以前の状態に戻したり、元のアプリのいずれかのバックアップに基づいて新しいアプリを作成したりすることができます。 Azure App Service では、次のデータベースのバックアップと復元がサポートされます。
+- [SQL Database](https://azure.microsoft.com/en-us/services/sql-database/)
+- [Azure Database for MySQL (プレビュー)](https://azure.microsoft.com/en-us/services/mysql)
+- [Azure Database for PostgreSQL (プレビュー)](https://azure.microsoft.com/en-us/services/postgres)
+- [ClearDB MySQL](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/SuccessBricksInc.ClearDBMySQLDatabase?tab=Overview)
+- [アプリ内 MySQL](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
 
 バックアップからの復元は、**Standard** レベルか **Premium** レベルで実行されているアプリでのみ利用できます。 アプリのスケーリングについて詳しくは、「 [Azure App Service の Web アプリをスケーリングする](web-sites-scale.md)」をご覧ください。 **Premium** レベルでは、**Standard** レベルよりも多くの回数の日次バックアップが可能です。
 
@@ -44,22 +50,19 @@ ms.lasthandoff: 01/20/2017
     ![](./media/web-sites-restore/022ChooseDestination.png)
    
    > [!WARNING]
-   > **[上書き]**を選択した場合、現在のアプリの既存のデータはすべて削除されます。 **[OK]**をクリックする前に、実行する操作内容が正しいことを確認します。
+   > **[上書き]**を選択した場合、現在のアプリの既存のデータはすべて消去され上書きされます。 **[OK]**をクリックする前に、実行する操作内容が正しいことを確認します。
    > 
    > 
    
-    **[既存のアプリ]** を選択して、アプリのバックアップを同じリソース グループ内の別のアプリに復元することができます。 このオプションを使用する前に、リソース グループ内に別のアプリを作成済みであり、データベース構成を、アプリのバックアップ内に定義されている構成にミラーリングしている必要があります。
+    **[既存のアプリ]** を選択して、アプリのバックアップを同じリソース グループ内の別のアプリに復元することができます。 このオプションを使用する前に、リソース グループ内に別のアプリを作成済みであり、構成を、アプリのバックアップ内に定義されている構成にミラーリングしている必要があります。
+
 4. **[OK]**をクリックします。
 
 <a name="StorageAccount"></a>
 
 ## <a name="download-or-delete-a-backup-from-a-storage-account"></a>ストレージ アカウントからバックアップをダウンロードまたは削除するには
-1. Azure Portal のメインの **[参照]** ブレードで、**[ストレージ アカウント]** を選択します。
-   
-    既存のストレージ アカウントの一覧が表示されます。
-2. ダウンロードまたは削除するバックアップが含まれているストレージ アカウントを選択します。
-   
-    ストレージ アカウントのブレードが表示されます。
+1. Azure Portal のメインの **[参照]** ブレードで、**[ストレージ アカウント]** を選択します。 既存のストレージ アカウントの一覧が表示されます。
+2. ダウンロードまたは削除するバックアップが含まれているストレージ アカウントを選択します。ストレージ アカウントのブレードが表示されます。
 3. ストレージ アカウントのブレードで、必要なコンテナーを選択します。
    
     ![コンテナーの表示][ViewContainers]
@@ -71,20 +74,16 @@ ms.lasthandoff: 01/20/2017
 <a name="OperationLogs"></a>
 
 ## <a name="monitor-a-restore-operation"></a>復元操作の確認
-1. アプリの復元操作が成功したかどうかについて詳細を確認するには、Azure ポータルの **[アクティビティ ログ]** ブレードに移動します。
-   
-    **[アクティビティ ログ]** ブレードには、すべての操作と、レベル、状態、リソース、および時刻が表示されます。
-2. 下方向へスクロールし、目的の復元操作が見つかったらクリックして選択します。
+アプリの復元操作が成功したかどうかについて詳細を確認するには、Azure ポータルの **[アクティビティ ログ]** ブレードに移動します。  
+ 
+
+下方向へスクロールし、目的の復元操作が見つかったらクリックして選択します。
 
 詳細ブレードに、復元操作に関連する利用可能な情報が表示されます。
 
 ## <a name="next-steps"></a>次のステップ
-REST API を使用して、App Service アプリのバックアップと復元を実行することもできます (「 [REST を使用して App Service アプリのバックアップと復元を実行する](websites-csm-backup.md)」を参照してください)。
+REST API を使用して、App Service アプリのバックアップと復元を実行することができます (「[REST を使用して App Service アプリのバックアップと復元を実行する](websites-csm-backup.md)」を参照してください)。
 
-> [!NOTE]
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
-> 
-> 
 
 <!-- IMAGES -->
 [ChooseRestoreNow]: ./media/web-sites-restore/02ChooseRestoreNow.png

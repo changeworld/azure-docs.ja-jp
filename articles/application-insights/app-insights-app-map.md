@@ -12,11 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 37b85ba4987f8f29e4e825a17f0a892ddabf9599
-ms.lasthandoff: 04/12/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: e76a31a8eaa249ab064d180bfd7ed158ef32c85a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -86,19 +87,35 @@ Azure でホストされるコンポーネントの場合、そのコンポー�
 
 ![Pin to dashboard](./media/app-insights-app-map/12.png)
 
+## <a name="error-pane"></a>エラー ウィンドウ
+マップ内でノードをクリックすると、そのノードのエラーの概要を示すエラー ウィンドウが右側に表示されます。 エラーは、まず操作 ID でグループ化された後、問題 ID でグループ化されます。
+
+![エラー ウィンドウ](./media/app-insights-app-map/error-pane.png)
+
+エラーをクリックすると、そのエラーの最新のインスタンスが表示されます。
+
+## <a name="resource-health"></a>リソース ヘルス
+リソースの種類によっては、エラー ウィンドウの上部にリソースの正常性が表示されます。 たとえば、SQL ノードをクリックすると、データベースの正常性と発生したアラートが表示されます。
+
+![リソース ヘルス](./media/app-insights-app-map/resource-health.png)
+
+リソース名をクリックすると、そのリソースの標準の概要メトリックを表示できます。
+
 ## <a name="end-to-end-system-app-maps"></a>エンド ツー エンドのシステム アプリケーション マップ
+
+*SDK バージョン 2.3 以降が必要*
 
 アプリケーションに複数のコンポーネントがある場合 (Web アプリに加え、バックエンド サービスなど)、統合されたアプリ マップにこれらすべてを表示できます。
 
 ![Set filters](./media/app-insights-app-map/multi-component-app-map.png)
 
-アプリ マップは、現在のリソース グループ内のすべての Application Insights リソースを探して、サーバー ノードを検出します。 また、現在のリソース グループ内の Application Insights リソースによって追跡されている依存関係の呼び出しをフォローすることでサーバー ノードを検出します。
+アプリ マップでは、Application Insights SDK がインストールされているサーバー間での HTTP 依存関係呼び出しに従ってサーバー ノードを検索します。 各 Application Insights リソースには、1 つのサーバーが含まれていると見なされます。
 
+### <a name="multi-role-app-map-preview"></a>マルチロール アプリ マップ (プレビュー)
 
-### <a name="setting-up"></a>設定
+マルチロール アプリ マップ プレビュー機能では、同じ Application Insights リソースやインストルメンテーション キーにデータを送信する複数のサーバーでアプリ マップを使用できます。 マップ内のサーバーは、テレメトリ項目の cloud_RoleName プロパティに基づいてセグメント化されています。 この構成を有効にするには、[プレビュー] ブレードで *[Multi-role Application Map (マルチロール アプリケーション マップ)]* を *[オン]* に設定します。
 
-> [!NOTE] 
-> エンド ツー エンドのシステム マップ アプリはプレビュー段階です。 SDK の特別なバージョンでコンポーネントをインストルメント化する必要があり、特別な URL を使用してアプリ マップを表示する必要があります。 [エンド ツー エンドのシステム アプリ マップを設定する方法をご覧ください](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-app-map-preview.md)。
+この方法は、Micro-Service アプリケーションや、1 つの Application Insights リソース内の複数のサーバー間でイベントを関連付ける他のシナリオで必要になる場合があります。
 
 ## <a name="video"></a>ビデオ
 

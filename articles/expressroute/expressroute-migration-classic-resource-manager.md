@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/11/2017
+ms.date: 05/02/2017
 ms.author: ganesr;cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 5cebc3c5f2bcfb89f939b98391ffd072263c3e08
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 23b88e4dd3af3cd3e1e13f80890311bdbfb7fe84
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.lasthandoff: 04/12/2017
 
 
 ## <a name="before-you-begin"></a>開始する前に
-* Azure PowerShell モジュールの最新バージョンがあることを確認します。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」を参照してください。
+* Azure PowerShell モジュールの最新バージョンがあることを確認します。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。
 * 構成を開始する前に、必ず、[前提条件](expressroute-prerequisites.md)、[ルーティングの要件](expressroute-routing.md)、および[ワークフロー](expressroute-workflows.md)を確認してください。
 * [クラシックから Resource Manager への ExpressRoute 回線の移行](expressroute-move.md)に関する記事に記載されている情報を確認してください。 制限および制約事項について完全に理解していることを確認します。
 * 回路がクラシック デプロイメント モデルで完全に動作できることを確認します。
@@ -45,6 +46,7 @@ ms.lasthandoff: 04/12/2017
 * ExpressRoute 回線は、ダウンタイムなしでクラシック環境から Resource Manager 環境に移行できます。 ExpressRoute 回線は、ダウンタイムなしでクラシック環境から Resource Manager 環境にすべて移動できます。 [PowerShell を使用してクラシック デプロイメント モデルから Resource Manager デプロイメント モデルに ExpressRoute 回線を移行する方法](expressroute-howto-move-arm.md)に関するページの手順に従ってください。 これは、仮想ネットワークに接続されているリソースを移動するための前提条件です。
 * 同じサブスクリプションの ExpressRoute 回線に接続されている仮想ネットワーク、ゲートウェイ、および仮想ネットワーク内の関連するデプロイは、ダウンタイムなしに Resource Manager 環境に移行できます。 後で説明する手順に従って、仮想ネットワーク、ゲートウェイ、および仮想ネットワーク内にデプロイされた仮想マシンなどのリソースを移行できます。 これらのリソースを移行する前に、仮想ネットワークが正しく構成されていることを確認する必要があります。 
 * ExpressRoute 回線と異なるサブスクリプションの仮想ネットワーク、ゲートウェイ、および仮想ネットワーク内の関連するデプロイを移行する場合は、ダウンタイムが伴います。 このドキュメントの最後のセクションに、これらのリソースを移行するための手順を説明します。
+* ExpressRoute ゲートウェイと VPN Gateway の両方を含んだ仮想ネットワークは移行できません。
 
 ## <a name="move-an-expressroute-circuit-from-classic-to-resource-manager"></a>クラシックから Resource Manager への ExpressRoute 回線の移動
 ExpressRoute 回線に接続されているリソースを移行する前に、ExpressRoute 回線をクラシックから Resource Manager 環境に移動する必要があります。 このタスクを行うには、次の記事を参照してください。

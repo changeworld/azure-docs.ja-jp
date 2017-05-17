@@ -166,6 +166,7 @@
 #### [Ambari REST API を使用する](hdinsight-hadoop-manage-ambari-rest-api.md)
 ### [ストレージ アカウントを追加する](hdinsight-hadoop-add-storage.md)
 ### [Hadoop ジョブのデータをアップロードする](hdinsight-upload-data.md)
+### [複数の HDInsight クラスターと Data Lake Store](hdinsight-multiple-clusters-data-lake-store.md)
 ### [Sqoop でデータをインポートおよびエクスポートする](hdinsight-use-sqoop.md)
 #### [SSH を使用した接続](hdinsight-use-sqoop-mac-linux.md)
 #### [cURL を使用して実行する](hdinsight-hadoop-use-sqoop-curl.md)

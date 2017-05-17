@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2017
 ms.author: raynew
-translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: c2e21eefff3ce501ee5fc4003f60df25c4d7665d
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 7be3471cd5cd22b5d05aed6e2cb51840a20bb89b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -87,7 +88,7 @@ VMware VM を Azure に移行する (フェールオーバーのみ) 場合は�
 
 1. VMware VM で Windows Server 2012 R2 以降をインストールします。
 2. [前提条件](#prerequisites)に記載されている URL に VM からアクセスできることを確認します。
-3. [VMware vSphere PowerCLI 6.0](https://developercenter.vmware.com/tool/vsphere_powercli/6.0) をインストールします。
+3. [VMware vSphere PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) をインストールします。
 
 
 ## <a name="prepare-for-automatic-discovery-and-push-installation"></a>自動検出およびプッシュ インストールを準備する

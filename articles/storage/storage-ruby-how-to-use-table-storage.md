@@ -14,16 +14,17 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: marsma
-translationtype: Human Translation
-ms.sourcegitcommit: 931503f56b32ce9d1b11283dff7224d7e2f015ae
-ms.openlocfilehash: e1df2fcf4478ef7f58c5686e85abd6ae94b5a2d3
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 03f466cb08ed2ccbd2985471d0956af9e66d97f1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="how-to-use-azure-table-storage-from-ruby"></a>Ruby から Azure Table Storage を使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-
-[!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
+[!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
 ## <a name="overview"></a>概要
 このガイドでは、Azure Table サービスを使用して一般的なシナリオを実行する方法について説明します。 サンプルは Ruby API を使用して記述されています。 紹介するシナリオは、 **テーブルの作成と削除、テーブルのエンティティの挿入とクエリ実行**などです。
@@ -170,14 +171,8 @@ azure_table_service.delete_table("testtable")
 ```
 
 ## <a name="next-steps"></a>次のステップ
-さらに複雑なストレージ タスクの詳細については、次のリンク先をご覧ください。
 
-* [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
+* [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 * [Azure SDK for Ruby](http://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

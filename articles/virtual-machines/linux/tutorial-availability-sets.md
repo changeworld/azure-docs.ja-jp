@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 65a7872e0880cc74a00ca1c05baae2b34b407a61
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: d082b37a2e070136178259c54ada8dc141f81e13
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -37,7 +38,7 @@ ms.lasthandoff: 04/26/2017
 
 ## <a name="create-an-availability-set"></a>可用性セットの作成
 
-可用性セットは、[az vm availability-set create](/cli/azure/availability-set#create) を使用して作成できます。 この例では、**myResourceGroupAvailability** リソース グループ内の **myAvailabilitySet** という名前の可用性セットに対して、更新ドメインと障害ドメインの両方の数として **2** を設定します。
+可用性セットは、[az vm availability-set create](/cli/azure/availability-set#create) を使用して作成できます。 この例では、*myResourceGroupAvailability* リソース グループ内の *myAvailabilitySet* という名前の可用性セットに対して、更新ドメインと障害ドメインの両方の数として *2* を設定します。
 
 ```azurecli
 az vm availability-set create \
@@ -73,7 +74,7 @@ done
 
 ## <a name="check-for-available-vm-sizes"></a>使用可能な VM のサイズのチェック 
 
-可用性セットには後で VM をさらに追加することができますが、そのハードウェアで使用可能な VM のサイズを把握しておく必要があります。 `az vm availability-set list-sizes` を使用して、ハードウェア クラスターで可用性セットに使用可能なすべてのサイズを一覧表示します。
+可用性セットには後で VM をさらに追加することができますが、そのハードウェアで使用可能な VM のサイズを把握しておく必要があります。 ハードウェア クラスターで可用性セットに使用可能なすべてのサイズを一覧表示するには、[az vm availability-set list-sizes](/cli/azure/availability-set#list-sizes) を使用します。
 
 ```azurecli
 az vm availability-set list-sizes \

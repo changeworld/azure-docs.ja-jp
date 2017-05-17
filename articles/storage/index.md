@@ -12,10 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
-ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
-ms.openlocfilehash: b1be3955ac05028f3435cfe191857f81ddd2d4d7
-ms.lasthandoff: 04/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: af6bc7cc4245208d2dc92a9b248aa4686cf42272
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 
@@ -108,6 +109,7 @@ ms.lasthandoff: 04/29/2017
                         <p><a href="https://msdn.microsoft.com/library/azure/mt347887.aspx">.NET: BLOB、キュー、テーブル、ファイル</a></p>
                         <p><a href="/java/api/">Java</a></p>
                         <p><a href="http://azure.github.io/azure-storage-node">Node.JS</a></p>
+                        <p><a href="http://azure.github.io/azure-storage-php/">PHP</a></p>
                         <p><a href="http://azure.github.io/azure-storage-ruby">Ruby</a></p>
                         <p><a href="https://azure-storage.readthedocs.io/en/latest/index.html">Python</a></p>
                         <p><a href="http://azure.github.io/azure-storage-cpp">C++</a></p>

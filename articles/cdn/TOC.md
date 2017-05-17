@@ -29,6 +29,7 @@
 ### [リソースの監視](cdn-resource-health.md)
 ### [規則に従って動作を上書きする](cdn-rules-engine.md)
 ### [リアルタイムでアラートを受け取る](cdn-real-time-alerts.md)
+### [HTTP/2 のサポート](cdn-http2.md)
 
 ## 分析
 ### [使用量パターンを分析する](cdn-analyze-usage-patterns.md)

@@ -13,11 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 01/23/2017
+ms.date: 05/15/2017
 ms.author: maroche
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 975084c19909b0829b6f93cab05373fb71b10cf3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -65,9 +67,4 @@ Azure Data Catalog を使用すると、ユーザーはこの冗長な作業の�
 場合によっては、これらのデータ エキスパートは、電子メール経由、またはチームの SharePoint サイトで Word 文書を共有して、知識を文書化する取り組みをします。 この取り組みは有用かもしれませんが、どのようなドキュメントがどこに存在するかをどのようにして知ることができるか、という検出に関する新しい問題が生じます。
 
 Azure Data Catalog は、この組織固有の知識を共有し、簡単に検出できるようにするための場所を提供します。 データ エキスパートは、データ資産に直接注釈を付けるほか、既存のドキュメントにリンクを含めることもできます。 これにより、知識自体がキャプチャされるだけでなく、データ ソース検出に使用するのと同じエクスペリエンス内に知識が格納されます。 カタログを使用してデータ ソースを検出すると、ソース自体だけでなく、以前はエキスパート自身の頭の中だけに存在していた知識も見つけることができます。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

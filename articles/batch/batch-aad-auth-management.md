@@ -51,7 +51,7 @@ AccountManagement サンプル アプリケーションを登録するには、�
 
 Azure Portal で次の手順に従います。
 
-1. Azure Portal の左側のナビゲーション ウィンドウで **[More Services] (その他のサービス)** を選択し、**[アプリの登録]**、**[追加]** の順にクリックします。
+1. Azure Portal の左側のナビゲーション ウィンドウで **[More Services] \(その他のサービス)** を選択し、**[アプリの登録]**、**[追加]** の順にクリックします。
 2. アプリケーション登録の一覧で、アプリケーションの名前を検索します。
 
     ![アプリケーションの名前を検索する](./media/batch-aad-auth-management/search-app-registration.png)
@@ -59,7 +59,7 @@ Azure Portal で次の手順に従います。
 3. **[設定]** ブレードを表示します。 **[API アクセス]** セクションで、**[必要なアクセス許可]** を選択します。
 4. **[追加]** をクリックして、新しい必要なアクセス許可を追加します。 
 5. ステップ 1 で、「**Windows Azure Service Management API**」と入力し、結果の一覧からその API を選択して **[選択]** ボタンをクリックします。
-6. ステップ 2 で、**[Access Azure classic deployment model as organization users](組織のユーザーとして Azure クラシック デプロイメント モデルにアクセスする)** の横のチェック ボックスをオンにして、**[選択]** ボタンをクリックします。
+6. ステップ 2 で、**[Access Azure classic deployment model as organization users] \(組織のユーザーとして Azure クラシック デプロイメント モデルにアクセスする)** の横のチェック ボックスをオンにして、**[選択]** ボタンをクリックします。
 7. **[完了]** ボタンをクリックします。
 
 **[必要なアクセス許可]** ブレードに、ADAL および Resource Manager API へのアプリケーションのアクセスが許可されたことが表示されます。 アプリを Azure AD に最初に登録する際に、既定で ADAL へのアクセス許可が付与されます。

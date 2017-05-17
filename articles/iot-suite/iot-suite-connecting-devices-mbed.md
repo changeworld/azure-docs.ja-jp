@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/18/2017
+ms.date: 05/18/2017
 ms.author: dobett
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: df9772796796f7383aafc583b01f299a53679d88
 ms.openlocfilehash: 12535cbb6fa63c24dd63903380d697f8f38db6f9
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/27/2017
 
 
@@ -78,7 +79,7 @@ mbed プロジェクトにサンプル コードをいくつか追加するに�
 
 1. remote\_monitoring\remote_monitoring.c ファイルを開き、既存の `#include` ステートメントを次のコードで置き換えます。
 
-    ```
+    ```c
     #include "iothubtransportmqtt.h"
     #include "schemalib.h"
     #include "iothub_client.h"
@@ -102,7 +103,7 @@ mbed プロジェクトにサンプル コードをいくつか追加するに�
 
 1. **remote\_monitoring\_run** 関数を呼び出す次のコードを備えた **main** 関数を remote\_monitoring.c ファイルの末尾に追加します。
    
-    ```
+    ```c
     int main()
     {
       remote_monitoring_run();

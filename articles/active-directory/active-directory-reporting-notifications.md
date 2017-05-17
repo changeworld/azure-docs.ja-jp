@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2016
+ms.date: 05/16/2017
 ms.author: dhanyahk;markvi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 90ba006f25c27e1dc24c85fdc4ef1d5e2a8d0e3d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -46,10 +48,5 @@ ms.openlocfilehash: 90ba006f25c27e1dc24c85fdc4ef1d5e2a8d0e3d
 * 使用可能なセキュリティ、監査、およびアクティビティ レポートに興味がある場合は、 [Azure AD のセキュリティ、監査、およびアクティビティ レポート](active-directory-view-access-usage-reports.md)に関するページをご覧ください
 * [Azure Active Directory Premium の概要](active-directory-get-started-premium.md)
 * [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

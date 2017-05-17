@@ -15,16 +15,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 10/27/2016
 ms.author: liamca
-translationtype: Human Translation
-ms.sourcegitcommit: fc2f30569acc49dd383ba230271989eca8a14423
-ms.openlocfilehash: 0f81ac0d19cd0f20c1f2214042eda391a3e68a7d
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 0740bc1f9e8b8be3c59518d9b23b8a1411c6d16a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 ---
 
 # <a name="lucene-query-syntax-examples-for-building-queries-in-azure-search"></a>Azure Search でクエリを作成するための Lucene クエリ構文例
 Azure Search のクエリを構築するときは、既定の[単純なクエリ構文](https://msdn.microsoft.com/library/azure/dn798920.aspx)または代替の [Azure Search の Lucene Query Parser](https://msdn.microsoft.com/library/azure/mt589323.aspx) を使用できます。 Lucene Query Parser では、フィールド スコープ クエリ、あいまい検索、近接検索、用語ブースト、正規表現検索など、複雑なクエリ構文に対応しています。
 
-この記事では、Lucene クエリ構文と結果が横並びに表示された例を順番に確認できます。 例は [JSFiddle](https://jsfiddle.net/) に事前に読み込んでおいた検索インデックスに対して実行されます。JSFiddle は、スクリプトと HTML をテストするためのオンライン コード エディターです。
+この記事では、Lucene クエリ構文と結果が横並びに表示された例を順番に確認できます。 例は [JSFiddle](https://jsfiddle.net/) に事前に読み込んでおいた検索インデックスに対して実行されます。JSFiddle は、スクリプトと HTML をテストするためのオンライン コード エディターです。 クエリ処理の背景については、「[Azure Search のフルテキスト検索のしくみ](search-lucene-query-architecture.md)」を参照してください。
 
 クエリ例の URL を右クリックし、JSFiddle を新しいブラウザー ウィンドウで開きます。
 
@@ -120,9 +122,4 @@ musicstoreindex の例の **genre** など、特定のフィールドの一致�
 
 * [.NET SDK を使用した Azure Search インデックスの照会](search-query-dotnet.md)
 * [REST API を使用した Azure Search インデックスの照会](search-query-rest-api.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

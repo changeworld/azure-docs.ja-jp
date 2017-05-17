@@ -12,19 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/03/2017
+ms.date: 04/23/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 3dba9ebc8eb23be00f9b52907ba4bc565eeb5688
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
+ms.openlocfilehash: 58b289530e16c2a2e9bbe59b372c858ff22ad5ac
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/29/2017
 
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication---public-preview"></a>Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合 - パブリック プレビュー
 
 Azure MFA のネットワーク ポリシー サーバー (NPS) 拡張機能は、既存のサーバーを使用してクラウド ベースの MFA 機能を認証インフラストラクチャに追加します。 NPS 拡張機能を使用すると、新しいサーバーをインストール、構成、管理することなく、電話、SMS、またはモバイル アプリによる検証を既存の認証フローに追加できます。 
- 
+
+この拡張機能は、Azure MFA Server をデプロイしないで VPN 接続を保護する必要のある組織を対象に作成されました。 NPS 拡張機能は、RADIUS とクラウド ベース Azure MFA の間のアダプターとして機能し、フェデレーション ユーザーまたは同期済みユーザーに、認証の 2 番目の要素を提供します。 
+
 Azure MFA の NPS 拡張機能を使用する場合、認証フローには次のコンポーネントが含まれます。 
 
 1. **NAS/VPN サーバー**: VPN クライアントから受信した要求を RADIUS 要求に変換して NPS サーバーに送信します。 
@@ -108,6 +111,8 @@ NPS 用にサーバーを指定したので、VPN ソリューションからの
 2. Https://portal.azure.com などの Azure AD 認証を開始する任意の Web サイトに移動します。
 3. [2 段階認証に登録します](./end-user/multi-factor-authentication-end-user-first-time.md)。
 
+NPS 拡張機能を使って認証するには、この手順に従って登録しておく必要もあります。
+
 ## <a name="install-the-nps-extension"></a>NPS 拡張機能のインストール
 
 > [!IMPORTANT]
@@ -144,6 +149,8 @@ NPS 用にサーバーを指定したので、VPN ソリューションからの
 5. 管理者として Azure AD にログインします。
 6. スクリプトが終了すると、PowerShell によって成功メッセージが表示されます。  
 
+負荷分散用に設定するすべての追加 NPS サーバーで、この手順を繰り返します。 
+
 ## <a name="configure-your-nps-extension"></a>NPS 拡張機能の構成
 
 このセクションでは、NPS 拡張機能を正常にデプロイするために必要な設計上の考慮事項と提案を示します。
@@ -167,7 +174,7 @@ MFA に登録されていないユーザーがいる場合は、そのユーザ�
 
 この設定により、MFA に登録されていないユーザーの扱いが決まります。 キーが存在しないか、設定されていないか、または TRUE に設定されていて、ユーザーが登録されていない場合は、拡張機能による MFA チャレンジが失敗します。 キーが FALSE に設定されていて、ユーザーが登録されていない場合は、MFA を実行することがなく認証が行われます。
 
-ユーザーのオンボーディングの際に、このキーを作成して FALSE に設定することができますが、 そうすると、MFA に登録されていないユーザーのログインが許可されることになります。このキーは運用環境に移行する前に削除してください。
+ユーザーのオンボーディング中、Azure MFA への登録の一部がまだ完了しないうちに、このキーを作成して FALSE に設定できます。 ただし、MFA に登録されていないユーザーのサインインが許可されることになるため、このキーは運用環境に移行する前に削除してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

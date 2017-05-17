@@ -16,10 +16,11 @@ ms.topic: article
 ms.date: 03/17/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: 2d146d3a3bd2497a6c1d9b2b924d2e2cd00710de
-ms.lasthandoff: 04/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: d8a586834034460932516e352560b570141d9cda
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -53,7 +54,7 @@ Azure における基になるインフラストラクチャは、複数のハ�
 
 ロード バランサーを可用性セットと併せて各アプリケーション層の前で使用することで、実行中のインスタンスにトラフィックが常にルーティングされるようにすることができます。 ロード バランサーを使用しなくても、計画内および計画外のメンテナンス イベント時に VM を実行し続けることはできますが、エンド ユーザーは、プライマリ VM が利用できない場合にそれらのイベントを解決できない可能性があります。
 
-ストレージ層での高可用性を実現するようにアプリケーションを設計します。 ベスト プラクティスは、[可用性セット内の VM に Managed Disks を使用する](../windows/manage-availability.md#use-managed-disks-for-vms-in-availability-set)ことです。 管理されていないディスクを現在使用している場合は、[可用性セット内の VM を Managed Disks を使用するように変換する](../windows/convert-unmanaged-to-managed-disks.md#convert-vms-in-an-availability-set-to-managed-disks-in-a-managed-availability-set)ことを強くお勧めします。
+ストレージ層での高可用性を実現するようにアプリケーションを設計します。 ベスト プラクティスは、[可用性セット内の VM に Managed Disks を使用する](manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)ことです。 管理されていないディスクを現在使用している場合は、[可用性セット内の VM を Managed Disks を使用するように変換する](convert-unmanaged-to-managed-disks.md#convert-vms-in-an-availability-set-to-managed-disks-in-a-managed-availability-set)ことを強くお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [virtual-machines-windows-infrastructure-guidelines-next-steps](../../../includes/virtual-machines-windows-infrastructure-guidelines-next-steps.md)]

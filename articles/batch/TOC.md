@@ -19,6 +19,7 @@
 ### [効率的なリスト クエリ](batch-efficient-list-queries.md)
 ### [ジョブの準備と完了タスク](batch-job-prep-release.md)
 ### [Linux コンピューティング ノード](batch-linux-nodes.md)
+### [優先順位の低い VM](batch-low-pri-vms.md)
 ### [Batch Management .NET で Batch アカウントを管理する](batch-management-dotnet.md)
 ### [ジョブとタスク出力を保持する](batch-task-output.md)
 ### [Batch での MPI ジョブの実行](batch-mpi.md)

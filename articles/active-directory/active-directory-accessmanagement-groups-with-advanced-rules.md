@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 05/08/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: 4bab9f44d1c91f05618ea510b83beb06540429f2
-ms.openlocfilehash: 00424292fbc5321a77a4e924530ade97739208d4
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 24f56b68a9313ed1bce859b9343a14de83d9b600
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -33,6 +35,7 @@ Azure クラシック ポータルを使用すると、高度なルールを作�
 > * グループに対するルールを管理する管理者
 > * グループのすべてのメンバー
 >
+> デバイスまたはユーザーの動的グループは作成できても、ユーザー オブジェクトとデバイス オブジェクトの両方を選択するルールは作成できないことにも、注意してください。 
 
 ## <a name="to-create-the-advanced-rule"></a>高度なルールを作成するには
 1. [Azure クラシック ポータル](https://manage.windowsazure.com)で **[Active Directory]**を選択し、該当する組織のディレクトリを開きます。
@@ -40,13 +43,13 @@ Azure クラシック ポータルを使用すると、高度なルールを作�
 3. **[構成]** タブを選択し、**[高度なルール]** オプションを選択して、テキスト ボックスに高度なルールを入力します。
 
 ## <a name="constructing-the-body-of-an-advanced-rule"></a>高度なルール本体の作成
-グループの動的なメンバーシップ管理を目的として作成される高度なルールは基本的に、3 つの構成要素から成る、true または false を結果として返す&2; 項演算式です。 その&3; つの構成要素を次に示します。
+グループの動的なメンバーシップ管理を目的として作成される高度なルールは基本的に、3 つの構成要素から成る、true または false を結果として返す 2 項演算式です。 その 3 つの構成要素を次に示します。
 
 * 左辺のパラメーター
 * 2 項演算子
 * 右辺の定数
 
-たとえば全体で見ると、(leftParameter binaryOperator "RightConstant") のようになります。2 項演算式全体を開きかっこと閉じかっこで囲んだ上で、右辺の定数は二重引用符で囲む必要があります。左辺のパラメーターの構文は user.property という形式で入力します。 高度なルールは、複数の&2; 項演算式を論理演算子 (-and、-or、-not) で組み合わせることができます。
+たとえば全体で見ると、(leftParameter binaryOperator "RightConstant") のようになります。2 項演算式全体を開きかっこと閉じかっこで囲んだ上で、右辺の定数は二重引用符で囲む必要があります。左辺のパラメーターの構文は user.property という形式で入力します。 高度なルールは、複数の 2 項演算式を論理演算子 (-and、-or、-not) で組み合わせることができます。
 以下に示したのは、正しい構文に沿って作成された高度なルールの例です。
 
 * (user.department -eq "Sales") -or (user.department -eq "Marketing")
@@ -251,9 +254,4 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 * [グループの設定を構成するための Azure Active Directory コマンドレット](active-directory-accessmanagement-groups-settings-cmdlets.md)
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

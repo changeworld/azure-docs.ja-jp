@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2017
+ms.date: 05/16/2017
 ms.author: markvi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 1e7e764bdb1e883c28c137292de6a3ef8873e473
 ms.openlocfilehash: e4b8622fc6d06be480a2de057070155b12746133
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -143,10 +145,5 @@ Office 365 Exchange Online アプリケーションでは、Exchange ActiveSync 
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Active Directory の条件付きアクセス](active-directory-conditional-access.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

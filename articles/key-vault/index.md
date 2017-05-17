@@ -12,10 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 1913116e8d43d25a01ea2a8f4eb112c001dbc7ff
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: 41db3ea23bc1e9895893201078b1ada3297418cb
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 
@@ -127,7 +128,7 @@ Key Vault を使用して、クラウド アプリケーションやサービス
                     <div class="cardText">
                         <h3>コマンド ライン</h3>
                         <p><a href="/powershell/resourcemanager/azurerm.keyvault/v2.3.0/azurerm.keyvault">PowerShell</a></p>
-                         <p><a href="/cli/azure/keyvault">Azure CLI 2.0</a></p>
+                         <p><a href="/cli/azure/keyvault">Azure CLI 2</a></p>
                     </div>
                 </div>
             </div>
@@ -141,8 +142,19 @@ Key Vault を使用して、クラウド アプリケーションやサービス
                         <h3>言語</h3>
                         <p><a href="/dotnet/api/microsoft.azure.keyvault">.NET</a></p>
                         <p><a href="/java/api/com.microsoft.azure.keyvault">Java</a></p>
-                        <p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest">Node.JS</a></p>
-                        <p><a href="/java/api/com.microsoft.azure.keyvault">Java</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Node.js</h3>
+                        <p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest">コンテナーの管理</a></p>
+                        <p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest">コンテナーの内容の管理</a></p>
                     </div>
                 </div>
             </div>

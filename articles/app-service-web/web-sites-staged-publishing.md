@@ -15,17 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: a51be4038ef6f9890645a71cd10cc86cb58929f3
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: dd0382aaec0cdcbd6688d99f7bc0245fae5b963f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>
 
-使用している App Service プラン モードが **Standard** または **Premium** である場合は、Web アプリ、モバイル バック エンド、API アプリを [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする際、既定の運用スロットではなく、個別のデプロイ スロットにデプロイすることができます。 デプロイ スロットは、実際には固有のホスト名を持つライブ アプリです。 アプリのコンテンツと構成の各要素は、(運用スロットを含む) 2 つのデプロイ スロットの間でスワップすることができます。 デプロイ スロットにアプリケーションをデプロイすることには、次のメリットがあります。
+使用している App Service プラン モードが **Standard** または **Premium** である場合は、Web アプリ、Linux 上の Web アプリ、モバイル バック エンド、API アプリを [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする際、既定の運用スロットではなく、個別のデプロイ スロットにデプロイすることができます。 デプロイ スロットは、実際には固有のホスト名を持つライブ アプリです。 アプリのコンテンツと構成の各要素は、(運用スロットを含む) 2 つのデプロイ スロットの間でスワップすることができます。 デプロイ スロットにアプリケーションをデプロイすることには、次のメリットがあります。
 
 * ステージング デプロイ スロットでアプリの変更を検証した後に、運用スロットにスワップできます。
 * スロットにアプリをデプロイした後に運用サイトにスワップすると、運用サイトへのスワップ前にスロットのすべてのインスタンスが準備されます。 これにより、アプリをデプロイする際のダウンタイムがなくなります。 トラフィックのリダイレクトはシームレスであるため、スワップ操作によりドロップされる要求はありません。 このワークフロー全体は、スワップ前の検証が必要ない場合、 [自動スワップ](#Auto-Swap) を構成することで自動化できます。
@@ -119,6 +120,9 @@ ms.lasthandoff: 04/27/2017
 プレビューでのスワップ (または複数フェーズのスワップ) は、接続文字列などのスロットに固有の構成要素の検証を簡略化します。
 ミッション クリティカルなワークロードでは、運用スロットの構成が適用されるときにアプリが期待どおりに動作することを検証します。このような検証はアプリが運用環境にスワップされる*前*に実行する必要があります。 プレビューでのスワップが必要です。
 
+> [!NOTE]
+> プレビューでのスワップは、Linux 上の Web アプリではサポートされていません。
+
 **[プレビューでのスワップ]** オプション (「[デプロイ スロットをスワップする](#Swap)」を参照) を使う場合、App Service は次の処理を行います。
 
 - スロット上の既存のワークロード (運用など) が影響を受けないように、送信先スロットを変更しません。
@@ -140,6 +144,9 @@ ms.lasthandoff: 04/27/2017
 > 自動スワップを有効にする場合は、スロット構成がターゲット スロット (通常は運用スロット) に反映させたいとおりの構成になっていることを確認してください。
 > 
 > 
+
+> [!NOTE]
+> 自動スワップは、Linux 上の Web アプリではサポートされていません。
 
 スロットの自動スワップは簡単に構成できます。 次の手順に従ってください。
 
@@ -276,8 +283,8 @@ Azure CLI には、App Service デプロイ スロットの管理のサポート
 > 
 
 ## <a name="next-steps"></a>次のステップ
-[Azure App Service Web App - 運用環境以外のデプロイ スロットへの Web アクセスの禁止](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)
-
+[Azure App Service Web アプリ – 非運用デプロイメント スロットへの Web アクセスのブロック](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)
+[App Service on Linux の概要](./app-service-linux-intro.md)
 [Microsoft Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/)
 
 <!-- IMAGES -->

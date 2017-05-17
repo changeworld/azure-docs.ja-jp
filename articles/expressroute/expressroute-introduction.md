@@ -41,7 +41,7 @@ Microsoft Azure ExpressRoute を利用すれば、接続プロバイダーが提
 
 詳しくは、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 
-## <a name="features"></a>Features (機能)
+## <a name="features"></a>機能
 
 ### <a name="layer-3-connectivity"></a>レイヤー 3 接続
 Microsoft は業界標準の動的ルーティング プロトコル (BGP) を利用し、オンプレミス ネットワーク、Azure のインスタンス、および Microsoft パブリック アドレスの間のルートを交換します。  さまざまなトラフィック プロファイルに合わせ、ネットワークとさまざまな BGP セッションを確立します。 詳しくは、 [ExpressRoute の回線とルーティング ドメイン](expressroute-circuit-peerings.md) に関する記事を参照してください。
