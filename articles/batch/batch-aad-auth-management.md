@@ -25,7 +25,7 @@ ms.lasthandoff: 04/28/2017
 
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Batch 管理ソリューションの認証に Active Directory を使用する
 
-Azure Batch 管理サービスを呼び出すアプリケーションは、[Azure Active Directory] [ aad_about] (Azure AD) を使用して認証します。 Azure AD は、マイクロソフトが提供する、マルチテナントに対応したクラウド ベースのディレクトリと ID の管理サービスです。 Azure AD は、顧客、サービス管理者、組織のユーザーを認証するために、Azure 自体で使用されています。
+Azure Batch 管理サービスを呼び出すアプリケーションは、[Azure Active Directory][aad_about] (Azure AD) を使用して認証します。 Azure AD は、マイクロソフトが提供する、マルチテナントに対応したクラウド ベースのディレクトリと ID の管理サービスです。 Azure AD は、顧客、サービス管理者、組織のユーザーを認証するために、Azure 自体で使用されています。
 
 Batch Management .NET ライブラリでは、Batch アカウント、アカウント キー、アプリケーション、およびアプリケーション パッケージを操作するための型を公開します。 Batch Management .NET ライブラリは Azure リソース プロバイダー クライアントであり、[Azure Resource Manager][resman_overview] と共に使用してこれらのリソースをプログラムで管理します。 Azure AD は、Batch Management .NET ライブラリなどの Azure リソース プロバイダー クライアントや、[Azure Resource Manager][resman_overview] を通じて行われた要求の認証に必要です。
 
