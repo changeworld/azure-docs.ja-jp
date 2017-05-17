@@ -17,14 +17,15 @@ ms.workload: na
 ms.date: 04/04/2017
 ms.author: dariagrigoriu, glenga
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: cea92fe434288012a398f6821bc9cd7ab85b7d3e
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 0feeca446a756a076461f381123f63079e0a13db
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="choose-the-correct-service-plan-for-azure-functions"></a>Azure Functions の適切なサービス プランを選択する
+# <a name="choose-the-correct-hosting-plan-for-azure-functions"></a>Azure Functions の適切なホスティング プランを選択する
 
 ## <a name="introduction"></a>はじめに
 
