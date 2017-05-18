@@ -14,23 +14,36 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 02/13/2017
 ms.author: ruturajd
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 6629666eaa913321db3855438bb66d349d5c52bf
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 1c56a7f16361ac4fae97be6c9f21c959723b396c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="fail-back-from-azure-to-an-on-premises-site"></a>Azure からオンプレミス サイトへのフェールバック
+
+> [!div class="op_single_selector"]
+> * [Azure から VMware/物理マシン](site-recovery-failback-azure-to-vmware.md)
+> * [Azure から Hyper-V VM](site-recovery-failback-from-azure-to-hyper-v.md)
+
+
 この記事では、Azure Virtual Machines からオンプレミス サイトに仮想マシンをフェールバックする方法について説明します。 チュートリアル「[Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure にレプリケートする](site-recovery-vmware-to-azure-classic.md)」を使用して、VMware 仮想マシンまたは Windows/Linux 物理サーバーをオンプレミス サイトから Azure にフェールオーバーした後で、この記事の手順に従ってください。
 
+> [!WARNING]
+> 既に[移行が完了](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration)している場合や、仮想マシンを別のリソース グループに移動した場合、または Azure 仮想マシンを削除した場合、その後フェールバックを実行することはできません。
+
+> [!NOTE]
+> VMware 仮想マシンをフェールオーバー済みである場合、Hyper-V ホストにフェールバックすることはできません。
+
 ## <a name="overview-of-failback"></a>フェールバックの概要
-フェールバックのしくみは次のとおりです。 Azure にフェールオーバー後、オンプレミス サイトへはいくつかの段階でフェールバックします。
+フェールバックのしくみは次のとおりです。 Azure にフェールオーバー後、オンプレミス サイトへのフェールバックはいくつかの段階で実施します。
 
 1. オンプレミス サイトの VMware 仮想マシンへのレプリケートを開始するために、Azure の仮想マシンを[再保護](site-recovery-how-to-reprotect.md)します。 このプロセスでは、次の手順も実行する必要があります。
     1. オンプレミスのマスター ターゲットを設定する (Windows 仮想マシン用の Windows マスター ターゲットと Linux 仮想マシン用の [Linux マスター ターゲット](site-recovery-how-to-install-linux-master-target.md))。
     2. [プロセス サーバー](site-recovery-vmware-setup-azure-ps-resource-manager.md)をセットアップする。
-    3. [再保護](site-recovery-how-to-reprotect.md)を開始する。
+    3. [再保護](site-recovery-how-to-reprotect.md)を開始する。 これによりオンプレミスの仮想マシンがオフとなり、Azure 仮想マシンのデータがオンプレミスのディスクと同期されます。
 5. Azure の仮想マシンからオンプレミス サイトへのレプリケーションが開始されたら、Azure からオンプレミス サイトへのフェールオーバーを開始します。
 
 データがフェールバックされたら、フェールバック先のオンプレミスの仮想マシンを再保護します。これにより、オンプレミスの仮想マシンは Azure へのレプリケートを開始できるようになります。
@@ -41,6 +54,9 @@ ms.lasthandoff: 04/25/2017
 ### <a name="fail-back-to-the-original-or-alternate-location"></a>元の場所または別の場所へのフェールバック
 
 オンプレミスにソース仮想マシンが残っているようであれば、VMware 仮想マシンをフェールオーバーする際に、元の仮想マシンにフェールバックできます。 このシナリオでは、変更部分のみがレプリケートされます。 このシナリオは、元の場所の復旧と呼ばれます。 オンプレミスの仮想マシンがない場合、別の場所への復旧を行うことになります。
+
+> [!NOTE]
+> 元の vCenter と構成サーバーにのみフェールバックすることができます。 新しい構成サーバーをデプロイし、それを使ってフェールバックすることはできません。 また、新しい vCenter を既存の構成サーバーに追加し、新しい vCenter にフェールバックすることもできません。
 
 #### <a name="original-location-recovery"></a>元の場所の復旧
 
@@ -74,7 +90,7 @@ ms.lasthandoff: 04/25/2017
 ## <a name="steps-to-fail-back"></a>フェールバックの手順
 
 > [!IMPORTANT]
-フェールバックを開始する前に、必ず仮想マシンの再保護を完了しておいてください。 仮想マシンが保護された状態であり、正常性に**問題がない**ことが必須です。 仮想マシンを再保護するには、[再保護の方法](site-recovery-how-to-reprotect.md)に関するページを参照してください。
+> フェールバックを開始する前に、必ず仮想マシンの再保護を完了しておいてください。 仮想マシンが保護された状態であり、正常性に**問題がない**ことが必須です。 仮想マシンを再保護するには、[再保護の方法](site-recovery-how-to-reprotect.md)に関するページを参照してください。
 
 1. [レプリケートされたアイテム] ページで仮想マシンを選択し、右クリックして **[計画されていないフェールオーバー]** をクリックします。
 2. **[フェールオーバーの確認]** で、フェールオーバーの方向 (Azure から) を確認し、フェールオーバーに使用する最新の復旧ポイント (最新のアプリケーション整合性ポイント) を選択します。 アプリケーション整合性ポイントは最新の時点よりも過去になるため、一部のデータが失われます。
