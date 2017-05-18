@@ -16,9 +16,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/02/2017
 ms.author: jgao
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
 ms.openlocfilehash: ff1013840c220c54a9120572d16946ab6c5c5b07
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/29/2017
 
 
