@@ -14,12 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2017
+ms.date: 04/27/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 636d58cc3bda38c0fb49412b6bd4cbb96d235858
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 3c1021ec8c8dc4488f86ba89f6ae31d6ed75e9f5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -47,10 +48,31 @@ ms.lasthandoff: 04/19/2017
 
        HDInsight クラスターが表示されない場合は、一覧の最後の **[その他のサービス]** をクリックし、**[インテリジェンス + 分析]**セクションで **[HDInsight クラスター]** をクリックします。
 
+
 ## <a name="create-clusters"></a>クラスターの作成
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 HDInsight は、広範囲の Hadoop コンポーネントで動作します。 検証およびサポートされているコンポーネントの一覧については、「 [Azure HDInsight でサポートされている Hadoop のバージョン](hdinsight-component-versioning.md)」を参照してください。 一般的なクラスターの作成に関する詳細については、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
+
+### <a name="access-control-requirements"></a>アクセス制御の要件
+
+HDInsight クラスターを作成するときは Azure サブスクリプションを指定する必要があります。 このクラスターは、新しい Azure リソース グループに作成することも、既存のリソース グループに作成することもできます。 HDInsight クラスターを作成するためのアクセス許可は、次の手順に従って確認できます。
+
+- 既存のリソース グループを使用するには
+
+    1. [Azure ポータル](https://portal.azure.com)にサインインします。
+    2. 左側のメニューから **[リソース グループ]** をクリックしてリソース グループを一覧表示します。
+    3. HDInsight クラスターの作成に使用するリソース グループをクリックします。
+    4. **[アクセス制御 (IAM)]** をクリックし、そのリソース グループに対して少なくとも共同作成者のアクセス権が自分 (または自分が属しているグループ) にあることを確認します。
+
+- 新しいリソース グループを作成するには
+
+    1. [Azure ポータル](https://portal.azure.com)にサインインします。
+    2. 左側のメニューから **[サブスクリプション]** をクリックします。 黄色い鍵のアイコンが目印です。 これをクリックすると一連のサブスクリプションが表示されます。
+    3. クラスターの作成に使用するサブスクリプションをクリックします。 
+    4. **[アクセス許可]** をクリックします。  そのサブスクリプションに対する自分の[役割](../active-directory/role-based-access-control-what-is.md#built-in-roles)が表示されます。 HDInsight クラスターを作成するには、少なくとも共同作成者のアクセス権が必要です。
+
+NoRegisteredProviderFound エラーまたは MissingSubscriptionRegistration エラーが発生した場合は、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](../azure-resource-manager/resource-manager-common-deployment-errors.md)」を参照してください。
 
 ## <a name="list-and-show-clusters"></a>クラスターの一覧と表示
 1. [https://portal.azure.com](https://portal.azure.com)にサインインします。
@@ -154,7 +176,7 @@ HDInsight でサポートされているクラスターの種類ごとに、デ�
 
     Storm Web UI は、HDInsight クラスターで使用できます。
 
-    ![HDInsight Storm のスケールのバランス調整](./media/hdinsight-administer-use-portal-linux/hdinsight.portal.scale.cluster.storm.rebalance.png)
+    ![HDInsight Storm のスケールのバランス調整](./media/hdinsight-administer-use-portal-linux/hdinsight-portal-scale-cluster-storm-rebalance.png)
 
     CLI コマンドを使用して Storm トポロジのバランスを再調整する方法を次の例で示します。
 
@@ -171,7 +193,7 @@ HDInsight でサポートされているクラスターの種類ごとに、デ�
 3. **[クラスターのスケール設定]** をクリックします。
 4. **[worker ノードの数]**を入力します。 クラスター ノードの数の制限は Azure サブスクリプションによって異なります。 制限値を上げるには、課金サポートにお問い合わせください。  コスト情報にはノード数の変更が反映されます。
 
-    ![HDInsight Hadoop HBase Storm および Spark のスケール](./media/hdinsight-administer-use-portal-linux/hdinsight.portal.scale.cluster.png)
+    ![HDInsight Hadoop HBase Storm および Spark のスケール](./media/hdinsight-administer-use-portal-linux/hdinsight-portal-scale-cluster.png)
 
 ## <a name="pauseshut-down-clusters"></a>クラスターの一時停止またはシャットダウン
 
@@ -307,7 +329,7 @@ HDInsight クラスター ブレードの **[使用状況]** セクションに�
 
 * [Azure PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)
 * [Azure CLI を使用した HDInsight の管理](hdinsight-administer-use-command-line.md)
-* [HDInsight クラスターの作成](hdinsight-provision-clusters.md)
+* [HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)
 * [HDInsight での Hive の使用](hdinsight-use-hive.md)
 * [HDInsight での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での Sqoop の使用](hdinsight-use-sqoop.md)

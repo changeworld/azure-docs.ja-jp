@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2017
 ms.author: ryancraw
-translationtype: Human Translation
-ms.sourcegitcommit: 9afd26024d2aa0d3d732ddc6f54e591715afca69
-ms.openlocfilehash: 3753846e955308a7607d92ed25648d75b9cc3a35
-ms.lasthandoff: 01/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: 3a915f782eddaa91bcfcc3f2b2c32eee752c319c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -51,7 +52,7 @@ Service Bus キューを作成するには、「[Service Bus キューの使用]
    * **[エンコード]**: UTF8
    * **[形式]**: 行区切り
 4. **[作成]** ボタンをクリックしてこのソースを追加し、Stream Analytics からストレージ アカウントに正常に接続できることを確認します。
-5. **[クエリ]** タブで、現在のクエリを次のクエリに置き換えます。 *[YOUR SERVICE BUS NAME] * は、手順 3 で作成した出力名に置き換えてください。 
+5. **[クエリ]** タブで、現在のクエリを次のクエリに置き換えます。 *[YOUR SERVICE BUS NAME]* は、手順 3. で作成した出力名に置き換えてください。 
    
     ```    
    
@@ -188,7 +189,7 @@ Azure Functions と Stream Analytics の併用によって可能になる、新�
 
 Microsoft Azure を初めてお使いになる場合は、 [Azure 無料試用版アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてご利用ください。 Stream Analytics を初めてお使いになる場合、 [最初の Stream Analytics ジョブを作成](stream-analytics-create-a-job.md)していただけます。
 
-サポートが必要な場合やご不明な点がある場合は、[MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics) または [Stackoverflow](http://stackoverflow.com/questions/tagged/azure-stream-analytics) フォーラムにご投稿ください。 
+サポートが必要な場合やご不明な点がある場合は、[MSDN](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics) または [Stackoverflow](http://stackoverflow.com/questions/tagged/azure-stream-analytics) フォーラムにご投稿ください。 
 
 次のリソースも参照してください。
 
