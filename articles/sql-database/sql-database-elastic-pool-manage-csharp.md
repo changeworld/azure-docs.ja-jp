@@ -15,10 +15,11 @@ ms.tgt_pltfrm: csharp
 ms.workload: data-management
 ms.date: 10/04/2016
 ms.author: sstein
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 9e038bfeee023b26aa80046fe877db007baa1816
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: b34cfe18ac3d03802173605f5483879217d1fe1f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -304,7 +305,7 @@ namespace SqlElasticPoolConsoleApp
 
 この記事の手順を完了するには、次のものが必要です。
 
-* エラスティック プール。 エラスティック プールを作成するには、「[C# を使用したエラスティック プールの作成](sql-database-elastic-pool-manage-csharp.md)」をご覧ください。
+* エラスティック プール。 エラスティック プールを作成するには、[C# を使用したエラスティック プールの作成](sql-database-elastic-pool-manage-csharp.md)に関するページを参照してください。
 * 見ることができます。 Visual Studio の無償版については、 [Visual Studio のダウンロード](https://www.visualstudio.com/downloads/download-visual-studio-vs) に関するページを参照してください。
 
 ## <a name="move-a-database-into-an-elastic-pool"></a>エラスティック プールへのデータベースの移動
