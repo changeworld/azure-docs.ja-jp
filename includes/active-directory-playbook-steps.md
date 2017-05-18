@@ -25,7 +25,7 @@
      * [セルフサービスのパスワード リセット](../articles/active-directory/active-directory-playbook-implementation.md#self-service-password-reset)
      * [セルフサービスでアプリケーションにアクセスする](../articles/active-directory/active-directory-playbook-implementation.md#self-service-access-to-applications)
 4. [構成要素](../articles/active-directory/active-directory-playbook-building-blocks.md)
-   * [アクターのカタログ](../articles/active-directory/active-directory-playbook-building-blocks.md#catalog-of-actors)
+   * [アクターのカタログ](../articles/active-directory/active-directory-playbook-building-blocks.md)
    * [すべての構成要素に共通の前提条件](../articles/active-directory/active-directory-playbook-building-blocks.md#common-prerequisites-for-all-building-blocks)
    * [ディレクトリ同期 - パスワード ハッシュ同期 (PHS) - 新規インストール](../articles/active-directory/active-directory-playbook-building-blocks.md#directory-synchronization---password-hash-sync-phs---new-installation)
    * [ブランド](../articles/active-directory/active-directory-playbook-building-blocks.md#branding)
