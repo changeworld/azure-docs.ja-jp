@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: sutalasi
-translationtype: Human Translation
-ms.sourcegitcommit: 0400369eb7ae3a2ebd506605b50afe08fe563d22
-ms.openlocfilehash: 33b3e7322afafd623a10661e33abe7b959eeb512
-ms.lasthandoff: 02/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 118dd3a69f140d57a3779e86c658982d58dbb718
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -46,7 +47,7 @@ Azure Site Recovery へようこそ。 この記事では、System Center Virtua
 このシナリオの設定時に問題が発生した場合は、 [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に質問を投稿してください。
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、Azure Resource Manager とクラシックの&2; 種類の[デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md)があります。 また、Azure にも&2; つのポータルがあります。クラシック デプロイメント モデルをサポートする Azure クラシック ポータルと、両方のデプロイメント モデルをサポートする Azure ポータルです。 この記事では、リソース マネージャーのデプロイ モデルについて説明します。
+> Azure には、リソースの作成と操作に関して、Azure Resource Manager とクラシックの 2 種類の[デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md)があります。 また、Azure にも 2 つのポータルがあります。クラシック デプロイメント モデルをサポートする Azure クラシック ポータルと、両方のデプロイメント モデルをサポートする Azure ポータルです。 この記事では、リソース マネージャーのデプロイ モデルについて説明します。
 >
 >
 
@@ -55,8 +56,8 @@ Azure Site Recovery へようこそ。 この記事では、System Center Virtua
 
 | **前提条件** | **詳細** |
 | --- | --- |
-| **VMM** |プライマリ サイトとセカンダリ サイトに VMM サーバーを&1; 台ずつデプロイすることをお勧めします。<br/><br/> また、[単一の VMM サーバー上のクラウド間でレプリケートする](site-recovery-vmm-to-vmm.md#prepare-for-single-server-deployment)こともできます。 これを行うには、VMM サーバーに少なくとも&2; つのクラウドが構成されている必要があります。<br/><br/> VMM サーバーは、最新の更新プログラムがインストールされている System Center 2012 SP1 以降を実行している必要があります。<br/><br/> 各 VMM サーバーには&1; つ以上のクラウドが構成され、すべてのクラウドには Hyper-V キャパシティ プロファイルが設定されている必要があります。 <br/><br/>クラウドには、1 つ以上の VMM ホスト グループが含まれている必要があります。<br/><br/>VMM クラウドの設定の詳細については、[VMM クラウド ファブリックの構成](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric)に関するページ、および [System Center 2012 SP1 VMM を使用したプライベート クラウド作成のチュートリアル](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx)をご覧ください。<br/><br/> VMM サーバーにはインターネット アクセスが必要です。 |
-| **Hyper-V** |Hyper-V サーバーは、Hyper-V ロールがインストールされた Windows Server 2012 以降が実行され、最新の更新プログラムがインストールされている必要があります。<br/><br/> Hyper-V サーバーに&1; つ以上の VM が含まれている必要があります。<br/><br/>  Hyper-V ホスト サーバーが、プライマリおよびセカンダリの VMM クラウドに配置されている必要があります。<br/><br/> Windows Server 2012 R2 のクラスターで Hyper-V を実行している場合は、[更新プログラム 2961977](https://support.microsoft.com/kb/2961977) をインストールする必要があります。<br/><br/> Windows Server 2012 上のクラスターで Hyper-V を実行している場合に、静的 IP アドレス ベースのクラスターが存在すると、クラスター ブローカーが自動的に作成されません。 クラスター ブローカーを手動で構成する必要があります。 詳細については、[こちら](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx)を参照してください。 |
+| **VMM** |プライマリ サイトとセカンダリ サイトに VMM サーバーを 1 台ずつデプロイすることをお勧めします。<br/><br/> また、[単一の VMM サーバー上のクラウド間でレプリケートする](site-recovery-vmm-to-vmm.md#prepare-for-single-server-deployment)こともできます。 これを行うには、VMM サーバーに少なくとも 2 つのクラウドが構成されている必要があります。<br/><br/> VMM サーバーは、最新の更新プログラムがインストールされている System Center 2012 SP1 以降を実行している必要があります。<br/><br/> 各 VMM サーバーには 1 つ以上のクラウドが構成され、すべてのクラウドには Hyper-V キャパシティ プロファイルが設定されている必要があります。 <br/><br/>クラウドには、1 つ以上の VMM ホスト グループが含まれている必要があります。<br/><br/>VMM クラウドの設定の詳細については、[VMM クラウド ファブリックの構成](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric)に関するページ、および [System Center 2012 SP1 VMM を使用したプライベート クラウド作成のチュートリアル](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx)をご覧ください。<br/><br/> VMM サーバーにはインターネット アクセスが必要です。 |
+| **Hyper-V** |Hyper-V サーバーは、Hyper-V ロールがインストールされた Windows Server 2012 以降が実行され、最新の更新プログラムがインストールされている必要があります。<br/><br/> Hyper-V サーバーに 1 つ以上の VM が含まれている必要があります。<br/><br/>  Hyper-V ホスト サーバーが、プライマリおよびセカンダリの VMM クラウドに配置されている必要があります。<br/><br/> Windows Server 2012 R2 のクラスターで Hyper-V を実行している場合は、[更新プログラム 2961977](https://support.microsoft.com/kb/2961977) をインストールする必要があります。<br/><br/> Windows Server 2012 上のクラスターで Hyper-V を実行している場合に、静的 IP アドレス ベースのクラスターが存在すると、クラスター ブローカーが自動的に作成されません。 クラスター ブローカーを手動で構成する必要があります。 詳細については、[こちら](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx)を参照してください。 |
 | **プロバイダー** |Site Recovery をデプロイする際に Azure Site Recovery プロバイダーを VMM サーバーにインストールします。 プロバイダーは、HTTPS 443 経由で Azure Site Recovery と通信して、レプリケーションを調整します。 データのレプリケーションは、LAN または VPN 接続を経由してプライマリとセカンダリの Hyper-V サーバー間で実行されます。<br/><br/> VMM サーバー上で実行されるプロバイダーでは、*.hypervrecoverymanager.windowsazure.com、*.accesscontrol.windows.net、*.backup.windowsazure.com、*.blob.core.windows.net、*.store.core.windows.net の各 URL へのアクセスを許可する必要があります。<br/><br/> また、VMM サーバーから [Azure データセンターの IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)へのファイアウォール通信と、HTTPS (443) プロトコルの使用を許可する必要があります。 |
 
 ### <a name="network-mapping-prerequisites"></a>ネットワーク マッピングの前提条件
@@ -78,9 +79,9 @@ VMM ネットワークの構成の詳細については、次の記事を参照�
 [こちら](site-recovery-vmm-to-vmm.md#prepare-for-network-mapping) をご覧ください。
 
 ### <a name="powershell-prerequisites"></a>PowerShell の前提条件
-Azure PowerShell を使用する準備が整っていることを確認してください。 PowerShell を使用している場合は、0.8.10 以降のバージョンにアップグレードする必要があります。 PowerShell の設定については、 [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs)に関するページをご覧ください。 PowerShell を設定して構成したら、サービスで使用可能なすべてのコマンドレットを [ここ](https://msdn.microsoft.com/library/dn850420.aspx)に表示できます。
+Azure PowerShell を使用する準備が整っていることを確認してください。 PowerShell を使用している場合は、0.8.10 以降のバージョンにアップグレードする必要があります。 PowerShell の設定については、 [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs)に関するページをご覧ください。 PowerShell を設定して構成したら、サービスで使用可能なすべてのコマンドレットを [ここ](/powershell/azure/overview)に表示できます。
 
-Azure PowerShell でのパラメーター値、入力、出力の一般的な処理方法など、コマンドレットの使用に役立つヒントについては、「 [Azure コマンドレットの概要](https://msdn.microsoft.com/library/azure/jj554332.aspx)」をご覧ください。
+Azure PowerShell でのパラメーター値、入力、出力の一般的な処理方法など、コマンドレットの使用に役立つヒントについては、「 [Azure コマンドレットの概要](/powershell/azure/get-started-azureps)」をご覧ください。
 
 ## <a name="step-1-set-the-subscription"></a>ステップ 1: サブスクリプションを設定する
 1. Azure PowerShell から次のコマンドレットを使用して、Azure アカウントにログインします。
@@ -201,7 +202,7 @@ Azure PowerShell でのパラメーター値、入力、出力の一般的な処
         $RecoveryNetworks = Get-AzureRmSiteRecoveryNetwork -Server $Servers[1]
 
     > [!NOTE]
-    > ソース VMM サーバーは、サーバー配列で&1; つ目または&2; つ目として指定できます。 VMM サーバーの名前を確認し、それに応じてネットワークを取得してください
+    > ソース VMM サーバーは、サーバー配列で 1 つ目または 2 つ目として指定できます。 VMM サーバーの名前を確認し、それに応じてネットワークを取得してください
 
 
 1. 最後のコマンドレットは、プライマリ ネットワークと復旧ネットワークの間のマッピングを作成します。 このコマンドレットでは、プライマリ ネットワークを $PrimaryNetworks の最初の要素として、復旧ネットワークを $RecoveryNetworks の最初の要素として指定します。
@@ -298,7 +299,7 @@ Azure PowerShell でのパラメーター値、入力、出力の一般的な処
 
         $jobIDResult =  Start-AzureRmSiteRecoveryUnPlannedFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity
 
-## <a name="a-namemonitora-monitor-activity"></a><a name=monitor></a> アクティビティを監視する
+## <a name=monitor></a> アクティビティを監視する
 アクティビティを監視するには、次のコマンドを使用します。 ジョブの処理が終了するまで待機する必要があります。
 
     Do
@@ -319,5 +320,5 @@ Azure PowerShell でのパラメーター値、入力、出力の一般的な処
 
 
 ## <a name="next-steps"></a>次のステップ
-[詳細を確認](https://msdn.microsoft.com/library/azure/mt637930.aspx) します。
+[詳細を確認](/powershell/module/azurerm.recoveryservices.backup/#recovery) します。
 

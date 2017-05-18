@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 01/05/2017
-ms.author: suchia
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 89eca322062f5e5c51142b2cc9e758004583cb3f
-ms.lasthandoff: 04/03/2017
+ms.date: 04/20/2017
+ms.author: suchiagicha
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
+ms.openlocfilehash: 53119244f8f09c0c6c43f43761af1cc074f8d0af
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/29/2017
 
 
 ---
@@ -31,7 +32,7 @@ ms.lasthandoff: 04/03/2017
 セキュリティは、通信の最も重要な側面の 1 つです。 Reliable Services アプリケーション フレームワークに最初から用意されている通信スタックとツールを利用してセキュリティを確保することができます。 この記事では、サービスのリモート処理や Windows Communication Foundation (WCF) の通信スタックを使用するときのセキュリティを確保する方法について説明します。
 
 ## <a name="help-secure-a-service-when-youre-using-service-remoting"></a>リモート処理を使用している場合のサービスのセキュリティ確保
-Reliable Services のリモート処理の設定方法について説明した既存の [例](service-fabric-reliable-services-communication-remoting.md) で説明します。 リモート処理を使用している場合、サービスのセキュリティを確保するには、次の手順を実行します。
+Reliable Services のリモート処理の設定方法について説明した既存の[例](service-fabric-reliable-services-communication-remoting.md)で説明します。 リモート処理を使用している場合、サービスのセキュリティを確保するには、次の手順を実行します。
 
 1. サービスのリモート プロシージャ コールで使用できるメソッドを定義するインターフェイス ( `IHelloWorldStateful`) を作成します。 実際のサービスでは、`Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime` 名前空間に宣言されている `FabricTransportServiceRemotingListener` を使用します。 これは、リモート処理機能を提供する `ICommunicationListener` の実装です。
 
@@ -65,7 +66,7 @@ Reliable Services のリモート処理の設定方法について説明した�
        ```csharp
        protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
        {
-           FabricTransportListenerSettings listenerSettings = new FabricTransportListenerSettings
+           FabricTransportRemotingListenerSettings  listenerSettings = new FabricTransportRemotingListenerSettings
            {
                MaxMessageSize = 10000000,
                SecurityCredentials = GetSecurityCredentials()
@@ -89,6 +90,7 @@ Reliable Services のリモート処理の設定方法について説明した�
                ProtectionLevel = ProtectionLevel.EncryptAndSign
            };
            x509Credentials.RemoteCommonNames.Add("ServiceFabric-Test-Cert");
+           x509Credentials.RemoteCertThumbprints.Add("9FEF3950642138446CC364A396E1E881DB76B483");
            return x509Credentials;
        }
        ```
@@ -97,13 +99,12 @@ Reliable Services のリモート処理の設定方法について説明した�
        settings.xml ファイルに `TransportSettings` セクションを追加します。
 
        ```xml
-       <!--Section name should always end with "TransportSettings".-->
-       <!--Here we are using a prefix "HelloWorldStateful".-->
        <Section Name="HelloWorldStatefulTransportSettings">
            <Parameter Name="MaxMessageSize" Value="10000000" />
            <Parameter Name="SecurityCredentialsType" Value="X509" />
            <Parameter Name="CertificateFindType" Value="FindByThumbprint" />
            <Parameter Name="CertificateFindValue" Value="4FEF3950642138446CC364A396E1E881DB76B48C" />
+           <Parameter Name="CertificateRemoteThumbprints" Value="9FEF3950642138446CC364A396E1E881DB76B483" />
            <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />
            <Parameter Name="CertificateStoreName" Value="My" />
            <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
@@ -120,15 +121,15 @@ Reliable Services のリモート処理の設定方法について説明した�
            {
                new ServiceReplicaListener(
                    (context) => new FabricTransportServiceRemotingListener(
-                       context,this,FabricTransportListenerSettings.LoadFrom("HelloWorldStateful")))
+                       context,this,FabricTransportRemotingListenerSettings .LoadFrom("HelloWorldStatefulTransportSettings")))
            };
        }
        ```
 
-        プレフィックスを指定せずに settings.xml ファイルに `TransportSettings` セクションを追加すると、`FabricTransportListenerSettings` は、既定で、このセクションからすべての設定を読み込みます。
+        settings.xml ファイルに `TransportSettings` セクションを追加すると、`FabricTransportRemotingListenerSettings ` は、既定で、このセクションからすべての設定を読み込みます。
 
         ```xml
-        <!--"TransportSettings" section without any prefix.-->
+        <!--"TransportSettings" section .-->
         <Section Name="TransportSettings">
             ...
         </Section>
@@ -146,21 +147,22 @@ Reliable Services のリモート処理の設定方法について説明した�
             };
         }
         ```
-3. セキュリティで保護されたサービスのメソッドをリモート処理スタックで呼び出すときは、`Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` クラスを使用してサービス プロキシを作成する代わりに `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory` を使用してください。 引数として、`FabricTransportSettings` が格納されている `SecurityCredentials` を渡します。
+3. セキュリティで保護されたサービスのメソッドをリモート処理スタックで呼び出すときは、`Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` クラスを使用してサービス プロキシを作成する代わりに `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory` を使用してください。 引数として、`FabricTransportRemotingSettings` が格納されている `SecurityCredentials` を渡します。
 
     ```csharp
 
     var x509Credentials = new X509Credentials
     {
         FindType = X509FindType.FindByThumbprint,
-        FindValue = "4FEF3950642138446CC364A396E1E881DB76B48C",
+        FindValue = "9FEF3950642138446CC364A396E1E881DB76B483",
         StoreLocation = StoreLocation.LocalMachine,
         StoreName = "My",
         ProtectionLevel = ProtectionLevel.EncryptAndSign
     };
     x509Credentials.RemoteCommonNames.Add("ServiceFabric-Test-Cert");
+    x509Credentials.RemoteCertThumbprints.Add("4FEF3950642138446CC364A396E1E881DB76B48C");
 
-    FabricTransportSettings transportSettings = new FabricTransportSettings
+    FabricTransportRemotingSettings transportSettings = new FabricTransportRemotingSettings
     {
         SecurityCredentials = x509Credentials,
     };
@@ -175,12 +177,11 @@ Reliable Services のリモート処理の設定方法について説明した�
 
     ```
 
-    クライアント コードがサービスの一部として実行されている場合は、settings.xml ファイルから `FabricTransportSettings` を読み込むことができます。 上記のように、サービス コードに似た TransportSettings セクションを作成します。 クライアント コードを次のように変更します。
+    クライアント コードがサービスの一部として実行されている場合は、settings.xml ファイルから `FabricTransportRemotingSettings` を読み込むことができます。 上記のように、サービス コードに似た HelloWorldClientTransportSettings セクションを作成します。 クライアント コードを次のように変更します。
 
     ```csharp
-
     ServiceProxyFactory serviceProxyFactory = new ServiceProxyFactory(
-        (c) => new FabricTransportServiceRemotingClientFactory(FabricTransportSettings.LoadFrom("TransportSettingsPrefix")));
+        (c) => new FabricTransportServiceRemotingClientFactory(FabricTransportRemotingSettings.LoadFrom("HelloWorldClientTransportSettings")));
 
     IHelloWorldStateful client = serviceProxyFactory.CreateServiceProxy<IHelloWorldStateful>(
         new Uri("fabric:/MyApplication/MyHelloWorldService"));
@@ -191,7 +192,7 @@ Reliable Services のリモート処理の設定方法について説明した�
 
     クライアントがサービスの一部として実行されていない場合は、client_name.exe と同じ場所に client_name.settings.xml ファイルを作成し、 そのファイル内に TransportSettings セクションを作成できます。
 
-    サービスと同様、クライアントの settings.xml/client_name.settings.xml でも、プレフィックスを指定せずに `TransportSettings` セクションを追加すると、`FabricTransportSettings` は既定で、このセクションからすべての設定を読み込みます。
+    サービスと同様、クライアントの settings.xml/client_name.settings.xml でも、`TransportSettings` セクションを追加すると、`FabricTransportRemotingSettings` は既定で、このセクションからすべての設定を読み込みます。
 
     その場合は、上記のコードがさらに簡略化されます。  
 
@@ -205,7 +206,7 @@ Reliable Services のリモート処理の設定方法について説明した�
     ```
 
 ## <a name="help-secure-a-service-when-youre-using-a-wcf-based-communication-stack"></a>WCF ベースの通信スタックを使用している場合のサービスのセキュリティ確保
-Reliable Services の WCF ベースの通信スタックを設定する方法について説明した既存の [例](service-fabric-reliable-services-communication-wcf.md) で説明します。 WCF ベースの通信スタックを使用している場合、サービスのセキュリティを確保するには、次の手順を実行します。
+Reliable Services の WCF ベースの通信スタックを設定する方法について説明した既存の[例](service-fabric-reliable-services-communication-wcf.md)で説明します。 WCF ベースの通信スタックを使用している場合、サービスのセキュリティを確保するには、次の手順を実行します。
 
 1. 目的のサービスについて作成する WCF 通信リスナー (`WcfCommunicationListener`) のセキュリティを確保する必要があります。 そのためには、 `CreateServiceReplicaListeners` メソッドに変更を加えます。
 

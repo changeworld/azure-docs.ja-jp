@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: shlo
-translationtype: Human Translation
-ms.sourcegitcommit: e0c999b2bf1dd38d8a0c99c6cdd4976cc896dd99
-ms.openlocfilehash: 2e85e787d591f2c81ef4e54bc1e7ac111accbb16
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 6926b0a594b29cb3b3fff7a76a258d11bd82ded8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -59,6 +60,9 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 ### <a name="custom-net-activities"></a>カスタム .NET アクティビティ 
 コピー アクティビティでサポートされていないデータ ストアとの間でデータを移動する必要がある場合、つまり独自のロジックを使用してデータを変換する場合は、 **カスタム .NET アクティビティ**を作成します。 カスタム アクティビティの作成と使用の詳細については、「 [Azure Data Factory パイプラインでカスタム アクティビティを使用する](data-factory-use-custom-activities.md)」をご覧ください。
 
+## <a name="schedule-pipelines"></a>パイプラインのスケジュール設定
+パイプラインは、**開始**時刻と**終了**時刻の間のみアクティブです。 開始時刻より前または終了時刻より後には実行されません。 パイプラインは、一時停止している場合、その開始時刻と終了時刻に関係なく実行されません。 パイプラインを実行するには、一時停止しないでください。 Azure Data Factory でのスケジュールと実行の方法については、「 [スケジュールと実行](data-factory-scheduling-and-execution.md) 」を参照してください。
+
 ## <a name="pipeline-json"></a>パイプライン JSON
 パイプラインを JSON 形式で定義する方法について詳しく説明します。 パイプラインの一般的な構造は次のようになります。
 
@@ -90,10 +94,10 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 | description | パイプラインの用途を説明するテキストを指定します。 |はい |
 | アクティビティ | **activities** セクションでは、1 つまたは複数のアクティビティを定義できます。 activities JSON 要素の詳細については、次のセクションを参照してください。 | はい |  
 | start | パイプラインの開始日時。 [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)にする必要があります。 (例: `2016-10-14T16:32:41Z`)。 <br/><br/>東部標準時などの現地時間を指定できます。 たとえば、`2016-02-27T06:00:00-05:00` は、東部標準時で午前 6 時です。<br/><br/>start プロパティと end プロパティで、パイプラインの有効期間を指定します。 出力スライスは、この有効期間にのみ生成されます。 |いいえ<br/><br/>end プロパティの値を指定する場合は、start プロパティの値も指定する必要があります。<br/><br/>パイプラインを作成するには、開始時間と終了時間の両方が空でもかまいません。 パイプラインを実行できる有効期間を設定するには、両方の値を指定する必要があります。 パイプラインの作成時に開始時間と終了時間を指定しない場合、後で Set-AzureRmDataFactoryPipelineActivePeriod コマンドレットを使用して設定できます。 |
-| end | パイプラインの終了日時。 ISO 形式で指定する必要があります。 次に例を示します。`2016-10-14T17:32:41Z` <br/><br/>東部標準時などの現地時間を指定できます。 たとえば、`2016-02-27T06:00:00-05:00` は、東部標準時で午前 6 時です。<br/><br/>無期限でパイプラインを実行するには、end プロパティの値として 9999-09-09 を指定します。 |いいえ <br/><br/>start プロパティの値を指定する場合は、end プロパティの値も指定する必要があります。<br/><br/>**start** プロパティの注意事項を参照してください。 |
+| end | パイプラインの終了日時。 ISO 形式で指定する必要があります。 次に例を示します。`2016-10-14T17:32:41Z` <br/><br/>東部標準時などの現地時間を指定できます。 たとえば、`2016-02-27T06:00:00-05:00` は、東部標準時で午前 6 時です。<br/><br/>無期限でパイプラインを実行するには、end プロパティの値として 9999-09-09 を指定します。 <br/><br/> パイプラインは、開始時刻と終了時刻の間のみアクティブです。 開始時刻より前または終了時刻より後には実行されません。 パイプラインは、一時停止している場合、その開始時刻と終了時刻に関係なく実行されません。 パイプラインを実行するには、一時停止しないでください。 Azure Data Factory でのスケジュールと実行の方法については、「 [スケジュールと実行](data-factory-scheduling-and-execution.md) 」を参照してください。 |いいえ <br/><br/>start プロパティの値を指定する場合は、end プロパティの値も指定する必要があります。<br/><br/>**start** プロパティの注意事項を参照してください。 |
 | isPaused | true に設定すると、パイプラインは実行されません。 一時停止状態になります。 既定値 = false。 このプロパティを使用してパイプラインを有効または無効にすることができます。 |いいえ |
-| pipelineMode | パイプラインの実行のスケジューリングを行うためのメソッドです。 使用可能な値: "Scheduled" (既定)、"Onetime"。<br/><br/>"Scheduled" は、パイプラインがアクティブな期間 (開始時刻と終了時刻) に応じて、指定された間隔で実行されることを意味します。 "Onetime" はパイプラインが 1回だけ実行されることを意味します。 現時点では、作成された Onetime パイプラインを変更または更新することはできません。 1 回限りの設定の詳細については、「[1 回限りのパイプライン](data-factory-scheduling-and-execution.md#onetime-pipeline)」を参照してください。 |いいえ |
-| expirationTime | [ワンタイム パイプライン](data-factory-scheduling-and-execution.md#onetime-pipeline)の作成後に、パイプラインが有効であり、プロビジョニングされた状態が維持される必要がある時間。 パイプラインは、アクティブ、エラー、または保留中の実行がない限り、有効期限に達すると自動的に削除されます。 既定値: `"expirationTime": "3.00:00:00"`|いいえ |
+| pipelineMode | パイプラインの実行のスケジューリングを行うためのメソッドです。 使用可能な値: "Scheduled" (既定)、"Onetime"。<br/><br/>"Scheduled" は、パイプラインがアクティブな期間 (開始時刻と終了時刻) に応じて、指定された間隔で実行されることを意味します。 "Onetime" はパイプラインが 1回だけ実行されることを意味します。 現時点では、作成された Onetime パイプラインを変更または更新することはできません。 1 回限りの設定の詳細については、「[1 回限りのパイプライン](#onetime-pipeline)」を参照してください。 |いいえ |
+| expirationTime | [ワンタイム パイプライン](#onetime-pipeline)の作成後に、パイプラインが有効であり、プロビジョニングされた状態が維持される必要がある時間。 パイプラインは、アクティブ、エラー、または保留中の実行がない限り、有効期限に達すると自動的に削除されます。 既定値: `"expirationTime": "3.00:00:00"`|いいえ |
 | データセット |パイプラインで定義されたアクティビティで使用されるデータセットの一覧。 このプロパティは、このパイプラインに固有の、Data Factory 内で定義されていないデータセットを定義するために使用できます。 このパイプライン内で定義されているデータセットは、このパイプラインでのみ使用でき、共有することはできません。 詳細については、「 [範囲指定されたデータセット](data-factory-create-datasets.md#scoped-datasets) 」を参照してください。 |いいえ |
 
 ## <a name="activity-json"></a>アクティビティ JSON
@@ -132,7 +136,7 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 | linkedServiceName |アクティビティで使用される、リンクされたサービスの名前。 <br/><br/>アクティビティでは、必要なコンピューティング環境にリンクする、リンクされたサービスの指定が必要な場合があります。 |HDInsight アクティビティおよび Azure Machine Learning バッチ スコアリング アクティビティの場合は "はい" <br/><br/>それ以外の場合は "いいえ" |
 | typeProperties |**typeProperties** セクションのプロパティは、アクティビティの種類によって異なります。 アクティビティの typeProperties を確認するには、前のセクションでアクティビティのリンクをクリックしてください。 | なし |
 | policy |アクティビティの実行時の動作に影響するポリシーです。 指定されていない場合は、既定のポリシーが使用されます。 |いいえ |
-| scheduler | "scheduler" プロパティは、アクティビティのスケジュールを定義するために使用します。 サブプロパティは、 [データセットの availability](data-factory-create-datasets.md#Availability)プロパティにあるサブプロパティと同じです。 |なし |
+| scheduler | "scheduler" プロパティは、アクティビティのスケジュールを定義するために使用します。 サブプロパティは、 [データセットの availability](data-factory-create-datasets.md#dataset-availability)プロパティにあるサブプロパティと同じです。 |なし |
 
 
 ### <a name="policies"></a>ポリシー
@@ -279,125 +283,6 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 
 詳細については、「 [スケジュールと実行](#chaining-activities)」を参照してください。 
 
-### <a name="json-example-for-chaining-two-copy-activity-in-a-pipeline"></a>1 つのパイプラインで 2 つのアクティビティを連鎖する JSON の例
-複数のコピー操作を、順番にまたは順序を指定して 1 つずつ実行できます。 たとえば、パイプラインに 2 つのコピー アクティビティ (CopyActivity1 と CopyActivity2) があり、入力データと出力データセットは次のとおりであるとします。   
-
-**CopyActivity1**
-
-Input: Dataset。 出力: Dataset2。
-
-**CopyActivity2**
-
-Input: Dataset2。  出力: Dataset3。
-
-CopyActivity2 は、CopyActivity1 が正常に実行していて、Dataset2 を使用できた場合にのみ実行します。
-
-パイプライン JSON の例を次に示します。
-
-```json
-{
-    "name": "ChainActivities",
-    "properties": {
-        "description": "Run activities in sequence",
-        "activities": [
-            {
-                "type": "Copy",
-                "typeProperties": {
-                    "source": {
-                        "type": "BlobSource"
-                    },
-                    "sink": {
-                        "type": "BlobSink",
-                        "copyBehavior": "PreserveHierarchy",
-                        "writeBatchSize": 0,
-                        "writeBatchTimeout": "00:00:00"
-                    }
-                },
-                "inputs": [
-                    {
-                        "name": "Dataset1"
-                    }
-                ],
-                "outputs": [
-                    {
-                        "name": "Dataset2"
-                    }
-                ],
-                "policy": {
-                    "timeout": "01:00:00"
-                },
-                "scheduler": {
-                    "frequency": "Hour",
-                    "interval": 1
-                },
-                "name": "CopyFromBlob1ToBlob2",
-                "description": "Copy data from a blob to another"
-            },
-            {
-                "type": "Copy",
-                "typeProperties": {
-                    "source": {
-                        "type": "BlobSource"
-                    },
-                    "sink": {
-                        "type": "BlobSink",
-                        "writeBatchSize": 0,
-                        "writeBatchTimeout": "00:00:00"
-                    }
-                },
-                "inputs": [
-                    {
-                        "name": "Dataset2"
-                    }
-                ],
-                "outputs": [
-                    {
-                        "name": "Dataset3"
-                    }
-                ],
-                "policy": {
-                    "timeout": "01:00:00"
-                },
-                "scheduler": {
-                    "frequency": "Hour",
-                    "interval": 1
-                },
-                "name": "CopyFromBlob2ToBlob3",
-                "description": "Copy data from a blob to another"
-            }
-        ],
-        "start": "2016-08-25T00:00:00Z",
-        "end": "2016-08-25T05:00:00Z",
-        "isPaused": false
-    }
-}
-```
-
-この例では、最初のコピー アクティビティの出力データセット (Dataset2) が 2 番目のアクティビティの入力として指定されています。 したがって、2 番目のアクティビティは、最初のアクティビティからの出力データセットが準備ができたときにのみ実行されます。  
-
-出力データセットは、パイプラインの開始時刻から終了時刻までに 1 時間ごとに生成されます。 このため、このパイプラインでは、各アクティビティ ウィンドウ (12 AM - 1 AM、1 AM - 2AM、2 AM - 3 AM、3 AM - 4 AM、4 AM - 5 AM) で 1 つずつ、5 個のデータセット スライスが生成されます。 
-
-
-この例では、CopyActivity2 で追加の入力 (Dataset3 など) を使用できますが、CopyActivity2 への入力として Dataset2 も指定しているため、CopyActivity1 が完了するまでこのアクティビティは実行されません。 For example:
-
-**CopyActivity1**
-
-Input: Dataset1。 出力: Dataset2。
-
-**CopyActivity2**
-
-Inputs: Dataset3、Dataset2。 出力: Dataset4。
-
-この例では、2 つの入力データセットが、2 番目のコピー アクティビティに対して指定されています。 複数の入力を指定すると、データのコピーに使用されるのは最初の入力データセットのみで、他のデータセットは依存関係として使用されます。 CopyActivity2 は、次の条件が満たされた場合にのみ開始されます。
-
-* CopyActivity1 が正常に完了していて、Dataset2 を使用できる。 データを Dataset4 にコピーするときに、このデータセットは使用されません。 これは、CopyActivity2 のスケジュールの依存関係としてのみ機能します。   
-* Dataset3 を使用できる。 このデータセットは、コピー先にコピーされるデータを表します。 
-
-## <a name="scheduling-and-execution"></a>スケジュールと実行
-パイプラインは、開始時刻と終了時刻の間のみアクティブです。 開始時刻より前または終了時刻より後には実行されません。 パイプラインは、一時停止している場合、その開始時刻と終了時刻に関係なく実行されません。 パイプラインを実行するには、一時停止しないでください。 実際には、実行されるのはパイプラインではありません。 実行されるのはパイプライン内のアクティビティです。 ただし、アクティビティはパイプラインの全体的なコンテキストで実行されます。 
-
-Azure Data Factory でのスケジュールと実行の方法については、「 [スケジュールと実行](data-factory-scheduling-and-execution.md) 」を参照してください。
-
 ## <a name="create-and-monitor-pipelines"></a>パイプラインの作成と監視
 次のツールや SDK のいずれかを使用してパイプラインを作成できます。 
 
@@ -418,6 +303,53 @@ Azure Data Factory でのスケジュールと実行の方法については、�
 
 - [Azure ポータルのブレードを使用したパイプラインの監視と管理](data-factory-monitor-manage-pipelines.md)
 - [監視と管理アプリを使用したパイプラインの監視と管理](data-factory-monitor-manage-app.md)
+
+
+## <a name="onetime-pipeline"></a>1 回限りのパイプライン
+パイプライン定義で指定した開始時刻から終了時刻までの間に定期的に (毎時、毎日など) 実行するパイプラインを作成し、スケジュールを設定することができます。 詳細については、「 [スケジュール設定のアクティビティ](#scheduling-and-execution) 」をご覧ください。 1 回だけ実行するパイプラインを作成することもできます。 これを行うには、次の JSON サンプルに示すように、パイプライン定義の **pipelineMode** プロパティを **onetime** に設定します。 このプロパティの既定値は **scheduled**です。
+
+```json
+{
+    "name": "CopyPipeline",
+    "properties": {
+        "activities": [
+            {
+                "type": "Copy",
+                "typeProperties": {
+                    "source": {
+                        "type": "BlobSource",
+                        "recursive": false
+                    },
+                    "sink": {
+                        "type": "BlobSink",
+                        "writeBatchSize": 0,
+                        "writeBatchTimeout": "00:00:00"
+                    }
+                },
+                "inputs": [
+                    {
+                        "name": "InputDataset"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "OutputDataset"
+                    }
+                ]
+                "name": "CopyActivity-0"
+            }
+        ]
+        "pipelineMode": "OneTime"
+    }
+}
+```
+
+以下の点に注意してください。
+
+* パイプラインの**開始**時刻と**終了**時刻は指定しません。
+* Data Factory で値が使用されない場合でも、入力データセットと出力データセットの**abailability** (**freqeuncy** と **interval**) は指定します。  
+* ダイアグラム ビューには、1 回限りのパイプラインは表示されません。 この動作は仕様です。
+* 1 回限りのパイプラインを更新することはできません。 1 回限りのパイプラインを複製して名前を変更し、プロパティを更新してデプロイすることで別のパイプラインを作成することができます。
 
 
 ## <a name="next-steps"></a>次のステップ
