@@ -14,10 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: alkarche
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 08063960d3956ca65dd32d9fe726c366799a2087
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: aac362f5123038cc39e0d2b32c10f7747a702cfe
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -34,10 +35,10 @@ ms.lasthandoff: 04/19/2017
 
 ## <a name="enable"></a>OpenAPI 定義のサポートの有効化
 * OpenAPI のすべての設定は、`API Definition (preview)` ページの Function App 設定で構成できます。
-* `API defintion source` を `Function` に設定して、ホストされている OpenAPI 定義とクイック スタート定義の生成を有効にします。
+* `API definition source` を `Function` に設定して、ホストされている OpenAPI 定義とクイック スタート定義の生成を有効にします。
   * `External URL` により、他の場所でホストされている OpenAPI 定義を自分の関数で使用できます。
 
-## <a name="generate-defintion"></a>関数メタデータからの Swagger スケルトンの生成
+## <a name="generate-definition"></a>関数メタデータからの Swagger スケルトンの生成
 テンプレートは、最初の OpenAPI 定義の作成を開始するのに適した方法です。 定義テンプレート機能では、HTTP トリガー関数ごとに、function.json 内のすべてのメタデータを使用してスパース OpenAPI 定義が作成されます。 **要求や応答のテンプレートなど、 [OpenAPI 仕様](http://swagger.io/specification/)から API に関する詳細情報を入力する必要があります。**
 
 [手順については、この概要チュートリアルを確認してください](./functions-api-definition-getting-started.md)

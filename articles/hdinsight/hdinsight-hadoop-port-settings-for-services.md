@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/14/2017
+ms.date: 05/17/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: c27e6c19f44d9f0fa60ae31d0cda756dcd032f02
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 3bf5ff732b03a1ecffb4e149d7805a6216ab0019
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -105,7 +106,6 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 | サービス | Nodes | ポート | プロトコル | Description |
 | --- | --- | --- | --- | --- |
 | HiveServer2 |ヘッド ノード |10001 |Thrift |プログラムによって Hive (Thrift/JDBC) に接続するためのサービス |
-| HiveServer |ヘッド ノード |10000 |Thrift |プログラムによって Hive (Thrift/JDBC) に接続するためのサービス |
 | Hive メタストア |ヘッド ノード |9083 |Thrift |プログラムによって Hive メタデータ (Thrift/JDBC) に接続するためのサービス |
 
 ### <a name="webhcat-ports"></a>WebHCat ポート

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/31/2017
 ms.author: jeedes
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 0a8f2de60ab60b980b29c4dbc78045bd20693b9d
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 47609ab453cf3db3cb745f91ed23904ff90e7b41
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -129,13 +129,13 @@ FreshDesk で Azure AD のシングル サインオンを構成してテスト�
 
 7. 別の Web ブラウザー ウィンドウで、Freshdesk 企業サイトに管理者としてログインします。
 
-8. 上部のメニューで **[管理者]**をクリックします。
+8. 上部のメニューで **[Admin]**をクリックします。
    
-       ![Admin](./media/active-directory-saas-freshdesk-tutorial/IC776768.png "Admin")
+   ![管理](./media/active-directory-saas-freshdesk-tutorial/IC776768.png "Admin")
 
 9. **[全般設定]** タブで **[セキュリティ]** をクリックします。
    
-       ![Security](./media/active-directory-saas-freshdesk-tutorial/IC776769.png "Security")
+   ![Security (セキュリティ)](./media/active-directory-saas-freshdesk-tutorial/IC776769.png "Security")
 
 10. **[セキュリティ]** セクションで、次の手順を実行します。
    
