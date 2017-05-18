@@ -6,13 +6,13 @@ keywords:
 author: syntaxc4
 ms.author: cfowler
 ms.date: 04/27/2017
-ms.topic: article
+ms.topic: sample
 ms.service: functions
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: cd3b9a6db119ffc9aca29b85005c4ce295fdf67e
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: f87cf7d300b4c2b89ad692aadcda958e9747c7f9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/15/2017
 
 ---
 # <a name="create-a-function-app-and-deploy-function-code-from-github"></a>Function App の作成と GitHub からの関数コードのデプロイ
@@ -25,7 +25,7 @@ ms.lasthandoff: 05/10/2017
 
 このサンプルでは、Azure Function App を作成し、GitHub から関数コードをデプロイします。
 
-[!code-azurecli[main](../../../cli_scripts/azure-functions/deploy-function-app-with-function-github/deploy-function-app-with-function-github.sh?highlight=3 "GitHub からのデプロイで Function App を作成する")]
+[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/deploy-function-app-with-function-github/deploy-function-app-with-function-github.sh?highlight=3 "GitHub からのデプロイで Function App を作成する")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
@@ -45,3 +45,4 @@ ms.lasthandoff: 05/10/2017
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
 
 その他の Azure Functions CLI のサンプル スクリプトは、[Azure Functions のドキュメント](../functions-cli-samples.md)で確認できます。
+

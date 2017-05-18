@@ -11,15 +11,16 @@ ms.assetid:
 ms.service: sql-database
 ms.custom: sample
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: samples
 ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 04/24/2017
 ms.author: janeng
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: ec38e5cdc3a0ce9df8cbd7dd46499d52a9f04ee4
-ms.lasthandoff: 03/30/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 5ca7befc4b7ea031287b81ae6834496579b480fd
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/15/2017
 
 ---
 
@@ -31,7 +32,7 @@ ms.lasthandoff: 03/30/2017
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-azurecli[main](../../../cli_scripts/sql-database/scale-pool/scale-pool.sh "プール間でのデータベースの移動")]
+[!code-azurecli-interactive[main](../../../cli_scripts/sql-database/scale-pool/scale-pool.sh "プール間でのデータベースの移動")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 

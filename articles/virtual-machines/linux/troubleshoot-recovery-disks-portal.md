@@ -14,10 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/14/2016
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: d631813e8d821a8efe135f0b138dec544b455390
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: c96ff625c3e83f6fc9057f1163c877e8e0aed5e3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/13/2017
 
 
 ---
@@ -160,7 +161,7 @@ VM の削除が完了するまで待ってから、仮想ハード ディスク�
     VM からデータ ディスクが正常に切断されるまで待ってから、次に進みます。
 
 ## <a name="create-vm-from-original-hard-disk"></a>元のハード ディスクから VM を作成する
-元の仮想ハード ディスクから VM を作成するには、[この Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-specialized-vm-in-existing-vnet)を使用します。 このテンプレートでは、以前のコマンドで取得した VHD の URL を使用して、VM を既存の仮想ネットワークにデプロイします。 次のように、**[Deploy to Azure (Azure にデプロイ)]** をクリックします。
+元の仮想ハード ディスクから VM を作成するには、[この Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-existing-vnet)を使用します。 このテンプレートでは、以前のコマンドで取得した VHD の URL を使用して、VM を既存の仮想ネットワークにデプロイします。 次のように、**[Deploy to Azure (Azure にデプロイ)]** をクリックします。
 
 ![GitHub のテンプレートを使用して VM をデプロイする](./media/troubleshoot-recovery-disks-portal/deploy-template-from-github.png)
 
