@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/13/2016
 ms.author: elioda
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
 ms.openlocfilehash: 527aed57517f04d1b0fdcad5feac5488123b89c7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/07/2016
 
 
 ---
@@ -221,7 +223,7 @@ ms.openlocfilehash: 527aed57517f04d1b0fdcad5feac5488123b89c7
 
 [lnk-iothub-getstarted]: iot-hub-node-node-getstarted.md
 [lnk-device-management]: iot-hub-node-node-device-management-get-started.md
-[lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
+[lnk-iot-edge]: iot-hub-linux-iot-edge-get-started.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
 
 [lnk-twin-how-to-configure]: iot-hub-node-node-twin-how-to-configure.md
@@ -229,9 +231,4 @@ ms.openlocfilehash: 527aed57517f04d1b0fdcad5feac5488123b89c7
 
 [lnk-methods-tutorial]: iot-hub-node-node-direct-methods.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

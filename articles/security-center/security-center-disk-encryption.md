@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomsh
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 859c0bf3afec46e07b8b8da73fffbc37f3f7959d
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: d3817d44bb21162afe799fd13368fbf902521416
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -53,7 +54,7 @@ Azure Security Center で暗号化が必要と識別された Azure 仮想マシ
 ## <a name="obtain-and-run-the-azure-disk-encryption-prerequisites-configuration-script"></a>Azure Disk Encryption の前提条件となる構成スクリプトの取得と実行
 Azure Disk Encryption の前提条件となる構成スクリプトを使用すると、Azure 仮想マシンの暗号化に必要な必須コンポーネントすべてが設定されます。
 
-1. [Azure Disk Encryption Prerequisite Setup スクリプト](https://github.com/Azure/azure-powershell/blob/dev/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1)がある GitHub ページにアクセスします。
+1. [Azure Disk Encryption Prerequisite Setup スクリプト](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1)がある GitHub ページにアクセスします。
 2. GibHub ページで、 **[Raw]** (元データ) をクリックします。
 3. **Ctrl + A** キーを押してそのページのテキストすべてを選択し、**Ctrl + C** キーを押して、選択したテキストをクリップボードにコピーします。
 4. **メモ帳** を開き、コピーしたテキストをメモ帳に貼り付けます。
