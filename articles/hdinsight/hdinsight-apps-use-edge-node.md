@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2017
+ms.date: 05/01/2017
 ms.author: jgao
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: ff1013840c220c54a9120572d16946ab6c5c5b07
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: ab888881a841f5a9bf2d47aea946022e6603c585
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/29/2017
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -59,7 +59,7 @@ Linux ベースの HDInsight クラスターに空のエッジ ノードを追�
         }
     ],
 
-サンプルに示すように、必要に応じて、[スクリプト アクション](hdinsight-hadoop-customize-cluster-linux.md)を呼び出して、エッジ ノードへの [Apache Hue](hdinsight-hadoop-hue-linux.md) のインストールなど、追加の構成を行うことができます。
+サンプルに示すように、必要に応じて、[スクリプト アクション](hdinsight-hadoop-customize-cluster-linux.md)を呼び出して、エッジ ノードへの [Apache Hue](hdinsight-hadoop-hue-linux.md) のインストールなど、追加の構成を行うことができます。 このスクリプト アクションのスクリプトは、Web で公開されている必要があります。  たとえばスクリプトが Azure Storage に格納されている場合、パブリック コンテナーまたはパブリック BLOB を使用します。
 
 エッジノードの仮想マシンのサイズは、HDInsight クラスター ワーカー ノードの VM サイズの要件を満たしている必要があります。 推奨されるワーカー ノードの VM サイズについては、「[HDInsight で Hadoop クラスターを作成する](hdinsight-hadoop-provision-linux-clusters.md#cluster-types)」をご覧ください。
 

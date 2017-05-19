@@ -60,13 +60,13 @@ ExpressRoute 接続によって、次のようなサービスにアクセスで�
 
 [ExpressRoute FAQ](expressroute-faqs.md) ページには、ExpressRoute でサポートされているサービスの詳しい一覧があります。
 
-### <a name="connectivity-to-all-regions-within-a-geopolitical-region"></a>地政学的な地域内のすべての地域への接続
-[ピアリングの場所](expressroute-locations.md) の 1 つで Microsoft に接続し、地政学的な領域内のすべての地域にアクセスできます。 
+### <a name="connectivity-to-all-regions-within-a-geopolitical-region"></a>地政学的な地域内のすべてのリージョンへの接続
+[ピアリングの場所](expressroute-locations.md) の 1 つで Microsoft に接続し、地政学的な領域内のすべてのリージョンにアクセスできます。 
 
-たとえば、ExpressRoute を介してアムステルダムの Microsoft に接続している場合、北ヨーロッパと西ヨーロッパでホストされているすべての Microsoft クラウド サービスにアクセスできます。 地政学的領域、関連付けられている Microsoft クラウド領域、対応する ExpressRoute のピアリングの場所の概要については、「[ExpressRoute パートナーとピアリングの場所](expressroute-locations.md)」という記事をご覧ください。
+たとえば、ExpressRoute を介してアムステルダムの Microsoft に接続している場合、北ヨーロッパと西ヨーロッパでホストされているすべての Microsoft クラウド サービスにアクセスできます。 地政学的領域、関連付けられている Microsoft クラウド リージョン、対応する ExpressRoute のピアリングの場所の概要については、「[ExpressRoute パートナーとピアリングの場所](expressroute-locations.md)」という記事をご覧ください。
 
-### <a name="global-connectivity-with-expressroute-premium-add-on"></a>ExpressRoute プレミアム アドオンによるグローバル接続
-ExpressRoute プレミアム アドオン機能を有効にすると、地政学的境界を越えて接続を拡張できます。 たとえば、ExpressRoute を介してアムステルダムの Microsoft に接続している場合、世界中のあらゆる領域でホストされているすべての Microsoft クラウド サービスにアクセスできます (国内のクラウドは除外します)。 北ヨーロッパ地域と西ヨーロッパ地域にアクセスする場合と同じ方法で南アメリカやオーストラリアにデプロイされているサービスにアクセスできます。
+### <a name="global-connectivity-with-expressroute-premium-add-on"></a>ExpressRoute Premium アドオンによるグローバル接続
+ExpressRoute Premium アドオン機能を有効にすると、地政学的境界を越えて接続を拡張できます。 たとえば、ExpressRoute を介してアムステルダムの Microsoft に接続している場合、世界中のあらゆるリージョンでホストされているすべての Microsoft クラウド サービスにアクセスできます (国内クラウドは除外します)。 北ヨーロッパ リージョンと西ヨーロッパ リージョンにアクセスする場合と同じ方法で南アメリカやオーストラリアにデプロイされているサービスにアクセスできます。
 
 ### <a name="rich-connectivity-partner-ecosystem"></a>大勢の接続パートナーが属するエコシステム
 ExpressRoute のエコシステムには継続的に新しい接続パートナーと SI パートナーが加わり、拡大します。 最新の情報については、 [ExpressRoute のプロバイダーと場所](expressroute-locations.md) に関する記事を参照してください。
@@ -94,9 +94,9 @@ Microsoft は特殊な地政学的領域と顧客区分のために隔離され�
 
 * **無制限のデータ**。 ExpressRoute 回線は月額料金に基づいて課金されます。すべての受信または送信データ転送が無料で含まれます。 
 * **従量制課金データ**。 ExpressRoute 回線は月額料金に基づいて課金されます。 すべての受信データ転送は無料で含まれます。 送信データ転送は 1 GB のデータ転送単位で課金されます。 データ転送料金は地域によって異なります。
-* **ExpressRoute プレミアム アドオン**。 ExpressRoute プレミアムは ExpressRoute 回線のアドオンです。 ExpressRoute プレミアム アドオンには次の機能があります。 
+* **ExpressRoute Premium アドオン**。 ExpressRoute Premiumは ExpressRoute 回線のアドオンです。 ExpressRoute Premium アドオンには次の機能があります。 
   * Azure パブリックと Azure プライベートのピアリングのルート上限の増加 (4,000 ルートから 10,000 ルートに)。
-  * サービスのグローバル接続。 (国内のクラウドを除く) あらゆる地域で作成された ExpressRoute 回線に与えられる世界中の他の地域にあるリソースへのアクセス。 たとえば、西ヨーロッパで作成された仮想ネットワークにシリコン バレーでプロビジョニングされた ExpressRoute 回線からアクセスできます。
+  * サービスのグローバル接続。 (国内のクラウドを除く) あらゆるリージョンで作成された ExpressRoute 回線に与えられる世界中の他のリージョンにあるリソースへのアクセス。 たとえば、西ヨーロッパで作成された仮想ネットワークにシリコン バレーでプロビジョニングされた ExpressRoute 回線からアクセスできます。
   * ExpressRoute ごとの VNet リンクの増加 (回線の帯域幅にもよりますが、10 からそれ以上に)。
 
 ## <a name="faq"></a>FAQ

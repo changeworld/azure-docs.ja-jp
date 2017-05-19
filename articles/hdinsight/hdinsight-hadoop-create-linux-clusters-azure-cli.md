@@ -16,10 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/04/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 995aacb5d243eb50df0cf35e68a1a931bd010c53
-ms.lasthandoff: 04/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 269294f14dd4add5ab038f13b6818db345665c3b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -43,10 +44,6 @@ ms.lasthandoff: 04/11/2017
 
     > [!IMPORTANT]
     > このドキュメントの手順は、Azure CLI 2.0 では動作しません。 Azure CLI 2.0 では、HDInsight クラスターの作成がサポートされていません。
-
-### <a name="access-control-requirements"></a>アクセス制御の要件
-
-[!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
 ## <a name="log-in-to-your-azure-subscription"></a>Azure サブスクリプションにログイン
 
@@ -127,6 +124,10 @@ Azure CLI をインストールして構成したら、コマンド プロンプ
     > ノードのサイズと関連コストに関する詳細については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
     クラスターの作成処理は、完了までに数分かかる場合があります。 通常は約 15 です。
+
+## <a name="troubleshoot"></a>トラブルシューティング
+
+HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御要件](hdinsight-administer-use-portal-linux.md#create-clusters)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
