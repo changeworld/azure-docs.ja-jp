@@ -3,7 +3,7 @@ title: "Azure Application Insights での ASP.NET のログと診断 | Microsoft
 description: "要求、例外、(トレース、NLog、Log4Net を使用して生成された) ログを検索することにより、ASP.NET Web Apps の問題を診断します。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 99860c53-0324-4a3a-9aa9-83f5dffba835
 ms.service: application-insights

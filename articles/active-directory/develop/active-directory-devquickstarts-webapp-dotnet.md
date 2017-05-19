@@ -14,9 +14,10 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
 ms.openlocfilehash: 43ba592b6294a9a75a20dacd81953a77c241b89f
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/18/2017
 
 
@@ -88,6 +89,15 @@ Azure Active Directory (Azure AD) では、数行のコードを追加するだ�
                  ClientId = clientId,
                  Authority = authority,
                  PostLogoutRedirectUri = postLogoutRedirectUri,
+                 Notifications = new OpenIdConnectAuthenticationNotifications
+                    {
+                        AuthenticationFailed = context =>
+                        {
+                            context.HandleResponse();
+                            context.Response.Redirect("/Error?message=" + context.Exception.Message);
+                            return Task.FromResult(0);
+                        }
+                    }
              });
      }
      ```

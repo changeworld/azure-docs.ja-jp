@@ -27,7 +27,7 @@ ms.lasthandoff: 04/27/2017
 
 このスクリプトは、Windows Server 2016 を実行する Azure 仮想マシンを作成します。 スクリプトを実行すると、RDP 経由で仮想マシンにアクセスできるようになります。
 
-[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
+[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

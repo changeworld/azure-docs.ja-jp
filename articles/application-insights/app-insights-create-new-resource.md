@@ -3,7 +3,7 @@ title: "新しい Azure Application Insights リソースの作成 | Microsoft D
 description: "新しいライブ アプリケーションを対象にした Application Insights 監視を手動でセットアップします。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 878b007e-161c-4e36-8ab2-3d7047d8a92d
 ms.service: application-insights

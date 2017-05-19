@@ -3,7 +3,7 @@ title: "Azure Application Insights のデータ モデル | Microsoft Docs"
 description: "JSON の連続エクスポートからエクスポートされ、フィルターとして使用されるプロパティについて説明します。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: cabad41c-0518-4669-887f-3087aef865ea
 ms.service: application-insights

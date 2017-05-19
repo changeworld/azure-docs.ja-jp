@@ -3,7 +3,7 @@ title: "Azure Cloud Services 向けの Application Insights | Microsoft Docs"
 description: "Application Insights で Web と worker ロールを効果的に監視する"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 editor: alancameronwills
 ms.assetid: 5c7a5b34-329e-42b7-9330-9dcbb9ff1f88
