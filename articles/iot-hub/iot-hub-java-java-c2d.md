@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/07/2017
 ms.author: dobett
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
 ms.openlocfilehash: 624f5947e31f08f689ceb6c48bc572447acd64ac
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/15/2017
 
 
@@ -97,7 +98,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-service-client</artifactId>
-      <version>1.2.18</version>
+      <version>1.3.19</version>
     </dependency>
     ```
 

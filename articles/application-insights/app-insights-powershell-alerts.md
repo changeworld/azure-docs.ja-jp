@@ -3,7 +3,7 @@ title: "PowerShell を使用して Application Insights のアラートを設定
 description: "Application Insights の構成を自動化して、メトリックの変更に関する電子メールを受け取ります。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 05d6a9e0-77a2-4a35-9052-a7768d23a196
 ms.service: application-insights

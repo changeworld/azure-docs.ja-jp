@@ -3,7 +3,7 @@ title: "データが存在しない場合のトラブルシューティング - 
 description: "Auzre Application Insights にデータが表示されない場合は、 ここで解決してください。"
 services: application-insights
 documentationcenter: .net
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: e231569f-1b38-48f8-a744-6329f41d91d3
 ms.service: application-insights

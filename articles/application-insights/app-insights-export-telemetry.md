@@ -3,7 +3,7 @@ title: "Application Insights からのテレメトリの連続エクスポート
 description: "診断および利用状況データを Microsoft Azure のストレージにエクスポートし、そこからダウンロードします。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 5b859200-b484-4c98-9d9f-929713f1030c
 ms.service: application-insights

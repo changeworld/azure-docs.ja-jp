@@ -3,7 +3,7 @@ title: "Azure Application Insights の検索の使用 | Microsoft Docs"
 description: "Web アプリによって送信された未加工のテレメトリを検索およびフィルター処理します。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 2a437555-8043-45ec-937a-225c9bf0066b
 ms.service: application-insights

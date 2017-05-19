@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/10/2017
 ms.author: nberdy
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
 ms.openlocfilehash: e7d7065513f69bac5f759bfd5f4b3965b26bab5d
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/14/2017
 
 
@@ -80,7 +81,7 @@ ms.lasthandoff: 03/14/2017
    
         response.send(200, 'Input was written to log.', function(err) {
             if(err) {
-                console.error('An error ocurred when sending a method response:\n' + err.toString());
+                console.error('An error occurred when sending a method response:\n' + err.toString());
             } else {
                 console.log('Response to method \'' + request.methodName + '\' sent successfully.' );
             }

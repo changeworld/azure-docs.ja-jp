@@ -3,7 +3,7 @@ title: "Application Insights のリリース注釈 | Microsoft Docs"
 description: "Application Insights で、メトリックス エクスプローラーのグラフにデプロイ マーカーまたはビルド マーカーを追加します。"
 services: application-insights
 documentationcenter: .net
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 23173e33-d4f2-4528-a730-913a8fd5f02e
 ms.service: application-insights

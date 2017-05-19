@@ -3,7 +3,7 @@ title: "Azure Application Insights を利用して Web アプリの障害と例�
 description: "要求テレメトリと共に ASP.NET アプリから例外を取り込みます。"
 services: application-insights
 documentationcenter: .net
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: d1e98390-3ce4-4d04-9351-144314a42aa2
 ms.service: application-insights

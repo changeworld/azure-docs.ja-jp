@@ -3,7 +3,7 @@ title: "Azure Application Insights を使用した Java トレース ログの�
 description: "Application Insights を使用して Log4J または Logback のトレースを検索します"
 services: application-insights
 documentationcenter: java
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: fc0a9e2f-3beb-4f47-a9fe-3f86cd29d97a
 ms.service: application-insights
