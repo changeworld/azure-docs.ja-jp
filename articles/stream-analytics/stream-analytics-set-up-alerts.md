@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c8463e68600edefecd0f3bdd19c13b13f676b82b
-ms.lasthandoff: 11/17/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: d9578aa13fc22a148f76d95a2c548b88b699e723
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -49,7 +50,7 @@ Azure クラシック ポータルでアラートを設定する方法は 2 つ�
 
 ## <a name="set-up-alerts-through-the-operations-logs"></a>操作ログを使用してアラートを設定する
 1. **Azure クラシック ポータル** で、Management Services の [[アラート]](https://manage.windowsazure.com)タブに移動します。  
-2.  **[ルールの追加]**  
+2. **[ルールの追加]**  
    
    ![条件](./media/stream-analytics-set-up-alerts/04-stream-analytics-set-up-alerts.png)  
 3. アラートの名前と説明を定義します。 [サービスの種類] として [Stream Analytics] を選択し、[サービス名] としてジョブの名前を選択します。  
@@ -70,7 +71,7 @@ Azure Portal で、アラートを有効にする Stream Analytics ジョブを�
 Azure Portal でのアラートの構成の詳細については、「[アラート通知の受信](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)」を参照してください。  
 
 ## <a name="get-help"></a>問い合わせ
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
