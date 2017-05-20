@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 04/04/2017
 ms.author: parakhj
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
-ms.openlocfilehash: 29d30cacb29fee1b2c5b8ef523051fa543bee829
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: f520b46e9d37ac31c2ef5d78ef9044e62dd25a6f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -53,10 +53,10 @@ ms.lasthandoff: 04/28/2017
 1. **[New application registration]**(新規アプリケーションの登録) を選択します。
 1. **[Name]**(名前) にアプリケーションの名前を入力します (例: Azure AD B2Cアプリ)。
 1. アプリケーション タイプとして **[Web app / API]**(Web アプリ/API) を選択します。
-1. 'サインオン URL' として、次の URL を入力します。`{tenantName}` は、使用している Azure AD B2C テナントの名前 (つまり fabrikamb2c.onmicrosoft.com) に置き換えてください。
+1. "サインオン URL" として、次の URL を入力します。`yourtenant` は、使用している Azure AD B2C テナントの名前 (つまり fabrikamb2c.onmicrosoft.com) に置き換えてください。
 
     ```
-    https://login.microsoftonline.com/te/{tenantName}.onmicrosoft.com/oauth2/authresp
+    https://login.microsoftonline.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
     ```
 
 1. **アプリケーション ID** を保存します。
@@ -68,28 +68,18 @@ ms.lasthandoff: 04/28/2017
 
 `contoso.com` のアプリケーション キーを Azure AD B2C テナントに格納する必要があります。 これを行うには、次の手順を実行します。
 
-1. PowerShell を開き、作業ディレクトリ `active-directory-b2c-advanced-policies` に移動します。
-1. ExploreAdmin ツールのあるフォルダーに切り替えます。
+1. Azure AD B2C テナントに移動し、[B2C Settings]\(B2C 設定\)、[Identity Experience Framework]、[Policy Keys]\(ポリシー キー\) の順に開きます。
+1. [+ 追加] をクリックします。
+1. オプション:
+ * [オプション]、[`Manual`] の順に選択します。
+ * [名前]、[`ContosoAppSecret`] の順に選択します。Azure AD テナント名に一致する名前を選択します。  プレフィックス B2C_1A_ がキーの名前に自動的に追加されます。
+ * アプリケーション キーを [`Secret`] ボックスに貼り付けます。
+ * [署名] を選択します。
+1. [`Create`] をクリックします。
+1. 次のキーが作成されたことを確認します: `B2C_1A_ContosoAppSecret`
 
-    ```powershell
-    cd active-directory-b2c-advanced-policies\ExploreAdmin
-    ```
+    コマンドを実行する際、Azure AD B2C テナントに対してローカルな onmicrosoft.com 管理者アカウントでサインインするようにします。 "TokenSigningKeyContainer" または `B2C_1A_TokenSigningKeyContainer` が見つからないことを示すエラーが発生する場合は、[概要](active-directory-b2c-get-started-custom.md)ガイドを参照してください。
 
-1. ExploreAdmin ツールを PowerShell にインポートします。
-
-    ```powershell
-    Import-Module .\ExploreAdmin.dll
-    ```
-
-1. 次のコマンドで、`tenantName` を Azure AD B2C テナントの名前 (例: fabrikamb2c.onmicrosoft.com) に、`SecretReferenceId` をシークレットの参照に使用する名前 (例: ContosoAppSecret) に、`ClientSecret` を `contoso.com` のアプリケーション キーに置き換えます。 コマンドを実行します。
-
-    ```PowerShell
-    Set-CpimKeyContainer -Tenant {tenantName} -StorageReferenceId {SecretReferenceId} -UnencodedAsciiKey {ClientSecret}
-    ```
-
-    コマンドを実行する際、Azure AD B2C テナントに対してローカルな onmicrosoft.com 管理者アカウントでサインインするようにします。 'TokenSigningKeyContainer' が見つからないことを示すエラーが発生する場合は、[概要](active-directory-b2c-get-started-custom.md)ガイドを参照してください。
-
-1. PowerShell を閉じます。
 
 ## <a name="add-a-claims-provider-in-your-base-policy"></a>基本ポリシーでの要求プロバイダーの追加
 
@@ -121,7 +111,7 @@ ms.lasthandoff: 04/28/2017
             <Key Id="client_secret" StorageReferenceId="ContosoAppSecret"/>
             </CryptographicKeys>
             <OutputClaims>
-                <OutputClaim ClaimTypeReferenceId="userId" PartnerClaimType="oid"/>
+                <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="oid"/>
                 <OutputClaim ClaimTypeReferenceId="tenantId" PartnerClaimType="tid"/>
                 <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
                 <OutputClaim ClaimTypeReferenceId="surName" PartnerClaimType="family_name" />
@@ -153,9 +143,9 @@ Azure AD エンドポイントからトークンを取得するためには、Az
 1. `<Description>` の値を更新します。
 1. Azure AD では OpenID Connect プロトコルを使用するので、`<Protocol>` が "OpenIDConnect" になっていることを確認してください。
 
-特定の Azure AD テナントの設定を反映するように、上の XML の `<Metdata>` セクションを更新する必要があります。 XML で、次のようにメタデータ値を更新します。
+特定の Azure AD テナントの設定を反映するように、上の XML の `<Metadata>` セクションを更新する必要があります。 XML で、次のようにメタデータ値を更新します。
 
-1. `<Item Key="METADATA">` を `https://login.windows.net/{tenantName}/.well-known/openid-configuration` に設定します。ここで、`tenantName` は Azure AD テナント名です (例: contoso.com)。
+1. `<Item Key="METADATA">` を `https://login.windows.net/yourAzureADtenant/.well-known/openid-configuration` に設定します。ここで、`yourAzureADtenant` は Azure AD テナント名です (例: contoso.com)。
 1. ブラウザーを開き、更新した `Metadata` の URL に移動します。
 1. ブラウザーで '発行者' オブジェクトを検索し、その値をコピーします。 値は `https://sts.windows.net/{tenantId}/` のようになります。
 1. 値を XML の `<Item Key="ProviderName">` に貼り付けます。
@@ -164,9 +154,9 @@ Azure AD エンドポイントからトークンを取得するためには、Az
 1. `<Item Key="response_types">` が `id_token` に設定されていることを確認します。
 1. `<Item Key="UsePolicyInRedirectUri">` が `false` に設定されていることを確認します。
 
-また、 [Azure AD B2C テナントに登録した Azure AD シークレット](#add-the-azure-ad-key-to-azure-ad-b2c)を Azure AD の `<ClaimsProvider>` にリンクする必要もあります。
+また、Azure AD B2C テナントに登録した Azure AD シークレットを Azure AD の `<ClaimsProvider>` にリンクする必要もあります。
 
-1. 上の XML の `<CryptographicKeys>` セクションで、`StorageReferenceId` の値を、定義したシークレットの参照 ID に更新します (例: ContosoAppSecret)。
+* 上の XML の `<CryptographicKeys>` セクションで、`StorageReferenceId` の値を、定義したシークレットの参照 ID に更新します (例: ContosoAppSecret)。
 
 ### <a name="upload-the-extension-file-for-verification"></a>拡張ファイルのアップロードによる確認
 
@@ -231,7 +221,6 @@ Azure AD エンドポイントからトークンを取得するためには、Az
 アップロードしたカスタム ポリシーのブレードを開いて [Run now](今すぐ実行) をクリックし、カスタム ポリシーをテストします。 エラーが発生する場合は、[トラブルシューティング](active-directory-b2c-troubleshoot-custom.md)の方法を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
- 
-AADB2CPreview@microsoft.com にフィードバックを提供します。
 
+AADB2CPreview@microsoft.com にフィードバックを提供します。
 

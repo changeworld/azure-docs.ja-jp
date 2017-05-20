@@ -13,19 +13,20 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 05/07/2017
 ms.author: andrela;sstein;carlrab
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: c8700b16f91f014205acb93d6b57f9b972546268
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 56f1b57798b073622d273b16975981b23a0ad55d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
 
 # <a name="azure-sql-database-use-ruby-to-connect-and-query-data"></a>Azure SQL Database: Ruby を使って接続とデータの照会を行う
 
-このクイック スタートでは、Mac OS と Ubuntu Linux のプラットフォームから [Ruby](https://Ruby.org) を使って Azure SQL データベースに接続し、Transact-SQL ステートメントを使ってデータベース内のデータを照会、挿入、更新、削除する方法について説明します。
+このクイック スタートでは、Mac OS と Ubuntu Linux のプラットフォームから [Ruby](https://Ruby.org) を使用して Azure SQL データベースに接続し、Transact-SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法について説明します。
 
 このクイック スタートでは、次のクイック スタートで作成されたリソースが出発点として使用されます。
 
@@ -34,7 +35,7 @@ ms.lasthandoff: 04/21/2017
 
 ## <a name="install-ruby-and-database-communication-libraries"></a>Ruby とデータベースの通信ライブラリをインストールする
 
-このセクションの手順では、Ruby による開発には慣れているが、Azure SQL Database を初めて使用するユーザーを想定しています。 Ruby による開発の経験がない場合は、「[Build an app using SQL Server (SQL Server を使用してアプリを構築する)](https://www.microsoft.com/en-us/sql-server/developer-get-started/)」に移動し、**Ruby** を選択してから、使用しているオペレーティング システムを選択します。
+このセクションの手順では、Ruby による開発には慣れていて、Azure SQL Database は初めて使用するユーザーを想定しています。 Ruby による開発の経験がない場合は、「[Build an app using SQL Server (SQL Server を使用してアプリを構築する)](https://www.microsoft.com/en-us/sql-server/developer-get-started/)」に移動し、**Ruby** を選択してから、使用しているオペレーティング システムを選択します。
 
 ### <a name="mac-os"></a>**Mac OS**
 ターミナルを開き、Ruby スクリプトの作成先となるディレクトリに移動します。 次のコマンドを入力して、**brew**、**FreeTDS**、および **TinyTDS** をインストールします。
@@ -70,7 +71,7 @@ Azure SQL データベースに接続するために必要な接続情報を取�
 
    ![server-name](./media/sql-database-connect-query-dotnet/server-name.png) 
 
-4. Azure SQL Database サーバーのログイン情報を忘れた場合は、[SQL データベース サーバー] ページに移動して、サーバー管理者名を表示し、必要に応じて、パスワードをリセットします。
+4. サーバーのログイン情報を忘れた場合は、[SQL データベース サーバー] ページに移動して、サーバー管理者名を表示し、必要に応じてパスワードをリセットします。
     
 
 ## <a name="select-data"></a>データの選択
@@ -187,15 +188,9 @@ delete('BrandNewProduct', client)
 ```
 
 ## <a name="next-steps"></a>次のステップ
+- [最初の Azure SQL Database の設計](sql-database-design-first-database.md)
+- [TinyTDS の GitHub リポジトリ](https://github.com/rails-sqlserver/tiny_tds)
+- [問題の報告/質問](https://github.com/rails-sqlserver/tiny_tds/issues)
+- [SQL Server 用 Ruby ドライバー](https://docs.microsoft.com/sql/connect/ruby/ruby-driver-for-sql-server/)
 
-- [TinyTDS](https://github.com/rails-sqlserver/tiny_tds) の GitHub レポジトリ。
-- [問題/質問を登録します](https://github.com/rails-sqlserver/tiny_tds/issues)。        
-- [Ruby Driver for SQL Server](https://docs.microsoft.com/sql/connect/ruby/ruby-driver-for-sql-server/) の詳細。
-- SQL Server Management Studio を使用して接続とクエリを実行するには、[SSMS を使用した接続とクエリ](sql-database-connect-query-ssms.md)に関するページを参照してください。
-- Visual Studio を使用して接続とデータの照会を行うには、[Visual Studio Code を使った接続とデータの照会](sql-database-connect-query-vscode.md)に関するページを参照してください。
-- .NET を使用して接続とデータの照会を行うには、[.NET を使った接続とデータの照会](sql-database-connect-query-dotnet.md)に関するページを参照してください。
-- PHP を使用して接続とデータの照会を行うには、[PHP を使った接続とデータの照会](sql-database-connect-query-php.md)に関するページを参照してください。
-- Node.js を使用して接続とデータの照会を行うには、[Node.js を使った接続とデータの照会](sql-database-connect-query-nodejs.md)に関するページを参照してください。
-- Java を使用して接続とデータの照会を行うには、[Java を使った接続とデータの照会](sql-database-connect-query-java.md)に関するページを参照してください。
-- Python を使用して接続とデータの照会を行うには、[Python を使った接続とデータの照会](sql-database-connect-query-python.md)に関するページを参照してください。
 
