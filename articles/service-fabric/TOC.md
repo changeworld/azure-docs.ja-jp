@@ -70,9 +70,9 @@
 ##### [Linux での Java](service-fabric-reliable-services-quick-start-java.md)
 
 #### Reliable Services のライフサイクル
-#### [構成](service-fabric-reliable-services-configuration.md)
-#### [通知の送信](service-fabric-reliable-services-notifications.md)
-#### [バックアップと復元](service-fabric-reliable-services-backup-restore.md)
+##### [構成](service-fabric-reliable-services-configuration.md)
+##### [通知の送信](service-fabric-reliable-services-notifications.md)
+##### [バックアップと復元](service-fabric-reliable-services-backup-restore.md)
 
 #### サービスとの通信
 ##### [Reliable Services を使用した通信](service-fabric-reliable-services-communication.md)
@@ -215,6 +215,7 @@
 ### [セキュリティ保護されたクラスターへの接続](service-fabric-connect-to-secure-cluster.md)
 
 ### [Azure CLI を使用したクラスターの管理](service-fabric-azure-cli.md)
+### [クラスター ノードへのパッチの適用](service-fabric-patch-orchestration-application.md)
 
 ### クラスター リソースを管理および調整する
 #### [Cluster Resource Manager の概要](service-fabric-cluster-resource-manager-introduction.md)
@@ -249,11 +250,13 @@
 #### [Windows](service-fabric-diagnostics-how-to-setup-wad.md)
 #### [Linux](service-fabric-diagnostics-how-to-setup-lad.md)
 ### [サービス プロセスからのログの収集](service-fabric-diagnostic-collect-logs-without-an-agent.md)
+### [Windows Server コンテナーの監視](service-fabric-diagnostics-containers-windowsserver.md)
 ### [ステートフル Reliable Services における診断](service-fabric-reliable-services-diagnostics.md)
 ### [Reliable Actors の診断](service-fabric-reliable-actors-diagnostics.md)
 ### [ローカル クラスターのトラブルシューティング](service-fabric-troubleshoot-local-cluster-setup.md)
 
 # リファレンス
+## [PowerShell (Azure)](/powershell/module/azurerm.servicefabric/)
 ## [PowerShell](/powershell/azure/overview?view=azureservicefabricps)
 ## [Java API](/java/api/)
 ## [.NET](/dotnet/api/)

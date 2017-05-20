@@ -3,6 +3,7 @@
 ## アーキテクチャ
 ### [複数のネットワーク パスを使用した非対称ルーティング](../expressroute/expressroute-asymmetric-routing.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [セキュリティで保護されたネットワーク設計](../best-practices-network-security.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [ハブスポーク トポロジ](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)
 ### [ネットワーク セキュリティのベスト プラクティス](../security/azure-security-network-security-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [可用性の高いネットワーク仮想アプライアンス](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha )
 ### [負荷分散方法の組み合わせ](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fnetworking%2ftoc.json)
