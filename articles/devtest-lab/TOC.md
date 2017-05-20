@@ -4,12 +4,12 @@
 ## シナリオ
 ### [トレーニングでのラボの使用](devtest-lab-training-lab.md)
 
-# 作業の開始
+# 作業開始
 ## [ラボの作成](devtest-lab-create-lab.md)
 ## [最初の VM の作成](devtest-lab-create-first-vm.md)
 ## [開始ポリシーの設定](devtest-lab-get-started-with-lab-policies.md)
 
-# 方法
+# ハウツー ガイド
 ## ラボでの VM の使用
 ### [VM の作成](devtest-lab-add-vm.md)
 ### [要求可能 VM の作成](devtest-lab-add-claimable-vm.md)
@@ -44,6 +44,8 @@
 ## 仮想ネットワークの管理
 ### [仮想ネットワークの構成](devtest-lab-configure-vnet.md)
 ### [IP 構成オプションの選択](devtest-lab-shared-ip.md)
+
+## [ラボのスケーリング](devtest-lab-scale-lab.md)
 
 # リファレンス
 ## [CLI 2.0](/cli/azure/lab)

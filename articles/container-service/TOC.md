@@ -29,6 +29,7 @@
 ### [DC/OS のアプリ/ユーザー固有のオーケストレーター](container-service-application-specific-marathon.md)
 ### [ファイル共有を追加する](container-service-dcos-fileshare.md)
 ### [Azure Container Registry を使用する](container-service-dcos-acr.md)
+### [Vamp によるカナリア リリース](container-service-dcos-vamp-canary-release.md)
 ### DC/OS の監視
 #### [ELK で監視する](container-service-monitoring-elk.md)
 #### [OMS で監視する](container-service-monitoring-oms.md)

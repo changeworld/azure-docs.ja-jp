@@ -17,14 +17,17 @@
 ### [ネットワーク セキュリティ グループ](virtual-networks-nsg.md)
 
 ## デプロイ
-### 仮想ネットワーク
-#### [ポータル](virtual-networks-create-vnet-arm-pportal.md)
-#### [PowerShell](virtual-networks-create-vnet-arm-ps.md)
-#### [CLI](virtual-networks-create-vnet-arm-cli.md)
-#### [テンプレート](virtual-networks-create-vnet-arm-template-click.md)
-#### [ポータル (クラシック)](virtual-networks-create-vnet-classic-pportal.md)
-#### [PowerShell (クラシック)](virtual-networks-create-vnet-classic-netcfg-ps.md)
-#### [CLI (クラシック)](virtual-networks-create-vnet-classic-cli.md)
+### 仮想ネットワーク (VNet)
+#### [VNet の作成、変更、削除](virtual-network-manage-network.md)
+#### [サブネットの作成、変更、削除](virtual-network-manage-subnet.md)
+#### [VNet の作成 - 複数のサブネット](virtual-networks-create-vnet-arm-pportal.md) 
+##### [PowerShell](virtual-networks-create-vnet-arm-ps.md)
+##### [CLI](virtual-networks-create-vnet-arm-cli.md)
+##### [テンプレート](virtual-networks-create-vnet-arm-template-click.md)
+#### VNet の作成 - 複数のサブネット (クラシック)
+##### [ポータル](virtual-networks-create-vnet-classic-pportal.md)
+##### [PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md)
+##### [CLI](virtual-networks-create-vnet-classic-cli.md)
 
 ### ネットワーク セキュリティ グループ
 #### [ポータル](virtual-networks-create-nsg-arm-pportal.md)
@@ -46,8 +49,8 @@
 #### [PowerShell](virtual-networks-create-vnetpeering-arm-ps.md)
 #### [テンプレート](virtual-networks-create-vnetpeering-arm-template-click.md)
 
-### ネットワーク インターフェイス
-#### [追加、変更、削除](virtual-network-network-interface.md)
+### ネットワーク インターフェイス (NIC)
+#### [NIC の作成、変更、削除](virtual-network-network-interface.md)
 #### [IP アドレスの追加、変更、削除](virtual-network-network-interface-addresses.md)
 
 ### [パブリック IP アドレス](virtual-network-public-ip-address.md)
@@ -81,6 +84,8 @@
 ##### [CLI](virtual-network-multiple-ip-addresses-cli.md)
 ##### [テンプレート](virtual-network-multiple-ip-addresses-template.md)
 
+#### [高速ネットワークを使用した VM の作成](virtual-network-create-vm-accelerated-networking.md)
+
 ### 接続のシナリオ
 #### [仮想ネットワーク (VNet) から VNet に](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 #### [VNet (Resource Manager) から VNet に (クラシック)](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -98,9 +103,6 @@
 ##### [サンプル アプリケーション](virtual-networks-sample-app.md)
 
 ## 構成
-### VM の Accelerated Networking
-#### [Azure ポータル](virtual-network-accelerated-networking-portal.md)
-#### [PowerShell](virtual-network-accelerated-networking-powershell.md)
 ### [VM のネットワーク スループットを最適化する](virtual-network-optimize-network-bandwidth.md)
 ### アクセス制御リスト
 #### [クラシック ポータル](virtual-networks-acl.md)
