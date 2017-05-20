@@ -14,11 +14,12 @@ ms.devlang: PowerShell
 ms.topic: article
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 03/07/2017
+ms.date: 05/19/2017
 ms.author: janeng
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: da96cf25d155c1aec42bd6d4bd1813d9bf8241f7
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/27/2017
 
 ---

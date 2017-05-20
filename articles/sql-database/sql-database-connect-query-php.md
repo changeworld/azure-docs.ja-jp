@@ -13,18 +13,19 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: php
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 05/07/2017
 ms.author: meetb;carlrab;sstein
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: d4d21297618d34aa301e4e1cc814afb15045d7f7
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 2c0dc1bef0bf2b7b78e8858943ad6e0ede214681
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
 # <a name="azure-sql-database-use-php-to-connect-and-query-data"></a>Azure SQL Database: PHP を使って接続とデータの照会を行う
 
-このクイック スタートでは、Mac OS、Ubuntu Linux、Windows の各プラットフォームから [PHP](http://php.net/manual/en/intro-whatis.php) を使って Azure SQL Database に接続し、Transact-SQL ステートメントを使ってデータベース内のデータを照会、挿入、更新、削除する方法について説明します。
+このクイック スタートでは、Mac OS、Ubuntu Linux、Windows の各プラットフォームから [PHP](http://php.net/manual/en/intro-whatis.php) を使用して Azure SQL Database に接続し、Transact-SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法について説明します。
 
 このクイック スタートでは、次のクイック スタートで作成されたリソースが出発点として使用されます。
 
@@ -33,7 +34,7 @@ ms.lasthandoff: 04/21/2017
 
 ## <a name="install-php-and-database-communications-software"></a>PHP とデータベースの通信ソフトウェアのインストール
 
-このセクションの手順では、PHP による開発には慣れているが、Azure SQL Database を初めて使用するユーザーを想定しています。 PHP による開発の経験がない場合は、「[Build an app using SQL Server (SQL Server を使用してアプリを構築する)](https://www.microsoft.com/en-us/sql-server/developer-get-started/)」に移動し、**PHP** を選択してから、使用しているオペレーティング システムを選択します。
+このセクションの手順では、PHP による開発には慣れていて、Azure SQL Database は初めて使用するユーザーを想定しています。 PHP による開発の経験がない場合は、「[Build an app using SQL Server (SQL Server を使用してアプリを構築する)](https://www.microsoft.com/en-us/sql-server/developer-get-started/)」に移動し、**PHP** を選択してから、使用しているオペレーティング システムを選択します。
 
 ### <a name="mac-os"></a>**Mac OS**
 ターミナルを開き、次のコマンドを入力して、**brew**、**Microsoft ODBC Driver for Mac**、および **Microsoft PHP Drivers for SQL Server** をインストールします。 
@@ -66,7 +67,7 @@ sudo echo "extension= sqlsrv.so" >> `php --ini | grep "Loaded Configuration" | s
 ### <a name="windows"></a>**Windows**
 - [WebPlatform Installer](https://www.microsoft.com/web/downloads/platform.aspx?lang=) から PHP 7.1.1 (x64) をインストールします 
 - [Microsoft ODBC Driver 13.1](https://www.microsoft.com/download/details.aspx?id=53339) をインストールします。 
-- [Microsoft PHP Driver for SQL Server](https://pecl.php.net/package/sqlsrv/4.1.6.1/windows) の非スレッド セーフな dll をダウンロードし、PHP\v7.x\ext フォルダーに置きます。
+- [Microsoft PHP Driver for SQL Server](https://pecl.php.net/package/sqlsrv/4.1.6.1/windows) の非スレッド セーフな dll をダウンロードし、バイナリを PHP\v7.x\ext フォルダーに配置します。
 - 次に、php.ini (C:\Program Files\PHP\v7.1\php.ini) ファイルを編集して、dll への参照を追加します。 For example:
       
       extension=php_sqlsrv.dll
@@ -84,7 +85,7 @@ Azure SQL データベースに接続するために必要な接続情報を取�
 
    ![server-name](./media/sql-database-connect-query-dotnet/server-name.png) 
 
-4. Azure SQL Database サーバーのログイン情報を忘れた場合は、[SQL データベース サーバー] ページに移動して、サーバー管理者名を表示し、必要に応じて、パスワードをリセットします。     
+4. サーバーのログイン情報を忘れた場合は、[SQL データベース サーバー] ページに移動して、サーバー管理者名を表示し、必要に応じてパスワードをリセットします。     
     
 ## <a name="select-data"></a>データの選択
 次のコードを使用して、カテゴリ別の上位 20 の製品を照会します。[sqlsrv_query()](https://docs.microsoft.com/sql/connect/php/sqlsrv-query) 関数と [SELECT](https://docs.microsoft.com/sql/t-sql/queries/select-transact-sql) Transact-SQL ステートメントを使用します。 sqlsrv_query 関数は、SQL Database に対するクエリから結果セットを取得するために使います。 この関数は基本的に任意のクエリを受け取り、 [sqlsrv_fetch_array()](http://php.net/manual/en/function.sqlsrv-fetch-array.php) を使用して反復処理できる結果セットを返します。 サーバー、データベース、ユーザー名、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。 
@@ -193,14 +194,8 @@ else{
 ```
 
 ## <a name="next-steps"></a>次のステップ
+- [最初の Azure SQL Database の設計](sql-database-design-first-database.md)
+- [SQL Server 用 Microsoft PHP ドライバー](https://github.com/Microsoft/msphpsql/)
+- [問題の報告/質問](https://github.com/Microsoft/msphpsql/issues)
 
-- [Microsoft PHP Driver for SQL Server](https://github.com/Microsoft/msphpsql/)。
-- [問題/質問を登録します](https://github.com/Microsoft/msphpsql/issues)。
-- SQL Server Management Studio を使用して接続とクエリを実行するには、[SSMS を使用した接続とクエリ](sql-database-connect-query-ssms.md)に関するページを参照してください。
-- Visual Studio を使用して接続とデータの照会を行うには、[Visual Studio Code を使った接続とデータの照会](sql-database-connect-query-vscode.md)に関するページを参照してください。
-- .NET を使用して接続とデータの照会を行うには、[.NET を使った接続とデータの照会](sql-database-connect-query-dotnet.md)に関するページを参照してください。
-- Node.js を使用して接続とデータの照会を行うには、[Node.js を使った接続とデータの照会](sql-database-connect-query-nodejs.md)に関するページを参照してください。
-- Java を使用して接続とデータの照会を行うには、[Java を使った接続とデータの照会](sql-database-connect-query-java.md)に関するページを参照してください。
-- Python を使用して接続とデータの照会を行うには、[Python を使った接続とデータの照会](sql-database-connect-query-python.md)に関するページを参照してください。
-- Ruby を使用して接続とデータの照会を行うには、[Ruby を使った接続とデータの照会](sql-database-connect-query-ruby.md)に関するページを参照してください。
 

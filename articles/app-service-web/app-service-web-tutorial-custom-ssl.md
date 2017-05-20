@@ -12,12 +12,13 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 04/21/2017
+ms.date: 05/04/2017
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 5bbdd1db655c080b4372f6728bb47207757209e4
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: a0e245121f2a9ff4109b281cd7286ed601bf64ac
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -27,12 +28,20 @@ ms.lasthandoff: 04/27/2017
 
 ![カスタム SSL 証明書付きの Web アプリ](./media/app-service-web-tutorial-custom-ssl/app-with-custom-ssl.png)
 
+このチュートリアルで学習する内容は次のとおりです。
+
+> [!div class="checklist"]
+> * アプリの価格レベルをアップグレードする
+> * カスタム SSL 証明書を App Service にバインドする
+> * アプリに HTTPS を適用する
+> * スクリプトで SSL 証明書のバインドを自動化する
+
 > [!TIP]
 > カスタム SSL 証明書を取得する必要がある場合、Azure Portal から直接取得して Web アプリにバインドすることができます。 [App Service 証明書のチュートリアル](web-sites-purchase-ssl-web-site.md)に従ってください。 
 >
 > 
 
-## <a name="before-you-begin"></a>開始する前に
+## <a name="prerequisites"></a>前提条件
 このチュートリアルの内容に従う前に、次の作業が完了していることを確認してください。
 
 - [App Service アプリを作成する](/azure/app-service/)
@@ -109,7 +118,7 @@ Web アプリに、SSL 証明書をアップロードする準備ができまし
 openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
 ```
 
-IIS または `Certreq.exe` を使用して証明書の要求を生成した場合、まず、ローカルのコンピューターに証明書をインストールします。その後、「[証明書を秘密キーと共にエクスポートする](https://technet.microsoft.com/library/cc754329(v=ws.11).aspx)」に記載されている手順に従って、PFX にエクスポートします。
+IIS または _Certreq.exe_ を使用して証明書の要求を生成した場合、まず、ローカルのコンピューターに証明書をインストールします。その後、「[証明書を秘密キーと共にエクスポートする](https://technet.microsoft.com/library/cc754329(v=ws.11).aspx)」に記載されている手順に従って、PFX にエクスポートします。
 
 ### <a name="upload-your-ssl-certificate"></a>SSL 証明書のアップロード
 
@@ -156,7 +165,7 @@ Web アプリで IP ベースの SSL を使用していない場合、[カスタ
 
 Web アプリに A レコードをマップした場合は、この新規の専用 IP アドレスでドメイン レジストリを更新します。
 
-Web アプリの **[カスタム ドメイン]** ページが、新規の専用 IP アドレスで更新されます。 [この IP アドレスをコピー](app-service-web-tutorial-custom-domain.md#info)して、この新しい IP アドレスに [A レコードを再マップ](app-service-web-tutorial-custom-domain.md#create-the-a-record)します。
+Web アプリの **[カスタム ドメイン]** ページが、新規の専用 IP アドレスで更新されます。 [この IP アドレスをコピー](app-service-web-tutorial-custom-domain.md#info)して、この新しい IP アドレスに [A レコードを再マップ](app-service-web-tutorial-custom-domain.md#create-a)します。
 
 <a name="test"></a>
 
@@ -177,10 +186,10 @@ Web アプリの **[カスタム ドメイン]** ページが、新規の専用 
 ## <a name="enforce-https"></a>HTTPS の適用
 HTTP による Web アプリへのアクセスを許可する場合は、この手順をスキップしてください。 
 
-App Service では HTTPS の使用が強制されないため、どなたでも引き続き HTTP を使用してアプリにアクセスできます**。 Web アプリで HTTPS を強制するには、Web アプリの `web.config` ファイルで書き換え規則を定義することができます。 App Service は、Web アプリの言語フレームワークに関係なく、このファイルを使用します。
+App Service では HTTPS の使用が強制されないため、どなたでも引き続き HTTP を使用してアプリにアクセスできます**。 Web アプリに HTTPS を強制するために、Web アプリの _web.config_ ファイルで書き換え規則を定義することができます。 App Service は、Web アプリの言語フレームワークに関係なく、このファイルを使用します。
 
 > [!NOTE]
-> 言語に固有の要求のリダイレクトがあります。 ASP.NET MVC では、`web.config` 内の書き換え規則の代わりに [RequireHttps](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) フィルターを使用できます ([セキュリティで保護された ASP.NET MVC 5 アプリを Web アプリにデプロイする方法](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)に関するページを参照してください)。
+> 言語に固有の要求のリダイレクトがあります。 ASP.NET MVC では、_web.config_ 内の書き換え規則の代わりに [RequireHttps](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) フィルターを使用できます ([セキュリティで保護された ASP.NET MVC 5 アプリを Web アプリにデプロイする方法](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)に関するページを参照してください)。
 > 
 > 
 
@@ -190,7 +199,7 @@ App Service では HTTPS の使用が強制されないため、どなたでも�
 
 「[FTP/S を使用した Azure App Service へのアプリのデプロイ](app-service-deploy-ftp.md)」の指示に従って、Web アプリの FTP エンドポイントに接続します。 
 
-このファイルは、`/home/site/wwwroot` にあります。 ない場合は、次の XML で `web.config` をこのフォルダーに作成します。
+このファイルは、_/home/site/wwwroot_ にあります。 ない場合は、次の XML を含む _web.config_ をこのフォルダーに作成します。
 
 ```xml   
 <?xml version="1.0" encoding="UTF-8"?>
@@ -213,7 +222,7 @@ App Service では HTTPS の使用が強制されないため、どなたでも�
 </configuration>
 ```
 
-既存の `web.config` の場合、`<rule>` タグ全体を `web.config` の `configuration/system.webServer/rewrite/rules` 要素にコピーするだけで済みます。 他の `<rule>` タグが `web.config` 内にある場合は、コピーした `<rule>` タグを他の `<rule>` タグの前に配置します。
+既存の _web.config_ の場合は、`<rule>` タグ全体を _web.config_ の `configuration/system.webServer/rewrite/rules` 要素にコピーするだけで済みます。 他の `<rule>` タグが _web.config_ 内にある場合は、コピーした `<rule>` タグを他の `<rule>` タグの前に配置します。
 
 この規則は、ユーザーが HTTP を Web アプリに要求したときに、HTTPS プロトコルに HTTP 301 (永続的リダイレクト) を返します。 たとえば、`http://contoso.com` から `https://contoso.com` にリダイレクトします。
 
@@ -228,29 +237,45 @@ IIS URL 書き換えモジュールの詳細については、 [URL 書き換え
 次のコマンドは、エクスポートした PFX ファイルをアップロードし、拇印を取得します。 
 
 ```bash
-thumprint=$(az appservice web config ssl upload --certificate-file <path_to_PFX_file> \
---certificate-password <PFX_password> --name <app_name> --resource-group <resource_group_name> \
---query thumbprint --output tsv)
+thumprint=$(az appservice web config ssl upload \
+    --name <app_name> \
+    --resource-group <resource_group_name> \
+    --certificate-file <path_to_PFX_file> \
+    --certificate-password <PFX_password> \
+    --query thumbprint \
+    --output tsv)
 ```
 
 次のコマンドは、直前のコマンドで取得した拇印を使用して、SNI ベースの SSL バインドを追加します。
 
 ```bash
-az appservice web config ssl bind --certificate-thumbprint $thumbprint --ssl-type SNI \
---name <app_name> --resource-group <resource_group_name>
+az appservice web config ssl bind \
+    --name <app_name> \
+    --resource-group <resource_group_name>
+    --certificate-thumbprint $thumbprint \
+    --ssl-type SNI \
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-次のコマンドは、エクスポートした PFX ファイルをアップロードし、SNI ベースの SSL バインドを取得します。
+次のコマンドは、エクスポートした PFX ファイルをアップロードし、SNI ベースの SSL バインドを追加します。
 
 ```PowerShell
-New-AzureRmWebAppSSLBinding -WebAppName <app_name> -ResourceGroupName <resource_group_name> -Name <dns_name> `
--CertificateFilePath <path_to_PFX_file> -CertificatePassword <PFX_password> -SslState SniEnabled
+New-AzureRmWebAppSSLBinding `
+    -WebAppName <app_name> `
+    -ResourceGroupName <resource_group_name> `
+    -Name <dns_name> `
+    -CertificateFilePath <path_to_PFX_file> `
+    -CertificatePassword <PFX_password> `
+    -SslState SniEnabled
 ```
-## <a name="more-resources"></a>その他のリソース
-* [Microsoft Azure のトラスト センター](/support/trust-center/security/)
-* [Azure Web Sites でロックを解除された構成オプション](https://azure.microsoft.com/blog/2014/01/28/more-to-explore-configuration-options-unlocked-in-windows-azure-web-sites/)
-* [診断ログの有効化](web-sites-enable-diagnostic-log.md)
-* [Azure App Service での Web アプリの構成](web-sites-configure.md)
+## <a name="what-you-have-learned"></a>学習した内容
+
+このチュートリアルで学習した内容は次のとおりです。
+
+> [!div class="checklist"]
+> * アプリの価格レベルをアップグレードする
+> * カスタム SSL 証明書を App Service にバインドする
+> * アプリに HTTPS を適用する
+> * スクリプトで SSL 証明書のバインドを自動化する
 
