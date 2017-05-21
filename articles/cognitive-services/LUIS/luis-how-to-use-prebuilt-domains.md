@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 03/01/2017
 ms.author: cahann
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 2c4d47e7d33ccc6789271e9b7af6ed7c3194f917
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 7a6d28696aab3731a6a31b41820e7c40c1e6169d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/17/2017
 
 ---
 
@@ -31,7 +31,9 @@ LUIS offers 20 prebuilt domains. They include but are not limited to:
 | Places  | Handling queries related to places like businesses, institutions, restaurants, public spaces and addresses.|
 | Utilities  | Handling requests that are common in many domains, like "help", "repeat", "start over".|
 
-Browse the **Prebuilt domains** tab to see other prebuilt domains you can use in your app. Click on the tile for a domain to learn about its intents and entities.
+Browse the **Prebuilt domains** tab to see other prebuilt domains you can use in your app. Click on the tile for a domain to add it to your app, or click on "learn more" in its tile to learn about its intents and entities.
+
+
 ![Add prebuilt domain](./media/luis-how-to-prebuilt-domain-entities/add-prebuilt-domain.png)
 
 Within a domain, look for individual intents and entities that you want to use.
@@ -50,7 +52,7 @@ Prebuilt domains are designed to be general and contain many intents and entitie
 > The intents and entities in a prebuilt domain work best together. It's better to combine intents and entities from the same domain when possible.
 > * A best practice is to use related intents from the same domain. For example, if you are customizing the `MakeReservation` intent in the **Places** domain, then select the `Cancel` intent from the **Places** domain instead of the Cancel intent in the **Events** or **Utilities** domains.
 
-### <a name="changing-the-behavior-of-an-prebuilt-domain-intent"></a>Changing the behavior of an prebuilt domain intent
+### <a name="changing-the-behavior-of-a-prebuilt-domain-intent"></a>Changing the behavior of a prebuilt domain intent
 You might find that a prebuilt domain contains an intent that is similar to an intent you want to have in your LUIS app but you want it to behave differently. For example, the **Places** prebuilt domain provides an `MakeReservation` intent for making a restaurant reservation, but you want your app to use that intent to make hotel reservations. In that case, you can modify the behavior of that intent by providing utterances to LUIS about making hotel reservations and labeling them using the `MakeReservation` intent, so then LUIS can be retrained to recognize the `MakeReservation` intent in a request to book a hotel.
 
 > [!TIP]
