@@ -2,6 +2,7 @@
 ## [Traffic Manager について](traffic-manager-overview.md)
 ## [ルーティング方法](traffic-manager-routing-methods.md)
 ### [Traffic Manager で使用される国/地域の階層](traffic-manager-geographic-regions.md)
+## [入れ子になった Traffic Manager プロファイル](traffic-manager-nested-profiles.md)
 ## [エンドポイントの種類](traffic-manager-endpoint-types.md)
 ## [エンドポイントの監視](traffic-manager-monitoring.md)
 ## [FAQ](traffic-manager-FAQs.md)

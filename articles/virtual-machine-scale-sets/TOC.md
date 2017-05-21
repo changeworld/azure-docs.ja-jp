@@ -13,6 +13,7 @@
 ## テンプレートの作成
 ### [スケール セット テンプレートについて](virtual-machine-scale-sets-mvss-start.md)
 ### [仮想ネットワークの追加](virtual-machine-scale-sets-mvss-existing-vnet.md)
+### [カスタム イメージの使用](virtual-machine-scale-sets-mvss-custom-image.md)
 
 ## デプロイ
 ### [ポータルでの作成](virtual-machine-scale-sets-portal-create.md)

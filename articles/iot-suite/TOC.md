@@ -11,6 +11,7 @@
 ## [コネクティッド ファクトリ ソリューションの概要](iot-suite-connected-factory-overview.md)
 ## [リモート監視ソリューションのチュートリアル](iot-suite-remote-monitoring-sample-walkthrough.md)
 ## [予測的なメンテナンス ソリューションのチュートリアル](iot-suite-predictive-walkthrough.md)
+## [コネクティッド ファクトリ ソリューションのチュートリアル](iot-suite-connected-factory-sample-walkthrough.md)
 ## [Raspberry Pi を接続する](iot-suite-raspberry-pi-kit-get-started.md)
 ### C の使用
 #### [シミュレートされたデータ](iot-suite-raspberry-pi-kit-c-get-started-simulator.md)

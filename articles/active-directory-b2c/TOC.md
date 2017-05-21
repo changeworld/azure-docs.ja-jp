@@ -1,31 +1,30 @@
 # [概要](active-directory-b2c-overview.md)
 
-# 作業の開始
+# 作業開始
 ## [Azure AD B2C ディレクトリの作成](active-directory-b2c-get-started.md)
 ## [アプリケーションの登録](active-directory-b2c-app-registration.md)
 ## モバイル アプリとデスクトップ アプリ
 ### [概要](active-directory-b2c-reference-oauth-code.md)
 ### iOS
 #### [MSAL を使用した iOS Swift](https://github.com/Azure-Samples/active-directory-b2c-ios-swift-native-msal)
-#### [AppAuth を使用した iOS ObjC](https://github.com/Azure-Samples/active-directory-b2c-ios-native-appauth)
+#### [AppAuth を使用した iOS ObjC](active-directory-b2c-devquickstarts-ios.md)
 ### Android
 #### [MSAL を使用した Android](https://github.com/Azure-Samples/active-directory-b2c-android-native-msal)
-#### [AppAuth を使用した Android](https://github.com/Azure-Samples/active-directory-b2c-android-native-appauth)
+#### [AppAuth を使用した Android](active-directory-b2c-devquickstarts-android.md)
 ### [.NET](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop)
 ### [Xamarin](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native)
 ## Web Apps
 ### [概要](active-directory-b2c-reference-oidc.md)
 ### [ASP.NET](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
-### [.NET Core](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp)
-### [NodeJS](active-directory-b2c-devquickstarts-web-node.md)
+### [ASP.NET Core](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp)
+### [Node.js](active-directory-b2c-devquickstarts-web-node.md)
 ## シングル ページ アプリ
 ### [概要](active-directory-b2c-reference-spa.md)
-### [JavaScript](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
-### [.NET](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi)
-### [NodeJS](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi)
+### [MSAL を使用した JavaScript](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
+### [Hello を使用した JavaScript](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi)
 ## Web API
 ### [ASP.NET](active-directory-b2c-devquickstarts-api-dotnet.md)
-### [NodeJS](active-directory-b2c-devquickstarts-api-node.md)
+### [Node.JS](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)
 ### [.NET Web API の呼び出し](active-directory-b2c-devquickstarts-web-api-dotnet.md)
 
 # ガイド
@@ -48,9 +47,10 @@
 ## [UI をカスタマイズする](active-directory-b2c-reference-ui-customization.md)
 ### [カスタマイズ用のヘルパー ツール](active-directory-b2c-reference-ui-customization-helper-tool.md)
 ## [言語のカスタマイズ](active-directory-b2c-reference-language-customization.md)
+## [Reporting API の使用](active-directory-b2c-refererence-usage-reporting-api.md)
 ## [セルフサービスのパスワード リセットをセットアップする](active-directory-b2c-reference-sspr.md)
 
-# Identity Experience Engine
+# Identity Experience Framework
 ## [カスタム ポリシー](active-directory-b2c-overview-custom.md)
 ## ガイド
 ### [作業の開始](active-directory-b2c-get-started-custom.md)
@@ -70,7 +70,6 @@
 ## リファレンス
 ### [リリース ノート](active-directory-b2c-developer-notes-custom.md)
 
-
 # リファレンス
 ## 用語集
 ### [アプリケーションの種類](active-directory-b2c-apps.md)
@@ -78,13 +77,14 @@
 ### [組み込みのポリシー](active-directory-b2c-reference-policies.md)
 ### [トークン](active-directory-b2c-reference-tokens.md)
 ## [利用可能なリージョンとデータの保存場所](active-directory-b2c-reference-tenant-type.md)
+## [課金の有効化](active-directory-b2c-how-to-enable-billing.md)
 ## [脅威管理](active-directory-b2c-reference-threat-management.md)
-## [制限と制約事項](active-directory-b2c-limitations.md)
+## [制限事項と制約事項](active-directory-b2c-limitations.md)
 ## [ディレクトリを作成する際の問題](active-directory-b2c-support-create-directory.md)
 
 # 関連項目
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)
-## [Multi-factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
+## [多要素認証](../multi-factor-authentication/multi-factor-authentication.md)
 
 # リソース
 ## [料金](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
