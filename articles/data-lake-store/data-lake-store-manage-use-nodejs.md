@@ -58,7 +58,7 @@ npm install azure-arm-datalake-store
 ```
 
 ## <a name="authenticate-using-azure-active-directory"></a>Azure Active Directory を使用して認証する
-以下のスニペットは、Azure AD を使用した Data Lake Store での&2; つの別々の認証方法を示したものです。 Data Lake Store での認証に利用できるさまざまな方法の詳細については、[Data Lake Store での Azure Active Directory を使用した認証](data-lake-store-authenticate-using-active-directory.md)に関するページを参照してください。
+以下のスニペットは、Azure AD を使用した Data Lake Store での 2 つの別々の認証方法を示したものです。 Data Lake Store での認証に利用できるさまざまな方法の詳細については、[Data Lake Store での Azure Active Directory を使用した認証](data-lake-store-authenticate-using-active-directory.md)に関するページを参照してください。
 
 次のスニペットには、Azure AD ドメイン名や Azure AD アプリのクライアント ID などの入力値も必要です。これらの詳細情報は、作成した Azure AD アプリケーションからすべて取得できます。また、アプリケーションの詳細は上記のリンク先にも記載されています。
 
