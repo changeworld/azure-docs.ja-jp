@@ -3,30 +3,31 @@ title: "Application Insights を使用して Azure で実行中の Web アプリ
 description: "フットプリントの小さいプロファイラーを使用して Web サーバー コードのホット パスを特定できます。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 04/03/2017
-ms.author: awills
+ms.date: 05/04/2017
+ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 13a2883c59092c964cf3c353e767839c5f9ef788
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 6a3c4273042a7684307d56341de1065ad45eb617
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="profiling-live-azure-web-apps-with-application-insights-preview"></a>Application Insights を使用して実行中の Azure Web アプリのプロファイリングを行う (プレビュー)
+# <a name="profiling-live-azure-web-apps-with-application-insights"></a>Application Insights を使用して実行中の Azure Web アプリのプロファイリングを行う
 
-*Application Insights のこの機能はプレビュー段階です。*
+*Application Insights のこの機能は、App Services の正規版であり、Compute のプレビュー版です。*
 
-[Azure Application Insights](app-insights-overview.md) のプロファイリング ツールを使用して、実行中の Web アプリケーションで各メソッドにどれくらい時間がかかっているかを確認できます。 アプリによって処理された要求の詳細なプロファイルがライブ表示され、最も多くの時間がかかっている "ホット パス" が強調表示されます。 また、複数の応答時間が含まれたサンプルが自動的に選択されます。 オーバーヘッドは、さまざまな手法を使用して最小化されます。 
+[Azure Application Insights](app-insights-overview.md) のプロファイリング ツールを使用して、実行中の Web アプリケーションで各メソッドにどれくらい時間がかかっているかを確認できます。 アプリによって処理された要求の詳細なプロファイルがライブ表示され、最も多くの時間がかかっている "ホット パス" が強調表示されます。 また、複数の応答時間が含まれたサンプルが自動的に選択されます。 オーバーヘッドは、さまざまな手法を使用して最小化されます。
 
 このプロファイラーは、現在、Azure App Services で Basic 価格レベル以上で実行されている ASP.NET Web アプリに対して使用できます  (ASP.NET Core を使用している場合は、ターゲット フレームワークが `.NetCoreApp` である必要があります)。
+
 
 <a id="installation"></a>
 ## <a name="enable-the-profiler"></a>プロファイラーを有効にする
@@ -35,17 +36,42 @@ ms.lasthandoff: 04/27/2017
 
 *ASP.NET Core を使用している場合は、[ここをクリックしてください](#aspnetcore)。*
 
-[https://portal.azure.com](https://portal.azure.com) で、Web アプリの Application Insights リソースを開きます。 **[パフォーマンス]** を開き、**[構成]** をクリックします。 アプリを選択し、ウィザードの手順に従います。
+[https://portal.azure.com](https://portal.azure.com) で、Web アプリの Application Insights リソースを開きます。 **[パフォーマンス]** を開き、**[Application Insights Profiler を有効にする...]** をクリックします。
+
+![Profiler の有効化バナーをクリック][enable-profiler-banner]
+
+または、**[構成]** をいつでもクリックして、状態を表示し、Profiler を有効または無効にすることができます。
 
 ![[パフォーマンス] ブレードで [構成] をクリックします。][performance-blade]
 
-* *[構成] ボタンがない場合は、[こちらの手動の手順](#manual-installation)を実行してください。*
+Application Insights で構成されている Web アプリは、[構成] ブレードに表示されます。 必要に応じて、手順に従って Profiler エージェントをインストールします。 Application Insights で Web アプリがまだ構成されていない場合は、*[Add Linked Apps (リンクされたアプリの追加)]* をクリックします。
 
-プロファイラーの停止や再起動を行う必要がある場合は、**対象の App Service リソース**の **Web ジョブ**で実行できます。 また、削除する場合は、**[拡張機能]** で実行できます。
+[構成] ブレードの *[Enable Profiler (Profiler を有効にする)]* または *[Disable Profiler (Profiler を無効にする)]* ボタンを使用して、すべてのリンクされた Web アプリの Profiler を管理します。
+
+
+
+![[構成] ブレード][linked app services]
+
+個々の App Service インスタンスのプロファイラーを停止または再起動するには、**対象の App Service リソース**の **Web ジョブ**で実行できます。 また、削除する場合は、**[拡張機能]** で実行できます。
+
+![Web ジョブのプロファイラーを無効にする][disable-profiler-webjob]
+
+パフォーマンスの問題をできるだけ早く検出するために、すべての Web アプリで Profiler を有効にすることをお勧めします。
 
 Web アプリケーションに対する変更を WebDeploy を使用してデプロイする場合は、デプロイ中の削除対象から **App_Data** フォルダーを除外してください。 除外しなかった場合、次に Web アプリケーションを Azure にデプロイするときにプロファイラーの拡張機能のファイルが削除されます。
 
-**[更新]** Application Insights サイト拡張機能は、2.3 リリースからプロファイラー エージェントを統合しました。 これによって、元の Application Insights プロファイラー サイト拡張機能が置き換えらえます。 **[構成]** ウィザードを使用して最新バージョンに移行できます。
+### <a name="using-profiler-with-azure-vms-and-compute-resources-preview"></a>Azure VM および Compute リソースでのプロファイラーの使用 (プレビュー)
+
+[実行時の Azure App Services に Application Insights を有効](app-insights-azure-web-apps.md#run-time-instrumentation-with-application-insights)にした場合、自動的に Profiler が使用できるようになります。 (リソースに既に Application Insights を有効にしている場合は、**[構成]** ウィザードを使用して最新バージョンに更新する必要がある場合があります。)
+
+[Azure Compute リソース用の Profiler のプレビュー版](https://go.microsoft.com/fwlink/?linkid=848155)が利用可能です。
+
+
+## <a name="limits"></a>制限
+
+データは既定で 5 日間保持されます。 また、1 日に最大 10 GB のデータを取り込むことができます。
+
+プロファイラー サービスの料金は発生しません。 Web アプリは、少なくとも App Services の Basic レベルでホストする必要があります。
 
 ## <a name="viewing-profiler-data"></a>プロファイラー データを表示する
 
@@ -74,30 +100,32 @@ Web アプリケーションに対する変更を WebDeploy を使用してデ�
 
 
 * **ラベル**: 関数またはイベントの名前。 このツリーには、コードと発生したイベント (SQL イベントや http イベント) が混在して表示されます。 最上位のイベントは要求時間全体に相当します。
-* **メトリック**: 経過時間。
-* **When (実行期間)**: 関数/イベントが他の関数に関連して実行された期間を示しています。 
+* **経過時間**: 操作の開始から終了までの期間。
+* **When (実行期間)**: 関数/イベントが他の関数に関連して実行された期間を示しています。
 
 ## <a name="how-to-read-performance-data"></a>パフォーマンス データの解釈方法
 
-Microsoft サービス プロファイラーでは、アプリケーションのパフォーマンス分析に、サンプリング メソッドとインストルメンテーションを組み合わせて使用します。 詳細情報の収集中、サービス プロファイラーは、コンピューターの各 CPU の命令ポインターをミリ秒単位サンプリングします。 各サンプルでは、実行中のスレッドのコール スタック全体がキャプチャされ、これをもとに抽象化が最も高いレベルと最も低いレベルの両方でそのスレッドが実行した内容に関する有用な詳細情報が取得されます。 また、サービス プロファイラーでは、アクティビティの相関関係と因果関係を追跡するために、他のイベント (コンテキスト スイッチ イベント、TPL イベント、スレッドプール イベントなど) も収集されます。 
+Microsoft サービス プロファイラーでは、アプリケーションのパフォーマンス分析に、サンプリング メソッドとインストルメンテーションを組み合わせて使用します。
+詳細情報の収集中、サービス プロファイラーは、コンピューターの各 CPU の命令ポインターをミリ秒単位サンプリングします。
+各サンプルでは、実行中のスレッドのコール スタック全体がキャプチャされ、これをもとに抽象化が最も高いレベルと最も低いレベルの両方でそのスレッドが実行した内容に関する有用な詳細情報が取得されます。 また、サービス プロファイラーでは、アクティビティの相関関係と因果関係を追跡するために、他のイベント (コンテキスト スイッチ イベント、TPL イベント、スレッドプール イベントなど) も収集されます。
 
 タイムライン ビューに表示されるコール スタックは、上記のサンプリングとインストルメンテーションの結果です。 スレッドのコール スタック全体がキャプチャされるため、各サンプルには、.NET Framework だけでなく、参照している他のフレームワークのコードも含まれます。
 
 ### <a id="jitnewobj"></a>オブジェクトの割り当て (`clr!JIT\_New or clr!JIT\_Newarr1`)
-`clr!JIT\_New and clr!JIT\_Newarr1` は、マネージ ヒープからメモリを割り当てる .NET Framework 内部のヘルパー関数です。 `clr!JIT\_New` は、オブジェクトが割り当てられるときに呼び出されます。 `clr!JIT\_Newarr1` は、オブジェクト配列が割り当てられるときに呼び出されます。 これら 2 つの関数は、通常は非常に高速で、比較的短時間で完了します。 タイムライン上で `clr!JIT\_New` または `clr!JIT\_Newarr1` に長い時間がかかっている場合は、コードが多くのオブジェクトを割り当て、大量のメモリを消費している可能性があることを示しています。 
+`clr!JIT\_New and clr!JIT\_Newarr1` は、マネージ ヒープからメモリを割り当てる .NET Framework 内部のヘルパー関数です。 `clr!JIT\_New` は、オブジェクトが割り当てられるときに呼び出されます。 `clr!JIT\_Newarr1` は、オブジェクト配列が割り当てられるときに呼び出されます。 これら 2 つの関数は、通常は非常に高速で、比較的短時間で完了します。 タイムライン上で `clr!JIT\_New` または `clr!JIT\_Newarr1` に長い時間がかかっている場合は、コードが多くのオブジェクトを割り当て、大量のメモリを消費している可能性があることを示しています。
 
 ### <a id="theprestub"></a>コードの読み込み (`clr!ThePreStub`)
 `clr!ThePreStub` は、最初に実行するコードを準備する .NET Framework 内部のヘルパー関数です。 これには一般的に、JIT (Just In Time) コンパイルなどが含まれます (ただし、これに限定されません)。 C# の各メソッドでは、プロセスの有効期間中に `clr!ThePreStub` が最大 1 回呼び出されます。
 
-要求に対して `clr!ThePreStub` がかなりの時間を要している場合は、その要求がこのメソッドを実行する最初の要求であり、.NET Framework ランタイムがメソッドを読み込むのに時間がかかっていることを示しています。 このような場合は、ユーザーがアクセスする前にコードのその部分を実行するウォーミングアップ プロセスを追加するか、アセンブリで NGen を実行することを検討してください。 
+要求に対して `clr!ThePreStub` がかなりの時間を要している場合は、その要求がこのメソッドを実行する最初の要求であり、.NET Framework ランタイムがメソッドを読み込むのに時間がかかっていることを示しています。 このような場合は、ユーザーがアクセスする前にコードのその部分を実行するウォーミングアップ プロセスを追加するか、アセンブリで NGen を実行することを検討してください。
 
 ### <a id="lockcontention"></a>ロックの競合 (`clr!JITutil\_MonContention` or `clr!JITutil\_MonEnterWorker`)
-`clr!JITutil\_MonContention` と `clr!JITutil\_MonEnterWorker` は、現在のスレッドが、ロックが解放されるのを待機していることを示しています。 これは通常、C# のロック ステートメントの実行時、Monitor.Enter メソッドの呼び出し時、または MethodImplOptions.Synchronized 属性を持つメソッドの呼び出し時に表示されます。 ロックの競合は一般的に、スレッド A がロックを取得し、それを解放する前にスレッド B が同じロックを取得しようとすると発生します。 
+`clr!JITutil\_MonContention` と `clr!JITutil\_MonEnterWorker` は、現在のスレッドが、ロックが解放されるのを待機していることを示しています。 これは通常、C# のロック ステートメントの実行時、Monitor.Enter メソッドの呼び出し時、または MethodImplOptions.Synchronized 属性を持つメソッドの呼び出し時に表示されます。 ロックの競合は一般的に、スレッド A がロックを取得し、それを解放する前にスレッド B が同じロックを取得しようとすると発生します。
 
 ### <a id="ngencold"></a>コードの読み込み (`[COLD]`)
-`mscorlib.ni![COLD]System.Reflection.CustomAttribute.IsDefined` のように、メソッド名に `[COLD]` が含まれている場合は、.NET Framework ランタイムが<a href="https://msdn.microsoft.com/library/e7k32f4k.aspx">ガイド付き最適化のプロファイル</a>によって最適化されていないコードを初めて実行していることを示しています。 これが表示されるのは、プロセスの有効期間中、メソッドごとに最大 1 回です。 
+`mscorlib.ni![COLD]System.Reflection.CustomAttribute.IsDefined` のように、メソッド名に `[COLD]` が含まれている場合は、.NET Framework ランタイムが<a href="https://msdn.microsoft.com/library/e7k32f4k.aspx">ガイド付き最適化のプロファイル</a>によって最適化されていないコードを初めて実行していることを示しています。 これが表示されるのは、プロセスの有効期間中、メソッドごとに最大 1 回です。
 
-要求に対してコードの読み込みがかなりの時間を要している場合は、その要求がこのメソッドの最適化されていない部分を実行する最初の要求であることを示しています。 このような場合は、ユーザーがアクセスする前にコードのその部分を実行するウォーミングアップ プロセスを追加することを検討してください。 
+要求に対してコードの読み込みがかなりの時間を要している場合は、その要求がこのメソッドの最適化されていない部分を実行する最初の要求であることを示しています。 このような場合は、ユーザーがアクセスする前にコードのその部分を実行するウォーミングアップ プロセスを追加することを検討してください。
 
 ### <a id="httpclientsend"></a>HTTP 要求の送信
 `HttpClient.Send` などのメソッドは、コードが HTTP 要求が完了するのを待機していることを示しています。
@@ -109,7 +137,7 @@ SqlCommand.Execute などのメソッドは、コードがデータベース操�
 `AWAIT\_TIME` は、コードが別のタスクが完了するのを待機していることを示しています。 これは通常、C# の "await" ステートメントで発生します。 コードで C# の "await" が実行されると、スレッドはアンワインドして、スレッドプールの制御を戻します。"await" が終了するのを待機している間にスレッドがブロックされることはありません。 ただし、論理的に見れば、"await" を実行したスレッドは、操作の完了を待機している間 "ブロック" されます。 `AWAIT\_TIME` は、タスクが完了するのを待機しているブロック時間を示しています。
 
 ### <a id="block"></a>ブロック時間
-`BLOCKED_TIME` は、別のリソースが使用可能になるのをコードが待機していることを示しています。たとえば、同期オブジェクトを待機している、スレッドが使用可能性になるのを待機している、要求が完了するのを待機している、などが該当します。 
+`BLOCKED_TIME` は、別のリソースが使用可能になるのをコードが待機していることを示しています。たとえば、同期オブジェクトを待機している、スレッドが使用可能性になるのを待機している、要求が完了するのを待機している、などが該当します。
 
 ### <a id="cpu"></a>CPU 時間
 命令の実行中のため、CPU がビジー状態です。
@@ -128,7 +156,7 @@ SqlCommand.Execute などのメソッドは、コードがデータベース操�
 
 ### <a name="how-can-i-know-whether-application-insights-profiler-is-running"></a>Application Insights プロファイラーが実行されているかどうかを確認するにはどうすればよいですか。
 
-プロファイラーは、Web アプリで継続的な Web ジョブとして実行されます。 https://portal.azure.com で Web アプリ リソースを開き、[WebJobs] ブレードで "ApplicationInsightsProfiler" の状態を確認できます。 実行されていない場合は、**[ログ]** を開いて詳細を確認できます。 
+プロファイラーは、Web アプリで継続的な Web ジョブとして実行されます。 https://portal.azure.com で Web アプリ リソースを開き、[WebJobs] ブレードで "ApplicationInsightsProfiler" の状態を確認できます。 実行されていない場合は、**[ログ]** を開いて詳細を確認できます。
 
 ### <a name="why-cant-i-find-any-stack-examples-even-though-the-profiler-is-running"></a>プロファイラーが実行されているのにスタック サンプルが見つからないのはなぜですか。
 
@@ -148,7 +176,7 @@ Application Insights プロファイラーを有効にすると、Azure サー�
 
 ### <a id="double-counting"></a>並列スレッドの二重カウント
 
-スタック ビューアーに表示される合計時間メトリックが実際の要求期間よりも長くなる場合があります。 
+スタック ビューアーに表示される合計時間メトリックが実際の要求期間よりも長くなる場合があります。
 
 これは、要求に関連する 2 つ以上のスレッドが並行して動作している場合に発生します。 このとき、スレッド時間全体は経過時間よりも長くなります。 多くの場合、あるスレッドが他のスレッドが完了するのを待機している可能性があります。 ビューアーではこれを検出して不要な待機を省略しようとしますが、重要かもしれない情報は省略しないようにするため、結果として情報が過剰になる傾向があります。  
 
@@ -158,7 +186,7 @@ Application Insights プロファイラーを有効にすると、Azure サー�
 
 1. 表示しようとしているデータが 2 週間以上前のものである場合は、時間フィルターを絞り込んで、もう一度試します。
 
-2. プロキシまたはファイアウォールが https://gateway.azureserviceprofiler.net へのアクセスをブロックしていないことを確認します。 
+2. プロキシまたはファイアウォールが https://gateway.azureserviceprofiler.net へのアクセスをブロックしていないことを確認します。
 
 3. アプリで使用している Application Insights インストルメンテーション キーが、プロファイリングを有効にしたときに使用した Application Insights リソースと同じであることを確認します。 キーは通常は ApplicationInsights.config にありますが、web.config または app.config にある場合もあります。
 
@@ -166,10 +194,9 @@ Application Insights プロファイラーを有効にすると、Azure サー�
 
 ポータルからサポート チケットを提出してください。 その際、エラー メッセージの関連付け ID を含めてください。
 
-
 ## <a name="manual-installation"></a>手動のインストール
 
-プロファイラーを構成すると、Web アプリの設定が次のように更新されます。 この更新は、手動で行うこともできます。
+プロファイラーを構成すると、Web アプリの設定が次のように更新されます。 環境に応じて (内部ロード バランサーを使用してプライベート ネットワークでアプリケーションを実行する場合など)、手動で設定することもできます。
 
 1. [Web アプリ] コントロール ブレードで、[設定] を開きます。
 2. [.Net Framework バージョン] を [v4.6] に設定します。
@@ -179,19 +206,7 @@ Application Insights プロファイラーを有効にすると、Azure サー�
 
 ## <a id="aspnetcore"></a>ASP.NET Core のサポート
 
-ASP.NET Core アプリケーションは現在、.NET Core ランタイムでサポートされています。
-
-プロファイリングを有効にするには、アプリケーションに次のコンポーネントが含まれている必要があります。
-
-1. [Application Insights for ASP.NET Core 2.0](https://github.com/Microsoft/ApplicationInsights-aspnetcore/releases/tag/v2.0.0)
-2. [System.Diagnostics.DiagnosticSource 4.4.0-beta-25022-02](https://dotnet.myget.org/feed/dotnet-core/package/nuget/System.Diagnostics.DiagnosticSource/4.4.0-beta-25022-02)
-    * Visual Studio で、[ツール]、[NuGet パッケージ マネージャー]、[パッケージ マネージャー設定] の順にクリックします。
-    * [オプション] ダイアログで、[NuGet パッケージ マネージャー]、[パッケージ ソース] の順に選択します。
-    * [+] ボタンをクリックして、名前が "DotNet-Core-MyGet" で値が "https://dotnet.myget.org/F/dotnet-core/api/v3/index.json" である新しいパッケージ ソースを追加します。
-    * [更新] ボタンをクリックし、[オプション] ダイアログ ボックスを閉じます。
-    * ソリューション エクスプローラーで、ASP.NET Core プロジェクトを右クリックし、[NuGet パッケージの管理] を選択します。
-    * [参照] タブをクリックし、[パッケージ ソース] で [DotNet-Core-MyGet] を選択し、[プレリリースを含める] チェック ボックスをオンにします。
-    * "System.Diagnostics.DiagnosticSource" を検索し、"__4.4.0-beta-25022-02__" を選択すると、インストールされます。
+AI SDK 2.0 以降を対象とする ASP.NET Core 1.1.2 アプリケーションでは、Profiler が機能します。 
 
 
 ## <a name="next-steps"></a>次のステップ
@@ -204,4 +219,7 @@ ASP.NET Core アプリケーションは現在、.NET Core ランタイムでサ
 [trace-explorer-toolbar]: ./media/app-insights-profiler/trace-explorer-toolbar.png
 [trace-explorer-hint-tip]: ./media/app-insights-profiler/trace-explorer-hint-tip.png
 [trace-explorer-hot-path]: ./media/app-insights-profiler/trace-explorer-hot-path.png
+[enable-profiler-banner]: ./media/app-insights-profiler/enable-profiler-banner.png
+[disable-profiler-webjob]: ./media/app-insights-profiler/disable-profiler-webjob.png
+[linked app services]: ./media/app-insights-profiler/linked-app-services.png
 
