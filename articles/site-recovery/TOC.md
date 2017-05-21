@@ -9,7 +9,7 @@
 
 # 作業の開始
 ## [VMware VM を Azure にレプリケート](site-recovery-vmware-to-azure.md)
-## [物理サーバーを Azure にレプリケート](site-recovery-physical-servers-to-azure.md) 
+## [物理サーバーを Azure にレプリケート](site-recovery-physical-servers-to-azure.md)
 ## [Hyper-V VM を Azure にレプリケートする (VMM 使用)](site-recovery-vmm-to-azure.md)
 ## [Hyper-V VM を Azure にレプリケート](site-recovery-hyper-v-site-to-azure.md)
 ## [Hyper-V VM をセカンダリ サイトにレプリケートする (VMM 使用)](site-recovery-vmm-to-vmm.md)
@@ -23,6 +23,7 @@
 ### [容量の計画と Azure への VMware レプリケーションのスケーリング](site-recovery-plan-capacity-vmware.md)
 ### [Azure への VMware レプリケーションのための Deployment Planner](site-recovery-deployment-planner.md)
 ### [Hyper-V レプリケーションのための Capacity Planner](site-recovery-capacity-planner.md)
+### [ロールベースのアクセス制御](site-recovery-role-based-linked-access-control.md)
 
 ## 構成
 ### [ソース環境をセットアップする](site-recovery-set-up-vmware-to-azure.md)
