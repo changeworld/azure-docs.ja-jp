@@ -116,7 +116,7 @@
 ### [セキュリティのベスト プラクティス](iot-hub-security-best-practices.md)
 ### [セキュリティのアーキテクチャ](iot-hub-security-architecture.md)
 ### [IoT デプロイのセキュリティ保護](iot-hub-security-deployment.md)
-## Gateway SDK
+## IoT Edge
 ### デバイスのシミュレーション
 #### [Linux](iot-hub-linux-gateway-sdk-simulated-device.md)
 #### [Windows](iot-hub-windows-gateway-sdk-simulated-device.md)
@@ -129,7 +129,7 @@
 ## [Java (サービス)](/java/api/com.microsoft.azure.sdk.iot.service)
 ## [Java (デバイス)](/java/api/com.microsoft.azure.sdk.iot.device)
 ## [Azure IoT SDK](http://azure.github.io/azure-iot-sdks/)
-## [Gateway SDK](http://azure.github.io/azure-iot-gateway-sdk)
+## [Azure IoT Edge](http://azure.github.io/iot-edge/)
 ## [REST (リソース プロバイダー)](https://docs.microsoft.com/rest/api/iothub/iothubresource)
 ## [REST (デバイス ID)](https://docs.microsoft.com/rest/api/iothub/deviceapi)
 ## [REST (デバイス ツイン)](https://docs.microsoft.com/rest/api/iothub/devicetwinapi)
