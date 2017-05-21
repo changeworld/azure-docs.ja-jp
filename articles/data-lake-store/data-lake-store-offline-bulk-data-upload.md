@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/06/2017
+ms.date: 05/10/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: dae5491962b22453c517da35539ce09463d8802d
-ms.lasthandoff: 03/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: c852374b6f6ca58d807631fdfcc8e42abf99b673
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -188,7 +189,7 @@ Import/Export サービスを使用する前に、転送するデータ ファ�
     }
 }
 ````
-詳細については、[Azure Data Factory を使用した Azure Storage BLOB から Azure Data Lake Store へのデータの移動](../data-factory/data-factory-azure-datalake-connector.md#example-copy-data-from-azure-blob-to-azure-data-lake-store)に関するページを参照してください。
+詳細については、[Azure Data Factory を使用した Azure Storage BLOB から Azure Data Lake Store へのデータの移動](../data-factory/data-factory-azure-datalake-connector.md)に関するページを参照してください。
 
 ## <a name="reconstruct-the-data-files-in-azure-data-lake-store"></a>Azure Data Lake Store 内でデータ ファイルを再構築する
 初めに、319 GB のファイルを用意して、Azure Import/Export サービスを使用して転送できるように小さなサイズのファイルに分割しました。 データが Azure Data Lake Store 内に置かれたので、ファイルを元のサイズに再構築することができます。 これは、次の Azure PowerShell コマンドレットを使用して実行します。

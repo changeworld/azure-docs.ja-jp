@@ -13,12 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2017
+ms.date: 05/04/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 2dc1f8ae8e0a2986806445dc9852a54ceaaef5a4
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: b0d57fcef9eda57309d27f214edd184a38a44481
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -86,7 +87,7 @@ Azure HDInsight Spark クラスターで Microsoft Cognitive Toolkit を使用�
 
 3. Jupyter Notebook で、右上隅にある **[アップロード]** をクリックした後、GitHub リポジトリを複製した場所に移動します。
 
-    ![Jupyter Notebook を Azure HDInsight Spark クラスターにアップロードする](./media/hdinsight-apache-spark-microsoft-cognitive-toolkit.md/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png "Jupyter Notebook を Azure HDInsight Spark クラスターにアップロードする")
+    ![Jupyter Notebook を Azure HDInsight Spark クラスターにアップロードする](./media/hdinsight-apache-spark-microsoft-cognitive-toolkit/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png "Jupyter Notebook を Azure HDInsight Spark クラスターにアップロードする")
 
 4. もう 1 度 **[アップロード]** をクリックします。
 
