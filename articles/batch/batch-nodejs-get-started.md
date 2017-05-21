@@ -12,10 +12,10 @@ ms.workload: big-compute
 ms.date: 04/25/2017
 ms.author: shwetams
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: 14edac7896ac3aff8788b26906b8a97a35fae60e
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 23e833b9eb926c81fd8c02cd96d43da8cffcaa43
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 05/04/2017
 
 ---
 
@@ -45,9 +45,9 @@ ms.lasthandoff: 05/02/2017
 
 Node.js クライアントは、準備タスク (後述) と、ストレージ アカウント内のコンテナーの数に応じた一連のタスクを備えたバッチ ジョブをデプロイします。 スクリプトは、GitHub リポジトリからダウンロードできます。
 
-* [Node.js クライアント](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/storehbaseclient.js)
-* [準備タスクのシェル スクリプト](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/startup_prereq.sh)
-* [csv から JSON への変換処理スクリプト (Python)](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/processcsv.py)
+* [Node.js クライアント](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/nodejs_batch_client_sample.js)
+* [準備タスクのシェル スクリプト](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/startup_prereq.sh)
+* [csv から JSON への変換処理スクリプト (Python)](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/processcsv.py)
 
 > [!TIP]
 > 上記リンクから入手できる Node.js クライアントには、Azure Function App としてデプロイするための具体的なコードが含まれていません。 Function App を作成するための手順については、以下のリンクを参照してください。

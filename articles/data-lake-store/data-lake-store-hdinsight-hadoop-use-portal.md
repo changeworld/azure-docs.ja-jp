@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/21/2017
+ms.date: 05/04/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: 2aa5542dc095beaf951bad2b0361a3acc4468f2d
-ms.lasthandoff: 04/05/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 37211b961644fdc5567147cde946f86afb9b1aa9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -76,10 +77,9 @@ HDInsight で Data Lake Store を使用するための重要な考慮事項を�
 
 4. 既存の Data Lake Store アカウントを選択し、クラスターに固有のファイルが格納されるルート フォルダーのパスを入力します。
 
-    ![HDInsight クラスターにサービス プリンシパルを追加する](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.adls.storage.png "HDInsight クラスターにサービス プリンシパルを追加する")
-
-
     上のスクリーンショットでは、ルート フォルダーのパスが /clusters/myhdiadlcluster ですが、ここで *myhdiadlcluster* は作成するクラスターの名前です。 このような場合は、*/clusters* フォルダーがData Lake Store アカウント内に存在することを確認してください。 *myhdiadlcluster* フォルダーは、クラスターの作成時に作成されます。 同様に、ルートのパスを */hdinsight/clusters/data/myhdiadlcluter* に設定した場合は、*/hdinsight/clusters/data/* が Data Lake Store アカウント内に存在することを確認する必要があります。
+
+    ![HDInsight クラスターにサービス プリンシパルを追加する](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.adls.storage.png "HDInsight クラスターにサービス プリンシパルを追加する")
 
 5. **[Data Lake Store アクセス]** をクリックして、Data Lake Store アカウントと HDInsight クラスターの間のアクセスを構成します。 手順については、「[HDInsight クラスターと Data Lake Store の間のアクセスを構成する](#configure-access-between-hdinsight-cluster-and-data-lake-store)」を参照してください。
 

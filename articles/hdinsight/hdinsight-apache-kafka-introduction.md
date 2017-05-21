@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/09/2017
+ms.date: 05/03/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: a3ceca6cd0f470a5cd6849c345867f094b870a85
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: ca48abcdc9f9d05648a4b03bdb5fec7b4a5b7cce
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/04/2017
 
 ---
 # <a name="introducing-apache-kafka-on-hdinsight-preview"></a>HDInsight での Apache Kafka の概要 (プレビュー)
@@ -48,10 +49,6 @@ Kafka には、次の機能が用意されています。
 * **集計**: ストリーム処理を使用して異なるストリームからの情報を集計し、情報をまとめて運用データに一元化することができます。
 
 * **変換**: ストリーム処理を使用して入力された複数のトピックからのデータを結合し、1 つまたは複数の出力トピックに変換することができます。
-
-## <a name="where-do-i-start"></a>どこから始めるか
-
-Kafka クラスターの作成と Kafka の使用 (プロデューサー、コンシューマー、およびストリーミング API の使用に関する Java ベースの例を含む) の手順については、「[Get started with Kafka on HDInsight (HDInsight での Kafka の使用)](hdinsight-apache-kafka-get-started.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

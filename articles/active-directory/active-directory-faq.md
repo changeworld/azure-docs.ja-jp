@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/24/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 521169d52d37e644ba416e27c9adc8587868ab40
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 899a45d59099dec147c96e4cd175536e859e88f8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/04/2017
 
 
 ---
@@ -126,7 +127,7 @@ Azure AD には、ディレクトリと ID に関連した機能を管理する�
 - - -
 **Q: パスワードを変更しようとしているときに既存の Office 365/Azure AD パスワードを忘れた場合は、どうすればよいですか?**
 
-**A:** このような状況では、いくつかの選択肢があります。  セルフサービスによるパスワードのリセット (SSPR) が使用可能な場合は、それを使用してください。  SSPR が動作するかどうかは、その構成方法によって決まります。  詳細については、「[パスワード リセット ポータルのしくみ](active-directory-passwords-learn-more.md#how-does-the-password-reset-portal-work)」を参照してください。
+**A:** このような状況では、いくつかの選択肢があります。  セルフサービスによるパスワードのリセット (SSPR) が使用可能な場合は、それを使用してください。  SSPR が動作するかどうかは、その構成方法によって決まります。  詳細については、「[パスワード リセット ポータルのしくみ](active-directory-passwords-best-practices.md)」を参照してください。
 
 Office 365 ユーザーの場合は、「[ユーザー パスワードの再設定](https://support.office.com/en-us/article/Admins-Reset-user-passwords-7A5D073B-7FAE-4AA5-8F96-9ECD041ABA9C?ui=en-US&rs=en-US&ad=US)」で説明されている手順を使用して、パスワードをリセットできます。
 
@@ -146,7 +147,7 @@ Azure AD アカウントの場合、管理者は、次のいずれかの方法�
 これは、パスワードが、"Password"、"123456" など、一般的によく使用されるものであることを意味します。
 
 **Q: 不審なソース (ボットネット、tor エンドポイント) からのサインイン要求は B2C テナントでブロックされますか。また、これには Basic または Premium Edition のテナントが必要ですか。**</br>
-要求をフィルター処理するゲートウェイによって、ボットネットからの保護を提供します。また、これは B2C テナントすべてに適用されます。 
+要求をフィルター処理するゲートウェイによって、ボットネットからの保護を提供します。また、これは B2C テナントすべてに適用されます。
 
 ## <a name="application-access"></a>アプリケーション アクセス
 **Q: Azure AD とその機能にあらかじめ統合されているアプリケーションの一覧はどこにありますか?**
