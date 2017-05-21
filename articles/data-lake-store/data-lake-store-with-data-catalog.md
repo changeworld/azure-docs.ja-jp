@@ -33,7 +33,7 @@ ms.lasthandoff: 02/07/2017
 * **Azure Data Lake Store アカウント**。 「 [Azure ポータルで Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」の手順に従ってください。 このチュートリアルでは、 **datacatalogstore**という Data Lake Store アカウントを作成します。
 
     アカウントを作成したら、サンプル データ セットをアップロードします。 このチュートリアルでは、 **Azure Data Lake Git リポジトリ** の [AmbulanceData](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/)フォルダーにあるすべての .csv ファイルをアップロードします。 [Azure Storage Explorer](http://storageexplorer.com/)などのさまざまなクライアントを使用して、BLOB コンテナーにデータをアップロードすることができます。
-* **Azure Data Catalog**。 組織で Azure Data Catalog が既に作成されている必要があります。 組織ごとに使用できるカタログは&1; つのみです。
+* **Azure Data Catalog**。 組織で Azure Data Catalog が既に作成されている必要があります。 組織ごとに使用できるカタログは 1 つのみです。
 
 ## <a name="register-data-lake-store-as-a-source-for-data-catalog"></a>Data Catalog のソースとして Data Lake Store を登録する
 
