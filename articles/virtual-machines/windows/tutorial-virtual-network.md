@@ -15,24 +15,25 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/18/2017
 ms.author: davidmu
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 7015a5317c631dad9079f2694051fa7fb28d232b
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: e1b3e9756e149c5cba67f8b5c37e1d153dbf81ab
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 ---
 
 # <a name="manage-azure-virtual-networks-and-windows-virtual-machines-with-azure-powershell"></a>Azure PowerShell を使用した Azure Virtual Networks と Windows 仮想マシンの管理
 
-このチュートリアルでは、仮想ネットワーク (VNet) で複数の仮想マシン (VM) を作成し、仮想マシン間のネットワーク接続を構成する方法について説明します。 完了すると、HTTP 接続用のポート 80 で、インターネットから "フロント エンド" の VM にアクセスできます。 SQL Server データベース搭載の "バックエンド" VM は分離され、ポート 1433 でフロントエンド VM からのみアクセスできるようになります。
+このチュートリアルでは、仮想ネットワーク (VNet) で複数の仮想マシン (VM) を作成し、仮想マシン間のネットワーク接続を構成する方法について説明します。 完了すると、HTTP 接続用のポート 80 で、インターネットから "フロント エンド" の VM にアクセスできます。 SQL Server データベース搭載の "バックエンド" VM は分離され、ポート 1433 でフロントエンド VM からのみアクセスできます。
 
-このチュートリアルの手順は、最新バージョンの [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) モジュールを使用して行うことができます。
+このチュートリアルの手順は、最新バージョンの [Azure PowerShell](/powershell/azure/overview) モジュールを使用して行うことができます。
 
 ## <a name="create-vnet"></a>VNet を作成する
 
 VNet とは、クラウド内のユーザー独自のネットワークを表したものです。 サブスクリプション専用に Azure クラウドが論理的に分離されています。 VNet 内には、サブネット、これらのサブネットへの接続規則、VM からサブネットへの接続があります。
 
-他の Azure リソースを作成する前に、[New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup?view=azurermps-3.8.0) を使用してリソース グループを作成する必要があります。 次の例では、`myRGNetwork` という名前のリソース グループを `westus` の場所に作成します。
+他の Azure リソースを作成する前に、[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) を使用してリソース グループを作成する必要があります。 次の例では、*myRGNetwork* という名前のリソース グループを場所 *westus* に作成します。
 
 ```powershell
 New-AzureRmResourceGroup -ResourceGroupName myRGNetwork -Location westus
@@ -40,7 +41,7 @@ New-AzureRmResourceGroup -ResourceGroupName myRGNetwork -Location westus
 
 サブネットは、VNet の子リソースで、IP アドレスのプレフィックスを使用して、CIDR ブロック内のアドレス空間のセグメントの定義に役立ちます。 NIC をサブネットに追加し、VM に接続して、さまざまなワークロードへの接続を提供できます。
 
-[New-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig?view=azurermps-3.8.0) を使用してサブネットを作成します。
+[New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) を使用してサブネットを作成します。
 
 ```powershell
 $frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig `
@@ -48,7 +49,7 @@ $frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig `
   -AddressPrefix 10.0.0.0/24
 ```
 
-[New-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetwork?view=azurermps-3.8.0) を使用して、`myFrontendSubnet` を使用する `myVNet` という名前の VNet を作成します。
+[New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) で *myFrontendSubnet* を使用して、*myVNet* という名前の VNET を作成します。
 
 ```powershell
 $vnet = New-AzureRmVirtualNetwork `
@@ -61,9 +62,9 @@ $vnet = New-AzureRmVirtualNetwork `
 
 ## <a name="create-front-end-vm"></a>フロントエンド VM を作成する
 
-VM が VNet で通信するには、仮想ネットワーク インターフェイス (NIC) が必要です。 `myFrontendVM` にはインターネットからアクセスするため、パブリック IP アドレスも必要です。 
+VM が VNet で通信するには、仮想ネットワーク インターフェイス (NIC) が必要です。 *myFrontendVM* にはインターネットからアクセスするため、パブリック IP アドレスも必要です。 
 
-[New-AzureRmPublicIpAddress](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermpublicipaddress?view=azurermps-3.8.0) を使用してパブリック IP アドレスを作成します。
+[New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) を使用してパブリック IP アドレスを作成します。
 
 ```powershell
 $pip = New-AzureRmPublicIpAddress `
@@ -73,7 +74,7 @@ $pip = New-AzureRmPublicIpAddress `
   -Name myPublicIPAddress
 ```
 
-[New-AzureRmNetworkInterface](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermnetworkinterface?view=azurermps-3.8.0) を使用して、NIC を作成します。
+[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) を使用して、NIC を作成します。
 
 
 ```powershell
@@ -91,36 +92,61 @@ $frontendNic = New-AzureRmNetworkInterface `
 $cred = Get-Credential
 ```
 
-[New-AzureRmVMConfig](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmconfig?view=azurermps-3.8.0)、[Set-AzureRmVMOperatingSystem](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmoperatingsystem?view=azurermps-3.8.0)、[Set-AzureRmVMSourceImage](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmsourceimage?view=azurermps-3.8.0)、[Set-AzureRmVMOSDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmosdisk?view=azurermps-3.8.0)、[Add-AzureRmVMNetworkInterface](https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvmnetworkinterface?view=azurermps-3.8.0)、[New-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm?view=azurermps-3.8.0) を使用して、VM を作成します。 
+[New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig)、[Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem)、[Set-AzureRmVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage)、[Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk)、[Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface)、[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使用して、VM を作成します。 
 
 ```powershell
-$frontendVM = New-AzureRmVMConfig -VMName myFrontendVM -VMSize Standard_D1
-$frontendVM = Set-AzureRmVMOperatingSystem -VM $frontendVM -Windows -ComputerName myFrontendVM -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
-$frontendVM = Set-AzureRmVMSourceImage -VM $frontendVM -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2016-Datacenter -Version latest
-$frontendVM = Set-AzureRmVMOSDisk -VM $frontendVM -Name myFrontendOSDisk -DiskSizeInGB 128 -CreateOption FromImage -Caching ReadWrite
-$frontendVM = Add-AzureRmVMNetworkInterface -VM $frontendVM -Id $frontendNic.Id
-New-AzureRmVM -ResourceGroupName myRGNetwork -Location westus -VM $frontendVM
+$frontendVM = New-AzureRmVMConfig `
+    -VMName myFrontendVM `
+    -VMSize Standard_D1
+$frontendVM = Set-AzureRmVMOperatingSystem `
+    -VM $frontendVM `
+    -Windows `
+    -ComputerName myFrontendVM `
+    -Credential $cred `
+    -ProvisionVMAgent `
+    -EnableAutoUpdate
+$frontendVM = Set-AzureRmVMSourceImage `
+    -VM $frontendVM `
+    -PublisherName MicrosoftWindowsServer `
+    -Offer WindowsServer `
+    -Skus 2016-Datacenter `
+    -Version latest
+$frontendVM = Set-AzureRmVMOSDisk `
+    -VM $frontendVM `
+    -Name myFrontendOSDisk `
+    -DiskSizeInGB 128 `
+    -CreateOption FromImage `
+    -Caching ReadWrite
+$frontendVM = Add-AzureRmVMNetworkInterface `
+    -VM $frontendVM `
+    -Id $frontendNic.Id
+New-AzureRmVM `
+    -ResourceGroupName myRGNetwork `
+    -Location westus `
+    -VM $frontendVM
 ```
 
-## <a name="install-web-server"></a>Web サーバーをインストールする
+## <a name="install-web-server"></a>Web サーバーのインストール
 
-リモート デスクトップ セッションを使用して、`myFrontendVM` に IIS をインストールできます。 アクセスするには、VM のパブリック IP アドレスを取得する必要があります。
+リモート デスクトップ セッションを使用して、*myFrontendVM* に IIS をインストールできます。 アクセスするには、VM のパブリック IP アドレスを取得する必要があります。
 
-[Get-AzureRmPublicIPAddress](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermpublicipaddress?view=azurermps-3.8.0) を使用して、`myFrontendVM` のパブリック IP アドレスを取得します。 次の例では、先ほど作成した `myPublicIPAddress` の IP アドレスを取得しています。
+[Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) を使用して、*myFrontendVM* のパブリック IP アドレスを取得できます。 次の例では、先ほど作成した *myPublicIPAddress* の IP アドレスを取得します。
 
 ```powershell
-Get-AzureRmPublicIPAddress -ResourceGroupName myRGNetwork -Name myPublicIPAddress | select IpAddress
+Get-AzureRmPublicIPAddress `
+    -ResourceGroupName myRGNetwork `
+    -Name myPublicIPAddress | select IpAddress
 ```
 
 後の手順で使用できるように、この IP アドレスをメモしておきます。
 
-次のコマンドを使用して、`myFrontendVM` とのリモート デスクトップ セッションを作成します。 `<publicIPAddress>` を先ほどメモしたアドレスに置き換えます。 メッセージが表示されたら、VM の作成時に使用した資格情報を入力します。
+次のコマンドを使用して、*myFrontendVM* とのリモート デスクトップ セッションを作成します。 *<publicIPAddress>* を先ほどメモしたアドレスに置き換えます。 メッセージが表示されたら、VM の作成時に使用した資格情報を入力します。
 
 ```
 mstsc /v:<publicIpAddress>
 ``` 
 
-`myFrontendVM` にログインしたら、1 行の PowerShell を使用して、IIS をインストールし、Web トラフィックを許可するローカル ファイアウォール規則を有効にできます。 PowerShell プロンプトを開き、次のコマンドを実行します。
+*myFrontendVM* にログインしているので、1 行の PowerShell を使用して、IIS をインストールし、Web トラフィックを許可するローカル ファイアウォール規則を有効にできます。 PowerShell プロンプトを開き、次のコマンドを実行します。
 
 [Install-WindowsFeature](https://technet.microsoft.com/itpro/powershell/windows/servermanager/install-windowsfeature) を使用して、IIS Web サーバーをインストールするカスタム スクリプト拡張機能を実行します。
 
@@ -134,11 +160,11 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ## <a name="manage-internal-traffic"></a>内部トラフィックを管理する
 
-ネットワーク セキュリティ グループ (NSG) には、VNet に接続されたリソースへのネットワーク トラフィックを許可または拒否する一連のセキュリティ規則が含まれています。 NSG は、サブネット、または VM にアタッチされている個々の NIC に関連付けることができます。 ポートを介した VM へのアクセスの開始と終了は、NSG 規則を使用して行われます。 `myFrontendVM` を作成したときに、RDP 接続用の受信ポート 3389 が自動的に開かれています。
+ネットワーク セキュリティ グループ (NSG) には、VNet に接続されたリソースへのネットワーク トラフィックを許可または拒否する一連のセキュリティ規則が含まれています。 NSG は、サブネット、または VM にアタッチされている個々の NIC に関連付けることができます。 ポートを介した VM へのアクセスの開始と終了は、NSG 規則を使用して行われます。 *myFrontendVM* を作成したときに、RDP 接続用の受信ポート 3389 が自動的に開かれました。
 
-VM の内部通信は、NSG を使用して構成できます。 このセクションでは、ネットワークに追加のサブネットを作成し、このサブネットにポート 1433 での `myFrontendVM` から `myBackendVM` への接続を許可する NSG を割り当てる方法について説明します。 サブネットは、作成時に VM に割り当てられます。
+VM の内部通信は、NSG を使用して構成できます。 このセクションでは、ネットワークに追加のサブネットを作成し、このサブネットにポート 1433 での *myFrontendVM* から *myBackendVM* への接続を許可する NSG を割り当てる方法について説明します。 サブネットは、作成時に VM に割り当てられます。
 
-バックエンド サブネットに対する NSG を作成することで、`myBackendVM` への内部トラフィックを `myFrontendVM` からのみに制限できます。 次の例では、[New-AzureRmNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig?view=azurermps-3.8.0) を使用して `myBackendNSGRule` という名前の NSG 規則を作成します。
+バックエンド サブネットの NSG を作成することで、*myBackendVM* への内部トラフィックを *myFrontendVM* からのみに制限できます。 次の例では、[New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig) を使用して、*myBackendNSGRule* という名前の NSG 規則を作成します。
 
 ```powershell
 $nsgBackendRule = New-AzureRmNetworkSecurityRuleConfig `
@@ -153,7 +179,7 @@ $nsgBackendRule = New-AzureRmNetworkSecurityRuleConfig `
   -Access Allow
 ```
 
-[New-AzureRmNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermnetworksecuritygroup?view=azurermps-3.8.0) を使用して、`myBackendNSG` という名前の新しいネットワーク セキュリティ グループを追加します。
+[New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup) を使用して、*myBackendNSG* という名前のネットワーク セキュリティ グループを追加します。
 
 ```powershell
 $nsgBackend = New-AzureRmNetworkSecurityGroup `
@@ -162,24 +188,27 @@ $nsgBackend = New-AzureRmNetworkSecurityGroup `
   -Name myBackendNSG `
   -SecurityRules $nsgBackendRule
 ```
-## <a name="add-back-end-subnet"></a>バックエンド サブネットを追加する
+## <a name="add-back-end-subnet"></a>バックエンド サブネットの追加
 
-[Add-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/add-azurermvirtualnetworksubnetconfig?view=azurermps-3.8.0) を使用して、`myBackEndSubnet` を `myVNet` に追加します。
+[Add-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/add-azurermvirtualnetworksubnetconfig) を使用して *myBackEndSubnet* を *myVNet* に追加します。
 
 ```powershell
-Add-AzureRmVirtualNetworkSubnetConfig -Name myBackendSubnet `
+Add-AzureRmVirtualNetworkSubnetConfig `
+  -Name myBackendSubnet `
   -VirtualNetwork $vnet `
   -AddressPrefix 10.0.1.0/24 `
   -NetworkSecurityGroup $nsgBackend
 Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
-$vnet = Get-AzureRmVirtualNetwork -ResourceGroupName myRGNetwork -Name myVNet
+$vnet = Get-AzureRmVirtualNetwork `
+  -ResourceGroupName myRGNetwork `
+  -Name myVNet
 ```
 
-## <a name="create-back-end-vm"></a>バックエンド VM を作成する
+## <a name="create-back-end-vm"></a>バックエンド VM の作成
 
 SQL Server イメージを使用すると、最も簡単にバックエンド VM を作成できます。 このチュートリアルではデータベース サーバーを使用して VM を作成しますが、データベースへのアクセスに関する情報は提供しません。
 
-`myBackendNic` を作成します。
+*myBackendNic* を作成します。
 
 ```powershell
 $backendNic = New-AzureRmNetworkInterface `
@@ -195,17 +224,44 @@ Get-Credential を使用して、VM の管理者アカウントに必要なユ�
 $cred = Get-Credential
 ```
 
-`myBackendVM` を作成します。
+*myBackendVM* を作成します。
 
 ```powershell
-$backendVM = New-AzureRmVMConfig -VMName myBackendVM -VMSize Standard_D1
-$backendVM = Set-AzureRmVMOperatingSystem -VM $backendVM -Windows -ComputerName myBackendVM -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
-$backendVM = Set-AzureRmVMSourceImage -VM $backendVM -PublisherName MicrosoftSQLServer -Offer SQL2016-WS2016 -Skus Enterprise -Version latest
-$backendVM = Set-AzureRmVMOSDisk -VM $backendVM -Name myBackendOSDisk -DiskSizeInGB 128 -CreateOption FromImage -Caching ReadWrite
-$backendVM = Add-AzureRmVMNetworkInterface -VM $backendVM -Id $backendNic.Id
-New-AzureRmVM -ResourceGroupName myRGNetwork -Location westus -VM $backendVM
+$backendVM = New-AzureRmVMConfig `
+  -VMName myBackendVM `
+  -VMSize Standard_D1
+$backendVM = Set-AzureRmVMOperatingSystem `
+  -VM $backendVM `
+  -Windows `
+  -ComputerName myBackendVM `
+  -Credential $cred `
+  -ProvisionVMAgent `
+  -EnableAutoUpdate
+$backendVM = Set-AzureRmVMSourceImage `
+  -VM $backendVM `
+  -PublisherName MicrosoftSQLServer `
+  -Offer SQL2016-WS2016 `
+  -Skus Enterprise `
+  -Version latest
+$backendVM = Set-AzureRmVMOSDisk `
+  -VM $backendVM `
+  -Name myBackendOSDisk `
+  -DiskSizeInGB 128 `
+  -CreateOption FromImage `
+  -Caching ReadWrite
+$backendVM = Add-AzureRmVMNetworkInterface `
+  -VM $backendVM `
+  -Id $backendNic.Id
+New-AzureRmVM `
+  -ResourceGroupName myRGNetwork `
+  -Location westus `
+  -VM $backendVM
 ```
 
 使用されているイメージには SQL Server がインストールされていますが、このチュートリアルでは使用しません。 これが含まれているのは、Web トラフィックを処理する VM と、データベースの管理を処理する VM の構成の方法を示すためです。
 
+## <a name="next-steps"></a>次のステップ
 
+このチュートリアルでは、仮想マシンとの関連での Azure ネットワークの作成とセキュリティ保護について学習しました。 次のチュートリアルに進み、Azure Security Center による VM セキュリティの監視について学習してください。
+
+[仮想マシンのセキュリティの管理](./tutorial-azure-security.md)

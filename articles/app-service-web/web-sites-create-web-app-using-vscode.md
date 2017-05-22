@@ -1,6 +1,6 @@
 ---
-title: "Visual Studio Code を使用した ASP.NET 5 Web アプリの作成"
-description: "このチュートリアルでは、Visual Studio Code を使用して ASP.NET 5 Web アプリを作成する方法について説明します。"
+title: "Visual Studio Code を使用した ASP.NET Core Web アプリの作成"
+description: "このチュートリアルでは、Visual Studio Code を使用して ASP.NET Core Web アプリを作成する方法について説明します。"
 services: app-service\web
 documentationcenter: .net
 author: erikre
@@ -14,123 +14,67 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4f1bf0f15a373dfe60d923f017a96784424d6563
-ms.lasthandoff: 11/17/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: e8f78602b293863b2e58160a5eb2cf8a5855576b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/02/2017
 
 
 ---
-# <a name="create-an-aspnet-5-web-app-in-visual-studio-code"></a>Visual Studio Code を使用した ASP.NET 5 Web アプリの作成
+# <a name="create-an-aspnet-core-web-app-in-visual-studio-code"></a>Visual Studio Code を使用した ASP.NET Core Web アプリの作成
 ## <a name="overview"></a>概要
-このチュートリアルでは、[Visual Studio コード (VS コード)](http://code.visualstudio.com//Docs/whyvscode) を使用して ASP.NET 5 Web アプリを作成したり、それを [Azure App Service](../app-service/app-service-value-prop-what-is.md) にデプロイしたりする方法について説明します。 
+このチュートリアルでは、[Visual Studio Code (VS Code)](http://code.visualstudio.com//Docs/whyvscode) を使用して ASP.NET Core Web アプリを作成したり、それを [Azure App Service](../app-service/app-service-value-prop-what-is.md) にデプロイしたりする方法について説明します。 
 
 > [!NOTE]
 > この記事は、Web アプリについて言及していますが、API アプリとモバイル アプリにも適用されます。 
 > 
 > 
 
-ASP.NET 5 は、ASP.NET の刷新版です。 ASP.NET 5 は、.NET を使用して最新のクラウドベースの Web アプリを構築するための、新しいオープン ソースのクロスプラットフォーム フレームワークです。 詳細については、 [ASP.NET 5 の概要](http://docs.asp.net/en/latest/conceptual-overview/aspnet.html)に関するページを参照してください。 Azure App Service Web Apps については、 [Web Apps の概要](app-service-web-overview.md)に関するページを参照してください。
+ASP.NET Core は、ASP.NET の刷新版です。 ASP.NET Core は、.NET を使用して最新のクラウドベースの Web アプリを構築するための、新しいオープン ソースのクロスプラットフォーム フレームワークです。 詳細については、「[Introduction to ASP.NET Core (ASP.NET Core の概要)](http://docs.asp.net/latest/conceptual-overview/aspnet.html)」を参照してください。 Azure App Service Web Apps については、 [Web Apps の概要](app-service-web-overview.md)に関するページを参照してください。
 
 [!INCLUDE [app-service-web-try-app-service.md](../../includes/app-service-web-try-app-service.md)]
 
 ## <a name="prerequisites"></a>前提条件
 * [VS コード](http://code.visualstudio.com/Docs/setup)をインストールします。
-* [Node.js](http://nodejs.org) をインストールします。Node.js は、JavaScript を使用して高速かつスケーラブルなサーバー アプリケーションを構築するためのプラットフォームです。 Node はランタイム (ノード) であり、[npm](http://www.npmjs.com/) は Node モジュールのパッケージ マネージャーです。 このチュートリアルでは、npm を使用して、ASP.NET 5 Web アプリをスキャフォールディングします。
 * Git をインストールします。これは、[Chocolatey](https://chocolatey.org/packages/git) または [git-scm.com](http://git-scm.com/downloads) のいずれかの場所からインストールできます。 Git を初めて使う場合は、[git-scm.com](http://git-scm.com/downloads) を選択し、**Windows コマンド プロンプトから Git を使用する**オプションを選択します。 Git をインストールした後、(VS コードからコミットを実行する場合に) チュートリアルの後半で必要になるため、Git のユーザー名と電子メールも設定する必要があります。  
 
-## <a name="install-aspnet-5-and-dnx"></a>ASP.NET 5 と DNX のインストール
-ASP.NET 5 と DNX (.NET Execution Environment) は、OS X、Linux、Windows 上で動作する最新のクラウドや Web アプリを構築するための、効率の優れた .NET スタックです。 ASP.NET 5 および DNX は、一から設計し直され、クラウドにデプロイされるアプリまたはオンプレミスで実行されるアプリ用に最適化された開発フレームワークを提供します。 オーバーヘッドを最小に抑えたモジュラー コンポーネントから構成されるため、ソリューションを構築するときに柔軟性を保つことができます。
+## <a name="install-aspnet-core"></a>ASP.NET Core のインストール
+ASP.NET Core は、OS X、Linux、Windows 上で動作する最新のクラウドや Web アプリを構築するための、効率性に優れた .NET スタックです。 ASP.NET 5 および DNX は、一から設計し直され、クラウドにデプロイされるアプリまたはオンプレミスで実行されるアプリ用に最適化された開発フレームワークを提供します。 オーバーヘッドを最小に抑えたモジュラー コンポーネントから構成されるため、ソリューションを構築するときに柔軟性を保つことができます。
 
-このチュートリアルでは、最新の開発バージョンの ASP.NET 5 と DNX を使用してアプリケーションの構築を開始する方法について説明します。 次の手順は、Windows に固有の手順です。 OS X、Linux、および Windows 用の詳細なインストール手順については、 [ASP.NET 5 と DNX のインストール](https://code.visualstudio.com/Docs/ASPnet5#_installing-aspnet-5-and-dnx)に関するページを参照してください。 
+このチュートリアルでは、最新の開発バージョンの ASP.NET Core を使用してアプリケーションの構築を開始する方法について説明します。 次の手順は、Windows に固有の手順です。 OS X、Linux、および Windows 用のインストール手順については、「[Getting Sratrted with ASP.NET Core (ASP.NET Core の概要)](https://docs.microsoft.com/aspnet/core/getting-started)」を参照してください。 
 
-1. .NET Version Manager (DNVM) をインストールするには、コマンド プロンプトを開き、次のコマンドを実行します。
-   
-        @powershell -NoProfile -ExecutionPolicy unrestricted -Command "&{$Branch='dev';iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.ps1'))}"
-   
-    DNVM スクリプトがダウンロードされ、ユーザー プロファイル ディレクトリに配置されます。 
-2. **Windows を再起動** します。 
-   
-    Windows を再起動した後、コマンド プロンプトを開き、以下を入力して、DNVM の場所を確認できます。
-   
-        where dnvm
-   
-    コマンド プロンプトで、パスは次のように表示されます。
-   
-    ![dnvm の場所](./media/web-sites-create-web-app-using-vscode/00-where-dnvm.png)
-3. これで、DNVM を利用できるようになりました。アプリケーションを実行するには、これを使って DNX をダウンロードする必要があります。 コマンド プロンプトで、次のコマンドを実行します。
-   
-        dnvm upgrade
-   
-    コマンド プロンプトで次のコマンドを実行して、DNVM を確認し、アクティブなランタイムを表示します。
-   
-        dnvm list
-   
-    コマンド プロンプトに、アクティブなランタイムの詳細が表示されます。
-   
-    ![dnvm の場所](./media/web-sites-create-web-app-using-vscode/00b-dnvm-list.png)
-   
-    複数の DNX ランタイムが表示されている場合は、コマンド プロンプトで以下 (またはこれ以降のバージョン) を入力してアクティブな DNX ランタイムを設定することを選択できます。 このチュートリアルの後半で Web アプリを作成するときに、ASP.NET 5 ジェネレーターによって使用される同じバージョンに設定します。 *最新バージョンに設定されている場合は、アクティブなランタイムを変更する必要はありません。*
-   
-        dnvm use 1.0.0-update1 –p
 
 > [!NOTE]
-> OS X、Linux、および Windows 用の詳細なインストール手順については、 [ASP.NET 5 と DNX のインストール](https://code.visualstudio.com/Docs/ASPnet5#_installing-aspnet-5-and-dnx)に関するページを参照してください。 
+> OS X、Linux、および Windows 用の詳細なインストール手順については、[ASP.NET Core のインストール](https://code.visualstudio.com/Docs/ASPnet5#_installing-aspnet-5-and-dnx)に関するページを参照してください。 
 > 
 > 
 
 ## <a name="create-the-web-app"></a>Web アプリの作成
-このセクションでは、新しい ASP.NET Web アプリをスキャフォールディングする方法について説明します。 ノード パッケージ マネージャー (npm) を使用して、[Yeoman](http://yeoman.io/) (アプリケーション スキャフォールディング ツール - Visual Studio での **[ファイル] > [新しいプロジェクト]** 操作に相当する VS コード)、[Grunt](http://gruntjs.com/) (JavaScript タスク ランナー)、および [Bower](http://bower.io/) (クライアント側のパッケージ マネージャー) をインストールします。 
+このセクションでは、donet CLI ツールを使用して新しい ASP.NET Web アプリをスキャフォールディングする方法について説明します。 
 
-1. 管理者権限でコマンド プロンプトを開き、ASP.NET プロジェクトを作成する場所に移動します。 たとえば、C:\. のルートに *vscodeprojects* ディレクトリを作成します。
-2. コマンド プロンプトで次のコマンドを入力して、Yeoman とサポート ツールをインストールします。
+1. コマンド プロンプトで次のコマンドを入力して、プロジェクト フォルダーを作成し、アプリをスキャフォールディングします。
    
-        npm install -g yo grunt-cli generator-aspnet bower
+```terminal
+mkdir SampleWebApp
+cd SampleWebApp
+dotnet new mvc
+```
+![dotnet CLI - ASP.NET Core ジェネレーター](./media/web-sites-create-web-app-using-vscode/dotnetcore-mvc-01.png)
+
+2. 必要な NuGet パッケージをインストールするためには、次のコマンドを実行します。
    
-   > [!NOTE]
-   > npm バージョンが古くなっていること示す警告が表示される場合があります。 この警告は、このチュートリアルには影響しません。
-   > 
-   > 
-3. コマンド プロンプトで次のコマンドを入力して、プロジェクト フォルダーを作成し、アプリをスキャフォールディングします。
-   
-        yo aspnet
-4. 方向キーを使用して、ASP.NET 5 ジェネレーター メニューから種類として **Web アプリケーション Basic** を選択し、**&lt;Enter>** キーを押します。
-   
-    ![Yeoman - ASP.NET 5 ジェネレーター](./media/web-sites-create-web-app-using-vscode/01-yo-aspnet.png)
-5. 新しい ASP.NET Web アプリの名前を **SampleWebApp**に設定します。 この名前はチュートリアル全体で使用されるため、別の名前を選択する場合は、 **SampleWebApp**をすべてその名前に置き換える必要があります。 **&lt;Enter>** キーを押すと、Yeoman によって、**SampleWebApp** という名前の新しいフォルダーと新しいアプリに必要なファイルが作成されます。
-6. コマンド プロンプトで、ディレクトリを新しいプロジェクト フォルダーに変更します。
-   
-        cd SampleWebApp
-7. また、コマンド プロンプトで、必要な NuGet パッケージをインストールしてアプリケーションを実行し、次のコマンドを入力します。
-   
-        dnu restore
-8. コマンド プロンプトで次のコマンドを入力して、VS コードを開きます。
-   
-        code .
+    ```terminal
+    dotnet restore
+    ```
 
 ## <a name="run-the-web-app-locally"></a>ローカルでの Web アプリの実行
 Web アプリが作成され、アプリのすべての NuGet パッケージが取得されたため、Web アプリをローカルで実行できます。
 
-1. VS コードの **コマンド パレット** で、次のコマンドを入力して使用可能な実行コマンド オプションを表示します。
-   
-        dnx: Run Command
-   
-   > [!NOTE]
-   > Omnisharp サーバーが実行されていない場合は、起動されます。 上のコマンドを再入力します。
-   > 
-   > 
-   
-    次に、次のコマンドを選択して Web アプリを実行します。
-   
-        dnx web - (SampleWebApp)
-   
-    コマンド ウィンドウに、アプリケーションが起動したことが示されます。 コマンド ウィンドウにこのメッセージが表示されない場合は、VS コードの左下隅にプロジェクトのエラーが示されていないかどうかを確認します。
-   
-   > [!NOTE]
-   > **コマンド パレット**からコマンドを発行するには、コマンド ラインの先頭に **>** 文字が必要です。 **web** コマンドに関する詳細は *project.json* ファイルで確認できます。   
-   > コマンドが表示されない場合または使用できない場合、C# の拡張機能をインストールする必要があります。 `>Extensions: Install Extension` と `ext install c#` を実行して、C# の拡張機能をインストールしてください。
-   > 
-   > 
+1. アプリを実行します (アプリが古い場合は、`dotnet run` コマンドを実行するとアプリを構築できます)。
+    ```terminal
+    dotnet run
+    ```
 2. ブラウザーを開き、次の URL に移動します。
    
     **http://localhost:5000**
