@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/26/2016
 ms.author: cephalin
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: e8f78602b293863b2e58160a5eb2cf8a5855576b
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 46e3852dc84265de41bb358f482dec06608e7efa
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -51,7 +51,7 @@ ASP.NET Core は、OS X、Linux、Windows 上で動作する最新のクラウ�
 > 
 
 ## <a name="create-the-web-app"></a>Web アプリの作成
-このセクションでは、donet CLI ツールを使用して新しい ASP.NET Web アプリをスキャフォールディングする方法について説明します。 
+このセクションでは、.NET CLI ツールを使用して新しい ASP.NET Web アプリをスキャフォールディングする方法について説明します。 
 
 1. コマンド プロンプトで次のコマンドを入力して、プロジェクト フォルダーを作成し、アプリをスキャフォールディングします。
    
@@ -62,7 +62,7 @@ dotnet new mvc
 ```
 ![dotnet CLI - ASP.NET Core ジェネレーター](./media/web-sites-create-web-app-using-vscode/dotnetcore-mvc-01.png)
 
-2. 必要な NuGet パッケージをインストールするためには、次のコマンドを実行します。
+2. 必要な NuGet パッケージを復元するには、次のコマンドを実行します。
    
     ```terminal
     dotnet restore
