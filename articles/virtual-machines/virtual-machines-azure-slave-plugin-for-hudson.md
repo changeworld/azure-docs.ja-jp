@@ -14,9 +14,10 @@ ms.devlang: java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
 ms.openlocfilehash: 0661f26e62a465ccd096773cbabd47268491f22d
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/05/2017
 
 
