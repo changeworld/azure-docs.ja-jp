@@ -1,6 +1,7 @@
 ---
-title: "Azure Active Directory ポータルの危険な状態のユーザー セキュリティ レポート - プレビュー | Microsoft Docs"
-description: "Azure Active Directory ポータルの危険な状態のユーザー セキュリティ レポート - プレビューについて"
+
+title: "Azure Active Directory ポータルの危険な状態のユーザー セキュリティ レポート | Microsoft Docs"
+description: "Azure Active Directory ポータルの危険な状態のユーザー セキュリティ レポートについて説明します。"
 services: active-directory
 author: MarkusVi
 manager: femila
@@ -10,18 +11,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/21/2017
+ms.date: 05/04/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 349109e0c12a1394f96529a94ab884eeb451d242
-ms.openlocfilehash: 48c504a9ed5bc4ef9f0bff889df031962c5bf6e8
-ms.lasthandoff: 02/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 01ecb98c02b2a01007c7f76805d4db4b7aeee1f0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
-# <a name="users-at-risk-security-report-in-the-azure-active-directory-portal---preview"></a>Azure Active Directory ポータルの危険な状態のユーザー セキュリティ レポート - プレビュー
+# <a name="users-at-risk-security-report-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルの危険な状態のユーザー セキュリティ レポート
 
-Azure Active Directory [プレビュー](active-directory-preview-explainer.md)のセキュリティ レポートでは、環境内でユーザー アカウントが侵害されている確率を調べることができます。 
+Azure Active Directory (Azure AD) のセキュリティ レポートでは、環境内でユーザー アカウントが侵害されている確率を調べることができます。 
 
 Azure Active Directory は、ユーザー アカウントに関連する疑わしい動作を検出します。 検出された動作ごとに、"*リスク イベント*" と呼ばれるレコードが作成されます。 詳細については、「[Azure Active Directory risk events (Azure Active Directory リスク イベント)](active-directory-identity-protection-risk-events.md)」を参照してください。 
 
@@ -76,7 +78,7 @@ Azure Active Directory Premium エディションの危険な状態のユーザ�
 ![リスクの高いサインイン](./media/active-directory-reporting-security-user-at-risk/324.png)
 
 
-リスク イベントを調査するには、一覧からリスク イベントを&1; つ選択します。  
+リスク イベントを調査するには、一覧からリスク イベントを 1 つ選択します。  
 このリスク イベントの **[詳細]** ブレードが開きます。 **[詳細]** ブレードで、[リスク イベントを手動で閉じる](active-directory-identityprotection.md#closing-risk-events-manually)か、手動で閉じたリスク イベントを再アクティブ化することができます。 
 
 

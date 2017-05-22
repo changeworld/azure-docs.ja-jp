@@ -12,12 +12,13 @@ ms.devlang: dotNet
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/07/2017
+ms.date: 05/05/2017
 ms.author: ryanwi
-translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 296f02dd7deb22fd4ca15478b7f90a7688b4304a
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: dea338477ca82eead9e272ed9a1709cb2643f743
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -116,7 +117,18 @@ Service Fabric のアプリケーションには、アプリケーションの�
    
     ![フェールオーバー後の診断イベント ビューアー][diagnostic-events-viewer-detail-post-failover]
 
-## <a name="switch-cluster-mode"></a>クラスター モードを切り替える
+## <a name="cleaning-up-the-local-cluster-optional"></a>ローカル クラスターをクリーンアップする (省略可能)
+まとめに入る前に、ローカル クラスターが現実のものであることを思い出してください。 デバッガーを停止すると、アプリケーション インスタンスが削除され、アプリケーションの種類の登録が解除されます。 ただし、クラスターは引き続きバックグラウンドで実行されます。 クラスターは、いくつかの方法で管理することができます。
+
+1. クラスターをシャットダウンしても、アプリケーションのデータとトレースは保持するという場合は、システム トレイ アプリで **[Stop Local Cluster (ローカル クラスターの停止)]** をクリックします。
+2. クラスターを完全に削除するには、システム トレイ アプリで **[Remove Local Cluster (ローカル クラスターの削除)]** をクリックします。 このオプションを使用すると、次回 Visual Studio で F5 キーを押したときにも、デプロイが遅くなります。 しばらくの間、ローカル クラスターを使用しない場合や、リソースを解放する必要がある場合にのみ、クラスターを削除してください。
+
+## <a name="deploy-your-application-to-an-azure-cluster"></a>Azure クラスターにアプリケーションをデプロイする
+アプリケーションをローカルにデプロイしたので、同じアプリケーションを Azure にデプロイできます。 ドキュメント「[Azure で初めての Service Fabric クラスターを作成する](service-fabric-get-started-azure-cluster.md)」では、Azure PowerShell またはポータルを使用した手順について説明しています。
+
+Azure クラスターをセットアップしたら、[Azure クラスターへの発行](service-fabric-publish-app-remote-cluster.md)に関する記事に従って、Visual Studio から Azure にこのアプリケーションを発行できます。  
+
+## <a name="switch-cluster-mode-of-your-local-development-cluster"></a>ローカル開発クラスターのクラスター モードを切り替える
 既定では、ローカル開発クラスターは 5 ノード クラスターとして実行するように構成されています。これは、複数のノードにデプロイされているサービスをデバッグする場合に便利です。 ただし、アプリケーションを 5 ノードの開発クラスターにデプロイするには、少し時間がかかる場合があります。 アプリを 5 ノードでは実行せず、コードの変更をすばやく繰り返したい場合は、開発クラスターを 1 ノード モードに切り替えます。 ノードが 1 つのクラスターでコードを実行するには、システム トレイでローカル クラスター マネージャーを右クリックし、**[Switch Cluster Mode (クラスター モードの切り替え)]、[1 Node (1 ノード)]** の順に選択します。  
 
 ![クラスター モードを切り替える][switch-cluster-mode]
@@ -136,11 +148,7 @@ Service Fabric のアプリケーションには、アプリケーションの�
    
     ![クラスターのセットアップに関する出力][cluster-setup-success-1-node]
 
-## <a name="cleaning-up"></a>クリーンアップしています
-まとめに入る前に、ローカル クラスターが現実のものであることを思い出してください。 デバッガーを停止すると、アプリケーション インスタンスが削除され、アプリケーションの種類の登録が解除されます。 ただし、クラスターは引き続きバックグラウンドで実行されます。 クラスターは、いくつかの方法で管理することができます。
 
-1. クラスターをシャットダウンしても、アプリケーションのデータとトレースは保持するという場合は、システム トレイ アプリで **[Stop Local Cluster (ローカル クラスターの停止)]** をクリックします。
-2. クラスターを完全に削除するには、システム トレイ アプリで **[Remove Local Cluster (ローカル クラスターの削除)]** をクリックします。 このオプションを使用すると、次回 Visual Studio で F5 キーを押したときにも、デプロイが遅くなります。 しばらくの間、ローカル クラスターを使用しない場合や、リソースを解放する必要がある場合にのみ、クラスターを削除してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure でのクラスター](service-fabric-cluster-creation-via-portal.md)または [Windows でのスタンドアロン クラスター](service-fabric-cluster-creation-for-windows-server.md)を作成する方法を学びます。
