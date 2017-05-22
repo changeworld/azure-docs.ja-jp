@@ -1,27 +1,30 @@
 1. 新しいウィンドウで、[Azure Portal](https://portal.azure.com/) にサインインします。
-2. ジャンプバーで **[新規]**、**[データベース]**、**[NoSQL (DocumentDB)]** の順にクリックします。
+2. 左側のメニューで、**[新規]**、**[データベース]**、**[Azure Cosmos DB]** の順にクリックします。
    
-   ![Screen shot of the Azure portal, highlighting More Services, and DocumentDB (NoSQL)](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-1.png)  
-3. **[新しいアカウント]** ブレードで、DocumentDB アカウントに必要な構成を指定します。
-   
-    ![新しい [DocumentDB] ブレードのスクリーンショット](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-2.png)
-   
-   * **[ID]** ボックスに、DocumentDB アカウントを識別する名前を入力します。  **ID** が検証されると、緑色のチェック マークが **[ID]** ボックスに表示されます。 この **ID** の値は、URI 内のホスト名になります。 **ID** に含めることができるのは英小文字、数字、および "-" のみで、文字数は 3 ～ 50 文字にする必要があります。 選択したエンドポイント名に *documents.azure.com* が追加され、これが DocumentDB アカウント エンドポイントになります。
-   * **[NoSQL API]** ボックスで、**[DocumentDB]** を選択します。  
-   * **[サブスクリプション]**で、DocumentDB アカウントに使用する Azure サブスクリプションを選択します。 アカウントにサブスクリプションが 1 つしかない場合は、そのアカウントが既定で選択されます。
-   * **[リソース グループ]**で、DocumentDB アカウントのリソース グループを選択または作成します。  既定では、新しいリソース グループが作成されます。 詳細については、 [Azure Portal を使用した Azure リソースの管理](../articles/azure-portal/resource-group-portal.md)に関する記事をご覧ください。
-   * **[場所]** を使用して、DocumentDB アカウントをホストする地理的な場所を指定します。 
-4. 新しい DocumentDB アカウントのオプションを構成したら、 **[作成]**をクリックします。 デプロイの状態を通知ハブで確認します。  
-   
-   ![データベースの迅速な作成 - DocumentDB アカウントを作成中であることを示す通知ハブのスクリーンショット](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-4.png)  
-   
-   ![DocumentDB アカウントが正常に作成され、リソース グループにデプロイされたことを示す通知ハブのスクリーンショット - オンライン データベース クリエーターの通知](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-5.png)
-5. DocumentDB アカウントが作成されたら、既定の設定で使用できる状態になります。 既定の設定を確認するには、ジャンプバーの **[NoSQL (DocumentDB)]** アイコンをクリックし、新しいアカウントをクリックして、リソース メニューの **[既定の整合性]** をクリックします。
+   ![その他のサービスと Azure Cosmos DB が強調表示された Azure Portal のスクリーンショット](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-1.png)
 
-   ![Azure Portal で Azure DocumentDB データベース アカウントを開く方法を示すスクリーン ショット](./media/documentdb-create-dbaccount/azure-documentdb-database-open-account-portal.png)  
+3. **[新しいアカウント]** ブレードで、Azure Cosmos DB アカウントに必要な構成を指定します。 
 
-   DocumentDB アカウントの既定の整合性は **[セッション]**に設定されます。  既定の整合性を調整するには、使用可能なその他の整合性オプションのいずれかを選択します。 DocumentDB によって提供される整合性レベルの詳細については、「 [DocumentDB の整合性レベル](../articles/documentdb/documentdb-consistency-levels.md)」をご覧ください。
+    Azure Cosmos DB では、Gremlin (グラフ)、MongoDB、SQL (DocumentDB)、および Table (キー値) の 4 つのプログラミング モデルのいずれかを選択できます。 
+    
+    このクイック スタートでは、DocumentDB API に対してプログラミングするため、フォームに入力するときに **SQL (DocumentDB)** を選択します。 ただし、ソーシャル メディア アプリ用のグラフ データ、キー/値 (テーブル) データ、または MongoDB アプリから移行されたデータがある場合は、Azure Cosmos DB が、ミッション クリティカルなすべてのアプリケーションのための可用性の高い、世界中に分散したデータベース サービス プラットフォームを提供できることを認識してください。
 
-[How to: Create a DocumentDB account]: #Howto
-[Next steps]: #NextSteps
-[documentdb-manage]:../articles/documentdb/documentdb-manage.md
+    ガイドとしてスクリーンショットの情報を使用して、新しいアカウント ブレードに記入します。 自分のアカウントを設定したときに一意の値を選択するので、値はスクリーンショットには正確には一致しません。 
+ 
+    ![新しい Azure Cosmos DB ブレードのスクリーン ショット](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-2.png)
+
+    設定|推奨値|説明
+    ---|---|---
+    ID|*一意の値*|Azure Cosmos DB アカウントを識別するために選択する一意の名前。 指定した ID に *documents.azure.com* が付加されて URI が作成されるので、ID は一意であっても識別可能なものを使用してください。 ID には小文字、数字、'-' 文字のみを含めることができ、文字数は 3 ～ 50 文字にする必要があります。
+    API|SQL (DocumentDB)|この記事の後半で、[DocumentDB API](../articles/documentdb/documentdb-introduction.md) に対してプログラミングします。|
+    サブスクリプション|*該当するサブスクリプション*|Azure Cosmos DB アカウントに使用する Azure サブスクリプション。 
+    リソース グループ|*ID と同じ値*|自分のアカウントの新しいリソース グループの名前。 簡略化のため、ID と同じ名前を使用することができます。 
+    場所|*ユーザーに最も近いリージョン*|Azure Cosmos DB アカウントをホストする地理的な場所です。 データに最も高速にアクセスできる、ユーザーに最も近い場所を選択します。
+4. **[作成]** をクリックしてアカウントを作成します。
+5. 上部のツール バーの **[通知]** をクリックして、デプロイ プロセスを監視します。
+
+    ![デプロイが開始したという通知](./media/documentdb-create-dbaccount/azure-documentdb-nosql-notification.png)
+
+6.  デプロイが完了したら、[All Resources] (すべてのリソース) タイルから、新しいアカウントを開きます。 
+
+    ![[All Resources] (すべてのリソース) タイルの DocumentDB アカウント](./media/documentdb-create-dbaccount/azure-documentdb-all-resources.png)

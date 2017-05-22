@@ -1,5 +1,5 @@
 ---
-title: "Web アプリでの Node.js アプリケーションの作成 | Microsoft Docs"
+title: "Azure Web アプリでの Node.js アプリケーションの作成 | Microsoft Docs"
 description: "初めての Node.js Hello World を App Service Web アプリに数分でデプロイします。"
 services: app-service\web
 documentationcenter: 
@@ -12,29 +12,30 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/28/2017
+ms.date: 05/05/2017
 ms.author: cfowler
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: c32cb52e4bb7bacde20e21820f277b4e86877e74
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: ced6f54603120d8832ee417b02b6673f80a99613
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 # <a name="create-a-nodejs-application-on-web-app"></a>Web アプリでの Node.js アプリケーションの作成
 
-このクイック スタート チュートリアルでは、Node.js アプリを開発し、Azure にデプロイする方法について説明します。 Linux ベースの Azure App Service を使用してアプリを実行し、その内部に Azure CLI を使用して新しい Web アプリを作成して構成します。 次に、Git を使用して、Node.js アプリを Azure にデプロイします。
+このクイック スタート チュートリアルでは、Node.js アプリを開発し、Azure にデプロイする方法について説明します。 [Azure App Service プラン](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview)を使用してアプリを実行し、Azure CLI を使用してその内部に新しい Web アプリを作成および構成します。 次に、Git を使用して、Node.js アプリを Azure にデプロイします。
 
 ![hello-world-in-browser](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
-以下の手順は、Mac、Windows、または Linux コンピューターを使用して実行することができます。 以下の手順全体を、約 5 分で完了できます。
+以下の手順は、Mac、Windows、または Linux コンピューターを使用して実行できます。 以下の手順全体を、約 5 分で完了できます。
 
-## <a name="before-you-begin"></a>開始する前に
+## <a name="prerequisites"></a>前提条件
 
-このサンプルを実行する前に、前提条件となる以下をローカルにインストールします。
+このサンプルを作成する前に、次のものをダウンロードしてインストールします。
 
-1. [Git をダウンロードし、インストールします](https://git-scm.com/)
-1. [Node.js と NPM をダウンロードし、インストールします](https://nodejs.org/)
-1. [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) をダウンロードし、インストールします
+* [Git](https://git-scm.com/)
+* [Node.js および NPM](https://nodejs.org/)
+* [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -45,9 +46,6 @@ Hello World サンプル アプリ リポジトリをローカル コンピュ�
 ```bash
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
 ```
-
-> [!TIP]
-> または、zip ファイルとして[サンプルをダウンロード](https://github.com/Azure-Samples/nodejs-docs-hello-world/archive/master.zip)し、展開することもできます。
 
 サンプル コードが含まれているディレクトリに移動します。
 
@@ -83,20 +81,8 @@ http://localhost:1337
 az login
 ```
 
-## <a name="configure-a-deployment-user"></a>デプロイ ユーザーの構成
-
-FTP とローカル Git の場合、デプロイを認証するには、サーバー上で構成されたデプロイ ユーザーが必要です。 デプロイ ユーザーの作成は、1 回だけの構成です。後の手順でユーザー名とパスワードを使用することになるので、書き留めておいてください。
-
-> [!NOTE]
-> FTP と、Web アプリへのローカル Git のデプロイには、デプロイ ユーザーが必要です。
-> `username` と `password` はアカウント レベルです。そのため、Azure サブスクリプションの資格情報とは異なります。 これらの資格情報は、1 回だけ作成される必要があります。
->
-
-アカウント レベルの資格情報を作成するには、[az appservice web deployment user set](/cli/azure/appservice/web/deployment/user#set) コマンドを使用します。
-
-```azurecli
-az appservice web deployment user set --user-name <username> --password <password>
-```
+<!-- ## Configure a Deployment User -->
+[!INCLUDE [login-to-azure](../../includes/configure-deployment-user.md)]
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
@@ -106,24 +92,19 @@ az appservice web deployment user set --user-name <username> --password <passwor
 az group create --name myResourceGroup --location westeurope
 ```
 
-## <a name="create-an-azure-app-service"></a>Azure App Service の作成
+## <a name="create-an-azure-app-service-plan"></a>Azure App Service プランの作成
 
-[az appservice plan create](/cli/azure/appservice/plan#create) コマンドで、Linux ベースの App Service プランを作成します。
+[az appservice plan create](/cli/azure/appservice/plan#create) コマンドで、"無料の" [App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)を作成します。
 
-> [!NOTE]
-> App Service プランは、アプリをホストするために使用される物理リソースのコレクションを表しています。 App Service プランに割り当てられたすべてのアプリケーションは、プランで定義されたリソースを共有します。これにより、複数のアプリをホストする際にコストを節約できます。
->
-> App Service プランには、次の定義があります。
-> * リージョン (北ヨーロッパ、米国東部、東南アジア)
-> * インスタンス サイズ (Small、Medium、Large)
-> * スケール カウント (インスタンス数 1、2、3 など)
-> * SKU (Free、Shared、Basic、Standard、Premium)
->
+<!--
+ An App Service plan represents the collection of physical resources used to ..
+-->
+[!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-次の例では、**Standard** 価格レベルを使用して、Linux ワーカー上に `quickStartPlan` という名前の App Service プランを作成します。
+次の例では、**Free** 価格レベルを使用して、`quickStartPlan` という名前の App Service プランを作成します。
 
 ```azurecli
-az appservice plan create --name quickStartPlan --resource-group myResourceGroup --sku S1 --is-linux
+az appservice plan create --name quickStartPlan --resource-group myResourceGroup --sku FREE
 ```
 
 App Service プランが作成されると、Azure CLI によって、次の例のような情報が表示されます。
@@ -131,7 +112,6 @@ App Service プランが作成されると、Azure CLI によって、次の例�
 ```json
 {
     "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Web/serverfarms/quickStartPlan",
-    "kind": "linux",
     "location": "West Europe",
     "sku": {
     "capacity": 1,
@@ -144,11 +124,15 @@ App Service プランが作成されると、Azure CLI によって、次の例�
 }
 ```
 
-## <a name="create-a-web-app"></a>Web アプリを作成する
+## <a name="create-a-web-app"></a>Web アプリの作成
 
-App Service プランは作成したので、`quickStartPlan` App Service プラン内に Web アプリを作成します。 Web アプリにより、コードをデプロイするためのホスト領域が取得され、デプロイされたアプリケーションを表示するための URL が提供されます。 Web アプリを作成するには、[az appservice web create](/cli/azure/appservice/web#create) コマンドを使用します。
+App Service プランが作成されたので、`quickStartPlan` App Service プラン内に [Web アプリ](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview)を作成します。 Web アプリにより、コードをデプロイするためのホスト領域が取得され、デプロイされたアプリケーションを表示するための URL が提供されます。 Web アプリを作成するには、[az appservice web create](/cli/azure/appservice/web#create) コマンドを使用します。
 
-次のコマンドで、`<app_name>` プレースホルダーを独自の一意のアプリ名に置き換えてください。 `<app_name>` は、Web アプリの既定の DNS サイトとして使用されます。そのため、名前は Azure のすべてのアプリ間で一意である必要があります。 後で、Web アプリをユーザーに公開する前に、任意のカスタム DNS エントリを Web アプリにマップできます。
+次のコマンドで、`<app_name>` プレースホルダーを独自の一意のアプリ名に置き換えてください。 `<app_name>` は、Web アプリの既定の DNS サイトで使用されます。 `<app_name>` が一意でない場合は、"Website with given name <app_name> already exists (指定された名前 <app_name> を持つ Web サイトが既に存在します)" というわかりやすいエラー メッセージが表示されます。
+
+<!-- removed per https://github.com/Microsoft/azure-docs-pr/issues/11878
+You can later map any custom DNS entry to the web app before you expose it to your users.
+-->
 
 ```azurecli
 az appservice web create --name <app_name> --resource-group myResourceGroup --plan quickStartPlan
@@ -182,18 +166,7 @@ http://<app_name>.azurewebsites.net
 
 ![app-service-web-service-created](media/app-service-web-get-started-nodejs-poc/app-service-web-service-created.png)
 
-これで、Azure に空の新しい Web アプリが作成されました。 Node.js を使用するように Web アプリを構成し、それにアプリをデプロイしましょう。
-
-## <a name="configure-to-use-nodejs"></a>Node.js を使用するための構成
-
-Node.js バージョン `6.9.3` を使用するように Web アプリを構成するには、[az appservice web config update](/cli/azure/app-service/web/config#update) コマンドを使用します。
-
-> [!TIP]
-> この方法で node.js バージョンを設定すると、プラットフォームによって用意される既定のコンテナーが使用されます。独自のコンテナーを使用する場合は、[az appservice web config container update](/cli/azure/appservice/web/config/container#update) コマンドの CLI リファレンスを参照してください。
-
-```azurecli
-az appservice web config update --linux-fx-version "NODE|6.9.3" --startup-file process.json --name <app_name> --resource-group myResourceGroup
-```
+これで、Azure に空の新しい Web アプリが作成されました。
 
 ## <a name="configure-local-git-deployment"></a>ローカル Git デプロイの構成
 
@@ -219,9 +192,9 @@ https://<username>@<app_name>.scm.azurewebsites.net:443/<app_name>.git
 git remote add azure <paste-previous-command-output-here>
 ```
 
-アプリケーションをデプロイするために、Azure リモートにプッシュします。 デプロイ ユーザーの作成時に指定したパスワードを入力するように求めるメッセージが表示されます。
+アプリをデプロイするために、Azure リモートにプッシュします。 前にデプロイ ユーザーを作成するときに指定したパスワードの入力を求めるメッセージが表示されます。 Azure Portal にログインするために使用するパスワードではなく、「[デプロイ ユーザーの構成](#configure-a-deployment-user)」で作成したパスワードを入力するようにしてください。
 
-```azurecli
+```bash
 git push azure master
 ```
 
@@ -286,7 +259,7 @@ git commit -am "updated output"
 git push azure master
 ```
 
-デプロイが完了したら、「アプリの参照」の手順で開いたブラウザー ウィンドウに戻り、表示を更新します。
+デプロイが完了したら、「**アプリの参照**」の手順で開いた元のブラウザー ウィンドウに切り替えて、更新をクリックします。
 
 ![hello-world-in-browser](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
@@ -318,7 +291,6 @@ Web アプリの "_ブレード_" (水平方向に開かれるポータル ペ�
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>次のステップ
-
-事前作成されている [Web Apps の CLI スクリプト](app-service-cli-samples.md)を調べます。
+> [!div class="nextstepaction"]
+> [Web アプリの CLI スクリプト サンプルを見る](app-service-cli-samples.md)
 
