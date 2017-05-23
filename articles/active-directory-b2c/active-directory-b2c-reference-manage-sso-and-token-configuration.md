@@ -56,6 +56,7 @@ ms.lasthandoff: 05/04/2017
 ```XML
 <Item Key="allow_infinite_rolling_refresh_token">True</Item>
 ```
+
 **発行者 (iss) 要求** 発行者 (iss) 要求を変更する場合は、Key="IssuanceClaimPattern" が設定された `<Item>` 内の値を変更します。  指定できる値は、`AuthorityAndTenantGuid` および `AuthorityWithTfp` です。
 
 **ポリシー ID を表す要求の設定** この値を設定するためのオプションは、TFP (Trust Framework Policy) および ACR (Authentication Context Reference) です。  
@@ -88,5 +89,8 @@ ACR に設定する場合は、Key="AuthenticationContextReferenceClaimPattern" 
 </UserJourneyBehaviors>
 ```
 **シングル サインオン (SSO) 構成** シングル サインオン構成を変更するには、`<SingleSignOn>` の値を変更する必要があります。  指定できる値は、`Tenant`、`Application`、`Policy`、`Disabled` です。 
+
 **Web アプリ セッションの有効期間 (分)** Web アプリ セッションの有効期間を変更するには、`<SessionExpiryInSeconds>` 要素の値を変更する必要があります。  組み込みのポリシーの既定値は、86,400 秒 (1,440 分) です。
+
 **Web アプリのセッション タイムアウト** Web アプリのセッションのタイムアウトを変更するには、`<SessionExpiryType>` の値を変更する必要があります。  指定できる値は、`Absolute` および `Rolling` です。
+

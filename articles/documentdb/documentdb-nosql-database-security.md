@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: mimig
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: d04c670daac243119b47cece2df18335c7af972c
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
+ms.openlocfilehash: 71668ceedca16647f814866ea9cf068f73e5daf6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -82,6 +83,7 @@ ms.lasthandoff: 04/19/2017
 |ジオフェンス|DocumentDB は、主権地域 (ドイツ、中国、米国政府など) に対するデータ ガバナンスとコンプライアンスを保証します。|
 |施設の保護|DocumentDB のデータは、Azure の保護されたデータセンター内の SSD に格納されます。<br><br>詳細については、[Microsoft グローバルデータセンター](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)に関するページを参照してください。|
 |HTTPS/SSL/TLS の暗号化|クライアントからサービスへの DocumentDB のすべての通信には、SSL/TLS 1.2 が適用されます。 また、データセンター内とデータセンター間のすべてのレプリケーションには、SSL/TLS 1.2 が適用されます。|
+|保存時の暗号化|DocumentDB に格納されるすべてのデータは、保存時に暗号化されます。 詳細については、[DocumentDB の保存時の暗号化](.\documentdb-nosql-database-encryption-at-rest.md)に関するページを参照してください。|
 |サーバーへの修正プログラムの適用|管理された NoSQL データベースとして、DocumentDB は、サーバーの管理と修正プログラムの適用を行う必要性を排除します。顧客に代わって DocumentDB が自動的に実行します。|
 |強力なパスワードを持つ管理者アカウント|今でもこの要件について言及する必要があることは信じ難いことですが、一部の競合他社とは異なり、DocumentDB では、パスワードを持たない管理アカウントは存在できません。<br><br> SSL と HMAC のシークレット ベースの認証によるセキュリティは、既定で組み込まれています。|
 |セキュリティとデータ保護の認証|DocumentDB は、[ISO 27001](https://www.microsoft.com/en-us/TrustCenter/Compliance/ISO-IEC-27001)[European Model Clauses (EUMC)](https://www.microsoft.com/en-us/TrustCenter/Compliance/EU-Model-Clauses)、および [HIPAA](https://www.microsoft.com/en-us/TrustCenter/Compliance/HIPAA) の認証を取得しています。 その他の認証の取得も進行中です|

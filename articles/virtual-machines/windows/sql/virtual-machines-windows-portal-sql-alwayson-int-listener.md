@@ -12,18 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 12/28/2016
+ms.date: 05/01/2017
 ms.author: mikeray
-translationtype: Human Translation
-ms.sourcegitcommit: 407b189af12116d633ed505facf4bcfde9be5822
-ms.openlocfilehash: 6a37e9e786a4e399c49cb77758a23793790888c9
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 9998c6ac27b9dc06b71edb4531aebeeb53fefcce
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/02/2017
 
 
 ---
 # <a name="configure-an-internal-load-balancer-for-an-always-on-availability-group-in-azure"></a>Azure の AlwaysOn 可用性グループに使用する内部ロード バランサーの構成
-このトピックでは、Resource Manager モデルで動作する Azure 仮想マシンに、SQL Server AlwaysOn 可用性グループの内部ロード バランサーを作成する方法について説明します。 SQL Server インスタンスが Azure 仮想マシン上で実行されている場合、可用性グループにロード バランサーが必要となります。 ロード バランサーには、可用性グループ リスナーの IP アドレスが格納されます。 可用性グループが複数のリージョンにまたがっている場合は、各リージョンにロード バランサーが必要です。
+このトピックでは、Azure Resource Manager で動作する Azure 仮想マシンに、SQL Server AlwaysOn 可用性グループの内部ロード バランサーを作成する方法について説明します。 SQL Server インスタンスが Azure 仮想マシン上で実行されている場合、可用性グループにロード バランサーが必要となります。 ロード バランサーには、可用性グループ リスナーの IP アドレスが格納されます。 可用性グループが複数のリージョンにまたがっている場合は、各リージョンにロード バランサーが必要です。
 
-この作業を行うには、SQL Server 可用性グループが Resource Manager モデルの Azure 仮想マシンにデプロイされている必要があります。 両方の SQL Server 仮想マシンが同じ可用性セットに属している必要があります。 [Microsoft のテンプレート](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) を使用すると、Azure Resource Manager で自動的に可用性グループを作成することができます。 内部ロード バランサーは、このテンプレートによって自動的に作成されます。 
+この作業を行うには、SQL Server 可用性グループが Azure 仮想マシン Resource Manager にデプロイされている必要があります。 両方の SQL Server 仮想マシンが同じ可用性セットに属している必要があります。 [Microsoft のテンプレート](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) を使用すると、Azure Resource Manager で自動的に可用性グループを作成することができます。 内部ロード バランサーは、このテンプレートによって自動的に作成されます。 
 
 必要に応じて [可用性グループを手動で構成](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)することもできます。
 
@@ -45,7 +47,7 @@ ms.openlocfilehash: 6a37e9e786a4e399c49cb77758a23793790888c9
 4. 負荷分散規則を設定する
 
 > [!NOTE]
-> SQL Server が異なるリソース グループやリージョンに存在する場合、このすべての手順を&2; 回 (リソース グループごとに&1; 回) 行う必要があります。
+> SQL Server が異なるリソース グループやリージョンに存在する場合、このすべての手順を 2 回 (リソース グループごとに 1 回) 行う必要があります。
 > 
 > 
 
@@ -73,7 +75,7 @@ ms.openlocfilehash: 6a37e9e786a4e399c49cb77758a23793790888c9
 ロード バランサーが Azure によって作成されます。 このロード バランサーは、特定のネットワーク、サブネット、リソース グループ、場所に従属します。 Azure の処理が完了したら、ロード バランサーの設定を Azure で確認してください。 
 
 ### <a name="2-configure-the-backend-pool"></a>2.バックエンド プールを構成する
-次の手順は、バックエンド アドレス プールの作成です。 Azure では、バックエンド アドレス プールを " *バックエンド プール*" と呼んでいます。 この例では、可用性グループに含まれる&2; つの SQL Server のアドレスがバックエンド プールとなります。 
+次の手順は、バックエンド アドレス プールの作成です。 Azure では、バックエンド アドレス プールを " *バックエンド プール*" と呼んでいます。 この例では、可用性グループに含まれる 2 つの SQL Server のアドレスがバックエンド プールとなります。 
 
 1. リソース グループで、作成したロード バランサーをクリックします。 
 1. **[設定]** の **[バックエンド プール]** をクリックします。
@@ -81,10 +83,10 @@ ms.openlocfilehash: 6a37e9e786a4e399c49cb77758a23793790888c9
 1. **[バックエンド プールの追加]** under **名前**に、バックエンド プールの名前を入力します。
 1. **[仮想マシン]** の **[+ 仮想マシンの追加]** をクリックします。 
 1. **[仮想マシンの選択]** の **[可用性セットの選択]** をクリックし、SQL Server 仮想マシンの追加先となる可用性セットを指定します。
-1. 可用性セットを選択したら、 **[仮想マシンの選択]**をクリックします。 可用性グループ内の SQL Server インスタンスのホストとなる&2; つの仮想マシンをクリックします。 **[選択]**をクリックします。 
+1. 可用性セットを選択したら、 **[仮想マシンの選択]**をクリックします。 可用性グループ内の SQL Server インスタンスのホストとなる 2 つの仮想マシンをクリックします。 **[選択]**をクリックします。 
 1. **[OK]** をクリックして、**[仮想マシンの選択]** のブレードと、**[バックエンド プールの追加]** を閉じます。 
 
-バックエンド アドレス プールの設定が Azure で更新されます。 これで&2; つの SQL Server から成るプールが可用性セットに作成されました。
+バックエンド アドレス プールの設定が Azure で更新されます。 これで 2 つの SQL Server から成るプールが可用性セットに作成されました。
 
 ### <a name="3-create-a-probe"></a>3.プローブを作成する
 次の手順はプローブの作成です。 このプローブで定義された方法で、現在どの SQL Server が可用性グループ リスナーを所有しているかが Azure によって確認されます。 Azure は、プローブの作成時に定義されたポートで、IP アドレスに基づいてサービスをプローブします。
@@ -111,7 +113,7 @@ ms.openlocfilehash: 6a37e9e786a4e399c49cb77758a23793790888c9
 指定したプローブが Azure によって作成されます。 Azure はこのプローブを使用して、どの SQL Server が可用性グループのリスナーを所有しているかを判定します。
 
 ### <a name="4-set-the-load-balancing-rules"></a>4.負荷分散規則を設定する
-負荷分散規則を設定します。 SQL Server へのトラフィックをロード バランサーでどのようにルーティングするかは、負荷分散規則で設定します。 2 つの SQL Server のうち可用性グループ リスナー リソースを所有できるのは一度に&1; つだけであるため、このロード バランサーでは Direct Server Return を有効にします。
+負荷分散規則を設定します。 SQL Server へのトラフィックをロード バランサーでどのようにルーティングするかは、負荷分散規則で設定します。 2 つの SQL Server のうち可用性グループ リスナー リソースを所有できるのは一度に 1 つだけであるため、このロード バランサーでは Direct Server Return を有効にします。
 
 1. ロード バランサーの **[設定]** ブレードで **[負荷分散規則]** をクリックします。 
 1. **[負荷分散規則]** ブレードで、**[追加]** をクリックします。
@@ -138,7 +140,7 @@ ms.openlocfilehash: 6a37e9e786a4e399c49cb77758a23793790888c9
 この時点で、リソース グループのロード バランサーが両方の SQL Server マシンに接続されています。 またロード バランサーには、可用性グループへの要求にいずれかのマシンが応答できるよう、SQL Server AlwaysOn 可用性グループ リスナーの IP アドレスが格納されます。
 
 > [!NOTE]
-> SQL Server が&2; つの異なるリージョンに存在する場合、もう一方のリージョンについても以上の手順を繰り返す必要があります。 ロード バランサーはリージョンごとに必要です。 
+> SQL Server が 2 つの異なるリージョンに存在する場合、もう一方のリージョンについても以上の手順を繰り返す必要があります。 ロード バランサーはリージョンごとに必要です。 
 > 
 > 
 
@@ -153,53 +155,6 @@ ms.openlocfilehash: 6a37e9e786a4e399c49cb77758a23793790888c9
 
 [!INCLUDE [ag-listener-configure](../../../../includes/virtual-machines-ag-listener-configure.md)]
 
-<!---------------------------
-* Use RDP to connect to the Azure virtual machine that hosts the primary replica. 
-* Open Failover Cluster Manager.
-* Select the **Networks** node, and note the cluster network name. This name will be used in the `$ClusterNetworkName` variable in the PowerShell script.
-* Expand the cluster name, and then click **Roles**.
-* In the **Roles** pane, right-click the availability group name and then select **Add Resource** > **Client Access Point**.
-* In the **Name** box, create a name for this new listener, then click **Next** twice, and then click **Finish**. Do not bring the listener or resource online at this point.
-  
-  > [!NOTE]
-  > The name for the new listener is the network name that applications will use to connect to databases in the SQL Server availability group.
-  > 
-  > 
-* Click the **Resources** tab, then expand the Client Access Point you just created. Right-click the IP resource and click properties. Note the name of the IP address. You will use this name in the `$IPResourceName` variable in the PowerShell script.
-* Under **IP Address** click **Static IP Address** and set the static IP address to the same address that you used when you set the load balancer IP address on the Azure portal. Enable NetBIOS for this address and click **OK**. Repeat this step for each IP resource if your solution spans multiple Azure VNets. 
-* On the cluster node that currently hosts the primary replica, open an elevated PowerShell ISE and paste the following commands into a new script.
-  
-        $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
-        $IPResourceName = "<IPResourceName>" # the IP Address resource name
-        $ILBIP = “<X.X.X.X>” # the IP Address of the Internal Load Balancer (ILB). This is the static IP address for the load balancer you configured in the Azure portal.
-  
-        Import-Module FailoverClusters
-  
-        Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"="59999";"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
-* Update the variables and run the PowerShell script to configure the IP address and port for the new listener.
-  
-  > [!NOTE]
-  > If your SQL Servers are in separate regions, you need to run the PowerShell script twice. The first time use the cluster network name, cluster IP resource name, and load balancer IP address from the first resource group. The second time use the cluster network name, cluster IP resource name, and load balancer IP address from the second resource group.
-  > 
-  > 
-
-Now the cluster has an availability group listener resource.
-
-### 2. Bring the listener online
-With the availability group listener resource configured, you can bring the listener online so that applications can connect to databases in the availability group with the listener.
-
-* Navigate back to Failover Cluster Manager. Expand **Roles** and then highlight your Availability Group. On the **Resources** tab, right-click the listener name and click **Properties**.
-* Click the **Dependencies** tab. If there are multiple resources listed, verify that the IP addresses have OR, not AND, dependencies. Click **OK**.
-* Right-click the listener name and click **Bring Online**.
-* Once the listener is online, from the **Resources** tab, right-click the availability group and click **Properties**.
-* Create a dependency on the listener name resource (not the IP address resources name). Click **OK**.
-* Launch SQL Server Management Studio and connect to the primary replica.
-* Navigate to **AlwaysOn High Availability** | **Availability Groups** | **Availability Group Listeners**. 
-* You should now see the listener name that you created in Failover Cluster Manager. Right-click the listener name and click **Properties**.
-* In the **Port** box, specify the port number for the availability group listener by using the $EndpointPort you used earlier (1433 was the default), then click **OK**.
-
-------------------------------->
-
 ### <a name="verify-the-configuration-of-the-listener"></a>リスナーの構成を確認します。
 
 クラスター リソースと依存関係が正しく構成されていれば、SQL Server Management Studio にリスナーが表示されます。 次の手順を実行して、リスナーのポートを設定します。
@@ -207,9 +162,9 @@ With the availability group listener resource configured, you can bring the list
 1. SQL Server Management Studio を起動し、プライマリ レプリカに接続します。
 2. **[AlwaysOn 高可用性]** | 、**[可用性グループ]** | 、**[可用性グループ リスナー]** の順に移動します。 
 1. フェールオーバー クラスター マネージャーで作成したリスナー名が表示されます。 リスナー名を右クリックし、 **[プロパティ]**をクリックします。
-1. **[ポート]** ボックスで、以前に使用した $EndpointPort (既定値は&1433;) を使用し、可用性グループ リスナーのポート番号を指定して、**[OK]** をクリックします。
+1. **[ポート]** ボックスで、以前に使用した $EndpointPort (既定値は 1433) を使用し、可用性グループ リスナーのポート番号を指定して、**[OK]** をクリックします。
 
-これで、SQL Server AlwaysOn 可用性グループが Resource Manager モデルの Azure 仮想マシンにデプロイされました。 
+これで、可用性グループが Resource Manager モードで実行されている Azure 仮想マシンにデプロイされました。 
 
 ## <a name="test-the-connection-to-the-listener"></a>リスナーへの接続をテストする
 接続をテストするには、次の手順に従います。
@@ -221,13 +176,75 @@ With the availability group listener resource configured, you can bring the list
 
 SQLCMD 接続では、プライマリ レプリカをホストしている SQL Server インスタンスに対して自動的に接続されます。 
 
-## <a name="guidelines-and-limitations"></a>ガイドラインと制限
-内部ロード バランサーを使用した Azure の可用性グループ リスナーに関する次のガイドラインを確認してください。
+## <a name="create-an-ip-address---for-an-additional-availability-group"></a>追加の可用性グループの IP アドレスを作成する
 
-* サポートされる内部可用性グループ リスナーは、クラウド サービスごとに&1; つだけです。リスナーはロード バランサーに対して構成されており、内部ロード バランサーは&1; つしか存在しないためです。 ただし、複数の外部リスナーを作成することができます。 
-* 内部ロード バランサーでは、同じ仮想ネットワーク内からしかリスナーにアクセスできません。
+各可用性グループは、個別のリスナーを使用します。 各リスナーには独自の IP アドレスがあります。 追加のリスナーの IP アドレスを保持するために、同じロード バランサーを使用します。 新しい可用性グループを作成した後で、IP アドレスをロード バランサーに追加し、リスナーを構成します。
 
+Azure Portal で IP アドレスをロード バランサーに追加するには、次の手順に従います。
 
-<!--HONumber=Jan17_HO2-->
+1. Azure Portal で、ロード バランサーを含むリソース グループを開き、ロード バランサーをクリックします。 
+2. **[設定]** の **[フロントエンド IP プール]** をクリックします。 **[+ 追加]** をクリックします。 
+3. **[フロントエンド IP アドレスの追加]** で、フロントエンドの名前を割り当てます。 
+4. **[仮想ネットワーク]** と **[サブネット]** が SQL Server インスタンスと同じであることを確認します。
+5. リスナーの IP アドレスを設定します。 
+   
+   >[!TIP]
+   >IP アドレスを静的に設定し、現在サブネットで使用されていないアドレスを入力することができます。 また、IP アドレスを動的に設定して、新しいフロントエンド IP プールを保存することもできます。 そうした場合、Azure Portal によって、使用可能な IP アドレスがプールに自動的に割り当てられます。 その後、フロントエンド IP プールを再び開いて、割り当てを静的に変更することができます。 
 
+   リスナーの IP アドレスを保存します。 
+
+6. 正常性プローブを追加します。 次の設定を使用します。
+
+   |設定 |値
+   |:-----|:----
+   |**名前** |プローブを識別する名前。
+   |**プロトコル** |TCP
+   |**ポート** |未使用の TCP ポート。 すべての仮想マシンで使用できる必要があります。 他の目的では使用できません。 2 つのリスナーが同じプローブ ポートを使用することはできません。 
+   |**間隔** |プローブの試行の間隔。 既定値 (5) を使用します。
+   |**異常のしきい値** |連続する失敗の回数のしきい値。これを超えると、仮想マシンが異常と見なされます。
+
+   **[OK]** をクリックして、プローブを保存します。 
+
+7. 新しい負荷分散規則を作成します。 **[負荷分散規則]** をクリックし、**[+ 追加]** をクリックします。
+8. 新しい負荷分散規則を次の設定で構成します。
+
+   |Setting |値
+   |:-----|:----
+   |**名前** |負荷分散規則を識別する名前。 
+   |**フロントエンド IP アドレス** |作成した IP アドレスを選択します。 
+   |**プロトコル** |TCP
+   |**ポート** |SQL Server インスタンスで使用されているポートを使用します。 変更していない限り、既定のインスタンスはポート 1433 を使用します。 
+   |**バックエンド ポート** |**[ポート]** と同じ値を使用します。
+   |**バックエンド プール** |SQL Server インスタンスがある仮想マシンを含むプールです。 
+   |**正常性プローブ** |作成したプローブを選択します。
+   |**セッション永続化** |なし
+   |**アイドル タイムアウト (分)** |既定値 (4)
+   |**フローティング IP (ダイレクト サーバー リターン)** | 有効
+
+### <a name="configure-the-availability-group-go-use-the-new-ip-address"></a>新しい IP アドレスを使用して可用性グループを構成する
+
+クラスターの構成を完了するには、最初の可用性グループを作成したときの手順を繰り返します。 つまり、[新しい IP アドレスを使用するクラスター](#configure-the-cluster-to-use-the-load-balancer-ip-address)を構成します。 
+
+リスナーの IP アドレスを追加した後は、追加の可用性グループを構成できます。 
+
+1. 新しい IP アドレスのプローブ ポートが両方の SQL Server 仮想マシンで開かれていることを確認します。 
+
+2. [クラスター マネージャーでクライアント アクセス ポイントを追加](#addcap)します。
+
+3. [可用性グループの IP リソースを構成する](#congroup)。
+
+   >[!IMPORTANT]
+   >IP アドレスを作成する場合は、ロード バランサーに追加した IP アドレスを使用します。  
+
+4. [SQL Server 可用性グループ リソースがクライアント アクセス ポイントに依存するように設定する。](#dependencyGroup)
+
+5. [クライアント アクセス ポイント リソースが IP アドレスに依存するように設定する](#listname)。
+ 
+5. [PowerShell でクラスターのパラメーターを設定する](#setparam)。
+
+新しい IP アドレスを使用するように可用性グループを構成した後は、リスナーへの接続を構成します。 
+
+## <a name="next-steps"></a>次のステップ
+
+- [異なるリージョンの Azure Virtual Machines に SQL Server AlwaysOn 可用性グループを構成する](virtual-machines-windows-portal-sql-availability-group-dr.md)
 

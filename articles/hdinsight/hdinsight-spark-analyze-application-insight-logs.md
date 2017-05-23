@@ -1,5 +1,5 @@
 ---
-title: "HDInsight の Spark を使用した Application Insights ログの分析 | Microsoft Docs"
+title: "Spark を使用した Application Insights ログの分析 - Azure HDInsight | Microsoft Docs"
 description: "Application Insight のログを BLOB ストレージにエクスポートし、HDInsight 上の Spark を使用してこのログを分析する方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/10/2017
+ms.date: 05/16/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: cb994df3712798d9016401235d4eff09b3518584
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 92d591054244ceb01adbfbd8ff027d47b04a6c83
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -26,18 +27,16 @@ ms.lasthandoff: 04/12/2017
 
 HDInsight で Spark を使用して、Application Insight テレメトリ データを分析する方法について説明します。
 
-[Visual Studio Application Insights](../application-insights/app-insights-overview.md) は、お使いの Web アプリケーションを監視する分析サービスです。 Application Insights で生成されたテレメトリ データは Azure Storage にエクスポート可能であり、Azure Storage で HDInsight を使用して分析することができます。
+[Visual Studio Application Insights](../application-insights/app-insights-overview.md) は、お使いの Web アプリケーションを監視する分析サービスです。 Application Insights で生成されたテレメトリ データは Azure Storage にエクスポートできます。 データが Azure Storage にあれば、HDInsight を使用して分析することができます。
 
 ## <a name="prerequisites"></a>前提条件
-
-* Azure サブスクリプション。
 
 * Application Insights を使用するように構成済みのアプリケーション。
 
 * Linux ベースの HDInsight クラスターの作成に慣れていること。 詳細については、[HDInsight での Spark の作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関する記事をご覧ください。
 
   > [!IMPORTANT]
-  > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。
+  > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight 3.3 の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関するページを参照してください。
 
 * Web ブラウザー。
 
@@ -58,24 +57,29 @@ HDInsight で Spark を使用して、Application Insight テレメトリ デー
 Application Insights は、BLOB にテレメトリ情報を連続してエクスポートするように構成できます。 こうすることで、HDInsight が BLOB に格納されたデータを読み取ることができます。 ただし、守る必要のある要件がいくつかあります。
 
 * **場所**: ストレージ アカウントと HDInsight が別の場所にあると、待ち時間が長くなることがあります。 また、地域間のデータ移動に対して料金が適用されるので、コストも大きくなります。
-* **BLOB の種類**: HDInsight でサポートされるのは、ブロック BLOB のみです。 Application Insights は、既定ではブロック BLOB を使用するので、既定のままであれば HDInsight と連携可能です。
-* **アクセス許可**: Application Insights での連続エクスポートと HDInsight の既定ストレージの両方に同じストレージ アカウントを使用する場合、HDInsight には Application Insight テレメトリ データへのフル アクセスが付与されます。 つまり、HDInsight クラスターからテレメトリ データを削除できるということです。
 
-    代わりに、HDInsight と Application Insights テレメトリのストレージ アカウントを分け、 [Shared Access Signature (SAS) を使用して HDInsight からデータへのアクセスを制限する](hdinsight-storage-sharedaccesssignature-permissions.md)ことをお勧めします。 SAS を使用すると、テレメトリ データへの読み取り専用アクセスを HDInsight に付与することができます。
+    > [!WARNING]
+    > HDInsight 以外の場所でストレージ アカウントを使用することはできません。
+
+* **BLOB の種類**: HDInsight でサポートされるのは、ブロック BLOB のみです。 Application Insights は、既定ではブロック BLOB を使用するので、既定のままであれば HDInsight と連携可能です。
+
+既存の HDInsight クラスターにストレージを追加する方法については、[ストレージ アカウントの追加](hdinsight-hadoop-add-storage.md)に関するドキュメントをご覧ください。
 
 ### <a name="data-schema"></a>データ スキーマ
 
-Application Insights には、BLOB にエクスポートされるテレメトリ データ形式に関する [エクスポート データ モデル](../application-insights/app-insights-export-data-model.md) 情報があります。 このドキュメントの各手順では、データの処理に Spark SQL を使用します。 Spark SQL では、Application Insights で記録された JSON データ構造に関するスキーマを自動で生成できるため、分析の実行時にスキーマを手作業で定義する必要はありません。
+Application Insights には、BLOB にエクスポートされるテレメトリ データ形式に関する [エクスポート データ モデル](../application-insights/app-insights-export-data-model.md) 情報があります。 このドキュメントの各手順では、データの処理に Spark SQL を使用します。 Spark SQL では、Application Insights によって記録された JSON データ構造のスキーマを自動的に生成できます。
 
 ## <a name="export-telemetry-data"></a>テレメトリ データをエクスポートする
+
 [連続エクスポートの構成](../application-insights/app-insights-export-telemetry.md) に関する記事の手順に従って、Azure Storage BLOB へテレメトリ情報をエクスポートするように Application Insights を構成します。
 
 ## <a name="configure-hdinsight-to-access-the-data"></a>データにアクセスするように HDInsight を構成する
-[Shared Access Signature (SAS) を使用した HDInsight からデータへのアクセスの制限](hdinsight-storage-sharedaccesssignature-permissions.md) に関する記事を参考に、エクスポートされたテレメトリ データを保持する BLOB コンテナー用の SAS を作成します。 SAS では、データへの読み取り専用アクセスを提供する必要があります。
 
-既存の Linux ベースの HDInsight クラスターに SAS ストレージを追加する方法の詳細は、Shared Access Signature に関するドキュメントに記載されています。 このドキュメントには、HDInsight クラスターの新規作成時にこのストレージを追加する方法も記載されています。
+HDInsight クラスターを作成する場合は、クラスターの作成中にストレージ アカウントを追加します。
 
-## <a name="analyze-the-data-using-python-pyspark"></a>Python (PySpark) を使用してデータを分析する
+既存のクラスターに Azure ストレージ アカウントを追加する方法については、[ストレージ アカウントの追加](hdinsight-hadoop-add-storage.md)に関するドキュメントをご覧ください。
+
+## <a name="analyze-the-data-pyspark"></a>データの分析: PySpark
 
 1. [Azure ポータル](https://portal.azure.com)で、HDInsight クラスター上の Spark を選択します。 **[Quick Links (クイック リンク)]** セクションで **[Cluster Dashboards (クラスター ダッシュボード)]** を選択してから、[Cluster__ Dashboard (クラスター ダッシュボード)] ブレードで **[Jupyter Notebook]** を選択します。
 
@@ -98,7 +102,7 @@ Application Insights には、BLOB にエクスポートされるテレメトリ
 
         Creating HiveContext as 'sqlContext'
         SparkContext and HiveContext created. Executing user code ...
-5. 最初のセルの下に新しいセルが作成されます。 この新しいセルに次のテキストを入力します。 **CONTAINER** および **STORAGEACCOUNT** を、Application Insights の連続エクスポートを構成するときに使用した Azure ストレージ アカウント名と BLOB コンテナー名に置き換えてください。
+5. 最初のセルの下に新しいセルが作成されます。 この新しいセルに次のテキストを入力します。 `CONTAINER` と `STORAGEACCOUNT` を、Azure ストレージ アカウントの名前と Application Insights データを含む BLOB コンテナーの名前に置き換えます。
 
         %%bash
         hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
@@ -113,7 +117,7 @@ Application Insights には、BLOB にエクスポートされるテレメトリ
    > [!NOTE]
    > このセクションの残りの手順では、`wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` ディレクトリを使用しました。 ディレクトリ構造は異なる場合があります。
 
-6. 隣のセルに次のコードを入力します。 **WASB\_PATH** を、前の手順のパスに置き換えてください。
+6. 次のセルに、次のコードを入力します。`WASB_PATH` を前の手順のパスに置き換えます。
 
         jsonFiles = sc.textFile('WASB_PATH')
         jsonData = sqlContext.read.json(jsonFiles)
@@ -193,9 +197,7 @@ Application Insights には、BLOB にエクスポートされるテレメトリ
     このクエリでは、context.location.city が null ではない上位 20 レコードの都市情報が返されます。
 
    > [!NOTE]
-   > context 構造は Application Insights で記録されるすべてのテレメトリに存在していますが、お使いのログでは city 要素が設定されていない場合があります。 スキーマを使用して、ログのデータが含まれるクエリ可能な他の要素を特定してください。
-   >
-   >
+   > context 構造は Application Insights で記録されるすべてのテレメトリに存在していますが、 お使いのログでは city 要素が設定されていない場合があります。 スキーマを使用して、ログのデータが含まれるクエリ可能な他の要素を特定してください。
 
     このクエリでは、次のテキストのような情報が返されます。
 
@@ -209,7 +211,8 @@ Application Insights には、BLOB にエクスポートされるテレメトリ
         ...
         +---------+
 
-## <a name="analyze-the-data-using-scala"></a>Scala を使用してデータを分析する
+## <a name="analyze-the-data-scala"></a>データの分析: Scala
+
 1. [Azure ポータル](https://portal.azure.com)で、HDInsight クラスター上の Spark を選択します。 **[Quick Links (クイック リンク)]** セクションで **[Cluster Dashboards (クラスター ダッシュボード)]** を選択してから、[Cluster__ Dashboard (クラスター ダッシュボード)] ブレードで **[Jupyter Notebook]** を選択します。
 
     ![クラスター ダッシュボード](./media/hdinsight-spark-analyze-application-insight-logs/clusterdashboards.png)
@@ -229,7 +232,7 @@ Application Insights には、BLOB にエクスポートされるテレメトリ
 
         Creating HiveContext as 'sqlContext'
         SparkContext and HiveContext created. Executing user code ...
-5. 最初のセルの下に新しいセルが作成されます。 この新しいセルに次のテキストを入力します。 **CONTAINER** および **STORAGEACCOUNT** を、Application Insights の連続エクスポートを構成するときに使用した Azure ストレージ アカウント名と BLOB コンテナー名に置き換えてください。
+5. 最初のセルの下に新しいセルが作成されます。 この新しいセルに次のテキストを入力します。 `CONTAINER` と `STORAGEACCOUNT` を、Azure ストレージ アカウントの名前と Application Insights ログを含む BLOB コンテナーの名前に置き換えます。
 
         %%bash
         hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
@@ -242,10 +245,9 @@ Application Insights には、BLOB にエクスポートされるテレメトリ
     返された wasb パスが、Application Insights のテレメトリ データの場所です。 返された wasb パスを使用するようにセルの `hdfs dfs -ls` 行を変更し、**Shift + Enter** キーを押してセルをもう一度実行します。 今回は、テレメトリ データを含むディレクトリが結果に表示されます。
 
    > [!NOTE]
-   > このセクションの残りの手順では、`wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` ディレクトリを使用しました。 テレメトリ データが Web アプリのものでない場合、このディレクトリは存在しない可能性があります。 Requests ディレクトリが含まれないテレメトリ データを使用する場合は、別のディレクトリを選択し、以降の手順では、そのディレクトリおよびディレクトリに保管されているデータのスキーマを使用するように変更してください。
-   >
-   >
-6. 隣のセルに次のコードを入力します。 **WASB\_PATH** を、前の手順のパスに置き換えてください。
+   > このセクションの残りの手順では、`wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` ディレクトリを使用しました。 テレメトリ データが Web アプリのものでない場合、このディレクトリは存在しない可能性があります。
+
+6. 次のセルに、次のコードを入力します。`WASB\_PATH` を前の手順のパスに置き換えます。
 
         jsonFiles = sc.textFile('WASB_PATH')
         jsonData = sqlContext.read.json(jsonFiles)
@@ -325,7 +327,7 @@ Application Insights には、BLOB にエクスポートされるテレメトリ
     このクエリでは、context.location.city が null ではない上位 20 レコードの都市情報が返されます。
 
    > [!NOTE]
-   > context 構造は Application Insights で記録されるすべてのテレメトリに存在していますが、お使いのログでは city 要素が設定されていない場合があります。 スキーマを使用して、ログのデータが含まれるクエリ可能な他の要素を特定してください。
+   > context 構造は Application Insights で記録されるすべてのテレメトリに存在していますが、 お使いのログでは city 要素が設定されていない場合があります。 スキーマを使用して、ログのデータが含まれるクエリ可能な他の要素を特定してください。
    >
    >
 
@@ -342,6 +344,7 @@ Application Insights には、BLOB にエクスポートされるテレメトリ
         +---------+
 
 ## <a name="next-steps"></a>次のステップ
+
 Spark でのデータ処理および Azure の各サービスの使用例については、次のドキュメントを参照してください。
 
 * [Spark と BI: HDInsight で BI ツールと Spark を使用した対話型データ分析の実行](hdinsight-apache-spark-use-bi-tools.md)

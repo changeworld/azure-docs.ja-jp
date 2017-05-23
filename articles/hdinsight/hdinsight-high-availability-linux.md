@@ -1,15 +1,16 @@
 ---
-title: "HDInsight (Hadoop) の高可用性機能 | Microsoft Docs"
-description: "Linux ベースの HDInsight クラスターで、追加のヘッド ノードを使用することで、信頼性と可用性を改善する方法について説明します。 その結果が Ambari や Hive などの Hadoop サービスに与える影響、SSH を使用して各ヘッド ノードに個別に接続する方法についても説明します。"
+title: "Hadoop の高可用性 - Azure HDInsight | Microsoft Docs"
+description: "HDInsight クラスターで、追加のヘッド ノードを使用することで、信頼性と可用性を改善する方法について説明します。 その結果が Ambari や Hive などの Hadoop サービスに与える影響、SSH を使用して各ヘッド ノードに個別に接続する方法についても説明します。"
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
 author: Blackmist
 documentationcenter: 
 tags: azure-portal
+keywords: "Hadoop の高可用性"
 ms.assetid: 99c9f59c-cf6b-4529-99d1-bf060435e8d4
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: multiple
@@ -17,10 +18,10 @@ ms.topic: article
 ms.date: 04/03/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 6e001d497dba1e3cc0a987fd0950854fe2564d2c
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: 8e2c1ccb003adafeaf315b23171f49d5b3f50cdb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -28,12 +29,12 @@ ms.lasthandoff: 04/27/2017
 
 HDInsight クラスターは 2 つのヘッド ノードを備え、実行中の Hadoop サービスおよびジョブの可用性と信頼性を高めています。
 
-Hadoop は、クラスター内の複数のノードでサービスやデータを保持することにより、高い可用性と信頼性を実現します。 ただし、Hadoop の標準ディストリビューションに含まれるヘッド ノードは、通常 1 つのみです。 この 1 つのヘッド ノードで障害が発生すると、クラスターが動作を停止する可能性があります。 これは、HDInsight の問題ではありません。
+Hadoop は、クラスター内の複数のノードにわたってサービスやデータを複製することにより、高い可用性と信頼性を実現します。 ただし、Hadoop の標準ディストリビューションに含まれるヘッド ノードは、通常 1 つのみです。 この 1 つのヘッド ノードで障害が発生すると、クラスターが動作を停止する可能性があります。 Hadoop の可用性と信頼性を向上させるために、HDInsight では 2 つのヘッド ノードが提供されます。
 
 > [!IMPORTANT]
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。
 
-## <a name="understanding-the-nodes"></a>ノードについて
+## <a name="availability-and-reliability-of-nodes"></a>ノードの高可用性と信頼性
 
 HDInsight クラスターのノードは、Azure Virtual Machines を使用して実装します。 ノードに障害が発生した場合はオフラインになり、新しいノードが作成され、障害が発生したノードと置換されます。 ノードがオフラインの間は、新しいノードがオンラインに戻るまで、同じ種類の別のノードが使用されます。
 
@@ -44,7 +45,7 @@ HDInsight クラスターのノードは、Azure Virtual Machines を使用し�
 
 ### <a name="head-nodes"></a>ヘッド ノード
 
-ヘッド ノードはどちらも、HDInsight クラスター内で同時にアクティブに実行されます。 HDFS や YARN などの一部のサービスは、常にどちらかのヘッド ノードで「アクティブ」になります。 HiveServer2 や Hive MetaStore などのサービスは、両方のヘッド ノードで同時にアクティブになります。
+Hadoop サービスの高可用性を確保するために、HDInsight では 2 つのヘッド ノードが提供されます。 ヘッド ノードはどちらも、HDInsight クラスター内で同時にアクティブに実行されます。 HDFS や YARN などの一部のサービスは、常にどちらかのヘッド ノードで「アクティブ」になります。 HiveServer2 や Hive MetaStore などのサービスは、両方のヘッド ノードで同時にアクティブになります。
 
 ヘッド ノード (および HDInsight の他のノード) では、ノードのホスト名の一部として数値が使用されます。 たとえば、`hn0-CLUSTERNAME` または `hn4-CLUSTERNAME` です。
 
@@ -53,11 +54,11 @@ HDInsight クラスターのノードは、Azure Virtual Machines を使用し�
 
 ### <a name="nimbus-nodes"></a>Nimbus ノード
 
-Storm クラスターの場合、Nimbus ノードは、ワーカー ノード間で処理を分散および監視して、Hadoop JobTracker と同様の機能を提供します。 HDInsight では、Storm クラスターに対して 2 つの Nimbus ノードが提供されます。
+Nimbus ノードは、Storm クラスターで使用できます。 Nimbus ノードは、ワーカー ノード間で処理を分散および監視して、Hadoop JobTracker と同様の機能を提供します。 HDInsight では、Storm クラスターに対して 2 つの Nimbus ノードが提供されます。
 
 ### <a name="zookeeper-nodes"></a>Zookeeper ノード
 
-[ZooKeeper](http://zookeeper.apache.org/) ノードが使用され、データ (ワーカー) ノードとゲートウェイはどちらのヘッド ノードでマスター サービスがアクティブであるかがわかります。 既定では、HDInsight では 3 つの ZooKeeper ノードが提供されます。
+[ZooKeeper](http://zookeeper.apache.org/) ノードは、ヘッド ノード上のマスター サービスのリーダー選定に使用されます。 また、これにより、サービス、データ (ワーカー) ノード、およびゲートウェイはどちらのヘッド ノードでマスター サービスがアクティブになっているかがわかります。 既定では、HDInsight では 3 つの ZooKeeper ノードが提供されます。
 
 ### <a name="worker-nodes"></a>ワーカー ノード
 
@@ -65,7 +66,7 @@ Storm クラスターの場合、Nimbus ノードは、ワーカー ノード間
 
 ### <a name="edge-node"></a>エッジ ノード
 
-エッジ ノードは、クラスター内のデータの分析にはアクティブに関与しませんが、開発者やデータ サイエンティストが Hadoop を操作するときに使用されます。 エッジ ノードは、クラスター内の他のノードと同じ Azure Virtual Network 内に存在し、他のすべてのノードに直接アクセスできます。 クラスターのデータ分析には関係しないため、重要な Hadoop サービスまたは分析ジョブからリソースを取り除く心配をせずに使用できます。
+エッジ ノードは、クラスター内のデータの分析にはアクティブに関与しませんが、 開発者やデータ サイエンティストが Hadoop を操作するときに使用されます。 エッジ ノードは、クラスター内の他のノードと同じ Azure Virtual Network 内に存在し、他のすべてのノードに直接アクセスできます。 エッジ ノードは、重要な Hadoop サービスまたは分析ジョブからリソースを取り除く心配をせずに使用できます。
 
 現在、HDInsight では、R Server が既定でエッジ ノードを提供する唯一のクラスターの種類です。 HDInsight の R Server のエッジ ノードは、R コードを分散処理のためにクラスターに送信する前にローカルでテストするために使用されます。
 
@@ -135,14 +136,14 @@ Ambari の使用について詳しくは、[Ambari Web UI を使用した HDInsi
 
 ### <a name="ambari-rest-api"></a>Ambari REST API
 
-Ambari REST API はインターネット経由で使用でき、パブリック ゲートウェイが、この REST API を現在ホストしているヘッド ノードへのルーティング要求を処理します。
+Ambari REST API は、インターネット経由で使用できます。 HDInsight パブリック ゲートウェイが、この REST API を現在ホストしているヘッド ノードへのルーティング要求を処理します。
 
 次のコマンドを使用して、Ambari REST API を通してサービスの状態を確認できます。
 
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICENAME?fields=ServiceInfo/state
 
 * **PASSWORD** を HTTP ユーザー (admin) アカウントのパスワードに置き換えます。
-* **CLUSTERNAME** をクラスターの名前に置き換えます。
+* **CLUSTERNAME** は、クラスターの名前に置き換えます。
 * **SERVICENAME** を、その状態を確認するサービスの名前に置き換えます。
 
 たとえば、**mycluster** という名前のクラスターで、**HDFS** サービスの状態を、**password** というパスワードで確認するには、次のコマンドを使用します。
@@ -192,7 +193,7 @@ SSH 経由でヘッド ノードに接続している間、ログ ファイル�
 
 SSH ファイル転送プロトコルまたはセキュア ファイル転送プロトコル (SFTP) を使用してヘッド ノードに接続し、ログ ファイルを直接ダウンロードすることもできます。
 
-SSH クライアントを使用するときと同様に、クラスターへの接続時にクラスターの SSH ユーザー アカウント名と SSH アドレスを指定する必要があります。 たとえば、「 `sftp username@mycluster-ssh.azurehdinsight.net`」のように入力します。 メッセージが表示されたらアカウントのパスワードを入力するか、または `-i` パラメーターを使用して公開キーを指定する必要があります。
+SSH クライアントを使用するときと同様に、クラスターへの接続時にクラスターの SSH ユーザー アカウント名と SSH アドレスを指定する必要があります。 たとえば、「 `sftp username@mycluster-ssh.azurehdinsight.net`」のように入力します。 メッセージが表示されたらアカウントのパスワードを入力するか、または `-i` パラメーターを使用して公開キーを指定します。
 
 接続されると、 `sftp>` プロンプトが表示されます。 このプロンプトでは、ディレクトリの移動、およびファイルのアップロードとダウンロードを行うことができます。 たとえば、次のコマンドでは、 **/var/log/hadoop/hdfs** ディレクトリに移動し、ディレクトリ内のすべてのファイルをダウンロードします。
 
@@ -207,7 +208,7 @@ SSH クライアントを使用するときと同様に、クラスターへの�
 ### <a name="ambari"></a>Ambari
 
 > [!NOTE]
-> Ambari を使用してログ ファイルにアクセスするには、SSH トンネルを使用する必要があります。 個々のサービスの Web インターフェイスは、インターネットでの一般公開はされていません。 SSH トンネルの使用の詳細については、[SSH トンネリングを使用した Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI へのアクセス](hdinsight-linux-ambari-ssh-tunnel.md)に関するページを参照してください。
+> Ambari を使用してログ ファイルにアクセスするには、SSH トンネルを使用する必要があります。 個々のサービスの Web インターフェイスは、インターネットでの一般公開はされていません。 SSH トンネルの使用方法の詳細については、[SSH トンネリングの使用](hdinsight-linux-ambari-ssh-tunnel.md)に関するドキュメントを参照してください。
 
 Ambari Web UI から、ログ (例: YARN) を表示するサービスを選択します。 その後、**[クイック リンク]** を使用して、ログを表示するヘッド ノードを選択します。
 
@@ -215,9 +216,9 @@ Ambari Web UI から、ログ (例: YARN) を表示するサービスを選択�
 
 ## <a name="how-to-configure-the-node-size"></a>ノード サイズの構成方法
 
-ノードのサイズを選択できるのは、クラスターの作成中のみです。 「[HDInsight の料金](https://azure.microsoft.com/pricing/details/hdinsight/)」ページで、HDInsight で使用できる、コア、メモリ、ローカル ストレージを含むさまざまな VM サイズの一覧を確認できます。
+ノードのサイズを選択できるのは、クラスターの作成中のみです。 「[HDInsight の料金](https://azure.microsoft.com/pricing/details/hdinsight/)」ページで、HDInsight で使用できるまざまな VM サイズの一覧を確認できます。
 
-新しいクラスターを作成するときに、ノードのサイズを指定できます。 次の情報では、[Azure Portal][preview-portal]、[Azure PowerShell][azure-powershell]、[Azure CLI][azure-cli] を使用してサイズを指定する方法について説明します。
+クラスターを作成するときに、ノードのサイズを指定できます。 次の情報では、[Azure Portal][preview-portal]、[Azure PowerShell][azure-powershell]、[Azure CLI][azure-cli] を使用してサイズを指定する方法について説明します。
 
 * **Azure Portal**: クラスターを作成するときに、クラスターによって使用されるノードのサイズを設定できます。
 

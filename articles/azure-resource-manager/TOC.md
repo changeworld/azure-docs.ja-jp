@@ -24,7 +24,6 @@
 ### [他のテンプレートにリンクする](resource-group-linked-templates.md)
 ### [リソース間の依存関係を定義する](resource-group-define-dependencies.md)
 ### [複数のインスタンスの作成](resource-group-create-multiple.md)
-### [シーケンシャル ループ](resource-manager-sequential-loop.md)
 ### [場所を設定する](resource-manager-template-location.md)
 ### [タグを割り当てる](resource-manager-template-tags.md)
 ### [子リソースの名前と種類を設定する](resource-manager-template-child-resource.md)
@@ -44,7 +43,7 @@
 #### [テンプレートをエクスポートして再デプロイする](resource-manager-export-template-cli.md)
 ### [ポータル](resource-group-template-deploy-portal.md)
 ### [REST API](resource-group-template-deploy-rest.md)
-### [複数リソース グループのデプロイ](resource-manager-cross-resource-group-deployment.md)
+### [リソース グループ間のデプロイ](resource-manager-cross-resource-group-deployment.md)
 ### [Visual Studio Team Services を使用した継続的インテグレーション](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ### [デプロイ時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)
 

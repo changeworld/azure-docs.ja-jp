@@ -1,6 +1,6 @@
 ---
-title: "Azure HDInsight の Hadoop コンポーネントのリリース ノート (アーカイブ) | Microsoft Docs"
-description: "Azure HDInsight の Hadoop コンポーネントのリリース ノートとバージョン (アーカイブ)。"
+title: "リリース ノート (アーカイブ) - Azure HDInsight の Hadoop コンポーネント | Microsoft Docs"
+description: "Azure HDInsight の以前のバージョンの Hadoop コンポーネントのリリース ノート (アーカイブ)。"
 services: hdinsight
 documentationcenter: 
 editor: cgronlun
@@ -8,7 +8,7 @@ manager: jhubbard
 author: nitinme
 tags: azure-portal
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,10 +16,11 @@ ms.topic: article
 ms.date: 4/06/2017
 ms.author: nitinme
 ROBOTS: NOINDEX
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 5e1538ae0d4b1270040bd593cae66c1dd1046201
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: 7d8b691905c07b11543505ed1961d908ff4de654
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/13/2017
 
 
 ---
@@ -166,9 +167,9 @@ ms.lasthandoff: 04/27/2017
 
 | タイトル | Description | 影響を受ける領域 (例: サービス、コンポーネント、SDK) | クラスターの種類 (例: Hadoop、HBase、Storm) | JIRA (該当する場合) |
 | --- | --- | --- | --- | --- |
-| HDI 3.4 でのカスタム メタストアのアップグレードに関する問題 |以前に下位バージョンの別の HDInsight クラスターで使用されていたカスタム メタストアを使用した場合、クラスターの作成が失敗しました。 これは、現在では修正されたアップグレード スクリプトのエラーによるものでした |クラスターの作成 |すべて |該当なし |
+| HDI 3.4 でのカスタム メタストアのアップグレードに関する問題 |以前に下位バージョンの別の HDInsight クラスターで使用されていたカスタム メタストアを使用した場合、クラスターの作成が失敗しました。 これは、現在では修正されたアップグレード スクリプトのエラーによるものでした。 |クラスターの作成 |すべて |該当なし |
 | Livy クラッシュ復旧 |Livy を通じて送信されるすべてのジョブについてジョブ状態の復元性を提供します。 |信頼性 |Linux での Spark |該当なし |
-| Jupyter コンテンツ HA |クラスターに関連付けられているストレージ アカウントとの間で、Jupyter Notebook の内容を保存およびロードする機能を提供します。 詳細については、 [Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)に関するページをご覧ください。 |Notebook |Linux での Spark |該当なし |
+| Jupyter コンテンツ HA |クラスターに関連付けられているストレージ アカウントとの間で、Jupyter Notebook の内容を保存およびロードする機能を提供します。 詳細については、 [Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)に関するページをご覧ください。 |Notebook |Linux での Spark |該当なし  |
 | Jupyter Notebook での hiveContext の削除 |`%%hive` マジックの代わりに `%%sql` マジックを使用します。 sqlContext は hiveContext と同等です。 詳細については、 [Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md) |Notebook |Linux 上の Spark クラスター |該当なし |
 | Spark の古いバージョンの非推奨 |古い Spark 1.3.1 バージョンは、5 月 31 でサービスが終了します。 |サービス |Windows 上の Spark クラスター |該当なし |
 
@@ -571,7 +572,7 @@ ms.lasthandoff: 04/27/2017
 </tr>
 <tr>
 <td>SCP.NET EventHub のサポート</td>
-<td>HDInsight Storm の更新されたクラスター パッケージにより、SCP.NET の新しい機能が提供されます。 トポロジ ビルダーで、EventHubSpout または Java スパウトをより簡単に使用できる新しい API にアクセスできます。 コントラクトが更新されているため、新しいクラスターを使用するには、SCP.NET クライアント SDK を更新する必要があります。 新しい API の詳細、使用法、および (バグの修正を含む) リリース ノートについては、SCP.NET nuget パッケージに含まれる Readme を参照してください。</td>
+<td>HDInsight Storm の更新されたクラスター パッケージにより、SCP.NET の新しい機能が提供されます。 トポロジ ビルダーで、EventHubSpout または Java スパウトをより簡単に使用できる新しい API にアクセスできます。 コントラクトが更新されているため、新しいクラスターを使用するには、SCP.NET クライアント SDK を更新する必要があります。 新しい API の詳細、使用法、および (バグの修正を含む) リリース ノートについては、SCP.NET NuGet パッケージに含まれる Readme を参照してください。</td>
 <td>VS のツール</td>
 <td>Storm HDInsight 3.2 クラスター</td>
 <td>該当なし</td>
@@ -834,7 +835,7 @@ ms.lasthandoff: 04/27/2017
 <td>Hadoop 2.6/HDP2.2 は HDInsight 3.2 クラスターで使用できます。 これにはすべてのオープン ソース コンポーネントの主要な更新プログラムが含まれます。 詳細については、「HDInsight での新機能」と「<a href ="http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.2.0/HDP_2.2.0_Release_Notes_20141202_version/index.html" target="_blank">HDP 2.2.0.0 リリース ノート</a>」を参照してください。</td>
 <td>オープンソース ソフトウェア</td>
 <td>すべて</td>
-<td>該当なし</td>
+<td>該当なし </td>
 </tr>
 <tr>
 <td>Linux での HDInsight (プレビュー)</td>
@@ -869,10 +870,10 @@ ms.lasthandoff: 04/27/2017
 <td>Apache Storm のツール一式に加えて、Visual Studio で Apache Hive のツールが更新され、ステートメント入力候補、ローカル検証、改善されたデバッグ サポートが追加されました。 詳細については、「HDInsight Hadoop Tools for Visual Studio の使用開始」を参照してください。</td>
 <td>ツール</td>
 <td>Hadoop は、</td>
-<td>該当なし</td>
+<td>該当なし </td>
 </tr>
-<td>DocumentDB 用 Hadoop コネクタ</td>
-<td>DocumentDB 用 Hadoop コネクタを使用すれば、DocumentDB コレクション全体またはデータベース アカウント全体に格納されているスキーマのない JSON ドキュメントで複雑な集計、分析、操作を実行できます。 詳細とチュートリアルについては、「DocumentDB と HDInsight を使用した Hadoop ジョブの実行」を参照してください。</td>
+<td>Azure Cosmos DB 用 Hadoop コネクタ</td>
+<td>Azure Cosmos DB 用 Hadoop コネクタを使用すれば、Azure Cosmos DB コレクション全体またはデータベース アカウント全体に格納されているスキーマのない JSON ドキュメントで複雑な集計、分析、操作を実行できます。 詳細とチュートリアルについては、「Azure Cosmos DB と HDInsight を使用した Hadoop ジョブの実行」を参照してください。</td>
 <td>サービス</td>
 <td>Hadoop は、</td>
 <td>該当なし</td>

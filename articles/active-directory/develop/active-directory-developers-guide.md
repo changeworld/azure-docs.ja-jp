@@ -15,10 +15,10 @@ ms.date: 04/07/2017
 ms.author: bryanla
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 375fdf142f7ecf5881876858178f663f516a6a71
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: c7f758900ca89ed8bf08090cda5964eccc876e1d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/09/2017
 
 ---
 # <a name="azure-active-directory-for-developers"></a>開発者のための Azure Active Directory

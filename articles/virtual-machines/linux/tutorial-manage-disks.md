@@ -15,10 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/25/2017
 ms.author: nepeters
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 3e47c917774245f8b321b5cd94def24b7f523a94
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 84ce4b288c23c7005ac92f18ee26af70479deb8d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 ---
 
@@ -32,9 +33,9 @@ ms.lasthandoff: 04/26/2017
 
 Azure 仮想マシンを作成すると、2 つのディスクが仮想マシンに自動的に接続されます。 
 
-**オペレーティング システム ディスク** - オペレーティング システム ディスクは、最大 1 TB までサイズを変更でき、VM のオペレーティング システムをホストします。 OS ディスクには既定で `/dev/sda` というラベルが付けられています。 OS ディスクのディスク キャッシュ構成は、OS パフォーマンスの向上のために最適化されています。 この構成では、OS ディスクでアプリケーションやデータをホスト**しないでください**。 アプリケーションとデータには、この記事の後半で説明するデータ ディスクを使用してください。 
+**オペレーティング システム ディスク** - オペレーティング システム ディスクは、最大 1 TB までサイズを変更でき、VM のオペレーティング システムをホストします。 OS ディスクには既定で */dev/sda* というラベルが付けられています。 OS ディスクのディスク キャッシュ構成は、OS パフォーマンスの向上のために最適化されています。 この構成では、OS ディスクでアプリケーションやデータをホスト**しないでください**。 アプリケーションとデータには、この記事の後半で説明するデータ ディスクを使用してください。 
 
-**一時ディスク** - 一時ディスクは、VM と同じ Azure ホストに配置されているソリッド ステート ドライブを使用します。 一時ディスクは、パフォーマンスが高く、一時的なデータ処理などの操作に使用される場合があります。 ただし、VM を新しいホストに移動すると、一時ディスクに格納されているデータは削除されます。 一時ディスクのサイズは VM のサイズによって決まります。 一時ディスクには `/dev/sdb` のラベルが付けられており、`/mnt` というマウント ポイントがあります。
+**一時ディスク** - 一時ディスクは、VM と同じ Azure ホストに配置されているソリッド ステート ドライブを使用します。 一時ディスクは、パフォーマンスが高く、一時的なデータ処理などの操作に使用される場合があります。 ただし、VM を新しいホストに移動すると、一時ディスクに格納されているデータは削除されます。 一時ディスクのサイズは VM のサイズによって決まります。 一時ディスクには */dev/sdb* のラベルが付けられており、*/mnt* というマウント ポイントがあります。
 
 ### <a name="temporary-disk-sizes"></a>一時ディスクのサイズ
 
@@ -93,7 +94,7 @@ Premium ディスクは、SSD ベースの高性能で待機時間の短いデ�
 [az group create](https://docs.microsoft.com/cli/azure/group#create) コマンドでリソース グループを作成します。 
 
 ```azurecli
-az group create --name myResourceGroupDisk --location westus
+az group create --name myResourceGroupDisk --location eastus
 ```
 
 [az vm create]( /cli/azure/vm#create) コマンドを使用して VM を作成します。 `--datadisk-sizes-gb` 引数は、追加のディスクを作成してこの仮想マシンに接続するように指定するために使用します。 複数のディスクを作成して接続するには、ディスク サイズ値をスペースで区切ったリストを使用します。 次の例では、どちらも 128 GB のデータ ディスクを 2 つ備えた VM が作成されます。 ディスク サイズが 128 GB であるため、両方のディスクが P10 として構成され、ディスクあたり最大 500 IOPS を実現します。
@@ -146,13 +147,13 @@ sudo mkfs -t ext4 /dev/sdc1
 sudo mkdir /datadrive && sudo mount /dev/sdc1 /datadrive
 ```
 
-これで `datadrive` マウント ポイントを通じてディスクにアクセスできるようになりました。これは `df -h` コマンドを実行することで確認できます。 
+これで *datadrive* マウント ポイントを通じてディスクにアクセスできるようになりました。これは `df -h` コマンドを実行することで確認できます。 
 
 ```bash
 df -h
 ```
 
-出力には、`/datadrive` に新しいドライブがマウントされていることが示されます。
+出力には、*/datadrive* にマウントされた新しいドライブが示されます。
 
 ```bash
 Filesystem      Size  Used Avail Use% Mounted on
@@ -161,7 +162,7 @@ Filesystem      Size  Used Avail Use% Mounted on
 /dev/sdc1        50G   52M   47G   1% /datadrive
 ```
 
-再起動後にドライブが確実に再マウントされるように、そのドライブを `/stc/fstab` ファイルに追加する必要があります。 これを行うには、`blkid` ユーティリティを使用してディスクの UUID を取得します。
+再起動後にドライブが確実に再マウントされるように、そのドライブを */etc/fstab* ファイルに追加する必要があります。 これを行うには、`blkid` ユーティリティを使用してディスクの UUID を取得します。
 
 ```bash
 sudo -i blkid
@@ -173,7 +174,7 @@ sudo -i blkid
 /dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"
 ```
 
-次のような行を `/etc/fstab` ファイルに追加します。 `barrier=0` を使用して書き込みバリアを無効にできます。この構成によって、ディスクのパフォーマンスが向上することがあります。 
+次のような行を */etc/fstab* ファイルに追加します。 また、*barrier=0* を使用して書き込みバリアを無効にすることもできます。この構成によって、ディスクのパフォーマンスが向上することがあります。 
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive  ext4    defaults,nofail,barrier=0   1  2
@@ -192,7 +193,7 @@ VM をデプロイしたら、オペレーティング システム ディスク
 ディスク サイズを増やす前に、ディスクの ID または名前が必要です。 [az disk list](/cli/azure/vm/disk#list) コマンドを使用して、リソース グループ内のすべてのディスクを取得します。 サイズ変更するディスク名を書き留めます。
 
 ```azurecli
- az disk list -g myResourceGroupDisk --query '[*].{Name:name,Gb:diskSizeGb,Tier:accountType}' --output table
+az disk list -g myResourceGroupDisk --query '[*].{Name:name,Gb:diskSizeGb,Tier:accountType}' --output table
 ```
 
 VM の割り当ても解除する必要があります。 [az vm deallocate]( /cli/azure/vm#deallocate) コマンドを使用して、VM を停止し割り当てを解除します。
@@ -201,7 +202,7 @@ VM の割り当ても解除する必要があります。 [az vm deallocate]( /c
 az vm deallocate --resource-group myResourceGroupDisk --name myVM
 ```
 
-[az disk update](/cli/azure/vm/disk#update) コマンドを使用して、ディスクのサイズを変更します。 この例では、`myDataDisk` という名前のディスク サイズを 1 TB に変更します。
+[az disk update](/cli/azure/vm/disk#update) コマンドを使用して、ディスクのサイズを変更します。 この例では、*myDataDisk* という名前のディスクのサイズを 1 TB に変更します。
 
 ```azurecli
 az disk update --name myDataDisk --resource-group myResourceGroupDisk --size-gb 1023
@@ -259,7 +260,7 @@ az vm create --resource-group myResourceGroupDisk --name myVM --attach-os-disk m
 
 すべてのデータ ディスクを仮想マシンに再度接続する必要があります。
 
-まず、[az disk list](https://docs.microsoft.com/cli/azure/disk#list) コマンドを使用して、データ ディスクの名前を見つけます。 この例では、このディスク名を `datadisk` という変数に格納しています。次の手順でこの変数を使用します。
+まず、[az disk list](https://docs.microsoft.com/cli/azure/disk#list) コマンドを使用して、データ ディスクの名前を見つけます。 この例では、このディスク名を *datadisk* という変数に格納しています。次の手順でこの変数を使用します。
 
 ```azurecli
 datadisk=$(az disk list -g myResourceGroupDisk --query "[?contains(name,'myVM')].[name]" -o tsv)
