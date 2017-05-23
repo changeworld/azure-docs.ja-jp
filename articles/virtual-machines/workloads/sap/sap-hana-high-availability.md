@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 04/25/2017
 ms.author: sedusch
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 6304f01fd5f97dd528054f8c4909593dd062e16b
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 258ccee349e07448ebebaebe64cd6fb6888d7ed4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/26/2017
+ms.lasthandoff: 05/20/2017
 
 
 ---
@@ -207,30 +207,39 @@ Github にあるいずれかのクイック スタート テンプレートを�
     sudo mkdir -p /hana/data
     sudo mkdir -p /hana/log
     sudo mkdir -p /hana/shared
-    # <a name="write-down-the-id-of-devvghanadatahanadata-devvghanaloghanalog-and-devvghanasharedhanashared"></a>write down the id of /dev/vg_hana_data/hana_data, /dev/vg_hana_log/hana_log and /dev/vg_hana_shared/hana_shared
-    sudo blkid  </code></pre>
-        * 3 つの論理ボリュームの fstab エントリを作成します <pre><code>
-    sudo vi /etc/fstab  </code></pre>
-   この行を /etc/fstab に挿入します <pre><code>
-    /dev/disk/by-uuid/<b>&lt;UUID of /dev/vg_hana_data/hana_data&gt;</b> /hana/data xfs  defaults,nofail  0  2 /dev/disk/by-uuid/<b>&lt;UUID of /dev/vg_hana_log/hana_log&gt;</b> /hana/log xfs  defaults,nofail  0  2 /dev/disk/by-uuid/<b>&lt;UUID of /dev/vg_hana_shared/hana_shared&gt;</b> /hana/shared xfs  defaults,nofail  0  2  </code></pre>
-        * 新しいボリュームをマウントします <pre><code>
-    sudo mount -a  </code></pre>
+    # write down the id of /dev/vg_hana_data/hana_data, /dev/vg_hana_log/hana_log and /dev/vg_hana_shared/hana_shared
+    sudo blkid
+    </code></pre>
+        * 3 つの論理ボリュームの fstab エントリを作成します
+    <pre><code>
+    sudo vi /etc/fstab
+    </code></pre>
+    この行を /etc/fstab に挿入します
+    <pre><code>
+    /dev/disk/by-uuid/<b>&lt;UUID of /dev/vg_hana_data/hana_data&gt;</b> /hana/data xfs  defaults,nofail  0  2
+    /dev/disk/by-uuid/<b>&lt;UUID of /dev/vg_hana_log/hana_log&gt;</b> /hana/log xfs  defaults,nofail  0  2
+    /dev/disk/by-uuid/<b>&lt;UUID of /dev/vg_hana_shared/hana_shared&gt;</b> /hana/shared xfs  defaults,nofail  0  2
+    </code></pre>
+        * 新しいボリュームをマウントします
+    <pre><code>
+    sudo mount -a
+    </code></pre>
     1. プレーン ディスク  
        小さなシステムまたはデモ システムの場合、HANA のデータおよびログ ファイルを 1 つのディスクに配置することができます。 次のコマンドで、/dev/sdc にパーティションを作成し、xfs でフォーマットします。
     ```bash
     sudo fdisk /dev/sdc
     sudo mkfs.xfs /dev/sdc1
     
-    # write down the id of /dev/sdc1
-    sudo /sbin/blkid
-    sudo vi /etc/fstab
+    # <a name="write-down-the-id-of-devsdc1"></a>/dev/sdc1 の ID をメモしておきます
+    sudo /sbin/blkid  sudo vi /etc/fstab
     ```
 
-    この行を /etc/fstab に挿入します <pre><code>
+    Insert this line to /etc/fstab
+    <pre><code>
     /dev/disk/by-uuid/<b>&lt;UUID&gt;</b> /hana xfs  defaults,nofail  0  2
     </code></pre>
 
-    ターゲット ディレクトリを作成してディスクをマウントします。
+    Create the target directory and mount the disk.
 
     ```bash
     sudo mkdir /hana
@@ -337,8 +346,8 @@ Github にあるいずれかのクイック スタート テンプレートを�
   システムの使用率を選択します
     * Enter Location of Data Volumes [/hana/data/HDB] \(データ ボリュームの場所 (/hana/data/HDB) の入力): -> ENTER
     * Enter Location of Log Volumes [/hana/log/HDB] \(ログ ボリュームの場所 (/hana/log/HDB) の入力): -> ENTER
-    * Restrict maximum memory allocation? [n] \(メモリの最大割り当てを制限しますか? (n) ): -> ENTER
-    * Enter Certificate Host Name For Host '...'  [...] \(ホスト '...' の証明書のホスト名 (...) を入力): -> ENTER
+    * Restrict maximum memory allocation? [n] \(メモリの最大割り当てを制限しますか? (n)): -> ENTER
+    * Enter Certificate Host Name For Host '...' [...] \(ホスト '...' の証明書のホスト名 (...) を入力): -&gt; ENTER
     * Enter SAP Host Agent User (sapadm) Password (SAP ホスト エージェントのユーザー (sapadm) パスワードを入力):
     * Confirm SAP Host Agent User (sapadm) Password (SAP ホスト エージェントのユーザー (sapadm) パスワードを確認):
     * Enter System Administrator (hdbadm) Password (システム管理者 (hdbadm) のパスワードを入力):
@@ -350,7 +359,7 @@ Github にあるいずれかのクイック スタート テンプレートを�
     * Enter Database User (SYSTEM) Password (データベース ユーザー (SYSTEM) のパスワードを入力):
     * Confirm Database User (SYSTEM) Password (データベース ユーザー (SYSTEM) のパスワードを確認):
     * Restart system after machine reboot? [n] \(コンピューターの再起動後にシステムを再起動しますか?(n)): -> ENTER
-    * Do you want to continue? (y/n) (続行しますか? (y/n) ):  
+    * Do you want to continue? (y/n) (続行しますか? (y/n)):  
   内容を確認し、「y」を入力して続行します
 1. [A] SAP Host Agent をアップグレードします  
   [SAP ソフトウェアセンター][sap-swcenter]から最新の SAP Host Agent アーカイブをダウンロードし、次のコマンドを実行してエージェントをアップグレードします。 アーカイブのパスを置き換えて、ダウンロードしたファイルを示すようにします。
@@ -367,11 +376,13 @@ Github にあるいずれかのクイック スタート テンプレートを�
     hdbsql -u system -i <b>03</b> 'ALTER USER <b>hdb</b>hasync DISABLE PASSWORD LIFETIME' 
     </code></pre>
 
-1. [A] キーストア エントリを作成します (root として) <pre><code>
+1. [A] キーストア エントリを作成します (root として)
+    <pre><code>
     PATH="$PATH:/usr/sap/<b>HDB</b>/HDB<b>03</b>/exe"
     hdbuserstore SET <b>hdb</b>haloc localhost:3<b>03</b>15 <b>hdb</b>hasync <b>passwd</b>
     </code></pre>
-1. [1] データベースをバックアップします (root として) <pre><code>
+1. [1] データベースをバックアップします (root として)
+    <pre><code>
     PATH="$PATH:/usr/sap/<b>HDB</b>/HDB<b>03</b>/exe"
     hdbsql -u system -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackup</b>')" 
     </code></pre>
