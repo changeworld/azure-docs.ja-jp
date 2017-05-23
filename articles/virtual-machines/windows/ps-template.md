@@ -16,10 +16,11 @@ ms.topic: article
 ms.date: 03/07/2017
 ms.author: davidmu
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: acb8dda8819099595893f2ea65b23e76223507bd
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 67b023ccd761bc08b96c9ebda907c6451bfbe52f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -101,6 +102,6 @@ VM の管理者アカウントの名前、アカウントのパスワード、�
 
 - デプロイに問題がある場合は、次の手順として、「[Troubleshoot common Azure deployment errors with Azure Resource Manager](../../resource-manager-common-deployment-errors.md)」(Azure Resource Manager を使用した Azure のデプロイで発生する一般的なエラーのトラブルシューティング) を参照してください。
 - Azure PowerShell を使用して仮想マシンを作成する方法について、「[Resource Manager と PowerShell を使用して Windows VM を作成する](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
-- 「[Resource Manager と PowerShell を使用した Azure Virtual Machines の管理](ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」で、作成した仮想マシンを管理する方法を確認します。
+- 作成した仮想マシンを管理する方法については、「[Azure PowerShell モジュールを使用して Windows VM を作成および管理する](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 
 

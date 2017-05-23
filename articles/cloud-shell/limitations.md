@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: juluk
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: a48b32d3e2383497f68ab4eba81af81dd9f8449d
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: c007b73375c8c82248228f4e549c0ac95640d7ec
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/17/2017
 
 ---
 
-# <a name="limitations"></a>制限事項
+# <a name="limitations-for-azure-cloud-shell"></a>Azure Cloud Shell の制限
 Azure Cloud Shell には、次の既知の制限があります。
 
 ## <a name="system-state-and-persistence"></a>システム状態と永続化

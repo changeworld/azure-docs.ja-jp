@@ -13,10 +13,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 96856fe2a9ce869eb63b7c857de614202ae43064
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 801806056b745be5663c0a10241795947d1dd036
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/17/2017
 
 ---
 
@@ -151,9 +151,13 @@ Threads: 4  Questions: 26082  Slow queries: 0  Opens: 112  Flush tables: 1  Open
 --------------
 ```
 
+> [!NOTE]
+> 現在、サービスへの mysql.exe 接続で "--ssl-mode=VERIFY_IDENTITY" オプションを使用した場合に、接続が次のエラーで失敗するという既知の問題が確認されています: _ERROR 2026 (HY000): SSL connection error: SSL certificate validation failure_ Please downgrade to "--ssl-mode=VERIFY_CA" or lesser [SSL modes](https://dev.mysql.com/doc/refman/5.7/en/secure-connection-options.html#option_general_ssl-mode) (エラー 2026 (HY000): SSL 接続エラー: SSL 証明書の検証エラー "--ssl-mode=VERIFY_CA" または以前の SSL モードにダウングレードしてください)。 "--ssl-mode=VERIFY_IDENTITY" の使用が必要な場合は、サーバー名に ping を実行して、リージョン サーバー名を解決し (westeurope1-a.control.database.windows.net など)、この問題が解決するまで、接続内でそのリージョン サーバー名を使用します。 この制限は、今後削除する予定です。 
+
 ### <a name="connecting-to-server-using-the-mysql-workbench-over-ssl"></a>MySQL Workbench による SSL 経由でのサーバーへの接続
 MySQL Workbench を構成して SSL 経由で安全に接続する場合は、MySQL Workbench の [Setup New Connection] (新しい接続のセットアップ) ダイアログで **[SSL]** タブを開き、**SSL CA File (SSL CA ファイル)** フィールドに **MyServerCACert.pem** ファイルの場所を入力します。
 ![カスタマイズしたタイルの保存](./media/concepts-ssl-connection-security/mysql-workbench-ssl.png)
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure Database for MySQL の接続ライブラリ](concepts-connection-libraries.md)に従って、さまざまなアプリケーション接続オプションを確認する
+

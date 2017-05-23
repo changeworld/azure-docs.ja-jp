@@ -1,53 +1,61 @@
 ---
-title: "Linux ベースの HDInsight での Hadoop Sqoop の使用 | Microsoft Docs"
-description: "Sqoop を使用して、HDInsight クラスター上の Linux ベースの Hadoop と Azure SQL データベース間でインポートおよびエクスポートする方法について説明します。"
+title: "Hadoop での Apache Sqoop - Azure HDInsight | Microsoft Docs"
+description: "Apache Sqoop を使用して、Hadoop on HDInsight と Azure SQL Database の間でインポートおよびエクスポートを行う方法について説明します。"
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
 documentationcenter: 
 author: Blackmist
 tags: azure-portal
+keywords: hadoop sqoop,sqoop
 ms.assetid: 303649a5-4be5-4933-bf1d-4b232083c354
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 6bb8058a74d3417c4972a9010ac9e17739f3e323
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: a1e46f8cdcbb4dbb0f3bd64d677cd06a2e31d884
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---
-# <a name="use-sqoop-with-hadoop-in-hdinsight-ssh"></a>HDInsight の Hadoop での Sqoop の使用 (SSH)
+# <a name="use-apache-sqoop-to-import-and-export-data-between-hadoop-in-hdinsight-and-sql-database"></a>Apache Sqoop を使用して、HDInsight の Hadoop と SQL Database の間でデータをインポートおよびエクスポートする
 
 [!INCLUDE [sqoop-selector](../../includes/hdinsight-selector-use-sqoop.md)]
 
-HDInsight クラスターと Azure SQL Database または SQL Server データベースの間のインポートとエクスポートに Sqoop を使用する方法について説明します。
+Azure HDInsight の Hadoop クラスターと Azure SQL Database または Microsoft SQL Server データベースの間のインポートとエクスポートに Apache Sqoop を使用する方法について説明します。 このドキュメントの手順では、Hadoop クラスターのヘッド ノードから `sqoop` コマンドを直接使用します。 SSH を使用してヘッド ノードに接続し、このドキュメント内のコマンドを実行します。
 
 > [!IMPORTANT]
 > このドキュメントの手順は、Linux を使用する HDInsight クラスターでのみ機能します。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、「[HDInsight コンポーネントのバージョン](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)」を参照してください。
 
 ## <a name="install-freetds"></a>FreeTDS のインストール
 
-1. SSH を使用して、Linux ベースの HDInsight クラスターに接続します。 接続するときに使用するアドレスは `CLUSTERNAME-ssh.azurehdinsight.net` で、ポートは `22` です。
+1. SSH を使用して、HDInsight クラスターに接続します。 たとえば、次のコマンドは、`mycluster` というクラスターのプライマリ ヘッド ノードに接続します。
+
+    ```bash
+    ssh CLUSTERNAME-ssh.azurehdinsight.net
+    ```
 
     詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 2. 次のコマンドを使用して FreeTDS をインストールします。
 
-        sudo apt-get --assume-yes install freetds-dev freetds-bin
+    ```bash
+    sudo apt install --assume-yes install freetds-dev freetds-bin
+    ```
 
     FreeTDS は、SQL Database に接続する際のいくつかの手順で使用します。
 
 ## <a name="create-the-table-in-sql-database"></a>SQL Database へのテーブルの作成
 
 > [!IMPORTANT]
-> 「[クラスターと SQL データベースを作成する](hdinsight-use-sqoop.md)」で作成した HDInsight クラスターと SQL Database を使用している場合は、このセクションの手順を無視してください。 データベースとテーブルは、ドキュメント「[クラスターと SQL データベースを作成する](hdinsight-use-sqoop.md)」の手順の一部として作成されました。
+> 「[クラスターと SQL データベースを作成する](hdinsight-use-sqoop.md)」で作成した HDInsight クラスターと SQL Database を使用している場合は、このセクションの手順を省略してください。 データベースとテーブルは、ドキュメント「[クラスターと SQL データベースを作成する](hdinsight-use-sqoop.md)」の手順の一部として作成されました。
 
 1. SSH セッションから次のコマンドを使用して、SQL Database サーバーに接続します。
 
@@ -63,28 +71,32 @@ HDInsight クラスターと Azure SQL Database または SQL Server データ�
 
 2. `1>` プロンプトで、次のクエリを入力します。
 
-        CREATE TABLE [dbo].[mobiledata](
-        [clientid] [nvarchar](50),
-        [querytime] [nvarchar](50),
-        [market] [nvarchar](50),
-        [deviceplatform] [nvarchar](50),
-        [devicemake] [nvarchar](50),
-        [devicemodel] [nvarchar](50),
-        [state] [nvarchar](50),
-        [country] [nvarchar](50),
-        [querydwelltime] [float],
-        [sessionid] [bigint],
-        [sessionpagevieworder] [bigint])
-        GO
-        CREATE CLUSTERED INDEX mobiledata_clustered_index on mobiledata(clientid)
-        GO
+    ```sql
+    CREATE TABLE [dbo].[mobiledata](
+    [clientid] [nvarchar](50),
+    [querytime] [nvarchar](50),
+    [market] [nvarchar](50),
+    [deviceplatform] [nvarchar](50),
+    [devicemake] [nvarchar](50),
+    [devicemodel] [nvarchar](50),
+    [state] [nvarchar](50),
+    [country] [nvarchar](50),
+    [querydwelltime] [float],
+    [sessionid] [bigint],
+    [sessionpagevieworder] [bigint])
+    GO
+    CREATE CLUSTERED INDEX mobiledata_clustered_index on mobiledata(clientid)
+    GO
+    ```
 
     `GO` ステートメントを入力すると、前のステートメントが評価されます。 最初に、 **mobiledata** テーブルが作成され、次にクラスター化インデックスがそのテーブルに追加されます (SQL Database が必要)。
 
     次のクエリを使用して、テーブルが作成されたことを確認します。
 
-        SELECT * FROM information_schema.tables
-        GO
+    ```sql
+    SELECT * FROM information_schema.tables
+    GO
+    ```
 
     次のテキストのような出力が表示されます。
 
@@ -95,26 +107,34 @@ HDInsight クラスターと Azure SQL Database または SQL Server データ�
 
 ## <a name="sqoop-export"></a>Sqoop のエクスポート
 
-1. HDInsight への SSH 接続から、次のコマンドを使用して、Sqoop が SQL Database を認識できることを確認します。
+1. クラスターへの SSH 接続から、次のコマンドを使用して、Sqoop が SQL Database を認識できることを確認します。
 
-        sqoop list-databases --connect jdbc:sqlserver://<serverName>.database.windows.net:1433 --username <adminLogin> --password <adminPassword>
+    ```bash
+    sqoop list-databases --connect jdbc:sqlserver://<serverName>.database.windows.net:1433 --username <adminLogin> --password <adminPassword>
+    ```
 
     このコマンドは、先ほど作成した **sqooptest** データベースを含むデータベースの一覧を返します。
 
-2. 次のコマンドを使用して、**hivesampletable** から **mobiledata** テーブルにデータをエクスポートします。
+2. **hivesampletable** から **mobiledata** テーブルにデータをエクスポートするには、次のコマンドを使用します。
 
-        sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --export-dir 'wasbs:///hive/warehouse/hivesampletable' --fields-terminated-by '\t' -m 1
+    ```bash
+    sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --export-dir 'wasbs:///hive/warehouse/hivesampletable' --fields-terminated-by '\t' -m 1
+    ```
 
     このコマンドによって、**sqooptest** データベースに接続するように Sqoop に指示します。 Sqoop は次に、**wasbs:///hive/warehouse/hivesampletable** から **mobiledata** テーブルにデータをエクスポートします。
 
 3. コマンドが完了したら、次のコマンドを使用して、TSQL によってデータベースに接続します。
 
-        TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D sqooptest
+    ```bash
+    TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D sqooptest
+    ```
 
     接続されたら、次のステートメントを使用して、データが **mobiledata** テーブルにエクスポートされたことを確認します。
 
-        SELECT * FROM mobiledata
-        GO
+    ```sql
+    SELECT * FROM mobiledata
+    GO
+    ```
 
     テーブル内のデータの一覧が表示されます。 「 `exit` 」と入力して、tsql ユーティリティを終了します。
 
@@ -122,13 +142,17 @@ HDInsight クラスターと Azure SQL Database または SQL Server データ�
 
 1. 次のコマンドを使用して、SQL Database の **mobiledata** テーブルから HDInsight の **wasbs:///tutorials/usesqoop/importeddata** ディレクトリにデータをインポートします。
 
-        sqoop import --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --target-dir 'wasbs:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
+    ```bash
+    sqoop import --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --target-dir 'wasbs:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
+    ```
 
     データ内のフィールドはタブ文字で区切られていて、行は改行文字で終わっています。
 
 2. インポートが完了したら、次のコマンドを使用して、新しいディレクトリのデータを列挙します。
 
-        hadoop fs -text wasbs:///tutorials/usesqoop/importeddata/part-m-00000
+    ```bash
+    hdfs dfs -text /tutorials/usesqoop/importeddata/part-m-00000
+    ```
 
 ## <a name="using-sql-server"></a>SQL Server の使用
 
@@ -136,15 +160,12 @@ Sqoop を使用すると、Azure でホストされているデータ センタ�
 
 * HDInsight と SQL Server の両方が、同じ Azure Virtual Network に存在する必要があります。
 
-  > [!NOTE]
-  > HDInsight は場所ベースの仮想ネットワークのみをサポートし、アフィニティ グループ ベースの仮想ネットワークは現在扱っていません。
-
     SQL Server をデータセンター内で使っている場合は、仮想ネットワークを*サイト間*または*ポイント対サイト*として構成する必要があります。
 
   > [!NOTE]
   > **ポイント対サイト**仮想ネットワークを使用する場合、SQL Server で VPN クライアント構成アプリケーションが実行されている必要があります。 VPN クライアントは、Azure Virtual Network の構成の **[ダッシュ ボード]** から利用できます。
 
-    Azure Virtual Network の詳細については、「[Virtual Network の概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
+    Azure Virtual Network での HDInsight の使用に関する詳細情報については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)」をご覧ください。 Azure Virtual Network の詳細については、「[Virtual Network の概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
 
 * SQL 認証を許可するよう、SQL Server を構成する必要があります。 詳細については、[認証モードの選択](https://msdn.microsoft.com/ms144284.aspx)に関するドキュメントを参照してください。
 
@@ -152,24 +173,28 @@ Sqoop を使用すると、Azure でホストされているデータ センタ�
 
 * **SQL Server Management Studio** や **tsql** などのユーティリティを使用して、SQL Server 内に **sqooptest** データベースを作成します。 Azure CLI を使用する手順は、Azure SQL Database でのみ機能します。
 
-    次の TSQL ステートメントを使用して、**mobiledata** テーブルを作成します。
+    次の Transact-SQL ステートメントを使用して、**mobiledata** テーブルを作成します。
 
-        CREATE TABLE [dbo].[mobiledata](
-        [clientid] [nvarchar](50),
-        [querytime] [nvarchar](50),
-        [market] [nvarchar](50),
-        [deviceplatform] [nvarchar](50),
-        [devicemake] [nvarchar](50),
-        [devicemodel] [nvarchar](50),
-        [state] [nvarchar](50),
-        [country] [nvarchar](50),
-        [querydwelltime] [float],
-        [sessionid] [bigint],
-        [sessionpagevieworder] [bigint])
+    ```sql
+    CREATE TABLE [dbo].[mobiledata](
+    [clientid] [nvarchar](50),
+    [querytime] [nvarchar](50),
+    [market] [nvarchar](50),
+    [deviceplatform] [nvarchar](50),
+    [devicemake] [nvarchar](50),
+    [devicemodel] [nvarchar](50),
+    [state] [nvarchar](50),
+    [country] [nvarchar](50),
+    [querydwelltime] [float],
+    [sessionid] [bigint],
+    [sessionpagevieworder] [bigint])
+    ```
 
 * HDInsight から SQL Server に接続するときに、SQL Server の IP アドレスの使用が必要な場合があります。 次に例を示します。
 
-        sqoop import --connect 'jdbc:sqlserver://10.0.1.1:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --target-dir 'wasbs:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
+    ```bash
+    sqoop import --connect 'jdbc:sqlserver://10.0.1.1:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --target-dir 'wasbs:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
+    ```
 
 ## <a name="limitations"></a>制限事項
 
