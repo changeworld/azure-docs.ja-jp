@@ -58,7 +58,7 @@ Data Lake Store アカウントの診断ログを有効にする方法と、ア�
 診断設定を有効にしたら、 **[診断ログ]** タブでログを確認できます。
 
 ## <a name="view-diagnostic-logs-for-your-data-lake-store-account"></a>Data Lake Store アカウントの診断ログを表示する
-Data Lake Store アカウントのログ データを確認する方法は&2; つあります。
+Data Lake Store アカウントのログ データを確認する方法は 2 つあります。
 
 * Data Lake Store アカウントの [設定] ビューから
 * データが格納されている Azure Storage アカウントから
@@ -74,7 +74,7 @@ Data Lake Store アカウントのログ データを確認する方法は&2; �
 3. 各ログ エントリに対する **[ダウンロード]** リンクをクリックして、ログをダウンロードします。
 
 ### <a name="from-the-azure-storage-account-that-contains-log-data"></a>ログ データを含む Azure Storage アカウントから
-1. Data Lake Store とログが関連付けられている [Azure Storage アカウント] ブレードを開き、[BLOB] をクリックします。 **[BLOB サービス]** ブレードに&2; つのコンテナーが一覧表示されます。
+1. Data Lake Store とログが関連付けられている [Azure Storage アカウント] ブレードを開き、[BLOB] をクリックします。 **[BLOB サービス]** ブレードに 2 つのコンテナーが一覧表示されます。
    
     ![診断ログの表示](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "診断ログの表示")
    
@@ -92,7 +92,7 @@ Data Lake Store アカウントのログ データを確認する方法は&2; �
 監査ログと要求ログは JSON 形式で作成されます。 このセクションでは、要求ログと監査ログの JSON 構造を確認します。
 
 ### <a name="request-logs"></a>要求ログ
-JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB には、ログ オブジェクトの配列を含む、 **レコード** と呼ばれるルート オブジェクトが&1; つあります。
+JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB には、ログ オブジェクトの配列を含む、 **レコード** と呼ばれるルート オブジェクトが 1 つあります。
 
     {
     "records": 
@@ -139,7 +139,7 @@ JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB
 | EndTime |文字列 |サーバーが応答を送信した時間 |
 
 ### <a name="audit-logs"></a>監査ログ
-JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB には、ログ オブジェクトの配列を含む、 **レコード** と呼ばれるルート オブジェクトが&1; つあります。
+JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB には、ログ オブジェクトの配列を含む、 **レコード** と呼ばれるルート オブジェクトが 1 つあります。
 
     {
     "records": 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: juluk
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 9093bf30a67fd762b237faa61071137fd83d048f
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 540cd10066e055e2dc132445b9adba5a4112d63a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/16/2017
 
 ---
 
@@ -35,11 +35,14 @@ Azure Cloud Shell の初回起動時に、LRS ストレージ アカウントと
 このファイル共有は、`clouddrive` として $Home ディレクトリにマウントされます。 $Home ディレクトリを自動的に更新して永続化する目的で作成される 5 GB のイメージも、このファイル共有を使って格納されます。 これは 1 回限りの作業であり、それ以降のセッションでは自動的にマウントされます。
 
 ### <a name="cloud-shell-persists-files-with-both-methods-below"></a>Cloud Shell では、以下の 2 つの方法でファイルが永続化されます。
-1. $Home 内のファイルを永続化するために、$Home ディレクトリのディスク イメージを作成します。 このディスク イメージは、指定されたファイル共有に `<User>.img` として保存されます (`fileshare.storage.windows.net/fileshare/.cloudconsole/<User>.img`)。
+1. $Home 内のファイルを永続化するために、$Home ディレクトリのディスク イメージを作成します。 このディスク イメージは、指定されたファイル共有に `acc_<User>.img` として保存されます (`fileshare.storage.windows.net/fileshare/.cloudconsole/acc_<User>.img`)。
 
 2. ファイル共有を直接操作できるように、指定されたファイル共有を $Home ディレクトリに `clouddrive` としてマウントします。 
 `/Home/<User>/clouddrive` は `fileshare.storage.windows.net/fileshare` にマッピングされます。
  
+> [!Note]
+> SSH キーなど、$Home ディレクトリ内のすべてのファイルが、マウントされたファイル共有に格納されたユーザー ディスク イメージに永続化されます。 $Home ディレクトリおよびマウントされたファイル共有への情報の保存時に、ベスト プラクティスを適用してください。
+
 ## <a name="using-clouddrive"></a>clouddrive の使用
 Cloud Shell では、ユーザーが `clouddrive` というコマンドを実行することで、Cloud Shell にマウントされたファイル共有を手動で更新することができます。
 ![](media/clouddrive-h.png)
@@ -110,26 +113,23 @@ shm                                                    65536       0      65536 
 justin@Azure:~$
 ```
 
-## <a name="upload-or-download-local-files"></a>ローカル ファイルのアップロードとダウンロード
-ファイル共有にローカル ファイルを転送したり、ファイル共有からローカル ファイルを転送したりするには、Azure Portal を使用します。
-Cloud Shell 内でファイルを更新すると、File Storage の GUI に (ブレードを最新の情報に更新した時点で) 反映されます。
+## <a name="transfer-local-files-to-cloud-shell"></a>Cloud Shell にローカル ファイルを転送する
+`clouddrive` ディレクトリは、Azure ポータル ストレージ ブレードと同期します。 これを使用して、ファイル共有との間でローカル ファイルを移動できます。 Cloud Shell 内でファイルを更新すると、File Storage の GUI に (ブレードを最新の情報に更新した時点で) 反映されます。
 
-1. マウントしたファイル共有 ![](media/touch-txt-storage.png) に移動します
+### <a name="download-files"></a>ファイルをダウンロードする
+![](media/download.gif)
+1. マウントしたファイル共有に移動します
 2. ポータルで対象ファイルを選択します
-3. [ダウンロード] ![](media/download-storage.png) をクリックします
+3. [ダウンロード] をクリックします
 
-`clouddrive` の外部にあるファイルをダウンロードする必要がある場合:
-1. ファイルを `/<User>/clouddrive` にコピーします <br>
-2. [前の手順](#upload-or-download-local-files)を実行します <br>
+### <a name="upload-files"></a>ファイルのアップロード
+![](media/upload.gif)
+1. マウントしたファイル共有に移動します
+2. [アップロード] を選択します。
+3. アップロードするファイルを選択します
+4. アップロードを確認します
 
-## <a name="cloud-shell-tagging"></a>Cloud Shell のタグ付け
-Cloud Shell では、マウントされているストレージ アカウントに対し、次の形式で "タグ" が追加されます。 <br>
-
-| キー | 値 |
-|:-------------:|:-------------:|
-|cloud-console-files-for-user@domain.com|fileshareName|
-
-特定のファイル共有にどのユーザーがマッピングされているかや、特定の $Home イメージがどこにあるかは、これらのタグを使って確認できます。
+Cloud Shell の clouddrive ディレクトリでファイルにアクセスできるようになったことがわかります。
 
 ## <a name="next-steps"></a>次のステップ
 [Cloud Shell クイック スタート](quickstart.md) 

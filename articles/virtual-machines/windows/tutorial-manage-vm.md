@@ -15,10 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/21/2017
 ms.author: nepeters
-translationtype: Human Translation
-ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
-ms.openlocfilehash: da5bcb0c4b848f27ae5997caf52e332cc4ce4c0a
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 59d6d646d4ab236d1fffad0cd0ec3e9f3ae4c342
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 ---
 
@@ -26,13 +27,13 @@ ms.lasthandoff: 04/21/2017
 
 このチュートリアルでは、VM サイズや VM イメージの選択、VM のデプロイなど、Azure 仮想マシンの作成に関する基本事項について説明します。 また、状態の管理や VM の削除およびサイズ変更といった基本的な管理操作についても説明します。
 
-このチュートリアルの手順は、最新バージョンの [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) モジュールを使用して行うことができます。
+このチュートリアルの手順は、最新バージョンの [Azure PowerShell](/powershell/azure/overview) モジュールを使用して行うことができます。
 
 ## <a name="create-resource-group"></a>Create resource group
 
 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) コマンドでリソース グループを作成します。 
 
-Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 仮想マシンの前にリソース グループを作成する必要があります。 この例では、`myResourceGroupVM ` という名前のリソース グループが `westus` リージョンに作成されます。 
+Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 仮想マシンの前にリソース グループを作成する必要があります。 この例では、*myResourceGroupVM* という名前のリソース グループが *westus* リージョンに作成されます。 
 
 ```powershell
 New-AzureRmResourceGroup -ResourceGroupName myResourceGroupVM -Location westeurope
@@ -49,7 +50,9 @@ New-AzureRmResourceGroup -ResourceGroupName myResourceGroupVM -Location westeuro
 [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) を使用してサブネットを作成します。
 
 ```powershell
-$subnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix 192.168.1.0/24
+$subnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
+    -Name mySubnet `
+    -AddressPrefix 192.168.1.0/24
 ```
 
 [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) を使用して仮想ネットワークを作成します。
@@ -91,7 +94,7 @@ $nic = New-AzureRmNetworkInterface `
 
 Azure [ネットワーク セキュリティ グループ](../../virtual-network/virtual-networks-nsg.md) (NSG) は、仮想マシンの受信トラフィックと送信トラフィックを制御します。 特定のポートまたは特定のポート範囲に対するネットワーク トラフィックが、ネットワーク セキュリティ グループの規則によって許可または拒否されます。 また、これらの規則に送信元アドレス プレフィックスを含めれば、あらかじめ決められた送信元からのトラフィックにのみ仮想マシンとの通信を許可することができます。 インストールした IIS Web サーバーにアクセスするには、NSG の受信規則を追加する必要があります。
 
-NSG の受信規則を作成するには、[Add-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/add-azurermnetworksecurityruleconfig) を使用します。 次の例では、仮想マシンのポート `3389` を開く `myNSGRule` という名前の NSG 規則を作成します。
+NSG の受信規則を作成するには、[Add-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/add-azurermnetworksecurityruleconfig) を使用します。 次の例では、仮想マシン用にポート *3389* を開く、*myNSGRule* という名前の NSG 規則を作成します。
 
 ```powershell
 $nsgRule = New-AzureRmNetworkSecurityRuleConfig `
@@ -106,16 +109,24 @@ $nsgRule = New-AzureRmNetworkSecurityRuleConfig `
   -Access Allow
 ```
 
-[New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup) で、`myNSGRule` を使用して NSG を作成します。
+[New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup) で、*myNSGRule* を使用する NSG を作成します。
 
 ```powershell
-$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName myResourceGroupVM  -Location westeurope -Name myNetworkSecurityGroup -SecurityRules $nsgRule
+$nsg = New-AzureRmNetworkSecurityGroup `
+    -ResourceGroupName myResourceGroupVM `
+    -Location westeurope `
+    -Name myNetworkSecurityGroup `
+    -SecurityRules $nsgRule
 ```
 
 [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig) を使用して、仮想ネットワークのサブネットに NSG を追加します。
 
 ```powershell
-Set-AzureRmVirtualNetworkSubnetConfig -Name mySubnet -VirtualNetwork $vnet -NetworkSecurityGroup $nsg -AddressPrefix 192.168.1.0/24
+Set-AzureRmVirtualNetworkSubnetConfig `
+    -Name mySubnet `
+    -VirtualNetwork $vnet `
+    -NetworkSecurityGroup $nsg `
+    -AddressPrefix 192.168.1.0/24
 ```
 
 [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork) を使用して、仮想ネットワークを更新します。
@@ -126,7 +137,7 @@ Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
 
 ### <a name="create-virtual-machine"></a>仮想マシンの作成
 
-仮想マシンを作成するときに、オペレーティング システム イメージ、ディスクのサイズ、管理者資格情報など、いくつかの選択肢があります。 この例では、最新バージョンの Windows Server 2016 Datacenter を実行する、`myVM` という名前の仮想マシンを作成します。
+仮想マシンを作成するときに、オペレーティング システム イメージ、ディスクのサイズ、管理者資格情報など、いくつかの選択肢があります。 この例では、最新バージョンの Windows Server 2016 Datacenter を実行する、*myVM* という名前の仮想マシンを作成します。
 
 [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) を使用して、仮想マシンの管理者アカウントに必要なユーザー名とパスワードを設定します。
 
@@ -143,19 +154,34 @@ $vm = New-AzureRmVMConfig -VMName myVM -VMSize Standard_D1
 [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) を使用して、仮想マシンの構成にオペレーティング システムの情報を追加します。
 
 ```powershell
-$vm = Set-AzureRmVMOperatingSystem -VM $vm -Windows -ComputerName myVM -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
+$vm = Set-AzureRmVMOperatingSystem `
+    -VM $vm `
+    -Windows `
+    -ComputerName myVM `
+    -Credential $cred `
+    -ProvisionVMAgent -EnableAutoUpdate
 ```
 
 [Set-AzureRmVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage) を使用して、仮想マシンの構成にイメージ情報を追加します。
 
 ```powershell
-$vm = Set-AzureRmVMSourceImage -VM $vm -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2016-Datacenter -Version latest
+$vm = Set-AzureRmVMSourceImage `
+    -VM $vm `
+    -PublisherName MicrosoftWindowsServer `
+    -Offer WindowsServer `
+    -Skus 2016-Datacenter `
+    -Version latest
 ```
 
 [Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk) を使用して、仮想マシンの構成にオペレーティング システム ディスクの設定を追加します。
 
 ```powershell
-$vm = Set-AzureRmVMOSDisk -VM $vm -Name myOsDisk -DiskSizeInGB 128 -CreateOption FromImage -Caching ReadWrite
+$vm = Set-AzureRmVMOSDisk `
+    -VM $vm `
+    -Name myOsDisk `
+    -DiskSizeInGB 128 `
+    -CreateOption FromImage `
+    -Caching ReadWrite
 ```
 
 [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface) を使用して、先ほど作成したネットワーク インターフェイス カードを仮想マシンの構成に追加します。
@@ -167,7 +193,7 @@ $vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
 [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使用して、仮想マシンを作成します。
 
 ```powershell
-New-AzureRmVM -ResourceGroupName myResourceGroupVM  -Location westeurope -VM $vm
+New-AzureRmVM -ResourceGroupName myResourceGroupVM -Location westeurope -VM $vm
 ```
 
 ## <a name="connect-to-vm"></a>VM への接続
@@ -180,7 +206,7 @@ New-AzureRmVM -ResourceGroupName myResourceGroupVM  -Location westeurope -VM $vm
 Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroupVM  | Select IpAddress
 ```
 
-次のコマンドを使用して、仮想マシンとのリモート デスクトップ セッションを作成します。 IP アドレスを仮想マシンの `publicIPAddress` に置き換えます。 メッセージが表示されたら、仮想マシンの作成時に使用した資格情報を入力します。
+次のコマンドを使用して、仮想マシンとのリモート デスクトップ セッションを作成します。 IP アドレスを仮想マシンの *publicIPAddress* に置き換えます。 メッセージが表示されたら、仮想マシンの作成時に使用した資格情報を入力します。
 
 ```powershell
 mstsc /v:<publicIpAddress>
@@ -234,7 +260,12 @@ Skus                            Offer         PublisherName          Location
 この情報は、特定のイメージを使用して VM をデプロイするために使用できます。 この例では、VM オブジェクトにイメージ名を設定します。 デプロイの完全な手順については、このチュートリアル内の前の例を参照してください。
 
 ```powershell
-$vm = Set-AzureRmVMSourceImage -VM $vm -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2016-Datacenter-with-Containers -Version latest
+$vm = Set-AzureRmVMSourceImage `
+    -VM $vm `
+    -PublisherName MicrosoftWindowsServer `
+    -Offer WindowsServer `
+    -Skus 2016-Datacenter-with-Containers `
+    -Version latest
 ```
 
 ## <a name="understand-vm-sizes"></a>VM のサイズについて
@@ -312,7 +343,10 @@ Azure VM は、さまざまな電源状態のいずれかになります。 こ�
 特定の VM の状態を取得するには、[Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) コマンドを使用します。 必ず仮想マシンとリソース グループの有効な名前を指定してください。 
 
 ```powershell
-Get-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM -Status | Select @{n="Status"; e={$_.Statuses[1].Code}}
+Get-AzureRmVM `
+    -ResourceGroupName myResourceGroup `
+    -Name myVM `
+    -Status | Select @{n="Status"; e={$_.Statuses[1].Code}}
 ```
 
 出力:
@@ -340,7 +374,7 @@ Stop-AzureRmVM -ResourceGroupName myResourceGroupVM -Name "myVM" -Force
 ### <a name="start-virtual-machine"></a>仮想マシンの起動
 
 ```powershell
-Start-AzureRmVM -ResourceGroupName myResourceGroupVM  -Name myVM
+Start-AzureRmVM -ResourceGroupName myResourceGroupVM -Name myVM
 ```
 
 ### <a name="delete-resource-group"></a>Delete resource group
@@ -348,7 +382,7 @@ Start-AzureRmVM -ResourceGroupName myResourceGroupVM  -Name myVM
 リソース グループを削除すると、そこに含まれているリソースもすべて削除されます。
 
 ```powershell
-Remove-AzureRmResourceGroup -Name myResourceGroupVM  -Force
+Remove-AzureRmResourceGroup -Name myResourceGroupVM -Force
 ```
 
 ## <a name="next-steps"></a>次のステップ
@@ -356,3 +390,4 @@ Remove-AzureRmResourceGroup -Name myResourceGroupVM  -Force
 このチュートリアルでは、基本的な VM の作成と管理について説明しました。 次のチュートリアルに進み、VM ディスクについて確認してください。  
 
 [VM ディスクの作成と管理](./tutorial-manage-data-disk.md)
+

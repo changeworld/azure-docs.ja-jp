@@ -59,7 +59,7 @@ ms.lasthandoff: 05/04/2017
     
     ![](./media/event-hubs-create/create-event-hub8.png)
 
-イベント ハブが作成され、イベントの送受信に必要な接続文字列が手元にあります。
+Event Hubs が作成され、イベントの送受信に必要な接続文字列が手元にあります。
 
 ## <a name="next-steps"></a>次のステップ
 Event Hubs の詳細については、次のリンク先を参照してください。

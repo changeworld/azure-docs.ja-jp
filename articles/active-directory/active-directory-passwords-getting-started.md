@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 04/26/2017
 ms.author: joflore
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: d138f4135d008c746bd5501680392b80a51786fa
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: b4d2819f51506651ebeb5b7b7c2d016c0cfc154d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -61,15 +61,15 @@ ms.lasthandoff: 05/03/2017
 **この時点で、Azure AD テナントの SSPR が構成できました**。 ここで止めるか、続いて、オンプレミスの AD ドメインへのパスワードの同期を構成することができます。
 
 > [!NOTE]
-> Microsoft では Azure 管理者タイプのアカウントに対して強力な認証要件を適用しているため、管理者ではなく、ユーザーで SSPR をテストします。 管理者のパスワード ポリシーの詳細については、[詳細な記事](active-directory-passwords-how-it-works.md)を参照してください。
+> Microsoft では Azure 管理者タイプのアカウントに対して強力な認証要件を適用しているため、管理者ではなく、ユーザーで SSPR をテストします。 管理者のパスワード ポリシーの詳細については、[パスワード ポリシーに関する記事](active-directory-passwords-policy.md#administrator-password-policy-differences)を参照してください。
 
 ## <a name="configure-synchronization-to-existing-identity-source"></a>既存の ID ソースへの同期の構成
 
-Azure AD へのオンプレミスの ID 同期を有効にするには、組織のサーバーに [Azure AD Connect](/connect/active-directory-aadconnect.md) をインストールして構成する必要があります。 このアプリケーションは、既存の ID ソースから Azure AD ドメインへのユーザーとグループの同期を処理します。
+Azure AD へのオンプレミスの ID 同期を有効にするには、組織のサーバーに [Azure AD Connect](./connect/active-directory-aadconnect.md) をインストールして構成する必要があります。 このアプリケーションは、既存の ID ソースから Azure AD ドメインへのユーザーとグループの同期を処理します。
 
-[簡単設定を使用した Azure AD Connect の開始](/connect/active-directory-aadconnect-get-started-express.md)
+[簡単設定を使用した Azure AD Connect の開始](./connect/active-directory-aadconnect-get-started-express.md)
 
-[DirSync または Azure AD Sync から Azure AD Connect へのアップグレード](/connect/active-directory-aadconnect-dirsync-deprecated.md)
+[DirSync または Azure AD Sync から Azure AD Connect へのアップグレード](./connect/active-directory-aadconnect-dirsync-deprecated.md)
 
 ## <a name="disabling-self-service-password-reset"></a>セルフ サービスによるパスワードのリセットの無効化
 
@@ -80,11 +80,11 @@ Azure AD へのオンプレミスの ID 同期を有効にするには、組織�
 
 * [**ライセンス**](active-directory-passwords-licensing.md) - Azure AD のライセンスを構成します
 * [**データ**](active-directory-passwords-data.md) - パスワード管理に必要なデータとその使用方法がわかります
-* [**展開**](active-directory-passwords-best-practices.md) - ここで見つかるガイダンスを使用してユーザーに対する SSPR を計画してデプロイできます。
-* [**カスタマイズ**](active-directory-passwords-customize.md) - 会社の SSPR エクスペリエンスの外観をカスタマイズします
+* [**展開**](active-directory-passwords-best-practices.md) - ここで見つかるガイダンスを使用してユーザーに対する SSPR を計画してデプロイできます
+* [**カスタマイズ**](active-directory-passwords-customize.md) - 会社の SSPR エクスペリエンスの外観をカスタマイズします。
 * [**ポリシー**](active-directory-passwords-policy.md) - Azure AD のパスワード ポリシーを把握し、設定します
 * [**レポート**](active-directory-passwords-reporting.md) - ユーザーが SSPR 機能にアクセスしたかどうかや、アクセスしたタイミングと場所を検出します
 * [**技術的詳細**](active-directory-passwords-how-it-works.md) - しくみを詳しく説明しています
-* [**よく寄せられる質問**](active-directory-passwords-faq.md) - 方法は? なぜですか? 何ですか? どこですか? 誰ですか? いつですか? - ずっと確認したかった質問に対する回答
+* [**よく寄せられる質問**](active-directory-passwords-faq.md) - どのようにですか? なぜですか? 何ですか? どこですか? 誰がですか? いつですか? - ずっと確認したかった質問に対する回答
 * [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - SSPR の一般的な問題を解決する方法について説明しています
 

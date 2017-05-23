@@ -1,6 +1,7 @@
 ---
-title: "トラブルシューティング: ダウンロードした Azure Active Directory アクティビティ ログ (プレビュー) の見つからないデータ | Microsoft Docs"
-description: "ダウンロードした Azure Active Directory アクティビティ ログ (プレビュー) にデータが見つからない問題の解決策を提供します。"
+
+title: "トラブルシューティング: ダウンロードした Azure Active Directory アクティビティ ログにデータが見つからない | Microsoft Docs"
+description: "ダウンロードした Azure Active Directory アクティビティ ログにデータが見つからない問題の解決策を提供します。"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -12,12 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/09/2017
+ms.date: 05/04/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: e0d65edcb7c14114565402038b0958c3a2ffb477
-ms.lasthandoff: 03/10/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 9109c698e4e8b43eeb7534c338adc99476012a3f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -38,7 +40,7 @@ Azure Portal でアクティビティ ログをダウンロードする場合は
 
 ## <a name="resolution"></a>解決策
 
-[Azure AD Reporting API](active-directory-reporting-api-getting-started.md) を利用すると、任意の時点のレコードを最大&100; 万件取得できます。 Reporting API を呼び出して、増分方式で一定期間 (たとえば、毎日や毎週) のレコードを取得するスクリプトを定期的に実行することをお勧めします。
+[Azure AD Reporting API](active-directory-reporting-api-getting-started.md) を利用すると、任意の時点のレコードを最大 100 万件取得できます。 Reporting API を呼び出して、増分方式で一定期間 (たとえば、毎日や毎週) のレコードを取得するスクリプトを定期的に実行することをお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
 「[Azure Active Directory レポートに関する FAQ](active-directory-reporting-faq.md)」を参照してください。

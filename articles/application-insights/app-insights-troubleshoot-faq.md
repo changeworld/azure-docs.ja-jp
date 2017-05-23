@@ -12,11 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 191d9e1197c3526d2f72b972b7fada76dee84447
-ms.lasthandoff: 04/13/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 65c199064273930f66db580b6c01dabb4b906e7a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -103,7 +104,7 @@ IIS Web サーバーで Web アプリ内の Application Insights を構成する
 サーバーの Web アプリから:
 
 * HTTP 要求
-* [依存関係](app-insights-asp-net-dependencies.md)。 SQL Database の呼び出し、外部サービスの HTTP 呼び出し、Azure DocumentDB、テーブル、Blob Storage、およびキューの呼び出し。 
+* [依存関係](app-insights-asp-net-dependencies.md)。 SQL Database の呼び出し、外部サービスの HTTP 呼び出し、Azure Cosmos DB、テーブル、Blob Storage、およびキューの呼び出し。 
 * [例外](app-insights-asp-net-exceptions.md)とスタック トレース。
 * [パフォーマンス カウンター](app-insights-performance-counters.md) - [Status Monitor](app-insights-monitor-performance-live-website-now.md)、Azure 監視 (app-insights-azure-web-apps.md)、または [Application Insights collectd ライター](app-insights-java-collectd.md)を使用している場合。
 * コード化する[カスタム イベントとカスタム メトリック](app-insights-api-custom-events-metrics.md)。

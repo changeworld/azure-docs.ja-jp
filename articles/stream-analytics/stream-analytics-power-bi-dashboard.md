@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 3dbc49d35def6d7b12ade529d1dd1156dee9d75b
-ms.openlocfilehash: 09c54f8cce119c1cbe6a08e969236612447d9e17
-ms.lasthandoff: 02/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: 278f73d9ee3f64727b34b3674cd38eaf5301e675
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -123,7 +124,7 @@ Power BI データセットの詳細については、[Power BI REST API](https:
 
     ![不正行為カウンター](./media/stream-analytics-power-bi-dashboard/fraud-counter.png)
 
-5. タイルを再度追加します。 ただし今回選択するのは折れ線グラフです。 値として **[fraudulentcalls]** を、軸として **[windowend]** を追加します。 次のスクリーンショットに示したように、ここでは過去 10 分を選択しました。
+5. タイルを再度追加しますが、 次は折れ線グラフを選択します。 値として **[fraudulentcalls]** を、軸として **[windowend]** を追加します。 次のスクリーンショットに示したように、ここでは過去 10 分を選択しました。
 
 ![不正行為の呼び出し](./media/stream-analytics-power-bi-dashboard/fraud-calls.png)
 
@@ -177,7 +178,7 @@ For example:
 Power BI で承認が更新されると、承認の領域に緑色のアラートが表示され、問題が解決されたことがわかります。
 
 ## <a name="get-help"></a>問い合わせ
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)

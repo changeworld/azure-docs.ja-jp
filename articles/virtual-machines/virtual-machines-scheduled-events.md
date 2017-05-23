@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/10/2016
 ms.author: zivr
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 18c7a013c01fee26c5455535af6d9fba2b98fac7
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: 7f0613285bc548e1329be3c33c30939f5998f379
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -50,7 +51,12 @@ Azure Metadata Service によって、VM 内部からの REST エンドポイン
 Virtual Machine が Virtual Network (VNet) 内で作成されている場合、メタデータ サービスはルーティング不可能な IP (169.254.169.254) 経由で提供されます。それ以外の場合は、クラウド サービスとクラシック VM の既定の設定として、使用するエンドポイントを検出するための追加のロジックが必要となります。 ホスト エンドポイントを検出する方法については、[こちらのサンプル] (https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm) を参照してください。
 
 ### <a name="versioning"></a>バージョン管理 
-メタデータ サービスでは、http://{ip}/metadata/{version}/scheduledevents の形式でバージョン管理された API が使用されます。サービスが、http://{ip}/metadata/latest/scheduledevents で提供されている最新のバージョンを使用するようにすることをお勧めします。
+インスタンス メタデータ サービスはバージョン管理されています。 バージョンは必須で、最新のバージョンは 2017-03-01 です。
+
+> [!NOTE] 
+> スケジュールされたイベントの前のプレビュー リリースでは、api-version として {latest} がサポートされていました。 この形式はサポートされなくなり、今後廃止される予定です。
+>
+
 
 ### <a name="using-headers"></a>ヘッダの使用
 メタデータ サービスのクエリを実行するときは、ヘッダー *Metadata: true* を指定する必要があります。 
@@ -67,7 +73,8 @@ Virtual Machine が Virtual Network (VNet) 内で作成されている場合、�
 ### <a name="query-for-events"></a>イベントのクエリ
 次の呼び出しを行うだけで、スケジュールされたイベントのクエリを実行できます。
 
-    curl -H Metadata:true http://169.254.169.254/metadata/latest/scheduledevents
+    curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2017-03-01
+
 
 応答には、スケジュールされたイベントの配列が含まれています。 空の配列は、現在スケジュールされているイベントがないことを意味します。
 スケジュールされたイベントがある場合は、応答にイベントの配列が含まれます。 
@@ -136,7 +143,7 @@ function HandleScheduledEvents($scheduledEvents)
 
 # Set up the scheduled events uri for VNET enabled VM
 $localHostIP = "169.254.169.254"
-$scheduledEventURI = 'http://{0}/metadata/latest/scheduledevents' -f $localHostIP 
+$scheduledEventURI = 'http://{0}/metadata/scheduledevents?api-version=2017-03-01' -f $localHostIP 
 
 
 # Get the document
@@ -170,7 +177,7 @@ Metadata Service と通信する API を表示するクライアントのサン�
 
         public ScheduledEventsClient()
         {
-            scheduledEventsEndpoint = string.Format("http://{0}/metadata/latest/scheduledevents", defaultIpAddress);
+            scheduledEventsEndpoint = string.Format("http://{0}/metadata/scheduledevents?api-version=2017-03-01", defaultIpAddress);
         }
         /// Retrieve Scheduled Events 
         public string GetDocument()
@@ -293,7 +300,7 @@ import urllib2
 import socket
 import sys
 
-metadata_url="http://169.254.169.254/metadata/latest/scheduledevents"
+metadata_url="http://169.254.169.254/metadata/scheduledevents?api-version=2017-03-01"
 headers="{Metadata:true}"
 this_host=socket.gethostname()
 
@@ -329,4 +336,5 @@ if __name__ == '__main__':
 ```
 ## <a name="next-steps"></a>次のステップ 
 [Azure での仮想マシンに対する計画的なメンテナンス](linux/planned-maintenance.md)
+[インスタンス メタデータ サービス](virtual-machines-instancemetadataservice-overview.md)
 

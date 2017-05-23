@@ -15,10 +15,11 @@ ms.author: carlrab
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
-translationtype: Human Translation
-ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
-ms.openlocfilehash: 8ef393e414559ed6c7a2a3b41a0c8cf060f8d4da
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 42ac754ba24ba3e8f96d4fb6f3abb97169056c8e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.lasthandoff: 04/21/2017
 この記事では、新しい Azure SQL Database への [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) ファイルのインポートを取り上げます。 この記事では、次の方法について説明します。
 - [Azure Portal](https://portal.azure.com)
 - [SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx) コマンドライン ユーティリティ
-- [New-AzureRmSqlDatabaseImport](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaseimport?view=azurermps-3.7.0) コマンドレット
+- [New-AzureRmSqlDatabaseImport](/powershell/module/azurerm.sql/new-azurermsqldatabaseimport) コマンドレット
 
 ## <a name="overview"></a>概要
 
@@ -78,9 +79,15 @@ SqlPackage.exe /a:import /tcs:"Data Source=mynewserver20170403.database.windows.
 > Azure SQL Database 論理サーバーは、ポート 1433 でリッスンします。 企業のファイアウォール内から Azure SQL Database 論理サーバーに接続する場合、企業のファイアウォールでこのポートが開放されていないと、正しく接続することができません。
 >
 
+この例では、SqlPackage.exe と Active Directory ユニバーサル認証を使用してデータベースをインポートする方法を示します。
+
+```cmd
+SqlPackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.database.windows.net /ua:True /tid:"apptest.onmicrosoft.com"
+```
+
 ## <a name="powershell"></a>PowerShell
 
-[New-AzureRmSqlDatabaseImport](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaseimport?view=azurermps-3.7.0) コマンドレットを使用して、Azure SQL Database サービスにデータベースのインポート要求を送信します。 データベースのサイズに応じて、インポート操作の完了に時間がかかる場合があります。
+[New-AzureRmSqlDatabaseImport](/powershell/module/azurerm.sql/new-azurermsqldatabaseimport) コマンドレットを使用して、Azure SQL Database サービスにデータベースのインポート要求を送信します。 データベースのサイズに応じて、インポート操作の完了に時間がかかる場合があります。
 
  ```powershell
  $importRequest = New-AzureRmSqlDatabaseImport -ResourceGroupName "myResourceGroup" `
@@ -97,7 +104,7 @@ SqlPackage.exe /a:import /tcs:"Data Source=mynewserver20170403.database.windows.
 
  ```
 
-インポート要求の状態を確認するには、[Get-AzureRmSqlDatabaseImportExportStatus](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.7.0/get-azurermsqldatabaseimportexportstatus) コマンドレットを使用します。 要求直後にこれを実行すると、通常は、 **Status : InProgress**が返されます。 **Status : Succeeded** が表示された場合、インポートは完了しています。
+インポート要求の状態を確認するには、[Get-AzureRmSqlDatabaseImportExportStatus](/powershell/module/azurerm.sql/get-azurermsqldatabaseimportexportstatus) コマンドレットを使用します。 要求直後にこれを実行すると、通常は、 **Status : InProgress**が返されます。 **Status : Succeeded** が表示された場合、インポートは完了しています。
 
 ```powershell
 $importStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $importRequest.OperationStatusLink

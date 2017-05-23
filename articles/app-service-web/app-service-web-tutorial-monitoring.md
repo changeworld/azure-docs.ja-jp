@@ -9,10 +9,10 @@ ms.date: 04/04/2017
 ms.topic: article
 ms.service: app-service-web
 ms.translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 8d9b4a4fa3b62659fc7e2aa1c6329fdc5e01fe39
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 29df824062d00e01b786533033097948c008588f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/21/2017
+ms.lasthandoff: 05/11/2017
 
 ---
 # <a name="monitor-app-service"></a>App Service を監視する
@@ -25,15 +25,15 @@ ms.lasthandoff: 04/21/2017
 - 問題をデバッグおよび修正する。
 
 ## <a name="before-you-begin"></a>開始する前に
-- 以下に示す手順を実行するには、監視する Web アプリが必要です。 
+- 以下に示す手順を実行するには、監視する Web アプリが必要です。
     - 「[SQL Database を使用して Azure で ASP.NET アプリを作成する](app-service-web-tutorial-dotnet-sqldatabase.md)」チュートリアルで説明している手順に従って、アプリケーションを作成できます。
 
-- アプリケーションの**リモート デバッグ**を試す場合は、Visual Studio が必要です。 
-    - まだ Visual Studio 2017 をインストールしていない場合は、[無料](https://www.visualstudio.com/downloads/)の Visual Studio 2017 Community エディションをダウンロードして使用できます。 
+- アプリケーションの**リモート デバッグ**を試す場合は、Visual Studio が必要です。
+    - まだ Visual Studio 2017 をインストールしていない場合は、[無料](https://www.visualstudio.com/downloads/)の Visual Studio 2017 Community エディションをダウンロードして使用できます。
     - Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
 
 ## <a name="metrics"></a> 手順 1 - メトリックの表示
-**メトリック**は以下のものを把握するうえで役立ちます。 
+**メトリック**は以下のものを把握するうえで役立ちます。
 - アプリケーションの健全性
 - アプリのパフォーマンス
 - リソース消費
@@ -51,7 +51,7 @@ ms.lasthandoff: 04/21/2017
 > * スケール カウント: インスタンス数 1、2、3 など
 > * SKU: Free、Shared、Basic、Standard、Premium など
 
-Web アプリのメトリックを確認するには、監視対象のアプリの **[概要]** ブレードに移動します。 ここでは、アプリのメトリックのグラフを **[監視] タイル**として表示できます。 編集するタイルをクリックし、表示するメトリックと時間の範囲を構成します。 
+Web アプリのメトリックを確認するには、監視対象のアプリの **[概要]** ブレードに移動します。 ここでは、アプリのメトリックのグラフを **[監視] タイル**として表示できます。 編集するタイルをクリックし、表示するメトリックと時間の範囲を構成します。
 
 既定では、リソースのブレードは、過去 1 時間のアプリケーションの要求とエラーを示すビューを提供します。
 ![アプリの監視](media/app-service-web-tutorial-monitoring/app-service-monitor.png)
@@ -62,13 +62,13 @@ Web アプリのメトリックを確認するには、監視対象のアプリ�
 > Azure Monitor の詳細については、次のリンク先を参照してください。
 > - [Azure Monitor の使用](..\monitoring-and-diagnostics\monitoring-overview.md)
 > - [Azure メトリック](..\monitoring-and-diagnostics\monitoring-overview-metrics.md)
-> - [Azure Monitor のサポートされるメトリック](..\monitoring-and-diagnostics\monitoring-supported-metrics.md#microsoftwebsites-including-functions)
+> - [Azure Monitor のサポートされるメトリック](..\monitoring-and-diagnostics\monitoring-supported-metrics.md)
 > - [Azure のダッシュ ボード](..\azure-portal\azure-portal-dashboards.md)
 
 ## <a name="alerts"></a> 手順 2 - アラートの構成
 アプリが特定の状態になったときにトリガーされるように**アラート**を構成できます。
 
-「[手順 1 - メトリックの表示](#metrics)」で、アプリケーションに多数のエラーがあることを確認しました。 
+「[手順 1 - メトリックの表示](#metrics)」で、アプリケーションに多数のエラーがあることを確認しました。
 
 エラー発生時に自動的に通知されるようにアラートを構成してみましょう。 この場合は、HTTP 50X エラーの数が特定のしきい値を超えるたびに電子メールが送信されるようにします。
 
@@ -77,14 +77,14 @@ Web アプリのメトリックを確認するには、監視対象のアプリ�
 ![アラート](media/app-service-web-tutorial-monitoring/app-service-monitor-alerts.png)
 
 アラート構成の値を指定します。
-- **[リソース]:** アラートで監視するサイト。 
+- **[リソース]:** アラートで監視するサイト。
 - **[名前]:** アラートの名前。この場合は *High HTTP 50X*。
 - **[説明]:** このアラートで監視するものの説明 (プレーン テキスト)。
 - **[アラート対象]:** アラートではメトリックかイベントを監視できます。この例ではメトリックを監視します。
 - **[メトリック]:** 監視対象のメトリック。この場合は "*HTTP サーバー エラー*"。
 - **[条件]:** アラートを送信するタイミング。この場合は、"*より大きい*" というオプションを選びます。
 - **[しきい値]:** 監視する値。この場合は *400* です。
-- **[期間]:** アラートはメトリックの平均値に基づいて動作します。 期間を短くすると、アラートが発生しやすくなります。 この場合は、"*5 分*" にしています。 
+- **[期間]:** アラートはメトリックの平均値に基づいて動作します。 期間を短くすると、アラートが発生しやすくなります。 この場合は、"*5 分*" にしています。
 - **電子メールの所有者と共同作成者:** この場合は "*有効*" にしています。
 
 これでアラートが作成されました。アプリが構成済みのしきい値を超えるたびに電子メールが送信されます。 アクティブなアラートは Azure Portal でも確認できます。
@@ -116,7 +116,7 @@ App Service Companion は、[App Store](https://itunes.apple.com/app/azure-app-s
 
 ## <a name="diagnose"></a> 手順 4 - 問題の診断と解決
 **[問題の診断と解決]** は、アプリケーションの問題をプラットフォームの問題と区別するのに役立ちます。 これには、Web アプリを正常な状態に戻すのに役立つ可能性がある対応策も提示されます。
- 
+
 ![問題の診断と解決](media/app-service-web-tutorial-monitoring/app-service-monitor-diagnosis.png)
 
 前の手順の例を引き続き利用します。このアプリケーションには、可用性の問題があることがわかります。 一方、プラットフォームの可用性は 100% のままです。
@@ -129,7 +129,7 @@ App Service Companion は、[App Store](https://itunes.apple.com/app/azure-app-s
 ログ記録では、Web アプリの**アプリケーション診断**と **Web サーバー診断**の両方のログを収集できます。
 
 ### <a name="application-diagnostics"></a>アプリケーション診断
-アプリケーション診断では、実行時にアプリケーションによって生成されたトレースをキャプチャできます。 
+アプリケーション診断では、実行時にアプリケーションによって生成されたトレースをキャプチャできます。
 
 アプリケーションにトレースを追加すると、問題をデバッグし、突き止める力が大幅に向上します。
 
@@ -166,19 +166,19 @@ public ActionResult Delete(Guid? id)
  ### <a name="web-server-diagnostics"></a>Web サーバー診断
 Web サーバーのログは、アプリがインストルメント化されていない場合でも生成されます。 App Service では、次の 3 種類のサーバー ログを収集できます。
 
-- **Web サーバーのログ記録** 
-    - [W3C 拡張ログ ファイル形式](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx)を使用した、HTTP トランザクションに関する情報。 
+- **Web サーバーのログ記録**
+    - [W3C 拡張ログ ファイル形式](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx)を使用した、HTTP トランザクションに関する情報。
     - 全体的なサイト メトリック、たとえば、サイトで処理された要求の数や、特定の IP アドレスからの要求の数を特定するときに便利です。
-- **詳細なエラー ログ記録** 
-    - 障害 (状態コード 400 以上) を示す HTTP 状態コードの詳細なエラー情報。 
+- **詳細なエラー ログ記録**
+    - 障害 (状態コード 400 以上) を示す HTTP 状態コードの詳細なエラー情報。
     - [エラーのログ記録の詳細については、こちらをご覧ください。](https://www.iis.net/learn/troubleshoot/diagnosing-http-errors/how-to-use-http-detailed-errors-in-iis)
-- **失敗した要求トレース** 
-    - 要求の処理に使用された IIS コンポーネントのトレースや各コンポーネントにかかった時間など、失敗した要求の詳細情報。 
+- **失敗した要求トレース**
+    - 要求の処理に使用された IIS コンポーネントのトレースや各コンポーネントにかかった時間など、失敗した要求の詳細情報。
     - 失敗した要求ログは、特定の HTTP エラーの原因を特定する場合に便利です。
     - [失敗した要求トレースの詳細については、こちらをご覧ください。](https://www.iis.net/learn/troubleshoot/using-failed-request-tracing/troubleshooting-failed-requests-using-tracing-in-iis)
 
 Web サーバーのログ記録を有効にするには:
-- **[監視]** > **[診断ログ]** に移動します。 
+- **[監視]** > **[診断ログ]** に移動します。
 - トグルを使用して、さまざまな種類の Web サーバー診断を有効にします。
 
 ![アプリの監視](media/app-service-web-tutorial-monitoring/app-service-monitor-serverlogs.png)
@@ -191,17 +191,17 @@ Blob Storage に格納されているログにアクセスするには、Azure S
 
 - **アプリケーション ログ** - `%HOME%/LogFiles/Application/`。
     - このフォルダーには、アプリケーション ログによって生成された情報を含む 1 つ以上のテキスト ファイルが格納されます。
-- **失敗した要求トレース** - `%HOME%/LogFiles/W3SVC#########/`。 
-    - このフォルダーには、1 つの XSL ファイルと 1 つ以上の XML ファイルが格納されます。 
-- **詳細なエラー ログ** - `%HOME%/LogFiles/DetailedErrors/`。 
+- **失敗した要求トレース** - `%HOME%/LogFiles/W3SVC#########/`。
+    - このフォルダーには、1 つの XSL ファイルと 1 つ以上の XML ファイルが格納されます。
+- **詳細なエラー ログ** - `%HOME%/LogFiles/DetailedErrors/`。
     - このフォルダーには、アプリによって生成された HTTP エラーに関する詳細な情報を記録した 1 つ以上の .htm ファイルが格納されます。
-- **Web サーバー ログ** - `%HOME%/LogFiles/http/RawLogs`。 
+- **Web サーバー ログ** - `%HOME%/LogFiles/http/RawLogs`。
     - このフォルダーには、W3C 拡張ログ ファイル形式を使用して形式が設定された 1 つ以上のテキスト ファイルが格納されます。
 
 ## <a name="streaming"></a> 手順 6 - ログ ストリーミング
 ログのストリーミングは、FTP による[ログ アクセス](#Accessing-Logs)に比べて時間が節約されるため、アプリケーションをデバッグする際に便利です。
 
-App Service では、生成された**アプリケーション ログ**と **Web サーバー ログ**をストリーミングできます。 
+App Service では、生成された**アプリケーション ログ**と **Web サーバー ログ**をストリーミングできます。
 
 > [!TIP]
 > ログをストリーミングする前に、「[ログ記録](#logging)」セクションの説明に従って、ログの収集を有効にしていることを確認してください。
@@ -220,7 +220,7 @@ App Service では、生成された**アプリケーション ログ**と **Web
 
 クラウドで実行中の Web アプリにデバッガーをアタッチするには:
 
-- Visual Studio 2017 を使用して、デバッグするアプリのソリューションを開きます。 
+- Visual Studio 2017 を使用して、デバッグするアプリのソリューションを開きます。
 - ローカルでの開発と同じように、ブレークポイントをいくつか設定します。
 - **Cloud Explorer** を開きます (ctrl + /、ctrl + x)。
 - 必要に応じて Azure の資格情報でログインします。
@@ -242,7 +242,7 @@ Visual Studio により、リモート デバッグ用にアプリケーショ�
 **プロセス エクスプローラー**では、次のことができます。
 
 - App Service プランの異なるインスタンスのプロセスをすべて列挙する。
-- 各プロセスに関連付けられているハンドルとモジュールをドリルダウンおよび表示する。 
+- 各プロセスに関連付けられているハンドルとモジュールをドリルダウンおよび表示する。
 - ランナウェイ プロセスの特定に役立つ、プロセス レベルの CPU、ワーキング セット、およびスレッドの数を表示する。
 - 開いているファイル ハンドルを見つけ、特定のプロセス インスタンスを強制終了する。
 
@@ -252,11 +252,11 @@ Visual Studio により、リモート デバッグ用にアプリケーショ�
 
 
 ## <a name="insights"></a> 手順 9 - Application Insights
-**Application Insights** は、アプリのアプリケーション プロファイルと高度な監視機能を提供します。 
+**Application Insights** は、アプリのアプリケーション プロファイルと高度な監視機能を提供します。
 
 Application Insights を使用して、Web アプリの例外とパフォーマンスの問題を検出して診断します。
 
-**[監視]** > **[Application Insights]** で、Web アプリに対して Application Insights を有効にできます。 
+**[監視]** > **[Application Insights]** で、Web アプリに対して Application Insights を有効にできます。
 
 > [!NOTE]
 > データの収集を開始するために、Application Insights サイト拡張機能をインストールするよう求められる場合があります。 サイト拡張機能をインストールすると、アプリケーションが再起動します。
@@ -270,3 +270,4 @@ Application Insights は豊富な機能セットを備えています。詳細�
  - [Application Insights とは何か?](..\application-insights\app-insights-overview.md)
  - [Application Insights を使用した Azure Web アプリのパフォーマンスの監視](..\application-insights\app-insights-azure-web-apps.md)
  - [Application Insights を使用した Web サイトの可用性と応答性の監視](..\application-insights\app-insights-monitor-web-app-availability.md)
+

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/02/2017
 ms.author: juliako;
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 67e40d839e101c850fe8cbfd1fbb840ec1faebfc
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 4f6ad3a0bc76071704bb8fa32c7a373988f34ac3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -20,7 +20,7 @@ ms.lasthandoff: 05/10/2017
 
 This topic shows you how to view and edit a Video Indexer insights of a video.
 
-1. Sign in to your [Video Indexer](https://www.vi.microsoft.com) account.
+1. Sign in to your [Video Indexer](http://vi.microsoft.com) account.
 2. Find a video from which you want to create your Video Indexer insights. For more information, see [Find exact moments within videos](video-indexer-search.md).
 3. Press **Play**.
 

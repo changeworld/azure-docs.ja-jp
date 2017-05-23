@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: allclark
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 85fa6ab8f7f5ad31347901a0be932d2474594802
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: fec7a2738c3b8e74ac335f62189f3d9b1dd346ab
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/06/2017
+ms.lasthandoff: 05/15/2017
 
 ---
 
@@ -59,19 +59,19 @@ no-wait オプションを使用するため、コマンドは各 VM がプロ�
 このスクリプトは、リソース グループを作成し、再起動する 3 つの VM を作成します。
 そのうち 2 つはタグ付きです。
 
-[!code-azurecli[main](../../../cli_scripts/virtual-machine/restart-by-tag/provision.sh "VM をプロビジョニングする")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/restart-by-tag/provision.sh "VM をプロビジョニングする")]
 
 ### <a name="wait"></a>待機
 
 このスクリプトは、3 つの VM すべてがプロビジョニングされるか、そのうちの 1 つがプロビジョニングに失敗するまで、20 秒ごとにプロビジョニングの状態を確認します。
 
-[!code-azurecli[main](../../../cli_scripts/virtual-machine/restart-by-tag/wait.sh "VM がプロビジョニングされるまで待機する")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/restart-by-tag/wait.sh "VM がプロビジョニングされるまで待機する")]
 
 ### <a name="restart-the-vms"></a>VM の再起動
 
 このスクリプトは、リソース グループ内のすべての VM を再起動し、その後、タグ付きの VM だけを再起動します。
 
-[!code-azurecli[main](../../../cli_scripts/virtual-machine/restart-by-tag/restart.sh "タグによって VM を再起動する")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/restart-by-tag/restart.sh "タグによって VM を再起動する")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 

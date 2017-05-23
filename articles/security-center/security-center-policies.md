@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/03/2017
+ms.date: 05/08/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: bd2291129a1a61f69e83cb76748d00b9ede6eb6f
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: ec658f4c74d54a11684460c0e634303793480152
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -66,7 +67,7 @@ ms.lasthandoff: 04/18/2017
    >
 9. **[セキュリティ ポリシー]** ブレードで **[オン]** をクリックして、このサブスクリプションで使用するセキュリティの推奨事項を有効にします。 **[防止ポリシー]** をクリックして、次のスクリーンショットにあるようなオプションを表示します。
 
-    ![Selecting the security policies](./media/security-center-policies/security-center-policies-fig4-ga-new.png)
+    ![Selecting the security policies](./media/security-center-policies/security-center-policies-fig4-newUI.png)
 
 次の表を参照して、各オプションについて確認してください。
 
@@ -82,6 +83,7 @@ ms.lasthandoff: 04/18/2017
 | SQL 監査と脅威検出 |コンプライアンスのために、また高度な脅威検出の調査のために、Azure データベースへのアクセスの監査を有効にすることを推奨します。 |
 | SQL Transparent Data Encryption |Azure SQL データベース、関連付けられたバックアップ、トランザクション ログ ファイルに対し、REST での暗号化を有効にすることを推奨します。 セキュリティ侵害を受けた場合でも、データが読み取られることはありません。 |
 | 脆弱性評価 |VM に脆弱性評価ソリューションをインストールすることをお勧めします。 |
+| ストレージ暗号化 |現在この機能は、Azure BLOB と Azure Files で利用できます。 "Storage サービスの暗号化" を有効にした後、暗号化されるのは新しいデータであり、このストレージ アカウントにある既存のファイルは暗号化されないことに注意してください。 |
 
 すべてのオプションの構成が完了したら、推奨事項が表示されている **[セキュリティ ポリシー]** ブレードで **[OK]** をクリックし、初期設定が表示されている **[セキュリティ ポリシー]** ブレードで **[保存]** をクリックします。
 

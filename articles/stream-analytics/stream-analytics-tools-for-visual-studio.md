@@ -4,27 +4,26 @@ description: "Visual Studio の Azure Stream Analytics ツールに関する入�
 keywords: Visual Studio
 documentationcenter: 
 services: stream-analytics
-author: jeffstokes72
-manager: jhubbard
-editor: cgronlun
+author: 
+manager: 
+editor: 
 ms.assetid: a473ea0a-3eaa-4e5b-aaa1-fec7e9069f20
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/28/2017
-ms.author: sujie
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: d0125dda4df69279e49a9fad4dc28dcbf6368322
-ms.lasthandoff: 03/29/2017
+ms.date: 
+ms.author: 
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: cbde312e1f58cb69a7c5edbd22543732a0781fdb
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 
 ---
 # <a name="use-azure-stream-analytics-tool-for-visual-studio"></a>Azure Stream Analytics ツールを Visual Studio に使用する
-Visual Studio の Azure Stream Analytics ツールが一般公開されます。 このツールを使用することで、Stream Analytics ユーザーのトラブルシューティング エクスペリエンスがさらに充実するとともに、複雑なクエリを記述したり、ローカルでクエリを記述することができます。 また、Stream Analytics ジョブを Visual Studio プロジェクトにエクスポートする機能も用意されています。
-
 ## <a name="introduction"></a>はじめに
 このチュートリアルでは、Azure Stream Analytics ツールを Visual Studio に使用して、Azure Stream Analytics ジョブの作成、ローカルでのテスト、管理、およびデバッグを行う方法を説明します。 
 
@@ -54,7 +53,7 @@ Visual Studio で、**[ファイル] メニュー**をクリックし、**[新�
 
 ## <a name="choose-the-correct-subscription"></a>適切なサブスクリプションの選択
 1. Visual Studio の **[表示]** メニューで**サーバー エクスプローラー**を開きます。
-2. Azure のアカウントを使用してログインします。 
+2. Azure アカウントでサインインします。 
 
 ## <a name="define-input-sources"></a>入力ソースの定義
 1.    **ソリューション エクスプローラー**で**[入力]** ノードを展開し、**Input.json** の名前を **EntryStream.json** に変更します。 **[EntryStream.json]** をダブルクリックします。
@@ -65,33 +64,33 @@ Visual Studio で、**[ファイル] メニュー**をクリックし、**[新�
 6.    [イベント ハブの名前] は **entry** に設定する必要があります。
 7.    [イベント ハブ ポリシー名] は **RootManageSharedAccessKey** です (既定値)。
 8.    **[イベントのシリアル化の形式]** に **[JSON]** を、**[エンコード]** に **[UTF8]** を選択します。
-   
-   設定は次のようになります。
-   
-   ![入力ソースの定義](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-01.png)
-   
-9.    ページ下部の **[保存]** をクリックしてウィザードを終了します。 入力ソースをもう 1 つ追加して、終了ストリームを作成できます。 [入力] ノードを右クリックして、**[新しい項目]** をクリックします。
-   
-   ![入力ソースの定義](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-02.png)
-   
+
+    設定は次のようになります。
+
+    ![入力ソースの定義](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-01.png)
+ 
+9.    ページ下部の **[保存]** をクリックしてウィザードを終了します。 入力ソースをもう 1 つ追加して、終了ストリームを作成できます。 [入力] ノードを右クリックして、**[新しい項目...]** をクリックします。
+
+    ![入力ソースの定義](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-02.png)
+ 
 10.    ポップアップ ウィンドウで **[Azure Stream Analytics Input]**(Azure Stream Analytics の入力) を選択し、名前を **ExitStream.json** に変更します。 **[追加]**をクリックします。
-   
-   ![入力ソースの定義](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-03.png)
-   
+
+    ![入力ソースの定義](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-03.png)
+ 
 11.    プロジェクトで **[ExitStream.json]** をダブルクリックし、入力ストリームと同じ手順に従って入力します。 次のスクリーンショットに従ってイベント ハブの名前の値を入力してください。
-   
-   ![入力ソースの定義](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-04.png)
-   
-   以下のように、2 つの入力ストリームを定義しました。
-   
-   ![入力ソースの定義](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-05.png)
-   
-   次に、車両登録データの BLOB ファイルに対する参照データ入力を追加します。
-   
+
+    ![入力ソースの定義](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-04.png)
+
+    以下のように、2 つの入力ストリームを定義しました。
+
+    ![入力ソースの定義](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-05.png)
+ 
+    次に、車両登録データの BLOB ファイルに対する参照データ入力を追加します。
+
 12.    プロジェクトの **[入力]** ノードを右クリックして、ストリーム入力と同じ手順に従います。ただし、[データ ストリーム] の代わりに **[参照データ]** を選択し、[入力のエイリアス] に **[登録]** を指定します。
-   
-   ![入力ソースの定義](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-06.png)
-   
+
+    ![入力ソースの定義](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-06.png)
+
 13.    [ストレージ アカウント] には、**tolldata** を含むものを選択します。 コンテナー名は **tolldata**、**[パス パターン]** は **registration.json** とする必要があります。 このファイル名は大文字と小文字が区別されるため、小文字で入力してください。
 14.    **[保存]** をクリックしてウィザードを終了します。
 
@@ -131,40 +130,43 @@ Visual Studio で、**[ファイル] メニュー**をクリックし、**[新�
 このフォルダには次のファイルが含まれています。 •    Entry.json •    Exit.json •    Registration.json
 
 ## <a name="question-number-of-vehicles-entering-a-toll-booth"></a>テスト: 料金所ブースに入る車両の台数
-プロジェクトで、[Script.asaql] をダブルクリックしてスクリプトをエディターで開き、前のセクションのスクリプトをエディターに貼り付けます。 クエリ エディターでは Intellisense、構文の色分け、およびエラーのマーカーがサポートされています。
+プロジェクトで、[Script.asaql] をダブルクリックしてスクリプトをエディターで開き、前のセクションのスクリプトをエディターに貼り付けます。 クエリ エディターでは、Intellisense、構文の色分け、エラーのマーカーがサポートされています。
 
 ![クエリの編集](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-query-01.png)
  
 ### <a name="testing-azure-stream-analytics-queries-locally"></a>Azure Stream Analytics クエリのローカルでのテスト
 
-1. まずクエリをコンパイルして、構文エラーがないかを確認します。 [TBD]
-2. サンプル データに対してこのクエリを検証するには、[入力] を右クリックしてローカル サンプル データを使用し、コンテキスト メニューから **[Add local input]**(ローカル入力の追加) を選択します。
-   
-   ![ローカル入力の追加](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-add-local-input-01.png)
-   
-   ポップアップ ウィンドウで、ローカル パスからサンプル データを選択します。 **[保存]**をクリックします。
-   
-   ![ローカル入力の追加](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-add-local-input-02.png)
-   
-   **local_EntryStream.json** の名前のファイルが、入力フォルダに自動的に追加されます。
-   
-   ![ローカル入力の追加](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-add-local-input-03.png)
-   
-3. クエリ エディターで [ローカルで実行する] をクリックしてください。 または F5 キーを押します。
-   
-   ![ローカルの実行](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-local-run-01.png)
-   
-   コンソール出力から出力パスを検索し、いずれかのキーを押して結果フォルダーを開きます。
-   
-   ![ローカルの実行](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-local-run-02.png)
-   
-4. ローカル フォルダーで結果を確認します。
-   
-   ![ローカルの実行](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-local-run-03.png)
-   
-   
+1.    まず、クエリをコンパイルして構文エラーがないかを確認するために、プロジェクトを右クリックして **[ビルド]** を選択します。 
+
+2.    サンプル データに対してこのクエリを検証するには、[入力] を右クリックしてローカル サンプル データを使用し、コンテキスト メニューから **[ローカル入力の追加]** を選択します。
+
+    ![ローカル入力の追加](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-add-local-input-01.png)
+ 
+    ポップアップ ウィンドウで、ローカル パスからサンプル データを選択します。 [ **Save**] をクリックします。
+
+    ![ローカル入力の追加](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-add-local-input-02.png)
+ 
+    **local_EntryStream.json** の名前のファイルが、入力フォルダに自動的に追加されます。
+
+    ![ローカル入力の追加](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-add-local-input-03.png)
+ 
+3.    クエリ エディターで [ローカルで実行する] をクリックしてください。 または F5 キーを押します。
+
+    ![ローカルの実行](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-local-run-01.png)
+
+    ![ローカルの実行](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-local-run-02.png)
+
+    任意のキーを押すと、Visual Studio の ASA ローカル実行結果ウィンドウに出力を表示できます。 
+
+    ![ローカルの実行](./media/stream-analytics-tools-for-vs/local-testing-output.png)
+
+4.  結果フォルダーを開いて、出力ファイルを CSV 形式と JSON 形式の両方で確認できます。
+
+    ![ローカルの実行](./media/stream-analytics-tools-for-vs/local-testing-files.png)
+ 
+
 ### <a name="sample-input"></a>サンプル入力
-また、入力ソースからの入力データをローカル ファイルにサンプリングできます。 [入力構成ファイル] を右クリックして、**[サンプル データ]** を選択します。 
+また、入力ソースからの入力データをローカル ファイルにサンプリングできます。 入力構成ファイルを右クリックして、**[サンプル データ]** を選択します。 
 
 ![サンプル データ](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-sample-data-01.png)
 
@@ -203,8 +205,8 @@ Visual Studio で、**[ファイル] メニュー**をクリックし、**[新�
 1. Visual Studio のサーバー エクスプローラーを開いて **TollDataRefJoin** テーブルを右クリックします。
 2. **[テーブル データの表示]** をクリックすると、ジョブの出力結果が表示されます。
    
-   ![Selection of "Show Table Data" in Server Explorer](media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-check-results.jpg)
-   
+    ![Selection of "Show Table Data" in Server Explorer](media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-check-results.jpg)
+
 
 ### <a name="view-job-metrics"></a>ジョブのメトリックスの表示
 一部の基本的なジョブの統計情報は、**ジョブのメトリックス**で見ることができます。 
@@ -214,8 +216,7 @@ Visual Studio で、**[ファイル] メニュー**をクリックし、**[新�
  
 ## <a name="list-job-in-server-explorer"></a>サーバー エクスプローラーのジョブの一覧
 **サーバー エクスプローラー**で **[Stream Analytics ジョブ]** をクリックし、**[更新]** をクリックします。 **[Stream Analytics ジョブ]** の下にジョブが表示されます。
-
-![ジョブのリスト](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-list-jobs-01.png)
+![ジョブを一覧表示する](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-list-jobs-01.png)
 
 
 ## <a name="open-job-view"></a>ジョブ ビューを開く
@@ -226,26 +227,22 @@ Visual Studio で、**[ファイル] メニュー**をクリックし、**[新�
 
 ## <a name="export-an-existing-job-to-a-project"></a>既存のジョブをプロジェクトにエクスポートする
 既存のジョブをプロジェクトにエクスポートする方法は 2 つあります。
-1. **サーバー エクスプローラー** の **[Stream Analytics ジョブ]** ノードでジョブ ノードを右クリックします。 コンテキスト メニューから **[Export to New Stream Analytics Project]**(新しい Stream Analytics プロジェクトにエクスポートする) をクリックします。
-   
-   ![ジョブをエクスポートする](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-export-job-01.png)
-   
-   **ソリューション エクスプローラー**に生成されたプロジェクトが表示されます。
-   
-   ![ジョブをエクスポートする](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-export-job-02.png)
-   
+1. **サーバー エクスプローラー**の **[Stream Analytics ジョブ]** ノードでジョブ ノードを右クリックします。 コンテキスト メニューから **[Export to New Stream Analytics Project]**(新しい Stream Analytics プロジェクトにエクスポートする) をクリックします。
+
+    ![ジョブをエクスポートする](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-export-job-01.png)
+
+    **ソリューション エクスプローラー**に生成されたプロジェクトが表示されます。
+
+    ![ジョブをエクスポートする](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-export-job-02.png)
+ 
 2. ジョブ ビューで、**[Generate Project]**(プロジェクトの生成) をクリックします。
-   
-   ![ジョブをエクスポートする](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-export-job-03.png)
-   
+
+    ![ジョブをエクスポートする](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-export-job-03.png)
+
 ## <a name="known-issues-and-limitations"></a>既知の問題と制限
  
-1. クエリに地理空間関数が含まれる場合、ローカル テストは機能しません。 
+1. Power BI の出力と ADLS の出力はサポートされません。
 2. JavaScript UDF の追加や変更はエディターでサポートされていません。
-3. ローカル テストでは、JSON 形式での出力の保存はサポートされません。 
-4. Power BI の出力と ADLS の出力はサポートされません。
-
-
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
@@ -253,6 +250,4 @@ Visual Studio で、**[ファイル] メニュー**をクリックし、**[新�
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
-
 

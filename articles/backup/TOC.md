@@ -71,9 +71,11 @@
 ### [Azure Backup でファイルとフォルダーのバックアップが遅い](backup-azure-troubleshoot-slow-backup-performance-issue.md)
 
 # 概念
+## [Recovery Services コンテナーの概要](backup-azure-recovery-services-vault-overview.md)
+## [Backup コンテナーを Recovery Services コンテナーにアップグレードする](backup-azure-upgrade-backup-to-recovery-services.md)
+## [Azure Backup 資格情報コンテナーを削除する](backup-azure-delete-vault.md)
 ## [ロールベースのアクセス制御](backup-rbac-rs-vault.md)
 ## [ハイブリッド バックアップのセキュリティ](backup-azure-security-feature.md)
-## [Azure Backup 資格情報コンテナーを削除する](backup-azure-delete-vault.md)
 ## [オフライン バックアップの構成](backup-azure-backup-import-export.md)
 ## [テープ ライブラリの交換](backup-azure-backup-cloud-as-tape.md)
 ## [Linux VM のアプリケーション整合性バックアップ](backup-azure-linux-app-consistent.md)

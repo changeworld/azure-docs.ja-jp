@@ -12,25 +12,28 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/17/2017
+ms.date: 05/05/2017
 ms.author: ryanwi
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: cf652f1ba6b7d3aa0717a2e3a54000a4aebccc78
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: ad473a2c9006e2593a84364f03e3954a569adcab
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
 
 # <a name="create-your-first-service-fabric-cluster-on-azure"></a>Azure で初めての Service Fabric クラスターを作成する
-[Service Fabric クラスター](service-fabric-deploy-anywhere.md)は、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 このクイック スタートでは、Windows または Linux 上で実行される 5 ノード クラスターを [Azure Portal](http://portal.azure.com) を通じてほんの数分で作成できるようにします。  
+[Service Fabric クラスター](service-fabric-deploy-anywhere.md)は、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 このクイック スタートでは、Windows または Linux 上で実行される 5 ノード クラスターを [Azure PowerShell](https://msdn.microsoft.com/library/dn135248) または [Azure Portal](http://portal.azure.com) を通じてほんの数分で作成できるようにします。  
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="log-in-to-azure"></a>Azure へのログイン
+
+## <a name="use-the-azure-portal"></a>Azure ポータルの使用
+
 Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログインします。
 
-## <a name="create-the-cluster"></a>クラスターを作成する
+### <a name="create-the-cluster"></a>クラスターを作成する
 
 1. Azure Portal の左上隅にある **[新規]** ボタンをクリックします。
 2. **[新規]** ブレードで **[Compute]** を選択し、**[Compute]** ブレードで **[Service Fabric クラスター]** を選択します。
@@ -66,19 +69,19 @@ Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログイ�
 
     通知には作成の進行状況が表示されます (画面の右上にあるステータス バーの近くの "ベル" アイコンをクリックします)。クラスターの作成中に **[スタート画面にピン留めする]** をクリックした場合、**[Deploying Service Fabric Cluster (Service Fabric クラスターのデプロイ)]** が **[スタート]** 画面にピン留めされます。
 
-## <a name="view-cluster-status"></a>クラスターの状態を表示する
+### <a name="view-cluster-status"></a>クラスターの状態を表示する
 クラスターの作成後、ポータルの **[概要]** ブレードでクラスターを検査できます。 これにより、クラスターのパブリック エンドポイント、Service Fabric Explorer へのリンクなどのクラスターに関する詳細が、ダッシュボードに表示されます。
 
 ![クラスターの状態][cluster-status]
 
-## <a name="visualize-the-cluster-using-service-fabric-explorer"></a>Service Fabric Explorer を使用したクラスターの視覚化
+### <a name="visualize-the-cluster-using-service-fabric-explorer"></a>Service Fabric Explorer を使用したクラスターの視覚化
 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) は、クラスターを視覚化してアプリケーションを管理するための最適なツールです。  Service Fabric Explorer は、クラスター内で実行されるサービスです。  アクセスするには Web ブラウザーを使用し、ポータルでクラスターの **[概要]** ページの **[Service Fabric Explorer]** リンクをクリックします。  ブラウザーにアドレスを直接入力することもできます。アドレスは [http://quickstartcluster.westus.cloudapp.azure.com:19080/Explorer](http://quickstartcluster.westus.cloudapp.azure.com:19080/Explorer) です。
 
 クラスター ダッシュボードにクラスターの概要 (アプリケーションとノードの正常性の概要など) が表示されます。 ノード ビューには、クラスターの物理的なレイアウトが表示されます。 特定のノードについて、そのノードでコードがデプロイされているアプリケーション、
 
 ![Service Fabric Explorer][service-fabric-explorer]
 
-## <a name="connect-to-the-cluster-using-powershell"></a>PowerShell を使用してクラスターに接続する
+### <a name="connect-to-the-cluster-using-powershell"></a>PowerShell を使用してクラスターに接続する
 PowerShell を使用して接続することで、クラスターが実行されていることを確認します。  ServiceFabric PowerShell モジュールは、[Service Fabric SDK](service-fabric-get-started.md) と共にインストールされます。  クラスターへの接続は、[Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) コマンドレットで確立します。   
 
 ```powershell
@@ -98,8 +101,8 @@ NodeDeactivationInfo NodeName     IpAddressOrFQDN NodeType  CodeVersion ConfigVe
                      _nodetype1_3 10.0.0.7        nodetype1 5.5.216.0   1                     Up 00:59:04   00:00:00              Ok
 ```
 
-## <a name="remove-the-cluster"></a>クラスターの削除
-Service Fabric クラスターは、クラスター リソース自体に加え、その他の Azure リソースで構成されます。 そのため、Service Fabric クラスターを完全に削除するには、構成されるすべてのリソースも削除する必要があります。 クラスターとそのすべてのリソースを削除するための最も簡単な方法は、リソース グループを削除することです。 クラスターを削除したり、リソース グループ内の (すべてではなく) 一部のリソースを削除したりする他の方法については、[クラスターの削除](service-fabric-cluster-delete.md)に関するページを参照してください。
+### <a name="remove-the-cluster"></a>クラスターの削除
+Service Fabric クラスターは、クラスター リソース自体に加え、その他の Azure リソースで構成されます。 そのため、Service Fabric クラスターを完全に削除するには、構成されるすべてのリソースも削除する必要があります。 クラスターと、そのクラスターによって使用されるすべてのリソースを削除するための最も簡単な方法は、リソース グループを削除することです。 クラスターを削除したり、リソース グループ内の (すべてではなく) 一部のリソースを削除したりする他の方法については、[クラスターの削除](service-fabric-cluster-delete.md)に関するページを参照してください。
 
 Azure Portal でリソース グループを削除するには:
 1. 削除する Service Fabric クラスターに移動します。
@@ -107,8 +110,122 @@ Azure Portal でリソース グループを削除するには:
 3. リソース グループの **[要点]** ページで **[削除]** をクリックし、そのページの指示に従ってリソース グループの削除を完了します。
     ![リソース グループの削除][cluster-delete]
 
+
+## <a name="use-azure-powershell-to-deploy-a-secure-cluster"></a>Azure PowerShell を使用して、セキュリティで保護されたクラスターをデプロイする
+
+
+1) [Azure PowerShell モジュール Version 4.0 以上](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)をコンピューターにダウンロードします。
+
+2) Windows PowerShell ウィンドウを開き、次のコマンドを実行します。 
+    
+```powershell
+
+Get-Command -Module AzureRM.ServiceFabric 
+```
+
+次のような出力が表示されます。
+
+![ps-list][ps-list]
+
+3) Azure にログインして、クラスターを作成するサブスクリプションを選択します。
+
+```powershell
+
+Login-AzureRmAccount
+
+Select-AzureRmSubscription -SubscriptionId "Subcription ID" 
+
+```
+
+4) 次のコマンドを実行して、セキュリティで保護されたクラスターを作成します。 パラメーターをカスタマイズすることを忘れないでください。 
+
+
+````powershell
+
+$certpwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force
+$RDPpwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force 
+$RDPuser="vmadmin"
+$RGname="mycluster" # this is also the name of your cluster
+$clusterloc="SouthCentralUS"
+$subname="$RGname.$clusterloc.cloudapp.azure.com"
+$certfolder="c:\mycertificates\"
+$clustersize=1 # can take values 1, 3-99
+
+New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -Location $clusterloc -ClusterSize $clustersize -VmUserName $RDPuser -VmPassword $RDPpwd -CertificateSubjectName $subname -CertificatePassword $certpwd -CertificateOutputFolder $certfolder
+
+````
+
+このコマンドは、完了するのに 10 ～ 30 分かかる場合があります。終了時には、次のような出力が表示されます。 出力には、証明書、そのアップロード先の Key Vault、証明書のコピー先のローカル フォルダーに関する情報が含まれています。 
+
+![ps-out][ps-out]
+
+5) 後で参照する必要があるため、出力の全体をコピーしてテキスト ファイルに保存します。 出力の次の情報をメモしておきます。
+ 
+
+- **CertificateSavedLocalPath**: c:\mycertificates\mycluster20170504141137.pfx
+- **CertificateThumbprint**: C4C1E541AD512B8065280292A8BA6079C3F26F10
+- **ManagementEndpoint**: https://mycluster.southcentralus.cloudapp.azure.com:19080
+- **ClientConnectionEndpointPort**: 19000
+
+### <a name="install-the-certificate-on-your-local-machine"></a>証明書をローカル コンピューターにインストールする
+  
+クラスターに接続するには、この証明書を現在のユーザーの個人用 (マイ) ストアにインストールする必要があります。 
+
+次の PowerShell を実行します。
+
+```powershell
+Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
+        -FilePath C:\mycertificates\the name of the cert.pfx `
+        -Password (ConvertTo-SecureString -String certpwd -AsPlainText -Force)
+```
+
+これで、セキュリティで保護されたクラスターに接続する準備ができました。
+
+### <a name="connect-to-a-secure-cluster"></a>セキュリティ保護されたクラスターに接続する 
+
+次の PowerShell コマンドを実行して、セキュリティで保護されたクラスターに接続します。 証明書の詳細は、クラスターのセットアップに使用された証明書と一致する必要があります。 
+
+```powershell
+Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
+          -KeepAliveIntervalInSec 10 `
+          -X509Credential -ServerCertThumbprint <Certificate Thumbprint> `
+          -FindType FindByThumbprint -FindValue <Certificate Thumbprint> `
+          -StoreLocation CurrentUser -StoreName My
+```
+
+
+次の例は、完全なパラメーターを示しています。 
+
+```powershell
+Connect-ServiceFabricCluster -ConnectionEndpoint mycluster.southcentralus.cloudapp.azure.com:19000 `
+          -KeepAliveIntervalInSec 10 `
+          -X509Credential -ServerCertThumbprint C4C1E541AD512B8065280292A8BA6079C3F26F10 `
+          -FindType FindByThumbprint -FindValue C4C1E541AD512B8065280292A8BA6079C3F26F10 `
+          -StoreLocation CurrentUser -StoreName My
+```
+
+次のコマンドを実行して、接続できていることと、クラスターが正常なことを確認します。
+
+```powershell
+
+Get-ServiceFabricClusterHealth
+
+```
+### <a name="publish-your-apps-to-your-cluster-from-visual-studio"></a>Visual Studio からクラスターにアプリを発行する
+
+Azure クラスターをセットアップしたら、[クラスターへの発行](service-fabric-publish-app-remote-cluster.md)に関するドキュメントに従って、Visual Studio から Azure クラスターにアプリケーションを発行できます。 
+
+### <a name="remove-the-cluster"></a>クラスターの削除
+クラスターは、クラスター リソース自体に加え、その他の Azure リソースで構成されます。 クラスターと、そのクラスターによって使用されるすべてのリソースを削除するための最も簡単な方法は、リソース グループを削除することです。 
+
+```powershell
+
+Remove-AzureRmResourceGroup -Name $RGname -Force
+
+```
+
 ## <a name="next-steps"></a>次のステップ
-開発用のスタンドアロン クラスターをセットアップしたら、次の作業に挑戦してみてください。
+開発クラスターをセットアップしたら、次の作業を試してみてください。
 * [ポータルでセキュリティで保護されたクラスターを作成します](service-fabric-cluster-creation-via-portal.md)
 * [テンプレートからクラスターを作成します](service-fabric-cluster-creation-via-arm.md) 
 * [PowerShell を使ってアプリをデプロイ](service-fabric-deploy-remove-applications.md)します。
@@ -119,4 +236,6 @@ Azure Portal でリソース グループを削除するには:
 [cluster-status]: ./media/service-fabric-get-started-azure-cluster/clusterstatus.png
 [service-fabric-explorer]: ./media/service-fabric-get-started-azure-cluster/sfx.png
 [cluster-delete]: ./media/service-fabric-get-started-azure-cluster/delete.png
+[ps-list]: ./media/service-fabric-get-started-azure-cluster/pslist.PNG
+[ps-out]: ./media/service-fabric-get-started-azure-cluster/psout.PNG
 

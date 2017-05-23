@@ -3,7 +3,7 @@ title: "Web アプリケーション パフォーマンスの監視 - Azure Appl
 description: "開発運用サイクルへの Application Insights の組み込み"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 479522a9-ff5c-471e-a405-b8fa221aedb3
 ms.service: application-insights

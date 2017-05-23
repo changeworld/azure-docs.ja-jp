@@ -15,9 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: b568a9bea9679a9edeb708a5f7fcc6d68854574f
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 6efe6de6cc6d6d4c9788549048c5b50b03b3de42
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -57,7 +59,7 @@ VM に適用されている集約ルートを表示するには、次の手順�
 ### <a name="view-effective-routes-for-a-network-interface"></a>ネットワーク インターフェイスの有効なルートを表示する
 ネットワーク インターフェイスに適用されている集約ルートを表示するには、次の手順を実行します。
 
-1. Azure PowerShell セッションを開始し、Azure にログインします。 Azure PowerShell の使用に慣れていない場合は、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」の記事をご覧ください。
+1. Azure PowerShell セッションを開始し、Azure にログインします。 Azure PowerShell の使用に慣れていない場合は、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」の記事をご覧ください。
 2. 次のコマンドを使用すると、リソース グループ *RG1* の *VM1-NIC1* という名前のネットワーク インターフェイスに適用されているすべてのルートが返されます。
    
        Get-AzureRmEffectiveRouteTable -NetworkInterfaceName VM1-NIC1 -ResourceGroupName RG1
@@ -101,7 +103,7 @@ VM に適用されている集約ルートを表示するには、次の手順�
        ---- ----- ------------- ----------- ----------------
        Active {10.9.0.0/16} VnetLocal {}
        Active {0.0.0.0/0} Internet {}
-3. 前の手順の出力には、*WestUS-VNet3* VNet (プレフィックス 10.9.0.0/16)** から *WestUS-VNet1* (プレフィックス 10.10.0.0/16) へのルートはリストされていません。 次の図に示すように、*WestUS-VNet3* VNet を使用した VNet ピアリング リンクは *Disconnected* 状態です。
+3. 前の手順の出力には、*WestUS-VNet1* (プレフィックス 10.9.0.0/16) から *WestUS-VNet3* VNet (プレフィックス 10.10.0.0/16)** へのルートはリストされていません。 次の図に示すように、*WestUS-VNet3* VNet を使用した VNet ピアリング リンクは *Disconnected* 状態です。
    
     ![](./media/virtual-network-routes-troubleshoot-portal/image4.png)
    
@@ -135,10 +137,5 @@ VM に適用されている集約ルートを表示するには、次の手順�
 * VNet のピアリング トラフィックが正常に機能するためには、ピアリングされる VNet のプレフィックスの範囲に **nextHopType** *VNetPeering* を使用するシステム ルートを追加する必要があります。 そのようなルートが存在せず、VNet ピアリングのリンクに問題がないと考えられる場合:
   * 新しく確立されたピアリングのリンクの場合は、数秒待ってから再度実行してください。 サブネット内のすべてのネットワーク インターフェイスにルートを反映させるのに時間がかかる場合がります。
   * ネットワーク セキュリティ グループ (NSG) の規則が、トラフィック フローに影響を与える可能性があります。 詳細については、「 [ネットワーク セキュリティ グループのトラブルシューティング](virtual-network-nsg-troubleshoot-powershell.md) 」をご覧ください。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

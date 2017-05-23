@@ -16,10 +16,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: 9ac11d8ad5930d67fbf2822674d539839d248cde
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: f98d769542f5a52d659f561e970f0a7e9dce9fd9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -34,9 +35,9 @@ Hadoop ストリーミングは、スクリプトまたは実行可能ファイ�
 
 ## <a name="net-on-hdinsight"></a>HDInsight の .NET
 
-__Linux ベースの HDInsight__ クラスターは、[Mono (https://mono-project.com)](https://mono-project.com) を使用して .NET アプリケーションを実行します。 Mono バージョン 4.2.1 は HDInsight バージョン 3.5 に付属しています。 HDInsight に付属する Mono のバージョンの詳細については、「[HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md)」を参照してください。
+__Linux ベースの HDInsight__ クラスターは、[Mono (https://mono-project.com)](https://mono-project.com) を使用して .NET アプリケーションを実行します。 Mono バージョン 4.2.1 は HDInsight バージョン 3.5 に付属しています。 HDInsight に付属する Mono のバージョンの詳細については、「[HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md)」を参照してください。 特定のバージョンの Mono を使用する方法については、[Mono のインストールと更新](hdinsight-hadoop-install-mono.md)に関するドキュメントを参照してください。
 
-.NET Framework のバージョンと Mono の互換性に関する詳細は、「[Mono の互換性](http://www.mono-project.com/docs/about-mono/compatibility/)」を参照してください。
+.NET Framework のバージョンと Mono の互換性の詳細については、「[Mono compatibility](http://www.mono-project.com/docs/about-mono/compatibility/)」 (Mono の互換性) を参照してください。
 
 ## <a name="how-hadoop-streaming-works"></a>Hadoop ストリーミングのしくみ
 

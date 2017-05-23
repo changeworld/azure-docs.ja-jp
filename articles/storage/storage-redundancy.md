@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Storage のデータ レプリケーション | Microsoft Docs"
 description: "Microsoft Azure ストレージ アカウント内のデータは、持続性と高可用性を保証するため、レプリケートされています。 レプリケーション オプションには、ローカル冗長ストレージ (LRS)、ゾーン冗長ストレージ (ZRS)、geo 冗長ストレージ (GRS)、読み取りアクセス geo 冗長ストレージ (RA-GRS) などがあります。"
 services: storage
@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: marsma
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: 72e07c4fd686feee5045ef3b9a504d2ea41f8675
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/12/2017
 
 

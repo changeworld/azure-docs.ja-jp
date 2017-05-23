@@ -3,7 +3,7 @@ title: "Application Insights で Docker アプリケーションを監視する 
 description: "Docker のパフォーマンス カウンター、イベント、および例外を、コンテナー化されたアプリからのテレメトリと共に Application Insights に表示できます。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 27a3083d-d67f-4a07-8f3c-4edb65a0a685
 ms.service: application-insights

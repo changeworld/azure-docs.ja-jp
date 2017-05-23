@@ -12,13 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 10/30/2016
+ms.date: 05/01/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 84a04f71ffde07e9caa439c03b55920d0bb0ef16
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: af45d745bccb02ce9fd45320e83284a8b33d99bd
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -51,6 +52,14 @@ ms.lasthandoff: 04/20/2017
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
+### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+* 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。
+* DocumentDB Emulator に対しての実行時に、SSL 検証を無効にするためのオプションを追加しました。
+* 依存する要求モジュールが必ず 2.10.0 でなければならないという制限をなくしました。
+* パーティション分割コレクションの最小スループットが 10,100 RU/秒から 2,500 RU/秒になりました。
+* ストアド プロシージャの実行時にスクリプトのログ記録を有効することができるようになりました。
+* REST API バージョンが、このリリースで "2017-01-19" に上がりました。
+
 ### <a name="a-name201201"></a><a name="2.0.1"/>2.0.1
 * ドキュメントのコメントを編集しました。
 
@@ -114,6 +123,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.1.0](#2.1.0) |2017 年 5 月 1 日 |--- |
 | [2.0.1](#2.0.1) |2016 年 10 月 30 日 |--- |
 | [2.0.0](#2.0.0) |2016 年 9 月 29 日 |--- |
 | [1.9.0](#1.9.0) |2016 年 7 月 7 日 |--- |

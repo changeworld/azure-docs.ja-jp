@@ -36,7 +36,7 @@ Azure Event Hubs の Standard レベルは、Basic レベルでは使用でき�
 専用の Event Hubs を含む価格レベルの詳細については、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
 
 ### <a name="what-are-event-hubs-throughput-units"></a>Event Hubs のスループット単位とは何ですか。
-Event Hubs のスループット単位は、Azure Portal または Event Hubs リソース マネージャー テンプレートによってユーザーが明示的に選択します。 スループット単位はイベント ハブ名前空間のすべての Event Hubs に適用され、それぞれのスループット単位はその名前空間に次の使用許可を与えます。
+Event Hubs のスループット単位は、Azure Portal または Event Hubs Resource Manager テンプレートによってユーザーが明示的に選択します。 スループット単位は Event Hubs 名前空間のすべてのイベント ハブに適用され、それぞれのスループット単位はその名前空間に次の使用許可を与えます。
 
 * 最大 1 MB/秒の受信イベント (Event Hub に送信されるイベント)。ただし、1 秒あたり 1000 個未満の受信イベント、管理操作、または制御 API 呼び出し。
 * 最大 2 MB/秒の送信イベント (Event Hub から使用されるイベント)。
@@ -56,7 +56,7 @@ Event Hubs のスループット単位は、特定の時間に選択された単
 はい。すべての Event Hubs が同じ名前空間にある限り可能です。
 
 ### <a name="what-is-the-maximum-retention-period-for-events"></a>イベントの最大保有期間は何日ですか。
-Event Hubs Standard レベルでは、現在最大 7 日間のリテンション期間をサポートしています。 Event Hubs は永続的なデータ ストアになることを目的としていません。 24 時間を超える保持期間の目的は、同じシステムでイベント ストリームを再生すると便利なシナリオ (たとえば既存データで新しい機械学習モデルのトレーニングや検証を行うこと) に対応することです。 7 日間を超えるメッセージのリテンション期間が必要な場合は、Event Hub で [Archive](https://docs.microsoft.com/azure/event-hubs/event-hubs-archive-overview) を有効にすると Event Hub から任意のストレージにデータをプルできます。 Archive を有効にすると、購入済みのスループット単位に基づく料金が発生します。
+Event Hubs Standard レベルでは、現在最大 7 日間の保有期間をサポートしています。 Event Hubs は永続的なデータ ストアになることを目的としていません。 24 時間を超える保有期間の目的は、同じシステムでイベント ストリームを再生すると便利なシナリオ (たとえば既存データで新しい機械学習モデルのトレーニングや検証を行うこと) に対応することです。 7 日間を超えるメッセージの保有期間が必要な場合は、イベント ハブで [Archive](https://docs.microsoft.com/azure/event-hubs/event-hubs-archive-overview) を有効にするとイベント ハブから任意のストレージにデータをプルできます。 Archive を有効にすると、購入済みのスループット単位に基づく料金が発生します。
 
 ### <a name="where-is-azure-event-hubs-available"></a>Azure Event Hubs はどこで利用できますか。
 Azure Event Hubs は、サポートされているすべての Azure リージョンで利用できます。 一覧については、「[Azure リージョン](https://azure.microsoft.com/regions/)」ページを参照してください。  
@@ -75,7 +75,7 @@ Event Hubs は、コンシューマー グループ 1 つにつきパーティ�
 ### <a name="where-can-i-find-more-pricing-information"></a>価格についての詳細情報はどこにありますか。
 Event Hubs 料金の詳細については、「 [Event Hubs 料金](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
 
-### <a name="is-there-a-charge-for-retaining-event-hubs-events-for-more-than-24-hours"></a>Event Hubs のイベントを 24 時間以上保持する場合に料金はかかりますか。
+### <a name="is-there-a-charge-for-retaining-event-hubs-events-for-more-than-24-hours"></a>Event Hubs のイベントを 24 時間以上保有する場合に料金はかかりますか。
 Event Hubs Standard レベルでは、24 時間を超えて最大 7 日間メッセージを保持できます。 保存されたイベントの合計数が選択したスループット単位数のストレージの上限 (スループット単位あたり 84 GB) を超える場合、上限を超えるサイズには公開された Azure Blob ストレージ レートの料金が発生します。 各スループット単位のストレージの上限は、スループット単位が受信の上限まで使用された場合でも、24 時間の保持期間に対するすべてのストレージ コストをカバーします。
 
 ### <a name="how-is-the-event-hubs-storage-size-calculated-and-charged"></a>Event Hubs のストレージ サイズはどのように計算され、課金されますか。
@@ -90,13 +90,13 @@ Event Hub や管理操作、チェックポイントなどの制御呼び出し�
 接続料金は AMQP プロトコルが使用されている場合にのみ適用されます。 送信側システムまたはデバイスの数に関係なく、HTTP を使用したベントの送信には接続料金は発生しません。 AMQP を使用する場合 (たとえば、イベント ストリーミングの効率を高めたり、IoT のコマンドと制御のシナリオで双方向通信を可能にする場合) は、[Event Hubs の価格情報](https://azure.microsoft.com/pricing/details/event-hubs/)に関するページで各サービスレベルに含まれる接続数に関する詳細を参照してください。
 
 ### <a name="how-is-event-hubs-archive-billed"></a>Event Hubs Archive はどのように課金されますか。
-Archive が有効になるのは、名前空間内のいずれかの Event Hub で Archive 機能が有効になっている場合です。 Archive は購入済みのスループット単位ごとに時間単位で課金されます。 スループット単位数が増減すると、Event Hubs Archive の課金についても、全体の時間の増分にスループット単位数の変化が反映されます。
+Archive が有効になるのは、名前空間内のいずれかのイベント ハブでアーカイブ機能が有効になっている場合です。 Archive は購入済みのスループット単位ごとに時間単位で課金されます。 スループット単位数が増減すると、Event Hubs Archive の課金についても、全体の時間の増分にスループット単位数の変化が反映されます。
 Event Hubs Archive の課金の詳細については、[Event Hubs の料金情報](https://azure.microsoft.com/pricing/details/event-hubs/)に関するページをご覧ください。
 
 ### <a name="will-i-be-billed-for-the-storage-account-i-select-for-event-hubs-archive"></a>Event Hubs Archive 用に選択したストレージ アカウントに対しては課金されますか。
 Event Hub で有効にされた場合、Archive はお客様の指定したストレージ アカウントを使用します。 お客様のストレージ アカウントであるため、このアカウントに関する変更はお客様の Azure サブスクリプションに課金されます。
 
-## <a name="quotas"></a>Quotas (クォータ)
+## <a name="quotas"></a>クォータ
 
 ### <a name="are-there-any-quotas-associated-with-event-hubs"></a>Event Hubs に関連付けられているクォータはありますか。
 Event Hubs のすべてのクォータの一覧については、[クォータ](event-hubs-quotas.md)に関するページを参照してください。

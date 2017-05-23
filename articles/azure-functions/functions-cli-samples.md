@@ -31,16 +31,11 @@ ms.lasthandoff: 05/10/2017
 |**アプリの作成**||
 | [サーバーレス実行用の Function App の作成](scripts/functions-cli-create-serverless.md) | 従量課金プランで Function App を作成します。  |
 | [App Service プランでの Function App の作成](scripts/functions-cli-create-app-service-plan.md) | 専用の App Service プランで Function App を作成します。 |
-
 | | |
-|-|-|
 |**統合**||
 | [Function App の作成とストレージ アカウントへの接続](scripts/functions-cli-create-function-app-connect-to-storage-account.md) | Function App を作成し、ストレージ アカウントに接続します。 |
 | [Function App の作成と Azure Cosmos DB への接続](scripts/functions-cli-create-function-app-connect-to-cosmos-db.md) | Function App を作成し Azure Cosmos DB に接続します |
-
-
 | | |
-|-|-|
 |**アプリケーションの構成**||
 | [Function App への カスタム ドメインのマッピング](scripts/functions-cli-configure-custom-domain.md) | 関数に対してカスタム ドメインを定義します。  |
 | [Function App への SSL 証明書のバインド](scripts/functions-cli-configure-ssl-certificate.md)  |  カスタム ドメイン内の関数の SSL 証明書をアップロードします。 |
@@ -50,3 +45,4 @@ ms.lasthandoff: 05/10/2017
 
 |**Connect app to resources**||
 -->
+

@@ -3,7 +3,7 @@ title: "Azure Application Insights のリソース、ロール、アクセス制
 description: "組織の insights の所有者、共同作成者、閲覧者。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 49f736a5-67fe-4cc6-b1ef-51b993fb39bd
 ms.service: application-insights

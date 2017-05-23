@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/31/2017
+ms.date: 05/03/2017
 ms.author: jotaub
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: a10ab3cf10826c63785d6427c27712573e82457a
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 2a718be9789aa4befdf2d3e1ac437fa69d6f33b8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/04/2017
 
 ---
 

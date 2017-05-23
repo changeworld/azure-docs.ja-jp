@@ -14,12 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/03/2017
+ms.date: 05/10/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 6dde4684e4bbb8eb79c69b620c7f52e085cb40c6
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 51cef9d1fc41d8ece2c5ec82df5f6a889d4c57dc
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -39,14 +40,12 @@ Azure Toolkit for Eclipse の HDInsight ツールを使用して Scala で記述
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 * HDInsight での Apache Spark クラスター。 手順については、 [Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
-* Oracle Java Development Kit Version 7 および Version 8。 
-  
-  * **Java SDK 7** が使用されます。 Java SDK 7 は、 [ここ](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)からダウンロードできます。
+* Oracle Java Development Kit バージョン 8。 
   * **Java SDK 8** が使用されます。 [ここ](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)からダウンロードできます。
 * Eclipse IDE。 この記事では、Eclipse Neon を使用します。 [ここ](https://www.eclipse.org/downloads/)からインストールできます。
 * Eclipse 用 Scala IDE。 
   
-  * **Eclipse IDE をインストール済みの場合は**、Scala IDE プラグインを追加できます。追加するには、**[Help] \(ヘルプ)**  ->  **[Install New SoftWare] \(新しいソフトウェアのインストール)** の順に移動し、Eclipse 用 Scala プラグインのダウンロード元として [http://download.scala-ide.org/sdk/lithium/e44/scala211/stable/site](http://download.scala-ide.org/sdk/lithium/e44/scala211/stable/site) を追加します。 
+  * **Eclipse IDE をインストール済みの場合は**、Scala IDE プラグインを追加します。追加するには、**[Help (ヘルプ)]** -> **[Install New SoftWare (新しいソフトウェアのインストール)]** の順に移動し、Eclipse 用 Scala プラグインのダウンロード元として [http://download.scala-ide.org/sdk/lithium/e46/scala211/stable/site](http://download.scala-ide.org/sdk/lithium/e46/scala211/stable/site) を追加します。 
   * **Eclipse IDE をインストールしていない場合は**、[こちら](http://scala-ide.org/download/sdk.html)から直接 Scala IDE をインストールできます。 このリンクから .zip ファイルをダウンロードし、展開して **/eclipse** フォルダーに移動します。次に、そこから **eclipse.exe** ファイルを実行します。
     
     > [!NOTE]
@@ -61,13 +60,15 @@ Eclipse 用の HDInsight ツールは、Azure Toolkit for Eclipse に付属し�
 
 ## <a name="log-into-your-azure-subscription"></a>Azure サブスクリプションにログインする
 1. Eclipse IDE を起動し、Azure Explorer を開きます。 IDE の **[Window] \(ウィンドウ)** メニューから、**[Show View] \(ビューの表示)** をクリックし、**[Other] \(その他)** をクリックします。 表示されたダイアログ ボックスで **[Azure]** を展開し、**[Azure Explorer]** をクリックして、**[OK]** をクリックします。
-   
+
     ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-eclipse-tool-plugin/view-explorer-1.png)
-2. **Azure Explorer** で **[Azure]** ノードを右クリックし、**[Manage Subscriptions]** (サブスクリプションの管理) をクリックします。
-3. **[Manage Subscriptions] \(サブスクリプションの管理)** ダイアログ ボックスで **[Sign in] \(サインイン)** をクリックし、Azure 資格情報を入力します。
+2. **[Azure Explorer]** で **[Azure]** ノードを右クリックし、**[Sign in (サインイン)]** をクリックします。
+3. **[Azure Sign in (Azure サインイン)]** ダイアログ ボックスの [Authentication Mode (認証モード)] を選択し、**[Sign in (サインイン)]** をクリックして Azure 資格情報を入力します。
    
     ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-eclipse-tool-plugin/view-explorer-2.png)
-4. ログイン後、 **[Manage Subscriptions (サブスクリプションの管理)]** ダイアログ ボックスには、資格情報に関連付けられているすべての Azure サブスクリプションの一覧が表示されます。 ダイアログ ボックスの **[Close (閉じる)]** をクリックします。
+4. ログイン後、**[Select Subscriptions (サブスクリプションの選択)]** ダイアログ ボックスには、資格情報に関連付けられているすべての Azure サブスクリプションの一覧が表示されます。 **[Select (選択)]** をクリックしてダイアログ ボックスを閉じます。
+
+    ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-eclipse-tool-plugin/Select-Subscriptions.png)
 5. [Azure Explorer] タブで **[HDInsight]** を展開し、自分のサブスクリプションの下にある HDInsight Spark クラスターを表示します。
    
     ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-eclipse-tool-plugin/view-explorer-3.png)
@@ -76,9 +77,10 @@ Eclipse 用の HDInsight ツールは、Azure Toolkit for Eclipse に付属し�
     ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-eclipse-tool-plugin/view-explorer-4.png)
 
 ## <a name="set-up-a-spark-scala-project-for-an-hdinsight-spark-cluster"></a>HDInsight Spark クラスター用の Spark Scala プロジェクトを設定する
+
 1. Eclipse IDE の作業領域で、**[File] \(ファイル)**、**[New] \(新規)**、**[Project] \(プロジェクト)** の順にクリックします。 
 2. **New Project (新しいプロジェクト)** ウィザードで、**[HDInsight]** を展開して、**[Spark on HDInsight (Scala)] \(HDInsight の Spark (Scala))** を選択し、**[Next] \(次へ)** をクリックします。
-   
+
     ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-2.png)
 3. **[New HDInsight Scala Project] \(新しい HDInsight Scala プロジェクト)** ダイアログ ボックスで、下の図に示すように値を入力または選択し、**[Next] \(次へ)** をクリックします。
    
@@ -86,38 +88,19 @@ Eclipse 用の HDInsight ツールは、Azure Toolkit for Eclipse に付属し�
    
    * プロジェクトの名前を入力します。
    * **[JRE]** ボックスで、**[Use an execution environment JRE] \(実行環境 JRE を使用する)** が **[JavaSE-1.7]** に設定されていることを確認します。
-   * Spark SDK が、SDK をダウンロードした場所に設定されていることを確認します。 ダウンロード場所へのリンクは、このトピックで前述した「 [前提条件](#prerequisites) 」にあります。 上の図に示すように、このダイアログ ボックスにあるリンクから SDK をダウンロードすることもできます。     
-4. 次のダイアログ ボックスで **[Libraries] \(ライブラリ)** タブをクリックし、**[JRE System Library [JavaSE-1.7]] \(JRE システム ライブラリ [JavaSE 1.7])** をダブルクリックします。
+   * Spark SDK が、SDK をダウンロードした場所に設定されていることを確認します。 ダウンロード場所へのリンクは、このトピックで前述した「 [前提条件](#prerequisites) 」にあります。 上の図に示すように、このダイアログ ボックスにあるリンクから SDK をダウンロードすることもできます。    
+4.    次のダイアログ ボックスで **[Libraries (ライブラリ)]** タブをクリックし、既定値のままにします。 
    
     ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-4.png)
-5. **[Edit Library] \(ライブラリの編集)** ダイアログ ボックスで、**[Execution Environment] \(実行環境)** が **[JavaSE-1.7 (jdk1.7.0_79)]** に設定されていることを確認します。 これをオプションとして選択できない場合は、以下の手順に従ってください。
-   
-   1. **[Alternate JRE] \(代替 JRE)** オプションを選択し、**[JavaSE-1.7 (jdk1.7.0_79)]** が利用可能かどうかを確認します。
-   2. 利用できない場合は、 **[Installed JREs (インストールされている JRE)]** ボタンをクリックします。
-      
-         ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-5.png)
-   3. **[Installed JREs] \(インストールされている JRE)** ダイアログ ボックスで、**[Add] \(追加)** をクリックします。
-      
-         ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-6.png)    
-   4. **[JRE Type] \(JRE の種類)** ダイアログ ボックスで **[Standard VM] \(標準 VM)** を選択し、**[Next] \(次へ)** をクリックします。
-      
-         ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-7.png)    
-   5. **[JRE Definition] \(JRE の定義)** ダイアログ ボックスで [Directory] \(ディレクトリ) をクリックし、JDK 7 のインストールの場所に移動して、**jdk1.7.0_79** のルート フォルダーを選択します。
-      
-         ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-8.png)    
-   6. **[完了]**をクリックします。 **[Installed JREs] \(インストールされている JRE)** ダイアログ ボックスで、新しく追加した JRE を選択し、**[OK]** をクリックします。
-      
-          ![Create Spark Scala application](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-9.png)
-   7. 新しく追加された JRE が **[Execution Environment (実行環境)]**の一覧に表示されます。 **[完了]**をクリックします。
-      
-            ![Create Spark Scala application](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-10.png)
-6. **[Libraries] \(ライブラリ)** タブに戻り、**[Scala Library Container[2.11.8]]** をダブルクリックします。 **[Edit Library ] \(ライブラリの編集)** ダイアログ ボックスで、**[Fixed Scala Library container:2.10.6] \(修正された Scala ライブラリ コンテナー:2.10.6)** を選択します。 
-   
-    ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-11.png)
-   
+
     プロジェクト設定のダイアログ ボックスが閉じられるまで、 **[Finish (完了)]** をクリックします。
 
+    **Spark Scala アプリケーションを ADLS クラスターで実行する場合** アプリケーションを ADLS に送信する場合は、ログに対して **[Interactive (インタラクティブ)]** モードを選択する必要があります。 
+
+    ![Spark Scala アプリケーション認証の作成](./media/hdinsight-apache-spark-eclipse-tool-plugin/Interactive-Authentication.png)
+
 ## <a name="create-a-scala-application-for-hdinsight-spark-cluster"></a>HDInsight Spark クラスター向けの Scala アプリケーションを作成する
+
 1. 既に開かれている Eclipse IDE の **Package Explorer** で、前に作成したプロジェクトを展開し、**[src]** を右クリックして **[New] \(新規)** をポイントして、**[Other] \(その他)** をクリックします。
 2. **[Select a wizard] \(ウィザードの選択)** ダイアログ ボックスで **[Scala Wizards] \(Scala ウィザード)** を展開し、**[Scala Object] \(Scala オブジェクト)**、**[Next] \(次へ)** の順にクリックします。
    

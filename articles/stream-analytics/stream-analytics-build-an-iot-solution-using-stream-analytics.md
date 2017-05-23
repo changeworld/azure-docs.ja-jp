@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 01850cbf8967fd5f79db64103fb18c6ec01babea
-ms.lasthandoff: 03/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 637473db37985a4a89ddb19e02eebc377902c942
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -37,7 +38,7 @@ ms.lasthandoff: 03/06/2017
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルの前提条件は次のとおりです。
 
-* [Azure PowerShell](/powershell/azureps-cmdlets-docs)
+* [Azure PowerShell](/powershell/azure/overview)
 * Visual Studio 2017、2015、または無料の [Visual Studio Community](https://www.visualstudio.com/products/visual-studio-community-vs.aspx)
 * [Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/)
 * コンピューターの管理特権
@@ -138,7 +139,7 @@ $200 相当の Azure クレジットを利用できるよう、この記事の�
 
 関連する [TollApp](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TollApp/TollApp.zip) フォルダーとファイルをダウンロードして保存します。
 
-**[Microsoft Azure PowerShell]** ウィンドウを " *管理者として*" 開きます。 まだ Azure PowerShell をお持ちでない場合は、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」の手順に従ってインストールしてください。
+**[Microsoft Azure PowerShell]** ウィンドウを " *管理者として*" 開きます。 まだ Azure PowerShell をお持ちでない場合は、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」の手順に従ってインストールしてください。
 
 ps1 ファイル、.dll ファイル、.exe ファイルは Windows によって自動的にブロックされるため、スクリプトを実行する前に、実行ポリシーを設定しておく必要があります。 Azure PowerShell ウィンドウが*管理者権限*で実行されていることを確認してください。 **Set-ExecutionPolicy unrestricted** を実行し、 確認を求められたら「**Y**」と入力します。
 
@@ -255,7 +256,7 @@ PowerShell スクリプトは、TollApp というサンプル アプリケーシ
 6. [ソース] は **[イベント ハブ]** です。
 7. **[Service Bus 名前空間]** は、ドロップダウンにある TollData の名前空間を指定します。
 8. **[イベント ハブの名前]** は **[entry (入力)]** に設定する必要があります。
-9. **[イベント ハブ ポリシー名]*は**RootManageSharedAccessKey** です (既定値)。
+9. **[イベント ハブ ポリシー名]* は **RootManageSharedAccessKey** です (既定値)。
 10. **[イベントのシリアル化の形式]** に **[JSON]** を、**[エンコード]** に **[UTF8]** を選択します。
    
     設定は次のようになります。

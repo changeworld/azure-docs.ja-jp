@@ -3,7 +3,7 @@ title: "Visual Studio で Azure Application Insights を操作する | Microsoft
 description: "デバッグ中および運用環境の Web アプリのパフォーマンス分析と診断。"
 services: application-insights
 documentationcenter: .net
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 2059802b-1131-477e-a7b4-5f70fb53f974
 ms.service: application-insights

@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: a532629eee3a0a01795df312a80a5095ddff9fa0
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 79ada397a1e268bb7e37d9a373141d6c5e2eb5ff
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/06/2017
+ms.lasthandoff: 05/15/2017
 
 ---
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 04/06/2017
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-azurecli[main](../../../cli_scripts/virtual-machine/create-vm-nsg/create-windows-vm-nsg.sh "NSG が設定された VM の作成")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-nsg/create-windows-vm-nsg.sh "NSG が設定された VM の作成")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 

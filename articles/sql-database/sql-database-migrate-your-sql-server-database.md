@@ -14,32 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 04/20/2017
+ms.date: 05/07/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: c6d965351f6f131ee342cea672fc4fa8771f8ede
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: cf128e84cfa69a259ff529caebb910840dcbaede
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/21/2017
+ms.lasthandoff: 05/09/2017
 
 
 ---
 
 # <a name="migrate-your-sql-server-database-to-azure-sql-database"></a>SQL Server データベースを Azure SQL Database に移行する
 
-このチュートリアルでは、Microsoft Data Migration Assistant を使用して、既存の SQL Server データベースを Azure SQL Database に移行します。移行の準備から、実際のデータの移行、移行完了後の移行先データベースへの接続までの手順をご説明します。 
+SQL Server データベースの Azure SQL Database への移動は、データベースの準備、エクスポート、インポートという 3 つの部分から成るプロセスです。 このチュートリアルで学習する内容は次のとおりです。
 
-> [!IMPORTANT]
-> 互換性の問題を修正するには、[Visual Studio Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) を使用してください。 
->
+> [!div class="checklist"]
+> * [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) を使用して Azure SQL Database に移行するために、SQL Server のデータベースを準備する
+> * データベースを BACPAC ファイルにエクスポートする
+> * BACPAC ファイルを Azure SQL Database にインポートする
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
-
-このチュートリアルを完了するには、以下のものが必要です。
+作業を開始する前に、次のものがあることを確認してください。
 
 - 最新バージョンの [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。 SSMS をインストールすると、最新バージョンの SQLPackage コマンド ライン ユーティリティもインストールされます。このユーティリティを使用して、さまざまなデータベース開発タスクを自動化できます。 
 - [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA)。
-- 移行するデータベース。 このチュートリアルでは SQL Server 2008 R2 以降のインスタンス上にある [SQL Server 2008 R2 AdventureWorks OLTP データベース](https://msftdbprodsamples.codeplex.com/releases/view/59211)を使用しますが、任意のデータベースを使用してかまいません。 
+- 移行するデータベース。 このチュートリアルでは SQL Server 2008 R2 以降のインスタンス上にある [SQL Server 2008 R2 AdventureWorks OLTP データベース](https://msftdbprodsamples.codeplex.com/releases/view/59211)を使用しますが、任意のデータベースを使用してかまいません。 互換性の問題を修正するには、[Visual Studio Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) を使用してください。
 
 ## <a name="prepare-for-migration"></a>移行を準備する
 
@@ -223,15 +222,17 @@ SQL Server Management Studio を使用して、サービス レベル、パフ�
    ![互換性レベルを変更する](./media/sql-database-migrate-your-sql-server-database/compat-level.png)
 
 ## <a name="next-steps"></a>次のステップ 
+このチュートリアルでは、データベースの準備、エクスポート、インポートを実行しました。 学習した内容は次のとおりです。
 
-- 移行の概要については、「[データベース移行](sql-database-cloud-migrate.md)」を参照してください。
-- Transact-SQL の相違点については、「[SQL Database への移行時に Transact-SQL の相違点を解決する](sql-database-transact-sql-information.md)」を参照してください。
-- Visual Studio Code を使用して接続とデータの照会を行うには、[Visual Studio Code を使った接続とデータの照会](sql-database-connect-query-vscode.md)に関するページを参照してください。
-- .NET を使用して接続とデータの照会を行うには、[.NET を使った接続とデータの照会](sql-database-connect-query-dotnet.md)に関するページを参照してください。
-- PHP を使用して接続とデータの照会を行うには、[PHP を使った接続とデータの照会](sql-database-connect-query-php.md)に関するページを参照してください。
-- Node.js を使用して接続とデータの照会を行うには、[Node.js を使った接続とデータの照会](sql-database-connect-query-nodejs.md)に関するページを参照してください。
-- Java を使用して接続とデータの照会を行うには、[Java を使った接続とデータの照会](sql-database-connect-query-java.md)に関するページを参照してください。
-- Python を使用して接続とデータの照会を行うには、[Python を使った接続とデータの照会](sql-database-connect-query-python.md)に関するページを参照してください。
-- Ruby を使用して接続とデータの照会を行うには、[Ruby を使った接続とデータの照会](sql-database-connect-query-ruby.md)に関するページを参照してください。
+> [!div class="checklist"]
+> * Azure SQL Database に移行するために、SQL Server のデータベースを準備する
+> * データベースを BACPAC ファイルにエクスポートする
+> * BACPAC ファイルを Azure SQL Database にインポートする
+
+次のチュートリアルに進み、データベースをセキュリティで保護する方法を学習してください。
+
+> [!div class="nextstepaction"]
+> [Azure SQL データベースのセキュリティ保護](sql-database-security-tutorial.md)
+
 
 

@@ -17,19 +17,20 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: cfowler;mahender;glenga
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 2fd12dd32ed3c8479c7460cbc0a1cac3330ff4f4
-ms.openlocfilehash: 045ec40811468eeffb25ed28ec5bfc84f074c19d
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 7fcf35b99cc410655f2a3b9b6961f5e3bef3aeb5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="an-introduction-to-azure-functions"></a>Azure Functions の概要  
 Azure Functions は、小規模なコード ("関数") をクラウドで手軽に実行できるソリューションです。 目の前の問題に必要なコードだけを記述すればよく、アプリケーション全体や、コードを実行するインフラストラクチャのことを考える必要がありません。 Functions により開発の生産性が大幅に向上するだけでなく、C#、F#、Node.js、Python、PHP などの開発言語も使用できるようになります。 コードが実行された時間に対してだけ料金を支払えばよく、必要に応じてスケールできます。 Azure Functions を使用すると、Microsoft Azure でサーバー不要のアプリケーションを作成できます。
 
-このトピックでは、Azure Functions の概要について説明します。 Azure Functions の利用をすぐに開始する場合は、「 [初めての Azure 関数の作成](functions-create-first-azure-function.md)」を参照してください。 Azure Functions の詳細な技術情報をお探しの場合は、 [開発者向けリファレンス](functions-reference.md)を参照してください。
+このトピックでは、Azure Functions の概要について説明します。 Azure Functions の利用をすぐに開始する場合は、「[初めての Azure 関数の作成](functions-create-first-azure-function.md)」を参照してください。 Azure Functions の詳細な技術情報をお探しの場合は、 [開発者向けリファレンス](functions-reference.md)を参照してください。
 
-## <a name="features"></a>Features (機能)
+## <a name="features"></a>機能
 Azure Functions の主要な機能を次に示します。
 
 * **さまざまな言語** - C#、F#、Node.js、Python、PHP、Batch、Bash、その他実行可能な言語を使って関数を記述できます。
@@ -57,10 +58,10 @@ Functions には、次のような主要なシナリオを開始するための�
 
 Azure Functions は、コードの実行を開始する機能である "*トリガー*" と、データの入出力用コードを単純化する機能である "*バインド*" をサポートしています。 Azure Functions のトリガー機能とバインド機能について詳しくは、「 [Azure Functions のトリガーとバインドの開発者用リファレンス](functions-triggers-bindings.md)」をご覧ください。
 
-## <a name="a-nameintegrationsaintegrations"></a><a name="integrations"></a>統合
+## <a name="integrations"></a>統合
 Azure Functions は、さまざまな Azure サービスや サード パーティのサービスと統合されます。 これらのサービスは、関数をトリガーとして実行を開始したり、コードの入出力として利用したりできます。 次のサービス統合が Azure Functions でサポートされます。 
 
-* Azure DocumentDB
+* Azure Cosmos DB
 * Azure Event Hubs 
 * Azure Mobile Apps (テーブル)
 * Azure 通知ハブ
@@ -70,8 +71,8 @@ Azure Functions は、さまざまな Azure サービスや サード パーテ�
 * オンプレミス (Service Bus を使用)
 * Twilio (SMS メッセージ)
 
-## <a name="a-namepricingahow-much-does-functions-cost"></a><a name="pricing"></a>Azure Functions の価格
-Azure Functions には&2; 種類の料金プランがあり、ニーズに合わせて選択できます。 
+## <a name="pricing"></a>Azure Functions の価格
+Azure Functions には 2 種類の料金プランがあり、ニーズに合わせて選択できます。 
 
 * **従量課金プラン** - 関数が実行されるときに、必要なすべてのコンピューティング リソースが Azure から適用されます。 リソースの管理について考慮する必要がなく、コードを実行した時間に応じた料金のみを支払います。 
 * **App Service プラン** - 関数を Web アプリ、モバイル アプリ、API アプリと同様に実行できます。 既に App Service を他のアプリケーションに使用している場合、追加コストなしで、同じプランで関数を実行できます。 

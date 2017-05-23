@@ -14,12 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 05/10/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 494545ae20e0b766a3787ae462d5d0f4331853b1
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 0d94ac5f667bd31abe82781cfed3f9adbd27b364
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -51,11 +52,13 @@ IntelliJ 用の HDInsight ツールは、Azure Toolkit for IntelliJ に付属し
 1. IntelliJ IDE を起動し、Azure Explorer を開きます。 IDE の **[表示]** メニューで、**[ツール ウィンドウ]** をクリックし、**[Azure Explorer]** をクリックします。
    
     ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-intellij-tool-plugin/show-azure-explorer.png)
-2. **Azure Explorer** で **[Azure]** ノードを右クリックし、**[Manage Subscriptions]** (サブスクリプションの管理) をクリックします。
-3. **[Manage Subscriptions] \(サブスクリプションの管理)** ダイアログ ボックスで **[Sign in] \(サインイン)** をクリックし、Azure 資格情報を入力します。
+2. **[Azure Explorer]** で **[Azure]** ノードを右クリックし、**[Sign In (サインイン)]** をクリックします。
+3. **[Azure Sign in (Azure サインイン)]** ダイアログ ボックスの **[Sign In (サインイン)]** をクリックし、Azure 資格情報を入力します。
    
     ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-intellij-tool-plugin/view-explorer-2.png)
-4. ログイン後、 **[Manage Subscriptions (サブスクリプションの管理)]** ダイアログ ボックスには、資格情報に関連付けられているすべての Azure サブスクリプションの一覧が表示されます。 ダイアログ ボックスの **[Close (閉じる)]** をクリックします。
+4. ログイン後、**[Select Subscriptions (サブスクリプションの選択)]** ダイアログ ボックスには、資格情報に関連付けられているすべての Azure サブスクリプションの一覧が表示されます。 **[Select (選択)]** をクリックしてダイアログ ボックスを閉じます。
+
+    ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-intellij-tool-plugin/Select-Subscriptions.png)
 5. **[Azure Explorer]** タブで **[HDInsight]** を展開し、自分のサブスクリプションの下にある HDInsight Spark クラスターを表示します。
    
     ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-intellij-tool-plugin/view-explorer-3.png)
@@ -64,7 +67,7 @@ IntelliJ 用の HDInsight ツールは、Azure Toolkit for IntelliJ に付属し
     ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-intellij-tool-plugin/view-explorer-4.png)
 
 ## <a name="run-a-spark-scala-application-on-an-hdinsight-spark-cluster"></a>HDInsight Spark クラスターでの Spark Scala アプリケーションの実行
-1. IntelliJ IDEA を起動し、新しいプロジェクトを作成します。 [New Project (新規プロジェクト)] ダイアログ ボックスで、次の選択を行い、 **[Next (次へ)]**をクリックします。
+1. IntelliJ IDEA を起動し、プロジェクトを作成します。 [New Project (新規プロジェクト)] ダイアログ ボックスで、次の選択を行い、 **[Next (次へ)]**をクリックします。
    
     ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-intellij-tool-plugin/create-hdi-scala-app.png)
    
@@ -74,13 +77,13 @@ IntelliJ 用の HDInsight ツールは、Azure Toolkit for IntelliJ に付属し
 2. 次のウィンドウで、プロジェクトの詳細を指定します。
    
    * プロジェクト名とプロジェクトの場所を指定します。
-   * **Project SDK** の場合、Spark 1.6 クラスターの場合は Java 1.7 以降、Spark 2.0 クラスターの場合は Java 1.8。
+   * **Project SDK** の場合、Java 1.8 for Spark1.6 と Spark 2.0 クラスター。
    * **Scala SDK** の場合、**[Create (作成)]** をクリックし、**[Download (ダウンロード)]** をクリックして、使用する Scala のバージョンを選択します。
    * * ジョブを Spark 2.0 クラスターに送信する場合は、**JDK 1.8 および Scala 2.11.x** を選択します。
-   * * ジョブを Spark 1.6 クラスターに送信する場合は、**JDK 1.7 以降および Scala 2.10.x** を選択します。
+   * * ジョブを Spark 1.6 クラスターに送信する場合は、**JDK 1.8 (言語レベル 7) と Scala 2.10.x** を選択します。
 
         ![](./media/hdinsight-apache-spark-intellij-tool-plugin/show-scala2.11.x-select.png)
-   * **Spark SDK** については、[こちら](http://go.microsoft.com/fwlink/?LinkID=723585&clcid=0x409)から SDK をダウンロードして使用します (spark-assembly-2.0.0-hadoop2.7.0-SNAPSHOT.jar は Spark 2.0 クラスターを、spark-assembly-x.jar は Spark 1.6 クラスターを対象としています)。 これを無視し、代わりに [Spark Maven リポジトリ](http://mvnrepository.com/search?q=spark)を使用することもできますが、Spark アプリケーションの開発に適した maven リポジトリがインストールされていることを確認してください。 (たとえば、Spark ストリーミングを使用する場合は、Spark ストリーミング部分がインストールされていることを確認する必要があります。また、Spark 1.6 クラスターの場合は、Scala 2.10 とマークされているリポジトリを、Spark 2.0 クラスターの場合は、Scala 2.11 とマークされているリポジトリ使用していることを確認してください。)
+   * **Spark SDK** については、[こちら](http://go.microsoft.com/fwlink/?LinkID=723585&clcid=0x409)から SDK をダウンロードして使用します (spark-assembly-2.0.0-hadoop2.7.0-SNAPSHOT.jar は Spark 2.0 クラスターを、spark-assembly-1.6.1.2.4.2.0-258-hadoop2.7.1.2.4.2.0-258.jar は Spark 1.6 クラスターを対象としています)。 代わりに [Spark Maven リポジトリ](http://mvnrepository.com/search?q=spark)を使用することもできますが、Spark アプリケーションの開発に適した maven リポジトリがインストールされていることを確認してください。 (たとえば、Spark ストリーミングを使用する場合は、Spark ストリーミング部分がインストールされていることを確認する必要があります。 また、Spark 1.6 クラスターの場合は、Scala 2.10 とマークされているリポジトリを、Spark 2.0 クラスターの場合は、Scala 2.11 とマークされているリポジトリを使用していることを確認してください。)
      
        ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-scala-project-details.png)
    * **[完了]**をクリックします。
@@ -144,7 +147,16 @@ IntelliJ 用の HDInsight ツールは、Azure Toolkit for IntelliJ に付属し
       
        ![Spark Application Result](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-app-result.png)
       
-      次のセクションでは、Azure Toolkit for IntelliJ の HDInsight ツールを使用してジョブ出力にアクセスする方法を説明します。
+      「Azure Toolkit for IntelliJ の HDInsight ツールを使用して HDInsight Spark クラスターにアクセスして管理する」セクションでは、Azure Toolkit for IntelliJ の HDInsight ツールを使用してジョブ出力にアクセスする方法を説明します。
+
+## <a name="choose-adls-as-a-spark-scala-application-storage"></a>Spark Scala アプリケーション ストレージとして ADLS を選択する
+* アプリケーションを ADLS に送信する場合は、Azure のサインイン プロセスで **[Interactive (インタラクティブ)]** モードを選択する必要があります。 
+
+    ![インタラクティブ モードでのサインイン](./media/hdinsight-apache-spark-intellij-tool-plugin/authentication-interactive.png)
+
+* [Automated (自動)] モードで送信した場合、次のエラーが発生します。
+
+    ![サインイン エラー](./media/hdinsight-apache-spark-intellij-tool-plugin/authentication-error.png)
 
 ## <a name="access-and-manage-hdinsight-spark-clusters-using-the-hdinsight-tools-in-azure-toolkit-for-intellij"></a>Azure Toolkit for IntelliJ の HDInsight ツールを使用して HDInsight Spark クラスターにアクセスして管理する
 Azure Toolkit for IntelliJ の一部である HDInsight ツールを使用してさまざまな操作を実行できます。
@@ -162,7 +174,7 @@ Azure Toolkit for IntelliJ の一部である HDInsight ツールを使用して
 2. Spark History Server ダッシュ ボードでは、実行が終了したばかりのアプリケーションを、アプリケーション名によって探すことができます。 上記のコードでは、 `val conf = new SparkConf().setAppName("MyClusterApp")`を使用してアプリケーション名を設定しました。 したがって、Spark アプリケーション名は **MyClusterApp**です。
 
 ### <a name="launch-the-ambari-portal"></a>Ambari ポータルの起動
-**Azure Explorer** で、**HDInsight** を展開します。Spark クラスター名を右クリックし、**[Open Cluster Management Portal (Ambari) (クラスター管理ポータルを開く (Ambari))]** を選択します。 入力を求められたら、クラスターの管理者資格情報を入力します。 これらは、クラスターのプロビジョニング時に指定済みである必要があります。
+**Azure Explorer** で、**HDInsight** を展開します。Spark クラスター名を右クリックし、**[Open Cluster Management Portal (Ambari) (クラスター管理ポータルを開く (Ambari))]** を選択します。 入力を求められたら、クラスターの管理者資格情報 (クラスターのプロビジョニング プロセスで指定したもの) を入力します。
 
 ### <a name="manage-azure-subscriptions"></a>Azure サブスクリプションの管理
 既定では、HDInsight ツールは、すべての Azure サブスクリプションからの Spark クラスターを一覧表示します。 必要に応じて、クラスターにアクセスするサブスクリプションを指定できます。 **Azure Explorer** で、**[Azure]** ルート ノードを右クリックし、**[Manage Subscriptions] \(サブスクリプションの管理)** をクリックします。 ダイアログ ボックスで、アクセスしないサブスクリプションのチェック ボックスをオフにし、 **[Close (閉じる)]**をクリックします。 Azure サブスクリプションからログオフする場合は、 **[Sign Out (サインアウト)]** をクリックすることもできます。
@@ -171,10 +183,10 @@ Azure Toolkit for IntelliJ の一部である HDInsight ツールを使用して
 Azure Toolkit for IntelliJ の HDInsight ツールを使用すると、ワークステーション上で Spark Scala アプリケーションをローカルに実行することができます。 通常、そのようなアプリケーションは、ストレージ コンテナーなどのクラスター リソースにアクセスする必要がなく、ローカルで実行しテストすることができます。
 
 ### <a name="prerequisite"></a>前提条件
-Windows コンピューターでローカルの Spark Scala アプリケーションを実行中に、 [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) で説明されているような例外が発生する場合があります (これは、Windows 上に WinUtils.exe がないことが原因です)。 このエラーを回避するには、[実行可能ファイルをこちらからダウンロード](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)して、**C:\WinUtils\bin** のような場所に保存する必要があります。 次に、環境変数 **HADOOP_HOME** を追加し、この変数の値を **C:\WinUtils** に設定します。
+Windows コンピューターでローカルの Spark Scala アプリケーションを実行中に、 [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) で説明されているような例外が発生する場合があります (これは、Windows 上に WinUtils.exe がないことが原因です)。 このエラーを回避するには、[実行可能ファイルをこちらからダウンロード](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)して、**C:\WinUtils\bin** などに保存する必要があります。次に、環境変数 **HADOOP_HOME** を追加し、この変数の値を **C:\WinUtils** に設定します。
 
 ### <a name="run-a-local-spark-scala-application"></a>ローカル Spark Scala アプリケーションの実行
-1. IntelliJ IDEA を起動し、新しいプロジェクトを作成します。 [New Project (新規プロジェクト)] ダイアログ ボックスで、次の選択を行い、 **[Next (次へ)]**をクリックします。
+1. IntelliJ IDEA を起動し、プロジェクトを作成します。 [New Project (新規プロジェクト)] ダイアログ ボックスで、次の選択を行い、 **[Next (次へ)]**をクリックします。
    
     ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-app-local-run.png)
    
@@ -200,7 +212,7 @@ Windows コンピューターでローカルの Spark Scala アプリケーシ�
    ![Spark Application local run result](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-app-local-run-result.png)
 
 ## <a name="convert-existing-intellij-idea-applications-to-use-the-hdinsight-tools-in-azure-toolkit-for-intellij"></a>Azure Toolkit for IntelliJ の HDInsight ツールを使用できるように、既存の IntelliJ IDEA アプリケーションを変換する
-Azure Toolkit for IntelliJ の HDInsight ツールに対応するように、IntelliJ IDEA で作成した既存の Spark Scala アプリケーションを変換することもできます。 これにより、ツールを使用して HDInsight Spark クラスターにアプリケーションを送信できます。 そのためには、以下の手順を実行します。
+Azure Toolkit for IntelliJ の HDInsight ツールに対応するように、IntelliJ IDEA で作成した既存の Spark Scala アプリケーションを変換することもできます。 この機能により、ツールを使用して HDInsight Spark クラスターにアプリケーションを送信できます。 そのためには、以下の手順を実行します。
 
 1. IntelliJ IDEA で作成した既存の Spark Scala アプリケーションについては、関連付けられている .iml ファイルを開きます。
 2. ルート レベルに、次のような **module** 要素が表示されます。
@@ -209,7 +221,7 @@ Azure Toolkit for IntelliJ の HDInsight ツールに対応するように、Int
 3. **module** 要素が次のようになるように、この要素を編集して `UniqueKey="HDInsightTool"` を追加します。
    
         <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4" UniqueKey="HDInsightTool">
-4. 変更を保存します。 これで、アプリケーションは Azure Toolkit for IntelliJ の HDInsight ツールと互換性を持つようになります。 これをテストするには、Project Explorer でプロジェクト名を右クリックします。 これで、ポップアップ メニューで、 **[Submit Spark Application to HDInsight (HDInsight への Spark アプリケーションの送信)]**を選択できるようになります。
+4. 変更を保存します。 これで、アプリケーションは Azure Toolkit for IntelliJ の HDInsight ツールと互換性を持つようになります。 これをテストするには、Project Explorer でプロジェクト名を右クリックします。 これで、ポップアップ メニューで、**[Submit Spark Application to HDInsight (HDInsight への Spark アプリケーションの送信)]**を選択できるようになります。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 ### <a name="please-use-a-larger-heap-size-error-in-local-run"></a>ローカル実行でエラーが発生しヒープ サイズを増やすように求められた場合

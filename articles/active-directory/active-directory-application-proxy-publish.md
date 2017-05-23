@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/20/2017
+ms.date: 05/04/2017
 ms.author: kgremban
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 4f7860b906ab988c918de31d53f4a958e4dea83b
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 526efc5b025f8050f40c49d0a07a9c2713509493
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -31,9 +31,7 @@ ms.lasthandoff: 04/28/2017
 Azure AD アプリケーション プロキシでは、オンプレミスのアプリケーションを発行してインターネット経由でアクセスできるため、リモート ワーカーのサポートに役立ちます。 この記事を読んでいる時点では、既に [Azure クラシック ポータルでアプリケーション プロキシを有効にした](active-directory-application-proxy-enable.md)状態になっています。 この記事では、ローカル ネットワークで実行中のアプリケーションを発行し、ネットワークの外部からのセキュリティで保護されたリモート アクセスを有効にする手順について説明します。 この記事の手順を最後まで実行すると、個人用に設定した情報やセキュリティ要件でアプリケーションを構成する準備が整います。
 
 > [!NOTE]
-> アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。 詳細については、「 [Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
-
-アプリケーション プロキシのパブリック プレビューを使用する場合は、[Azure Portal でアプリケーションを発行](application-proxy-publish-azure-portal.md)できます。
+> アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。 詳細については、「 [Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。 アプリケーション プロキシを使用する場合は、[Azure Portal でアプリケーションを発行](application-proxy-publish-azure-portal.md)できます。
 
 ## <a name="publish-an-app-using-the-wizard"></a>ウィザードを使用してアプリを発行する
 1. [Azure クラシック ポータル](https://manage.windowsazure.com/)に管理者としてサインインします。

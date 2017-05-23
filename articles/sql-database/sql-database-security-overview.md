@@ -15,10 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-management
 ms.date: 02/01/2017
 ms.author: thmullan;jackr
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 3efb68c12cd05fc0c4ac68497f8c20d1c671df82
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
+ms.openlocfilehash: 957644b81d373ce8d60a8c57c1ba6431bbdf83cb
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -71,7 +72,7 @@ SQL Database には、データのセキュリティを保護するために、�
 SQL Database Auditing は、データベース イベントを Azure Storage アカウントの監査ログに記録することによって、データベース アクティビティを追跡し、規制の遵守を維持できるようにします。 Auditing を使用すると、実行中のデータベース アクティビティを把握し、過去のアクティビティを分析および調査して、潜在的な脅威、不正使用の可能性、およびセキュリティ違反を特定することができます。 詳細については、「[SQL Database 監査の使用](sql-database-auditing.md)」を参照してください。  
 
 ### <a name="threat-detection"></a>脅威の検出
-脅威の検出では、Azure SQL Database サービスに組み込まれたセキュリティ インテリジェンスの追加レイヤーを提供することにより、監査を補完します。 データベースの異常なアクティビティに関する学習、プロファイル、および検出が、常時実行されます。 不審なアクティビティ、潜在的な脆弱性、SQL インジェクション攻撃、および異常なデータベース アクセス パターンについては、アラートが送信されます。 提供された情報と具体的な手順に従って、アラートに対処することができます。 詳細については、「 [SQL Database 脅威の検出の概要](sql-database-threat-detection.md)」をご覧ください。  
+脅威の検出では、Azure SQL Database サービスに組み込まれたセキュリティ インテリジェンスの追加レイヤーを提供することにより、監査を補完します。このレイヤーでは、データベースにアクセスしたりデータベースを悪用したりしようとする、異常で有害な可能性がある動作を検出します。 不審なアクティビティ、潜在的な脆弱性、SQL インジェクション攻撃や、異常なデータベース アクセス パターンについては、アラートが送信されます。 脅威の検出のアラートは、[Azure Security Center](https://azure.microsoft.com/en-us/services/security-center/) で見ることができます。不審なアクティビティの詳細と、脅威の調査や危険性の軽減のために推奨される対処方法が表示されます。 脅威の検出の料金は、15 ドル/サーバー/月です。 最初の 60 日間は無料になります。詳細については、[SQL Database の脅威の検出の概要](sql-database-threat-detection.md)に関するページを参照してください。
  
 ### <a name="data-masking"></a>データ マスク 
 SQL Database 動的データ マスクは、特権のないユーザーに対してデリケートなデータをマスクし、データの公開を制限します。 動的データ マスクは、Azure SQL Database 内で機密の可能性があるデータを自動的に検出し、アプリケーション層への影響を最小限に抑えながらそれらのフィールドをマスクするための具体的な推奨事項を提示します。 指定されたデータベース フィールドに対するクエリの結果セットに含まれる機密データを難読化しますが、データベース内のデータは変更しません。 詳細については、「[SQL Database 動的データ マスクの使用](sql-database-dynamic-data-masking-get-started.md)」を参照してください。

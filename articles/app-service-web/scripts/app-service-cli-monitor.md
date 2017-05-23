@@ -10,15 +10,16 @@ tags: azure-service-management
 ms.assetid: 0887656f-611c-4627-8247-b5cded7cef60
 ms.service: app-service
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
-translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: 978e2b58898c2a4bcf48fc3f32c30596aa2e50d8
-ms.lasthandoff: 04/04/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: ef75aa1ea579d4a3804e641ef9c848ccde8b9d7a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/15/2017
 
 ---
 
@@ -30,7 +31,7 @@ ms.lasthandoff: 04/04/2017
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-azurecli[main](../../../cli_scripts/app-service/monitor-with-logs/monitor-with-logs.sh "ログの監視")]
+[!code-azurecli-interactive[main](../../../cli_scripts/app-service/monitor-with-logs/monitor-with-logs.sh "ログの監視")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
@@ -51,3 +52,4 @@ ms.lasthandoff: 04/04/2017
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
 
 その他の App Service の CLI サンプル スクリプトは、[Azure App Service のドキュメント](../app-service-cli-samples.md)のページにあります。
+

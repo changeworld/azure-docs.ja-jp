@@ -12,11 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/07/2016
+ms.date: 15/05/2017
 ms.author: adsolank;juliako;
-translationtype: Human Translation
-ms.sourcegitcommit: 7065d5e87dbf47153bc89b37b56af81927b8b92b
-ms.openlocfilehash: 902e872b224b267c989f741345efdd8ef3fa8ce3
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 717a8ace8c469b0529ac3c98f22b8ee5a53b3d3b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -83,6 +85,10 @@ Azure Media Indexer 2 プレビューは、次の言語の音声をテキスト�
 * ポルトガル語 [PtBr]
 * アラビア語 (エジプト語) [ArEg]
 * 日本語 [JaJp]
+
+## <a name="supported-file-types"></a>サポートされるファイルの種類
+
+サポートされているファイルの種類については、[サポート対象コーデック/形式](media-services-media-encoder-standard-formats.md#input-containerfile-formats)に関するセクションを参照してください。
 
 ## <a name="sample-code"></a>サンプル コード
 
@@ -278,10 +284,5 @@ Azure Media Indexer 2 プレビューは、次の言語の音声をテキスト�
 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)
 
 [Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

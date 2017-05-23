@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/11/2016
 ms.author: andrl
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: d337114c123151f06a24e80b0208c6eafb1df487
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 3e15914ab5bd549f3583f5261a88eb74b95f56af
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---

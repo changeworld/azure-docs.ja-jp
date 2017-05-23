@@ -3,7 +3,7 @@ title: "Azure Application Insights をさらに活用する | Microsoft Docs"
 description: "Application Insights の利用開始後に使用できる機能の概要を示します。"
 services: application-insights
 documentationcenter: .net
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 7ec10a2d-c669-448d-8d45-b486ee32c8db
 ms.service: application-insights

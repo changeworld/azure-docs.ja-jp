@@ -9,18 +9,17 @@ ms.technology: content-moderator
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: sajagtap
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: ba07663f348a7de4be47c36af3b68008312e1c8d
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: 7ac48c789a4e87761c213f11a7bb4d6c44336cd5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/13/2017
 
 ---
 
 # <a name="review-moderated-images"></a>Review moderated images #
 
 Click the **Review** TAB to browse the auto-moderated images that are ready for review. Any labels assigned to the images are based on the default score thresholds for tagging the images. These thresholds are configurable.
-
-![Review Images](images/2-image-review-2.png)
 
 Note that the images that you see on your screen are not available to other reviewers in your team while you are reviewing them.
 

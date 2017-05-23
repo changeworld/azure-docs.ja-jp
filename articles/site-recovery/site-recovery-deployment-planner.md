@@ -14,15 +14,16 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 2/21/2017
 ms.author: nisoneji
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 07c6836c9279ed2f28730a49d131c064891de1b1
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 5c716069bdff2a23bf81b2d2d0793a8616cf9c83
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
 # <a name="azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner
-本記事は、VMware から Azure へのレプリケーションを行う運用環境のための Azure Site Recovery のユーザー ガイドです。
+この記事は、VMware から Azure へのレプリケーションを行う運用環境のデプロイに関する Azure Site Recovery Deployment Planner のユーザー ガイドです。
 
 ## <a name="overview"></a>概要
 
@@ -36,7 +37,7 @@ Site Recovery Deployment Planner パブリック プレビューはコマンド 
 
 **適合性の評価**
 
-* ディスク数、ディスク サイズ、IOPS、変更頻度に基づく VM の適格性評価
+* ディスク数、ディスク サイズ、IOPS、変更頻度、ブートの種類 (EFI/BIOS) に基づく VM の適格性評価
 * 差分レプリケーションに必要な推定ネットワーク帯域幅
 
 **ネットワーク帯域幅ニーズと RPO の評価**
@@ -204,6 +205,10 @@ Deployment Planner ツールでは、デプロイの推奨情報をすべてま�
 | -StartDate | (省略可) 開始日時を MM-DD-YYYY:HH:MM (24 時間形式) で指定します。 *StartDate* は *EndDate* と一緒に指定する必要があります。 StartDate を指定した場合、StartDate から EndDate までの間に収集されたプロファイリング データを対象にレポートが生成されます。 |
 | -EndDate | (省略可) 終了日時を MM-DD-YYYY:HH:MM (24 時間形式) で指定します。 *EndDate* は *StartDate* と一緒に指定する必要があります。 EndDate を指定した場合、StartDate から EndDate までの間に収集されたプロファイリング データを対象にレポートが生成されます。 |
 | -GrowthFactor | (省略可) 増加率 (%)。 既定値は 30% です。 |
+| -UseManagedDisks | (省略可) UseManagedDisks (Yes/No)。 既定値は Yes です。 1 つのストレージ アカウントに配置できる仮想マシンの数は、フェールオーバー/テスト フェールオーバーに使用する管理ディスクが選択されているかどうかに基づいて計算されます。 |
+
+仮想マシンのフェールオーバー/テスト フェールオーバーが、(非管理対象ディスクに対してではなく) 管理ディスクに対して実行されることを想定して、1 つのストレージ アカウントへの配置が計算されます。 |
+
 
 #### <a name="example-1-generate-a-report-with-default-values-when-the-profiled-data-is-on-the-local-drive"></a>例 1: 既定値でレポートを生成する (プロファイリング データがローカル ドライブにある場合)
 ```
@@ -480,7 +485,7 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 
 **[NIC]**: VM に搭載されている NIC の数です。
 
-**[Boot Type (ブートの種類)]**: VM のブートの種類です。 BIOS と EFI のどちらかになります。 現在 Azure Site Recovery でサポートされるブートの種類は BIOS だけです。 ブートの種類が EFI である仮想マシンはすべて、[Incompatible VMs (不適合 VM)] ワークシートに一覧表示されます。 
+**[Boot Type (ブートの種類)]**: VM のブートの種類です。 BIOS と EFI のどちらかになります。 現在 Azure Site Recovery でサポートされるブートの種類は BIOS だけです。 ブートの種類が EFI である仮想マシンはすべて、[Incompatible VMs (不適合 VM)] ワークシートに一覧表示されます。
 
 **[OS の種類]**: VM の OS の種類です。 [Windows] と [Linux or other (Linux またはその他)] のどちらかになります。
 
@@ -517,7 +522,7 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 
 **[NIC]**: VM に搭載されている NIC の数です。
 
-**[Boot Type (ブートの種類)]**: VM のブートの種類です。 BIOS と EFI のどちらかになります。 現在 Azure Site Recovery でサポートされるブートの種類は BIOS だけです。 ブートの種類が EFI である仮想マシンはすべて、[Incompatible VMs (不適合 VM)] ワークシートに一覧表示されます。 
+**[Boot Type (ブートの種類)]**: VM のブートの種類です。 BIOS と EFI のどちらかになります。 現在 Azure Site Recovery でサポートされるブートの種類は BIOS だけです。 ブートの種類が EFI である仮想マシンはすべて、[Incompatible VMs (不適合 VM)] ワークシートに一覧表示されます。
 
 **[OS の種類]**: VM の OS の種類です。 [Windows] と [Linux or other (Linux またはその他)] のどちらかになります。
 
@@ -558,6 +563,15 @@ Deployment Planner を更新するには、次の手順に従います。
 
 
 ## <a name="version-history"></a>バージョン履歴
+
+### <a name="13"></a>1.3
+更新日: 2017 年 5 月 9 日
+
+次の新機能を追加しました。
+
+* レポートの生成における管理ディスクのサポートを追加しました。 1 つのストレージ アカウントに配置できる仮想マシンの数が、フェールオーバー/テスト フェールオーバーに使用する管理ディスクが選択されているかどうかに基づいて計算されます。        
+
+
 ### <a name="12"></a>1.2
 更新日: 2017 年 4 月 7 日
 

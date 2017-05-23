@@ -1,13 +1,12 @@
 # 概要
-
 ## [Azure Analysis Services とは](analysis-services-overview.md)
 
-# 作業開始
-## [サーバーの作成](analysis-services-create-server.md)
-## [サーバーへのデプロイ](analysis-services-deploy.md)
-## [接続](analysis-services-connect.md)
+# クイック スタート
+## [サーバーの作成 - ポータル](analysis-services-create-server.md)
+## [モデルのデプロイ - SSDT](analysis-services-deploy.md)
 
-# Tutorials (チュートリアル)
+
+# チュートリアル
 ## モデルの作成とデプロイ
 ### [Adventure Works チュートリアル](tutorials/aas-adventure-works-tutorial.md)
 ### [レッスン 1: 新しい表形式モデル プロジェクトを作成する](tutorials/aas-lesson-1-create-a-new-tabular-model-project.md)
@@ -31,6 +30,7 @@
 ## [サーバーの管理](analysis-services-manage.md)
 ## [ユーザーの管理](analysis-services-manage-users.md)
 ## [オンプレミスのデータ ゲートウェイの統合](analysis-services-gateway.md)
+## [サーバーへの接続](analysis-services-connect.md)
 ## [Excel を使用した接続](analysis-services-connect-excel.md)
 ## [Power BI を使用した接続](analysis-services-connect-pbi.md)
 ## [クライアント ライブラリの取得](analysis-services-data-providers.md)

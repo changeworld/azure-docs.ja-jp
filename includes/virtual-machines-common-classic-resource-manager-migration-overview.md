@@ -76,7 +76,9 @@ Resource Manager デプロイメント モデルでは、既定でアプリケ�
 | 計算 |関連付けのない仮想マシン ディスク。 | これらのディスクの背後にある VHD BLOB は、ストレージ アカウントの移行時に移行されます。 |
 | 計算 |仮想マシン イメージ。 | これらのディスクの背後にある VHD BLOB は、ストレージ アカウントの移行時に移行されます。 |
 | ネットワーク |エンドポイント ACL。 | エンドポイント ACL を削除して移行をやり直します。 |
-| ネットワーク |承認リンク付きの ExpressRoute (FAQ を参照)、Application Gateway | 移行を開始する前にゲートウェイを削除し、移行の完了後に作成し直します。 |
+| ネットワーク |ExpressRoute ゲートウェイと VPN Gateway の両方を含んだ仮想ネットワーク  | 移行を開始する前に VPN Gateway を削除し、移行の完了後に VPN Gateway を作成し直します。 詳細については、[ExpressRoute の移行](../articles/expressroute/expressroute-migration-classic-resource-manager.md)に関するページを参照してください。|
+| ネットワーク |承認を使用した ExpressRoute リンク  | 移行を開始する前に仮想ネットワーク接続への ExpressRoute 回線を削除し、移行が完了してから接続を作成し直してください。 詳細については、[ExpressRoute の移行](../articles/expressroute/expressroute-migration-classic-resource-manager.md)に関するページを参照してください。 |
+| ネットワーク |Application Gateway | 移行を開始する前に Application Gateway を削除し、移行の完了後に Application Gateway を作成し直します。 |
 | ネットワーク |VNet ピアリングを使用した仮想ネットワーク (VNet から ARM に移行した後、ピアリング)。 | 仮想ネットワークを Resource Manager に移行してからピアリングします。 詳細については、[VNet ピアリング](../articles/virtual-network/virtual-network-peering-overview.md)に関するページを参照してください。 | 
 
 ### <a name="unsupported-configurations"></a>サポートされていない構成

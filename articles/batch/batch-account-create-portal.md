@@ -15,10 +15,11 @@ ms.topic: get-started-article
 ms.date: 03/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 11f8c3f37e56e0b5c566c4abdb60697c5279e72a
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 8cfe8689494a9f85d1533d259a2744e18407ecef
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -27,10 +28,10 @@ ms.lasthandoff: 04/06/2017
 > [!div class="op_single_selector"]
 > * [Azure ポータル](batch-account-create-portal.md)
 > * [Batch Management .NET](batch-management-dotnet.md)
-> 
-> 
+>
+>
 
-[Azure Portal][azure_portal] で Azure Batch アカウントを作成し、自分のコンピューティング シナリオに適したアカウント プロパティを選ぶ方法について説明します。 アクセス キーやアカウント URL のような重要なアカウント プロパティを確認できる場所を紹介します。 
+[Azure Portal][azure_portal] で Azure Batch アカウントを作成し、自分のコンピューティング シナリオに適したアカウント プロパティを選ぶ方法について説明します。 アクセス キーやアカウント URL のような重要なアカウント プロパティを確認できる場所を紹介します。
 
 Batch アカウントとシナリオの背景情報については、[機能の概要](batch-api-basics.md)に関するページを参照してください。
 
@@ -46,28 +47,28 @@ Batch アカウントとシナリオの背景情報については、[機能の�
 
 1. [Azure Portal][azure_portal] にサインインします。
 2. **[新規]**  >  **[Compute]**  >  **[Batch サービス]** の順にクリックします。
-   
+
     ![Marketplace での Batch][marketplace_portal]
 3. **[新しい Batch アカウント]** ブレードが表示されます。 各ブレード要素に関する以下の説明を参照してください。
-   
+
     ![Batch アカウントを作成する][account_portal]
-   
+
     a. **アカウント名**: 選択する Batch アカウント名は、アカウントが作成される Azure リージョン内で一意である必要があります (以下の「**場所**」を参照してください)。 アカウント名に含めることができるのは、英小文字と数字のみで、文字数は 3 ～ 24 文字にする必要があります。
-   
+
     b. **サブスクリプション**: Batch アカウントを作成するサブスクリプション。 サブスクリプションが 1 つのみの場合は、既定でそのサブスクリプションが選択されます。
 
     c. **プール割り当てモード**: **[Batch サービス]** を選択します。
-   
+
     c. **リソース グループ**: 新しい Batch アカウント用の既存のリソース グループを選択します。必要に応じて、新しく作成することもできます。
-   
+
     d. **場所**: Batch アカウントを作成する Azure リージョン。 サブスクリプションとリソース グループでサポートされているリージョンのみがオプションとして表示されます。
-   
+
     e. **ストレージ アカウント** (省略可能): Batch アカウントに関連付ける汎用の Azure Storage アカウント。 ほとんどの Batch アカウントでこれをお勧めします。 詳細については、この記事で後ほど説明する「[リンクされた Azure Storage アカウント](#linked-azure-storage-account)」を参照してください。
 
 4. **[作成]** をクリックしてアカウントを作成します。
-   
+
    ポータルにデプロイが進行中であることが示されます。 完了すると **[通知]** に "**デプロイメントが成功しました**" という通知が表示されます。
-   
+
 ## <a name="user-subscription-mode"></a>ユーザー サブスクリプション モード
 
 ### <a name="allow-azure-batch-to-access-the-subscription-one-time-operation"></a>Azure Batch によるサブスクリプションへのアクセスを許可する (1 回限りの操作)
@@ -75,7 +76,7 @@ Batch アカウントとシナリオの背景情報については、[機能の�
 
 1. [Azure Portal][azure_portal] にサインインします。
 
-2. **[その他のサービス]** > **[サブスクリプション]** の順にクリックし、Batch アカウントに使用するサブスクリプションをクリックします。 
+2. **[その他のサービス]** > **[サブスクリプション]** の順にクリックし、Batch アカウントに使用するサブスクリプションをクリックします。
 
 3. **[サブスクリプション]** ブレードで、**[アクセス制御 (IAM)]** > **[追加]** の順にクリックします。
 
@@ -88,35 +89,35 @@ Batch アカウントとシナリオの背景情報については、[機能の�
 ### <a name="create-a-key-vault"></a>Key Vault を作成します
 ユーザー サブスクリプション モードでは、作成する Batch アカウントと同じリソース グループに属する Azure キー コンテナーが必要です。 Batch を[利用でき](https://azure.microsoft.com/regions/services/)、お使いのサブスクリプションでサポートされているリージョンにそのリソース グループが属していることを確認してください。
 
-1. [Azure Portal][azure_portal] で、**[新規]** > **[セキュリティ + ID]** > **[Key Vault]** の順にクリックします。 
+1. [Azure Portal][azure_portal] で、**[新規]** > **[セキュリティ + ID]** > **[Key Vault]** の順にクリックします。
 
 2. **[Key Vault の作成]** ブレードで、キー コンテナーの名前を入力し、Batch アカウント用のリージョンでリソース グループを作成します。 残りの設定については既定値のままにして、**[作成]** をクリックします。
 
 ### <a name="create-a-batch-account"></a>Batch アカウントを作成する
 
 1. [Azure Portal][azure_portal] で、**[新規]** > **[Compute]** > **[Batch サービス]** の順にクリックします。
-   
+
     ![Marketplace での Batch][marketplace_portal]
 3. **[新しい Batch アカウント]** ブレードが表示されます。 各ブレード要素に関する以下の説明を参照してください。
-   
+
     ![Batch アカウントを作成する][account_portal_byos]
-   
+
     a. **アカウント名**: 選択する Batch アカウント名は、アカウントが作成される Azure リージョン内で一意である必要があります (以下の「**場所**」を参照してください)。 アカウント名に含めることができるのは、英小文字と数字のみで、文字数は 3 ～ 24 文字にする必要があります。
-   
+
     b. **サブスクリプション**: 複数のサブスクリプションがある場合は、Batch サービスに登録したサブスクリプションを選択します。
 
     c. **プール割り当てモード**: **[ユーザー サブスクリプション]** を選択します。
 
     d. **キー コンテナー**: 前のセクションで Batch アカウント用に作成したキー コンテナーを選択します。 必要に応じて、新しいキー コンテナーを作成します。 コンテナーを選択した後で、チェック ボックスをオンにして Azure Batch によるそのキー コンテナーへのアクセスを許可します。
-   
+
     c. **リソース グループ**: キー コンテナーを作成したリソース グループを選択します。
-   
-    d. **場所**: Batch アカウント用のキー コンテナーを作成した Azure リージョンです。 
-   
+
+    d. **場所**: Batch アカウント用のキー コンテナーを作成した Azure リージョンです。
+
     e. **ストレージ アカウント** (省略可能): Batch アカウントに関連付ける汎用の Azure Storage アカウント。 ほとんどの Batch アカウントでこれをお勧めします。 詳細については、下の「[リンクされた Azure Storage アカウント](#linked-azure-storage-account)」を参照してください。
 
 4. **[作成]** をクリックしてアカウントを作成します。
-   
+
    ポータルにデプロイが進行中であることが示されます。 完了すると **[通知]** に "**デプロイメントが成功しました**" という通知が表示されます。
 
 
@@ -126,16 +127,16 @@ Batch アカウントとシナリオの背景情報については、[機能の�
 
 ![Batch account blade in Azure portal][account_blade]
 
-* **Batch アカウント URL**: アプリケーションを [Batch API](batch-apis-tools.md#batch-development-apis) を使用して開発する場合は、Batch リソースにアクセスするためにアカウント URL が必要になります。 Batch アカウント URL の形式を次に示します。
-  
+* **Batch アカウント URL**: アプリケーションを [Batch API](batch-apis-tools.md#azure-accounts-for-batch-development) を使用して開発する場合は、Batch リソースにアクセスするためにアカウント URL が必要になります。 Batch アカウント URL の形式を次に示します。
+
     `https://<account_name>.<region>.batch.azure.com`
 
 ![Batch account URL in portal][account_url]
 
 * **アクセス キー** (Batch サービス モード): アプリケーションから Batch アカウントへのアクセスを認証するには、アカウント アクセス キーが必要になります  (この設定は、Azure Active Directory 認証を使用するユーザー サブスクリプション モードでは利用できません)。
 
-    Batch アカウントのアクセス キーを表示または再生成するには、[Batch アカウント] ブレードの左側メニューにある **[検索]** ボックスに「`keys`」と入力し、**[キー]** を選択します。 
-  
+    Batch アカウントのアクセス キーを表示または再生成するには、[Batch アカウント] ブレードの左側メニューにある **[検索]** ボックスに「`keys`」と入力し、**[キー]** を選択します。
+
     ![Batch account keys in Azure portal][account_keys]
 
 [!INCLUDE [batch-pricing-include](../../includes/batch-pricing-include.md)]
@@ -148,15 +149,15 @@ Batch アカウント専用として使用する新しいストレージ アカ�
 
 ![Creating a "General purpose" storage account][storage_account]
 
-> [!NOTE] 
+> [!NOTE]
 > Azure Batch で現在サポートされているのは、汎用的なストレージ アカウントの種類のみです。 このアカウントの種類については、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」の「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」の手順 5. で説明されています。
 >
 >
 
 > [!WARNING]
 > リンクされた Storage アカウントのアクセス キーを再生成する際は次の点に注意してください。 Storage アカウントのキーは 1 つだけ再生成し、リンクされた Storage アカウントのブレードにある **[キーの同期]** をクリックします。 キーがプール内のコンピューティング ノードに反映されるまで 5 分待ってから、必要に応じて他のキーの再生成と同期を行います。 両方のキーを同時に再生成すると、コンピューティング ノードはどちらのキーも同期できず、Storage アカウントにアクセスできなくなります。
-> 
-> 
+>
+>
 
 ![ストレージ アカウント キーの再生成][4]
 
@@ -197,3 +198,4 @@ Azure Portal を利用する方法に加えて、次に示す方法でも Batch 
 [subscription_access]: ./media/batch-account-create-portal/subscription_iam.png
 [add_permission]: ./media/batch-account-create-portal/add_permission.png
 [account_portal_byos]: ./media/batch-account-create-portal/batch_acct_portal_byos.png
+

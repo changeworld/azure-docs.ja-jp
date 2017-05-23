@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 04/28/201
 ms.author: v-ducvo
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 70495bc104f3c86f7e606398e6fb54f24f84bb62
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 32c633926d8f95d7f12d08282488b8b9daf8261f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/11/2017
 
 ---
 
 # <a name="get-started-with-speech-recognition-using-rest-api"></a>Get Started with Speech Recognition using REST API
 
-With Bing Speech API you can develop applications using REST API to convert spoken audio to text. This article will help you get started in using Speech API via REST end point. 
+With Bing Speech API you can develop applications using REST API to convert spoken audio to text. This article will help you to do speech recognition via REST end point. 
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -43,7 +43,7 @@ To use Speech API REST end point, the process is as follows:
 The sections following will provide more details.
 
 ## <a name="authentication"></a>Authentication
-To access the REST endpoint, you need a valid OAuth token. To get this token, you must have a subscription key from the Speech API. When you request for a token, the token service will send the access token back as a JSON Web Token (JWT). The JWT access token is passed through in the Speech request header. The token has an expiry of 10 minutes. It is advised that your code renew this token every 9 minutes.
+To access the REST endpoint, you need a valid OAuth token. To get this token, you must have a subscription key from the Speech API. When you request for a token, the token service will send the access token back as a JSON Web Token (JWT). The JWT access token is passed through in the Speech request header. The token has an expiry of 10 minutes. The recommendation is to look into the JWT token and check the expiry time instead of hard-coding it to 10 minutes using the Expiration JwtSecurityToken property.
 
 The token service URI is located here:
 
@@ -129,7 +129,7 @@ The code below is an example implementation in C# for how to handle authenticati
     }
 ```
 
-The `FetchToken` method sends the request and the athentication payload is as follows:
+The `FetchToken` method sends the request and the authentication payload is as follows:
 
 ```
 POST https://api.cognitive.microsoft.com/sts/v1.0/issueToken HTTP/1.1
@@ -155,7 +155,7 @@ You specify the *recognition mode* as part of the URL path for the Microsoft Spe
 
 
 ## <a name="request-headers"></a>Request headers
-To sent the request to the REST end point, create a **HttpWebRequest** object and set the request headers. For example, set `Method="POST"`, set `Host=@"speech.platform.bing.com"`, and set the access token as follows `Headers["Authorization"] = "Bearer " + token;`. The code snippet below shows a sample of a request header.
+To send the request to the REST end point, create a **HttpWebRequest** object and set the request headers. For example, set `Method="POST"`, set `Host=@"speech.platform.bing.com"`, and set the access token as follows `Headers["Authorization"] = "Bearer " + token;`. The code snippet below shows a sample of a request header.
 
 ```cs
 HttpWebRequest request = null;
@@ -164,7 +164,7 @@ request.SendChunked = true;
 request.Accept = @"application/json;text/xml";
 request.Method = "POST";
 request.ProtocolVersion = HttpVersion.Version11;
-request.Host = @"speech.platform.bing.com;
+request.Host = @"speech.platform.bing.com";
 request.ContentType = @"audio/wav; codec=""audio/pcm""; samplerate=16000";
 request.Headers["Authorization"] = "Bearer " + token;
 ```
@@ -172,7 +172,7 @@ request.Headers["Authorization"] = "Bearer " + token;
 The follow is a sample request payload:
 
 ```
-POST https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?locale=en-US&format=detailed&requestid=39530efe-5677-416a-98b0-93e13ec93c2b HTTP/1.1
+POST https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-US&format=detailed&requestid=39530efe-5677-416a-98b0-93e13ec93c2b HTTP/1.1
 Accept: application/json;text/xml
 Content-Type: audio/wav; codec="audio/pcm"; samplerate=16000
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzY29wZSI6Imh0dHBzOi8vc3BlZWNoLnBsYXRmb3JtLmJpbmcuY29tIiwic3Vic2NyaXB0aW9uLWlkIjoiMWRjYWQxZTQzZWZlNDM2MmIzMjg2ZWY2OTIzYTA5MjYiLCJwcm9kdWN0LWlkIjoiQmluZy5TcGVlY2guRjAiLCJjb2duaXRpdmUtc2VydmljZXMtZW5kcG9pbnQiOiJodHRwczovL2FwaS5jb2duaXRpdmUubWljcm9zb2Z0LmNvbS9pbnRlcm5hbC92MS4wLyIsImF6dXJlLXJlc291cmNlLWlkIjoiL3N1YnNjcmlwdGlvbnMvYTM0Y2FkYmYtNTU5My00ZWYxLWI0MjItMDJhMDMyNmQ2NmZkL3Jlc291cmNlR3JvdXBzL1Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5Db2duaXRpdmVTZXJ2aWNlcy9hY2NvdW50cy9UZXN0U1BlZWNoIiwiaXNzIjoidXJuOm1zLmNvZ25pdGl2ZXNlcnZpY2VzIiwiYXVkIjoidXJuOm1zLnNwZWVjaCIsImV4cCI6MTQ5MzQyOTE2OX0._Bhx7nneMto2gjAAwmIO6eiSejQ2Nqhd8xFl0odjk40

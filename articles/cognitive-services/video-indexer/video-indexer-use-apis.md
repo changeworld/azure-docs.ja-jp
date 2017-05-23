@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 05/02/2017
 ms.author: juliako;
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: bd22b15fd73eaea009a22bbb0ccfe394f0779c1c
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 7fb678fa803c6451cf23ce48b768e902ea98676a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -27,7 +27,7 @@ This article shows how the developers can take advantage of the Video Indexer AP
 
 1. Sign in.
 
-    To start developing with Video Indexer, you must first Sign In to the [Video Indexer](https://www.vi.microsoft.com) portal. 
+    To start developing with Video Indexer, you must first Sign In to the [Video Indexer](http://vi.microsoft.com) portal. 
     
     ![Sign up](./media/video-indexer-use-apis/video-indexer-api01.png)
 

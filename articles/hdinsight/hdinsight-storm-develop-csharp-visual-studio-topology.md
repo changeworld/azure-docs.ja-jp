@@ -1,6 +1,6 @@
 ---
-title: "Visual Studio と C# を使った Apache Storm トポロジ | Microsoft Docs"
-description: "HDInsight Tools for Visual Studio を使用して、Visual Studio で簡単なワード カウントトポロジを作成することで、C# で Storm トポロジを作成する方法を説明します。"
+title: "Visual Studio と C# を使った Apache Storm トポロジ - Azure | Microsoft Docs"
+description: "Hadoop Tools for Visual Studio を使用して、Visual Studio で簡単なワード カウント トポロジを作成することで、C# で Storm トポロジを作成する方法を説明します。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,16 +16,17 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/01/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: cc6b16b559c4d1eafc570d0361c710487021f175
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 7b267ba427da276f53326c9068417521c8976e63
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
 # <a name="develop-c-topologies-for-apache-storm-on-hdinsight-using-hadoop-tools-for-visual-studio"></a>Hadoop Tools for Visual Studio を使用した HDInsight での Apache Storm の C# トポロジの開発
 
-HDInsight tools for Visual Studio を使用して C# Storm トポロジを作成する方法を説明します。 このドキュメントでは、Visual Studio で Storm プロジェクトを作成し、ローカルでテストして、HDInsight クラスターで Apache Storm に展開する手順について説明します。
+Data Lake (Hadoop) Tools for Visual Studio を使用して C# Storm トポロジを作成する方法を説明します。 このドキュメントでは、Visual Studio で Storm プロジェクトを作成し、ローカルでテストして、HDInsight クラスターで Apache Storm に展開する手順について説明します。
 
 また、C# と Java コンポーネントを使用するハイブリッド トポロジの作成方法についても説明します。
 
@@ -53,10 +54,10 @@ HDInsight tools for Visual Studio を使用して C# Storm トポロジを作成
 
 * Azure SDK 2.9.5 以降
 
-* HDInsight Tools for Visual Studio: HDInsight Tools for Visual Studio のインストールと構成については、「 [HDInsight Tools for Visual Studio を使用して Hive クエリを実行する](hdinsight-hadoop-visual-studio-tools-get-started.md) 」を参照してください。
+* Data Lake Tools for Visual Studio: インストールと構成については、「[Data Lake Tools for Visual Studio の使用開始](hdinsight-hadoop-visual-studio-tools-get-started.md)」をご覧ください。
 
   > [!NOTE]
-  > HDInsight Tools for Visual Studio は Visual Studio Express ではサポートされていません
+  > Data Lake Tools for Visual Studio は Visual Studio Express ではサポートされていません
 
 * HDInsight 上の Apache Storm クラスター: クラスターを作成する手順については、「 [Apache Storm チュートリアル: Storm Starter サンプルを使用した HDInsight でのビッグ データ分析の概要](hdinsight-apache-storm-tutorial-get-started.md) 」を参照してください。
 
@@ -65,14 +66,14 @@ HDInsight tools for Visual Studio を使用して C# Storm トポロジを作成
 
 ## <a name="templates"></a>テンプレート
 
-HDInsight Tools for Visual Studio には次のテンプレートがあります。
+Data Lake Tools for Visual Studio には次のテンプレートがあります。
 
 | プロジェクトの種類 | 対象 |
 | --- | --- |
 | Storm アプリケーション |空の Storm トポロジ プロジェクト |
 | Storm Azure SQL ライターのサンプル |Azure SQL データベースに書き込む方法 |
-| Storm DocumentDB リーダーのサンプル |Azure DocumentDB から読み取る方法 |
-| Storm DocumentDB ライターのサンプル |Azure DocumentDB を記述する方法 |
+| Storm Azure Cosmos DB リーダーのサンプル |Azure Cosmos DB から読み取る方法 |
+| Storm Azure Cosmos DB ライターのサンプル |Azure Cosmos DB に書き込む方法 |
 | Storm EventHub リーダーのサンプル |Azure Event Hubs から読み取る方法 |
 | Storm EventHub ライターのサンプル |Azure Event Hubs に記述する方法 |
 | Storm HBase リーダーのサンプル |HDInsight クラスターで HBase から読み取る方法 |
@@ -95,7 +96,7 @@ HBase のリーダーとライターのテンプレートは、HBase Java API �
 
 ## <a name="create-a-c-topology"></a>C# トポロジの作成
 
-1. HDInsight Tools for Visual Studio の最新バージョンをまだインストールしていない場合は、「[HDInsight Tools for Visual Studio の使用開始](hdinsight-hadoop-visual-studio-tools-get-started.md)」をご覧ください。
+1. Data Lake Tools for Visual Studio の最新バージョンをまだインストールしていない場合は、[Data Lake Tools for Visual Studio の使用開始](hdinsight-hadoop-visual-studio-tools-get-started.md)に関するページをご覧ください。
 
 2. Visual Studio を開いて、**[ファイル]** > **[新規]** の順に選び、**[プロジェクト]** を選びます。
 
@@ -420,9 +421,9 @@ return topologyBuilder;
 
 **Storm サンプル** プロジェクトのように、コンポーネントがトランザクションであるかどうかは、構成に基づいて実行時に設定できます。
 
-## <a name="hybrid-topology"></a>ハイブリッド トポロジ
+## <a name="hybrid-topology-with-c-and-java"></a>C# と Java のハイブリッド トポロジ
 
-また、HDInsight tools for Visual Studio は、C# のコンポーネントと Java のコンポーネントが混在するハイブリッド トポロジの作成に使用できます。
+また、Data Lake Tools for Visual Studio は、C# のコンポーネントと Java のコンポーネントが混在するハイブリッド トポロジの作成に使用できます。
 
 ハイブリッド トポロジの例として、プロジェクトを作成して **[Storm ハイブリッド サンプル]** を選択します。 このサンプルの種類は、次の概念を示します。
 
@@ -514,7 +515,7 @@ SCP.NET の最新リリースでは、NuGet からパッケージをアップグ
 > 1. **ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選びます。
 > 2. **[検索]** フィールドを使って **Microsoft.SCP.Net.SDK** を検索し、プロジェクトに追加します。
 
-## <a name="troubleshooting"></a>トラブルシューティング
+## <a name="troubleshooting-common-issues-with-topologies"></a>トポロジの一般的な問題のトラブルシューティング
 
 ### <a name="null-pointer-exceptions"></a>null ポインター例外
 

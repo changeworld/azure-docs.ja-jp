@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 2/15/2017
 ms.author: pratshar
-translationtype: Human Translation
-ms.sourcegitcommit: b818d5083f1436035185b1b0d7990b5a36716da4
-ms.openlocfilehash: 1fca09ad0c9e1bc72109910cd0dcaf186d6a7c3d
-ms.lasthandoff: 02/23/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 960fb84c309b18c7f9741bb60b52cfcc3753a07d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -30,7 +31,7 @@ ms.lasthandoff: 02/23/2017
 
 
 ## <a name="run-a-failover"></a>フェールオーバーの実行
-この手順では、[復旧計画](site-recovery-create-recovery-plans.md)のフェールオーバーを実行する方法について説明します。 別の方法として&1; 台の仮想マシン (または物理サーバー) を対象に、**[レプリケートされたアイテム]** ページからフェールオーバーを実行することもできます。
+この手順では、[復旧計画](site-recovery-create-recovery-plans.md)のフェールオーバーを実行する方法について説明します。 別の方法として 1 台の仮想マシン (または物理サーバー) を対象に、**[レプリケートされたアイテム]** ページからフェールオーバーを実行することもできます。
 
 
 ![フェールオーバー](./media/site-recovery-failover/Failover.png)
@@ -83,6 +84,26 @@ Site Recovery を使って保護された Hyper-V 仮想マシンは、フェー
 > **進行中のフェールオーバーはキャンセルしないでください**。仮想マシンのレプリケーションは、フェールオーバーが開始される前に停止されます。 進行中のジョブを**キャンセル**した場合、フェールオーバーは停止しますが、仮想マシンのレプリケートは開始されません。 二度とレプリケーションを開始できなくなります。 
 >
 > 
+
+## <a name="time-taken-for-failover-to-azure"></a>Azure へのフェールオーバーにかかる時間
+
+一部のケースでは、仮想マシンのフェールオーバーに、通常 8 ～ 10 分かかる特別な中間ステップが必要となります。 次のケースが該当します。
+
+* VMware 仮想マシンで使用されているモビリティ サービスのバージョンが 9.8 未満
+* 物理サーバー 
+* VMware Linux 仮想マシン
+* 物理サーバーとして保護されている Hyper-V 仮想マシン
+* ブート ドライバーとして次のドライバーが存在していない VMware 仮想マシン 
+    * storvsc 
+    * vmbus 
+    * storflt 
+    * intelide 
+    * atapi
+* DHCP サービス (DHCP と静的 IP アドレスのどちらでも可) が有効になっていない VMware 仮想マシン
+
+その他すべてのケースでは、この中間ステップは不要であり、フェールオーバーに要する時間は大幅に短くなります。 
+
+
 
 
 

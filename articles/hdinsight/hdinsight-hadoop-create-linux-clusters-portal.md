@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/16/2017
+ms.date: 05/10/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 79a8b7352c12676bd26555b4447e030ecb4ad011
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 030935ec304cc9b26bd2369fdadf2d99bd094c5d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -33,9 +34,6 @@ Azure Portal は、Microsoft Azure クラウドでホストされるサービス
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 * **最新の Web ブラウザー**。 Azure Portal では、HTML5 と Javascript が使用されています。Web ブラウザーのバージョンが低いと正しく機能しない場合があります。
-
-### <a name="access-control-requirements"></a>アクセス制御の要件
-[!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
 ## <a name="create-clusters"></a>クラスターの作成
 Azure Portal には、ほとんどのクラスターのプロパティが公開されます。 Azure Resource Manager テンプレートを使用すると、多くの詳細を非表示にできます。 詳細については、「 [Azure Resource Manager テンプレートを使用した HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-create-linux-clusters-arm-templates.md)」を参照してください。
@@ -148,6 +146,10 @@ Azure Portal には、ほとんどのクラスターのプロパティが公開�
 
 ## <a name="delete-the-cluster"></a>クラスターを削除する
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+
+## <a name="troubleshoot"></a>トラブルシューティング
+
+HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御要件](hdinsight-administer-use-portal-linux.md#create-clusters)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 HDInsight クラスターが正常に作成されました。次に、クラスターの使用方法について、以下のトピックを参照してください。
