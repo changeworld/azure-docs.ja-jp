@@ -123,7 +123,7 @@ OpenSSL>x509 -inform DER -in BaltimoreCyberTrustRoot.cer -out MyServerCACert.pem
 MySQL コマンド ライン インターフェイスを使用して、次のコマンドを実行します。
 
 ```dos
-mysql.exe -h yourserver. -uUsername@Servername -pYourPassword --ssl-ca=c:\ssl\MyServerCACert.pem
+mysql.exe -h yourservername.mysql.database.azure.com -uUsername@yourservername -pYourPassword --ssl-ca=c:\ssl\MyServerCACert.pem
 ```
 MySQL の **status** コマンドを実行して、SSL 経由で MySQL サーバーに接続していることを確認します。
 
