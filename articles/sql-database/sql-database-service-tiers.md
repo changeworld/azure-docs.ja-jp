@@ -1,4 +1,4 @@
----
+﻿---
 title: "SQL Database のパフォーマンス: サービス レベル | Microsoft Docs"
 description: "SQL Database のサービス レベルを比較します。"
 keywords: "データベース オプション, データベース パフォーマンス"

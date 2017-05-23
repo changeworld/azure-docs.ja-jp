@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure HDInsight での Hadoop、HBase、Kafka、Storm、または Spark クラスターの作成 | Microsoft Docs"
 description: "ブラウザー、Azure CLI、Azure PowerShell、REST、または SDK を使用して HDInsight に Linux ベースの Hadoop、HBase、Storm、または Spark クラスターを作成する方法について説明します。"
 services: hdinsight

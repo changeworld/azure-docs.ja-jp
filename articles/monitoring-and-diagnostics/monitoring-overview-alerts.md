@@ -52,8 +52,8 @@ ms.lasthandoff: 03/31/2017
 * メール通知をサービス管理者、共同管理者、または指定した追加のメール アドレスに送信する。
 * webhook を呼び出す。これにより、追加のオートメーション アクションを実行できます。 たとえば、次のものの呼び出しが可能です。
     - Azure Automation Runbook
-    - Azure Functions
-    - Azure Logic Apps
+    - Azure 関数
+    - Azure ロジック アプリ
     - サードパーティのサービス
 
 ## <a name="what-can-activity-log-alerts-do"></a>アクティビティ ログ アラートでできること

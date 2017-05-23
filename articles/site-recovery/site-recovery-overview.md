@@ -1,4 +1,4 @@
----
+﻿---
 title: "Site Recovery とは | Microsoft Docs"
 description: "Azure Site Recovery サービスの概要について説明し、デプロイ シナリオについてまとめます。"
 services: site-recovery
@@ -63,7 +63,7 @@ Azure Recovery Services は BCDR 戦略を支援します。 [Azure Backup](http
 
 ## <a name="which-azure-portal"></a>Azure Portal とは
 
-* Site Recovery は、新しい [Azure Portal](https://portal.azure.com) と [Azure クラシック ポータル](https://manage.windowsazure.com/)のどちらでもデプロイできます。
+* Site Recovery は、新しい [Azure ポータル](https://portal.azure.com) と [Azure クラシック ポータル](https://manage.windowsazure.com/)のどちらでもデプロイできます。
 * Azure クラシック ポータルでは、クラシック サービス管理モデルで Site Recovery をサポートできます。
 * Azure Portal では、クラシック モデルをサポートすることも、新しい [Resource Manager デプロイ モデル](../azure-resource-manager/resource-manager-deployment-model.md)をサポートすることもできます。
 - クラシック ポータルは、既存の Site Recovery デプロイを維持する目的でのみ使用します。 クラシック ポータルで新しいコンテナーを作成することはできません。
