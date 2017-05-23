@@ -3,7 +3,7 @@ title: "Azure Application Insights のアラートの設定 | Microsoft Docs"
 description: "Web アプリにおける長い応答時間、例外、パフォーマンスまたは使用状況のその他の変化について通知します。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: f8ebde72-f819-4ba5-afa2-31dbd49509a5
 ms.service: application-insights

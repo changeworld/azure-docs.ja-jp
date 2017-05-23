@@ -25,7 +25,7 @@ ms.lasthandoff: 04/18/2017
 #  <a name="prerequisites-for-replication-to-azure-by-using-azure-site-recovery"></a>Azure Site Recovery を使って Azure へのレプリケーションを行うための前提条件
 
 
-Azure Site Recovery は、クラウド (Azure) またはセカンダリ データセンターへのオンプレミスの物理サーバーおよび仮想マシンのレプリケーションを調整することでビジネス継続性とディザスター リカバリー (BCDR) の戦略を支援するサービスです。 プライマリ ロケーションで障害が発生した場合は、セカンダリ ロケーションにフェールオーバーしてアプリとワークロードの可用性を維持できます。 プライマリの場所が通常の動作に戻ったときに、その場所にフェールバックすることができます。 Site Recovery について詳しくは、「[Site Recovery とは](site-recovery-overview.md)」をご覧ください。
+Azure Site Recovery は、クラウド (Azure) またはセカンダリ データセンターへのオンプレミスの物理サーバーおよび仮想マシンのレプリケーションを調整することでビジネス継続性とディザスター リカバリー (BCDR) の戦略を支援するサービスです。プライマリ ロケーションで障害が発生した場合は、セカンダリ ロケーションにフェールオーバーしてアプリとワークロードの可用性を維持できます。プライマリの場所が通常の動作に戻ったときに、その場所にフェールバックすることができます。Site Recovery について詳しくは、「[Site Recovery とは](site-recovery-overview.md)」をご覧ください。
 
 この記事では、Site Recovery を使用して Azure へのレプリケーションを開始するために必要な前提条件について説明します。
 
@@ -49,7 +49,7 @@ Azure Site Recovery は、クラウド (Azure) またはセカンダリ デー�
 >
 
 ## <a name="disaster-recovery-of-vmware-virtual-machines-or-physical-windows-or-linux-servers-to-azure"></a>VMware 仮想マシンまたは Windows/Linux 物理サーバーの Azure へのディザスター リカバリー
-以下に示すのは、[Azure の要件](#Azure requirements) に加えて VMware 仮想マシンや Windows/Linux 物理サーバーのディザスター リカバリーに必要となるコンポーネントです。
+以下に示すのは、[Azure の要件](#Azure requirements)に加えて VMware 仮想マシンや Windows/Linux 物理サーバーのディザスター リカバリーに必要となるコンポーネントです。
 
 
 ### <a name="configuration-server-or-additional-process-server-you-will-need-to-set-up-an-on-premises-machine-as-the-configuration-server-to-coordinate-communications-between-the-on-premises-site-and-azure-and-to-manage-data-replication-brbr"></a>**構成サーバーまたは追加のプロセス サーバー**: オンプレミス サイトと Azure 間の通信を調整し、データのレプリケーションを管理するために、オンプレミス マシンを構成サーバーとして設定する必要があります。 <br></br>
@@ -73,7 +73,7 @@ Azure Site Recovery は、クラウド (Azure) またはセカンダリ デー�
 
 ## <a name="disaster-recovery-of-hyper-v-virtual-machines-to-azure-no-virtual-machine-manager"></a>Hyper-V 仮想マシンの Azure (非 Virtual Machine Manager) へのディザスター リカバリー
 
-以下に示すのは、[Azure の要件](#Azure requirements) に加えて Virtual Machine Manager クラウド内の Hyper-V 仮想マシンのディザスター リカバリーに必要となるコンポーネントです。
+以下に示すのは、[Azure の要件](#Azure requirements)に加えて Virtual Machine Manager クラウド内の Hyper-V 仮想マシンのディザスター リカバリーに必要となるコンポーネントです。
 
 | **前提条件** | **詳細** |
 | --- | --- |
@@ -83,7 +83,7 @@ Azure Site Recovery は、クラウド (Azure) またはセカンダリ デー�
 
 ## <a name="disaster-recovery-of-hyper-v-virtual-machines-in-virtual-machine-manager-clouds-to-azure"></a>Virtual Machine Manager クラウド内 Hyper-V 仮想マシンの Azure へのディザスター リカバリー
 
-以下に示すのは、[Azure の要件](#Azure requirements) に加えて Virtual Machine Manager クラウド内の Hyper-V 仮想マシンのディザスター リカバリーに必要となるコンポーネントです。
+以下に示すのは、[Azure の要件](#Azure requirements)に加えて Virtual Machine Manager クラウド内の Hyper-V 仮想マシンのディザスター リカバリーに必要となるコンポーネントです。
 
 | **前提条件** | **詳細** |
 | --- | --- |
@@ -97,9 +97,9 @@ Azure Site Recovery は、クラウド (Azure) またはセカンダリ デー�
 | **保護対象の VM** | Site Recovery では、[Azure](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx) でサポートされているすべてのオペレーティング システムがサポートされます。<br/><br/>VM は、Azure VM を作成するための [Azure の前提条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)に準拠している必要があります。 マシン名は 1 - 63 文字 (英字、数字、ハイフン) にする必要があります。 文字または数字で始まり、文字または数字で終わる必要があります。 <br/><br/>名前は、VM のレプリケーションを有効にした後で変更できます。 <br/><br/> 保護対象のマシン上の個々のディスク容量が 1,023 GB 以下である必要があります。 VM は最大 16 個のディスク (最大 16 TB) に対応できます。<br/><br/>
 
 
-## <a name="disaster-recovery-of-hyper-v-virtual-machines-in-virtual-machine-manager-clouds-to-a-customer-owned-site"></a>Virtual Machine Manager クラウド内の Hyper-V 仮想マシンをお客様が所有するサイトに障害復旧する場合
+## <a name="disaster-recovery-of-hyper-v-virtual-machines-in-virtual-machine-manager-clouds-to-a-customer-owned-site"></a>お客様が所有するサイトへの Virtual Machine Manager クラウド内の Hyper-V 仮想マシンのディザスター リカバリー
 
-以下に示すのは、Virtual Machine Manager クラウド内の Hyper-V 仮想マシンをお客様が所有するサイトに障害復旧するために、[Azure の要件](#Azure requirements)に加えて必要となるコンポーネントです。
+お客様が所有するサイトへの Virtual Machine Manager クラウド内の Hyper-V 仮想マシンのディザスター リカバリーには、[Azure の要件](#Azure requirements)に加え、以下に示すコンポーネントが必要です。
 
 | **コンポーネント** | **詳細** |
 | --- | --- |

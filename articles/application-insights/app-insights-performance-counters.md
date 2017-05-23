@@ -3,7 +3,7 @@ title: "Application Insights のパフォーマンス カウンター | Microsof
 description: "Application Insights でシステムとカスタムの .NET パフォーマンス カウンターを監視します。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 5b816f4c-a77a-4674-ae36-802ee3a2f56d
 ms.service: application-insights

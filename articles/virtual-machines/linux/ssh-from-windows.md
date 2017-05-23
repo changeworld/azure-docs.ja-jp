@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
 ms.author: rasquill
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 59dc5340ca8ac02b1d99205ad8f1d44fa60148c0
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 7f572adf499dd1fcd0db19500c9049af1e31cdea
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -44,17 +45,15 @@ SSH は、セキュリティで保護されていない接続においてセキ�
 SSH キーを使用しない場合でも、パスワードを使用して Linux VM にログインできます。 VM がインターネットに公開されない場合は、パスワードを使用するだけで十分なことがあります。 ただし、Linux VM ごとにパスワードを管理し、パスワードの最小の長さ、定期的な更新など、優良なパスワードのポリシーと運用を維持する必要があります。 SSH キーを使用すると、複数の VM で別個に資格情報を管理する複雑さが軽減されます。
 
 ## <a name="windows-packages-and-ssh-clients"></a>Windows パッケージと SSH クライアント
-Azure の Linux VM に接続して管理するには、**SSH クライアント**を使用します。 通常、Windows コンピューターには SSH クライアントがインストールされていません。 自分でインストールできる一般的な Windows SSH クライアントは次のパッケージに含まれています。
+Azure の Linux VM に接続して管理するには、**SSH クライアント**を使用します。 通常、Windows コンピューターには SSH クライアントがインストールされていません。 Windows 10 Anniversary Update では Bash for Windows が追加され、最新の Windows 10 Creators Update では追加の更新プログラムが提供されています。 この Windows Subsystem for Linux では、SSH クライアントなどのユーティリティを Bash シェル内でネイティブに実行したり、それらにアクセスしたりすることができます。 その後は、[Linux 用の SSH キー ペアを生成する方法](mac-create-ssh-keys.md)に関するページなど、任意の Linux ドキュメントに従ってください。 Bash for Windows は開発段階であり、ベータ リリースとして扱われています。 Bash for Windows の詳細については、「[Bash on Ubuntu on Windows](https://msdn.microsoft.com/commandline/wsl/about)」を参照してください。
+
+Bash for Windows 以外のものを使用する場合、インストールできる一般的な Windows SSH クライアントは、以下のパッケージに含まれています。
 
 * [Git For Windows](https://git-for-windows.github.io/)
 * [puTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/)
 * [MobaXterm](http://mobaxterm.mobatek.net/)
 * [Cygwin](https://cygwin.com/)
 
-> [!NOTE]
-> 最新の Windows 10 Anniversary Update には Bash for Windows が含まれています。 この機能を使用すると、Windows Subsystem for Linux を実行して、SSH クライアントなどのユーティリティにアクセスできます。 Bash for Windows は開発段階であり、ベータ リリースとして扱われています。 Bash for Windows の詳細については、「[Bash on Ubuntu on Windows](https://msdn.microsoft.com/commandline/wsl/about)」を参照してください。
->
->
 
 ## <a name="which-key-files-do-you-need-to-create"></a>作成する必要があるキー ファイル
 Azure では、長さ 2,048 ビット以上の **ssh-rsa** 形式の公開キーと秘密キーを必須としています。 クラシック デプロイメント モデルを使用して Azure リソースを管理している場合は、PEM (`.pem` ファイル) も生成する必要があります。

@@ -15,10 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/02/2017
 ms.author: davidmu
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: d0a92475258176ad20cbf8e9cf34f35038d2133d
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 6b6e3f0a1182fbce209494af111cf8159e43b639
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -65,7 +66,7 @@ ms.lasthandoff: 04/27/2017
 | VM の汎用化 |[Set-AzureRmVm](/powershell/module/azurerm.compute/set-azurermvm) -ResourceGroupName $myResourceGroup -Name $myVM -Generalized<BR></BR><BR></BR>Save-AzureRmVMImage を実行する前に、このコマンドを実行します。 |
 | VM のキャプチャ |[Save-AzureRmVMImage](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/Save-AzureRmVMImage) -ResourceGroupName $myResourceGroup -VMName $myVM -DestinationContainerName "myImageContainer" -VHDNamePrefix "myImagePrefix" -Path "C:\filepath\filename.json"<BR></BR><BR></BR>仮想マシンをイメージの作成に使用するには、[シャット ダウンして一般化する](generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)必要があります。 このコマンドを実行する前に、Set-AzureRmVm を実行します。 |
 | VM の更新 |[Update-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm) -ResourceGroupName $myResourceGroup -VM $vm<BR></BR><BR></BR>Get-AzureRmVM を使用して現在の VM の構成を取得し、VM オブジェクトの構成設定を変更してから、このコマンドを実行します。 |
-| VM へのデータ ディスクの追加 |[Add-AzureRmVMDataDisk](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/Add-AzureRmVMDataDisk) -VM $vm -Name "myDataDisk" -VhdUri "https://mystore1.blob.core.windows.net/vhds/myDataDisk.vhd" -LUN # -Caching ReadWrite -DiskSizeinGB # -CreateOption Empty<BR></BR><BR></BR>Get-AzureRmVM を使用して VM オブジェクトを取得します。 LUN の数とディスクのサイズを指定します。 Update-AzureRmVM を実行して、構成の変更を VM に適用します。 追加するディスクは初期化されていません。 追加されたディスクの初期化については、「[Resource Manager と PowerShell を使用した VM の管理](ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。 |
+| VM へのデータ ディスクの追加 |[Add-AzureRmVMDataDisk](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/Add-AzureRmVMDataDisk) -VM $vm -Name "myDataDisk" -VhdUri "https://mystore1.blob.core.windows.net/vhds/myDataDisk.vhd" -LUN # -Caching ReadWrite -DiskSizeinGB # -CreateOption Empty<BR></BR><BR></BR>Get-AzureRmVM を使用して VM オブジェクトを取得します。 LUN の数とディスクのサイズを指定します。 Update-AzureRmVM を実行して、構成の変更を VM に適用します。 追加するディスクは初期化されていません。 |
 | VM からのデータ ディスクの削除 |[Remove-AzureRmVMDataDisk](/powershell/module/azurerm.compute/remove-azurermvmdatadisk) -VM $vm -Name "myDataDisk"<BR></BR><BR></BR>Get-AzureRmVM を使用して VM オブジェクトを取得します。 Update-AzureRmVM を実行して、構成の変更を VM に適用します。 |
 | VM への拡張機能の追加 |[Set-AzureRmVMExtension](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/Set-AzureRmVMExtension) -ResourceGroupName $myResourceGroup -Location $location -VMName $myVM -Name "extensionName" -Publisher "publisherName" -Type "extensionType" -TypeHandlerVersion "#.#" -Settings $Settings -ProtectedSettings $ProtectedSettings<BR></BR><BR></BR>インストールする拡張機能の適切な[構成情報](extensions-configuration-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を含めて、このコマンドを実行します。 |
 | VM 拡張機能の削除 |[Remove-AzureRmVMExtension](/powershell/module/azurerm.compute/remove-azurermvmextension) -ResourceGroupName $myResourceGroup -Name "extensionName" -VMName $myVM |

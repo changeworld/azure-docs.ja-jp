@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/18/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 9ddf19c008c35525419a357436b1a969a4b19205
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 9489fdc3c5388a7510bc4411b4abb05fa72fbf4f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -229,7 +230,7 @@ HDInsight クラスターは、Azure Virtual Network 内ではセキュリティ
 
     プロンプトが表示されたら、クラスターの HTTPS ユーザー名とパスワードを入力します。 クラスターの Ambari Web UI が表示されます。
 
-2. Kafka に関する情報を表示するには、左にある一覧から __[Kafka]__ を選択します。 
+2. Kafka に関する情報を表示するには、左にある一覧から __[Kafka]__ を選択します。
 
     ![Kafka が強調表示されているサービスの一覧](./media/hdinsight-apache-kafka-connect-vpn-gateway/select-kafka-service.png)
 
@@ -271,7 +272,7 @@ HDInsight クラスターは、Azure Virtual Network 内ではセキュリティ
 
 ## <a name="connect-to-the-vpn-gateway"></a>VPN ゲートウェイに接続する
 
-__Windows クライアント__から VPN ゲートウェイに接続するには、[ポイント対サイト接続の構成](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#a-nameconnectapart-7---connect-to-azure)に関するドキュメントの「__Azure への接続__」セクションに従います。
+__Windows クライアント__から VPN ゲートウェイに接続するには、[ポイント対サイト接続の構成](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#a-nameclientcertificatea7---install-an-exported-client-certificate)に関するドキュメントの「__Azure への接続__」セクションに従います。
 
 ## <a name="remote-kafka-client"></a>リモート Kafka クライアント
 
@@ -319,7 +320,7 @@ __Windows クライアント__から VPN ゲートウェイに接続するには
   ```
 
     `'ip_address'` エントリは、このセクションの手順 1 で返されたアドレスに置き換えます。
-    
+
     > [!NOTE]
     > このコードは、文字列 `test message` をトピック `testtopic` に送信します。 HDInsight 上の Kafka の既定の構成では、トピックが存在しない場合は作成します。
 

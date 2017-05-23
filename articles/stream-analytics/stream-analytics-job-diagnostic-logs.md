@@ -1,5 +1,5 @@
 ---
-title: "Azure Stream Analytics 診断ログ | Microsoft Docs"
+title: "診断ログによる Azure Stream Analytics のトラブルシューティング | Microsoft Docs"
 description: "Microsoft Azure で Stream Analytics ジョブから診断ログを分析する方法について説明します。"
 keywords: 
 documentationcenter: 
@@ -13,109 +13,119 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/28/2017
+ms.date: 04/20/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 0dac2cc79de884def8d4cf0ee89dc2f645d35b34
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: 51f35173f386463eac0d5131e80534511bccbcd8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/01/2017
 
 
 ---
-# <a name="job-diagnostic-logs"></a>ジョブの診断ログ
+# <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>診断ログを使用した Azure Stream Analytics のトラブルシューティング
 
-## <a name="introduction"></a>はじめに
+Azure Stream Analytics ジョブは予期せず処理を停止することがあります。 このため、この種のイベントのトラブルシューティングを行えることが重要です。 このようなイベントは、予期しないクエリ結果、デバイスへの接続、または予期しないサービス停止によって引き起こされる可能性があります。 Stream Analytics の診断ログは、問題が発生した際にその原因を特定し、復旧時間を短縮するのに役立ちます。
+
+## <a name="log-types"></a>ログの種類
+
 Stream Analytics には 2 種類のログがあります。 
-* [アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs): 常に有効で、ジョブで実行される操作の洞察が示されます。
-* [診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs): 構成可能で、作成/更新時、実行中、および削除されるまでに開始されたジョブで発生している、あらゆる事象に関する詳細な洞察が示されます。
+* [アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) (常に有効)。 アクティビティ ログでは、ジョブで実行される操作の洞察が得られます。
+* [診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) (構成可能)。 診断ログでは、ジョブで発生するあらゆるイベントに関して豊富な洞察が得られます。 診断ログはジョブの作成時に開始され、ジョブが削除されると終了します。 ジョブの更新時とジョブの実行中のイベントがログの対象です。
 
 > [!NOTE]
-> 非準拠データの分析に Azure Storage、イベント ハブ、Log Analytics などのサービスを使用すると、これらのサービスの料金モデルに基づいて課金されることに注意してください。
+> Azure Storage、Azure Event Hubs、Azure Log Analytics などのサービスを使用して、問題となったデータを分析できます。 これらのサービスでは、価格モデルに基づいて料金が発生します。
+>
 
-## <a name="how-to-enable-diagnostic-logs"></a>診断ログを有効にする方法
-既定では、診断ログは**オフ**になっています。 有効にするには、次の手順に従います。
+## <a name="turn-on-diagnostics-logs"></a>診断ログの有効化
 
-Azure Portal にサインインし、[ストリーミング ジョブ] ブレードに移動します。 次に、[監視] の [診断ログ] ブレードに移動します。
+既定では、診断ログは**オフ**になっています。 診断ログを有効にするには、次の手順を実行します。
 
-![ブレードで診断ログに移動する](./media/stream-analytics-job-diagnostic-logs/image1.png)  
+1.  Azure Portal にサインインし、[ストリーミング ジョブ] ブレードに移動します。 **[監視]** の下の **[診断ログ]** を選択します。
 
-次に、[診断を有効にする] リンクをクリックします。
+    ![ブレードを使った診断ログへの移動](./media/stream-analytics-job-diagnostic-logs/image1.png)  
 
-![診断ログを有効にする](./media/stream-analytics-job-diagnostic-logs/image2.png)
+2.  **[診断を有効にする]** を選択します。
 
-開いている診断で、状態を [オン] に変更します。
+    ![診断ログの有効化](./media/stream-analytics-job-diagnostic-logs/image2.png)
 
-![診断ログの状態を変更する](./media/stream-analytics-job-diagnostic-logs/image3.png)
+3.  **[診断設定]** ページの **[状態]** を **[オン]** に選択します。
 
-必要なアーカイブ ターゲット (ストレージ アカウント、イベント ハブ、Log Analytics) を構成し、収集するログのカテゴリ (実行、作成) を選択します。 次に、新しい診断の構成を保存します。
+    ![診断ログの状態の変更](./media/stream-analytics-job-diagnostic-logs/image3.png)
 
-保存後に構成が有効になるまで約 10 分かかります。 その後、構成したアーカイブ ターゲットのログが [診断ログ] ブレードに表示されます。
+4.  目的のアーカイブ ターゲットを設定します (ストレージ アカウント、イベント ハブ、Log Analytics)。 次に、収集するログのカテゴリを選択します (実行、作成)。 
 
-![ブレードで診断ログに移動する](./media/stream-analytics-job-diagnostic-logs/image4.png)
+5.  新しい診断構成を保存します。
 
-診断の構成の詳細については、[診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)に関するページをご覧ください。
+診断構成が有効になるまで約 10 分かかります。 その後、構成したアーカイブ ターゲットのログが **[診断ログ]** ページに表示されます。
 
-## <a name="diagnostic-logs-categories"></a>診断ログのカテゴリ
-現時点で取得できる診断ログのカテゴリは 2 つあります。
+![ブレードを使った診断ログへの移動 - アーカイブ ターゲット](./media/stream-analytics-job-diagnostic-logs/image4.png)
 
-* **作成:** 入出力の作成、追加、および削除、クエリの追加と更新、ジョブの開始と停止など、ジョブ作成操作に関連するログを取得します。
-* **実行:** ジョブの実行中に発生したことを取得します。
+診断の構成の詳細については、「[Azure リソースからの診断データの収集と使用](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)」を参照してください。
+
+## <a name="diagnostics-log-categories"></a>診断ログのカテゴリ
+
+現時点では、取得する診断ログのカテゴリは次の 2 つです。
+
+* **作成**。 ジョブ作成操作に関連するログ イベントを取得します (ジョブの作成、入出力の追加と削除、クエリの追加と更新、ジョブの開始と停止)。
+* **実行**。 ジョブの実行中に発生したイベントを取得します。
     * 接続エラー
-    * データ処理エラー
-        * クエリ定義に準拠していないイベント (一致しないフィールドの種類と値、存在しないフィールドなど)
+    * データ処理エラー。次のエラーが含まれます。
+        * クエリ定義に準拠していないイベント (フィールドの種類と値の不一致、フィールドの不足など)
         * 式評価エラー
-    * その他
+    * その他のイベントとエラー
 
-## <a name="diagnostic-logs-schema"></a>診断ログのスキーマ
-すべてのログが JSON 形式で格納され、各エントリには次の一般的な文字列フィールドが含まれます。
+## <a name="diagnostics-logs-schema"></a>診断ログのスキーマ
+
+すべてのログは JSON 形式で格納されます。 各エントリには、次の一般的な文字列フィールドが含まれています。
 
 名前 | 説明
 ------- | -------
-time | ログのタイムスタンプ (UTC)
-resourceId | 操作が行われたリソースの ID (大文字)。 サブスクリプション ID、リソース グループ、およびジョブ名が含まれています。 例: **/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT.STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**
+time | ログのタイムスタンプ (UTC)。
+resourceId | 操作が行われたリソースの ID (大文字)。 サブスクリプション ID、リソース グループ、ジョブ名が含まれています。 例: **/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT.STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**
 カテゴリ | ログのカテゴリ (**実行**または**作成**のいずれか)。
-operationName | ログに記録される操作の名前。 例: **Send Events: SQL Output write failure to mysqloutput**
-status | 操作の状態。 **失敗、成功**など。
-最小限のレベル | ログ レベル。 **エラー、警告、情報**など。
-properties | ログ エントリ固有の詳細。JSON 文字列としてシリアル化されています。詳細については、次を参照してください
+operationName | ログに記録される操作の名前。 たとえば、**Send Events: SQL Output write failure to mysqloutput**。
+status | 操作の状態。 たとえば、**失敗**または**成功**。
+最小限のレベル | ログ レベル。 たとえば、**エラー**、**警告**、または**情報**。
+properties | ログ エントリ固有の詳細。JSON 文字列としてシリアル化されています。 詳細については、次のセクションを参照してください。
 
-### <a name="execution-logs-properties-schema"></a>実行ログ プロパティのスキーマ
-実行ログには、Stream Analytics ジョブの実行中に発生したイベントに関する情報が含まれます。
-イベントの種類に応じてプロパティのスキーマが異なります。 現在使用されている種類を次に示します。
+### <a name="execution-log-properties-schema"></a>実行ログ プロパティのスキーマ
+
+実行ログには、Stream Analytics ジョブの実行中に発生したイベントに関する情報が含まれます。 イベントの種類に応じてプロパティのスキーマが異なります。 現在使用されている実行ログの種類を次に示します。
 
 ### <a name="data-errors"></a>データ エラー
-このログ カテゴリには、データ処理中のエラーが分類されます。 主にデータの読み取り、シリアル化、および書き込み操作中に生成されます。 汎用イベントとして処理される接続エラーは含まれません。
+
+ジョブがデータを処理している間に発生したエラーはすべて、ログのこのカテゴリに含まれます。 これらのログはほとんどの場合、データ読み取り、シリアル化、書き込み操作が実行されている間に作成されます。 ここには接続エラーが含まれません。 接続エラーは汎用イベントとして扱われます。
 
 名前 | 説明
 ------- | -------
 から | エラーが発生したジョブ入出力の名前。
 メッセージ | エラーに関連付けられているメッセージ。
-型 | エラーの種類。 **DataConversionError、CsvParserError、ServiceBusPropertyColumnMissingError** など。
+型 | エラーの種類。 たとえば、**DataConversionError**、**CsvParserError**、または **ServiceBusPropertyColumnMissingError**。
 データ | エラーの原因を正確に特定するうえで役に立つデータが含まれています。 サイズに応じて切り捨てられます。
 
 データ エラーのスキーマは、**operationName** 値に応じて次のようになります。
-* **イベントをシリアル化** - 入力データがクエリ スキーマを満たしていないときに、イベント読み取り操作中に発生します。
-    * イベントのシリアル化 (逆シリアル化) 中の種類の不一致: エラーを引き起こしたフィールド。
-    * イベントを読み取ることができません。無効なシリアル化: エラーが発生した入力データの場所に関する情報: BLOB 入力の BLOB 名、オフセット、データのサンプル。
-* **イベントを送信** - 書き込み操作: エラーを引き起こしたストリーミング イベント。
+* **シリアル化イベント**。 シリアル化イベントはイベント読み取り操作中に発生します。 これらは、次のいずれかの理由で入力データがクエリ スキーマを満たしていない場合に発生します。
+    * "*イベントのシリアル化 (逆シリアル化) 中の種類の不一致*": エラーを引き起こしたフィールドが特定されます。
+    * "*イベントを読み取ることができない。無効なシリアル化*": エラーが発生した入力データの場所に関する情報が一覧で表示されます。 ここには、BLOB 入力の BLOB 名、オフセット、データのサンプルが含まれます。
+* **送信イベント**。 送信イベントは書き込み操作中に発生します。 エラーを引き起こしたストリーミング イベントが特定されます。
 
 ### <a name="generic-events"></a>汎用イベント
-その他すべて
+
+汎用イベントには、上に挙げた以外のあらゆるイベントが含まれます。
 
 名前 | 説明
 -------- | --------
-エラー | (省略可能) エラー情報。通常は例外情報 (使用できる場合)。
+エラー | (省略可能) エラー情報。 使用できる場合は通常、例外情報です。
 メッセージ| ログ メッセージ。
-型 | メッセージの種類。エラーの内部カテゴリにマップされます: **JobValidationError、BlobOutputAdapterInitializationFailure** など。
-関連付け ID | ジョブの実行を一意に識別する [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)。 ジョブが開始されてから停止するまでに生成された実行ログ エントリすべてに、同じ "関連付け ID" が付けられます。
-
-
+型 | メッセージの種類。 エラーの内部カテゴリにマップされます。 たとえば、**JobValidationError** または **BlobOutputAdapterInitializationFailure**。
+関連付け ID | ジョブの実行を一意に識別する [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)。 ジョブが開始されてから停止するまでに生成された実行ログ エントリすべてに、同じ**関連付け ID** の値が付けられます。
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure Stream Analytics の概要](stream-analytics-introduction.md)
-* [Azure Stream Analytics の使用](stream-analytics-get-started.md)
-* [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
+* [Stream Analytics の概要](stream-analytics-introduction.md)
+* [Stream Analytics の使用](stream-analytics-get-started.md)
+* [Stream Analytics ジョブのスケール設定](stream-analytics-scale-jobs.md)
+* [Stream Analytics クエリ言語リファレンス](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics 管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

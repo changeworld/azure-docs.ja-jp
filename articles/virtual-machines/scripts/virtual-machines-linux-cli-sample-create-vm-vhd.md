@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 03/09/2017
 ms.author: allclark
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: c654db0142df904acc5212b0f53991c54cbf2087
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 9e62713be30a07ae00dac07de21009d2c379d609
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/06/2017
+ms.lasthandoff: 05/15/2017
 
 ---
 
@@ -38,7 +38,7 @@ ssh 公開キーをお使いの公開キーに置き換えることで、VM に�
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-azurecli[メイン](../../../cli_scripts/virtual-machine/create-vm-vhd/create-vm-vhd.sh "VHD を使用して VM を作成する")]
+[!code-azurecli-interactive[メイン](../../../cli_scripts/virtual-machine/create-vm-vhd/create-vm-vhd.sh "VHD を使用して VM を作成する")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 

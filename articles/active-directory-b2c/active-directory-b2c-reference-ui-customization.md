@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: swkrish
-translationtype: Human Translation
-ms.sourcegitcommit: 74b077f6f09d53c9232e5b209a5dd811364ee3f5
-ms.openlocfilehash: c995e0de46c67c5c5d243739b2d36266267bdade
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 8e71a7462a0cbdbd177b088e6757c70eeef31fc7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -335,6 +337,9 @@ ms.openlocfilehash: c995e0de46c67c5c5d243739b2d36266267bdade
 
 ```
 
+## <a name="localizing-your-html-content"></a>HTML コンテンツのローカライズ
+["言語のカスタマイズ"](active-directory-b2c-reference-language-customization.md) をオンにすることで、HTML コンテンツをローカライズできます。  この機能を有効にすると、Azure AD B2C から OIDC パラメーターの `ui-locales` をエンドポイントに転送できるようになります。  このパラメーターを使用して、言語別のカスタム UI ページを提供できます。  
+
 ## <a name="things-to-remember-when-building-your-own-content"></a>独自のコンテンツを構築する際の注意点
 ページの UI カスタマイズ機能を使用する場合には、以下のベスト プラクティスを確認してください。
 
@@ -346,9 +351,4 @@ ms.openlocfilehash: c995e0de46c67c5c5d243739b2d36266267bdade
   * Internet Explorer 9、8 の制限付きサポート
   * Google Chrome 42.0 以降
   * Mozilla Firefox 38.0 以降
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

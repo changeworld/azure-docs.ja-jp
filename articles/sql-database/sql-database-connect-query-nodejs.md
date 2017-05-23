@@ -13,19 +13,19 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 05/07/2017
 ms.author: lbosq
 ms.translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 4de9eb8f55bfda8b223417f5c1ed4e71b0f063c6
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 99c1ce93f30a54fcf0d76b1367c2f9545258c1f9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/21/2017
+ms.lasthandoff: 05/09/2017
 
 
 ---
 # <a name="azure-sql-database-use-nodejs-to-connect-and-query-data"></a>Azure SQL Database: Node.js を使って接続とデータの照会を行う
 
-このクイック スタートでは、Windows、、Ubuntu Linux、Mac の各プラットフォームから [Node.js](https://nodejs.org/en/) を使って Azure SQL Database に接続し、Transact-SQL ステートメントを使ってデータベース内のデータを照会、挿入、更新、削除する方法について説明します。
+このクイック スタートでは、Windows、Ubuntu Linux、Mac の各プラットフォームから [Node.js](https://nodejs.org/en/) を使用して Azure SQL Database に接続し、Transact-SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法について説明します。
 
 このクイック スタートでは、次のいずれかのガイドで作成されたリソースが出発点として使用されます。
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 04/21/2017
 
 ## <a name="install-nodejs"></a>Node.js のインストール 
 
-このセクションの手順では、Node.js による開発には慣れているが、Azure SQL Database を初めて使用するユーザーを想定しています。 Node.js による開発の経験がない場合は、「[Build an app using SQL Server (SQL Server を使用してアプリを構築する)](https://www.microsoft.com/en-us/sql-server/developer-get-started/)」に移動し、**Node.js** を選択してから、使用しているオペレーティング システムを選択します。
+このセクションの手順では、Node.js による開発には慣れていて、Azure SQL Database は初めて使用するユーザーを想定しています。 Node.js による開発の経験がない場合は、「[Build an app using SQL Server (SQL Server を使用してアプリを構築する)](https://www.microsoft.com/en-us/sql-server/developer-get-started/)」に移動し、**Node.js** を選択してから、使用しているオペレーティング システムを選択します。
 
 ### <a name="mac-os"></a>**Mac OS**
 次のコマンドを入力して **brew** をインストールします。これは、Mac OS X と **Node.js** に対応する使いやすいパッケージ マネージャーです。
@@ -70,7 +70,7 @@ Azure SQL データベースに接続するために必要な接続情報を取�
 
 1. [Azure ポータル](https://portal.azure.com/)にログインします。
 2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
-3. データベースの **[概要]** ページで、次の図に示すように、完全修飾サーバー名を確認します。 サーバー名をポイントすると、**[コピーするにはクリックします]** オプションが表示されます。 
+3. データベースの [**概要**] ページで、次の図に示すように、完全修飾サーバー名を確認します。 サーバー名をポイントすると、[**コピーするにはクリックします**] オプションが表示されます。 
 
    ![server-name](./media/sql-database-connect-query-dotnet/server-name.png) 
 
@@ -255,14 +255,10 @@ function deleteFromDatabase(){
 
 
 ## <a name="next-steps"></a>次のステップ
+- [最初の Azure SQL Database の設計](sql-database-design-first-database.md)
+- [SQL Server 用 Microsoft Node.js ドライバー](https://docs.microsoft.com/sql/connect/node-js/node-js-driver-for-sql-server/)
+- [SSMS を使用した接続とクエリ](sql-database-connect-query-ssms.md)
+- [Visual Studio Code を使用した接続とクエリ](sql-database-connect-query-vscode.md)
 
-- [Microsoft Node.js Driver for SQL Server](https://docs.microsoft.com/sql/connect/node-js/node-js-driver-for-sql-server/)
-- SQL Server Management Studio を使用して接続とクエリを実行するには、[SSMS を使用した接続とクエリ](sql-database-connect-query-ssms.md)に関するページを参照してください。
-- Visual Studio を使用して接続とデータの照会を行うには、[Visual Studio Code を使った接続とデータの照会](sql-database-connect-query-vscode.md)に関するページを参照してください。
-- .NET を使用して接続とデータの照会を行うには、[.NET を使った接続とデータの照会](sql-database-connect-query-dotnet.md)に関するページを参照してください。
-- PHP を使用して接続とデータの照会を行うには、[PHP を使った接続とデータの照会](sql-database-connect-query-php.md)に関するページを参照してください。
-- Java を使用して接続とデータの照会を行うには、[Java を使った接続とデータの照会](sql-database-connect-query-java.md)に関するページを参照してください。
-- Python を使用して接続とデータの照会を行うには、[Python を使った接続とデータの照会](sql-database-connect-query-python.md)に関するページを参照してください。
-- Ruby を使用して接続とデータの照会を行うには、[Ruby を使った接続とデータの照会](sql-database-connect-query-ruby.md)に関するページを参照してください。
 
 

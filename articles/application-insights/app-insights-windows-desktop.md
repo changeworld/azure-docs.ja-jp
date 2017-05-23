@@ -3,7 +3,7 @@ title: "Windows デスクトップ アプリでの使用状況とパフォーマ
 description: "HockeyApp と Application Insights を使用して、Windows デスクトップ アプリの使用状況とパフォーマンスを分析します。"
 services: application-insights
 documentationcenter: windows
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 19040746-3315-47e7-8c60-4b3000d2ddc4
 ms.service: application-insights

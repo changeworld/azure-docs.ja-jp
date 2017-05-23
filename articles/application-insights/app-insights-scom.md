@@ -3,7 +3,7 @@ title: "Application Insights による SCOM 統合 | Microsoft Docs"
 description: "SCOM をご使用の場合は、Application Insights でパフォーマンスを監視して問題を診断します。 包括的なダッシュ ボード、スマート アラート、強力な診断ツール、および分析クエリです。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 606e9d03-c0e6-4a77-80e8-61b75efacde0
 ms.service: application-insights

@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: 0782000e87bed0d881be5238c1b91f89a970682c
-ms.openlocfilehash: 37a10d284afa6b9ee2aa65e7ec015c3c364f551d
-ms.lasthandoff: 02/16/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 844f42e61ba443a4b74a52f622113e87a7781913
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -130,7 +131,7 @@ JSON 形式について詳しく説明する予定はありませんが、「 [�
 * データベースとファイアウォール規則が定義されている、`“resources”: […]` 内で入れ子になったリソースには、ルート レベルの SQL Server リソースのリソース ID を指定する `dependsOn` 要素があります。 これは、Azure リソース マネージャーに対して、"このリソースを作成する前に、その他のリソースが既に存在する必要があり、その他のリソースがテンプレートで定義されている場合は、そのリソースを最初に作成すること" を指示します。
   
   > [!NOTE]
-  > `resourceId()`関数の使用方法の詳細については、「[Azure リソース マネージャーのテンプレートの関数](../azure-resource-manager/resource-group-template-functions.md)」を参照してください。
+  > `resourceId()`関数の使用方法の詳細については、「[Azure リソース マネージャーのテンプレートの関数](../azure-resource-manager/resource-group-template-functions-resource.md#resourceid)」を参照してください。
   > 
   > 
 * `dependsOn` 要素のおかげで、Azure リソース マネージャーでは、並行して作成できるリソースと順番に作成する必要があるリソースを認識できます。 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory B2C: カスタム ポリシーのトラブルシューティング | Microsoft Docs"
-description: "Azure Active Directory B2C の問題のトラブルシューティング方法に関するトピック"
+title: "Azure Active Directory B2C: Application Insights を使用したカスタム ポリシーのトラブルシューティング | Microsoft Docs"
+description: "カスタム ポリシーの実行を追跡するための Application Insights の設定方法"
 services: active-directory-b2c
 documentationcenter: 
 author: saeeda
@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 04/04/2017
 ms.author: saeeda
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 2fa67038f2a214c1569fc65fd9f1beba394cb790
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 07eddeb35c2b88b2de08270d9ff5de317cc09ec7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/09/2017
 
 ---
 
@@ -46,11 +46,12 @@ Azure AD B2C では、Application Insights にデータを送信するための�
 1. 次の属性を `<TrustFrameworkPolicy>` 要素に追加します:
 
   ```XML
+  DeploymentMode="Development"
   UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
   ```
 
-1. まだ存在しない場合、子ノード `<UserJourneyBehaviors>` を `<RelyingParty>` ノードに追加します。
-2. 次のノードを `<UserJourneyBehaviors>` 要素の子として追加します。 `{Your Application Insights Key}` の部分は必ず、前のセクションで取得した**インストルメンテーション キー**に置き換えてください。
+1. まだ存在しない場合、子ノード `<UserJourneyBehaviors>` を `<RelyingParty>` ノードに追加します。 `<DefaultUserJourney ReferenceId="YourPolicyName" />` の直後に配置する必要があります。
+2. 次のノードを `<UserJourneyBehaviors>` 要素の子として追加します。 `{Your Application Insights Key}` の部分は必ず、前のセクションで Application Insights から取得した**インストルメンテーション キー**に置き換えてください。
 
   ```XML
   <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
@@ -66,10 +67,12 @@ Azure AD B2C では、Application Insights にデータを送信するための�
     ...
     TenantId="fabrikamb2c.onmicrosoft.com"
     PolicyId="SignUpOrSignInWithAAD"
+    DeploymentMode="Development"
     UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
   >
     ...
     <RelyingParty>
+      <DefaultUserJourney ReferenceId="YourPolicyName" />
       <UserJourneyBehaviors>
         <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
       </UserJourneyBehaviors>
@@ -79,7 +82,7 @@ Azure AD B2C では、Application Insights にデータを送信するための�
 
 3. ポリシーをアップロードします。
 
-### <a name="see-the-logs"></a>ログを確認する
+### <a name="see-the-logs-in-application-insights"></a>Application Insights でログを表示する
 
 >[!NOTE]
 > Application Insights で新しいログが確認できるようになるまで、少し時間がかかります (5 分以内)。
@@ -94,7 +97,14 @@ Azure AD B2C では、Application Insights にデータを送信するための�
 traces | Azure AD B2C によって生成されたすべてのログを確認します |
 traces \| where timestamp > ago(1d) | Azure AD B2C によって生成された直近 1 日分のすべてのログを確認します
 
+エントリは長い可能性があります。  詳細を確認する際は CSV にエクスポートしてください。
+
 分析ツールの詳細については、[こちら](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)を参照してください。
+
+^[!NOTE]
+^ID 開発者を支援するための userjourney ビューアーがコミュニティによって開発されています。  Microsoft によってサポートされていないこのビューアーは、厳密に現状のまま利用可能です。  このビューアーは、Application Insights インスタンスからデータを読み取り、userjourney イベントの適切に構造化された表示を提供します。  ソース コードを入手し、独自のソリューションでデプロイできます。
+
+[サポートされていないカスタム ポリシーのサンプルと関連ツールの GitHub リポジトリ](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies)
 
 
 

@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
+ms.date: 05/03/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: d75088bd83b0b70c889388c95331bb56fe9ba15b
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 951a7849beb9653083ed0112dbbb6cf57175469d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -172,12 +173,15 @@ Azure には、いくつかの組み込みのポリシー定義が用意され�
 
 * `"equals": "value"`
 * `"like": "value"`
+* `"match": "value"`
 * `"contains": "value"`
 * `"in": ["value1","value2"]`
 * `"containsKey": "keyName"`
 * `"exists": "bool"`
 
 **like** 条件を使用する場合は、値にワイルドカード (*) を指定することができます。
+
+**match** 条件を使うときは、任意の数字を表す `#` や任意の文字を表す `?` のほか、具体的な文字を指定することができます。 その例については、「[命名規則の設定](#set-naming-convention)」を参照してください。
 
 ### <a name="fields"></a>フィールド
 条件は、フィールドを使用して構成されます。 フィールドは、リソースの状態の記述に使用されるリソース要求ペイロード内のプロパティを表します。  
@@ -318,6 +322,36 @@ Azure には、いくつかの組み込みのポリシー定義が用意され�
       "field": "name",
       "like": "namePrefix*nameSuffix"
     }
+  },
+  "then": {
+    "effect": "deny"
+  }
+}
+```
+
+特定のパターンと一致するリソース名を指定するには、match 条件を使います。 次の例は、`contoso` で始まりその後に 6 つの文字が続く名前と一致します。
+
+```json
+{
+  "if": {
+    "not": {
+      "field": "name",
+      "match": "contoso??????"
+    }
+  },
+  "then": {
+    "effect": "deny"
+  }
+}
+```
+
+2 桁の数字 + ダッシュ + 3 つの文字 + ダッシュ + 4 桁の数字から成る日付パターンは、次のように入力します。
+
+```json
+{
+  "if": {
+    "field": "tags.date",
+    "match": "##-???-####"
   },
   "then": {
     "effect": "deny"

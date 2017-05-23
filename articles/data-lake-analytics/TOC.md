@@ -17,6 +17,7 @@
 ## 開発
 ### [U-SQL の基本](data-lake-analytics-u-sql-get-started.md)
 ### [U-SQL カタログ](data-lake-analytics-u-sql-catalog.md)
+### [U-SQL 結合](data-lake-analytics-u-sql-combine-data-with-joins.md)
 ### [U-SQL パラメーター](data-lake-analytics-u-sql-parameterize_scripts.md)
 ### [U-SQL ウィンドウ機能](data-lake-analytics-use-window-functions.md)
 ### [U-SQL ユーザー定義演算子](data-lake-analytics-u-sql-develop-user-defined-operators.md)

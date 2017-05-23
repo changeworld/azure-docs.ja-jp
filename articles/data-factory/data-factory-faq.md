@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/24/2017
 ms.author: shlo
-translationtype: Human Translation
-ms.sourcegitcommit: e0c999b2bf1dd38d8a0c99c6cdd4976cc896dd99
-ms.openlocfilehash: c212df3646dce24eb11542884c6ee5084325cb7d
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 6af34cf24a8fb7d2dd8f4c44392e0e6c3ed46b1a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -80,7 +81,7 @@ Data Factory は、**米国西部**と**北ヨーロッパ**で使用できま�
 | [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service)、[Azure SQL Data Warehouse](data-factory-compute-linked-services.md#azure-sql-data-warehouse-linked-service)、[SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[ストアド プロシージャ](data-factory-stored-proc-activity.md) |
 
 ### <a name="how-does-azure-data-factory-compare-with-sql-server-integration-services-ssis"></a>Azure Data Factory と SQL Server Integration Services (SSIS) はどのように違いますか。 
-MVP (Most Valued Professional) の一人である Reza Rad の「[Azure Data Factory と SSIS](http://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS)」プレゼンテーションを参照してください。 Data Factory の最近の変更点の一部は、スライド デッキに表示されない場合があります。 Azure Data factory には、継続的に機能が追加されています。 Azure Data factory には、継続的に機能が追加されています。 これらの更新は、今年中に、マイクロソフトのデータ統合テクノロジの比較に組み込まれる予定です。   
+MVP (Most Valued Professional) の 1 人である Reza Rad の「[Azure Data Factory vs.SSIS (Azure Data Factory とSSIS)](http://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS)」プレゼンテーションを参照してください。 Data Factory の最近の変更点の一部は、スライド デッキに表示されない場合があります。 Azure Data factory には、継続的に機能が追加されています。 Azure Data factory には、継続的に機能が追加されています。 これらの更新は、今年中に、マイクロソフトのデータ統合テクノロジの比較に組み込まれる予定です。   
 
 ## <a name="activities---faq"></a>アクティビティ - FAQ
 ### <a name="what-are-the-different-types-of-activities-you-can-use-in-a-data-factory-pipeline"></a>Data Factory パイプラインで使用できるアクティビティには、どのような種類がありますか。
@@ -156,7 +157,7 @@ Data Factory サービスで作成されたオンデマンド クラスターを
 external プロパティが適切に設定されている場合は、入力データセットの定義で指定された場所に入力データが存在しているかどうかを確認してください。
 
 ### <a name="how-to-run-a-slice-at-another-time-than-midnight-when-the-slice-is-being-produced-daily"></a>スライスを毎日生成している場合、午前 0 時以外の時刻にスライスを実行するにはどうすればよいですか。
-**offset** プロパティを使用して、スライスを生成する時刻を指定します。 このプロパティの詳細については、「 [データセットの可用性](data-factory-create-datasets.md#Availability) 」セクションをご覧ください。 以下に簡単な例を示します。
+**offset** プロパティを使用して、スライスを生成する時刻を指定します。 このプロパティの詳細については、「 [データセットの可用性](data-factory-create-datasets.md#dataset-availability) 」セクションをご覧ください。 以下に簡単な例を示します。
 
 ```json
 "availability":
@@ -193,7 +194,7 @@ external プロパティが適切に設定されている場合は、入力デ�
 6. **[期間]** フィールドに表示されている値を確認します。 この値が、スライスの処理にかかった時間です。   
 
 ### <a name="how-to-stop-a-running-slice"></a>実行中のスライスを停止するにはどうすればよいですか
-パイプラインの実行を停止する必要がある場合は、 [Suspend-AzureDataFactoryPipeline](https://msdn.microsoft.com/library/mt603721.aspx) コマンドレットを使用できます。 現時点では、パイプラインを中断しても、進行中のスライスの実行は停止しません。 進行中の実行が完了すると、追加のスライスは取得されません。
+パイプラインの実行を停止する必要がある場合は、 [Suspend-AzureDataFactoryPipeline](/powershell/module/azurerm.datafactories/suspend-azurermdatafactorypipeline) コマンドレットを使用できます。 現時点では、パイプラインを中断しても、進行中のスライスの実行は停止しません。 進行中の実行が完了すると、追加のスライスは取得されません。
 
 すべての実行をすぐに停止するには、パイプラインをいったん削除した後で再作成するしかありません。 パイプラインを削除する場合は、パイプラインによって使用されているテーブルとリンクされたサービスを削除する必要はありません。
 

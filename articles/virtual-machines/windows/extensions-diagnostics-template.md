@@ -16,10 +16,11 @@ ms.topic: article
 ms.date: 1/23/2017
 ms.author: saurabh
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 2bba3084a27186a2d6f728d6030ec9fa8afd0658
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 52d83b21f2f2346bfeb8d469a9bfb1b64dd4ba23
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -167,7 +168,7 @@ Windows 仮想マシンで診断の拡張機能を有効にするには、リソ
 
 ## <a name="next-steps"></a>次のステップ
 * 診断の拡張機能を含む Windows 仮想マシンの完全なサンプル テンプレートは、「 [201-vm-monitoring-diagnostics-extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension)   
-* [Azure PowerShell](ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) または [Azure コマンド ライン](../linux/cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用してリソース マネージャー テンプレートをデプロイします
+* [Azure PowerShell](ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) または [Azure コマンド ライン](../linux/cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用してリソース マネージャー テンプレートをデプロイします
 * [Azure リソース マネージャーのテンプレートの作成](../../resource-group-authoring-templates.md)
 
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/10/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: cc2a24b26b152671173770adfd4aefcfcb2512d4
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: f1b9beabfb0a92e5cc49d6af762693ae45a85e42
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -89,7 +89,7 @@ ms.lasthandoff: 05/02/2017
 * Data Lake Analytics
 * Data Lake Store
 * DNS
-* DocumentDB
+* Azure Cosmos DB
 * Event Hubs
 * HDInsight クラスター - 「[HDInsight の制限事項](#hdinsight-limitations)」を参照
 * IoT Hub
@@ -126,19 +126,20 @@ ms.lasthandoff: 05/02/2017
 
 * AD Hybrid Health Service
 * Application Gateway
+* Managed Disks を使用する Virtual Machines の可用性セット
 * BizTalk Services
 * Container Service
 * ExpressRoute
 * DevTest ラボ - 同じサブスクリプション内の新しいリソース グループへの移動が有効になっています。ただし、サブスクリプション間の移動は有効になっていません。
 * Dynamics LCS
+* Managed Disks から作成されたイメージ
+* Managed Disks
+* マネージ アプリケーション
 * Recovery Services コンテナー - Recovery Services コンテナーに関連付けられているコンピューティング リソース、ネットワーク リソース、ストレージ リソースも移動できません。「[Recovery Services の制限事項](#recovery-services-limitations)」をご覧ください。
 * セキュリティ
+* Managed Disks から作成されたスナップショット
 * 証明書が Key Vault に格納されている Virtual Machines
 * Managed Disks を使用する Virtual Machines
-* Managed Disks を使用する Virtual Machines の可用性セット
-* Managed Disks
-* Managed Disks から作成されたイメージ
-* Managed Disks から作成されたスナップショット
 * Virtual Networks (クラシック) - 「 [クラシック デプロイメントの制限事項](#classic-deployment-limitations)
 * Marketplace のリソースから作成された Virtual Machines は、サブスクリプション間で移動できません。 現在のサブスクリプションでリソースをプロビジョニング解除し、新しいサブスクリプションにデプロイし直す必要があります。
 
@@ -214,7 +215,7 @@ HDInsight クラスターを新しいサブスクリプションに移動する�
 * 対象のサブスクリプションには、他のクラシック リソースは含めないでください。
 * クラシック リソースの場合、移動は、別の REST API を通じてのみ要求できます。 標準の Resource Manager の移動コマンドは、クラシック リソースを新しいサブスクリプションに移動する場合は機能しません。
 
-クラシック リソースを新しいサブスクリプションに移動する場合は、ポータルまたはクラシック リソース固有の REST 操作のいずれかを使用する必要があります。 ポータルを使用したクラシック リソースの移動については、「[Use portal (ポータルの使用)](#use-portal)」を参照してください。 REST を使用するには、次の手順を実行します。
+クラシック リソースを新しいサブスクリプションに移動する場合は、クラシック リソース固有の REST 操作を使用してください。 REST を使用するには、次の手順を実行します。
 
 1. 移動元のサブスクリプションがサブスクリプション間の移動に参加できることを確認します。 次の操作を行います。
 

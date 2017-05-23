@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 02/28/2017
 ms.author: nepeters
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: ab824eca29dd0957199b708be818a451e94bdbbc
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 77e17011e2f3764b70f17604337e0fcbcfd22ede
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/06/2017
+ms.lasthandoff: 05/15/2017
 
 ---
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 04/06/2017
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-azurecli[main](../../../cli_scripts/virtual-machine/create-vm-windows-iis/create-vm-windows-iis.sh "VM の簡易作成")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-windows-iis/create-vm-windows-iis.sh "VM の簡易作成")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 

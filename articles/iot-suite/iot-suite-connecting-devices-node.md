@@ -144,7 +144,7 @@ ms.lasthandoff: 04/10/2017
         // Complete the response
         response.send(200, "Rebooting device", function(err) {
             if(!!err) {
-                console.error('An error ocurred when sending a method response:\n' + err.toString());
+                console.error('An error occurred when sending a method response:\n' + err.toString());
             } else {
                 console.log('Response to method \'' + request.methodName + '\' sent successfully.' );
             }
@@ -161,7 +161,7 @@ ms.lasthandoff: 04/10/2017
         // Complete the response
         response.send(200, "Firmware update initiated", function(err) {
             if(!!err) {
-                console.error('An error ocurred when sending a method response:\n' + err.toString());
+                console.error('An error occurred when sending a method response:\n' + err.toString());
             } else {
                 console.log('Response to method \'' + request.methodName + '\' sent successfully.' );
             }

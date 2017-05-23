@@ -11,16 +11,16 @@ ms.assetid:
 ms.service: cosmosdb
 ms.custom: sample
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 05/10/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: ffdf78a42d5ff6ec2500167ecf1f31f17db3b830
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: e6cffef6559f5486bdfb111808a19da9a1391b6f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/15/2017
 
 ---
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 05/10/2017
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-azurecli[メイン](../../../cli_scripts/cosmosdb/secure-cosmosdb-regenerate-keys/secure-cosmosdb-regenerate-keys.sh?highlight=27-31 "Azure Cosmos DB アカウント キーを再生成する")]
+[!code-azurecli-interactive[メイン](../../../cli_scripts/cosmosdb/secure-cosmosdb-regenerate-keys/secure-cosmosdb-regenerate-keys.sh?highlight=27-31 "Azure Cosmos DB アカウント キーを再生成する")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 

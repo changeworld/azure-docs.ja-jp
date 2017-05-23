@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: 65385aa918222837468f88246d0527c22c677ba7
-ms.openlocfilehash: 20af9a9bfa1086d13a770e4cd7cd8c58a8060b0b
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 810c1cedd4fe0bd6ecdf9bd32dfb241f5f345300
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -43,7 +45,7 @@ ms.openlocfilehash: 20af9a9bfa1086d13a770e4cd7cd8c58a8060b0b
 [!INCLUDE [cache-deploy-parameters](../../includes/cache-deploy-parameters.md)]
 
 ## <a name="variables-for-names"></a>名前用の変数
-このテンプレートでは、リソースの名前を作成する変数を使用します。 [uniqueString](../azure-resource-manager/resource-group-template-functions.md#uniquestring) 関数を使用し、リソース グループの ID に基づく値を構築します。
+このテンプレートでは、リソースの名前を作成する変数を使用します。 [uniqueString](../azure-resource-manager/resource-group-template-functions-string.md#uniquestring) 関数を使用し、リソース グループの ID に基づく値を構築します。
 
     "variables": {
       "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
@@ -125,9 +127,4 @@ Redis Cache との連動を可能にするアプリ設定プロパティで Web 
 
 ### <a name="azure-cli"></a>Azure CLI
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-with-redis-cache/azuredeploy.json -g ExampleDeployGroup
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

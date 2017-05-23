@@ -12,12 +12,13 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 04/21/2017
+ms.date: 05/04/2017
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 08a83bf8dca71846dd06edb9aa253f69c24d253c
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 000440fb2c38eadc0ffdcab84a3c23bb034e834f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -27,20 +28,22 @@ ms.lasthandoff: 04/27/2017
 
 ![Azure アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
-このチュートリアルは、2 つの DNS 名を、App Service のアプリにマップする 3 つの一般的なシナリオを示しています。
+このチュートリアルで学習する内容は次のとおりです。
 
-- `www.contoso.com` - `contoso.com` のサブドメイン。 CNAME レコードを使用して、アプリにマップします。
-- `contoso.com` - ルート ドメイン。 A レコードを使用して、アプリにマップします。
-- `*.contoso.com` - ワイルドカード ドメイン。 CNAME レコードを使用して、アプリにマップします。
+> [!div class="checklist"]
+> * CNAME レコードを使用してサブドメイン (たとえば `www.contoso.com`) をマップする
+> * A レコードを使用してルート ドメイン (たとえば `contoso.com`) をマップする
+> * CNAME レコードを使用してワイルドカード ドメイン (たとえば `*.contoso.com`) をマップする
+> * スクリプトでドメイン マッピングを自動化する
 
 **CNAME レコード**または **A レコード**のいずれかを使用して、カスタム DNS 名を App Service にマップします。
 
 > [!NOTE]
-> ルート ドメイン (contoso.com など) を除くすべてのカスタム DNS 名の CNAME を使用することをお勧めします。 
+> ルート ドメイン (`contoso.com` など) を除くすべてのカスタム DNS 名に CNAME を使用することをお勧めします。 
 > 
 > 
 
-## <a name="before-you-begin"></a>開始する前に
+## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを完了するには、ドメイン プロバイダー (GoDaddy など) の DNS レジストリへのアクセス権と、ドメインを編集するためのアクセス許可が必要です。 
 
@@ -195,6 +198,8 @@ DNS レコードの管理ページを探します。 各ドメイン プロバ�
 >
 >
 
+<a name="create-a"></a>
+
 ### <a name="create-the-a-record"></a>A レコードを作成する
 
 A レコードをアプリにマップする場合、App Service では実際には次の **2 つ**の DNS レコードが必要になります。
@@ -325,8 +330,10 @@ DNS レコード ページは、次のスクリーンショットのようにな
 次のコマンドでは、構成済みカスタム DNS 名を App Service アプリに追加します。 
 
 ```bash 
-az appservice web config hostname add --webapp <app_name> --resource-group <resourece_group_name> \ 
---name <fully_qualified_domain_name> 
+az appservice web config hostname add \
+    --webapp <app_name> \
+    --resource-group <resourece_group_name> \ 
+    --name <fully_qualified_domain_name> 
 ``` 
 
 詳細については、「[カスタム ドメインを Web アプリにマップする](scripts/app-service-cli-configure-custom-domain.md)」を参照してください 
@@ -336,13 +343,26 @@ az appservice web config hostname add --webapp <app_name> --resource-group <reso
 次のコマンドでは、構成済みカスタム DNS 名を App Service アプリに追加します。 
 
 ```PowerShell  
-Set-AzureRmWebApp -Name <app_name> -ResourceGroupName <resourece_group_name> ` 
--HostNames @(<fully_qualified_domain_name>,"<app_name>.azurewebsites.net") 
+Set-AzureRmWebApp `
+    -Name <app_name> `
+    -ResourceGroupName <resourece_group_name> ` 
+    -HostNames @("<fully_qualified_domain_name>","<app_name>.azurewebsites.net") 
 ```
 
 詳細については、「[カスタム ドメインを Web アプリに割り当てる](scripts/app-service-powershell-configure-custom-domain.md)」を参照してください。
 
-## <a name="more-resources"></a>その他のリソース
+## <a name="next-steps"></a>次のステップ
 
-[Azure App Service で App Service ドメインを構成する](custom-dns-web-site-buydomains-web-app.md)
+このチュートリアルで学習した内容は次のとおりです。
+
+> [!div class="checklist"]
+> * CNAME レコードを使用してサブドメインをマップする
+> * A レコードを使用してルート ドメインをマップする
+> * CNAME レコードを使用してワイルドカード ドメインをマップする
+> * スクリプトでドメイン マッピングを自動化する
+
+次のチュートリアルに進み、カスタム SSL 証明書をバインドする方法を学習してください。
+
+> [!div class="nextstepaction"]
+> [既存のカスタム SSL 証明書の Azure Web Apps へのバインド](app-service-web-tutorial-custom-ssl.md)
 

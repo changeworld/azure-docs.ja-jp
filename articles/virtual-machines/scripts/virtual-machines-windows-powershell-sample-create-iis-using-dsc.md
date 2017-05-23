@@ -27,7 +27,7 @@ ms.lasthandoff: 04/27/2017
 
 このスクリプトでは、Windows Server 2016 を実行する Azure 仮想マシンを作成してから、Azure 仮想マシンの DSC 拡張機能を使用して IIS をインストールします。 このスクリプトを実行すると、仮想マシンのパブリック IP アドレス上にあるの既定 IIS Web サイトにアクセスできるようになります。
 
-[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
+[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

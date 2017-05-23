@@ -12,6 +12,7 @@
 ### [既にライブの Web アプリ](app-insights-monitor-performance-live-website-now.md)
 ### [Windows サービス](app-insights-windows-services.md)
 ### [Windows デスクトップ](app-insights-windows-desktop.md)
+### [ASP.NET Core](app-insights-asp-net-core.md)
 
 ## Java アプリの監視
 ### [Web アプリ](app-insights-java-get-started.md)
@@ -33,7 +34,8 @@
 ## 計画と設計
 ### [Web アプリおよびサービスの詳細な診断](app-insights-devops.md)
 ### [Web アプリケーションのパフォーマンスを監視する](app-insights-web-monitor-performance.md)
-### [Application Insights リソースの分離](app-insights-separate-resources.md)
+### [開発、テスト、運用の分離](app-insights-separate-resources.md)
+### [複数のロールを持つアプリの監視](app-insights-monitor-multi-role-apps.md)
 ### [Application Insights での作業](app-insights-how-do-i.md)
 
 
@@ -112,7 +114,6 @@
 ### [カスタム イベントとメトリックの API](app-insights-api-custom-events-metrics.md)
 ### [テレメトリのフィルター処理および前処理](app-insights-api-filtering-sampling.md)
 ### [サンプリング](app-insights-sampling.md)
-### [ASP.NET Core](app-insights-asp-net-core.md)
 
 ## 管理
 ### [価格とクォータの管理](app-insights-pricing.md)
