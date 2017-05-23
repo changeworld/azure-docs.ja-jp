@@ -51,29 +51,29 @@ IEF では、要求を介してデータが送受信されます。  API との�
 
 "playerTag" として期待する要求を受け取り、この要求が存在するかどうかを検証する Azure 関数を既に作成してあります。 完全な Azure 関数のコードは、[GitHub](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples) から入手できます。
 
-```
+```csharp
 if (requestContentAsJObject.playerTag == null)
+{
+  return request.CreateResponse(HttpStatusCode.BadRequest);
+}
+
+var playerTag = ((string) requestContentAsJObject.playerTag).ToLower();
+
+if (playerTag == "mcvinny" || playerTag == "msgates123" || playerTag == "revcottonmarcus")
+{
+  return request.CreateResponse<ResponseContent>(
+    HttpStatusCode.Conflict,
+    new ResponseContent
     {
-        return request.CreateResponse(HttpStatusCode.BadRequest);
-    }
+      version = "1.0.0",
+      status = (int) HttpStatusCode.Conflict,
+      userMessage = $"The player tag '{requestContentAsJObject.playerTag}' is already used."
+    },
+    new JsonMediaTypeFormatter(),
+    "application/json");
+}
 
-    var playerTag = ((string) requestContentAsJObject.playerTag).ToLower();
-
-    if (playerTag == "mcvinny" || playerTag == "msgates123" || playerTag == "revcottonmarcus")
-    {
-        return request.CreateResponse<ResponseContent>(
-            HttpStatusCode.Conflict,
-            new ResponseContent
-            {
-                version = "1.0.0",
-                status = (int) HttpStatusCode.Conflict,
-                userMessage = $"The player tag '{requestContentAsJObject.playerTag}' is already used."
-            },
-            new JsonMediaTypeFormatter(),
-            "application/json");
-    }
-
-    return request.CreateResponse(HttpStatusCode.OK);
+return request.CreateResponse(HttpStatusCode.OK);
 ```
 
 Azure 関数によって返される `userMessage` 要求は Identity Experience Framework によって期待され、検証が失敗した場合 (たとえば、上記の例の 409 競合状態が返されたとき) に文字列としてユーザーに表示されます。
@@ -85,35 +85,30 @@ Azure 関数によって返される `userMessage` 要求は Identity Experience
 > [!NOTE]
 > 以下でプロトコルとして記述されている "Restful Provider, Version 1.0.0.0" は、外部サービスと対話する関数として考えてください。  スキーマの完全な定義の取得先: <!-- TODO: Link to RESTful Provider schema definition>-->
 
-```
+```xml
 <ClaimsProvider>
-        <DisplayName>REST APIs</DisplayName>
-        <TechnicalProfiles>
-            <TechnicalProfile Id="AzureFunctions-CheckPlayerTagWebHook">
-
-                    <DisplayName>Check Player Tag Web Hook Azure Function</DisplayName>
-                    <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-                    <Metadata>
-                        <Item Key="ServiceUrl">https://wingtipb2cfuncs.azurewebsites.net/api/CheckPlayerTagWebHook?code=L/05YRSpojU0nECzM4Tp3LjBiA2ZGh3kTwwp1OVV7m0SelnvlRVLCg==</Item>
-                        <Item Key="AuthenticationType">None</Item>
-                        <Item Key="SendClaimsIn">Body</Item>
-                    </Metadata>
-                    <InputClaims>
-                        <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="playerTag" />
-                    </InputClaims>
-                    <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
-            </TechnicalProfile>
-
-
-            <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
-
-                <ValidationTechnicalProfiles>       
-                    <ValidationTechnicalProfile ReferenceId="AzureFunctions-CheckPlayerTagWebHook" />       
-                </ValidationTechnicalProfiles>
-
-            </TechnicalProfile>
-        </TechnicalProfiles>
-    </ClaimsProvider>
+    <DisplayName>REST APIs</DisplayName>
+    <TechnicalProfiles>
+        <TechnicalProfile Id="AzureFunctions-CheckPlayerTagWebHook">
+            <DisplayName>Check Player Tag Web Hook Azure Function</DisplayName>
+            <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+            <Metadata>
+                <Item Key="ServiceUrl">https://wingtipb2cfuncs.azurewebsites.net/api/CheckPlayerTagWebHook?code=L/05YRSpojU0nECzM4Tp3LjBiA2ZGh3kTwwp1OVV7m0SelnvlRVLCg==</Item>
+                <Item Key="AuthenticationType">None</Item>
+                <Item Key="SendClaimsIn">Body</Item>
+            </Metadata>
+            <InputClaims>
+                <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="playerTag" />
+            </InputClaims>
+            <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
+        </TechnicalProfile>
+        <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
+            <ValidationTechnicalProfiles>
+                <ValidationTechnicalProfile ReferenceId="AzureFunctions-CheckPlayerTagWebHook" />
+            </ValidationTechnicalProfiles>
+        </TechnicalProfile>
+    </TechnicalProfiles>
+</ClaimsProvider>
 ```
 
 `InputClaims` 要素は、IEF から REST サービスに送信される要求を定義します。 上の例では、要求 `givenName` の内容が `playerTag` として REST サービスに送信されます。 この例では、IEF は要求が返されることを期待せず、代わりに REST サービスからの応答を待機し、受信した状態コードに基づいて動作します。
