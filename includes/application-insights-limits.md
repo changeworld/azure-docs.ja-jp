@@ -8,11 +8,12 @@
 | データの保持 | 90 日間 | このリソースは、[Search](../articles/application-insights/app-insights-diagnostic-search.md)、[Analytics](../articles/application-insights/app-insights-analytics.md)、および[メトリックス エクスプローラー](../articles/application-insights/app-insights-metrics-explorer.md)用です。
 | [可用性の複数手順のテスト](../articles/application-insights/app-insights-monitor-web-app-availability.md#multi-step-web-tests)の詳細な結果の保持 | 90 日間 | このリソースは、各手順の詳細な結果を提供します。
 | イベントの最大サイズ | 64 K | 
-| プロパティとメトリック名の長さ | 150 | 詳細については、下のコメントを参照してください。
-| プロパティ値の文字列の長さ | 8,192 | 詳細については、下のコメントを参照してください。
-| トレースおよび例外のメッセージ長 | 10 k | 詳細については、下のコメントを参照してください。
+| プロパティとメトリック名の長さ | 150 | [型スキーマ](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/)に関するページを参照してください。
+| プロパティ値の文字列の長さ | 8,192 | [型スキーマ](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/)に関するページを参照してください。
+| トレースおよび例外のメッセージ長 | 10 k | [型スキーマ](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/)に関するページを参照してください。
 | アプリあたりの[可用性テスト](../articles/application-insights/app-insights-monitor-web-app-availability.md)の数  | 10 |
+| [プロファイラー](../articles/application-insights/app-insights-profiler.md)のデータ保持期間 | 5 日 |
+| [プロファイラー](../articles/application-insights/app-insights-profiler.md)の 1 日あたりの送信データ | 10 GB |
 
 詳細については、[Application Insights の価格とクォータ](../articles/application-insights/app-insights-pricing.md)に関するページを参照してください。
 
-データ フィールドの制限の詳細については、[種類ごとのスキーマ](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/)を参照してください。

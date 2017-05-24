@@ -1,6 +1,6 @@
 ---
 title: "ポータルで Azure Search にデータをインポート | Microsoft Docs"
-description: "Azure Portal で Azure Search のデータのインポート ウィザードを使用して、Azure VM 上の NoSQL DocumentDB、Blob Storage、Table Storage、SQL Database、SQL Server から Azure データをクロールします。"
+description: "Azure Portal で Azure Search のデータのインポート ウィザードを使用して、NoSQL Azure Cosmos DB、Blob Storage、Table Storage、SQL Database、Azure VM 上の SQL Server から Azure データをクロールします。"
 services: search
 documentationcenter: 
 author: HeidiSteen
@@ -13,11 +13,13 @@ ms.devlang: na
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 02/08/2017
+ms.date: 05/01/2017
 ms.author: heidist
-translationtype: Human Translation
-ms.sourcegitcommit: d19a85e127b548e5f8979358879e8b9354934904
-ms.openlocfilehash: c03c26d0e5ea2529162262664412f4f8f7e854dc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: a3e6dd66197a17bfdc80c04130e198b787692a58
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -32,21 +34,21 @@ Azure Portal では、データをインデックスに読み込む**データ�
 * ソースのデータ構造に基づいて変更可能なインデックス スキーマを生成する
 * データ ソースから取得した行セットを使用してインデックスに JSON ドキュメントを読み込む
 
-DocumentDB のサンプル データを使用して、このワークフローを試してみることができます。 手順については、 [Azure Portal での Azure Search の使用](search-get-started-portal.md) に関するページを参照してください。
+Azure Cosmos DB のサンプル データを使用して、このワークフローを試してみることができます。 手順については、 [Azure Portal での Azure Search の使用](search-get-started-portal.md) に関するページを参照してください。
 
 > [!NOTE]
-> **データのインポート** ウィザードを DocumentDB ダッシュボードから起動して、そのデータ ソースのインデックス作成を簡略化できます。 左側のナビゲーションで、**[コレクション]** > **[Add Azure Search (Azure Search の追加)]** に移動します。
+> **データのインポート** ウィザードを Azure Cosmos DB ダッシュボードから起動して、そのデータ ソースのインデックス作成を簡略化できます。 左側のナビゲーションで、**[コレクション]** > **[Add Azure Search (Azure Search の追加)]** に移動します。
 
 ## <a name="data-sources-supported-by-the-import-data-wizard"></a>データのインポート ウィザードでサポートされるデータ ソース
 データのインポート ウィザードでは、次のデータ ソースがサポートされています。 
 
 * Azure SQL Database
 * Azure VM 上の SQL Server のリレーショナル データ
-* Azure DocumentDB
+* Azure Cosmos DB
 * Azure BLOB ストレージ
 * Azure テーブル ストレージ
 
-フラット化されたデータセットの入力が必要です。 データは&1; つのテーブル、データベース ビュー、または同等のデータ構造からのみインポートできます。 ウィザードを実行する前に、このデータ構造を作成する必要があります。
+フラット化されたデータセットの入力が必要です。 データは 1 つのテーブル、データベース ビュー、または同等のデータ構造からのみインポートできます。 ウィザードを実行する前に、このデータ構造を作成する必要があります。
 
 ## <a name="connect-to-your-data"></a>データへの接続
 1. [Azure Portal](https://portal.azure.com) にサインインし、サービス ダッシュボードを開きます。 ジャンプ バーの **[More services (その他のサービス)]** をクリックすると、現在のサブスクリプションの既存の "検索サービス" を検索できます。 
@@ -58,7 +60,7 @@ DocumentDB のサンプル データを使用して、このワークフロー�
 | **既存のデータ ソース** |Search サービスに定義済みのインデクサーが既にある場合は、別のインポート用に既存のデータ ソース定義を選択できます。 |
 | **Azure SQL Database** |サービス名、読み取り権限を持つデータベース ユーザーの資格情報、データベース名は、このページで、または ADO.NET 接続文字列を使用して指定できます。 接続文字列のオプションを選択して、プロパティを表示またはカスタマイズします。 <br/><br/>行セットを提供するテーブルまたはビューは、このページで指定する必要があります。 このオプションは接続に成功すると表示され、ドロップダウン リストから選択できます。 |
 | **Azure VM 上の SQL Server** |接続文字列として、完全修飾サービス名、ユーザー ID とパスワード、データベースを指定します。 このデータ ソースを使用するには、接続を暗号化する証明書をローカル ストアにあらかじめインストールしておく必要があります。 手順については、[Azure Search への SQL VM 接続](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)に関する記事をご覧ください。 <br/><br/>行セットを提供するテーブルまたはビューは、このページで指定する必要があります。 このオプションは接続に成功すると表示され、ドロップダウン リストから選択できます。 |
-| **DocumentDB** |要件には、アカウント、データベース、コレクションが含まれます。 コレクション内のすべてのドキュメントはインデックスに含まれます。 クエリを定義して、行セットをフラット化またはフィルター処理したり、以降のデータ更新操作のためにドキュメントの変更を検出したりできます。 |
+| **Azure Cosmos DB** |要件には、アカウント、データベース、コレクションが含まれます。 コレクション内のすべてのドキュメントはインデックスに含まれます。 クエリを定義して、行セットをフラット化またはフィルター処理したり、以降のデータ更新操作のためにドキュメントの変更を検出したりできます。 |
 | **Azure Blob Storage** |要件には、ストレージ アカウントとコンテナーが含まれます。 BLOB 名がグループ化のために仮想名前付け規則に従っている場合は、必要に応じて、コンテナーの下のフォルダーとして名前の仮想ディレクトリの部分を指定できます。 詳しくは、[Blob Storage のインデックス作成](search-howto-indexing-azure-blob-storage.md)に関する記事をご覧ください。 |
 | **Azure Table Storage** |要件には、ストレージ アカウントとテーブル名が含まれます。 必要に応じて、クエリを指定してテーブルのサブセットを取得できます。 詳しくは、[Table Storage のインデックス作成](search-howto-indexing-azure-tables.md)に関する記事をご覧ください。 |
 
@@ -113,16 +115,11 @@ DocumentDB のサンプル データを使用して、このワークフロー�
 インデクサーの詳細については、次のリンク先を参照してください。
 
 * [Azure SQL Database のインデックス作成](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [DocumentDB のインデックス作成](search-howto-index-documentdb.md)
+* [Azure Cosmos DB のインデックス作成](search-howto-index-documentdb.md)
 * [Blob Storage のインデックス作成](search-howto-indexing-azure-blob-storage.md)
 * [Table Storage のインデックス作成](search-howto-indexing-azure-tables.md)
 
 <!--Image references-->
 [1]: ./media/search-import-data-portal/search-import-data-command.png
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 
