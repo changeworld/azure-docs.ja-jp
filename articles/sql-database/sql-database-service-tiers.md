@@ -17,10 +17,10 @@ ms.workload: data-management
 wms.date: 04/26/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 0ab804ee1dc25f1e44be856564ac8ffa87c54dea
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: 3300c4e79ddc6c8e04c3b4d80b3ee07bd6aeea9d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -50,8 +50,11 @@ ms.lasthandoff: 04/27/2017
 | **サービス レベルの機能** | **Basic** | **Standard** | **Premium** | **Premium RS**|
 | :-- | --: | --: | --: | --: |
 | 単一データベースの最大サイズ | 2 GB | 250 GB | 4 TB*  | 500 GB  |
-| エラスティック プール内のデータベースの最大サイズ | 156 GB | 2.9 TB | 500 GB | 500 GB |
+| エラスティック プールの最大サイズ | 156 GB | 2.9 TB | 4 TB* | 750 GB |
+| エラスティック プール内のデータベースの最大サイズ | 2 GB | 250 GB | 500 GB | 500 GB |
 | プールあたりのデータベースの最大数 | 500  | 500 | 100 | 100 |
+| 単一データベースの最大 DTU | 5 | 100 | 4000 | 1,000 |
+| エラスティック プール内のデータベースあたりの最大 DTU | 5 | 100 | 4000 | 1,000 |
 | データベース バックアップのリテンション期間 | 7 日 | 35 日 | 35 日 | 35 日 |
 ||||||
 
@@ -61,7 +64,7 @@ ms.lasthandoff: 04/27/2017
 
 最小限のサービス レベルを決定したら、データベースのパフォーマンス レベル (DTU 数) を決定できるようになります。 多くの場合、出発点として Standard S2 および S3 というパフォーマンス レベルが適しています。 CPU または IO の要件が高いデータベースの場合は、Premium のパフォーマンス レベルが出発点として適しています。 Premium では、より多くの CPU が提供されるため、最も高い Standard パフォーマンス レベルと比較して 10 倍超える IO から始まります。
 
-## <a name="single-database-service-tiers-and-performance-levels"></a>Single Database サービス階層とパフォーマンス レベル
+## <a name="single-database-service-tiers-and-performance-levels"></a>単一データベース サービス階層とパフォーマンス レベル
 単一データベースでは、各サービス レベル内に複数のパフォーマンス レベルがあります。 Azure Portal、[PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md)、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-database)、C#、および REST API を使用して、ワークロードの需要に最も合ったレベルを選択できる柔軟性があります。  
 
 ホストされるデータベースの数にかかわらず、データベースは所定のリソースを取得します。データベースの期待されるパフォーマンス特性には影響しません。
@@ -72,9 +75,9 @@ ms.lasthandoff: 04/27/2017
 > このサービス層テーブルのその他すべての行の詳細については、「 [サービス層の機能と制限](sql-database-performance-guidance.md#service-tier-capabilities-and-limits)」を参照してください。
 > 
 
-## <a name="scaling-up-or-scaling-down-a-single-database"></a>1 つのデータベースのスケールアップとスケールダウン
+## <a name="scaling-up-or-scaling-down-a-single-database"></a>単一データベースのスケールアップとスケールダウン
 
-最初にサービス レベルとパフォーマンス レベルを選んだ後、実際の使用感に基づいて、1 つのデータベースを動的にスケールアップまたはスケールダウンすることができます。 スケールアップまたはスケールダウンする必要がある場合は、Azure Portal、[PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md)、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-database)、C#、および REST API を使用してデータベースのレベルを簡単に変更することができます。 
+最初にサービス レベルとパフォーマンス レベルを選んだ後、実際の使用感に基づいて、単一データベースを動的にスケールアップまたはスケールダウンすることができます。 スケールアップまたはスケールダウンする必要がある場合は、Azure Portal、[PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md)、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-database)、C#、および REST API を使用してデータベースのレベルを簡単に変更することができます。 
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player]
 >
@@ -93,11 +96,9 @@ ms.lasthandoff: 04/27/2017
 
 プールでは、データベースが eDTU リソースを共有して使用することができ、プール内の各データベースに特定のパフォーマンス レベルを割り当てる必要はありません。 たとえば、Standard プール内の単一データベースで使用できるのは、0 eDTU から、プールの構成時に設定した最大データベース eDTU までとなります。 プールでは、多様なワークロードを持つ複数のデータベースが、プール全体で利用可能な eDTU リソースを効率的に使用できます。 詳細については、 [エラスティック プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool.md) に関する記事を参照してください。
 
-次の表では、プールのサービス階層の特性について説明します。
+次の表は、エラスティック プールのリソース制限を示します。  エラスティック プール内の個々のリソース制限は、一般的に DTU やサービス層に基づくプール外の単一のデータベースのリソース制限と同じです。  たとえば、S2 データベースの最大同時実行ワーカー数は 120 ワーカーです。  そのため、プール内の各データベースの最大 DTU が 50 DTU (S2 と同じ) の場合、Standard プール内のデータベースの最大同時実行ワーカー数も 120 ワーカーです。
 
 [!INCLUDE [SQL DB service tiers table for elastic pools](../../includes/sql-database-service-tiers-table-elastic-pools.md)]
-
-プール内の各データベースは、該当するレベルにおける単一データベースの特性にも従います。 たとえば、Basic プールでは、プールあたりの最大セッション数が 4,800 ～ 28,800 の範囲に制限されます。ただし、Basic プール内の個々のデータベースでは、データベースあたりのセッション数が 300 に制限されます。
 
 ## <a name="scaling-up-or-scaling-down-an-elastic-pool"></a>エラスティック プールのスケールアップとスケールダウン
 
@@ -110,7 +111,7 @@ ms.lasthandoff: 04/27/2017
 
 ## <a name="creating-or-upgrading-to-4tb"></a>4 TB の作成またはアップグレード
 
-以下のセクションでは、4 TB のオプションの実装について詳しく説明します。
+以下のセクションでは、4 TB オプションの実装について詳しく説明します。
 
 ### <a name="creating-in-the-azure-portal"></a>Azure Portal での作成
 

@@ -3,7 +3,7 @@ title: "Azure Application Insights を使用してライブ ASP.NET Web アプ�
 description: "Web サイトを再デプロイせずにそのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。"
 services: application-insights
 documentationcenter: .net
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
@@ -11,12 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/08/2017
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 88abdb41a403f9c1dc85e574c655c532ee9b1eb5
-ms.lasthandoff: 04/13/2017
+ms.date: 05/05/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 769377af7bf62d35c45c6e2e7b0ae3311b784894
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -59,6 +60,20 @@ Application Insights を .NET Web アプリケーションに適用する方法�
     ![Application Insights のクリック](./media/app-insights-monitor-performance-live-website-now/azure-web-view-more.png)
 
 [クラウドと VM アプリの監視](app-insights-azure.md)
+
+### <a name="enable-client-side-monitoring-in-azure"></a>Azure でクライアント側の監視を有効にする
+
+Azure で Application Insights を有効にしている場合は、ページ ビューとユーザー テレメトリを追加できます。
+
+1. [設定]、[アプリケーションの設定] の順に選択します
+2.  [アプリ設定] で、新しいキー値ペアを追加します。 
+   
+    キー: `APPINSIGHTS_JAVASCRIPT_ENABLED` 
+    
+    値: `true`
+3. 設定を **[保存]** し、アプリを **[再起動]** します。
+
+Application Insights JavaScript SDK が各 Web ページに挿入されるようになりました。
 
 ## <a name="monitor-a-live-iis-web-app"></a>ライブ IIS Web アプリの監視
 
