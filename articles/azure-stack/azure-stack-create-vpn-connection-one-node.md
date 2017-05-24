@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/24/2017
 ms.author: scottnap
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 694fdbd6b08553a1eaabe2aae95024a5b5c23030
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 8f9685d3d6647e1ee771b4f3b381ad2e2e2c0cb9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -305,7 +306,7 @@ You need to follow these steps in BOTH POC environments.
 > [!NOTE] 
 > The `-InternalAddress` parameter here is the Public IP Address of the Virtual Network Gateway you created earlier.  To find this IP address, look at the properties of the Virtual Network Gateway blade, and find the value for the Public IP Address.       
 
-9. Finally, you must configure NAT traversal which uses port 4500 to successfully establish the complete IPEC tunnel over NAT devices.
+9. Finally, you must configure NAT traversal which uses port 4500 to successfully establish the complete IPSEC tunnel over NAT devices.
    
         Add-NetNatStaticMapping -NatName BGPNAT -Protocol UDP -ExternalIPAddress 10.16.169.131 -InternalIPAddress 192.168.102.1 -ExternalPort 4500 -InternalPort 4500
 > [!NOTE] 
