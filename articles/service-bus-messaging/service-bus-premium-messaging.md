@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 04/28/2017
 ms.author: darosa;sethm;jotaub
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: 72e4c59e1282d97cfc5aa5f55861c6f70d419ce8
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: a916f643c7e6727d6053865d1c0bd2f683a53b3f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -48,11 +48,17 @@ Service Bus メッセージングに *Premium* レベルを導入して、ミッ
 
 ### <a name="partitioned-queues-and-topics"></a>パーティション分割されたキューとトピック
 
-パーティション分割されたキューとトピックは Premium メッセージングでサポートされます。実際には、これらのエンティティは常にパーティション分割されます (無効にすることはできません)。 ただし、Premium のパーティション分割されたキューとトピックは、Standard レベルと Basic レベルの Service Bus メッセージングと同様には機能しません。 Premium メッセージングは SQL をデータ ストアとして使用しないため、共有プラットフォームに関連するリソース競合が発生する可能性がなくなりました。 その結果、パフォーマンス向上のためのパーティション分割は必要ありません。 さらに、パーティション数は、Standard メッセージングでの 16 から、Premium メッセージングでは 2 に変更されました。 2 個のパーティションによって可用性が確保されます。また、Premium の実行時環境にとって、2 個というのはより適切なパーティション数です。 パーティション分割の詳細については、「[パーティション分割されたキューとトピック](service-bus-partitioning.md)」を参照してください。
+パーティション分割されたキューとトピックは Premium メッセージングでサポートされます。実際には、これらのエンティティは常にパーティション分割されます (無効にすることはできません)。 ただし、Premium のパーティション分割されたキューとトピックは、Standard レベルと Basic レベルの Service Bus メッセージングと同様には機能しません。 Premium メッセージングは SQL をデータ ストアとして使用しないため、共有プラットフォームに関連するリソース競合が発生する可能性がなくなりました。 その結果、パフォーマンス向上のためのパーティション分割は必要ありません。 さらに、パーティション数は、Standard メッセージングでの 16 から、Premium メッセージングでは 2 に変更されました。 2 個のパーティションによって可用性が確保されます。また、Premium の実行時環境にとって、2 個というのはより適切なパーティション数です。 
+
+Premium メッセージングでは、[MaxSizeInMegabytes](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxsizeinmegabytes#Microsoft_ServiceBus_Messaging_QueueDescription_MaxSizeInMegabytes) でエンティティのサイズを指定すると、サイズが 2 つのパーティションに均等に分割されます。これは、合計サイズが指定されたサイズの 16 倍になる [Standard のパーティション分割されたエンティティ](service-bus-partitioning.md#standard)とは異なります。 
+
+パーティション分割の詳細については、「[パーティション分割されたキューとトピック](service-bus-partitioning.md)」を参照してください。
 
 ### <a name="express-entities"></a>エクスプレス エンティティ
 
-完全に分離されたランタイム環境で Premium メッセージングが実行されるため、Premium 名前空間ではエクスプレス エンティティがサポートされません。 エクスプレス機能の詳細については、[QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) プロパティを参照してください。
+完全に分離されたランタイム環境で Premium メッセージングが実行されるため、Premium 名前空間ではエクスプレス エンティティがサポートされません。 エクスプレス機能の詳細については、[QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) プロパティを参照してください。
+
+Standard メッセージングで実行しているコードがあり、それを Premium レベルに移植したい場合は、[EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) プロパティが **false** (既定値) に設定されていることを確認します。
 
 ## <a name="get-started-with-premium-messaging"></a>Premium メッセージングを使ってみる
 

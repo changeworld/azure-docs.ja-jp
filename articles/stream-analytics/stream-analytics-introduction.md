@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: a6b1df79f4fc6b09b681755f5adbb7f56faaf225
-ms.lasthandoff: 05/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 42f77fbea2ac9572940e8c428999c79d6b4b6e23
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -39,7 +40,7 @@ Stream Analytics で活用されている、時間が重要となる処理向け
 * **低コスト:** Stream Analytics サービスは、クラウド サービスとしてリアルタイム分析ソリューションを低コストで実装し、保守できるように最適化されています。 料金は、ストリーミング ユニットの使用量とシステムで処理されるデータ量に基づく従量課金制です。 使用量は、処理されたイベントのボリュームと、その Stream Analytics ジョブを処理するためにクラスター内にプロビジョニングされたコンピューティング能力の量に基づいて算出されます。  
 * **参照データ:** Stream Analytics では、参照データを指定して使用することができます。 参照データには、履歴データか、時間の経過に伴う変化が頻繁にはない単純にストリーミングでないデータを指定できます。 参照データは、システムにより、他の受信イベント ストリームと同様に扱われ、リアルタイムで取り込まれる他のイベント ストリームと結合されて変換が実行されるので、簡単に使用できます。  
 * **ユーザー定義関数:** Stream Analytics は Azure Machine Learning と統合されているため、Stream Analytics クエリの構成要素として、Machine Learning サービスの関数呼び出しを定義することができます。 Stream Analytics の機能を拡張して、既存の Azure Machine Learning ソリューションを有効活用することができます。 この点について詳しくは、 [Machine Learning 統合のチュートリアル](stream-analytics-machine-learning-integration-tutorial.md)をご覧ください。
-* **接続**: Stream Analytics は、Azure Event Hubs と Azure IoT Hub に直接接続してストリームを取り込み、Azure BLOB サービスに直接接続して履歴データを取り込みます。 結果は、Stream Analytics から Azure Storage Blobs または Tables、Azure SQL DB、Azure Data Lake Store、DocumentDB、Event Hubs、Azure Service Bus Topics または Queues、Power BI に書き込まれます。そこで、視覚化、ワークフローによる処理、[Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) を介したバッチ分析での使用、一連のイベントとしての再処理を実行することができます。 Event Hubs を使用すると、計算処理のストリーミングの性質を失うことなく、複数の Stream Analytics を他のデータ ソースや処理エンジンとまとめて構成できます。  
+* **接続**: Stream Analytics は、Azure Event Hubs と Azure IoT Hub に直接接続してストリームを取り込み、Azure BLOB サービスに直接接続して履歴データを取り込みます。 結果は、Stream Analytics から Azure Storage Blob または Table、Azure SQL DB、Azure Data Lake Store、Azure Cosmos DB、Event Hubs、Azure Service Bus トピックまたはキュー、Power BI に書き込まれます。そこで、視覚化、ワークフローによる処理、[Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) を介したバッチ分析での使用、一連のイベントとしての再処理を実行することができます。 Event Hubs を使用すると、計算処理のストリーミングの性質を失うことなく、複数の Stream Analytics を他のデータ ソースや処理エンジンとまとめて構成できます。  
 
 ## <a name="get-help"></a>問い合わせ
 さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)

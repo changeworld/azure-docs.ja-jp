@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/07/2017
+ms.date: 05/09/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 0dbf6a121c07d7d1340898f51a38c3572e57b3a2
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 74ea95349faa7ee3376050c22b4bb2375837b5c0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -63,20 +64,22 @@ ms.lasthandoff: 04/06/2017
    2. **[Nuget パッケージ マネージャー]** タブで、**[パッケージ ソース]** が **nuget.org** に設定されており、**[プレリリースを含める]** チェック ボックスがオンになっていることを確認します。
    3. 以下の NuGet パッケージを検索してインストールします。
 
-      * `Microsoft.Azure.Management.DataLake.Store` - このチュートリアルでは、v1.0.4 を使用します。
-      * `Microsoft.Azure.Management.DataLake.StoreUploader` - このチュートリアルでは、v1.0.1-preview を使用します。
-      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - このチュートリアルでは、v2.2.11 を使用します。
+      * `Microsoft.Azure.Management.DataLake.Store` - このチュートリアルでは、v2.1.3-preview を使用します。
+      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - このチュートリアルでは、v2.2.12 を使用します。
 
-        ![Nuget ソースの追加](./media/data-lake-store-get-started-net-sdk/ADL.Install.Nuget.Package.png "新しい Azure Data Lake アカウントの作成")
+        ![Nuget ソースの追加](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "新しい Azure Data Lake アカウントの作成")
    4. **NuGet パッケージ マネージャー**を閉じます。
 6. **Program.cs**を開き、既存のコードを削除し、次のステートメントに置き換えて、名前空間の参照を追加します。
 
         using System;
         using System.IO;
-    using System.Security.Cryptography.X509Certificates; // Required only if you are using an Azure AD application created with certificates      using System.Threading;
+        using System.Security.Cryptography.X509Certificates; // Required only if you are using an Azure AD application created with certificates
+        using System.Threading;
 
         using Microsoft.Azure.Management.DataLake.Store;
-    using Microsoft.Azure.Management.DataLake.Store.Models;  using Microsoft.Azure.Management.DataLake.StoreUploader;  using Microsoft.IdentityModel.Clients.ActiveDirectory;  using Microsoft.Rest.Azure.Authentication;
+        using Microsoft.Azure.Management.DataLake.Store.Models;
+        using Microsoft.IdentityModel.Clients.ActiveDirectory;
+        using Microsoft.Rest.Azure.Authentication;
 
 7. 以下のように変数を宣言し、既に存在する Data Lake Store 名とリソース グループ名の値を指定します。 また、ここで指定するローカル パスとファイル名は、コンピューターに存在している必要があります。 名前空間の宣言後に次のコード スニペットを追加します。
 
@@ -125,7 +128,7 @@ ms.lasthandoff: 04/06/2017
     var activeDirectoryClientSettings = ActiveDirectoryClientSettings.UsePromptOnly(nativeClientApp_clientId, new Uri("urn:ietf:wg:oauth:2.0:oob"));
     var creds = UserTokenProvider.LoginWithPromptAsync(tenant_id, activeDirectoryClientSettings).Result;
 
-このスニペットに関して、以下の 2 点に留意してください。
+この上記のスニペットに関して、以下の 2 点に留意してください。
 
 * できるだけ短時間でチュートリアルを終了できるよう、このスニペットでは、すべての Azure サブスクリプションから既定で利用できる Azure AD ドメインとクライアント ID を使用しています。 そのため、**このスニペットを実際のアプリケーションで使用するときは、現状のままで使用**してください。
 * ただし、独自の Azure AD ドメインとアプリケーション クライアント ID を使う必要がある場合は、Azure AD ネイティブ アプリケーションを作成したうえで、作成したアプリケーションの Azure AD テナント ID、クライアント ID、およびリダイレクト URI を使用する必要があります。 手順については、[Data Lake Store でのエンド ユーザー認証のための Active Directory アプリケーションの作成](data-lake-store-end-user-authenticate-using-active-directory.md)に関するページを参照してください。
@@ -197,13 +200,10 @@ ms.lasthandoff: 04/06/2017
     // Upload a file
     public static void UploadFile(string srcFilePath, string destFilePath, bool force = true)
     {
-        var parameters = new UploadParameters(srcFilePath, destFilePath, _adlsAccountName, isOverwrite: force);
-        var frontend = new DataLakeStoreFrontEndAdapter(_adlsAccountName, _adlsFileSystemClient);
-        var uploader = new DataLakeStoreUploader(parameters, frontend);
-        uploader.Execute();
+        _adlsFileSystemClient.FileSystem.UploadFile(_adlsAccountName, srcFilePath, destFilePath, overwrite:force);
     }
 
-`DataLakeStoreUploader` では、ローカル ファイル パスと Data Lake Store ファイル パスの間の再帰的なアップロードとダウンロードがサポートされています。    
+SDK では、ローカル ファイル パスと Data Lake Store ファイル パスの間の再帰的なアップロードとダウンロードがサポートされています。    
 
 ## <a name="get-file-or-directory-info"></a>ファイルまたはディレクトリの情報を取得する
 次のスニペットは、Data Lake Store で使用できるファイルまたはディレクトリに関する情報を取得するために使用できる `GetItemInfo` メソッドの例です。
@@ -248,19 +248,15 @@ ms.lasthandoff: 04/06/2017
 次のスニペットは、Data Lake Store アカウントからファイルをダウンロードするために使用する `DownloadFile` メソッドの例です。
 
     // Download file
-    public static async Task DownloadFile(string srcPath, string destPath)
+       public static void DownloadFile(string srcFilePath, string destFilePath)
     {
-        using (var stream = await _adlsFileSystemClient.FileSystem.OpenAsync(_adlsAccountName, srcPath))
-        using (var fileStream = new FileStream(destPath, FileMode.Create))
-        {
-            await stream.CopyToAsync(fileStream);
-        }
+         _adlsFileSystemClient.FileSystem.DownloadFile(_adlsAccountName, srcFilePath, destFilePath);
     }
 
 ## <a name="next-steps"></a>次のステップ
 * [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
 * [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
-* [Data Lake Store .NET SDK リファレンス](https://msdn.microsoft.com/library/mt581387.aspx)
+* [Data Lake Store .NET SDK リファレンス](https://docs.microsoft.com/dotnet/api/?view=azuremgmtdatalakestore-2.1.0-preview&term=DataLake.Store)
 * [Data Lake Store REST リファレンス](https://msdn.microsoft.com/library/mt693424.aspx)
 

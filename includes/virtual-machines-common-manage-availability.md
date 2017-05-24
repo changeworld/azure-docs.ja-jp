@@ -41,7 +41,7 @@
 
 複数の仮想マシン間でトラフィックを分散するためのロード バランサーが構成されていない場合、計画済みメンテナンス イベントによって、トラフィックを提供している仮想マシンのみに影響が生じ、アプリケーション層の機能停止が生じます。 同じ層の複数の仮想マシンを、同じロード バランサーと可用性セット以下に配置することで、少なくとも 1 つのインスタンスによってトラフィックの提供を継続することができます。
 
-## <a name="use-managed-disks-for-vms-in-availability-set"></a>可用性セット内の VM に管理ディスクを使用する
+## <a name="use-managed-disks-for-vms-in-an-availability-set"></a>可用性セット内の VM に管理ディスクを使用する
 現在、管理されていないディスクを持つ VM を使用している場合は、[可用性セット内の VM を Managed Disks を使用するように変換する](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md#convert-vms-in-an-availability-set-to-managed-disks-in-a-managed-availability-set)ことを強くお勧めします。
 
 [管理ディスク](../articles/storage/storage-managed-disks-overview.md)では、可用性セットの VM のディスクが、単一障害点にならないように相互に十分に分離されるため、可用性セットの信頼性が向上します。 これは、ディスクをさまざまなストレージ スケール ユニット (スタンプ) に自動的に配置することによって実現されます。 ハードウェアやソフトウェアの障害によってスタンプが機能しなくなった場合、そのスタンプ上のディスクを使用する VM インスタンスだけが機能しなくなります。 
@@ -57,5 +57,5 @@
 [各アプリケーション層に対して別々の可用性セットを構成する]: #configure-each-application-tier-into-separate-availability-sets
 [ロード バランサーと可用性セットを結合する]: #combine-a-load-balancer-with-availability-sets
 [Avoid single instance virtual machines in availability sets]: #avoid-single-instance-virtual-machines-in-availability-sets
-[可用性セット内の VM に管理ディスクを使用する]: #use-managed-disks-for-vms-in-availability-set
+[Use Managed Disks for VMs in Availability Set]: #use-managed-disks-for-vms-in-availability-set
 

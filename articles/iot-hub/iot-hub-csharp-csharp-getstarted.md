@@ -15,10 +15,11 @@ ms.workload: na
 ms.date: 03/16/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 33ddab887ade0d788129367eec4db7e70f35e0b9
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 68d409c7c7ce14c988d8335f6ed54e9be69bcba7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -243,7 +244,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 
 * [デバイスを接続する][lnk-connect-device]
 * [デバイス管理の概要][lnk-device-management]
-* [IoT Gateway SDK の概要][lnk-gateway-SDK]
+* [IoT Edge の概要][lnk-gateway-SDK]
 
 既存の IoT ソリューションを拡張し、デバイスからクラウドへのメッセージを大規模に処理する方法については、[デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]に関するチュートリアルを参照してください。
 
