@@ -1,6 +1,6 @@
 ---
-title: "Log Analytics を設定して実行する (Azure SQL Database を使用するサンプル SaaS アプリケーション) | Microsoft Docs"
-description: "WTP サンプル SaaS アプリで Log Analytics を設定して使用します"
+title: "SQL Database のマルチテナント アプリで Log Analytics を使用する | Microsoft Docs"
+description: "Azure SQL Database のサンプル Wingtip Tickets (WTP) アプリで Log Analytics (OMS) を設定して使用します"
 keywords: "SQL データベース チュートリアル"
 services: sql-database
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 7cb9b7dd90123a91cabe66fd8efa8ae4c9e2fa01
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 4ff4519ca40f036d58f82993db78fe08aa7d5733
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---

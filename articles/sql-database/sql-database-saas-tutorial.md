@@ -1,6 +1,6 @@
 ---
-title: "Wingtip Tickets Platform (WTP) アプリケーション (Azure SQL Database を使用する Saas サンプル アプリケーション) のデプロイと操作 |Microsoft Docs"
-description: "Azure SQL Database を使用する SaaS サンプル アプリケーションをデプロイして操作します"
+title: "Azure SQL Database を使用する SaaS アプリケーションのデプロイと操作 | Microsoft Docs"
+description: "Azure SQL Database のサンプル Wingtip Tickets (WTP) アプリをデプロイして操作します"
 keywords: "SQL データベース チュートリアル"
 services: sql-database
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: ff4dc19bb6e24ea9ceeed9721cfb3a85b4d10965
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 04859fb8a9f4a8bf04d92e7139d9202885c52503
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -29,6 +29,8 @@ ms.lasthandoff: 05/10/2017
 このチュートリアルでは、Wingtip Tickets Platform (WTP) SaaS アプリケーションをデプロイして操作します。 このアプリケーションは、SaaS アプリケーション パターンとしてテナント単位のデータベース パターンを使用し、複数のテナントにサービスを提供します。 このアプリケーションの目的は、各種 SaaS シナリオや SaaS の設計と管理のパターンを実現している Azure SQL Database の機能を紹介することにあります。
 
 下にある *[Azure に配置する]* ボタンをクリックすると、5 分後に、SQL Database を使用するマルチテナント SaaS アプリケーションがクラウド上に作成されて稼働します。 アプリケーションは 3 つのサンプル テナントと共にデプロイされます。各テナントには専用のデータベースが設定され、すべてが 1 つの SQL エラスティック プールにデプロイされます。 アプリはお使いの Azure サブスクリプションにデプロイされ、フル アクセス権が付与されるため、個々のアプリケーション コンポーネントを調べながら操作することができます。
+
+スクリプトとアプリケーションのソース コードは、[WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub リポジトリから入手できます。
 
 このチュートリアルで学習する内容は次のとおりです。
 

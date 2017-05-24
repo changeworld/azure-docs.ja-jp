@@ -16,43 +16,49 @@ ms.workload: na
 ms.date: 05/02/2017
 ms.author: glenga
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 10461bddeb4d5adf4a6e4f65159ba2653dbef8a4
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 1478a2eedad496d3113fef28920d10859d11b1ce
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
-#  <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Azure でタイマーによってトリガーされる関数を作成する
+# <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Azure でタイマーによってトリガーされる関数を作成する
 
-Azure Functions を使用して、定義したスケジュールに基づいて実行する関数を作成する方法について説明します。 
+Azure Functions を使用して、定義したスケジュールに基づいて実行する関数を作成する方法について説明します。
 
 ![Azure Portal での Function App の作成](./media/functions-create-scheduled-function/function-app-in-portal-editor.png)
 
-このトピックの手順をすべて完了するまでにかかる時間は、5 分未満です。
+## <a name="prerequisites"></a>前提条件
 
-## <a name="prerequisites"></a>前提条件 
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-[!INCLUDE [Previous quickstart note](../../includes/functions-quickstart-previous-topics.md)]
+[!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
-このトピックでは、既存の Function App で、タイマーによってトリガーされる関数を作成します。 
+## <a name="create-an-azure-function-app"></a>Azure Function App の作成
 
-[!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)] 
+[!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-## <a name="create-function"></a>タイマーによってトリガーされる関数の作成
+![Function App が正常に作成されました。](./media/functions-create-first-azure-function/function-app-create-success.png)
+
+次に、新しい Function App で関数を作成します。
+
+<a name="create-function"></a>
+
+## <a name="create-a-timer-triggered-function"></a>タイマーによってトリガーされる関数の作成
 
 1. Function App を展開し、**[関数]** の横にある **[+]** ボタンをクリックし、使用する言語の **TimerTrigger** テンプレートをクリックします。 テーブルに指定されている設定を使用して、**[作成]** をクリックします。
 
-    | 設定      |  推奨値   | 説明                              |
-    | ------------ |  ------- | -------------------------------------------------- |
-    | **関数名の指定** | TimerTriggerCSharp1 | タイマーによってトリガーされる関数の名前を定義します。
-    | **[スケジュール](http://en.wikipedia.org/wiki/Cron#CRON_expression)** | 0 */1 * * * * | 関数を毎分実行するようにスケジュールする 6 つのフィールドの [CRON 式](http://en.wikipedia.org/wiki/Cron#CRON_expression)。 |
+| 設定 | 推奨値 | 説明 |
+|---|---|---|
+| **関数名の指定** | TimerTriggerCSharp1 | タイマーによってトリガーされる関数の名前を定義します。 |
+| **[スケジュール](http://en.wikipedia.org/wiki/Cron#CRON_expression)** | 0 \*/1 \* \* \* \* | 関数を毎分実行するようにスケジュールする 6 つのフィールドの [CRON 式](http://en.wikipedia.org/wiki/Cron#CRON_expression)。 |
 
-    選択した言語で、毎分実行する関数が作成されます。 
+選択した言語で、毎分実行する関数が作成されます。
 
-4. ログに書き込まれたトレース情報を表示して、実行を確認します。 
+1. ログに書き込まれたトレース情報を表示して、実行を確認します。
 
-    ![Azure Portal の関数ログ ビューアー。](./media/functions-create-scheduled-function/functions-timer-trigger-view-logs2.png)
+![Azure Portal の関数ログ ビューアー。](./media/functions-create-scheduled-function/functions-timer-trigger-view-logs2.png)
 
 ここで、1 時間ごとなど、少ない頻度で実行するように、関数のスケジュールを変更できます。 
 
@@ -71,12 +77,9 @@ Azure Functions を使用して、定義したスケジュールに基づいて�
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
 
 ## <a name="next-steps"></a>次のステップ
-スケジュールに基づいて実行する関数を作成しました。 
+
+スケジュールに基づいて実行する関数を作成しました。
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 
-タイマー トリガーの詳細については、「[Azure Functions を使用したコード実行のスケジュール設定](functions-bindings-timer.md)」を参照してください。 
-
-
-
-
+タイマー トリガーの詳細については、「[Azure Functions を使用したコード実行のスケジュール設定](functions-bindings-timer.md)」を参照してください。

@@ -1,6 +1,6 @@
 ---
-title: "すべてのテナントにわたるアドホック分析クエリの実行 (Azure SQL Database を使用した SaaS アプリケーションの例) | Microsoft Docs"
-description: "すべてのテナントにわたるアドホック分析クエリの実行"
+title: "複数の Azure SQL データベースにわたるアドホック分析クエリの実行 | Microsoft Docs"
+description: "マルチテナント アプリケーション内の複数のデータベースにわたってアドホック分析クエリを実行する"
 keywords: "SQL データベース チュートリアル"
 services: sql-database
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: c00c25116002c46fc94c5ea59acc101a2055b689
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: dd41e7f1f131f6c18e03d2434982c3d681342b8b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -42,7 +42,7 @@ ms.lasthandoff: 05/10/2017
 
 このチュートリアルを完了するには、次の前提条件を満たしておく必要があります。
 
-* WTP アプリがデプロイされている。 5 分以内にデプロイを完了する方法については、[WTP SaaS アプリケーションのデプロイと確認に関するページ](sql-database-saas-tutorial.md)をご覧ください。
+* WTP アプリがデプロイされている。 5 分未満でデプロイする方法については、[WTP SaaS アプリケーションのデプロイと確認](sql-database-saas-tutorial.md)に関するページを参照してください。
 * Azure PowerShell がインストールされている。 詳しくは、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」をご覧ください。
 
 

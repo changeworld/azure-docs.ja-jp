@@ -1,6 +1,6 @@
 ---
-title: "WTP アプリケーション (Azure SQL Database を使用する SaaS サンプル アプリケーション) のパフォーマンスの監視 |Microsoft Docs"
-description: "Azure SQL Database を使用する SaaS サンプル アプリケーションのパフォーマンスを監視します"
+title: "SQL Database SaaS アプリのパフォーマンスの監視 | Microsoft Docs"
+description: "Azure SQL Database のサンプル Wingtip Tickets (WTP) アプリのパフォーマンスを監視および管理します"
 keywords: "SQL データベース チュートリアル"
 services: sql-database
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 1698a06dc326b1d215bb635c40724f914ba82442
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: af9511978718af10c97bee6af3a2835c9d2c1ff4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -42,7 +42,7 @@ Wingtip Tickets アプリでは、会場 (テナント) ごとに独自のデー
 
 このチュートリアルを完了するには、次の前提条件を満たしておく必要があります。
 
-* WTP アプリがデプロイされている。 5 分以内にデプロイを完了する方法については、[WTP SaaS アプリケーションのデプロイと確認](sql-database-saas-tutorial.md)に関するページをご覧ください
+* WTP アプリがデプロイされている。 5 分以内にデプロイを完了する方法については、[WTP SaaS アプリケーションのデプロイと確認に関するページ](sql-database-saas-tutorial.md)をご覧ください。
 * Azure PowerShell がインストールされている。 詳細については、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」を参照してください
 
 ## <a name="introduction-to-saas-performance-management-patterns"></a>SaaS パフォーマンス管理パターンの概要

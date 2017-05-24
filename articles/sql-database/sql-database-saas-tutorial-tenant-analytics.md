@@ -1,6 +1,6 @@
 ---
-title: "複数のテナントに対する分析クエリの実行 (Azure SQL Database を使用した SaaS アプリケーションの例) | Microsoft Docs"
-description: "複数のテナントに対する分析クエリの実行について"
+title: "複数の Azure SQL データベースに対する分析クエリの実行 | Microsoft Docs"
+description: "複数の Azure SQL データベースに対して分散クエリを実行します"
 keywords: "SQL データベース チュートリアル"
 services: sql-database
 documentationcenter: 
@@ -17,14 +17,14 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: b512e2f7833be1947ef7674d6e0266879789ac5a
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: a0742a004b618dda304618bca21ae715552c16e6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
-# <a name="run-analytics-queries-against-multiple-tenants"></a>複数のテナントに対する分析クエリの実行について
+# <a name="run-distributed-queries-across-multiple-azure-sql-databases"></a>複数の Azure SQL データベースに対する分散クエリの実行
 
 このチュートリアルでは、カタログ内の各テナントに対して分析クエリを実行します。 クエリを実行するエラスティック ジョブが作成されます。 このジョブは、データを取得して、カタログ サーバーに作成された別の分析データベースに読み込みます。 このデータベースにクエリを実行して、すべてのテナントの日々の運用データに隠されたインサイトを抽出することができます。 ジョブの出力として、結果を返すクエリによって、テナント分析データベース内にテーブルが作成されます。
 
@@ -37,8 +37,8 @@ ms.lasthandoff: 05/10/2017
 
 このチュートリアルを完了するには、次の前提条件を満たしておく必要があります。
 
-* WTP アプリのデプロイ。 5 分以内にデプロイを完了する方法については、[WTP SaaS アプリケーションのデプロイと確認に関するページ](sql-database-saas-tutorial.md)をご覧ください。
-* Azure PowerShell のインストール。 詳しくは、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」をご覧ください。
+* WTP アプリがデプロイされている。 5 分以内にデプロイを完了する方法については、[WTP SaaS アプリケーションのデプロイと確認に関するページ](sql-database-saas-tutorial.md)をご覧ください。
+* Azure PowerShell がインストールされている。 詳しくは、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」をご覧ください。
 * 最新バージョンの SQL Server Management Studio (SSMS) のインストール。 [SSMS をダウンロードしてインストールします](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
 
 ## <a name="tenant-operational-analytics-pattern"></a>テナント運用分析パターン
