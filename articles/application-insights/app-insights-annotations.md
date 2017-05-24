@@ -40,7 +40,7 @@ ms.lasthandoff: 01/20/2017
 
 ![Team Service Web ページの右上で Marketplace を開く Select Visual Team Services and then under Build and Release, choose See More.](./media/app-insights-annotations/10.png)
 
-この操作は、Visual Studio Team Services アカウントごとに&1; 回行うだけですみます。 これで、リリース注釈をアカウントのプロジェクトに対して構成できるようになりました。 
+この操作は、Visual Studio Team Services アカウントごとに 1 回行うだけですみます。 これで、リリース注釈をアカウントのプロジェクトに対して構成できるようになりました。 
 
 ### <a name="configure-release-annotations"></a>リリース注釈を構成する
 
