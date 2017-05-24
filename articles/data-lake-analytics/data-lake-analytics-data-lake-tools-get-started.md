@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/06/2017
 ms.author: edmaca, yanacai
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
 ms.openlocfilehash: c26ac89bd7ef494331ba309aacf87de03506ac4c
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/07/2017
 
 
@@ -128,9 +129,9 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。 U-SQL の�
        自動的に作成された名前とメンバーが、行セット、クラス、データベース、スキーマ、ユーザー定義オブジェクト (UDO) に対して表示されます。
 
        カタログ エンティティ (データベース、スキーマ、テーブル、UDO など) に対する IntelliSense は、コンピューティング アカウントと関連付けられています。 現在のアクティブなコンピューティング アカウント、データベース、スキーマを上部のツールバーで確認でき、ドロップダウン リストで切り替えることができます。
-   * *** 列の展開**
+   * **列の * 展開**
 
-       * の右側をクリックすると、* の下に青い線が表示されます。 青い下線にマウス カーソルを合わせて、下矢印をクリックします。
+       \* の右側をクリックすると、* の下に青い線が表示されます。 青い下線にマウス カーソルを合わせて、下矢印をクリックします。
        ![Data Lake Visual Studio ツールでの * の展開](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
 
        **[列の展開]**をクリックすると、* が列名に置き換えられます。
