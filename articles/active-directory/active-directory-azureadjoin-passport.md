@@ -29,7 +29,7 @@ ms.lasthandoff: 02/23/2017
 ## <a name="about-windows-hello-for-business"></a>Windows Hello for Business について
 Windows Hello for Business は、組織とコンシューマー向けの、パスワードを超える秘密/公開キーまたは証明書ベースの認証方式です。 この認証方法で使用されるキー ペア資格情報は、パスワードの代わりに使用でき、侵害、盗難、フィッシングに対する耐性があります。
 
- Windows Hello for Business を使用すると、ユーザーは Microsoft アカウント、Windows Server Active Directory アカウント、Microsoft Azure Active Directory (Azure AD) アカウント、Fast IDentity Online (FIDO) 認証をサポートする Microsoft 以外のサービスに対する認証を行うことができます。 Windows Hello for Business の登録時の&2; 段階の初期検証の後、Windows Hello for Business がユーザーのデバイスに設定されます。次に、ユーザーがジェスチャ (Windows Hello または PIN) を設定します。 ユーザーは、身元を確認するジェスチャを提供します。 その後、Windows が Windows Hello for Business を使ってユーザーを認証し、保護されたリソースとサービスにアクセスできるようにします。
+ Windows Hello for Business を使用すると、ユーザーは Microsoft アカウント、Windows Server Active Directory アカウント、Microsoft Azure Active Directory (Azure AD) アカウント、Fast IDentity Online (FIDO) 認証をサポートする Microsoft 以外のサービスに対する認証を行うことができます。 Windows Hello for Business の登録時の 2 段階の初期検証の後、Windows Hello for Business がユーザーのデバイスに設定されます。次に、ユーザーがジェスチャ (Windows Hello または PIN) を設定します。 ユーザーは、身元を確認するジェスチャを提供します。 その後、Windows が Windows Hello for Business を使ってユーザーを認証し、保護されたリソースとサービスにアクセスできるようにします。
 
 秘密キーは、PIN、生体認証、リモート デバイス (ユーザーがデバイスへのサインインに使用したスマート カードなど) などの "ユーザー ジェスチャ" を通じてのみ使用可能になります。 この情報は、証明書または非対称のキー ペアにリンクされます。 デバイスにトラステッド プラットフォーム モジュール (TPM) チップが搭載されている場合、秘密キーはハードウェアで証明されます。 秘密キーはデバイスの外部に移動されることはありません。
 
