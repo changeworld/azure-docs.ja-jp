@@ -3,7 +3,7 @@ title: "Azure Application Insights の Analytics にデータをインポート�
 description: "静的データをインポートしてアプリのテレメトリと結合したり、個別のデータ ストリームをインポートして Analytics でクエリを実行できます。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,11 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 4f10e5a8200af870e0adb8977b9c68b9998a6de7
-ms.lasthandoff: 03/21/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: d649644959d907ff7fd6c1de360b091682f13d5b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -41,7 +42,7 @@ Analytics へのインポートは、次の 3 つの状況で役に立ちます�
 アップロードの頻度は、データをいつまでにクエリで使用できるようにしたいかに応じて、お客様が定義します。 データは大きなチャンクでアップロードしたほうが効率的ですが、1 GB が上限となります。
 
 > [!NOTE]
-> *分析するデータ ソースの数が多い場合* [*Application Insights へのデータ送信に*logstash*を使用することを検討してください。*](https://github.com/Microsoft/logstash-output-application-insights)
+> *分析するデータ ソースの数が多い場合* [*Application Insights へのデータ送信に* logstash*を使用することを検討してください。*](https://github.com/Microsoft/logstash-output-application-insights)
 > 
 
 ## <a name="before-you-start"></a>開始する前に
@@ -187,11 +188,11 @@ JSON ではデータの部分的なマッピングが可能なため、JSON 形�
 * **400 bad request**: 要求のペイロードが無効であることを示します。 次のことを確認してください。
  * インストルメンテーション キーが正しい。
  * 時刻値が有効である。 時刻は UTC である必要があります。
- * データがスキーマに準拠している。
+ * イベントの JSON がスキーマに準拠している。
 * **403 Forbidden**: 送信した BLOB にアクセスできません。 共有アクセス キーが有効であることと、有効期限が切れていないことを確認してください。
 * **404 Not Found**:
  * BLOB が存在しません。
- * データ ソース名が間違っています。
+ * sourceId が間違っている。
 
 詳細は、応答エラー メッセージで確認できます。
 
@@ -203,8 +204,6 @@ JSON ではデータの部分的なマッピングが可能なため、JSON 形�
 ### <a name="classes"></a>クラス
 
 ```C#
-
-
 namespace IngestionClient 
 { 
     using System; 
@@ -357,7 +356,6 @@ namespace IngestionClient
         #endregion Private 
     } 
 } 
-
 ```
 
 ### <a name="ingest-data"></a>データの取り込み
@@ -365,14 +363,11 @@ namespace IngestionClient
 このコードを各 BLOB に使用します。 
 
 ```C#
-
-
    AnalyticsDataSourceClient client = new AnalyticsDataSourceClient(); 
 
-   var ingestionRequest = new AnalyticsDataSourceIngestionRequest("iKey", "tableId/sourceId", "blobUrlWithSas"); 
+   var ingestionRequest = new AnalyticsDataSourceIngestionRequest("iKey", "sourceId", "blobUrlWithSas"); 
 
    bool success = await client.RequestBlobIngestion(ingestionRequest);
-
 ```
 
 ## <a name="next-steps"></a>次のステップ
