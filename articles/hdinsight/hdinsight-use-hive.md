@@ -1,7 +1,7 @@
 ---
-title: "Hive と HiveQL の使用方法の説明 |Microsoft Docs"
-description: "Apache Hive と HDInsight での Hadoop との使用方法について説明します。 Hive ジョブを実行し、HiveQL を使用して Apache log4j サンプル ファイルを分析する方法を選択します。"
-keywords: "hiveql、hive とは"
+title: "Apache Hive および HiveQL とは - Azure HDInsight | Microsoft Docs"
+description: "Apache Hive は、Hadoop 用のデータ ウェアハウス システムです。 Transact-SQL に似た HiveQL を使用して、Hive に格納されているデータを照会することができます。 このドキュメントでは、Azure HDInsight で Hive と HiveQL を使用する方法について説明します。"
+keywords: "HiveQL, Hive とは, Hadoop HiveQL, Hive の使い方, Hive について, Hive の概要"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -15,39 +15,88 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/14/2017
+ms.date: 05/12/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: db324cc8269a1f23613e5193f5a1dec1d26a62b1
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: b8c32f6e15d65efc8dc464017027d3cde94b2667
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---
-# <a name="use-hive-and-hiveql-with-hadoop-in-hdinsight"></a>HDInsight での Hive および HiveQL と Hadoop の使用
+# <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Apache Hive と Azure HDInsight での HiveQL
 
-HDInsight での Hive の使用方法について説明します。 HDInsight で Hive を使用するさまざまな方法を次の表に示します。
+[Apache Hive](http://hive.apache.org/) は、Hadoop 用のデータ ウェアハウス システムです。 Hive を使用すると、データの集計、クエリ、および分析を行うことができます。 Hive クエリは、SQL に似たクエリ言語である HiveQL で記述します。
 
-| **方法**  | **対話型** シェルの有無 | **バッチ** 処理の有無 | 使用する **クラスターのオペレーティング システム** | 使用元の **クライアントのオペレーティング システム** |
+Hive では、大規模な非構造化データに構造を投影することができます。 構造を定義したら、HiveQL を使用することで、Java や MapReduce の知識がなくてもそのデータを照会できます。
+
+HDInsight には、特定のワークロード用に調整されたいくつかのクラスター タイプがあります。 Hive クエリには、次のクラスター タイプが最も一般的に使用されます。
+
+* __インタラクティブ Hive__: [Low Latency Analytical Processing (LLAP)](https://cwiki.apache.org/confluence/display/Hive/LLAP) 機能を提供して対話型クエリの応答時間を向上させる Hadoop クラスター。 詳細については、[HDInsight でのインタラクティブ Hive の使用](hdinsight-hadoop-use-interactive-hive.md)に関するドキュメントを参照してください。
+
+* __Hadoop__: バッチ処理ワークロード用に調整された Hadoop クラスター。 詳細については、[HDInsight での Hadoop の使用](hdinsight-hadoop-linux-tutorial-get-started.md)に関するドキュメントを参照してください。
+
+* __Spark__: Apache Spark には、Hive を操作するための機能が組み込まれています。 詳細については、[HDInsight での Spark の使用](hdinsight-apache-spark-jupyter-spark-sql.md)に関するドキュメントを参照してください。
+
+* __HBase__: HiveQL を使用して、HBase に格納されているデータを照会できます。 詳細については、[HDInsight での HBase の使用](hdinsight-hbase-tutorial-get-started-linux.md)に関するドキュメントを参照してください。
+
+## <a name="how-to-use-hive"></a>Hive の使用方法
+
+次の表に基づいて、HDInsight で Hive を使用する方法を参照してください。
+
+| **方法** | **対話型** シェルの有無 | **バッチ** 処理の有無 | 使用する **クラスターのオペレーティング システム** | 使用元の **クライアントのオペレーティング システム** |
 |:--- |:---:|:---:|:--- |:--- |
 | [Hive ビュー](hdinsight-hadoop-use-hive-ambari-view.md) |✔ |✔ |Linux |任意 (ブラウザー ベース) |
-| [Beeline コマンド](hdinsight-hadoop-use-hive-beeline.md) |✔ |✔ |Linux |Linux、Unix、Mac OS X、または Windows |
-| [REST API](hdinsight-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux または Windows |Linux、Unix、Mac OS X、または Windows |
-| [クエリ コンソール](hdinsight-hadoop-use-hive-query-console.md) (HDInsight 3.2 および 3.3) |&nbsp; |✔ |Windows |任意 (ブラウザー ベース) |
-| [HDInsight Tools for Visual Studio](hdinsight-hadoop-use-hive-visual-studio.md) |&nbsp; |✔ |Linux または Windows |Windows |
-| [Windows PowerShell](hdinsight-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Linux または Windows |Windows |
-| [リモート デスクトップ](hdinsight-hadoop-use-hive-remote-desktop.md) (HDInsight 3.2 および 3.3) |✔ |✔ |Windows |Windows |
+| [Beeline クライアント](hdinsight-hadoop-use-hive-beeline.md) |✔ |✔ |Linux |Linux、Unix、Mac OS X、または Windows |
+| [REST API](hdinsight-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux または Windows* |Linux、Unix、Mac OS X、または Windows |
+| [HDInsight Tools for Visual Studio](hdinsight-hadoop-use-hive-visual-studio.md) |&nbsp; |✔ |Linux または Windows* |Windows |
+| [Windows PowerShell](hdinsight-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Linux または Windows* |Windows |
 
 > [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight 3.2 と 3.3 の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関するページを参照してください。
+> \* Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight 3.3 の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関するページを参照してください。
+>
+> Windows ベースの HDInsight クラスターを使用している場合は、ブラウザーから[クエリ コンソール](hdinsight-hadoop-use-hive-query-console.md)を使用するか、[リモート デスクトップ](hdinsight-hadoop-use-hive-remote-desktop.md)を使用して、Hive クエリを実行できます。
 
-## <a id="why"></a>Hive とは
+## <a name="hiveql-language-reference"></a>HiveQL 言語のリファレンス
 
-[Apache Hive](http://hive.apache.org/) は Hadoop のデータ ウェアハウス システムで、データを集約、照会、および分析することができます。 Hive では、大規模な非構造化データに構造を投影することができます。 構造を定義したら、Hive を使用することで、Java や MapReduce の知識がなくてもそのデータを照会できます。
+HiveQL 言語リファレンスは、[言語マニュアル (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) から入手できます。
 
-Hive クエリは、SQL に似たクエリ言語である HiveQL で記述します。 Hive を使用することで、データを対話的に探索したり、再利用可能なバッチ処理ジョブを作成したりすることができます。
+## <a name="hive-and-data-structure"></a>Hive とデータ構造
 
-Hive は、フィールドが特定の文字で区切られるテキスト ファイルなどの構造化データや半構造化データを操作する方法を認識しています。 また、Hive では、複雑なまたは不規則な構造化データのためのカスタム **シリアライザー/デシリアライザー (SerDe)** もサポートされます。 詳細については、「[HDInsight でのカスタム JSON SerDe の使用方法](http://blogs.msdn.com/b/bigdatasupport/archive/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight.aspx)」というドキュメントを参照してください。
+Hive は、構造化データおよび半構造化データの操作方法を理解します。 たとえば、フィールドが特定の文字で区切られたテキスト ファイルがあるとします。 次の HiveQL ステートメントは、スペースで区切られたデータからテーブルを作成します。
+
+```hiveql
+CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
+STORED AS TEXTFILE LOCATION '/example/data/';
+```
+
+また、Hive では、複雑なまたは不規則な構造化データのためのカスタム **シリアライザー/デシリアライザー (SerDe)** もサポートされます。 詳細については、「[HDInsight でのカスタム JSON SerDe の使用方法](http://blogs.msdn.com/b/bigdatasupport/archive/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight.aspx)」というドキュメントを参照してください。
+
+Hive でサポートされているファイル形式の詳細については、[言語マニュアル (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) を参照してください。
+
+## <a name="hive-internal-tables-vs-external-tables"></a>Hive の内部テーブルと外部テーブル
+
+Hive で作成できるテーブルには、次の 2 種類があります。
+
+* __内部__: データは Hive データ ウェアハウスに格納されます。 データ ウェアハウスは、クラスターの既定のストレージの `/hive/warehouse/` に配置されます。
+
+    内部テーブルは次の場合に使用します。
+
+    * データが一時的である。
+    * Hive でテーブルとデータのライフサイクルを管理したい。
+
+* __外部__: データはデータ ウェアハウスの外部に格納されます。 データは、クラスターからアクセス可能な任意のストレージに格納できます。
+
+    外部テーブルは次の場合に使用します。
+
+    * Hive の外部でもデータが使用される。 たとえば、データ ファイルが別のプロセスによって更新される (ファイルがロックされない)。
+    * テーブルを削除した後もデータを基になる場所に保持する必要がある。
+    * 既定以外のストレージ アカウントなど、カスタムの場所が必要である。
+    * データの形式、場所などが Hive 以外のプログラムによって管理される。
+
+詳細については、ブログ記事「[Hive Internal and External Tables Intro (Hive の内部テーブルと外部テーブルの概要)][cindygross-hive-tables]」を参照してください。
 
 ## <a name="user-defined-functions-udf"></a>ユーザー定義関数 (UDF)
 
@@ -55,40 +104,19 @@ Hive は **ユーザー定義関数 (UDF)**で拡張することもできます�
 
 * [Java ユーザー定義関数と Hive の使用](hdinsight-hadoop-hive-java-udf.md)
 
-* [HDInsight における Python と Hive および Pig の使用](hdinsight-python.md)
+* [Hive および Pig での Python ユーザー定義関数の使用](hdinsight-python.md)
 
-* [HDInsight における C# と Hive および Pig の使用](hdinsight-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [Hive と Pig での C# ユーザー定義関数の使用](hdinsight-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-* [HDInsight にカスタムの Hive UDF を追加する方法](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [HDInsight にカスタムの Hive ユーザー定義関数を追加する方法](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
-* [日付/時刻の形式を Hive タイムスタンプに変換するカスタムの Hive UDF の例](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
-
-## <a name="hive-internal-tables-vs-external-tables"></a>Hive の内部テーブルと外部テーブル
-
-Hive の内部テーブルと外部テーブルについて知っておく必要のある事項がいくつかあります。
-
-* **CREATE TABLE** コマンドは内部テーブルを作成します。 データ ファイルは既定のコンテナーに配置する必要があります。
-
-* **CREATE TABLE** コマンドは、データ ファイルを、クラスターの既定のストレージにある `/hive/warehouse/<TableName>` ディレクトリに移動します。
-
-* **CREATE EXTERNAL TABLE** コマンドは外部テーブルを作成します。 データ ファイルは既定のコンテナーの外部に配置することもできます。
-
-* **CREATE EXTERNAL TABLE** コマンドはデータ ファイルを移動しません。
-
-詳細については、「[HDInsight: Hive Internal and External Tables Intro (HDInsight: Hive の内部テーブルと外部テーブルの概要)][cindygross-hive-tables]」を参照してください。
+* [日付/時刻の形式を Hive タイムスタンプに変換する Hive ユーザー定義関数の例](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
 
 ## <a id="data"></a>サンプル データ
 
-HDInsight にはさまざまなサンプル データ セットが用意されていて、`/example/data` および `/HdiSamples` ディレクトリに格納されています。 これらのディレクトリは、クラスターの既定のストレージ内に存在します。 このドキュメントでは、`/example/data/sample.log` ファイルを使用します。 このファイルは、*log4j* ファイルです。 ファイル内の各ログは、タイプと重要度を表す `[LOG LEVEL]` フィールドを含むフィールド行で構成されています。以下に例を示します。
+HDInsight の Hive には、`hivesampletable` という名前の内部テーブルがあらかじめ読み込まれています。 HDInsight には、Hive で使用できるサンプル データ セットも用意されています。 これらのデータ セットは、`/example/data` および `/HdiSamples` ディレクトリに格納されています。 これらのディレクトリは、クラスターの既定のストレージ内に存在します。
 
-    2012-02-03 20:26:41 SampleClass3 [ERROR] verbose detail for id 1527353937
-
-前の例では、ログ レベルは ERROR です。
-
-> [!NOTE]
-> また、 [Apache Log4j](http://en.wikipedia.org/wiki/Log4j) ログ ツールを使用して log4j ファイルを生成し、そのファイルを BLOB コンテナーにアップロードすることもできます。 手順については、「 [データを HDInsight にアップロードする方法](hdinsight-upload-data.md) 」を参照してください。 HDInsight と共に Azure BLOB ストレージを使用する方法の詳細については、「 [HDInsight での Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)」を参照してください。
-
-## <a id="job"></a>サンプル Hive クエリ
+## <a id="job"></a>Hive クエリの例
 
 次の HiveQL ステートメントは、`/example/data/sample.log` ファイルに列を投影します。
 
@@ -101,22 +129,22 @@ HDInsight にはさまざまなサンプル データ セットが用意され�
 
 前の例では、HiveQL ステートメントは次のアクションを実行します。
 
-* **set hive.execution.engine=tez;**: Tez を使用するように実行エンジンを設定します。 MapReduce ではなく Tez を使用すると、クエリ パフォーマンスを向上させることができます。 Tez の詳細については、「 [パフォーマンスを改善するための Apache Tez の使用方法](#usetez) 」セクションをご覧ください。
+* `set hive.execution.engine=tez;`: Tez を使用するように実行エンジンを設定します。 MapReduce ではなく Tez を使用すると、クエリ パフォーマンスを向上させることができます。 Tez の詳細については、「 [パフォーマンスを改善するための Apache Tez の使用方法](#usetez) 」セクションをご覧ください。
 
     > [!NOTE]
     > このステートメントは、Windows ベースの HDInsight クラスターの使用時にのみ必要です。 Linux ベースの HDInsight クラスターでは、Tez が既定の実行エンジンです。
 
-* **DROP TABLE**: テーブルが既に存在する場合は、それを削除します。
+* `DROP TABLE`: テーブルが既に存在する場合は、それを削除します。
 
-* **CREATE EXTERNAL TABLE**: Hive に新しく **外部** テーブルを作成します。 外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に、元の形式で残されます。
+* `CREATE EXTERNAL TABLE`: Hive に新しい**外部**テーブルを作成します。 外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に、元の形式で残されます。
 
-* **ROW FORMAT**: Hive にデータの形式を示します。 ここでは、各ログのフィールドは、スペースで区切られています。
+* `ROW FORMAT`: データの形式を Hive に伝えます。 ここでは、各ログのフィールドは、スペースで区切られています。
 
-* **STORED AS TEXTFILE LOCATION**: Hive に、データの格納先 (`example/data` ディレクトリ) と、データはテキストとして格納されていることを示します。 データは 1 つのファイルに格納することも、ディレクトリ内の複数のファイルに分散することもできます。
+* `STORED AS TEXTFILE LOCATION`: データの格納先 (`example/data` ディレクトリ) と、データがテキストとして格納されていることを Hive に伝えます。 データは 1 つのファイルに格納することも、ディレクトリ内の複数のファイルに分散することもできます。
 
-* **SELECT**: **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。 この値を含む行が 3 行あるため、このステートメントでは値 **3** が返されます。
+* `SELECT`: 列 **t4** に値 **[ERROR]** が含まれているすべての行の数を選択します。 この値を含む行が 3 行あるため、このステートメントでは値 **3** が返されます。
 
-* **INPUT__FILE__NAME LIKE '%.log'** - Hive に .log で終わるファイルのデータのみを返す必要があることを示します。 このステートメントにより、データを含む `sample.log` ファイルに検索が制限されます。
+* `INPUT__FILE__NAME LIKE '%.log'` - Hive は、ディレクトリ内のすべてのファイルにスキーマの適用を試みます。 このケースでは、ディレクトリにスキーマに一致しないファイルが含まれています。 結果にガベージ データが含まれないように、このステートメントを使用して、.log で終わるファイルのデータのみを返す必要があることを Hive に指示します。
 
 > [!NOTE]
 > 基になるデータが外部ソースによって更新されると考えられる場合は、外部テーブルを使用する必要があります。 たとえば、データの自動アップロード処理や MapReduce 操作の場合です。
@@ -133,18 +161,20 @@ HDInsight にはさまざまなサンプル データ セットが用意され�
 
 これらのステートメントは次のアクションを実行します。
 
-* **CREATE TABLE IF NOT EXISTS**: テーブルが存在しない場合は作成します。 **EXTERNAL** キーワードが使用されていないため、このステートメントによって内部テーブルが作成され、Hive データ ウェアハウスに格納されて、完全に Hive によって管理されます。
+* `CREATE TABLE IF NOT EXISTS`: テーブルが存在しない場合は作成します。 **EXTERNAL** キーワードが使用されていないため、このステートメントは内部テーブルを作成します。 このテーブルは Hive データ ウェアハウスに格納され、完全に Hive によって管理されます。
 
-* **STORED AS ORC**: Optimized Row Columnar (ORC) 形式でデータを格納します。 この形式は、Hive にデータを格納するための、非常に効率的で適切な形式です。
+* `STORED AS ORC`: Optimized Row Columnar (ORC) 形式でデータを格納します。 ORC は、Hive データを格納するための高度に最適化された効率的な形式です。
 
-* **INSERT OVERWRITE ...SELECT**: **[ERROR]** を含む **log4jLogs** テーブルの行を選択し、**errorLogs** テーブルにデータを挿入します。
+* `INSERT OVERWRITE ... SELECT`: **[ERROR]** を含む **log4jLogs** テーブルの行を選択し、**errorLogs** テーブルにデータを挿入します。
 
 > [!NOTE]
 > 外部テーブルとは異なり、内部デーブルを削除すると、基盤となるデータも削除されます。
 
-## <a id="usetez"></a>パフォーマンスを改善するための Apache Tez の使用方法
+## <a name="improve-hive-query-performance"></a>Hive クエリ パフォーマンスの向上
 
-[Apache Tez](http://tez.apache.org) は、Hive などの大量のデータを扱うアプリケーションを同じ規模で遥かに効率的に実行可能にするフレームワークです。 HDInsight の最新リリースでは、Hive は Tez 上での実行がサポートされます。 Linux ベースの HDInsight クラスターでは、Tez は既定で有効になっています。
+### <a id="usetez"></a>Apache Tez
+
+[Apache Tez](http://tez.apache.org) は、Hive などの大量のデータを扱うアプリケーションを同じ規模で遥かに効率的に実行可能にするフレームワークです。 Linux ベースの HDInsight クラスターでは、Tez は既定で有効になっています。
 
 > [!NOTE]
 > Tez は Windows ベースの HDInsight クラスターに対して現在既定でオフになっているため、有効にする必要があります。 Tez を活用するために、Hive クエリに次の値を設定する必要があります。
@@ -161,26 +191,15 @@ Tez を使用して実行したジョブのデバッグを支援するために�
 
 * [Windows ベースの HDInsight で Tez UI を使用して Tez ジョブをデバッグする](hdinsight-debug-tez-ui.md)
 
-## <a id="run"></a>HiveQL ジョブの実行方法
+### <a name="low-latency-analytical-processing-llap"></a>Low Latency Analytical Processing (LLAP)
 
-HDInsight では、さまざまな方法を使用して HiveQL ジョブを実行できます。 次の表を使用して、適切な方法を判別してから、該当するチュートリアルのリンクをクリックしてください。
+[LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) (Live Long and Process と呼ばれることもあります) は、クエリのメモリ内キャッシュを使用可能にする Hive 2.0 の新機能です。 LLAP により、Hive クエリは[特定のケースで Hive 1.x と比べて最大 26 倍高速化](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/)されます。
 
-| **方法**  | **対話型** シェルの有無 | **バッチ** 処理の有無 | 使用する **クラスターのオペレーティング システム** | 使用元の **クライアントのオペレーティング システム** |
-|:--- |:---:|:---:|:--- |:--- |
-| [Hive ビュー](hdinsight-hadoop-use-hive-ambari-view.md) |✔ |✔ |Linux |任意 (ブラウザー ベース) |
-| [Beeline コマンド](hdinsight-hadoop-use-hive-beeline.md) |✔ |✔ |Linux |Linux、Unix、Mac OS X、または Windows |
-| [REST API](hdinsight-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux または Windows |Linux、Unix、Mac OS X、または Windows |
-| [クエリ コンソール](hdinsight-hadoop-use-hive-query-console.md) (HDInsight 3.2 および 3.3) |&nbsp; |✔ |Windows |任意 (ブラウザー ベース) |
-| [HDInsight Tools for Visual Studio](hdinsight-hadoop-use-hive-visual-studio.md) |&nbsp; |✔ |Linux または Windows |Windows |
-| [Windows PowerShell](hdinsight-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Linux または Windows |Windows |
-| [リモート デスクトップ](hdinsight-hadoop-use-hive-remote-desktop.md) (HDInsight 3.2 および 3.3) |✔ |✔ |Windows |Windows |
-
-> [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight 3.2 と 3.3 の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関するページを参照してください。
+HDInsight は、インタラクティブ Hive クラスター タイプの LLAP を提供します。 詳細については、[インタラクティブ Hive の使用](hdinsight-hadoop-use-interactive-hive.md)に関するドキュメントを参照してください。
 
 ## <a name="hive-jobs-and-sql-server-integration-services"></a>Hive ジョブと SQL Server Integration Services
 
-SQL Server Integration Services (SSIS) を利用して Hive ジョブを実行することもできます。 Azure Feature Pack for SSIS には、HDInsight の Hive ジョブと連動する次のコンポーネントがあります。
+SQL Server Integration Services (SSIS) を使用して Hive ジョブを実行することができます。 Azure Feature Pack for SSIS には、HDInsight の Hive ジョブと連動する次のコンポーネントがあります。
 
 * [Azure HDInsight Hive タスク][hivetask]
 
