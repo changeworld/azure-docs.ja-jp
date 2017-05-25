@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 11/21/2016
-ms.author: padmavc
-translationtype: Human Translation
+ms.author: LADocs; padmavc
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ca8537a7e35e44efafb9b0a9d6ddefe069067475
 ms.openlocfilehash: de55bf7d9e68146745c90b96f280c8a71e27b2f9
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/02/2017
 
 ---

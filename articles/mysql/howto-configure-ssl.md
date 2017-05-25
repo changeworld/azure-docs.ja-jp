@@ -11,7 +11,7 @@ ms.service: mysql-database
 ms.tgt_pltfrm: portal
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 05/18/2017
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
 ms.openlocfilehash: 801806056b745be5663c0a10241795947d1dd036
@@ -123,7 +123,7 @@ OpenSSL>x509 -inform DER -in BaltimoreCyberTrustRoot.cer -out MyServerCACert.pem
 MySQL コマンド ライン インターフェイスを使用して、次のコマンドを実行します。
 
 ```dos
-mysql.exe -h yourservername.mysql.database.azure.com -uUsername@yourservername -pYourPassword --ssl-ca=c:\ssl\MyServerCACert.pem
+mysql.exe -h mysqlserver4demo.mysql.database.azure.com -uUsername@mysqlserver4demo -pYourPassword --ssl-ca=c:\ssl\MyServerCACert.pem
 ```
 MySQL の **status** コマンドを実行して、SSL 経由で MySQL サーバーに接続していることを確認します。
 

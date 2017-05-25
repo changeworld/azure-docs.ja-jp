@@ -12,10 +12,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/01/2017
-ms.author: padmavc; LADocs
-translationtype: Human Translation
+ms.author: LADocs; padmavc
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
 ms.openlocfilehash: 89cd987cee841ea24dce85c0249e0eb3489c8d90
+ms.contentlocale: ja-jp
 ms.lasthandoff: 05/03/2017
 
 ---

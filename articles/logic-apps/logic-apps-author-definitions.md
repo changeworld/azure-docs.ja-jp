@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 03/29/2017
-ms.author: jehollan
-translationtype: Human Translation
+ms.author: LADocs; jehollan
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e94837bf79e42602e2f72cda747ea629eed45a20
 ms.openlocfilehash: 920940d8ebe23d24216d3e886bd8ae58be12ce34
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/01/2017
 
 

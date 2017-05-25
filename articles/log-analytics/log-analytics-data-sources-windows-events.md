@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 05/23/2017
 ms.author: bwren
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 653696779e612726ed5b75829a5c6ed2615553d7
 ms.openlocfilehash: b6627ed7e3b08e0a94dec229d735114b3ed1b9df
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -74,10 +76,5 @@ Windows イベント レコードの型は **Event** になり、次の表に示
 * [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。  
 * [カスタム フィールド](log-analytics-custom-fields.md) を使用し、イベント レコードを個別のフィールドに解析します。
 * お使いの Windows エージェントから [パフォーマンス カウンターの収集](log-analytics-data-sources-performance-counters.md) を構成します。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
