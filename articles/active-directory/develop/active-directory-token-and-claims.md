@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/08/2017
 ms.author: mbaldwin
-translationtype: Human Translation
+ms.custom: aaddev
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 83bb2090d3a2fbd4fabdcd660c72590557cfcafc
 ms.openlocfilehash: 46702abb229ba0a6512f336cb0aa4e4a75b51771
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/18/2017
 
 

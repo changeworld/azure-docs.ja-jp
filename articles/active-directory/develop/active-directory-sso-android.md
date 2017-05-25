@@ -14,6 +14,7 @@ ms.devlang: java
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: brandwe
+ms.custom: aaddev
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
 ms.openlocfilehash: 510a1827f432c4db2190deff016a886dd79eebc9

@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/28/2017
 ms.author: skwan;bryanla
-translationtype: Human Translation
+ms.custom: aaddev
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e1299c1f7f8a31f7034fc0736fcd9d66153a9758
 ms.openlocfilehash: 3290a375963bc3e625cbdb05b5f9686e8cfb34f6
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/01/2017
 
 

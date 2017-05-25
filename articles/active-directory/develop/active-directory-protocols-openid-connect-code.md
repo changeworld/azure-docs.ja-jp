@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: priyamo
-translationtype: Human Translation
+ms.custom: aaddev
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 3d5ad974c01e0ee3954da4f990da87338b2d1756
 ms.openlocfilehash: e41620d3192dbb77a26b79663494e441ccd96d40
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/23/2017
 
 
