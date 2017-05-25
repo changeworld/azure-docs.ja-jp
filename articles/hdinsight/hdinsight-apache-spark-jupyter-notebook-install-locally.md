@@ -1,5 +1,5 @@
 ---
-title: "Jupyter Notebook をローカルにインストールして Azure HDInsight Spark クラスターに接続する | Microsoft Docs"
+title: "Jupyter をローカルにインストールして Azure HDInsight Spark クラスターに接続する | Microsoft Docs"
 description: "Jupyter Notebook をローカル コンピューターにインストールして Azure HDInsight 上の Apache Spark クラスターに接続する方法を説明します。"
 services: hdinsight
 documentationcenter: 
@@ -17,14 +17,14 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 689bcb86a5eb4476cb62516f623cd23702cd6bc9
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: c2949fbda0503c779b117aebb14d4d7b76bae426
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
-# <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-cluster-on-hdinsight"></a>Jupyter Notebook をコンピューターにインストールして HDInsight の Apache Spark クラスターに接続する
+# <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter Notebook をコンピューターにインストールして HDInsight の Apache Spark に接続する
 
 この記事では、カスタム PySpark (Python の場合) カーネルと Spark (Scala の場合) カーネル、Spark マジックと共に Jupyter Notebook をインストールし、HDInsight クラスターにノートブックを接続する方法について説明します。 さまざまな理由から、Jupyter をローカル コンピューターにインストールすることが必要になるケースがあります。またローカル コンピューターへのインストールには、いくつかの課題もあります。 この点について詳しくは、この記事の最後のセクション「[Jupyter をローカル コンピューターにインストールする理由](#why-should-i-install-jupyter-on-my-computer)」を参照してください。
 
@@ -61,7 +61,7 @@ Spark マジック、PySpark カーネル、Spark カーネルのインストー
 
 * クラスター v3.5 と v3.6 の場合は、`pip install sparkmagic==0.11.2` を実行して sparkmagic 0.11.2 をインストールします。
 
-## <a name="configure-spark-magic-to-access-the-hdinsight-spark-cluster"></a>HDInsight の Spark クラスターにアクセスするように Spark マジックを構成する
+## <a name="configure-spark-magic-to-connect-to-hdinsight-spark-cluster"></a>HDInsight の Spark クラスターに接続するように Spark マジックを構成する
 
 このセクションでは、先ほどインストールした Spark マジックに対し、Apache Spark クラスターに接続するための構成を行います。Apache Spark クラスターは、あらかじめ Azure HDInsight に作成しておく必要があります。
 
@@ -119,7 +119,7 @@ Spark マジック、PySpark カーネル、Spark カーネルのインストー
 
     a. 新しい Notebook を作成します。 右隅にある **[新規]**をクリックします。 既定のカーネル **Python2** に加え、新たにインストールする 2 つの新しいカーネル (**PySpark** と **Spark**) が確認できます。 **[PySpark]**をクリックします。
 
-    ![新しい Jupyter Notebook の作成](./media/hdinsight-apache-spark-jupyter-notebook-install-locally/jupyter-kernels.png "新しい Jupyter Notebook の作成")
+    ![Jupyter Notebook のカーネル](./media/hdinsight-apache-spark-jupyter-notebook-install-locally/jupyter-kernels.png "Jupyter Notebook のカーネル")
 
     b. 次のコード スニペットを実行します。
 

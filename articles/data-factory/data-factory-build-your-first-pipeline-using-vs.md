@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: 0ceba4142fd7b0e6edc1b7a6c14470d21806004a
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: 95691b6e59f5e21e7c6cff9f4222bcffade57973
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -103,7 +104,6 @@ Azure Storage のリンクされたサービスは、接続情報を提供する
         "properties": {
         "type": "HDInsightOnDemand",
             "typeProperties": {
-                "version": "3.2",
                 "clusterSize": 1,
                 "timeToLive": "00:30:00",
                 "linkedServiceName": "AzureStorageLinkedService1"
@@ -114,9 +114,8 @@ Azure Storage のリンクされたサービスは、接続情報を提供する
 
     次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-    プロパティ | 説明
+    プロパティ | Description
     -------- | ----------- 
-    バージョン | 作成する HDInsight Hadoop クラスターのバージョンを指定します。
     ClusterSize | HDInsight Hadoop クラスターのサイズを指定します。
     TimeToLive | 削除されるまでの HDInsight クラスターのアイドル時間を指定します。
     linkedServiceName | HDInsight Hadoop クラスターによって生成されるログを保存するために使用されるストレージ アカウントを指定します。 
@@ -558,7 +557,7 @@ Azure Data Factory のエンティティを VS で発行するときに、その
 
 
 ## <a name="see-also"></a>関連項目
-| トピック | 説明 |
+| トピック | Description |
 |:--- |:--- |
 | [パイプライン](data-factory-create-pipelines.md) |この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにデータ主導ワークフローを作成する方法を説明します。 |
 | [データセット](data-factory-create-datasets.md) |この記事では、Azure Data Factory のデータセットについて説明します。 |

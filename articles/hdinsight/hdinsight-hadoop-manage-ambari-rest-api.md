@@ -1,6 +1,6 @@
 ---
-title: "Ambari REST API を使用して Azure HDInsight クラスターを監視および管理する | Microsoft Docs"
-description: "Ambari を使用して Linux ベースの HDInsight クラスターを監視および管理する方法を説明します。 このドキュメントでは、HDInsight クラスターに含まれている Ambari REST API を使用する方法について説明します。"
+title: "Ambari REST API を使用して Hadoop を監視および管理する - Azure HDInsight | Microsoft Docs"
+description: "Ambari を使用して Azure HDInsight の Hadoop クラスターを監視および管理する方法を説明します。 このドキュメントでは、HDInsight クラスターに含まれている Ambari REST API を使用する方法について説明します。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/23/2017
+ms.date: 05/16/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: ce6d8301c9c9fc0b9ac6bc2e31023ebbbba8a67c
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 7ac80a8521b48f43538ca06a054f8302eb32eea6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -27,7 +28,9 @@ ms.lasthandoff: 04/27/2017
 
 [!INCLUDE [ambari-selector](../../includes/hdinsight-ambari-selector.md)]
 
-Apache Ambari には使いやすい Web UI と REST API が用意されているため、Hadoop クラスターを簡単に管理および監視できます。 Ambari は Linux オペレーティング システムを使用する HDInsight クラスターに含まれており、クラスターの監視と構成の変更を行うために使用します。 このドキュメントでは、Ambari REST API の使用方法の基本を説明します。
+Ambari REST API を使用して Azure HDInsight の Hadoop クラスターを管理および監視する方法を説明します。
+
+Apache Ambari には使いやすい Web UI と REST API が用意されているため、Hadoop クラスターを簡単に管理および監視できます。 Ambari は Linux オペレーティング システムを使用する HDInsight クラスターに含まれており、クラスターの監視と構成の変更を行うために使用します。
 
 ## <a id="whatis"></a>Ambari とは
 

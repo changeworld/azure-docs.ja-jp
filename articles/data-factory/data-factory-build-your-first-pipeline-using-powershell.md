@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: c7062721017176b4caacbd48a513c2610058b835
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: bfd2176103601b748bd141cc1cc86e814395c3b3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -142,7 +143,6 @@ ms.lasthandoff: 04/27/2017
       "properties": {
         "type": "HDInsightOnDemand",
         "typeProperties": {
-          "version": "3.2",
           "clusterSize": 1,
           "timeToLive": "00:30:00",
           "linkedServiceName": "StorageLinkedService"
@@ -152,9 +152,8 @@ ms.lasthandoff: 04/27/2017
     ```
     次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-   | プロパティ | 説明 |
+   | プロパティ | Description |
    |:--- |:--- |
-   | バージョン |作成された HDInsight のバージョンが 3.2 になるように指定します。 |
    | ClusterSize |HDInsight クラスターのサイズを指定します。 |
    | TimeToLive |削除されるまでの HDInsight クラスターのアイドル時間を指定します。 |
    | linkedServiceName |HDInsight によって生成されるログを保存するために使用されるストレージ アカウントを指定します。 |

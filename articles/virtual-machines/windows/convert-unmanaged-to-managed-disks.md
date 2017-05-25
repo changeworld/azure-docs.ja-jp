@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 6530da96cd6e6ccd90714a9d3c9f00f88afe853e
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: b3a2bf688f1837a17312ec4bb5ca6b87209076cd
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.lasthandoff: 04/03/2017
 ストレージ アカウントの非管理対象ディスクを使っている既存の Azure VM があり、その VM で [Managed Disks](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を利用できるようにしたい場合は、VM を変換できます。 このプロセスでは、OS ディスクだけでなく、アタッチされたデータ ディスクも、ストレージ アカウント内の非管理対象ディスクの利用から管理ディスクの利用に変換します。 対象の VM をシャットダウンして割り当てを解除した後で、Powershell を使って、管理ディスクを利用するよう VM を変換します。 変換後、VM を再起動すると、管理ディスクが利用されます。
 
 作業を開始する前に、「[Plan for the migration to Managed Disks (Managed Disks への移行の計画)](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks)」をご覧ください。
-移行プロセスは取り消すことができないため、運用環境で移行を実行する前にテスト仮想マシンを移行して、プロセスをテストしてください。
+移行プロセスは取り消すことができないため、運用環境で移行を実行する前にテスト仮想マシンを移行して、プロセスをテストしてください。 VM の管理は移行中にはロックされるため、移行が完了するまで VM の起動、停止、または削除を行うことはできません。
 
 
 > [!IMPORTANT] 
