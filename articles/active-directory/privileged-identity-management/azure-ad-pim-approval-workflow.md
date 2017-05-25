@@ -152,7 +152,7 @@ PIM のすべてのユーザーのために [My Audit History (My 監査履歴)]
 
 ### <a name="provide-justification-for-my-approvalrejection"></a>自分の承認/却下の理由を説明する
 
-新しいブレードが開き、ここで一度に複数の要求を承認または拒否できます。 決定の理由を入力し、ブレードの下部で [承認] (または [拒否]) をクリックします。
+新しいブレードが開き、ここで一度に複数の要求を承認または拒否できます。 決定の理由を入力し、ブレードの下部で [承認] \(または [拒否]) をクリックします。
 
 ![](media/azure-ad-pim-approval-workflow/image029.png)
 
