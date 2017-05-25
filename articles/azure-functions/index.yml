@@ -1,9 +1,10 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Azure Functions のドキュメント"
+title: Azure Functions のドキュメント
 metadata:
-  title: "Azure Functions のドキュメント - チュートリアル | Microsoft Docs"
-  description: "タスクをバックグラウンドで、またはスケジュールに従って実行するための関数を、特別なインフラストラクチャを使用せずに、選択した言語で開発してデプロイする方法について説明します。"
+  document_id: 83ceabb5-fb4f-a709-3fd2-37d024409f31
+  title: Azure Functions のドキュメント - チュートリアル | Microsoft Docs
+  meta.description: Learn how to develop and deploy functions in the language of your choice to run tasks in the background or on a schedule without special infrastructure.
   services: functions
   author: apexprodleads
   manager: carolz
@@ -14,53 +15,68 @@ metadata:
   ms.date: 01-23-2017
   ms.author: carolz
 abstract:
-  description: "Azure Functions は、インフラストラクチャを明示的にプロビジョニングまたは管理することなく、オンデマンドでコードを実行できるサーバーレス コンピューティング サービスです。 Azure Functions を使用すると、各種のイベントに応じてスクリプトまたはコードの一部を実行できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Functions の使用方法を確認してください。"
+  description: Azure Functions は、インフラストラクチャを明示的にプロビジョニングまたは管理することなく、オンデマンドでコードを実行できるサーバーレス コンピューティング サービスです。 Azure Functions を使用すると、各種のイベントに応じてスクリプトまたはコードの一部を実行できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Functions の使用方法を確認してください。
   aside:
     image:
       alt: 
       height: 110
-      src: media/index/get-started-with-azure-functions.png
+      src: media/index/video-thumb-get-started.png
       width: 250  
-    title: "Azure Functions の概要。 (2:39)"
+    title: 'Azure Functions の概要。 (2:39)'
     href: https://azure.microsoft.com/en-us/resources/videos/get-started-with-azure-functions/
     width: 250
 sections:
-- title: "5 分間のクイック スタート"
+- title: 5 分間のクイック スタート
   items:
   - type: paragraph
-    text: 'Learn how to create a Hello World function using:'
+    text: 'Learn how to create functions that execute based on events created via:'
   - type: list
     style: icon48
     items: 
     - image: 
-        src: https://docs.microsoft.com/en-us/azure/sql-database/media/index/portal.svg
-      text: Azure portal
+        src: media/index/http.svg
+      text: HTTP
       href: /azure/azure-functions/functions-create-first-azure-function
     - image: 
-        src: https://docs.microsoft.com/en-us/azure/sql-database/media/index/cli.svg
-      text: Azure CLI
-      href: /azure/azure-functions/functions-create-first-azure-function-azure-cli
-- title: "ステップバイステップのチュートリアル"
+        src: media/index/stopwatch.svg
+      text: Timer
+      href: /azure/azure-functions/functions-create-scheduled-function
+    - image: 
+        src: media/index/octokitty.svg
+      text: GitHub webhook
+      href: /azure/azure-functions/functions-create-github-webhook-triggered-function
+    - image: 
+        src: media/index/blob.svg
+      text: Blob
+      href: /azure/azure-functions/functions-create-storage-blob-triggered-function
+    - image: 
+        src: media/index/storage.svg
+      text: Queue
+      href: /azure/azure-functions/functions-create-storage-queue-triggered-function
+- title: ステップバイステップのチュートリアル
   items:
   - type: paragraph
     text: 'Learn how to build and manage Azure Functions'
   - type: list
     style: ordered
     items:
-    - html: <a href="/azure/azure-functions/functions-twitter-email">Build a serverless social media dashboard</a>
+    - html: <a href="/azure/azure-functions/functions-twitter-email">Create a function that integrates with Azure Logic Apps</a>
     - html: <a href="/azure/azure-functions/functions-create-serverless-api">Create a serverless API using Azure Functions</a>
-- title: "サンプル"
+- title: サンプル
   items:
   - type: list
     style: unordered
     className: spaced noBullet
     items:
     - html: <a href="/azure/azure-functions/functions-cli-samples">Azure CLI</a>
-- title: "リファレンス"
+- title: リファレンス
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: "コマンド ライン"
+    - title: コマンド ライン
       html: <p><a href="/cli/azure">Azure CLI</a></p>
+    - title: バインド
+ 
+      html: <p><a href="/azure/azure-functions/functions-bindings-timer">Cosmos DB bindings</p><p><a href="/azure/azure-functions/functions-bindings-twilio">Twilio output binding</p>
