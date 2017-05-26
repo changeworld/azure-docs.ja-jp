@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 05/10/2017
+ms.date: 05/13/2017
 ms.author: arramac
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 45adf2accd3d9f43bc1d73b9ff93cc34d4d7c90a
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: d8a6a183d1acd7a06683ec2e402bd866cb5195f4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -96,27 +96,25 @@ github から Graph API アプリの複製を作成し、接続文字列を設�
 
     ![Azure Portal の [キー] ブレードでアクセス キーを表示およびコピーする](./media/create-documentdb-dotnet/keys.png)
 
-2. `app.js` ファイルの *endpoint*、*db*、*coll*、および *authKey* の構成を入力します。
+2. ポータルから (コピー ボタンを使用して) URI 値をコピーし、config.js の config.endpoint キーの値に設定します。
 
-    ```nodejs
-    const client = Gremlin.createClient(
-        443, 
-        config.endpoint, 
-        { 
-            "session": false, 
-            "ssl": true, 
-            "user": `/dbs/${config.database}/colls/${config.collection}`,
-            "password": config.primaryKey
-        });
-    ```
+    `config.endpoint = "GRAPHENDPOINT";`
+
+3. URI の documents.azure.com 部分を graphs.azure.com に置き換えます。
+
+4. ポータルから PRIMARY KEY 値をコピーし、config.js の config.primaryKey の値に設定します。 これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
+
+    `config.primaryKey = "PRIMARYKEY";`
 
 ## <a name="run-the-console-app"></a>コンソール アプリの実行
 
-1. ターミナルで `npm install` を実行し、必要な npm モジュールをインストールします。
+1. ターミナル ウィンドウを開き、`cd` でプロジェクトに含まれる package.json ファイルのインストール ディレクトリに移動します。  
 
-2. `node_modules\gremlin` の内容を、[Cosmos DB Gremlin フォーク](https://github.com/CosmosDB/gremlin-javascript)からのソース コードに置き換えます。このフォークは Azure Cosmos DB に必要な SSL と SASL をサポートしていますが、これらは現在、(変更がドライバーで受け入れられるまで一時的に) ドライバーではサポートされていません。
+2. `npm install gremlin` を実行し、必要な npm モジュールをインストールします。
 
-2. ターミナルで `node app.js` を実行し、node アプリケーションを起動します。
+3. `node_modules\gremlin` フォルダーの内容を、[Cosmos DB Gremlin フォーク](https://github.com/CosmosDB/gremlin-javascript)からのソース コードに置き換えます。このフォークは Azure Cosmos DB に必要な SSL と SASL をサポートしていますが、これらは現在、ドライバーでは (変更がドライバーで受け入れられるまで一時的に) サポートされていません。
+
+4. ターミナルで `node app.js` を実行し、node アプリケーションを起動します。
 
 これで、データ エクスプローラーに戻って、この新しいデータの表示、クエリ、変更、操作を行うことができます。 
 
@@ -145,5 +143,3 @@ github から Graph API アプリの複製を作成し、接続文字列を設�
 
 > [!div class="nextstepaction"]
 > [Gremlin を使用したクエリ](tutorial-query-graph.md)
-
-

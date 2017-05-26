@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: arramac
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 73b9448153ec520d77afd1bdb65b9694e7bf7b9e
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 9bbf188b0080b8b1cf71423023645f54f1f823e5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -70,27 +70,33 @@ github から DocumentDB API アプリを複製し、接続文字列を設定し
 
 ## <a name="review-the-code"></a>コードの確認
 
-アプリで何が行われているかを簡単に確認してみましょう。 DocumentDBRepository.cs ファイルを開くと、これらのコード行によって、Azure Cosmos DB リソースが作成されることがわかります。 
+アプリで何が行われているかを簡単に確認してみましょう。 Program.cs ファイルを開くと、以下のコード行によって、Azure Cosmos DB リソースが作成されていることがわかります。 
 
-* DocumentClient が初期化されます。
+* CloudTableClient が初期化されます。
 
     ```csharp
-    client = new DocumentClient(new Uri(ConfigurationManager.AppSettings["endpoint"]), ConfigurationManager.AppSettings["authKey"]);`
+    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connectionString); 
+    CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
     ```
 
-* 新しいデータベースが作成されます。
+* テーブルが存在しない場合は新しいテーブルが作成されます。
 
     ```csharp
-    await client.CreateDatabaseAsync(new Database { Id = DatabaseId });
+    CloudTable table = tableClient.GetTableReference("people");
+    table.CreateIfNotExists();
     ```
 
-* 新しいグラフ コンテナーが作成されます。
+* 新しいテーブル コンテナーが作成されます。 このコードは通常の Azure Table Storage SDK によく似ています。 
 
     ```csharp
-    await client.CreateDocumentCollectionAsync(
-        UriFactory.CreateDatabaseUri(DatabaseId),
-        new DocumentCollection { Id = CollectionId },
-        new RequestOptions { OfferThroughput = 1000 });
+    CustomerEntity item = new CustomerEntity()
+                {
+                    PartitionKey = Guid.NewGuid().ToString(),
+                    RowKey = Guid.NewGuid().ToString(),
+                    Email = $"{GetRandomString(6)}@contoso.com",
+                    PhoneNumber = "425-555-0102",
+                    Bio = GetRandomString(1000)
+                };
     ```
 
 ## <a name="update-your-connection-string"></a>接続文字列の更新
@@ -106,7 +112,7 @@ github から DocumentDB API アプリを複製し、接続文字列を設定し
 3. ポータルから Azure Cosmos DB アカウント名をコピーして、app.config 内の PremiumStorageConnection 文字列値の AccountName の値に設定します。 上記のスクリーンショットでは、アカウント名は cosmos-db-quickstart です。 自分のアカウント名はポータルの上部に表示されます。
 
     `<add key="PremiumStorageConnectionString" 
-        value="DefaultEndpointsProtocol=https;AccountName=MYSTORAGEACCOUNT;AccountKey=AUTHKEY;TableEndpoint=https://COSMODB.documents.azure.com" />`
+        value="DefaultEndpointsProtocol=https;AccountName=MYSTORAGEACCOUNT;AccountKey=AUTHKEY;TableEndpoint=https://COSMOSDB.documents.azure.com" />`
 
 4. 次に、ポータルから PRIMARY KEY 値をコピーし、PremiumStorageConnectionString の AccountKey の値に設定します。 
 
@@ -114,7 +120,7 @@ github から DocumentDB API アプリを複製し、接続文字列を設定し
 
 5. 最後に、ポータルの [キー] ページから (コピー ボタンを使用して) URI 値をコピーし、PremiumStorageConnectionString の TableEndpoint の値に設定します。
 
-    `TableEndpoint=https://COSMODB.documents.azure.com`
+    `TableEndpoint=https://COSMOSDB.documents.azure.com`
 
     StandardStorageConnectionString はそのまま使用できます。
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/26/2017
+ms.date: 05/12/2017
 ms.author: joflore
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 328537b2bfbe15a23a9199bbb3c07851eaa85390
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: 6cc1589f2ebad9267334f70926be369b32c8e075
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/13/2017
 
 
 ---
@@ -28,15 +28,16 @@ ms.lasthandoff: 05/03/2017
 
 1. [ディレクトリでパスワードのリセットを有効にします](active-directory-passwords-getting-started.md)。
 2. [パスワード ライトバック用にオンプレミスの AD のアクセス許可を構成します](active-directory-passwords-how-it-works.md#active-directory-permissions)。
-3. [必要なライセンスを割り当て、確認します](active-directory-passwords-licensing.md)。
-4. 段階的に展開する場合は、パスワードのリセットをユーザー グループに制限して、この機能を時間をかけて展開できます。 そのためには、**[セルフ サービスによるパスワードのリセットが有効]** を **[全員]** から **[グループ]** に切り替え、パスワードのリセットを有効にするセキュリティ グループを選択します。 そのグループのメンバー全員にライセンスが割り当てられている必要があります。これが[グループ ベースのライセンス](active-directory-passwords-licensing.md#enable-group-or-user-based-licensing)を有効にする優れた方法です。
-5. ポリシーに基づいて、[認証データ](active-directory-passwords-data.md)の最小セットを設定します。
-6. 登録方法とリセット方法が記載されている手順書をユーザーに送信して、SSPR の使用方法を伝えます。
+3. [パスワード ライトバックを構成](active-directory-passwords-writeback.md#configuring-password-writeback)し、パスワードを Azure AD からオンプレミス ディレクトリに書き戻します。
+4. [必要なライセンスを割り当て、確認します](active-directory-passwords-licensing.md)。
+5. 段階的に展開する場合は、パスワードのリセットをユーザー グループに制限して、この機能を時間をかけて展開できます。 そのためには、**[セルフ サービスによるパスワードのリセットが有効]** を **[全員]** から **[グループ]** に切り替え、パスワードのリセットを有効にするセキュリティ グループを選択します。 そのグループのメンバー全員にライセンスが割り当てられている必要があります。これが[グループ ベースのライセンス](active-directory-passwords-licensing.md#enable-group-or-user-based-licensing)を有効にする優れた方法です。
+6. ポリシーに基づいて、[認証データ](active-directory-passwords-data.md)の最小セットを設定します。
+7. 登録方法とリセット方法が記載されている手順書をユーザーに送信して、SSPR の使用方法を伝えます。
     > [!NOTE]
     > Microsoft では Azure 管理者タイプのアカウントに対して強力な認証要件を適用しているため、管理者ではなく、ユーザーで SSPR をテストします。 管理者のパスワード ポリシーの詳細については、[詳細な記事](active-directory-passwords-how-it-works.md)を参照してください。
 
-7. 任意の時点で登録を強制し、一定期間が経ったら認証情報の再確認をユーザーに求めることができます。 ユーザーに登録を強制しない場合は、[エンド ユーザーの登録を必須にしないでパスワードのリセットをデプロイ](active-directory-passwords-data.md)できます。
-8. 一定の期間、[Azure AD によって提供されるレポート](active-directory-passwords-reporting.md)を確認して、ユーザーの登録と使用状況をチェックします。
+8. 任意の時点で登録を強制し、一定期間が経ったら認証情報の再確認をユーザーに求めることができます。 ユーザーに登録を強制しない場合は、[エンド ユーザーの登録を必須にしないでパスワードのリセットをデプロイ](active-directory-passwords-data.md)できます。
+9. 一定の期間、[Azure AD によって提供されるレポート](active-directory-passwords-reporting.md)を確認して、ユーザーの登録と使用状況をチェックします。
 
 ## <a name="email-based-rollout"></a>電子メール ベースの展開
 
@@ -74,13 +75,13 @@ ms.lasthandoff: 05/03/2017
 
 次のリンク先では、Azure AD を使用したパスワードのリセットに関する追加情報が得られます。
 
-* [**クイック スタート**](active-directory-passwords-getting-started.md) - Azure AD のセルフ サービスによるパスワードのリセットの管理を始めることができます 
-* [**ライセンス**](active-directory-passwords-licensing.md) - Azure AD のライセンスを構成します
+* [**クイック スタート**](active-directory-passwords-getting-started.md) - Azure AD のセルフサービスによるパスワードのリセットの管理を始めることができます。 
+* [**ライセンス**](active-directory-passwords-licensing.md) - Azure AD のライセンスを構成します。
 * [**データ**](active-directory-passwords-data.md) - パスワード管理に必要なデータとその使用方法がわかります
 * [**カスタマイズ**](active-directory-passwords-customize.md) - 会社の SSPR エクスペリエンスの外観をカスタマイズします
-* [**ポリシー**](active-directory-passwords-policy.md) - Azure AD のパスワード ポリシーを把握し、設定します
+* [**ポリシー**](active-directory-passwords-policy.md) - Azure AD のパスワード ポリシーを把握し、設定します。
 * [**パスワード ライトバック**](active-directory-passwords-writeback.md) - オンプレミスのディレクトリでのパスワード ライトバックのしくみ
-* [**レポート**](active-directory-passwords-reporting.md) - ユーザーが SSPR 機能にアクセスしたかどうかや、アクセスしたタイミングと場所を検出します
+* [**レポート**](active-directory-passwords-reporting.md) - ユーザーが SSPR 機能にアクセスしたかどうかや、アクセスしたタイミングと場所を検出します。
 * [**技術的詳細**](active-directory-passwords-how-it-works.md) - しくみを詳しく説明しています
-* [**よく寄せられる質問**](active-directory-passwords-faq.md) - 方法は? なぜですか? 何ですか? どこですか? 誰ですか? いつですか? - ずっと確認したかった質問に対する回答
+* [**よく寄せられる質問**](active-directory-passwords-faq.md) - どのようにですか? なぜですか? 何ですか? どこですか? 誰がですか? いつですか? - ずっと確認したかった質問に対する回答
 * [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - SSPR の一般的な問題を解決する方法について説明しています

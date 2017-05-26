@@ -37,9 +37,11 @@
 >[!NOTE]
 > 常に同じ日数、アクセス許可などを使用する場合は、同じポリシー ID を使用する必要があります。詳細と例については、[こちらの](../articles/media-services/media-services-dotnet-manage-entities.md#limit-access-policies)セクションをご覧ください。
 
-<sup>7</sup> Microsoft サービスのメディア プロセッサのいずれか (つまり、Media Encoder Standard や Media Encoder Premium Workflow などのエンコードまたは Face Detector などの分析エンジン) で処理する目的でコンテンツを Azure Media Services の資産にアップロードする場合は、次の制限事項に注意する必要があります。 
+<sup>7</sup> Microsoft サービスのメディア プロセッサのいずれか (つまり、Media Encoder Standard や Media Encoder Premium Workflow などのエンコードまたは Face Detector などの分析エンジン) で処理する目的でコンテンツを Azure Media Services のアセットにアップロードする場合は、最大サイズについての制限に注意する必要があります。 
 
-| メディア占有ユニットの種類 | ファイルの最大サイズ (GB)| 
+2017 年 5 月 15 日の時点で、1 つの BLOB に対してサポートされる最大サイズは 195 TB です。この制限よりも大きいファイルの場合、タスクは失敗します。 この制限を解消するための作業を進めています。 また、アセットの最大サイズの制約は、次のとおりです。
+
+| メディア占有ユニットの種類 | 最大入力サイズ (GB)| 
 | --- | --- | 
 |S1    | 325|
 |S2    | 640|

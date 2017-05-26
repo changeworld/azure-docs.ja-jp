@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/24/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 7c70129ebf4bacc28400cf68418bf898e4e646d2
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 90ed1d5ca50bfb19a9d1c5d258e9588e05893270
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -43,7 +44,7 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 
 1. Azure アカウントの資格情報を使用して azureiotsuite.com にログオンし、**[+]** をクリックしてソリューションを作成します。
 2. **[Connected factory (コネクテッド ファクトリ)]** タイルで **[選択]** をクリックします。
-3. リモート監視の事前構成済みソリューションの **[ソリューション名]** を入力します。
+3. コネクテッド ファクトリの事前構成済みソリューションの **[ソリューション名]** を入力します。
 4. ソリューションのプロビジョニングに使用する**サブスクリプション**と**リージョン**を選択します。
 5. **[ソリューションの作成]** をクリックして、プロビジョニング プロセスを開始します。 通常、このプロセスの実行までに数分かかります。
 
@@ -303,7 +304,7 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 [lnk-azureiotsuite]: https://www.azureiotsuite.com
 [lnk-portal]: http://portal.azure.com/
 [lnk-cfgithub]: https://github.com/Azure/azure-iot-connected-factory
-[lnk-rm-walkthrough]: iot-suite-remote-monitoring-sample-walkthrough.md
+[lnk-rm-walkthrough]: iot-suite-connected-factory-sample-walkthrough.md
 [lnk-connect-cf]: iot-suite-connected-factory-gateway-deployment.md
 [lnk-permissions]: iot-suite-permissions.md
 [lnk-faq]: iot-suite-faq.md

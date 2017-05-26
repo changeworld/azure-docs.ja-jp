@@ -3,7 +3,7 @@ title: "Windows サーバーと worker ロールのための Azure Application I
 description: "Application Insights SDK を ASP.NET アプリケーションに手動で追加して、使用状況、可用性、およびパフォーマンスを分析します。"
 services: application-insights
 documentationcenter: .net
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 106ba99b-b57a-43b8-8866-e02f626c8190
 ms.service: application-insights
@@ -11,66 +11,83 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/01/2016
+ms.date: 05/15/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 29598f052778759ed362e3aa4b997acb799717ef
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 274e8db8e35243dc4b7ef20c3e7085f47975bb1c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/13/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
-# <a name="manually-configure-application-insights-for-aspnet-applications"></a>Application Insights を ASP.NET アプリケーション用に手動で構成する
-[Application Insights](app-insights-overview.md) は、Web 開発者がライブ アプリケーションのパフォーマンスと使用状況を監視するための拡張可能なツールです。 これは、Windows サーバー、worker ロール、その他の ASP.NET アプリケーションを監視するように手動で構成できます。 Web アプリの場合、手動による構成は、Visual Studio で提供される [自動セットアップ](app-insights-asp-net.md) に代わる方法となります。
+# <a name="manually-configure-application-insights-for-net-applications"></a>Application Insights を .NET アプリケーション用に手動で構成する
+
+さまざまなアプリケーションやアプリケーション ロール、コンポーネント、またはマイクロサービスを監視するように、[Application Insights](app-insights-overview.md) を構成できます。 Web アプリとサービス用に、Visual Studio では[ワンステップ構成](app-insights-asp-net.md)が用意されています。 バックエンド サーバー ロール、デスクトップ アプリケーションなど、他の種類の .NET アプリケーションの場合は、Application Insights を手動で構成できます。
 
 ![Example performance monitoring charts](./media/app-insights-windows-services/10-perf.png)
 
 #### <a name="before-you-start"></a>開始する前に
+
 必要なもの:
 
 * [Microsoft Azure](http://azure.com) サブスクリプション。 チームまたは組織で Azure サブスクリプションを取得している場合、所有者は [Microsoft アカウント](http://live.com)を使用してあなたを追加できます。
 * Visual Studio 2013 以降
 
-## <a name="add"></a>1.Application Insights リソースの作成
+## <a name="add"></a>1.Application Insights リソースを選択する
+
+"リソース" は、データが収集され、Azure Portal で表示される場所です。 新しく作成するか、既存のものを共有するかを決定する必要があります。
+
+### <a name="part-of-a-larger-app-use-existing-resource"></a>大規模なアプリの一部: 既存のリソースを使用する
+
+Web アプリケーションに、フロントエンド Web アプリと 1 つ以上のバックエンド サービスなど、複数のコンポーネントがある場合は、すべてのコンポーネントから同じリソースにテレメトリを送信する必要があります。 そうすることで、それらを 1 つのアプリケーション マップに表示し、1 つのコンポーネントから別のコンポーネントへの要求をトレースできるようになります。
+
+そのため、このアプリの別のコンポーネントを既に監視している場合は、同じリソースを使用します。
+
+[Azure Portal](https://portal.azure.com/) でリソースを開きます。 
+
+### <a name="self-contained-app-create-a-new-resource"></a>自己完結型アプリ: 新しいリソースを作成する
+
+新しいアプリが他のアプリケーションと関連していない場合は、独自のリソースが必要です。
+
 [Azure ポータル](https://portal.azure.com/)にサインインし、Application Insights の新しいリソースを作成します。 アプリケーションの種類として ASP.NET を選択します。
 
 ![[新規]、[Application Insights] の順にクリックする](./media/app-insights-windows-services/01-new-asp.png)
 
-Azure の [リソース](app-insights-resources-roles-access-control.md) は、サービスのインスタンスです。 このリソースでは、アプリのテレメトリが分析されて画面に表示されます。
+アプリケーションの種類を選択すると、[リソース] ブレードの既定のコンテンツが設定されます。
 
-アプリケーションの種類を選択すると、[リソース] ブレードの既定のコンテンツと [メトリックス エクスプローラー](app-insights-metrics-explorer.md)に表示されるプロパティが設定されます。
-
-#### <a name="copy-the-instrumentation-key"></a>インストルメンテーション キーのコピー
-これはリソースを識別するキーです。データをリソースに送信するために SDK の後の手順でインストールします。
+## <a name="2-copy-the-instrumentation-key"></a>手順 2.インストルメンテーション キーのコピー
+キーはリソースを識別します。 データをリソースに送信するために、すぐ後で SDK にインストールします。
 
 ![[プロパティ] をクリックし、キーを選択して、Ctrl キーを押しながら C キーを押す](./media/app-insights-windows-services/02-props-asp.png)
 
-新しいリソースを作成するために実行した手順は、任意のアプリケーションの監視を開始するための優れた方法です。 これで、データをリソースに送信できます。
+## <a name="sdk"></a>3.アプリケーションに Application Insights パッケージをインストールする
+Application Insights パッケージのインストールと構成は、作業中のプラットフォームによって異なります。 
 
-## <a name="sdk"></a>2.アプリケーションに Application Insights パッケージをインストールする
-Application Insights パッケージのインストールと構成は、作業中のプラットフォームによって異なります。 ASP.NET アプリの場合は簡単です。
-
-1. Visual Studio で、Web アプリ プロジェクトの NuGet パッケージを編集します。
+1. Visual Studio でプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
    
     ![プロジェクトを右クリックし、[Nuget パッケージの管理] を選択する](./media/app-insights-windows-services/03-nuget.png)
-2. Windows サーバー アプリ用の Application Insights パッケージをインストールします。
+2. Windows サーバー アプリ用の Application Insights パッケージ (Microsoft.ApplicationInsights.WindowsServer) をインストールします。
    
     ![Search for "Application Insights"](./media/app-insights-windows-services/04-ai-nuget.png)
    
+    *どのバージョンか*
+
+    最新の機能を試す場合は、**[プレリリースを含める]** をオンにします。 関連するドキュメントまたはブログに、プレリリース バージョンが必要かどうかが記載されています。
+    
     *他のパッケージを使用することができますか。*
    
-    はい。 独自のテレメトリを送信するためだけに API を使用する場合は、コア API (Microsoft.ApplicationInsights) を選択してください。 Windows Server パッケージには、コア API に加え、他にも多くのパッケージ (パフォーマンス カウンターや依存関係の監視など) が自動的に含まれます。 
+    はい。 独自のテレメトリを送信するために API だけを使用する場合は、[Microsoft.ApplicationInsights] を選択してください。 Windows Server パッケージには、API に加え、他にも多くのパッケージ (パフォーマンス カウンター コレクションや依存関係の監視など) が含まれます。 
 
-#### <a name="to-upgrade-to-future-package-versions"></a>新しいバージョンのパッケージにアップグレードするには
+### <a name="to-upgrade-to-future-package-versions"></a>新しいバージョンのパッケージにアップグレードするには
 SDK の新しいバージョンは不定期でリリースされます。
 
 [パッケージの新しいリリース](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases/)にアップグレードするには、NuGet パッケージ マネージャーをもう一度開き、インストールされているパッケージに対してフィルターを実行します。 **[Microsoft.ApplicationInsights.Web]** を選択し、**[アップグレード]** を選択します。
 
 ApplicationInsights.config をカスタマイズしている場合は、アップグレードする前にコピーを保存しておき、後から新しいバージョンに変更をマージします。
 
-## <a name="3-send-telemetry"></a>3.テレメトリを送信する
-**コア API パッケージのみをインストールしている場合:**
+## <a name="4-send-telemetry"></a>4.テレメトリを送信する
+**API パッケージのみをインストールした場合:**
 
 * コードでインストルメンテーション キーを設定します (たとえば、 `main()`内)。 
   
@@ -102,7 +119,7 @@ Visual Studio で、送信されたイベント数が表示されます。
 
 任意のグラフをクリックして、より詳細なメトリックを表示します。 [メトリックの詳細についてはこちらをご覧ください。](app-insights-web-monitor-performance.md)
 
-#### <a name="no-data"></a>データが表示されない場合
+### <a name="no-data"></a>データが表示されない場合
 * アプリケーションを使用して、テレメトリがいくつか生成されるようにさまざまなページを開きます。
 * [[検索]](app-insights-diagnostic-search.md) タイルを開き、個々のイベントを表示します。 メトリック パイプラインを経由すると、イベントの取得に少し時間がかかる場合があります。
 * 数秒待機してから **[最新の情報に更新]**をクリックします。 グラフは周期的に自動で更新されますが、データの表示を待機している場合、手動で更新することもできます。
@@ -115,14 +132,14 @@ Visual Studio で、送信されたイベント数が表示されます。
 
 デバッグ モードで実行している場合、テレメトリはパイプラインにより時間が短縮されるので、数秒でデータが表示されます。 リリース構成でアプリケーションをデプロイすると、データ累積速度は遅くなります。
 
-#### <a name="no-data-after-you-publish-to-your-server"></a>サーバーに発行した後でデータはありませんか。
+### <a name="no-data-after-you-publish-to-your-server"></a>サーバーに発行した後でデータはありませんか。
 サーバーのファイアウォールで送信トラフィック用のポートを開きます。 必要なアドレスの一覧については、[こちらのページ](https://docs.microsoft.com/azure/application-insights/app-insights-ip-addresses)を参照してください。 
 
-#### <a name="trouble-on-your-build-server"></a>ビルド サーバーで問題が発生した場合
+### <a name="trouble-on-your-build-server"></a>ビルド サーバーで問題が発生した場合
 [このトラブルシューティング項目](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild)を参照してください。
 
 > [!NOTE]
-> (ASP.NET SDK バージョン 2.0.0-beta3 以降を使用している状態で) アプリから大量のテレメトリが生成されると、アダプティブ サンプリング モジュールからイベントの代表的な部分のみが送信され、ポータルに送信されるデータ量が自動的に削減されます。 ただし、同じ要求に関連するイベントはグループ単位で選択または選択解除されるので、関連するイベントごとに操作できます。 
+> アプリが大量のテレメトリを生成する場合は、アダプティブ サンプリング モジュールが、代表的な一部のイベントのみを送信することによって、ポータルに送信される量を自動的に削減します。 ただし、同じ要求に関連するイベントはグループ単位で選択または選択解除されるので、関連するイベントごとに操作できます。 
 > [サンプリングについてはこちらを参照してください](app-insights-sampling.md)。
 > 
 > 

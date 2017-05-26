@@ -12,18 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/26/2017
+ms.date: 05/14/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: 7b506668b3025774edec25b6a37b83a47d702cb0
-ms.openlocfilehash: b2eaddc631087d8b7b94e40f508bdd5da5229736
-ms.lasthandoff: 01/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: 661470454775d43ce88410a6c995bbcc5e06264c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---
 # <a name="add-users-from-other-directories-or-partner-companies-in-azure-active-directory"></a>Azure Active Directory で他のディレクトリまたはパートナー会社からユーザーを追加する
 > [!div class="op_single_selector"]
-> * [Azure ポータル](active-directory-users-create-external-azure-portal.md)
+> * [Azure ポータル](active-directory-users-create-external-azure-portal.md )
 > * [Azure クラシック ポータル](active-directory-create-users-external.md)
 >
 >
@@ -44,9 +45,8 @@ ms.lasthandoff: 01/31/2017
 > [!IMPORTANT]
 > 組織が複数のドメインを使用している場合は、ユーザー アカウントを追加するときに起きる、次の問題について理解しておく必要があります。
 >
-> * 複数のドメインで同じユーザー プリンシパル名 (UPN) を持つユーザー アカウントを追加するには、たとえば、**最初に** geoffgrisso@contoso.onmicrosoft.com, を追加し、**その後に** geoffgrisso@contoso.com を追加します。
-> * geoffgrisso@contoso.onmicrosoft.com を追加する前に geoffgrisso@contoso.com を追加**しないでください**。 この順序は重要であり、なかなか元に戻すことができない場合があります。
->
+> * 複数のドメインで同じユーザー プリンシパル名 (UPN) を持つユーザー アカウントを追加するには、たとえば、**最初に** geoffgrisso@contoso.onmicrosoft.com を追加し、**その後に** geoffgrisso@contoso.com を追加します。
+> * geoffgrisso@contoso.onmicrosoft.com を追加する前に geoffgrisso@contoso.com を追加**しないでください**。
 >
 
 オンプレミスの Active Directory サービスに ID が同期されているユーザーの情報を変更する場合、Azure クラシック ポータルでユーザー情報を変更することはできません。 このユーザー情報を変更するには、オンプレミスの Active Directory 管理ツールを使用してください。
@@ -74,15 +74,7 @@ ms.lasthandoff: 01/31/2017
 * **Dynamics CRM**: 外部ユーザーは、PowerShell によってライセンスが付与された場合、Dynamics CRM の承認されたリソースにアクセスできます。
 * **Dynamics AX**: 外部ユーザーは、PowerShell によってライセンスが付与された場合、Dynamics AX の承認されたリソースにアクセスできます。 [Azure AD 外部ユーザー](#known-limitations-of-azure-ad-external-users) の制限事項は、Dynamics AX の外部ユーザーにも適用されます。
 
-### <a name="known-limitations-of-azure-ad-external-users"></a>Azure AD 外部ユーザーの既知の制限事項
-* 外部ユーザーが管理者である場合は、パートナー会社のユーザーを、自分のホーム ディレクトリ以外のディレクトリ (B2B コラボレーション) に追加することはできません。
-* 外部ユーザーは、自分のホーム ディレクトリ以外のディレクトリ内のマルチテナント アプリケーションに同意できません。
-* PowerBI では、現在、外部ユーザーによるアクセスはサポートされていません。
-* Office ポータルでは、外部ユーザーへのライセンス付与をサポートしていません。
-* Azure AD PowerShell では、外部ユーザーは自分のホーム ディレクトリにログインした状態であり、自分が外部ユーザーであるディレクトリを管理できません。
-* Dynamics CRM Outlook プラグインを構成するときに、外部ユーザーは、[CRM Online] を選択するのではなく、Dynamics CRM Online の URL を手動で入力することが必要になる場合があります。
-
-## <a name="whats-next"></a>参照トピック
+## <a name="next-steps"></a>次のステップ
 * [Azure Active Directory に新しいユーザーを追加する](active-directory-create-users.md)
 * [Administer your Azure AD directory](active-directory-administer.md)
 * [Manage passwords in Azure AD](active-directory-manage-passwords.md)
