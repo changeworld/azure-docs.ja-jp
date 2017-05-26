@@ -112,7 +112,7 @@ LINE WORKS で Azure AD の SSO を構成してテストするには、次の構
   2. **[識別子]** ボックスに、値として「`worksmobile.com`」と入力します。
 
     >[!NOTE] 
-    >これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新する必要があります。 ここでは、識別子に一意の文字列値を使用することをお勧めします。 これらの値を取得するには、[LINE WORKS サポート チーム](mailto:dl_ssoinfo@worksmobile.com)に連絡してください。 
+    >これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新する必要があります。 ここでは、識別子に一意の文字列値を使用することをお勧めします。 これらの値の取得方法は LINE WORKS Developers (https://developers.worksmobile.com/) をご確認ください。 
     >
     >
 
@@ -138,7 +138,8 @@ LINE WORKS で Azure AD の SSO を構成してテストするには、次の構
 
     ![Configure Single Sign-On](./media/active-directory-saas-worksmobile-tutorial/tutorial_worksmobile_07.png)
 
-10. アプリケーション用に構成された SSO を取得するには、[LINE WORKS サポート チーム](mailto:dl_ssoinfo@worksmobile.com)に連絡し、次の項目を情報として提供してください。• ダウンロードした**証明書ファイル**、• **SAML シングル サインオン サービス URL**、• **SAML エンティティ ID**、• **サインアウト URL**
+10. アプリケーション用に構成された SSO を取得するには、LINE WORKS Developers (https://developers.worksmobile.com/) を参照してください。証明書は拡張子を .pem に変更してください。
+
   
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Microsoft Azure 管理ポータルで Britta Simon というテスト ユーザーを作成することです。
