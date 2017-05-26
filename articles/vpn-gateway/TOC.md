@@ -21,9 +21,13 @@
 ### [Azure ポータル](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 ### [PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
 ### [Azure Portal (クラシック)](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
+### ポイント対サイトの自己署名証明書の生成
+#### [PowerShell](vpn-gateway-certificates-point-to-site.md)
+#### [Makecert](vpn-gateway-certificates-point-to-site-makecert.md)
 ## VNet 間の接続の構成
 ### [Azure ポータル](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 ### [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
+### [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 ### [Azure Portal (クラシック)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 ## デプロイメント モデル間の VNet 間接続の構成
 ### [Azure ポータル](vpn-gateway-connect-different-deployment-models-portal.md)
@@ -46,9 +50,6 @@
 ### [Azure ポータル](vpn-gateway-delete-vnet-gateway-portal.md)
 ### [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 ### [PowerShell (クラシック)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-## ポイント対サイトの自己署名証明書の作成
-### [PowerShell](vpn-gateway-certificates-point-to-site.md)
-### [Makecert](vpn-gateway-certificates-point-to-site-makecert.md)
 ## [VPN ゲートウェイの構成 (クラシック)](vpn-gateway-configure-vpn-gateway-mp.md)
 ## トラブルシューティング
 ### [VNet への VPN スループットの確認](vpn-gateway-validate-throughput-to-vnet.md)
@@ -56,9 +57,9 @@
 # リファレンス
 ## [PowerShell](/powershell/module/azurerm.network)
 ## [PowerShell (クラシック)](/powershell/module/azure/?view=azuresmps-3.7.0)
-## [REST ()](https://msdn.microsoft.com/library/mt163859)
+## [REST ()](https://docs.microsoft.com/rest/api/network/virtualnetworkgateways)
 ## [REST (クラシック)](https://msdn.microsoft.com/library/jj154113)
-## [Azure CLI](https://docs.microsoft.com/cli/azure/network)
+## [Azure CLI](https://docs.microsoft.com/cli/azure/network/vnet-gateway)
 
 # 関連項目
 ## [Virtual Network](/azure/virtual-network/)

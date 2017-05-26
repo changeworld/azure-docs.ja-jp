@@ -5,7 +5,7 @@
   - name: Azure Cosmos DB について
     href: introduction.md
   - name: DocumentDB ユーザーへの対応
-    href: welcome-documentdb-customers.md
+    href: https://azure.microsoft.com/blog/dear-documentdb-customers-welcome-to-azure-cosmos-db/
 - name: クイック スタート
   expanded: true
   items:
@@ -236,6 +236,12 @@
       href: ../documentdb/documentdb-online-backup-and-restore.md
     - name: リージョン内フェールオーバー
       href: ../documentdb/documentdb-regional-failovers.md
+    - name: スループットの設定
+      href: ../documentdb/documentdb-set-throughput.md
+    - name: SLA の監視
+      href: ../documentdb/documentdb-monitor-accounts.md
+    - name: キーと整合性の管理
+      href: ../documentdb/documentdb-manage-account.md
     - name: Automation
       items:
       - name: Azure CLI 1.0 - アカウントの作成
@@ -250,10 +256,14 @@
         href: ../documentdb/documentdb-nosql-database-encryption-at-rest.md
       - name: ファイアウォールのサポート
         href: ../documentdb/documentdb-firewall-support.md
+      - name: データへのアクセスのセキュリティ保護
+        href: ../documentdb/documentdb-secure-access-to-data.md
   - name: 統合
     items:
     - name: Spark に接続する
       href: ../documentdb/documentdb-spark-connector.md
+    - name: Spark GraphX に接続する
+      href: spark-connector-graph.md      
     - name: Azure App Service で Web アプリをデプロイする
       href: ../documentdb/documentdb-create-documentdb-website.md
     - name: Logic Apps を使用したアプリケーション ログ記録

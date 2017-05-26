@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Azure RemoteApp とは](remoteapp-whatis.md)
 ## [How does licensing work? (ライセンスはどのように機能しますか。)](remoteapp-licensing.md)
 ## [FAQ](remoteapp-faq.md)
@@ -24,6 +24,8 @@
 
 # 方法
 
+## [Azure RemoteApp からユーザー データを移行する](remoteapp-migrate.md)
+## [Citrix XenApp Essentials に移行する](remoteapp-migrate-citrix.md)
 ## RemoteApp コレクションを作成する
 ### [必要なコレクション](remoteapp-collections.md)
 ### [RemoteApp のクラウド コレクションの作成方法](remoteapp-create-cloud-deployment.md)
@@ -69,8 +71,3 @@
 ## [料金](https://azure.microsoft.com/pricing/details/remoteapp/)
 ## [フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureRemoteApp)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=remoteapp)
-
-
-<!--HONumber=Nov16_HO4-->
-
-
