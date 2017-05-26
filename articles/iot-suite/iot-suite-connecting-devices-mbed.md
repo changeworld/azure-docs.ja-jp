@@ -51,7 +51,7 @@ mbed プロジェクトにサンプル コードをいくつか追加するに�
    
     ![mbed ワークスペースへのインポートを開始する][6]
 
-1. ポップアップ ウィンドウで、サンプル コードのリンク「https://developer.mbed.org/users/AzureIoTClient/code/remote_monitoring/」を入力し、**[インポート]** をクリックします。
+1. ポップアップ ウィンドウで、サンプル コードのリンク「 https://developer.mbed.org/users/AzureIoTClient/code/remote_monitoring/ 」を入力し、**[インポート]** をクリックします。
    
     ![mbed ワークスペースにサンプル コードをインポートする][7]
 
