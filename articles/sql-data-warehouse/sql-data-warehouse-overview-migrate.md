@@ -3,7 +3,7 @@ title: "SQL Data Warehouse へのソリューションの移行 | Microsoft Docs
 description: "Azure SQL Data Warehouse プラットフォームにソリューションを組み込むための移行ガイダンス。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: sqlmojo
 manager: jhubbard
 editor: 
 ms.assetid: 198365eb-7451-4222-b99c-d1d9ef687f1b
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: migrate
 ms.date: 10/31/2016
-ms.author: jrj;barbkess
-translationtype: Human Translation
+ms.author: joeyong;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: e5937f8472492cd1dd77c82ed518a665718623a1
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/03/2017
 
 

@@ -12,12 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 02/27/2017
+ms.date: 05/22/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
 ms.openlocfilehash: c4053ded725ad7ab2acc6d5d54e8343ffb961408
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/28/2017
 
 
@@ -62,7 +63,7 @@ Azure Batch では、ノードあたりの最大タスク数を、ノード コ�
 CloudPool pool =
     batchClient.PoolOperations.CreatePool(
         poolId: "mypool",
-        targetDedicated: 4
+        targetDedicatedComputeNodes: 4
         virtualMachineSize: "large",
         cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "4"));
 
@@ -83,7 +84,7 @@ pool.Commit();
     "osFamily":"4",
     "targetOSVersion":"*",
   }
-  "targetDedicated":2,
+  "targetDedicatedComputeNodes":2,
   "maxTasksPerNode":4,
   "enableInterNodeCommunication":true,
 }

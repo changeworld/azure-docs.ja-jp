@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-wms.date: 04/26/2017
+wms.date: 05/14/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: 3300c4e79ddc6c8e04c3b4d80b3ee07bd6aeea9d
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 1811c325e240a6688b09f7260b33fbe19d022cea
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -59,7 +59,7 @@ ms.lasthandoff: 05/10/2017
 ||||||
 
 > [!IMPORTANT]
-> 追加ストレージ オプションは現在、米国東部 2、米国西部、西ヨーロッパ、東南アジア、東日本、オーストラリア東部、カナダ中部、カナダ東部の各リージョンで利用できます。 詳細については、[4 TB のデータベースの現時点での制限事項](sql-database-service-tiers.md#current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize)に関するセクションを参照してください。
+> これらの追加ストレージ オプションは、現在、米国東部 2、米国西部、米国政府バージニア州、西ヨーロッパ、ドイツ中部、東南アジア、東日本、オーストラリア東部、カナダ中部、カナダ東部の各リージョンで利用できます。 詳細については、[4 TB のデータベースの現時点での制限事項](sql-database-service-tiers.md#current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize)に関するセクションを参照してください。
 >
 
 最小限のサービス レベルを決定したら、データベースのパフォーマンス レベル (DTU 数) を決定できるようになります。 多くの場合、出発点として Standard S2 および S3 というパフォーマンス レベルが適しています。 CPU または IO の要件が高いデータベースの場合は、Premium のパフォーマンス レベルが出発点として適しています。 Premium では、より多くの CPU が提供されるため、最も高い Standard パフォーマンス レベルと比較して 10 倍超える IO から始まります。
@@ -87,7 +87,7 @@ ms.lasthandoff: 05/10/2017
 スケールアップ プロセス全体の継続時間は、変更前後のデータベースのサイズとサービス レベルによって異なります。 たとえば、250 GB のデータベースを Standard サービス レベルとの間または Standard サービス レベル内で変更する場合は、6 時間以内に完了します。 Premium サービス レベル内で同じサイズのデータベースのパフォーマンス レベルを変更する場合は、3 時間以内で完了します。
 
 * データベースをダウングレードするには、データベースがダウングレード後のサービス階層で許可されている最大サイズより小さい必要があります。 
-* [geo レプリケーション](sql-database-geo-replication-portal.md) を有効にしてデータベースをアップグレードする場合、まず、そのセカンダリ データベースを目的のパフォーマンス レベルにアップグレードしてから、プライマリ データベースをアップグレードする必要があります。
+* [geo レプリケーション](sql-database-geo-replication-portal.md)を有効にしてデータベースをアップグレードする場合、まず、そのセカンダリ データベースを目的のパフォーマンス レベルにアップグレードしてから、プライマリ データベースをアップグレードする必要があります。
 * Premium サービス階層からダウングレードするときは、最初に geo レプリケーション リレーションシップをすべて終了する必要があります。 「 [Azue SQL Database を障害から回復する](sql-database-disaster-recovery.md) 」に記載されている手順に従って、プライマリ データベースとアクティブなセカンダリ データベース間のレプリケーション プロセスを停止できます。
 * サービス階層によって、提供されている復元サービスは異なります。 ダウングレードすると、特定の時点に復元する機能を使えなくなったり、バックアップの保存期間が短くなったりする可能性があります。 詳細については、「 [Azure SQL Database のバックアップと復元](sql-database-business-continuity.md)」を参照してください。
 * データベースに対する新しいプロパティは、変更が完了するまで適用されません。
@@ -123,7 +123,7 @@ P11/P15 データベースを作成するときに、1 TB (既定値) または 
 
 ### <a name="upgrading-to-4tb"></a>4 TB へのアップグレード 
 
-サポート対象のリージョンにある既存の P11 と P15 のデータベースでは、ストレージの最大サイズを 4 TB に増やすことができます。 この操作は、Azure Portal、PowerShell、または Transact-SQL で実行できます。 次のコードは、ALTER DATABASE コマンドを使用した最大サイズの変更の例を示しています。
+サポート対象のリージョンにある既存の P11 と P15 のデータベースでは、ストレージの最大サイズを 4 TB に増やすことができます。 この操作は、Azure ポータル、PowerShell、または Transact-SQL で実行できます。 次のコードは、ALTER DATABASE コマンドを使用した最大サイズの変更の例を示しています。
 
  ```sql
 ALTER DATABASE <myDatabaseName> 
@@ -133,7 +133,7 @@ ALTER DATABASE <myDatabaseName>
 既存の P11 または P15 のデータベースのアップグレードは、サーバーレベル プリンシパルのログインまたは dbmanager データベース ロールのメンバーのみが実行できます。 サポートされているリージョンで実行されると、すぐに構成が更新されます。 これを確認するには、[SELECT DATABASEPROPERTYEX](https://msdn.microsoft.com/library/ms186823.aspx) を使用するか、Azure Portal でデータベース サイズを調べます。 データベースは、アップグレード処理中もオンラインのままになります。 ただし、実際のデータベース ファイルが新しい最大サイズにアップグレードされるまで、4 TB のストレージを十分に利用することはできません。 必要な時間は、アップグレードされるデータベースのサイズに応じて異なります。  
 
 ### <a name="error-messages"></a>エラー メッセージ
-サポートされていないリージョンで P11/P15 データベースを作成またはアップグレードすると、アップグレード操作が失敗し、"**P11 and P15 database with up to 4TB of storage are available in US East 2, West US, South East Asia, West Europe, Canada East, Canada Central, Japan East, and Australia East (最大 4 TB のストレージを使用する P11 および P15 データベースは、米国東部 2、米国西部、東南アジア、西ヨーロッパ、カナダ東部、カナダ中部、東日本、オーストラリア東部で利用可能です)**" というエラー メッセージが表示されます。
+サポートされていないリージョンで P11/P15 データベースを作成またはアップグレードすると、アップグレード操作が失敗し、"**P11 and P15 database with up to 4TB of storage are available in US East2, West US, US Gov Virginia, West Europe, Germany Central, South East Asia, Japan East, Australia East, Canada Central, and Canada East. (最大 4 TB のストレージを使用する P11 および P15 データベースは、米国東部 2、米国西部、米国政府バージニア、西ヨーロッパ、ドイツ中部、東南アジア、東日本、オーストラリア東部、カナダ中部、カナダ東部で利用可能です)**" というエラー メッセージが表示されます。
 
 ## <a name="current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize"></a>最大サイズ 4 TB の P11 および P15 データベースの現時点での制限事項
 

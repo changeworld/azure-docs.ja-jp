@@ -3,7 +3,7 @@ title: "Azure SQL Data Warehouse での分散データの概要 | Microsoft Docs
 description: "超並列処理 (MPP) でのデータ分散方法および Azure SQL Data Warehouse と Parallel Data Warehouse でのテーブル分散オプションについて説明します。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: jrowlandjones
 manager: jhubbard
 editor: 
 ms.assetid: bae494a6-7ac5-4c38-8ca3-ab2696c63a9f
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
 ms.date: 10/31/2016
-ms.author: barbkess
-translationtype: Human Translation
+ms.author: jrj;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2548f779767635865daf790d301d86feff573a29
 ms.openlocfilehash: 195b78a7f634d01f228c90efb34763e4175708ac
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/24/2017
 
 

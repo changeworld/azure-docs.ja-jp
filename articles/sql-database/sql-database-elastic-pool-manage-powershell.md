@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: powershell
 ms.workload: data-management
-ms.date: 04/10/2017
+wms.date: 05/14/2017
 ms.author: srinia
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: b84185d0f224352e7cf5449068bee359914bd4ed
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: 907e15da90bcd82358a462f7d8a7d2ba4a34f371
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/04/2017
-
+ms.lasthandoff: 05/16/2017
 
 ---
 
@@ -88,7 +87,7 @@ Set-AzureRmSqlElasticPool -ResourceGroupName “resourcegroup1” -ServerName �
 [Set-AzureRmSqlElasticPool](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqlelasticpool) コマンドレットを使用して、_-StorageMB_ パラメーターを設定します。 ストレージの制限は、MB 単位で指定します (たとえば、2097152 の場合は、ストレージの制限が 2 TB に設定されます)。 使用可能な値については、[eDTU とストレージの制限](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools)に関するセクションをご覧ください。
 
 > [!IMPORTANT]
-> 1,500 eDTU 以上の Premium プールの場合、プールあたりの既定の最大データ ストレージは 750 GB です。 "_プールあたりの最大データ ストレージ サイズ_" をこれより大きくするには、ストレージの制限を明示的に設定する必要があります。 ストレージが 750 GB を超える Premium プールは現在、米国東部 2、米国西部、西ヨーロッパ、東南アジア、東日本、オーストラリア東部、カナダ中部、カナダ東部の各リージョンにおいてパブリック プレビュー段階です。
+> 1,500 eDTU 以上の Premium プールの場合、プールあたりの既定の最大データ ストレージは 750 GB です。 "_プールあたりの最大データ ストレージ サイズ_" をこれより大きくするには、ストレージの制限を明示的に設定する必要があります。 ストレージが 750 GB を超える Premium プールは現在、米国東部 2、米国西部、米国政府バージニア、西ヨーロッパ、ドイツ中部、東南アジア、東日本、オーストラリア東部、カナダ中部、およびカナダ東部の各リージョンにおいてパブリック プレビュー段階です。
 
 ```PowerShell
 Set-AzureRmSqlElasticPool -ServerName "server1" -ElasticPoolName “elasticpool1” -StorageMB 2097152

@@ -68,4 +68,3 @@ az group delete --name myResourceGroup
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
 
 その他の Azure Networking CLI のサンプル スクリプトは、[Azure のネットワーク のドキュメント](../cli-samples.md)に関するページで確認できます。
-

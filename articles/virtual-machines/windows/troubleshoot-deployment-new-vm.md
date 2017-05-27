@@ -4,7 +4,7 @@ description: "Azure で新しい Windows 仮想マシンを作成するときに
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: 
 author: JiangChen79
-manager: felixwu
+manager: willchen
 editor: 
 tags: top-support-issue, azure-resource-manager
 ms.assetid: afc6c1a4-2769-41f6-bbf9-76f9f23bcdf4
@@ -13,12 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 05/26/2017
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: 8cf37f85236154183590dc07808222125b459acd
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/31/2017
 
 

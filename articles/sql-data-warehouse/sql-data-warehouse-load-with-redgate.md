@@ -3,7 +3,7 @@ title: "Redgate を使用して Azure データ ウェアハウスにデータ�
 description: "Redgate の Data Platform Studio をデータ ウェアハウジングのシナリオで使う方法について説明します。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: twounder
+author: ckarst
 manager: jhubbard
 editor: 
 ms.assetid: 670aef98-31f7-4436-86c0-cc989a39fe7f
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: loading
 ms.date: 10/31/2016
-ms.author: mausher;barbkess
-translationtype: Human Translation
+ms.author: cakarst;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2548f779767635865daf790d301d86feff573a29
 ms.openlocfilehash: cb0b5489ccfabb0e2a4ee412162a18930073b309
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/24/2017
 
 

@@ -17,10 +17,10 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: 448bdbd2ae12d325781587846c812995cae33774
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: de0c9969ec28e7b6e57bc384ac3ec47191096a9b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -157,10 +157,10 @@ SQL Database は、既存の SQL Database サーバー内にあるデータベ�
 ### <a name="point-in-time-restore"></a>ポイントインタイム リストア
 ポイントインタイム リストアは、自動データベース バックアップを使用して、プール内のデータベースを特定の時点に復元します。 「 [ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)
 
-### <a name="geo-restore"></a>地理リストア
-Geo リストアは、データベースがホストされているリージョンでのインシデントのためにデータベースが利用できない場合にも既定の復旧オプションを提供します。 「 [Azure SQL Database を復元する、またはセカンダリにフェールオーバーする](sql-database-disaster-recovery.md)
+### <a name="geo-restore"></a>geo リストア
+geo リストアは、データベースがホストされているリージョンでのインシデントのためにデータベースが利用できない場合にも既定の復旧オプションを提供します。 「 [Azure SQL Database を復元する、またはセカンダリにフェールオーバーする](sql-database-disaster-recovery.md)
 
-### <a name="active-geo-replication"></a>アクティブ geo レプリケーションを選択するとき
+### <a name="active-geo-replication"></a>アクティブ geo レプリケーション
 geo リストアよりもアグレッシブな復旧要件があるアプリケーションの場合は、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)を構成します。
 
 ## <a name="next-steps"></a>次のステップ

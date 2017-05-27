@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: ancav
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: 2dd7b14f1466fa7244a2af2c030d8b794658aaad
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/12/2017
 
 
@@ -57,7 +58,7 @@ Resource Manager テンプレートを使用してアクション グループ�
   "resources": [
     {
       "type": "Microsoft.Insights/actionGroups",
-      "apiVersion": "2017-03-01-preview",
+      "apiVersion": "2017-04-01",
       "name": "[parameters('actionGroupName')]",
       "location": "Global",
       "properties": {
@@ -140,7 +141,7 @@ Resource Manager テンプレートを使用してアクション グループ�
   "resources": [
     {
       "type": "Microsoft.Insights/actionGroups",
-      "apiVersion": "2017-03-01-preview",
+      "apiVersion": "2017-04-01",
       "name": "[parameters('actionGroupName')]",
       "location": "Global",
       "properties": {

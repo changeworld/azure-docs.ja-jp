@@ -17,16 +17,16 @@ ms.workload: data-management
 ms.date: 04/21/2017
 ms.author: sashan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 364038c11f13bcb72b259618b1d7d433f48a33c1
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: b1b67a83a25159414a80382030903d300aad71f7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
 # <a name="designing-highly-available-services-using-azure-sql-database"></a>Azure SQL Database を使用した高可用性サービスの設計
 
-Azure SQL Database で高可用性サービスを構築またはデプロイするには、[フェールオーバー グループとアクティブ geo レプリケーション](sql-database-geo-replication-overview.md)を使用する必要があります。 これにより、リージョン別および致命的な機能停止に対する復元性を提供し、セカンダリ データベースへのフェールオーバーを使用した高速回復を実現します。 この記事では、一般的なアプリケーション パターンを紹介したうえで、アプリケーションのデプロイ要件、目標とするサービス レベル アグリーメント、トラフィック待機時間、コストの面から、各オプションの利点とトレードオフについて説明します。 エラスティック プールでのアクティブ geo レプリケーションについては、 [エラスティック プール障害復旧戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページを参照してください。
+Azure SQL Database の高可用性サービスを構築してデプロイするときは、[フェールオーバー グループとアクティブ geo レプリケーション](sql-database-geo-replication-overview.md)を使用して、局地的な障害と致命的な機能停止に対する回復力を用意することで、セカンダリ データベースに高速復旧できます。 この記事では、一般的なアプリケーション パターンを紹介したうえで、アプリケーションのデプロイ要件、目標とするサービス レベル アグリーメント、トラフィック待機時間、コストの面から、各オプションの利点とトレードオフについて説明します。 エラスティック プールでのアクティブ geo レプリケーションについては、[エラスティック プール障害復旧戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページを参照してください。
 
 ## <a name="design-pattern-1-active-passive-deployment-for-cloud-disaster-recovery-with-a-co-located-database"></a>設計パターン 1: アクティブ/パッシブ デプロイとデータベースの併置によるクラウド障害復旧
 この設計パターンは、以下の特性を持ったアプリケーションに最適な選択肢です。
@@ -58,7 +58,7 @@ Azure SQL Database で高可用性サービスを構築またはデプロイす�
 セカンダリ リージョンの機能が停止した場合、プライマリ データベースとセカンダリ データベース間のレプリケーション リンクが中断状態となりますが、プライマリ データベースに影響は出ていないためフェールオーバーはトリガーされません。 このケースではアプリケーションの可用性は変更されませんが、レプリケーションされていない状態で運用されることから、両方のリージョンに相次いで障害が発生した場合、リスクは増大します。
 
 > [!NOTE]
->マイクロソフトで推奨しているのは、障害復旧リージョンを 1 つだけ使用したデプロイ構成のみです。 これは、Azure で地理的に割り当てられるリージョンがほとんどの場合 2 つであるためです。 これらの構成で、両方のリージョンの致命的な障害からアプリケーションを保護することはできません。 万一そのような障害が発生した場合は、[geo リストア操作](sql-database-disaster-recovery.md#recover-using-geo-restore)を使って、第 3 のリージョンのデータベースを復元することができます。
+> マイクロソフトで推奨しているのは、障害復旧リージョンを 1 つだけ使用したデプロイ構成のみです。 これは、Azure で地理的に割り当てられるリージョンがほとんどの場合 2 つであるためです。 これらの構成で、両方のリージョンの致命的な障害からアプリケーションを保護することはできません。 万一そのような障害が発生した場合は、[geo リストア操作](sql-database-disaster-recovery.md#recover-using-geo-restore)を使って、第 3 のリージョンのデータベースを復元することができます。
 >
 
 停止していた機能が復旧すると、セカンダリ データベースがプライマリ データベースと自動的に再同期されます。 同期対象のデータの量によっては、プライマリのパフォーマンスが同期中やや低下する場合があります。 次の図は、セカンダリ リージョンの機能が停止した場合の例です。
@@ -145,7 +145,7 @@ Traffic Manager がリージョン A への接続障害を検出すると、ユ�
 * アプリケーションが読み取り専用モードで動作できなければならない。
 
 > [!NOTE]
-> 万一リージョンのサービス機能が完全に停止した場合は、データベースのフェールオーバーを手動で起動し、データの損失を受け入れる必要があります。 セカンダリ リージョンのアプリケーションが、データベースへの読み取り/書き込みアクセスが可能な状態で動作します。
+> 万一リージョンのサービス機能が完全に停止した場合は、データベースのフェールオーバーを手動で起動し、データの損失を受け入れます。 セカンダリ リージョンのアプリケーションが、データベースへの読み取り/書き込みアクセスが可能な状態で動作します。
 >
 
 ## <a name="business-continuity-planning-choose-an-application-design-for-cloud-disaster-recovery"></a>ビジネス継続性計画: クラウド障害復旧用のアプリケーション設計を選択する
@@ -160,10 +160,10 @@ Traffic Manager がリージョン A への接続障害を検出すると、ユ�
 |||
 
 ## <a name="next-steps"></a>次のステップ
-* Azure SQL Database 自動バックアップの詳細については、「 [SQL Database automated backups (SQL Database 自動バックアップ)](sql-database-automated-backups.md)
-* ビジネス継続性の概要およびシナリオについては、 [ビジネス継続性の概要](sql-database-business-continuity.md)
-* 自動バックアップを使用して復旧する方法については、 [サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)
-* より迅速な復旧オプションについては、 [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)  
-* 自動バックアップを使用したアーカイブについては、 [データベースのコピー](sql-database-copy.md)
-* エラスティック プールでのアクティブ geo レプリケーションについては、 [エラスティック プール障害復旧戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページを参照してください。
+* Azure SQL Database 自動バックアップの詳細については、[SQL Database の自動バックアップ](sql-database-automated-backups.md)を参照してください。
+* ビジネス継続性の概要およびシナリオについては、[ビジネス継続性の概要](sql-database-business-continuity.md)を参照してください。
+* 自動バックアップを使用して復旧する方法については、[サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)を参照してください。
+* より迅速な復旧オプションについては、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。  
+* 自動バックアップを使用したアーカイブについては、[データベースのコピー](sql-database-copy.md)を参照してください。
+* エラスティック プールでのアクティブ geo レプリケーションについては、[エラスティック プール障害復旧戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページを参照してください。
 

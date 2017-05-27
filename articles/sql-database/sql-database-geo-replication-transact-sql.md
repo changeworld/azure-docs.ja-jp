@@ -1,6 +1,6 @@
 ---
 title: "Transact-SQL を使用して Azure SQL Database の geo レプリケーションを構成する | Microsoft Docs"
-description: "Transact-SQL を使用した Azure SQL Database の geo レプリケーションの構成"
+description: "Transact-SQL を使用して Azure SQL Database の geo レプリケーションを構成します"
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -16,10 +16,10 @@ ms.workload: NA
 ms.date: 04/14/2017
 ms.author: carlrab
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 1005f776ae85a7fc878315225c45f2270887771f
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: dad35a2b3beb2b07d5b12afb8a04ba48f8b8ef7e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -36,11 +36,13 @@ Transact-SQL を使用してフェールオーバーを開始するには、「 
 
 Transact-SQL を使用してアクティブ geo レプリケーションを構成するには、次のものが必要です。
 
-* Azure サブスクリプション。
+* Azure サブスクリプション
 * Azure SQL Database 論理サーバー <MyLocalServer> と SQL Database <MyDB> - レプリケートするプライマリ データベースです。
 * 1 つ以上の Azure SQL Database 論理サーバー <MySecondaryServer(n)> - セカンダリ データベースの作成先であるパートナー サーバーとなる論理サーバーです。
-* プライマリ上の DBManager であるログイン。geo レプリケートするローカル データベースの db_ownership を所有し、geo レプリケーションを構成するパートナー サーバー上の DBManager になります。
-* SQL Server Management Studio (SSMS)
+* プライマリの DBManager であるログイン
+* geo レプリケーションを行うローカル データベースの db_ownership を所有している
+* geo レプリケーションを構成するパートナー サーバーの DBManager である
+* 最新バージョンの SQL Server Management Studio (SSMS)
 
 > [!IMPORTANT]
 > 常に最新バージョンの Management Studio を使用して、Microsoft Azure と SQL Database の更新プログラムとの同期を維持することをお勧めします。 [SQL Server Management Studio を更新します](https://msdn.microsoft.com/library/mt238290.aspx)。
@@ -115,7 +117,7 @@ geo レプリケートされたセカンダリを geo レプリケーション �
 9. **[実行]** をクリックしてクエリを実行します。
 
 ## <a name="next-steps"></a>次のステップ
-* アクティブ geo レプリケーションの詳細については、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。
+* アクティブ geo レプリケーションについては、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)を参照してください。
 * ビジネス継続性の概要およびシナリオについては、 [ビジネス継続性の概要](sql-database-business-continuity.md)
 
 
