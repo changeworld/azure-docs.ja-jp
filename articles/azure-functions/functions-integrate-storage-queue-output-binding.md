@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 05/02/2017
 ms.author: glenga
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 0e2501b0eb218d3c8a62dd4959b08ff85ec565eb
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: ccafe4d440f533560fcb3780d4e0e440a4399021
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -28,8 +28,6 @@ ms.lasthandoff: 05/10/2017
 Azure Functions では、入力および出力バインディングによって、関数から外部サービス データに接続する宣言方法が提供されます。 このトピックでは、Azure Queue Storage にメッセージを送信する出力バインディングを追加することで既存の関数を更新する方法について説明します。  
 
 ![ログ内のメッセージを表示します。](./media/functions-integrate-storage-queue-output-binding/functions-integrate-storage-binding-in-portal.png)
-
-このトピックの手順をすべて完了するまでにかかる時間は、5 分未満です。
 
 ## <a name="prerequisites"></a>前提条件 
 
@@ -51,7 +49,7 @@ Azure Functions では、入力および出力バインディングによって�
 
     ![Azure Portal 内の関数に Queue Storage の出力バインディングを追加します。](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding-2.png)
 
-    | 設定      |  推奨値   | 説明                              |
+    | 設定      |  推奨値   | Description                              |
     | ------------ |  ------- | -------------------------------------------------- |
     | **キュー名**   | myqueue-items    | ストレージ アカウント内の接続先のキューの名前。 |
     | **ストレージ アカウント接続** | AzureWebJobStorage | Function App によって既に使用されているストレージ アカウント接続を使用するか、新しく作成できます。  |

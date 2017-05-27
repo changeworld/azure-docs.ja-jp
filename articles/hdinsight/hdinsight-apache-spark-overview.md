@@ -18,10 +18,10 @@ ms.topic: get-started-article
 ms.date: 05/12/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 020cb0193e48b49524318df6e29c7613753a3863
+ms.sourcegitcommit: 300958a69fc854cb8db02120a383a4cbbfcacd7b
+ms.openlocfilehash: 4dc9729f036c0c497dfd53342aa92c983126e7d1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 05/20/2017
 
 
 ---
@@ -30,8 +30,6 @@ ms.lasthandoff: 05/15/2017
 この記事では、HDInsight での Spark の概要について説明します。 <a href="http://spark.apache.org/" target="_blank">Apache Spark</a> はビッグ データ分析アプリケーションのパフォーマンスを向上するメモリ内の処理をサポートする、オープン ソースの並列処理のフレームワークです。 HDInsight の Spark クラスターは、Azure Storage (WASB) および Azure Data Lake Store と互換性があるため、Azure に保存されている既存データを Spark クラスターを介して簡単に処理できます。
 
 HDInsight で Spark クラスターを作成するときは、Spark をインストールおよび構成して Azure 計算リソースを作成します。 HDInsight で Spark クラスターを作成するのにかかる時間はわずか約 10 分です。 処理するデータは Azure Storage または Azure Data Lake Store に格納されます。 [HDInsight での Azure Storage の使用](hdinsight-hadoop-use-blob-storage.md)に関するページを参照してください。
-
-![HDInsight での Apache Spark とは](./media/hdinsight-apache-spark-overview/hdinsight-introduction-to-spark.png "HDInsight での Spark の概要")
 
 **HDInsight で Spark クラスターを作成するには、**[HDInsight での Spark クラスターの作成と Jupyter を使用した対話型クエリの実行に関するクイックスタート ガイド](hdinsight-apache-spark-jupyter-spark-sql.md)のページを参照してください。
 

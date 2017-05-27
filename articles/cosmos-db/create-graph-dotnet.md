@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 05/10/2017
+ms.date: 05/21/2017
 ms.author: arramac
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 07a13c3e9e2baefe0be7ed417ba105dd23a3708d
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 597b12b98edb07e453fc3cd5a0884c584a5bfd14
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -42,18 +42,6 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 ## <a name="add-a-graph"></a>グラフの追加
 
 [!INCLUDE [cosmosdb-create-graph](../../includes/cosmosdb-create-graph.md)]
-
-## <a name="add-sample-data"></a>サンプル データの追加
-
-これで、データ エクスプローラーを使用して、グラフにデータを追加できます。
-
-1. データ エクスプローラーで、**sample-database**、**sample-graph** の順に展開し、**[グラフ]**、**[New Vertex] (新しい頂点)**、**[New Edge] (新しい辺)** の順にクリックしてグラフに項目を追加します。 データ エクスプローラーでは、スループットをスケールし、ストアド プロシージャ、ユーザー定義関数、およびトリガーをコンテナーに追加することもできます。
-
-    ![データ エクスプローラーで頂点と辺をグラフに追加する](./media/create-graph-dotnet/azure-cosmos-db-graph-sample-data.png)
-
-2. いくつかの項目を追加した後で、**[Apply Filter] (フィルターの適用)** ボタンをクリックするか、**[グラフ]** を右クリックして **[New Graph Query] (新しいグラフ クエリ)** をクリックし、データの視覚的なグラフを表示します。 **[Style] (スタイル)** ボタンをクリックし、設定を変更することにより、データに適用されているラベルとスタイルを変更できます。 データ エクスプローラーでのグラフ例を示します。表示されたラベル、色、およびデータはすべて変更できます。
-
-    ![Azure Portal のデータ エクスプローラーでの視覚的なグラフ エクスプローラー](./media/create-graph-dotnet/azure-cosmos-db-graph-explorer.png)
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 

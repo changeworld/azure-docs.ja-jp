@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 05/10/2017
 ms.author: glenga
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: abd508631787ba5f839a4ae2ea82e76c4bfab425
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 0c7ef7004618966ae8c2d32027c460b2b643923e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -30,8 +30,6 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 ![Azure Portal での Function App の作成](./media/functions-create-first-azure-function/function-app-in-portal-editor.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-このトピックの手順をすべて完了するまでにかかる時間は、5 分未満です。
 
 ## <a name="log-in-to-azure"></a>Azure へのログイン
 

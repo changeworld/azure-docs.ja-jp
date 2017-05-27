@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 03/17/2017
 ms.author: cfowler
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 2916ee6ba4753efdb8823f93c951a4f678b08ae4
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: df34052acc401fb5bb1e3f808c649c0ea0bcf33c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 05/09/2017
 
 ![hello-world-in-browser](media/app-service-web-get-started-python/hello-world-in-browser.png)
 
-以下の手順は、Mac、Windows、または Linux コンピューターを使用して実行することができます。 以下の手順全体を、約 5 分で完了できます。
+以下の手順は、Mac、Windows、または Linux コンピューターを使用して実行できます。 以下の手順全体を、約 5 分で完了できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -110,15 +110,7 @@ az group create --name myResourceGroup --location westeurope
 
 [az appservice plan create](/cli/azure/appservice/plan#create) コマンドで、App Service プランを作成します。
 
-> [!NOTE]
-> App Service プランは、アプリをホストするために使用される物理リソースのコレクションを表しています。 App Service プランに割り当てられたすべてのアプリケーションは、プランで定義されたリソースを共有します。これにより、複数のアプリをホストする際にコストを節約できます。
->
-> App Service プランには、次の定義があります。
-> * リージョン (北ヨーロッパ、米国東部、東南アジア)
-> * インスタンス サイズ (Small、Medium、Large)
-> * スケール カウント (インスタンス数 1、2、3 など)
-> * SKU (Free、Shared、Basic、Standard、Premium)
->
+[!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
 次の例では、**Free** 価格レベルを使用して、`quickStartPlan` という名前の App Service プランを作成します。
 
