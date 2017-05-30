@@ -3,8 +3,8 @@ title: ".NET SDK で Azure Data Lake Analytics の使用を開始する | Micros
 description: ".NET SDK を使用して、Data Lake Analytics アカウントを作成し、Data Lake Analytics ジョブを作成してから、U-SQL で記述されたジョブを送信する方法について説明します。 "
 services: data-lake-analytics
 documentationcenter: 
-author: edmacauley
-manager: jhubbard
+author: saveenr
+manager: saveenr
 editor: cgronlun
 ms.assetid: 1dfcbc3d-235d-4074-bc2a-e96def8298b6
 ms.service: data-lake-analytics
@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/26/2016
 ms.author: edmaca
-translationtype: Human Translation
-ms.sourcegitcommit: 8e092e30c9c4186e4687efeacf9ea1f6b4bf431c
-ms.openlocfilehash: f617d997bc34d39f7635a87c4e5c88b1ebdc0ff8
+ms.translationtype: Human Translation
+ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
+ms.openlocfilehash: cef4219080d58f9f55fb10ce4d96e309b5891735
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/23/2017
 
 
 ---
@@ -25,25 +27,21 @@ ms.openlocfilehash: f617d997bc34d39f7635a87c4e5c88b1ebdc0ff8
 
 Azure .NET SDK を使用して、 [U-SQL](data-lake-analytics-u-sql-get-started.md) で記述されたジョブを Data Lake Analytics に送信する方法について説明します。 Data Lake Analytics の詳細については、「 [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
 
-このチュートリアルでは、U-SQL ジョブを送信する C# コンソール アプリケーションを開発します。このジョブでは、タブ区切り値 (TSV) ファイルが読み取られ、それがコンマ区切り値 (CSV) ファイルに変換されます。 サポートされている他のツールを使用した同じチュートリアルを読み進めるには、この記事の上部にあるタブをクリックします。
+このチュートリアルでは、U-SQL ジョブを送信する C# コンソール アプリケーションを開発します。このジョブでは、タブ区切り (TSV) ファイルを読み取り、それをコンマ区切り値 (CSV) ファイルに変換します。 
 
 ## <a name="prerequisites"></a>前提条件
-このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-* **Visual Studio 2015、Visual Studio 2013 update 4、または Visual Studio 2012 (Visual C++ インストール済み)**。
+* **Visual Studio 2015、Visual Studio 2013 Update 4、または Visual Studio 2012 (Visual C++ インストール済み)**。
 * **Microsoft Azure SDK for .NET バージョン 2.5 以上**。  [Web Platform Installer を使用してインストールします](http://www.microsoft.com/web/downloads/platform.aspx)。
-* **Azure Data Lake Analytics アカウント**。 「 [Manage Data Lake Analytics using Azure .NET SDK (Azure .NET SDK を使用した Data Lake Analytics の管理)](data-lake-analytics-manage-use-dotnet-sdk.md)」を参照してください。
+* **Azure Data Lake Analytics アカウント**。 
 
-## <a name="create-console-application"></a>コンソール アプリケーションの作成
-このチュートリアルでは、いくつかの検索ログを処理します。  検索ログは、Data Lake Store または Azure Blob Storage に格納できます。 
+## <a name="create-a-c-console-application"></a>C# コンソール アプリケーションの作成
 
 サンプルの検索ログは、パブリック Azure BLOB コンテナーにあります。 アプリケーションで、ファイルをワークステーションにダウンロードしてから、Data Lake Analytics アカウントの既定の Data Lake Store アカウントにそのファイルをアップロードします。
 
 **U-SQL スクリプトを作成するには**
 
-Data Lake Analtyics ジョブは U-SQL 言語で記述されます。 U-SQL の詳細については、[U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)に関する記事および「[U-SQL Language Reference (U-SQL 言語リファレンス)](http://go.microsoft.com/fwlink/?LinkId=691348)」をご覧ください。
-
-次の U-SQL スクリプトを使用して **SampleUSQLScript.txt** ファイルを作成し、**C:\temp\** パスにファイルを配置します。  このパスは、次の手順で作成する .NET アプリケーションでハードコーディングされます。  
+次の U-SQL スクリプトを含む **SampleUSQLScript.usql** テキスト ファイルを作成し、`C:\temp\` パスにファイルを配置します。  このパスは、次の手順で作成する .NET アプリケーションでハードコーディングされます。  
 
     @searchlog =
         EXTRACT UserId          int,
@@ -60,22 +58,9 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。 U-SQL の�
         TO "/Output/SearchLog-from-Data-Lake.csv"
     USING Outputters.Csv();
 
-この U-SQL スクリプトでは、**Extractors.Tsv()** を使用してソース データ ファイルを読み取ってから、**Outputters.Csv()** を使用して csv ファイルを作成します。 
+この U-SQL スクリプトでは、`Extractors.Tsv()` を使用してソース データ ファイルを読み取ってから、`Outputters.Csv()` を使用して csv ファイルを作成します。 
 
-C# プログラムでは、**/Samples/Data/SearchLog.tsv** ファイルと **/Output/** フォルダーを準備する必要があります。    
-
-既定の Data Lake アカウントに格納されたファイルの相対パスを使用する方が簡単です。 絶対パスを使用することもできます。  たとえば、次のように入力します。 
-
-    adl://<Data LakeStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
-
-リンクされたストレージ アカウント内のファイルへのアクセスには、絶対パスを使用する必要があります。  リンクされた Azure Storage アカウントに格納されているファイルの構文は次のとおりです。
-
-    wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
-
-> [!NOTE]
-> 現時点で、Azure Data Lake Service の既知の問題があります。  サンプル アプリケーションが中断されたり、エラーが発生した場合は、スクリプトによって作成された Data Lake Store と Data Lake Analytics のアカウントを手動で削除することが必要になる場合があります。  Azure Portal に慣れていない場合は、「[Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」から始めることをお勧めします。       
-> 
-> 
+C# プログラムでは、`/Samples/Data/SearchLog.tsv` ファイルと `/Output/` フォルダーを準備する必要があります。    
 
 **アプリケーションを作成するには**
 
@@ -253,10 +238,5 @@ C# プログラムでは、**/Samples/Data/SearchLog.tsv** ファイルと **/Ou
 * U-SQL の詳細については、「[チュートリアル: Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」および「[U-SQL Language Reference (U-SQL 言語リファレンス)](http://go.microsoft.com/fwlink/?LinkId=691348)」をご覧ください。
 * 管理タスクについては、「 [Azure Portal を使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
 * Data Lake Analytics の概要については、「 [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

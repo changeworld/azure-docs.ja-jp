@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 04/11/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 05fe90fe8d4320f3be2a08fed5902cf5c25dd87b
+ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
+ms.openlocfilehash: 460276303f026553e1ea374f85759937afe90dfa
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/22/2017
 
 
 ---
@@ -37,13 +37,16 @@ ms.lasthandoff: 05/17/2017
 
 この記事では、Microsoft Visual Studio を使用して Azure Blob Storage から Azure SQL データベースにデータをコピーするパイプラインを備えたデータ ファクトリを作成します。 Azure Data Factory の使用経験がない場合は、このチュートリアルを実行する前に、「[Azure Data Factory の概要](data-factory-introduction.md)」を参照してください。   
 
-このチュートリアルのデータ パイプラインでは、ソース データ ストアからターゲット データ ストアにデータをコピーします。 入力データを変換して出力データを生成するのではありません。 Azure Data Factory を使用してデータを変換する方法のチュートリアルについては、[Hadoop クラスターを使用してデータを変換する最初のパイプラインを作成する方法に関するチュートリアル](data-factory-build-your-first-pipeline.md)を参照してください。
+このチュートリアルでは、1 つのアクティビティ (コピー アクティビティ) が含まれたパイプラインを作成します。 コピー アクティビティは、サポートされているデータ ストアからサポートされているシンク データ ストアにデータをコピーします。 ソースおよびシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関するセクションを参照してください。 このアクティビティは、安全で信頼性の高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。 コピー アクティビティの詳細については、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事を参照してください。
 
-このチュートリアルで使用するアクティビティは、コピー アクティビティの 1 種類のみです。 1 つのパイプラインには複数のアクティビティを含めることができます。 また、1 つのアクティビティの出力データセットを別のアクティビティの入力データセットとして指定することで、2 つのアクティビティを連鎖させる (アクティビティを連続的に実行する) ことができます。 詳細については、「[Data Factory のスケジュール設定と実行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)」を参照してください。 
+1 つのパイプラインには複数のアクティビティを含めることができます。 また、1 つのアクティビティの出力データセットを別のアクティビティの入力データセットとして指定することで、2 つのアクティビティを連鎖させる (アクティビティを連続的に実行する) ことができます。 詳細については、「[パイプライン内の複数アクティビティ](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)」を参照してください。
+
+> [!NOTE] 
+> このチュートリアルのデータ パイプラインでは、ソース データ ストアからターゲット データ ストアにデータをコピーします。 Azure Data Factory を使用してデータを変換する方法のチュートリアルについては、[Hadoop クラスターを使用してデータを変換する最初のパイプラインを作成する方法に関するチュートリアル](data-factory-build-your-first-pipeline.md)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
-1. 「 [チュートリアルの概要](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 」に目を通し、 **前提条件** の手順を完了する必要があります。 
-2. Data Factory エンティティを Azure Data Factory に発行できる **Azure サブスクリプションの管理者** である必要があります。  
+1. 「 [チュートリアルの概要](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 」に目を通し、 **前提条件** の手順を完了する必要があります。       
+2. Data Factory インスタンスを作成するには、サブスクリプション/リソース グループ レベルで [Data Factory の共同作業者](../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) ロールのメンバーである必要があります。
 3. コンピューターに以下がインストールされている必要があります。 
    * Visual Studio 2013 または Visual Studio 2015
    * Azure SDK for Visual Studio 2013 または Visual Studio 2015 をダウンロードします。 [Azure ダウンロード ページ](https://azure.microsoft.com/downloads/)に移動し、**.NET** セクションの **[VS 2013]** または **[VS 2015]** をクリックします。
@@ -106,6 +109,7 @@ Azure SQL のリンクされたサービスは、Azure SQL データベースを
 2. このとき、**[Azure SQL Linked Service (Azure SQL のリンクされたサービス)]** を選択し、**[追加]** をクリックします。 
 3. **AzureSqlLinkedService1.json** ファイルで、`<servername>`、`<databasename>`、`<username@servername>`、`<password>` を Azure SQL のサーバー名、データベース名、ユーザー アカウント、パスワードに置き換えます。    
 4. **AzureSqlLinkedService1.json** ファイルを保存します。 
+    
     これらの JSON プロパティの詳細については、[Azure SQL Database コネクタ](data-factory-azure-sql-connector.md#linked-service-properties)に関する記事を参照してください。
 
 
@@ -216,6 +220,7 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
     データベース内の emp テーブルには、**ID**、**FirstName**、**LastName** の 3 つの列があります。 ID は ID 列であるため、ここで指定する必要があるのは **FirstName** と **LastName** のみです。
 
     これらの JSON プロパティの詳細については、[Azure SQL コネクタ](data-factory-azure-sql-connector.md#dataset-properties)に関する記事を参照してください。
+
 ## <a name="create-pipeline"></a>パイプラインの作成
 この手順では、**InputDataset** を入力、**OutputDataset** を出力として使用する**コピー アクティビティ**を備えたパイプラインを作成します。
 
@@ -263,8 +268,8 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
            }
          }
        ],
-       "start": "2015-07-12T00:00:00Z",
-       "end": "2015-07-13T00:00:00Z",
+       "start": "2017-05-11T00:00:00Z",
+       "end": "2017-05-12T00:00:00Z",
        "isPaused": false
      }
     }
@@ -342,7 +347,19 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
 > Data Factory インスタンスを作成するには、Azure サブスクリプションの管理者または共同管理者である必要があります。
 
 ## <a name="monitor-pipeline"></a>パイプラインを監視する
-Azure ポータルを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法については、 [データセットとパイプラインの監視](data-factory-copy-activity-tutorial-using-azure-portal.md#monitor-pipeline) に関するページを参照してください。 現時点では、Visual Studio は Data Factory パイプラインの監視をサポートしていません。  
+データ ファクトリのホーム ページに移動します。
+
+1. [Azure Portal](https://portal.azure.com) にログインします。
+2. 左側のメニューの **[その他のサービス]** をクリックし、**[データ ファクトリ]** をクリックします。
+
+    ![Browse data factories](media/data-factory-copy-activity-tutorial-using-visual-studio/browse-data-factories.png)
+3. データ ファクトリの名前の入力を開始します。
+
+    ![データ ファクトリの名前](media/data-factory-copy-activity-tutorial-using-visual-studio/enter-data-factory-name.png) 
+4. 結果の一覧で目的のデータ ファクトリをクリックし、データ ファクトリのホーム ページを表示します。
+
+    ![データ ファクトリのホーム ページ](media/data-factory-copy-activity-tutorial-using-visual-studio/data-factory-home-page.png)
+5. [データセットとパイプラインの監視](data-factory-copy-activity-tutorial-using-azure-portal.md#monitor-pipeline)に関するセクションの手順に従って、このチュートリアルで作成したパイプラインとデータセットを監視します。 現時点では、Visual Studio は Data Factory パイプラインの監視をサポートしていません。 
 
 ## <a name="summary"></a>概要
 このチュートリアルでは、Azure Data Factory を作成し、Azure BLOB から Azure SQL Database にデータをコピーしました。 また、Visual Studio を使用して、データ ファクトリ、リンクされたサービス、データセット、パイプラインを作成しました。 以下は、このチュートリアルで実行した手順の概要です。  
@@ -354,7 +371,6 @@ Azure ポータルを使用して、このチュートリアルで作成した�
 3. パイプラインの入力データと出力データを記述する **データセット**を作成しました。
 4. ソースとして **BlobSource**、シンクとして **SqlSink** を持つ**コピー アクティビティ**がある**パイプライン**を作成しました。 
 
-## <a name="next-steps"></a>次のステップ
 HDInsight Hive アクティビティを使用して Azure HDInsight クラスターを使用してデータを変換する方法については、「[チュートリアル: Hadoop クラスターを使用してデータを変換する最初のパイプラインを作成する](data-factory-build-your-first-pipeline.md)」を参照してください。
 
 2 つのアクティビティを連鎖させる (アクティビティを連続的に実行する) には、一方のアクティビティの出力データセットを、もう一方のアクティビティの入力データセットとして指定します。 詳細については、[Data Factory でのスケジュールと実行](data-factory-scheduling-and-execution.md)に関するページを参照してください。 
@@ -368,7 +384,8 @@ HDInsight Hive アクティビティを使用して Azure HDInsight クラスタ
     ![Server Explorer](./media/data-factory-copy-activity-tutorial-using-visual-studio/server-explorer.png)
 
 ## <a name="create-a-visual-studio-project-for-an-existing-data-factory"></a>既存のデータ ファクトリの Visual Studio プロジェクトの作成
-3. サーバー エクスプローラーでデータ ファクトリを右クリックし、[Export Data Factory to New Project]\(データ ファクトリを新しいプロジェクトにエクスポートする\) を選択して、既存のデータ ファクトリに基づいて Visual Studio プロジェクトを作成します。
+
+- サーバー エクスプローラーでデータ ファクトリを右クリックし、**[Export Data Factory to New Project]\(データ ファクトリを新しいプロジェクトにエクスポートする\)** を選択して、既存のデータ ファクトリに基づいて Visual Studio プロジェクトを作成します。
 
     ![Data Factory の Visual Studio プロジェクトへのエクスポート](./media/data-factory-copy-activity-tutorial-using-visual-studio/export-data-factory-menu.png)  
 
@@ -497,4 +514,4 @@ Azure Data Factory のエンティティを VS で発行するときに、その
 
 [!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
 
-データ ストアのコピー ウィザードに表示されるフィールドおよびプロパティの詳細については、表内のデータ ストアへのリンクをクリックしてください。
+データ ストアにデータをコピーしたり、データ ストアからデータをコピーしたりする方法を確認するには、表のデータ ストアのリンクをクリックしてください。

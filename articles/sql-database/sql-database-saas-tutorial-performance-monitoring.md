@@ -1,6 +1,6 @@
 ---
-title: "SQL Database SaaS アプリのパフォーマンスの監視 | Microsoft Docs"
-description: "Azure SQL Database のサンプル Wingtip Tickets (WTP) アプリのパフォーマンスを監視および管理します"
+title: "マルチテナント SaaS アプリで多くの Azure SQL データベースのパフォーマンスを監視する | Microsoft Docs"
+description: "Azure SQL Database のサンプル Wingtip SaaS アプリのパフォーマンスを監視および管理します"
 keywords: "SQL データベース チュートリアル"
 services: sql-database
 documentationcenter: 
@@ -17,18 +17,18 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: af9511978718af10c97bee6af3a2835c9d2c1ff4
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 54f29cc816d356e22b425f3824ef89800c017e61
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/12/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
-# <a name="monitor-performance-of-the-wtp-sample-saas-application"></a>WTP SaaS サンプル アプリケーションのパフォーマンスの監視
+# <a name="monitor-performance-of-the-wingtip-saas-application"></a>Wingtip SaaS アプリケーションのパフォーマンスの監視
 
 このチュートリアルでは、SQL Database とエラスティック プールの組み込みの監視およびアラート機能を紹介した後に、SaaS アプリケーションで使用される主要なパフォーマンス管理シナリオをいくつか取り上げて説明します。
 
-Wingtip Tickets アプリでは、会場 (テナント) ごとに独自のデータベースを持つシングル テナント データ モデルが採用されています。 多くの SaaS アプリケーションと同様、テナントのワークロード パターンは予測不能で、かつ散発的であることが予想されます。 つまり、チケット販売は常に発生する可能性があります。 この一般的なデータベース使用パターンを利用するには、テナント データベースをエラスティック データベース プールにデプロイします。 エラスティック プールでは、多くのデータベース間でリソースを共有することで、ソリューションのコストが最適化されます。 このタイプのパターンでは、データベースとプールのリソース使用を監視して、プール全体で負荷を適切かつ確実に分散させることが重要です。 また、各データベースに十分なリソースがあることと、プールが [eDTU](sql-database-what-is-a-dtu.md) 制限に達していないことを確認する必要もあります。 このチュートリアルでは、データベースとプールを監視および管理し、ワークロードの変化に応じて是正措置を講じる方法について説明します。
+Wingtip SaaS アプリでは、会場 (テナント) ごとに独自のデータベースを持つシングル テナント データ モデルが採用されています。 多くの SaaS アプリケーションと同様、テナントのワークロード パターンは予測不能で、かつ散発的であることが予想されます。 つまり、チケット販売は常に発生する可能性があります。 この一般的なデータベース使用パターンを利用するには、テナント データベースをエラスティック データベース プールにデプロイします。 エラスティック プールでは、多くのデータベース間でリソースを共有することで、ソリューションのコストが最適化されます。 このタイプのパターンでは、データベースとプールのリソース使用を監視して、プール全体で負荷を適切かつ確実に分散させることが重要です。 また、各データベースに十分なリソースがあることと、プールが [eDTU](sql-database-what-is-a-dtu.md) 制限に達していないことを確認する必要もあります。 このチュートリアルでは、データベースとプールを監視および管理し、ワークロードの変化に応じて是正措置を講じる方法について説明します。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -42,8 +42,8 @@ Wingtip Tickets アプリでは、会場 (テナント) ごとに独自のデー
 
 このチュートリアルを完了するには、次の前提条件を満たしておく必要があります。
 
-* WTP アプリがデプロイされている。 5 分以内にデプロイを完了する方法については、[WTP SaaS アプリケーションのデプロイと確認に関するページ](sql-database-saas-tutorial.md)をご覧ください。
-* Azure PowerShell がインストールされている。 詳細については、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」を参照してください
+* Wingtip SaaS アプリがデプロイされている。 5 分未満でデプロイするには、[Wingtip SaaS アプリケーションのデプロイと確認](sql-database-saas-tutorial.md)に関するページを参照してください。
+* Azure PowerShell がインストールされている。 詳しくは、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」をご覧ください。
 
 ## <a name="introduction-to-saas-performance-management-patterns"></a>SaaS パフォーマンス管理パターンの概要
 
@@ -64,9 +64,9 @@ Wingtip Tickets アプリでは、会場 (テナント) ごとに独自のデー
 
 大規模なシナリオでは、Log Analytics (OMS とも呼ばれます) を使用できます。 これは、出力された診断ログと、ログ分析ワークスペースで収集されたテレメトリに分析を提供する個別の Azure サービスで、多くのサービスからテレメトリを収集できます。また、このサービスを使用して、クエリを実行し、アラートを設定することもできます。
 
-## <a name="get-the-wingtip-application-scripts"></a>Wingtip アプリケーションのスクリプトの取得
+## <a name="get-the-wingtip-application-scripts"></a>Wingtip アプリケーションのスクリプトを取得する
 
-Wingtip Tickets のスクリプトとアプリケーションのソース コードは、[WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) Github リポジトリから入手できます。 スクリプト ファイルは、[Learning Modules フォルダー](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules)にあります。 **Learning Modules** フォルダーを、構造を保ったままローカル コンピューターにダウンロードします。
+Wingtip SaaS のスクリプトとアプリケーション ソース コードは、[WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub リポジトリから入手できます。 [Wingtip SaaS のスクリプトをダウンロードする手順](sql-database-wtp-overview.md#download-the-wingtip-saas-scripts)。
 
 ## <a name="provision-additional-tenants"></a>その他のテナントのプロビジョニング
 
@@ -80,7 +80,7 @@ S3 データベースが 2 つだけでもプールはコスト効率よく動�
 
 スクリプトによって、17 のテナントが 5 分以内でデプロイされます。
 
-*New-TenantBatch* スクリプトでは、入れ子になった、またはリンクされている [Resource Manager](../azure-resource-manager/index.md) テンプレート セットを使用して、テナントのバッチが作成されます。これにより、既定では、**baseTenantDb** データベースがカタログ サーバーにコピーされ、新しいテナント データベースが作成されます。その後、そのデータベースがカタログに登録され、最後にテナント名と会場の種類で初期化されます。 これは、WTP アプリが新しいテナントをプロビジョニングする方法と一致します。 *baseTenantDB* に対するすべての変更が、その後プロビジョニングされた新しいテナントすべてに適用されます。 "*既存*" のテナント データベース ("*ゴールデン*" データベースを含む) に対してスキーマの変更を行う方法については、[スキーマ管理のチュートリアル](sql-database-saas-tutorial-schema-management.md)をご覧ください。
+*New-TenantBatch* スクリプトでは、入れ子になった、またはリンクされている [Resource Manager](../azure-resource-manager/index.md) テンプレート セットを使用して、テナントのバッチが作成されます。これにより、既定では、**baseTenantDb** データベースがカタログ サーバーにコピーされ、新しいテナント データベースが作成されます。その後、そのデータベースがカタログに登録され、最後にテナント名と会場の種類で初期化されます。 これは、アプリが新しいテナントをプロビジョニングする方法と一致します。 *baseTenantDB* に対するすべての変更が、その後プロビジョニングされた新しいテナントすべてに適用されます。 "*既存*" のテナント データベース ("*ゴールデン*" データベースを含む) に対してスキーマの変更を行う方法については、[スキーマ管理のチュートリアル](sql-database-saas-tutorial-schema-management.md)をご覧ください。
 
 ## <a name="simulate-different-usage-patterns-by-generating-different-load-types"></a>さまざまな負荷の種類を生成してさまざまな使用パターンをシミュレート
 
@@ -222,7 +222,7 @@ contosoconcerthall データベースの通常よりも負荷が高い状態が�
 
 ## <a name="other-performance-management-patterns"></a>その他のパフォーマンス管理パターン
 
-**プリエンプティブなスケーリング**: 演習 6 では、目的のデータベースがわかっている場合に、データベースを切り離してスケールする方法を説明しました。 Contoso コンサート ホールの管理によって、間もなくチケットが発売されることが WTP に知らされていれば、データベースを事前にプールから移動することもできるでしょう。 しかし、そうでない場合は、プールまたはデータベースでアラートを設定して、何が起こっているかを把握しなければならない可能性があります。 プール内の他のテナントからのパフォーマンス低下に関する苦情によって、このことを知りたくはありません。 また、追加リソースが必要となる期間をテナントが予測できれば、Azure Automation Runbook を設定することで、プールからデータベースを移動する作業、そしてプールに戻す作業を決められたスケジュールで行うことができます。
+**プリエンプティブなスケーリング**: 演習 6 では、目的のデータベースがわかっている場合に、データベースを切り離してスケールする方法を説明しました。 Contoso コンサート ホールの管理によって、間もなくチケットが発売されることが Wingtip に知らされていれば、データベースを事前にプールから移動することもできるでしょう。 しかし、そうでない場合は、プールまたはデータベースでアラートを設定して、何が起こっているかを把握しなければならない可能性があります。 プール内の他のテナントからのパフォーマンス低下に関する苦情によって、このことを知りたくはありません。 また、追加リソースが必要となる期間をテナントが予測できれば、Azure Automation Runbook を設定することで、プールからデータベースを移動する作業、そしてプールに戻す作業を決められたスケジュールで行うことができます。
 
 **テナント セルフサービス スケーリング**: スケーリング タスクは管理 API 経由で簡単に呼び出されます。このため、テナント接続アプリケーションにテナント データベースをスケールする機能は簡単に作成できます。作成した機能は、SaaS サービスの機能として提供できます。 たとえば、テナントによるスケールアップ/スケールダウンの自己管理が可能で、場合によっては、これが請求に直接リンクされます。
 
@@ -247,7 +247,7 @@ contosoconcerthall データベースの通常よりも負荷が高い状態が�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [Wingtip Tickets Platform (WTP) アプリケーションの初期のデプロイに基づく作業のための追加のチュートリアル](sql-database-wtp-overview.md#sql-database-wtp-saas-tutorials)
+* [Wingtip SaaS アプリケーションのデプロイに基づく作業のための追加のチュートリアル](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [SQL エラスティック プール](sql-database-elastic-pool.md)
 * [Azure Automation](../automation/automation-intro.md)
 * [Log Analytics](sql-database-saas-tutorial-log-analytics.md) - Log Analytics の設定および使用チュートリアル

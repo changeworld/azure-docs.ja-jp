@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 05/13/2017
+ms.date: 05/21/2017
 ms.author: arramac
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: d8a6a183d1acd7a06683ec2e402bd866cb5195f4
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 5c996068ff5fbadda6730244c34c0d0d1f8fb447
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -27,7 +27,11 @@ ms.lasthandoff: 05/15/2017
 
 Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成およびクエリできます。 
 
-このクイック スタートでは、Azure Portal を使用した Graph API (プレビュー) 用の Azure Cosmos DB アカウント、データベース、およびグラフの作成方法を説明します。 続いて OSS [Gremlin Node.js](https://aka.ms/gremlin-node) ドライバーを使用して、コンソール アプリを構築し実行します。  
+このクイック スタートでは、Azure Portal を使用した Graph API (プレビュー) 用の Azure Cosmos DB アカウント、データベース、およびグラフの作成方法を説明します。 続いて OSS [Gremlin Node.js](https://www.npmjs.com/package/gremlin-secure) ドライバーを使用して、コンソール アプリを構築し実行します。  
+
+> [!NOTE]
+> NPM モジュール `gremlin-secure` は、Azure Cosmos DB との接続に必要な SSL と SASL がサポートされている、`gremlin` モジュールを変更したバージョンです。 ソース コードは [GitHub](https://github.com/CosmosDB/gremlin-javascript) から入手できます。
+>
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -61,21 +65,23 @@ github から Graph API アプリの複製を作成し、接続文字列を設�
 
 ## <a name="review-the-code"></a>コードの確認
 
-アプリで何が行われているかを簡単に確認してみましょう。 `app.js` ファイルを開くと、以下のコード行が表示されます。
+アプリで何が行われているかを簡単に確認してみましょう。 `app.js` ファイルを開くと、以下のコード行が表示されます。 
 
 * Gremlin クライアントが作成されます。
 
     ```nodejs
     const client = Gremlin.createClient(
         443, 
-        "https://<fillme>.graphs.azure.com", 
+        config.endpoint, 
         { 
             "session": false, 
             "ssl": true, 
-            "user": "/dbs/<db>/colls/<coll>",
-            "password": "<authKey>"
+            "user": `/dbs/${config.database}/colls/${config.collection}`,
+            "password": config.primaryKey
         });
     ```
+
+構成はすべて、次のセクションで編集する `config.js` に含まれています。
 
 * Gremlin の一連の手順は、`client.execute` メソッドを使用して実行されます。
 
@@ -96,25 +102,37 @@ github から Graph API アプリの複製を作成し、接続文字列を設�
 
     ![Azure Portal の [キー] ブレードでアクセス キーを表示およびコピーする](./media/create-documentdb-dotnet/keys.png)
 
-2. ポータルから (コピー ボタンを使用して) URI 値をコピーし、config.js の config.endpoint キーの値に設定します。
+2. ポータルから (コピー ボタンを使用して) Gremlin URI 値をコピーし、config.js の `config.endpoint` キーの値に設定します。 Gremlin エンドポイントは、`mygraphdb.graphs.azure.com` のように、プロトコル/ポート番号が付いていないホスト名のみにする必要があります (`https://mygraphdb.graphs.azure.com` や `mygraphdb.graphs.azure.com:433` は不可)。
 
     `config.endpoint = "GRAPHENDPOINT";`
 
-3. URI の documents.azure.com 部分を graphs.azure.com に置き換えます。
-
-4. ポータルから PRIMARY KEY 値をコピーし、config.js の config.primaryKey の値に設定します。 これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
+3. ポータルから PRIMARY KEY 値をコピーし、config.js の config.primaryKey の値に設定します。 これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
 
     `config.primaryKey = "PRIMARYKEY";`
+
+4. データベース名とグラフ (コンテナー) 名を config.database と config.collection の値として入力します。 
+
+たとえば、完成した config.js ファイルの内容は次のようになります。
+
+```nodejs
+var config = {}
+
+// Note that this must not have HTTPS or the port number
+config.endpoint = "mygraphdb.graphs.azure.com";
+config.primaryKey = "OjlhK6tjxfSXyKtrmCiM9O6gQQgu5DmgAoauzD1PdPIq1LZJmILTarHvrolyUYOB0whGQ4j21rdAFwoYep7Kkw==";
+config.database = "graphdb"
+config.collection = "Persons"
+
+module.exports = config;
+```
 
 ## <a name="run-the-console-app"></a>コンソール アプリの実行
 
 1. ターミナル ウィンドウを開き、`cd` でプロジェクトに含まれる package.json ファイルのインストール ディレクトリに移動します。  
 
-2. `npm install gremlin` を実行し、必要な npm モジュールをインストールします。
+2. `npm install` を実行し、必要な npm モジュールをインストールします。 ここには、`gremlin-secure` が含まれています。
 
-3. `node_modules\gremlin` フォルダーの内容を、[Cosmos DB Gremlin フォーク](https://github.com/CosmosDB/gremlin-javascript)からのソース コードに置き換えます。このフォークは Azure Cosmos DB に必要な SSL と SASL をサポートしていますが、これらは現在、ドライバーでは (変更がドライバーで受け入れられるまで一時的に) サポートされていません。
-
-4. ターミナルで `node app.js` を実行し、node アプリケーションを起動します。
+3. ターミナルで `node app.js` を実行し、node アプリケーションを起動します。
 
 これで、データ エクスプローラーに戻って、この新しいデータの表示、クエリ、変更、操作を行うことができます。 
 

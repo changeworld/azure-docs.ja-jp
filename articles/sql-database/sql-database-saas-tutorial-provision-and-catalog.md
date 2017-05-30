@@ -1,6 +1,6 @@
 ---
 title: "Azure SQL Database を使用してマルチテナント アプリで新しいテナントをプロビジョニングする | Microsoft Docs"
-description: "サンプル SQL Database SaaS アプリ Wingtip Tickets (WTP) で新しいテナントをプロビジョニングしてカタログに登録します"
+description: "Wingtip SaaS アプリで新しいテナントをプロビジョニングしてカタログに登録します"
 keywords: "SQL データベース チュートリアル"
 services: sql-database
 documentationcenter: 
@@ -14,19 +14,19 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 05/10/2017
-ms.author: billgib; sstein
+ms.date: 05/24/2017
+ms.author: sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: aae5d85a18f93b7821a6ef8fc7161dd9a6ebe533
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: cf2fa0950f9f9df833051979b02355236214c4ea
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/12/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
 # <a name="provision-new-tenants-and-register-them-in-the-catalog"></a>新しいテナントをプロビジョニングしてカタログに登録する
 
-このチュートリアルでは、SaaS アプリケーション Wingtip Tickets Platform (WTP) に新しいテナントをプロビジョニングします。 具体的には、テナントとテナント データベースを作成して、カタログにテナントを登録します。 "*カタログ*" とは、SaaS アプリケーションの多数のテナントとそのデータの間のマッピング情報を保持するためのデータベースを指します。 ここではスクリプトを使って、使用するプロビジョニングとカタログのパターンのほか、カタログに新しいテナントを登録する処理の実装を見ていきます。 カタログは、アプリケーションの要求を正しいデータベースに転送するうえで重要な役割を果たします。
+このチュートリアルでは、Wingtip SaaS アプリケーションで新しいテナントをプロビジョニングします。 具体的には、テナントとテナント データベースを作成して、カタログにテナントを登録します。 "*カタログ*" とは、SaaS アプリケーションの多数のテナントとそのデータの間のマッピング情報を保持するためのデータベースを指します。 ここではスクリプトを使って、使用するプロビジョニングとカタログのパターンのほか、カタログに新しいテナントを登録する処理の実装を見ていきます。 カタログは、アプリケーションの要求を正しいデータベースに転送するうえで重要な役割を果たします。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -39,34 +39,34 @@ ms.lasthandoff: 05/12/2017
 
 このチュートリアルを完了するには、次の前提条件を満たしておく必要があります。
 
-* WTP アプリがデプロイされている。 5 分未満でデプロイする方法については、[WTP SaaS アプリケーションのデプロイと確認](sql-database-saas-tutorial.md)に関するページを参照してください。
+* Wingtip SaaS アプリがデプロイされている。 5 分未満でデプロイするには、[Wingtip SaaS アプリケーションのデプロイと確認](sql-database-saas-tutorial.md)に関するページを参照してください。
 * Azure PowerShell がインストールされている。 詳細については、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」をご覧ください。
 
 ## <a name="introduction-to-the-saas-catalog-pattern"></a>SaaS カタログ パターンの概要
 
-データベースを基盤とするマルチテナント SaaS アプリケーションでは、テナントの情報が格納される場所を把握する必要があります。 SaaS カタログ パターンでは、テナントとデータの格納場所との間のマッピングに関する情報を格納するものとしてカタログ データベースを使用します。 WTP アプリで採用されているのは、シングルテナント データベース アーキテクチャです。もっとも、マルチテナントとシングルテナントのどちらのデータベースを使っている場合でも、テナントとデータベースとの間のマッピング情報をカタログに記録することに関しては、共通の基本パターンが適用されます。
+データベースを基盤とするマルチテナント SaaS アプリケーションでは、テナントの情報が格納される場所を把握する必要があります。 SaaS カタログ パターンでは、テナントとデータの格納場所との間のマッピングに関する情報を格納するものとしてカタログ データベースを使用します。 Wingtip SaaS アプリで採用されているのは、シングルテナント データベース アーキテクチャです。もっとも、マルチテナントとシングルテナントのどちらのデータベースを使っている場合でも、テナントとデータベースとの間のマッピング情報をカタログに記録することに関しては、共通の基本パターンが適用されます。
 
-各テナントには、カタログ内で自らのデータを他のテナントと区別するためのキーが割り当てられます。 WTP アプリケーションでは、このキーがテナント名のハッシュ値を使って生成されます。 このパターンでは、アプリケーションの URL のテナント名の部分を使ってキーを作成し、特定のテナントに対する接続を取得できるようになっています。 パターン全体に影響がなければ、これ以外の ID スキームを使用することもできます。
+各テナントには、カタログ内で自らのデータを他のテナントと区別するためのキーが割り当てられます。 Wingtip SaaS アプリケーションでは、このキーがテナント名のハッシュ値を使って生成されます。 このパターンでは、アプリケーションの URL のテナント名の部分を使ってキーを作成し、特定のテナントに対する接続を取得できるようになっています。 パターン全体に影響がなければ、これ以外の ID スキームを使用することもできます。
 
-WTP アプリのカタログは、[エラスティック データベース クライアント ライブラリ (EDCL)](sql-database-elastic-database-client-library.md) のシャード管理テクノロジを使って実装しています。 EDCL は、データベースに裏付けられており、かつ "_シャード マップ_" が保持される "_カタログ_" の作成と管理を担当します。 カタログには、キー (テナント) とそのデータベース (シャード) の間のマッピングに関するデータが格納されます。
+アプリのカタログは、[エラスティック データベース クライアント ライブラリ (EDCL)](sql-database-elastic-database-client-library.md) のシャード管理テクノロジを使って実装しています。 EDCL は、データベースに裏付けられており、かつ "_シャード マップ_" が保持される "_カタログ_" の作成と管理を担当します。 カタログには、キー (テナント) とそのデータベース (シャード) の間のマッピングに関するデータが格納されます。
 
 > [!IMPORTANT]
 > このマッピング データは、カタログ データベースからアクセスできるものの、"*編集することはできません*"。 マッピング データの編集には、必ずエラスティック データベース クライアント ライブラリ API を使用してください。 マッピング データを直接操作することは、カタログが破損するおそれがあるため、サポートしていません。
 
 Wingtip SaaS アプリは、"*ゴールデン*" データベースをコピーすることによって、新しいテナントをプロビジョニングします。
 
-## <a name="get-the-wingtip-application-scripts"></a>Wingtip アプリケーションのスクリプトの取得
+## <a name="get-the-wingtip-application-scripts"></a>Wingtip アプリケーションのスクリプトを取得する
 
-Wingtip Tickets のスクリプトとアプリケーションのソース コードは、[WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) Github リポジトリから入手できます。 スクリプト ファイルは、[Learning Modules フォルダー](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules)にあります。 **Learning Modules** フォルダーを、構造を保ったままローカル コンピューターにダウンロードしてください。
+Wingtip SaaS のスクリプトとアプリケーション ソース コードは、[WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub リポジトリから入手できます。 [Wingtip SaaS のスクリプトをダウンロードする手順](sql-database-wtp-overview.md#download-the-wingtip-saas-scripts)。
 
 ## <a name="provision-a-new-tenant"></a>新しいテナントのプロビジョニング
 
-最初の WTP チュートリアルで既にテナントを作成している場合には、このセクションは飛ばして「[バッチを使ったテナントのプロビジョニング](#provision-a-batch-of-tenants)」に進んでください。
+[最初の Wingtip SaaS チュートリアル](sql-database-saas-tutorial.md)で既にテナントを作成している場合には、このセクションは飛ばして「[バッチを使ったテナントのプロビジョニング](#provision-a-batch-of-tenants)」に進んでください。
 
 *Demo-ProvisionAndCatalog* スクリプトを実行すると、テナントをすばやく作成してカタログに登録できます。
 
 1. PowerShell ISE で **Demo-ProvisionAndCatalog.ps1** を開いて、以下の値を設定します。
-   * **$TenantName** = 新しい会場の名称 (たとえば、*Bushwillow Blues*)。 
+   * **$TenantName** = 新しい会場の名称 (たとえば、*Bushwillow Blues*)。
    * **$VenueType** = 事前に定義しておいた会場の種類のいずれか (ブルース、クラシック、ダンス、ジャズ、柔道、モーターレース、多目的、オペラ、ロック、サッカー)。
    * **$DemoScenario** = 1。**シングル テナントのプロビジョニング**の場合には、この設定は _1_ のままにしておきます。
 
@@ -79,7 +79,7 @@ Wingtip Tickets のスクリプトとアプリケーションのソース コー
 
 ## <a name="provision-a-batch-of-tenants"></a>バッチを使ったテナントのプロビジョニング
 
-この演習では、バッチを使って追加のテナントをプロビジョニングします。 この作業は、他の WTP チュートリアルを完了する前に済ませておくことをお勧めします。
+この演習では、バッチを使って追加のテナントをプロビジョニングします。 この作業は、他の Wingtip SaaS チュートリアルを完了する前に済ませておくことをお勧めします。
 
 1. *PowerShell ISE* で ...\\Learning Modules\\Utilities\\*Demo-ProvisionAndCatalog.ps1* を開いて、以下の値を設定します。
    * **$DemoScenario** = **3**。**バッチを使ってテナントをプロビジョニングする**場合には、**3** に設定します。
@@ -156,9 +156,9 @@ Resource Manager テンプレートは、…\\Learning Modules\\Common\\ フォ�
 
 ## <a name="stopping-wingtip-saas-application-related-billing"></a>Wingtip SaaS アプリケーション関連の課金の停止
 
-ほかのチュートリアルに進む予定がなければ、課金を停止するためにリソースをすべて削除することをお勧めします。 WTP アプリケーションをデプロイしたリソース グループを削除すると、そのリソースがすべて削除されます。
+ほかのチュートリアルに進む予定がなければ、課金を停止するためにリソースをすべて削除することをお勧めします。 Wingtip アプリケーションをデプロイしたリソース グループを削除すると、そのリソースがすべて削除されます。
 
-* ポータルでアプリケーションのリソース グループを参照して削除すると、この WTP のデプロイに関連する課金がすべて停止します。
+* ポータルでアプリケーションのリソース グループを参照して削除すると、この Wingtip のデプロイに関連する課金がすべて停止します。
 
 ## <a name="tips"></a>ヒント
 
@@ -180,7 +180,7 @@ Resource Manager テンプレートは、…\\Learning Modules\\Common\\ フォ�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [Wingtip Tickets Platform (WTP) アプリケーションの初期のデプロイに基づく作業のための追加のチュートリアル](sql-database-wtp-overview.md#sql-database-wtp-saas-tutorials)
+* [Wingtip SaaS アプリケーションに基づく作業のための追加のチュートリアル](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [エラスティック データベース クライアント ライブラリ](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-client-library)
 * [Windows PowerShell ISE でスクリプトをデバッグする方法](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)
 
