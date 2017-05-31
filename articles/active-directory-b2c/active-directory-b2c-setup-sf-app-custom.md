@@ -219,7 +219,7 @@ Azure AD B2C を接続されたアプリとして Salesforce に登録する必�
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-アップロードしたカスタム ポリシーのブレードを開いて [Run now](今すぐ実行) をクリックし、カスタム ポリシーをテストします。 エラーが発生した場合は、[トラブルシューティング](active-directory-b2c-troubleshoot-custom.md)の方法を参照してください。
+アップロードしたカスタム ポリシーのブレードを開いて [Run now] \(今すぐ実行) をクリックし、カスタム ポリシーをテストします。 エラーが発生した場合は、[トラブルシューティング](active-directory-b2c-troubleshoot-custom.md)の方法を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
  
