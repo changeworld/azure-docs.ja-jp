@@ -16,10 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 9a8073baea9a6ff2ecf443b516665adb10de4815
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: a2307f7055966ec7146b5da0b4daf1ad469abe2b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/11/2017
 
 ---
 # <a name="about-h-series-and-compute-intensive-a-series-vms-for-linux"></a>Linux 用の H シリーズとコンピューティング集中型 A シリーズの VM について
@@ -32,7 +33,7 @@ ms.lasthandoff: 04/03/2017
 ## <a name="access-to-the-rdma-network"></a>RDMA ネットワークへのアクセス
 Azure RDMA ネットワークを活用するために、次のサポートされる Linux HPC ディストリビューションのいずれかとサポートされる MPI 実装を実行する、RDMA 対応 Linux VM のクラスターを作成することができます。 デプロイのオプションとサンプルの構成手順については、「[MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」をご覧ください。
 
-* **ディストリビューション** - Azure Marketplace にある RDMA 対応 SUSE Linux Enterprise Server (SLES) イメージまたは OpenLogic CentOS ベースの HPC イメージから VM をデプロイする必要があります。 次の Marketplace イメージは、RDMA 接続性をサポートします。
+* **ディストリビューション** - Azure Marketplace にある RDMA 対応 SUSE Linux Enterprise Server (SLES) イメージまたは Rogue Wave Software (以前の OpenLogic) CentOS ベースの HPC イメージから VM をデプロイする必要があります。 次の Marketplace イメージは、RDMA 接続性をサポートします。
   
     * SLES 12 SP1 for HPC、SLES 12 SP1 for HPC (Premium)
     
@@ -48,7 +49,7 @@ Azure RDMA ネットワークを活用するために、次のサポートされ
   
     選択した Marketplace イメージに応じて、次に示すような Intel MPI の個別のライセンス、インストール、または構成が必要になることがあります。 
   
-  * **SLES 12 SP1 for HPC image** - Intel MPI パッケージは VM に配布されます。 次のコマンドを実行して をインストールします。
+  * **SLES 12 SP1 for HPC image** - Intel MPI パッケージは VM に配布されます。 次のコマンドを実行してインストールします。
 
       ```bash
       sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm

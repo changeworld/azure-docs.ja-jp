@@ -1,6 +1,6 @@
 ---
-title: "複数のテナントに対する分析クエリの実行 (Azure SQL Database を使用した SaaS アプリケーションの例) | Microsoft Docs"
-description: "複数のテナントに対する分析クエリの実行について"
+title: "複数の Azure SQL データベースに対する分析クエリの実行 | Microsoft Docs"
+description: "複数の Azure SQL データベースに対して分散クエリを実行します"
 keywords: "SQL データベース チュートリアル"
 services: sql-database
 documentationcenter: 
@@ -17,14 +17,14 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: b512e2f7833be1947ef7674d6e0266879789ac5a
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 5331f9a7b46f1dd31d4aa246ad9d188b5a5afc19
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
-# <a name="run-analytics-queries-against-multiple-tenants"></a>複数のテナントに対する分析クエリの実行について
+# <a name="run-distributed-queries-across-multiple-azure-sql-databases"></a>複数の Azure SQL データベースに対する分散クエリの実行
 
 このチュートリアルでは、カタログ内の各テナントに対して分析クエリを実行します。 クエリを実行するエラスティック ジョブが作成されます。 このジョブは、データを取得して、カタログ サーバーに作成された別の分析データベースに読み込みます。 このデータベースにクエリを実行して、すべてのテナントの日々の運用データに隠されたインサイトを抽出することができます。 ジョブの出力として、結果を返すクエリによって、テナント分析データベース内にテーブルが作成されます。
 
@@ -37,8 +37,8 @@ ms.lasthandoff: 05/10/2017
 
 このチュートリアルを完了するには、次の前提条件を満たしておく必要があります。
 
-* WTP アプリのデプロイ。 5 分以内にデプロイを完了する方法については、[WTP SaaS アプリケーションのデプロイと確認に関するページ](sql-database-saas-tutorial.md)をご覧ください。
-* Azure PowerShell のインストール。 詳しくは、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」をご覧ください。
+* Wingtip SaaS アプリがデプロイされている。 5 分未満でデプロイするには、[Wingtip SaaS アプリケーションのデプロイと確認](sql-database-saas-tutorial.md)に関するページを参照してください。
+* Azure PowerShell がインストールされている。 詳しくは、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」をご覧ください。
 * 最新バージョンの SQL Server Management Studio (SSMS) のインストール。 [SSMS をダウンロードしてインストールします](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
 
 ## <a name="tenant-operational-analytics-pattern"></a>テナント運用分析パターン
@@ -47,7 +47,7 @@ SaaS アプリケーションで得られる優れた機会の 1 つは、クラ
 
 ## <a name="get-the-wingtip-application-scripts"></a>Wingtip アプリケーションのスクリプトを取得する
 
-Wingtip Tickets のスクリプトとアプリケーションのソース コードは、[WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) Github リポジトリから入手できます。 スクリプト ファイルは、[Learning Modules フォルダー](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules)にあります。 **Learning Modules** フォルダーを、構造を保ったままローカル コンピューターにダウンロードします。
+Wingtip SaaS のスクリプトとアプリケーション ソース コードは、[WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub リポジトリから入手できます。 [Wingtip SaaS のスクリプトをダウンロードする手順](sql-database-wtp-overview.md#download-the-wingtip-saas-scripts)。
 
 ## <a name="deploy-a-database-for-tenant-analytics-results"></a>テナント分析結果用のデータベースをデプロイする
 
@@ -68,14 +68,14 @@ Wingtip Tickets のスクリプトとアプリケーションのソース コー
 
 このスクリプトでは、すべてのテナントのチケット購入情報を取得するジョブを作成します。 1 つのテーブルにデータが集計されると、テナント全体のチケット購入パターンについてインサイトに富んだメトリックを得ることができます。
 
-1. SSMS を開き、catalog-\<user\>.database.windows.net サーバーに接続します。
+1. SSMS を開き、catalog-&lt;user&gt;.database.windows.net サーバーに接続します。
 1. ...\\Learning Modules\\Operational Analytics\\Tenant Analytics\\*TicketPurchasesfromAllTenants.sql* を開きます。
-1. \<WtpUser\> を変更します。これには、スクリプト先頭部分の **sp\_add\_target\_group\_member** と **sp\_add\_jobstep** で WTP アプリをデプロイしたときに使用したユーザー名を使用します。
-1. 右クリックして **[接続]** を選択し、catalog-\<WtpUser\>.database.windows.net サーバーに接続します (まだ接続していない場合)。
+1. &lt;User&gt; を変更します。これには、スクリプト先頭部分の **sp\_add\_target\_group\_member** と **sp\_add\_jobstep** で Wingtip SaaS アプリをデプロイしたときに使用したユーザー名を使用します。
+1. 右クリックして **[接続]** を選択し、catalog-&lt;User&gt;.database.windows.net サーバーに接続します (まだ接続していない場合)。
 1. **jobaccount** データベースに接続していることを確認し、**F5** キーを押してスクリプトを実行します。
 
 * **sp\_add\_target\_group** では、ターゲット グループ名 *TenantGroup* が作成されます。次は、ターゲット メンバーを追加する必要があります。
-* **sp\_add\_target\_group\_member** は、*server* ターゲット メンバー タイプを追加します。これがジョブに含まれると、ジョブの実行時に、そのサーバー (テナント データベースを含む customer1-&lt;WtpUser&gt; サーバー) 内のすべてのデータベースを対象とします。
+* **sp\_add\_target\_group\_member** は、*server* ターゲット メンバー タイプを追加します。これがジョブに含まれると、ジョブの実行時に、そのサーバー (テナント データベースを含む customer1-&lt;User&gt; サーバー) 内のすべてのデータベースを対象とします。
 * **sp\_add\_job** は、毎週スケジュール設定される “Ticket Purchases from all Tenants” という新しいジョブを作成します。
 * **sp\_add\_jobstep** は、すべてのテナントのチケット購入情報を取得して、返される結果セットを *AllTicketsPurchasesfromAllTenants* というテーブルにコピーする T-SQL コマンド テキストを含むジョブ ステップを作成します。
 * スクリプトの残りのビューは、オブジェクトの存在を表示し、ジョブの実行を監視します。 状態を監視する **lifecycle** 列で状態の値を確認してください。 「Succeeded」であれば、ジョブがすべてのテナント データベースと、参照テーブルを含む 2 つの追加データベースで完了しています。
@@ -90,8 +90,8 @@ Wingtip Tickets のスクリプトとアプリケーションのソース コー
 
 1. SSMS を開き、*catalog-&lt;User&gt;.database.windows.net* サーバーに接続します。
 1. ファイル …\\Learning Modules\\Provision and Catalog\\Operational Analytics\\Tenant Analytics\\*Results-TicketPurchasesfromAllTenants.sql* を開きます。
-1. &lt;WtpUser&gt; を変更します。これには、スクリプトの **sp\_add\_jobstep** ストアド プロシージャで WTP アプリをデプロイしたときに使用したユーザー名を使用します。
-1. 右クリックして **[接続]** を選択し、catalog-\<WtpUser\>.database.windows.net サーバーに接続します (まだ接続していない場合)。
+1. &lt;User&gt; を変更します。これには、スクリプトの **sp\_add\_jobstep** ストアド プロシージャで Wingtip SaaS アプリをデプロイしたときに使用したユーザー名を使用します。
+1. 右クリックして **[接続]** を選択し、catalog-&lt;User&gt;.database.windows.net サーバーに接続します (まだ接続していない場合)。
 1. **tenantanalytics** データベースに接続していることを確認し、**F5** キーを押してスクリプトを実行します。
 
 スクリプトが正常に実行されると次のような結果になります。
@@ -119,5 +119,5 @@ Wingtip Tickets のスクリプトとアプリケーションのソース コー
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [Wingtip Tickets Platform (WTP) アプリケーションの初期のデプロイに基づく作業のための追加のチュートリアル](sql-database-wtp-overview.md#sql-database-wtp-saas-tutorials)
+* [Wingtip SaaS アプリケーションに基づく作業のための追加のチュートリアル](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [エラスティック ジョブ](sql-database-elastic-jobs-overview.md)

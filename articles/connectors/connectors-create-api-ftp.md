@@ -14,10 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 07/22/2016
-ms.author: deonhe
-translationtype: Human Translation
-ms.sourcegitcommit: 66fc8f7e1da55dbe6bb1dd8b8d6a535c498c1cf7
-ms.openlocfilehash: 2634d0101c1cd4535922e8844f0beb6b523e2dea
+ms.author: mandia; ladocs
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 0dd751d9c824f27bdb25681908cb0dca5116100b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -56,7 +58,7 @@ FTP コネクタを使用して、FTP サーバー上のファイルを監視、
 これで、特定の FTP フォルダーでファイルが変更または作成されたときにワークフローの他のトリガーおよびアクションの実行を開始するトリガーがロジック アプリに構成されました。 
 
 > [!NOTE]
-> ロジック アプリを機能させるためには、少なくとも&1; つのトリガーとアクションを含まなければなりません。 アクションを追加するには、次のセクションの手順に従います。  
+> ロジック アプリを機能させるためには、少なくとも 1 つのトリガーとアクションを含まなければなりません。 アクションを追加するには、次のセクションの手順に従います。  
 > 
 > 
 
@@ -84,297 +86,12 @@ FTP コネクタを使用して、FTP サーバー上のファイルを監視、
 
 このロジック アプリには、新しいファイルまたは変更されたファイルの内容を取得するアクションも構成されています。
 
-この段階で、別のアクション (たとえば、新しいファイルまたは変更されたファイルの内容を SQL データベース テーブルに挿入する [[SQL Server - insert row (SQL Server - 行を挿入する)]](connectors-create-api-sqlazure.md#insert-row) アクション) を追加することができます。  
+この段階で、別のアクション (たとえば、新しいファイルまたは変更されたファイルの内容を SQL データベース テーブルに挿入する [[SQL Server - insert row (SQL Server - 行を挿入する)]](connectors-create-api-sqlazure.md) アクション) を追加することができます。  
 
-## <a name="technical-details"></a>技術的な詳細
-ここでは、この接続でサポートされるトリガー、アクション、応答について詳しく説明します。
-
-## <a name="ftp-triggers"></a>FTP トリガー
-FTP には、次のトリガーがあります。  
-
-| トリガー | 説明 |
-| --- | --- |
-| [ファイルが追加または変更されたとき](connectors-create-api-ftp.md#when-a-file-is-added-or-modified) |この操作では、フォルダー内でファイルが追加または変更されたときにフローをトリガーします。 |
-
-## <a name="ftp-actions"></a>FTP アクション
-FTP には、次のアクションがあります。
-
-| [操作] | 説明 |
-| --- | --- |
-| [ファイルのメタデータを取得する](connectors-create-api-ftp.md#get-file-metadata) |この操作では、ファイルのメタデータを取得します。 |
-| [ファイルを更新する](connectors-create-api-ftp.md#update-file) |この操作では、ファイルを更新します。 |
-| [ファイルを削除する](connectors-create-api-ftp.md#delete-file) |この操作では、ファイルを削除します。 |
-| [パスを使用してファイルのメタデータを取得する](connectors-create-api-ftp.md#get-file-metadata-using-path) |この操作では、パスを使用してファイルのメタデータを取得します。 |
-| [パスを使用してファイルの内容を取得する](connectors-create-api-ftp.md#get-file-content-using-path) |この操作では、パスを使用してファイルの内容を取得します。 |
-| [ファイルの内容を取得する](connectors-create-api-ftp.md#get-file-content) |この操作では、ファイルの内容を取得します。 |
-| [ファイルを作成する](connectors-create-api-ftp.md#create-file) |この操作では、ファイルを作成します。 |
-| [ファイルをコピーする](connectors-create-api-ftp.md#copy-file) |この操作では、ファイルを FTP サーバーにコピーします。 |
-| [フォルダー内のファイルを一覧表示する](connectors-create-api-ftp.md#list-files-in-folder) |この操作では、フォルダー内のファイルとサブフォルダーの一覧を取得します。 |
-| [ルート フォルダー内のファイルを一覧表示する](connectors-create-api-ftp.md#list-files-in-root-folder) |この操作では、ルート フォルダー内のファイルとサブフォルダーの一覧を取得します。 |
-| [フォルダーを抽出する](connectors-create-api-ftp.md#extract-folder) |この操作では、フォルダーにアーカイブ ファイル (例: .zip) を抽出します。 |
-
-### <a name="action-details"></a>アクションの詳細
-ここでは、このコネクタのアクションとトリガー、および応答について詳しく説明します。
-
-### <a name="get-file-metadata"></a>ファイルのメタデータを取得する
-この操作では、ファイルのメタデータを取得します。 
-
-| プロパティ名 | Displayname Settings | 説明 |
-| --- | --- | --- |
-| id* |ファイル |ファイルを選択する |
-
-* は、必須のプロパティを示します。
-
-#### <a name="output-details"></a>出力の詳細
-BlobMetadata
-
-| プロパティ名 | データ型 |
-| --- | --- | --- |
-| id |string |
-| 名前 |string |
-| displayName |string |
-| path |string |
-| LastModified |string |
-| サイズ |integer |
-| MediaType |string |
-| IsFolder |ブール値 |
-| ETag |string |
-| FileLocator |string |
-
-### <a name="update-file"></a>ファイルを更新する
-この操作では、ファイルを更新します。 
-
-| プロパティ名 | Displayname Settings | 説明 |
-| --- | --- | --- |
-| id* |ファイル |ファイルを選択する |
-| body* |ファイルのコンテンツ |ファイルの内容 |
-
-* は、必須のプロパティを示します。
-
-#### <a name="output-details"></a>出力の詳細
-BlobMetadata
-
-| プロパティ名 | データ型 |
-| --- | --- | --- |
-| id |string |
-| 名前 |string |
-| displayName |string |
-| path |string |
-| LastModified |string |
-| サイズ |integer |
-| MediaType |string |
-| IsFolder |ブール値 |
-| ETag |string |
-| FileLocator |string |
-
-### <a name="delete-file"></a>ファイルを削除する
-この操作では、ファイルを削除します。 
-
-| プロパティ名 | Displayname Settings | 説明 |
-| --- | --- | --- |
-| id* |ファイル |ファイルを選択する |
-
-* は、必須のプロパティを示します。
-
-### <a name="get-file-metadata-using-path"></a>パスを使用してファイルのメタデータを取得する
-この操作では、パスを使用してファイルのメタデータを取得します。 
-
-| プロパティ名 | Displayname Settings | Description |
-| --- | --- | --- |
-| path* |ファイル パス |ファイルを選択する |
-
-* は、必須のプロパティを示します。
-
-#### <a name="output-details"></a>出力の詳細
-BlobMetadata
-
-| プロパティ名 | データ型 |
-| --- | --- | --- |
-| id |string |
-| 名前 |string |
-| displayName |string |
-| path |string |
-| LastModified |string |
-| サイズ |integer |
-| MediaType |string |
-| IsFolder |ブール値 |
-| ETag |string |
-| FileLocator |string |
-
-### <a name="get-file-content-using-path"></a>パスを使用してファイルの内容を取得する
-この操作では、パスを使用してファイルの内容を取得します。 
-
-| プロパティ名 | Displayname Settings | Description |
-| --- | --- | --- |
-| path* |ファイル パス |ファイルを選択する |
-
-* は、必須のプロパティを示します。
-
-### <a name="get-file-content"></a>ファイルの内容を取得する
-この操作では、ファイルの内容を取得します。 
-
-| プロパティ名 | Displayname Settings | 説明 |
-| --- | --- | --- |
-| id* |ファイル |ファイルを選択する |
-
-* は、必須のプロパティを示します。
-
-### <a name="create-file"></a>ファイルを作成する
-この操作では、ファイルを作成します。 
-
-| プロパティ名 | Displayname Settings | Description |
-| --- | --- | --- |
-| folderPath* |フォルダー パス |フォルダーを選択する |
-| name* |ファイル名 |ファイルの名前 |
-| body* |ファイルのコンテンツ |ファイルの内容 |
-
-* は、必須のプロパティを示します。
-
-#### <a name="output-details"></a>出力の詳細
-BlobMetadata
-
-| プロパティ名 | データ型 |
-| --- | --- | --- |
-| id |string |
-| 名前 |string |
-| displayName |string |
-| path |string |
-| LastModified |string |
-| サイズ |integer |
-| MediaType |string |
-| IsFolder |ブール値 |
-| ETag |string |
-| FileLocator |string |
-
-### <a name="copy-file"></a>ファイルをコピーする
-この操作では、ファイルを FTP サーバーにコピーします。 
-
-| プロパティ名 | Displayname Settings | Description |
-| --- | --- | --- |
-| source* |Source url (コピー元 URL) |ソース ファイルの URL |
-| destination* |Destination file path (コピー先ファイル パス) |対象ファイル名を含む、コピー先ファイル パス |
-| overwrite |「True」 |’true’ に設定すると、宛先ファイルが上書きされます |
-
-* は、必須のプロパティを示します。
-
-#### <a name="output-details"></a>出力の詳細
-BlobMetadata
-
-| プロパティ名 | データ型 |
-| --- | --- | --- |
-| id |string |
-| 名前 |string |
-| displayName |string |
-| path |string |
-| LastModified |string |
-| サイズ |integer |
-| MediaType |string |
-| IsFolder |ブール値 |
-| ETag |string |
-| FileLocator |string |
-
-### <a name="when-a-file-is-added-or-modified"></a>When a file is added or modified (ファイルの追加または変更時)
-この操作では、フォルダー内でファイルが追加または変更されたときにフローをトリガーします。 
-
-| プロパティ名 | Displayname Settings | Description |
-| --- | --- | --- |
-| folderId* |フォルダー |フォルダーを選択する |
-
-* は、必須のプロパティを示します。
-
-### <a name="list-files-in-folder"></a>フォルダー内のファイルを一覧表示する
-この操作では、フォルダー内のファイルとサブフォルダーの一覧を取得します。 
-
-| プロパティ名 | Displayname Settings | 説明 |
-| --- | --- | --- |
-| id* |フォルダー |フォルダーを選択する |
-
-* は、必須のプロパティを示します。
-
-#### <a name="output-details"></a>出力の詳細
-BlobMetadata
-
-| プロパティ名 | データ型 |
-| --- | --- | --- |
-| id |string |
-| 名前 |string |
-| displayName |string |
-| path |string |
-| LastModified |string |
-| サイズ |integer |
-| MediaType |string |
-| IsFolder |ブール値 |
-| ETag |string |
-| FileLocator |string |
-
-### <a name="list-files-in-root-folder"></a>ルート フォルダー内のファイルを一覧表示する
-この操作では、ルート フォルダー内のファイルとサブフォルダーの一覧を取得します。 
-
-この呼び出しには、パラメーターはありません
-
-#### <a name="output-details"></a>出力の詳細
-BlobMetadata
-
-| プロパティ名 | データ型 |
-| --- | --- | --- |
-| id |string |
-| 名前 |string |
-| displayName |string |
-| path |string |
-| LastModified |string |
-| サイズ |integer |
-| MediaType |string |
-| IsFolder |ブール値 |
-| ETag |string |
-| FileLocator |string |
-
-### <a name="extract-folder"></a>フォルダーを抽出する
-この操作では、フォルダーにアーカイブ ファイル (例: .zip) を抽出します。 
-
-| プロパティ名 | Displayname Settings | Description |
-| --- | --- | --- |
-| source* |Source archive file path (ソース アーカイブ ファイルのパス) |アーカイブ ファイルのパス |
-| destination* |Destination folder path (抽出先フォルダー パス) |宛先フォルダーのパス |
-| overwrite |「True」 |’true’ に設定すると、宛先ファイルが上書きされます |
-
-* は、必須のプロパティを示します。
-
-#### <a name="output-details"></a>出力の詳細
-BlobMetadata
-
-| プロパティ名 | データ型 |
-| --- | --- | --- |
-| id |string |
-| 名前 |string |
-| displayName |string |
-| path |string |
-| LastModified |string |
-| サイズ |integer |
-| MediaType |string |
-| IsFolder |ブール値 |
-| ETag |string |
-| FileLocator |string |
-
-## <a name="http-responses"></a>HTTP 応答
-上記のアクションとトリガーは、次の HTTP 状態コードを&1; つ以上返す場合があります。 
-
-| 名前 | 説明 |
-| --- | --- |
-| 200 |OK |
-| 202 |承認済み |
-| 400 |正しくない要求 |
-| 401 |権限がありません |
-| 403 |許可されていません |
-| 404 |見つかりません |
-| 500 |内部サーバー エラー。 不明なエラーが発生しました。 |
-| default |操作に失敗しました。 |
+## <a name="view-the-swagger"></a>Swagger の表示
+[Swagger の詳細](/connectors/ftpconnector/)を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 [ロジック アプリを作成します](../logic-apps/logic-apps-create-a-logic-app.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

@@ -13,10 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
-ms.author: padmavc
-translationtype: Human Translation
+ms.author: LADocs; padmavc
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 67313e4ff780e6c64dfc3d767ea49167c2a390f4
 ms.openlocfilehash: 701a3bbadb340c9390b486a5295eced056db70a0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -59,9 +61,4 @@ Operations Management Suite ポータルで企業間 (B2B) メッセージを追
 * [AS2 追跡スキーマ](logic-apps-track-integration-account-as2-tracking-schemas.md)についての詳細情報。    
 * [X12 追跡スキーマ](logic-apps-track-integration-account-x12-tracking-schema.md)についての詳細情報。  
 * [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) についての詳細情報。
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

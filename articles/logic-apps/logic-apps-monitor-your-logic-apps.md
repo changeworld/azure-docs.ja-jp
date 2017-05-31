@@ -12,16 +12,17 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
-ms.author: jehollan
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.date: 10/18/2016
+ms.author: LADocs; jehollan
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5913c81088724ef946ae147f4f3154fa6aefd22e
 ms.openlocfilehash: d6840be7afc05d8d563215e370c59cf41a206e4f
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/01/2017
 
-
 ---
+
 # <a name="check-the-performance-and-start-diagnostic-logging-and-alerts-of-your-workflows-in-logic-apps"></a>パフォーマンスを確認し、ロジック アプリでワークフローの診断ログとアラートを開始する
 [ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)したら、Azure Portal でそのすべての実行履歴を表示できます。  また、Azure 診断や Azure アラートなどのサービスを設定することで、リアルタイムにイベントを監視し、"1 時間あたりの失敗の回数が 5 回を超えたとき" など、さまざまなイベントに応じてアラートを発生させることもできます。
 

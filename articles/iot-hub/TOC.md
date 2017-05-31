@@ -12,9 +12,9 @@
 #### [Node.JS](iot-hub-node-node-getstarted.md)
 #### [Python](iot-hub-python-getstarted.md)
 
-### シミュレートされたゲートウェイの使用 
-#### [Linux でのシミュレーション](iot-hub-linux-gateway-sdk-get-started.md)
-#### [Windows でのシミュレーション](iot-hub-windows-gateway-sdk-get-started.md)
+### シミュレートされたゲートウェイの使用
+#### [Linux でのシミュレーション](iot-hub-linux-iot-edge-get-started.md)
+#### [Windows でのシミュレーション](iot-hub-windows-iot-edge-get-started.md)
 
 ### 物理デバイスの使用
 #### [Node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md)
@@ -28,9 +28,9 @@
 #### [Arduino IDE での Adafruit Feather M0](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
 
 #### IoT Gateway Starter Kit の使用
-##### [Intel NUC を IoT ゲートウェイとしてセットアップする](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
-##### [IoT ゲートウェイを IoT Hub に接続する](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
-##### [IoT ゲートウェイをデータ変換に使用する](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
+##### [ゲートウェイとしての Intel NUC のセットアップ](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
+##### [IoT Hub へのゲートウェイの接続](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
+##### [ゲートウェイを使用したデータ変換](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
 
 ## [iothub-explorer を使用したクラウド デバイス メッセージングの管理](iot-hub-explorer-cloud-device-messaging.md)
 ## [Azure データ ストレージへの IoT Hub メッセージの保存](iot-hub-store-data-in-azure-table-storage.md)
@@ -78,6 +78,7 @@
 ### デバイス ツインを使ってみる
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-twin-getstarted.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-twin-getstarted.md)
+#### [.NET バックエンド/.NET デバイス](iot-hub-csharp-csharp-twin-getstarted.md)
 ### ダイレクト メソッドの使用
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-direct-methods.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-direct-methods.md)
@@ -85,6 +86,7 @@
 ### デバイス管理の開始
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-device-management-get-started.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-device-management-get-started.md)
+#### [Java バックエンド/Java デバイス](iot-hub-java-java-device-management-getstarted.md)
 ### ツインのプロパティの使用方法
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-twin-how-to-configure.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-twin-how-to-configure.md)
@@ -118,9 +120,9 @@
 ### [IoT デプロイのセキュリティ保護](iot-hub-security-deployment.md)
 ## IoT Edge
 ### デバイスのシミュレーション
-#### [Linux](iot-hub-linux-gateway-sdk-simulated-device.md)
-#### [Windows](iot-hub-windows-gateway-sdk-simulated-device.md)
-### [実在のデバイスの使用](iot-hub-gateway-sdk-physical-device.md)
+#### [Linux](iot-hub-linux-iot-edge-simulated-device.md)
+#### [Windows](iot-hub-windows-iot-edge-simulated-device.md)
+### [実在のデバイスの使用](iot-hub-iot-edge-physical-device.md)
 
 # リファレンス
 ## [Azure CLI 2.0 プレビュー](/cli/azure/iot)
@@ -154,3 +156,4 @@
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/iot-hub/)
 ## [Azure IoT デベロッパー センター](https://azure.microsoft.com/develop/iot/)
 ## [IoT デバイス カタログ向けの Azure 認定](https://catalog.azureiotsuite.com/)
+## [技術的なケース スタディ](https://microsoft.github.io/techcasestudies/#technology=IoT)

@@ -17,17 +17,13 @@
 ### [ネットワーク セキュリティ グループ](virtual-networks-nsg.md)
 
 ## デプロイ
-### 仮想ネットワーク (VNet)
-#### [VNet の作成、変更、削除](virtual-network-manage-network.md)
-#### [サブネットの作成、変更、削除](virtual-network-manage-subnet.md)
-#### [VNet の作成 - 複数のサブネット](virtual-networks-create-vnet-arm-pportal.md) 
-##### [PowerShell](virtual-networks-create-vnet-arm-ps.md)
-##### [CLI](virtual-networks-create-vnet-arm-cli.md)
-##### [テンプレート](virtual-networks-create-vnet-arm-template-click.md)
-#### VNet の作成 - 複数のサブネット (クラシック)
-##### [ポータル](virtual-networks-create-vnet-classic-pportal.md)
-##### [PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md)
-##### [CLI](virtual-networks-create-vnet-classic-cli.md)
+### [仮想ネットワーク](virtual-networks-create-vnet-arm-pportal.md)
+#### [PowerShell](virtual-networks-create-vnet-arm-ps.md)
+#### [CLI](virtual-networks-create-vnet-arm-cli.md)
+#### [テンプレート](virtual-networks-create-vnet-arm-template-click.md)
+#### [ポータル (クラシック)](virtual-networks-create-vnet-classic-pportal.md)
+#### [PowerShell (クラシック)](virtual-networks-create-vnet-classic-netcfg-ps.md)
+#### [CLI (クラシック)](virtual-networks-create-vnet-classic-cli.md)
 
 ### ネットワーク セキュリティ グループ
 #### [ポータル](virtual-networks-create-nsg-arm-pportal.md)
@@ -49,14 +45,9 @@
 #### [PowerShell](virtual-networks-create-vnetpeering-arm-ps.md)
 #### [テンプレート](virtual-networks-create-vnetpeering-arm-template-click.md)
 
-### ネットワーク インターフェイス (NIC)
-#### [NIC の作成、変更、削除](virtual-network-network-interface.md)
-#### [IP アドレスの追加、変更、削除](virtual-network-network-interface-addresses.md)
-
 ### [パブリック IP アドレス](virtual-network-public-ip-address.md)
 
 ### 仮想マシン
-#### [ネットワーク インターフェイスの追加または削除](virtual-network-network-interface-vm.md) 
 #### 静的パブリック IP アドレスを持つ VM を作成する
 ##### [ポータル](virtual-network-deploy-static-pip-arm-portal.md)
 ##### [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
@@ -103,20 +94,29 @@
 ##### [サンプル アプリケーション](virtual-networks-sample-app.md)
 
 ## 構成
-### [VM のネットワーク スループットを最適化する](virtual-network-optimize-network-bandwidth.md)
+
 ### アクセス制御リスト
 #### [クラシック ポータル](virtual-networks-acl.md)
 #### [PowerShell](virtual-networks-acl-powershell.md)
-### [VM とクラウド サービスの名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md)
+### 仮想マシン
+#### [ネットワーク インターフェイスの追加または削除](virtual-network-network-interface-vm.md)
+#### [VM とクラウド サービスの名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md)
+#### [ネットワーク スループットの最適化](virtual-network-optimize-network-bandwidth.md)
+#### [ホスト名の表示および変更](virtual-networks-viewing-and-modifying-hostnames.md)
 
-## 管理
+## Manage
+### [仮想ネットワーク](virtual-network-manage-network.md)
+#### [サブネット](virtual-network-manage-subnet.md)
+#### [ピアリング](virtual-network-manage-peering.md)
 ### ネットワーク セキュリティ グループ
 #### [ポータル](virtual-network-manage-nsg-arm-portal.md)
 #### [PowerShell](virtual-network-manage-nsg-arm-ps.md)
 #### [CLI](virtual-network-manage-nsg-arm-cli.md)
 #### [ログ](virtual-network-nsg-manage-log.md)
+### ネットワーク インターフェイス (NIC)
+#### [NIC の作成、変更、削除](virtual-network-network-interface.md)
+#### [IP アドレスの追加、変更、削除](virtual-network-network-interface-addresses.md)
 ### 仮想マシン
-#### [ホスト名の表示および変更](virtual-networks-viewing-and-modifying-hostnames.md)
 #### [VM を別のサブネットに移動する](virtual-networks-move-vm-role-to-subnet.md)
 
 ## トラブルシューティング

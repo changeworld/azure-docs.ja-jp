@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/24/2017
+ms.date: 05/10/2017
 ms.author: trinadhk;markgal;jpallavi;
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: f89375510cdcb89d800edc2513f34e601f52efe9
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 20257c872eaa2e7610e525c4686350c206628974
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -94,8 +94,8 @@ Windows VM の場合:
 
 Linux VM の場合:
 
-* github から最新の [Linux エージェント](https://github.com/Azure/WALinuxAgent) をインストールします。
-* [VM プロパティを更新](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) して、エージェントがインストールされていることを示します。
+* ディストリビューション リポジトリから最新版をインストールします。 ディストリビューション リポジトリを通してのみエージェントをインストールすることを**強くお勧め**します。 パッケージ名の詳細については、[Linux エージェント リポジトリ](https://github.com/Azure/WALinuxAgent)を参照してください。 
+* 従来の VM の場合は、[VM プロパティを更新](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)して、エージェントがインストールされていることを示します。
 
 ### <a name="updating-the-vm-agent"></a>VM エージェントの更新
 Windows VM の場合:

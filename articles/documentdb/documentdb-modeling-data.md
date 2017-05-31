@@ -1,28 +1,30 @@
 ---
-title: "Azure DocumentDB のデータのモデル化 | Microsoft Docs"
-description: "DocumentDB (NoSQL ドキュメント データベース) のデータのモデル化について説明します。"
+title: "Azure Cosmos DB のデータのモデル化 | Microsoft Docs"
+description: "グローバルに展開可能なマルチモデル データベースである Azure Cosmos DB のデータのモデル化について説明します。"
 keywords: "データのモデル化"
-services: documentdb
+services: cosmosdb
 author: arramac
 manager: jhubbard
 editor: mimig1
 documentationcenter: 
 ms.assetid: 69521eb9-590b-403c-9b36-98253a4c88b5
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2016
 ms.author: arramac
-translationtype: Human Translation
-ms.sourcegitcommit: 09f42bae67f794f12c7c37cd25c25f4c991fe893
-ms.openlocfilehash: 93d0d7276e4ff426e87bdc3dadd736de8d6525fb
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 6c7a921ca6eb3a1e840c3020b6016d2cf1915d14
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="modeling-data-in-documentdb"></a>DocumentDB のデータのモデル化
-Azure DocumentDB のようなスキーマのないデータベースでは、データ モデルに対する変更を受け入れることはとても簡単ですが、データについて十分検討する必要があります。 
+# <a name="modeling-data-in-azure-cosmos-db"></a>Azure Cosmos DB のデータのモデル化
+Azure Cosmos DB のようなスキーマのないデータベースでは、データ モデルに対する変更を受け入れることはとても簡単ですが、データについて十分検討する必要があります。 
 
 データをどのように格納するか。 アプリケーションがどのようにデータを取得してクエリを実行するか。 アプリケーションの負荷は読み取りと書き込みのどちらが高いか。 
 
@@ -35,7 +37,7 @@ Azure DocumentDB のようなスキーマのないデータベースでは、デ
 * いつデータを埋め込み、いつデータにリンクするか。
 
 ## <a name="embedding-data"></a>データの埋め込み
-DocumentDB などのドキュメント ストア内のデータのモデル化を開始する際、JSON で表現された **自己完結型ドキュメント** としてエンティティを扱ってみてください。
+Azure Cosmos DB などのドキュメント ストア内のデータのモデル化を開始する際、JSON で表現された**自己完結型ドキュメント**としてエンティティを扱ってみてください。
 
 さらに詳しく説明する前に、少し戻ってリレーショナル データベースにおけるモデル化のしくみを見てみましょう。これは、多くのユーザーが慣れ親しんでいるテーマです。 次の例は、ある個人がどのようにリレーショナル データベースに格納されるかを示しています。 
 
@@ -181,10 +183,10 @@ DocumentDB などのドキュメント ストア内のデータのモデル化�
 
 株式 *zaza* は 1 日に数百回取引され、数千人ものユーザーのポートフォリオに *zaza* が含まれている可能性があります。 上のようなデータ モデルでは、毎日、数千ものポートフォリオ ドキュメントを何回も更新する必要があり、システムの拡張が不十分になる可能性もあります。 
 
-## <a name="a-idreferareferencing-data"></a><a id="Refer"></a>データの参照
+## <a id="Refer"></a>データの参照
 このように、データの埋め込みは多くの場合うまく機能しますが、データを非正規化すると、その効果よりも問題の方が多くなるシナリオがあることもまた事実です。 その場合は、どうすればよいでしょうか。 
 
-エンティティ間のリレーションシップを作成できる場所は、リレーショナル データベースだけではありません。 ドキュメント データベース内で、あるドキュメント内の情報と、他のドキュメント内のデータを実際に関連付けることができます。 ここでは、DocumentDB のリレーショナル データベースや他のドキュメント データベースにより適したシステムを構築しようというわけではなく、シンプルなリレーションシップが適切であり、非常に役立ちます。 
+エンティティ間のリレーションシップを作成できる場所は、リレーショナル データベースだけではありません。 ドキュメント データベース内で、あるドキュメント内の情報と、他のドキュメント内のデータを実際に関連付けることができます。 ここでは、Azure Cosmos DB のリレーショナル データベースや他のドキュメント データベースにより適したシステムを構築しようというわけではなく、シンプルなリレーションシップが適切であり、非常に役立ちます。 
 
 以下の JSON では、前の株式ポートフォリオの例を使用していますが、ここでは株式に関する項目を埋め込むのではなく、ポートフォリオ上で参照しています。 これにより、株式の項目が終日頻繁に変更された場合でも、更新する必要があるのは 1 つの株式ドキュメントのみです。 
 
@@ -230,7 +232,7 @@ DocumentDB などのドキュメント ストア内のデータのモデル化�
 > 
 
 ### <a name="what-about-foreign-keys"></a>外部キー
-現在は制約の概念がないため、外部キーかどうかは別にして、ドキュメント間のリレーションシップがドキュメント内にあったとしても、実際には "弱いリンク" であり、データベース自体によって検証されることはありません。 ドキュメントが参照しているデータが実際に存在していることを確認したい場合は、アプリケーション内で確認するか、または DocumentDB 上でサーバー側トリガーかストアド プロシージャを使用して確認する必要があります。
+現在は制約の概念がないため、外部キーかどうかは別にして、ドキュメント間のリレーションシップがドキュメント内にあったとしても、実際には "弱いリンク" であり、データベース自体によって検証されることはありません。 ドキュメントが参照しているデータが実際に存在していることを確認したい場合は、アプリケーション内で確認するか、または Azure Cosmos DB 上でサーバー側トリガーかストアド プロシージャを使用して確認する必要があります。
 
 ### <a name="when-to-reference"></a>参照を使用する場合
 一般に、次のような場合に正規化されたデータ モデルを使用します。
@@ -258,13 +260,13 @@ DocumentDB などのドキュメント ストア内のデータのモデル化�
     }
 
     Book documents:
-    {"id": "1", "name": "DocumentDB 101" }
-    {"id": "2", "name": "DocumentDB for RDBMS Users" }
+    {"id": "1", "name": "Azure Cosmos DB 101" }
+    {"id": "2", "name": "Azure Cosmos DB for RDBMS Users" }
     {"id": "3", "name": "Taking over the world one JSON doc at a time" }
     ...
-    {"id": "100", "name": "Learn about Azure DocumentDB" }
+    {"id": "100", "name": "Learn about Azure Cosmos DB" }
     ...
-    {"id": "1000", "name": "Deep Dive in to DocumentDB" }
+    {"id": "1000", "name": "Deep Dive in to Azure Cosmos DB" }
 
 発行元あたりの書籍数が少なく、増加率が限定的な場合は、書籍の参照を発行元ドキュメント内に格納することが有効な場合もあります。 ただし、発行元あたりの書籍数に制限がない場合は、このデータ モデルは上の発行元ドキュメントに示すような、拡大し続ける可変配列になります。 
 
@@ -277,13 +279,13 @@ DocumentDB などのドキュメント ストア内のデータのモデル化�
     }
 
     Book documents: 
-    {"id": "1","name": "DocumentDB 101", "pub-id": "mspress"}
-    {"id": "2","name": "DocumentDB for RDBMS Users", "pub-id": "mspress"}
+    {"id": "1","name": "Azure Cosmos DB 101", "pub-id": "mspress"}
+    {"id": "2","name": "Azure Cosmos DB for RDBMS Users", "pub-id": "mspress"}
     {"id": "3","name": "Taking over the world one JSON doc at a time"}
     ...
-    {"id": "100","name": "Learn about Azure DocumentDB", "pub-id": "mspress"}
+    {"id": "100","name": "Learn about Azure Cosmos DB", "pub-id": "mspress"}
     ...
-    {"id": "1000","name": "Deep Dive in to DocumentDB", "pub-id": "mspress"}
+    {"id": "1000","name": "Deep Dive in to Azure Cosmos DB", "pub-id": "mspress"}
 
 上の例では、発行元ドキュメントで無制限のコレクションを使用していません。 代わりに、各書籍ドキュメントに発行元への参照が含まれているだけです。
 
@@ -299,11 +301,11 @@ DocumentDB などのドキュメント ストア内のデータのモデル化�
     {"id": "a2", "name": "William Wakefield" }
 
     Book documents:
-    {"id": "b1", "name": "DocumentDB 101" }
-    {"id": "b2", "name": "DocumentDB for RDBMS Users" }
+    {"id": "b1", "name": "Azure Cosmos DB 101" }
+    {"id": "b2", "name": "Azure Cosmos DB for RDBMS Users" }
     {"id": "b3", "name": "Taking over the world one JSON doc at a time" }
-    {"id": "b4", "name": "Learn about Azure DocumentDB" }
-    {"id": "b5", "name": "Deep Dive in to DocumentDB" }
+    {"id": "b4", "name": "Learn about Azure Cosmos DB" }
+    {"id": "b5", "name": "Deep Dive in to Azure Cosmos DB" }
 
     Joining documents: 
     {"authorId": "a1", "bookId": "b1" }
@@ -321,14 +323,14 @@ DocumentDB などのドキュメント ストア内のデータのモデル化�
     {"id": "a2", "name": "William Wakefield", "books": ["b1", "b4"]}
 
     Book documents: 
-    {"id": "b1", "name": "DocumentDB 101", "authors": ["a1", "a2"]}
-    {"id": "b2", "name": "DocumentDB for RDBMS Users", "authors": ["a1"]}
-    {"id": "b3", "name": "Learn about Azure DocumentDB", "authors": ["a1"]}
-    {"id": "b4", "name": "Deep Dive in to DocumentDB", "authors": ["a2"]}
+    {"id": "b1", "name": "Azure Cosmos DB 101", "authors": ["a1", "a2"]}
+    {"id": "b2", "name": "Azure Cosmos DB for RDBMS Users", "authors": ["a1"]}
+    {"id": "b3", "name": "Learn about Azure Cosmos DB", "authors": ["a1"]}
+    {"id": "b4", "name": "Deep Dive in to Azure Cosmos DB", "authors": ["a2"]}
 
 ここで、作者がわかっていれば、その著作はすぐにわかり、逆に書籍ドキュメントを読み込んでいれば、作者の ID がわかります。 これにより、結合テーブルに対する中間クエリは省略され、アプリケーションで行う必要があるサーバー ラウンド トリップの数が減少します。 
 
-## <a name="a-idwrapupahybrid-data-models"></a><a id="WrapUp"></a>ハイブリッド データ モデル
+## <a id="WrapUp"></a>ハイブリッド データ モデル
 ここまで、データの埋め込み (非正規化) と参照 (正規化) を見てきましたが、それぞれに長所と短所がありました。 
 
 必ずしもどちらか一方にする必要はなく、両方を多少併用してもかまいません。 
@@ -364,7 +366,7 @@ DocumentDB などのドキュメント ストア内のデータのモデル化�
     Book documents:
     {
         "id": "b1",
-        "name": "DocumentDB 101",
+        "name": "Azure Cosmos DB 101",
         "authors": [
             {"id": "a1", "name": "Thomas Andersen", "thumbnailUrl": "http://....png"},
             {"id": "a2", "name": "William Wakefield", "thumbnailUrl": "http://....png"}
@@ -372,7 +374,7 @@ DocumentDB などのドキュメント ストア内のデータのモデル化�
     },
     {
         "id": "b2",
-        "name": "DocumentDB for RDBMS Users",
+        "name": "Azure Cosmos DB for RDBMS Users",
         "authors": [
             {"id": "a1", "name": "Thomas Andersen", "thumbnailUrl": "http://....png"},
         ]
@@ -386,24 +388,19 @@ DocumentDB などのドキュメント ストア内のデータのモデル化�
 
 この例には **事前に計算された集計** の値があり、読み取り操作の処理時間を削減しています。 この例の作者ドキュメントに埋め込まれたデータの一部は、実行時に計算されるデータです。 新しい書籍が発行されるたびに、書籍ドキュメントが作成され、 **さらに** その作者に対応する書籍ドキュメントの数に基づいて計算された値が countOfBooks フィールドに設定されます。 この最適化は、読み取りの負荷が高く、読み取りを最適化するために書き込み時に計算を実行する余裕のあるシステムに適しています。
 
-モデルに事前計算フィールドを含める機能は、DocumentDB が **マルチドキュメント トランザクション**をサポートしていることにより実現されています。 多くの NoSQL ストアでは、ドキュメント間のトランザクションを実行できないため、この制限によって "常にすべてを埋め込む" などの設計における決定が提唱されています。 DocumentDB では、ACID トランザクション内で書籍の挿入や作者の更新をすべて実行する、サーバー側トリガー、またはストアド プロシージャを使用できます。 これで、データの整合性を維持するためだけに、1 つのドキュメントにすべてを埋め込む必要は **なくなります** 。
+モデルに事前計算フィールドを含める機能は、Azure Cosmos DB が**マルチドキュメント トランザクション**をサポートしていることにより実現されています。 多くの NoSQL ストアでは、ドキュメント間のトランザクションを実行できないため、この制限によって "常にすべてを埋め込む" などの設計における決定が提唱されています。 Azure Cosmos DB では、ACID トランザクション内で書籍の挿入や作者の更新をすべて実行する、サーバー側トリガー、またはストアド プロシージャを使用できます。 これで、データの整合性を維持するためだけに、1 つのドキュメントにすべてを埋め込む必要は **なくなります** 。
 
-## <a name="a-namenextstepsanext-steps"></a><a name="NextSteps"></a>次のステップ
+## <a name="NextSteps"></a>次のステップ
 この記事における最大の収穫は、スキーマのない状況でのデータのモデル化は以前として重要であると理解できたことです。 
 
 データの要素を画面上に表現する方法が 1 つではないように、データをモデル化する方法も 1 つではありません。 使用するアプリケーションを理解し、アプリケーションがどのようにデータを作成、使用、処理するかを理解することが必要です。 次に、ここで示したガイドラインのいくつかを適用することにより、アプリケーションの当面のニーズに対応するモデルの作成を開始することができます。 アプリケーションの変更が必要な場合にも、スキーマのないデータベースの柔軟性を活用して、その変更を受け入れ、データ モデルを容易に進化させることができます。 
 
-Azure DocumentDB の詳細については、サービスの [ドキュメント](https://azure.microsoft.com/documentation/services/documentdb/) のページを参照してください。 
+Azure Cosmos DB の詳細については、サービスの[ドキュメント](https://azure.microsoft.com/documentation/services/documentdb/)のページを参照してください。 
 
-Azure DocumentDB でのインデックスのチューニングの詳細については、 [インデックス作成ポリシー](documentdb-indexing-policies.md)に関する記事を参照してください。
+Azure Cosmos DB でのインデックスのチューニングの詳細については、[インデックス作成ポリシー](documentdb-indexing-policies.md)に関する記事を参照してください。
 
-複数のパーティション間でデータをシャーディングする方法については、「 [DocumentDB でのデータのパーティション分割](documentdb-partition-data.md)」を参照してください。 
+複数のパーティション間でデータをシャーディングする方法については、[Azure Cosmos DB でのデータのパーティション分割](documentdb-partition-data.md)に関するページを参照してください。 
 
-最後に、マルチテナント アプリケーションのデータのモデル化とシャーディングのガイダンスについては、 [Azure DocumentDB でのマルチテナント アプリケーションの拡張](http://blogs.msdn.com/b/documentdb/archive/2014/12/03/scaling-a-multi-tenant-application-with-azure-documentdb.aspx)に関するページを参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
+最後に、マルチテナント アプリケーションのデータのモデル化とシャーディングのガイダンスについては、[Azure Cosmos DB でのマルチテナント アプリケーションの拡張](http://blogs.msdn.com/b/documentdb/archive/2014/12/03/scaling-a-multi-tenant-application-with-azure-documentdb.aspx)に関するページを参照してください。
 
 

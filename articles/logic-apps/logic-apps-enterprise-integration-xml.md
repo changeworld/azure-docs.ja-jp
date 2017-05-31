@@ -12,16 +12,17 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
-ms.author: mandia
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.date: 02/27/2017
+ms.author: LADocs; mandia
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5913c81088724ef946ae147f4f3154fa6aefd22e
 ms.openlocfilehash: 9d40c5028fd8b3ab20f7562dce9274664e4e56ac
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/01/2017
 
-
 ---
+
 # <a name="validate-and-transform-xml-encode-and-decode-flat-files-and-enrich-messages-features-in-logic-apps"></a>ロジック アプリでの XML の検証と変換、フラット ファイルのエンコードとデコード、メッセージ機能の強化
 
 ロジック アプリを使用して、送受信する XML メッセージを処理することができます。 この機能は、Enterprise Integration Pack に含まれています。 BizTalk Server を使用しているユーザーには、Enterprise Integration Pack で、メッセージの変換と検証、フラット ファイルの操作、XPath を使用したメッセージの強化、メッセージの特定のプロパティの抽出と同等の機能が提供されています。 

@@ -18,12 +18,13 @@
 
 # 方法
 ## プラン
-### [デプロイメントの前提条件](site-recovery-prereq.md)
+### [Azure へのレプリケーションの前提条件](site-recovery-prereq.md)
 ### [ネットワーク インフラストラクチャの計画](site-recovery-network-design.md)
+### [ネットワーク マッピングの計画](site-recovery-network-mapping.md)
 ### [容量の計画と Azure への VMware レプリケーションのスケーリング](site-recovery-plan-capacity-vmware.md)
 ### [Azure への VMware レプリケーションのための Deployment Planner](site-recovery-deployment-planner.md)
 ### [Hyper-V レプリケーションのための Capacity Planner](site-recovery-capacity-planner.md)
-### [ロールベースのアクセス制御](site-recovery-role-based-linked-access-control.md)
+### [ロールベースのアクセスによる VM レプリケーションの制御](site-recovery-role-based-linked-access-control.md)
 
 ## 構成
 ### [ソース環境をセットアップする](site-recovery-set-up-vmware-to-azure.md)
@@ -53,6 +54,8 @@
 ### [RDS](site-recovery-workload.md#protect-rds)
 ### [Exchange](site-recovery-workload.md#protect-exchange)
 ### [SAP](site-recovery-workload.md#protect-sap)
+### [IIS ベースの Web アプリケーション](site-recovery-iis.md)
+### [Citrix XenApp と XenDesktop](site-recovery-citrix-xenapp-and-xendesktop.md)
 ### [その他のワークロード](site-recovery-workload.md#workload-summary)
 ## レプリケーションの自動化
 ### [Azure への Hyper-V のレプリケーションの自動化 (VMM なし)](site-recovery-deploy-with-powershell-resource-manager.md)

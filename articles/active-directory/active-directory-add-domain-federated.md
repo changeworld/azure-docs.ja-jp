@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory へのカスタム ドメイン名の追加とフェデレーション サインオンの設定 | Microsoft Docs"
-description: "企業のドメイン名を Azure Active Directory に追加し、Azure Active Directory とオンプレミスのフェデレーション ソリューションの間でのフェデレーション サインオンを設定する方法について説明します。"
+title: "Azure Active Directory へのカスタム ドメイン名の追加とフェデレーション サインインの設定 | Microsoft Docs"
+description: "企業のドメイン名を Azure Active Directory に追加し、Azure Active Directory とオンプレミスのフェデレーション ソリューションの間でのフェデレーション サインインを設定する方法について説明します"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/08/2016
+ms.date: 05/16/2017
 ms.author: curtand;jeffsta
 ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 77d34a6ebce12465a15de158b9160a03db58c48e
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 7f257dff6fdd423b89d1c52a84b64951dcf5915f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 12/08/2016
+ms.lasthandoff: 05/17/2017
 
 
 ---

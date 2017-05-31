@@ -30,7 +30,6 @@
 ### [Windows 上の C](iot-suite-connecting-devices.md)
 ### [Linux 上の C](iot-suite-connecting-devices-linux.md)
 ### [Node.JS](iot-suite-connecting-devices-node.md)
-## [mbed デバイスを接続する](iot-suite-connecting-devices-mbed.md)
 ## [ロジック アプリをリモート監視ソリューションへに接続する](iot-suite-logic-apps-tutorial.md)
 ## [構成済みソリューションのカスタマイズ](iot-suite-guidance-on-customizing-preconfigured-solutions.md)
 ## [リモート監視ソリューションでの動的テレメトリを使用する](iot-suite-dynamic-telemetry.md)

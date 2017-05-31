@@ -1,6 +1,6 @@
 ---
-title: "Linux ベースの HDInsight 用 Java MapReduce プログラムの開発 | Microsoft Docs"
-description: "Java MapReduce プログラムを開発する方法と、それらのプログラムを Linux ベースの HDInsight にデプロイする方法について説明します。"
+title: "Hadoop 用に Java MapReduce を作成する - Azure HDInsight | Microsoft Docs"
+description: "Java MapReduce プログラムを開発する方法と、それらのプログラムを HDInsight の Hadoop にデプロイする方法について説明します。"
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
@@ -14,18 +14,19 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 02/17/2017
+ms.date: 05/17/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: a8623991dda4192d700d35ef3970d416e315c5c6
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: ce5661febe502e9da9682166af1b601b1fc0b965
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
-# <a name="develop-java-mapreduce-programs-for-hadoop-on-hdinsight-linux"></a>HDInsight Linux での Hadoop 用 Java MapReduce プログラムの開発
+# <a name="develop-java-mapreduce-programs-for-hadoop-on-hdinsight"></a>HDInsight での Hadoop 用 Java MapReduce プログラムの開発
 
-Apache Maven を使用して Java ベースの MapReduce アプリケーションを作成し、HDInsight クラスターの Linux ベースの Hadoop にこれをデプロイして実行する手順について説明します。
+Apache Maven を使用して Java ベースの MapReduce アプリケーションを作成し、Azure HDInsight 上で Hadoop を使用して実行する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,13 +37,8 @@ Apache Maven を使用して Java ベースの MapReduce アプリケーショ�
 
 * [Apache Maven](http://maven.apache.org/)
 
-* **Azure サブスクリプション**
+## <a name="configure-development-environment"></a>開発環境の設定
 
-* **Azure CLI**
-
-[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
-
-## <a name="configure-environment-variables"></a>環境変数を構成する
 Java と JDK をインストールするときに、次のような環境変数が設定される場合があります。 ただし、これらが存在するかどうかや、システムに対して適切な値が含まれているかを確認する必要があります。
 
 * `JAVA_HOME` - Java ランタイム環境 (JRE) がインストールされているディレクトリを指している必要があります。 たとえば、OS X、Unix、Linux システムの場合は、`/usr/lib/jvm/java-7-oracle` のような値になります。 Windows の場合は、 `c:\Program Files (x86)\Java\jre1.7`
@@ -61,17 +57,17 @@ Java と JDK をインストールするときに、次のような環境変数�
 
 2. Maven でインストールされた `mvn` コマンドを使用し、プロジェクトのスキャフォールディングを生成します。
 
-   ```
+   ```bash
    mvn archetype:generate -DgroupId=org.apache.hadoop.examples -DartifactId=wordcountjava -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
    ```
 
-    このコマンドにより、**artifactID** パラメーターで指定した名前 (この例では **wordcountjava**) のディレクトリが作成されます。このディレクトリには、次の項目が含まれます。
+    このコマンドにより、`artifactID` パラメーターで指定した名前 (この例では **wordcountjava**) のディレクトリが作成されます。このディレクトリには、次の項目が含まれます。
 
    * `pom.xml` - [プロジェクト オブジェクト モデル (POM)](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html) には、プロジェクトのビルドに使用される情報と構成の詳細が含まれています。
 
    * `src` - アプリケーションを含むディレクトリ。
 
-3. `src/test/java/org/apache/hadoop/examples/apptest.java` はこのサンプルでは使用しないので削除します。
+3. `src/test/java/org/apache/hadoop/examples/apptest.java` ファイルを削除します。 このファイルは、この例では使用しません。
 
 ## <a name="add-dependencies"></a>依存関係を追加する
 
@@ -81,19 +77,19 @@ Java と JDK をインストールするときに、次のような環境変数�
     <dependency>
         <groupId>org.apache.hadoop</groupId>
         <artifactId>hadoop-mapreduce-examples</artifactId>
-        <version>2.5.1</version>
+        <version>2.7.3</version>
         <scope>provided</scope>
     </dependency>
     <dependency>
         <groupId>org.apache.hadoop</groupId>
         <artifactId>hadoop-mapreduce-client-common</artifactId>
-        <version>2.5.1</version>
+        <version>2.7.3</version>
         <scope>provided</scope>
     </dependency>
     <dependency>
         <groupId>org.apache.hadoop</groupId>
         <artifactId>hadoop-common</artifactId>
-        <version>2.5.1</version>
+        <version>2.7.3</version>
         <scope>provided</scope>
     </dependency>
    ```
@@ -101,6 +97,9 @@ Java と JDK をインストールするときに、次のような環境変数�
     これは、特定のバージョン (&lt;version\> 内に記載) に必要なライブラリ ( &lt;artifactId\> 内に記載) を定義しています。 この依存関係は、コンパイル時に既定の Maven リポジトリからダウンロードされます。 [Maven リポジトリ検索](http://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) を使用して、その他の情報を表示できます。
    
     `<scope>provided</scope>` は、これらの依存関係はアプリケーションに付属せず、実行時に HDInsight クラスターによって提供されることを Maven に通知しています。
+
+    > [!IMPORTANT]
+    > 使用されるバージョンは、クラスター上に存在する Hadoop のバージョンと一致する必要があります。 バージョンの詳細については、[HDInsight コンポーネントのバージョン](hdinsight-component-versioning.md)に関する記事を参照してください。
 
 2. `pom.xml` ファイルに次のテキストを追加します。 このテキストは、ファイルの `<project>...</project>` タグ内に配置する必要があります (たとえば `</dependencies>` と `</project>` の間)。
 
@@ -129,9 +128,10 @@ Java と JDK をインストールするときに、次のような環境変数�
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.6.1</version>
             <configuration>
-            <source>1.7</source>
-            <target>1.7</target>
+            <source>1.8</source>
+            <target>1.8</target>
             </configuration>
         </plugin>
         </plugins>
@@ -255,11 +255,7 @@ Java と JDK をインストールするときに、次のような環境変数�
 
     Replace __USERNAME__ with your SSH user name for the cluster. Replace __CLUSTERNAME__ with the HDInsight cluster name.
 
-このコマンドにより、ファイルがローカル システムからヘッド ノードにコピーされます。
-
-> [!NOTE]
-> SSH アカウントのセキュリティ保護にパスワードを使用している場合は、パスワードの入力が求められます。 SSH キーを使用している場合は、 `-i` パラメーターと、秘密キーのパスを使用する必要があることがあります。 たとえば、「 `scp -i /path/to/private/key wordcountjava-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:`」のように入力します。
-
+このコマンドにより、ファイルがローカル システムからヘッド ノードにコピーされます。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 ## <a name="run"></a>MapReduce ジョブを実行する
 
@@ -271,7 +267,7 @@ Java と JDK をインストールするときに、次のような環境変数�
    yarn jar wordcountjava-1.0-SNAPSHOT.jar org.apache.hadoop.examples.WordCount /example/data/gutenberg/davinci.txt /example/data/wordcountout
    ```
    
-    このコマンドは、WordCount MapReduce アプリケーションを起動します。 入力ファイルは **/example/data/gutenberg/davinci.txt** で、出力は **/example/data/wordcountout** に格納されます。 入力ファイルと出力は、両方ともクラスターの既定のストレージに格納されます。
+    このコマンドは、WordCount MapReduce アプリケーションを起動します。 入力ファイルは `/example/data/gutenberg/davinci.txt`、出力ディレクトリは `/example/data/wordcountout` です。 入力ファイルと出力は、両方ともクラスターの既定のストレージに格納されます。
 
 3. ジョブが完了したら、次のコマンドを使用して結果を表示します。
    

@@ -111,7 +111,7 @@ Dockerfile で Docker イメージを定義します。 Dockerfile には、イ�
     docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" my-web-site
     ```
 
-3. 実行中のコンテナーに接続します。  Web ブラウザーで、ポート 8000 で返された IP アドレスを開きます (たとえば、"http://172.31.194.61:8000")。 "Hello World!" という見出しが ブラウザーに表示されます。
+3. 実行中のコンテナーに接続します。  Web ブラウザーで、ポート 8000 で返された IP アドレスを開きます (たとえば、" http://172.31.194.61:8000 ")。 "Hello World!" という見出しが ブラウザーに表示されます。
 
 4. コンテナーを停止するには、次を実行します。
 

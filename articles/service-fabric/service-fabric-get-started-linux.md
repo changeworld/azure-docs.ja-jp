@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 05/04/2017
 ms.author: subramar
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: d01e141ec8ee8da18d38a216f3b13c88f3632801
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 8c0f3cc737b999d26359f33d3768dcc55893029c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -37,7 +37,7 @@ ms.lasthandoff: 04/27/2017
 ### <a name="supported-operating-system-versions"></a>サポートされるオペレーティング システムのバージョン
 開発では、次のオペレーティング システムのバージョンがサポートされます。
 
-* Ubuntu 16.04 (i**"Xenial Xerus"**)
+* Ubuntu 16.04 (`Xenial Xerus`)
 
 ## <a name="update-your-apt-sources"></a>apt ソースを更新する
 apt get を実行して SDK および関連付けられたランタイム パッケージをインストールするために、まず apt ソースを更新する必要があります。
@@ -48,17 +48,17 @@ apt get を実行して SDK および関連付けられたランタイム パッ
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] http://apt-mo.trafficmanager.net/repos/servicefabric/ trusty main" > /etc/apt/sources.list.d/servicefabric.list'
     ```
-3. ソース リストに **dotnet** リポジトリを追加します。
+
+3. ソース リストに `dotnet` リポジトリを追加します。
 
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
     ```
+
 4. apt キーリングに新しい GPG キーを追加します。
 
     ```bash
     sudo apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
-    ```
-    ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
     ```
 
@@ -67,7 +67,9 @@ apt get を実行して SDK および関連付けられたランタイム パッ
     ```bash
     sudo apt-get update
     ```
+
 ## <a name="install-and-set-up-the-sdk-for-containers-and-guest-executables"></a>コンテナーとゲスト実行可能ファイルを作成するための SDK をインストールしてセットアップする
+
 ソースが更新されたら、SDK をインストールできます。
 
 1. Service Fabric SDK パッケージをインストールします。 インストールを開始することを確認し、使用許諾契約書に同意するよう求められます。
@@ -75,7 +77,8 @@ apt get を実行して SDK および関連付けられたランタイム パッ
     ```bash
     sudo apt-get install servicefabricsdkcommon
     ```
-    インストールを自動化する場合は、Service Fabric パッケージの debconf の選択内容を設定することで、ライセンス契約のプロンプトをスキップできます。 次の 2 つのコマンドを実行することができます。
+
+   Service Fabric パッケージのライセンス受け取りを自動化するコマンドを以下に示します。
     
     ```bash
     echo "servicefabric servicefabric/accepted-eula-v1 select true" | debconf-set-selections
@@ -104,25 +107,28 @@ apt get を実行して SDK および関連付けられたランタイム パッ
 > これらのコマンドは、ログインのたびに環境変数を設定する必要がないように、~/.bashrc ファイルに追加できます。
 >
 
-## <a name="set-up-the-azure-cross-platform-cli"></a>Azure クロスプラットフォーム CLI をセットアップする
-[Azure クロスプラットフォーム CLI][azure-xplat-cli-github] には、クラスターやアプリケーションなどの Service Fabric エンティティを操作するコマンドが含まれています。 この CLI は Node.js をベースにしているため、[Node がインストールされていることを確認][install-node]してから、以下の手順に進んでください。
+## <a name="set-up-the-azure-cli"></a>Azure CLI のセットアップ
+[Azure CLI][azure-xplat-cli-github] には、クラスターやアプリケーションなどの Service Fabric エンティティを操作するコマンドが含まれています。 この CLI は Node.js をベースにしているため、[Node がインストールされていることを確認][install-node]してから、以下の手順に進んでください。
 
 1. 開発用コンピューターに GitHub リポジトリをクローンします。
 
     ```bash
     git clone https://github.com/Azure/azure-xplat-cli.git
     ```
+
 2. クローンしたリポジトリに移動し、Node Package Manager (npm) を使用して CLI の依存関係をインストールします。
 
     ```bash
     cd azure-xplat-cli
     npm install
     ```
-3. クローンしたリポジトリの bin/azure フォルダーから /usr/bin/azure へのシンボリック リンクを作成します。これにより、/usr/bin/azure がパスに追加され、任意のディレクトリからコマンドを利用できるようになります。
+
+3. クローンしたリポジトリの `bin/azure` フォルダーから `/usr/bin/azure` へのシンボリック リンクを作成します。
 
     ```bash
     sudo ln -s $(pwd)/bin/azure /usr/bin/azure
     ```
+
 4. 最後に、オート コンプリート Service Fabric コマンドを有効にします。
 
     ```bash
@@ -143,6 +149,7 @@ apt get を実行して SDK および関連付けられたランタイム パッ
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
+
 2. Web ブラウザーを開いて、http://localhost:19080/Explorer にアクセスします。 クラスターが起動されている場合は、Service Fabric Explorer ダッシュボードが表示されます。
 
     ![Service Fabric Explorer on Linux][sfx-linux]
@@ -162,25 +169,29 @@ Java SDK には、Java を使用して Service Fabric サービスを構築す�
     ```bash
     sudo apt-get install servicefabricsdkjava
     ```
+
 2. SDK のセットアップ スクリプトを実行します。
 
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/java/sdkjavasetup.sh
     ```
+
 ## <a name="install-the-eclipse-neon-plugin-optional"></a>Eclipse Neon プラグインをインストールする (省略可能)
 
 **Eclipse IDE for Java Developers** 内から Service Fabric 用 Eclipse プラグインをインストールできます。 Eclipse を使用すると、Service Fabric Java アプリケーションのほかに、Service Fabric ゲスト実行可能アプリケーションと Service Fabric コンテナー アプリケーションを作成できます。
 
 > [!NOTE]
-> Eclipse プラグインで作成してデプロイするのがゲスト実行可能ファイルとコンテナー アプリケーションのみであっても、Java SDK のインストールは Eclipse プラグインを使用するうえで必須です。
+> Eclipse プラグインをゲスト実行可能ファイルとコンテナー アプリケーションにしか使わないとしても、Java SDK は Eclipse プラグインを使用するうえで必須です。
 >
 
 1. 最新の Eclipse **Neon** と Buildship バージョン (1.0.17 以降) がインストールされていることを Eclipse で確認します。 **[Help (ヘルプ)]、[Installation Details (インストールの詳細)]** の順に選択して、インストールされたコンポーネントのバージョンを確認できます。 Buildship は、[こちら][buildship-update]の手順に従って更新できます。
 2. **[Help (ヘルプ)]、[Install New Software (新しいソフトウェアのインストール)]** の順に選択して、Service Fabric プラグインをインストールします。
-3. [Work with (作業対象)] ボックスに、「http://dl.windowsazure.com/eclipse/servicefabric」と入力します。
+3. [Work with]\(作業対象\) ボックスに、「http://dl.microsoft.com/eclipse」と入力します。
 4. [追加] をクリックします。
-    ![Eclipse プラグイン][sf-eclipse-plugin]
-5. Service Fabric プラグインを選択し、[Next (次へ)] をクリックします。
+
+    ![Eclipse plugin][sf-eclipse-plugin]
+
+5. Service Fabric プラグインを選択し、**[Next]\(次へ\)** をクリックします。
 6. 指示に従ってインストールを実行し、使用許諾契約書に同意します。
 
 Service Fabric Eclipse プラグインを既にインストールしてある場合は、最新バージョンを使用していることを確認してください。 [``Help => Installation Details``] を選択し、インストールされているプラグインの一覧で Service Fabric を探すことで確認できます。 新しいバージョンが使用できる場合は更新を選択します。 
@@ -189,7 +200,7 @@ Service Fabric Eclipse プラグインを既にインストールしてある場
 
 
 ## <a name="install-the-net-core-sdk-optional-if-you-wish-to-use-the-net-core-programming-models"></a>.NET Core SDK をインストールする (省略可能。.NET Core プログラミング モデルを使用したい場合)
-.NET Core SDK には、クロスプラットフォームの .NET Core を使用して Service Fabric サービスを構築するために必要なライブラリとテンプレートが用意されています。
+.NET Core SDK には、.NET Core を使用して Service Fabric サービスを構築するために必要なライブラリとテンプレートが用意されています。
 
 1. .NET Core SDK パッケージをインストールします。
 
@@ -205,7 +216,7 @@ Service Fabric Eclipse プラグインを既にインストールしてある場
 
 ## <a name="updating-the-sdk-and-runtime"></a>SDK とランタイムの更新
 
-SDK とランタイムを最新バージョンに更新するには、次の手順を実行します (更新やインストールを行わない SDK はリストから削除します)。
+SDK とランタイムを最新バージョンに更新するには、次のコマンドを実行します (不要な SDK は除外してください)。
 
    ```bash
    sudo apt-get update
@@ -217,7 +228,7 @@ SDK とランタイムを最新バージョンに更新するには、次の手�
 >
 >
 
-CLI を更新する場合は、CLI をクローンしたディレクトリに移動し、`git pull` を実行して更新します。  更新に追加の手順が必要な場合は、リリース ノートで確認できます。 
+CLI を更新する場合は、CLI をクローンしたディレクトリに移動し、`git pull` を実行して更新します。  リリース ノートに別途手順が記載されていることがあります。 
 
 
 ## <a name="next-steps"></a>次のステップ

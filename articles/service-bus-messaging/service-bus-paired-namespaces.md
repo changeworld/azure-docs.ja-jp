@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/16/2017
+ms.date: 05/25/2017
 ms.author: sethm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: d987aa22379ede44da1b791f034d713a49ad486a
 ms.openlocfilehash: 84e125dffcac3f3a54250587c5238b50d3a6cb95
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/16/2017
 
 

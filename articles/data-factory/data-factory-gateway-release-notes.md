@@ -14,34 +14,44 @@ ms.topic: article
 ms.date: 04/03/2017
 ms.author: spelluru
 published: true
-translationtype: Human Translation
-ms.sourcegitcommit: db0face48d84680eabd82245bd38bd49b204f9ae
-ms.openlocfilehash: a88b791bad9f71f16700ccc7efdee8ef493478a9
-ms.lasthandoff: 02/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: f29bb67ea50c531278e546c9fde88fd53230bc3c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Data Management Gateway のリリース ノート
 最新のデータ統合の課題の 1 つは、オンプレミスとクラウドの間でシームレスにデータを移動することです。 Data Factory によって、オンプレミスでインストールできるエージェントであり、ハイブリッドなデータ移行を可能にする Data Management Gateway との統合がシームレスになります。
 
-Data Management Gateway とその使用方法の詳細については、次の記事をご覧ください。 
+Data Management Gateway とその使用方法の詳細については、次の記事をご覧ください。
 
 *  [Data Management Gateway](data-factory-data-management-gateway.md)
-*  [Azure Data Factory を使用してオンプレミスとクラウドの間でデータを移動する](data-factory-move-data-between-onprem-and-cloud.md) 
+*  [Azure Data Factory を使用してオンプレミスとクラウドの間でデータを移動する](data-factory-move-data-between-onprem-and-cloud.md)
 
 
-## <a name="current-version-2762192"></a>最新バージョン (2.7.6219.2)
-
-### <a name="whats-new"></a>新機能
-- サービス プリンシパルを使って Azure Data Lake Store の認証を実行できるようになりました。 以前は、OAuth のみがサポートされていました。
-- ゲートウェイで Oracle のオンプレミス データ ストアからデータを読み取るための新しいドライバーをパッケージ化しました。
+## <a name="current-version-2963132"></a>最新バージョン (2.9.6313.2)
 
 ### <a name="enhancements-"></a>強化された機能
-- Oracle データ ソースからのデータ読み取りのパフォーマンスが向上しました。
-- 修正: OData ソースの OAuth トークンの有効期限の問題。
-- 修正: 28 ビットより大きい Oracle 10 進数を読み取ることができない問題。
+-    ファイアウォールからすべての Azure IP アドレスをホワイトリストに登録するのではなく、DNS エントリを追加して Service Bus をホワイトリストに追加できます (必要な場合)。 詳細については、こちらをご覧ください。
+-    1 つのブロック BLOB との間で最大 4.75 TB のデータをコピーできるようになりました。これは、ブロック BLOB でサポートされる最大サイズです  (以前は 195 GB に制限されていました)。
+-    修正済み: コピー アクティビティで複数の小さなファイルを解凍するときのメモリ不足の問題。
+-    修正済み: べき等性を利用して Document DB からオンプレミス SQL にコピーするときの範囲外のインデックスの問題。
+-    修正済み: コピー ウィザードで、SQL クリーンアップ スクリプトがオンプレミス SQL で機能しない問題。
+-    修正済み: 末尾にスペースが含まれた列名がコピー アクティビティで機能しない問題。
 
 
 ## <a name="earlier-versions"></a>以前のバージョン
+
+## <a name="28662833"></a>2.8.66283.3
+### <a name="enhancements-"></a>強化された機能
+- 修正済み: ゲートウェイ コンピューターの再起動時に資格情報が見つからない問題。
+- 修正済み: バックアップ ファイルを使用したゲートウェイの復元時の登録に関する問題。
+
+
+## <a name="2762401"></a>2.7.6240.1
+### <a name="enhancements-"></a>強化された機能
+- 修正済み: ソースである Oracle から 10 進数の null 値が正しく読み取られない問題。
 
 ## <a name="2661922"></a>2.6.6192.2
 ### <a name="whats-new"></a>新機能
@@ -63,7 +73,7 @@ Data Management Gateway とその使用方法の詳細については、次の�
 
 ### <a name="whats-new"></a>新機能
 
-- データ ソース資格情報をローカルに保存できるようになりました。 資格情報は暗号化されます。 データ ソース資格情報は、既存のゲートウェイからエクスポートできるバックアップ ファイルを使用することで、復旧および復元できます。また、これらの操作はすべてオンプレミスで実行できます。 
+- データ ソース資格情報をローカルに保存できるようになりました。 資格情報は暗号化されます。 データ ソース資格情報は、既存のゲートウェイからエクスポートできるバックアップ ファイルを使用することで、復旧および復元できます。また、これらの操作はすべてオンプレミスで実行できます。
 
 ### <a name="enhancements-"></a>強化された機能
 
@@ -89,7 +99,7 @@ Data Management Gateway とその使用方法の詳細については、次の�
 
 *  DB2 ドライバーは現在、ゲートウェイ インストール パッケージに含まれています。 別途インストールする必要はありません。 
 *  DB2 ドライバーは、既にサポートされているプラットフォーム (Linux、Unix、Windows) に加え、現在では z/OS と DB2 for i (AS/400) をサポートしています。 
-*  オンプレミス データ ストアの送信元または送信先として DocumentDB をサポートします。
+*  オンプレミス データ ストアの送信元または送信先として Azure Cosmos DB を使用できるようになりました。
 *  既にサポートされている汎用ストレージ アカウントに加え、コールド/ホット Blob Storage との間でデータをコピーできるようになりました。 
 *  ゲートウェイを介し、リモート ログイン特権でオンプレミスの SQL Server に接続することができます。  
 
@@ -105,7 +115,7 @@ Data Management Gateway とその使用方法の詳細については、次の�
 
     *  コントロールの配置が見直され、簡素化されました。
 
-    *  [コーディング不要のコピー プレビュー ツール](data-factory-copy-data-wizard-tutorial.md)を使用して、ストレージからデータをコピーできます。 この機能全般の詳細については、「 [ステージング コピー](data-factory-copy-activity-performance.md#staged-copy) 」をご覧ください。 
+    *  [コーディング不要のコピー プレビュー ツール](data-factory-copy-data-wizard-tutorial.md)を使用して、ストレージからデータをコピーできます。 この機能全般の詳細については、「 [ステージング コピー](data-factory-copy-activity-performance.md#staged-copy) 」をご覧ください。
 *  Data Management Gateway を使用すると、オンプレミスの SQL Server データベースから Azure Machine Learning に直接データを取り込むことができます。
 
 *  パフォーマンスの向上
@@ -120,7 +130,7 @@ Data Management Gateway とその使用方法の詳細については、次の�
 
 *  ゲートウェイのイベント ログの最大サイズが 1 MB から 40 MB に増えました。
 
-*  ゲートウェイの自動更新中に再起動が必要な場合は、警告ダイアログが表示されます。 すぐに再起動することも、後で再起動することもできます。 
+*  ゲートウェイの自動更新中に再起動が必要な場合は、警告ダイアログが表示されます。 すぐに再起動することも、後で再起動することもできます。
 
 *  自動更新が失敗した場合、ゲートウェイ インストーラーは自動更新を最大 3 回再試行します。
 
@@ -226,7 +236,7 @@ Data Management Gateway とその使用方法の詳細については、次の�
 
 ### <a name="1253031"></a>1.2.5303.1
 
-*  時間がかかるデータ ソース接続をサポートするための、タイムアウトの問題の修正 
+*  時間がかかるデータ ソース接続をサポートするための、タイムアウトの問題の修正
 
 ### <a name="1155268"></a>1.1.5526.8
 

@@ -1,44 +1,45 @@
 ---
-title: "Azure DocumentDB で MongoDB に MongoChef を使用する | Microsoft Docs"
-description: "DocumentDB: MongoDB 用 API アカウントで MongoChef を使用する方法を説明します"
+title: "Azure Cosmos DB での MongoChef の使用 | Microsoft Docs"
+description: "Azure Cosmos DB: MongoDB 用 API アカウントで MongoChef を使用する方法を説明します。"
 keywords: MongoChef
-services: documentdb
+services: cosmosdb
 author: AndrewHoh
 manager: jhubbard
 editor: 
 documentationcenter: 
 ms.assetid: 352c5fb9-8772-4c5f-87ac-74885e63ecac
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 04/27/2017
 ms.author: anhoh
-translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: eb5a10e414a4dcce50b34a54d0e56fd5f7a16737
-ms.lasthandoff: 03/08/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 8363b73cfae818449e5a907a17e742bf97e5107a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="use-mongochef-with-a-documentdb-api-for-mongodb-account"></a>DocumentDB: MongoDB 用 API アカウントで MongoChef を使用する
+# <a name="use-mongochef-with-an-azure-cosmos-db-api-for-mongodb-account"></a>Azure Cosmos DB: MongoDB 用 API アカウントで MongoChef を使用する
 
-Azure DocumentDB: MongoDB 用 API アカウントに接続するには、以下を実行する必要があります。
+Azure Cosmos DB: MongoDB 用 API アカウントに接続するには、以下を実行する必要があります。
 
 * [MongoChef](http://3t.io/mongochef) をダウンロードしてインストールする
-* DocumentDB: MongoDB 用 API アカウントの[接続文字列](documentdb-connect-mongodb-account.md)情報を取得する
+* Azure Cosmos DB: MongoDB 用 API アカウントの[接続文字列](documentdb-connect-mongodb-account.md)情報を取得する
 
 ## <a name="create-the-connection-in-mongochef"></a>MongoChef で接続を作成する
-MongoChef 接続マネージャーに DocumentDB: MongoDB 用 API アカウントを追加するには、次の手順を実行します。
+MongoChef 接続マネージャーに Azure Cosmos DB: MongoDB 用 API アカウントを追加するには、次の手順を実行します。
 
-1. [ここ](documentdb-connect-mongodb-account.md)に記載されている手順に従って、DocumentDB: MongoDB 用 API の接続情報を取得します。
+1. [ここ](documentdb-connect-mongodb-account.md)に記載されている手順に従って、Azure Cosmos DB: MongoDB 用 API の接続情報を取得します。
 
     ![Screen shot of the connection string blade](./media/documentdb-mongodb-mongochef/ConnectionStringBlade.png)
 2. **[Connect (接続)]** をクリックして接続マネージャーを開き、**[New Connection (新しい接続)]** をクリックします。
 
     ![Screen shot of the MongoChef connection manager](./media/documentdb-mongodb-mongochef/ConnectionManager.png)
-3. **[New Connection (新しい接続)]** ウィンドウの **[Server (サーバー)]** タブで、DocumentDB: MongoDB 用 API アカウントのホスト (FQDN) とポートを入力します。
+3. **[New Connection (新しい接続)]** ウィンドウの **[Server (サーバー)]** タブで、Azure Cosmos DB: MongoDB 用 API アカウントのホスト (FQDN) とポートを入力します。
 
     ![Screen shot of the MongoChef connection manager server tab](./media/documentdb-mongodb-mongochef/ConnectionManagerServerTab.png)
 4. **[New Connection (新しい接続)]** ウィンドウの **[Authentication (認証)]** タブで、認証モードとして **[Standard (MONGODB-CR or SCARM-SHA-1) (標準 (MONGODB-CR または SCARM-SHA-1))]** を選択し、ユーザー名とパスワードを入力します。  既定の認証データベース (admin) をそのまま使用するか、または独自の値を指定します。
@@ -84,7 +85,7 @@ MongoChef を使用してデータベース、コレクション、ドキュメ�
         "address": { "state": "WA", "county": "King", "city": "seattle" },
         "isRegistered": true
         }
-6. もう&1; つドキュメントを追加します。今度は次の内容を使用します。
+6. もう 1 つドキュメントを追加します。今度は次の内容を使用します。
 
         {
         "_id": "WakefieldFamily",
@@ -116,5 +117,5 @@ MongoChef を使用してデータベース、コレクション、ドキュメ�
     ![Screen shot of Mongo Chef query results](./media/documentdb-mongodb-mongochef/QueryDocument1.png)
 
 ## <a name="next-steps"></a>次のステップ
-* DocumentDB: MongoDB 用 API の[サンプル](documentdb-mongodb-samples.md)を確認します。
+* Azure Cosmos DB: MongoDB 用 API の[サンプル](documentdb-mongodb-samples.md)を確認します。
 

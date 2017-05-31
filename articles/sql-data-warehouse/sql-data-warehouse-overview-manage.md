@@ -3,7 +3,7 @@ title: "Azure SQL Data Warehouse でのデータベースの管理 | Microsoft D
 description: "SQL Data Warehouse のデータベース管理の概要について説明します。 ここでは管理ツール、DWU およびパフォーマンスのスケールアウト、クエリ パフォーマンスのトラブルシューティング、適切なセキュリティ ポリシーの設定、データの破損や地域的障害からのデータベースの復旧について見ていきます。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: kevinvngo
 manager: jhubbard
 editor: 
 ms.assetid: 8576fdb3-71fe-4b3b-a4e0-5e8a7f148acf
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
 ms.date: 10/31/2016
-ms.author: barbkess
-translationtype: Human Translation
+ms.author: kevin;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
 ms.openlocfilehash: 0056c458cc002cbdb1b8dabefe0d11a8abd61179
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/29/2017
 
 

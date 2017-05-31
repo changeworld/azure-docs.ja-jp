@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: d716f11818bc0ad6dd9e5f93951b011dd6774c7b
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: b059cfdcf21d8b61589a5edf3bd1832070e564e3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -34,7 +35,13 @@ ms.lasthandoff: 03/22/2017
 
 ## <a name="before-you-begin"></a>開始する前に
 
-このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関する記事の手順に従って Network Watcher を作成済みであることを前提としています。 また、有効な仮想マシンがあるリソース グループを使用することも前提としています。
+このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関する記事の手順に従って Network Watcher を作成済みであることを前提としています。 また、有効な仮想マシンのあるリソース グループを使用することも前提としています。
+
+## <a name="register-insights-provider"></a>Insights プロバイダーの登録
+
+フローのログ記録を成功させるには、**Microsoft.Insights** プロバイダーを登録する必要があります。 プロバイダーを登録するには、**[サブスクリプション]** に移動し、フローのログを有効にするサブスクリプションを選択します。 **[サブスクリプション]** ブレードで、**[リソース プロバイダー]** を選択します。 プロバイダーの一覧を移動し、**microsoft.insights** プロバイダーが登録されていることを確認します。 登録されていない場合は、**[登録]** をクリックします。
+
+![プロバイダーを表示する][providers]
 
 ## <a name="enable-flow-logs"></a>フローのログを有効にする
 
@@ -93,4 +100,4 @@ Network Watcher インスタンスに移動し、**[フローのログ]** を選
 [4]: ./media/network-watcher-nsg-flow-logging-portal/figure4.png
 [5]: ./media/network-watcher-nsg-flow-logging-portal/figure5.png
 [6]: ./media/network-watcher-nsg-flow-logging-portal/figure6.png
-
+[providers]: ./media/network-watcher-nsg-flow-logging-portal/providers.png

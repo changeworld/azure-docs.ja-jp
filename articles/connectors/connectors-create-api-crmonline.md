@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2017
 ms.author: matp; LADocs
-translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: f09dd58f17b228d6381af95c40c5391886bbb8f1
-ms.lasthandoff: 04/05/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 845dd16c703362e9e64f02832a35c90e7e77e264
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 
@@ -167,164 +168,9 @@ Logic Apps を使用すると、Dynamics 365 (オンライン) に接続し、�
 
 ロジック アプリのトラブルシューティングの詳細については、「[ロジック アプリの障害の診断](../logic-apps/logic-apps-diagnosing-failures.md)」をご覧ください。
 
-## <a name="technical-details"></a>技術的な詳細
-## <a name="triggers"></a>トリガー
-| トリガー | Description |
-| --- | --- |
-| レコードが作成されたとき |Dynamics 365 でオブジェクトが作成されたときにフローをトリガーします。 |
-| レコードが更新されたとき |Dynamics 365 でオブジェクトが変更されたときにフローをトリガーします。 |
-| レコードが削除されたとき |Dynamics 365 でオブジェクトが削除されたときにフローをトリガーします。 |
+## <a name="view-the-swagger"></a>Swagger の表示
 
-## <a name="actions"></a>アクション
-| アクション | Description |
-| --- | --- |
-| レコードを一覧表示する |この操作では、エンティティのレコードを取得します。 |
-| 新しいレコードを作成する |この操作では、エンティティの新しいレコードを作成します。 |
-| レコードを取得する |この操作では、エンティティの指定されたレコードを取得します。 |
-| レコードを削除する |この操作では、エンティティのコレクションからレコードを削除します。 |
-| レコードを更新する |この操作では、エンティティの既存のレコードを更新します。 |
-
-### <a name="trigger-and-action-details"></a>トリガーとアクションの詳細
-このセクションでは、必須または任意の入力プロパティ、コネクタに関連付けられた対応する出力など、各トリガーとアクションに関する具体的な詳細について説明します。
-
-#### <a name="when-a-record-is-created"></a>レコードが作成されたとき
-Dynamics 365 でオブジェクトが作成されたときにフローをトリガーします。
-
-| プロパティ名 | 表示名 | Description |
-| --- | --- | --- |
-| dataset* |組織名 |Contoso などの Dynamics 365 組織の名前 |
-| table* |エンティティ名 |エンティティの名前 |
-| $filter |Filter Query (フィルター クエリ) |返されるエントリを制限する ODATA filter クエリ |
-| $orderby |Order By (並べ替え) |エントリの順序を指定する ODATA orderBy クエリ |
-
-アスタリスク (*) は、そのプロパティが必須であることを意味します。
-
-##### <a name="output-details"></a>出力の詳細
-ItemsList
-
-| プロパティ名 | データ型 |
-| --- | --- |
-| 値 |array |
-
-#### <a name="when-a-record-is-updated"></a>レコードが更新されたとき
-Dynamics 365 でオブジェクトが変更されたときにフローをトリガーします。
-
-| プロパティ名 | 表示名 | Description |
-| --- | --- | --- |
-| dataset* |組織名 |Contoso などの Dynamics 365 組織の名前 |
-| table* |エンティティ名 |エンティティの名前 |
-
-アスタリスク (*) は、そのプロパティが必須であることを意味します。
-
-##### <a name="output-details"></a>出力の詳細
-ItemsList
-
-| プロパティ名 | データ型 |
-| --- | --- |
-| 値 |array |
-
-#### <a name="when-a-record-is-deleted"></a>レコードが削除されたとき
-Dynamics 365 でオブジェクトが削除されたときにフローをトリガーします。
-
-| プロパティ名 | 表示名 | Description |
-| --- | --- | --- |
-| dataset* |組織名 |Contoso などの Dynamics 365 組織の名前 |
-| table* |エンティティ名 |エンティティの名前 |
-
-
-アスタリスク (*) は、そのプロパティが必須であることを意味します。
-
-##### <a name="output-details"></a>出力の詳細
-ItemsList
-
-| プロパティ名 | データ型 |
-| --- | --- |
-| 値 |array |
-
-#### <a name="list-records"></a>レコードを一覧表示する
-この操作では、エンティティのレコードを取得します。
-
-| プロパティ名 | 表示名 | Description |
-| --- | --- | --- |
-| dataset* |組織名 |Contoso などの Dynamics 365 組織の名前 |
-| table* |エンティティ名 |エンティティの名前 |
-| $filter |Filter Query (フィルター クエリ) |返されるエントリを制限する ODATA filter クエリ |
-| $orderby |Order By (並べ替え) |エントリの順序を指定する ODATA orderBy クエリ |
-
-アスタリスク (*) は、そのプロパティが必須であることを意味します。
-
-##### <a name="output-details"></a>出力の詳細
-ItemsList
-
-| プロパティ名 | データ型 |
-| --- | --- |
-| 値 |array |
-
-#### <a name="create-a-new-record"></a>新しいレコードを作成する
-この操作では、エンティティの新しいレコードを作成します。
-
-| プロパティ名 | 表示名 | Description |
-| --- | --- | --- |
-| dataset* |組織名 |Contoso などの Dynamics 365 組織の名前 |
-| table* |エンティティ名 |エンティティの名前 |
-
-アスタリスク (*) は、そのプロパティが必須であることを意味します。
-
-##### <a name="output-details"></a>出力の詳細
-なし。
-
-#### <a name="get-record"></a>レコードを取得する
-この操作では、エンティティの指定されたレコードを取得します。
-
-| プロパティ名 | 表示名 | Description |
-| --- | --- | --- |
-| dataset* |組織名 |Contoso などの Dynamics 365 組織の名前 |
-| table* |エンティティ名 |エンティティの名前 |
-| id* |項目識別子 |レコードの識別子を指定します。 |
-
-アスタリスク (*) は、そのプロパティが必須であることを意味します。
-
-##### <a name="output-details"></a>出力の詳細
-なし。
-
-#### <a name="delete-a-record"></a>レコードを削除する
-この操作では、エンティティのコレクションからレコードを削除します。
-
-| プロパティ名 | 表示名 | Description |
-| --- | --- | --- |
-| dataset* |組織名 |Contoso などの Dynamics 365 組織の名前 |
-| table* |エンティティ名 |エンティティの名前 |
-| id* |項目識別子 |レコードの識別子を指定します。 |
-
-アスタリスク (*) は、そのプロパティが必須であることを意味します。
-
-#### <a name="update-a-record"></a>レコードを更新する
-この操作では、エンティティの既存のレコードを更新します。
-
-| プロパティ名 | 表示名 | Description |
-| --- | --- | --- |
-| dataset* |組織名 |Contoso などの Dynamics 365 組織の名前 |
-| table* |エンティティ名 |エンティティの名前 |
-| id* |レコード識別子 |レコードの識別子を指定します。 |
-
-アスタリスク (*) は、そのプロパティが必須であることを意味します。
-
-##### <a name="output-details"></a>出力の詳細
-なし。
-
-## <a name="http-responses"></a>HTTP 応答
-アクションとトリガーは、次の HTTP 状態コードを 1 つ以上返す場合があります。
-
-| Name | 説明 |
-| --- | --- |
-| 200 |OK |
-| 202 |承認済み |
-| 400 |正しくない要求 |
-| 401 |権限がありません |
-| 403 |許可されていません |
-| 404 |見つかりません |
-| 500 |内部サーバー エラー。 不明なエラーが発生しました。 |
-| default |操作に失敗しました。 |
+[Swagger の詳細](/connectors/crm/)を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 [API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。

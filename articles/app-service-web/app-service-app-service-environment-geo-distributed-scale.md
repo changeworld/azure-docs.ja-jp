@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2016
 ms.author: stefsch
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: e7f816713cc74ca27dd7718e8071f48dd653e213
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/16/2017
 
 
@@ -122,9 +123,9 @@ PowerShell を使用した [Azure Resource Manager による Traffic Manager の
 [!INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
 
 <!-- LINKS -->
-[AzureTrafficManagerProfile]:  https://azure.microsoft.com/documentation/articles/traffic-manager-manage-profiles/
-[ARMTrafficManager]:  https://azure.microsoft.com/documentation/articles/traffic-manager-powershell-arm/
-[RegisterCustomDomain]:  https://azure.microsoft.com/en-us/documentation/articles/web-sites-custom-domain-name/
+[AzureTrafficManagerProfile]: ../traffic-manager/traffic-manager-manage-profiles.md
+[ARMTrafficManager]: ../traffic-manager/traffic-manager-powershell-arm.md
+[RegisterCustomDomain]: app-service-web-tutorial-custom-domain.md
 
 
 <!-- IMAGES -->

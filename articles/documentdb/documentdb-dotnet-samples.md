@@ -1,24 +1,25 @@
 ---
-title: "DocumentDB 向け .NET NoSQL のサンプル | Microsoft Docs"
-description: "NoSQL データベースの JSON ドキュメントに対する CRUD 操作など、DocumentDB の一般的なタスクの C# .NET サンプルを github で検索します。"
+title: "Azure Cosmos DB: DocumentDB API の .NET のサンプル | Microsoft Docs"
+description: "CRUD 操作など、DocumentDB の一般的なタスクについて、C# .NET のサンプルを GitHub で検索します。"
 keywords: "NoSQL のサンプル"
-services: documentdb
+services: cosmosdb
 author: rnagpal
 manager: jhubbard
 editor: monicar
 documentationcenter: .net
 ms.assetid: d824d517-903e-4d82-ab0a-09fc3b984c84
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: rnagpal
-translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 1581ee526ba9fa296fbb433672d8e8389d852519
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 5198492ff713f3756037dd8634778f53c5a1eb33
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -31,14 +32,14 @@ ms.lasthandoff: 03/22/2017
 > 
 > 
 
-Azure DocumentDB リソースに対する CRUD 操作などの一般的な操作を実行する最新のサンプル ソリューションは、[azure-documentdb-dotnet](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples) GitHub リポジトリに含まれています。 この記事では、次の内容について説明します。
+Azure Cosmos DB リソースに対する CRUD 操作などの一般的な操作を実行する最新のサンプル ソリューションは、[azure-documentdb-dotnet](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples) GitHub レポジトリにあります。 この記事では、次の内容について説明します。
 
 * 各サンプル C# プロジェクト ファイルのタスクへのリンク。 
 * 関連する API リファレンス コンテンツへのリンク。
 
 **前提条件**
 
-1. これらの NoSQL サンプルを使用するには Azure アカウントが必要です。
+1. これらのサンプルを使用するには Azure アカウントが必要です。
    * 無料で [Azure アカウントを開く](https://azure.microsoft.com/pricing/free-trial/)ことができます。Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。 明示的に設定を変更して課金を求めない限り、クレジット カードに課金されることはありません。
      * [Visual Studio サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)こともできます: Visual Studio サブスクリプションにより、有料の Azure サービスで使用できるクレジットが毎月提供されます。
 2. [Microsoft.Azure.DocumentDB NuGet パッケージ](http://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)も必要です。 
@@ -114,7 +115,7 @@ DatabaseManagement プロジェクトのサンプルの [RunDatabaseDemo](https:
 | [既存のコレクションの地理空間インデックス作成を有効にする](https://github.com/Azure/azure-documentdb-dotnet/blob/7b09c085817e850d683bc59bd864c2f6b552d275/samples/code-samples/Geospatial/Program.cs#L312-L336) |[DocumentClient.ReplaceDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.replacedocumentcollectionasync.aspx)<br>[DocumentCollection.IndexingPolicy](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.documentcollection.indexingpolicy.aspx#P:Microsoft.Azure.Documents.DocumentCollection.IndexingPolicy) |
 | [ポイントとポリゴンのデータの検証](https://github.com/Azure/azure-documentdb-dotnet/blob/7b09c085817e850d683bc59bd864c2f6b552d275/samples/code-samples/Geospatial/Program.cs#L223-L265) |[ST_ISVALID](documentdb-sql-query.md#BuiltinFunctions)<br>[ST_ISVALIDDETAILED](documentdb-sql-query.md#BuiltinFunctions)<br>[GeometryOperationExtensions.IsValid](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.spatial.geometryoperationextensions.isvalid.aspx)<br>[GeometryOperationExtensions.IsValidDetailed](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.spatial.geometryoperationextensions.isvaliddetailed.aspx) |
 
-地理空間データの操作の詳細については、「 [Azure DocumentDB で地理空間データを扱う](documentdb-geospatial.md)」を参照してください。  
+地理空間データの操作の詳細については、[Azure Cosmos DB での地理空間データの操作](documentdb-geospatial.md)に関する記事をご覧ください。  
 
 ## <a name="query-examples"></a>クエリのサンプル
 クエリ ドキュメント ファイル [azure-documentdb-dotnet/samples/code-samples/Queries/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs)は、 SQL クエリ文法、クエリを使用したLINQ プロバイダー、およびラムダを使用して次のタスクを実行する方法を示しています。
@@ -151,7 +152,7 @@ DatabaseManagement プロジェクトのサンプルの [RunDatabaseDemo](https:
 | [ポストトリガーの作成](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/ServerSideScripts/Program.cs#L329) |[DocumentClient.CreateTriggerAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createtriggerasync.aspx) |
 | [ユーザー定義関数 (UDF) の作成](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/ServerSideScripts/Program.cs#L389) |[DocumentClient.CreateUserDefinedFunctionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createuserdefinedfunctionasync.aspx) |
 
-サーバー側プログラミングの詳細については、「 [DocumentDB のサーバー側プログラミング: ストアド プロシージャ、データベース トリガー、UDF](documentdb-programming.md)」をご覧ください。
+サーバー側プログラミングの詳細については、「[Azure Cosmos DB server-side programming: Stored procedures, database triggers, and UDFs (Azure Cosmos DB のサーバー側プログラミング: ストアド プロシージャ、データベース トリガー、UDF)](documentdb-programming.md)」をご覧ください。
 
 ## <a name="user-management-examples"></a>ユーザー管理のサンプル
 ユーザー管理ファイル [azure-documentdb-dotnet/samples/code-samples/UserManagement/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/UserManagement/Program.cs) は、次のタスクを実行する方法を示しています。

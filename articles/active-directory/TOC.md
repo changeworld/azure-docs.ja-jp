@@ -1,7 +1,7 @@
 # 概要
 ## [Azure Active Directory とは](active-directory-whatis.md)
 ## [エディションの選択](active-directory-editions.md)
-## [Azure の ID 管理について](fundamentals-identity.md)
+## [Azure の ID 管理について](identity-fundamentals.md)
 ## [Azure ID ソリューションについて](understand-azure-identity-solutions.md)
 ## [Azure ポータルのエクスペリエンスをプレビューします。](active-directory-preview-explainer.md)
 
@@ -90,7 +90,7 @@
 ### トラブルシューティング
 #### [見つからない監査データ](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [ダウンロードに見つからないデータ](active-directory-reporting-troubleshoot-missing-data-download.md)
-###    プログラムによるアクセス
+###    [プログラムによるアクセス](active-directory-reporting-api-getting-started-azure-portal.md)
 #### [監査のリファレンス](active-directory-reporting-api-audit-reference.md)
 #### [サインインの参照](active-directory-reporting-api-sign-in-activity-reference.md)
 #### [前提条件](active-directory-reporting-api-prerequisites-azure-portal.md)
@@ -115,7 +115,7 @@
 ##### [不明なソース](active-directory-reporting-sign-ins-from-unknown-sources.md)
 ##### [異常なサインイン](active-directory-reporting-users-with-anomalous-sign-in-activity.md)
 
-## [パスワードの管理](active-directory-passwords.md)
+## [パスワードの管理](active-directory-passwords-overview.md)
 ### ユーザー ドキュメント
 #### [パスワードのリセットまたは変更](active-directory-passwords-update-your-own-password.md)
 #### [パスワードのベスト プラクティス](active-directory-secure-passwords.md)
@@ -297,7 +297,8 @@
 #### その他のロール管理方法
 ##### [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
 ##### [PowerShell](role-based-access-control-manage-access-powershell.md)
-##### [REST](role-based-access-control-manage-access-rest.md)
+##### [REST ()](role-based-access-control-manage-access-rest.md)
+#### [テナント管理者のアクセス権の昇格](role-based-access-control-tenant-admin-access.md)
 #### [トラブルシューティング](role-based-access-control-troubleshooting.md)
 #### [リソース プロバイダー操作](role-based-access-control-resource-provider-operations.md)
 ### [トークンの有効期間を構成する](active-directory-configurable-token-lifetimes.md)

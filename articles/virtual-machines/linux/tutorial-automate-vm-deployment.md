@@ -13,21 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/17/2017
+ms.date: 05/02/2017
 ms.author: iainfou
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 188c4758843a49ca38a151835d561c5f2d58d3a0
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 5b6c65ec8431c3a55e7cbccec3db5d08974982b5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/17/2017
 
 ---
 
 # <a name="how-to-customize-a-linux-virtual-machine-on-first-boot"></a>Linux 仮想マシンを初回起動時にカスタマイズする方法
-仮想マシン (VM) を迅速かつ一貫した方法で作成するには、一般的に、何らかの形で自動化することが必要です。 VM を初回起動時にカスタマイズする一般的なアプローチには、[cloud-init](https://cloudinit.readthedocs.io) を使用する方法があります。 このチュートリアルでは、cloud-init を使用して、パッケージのインストール、NGINX Web サーバーの構成、Node.js アプリのデプロイを自動的に行う方法を説明します。
+前のチュートリアルでは、仮想マシン (VM) に SSH 接続して NGINX を手動でインストールする方法について説明しました。 VM を迅速かつ一貫した方法で作成するには、一般的に、何らかの形で自動化することが必要です。 VM を初回起動時にカスタマイズする一般的なアプローチには、[cloud-init](https://cloudinit.readthedocs.io) を使用する方法があります。 このチュートリアルで学習する内容は次のとおりです。
 
-このチュートリアルの手順は、最新バージョンの [Azure CLI 2.0](/cli/azure/install-azure-cli) を使用して行うことができます。
+> [!div class="checklist"]
+> * cloud-init 構成ファイルを作成する
+> * cloud-init ファイルを使用する VM を作成する
+> * VM の作成後に実行されている Node.js アプリを表示する
+> * Key Vault を使用して証明書を安全に格納する
+> * cloud-init を使用して NGINX のセキュリティで保護されたデプロイを自動化する
 
+このチュートリアルには、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 アップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 ブラウザーから [Cloud Shell](/azure/cloud-shell/quickstart) を使用することもできます。
 
 ## <a name="cloud-init-overview"></a>cloud-init の概要
 [cloud-Init](https://cloudinit.readthedocs.io) は、Linux VM を初回起動時にカスタマイズするために広く使用されているアプローチです。 cloud-init を使って、パッケージをインストールしてファイルを書き込んだり、ユーザーとセキュリティを構成したりすることができます。 初回起動処理中に cloud-init が実行されるので、構成を適用するために追加の手順や必要なエージェントはありません。
@@ -92,10 +98,10 @@ runcmd:
 cloud-init 構成オプションの詳細については、[cloud-init の構成例](https://cloudinit.readthedocs.io/en/latest/topics/examples.html)に関するページを参照してください。
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
-VM を作成する前に、[az group create](/cli/azure/group#create) を使用してリソース グループを作成します。 次の例では、*myResourceGroupAutomate* という名前のリソース グループを場所 *westus* に作成します。
+VM を作成する前に、[az group create](/cli/azure/group#create) を使用してリソース グループを作成します。 次の例では、*myResourceGroupAutomate* という名前のリソース グループを場所 *eastus* に作成します。
 
 ```azurecli
-az group create --name myResourceGroupAutomate --location westus
+az group create --name myResourceGroupAutomate --location eastus
 ```
 
 ここで [az vm create](/cli/azure/vm#create) を使用して VM を作成します。 `--custom-data` パラメーターを使用して、cloud-init 構成ファイルを渡します。 現在の作業ディレクトリの外部に構成ファイル *cloud-init.txt* を保存していた場合には、このファイルの完全パスを指定します。 次の例では、*myAutomatedVM* という名前の VM を作成します。
@@ -260,7 +266,17 @@ Web ブラウザーを開き、アドレス バーに「*https://<publicIpAddres
 
 
 ## <a name="next-steps"></a>次のステップ
-このチュートリアルでは、VM を初回起動時にカスタマイズする方法を説明しました。 次のチュートリアルに進み、カスタムの VM イメージを作成する方法を学習してください。
+このチュートリアルでは、VM の初回の起動時に cloud-init を使用してカスタマイズしました。 以下の方法について学習しました。
 
-[カスタム VM イメージを作成する](./tutorial-custom-images.md)
+> [!div class="checklist"]
+> * cloud-init 構成ファイルを作成する
+> * cloud-init ファイルを使用する VM を作成する
+> * VM の作成後に実行されている Node.js アプリを表示する
+> * Key Vault を使用して証明書を安全に格納する
+> * cloud-init を使用して NGINX のセキュリティで保護されたデプロイを自動化する
+
+次のチュートリアルに進み、カスタムの VM イメージを作成する方法を学習してください。
+
+> [!div class="nextstepaction"]
+> [カスタム VM イメージを作成する](./tutorial-custom-images.md)
 

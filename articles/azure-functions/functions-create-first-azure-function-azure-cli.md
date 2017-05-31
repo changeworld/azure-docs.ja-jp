@@ -12,10 +12,10 @@ ms.service: functions
 ms.devlang: azure-cli
 manager: erikre
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: ef9d65ae5ad0792230e1b8c0d7ed123c129f0f59
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 3dc0e1b26c95ac6583dd3b1068b36deb54f7ac5a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/18/2017
 
 ---
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 05/10/2017
 
 このクイックスタート チュートリアルでは、Azure Functions を使用して最初の関数を作成する方法について説明します。 Azure CLI を使用して、関数をホストするサーバーレス インフラストラクチャである Function App を作成します。 関数コード自体は、GitHub サンプル レポジトリからデプロイされます。    
 
-以下の手順は、Mac、Windows、または Linux コンピューターを使用して実行することができます。 このトピックの手順をすべて完了するまでにかかる時間は、ほんの 5 分ほどです。
+以下の手順は、Mac、Windows、または Linux コンピューターを使用して実行することができます。 
 
 ## <a name="prerequisites"></a>前提条件 
 

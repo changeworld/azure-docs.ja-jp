@@ -1,6 +1,6 @@
 ---
-title: "複数テナントのスキーマの管理 (Azure SQL Database を使用した SaaS アプリケーションの例) | Microsoft Docs"
-description: "Azure SQL Database を使用する SaaS アプリケーションで複数のテナントのスキーマを管理します"
+title: "マルチテナント アプリで Azure SQL Database スキーマを管理する | Microsoft Docs"
+description: "Azure SQL Database を使用するマルチテナント アプリケーションで複数のテナントのスキーマを管理します"
 keywords: "SQL データベース チュートリアル"
 services: sql-database
 documentationcenter: 
@@ -17,18 +17,18 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 226cda254934fae30410e54148d5cc527e1c7881
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: cbe2b6bbc8e193bdbbf08572a8488239c633548d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
-# <a name="manage-schema-for-multiple-tenants-in-the-wtp-saas-application"></a>WTP SaaS アプリケーションでの複数テナントのスキーマの管理
+# <a name="manage-schema-for-multiple-tenants-in-the-wingtip-saas-application"></a>Wingtip SaaS アプリケーションでの複数テナントのスキーマの管理
 
-WTP アプリケーションの概要チュートリアルでは、WTP アプリがその初期スキーマを使用してテナント データベースをどのようにプロビジョニングし、カタログに登録するかを説明します。 他のアプリケーション同様、WTP アプリは時間の経過に従って進化し、データベースへの変更が必要になる場合があります。 変更には、新しいまたは変更されたスキーマ、新しいまたは変更された参照データ、およびアプリの最適なパフォーマンスを得るための定期的なデータベース メンテナンス タスクなどがあります。 SaaS アプリケーションにより、これらの変更は、大容量になる可能性のあるテナント データベース全体に体系的な方法でデプロイされる必要があります。 変更は、今後のテナント データベースのプロビジョニング プロセスに組み込む必要もあります。
+[最初の Wingtip SaaS チュートリアル](sql-database-saas-tutorial.md)では、アプリがテナント データベースをどのようにプロビジョニングし、カタログに登録するかを示します。 他のアプリケーション同様、Wingtip SaaS アプリは時間の経過に従って進化し、データベースへの変更が必要になる場合があります。 変更には、新しいまたは変更されたスキーマ、新しいまたは変更された参照データ、およびアプリの最適なパフォーマンスを得るための定期的なデータベース メンテナンス タスクなどがあります。 SaaS アプリケーションにより、これらの変更は、大容量になる可能性のあるテナント データベース全体に体系的な方法でデプロイされる必要があります。 変更は、今後のテナント データベースのプロビジョニング プロセスに組み込む必要もあります。
 
-このチュートリアルでは、2 つのシナリオを扱います。すべてのテナントに対する参照データのデプロイと、参照データを含むテーブルでのインデックスの再調整です。 [エラスティック ジョブ](sql-database-elastic-jobs-overview.md)機能を使用して、すべてのテナントわたって、また新しいデータベースのテンプレートとして使用される "*ゴールデン*" テナントのデータベースに対してこれらの操作を実行します。
+このチュートリアルでは、2 つのシナリオを扱います。すべてのテナントに対する参照データのデプロイと、参照データを含むテーブルでのインデックスの再調整です。 [エラスティック ジョブ](sql-database-elastic-jobs-overview.md)機能を使用して、これらの操作をすべてのテナントにわたって実行したり、新しいデータベースのテンプレートとして使用される "*ゴールデン*" テナント データベースに対して実行したりします。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -41,7 +41,7 @@ WTP アプリケーションの概要チュートリアルでは、WTP アプリ
 
 このチュートリアルを完了するには、次の前提条件を満たしておく必要があります。
 
-* WTP アプリがデプロイされている。 5 分以内にデプロイを完了する方法については、[WTP SaaS アプリケーションのデプロイと確認に関するページ](sql-database-saas-tutorial.md)をご覧ください。
+* Wingtip SaaS アプリがデプロイされている。 5 分未満でデプロイするには、[Wingtip SaaS アプリケーションのデプロイと確認](sql-database-saas-tutorial.md)に関するページを参照してください。
 * Azure PowerShell がインストールされている。 詳しくは、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」をご覧ください。
 * 最新バージョンの SQL Server Management Studio (SSMS) のインストール。 [SSMS のダウンロードとインストール](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
 
@@ -64,7 +64,7 @@ Azure SQL Database の統合機能となったエラスティック ジョブの
 
 ## <a name="get-the-wingtip-application-scripts"></a>Wingtip アプリケーションのスクリプトを取得する
 
-Wingtip Tickets のスクリプトとアプリケーションのソース コードは、[WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) Github リポジトリから入手できます。 スクリプト ファイルは、[Learning Modules フォルダー](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules)にあります。 **Learning Modules** フォルダーを、構造を保ったままローカル コンピューターにダウンロードします。
+Wingtip SaaS のスクリプトとアプリケーション ソース コードは、[WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub リポジトリから入手できます。 [Wingtip SaaS のスクリプトをダウンロードする手順](sql-database-wtp-overview.md#download-the-wingtip-saas-scripts)。
 
 ## <a name="create-a-job-account-database-and-new-job-account"></a>ジョブ アカウント データベースと新しいジョブ アカウントの作成
 
@@ -89,11 +89,11 @@ Wingtip Tickets のスクリプトとアプリケーションのソース コー
 1. さらに、テナント サーバー tenants1-\<user\>.database.windows.net に接続します。
 1. *tenants1* サーバーで *contosoconcerthall* データベースを参照し、*VenueTypes* テーブルにクエリを実行して *Motorcycle Racing* および *Swimming Club* が結果の一覧に**含まれていない**ことを確認します。
 1. ファイル …\\Learning Modules\\Schema Management\\DeployReferenceData.sql を開きます。
-1. スクリプト内の 3 箇所すべてで、\<user\> を、WTP アプリのデプロイ時に使用したユーザー名に変更します。
+1. スクリプト内の 3 か所すべてで、\<user\> を、Wingtip アプリのデプロイ時に使用したユーザー名に変更します。
 1. jobaccount データベースに接続していることを確認し、**F5** キーを押してスクリプトを実行します。
 
 * **sp\_add\_target\_group** は、ターゲット グループ名 DemoServerGroup を作成します。次に、ターゲット メンバーを追加する必要があります。
-* **sp\_add\_target\_group\_member** は、*server* ターゲット メンバー タイプを追加します。これがジョブに含まれると、ジョブの実行時に、そのサーバー (テナント データベースを含む customer1-&lt;WtpUser&gt; サーバー) 内のすべてのデータベースがジョブに含まれます。次に、*database* ターゲット メンバー タイプ (具体的には "ゴールデン" データベース baseTenantDB) を追加します。これは、catalog-&lt;WtpUser&gt; サーバーにあります。最後に、他の *database* ターゲット グループ メンバー タイプを追加して adhocanalytics データベースを含めます。このデータベースは後のチュートリアルで使用します。
+* **sp\_add\_target\_group\_member** は、*server* ターゲット メンバー タイプを追加します。これがジョブに含まれると、ジョブの実行時に、そのサーバー (テナント データベースを含む customer1-&lt;User&gt; サーバー) 内のすべてのデータベースがジョブに含まれます。次に、*database* ターゲット メンバー タイプ (具体的には "ゴールデン" データベース baseTenantDB) を追加します。これは、catalog-&lt;User&gt; サーバーにあります。最後に、他の *database* ターゲット グループ メンバー タイプを追加して adhocanalytics データベースを含めます。このデータベースは後のチュートリアルで使用します。
 * **sp\_add\_job** は、"Reference Data Deployment" というジョブを作成します。
 * **sp\_add\_jobstep** は、T-SQL コマンド テキストを含むジョブ ステップを作成して、参照テーブル、VenueTypes を更新します。
 * スクリプトの残りのビューは、オブジェクトの存在を表示し、ジョブの実行を監視します。 **lifecycle** 列で状態の値を確認してください。 ジョブがすべてのテナント データベースと、参照テーブルを含む 2 つの追加データベースで正常に完了しています。
@@ -107,9 +107,9 @@ Wingtip Tickets のスクリプトとアプリケーションのソース コー
 
 同じジョブ 'システム' ストアド プロシージャを使用したジョブの作成
 
-1. SSMS を開き、catalog-&lt;WtpUser&gt;.database.windows.net サーバーに接続します。
+1. SSMS を開き、catalog-&lt;User&gt;.database.windows.net サーバーに接続します。
 1. ファイル …\\Learning Modules\\Schema Management\\OnlineReindex.sql を開きます。
-1. 右クリックして [接続] を選択し、catalog-catalog-&lt;WtpUser&gt;.database.windows.net サーバーに接続します (まだ接続していない場合)。
+1. 右クリックして [接続] を選択し、catalog-&lt;User&gt;.database.windows.net サーバーに接続します (まだ接続していない場合)。
 1. jobaccount データベースに接続していることを確認し、F5 キーを押してスクリプトを実行します。
 
 * sp\_add\_job は、"Online Reindex PK\_\_VenueTyp\_\_265E44FD7FD4C885" という新しいジョブを作成します。
@@ -133,6 +133,6 @@ Wingtip Tickets のスクリプトとアプリケーションのソース コー
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [Wingtip Tickets Platform (WTP) アプリケーションの初期のデプロイに基づく作業のための追加のチュートリアル](sql-database-wtp-overview.md#sql-database-wtp-saas-tutorials)
+* [Wingtip SaaS アプリケーションのデプロイに基づく作業のための追加のチュートリアル](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [スケールアウトされたクラウド データベースの管理](sql-database-elastic-jobs-overview.md)
 * [スケールアウトしたクラウド データベースの作成と管理](sql-database-elastic-jobs-create-and-manage.md)

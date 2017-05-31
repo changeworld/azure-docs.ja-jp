@@ -41,7 +41,7 @@ Application Insights のデータを Power BI にエクスポートする場合�
 3. Application Insights リソースの詳細を指定します。
    
     ![Application Insights データ ソースから取得する](./media/app-insights-export-power-bi/azure-subscription-resource-group-name.png)
-4. データがインポートされるまで&1; ～&2; 分待ちます。
+4. データがインポートされるまで 1 ～ 2 分待ちます。
    
     ![Power BI アダプター](./media/app-insights-export-power-bi/010.png)
 

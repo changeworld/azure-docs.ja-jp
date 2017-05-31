@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 03/14/2017
 ms.author: raynew
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: d8e4e4bb7dd1e40d8c561adba04b8346fcb2127d
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 89921997f68bd72ee6086d2b635361eeeaba1c28
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/15/2017
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -34,7 +34,7 @@ Azure Recovery Services は BCDR 戦略を支援します。 [Azure Backup](http
 
 - **クラウドでのディザスター リカバリー** - VM や物理サーバーで実行されているワークロードを、セカンダリ サイトではなく Azure にレプリケートできます。 これにより、セカンダリ データセンターの管理に伴うコストと手間が削減されます。
 - **ハイブリッド環境向けの柔軟なレプリケーション** - サポートされているオンプレミスの Hyper-V VM、VMware VM、Windows/Linux 物理サーバーで実行されているワークロードをレプリケートできます。
-- **移行** - Site Recovery を使用すると、オンプレミスの AWS インスタンスを Azure VM に移行できます。また、Azure リージョン間で Azure VM を移行することもできます。
+- **移行** - Site Recovery を使用すると、AWS インスタンスを Azure VM に移行したり、Azure リージョン間で Azure VM を移行したりできます。
 - **BCDR の簡素化** - Azure Portal の 1 つの場所からレプリケーションをデプロイできます。  1 つまたは複数のマシンのシンプルなフェールオーバーとフェールバックを実行できます。
 - **復元性** - Site Recovery は、アプリケーション データをインターセプトせずに、レプリケーションとフェールオーバーを調整します。
 レプリケートされたデータは、元の復元性を備えた状態で Azure Storage に格納されます。 フェールオーバーが発生すると、レプリケートされたデータに基づいて Azure VM が作成されます。
@@ -63,7 +63,7 @@ Azure Recovery Services は BCDR 戦略を支援します。 [Azure Backup](http
 
 ## <a name="which-azure-portal"></a>Azure Portal とは
 
-* Site Recovery は、新しい [Azure ポータル](https://portal.azure.com) と [Azure クラシック ポータル](https://manage.windowsazure.com/)のどちらでもデプロイできます。
+* Site Recovery は、新しい [Azure Portal](https://portal.azure.com) と [Azure クラシック ポータル](https://manage.windowsazure.com/)のどちらでもデプロイできます。
 * Azure クラシック ポータルでは、クラシック サービス管理モデルで Site Recovery をサポートできます。
 * Azure Portal では、クラシック モデルをサポートすることも、新しい [Resource Manager デプロイ モデル](../azure-resource-manager/resource-manager-deployment-model.md)をサポートすることもできます。
 - クラシック ポータルは、既存の Site Recovery デプロイを維持する目的でのみ使用します。 クラシック ポータルで新しいコンテナーを作成することはできません。

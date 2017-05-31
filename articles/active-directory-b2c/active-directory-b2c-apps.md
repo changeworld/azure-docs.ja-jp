@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/06/2016
 ms.author: dastrock
-translationtype: Human Translation
-ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
-ms.openlocfilehash: 7d582960e615962a3952dd2f58c74ed91e5c450d
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 762af7e09342f1bb51352e6c3d104bd4d8944e65
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -120,7 +122,7 @@ Azure AD B2C を使用して Web API をセキュリティ保護する方法の�
 ![ネイティブ アプリのスイムレーン イメージ](./media/active-directory-b2c-apps/native.png)
 
 ## <a name="current-limitations"></a>現時点での制限事項
-Azure AD B2C では、現時点で以下の種類のアプリはサポートしていませんが、今後サポート対象に含まれる予定です。 Azure AD B2C に関するその他の制限および制約事項については、 [制限事項と制約事項](active-directory-b2c-limitations.md)に関するページを参照してください。
+Azure AD B2C では、現時点で以下の種類のアプリはサポートしていませんが、今後サポート対象に含まれる予定です。 
 
 ### <a name="daemonsserver-side-apps"></a>デーモン/サーバー側アプリ
 長時間実行されるプロセスを含んだアプリや、ユーザーの介入なしで動作するアプリも、セキュリティで保護されたリソース (Web API など) にアクセスする必要があります。 これらのアプリは、(ユーザーの委任 ID ではなく) アプリの ID と OAuth 2.0 のクライアント資格情報フローを使用して、認証を行い、トークンを取得することができます。
@@ -131,9 +133,4 @@ Azure AD B2C では、現時点で以下の種類のアプリはサポートし�
 多くのアーキテクチャには別のダウンストリーム Web API を呼び出す必要がある Web API が含まれ、その場合は両方とも Azure AD B2C によってセキュリティ保護されます。 このシナリオは、Web API バックエンドのあるネイティブ クライアントで一般的なものです。 その後は、Azure AD Graph API などの Microsoft オンライン サービスを呼び出します。
 
 このように Web API を連鎖的に呼び出すシナリオは、OAuth 2.0 JWT Bearer Credential Grant (On-Behalf-Of フロー) を使用してサポートできます。  ただし、現時点では、Azure AD B2C に On-Behalf-Of フローは実装されていません。
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

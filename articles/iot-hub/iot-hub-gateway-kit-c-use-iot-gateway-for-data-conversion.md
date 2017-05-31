@@ -1,6 +1,6 @@
 ---
-title: "Azure IoT Gateway SDK の IoT ゲートウェイでのデータ変換 | Microsoft Docs"
-description: "IoT ゲートウェイを使用して、Azure IoT Gateway SDK のカスタマイズされたモジュールを通してセンサーデータのフォーマットを変換します。"
+title: "Azure IoT Edge の IoT ゲートウェイでのデータ変換 | Microsoft Docs"
+description: "IoT ゲートウェイを使用して、Azure IoT Edge のカスタマイズされたモジュールを通してセンサー データのフォーマットを変換します。"
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -15,21 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2017
 ms.author: xshi
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: d7897f1a7eee5fbb04cf43da0d0156a6b8fb11f6
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 7bf9e64db91cb0fec37ff242bea94dbbd0833054
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="use-iot-gateway-for-sensor-data-transformation-with-azure-iot-gateway-sdk"></a>Azure IoT Gateway SDK でセンサー データを変換するための IoT ゲートウェイを使用する
+# <a name="use-iot-gateway-for-sensor-data-transformation-with-azure-iot-edge"></a>Azure IoT Edge でセンサー データを変換するための IoT ゲートウェイを使用する
 
 > [!NOTE]
 > このチュートリアルを開始する前に、次のレッスンを順を完了しておいてください。
 > * [Intel NUC を IoT ゲートウェイとしてセットアップする](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
 > * [IoT ゲートウェイを使用してモノをクラウドに接続する -  SensorTag から Azure IoT Hub へ](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
 
-Iot ゲートウェイの目的の 1 つは、収集されたデータをクラウドに送信する前に処理することです。 Azure IoT Gateway SDK には、データ処理ワークフローを形成するために作成して組み立てることができるモジュールが導入されています。 モジュールは、メッセージを受信し、何らかのアクションを実行した後、他のモジュールで処理するために先に進みます。
+Iot ゲートウェイの目的の 1 つは、収集されたデータをクラウドに送信する前に処理することです。 Azure IoT Edge には、データ処理ワークフローを形成するために作成して組み立てることができるモジュールが導入されています。 モジュールは、メッセージを受信し、何らかのアクションを実行した後、他のモジュールで処理するために先に進みます。
 
 ## <a name="what-you-learn"></a>学習内容
 
@@ -39,7 +40,7 @@ Iot ゲートウェイの目的の 1 つは、収集されたデータをクラ�
 
 * 受信したメッセージを .json 形式に変換するモジュールを作成します。
 * モジュールをコンパイルします。
-* Azure IoT Gateway SDK からモジュールを BLE サンプル アプリケーションに追加します。
+* Azure IoT Edge からモジュールを BLE サンプル アプリケーションに追加します。
 * サンプル アプリケーションを実行します。
 
 ## <a name="what-you-need"></a>必要なもの
@@ -61,7 +62,7 @@ Iot ゲートウェイの目的の 1 つは、収集されたデータをクラ�
    git clone https://github.com/Azure-Samples/iot-hub-c-intel-nuc-gateway-customized-module.git
    ```
 
-   これは、C プログラミング言語で記述された Azure Gateway SDK のネイティブ モジュールです。 このモジュールは、受信したメッセージの形式を、次のものに変換します。
+   これは、C プログラミング言語で記述された Azure Edge のネイティブ モジュールです。 このモジュールは、受信したメッセージの形式を、次のものに変換します。
 
    ```json
    {"deviceId": "Intel NUC Gateway", "messageId": 0, "temperature": 0.0}

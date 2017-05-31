@@ -1,34 +1,35 @@
 ---
-title: "Azure DocumentDB ポータル ツール: スクリプト エクスプローラー | Microsoft Docs"
-description: "DocumentDB のサーバー側プログラミング アーティファクト (JavaScript ストアド プロシージャ、トリガー、ユーザー定義関数など) を管理するための Azure Portal のツール、DocumentDB スクリプト エクスプローラーについて説明します。"
+title: "Azure Cosmos DB ポータル ツール: スクリプト エクスプローラー | Microsoft Docs"
+description: "Azure Cosmos DB のサーバー側プログラミング アーティファクト (JavaScript ストアド プロシージャ、トリガー、ユーザー定義関数など) を管理するための Azure Portal のツール、Azure Cosmos DB スクリプト エクスプローラーについて説明します。"
 keywords: "javascript エディター"
-services: documentdb
+services: cosmosdb
 author: kirillg
 manager: jhubbard
 editor: monicar
 documentationcenter: 
 ms.assetid: 9d0620da-2449-4c17-82a4-24aaa46e9b3e
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2017
 ms.author: kirillg
-translationtype: Human Translation
-ms.sourcegitcommit: 429687c6e5a196a3b489dc4dd79ae886b7ad9c38
-ms.openlocfilehash: ccff673996d53d2b3b2c177bfb6fff01613b7097
-ms.lasthandoff: 02/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: e9c3e92dd1c35ff6893565e61f7e7b940b6ede7e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="create-and-run-stored-procedures-triggers-and-user-defined-functions-using-the-documentdb-script-explorer"></a>DocumentDB スクリプト エクスプローラーを使用したストアド プロシージャ、トリガー、ユーザー定義関数の作成と実行
-この記事では、DocumentDB のサーバー側プログラミング アーティファクト (ストアド プロシージャ、トリガー、ユーザー定義関数など) の表示と実行を可能にする Azure ポータルの JavaScript エディター、 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) スクリプト エクスプローラーの概要を説明します。 DocumentDB のサーバー側プログラミングの詳細については、「 [ストアド プロシージャ、データベース トリガー、UDF](documentdb-programming.md) 」という記事を参照してください。
+# <a name="create-and-run-stored-procedures-triggers-and-user-defined-functions-using-the-azure-cosmos-db-script-explorer"></a>Azure Cosmos DB スクリプト エクスプローラーを使用したストアド プロシージャ、トリガー、ユーザー定義関数の作成と実行
+この記事では、Cosmos DB のサーバー側プログラミング アーティファクト (ストアド プロシージャ、トリガー、ユーザー定義関数など) の表示と実行を可能にする Azure Portal の JavaScript エディター、 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) スクリプト エクスプローラーの概要を説明します。 Cosmos DB のサーバー側プログラミングの詳細については、「[ストアド プロシージャ、データベース トリガー、UDF](documentdb-programming.md)」という記事を参照してください。
 
 ## <a name="launch-script-explorer"></a>スクリプト エクスプローラーを起動する
-1. [Azure Portal](https://portal.azure.com) の左側のナビゲーションで、![Azure DocumentDB アイコン](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png) **[NoSQL (DocumentDB)]** をクリックします。 
+1. [Azure Portal](https://portal.azure.com) の左側のナビゲーションで、![Azure Cosmos DB アイコン](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png) **[Azure Cosmos DB]**をクリックします。 
 
-    **[NoSQL (DocumentDB)]** が表示されない場合は、下にある **[その他のサービス]** をクリックしてから、![Azure DocumentDB アイコン](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png) **[NoSQL (DocumentDB)]** をクリックします。
+    **[Azure Cosmos DB]** が表示されない場合は、下にある **[その他のサービス]** をクリックしてから、![Azure Cosmos DB アイコン](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png) **[Azure Cosmos DB]** をクリックします。
 2. リソース メニューの **[スクリプト エクスプローラー]**をクリックします。
    
     ![スクリプト エクスプローラー コマンドのスクリーンショット](./media/documentdb-view-scripts/scriptexplorercommand.png)
@@ -47,7 +48,7 @@ ms.lasthandoff: 02/15/2017
     ![スクリプト エクスプローラーの [最新の情報に更新] コマンドのスクリーンショット](./media/documentdb-view-scripts/scriptexplorerrefresh.png)
 
 ## <a name="create-view-and-edit-stored-procedures-triggers-and-user-defined-functions"></a>ストアド プロシージャ、トリガー、ユーザー定義関数の作成、表示、編集
-スクリプト エクスプローラーを使用すると、DocumentDB サーバー側プログラミング アーティファクトに対する CRUD 操作を簡単に実行できます。  
+スクリプト エクスプローラーを使用すると、Cosmos DB サーバー側プログラミング アーティファクトに対する CRUD 操作を簡単に実行できます。  
 
 * スクリプトを作成するには、スクリプト エクスプローラーで適切な作成コマンドをクリックし、ID を指定し、スクリプトの内容を入力し、 **[保存]**をクリックします。
   
@@ -104,11 +105,10 @@ ms.lasthandoff: 02/15/2017
     ![スクリプト エクスプローラーのスクリプト プロパティのスクリーンショット ストアド プロシージャの実行とエラー](./media/documentdb-view-scripts/documentdb-execute-a-stored-procedure-error.png)
 
 ## <a name="work-with-scripts-outside-the-portal"></a>ポータルの外部のスクリプトを使用する
-Azure ポータルのスクリプト エクスプローラーは、DocumentDB のストアド プロシージャ、トリガー、ユーザー定義関数を使用する方法の&1; つです。 REST API と [クライアント SDK](documentdb-sdk-dotnet.md)を使用してスクリプトを操作することもできます。 REST API ドキュメントには、[REST を使用したストアド プロシージャ](https://msdn.microsoft.com/library/azure/mt489092.aspx)、[REST を使用したユーザー定義関数](https://msdn.microsoft.com/library/azure/dn781481.aspx)、[REST を使用したトリガー](https://msdn.microsoft.com/library/azure/mt489116.aspx)のサンプルが含まれています。 [C# を使用したスクリプト](documentdb-dotnet-samples.md#server-side-programming-examples)と [Node.js を使用したスクリプト](documentdb-nodejs-samples.md#server-side-programming-examples)の使用方法を示すサンプルもあります。
+Azure ポータルのスクリプト エクスプローラーは、DocumentDB のストアド プロシージャ、トリガー、ユーザー定義関数を使用する方法の 1 つです。 REST API と [クライアント SDK](documentdb-sdk-dotnet.md)を使用してスクリプトを操作することもできます。 REST API ドキュメントには、[REST を使用したストアド プロシージャ](https://msdn.microsoft.com/library/azure/mt489092.aspx)、[REST を使用したユーザー定義関数](https://msdn.microsoft.com/library/azure/dn781481.aspx)、[REST を使用したトリガー](https://msdn.microsoft.com/library/azure/mt489116.aspx)のサンプルが含まれています。 [C# を使用したスクリプト](documentdb-dotnet-samples.md#server-side-programming-examples)と [Node.js を使用したスクリプト](documentdb-nodejs-samples.md#server-side-programming-examples)の使用方法を示すサンプルもあります。
 
 ## <a name="next-steps"></a>次のステップ
 DocumentDB のサーバー側プログラミングの詳細については、 [ストアド プロシージャ、データベース トリガー、UDF](documentdb-programming.md) に関する記事をご覧ください。
 
-[ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/) も、DocumentDB の詳細を理解する際に便利なリソースです。  
 
 

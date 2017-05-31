@@ -16,10 +16,10 @@ ms.date: 04/21/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: b600b7d67de24eab5395f085a2a424159b14ff28
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: a0a3b7ad7757439b5f73c38e759761f671ca2e17
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/10/2017
 
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Azure のロールベースのアクセス制御のための組み込みロール
@@ -55,7 +55,7 @@ Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、
 | [Data Factory の共同作業者](#data-factory-contributor) |Data Factory と Data Factory に含まれる子リソースを作成および管理できます。 |
 | [DevTest Labs ユーザー](#devtest-labs-user) |すべてを表示し、仮想マシンを接続、開始、再起動、シャットダウンできます |
 | [DNS ゾーン共同作成者](#dns-zone-contributor) |DNS ゾーンとレコードを保護できます |
-| [Document DB アカウントの共同作業者](#documentdb-account-contributor) |DocumentDB アカウントを管理できます |
+| [Azure Cosmos DB アカウントの共同作業者](#documentdb-account-contributor) |Azure Cosmos DB アカウントを管理できます |
 | [Intelligent Systems アカウントの共同作業者](#intelligent-systems-account-contributor) |Intelligent Systems アカウントを管理できます |
 | [監視リーダー](#monitoring-reader) |すべての監視データを読み取ることができます |
 | [監視共同作業者](#monitoring-contributor) |監視データを読み取り、監視設定を編集できます |
@@ -365,8 +365,8 @@ DNS ゾーンとレコードを保護できます。
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Support/\* |サポート チケットの作成と管理 |
 
-### <a name="documentdb-account-contributor"></a>Document DB アカウントの共同作業者
-DocumentDB アカウントを管理できます
+### <a name="azure-cosmos-db-account-contributor"></a>Azure Cosmos DB アカウントの共同作業者
+Azure Cosmos DB アカウントを管理できます
 
 | **アクション** |  |
 | --- | --- |

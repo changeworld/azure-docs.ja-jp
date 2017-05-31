@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 12/19/2016
-ms.author: klam
-translationtype: Human Translation
+ms.author: LADocs; klam
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2fafb3c127183c4903ed7ee0da5811988db9116c
 ms.openlocfilehash: 9a542f83eb35b159de04f0395cd850376da498de
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/02/2017
 
 ---

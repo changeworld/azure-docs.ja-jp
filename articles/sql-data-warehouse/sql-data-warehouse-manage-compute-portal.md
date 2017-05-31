@@ -3,7 +3,7 @@ title: "Azure SQL Data Warehouse のコンピューティング能力の管理 (
 description: "コンピューティング能力を管理するための Azure ポータルのタスク。 DWU を調整することで、コンピューティング リソースをスケーリングします。 また、コストを節約するために、コンピューティング リソースを一時停止および再開します。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: hirokib
 manager: jhubbard
 editor: 
 ms.assetid: 233b0da5-4abd-4d1d-9586-4ccc5f50b071
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
 ms.date: 10/31/2016
-ms.author: barbkess
-translationtype: Human Translation
+ms.author: elbutter;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f9814fc0011153a25489d60d696bb567edfcebc4
 ms.openlocfilehash: a86b041424ce1757fd45c7a39350f4c4e66ee265
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/20/2017
 
 

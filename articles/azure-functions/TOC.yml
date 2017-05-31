@@ -45,12 +45,22 @@
     href: functions-create-serverless-api.md
 - name: 概念
   items:
-  - name: ホスティング プラン
+  - name: 従量課金プランと App Service プラン
     href: functions-scale.md
   - name: トリガーとバインド
     href: functions-triggers-bindings.md
+  - name: 言語
+    items:
+    - name: 'C# の関数の概念'
+      href: functions-reference-csharp.md
+    - name: 'F# の関数の概念'
+      href: functions-reference-fsharp.md
+    - name: JavaScript の関数の概念
+      href: functions-reference-node.md    
 - name: ハウツー ガイド
   items:
+  - name: 開発者ガイド
+    href: functions-reference.md
   - name: Azure Functions のテスト
     href: functions-test-a-function.md
   - name: ローカルでの開発とデバッグ
@@ -65,15 +75,14 @@
     href: functions-monitoring.md
   - name: Functions ランタイムのインストール
     href: functions-runtime-install.md
+  - name: SQL Database への接続
+    href: functions-scenario-database-table-cleanup.md
+  - name: Open API 2.0 定義の作成
+    href: functions-api-definition-getting-started.md     
+  - name: Azure Functions のベスト プラクティス
+    href: functions-best-practices.md     
 - name: リファレンス
   items:
-  - name: 関数アプリを開発する
-    href: functions-reference.md
-    items:
-    - name: Open API 2.0
-      href: functions-api-definition.md
-  - name: Azure Functions のベスト プラクティス
-    href: functions-best-practices.md
   - name: バインド
     items:
     - name: Cosmos DB のバインド
@@ -106,14 +115,8 @@
       href: functions-bindings-timer.md
     - name: Twilio 出力のバインド
       href: functions-bindings-twilio.md
-  - name: フレームワーク
-    items:
-    - name: 'C#'
-      href: functions-reference-csharp.md
-    - name: 'F#'
-      href: functions-reference-fsharp.md
-    - name: JavaScript
-      href: functions-reference-node.md
+  - name: OpenAPI リファレンス
+    href: functions-api-definition.md     
 - name: リソース
   items:
   - name: 価格

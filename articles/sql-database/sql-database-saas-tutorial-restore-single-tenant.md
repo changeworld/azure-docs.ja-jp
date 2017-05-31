@@ -1,5 +1,5 @@
 ---
-title: "シングル テナント データベースの復元 (Azure SQL Database を使用する SaaS アプリケーションの例) | Microsoft Docs"
+title: "マルチテナント アプリで Azure SQL Database を復元する | Microsoft Docs"
 description: "データを誤って削除した場合にシングル テナントの SQL データベースを復元する方法について説明します"
 keywords: "SQL データベース チュートリアル"
 services: sql-database
@@ -17,10 +17,10 @@ ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: billgib;sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: aa5759645713c5e5bc4c4f1d2b10f032efc7eae2
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 8567061a98ec5a0619a8e10cb44501dd88d8166c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -44,7 +44,7 @@ Wingtip Tickets SaaS アプリは、テナントごとのデータベース モ�
 
 このチュートリアルを完了するには、次の前提条件を満たしておく必要があります。
 
-* WTP アプリがデプロイされている。 5 分以内にデプロイを完了する方法については、[WTP SaaS アプリケーションのデプロイと確認に関するページ](sql-database-saas-tutorial.md)をご覧ください。
+* WTP アプリがデプロイされている。 5 分未満でデプロイする方法については、[WTP SaaS アプリケーションのデプロイと確認](sql-database-saas-tutorial.md)に関するページを参照してください。
 * Azure PowerShell がインストールされている。 詳しくは、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」をご覧ください。
 
 ## <a name="introduction-to-the-saas-tenant-restore-pattern"></a>SaaS テナントの復元パターンの概要

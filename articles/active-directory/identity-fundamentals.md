@@ -4,18 +4,20 @@ description:
 keywords: 
 author: jeffgilb
 manager: femila
-ms.date: 5/1/2017
+ms.date: 5/23/2017
 ms.topic: article
 ms.prod: 
 ms.service: azure
 ms.technology: 
 ms.assetid: 
 ms.reviewer: jsnow
+ms.custom: it-pro
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
 ms.openlocfilehash: bc67058d026219d676430a55fe8cfdd3f09cf295
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/02/2017
+
 
 
 ---

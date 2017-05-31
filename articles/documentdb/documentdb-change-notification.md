@@ -1,14 +1,15 @@
 ---
 redirect_url: https://docs.microsoft.com/azure/documentdb/documentdb-change-feed-hl7-fhir-logic-apps
 ROBOTS: NOINDEX, NOFOLLOW
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 1b5ec3cb1c2aba86570c6f1753d9142c0d0349ce
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 58c0ea0bd8bda994c8314d2866304cb3ab367bfd
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="notifications-for-new-or-changed-documentdb-resources-using-logic-apps"></a>Logic Apps を使用した DocumentDB リソースの新規作成や変更の通知
+# <a name="notifications-for-new-or-changed-azure-cosmos-db-resources-using-logic-apps"></a>Logic Apps を使用した新しい Azure Cosmos DB リソースまたは変更された Azure Cosmos DB リソースの通知
 この記事は、Azure DocumentDB コミュニティ フォーラムの 1 つに投稿されていた質問を基にして作成しました。 その質問とは " **DocumentDB はリソースの変更に関する通知をサポートしていますか**" というものでした。
 
 私は長年 BizTalk Server に携わっているのですが、変更通知は [WCF LOB アダプター](https://msdn.microsoft.com/library/bb798128.aspx)を使用している場合にはごく一般的なシナリオです。 そこで私は、この機能を DocumentDB の新規作成または変更されたドキュメントに対しても実装できるかどうかを調べることにしました。
@@ -18,7 +19,7 @@ ms.lasthandoff: 03/29/2017
 ## <a name="use-case"></a>ユース ケース
 この記事で扱うユース ケースは次のとおりです。
 
-DocumentDB は、国際的な医療 IT 標準である Health Level Seven International (HL7) の Fast Healthcare Interoperability Resources (FHIR) 仕様のドキュメントを管理するリポジトリとして使用されています。 あなたは自分で用意した API およびロジック アプリを DocumentDB データベースと組み合わせて HL7 FHIR サーバーを構成していると仮定しましょう。  医療機関が患者のデータを DocumentDB "Patients" データベースに格納しようとしています。 この患者データベース内には、Clinical、Identification など、複数のコレクションがあります。患者の情報は Identification に分類されています。  あなたは "Patient" という名前のコレクションを用意しました。
+Azure Cosmos DB は、国際的な医療 IT 標準である Health Level Seven International (HL7) の Fast Healthcare Interoperability Resources (FHIR) 仕様のドキュメントを管理するリポジトリとして使用されています。 API およびロジック アプリを Azure Cosmos DB データベースと組み合わせて HL7 FHIR サーバーを構成していると仮定しましょう。  医療機関が患者のデータを Azure Cosmos DB "Patients" データベースに格納しようとしています。 この患者データベース内には、Clinical、Identification など、複数のコレクションがあります。患者の情報は Identification に分類されています。  あなたは "Patient" という名前のコレクションを用意しました。
 
 心臓科では、個人の健康状態と運動に関するデータを追跡していますが、 新規作成された患者レコードや変更された患者レコードを検索するのに時間がかかっています。 同科は IT 部門に、患者レコードが新規作成または変更されたときに通知を受け取る方法はないかとたずねました。  
 
@@ -1113,7 +1114,4 @@ Patient BLOB ファイル情報が次のように表示されます。
 
 ## <a name="next-steps"></a>次のステップ
 [GitHub](https://github.com/HEDIDIN/DocDbNotifications) で提供されているロジック アプリのコードをダウンロードして使用してみてください。 このアプリケーションをベースとして活用し、変更を加えたコードをぜひリポジトリに投稿してください。 
-
-DocumentDB をさらに詳しく知りたい場合は、こちらの [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)をご覧ください。
-
 

@@ -14,9 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
-translationtype: Human Translation
+ms.custom: aaddev
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 9c40d273f102339fac8ea633c870b869d10106a7
 ms.openlocfilehash: ccbc051f49220e824782ed4831a31ab1a716570a
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/17/2017
 
 

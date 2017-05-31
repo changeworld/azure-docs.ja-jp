@@ -14,6 +14,7 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: xerners
+ms.custom: aaddev
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
 ms.openlocfilehash: 8d91d551cbb508485ca27d77b23eb319293e4237

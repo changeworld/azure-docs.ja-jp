@@ -12,10 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 4d3ca2b9c1147c74644e9365f97ac3ed4e5c41f5
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
+ms.openlocfilehash: 74a8742d95e69fb8d7ad962a7962f6ff41ff1919
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/19/2017
 
 ---
 #<a name="batch-documentation"></a>Batch のドキュメント
@@ -107,6 +108,24 @@ Batch を使用して、大規模な並列コンピューティングやハイ�
                     </div>
                     <div class="cardText">
                         <h3>Python で Batch の使用を開始する</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+     <li>
+        <a href="/azure/batch/batch-nodejs-get-started">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="/media/logos/logo_nodejs.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Node.js で Batch の使用を開始する</h3>
                     </div>
                 </div>
             </div>

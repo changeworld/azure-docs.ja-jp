@@ -16,10 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 03/17/2017
 ms.author: shkurhek
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: a139b97e20685a5ced513c1fd180a74e91c497a7
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 36a9fd78f5c53891f38bc3a8356cef666f4d0ca2
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 ---
 # <a name="what-is-sql-database-introduction-to-sql-database"></a>SQL Database とは SQL Database の概要
@@ -49,7 +50,7 @@ SQL Database サービスには、Basic、Standard、Premium、および Premium
 ## <a name="keep-your-app-and-business-running"></a>アプリケーションとビジネスの継続的な稼働
 Microsoft が管理するデータセンターのグローバル ネットワークによって強化された、Azure の業界をリードする可用性 99.99% のサービス レベル アグリーメント [(SLA)](http://azure.microsoft.com/support/legal/sla/) により、アプリケーションの 24 時間 365 日の継続的な稼働が可能になります。 すべての SQL Database で、組み込みのセキュリティ、フォールト トレランス、[データ保護](sql-database-automated-backups.md)を利用できます。これらは、本来なら自身で購入または設計し、構築、管理する必要があります。 SQL Database では、サービス レベルごとに、包括的な一連のビジネス継続性に関する機能とオプションが用意されており、これらを使用すると、稼働させてその状態を維持することができます。 [ポイントインタイム リストア](sql-database-recovery-using-backups.md)を使用すると、データベースを 35 日間分さかのぼって以前の状態に戻すことができます。 [長期的なバックアップ保有期間](sql-database-long-term-retention.md)を構成すると、セキュリティで保護されたコンテナーにバックアップを最大で 10 年間格納しておくことができます。 さらに、データベースをホストしているデータ センターで障害が発生した場合は、[最新のバックアップの geo 冗長コピー](sql-database-recovery-using-backups.md)からデータベースを復元することができます。 必要であれば、データ センターの停止時に迅速にフェールオーバーできるように、1 つまたは複数のリージョンに [geo 冗長読み取り可能レプリカ](sql-database-geo-replication-overview.md)を構成することもできます。 別の地理的リージョンでの読み取りパフォーマンスを向上させたり、[ダウンタイムなしでアプリケーションをアップグレード](sql-database-manage-application-rolling-upgrade.md)したりするために、これらのレプリカを使用することもできます。 
 
-![SQL Database Geo-Replication](./media/sql-database-technical-overview/azure_sqldb_map.png)
+![SQL Database の Geo レプリケーション](./media/sql-database-technical-overview/azure_sqldb_map.png)
 
 それぞれのサービス階層で使用できるさまざまなビジネス継続性機能の詳細については、「 [ビジネス継続性](sql-database-business-continuity.md) 」をご覧ください。
 

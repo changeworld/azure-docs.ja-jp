@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/08/2017
+ms.date: 05/10/2017
 ms.author: seanmck
-translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 6c0c6b24f9d669e7ed45e6b2acf2e75390e5e1f4
-ms.lasthandoff: 03/09/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 2bfbb3b8f7282ec8ae8abe9597230a3485221ecf
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/11/2017
 
 ---
 
@@ -44,13 +45,13 @@ OS の更新に伴う課題は、それを行うには通常はコンピュー�
 
 それまでの間は、クラスター管理者が安全に各ノードの修正プログラムの適用を手動で開始するために使うことができる[スクリプトが提供](https://blogs.msdn.microsoft.com/azureservicefabric/2017/01/09/os-patching-for-vms-running-service-fabric/)されています。
 
-### <a name="can-i-use-large-virtual-scale-sets-in-my-sf-cluster"></a>SF クラスターで大規模な仮想マシン スケール セットを使用できますか? 
+### <a name="can-i-use-large-virtual-machine-scale-sets-in-my-sf-cluster"></a>SF クラスターで大規模な仮想マシン スケール セットを使用できますか? 
 
 **簡単な回答** - いいえ。 
 
-**詳しい回答** - 大規模な仮想マシン スケール セット (VMSS) では、最大 1000 台の VM インスタンスにスケーリングできますが、これは配置グループ (PG) を使用して実行されます。 障害ドメイン (FD) とアップグレード ドメイン (UD) は、Service Fabric が FD と UD を使用してサービス レプリカ/サービス インスタンスの配置を決定する配置グループ内でのみ整合性が維持されます。 FD 数と UD 数は配置グループ内でのみ比較可能であるため、SF で使用することはできません。 たとえば、PG1 の VM1 のトロポジが FD=0 であり、PG2 の VM9 のトポロジが FD=4 の場合、VM1 と VM2 が 2 つの異なるハードウェア ラック上にあることを意味するわけではないため、SF はこの例の FD 値を使用して配置を決定することはできません。
+**詳しい回答** - 大規模な仮想マシン スケール セットでは、最大 1000 台の VM インスタンスにスケーリングできますが、これは配置グループ (PG) を使用して実行されます。 障害ドメイン (FD) とアップグレード ドメイン (UD) は、Service Fabric が FD と UD を使用してサービス レプリカ/サービス インスタンスの配置を決定する配置グループ内でのみ整合性が維持されます。 FD 数と UD 数は配置グループ内でのみ比較可能であるため、SF で使用することはできません。 たとえば、PG1 の VM1 のトロポジが FD=0 であり、PG2 の VM9 のトポロジが FD=4 の場合、VM1 と VM2 が 2 つの異なるハードウェア ラック上にあることを意味するわけではないため、SF はこの例の FD 値を使用して配置を決定することはできません。
 
-レベル 4 の負荷分散をサポートしていないなど、現在、大規模な VMSS に関する問題がほかにもあります。 詳細については、[大規模な VMSS](../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) に関する記事をご覧ください。
+レベル 4 の負荷分散をサポートしていないなど、現在、大規模な仮想マシン スケールセットに関する問題がほかにもあります。 詳細については、[大規模なスケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md)に関する記事をご覧ください。
 
 
 
@@ -76,6 +77,17 @@ OS の更新に伴う課題は、それを行うには通常はコンピュー�
 
 アプリケーションをデプロイする前にテスト用のクラスターを作成する場合は、[継続的インテグレーション/継続的配置パイプライン](service-fabric-set-up-continuous-integration.md)の一部としてこれらのクラスターを作成することをお勧めします。
 
+## <a name="container-support"></a>コンテナー サポート
+
+### <a name="why-are-my-containers-that-are-deployed-to-sf-are-unable-to-resolve-dns-addresses"></a>SF にデプロイされたコンテナーが DNS アドレスを解決できないのはなぜですか?
+
+この問題は、5.6.204.9494 バージョンのクラスターで報告されています。 
+
+**対応策**: [このドキュメント](service-fabric-dnsservice.md)に従って、クラスター内の DNS サービス ファブリック サービスを有効にします。
+
+**修正**: 5.6.204.9494 より高いサポートされているクラスター バージョンが使用可能な場合は、そのバージョンにアップグレードします。 クラスターが自動アップグレードに設定されている場合、クラスターは、この問題が解決されているバージョンに自動的にアップグレードされます。
+
+  
 ## <a name="application-design"></a>アプリケーションの設計
 
 ### <a name="whats-the-best-way-to-query-data-across-partitions-of-a-reliable-collection"></a>Reliable Collection のパーティション全体のデータを照会する最善の方法は何ですか?

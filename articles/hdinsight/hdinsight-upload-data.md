@@ -1,6 +1,7 @@
 ---
 title: "HDInsight での Hadoop ジョブ用データのアップロード | Microsoft Docs"
 description: "Azure CLI、Azure Storage エクスプローラー、Azure PowerShell、Hadoop コマンド ライン、または Sqoop を使用して、Hadoop ジョブ用データを HDInsight にアップロードする方法と HDInsight の Hadoop ジョブ用データにアクセスする方法について説明します。"
+keywords: "ETL Hadoop, Hadoop へのデータの取得, Hadoop ロード データ"
 services: hdinsight,storage
 documentationcenter: 
 tags: azure-portal
@@ -9,17 +10,18 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 56b913ee-0f9a-4e9f-9eaf-c571f8603dd6
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 05/12/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 0caac0c7ad76df7e7fa657227339d1df8b4a3c77
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 134afd3495c555f85e8838cbe0344a3a48534950
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -187,7 +189,7 @@ Azure Storage エクスプローラーを使用するには、Azure Storage の�
 
 1. Azure Storage エクスプローラーを実行します。 ストレージ エクスプローラーを初めて実行した場合は、**ストレージ アカウント名**と**ストレージ アカウント キー**の入力を求められます。 ストレージ エクスプローラーを以前に実行したことがある場合は、**[追加]** ボタンをクリックして、新しいストレージ アカウント名とストレージ アカウント キーを追加します。
 
-    HDinsight クラスターで使用されるストレージ アカウントの名前とキーを入力し、**[保存/開く]** をクリックします。
+    HDInsight クラスターで使用されるストレージ アカウントの名前とキーを入力し、**[保存/開く]** をクリックします。
 
     ![HDI.AzureStorageExplorer][image-azure-storage-explorer]
 2. インターフェイスの左側にあるコンテナーの一覧で、HDInsight クラスターに関連付けられているコンテナーの名前をクリックします。 既定では、これは HDInsight クラスターの名前ですが、クラスターの作成時に特定の名前を入力した場合は異なることがあります。

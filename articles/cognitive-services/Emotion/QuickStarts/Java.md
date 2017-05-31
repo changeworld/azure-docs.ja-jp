@@ -7,7 +7,7 @@ manager: yutkuo
 ms.service: cognitive-services
 ms.technology: emotion
 ms.topic: article
-ms.date: 03/02/2017
+ms.date: 05/23/2017
 ms.author: anroth
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
@@ -26,7 +26,7 @@ This article provides information and a code sample to help you quickly get star
 
 ## <a name="recognize-emotions-java-for-android-example-request"></a>Recognize Emotions Java for Android Example Request
 
-```Java
+```java
 // // This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)
 import java.net.URI;
 import org.apache.http.HttpEntity;
@@ -46,6 +46,9 @@ public class Main
 
         try
         {
+            // NOTE: You must use the same region in your REST call as you used to obtain your subscription keys.
+            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the 
+            //   URL below with "westcentralus".
             URIBuilder uriBuilder = new URIBuilder("https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize");
 
             URI uri = uriBuilder.build();

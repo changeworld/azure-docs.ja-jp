@@ -1,6 +1,8 @@
 1. 統合セットアップ インストール ファイルを実行します。
-2. **[開始する前に]** で **[Install the configuration server and process server] \(構成サーバーとプロセス サーバーをインストールする)** を選択します。
+2. **[開始する前に]** で **[Install the configuration server and process server]\(構成サーバーとプロセス サーバーをインストールする\)** を選択します。
+
     ![開始する前に](./media/site-recovery-add-configuration-server/combined-wiz1.png)
+
 3. **[Third-Party Software License (サードパーティ製ソフトウェア ライセンス)]** で、**[同意する]** をクリックして MySQL をダウンロードし、インストールします。
 
     ![サードパーティ製ソフトウェア](./media/site-recovery-add-configuration-server/combined-wiz2.png)
@@ -9,9 +11,11 @@
     ![登録](./media/site-recovery-add-configuration-server/combined-wiz3.png)
 5. **[インターネット設定]** で、構成サーバーで実行されているプロバイダーがインターネット経由で Azure Site Recovery に接続する方法を指定します。
 
-   * マシンで現在セットアップされているプロキシを使用して接続する場合は、**[Connect with existing proxy settings] \(既存のプロキシ設定を使用して接続する)** を選択します。
-   * プロバイダーから直接接続するには、**[Connect directly without a proxy] \(プロキシなしで直接接続する)** を選択します。
-   * 既存のプロキシで認証が必要な場合、またはプロバイダー接続にカスタム プロキシを使用する場合は、**[Connect with custom proxy settings (カスタム プロキシ設定を使用して接続する)]** を選択します。
+   a. マシンで現在セットアップされているプロキシを使用して接続する場合は、**[プロキシ サーバーを使用して Azure Site Recovery に接続する]** を選択します。
+
+   b. プロバイダーから直接接続するように指定する場合は、**[プロキシを使用せずに直接 Azure Site Recovery に接続する]** を選択します。
+
+   c. 既存のプロキシで認証が必要な場合、またはプロバイダー接続にカスタム プロキシを使用する場合は、**[Connect with custom proxy settings (カスタム プロキシ設定を使用して接続する)]** を選択します。
 
      * カスタム プロキシを使用する場合、アドレス、ポート、資格情報を指定する必要があります。
      * プロキシを使用している場合は、[前提条件](#prerequisites)に記載されている URL をあらかじめ許可しておく必要があります。
@@ -23,7 +27,7 @@
 7. **[MySQL Configuration (MySQL の構成)]** で、インストールする MySQL サーバー インスタンスにログオンするための資格情報を作成します。
 
     ![MySQL](./media/site-recovery-add-configuration-server/combined-wiz6.png)
-8. **[環境の詳細]** で、VMware VM をレプリケートするかどうかを選択します。 レプリケートする場合、PowerCLI 6.0 がインストールされているかどうかがチェックされます。
+8. **[環境の詳細]** で、VMware VM をレプリケートするかどうかを選択します。 レプリケートする場合、PowerCLI 6.0 がインストールされているかどうかが確認されます。
 
     ![MySQL](./media/site-recovery-add-configuration-server/combined-wiz7.png)
 

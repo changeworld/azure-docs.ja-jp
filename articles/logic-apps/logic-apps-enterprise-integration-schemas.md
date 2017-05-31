@@ -13,10 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2016
-ms.author: estfan
-translationtype: Human Translation
+ms.author: LADocs; padmavc
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 7884032fd4b5a72ca7e2f2dc2830b0a7c2220e94
 ms.openlocfilehash: 5d8ddd4449d3b160dbca7496c801e75dcf4a44e5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -58,11 +60,11 @@ ms.openlocfilehash: 5d8ddd4449d3b160dbca7496c801e75dcf4a44e5
 
 **アクセス レベルを確認するには**
 
-1.  **Azure ストレージ エクスプローラー**を開きます。 
+1.    **Azure ストレージ エクスプローラー**を開きます。 
 
-2.  **[BLOB コンテナー]** で、目的の BLOB コンテナーを選択します。 
+2.    **[BLOB コンテナー]** で、目的の BLOB コンテナーを選択します。 
 
-3.  **[セキュリティ]**、**[アクセス レベル]** の順に選択します。
+3.    **[セキュリティ]**、**[アクセス レベル]** の順に選択します。
 
 BLOB のセキュリティ レベルが **[パブリック]** の場合は、次の手順に従います。
 
@@ -132,10 +134,5 @@ BLOB のセキュリティ レベルが **[匿名アクセスはありません]
 
 ## <a name="next-steps"></a>次のステップ
 * [Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")  
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

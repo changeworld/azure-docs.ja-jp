@@ -14,12 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 05/10/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 4502ac63428446f61b5876c73ed9a6f5065159cd
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: 1bd2b85b445c17274609db487e9824c40ecfb915
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -27,25 +28,17 @@ ms.lasthandoff: 04/12/2017
 
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
 
-Apache Oozie を使用して、Hive と Sqoop を使用するワークフローを定義し、Linux ベースの HDInsight クラスターでワークフローを実行する方法について説明します。
-
-Apache Oozie は Hadoop ジョブを管理するワークフローおよび調整システムです。 Hadoop スタックと統合されていて、Apache MapReduce、Apache Pig、Apache Hive、Apache Sqoop の Hadoop ジョブをサポートしています。 Java プログラムやシェル スクリプトなど、システムに固有のジョブのスケジュールを設定する際にも使用できます。
+HDInsight で Apache Oozie と Hadoop を使用する方法を説明します。 Apache Oozie は Hadoop ジョブを管理するワークフローおよび調整システムです。 Hadoop スタックと統合されていて、Apache MapReduce、Apache Pig、Apache Hive、Apache Sqoop の Hadoop ジョブをサポートしています。 Java プログラムやシェル スクリプトなど、システムに固有のジョブのスケジュールを設定する際にも使用できます。
 
 > [!NOTE]
 > HDInsight でワークフローを定義するもう 1 つのオプションは、Azure Data Factory です。 Azure Data Factory の詳細については、「[Data Factory で Pig と Hive を使用する][azure-data-factory-pig-hive]」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを読み始める前に、次の項目を用意する必要があります。
-
-* **Azure CLI**: [Azure CLI のインストール](../cli-install-nodejs.md)
-
 * **HDInsight クラスター**: [Linux での HDInsight の使用](hdinsight-hadoop-linux-tutorial-get-started.md)
 
   > [!IMPORTANT]
-  > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。
-
-* **Azure SQL Database**: このドキュメントの手順を使用して作成します。
+  > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、「[HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)」を参照してください。
 
 ## <a name="example-workflow"></a>ワークフローの例
 
@@ -53,7 +46,7 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 
 ![ワークフロー図][img-workflow-diagram]
 
-1. Hive アクションでは、HiveQL スクリプトを実行して、HDInsight に含まれている **hivesampletable** からレコードを抽出します。 各データ行は、特定のモバイル デバイスからのアクセスを表します。 レコードの形式は次のようになります。
+1. Hive アクションでは、HiveQL スクリプトを実行して、HDInsight に含まれている **hivesampletable** からレコードを抽出します。 各データ行は、特定のモバイル デバイスからのアクセスを表します。 レコードの形式は次のテキストのようになります。
 
         8       18:54:20        en-US   Android Samsung SCH-i500        California     United States    13.9204007      0       0
         23      19:19:44        en-US   Android HTC     Incredible      Pennsylvania   United States    NULL    0       0
@@ -77,7 +70,7 @@ hdfs dfs -mkdir -p /tutorials/useoozie/data
 ```
 
 > [!NOTE]
-> `-p` パラメーターを指定すると、ディレクトリがまだ存在しない場合に、すべてのディレクトリがこのパスに作成されます。 **data** ディレクトリは、**useooziewf.hql** スクリプトで使用するデータを保持するために使用されます。
+> `-p` パラメーターを指定すると、すべてのディレクトリがこのパスに作成されます。 **data** ディレクトリは、**useooziewf.hql** スクリプトで使用するデータを保持するために使用されます。
 
 次のコマンドを実行して、Hive ジョブと Sqoop ジョブの実行時に Oozie がユーザー アカウントを偽装できるようにします。 **USERNAME** をログイン名に置き換えます。
 
@@ -85,7 +78,8 @@ hdfs dfs -mkdir -p /tutorials/useoozie/data
 sudo adduser USERNAME users
 ```
 
-ユーザーが既に users のメンバーであることを示すエラーが返された場合は無視してかまいません。
+> [!NOTE]
+> ユーザーが既に `users` グループのメンバーであることを示すエラーは無視できます。
 
 ## <a name="add-a-database-driver"></a>データベース ドライバーの追加
 
@@ -109,13 +103,13 @@ hdfs dfs -put /usr/share/java/sqljdbc_4.1/enu/sqljdbc*.jar /tutorials/useoozie/
 
     詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-2. SSH 接続から、次のコマンドを使用して、新しいファイルを作成します。
+2. SSH 接続から、次のコマンドを使用して、ファイルを作成します。
 
     ```
     nano useooziewf.hql
     ```
 
-3. nano エディターが開いたら、ファイルの内容として次のスクリプトを使用します。
+3. nano エディターが開いたら、ファイルの内容として次のクエリを使用します。
 
     ```hiveql
     DROP TABLE ${hiveTableName};
@@ -132,14 +126,15 @@ hdfs dfs -put /usr/share/java/sqljdbc_4.1/enu/sqljdbc*.jar /tutorials/useoozie/
 
     ワークフロー定義ファイル (このチュートリアルでは workflow.xml) は、実行時にこの HiveQL スクリプトにこれらの値を渡します。
 
-4. Ctrl + X キーを押してエディターを終了します。 メッセージが表示されたら、**Y** を選択してファイルを保存し、**Enter** キーを押して、ファイル名として **useooziewf.hql** を使用します。
+4. エディターを終了するには、Ctrl + X キーを押します。 メッセージが表示されたら、**Y** を選択してファイルを保存し、**Enter** キーを押して、ファイル名として **useooziewf.hql** を使用します。
+
 5. 次のコマンドを使用して、**useooziewf.hql** を **wasbs:///tutorials/useoozie/useooziewf.hql** にコピーします。
 
     ```
     hdfs dfs -put useooziewf.hql /tutorials/useoozie/useooziewf.hql
     ```
 
-    これらのコマンドにより、このクラスターに関連付けられている Azure ストレージ アカウントに **useooziewf.hql** ファイルが保存されるため、クラスターが削除されてもファイルは保持されます。 これにより、ジョブとワークフローを維持しながら、使用されていないクラスターを削除することでコストを削減できます。
+    これらのコマンドにより、このクラスターに関連付けられている Azure ストレージ アカウントに **useooziewf.hql** ファイルが保存されるため、クラスターが削除されてもファイルは保持されます。
 
 ## <a name="define-the-workflow"></a>ワークフローの定義
 
@@ -151,7 +146,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
     nano workflow.xml
     ```
 
-2. nano エディターが開いたら、ファイルの内容として次のコードを入力します。
+2. nano エディターが開いたら、ファイルの内容として次の XML を入力します。
 
     ```xml
     <workflow-app name="useooziewf" xmlns="uri:oozie:workflow:0.2">
@@ -208,14 +203,11 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 
     このワークフローでは、2 つのアクションが定義されています。
 
-   * **RunHiveScript**: 開始アクションです。このアクションで **useooziewf.hql Hive** スクリプトを実行します。
+   * **RunHiveScript**: 開始アクションです。このアクションで **useooziewf.hql** Hive スクリプトを実行します。
 
    * **RunSqoopExport**: Sqoop を使用して、作成されたデータを Hive スクリプトから SQL Database にエクスポートします。 このアクションは、**RunHiveScript** アクションが正常に実行された場合にのみ実行されます。
 
-     > [!NOTE]
-     > Oozie ワークフローとワークフロー アクションの使用の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] (HDInsight バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] (HDInsight バージョン 2.1 の場合) を参照してください。
-
-     このワークフローには、このドキュメントで後述するジョブ定義で使用する値に置き換えられる複数のエントリ ( `${jobTracker}`など) が含まれています。
+     このワークフローには、`${jobTracker}` などのいくつかのエントリがあります。 これらのエントリは、ジョブ定義で使用する値で置き換えられます。 ジョブ定義は、このドキュメントの後半で作成します。
 
      また、Sqoop セクションの `<archive>sqljdbc4.jar</arcive>` エントリにも注意してください。 このエントリは、このアクションの実行時にこのアーカイブを Sqoop で使用できるようにすることを Oozie に指示します。
 
@@ -229,7 +221,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 
 ## <a name="create-the-database"></a>データベースの作成
 
-[SQL Database の作成](../sql-database/sql-database-get-started.md)に関するドキュメントに記載されている手順に従って、新しいデータベースを作成します。 データベースを作成するときに、データベース名として **oozietest** を使用します。 この名前はデータベース サーバーで使用されます。これは次のセクションで必要となるため、メモしておいてください。
+Azure SQL Database を作成するには、[SQL Database の作成](../sql-database/sql-database-get-started.md)に関するドキュメントに記載されている手順に従います。 データベースを作成するときに、データベース名として `oozietest` を使用します。 また、データベース サーバーの名前を書き留めておきます。
 
 ### <a name="create-the-table"></a>テーブルを作成する
 
@@ -249,7 +241,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <sqlLogin> -P <sqlPassword> -p 1433 -D oozietest
     ```
 
-    次のような出力が返されます。
+    次のテキストのような出力が返されます。
 
         locale is "en_US.UTF-8"
         locale charset is "UTF-8"
@@ -268,7 +260,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
     GO
     ```
 
-    `GO` ステートメントを入力すると、前のステートメントが評価されます。 これにより、Sqoop による書き込み先となる **mobiledata** という名前の新しいテーブルが作成されます。
+    `GO` ステートメントを入力すると、前のステートメントが評価されます。 これらのステートメントにより、ワークフローで使用される **mobiledata** という名前のテーブルが作成されます。
 
     次を使用して、テーブルが作成されたことを確認します。
 
@@ -277,7 +269,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
     GO
     ```
 
-    次のような出力が表示されます。
+    次のテキストのような出力が表示されます。
 
     ```
     TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE
@@ -288,15 +280,15 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 
 ## <a name="create-the-job-definition"></a>ジョブ定義の作成
 
-ジョブ定義では、workflow.xml とワークフローで使用される他のファイル (useooziewf.hql など) の検索場所を記述します。また、ワークフローおよび関連するファイル内で使用されるプロパティの値も定義します。
+ジョブ定義には、workflow.xml の検索場所を記述します。 ワークフローで使用されるその他のファイル (useooziewf.hql など) の検索場所についても記述します。また、ワークフローおよび関連するファイル内で使用されるプロパティの値も定義します。
 
-1. 次のコマンドを使用して、既定のストレージの完全な WASB アドレスを取得します。 これは構成ファイルですぐに使用されます。
+1. 次のコマンドを使用して、既定のストレージの完全なアドレスを取得します。 このアドレスは構成ファイルですぐに使用されます。
 
     ```
     sed -n '/<name>fs.default/,/<\/value>/p' /etc/hadoop/conf/core-site.xml
     ```
 
-    次のような情報が返されます。
+    このコマンドでは、次の XML のような情報が返されます。
 
     ```xml
     <name>fs.defaultFS</name>
@@ -308,13 +300,13 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 
     以下のステップで使用するため、`<value>` 要素の内容を保存します。
 
-2. 次のコマンドを使用して、クラスターのヘッド ノードの FQDN を取得します。 これは、クラスターの JobTracker アドレスに使用されます。 これは構成ファイルですぐに使用されます。
+2. 次のコマンドを使用して、クラスターのヘッド ノードの FQDN を取得します。 この情報は、クラスターの JobTracker アドレスに使用されます。
 
     ```
     hostname -f
     ```
 
-    次のような情報が返されます。
+    次のテキストのような情報が返されます。
 
     ```hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net```
 
@@ -326,7 +318,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
     nano job.xml
     ```
 
-4. nano エディターが開いたら、ファイルの内容として次のスクリプトを使用します。
+4. nano エディターが開いたら、ファイルの内容として次の XML を使用します。
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -419,7 +411,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
     sed -n '/<name>oozie.base.url/,/<\/value>/p' /etc/oozie/conf/oozie-site.xml
     ```
 
-    次のような情報が返されます。
+    次の XML のような情報が返されます。
 
     ```xml
     <name>oozie.base.url</name>
@@ -441,17 +433,20 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
     oozie job -config job.xml -submit
     ```
 
-    このコマンドでは、 **job.xml** からジョブ情報を読み込んで Oozie に送信しますが、ジョブは実行しません。
+    このコマンドでは、**job.xml** からジョブ情報を読み込んで Oozie に送信しますが、ジョブは実行しません。
 
-    コマンドが完了すると、ジョブの ID が返されます。 たとえば、「 `0000005-150622124850154-oozie-oozi-W`」のように入力します。 これはジョブの管理に使用されます。
+    コマンドが完了すると、ジョブの ID が返されます。 たとえば、「 `0000005-150622124850154-oozie-oozi-W`」のように入力します。 この ID はジョブの管理に使用されます。
 
-4. 次のコマンドを使用して、ジョブの状態を表示します。 前のコマンドによって返されたジョブ ID を入力します。
+4. 次のコマンドを使用して、ジョブの状態を表示します。
 
     ```
     oozie job -info <JOBID>
     ```
 
-    次のような情報が返されます。
+    > [!NOTE]
+    > `<JOBID>` を前の手順で返された ID に置き換えます。
+
+    次のテキストのような情報が返されます。
 
     ```
     Job ID : 0000005-150622124850154-oozie-oozi-W
@@ -470,13 +465,16 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
     ------------------------------------------------------------------------------------------------------------------------------------
     ```
 
-    このジョブの状態は `PREP` です。これは、ジョブは送信済みですが、まだ開始されていないことを示しています。
+    このジョブの状態は `PREP` です。 これは、ジョブは送信済みですが、まだ開始されていないことを示しています。
 
-5. 次のコマンドを使用してジョブを開始します。
+5. ジョブを開始するには次のコマンドを使用します。
 
     ```
     oozie job -start JOBID
     ```
+
+    > [!NOTE]
+    > `<JOBID>` を先ほど返された ID で置き換えます。
 
     このコマンドの実行後に状態を確認すると、ジョブが実行中状態になり、ジョブのアクションに関する情報が返されます。
 
@@ -486,14 +484,14 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D oozietest
     ```
 
-    `1>` プロンプトで次のコマンドを入力します。
+    `1>` プロンプトで、次のクエリを入力します。
 
     ```
     SELECT * FROM mobiledata
     GO
     ```
 
-    次のような情報が返されます。
+    次のテキストのような情報が返されます。
 
         deviceplatform  count
         Android 31591
@@ -512,7 +510,7 @@ Oozie REST API では、Oozie を使用する独自のツールを構築でき�
 
 * **URI**: `https://CLUSTERNAME.azurehdinsight.net/oozie` でクラスターの外部から REST API にアクセスできます。
 
-* **認証**: クラスターの HTTP アカウント (admin) とパスワードを使用して、API に対して認証する必要があります。 次に例を示します。
+* **認証**: クラスターの HTTP アカウント (admin) とパスワードを使用して、API に対して認証します。 For example:
 
     ```
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/oozie/versions
@@ -522,11 +520,19 @@ Oozie REST API の使用方法の詳細については、 [Oozie Web サービ�
 
 ## <a name="oozie-web-ui"></a>Oozie Web UI
 
-Oozie Web UI は、クラスターでの Oozie ジョブの状態を表示する Web ベースのビューを提供します。 Oozie Web UI を使用して、ジョブの状態、ジョブ定義、構成、ジョブのアクションのグラフ、ジョブのログを表示できます。 また、ジョブのアクションの詳細を表示することもできます。
+Oozie Web UI は、クラスターでの Oozie ジョブの状態を表示する Web ベースのビューを提供します。 この Web UI を使用すると、以下の情報を表示できます。
+
+* ジョブの状態
+* ジョブ定義
+* 構成
+* ジョブのアクションのグラフ
+* ジョブのログ
+
+また、ジョブのアクションの詳細を表示することもできます。
 
 Oozie Web UI にアクセスするには、次の手順に従います。
 
-1. HDInsight クラスターへの SSH トンネルを作成します。 これを実行する方法の詳細については、「[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)」を参照してください。
+1. HDInsight クラスターへの SSH トンネルを作成します。 詳細については、[HDInsight での SSH トンネリングの使用](hdinsight-linux-ambari-ssh-tunnel.md)に関するドキュメントを参照してください。
 
 2. トンネルが作成されたら、Web ブラウザーで Ambari Web UI を開きます。 Ambari サイトの URI は **https://CLUSTERNAME.azurehdinsight.net** です。 **CLUSTERNAME** を、Linux ベースの HDInsight クラスターの名前に置き換えます。
 
@@ -556,7 +562,7 @@ Oozie Web UI にアクセスするには、次の手順に従います。
 
     ![アクション情報](./media/hdinsight-use-oozie-linux-mac/action.png)
 
-8. ジョブの JobTracker 情報を表示する際に使用できる **Console URL**へのリンクなど、アクションの詳細を確認できます。
+8. **コンソールの URL** へのリンクなど、アクションの詳細を確認できます。 このリンクを使用して、ジョブの JobTracker 情報を表示できます。
 
 ## <a name="scheduling-jobs"></a>ジョブのスケジュール設定
 
@@ -564,13 +570,13 @@ Oozie Web UI にアクセスするには、次の手順に従います。
 
 ワークフローのスケジュールを定義するには、次の手順に従います。
 
-1. 次のコマンドを使用して、 **coordinator.xml**という名前の新しいファイルを作成します。
+1. 次のコマンドを使用して、**coordinator.xml** という名前のファイルを作成します。
 
     ```
     nano coordinator.xml
     ```
 
-    このファイルの内容として、次のコードを使用します。
+    このファイルの内容として、次の XML を使用します。
 
     ```xml
     <coordinator-app name="my_coord_app" frequency="${coordFrequency}" start="${coordStart}" end="${coordEnd}" timezone="${coordTimezone}" xmlns="uri:oozie:coordinator:0.4">
@@ -582,19 +588,16 @@ Oozie Web UI にアクセスするには、次の手順に従います。
     </coordinator-app>
     ```
 
-    `${...}` 変数に注意してください。これらは、実行時にジョブ定義の値に置き換えられます。 変数は次のとおりです。
+    > [!NOTE]
+    > `${...}` 変数は、実行時にジョブ定義の値で置き換えられます。 変数は次のとおりです。
+    >
+    > * `${coordFrequency}`: ジョブのインスタンスが実行される間隔。
+    > ** `${coordStart}`: ジョブの開始時刻。
+    > * `${coordEnd}`: ジョブの終了時刻。
+    > * `${coordTimezone}`: コーディネーター ジョブでは、(通常は UTC を使用して表される) 夏時間なしの固定タイム ゾーンを使用します。 このタイム ゾーンを、「Oozie 処理のタイムゾーン」と呼びます。
+    > * `${wfPath}`: workflow.xml のパス。
 
-   * **${coordFrequency}**: ジョブの実行されるインスタンスの間隔。
-
-   * **${coordStart}**: ジョブの開始時刻。
-
-   * **${coordEnd}**: ジョブの終了時刻。
-
-   * **${coordTimezone}**: コーディネーター ジョブでは、(通常は UTC を使用して表される) 夏時間なしの固定タイム ゾーンを使用します。 このタイム ゾーンを、「Oozie 処理のタイムゾーン」と呼びます。
-
-   * **${wfPath}**: workflow.xml のパス。
-
-2. Ctrl + X キーを押した後、**Y** キーと **Enter** キーを押してファイルを保存します。
+2. ファイルを保存するには、Ctrl-X キーを押してから、**Y** キー、**Enter** キーの順に押します。
 
 3. 次のコマンドを使用して、ファイルをこのジョブの作業ディレクトリにコピーします。
 
@@ -610,9 +613,9 @@ Oozie Web UI にアクセスするには、次の手順に従います。
 
     次の変更を行います。
 
-   * `<name>oozie.wf.application.path</name>` を `<name>oozie.coord.application.path</name>` に変更します。 これにより、ワークフロー ファイルではなく、コーディネーター ファイルを実行するよう Oozie に指示します。
+   * `<name>oozie.wf.application.path</name>` を `<name>oozie.coord.application.path</name>` に変更します。 この値は、ワークフロー ファイルではなく、コーディネーター ファイルを実行するよう Oozie に指示します。
 
-   * 次のコードを追加して、coordinator.xml で使用される変数を、workflow.xml の場所を参照するように設定します。
+   * 次の XML を追加します。 これは、coordinator.xml で使用される変数を、workflow.xml の場所を参照するように設定します。
 
         ```xml
         <property>
@@ -623,17 +626,17 @@ Oozie Web UI にアクセスするには、次の手順に従います。
 
        `wasbs://mycontainer@mystorageaccount.blob.core.windows` テキストを、job.xml ファイルの他のエントリで使用されている値に置き換えます。
 
-   * 次のコードを追加して、coordinator.xml ファイルで使用する開始時刻、終了時刻、頻度を定義します。
+   * 次の XML を追加します。 これは、coordinator.xml ファイルで使用する開始時刻、終了時刻、頻度を定義します。
 
         ```xml
         <property>
             <name>coordStart</name>
-            <value>2017-02-07T12:00Z</value>
+            <value>2017-05-10T12:00Z</value>
         </property>
 
         <property>
             <name>coordEnd</name>
-            <value>2017-02-09T12:00Z</value>
+            <value>2017-05-12T12:00Z</value>
         </property>
 
         <property>
@@ -647,7 +650,7 @@ Oozie Web UI にアクセスするには、次の手順に従います。
         </property>
         ```
 
-       これらは、開始時刻を 2017 年 2 月 7 日 12:00 PM に、終了時刻を 2017 年 2 月 9 日 12:00 PM に、このジョブの実行間隔を毎日に設定します。 頻度は分単位であるため、24 時間 x 60 分 = 1440 分になります。 最後に、タイムゾーンを UTC に設定しています。
+       これらの値は、開始時刻を 2017 年 5 月 10 日 12:00 PM に、終了時刻を 2017 年 5 月 12 日 12:00 PM に設定します。 このジョブの実行間隔は毎日です。 頻度は分単位であるため、24 時間 x 60 分 = 1440 分になります。 最後に、タイムゾーンを UTC に設定しています。
 
 5. Ctrl + X キーを押した後、**Y** キーと **Enter** キーを押してファイルを保存します。
 
@@ -657,25 +660,26 @@ Oozie Web UI にアクセスするには、次の手順に従います。
     oozie job -config job.xml -run
     ```
 
-    これにより、ジョブが送信され、開始されます。
+    このコマンドにより、ジョブが送信され、開始されます。
 
-7. Oozie Web UI にアクセスし、 **[Coordinator Jobs (コーディネーター ジョブ)]** タブを選択すると、次のような情報が表示されます。
+7. Oozie Web UI にアクセスし、**[Coordinator Jobs (コーディネーター ジョブ)]** タブを選択すると、次の画像のような情報が表示されます。
 
     ![[Coordinator Jobs] タブ](./media/hdinsight-use-oozie-linux-mac/coordinatorjob.png)
 
-    **[Next Materialization (次の実体化)]** エントリに注意してください。これは、このジョブが次回実行される日時を示しています。
+    **[Next Materialization (次の実体化)]** エントリは、このジョブが次回実行される日時を示しています。
 
 8. 以前のワークフロー ジョブと同様に、Web UI でジョブ エントリを選択すると、そのジョブの情報が表示されます。
 
     ![コーディネーター ジョブ情報](./media/hdinsight-use-oozie-linux-mac/coordinatorjobinfo.png)
 
-    これは、スケジュールされたワークフロー内の個々のアクションではなく、ジョブの正常な実行のみを示しています。 個々のアクションを表示するには、 **[Action]** エントリのいずれかを選択します。 これにより、以前のワークフロー ジョブで取得された情報と同様の情報が表示されます。
+    > [!NOTE]
+    > これは、スケジュールされたワークフロー内の個々のアクションではなく、ジョブの正常な実行のみを示しています。 個々のアクションを表示するには、 **[Action]** エントリのいずれかを選択します。
 
     ![アクション情報](./media/hdinsight-use-oozie-linux-mac/coordinatoractionjob.png)
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスクの JobTracker ログへのリンクの両方を簡単に表示できるので、Oozie ジョブに関する問題のトラブルシューティングを行うときに非常に役立ちます。 通常、トラブルシューティングのパターンは次のようになります。
+Oozie UI を使用すると、Oozie のログを表示することができます。 ワークフローによって開始される MapReduce タスクの JobTracker ログへのリンクも表示されます。 トラブルシューティングのパターンは次のようになります。
 
 1. Oozie Web UI でジョブを表示します。
 
@@ -712,15 +716,13 @@ Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスク�
 
 ### <a name="launcher-error-sqoop"></a>Launcher ERROR (ランチャー エラー) (Sqoop)
 
-**現象**: ジョブの状態が **KILLED** に変更されます。 ジョブの詳細に、RunSqoopExport の状態が **ERROR**と示されます。 アクションを選択すると、次のエラー メッセージが表示されます。
+**現象**: ジョブの状態が **KILLED** に変更されます。 ジョブの詳細に、RunSqoopExport の状態が **ERROR** と示されます。 アクションを選択すると、次のエラー メッセージが表示されます。
 
     Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
 
 **原因**: Sqoop が、データベースにアクセスするために必要なデータベース ドライバーを読み込むことができません。
 
-**解決方法**: Oozie ジョブから Sqoop を使用する場合、ジョブで使用するその他のリソース (workflow.xml など) とともにデータベース ドライバーを含める必要があります。
-
-また、workflow.xml の `<sqoop>...</sqoop>` セクションから、データベース ドライバーが格納されたアーカイブを参照する必要があります。
+**解決方法**: Oozie ジョブから Sqoop を使用する場合、ジョブで使用するその他のリソース (workflow.xml など) とともにデータベース ドライバーを含める必要があります。 また、workflow.xml の `<sqoop>...</sqoop>` セクションから、データベース ドライバーが格納されたアーカイブを参照します。
 
 たとえば、このドキュメントのジョブの場合、次の手順に従います。
 
@@ -730,7 +732,7 @@ Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスク�
     hdfs dfs -put /usr/share/java/sqljdbc_4.1/enu/sqljdbc41.jar /tutorials/useoozie/sqljdbc41.jar
     ```
 
-2. workflow.xml を変更して、 `</sqoop>`の上の新しい行に次の内容を追加します。
+2. workflow.xml を変更して、`</sqoop>` の上の新しい行に次の XML を追加します。
 
     ```xml
     <archive>sqljdbc41.jar</archive>

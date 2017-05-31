@@ -1,6 +1,7 @@
 ---
-title: "Azure HDInsight Spark クラスターで Jupyter Notebook とさまざまなカーネルを使用する | Microsoft Docs"
-description: "HDInsight Linux の Spark クラスターで使用可能な Jupyter Notebook と共に使用できる PySpark、PySpark3、および Spark カーネルについて説明します。"
+title: "Azure HDInsight の Spark クラスター上の Jupyter Notebook のカーネル | Microsoft Docs"
+description: "Azure HDInsight 上の Spark クラスターで使用可能な Jupyter Notebook 用の PySpark、PySpark3、および Spark カーネルについて説明します。"
+keywords: "spark 上の jupyter notebook,jupyter spark"
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -9,24 +10,24 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 0719e503-ee6d-41ac-b37e-3d77db8b121b
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 05/15/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 096fbc1d30e8c9df0c9008525e0fac3fd6e449cf
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: c5813341f0d70a3c04e915d243d2a9717cad1fc9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/16/2017
 
 
 ---
-# <a name="jupyter-notebooks-kernels-with-apache-spark-clusters-in-hdinsight"></a>HDInsight の Apache Spark クラスターと Jupyter Notebook カーネル 
+# <a name="kernels-for-jupyter-notebook-on-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight の Spark クラスター上の Jupyter Notebook のカーネル 
 
-HDInsight の Spark クラスターには、Spark アプリケーションをテストするために、Jupyter Notebook で使用できるカーネルが用意されています。 カーネルは、コードを実行し、解釈するプログラムです。 2 つのカーネルを次に示します。
+HDInsight の Spark クラスターには、アプリケーションをテストするために、Spark 上の Jupyter Notebook で使用できるカーネルが用意されています。 カーネルは、コードを実行し、解釈するプログラムです。 次の 3 つのカーネルがあります。
 
 - **PySpark**: Python2 で記述されたアプリケーション用
 - **PySpark3**: Python3 で記述されたアプリケーション用
@@ -38,18 +39,18 @@ HDInsight の Spark クラスターには、Spark アプリケーションをテ
 
 * HDInsight での Apache Spark クラスター。 手順については、 [Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
 
-## <a name="create-a-jupyter-notebook"></a>Jupyter Notebook の作成
+## <a name="create-a-jupyter-notebook-on-spark-hdinsight"></a>Spark HDInsight での Jupyter Notebook の作成
 
 1. [Azure Portal](https://portal.azure.com/) でクラスターを開きます。  手順については、「[クラスターの一覧と表示](hdinsight-administer-use-portal-linux.md#list-and-show-clusters)」を参照してください。 クラスターは新しいポータル ブレードで開きます。
 
 2. **[クイック リンク]** セクションで **[クラスター ダッシュボード]** をクリックして、**[クラスター ダッシュボード]** ブレードを開きます。  **[クイック リンク]** が表示されない場合は、ブレードの左側のメニューで **[概要]** をクリックします。
 
-    ![クラスター ダッシュボード](./media/hdinsight-apache-spark-jupyter-notebook-kernels/hdinsight-azure-portal-cluster-dashboards.png "クラスター ダッシュボード") 
+    ![Spark 上の Jupyter Notebook](./media/hdinsight-apache-spark-jupyter-notebook-kernels/hdinsight-jupyter-notebook-on-spark.png "Spark 上の Jupyter Notebook") 
 
 3. **[Jupyter Notebook]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。
    
    > [!NOTE]
-   > ブラウザーで次の URL を開き、クラスターの Jupyter Notebook にアクセスすることもできます。 **CLUSTERNAME** をクラスターの名前に置き換えます。
+   > ブラウザーで次の URL を開き、Spark クラスターの Jupyter Notebook にアクセスすることもできます。 **CLUSTERNAME** をクラスターの名前に置き換えます。
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
    > 
@@ -57,13 +58,13 @@ HDInsight の Spark クラスターには、Spark アプリケーションをテ
 
 3. **[新規]** をクリックし、**[Pyspark]**、**[PySpark3]**、または **[Spark]** をクリックして、Notebook を作成します。 Scala アプリケーションには Spark カーネルを、Python2 アプリケーションには PySpark カーネルを、Python3 アプリケーションには PySpark3 カーネルを使用します。
    
-    ![Jupyter Notebook の作成](./media/hdinsight-apache-spark-jupyter-notebook-kernels/jupyter-kernels.png "Jupyter Notebook の作成") 
+    ![Spark 上の Jupyter Notebook のカーネル](./media/hdinsight-apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png "Spark 上の Jupyter Notebook のカーネル") 
 
 4. Notebook が、選択したカーネルで開きます。
 
-## <a name="benefits-of-using-these-kernels"></a>これらのカーネルを使用する利点
+## <a name="benefits-of-using-the-kernels"></a>カーネルを使用する利点
 
-新しいカーネルを使用すると、いくつかの利点があります。
+Spark HDInsight クラスター上の Jupyter Notebook で新しいカーネルを使用する利点は次のとおりです。
 
 - **コンテキストのプリセット**。 **PySpark**、**PySpark3**、または **Spark** カーネルでは、アプリケーションの操作を開始する前に、Spark または Hive コンテキストを明示的に設定する必要がありません。 これらは既定で利用できます。 各コンテキストは次のとおりです。
    
@@ -149,7 +150,7 @@ Notebook がストレージ アカウントに保存される方法は、HDFS �
 
 ## <a name="supported-browser"></a>サポートされているブラウザー
 
-HDInsight の Spark クラスターに対して実行される Jupyter Notebook  は、Google Chrome でのみサポートされます。
+Spark HDInsight クラスター上の Jupyter Notebook は、Google Chrome でのみサポートされます。
 
 ## <a name="feedback"></a>フィードバック
 新しいカーネルは進化の過程にあり、時間の経過と共に成熟するでしょう。 カーネルが改良されるにつれて、API も変更される可能性があります。 これらの新しいカーネルに関するフィードバックを、ぜひお寄せください。 これらのカーネルの最終リリースの設計に役立ちます。 ご意見やフィードバックは、この記事の下部にある **コメント** のセクションからお寄せください。

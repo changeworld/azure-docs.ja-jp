@@ -3,7 +3,7 @@ title: "SQL Data Warehouse への SQL コードの移行 | Microsoft Docs"
 description: "ソリューション開発のための Azure SQL Data Warehouse への SQL コードの移行に関するヒント"
 services: sql-data-warehouse
 documentationcenter: NA
-author: jrowlandjones
+author: sqlmojo
 manager: jhubbard
 editor: 
 ms.assetid: 19c252a3-0e41-4eec-9d3e-09a68c7e7add
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: migrate
 ms.date: 01/30/2017
-ms.author: jrj;barbkess
-translationtype: Human Translation
+ms.author: joeyong;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 3fd5224983c723faefb8001888ae20e78acdb8ce
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/03/2017
 
 

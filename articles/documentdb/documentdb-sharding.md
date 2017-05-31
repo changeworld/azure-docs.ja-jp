@@ -1,28 +1,29 @@
 ---
 
-redirect_url: https://azure.microsoft.com/services/documentdb/
+redirect_url: https://azure.microsoft.com/services/cosmos-db/
 ROBOTS: NOINDEX, NOFOLLOW
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 7023e7e7f5857db345c47c9a3aa00a816e027a96
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 2bb9fa3c151b0e36f73ba0c1432529499ee7062b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 
 ---
-# <a name="how-to-partition-data-using-client-side-support-in-documentdb"></a>DocumentDB のクライアント側のサポートを使用してデータをパーティション分割する方法
-Azure DocumentDB は、 [コレクションの自動パーティション分割](documentdb-partition-data.md)をサポートしています。 ただし、パーティション分割の動作を細かく制御することにメリットがあるケースもあります。 パーティション分割タスクに必要なボイラー プレート コードの量を減らすために、複数のコレクションにまたがってスケール アウトされるアプリケーションを構築しやすくする機能を .NET、Node.js、Java SDK に追加しました。
+# <a name="how-to-partition-data-using-client-side-support-in-azure-cosmos-db"></a>Azure Cosmos DB のクライアント側のサポートを使用してデータをパーティション分割する方法
+Azure Cosmos DB は、[コレクションの自動パーティション分割](documentdb-partition-data.md)をサポートしています。 ただし、パーティション分割の動作を細かく制御することにメリットがあるケースもあります。 パーティション分割タスクに必要なボイラー プレート コードの量を減らすために、複数のコレクションにまたがってスケール アウトされるアプリケーションを構築しやすくする機能を .NET、Node.js、Java SDK に追加しました。
 
 この記事では、.NET SDK のクラスとインターフェイスについて確認し、それらを使用してパーティション分割されたアプリケーションを開発する方法を見ていきます。 Java、Node.js、Python などの他の SDK では、クライアント側のパーティション分割用の類似するメソッドとインターフェイスをサポートしています。
 
-## <a name="client-side-partitioning-with-the-documentdb-sdk"></a>DocumentDB SDK を使用したクライアント側のパーティション分割
-パーティション分割を詳しく見る前に、パーティション分割に関連する基本的な DocumentDB の概念を確認しましょう。 各 Azure DocumentDB データベース アカウントは、一連のデータベースで構成されます。それぞれのデータベースには複数のコレクションが含まれ、それぞれのコレクションにはストアド プロシージャ、トリガー、UDF、ドキュメント、および関連する添付ファイルが含まれています。 コレクションは、単一パーティションの場合もあれば、コレクション自体がパーティション分割されている場合もあります。コレクションには、次のプロパティがあります。
+## <a name="client-side-partitioning-with-the-sdk"></a>SDK を使用したクライアント側のパーティション分割
+パーティション分割を詳しく見る前に、パーティション分割に関連する基本的な Cosmos DB の概念を確認しましょう。 各 Azure Cosmos DB データベース アカウントは、一連のデータベースで構成されます。それぞれのデータベースには複数のコレクションが含まれ、それぞれのコレクションにはストアド プロシージャ、トリガー、UDF、ドキュメント、および関連する添付ファイルが含まれています。 コレクションは、単一パーティションの場合もあれば、コレクション自体がパーティション分割されている場合もあります。コレクションには、次のプロパティがあります。
 
 * コレクションではパフォーマンスを分離することができます。 そのため、同一コレクション内の類似したドキュメントを照合することには、パフォーマンス上のメリットがあります。 たとえば、時系列データの場合、頻繁に照会する前月のデータはプロビジョニング済みの高スループットのコレクション内に配置し、古いデータはプロビジョニング済みの低スループットのコレクション内に配置することができます。
 * ACID トランザクション (ストアド プロシージャやトリガー) は、コレクションをまたがることはできません。 トランザクションのスコープは、コレクション内の単一のパーティション キー値内に設定されます。
 * コレクションではスキーマを適用しないため、同じ種類だけでなく、異なる種類の複数の JSON ドキュメントに対しても使用できます。
 
-[Azure DocumentDB SDK のバージョン 1.5.x](documentdb-sdk-dotnet.md) 以降では、ドキュメントの操作をデータベースに対して直接実行できます。 内部では、ユーザーがデータベースに指定した PartitionResolver を使用して、 [DocumentClient](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.aspx) が適切なコレクションに要求をルーティングします。
+[Azure Cosmos DB のバージョン 1.5.x](documentdb-sdk-dotnet.md) 以降では、ドキュメントの操作をデータベースに対して直接実行できます。 内部では、ユーザーがデータベースに指定した PartitionResolver を使用して、 [DocumentClient](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.aspx) が適切なコレクションに要求をルーティングします。
 
 > [!NOTE]
 > REST API 2015-12-16 および SDK 1.6.0 以上で導入された[サーバー側のパーティション分割](documentdb-partition-data.md)では、単純なユース ケースでのクライアント側パーティション リゾルバーのアプローチは廃止されています。 ただし、クライアント側のパーティション分割の柔軟性が向上しており、パーティション キー全体でのパフォーマンスの分離の制御、複数のパーティションから結果を読み取る際の並列処理次数の制御、ハッシュに対する範囲/空間パーティション分割アプローチの使用が可能になっています。
@@ -89,7 +90,7 @@ foreach (UserProfile activeUser in query)
 ```
 
 ## <a name="hash-partition-resolver"></a>ハッシュ パーティション リゾルバー
-ハッシュ パーティション分割では、ハッシュ関数の値に基づいてパーティションが割り当てられるため、要求やデータを複数のパーティションに均等に分配できます。 このアプローチは一般的に、多種多様なクライアントによって生成または消費されるデータのパーティション分割に使用され、ユーザー プロファイル、カタログ項目、IoT (Internet of Things: モノのインターネット) テレメトリ データなどを格納するのに役立ちます。 ハッシュ パーティション分割は、コレクション内での DocumentDB のサーバー側のパーティション分割のサポートでも使用されます。
+ハッシュ パーティション分割では、ハッシュ関数の値に基づいてパーティションが割り当てられるため、要求やデータを複数のパーティションに均等に分配できます。 このアプローチは一般的に、多種多様なクライアントによって生成または消費されるデータのパーティション分割に使用され、ユーザー プロファイル、カタログ項目、IoT (Internet of Things: モノのインターネット) テレメトリ データなどを格納するのに役立ちます。 ハッシュ パーティション分割は、コレクション内での Cosmos DB のサーバー側のパーティション分割のサポートでも使用されます。
 
 **ハッシュ パーティション分割: **
 ![ハッシュ パーティション分割で要求が複数のパーティションに均等に分配されることを示す図](media/documentdb-sharding/partition-hash.png)
@@ -122,17 +123,17 @@ foreach (UserProfile activeUser in query)
 * PartitionResolver の状態を JSON としてシリアル化および逆シリアル化する方法。これにより、状態をプロセス間で共有したり、シャットダウンをまたいで維持したりできます。 状態は、構成ファイルだけでなく、DocumentDB コレクションにも保持できます。
 * コンシステント ハッシュに基づいてパーティション分割されたデータベースに対してパーティションの動的な追加や削除を実行するための [DocumentClientHashPartitioningManager](https://github.com/Azure/azure-documentdb-dotnet/blob/287acafef76ad223577759b0170c8f08adb45755/samples/code-samples/Partitioning/Util/DocumentClientHashPartitioningManager.cs) クラス。 内部的には [TransitionHashPartitionResolver](https://github.com/Azure/azure-documentdb-dotnet/blob/287acafef76ad223577759b0170c8f08adb45755/samples/code-samples/Partitioning/Partitioners/TransitionHashPartitionResolver.cs) を使用し、移行時に 4 つのモードのいずれかを使用して読み取りや書き込みをルーティングします。4 つのモードとは、古いパーティション スキームからの読み取り (ReadCurrent)、新しいパーティション スキームからの読み取り (ReadNext)、両方の結果の結合 (ReadBoth)、移行中は使用不可 (None) です。
 
-サンプルはオープン ソースです。他の DocumentDB 開発者にも役立つような投稿でプル リクエストを送信することをお勧めします。 投稿方法のガイダンスについては、[投稿に関するガイドライン](https://github.com/Azure/azure-documentdb-net/blob/master/Contributing.md)のページを参照してください。  
+サンプルはオープン ソースです。他の Cosmos DB 開発者にも役立つような投稿でプル リクエストを送信することをお勧めします。 投稿方法のガイダンスについては、[投稿に関するガイドライン](https://github.com/Azure/azure-documentdb-net/blob/master/Contributing.md)のページを参照してください。  
 
 > [!NOTE]
-> コレクションの作成は DocumentDB によって速度が制限されているため、ここに示したサンプル メソッドの一部では、処理が完了するまでに数分かかる場合があります。
+> コレクションの作成は Cosmos DB によって速度が制限されているため、ここに示したサンプル メソッドの一部では、処理が完了するまでに数分かかる場合があります。
 > 
 > 
 
 ## <a name="faq"></a>FAQ
-**DocumentDB はサーバー側のパーティション分割をサポートしていますか。**
+**Cosmos DB はサーバー側のパーティション分割をサポートしていますか。**
 
-はい、DocumentDB は [サーバー側のパーティション分割](documentdb-partition-data.md)をサポートしています。 より高度なユース ケースとしては、クライアント側のパーティション リゾルバーを介したクライアント側のパーティション分割もサポートしています。
+はい、Cosmos DB は[サーバー側のパーティション分割](documentdb-partition-data.md)をサポートしています。 より高度なユース ケースとしては、クライアント側のパーティション リゾルバーを介したクライアント側のパーティション分割もサポートしています。
 
 **サーバー側のパーティション分割とクライアント側のパーティション分割はどのように使い分ければよいですか。**
 ほとんどのケースでサーバー側のパーティション分割をお勧めしています。データのパーティション分割とルーティング要求の管理タスクを扱えるためです。 ただし、範囲パーティション分割が必要な場合や、パーティション キーの値に応じてパフォーマンスを分離するような特別なユースケースがある場合など、クライアント側のパーティション分割の方が適している場合もあります。
@@ -150,8 +151,8 @@ foreach (UserProfile activeUser in query)
 複数の PartitionResolver を連結するには、1 つ以上の既存のリゾルバーを内部で使用する独自の IPartitionResolver を実装します。 この例については、サンプル プロジェクト内の TransitionHashPartitionResolver を参照してください。
 
 ## <a name="references"></a>参照
-* [DocumentDB でのサーバー側のパーティション分割](documentdb-partition-data.md)
-* [DocumentDB のコレクションとパフォーマンス レベル](documentdb-performance-levels.md)
+* [Cosmos DB でのサーバー側のパーティション分割](documentdb-partition-data.md)
+* [Azure Cosmos DB のコレクションとパフォーマンス レベル](documentdb-performance-levels.md)
 * [GitHub のパーティション分割のコード サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/287acafef76ad223577759b0170c8f08adb45755/samples/code-samples/Partitioning)
 * [MSDN の DocumentDB .NET SDK に関するドキュメント](https://msdn.microsoft.com/library/azure/dn948556.aspx)
 * [DocumentDB .NET のサンプル](https://github.com/Azure/azure-documentdb-net)

@@ -1,31 +1,32 @@
 ---
-title: "DocumentDB のパフォーマンス レベル | Microsoft Docs"
-description: "DocumentDB のパフォーマンス レベルを使用して、コレクションごとにスループットを予約できるようにする方法について説明します。"
-services: documentdb
+title: "DocumentDB API のパフォーマンス レベル | Microsoft Docs"
+description: "DocumentDB API のパフォーマンス レベルを使用して、コンテナーごとにスループットを予約できるようにする方法について説明します。"
+services: cosmosdb
 author: mimig1
 manager: jhubbard
 editor: monicar
 documentationcenter: 
 ms.assetid: 7dc21c71-47e2-4e06-aa21-e84af52866f4
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 05/10/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 659d6bd63ea996af7b7b172f998884354e5d5858
-ms.lasthandoff: 03/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 2f67166e95da9f47133f8856be4c7902da75b886
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="retiring-the-s1-s2-and-s3-performance-levels-in-documentdb"></a>DocumentDB での S1、S2、および S3 パフォーマンス レベルの提供の中止
+# <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>S1、S2、および S3 パフォーマンス レベルの提供の中止
 
 > [!IMPORTANT] 
-> この記事で説明する S1、S2、S3 パフォーマンス レベルは提供が中止されるため、新しい DocumentDB コレクションで使用できなくなります。
+> この記事で説明する S1、S2、S3 パフォーマンス レベルは提供が中止されるため、新しい DocumentDB API アカウントで使用できなくなります。
 >
 
 この記事では、S1、S2、S3 パフォーマンス レベルの概要を示し、2017 年 8 月 1 日にこれらのパフォーマンス レベルを使用するコレクションを単一パーティション コレクションに移行する方法について説明します。 この記事を読むと、次の質問に回答できるようになります。
@@ -45,7 +46,7 @@ ms.lasthandoff: 03/07/2017
 
 ## <a name="why-are-the-s1-s2-and-s3-performance-levels-being-retired"></a>S1、S2、S3 パフォーマンス レベルの提供が中止されるのはなぜですか?
 
-S1、S2、S3 パフォーマンス レベルでは、DocumentDB の単一パーティション コレクションで提供される柔軟性が提供されていません。 S1、S2、S3 パフォーマンス レベルでは、スループットとストレージ容量の両方が事前設定されていました。 DocumentDB では現在、スループットとストレージをカスタマイズする機能を提供し、ニーズの変化に応じてスケーリングする能力においてはるかに高い柔軟性を提供しています。
+S1、S2、S3 パフォーマンス レベルでは、DocumentDB API コレクションで提供される柔軟性が提供されていません。 S1、S2、S3 パフォーマンス レベルでは、スループットとストレージ容量の両方が事前設定され、弾力性がありませんでした。 Azure Cosmos DB では現在、スループットとストレージをカスタマイズする機能を提供し、ニーズの変化に応じてスケーリングする能力においてはるかに高い柔軟性を提供しています。
 
 <a name="compare"></a>
 
@@ -58,7 +59,7 @@ S1、S2、S3 パフォーマンス レベルでは、DocumentDB の単一パー�
 |最大スループット|無制限|10,000 RU/秒|250 RU/秒|1,000 RU/秒|2,500 RU/秒|
 |最小スループット|2,500 RU/秒|400 RU/秒|250 RU/秒|1,000 RU/秒|2,500 RU/秒|
 |最大ストレージ容量|無制限|10 GB|10 GB|10 GB|10 GB|
-|料金|スループット: 100 RU/秒 あたり 6 ドル<br><br>ストレージ:&1; GB あたり&0;.25 ドル|スループット: 100 RU/秒 あたり 6 ドル<br><br>ストレージ:&1; GB あたり&0;.25 ドル|25 米ドル|50 米ドル|100 米ドル|
+|料金|スループット: 100 RU/秒 あたり 6 ドル<br><br>ストレージ: 1 GB あたり 0.25 ドル|スループット: 100 RU/秒 あたり 6 ドル<br><br>ストレージ: 1 GB あたり 0.25 ドル|25 米ドル|50 米ドル|100 米ドル|
 
 EA をご使用の場合は、 「[EA を使用している場合どのような影響を受けますか?](#ea-customer)」を参照してください。
 
@@ -66,7 +67,7 @@ EA をご使用の場合は、 「[EA を使用している場合どのような
 
 ## <a name="what-do-i-need-to-do-to-ensure-uninterrupted-access-to-my-data"></a>中断されることなくデータにアクセスできるようにするには何をする必要がありますか?
 
-何もする必要はありません。DocumentDB で移行が処理されます。 S1、S2、S3 コレクションを使用している場合、現在のコレクションは 2017 年 7 月 31 日に単一パーティション コレクションに移行されます。 
+何もする必要はありません。Cosmos DB で移行が処理されます。 S1、S2、S3 コレクションを使用している場合、現在のコレクションは 2017 年 7 月 31 日に単一パーティション コレクションに移行されます。 
 
 <a name="collection-change"></a>
 
@@ -78,7 +79,7 @@ S2 コレクションを使用している場合、1,000 RU/秒の単一パー�
 
 S3 コレクションを使用している場合、2,500 RU/秒の単一パーティション コレクションに移行されます。 スループット レベルの変更はありません。
 
-いずれの場合も、コレクションを移行した後に、スループット レベルをカスタマイズしたり、ユーザーが低待機時間でアクセスできるように必要に応じて拡大または縮小したりできます。 コレクションを移行した後にスループット レベルを変更するには、次のスクリーン ショットに示すように、Azure Portal で DocumentDB アカウントを開き、[スケール] をクリックしてコレクションを選択し、スループット レベルを調整します。
+いずれの場合も、コレクションを移行した後に、スループット レベルをカスタマイズしたり、ユーザーが低待機時間でアクセスできるように必要に応じて拡大または縮小したりできます。 コレクションを移行した後にスループット レベルを変更するには、次のスクリーン ショットに示すように、Azure Portal で Cosmos DB アカウントを開き、[スケール] をクリックしてコレクションを選択し、スループット レベルを調整します。
 
 ![Azure Portal でスループットをスケーリングする方法](./media/documentdb-performance-levels/azure-documentdb-portal-scale-throughput.png)
 
@@ -94,7 +95,7 @@ S3 コレクションを使用している場合、2,500 RU/秒の単一パー�
 
 ## <a name="what-if-i-need-more-than-10-gb-of-storage"></a>10 GB を超えるストレージが必要な場合はどうすればよいですか?
 
-S1、S2、S3 パフォーマンス レベルのコレクションを使用している場合も、単一パーティション コレクションを使用している場合も (いずれも 10 GB のストレージを使用)、DocumentDB データ移行ツールを使用して、実質的に無制限のストレージがあるパーティション分割コレクションにデータを移行できます。 パーティション分割コレクションのメリットの詳細については、「[Azure DocumentDB でのパーティション分割とスケーリング](documentdb-partition-data.md)」を参照してください。 S1、S2、S3 または単一パーティション コレクションをパーティション分割コレクションに移行する方法の詳細については、「[単一パーティション コレクションからパーティション分割コレクションへの移行](documentdb-partition-data.md#migrating-from-single-partition)」を参照してください。 
+S1、S2、S3 パフォーマンス レベルのコレクションを使用している場合も、単一パーティション コレクションを使用している場合も (いずれも 10 GB のストレージを使用)、Cosmos DB データ移行ツールを使用して、実質的に無制限のストレージがあるパーティション分割コレクションにデータを移行できます。 パーティション分割コレクションのメリットの詳細については、[Azure Cosmos DB でのパーティション分割とスケーリング](documentdb-partition-data.md)に関するページをご覧ください。 S1、S2、S3 または単一パーティション コレクションをパーティション分割コレクションに移行する方法の詳細については、「[単一パーティション コレクションからパーティション分割コレクションへの移行](documentdb-partition-data.md#migrating-from-single-partition)」を参照してください。 
 
 <a name="change-before"></a>
 
@@ -106,7 +107,7 @@ S1、S2、S3 パフォーマンスを使用する既存のアカウントのみ�
 
 ## <a name="how-will-i-know-when-my-collection-has-migrated"></a>自分のコレクションが移行されるタイミングはどうすればわかりますか?
 
-移行は 2017 年 7 月 31 日に行われます。 S1、S2、S3 パフォーマンス レベルを使用するコレクションをご使用の場合は、移行を実行する前に DocumentDB チームから電子メールでご連絡します。 2017 年 8 月 1 日に移行が完了すると、ご使用のコレクションには Standard 価格が使用されることが Azure Portal に表示されます。
+移行は 2017 年 7 月 31 日に行われます。 S1、S2、S3 パフォーマンス レベルを使用するコレクションをご使用の場合は、移行を実行する前に Cosmos DB チームから電子メールでご連絡します。 2017 年 8 月 1 日に移行が完了すると、ご使用のコレクションには Standard 価格が使用されることが Azure Portal に表示されます。
 
 ![コレクションが Standard 価格レベルに移行されたことを確認する方法](./media/documentdb-performance-levels/documentdb-portal-standard-pricing-applied.png)
 
@@ -118,11 +119,11 @@ S1、S2、S3 パフォーマンス レベルから単一パーティション �
 
 **Azure Portal を使用して単一パーティション コレクションに移行するには**
 
-1. [**Azure Portal**](https://portal.azure.com) で **[NoSQL (DocumentDB)]** をクリックし、変更する DocumentDB アカウントを選択します。 
+1. [**Azure Portal**](https://portal.azure.com) で **[Azure Cosmos DB]** をクリックし、変更する Cosmos DB アカウントを選択します。 
  
-    **[NoSQL (DocumentDB)]** がジャンプバーにない場合は、[>] をクリックし、**[データベース]** までスクロールします。次に、**[NoSQL (DocumentDB)]** を選択し、DocumentDB アカウントを選択します。  
+    **[Azure Cosmos DB]** がジャンプバーにない場合は、[>] をクリックし、**[データベース]** までスクロールします。次に、**[Azure Cosmos DB]** を選択し、DocumentDB アカウントを選択します。  
 
-2. [リソース] メニューの **[コレクション]** で **[スケール]** をクリックし、ドロップ ダウン リストから変更するコレクションを選択して、**[価格レベル]** をクリックします。 事前定義のスループットを使用するアカウントの価格レベルには、S1、S2、S3 があります。  **[価格レベルの選択]** ブレードで **[Standard]** をクリックしてユーザー定義スループットに変更し、**[選択]** をクリックして変更を保存します。
+2. リソース メニューの **[コンテナー]** で **[スケール]** をクリックし、ドロップ ダウン リストから変更するコレクションを選択して、**[価格レベル]** をクリックします。 事前定義のスループットを使用するアカウントの価格レベルには、S1、S2、S3 があります。  **[価格レベルの選択]** ブレードで **[Standard]** をクリックしてユーザー定義スループットに変更し、**[選択]** をクリックして変更を保存します。
 
     ![Screen shot of the Settings blade showing where to change the throughput value](./media/documentdb-performance-levels/documentdb-change-performance-set-thoughput.png)
 
@@ -142,7 +143,7 @@ S1、S2、S3 パフォーマンス レベルから単一パーティション �
 
 **.NET SDK を使用して単一パーティション コレクションに移行するには**
 
-コレクションのパフォーマンス レベルを変更するもう&1; つの方法は、マイクロソフトの SDK を使用する方法です。 ここでは、Microsoft の [.NET SDK](https://msdn.microsoft.com/library/azure/dn948556.aspx) を使用してコレクションのパフォーマンス レベルを変更する手順を説明しますが、この手順は他の [SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) の場合にもほぼ当てはまります。 .NET SDK を初めてご使用になる場合は、[チュートリアル入門](documentdb-get-started.md)を参照してください。
+コレクションのパフォーマンス レベルを変更するもう 1 つの方法は、マイクロソフトの SDK を使用する方法です。 ここでは、Microsoft の [.NET SDK](https://msdn.microsoft.com/library/azure/dn948556.aspx) を使用してコレクションのパフォーマンス レベルを変更する手順を説明しますが、この手順は他の [SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) の場合にもほぼ当てはまります。 .NET SDK を初めてご使用になる場合は、[チュートリアル入門](documentdb-get-started.md)を参照してください。
 
 コレクションのスループットを 1 秒あたり 5,000 要求ユニットに変更するためのコード スニペットを次に示します。
     
@@ -174,9 +175,9 @@ S1、S2、S3 パフォーマンス レベルから単一パーティション �
 EA をご使用の場合は、現在の契約が終了するまで価格は保護されます。
 
 ## <a name="next-steps"></a>次のステップ
-Azure DocumentDB の価格設定とデータ管理の詳細については、以下のリソースを参照してください。
+Azure Cosmos DB の価格設定とデータ管理の詳細については、以下のリソースを参照してください。
 
-1.    [DocumentDB でのデータのパーティション分割](documentdb-partition-data.md)。 単一パーティション コレクションとパーティション分割コレクションの差異と、シームレスにスケーリングするためのパーティション分割戦略の実装に関するヒントについて説明しています。
-2.    [DocumentDB の価格](https://azure.microsoft.com/pricing/details/documentdb/)。 スループットのプロビジョニングとストレージの使用のコストについて説明しています。
+1.    [Cosmos DB でのデータのパーティション分割](documentdb-partition-data.md)。 単一パーティション コンテナーとパーティション分割コンテナーの差異と、シームレスにスケーリングするためのパーティション分割戦略の実装に関するヒントについて説明しています。
+2.    [Cosmos DB の価格](https://azure.microsoft.com/pricing/details/documentdb/)。 スループットのプロビジョニングとストレージの使用のコストについて説明しています。
 3.    [要求ユニット](documentdb-request-units.md)。 読み取り、書き込み、クエリなどのさまざまな種類の操作におけるスループットの使用量について説明しています。
-4.    [DocumentDB のデータのモデル化](documentdb-modeling-data.md)。 DocumentDB のデータをモデル化する方法について説明しています。
+

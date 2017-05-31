@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2016
 ms.author: rclaus
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: d6215d316cfd4979d63f8bdb81741e1d0291b681
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: b95a8c3067b9bfd0a9995b26608c117a29ed8b4c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -76,7 +77,7 @@ dnsmasq など、複数の DNS キャッシュ パッケージを使用するこ
   * dnsmasq サービスを開始する ("systemctl start dnsmasq.service") 
   * "/etc/sysconfig/network/config" を編集し、NETCONFIG_DNS_FORWARDER="" を "dnsmasq" に変更する
   * キャッシュをローカル DNS リゾルバーとして設定するよう resolv.conf を更新する ("netconfig update")
-* **OpenLogic (NetworkManager を使用)**:
+* **Rogue Wave Software (以前の OpenLogic、NetworkManager を使用) の CentOS**:
   * dnsmasq パッケージをインストールする ("sudo yum install dnsmasq")
   * dnsmasq サービスを有効にする ("systemctl enable dnsmasq.service")
   * dnsmasq サービスを開始する ("systemctl start dnsmasq.service")
@@ -107,7 +108,7 @@ resolv.conf ファイルは自動生成され、編集すべきではありま�
 * **SUSE** (netconf を使用):
   * 'timeout:1 attempts:5' を '/etc/sysconfig/network/config' の NETCONFIG_DNS_RESOLVER_OPTIONS="" パラメーターに追加する 
   * 'netconfig update' を実行して更新する
-* **OpenLogic** (NetworkManager を使用):
+* **Rogue Wave Software (以前の OpenLogic) の CentOS** (NetworkManager を使用):
   * 'echo "options timeout:1 attempts:5"' を '/etc/NetworkManager/dispatcher.d/11-dhclient' に追加する 
   * 'service network restart' を実行して更新する
 

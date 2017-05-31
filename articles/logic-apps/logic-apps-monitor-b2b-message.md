@@ -12,16 +12,17 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2017
-ms.author: padmavc
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.date: 01/27/2017
+ms.author: LADocs; padmavc
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5913c81088724ef946ae147f4f3154fa6aefd22e
 ms.openlocfilehash: dc760b4c08d0e1afff3bc1276f6ed2367d67629e
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/01/2017
 
-
 ---
+
 # <a name="start-or-enable-logging-of-as2-x12-and-edifact-messages-to-monitor-success-errors-and-message-properties"></a>AS2、X12 および EDIFACT メッセージのログ記録を開始または有効にして、成功、失敗、メッセージのプロパティを監視します。
 
 B2B 通信では、実行中の&2; つのビジネス プロセスまたはアプリケーション間でメッセージ交換が行われます。 リレーションシップは、ビジネス プロセスの間の契約を定義するものです。 通信が確立されたら、メッセージの監視を設定して、通信が予想どおりに機能していることを確認できます。 高度な詳細情報とデバッグのために、統合アカウントで診断を設定できます。

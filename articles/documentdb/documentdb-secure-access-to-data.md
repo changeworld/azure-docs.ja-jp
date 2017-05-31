@@ -1,13 +1,13 @@
 ---
-title: "DocumentDB のデータへのアクセスをセキュリティで保護する方法 | Microsoft Docs"
-description: "マスター キー、読み取り専用キー、ユーザー、アクセス許可など、DocumentDB のアクセス制御の概念について説明します。"
-services: documentdb
+title: "Azure Cosmos DB のデータへのアクセスをセキュリティで保護する方法 | Microsoft Docs"
+description: "マスター キー、読み取り専用キー、ユーザー、アクセス許可など、Azure Cosmos DB のアクセス制御の概念について説明します。"
+services: cosmosdb
 author: mimig1
 manager: jhubbard
 editor: monicar
 documentationcenter: 
 ms.assetid: 8641225d-e839-4ba6-a6fd-d6314ae3a51c
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 03/23/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
-ms.openlocfilehash: 7ab474747c74295a5dba9a6f3ad32000a7551a9c
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 88a30be874fb6890c9c56a16f1dad2318a571fbb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="securing-access-to-documentdb-data"></a>DocumentDB のデータへのアクセスのセキュリティ保護
-この記事では、 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/)に格納されたデータへのアクセスをセキュリティ保護する方法の概要を説明します。
+# <a name="securing-access-to-azure-cosmos-db-data"></a>Azure Cosmos DB データへのアクセスのセキュリティ保護
+この記事では、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) に格納されたデータへのアクセスをセキュリティ保護する方法の概要を説明します。
 
-DocumentDB では、2 種類のキーを使用してユーザーを認証し、そのデータとリソースへのアクセスを提供しています。 
+Azure Cosmos DB では、2 種類のキーを使用してユーザーを認証し、そのデータとリソースへのアクセスを提供しています。 
 
 |キーの種類|リソース|
 |---|---|
@@ -44,7 +44,7 @@ DocumentDB では、2 種類のキーを使用してユーザーを認証し、�
 
 各アカウントは、プライマリ キーとセカンダリ キーという 2 つのマスター キーで構成されます。 二重キーの目的は、キーを再生成 (ロール) して、アカウントとデータに継続的にアクセスできるようにするためです。 
 
-DocumentDB アカウント用の 2 つのマスター キーに加えて、2 つの読み取り専用キーがあります。 これらの読み取り専用キーは、アカウントの読み取り操作のみを許可します。 読み取り専用キーは、アクセス許可リソースを読み取るためのアクセスを提供しません。
+Cosmos DB アカウント用の 2 つのマスター キーに加えて、2 つの読み取り専用キーがあります。 これらの読み取り専用キーは、アカウントの読み取り操作のみを許可します。 読み取り専用キーは、アクセス許可リソースを読み取るためのアクセスを提供しません。
 
 プライマリ、セカンダリ、読み取り専用、および読み取り/書き込みのマスター キーは、Azure Portal で取得と再生成を行うことができます。 手順については、「[アクセス キーを表示、コピー、および再生成する](documentdb-manage-account.md#a-idkeysaview-copy-and-regenerate-access-keys)」を参照してください。
 
@@ -56,11 +56,11 @@ DocumentDB アカウント用の 2 つのマスター キーに加えて、2 つ
 
 ### <a name="code-sample-to-use-a-master-key"></a>マスター キーを使用するコード サンプル
 
-次のコード サンプルは、DocumentDB アカウントのエンドポイントとマスター キーを使用して、DocumentClient のインスタンス化とデータベースの作成を行う方法を示しています。 
+次のコード サンプルは、Cosmos DB アカウントのエンドポイントとマスター キーを使用して、DocumentClient のインスタンス化とデータベースの作成を行う方法を示しています。 
 
 ```csharp
 //Read the DocumentDB endpointUrl and authorization keys from config.
-//These values are available from the Azure portal on the NOSQL (DocumentDB) account blade under "Keys".
+//These values are available from the Azure portal on the Azure Cosmos DB account blade under "Keys".
 //NB > Keep these values in a safe and secure location. Together they provide Administrative access to your DocDB account.
 
 private static readonly string endpointUrl = ConfigurationManager.AppSettings["EndPointUrl"];
@@ -87,33 +87,33 @@ Database database = await client.CreateDatabaseAsync(
 - ユーザー、リソース、およびアクセス許可用に特別に構築されたハッシュ リソース トークンを使用します。
 - カスタマイズ可能な有効期間による時間の拘束があります。 既定の有効期間は 1 時間です。 ただし、トークンの有効期間は、最大 5 時間まで、明示的に指定することができます。
 - マスター キーの代わりに使用できる安全な代替手段を提供します。 
-- クライアントが、付与されているアクセス許可に従って、DocumentDB アカウント内のリソースを読み取り、書き込み、および削除できるようにします。
+- クライアントが、付与されているアクセス許可に従って、Cosmos DB アカウント内のリソースを読み取り、書き込み、および削除できるようにします。
 
-リソース トークンは、自分のマスター キーを知らせたくないクライアントに、自分の DocumentDB アカウント内のリソースへのアクセスを許可する場合に (DocumentDB ユーザーとアクセス許可を作成することによって) 使用できます。  
+リソース トークンは、自分のマスター キーを知らせたくないクライアントに、自分の Cosmos DB アカウント内のリソースへのアクセスを許可する場合に (Cosmos DB ユーザーとアクセス許可を作成することによって) 使用できます。  
 
-DocumentDB リソース トークンにより、付与されたアクセス許可に従って、マスター キーや読み取り専用キーなしでクライアントによる DocumentDB アカウント内のリソースの読み取り、書き込み、および削除を可能にする安全な代替手段が提供されます。
+Cosmos DB リソース トークンにより、付与されたアクセス許可に従って、マスター キーや読み取り専用キーなしでクライアントによる Cosmos DB アカウント内のリソースの読み取り、書き込み、および削除を可能にする安全な代替手段が提供されます。
 
 リソース トークンの要求、生成、およびクライアントへの配信に使用されることがある一般的な設計パターンを次に示します。
 
 1. 中間層サービスは、ユーザーの写真を共有するモバイル アプリケーションを提供するために設定します。 
-2. 中間層サービスは、DocumentDB アカウントのマスター キーを持ちます。
+2. 中間層サービスは、Cosmos DB アカウントのマスター キーを持ちます。
 3. 写真アプリは、エンド ユーザーのモバイル デバイスにインストールされます。 
 4. ログイン時に、写真アプリは、中間層サービスを使用してユーザー ID を確立します。 この ID 確立のしくみは完全にアプリケーションに依存します。
 5. いったん ID が確立されると、中間層サービスはその ID に基づいてアクセス許可を要求します。
 6. 中間層サービスから、リソース トークンが電話アプリに返されます。
-7. 電話アプリはリソース トークンを引き続き使用し、リソース トークンによって定義されたアクセス許可を使用して、リソース トークンによって許可された間隔で DocumentDB リソースに直接アクセスすることができます。 
+7. 電話アプリはリソース トークンを引き続き使用し、リソース トークンによって定義されたアクセス許可を使用して、リソース トークンによって許可された間隔で Cosmos DB リソースに直接アクセスすることができます。 
 8. リソース トークンの期限が切れると、それ以降の要求は、401 (承認されていない例外) を受け取ります。  この時点で、電話アプリは ID を再度確立し、新しいリソース トークンを要求します。
 
-    ![DocumentDB リソース トークンのワークフロー](./media/documentdb-secure-access-to-data/resourcekeyworkflow.png)
+    ![Azure Cosmos DB リソース トークンのワークフロー](./media/documentdb-secure-access-to-data/resourcekeyworkflow.png)
 
-リソース トークンの生成と管理は、ネイティブ DocumentDB クライアント ライブラリによって処理されます。ただし、REST を使用する場合は、要求/認証ヘッダーを構築する必要があります。 REST 用の認証ヘッダーの作成については、「[Access Control on DocumentDB Resources (DocumentDB のアクセス制御)](https://docs.microsoft.com/en-us/rest/api/documentdb/access-control-on-documentdb-resources)」または[SDK のソース コード](https://github.com/Azure/azure-documentdb-node/blob/master/source/lib/auth.js)を参照してください。
+リソース トークンの生成と管理は、ネイティブ Cosmos DB クライアント ライブラリによって処理されます。ただし、REST を使用する場合は、要求/認証ヘッダーを構築する必要があります。 REST 用の認証ヘッダーの作成については、[Cosmos DB リソースのアクセス制御](https://docs.microsoft.com/rest/api/documentdb/access-control-on-documentdb-resources)に関するページまたは[SDK のソース コード](https://github.com/Azure/azure-documentdb-node/blob/master/source/lib/auth.js)を参照してください。
 
 ブローカー リソース トークンを生成するために使用する中間層サービスの例については、[ResourceTokenBroker アプリ](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)に関するページを参照してください。
 
 <a id="users"></a>
 
 ## <a name="users"></a>ユーザー
-DocumentDB ユーザーは DocumentDB データベースに関連付けられます。  各データベースには、0 人以上の DocumentDB ユーザーを含めることができます。  次のコード サンプルは、DocumentDB ユーザー リソースを作成する方法を示しています。
+Cosmos DB ユーザーは、Cosmos DB データベースに関連付けらていれます。  各データベースには、0 人以上の Cosmos DB ユーザーを含めることができます。  次のコード サンプルは、Cosmos DB ユーザー リソースを作成する方法を示しています。
 
 ```csharp
 //Create a user.
@@ -126,21 +126,21 @@ docUser = await client.CreateUserAsync(UriFactory.CreateDatabaseUri("db"), docUs
 ```
 
 > [!NOTE]
-> DocumentDB の各ユーザーは PermissionsLink プロパティを持っています。このプロパティを使用して、ユーザーに関連付けられた[アクセス許可](#permissions)の一覧を取得することができます。
+> Cosmos DB の各ユーザーは PermissionsLink プロパティを持っています。このプロパティを使用して、ユーザーに関連付けられた[アクセス許可](#permissions)の一覧を取得することができます。
 > 
 > 
 
 <a id="permissions"></a>
 
 ## <a name="permissions"></a>アクセス許可
-DocumentDB アクセス許可リソースは DocumentDB ユーザーに関連付けられています。  各ユーザーは、0 個以上の DocumentDB アクセス許可を持つ可能性があります。  アクセス許可リソースは、特定のアプリケーション リソースにアクセスするときに必要なセキュリティ トークンへのアクセスを提供します。
+Cosmos DB アクセス許可リソースは Cosmos DB ユーザーに関連付けられています。  各ユーザーは、0 個以上の Cosmos DB アクセス許可を持つ可能性があります。  アクセス許可リソースは、特定のアプリケーション リソースにアクセスするときに必要なセキュリティ トークンへのアクセスを提供します。
 アクセス許可リソースによって提供できるアクセス レベルは 2 つあります。
 
 * All: ユーザーはリソースに対して完全なアクセス許可を持ちます。
 * Read: ユーザーは、リソースの内容を読み取りのみができますが、リソースへの書き込み、更新、または削除の操作を実行することはできません。
 
 > [!NOTE]
-> DocumentDB ストアド プロシージャを実行するには、ストアド プロシージャを実行するコレクションの All 権限を持つ必要があります。
+> Cosmos DB ストアド プロシージャを実行するには、ストアド プロシージャを実行するコレクションの All 権限を持つ必要があります。
 > 
 > 
 
@@ -165,7 +165,7 @@ Console.WriteLine(docPermission.Id + " has token of: " + docPermission.Token);
 
 ### <a name="code-sample-to-read-permissions-for-user"></a>ユーザーのアクセス許可を読み取るコード サンプル
 
-特定のユーザーに関連付けられているすべてのアクセス許可リソースを簡単に取得するために、DocumentDB では、各ユーザー オブジェクトのアクセス許可フィードを利用できるようになっています。  次のコード スニペットは、上記で作成したユーザーに関連付けられている権限を取得し、権限の一覧を作成して、ユーザーの代わりに新しい DocumentClient をインスタンス化する方法を示します。
+特定のユーザーに関連付けられているすべてのアクセス許可リソースを簡単に取得するために、Cosmos DB では、各ユーザー オブジェクトのアクセス許可フィードを利用できるようになっています。  次のコード スニペットは、上記で作成したユーザーに関連付けられている権限を取得し、権限の一覧を作成して、ユーザーの代わりに新しい DocumentClient をインスタンス化する方法を示します。
 
 ```csharp
 //Read a permission feed.
@@ -182,7 +182,7 @@ DocumentClient userClient = new DocumentClient(new Uri(endpointUrl), permList);
 ```
 
 ## <a name="next-steps"></a>次のステップ
-* DocumentDB データベースのセキュリティの詳細については、「[DocumentDB: NoSQL データベースのセキュリティ](documentdb-nosql-database-security.md)」を参照してください。
-* マスター キーと読み取り専用キーの詳細については、「[DocumentDB アカウントの管理方法](documentdb-manage-account.md#a-idkeysaview-copy-and-regenerate-access-keys)」を参照してください。
-* DocumentDB 認証トークンを作成する方法については、「[DocumentDB リソースのアクセス制御](https://docs.microsoft.com/en-us/rest/api/documentdb/access-control-on-documentdb-resources)」を参照してください。
+* Cosmos DB データベースのセキュリティの詳細については、[Cosmos DB: データベースのセキュリティ](documentdb-nosql-database-security.md)に関するページをご覧ください。
+* マスター キーと読み取り専用キーの詳細については、[Azure Cosmos DB アカウントの管理方法](documentdb-manage-account.md#a-idkeysaview-copy-and-regenerate-access-keys)に関するページをご覧ください。
+* Azure Cosmos DB 認証トークンを作成する方法については、[Azure Cosmos DB リソースのアクセス制御](https://docs.microsoft.com/rest/api/documentdb/access-control-on-documentdb-resources)に関するページをご覧ください。
 

@@ -14,6 +14,7 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
+ms.custom: aaddev
 ms.translationtype: Human Translation
 ms.sourcegitcommit: ba958d029e5bf1bc914a2dff4b6c09282d578c67
 ms.openlocfilehash: 4a71d02d37e55ae08035632c323283438b3f66c6

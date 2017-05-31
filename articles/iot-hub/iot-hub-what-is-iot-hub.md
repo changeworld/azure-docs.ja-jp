@@ -15,10 +15,11 @@ ms.workload: na
 ms.date: 05/02/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 7adde91586f5fbbffd0aeaf0efb0810cc891ac0b
-ms.openlocfilehash: ed204c466c5cfb60e5ba250b9dacb2524ca384eb
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: fb91b9e9c8a805d9c7def5d9108200a2c6875fa1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -66,12 +67,12 @@ Azure IoT Hub では、メッセージング、ファイル転送、要求/応�
 * **広範なデバイス ライブラリ**。 [Azure IoT device SDK][lnk-device-sdks] は、さまざまな言語とプラットフォーム (多くの Linux ディストリビューション、Windows、リアルタイム オペレーティング システムでは C) で使用でき、サポートされています。 Azure IoT デバイス SDK はまた、C#、Java、JavaScript など管理対象言語に対応しています。
 * **IoT プロトコルと機能拡張**。 ソリューションでデバイス ライブラリを使用できない場合、IoT Hub は、デバイスで MQTT v3.1.1、HTTP 1.1、または AMQP 1.0 プロトコルをネイティブに使用できるようにするパブリック プロトコルを公開します。 また、以下の方法で IoT Hub を拡張して、カスタム プロトコルをサポートすることもできます。
   
-  * IoT Hub で認識される 3 つのプロトコルのいずれかにカスタム プロトコルを変換するフィールド ゲートウェイを、[Azure IoT Gateway SDK][lnk-gateway-sdk] で作成します。 
+  * IoT Hub で認識される 3 つのプロトコルのいずれかにカスタム プロトコルを変換するフィールド ゲートウェイを、[Azure IoT Edge][lnk-iot-edge] で作成します。
   * クラウドで実行されるオープン ソース コンポーネントである [Azure IoT プロトコル ゲートウェイ][protocol-gateway]をカスタマイズします。
 * **スケール**。 Azure IoT Hub は、デバイスの数百万単位での同時接続、および毎秒数百万単位のイベントに対応できます。
 
 ## <a name="gateways"></a>ゲートウェイ
-通常、IoT ソリューションのゲートウェイは、クラウドにデプロイされる[プロトコル ゲートウェイ][lnk-gateway]か、デバイスでローカルにデプロイされる[フィールド ゲートウェイ][lnk-field-gateway]のいずれかになります。 プロトコル ゲートウェイは、MQTT から AMQP への変換など、プロトコル変換を実行します。 フィールド ゲートウェイは、現状分析を実行したり、時間の制約がある判断を行って遅延を短縮したりできます。また、デバイス管理サービスを提供したり、セキュリティとプライバシーの制約を強制したりできるほか、プロトコル変換を行うこともできます。 どちらの種類のゲートウェイも、デバイスと IoT Hub 間の仲介役として機能します。
+通常、IoT ソリューションのゲートウェイは、クラウドにデプロイされる[プロトコル ゲートウェイ][lnk-iotedge]か、デバイスでローカルにデプロイされる[フィールド ゲートウェイ][lnk-field-gateway]のいずれかになります。 プロトコル ゲートウェイは、MQTT から AMQP への変換など、プロトコル変換を実行します。 フィールド ゲートウェイは、現状分析を実行したり、時間の制約がある判断を行って遅延を短縮したりできます。また、デバイス管理サービスを提供したり、セキュリティとプライバシーの制約を強制したりできるほか、プロトコル変換を行うこともできます。 どちらの種類のゲートウェイも、デバイスと IoT Hub 間の仲介役として機能します。
 
 フィールド ゲートウェイは通常、ソリューションにおけるアクセスと情報フローの管理において大きな役割を果たすため、単純なトラフィック ルーティング デバイス (ネットワーク アドレス変換デバイスやファイアウォールなど) とは異なります。
 
@@ -108,7 +109,7 @@ IoT Hub では、標準ベースのデバイス管理が可能となっており
 [protocol-gateway]: https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md
 [lnk-service-assisted-pattern]: http://blogs.msdn.com/b/clemensv/archive/2014/02/10/service-assisted-communication-for-connected-devices.aspx "サービス支援通信に関する Clemens Vasters によるブログの投稿"
 [lnk-compare]: iot-hub-compare-event-hubs.md
-[lnk-gateway]: iot-hub-protocol-gateway.md
+[lnk-iotedge]: iot-hub-protocol-gateway.md
 [lnk-field-gateway]: iot-hub-devguide-endpoints.md#field-gateways
 [lnk-devguide-identityregistry]: iot-hub-devguide-identity-registry.md
 [lnk-devguide-security]: iot-hub-devguide-security.md
@@ -117,7 +118,7 @@ IoT Hub では、標準ベースのデバイス管理が可能となっており
 [lnk-apple-push]: https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9
 [lnk-device-sdks]: https://github.com/Azure/azure-iot-sdks
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
-[lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
+[lnk-iot-edge]: https://github.com/Azure/iot-edge
 [lnk-send-messages]: iot-hub-devguide-messaging.md
 [lnk-device-management]: iot-hub-device-management-overview.md
 

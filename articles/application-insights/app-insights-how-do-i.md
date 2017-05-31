@@ -3,7 +3,7 @@ title: "Azure Application Insights での作業 | Microsoft Docs"
 description: "Application Insights での FAQ。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 48b2b644-92e4-44c3-bc14-068f1bbedd22
 ms.service: application-insights
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: d7795a494fbe8d3a850d7d8805cf059a86965a64
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 2e2b59c89fdc91437f148d062e312204be994350
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/05/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -82,55 +82,11 @@ ms.lasthandoff: 04/05/2017
 * [新しいリソースの作成に関するページ](app-insights-powershell-script-create-resource.md)
 * [新しいアラートの作成に関するページ](app-insights-alerts.md#automation)
 
-## <a name="application-versions-and-stamps"></a>アプリケーションのバージョンとスタンプ
-### <a name="separate-the-results-from-dev-test-and-prod"></a>開発、テスト、および運用環境の結果を区分する
-* さまざまな環境に、個別の iKey を設定します。
-* さまざまなスタンプ (開発、テスト、運用) のタグに、個別のプロパティ値を持つテレメトリを設定します。
+## <a name="separate-telemetry-from-different-versions"></a>異なるバージョンのテレメトリを分離する
 
-[詳細情報](app-insights-separate-resources.md)
-
-### <a name="filter-on-build-number"></a>ビルド番号でのフィルター処理
-新しいバージョンのアプリを発行するときは、異なるビルドのテレメトリを区別する必要があります。
-
-アプリケーション バージョン プロパティを設定することで、[検索](app-insights-diagnostic-search.md)と[メトリックス エクスプローラー](app-insights-metrics-explorer.md)の結果をフィルター処理できます。
-
-![](./media/app-insights-how-do-i/050-filter.png)
-
-アプリケーション バージョン プロパティを設定するには複数の方法があります。
-
-* 直接設定します。
-
-    `telemetryClient.Context.Component.Version = typeof(MyProject.MyClass).Assembly.GetName().Version;`
-* その行を [テレメトリ初期化子](app-insights-api-custom-events-metrics.md#defaults) にラップして、すべての TelemetryClient インスタンスが一貫して設定されるようにします。
-* [ASP.NET] `BuildInfo.config`でバージョンを設定します。 Web モジュールは BuildLabel ノードからバージョンを取得します。 このファイルをプロジェクトに追加し、ソリューション エクスプローラーで [常にコピーする] プロパティを設定します。
-
-    ```XML
-
-    <?xml version="1.0" encoding="utf-8"?>
-    <DeploymentEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/VisualStudio/DeploymentEvent/2013/06">
-      <ProjectName>AppVersionExpt</ProjectName>
-      <Build type="MSBuild">
-        <MSBuild>
-          <BuildLabel kind="label">1.0.0.2</BuildLabel>
-        </MSBuild>
-      </Build>
-    </DeploymentEvent>
-
-    ```
-* [ASP.NET] MSBuild で自動的に BuildInfo.config を生成します。 そのためには、.csproj ファイルに数行を追加します。
-
-    ```XML
-
-    <PropertyGroup>
-      <GenerateBuildInfoConfigFile>true</GenerateBuildInfoConfigFile>    <IncludeServerNameInBuildInfo>true</IncludeServerNameInBuildInfo>
-    </PropertyGroup>
-    ```
-
-    これにより、 *プロジェクト名*.BuildInfo.config という名前のファイルが生成されます。 これは発行プロセスで BuildInfo.config という名前に変更されます。
-
-    Visual Studio でビルドすると、ビルド ラベルにはプレースホルダー (AutoGen_...) が含まれます。 一方、MSBuild でビルドすると、適切なバージョン番号が設定されます。
-
-    MSBuild がバージョン番号を生成できるようにするには、AssemblyReference.cs で `1.0.*` のようなバージョンを設定します。
+* アプリの複数のロール: 単一の Application Insights リソースを使用し、cloud_Rolename でフィルター処理します。 [詳細情報](app-insights-monitor-multi-role-apps.md)
+* 開発、テスト、およびリリースのバージョンの分離: 複数の Application Insights のリソースを使用します。 web.config からインストルメンテーション キーを選択します。 [詳細情報](app-insights-separate-resources.md)
+* ビルド バージョンのレポート: テレメトリ初期化子を使用してプロパティを追加します。 [詳細情報](app-insights-separate-resources.md)
 
 ## <a name="monitor-backend-servers-and-desktop-apps"></a>バックエンド サーバーとデスクトップ アプリを監視する
 [Windows Server SDK モジュールを使用する](app-insights-windows-desktop.md)。

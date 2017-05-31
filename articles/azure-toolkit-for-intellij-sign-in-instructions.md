@@ -14,132 +14,133 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: d1be0432a54ed300bc135345b660b90f3efb3b39
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 4e2ed072bdaea0a71fef042c0c72b7656a42bbe8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/15/2017
 
 
 ---
 
-# <a name="azure-sign-in-instructions-for-the-azure-toolkit-for-intellij"></a>Azure Toolkit for IntelliJ の Azure サインイン手順
+# <a name="sign-in-instructions-for-the-azure-toolkit-for-intellij"></a>Azure Toolkit for IntelliJ のサインイン手順
 
 Azure Toolkit for IntelliJ には、Azure アカウントにサインインするための 2 つの方法が用意されています。
 
-  * **対話型** - この方法を使用する場合は、Azure アカウントにサインインするたびに Azure 資格情報を入力します。
-  * **自動** - この方法を使用する場合は、サービス プリンシパル データを含む資格情報ファイルを作成し、その後で、資格情報ファイルを使用して Azure アカウントに自動的にサインインできます。
+  * **対話型**: Azure アカウントにサインインするたびに、Azure 資格情報を入力します。
+  * **自動**: Azure アカウントに自動的にサインインするために使用できる資格情報ファイルを作成します。
 
-以下のセクションの手順では、各方法の使用方法について説明します。
+以下のセクションで、各方法の使用方法について説明します。
 
 [!INCLUDE [azure-toolkit-for-intellij-prerequisites](../includes/azure-toolkit-for-intellij-prerequisites.md)]
 
-## <a name="signing-into-your-azure-account-interactively"></a>Azure アカウントに対話形式でサインインする
+## <a name="sign-in-to-your-azure-account-interactively"></a>Azure アカウントに対話形式でサインインする
 
-次の手順は、Azure 資格情報を手動で入力して Azure にサインインする方法を示しています。
+Azure 資格情報を手動で入力して Azure にサインインするには、次の手順に従います。
 
 1. IntelliJ IDEA でプロジェクトを開きます。
 
-1. **[ツール]**、**[Azure]**、**[Azure Sign In (Azure サインイン)]** の順にクリックします。
+2. **[ツール]** をクリックし、**[Azure]** をポイントし、**[Azure サインイン]** をクリックします。
 
-   ![Azure サインイン用の IntelliJ メニュー][I01]
+   ![IntelliJ Azure サインイン コマンド][I01]
 
-1. **[Azure Sign In (Azure サインイン)]** ダイアログ ボックスが表示されたら、**[Interactive (対話型)]** を選択し、**[サインイン]** をクリックします。
+3. **[Azure サインイン]** ウィンドウで、**[対話型]** を選択し、**[サインイン]** をクリックします。
 
-   ![[サインイン] ダイアログ ボックス][I02]
+   ![[対話型] が選択されている [Azure サインイン] ウィンドウ][I02]
 
-1. **[Azure Log In (Azure ログイン)]** ダイアログ ボックスが表示されたら、Azure 資格情報を入力し、**[サインイン]** をクリックします。
+4. **[Azure ログイン]** ダイアログ ボックスが表示されたら、Azure 資格情報を入力し、**[サインイン]** をクリックします。
 
-   ![[Azure Log In (Azure ログイン)] ダイアログ ボックス][I03]
+   ![[Azure ログイン] ダイアログ ウィンドウ][I03]
 
-1. **[サブスクリプションの選択]** ダイアログ ボックスが表示されたら、使用するサブスクリプションを選び、**[OK]** をクリックします。
+5. **[サブスクリプションの選択]** ダイアログ ボックスで、使用するサブスクリプションを選択し、**[OK]** をクリックします。
 
    ![[サブスクリプションの選択] ダイアログ ボックス][I04]
 
-## <a name="signing-out-of-your-azure-account-when-you-signed-in-interactively"></a>対話形式でサインインした場合に Azure アカウントからサインアウトする
+## <a name="sign-out-of-your-azure-account-after-you-have-signed-in-interactively"></a>対話形式でサインインした後で Azure アカウントからサインアウトする
 
-前のセクションの手順を構成した後、IntelliJ IDEA を再起動するたびに Azure アカウントから自動的にサインアウトします。 ただし、IntelliJ IDEA を再起動せずに Azure アカウントからサインアウトするには、次の手順を使用します。
+前の手順を使用してアカウントを構成すると、IntelliJ IDEA を再起動するたびに Azure アカウントから自動的にサインアウトします。 ただし、IntelliJ IDEA を*再起動せずに* Azure アカウントからサインアウトするには、以下の手順を実行します。
 
-1. IntelliJ IDEA で、**[ツール]**、**[Azure]**、**[Azure Sign Out (Azure サインアウト)]** の順にクリックします。
+1. IntelliJ IDEA で、**[ツール]** メニューの **[Azure]** をポイントし、**[Azure サインアウト]** をクリックします。
 
-   ![Azure サインアウト用の IntelliJ メニュー][L01]
+   ![IntelliJ Azure サインアウト コマンド][L01]
 
-1. **[Azure Sign Out (Azure サインアウト)]** ダイアログ ボックスが表示されたら、**[はい]** をクリックします。
+2. **[Azure サインアウト]** 確認ウィンドウで、**[はい]** をクリックします。
 
-   ![[サインアウト] ダイアログ ボックス][L02]
+   ![[Azure サインアウト] 確認ウィンドウ][L02]
 
-## <a name="signing-into-your-azure-account-automatically-and-creating-a-credentials-file-to-use-in-the-future"></a>Azure アカウントに自動的にサインインし、今後使用する資格情報ファイルを作成する
+## <a name="sign-in-to-your-azure-account-automatically"></a>Azure アカウントに自動的にサインインする
 
-次の手順は、サービス プリンシパル データを格納する資格情報ファイルを作成する方法を説明しています。 これらの手順を完了すると、Eclipse は自動的に資格情報ファイルを使用し、プロジェクトを開くたびに Azure に自動的にサインインします。
-
-1. IntelliJ IDEA でプロジェクトを開きます。
-
-1. **[ツール]**、**[Azure]**、**[Azure Sign In (Azure サインイン)]** の順にクリックします。
-
-   ![Azure サインイン用の IntelliJ メニュー][A01]
-
-1. **[Azure Sign In (Azure サインイン)]** ダイアログ ボックスが表示されたら、**[自動]** を選択し、**[新規]** をクリックします。
-
-   ![[サインイン] ダイアログ ボックス][A02]
-
-1. **[Azure Log In (Azure ログイン)]** ダイアログ ボックスが表示されたら、Azure 資格情報を入力し、**[サインイン]** をクリックします。
-
-   ![[Azure Log In (Azure ログイン)] ダイアログ ボックス][A03]
-
-1. **[Create authentication files (認証ファイルの作成)]**  ダイアログ ボックスが表示されたら、使用するサブスクリプションを選び、宛先ディレクトリを選んでから、**[開始]** をクリックします。
-
-   ![[Azure Log In (Azure ログイン)] ダイアログ ボックス][A04]
-
-1. **[Service Principal Creatation Status (サービス プリンシパル作成ステータス)]** ダイアログ ボックスが表示されます。ファイルが正常に作成されたら **[OK]** をクリックします。
-
-   ![[Service Principal Creatation Status (サービス プリンシパル作成ステータス)] ダイアログ ボックス][A05]
-
-1. **[Azure Sign In (Azure サインイン)]** ダイアログ ボックスが表示されたら、**[サインイン]** をクリックします。
-
-   ![[Azure Log In (Azure ログイン)] ダイアログ ボックス][A06]
-
-1. **[サブスクリプションの選択]** ダイアログ ボックスが表示されたら、使用するサブスクリプションを選び、**[OK]** をクリックします。
-
-   ![[サブスクリプションの選択] ダイアログ ボックス][A07]
-
-## <a name="signing-out-of-your-azure-account-when-you-signed-in-automatically"></a>自動的にサインインした場合に Azure アカウントからサインアウトする
-
-前のセクションの手順を構成した後、IntelliJ IDEA を再起動するたびに Azure Toolkit によって Azure アカウントに自動的にサインインします。 ただし、Azure アカウントからサインアウトし、Azure Toolkit が自動的にサインインしないようにするには、次の手順を使用します。
-
-1. IntelliJ IDEA で、**[ツール]**、**[Azure]**、**[Azure Sign Out (Azure サインアウト)]** の順にクリックします。
-
-   ![Azure サインアウト用の IntelliJ メニュー][L01]
-
-1. **[Azure Sign Out (Azure サインアウト)]** ダイアログ ボックスが表示されたら、**[はい]** をクリックします。
-
-   ![[サインアウト] ダイアログ ボックス][L03]
-
-## <a name="signing-into-your-azure-account-automatically-using-a-credentials-file-which-you-have-already-created"></a>既に作成した資格情報ファイルを使用して Azure アカウントに自動的にサインインする
-
-IntelliJ IDEA を使用しているときに Azure からサインアウトする場合、Azure アカウントに自動的にサインインするには、資格情報ファイルを使用するように Azure Toolkit for Eclipse を再構成する必要があります。 次の手順は、既存の資格情報ファイルを使用するように Azure Toolkit を構成する方法を説明しています。
+このセクションでは、サービス プリンシパル データを格納する資格情報ファイルを作成します。 このプロセスを完了すると、プロジェクトを開くたびに、Eclipse によって資格情報ファイルが自動的に使用されて、Azure に自動的にサインインします。
 
 1. IntelliJ IDEA でプロジェクトを開きます。
 
-1. **[ツール]**、**[Azure]**、**[Azure Sign In (Azure サインイン)]** の順にクリックします。
+2. **[ツール]** メニューの **[Azure]** をポイントし、**[Azure サインイン]** をクリックします。
 
-   ![Azure サインイン用の IntelliJ メニュー][A01]
+   ![IntelliJ Azure サインイン コマンド][A01]
 
-1. **[Azure Sign In (Azure サインイン)]** ダイアログ ボックスが表示されたら、**[自動]** を選択し、**[参照]** をクリックします。
+3. **[Azure サインイン]** ダイアログ ボックスで、**[自動]** を選択し、**[新規]** をクリックします。
 
-   ![[サインイン] ダイアログ ボックス][A02]
+   ![[自動] が選択されている [Azure サインイン] ウィンドウ][A02]
 
-1. **[Select Authentication File (認証ファイルの選択)**] ダイアログ ボックスが表示されたら、前に作成した資格情報ファイルを選び、**[選択]** をクリックします。
+4. **[Azure ログイン]** ダイアログ ウィンドウで、Azure 資格情報を入力し、**[サインイン]** をクリックします。
 
-   ![[サインイン] ダイアログ ボックス][A08]
+   ![[Azure ログイン] ダイアログ ウィンドウ][A03]
 
-1. **[Azure Sign In (Azure サインイン)]** ダイアログ ボックスが表示されたら、**[サインイン]** をクリックします。
+5. **[Create authentication files]\(認証ファイルの作成\)** ダイアログ ボックスが表示されたら、使用するサブスクリプションを選び、宛先ディレクトリを選択し、**[開始]** をクリックします。
 
-   ![[Azure Log In (Azure ログイン)] ダイアログ ボックス][A06]
+   ![[Create authentication files]\(認証ファイルの作成\) ウィンドウ][A04]
 
-1. **[サブスクリプションの選択]** ダイアログ ボックスが表示されたら、使用するサブスクリプションを選び、**[OK]** をクリックします。
+6. **[Service Principal Creatation Status]\(サービス プリンシパル作成ステータス\)** ダイアログ ボックスで、ファイルが正常に作成されたら **[OK]** をクリックします。
+
+   ![[Service Principal Creatation Status]\(サービス プリンシパル作成ステータス\) ダイアログ ボックス][A05]
+
+7. **[Azure サインイン]** ウィンドウで、**[サインイン]** をクリックします。
+
+   ![[Azure ログイン] ダイアログ ボックス][A06]
+
+8. **[サブスクリプションの選択]** ダイアログ ボックスで、使用するサブスクリプションを選択し、**[OK]** をクリックします。
 
    ![[サブスクリプションの選択] ダイアログ ボックス][A07]
 
-## <a name="see-also"></a>関連項目
+## <a name="sign-out-of-your-azure-account-after-you-have-signed-in-automatically"></a>自動的にサインインした後で Azure アカウントからサインアウトする
+
+前の手順を使用してアカウントを構成すると、IntelliJ IDEA を再起動するたびに Azure Toolkit によって Azure アカウントに自動的にサインインします。 ただし、Azure アカウントからサインアウトし、Azure Toolkit による自動的なサインインが行われないようにするには、以下の手順を実行します。
+
+1. IntelliJ IDEA で、**[ツール]** メニューの **[Azure]** をポイントし、**[Azure サインアウト]** をクリックします。
+
+   ![IntelliJ Azure サインアウト コマンド][L01]
+
+2. **[Azure サインアウト]** 確認ウィンドウで、**[はい]** をクリックします。
+
+   ![[Azure サインアウト] 確認ウィンドウ][L03]
+
+## <a name="sign-in-to-your-azure-account-automatically-by-using-an-existing-credentials-file"></a>既存の資格情報ファイルを使用して Azure アカウントに自動的にサインインする
+
+IntelliJ IDEA を使用しているときに Azure アカウントからサインアウトした場合は、既存の資格情報ファイルを使用してアカウントに自動的にサインインしなおす必要があります。 既存の視覚情報ファイルを使用するように Azure Toolkit for Eclipse を構成するには、以下の手順に従います。
+
+1. IntelliJ IDEA でプロジェクトを開きます。
+
+2. **[ツール]** メニューの **[Azure]** をポイントし、**[Azure サインイン]** をクリックします。
+
+   ![IntelliJ Azure サインイン コマンド][A01]
+
+3. **[Azure サインイン]** ウィンドウで、**[自動]** を選択し、**[参照]** をクリックします。
+
+   ![[自動] が選択されている [Azure サインイン] ウィンドウ][A02]
+
+4. **[Select Authentication File]\(認証ファイルの選択\)** ダイアログ ボックスで、作成済みの資格情報ファイルを選択し、**[選択]** をクリックします。
+
+   ![[Select Authentication File]\(認証ファイルの選択\) ダイアログ ボックス][A08]
+
+5. **[Azure サインイン]** ウィンドウで、**[サインイン]** をクリックします。
+
+   ![[自動] が選択されている [Azure サインイン] ウィンドウ][A06]
+
+6. **[サブスクリプションの選択]** ダイアログ ボックスで、使用するサブスクリプションを選択し、**[OK]** をクリックします。
+
+   ![[サブスクリプションの選択] ダイアログ ボックス][A07]
+
+## <a name="next-steps"></a>次のステップ
 Azure Toolkits for Java IDE の詳細については、次のリンクをご覧ください。
 
 * [Azure Toolkit for Eclipse]
@@ -164,7 +165,7 @@ Java での Azure の使用の詳細については、 [Azure Java デベロッ�
 [Azure Toolkit for Eclipse のインストール]: ./azure-toolkit-for-eclipse-installation.md
 [Azure Toolkit for IntelliJ のインストール]: ./azure-toolkit-for-intellij-installation.md
 [Azure Toolkit for Eclipse のサインイン手順]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
-[Sign In Instructions for the Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
+[Sign-in instructions for the Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
 [Azure Toolkit for Eclipse の新機能]: ./azure-toolkit-for-eclipse-whats-new.md
 [Azure Toolkit for IntelliJ の新機能]: ./azure-toolkit-for-intellij-whats-new.md
 

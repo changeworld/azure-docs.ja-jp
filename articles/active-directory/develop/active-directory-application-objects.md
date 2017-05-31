@@ -14,6 +14,7 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/28/2016
 ms.author: bryanla;mbaldwin
+ms.custom: aaddev
 ms.translationtype: Human Translation
 ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
 ms.openlocfilehash: 6ee0c0b5e606b1fd9fc9eecc877d2718b7079ecb

@@ -13,6 +13,7 @@
 ## ラボでの VM の使用
 ### [VM の作成](devtest-lab-add-vm.md)
 ### [要求可能 VM の作成](devtest-lab-add-claimable-vm.md)
+### [Azure CLI を使用した VM の作成と管理](devtest-lab-vmcli.md)
 
 ## ラボでの環境の使用
 ### [環境の作成](devtest-lab-create-environment-from-arm.md)

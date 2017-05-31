@@ -10,11 +10,13 @@ ms.service: data-catalog
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 01/23/2017
+ms.date: 05/25/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c5ada5ff9a0ba37cecff9e2d507736457cc11eb5
 ms.openlocfilehash: b04ec1a07bd1d74aa061409823c78ea814d127fc
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/09/2017
 
 ---
 #<a name="data-catalog-documentation"></a>Data Catalog のドキュメント
@@ -78,10 +80,5 @@ Data Catalog を使用して、組織やチームがデータ ソースを検出
     </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

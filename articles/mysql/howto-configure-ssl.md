@@ -11,7 +11,7 @@ ms.service: mysql-database
 ms.tgt_pltfrm: portal
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 05/18/2017
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
 ms.openlocfilehash: 801806056b745be5663c0a10241795947d1dd036
@@ -31,10 +31,10 @@ Azure Portal や CLI を使用して新しい Azure Database for MySQL サーバ
 同様に、Azure Portal のサーバー下にある [接続文字列] 設定で事前定義された接続文字列には、SSL を使用してデータベース サーバーに接続するための一般的な言語の必須パラメーターが含まれます。 SSL パラメーターはコネクタによって異なります ("ssl=true"、"sslmode=require"、"sslmode=required" など)。
 
 ## <a name="configure-enforcement-of-ssl"></a>SSL 適用の構成
-SSL の適用は、無効または有効にすることができます。 Microsoft Azure では、セキュリティ強化のため [Enforce SSL connection] (SSL 接続の適用) 設定は常に有効にしておくことをお勧めします。
+SSL の適用は、無効または有効にすることができます。 Microsoft Azure では、セキュリティ強化のため [Enforce SSL connection] \(SSL 接続の適用) 設定は常に有効にしておくことをお勧めします。
 
 ### <a name="using-azure-portal"></a>Azure Portal の使用
-Azure Porta から Azure Database for MySQL サーバーにアクセスし、**[接続のセキュリティ]** をクリックします。 トグル ボタンを使用して、**[Enforce SSL connection] (SSL 接続の適用)** 設定を有効または無効にします。 その後、 **[保存]**をクリックします。 Microsoft では、セキュリティ強化のため **[Enforce SSL connection] (SSL 接続の適用)** 設定は常に有効にしておくことをお勧めします。 
+Azure Porta から Azure Database for MySQL サーバーにアクセスし、**[接続のセキュリティ]** をクリックします。 トグル ボタンを使用して、**[Enforce SSL connection] \(SSL 接続の適用)** 設定を有効または無効にします。 その後、 **[保存]**をクリックします。 Microsoft では、セキュリティ強化のため **[Enforce SSL connection] \(SSL 接続の適用)** 設定は常に有効にしておくことをお勧めします。 
 ![SSL の有効化](./media/howto-configure-ssl/enable-ssl.png)
 
 この設定は、**[概要]** ページの **SSL 適用ステータス** インジケーターで確認できます。
@@ -123,7 +123,7 @@ OpenSSL>x509 -inform DER -in BaltimoreCyberTrustRoot.cer -out MyServerCACert.pem
 MySQL コマンド ライン インターフェイスを使用して、次のコマンドを実行します。
 
 ```dos
-mysql.exe -h yourserver. -uUsername@Servername -pYourPassword --ssl-ca=c:\ssl\MyServerCACert.pem
+mysql.exe -h mysqlserver4demo.mysql.database.azure.com -uUsername@mysqlserver4demo -pYourPassword --ssl-ca=c:\ssl\MyServerCACert.pem
 ```
 MySQL の **status** コマンドを実行して、SSL 経由で MySQL サーバーに接続していることを確認します。
 
@@ -155,7 +155,7 @@ Threads: 4  Questions: 26082  Slow queries: 0  Opens: 112  Flush tables: 1  Open
 > 現在、サービスへの mysql.exe 接続で "--ssl-mode=VERIFY_IDENTITY" オプションを使用した場合に、接続が次のエラーで失敗するという既知の問題が確認されています: _ERROR 2026 (HY000): SSL connection error: SSL certificate validation failure_ Please downgrade to "--ssl-mode=VERIFY_CA" or lesser [SSL modes](https://dev.mysql.com/doc/refman/5.7/en/secure-connection-options.html#option_general_ssl-mode) (エラー 2026 (HY000): SSL 接続エラー: SSL 証明書の検証エラー "--ssl-mode=VERIFY_CA" または以前の SSL モードにダウングレードしてください)。 "--ssl-mode=VERIFY_IDENTITY" の使用が必要な場合は、サーバー名に ping を実行して、リージョン サーバー名を解決し (westeurope1-a.control.database.windows.net など)、この問題が解決するまで、接続内でそのリージョン サーバー名を使用します。 この制限は、今後削除する予定です。 
 
 ### <a name="connecting-to-server-using-the-mysql-workbench-over-ssl"></a>MySQL Workbench による SSL 経由でのサーバーへの接続
-MySQL Workbench を構成して SSL 経由で安全に接続する場合は、MySQL Workbench の [Setup New Connection] (新しい接続のセットアップ) ダイアログで **[SSL]** タブを開き、**SSL CA File (SSL CA ファイル)** フィールドに **MyServerCACert.pem** ファイルの場所を入力します。
+MySQL Workbench を構成して SSL 経由で安全に接続する場合は、MySQL Workbench の [Setup New Connection] \(新しい接続のセットアップ) ダイアログで **[SSL]** タブを開き、**SSL CA File (SSL CA ファイル)** フィールドに **MyServerCACert.pem** ファイルの場所を入力します。
 ![カスタマイズしたタイルの保存](./media/concepts-ssl-connection-security/mysql-workbench-ssl.png)
 
 ## <a name="next-steps"></a>次のステップ

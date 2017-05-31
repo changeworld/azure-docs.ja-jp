@@ -36,7 +36,7 @@ Azure サブスクリプションをまだ持っていない場合でも、MSDN 
 「`azure login`」と入力し、Azure アカウントへの対話型ログイン エクスペリエンスのプロンプトに従って、[Azure アカウントに対話形式でログイン](../articles/xplat-cli-connect.md#scenario-1-azure-login-with-interactive-login)します。 
 
 > [!NOTE]
-> 職場または学校の ID を所有していて、2 要素認証が有効になっていないことがわかっている場合は、職場または学校の ID と共に `azure login -u` を使うと、"対話型セッションを使わずに" ログインすることもできます。****** 職場または学校の ID がない場合は、[個人の Microsoft アカウントから職場または学校の ID を作成 して](../articles/virtual-machines/windows/create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)同じ方法でログインできます。
+> 職場または学校の ID を所有していて、2 要素認証が有効になっていないことがわかっている場合は、職場または学校の ID と共に `azure login -u` を使うと、"対話型セッションを使わ*ずに*" ログインすること**も**できます。 職場または学校の ID がない場合は、[個人の Microsoft アカウントから職場または学校の ID を作成 して](../articles/virtual-machines/windows/create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)同じ方法でログインできます。
 >
 >
 

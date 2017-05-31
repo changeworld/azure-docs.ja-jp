@@ -10,12 +10,12 @@ ms.assetid:
 ms.service: postgresql-database
 ms.tgt_pltfrm: portal
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 05/16/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 23a93060697bc48084658bbbd895d13fd393b07b
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: a946c114824597cc55e435a455cd888816789dbf
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/17/2017
 
 ---
 # <a name="azure-database-for-postgresql-options-and-performance-understand-whats-available-in-each-service-tier"></a>Azure Database for PostgreSQL のオプションとパフォーマンス: 各サービス レベルで使用できる内容
@@ -46,15 +46,15 @@ ms.lasthandoff: 05/10/2017
 
 | **サービス レベルの機能** | **Basic** | **Standard** | **Premium** * |
 | :------------------------ | :-------- | :----------- | :------------ |
-| 最大コンピューティング ユニット数 | 100 | 2000 | プレビュー段階では利用できません |
-| 最大合計ストレージ | 1050 GB | 10000 GB | プレビュー段階では利用できません |
+| 最大コンピューティング ユニット数 | 100 | 2,000 | プレビュー段階では利用できません |
+| 最大合計ストレージ | 1,050 GB | 10,000 GB | プレビュー段階では利用できません |
 | ストレージ IOPS 保証 | 該当なし  | あり | プレビュー段階では利用できません |
-| 最大ストレージ IOPS | 該当なし  | 30,000 | プレビュー段階では利用できません |
+| 最大ストレージ IOPS | 該当なし  | 3,000 | プレビュー段階では利用できません |
 | データベース バックアップのリテンション期間 | 7 日 | 35 日 | 35 日 |
-| &nbsp; | &nbsp; | &nbsp; | &nbsp; |
+
 
 > [!NOTE]
-> プレビュー段階の Standard サービス レベルは現在、最大 800 コンピューティング ユニットと、最大 1000 GB のストレージをサポートしています。
+> プレビュー段階の Standard サービス レベルは現在、最大 800 コンピューティング ユニットと最大 1,000 GB のストレージをサポートしています。
 
 最低限必要なサービス レベルを確認したら、PostgreSQL サーバーのパフォーマンス レベル (コンピューティング ユニット) を決めることができます。 Web ワークロードまたは分析ワークロードに対して優れたユーザー同時実行性を必要とするアプリケーションについては、多くの場合、Standard 200 および 400 コンピューティング ユニットが出発点として適しています。 
 
@@ -64,44 +64,38 @@ ms.lasthandoff: 05/10/2017
 > プレビュー段階の Basic レベルと Standard レベルは現在、ストレージの動的スケーリングをサポートしていません。 この機能は今後追加する予定です。
 
 > [!NOTE]
-> Standard サービス レベルでは、IOPS が、プロビジョニング済みストレージに対して 3 対 1 の固定比率で比例的にスケールされます。 組み込まれている 125 GB のストレージでは、375 のプロビジョニング済み IOPS と、それぞれについて最大 256 KB の IO サイズが保証されます。 1000 GB をプロビジョニングする場合は、3000 のプロビジョニング済み IOPS を取得できます。 使用可能なプロビジョニング済み IOPS を最大限に活用するには、サーバー コンピューティング ユニットの使用量を監視して、スケールアップする必要があります。
+> Standard サービス レベルでは、IOPS が、プロビジョニング済みストレージに対して 3 対 1 の固定比率で比例的にスケールされます。 組み込まれている 125 GB のストレージでは、375 のプロビジョニング済み IOPS と、それぞれについて最大 256 KB の IO サイズが保証されます。 1,000 GB をプロビジョニングした場合は、3,000 のプロビジョニング済み IOPS を取得します。 使用可能なプロビジョニング済み IOPS を最大限に活用するには、サーバー コンピューティング ユニットの使用量を監視して、スケールアップする必要があります。
 
 ## <a name="service-tiers-and-performance-levels"></a>サービス プランとパフォーマンス レベル
 
 Azure Database for PostgreSQL には、各サービス レベル内に複数のパフォーマンス レベルが用意されています。 次のいずれかを使用して、ワークロードのニーズに最適なレベルを柔軟に選択できます。
 
-- [Azure Portal](/azure/azure-portal-overview) ([http://portal.azure.com](http://portal.azure.com))
+- [Azure Portal](quickstart-create-server-database-portal.md) ([http://portal.azure.com](http://portal.azure.com))
 - [Azure CLI](quickstart-create-server-database-azure-cli.md)
 
 各 PostgreSQL サーバーでホストされるデータベースの数にかかわらず、データベースは、所定のリソースを取得します。サーバーの期待されるパフォーマンス特性は影響を受けません。
 
-Basic サービス レベル: 
+### <a name="basic-service-tier"></a>Basic サービス レベル: 
 
 | **パフォーマンス レベル** | **50** | **100** |
-| :-------------------- | :----- | :------ |
+| --------------------: | :----- | :------ |
 | 最大コンピューティング ユニット数 | 50 | 100 |
 | 基本ストレージ サイズ | 50 GB | 50 GB |
-| 最大サーバー ストレージ サイズ\* | 1050 GB | 1050 GB |
-| 最大同時ログイン数 | &nbsp; | &nbsp; |
-| 最大接続数 | &nbsp; | &nbsp; |
-| &nbsp; | &nbsp; | &nbsp; |
+| 最大サーバー ストレージ サイズ\* | 1,050 GB | 1,050 GB |
 
-Standard サービス レベル: 
+### <a name="standard-service-tier"></a>Standard サービス レベル: 
 
 | **パフォーマンス レベル** | **100** | **200** | **400** | **800** |
-| :-------------------- | :------ | :------ | :------ | :------ |
+| --------------------: | :------ | :------ | :------ | :------ |
 | 最大コンピューティング ユニット数 | 100 | 200 | 400 | 800 |
-| 基本ストレージ サイズとプロビジョニング済み IOPS | 125 GB、375 IOPS | &nbsp; | &nbsp; | &nbsp; |
-| 最大サーバー ストレージ サイズ\* | 1 TB (テラバイト) | &nbsp; | &nbsp; | &nbsp; |
-| 最大サーバー プロビジョニング済み IOPS | 3000 IOPS | &nbsp; | &nbsp; | &nbsp; |
-| GB あたりの最大サーバー プロビジョニング済み IOPS | GB あたり 3 IOPS 固定 | &nbsp; | &nbsp; | &nbsp; |
-| 最大同時ログイン数 | &nbsp; | &nbsp; | &nbsp; | &nbsp; |
-| 最大接続数 | &nbsp; | &nbsp; | &nbsp; | &nbsp; |
-| &nbsp; | &nbsp; | &nbsp; | &nbsp; | &nbsp; |
+| 基本ストレージ サイズとプロビジョニング済み IOPS | 125 GB、<br/> 375 IOPS | 125 GB、<br/> 375 IOPS | 125 GB、<br/> 375 IOPS | 125 GB、<br/> 375 IOPS |
+| 最大サーバー ストレージ サイズ\* | 1 TB (テラバイト) | 1 TB (テラバイト) | 1 TB (テラバイト) | 1 TB (テラバイト) |
+| 最大サーバー プロビジョニング済み IOPS | 3,000 IOPS | 3,000 IOPS | 3,000 IOPS | 3,000 IOPS |
+| GB あたりの最大サーバー プロビジョニング済み IOPS | GB あたり 3 IOPS 固定 | GB あたり 3 IOPS 固定 | GB あたり 3 IOPS 固定 | GB あたり 3 IOPS 固定 |
 
 \* 最大サーバー ストレージ サイズは、サーバーのプロビジョニング済みストレージの最大サイズを意味します。
 
-## <a name="scaling-up-or-down-a-single-server"></a>1 つのサーバーのスケールアップとスケールダウン
+## <a name="scaling-up-or-down-a-server"></a>サーバーのスケールアップまたはスケールダウン
 
 最初にサービス レベルとパフォーマンス レベルを選択した後、ワークロード要件に基づいて、サーバーを動的にスケールアップまたはスケールダウンできます。 スケールアップまたはスケールダウンする必要がある場合、データベースのレベルを簡単に変更するには、Azure Portal または Azure CLI を使用します。
 
@@ -109,10 +103,7 @@ Standard サービス レベル:
 
 全体のスケールアップ プロセスにかかる時間は、変更前後のサーバーのサイズとサービス レベルによって異なります。 たとえば、コンピューティング ユニットを Standard サービス レベルとの間または Standard サービス レベル内で変更するサーバーの場合は、数分以内に完了します。 サーバーの新しいプロパティは、変更が完了するまで適用されません。
 
-### <a name="documentation-about-the-steps-for-scaling-up-or-down"></a>スケールアップまたはスケールダウンに関するドキュメント
-
-- [Azure Portal での単一のサーバーの管理](quickstart-create-server-database-portal.md)
-- [Azure CLI での単一のデータベースの管理](quickstart-create-server-database-azure-cli.md)
+Azure ポータルを使用してスケールアップとスケールダウンを実行できます。Azure CLI を使用してサーバーの監視とスケーリングを実行できます。 参照先: [Azure CLI での単一の PostgreSQL サーバーの監視とスケーリング](scripts/sample-scale-server-up-or-down.md)
 
 ### <a name="details-about-scaling-up-or-down"></a>スケールアップまたはスケールダウンの詳細
 

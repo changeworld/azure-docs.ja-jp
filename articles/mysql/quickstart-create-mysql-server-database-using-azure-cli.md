@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: portal
 ms.workload: 
-ms.date: 05/10/2017
+ms.date: 05/24/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 574299dd64120d75a1a36cb2ded0fdd269292570
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 9f78163e4ff1166a2abd94150d686256ee338286
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/25/2017
 
 ---
 
@@ -29,7 +29,6 @@ ms.lasthandoff: 05/10/2017
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="log-in-to-azure"></a>Azure へのログイン
-
 [az login](/cli/azure/#login) コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
 
 ```azurecli
@@ -87,7 +86,7 @@ az mysql server show --resource-group mycliresource --name mycliserver
 {
   "administratorLogin": "myadmin",
   "administratorLoginPassword": null,
-  "fullyQualifiedDomainName": "mycliserver.database.windows.net",
+  "fullyQualifiedDomainName": "mycliserver.mysql.database.azure.com",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mycliresource/providers/Microsoft.DBforMySQL/servers/mycliserver",
   "location": "westus",
   "name": "mycliserver",
@@ -114,7 +113,7 @@ az mysql server show --resource-group mycliresource --name mycliserver
 
 1. **mysql** コマンドライン ツールを使用してサーバーに接続します。
 ```dos
- mysql -h mycliserver.database.windows.net -u myadmin@mycliserver -p
+ mysql -h mycliserver.mysql.database.azure.com -u myadmin@mycliserver -p
 ```
 
 2. サーバーの状態を表示します。
@@ -124,7 +123,7 @@ az mysql server show --resource-group mycliresource --name mycliserver
 すべてが問題ない場合は、コマンドライン ツールの出力は次のようになります。
 
 ```dos
-C:\Users\v-chenyh>mysql -h mycliserver.database.windows.net -u myadmin@mycliserver -p
+C:\Users\v-chenyh>mysql -h mycliserver.mysql.database.azure.com -u myadmin@mycliserver -p
 Enter password: ***********
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 65512
@@ -149,7 +148,7 @@ SSL:                    Not in use
 Using delimiter:        ;
 Server version:         5.6.26.0 MySQL Community Server (GPL)
 Protocol version:       10
-Connection:             mycliserver.database.windows.net via TCP/IP
+Connection:             mycliserver.mysql.database.azure.com via TCP/IP
 Server characterset:    latin1
 Db     characterset:    latin1
 Client characterset:    gbk
@@ -175,16 +174,15 @@ mysql>
 |----------------|-----------------|
 |    *Connection Name* | この接続の名前を指定します (任意に指定できます) |
 | *Connection Method* | Standard (TCP/IP) を選択します |
-| *Hostname* | mycliserver.database.windows.net (前にメモしておいたサーバー名) |
-| *Port* | 3306 |
-| *Username* | myadmin@mycliserver (前にメモしておいたサーバー管理者ログイン) |
-| *Password* | 資格情報コンテナーに管理者アカウントのパスワードを格納することができます |
+| *Hostname* | mycliserver.mysql.database.azure.com (前にメモしておいたサーバー名) |
+| *ポート* | 3306 |
+| *ユーザー名* | myadmin@mycliserver (前にメモしておいたサーバー管理者ログイン) |
+| *パスワード* | 管理者アカウントのパスワードを保存してください |
 
-![新しい接続のセットアップ](./media/quickstart-create-mysql-server-database-using-azure-cli/setup-new-connection.png)
+   ![新しい接続のセットアップ](./media/quickstart-create-mysql-server-database-using-azure-cli/setup-new-connection.png)
 
-3.    **[Test Connection] (接続のテスト)** をクリックして、すべてのパラメーターが正しく構成されているかをテストします。
-
-4.    これで、作成したばかりの接続をクリックして、サーバーに正常に接続できます。
+**[Test Connection] (接続のテスト)** をクリックして、すべてのパラメーターが正しく構成されているかをテストします。
+これで、作成したばかりの接続をクリックして、サーバーに正常に接続できます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -197,5 +195,5 @@ az group delete --name mycliresource
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Azure CLI での MySQL データベースの設計](./tutorial-design-database-using-cli.md)。
+> [Azure CLI での MySQL データベースの設計](./tutorial-design-database-using-cli.md)
 

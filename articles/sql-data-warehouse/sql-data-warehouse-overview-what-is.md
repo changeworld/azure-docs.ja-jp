@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: overview
 ms.date: 2/28/2017
-ms.author: jrj;mausher;kevin;barbkess;elbutter
-translationtype: Human Translation
+ms.author: jrj;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: fd35b0e5c57e47c5e79fe926f24fb21089cbf89a
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/18/2017
 
 

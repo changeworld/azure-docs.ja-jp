@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/09/2017
+ms.date: 05/11/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 681fac55bf16ff9294ec586bbd95a07fa090abb1
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: fb84ca46bdb02df315c078889f49db545fee1d64
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -26,7 +27,7 @@ Docker は一般的なコンテナー管理およびイメージング プラッ
 
 Docker マシンや Azure Container Service などの他のデプロイ方法について詳しくは、以下の記事をご覧ください。
 
-* アプリのプロトタイプを短時間で作成するには、[Docker マシン](docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使って単一の Docker ホストを作成できます。
+* アプリのプロトタイプを短時間で作成するには、[Docker マシン](docker-machine.md)を使って単一の Docker ホストを作成できます。
 * さらに大きくて安定した環境の場合は、Azure Docker VM 拡張機能を使うことができます。この拡張機能は、一貫したコンテナー デプロイメントを生成するための [Docker Compose](https://docs.docker.com/compose/overview/) もサポートします。 この記事では、Azure Docker VM 拡張機能の使用を詳しく説明します。
 * 追加のスケジュール設定および管理ツールを提供する実稼働レベルのスケーラブルな環境を作成するには、[Azure Container Service に Docker Swarm クラスター](../../container-service/container-service-deployment.md)をデプロイできます。
 
@@ -34,7 +35,7 @@ Docker マシンや Azure Container Service などの他のデプロイ方法に
 次のいずれかの CLI バージョンを使用してタスクを完了できます。
 
 - [Azure CLI 1.0](#azure-docker-vm-extension-overview) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI (本記事)
-- [Azure CLI 2.0](dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - Resource Manager デプロイ モデル用の次世代 CLI 
+- [Azure CLI 2.0](dockerextension.md) - Resource Manager デプロイ モデル用の次世代 CLI 
 
 ## <a name="azure-docker-vm-extension-overview"></a>Azure Docker VM 拡張機能の概要
 Azure Docker VM 拡張機能では、Linux 仮想マシン (VM) に Docker デーモン、Docker クライアント、Docker Compose をインストールして構成します。 Azure Docker VM 拡張機能を使うと、単に Docker マシンを使ったり、自分で Docker ホストを作成するより、管理と機能の範囲が広がります。 [Docker Compose](https://docs.docker.com/compose/overview/) などの追加機能により、Azure Docker VM 拡張機能はより堅牢な開発環境または運用環境に適したものになっています。
@@ -50,11 +51,13 @@ Azure Docker VM 拡張機能を使って Docker ホストをインストール�
 azure config mode arm
 ```
 
-テンプレートの URI を指定し、Azure CLI を使ってテンプレートをデプロイします。 次の例では、`myResourceGroup` という名前のリソース グループを `WestUS` の場所に作成します。 次のように、独自のリソース グループ名と場所を使います。
+テンプレートの URI を指定し、Azure CLI を使ってテンプレートをデプロイします。 次の例では、*myResourceGroup* という名前のリソース グループを場所 *westus* に作成します。 次のように、独自のリソース グループ名と場所を使います。
 
 ```azurecli
-azure group create --name myResourceGroup --location "West US" \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/docker-simple-on-ubuntu/azuredeploy.json
+azure group create \
+    --name myResourceGroup \
+    --location westus \
+    --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/docker-simple-on-ubuntu/azuredeploy.json
 ```
 
 メッセージに従って、ストレージ アカウントの名前、ユーザー名とパスワード、および DNS 名を入力します。 出力は次の例のようになります。
@@ -66,9 +69,9 @@ info:    Executing command group create
 info:    Updated resource group myResourceGroup
 info:    Supply values for the following parameters
 newStorageAccountName: mystorageaccount
-adminUsername: ops
+adminUsername: azureuser
 adminPassword: P@ssword!
-dnsNameForPublicIP: mypublicip
+dnsNameForPublicIP: mypublicidns
 + Initializing template configurations and parameters
 + Creating a deployment
 info:    Created template deployment "azuredeploy"
@@ -83,10 +86,10 @@ info:    group create command OK
 
 Azure CLI は数秒でプロンプトに戻りますが、Azure Docker VM 拡張機能による Docker ホストの作成と構成はまだ行われています。 デプロイが完了するには数分かかります。 `azure vm show` コマンドを使うと、Docker ホストの詳細な状態を確認できます。
 
-次の例では、`myResourceGroup` という名前のリソース グループ内にある `myDockerVM` という名前 (テンプレートによる既定の名前 - この名前は変更しないでください) の VM の状態を確認します。 前の手順で作成したリソース グループの名前を入力します。
+次の例では、*myResourceGroup* という名前のリソース グループ内にある *myDockerVM* という名前 (テンプレートによる既定の名前 - この名前は変更しないでください) の VM の状態を確認します。 前の手順で作成したリソース グループの名前を入力します。
 
 ```azurecli
-azure vm show -g myResourceGroup -n myDockerVM
+azure vm show --resource-group myResourceGroup --name myDockerVM
 ```
 
 `azure vm show` コマンドの出力は次の例のようになります。
@@ -112,21 +115,21 @@ data:          Provisioning State        :Succeeded
 data:          Name                      :myVMNicD
 data:          Location                  :westus
 data:            Public IP address       :13.91.107.235
-data:            FQDN                    :mypublicip.westus.cloudapp.azure.com]
+data:            FQDN                    :mypublicdns.westus.cloudapp.azure.com
 data:
 data:    Diagnostics Instance View:
 info:    vm show command OK
 ```
 
-出力の先頭付近に VM の `ProvisioningState` が表示されます。 ここで " `Succeeded`" と表示されている場合デプロイは完了しており、VM に SSH で接続できます。
+出力の先頭付近に VM の **ProvisioningState** が表示されます。 ここで *Succeeded* と表示されている場合デプロイは完了しており、VM に SSH で接続できます。
 
-出力の最後の方にある `FQDN` に、Docker ホストの完全修飾ドメイン名が表示されます。 この FQDN を、後の手順で Docker ホストに SSH 接続するときに使います。
+出力の最後の方にある *FQDN* に、Docker ホストの完全修飾ドメイン名が表示されます。 この FQDN を、後の手順で Docker ホストに SSH 接続するときに使います。
 
 ## <a name="deploy-your-first-nginx-container"></a>最初の nginx コンテナーのデプロイ
 デプロイが完了したら、ローカル コンピューターから新しい Docker ホストに SSH 接続します。 次のように、独自のユーザー名と FQDN を入力します。
 
 ```bash
-ssh ops@mypublicip.westus.cloudapp.azure.com
+ssh ops@mypublicdns.westus.cloudapp.azure.com
 ```
 
 Docker ホストにログインした後、nginx コンテナーを実行します。
@@ -167,7 +170,7 @@ b6ed109fb743        nginx               "nginx -g 'daemon off"   About a minute 
 ![実行中の ngnix コンテナー](./media/dockerextension/nginxrunning.png)
 
 ## <a name="azure-docker-vm-extension-template-reference"></a>Azure Docker VM 拡張機能テンプレート リファレンス
-前の例では、既存のクイックスタート テンプレートを使いました。 独自の Resource Manager テンプレートを使って Azure Docker VM 拡張機能をデプロイすることもできます。 そのためには、次の記述を Resource Manager テンプレートに追加して、VM の `vmName` を適切に定義します。
+前の例では、既存のクイックスタート テンプレートを使いました。 独自の Resource Manager テンプレートを使って Azure Docker VM 拡張機能をデプロイすることもできます。 そのためには、次の記述を Resource Manager テンプレートに追加して、VM の *vmName* を適切に定義します。
 
 ```json
 {
@@ -196,8 +199,8 @@ Resource Manager テンプレートの詳しい使い方は、「[Azure Resource
 
 Azure での Docker のデプロイの他のオプションについて詳しくは、以下をご覧ください。
 
-* [Docker マシンと Azure ドライバーを使用する](docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)  
-* [Docker と Compose を使用して Azure 仮想マシン上で複数コンテナー アプリケーションを定義して実行する](docker-compose-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Docker マシンと Azure ドライバーを使用する](docker-machine.md)  
+* [Docker と Compose を使用して Azure 仮想マシン上で複数コンテナー アプリケーションを定義して実行する](docker-compose-quickstart.md)
 * [Azure コンテナー サービス クラスターのデプロイ](../../container-service/container-service-deployment.md)
 
 

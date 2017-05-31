@@ -141,9 +141,9 @@
     href: web-sites-deploy.md
     items:
     - name: FTP 経由でのデプロイ
-      href: app-service-deploy-content-sync.md
+      href: app-service-deploy-ftp.md
     - name: クラウドの同期を使用したデプロイ
-      href: web-sites-deploy.md
+      href: app-service-deploy-content-sync.md
     - name: 継続的なデプロイ
       href: app-service-continuous-deployment.md
     - name: ステージングへのデプロイ

@@ -12,21 +12,23 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 11/01/2016
+ms.date: 05/01/2017
 ms.author: eugenesh
-translationtype: Human Translation
-ms.sourcegitcommit: c98251147bca323d31213a102f607e995b37e0ec
-ms.openlocfilehash: 801a9d0e92a248d2e9843f13cfce74b948cf0d4b
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 356ceb98106d080d8c24dedc3547bee33750156e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="indexer-operations-azure-search-service-rest-api-2015-02-28-preview"></a>インデクサー操作 (Azure Search サービス REST API: 2015-02-28-Preview)
 > [!NOTE]
-> この記事では、[2015-02-28-Preview REST API](search-api-2015-02-28-preview.md) のインデクサーについて説明します。 この API バージョンにより、ドキュメント抽出機能を備えた Azure BLOB ストレージ インデクサーと Azure Table Storage インデクサーのプレビュー バージョンが追加されます。また、その他の面でも改善されています。 この API は、一般公開 (GA) インデクサーもサポートします。これには、Azure SQL Database、Azure VM の SQL Server、および Azure DocumentDB のインデクサーが含まれます。
+> この記事では、[2015-02-28-Preview REST API](search-api-2015-02-28-preview.md) のインデクサーについて説明します。 この API バージョンにより、ドキュメント抽出機能を備えた Azure BLOB ストレージ インデクサーと Azure Table Storage インデクサーのプレビュー バージョンが追加されます。また、その他の面でも改善されています。 この API は、一般公開 (GA) インデクサーもサポートします。これには、Azure SQL Database、Azure VM の SQL Server、および Azure Cosmos DB のインデクサーが含まれます。
 > 
 > 
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 Azure Search は一部の共通データ ソースと直接統合できます。データにインデックスを作成するためにコードを記述する必要はありません。 これをセットアップするために、Azure Search API を呼び出し、**インデクサー**と**データ ソース**を作成し、管理できます。 
 
 **インデクサー** は、データ ソースと検索対象のインデックスをつなげるリソースです。 インデクサーは次のように使用されます。 
@@ -41,8 +43,8 @@ Azure Search は一部の共通データ ソースと直接統合できます。
 
 現在、次のデータ ソースがサポートされています。
 
-* **Azure SQL Database** と **Azure VM の SQL Server** 該当するチュートリアルについては、[この記事](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)をご覧ください。 
-* **Azure DocumentDB**。 該当するチュートリアルについては、 [この記事](search-howto-index-documentdb.md)をご覧ください。 
+* **Azure SQL Database** と **Azure VM の SQL Server** 該当するチュートリアルについては、 [この記事](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)をご覧ください。 
+* **Azure Cosmos DB** 該当するチュートリアルについては、 [この記事](search-howto-index-documentdb.md)をご覧ください。 
 * 次のドキュメント形式を含む **Azure BLOB Storage**: PDF、Microsoft Office (DOCX/DOC、XSLX/XLS、PPTX/PPT、MSG)、HTML、XML、ZIP、プレーン テキスト ファイル (JSON など)。 該当するチュートリアルについては、[この記事](search-howto-indexing-azure-blob-storage.md)をご覧ください。
 * **Azure テーブル ストレージ**。 該当するチュートリアルについては、 [この記事](search-howto-indexing-azure-tables.md)をご覧ください。
 
@@ -60,7 +62,7 @@ Azure Search は一部の共通データ ソースと直接統合できます。
 3. 「 [データ ソースの作成](#CreateDataSource)」の説明に基づき、Azure Search データ ソースを作成します。
 4. 「 [インデクサーの作成](#CreateIndexer)」の説明に基づき、Azure Search インデクサーを作成します。
 
-ターゲット インデックスとデータ ソースの組み合わせごとにインデクサーを&1; つ作成するように設計する必要があります。 複数のインデクサーが同じインデックスに書き込みできます。複数のインデクサーに同じデータ ソースを再利用できます。 ただし、インデクサーが&1; 回に利用できるデータ ソースは&1; つだけです。そして、書き込めるインデックスは&1; つだけです。 
+ターゲット インデックスとデータ ソースの組み合わせごとにインデクサーを 1 つ作成するように設計する必要があります。 複数のインデクサーが同じインデックスに書き込みできます。複数のインデクサーに同じデータ ソースを再利用できます。 ただし、インデクサーが 1 回に利用できるデータ ソースは 1 つだけです。そして、書き込めるインデックスは 1 つだけです。 
 
 インデクサーを作成したら、 [インデクサー状態の取得](#GetIndexerStatus) 操作でその実行状態を取得できます。 また、 [インデクサーの実行](#RunIndexer) 操作を使用すれば、(スケジュールに基づき定期的に実行する代わりに、あるいは定期的な実行に加えて) いつでもインデクサーを実行できます。
 
@@ -123,13 +125,13 @@ HTTPS はすべてのサービス要求に必要です。 **データ ソース�
 * `description`: 任意の説明。 
 * `type`: 必須。 サポートされているデータ ソースの種類のいずれかを指定する必要があります。
   * `azuresql` - Azure SQL Database または Azure VM の SQL Server
-  * `documentdb` - Azure DocumentDB
+  * `documentdb` - Azure Cosmos DB
   * `azureblob` - Azure Blob ストレージ
   * `azuretable` - Azure テーブル ストレージ
 * `credentials`:
   * 必須の `connectionString` プロパティはデータ ソースの接続文字列を指定します。 接続文字列の形式はデータ ソースの種類によって異なります。 
     * Azure SQL の場合、通常の SQL Server 接続文字列です。 Azure ポータルを利用して接続文字列を取得する場合は、 `ADO.NET connection string` オプションを使用します。
-    * DocumentDB の場合、接続文字列は `"AccountEndpoint=https://[your account name].documents.azure.com;AccountKey=[your account key];Database=[your database id]"`の形式にする必要があります。 すべての値が必須です。 値は [Azure ポータル](https://portal.azure.com/)にあります。  
+    * Azure Cosmos DB の場合、接続文字列は `"AccountEndpoint=https://[your account name].documents.azure.com;AccountKey=[your account key];Database=[your database id]"` の形式にする必要があります。 すべての値が必須です。 値は [Azure ポータル](https://portal.azure.com/)にあります。  
     * Azure Blob ストレージおよび Azure テーブル ストレージの場合、これはストレージ アカウント接続文字列です。 形式については、 [こちら](https://azure.microsoft.com/documentation/articles/storage-configure-connection-string/)をご覧ください。 HTTPS エンドポイント プロトコルが必要です。  
 * `container`、必須: `name` プロパティと `query` プロパティを使用して、インデックスを作成するデータを指定します。 
   * `name`、必須: 
@@ -167,7 +169,7 @@ HTTPS はすべてのサービス要求に必要です。 **データ ソース�
         "highWaterMarkColumnName" : "[a row version or last_updated column name]" 
     } 
 
-DocumentDB データ ソースを使用するとき、DocumentDB が与える `_ts` プロパティを使用する必要があります。 
+Azure Cosmos DB データ ソースを使用するとき、Azure Cosmos DB が与える `_ts` プロパティを使用する必要があります。 
 
 Azure BLOB の利用時、Azure Search は、BLOB の最後に変更されたタイムスタンプに基づく高基準値変更検出ポリシーを自動的に使用します。このようなポリシーを自分で指定する必要はありません。   
 
@@ -221,7 +223,7 @@ SQL 統合変更追跡ポリシーを使用するときは、個別のデータ�
         "dataDeletionDetectionPolicy" : { "@odata.type" : "#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy", "softDeleteColumnName" : "IsDeleted", "softDeleteMarkerValue" : "true" }
     }
 
-データの&1; 回限りのコピーのためにデータ ソースを使用する場合、ポリシーは省略できます。
+データの 1 回限りのコピーのためにデータ ソースを使用する場合、ポリシーは省略できます。
 
     { 
         "name" : "asqldatasource",
@@ -411,8 +413,8 @@ HTTP POST 要求を実行し、Azure Search サービス内に新しいインデ
 
 * `maxFailedItems` : インデックス作成失敗がこの項目数に到達すると、そのインデクサー実行は失敗であるとみなされます。 既定値は 0 です。 失敗した項目に関する情報は [インデクサー状態の取得](#GetIndexerStatus) 操作で返されます。 
 * `maxFailedItemsPerBatch` : バッチごとのインデックス作成失敗がこの項目数に到達すると、そのインデクサー実行は失敗であるとみなされます。 既定値は 0 です。
-* `base64EncodeKeys`: ドキュメント キーを base&64; でエンコードするかどうかを指定します。 Azure Search では、ドキュメント キーの文字に制約があります。 ただし、ソース データの値には無効な文字を含めることができます。 そのような値にドキュメント キーとしてインデックスを作成する必要がある場合、このフラグを true に設定できます。 既定値は `false`です。
-* `batchSize`: パフォーマンスを改善する目的で、データ ソースから読み込まれ、1 つのバッチとしてインデックスが作成されるアイテムの数を指定します。 既定値はデータ ソースの種類によって異なります。Azure SQL と DocumentDB の場合は 1000 であり、Azure Blob Storage の場合は 10 です。
+* `base64EncodeKeys`: ドキュメント キーを base 64 でエンコードするかどうかを指定します。 Azure Search では、ドキュメント キーの文字に制約があります。 ただし、ソース データの値には無効な文字を含めることができます。 そのような値にドキュメント キーとしてインデックスを作成する必要がある場合、このフラグを true に設定できます。 既定値は `false`です。
+* `batchSize`: パフォーマンスを改善する目的で、データ ソースから読み込まれ、1 つのバッチとしてインデックスが作成されるアイテムの数を指定します。 既定値はデータ ソースの種類によって異なります。Azure SQL と Azure Cosmos DB の場合は 1000 であり、Azure Blob Storage の場合は 10 です。
 
 **フィールド マッピング**
 
@@ -438,7 +440,7 @@ HTTP POST 要求を実行し、Azure Search サービス内に新しいインデ
 
     "fieldMappings" : [ { "sourceFieldName" : "tags", "mappingFunction" : { "name" : "jsonArrayToStringCollection" } } ] 
 
-たとえば、ソース フィールドに文字列 `["red", "white", "blue"]` が含まれている場合、`Collection(Edm.String)` 型のターゲット フィールドに `"red"`、`"white"`、`"blue"` の&3; つの値が入力されます。
+たとえば、ソース フィールドに文字列 `["red", "white", "blue"]` が含まれている場合、`Collection(Edm.String)` 型のターゲット フィールドに `"red"`、`"white"`、`"blue"` の 3 つの値が入力されます。
 
 `targetFieldName` プロパティは任意です。省略した場合、`sourceFieldName` 値が使用されます。 
 
@@ -458,7 +460,7 @@ HTTP POST 要求を実行し、Azure Search サービス内に新しいインデ
 
 **応答**
 
-要求成功の場合:&201; 作成されました。
+要求成功の場合: 201 作成されました。
 
 <a name="UpdateIndexer"></a>
 
@@ -796,9 +798,4 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 <td>サポートされていません。Azure Search では現在のところ、プリミティブ型と文字列の集合のみをサポートしています。</td>
 </tr>
 </table>
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

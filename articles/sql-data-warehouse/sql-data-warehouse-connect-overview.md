@@ -3,7 +3,7 @@ title: "Azure SQL Data Warehouse への接続 | Microsoft Docs"
 description: "Azure SQL Data Warehouse に接続するためのサーバー名と接続文字列を検索する方法"
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: antvgski
 manager: jhubbard
 editor: 
 ms.assetid: e52872ca-ae74-4e25-9c56-d49c85c8d0f0
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: connect
 ms.date: 10/31/2016
-ms.author: barbkess
-translationtype: Human Translation
+ms.author: anvang;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: c3c30e51b81886ebc875df7c815a17dfa633a5f8
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/03/2017
 
 

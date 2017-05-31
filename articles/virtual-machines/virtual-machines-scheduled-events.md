@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 12/10/2016
 ms.author: zivr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: 7f0613285bc548e1329be3c33c30939f5998f379
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 627aa117ded0aaa519052d4ea1a1995ba2e363ee
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -92,13 +92,25 @@ Virtual Machine が Virtual Network (VNet) 内で作成されている場合、�
          }
      ]
     }
+    
+### <a name="event-properties"></a>イベントのプロパティ
+|プロパティ  |  説明 |
+| - | - |
+| EventId |イベントのグローバル一意識別子。 <br><br> 例: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
+| EventType | イベントによって発生する影響。 <br><br> 値: <br><ul><li> <i>Freeze</i>: Virtual Machine は数秒間の一時停止がスケジュールされています。 メモリ、開いているファイル、ネットワーク接続への影響はありません。 <li> <i>Reboot</i>: Virtual Machine は再起動がスケジュールされています (メモリはワイプされます)。<li> <i>Redeploy</i>: Virtual Machine は別のノードへの移動がスケジュールされています (一時ディスクは失われます)。 |
+| ResourceType | イベントが影響を与えるリソースの種類。 <br><br> 値: <ul><li>VirtualMachine|
+| リソース| イベントが影響を与えるリソースの一覧。 <br><br> 例: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
+| EventStatus | イベントの状態。 <br><br> 値: <ul><li><i>Scheduled:</i> イベントは、<i>NotBefore</i> プロパティに指定された時間が経過した後で開始するようにスケジュールされています。<li><i>Started</i>: イベントは開始されています。</i>
+| NotBefore| イベントは、この時間が経過した後で開始することができます。 <br><br> 例: <br><ul><li> 2016-09-19T18:29:47Z  |
 
-EventType は、以下の場合に Virtual Machine が受けると想定される影響をキャプチャします。
-- Freeze: Virtual Machine は数秒間の一時停止がスケジュールされています。 メモリ、開いているファイル、ネットワーク接続への影響はありません。
-- 再起動: Virtual Machine は再起動がスケジュールされています (メモリをワイプします)。
-- 再デプロイ: Virtual Machine は別のノードへの移動がスケジュールされています (一時ディスクは失われます)。 
+### <a name="event-scheduling"></a>イベントのスケジューリング
+各イベントは、スケジュールされているイベントの種類に基づいて、将来の最小値の時間でスケジュールされます。 この時間は、イベントの <i>NotBefore</i> プロパティに反映されます。 
 
-イベントがスケジュールされている (Status = Scheduled) 場合、Azure は (NotBefore フィールドで指定された) イベントを開始できる時間を共有します。
+|EventType  | 最小値の通知 |
+| - | - |
+| Freeze| 約 15 分 |
+| Reboot | 約 15 分 |
+| Redeploy | 10 分 |
 
 ### <a name="starting-an-event-expedite"></a>イベントの開始 (高速化)
 
@@ -120,11 +132,13 @@ function GetScheduledEvents($uri)
 }
 
 # How to approve a scheduled event
-function ApproveScheduledEvent($eventId, $uri)
+function ApproveScheduledEvent($eventId, $docIncarnation, $uri)
 {    
-    # Create the Scheduled Events Approval Json
+    # Create the Scheduled Events Approval Document
     $startRequests = [array]@{"EventId" = $eventId}
-    $scheduledEventsApproval = @{"StartRequests" = $startRequests} 
+    $scheduledEventsApproval = @{"StartRequests" = $startRequests; "DocumentIncarnation" = $docIncarnation} 
+    
+    # Convert to JSON string
     $approvalString = ConvertTo-Json $scheduledEventsApproval
 
     Write-Host "Approving with the following: `n" $approvalString
@@ -161,7 +175,7 @@ foreach($event in $scheduledEvents.Events)
     $entry = Read-Host "`nApprove event? Y/N"
     if($entry -eq "Y" -or $entry -eq "y")
     {
-    ApproveScheduledEvent $event.EventId $scheduledEventURI 
+    ApproveScheduledEvent $event.EventId $scheduledEvents.DocumentIncarnation $scheduledEventURI 
     }
 }
 ``` 
@@ -207,6 +221,7 @@ Metadata Service と通信する API を表示するクライアントのサン�
 ```csharp
     public class ScheduledEventsDocument
     {
+        public string DocumentIncarnation;
         public List<CloudControlEvent> Events { get; set; }
     }
 
@@ -217,11 +232,12 @@ Metadata Service と通信する API を表示するクライアントのサン�
         public string EventType { get; set; }
         public string ResourceType { get; set; }
         public List<string> Resources { get; set; }
-        public DateTime NoteBefore { get; set; }
+        public DateTime? NotBefore { get; set; }
     }
 
     public class ScheduledEventsApproval
     {
+        public string DocumentIncarnation;
         public List<StartRequest> StartRequests = new List<StartRequest>();
     }
 
@@ -259,7 +275,11 @@ public class Program
             Console.ReadLine();
 
             // Approve events
-            ScheduledEventsApproval scheduledEventsApprovalDocument = new ScheduledEventsApproval();
+            ScheduledEventsApproval scheduledEventsApprovalDocument = new ScheduledEventsApproval()
+        {
+            DocumentIncarnation = scheduledEventsDocument.DocumentIncarnation
+        };
+        
             foreach (CloudControlEvent ccevent in scheduledEventsDocument.Events)
             {
                 scheduledEventsApprovalDocument.StartRequests.Add(new StartRequest(ccevent.EventId));

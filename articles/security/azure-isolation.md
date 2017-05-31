@@ -16,21 +16,21 @@ ms.workload: na
 ms.date: 04/27/2017
 ms.author: TomSh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 0a83f249bbaba0ae3fd6ebf10863abc398859200
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: a167f15b1c885c51c9a85c501a9a9a60992cdf5d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
 
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure Public Cloud での分離
-## <a name="10-introduction"></a>1.0 はじめに
-### <a name="11-overview"></a>1.1 概要
+##  <a name="introduction"></a>はじめに
+### <a name="overview"></a>概要
 Azure の現在の利用者と今後の利用予定者が、Azure プラットフォーム内やその周辺で提供されるさまざまなセキュリティ関連機能について理解し、使用できるように、Microsoft は一連のホワイト ペーパー、セキュリティ概要、ベスト プラクティス、およびチェックリストを作成しました。
 このトピックの内容は広範囲かつ詳細であることから定期的に更新されています。 このドキュメントは、次の要約のセクションで概要を示している一連の内容の一部です。
 
-### <a name="12-azure-platform"></a>1.2 Azure プラットフォーム
+### <a name="azure-platform"></a>Azure プラットフォーム
 Azure は、オペレーティング システム、プログラミング言語、フレームワーク、ツール、データベース、デバイスにおいて最も幅広い選択肢をサポートするオープンで柔軟なクラウド サービス プラットフォームです。 たとえば、次のようなことができます。
 - Docker と統合した Linux コンテナーの実行。
 - JavaScript、Python、.NET、PHP、Java、および Node.js を使用したアプリの構築。
@@ -42,20 +42,20 @@ IT 資産を構築し、パブリック クラウド サービス プロバイ�
 
 Azure のインフラストラクチャでは、数百万の顧客を同時にホストできるように施設からアプリケーションまでが設計されており、ビジネスのセキュリティ ニーズを満たす信頼性の高い基盤となっています。 また、Azure には構成可能な幅広いセキュリティ オプションが用意されており、デプロイの独自の要件を満たすようにセキュリティをカスタマイズできます。 このドキュメントはこれらの要件を満たすうえで役立ちます。
 
-### <a name="13-abstract"></a>1.3 要約
+### <a name="abstract"></a>要約
 
 Microsoft Azure を使用すると、共有物理インフラストラクチャでアプリケーションと仮想マシイン (VM) を実行できます。 クラウド環境でのアプリケーションの実行を促進する主要な経済的要因の 1 つは、共有リソースのコストを複数の顧客間で分散できることです。 このマルチテナント機能の実施では、さまざまな顧客間で低コストでリソースを多重化することによって効率が向上します。 残念ながら、機密性の高いアプリケーションや VM を実行するために、悪意のあるユーザーが存在する可能性がある物理サーバーやその他のインフラストラクチャ リソースを共有する危険も生じます。
 
 この記事では、Microsoft Azure が、悪意のあるユーザーと悪意のないユーザー両方に対する分離機能をどのように提供するか、さまざまな分離方法を設計者に提供してクラウド ソリューションを構築するためのガイドとしてどのように役立つかを説明します。 このホワイト ペーパーでは、Azure プラットフォームと顧客向けのセキュリティ コントロールのテクノロジに重点を置いています。SLA、価格モデル、および DevOps プラクティスに関する考慮事項には言及しません。
 
-## <a name="20-tenant-level-isolation"></a>2.0 テナント レベルの分離
+## <a name="tenant-level-isolation"></a>テナント レベルの分離
 クラウド コンピューティングの大きな利点の 1 つは、共通のインフラストラクチャを多数の顧客と同時に共有して、スケール メリットを得るという概念です。 この概念は、マルチテナント機能と呼ばれます。 Microsoft は、Microsoft Cloud Azure のマルチテナント アーキテクチャが、セキュリティ、機密性、プライバシー、整合性、可用性標準に確実に対応できるように、継続して取り組んでいます。
 
 クラウド対応のワークスペースでは、テナントはそのクラウド サービスの特定のインスタンスを所有して管理するクライアントまたは組織と定義できます。 Microsoft Azure によって ID プラットフォームを提供されたテナントは、組織が Microsoft クラウド サービスにサインアップしたときに受け取って所有する、Azure Active Directory (Azure AD) の専用インスタンスです。
 
 各 Azure AD ディレクトリは、他の Azure AD ディレクトリと区別され分離されています。 会社のオフィス ビルが組織に固有のセキュリティで保護された資産であるのと同様に、Azure AD ディレクトリも特定の組織だけが使用するセキュリティで保護された資産として設計されています。 Azure AD アーキテクチャは、顧客のデータや ID 情報が混合しないよう分離します。 これは、Azure AD ディレクトリのユーザーや管理者が、別のディレクトリのデータに誤ってまたは悪意をもってアクセスすることはできないことを意味します。
 
-### <a name="21-azure-tenancy"></a>2.1 Azure テナント
+### <a name="azure-tenancy"></a>Azure テナント
 Azure テナント (Azure サブスクリプション) とは、"顧客/課金" の関係と、[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)での一意の[テナント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) を意味します。 Microsoft Azure でのテナント レベルの分離は、Azure Active Directory と、それによって提供される[ロールベースのコントロール](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is)を使用して実現します。 各 Azure サブスクリプションは、1 つの Azure Active Directory (AD) ディレクトリと関連付けられます。
 
 そのディレクトリに登録されたユーザー、グループ、およびアプリケーションのみが、Azure サブスクリプションでリソースを管理できます。 このためのアクセス権は、Azure ポータル、Azure コマンドライン ツール、および Azure 管理 API を使用して割り当てることができます。 Azure AD テナントはセキュリティ境界を使用して論理的に分離されるため、悪意があるか偶発的にかにかかわらず、顧客が他のテナントにアクセスしたり侵入したりすることはできません。 Azure AD は、隔離されたネットワーク セグメント上の分離された "ベア メタル" サーバーで実行します。ここでは、ホストレベルのパケット フィルタリングと Windows Firewall によって、望ましくない接続やトラフィックがブロックされます。
@@ -83,14 +83,14 @@ Azure Active Directory は、保護された専用コンテナーで各コンテ
 
 複数の Azure Active Directory テナントのメタデータが同じ物理ディスクに格納されている場合でも、コンテナー間に関係はありません (ディレクトリ サービスによる定義を除きます。これは後でテナント管理者によって指示されます)。
 
-### <a name="22-azure-role-based-access-control-rbac"></a>2.2 Azure ロールベースのアクセス制御 (RBAC)
+### <a name="azure-role-based-access-control-rbac"></a>Azure ロールベースのアクセス制御 (RBAC)
 [Azure ロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is) では、Azure のきめ細かいアクセス管理が提供され、Azure サブスクリプションで使用可能なさまざまなコンポーネントの共有に役立ちます。 Azure RBAC を使用すると、組織内での仕事を切り分けて、ユーザーが業務を遂行するために必要な操作に基づいてアクセス権を付与できます。 すべてのユーザーに Azure サブスクリプションまたはリソースで無制限のアクセス許可を付与するのではなく、特定の操作のみを許可することができます。
 
 Azure RBAC には、すべてのリソースの種類に適用される 3 つの基本的なロールがあります。
 
 - **所有者** は、他のユーザーへアクセス権を委任する権限を含め、すべてのリソースへのフル アクセス権を持ちます。
 
-- **作成協力者** は、Azure リソースのすべてのタイプを作成および管理できますが、他のユーザーへアクセス権を付与することはできません。
+- **共同作成者** は、Azure リソースのすべてのタイプを作成および管理できますが、他のユーザーへアクセス権を付与することはできません。
 
 - **閲覧者** は、既存の Azure リソースを表示できます。
 
@@ -113,7 +113,7 @@ Azure Active Directory のその他の機能を次に示します。
 
 - [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) は、数億個の ID を扱うコンシューマー向けアプリケーション用の高可用性グローバル ID 管理サービスを提供します。 モバイルと Web の両方のプラットフォームにわたる統合を実現できます。 コンシューマーは、既に持っているソーシャル アカウントを使用するか、資格情報を作成して、すべてのアプリケーションにサインインできます。その場合のエクスペリエンスは、カスタマイズすることができます。
 
-### <a name="23-isolation-from-microsoft-administrators--data-deletion"></a>2.3 Microsoft 管理者およびデータ削除からの分離
+### <a name="isolation-from-microsoft-administrators--data-deletion"></a>Microsoft 管理者およびデータ削除からの分離
 マイクロソフトは、許可されていない人物による不適切なアクセスや使用からデータを保護するために強硬な手段を取ります。 このような運用プロセスと管理は、データへのアクセスを管理する契約責任を提供する[オンライン サービス条件](http://aka.ms/Online-Services-Terms)によって裏付けされます。
 
 -    マイクロソフトのエンジニアが、クラウド内のお客様のデータに対して既定のアクセス権を持つことはありません。 代わりに、監視の下で必要な場合にのみアクセス権が付与されます。 アクセス権は注意深く管理されてログに記録され、不要になったときは取り消されます。
@@ -126,10 +126,10 @@ ISO/IEC 27001 など監査済み認証を備えたビジネス サービスは�
 
 格納に使用されるディスク ドライブでハードウェア障害が発生した場合、ディスク ドライブを確実に[消去または破棄](https://www.microsoft.com/trustcenter/Privacy/You-own-your-data)してから、交換または修理のために製造元に返します。 ドライブ上のデータは上書きされ、どのような手段でもデータを回復できないようにされます。
 
-## <a name="30-compute-isolation"></a>3.0 コンピューティングの分離
+## <a name="compute-isolation"></a>コンピューティングの分離
 Microsoft Azure ではクラウドベースのコンピューティング サービスが提供されます。これには、アプリケーションまたはエンタープライスのニーズを満たすために自動的にスケールアップとスケールダウンを行うことができる、コンピューティング インスタンスとサービスの多様な選択肢が含まれます。 これらのコンピューティング インスタンスおよびサービスでは、複数のレベルで分離が提供され、お客様が求める構成の柔軟性を損なわずにデータを保護することができます。
 
-### <a name="31-hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>3.1 ルート VM とゲスト VM の間での Hyper-V とルート OS の分離
+### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>ルート VM とゲスト VM の間での Hyper-V とルート OS の分離
 Azure のコンピューティング プラットフォームは、コンピューターの仮想化に基づいています。つまり、顧客のすべてのコードは Hyper-V 仮想マシンで実行します。 各 Azure ノード (またはネットワーク エンドポイント) にはハイパーバイザーがあり、ハードウェア上で直接実行して、ノードをいくつものゲスト仮想マシン (VM) に分割します。
 
 
@@ -144,10 +144,10 @@ Azure プラットフォームでは、仮想化された環境を使用しま�
 
 Azure のハイパーバイザーは、マイクロ カーネルのように動作し、ゲスト仮想マシンからのすべてのハードウェア アクセス要求を、VMBus と呼ばれる共有メモリ インターフェイスを使用して処理するために、ホストに渡します。 そうすることで、ユーザーがシステムへの生の読み取り/書き込み/実行アクセスを取得できないようにし、共有システム リソースのリスクを軽減します。
 
-### <a name="32-advanced-vm-placement-algorithm--protection-from-side-channel-attacks"></a>3.2 高度な VM 配置アルゴリズムとサイド チャネル攻撃に対する保護
+### <a name="advanced-vm-placement-algorithm--protection-from-side-channel-attacks"></a>高度な VM 配置アルゴリズムとサイド チャネル攻撃に対する保護
 すべてのクロス VM 攻撃には 2 つの段階があります。標的となる VM の 1 つと同じホストに敵が制御する VM を配置します。その後、分離境界に侵入して、標的の機密情報を盗んだり、利益や迷惑行為を目的としてパフォーマンスに悪影響を及ぼしたりします。 Microsoft Azure では、高度な VM 配置アルゴリズムや、既知のすべてのサイド チャネル攻撃の対策 (ノイズの多い VM を近くに置く方法など) を使用して、両方の段階を保護します。
 
-### <a name="33-the-azure-fabric-controller"></a>3.3 Azure ファブリック コントローラー
+### <a name="the-azure-fabric-controller"></a>Azure ファブリック コントローラー
 Azure ファブリック コントローラーは、テナントのワークロードにインフラストラクチャのリソースを割り当て、ホストから仮想マシンへの一方向の通信を管理します。 Azure ファブリック コントローラーの VM 配置アルゴリズムは非常に洗練されているため、物理ホスト レベルとして予測するのはほぼ不可能です。
 
 ![Azure ファブリック コントローラー](./media/azure-isolation/azure-isolation-fig5.png)
@@ -171,7 +171,7 @@ Azure ハイパーバイザー、ルート OS/FA、顧客 VM/GA のコレクシ�
 ハイパーバイザーとホスト OS は、ネットワーク パケット フィルターを提供します。これによって、信頼されていない仮想マシンによる、なりすましトラフィックの生成、アドレスが指定されていないトラフィックの受け取り、保護されたインフラストラクチャ エンドポイントへのトラフィックの転送、不適切なブロードキャスト トラフィックの送信/受信が行われないようにすることができます。
 
 
-### <a name="34-additional-rules-configured-by-fabric-controller-agent-to-isolate-vm"></a>3.4 VM を分離するためにファブリック コントローラー エージェントによって構成されるその他のルール
+### <a name="additional-rules-configured-by-fabric-controller-agent-to-isolate-vm"></a>VM を分離するためにファブリック コントローラー エージェントによって構成されるその他のルール
 既定では、仮想マシンが作成されるとすべてのトラフィックがブロックされ、ファブリック コントローラー エージェントがパケット フィルターを構成して、承認されたトラフィックを許可するように規則と例外を追加します。
 
 プログラムされるルールには、次の 2 つのカテゴリがあります。
@@ -180,7 +180,7 @@ Azure ハイパーバイザー、ルート OS/FA、顧客 VM/GA のコレクシ�
 
 -    **ロール構成ファイル:** テナントのサービス モデルに基づいて受信アクセス制御リスト (ACL) を定義します。
 
-### <a name="35-vlan-isolation"></a>3.5 VLAN の分離
+### <a name="vlan-isolation"></a>VLAN の分離
 各クラスターには、次の 3 つの VLAN があります。
 
 ![VLAN の分離](./media/azure-isolation/azure-isolation-fig8.jpg)
@@ -194,12 +194,12 @@ Azure ハイパーバイザー、ルート OS/FA、顧客 VM/GA のコレクシ�
 
 通信が許可されているのは、FC VLAN からメイン VLAN です。メイン VLAN から FC VLAN に対して通信を開始することはできません。 メイン VLAN からデバイス VLAN への通信もブロックされます。 これにより、顧客ノードを実行するノードが侵入された場合でも、FC VLAN またはデバイス VLAN 上のノードを攻撃することはできません。
 
-## <a name="40-storage-isolation"></a>4.0 記憶域の分離
-### <a name="41-logical-isolation-between-compute-and-storage"></a>4.1 コンピューティングと記憶域の論理的な分離
+## <a name="storage-isolation"></a>記憶域の分離
+### <a name="logical-isolation-between-compute-and-storage"></a>コンピューティングと記憶域の論理的な分離
 Microsoft Azure では、基本設計において VM ベースのコンピューティングを記憶域と切り離しています。 このように分けることで、コンピューティングと記憶域を個別に拡張することができ、マルチテナント機能と分離を容易に提供できます。
 
 したがって、Azure Storage は別のハードウェアで稼働し、Azure コンピューティングとのネットワーク接続はありません (論理的な接続のみ)。 [これは](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)、仮想ディスクの作成時にディスク領域の全体の容量が割り当てられないことを意味します。 代わりに、仮想ディスク上のアドレスを物理ディスク上の領域にマップするテーブルが作成されます。このテーブルは最初は空です。 **最初に顧客がデータを仮想ディスクに書き込むと、物理ディスクの領域が割り当てられ、その位置へのポインターがテーブルに配置されます。**
-### <a name="42-isolation-using-storage-access-control"></a>4.2 記憶域アクセス制御を使用する分離
+### <a name="isolation-using-storage-access-control"></a>記憶域アクセス制御を使用する分離
 **Azure Storage のAccess Control** のアクセス制御モデルは単純です。 ストレージ アカウントは、各 Azure サブスクリプションにつき 1 つまたは複数作成できます。 各ストレージ アカウントには 1 つの秘密キーがあり、これを使用してそのストレージ アカウント内のすべてのデータへのアクセスを制御します。
 
 ![記憶域アクセス制御を使用する分離](./media/azure-isolation/azure-isolation-fig9.png)
@@ -208,18 +208,18 @@ Microsoft Azure では、基本設計において VM ベースのコンピュー
 
 SAS により、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。 この制限付きアクセス許可を付与するとき、アカウント アクセス キーを共有する必要はありません。
 
-### <a name="43-ip-level-storage-isolation"></a>4.3 IP レベルでの記憶域の分離
+### <a name="ip-level-storage-isolation"></a>IP レベルでの記憶域の分離
 ファイアウォールを設定し、信頼されたクライアントの IP アドレス範囲を定義できます。 IP アドレス範囲が定義されていると、IP アドレスがその範囲に該当するクライアントだけが [Azure Storage](https://docs.microsoft.com/azure/storage/storage-security-guide) に接続できます。
 
 IP 記憶域データは、トラフィックの専用トンネルを IP 記憶域に割り当てるネットワーキング メカニズムによって未許可のユーザーから保護することができます。
 
-### <a name="44-encryption"></a>4.4 暗号化
+### <a name="encryption"></a>Encryption
 Azure では、データを保護するために次の種類の暗号化が提供されます。
 -    転送中の暗号化
 
 -    保存時の暗号化
 
-#### <a name="441-encryption-in-transit"></a>4.4.1 転送中の暗号化
+#### <a name="encryption-in-transit"></a>転送中の暗号化
 転送中の暗号化は、ネットワーク間でデータを転送するときにデータを保護するメカニズムです。 Azure Storage では、以下を使用してデータをセキュリティ保護できます。
 
 -    [トランスポートレベルの暗号化](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-in-transit)(Azure Storage の内外にデータを転送する場合の HTTPS など)。
@@ -228,7 +228,7 @@ Azure では、データを保護するために次の種類の暗号化が提�
 
 -    [クライアント側の暗号化](https://docs.microsoft.com/azure/storage/storage-security-guide#using-client-side-encryption-to-secure-data-that-you-send-to-storage)(Storage にデータを転送する前にデータを暗号化し、Storage からデータを転送した後にデータを復号化します)。
 
-#### <a name="442-encryption-at-rest"></a>4.4.2 保存時の暗号化
+#### <a name="encryption-at-rest"></a>保存時の暗号化
 多くの組織にとって、データ プライバシー、コンプライアンス、データ主権を確保するうえで [保存データの暗号化](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) は欠かせません。 Azure には、“保存時の“ データの暗号化を提供する機能が 3 つあります。
 
 -    [Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-at-rest) を使用すると、ストレージ サービスが Azure Storage にデータを書き込むときに自動的に暗号化するように要求できます。
@@ -237,7 +237,7 @@ Azure では、データを保護するために次の種類の暗号化が提�
 
 -    [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) を使用すると、IaaS 仮想マシンに使用される OS ディスクとデータ ディスクを暗号化できます。
 
-#### <a name="443-azure-disk-encryption"></a>4.4.3 Azure Disk Encryption
+#### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 仮想マシン (VM) 向けの [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) は、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) で管理するキーとポリシーを使用して VM ディスク (ブート ディスクとデータ ディスクを含む) を暗号化するソリューションです。組織のセキュリティとコンプライアンスの要件に対処する際に大きな効果を発揮します。
 
 Windows 向けの Disk Encryption ソリューションのベースは [Microsoft BitLocker ドライブ暗号化](https://technet.microsoft.com/library/cc732774.aspx)であり、Linux 向けソリューションは [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) がベースになっています。
@@ -277,10 +277,10 @@ Windows 向けの Disk Encryption ソリューションのベースは [Microsof
 
 -    Azure Files (共有ファイル システム)、ネットワーク ファイル システム (NFS)、ダイナミック ボリューム、およびソフトウェアベースの RAID システムで構成されている Windows VM
 
-## <a name="50-sql-azure-database-isolation"></a>5.0 SQL Azure データベースの分離
+## <a name="sql-azure-database-isolation"></a>SQL Azure データベースの分離
 SQL Database は、市場をリードする Microsoft SQL Server エンジンとミッション クリティカルなワークロードを処理する機能を基盤とする、Microsoft Cloud のリレーショナル データベース サービスです。 SQL Database では、アカウント レベル、地理/リージョン ベース、およびネットワーキング ベースで、予測可能なデータ分離が提供され、いずれも管理はほとんど必要ありません。
 
-### <a name="51-sql-azure-application-model"></a>5.1 SQL Azure アプリケーション モデル
+### <a name="sql-azure-application-model"></a>SQL Azure アプリケーション モデル
 
 [Microsoft SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-get-started) Database は、SQL Server テクノロジに基づいて構築されたクラウドベースのリレーショナル データベース サービスです。 マイクロソフトによってホストされる、スケーラブルな高可用性マルチテナント データベース サービスをクラウドで提供します。
 
@@ -306,7 +306,7 @@ SQL Azure サーバーは、物理インスタンスまたは VM インスタン
 
 顧客の観点では論理サーバーは地理的なリージョンに作成されますが、サーバーの実際の作成は地域内のクラスターの 1 つで行われます。
 
-### <a name="52-isolation-through-network-topology"></a>5.2 ネットワーク トポロジによる分離
+### <a name="isolation-through-network-topology"></a>ネットワーク トポロジによる分離
 
 論理サーバーが作成されて DNS 名が登録されると、DNS 名は、サーバーが配置された固有のデータ センター内のいわゆる "ゲートウェイ VIP" アドレスを指します。
 
@@ -325,10 +325,10 @@ VIP (仮想 IP アドレス) の背後には、ステートレス ゲートウ�
 
 一般に、バックエンド システムは、セキュリティ上の理由から他のシステムへのアウトバウンド通信を行いません。 これは、フロントエンド (ゲートウェイ) 層のシステムにまかされます。 高度な防御メカニズムとして、攻撃対象領域を最小限に抑えるため、ゲートウェイ層のマシンがバックエンド マシンに対して持つ権限は制限されます。
 
-### <a name="53-isolation-by-machine-function-and-access"></a>5.3 マシンの機能とアクセスによる分離
+### <a name="isolation-by-machine-function-and-access"></a>マシンの機能とアクセスによる分離
 SQL Azure は、さまざまなマシンの機能に対して実行するサービスで構成されます。 SQL Azure は "バックエンド" のクラウド データベースと "フロントエンド" (ゲートウェイ/管理) 環境に分けられ、一般原則としてトラフィックはバックエンドのみに送信され、逆方向はありません。 フロントエンド環境は外部の他のサービスと通信できます。通常、バックエンドに対しては限られたアクセス許可 (起動に必要なエントリ ポイントを呼び出すために十分なもの) しかありません。
 
-## <a name="60-networking-isolation"></a>6.0 ネットワークの分離
+## <a name="networking-isolation"></a>ネットワークの分離
 Azure デプロイでは、複数の層でネットワークの分離を行うことができます。 次の図は、Azure が顧客に提供するさまざまなネットワーク分離の層を示しています。 これらの層は、Azure プラットフォーム自体とユーザー定義機能の両方でネイティブです。 インターネットから受信する場合は、Azure DDoS が Azure に対する大規模な攻撃に対して分離を提供します。 次の分離の層は、顧客が定義したパブリック IP アドレス (エンドポイント) です。これらのエンドポイントは、クラウド サービスを通過して仮想ネットワークに到達できるトラフィックを決定するために使用されます。 ネイティブの Azure Virtual Network の分離により、その他すべてのネットワークから完全に分離されると、そのトラフィックだけが、ユーザーが構成した経路と方法を介して流れます。 これらの経路と方法が次の層となります。次の層では、NSG、UDR、ネットワーク仮想アプライアンスを使用して DMZ などの分離境界を構築し、保護されているネットワークにおけるアプリケーションのデプロイを保護することができます。
 
 ![ネットワークの分離](./media/azure-isolation/azure-isolation-fig13.png)

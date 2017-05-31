@@ -1,6 +1,6 @@
 ---
 redirect_url: /azure/virtual-machines/windows/tutorial-manage-vm
-redirect_document_id: true
+redirect_document_id: false
 ROBOTS: NOINDEX
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
