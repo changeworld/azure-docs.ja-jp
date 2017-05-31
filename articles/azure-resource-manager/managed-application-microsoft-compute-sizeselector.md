@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/09/2017
+ms.date: 05/12/2017
 ms.author: tabrezm;tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 076210146550510549d388eed981c439941f4fc9
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: e54962f73028ada258a7faef271d66f0fbcef649
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/13/2017
 
 
 ---
 # <a name="microsoftcomputesizeselector-ui-element"></a>Microsoft.Compute.SizeSelector UI 要素
-1 つまたは複数の仮想マシン インスタンスのサイズを選択するコントロールです。
+1 つまたは複数の仮想マシン インスタンスのサイズを選択するコントロールです。 この要素は、[Azure マネージ アプリケーションを作成する](managed-application-publishing.md)ときに使用します。
 
 ## <a name="ui-sample"></a>UI サンプル
 ![Microsoft.Compute.SizeSelector](./media/managed-application-elements/microsoft.compute.sizeselector.png)
@@ -69,6 +69,7 @@ ms.lasthandoff: 05/11/2017
 ```
 
 ## <a name="next-steps"></a>次のステップ
+* マネージ アプリケーションの概要については、「[Azure マネージ アプリケーションの概要](managed-application-overview.md)」を参照してください。
 * UI 定義の作成の概要については、「[CreateUiDefinition の基本概念](managed-application-createuidefinition-overview.md)」を参照してください。
 * UI 要素の共通プロパティの説明については、「[CreateUiDefinition の要素](managed-application-createuidefinition-elements.md)」を参照してください。
 

@@ -1,24 +1,25 @@
 ---
 title: "Azure DocumentDB Node.js API、SDK、およびリソース | Microsoft Docs"
 description: "リリース日、提供終了日、DocumentDB Node.js SDK の各バージョン間の変更など、Node.js API と SDK に関するあらゆる詳細を提供します。"
-services: documentdb
+services: cosmosdb
 documentationcenter: nodejs
 author: rnagpal
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 9d5621fa-0e11-4619-a28b-a19d872bcf37
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 03/16/2017
+ms.date: 05/10/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: dd6e6184dd755ea356cae1c4d50a2b7ba39da9fb
-ms.lasthandoff: 03/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: d7cbebf9864c21c21ba14c0d45eb20d42e3732dc
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.lasthandoff: 03/17/2017
 > * [Node.JS](documentdb-sdk-node.md)
 > * [Java](documentdb-sdk-java.md)
 > * [Python](documentdb-sdk-python.md)
-> * [REST ()](https://docs.microsoft.com/en-us/rest/api/documentdb/)
+> * [REST ()](https://docs.microsoft.com/rest/api/documentdb/)
 > * [REST リソース プロバイダー](https://docs.microsoft.com/rest/api/documentdbresourceprovider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 > 
@@ -56,6 +57,12 @@ ms.lasthandoff: 03/17/2017
 
 ## <a name="release-notes"></a>リリース ノート
 
+### <a name="1.12.0"/>1.12.0</a>
+* [1 分あたりの要求ユニット (RU/m)](../cosmos-db/request-units-per-minute.md) 機能のサポートが追加されました。
+* ConsistentPrefix と呼ばれる新しい[一貫性レベル](documentdb-consistency-levels.md)に対応するようになりました。
+* UriFactory のサポートを追加しました。
+* Unicode サポートのバグを修正しました。 (GitHub の問題 #171)
+
 ### <a name="1.11.0"/>1.11.0</a>
 * 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。
 * クロス パーティション クエリの並列処理の次数を制御するオプションを追加しました。
@@ -78,7 +85,7 @@ ms.lasthandoff: 03/17/2017
 
 ### <a name="1.9.0"/>1.9.0</a>
 * スロットルされた要求のための再試行ポリシー サポートを追加しました  (スロットルされた要求は、要求レートが大きすぎるという例外をエラー コード 429 で受信します)。既定では、DocumentDB は、エラー コード 429 が発生した場合に、応答ヘッダーの retryAfter 回数に従って要求ごとに 9 回再試行します。 再試行の間にサーバーによって返される retryAfter 回数を無視する場合、固定の再試行間隔の回数を、ConnectionPolicy オブジェクトの RetryOptions プロパティの一部としてここで設定できます。 DocumentDB では、(再試行の回数に関係なく) スロットルされる要求ごとに最大 30 秒待機できるようになり、エラー コード 429 と共に応答を返すようになりました。 この回数は、ConnectionPolicy オブジェクトの RetryOptions プロパティでオーバーライドすることもできます。
-* DocumentDB は、スロットルの再試行の回数と再試行の間の要求の累積待機時間を表すために、すべての要求の応答ヘッダーとして x-ms-throttle-retry-count と x-ms-throttle-retry-wait-time-ms を返すようになりました。
+* Cosmos DB は、スロットルの再試行の回数と再試行の間の要求の累積待機時間を表すために、すべての要求の応答ヘッダーとして x-ms-throttle-retry-count と x-ms-throttle-retry-wait-time-ms を返すようになりました。
 * ConnectionPolicy クラスの RetryOptions プロパティを公開する、RetryOptions クラスが追加されました。これは、一部の既定の再試行オプションをオーバーライドするために使用できます。
 
 ### <a name="1.8.0"/>1.8.0</a>
@@ -152,12 +159,13 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 新しい機能と最適化は現在の SDK にのみ追加されます。そのため、常に可能な限り最新の SDK バージョンにアップグレードすることが推奨されます。
 
-提供終了の SDK で DocumentDB に要求した場合、サービスにより却下されます。
+提供終了の SDK を使用した Cosmos DB への要求は、サービスによって拒否されます。
 
 <br/>
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.12.0](#1.12.0) |2017 年 5 月 10 日 |--- |
 | [1.11.0](#1.11.0) |2017 年 3 月 16 日 |--- |
 | [1.10.2](#1.10.2) |2017 年 1 月 27 日 |--- |
 | [1.10.1](#1.10.1) |2016 年 12 月 22 日 |--- |
@@ -188,6 +196,6 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 [!INCLUDE [documentdb-sdk-faq](../../includes/documentdb-sdk-faq.md)]
 
 ## <a name="see-also"></a>関連項目
-DocumentDB に関する詳細は、 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) サービス ページを参照してください。
+Cosmos DB の詳細については、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) サービス ページをご覧ください。
 
 

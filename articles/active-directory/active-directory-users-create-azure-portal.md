@@ -1,5 +1,6 @@
 ---
-title: "Azure Active Directory プレビューに新しいユーザーを追加する | Microsoft Docs"
+
+title: "Azure Active Directory に新しいユーザーを追加する | Microsoft Docs"
 description: "Azure Active Directory で新しいユーザーを追加する方法やユーザー情報を変更する方法を説明します。"
 services: active-directory
 documentationcenter: 
@@ -12,28 +13,29 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2017
+ms.date: 05/04/2017
 ms.author: curtand;jeffsta
-translationtype: Human Translation
-ms.sourcegitcommit: f0e7890ba4c7ef281558886f8cb8bcc429944f06
-ms.openlocfilehash: 9c0c15c0bf876110fcf9dd01a7930d3b226dfbc4
-ms.lasthandoff: 02/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 5f1f28b6e0135fbd76fa5f6664f457f259dd9dd4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/17/2017
 
 
 ---
-# <a name="add-new-users-to-azure-active-directory-preview"></a>Azure Active Directory プレビューに新しいユーザーを追加する
+# <a name="add-new-users-to-azure-active-directory"></a>Azure Active Directory に新しいユーザーを追加する
 > [!div class="op_single_selector"]
-> * [Azure Portal](active-directory-users-create-azure-portal.md)
+> * [Azure ポータル](active-directory-users-create-azure-portal.md)
 > * [Azure クラシック ポータル](active-directory-create-users.md)
 >
 >
 
-この記事では、Azure Active Directory (Azure AD) プレビューに組織内の新しいユーザーを追加する方法について説明します。 [プレビューの機能については、こちらの記事をご覧ください。](active-directory-preview-explainer.md)
+この記事では、Azure Active Directory (Azure AD) に組織内の新しいユーザーを追加する方法について説明します。 
 
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
 
-   ![ユーザー管理を開く](./media/active-directory-users-create-azure-portal/create-users-user-management.png)
+   ![[ユーザーとグループ] を開く](./media/active-directory-users-create-azure-portal/create-users-user-management.png)
 3. **[ユーザーとグループ]** ブレードで、**[すべてのユーザー]** を選択し、**[追加]** をクリックします。
 
    ![[追加] をクリックする](./media/active-directory-users-create-azure-portal/create-users-add-command.png)

@@ -14,10 +14,10 @@ ms.workload: storage-backup-recovery
 ms.date: 04/20/2017
 ms.author: markgal;
 ms.translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 34146bd110661c12c4ec1e11d34d7bdfa3cac688
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: faa3c9d5de759e4d8c0589153ea93e83a580f983
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/21/2017
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -94,7 +94,7 @@ Azure Backup Server は、既定では、HTTPS チャネル経由で vCenter Ser
 
   ![エラーのある [証明書] ダイアログ ボックス ](./media/backup-azure-backup-server-vmware/certificate-store-selected.png)
 
-  選択した証明書ストアが**証明書のインポート ウィザード**に表示されます。 **[次へ]**をクリックします。
+  選択した証明書ストアが**証明書のインポート ウィザード**に表示されます。 **[次へ]** をクリックします。
 
   ![エラーのある [証明書] ダイアログ ボックス ](./media/backup-azure-backup-server-vmware/certificate-import-wizard2.png)
 
@@ -261,7 +261,7 @@ VMware サーバーを Azure Backup Server に追加する前に、[Update 1 for
 
 ## <a name="add-the-vcenter-server-to-azure-backup-server"></a>Azure Backup Server への vCenter Server の追加
 
-運用サーバーの追加ウィザードを開くには
+運用サーバーの追加ウィザードを開くには:
 
 1. Azure Backup Server コンソールで、**[管理]**、**[運用サーバー]** の順にクリックし、**[追加]** をクリックします。
 

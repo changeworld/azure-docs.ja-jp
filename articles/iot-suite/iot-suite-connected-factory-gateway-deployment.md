@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/22/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
-ms.openlocfilehash: e6eaf4e7a3b0aa8241c026f66150d3f6e9d933d0
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: e8774cc290847d48ecdc5dcdac1f2533fdc7d072
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -25,6 +26,9 @@ ms.lasthandoff: 04/21/2017
 # <a name="deploy-a-gateway-on-windows-or-linux-for-the-connected-factory-preconfigured-solution"></a>構成済みのコネクテッド ファクトリ ソリューション用のゲートウェイを Windows または Linux 上にデプロイする
 
 この記事では、Docker を使用して Windows または Linux 上にゲートウェイをデプロイする手順について説明します。 ゲートウェイにより、構成済みのコネクテッド ファクトリ ソリューションに接続できるようになります。
+
+> [!NOTE]
+> Docker コンテナーで実行されるゲートウェイ ソフトウェアは、[Azure IoT Edge]です。
 
 ## <a name="windows-deployment"></a>Windows デプロイ
 
@@ -149,4 +153,4 @@ Linux ゲートウェイ デバイスに [Docker をインストール]します
 [オープン ソースの OPC UA クライアント]: https://github.com/OPCFoundation/UA-.NETStandardLibrary/tree/master/SampleApplications/Samples/Client.Net4
 [Docker をインストール]: https://www.docker.com/community-edition#/download
 [lnk-walkthrough]: iot-suite-overview.md
-
+[Azure IoT Edge]: https://github.com/Azure/iot-edge

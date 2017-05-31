@@ -14,14 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2016
 ms.author: obloch
-translationtype: Human Translation
-ms.sourcegitcommit: ef066a50b71389cb1cdd3bb0f8d342a34a4cc722
-ms.openlocfilehash: 669ef16c4fe2edd4525db6f693c424f3027793f3
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 2f1689a2f59b779c83b6be746edda915fd67a3db
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>C 用 Azure IoT device SDK – IoTHubClient の詳細
-本シリーズの[最初の記事](iot-hub-device-sdk-c-intro.md)で、**C 用 Azure IoT device SDK** を紹介しました。その記事では、SDK に&2; つのアーキテクチャの層が存在することを説明しました。 その基礎となるのが、IoT Hub との通信を直接管理する **IoTHubClient** ライブラリです。 これを土台にしシリアル化サービスを提供する **serializer** ライブラリもあります。 この記事では、 **IoTHubClient** ライブラリについてさらに詳しく説明します。
+本シリーズの[最初の記事](iot-hub-device-sdk-c-intro.md)で、**C 用 Azure IoT device SDK** を紹介しました。その記事では、SDK に 2 つのアーキテクチャの層が存在することを説明しました。 その基礎となるのが、IoT Hub との通信を直接管理する **IoTHubClient** ライブラリです。 これを土台にしシリアル化サービスを提供する **serializer** ライブラリもあります。 この記事では、 **IoTHubClient** ライブラリについてさらに詳しく説明します。
 
 前の記事では、 **IoTHubClient** ライブラリを使用して IoT Hub にイベントを送信してメッセージを受信する方法を説明しました。 この記事では、 *下位レベルの API* を紹介し、データを送受信する **タイミング**をより厳密に管理する方法について掘り下げて説明します。 **IoTHubClient** ライブラリでプロパティ処理機能を使用してプロパティをイベントに添付する (およびプロパティをメッセージから取得する) 方法についても説明します。 最後に、IoT Hub から受信したメッセージの別の処理方法をいくつか追加で紹介します。
 
@@ -87,7 +89,7 @@ message.messageHandle = IoTHubMessage_CreateFromByteArray((const unsigned char*)
 IoTHubClient_LL_SendEventAsync(iotHubClientHandle, message.messageHandle, SendConfirmationCallback, &message)
 ```
 
-最初の&3; 行でメッセージを作成して、最後の&1; 行でイベントを送信します。 ただし、先ほど説明したように、イベントの "送信" は、データが単にバッファーに配置されることを意味します。 **IoTHubClient\_LL\_SendEventAsync** を呼び出しても、ネットワークには何も転送されません。 実際にデータを IoT Hub に入力するには、次の例のように **IoTHubClient\_LL\_DoWork** を呼び出す必要があります。
+最初の 3 行でメッセージを作成して、最後の 1 行でイベントを送信します。 ただし、先ほど説明したように、イベントの "送信" は、データが単にバッファーに配置されることを意味します。 **IoTHubClient\_LL\_SendEventAsync** を呼び出しても、ネットワークには何も転送されません。 実際にデータを IoT Hub に入力するには、次の例のように **IoTHubClient\_LL\_DoWork** を呼び出す必要があります。
 
 ```
 while (1)
@@ -115,7 +117,7 @@ while ((IoTHubClient_LL_GetSendStatus(iotHubClientHandle, &status) == IOTHUB_CLI
 }
 ```
 
-このコードは、バッファー内のすべてのイベントが IoT Hub に送信されるまで **IoTHubClient\_LL\_DoWork** を呼び出します。 これは、キューのすべてのメッセージが受信されたことを意味するわけではありません。 その理由の&1; つは、すべてのメッセージを確認することは、決定性のあるアクションではないためです。 メッセージをすべて取得した直後に、別のものがデバイスに送信された場合を考えてください。 より優れた処理方法に、プログラムでタイムアウトを設定する方法があります。 たとえば、メッセージのコールバック関数を使用すると、呼び出すたびに、タイマーをリセットできます。 ロジックを記述して、直近 *X* 秒に受信したメッセージがない場合などに、処理を続行することができます。
+このコードは、バッファー内のすべてのイベントが IoT Hub に送信されるまで **IoTHubClient\_LL\_DoWork** を呼び出します。 これは、キューのすべてのメッセージが受信されたことを意味するわけではありません。 その理由の 1 つは、すべてのメッセージを確認することは、決定性のあるアクションではないためです。 メッセージをすべて取得した直後に、別のものがデバイスに送信された場合を考えてください。 より優れた処理方法に、プログラムでタイムアウトを設定する方法があります。 たとえば、メッセージのコールバック関数を使用すると、呼び出すたびに、タイマーをリセットできます。 ロジックを記述して、直近 *X* 秒に受信したメッセージがない場合などに、処理を続行することができます。
 
 イベントの入力とメッセージの受信が完了したら、該当する関数を必ず呼び出してリソースをクリーンアップしてください。
 
@@ -123,7 +125,7 @@ while ((IoTHubClient_LL_GetSendStatus(iotHubClientHandle, &status) == IOTHUB_CLI
 IoTHubClient_LL_Destroy(iotHubClientHandle);
 ```
 
-基本的に、バックグラウンド スレッドを使用してデータを送受信する API のセットが&1; つのみと、バックグラウンド スレッドを使用せず同じ動作を実行する別の API のセットがあります。 多くの開発者は LL でない API を好みますが、下位レベルの API は開発者がネットワーク転送を明示的に制御する場合に便利です。 たとえば、一部のデバイスは時間をかけてデータを収集しますが、指定された間隔 (1 時間に&1; 回や&1; 日に&1; 回など) でのみイベントを入力します。 下位レベルの API を使用すると、IoT Hub からデータを送受信するタイミングを明確に制御できるようになります。 下位レベルの API が提供する単純さを好む開発者もいるでしょう。 バック グラウンドでいくつかの動作が行われるのではなく、すべてがメイン スレッドで発生します。
+基本的に、バックグラウンド スレッドを使用してデータを送受信する API のセットが 1 つのみと、バックグラウンド スレッドを使用せず同じ動作を実行する別の API のセットがあります。 多くの開発者は LL でない API を好みますが、下位レベルの API は開発者がネットワーク転送を明示的に制御する場合に便利です。 たとえば、一部のデバイスは時間をかけてデータを収集しますが、指定された間隔 (1 時間に 1 回や 1 日に 1 回など) でのみイベントを入力します。 下位レベルの API を使用すると、IoT Hub からデータを送受信するタイミングを明確に制御できるようになります。 下位レベルの API が提供する単純さを好む開発者もいるでしょう。 バック グラウンドでいくつかの動作が行われるのではなく、すべてがメイン スレッドで発生します。
 
 どちらのモデルを選択するにしても、使用する API に一貫性を持たせる必要があります。 最初に **IoTHubClient\_LL\_CreateFromConnectionString** を呼び出す場合は、後続のすべての作業でも、対応する下位レベルの API のみを使用してください。
 
@@ -211,7 +213,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HA
 * **IOTHUBMESSAGE\_REJECTED**: メッセージは処理されませんでした。今後これが実行される可能性はありません。 **IoTHubClient** ライブラリは、同じメッセージでコールバック関数を再度呼び出すことはありません。
 * **IOTHUBMESSAGE\_ABANDONED**: メッセージが正常に処理されませんでしたが、同じメッセージを使用して **IoTHubClient** ライブラリはもう一度コールバック関数を呼び出す必要があります。
 
-最初の&2; つのリターン コードでは、 **IoTHubClient** ライブラリが、メッセージをデバイスのキューから削除して、再度配信されないようにする必要があることを示すメッセージを IoT Hub に送信します。 実質的な効果は同じ (デバイスのキューからメッセージを削除する) ですが、メッセージが受け入れられるか拒否するかも記録されます。  この違いを記録することは、メッセージの送信側がフィードバックに注目し、デバイスが特定のメッセージを受け入れるか拒否するかを調べる際に役立ちます。
+最初の 2 つのリターン コードでは、 **IoTHubClient** ライブラリが、メッセージをデバイスのキューから削除して、再度配信されないようにする必要があることを示すメッセージを IoT Hub に送信します。 実質的な効果は同じ (デバイスのキューからメッセージを削除する) ですが、メッセージが受け入れられるか拒否するかも記録されます。  この違いを記録することは、メッセージの送信側がフィードバックに注目し、デバイスが特定のメッセージを受け入れるか拒否するかを調べる際に役立ちます。
 
 最後の場合もメッセージは IoT Hub に送信されますが、これは、メッセージを再配信する必要があることを示しています。 いくつかのエラーが発生したがメッセージをもう一度処理する必要がある場合、通常はメッセージを破棄します。 これに対して、回復不可能なエラーが発生した場合 (またはメッセージを処理しないことを単に決定した場合) は、メッセージを拒否するのは適切なことです。
 
@@ -231,9 +233,9 @@ iotHubClientHandle = IoTHubClient_CreateFromConnectionString(connectionString, A
 HostName=IOTHUBNAME.IOTHUBSUFFIX;DeviceId=DEVICEID;SharedAccessKey=SHAREDACCESSKEY
 ```
 
-この文字列は IoT Hub 名、IoT Hub サフィックス、デバイス ID、共有アクセス キーの&4; つの情報で構成されます。 Azure ポータルで IoT Hub インスタンスを作成するときに、IoT Hub の完全修飾ドメイン名 (FQDN) を取得します。これにより、IoT Hub 名 (FQDN の最初の部分) と IoT Hub サフィックス (FQDN の残りの部分) を取得できます。 デバイス ID と共有アクセス キーは、([前の記事](iot-hub-device-sdk-c-intro.md)の説明のように) IoT Hub にデバイスを登録するときに取得します。
+この文字列は IoT Hub 名、IoT Hub サフィックス、デバイス ID、共有アクセス キーの 4 つの情報で構成されます。 Azure ポータルで IoT Hub インスタンスを作成するときに、IoT Hub の完全修飾ドメイン名 (FQDN) を取得します。これにより、IoT Hub 名 (FQDN の最初の部分) と IoT Hub サフィックス (FQDN の残りの部分) を取得できます。 デバイス ID と共有アクセス キーは、([前の記事](iot-hub-device-sdk-c-intro.md)の説明のように) IoT Hub にデバイスを登録するときに取得します。
 
-**IoTHubClient\_CreateFromConnectionString** は、ライブラリを初期化する方法の&1; つです。 必要に応じて、デバイスの接続文字列ではなくこれらの個々のパラメーターを使用して、新しい **IOTHUB\_CLIENT\_HANDLE** を作成できます。 これは次のコードで実現します。
+**IoTHubClient\_CreateFromConnectionString** は、ライブラリを初期化する方法の 1 つです。 必要に応じて、デバイスの接続文字列ではなくこれらの個々のパラメーターを使用して、新しい **IOTHUB\_CLIENT\_HANDLE** を作成できます。 これは次のコードで実現します。
 
 ```
 IOTHUB_CLIENT_CONFIG iotHubClientConfig;
@@ -262,7 +264,7 @@ IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 * **SetBatching** (ブール値): **true** の場合、IoT Hub に送信されるデータはバッチで送信されます。 **false** の場合は、メッセージは個別に送信されます。 既定値は **false** です。 **SetBatching** オプションが適用されるのは HTTP プロトコルだけであることに注意してください。AMQP プロトコルや MQTT プロトコルには適用されません。
 * **Timeout** (符号なし整数): この値はミリ秒単位で表現されます。 HTTP 要求の送信や応答の受信にこの時間より長くかかる場合は、接続がタイムアウトします。
 
-バッチ処理オプションは重要です。 既定では、このライブラリはイベントを個別に入力します (**IoTHubClient\_LL\_SendEventAsync** に渡したものが&1; つのイベントになります)。 バッチ処理オプションが **true**の場合、ライブラリはバッファーから可能な限りの (IoT Hub が許容する最大メッセージ サイズまでの) イベントを収集します。  イベントのバッチは、(個々のイベントが JSON 配列にまとめられて) 単一の HTTP 呼び出しで IoT Hub に送信されます。 バッチ処理を有効にすると、通常はネットワーク ラウンドトリップが減少するため、パフォーマンスの大幅な向上につながります。 個別の各イベントの一連のヘッダーではなく、イベント バッチで一連の HTTP ヘッダーが送信されるため、帯域幅が大幅に削減されます。 それ以外の方法で実行する特別な理由がない限り、一般的にバッチ処理を有効にします。
+バッチ処理オプションは重要です。 既定では、このライブラリはイベントを個別に入力します (**IoTHubClient\_LL\_SendEventAsync** に渡したものが 1 つのイベントになります)。 バッチ処理オプションが **true**の場合、ライブラリはバッファーから可能な限りの (IoT Hub が許容する最大メッセージ サイズまでの) イベントを収集します。  イベントのバッチは、(個々のイベントが JSON 配列にまとめられて) 単一の HTTP 呼び出しで IoT Hub に送信されます。 バッチ処理を有効にすると、通常はネットワーク ラウンドトリップが減少するため、パフォーマンスの大幅な向上につながります。 個別の各イベントの一連のヘッダーではなく、イベント バッチで一連の HTTP ヘッダーが送信されるため、帯域幅が大幅に削減されます。 それ以外の方法で実行する特別な理由がない限り、一般的にバッチ処理を有効にします。
 
 ## <a name="next-steps"></a>次のステップ
 この記事は、**C 用 Azure IoT device SDK** にある **IoTHubClient** ライブラリの動作の詳細を説明しました。この情報は、**IoTHubClient** ライブラリの機能の理解に役立ててください。 [次の記事](iot-hub-device-sdk-c-serializer.md) では、 **serializer** ライブラリについて同様に詳細を紹介します。
@@ -271,14 +273,9 @@ IoT Hub の開発に関する詳細については、「[Azure IoT SDKs (Azure I
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-* [IoT Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
+* [Azure IoT Edge を使用したデバイスのシミュレーション][lnk-iotedge]
 
 [lnk-sdks]: iot-hub-devguide-sdks.md
 
-[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
+[lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md
 

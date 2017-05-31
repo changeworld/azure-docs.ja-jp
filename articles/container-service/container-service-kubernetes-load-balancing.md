@@ -14,19 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2017
+ms.date: 05/17/2017
 ms.author: danlep
-translationtype: Human Translation
-ms.sourcegitcommit: e89ec01cb47a87a45378f73d138224095bcbebed
-ms.openlocfilehash: 201d98c4f4ff29393ad308824ed0575f1ff602ee
-ms.lasthandoff: 02/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 9046879158a4617d478bcf1157d5ead3c1054fd8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
 # <a name="load-balance-containers-in-a-kubernetes-cluster-in-azure-container-service"></a>Azure Container Service の Kubernetes クラスターのコンテナーで負荷を分散する 
 この記事では、Azure Container Service の Kubernetes クラスターでの負荷分散について説明します。 負荷分散により、サービスに外部からアクセスできる IP アドレスが提供され、エージェント VM で実行されるポッド間のネットワーク トラフィックが分散されます。
 
-Kubernetes サービスが [Azure Load Balancer](../load-balancer/load-balancer-overview.md) を使用するように設定して、外部ネットワーク (TCP または UDP) トラフィックを管理することができます。 追加の構成をすると、HTTP または HTTPS トラフィックの負荷分散とルーティングのほか、さらに高度なシナリオも可能になります。
+Kubernetes サービスが [Azure Load Balancer](../load-balancer/load-balancer-overview.md) を使用するように設定して、外部ネットワーク (TCP) トラフィックを管理することができます。 追加の構成をすると、HTTP または HTTPS トラフィックの負荷分散とルーティングのほか、さらに高度なシナリオも可能になります。
 
 ## <a name="prerequisites"></a>前提条件
 * Azure Container Service で [Kubernetes クラスターをデプロイする](container-service-kubernetes-walkthrough.md)
@@ -34,16 +35,16 @@ Kubernetes サービスが [Azure Load Balancer](../load-balancer/load-balancer-
 
 ## <a name="azure-load-balancer"></a>Azure Load Balancer
 
-既定では、Azure Container Service にデプロイした Kubernetes クラスターには、インターネットに接続したエージェント VM 用の Azure Load Balancer が含まれます。 (マスター VM には、別のロード バランサーのリソースが構成されます。)Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーです。
+既定では、Azure Container Service にデプロイした Kubernetes クラスターには、インターネットに接続したエージェント VM 用の Azure Load Balancer が含まれます。 (マスター VM には、別のロード バランサーのリソースが構成されます。)Azure Load Balancer は、第 4 層のロード バランサーです。 現時点では、ロード バランサーでは、Kubernetes での TCP トラフィックのみがサポートされています。
 
 Kubernetes サービスを作成する場合は、サービスへのアクセスを許可するように Azure Load Balancer を自動的に構成できます。 ロード バランサーを構成するには、サービス `type` を `LoadBalancer` に設定します。 ロード バランサーは、着信サービス トラフィックのパブリック IP アドレスとポート番号を、エージェント VM のポッドのプライベート IP アドレスとポート番号にマップする規則を作成します (応答トラフィックについてはその逆にマップする規則を作成します)。 
 
- Kubernetes サービス `type` を `LoadBalancer` に設定する方法を説明する&2; つの例を次に示します。 (例を試したら、不要な場合はデプロイを削除してください。)
+ Kubernetes サービス `type` を `LoadBalancer` に設定する方法を説明する 2 つの例を次に示します。 (例を試したら、不要な場合はデプロイを削除してください。)
 
 ### <a name="example-use-the-kubectl-expose-command"></a>例: `kubectl expose` コマンドを使用する 
 [Kubernetes チュートリアル](container-service-kubernetes-walkthrough.md)には、`kubectl expose` コマンドとその `--type=LoadBalancer` フラグを使用してサービスを公開する方法の例が記載されています。 手順は次のようになります。
 
-1. 新しいコンテナーのデプロイを開始します。 たとえば、次のコマンドによって `mynginx` という新しいデプロイが開始されます。 デプロイは、Web サーバー Nginx の Docker イメージに基づく&3; つのコンテナーで構成されます。
+1. 新しいコンテナーのデプロイを開始します。 たとえば、次のコマンドによって `mynginx` という新しいデプロイが開始されます。 デプロイは、Web サーバー Nginx の Docker イメージに基づく 3 つのコンテナーで構成されます。
 
     ```console
     kubectl run mynginx --replicas=3 --image nginx

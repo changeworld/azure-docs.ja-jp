@@ -12,26 +12,33 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/14/2017
+ms.date: 05/17/2017
 ms.author: clemensv;sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: 2b118f285f822d6cba3a2db4130539e62aabd342
-ms.lasthandoff: 04/04/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: c16bcf30ab96f79e59404a41852e4cd227e28b08
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Service Bus の配信不能キューの概要
+
 Service Bus キューおよびトピック サブスクリプションでは、*配信不能キュー* (DLQ) と呼ばれるセカンダリ サブキューが提供されます。 配信不能キューを明示的に作成する必要はなく、削除したり、メイン エンティティとは別に管理したりすることはできません。
 
-配信不能キューの目的は、受信者に配信できないメッセージ、または単に処理できなかったメッセージを保持することです。 したがって、メッセージを DLQ から取り出して、検査することができます。 アプリケーションは演算子を利用して、問題を修正してメッセージを再送信し、エラーが発生していたという事実をログに記録してから修正処置を行います。 
+この記事では、Azure Service Bus の配信不能キューについて説明します。 説明の多くは、GitHub の[配信不能キューのサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/DeadletterQueue)に示されています。
+ 
+## <a name="the-dead-letter-queue"></a>配信不能キュー
+
+配信不能キューの目的は、受信者に配信できないメッセージ、または処理できなかったメッセージを保持することです。 したがって、メッセージを DLQ から取り出して、検査することができます。 アプリケーションは演算子を利用して、問題を修正してメッセージを再送信し、エラーが発生していたという事実をログに記録してから修正処置を行います。 
 
 API とプロトコルの観点では、DLQ は他のキューとほとんど同じですが、メッセージを再送信できるのは親エンティティの配信不能ジェスチャでのみである点が異なります。 また、有効期間は監視されず、DLQ のメッセージを配信不能にすることはできません。 配信不能キューでは、ピーク ロック配信やトランザクション操作が完全にサポートされます。
 
 DLQ は自動的にクリーンアップされないことに注意してください。 DLQ から明示的に取得し、配信不能メッセージに対して [Complete()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_CompleteAsync) を呼び出すまで、メッセージは DLQ に残ります。
 
 ## <a name="moving-messages-to-the-dlq"></a>DLQ にメッセージを移動する
-Service Bus には、メッセージがメッセージング エンジン自体から DLQ にプッシュされる原因となるアクティビティがいくつかあります。 アプリケーションは明示的にメッセージを DLQ にプッシュすることもできます。 
+
+Service Bus には、メッセージがメッセージング エンジン自体から DLQ にプッシュされる原因となるアクティビティがいくつかあります。 アプリケーションは明示的にメッセージを DLQ に移動することもできます。 
 
 ブローカーによってメッセージが移動され、ブローカーがメッセージに対して内部バージョンの [DeadLetter](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeadLetter_System_String_System_String_) メソッドを呼び出すと、`DeadLetterReason` および `DeadLetterErrorDescription` という 2 つのプロパティが追加されます。
 

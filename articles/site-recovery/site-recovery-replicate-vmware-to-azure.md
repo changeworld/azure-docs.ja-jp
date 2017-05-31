@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 2/17/2017
 ms.author: asgang
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 06ac75a40ed1dc97046836388bb7938dabd2b9ac
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: f78a857a795031f6188635091c76431cd5440d1c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -39,6 +40,7 @@ ms.lasthandoff: 04/12/2017
 #### <a name="before-you-start"></a>開始する前に
 VMware 仮想マシンをレプリケートする場合、次の点に注意してください。
 
+* Azure ユーザー アカウントには、新しい仮想マシンを Azure にレプリケートできるようにするための特定の[アクセス許可](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)が必要です。
 * VMware VM の検出は 15 分ごとに行われます。 VM の検出後、ポータルに表示されるまで 15 分以上かかることがあります。 同様に、新しい vCenter サーバーまたは vSphere ホストを追加したときも、検出に 15 分以上かかることがあります。
 * 仮想マシンの環境の変更 (VMware ツールのインストールなど) 内容がポータルで更新されるまでには 15 分以上かかることがあります。
 * **[構成サーバー]** ブレードにある vCenter サーバー/vSphere ホストの **[最後の使用]** フィールドで、VMware VM の最終検出時刻を確認できます。
@@ -105,19 +107,20 @@ VMware 仮想マシンをレプリケートする場合、次の点に注意し�
 ![Enable replication](./media/site-recovery-vmware-to-azure/VMProperties_AVSET.png)
 
 *リソース グループ*
-   
-  * フェール オーバー後にマシンが属する[リソース グループ](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines)を選択できます。 この設定は、フェール オーバー前にいつでも変更できます。 
-  
+
+  * フェール オーバー後にマシンが属する[リソース グループ](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines)を選択できます。 この設定は、フェール オーバー前にいつでも変更できます。
+
 > [!NOTE]
 > フェール オーバー後に、マシンを別のリソース グループに移行すると、マシンの保護設定が解除されます。
- 
+
 *可用性セット*
 
-マシンが 1 つのポスト フェールオーバーに属する必要がある場合、[可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)を選択できます。 可用性セットを選択するときは、以下のことに注意してください。
+マシンが 1 つのポスト フェールオーバーに属する必要がある場合、[可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)を選択できます。
+可用性セットを選択するときは、以下のことに注意してください。
 
 * 指定されたリソース グループに属している可用性セットだけが一覧表示されます。  
-* 異なる仮想ネットワークに属するマシンが同じ可用性セットに属することはできません。 
-* 同じサイズの仮想マシンだけが同じ可用性セットに属することができます。 
+* 異なる仮想ネットワークに属するマシンが同じ可用性セットに属することはできません。
+* 同じサイズの仮想マシンだけが同じ可用性セットに属することができます。
 
 *ネットワークのプロパティ*
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/11/2017
+ms.date: 05/12/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: e98fa067c0ed385fe20f66645311c9fd51cd6456
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: a8e35456af8c9f2cf1bf9e9c364e33641f29a477
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 05/11/2017
 このトピックでは、Azure リソース マネージャー テンプレートで反復処理して、リソースの複数のインスタンスを作成する方法について説明します。
 
 ## <a name="resource-iteration"></a>リソースの反復
-あるリソース タイプのインスタンスを複数作成するには、そのリソース タイプに `copy` 要素を追加します。 copy 要素には、そのループの反復回数と名前を指定します。 数値は正の整数で、800 を超えることはできません。 リソース マネージャーは、並列でリソースを作成します。 そのため、作成される順序は保証されません。 連続して繰り返されるリソースを作成する場合は、[Azure Resource Manager テンプレートでの連続ループ](resource-manager-sequential-loop.md)に関するページを参照してください。 
+あるリソース タイプのインスタンスを複数作成するには、そのリソース タイプに `copy` 要素を追加します。 copy 要素には、そのループの反復回数と名前を指定します。 数値は正の整数で、800 を超えることはできません。 リソース マネージャーは、並列でリソースを作成します。 そのため、作成される順序は保証されません。 反復処理されるリソースを順番に作成する場合は、「[シリアル コピー](#serial-copy)」を参照してください。 
 
 複数回作成されるリソースは、次の形式を取ります。
 
@@ -109,6 +109,152 @@ ms.lasthandoff: 05/11/2017
 * storagecontoso
 * storagefabrikam
 * storagecoho
+
+## <a name="serial-copy"></a>シリアル コピー
+
+copy 要素を使用して、あるリソース タイプのインスタンスを複数作成する場合、Resource Manager によって既定でそれらのインスタンスが並列的にデプロイされます。 しかし、リソースが順番にデプロイされるように指定したい場合もあります。 たとえば、運用環境を更新するとき、一度に特定の数だけ更新されるように更新時間をずらす必要がある場合があります。
+
+Resource Manager では、複数のインスタンスを順番にデプロイできるようにするプロパティを copy 要素に指定できます。 copy 要素で `mode` を **serial** に設定し、`batchSize` を一度にデプロイするインスタンスの数に設定します。 シリアル モードでは、Resource Manager はループ内で前のインスタンスへの依存関係を作成するので、前のバッチが完了するまで次のバッチは実行されません。
+
+```json
+"copy": {
+    "name": "iterator",
+    "count": "[parameters('numberToDeploy')]",
+    "mode": "serial",
+    "batchSize": 2
+},
+```
+
+mode プロパティでも **parallel** が既定値として使用されます。
+
+実際のリソースを作成せずにシリアル コピーをテストするには、空の入れ子になったテンプレートをデプロイする次のテンプレートを使用します。
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "numberToDeploy": {
+      "type": "int",
+      "minValue": 2,
+      "defaultValue": 5
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2015-01-01",
+      "type": "Microsoft.Resources/deployments",
+      "name": "[concat('loop-', copyIndex())]",
+      "copy": {
+        "name": "iterator",
+        "count": "[parameters('numberToDeploy')]",
+        "mode": "serial",
+        "batchSize": 1
+      },
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {},
+          "variables": {},
+          "resources": [],
+          "outputs": {
+          }
+        }
+      }
+    }
+  ],
+  "outputs": {
+  }
+}
+```
+
+デプロイ履歴で、入れ子になったデプロイが順番に処理されていることに注意してください。
+
+![シリアル デプロイ](./media/resource-group-create-multiple/serial-copy.png)
+
+より現実に即したシナリオでは、次の例のように、Linux VM の 2 つのインスタンスを、入れ子になったテンプレートから一度にデプロイします。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "adminUsername": {
+            "type": "string",
+            "metadata": {
+                "description": "User name for the Virtual Machine."
+            }
+        },
+        "adminPassword": {
+            "type": "securestring",
+            "metadata": {
+                "description": "Password for the Virtual Machine."
+            }
+        },
+        "dnsLabelPrefix": {
+            "type": "string",
+            "metadata": {
+                "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
+            }
+        },
+        "ubuntuOSVersion": {
+            "type": "string",
+            "defaultValue": "16.04.0-LTS",
+            "allowedValues": [
+                "12.04.5-LTS",
+                "14.04.5-LTS",
+                "15.10",
+                "16.04.0-LTS"
+            ],
+            "metadata": {
+                "description": "The Ubuntu version for the VM. This will pick a fully patched image of this given Ubuntu version."
+            }
+        }
+    },
+    "variables": {
+        "templatelink": "https://raw.githubusercontent.com/rjmax/Build2017/master/Act1.TemplateEnhancements/Chapter03.LinuxVM.json"
+    },
+    "resources": [
+        {
+            "apiVersion": "2015-01-01",
+            "name": "[concat('nestedDeployment',copyIndex())]",
+            "type": "Microsoft.Resources/deployments",
+            "copy": {
+                "name": "myCopySet",
+                "count": 4,
+                "mode": "serial",
+                "batchSize": 2
+            },
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('templatelink')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "adminUsername": {
+                        "value": "[parameters('adminUsername')]"
+                    },
+                    "adminPassword": {
+                        "value": "[parameters('adminPassword')]"
+                    },
+                    "dnsLabelPrefix": {
+                        "value": "[parameters('dnsLabelPrefix')]"
+                    },
+                    "ubuntuOSVersion": {
+                        "value": "[parameters('ubuntuOSVersion')]"
+                    },
+                    "index":{
+                        "value": "[copyIndex()]"
+                    }
+                }
+            }
+        }
+    ]
+}
+```
 
 ## <a name="depend-on-resources-in-a-loop"></a>ループ内のリソースへの依存
 `dependsOn` 要素を使用することで、リソースを別のリソースの後にデプロイするよう指定することが可能です。 ループ内のリソースの集合に依存するリソースをデプロイするには、dependsOn 要素にコピー ループの名前を指定します。 次の例では、仮想マシンをデプロイする前に 3 つのストレージ アカウントをデプロイする方法を示します。 完全な仮想マシン定義は示されていません。 コピー要素の name が `storagecopy` に設定され、Virtual Machines の dependsOn 要素が `storagecopy` に設定されるよう注意してください。
@@ -198,7 +344,6 @@ ms.lasthandoff: 05/11/2017
 
 ## <a name="next-steps"></a>次のステップ
 * テンプレートのセクションについては、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
-* 連続して繰り返されるリソースを作成する場合は、[Azure Resource Manager テンプレートでの連続ループ](resource-manager-sequential-loop.md)に関するページを参照してください。
 * テンプレートをデプロイする方法については、「 [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
 

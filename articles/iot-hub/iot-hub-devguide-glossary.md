@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/02/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: d47a28b31569d26a7752fc830989e8050153be46
-ms.lasthandoff: 05/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 2fad3e3fb88d447b377ccfce052035640c1360c3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -37,8 +38,8 @@ ms.lasthandoff: 05/02/2017
 ## <a name="azure-iot-device-sdks"></a>Azure IoT device SDK
 複数の言語で使用可能な_デバイス SDK_ があり、IoT Hub と対話する[デバイス アプリ](#device-app)を作成できます。 IoT Hub のチュートリアルでは、これらのデバイス SDK を使用する方法を説明します。 デバイス SDK のソース コードと詳細については、この GitHub [リポジトリ](https://github.com/Azure/azure-iot-sdks)を参照してください。
 
-## <a name="azure-iot-gateway-sdk"></a>Azure IoT Gateway SDK
-この SDK では、ゲートウェイに接続されたデバイスと [IoT Hub](#iot-hub) の通信を有効にするアプリケーションを作成できます。 IoT Hub ゲートウェイのチュートリアルでは、この SDK を使用する方法を説明します。 Azure IoT Gateway SDK のソース コードと詳細については、この GitHub [リポジトリ](https://github.com/Azure/azure-iot-gateway-sdk)を参照してください。
+## <a name="azure-iot-edge"></a>Azure IoT Edge
+IoT Edge では、ゲートウェイに接続されたデバイスと [IoT Hub](#iot-hub) の通信を有効にするアプリケーションを作成できます。 IoT Edge のチュートリアルでは、このサービスの使用方法を示します。 Azure IoT Edge のソース コードと詳細については、この GitHub [レポジトリ](https://github.com/Azure/iot-edge)を参照してください。
 
 ## <a name="azure-iot-service-sdks"></a>Azure IoT サービス SDK
 複数の言語で使用可能な_サービス SDK_ があり、IoT Hub と対話する[バックエンド アプリ](#back-end-app)を作成できます。 IoT Hub のチュートリアルでは、これらのサービス SDK を使用する方法を説明します。 サービス SDK のソース コードと詳細については、この GitHub [リポジトリ](https://github.com/Azure/azure-iot-sdks)を参照してください。
@@ -79,7 +80,7 @@ IoT Hub から接続されたデバイスに送信されるメッセージを指
 [ルーティング ルール](#routing-rules)によって送信されたメッセージを配信するカスタム [エンドポイント](iot-hub-devguide-endpoints.md)を IoT hub に作成できます。 カスタム エンドポイントは、Event hub、Service Bus キュー、または Service Bus トピックに直接接続します。
 
 ## <a name="custom-gateway"></a>カスタム ゲートウェイ
-ゲートウェイは、[IoT Hub](#iot-hub) に直接接続できないデバイスの接続を有効にします。 [Azure IoT Gateway SDK](#azure-iot-gateway-sdk) を使用して、メッセージとカスタム プロトコル変換を処理するためのカスタム ロジックを実装する、カスタムのゲートウェイを構築できます。
+ゲートウェイは、[IoT Hub](#iot-hub) に直接接続できないデバイスの接続を有効にします。 [Azure IoT Edge](#azure-iot-gateway-sdk) を使用して、メッセージを処理するカスタム ロジック、カスタム プロトコルの変換、およびその他の処理を Edge 上で実装するカスタム ゲートウェイを構築できます。
 
 ## <a name="data-point-message"></a>データ ポイント メッセージ
 データ ポイント メッセージは、風速や温度などの[テレメトリ](#telemetry) データを含む[デバイスからクラウドへの](#device-to-cloud)メッセージです。
@@ -190,7 +191,7 @@ Azure IoT Suite では、複数の Azure サービスと構成済みソリュー
 [ジョブ REST API](https://docs.microsoft.com/rest/api/iothub/jobapi) を使用して、IoT Hub で実行されている[ジョブ](#job)を管理できます。
 
 ## <a name="module"></a>モジュール
-[Azure IoT Gateway SDK](iot-hub-linux-gateway-sdk-get-started.md) において、[モジュール](iot-hub-linux-gateway-sdk-get-started.md#azure-iot-gateway-sdk-concepts)は特定のタスクを実行するコンポーネントです。 タスクには、デバイスからのメッセージの取り込み、メッセージの変換、IoT Hub へのメッセージの送信などが含まれます。 ブローカーがモジュール間でメッセージを転送します。 Azure IoT Gateway SDK には、一連のサンプル モジュールが含まれています。 また、独自のカスタム モジュールを作成することもできます。
+[Azure IoT Edge](iot-hub-linux-gateway-sdk-get-started.md) では、[モジュール](iot-hub-linux-gateway-sdk-get-started.md)は特定のタスクを実行するコンポーネントです。 タスクには、デバイスからのメッセージの取り込み、メッセージの変換、IoT Hub へのメッセージの送信などが含まれます。 ブローカーがモジュール間でメッセージを転送します。 Azure IoT Edge には、一連のサンプル モジュールが含まれています。 また、独自のカスタム モジュールを作成することもできます。
 
 ## <a name="mqtt"></a>MQTT
 [MQTT](http://mqtt.org/) は、デバイスと通信するために [IoT Hub](#iot-hub) がサポートするメッセージング プロトコルの 1 つです。 IoT Hub がサポートするメッセージング プロトコルの詳細については、「[IoT Hub でのメッセージの送受信](iot-hub-devguide-messaging.md)」を参照してください。

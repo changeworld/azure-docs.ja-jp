@@ -12,22 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 04/03/2017
+ms.date: 05/15/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: eb6bddbe4220418f7c525985ab6a15524589829e
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 2f8067a1a4ff7abfc41b28cbfd3482be11ae0e23
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-to-access-resources"></a>リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する
-> [!div class="op_single_selector"]
-> * [PowerShell](resource-group-authenticate-service-principal.md)
-> * [Azure CLI](resource-group-authenticate-service-principal-cli.md)
-> * [ポータル](resource-group-create-service-principal-portal.md)
-> 
-> 
 
 リソースへのアクセスを必要とするアプリやスクリプトがある場合は、アプリの ID を設定し、アプリを独自の資格情報で認証できます。 この ID は、サービス プリンシパルと呼ばれます。 このアプローチを使用すると、以下のことを実行できます。
 
@@ -43,8 +38,30 @@ ms.lasthandoff: 04/27/2017
 
 ここで、[パスワード](#create-service-principal-with-password)認証または[証明書](#create-service-principal-with-certificate)認証に関するセクションに進みます。
 
+## <a name="powershell-commands"></a>PowerShell コマンド
+
+サービス プリンシパルを設定するには、次を使用します。
+
+| コマンド | Description |
+| ------- | ----------- | 
+| [New-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) | Azure Active Directory サービス プリンシパルを作成します。 |
+| [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) | 指定したプリンシパルに、指定のスコープで、指定した RBAC ロールを割り当てます。 |
+
+
 ## <a name="create-service-principal-with-password"></a>パスワードを使用したサービス プリンシパルの作成
-次のスクリプトは、アプリケーションの ID を作成し、指定されたスコープの共同作成者ロールにそれを割り当てられます。
+
+共同作業者ロールでサブスクリプションにサービス プリンシパルを作成するには、次を使用します。 
+
+```powershell
+Login-AzureRmAccount
+$sp = New-AzureRmADServicePrincipal -DisplayName exampleapp -Password "{provide-password}"
+Sleep 20
+New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
+```
+
+この例では、新しいサービス プリンシパルが Azure Active Directory 全体に反映されるまでの時間を設けるために、20 秒間スリープします。 スクリプトの待機時間が不足している場合、"PrincipalNotFound: プリンシパル {id} がディレクトリにありません" というエラーが表示されます。
+
+次のスクリプトでは、既定のサブスクリプション以外のスコープを指定することができ、エラーが発生した場合は、ロールの割り当てを再試行します。
 
 ```powershell
 Param (
@@ -62,14 +79,14 @@ Param (
 
  [Parameter(Mandatory=$true)]
  [String] $Password
- )
+)
 
  Login-AzureRmAccount
  Import-Module AzureRM.Resources
 
  if ($SubscriptionId -eq "") 
  {
-    $SubscriptionId = (Get-AzureRmContext).Subscription.SubscriptionId
+    $SubscriptionId = (Get-AzureRmContext).Subscription.Id
  }
  else
  {
@@ -85,11 +102,9 @@ Param (
     $Scope = (Get-AzureRmResourceGroup -Name $ResourceGroup -ErrorAction Stop).ResourceId
  }
 
- # Create Azure Active Directory application with password
- $Application = New-AzureRmADApplication -DisplayName $ApplicationDisplayName -HomePage ("http://" + $ApplicationDisplayName) -IdentifierUris ("http://" + $ApplicationDisplayName) -Password $Password
-
+ 
  # Create Service Principal for the AD app
- $ServicePrincipal = New-AzureRMADServicePrincipal -ApplicationId $Application.ApplicationId 
+ $ServicePrincipal = New-AzureRMADServicePrincipal -DisplayName $ApplicationDisplayName -Password $Password
  Get-AzureRmADServicePrincipal -ObjectId $ServicePrincipal.Id 
 
  $NewRole = $null
@@ -98,8 +113,8 @@ Param (
  {
     # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
     Sleep 15
-    New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $Application.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
-    $NewRole = Get-AzureRMRoleAssignment -ServicePrincipalName $Application.ApplicationId -ErrorAction SilentlyContinue
+    New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $ServicePrincipal.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
+    $NewRole = Get-AzureRMRoleAssignment -ServicePrincipalName $ServicePrincipal.ApplicationId -ErrorAction SilentlyContinue
     $Retries++;
  }
 ```
@@ -108,7 +123,6 @@ Param (
 
 * 既定のサブスクリプションに ID アクセスを許可する場合は、ResourceGroup パラメーターも SubscriptionId パラメーターも指定する必要はありません。
 * ResourceGroup パラメーターはロールの割り当てスコープを特定のリソース グループに制限する場合にのみ指定します。
-* シングル テナント アプリケーションでは、ホーム ページと ID の URI は検証されません。
 *  この例では、共同作成者ロールにサービス プリンシパルを追加します。 その他のロールについては、「[RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」を参照してください。
 * スクリプトは、新しいサービス プリンシパルが Azure Active Directory 全体に反映されるまでの時間を設けるために、15 秒間スリープします。 スクリプトの待機時間が不足している場合、"PrincipalNotFound: プリンシパル {id} がディレクトリにありません" というエラーが表示されます。
 * サービス プリンシパルのアクセスを複数のサブスクリプションまたはリソース グループに許可する必要がある場合は、異なるスコープを指定して `New-AzureRMRoleAssignment` コマンドレットを再び実行します。
@@ -129,7 +143,22 @@ Login-AzureRmAccount -Credential $creds -ServicePrincipal -TenantId {tenant-id}
 ```
 
 ## <a name="create-service-principal-with-self-signed-certificate"></a>自己署名証明書を使用したサービス プリンシパルの作成
-Windows 10 または Windows Server 2016 Technical Preview で Azure PowerShell 2.0 を使用して自己章署名証明書とサービス プリンシパルを生成するには、次のスクリプトを使用します。
+
+自己署名証明書と共同作業者ロールを使用してサブスクリプションにサービス プリンシパルを作成するには、次を使用します。 
+
+```powershell
+Login-AzureRmAccount
+$cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=exampleappScriptCert" -KeySpec KeyExchange
+$keyValue = [System.Convert]::ToBase64String($cert.GetRawCertData())
+
+$sp = New-AzureRMADServicePrincipal -DisplayName exampleapp -CertValue $keyValue -EndDate $cert.NotAfter -StartDate $cert.NotBefore
+Sleep 20
+New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
+```
+
+この例では、新しいサービス プリンシパルが Azure Active Directory 全体に反映されるまでの時間を設けるために、20 秒間スリープします。 スクリプトの待機時間が不足している場合、"PrincipalNotFound: プリンシパル {id} がディレクトリにありません" というエラーが表示されます。
+
+次のスクリプトでは、既定のサブスクリプション以外のスコープを指定することができ、エラーが発生した場合は、ロールの割り当てを再試行します。 Windows 10 または Windows Server 2016 上の Azure PowerShell 2.0 が必要です。
 
 ```powershell
 Param (
@@ -151,7 +180,7 @@ Param (
 
  if ($SubscriptionId -eq "") 
  {
-    $SubscriptionId = (Get-AzureRmContext).Subscription.SubscriptionId
+    $SubscriptionId = (Get-AzureRmContext).Subscription.Id
  }
  else
  {
@@ -170,10 +199,7 @@ Param (
  $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=exampleappScriptCert" -KeySpec KeyExchange
  $keyValue = [System.Convert]::ToBase64String($cert.GetRawCertData())
 
- # Use Key credentials
- $Application = New-AzureRmADApplication -DisplayName $ApplicationDisplayName -HomePage ("http://" + $ApplicationDisplayName) -IdentifierUris ("http://" + $ApplicationDisplayName) -CertValue $keyValue -EndDate $cert.NotAfter -StartDate $cert.NotBefore
-
- $ServicePrincipal = New-AzureRMADServicePrincipal -ApplicationId $Application.ApplicationId 
+ $ServicePrincipal = New-AzureRMADServicePrincipal -DisplayName $ApplicationDisplayName -CertValue $keyValue -EndDate $cert.NotAfter -StartDate $cert.NotBefore
  Get-AzureRmADServicePrincipal -ObjectId $ServicePrincipal.Id 
 
  $NewRole = $null
@@ -182,8 +208,8 @@ Param (
  {
     # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
     Sleep 15
-    New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $Application.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
-    $NewRole = Get-AzureRMRoleAssignment -ServicePrincipalName $Application.ApplicationId -ErrorAction SilentlyContinue
+    New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $ServicePrincipal.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
+    $NewRole = Get-AzureRMRoleAssignment -ServicePrincipalName $ServicePrincipal.ApplicationId -ErrorAction SilentlyContinue
     $Retries++;
  }
 ```
@@ -192,8 +218,7 @@ Param (
 
 * 既定のサブスクリプションに ID アクセスを許可する場合は、ResourceGroup パラメーターも SubscriptionId パラメーターも指定する必要はありません。
 * ResourceGroup パラメーターはロールの割り当てスコープを特定のリソース グループに制限する場合にのみ指定します。
-* シングル テナント アプリケーションでは、ホーム ページと ID の URI は検証されません。
-*  この例では、共同作成者ロールにサービス プリンシパルを追加します。 その他のロールについては、「[RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」を参照してください。
+* この例では、共同作成者ロールにサービス プリンシパルを追加します。 その他のロールについては、「[RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」を参照してください。
 * スクリプトは、新しいサービス プリンシパルが Azure Active Directory 全体に反映されるまでの時間を設けるために、15 秒間スリープします。 スクリプトの待機時間が不足している場合、"PrincipalNotFound: プリンシパル {id} がディレクトリにありません" というエラーが表示されます。
 * サービス プリンシパルのアクセスを複数のサブスクリプションまたはリソース グループに許可する必要がある場合は、異なるスコープを指定して `New-AzureRMRoleAssignment` コマンドレットを再び実行します。
 
@@ -277,10 +302,7 @@ Param (
  $KeyCredential.KeyId = $KeyId
  $KeyCredential.CertValue = $KeyValue
 
- # Use Key credentials
- $Application = New-AzureRmADApplication -DisplayName $ApplicationDisplayName -HomePage ("http://" + $ApplicationDisplayName) -IdentifierUris ("http://" + $KeyId) -KeyCredentials $keyCredential
-
- $ServicePrincipal = New-AzureRMADServicePrincipal -ApplicationId $Application.ApplicationId 
+ $ServicePrincipal = New-AzureRMADServicePrincipal -DisplayName $ApplicationDisplayName -KeyCredentials $keyCredential
  Get-AzureRmADServicePrincipal -ObjectId $ServicePrincipal.Id 
 
  $NewRole = $null
@@ -300,8 +322,7 @@ Param (
 このスクリプトには、次の注意事項があります。
 
 * アクセスのスコープは、サブスクリプションに制限されます。
-* シングル テナント アプリケーションでは、ホーム ページと ID の URI は検証されません。
-*  この例では、共同作成者ロールにサービス プリンシパルを追加します。 その他のロールについては、「[RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」を参照してください。
+* この例では、共同作成者ロールにサービス プリンシパルを追加します。 その他のロールについては、「[RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」を参照してください。
 * スクリプトは、新しいサービス プリンシパルが Azure Active Directory 全体に反映されるまでの時間を設けるために、15 秒間スリープします。 スクリプトの待機時間が不足している場合、"PrincipalNotFound: プリンシパル {id} がディレクトリにありません" というエラーが表示されます。
 * サービス プリンシパルのアクセスを複数のサブスクリプションまたはリソース グループに許可する必要がある場合は、異なるスコープを指定して `New-AzureRMRoleAssignment` コマンドレットを再び実行します。
 
@@ -426,5 +447,6 @@ Select-AzureRmProfile -Path c:\Users\exampleuser\profile\exampleSP.json
 * アプリケーションを Azure に統合してリソースを管理する詳しい手順については、「 [Azure Resource Manager API を使用した承認の開発者ガイド](resource-manager-api-authentication.md)」を参照してください。
 * アプリケーションとサービス プリンシパルの詳細については、「[アプリケーションおよびサービス プリンシパル オブジェクト](../active-directory/active-directory-application-objects.md)」を参照してください。 
 * Azure Active Directory 認証の詳細については、「[Azure AD の認証シナリオ](../active-directory/active-directory-authentication-scenarios.md)」をご覧ください。
+* ユーザーに対して許可または拒否される場合がある使用可能なアクションの一覧については、「[Azure Resource Manager のリソース プロバイダー操作](../active-directory/role-based-access-control-resource-provider-operations.md)」を参照してください。
 
 

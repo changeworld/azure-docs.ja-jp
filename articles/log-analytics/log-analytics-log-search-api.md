@@ -3,7 +3,7 @@ title: "Log Analytics のログ検索 REST API | Microsoft Docs"
 description: "このガイドには、Operations Management Suite (OMS) で Log Analytics 検索 REST API を使用する方法に関する基本的な説明と、コマンドの使用方法の例が記載されています。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: bwren
 manager: carmonm
 editor: 
 ms.assetid: b4e9ebe8-80f0-418e-a855-de7954668df7
@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
-ms.author: banders
-translationtype: Human Translation
-ms.sourcegitcommit: b12f823d723b013755fc868b883faefa2072eb75
-ms.openlocfilehash: 9b21fed003f96dbf7ebd72d6f46fff91acbf039e
-ms.lasthandoff: 12/02/2016
+ms.date: 05/12/2017
+ms.author: bwren
+ms.translationtype: Human Translation
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: a0d26b594ddbdcc7f1e414ebe2a2e936751a3c02
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/13/2017
 
 
 ---
@@ -237,8 +238,11 @@ Azure Resource Manager は [.NET のライブラリ](https://msdn.microsoft.com/
 
 ```
     $savedSearchParametersJson = "{'properties': { 'Category': 'myCategory', 'DisplayName':'myDisplayName', 'Query':'* | measure Count() by Source', 'Version':'1'  }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace ID}/savedSearches/thisIsMyId?api-version=2015-03-20 $savedSearchParametersJson
+    armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace ID}/savedSearches/thisismyid?api-version=2015-03-20 $savedSearchParametersJson
 ```
+
+> [!NOTE]
+> Log Analytics API で作成する、すべての保存した検索条件、スケジュール、およびアクションは、小文字にする必要があります。
 
 ### <a name="delete-saved-searches"></a>保存された検索の削除
 **要求:**

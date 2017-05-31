@@ -1,6 +1,6 @@
 ---
 title: "Azure Event Hubs のプログラミング ガイド |Microsoft Docs"
-description: "Azure .NET SDK を使用し、Azure Event Hubs でプログラミングする方法について説明します。"
+description: "Azure .NET SDK を使用して、Azure Event Hubs 用のコードを記述します。"
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
@@ -12,24 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 02/10/2017
+ms.date: 05/17/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: d8a767e9149c6c5eca5b22f094ae924135fa7a2d
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 6d0a1501b97ddb2c819361b00a85ebec12f7b50e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
 # <a name="event-hubs-programming-guide"></a>Event Hubs のプログラミング ガイド
+
 この記事では、Azure Event Hubs と Azure .NET SDK を使用してコードを作成する一般的なシナリオについて説明します。 Event Hubs の予備知識があることを前提としています。 Event Hub の概要/概念については、「 [Event Hubs 概要](event-hubs-what-is-event-hubs.md)」を参照してください。
 
 ## <a name="event-publishers"></a>イベント発行元
+
 イベントは HTTP POST か AMQP 1.0 接続を使用して、イベント ハブに送信します。 何をいつ利用するかは、解決対象の具体的なシナリオによります。 AMQP 1.0 接続は Service Bus の仲介型接続として課金され、頻繁にメッセージ量が多くなり、低遅延の要件があるシナリオに適しています。固定のメッセージング チャンネルが提供されるためです。
 
 Event Hubs は [NamespaceManager][] クラスで作成し、管理します。 .NET のマネージ API を使用する場合、Event Hubs にデータを発行するための主なコンストラクトは [EventHubClient](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) クラスと [EventData][] クラスになります。 [EventHubClient][] は、イベントがイベント ハブに送信されるときに使われる AMQP 通信チャンネルを提供します。 [EventData][] クラスはイベントを表し、イベント ハブにメッセージを発行するために使用されます。 このクラスには、本文、いくつかのメタデータ、イベントに関するヘッダー情報が含まれます。 その他のプロパティは [EventData][] オブジェクトに追加され、イベント ハブに渡されます。
 
 ## <a name="get-started"></a>作業開始
+
 Event Hubs をサポートする .NET クラスが Microsoft.ServiceBus.dll アセンブリに用意されています。 Service Bus API を参照し、すべての Service Bus 依存関係を備えたアプリケーションを構成する最も簡単な方法は [Service Bus NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus)をダウンロードすることです。 あるいは、Visual Studio の [パッケージ マネージャー コンソール](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) を利用できます。 これを行うには、 [パッケージ マネージャー コンソール](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) のウィンドウに次のコマンドを入力します。
 
 ```

@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: hero-=article
 ms.date: 04/05/2017
 ms.author: raynew
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 8b0985ec5b4fec39e9277b81f7bbecc7d50065e1
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 7de37f106e33d425b3b497cec640bac3fa4afa74
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -38,7 +39,7 @@ Azure にマシンを (フェールバックなしで) 移行する方法につ�
 
 ## <a name="deployment-steps"></a>デプロイメントの手順
 
-記事に従って次のデプロイメント手順を実行します。
+記事に従って、次のデプロイ手順を実行します。
 
 
 1. このデプロイのアーキテクチャの[詳細を確認](site-recovery-components.md#hyper-v-to-azure)します。 また、Site Recovery で Hyper-V レプリケーションがどのように動作するかの[詳細を確認](site-recovery-hyper-v-azure-architecture.md)します。
@@ -289,6 +290,8 @@ Site Recovery が備えている Capacity Planner を使用して、ソース環
 
 ## <a name="enable-replication"></a>Enable replication
 
+開始する前に、Azure ユーザー アカウントに、新しい仮想マシンを Azure にレプリケートできるようにするために必要な特定の[アクセス許可](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)が付与されていることを確認してください。
+
 レプリケーションを有効にするには、次の手順に従います。
 
 1. **[手順 2: アプリケーションをレプリケートする]** > **[ソース]** の順にクリックします。 レプリケーションを初めて有効にした後は、コンテナーで **[+ レプリケート]** をクリックして、追加のマシンのレプリケーションを有効にします。
@@ -311,9 +314,9 @@ Site Recovery が備えている Capacity Planner を使用して、ソース環
     - Azure VM の名前 (ターゲット名) が [Azure 仮想マシンの要件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)に準拠していることを確認します。   
     - 既定では、VM のすべてのディスクがレプリケーションの対象として選択されていますが、ディスクを消去して除外することもできます。
 
-        - レプリケーションの帯域幅を減らすためにディスクを除外したほうがよい場合があります。 たとえば、一時的なデータや、マシンまたはアプリを再起動するたびに更新されるデータ (pagefile.sys や Microsoft SQL Server tempdb など) が保存されたディスクをレプリケーションから除外できます。 ディスクをレプリケーションから除外するには、ディスクの選択を解除します。
+        - レプリケーションの帯域幅を減らすために、ディスクを除外したほうがよい場合があります。 たとえば、一時的なデータや、マシンまたはアプリを再起動するたびに更新されるデータ (pagefile.sys や Microsoft SQL Server tempdb など) が保存されたディスクをレプリケーションから除外できます。 ディスクをレプリケーションから除外するには、ディスクの選択を解除します。
         - 除外できるのは、ベーシック ディスクだけです。 OS ディスクを除外することはできません。
-        - ダイナミック ディスクは除外しないことをお勧めします。 Site Recovery は、ゲスト VM 内の仮想ハードディスクがベーシック ディスクであるかダイナミック ディスクであるかを識別できません。 依存するダイナミック ボリューム ディスクすべてが除外されていない場合に VM がフェールオーバーし、そのディスクのデータにアクセスできなくなると、保護されたダイナミック ディスクは障害が発生したディスクとして表示されます。
+        - ダイナミック ディスクは除外しないことをお勧めします。 Site Recovery は、ゲスト VM 内の仮想ハード ディスクがベーシック ディスクであるかダイナミック ディスクであるかを識別できません。 依存するダイナミック ボリューム ディスクすべてが除外されていない場合に VM がフェールオーバーし、そのディスクのデータにアクセスできなくなると、保護されたダイナミック ディスクは障害が発生したディスクとして表示されます。
         - レプリケーションが有効になった後で、レプリケーション用のディスクを追加または削除することはできません。 ディスクを追加または除外する場合は、VM の保護を無効にし、再度有効にする必要があります。
         - Azure で手動で作成したディスクはフェールバックされません。 たとえば、3 つのディスクをフェールオーバーし、Azure VM に直接 2 つのディスクを作成した場合、フェールオーバーされた 3 つのディスクだけが Azure から Hyper-V にフェールバックされます。 Hyper-V から Azure へのフェールバックまたはレプリケーションの反転に、手動で作成されたディスクを含めることはできません。
         - アプリケーションが動作するために必要なディスクを除外した場合、Azure へのフェールオーバー後、レプリケートされたアプリケーションを実行できるように、Azure でディスクを手動で作成する必要があります。 別の方法として、Azure Automation を復旧計画に組み込んで、マシンのフェールオーバー時にディスクを作成することもできます。
@@ -350,7 +353,25 @@ Site Recovery が備えている Capacity Planner を使用して、ソース環
      * VM に複数のネットワーク アダプターがある場合は、すべて同じネットワークに接続されます。
 
      ![Enable replication](./media/site-recovery-vmm-to-azure/test-failover4.png)
+
 4. **[ディスク]** で、レプリケートされる VM のオペレーティング システム ディスクとデータ ディスクを確認できます。
+
+#### <a name="managed-disks"></a>管理ディスク
+
+Azure への移行時に管理ディスクをマシンに接続する場合、**[コンピューティングとネットワーク]** > **[コンピューティングのプロパティ]** で、VM の [管理ディスクを使用] 設定を [はい] に設定することができます。 管理ディスクを使用すると、VM ディスクに関連付けられているストレージ アカウントを管理できるため、Azure IaaS VM のディスク管理が簡素化されます。 [管理ディスクの詳細をご覧ください](https://docs.microsoft.com/en-us/azure/storage/storage-managed-disks-overview)。
+
+   - 管理ディスクは、Azure へのフェールオーバー時にのみ作成され、仮想マシンに接続されます。 保護を有効にする際、オンプレミスのマシンからのデータは引き続きストレージ アカウントにレプリケートされます。
+   管理ディスクは、Resource Manager デプロイメント モデルでデプロイされた仮想マシンに対してのみ作成することができます。  
+
+  > [!NOTE]
+  > Azure からオンプレミス Hyper-V 環境へのフェールバックは、現時点では、管理ディスクを使用するマシンではサポートされていません。 このマシンを Azure に移行する場合にのみ、[管理ディスクを使用] を [はい] に設定してください。
+
+   - [管理ディスクを使用] を [はい] に設定すると、そのリソース グループ内で [管理ディスクを使用] が [はい] に設定されている可用性セットのみ選択できるようになります。 これは、管理ディスクを使用する仮想マシンが、必ず [管理ディスクを使用] プロパティが [はい] に設定された可用性セットの一部になるためです。 フェールオーバー時に管理ディスクを使用するかどうかの判断に基づいて、[管理ディスクを使用] プロパティが設定された可用性セットを作成するようにしてください。  同様に、[管理ディスクを使用] を [いいえ] に設定すると、そのリソース グループ内で [管理ディスクを使用] プロパティが [いいえ] に設定されている可用性セットのみ選択できるようになります。 [管理ディスクと可用性セットの詳細をご覧ください](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/manage-availability#use-managed-disks-for-vms-in-an-availability-set)。
+
+  > [!NOTE]
+  > レプリケーションに使用されるストレージ アカウントが、どこかの時点で Storage Service Encryption で暗号化されていた場合、フェールオーバー中の管理ディスクの作成は失敗します。 [管理ディスクを使用] を [いいえ] に設定してフェールオーバーを再試行できるほか、仮想マシンの保護を無効にしてから、Storage Service Encryption が有効になっていないストレージ アカウントで、任意の時点でその仮想マシンを保護することもできます。
+  > [Storage Service Encryption と管理ディスクの詳細をご覧ください](https://docs.microsoft.com/en-us/azure/storage/storage-managed-disks-overview#managed-disks-and-encryption)。
+
 
 ## <a name="test-the-deployment"></a>展開をテスト
 
@@ -371,7 +392,7 @@ Site Recovery が備えている Capacity Planner を使用して、ソース環
 6. フェールオーバー後の接続の準備が完了したら、Azure VM に接続できるようになります。
 7. 完了したら、復旧計画の **[Cleanup test failover (テスト フェールオーバーのクリーンアップ)]** をクリックします。 **[メモ]** を使用して、テスト フェールオーバーに関連する観察結果をすべて記録し、保存します。 これで、テスト フェールオーバー中に作成された仮想マシンが削除されます。
 
-詳しくは、[Azure へのテスト フェールオーバー](site-recovery-test-failover-to-azure.md)に関するドキュメントをご覧ください。
+詳しくは、[Azure へのテスト フェールオーバー](site-recovery-test-failover-to-azure.md)に関する記事をご覧ください。
 
 ## <a name="monitor-the-deployment"></a>デプロイの監視
 

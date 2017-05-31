@@ -1,6 +1,6 @@
 ---
-title: "Azure IoT Gateway SDK で物理デバイスを使用する | Microsoft Docs"
-description: "Texas Instruments SensorTag デバイスを使用して Raspberry Pi 3 デバイスで動作するゲートウェイを介して IoT Hub にデータを送信する方法。 ゲートウェイのビルドには Azure IoT Gateway SDK を使用します。"
+title: "Azure IoT Edge で物理デバイスを使用する | Microsoft Docs"
+description: "Texas Instruments SensorTag デバイスを使用して Raspberry Pi 3 デバイスで動作する IoT Edge ゲートウェイを介して IoT Hub にデータを送信する方法。 ゲートウェイのビルドには Azure IoT Edge を使用します。"
 services: iot-hub
 documentationcenter: 
 author: chipalost
@@ -14,16 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2017
 ms.author: andbuc
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 962092622e6bbfcfc2376d0885e6806be9cb5abf
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 6cf31f57da5d903efc0e522ca606957f09b28bd6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---
-# <a name="use-the-azure-iot-gateway-sdk-to-send-device-to-cloud-messages-with-a-physical-device-linux"></a>Azure IoT Gateway SDK を使用して物理デバイス (Linux) で D2C メッセージを送信する
+# <a name="use-azure-iot-edge-to-send-device-to-cloud-messages-with-a-physical-device-linux"></a>Azure IoT Edge を使用して物理デバイス (Linux) に D2C メッセージを送信する
 
-この [Bluetooth 低エネルギー サンプル][lnk-ble-samplecode]のチュートリアルでは、[Azure IoT Gateway SDK][lnk-sdk] を使用して次の処理を行う方法について説明します。
+この [Bluetooth 低エネルギー サンプル][lnk-ble-samplecode]のチュートリアルでは、[Azure IoT Edge][lnk-sdk] を使用して次の処理を行う方法について説明します。
 
 * 物理デバイスから IoT Hub に D2C テレメトリを転送する。
 * IoT Hub から物理デバイスにコマンドをルーティングする。
@@ -35,16 +36,16 @@ ms.lasthandoff: 03/31/2017
 
 ## <a name="architecture"></a>アーキテクチャ
 
-このチュートリアルでは、Raspbian Linux が動作する Raspberry Pi 3 で IoT Gateway をビルドして実行する方法を示します。 ゲートウェイのビルドには IoT Gateway SDK を使用します。 サンプルでは、温度データを収集するために Texas Instruments SensorTag Bluetooth Low Energy (BLE) デバイスを使用します。
+このチュートリアルでは、Raspbian Linux が動作する Raspberry Pi 3 で IoT Edge ゲートウェイをビルドして実行する方法を示します。 ゲートウェイのビルドには IoT Edge を使用します。 サンプルでは、温度データを収集するために Texas Instruments SensorTag Bluetooth Low Energy (BLE) デバイスを使用します。
 
-ゲートウェイを実行すると、次のような処理が行われます。
+IoT Edge ゲートウェイを実行すると、次のような処理が行われます。
 
 * Bluetooth Low Energy (BLE) プロトコルを使用して SensorTag デバイスに接続する。
 * HTTP プロトコルを使用して IoT Hub に接続する。
 * SensorTag デバイスから IoT Hub にテレメトリを転送する。
 * IoT Hub から SensorTag デバイスにコマンドをルーティングする。
 
-ゲートウェイには、次のモジュールが含まれています。
+ゲートウェイには、次の IoT Edge モジュールが含まれています。
 
 * *BLE モジュール* : BLE デバイスと接続し、デバイスから温度データを受信してデバイスにコマンドを送信します。
 * *BLE クラウド対デバイス モジュール*: クラウドから送信される JSON メッセージを *BLE モジュール*用の BLE 命令に変換します。
@@ -211,52 +212,52 @@ BLE モジュールは、BlueZ スタックを介して Bluetooth ハードウ�
     [CHG] Device A0:E6:F8:B5:F6:00 Connected: no
     ```
 
-これで BLE Gateway サンプルを Raspberry Pi 3 で実行する準備が整いました。
+これで IoT Edge の BLE サンプルを Raspberry Pi 3 で実行する準備が整いました。
 
-## <a name="run-the-ble-gateway-sample"></a>BLE Gateway サンプルの実行
+## <a name="run-the-iot-edge-ble-sample"></a>IoT Edge の BLE サンプルを実行する
 
-BLE サンプルを実行するには、次の 3 つのタスクを完了する必要があります。
+IoT Edge の BLE サンプルを実行するには、次の 3 つのタスクを完了する必要があります。
 
 * IoT Hub に 2 つのサンプル デバイスを構成する。
-* Raspberry Pi 3 デバイスで IoT Gateway SDK をビルドする。
+* IoT Edge を Raspberry Pi 3 デバイス上にビルドする。
 * Raspberry Pi 3 デバイスで BLE サンプルを構成して実行する。
 
-この記事の執筆時点では、IoT Gateway SDK でサポートされているのは、Linux で BLE モジュールを使用するゲートウェイのみです。
+この記事の執筆時点では、IoT Edge でサポートされているのは、Linux で BLE モジュールを使用するゲートウェイのみです。
 
 ### <a name="configure-two-sample-devices-in-your-iot-hub"></a>IoT Hub に 2 つのサンプル デバイスを構成する
 
 * Azure サブスクリプションで [IoT Hub を作成][lnk-create-hub]します。このチュートリアルを実行するには、Hub の名前が必要です。 アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
 * **SensorTag_01** という名前の 1 つのデバイスを IoT Hub に追加し、その ID とデバイス キーをメモしておきます。 [デバイス エクスプローラーまたは iothub-explorer][lnk-explorer-tools] ツールを使用すると、前の手順で作成した IoT Hub にこのデバイスを追加し、デバイスのキーを取得することができます。 このデバイスは、ゲートウェイの構成時に SensorTag デバイスにマップします。
 
-### <a name="build-the-azure-iot-gateway-sdk-on-your-raspberry-pi-3"></a>Raspberry Pi 3 デバイスで Azure IoT Gateway SDK をビルドする
+### <a name="build-azure-iot-edge-on-your-raspberry-pi-3"></a>Azure IoT Edge を Raspberry Pi 3 上にビルドする
 
-Azure IoT Gateway SDK の依存関係をインストールします。
+Azure IoT Edge の依存関係をインストールします。
 
 `sudo apt-get install cmake uuid-dev curl libcurl4-openssl-dev libssl-dev`
 
-次のコマンドを使用して、IoT Gateway SDK とそのすべてのサブモジュールをホーム ディレクトリに複製します。
+次のコマンドを使用して、IoT Edge とそのすべてのサブモジュールをホーム ディレクトリに複製します。
 
 `cd ~`
 
-`git clone --recursive https://github.com/Azure/azure-iot-gateway-sdk.git`
+`git clone --recursive https://github.com/Azure/iot-edge.git`
 
-`cd azure-iot-gateway-sdk`
+`cd iot-edge`
 
 `git submodule update --init --recursive`
 
-IoT Gateway SDK リポジトリの完全なコピーを Raspberry Pi 3 上に用意したら、SDK が含まれているフォルダーから次のコマンドを使用してビルドすることができます。
+IoT Edge レポジトリの完全なコピーを Raspberry Pi 3 上に用意したら、SDK が含まれているフォルダーから次のコマンドを使用してビルドすることができます。
 
 `./tools/build.sh`
 
 ### <a name="configure-and-run-the-ble-sample-on-your-raspberry-pi-3"></a>Raspberry Pi 3 で BLE サンプルを構成して実行する
 
-サンプルを起動して実行するには、ゲートウェイに関与しているモジュールをそれぞれ構成する必要があります。 この構成は JSON ファイル形式で指定し、5 個の関連モジュールすべてを構成することが必要です。 リポジトリ内には **gateway\_sample.json** という名前のサンプル JSON ファイルが用意されており、独自の構成ファイルを構築するための雛形として使用することができます。 このファイルは、IoT Gateway SDK リポジトリのローカル コピー内の **samples/ble_gateway/src** フォルダーにあります。
+サンプルを起動して実行するには、Edge ゲートウェイに関与しているモジュールをそれぞれ構成する必要があります。 この構成は JSON ファイル形式で指定し、5つの IoT Edge モジュールをすべて構成する必要があります。 リポジトリ内には **gateway\_sample.json** という名前のサンプル JSON ファイルが用意されており、独自の構成ファイルを構築するための雛形として使用することができます。 このファイルは、IoT Edge レポジトリのローカル コピー内の **samples/ble_gateway/src** フォルダーにあります。
 
-以降のセクションでは、この構成ファイルを BLE サンプル用に編集する方法を説明しており、Gateway SDK リポジトリが Raspberry Pi 3 の **/home/pi/azure-iot-gateway-sdk/** フォルダーにあることを前提としています。 リポジトリが他の場所にある場合は、パスを適宜修正してください。
+以降のセクションでは、この構成ファイルを BLE サンプル用に編集する方法を説明しており、IoT Edge レポジトリが Raspberry Pi 3 の **/home/pi/iot-edge/** フォルダーにあることを前提としています。 リポジトリが他の場所にある場合は、パスを適宜修正してください。
 
 #### <a name="logger-configuration"></a>ロガーの構成
 
-ゲートウェイ リポジトリが **/home/pi/azure-iot-gateway-sdk/** フォルダーにあると仮定し、ロガー モジュールを次のように構成します。
+ゲートウェイ レポジトリが **/home/pi/iot-edge/** フォルダーにあると仮定し、ロガー モジュールを次のように構成します。
 
 ```json
 {
@@ -411,7 +412,7 @@ SensorTag デバイスの MAC アドレスと、IoT Hub に追加した **Sensor
 
 #### <a name="routing-configuration"></a>ルーティング構成
 
-次の構成は、モジュール間の次のルーティングを保証します。
+次の構成は、IoT Edge モジュール間の次のルーティングを保証します。
 
 * **Logger** モジュールがすべてのメッセージを受信し、それらを記録します。
 * **SensorTag** モジュールが **mapping** モジュールと **BLE Printer** モジュールの両方にメッセージを送信します。
@@ -432,7 +433,7 @@ SensorTag デバイスの MAC アドレスと、IoT Hub に追加した **Sensor
  ]
 ```
 
-サンプルを実行するには、JSON 構成ファイルへのパスを **ble\_gateway** バイナリにパラメーターとして渡します。 次のコマンドは、**gateway_sample.json** 構成ファイルを使用することを前提としています。 このコマンドを Raspberry Pi の **azure-iot-gateway-sdk** フォルダーから実行します。
+サンプルを実行するには、JSON 構成ファイルへのパスを **ble\_gateway** バイナリにパラメーターとして渡します。 次のコマンドは、**gateway_sample.json** 構成ファイルを使用することを前提としています。 このコマンドを Raspberry Pi の **iot-edge** フォルダーから実行します。
 
 ```
 ./build/samples/ble_gateway/ble_gateway ./samples/ble_gateway/src/gateway_sample.json
@@ -440,7 +441,7 @@ SensorTag デバイスの MAC アドレスと、IoT Hub に追加した **Sensor
 
 このサンプルを実行する前に、SensorTag デバイスの小さいボタンを押して検出可能にすることが必要になる場合があります。
 
-サンプルを実行する際に[デバイス エクスプローラー](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer)または [iothub-explorer](https://github.com/Azure/iothub-explorer) ツールを使用すると、ゲートウェイによって SensorTag デバイスから転送されるメッセージを監視することができます。
+サンプルを実行する際に[デバイス エクスプローラー](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer)または [iothub-explorer](https://github.com/Azure/iothub-explorer) ツールを使用すると、IoT Edge ゲートウェイによって SensorTag デバイスから転送されるメッセージを監視することができます。
 
 ## <a name="send-cloud-to-device-messages"></a>C2D メッセージの送信
 
@@ -502,19 +503,19 @@ Texas Instruments の SensorTag デバイスを使用している場合、IoT Hu
 
 ## <a name="next-steps"></a>次のステップ
 
-IoT Gateway SDK に関する理解をさらに深め、実際にコード例に触れてみたいという場合は、以下の開発者向けチュートリアルとリソースをご覧ください。
+IoT Edge に関する理解をさらに深め、実際にコード例に触れてみたいという場合は、以下の開発者向けチュートリアルとリソースをご覧ください。
 
-* [Azure IoT Gateway SDK][lnk-sdk]
+* [Azure IoT Edge][lnk-sdk]
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
 * [IoT Hub 開発者ガイド][lnk-devguide]
 
 <!-- Links -->
-[lnk-ble-samplecode]: https://github.com/Azure/azure-iot-gateway-sdk/tree/master/samples/ble_gateway
+[lnk-ble-samplecode]: https://github.com/Azure/iot-edge/tree/master/samples/ble_gateway
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 [lnk-explorer-tools]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/manage_iot_hub.md
-[lnk-sdk]: https://github.com/Azure/azure-iot-gateway-sdk/
+[lnk-sdk]: https://github.com/Azure/iot-edge/
 [lnk-noobs]: https://www.raspberrypi.org/documentation/installation/noobs.md
 [lnk-raspbian]: https://www.raspberrypi.org/downloads/raspbian/
 

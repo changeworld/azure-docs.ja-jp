@@ -15,10 +15,11 @@ ms.workload: na
 ms.date: 02/22/2017
 ms.author: nberdy
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 37b2a82d7f6043224e68219fde753eef73078ffd
-ms.openlocfilehash: a736be397e07a1ea98819f6e016df8c0c7c637eb
-ms.lasthandoff: 03/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 82cec2c9545cd5ae33ec6d5d0e4c7ebf1a500e5b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -101,7 +102,7 @@ IoT Hub メトリックの概要については以上です。Azure IoT Hub の�
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
 * [IoT Hub 開発者ガイド][lnk-devguide]
-* [IoT Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
+* [Azure IoT Edge を使用したデバイスのシミュレーション][lnk-iotedge]
 
 <!-- Links and images -->
 [1]: media/iot-hub-metrics/enable-metrics-1.png
@@ -115,5 +116,5 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-monitor]: iot-hub-operations-monitoring.md
 
 [lnk-devguide]: iot-hub-devguide.md
-[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md
 

@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2017
+ms.date: 05/09/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: b9eb9c7f59d0936364bad788ed3b6635b2453739
-ms.openlocfilehash: 9bcad7aaf7f1bd8c51dbfa88381276a70a4def5c
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 0fa44799a0bd49d3d96a1916f32e6452405abce8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -24,7 +26,7 @@ ms.openlocfilehash: 9bcad7aaf7f1bd8c51dbfa88381276a70a4def5c
 
 テナント管理者は、ロール ベースのアクセス制御を使用して、通常よりも上位のアクセス許可を付与できるように、アクセス権を一時的に昇格させることができます。 テナント管理者は、必要に応じて、自分自身をユーザー アクセス管理者ロールに昇格させることができます。 このロールは、自分自身または他のユーザーに "/" スコープでロールを付与する権限をテナント管理者に与えます。
 
-この機能は、組織内に存在するすべてのサブスクリプションをテナント管理者が確認できるようにするために重要です。 さらに、オートメーション アプリケーション (請求と監査など) がすべてのサブスクリプションにアクセスし、請求や資産管理の観点から見た組織の正確な状況を提供できるようにします。  
+この機能は、組織内に存在するすべてのサブスクリプションをテナント管理者が確認できるようにするために重要です。 さらに、オートメーション アプリ (請求や監査など) からすべてのサブスクリプションにアクセスし、課金や資産管理に関する組織の状況を正確に提供することもできるようになります。  
 
 ## <a name="how-to-use-elevateaccess-to-give-tenant-access"></a>elevateAccess を使用してテナントへのアクセス権を付与する方法
 
@@ -106,9 +108,4 @@ ms.openlocfilehash: 9bcad7aaf7f1bd8c51dbfa88381276a70a4def5c
 - 「[REST API を使用したロールベースの Access Control の管理](role-based-access-control-manage-access-rest.md)」を参照する
 
 - Azure Portal で[アクセスの割り当ての管理](role-based-access-control-manage-assignments.md)を行う
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

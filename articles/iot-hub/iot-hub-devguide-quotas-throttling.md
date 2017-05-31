@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: e9171844e2fbac7a4e734be9144b30d1bbd0397f
-ms.lasthandoff: 03/30/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: f36ce029acebfccdfa84122a86ea3a642c048b8c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -76,6 +77,12 @@ IoT Hub は、さまざまな機能にその他の制限を適用します。
 
 > [!NOTE]
 > 現時点では、1 つの IoT ハブに接続できるデバイスの最大数は、500,000 です。 この制限を引き上げるには、[Microsoft サポート](https://azure.microsoft.com/en-us/support/options/)にお問い合わせください。
+
+## <a name="latency"></a>待機時間
+IoT Hub は、すべての操作の待機時間を短くするように努めています。 ただし、ネットワークの状態や他の予測できない要因により、最大待機時間を保証することはできません。ソリューションを設計する際は、IoT Hub 操作の最大待機時間を想定することは避けてください。 IoT Hub は、デバイスに最も近い Azure リージョンにプロビジョニングし、デバイスまたはデバイスに最も近いゲートウェイで Azure IoT Edge を使用して待機時間に依存する操作を実行することを検討してください。
+
+複数の IoT Hub ユニットは、前に述べたように調整に影響を与えますが、待機時間に関する追加のメリットや保証が提供されることはありません。
+操作の待機時間が予想外に増加した場合は、[Microsoft サポート](https://azure.microsoft.com/en-us/support/options/)にお問い合わせください。
 
 ## <a name="next-steps"></a>次のステップ
 この IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです。
