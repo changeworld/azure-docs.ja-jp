@@ -1,5 +1,5 @@
 ---
-title: "Azure Toolkit for IntelliJ を使用した Docker コンテナーの発行 | Microsoft Docs"
+title: "Azure Toolkit for IntelliJ を使用して Docker コンテナーを発行する | Microsoft Docs"
 description: "Azure Toolkit for IntelliJ を使用して、Web アプリを Docker コンテナーとして Microsoft Azure に発行する方法について説明します。"
 services: 
 documentationcenter: java
@@ -14,156 +14,175 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: f8ae15f4a5edb3cd84b5bb2302e1a5f709b57f82
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 37a9de5909cf4d6b4568e40de001861d083a85df
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---
 
-# <a name="how-to-publish-a-web-app-as-a-docker-container-using-the-azure-toolkit-for-intellij"></a>Azure Toolkit for IntelliJ を使用して、Web アプリを Docker コンテナーとして発行する方法
+# <a name="publish-a-web-app-as-a-docker-container-by-using-the-azure-toolkit-for-intellij"></a>Azure Toolkit for IntelliJ を使用して Web アプリを Docker コンテナーとして発行する
 
-Docker コンテナーは Web アプリケーションのデプロイに広く使用されている方法で、開発者はすべてのプロジェクト ファイルと依存関係をサーバーにデプロイするために 1 つのパッケージに統合できます。 Azure Toolkit for IntelliJ は、Microsoft Azure にデプロイするための "*Publish as Docker Container (Docker コンテナーとして発行)*" 機能を追加して、Java 開発者のためにこのプロセスを簡略化します。この記事では、アプリケーションを Docker コンテナーとして Azure に発行するために必要な手順を説明します。
+Docker コンテナーは、Web アプリケーションをデプロイするために広く使用されている方法です。 Docker コンテナーを使用すると、開発者は、すべてのプロジェクト ファイルと依存関係を、サーバーにデプロイするために 1 つのパッケージに統合できます。 Java 開発者のこのプロセスを簡略化するために、Azure Toolkit for IntelliJ には、Microsoft Azure にデプロイするための "*Docker コンテナーとして発行*" 機能が追加されました。 この記事では、アプリケーションを Docker コンテナーとして Azure に発行するために必要な手順を説明します。
 
 > [!NOTE]
 >
-> Docker について詳しくは、[Docker の Web サイト]をご覧ください。
+> Docker の詳細については、[Docker の Web サイト]を参照してください。
 >
 
 [!INCLUDE [azure-toolkit-for-intellij-prerequisites](../includes/azure-toolkit-for-intellij-prerequisites.md)]
 
-## <a name="publishing-your-web-app-to-azure-using-a-docker-container"></a>Docker コンテナーを使用して Web アプリを Azure に発行する
+## <a name="publish-your-web-app-to-azure-by-using-a-docker-container"></a>Docker コンテナーを使用して Web アプリを Azure に発行する
 
 > [!NOTE]
+> * Web アプリを発行するには、デプロイの準備ができたアーティファクトを作成する必要があります。 詳細については、「[アーティファクトの作成に関する追加情報](#artifacts)」セクションを参照してください。
 >
-> Web アプリを発行するには、デプロイの準備ができたアーティファクトを作成する必要があります。 詳しくは、この記事で後述する「[アーティファクトの作成に関する追加情報](#artifacts)」をご覧ください。
->
-> また、デプロイ ウィザードを少なくとも 1 回完了した後、このチュートリアルで指定する設定の大部分は、ウィザードをもう一度実行するときに既定値として使用されます。
+> * デプロイ ウィザードを少なくとも 1 回完了した後、ウィザードをもう一度実行するときには、設定の大部分が既定値として使用されます。
 >
 
 1. IntelliJ で、Web アプリ プロジェクトを開きます。
 
-1. 次のいずれかの方法を使用して Publish as Docker Container (Docker コンテナーとして発行) ウィザードを起動します。
+2. **Publish as Docker Container (Docker コンテナーとして発行)** ウィザードを起動するには、次のいずれかの操作を行います。
 
-   * **[プロジェクト]** ツール ウィンドウでプロジェクトを右クリックし、**[Azure]** をクリックしてから **[Publish as Docker Container (Docker コンテナーとして発行)]** をクリックします。 ![Publish as Docker Container (Docker コンテナーとして発行)][PUB01]
+   * **[プロジェクト]** ツール ウィンドウでプロジェクトを右クリックし、**[Azure]** をクリックしてから **[Publish as Docker Container]\(Docker コンテナーとして発行\)** をクリックします。
 
-   * IntelliJ ツール バーの **[Publish Group (発行グループ)]** メニューをクリックし、**[Publish as Docker Container (Docker コンテナーとして発行)]** をクリックします。 ![Publish as Docker Container (Docker コンテナーとして発行)][PUB02]
+      ![[Publish as Docker Container]\(Docker コンテナーとして発行\) コマンド][PUB01]
 
-1. **Deploy Docker Container on Azure (Azure に Docker コンテナーをデプロイ)** ウィザードが表示されると、次の図のようなダイアログ ボックスが表示されます。![Deploy Docker Container on Azure (Azure に Docker コンテナーをデプロイ)][PUB03]
+   * IntelliJ ツール バーの **[Publish Group]\(発行グループ\)** ボタンをクリックし、**[Publish as Docker Container]\(Docker コンテナーとして発行\)** をクリックします。
 
-   a. **[Docker image name (Docker イメージ名)]** テキスト ボックスの Docker ホストのテキスト ボックスに一意の名前を入力します。 (名前はウィザードによって自動的に作成されますが、変更することも選択できます。)
+      ![[Publish as Docker Container]\(Docker コンテナーとして発行\) コマンド][PUB02]  
+    **Deploy Docker Container on Azure (Azure に Docker コンテナーをデプロイ)** ウィザードが開かれます。
 
-   b. **[ホスト]** ウィンドウに、作成したすべての Docker ホストが表示されます。
-      * Docker ホストを作成していない場合、ダイアログ ボックスのこのセクションは空になります。
-      * Docker ホストを既に作成してある場合は、Web アプリを既存のホストにデプロイすることを選択できます。それ以外の場合、新しい Docker ホストを作成するには以下の手順に従います。
+   ![Deploy Docker Container on Azure (Azure に Docker コンテナーをデプロイ) ウィザード][PUB03]
 
-1. 新しい Docker ホストを作成するには、緑色のプラス("**+**") 記号をクリックします。これにより、**[Create Docker Host (Docker ホストの作成)]** ダイアログ ボックスが表示されます。
+3. **[Type an image name, select the artifact's path and check a Docker host to be used]\(イメージ名を入力し、アーティファクトのパスを選択し、使用する Docker ホストを確認します\)** ウィンドウで、以下の操作を行います。 
+
+   a. **[Docker image name]\(Docker イメージ名\)** ボックスに、Docker ホストの一意の名前を入力します  (ウィザードによって名前が自動的に作成されますが、変更することができます)。 
+
+   b. **[ホスト]** 領域に、作成済みのすべての Docker ホストが表示されます。 次のいずれかを実行します。 
+      * 既存の Docker ホストがある場合は、それに Web アプリをデプロイできます。
+      * Docker ホストを作成するには、緑色のプラス記号 (**+**) をクリックします。  
+       **[Create Docker Host]\(Docker ホストの作成\)** ダイアログ ボックスが表示されます。 
+
       ![Deploy Docker Container on Azure (Azure に Docker コンテナーをデプロイ) ウィザード][PUB04a]
 
-   a. Docker ホストの以下のオプションを指定します。 (ほとんどのオプションはウィザードによって自動的に生成されますが、オプションを変更してカスタマイズできます。)
+4. **[Configure the new virtual machine]\(新しい仮想マシンの構成\)** ウィンドウで、Docker ホストについての以下の情報を指定します  (ほとんどの情報はウィザードによって自動的に生成されますが、どの情報も変更することができます)。 
 
-      * **[名前]**: Docker ホストの一意の名前です。 (これは前に指定した Docker イメージの名前と同じではありません。)
-
-      * **[サブスクリプション]**: ホストに使用する Azure サブスクリプションを指定します。
+   a. **[名前]** ボックスに、Docker ホストの一意の名前を入力します  (これは前に指定した Docker イメージの名前と同じではありません)。 
+    
+   b. **[サブスクリプション]** ボックスで、ホストのために使用する Azure サブスクリプションを入力します。 
       
-      * **[地域]**: ホストが配置される地理的なリージョンを指定します。
+   c. **[リージョン]** ボックスで、ホストが配置される地理的なリージョンを入力します。
       
-      * **[OS and Size (OS とサイズ)]** タブ:
-         * **[Host OS (ホスト OS)]**: ホストを格納する仮想マシンのオペレーティング システムを指定します。
-         * **[サイズ]**: ホストの仮想マシン サイズを指定します。
+   d. **[OS and Size]\(OS とサイズ\)** タブで、以下の操作を行います。      
+      * **[Host OS]\(ホスト OS\)**: ホストがある仮想マシンのオペレーティング システムを入力します。 
+      * **[サイズ]**: ホストの仮想マシン サイズを入力します。   
+       
+   e. **[リソース グループ]** タブで、以下のいずれかを選択します。      
+      * **[新しいリソース グループ]**: ホストのリソース グループを作成します。
+      * **[既存のリソース グループ]**: Azure アカウントの既存のリソース グループを指定します。 
+       
+   f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[ネットワーク]** タブで、以下のいずれかを選択します。      
+      * **[新しい仮想ネットワーク]**: ホストの仮想ネットワークを作成します。
+      * **[Existing virtual network]\(既存の仮想ネットワーク\)**: Azure アカウントの既存の仮想ネットワークを指定します。 
+       
+   g. **[ストレージ]** タブで、以下のいずれかを選択します。      
+      * **[新規ストレージ アカウント]**: ホストのストレージ アカウントを作成します。
+      * **[Existing storage account]\(既存のストレージ アカウント\)**: Azure アカウントの既存のストレージ アカウントを指定します。
+       
+5. **[次へ]** をクリックします。  
+     **[Configure log in credentials and port settings]\(ログイン資格情報とポート設定の構成\)** ウィンドウが開きます。
 
-      * **[リソース グループ]** タブ:
-         * **[新しいリソース グループ]**: ホストの新しいリソース グループを作成できます。
-         * **[既存のリソース グループ]**: Azure アカウントの既存のリソース グループを指定できます。
+      ![[Configure log in credentials and port settings]\(ログイン資格情報とポート設定の構成\) ウィンドウ][PUB05]
 
-      * **[ネットワーク]** タブ:
-         * **[新しい仮想ネットワーク]**: ホストの新しい仮想ネットワークを作成できます。
-         * **[Existing virtual network (既存の仮想ネットワーク)]**: Azure アカウントの既存の仮想ネットワークを指定できます。
+6. 次のいずれかのオプションを選択します。
 
-      * **[ストレージ]** タブ:
-         * **[新規ストレージ アカウント]**: ホストの新しいストレージ アカウントを作成できます。
-         * **[Existing storage account (既存のストレージ アカウント)]**: Azure アカウントの既存のストレージ アカウントを指定できます。
+      * **[Import credentials from Azure Key Vault]\(Azure Key Vault から資格情報をインポート\)**: 以前に保存した、Azure サブスクリプションに格納されている資格情報のセットを指定します。
 
-   b. 上記のオプションを指定したら、**[次へ]** をクリックします。
+          > [!NOTE]
+          > 特定のアカウントまたはサービス プリンシパルで作成された Azure Key Vault は、サブスクリプションを共有する別のアカウントまたはサービス プリンシパルから自動的にアクセスできるようにはなりません。 別のアカウントまたはサービス プリンシパルが Key Vault を使用できるようにするには、Azure Portal を使用して、アカウントまたはサービス プリンシパルを追加する必要があります。
 
-   c. Docker ホストの仮想マシンのログインについて次のいずれかのオプションを選びます。   ![Create Docker Host (Docker ホストの作成)][PUB05]
+      * **[New log in credentials]\(新しいログイン資格情報\)**: ログイン資格情報の新しいセットを作成します。 このオプションを選択する場合は、次の操作を行います。
 
-      * **[Import credentials from Azure Key Vault (Azure Key Vault から資格情報をインポート)]**: 以前に保存した、Azure サブスクリプションに格納されている資格情報のセットを指定できます。
+        a. **[VM Credentials]\(VM 資格情報\)** タブで、Docker ホストの仮想マシン ログイン資格情報について、以下の情報を指定します。     * **[ユーザー名]**: 仮想マシン ログイン資格情報のユーザー名を入力します。
+             * **[パスワード]** および **[確認]**: 仮想マシン ログイン資格情報のパスワードを入力します。
+             * **[SSH]**: Docker ホストの Secure Shell (SSH) 設定を入力します。 以下のいずれかのオプションを選択できます。        * **[なし]**: 仮想マシンが SSH 接続を許可しないことを指定します。
+                * **[自動生成]**: SSH 経由で接続するために必要な設定を自動的に作成します。
+                * **[Import from directory]\(ディレクトリからインポート\)**: 以前に保存した SSH 設定のセットがあるディレクトリを指定できます。 ディレクトリには、次の 2 つのファイルが含まれている必要があります。           * *id_rsa*: ユーザーの RSA ID が含まれています。
+                   * *id_rsa.pub*: 認証に使用される RSA 公開キーが含まれています。
+            
+        b. **[Docker Daemon Access]\(Docker デーモン アクセス\)** タブで、以下の情報を指定します。
 
-      > [!NOTE]
-      > 特定のアカウントまたはサービス プリンシパルで作成された Azure Key Vault は、同じサブスクリプションを共有する別のアカウントまたはサービス プリンシパルによって自動的にはアクセスできません。 別のアカウントまたはサービス プリンシパルが Key Vault を使用するためには、Azure Portal を使用して、アカウントまたはサービス プリンシパルを追加する必要があります。
+          ![Docker ホストを作成する][PUB06]
+    
+             * **Docker Daemon port**: Enter the unique TCP port for your Docker host.
+             * **TLS Security**: Enter the Transport Layer Security settings for your Docker host. You can choose from the following options:
+                * **None**: Specifies that your virtual machine does not allow TLS connections.
+                * **Auto-generate**: Automatically creates the requisite settings for connecting via TLS.
+                * **Import from directory**: Specifies a directory that contains a set of previously saved TLS settings. The directory must contain the following six files: 
+                   * *ca.pem* and *ca-key.pem*: Contain the certificate and public key for the TLS Certificate Authority.
+                   * *cert.pem* and *key.pem*: Contain client certificate and public key which will be used for TLS authentication.
+                   * *server.pem* and *server-key.pem*: Contain the client certificate and public key that is used for TLS authentication.
 
-      * **[New log in credentials (新しいログイン資格情報)]**: ログイン資格情報の新しいセットを作成できます。その場合は、**[VM Credentials (VM 資格情報)]** タブで以下のオプションを指定する必要があります。
-         * **[ユーザー名]**: 仮想マシン ログインのユーザー名を指定します。
-         * **[パスワード]** と **[確認]**: 仮想マシン ログインのパスワードを指定します。
-         * **[SSH]**: Docker ホストの Secure Shell (SSH) 設定を指定します。以下のオプションから選択できます。
-            * **[なし]**: 仮想マシンが SSH 接続を許可しないことを指定します。
-            * **[自動生成]**: このオプションは、SSH 経由で接続するために必要な設定を自動的に作成します。
-            * **[Import from directory (ディレクトリからインポート)]**: 以前に保存した SSH 設定のセットを含むディレクトリを指定できます。 具体的には、ディレクトリには次の 2 つのファイルが含まれている必要があります。
-               * *id_rsa*: このファイルには、ユーザーの RSA ID が含まれています。
-               * *id_rsa.pub*: このファイルには、認証に使用される RSA 公開キーが含まれています。
-        
-      * **[Docker Daemon Access (Docker デーモン アクセス)]** タブで、以下のオプションを指定します。![Create Docker Host (Docker ホストの作成)][PUB06]
+7. 必要な情報を入力したら、**[完了]** をクリックします。  
+    **Deploy Docker Container on Azure (Azure に Docker コンテナーをデプロイ)** ウィザードが再び表示されます。
 
-         * **[Docker Daemon port (Docker デーモン ポート)]**: Docker ホストの固有の TCP ポートを指定します。
-         * **[TLS Security (TLS セキュリティ)]**: Docker ホストのトランスポート層セキュリティ設定を指定します。以下のオプションから選択できます。
-            * **[なし]**: 仮想マシンが TLS 接続を許可しないことを指定します。
-            * **[自動生成]**: このオプションは、TLS 経由で接続するために必要な設定を自動的に作成します。
-            * **[Import from directory (ディレクトリからインポート)]**: 以前に保存した TLS 設定のセットを含むディレクトリを指定できます。 具体的には、ディレクトリには次の 6 つのファイルが含まれている必要があります。
-               * *ca.pem* と *ca key.pem*: これらのファイルには TLS 証明機関の証明書と公開キーが含まれています。
-               * *cert.pem* と *key.pem*: これらのファイルには、TLS 認証に使用されるクライアント証明書と公開キーが含まれています。
-               * *server.pem* と *server key.pem*: これらのファイルには、ホストのサーバー証明書と公開キーが含まれています。
-
-   d. 上記のオプションをすべて入力したら、**[完了]** をクリックします。
-
-1. **Deploy Docker Container on Azure (Azure に Docker コンテナーをデプロイ)** ウィザードが再表示されたら、**[次へ]** をクリックします。
    ![Deploy Docker Container on Azure (Azure に Docker コンテナーをデプロイ) ウィザード][PUB07]
 
-1. ウィザードの最後のページで、以下のオプションを指定します。
+8. **[次へ]** をクリックします。  
+    **[Configure the Docker container to be created]\(作成される Docker コンテナーの構成\)** ウィンドウが開きます。
 
-   * **[Docker container name (Docker コンテナー名)]**: Docker コンテナーの一意名です。
+   ![[Configure the Docker container to be created]\(作成される Docker コンテナーの構成\) ウィンドウ][PUB08]
 
-   * 次のいずれかの Docker イメージを選びます。
+9. **[Configure the Docker container to be created]\(作成される Docker コンテナーの構成\)** ウィンドウで、以下の情報を指定します。 
 
-      * **[Predefined Docker image (定義済みの Docker イメージ)]**: Azure の既存の Docker イメージを指定できます。
+   a. **[Docker container name]\(Docker コンテナー名\)** ボックスで、Docker コンテナーの一意の名前を入力します。
 
-      > [!NOTE]
-      > このドロップダウン メニュー内の Docker イメージの一覧は、アーティファクトが自動的にデプロイされるように Azure Toolkit が修正プログラムに対して構成されている複数のイメージから構成されます。
+   b. 次のいずれかの Docker イメージを選びます。 
 
-      * **[Custom Dockerfile (カスタム Dockerfile)]**: ローカル コンピューターの、以前に保存した Dockerfile を指定できます。
+      * **[Predefined Docker image]\(定義済みの Docker イメージ\)**: Azure から既存の Docker イメージを指定します。 
 
-      > [!NOTE]
-      > これは、独自の Dockerfile をデプロイする開発者向けのより高度な機能です。 ただし、Dockerfile が正しく構築されていることを確認するのは、このオプションを使用する開発者の責任です。 Azure Toolkit ではカスタム Dockerfile 内のコンテンツを検証しないため、Dockerfile に問題がある場合はデプロイが失敗します。 さらに、Azure Toolkit はカスタム Dockerfile に Web アプリのアーティファクトが含まれることを期待し、HTTP 接続を開こうとします。開発者が別の種類のアーティファクトを発行する場合、デプロイ後に無害なエラーが表示されることがあります。
+        > [!NOTE]
+        > このボックス内の Docker イメージの一覧は、アーティファクトが自動的にデプロイされるように Azure Toolkit が修正する複数のイメージで構成されています。 
 
-   * **[ポートの設定]**: Docker コンテナーの一意の TCP ポートのバインドを指定します。
-   ![Deploy Docker Container on Azure (Azure に Docker コンテナーをデプロイ) ウィザード][PUB08]
+      * **[Custom Dockerfile]\(カスタム Dockerfile\)**: ローカル コンピューターから、以前に保存した Dockerfile を指定します。
 
-1. 上記の手順をすべて完了したら、**[完了]** をクリックします。
+        > [!NOTE]
+        > これは、独自の Dockerfile をデプロイする開発者向けのより高度な機能です。 ただし、Dockerfile が正しく構築されていることを確認するのは、このオプションを使用する開発者の責任です。 Azure Toolkit はカスタム Dockerfile の内容を検証しないため、Dockerfile に問題がある場合はデプロイが失敗します。 また、Azure Toolkit はカスタム Dockerfile に Web アプリ アーティファクトが含まれていると想定しているため、HTTP 接続を開こうとします。 開発者が別の種類のアーティファクトを発行すると、デプロイ後に無害なエラーが表示されることがあります。
 
-Azure Toolkit により、Docker コンテナーでの Azure への Web アプリのデプロイが開始します。IntelliJ をバック グラウンドでデプロイするように構成していない限り、デプロイの進行状況を示すダイアログ ボックスが表示されます。 
-![デプロイの進行状況][PUB09]
+   c. **[ポートの設定]** ボックスで、Docker コンテナーの一意の TCP ポート バインドを入力します。 
+
+10. 上記の手順を完了したら、**[完了]** をクリックします。 
+
+Azure Toolkit により、Docker コンテナーでの Azure への Web アプリのデプロイが開始されます。 バックグラウンドでデプロイされるように IntelliJ を構成していない場合は、**[Deploying to Azure]\(Azure にデプロイ中\)** 進行状況バーが表示されます。 
+
+![デプロイの進行状況バー][PUB09]
 
 <a name="artifacts"></a>
 ## <a name="additional-information-about-creating-artifacts"></a>アーティファクトの作成に関する追加情報
 
-デプロイの準備ができたアーティファクトを作成するには、次の手順を使用します。
+デプロイの準備ができたアーティファクトを作成するには、次の操作を行います。
 
 1. IntelliJ で、Web アプリ プロジェクトを開きます。
 
-1. **[ファイル]** をクリックし、**[プロジェクトの構造]** をクリックします。
-   ![[プロジェクトの構造] メニュー][ART01]
+2. **[ファイル]** をクリックし、**[プロジェクトの構造]** をクリックします。
 
-1. 緑色のプラス ("**+**") 記号をクリックしてアーティファクトを追加し、**[Web アプリケーション: アーティファクト]** をクリックします。
-   ![アーティファクトの追加][ART02]
+   ![[プロジェクトの構造] コマンド][ART01]
 
-1. ".war" 拡張子を追加しないようにしてアーティファクトに名前を付け、**[OK]** をクリックします。
-   ![アーティファクトのプロパティ][ART03]
+3. アーティファクトを追加するには、緑のプラス記号 (**+**) をクリックし、**[Web Application: Archive]\(Web アプリケーション: アーカイブ\)** をクリックします。
 
-IntelliJ のアーティファクトの作成について詳しくは、JetBrains の Web サイトの「[Configuring Artifacts (アーティファクトの構成)]」をご覧ください。
+   ![[Web Application: Archive]\(Web アプリケーション: アーカイブ\) コマンド][ART02]
 
-## <a name="see-also"></a>関連項目
-Azure Toolkits for Java IDE の詳細については、次のリンクをご覧ください。
+4. **[名前]** ボックスで、アーティファクトの名前を入力し (*.war* 拡張子は含めないでください)、**[OK]** をクリックします。
+
+   ![アーティファクトの [名前] ボックス][ART03]
+
+IntelliJ でのアーティファクトの作成の詳細については、JetBrains Web サイトの「[Configuring Artifacts (アーティファクトの構成)]」を参照してください。
+
+## <a name="next-steps"></a>次のステップ
+Azure Toolkits for Java IDE の詳細については、以下のリソースを参照してください。
 
 * [Azure Toolkit for Eclipse]
   * [Azure Toolkit for Eclipse の新機能]
@@ -178,7 +197,7 @@ Azure Toolkits for Java IDE の詳細については、次のリンクをご覧�
 
 Java での Azure の使用の詳細については、 [Azure Java デベロッパー センター] と[Java Tools for Visual Studio Team Services] を参照してください。
 
-Docker の他のリソースについては、公式の [Docker の Web サイト]をご覧ください。
+Docker の他のリソースについては、公式の [Docker の Web サイト]を参照してください。
 
 <!-- URL List -->
 

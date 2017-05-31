@@ -3,7 +3,7 @@ title: "Log Analytics での Azure サービスのログとメトリックの収
 description: "Log Analytics にログとメトリックが書き込まれるように Azure のリソースの診断を構成します。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: 84105740-3697-4109-bc59-2452c1131bfe
@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
-ms.author: banders
+ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: 350aa79cf1f41084c33e16b6fcf2ada971b22626
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/27/2017
 
 

@@ -10,7 +10,6 @@
 ## [クラスターのデプロイ - ポータル](container-service-deployment.md)
 ## [クラスターのデプロイ - Azure CLI](container-service-create-acs-cluster-cli.md)
 ## [Kubernetes と Jenkins を使用した CI/CD](container-service-kubernetes-jenkins.md)
-## [DC/OS と VSTS を使用した CI/CD](container-service-setup-ci-cd.md)
 ## [Docker Swarm と VSTS を使用した CI/CD](container-service-docker-swarm-setup-ci-cd.md)
 
 # 概念
@@ -44,6 +43,7 @@
 #### [OMS で監視する](container-service-kubernetes-oms.md)
 #### [Datadog で監視する](container-service-kubernetes-datadog.md)
 #### [Sysdig で監視する](container-service-kubernetes-sysdig.md)
+#### [CoScale で監視する](container-service-kubernetes-coscale.md)
 ## Docker Swarm による管理
 ### [Docker および Docker Compose](container-service-docker-swarm.md)
 

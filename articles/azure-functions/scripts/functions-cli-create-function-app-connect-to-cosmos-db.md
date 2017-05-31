@@ -1,6 +1,6 @@
 ---
-title: "Azure DocumentDB に接続する Azure 関数の作成 | Microsoft Docs"
-description: "Azure CLI スクリプトのサンプル - Azure DocumentDB に接続する Azure 関数の作成"
+title: "Azure Cosmos DB に接続する Azure 関数の作成 | Microsoft Docs"
+description: "Azure CLI スクリプトのサンプル - Azure Cosmos DB に接続する Azure 関数の作成"
 services: functions
 documentationcenter: functions
 author: rachelappel
@@ -10,19 +10,18 @@ tags: functions
 ms.assetid: 
 ms.service: functions
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 04/20/2017
 ms.author: rachelap
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 46e0fe827b7b34010d14a31ff377d4854ec62f6e
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: dbe02fbc71f04c67ab03a84845bf8666333ce621
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/15/2017
 
 ---
-
 # <a name="create-an-azure-function-that-connects-to-an-azure-cosmos-db"></a>Azure Cosmos DB に接続する Azure 関数の作成
 
 このサンプル スクリプトでは、Azure Function App を作成し、Azure Cosmos DB データベースに接続します。
@@ -31,9 +30,9 @@ ms.lasthandoff: 05/10/2017
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-サンプル アプリの作成
+このサンプルでは、Azure Function App を作成し、Cosmos DB エンドポイントとアクセス キーをアプリ設定に追加します。
 
-[!code-azurecli[main](../../../cli_scripts/azure-functions/create-function-app-connect-to-cosmos-db/create-function-app-connect-to-cosmos-db.sh "Azure Cosmos DB に接続する Azure 関数の作成")]
+[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-connect-to-cosmos-db/create-function-app-connect-to-cosmos-db.sh "Azure Cosmos DB に接続する Azure 関数の作成")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 

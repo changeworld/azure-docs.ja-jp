@@ -16,10 +16,11 @@ ms.topic: article
 ms.date: 03/17/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: ce4c94a2c8983862a311d296e1a95ecabb4c9f61
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 3d915f430e323f2b2ad55773f2028a3d7dbf2bcf
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -43,7 +44,7 @@ ms.lasthandoff: 03/31/2017
 * 名前付け規則を使用してリソース グループのセットを作成します。 Azure PowerShell またはポータルを使用できます。
 
 ## <a name="resource-groups"></a>リソース グループ
-Azure では、ストレージ アカウント、仮想ネットワーク、仮想マシン (VM) などの関連リソースを論理的にグループ化し、単一のエンティティとしてデプロイ、管理、保守します。 このアプローチにより、管理上の観点からすべての関連リソースをまとめた状態でアプリケーションをデプロイすること、あるいは他者にリソースのグループへのアクセス権を付与することが容易になります。 リソース グループの詳細については、「[Azure Resource Manager の概要](../../azure-resource-manager/resource-group-overview.md)」を参照してください。
+Azure では、ストレージ アカウント、仮想ネットワーク、仮想マシン (VM) などの関連リソースを論理的にグループ化し、単一のエンティティとしてデプロイ、管理、保守します。 このアプローチにより、管理上の観点からすべての関連リソースをまとめた状態でアプリケーションをデプロイすること、あるいは他者にリソースのグループへのアクセス権を付与することが容易になります。 リソース グループ名は最大 90 文字の長さまで指定できます。 リソース グループの詳細については、「[Azure Resource Manager の概要](../../azure-resource-manager/resource-group-overview.md)」を参照してください。
 
 リソース グループの機能で重要なのは、テンプレートを使用して環境を構築できることです。 テンプレートは、ストレージ、ネットワーク、コンピューティング リソースを宣言する JSON ファイルにすぎません。 適用する関連カスタム スクリプトや構成を定義することもできます。 このテンプレートを使用して、一貫性があり、再現可能なアプリケーションのデプロイを作成します。 このアプローチにより、開発環境を構築し、同じテンプレートを使用して運用環境のデプロイを作成できます。また、その逆も可能です。 テンプレートの使用に関する理解を深めるには、[テンプレートのチュートリアル](../../azure-resource-manager/resource-manager-template-walkthrough.md)に関するページをご覧ください。このページでは、テンプレートの構築の手順について説明しています。
 

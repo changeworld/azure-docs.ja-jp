@@ -141,7 +141,7 @@ github から DocumentDB API アプリを複製し、接続文字列を設定し
 ## <a name="run-the-app"></a>アプリの実行
 1. Visual Studio の**ソリューション エクスプローラー**でプロジェクトを右クリックし、現在の Python 環境を選択して、右クリックします。
 
-2. [Install Python Package] (Python パッケージのインストール) を選択し、「**pydocumentdb**」と入力します
+2. [Install Python Package] \(Python パッケージのインストール) を選択し、「**pydocumentdb**」と入力します
 
 3. F5 キーを押してアプリケーションを実行します。 ブラウザーにアプリが表示されます。 
 

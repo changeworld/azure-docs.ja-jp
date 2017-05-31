@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: d579b55f07a2e710624b10fe77c17f449b09ab42
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 5a0092481cb461f26ba463f4c9bbaf114ecb1248
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -52,6 +53,9 @@ Secure Shell (SSH) を使用して、仮想マシンにログオンするため�
 
 ## <a name="are-there-any-computer-name-requirements"></a>コンピューター名の要件はありますか。
 はい。 コンピューター名は最大 64 文字の長さまで指定できます。 リソースの名前付けの詳細については、「 [インフラストラクチャの名前付けガイドライン](infrastructure-naming-guidelines.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 」を参照してください。
+
+## <a name="are-there-any-resource-group-name-requirements"></a>リソース グループの名前に関する要件はありますか。
+はい。 リソース グループ名は最大 90 文字の長さまで指定できます。 リソース グループの詳細については、[インフラストラクチャ リソース グループ ガイドライン](infrastructure-resource-groups-guidelines.md)を参照してください。
 
 ## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>VM を作成する際のユーザー名の要件は何ですか。
 ユーザー名は 1 ～ 64 文字の長さにする必要があります。

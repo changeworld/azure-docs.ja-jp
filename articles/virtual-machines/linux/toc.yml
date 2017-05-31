@@ -57,7 +57,8 @@
     href: azure-vm-network-overview.md
   - name: VM スケール セット
     href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md
-  - name: インスタンス メタデータ サービス 
+  - name: インスタンス メタデータ サービス
+ 
     href: ../virtual-machines-instancemetadataservice-overview.md
   - name: コンテナー
     href: containers.md
@@ -296,6 +297,8 @@
       href: extensions-customscript.md
     - name: OMS エージェント拡張機能
       href: extensions-oms.md
+    - name: Linux Diagnostic Extension
+      href: diagnostic-extension.md
   - name: アプリケーションの実行
     items:
     - name: Cloud Foundry
@@ -353,19 +356,24 @@
       href: migration-classic-resource-manager-faq.md
   - name: トラブルシューティング
     items:
-    - name: SSH 接続のトラブルシューティング
+    - name: SSH 接続
       href: troubleshoot-ssh-connection.md
       items:
       - name: 詳細なトラブルシューティングの手順
         href: detailed-troubleshoot-ssh-connection.md
-    - name: アプリケーションへのアクセスのトラブルシューティングを行う
+    - name: ブート診断
+ 
+      href: boot-diagnostics.md
+    - name: アプリケーションへのアクセス
       href: troubleshoot-app-connection.md
-    - name: 割り当てエラーのトラブルシューティングを行う
+    - name: 割り当ての失敗
       href: allocation-failure.md
-    - name: デプロイに関する問題のトラブルシューティング
+    - name: デプロイの問題
       href: troubleshoot-deployment-new-vm.md
     - name: 新しい Azure ノードへの VM の再デプロイ
       href: redeploy-to-new-node.md
+    - name: 一般的なエラー メッセージ
+      href: error-messages.md
     - name: トラブルシューティングのための仮想ハード ディスクの接続
       items:
       - name: Azure CLI

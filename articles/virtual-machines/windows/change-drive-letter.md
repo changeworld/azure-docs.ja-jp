@@ -13,12 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 05/11/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: e3c97fdc9d4c69e2d67744798bc0b47d21b08ddf
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: abe380b8cb5988479197353282ef76442ee75930
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -29,12 +30,10 @@ D ドライブを使用してデータを格納する必要があるアプリケ
 
 Azure が一時ディスクを使用する方法については、 [Microsoft Azure Virtual Machines の一時ドライブの概要](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
 
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
-
 ## <a name="attach-the-data-disk"></a>データ ディスクのアタッチ
 最初に、仮想マシンにデータ ディスクをアタッチする必要があります。 
 
-* ポータルの使用方法については、「[Azure ポータルでデータ ディスクを接続する方法](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+* ポータルの使用方法については、「[How to attach a managed data disk in the Azure portal](attach-managed-disk-portal.md)」(Azure ポータルで管理対象データ ディスクを接続する方法) を参照してください。
 * クラシック ポータルの使用方法については、[データ ディスクを Windows 仮想マシンにアタッチする方法](classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関するページを参照してください。 
 
 ## <a name="temporarily-move-pagefilesys-to-c-drive"></a>一時的に pagefile.sys を C ドライブに移動します。
@@ -69,6 +68,6 @@ Azure が一時ディスクを使用する方法については、 [Microsoft Az
 9. 仮想マシンを再起動します。
 
 ## <a name="next-steps"></a>次のステップ
-* [追加のデータ ディスクをアタッチする](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ことで、仮想マシンに使用できる記憶域を増やすことができます。
+* [追加のデータ ディスクをアタッチする](attach-managed-disk-portal.md)ことで、仮想マシンに使用できる記憶域を増やすことができます。
 
 

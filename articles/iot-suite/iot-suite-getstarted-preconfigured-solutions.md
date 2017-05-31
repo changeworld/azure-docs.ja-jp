@@ -13,17 +13,18 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/15/2017
+ms.date: 05/15/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: e68815c2dafc596c3560ad3fcb2a7bf96d29182b
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 2364ab79ec4091d41e4d340e13033181df05b507
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/15/2017
 
 
 ---
-# <a name="tutorial-get-started-with-the-preconfigured-solutions"></a>チュートリアル: 事前構成済みソリューションの使用
-## <a name="introduction"></a>はじめに
+# <a name="get-started-with-the-preconfigured-solutions"></a>事前に構成されたソリューションを使ってみる
+
 Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-solutions]は、さまざまな Azure IoT サービスを組み合わせて、IoT のビジネス シナリオを満たすエンド ツー エンド ソリューションを提供します。 " *リモート監視* " は、対象のデバイスに接続して監視する事前構成済みソリューションです。 このソリューションを使用して、対象デバイスから流れてくるデータのストリームを分析し、そのデータのストリームに対してプロセスから自動的に応答が得られるようにすることで、ビジネスの成果を高めることができます。
 
 このチュートリアルでは、リモート監視の事前構成済みソリューションをプロビジョニングする方法について説明します。 また、事前構成済みソリューションの基本機能についても詳しく説明します。 こうした機能の多くには、事前構成済みソリューションの一部としてデプロイされるソリューション *ダッシュボード*からアクセスできます。
@@ -34,8 +35,6 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 
 > [!NOTE]
 > アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、[Azure の無料試用版サイト][lnk_free_trial]をご覧ください。
-> 
-> 
 
 [!INCLUDE [iot-suite-provision-remote-monitoring](../../includes/iot-suite-provision-remote-monitoring.md)]
 
@@ -337,7 +336,7 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 
 ## <a name="behind-the-scenes"></a>バックグラウンド処理
 
-事前構成済みソリューションをデプロイすると、デプロイ プロセスにより、選択した Azure サブスクリプションに複数のリソースが作成されます。 これらのリソースを [Azure ポータル][lnk-portal]で表示できます。 デプロイ プロセスにより、事前構成済みソリューション用に選択した名前に基づいた名前で、 **リソース グループ** が作成されます。
+事前構成済みソリューションをデプロイすると、デプロイ プロセスにより、選択した Azure サブスクリプションに複数のリソースが作成されます。 これらのリソースを [Azure Portal][lnk-portal] で表示できます。 デプロイ プロセスにより、事前構成済みソリューション用に選択した名前に基づいた名前で、 **リソース グループ** が作成されます。
 
 ![Preconfigured solution in the Azure portal][img-portal]
 

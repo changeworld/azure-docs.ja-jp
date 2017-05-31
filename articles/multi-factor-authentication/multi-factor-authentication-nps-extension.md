@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/23/2017
+ms.date: 05/23/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
@@ -108,7 +108,7 @@ NPS 用にサーバーを指定したので、VPN ソリューションからの
 
 テスト アカウントを開始するには、次の手順を使用します。
 1. [アカウントの MFA を有効にします](multi-factor-authentication-get-started-user-states.md)。
-2. Https://portal.azure.com などの Azure AD 認証を開始する任意の Web サイトに移動します。
+2. https://portal.azure.com などの Azure AD 認証を開始する任意の Web サイトに移動します。
 3. [2 段階認証に登録します](./end-user/multi-factor-authentication-end-user-first-time.md)。
 
 NPS 拡張機能を使って認証するには、この手順に従って登録しておく必要もあります。

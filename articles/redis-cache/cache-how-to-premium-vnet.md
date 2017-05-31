@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 05/11/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: cf3c1a3c669e0da810c32939492cb262e76492c7
-ms.lasthandoff: 04/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 945da7ce2ab5f2d479d96a6ed2896a0ba7e0747e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -90,20 +91,51 @@ VNet の使用時に Azure Redis Cache インスタンスに接続するには�
 * [VNET でキャッシュをホストしている場合、キャッシュ機能はすべて動作しますか](#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
 
 ## <a name="what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets"></a>Azure Redis Cache と VNet の誤った構成に関してよく見られる問題を教えてください
-Azure Redis Cache が VNet でホストされている場合は、次の表にあるポートが使用されます。 これらのポートがブロックされている場合は、キャッシュが正しく機能しない可能性があります。 VNet で Azure Redis Cache を使用する場合、構成の誤りに関する最も一般的な問題は、これらのポートのうち 1 つ以上がブロックされていることです。
+Azure Redis Cache が VNet でホストされている場合は、次の表にあるポートが使用されます。 
+
+>[!IMPORTANT]
+>次の表のポートがブロックされている場合、キャッシュが正常に動作しない可能性があります。 VNet で Azure Redis Cache を使用する場合、構成の誤りに関する最も一般的な問題は、これらのポートのうち 1 つ以上がブロックされていることです。
+> 
+> 
+
+- [送信ポートの要件](#outbound-port-requirements)
+- [受信ポートの要件](#inbound-port-requirements)
+
+### <a name="outbound-port-requirements"></a>送信ポートの要件
+
+送信ポートには 7 個の要件があります。
+
+- 必要に応じて、インターネットに対するすべての送信接続をクライアントのオンプレミス監査デバイス経由にすることができます。
+- 3 つのポートは、Azure Storage と Azure DNS を提供する Azure エンドポイントにトラフィックをルーティングします。
+- その他のポート範囲は、内部の Redis サブネット通信用です。 内部 Redis サブネット通信用にサブネット NSG 規則は必要ありません。
 
 | ポート | 方向 | トランスポート プロトコル | 目的 | リモート IP |
 | --- | --- | --- | --- | --- |
 | 80、443 |送信 |TCP |Azure Storage/PKI (インターネット) に対する Redis の依存関係 |* |
 | 53 |送信 |TCP/UDP |DNS (インターネット/VNet) に対する Redis の依存関係 |* |
-| 6379, 6380 |受信 |TCP |Redis へのクライアント通信、Azure 負荷分散 |VIRTUAL_NETWORK, AZURE_LOADBALANCER |
-| 8443 |受信/送信 |TCP |Redis の実装の詳細 |VIRTUAL_NETWORK |
-| 8500 |受信 |TCP/UDP |Azure 負荷分散 |AZURE_LOADBALANCER |
-| 10221-10231 |受信/送信 |TCP |Redis の実装の詳細 (リモート エンドポイントを VIRTUAL_NETWORK に制限できます) |VIRTUAL_NETWORK, AZURE_LOADBALANCER |
-| 13000-13999 |受信 |TCP |Redis クラスターへのクライアント通信、Azure 負荷分散 |VIRTUAL_NETWORK, AZURE_LOADBALANCER |
-| 15000-15999 |受信 |TCP |Redis クラスターへのクライアント通信、Azure 負荷分散 |VIRTUAL_NETWORK, AZURE_LOADBALANCER |
-| 16001 |受信 |TCP/UDP |Azure 負荷分散 |AZURE_LOADBALANCER |
-| 20226 |受信 + 送信 |TCP |Redis クラスターの実装の詳細 |VIRTUAL_NETWORK |
+| 8443 |送信 |TCP |Redis の内部通信 | (Redis サブネット) |
+| 10221-10231 |送信 |TCP |Redis の内部通信 | (Redis サブネット) |
+| 20226 |送信 |TCP |Redis の内部通信 |(Redis サブネット) |
+| 13000-13999 |送信 |TCP |Redis の内部通信 |(Redis サブネット) |
+| 15000-15999 |送信 |TCP |Redis の内部通信 |(Redis サブネット) |
+
+
+### <a name="inbound-port-requirements"></a>受信ポートの要件
+
+受信ポートの範囲には、8 個の要件があります。 これらの範囲の受信要件は、同じ VNET でホストされている他のサービスからの受信、または Redis サブネット通信への内部の要件です。
+
+| ポート | 方向 | トランスポート プロトコル | 目的 | リモート IP |
+| --- | --- | --- | --- | --- |
+| 6379, 6380 |受信 |TCP |Redis へのクライアント通信、Azure 負荷分散 |Virtual Network、Azure Load Balancer |
+| 8443 |受信 |TCP |Redis の内部通信 |(Redis サブネット) |
+| 8500 |受信 |TCP/UDP |Azure 負荷分散 |Azure Load Balancer |
+| 10221-10231 |受信 |TCP |Redis の内部通信 |(Redis サブネット)、Azure Load Balancer |
+| 13000-13999 |受信 |TCP |Redis クラスターへのクライアント通信、Azure 負荷分散 |Virtual Network、Azure Load Balancer |
+| 15000-15999 |受信 |TCP |Redis クラスターへのクライアント通信、Azure 負荷分散 |Virtual Network、Azure Load Balancer |
+| 16001 |受信 |TCP/UDP |Azure 負荷分散 |Azure Load Balancer |
+| 20226 |受信 |TCP |Redis の内部通信 |(Redis サブネット) |
+
+### <a name="additional-vnet-network-connectivity-requirements"></a>その他の VNET ネットワーク接続の要件
 
 Azure Redis Cache のネットワーク接続要件には、仮想ネットワークで最初に満たされていないものがある可能性があります。 仮想ネットワーク内で使用したときに正常に動作させるには、Azure Redis Cache に次の項目すべてが必要になります。
 

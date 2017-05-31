@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/22/2017
+ms.date: 05/18/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 3df12cd8700a75c1288967e86cd92e6ed4886d59
-ms.lasthandoff: 03/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: ced46c64c1c105aa987759e05ab3680bc399f9a0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -40,14 +41,14 @@ Service Bus の名前空間は、スケール ユニットにマップされま�
 ## <a name="processing-of-incoming-messaging-requests"></a>受信メッセージ要求の処理
 クライアントが Service Bus に要求を送信すると、その要求が Azure Load Balancer によってゲートウェイ ノードのいずれかにルーティングされます。 ゲートウェイ ノードは、要求を承認します。 要求がメッセージング エンティティ (キュー、トピック、サブスクリプション) に関連する場合は、ゲートウェイ ノードはゲートウェイ ストア内のエンティティを検索し、どのメッセージング ストアにエンティティがあるかを特定します。 その後、現在どのメッセージング ブローカー ノードがこのコンテナーにサービスを提供しているかを調べ、そのメッセージング ブローカー ノードに要求を送信します。 メッセージング ブローカー ノードは、要求を処理し、コンテナー ストア内のエンティティの状態を更新します。 その後、メッセージング ブローカー ノードはゲートウェイ ノードに応答を送信します。ゲートウェイ ノードは、元の要求を発行したクライアントに適切な応答を送信します。
 
-![受信メッセージ要求の処理](./media/service-bus-architecture/IC690644.png)
+![受信メッセージ要求の処理](./media/service-bus-architecture/ic690644.png)
 
 ## <a name="processing-of-incoming-relay-requests"></a>受信リレー要求の処理
-クライアントが Service Bus に要求を送信すると、その要求が Azure Load Balancer によってゲートウェイ ノードのいずれかにルーティングされます。 要求がリッスン要求である場合は、ゲートウェイ ノードは新しいリレーを作成します。 要求が特定のリレーへの接続要求の場合は、ゲートウェイ ノードはリレーを所有するゲートウェイ ノードに接続要求を転送します。 リレーを所有するゲートウェイ ノードは、リッスンしているクライアントにランデブー要求を送信します。その際、接続要求を受信したゲートウェイ ノードへの一時的なチャネルを作成するようリスナーに求めます。
+クライアントが [Azure Relay](/azure/service-bus-relay/) サービスに要求を送信すると、その要求が Azure Load Balancer によってゲートウェイ ノードのいずれかにルーティングされます。 要求がリッスン要求である場合は、ゲートウェイ ノードは新しいリレーを作成します。 要求が特定のリレーへの接続要求の場合は、ゲートウェイ ノードはリレーを所有するゲートウェイ ノードに接続要求を転送します。 リレーを所有するゲートウェイ ノードは、リッスンしているクライアントにランデブー要求を送信します。その際、接続要求を受信したゲートウェイ ノードへの一時的なチャネルを作成するようリスナーに求めます。
 
 リレー接続が確立されると、クライアントはランデブーに使用されるゲートウェイ ノードを経由してメッセージを交換できます。
 
-![受信 WCF Relay 要求の処理](./media/service-bus-architecture/IC690645.png)
+![受信 WCF Relay 要求の処理](./media/service-bus-architecture/ic690645.png)
 
 ## <a name="next-steps"></a>次のステップ
 Service Bus アーキテクチャの概要を確認しました。詳細については、次のリンクを参照してしてください。

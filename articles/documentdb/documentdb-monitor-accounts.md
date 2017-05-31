@@ -1,48 +1,49 @@
 ---
-title: "DocumentDB の要求、使用状況、およびストレージの監視 | Microsoft Docs"
-description: "パフォーマンス メトリック (要求やサーバー エラーなど) と使用状況メトリック (ストレージ消費など) を利用して、DocumentDB アカウントを監視する方法について説明します。"
-services: documentdb
+title: "Azure Cosmos DB の要求およびストレージの監視 | Microsoft Docs"
+description: "パフォーマンス メトリック (要求やサーバー エラーなど) と使用状況メトリック (ストレージ消費など) を利用して、Azure Cosmos DB アカウントを監視する方法について説明します。"
+services: cosmosdb
 documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 4c6a2e6f-6e78-48e3-8dc6-f4498b235a9e
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: mimig
-translationtype: Human Translation
-ms.sourcegitcommit: ed44ca2076860128b175888748cdaa8794c2310d
-ms.openlocfilehash: aabca8fd228b1fc7c60d295a9502dece29db1b68
-ms.lasthandoff: 01/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: b0158d0f9f0a8f66ae6dda44476efb7b1914c599
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="monitor-documentdb-requests-usage-and-storage"></a>DocumentDB の要求、使用状況、およびストレージの監視
-Azure DocumentDB アカウントは、 [Azure ポータル](https://portal.azure.com/)で監視できます。 各 DocumentDB アカウントに対して、パフォーマンス メトリック (要求やサーバー エラーなど) と使用状況メトリック (ストレージ消費など) が利用可能です。
+# <a name="monitor-azure-cosmos-db-requests-usage-and-storage"></a>Azure Cosmos DB の要求、使用状況、およびストレージの監視
+Azure Cosmos DB アカウントは、[Azure Portal](https://portal.azure.com/) から監視できます。 各 Azure Cosmos DB アカウントに対して、パフォーマンス メトリック (要求やサーバー エラーなど) と使用状況メトリック (ストレージ消費など) が利用可能です。
 
 メトリックは、[アカウント] ブレード、新しい [メトリック] ブレード、または Azure Monitor で確認できます。
 
 ## <a name="view-performance-metrics-on-the-metrics-blade"></a>[メトリック] ブレードでパフォーマンス メトリックを表示する
-1. [Azure Portal](https://portal.azure.com/) で、**[その他のサービス]** をクリックします。**[データベース]** までスクロールし、**[NoSQL (DocumentDB)]** をクリックします。次に、パフォーマンス メトリックを表示する DocumentDB アカウントの名前をクリックします。
+1. [Azure Portal](https://portal.azure.com/) で、**[その他のサービス]** をクリックして **[データベース]** までスクロールし、**[Azure Cosmos DB]** をクリックして、パフォーマンス メトリックを参照する Azure Cosmos DB アカウントの名前をクリックします。
 2. リソース メニューで、**[監視]** の下の **[メトリック]** をクリックします。
 
-[メトリック] ブレードが開き、確認するコレクションを選択できます。 [利用可能]、[要求]、[スループット]、[ストレージ] メトリックを確認し、DocumentDB の SLA と比較することができます。
+[メトリック] ブレードが開き、確認するコレクションを選択できます。 [利用可能]、[要求]、[スループット]、[ストレージ] の各メトリックを確認し、Azure Cosmos DB の SLA と比較することができます。
 
 ## <a name="view-performance-metrics-by-using-azure-monitoring"></a>Azure Monitoring を使用してパフォーマンス メトリックを表示する
 1. [Azure Portal](https://portal.azure.com/) で、ジャンプバーの **[モニター]** をクリックします。
 2. リソース メニューの **[メトリック]**をクリックします。
-3. **[モニター - メトリック]** ウィンドウで、監視する DocumentDB アカウントに関連付けられたリソース グループを **[リソース グループ]** ドロップダウン メニューで選択します。 
+3. **[モニター - メトリック]** ウィンドウで、監視する Azure Cosmos DB アカウントに関連付けられたリソース グループを **[リソース グループ]** ドロップダウン メニューで選択します。 
 4. **[リソース]**ドロップ ダウン メニューで、監視するデータベース アカウントを選択します。
 5. **[利用可能なメトリック]** の一覧で、表示するメトリックを選択します。 複数選択するには、Cｔｒｌ キーを使用します。 
 
     メトリックは **[プロット]** ウィンドウに表示されます。 
 
 ## <a name="view-performance-metrics-on-the-account-blade"></a>アカウントのブレードでパフォーマンス メトリックを表示する
-1. [Azure Portal](https://portal.azure.com/) で、**[その他のサービス]** をクリックします。**[データベース]** までスクロールし、**[NoSQL (DocumentDB)]** をクリックします。次に、パフォーマンス メトリックを表示する DocumentDB アカウントの名前をクリックします。
+1. [Azure Portal](https://portal.azure.com/) で、**[その他のサービス]** をクリックして **[データベース]** までスクロールし、**[Azure Cosmos DB]** をクリックして、パフォーマンス メトリックを参照する Azure Cosmos DB アカウントの名前をクリックします。
 2. **[監視]** レンズには、既定では以下のタイルが表示されます。
    
    * 当日の要求数合計
@@ -80,7 +81,7 @@ Azure ポータルでは、サイド バイ サイドのメトリック チャ�
     ![要求数合計チャートと、新たに作成した過去の要求数合計チャートのスクリーンショット](./media/documentdb-monitor-accounts/madocdb8.png)  
 
 ## <a name="set-up-alerts-in-the-portal"></a>ポータルでアラートを設定する
-1. [Azure Portal](https://portal.azure.com/) で、**[その他のサービス]**、**[DocumentDB (NoSQL)]** の順にクリックし、パフォーマンス メトリック アラートを設定する DocumentDB アカウントの名前をクリックします。
+1. [Azure Portal](https://portal.azure.com/) で、**[その他のサービス]**、**[Azure Cosmos DB]** の順にクリックし、パフォーマンス メトリック アラートを設定する Azure Cosmos DB アカウントの名前をクリックします。
 2. リソース メニューで、 **[アラート ルール]** をクリックして [アラート ルール] ブレードを開きます。  
    ![[アラート ルール] パーツが選択された状態のスクリーンショット](./media/documentdb-monitor-accounts/madocdb10.5.png)
 3. **[アラート ルール]** ブレードで、**[アラートの追加]** をクリックします。  
@@ -95,7 +96,7 @@ Azure ポータルでは、サイド バイ サイドのメトリック チャ�
    * アラート通知用の追加の電子メール アドレス。  
      ![[アラート ルールの追加] ブレードのスクリーンショット](./media/documentdb-monitor-accounts/madocdb12.png)
 
-## <a name="monitor-documentdb-programatically"></a>プログラムから DocumentDB を監視する
+## <a name="monitor-azure-cosmos-db-programatically"></a>Azure Cosmos DB をプログラムで監視する
 ポータルで使用できるアカウント レベルのメトリック (アカウント ストレージの使用状況、要求総数) は、DocumentDB API で使用することはできません。 ただし、DocumentDB API を使用してコレクション レベルで使用状況データを取得できます。 コレクション レベルのデータを取得するには、次の操作を行います。
 
 * REST API を使用するには、 [コレクションに対して GET を実行](https://msdn.microsoft.com/library/mt489073.aspx)します。 コレクションのクォータおよび使用状況の情報が、応答の x-ms-resource-quota および x-ms-resource-usage ヘッダーに返されます。
@@ -117,12 +118,12 @@ Azure ポータルでは、サイド バイ サイドのメトリック チャ�
 ### <a name="edit-a-tile-to-refresh-current-data"></a>タイルに最新のデータを反映させる
 1. 特定の部分に表示されるメトリックをカスタマイズするには、そのグラフをクリックして **[メトリック]** ブレードを開いた後、**[グラフの​​編集]** をクリックします。  
    ![Screen shot of the Metric blade controls, with Edit chart highlighted](./media/documentdb-monitor-accounts/madocdb3.png)
-2. **[グラフの編集]** ブレードの **[時間範囲]** セクションで、**[過去&1; 時間]**、**[OK]** の順にクリックします。  
-   ![過去&1; 時間を選択した [グラフの編集] ブレードのスクリーン ショット](./media/documentdb-monitor-accounts/documentdb-no-available-data-past-hour.png)
+2. **[グラフの編集]** ブレードの **[時間範囲]** セクションで、**[過去 1 時間]**、**[OK]** の順にクリックします。  
+   ![過去 1 時間を選択した [グラフの編集] ブレードのスクリーン ショット](./media/documentdb-monitor-accounts/documentdb-no-available-data-past-hour.png)
 3. タイルが更新され、最新のデータと使用状況が表示されます。  
    ![更新後の過去の要求数合計タイルのスクリーン ショット](./media/documentdb-monitor-accounts/documentdb-no-available-data-fixed.png)
 
 ## <a name="next-steps"></a>次のステップ
-DocumentDB の容量計画の詳細については、「[DocumentDB capacity planner calculator](https://www.documentdb.com/capacityplanner)」(DocumentDB Capacity Planner の計算機能) を参照してください。
+Azure Cosmos DB の容量計画の詳細については、[Azure Cosmos DB Capacity Planner の計算機能](https://www.documentdb.com/capacityplanner)に関するページを参照してください。
 
 

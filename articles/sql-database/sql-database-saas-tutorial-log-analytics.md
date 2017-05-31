@@ -1,6 +1,6 @@
 ---
-title: "Log Analytics を設定して実行する (Azure SQL Database を使用するサンプル SaaS アプリケーション) | Microsoft Docs"
-description: "WTP サンプル SaaS アプリで Log Analytics を設定して使用します"
+title: "SQL Database のマルチテナント アプリで Log Analytics を使用する | Microsoft Docs"
+description: "Azure SQL Database のサンプル Wingtip Tickets (WTP) アプリで Log Analytics (OMS) を設定して使用します"
 keywords: "SQL データベース チュートリアル"
 services: sql-database
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 7cb9b7dd90123a91cabe66fd8efa8ae4c9e2fa01
+ms.sourcegitcommit: be747170a0d8a7a6defd790a3f8a122c4d397671
+ms.openlocfilehash: 813a947ce4deb0755b44f4d287e00ae5218abfc4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/23/2017
 
 
 ---
@@ -36,7 +36,7 @@ ms.lasthandoff: 05/10/2017
 
 このチュートリアルを完了するには、次の前提条件を満たしておく必要があります。
 
-* WTP アプリがデプロイされている。 5 分以内にデプロイを完了する方法については、[WTP SaaS アプリケーションのデプロイと確認に関するページ](sql-database-saas-tutorial.md)をご覧ください。
+* WTP アプリがデプロイされている。 5 分未満でデプロイする方法については、[WTP SaaS アプリケーションのデプロイと確認](sql-database-saas-tutorial.md)に関するページを参照してください。
 * Azure PowerShell がインストールされている。 詳しくは、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」をご覧ください。
 
 SaaS のシナリオとパターン、および監視ソリューションの要件に対する影響については、[パフォーマンスの監視と管理を行うためのチュートリアル](sql-database-saas-tutorial-performance-monitoring.md)を参照してください。
@@ -134,7 +134,7 @@ Log Analytics for SQL Database は、ワークスペース内のデータ量に�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [Wingtip Tickets Platform (WTP) アプリケーションの初期のデプロイに基づく作業のための追加のチュートリアル](sql-database-wtp-overview.md#sql-database-wtp-saas-tutorials)
+* [Wingtip Tickets Platform (WTP) アプリケーションの初期のデプロイに基づく作業のための追加のチュートリアル](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md)
 * [OMS](https://blogs.technet.microsoft.com/msoms/2017/02/21/azure-sql-analytics-solution-public-preview/)
 

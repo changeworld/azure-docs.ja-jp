@@ -15,10 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-management
 ms.date: 02/07/2017
 ms.author: sashan;carlrab
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 0b53eb34293078ad2ce334583fee88a8c5ac5ccf
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 6ed02ead07c50b9a49e8868756b6f957d7b49b99
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -74,7 +75,7 @@ SQL Database では、予測可能な 1 時間単位のレートで、サービ�
 eDtu およびサービス レベルについては、 [SQL Database のオプションとパフォーマンス](sql-database-service-tiers.md)に関するページをご覧ください。
 
 ## <a name="how-does-the-use-of-active-geo-replication-in-an-elastic-pool-show-up-on-my-bill"></a>エラスティック プールでアクティブ geo レプリケーションを使用した場合、請求書にはどのように表示されますか。
-Elastic Database で [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md) を使用した場合、Single Database とは異なり、請求書には直接の影響はありません。  各プール (プライマリ プールおよびセカンダリ プール) にプロビジョニングされた eDTU に対してのみ課金されます。
+エラスティック データベースで [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md) を使用した場合、単一データベースとは異なり、請求書には直接の影響はありません。  各プール (プライマリ プールおよびセカンダリ プール) にプロビジョニングされた eDTU に対してのみ課金されます。
 
 ## <a name="how-does-the-use-of-the-auditing-feature-impact-my-bill"></a>監査機能を使用すると請求書にどのような影響がありますか。
 監査機能は、追加料金なしで SQL Database サービスに組み込まれており、Basic、Standard、Premium、および Premium RS データベースで利用可能です。 ただし、監査ログを保存する場合、監査機能は Azure Storage アカウントを使用するので、監査ログのサイズに応じて Azure Storage のテーブルとキューの料金が課されます。

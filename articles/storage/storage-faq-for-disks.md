@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2017
 ms.author: robinsh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 284b239860481cf76f647d78f6a7b5e2b7cf9a3b
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: af7d5b03e1490ed8d90021980f14c47281e8a655
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/26/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -80,6 +80,7 @@ Managed Disks では、ストレージ アカウントに関連する制限が�
 
 現在は違いますが、将来的には既定になります。
 
+
 **空の管理ディスクを作成できますか?**
 
 はい、空のディスクを作成できます。 管理ディスクは VM とは独立して作成できます。つまり VM に接続せずに作成できます。
@@ -127,6 +128,10 @@ Managed Disks では 3 つの重要な既定のロールがサポートされま
 
 **専用の (sysprep で作成されていない、または汎用の) OS ディスクを使用して VM をプロビジョニングする場合、コンピューター名プロパティを変更することはできますか?** いいえ。 コンピューター名プロパティを更新することはできません。 新しい VM のコンピューター名プロパティは、OS ディスクの作成に使用した親 VM から継承されます。 
 
+**Managed Disks を使用して VM を作成するための Azure Resource Manager のサンプル テンプレートはどこで見つけることができますか?**
+* https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md
+* https://github.com/chagarw/MDPP
+
 ## <a name="managed-disks-and-port-8443"></a>Managed Disks とポート 8443
 
 **Azure Managed Disks を使用している VM のポート 8443 で送信トラフィックのブロックを解除しなければならないのはなぜですか?**
@@ -145,7 +150,7 @@ Azure VM エージェントは、各 VM 拡張機能の状態を Azure プラッ
 
 拡張機能は正常にデプロイされません。 拡張機能の状態がどうなるかは不明です。 
 
-**ARM テンプレートを使用して、ポート 8443 をブロックした状態で複数の VM をプロビジョニングする場合、1 つ目の VM に拡張機能がインストールされており、2 つ目の VM が 1 つ目の VM に依存しているとどうなりますか?**
+**Azure Resource Manager テンプレートを使用して、ポート 8443 をブロックした状態で複数の VM をプロビジョニングする場合、1 つ目の VM に拡張機能がインストールされており、2 つ目の VM が 1 つ目の VM に依存しているとどうなりますか?**
 
 1 つ目の VM は、拡張機能が正常にデプロイされないため、失敗したデプロイとして表示されます。 2 つ目の VM はデプロイされません。 
 

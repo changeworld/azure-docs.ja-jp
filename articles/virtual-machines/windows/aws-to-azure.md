@@ -13,19 +13,20 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 05/10/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: a6549999003d4b1c8e2b8a8e2a2fafef942bce43
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: e940a5653d81852c6440829010ec86bcadeadca7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/11/2017
 
 
 ---
 
 # <a name="migrate-from-amazon-web-services-aws-to-azure-managed-disks"></a>アマゾン ウェブ サービス (AWS) から Azure Managed Disks に移行する
 
-アマゾン ウェブ サービス (AWS) EC2 インスタンスを、VHD をアップロードすることで Azure Virtual Machines に移行できます。 Azure で同一のイメージから複数の VM を作成するには、まず VM を一般化してから、一般化済みの VHD をローカル ディレクトリにエクスポートする必要があります。 VHD のアップロード後、ストレージに [Managed Disks](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を使用する新しい Azure VM を作成できます。 Azure Managed Disks を使用すると、Azure IaaS VM のストレージ アカウントを管理する必要がなくなります。 必要なディスクの種類 (Premium または Standard) とサイズを指定するだけでよく、ディスクは Azureによって作成および管理されます。 
+仮想ハード ディスク (VHD) をアップロードすることでアマゾン ウェブ サービス (AWS) EC2 インスタンスを Azure に移行できます。 Azure で同一のイメージから複数の仮想マシン (VM) を作成するには、まず VM を一般化してから、一般化済みの VHD をローカル ディレクトリにエクスポートする必要があります。 VHD のアップロード後、ストレージに [Managed Disks](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を使用する新しい Azure VM を作成できます。 Azure Managed Disks を使用すると、Azure IaaS VM のストレージ アカウントを管理する必要がなくなります。 必要なディスクの種類 (Premium または Standard) とサイズを指定すれば、ディスクの作成と管理は Azure によって行われます。 
 
 このプロセスを開始する前に、[Managed Disks への移行の計画](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks)に関するページをご覧ください。
 
@@ -40,7 +41,7 @@ Install-Module AzureRM.Compute -MinimumVersion 2.6.0
 詳細については、[Azure PowerShell のバージョン管理に関するページ](/powershell/azure/overview)をご覧ください。
 
 
-## <a name="generalize-the-windows-vm-using-sysprep"></a>Sysprep を使用して Windows VM を一般化する
+## <a name="generalize-the-vm"></a>VM の汎用化
 
 Sysprep を使用して VM を一般化すると、VHD からマシン固有の情報と個人アカウント情報が削除され、マシンをイメージとして使用できるようになります。 Sysprep の詳細については、「 [Sysprep の使用方法: 紹介](http://technet.microsoft.com/library/bb457073.aspx)」を参照してください。
 
@@ -62,7 +63,7 @@ Sysprep を使用して VM を一般化すると、VHD からマシン固有の�
 
 
 
-## <a name="export-the-vhd-from-an-ec2-instance"></a>EC2 インスタンスから VHD をエクスポートする
+## <a name="export-the-vhd-from-aws"></a>AWS から VHD をエクスポートする
 
 1.    アマゾン ウェブ サービス (AWS) を使用している場合は、Amazon S3 バケット内の VHD に EC2 インスタンスをエクスポートします。 Amazon EC2 インスタンスのエクスポートに関する Amazon ドキュメントで説明されている手順に従って、Amazon EC2 コマンド ライン インターフェイス (CLI) ツールをインストールし、create-instance-export-task コマンドを実行して EC2 インスタンスを VHD ファイルにエクスポートします。 create-instance-export-task コマンドを実行するときは、DISK_IMAGE_FORMAT 変数に必ず VHD を使用してください。 エクスポートされた VHD ファイルは、その処理中に指定した Amazon S3 バケットに保存されます。
 
@@ -75,7 +76,12 @@ Sysprep を使用して VM を一般化すると、VHD からマシン固有の�
 
 
 
-## <a name="log-in-to-azure"></a>Azure へのログイン
+## <a name="upload-the-vhd"></a>VHD をアップロードする
+
+イメージを作成する前に、Azure にログインし、ストレージ アカウントを作成し、それに VHD をアップロードする必要があります。 
+
+### <a name="log-in-to-azure"></a>Azure へのログイン
+
 PowerShell をまだインストールしていない場合は、[Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)に関するページをご覧ください。
 
 1. Azure PowerShell を開き、Azure アカウントにサインインします。 Azure アカウント資格情報を入力するためのポップアップ ウィンドウが開きます。
@@ -94,7 +100,7 @@ PowerShell をまだインストールしていない場合は、[Azure PowerShe
     Select-AzureRmSubscription -SubscriptionId "<subscriptionID>"
     ```
 
-## <a name="get-the-storage-account"></a>ストレージ アカウントを取得する
+### <a name="get-the-storage-account"></a>ストレージ アカウントを取得する
 アップロードした VM イメージを格納するには、Azure にストレージ アカウントが必要です。 既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。 
 
 VHD を使用して VM の管理ディスクを作成する場合は、ストレージ アカウントの場所が VM を作成する場所と同じである必要があります。
@@ -136,7 +142,7 @@ Get-AzureRmStorageAccount
    * **Standard_RAGRS** - 読み取りアクセス geo 冗長ストレージ。 
    * **Premium_LRS** - Premium ローカル冗長ストレージ。 
 
-## <a name="upload-the-vhd-to-your-storage-account"></a>ストレージ アカウントに VHD をアップロードする
+### <a name="upload-the-vhd"></a>VHD をアップロードする 
 
 [Add-AzureRmVhd](/powershell/module/azurerm.compute/add-azurermvhd) コマンドレットを使用して、ストレージ アカウント内のコンテナーに VHD をアップロードします。 この例では、ファイル **myVHD.vhd** を`"C:\Users\Public\Documents\Virtual hard disks\"`から **myResourceGroup** リソース グループの **mystorageaccount** というストレージ アカウントにアップロードします。 ファイルは **mycontainer** というコンテナーに配置され、新しいファイル名は **myUploadedVHD.vhd** になります。
 
@@ -178,9 +184,9 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
 
     推定アップロード時間が 7 日より長い場合は、Import/Export サービスを使うことをお勧めします。 [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) を使うと、データ サイズと転送単位から時間を推定できます。 
 
-    Import/Export は、Standard Storage アカウントへのコピーに使うことができます。 Standard Storage アカウントから Premium Storage アカウントにコピーするには、AzCopy などのツールを使用する必要があります。
+    Import/Export は、Standard Storage アカウントへのコピーに使うことができます。 Premium Storage を使用するには、AzCopy などのツールを使用して Standard Storage アカウントから Premium Storage アカウントにコピーする必要があります。
 
-## <a name="create-a-managed-image-from-the-uploaded-vhd"></a>アップロードした VHD から管理イメージを作成する 
+## <a name="create-an-image"></a>イメージを作成する 
 
 一般化済みの OS VHD を使って管理イメージを作成します。
 
@@ -203,7 +209,7 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
     $image = New-AzureRmImage -ImageName $imageName -ResourceGroupName $rgName -Image $imageConfig
     ```
 
-## <a name="setup-some-variables-for-the-image"></a>イメージの変数を設定する
+## <a name="create-vm-from-image"></a>イメージからの VM の作成
 
 まず、イメージに関する基本的な情報を収集し、イメージの変数を作成する必要があります。 この例では、**West Central US** という場所のリソース グループ **myResourceGroup** にある **myImage** という名前の管理対象 VM イメージを使用します。 
 
@@ -214,7 +220,7 @@ $imageName = "myImage"
 $image = Get-AzureRMImage -ImageName $imageName -ResourceGroupName $rgName
 ```
 
-## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
+### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 [仮想ネットワーク](../../virtual-network/virtual-networks-overview.md)の vNet とサブネットを作成します。
 
 1. サブネットを作成します。 次の例では、**10.0.0.0/24** というアドレス プレフィックスを持つ **mySubnet** という名前のサブネットを作成します。  
@@ -231,7 +237,7 @@ $image = Get-AzureRMImage -ImageName $imageName -ResourceGroupName $rgName
         -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
     ```    
 
-## <a name="create-a-public-ip-address-and-network-interface"></a>パブリック IP アドレスとネットワーク インターフェイスの作成
+### <a name="create-a-public-ip-and-nic"></a>パブリック IP と NIC の作成
 
 仮想ネットワークでの仮想マシンとの通信を有効にするには、 [パブリック IP アドレス](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) とネットワーク インターフェイスが必要です。
 
@@ -250,7 +256,7 @@ $image = Get-AzureRMImage -ImageName $imageName -ResourceGroupName $rgName
         -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
     ```
 
-## <a name="create-the-network-security-group-and-an-rdp-rule"></a>ネットワーク セキュリティ グループと RDP 規則の作成
+### <a name="create-nsg"></a>Create NSG
 
 RDP を使用して VM にログインできるようにするには、ポート 3389 に対する RDP アクセスを許可するネットワーク セキュリティの規則 (NSG) が必要です。 
 
@@ -269,7 +275,7 @@ $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $rgName -Location $loc
 ```
 
 
-## <a name="create-a-variable-for-the-virtual-network"></a>仮想ネットワーク用の変数の作成
+### <a name="create-network-variables"></a>ネットワーク変数の作成
 
 変数を作成して、仮想ネットワークの作成を完了します。 
 
@@ -278,7 +284,7 @@ $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 
 ```
 
-## <a name="get-the-credentials-for-the-vm"></a>VM の資格情報の取得
+### <a name="get-the-credentials"></a>資格情報の取得 
 
 次のコマンドレットを実行するとウィンドウが開きます。そこで、VM へのリモート アクセスでローカル管理者アカウントとして使用する、新しいユーザー名とパスワードを入力します。 
 
@@ -286,7 +292,7 @@ $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 $cred = Get-Credential
 ```
 
-## <a name="set-variables-for-the-vm-name-computer-name-and-the-size-of-the-vm"></a>VM 名、コンピューター名、および VM のサイズの変数の設定
+### <a name="set-vm-variables"></a>VM 変数の設定 
 
 1. VM 名とコンピューター名の変数を作成します。 この例では、VM 名として **myVM** を、コンピューター名として **myComputer** を設定します。
 
@@ -306,7 +312,7 @@ $cred = Get-Credential
 $vm = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize
 ```
 
-## <a name="set-the-vm-image-as-source-image-for-the-new-vm"></a>新しい VM のソース イメージとしての VM イメージの設定
+### <a name="set-the-vm-image"></a>VM イメージの設定 
 
 管理対象 VM イメージの ID を使用してソース イメージを設定します。
 
@@ -314,7 +320,7 @@ $vm = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize
 $vm = Set-AzureRmVMSourceImage -VM $vm -Id $image.Id
 ```
 
-## <a name="set-the-os-configuration-and-add-the-nic"></a>OS 構成の設定と NIC の追加
+### <a name="set-the-os-configuration"></a>OS 構成の設定 
 
 ストレージの種類 (PremiumLRS または StandardLRS) と OS ディスクのサイズを入力します。 この例では、アカウントの種類を **PremiumLRS** に、ディスク サイズを **128 GB**に、ディスク キャッシュを **ReadWrite** に設定します。
 
@@ -328,7 +334,7 @@ $vm = Set-AzureRmVMOperatingSystem -VM $vm -Windows -ComputerName $computerName 
 $vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
 ```
 
-## <a name="create-the-vm"></a>VM の作成
+### <a name="create-the-vm"></a>VM の作成
 
 先ほど作成し **$vm** 変数に格納した構成を使用して、新しい VM を作成します。
 
@@ -336,7 +342,7 @@ $vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
 New-AzureRmVM -VM $vm -ResourceGroupName $rgName -Location $location
 ```
 
-## <a name="verify-that-the-vm-was-created"></a>VM 作成の確認
+## <a name="verify-the-vm"></a>VM の確認
 完了したら、[Azure Portal](https://portal.azure.com) で **[参照]** > **[仮想マシン]** にアクセスするか、次の PowerShell コマンドを使用して、新しく作成された VM を確認します。
 
 ```powershell

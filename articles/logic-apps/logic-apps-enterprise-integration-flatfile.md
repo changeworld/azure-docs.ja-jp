@@ -13,10 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
-ms.author: mandia
-translationtype: Human Translation
+ms.author: LADocs; mandia
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2f407a428aa176cc5c2a3b6bb236b522bda5ab64
 ms.openlocfilehash: b9b0f1970a5c7edeb9986c0d60c8bc249c50f2ac
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -84,10 +86,5 @@ ms.openlocfilehash: b9b0f1970a5c7edeb9986c0d60c8bc249c50f2ac
 
 ## <a name="next-steps"></a>次のステップ
 * [Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")  
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

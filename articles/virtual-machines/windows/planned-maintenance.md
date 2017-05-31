@@ -3,7 +3,7 @@ title: "Azure での Windows VM の計画メンテナンス | Microsoft Docs"
 description: "Azure の計画メンテナンスの概要と、それが Azure で実行されている Windows 仮想マシンに及ぼす影響について説明します。"
 services: virtual-machines-windows
 documentationcenter: 
-author: 
+author: zivr
 manager: timlt
 editor: 
 tags: azure-service-management,azure-resource-manager
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2017
-ms.author: 
-translationtype: Human Translation
+ms.author: zivr
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
 ms.openlocfilehash: 198c1804b342b8faf406a08eff7bc42994b9dd0d
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/31/2017
 
 

@@ -3,7 +3,7 @@ title: "SQL Data Warehouse でのテーブルのインデックス作成 | Micro
 description: "Azure SQL Data Warehouse でのテーブルのインデックス作成の概要です。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: jrowlandjones
+author: shivaniguptamsft
 manager: barbkess
 editor: 
 ms.assetid: 3e617674-7b62-43ab-9ca2-3f40c41d5a88
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
 ms.date: 07/12/2016
-ms.author: jrj;barbkess;sonyama
-translationtype: Human Translation
+ms.author: shigu;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
 ms.openlocfilehash: dff94161c7d6dfedc91cfb36954e847f945985f7
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/06/2017
 
 

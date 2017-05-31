@@ -10,6 +10,7 @@
 | リソース マネージャー API 読み取り数 |1 時間あたり 15000 |1 時間あたり 15000 |
 | リソース マネージャー API 書き込み数 |1 時間あたり 1200 |1 時間あたり 1200 |
 | リソース マネージャー API 要求のサイズ |4194304 バイト |4194304 バイト |
+| サブスクリプションあたりのタグ数 |10000 |10000 |
 | [クラウド サービス](../articles/cloud-services/cloud-services-choose-me.md) 数 |適用不可<sup>3</sup> |適用不可<sup>3</sup> |
 | [アフィニティ グループ](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) 数 |適用不可<sup>3</sup> |適用不可<sup>3</sup> |
 

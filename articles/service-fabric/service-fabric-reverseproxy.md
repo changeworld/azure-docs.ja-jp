@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 04/07/2017
 ms.author: bharatn
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
 ms.openlocfilehash: 121bf91a2476a079c0737187aef8791be0b4b250
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/07/2017
 
 

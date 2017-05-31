@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 05/12/2017
 ms.author: cherylmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: d29cf81747390fe153c3c6dc330ef738de0cd83a
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: d3de566ff2825ef0c41d88d4a86157dc23d9f46b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -49,7 +49,7 @@ Azure パブリック ピアリング パスを利用すれば、パブリック
 > 
 
 ## <a name="nat-requirements-for-microsoft-peering"></a>Microsoft ピアリングの NAT 要件
-Microsoft ピアリング パスにより、Azure パブリック ピアリング パスでサポートされていない Microsoft クラウド サービスに接続できます。 そのようなサービスには、Exchange Online、SharePoint Online、Skype for Business、CRM Online のような Office 365 サービスがあります。 Microsoft は今後、Microsoft ピアリングで双方向の接続をサポートする予定です。 Microsoft クラウド サービスに向かうトラフィックは有効な IPv4 アドレスに SNAT 変換しないと、Microsoft ネットワークに入れません。 Microsoft クラウド サービスからご利用のネットワークに送信されるトラフィックは、[非対称ルーティング](expressroute-asymmetric-routing.md)を回避するためにインターネット エッジで SNAT 変換する必要があります。 下の図は、Microsoft ピアリングのために NAT をセットアップするしくみを上のレベルで示しています。
+Microsoft ピアリング パスにより、Azure パブリック ピアリング パスでサポートされていない Microsoft クラウド サービスに接続できます。 対象となるサービスには、Exchange Online、SharePoint Online、Skype for Business、Dynamics 365 などの Office 365 サービスが含まれます。 Microsoft は今後、Microsoft ピアリングで双方向の接続をサポートする予定です。 Microsoft クラウド サービスに向かうトラフィックは有効な IPv4 アドレスに SNAT 変換しないと、Microsoft ネットワークに入れません。 Microsoft クラウド サービスからご利用のネットワークに送信されるトラフィックは、[非対称ルーティング](expressroute-asymmetric-routing.md)を回避するためにインターネット エッジで SNAT 変換する必要があります。 下の図は、Microsoft ピアリングのために NAT をセットアップするしくみを上のレベルで示しています。
 
 ![](./media/expressroute-nat/expressroute-nat-microsoft.png) 
 

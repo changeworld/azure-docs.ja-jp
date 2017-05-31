@@ -14,10 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 04/15/2017
 ms.author: eugenesh
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: e14da5fa10533d922a6263e8f52a53c0eaa23393
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: faa6d403aa130738ae0b58ba1ffc828a1e37e9f4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 
@@ -341,7 +342,7 @@ BLOB のインデックス作成プロセスは、時間がかかる場合があ
 ## <a name="indexing-documents-along-with-related-data"></a>ドキュメントと関連データを併せたインデックスを作成する
 
 ドキュメントには、次のいずれかの場所に構造化データとして格納されているメタデータ (ドキュメントを作成した部門など) が関連付けられている場合があります。
--   SQL Database や DocumentDB などの別のデータ ストア。
+-   SQL Database や Azure Cosmos DB などの別のデータ ストア。
 -   Azure Blob Storage 内の各ドキュメントにカスタム メタデータとして直接接続されている  (詳細については、「[Setting and Retrieving Properties and Metadata for Blob Resources (BLOB リソースのプロパティとメタデータの設定と取得)](https://docs.microsoft.com/rest/api/storageservices/setting-and-retrieving-properties-and-metadata-for-blob-resources)」を参照してください)。
 
 各ドキュメントとそのメタデータに同じ一意のキー値を割り当て、各インデクサーに `mergeOrUpload` アクションを指定することで、ドキュメントとメタデータを併せたインデックスを作成することができます。 このソリューションの詳細については、外部資料「[Combine documents with other data in Azure Search (ドキュメントを Azure Search の他のデータと組み合わせる)](http://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)」を参照してください。

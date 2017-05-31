@@ -13,12 +13,13 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2016
+ms.date: 05/10/2017
 ms.author: jodebrui
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: f827b76b8164e4eae286c9a1247e64d4f5ee9ea8
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: a7273c50f2619c776268406aa14f6c00dcfbfbbe
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/11/2017
 
 ---
 
@@ -29,7 +30,7 @@ Azure SQL Database のインメモリ テクノロジを使用することで、
 インメモリ OLTP がパフォーマンスの著しい向上を促した例を 2 つ紹介します。
 
 - インメモリ OLTP を利用することで、[クォーラム ビジネス ソリューションで DTU (つまり、リソースの消費量) を 70% 向上させながら、ワークロードを倍増させることができました](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)。
-- ビデオ「[In-Memory OLTP in Azure SQL Database (Azure SQL Database のインメモリ OLTP)](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB)」では、サンプル ワークロードでリソースの消費量が大幅に向上したことが示されています。
+- [Azure SQL Database のインメモリ OLTP のビデオ](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB)では、サンプル ワークロードでリソースの消費量が大幅に向上したことが示されています。 詳細については、[Azure SQL Database のインメモリ OLTP に関するブログ記事](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)を参照してください。
 
 インメモリ テクノロジは、Premium エラスティック プール内のデータベースを含む Premium レベル内のすべてのデータベースで利用できます。
 
@@ -497,6 +498,8 @@ P2 価格レベルのデータベースでは、クラスター化列ストア �
 #### <a name="deeper-information"></a>詳細情報
 
 - [Learn how Quorum doubles key database’s workload while lowering DTU by 70% with In-Memory OLTP in SQL Database (クォーラムが SQL Database でインメモリ OLTP を使用して DTU の 70% を削減しながら主要なデータベースのワークロードを 2 倍にする方法について)](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
+
+- [Azure SQL Database のインメモリ OLTP に関するブログ記事](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
 - [インメモリ OLTP の詳細情報](http://msdn.microsoft.com/library/dn133186.aspx)
 

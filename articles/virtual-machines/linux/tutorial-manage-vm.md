@@ -13,30 +13,37 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/25/2017
+ms.date: 05/02/2017
 ms.author: nepeters
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 7a6f255c64a584e29801aacb40c79462751fe535
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: e22fa4ed45ffaed1a05292e9b86d5cebc0079117
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/17/2017
 
 ---
 
 # <a name="create-and-manage-linux-vms-with-the-azure-cli"></a>Azure CLI を使用した Linux VM の作成と管理
 
-このチュートリアルでは、VM サイズや VM イメージの選択および VM のデプロイなど、Azure 仮想マシンの作成に関する基本事項について説明します。 また、状態の管理や VM の削除およびサイズ変更といった基本的な管理操作についても説明します。
+Azure 仮想マシンは、完全に構成可能で柔軟なコンピューティング環境を提供します。 このチュートリアルでは、VM サイズや VM イメージの選択、VM のデプロイなどの Azure 仮想マシンのデプロイに関する基本事項について説明します。 学習内容は次のとおりです。
 
-このチュートリアルの手順は、最新バージョンの [Azure CLI 2.0](/cli/azure/install-azure-cli) を使用して行うことができます。
+> [!div class="checklist"]
+> * VM を作成して VM に接続する
+> * VM イメージを選択して使用する
+> * 特定の VM サイズを確認して使用する
+> * VM のサイズを変更する
+> * VM の状態の表示して理解する
+
+このチュートリアルには、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 アップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 ブラウザーから [Cloud Shell](/azure/cloud-shell/quickstart) を使用することもできます。
 
 ## <a name="create-resource-group"></a>Create resource group
 
 [az group create](https://docs.microsoft.com/cli/azure/group#create) コマンドでリソース グループを作成します。 
 
-Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 仮想マシンの前にリソース グループを作成する必要があります。 この例では、*myResourceGroupVM* という名前のリソース グループが *westus* リージョンに作成されます。 
+Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 仮想マシンの前にリソース グループを作成する必要があります。 この例では、*myResourceGroupVM* という名前のリソース グループが *eastus* リージョンに作成されます。 
 
 ```azurecli
-az group create --name myResourceGroupVM --location westus
+az group create --name myResourceGroupVM --location eastus
 ```
 
 このチュートリアル全体で示しているように、VM の作成時または変更時にリソース グループを指定します。
@@ -57,7 +64,7 @@ VM が作成されると、Azure CLI で VM に関する以下の情報が出力
 {
   "fqdns": "",
   "id": "/subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroupVM/providers/Microsoft.Compute/virtualMachines/myVM",
-  "location": "westus",
+  "location": "eastus",
   "macAddress": "00-0D-3A-23-9A-49",
   "powerState": "VM running",
   "privateIpAddress": "10.0.0.4",
@@ -141,7 +148,7 @@ az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:C
 
 次の表は、ユース ケース別にサイズを分類したものです。  
 
-| 型                     | サイズ           |    Description       |
+| 型                     | サイズ           |    説明       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [汎用](sizes-general.md)         |DSv2、Dv2、DS、D、Av2、A0 ～ 7| CPU とメモリのバランスがとれています。 開発/テスト環境や、小中規模のアプリケーションとデータ ソリューションに最適です。  |
 | [コンピューティングの最適化](sizes-compute.md)   | Fs、F             | メモリに対する CPU の比が大きくなっています。 トラフィックが中程度のアプリケーション、ネットワーク アプライアンス、バッチ処理に適しています。        |
@@ -156,7 +163,7 @@ az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:C
 特定の地域で利用可能な VM サイズのリストを確認するには、[az vm list-sizes](/cli/azure/vm#list-sizes) コマンドを使用します。 
 
 ```azurecli
-az vm list-sizes --location westus --output table
+az vm list-sizes --location eastus --output table
 ```
 
 出力の一部を次に示します。
@@ -236,7 +243,7 @@ Azure VM は、さまざまな電源状態のいずれかになります。 こ�
 
 | 電源の状態 | 説明
 |----|----|
-| Starting | 仮想マシンが起動中であることを示します。 |
+| 開始中 | 仮想マシンが起動中であることを示します。 |
 | 実行中 | 仮想マシンが実行中であることを示します。 |
 | 停止中 | 仮想マシンが停止中であることを示します。 | 
 | 停止済み | 仮想マシンが停止されていることを示します。 仮想マシンが停止済みの状態でも、コンピューティング料金は発生します。  |
@@ -287,7 +294,7 @@ az vm stop --resource-group myResourceGroupVM --name myVM
 az vm start --resource-group myResourceGroupVM --name myVM
 ```
 
-### <a name="delete-resource-group"></a>Delete resource group
+### <a name="delete-resource-group"></a>リソース グループの削除
 
 リソース グループを削除すると、そこに含まれているリソースもすべて削除されます。
 
@@ -297,6 +304,17 @@ az group delete --name myResourceGroupVM --no-wait --yes
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、基本的な VM の作成と管理について説明しました。 次のチュートリアルに進み、VM ディスクについて確認してください。  
+このチュートリアルでは、次のような基本的な VM の作成と管理を実行する方法について説明しました。
 
-[VM ディスクの作成と管理](./tutorial-manage-disks.md)
+> [!div class="checklist"]
+> * VM を作成して VM に接続する
+> * VM イメージを選択して使用する
+> * 特定の VM サイズを確認して使用する
+> * VM のサイズを変更する
+> * VM の状態の表示して理解する
+
+次のチュートリアルに進み、VM ディスクについて確認してください。  
+
+> [!div class="nextstepaction"]
+> [VM ディスクの作成と管理](./tutorial-manage-disks.md)
+

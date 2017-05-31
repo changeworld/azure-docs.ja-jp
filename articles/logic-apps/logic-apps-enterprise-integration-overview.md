@@ -13,10 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2016
-ms.author: estfan
-translationtype: Human Translation
+ms.author: LADocs; padmavc
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5b1b65e3d1066bea6958fa6461a157ee39fbe7dc
 ms.openlocfilehash: 514942b2552564f669d73b997a2d355ddb477b22
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/15/2017
 
 

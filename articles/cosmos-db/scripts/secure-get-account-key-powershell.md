@@ -1,14 +1,14 @@
 ---
 title: "Azure PowerShell スクリプト - Cosmos DB のアカウント キーを取得する | Microsoft Docs"
 description: "Azure PowerShell サンプル スクリプト - Cosmos DB のアカウント キーを取得する"
-services: cosmosdb
+services: cosmos-db
 documentationcenter: cosmosdb
 author: mimig1
 manager: jhubbard
 editor: 
 tags: azure-service-management
 ms.assetid: 
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.custom: sample
 ms.devlang: PowerShell
 ms.topic: article

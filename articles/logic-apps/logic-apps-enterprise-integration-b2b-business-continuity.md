@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/10/2017
 ms.author: padmavc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: e28c1410145d8da168a73e74251ac037997d1752
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 197df490690754730425231f358fde31d17dcfad
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -45,7 +45,7 @@ B2B のワークロードには、発注や請求などの金銭が関係する�
 
 4. Logic Apps 統合アカウントのビジネス継続性は、X12、AS2、EDIFACT の各 B2B プロトコルに基づいてサポートするために設計されています。  詳細な手順については、それぞれのリンクを選択してください。
 
-5. プライマリ リージョンのすべてのリソースを、セカンダリ リージョンにもデプロイすることをお勧めします。 プライマリ リージョンのリソースには、Azure SQL Database や Azure DocumentDB、メッセージングに使用する Service Bus/Azure Event Hubs、Azure API Management、Azure App Service の Logic Apps 機能などが含まれています。   
+5. プライマリ リージョンのすべてのリソースを、セカンダリ リージョンにもデプロイすることをお勧めします。 プライマリ リージョンのリソースには、Azure SQL Database や Azure Cosmos DB、メッセージングに使用する Azure Service Bus/Azure Event Hubs、Azure API Management、Azure App Service の Logic Apps 機能などが含まれています。   
 
 6. プライマリ リージョンからセカンダリ リージョンへの接続を確立します。 プライマリ リージョンから実行状態を取得するには、セカンダリ リージョンにロジック アプリを作成します。 ロジック アプリには、トリガーとアクションが必要です。 トリガーは、プライマリ リージョンの統合アカウントに接続される必要があります。 アクションは、セカンダリ リージョンの統合アカウントに接続される必要があります。 時間間隔に基づいて、トリガーはプライマリ リージョン実行状態テーブルのポーリングを実行し、新しいレコードが存在すればそれを取得します。 アクションはセカンダリ リージョンの統合アカウントのテーブルを更新します。 このプロセスは、プライマリ リージョンからセカンダリ リージョンに増分ランタイム状態を取得するのに役立ちます。
 

@@ -3,7 +3,7 @@ title: "Azure Log Analytics 検索リファレンス | Microsoft Docs"
 description: "Log Analytics 検索リファレンスでは、検索言語について説明し、データを検索するときに使用できる一般的なクエリ構文のオプションと、検索を絞り込むために使用できるフィルター式の情報を提供します。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: bwren
 manager: carmonm
 editor: 
 ms.assetid: 402615a2-bed0-4831-ba69-53be49059718
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
-ms.author: banders
+ms.author: bwren
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
 ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
@@ -613,7 +613,7 @@ Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | me
 
 ### <a name="join"></a>Join (結合)
 2 つのクエリの結果を結合して、1 つの結果セットを作成します。  次の表に示す複数の結合の種類をサポートしています。
-  
+
 | 結合の種類 | Description |
 |:--|:--|
 | 内部 (inner) | 両方のクエリで一致する値が含まれたレコードだけを返します。 |

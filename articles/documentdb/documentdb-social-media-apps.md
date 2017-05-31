@@ -1,28 +1,31 @@
 ---
-title: "DocumentDB の設計パターン: ソーシャル メディア アプリ | Microsoft Docs"
-description: "DocumentDB のストレージの柔軟性と他の Azure サービスを活用したソーシャル ネットワークの設計パターンについて説明します。"
+title: "Azure Cosmos DB の設計パターン: ソーシャル メディア アプリ | Microsoft Docs"
+description: "Azure Cosmos DB のストレージの柔軟性と他の Azure サービスを活用したソーシャル ネットワークの設計パターンについて説明します。"
 keywords: "ソーシャル メディア アプリ"
-services: documentdb
+services: cosmosdb
 author: ealsur
 manager: jhubbard
 editor: 
 documentationcenter: 
 ms.assetid: 2dbf83a7-512a-4993-bf1b-ea7d72e095d9
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2017
+ms.date: 05/10/2017
 ms.author: mimig
-translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: a49021d7887ee91da902e5c3dea8cbc6cb3de29d
-ms.lasthandoff: 03/17/2017
+redirect_url: https://aka.ms/acdbusecases
+ROBOTS: NOINDEX, NOFOLLOW
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: cdafca45ef6230af4a8730f0e2b7e41b237fa830
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="going-social-with-documentdb"></a>DocumentDB によるソーシャル化
+# <a name="going-social-with-azure-cosmos-db"></a>Azure Cosmos DB によるソーシャル化
 大規模に相互接続された社会で生きていると、日々の生活の中で **ソーシャル ネットワーク**に参加することになります。 ソーシャル ネットワークを使用して、友人や同僚、家族と交流し、共通の関心を持つ人々と情熱を分かち合うこともあります。
 
 エンジニアや開発者は、これらのネットワークがデータをどのように保存し、相互接続しているのか疑問に思っているかもしれません。また、特定のニッチ市場向けの新しいソーシャル ネットワークの構築や設計を任されている場合もあるでしょう。 そこで、"このすべてのデータはどのように保存されているのか" という大きな疑問が生じます。
@@ -44,7 +47,7 @@ ms.lasthandoff: 03/17/2017
 コンテンツを提供するために、こうした多数の結合を使用する何千ものクエリを解決できるだけの能力を備えた巨大な SQL インスタンスを使用することもできますが、実際のところ、よりシンプルなソリューションが存在するのに、そのようなインスタンスをわざわざ使用する必要があるでしょうか。
 
 ## <a name="the-nosql-road"></a>NoSQL への道
-[Azure で実行](http://neo4j.com/developer/guide-cloud-deployment/#_windows_azure) できる特殊なグラフ データベースがありますが、これらは安価ではなく、IaaS サービス (サービスとしてのインフラストラクチャ、主に Virtual Machines) とメンテナンスを必要とします。 この記事では、Azure の NoSQL データベースである [DocumentDB](https://azure.microsoft.com/services/documentdb/)で実行され、ほとんどのシナリオに対応できる低コストのソリューションに照準を合わせます。 [NoSQL](https://en.wikipedia.org/wiki/NoSQL) のアプローチの採用、JSON 形式でのデータの保存、[非正規化](https://en.wikipedia.org/wiki/Denormalization)の適用により、これまで複雑であった投稿を次のような 1 つの[ドキュメント](https://en.wikipedia.org/wiki/Document-oriented_database)に変換できます。
+[Azure で実行](http://neo4j.com/developer/guide-cloud-deployment/#_windows_azure) できる特殊なグラフ データベースがありますが、これらは安価ではなく、IaaS サービス (サービスとしてのインフラストラクチャ、主に Virtual Machines) とメンテナンスを必要とします。 この記事では、Azure の NoSQL データベースである [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) で実行され、ほとんどのシナリオに対応できる低コストのソリューションに照準を合わせます。 [NoSQL](https://en.wikipedia.org/wiki/NoSQL) のアプローチの採用、JSON 形式でのデータの保存、[非正規化](https://en.wikipedia.org/wiki/Denormalization)の適用により、これまで複雑であった投稿を次のような 1 つの[ドキュメント](https://en.wikipedia.org/wiki/Document-oriented_database)に変換できます。
 
     {
         "id":"ew12-res2-234e-544f",
@@ -103,13 +106,13 @@ Azure DocumentDB では、[カスタマイズ](documentdb-indexing-policies.md)�
         {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
     ]
 
-作成日順に並べ替えられた投稿を含む "最新の" ストリームや、過去 24 時間により多くの「いいね」を獲得した投稿を含む "最もホットな" ストリームを取得することもできます。また、フォロワーや関心事などのロジックに基づいたユーザーごとのカスタム ストリームも実装できますが、やはり投稿のリストに過ぎません。 これは、これらのリストの構築方法の問題ですが、読み取りパフォーマンスは引き続き制約を受けていません。 これらのリストのいずれかを取得したら、[IN 演算子](documentdb-sql-query.md#WhereClause)を使用して DocumentDB に対して 1 つのクエリを発行し、投稿のページを一度に取得します。
+作成日順に並べ替えられた投稿を含む "最新の" ストリームや、過去 24 時間により多くの「いいね」を獲得した投稿を含む "最もホットな" ストリームを取得することもできます。また、フォロワーや関心事などのロジックに基づいたユーザーごとのカスタム ストリームも実装できますが、やはり投稿のリストに過ぎません。 これは、これらのリストの構築方法の問題ですが、読み取りパフォーマンスは引き続き制約を受けていません。 これらのリストのいずれかを取得したら、[IN 演算子](documentdb-sql-query.md#WhereClause)を使用して Cosmos DB に対して 1 つのクエリを発行し、投稿のページを一度に取得します。
 
 フィードのストリームは、[Azure App Services](https://azure.microsoft.com/services/app-service/) のバックグラウンド プロセス ([Webjobs](../app-service-web/web-sites-create-web-jobs.md)) を使用して構築できました。 投稿が作成されたら、[Azure Storage](https://azure.microsoft.com/services/storage/) [Queues](../storage/storage-dotnet-how-to-use-queues.md) を使用してバックグラウンド処理をトリガーし、[Azure Webjobs SDK](../app-service-web/websites-dotnet-webjobs-sdk.md) を使用して Webjobs をトリガーすることで、独自のカスタム ロジックに基づいてストリーム内での投稿の伝達を実装できます。 
 
 この同じ手法を使用して最終的に一貫した環境を構築することで、投稿に対する評価と「いいね」を遅延的に処理できます。
 
-フォロワーの処理はさらに複雑です。 DocumentDB にはドキュメントの最大サイズの制限があり、サイズの大きいドキュメントの読み取りと書き込みは、アプリケーションのスケーラビリティに影響を与えます。 よって次のような構造のドキュメントとしてフォロワーを保存する方法が考えられます。
+フォロワーの処理はさらに複雑です。 Cosmos DB にはドキュメントの最大サイズの制限があり、サイズの大きいドキュメントの読み取りと書き込みは、アプリケーションのスケーラビリティに影響を与えます。 よって次のような構造のドキュメントとしてフォロワーを保存する方法が考えられます。
 
     {
         "id":"234d-sd23-rrf2-552d",
@@ -134,7 +137,7 @@ Azure DocumentDB では、[カスタマイズ](documentdb-indexing-policies.md)�
         "totalPoints":11342
     }
 
-さらに、フォロワーの実際のグラフは、単純な "A-follows-B" のようなグラフの保存と取得を可能にする [拡張機能](https://github.com/richorama/AzureStorageExtensions#azuregraphstore) を使用して、Azure Storage テーブルに保存することができます。 この方法では、正確なフォロワー リストを必要なときに取得するプロセスを Azure Storage テーブルに委任できますが、簡単な数値の検索には引き続き DocumentDB を使用します。
+さらに、フォロワーの実際のグラフは、単純な "A-follows-B" のようなグラフの保存と取得を可能にする [拡張機能](https://github.com/richorama/AzureStorageExtensions#azuregraphstore) を使用して、Azure Storage テーブルに保存することができます。 この方法では、正確なフォロワー リストを必要なときに取得するプロセスを Azure Storage テーブルに委任できますが、簡単な数値の検索には引き続き Cosmos DB を使用します。
 
 ## <a name="the-ladder-pattern-and-data-duplication"></a>"ラダー (梯子)" パターンとデータの重複
 投稿を参照する JSON ドキュメントでお気付きかと思いますが、同じユーザーが何度も出現します。 皆さんの推測どおり、この非正規化を考慮すると、これはユーザーを表す情報が複数の場所に存在する可能性があることを意味します。
@@ -165,7 +168,7 @@ Azure DocumentDB では、[カスタマイズ](documentdb-indexing-policies.md)�
 
 最小の段はユーザーチャンクと呼ばれます。これは、ユーザーを識別する情報の最小単位であり、データの重複に対して使用されます。 重複するデータのサイズを "表示する" 情報だけに減らすことで、大規模な更新の可能性を低減しています。
 
-真ん中の段は "ユーザー" と呼ばれます。これは、DocumentDB での最もパフォーマンスに依存するクエリで使用される完全なデータであり、最も頻繁にアクセスされる重要なデータです。 ここには、ユーザーチャンクで表される情報が含まれます。
+真ん中の段は "ユーザー" と呼ばれます。これは、Cosmos DB での最もパフォーマンスに依存するクエリで使用される完全なデータであり、最も頻繁にアクセスされる重要なデータです。 ここには、ユーザーチャンクで表される情報が含まれます。
 
 最大の段が "拡張ユーザー" です。 拡張ユーザーには、すべての重要なユーザー情報と、実際には迅速に読み取る必要のないデータや (ログイン プロセスのように) 最終的に使用するデータが含まれます。 このデータは、DocumentDB の外部、Azure SQL Database、または Azure Storage Tables に保存できます。
 
@@ -221,11 +224,11 @@ Azure Search の詳細については、「 [A Hitchhikers Guide to Search (検�
 利用できる別のオプションとして、[Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services) を使用したユーザーのコンテンツの分析があります。ユーザーが何を書いているかを [Text Analytics API](https://www.microsoft.com/cognitive-services/en-us/text-analytics-api) で分析してコンテンツを深く理解できるだけではなく、望ましくないコンテンツや成人向けのコンテンツを [Computer Vision API](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api) で検出することもできます。 Cognitive Services には、Machine Learning の知識を必要とせずに使用できる独創的なソリューションがたくさん含まれています。
 
 ## <a name="a-planet-scale-social-experience"></a>世界規模のソーシャル エクスペリエンス
-最後に触れなければならない重要なトピックは**スケーラビリティ**です。 アーキテクチャを設計するときは、データの処理量の増加や地理的範囲の拡大に対応しなければならないため、各コンポーネントが自動的に拡張できることが非常に重要です。 DocumentDB を使用すると、こうした複雑な作業を**ターンキー エクスペリエンス**として実現できます。
+最後に触れなければならない重要なトピックは**スケーラビリティ**です。 アーキテクチャを設計するときは、データの処理量の増加や地理的範囲の拡大に対応しなければならないため、各コンポーネントが自動的に拡張できることが非常に重要です。 Cosmos DB を使用すると、こうした複雑な作業を**ターンキー エクスペリエンス**として実現できます。
 
-DocumentDB では、指定された**パーティション キー** (ドキュメントの属性の 1 つとして定義) に基づいてパーティションが自動作成されるため、[動的なパーティション分割](https://azure.microsoft.com/blog/10-things-to-know-about-documentdb-partitioned-collections/)機能をすぐに使用できます。 使用可能な[ベスト プラクティス](documentdb-partition-data.md#designing-for-partitioning)を考慮しながら、適切なパーティション キーをデザイン時に定義する必要があります。ソーシャル エクスペリエンスの場合、パーティション分割戦略は、クエリ実行方法と書き込み方法に合わせる必要があります。クエリ実行については、同じパーティション内で読み取ることが望ましく、書き込みについては、複数のパーティションに書き込みを分散させることで "ホット スポット" を回避します。 たとえば、一時的なキー (日/月/週)、コンテンツのカテゴリ、地理的リージョン、ユーザーに基づいてパーティション分割でき、どの方法でパーティション分割するかは、データに対してどのようにクエリを実行し、そのデータをソーシャル エクスペリエンスでどのように表示するかによって異なります。 
+Cosmos DB では、指定された**パーティション キー** (ドキュメントの属性の 1 つとして定義) に基づいてパーティションが自動作成されるため、[動的なパーティション分割](https://azure.microsoft.com/blog/10-things-to-know-about-documentdb-partitioned-collections/)機能をすぐに使用できます。 使用可能な[ベスト プラクティス](../cosmos-db/partition-data.md#designing-for-partitioning)を考慮しながら、適切なパーティション キーをデザイン時に定義する必要があります。ソーシャル エクスペリエンスの場合、パーティション分割戦略は、クエリ実行方法と書き込み方法に合わせる必要があります。クエリ実行については、同じパーティション内で読み取ることが望ましく、書き込みについては、複数のパーティションに書き込みを分散させることで "ホット スポット" を回避します。 たとえば、一時的なキー (日/月/週)、コンテンツのカテゴリ、地理的リージョン、ユーザーに基づいてパーティション分割でき、どの方法でパーティション分割するかは、データに対してどのようにクエリを実行し、そのデータをソーシャル エクスペリエンスでどのように表示するかによって異なります。 
 
-特筆すべきは、DocumentDB では、すべてのパーティションでクエリ ([集計](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)を含む) が透過的に実行される点です。データが拡大しても、ロジックを追加する必要はありません。
+特筆すべきは、Cosmos DB では、すべてのパーティションでクエリ ([集計](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)を含む) が透過的に実行される点です。データが拡大しても、ロジックを追加する必要はありません。
 
 トラフィックやリソースの消費量 ([RU](documentdb-request-units.md) (要求ユニット) で測定) は、時間の経過と共に増加します。 ユーザーベースが拡大し、ユーザーによるコンテンツの作成や読み取りが多くなり始めると、ご自身の読み書きの頻度も増えるため、**スループットの拡張**機能が重要になってきます。 RU は非常に簡単に増やすことができます。RU を増やすには、Azure Portal で数回クリックするか [API でコマンドを発行](https://docs.microsoft.com/rest/api/documentdb/replace-an-offer)します。
 
@@ -235,7 +238,7 @@ DocumentDB では、指定された**パーティション キー** (ドキュ�
 
 でも、待ってください... やがては、プラットフォームのユーザー エクスペリエンスが最適ではないことに気が付きます。自分のリージョンからかなり離れた場所にユーザーがいる場合、その待ち時間は相当なものになります。でも、そのユーザーにはプラットフォームの使用をやめてほしくありません。 簡単に**グローバル展開**できる手段さえあれば、と思うでしょう... ところが、手段はあるのです。
 
-DocumentDB を使用すると、数回のクリックで[データをグローバルかつ透過的にレプリケート](documentdb-portal-global-replication.md)し、使用可能なリージョンの中で、[クライアント コード](documentdb-developing-with-multiple-regions.md)からそのリージョンを選択できます。 また、これは[複数のフェールオーバー リージョン](documentdb-regional-failovers.md)を確保できることも意味します。 
+Cosmos DB を使用すると、数回のクリックで[データをグローバルかつ透過的にレプリケート](../cosmos-db/tutorial-global-distribution-documentdb.md)し、使用可能なリージョンの中で、[クライアント コード](../cosmos-db/tutorial-global-distribution-documentdb.md)からそのリージョンを選択できます。 また、これは[複数のフェールオーバー リージョン](documentdb-regional-failovers.md)を確保できることも意味します。 
 
 データをグローバルにレプリケートするときは、クライアントがそのデータを利用できるかどうかを確認する必要があります。 Web フロントエンドを使用する場合、またはモバイル クライアントから API にアクセスする場合は、[Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) をデプロイし、必要なリージョンすべてに Azure App Service のクローンを作成して、[パフォーマンス構成](../app-service-web/web-sites-traffic-manager.md)を使用しながら、拡張されたグローバル カバレッジをサポートできます。 フロントエンドまたは API にアクセスしたクライアントは、最も近い App Service にルーティングされ、その APP Service はローカルの DocumentDB レプリカに接続されます。
 
@@ -246,11 +249,7 @@ DocumentDB を使用すると、数回のクリックで[データをグロー�
 
 ![ソーシャル ネットワーキングでの Azure サービス間の対話を示すダイアグラム](./media/documentdb-social-media-apps/social-media-apps-azure-solution.png)
 
-実際には、この種のシナリオに対応する特効薬はありません。優れたソーシャル アプリケーションを提供する Azure DocumentDB の速度と自由度、Azure Search のような最高クラスの検索ソリューションの背後にあるインテリジェンス、言語に依存しないアプリケーションではなく、強力なバックグラウンド プロセスをホストする Azure App Services の柔軟性、大量のデータを保存する拡張可能な Azure Storage と Azure SQL Database、プロセスにフィードバックを提供することができ、適切なコンテンツを適切なユーザーに提供するうえで役立つ知識とインテリジェンスを生み出す Azure Machine Learning の分析力など、優れたサービスの組み合わせによって生まれる相乗効果により、優れた体験を構築することが可能になります。
+実際には、この種のシナリオに対応する特効薬はありません。優れたソーシャル アプリケーションを提供する Azure Cosmos DB の速度と自由度、Azure Search のような最高クラスの検索ソリューションの背後にあるインテリジェンス、言語に依存しないアプリケーションではなく、強力なバックグラウンド プロセスをホストする Azure App Services の柔軟性、大量のデータを保存する拡張可能な Azure Storage と Azure SQL Database、プロセスにフィードバックを提供することができ、適切なコンテンツを適切なユーザーに提供するうえで役立つ知識とインテリジェンスを生み出す Azure Machine Learning の分析力など、優れたサービスの組み合わせによって生まれる相乗効果により、優れた体験を構築することが可能になります。
 
 ## <a name="next-steps"></a>次のステップ
-データのモデル化の詳細については、「 [DocumentDB のデータのモデル化](documentdb-modeling-data.md) 」をご覧ください。 DocumentDB の他のユース ケースに関心がある場合は、「 [DocumentDB の一般的なユース ケース](documentdb-use-cases.md)」をご覧ください。
-
-または、 [DocumentDB のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)に従って、DocumentDB の詳細を確認してください。
-
-
+Cosmos DB のユース ケースの詳細については、[Cosmos DB の一般的なユース ケース](documentdb-use-cases.md)に関するページをご覧ください。

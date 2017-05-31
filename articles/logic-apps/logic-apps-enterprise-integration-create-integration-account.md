@@ -13,10 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2017
-ms.author: mandia
-translationtype: Human Translation
+ms.author: LADocs; mandia
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
 ms.openlocfilehash: 2a7ecec310f4e321417364eee854409b2f85e2d3
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/10/2017
 
 

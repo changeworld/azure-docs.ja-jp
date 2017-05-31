@@ -15,9 +15,10 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 02/08/2017
 ms.author: heidist
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 08682b7986cc2210ed21f254e2a9a63b5355e583
 ms.openlocfilehash: bfed40417d800e86de7ef437c42162b1e1a0d886
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/24/2017
 
 ---
@@ -75,7 +76,7 @@ Azure Search では最初に、1 つのパーティションと&1; つのレプ�
 
 Azure Search のサービス レベル アグリーメント (SLA) は、クエリ操作と、ドキュメントの追加、更新、削除から成るインデックスの更新とを対象としています。
 
-### <a name="index-availability-during-a-rebuild"></a>再構築中のインデックスの可用性###
+### <a name="index-availability-during-a-rebuild"></a>再構築中のインデックスの可用性
 
 Azure Search の高可用性は、クエリのほか、インデックスの再構築を伴わないインデックスの更新に関連しています。 フィールドの削除、データ型の変更、フィールドの名前の変更を行う場合は、インデックスの再構築が必要になります。 インデックスを再構築するには、いったんインデックスを削除した後、インデックスを再作成し、データを再読み込みする必要があります。
 

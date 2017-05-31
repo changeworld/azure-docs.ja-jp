@@ -1,6 +1,6 @@
 ---
-title: "Azure 上の Spark にある Jupyter Notebook でのカスタム Maven パッケージの使用 | Microsoft Docs"
-description: "HDInsight Spark クラスター内の Jupyter Notebook で外部の Spark パッケージを使用するための構成手順を説明します。"
+title: "Azure HDInsight 上の Spark にある Jupyter でのカスタム Maven パッケージの使用 | Microsoft Docs"
+description: "HDInsight Spark クラスター内の Jupyter Notebook でカスタム Maven パッケージを使用するための構成手順を説明します。"
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: db2e8391bcae98b2ef0fb93fb4e4e98a287b4846
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: fed11346e43d460b2def53cd1c0addfe0557d480
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/06/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -42,7 +42,6 @@ HDInsight 上の Apache Spark クラスターにある Jupyter Notebook を、�
 ## <a name="prerequisites"></a>前提条件
 次のものが必要です。
 
-* Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 * HDInsight での Apache Spark クラスター。 手順については、 [Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>Jupyter Notebook で外部のパッケージを使用する
@@ -59,11 +58,11 @@ HDInsight 上の Apache Spark クラスターにある Jupyter Notebook を、�
 
 3. 新しい Notebook を作成します。 **[新規]** をクリックし、**[Spark]** をクリックします。
    
-    ![新しい Jupyter Notebook の作成](./media/hdinsight-apache-spark-jupyter-notebook-use-external-packages/hdispark.note.jupyter.createnotebook.png "新しい Jupyter Notebook の作成")
+    ![新しい Jupyter Notebook の作成](./media/hdinsight-apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "新しい Jupyter Notebook の作成")
 
 4. Untitled.pynb という名前の新しい Notebook が作成されて開かれます。 上部の Notebook 名をクリックし、わかりやすい名前を入力します。
    
-    ![Notebook の名前を指定](./media/hdinsight-apache-spark-jupyter-notebook-use-external-packages/hdispark.note.jupyter.notebook.name.png "Notebook の名前を指定")
+    ![Notebook の名前を指定](./media/hdinsight-apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png "Notebook の名前を指定")
 
 5. 外部のパッケージを使用するようにノートブックを構成するには `%%configure` マジックを使用します。 外部のパッケージを使用するノートブックでは必ず、最初のコード セルで `%%configure` マジックを呼び出すようにしてください。 そうすることでセッションが開始される前に、指定のパッケージを使用するようにカーネルが構成されます。
 

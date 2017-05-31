@@ -8,13 +8,13 @@ manager: mbaldwin
 ms.service: key-vault
 ms.topic: article
 ms.workload: identity
-ms.date: 04/21/2017
+ms.date: 05/10/2017
 ms.author: bruceper
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 0a319f25149c41fcdde0722ce232b3e229b95d0d
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: b046e95e2167009727f6ea8f3dd237619c61434f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -28,6 +28,15 @@ Key Vault を使用すると、アプリケーション内から機密情報に�
 - Key Vault の 2016 年 9 月のリリース以降、アプリケーションで Key Vault の[証明書](https://docs.microsoft.com/rest/api/keyvault/certificate-operations)を使用できるようになりました。 詳細については、「[About keys, secrets, and certificates (キー、シークレット、証明書について)](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates)」を参照してください。
 
 Azure Key Vault の全般的な情報については、「 [Azure Key Vault とは](key-vault-whatis.md)」を参照してください。
+
+## <a name="public-preview---may-10-2017"></a>パブリック プレビュー - 2017 年 5 月 10 日
+
+>[!NOTE]
+>この Azure Key Vault のプレビュー バージョンでは、**論理的な削除**機能のみがプレビュー段階です。 全体としては、Azure Key Vault は完全な運用サービスです。
+
+このプレビューでは、新しい論理的な削除機能や、Key Vault と Key Vault オブジェクトの回復可能な削除を利用できるほか、開発者向けのインターフェイス、[.NET/C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.keyvault/)、[REST](https://docs.microsoft.com/rest/api/keyvault/)、および [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) が更新されています。 
+
+新しい論理的な削除機能の詳細については、「[Azure Key Vault soft delete overview (Azure Key Vault の論理的な削除の概要)](key-vault-ovw-soft-delete.md)」を参照してください。
 
 ## <a name="videos"></a>ビデオ
 
@@ -108,6 +117,11 @@ Key Vault を使用したり、Key Vault と統合したりする他のシナリ
 - [Azure Disk Encryption](../security/azure-security-disk-encryption.md) では、Windows の業界標準である [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 機能と Linux の [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 機能を利用して、OS とデータ ディスクのボリュームの暗号化を提供します。 ソリューションは Azure Key Vault と統合されています。これは、Key Vault サブスクリプションでディスク暗号化キーとシークレットを制御および管理し、Azure ストレージで保存中の仮想マシン ディスク内のすべてのデータを確実に暗号化する場合に役立ちます。
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md) では、アカウントに格納されているデータを暗号化するオプションを提供します。 キーの管理に関して、Data Lake Store には、Data Lake Store に格納されているすべてのデータを暗号化解除するのに必要なマスター暗号化キー (MEK) を管理するための 2 つのモードが用意されています。 Data Lake Store に MEK の管理を任せることも、Azure Key Vault アカウントを使用して MEK の所有権を保持することもできます。 キー管理のモードは、Data Lake Store アカウントの作成時に指定します。 
 - [Azure Information Protection](/information-protection/plan-design/plan-implement-tenant-key) では、独自のテナント キーを管理できます。 たとえば、テナント キーの管理をマイクロソフトに任せる (既定値) 代わりに、組織に適用される特定の規則を遵守する独自のテナント キーを管理できます。 独自のテナント キーの管理は、BYOK (Bring Your Own Key: 独自のキーを持ち込むの意) とも呼ばれます。
+
+## <a name="key-vault-overviews-and-concepts"></a>Key Vault の概要と概念
+
+- [Key Vault セキュリティ ワールド](key-vault-ovw-security-worlds.md)
+- [Key Vault の論理的な削除](key-vault-ovw-soft-delete.md)
 
 ## <a name="social"></a>ソーシャル
 

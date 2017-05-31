@@ -1,6 +1,7 @@
 ---
-title: "Hive ODBC ドライバーを使用した Excel から Hadoop への接続 | Microsoft Docs"
-description: "Excel 用の Microsoft Hive ODBC ドライバーを使用できるようにセットアップし、HDInsight クラスターのデータを照会する方法を説明します。"
+title: "Hive ODBC ドライバーを使用した Excel から Hadoop への接続 - Azure HDInsight | Microsoft Docs"
+description: "Excel 用の Microsoft Hive ODBC ドライバーを使用できるようにセットアップし、Microsoft Excel から HDInsight クラスターのデータを照会する方法を説明します。"
+keywords: hadoop excel,hive excel,hive odbc
 services: hdinsight
 documentationcenter: 
 author: mumian
@@ -9,21 +10,23 @@ tags: azure-portal
 editor: cgronlun
 ms.assetid: a7665a14-0211-4521-b3e7-3b26e8029cc0
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/06/2017
+ms.date: 05/12/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: 6407c371bc51461a05429fabaf38d3f9bc80d32c
-ms.openlocfilehash: 1f0b951e7b3ffc328604ce799590d478da36915d
-ms.lasthandoff: 02/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: 62a5b47d3b3fe452bfdff3005192e5066bb7c7da
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/13/2017
 
 
 ---
-# <a name="connect-excel-to-hadoop-with-the-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーを使用した Excel から Hadoop への接続
+# <a name="connect-excel-to-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーを使用した Excel から Azure HDInsight の Hadoop への接続
+
 [!INCLUDE [ODBC-JDBC-selector](../../includes/hdinsight-selector-odbc-jdbc.md)]
 
 Microsoft のビッグ データ ソリューションでは、Azure HDInsight を使用してデプロイした Apache Hadoop クラスターに Microsoft Business Intelligence (BI) コンポーネントを統合します。 たとえば、Microsoft Hive Open Database Connectivity (ODBC) ドライバーを使用すれば、HDInsight で Hadoop クラスターの Hive データ ウェアハウスに Excel を接続できます。
@@ -37,7 +40,7 @@ Microsoft のビッグ データ ソリューションでは、Azure HDInsight �
 
 **前提条件**:
 
-この記事を読み始める前に、次の項目を用意する必要があります。
+この記事の操作を始める前に、以下を用意する必要があります。
 
 * **HDInsight クラスター**。 その作成方法については、[Azure HDInsight の概要][hdinsight-get-started]に関するページをご覧ください。
 * **ワークステーション** 。
@@ -45,7 +48,7 @@ Microsoft のビッグ データ ソリューションでは、Azure HDInsight �
 ## <a name="install-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーのインストール
 Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-odbc-driver-download]からダウンロードしてインストールします。
 
-このドライバーは Windows 7、Windows 8、Windows 10、Windows Server 2008 R2、Windows Server 2012 のいずれかの 32 ビットまたは 64 ビット バージョンにインストールすることができ、これによって Azure HDInsight (バージョン 1.6 以降) および Azure HDInsight Emulator (v.1.0.0.0 以降) への接続が許可されます。 ODBC ドライバーを使用するアプリケーションのバージョンに合致したバージョンをインストールする必要があります。 このチュートリアルでは、Office Excel のドライバーが使用されます。
+このドライバーをインストールできるのは、32 ビットまたは 64 ビットバージョンの Windows 7、Windows 8、Windows 10、Windows Server 2008 R2、および Windows Server 2012 です。 ドライバーを使用して、Azure HDInsight (バージョン 1.6 以降) と Azure HDInsight Emulator (v.1.0.0.0 以降) に接続できます。 ODBC ドライバーを使用するアプリケーションのバージョンに合致したバージョンをインストールする必要があります。 このチュートリアルでは、Office Excel のドライバーが使用されます。
 
 ## <a name="create-hive-odbc-data-source"></a>Hive ODBC データ ソースの作成
 次の手順に従って、Hive ODBC データ ソースを作成します。
@@ -53,7 +56,8 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
 1. Windows 8 または Windows 10 で、Windows キーを押してスタート画面を開き、 **データ ソース**を入力します。
 2. 使用している Office バージョンに応じて、**[ODBC データ ソースのセットアップ (32 ビット)]** または **[ODBC データ ソースのセットアップ (64 ビット)]** をクリックします。 Windows 7 を使用している場合は、**[管理ツール]** の **[ODBC データ ソース (32 ビット)]** または **[ODBC データ ソース (64 ビット)]** をクリックします。 **[ODBC データ ソース アドミニストレーター]** ダイアログが開きます。
    
-    ![ODBC データ ソース アドミニストレーター][img-hdi-simbahiveodbc-datasource-admin]
+    ![OBDC データ ソース アドミニストレーター](./media/hdinsight-connect-excel-hive-ODBC-driver/HDI.SimbaHiveOdbc.DataSourceAdmin1.png "ODBC データ ソース アドミニストレーターを使用して DSN を構成")
+
 3. ユーザー DNS から、**[追加]** をクリックすると、**データ ソースの新規作成**ウィザードが開きます。
 4. **[Microsoft Hive ODBC ドライバー]** を選択し、**[完了]** をクリックします。 **[Microsoft Hive ODBC ドライバーの DNS セットアップ]** ダイアログが開きます。
 5. 次の値を入力または選択します。
@@ -67,7 +71,7 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
    |  Hive サーバーの種類 |<strong>Hive Server 2</strong> を選択します。 |
    |  メカニズム |<strong>Azure HDInsight サービス</strong>を選択します。 |
    |  HTTP パス |空白のままにします。 |
-   |  ユーザー名 |HDInsight クラスター ユーザーのユーザー名を入力します。 これは、クラスターのプロビジョニング処理中に作成されるユーザー名です。 簡易作成オプションを使用する場合、既定のユーザー名は <strong>admin</strong> です。 |
+   |  ユーザー名 |HDInsight クラスター ユーザーの HTTP ユーザー名を入力します。 既定のユーザー名は <strong>admin</strong>です。 |
    |  パスワード |HDInsight クラスター ユーザーのパスワードを入力します。 |
    
     </table>
@@ -80,7 +84,7 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
    |  ブロック単位でフェッチされた行 |大量のレコードをフェッチする場合、このパラメーターを調整してパフォーマンスを最適化する必要がある場合があります。 |
    |  既定の文字列の列の長さ、バイナリ列の長さ、10 進数の列の桁数 |データ型の長さおよび精度は、データが返される方法に影響する可能性があります。 精度が失われたり、切り捨てられたりするために間違った情報が返されます。 |
 
-    ![[詳細オプション]][img-HiveOdbc-DataSource-AdvancedOptions]
+    ![詳細オプション](./media/hdinsight-connect-excel-hive-ODBC-driver/HDI.HiveOdbc.DataSource.AdvancedOptions1.png "DSN の詳細構成オプション")
 
 1. **[テスト]** をクリックして、データ ソースをテストします。 データ ソースが正しく構成された場合、 *テストは無事に完了しました。*と表示されます。
 2. **[OK]** をクリックして [テスト] ダイアログを閉じます。 これで新しいデータ ソースが **[ODBC データ ソース アドミニストレーター]**ダイアログに表示されます。
@@ -90,20 +94,20 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
 ここでは、上記の手順で作成した ODBC データ ソースを使用して、Hive テーブルから Excel ブックへデータをインポートする方法を説明します。
 
 1. Excel で新しいブックまたは既存のブックを開きます。
-2. **[データ]** タブの **[その他のデータ ソース]** をクリックし、**[データ接続ウィザード]** をクリックして**データ接続ウィザード**を開きます。
+2. **[データ]** タブの **[その他のデータ ソース]** をクリックし、**[データ接続ウィザード]** をクリックして **データ接続ウィザード**を開きます。
    
-    ![データ接続ウィザードを開く][img-hdi-simbahiveodbc.excel.dataconnection]
+    ![データ接続ウィザードを開く](./media/hdinsight-connect-excel-hive-ODBC-driver/HDI.SimbaHiveOdbc.Excel.DataConnection1.png "データ接続ウィザードを開く")
 3. データ ソースとして **[ODBC DSN]** を選択し、**[次へ]** をクリックします。
 4. ODBC データ ソースから、前の手順で作成したデータ ソース名を選択し、**[次へ]** をクリックします。
 5. ウィザードにクラスターのパスワードを再入力し、必要に応じて再度 **[テスト]** をクリックして構成を確認します。
 6. **[OK]** をクリックして [テスト] ダイアログを閉じます。
-7. **[OK]**をクリックします。 **[データベースとテーブルの選択]** ダイアログが開くのを待ちます。 この処理には数秒かかります。
+7. **[OK]**をクリックします。 **[データベースとテーブルの選択]** ダイアログが開くのを待ちます。 この手順には数秒かかります。
 8. インポートするテーブルを選択し、 **[次へ]**をクリックします。 *hivesampletable* は HDInsight クラスターに付属する Hive テーブルのサンプルです。  作成していない場合は、ここで選択できます。 Hive クエリの実行および Hive テーブルの作成の詳細については、「[HDInsight での Hive の使用][hdinsight-use-hive]」を参照してください。
 9. **[完了]**をクリックします。
-10. **[データのインポート]** ダイアログでは、クエリを変更または指定できます。 これを行うには、 **[プロパティ]**をクリックします。 この処理には数秒かかります。
+10. **[データのインポート]** ダイアログでは、クエリを変更または指定できます。 これを行うには、 **[プロパティ]**をクリックします。 この手順には数秒かかります。
 11. **[定義]** タブをクリックして、**[コマンド文字列]** ボックスの Hive select ステートメントに「**LIMIT 200**」を追加します。 変更によって、返されるレコード セットが 200 に制限されます。
     
-    ![接続のプロパティ][img-hdi-simbahiveodbc-excel-connectionproperties]
+    ![接続プロパティ](./media/hdinsight-connect-excel-hive-ODBC-driver/HDI.SimbaHiveODBC.Excel.ConnectionProperties1.png "DSN 接続プロパティを構成")
 12. **[OK]** をクリックして [接続プロパティ] ダイアログを閉じます。
 13. **[OK]** をクリックして **[データのインポート]** ダイアログを閉じます。  
 14. パスワードを再入力して **[OK]**をクリックします。 データが Excel にインポートされるまでに、数秒かかります。
@@ -124,8 +128,5 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
 
 [hive-odbc-driver-download]: http://go.microsoft.com/fwlink/?LinkID=286698
 
-[img-hdi-simbahiveodbc-datasource-admin]: ./media/hdinsight-connect-excel-hive-ODBC-driver/HDI.SimbaHiveOdbc.DataSourceAdmin1.png
-[img-HiveOdbc-DataSource-AdvancedOptions]: ./media/hdinsight-connect-excel-hive-ODBC-driver/HDI.HiveOdbc.DataSource.AdvancedOptions1.png
-[img-hdi-simbahiveodbc-excel-connectionproperties]: ./media/hdinsight-connect-excel-hive-ODBC-driver/HDI.SimbaHiveODBC.Excel.ConnectionProperties1.png
-[img-hdi-simbahiveodbc.excel.dataconnection]: ./media/hdinsight-connect-excel-hive-ODBC-driver/HDI.SimbaHiveOdbc.Excel.DataConnection1.png
+
 

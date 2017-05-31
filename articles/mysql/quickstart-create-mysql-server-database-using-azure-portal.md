@@ -13,10 +13,10 @@ ms.topic: hero-article
 ms.tgt_pltfrm: portal
 ms.date: 05/10/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 25bfd2c6c25ddb8747dec58fdc68f904f81127fa
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 85bb0396809297f0efb7323bef081055f17ede62
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/25/2017
 
 ---
 
@@ -28,8 +28,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="log-in-to-azure"></a>Azure へのログイン
 Web ブラウザーを開いて、[Microsoft Azure Portal](https://portal.azure.com/) にアクセスします。 資格情報を入力してポータルにログインします。 既定のビューはサービス ダッシュボードです。
-
-![Azure Portal - ログインとダッシュボード](./media/quickstart-create-mysql-server-database-using-azure-portal/1_portal-login.png)
 
 ## <a name="create-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーの作成
 
@@ -99,16 +97,16 @@ MySQL サーバーに複数のデータベースを作成することができ�
 
 | **パラメーター** | **説明** |
 |----------------|-----------------|
-|    *Connection Name* | この接続の名前を指定します (任意に指定できます)。 |
-| *Connection Method* | Standard (TCP/IP) を選択します。 |
+|    *Connection Name* | この接続の名前を指定します (任意に指定できます) |
+| *Connection Method* | Standard (TCP/IP) を選択します |
 | *Hostname* | mycliserver.database.windows.net (前にメモしておいたサーバー名) |
 | *ポート* | 3306 |
 | *ユーザー名* | myadmin@mycliserver (前にメモしておいたサーバー管理者ログイン) |
-| *パスワード* | 資格情報コンテナーに管理者アカウントのパスワードを格納することができます。 |
+| *パスワード* | 資格情報コンテナーに管理者アカウントのパスワードを格納することができます |
 
 ![新しい接続のセットアップ](./media/quickstart-create-mysql-server-database-using-azure-portal/setup-new-connection.png)
 
-3.    **[Test Connection]** をクリックして、すべてのパラメーターが正しく構成されているかをテストします。
+3.    **[Test Connection] (接続のテスト)** をクリックして、すべてのパラメーターが正しく構成されているかをテストします。
 
 4.    これで、作成したばかりの接続をクリックして、サーバーに正常に接続できます。
 

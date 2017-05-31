@@ -1,36 +1,37 @@
 ---
-title: "DocumentDB で TTL を使ってデータを期限切れにする | Microsoft Docs"
-description: "Microsoft Azure DocumentDB では TTL を使って、一定期間経過後にシステムからドキュメントを自動的に消去することができます。"
-services: documentdb
+title: "Azure Cosmos DB で TTL を使ってデータを期限切れにする | Microsoft Docs"
+description: "Microsoft Azure Cosmos DB では TTL を使って、一定期間経過後にシステムからドキュメントを自動的に消去することができます。"
+services: cosmosdb
 documentationcenter: 
 keywords: "有効期限"
 author: arramac
 manager: jhubbard
 editor: 
 ms.assetid: 25fcbbda-71f7-414a-bf57-d8671358ca3f
-ms.service: documentdb
+ms.service: cosmosdb
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/13/2017
 ms.author: arramac
-translationtype: Human Translation
-ms.sourcegitcommit: 1ad5307054dbd860f9c65db4b82ea5f560a554c8
-ms.openlocfilehash: 14a06dd20547f2910b2321372b27d9f777e54cc7
-ms.lasthandoff: 01/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 7a1d4c722fdb926c43b23e333f9fa558ba163b65
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="expire-data-in-documentdb-collections-automatically-with-time-to-live"></a>TTL (Time to Live) を使って DocumentDB コレクションのデータの有効期限が自動的に切れるようにする
+# <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>TTL (Time to Live) を使って Azure Cosmos DB コレクションのデータの有効期限が自動的に切れるようにする
 アプリケーションで膨大なデータを生成し、格納することができます。 このデータの一部 (コンピューターによって生成されるイベント データ、ログ、およびユーザー セッション情報など) は、一定期間でのみ有効です。 アプリケーションで必要以上のデータがある場合は、そのデータを消去し、アプリケーションでのストレージの必要性を減らすのが安全です。
 
-Microsoft Azure DocumentDB では TTL を使って、一定期間経過後にデータベースからドキュメントを自動的に消去することができます。 既定の TTL はコレクション レベルで設定し、ドキュメントごとにオーバーライドすることができます。 TTL をコレクションの既定値として、またはドキュメント レベルで設定すると、DocumentDB は、最後に変更されてから一定期間 (秒単位) 経過後に存在するドキュメントを自動的に削除します。
+Microsoft Azure Cosmos DB では TTL を使って、一定期間経過後にデータベースからドキュメントを自動的に消去することができます。 既定の TTL はコレクション レベルで設定し、ドキュメントごとにオーバーライドすることができます。 TTL をコレクションの既定値として、またはドキュメント レベルで設定すると、Cosmos DB は、最後に変更されてから一定期間 (秒単位) 経過後に存在するドキュメントを自動的に削除します。
 
-DocumentDB の TTL では、ドキュメントの最終変更時に対してオフセットを使用します。 そのために、すべてのドキュメントに存在する `_ts` フィールドを使用します。 _ts フィールドは、日付と時刻を表す UNIX 形式のエポック タイムスタンプです。 この `_ts` フィールドは、ドキュメントが変更されるたびに更新されます。 
+Cosmos DB の TTL では、ドキュメントの最終変更時に対してオフセットを使用します。 そのために、すべてのドキュメントに存在する `_ts` フィールドを使用します。 _ts フィールドは、日付と時刻を表す UNIX 形式のエポック タイムスタンプです。 この `_ts` フィールドは、ドキュメントが変更されるたびに更新されます。 
 
 ## <a name="ttl-behavior"></a>TTL の動作
-TTL 機能は、コレクション レベルとドキュメント レベルの&2; つのレベルで TTL プロパティによって制御されます。 値は秒単位で設定され、ドキュメントが最後に変更された `_ts` との差分として扱われます。
+TTL 機能は、コレクション レベルとドキュメント レベルの 2 つのレベルで TTL プロパティによって制御されます。 値は秒単位で設定され、ドキュメントが最後に変更された `_ts` との差分として扱われます。
 
 1. コレクションの DefaultTTL
    
@@ -53,10 +54,10 @@ TTL 機能は、コレクション レベルとドキュメント レベルの&2
 | ドキュメントに対する TTL が n である |ドキュメント レベルでオーバーライドされません。 ドキュメントの TTL はシステムで解釈されません。 |TTL が n のドキュメントは n (秒単位) 期間が経過すると期限切れになります。 その他のドキュメントは -1 の期間を継承し、期限切れになることはありません。 |TTL が n のドキュメントは n (秒単位) 期間が経過すると期限切れになります。 その他のドキュメントは、コレクションから "n" 期間を継承します。 |
 
 ## <a name="configuring-ttl"></a>TTL の構成
-既定では、すべての DocumentDB コレクションおよびすべてのドキュメントの TTL が無効になります。
+既定では、すべての Cosmos DB コレクションおよびすべてのドキュメントの TTL が無効になります。
 
 ## <a name="enabling-ttl"></a>TTL の有効化
-コレクションまたはコレクション内のドキュメントに対して TTL を有効にするには、コレクションの DefaultTTL プロパティを -1、またはゼロ以外の正数に設定する必要があります。 DefaultTTL を -1 に設定すると、既定でコレクションのすべてのドキュメントは永続的に存続しますが、DocumentDB サービスはこの既定値をオーバーライドしたドキュメントに対するこのコレクションを監視する必要があります。
+コレクションまたはコレクション内のドキュメントに対して TTL を有効にするには、コレクションの DefaultTTL プロパティを -1、またはゼロ以外の正数に設定する必要があります。 DefaultTTL を -1 に設定すると、既定でコレクションのすべてのドキュメントは永続的に存続しますが、Cosmos DB サービスはこの既定値をオーバーライドしたドキュメントに対するこのコレクションを監視する必要があります。
 
     DocumentCollection collectionDefinition = new DocumentCollection();
     collectionDefinition.Id = "orders";
@@ -162,7 +163,7 @@ TTL が切れるとすぐにドキュメントは期限切れになり、CRUD �
 
 **ドキュメントの TTL は RU 料金に影響しますか?**
 
-いいえ。DocumentDB の TTL を通じて期限切れになったドキュメントを削除しても、RU 料金への影響はありません。
+いいえ。Cosmos DB の TTL を通じて期限切れになったドキュメントを削除しても、RU 料金への影響はありません。
 
 **TTL 機能はドキュメント全体のみに適用されるのですか? それとも、個々のドキュメントのプロパティ値で有効期限を設定することはできますか?**
 
@@ -173,6 +174,6 @@ TTL はドキュメント全体に適用されます。 ドキュメントの一
 はい。 コレクションでは、Consistent または Lazy に[インデックス作成ポリシーを設定](documentdb-indexing-policies.md)する必要があります。 インデックス作成が None に設定されているコレクションに対して DefaultTTL を設定しようとすると、エラーになります。DefaultTTL が既に設定されているコレクションのインデックス作成を無効にしようとする場合も同様です。
 
 ## <a name="next-steps"></a>次のステップ
-Azure DocumentDB の詳細については、サービスの[*ドキュメント*](https://azure.microsoft.com/documentation/services/documentdb/)のページを参照してください。
+Azure Cosmos DB の詳細については、サービスの "[*ドキュメント*](https://azure.microsoft.com/documentation/services/documentdb/)" のページを参照してください。
 
 

@@ -3,7 +3,7 @@ title: "SQL Data Warehouse のサポート チケットを作成する方法 | M
 description: "Azure SQL Data Warehouse でサポート チケットを作成する方法。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: kevinvngo
 manager: jhubbard
 editor: 
 ms.assetid: a91d1f53-03cb-464b-9d5b-4a9c1a194ed3
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
 ms.date: 10/31/2016
-ms.author: barbkess
-translationtype: Human Translation
+ms.author: kevin;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 889776269aa3d722115ea0632b7c3db2775924eb
 ms.openlocfilehash: cc3bc8a0463842ba11b9cdcc996319e2d811ce8a
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/13/2017
 
 

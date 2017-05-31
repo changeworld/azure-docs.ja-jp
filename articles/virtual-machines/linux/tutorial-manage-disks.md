@@ -13,21 +13,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/25/2017
+ms.date: 05/02/2017
 ms.author: nepeters
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 84ce4b288c23c7005ac92f18ee26af70479deb8d
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 4453876c126289f922d6d08d321707e1d10004e3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/17/2017
 
 ---
 
 # <a name="manage-azure-disks-with-the-azure-cli"></a>Azure CLI を使用した Azure ディスクの管理
 
-このチュートリアルでは、さまざまな種類の VM のディスクを紹介し、ディスク構成を選択する方法とディスクを作成して Azure VM に接続する方法を説明します。 このチュートリアルでは、ディスクのスナップショットの作成についても説明します。 
+Azure Virtual Machines では、VM のオペレーティング システム、アプリケーション、およびデータを格納するためにディスクを使用します。 VM を作成するときは、予測されるワークロードに適したディスクのサイズ構成を選択する必要があります。 このチュートリアルでは、VM ディスクのデプロイと管理について説明します。 内容は次のとおりです。
 
-このチュートリアルの手順は、最新バージョンの [Azure CLI 2.0](/cli/azure/install-azure-cli) を使用して行うことができます。
+> [!div class="checklist"]
+> * OS ディスクと一時ディスク
+> * データ ディスク
+> * Standard ディスクと Premium ディスク
+> * ディスクのパフォーマンス
+> * データ ディスクの接続と準備
+> * ディスクのサイズ変更
+> * ディスクのスナップショット
+
+このチュートリアルには、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 アップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 ブラウザーから [Cloud Shell](/azure/cloud-shell/quickstart) を使用することもできます。
 
 ## <a name="default-azure-disks"></a>既定の Azure ディスク
 
@@ -39,7 +48,7 @@ Azure 仮想マシンを作成すると、2 つのディスクが仮想マシン
 
 ### <a name="temporary-disk-sizes"></a>一時ディスクのサイズ
 
-| 型 | VM サイズ | 一時ディスクの最大サイズ |
+| 型 | VM サイズ | 一時ディスクの最大サイズ (GB) |
 |----|----|----|
 | [汎用](sizes-general.md) | A および D シリーズ | 800 |
 | [コンピューティングの最適化](sizes-compute.md) | F シリーズ | 800 |
@@ -274,6 +283,19 @@ az vm disk attach –g myResourceGroupDisk –-vm-name myVM –-disk $datadisk
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、VM ディスクについて学習しました。 次のチュートリアルに進み、VM 構成を自動化する方法について学習してください。
+このチュートリアルでは、VM ディスクについて、次のようなトピックを学習しました。
 
-[VM 構成の自動化](./tutorial-automate-vm-deployment.md)
+> [!div class="checklist"]
+> * OS ディスクと一時ディスク
+> * データ ディスク
+> * Standard ディスクと Premium ディスク
+> * ディスクのパフォーマンス
+> * データ ディスクの接続と準備
+> * ディスクのサイズ変更
+> * ディスクのスナップショット
+
+次のチュートリアルに進み、VM 構成を自動化する方法について学習してください。
+
+> [!div class="nextstepaction"]
+> [VM 構成の自動化](./tutorial-automate-vm-deployment.md)
+

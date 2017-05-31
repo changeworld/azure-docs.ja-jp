@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2017
 ms.author: tarcher
-translationtype: Human Translation
+ms.custom: aaddev
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
 ms.openlocfilehash: 8ca3234e54d8736aa187195640a103ac6eb145e7
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/21/2017
 
 

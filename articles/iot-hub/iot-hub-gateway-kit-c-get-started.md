@@ -17,10 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
-ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
-ms.openlocfilehash: dd14d137c23fbccb3616b60db8a63e668ae7ea80
-ms.lasthandoff: 01/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 624bdc7877d5048da08897f868272fd8e8f3f7b6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -38,16 +39,16 @@ ms.lasthandoff: 01/25/2017
 ***
 
 ## <a name="lesson-1-configure-your-nuc"></a>レッスン 1: NUC を構成する
-![レッスン&1; のエンド ツー エンド ダイアグラム](media/iot-hub-gateway-kit-lessons/e2e-lesson1.png)
+![レッスン 1 のエンド ツー エンド ダイアグラム](media/iot-hub-gateway-kit-lessons/e2e-lesson1.png)
 
-このレッスンでは、キットの Intel NUC (Next Unit of Computing) を Azure IoT ゲートウェイとして設定し、Azure IoT Gateway SDK パッケージを NUC にインストールし、サンプル アプリを実行してゲートウェイの機能を検証します。
+このレッスンでは、キットの Intel NUC (Next Unit of Computing) を Azure IoT ゲートウェイとして設定し、Azure IoT Edge パッケージを NUC にインストールし、サンプル アプリを実行してゲートウェイの機能を検証します。
 
 *推定所要時間: 15 分*
 
 「[IoT ゲートウェイとしての Intel NUC のセットアップ](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)」に移動する
 
 ## <a name="lesson-2-create-your-iot-hub"></a>レッスン 2: IoT Hub を作成する
-![レッスン&2; のエンド ツー エンド ダイアグラム](media/iot-hub-gateway-kit-lessons/e2e-lesson2.png)
+![レッスン 2 のエンド ツー エンド ダイアグラム](media/iot-hub-gateway-kit-lessons/e2e-lesson2.png)
 
 このレッスンでは、ツールとソフトウェアをホスト コンピューターにインストールします。 その後、無料の Azure アカウントを作成し、Azure IoT ハブをプロビジョニングし、IoT ハブに最初のデバイスを作成します。
 
@@ -68,7 +69,7 @@ ms.lasthandoff: 01/25/2017
 「[IoT ハブを作成してデバイスを登録する](iot-hub-gateway-kit-c-lesson2-register-device.md)」に移動する
 
 ## <a name="lesson-3-receive-messages-from-sensortag-and-read-messages-from-your-iot-hub"></a>レッスン 3: SensorTag からメッセージを受信し、IoT ハブからメッセージを読み取る
-このレッスンでは、スクリプトを使用して、ゲートウェイでの BLE サンプル アプリケーションの構成と実行を自動化します。 このようなアプリケーションでは、モジュールのコレクションを使用して、データの集計と変換やコマンドの処理、任意の数の関連タスクを実行します。 モジュールは、メッセージ ブローカーを使用して相互に通信します。 サンプル アプリケーションには、BLE モジュールと IoT ハブ モジュールがあります。 BLE モジュールは、BLE SensorTag からデータを受信します。 IoT ハブ モジュールは、受信したデータをパッケージ化し、Azure IoT Gateway SDK に用意されているゲートウェイ フレームワークを通して IoT ハブに送信します。
+このレッスンでは、スクリプトを使用して、ゲートウェイでの BLE サンプル アプリケーションの構成と実行を自動化します。 このようなアプリケーションでは、モジュールのコレクションを使用して、データの集計と変換やコマンドの処理、任意の数の関連タスクを実行します。 モジュールは、メッセージ ブローカーを使用して相互に通信します。 サンプル アプリケーションには、BLE モジュールと IoT ハブ モジュールがあります。 BLE モジュールは、BLE SensorTag からデータを受信します。 IoT Hub モジュールは、受信したデータをパッケージ化し、Azure IoT Edge に用意されているゲートウェイ フレームワークを通して IoT ハブに送信します。
 
 ![レッスン 3 のエンド ツー エンドのダイアグラム](media/iot-hub-gateway-kit-lessons/e2e-lesson3.png)
 

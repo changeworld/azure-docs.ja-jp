@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 04/30/2017
 ms.author: gsacavdm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: dee24deacbe69ada64519802c0eb1b83f565f57e
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 1d97c75f3130ea6fdacbc6335b6e70677b4d226e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -57,30 +57,16 @@ ms.lasthandoff: 05/09/2017
 1. 使用できるようになった **[Download Metadata]\(メタデータのダウンロード\)** ボタンをクリックして、後の手順で使用するメタデータ ファイルを保存します。
 
 ## <a name="add-a-saml-signing-certificate-to-azure-ad-b2c"></a>Azure AD B2C への SAML 署名証明書の追加
-Azure AD B2C テナントに Salesforce の証明書を格納する必要があります。 これを行うには、次の手順を実行します。
+Azure AD B2C テナントには、その SAML 要求に署名するときに使用する SAML 証明書をアップロードして保存する必要があります。 これを行うには、次の手順を実行します。
 
-1. PowerShell を開き、作業ディレクトリ `active-directory-b2c-advanced-policies` に移動します。
-1. ExploreAdmin ツールのあるフォルダーに切り替えます。
-
-    ```powershell
-    cd active-directory-b2c-advanced-policies\ExploreAdmin
-    ```
-
-1. ExploreAdmin ツールを PowerShell にインポートします。
-
-    ```powershell
-    Import-Module .\ExploreAdmin.dll
-    ```
-
-1. 次のコマンドで、`tenantName` を Azure AD B2C テナントの名前 (例: fabrikamb2c.onmicrosoft.com) に、`certificateId` を後でポリシーで参照するために使用する証明書の名前 (例: ContosoSalesforceCert) に置き換えます。さらに、`pathToCert` と `password` を証明書のパスとパスワードに置き換えます。 コマンドを実行します。
-
-    ```PowerShell
-    Set-CpimCertificate -TenantId {tenantName} -CertificateId {certificateId} -CertificateFileName {pathToCert} - CertificatePassword {password}
-    ```
-
-    コマンドを実行する際、Azure AD B2C テナントに対してローカルな onmicrosoft.com 管理者アカウントでサインインするようにします。 
-
-1. PowerShell を閉じます。
+1. Azure AD B2C テナントに移動し、**[B2C Settings]\(B2C 設定\)、[Identity Experience Framework]、[Policy Keys]\(ポリシー キー\)** の順に開きます。
+1. **[+ 追加]** をクリックします。
+1. オプション:
+ * **[オプション]、[アップロード]** の順に選択します。
+ * **[名前]** に「`ContosoIdpSamlCert`」と入力します。  プレフィックス B2C_1A_ がキーの名前に自動的に追加されます。 フル ネーム (B2C_1A_ を含む) を書き留めておいてください。後でポリシーの中でこの名前を引用します。
+ * **ファイルのアップロード コントロール**を使用して証明書を選択し、必要に応じて証明書のパスワードを指定します。
+1. **[作成]**
+1. 次のキーが作成されたことを確認します: `B2C_1A_ContosoIdpSamlCert`
 
 ## <a name="create-the-salesforce-saml-claims-provider-in-your-base-policy"></a>基本ポリシーでの Salesforce SAML 要求プロバイダーの作成
 
@@ -88,7 +74,7 @@ Azure AD B2C テナントに Salesforce の証明書を格納する必要があ�
 
 1. 作業ディレクトリ (TrustFrameworkExtensions.xml) から拡張ファイルを開きます。
 1. セクション `<ClaimsProviders>` を探します。 存在しない場合は、ルート ノードの下に追加します。
-1. 新しい `<ClaimsProvider>` を次のとおり追加します。
+1. 次のように新しい `<ClaimsProvider>` を追加します。
 
     ```XML
     <ClaimsProvider>
@@ -107,8 +93,8 @@ Azure AD B2C テナントに Salesforce の証明書を格納する必要があ�
             </Item>
           </Metadata>       
           <CryptographicKeys>
-            <Key Id="SamlAssertionSigning" StorageReferenceId="ContosoIdpSamlCert"/>
-            <Key Id="SamlMessageSigning" StorageReferenceId="ContosoIdpSamlCert "/>
+            <Key Id="SamlAssertionSigning" StorageReferenceId="B2C_1A_ContosoIdpSamlCert"/>
+            <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_ContosoIdpSamlCert "/>
           </CryptographicKeys>
           <OutputClaims>
             <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="userId"/>
@@ -151,21 +137,21 @@ Salesforce から SAML トークンを取得するためには、Azure AD B2C �
 
 ### <a name="upload-the-extension-file-for-verification"></a>拡張ファイルのアップロードによる確認
 
-これで、Azure AD B2C が Azure AD ディレクトリと通信する方法を認識するようにポリシーを構成できました。 ポリシーの拡張ファイルをアップロードしてみて、現時点で問題がないことを確認します。 そのためには、次の手順を実行します。
+ここまでで、Azure AD B2C が Azure AD ディレクトリと通信する方法を認識するようにポリシーを設定しました。 ポリシーの拡張ファイルをアップロードして、現時点で問題がないことを確認してみます。 そのためには、次の手順を実行します。
 
-1. Azure AD B2C テナントの **[すべてのポリシー]** ブレードに移動します。
-1. **[ポリシーが存在する場合は上書きする]** チェック ボックスをオンにします。
+1. Azure AD B2C テナントの **[All Policies]**(すべてのポリシー) ブレードに移動します。
+1. **[Overwrite the policy if it exists]**(ポリシーが存在する場合は上書き) チェック ボックスをオンにします。
 1. 拡張ファイル (TrustFrameworkExtensions.xml) をアップロードし、検証に失敗しないことを確認します。
 
 ## <a name="register-the-salesforce-saml-claims-provider-to-a-user-journey"></a>ユーザー体験への Salesforce SAML 要求プロバイダーの登録
 
-ここで、Salesforce SAML の ID プロバイダーをいずれかのユーザー体験に追加する必要があります。 この時点では、ID プロバイダーはセットアップされていますが、サインアップ/サインイン画面で使用することはできません。 使用できるようにするには、既存のテンプレート ユーザー体験の複製を作成してから変更し、Azure AD の ID プロバイダーも含まれるようにします。
+ここで、Salesforce SAML の ID プロバイダーをいずれかのユーザー体験に追加する必要があります。 この時点では、ID プロバイダーはセットアップされていますが、サインアップ/サインイン画面で使用することはできません。 これを行うには、既存のテンプレート ユーザー ジャーニーの複製を作成してから変更し、Azure AD の ID プロバイダーも含めるようにします。
 
 1. ポリシーの基本ファイルを開きます (例: TrustFrameworkBase.xml)。
-1. `<UserJourneys>` 要素を探し、Id ="SignUpOrSignIn" を含む `<UserJourney>` 全体をコピーします。
+1. `<UserJourneys>` 要素を見つけて、Id ="SignUpOrSignIn" を含む `<UserJourney>` 全体をコピーします。
 1. 拡張ファイル (例: TrustFrameworkExtensions.xml) を開き、`<UserJourneys>` 要素を見つけます。 要素が存在しない場合は追加します。
 1. コピーした `<UserJourney>` 全体を `<UserJourneys>` 要素の子として貼り付けます。
-1. 新しい `<UserJourney>` (つまり  SignUpOrSignUsingContoso) の ID の名前を変更します。
+1. 新しい `<UserJourney>` (つまり SignUpOrSignUsingContoso) の ID の名前を変更します。
 
 ### <a name="display-the-button"></a>"ボタン" の表示
 
@@ -178,9 +164,9 @@ Salesforce から SAML トークンを取得するためには、Azure AD B2C �
     <ClaimsProviderSelection TargetClaimsExchangeId="ContosoExchange" />
     ```
 
-1. `TargetClaimsExchangeId` を適切な値に設定します。 他の場合と同じ規則に従うことをお勧めします (*\[ClaimProviderName\]Exchange*)。
+1. `TargetClaimsExchangeId` を適切な値に設定します。 他の場合と同じ規則に従うことをお勧めします - *\[ClaimProviderName\]Exchange*。
 
-### <a name="link-the-button-to-an-action"></a>アクションへの "ボタン" のリンク
+### <a name="link-the-button-to-an-action"></a>"ボタン" のアクションへのリンク
 
 "ボタン" が所定の位置に配置されたので、ボタンをアクションにリンクする必要があります。 この場合のアクションでは、Azure AD B2C が Salesforce と通信して SAML トークンを受信します。 これを行うには、Salesforce SAML 要求プロバイダーの技術プロファイルをリンクします。
 
@@ -200,11 +186,11 @@ Salesforce から SAML トークンを取得するためには、Azure AD B2C �
 
 ### <a name="update-the-rp-file"></a>RP ファイルの更新
 
-ここで、作成したユーザー体験を開始する RP ファイルを更新する必要があります。
+ここで、作成したユーザー ジャーニーを開始する RP ファイルを更新する必要があります。
 
 1. 作業ディレクトリに SignUpOrSignIn.xml のコピーを作成してその名前を変更します (例: SignUpOrSignInWithAAD.xml)。
-1. 新しいファイルを開き、`<TrustFrameworkPolicy>` の `PolicyId` 属性を一意の値で更新します。 これがポリシーの名前になります (例: SignUpOrSignInWithAAD)。
-1. `<DefaultUserJourney>` の `ReferenceId` 属性を変更して、作成した新しいユーザー体験の ID と一致するようにします (例: SignUpOrSignUsingContoso)。
+1. 新しいファイルを開き、`<TrustFrameworkPolicy>` の `PolicyId` 属性を一意な値で更新します。 これがポリシーの名前になります (例: SignUpOrSignInWithAAD)。
+1. `<DefaultUserJourney>` の `ReferenceId` 属性を変更して、作成した新しいユーザー ジャーニーの ID と一致するようにします (例: SignUpOrSignUsingContoso)。
 1. 変更内容を保存し、ファイルをアップロードします。
 
 ## <a name="create-a-connected-app-in-salesforce"></a>Salesforce での接続されたアプリの作成
@@ -219,12 +205,12 @@ Azure AD B2C を接続されたアプリとして Salesforce に登録する必�
     1. **[Entity ID]\(エンティティ ID\)** フィールドに次の URL を入力します。必ず `tenantName` を置き換えてください。 
     
         ```
-        https://login.microsoftonline.com/te/tenantName.onmicrosoft.com/B2C_1A_base
+        https://login.microsoftonline.com/te/tenantName.onmicrosoft.com/B2C_1A_TrustFrameworkBase
         ```
 
     1. **[ACS URL]** フィールドに次の URL を入力します。必ず `tenantName` を置き換えてください。 
         ```
-        https://login.microsoftonline.com/te/tenantName.onmicrosoft.com/B2C_1A_base/samlp/sso/assertionconsumer
+        https://login.microsoftonline.com/te/tenantName.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer
         ```
 
     1. それ以外の設定はすべて既定のままにします。
@@ -233,7 +219,7 @@ Azure AD B2C を接続されたアプリとして Salesforce に登録する必�
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-アップロードしたカスタム ポリシーのブレードを開いて [Run now]\(今すぐ実行\) をクリックし、カスタム ポリシーをテストします。 エラーが発生した場合は、[トラブルシューティング](active-directory-b2c-troubleshoot-custom.md)の方法を参照してください。
+アップロードしたカスタム ポリシーのブレードを開いて [Run now](今すぐ実行) をクリックし、カスタム ポリシーをテストします。 エラーが発生した場合は、[トラブルシューティング](active-directory-b2c-troubleshoot-custom.md)の方法を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
  

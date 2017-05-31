@@ -13,10 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/20/2016
 ms.author: jonatul
-translationtype: Human Translation
-ms.sourcegitcommit: 36fa9cd757b27347c08f80657bab8a06789a3c2f
-ms.openlocfilehash: 3074bf378f809a9857c7ea72521961368a14772c
-ms.lasthandoff: 02/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 307b327e4c04a0461e39930114eb193791cbda9a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/11/2017
 
 ---
 
@@ -83,7 +84,7 @@ azure network dns record-set add-record MyResourceGroup contoso.com "@" A -a 1.2
 azure network dns record-set create MyResourceGroup contoso.com www A --ttl 60
 ```
 
-次の例では、`--metadata` パラメーター (短縮形は `-m`) を指定することで、"dept=finance" と "environment=production" という&2; つのメタデータ エントリを含むレコード セットを作成します。
+次の例では、`--metadata` パラメーター (短縮形は `-m`) を指定することで、"dept=finance" と "environment=production" という 2 つのメタデータ エントリを含むレコード セットを作成します。
 
 ```azurecli
 azure network dns record-set create MyResourceGroup contoso.com www A --metadata "dept=finance;environment=production"
@@ -221,11 +222,9 @@ azure network dns record-set add-record MyResourceGroup contoso.com www A -a 5.6
 azure network dns record-set delete-record MyResourceGroup contoso.com www A -a 1.2.3.4
 ```
 
-ゾーンの頂点 (`-Name "@"`、引用符を含む) に自動的に作成された NS レコード セットのレコードを追加、削除、または変更することはできません。 このレコード セットで許可されている変更は、レコード セットの TTL とメタデータの変更のみです。
-
 ### <a name="to-modify-a-cname-record"></a>CNAME レコードを変更するには
 
-CNAME レコードを変更するには、`azure network dns record-set add-record` を使用して新しいレコードの値を追加します。 その他のレコードの種類とは異なり、CNAME レコード セットはレコードを&1; つだけ含むことができます。 そのため、新しいレコードが追加されたときに既存のレコードが*置換*されます。個別に削除する必要はありません。  この置換の受け入れを求めるプロンプトが表示されます。
+CNAME レコードを変更するには、`azure network dns record-set add-record` を使用して新しいレコードの値を追加します。 その他のレコードの種類とは異なり、CNAME レコード セットはレコードを 1 つだけ含むことができます。 そのため、新しいレコードが追加されたときに既存のレコードが*置換*されます。個別に削除する必要はありません。  この置換の受け入れを求めるプロンプトが表示されます。
 
 例では、リソース グループ *MyResourceGroup* のゾーン *contoso.com* の CNAME レコード セット *www* を変更して、既存の値ではなく 'www.fabrikam.net' を指すようにします。
 
@@ -243,6 +242,21 @@ azure network dns record-set add-record MyResourceGroup contoso.com www CNAME --
 azure network dns record-set set-soa-record rg1 contoso.com --email admin.contoso.com
 ```
 
+
+### <a name="to-modify-ns-records-at-the-zone-apex"></a>ゾーンの頂点にある NS レコードを変更するには
+
+ゾーンの頂点にある NS レコード セットは各 DNS ゾーンで自動的に作成されます。 ゾーンに割り当てられている Azure DNS ネーム サーバーの名前が含まれています。
+
+複数の DNS プロバイダーによる共同ホスト ドメインをサポートする目的で、この NS レコード セットにネーム サーバーを追加できます。 このレコード セットの TTL とメタデータを変更することもできます。 ただし、あらかじめ入力されている Azure DNS ネーム サーバーを削除または変更することはできません。
+
+これは、ゾーンの頂点にある NS レコード セットにのみ適用されます。 (子ゾーンの委任に使用される) ゾーンの他の NS レコード セットは制約なしで変更できます。
+
+次の例は、ゾーンの頂点にある NS レコード セットにネーム サーバーを追加する方法を示しています。
+
+```azurecli
+azure network dns record-set add-record MyResourceGroup contoso.com "@" --nsdname ns1.myotherdnsprovider.com 
+```
+
 ### <a name="to-modify-the-ttl-of-an-existing-record-set"></a>既存のレコード セットの TTL を変更するには
 
 既存のレコード セットの TTL を変更するには、`azure network dns record-set set` を使用します。 `azure network dns record-set set -h` を使用すると、ヘルプが表示されます。
@@ -257,7 +271,7 @@ azure network dns record-set set MyResourceGroup contoso.com www A --ttl 60
 
 [レコード セットのメタデータ](dns-zones-records.md#tags-and-metadata)を使用すると、アプリケーション固有のデータを、キーと値のペアとして各レコード セットに関連付けることができます。 既存のレコード セットのメタデータを変更するには、`azure network dns record-set set` を使用します。 `azure network dns record-set set -h` を使用すると、ヘルプが表示されます。
 
-次の例では、`--metadata` パラメーター (短縮形は `-m`) を指定することで、"dept=finance" と "environment=production" という&2; つのメタデータ エントリを含むレコード セットを変更する方法を示します。 既存のメタデータは指定した値に*置換*されることに注意してください。
+次の例では、`--metadata` パラメーター (短縮形は `-m`) を指定することで、"dept=finance" と "environment=production" という 2 つのメタデータ エントリを含むレコード セットを変更する方法を示します。 既存のメタデータは指定した値に*置換*されることに注意してください。
 
 ```azurecli
 azure network dns record-set set MyResourceGroup contoso.com www A --metadata "dept=finance;environment=production"

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/03/2017
+ms.date: 05/15/2017
 ms.author: cherylmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 8e6b1dc7e17fe41db1deb03417083cfc891afa86
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: d28468adbfeb8af5b9c0a126c7cf337c428ad8ca
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -35,9 +35,19 @@ ms.lasthandoff: 05/08/2017
 >
 >
 
-ポイント対サイト (P2S) 構成では、個々のクライアント コンピューターから仮想ネットワークへのセキュリティで保護された接続を作成することができます。 P2S は、SSTP (Secure Socket トンネリング プロトコル) 経由の VPN 接続です。 ポイント対サイト接続は、自宅や会議室など、リモートの場所から VNet に接続する場合や、仮想ネットワークに接続する必要があるクライアントの数が少ない場合に便利です。 P2S 接続に VPN デバイスや公開 IP アドレスは必要ありません。 VPN 接続は、クライアント コンピューターから確立します。 ポイント対サイト接続の詳細については、この記事の最後にある「[ポイント対サイト接続に関してよく寄せられる質問](#faq)」を参照してください。
+ポイント対サイト (P2S) 構成では、個々のクライアント コンピューターから仮想ネットワークへのセキュリティで保護された接続を作成することができます。 ポイント対サイト接続は、自宅や会議室など、リモートの場所から VNet に接続する場合や、仮想ネットワークに接続する必要があるクライアントの数が少ない場合に便利です。 P2S VPN 接続は、クライアント コンピューターからネイティブ Windows VPN クライアントを使用して開始されます。 クライアントの接続には、認証のために証明書が使用されます。 
 
 ![コンピューターを Azure VNet に接続する - ポイント対サイト接続の図](./media/vpn-gateway-howto-point-to-site-rm-ps/point-to-site-diagram.png)
+
+ポイント対サイト接続に、VPN デバイスや公開 IP アドレスは必要ありません。 P2S により、SSTP (Secure Socket トンネリング プロトコル) 経由での VPN 接続が作成されます。 サーバー側でのサポート対象の SSTP バージョンは、1.0、1.1、1.2 です。 使用するバージョンはクライアントによって決まります。 Windows 8.1 以降の場合、SSTP では既定で 1.2 が使用されます。 ポイント対サイト接続の詳細については、この記事の最後にある「[ポイント対サイト接続に関してよく寄せられる質問](#faq)」を参照してください。
+
+P2S 接続には、以下のものが必要です。
+
+* RouteBased VPN ゲートウェイ。
+* Azure にアップロードされた、ルート証明書の公開キー (.cer ファイル)。 これは信頼された証明書と見なされ、認証に使用されます。
+* ルート証明書から生成され、接続する各クライアント コンピューターにインストールされたクライアント証明書。 この証明書はクライアントの認証に使用されます。
+* VPN クライアント構成パッケージが生成され、接続するすべてのクライアント コンピューターにインストールされていること。 このクライアント構成パッケージによって構成されるのは、既にオペレーティング システム上で動作し、VNet への接続に必要な情報を備えているネイティブ VPN クライアントです。
+
 
 ## <a name="before-beginning"></a>作業を開始する前に
 
@@ -76,7 +86,7 @@ ms.lasthandoff: 05/08/2017
   ```
 2. Azure サブスクリプションの一覧を取得します。
 
-  ```powershell  
+  ```powershell
   Get-AzureRmSubscription
   ```
 3. 使用するサブスクリプションを指定します。
@@ -119,7 +129,7 @@ ms.lasthandoff: 05/08/2017
   $besub = New-AzureRmVirtualNetworkSubnetConfig -Name $BESubName -AddressPrefix $BESubPrefix
   $gwsub = New-AzureRmVirtualNetworkSubnetConfig -Name $GWSubName -AddressPrefix $GWSubPrefix
   ```
-3. 仮想ネットワークを作成する。 <br>DNS サーバーは任意です。 この値を指定したからといって新しい DNS サーバーが作成されるわけではありません。 後続の手順で生成するクライアント構成パッケージには、この設定で指定した DNS サーバーの IP アドレスが追加されます。 将来 DNS サーバーのリストを更新する必要が生じた場合は、その新しいリストを反映した新しい VPN クライアント構成パッケージを生成してインストールすることができます。<br>指定された DNS サーバーは、接続するリソースの名前を解決できる DNS サーバーである必要があります。 この例では、パブリック IP アドレスを使用しましたが、 実際には独自の値を使用してください。
+3. 仮想ネットワークを作成する。 <br>DNS サーバーは任意です。 この値を指定したからといって新しい DNS サーバーが作成されるわけではありません。 後続の手順で生成するクライアント構成パッケージには、この設定で指定した DNS サーバーの IP アドレスが追加されます。 将来 DNS サーバーのリストを更新する必要が生じた場合は、その新しいリストを反映した新しい VPN クライアント構成パッケージを生成してインストールすることができます。 指定された DNS サーバーは、接続するリソースの名前を解決できる DNS サーバーである必要があります。 この例では、パブリック IP アドレスを使用しましたが、 実際には独自の値を使用してください。
 
   ```powershell
   New-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $RG -Location $Location -AddressPrefix $VNetPrefix1,$VNetPrefix2 -Subnet $fesub, $besub, $gwsub -DnsServer $DNS
@@ -141,7 +151,7 @@ ms.lasthandoff: 05/08/2017
 
 ## <a name="Certificates"></a>3 - 証明書の生成
 
-証明書は、ポイント対サイト VPN の VPN クライアントを認証するために、Azure によって使用されます。
+証明書は、ポイント対サイト VPN の VPN クライアントを認証するために、Azure によって使用されます。 そのため、ルート証明書の公開キー情報を Azure にアップロードします。 その後、その公開キーは "信頼された" と見なされます。 信頼されたルート証明書からクライアント証明書を生成し、それを各クライアント コンピューターの [証明書 - 現在のユーザー] の [個人] 証明書ストアにインストールする必要があります。 この証明書は、クライアントで VNet への接続を開始するときに、そのクライアントを認証するために使用されます。 証明書の生成とインストールの詳細については、[ポイント対サイトの証明書](vpn-gateway-certificates-point-to-site.md)に関するページを参照してください。
 
 ### <a name="cer"></a>手順 1 - ルート証明書の .cer ファイルの取得
 
@@ -152,9 +162,9 @@ ms.lasthandoff: 05/08/2017
 
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-p2s-clientcert-include.md)]
 
-## <a name="upload"></a>4 - ルート証明書 .cer ファイルのアップロード
+## <a name="upload"></a>4 - アップロード用のルート証明書 .cer ファイルを準備する
 
-信頼されたルート証明書の .cer ファイル (公開キー情報を含む) を Azure にアップロードします。 最大 20 個のルート証明書のファイルをアップロードすることができます。 ルート証明書の秘密キーは、Azure にアップロードしません。 .cer ファイルをアップロードすると、Azure は仮想ネットワークに接続するクライアントの認証にそれを使用します。 必要に応じて後から別のルート証明書の公開キーをアップロードすることもできます。
+信頼されたルート証明書の .cer ファイル (公開キー情報を含むもの) を Azure にアップロードする準備をします。 ルート証明書の秘密キーは、Azure にアップロードしません。 .cer ファイルがアップロードされると、Azure ではそれを使用し、信頼されたルート証明書から生成されたクライアント証明書がインストールされているクライアントを認証できます。 その後は必要に応じて、最大で合計 20 個になるまで信頼されたルート証明書を追加でアップロードできます。 このセクションでは、次のセクションで VPN ゲートウェイを作成するときに関連付けるルート証明書の .cer ファイルを宣言します。
 
 1. 証明書名のための変数を、独自の値に置き換えて宣言します。
 
@@ -170,10 +180,14 @@ ms.lasthandoff: 05/08/2017
   $p2srootcert = New-AzureRmVpnClientRootCertificate -Name $P2SRootCertName -PublicCertData $CertBase64
   ```
 
-
 ## <a name="creategateway"></a>5 - VPN Gateway を作成する
 
-VNet の仮想ネットワーク ゲートウェイを構成、作成します。 *-GatewayType* は **Vpn** に、*-VpnType* は **RouteBased** にする必要があります。 この例では、ルート証明書の公開キーが VPN Gateway に関連付けられます。 VPN ゲートウェイの作成は、完了までに最大 45 分かかることがあります。
+VNet の仮想ネットワーク ゲートウェイを構成、作成します。
+
+* *-GatewayType* は **Vpn** に、*-VpnType* は **RouteBased** にする必要があります。
+* この例では、前のセクションで指定した変数 "$p2srootcert" を使用して、ルート証明書の公開キーを VPN ゲートウェイに関連付けます。
+* この例での VPN クライアント アドレス プールは、手順 1. で[変数](#declare)として宣言されています。 VPN クライアント アドレス プールは、VPN クライアントが接続時に受け取る IP アドレスの範囲です。 接続元であるオンプレミスの場所、または接続先とする VNet と重複しないプライベート IP アドレス範囲を使用してください。
+* 選択する[ゲートウェイ SKU](vpn-gateway-about-vpn-gateway-settings.md) によっては、VPN ゲートウェイで処理が完了するまでに最大で 45 分かかる場合があります。
 
 ```powershell
 New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
@@ -184,9 +198,9 @@ New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 
 ## <a name="clientconfig"></a>6 - VPN クライアント構成パッケージのダウンロード
 
-ポイント対サイト VPN を使って VNet に接続するには、クライアントごとに VPN クライアント構成パッケージをインストールする必要があります。 このパッケージでは、VPN クライアントはインストールされません。 バージョンがクライアントのアーキテクチャと一致すれば、各クライアント コンピューターで同じ VPN クライアント構成パッケージを使用できます。 サポートされているクライアント オペレーティング システムの一覧については、この記事の最後にある「[ポイント対サイト接続に関してよく寄せられる質問](#faq)」を参照してください。
+ポイント対サイト VPN を使って VNet に接続するには、ネイティブ Windows VPN クライアントを構成するためのパッケージをクライアントごとにインストールする必要があります。 構成パッケージは、仮想ネットワークへの接続に必要な設定を使ってネイティブ Windows VPN クライアントを構成します。したがって VNet の DNS サーバーを指定した場合、クライアントの名前解決に使用される DNS サーバーの IP アドレスが構成パッケージに追加されます。 指定した DNS サーバーを後から、クライアント構成パッケージの生成後に変更する場合は、必ず新しいクライアント構成パッケージを生成してクライアント コンピューターにインストールしてください。
 
-構成パッケージは、仮想ネットワークへの接続に必要な設定を使ってネイティブ Windows VPN クライアントを構成します。したがって VNet の DNS サーバーを指定した場合、クライアントの名前解決に使用される DNS サーバーの IP アドレスが構成パッケージに追加されます。 指定した DNS サーバーを後から、クライアント構成パッケージの生成後に変更する場合は、必ず新しいクライアント構成パッケージを生成してクライアント コンピューターにインストールしてください。
+バージョンがクライアントのアーキテクチャと一致すれば、各クライアント コンピューターで同じ VPN クライアント構成パッケージを使用できます。 サポートされているクライアント オペレーティング システムの一覧については、この記事の最後にある「[ポイント対サイト接続に関してよく寄せられる質問](#faq)」を参照してください。
 
 1. ゲートウェイの作成が完了したら、クライアント構成パッケージを生成してダウンロードできます。 この例では、64 ビット クライアント用のパッケージをダウンロードします。 32 ビット クライアントをダウンロードする場合は、"Amd64" を "x86" に置き換えます。 Azure Portal を使用して VPN クライアントをダウンロードすることもできます。
 
@@ -194,7 +208,7 @@ New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
   Get-AzureRmVpnClientPackage -ResourceGroupName $RG `
   -VirtualNetworkGatewayName $GWName -ProcessorArchitecture Amd64
   ```
-2. Web ブラウザーに返されたリンクをコピーして貼り付け、パッケージをダウンロードします。リンクを囲む """ は確実に削除してください。 
+2. 返されたリンクをコピーして Web ブラウザーに貼り付け、パッケージをダウンロードします。リンクを囲む引用符は必ず削除してください。 
 3. パッケージをクライアント コンピューターにダウンロードしてインストールします。 SmartScreen ポップアップが表示された場合は、**[詳細]**、**[実行]** の順にクリックしてください。 パッケージを保存して、他のクライアント コンピューターにインストールすることもできます。
 4. クライアント コンピューターで **[ネットワークの設定]** に移動し、**[VPN]** をクリックします。 VPN 接続により、その接続先の仮想ネットワークの名前が表示されます。
 
@@ -221,17 +235,19 @@ New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 
 1. VPN 接続がアクティブであることを確認するには、管理者特権でのコマンド プロンプトを開いて、 *ipconfig/all*を実行します。
 2. 結果を表示します。 受信した IP アドレスが、構成に指定したポイント対サイト VPN クライアント アドレス プール内のアドレスのいずれかであることに注意してください。 結果は次の例のようになります。
-   
-        PPP adapter VNet1:
-            Connection-specific DNS Suffix .:
-            Description.....................: VNet1
-            Physical Address................:
-            DHCP Enabled....................: No
-            Autoconfiguration Enabled.......: Yes
-            IPv4 Address....................: 172.16.201.3(Preferred)
-            Subnet Mask.....................: 255.255.255.255
-            Default Gateway.................:
-            NetBIOS over Tcpip..............: Enabled
+
+  ```
+  PPP adapter VNet1:
+      Connection-specific DNS Suffix .:
+      Description.....................: VNet1
+      Physical Address................:
+      DHCP Enabled....................: No
+      Autoconfiguration Enabled.......: Yes
+      IPv4 Address....................: 172.16.201.3(Preferred)
+      Subnet Mask.....................: 255.255.255.255
+      Default Gateway.................:
+      NetBIOS over Tcpip..............: Enabled
+  ```
 
 
 ## <a name="connectVM"></a>仮想マシンへの接続
@@ -242,7 +258,7 @@ New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 
 信頼されたルート証明書を Azure に追加したり、Azure から削除したりできます。 ルート証明書を削除すると、そのルートから証明書を生成したクライアントは認証が無効となり、接続できなくなります。 クライアントの認証と接続を正常に実行できるようにするには、Azure に信頼されている (Azure にアップロードされている) ルート証明書から生成した新しいクライアント証明書をインストールする必要があります。
 
-### <a name="to-add-a-root-certificate"></a>ルート証明書を追加するには
+### <a name="to-add-a-trusted-root-certificate"></a>信頼されたルート証明書を追加するには
 
 Azure には、最大 20 個のルート証明書 .cer ファイルを追加できます。 ルート証明書は次の手順で追加できます。
 
@@ -357,4 +373,3 @@ Azure には、最大 20 個のルート証明書 .cer ファイルを追加で�
 
 ## <a name="next-steps"></a>次のステップ
 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) に関するページを参照してください。 ネットワークと仮想マシンの詳細については、「[Azure と Linux の VM ネットワークの概要](../virtual-machines/linux/azure-vm-network-overview.md)」を参照してください。
-

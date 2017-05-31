@@ -1,6 +1,6 @@
 ---
 title: "Azure PowerShell スクリプト - geo レプリケーションの設定 - 単一の SQL Database | Microsoft Docs"
-description: "Azure PowerShell のサンプル スクリプト - PowerShell を使用した単一の Azure SQL Database のアクティブ geo レプリケーションの設定"
+description: "Azure PowerShell のサンプル スクリプト - PowerShell を使用して単一の Azure SQL Database のアクティブ geo レプリケーションを設定します"
 services: sql-database
 documentationcenter: sql-database
 author: janeng
@@ -16,10 +16,11 @@ ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 03/07/2017
 ms.author: janeng
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 5572d1e7b7020846035362b0c4f3d3094df88443
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 76cbda3d5971766244b28baa06614ea83e3e626a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 ---
 

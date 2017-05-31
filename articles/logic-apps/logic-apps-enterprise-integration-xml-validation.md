@@ -13,10 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
-ms.author: estfan
-translationtype: Human Translation
+ms.author: LADocs; padmavc
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 03cd3f4edd7bb7895efa02475411d813ef44b8b3
 ms.openlocfilehash: ae0bb2cb090402f61bb10299e50024f1f2938489
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -60,10 +62,5 @@ B2B のシナリオでは多くの場合、契約の対象となるパートナ�
 
 ## <a name="next-steps"></a>次のステップ
 [Enterprise Integration Pack についての詳細情報](../logic-apps/logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")   
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

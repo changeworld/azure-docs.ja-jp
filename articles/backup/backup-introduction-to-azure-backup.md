@@ -13,19 +13,19 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 5/3/2017
+ms.date: 5/8/2017
 ms.author: markgal;trinadhk; anuragm
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 245a89f2576dc1bfed2f9078f1d8761f91caf561
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: a5f297ad0a60a595ce9a50bdde1eadf015c69b89
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 05/16/2017
 
 
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Azure Backup の各機能の概要
-Azure Backup は、Microsoft Cloud のデータのバックアップ (または保護) と復元に使用できる、Azure ベースのサービスです。 Azure Backup では、既存のオンプレミスまたはオフサイトのバックアップ ソリューションを、信頼性の高い、セキュリティで保護された、コスト競争力のあるクラウド ベースのソリューションに置き換えます。 Azure Backup には複数のコンポーネントが用意されており、これを適切なコンピューター、サーバー、またはクラウドにダウンロードしてデプロイします。 デプロイするコンポーネント (エージェント) は、何を保護するかによって決まります。 Azure のバックアップ コンテナーにデータをバックアップするときは、、(保護対象がオンプレミス データかクラウドのデータかに関係なく) すべての Azure Backup コンポーネントを使用できます。 特定のデータを保護するときに使用するコンポーネントについては、[Azure Backup コンポーネントの表](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (この記事で後述) を参照してください。
+Azure Backup は、Microsoft Cloud のデータのバックアップ (または保護) と復元に使用できる、Azure ベースのサービスです。 Azure Backup では、既存のオンプレミスまたはオフサイトのバックアップ ソリューションを、信頼性の高い、セキュリティで保護された、コスト競争力のあるクラウド ベースのソリューションに置き換えます。 Azure Backup には複数のコンポーネントが用意されており、これを適切なコンピューター、サーバー、またはクラウドにダウンロードしてデプロイします。 デプロイするコンポーネント (エージェント) は、何を保護するかによって決まります。 Azure の Recovery Services コンテナーにデータをバックアップするときは、すべての Azure Backup コンポーネントを使用できます (保護対象がオンプレミス データかクラウドのデータかに関係なく)。 特定のデータを保護するときに使用するコンポーネントについては、[Azure Backup コンポーネントの表](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (この記事で後述) を参照してください。
 
 [Azure Backup の概要に関するビデオ](https://azure.microsoft.com/documentation/videos/what-is-azure-backup/)
 
@@ -42,7 +42,7 @@ Azure Backup は、Microsoft Cloud のデータのバックアップ (または�
 
 * geo 冗長ストレージ (GRS) では、(ソース データのプライマリの場所から数百マイル離れた) セカンダリ リージョンにデータがレプリケートされます。 GRS は LRS よりもコストがかかりますが、地域的な障害が発生しても、より高いレベルのデータ持続性が確保されます。
 
-**無制限のデータ転送** - 転送する受信データまたは送信データ量に制限がありません。 転送データに対して料金は発生しません。 ただし、Azure Import/Export サービスを使用して大量のデータをインポートする場合は、受信データに対してコストがかかります。 このコストの詳細については、「[Azure Backup でのオフライン バックアップのワークフロー](backup-azure-backup-import-export.md)」を参照してください。 送信データは、復元操作中にバックアップ コンテナーから転送されるデータを参照します。
+**無制限のデータ転送** - 転送する受信データまたは送信データ量に制限がありません。 転送データに対して料金は発生しません。 ただし、Azure Import/Export サービスを使用して大量のデータをインポートする場合は、受信データに対してコストがかかります。 このコストの詳細については、「[Azure Backup でのオフライン バックアップのワークフロー](backup-azure-backup-import-export.md)」を参照してください。 送信データとは、復元操作中に Recovery Services コンテナーから転送されるデータを指します。
 
 **データの暗号化** - データの暗号化によって、パブリック クラウドでデータを安全に送信および保存できます。 暗号化パスフレーズはローカルに保存されます。転送されたり Azure に保存されたりすることはありません。 データを復元する必要がある場合、暗号化パスフレーズ (キー) を持っているのはご本人のみです。
 
@@ -55,18 +55,18 @@ Azure Backup は、Microsoft Cloud のデータのバックアップ (または�
 
 | コンポーネント | メリット | 制限 | 保護対象 | バックアップの保存場所 |
 | --- | --- | --- | --- | --- |
-| Azure Backup (MARS) エージェント |<li>物理または仮想 Windows OS でファイルとフォルダーをバックアップ (VM はオンプレミスまたは Azure に配置できます)<li>個別のバックアップ サーバーが不要。 |<li>バックアップは 1 日に 3 回 <li>アプリケーション非対応。ファイル、フォルダー、およびボリューム レベルの復元のみ。 <li>  Linux は未サポート。 |<li>ファイル、 <li>フォルダー |Azure Backup コンテナー |
-| System Center DPM |<li>アプリケーション対応スナップショット (VSS)<li>柔軟にバックアップを作成<li>回復の単位 (すべて)<li>Azure Backup コンテナーを使用可能<li>Hyper-V と VMware VM での Linux のサポート <li>DPM 2012 R2 を使用した VMware VM のバックアップと復元 |Oracle ワークロードをバックアップできない。|<li>ファイル、 <li>フォルダー、<li> ボリューム、 <li>VM、<li> アプリケーション、<li> ワークロード |<li>Azure Backup コンテナー、<li> ローカルに接続されたディスク、<li>  テープ (オンプレミスのみ) |
-| Azure Backup Server |<li>アプリ対応スナップショット (VSS)<li>柔軟にバックアップを作成<li>回復の単位 (すべて)<li>Azure Backup コンテナーを使用可能<li>Hyper-V と VMware VM での Linux のサポート<li>VMware VM のバックアップと復元 <li>System Center ライセンスは不要 |<li>Oracle ワークロードをバックアップできない。<li>必ずライブ Azure サブスクリプションが必要<li>テープ バックアップには非対応 |<li>ファイル、 <li>フォルダー、<li> ボリューム、 <li>VM、<li> アプリケーション、<li> ワークロード |<li>Azure Backup コンテナー、<li> ローカルに接続されたディスク |
-| Azure IaaS VM のバックアップ |<li>Windows/Linux のネイティブ バックアップ<li>特定のエージェント インストールが不要<li>バックアップ インフラストラクチャを必要としないファブリック レベルのバックアップ |<li>1 日に 1 回 VM をバックアップ <li>ディスク レベルでのみ VM を復元<li>オンプレミスでバックアップできない |<li>VM、 <li>すべてのディスク (PowerShell を使用) |<p>Azure Backup コンテナー</p> |
+| Azure Backup (MARS) エージェント |<li>物理または仮想 Windows OS でファイルとフォルダーをバックアップ (VM はオンプレミスまたは Azure に配置できます)<li>個別のバックアップ サーバーが不要。 |<li>バックアップは 1 日に 3 回 <li>アプリケーション非対応。ファイル、フォルダー、およびボリューム レベルの復元のみ。 <li>  Linux は未サポート。 |<li>ファイル、 <li>フォルダー |Recovery Services コンテナー |
+| System Center DPM |<li>アプリケーション対応スナップショット (VSS)<li>柔軟にバックアップを作成<li>回復の単位 (すべて)<li>Recovery Services コンテナーを使用できる<li>Hyper-V と VMware VM での Linux のサポート <li>DPM 2012 R2 を使用した VMware VM のバックアップと復元 |Oracle ワークロードをバックアップできない。|<li>ファイル、 <li>フォルダー、<li> ボリューム、 <li>VM、<li> アプリケーション、<li> ワークロード |<li>Recovery Services コンテナー、<li> ローカルに接続されたディスク、<li>  テープ (オンプレミスのみ) |
+| Azure Backup Server |<li>アプリ対応スナップショット (VSS)<li>柔軟にバックアップを作成<li>回復の単位 (すべて)<li>Recovery Services コンテナーを使用できる<li>Hyper-V と VMware VM での Linux のサポート<li>VMware VM のバックアップと復元 <li>System Center ライセンスは不要 |<li>Oracle ワークロードをバックアップできない。<li>必ずライブ Azure サブスクリプションが必要<li>テープ バックアップには非対応 |<li>ファイル、 <li>フォルダー、<li> ボリューム、 <li>VM、<li> アプリケーション、<li> ワークロード |<li>Recovery Services コンテナー、<li> ローカルに接続されたディスク |
+| Azure IaaS VM のバックアップ |<li>Windows/Linux のネイティブ バックアップ<li>特定のエージェント インストールが不要<li>バックアップ インフラストラクチャを必要としないファブリック レベルのバックアップ |<li>1 日に 1 回 VM をバックアップ <li>ディスク レベルでのみ VM を復元<li>オンプレミスでバックアップできない |<li>VM、 <li>すべてのディスク (PowerShell を使用) |<p>Recovery Services コンテナー</p> |
 
 ## <a name="what-are-the-deployment-scenarios-for-each-component"></a>各コンポーネントのデプロイ シナリオ
 | コンポーネント | Azure にデプロイできる? | オンプレミスにデプロイできる? | サポートされているターゲット ストレージ |
 | --- | --- | --- | --- |
-| Azure Backup (MARS) エージェント |<p>**はい**</p> <p>Azure Backup エージェントは、Azure で実行されている任意の Windows Server VM にデプロイできます。</p> |<p>**はい**</p> <p>Backup エージェントは、任意の Windows Server VM または物理マシンにデプロイできます。</p> |<p>Azure Backup コンテナー</p> |
-| System Center DPM |<p>**はい**</p><p>詳細については、[System Center DPM を使用して Azure のワークロードを保護する方法](backup-azure-dpm-introduction.md)に関するページをご覧ください。</p> |<p>**はい**</p> <p>詳細については、[自社のデータセンターのワークロードと VM を保護する方法](https://technet.microsoft.com/en-us/system-center-docs/dpm/data-protection-manager)に関するページをご覧ください。</p> |<p>ローカルに接続されたディスク、</p> <p>Azure Backup コンテナー、</p> <p>テープ (オンプレミスのみ)</p> |
-| Azure Backup Server |<p>**はい**</p><p>詳細については、[Azure Backup Server を使用して Azure のワークロードを保護する方法](backup-azure-microsoft-azure-backup.md)に関するページをご覧ください。</p> |<p>**はい**</p> <p>詳細については、[Azure Backup Server を使用して Azure のワークロードを保護する方法](backup-azure-microsoft-azure-backup.md)に関するページをご覧ください。</p> |<p>ローカルに接続されたディスク、</p> <p>Azure Backup コンテナー</p> |
-| Azure IaaS VM のバックアップ |<p>**はい**</p><p>Azure のファブリックの一部</p><p>[Azure のサービスとしてのインフラストラクチャ (IaaS) 仮想マシンのバックアップ](backup-azure-vms-introduction.md)に特化しています。</p> |<p>**いいえ**</p> <p>System Center DPM を使用して、データセンターの仮想マシンをバックアップします。</p> |<p>Azure Backup コンテナー</p> |
+| Azure Backup (MARS) エージェント |<p>**はい**</p> <p>Azure Backup エージェントは、Azure で実行されている任意の Windows Server VM にデプロイできます。</p> |<p>**はい**</p> <p>Backup エージェントは、任意の Windows Server VM または物理マシンにデプロイできます。</p> |<p>Recovery Services コンテナー</p> |
+| System Center DPM |<p>**はい**</p><p>詳細については、[System Center DPM を使用して Azure のワークロードを保護する方法](backup-azure-dpm-introduction.md)に関するページをご覧ください。</p> |<p>**はい**</p> <p>詳細については、[自社のデータセンターのワークロードと VM を保護する方法](https://technet.microsoft.com/system-center-docs/dpm/data-protection-manager)に関するページをご覧ください。</p> |<p>ローカルに接続されたディスク、</p> <p>Recovery Services コンテナー、</p> <p>テープ (オンプレミスのみ)</p> |
+| Azure Backup Server |<p>**はい**</p><p>詳細については、[Azure Backup Server を使用して Azure のワークロードを保護する方法](backup-azure-microsoft-azure-backup.md)に関するページをご覧ください。</p> |<p>**はい**</p> <p>詳細については、[Azure Backup Server を使用して Azure のワークロードを保護する方法](backup-azure-microsoft-azure-backup.md)に関するページをご覧ください。</p> |<p>ローカルに接続されたディスク、</p> <p>Recovery Services コンテナー</p> |
+| Azure IaaS VM のバックアップ |<p>**はい**</p><p>Azure のファブリックの一部</p><p>[Azure のサービスとしてのインフラストラクチャ (IaaS) 仮想マシンのバックアップ](backup-azure-vms-introduction.md)に特化しています。</p> |<p>**いいえ**</p> <p>System Center DPM を使用して、データセンターの仮想マシンをバックアップします。</p> |<p>Recovery Services コンテナー</p> |
 
 ## <a name="which-applications-and-workloads-can-be-backed-up"></a>バックアップできるアプリケーションとワークロード
 次の表は、Azure Backup を使用して保護できるデータとワークロードのマトリックスを示しています。 Azure Backup ソリューション列には、そのソリューションのデプロイに関するドキュメントへのリンクがあります。 Azure Backup の各コンポーネントを、クラシック (Service Manager デプロイ) または Resource Manager デプロイ モデル環境にデプロイできます。
@@ -91,15 +91,15 @@ Azure Backup は、Microsoft Cloud のデータのバックアップ (または�
 | コンポーネント | Linux (Azure での動作保証済み) サポート |
 | --- | --- |
 | Azure Backup (MARS) エージェント |なし (Windows ベースのエージェントのみ) |
-| System Center DPM |Hyper-V および VMWare 上の Linux Guest VM のファイル整合性バックアップ<br/> (Azure VM では不可)<br/> Hyper-V および VMWare Linux Guest VM の VM 復元 |
-| Azure Backup Server |Hyper-V および VMWare 上の Linux Guest VM のファイル整合性バックアップ<br/> (Azure VM では不可)<br/> Hyper-V および VMWare Linux Guest VM の VM 復元 |
-| Azure IaaS VM のバックアップ |[事前スクリプトおよび事後スクリプト フレームワーク](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)を使用するアプリケーション整合性バックアップ<br/> [詳細なファイルの回復](backup-azure-restore-files-from-vm.md)<br/> [すべての VM ディスクの復元](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-backed-up-disks)<br/> [VM の復元](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#create-a-new-vm-from-restore-point) |
+| System Center DPM |<li> Hyper-V および VMWare 上の Linux Guest VM のファイル整合性バックアップ<br/> <li> Hyper-V および VMWare Linux Guest VM の VM 復元 </br> </br>  "*ファイル整合性バックアップは Azure VM では利用できません*" <br/> |
+| Azure Backup Server |<li>Hyper-V および VMWare 上の Linux Guest VM のファイル整合性バックアップ<br/> <li> Hyper-V および VMWare Linux Guest VM の VM 復元 </br></br> "*ファイル整合性バックアップは Azure VM では利用できません*"  |
+| Azure IaaS VM のバックアップ |[事前スクリプトおよび事後スクリプト フレームワーク](backup-azure-linux-app-consistent.md)を使用するアプリケーション整合性バックアップ<br/> [詳細なファイルの回復](backup-azure-restore-files-from-vm.md)<br/> [すべての VM ディスクの復元](backup-azure-arm-restore-vms.md#restore-backed-up-disks)<br/> [VM の復元](backup-azure-arm-restore-vms.md#create-a-new-vm-from-restore-point) |
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>Azure Backup での Premium Storage VM の使用
 Azure Backup で、Premium Storage VM が保護されます。 Azure Premium Storage は、入出力集中型ワークロードをサポートすることを目的としたソリッド ステート ドライブ (SSD) ベースのストレージです。 Premium Storage は、仮想マシン (VM) ワークロードに適しています。 Premium Storage の詳細については、[Premium Storage (Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ)](../storage/storage-premium-storage.md) に関する記事を参照してください。
 
 ### <a name="back-up-premium-storage-vms"></a>Premium Storage VM のバックアップ
-Premium Storage VM をバックアップすると、Backup サービスによって、Premium Storage アカウントに "AzureBackup-" という名前の一時的なステージング場所が作成されます。 このステージング場所のサイズは、復旧ポイントのスナップショットのサイズと同じです。 ストレージ アカウントに、一時的なステージング場所に対応した空き領域があることを確認してください。 詳細については、[Premium Storage の制限](../storage/storage-premium-storage.md#scalability-and-performance-targets)に関する記事をご覧ください。 バックアップ ジョブが完了したら、ステージングの場所は削除されます。 ステージングの場所に使用されるストレージの価格は、すべての [Premium Storage の価格](../storage/storage-premium-storage.md#pricing-and-billing)に準じます。
+Premium Storage VM をバックアップすると、Backup サービスによって、Premium Storage アカウントに "AzureBackup-" という名前の一時的なステージング場所が作成されます。 このステージング場所のサイズは、復旧ポイントのスナップショットのサイズと同じです。 Premium Storage アカウントに、一時的なステージング場所として使用できる十分な空き領域があることを確認してください。 詳細については、[Premium Storage の制限](../storage/storage-premium-storage.md#scalability-and-performance-targets)に関する記事をご覧ください。 バックアップ ジョブが完了したら、ステージングの場所は削除されます。 ステージングの場所に使用されるストレージの価格は、すべての [Premium Storage の価格](../storage/storage-premium-storage.md#pricing-and-billing)に準じます。
 
 > [!NOTE]
 > ステージングの場所は変更または編集できません。
@@ -116,7 +116,7 @@ Azure Backup は、管理ディスク VM を保護します。 管理ディス�
 管理ディスク上の VM のバックアップは、Resource Manager VM のバックアップと同じです。 Azure Portal では、仮想マシン ビューまたは Recovery Services コンテナー ビューから直接バックアップ ジョブを構成できます。 管理ディスクに VM をバックアップするには、管理ディスク上に構築された RestorePoint コレクションを使用します。 Azure Backup は、Azure Disk Encryption (ADE) を使用して暗号化された管理ディスク VM のバックアップにも対応しています。
 
 ### <a name="restore-managed-disk-vms"></a>管理ディスク VM の復元
-Azure Backup では、完全な管理ディスク VM を復元するか、管理ディスクを Resource Manager ストレージ アカウントに復元できます。 管理ディスクは、復元処理中に Azure によって管理されます。 復元プロセスの一環として作成されたストレージ アカウントは、ご自身 (または顧客) が管理します。 管理対象の暗号化された VM を復元するには、事前に VM のキーとシークレットが Key Vault に存在していることが必要です。
+Azure Backup では、完全な管理ディスク VM を復元するか、管理ディスクをストレージ アカウントに復元することができます。 管理ディスクは、復元処理中に Azure によって管理されます。 復元プロセスの一環として作成されたストレージ アカウントは、ご自身 (または顧客) が管理します。 管理対象の暗号化された VM を復元する場合は、復元操作を開始する前に VM のキーとシークレットが Key Vault に存在している必要があります。
 
 ## <a name="what-are-the-features-of-each-backup-component"></a>各 Backup コンポーネントの機能
 次のセクションの各表は、各 Azure Backup コンポーネントのさまざまな機能の可用性とサポートを簡単にまとめたものです。 追加のサポートや詳細情報については、それぞれの表に続く説明を参照してください。
@@ -124,19 +124,19 @@ Azure Backup では、完全な管理ディスク VM を復元するか、管理
 ### <a name="storage"></a>Storage
 | 機能 | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
 | --- | --- | --- | --- | --- |
-| Azure Backup コンテナー |![はい][green] |![あり][green] |![あり][green] |![はい][green] |
+| Recovery Services コンテナー |![あり][green] |![あり][green] |![あり][green] |![はい][green] |
 | ディスク ストレージ | |![はい][green] |![はい][green] | |
 | テープ ストレージ | |![はい][green] | | |
-| 圧縮 <br/>(バックアップ コンテナー) |![はい][green] |![あり][green] |![はい][green] | |
+| 圧縮 <br/>(Recovery Services コンテナー内) |![あり][green] |![あり][green] |![はい][green] | |
 | 増分バックアップ |![はい][green] |![あり][green] |![あり][green] |![はい][green] |
-| ディスクの重複除去 | |![部分的][yellow] |![部分的][yellow] | |
+| ディスクの重複除去 | |![部分的][yellow] |![部分的][yellow] | | |
 
 ![table key](./media/backup-introduction-to-azure-backup/table-key.png)
 
-バックアップ コンテナーは、すべてのコンポーネントの中で優先されるストレージ ターゲットです。 System Center DPM と Azure Backup Server には、ローカル ディスク コピーを作成するオプションもありますが、 テープ ストレージ デバイスにデータを書き込むオプションがあるのは System Center DPM のみです。
+Recovery Services コンテナーは、すべてのコンポーネントの中で優先されるストレージ ターゲットです。 System Center DPM と Azure Backup Server には、ローカル ディスク コピーを作成するオプションもありますが、 テープ ストレージ デバイスにデータを書き込むオプションがあるのは System Center DPM のみです。
 
 #### <a name="compression"></a>圧縮
-必要となるストレージ使用量を削減するために、バックアップが圧縮されます。 VM 拡張機能は、圧縮が行われない唯一のコンポーネントです。 VM 拡張機能では、すべてのバックアップ データがストレージ アカウントから、同じリージョンにあるバックアップ コンテナーにコピーされます。 データの転送時に圧縮は使用されません。 圧縮せずにデータを格納することで、使用されるストレージは若干増えますが、 その復旧ポイントが必要な場合に、復元時間が短縮されます。
+必要となるストレージ使用量を削減するために、バックアップが圧縮されます。 VM 拡張機能は、圧縮が行われない唯一のコンポーネントです。 VM 拡張機能では、すべてのバックアップ データがストレージ アカウントから、同じリージョンにある Recovery Services コンテナーにコピーされます。 データの転送時に圧縮は使用されません。 圧縮せずにデータを格納することで、使用されるストレージは若干増えますが、 その復旧ポイントが必要な場合に、復元時間が短縮されます。
 
 
 #### <a name="disk-deduplication"></a>ディスクの重複除去
@@ -148,7 +148,7 @@ System Center DPM または Azure Backup Server を [Hyper-V 仮想マシン](ht
 >
 
 ### <a name="incremental-backup-explained"></a>増分バックアップの説明
-ターゲット ストレージ (ディスク、テープ、バックアップ コンテナー) がどれであるかにかかわらず、すべての Azure Backup コンポーネントが増分バックアップをサポートします。 増分バックアップは、前回のバックアップ以降に行われた変更のみを転送対象とすることで、高い保存効率と時間効率を実現します。
+ターゲット ストレージの種類 (ディスク、テープ、Recovery Services コンテナー) にかかわらず、すべての Azure Backup コンポーネントで増分バックアップがサポートされています。 増分バックアップは、前回のバックアップ以降に行われた変更のみを転送対象とすることで、高い保存効率と時間効率を実現します。
 
 #### <a name="comparing-full-differential-and-incremental-backup"></a>完全バックアップ、差分バックアップ、増分バックアップの比較
 
@@ -171,10 +171,10 @@ System Center DPM または Azure Backup Server を [Hyper-V 仮想マシン](ht
 ![table key](./media/backup-introduction-to-azure-backup/table-key.png)
 
 #### <a name="network-security"></a>ネットワークのセキュリティ
-サーバーからバックアップ コンテナーまでのすべてのバックアップ トラフィックは、Advanced Encryption Standard 256 を使用して暗号化されます。 バックアップ データは、セキュリティで保護された HTTPS リンク上で送信されます。 また、バックアップ データは、暗号化された形式でバックアップ コンテナーにも格納されます。 このデータのロックを解除するパスフレーズを持っているのは、Azure のお客様のみです。 マイクロソフトは、どの時点でもバックアップ データの暗号化を解除できせん。
+サーバーから Recovery Services バックアップ コンテナーまでのすべてのバックアップ トラフィックは、Advanced Encryption Standard 256 を使用して暗号化されます。 バックアップ データは、セキュリティで保護された HTTPS リンク上で送信されます。 また、バックアップ データは、暗号化された形式で Recovery Services コンテナーにも格納されます。 このデータのロックを解除するパスフレーズを持っているのは、Azure のお客様のみです。 マイクロソフトは、どの時点でもバックアップ データの暗号化を解除できせん。
 
 > [!WARNING]
-> バックアップ コンテナーを作成したら、暗号化キーにアクセスできるのはご本人だけです。 マイクロソフトには暗号化キーのコピーはありません。また、キーにアクセスすることもできません。 ユーザーがキーを紛失した場合、マイクロソフトはバックアップ データを復旧できません。
+> Recovery Services コンテナーを作成したら、暗号化キーにアクセスできるのはご本人だけです。 マイクロソフトには暗号化キーのコピーはありません。また、キーにアクセスすることもできません。 ユーザーがキーを紛失した場合、マイクロソフトはバックアップ データを復旧できません。
 >
 >
 
@@ -185,15 +185,15 @@ Azure VM のバックアップの場合は、仮想マシン " *内* " で暗号
 | 機能 | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
 | --- | --- | --- | --- | --- |
 | ネットワーク圧縮 <br/>(対**バックアップ サーバー**) | |![はい][green] |![はい][green] | |
-| ネットワーク圧縮 <br/>(対**バックアップ コンテナー**) |![はい][green] |![あり][green] |![はい][green] | |
+| ネットワーク圧縮 <br/>(対 **Recovery Services コンテナー**) |![あり][green] |![あり][green] |![はい][green] | |
 | ネットワーク プロトコル <br/>(対**バックアップ サーバー**) | |TCP |TCP | |
-| ネットワーク プロトコル <br/>(対**バックアップ コンテナー**) |HTTPS |HTTPS |HTTPS |HTTPS |
+| ネットワーク プロトコル <br/>(対 **Recovery Services コンテナー**) |HTTPS |HTTPS |HTTPS |HTTPS |
 
 ![table key](./media/backup-introduction-to-azure-backup/table-key-2.png)
 
 (IaaS VM 上の) VM 拡張機能はデータを Azure Storage アカウントからストレージ ネットワーク経由で直接読み取ります。したがって、このトラフィックを圧縮する必要はありません。
 
-System Center DPM または Azure Backup Server にデータをバックアップする場合は、プライマリ サーバーからバックアップ サーバーへのデータを圧縮します。 DPM または Azure Backup Server にバックアップする前にデータを圧縮すると、帯域幅を節約できます。
+セカンダリ バックアップ サーバーとして System Center DPM サーバーまたは Azure Backup Server を使用する場合は、プライマリ サーバーからバックアップ サーバーに移動するデータを圧縮します。 DPM または Azure Backup Server にバックアップする前にデータを圧縮すると、帯域幅を節約できます。
 
 #### <a name="network-throttling"></a>ネットワークのスロットル
 Azure Backup エージェントには、データ転送時のネットワーク帯域幅の使用方法を制御できる、ネットワーク スロットル機能が用意されています。 業務時間中に実行が必要なデータのバックアップ処理が他のインターネット トラフィックに干渉しないようにする必要がある場合などに効果を発揮します。 データ転送のスロットルはバックアップと復元のアクティビティに適用されます。
@@ -204,7 +204,7 @@ Azure Backup には、*保護されているインスタンス*につき復旧�
 
 |  | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
 | --- | --- | --- | --- | --- |
-| バックアップ頻度<br/> (対バックアップ コンテナー) |3 バックアップ/日 |2 バックアップ/日 |2 バックアップ/日 |1 バックアップ/日 |
+| バックアップ頻度<br/> (対 Recovery Services コンテナー) |3 バックアップ/日 |2 バックアップ/日 |2 バックアップ/日 |1 バックアップ/日 |
 | バックアップ頻度<br/> (対ディスク) |適用不可 |<li>SQL Server の場合は 15 分ごと <li>他のワークロードの場合は 1 時間ごと |<li>SQL Server の場合は 15 分ごと <li>他のワークロードの場合は 1 時間ごと</p> |適用不可 |
 | 保持オプション |毎日、毎週、毎月、毎年 |毎日、毎週、毎月、毎年 |毎日、毎週、毎月、毎年 |毎日、毎週、毎月、毎年 |
 | 保護されているインスタンスあたりの復旧ポイントの最大数 |9999|9999|9999|9999|
@@ -221,13 +221,13 @@ Azure Backup には、*保護されているインスタンス*につき復旧�
 * Windows オペレーティング システムを実行しているパーソナル コンピューター、ワークステーション、またはノートパソコン。
 
 
-## <a name="what-is-the-vault-credential-file"></a>資格情報コンテナーの資格情報ファイルとは
-資格情報コンテナーの資格情報ファイルは、各バックアップ コンテナーごとにポータルによって生成される証明書です。 ポータルは公開キーを Access Control Service (ACS) にアップロードします。 秘密キーは、資格情報をダウンロードするときにユーザーに提供されます。 この秘密キーを使用して、保護するコンピューターを登録します。 秘密キーにより、サーバーまたはコンピューターを認証して、バックアップ データを特定の Backup コンテナーに送信することができます。
+## <a name="what-is-a-recovery-services-vault"></a>Recovery Services コンテナーとは
+Recovery Services コンテナーは、バックアップ コピー、復旧ポイント、バックアップ ポリシーなどのデータを保持するために使用される、Azure のオンライン ストレージ エンティティです。 Recovery Services コンテナーを使用して、Azure サービスとオンプレミス サーバーおよびワークステーションのバックアップ データを保持することができます。 Recovery Services コンテナーでは、管理オーバーヘッドを最小限に抑えながら、バックアップ データを簡単に整理できます。 サブスクリプション内に任意の数の Recovery Services コンテナーを作成できます。
 
-コンテナー資格情報を使って、サーバーまたはコンピューターを登録できるのは本人だけです。 それでも、このコンテナー資格情報の扱いには十分に気を付けてください。紛失したり、他の人に手にわたってしまうと、そのコンテナー資格情報を使って、コンテナーに対して他のコンピューターが登録されてしまう可能性があります。 バックアップ データはパスフレーズを使用して暗号化されており、アクセスできるのは本人のみであるため、既存のバックアップ データが漏えいすることはありません。 コンテナー資格情報は 48 時間後に有効期限が切れます。 バックアップ コンテナーの資格情報は何回でもダウンロードできますが、登録に使用できるのは最新の資格情報のみです。
+Azure Service Manager に基づく Backup コンテナーは、コンテナーの最初のバージョンでした。 Azure Resource Manager モデル機能が追加された Recovery Services コンテナーは、コンテナーの 2 番目のバージョンです。 機能の違いの完全な説明については、「[Recovery Services コンテナーの概要](backup-azure-recovery-services-vault-overview.md)」の記事を参照してください。 Azure Portal では Backup コンテナーを作成できなくなりましたが、Backup コンテナーは引き続きサポートされています。  
 
 ## <a name="how-does-azure-backup-differ-from-azure-site-recovery"></a>Azure Backup と Azure Site Recovery はどのように違いますか
-Backup と Azure Site Recovery は両方とも、データをバックアップして、そのデータを復元できるとうい点で関連していますが、 中心となる価値提案は異なります。
+Backup と Azure Site Recovery は両方とも、データをバックアップして、そのデータを復元できるとうい点で関連していますが、 これらのサービスは、業務にビジネス継続性とディザスター リカバリーの機能を提供するために、異なる目的で使用されます。 より細かいレベルでデータの保護と復元を行うには、Azure Backup を使用します。 たとえば、ノート PC のプレゼンテーションが破損した場合は、Azure Backup を使用して、プレゼンテーションを復元します。 VM 上の構成とデータを別のデータセンターにレプリケートする場合は、Azure Site Recovery を使用します。
 
 Azure Backup は、オンプレミスのデータとクラウドのデータを保護します。 Azure Site Recovery は、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、フェールバックを調整します。 障害復旧ソリューションでは、データの安全性と復元可能性を維持し (Backup)、" *さらに* "、障害が発生したときにワークロードの可用性を維持する (Site Recovery) 必要があるため、どちらのサービスも重要です。
 

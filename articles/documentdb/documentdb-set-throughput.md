@@ -1,30 +1,31 @@
 ---
-title: "Azure DocumentDB のスループットのプロビジョニング | Microsoft Docs"
-description: "DocumentDB コレクションのプロビジョニング済みスループットを設定する方法について説明します。"
-services: documentdb
+title: "Azure Cosmos DB のスループットのプロビジョニング | Microsoft Docs"
+description: "Azure Cosmos DB コレクションのプロビジョニング済みスループットを設定する方法について説明します。"
+services: cosmosdb
 author: mimig1
 manager: jhubbard
 editor: 
 documentationcenter: 
 ms.assetid: f98def7f-f012-4592-be03-f6fa185e1b1e
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: mimig
-translationtype: Human Translation
-ms.sourcegitcommit: abdf0af8a85db19c68a0d74c0477d798c0fd03fc
-ms.openlocfilehash: 8ff2fc6106438e35b93112a6dc97814ba79b06fc
-ms.lasthandoff: 02/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 5258ba0bc37442c983d91c5dd7435fd5fbefd56f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
 
-# <a name="set-throughput-for-azure-documentdb-collections"></a>Azure DocumentDB コレクションのスループットの設定
+# <a name="set-throughput-for-azure-cosmos-db-collections"></a>Azure Cosmos DB コレクションのスループットの設定
 
-Azure Portal またはクライアントの SDK を使用して、DocumentDB コレクションのスループットを設定できます。 
+Azure Portal またはクライアントの SDK を使用して、Azure Cosmos DB コレクションのスループットを設定できます。 
 
 次の表に、コレクションで使用できるスループットを示します。
 
@@ -54,8 +55,8 @@ Azure Portal またはクライアントの SDK を使用して、DocumentDB コ
 ## <a name="to-set-the-throughput-by-using-the-azure-portal"></a>Azure Portal を使用してスループットを設定するには
 
 1. 新しいウィンドウで、[Azure Portal](https://portal.azure.com) を開きます。
-2. 左側のバーで **[NoSQL (DocumentDB)]** をクリックします。または、下部の **[その他のサービス]** をクリックし、**[データベース]** までスクロールしてから **[NoSQL (DocumentDB)]** をクリックします。
-3. DocumentDB アカウントを選択します。
+2. 左側のバーで **[Azure Cosmos DB]** をクリックします。または、下部の **[その他のサービス]** をクリックし、**[データベース]** までスクロールして、**[Azure Cosmos DB]** をクリックします。
+3. Azure Cosmos DB アカウントを選択します。
 4. この新しいウィンドウで、次のスクリーン ショットに示すように **[コレクション]** の **[スケール]** をクリックします。
 5. この新しいウィンドウで、ドロップダウンからコレクションを選択し、**[スループット]** の値を変更して、**[保存]** をクリックします。
 
@@ -83,9 +84,9 @@ await client.ReplaceOfferAsync(offer);
 
 **スループットを 400 RU/秒未満に設定することはできますか?**
 
-DocumentDB のシングル パーティション コレクションで使用できる最小スループットは&400; RU/秒です (パーティション分割コレクションの最小スループットは&2;,500 RU/秒)。 要求ユニットは 100 RU/秒の間隔で設定されますが、スループットを 100 RU/秒または 400 RU/秒未満の値に設定することはできません。 コストを抑えて DocumentDB の開発とテストを行いたい場合は、無料の [DocumentDB Emulator](documentdb-nosql-local-emulator.md) を利用して無償でローカルにデプロイすることができます。 
+Cosmos DB のシングル パーティション コレクションで使用できる最小スループットは 400 RU/秒です (パーティション分割コレクションの最小スループットは 2,500 RU/秒)。 要求ユニットは 100 RU/秒の間隔で設定されますが、スループットを 100 RU/秒または 400 RU/秒未満の値に設定することはできません。 コストを抑えて Cosmos DB の開発とテストを行いたい場合は、無料の [Azure Cosmos DB Emulator](documentdb-nosql-local-emulator.md) を利用して無償でローカルにデプロイすることができます。 
 
 ## <a name="next-steps"></a>次のステップ
 
-DocumentDB を使用したプロビジョニングと地球規模での使用の詳細については、[DocumentDB でのパーティション分割とスケーリング](documentdb-partition-data.md)に関するページをご覧ください。
+Cosmos DB を使用したプロビジョニングと地球規模での使用の詳細については、[Cosmos DB でのパーティション分割とスケーリング](documentdb-partition-data.md)に関するページをご覧ください。
 

@@ -13,10 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: ab6076d430688ee54515ec4a0d960728ae1f1e48
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 306dde28a4af82197ae5a75bee83c0e7cf219e42
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -83,7 +84,7 @@ ms.lasthandoff: 04/27/2017
 | --- | --- | --- |
 | name |アクティビティの名前。 アクティビティで実行するように構成されているアクションを表す名前を指定します。<br/><ul><li>最大文字数：260文字</li><li>文字、数字、アンダー スコア (_) のいずれかで始める必要があります。</li><li>次の文字は使用できません："."、"+"、"?"、"/"、"<"、">"、"*"、"%"、"&"、":"、"\\"</li></ul> |はい |
 | description |アクティビティの用途を説明するテキスト。 |はい |
-| type |アクティビティの種類を指定します。 各種のアクティビティについては、「[データ ストア](#data-stores)」と[変換アクティビティ](#transformation-activities)に関するセクションを参照してください。 |はい |
+| type |アクティビティの種類を指定します。 アクティビティの種類については、「[データ ストア](#data-stores)」および「[データ変換アクティビティ](#data-transformation-activities)」をご覧ください。 |あり |
 | inputs |アクティビティで使用される入力テーブル<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |はい |
 | outputs |アクティビティで使用される出力テーブル。<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": “outputtable1” } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": “outputtable1” }, { "name": “outputtable2” }  ],` |あり |
 | linkedServiceName |アクティビティで使用される、リンクされたサービスの名前。 <br/><br/>アクティビティでは、必要なコンピューティング環境にリンクする、リンクされたサービスの指定が必要な場合があります。 |HDInsight アクティビティ、Azure Machine Learning アクティビティ、ストアド プロシージャ アクティビティの場合は "はい"。 <br/><br/>それ以外の場合は "いいえ" |
@@ -371,7 +372,7 @@ structure:
 |:--- |:--- |
 | **Azure** |[Azure BLOB Storage](#azure-blob-storage) |
 | &nbsp; |[Azure Data Lake Store](#azure-datalake-store) |
-| &nbsp; |[Azure DocumentDB](#azure-documentdb) |
+| &nbsp; |[Azure Cosmos DB](#azure-cosmos-db) |
 | &nbsp; |[Azure SQL Database](#azure-sql-database) |
 | &nbsp; |[Azure SQL Data Warehouse](#azure-sql-data-warehouse) |
 | &nbsp; |[Azure Search](#azure-search) |
@@ -775,20 +776,20 @@ Azure Data Lake Store にデータをコピーする場合は、コピー アク
 
 詳細については、[Azure Data Lake Store コネクタ](data-factory-azure-datalake-connector.md#copy-activity-properties)に関する記事を参照してください。 
 
-## <a name="azure-documentdb"></a>Azure DocumentDB
+## <a name="azure-cosmos-db"></a>Azure Cosmos DB  
 
 ### <a name="linked-service"></a>リンクされたサービス
-Azure DocumentDB のリンクされたサービスを定義するには、リンクされたサービスの **type** を **DocumentDb** に設定し、**typeProperties** セクションで以下のプロパティを指定します。  
+Azure Cosmos DB のリンクされたサービスを定義するには、リンクされたサービスの **type** を **DocumentDb** に設定し、**typeProperties** セクションで以下のプロパティを指定します。  
 
 | **プロパティ** | **説明** | **必須** |
 | --- | --- | --- |
-| connectionString |Azure DocumentDB データベースに接続するために必要な情報を指定します。 |はい |
+| connectionString |Azure Cosmos DB データベースに接続するために必要な情報を指定します。 |あり |
 
 #### <a name="example"></a>例
 
 ```json
 {
-    "name": "DocumentDbLinkedService",
+    "name": "CosmosDBLinkedService",
     "properties": {
         "type": "DocumentDb",
         "typeProperties": {
@@ -797,23 +798,23 @@ Azure DocumentDB のリンクされたサービスを定義するには、リン
     }
 }
 ```
-詳細については、[DocumentDB コネクタ](data-factory-azure-documentdb-connector.md#linked-service-properties)に関する記事を参照してください。
+詳細については、[Azure Cosmos DB コネクタ](data-factory-azure-documentdb-connector.md#linked-service-properties)に関する記事をご覧ください。
 
 ### <a name="dataset"></a>Dataset
-Azure DocumentDB データセットを定義するには、データセットの **type** を **DocumentDbCollection** に設定し、**typeProperties** セクションで以下のプロパティを指定します。 
+Azure Cosmos DB データセットを定義するには、データセットの **type** を **DocumentDbCollection** に設定し、**typeProperties** セクションで以下のプロパティを指定します。 
 
 | **プロパティ** | **説明** | **必須** |
 | --- | --- | --- |
-| collectionName |DocumentDB ドキュメント コレクションの名前です。 |はい |
+| collectionName |Azure Cosmos DB コレクションの名前。 |あり |
 
 #### <a name="example"></a>例
 
 ```json
 {
-    "name": "PersonDocumentDbTable",
+    "name": "PersonCosmosDBTable",
     "properties": {
         "type": "DocumentDbCollection",
-        "linkedServiceName": "DocumentDbLinkedService",
+        "linkedServiceName": "CosmosDBLinkedService",
         "typeProperties": {
             "collectionName": "Person"
         },
@@ -825,16 +826,16 @@ Azure DocumentDB データセットを定義するには、データセットの
     }
 }
 ```
-詳細については、[DocumentDB コネクタ](data-factory-azure-documentdb-connector.md#dataset-properties)に関する記事を参照してください。
+詳細については、[Azure Cosmos DB コネクタ](data-factory-azure-documentdb-connector.md#dataset-properties)に関する記事をご覧ください。
 
-### <a name="documentdb-collection-source-in-copy-activity"></a>コピー アクティビティの DocumentDB コレクション ソース
-Azure DocumentDB からデータをコピーする場合は、コピー アクティビティの **source type** を **DocumentDbCollectionSource** に設定し、**source** セクションで以下のプロパティを指定します。
+### <a name="azure-cosmos-db-collection-source-in-copy-activity"></a>コピー アクティビティの Azure Cosmos DB コレクション ソース
+Azure Cosmos DB からデータをコピーする場合は、コピー アクティビティの **source type** を **DocumentDbCollectionSource** に設定し、**source** セクションで以下のプロパティを指定します。
 
 
 | **プロパティ** | **説明** | **使用できる値** | **必須** |
 | --- | --- | --- | --- |
-| query |データを読み取るためのクエリを指定します。 |DocumentDB でサポートされているクエリ文字列。 <br/><br/>例: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |なし <br/><br/>指定されていない場合に実行される SQL ステートメント: `select <columns defined in structure> from mycollection` |
-| nestingSeparator |ドキュメントが入れ子であることを示す特殊文字 |任意の文字。 <br/><br/>DocumentDB は JSON 文書の NoSQL ストアであり、入れ子構造が許可されます。 Azure Data Factory を利用すると、nestingSeparator で階層を示すことができます。 上記の例では「.」です。 区切り記号により、コピー アクティビティで「Name」オブジェクトが 3 つの子要素 (First、Middle、Last) で生成されます。これはテーブル定義の「Name.First」、「Name.Middle」、「Name.Last」に基づきます。 |いいえ |
+| query |データを読み取るためのクエリを指定します。 |Azure Cosmos DB でサポートされているクエリ文字列。 <br/><br/>例: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |なし <br/><br/>指定されていない場合に実行される SQL ステートメント: `select <columns defined in structure> from mycollection` |
+| nestingSeparator |ドキュメントが入れ子であることを示す特殊文字 |任意の文字。 <br/><br/>Azure Cosmos DB は JSON ドキュメントの NoSQL ストアであり、入れ子構造が許可されます。 Azure Data Factory を利用すると、nestingSeparator で階層を示すことができます。 上記の例では「.」です。 区切り記号により、コピー アクティビティで「Name」オブジェクトが 3 つの子要素 (First、Middle、Last) で生成されます。これはテーブル定義の「Name.First」、「Name.Middle」、「Name.Last」に基づきます。 |いいえ |
 
 #### <a name="example"></a>例
 
@@ -858,7 +859,7 @@ Azure DocumentDB からデータをコピーする場合は、コピー アク�
                 }
             },
             "inputs": [{
-                "name": "PersonDocumentDbTable"
+                "name": "PersonCosmosDBTable"
             }],
             "outputs": [{
                 "name": "PersonBlobTableOut"
@@ -866,7 +867,7 @@ Azure DocumentDB からデータをコピーする場合は、コピー アク�
             "policy": {
                 "concurrency": 1
             },
-            "name": "CopyFromDocDbToBlob"
+            "name": "CopyFromCosmosDbToBlob"
         }],
         "start": "2016-04-01T00:00:00",
         "end": "2016-04-02T00:00:00"
@@ -874,13 +875,13 @@ Azure DocumentDB からデータをコピーする場合は、コピー アク�
 }
 ```
 
-### <a name="documentdb-collection-sink-in-copy-activity"></a>コピー アクティビティの DocumentDB コレクション シンク
-Azure DocumentDB にデータをコピーする場合は、コピー アクティビティの **sink type** を **DocumentDbCollectionSink** に設定し、**sink** セクションで以下のプロパティを指定します。
+### <a name="azure-cosmos-db-collection-sink-in-copy-activity"></a>コピー アクティビティの Azure Cosmos DB コレクション シンク
+Azure Cosmos DB にデータをコピーする場合は、コピー アクティビティの **sink type** を **DocumentDbCollectionSink** に設定し、**sink** セクションで以下のプロパティを指定します。
 
 | **プロパティ** | **説明** | **使用できる値** | **必須** |
 | --- | --- | --- | --- |
-| nestingSeparator |入れ子になった文書が必要であることを示すソース列名の特殊文字。 <br/><br/>上記の例の場合: 出力テーブルの `Name.First` は、DocumentDB ドキュメントで次の JSON 構造を生成します。<br/><br/>"Name": {<br/>    "First":"John"<br/>}, |入れ子レベルの分割に使用される文字。<br/><br/>既定値は `.` (ドット) です。 |入れ子レベルの分割に使用される文字。 <br/><br/>既定値は `.` (ドット) です。 |
-| writeBatchSize |DocumentDB サービスにドキュメントの作成を要求する並列要求の数。<br/><br/>このプロパティを使用して、DocumentDB との間でコピーするときのパフォーマンスを微調整できます。 writeBatchSize を増やすとパフォーマンスが良くなります。DocumentDB に送信される並列要求の数が増えるためです。 ただし、スロットルは回避する必要があります。「Request rate is large」というエラー メッセージをスローする可能性があります。<br/><br/>スロットルは、ドキュメントのサイズ、ドキュメント内の語句の数、ターゲット コレクションの索引作成ポリシーなど、さまざまな要因により決定されます。コピー操作の場合、もっとよいコレクションを利用し (S3 など)、最大のスループットを得ることができます (毎秒 2,500 要求ユニット)。 |Integer |いいえ (既定値: 5) |
+| nestingSeparator |入れ子になった文書が必要であることを示すソース列名の特殊文字。 <br/><br/>上記の例の場合: 出力テーブルの `Name.First` は、Cosmos DB ドキュメントで次の JSON 構造を生成します。<br/><br/>"Name": {<br/>    "First":"John"<br/>}, |入れ子レベルの分割に使用される文字。<br/><br/>既定値は `.` (ドット) です。 |入れ子レベルの分割に使用される文字。 <br/><br/>既定値は `.` (ドット) です。 |
+| writeBatchSize |Azure Cosmos DB サービスにドキュメントの作成を要求する並列要求の数。<br/><br/>このプロパティを使用して、Azure Cosmos DB との間でデータをコピーするときのパフォーマンスを微調整できます。 writeBatchSize を増やすと、Azure Cosmos DB に送信される並列要求の数が増えるため、パフォーマンスを向上させることができます。 ただし、スロットルは回避する必要があります。「Request rate is large」というエラー メッセージをスローする可能性があります。<br/><br/>スロットルは、ドキュメントのサイズ、ドキュメント内の語句の数、ターゲット コレクションの索引作成ポリシーなど、さまざまな要因により決定されます。コピー操作の場合、もっとよいコレクションを利用し (S3 など)、最大のスループットを得ることができます (毎秒 2,500 要求ユニット)。 |Integer |いいえ (既定値: 5) |
 | writeBatchTimeout |タイムアウトする前に操作の完了を待つ時間です。 |timespan<br/><br/> 例: "00:30:00" (30 分)。 |いいえ |
 
 #### <a name="example"></a>例
@@ -910,12 +911,12 @@ Azure DocumentDB にデータをコピーする場合は、コピー アクテ�
                 "name": "PersonBlobTableIn"
             }],
             "outputs": [{
-                "name": "PersonDocumentDbTableOut"
+                "name": "PersonCosmosDbTableOut"
             }],
             "policy": {
                 "concurrency": 1
             },
-            "name": "CopyFromBlobToDocDb"
+            "name": "CopyFromBlobToCosmosDb"
         }],
         "start": "2016-04-14T00:00:00",
         "end": "2016-04-15T00:00:00"
@@ -923,7 +924,7 @@ Azure DocumentDB にデータをコピーする場合は、コピー アクテ�
 }
 ```
 
-詳細については、[DocumentDB コネクタ](data-factory-azure-documentdb-connector.md#copy-activity-properties)に関する記事を参照してください。
+詳細については、[Azure Cosmos DB コネクタ](data-factory-azure-documentdb-connector.md#copy-activity-properties)に関する記事をご覧ください。
 
 ## <a name="azure-sql-database"></a>Azure SQL Database
 
@@ -5097,7 +5098,7 @@ SQL Server のリンクされたサービスを作成し、 [ストアド プロ
 
 詳細については、[SQL Server コネクタ](data-factory-sqlserver-connector.md#linked-service-properties)に関する記事を参照してください。
 
-## <a name="transformation-activites"></a>変換アクティビティ
+## <a name="data-transformation-activities"></a>データ変換アクティビティ
 
 アクティビティ | 説明
 -------- | -----------

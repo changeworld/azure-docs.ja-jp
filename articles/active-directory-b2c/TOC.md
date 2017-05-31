@@ -47,7 +47,7 @@
 ## [UI をカスタマイズする](active-directory-b2c-reference-ui-customization.md)
 ### [カスタマイズ用のヘルパー ツール](active-directory-b2c-reference-ui-customization-helper-tool.md)
 ## [言語のカスタマイズ](active-directory-b2c-reference-language-customization.md)
-## [Reporting API の使用](active-directory-b2c-refererence-usage-reporting-api.md)
+## [Reporting API の使用](active-directory-b2c-reference-usage-reporting-api.md)
 ## [セルフサービスのパスワード リセットをセットアップする](active-directory-b2c-reference-sspr.md)
 
 # Identity Experience Framework
@@ -59,8 +59,8 @@
 ### SAML プロバイダーの構成
 #### [Salesforce](active-directory-b2c-setup-sf-app-custom.md)
 ### RESTful API の統合
-#### [追加の要求の取得](active-directory-b2c-rest-api-step-custom.md)
 #### [ユーザー入力の検証](active-directory-b2c-rest-api-validation-custom.md)
+#### [追加の要求の取得](active-directory-b2c-rest-api-step-custom.md)
 ### ログインのカスタマイズ
 #### [ユーザー入力の構成](active-directory-b2c-configure-signup-self-asserted-custom.md)
 #### [UI のカスタマイズ](active-directory-b2c-ui-customization-custom.md)
@@ -79,7 +79,6 @@
 ## [利用可能なリージョンとデータの保存場所](active-directory-b2c-reference-tenant-type.md)
 ## [課金の有効化](active-directory-b2c-how-to-enable-billing.md)
 ## [脅威管理](active-directory-b2c-reference-threat-management.md)
-## [制限事項と制約事項](active-directory-b2c-limitations.md)
 ## [ディレクトリを作成する際の問題](active-directory-b2c-support-create-directory.md)
 
 # 関連項目

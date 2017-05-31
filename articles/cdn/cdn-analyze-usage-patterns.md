@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ec6a021e087d9218856370e8bf067359de54bdb9
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 41d63ef88e9f0caf3d5f74841ec4670875fdaad1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/11/2017
 
 
 ---
 # <a name="analyze-azure-cdn-usage-patterns"></a>Azure CDN の使用パターンを分析する
-[!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
+[!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)] 以下のガイドでは、Verizon プロファイルの管理ポータルを使用してコア レポートを表示する手順について説明します。 [Azure Portal を使用](cdn-log-analysis.md)して、Verizon と Akamai 両方のプロファイルについて、コア分析データをストレージ、イベント ハブ、またはログ分析 (oms) にエクスポートすることもできます。
 
 次のレポートを使用して、CDN の使用パターンを表示できます。
 
@@ -32,7 +34,7 @@ ms.openlocfilehash: ec6a021e087d9218856370e8bf067359de54bdb9
 * キャッシュ ヒット率
 * 転送された IPV4/IPV6 データ
 
-## <a name="accessing-advanced-http-reports"></a>詳細な HTTP レポートへのアクセス
+## <a name="accessing-core-reports"></a>コア レポートへのアクセス
 1. CDN プロファイル ブレードで、 **[管理]** をクリックします。
    
     ![[CDN プロファイル] ブレードの [管理] ボタン](./media/cdn-reports/cdn-manage-btn.png)
@@ -73,7 +75,7 @@ ms.openlocfilehash: ec6a021e087d9218856370e8bf067359de54bdb9
 ![ヒット数レポート](./media/cdn-reports/cdn-hits.png)
 
 ## <a name="cache-statuses"></a>キャッシュの状態
-このレポートは、クライアント要求のキャッシュ ヒット数とキャッシュ ミス数の分布を示します。 キャッシュ ヒット数から最速のパフォーマンスが得られるため、キャッシュ ミス数と期限切れのキャッシュ ヒット数を最小化することで、データ配信速度を最適化できます。 キャッシュ ミス数を減らすには、配信元サーバーを "キャッシュなし" 応答ヘッダーを割り当てないように構成し、必要でない限りクエリ文字列のキャッシングを回避し、キャッシュできない応答コードをを回避します。 期限切れのキャッシュ ヒット数を減らすには、資産の最大期間をできるだけ長くして、配信元のサーバーへの要求数を最小化します。
+このレポートは、クライアント要求のキャッシュ ヒット数とキャッシュ ミス数の分布を示します。 キャッシュ ヒット数から最速のパフォーマンスが得られるため、キャッシュ ミス数と期限切れのキャッシュ ヒット数を最小化することで、データ配信速度を最適化できます。 キャッシュ ミス数を減らすには、配信元サーバーを "キャッシュなし" 応答ヘッダーを割り当てないように構成し、必要でない限りクエリ文字列のキャッシングを回避し、キャッシュできない応答コードを回避します。 期限切れのキャッシュ ヒット数を減らすには、資産の最大期間をできるだけ長くして、配信元のサーバーへの要求数を最小化します。
 
 ![キャッシュの状態レポート](./media/cdn-reports/cdn-cache-statuses.png)
 
@@ -136,10 +138,5 @@ ms.openlocfilehash: ec6a021e087d9218856370e8bf067359de54bdb9
 
 ## <a name="considerations"></a>考慮事項
 レポートは過去 18 か月分のみ生成できます。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

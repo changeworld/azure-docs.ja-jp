@@ -15,10 +15,10 @@ ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: b791be369016dd52d95ec727e46fd8b554c09047
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 89356670737ed7b9adc5df51466ce71eb73b3cd4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -28,7 +28,7 @@ SAP HANA はお客様がご自分でインストールする必要がありま�
 
 ## <a name="first-steps-after-receiving-the-hana-large-instance-units"></a>HANA L インスタンス ユニットを入手した後で最初に行うこと
 
-**手順 1**: HANA L インスタンスを入手し、インスタンスへのアクセスと接続を確立したら、そのインスタンスの OS をご利用の OS プロバイダーに登録します。 たとえば、SUSE SMT のインスタンス (独自にデプロイする必要があります) に SUSE Linux OS を登録します。 または RedHat OS を、接続先となる Red Hat Subscription Manager に登録する必要があります。 [こちらのドキュメント](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)の備考も参照してください。 今後 OS にパッチを適用できるようにするうえでも、この手順が必要となります。 これはお客様が各自で行う作業です。 
+**手順 1**: HANA L インスタンスを入手し、インスタンスへのアクセスと接続を確立したら、そのインスタンスの OS をご利用の OS プロバイダーに登録します。 たとえば、SUSE SMT のインスタンス (HANA L インスタンス ユニットが接続可能な Azure の VM で独自にデプロイしている必要があります) に SUSE Linux OS を登録します。 または RedHat OS を、接続先となる Red Hat Subscription Manager に登録する必要があります。 [こちらのドキュメント](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)の備考も参照してください。 今後 OS にパッチを適用できるようにするうえでも、この手順が必要となります。 これはお客様が各自で行う作業です。 SUSE については、SMT のインストールと構成に関するドキュメントを[ここから](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html)参照してください。
 
 **手順 2**: 特定の OS リリース/バージョンに関する新しいパッチと修正プログラムの有無をチェックします。 HANA L インスタンスのパッチ レベルが最新の状態になっているかどうかを確認してください。 OS のパッチ/リリースのタイミングと、Microsoft でデプロイ可能なイメージへの変更によっては、最新のパッチが含まれていない場合があります。 そのため、HANA L インスタンス ユニットの引き渡しが済んで OS のインストールを Linux ディストリビューターに登録したら、セキュリティや機能、可用性、パフォーマンスに関連して最新のパッチが特定の Linux ベンダーからリリースされているかどうか、また適用する必要があるかどうかを確認する作業が欠かせません。
 

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 04/11/2017
 ms.author: glenga
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: fb8eaa4bb122cd6bb7e3f72bb5f7000103bffb29
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: f9f1b95ade5f397fa1a3bcdc4165c81c1c9628c0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -31,17 +31,19 @@ Azure Function App では、Azure App Service のインフラストラクチャ�
 
 [!INCLUDE [functions-create-function-app-portal](../../includes/functions-create-function-app-portal.md)]
 
-関数アプリを作成するときに、有効な**アプリ名**を入力します。名前に使用できるのは文字、数字、およびハイフンだけです。 アンダースコア (**_**) は使用できません。 
+関数アプリを作成するときに、有効な**アプリ名**を入力します。名前に使用できるのは文字、数字、およびハイフンだけです。 アンダースコア (**_**) は使用できません。
 
 ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。 ストレージ アカウント名は Azure 内で一意である必要があります。 
 
-関数アプリを作成したら、1 つ以上の言語で個々の関数を作成できます。 関数を作成するには、[ポータルを使用](functions-create-first-azure-function.md#create-function)するか、[継続的なデプロイ](functions-continuous-deployment.md)を使用するか、[FTP でアップロード](https://github.com/projectkudu/kudu/wiki/Accessing-files-via-ftp)します。  
+関数アプリを作成したら、1 つ以上の言語で個々の関数を作成できます。 関数を作成するには、[ポータルを使用](functions-create-first-azure-function.md#create-function)するか、[継続的なデプロイ](functions-continuous-deployment.md)を使用するか、[FTP でアップロード](https://github.com/projectkudu/kudu/wiki/Accessing-files-via-ftp)します。
 
 ## <a name="service-plans"></a>サービス プラン
 
 Azure Functions には、従量課金プランと App Service プランの 2 つの異なるサービス プランがあります。 従量課金プランでは、コードの実行時にコンピューティング能力を自動的に割り当て、負荷の処理の必要性に応じてスケールアウトし、コードを実行していないときはスケールインします。 App Service プランでは、関数アプリが App Service のすべての機能にアクセスできます。 サービス プランは関数アプリの作成時に選択する必要があり、現時点では変更できません。 詳細については、[Azure Functions のホスティング プランの選択](functions-scale.md)に関するページをご覧ください。
 
-App Service プランで JavaScript 関数を実行する場合、コアの少ないプランを選択してください。 詳細については、[JavaScript 関数リファレンス](functions-reference-node.md#choose-single-core-app-service-plans) ページを参照してください。 
+App Service プランで JavaScript 関数を実行する場合、コアの少ないプランを選択してください。 詳細については、[JavaScript 関数リファレンス](functions-reference-node.md#choose-single-core-app-service-plans) ページを参照してください。
+
+<a name="storage-account-requirements"></a>
 
 ## <a name="storage-account-requirements"></a>ストレージ アカウントの要件
 
@@ -53,6 +55,7 @@ App Service で関数アプリを作成するときに、BLOB、キュー、お�
 ストレージ アカウントの種類の詳細については、[Azure Storage サービスの概要に関する記事](../storage/storage-introduction.md#introducing-the-azure-storage-services) をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
+
 [!INCLUDE [Functions quickstart next steps](../../includes/functions-quickstart-next-steps.md)]
 
 

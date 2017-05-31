@@ -1,13 +1,13 @@
 ---
-title: "保存時の NoSQL データベースの暗号化 - Azure DocumentDB | Microsoft Docs"
-description: "Azure DocumentDB ですべての NoSQL データが既定で暗号化されるしくみについて説明します。"
-services: documentdb
+title: "保存時のデータベースの暗号化 - Azure Cosmos DB | Microsoft Docs"
+description: "Azure Cosmos DB ですべてのデータが既定で暗号化されるしくみについて説明します。"
+services: cosmosdb
 author: voellm
 manager: jhubbard
 editor: mimig
 documentationcenter: 
 ms.assetid: 99725c52-d7ca-4bfa-888b-19b1569754d3
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 04/31/2017
 ms.author: voellm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
-ms.openlocfilehash: 9c97f76d581935cb85f33b0016c192ded3b6f880
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 8248b429cf9b7fdfc709a68c4d1e88b7b660020b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
 
-# <a name="documentdb-nosql-database-encryption-at-rest"></a>保存時の DocumentDB NoSQL データベースの暗号化
+# <a name="azure-cosmos-db-database-encryption-at-rest"></a>保存時の Azure Cosmos DB データベースの暗号化
 
-保存時の暗号化という語句は、一般的にはソリッド ステート ドライブ (SSD) やハード ディスク (HDD) などの不揮発性ストレージ デバイスでデータを暗号化することを意味します。  DocumentDB は、プライマリ データベースを SSD に格納し、メディア添付ファイルとバックアップを、通常は HDD でバックアップされる Azure BLOB に格納します。  DocumentDB の保存時の暗号化のリリースにより、すべてのデータベース、メディア添付ファイル、バックアップが暗号化されるようになりました。  つまり、データが転送中 (ネットワーク経由) と保存時 (非揮発性ストレージ) に暗号化されることで、エンド ツー エンドの暗号化が実現されました。
+保存時の暗号化という語句は、一般的にはソリッド ステート ドライブ (SSD) やハード ディスク (HDD) などの不揮発性ストレージ デバイスでデータを暗号化することを意味します。  Azure Cosmos DB は、プライマリ データベースを SSD に格納し、メディア添付ファイルとバックアップを、通常は HDD でバックアップされる Azure BLOB に格納します。  Azure Cosmos DB の保存時の暗号化のリリースにより、すべてのデータベース、メディア添付ファイル、バックアップが暗号化されるようになりました。  つまり、データが転送中 (ネットワーク経由) と保存時 (非揮発性ストレージ) に暗号化されることで、エンド ツー エンドの暗号化が実現されました。
 
-Microsoft は、DocumentDB を PaaS サービスとして簡単に使用できるようにするために努力してきました。  その目的に沿って、DocumentDB に格納されるすべてのユーザー データは、ユーザーが何も操作しなくても、保存時と転送時に暗号化されます。  つまり、保存時の暗号化機能は、既定で "オン" になっています。  この機能をオフまたはオンにするコントロールはなく、[可用性とパフォーマンスの SLA](https://azure.microsoft.com/support/legal/sla/documentdb/v1_1/) の条件は引き続き満たされています。
+Microsoft は、Azure Cosmos DB を PaaS サービスとして簡単に使用できるようにするために努力してきました。  その目的に沿って、Azure Cosmos DB に格納されるすべてのユーザー データは、ユーザーが何も操作しなくても、保存時と転送時に暗号化されます。  つまり、保存時の暗号化機能は、既定で "オン" になっています。  この機能をオフまたはオンにするコントロールはなく、[可用性とパフォーマンスの SLA](https://azure.microsoft.com/support/legal/sla/documentdb/v1_1/) の条件は引き続き満たされています。
 
 ## <a name="how-does-encryption-at-rest-work"></a>保存時の暗号化のしくみ
 
@@ -37,7 +37,7 @@ Microsoft は、DocumentDB を PaaS サービスとして簡単に使用でき�
 
 ユーザー要求の基本的な流れは、次のとおりです。
 - ユーザー データベース アカウントが準備され、ストレージ キーが管理サービス リソース プロバイダー (RP) への要求を通じて取得されます。
-- ユーザーは、HTTPS/セキュリティで保護された転送を通じて、DocumentDB への接続を作成します (詳細は SDK が抽象化します)。
+- ユーザーは、HTTPS/セキュリティで保護された転送を通じて、Azure Cosmos DB への接続を作成します (詳細は SDK が抽象化します)。
 - ユーザーは、前に作成したセキュリティで保護された接続経由で、格納される JSON ドキュメントを送信します。
 - ユーザーがインデックスを無効にしない限り、JSON ドキュメントのインデックスが作成されます。
 - JSON ドキュメントとインデックス データの両方が、セキュリティで保護されたストレージに書き込まれます。
@@ -51,16 +51,26 @@ A: 追加コストはかかりません。
 ### <a name="q-who-manages-the-encryption-keys"></a>Q: だれが暗号化キーを管理するのですか。
 A: キーは Microsoft によって管理されます。
 
+### <a name="q-how-often-are-encryption-keys-rotated"></a>Q: 暗号化キーが交換される頻度はどの程度ですか。
+A: Microsoft には社内ガイドライン一式があり、DocumentDB はそれに従います。  具体的なガイドラインは公開されていませんが、Microsoft は、(セキュリティ開発ライフサイクル、別名 SDL)[https://www.microsoft.com/sdl/default.aspx] を公開しています。これは、社内ガイダンスのサブセットであり、開発者にとって有用なベスト プラクティスが記載されています。
+
 ### <a name="q-can-i-use-my-own-encryption-keys"></a>Q: 独自の暗号化キーを使用できますか。
-A: DocumentDB は PaaS サービスであり、Microsoft はこのサービスの使いやすさを維持するために努力してきました。  この質問は、PCI-DSS などのコンプライアンスに準拠するための代わりの質問として頻繁に寄せられることがわかりました。  この機能を構築する際に、コンプライアンス監査者の協力を得て、DocumentDB を使用するお客様が自身でキーを管理しなくても要件を満たすことができるようにしました。
+A: Azure Cosmos DB は PaaS サービスであり、Microsoft はこのサービスの使いやすさを維持するために努力してきました。  この質問は、PCI-DSS などのコンプライアンスに準拠するための代わりの質問として頻繁に寄せられることがわかりました。  この機能を構築する際に、コンプライアンス監査者の協力を得て、Azure Cosmos DB を使用するお客様が自身でキーを管理しなくても要件を満たすことができるようにしました。
 そのため、現時点ではお客様自身でキーを管理するオプションは提供していません。
 
+
 ### <a name="q-what-regions-have-encryption-turned-on"></a>Q: どのリージョンで暗号化が有効になっていますか。
-A: すべての DocumentDB リージョンで、すべてのユーザー データに対して暗号化が有効になっています。
+A: すべての Azure Cosmos DB リージョンで、すべてのユーザー データに対して暗号化が有効になっています。
+
+### <a name="q-does-encryption-affect-the-performance-latency-and-throughput-slas"></a>Q: 暗号化はパフォーマンス (待機時間およびスループット) の SLA に影響しますか。
+A: パフォーマンスの SLA への影響や変化はないため、既存および新規のすべてのアカウントで保存時の暗号化が有効になります。  最新の保証の詳細については、[パフォーマンスの SLA のページ](https://azure.microsoft.com/support/legal/sla/documentdb)を参照してください。
+
+### <a name="q-does-the-local-emulator-support-encryption-at-rest"></a>Q: ローカル エミュレーターは、保存時の暗号化に対応していますか。
+A: エミュレーターは、スタンドアロンの開発/テスト ツールであり、管理対象の DocumentDB サービスで使用されているキー管理サービスを使用していません。 機密性の高いエミュレーター テスト データを格納するドライブで BitLocker を有効にすることをお勧めします。 (エミュレーターは既定のデータ ディレクトリの変更に対応)[https://docs.microsoft.com/azure/documentdb/documentdb-nosql-local-emulator]し、既知の場所の使用にも対応しています。
 
 ## <a name="next-steps"></a>次のステップ
 
-DocumentDB セキュリティと最新の機能強化の概要については、「[DocumentDB NoSQL データベースのセキュリティ](documentdb-nosql-database-security.md)」を参照してください。
+Azure Cosmos DB のセキュリティと最新の機能強化の概要については、「[Azure Cosmos DB データベースのセキュリティ](documentdb-nosql-database-security.md)」を参照してください。
 
 マイクロソフトが取得している認証の詳細については、[Azure セキュリティ センター](https://azure.microsoft.com/en-us/support/trust-center/)に関するページを参照してください。
 

@@ -3,7 +3,7 @@ title: "SQL Data Warehouse の容量制限 | Microsoft Docs"
 description: "SQL Data Warehouse の接続、データベース、テーブル、およびクエリの最大値。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: kevinvngo
 manager: jhubbard
 editor: 
 ms.assetid: e1eac122-baee-4200-a2ed-f38bfa0f67ce
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: reference
 ms.date: 10/31/2016
-ms.author: barbkess;jrj
-translationtype: Human Translation
+ms.author: kevin;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 3a9ea64c464a74c70e75634a3e5c1e49862a74e7
 ms.openlocfilehash: c6b44392c0b3a241d41ae55bd6bb3f544d867e9e
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/22/2017
 
 

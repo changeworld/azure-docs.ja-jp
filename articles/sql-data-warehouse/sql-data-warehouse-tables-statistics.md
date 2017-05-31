@@ -3,7 +3,7 @@ title: "SQL Data Warehouse のテーブルの統計の管理 | Microsoft Docs"
 description: "Azure SQL Data Warehouse のテーブルの統計の概要です。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: jrowlandjones
+author: shivaniguptamsft
 manager: jhubbard
 editor: 
 ms.assetid: faa1034d-314c-4f9d-af81-f5a9aedf33e4
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
 ms.date: 10/31/2016
-ms.author: jrj;barbkess
-translationtype: Human Translation
+ms.author: shigu;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: b2b99ec031ea26b4ab19e7327da035788661a0a8
+ms.contentlocale: ja-jp
 ms.lasthandoff: 12/08/2016
 
 

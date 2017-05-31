@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 04/04/2017
 ms.author: joroja;parahk;gsacavdm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: b72db6a0eb8a8621be5f05da6028615d5d24ba1e
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 42824fe10e635257681f62ab1fec9b47abd4294a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 05/12/2017
 
 ---
 # <a name="azure-active-directory-b2c-getting-started-with-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーの概要
@@ -35,7 +35,7 @@ ms.lasthandoff: 05/09/2017
 
 ## <a name="add-signing-and-encryption-keys-to-your-b2c-tenant-for-use-by-custom-policies"></a>カスタム ポリシーで使用する署名キーと暗号化キーを B2C テナントに追加する
 
-1. Azure AD B2C テナント設定の [Identity Experience Framework] ブレードに移動します。
+1. Azure AD B2C テナント設定の **[Identity Experience Framework]** ブレードに移動します。
 2. **[ポリシー キー]** を選択して、テナント内で利用できるキーを表示します。
 3. `B2C_1A_TokenSigningKeyContainer` が存在しない場合は作成します。
  * **[追加]** をクリックします。
@@ -107,7 +107,7 @@ Azure AD B2C では、ユーザーのサインアップとサインインのた�
 
 * ポリシーの[ベース ファイル](active-directory-b2c-overview-custom.md#policy-files)。 ベースにはいくつかの変更が必要です。
 * ポリシーの[拡張ファイル](active-directory-b2c-overview-custom.md#policy-files)。  このファイルは、ほとんどの構成変更が行われる場所です。
-* [証明書利用者ファイル](active-directory-b2c-overview-custom.md#policy-files)。これらはタスク固有のファイルであり、特定のタスクのためにアプリケーションによって呼び出されます。
+* [証明書利用者ファイル](active-directory-b2c-overview-custom.md#policy-files)。これらはタスク固有のファイルであり、アプリケーションによって呼び出されます。
 
 >[!NOTE]
 >XML エディターが検証をサポートする場合、スターター パックのルート フォルダーにある `TrustFrameworkPolicy_0.3.0.0.xsd` XML スキーマ ファイルを使用してファイルを検証できます。 XML スキーマ検証では、アップロードする前にエラーを識別します。
@@ -139,7 +139,7 @@ Azure AD B2C では、ユーザーのサインアップとサインインのた�
 5. ファイルを保存します。
 6. `TrustFrameworkExtensions.xml` を開き、`yourtenant.onmicrosoft.com` を Azure AD B2C テナントに置き換えることによって同じ 2 つの変更を行います。 同じ置換を要素 `<TenantId>` で行い、変更は合計で 3 つになります。  ファイルを保存します。
 7. `SignUpOrSignIn.xml` を開き、`yourtenant.onmicrosoft.com` を Azure AD B2C テナントに置き換えることによって 3 か所で同じ変更を行います。 ファイルを保存します。
-8. パスワード シークレットとプロファイル編集ファイルを開き、`yourtenant.onmicrosoft.com` を Azure AD B2C テナントに置き換えることで 3 か所で同じ変更を行います。 ファイルを保存します。
+8. パスワード リセット ファイルとプロファイル編集ファイルを開き、`yourtenant.onmicrosoft.com` を Azure AD B2C テナントに置き換えることで 3 か所で同じ変更を行います。 ファイルを保存します。
 
 ### <a name="add-the-application-ids-to-your-custom-policy"></a>アプリケーション ID をカスタム ポリシーに追加する
 アプリケーション ID を拡張ファイル (`TrustFrameworkExtensions.xml`) に追加します。

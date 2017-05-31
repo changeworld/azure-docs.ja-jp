@@ -14,6 +14,7 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2017
 ms.author: brandwe
+ms.custom: aaddev
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
 ms.openlocfilehash: 2dfe58c032888ca34e905f4e549fcc4d6e36d324

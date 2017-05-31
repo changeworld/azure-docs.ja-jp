@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2017
 ms.author: erihur;genli
-translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 6db1fedad08ee33f3468fb98f59071a1521921db
-ms.lasthandoff: 04/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: b5268239fb4c50e6bdea77323267a42e267268db
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -39,7 +40,7 @@ Microsoft Azure サブスクリプションの課金額は、料金プランに�
 
 ![ヘッダー](./media/billing-understand-your-bill/Header.png)
 
-| 用語 | Description |
+| 用語 | 説明 |
 | --- | --- |
 | 請求書番号 |追跡を目的とする一意の請求書の識別子 |
 | 請求サイクル |この請求書に含まれる日付の範囲 |
@@ -56,7 +57,7 @@ Microsoft Azure サブスクリプションの課金額は、料金プランに�
 
 請求書の繰越残高、入金額、および未払い残高のセクションでは、前回の請求書以降の明細が要約されています。
 
-| 用語 | Description |
+| 用語 | 説明 |
 | --- | --- |
 | 繰越残高 |前回の請求書の合計請求額 |
 | 入金額 |前回の請求に対する合計支払い金額 |
@@ -140,7 +141,9 @@ Microsoft Azure サブスクリプションの課金額は、料金プランに�
 詳細については、「[Azure の課金とコスト管理の概要](billing-getting-started.md)」をご覧ください。
 
 ## <a name="how-do-i-make-a-payment"></a>支払い方法を教えてください。
-支払い方法としてクレジット カードやデビット カードを設定している場合、支払いは自動的に行われます。 [支払い方法として請求書](https://azure.microsoft.com/pricing/invoicing/)を利用している場合、請求書の下部に記載されている場所に支払いを送付します。 詳しくは、 [サポートにお問い合わせください](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+支払い方法としてクレジット カードやデビット カードを設定している場合、支払いは自動的に行われます。 クレジット カードの明細には、**MSFT Azure** と表記されます。
+
+[支払い方法として請求書](https://azure.microsoft.com/pricing/invoicing/)を利用している場合、請求書の下部に記載されている場所に支払いを送付します。 詳しくは、 [サポートにお問い合わせください](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 ## <a name="how-do-i-check-the-status-of-a-payment-made-by-credit-card"></a>クレジット カードによる支払い状況を確認するにはどうすればよいですか。
 [サポート チケットを作成](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)して、支払い状況の確認に関するサポートを要求してください。 

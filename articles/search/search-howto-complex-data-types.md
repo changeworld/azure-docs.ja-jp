@@ -13,11 +13,13 @@ ms.devlang: na
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 09/07/2016
+ms.date: 05/01/2017
 ms.author: liamca
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a90d7d90a6f3a75e230d32fb02b5ae69909d3c31
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: d576fd7bb267ae7a100589413185b595e3b2be42
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -27,7 +29,7 @@ Azure Search インデックスの設定に使用する外部データセット�
 複合データ型は Azure Search でネイティブにサポートされているわけではありませんが、実証済みの回避策では、データ構造をフラット化し、次に **コレクション** データ型を使用するという 2 段階のプロセスを用いることで、データの内部構造を再構築できます。 この記事で説明されている手法により、コンテンツの検索、ファセット化、フィルター処理、並べ替えが可能になります。
 
 ## <a name="example-of-a-complex-data-structure"></a>複合データ構造の例
-通常、対象となるデータは、一連の JSON ドキュメントまたは XML ドキュメント、または DocumentDB のような NoSQL ストア内のアイテムとして存在します。 構造的に、このような問題は、検索やフィルター処理を行う必要のある子アイテムが複数存在することに起因しています。  回避策を説明する出発点として、次の JSON ドキュメントをご覧ください。このドキュメントは、例として一連の連絡先の一覧を示しています。
+通常、対象となるデータは、一連の JSON ドキュメントまたは XML ドキュメント、または Azure Cosmos DB のような NoSQL ストア内のアイテムとして存在します。 構造的に、このような問題は、検索やフィルター処理を行う必要のある子アイテムが複数存在することに起因しています。  回避策を説明する出発点として、次の JSON ドキュメントをご覧ください。このドキュメントは、例として一連の連絡先の一覧を示しています。
 
 ~~~~~
 [
@@ -136,11 +138,6 @@ var index = new Index()
 Azure Search に複合 JSON データセットのインデックスを作成し、このデータセットに対してさまざまなクエリを実行する方法の例については、こちらの [GitHub リポジトリ](https://github.com/liamca/AzureSearchComplexTypes)を参照してください。
 
 ## <a name="next-step"></a>次のステップ
-Azure Search UserVoice ページで、[複合データ型のネイティブ サポートに関する投票](https://feedback.azure.com/forums/263029-azure-search)を行ってください。機能の実装に関する要望がほかにもある場合は、入力をお願いします。 Twitter で @liamca. 宛てに直接ご連絡いただいてもかまいません。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
+Azure Search UserVoice ページで、[複合データ型のネイティブ サポートに関する投票](https://feedback.azure.com/forums/263029-azure-search)を行ってください。機能の実装に関する要望がほかにもある場合は、入力をお願いします。 Twitter で @liamca 宛てに直接ご連絡いただいてもかまいません。
 
 

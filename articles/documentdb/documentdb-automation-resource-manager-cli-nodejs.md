@@ -1,39 +1,44 @@
 ---
-title: DocumentDB Automation - Resource Manager - Azure CLI 1.0 | Microsoft Docs
-description: "Azure リソース マネージャーのテンプレートまたは CLI を使用し、DocumentDB データベース アカウントをデプロイします。 DocumentDB は、JSON データ用のクラウドベースの NoSQL データベースです。"
-services: documentdb
+title: Azure Cosmos DB Automation - Resource Manager - Azure CLI 1.0 | Microsoft Docs
+description: "Azure Resource Manager テンプレートまたは CLI を使用して、Azure Cosmos DB データベース アカウントをデプロイします。 Azure Cosmos DB は、クラウド ベースのグローバル分散データベースです。"
+services: cosmosdb
 author: mimig1
 manager: jhubbard
 editor: 
 tags: azure-resource-manager
 documentationcenter: 
 ms.assetid: eae5eec6-0e27-442c-abfc-ef6b7fd3f8d2
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2017
 ms.author: mimig
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 0959dace90686324b9fe4360f4696f8d85c3a9e7
-ms.lasthandoff: 03/31/2017
+redirect_url: https://aka.ms/acdbclisamples
+ROBOTS: NOINDEX, NOFOLLOW
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 80902661eb811bdd8f6e00bcd5f61a8939a4e47c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="automate-documentdb-account-creation-using-azure-cli-10-and-azure-resource-manager-templates"></a>Azure CLI 1.0 と Azure Resource Manager テンプレートを使用して DocumentDB アカウントを自動作成する
+# <a name="automate-azure-cosmos-db-account-creation-using-azure-cli-10-and-azure-resource-manager-templates"></a>Azure CLI 1.0 と Azure Resource Manager テンプレートを使用して Azure Cosmos DB アカウントの作成を自動化する
 > [!div class="op_single_selector"]
 > * [Azure ポータル](documentdb-create-account.md)
 > * [Azure CLI 1.0](documentdb-automation-resource-manager-cli-nodejs.md)
 > * [Azure CLI 2.0](documentdb-automation-resource-manager-cli.md)
 > * [Azure PowerShell](documentdb-manage-account-with-powershell.md)
 
-この記事では、Azure Resource Manager のテンプレートを使用して、または Azure CLI 1.0 (コマンド ライン インターフェイス) で直接的に、Azure DocumentDB アカウントを作成する方法について説明します。 Azure ポータルを使用して DocumentDB アカウントを作成する方法については、「 [DocumentDB データベース アカウントの作成](documentdb-create-account.md)」を参照してください。
+この記事では、Azure Resource Manager テンプレートを使用するか、Azure コマンド ライン インターフェイス (CLI) 1.0 を使用して直接的に、Azure Cosmos DB DocumentDB API アカウントを作成する方法について説明します。 Azure Portal を使用して Azure Cosmos DB アカウントを作成する方法については、[Azure Portal を使用した Azure Cosmos DB データベース アカウントの作成](documentdb-create-account.md)に関する記事をご覧ください。
 
-現在のところ、DocumentDB データベース アカウントは、Resource Manager テンプレートと Azure CLI 1.0 で作成できる唯一の DocumentDB リソースです。
+現時点では、Azure Cosmos DB DocumentDB API および MongoDB API データベース アカウントは、Resource Manager テンプレートと Azure CLI 1.0 を使用して作成できる唯一の Azure Cosmos DB リソースです。
 
-## <a name="getting-ready"></a>開発の準備
+CLI 2.0 を使用して、Azure Cosmos DB DocumentDB API、Table API、Graph API、または Mongo DB のアカウントを作成する方法については、[Azure CLI を使用した Azure DocumentDB アカウントの作成](documentdb-automation-resource-manager-cli.md)に関する記事をご覧ください。
+
+## <a name="getting-ready"></a>準備
 Azure リソース グループで Azure CLI 1.0 を使用するには、適切なバージョンと Azure アカウントを用意する必要があります。 Azure CLI 1.0 をインストールしていない場合は、 [インストールします](../cli-install-nodejs.md)。
 
 ### <a name="update-your-azure-cli-10-version"></a>Azure CLI 1.0 のバージョンを更新する
@@ -97,7 +102,7 @@ Azure リソース管理テンプレートを使用するには、職場のア�
 必要に応じて、「 `azure config mode asm`」と入力することで、既定のコマンド セットに戻すことができます。
 
 ### <a name="create-or-retrieve-your-resource-group"></a>リソース グループを作成または取得する
-DocumentDB アカウントを作成するには、最初にリソース グループを用意する必要があります。 使用するリソース グループの名前がわかっている場合、 [手順 2](#create-documentdb-account-cli)に移動してください。
+Azure Cosmos DB アカウントを作成するには、まずリソース グループが必要です。 使用するリソース グループの名前がわかっている場合、 [手順 2](#create-documentdb-account-cli)に移動してください。
 
 現在のすべてのリソース グループの一覧を確認するには、次のコマンドを実行し、使用するリソース グループの名前をメモします。
 
@@ -108,7 +113,7 @@ DocumentDB アカウントを作成するには、最初にリソース グル�
     azure group create <resourcegroupname> <resourcegrouplocation>
 
 * `<resourcegroupname>` に使用できる文字は、英数字、ピリオド、アンダースコア、「-」、かっこのみです。末尾にピリオドを指定することはできません。
-* `<resourcegrouplocation>` には、DocumentDB が一般公開されているリージョンのいずれかを指定します。 最新のリージョン一覧については、 [Azure のリージョン ページ](https://azure.microsoft.com/regions/#services)を参照してください。
+* `<resourcegrouplocation>` は、Azure Cosmos DB が一般公開されているリージョンのいずれかである必要があります。 最新のリージョン一覧については、 [Azure のリージョン ページ](https://azure.microsoft.com/regions/#services)を参照してください。
 
 入力例:
 
@@ -131,17 +136,17 @@ DocumentDB アカウントを作成するには、最初にリソース グル�
 エラーが発生した場合、「 [トラブルシューティング](#troubleshooting)」を参照してください。
 
 ## <a name="understanding-resource-manager-templates-and-resource-groups"></a>Resource Manager テンプレートおよびリソース グループについて
-大部分のアプリケーションは、異なる種類のリソースの組み合わせ (1 つ以上の DocumentDB アカウント、ストレージ アカウント、仮想ネットワーク、コンテンツ配信ネットワークなど) から構築されます。 既定の Azure サービス管理 API と Azure ポータルでは、サービス単位のアプローチを使用してこれらの項目を表していました。 この方法では、個々のサービスを 1 つの論理的なデプロイ単位としてではなく、個別にデプロイ、管理 (またはこのことを実行するその他のツールを検索) する必要があります。
+ほとんどのアプリケーションは、さまざまなリソースの種類の組み合わせ (1 つ以上の Azure Cosmos DB アカウント、ストレージ アカウント、仮想ネットワーク、コンテンツ配信ネットワークなど) から構築されます。 既定の Azure サービス管理 API と Azure ポータルでは、サービス単位のアプローチを使用してこれらの項目を表していました。 この方法では、個々のサービスを 1 つの論理的なデプロイ単位としてではなく、個別にデプロイ、管理 (またはこのことを実行するその他のツールを検索) する必要があります。
 
 *Azure リソース マネージャー テンプレート* では、これらの異なるリソースを 1 つの論理的なデプロイ単位として、宣言型の方法でデプロイし、管理することが可能になります。 何をデプロイするのかを Azure に 1 コマンドずつ命令するのではなく、JSON ファイル内にデプロイ全体、つまりすべてのリソースと、関連する構成およびデプロイ パラメーターを記述し、Azure にそれらのリソースを 1 つのグループとしてデプロイするよう指示します。
 
 Azure リソース グループとその機能の詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。 テンプレートの作成に興味がある場合は、「 [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」を参照してください。
 
-## <a id="quick-create-documentdb-account"></a>作業: 単一リージョンの DocumentDB アカウントを作成する
-単一リージョンの DocumentDB アカウントを作成する場合は、このセクションの指示に従います。 この作業は、Resource Manager テンプレートの有無にかかわらず、Azure CLI 1.0 を使用して行うことができます。
+## <a id="quick-create-documentdb-account"></a>作業: 単一リージョンの Azure Cosmos DB アカウントを作成する
+単一リージョンの Azure Cosmos DB アカウントを作成する場合は、このセクションの指示に従います。 この作業は、Resource Manager テンプレートの有無にかかわらず、Azure CLI 1.0 を使用して行うことができます。
 
-### <a id="create-single-documentdb-account-cli-arm"></a>Azure CLI 1.0 を使用して Resource Manager テンプレートを使わずに単一リージョンの DocumentDB アカウントを作成する
-コマンド プロンプトで次のコマンドを入力し、新規または既存のリソース グループで DocumentDB アカウントを作成します。
+### <a id="create-single-documentdb-account-cli-arm"></a>Azure CLI 1.0 を使用して Resource Manager テンプレートを使わずに単一リージョンの Azure Cosmos DB アカウントを作成する
+コマンド プロンプトで次のコマンドを入力して、新規または既存のリソース グループに Azure Cosmos DB アカウントを作成します。
 
 > [!TIP]
 > Azure PowerShell または Windows PowerShell でこのコマンドを実行すると、予想外のトークンに関するエラーが発生します。 代わりに、Windows PowerShell コマンド プロンプトでこのコマンドを実行します。
@@ -152,9 +157,9 @@ Azure リソース グループとその機能の詳細については、「[Azu
 
 * `<resourcegroupname>` に使用できる文字は、英数字、ピリオド、アンダースコア、「-」、かっこのみです。末尾にピリオドを指定することはできません。
 * `<resourcegrouplocation>` は現在のリソース グループのリージョンです。
-* `<ip-range-filter>` 特定のデータベース アカウントのクライアント IP の許可リストとして追加する一連の IP アドレスまたは IP アドレス範囲を CIDR 形式で指定する必要があります。 IP アドレス/範囲は、コンマで区切る必要があり、スペースを含めることはできません。 詳細については、「[DocumentDB のファイアウォール サポート](documentdb-firewall-support.md)」を参照してください。
+* `<ip-range-filter>` 特定のデータベース アカウントのクライアント IP の許可リストとして追加する一連の IP アドレスまたは IP アドレス範囲を CIDR 形式で指定する必要があります。 IP アドレス/範囲は、コンマで区切る必要があり、スペースを含めることはできません。 詳細については、「[Azure Cosmos DB のファイアウォール サポート](documentdb-firewall-support.md)」をご覧ください。
 * `<databaseaccountname>` に使用できる文字は、英小文字、数字、「-」のみです。文字数は 3 ～ 50 文字にする必要があります。
-* `<databaseaccountlocation>` には、DocumentDB が一般公開されているリージョンのいずれかを指定します。 最新のリージョン一覧については、 [Azure のリージョン ページ](https://azure.microsoft.com/regions/#services)を参照してください。
+* `<databaseaccountlocation>` は、Azure Cosmos DB が一般公開されているリージョンのいずれかである必要があります。 最新のリージョン一覧については、 [Azure のリージョン ページ](https://azure.microsoft.com/regions/#services)を参照してください。
 
 入力例:
 
@@ -178,10 +183,10 @@ Azure リソース グループとその機能の詳細については、「[Azu
 
 エラーが発生した場合、「 [トラブルシューティング](#troubleshooting)」を参照してください。
 
-コマンドが終了すると、アカウントは数分間 "**作成中**" の状態になります。その後、"**オンライン**" の状態に変化し、使用する準備ができます。 [Azure Portal](https://portal.azure.com) の **[DocumentDB アカウント]** ブレードでアカウントの状態を確認できます。
+コマンドが終了すると、アカウントは数分間 "**作成中**" の状態になります。その後、"**オンライン**" の状態に変化し、使用する準備ができます。 アカウントの状態は、[Azure Portal](https://portal.azure.com) の **[Azure Cosmos DB Accounts (Azure Cosmos DB アカウント)]** ブレードで確認できます。
 
-### <a id="create-single-documentdb-account-cli-arm"></a>Azure CLI 1.0 を使用して Resource Manager テンプレートを使用して単一リージョンの DocumentDB アカウントを作成する
-このセクションの手順では、Azure Resource Manager (ARM) テンプレートとオプションのパラメーター ファイル (いずれも JSON ファイル) を使用して DocumentDB アカウントを作成する方法について説明します。 テンプレートを利用すると、誤りなく必要なものを正確に表現し、それを繰り返すことができます。
+### <a id="create-single-documentdb-account-cli-arm"></a>Azure CLI 1.0 と Resource Manager テンプレートを使用して単一リージョンの Azure Cosmos DB アカウントを作成する
+このセクションの手順では、Azure Resource Manager テンプレートとオプションのパラメーター ファイル (いずれも JSON ファイル) を使用して、Azure Cosmos DB アカウントを作成する方法について説明します。 テンプレートを利用すると、誤りなく必要なものを正確に表現し、それを繰り返すことができます。
 
 次の内容でローカル テンプレート ファイルを作成します。 azuredeploy.json ファイルに名前を付けます。
 
@@ -217,7 +222,7 @@ Azure リソース グループとその機能の詳細については、「[Azu
         ]
     }
 
-これは単一リージョンのアカウントなので、failoverPriority を 0 に設定する必要があります。 failoverPriority が 0 であるということは、このリージョンが [DocumentDB アカウントの書き込みリージョン][scaling-globally]として保持されることを表します。
+これは単一リージョンのアカウントなので、failoverPriority を 0 に設定する必要があります。 failoverPriority が 0 であるということは、このリージョンが [Azure Cosmos DB アカウントの書き込みリージョン][scaling-globally]として保持されることを示します。
 コマンド ラインで値を入力するか、パラメーター ファイルを作成して値を指定できます。
 
 パラメーター ファイルを作成するには、新しいファイルに次の内容をコピーし、azuredeploy.parameters.json ファイルに名前を付けます。 コマンド プロンプトでデータベース アカウント名を指定する場合、このファイルを作成せずに続行できます。
@@ -235,9 +240,9 @@ Azure リソース グループとその機能の詳細については、「[Azu
         }
     }
 
-azuredeploy.parameters.json ファイルで、`"samplearmacct"` という値を、使用するデータベースの名前に変更し、ファイルを保存します。 `"databaseAccountName"` に使用できる文字は、英小文字、数字、「-」のみです。文字数は 3 ～ 50 文字にする必要があります。 `"locationName1"` という値フィールドを、DocumentDB アカウントを作成するリージョンに変更します。
+azuredeploy.parameters.json ファイルで、`"samplearmacct"` という値を、使用するデータベースの名前に変更し、ファイルを保存します。 `"databaseAccountName"` に使用できる文字は、英小文字、数字、「-」のみです。文字数は 3 ～ 50 文字にする必要があります。 `"locationName1"` の value フィールドを、Azure Cosmos DB アカウントを作成するリージョンに更新します。
 
-リソース グループで DocumentDB アカウントを作成するには、次のコマンドを実行し、テンプレート ファイルのパス、パラメーター ファイルまたはパラメーター値のパス、デプロイメントするリソース グループの名前、デプロイメント名を指定します (-n は任意です)。
+リソース グループに Azure Cosmos DB アカウントを作成するには、次のコマンドを実行し、テンプレート ファイルのパス、パラメーター ファイルのパスまたはパラメーター値、デプロイ先のリソース グループの名前、デプロイ名を指定します (-n は省略可能です)。
 
 パラメーター ファイルを使用するには:
 
@@ -245,7 +250,7 @@ azuredeploy.parameters.json ファイルで、`"samplearmacct"` という値を�
 
 * `<PathToTemplate>` は、手順 1 で作成した azuredeploy.json ファイルのパスです。 パス名にスペースが含まれる場合は、二重引用符でこのパラメーターを囲みます。
 * `<PathToParameterFile>` は、手順 1 で作成した azuredeploy.parameters.json ファイルのパスです。 パス名にスペースが含まれる場合は、二重引用符でこのパラメーターを囲みます。
-* `<resourcegroupname>` は、DocumentDB データベース アカウントを追加する既存のリソース グループ名です。
+* `<resourcegroupname>` は、Azure Cosmos DB データベース アカウントを追加する既存のリソース グループの名前です。
 * `<deploymentname>` は、デプロイメント名 (省略可能) です。
 
 入力例:
@@ -290,9 +295,9 @@ azuredeploy.parameters.json ファイルで、`"samplearmacct"` という値を�
 
 エラーが発生した場合、「 [トラブルシューティング](#troubleshooting)」を参照してください。  
 
-コマンドが終了すると、アカウントは数分間 "**作成中**" の状態になります。その後、"**オンライン**" の状態に変化し、使用する準備ができます。 [Azure Portal](https://portal.azure.com) の **[DocumentDB アカウント]** ブレードでアカウントの状態を確認できます。
+コマンドが終了すると、アカウントは数分間 "**作成中**" の状態になります。その後、"**オンライン**" の状態に変化し、使用する準備ができます。 アカウントの状態は、[Azure Portal](https://portal.azure.com) の **[Azure Cosmos DB Accounts (Azure Cosmos DB アカウント)]** ブレードで確認できます。
 
-## <a id="quick-create-documentdb-with-mongodb-api-account"></a>タスク: 単一リージョンの DocumentDB を作成する: MongoDB アカウント用の API
+## <a id="quick-create-documentdb-with-mongodb-api-account"></a>作業: 単一リージョンの Azure Cosmos DB を作成する: MongoDB アカウント用 API
 単一リージョンの MongoDB アカウント用 API を作成する場合は、このセクションの指示に従います。 この操作は、Azure CLI 1.0 で Resource Manager テンプレートを使用して実行できます。
 
 ### <a id="create-single-documentdb-with-mongodb-api-account-cli-arm"></a>Azure CLI 1.0 と Resource Manager テンプレートを使用して単一リージョンの MongoDB アカウントを作成する
@@ -333,9 +338,9 @@ azuredeploy.parameters.json ファイルで、`"samplearmacct"` という値を�
         ]
     }
 
-kind には MongoDB を設定して、このアカウントが MongoDB API をサポートすることを指定する必要があります。 kind プロパティが指定されない場合の既定値は、ネイティブの DocumentDB アカウントになります。
+kind には MongoDB を設定して、このアカウントが MongoDB API をサポートすることを指定する必要があります。 kind プロパティが指定されない場合、既定値は Azure Cosmos DB DocumentDB API アカウントになります。
 
-これは単一リージョンのアカウントなので、failoverPriority を 0 に設定する必要があります。 failoverPriority が 0 であるということは、このリージョンが [DocumentDB アカウントの書き込みリージョン][scaling-globally]として保持されることを表します。
+これは単一リージョンのアカウントなので、failoverPriority を 0 に設定する必要があります。 failoverPriority が 0 であるということは、このリージョンが [Azure Cosmos DB アカウントの書き込みリージョン][scaling-globally]として保持されることを示します。
 コマンド ラインで値を入力するか、パラメーター ファイルを作成して値を指定できます。
 
 パラメーター ファイルを作成するには、新しいファイルに次の内容をコピーし、azuredeploy.parameters.json ファイルに名前を付けます。 コマンド プロンプトでデータベース アカウント名を指定する場合、このファイルを作成せずに続行できます。
@@ -353,9 +358,9 @@ kind には MongoDB を設定して、このアカウントが MongoDB API を�
         }
     }
 
-azuredeploy.parameters.json ファイルで、`"samplearmacct"` という値を、使用するデータベースの名前に変更し、ファイルを保存します。 `"databaseAccountName"` に使用できる文字は、英小文字、数字、「-」のみです。文字数は 3 ～ 50 文字にする必要があります。 `"locationName1"` という値フィールドを、DocumentDB アカウントを作成するリージョンに変更します。
+azuredeploy.parameters.json ファイルで、`"samplearmacct"` という値を、使用するデータベースの名前に変更し、ファイルを保存します。 `"databaseAccountName"` に使用できる文字は、英小文字、数字、「-」のみです。文字数は 3 ～ 50 文字にする必要があります。 `"locationName1"` の value フィールドを、Azure Cosmos DB アカウントを作成するリージョンに更新します。
 
-リソース グループで DocumentDB アカウントを作成するには、次のコマンドを実行し、テンプレート ファイルのパス、パラメーター ファイルまたはパラメーター値のパス、デプロイメントするリソース グループの名前、デプロイメント名を指定します (-n は任意です)。
+リソース グループに Azure Cosmos DB アカウントを作成するには、次のコマンドを実行し、テンプレート ファイルのパス、パラメーター ファイルのパスまたはパラメーター値、デプロイ先のリソース グループの名前、デプロイ名を指定します (-n は省略可能です)。
 
 パラメーター ファイルを使用するには:
 
@@ -363,7 +368,7 @@ azuredeploy.parameters.json ファイルで、`"samplearmacct"` という値を�
 
 * `<PathToTemplate>` は、手順 1 で作成した azuredeploy.json ファイルのパスです。 パス名にスペースが含まれる場合は、二重引用符でこのパラメーターを囲みます。
 * `<PathToParameterFile>` は、手順 1 で作成した azuredeploy.parameters.json ファイルのパスです。 パス名にスペースが含まれる場合は、二重引用符でこのパラメーターを囲みます。
-* `<resourcegroupname>` は、DocumentDB データベース アカウントを追加する既存のリソース グループ名です。
+* `<resourcegroupname>` は、Azure Cosmos DB データベース アカウントを追加する既存のリソース グループの名前です。
 * `<deploymentname>` は、デプロイメント名 (省略可能) です。
 
 入力例:
@@ -408,13 +413,13 @@ azuredeploy.parameters.json ファイルで、`"samplearmacct"` という値を�
 
 エラーが発生した場合、「 [トラブルシューティング](#troubleshooting)」を参照してください。  
 
-コマンドが終了すると、アカウントは数分間 "**作成中**" の状態になります。その後、"**オンライン**" の状態に変化し、使用する準備ができます。 [Azure Portal](https://portal.azure.com) の **[DocumentDB アカウント]** ブレードでアカウントの状態を確認できます。
+コマンドが終了すると、アカウントは数分間 "**作成中**" の状態になります。その後、"**オンライン**" の状態に変化し、使用する準備ができます。 アカウントの状態は、[Azure Portal](https://portal.azure.com) の **[Azure Cosmos DB Accounts (Azure Cosmos DB アカウント)]** ブレードで確認できます。
 
-## <a id="create-multi-documentdb-account"></a>作業: 複数リージョンの DocumentDB アカウントを作成する
-DocumentDB には、さまざまな [Azure リージョン](https://azure.microsoft.com/regions/#services)にわたって[データをグローバルに分散する][distribute-globally]機能が備わっています。 DocumentDB アカウントを作成するときに、サービスを存在させるリージョンを指定できます。 複数リージョンの DocumentDB アカウントを作成する場合は、このセクションの指示に従います。 この作業は、Resource Manager テンプレートの有無にかかわらず、Azure CLI 1.0 を使用して行うことができます。
+## <a id="create-multi-documentdb-account"></a>作業: 複数リージョンの Azure Cosmos DB アカウントを作成する
+Azure Cosmos DB は、さまざまな [Azure リージョン](https://azure.microsoft.com/regions/#services)に[データをグローバルに分散する][distribute-globally]機能を備えています。 Azure Cosmos DB アカウントを作成するときに、サービスを存在させるリージョンを指定できます。 複数リージョンの Azure Cosmos DB アカウントを作成する場合は、このセクションの指示に従います。 この作業は、Resource Manager テンプレートの有無にかかわらず、Azure CLI 1.0 を使用して行うことができます。
 
-### <a id="create-multi-documentdb-account-cli"></a>Azure CLI 1.0 を使用して Resource Manager テンプレートなしで複数リージョンの DocumentDB アカウントを作成する
-コマンド プロンプトで次のコマンドを入力し、新規または既存のリソース グループで DocumentDB アカウントを作成します。
+### <a id="create-multi-documentdb-account-cli"></a>Azure CLI 1.0 を使用して Resource Manager テンプレートを使わずに複数リージョンの Azure Cosmos DB アカウントを作成する
+コマンド プロンプトで次のコマンドを入力して、新規または既存のリソース グループに Azure Cosmos DB アカウントを作成します。
 
 > [!TIP]
 > Azure PowerShell または Windows PowerShell でこのコマンドを実行すると、予想外のトークンに関するエラーが発生します。 代わりに、Windows PowerShell コマンド プロンプトでこのコマンドを実行します。
@@ -425,9 +430,9 @@ DocumentDB には、さまざまな [Azure リージョン](https://azure.micros
 
 * `<resourcegroupname>` に使用できる文字は、英数字、ピリオド、アンダースコア、「-」、かっこのみです。末尾にピリオドを指定することはできません。
 * `<resourcegrouplocation>` は現在のリソース グループのリージョンです。
-* `<ip-range-filter>` 特定のデータベース アカウントのクライアント IP の許可リストとして追加する一連の IP アドレスまたは IP アドレス範囲を CIDR 形式で指定する必要があります。 IP アドレス/範囲は、コンマで区切る必要があり、スペースを含めることはできません。 詳細については、「[DocumentDB のファイアウォール サポート](documentdb-firewall-support.md)」を参照してください。
+* `<ip-range-filter>` 特定のデータベース アカウントのクライアント IP の許可リストとして追加する一連の IP アドレスまたは IP アドレス範囲を CIDR 形式で指定する必要があります。 IP アドレス/範囲は、コンマで区切る必要があり、スペースを含めることはできません。 詳細については、「[Azure Cosmos DB のファイアウォール サポート](documentdb-firewall-support.md)」をご覧ください。
 * `<databaseaccountname>` に使用できる文字は、英小文字、数字、「-」のみです。文字数は 3 ～ 50 文字にする必要があります。
-* `<databaseaccountlocation1>` および `<databaseaccountlocation2>` には、DocumentDB が一般公開されているリージョンを指定します。 最新のリージョン一覧については、 [Azure のリージョン ページ](https://azure.microsoft.com/regions/#services)を参照してください。
+* `<databaseaccountlocation1>` と `<databaseaccountlocation2>` は、Azure Cosmos DB が一般公開されているリージョンである必要があります。 最新のリージョン一覧については、 [Azure のリージョン ページ](https://azure.microsoft.com/regions/#services)を参照してください。
 
 入力例:
 
@@ -451,10 +456,10 @@ DocumentDB には、さまざまな [Azure リージョン](https://azure.micros
 
 エラーが発生した場合、「 [トラブルシューティング](#troubleshooting)」を参照してください。
 
-コマンドが終了すると、アカウントは数分間 "**作成中**" の状態になります。その後、"**オンライン**" の状態に変化し、使用する準備ができます。 [Azure Portal](https://portal.azure.com) の **[DocumentDB アカウント]** ブレードでアカウントの状態を確認できます。
+コマンドが終了すると、アカウントは数分間 "**作成中**" の状態になります。その後、"**オンライン**" の状態に変化し、使用する準備ができます。 アカウントの状態は、[Azure Portal](https://portal.azure.com) の **[Azure Cosmos DB Accounts (Azure Cosmos DB アカウント)]** ブレードで確認できます。
 
-### <a id="create-multi-documentdb-account-cli-arm"></a>Azure CLI 1.0 を使用して Resource Manager テンプレートを使用した複数リージョンの DocumentDB アカウントを作成する
-このセクションの手順では、Azure Resource Manager (ARM) テンプレートとオプションのパラメーター ファイル (いずれも JSON ファイル) を使用して DocumentDB アカウントを作成する方法について説明します。 テンプレートを利用すると、誤りなく必要なものを正確に表現し、それを繰り返すことができます。
+### <a id="create-multi-documentdb-account-cli-arm"></a>Azure CLI 1.0 と Resource Manager テンプレートを使用して複数リージョンの Azure Cosmos DB アカウントを作成する
+このセクションの手順では、Azure Resource Manager テンプレートとオプションのパラメーター ファイル (いずれも JSON ファイル) を使用して、Azure Cosmos DB アカウントを作成する方法について説明します。 テンプレートを利用すると、誤りなく必要なものを正確に表現し、それを繰り返すことができます。
 
 次の内容でローカル テンプレート ファイルを作成します。 azuredeploy.json ファイルに名前を付けます。
 
@@ -497,9 +502,9 @@ DocumentDB には、さまざまな [Azure リージョン](https://azure.micros
         ]
     }
 
-上記のテンプレート ファイルを使用すると、2 つのリージョンを持つ DocumentDB アカウントを作成できます。 さらに多くのリージョンを持つアカウントを作成するには、リージョンを "locations" 配列に追加し、対応するパラメーターを追加します。
+上記のテンプレート ファイルを使用すると、2 つのリージョンを持つ Azure Cosmos DB アカウントを作成できます。 さらに多くのリージョンを持つアカウントを作成するには、リージョンを "locations" 配列に追加し、対応するパラメーターを追加します。
 
-いずれかのリージョンの failoverPriority 値は 0 にする必要があります。これは、このリージョンが [DocumentDB アカウントの書き込みリージョン][scaling-globally]として保持されることを表します。 フェールオーバー優先度の値は、各場所間で一意である必要があり、フェールオーバー優先度の最大値は、リージョンの合計数よりも小さい必要があります。 コマンド ラインで値を入力するか、パラメーター ファイルを作成して値を指定できます。
+いずれかのリージョンの failoverPriority 値が 0 である必要があります。これは、このリージョンが [Azure Cosmos DB アカウントの書き込みリージョン][scaling-globally]として保持されることを示します。 フェールオーバー優先度の値は、各場所間で一意である必要があり、フェールオーバー優先度の最大値は、リージョンの合計数よりも小さい必要があります。 コマンド ラインで値を入力するか、パラメーター ファイルを作成して値を指定できます。
 
 パラメーター ファイルを作成するには、新しいファイルに次の内容をコピーし、azuredeploy.parameters.json ファイルに名前を付けます。 コマンド プロンプトでデータベース アカウント名を指定する場合、このファイルを作成せずに続行できます。
 
@@ -519,9 +524,9 @@ DocumentDB には、さまざまな [Azure リージョン](https://azure.micros
         }
     }
 
-azuredeploy.parameters.json ファイルで、`"samplearmacct"` という値を、使用するデータベースの名前に変更し、ファイルを保存します。 `"databaseAccountName"` に使用できる文字は、英小文字、数字、「-」のみです。文字数は 3 ～ 50 文字にする必要があります。 `"locationName1"` と `"locationName2"` の値フィールドを、DocumentDB アカウントを作成するリージョンに変更します。
+azuredeploy.parameters.json ファイルで、`"samplearmacct"` という値を、使用するデータベースの名前に変更し、ファイルを保存します。 `"databaseAccountName"` に使用できる文字は、英小文字、数字、「-」のみです。文字数は 3 ～ 50 文字にする必要があります。 `"locationName1"` と `"locationName2"` の value フィールドを、Azure Cosmos DB アカウントを作成するリージョンに更新します。
 
-リソース グループで DocumentDB アカウントを作成するには、次のコマンドを実行し、テンプレート ファイルのパス、パラメーター ファイルまたはパラメーター値のパス、デプロイメントするリソース グループの名前、デプロイメント名を指定します (-n は任意です)。
+リソース グループに Azure Cosmos DB アカウントを作成するには、次のコマンドを実行し、テンプレート ファイルのパス、パラメーター ファイルのパスまたはパラメーター値、デプロイ先のリソース グループの名前、デプロイ名を指定します (-n は省略可能です)。
 
 パラメーター ファイルを使用するには:
 
@@ -529,7 +534,7 @@ azuredeploy.parameters.json ファイルで、`"samplearmacct"` という値を�
 
 * `<PathToTemplate>` は、手順 1 で作成した azuredeploy.json ファイルのパスです。 パス名にスペースが含まれる場合は、二重引用符でこのパラメーターを囲みます。
 * `<PathToParameterFile>` は、手順 1 で作成した azuredeploy.parameters.json ファイルのパスです。 パス名にスペースが含まれる場合は、二重引用符でこのパラメーターを囲みます。
-* `<resourcegroupname>` は、DocumentDB データベース アカウントを追加する既存のリソース グループ名です。
+* `<resourcegroupname>` は、Azure Cosmos DB データベース アカウントを追加する既存のリソース グループの名前です。
 * `<deploymentname>` は、デプロイメント名 (省略可能) です。
 
 入力例:
@@ -575,13 +580,13 @@ azuredeploy.parameters.json ファイルで、`"samplearmacct"` という値を�
 
 エラーが発生した場合、「 [トラブルシューティング](#troubleshooting)」を参照してください。  
 
-コマンドが終了すると、アカウントは数分間 "**作成中**" の状態になります。その後、"**オンライン**" の状態に変化し、使用する準備ができます。 [Azure Portal](https://portal.azure.com) の **[DocumentDB アカウント]** ブレードでアカウントの状態を確認できます。
+コマンドが終了すると、アカウントは数分間 "**作成中**" の状態になります。その後、"**オンライン**" の状態に変化し、使用する準備ができます。 アカウントの状態は、[Azure Portal](https://portal.azure.com) の **[Azure Cosmos DB Accounts (Azure Cosmos DB アカウント)]** ブレードで確認できます。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 リソース グループまたはデータベース アカウントの作成中に `Deployment provisioning state was not successful` のようなエラーが発生する場合、いくつかのトラブルシューティング方法があります。
 
 > [!NOTE]
-> データベース アカウント名に正しくない文字を指定するか、DocumentDB を使用できない場所を指定すると、デプロイメント エラーが発生します。 データベース アカウント名に使用できる文字は、英小文字、数字、「-」のみです。文字数は 3 ～ 50 文字にする必要があります。 有効なデータベース アカウントの場所一覧については、[Azure リージョンのページ](https://azure.microsoft.com/regions/#services)を参照してください。
+> データベース アカウント名に無効な文字を指定したり、Azure Cosmos DB を使用できない場所を指定したりすると、デプロイ エラーが発生します。 データベース アカウント名に使用できる文字は、英小文字、数字、「-」のみです。文字数は 3 ～ 50 文字にする必要があります。 有効なデータベース アカウントの場所一覧については、[Azure リージョンのページ](https://azure.microsoft.com/regions/#services)を参照してください。
 >
 >
 
@@ -600,24 +605,21 @@ azuredeploy.parameters.json ファイルで、`"samplearmacct"` という値を�
     ![デプロイメント エラー メッセージに移動する方法を示す Azure ポータルのスクリーンショット](media/documentdb-automation-resource-manager-cli/portal-troubleshooting-deploy.png)
 
 ## <a name="next-steps"></a>次のステップ
-DocumentDB アカウントを作成できたら、次の手順として DocumentDB データベースを作成します。 データベースを作成するには、次のいずれかを使用します。
+Azure Cosmos DB アカウントが用意できたら、次に Azure Cosmos DB データベースを作成します。 データベースを作成するには、次のいずれかを使用します。
 
-* Azure Portal。[Azure Portal を使用した DocumentDB コレクションとデータベースの作成](documentdb-create-collection.md)に関する記事をご覧ください。
+* Azure Portal。[Azure Portal を使用した Azure Cosmos DB コレクションとデータベースの作成](documentdb-create-collection.md)に関する記事をご覧ください。
 * GitHub の [azure-documentdb-dotnet](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples) リポジトリの [DatabaseManagement](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/DatabaseManagement) プロジェクトにある C# .NET のサンプル。
-* [DocumentDB SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx)。 DocumentDB には、.NET、Java、Python、Node.js、および JavaScript API の SDK があります。
+* [Azure Cosmos DB DocumentDB API SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx)。 Azure Cosmos DB DocumentDB API には、.NET、Java、Python、Node.js、JavaScript API の各 SDK があります。
 
 データベースを作成した後に、データベースに [1 つまたは複数のコレクションを追加](documentdb-create-collection.md)し、それらのコレクションに[ドキュメントを追加する](documentdb-view-json-document-explorer.md)必要があります。
 
-コレクションにドキュメントを用意した後で、ポータルの[クエリ エクスプローラー](documentdb-query-collections-query-explorer.md)、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx)、またはいずれかの [SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) を使用することで、[DocumentDB SQL](documentdb-sql-query.md) を使用してドキュメントに対して[クエリを実行](documentdb-sql-query.md#ExecutingSqlQueries)できます。
+コレクションにドキュメントを追加したら、ポータルの[クエリ エクスプローラー](documentdb-query-collections-query-explorer.md)、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx)、またはいずれかの [SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) を使用することで、[SQL](documentdb-sql-query.md) を使用してドキュメントに対して[クエリを実行](documentdb-sql-query.md#ExecutingSqlQueries)できます。
 
-DocumentDB の詳細については、以下のリソースを参照してください。
-
-* [DocumentDB のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
-* [DocumentDB のリソース モデルと概念](documentdb-resources.md)
+Azure Cosmos DB の詳細については、[Azure Cosmos DB マルチモデルの概要](../cosmos-db/introduction.md)に関する記事をご覧ください。
 
 使用できる他のテンプレートについては、「 [Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」を参照してください。
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
-[distribute-globally]: https://azure.microsoft.com/en-us/documentation/articles/documentdb-distribute-data-globally
-[scaling-globally]: https://azure.microsoft.com/en-us/documentation/articles/documentdb-distribute-data-globally/#scaling-across-the-planet
+[distribute-globally]: https://azure.microsoft.com/documentation/articles/documentdb-distribute-data-globally
+[scaling-globally]: https://azure.microsoft.com/documentation/articles/documentdb-distribute-data-globally/#scaling-across-the-planet
 

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/30/2016
 ms.author: juanpere
-translationtype: Human Translation
-ms.sourcegitcommit: 48c444bfebf46131503dfeefbcd7365b6979215d
-ms.openlocfilehash: 2f59157f47eb211bc7f7d6542f1a7f77ffb90b41
-ms.lasthandoff: 12/16/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 7e2b111868b670444f474a8f6952a16eca680488
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -42,7 +43,7 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 * ソリューション バックエンドから呼び出すことができ、**lockDoor** を可能にするダイレクト メソッドを持つ、シミュレート対象デバイス アプリを作成します。
 * ジョブを使用してシミュレート対象デバイス アプリで **lockDoor** ダイレクト メソッドを呼び出し、デバイス ジョブを使用して必要なプロパティを更新する Node.js コンソール アプリを作成します。
 
-このチュートリアルの最後には、次の&2; つの Node.js コンソール アプリが完成します。
+このチュートリアルの最後には、次の 2 つの Node.js コンソール アプリが完成します。
 
 **simDevice.js**。デバイス ID で IoT ハブに接続し、**lockDoor** ダイレクト メソッドを受信します。
 
@@ -258,7 +259,7 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 
 [チュートリアル: ファームウェアを更新する方法][lnk-fwupdate]
 
-引き続き IoT Hub の使用方法を確認するには、[IoT Gateway SDK の使用][lnk-gateway-SDK]に関する記事を参照してください。
+引き続き IoT Hub の使用方法を確認するには、[Azure IoT Edge の使用][lnk-gateway-SDK]に関する記事を参照してください。
 
 [lnk-get-started-twin]: iot-hub-node-node-twin-getstarted.md
 [lnk-twin-props]: iot-hub-node-node-twin-how-to-configure.md

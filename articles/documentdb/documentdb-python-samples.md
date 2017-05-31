@@ -1,27 +1,29 @@
 ---
-title: "DocumentDB の NoSQL Python のサンプル | Microsoft Docs"
-description: "NoSQL データベースでの JSON ドキュメントに対する CRUD 操作など、DocumentDB の一般的なタスクの NoSQL Python サンプルを github で検索します。"
+title: "Azure Cosmos DB の DocumentDB API の Python サンプル | Microsoft Docs"
+description: "CRUD 操作など、Azure Cosmos DB の一般的なタスクについては、GitHub の Python のサンプルを参照してください。"
 keywords: "Python のサンプル"
-services: documentdb
+services: cosmosdb
 author: moderakh
 manager: jhubbard
 editor: monicar
 documentationcenter: python
 ms.assetid: 7f4f8db3-e9db-4645-92ef-7819d486a349
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2016
 ms.author: moderakh
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7b555732bad08c86c33ee78344ae9c4e6af7c7b8
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 06272744be5bd0b86dbbd1c94dcbd922d125118f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="documentdb-python-examples"></a>DocumentDB Python のサンプル
+# <a name="azure-cosmos-db-python-examples"></a>Azure Cosmos DB の Python サンプル
 > [!div class="op_single_selector"]
 > * [.NET のサンプル](documentdb-dotnet-samples.md)
 > * [Node.js のサンプル](documentdb-nodejs-samples.md)
@@ -30,7 +32,7 @@ ms.openlocfilehash: 7b555732bad08c86c33ee78344ae9c4e6af7c7b8
 > 
 > 
 
-Azure DocumentDB のリソースで CRUD 操作などの一般的な操作を実行するサンプル ソリューションは、 [azure-documentdb-python](https://github.com/Azure/azure-documentdb-python/tree/master/samples) GitHub リポジトリに含まれています。 この記事では、次の内容について説明します。
+Azure Cosmos DB のリソースで CRUD 操作などの一般的な操作を実行するサンプル ソリューションは、[azure-documentdb-python](https://github.com/Azure/azure-documentdb-python/tree/master/samples) GitHub リポジトリに含まれています。 この記事では、次の内容について説明します。
 
 * 各 Python サンプル プロジェクト ファイルのタスクへのリンク。 
 * 関連する API リファレンス コンテンツへのリンク。
@@ -69,10 +71,5 @@ Azure DocumentDB のリソースで CRUD 操作などの一般的な操作を実
 | [コレクションのパフォーマンス階層の取得](https://github.com/Azure/azure-documentdb-python/blob/d78170214467e3ab71ace1a7400f5a7fa5a7b5b0/samples/CollectionManagement/Program.py#L139-L161) |[DocumentQueryable.QueryOffers](http://azure.github.io/azure-documentdb-python/api/pydocumentdb.document_client.html#CreateCollection) |
 | [コレクションのパフォーマンス階層の変更](https://github.com/Azure/azure-documentdb-python/blob/d78170214467e3ab71ace1a7400f5a7fa5a7b5b0/samples/CollectionManagement/Program.py#L163-L175) |[document_client.ReplaceOffer](http://azure.github.io/azure-documentdb-python/api/pydocumentdb.document_client.html#CreateCollection) |
 | [コレクションの削除](https://github.com/Azure/azure-documentdb-python/blob/d78170214467e3ab71ace1a7400f5a7fa5a7b5b0/samples/CollectionManagement/Program.py#L212-L225) |[document_client.DeleteCollection](http://azure.github.io/azure-documentdb-python/api/pydocumentdb.document_client.html#CreateCollection) |
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

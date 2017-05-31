@@ -1,20 +1,21 @@
 ---
-redirect_url: https://azure.microsoft.com/services/documentdb/
+redirect_url: https://azure.microsoft.com/services/cosmos-db/
 ROBOTS: NOINDEX, NOFOLLOW
-translationtype: Human Translation
-ms.sourcegitcommit: fba82c5c826da7d1912814b61c5065ca7f726011
-ms.openlocfilehash: ad15b1695ad4697aebc38ac39723a1dd1647c466
-ms.lasthandoff: 02/23/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: a6b0cd10c13622bf0d5af5d5871457204de37eb1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 
 ---
-# <a name="how-to-create-a-database-for-documentdb-using-the-azure-portal"></a>Azure ポータルを使用して DocumentDB のデータベースを作成する方法
-Microsoft Azure DocumentDB を使用するには、 [DocumentDB アカウント](documentdb-create-account.md)、データベース、コレクション、およびドキュメントを用意する必要があります。 Azure Portal では、コレクションの作成と同時に DocumentDB データベースも作成されるようになりました。 
+# <a name="how-to-create-a-database-for-azure-cosmos-db-using-the-azure-portal"></a>Azure Portal を使用して Azure Cosmos DB のデータベースを作成する方法
+Microsoft Azure Cosmos DB を使用するには、[Azure Cosmos DB アカウント](documentdb-create-account.md)、データベース、コレクション、ドキュメントを用意する必要があります。 Azure Portal では、コレクションの作成と同時に Azure Cosmos DB データベースも作成されるようになりました。 
 
-ポータルで DocumentDB データベースとコレクションを作成する方法については、「[Azure ポータルを使用して DocumentDB コレクションを作成する方法](documentdb-create-collection.md)」を参照してください。
+ポータルで Azure Cosmos DB のデータベースとコレクションを作成する方法については、[Azure Portal を使用して Azure Cosmos DB コレクションを作成する方法](documentdb-create-collection.md)に関する記事をご覧ください。
 
-## <a name="other-ways-to-create-a-documentdb-database"></a>DocumentDB データベースを作成するその他の方法
+## <a name="other-ways-to-create-an-azure-cosmos-db-database"></a>Azure Cosmos DB データベースのその他の作成方法
 データベースは必ずしもポータルを使用して作成する必要はなく、[DocumentDB SDK](documentdb-sdk-dotnet.md) または [REST API](https://msdn.microsoft.com/library/mt489072.aspx) を使用して作成することもできます。 .NET SDK を使用してデータベースを操作する方法については、「 [データベースのサンプル](documentdb-dotnet-samples.md#database-examples)」を参照してください。 Node.js SDK を使用してデータベースを操作する方法については、「 [データベースのサンプル](documentdb-nodejs-samples.md#database-examples)」を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ

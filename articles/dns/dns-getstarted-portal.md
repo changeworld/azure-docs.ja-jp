@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: jonatul
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 3aea60bc21bfb0650a336f6674005bbab47201fe
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 93b24e3d9fbb3fbb3ea995271fd63d1e82eb9c9e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 ---
 
@@ -47,7 +48,7 @@ DNS ゾーンは、特定のドメインの DNS レコードをホストする�
    | **設定** | **値** | **詳細** |
    |---|---|---|
    |**名前**|contoso.com|DNS ゾーンの名前です。|
-   |**サブスクリプション**|<該当するサブスクリプション>|アプリケーション ゲートウェイの作成先となるサブスクリプションを選択します。|
+   |**サブスクリプション**|<該当するサブスクリプション>|DNS ゾーンを作成するサブスクリプションを選択します。|
    |**[リソース グループ]**|**[新規作成]**: contosoDNSRG|リソース グループを作成します。 選択したサブスクリプション内で一意となるリソース グループ名を使用してください。 リソース グループについて詳しくは、[Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) の概要に関する記事をご覧ください。|
    |**場所**|米国西部||
 
@@ -70,7 +71,7 @@ DNS ゾーンは、特定のドメインの DNS レコードをホストする�
    |**型**|A| 作成する DNS レコードの種類です (指定できる値は A、AAAA、CNAME、MX、NS、SRV、TXT、PTR)。  レコードの種類の詳細については、「[DNS ゾーンとレコードの概要](dns-zones-records.md)」を参照してください。|
    |**TTL**|1|DNS 要求の有効期限です。|
    |**TTL の単位**|時間|TTL 値の時間の単位です。|
-   |**IP アドレス**|{ipAddressValue| この値は、DNS レコードが解決する IP アドレスです。|
+   |**IP アドレス**|ipAddressValue| この値は、DNS レコードが解決する IP アドレスです。|
 
 ## <a name="view-records"></a>レコードの表示
 

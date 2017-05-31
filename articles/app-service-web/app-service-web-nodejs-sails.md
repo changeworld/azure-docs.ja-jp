@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 197e4c1873ecdc80c7eed3427449e2ea0d1605ba
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 62f674945745eb019c92173798b6eef43337c9f3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -47,7 +47,7 @@ Sails.js の実用的な知識が必要です。 このチュートリアルは�
 * [Node.JS](https://nodejs.org/)
 * [Sails.js](http://sailsjs.org/get-started)
 * [Git](http://www.git-scm.com/downloads)
-* [Azure CLI 2.0 プレビュー](/cli/azure/install-az-cli2)
+* [Azure CLI 2.0](/cli/azure/install-az-cli2)
 * Microsoft Azure アカウント。 アカウントを持っていない場合は、[無料試用版にサインアップ](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)するか [Visual Studio サブスクライバー特典を有効](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)にしてください。
 
 > [!NOTE]
@@ -118,13 +118,13 @@ Sails.js の実用的な知識が必要です。 このチュートリアルは�
    
         az appservice web deployment user set --user-name <username> --password <password>
 
-3. 任意の名前で[リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 この PHP チュートリアルでは、実際にその内容を把握している必要はありません。
+3. 任意の名前で[リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 この Node.js チュートリアルでは、実際にその内容を把握している必要はありません。
 
         az group create --location "<location>" --name my-sailsjs-app-group
 
     `<location>` に使用できる値を確認するには、CLI コマンド `az appservice list-locations` を使用してください。
 
-3. 任意の名前で、"FREE" の [App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)を作成します。 この PHP チュートリアルでは、このプランの Web アプリに対しては課金されないことを把握しておくだけでかまいません。
+3. 任意の名前で、"FREE" の [App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)を作成します。 この Node.js チュートリアルでは、このプランの Web アプリに対しては課金されないことを把握しておくだけでかまいません。
 
         az appservice plan create --name my-sailsjs-appservice-plan --resource-group my-sailsjs-app-group --sku FREE
 

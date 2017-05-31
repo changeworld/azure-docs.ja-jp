@@ -86,7 +86,7 @@ Azure Active Directory アプリケーション プロキシと PingAccess の�
 13. 先ほど追加したアプリを選択し、**[応答 URL]** を選択します。 
 14. 手順 5. でアプリに割り当てた外部 URL が [応答 URL] の一覧に含まれているかどうかを確認します。 含まれていない場合は、ここで追加してください。 
 15. アプリの設定ブレードで **[必要なアクセス許可]** を選択します。 
-16. **[追加]**を選択します。 API に **[Windows Azure Active Directory]** を選び、**[選択]** を選択します。 アクセス許可に **[Read and write all applications] (すべてのアプリケーションの読み取りと書き込み)** と **[サインインとユーザー プロファイルの読み取り]** を選び、**[選択]** と **[完了]** を選択します。  
+16. **[追加]**を選択します。 API に **[Windows Azure Active Directory]** を選び、**[選択]** を選択します。 アクセス許可に **[Read and write all applications] \(すべてのアプリケーションの読み取りと書き込み)** と **[サインインとユーザー プロファイルの読み取り]** を選び、**[選択]** と **[完了]** を選択します。  
 
   ![アクセス許可を選択](./media/application-proxy-ping-access/select-permissions.png) 
 

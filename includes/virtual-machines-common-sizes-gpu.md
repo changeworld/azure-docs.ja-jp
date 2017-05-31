@@ -7,22 +7,22 @@ NC インスタンスは NVIDIA の Tesla K80 カードを備えています。 
 
 ## <a name="nv-instances"></a>NV インスタンス
 
-| サイズ | CPU コア数 | メモリ: GiB | ローカル SSD: GiB | GPU |
-| --- | --- | --- | --- | --- |
-| Standard_NV6 |6 |56 |380 | 1 |
-| Standard_NV12 |12 |112 |680 | 2 |
-| Standard_NV24 |24 |224 |1440 | 4 |
+| サイズ | CPU コア数 | メモリ: GiB | ローカル SSD: GiB | GPU | 最大データ ディスク数 |
+| --- | --- | --- | --- | --- | --- |
+| Standard_NV6 |6 |56 |380 | 1 | 64 |
+| Standard_NV12 |12 |112 |680 | 2 | 64 |
+| Standard_NV24 |24 |224 |1440 | 4 | 64 |
 
 1 GPU = M60 カードの 2 分の 1 相当。
 
 ## <a name="nc-instances"></a>NV インスタンス
 
-| サイズ | CPU コア数 | メモリ: GiB | ローカル SSD: GiB | GPU |
-| --- | --- | --- | --- | --- |
-| Standard_NC6 |6 |56 | 380 | 1 |
-| Standard_NC12 |12 |112 | 680 | 2 |
-| Standard_NC24 |24 |224 | 1440 | 4 |
-| Standard_NC24r* |24 |224 | 1440 | 4 |
+| サイズ | CPU コア数 | メモリ: GiB | ローカル SSD: GiB | GPU | 最大データ ディスク数 |
+| --- | --- | --- | --- | --- | --- |
+| Standard_NC6 |6 |56 | 380 | 1 | 12 |
+| Standard_NC12 |12 |112 | 680 | 2 | 24 |
+| Standard_NC24 |24 |224 | 1440 | 4 | 48 |
+| Standard_NC24r* |24 |224 | 1440 | 4 | 48 |
 
 1 GPU = K80 カードの 2 分の 1 相当。
 

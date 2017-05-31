@@ -1,39 +1,46 @@
-Resource Manager のコマンドとテンプレートで Azure CLI を使用して、リソース グループを使用する Azure リソースとワークロードをデプロイするには、Azure のアカウントが必要です。 アカウントがない場合、 [ここから無料の Azure 試用版](https://azure.microsoft.com/pricing/free-trial/)を入手できます。
+Azure CLI 2.0 を使用すると、macOS、Linux、Windows 上の Azure リソースを作成および管理できます。 この記事では、仮想マシン (VM) の作成および管理に使用する最も一般的なコマンドの一部について詳しく説明します。
 
-まだ Azure CLI をインストールしてサブスクリプションに接続していない場合は、「[Azure CLI のインストール](../articles/cli-install-nodejs.md)」を参照して、`azure config mode arm` を実行してモードを `arm` に設定し、`azure login` コマンドを実行して Azure に接続してください。
+この記事では、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 アップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 ブラウザーから [Cloud Shell](/azure/cloud-shell/quickstart) を使用することもできます。
 
 ## <a name="basic-azure-resource-manager-commands-in-azure-cli"></a>Azure CLI での 基本的な Azure Resource Manager コマンド
-この記事では、Azure サブスクリプションで ARM リソース (主に VM) を管理および操作するために Azure CLI で使用する基本的なコマンドについて説明します。  特定のコマンド ライン スイッチやオプションの詳細については、「`azure <command> <subcommand> --help`」または「`azure help <command> <subcommand>`」と入力して、コマンド ラインのオンライン ヘルプとオプションを使用します。
+特定のコマンド ライン スイッチやオプションの詳細については、「`az <command> <subcommand> --help`」と入力して、コマンドのオンライン ヘルプとオプションを使用します。
 
-> [!NOTE]
-> これらの例には、リソース マネージャーでの VM のデプロイにおいて一般的に推奨される、テンプレート ベースの操作は含まれていません。 詳細については、[Azure Resource Manager での Azure CLI の使用](../articles/xplat-cli-azure-resource-manager.md)に関するページと「[Azure Resource Manager テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](../articles/virtual-machines/linux/cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
-> 
-> 
+### <a name="create-vms"></a>VM の作成
+| タスク | Azure CLI コマンド |
+| --- | --- |
+| リソース グループの作成 | `az group create --name myResourceGroup --location eastus` |
+| Linux VM の作成 | `az vm create --resource-group myResourceGroup --name myVM --image ubuntults` |
+| Windows VM の作成 | `az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter` |
 
-| タスク | リソース マネージャー |
-| --- | --- | --- |
-| 最も基本的な VM の作成 |`azure vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password>`<br/><br/>(`azure vm image list` コマンドから `image-urn` を取得します。 例については[こちらの記事](../articles/virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を参照してください。) |
-| Linux VM の作成 |`azure  vm create [options] <resource-group> <name> <location> -y "Linux"` |
-| Windows VM の作成 |`azure  vm create [options] <resource-group> <name> <location> -y "Windows"` |
-| VM の一覧表示 |`azure  vm list [options]` |
-| VM に関する情報の取得 |`azure  vm show [options] <resource_group> <name>` |
-| VM の起動 |`azure vm start [options] <resource_group> <name>` |
-| VM の停止 |`azure vm stop [options] <resource_group> <name>` |
-| VM の割り当て解除 |`azure vm deallocate [options] <resource-group> <name>` |
-| VM の再起動 |`azure vm restart [options] <resource_group> <name>` |
-| VM の削除 |`azure vm delete [options] <resource_group> <name>` |
-| VM のキャプチャ |`azure vm capture [options] <resource_group> <name>` |
-| ユーザー イメージからの VM の作成 |`azure  vm create [options] –q <image-name> <resource-group> <name> <location> <os-type>` |
-| 専用ディスクからの VM の作成 |`azue  vm create [options] –d <os-disk-vhd> <resource-group> <name> <location> <os-type>` |
-| VM へのデータ ディスクの追加 |`azure  vm disk attach-new [options] <resource-group> <vm-name> <size-in-gb> [vhd-name]` |
-| VM からのデータ ディスクの削除 |`azure  vm disk detach [options] <resource-group> <vm-name> <lun>` |
-| VM への一般的な拡張機能の追加 |`azure  vm extension set [options] <resource-group> <vm-name> <name> <publisher-name> <version>` |
-| VM への VM アクセス拡張機能の追加 |`azure vm reset-access [options] <resource-group> <name>` |
-| VM への Docker 拡張機能の追加 |`azure  vm docker create [options] <resource-group> <name> <location> <os-type>` |
-| VM 拡張機能の削除 |`azure  vm extension set [options] –u <resource-group> <vm-name> <name> <publisher-name> <version>` |
-| VM リソースの使用量の取得 |`azure vm list-usage [options] <location>` |
-| 使用可能なすべての VM サイズの取得 |`azure vm sizes [options]` |
+### <a name="manage-vm-state"></a>VM の状態の管理
+| タスク | Azure CLI コマンド |
+| --- | --- |
+| VM の起動 | `az vm start --resource-group myResourceGroup --name myVM` |
+| VM の停止 | `az vm stop --resource-group myResourceGroup --name myVM` |
+| VM の割り当て解除 | `az vm deallocate --resource-group myResourceGroup --name myVM` |
+| VM の再起動 | `az vm restart --resource-group myResourceGroup --name myVM` |
+| VM を再デプロイする | `az vm redeploy --resource-group myResourceGroup --name myVM` |
+| VM の削除 | `az vm delete --resource-group myResourceGroup --name myVM` |
+
+### <a name="get-vm-info"></a>VM の情報の取得
+| タスク | Azure CLI コマンド |
+| --- | --- |
+| VM の一覧表示 | `az vm list` |
+| VM に関する情報の取得 | `az vm show --resource-group myResourceGroup --name myVM` |
+| VM リソースの使用量の取得 | `az vm list-usage --location eastus` |
+| 使用可能なすべての VM サイズの取得 | `az vm list-sizes --location eastus` |
+
+## <a name="disks-and-images"></a>ディスクとイメージ
+| タスク | Azure CLI コマンド |
+| --- | --- |
+| VM へのデータ ディスクの追加 | `az vm disk attach --resource-group myResourceGroup --vm-name myVM --disk myDataDisk --size-gb 128 --new ` |
+| VM からのデータ ディスクの削除 | `az vm disk detach --resource-group myResourceGroup --vm-name myVM --disk myDataDisk` |
+| ディスクのサイズの変更 | `az disk update --resource-group myResourceGroup --name myDataDisk --size-gb 256` |
+| ディスクのスナップショットの作成 | `az snapshot create --resource-group myResourceGroup --name mySnapshot --source myDataDisk` |
+| VM のイメージの作成 | `az image create --resource-group myResourceGroup --source myVM --name myImage` |
+| イメージからの VM の作成 | `az vm create --resource-group myResourceGroup --name myNewVM --image myImage` |
+
 
 ## <a name="next-steps"></a>次のステップ
-* 基本的な VM 管理の範囲を超えた CLI コマンドのその他の例については、 [Azure Resource Manager での Azure CLI の使用](../articles/virtual-machines/azure-cli-arm-commands.md)に関する記事をご覧ください。
+CLI コマンドの他の例については、チュートリアル「[Azure CLI を使用した Linux VM の作成と管理](../articles/virtual-machines/linux/tutorial-manage-vm.md)」を参照してください。
 

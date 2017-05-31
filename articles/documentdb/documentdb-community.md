@@ -1,48 +1,49 @@
 ---
-title: "Azure DocumentDB コミュニティ、ニュース、およびイベント | Microsoft Docs"
-description: "Azure DocumentDB コミュニティに参加して、リレーションシップを構築し、作業内容を紹介して、スキルを高めましょう。"
-services: documentdb
+title: "Azure Cosmos DB コミュニティ、ニュース、およびイベント | Microsoft Docs"
+description: "Azure Cosmos DB コミュニティに参加して、人間関係を築き、作業内容を紹介し、スキルを高めましょう。"
+services: cosmosdb
 documentationcenter: 
 author: aliuy
 manager: jhubbard
 editor: mimig
 ms.assetid: cfdf15da-3ddc-43a1-af64-789eea5f6ddd
-ms.service: documentdb
+ms.service: cosmosdb
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/07/2017
 ms.author: andrl
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: a7c366d29cf163c9c30c72751a992a0ebb3462cd
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: a630467a2b5866e675bf008ae8d5d321a44389a3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="community-portal"></a>コミュニティ ポータル
 ## <a name="community-spotlight"></a>コミュニティ スポットライト
-お客様のプロジェクトを宣伝します! お客様が DocumentDB を使って取り組んでいるすばらしいプロジェクトをご紹介ください。天才的なアイデアを世界中と共有するためにお手伝いします。 プロジェクトを紹介するには、[askdocdb@microsoft.com](mailto:askdocdb@microsoft.com) に電子メールを送信してください。
+お客様のプロジェクトを宣伝します! 次世代の DocumentDB スタックである Azure Cosmos DB を使って取り組んでいるすばらしいプロジェクトをご紹介ください。天才的なアイデアを世界に伝えるためのお手伝いをします。 プロジェクトを紹介するには、[askdocdb@microsoft.com](mailto:askdocdb@microsoft.com) に電子メールを送信してください。
 
 ### <a name="documentdb-lumenize"></a>documentdb-lumenize
 *作者: Larry Maccherone*
 
-DocumentDB 内のストアド プロシージャとしての集計 (グループ別、ピボット テーブル、N 次元のキューブ) と時系列の変換。
+Azure Cosmos DB DocumentDB API のストアド プロシージャとしての集計 (グループ別、ピボット テーブル、N 次元のキューブ) と時系列の変換。
 
 [GitHub](https://github.com/lmaccherone/documentdb-lumenize) および [npm](https://www.npmjs.com/package/lumenize) でご覧ください。
 
 ### <a name="documentdb-studio"></a>DocumentDB Studio
 *作者: Ming Liu*
 
-Microsoft Azure DocumentDB サービス用のクライアント管理ビューアーとエクスプローラー。
+Azure Cosmos DB DocumentDB API サービス用のクライアント管理ビューアーとエクスプローラー。
 
 [GitHub](https://github.com/mingaliu/DocumentDBStudio) でご覧ください。
 
 ### <a name="doqmentdb"></a>DoQmentDB
 *作者: Ariel Mashraki*
 
-DoQmentDB は Node.js promise ベースのクライアントであり、DocumentDB の上に MongoDB タイプの層を与えます。
+DoQmentDB は Node.js promise ベースのクライアントであり、Azure Cosmos DB の上に MongoDB タイプの層を提供します。
 
 [GitHub](https://github.com/a8m/doqmentdb) および [npm](https://www.npmjs.com/package/doqmentdb) でご覧ください。
 
@@ -56,21 +57,21 @@ TypeScript で記述された Node.js クライアントのラッパーです (�
 ### <a name="swagger-rest-api-for-documentdb"></a>DocumentDB 用 Swagger REST API
 *作者: Howard Edidin*
 
-API アプリとして簡単にデプロイできる DocumentDB REST API Swagger ファイル。
+API アプリとして簡単にデプロイできる Azure Cosmos DB DocumentDB REST API Swagger ファイル。
 
 [GitHub](https://github.com/HEDIDIN/DocumentDB-REST/tree/master/DocumentDBRestApi) でご覧ください。
 
 ### <a name="fluent-plugin-documentdb"></a>fluent-plugin-documentdb
 *作成者: Yoichi Kawasaki*
 
-fluent-plugin-documentdb は、Azure DocumentDB に出力するための Fluentd プラグインです。
+fluent-plugin-documentdb は、Azure Cosmos DB DocumentDB API に出力するための Fluentd プラグインです。
 
 [GitHub](https://github.com/yokawasa/fluent-plugin-documentdb) および [rubygems](https://rubygems.org/gems/fluent-plugin-documentdb) でご覧ください。
 
-"*上記以外にも、多数のオープン ソース DocumentDB プロジェクトを [GitHub](https://github.com/search?p=4&q=documentdb&type=Repositories) でご覧いただけます。*"
+*上記以外にも、多数のオープン ソース Azure Cosmos DB プロジェクトが [GitHub](https://github.com/search?p=4&q=documentdb&type=Repositories) で公開されています。*
 
 ## <a name="news-blogs-and-articles"></a>ニュース、ブログ、および記事
-DocumentDB の最新のニュースと機能については、 [弊社のブログ](https://azure.microsoft.com/blog/tag/documentdb/)をお読みください。
+Azure Cosmos DB の最新のニュースと機能については、[Microsoft のブログ](https://azure.microsoft.com/blog/tag/documentdb/)をご覧ください。
 
 **コミュニティへの投稿:**
 
@@ -231,10 +232,10 @@ Twitter で [@DocumentDB](https://twitter.com/DocumentDB) をフォローし、[
 | --- | --- | --- |
 | ドキュメント |[azure-content](https://github.com/Azure/azure-content/tree/master/articles/documentdb) |[ドキュメント Web サイト](https://azure.microsoft.com/documentation/services/documentdb/) |
 | Hadoop コネクタ |[azure-documentdb-hadoop](https://github.com/Azure/azure-documentdb-hadoop) |[Maven](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-documentdb-hadoop%22) |
-| データ移行ツール |[azure-documentdb-datamigrationtool](https://github.com/Azure/azure-documentdb-datamigrationtool) |[Microsoft ダウンロード センター](http://www.microsoft.com/en-us/download/details.aspx?id=46436) |
+| データ移行ツール |[azure-documentdb-datamigrationtool](https://github.com/Azure/azure-documentdb-datamigrationtool) |[Microsoft ダウンロード センター](http://www.microsoft.com/download/details.aspx?id=46436) |
 
-## <a name="documentdb-wizards"></a>DocumentDB ウィザード
-DocumentDB ウィザードは、Azure DocumentDB を最大限に活用できるように他者を献身的に支援した模範的コミュニティ リーダーです。 並外れた情熱、実世界の知識、技術的専門知識をコミュニティや DocumentDB チームと共有します。
+## <a name="azure-cosmos-db-wizards"></a>Azure Cosmos DB ウィザード
+Azure Cosmos DB ウィザードは、次世代の Azure DocumentDB である Azure Cosmos DB を最大限に活用できるように、他のユーザーの支援に取り組んできた模範的コミュニティ リーダーです。 並外れた情熱、実世界の知識、技術的専門知識をコミュニティや Azure Cosmos DB チームと共有しています。
 
 | ウィザード | 写真 |
 | --- | --- |
@@ -247,6 +248,6 @@ DocumentDB ウィザードは、Azure DocumentDB を最大限に活用できる�
 |  [Santosh Hari](https://twitter.com/_s_hari) |[![Santosh Hari](./media/documentdb-community/wizard-santosh-hari.jpg)](https://twitter.com/_s_hari) |
 | [Matías Quaranta](https://twitter.com/ealsur) |[![Matías Quaranta](./media/documentdb-community/wizard-matias-quaranta.jpg)](https://twitter.com/ealsur) |
 
-DocumentDB ウィザードになりたいですか。 DocumentDB ウィザードになるための基準はありませんが、StackOverflow や MSDN などのオンライン フォーラム、wiki、オンライン コンテンツ、ユーザー グループ、ポッドキャスト、Web サイト、ブログ、ソーシャル メディア、記事、書籍での貢献度が評価されます。 [電子メールを送信](mailto:askdocdb@microsoft.com)することで、自薦または他薦できます。
+Azure Cosmos DB ウィザードになることをご希望ですか。 ウィザードになるための基準はありませんが、StackOverflow や MSDN などのオンライン フォーラム、wiki、オンライン コンテンツ、カンファレンス、ユーザー グループ、ポッドキャスト、Web サイト、ブログ、ソーシャル メディア、記事、書籍での貢献度も評価されます。 [電子メールを送信](mailto:askdocdb@microsoft.com)することで、自薦または他薦できます。
 
 

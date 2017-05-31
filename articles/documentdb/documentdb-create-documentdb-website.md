@@ -1,34 +1,36 @@
 ---
-title: "テンプレートを使用して Web アプリをデプロイする - Azure DocumentDB | Microsoft Docs"
-description: "Azure リソース マネージャーのテンプレートを使用して DocumentDB アカウント、Azure App Service Web Apps、サンプルの Web アプリケーションをデプロイする方法を説明します。"
-services: documentdb, app-service\web
-author: h0n
+title: "テンプレートを使用した Web アプリのデプロイ - Azure Cosmos DB | Microsoft Docs"
+description: "Azure Resource Manager テンプレートを使用して、Azure Cosmos DB アカウント、Azure App Service Web Apps、サンプル Web アプリケーションをデプロイする方法について説明します。"
+services: cosmosdb, app-service\web
+author: mimig1
 manager: jhubbard
 editor: monicar
 documentationcenter: 
 ms.assetid: 087d8786-1155-42c7-924b-0eaba5a8b3e0
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2016
-ms.author: hawong
-translationtype: Human Translation
-ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
-ms.openlocfilehash: 7bef38eaea90d950c195dee0d741750cf65870df
+ms.author: mimig
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 454c44d74846b1c2c66cd4e35b5d808e238e4c5b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="deploy-documentdb-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Azure リソース マネージャーのテンプレートを使用した DocumentDB と Azure App Service Web Apps のデプロイ
-このチュートリアルでは、Azure Resource Manager のテンプレートを使用して [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/)、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web アプリ、サンプルの Web アプリケーションをデプロイおよび統合する方法を示します。
+# <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した Azure Cosmos DB と Azure App Service Web Apps のデプロイ
+このチュートリアルでは、Azure Resource Manager テンプレートを使用して、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/)、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web アプリ、サンプル Web アプリケーションをデプロイおよび統合する方法について説明します。
 
-Azure Resource Manager テンプレートを使用して、Azure リソースのデプロイと構成を簡単に自動化できます。  このチュートリアルでは、Web アプリケーションをデプロイして、DocumentDB アカウント接続情報を自動的に構成する方法を示します。
+Azure Resource Manager テンプレートを使用して、Azure リソースのデプロイと構成を簡単に自動化できます。  このチュートリアルでは、Web アプリケーションをデプロイし、Azure Cosmos DB アカウントの接続情報を自動的に構成する方法を説明します。
 
 このチュートリアルを完了すると、次の項目について説明できるようになります。  
 
-* Azure リソース マネージャーのテンプレートを使用して、DocumentDB アカウントと Azure App Service の Web アプリをデプロイおよび統合する方法
-* Azure リソース マネージャーのテンプレートを使用して、DocumentDB アカウント、App Service Web Apps の Web アプリ、Web デプロイ アプリケーションをデプロイおよび統合する方法
+* Azure Resource Manager テンプレートを使用して、Azure Cosmos DB アカウントと Azure App Service の Web アプリをデプロイおよび統合する方法
+* Azure Resource Manager テンプレートを使用して、Azure Cosmos DB アカウント、App Service Web Apps の Web アプリ、WebDeploy アプリケーションをデプロイおよび統合する方法
 
 <a id="Prerequisites"></a>
 
@@ -42,19 +44,19 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 
 * Azure サブスクリプション。 Azure はサブスクリプション方式のプラットフォームです。  サブスクリプションの入手方法の詳細については、[購入オプション](https://azure.microsoft.com/pricing/purchase-options/)、[メンバー プラン](https://azure.microsoft.com/pricing/member-offers/)、または[無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。
 
-## <a name="a-idcreatedbastep-1-download-the-template-files"></a><a id="CreateDB"></a>手順 1: テンプレート ファイルをダウンロードする
+## <a id="CreateDB"></a>手順 1: テンプレート ファイルをダウンロードする
 このチュートリアルで使用するサンプル ファイルをダウンロードすることから始めましょう。
 
-1. [DocumentDB アカウントと Web Apps の作成およびデモ アプリケーションのデプロイのサンプル](https://portalcontent.blob.core.windows.net/samples/DocDBWebsiteTodo.json)のテンプレートを、ローカルのフォルダー (C:\DocumentDBTemplates など) にダウンロードします。 このテンプレートでは、DocumentDB アカウント、App Service Web アプリ、Web アプリケーションをデプロイします。  また、Web アプリケーションをこの DocumentDB アカウントに接続するように自動的に構成します。
-2. [DocumentDB アカウントと Web Apps の作成のサンプル](https://portalcontent.blob.core.windows.net/samples/DocDBWebSite.json)のテンプレートをローカルのフォルダー (C:\DocumentDBTemplates など) にダウンロードします。 このテンプレートでは、DocumentDB アカウントと App Service Web アプリをデプロイし、サイトのアプリケーション設定を変更して DocumentDB の接続情報を容易に表示できるようにしますが、Web アプリケーションは含まれていません。  
+1. [Azure Cosmos DB アカウント と Web Apps の作成およびデモ アプリケーションのデプロイのサンプル](https://portalcontent.blob.core.windows.net/samples/DocDBWebsiteTodo.json) テンプレートを、ローカル フォルダー (C:\Azure Cosmos DBTemplates など) にダウンロードします。 このテンプレートでは、Azure Cosmos DB アカウント、App Service Web アプリ、Web アプリケーションをデプロイします。  また、Azure Cosmos DB アカウントに接続するように Web アプリケーションを自動的に構成します。
+2. [Azure Cosmos DB アカウントと Web Apps の作成のサンプル](https://portalcontent.blob.core.windows.net/samples/DocDBWebSite.json) テンプレートを、ローカル フォルダー (C:\Azure Cosmos DBTemplates など) にダウンロードします。 このテンプレートでは、Azure Cosmos DB アカウントと App Service Web アプリをデプロイし、サイトのアプリケーション設定を変更して Azure Cosmos DB の接続情報を簡単に表示できるようにします。ただし、Web アプリケーションは含まれていません。  
 
 <a id="Build"></a>
 
-## <a name="step-2-deploy-the-documentdb-account-app-service-web-app-and-demo-application-sample"></a>手順 2: DocumentDB アカウント、App Service Web アプリ、デモ アプリケーション サンプルをデプロイする
+## <a name="step-2-deploy-the-azure-cosmos-db-account-app-service-web-app-and-demo-application-sample"></a>手順 2: Azure Cosmos DB アカウント、App Service Web アプリ、デモ アプリケーションのサンプルをデプロイする
 では、最初のテンプレートをデプロイしましょう。
 
 > [!TIP]
-> このテンプレートでは、ここで入力する Web アプリ名と DocumentDB アカウント名が a) 有効であること、および b) 使用可能であることについては確認されません。  デプロイメントの送信前に、指定する予定の名前の可用性を確認しておくことを強くお勧めします。
+> このテンプレートでは、ここで入力する Web アプリ名と Azure Cosmos DB アカウント名が a) 有効であり、b) 使用可能であることを検証しません。  デプロイメントの送信前に、指定する予定の名前の可用性を確認しておくことを強くお勧めします。
 > 
 > 
 
@@ -68,8 +70,8 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
    
    1. SITENAME: App Service Web アプリの名前を指定します。これは、Web アプリへのアクセスに使用する URL を作成するときに使用されます (たとえば、"mydemodocdbwebapp" を指定した場合、Web アプリへのアクセスに使用する URL は mydemodocdbwebapp.azurewebsites.net になります)。
    2. HOSTINGPLANNAME: 作成する App Service ホスティング プランの名前を指定します。
-   3. LOCATION: DocumentDB と Web アプリのリソースを作成する Azure の場所を指定します。
-   4. DATABASEACCOUNTNAME: 作成する DocumentDB アカウントの名前を指定します。   
+   3. LOCATION: Azure Cosmos DB リソースと Web アプリ リソースを作成する Azure の場所を指定します。
+   4. DATABASEACCOUNTNAME: 作成する Azure Cosmos DB アカウントの名前を指定します。   
       
       ![テンプレートのデプロイメント UI のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment4.png)
 5. 既存のリソース グループを選択するか、名前を指定して新しいリソース グループを作成し、リソース グループの場所を選択します。
@@ -82,20 +84,20 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 8. アプリケーションを使用するには、単純にその Web アプリの URL にアクセスします (上の例では URL は http://mydemodocdbwebapp.azurewebsites.net)。  次のような Web アプリケーションが表示されます。
    
    ![Todo アプリケーションのサンプル](./media/documentdb-create-documentdb-website/image2.png)
-9. ここで、Web アプリでいくつかのタスクを作成してから、Azure ポータルのリソース グループ ブレードに戻ります。 リソースの一覧で DocumentDB アカウント リソースをクリックし、 **クエリ エクスプローラー**をクリックします。
+9. ここで、Web アプリでいくつかのタスクを作成してから、Azure ポータルのリソース グループ ブレードに戻ります。 リソースの一覧で Azure Cosmos DB アカウント リソースをクリックし、**クエリ エクスプローラー**をクリックします。
     ![myotherdocumentdbwebapp Web アプリを強調表示した [概要] レンズのスクリーン ショット](./media/documentdb-create-documentdb-website/TemplateDeployment8.png)  
-10. 既定のクエリ "SELECT * FROM c" を実行し、その結果を調べます。このクエリでは、前の手順 7. で作成した Todo 項目の JSON 表現を取得しました。クエリを自由に試してください。たとえば、SELECT * FROM c WHERE c.isComplete = true を実行してみると、完了済みとしてマークされているすべての Todo 項目が返されます。
+10. 既定のクエリである "SELECT * FROM c" を実行し、その結果を調べます。  このクエリでは、前の手順 7. で作成した Todo 項目の JSON 表現を取得しました。  クエリを自由に試してください。たとえば、SELECT * FROM c WHERE c.isComplete = true を実行してみると、完了としてマークされているすべての Todo 項目が返されます。
     
     ![クエリ結果を示す [クエリ エクスプローラー] ブレードと [結果] ブレードのスクリーン ショット](./media/documentdb-create-documentdb-website/image5.png)
-11. DocumentDB ポータルの操作やサンプル Todo アプリケーションの変更を自由に試してみてください。  準備ができたら、別のテンプレートをデプロイしましょう。
+11. Azure Cosmos DB ポータルの操作やサンプル Todo アプリケーションの変更を自由に試してください。  準備ができたら、別のテンプレートをデプロイしましょう。
 
 <a id="Build"></a> 
 
 ## <a name="step-3-deploy-the-document-account-and-web-app-sample"></a>手順 3: Document アカウントと Web アプリのサンプルのデプロイ
-では、2 番目のテンプレートをデプロイしましょう。  このテンプレートは、アカウント エンドポイントやマスター キーなどの DocumentDB 接続情報を、アプリケーション設定またはカスタム接続文字列として Web アプリに導入する方法を理解するのに役立ちます。 たとえば、DocumentDB アカウントを使用してデプロイする独自の Web アプリケーションがあり、接続情報をデプロイ時に自動的に設定するような場合があります。
+では、2 番目のテンプレートをデプロイしましょう。  このテンプレートは、アカウント エンドポイントやマスター キーなどの Azure Cosmos DB 接続情報を、アプリケーション設定またはカスタム接続文字列として Web アプリに挿入する方法を理解するのに役立ちます。 たとえば、Azure Cosmos DB アカウントを使用してデプロイする独自の Web アプリケーションがあり、デプロイ時に接続情報を自動的に設定する場合があります。
 
 > [!TIP]
-> このテンプレートでは、ここで入力する Web アプリ名と DocumentDB アカウント名が a) 有効であること、および b) 使用可能であることについては確認されません。  デプロイメントの送信前に、指定する予定の名前の可用性を確認しておくことを強くお勧めします。
+> このテンプレートでは、ここで入力する Web アプリ名と Azure Cosmos DB アカウント名が a) 有効であり、b) 使用可能であることを検証しません。  デプロイメントの送信前に、指定する予定の名前の可用性を確認しておくことを強くお勧めします。
 > 
 > 
 
@@ -109,8 +111,8 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
    
    1. SITENAME: App Service Web アプリの名前を指定します。これは、Web アプリへのアクセスに使用する URL を作成するときに使用されます (たとえば、"mydemodocdbwebapp" を指定した場合、Web アプリへのアクセスに使用する URL は mydemodocdbwebapp.azurewebsites.net になります)。
    2. HOSTINGPLANNAME: 作成する App Service ホスティング プランの名前を指定します。
-   3. LOCATION: DocumentDB と Web アプリのリソースを作成する Azure の場所を指定します。
-   4. DATABASEACCOUNTNAME: 作成する DocumentDB アカウントの名前を指定します。   
+   3. LOCATION: Azure Cosmos DB リソースと Web アプリ リソースを作成する Azure の場所を指定します。
+   4. DATABASEACCOUNTNAME: 作成する Azure Cosmos DB アカウントの名前を指定します。   
       
       ![テンプレートのデプロイメント UI のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment4.png)
 5. 既存のリソース グループを選択するか、名前を指定して新しいリソース グループを作成し、リソース グループの場所を選択します。
@@ -122,17 +124,17 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
    ![リソース グループ ブレードのスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment7.png)  
 8. リソースの一覧で Web アプリのリソースをクリックし、**[アプリケーション設定]** 
      ![[リソース グループのスクリーンショット]](./media/documentdb-create-documentdb-website/TemplateDeployment9.png) をクリックします。  
-9. DocumentDB エンドポイントおよびそれぞれの DocumentDB マスター キーに関するアプリケーションの設定がどのように表示されているかを確認します。
+9. Azure Cosmos DB エンドポイントとそれぞれの Azure Cosmos DB マスター キーに関するアプリケーション設定がどのように表示されているのかを確認します。
 
     ![アプリケーションの設定のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment10.png)  
-10. 引き続き、Azure ポータルの操作を確認したり、DocumentDB の [サンプル](http://go.microsoft.com/fwlink/?LinkID=402386) に従って独自の DocumentDB アプリケーションを作成したり、自由に試してみてください。
+10. Azure Portal の操作を引き続き確認したり、Azure Cosmos DB の[サンプル](http://go.microsoft.com/fwlink/?LinkID=402386)に従って独自の Azure Cosmos DB アプリケーションを作成したり、自由に試してみてください。
 
 <a name="NextSteps"></a>
 
 ## <a name="next-steps"></a>次のステップ
-ご利用ありがとうございます。 Azure リソース マネージャーのテンプレートを使用して、DocumentDB、App Service Web アプリ、サンプルの Web アプリケーションをデプロイしました。
+ご利用ありがとうございます。 Azure Resource Manager テンプレートを使用して、Azure Cosmos DB、App Service Web アプリ、サンプル Web アプリケーションをデプロイしました。
 
-* DocumentDB の詳細については、 [ここ](http://azure.com/docdb)をクリックしてください。
+* Azure Cosmos DB の詳細については、[こちら](http://azure.com/docdb)をご覧ください。
 * Azure App Service Web Apps の詳細については、 [ここ](http://go.microsoft.com/fwlink/?LinkId=325362)をクリックしてください。
 * Azure リソース マネージャーのテンプレートの詳細については、 [ここ](https://msdn.microsoft.com/library/azure/dn790549.aspx)をクリックしてください。
 
@@ -144,10 +146,5 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 > Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

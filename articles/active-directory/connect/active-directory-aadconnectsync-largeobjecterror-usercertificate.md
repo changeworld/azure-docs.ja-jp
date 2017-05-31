@@ -27,7 +27,7 @@ ms.lasthandoff: 04/29/2017
 
 Azure AD では、**userCertificate** 属性に対して最大制限 **15** の証明書の値が提供されます。 Azure AD Connect が 15 を超える値を持つオブジェクトを Azure AD にエクスポートすると、Azure AD は次のメッセージで **LargeObject** エラーを返します。
 
->*"The provisioned object is too large.Trim the number of attribute values on this object.The operation will be retried in the next synchronization cycle..."*
+>*提供されたオブジェクトが大きすぎます。このオブジェクト上の属性値の数を調整してください。操作は次の同期サイクル時に再試行されます。*
 
 LargeObject エラーは、その他の AD 属性が原因で発生する場合があります。 そのエラーが実際に UserCertificate 属性が原因で発生したことを確認するには、オンプレミス AD または [Synchronization Service Manager メタバース検索](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-mvsearch)で、そのオブジェクトを検証する必要があります。
 
