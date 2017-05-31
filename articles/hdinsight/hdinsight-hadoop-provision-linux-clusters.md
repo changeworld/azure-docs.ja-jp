@@ -1,6 +1,7 @@
 ---
 title: "Azure HDInsight での Hadoop、HBase、Kafka、Storm、または Spark クラスターの作成 | Microsoft Docs"
 description: "ブラウザー、Azure CLI、Azure PowerShell、REST、または SDK を使用して HDInsight に Linux ベースの Hadoop、HBase、Storm、または Spark クラスターを作成する方法について説明します。"
+keywords: "Hadoop クラスターのセットアップ, Kafka クラスターのセットアップ, Spark クラスターのセットアップ, HBase クラスターのセットアップ, Storm クラスターのセットアップ, Hadoop のクラスターとは"
 services: hdinsight
 documentationcenter: 
 author: mumian
@@ -17,10 +18,10 @@ ms.workload: big-data
 ms.date: 05/01/2017
 ms.author: jgao
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 9fc96db2b832f1e57813bebd2d46e4b78ed04677
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: ed0a5cfc02572d537f4b179ad612ad153a2db1d4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -105,7 +106,7 @@ Hadoop クラスターは、クラスターでのタスクの分散処理に使�
 > ヘッドは、Storm クラスター タイプでは *Nimbus* と呼ばれます。 worker は、HBase クラスターでは *"リージョン"*、Storm クラスターでは *"スーパーバイザー"* と呼ばれます。
 
 > [!IMPORTANT]
-> クラスターの作成時または作成後のスケーリングで 32 個を超える worker ノードを使用することを予定している場合は、コア数が 8 個以上、RAM が 14 GB 以上のヘッド ノード サイズを選択する必要があります。
+> クラスターの作成時または作成後のスケーリングで 32 個を超えるワーカー ノードを使用することを予定している場合は、コア数が 8 個以上、RAM が 14 GB 以上のヘッド ノード サイズを選択する必要があります。
 >
 >
 
@@ -177,22 +178,35 @@ HDInsight クラスターを作成するとき、あるいはクラスターが�
 セカンダリ Azure Storage アカウントの詳細については、[HDInsight での Azure Storage の使用](hdinsight-hadoop-use-blob-storage.md)に関する記事をご覧ください。 セカンダリ Data Lake Store の詳細については、「 [Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」をご覧ください。
 
 
-#### <a name="use-hiveoozie-metastore"></a>Hive/Oozie メタストア
-HDInsight クラスターを削除した後も Hive テーブルを保持する場合は、カスタム metastore を使用することをお勧めします。 そのメタストアを別の HDInsight クラスターにアタッチすることもできます。
+#### <a name="use-hiveoozie-metastore"></a>Hive metastore
+
+HDInsight クラスターを削除した後も Hive テーブルを保持する場合は、カスタムのメタストアを使用することをお勧めします。 そのメタストアを別の HDInsight クラスターにアタッチすることもできます。
 
 > [!IMPORTANT]
 > あるバージョンの HDInsight クラスター用に作成された HDInsight metastore は、別の HDInsight クラスター バージョン間で共有できません。 HDInsight のバージョンの一覧は、「[サポートされる HDInsight のバージョン](hdinsight-component-versioning.md#supported-hdinsight-versions)」をご覧ください。
->
->
 
-メタストアには、Hive テーブル、パーティション、スキーマ、列などについての Hive と Oozie メタデータが格納されます。 metastore では Hive と Oozie メタデータを保持できるため、新しいクラスターを作成するときに、Hive テーブルまたは Oozie ジョブを再作成する必要はありません。 既定では、Hive は組み込みの Azure SQL Database を使用してこの情報を格納します。 組み込みデータベースは、クラスターが削除されるとメタデータを保持できません。 Hive metastore が構成された HDInsight クラスターで Hive テーブルを作成すると、同じ Hive metastore を使用してクラスターを再作成したときにそれらのテーブルが保持されます。
+メタストアには、Hive テーブル、パーティション、スキーマ、列などについての Hive メタデータが格納されます。 メタストアで Hive メタデータを保持できるため、新しいクラスターを作成するときに、Hive テーブルを再作成する必要はありません。 既定では、Hive は組み込みの Azure SQL Database を使用してこの情報を格納します。 組み込みデータベースは、クラスターが削除されるとメタデータを保持できません。 Hive metastore が構成された HDInsight クラスターで Hive テーブルを作成すると、同じ Hive metastore を使用してクラスターを再作成したときにそれらのテーブルが保持されます。
 
-HBase のクラスターの種類では、メタストア構成は使用できません。
+すべてのクラスターの種類で、メタストア構成が使用できるわけではありません。 たとえば、HBase または Kafka クラスターでは使用できません。
 
 > [!IMPORTANT]
-> カスタム metastore を作成するときは、データベース名にダッシュやハイフンを使用しないでください。 クラスター作成プロセスが失敗する可能性があります。
->
->
+> カスタム メタストアを作成するときは、データベース名にダッシュ、ハイフン、またはスペースを使用しないでください。 クラスター作成プロセスが失敗する可能性があります。
+
+> [!WARNING]
+> Hive metastore では、Azure SQL Warehouse はサポートされていません。
+
+
+#### <a name="oozie-metastore"></a>Oozie メタストア
+
+Oozie の使用時にパフォーマンスを向上させるには、カスタム メタストアを使用します。 カスタム メタストアは、クラスターを削除した後に Oozie ジョブ データにアクセスする場合にも役立ちます。 Oozie の使用を予定していない場合、または断続的に Oozie を使用するのみである場合は、カスタム メタストアを作成する必要はありません。
+
+> [!IMPORTANT]
+> カスタム Oozie メタストアを再利用することはできません。 カスタム Oozie メタストアを使用するには、HDInsight クラスターの作成時に空の Azure SQL Database を提供する必要があります。
+
+すべてのクラスターの種類で、メタストア構成が使用できるわけではありません。 たとえば、HBase または Kafka クラスターでは使用できません。
+
+> [!WARNING]
+> Oozie メタストアでは、Azure SQL Warehouse はサポートされていません。
 
 ## <a name="install-hdinsight-applications"></a>HDInsight アプリケーションをインストールする
 
@@ -253,7 +267,7 @@ Azure Portal を使用してクラスターを構成するときに、**[ノー�
 これらのリソースの使用を計画するときに注意する必要のあるデプロイの考慮事項については、 [仮想マシンのサイズ](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。 さまざまなサイズの価格については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight)」をご覧ください。   
 
 > [!IMPORTANT]
-> クラスターの作成時または作成後のスケーリングで 32 個を超える worker ノードを使用することを予定している場合は、コア数が 8 個以上、RAM が 14 GB 以上のヘッド ノード サイズを選択する必要があります。
+> クラスターの作成時または作成後のスケーリングで 32 個を超えるワーカー ノードを使用することを予定している場合は、コア数が 8 個以上、RAM が 14 GB 以上のヘッド ノード サイズを選択する必要があります。
 >
 >
 

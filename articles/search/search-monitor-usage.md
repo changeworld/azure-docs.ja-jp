@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 04/05/2017
+ms.date: 05/01/2017
 ms.author: betorres
-translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
-ms.openlocfilehash: ab273c56fe9818ea65979376ec829032f67f04ed
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 16cb5a1e16a59200f0e731622398efcf24c3f777
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -62,11 +63,11 @@ Azure Search は次の 3 つの異なるメトリックについてデータを�
 >
 
 ### <a name="using-the-rest-api"></a>REST API の使用
-Azure Search REST API または .NET SDK を使用することにより、プログラムからサービス メトリックにアクセスできます。  [インデクサー](https://msdn.microsoft.com/library/azure/dn946891.aspx) を使用して Azure SQL Database または DocumentDB からのインデックスの読み込む際には、必要な数値を取得するために追加されている API を使用できます。
+Azure Search REST API または .NET SDK を使用することにより、プログラムからサービス メトリックにアクセスできます。  [インデクサー](https://msdn.microsoft.com/library/azure/dn946891.aspx)を使用して Azure SQL Database または Azure Cosmos DB からのインデックスを読み込む際には、必要な数値を取得するために追加されている API を使用できます。
 
-* [インデックス統計の取得](https://msdn.microsoft.com/library/azure/dn798942.aspx)
-* [ドキュメントの数](https://msdn.microsoft.com/library/azure/dn798924.aspx)
-* [インデクサーの状態の取得](https://msdn.microsoft.com/library/azure/dn946884.aspx)
+* [インデックス統計の取得](/rest/api/searchservice/get-index-statistics)
+* [ドキュメントの数](/rest/api/searchservice/count-documents)
+* [インデクサーの状態の取得](/rest/api/searchservice/get-indexer-status)
 
 ## <a name="how-to-export-logs-and-metrics"></a>ログとメトリックをエクスポートする方法
 

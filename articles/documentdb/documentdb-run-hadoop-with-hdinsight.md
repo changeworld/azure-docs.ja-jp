@@ -1,13 +1,13 @@
 ---
-title: "Azure DocumentDB と HDInsight を使用した Hadoop ジョブの実行 | Microsoft Docs"
-description: "DocumentDB と Azure HDInsight を使用してシンプルな Hive、Pig、および MapReduce ジョブを実行する方法を説明します。"
-services: documentdb
+title: "Azure Cosmos DB と HDInsight を使用した Hadoop ジョブの実行 | Microsoft Docs"
+description: "Azure Cosmos DB と Azure HDInsight を使用してシンプルな Hive、Pig、および MapReduce ジョブを実行する方法を説明します。"
+services: cosmosdb
 author: dennyglee
 manager: jhubbard
 editor: mimig
 documentationcenter: 
 ms.assetid: 06f0ea9d-07cb-4593-a9c5-ab912b62ac42
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: java
@@ -15,31 +15,32 @@ ms.topic: article
 ms.date: 09/20/2016
 ms.author: denlee
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 9304acd9f99b7f492a37bc4243ed8fb617998c6f
-ms.lasthandoff: 03/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: a4d5e13cb2851787abcaff0c1971f63af9bf75dd
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="DocumentDB-HDInsight"></a>DocumentDB と HDInsight を使用した Apache Hive、Pig、または Hadoop ジョブの実行
-このチュートリアルでは、DocumentDB の Hadoop コネクタを使用して、[Apache Hive][apache-hive]、[Apache Pig][apache-pig]、および [Apache Hadoop][apache-hadoop] MapReduce の各ジョブを Azure HDInsight 上で実行する方法について説明します。 DocumentDB の Hadoop コネクタを使用すると、DocumentDB が Hive、Pig、および MapReduce の各ジョブに対してソースとシンクの両方として機能します。 このチュートリアルでは、Hadoop ジョブのデータ ソースと出力先の両方に DocumentDB を使用します。
+# <a name="Azure Cosmos DB-HDInsight"></a>Azure Cosmos DB と HDInsight を使用した Apache Hive、Pig、または Hadoop ジョブの実行
+このチュートリアルでは、Azure Cosmos DB の Hadoop コネクタを使用して、[Apache Hive][apache-hive]、[Apache Pig][apache-pig]、および [Apache Hadoop][apache-hadoop] MapReduce の各ジョブを Azure HDInsight 上で実行する方法について説明します。 Cosmos DB の Hadoop コネクタを使用すると、Cosmos DB が Hive、Pig、および MapReduce の各ジョブに対してソースとシンクの両方として機能します。 このチュートリアルでは、Hadoop ジョブのデータ ソースと出力先の両方に Cosmos DB を使用します。
 
 このチュートリアルを完了すると、次の項目について説明できるようになります。
 
-* Hive、Pig、または MapReduce ジョブを使用して DocumentDB からどのようにしてデータを読み込むか。
-* Hive、Pig、または MapReduce ジョブを使用して DocumentDB にどのようにしてデータを格納するか。
+* Hive、Pig、または MapReduce ジョブを使用して Cosmos DB からどのようにしてデータを読み込むか。
+* Hive、Pig、または MapReduce ジョブを使用して Cosmos DB にどのようにしてデータを格納するか。
 
-まずは、次のビデオを視聴することをお勧めします。このビデオでは、DocumentDB と HDInsight を使用して Hive ジョブがひととおり実行されます。
+まずは、次のビデオを視聴することをお勧めします。このビデオでは、Cosmos DB と HDInsight を使用して Hive ジョブがひととおり実行されます。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Use-Azure-DocumentDB-Hadoop-Connector-with-Azure-HDInsight/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Use-Azure-Cosmos DB-Hadoop-Connector-with-Azure-HDInsight/player]
 >
 >
 
-その後で、この記事に戻ってください。この記事では、DocumentDB データに対して分析ジョブを実行する方法について詳しく説明します。
+その後で、この記事に戻ってください。この記事では、Cosmos DB データに対して分析ジョブを実行する方法について詳しく説明します。
 
 > [!TIP]
-> このチュートリアルは、これまでに Apache Hadoop、Hive、Pig の少なくとも&1; つを使用した経験があることを前提としています。 Apache Hadoop、Hive、Pig の使用経験がない場合は、[Apache Hadoop のドキュメント][apache-hadoop-doc]を参照することをお勧めします。 さらに、このチュートリアルでは、DocumentDB の使用経験があり、DocumentDB アカウントを持っていることを想定しています。 DocumentDB を初めて扱う方や DocumentDB アカウントを持っていない方は、[使用の開始][getting-started]に関するページをご覧ください。
+> このチュートリアルは、これまでに Apache Hadoop、Hive、Pig の少なくとも 1 つを使用した経験があることを前提としています。 Apache Hadoop、Hive、Pig の使用経験がない場合は、[Apache Hadoop のドキュメント][apache-hadoop-doc]を参照することをお勧めします。 さらに、このチュートリアルでは、Cosmos DB の使用経験があり、Cosmos DB アカウントを持っていることを想定しています。 Cosmos DB を初めて扱う方や Cosmos DB アカウントを持っていない方は、[使用の開始][getting-started]に関するページをご覧ください。
 >
 >
 
@@ -64,7 +65,7 @@ ms.lasthandoff: 03/07/2017
 ## <a name="Prerequisites"></a>前提条件
 このチュートリアルの手順を実行する前に、次のものを備えておく必要があります。
 
-* DocumentDB アカウント、データベース、およびドキュメントが含まれているコレクション 詳細については、[DocumentDB の使用][getting-started]に関するページをご覧ください。 [DocumentDB インポート ツール][documentdb-import-data]を使用して、DocumentDB アカウントにサンプル データをインポートします。
+* Cosmos DB アカウント、データベース、およびドキュメントが含まれているコレクション。 詳細については、[Cosmos DB の使用][getting-started]に関するページをご覧ください。 [Cosmos DB インポート ツール][documentdb-import-data]を使用して、Cosmos DB アカウントにサンプル データをインポートします。
 * スループット。 HDInsight の読み取りと書き込みは、コレクションに割り当てられた要求単位に達するまでカウントされます。
 * 各出力コレクションに含まれる追加のストアド プロシージャ用の容量。 ストアド プロシージャは、生成されたドキュメントを転送するために使用されます。
 * Hive、Pig、または MapReduce のジョブから生成されたドキュメント用の容量。
@@ -109,7 +110,7 @@ ms.lasthandoff: 03/07/2017
 8. 同じブレードで、**[既定のコンテナー]** と **[場所]** を指定します。 その後、 **[選択]**をクリックします。
 
    > [!NOTE]
-   > パフォーマンスを良くするために、DocumentDB アカウントのリージョンに近い場所を選択します。
+   > パフォーマンスを向上させるために、Cosmos DB アカウントのリージョンに近い場所を選択します
    >
    >
 9. **[料金]** をクリックし、ノードの数と種類を選択します。 既定の構成のままにしておいて、後でワーカー ノードの数を増減できます。
@@ -162,7 +163,7 @@ ms.lasthandoff: 03/07/2017
 
     ![図: Azure PowerShell][azure-powershell-diagram]
 
-## <a name="RunHive"></a>手順 3: DocumentDB と HDInsight を使用して Hive ジョブを実行する
+## <a name="RunHive"></a>手順 3: Cosmos DB と HDInsight を使用して Hive ジョブを実行する
 > [!IMPORTANT]
 > < > で囲まれている変数はすべて、構成設定を使用して入力する必要があります。
 >
@@ -182,7 +183,7 @@ ms.lasthandoff: 03/07/2017
     <p>まず、DocumentDB コレクションから Hive テーブルを作成します。 次のコード スニペットを PowerShell スクリプト ウィンドウの #1 から始まっているコード スニペットの<strong>後に</strong>追加します。 _ts および _rid だけにドキュメントをトリミングするためのオプションである DocumentDB.query パラメーターが含まれていることを確認してください。</p>
 
    > [!NOTE]
-   > **DocumentDB.inputCollections という名前は誤りではありません。** 次のように、複数のコレクションを&1; つの入力として追加することができます。 </br>
+   > **DocumentDB.inputCollections という名前は誤りではありません。** 次のように、複数のコレクションを 1 つの入力として追加することができます。 </br>
    >
    >
 
@@ -202,9 +203,9 @@ ms.lasthandoff: 03/07/2017
 1. 次に、出力コレクション用に Hive テーブルを作成します。 出力ドキュメントのプロパティは、月、日、時間、分、および発生した合計回数です。
 
    > [!NOTE]
-   > **ここでも、DocumentDB.outputCollections という名前は誤りではありません。** 次のように、複数のコレクションを&1; つの出力として追加することができます。 </br>
+   > **ここでも、DocumentDB.outputCollections という名前は誤りではありません。** 次のように、複数のコレクションを 1 つの出力として追加することができます。 </br>
    > '*DocumentDB.outputCollections*' = '*\<DocumentDB Output Collection Name 1\>*,*\<DocumentDB Output Collection Name 2\>*' </br> コレクション名は、間にスペースを入れずにコンマだけで区切ります。 </br></br>
-   > ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。 ドキュメントの&1; つ目のバッチが&1; つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
+   > ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。 ドキュメントの 1 つ目のバッチが 1 つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
    >
    >
 
@@ -263,7 +264,7 @@ ms.lasthandoff: 03/07/2017
 
    ![Hive クエリの結果][image-hive-query-results]
 
-## <a name="RunPig"></a>手順 4: DocumentDB と HDInsight を使用して Pig ジョブを実行する
+## <a name="RunPig"></a>手順 4: Cosmos DB と HDInsight を使用して Pig ジョブを実行する
 > [!IMPORTANT]
 > < > で囲まれている変数はすべて、構成設定を使用して入力する必要があります。
 >
@@ -277,17 +278,17 @@ ms.lasthandoff: 03/07/2017
         # Provide HDInsight cluster name where you want to run the Pig job.
         $clusterName = "Azure HDInsight Cluster Name"
 2. <p>クエリ文字列の作成から始めましょう。 作成する Pig クエリでは、DocumentDB コレクションからすべてのドキュメントのシステム生成のタイムスタンプ (_ts) と一意の ID (_rid) を取得し、すべてのドキュメントを分単位で集計して、その結果を新しい DocumentDB コレクションに格納します。</p>
-    <p>まず、DocumentDB から HDInsight にドキュメントを読み込みます。 次のコード スニペットを PowerShell スクリプト ウィンドウの #1 から始まっているコード スニペットの<strong>後に</strong>追加します。 _ts および _rid に合わせてドキュメントをトリミングするためのオプションの DocumentDB.query パラメーターが DocumentDB クエリに追加されていることを確認してください。</p>
+    <p>まず、Cosmos DB から HDInsight にドキュメントを読み込みます。 次のコード スニペットを PowerShell スクリプト ウィンドウの #1 から始まっているコード スニペットの<strong>後に</strong>追加します。 _ts および _rid に合わせてドキュメントをトリミングするためのオプションの DocumentDB.query パラメーターが DocumentDB クエリに追加されていることを確認してください。</p>
 
    > [!NOTE]
-   > 次のように、複数のコレクションを&1; つの入力として追加することができます。 </br>
+   > 次のように、複数のコレクションを 1 つの入力として追加することができます。 </br>
    > '*\<DocumentDB Input Collection Name 1\>*,*\<DocumentDB Input Collection Name 2\>*'</br> コレクション名は、間にスペースを入れずにコンマだけで区切ります。 </b>
    >
    >
 
-    ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。 ドキュメントの&1; つ目のバッチが&1; つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
+    ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。 ドキュメントの 1 つ目のバッチが 1 つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
 
-        # Load data from DocumentDB. Pass DocumentDB query to filter transferred data to _rid and _ts.
+        # Load data from Cosmos DB. Pass DocumentDB query to filter transferred data to _rid and _ts.
         $queryStringPart1 = "DocumentDB_timestamps = LOAD '<DocumentDB Endpoint>' USING com.microsoft.azure.documentdb.pig.DocumentDBLoader( " +
                                                         "'<DocumentDB Primary Key>', " +
                                                         "'<DocumentDB Database Name>', " +
@@ -302,13 +303,13 @@ ms.lasthandoff: 03/07/2017
 4. 最後に、その結果を新しい出力コレクションに格納します。
 
    > [!NOTE]
-   > 次のように、複数のコレクションを&1; つの出力として追加することができます。 </br>
+   > 次のように、複数のコレクションを 1 つの出力として追加することができます。 </br>
    > '\<DocumentDB Output Collection Name 1\>,\<DocumentDB Output Collection Name 2\>'</br> コレクション名は、間にスペースを入れずにコンマだけで区切ります。</br>
-   > ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。 ドキュメントの&1; つ目のバッチが&1; つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
+   > ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。 ドキュメントの 1 つ目のバッチが 1 つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
    >
    >
 
-        # Store output data to DocumentDB.
+        # Store output data to Cosmos DB.
         $queryStringPart3 = "STORE by_minute_count INTO '<DocumentDB Endpoint>' " +
                             "USING com.microsoft.azure.documentdb.pig.DocumentDBStorage( " +
                                 "'<DocumentDB Primary Key>', " +
@@ -361,7 +362,7 @@ ms.lasthandoff: 03/07/2017
         $TallyPropertiesJobDefinition = New-AzureHDInsightMapReduceJobDefinition -JarFile "wasb:///example/jars/TallyProperties-v01.jar" -ClassName "TallyProperties" -Arguments "<DocumentDB Endpoint>","<DocumentDB Primary Key>", "<DocumentDB Database Name>","<DocumentDB Input Collection Name>","<DocumentDB Output Collection Name>","<[Optional] DocumentDB Query>"
 
    > [!NOTE]
-   > TallyProperties-v01.jar は、DocumentDB Hadoop コネクタのカスタム インストールに付属しています。
+   > TallyProperties-v01.jar は、Cosmos DB Hadoop コネクタのカスタム インストールに付属しています。
    >
    >
 3. 次のコマンドを追加して、MapReduce ジョブを送信します。
@@ -383,8 +384,8 @@ ms.lasthandoff: 03/07/2017
 
    1. 左側ウィンドウの <strong>[参照]</strong> をクリックします。
    2. 参照ウィンドウの右上にある <strong>[すべて]</strong> をクリックします。
-   3. <strong>[DocumentDB アカウント]</strong> を見つけてクリックします。
-   4. 次に、自分の <strong>DocumentDB アカウント</strong>、<strong>DocumentDB データベース</strong>、MapReduce ジョブで指定した出力コレクションに関連付けられた <strong>DocumentDB コレクション</strong>を見つけます。
+   3. <strong>Cosmos DB アカウント</strong>を見つけてクリックします。
+   4. 次に、自分の <strong>Cosmos DB アカウント</strong>、<strong>Cosmos DB データベース</strong>、MapReduce ジョブで指定した出力コレクションに関連付けられた <strong>DocumentDB コレクション</strong>を見つけます。
    5. 最後に、<strong>[開発者ツール]</strong> の下にある <strong>[ドキュメント エクスプローラー]</strong> をクリックします。
 
       MapReduce ジョブの結果が表示されます。
@@ -392,7 +393,7 @@ ms.lasthandoff: 03/07/2017
       ![MapReduce クエリの結果][image-mapreduce-query-results]
 
 ## <a name="NextSteps"></a>次のステップ
-ご利用ありがとうございます。 Azure DocumentDB および HDInsight を使用して最初の Hive、Pig、および MapReduce ジョブを実行しました。
+ご利用ありがとうございます。 Azure Cosmos DB および HDInsight を使用して最初の Hive、Pig、および MapReduce ジョブを実行しました。
 
 Microsoft では Hadoop コネクタをオープン ソース化しています。 関心がある場合は、[GitHub][documentdb-github] に投稿できます。
 

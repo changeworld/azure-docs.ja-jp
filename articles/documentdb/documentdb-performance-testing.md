@@ -1,55 +1,56 @@
 ---
-title: "DocumentDB のスケールとパフォーマンスのテスト | Microsoft Docs"
-description: "Azure DocumentDB のスケールとパフォーマンスのテストを行う方法について説明します。"
+title: "Azure Cosmos DB のスケールとパフォーマンスのテスト | Microsoft Docs"
+description: "Azure Cosmos DB のスケールとパフォーマンスをテストする方法について説明します"
 keywords: "パフォーマンス テスト"
-services: documentdb
+services: cosmosdb
 author: arramac
 manager: jhubbard
 editor: 
 documentationcenter: 
 ms.assetid: f4c96ebd-f53c-427d-a500-3f28fe7b11d0
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2017
 ms.author: arramac
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 86bd591c26a58200dab9872e07e6e8bdf2522df9
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: d662af5fcd78d88b02e7f21c4d2d2c6add1270bc
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="performance-and-scale-testing-with-azure-documentdb"></a>Azure DocumentDB のパフォーマンスとスケールのテスト
-パフォーマンスとスケールのテストは、アプリケーション開発における重要なステップです。 データベース層は、多くのアプリケーションの全体的なパフォーマンスとスケーラビリティに大きく関係しており、パフォーマンス テストの重要な構成要素となっています。 [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) は、拡張の柔軟性とパフォーマンスの確実性を目指した専用設計になっているため、ハイパフォーマンスのデータベース層が求められるアプリケーションにとてもよく合います。 
+# <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Azure Cosmos DB のパフォーマンスとスケールのテスト
+パフォーマンスとスケールのテストは、アプリケーション開発における重要なステップです。 データベース層は、多くのアプリケーションの全体的なパフォーマンスとスケーラビリティに大きく関係しており、パフォーマンス テストの重要な構成要素となっています。 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) は、拡張の柔軟性とパフォーマンスの確実性を目指した専用設計になっているため、ハイパフォーマンスのデータベース層が求められるアプリケーションにとてもよく合います。 
 
-DocumentDB のワークロードに対するパフォーマンス テストを検討している開発者や、ハイパフォーマンス アプリケーション用のデータベースとして DocumentDB の評価を担当する開発者の方は、この記事をご参考ください。 データベースのパフォーマンス テストに主眼を置いた内容となっていますが、運用環境のアプリケーションに該当するベスト プラクティスも含まれています。
+Cosmos DB のワークロードに対するパフォーマンス テストを検討している開発者や、ハイパフォーマンス アプリケーション用のデータベースとして Cosmos DB の評価を担当する開発者の方は、この記事をご参考ください。 データベースのパフォーマンス テストに主眼を置いた内容となっていますが、運用環境のアプリケーションに該当するベスト プラクティスも含まれています。
 
 この記事を読むと、次の質問に回答できるようになります。   
 
-* Azure DocumentDB のパフォーマンス テストに使用するサンプル .NET クライアント アプリケーションはどこから入手すればよいか。 
-* 開発中のクライアント アプリケーションで Azure DocumentDB から高水準のスループットを引き出すにはどうすればよいか。
+* Cosmos DB のパフォーマンス テストに使用するサンプル .NET クライアント アプリケーションはどこから入手すればよいか。 
+* 開発中のクライアント アプリケーションで Cosmos DB から高水準のスループットを引き出すにはどうすればよいか。
 
-最初に、[DocumentDB Performance Testing サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)からプロジェクトをダウンロードしてコードを入手してください。 
+最初に、[Azure Cosmos DB Performance Testing サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)からプロジェクトをダウンロードしてコードを入手してください。 
 
 > [!NOTE]
-> このアプリケーションの目的は、クライアント マシンの数が少ない場合に DocumentDB のパフォーマンスを高めるためのベスト プラクティスを示すことです。 サービスのピーク時容量を示すためのものではありません。ピーク キャパシティについては、無制限に拡張することが可能です。
+> このアプリケーションの目的は、クライアント マシンの数が少ない場合に Cosmos DB のパフォーマンスを高めるためのベスト プラクティスを示すことです。 サービスのピーク時容量を示すためのものではありません。ピーク キャパシティについては、無制限に拡張することが可能です。
 > 
 > 
 
-DocumentDB のパフォーマンスを向上させるためのクライアント側の構成オプションについては、 [DocumentDB のパフォーマンスに関するヒント](documentdb-performance-tips.md)に関する記事を参照してください。
+Cosmos DB のパフォーマンスを向上させるためのクライアント側の構成オプションについては、[Cosmos DB のパフォーマンスに関するヒント](documentdb-performance-tips.md)に関する記事を参照してください。
 
 ## <a name="run-the-performance-testing-application"></a>パフォーマンス テスト アプリケーションの実行
 まずは以下の手順に従って、.NET サンプルをコンパイルして実行してみましょう。 ソース コードに目を通して、同様の構成を独自のクライアント アプリケーションに実装することもできます。
 
-**手順 1:** [DocumentDB Performance Testing サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)からプロジェクトをダウンロードするか、GitHub リポジトリをフォークします。
+**手順 1:** [Azure Cosmos DB Performance Testing サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)からプロジェクトをダウンロードするか、GitHub リポジトリをフォークします。
 
 **手順 2:** App.config で EndpointUrl、AuthorizationKey、CollectionThroughput、DocumentTemplate (任意) の設定を変更します。
 
 > [!NOTE]
-> 高スループットでコレクションをプロビジョニングすることになるので、事前に[料金に関するページ](https://azure.microsoft.com/pricing/details/documentdb/)でコレクションあたりのコストを見積もってください。 DocumentDB では、記憶域とスループットが別々に時間単位で課金されます。そのためテスト後に DocumentDB コレクションのスループットを下げるかコレクションを削除することでコストを節約できます。
+> 高スループットでコレクションをプロビジョニングすることになるので、事前に[料金に関するページ](https://azure.microsoft.com/pricing/details/documentdb/)でコレクションあたりのコストを見積もってください。 Cosmos DB では、記憶域とスループットが別々に時間単位で課金されます。そのためテスト後に DocumentDB コレクションのスループットを下げるかコレクションを削除することでコストを節約できます。
 > 
 > 
 
@@ -104,14 +105,14 @@ DocumentDB のパフォーマンスを向上させるためのクライアント
 アプリの稼働後は、さまざまな[インデックス作成ポリシー](documentdb-indexing-policies.md)と[一貫性レベル](documentdb-consistency-levels.md)を試しながら、スループットや待機時間への影響を把握することができます。 ソース コードに目を通して、同様の構成を独自のテスト スイートや実稼働アプリケーションに実装することもできます。
 
 ## <a name="next-steps"></a>次のステップ
-この記事では、.NET コンソール アプリを使用して DocumentDB でパフォーマンスとスケールのテストを実行する方法を説明しました。 DocumentDB の操作について詳しくは、以下のリンクを参照してください。
+この記事では、.NET コンソール アプリを使用して Cosmos DB でパフォーマンスとスケールのテストを実行する方法を説明しました。 Cosmos DB の操作の詳細については、以下のリンクを参照してください。
 
-* [DocumentDB パフォーマンス テスト サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)
-* [DocumentDB のパフォーマンスを向上させるクライアント構成オプション](documentdb-performance-tips.md)
-* [DocumentDB でのサーバー側のパーティション分割](documentdb-partition-data.md)
+* [Azure Cosmos DB パフォーマンス テスト サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)
+* [Azure Cosmos DB のパフォーマンスを向上させるクライアント構成オプション](documentdb-performance-tips.md)
+* [Azure Cosmos DB でのサーバー側のパーティション分割](documentdb-partition-data.md)
 * [DocumentDB のコレクションとパフォーマンス レベル](documentdb-performance-levels.md)
 * [MSDN の DocumentDB .NET SDK に関するドキュメント](https://msdn.microsoft.com/library/azure/dn948556.aspx)
 * [DocumentDB .NET のサンプル](https://github.com/Azure/azure-documentdb-net)
-* [パフォーマンスに関するヒントについての DocumentDB ブログ](https://azure.microsoft.com/blog/2015/01/20/performance-tips-for-azure-documentdb-part-1-2/)
+* [パフォーマンスに関するヒントについての Azure Cosmos DB ブログ](https://azure.microsoft.com/blog/2015/01/20/performance-tips-for-azure-documentdb-part-1-2/)
 
 
