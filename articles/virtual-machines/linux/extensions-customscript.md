@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: nepeters
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 16d04d0f470dde3917f5a12f527ecceb493b2a57
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 89001404fa7255efc656b98983502d1f1d84fd73
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -34,6 +34,8 @@ ms.lasthandoff: 04/27/2017
 ### <a name="public-configuration"></a>パブリック構成
 スキーマ:
 
+**注記** - これらのプロパティ名では大文字と小文字が区別されます。 デプロイに関する問題を回避するために下記のような名前を使用します。
+
 * **commandToExecute**: (必須、文字列) 実行するエントリ ポイント スクリプト
 * **fileUris**: (省略可能、文字列の配列) ダウンロードするファイルの URL。
 * **timestamp** : (省略可能、整数) このフィールドの値を変更してスクリプトの再実行をトリガーする場合にだけ、このフィールドを使用します。
@@ -47,6 +49,8 @@ ms.lasthandoff: 04/27/2017
 
 ### <a name="protected-configuration"></a>保護された構成
 スキーマ:
+
+**注記** - これらのプロパティ名では大文字と小文字が区別されます。 デプロイに関する問題を回避するために下記のような名前を使用します。
 
 * **commandToExecute**: (省略可能、文字列) 実行するエントリ ポイント スクリプト。 コマンドにパスワードなどの機密情報が含まれている場合は、代わりにこのフィールドを使用します。
 * **storageAccountName**: (省略可能、文字列) ストレージ アカウントの名前。 ストレージの資格情報を指定する場合は、すべての fileUris が Azure BLOB の URL である必要があります。

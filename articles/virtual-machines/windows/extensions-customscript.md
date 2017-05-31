@@ -15,10 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/17/2017
 ms.author: nepeters
-translationtype: Human Translation
-ms.sourcegitcommit: bd67dc463daee2d7763e722f079930d8712fe478
-ms.openlocfilehash: 81a08a3cbd14c4a61efe68d9dd9fcd032dd1e1cd
-ms.lasthandoff: 02/23/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 957fb7bf1bd646ae5e4d27350502bdf14b0f00c3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -91,6 +92,8 @@ Windows 用のカスタム スクリプト拡張機能では、ターゲット�
 | storageAccountName (例) | examplestorageacct |
 | storageAccountKey (例) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== |
 
+**注記** - これらのプロパティ名では大文字と小文字が区別されます。 デプロイに関する問題を回避するために上記のような名前を使用します。
+
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 
 Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 前のセクションで詳しく説明した JSON スキーマを Azure Resource Manager テンプレートで使用すると、Azure Resource Manager テンプレートのデプロイ時にカスタム スクリプト拡張機能を実行できます。 カスタム スクリプト拡張機能を含むサンプル テンプレートは、[GitHub](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows) で入手できます。
@@ -126,7 +129,7 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.Compute.CustomScriptExtension
 ```cmd
 C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads\<n>
 ```
-`<n>` は&10; 進整数であり、拡張機能の実行間で変わる可能性があります。  `1.*` 値は、拡張機能の実際の現在の `typeHandlerVersion` 値と一致します。  たとえば、実際のディレクトリは、`C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2` になります。  
+`<n>` は 10 進整数であり、拡張機能の実行間で変わる可能性があります。  `1.*` 値は、拡張機能の実際の現在の `typeHandlerVersion` 値と一致します。  たとえば、実際のディレクトリは、`C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2` になります。  
 
 `commandToExecute` コマンドを実行すると、拡張機能によってこのディレクトリ (例: `...\Downloads\2`) が現在の作業ディレクトリとして設定されます。 これにより、`fileURIs` プロパティを使用してダウンロードされたファイルを見つけるときに相対パスを使用できます。 例については、下記の表を参照してください。
 
@@ -144,7 +147,7 @@ C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads\<n>
 | `https://someAcct.blob.core.windows.net/aContainer/scripts/myscript.ps1` | `./scripts/myscript.ps1` |`C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2\scripts\myscript.ps1`  |
 | `https://someAcct.blob.core.windows.net/aContainer/topLevel.ps1` | `./topLevel.ps1` | `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2\topLevel.ps1` |
 
-\* 上記のように、絶対ディレクトリ パスは VM の有効期間中に変わりますが、CustomScript 拡張機能の&1; 回の実行中に変わることはありません。
+\* 上記のように、絶対ディレクトリ パスは VM の有効期間中に変わりますが、CustomScript 拡張機能の 1 回の実行中に変わることはありません。
 
 ### <a name="support"></a>サポート
 

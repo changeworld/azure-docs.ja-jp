@@ -11,17 +11,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 2/15/2017
+ms.date: 5/10/2017
 ms.author: chackdan;maburlik
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: a09ee1955717d7e042c1df3382c4cecd40069e3a
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 54fa2a5ea9bd54add6df68db6ce492299ca94207
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/11/2017
 
 
 ---
 
-# <a name="package-contents-of-service-fabric-standalone-package-for-windows-server"></a>Windows Server 用の Service Fabric スタンドアロン パッケージの内容
+# <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>Windows Server 用の Service Fabric スタンドアロン パッケージの内容
 [ダウンロードした](http://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric スタンドアロン パッケージには、次のファイルが含まれています。
 
 | **ファイル名** | **簡単な説明** |
@@ -37,6 +38,8 @@ ms.lasthandoff: 03/29/2017
 | EULA_ENU.txt |Microsoft Azure Service Fabric のスタンドアロン Windows Server パッケージの使用に関するライセンス条項。 [使用許諾契約書のコピーのダウンロード](http://go.microsoft.com/fwlink/?LinkID=733084) ができるようになりました。 |
 | Readme.txt |リリース ノートや基本的なインストール手順へのリンク。 このドキュメントに記載の説明も一部含まれています。 |
 | ThirdPartyNotice.rtf |パッケージに同梱されるサードパーティ製ソフトウェアに関する注意。 |
+| Tools\Microsoft.Azure.ServiceFabric.WindowsServer.SupportPackage.zip |必要に応じて実行され、サポートのためにトレース ログを収集して Microsoft にアップロードする StandaloneLogCollector.exe。 |
+| Tools\ServiceFabricUpdateService.zip |インターネットにアクセスできないクラスターのコードの自動アップグレードを有効にするために使用するツールです。 詳細については、 [こちら](service-fabric-cluster-upgrade-windows-server.md)|
 
 **テンプレート** 
 | **ファイル名** | **簡単な説明** |
@@ -49,7 +52,7 @@ ms.lasthandoff: 03/29/2017
 | ClusterConfig.x509.MultiMachine.json |クラスター構成サンプル ファイル。複数のマシン (仮想マシン) を持つ、セキュリティ保護されたクラスターのすべての設定 (セキュリティ保護されたクラスター内の各ノードの情報を含む) が含まれています。 クラスターは x509 証明書を使用して保護されます。 |
 | ClusterConfig.gMSA.Windows.MultiMachine.json |クラスター構成サンプル ファイル。複数のマシン (仮想マシン) を持つ、セキュリティ保護されたクラスターのすべての設定 (セキュリティ保護されたクラスター内の各ノードの情報を含む) が含まれています。 クラスターは、[グループ管理サービス アカウント](https://technet.microsoft.com/en-us/library/jj128431(v=ws.11).aspx)を使用して保護されます。 |
 
-# <a name="cluster-configuration-samples"></a>クラスター構成の例
+## <a name="cluster-configuration-samples"></a>クラスター構成の例
 クラスター構成テンプレートの最新バージョンは次の GitHub ページにあります。[スタンドアロン クラスター構成のサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)
 
 ## <a name="related"></a>関連項目

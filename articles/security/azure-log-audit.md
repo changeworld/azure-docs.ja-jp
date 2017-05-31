@@ -16,18 +16,18 @@ ms.workload: na
 ms.date: 04/27/2017
 ms.author: TomSh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: df1778b6a3e74d79e55dcc18c4faff7944063a2f
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 9e5c929251259a86944121e504dc033bc99e3bc4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
 # <a name="azure-logging-and-auditing"></a>Azure のログと監査
-## <a name="10-introduction"></a>1.0 はじめに
-### <a name="11-overview"></a>1.1 概要
+## <a name="introduction"></a>はじめに
+### <a name="overview"></a>概要
 Azure の現在の利用者と今後の利用予定者が、Azure プラットフォーム内やその周辺で提供されるさまざまなセキュリティ関連機能について理解し、使用できるように、Microsoft は一連のホワイト ペーパー、セキュリティ概要、ベスト プラクティス、およびチェックリストを作成しました。 このトピックの内容は広範囲かつ詳細であることから定期的に更新されています。 このドキュメントは、次の要約のセクションで概要を示した一連の内容の一部です。
-### <a name="12-azure-platform"></a>1.2 Azure プラットフォーム
+### <a name="azure-platform"></a>Azure プラットフォーム
 Azure は、オペレーティング システム、プログラミング言語、フレームワーク、ツール、データベース、デバイスにおいて最も幅広い選択肢をサポートするオープンで柔軟なクラウド サービス プラットフォームです。
 
 たとえば、次のようなことができます。
@@ -43,7 +43,7 @@ IT 資産を構築し、クラウド プロバイダーに移行したとしま�
 
 Azure のインフラストラクチャでは、数百万の顧客を同時にホストできるように施設からアプリケーションまでが設計されており、ビジネスのセキュリティ ニーズを満たす信頼性の高い基盤となっています。 また、Azure には構成可能な幅広いセキュリティ オプションが用意されており、デプロイの独自の要件を満たすようにセキュリティをカスタマイズできます。 このドキュメントはこれらの要件を満たす上で役立ちます。
 
-### <a name="13-abstract"></a>1.3 要約
+### <a name="abstract"></a>要約
 セキュリティ関連のイベントの監査とログは、警告と並んで効果が高く、データ保護戦略において重要な構成要素です。 セキュリティのログやレポートは、疑わしいアクティビティの電子記録となり、外部からネットワークへの侵入または内部からの攻撃が試みられたこと、または成功したことを示すパターンを検出するために役立ちます。 監査機能を使うと、ユーザーのアクティビティの監視、規制へのコンプライアンスの文書化、フォレンジック分析などが可能になります。 警告機能によって、セキュリティ イベントが発生すると直ちに通知されます。
 
 Microsoft Azure のサービスや製品が提供する構成可能なセキュリティ監査およびログのオプションは、セキュリティ ポリシーやセキュリティ メカニズムのギャップを識別してセキュリティ侵害を防止するための対策を講じる上で役立ちます。 Microsoft のサービスは、一元的な監視、ログ記録、継続的な可視性を提供する分析システムや、タイムリーな警告およびレポートなどのオプションをいくつか (場合によってはすべて) 提供することで、デバイスやサービスによって生成される大量の情報を管理するのに役立ちます。
@@ -55,7 +55,7 @@ Microsoft Azure のログ データは、分析やサード パーティー製�
 > [!Note]
 > ここに含まれる特定の推奨事項により、データ、ネットワーク、またはコンピューティング リソースの使用量が増え、ライセンスまたはサブスクリプション コストが増加する可能性があります。
 
-## <a name="20-types-of-logs-in-azure"></a>2.0 Azure のログのタイプ
+## <a name="types-of-logs-in-azure"></a>Azure のログのタイプ
 クラウド アプリケーションは、動的なパーツを多数使った複雑な構成になっています。 ログでは、アプリケーションを正常な状態で稼働させ続けるためのデータを取得できます。 また、潜在的な問題を防止したり、発生した問題をトラブルシューティングするのにも役立ちます。 さらに、ログ データを使用して、アプリケーションに関する深い洞察を得ることもできます。 そのような知識は、アプリケーションのパフォーマンスや保守容易性を向上させたり、手作業での介入が必要な操作を自動化したりするうえで役立ちます。
 
 Azure サービスでは、すべてのサービスの広範なログ記録を作成します。 これらのログは、主に次のタイプに分類されます。
@@ -79,7 +79,7 @@ Azure サービスでは、すべてのサービスの広範なログ記録を�
 |[Application Insight](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-overview)|ログ、例外、カスタム診断|    複数のプラットフォームの Web 開発者向けのアプリケーション パフォーマンス管理 (APM) サービスです。|    REST API、[Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-azure-and-power-bi/)|
 |データの処理/セキュリティ アラート|    Azure Security Center アラート、OMS アラート|    セキュリティに関する情報と警告。|     REST API、JSON|
 
-### <a name="21-activity-log"></a>2.1 アクティビティ ログ
+### <a name="activity-log"></a>アクティビティ ログ
 [Azure アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)では、サブスクリプションのリソースに対して実行された操作を調査できます。 アクティビティ ログではサブスクリプションの[コントロールプレーン イベント](https://driftboatdave.com/2016/10/13/azure-auditing-options-for-your-custom-reporting-needs/)が報告されるため、以前は "監査ログ" または "操作ログ" と呼ばれていました。 アクティビティ ログを使用すると、サブスクリプションのリソースに対して発生する書き込み操作 (PUT、POST、DELETE) すべてについて、"いつ誰が何を" 行ったのかを確認できます。 さらに、操作の状態など、重要性の大きなプロパティを確認することもできます。 アクティビティ ログには、読み取り (GET) 操作は含まれません。
 
 ここで、PUT、POST、DELETE は、リソースのアクティビティ ログに含まれているあらゆる書き込み操作を参照します。 たとえば、アクティビティ ログを使用して、トラブルシューティングを行うときにエラーを探したり、組織のユーザーがどのようにリソースを変更したかを監視したりできます。
@@ -105,7 +105,7 @@ Azure Portal、[CLI](https://docs.microsoft.com/azure/storage/storage-azure-cli)
 -    ログ プロファイルを使用して、アクティビティ ログを [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) にエクスポートする。
 
 ログを出力するサブスクリプションとは別のサブスクリプションで、ストレージ アカウントまたは [Event Hub 名前空間](https://docs.microsoft.com/azure/event-hubs/event-hubs-resource-manager-namespace-event-hub-enable-archive)を使用できます。 設定を構成するユーザーは、両方のサブスクリプションに対して適切な [RBAC](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) へのアクセス権を持っている必要があります。
-### <a name="22-azure-diagnostic-logs"></a>2.2 Azure 診断ログ
+### <a name="azure-diagnostic-logs"></a>Azure 診断ログ
 Azure 診断ログはリソースによって出力され、そのリソースの操作に関する豊富なデータを提供します。 これらのログの内容は、リソースのタイプによって異なります (たとえば、[Windows イベント システム ログ](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-windows-events)は、VM の診断ログのカテゴリの 1 つであり、[BLOB ログ、Table ログ、Queue ログ](https://docs.microsoft.com/azure/storage/storage-monitor-storage-account)は、ストレージ アカウントの診断ログのカテゴリです)。また、診断ログは、サブスクリプションのリソースに対して実行された操作に関する洞察が得られるアクティビティ ログとは異なります。
 
 ![Azure 診断ログ](./media/azure-log-audit/azure-log-audit-fig2.png)
@@ -148,7 +148,7 @@ Azure 診断ログは、PowerShell、コマンド ライン インターフェ�
 |||Microsoft.StreamAnalytics/streamingjobs|作成|
 |Service Bus|[Azure Service Bus の診断ログ](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-diagnostic-logs)|Microsoft.ServiceBus/namespaces|OperationalLogs|
 
-### <a name="23-azure-active-directory-reporting"></a>2.3 Azure Active Directory レポート
+### <a name="azure-active-directory-reporting"></a>Azure Active Directory レポート
 Azure Active Directory (Azure AD) には、ディレクトリに関するセキュリティ レポート、アクティビティ レポート、および監査レポートが含まれています。 [Azure Active Directory 監査レポート](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-guide)を利用すると、Azure Active Directory で発生した特権アクションを識別できます。 特権アクションとしては、昇格の変更 (例: ロールの作成、パスワードのリセット)、ポリシー構成の変更 (例: パスワード ポリシー)、ディレクトリ構成の変更 (例: ドメインのフェデレーション設定の変更) などがあります。
 
 レポートでは、イベント名、アクションを実行したアクター、変更によって影響を受けた対象リソース、日時 (UTC) に関する監査レコードが提供されます。 [監査ログの表示](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal)に関するページに説明されているように、[Azure Portal](https://portal.azure.com/) を使用して Azure Active Directory に対する監査イベントのリストを取得できます。 含まれているレポートの一覧を次に示します。
@@ -174,7 +174,7 @@ Azure AD の監査レポートのイベントは、180 日間保持されます�
 
 監査イベントを長期間保存する場合は、Reporting API を使用して[監査イベント](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-audit-events)を定期的に別のデータ ストアにプルできます。
 
-### <a name="24-virtual-machine-logs-using-azure-diagnostics"></a>2.4 Azure 診断を使用する仮想マシン ログ
+### <a name="virtual-machine-logs-using-azure-diagnostics"></a>Azure 診断を使用した仮想マシン ログ
 [Azure 診断](https://docs.microsoft.com/azure/azure-diagnostics)は、デプロイされたアプリケーションで診断データを収集できるようにする Azure 内の機能です。 さまざまなソースで診断拡張機能を使用することができます。 現在サポートされているのは、[Azure Cloud Service の Web ロールおよび Worker ロール](https://docs.microsoft.com/azure/cloud-services/cloud-services-choose-me)、
 
 ![Azure 診断を使用した仮想マシン ログ](./media/azure-log-audit/azure-log-audit-fig3.png)
@@ -191,7 +191,7 @@ Microsoft Windows および [Service Fabric](https://docs.microsoft.com/azure/se
 
 -    [Azure Resource Manager テンプレートを使用して監視および診断を含む Windows 仮想マシンを登録する](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-### <a name="25-storage-analytics"></a>2.5 Storage Analytics
+### <a name="storage-analytics"></a>Storage Analytics
 [Azure Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) では、ログが記録され、ストレージ アカウントのメトリック データを得ることができます。 このデータを使用して、要求のトレース、使用傾向の分析、ストレージ アカウントの問題の診断を行うことができます。 Storage Analytics Logging は、[BLOB、Queue、Table の各サービス](https://docs.microsoft.com/azure/storage/storage-introduction)で使用できます。 Storage Analytics は、ストレージ サービスに対する要求の成功と失敗についての詳細な情報をログに記録します。
 
 この情報を使って個々の要求を監視したり、ストレージ サービスに関する問題を診断したりできます。 要求は、ベスト エフォートでログに記録されます。 ログ エントリが作成されるのは、サービス エンドポイントに対して行われた要求がある場合に限られます。 たとえば、ストレージ アカウントの BLOB エンドポイントにはアクティビティが存在するが、Table エンドポイントや Queue エンドポイントにはアクティビティが存在しない場合、Blob service に関連したログだけが作成されます。
@@ -220,7 +220,7 @@ Storage Analytics を使用するには、監視するサービスごとに Stor
 |     データの分析要求 |     エラー コード 304 (変更されていません) で失敗した GET 要求 |
 | Storage Analytics そのものによる要求 (ログの作成/削除など) は記録されません。 ログに記録されるデータの一覧については、「[Storage Analytics によって記録される操作およびステータス メッセージ](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages)」および「[Storage Analytics のログの形式](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format)」をご覧ください。 | その他の失敗した匿名要求は一切記録されません。 ログに記録されるデータの全一覧については、「[Storage Analytics によって記録される操作やステータス メッセージ](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages)」および「[Storage Analytics のログの形式](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format)」を参照してください。 |
 
-### <a name="26-azure-networking-logs"></a>2.6 Azure のネットワーク ログ
+### <a name="azure-networking-logs"></a>Azure のネットワーク ログ
 Azure でのネットワーク ログおよび監視が指す意味は広く、大まかに次の 2 つのカテゴリを対象としています。
 
 -    [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher) - シナリオベースのネットワーク監視は、Network Watcher の機能を使用して実現できます。 このサービスには、パケット キャプチャ、次のホップ、IP フロー検証、セキュリティ グループ ビュー、NSG フロー ログなどが搭載されています。 シナリオ レベルの監視では、個別のネットワーク リソースの監視とは対照的に、ネットワーク リソースを隅から隅まで確認できます。
@@ -233,7 +233,7 @@ Network Watcher は地域サービスであり、ネットワーク シナリオ
 
 **NSG フロー ログ** - ネットワーク セキュリティ グループのフロー ログにより、そのグループのセキュリティ規則で許可または拒否されるトラフィックに関係するログを記録できます。 これらのフローのログは JSON 形式で記述され、ルールごとの送信フローと受信フロー、フローが適用される NIC、フローに関する 5 タプル情報 (送信元/宛先 IP、送信元/宛先ポート、プロトコル)、トラフィックが許可されているか拒否されているかが示されます。
 
-### <a name="27-network-security-group-flow-logging"></a>2.7 ネットワーク セキュリティ グループのフロー ログ
+### <a name="network-security-group-flow-logging"></a>ネットワーク セキュリティ グループのフロー ログ
 
 [ネットワーク セキュリティ グループのフローのログ](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)は、ネットワーク セキュリティ グループを使用した受信および送信 IP トラフィックに関する情報を表示できる Network Watcher の機能です。 これらのフローのログは JSON 形式で記述され、ルールごとの送信フローと受信フロー、フローが適用される NIC、フローに関する 5 タプル情報 (送信元/宛先 IP、送信元/宛先ポート、プロトコル)、トラフィックが許可されているか拒否されているかが示されます。
 
@@ -267,7 +267,7 @@ Network Watcher には診断ログ ビューが用意されています。 こ�
 
 -    [ネットワーク サブスクリプションの制限](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-subscription-limits) - ネットワーク リソースの使用状況を制限と照らし合わせて確認できます。
 
-### <a name="28-application-insight"></a>2.8 Application Insight
+### <a name="application-insight"></a>Application Insight
 
 [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中の Web アプリケーションを監視することができます。 パフォーマンスに異常があると、自動的に検出されます。 組み込まれている強力な分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。
 
@@ -315,7 +315,7 @@ Application Insights は、開発チーム用のツールであり、アプリ�
 |[REST API](https://dev.applicationinsights.io/)|メトリックと生データのクエリを実行するコードを記述します。||
 |[連続エクスポート](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-export-telemetry)|生データが届いたらストレージに一括エクスポートします。||
 
-### <a name="29-azure-security-center-alerts"></a>2.9 Azure Security Center のアラート
+### <a name="azure-security-center-alerts"></a>Azure Security Center のアラート
 [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) は、真の脅威を検出し、誤検知を減らすために、Azure のリソースやネットワークのほか、接続されているパートナー ソリューション (ファイアウォールやエンドポイント保護ソリューションなど) から、自動的にログ データを収集、分析、統合します。 Security Center には、優先順位の付いたセキュリティの警告の一覧が表示されます。また、すぐに問題を調査する必要がある情報や、攻撃を受けたものを修復する方法についての推奨事項も表示されます。
 
 Security Center の脅威検出は、Azure のリソースやネットワーク、接続されているパートナー ソリューションからセキュリティ情報を自動的に収集することによって機能します。 この情報を分析し、ときには複数の情報源から得た情報との関連性を探りながら、脅威を特定します。 Security Center では、セキュリティの警告に優先順位が、脅威に対処するための推奨事項と共に割り当てられます。
@@ -334,7 +334,7 @@ Security Center には、シグネチャ ベースの手法とは比較になら
 セキュリティ操作およびインシデント対応チームの多くが、セキュリティ情報イベント管理 (SIEM) ソリューションを、セキュリティ警告のトリアージと調査の開始点として使用します。 Azure ログ統合により、お客様は、Security Center の警告を、Azure 診断および Azure 監査ログによって収集された仮想マシンのセキュリティ イベントと共に、ログ分析または SIEM ソリューションとほぼリアルタイムで同期させることができます。
 
 
-## <a name="30-log-analytics"></a>3.0 Log Analytics
+## <a name="log-analytics"></a>Log Analytics
 
 Log Analytics は、[Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) のサービスであり、クラウドおよびオンプレミスの環境内にあるリソースで生成されたデータを収集して分析するのに役立ちます。 統合検索とカスタム ダッシュボードによるリアルタイムの洞察が得られるため、物理的な場所に関係なくワークロードおよびサーバー全体の無数のレコードをただちに分析できます。
 
@@ -388,7 +388,7 @@ Log Analytics の核となる機能は、Azure クラウドでホストされて
 ||Microsoft.Web/<br>sites/<br>slots|||||
 
 
-## <a name="40-log-integration-with-on-premises-siem-systems"></a>4.0 オンプレミスの SIEM システムとのログ統合
+## <a name="log-integration-with-on-premises-siem-systems"></a>オンプレミスの SIEM システムとのログ統合
 [Azure ログ統合](https://www.microsoft.com/download/details.aspx?id=53324)を使用すると、未加工のログを、Azure リソースからオンプレミスの**セキュリティ情報イベント管理 (SIEM) システム**に統合できます。
 
 ![ログ統合](./media/azure-log-audit/azure-log-audit-fig9.png)

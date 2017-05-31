@@ -1,6 +1,6 @@
 ---
 title: "動作保証済み Linux ディストリビューション | Microsoft Docs"
-description: "Azure での動作保証済み Linux ディストリビューションについて、Ubuntu、OpenLogic、Oracle、および SUSE に関する指針も含めて、説明します。"
+description: "Azure での動作保証済み Linux ディストリビューションについて、Ubuntu、CentOS、Oracle、および SUSE に関する指針も含めて、説明します。"
 services: virtual-machines-linux
 documentationcenter: 
 author: szarkos
@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 3a9edce4b8e7208579ee810ad40a65b22db20cac
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 0fbbf4aacd22f0458b82adcf4335890fbf5ec628
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -41,7 +42,7 @@ Azure Linux エージェントは、Azure ギャラリーのイメージにあ�
 
 | ディストリビューション | バージョン | ドライバー | エージェント |
 | --- | --- | --- | --- |
-| CentOS by OpenLogic |CentOS 6.3+、7.0+ |CentOS 6.3: [LIS のダウンロード](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409)<p>CentOS 6.4 以上、カーネル内。 |パッケージ: [OpenLogic リポジトリ](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/)内の "WALinuxAgent" <br/>ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| Rogue Wave Software (以前の OpenLogic) の CentOS |CentOS 6.3+、7.0+ |CentOS 6.3: [LIS のダウンロード](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409)<p>CentOS 6.4 以上、カーネル内。 |パッケージ: [リポジトリ](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/)内の "WALinuxAgent" <br/>ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |カーネル内 |ソース コード: [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
 | Debian |Debian 7.9+、8.2+ |カーネル内 |パッケージ: リポジトリ内の "waagent"  <br/>ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Oracle Linux |6.4+、7.0+ |カーネル内 |パッケージ: リポジトリ内の "WALinuxAgent"  <br/>ソース コード: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998) |
@@ -51,10 +52,6 @@ Azure Linux エージェントは、Azure ギャラリーのイメージにあ�
 | Ubuntu |Ubuntu 12.04、14.04、16.04、16.10 |カーネル内 |パッケージ: リポジトリ内の "WALinuxAgent"  <br/>ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent) |
 
 ## <a name="partners"></a>パートナー
-### <a name="openlogic"></a>OpenLogic
-[http://www.openlogic.com/azure](http://www.openlogic.com/azure)
-
-OpenLogic は、クラウドおよびデータ センター向けの企業オープン ソース ソリューションの一流プロバイダーです。 OpenLogic は、多種多様な業界の一流企業数百社に対して、オープン ソース ソフトウェアを安全に入手し、サポートし、コントロールできるよう支援しています。 OpenLogic は、600 種類のオープン ソース パッケージについて、OpenLogic Expert Community に支えられた商用品質のテクニカル サポートと保証を提供しています。たとえば、CentOS を企業レベルでサポートし、Azure に CentOS ベースのイメージを提供する開設時パートナー様でもあります。
 
 ### <a name="coreos"></a>CoreOS
 [https://coreos.com/docs/running-coreos/cloud-providers/azure/](https://coreos.com/docs/running-coreos/cloud-providers/azure/)

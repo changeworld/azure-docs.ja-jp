@@ -1,7 +1,7 @@
 ---
-title: "DocumentDB との間でのデータの移動 | Microsoft Docs"
-description: "Azure Data Factory を使用して Azure DocumentDB コレクションに、または Azure DocumentDB コレクションからデータを移動する方法を説明します。"
-services: data-factory, documentdb
+title: "Azure Cosmos DB との間でのデータの移動 | Microsoft Docs"
+description: "Azure Data Factory を使って Azure Cosmos DB コレクションに、または Azure Cosmos DB コレクションからデータを移動する方法を説明します"
+services: data-factory, cosmosdb
 documentationcenter: 
 author: linda33wj
 manager: jhubbard
@@ -12,28 +12,28 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/19/2017
+ms.date: 05/11/2017
 ms.author: jingwang
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: d5e13e6a96828e7c303e4d870ee170b90a0c4308
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: f665ff5ca345d96bac9b51c3c798874e55738a62
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/11/2017
 
 
 ---
-# <a name="move-data-to-and-from-documentdb-using-azure-data-factory"></a>Azure Data Factory を使用した DocumentDB との間でのデータの移動
-この記事では、Azure Data Factory のコピー アクティビティを使って、Azure DocumentDB との間でデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。 
+# <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Cosmos DB との間でのデータの移動
+この記事では、Azure Data Factory のコピー アクティビティを使って、Azure Cosmos DB (DocumentDB API) との間でデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。 
 
-サポートされる任意のソース データ ストアのデータを、Azure DocumentDB にコピーしたり、Azure DocumentDB のデータを、サポートされる任意のシンク データ ストアにコピーすることができます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関するページの表をご覧ください。 
+サポートされる任意のソース データ ストアのデータを、Azure Cosmos DB にコピーしたり、Azure Cosmos DB のデータを、サポートされる任意のシンク データ ストアにコピーすることができます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関するページの表をご覧ください。 
 
-> [!NOTE]
-> オンプレミス/Azure IaaS データ ストアと Azure DocumentDB 間でのデータのコピーは、Data Management Gateway バージョン 2.1 以降でサポートされています。
+> [!IMPORTANT]
+> Azure Cosmos DB コネクタは DocumentDB API のみをサポートします。
 
-## <a name="supported-versions"></a>サポートされているバージョン
-この DocumentDB コネクタでは、DocumentDB の単一パーティション コレクションとパーティション分割コレクションとの間のデータのコピーをサポートします。 [MongoDB 用 DocDB](../documentdb/documentdb-protocol-mongodb.md) はサポートされていません。 JSON ファイルまたは他の DocumentDB コレクションとの間でデータをそのままコピーするには、「[JSON ドキュメントのインポート/エクスポート](#importexport-json-documents)」を参照してください。
+JSON ファイルまたは他の Cosmos DB コレクションとの間でデータをそのままコピーするには、「[JSON ドキュメントのインポート/エクスポート](#importexport-json-documents)」を参照してください。
 
 ## <a name="getting-started"></a>使用の開始
-さまざまなツール/API を使用して、Azure DocumentDB との間でデータを移動するコピー アクティビティを含むパイプラインを作成できます。
+さまざまなツール/API を使って、Azure Cosmos DB との間でデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
 パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
 
@@ -45,17 +45,17 @@ ms.lasthandoff: 04/20/2017
 2. コピー操作用の入力データと出力データを表す**データセット**を作成します。 
 3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  DocumentDB との間でデータをコピーするときに使用する Data Factory エンティティの JSON 定義のサンプルについては、この記事の「[JSON の使用例](#json-examples)」を参照してください。 
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  Cosmos DB との間でデータをコピーするときに使う Data Factory エンティティの JSON 定義のサンプルについては、この記事の「[JSON の使用例](#json-examples)」を参照してください。 
 
-次のセクションでは、DocumentDB に固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。 
+次のセクションでは、Cosmos DB に固有の Data Factory エンティティの定義に使われる JSON プロパティについて詳しく説明します。 
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
-次の表は、Azure DocumentDB のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
+次の表は、Azure Cosmos DB のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
 | **プロパティ** | **説明** | **必須** |
 | --- | --- | --- |
 | type |type プロパティを **DocumentDB** |はい |
-| connectionString |Azure DocumentDB データベースに接続するために必要な情報を指定します。 |はい |
+| connectionString |Azure Cosmos DB データベースに接続するために必要な情報を指定します。 |あり |
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
@@ -64,16 +64,16 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 | **プロパティ** | **説明** | **必須** |
 | --- | --- | --- |
-| collectionName |DocumentDB ドキュメント コレクションの名前です。 |はい |
+| collectionName |Cosmos DB ドキュメント コレクションの名前です。 |あり |
 
 例:
 
 ```JSON
 {
-  "name": "PersonDocumentDbTable",
+  "name": "PersonCosmosDbTable",
   "properties": {
     "type": "DocumentDbCollection",
-    "linkedServiceName": "DocumentDbLinkedService",
+    "linkedServiceName": "CosmosDbLinkedService",
     "typeProperties": {
       "collectionName": "Person"
     },
@@ -86,7 +86,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 }
 ```
 ### <a name="schema-by-data-factory"></a>Data Factory によるスキーマ
-DocumentDB などのスキーマのないデータ ストアの場合、Data Factory サービスは次のいずれかの方法でスキーマを推論します。  
+Azure Cosmos DB などのスキーマのないデータ ストアの場合、Data Factory サービスは次のいずれかの方法でスキーマを推論します。  
 
 1. データセット定義で **structure** プロパティを使用してデータの構造を指定した場合、Data Factory サービスはスキーマとしてこの構造を優先します。 この場合、行に列の値が含まれていないと、null 値が指定されます。
 2. データセット定義で **structure** プロパティを使用してデータの構造を指定しなかった場合、Data Factory サービスはデータの最初の行を使用してスキーマを推論します。 この場合、最初の行に完全なスキーマが含まれていないと、コピー操作の結果で一部の行が欠落します。
@@ -105,32 +105,32 @@ DocumentDB などのスキーマのないデータ ストアの場合、Data Fac
 
 | **プロパティ** | **説明** | **使用できる値** | **必須** |
 | --- | --- | --- | --- |
-| query |データを読み取るためのクエリを指定します。 |DocumentDB でサポートされているクエリ文字列。 <br/><br/>例: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |なし <br/><br/>指定されていない場合に実行される SQL ステートメント: `select <columns defined in structure> from mycollection` |
-| nestingSeparator |ドキュメントが入れ子であることを示す特殊文字 |任意の文字。 <br/><br/>DocumentDB は JSON 文書の NoSQL ストアであり、入れ子構造が許可されます。 Azure Data Factory を利用すると、nestingSeparator で階層を示すことができます。 上記の例では「.」です。 区切り記号により、コピー アクティビティで「Name」オブジェクトが 3 つの子要素 (First、Middle、Last) で生成されます。これはテーブル定義の「Name.First」、「Name.Middle」、「Name.Last」に基づきます。 |なし |
+| query |データを読み取るためのクエリを指定します。 |Azure Cosmos DB でサポートされているクエリ文字列。 <br/><br/>例: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |なし <br/><br/>指定されていない場合に実行される SQL ステートメント: `select <columns defined in structure> from mycollection` |
+| nestingSeparator |ドキュメントが入れ子であることを示す特殊文字 |任意の文字。 <br/><br/>Azure Cosmos DB は JSON ドキュメントの NoSQL ストアであり、入れ子構造が許可されます。 Azure Data Factory を利用すると、nestingSeparator で階層を示すことができます。 上記の例では「.」です。 区切り記号により、コピー アクティビティで「Name」オブジェクトが 3 つの子要素 (First、Middle、Last) で生成されます。これはテーブル定義の「Name.First」、「Name.Middle」、「Name.Last」に基づきます。 |なし |
 
 **DocumentDbCollectionSink** では次のプロパティがサポートされます。
 
 | **プロパティ** | **説明** | **使用できる値** | **必須** |
 | --- | --- | --- | --- |
-| nestingSeparator |入れ子になった文書が必要であることを示すソース列名の特殊文字。 <br/><br/>上記の例の場合: 出力テーブルの `Name.First` は、DocumentDB ドキュメントで次の JSON 構造を生成します。<br/><br/>"Name": {<br/>    "First":"John"<br/>}, |入れ子レベルの分割に使用される文字。<br/><br/>既定値は `.` (ドット) です。 |入れ子レベルの分割に使用される文字。 <br/><br/>既定値は `.` (ドット) です。 |
-| writeBatchSize |DocumentDB サービスにドキュメントの作成を要求する並列要求の数。<br/><br/>このプロパティを使用して、DocumentDB との間でコピーするときのパフォーマンスを微調整できます。 writeBatchSize を増やすとパフォーマンスが良くなります。DocumentDB に送信される並列要求の数が増えるためです。 ただし、スロットルは回避する必要があります。「Request rate is large」というエラー メッセージをスローする可能性があります。<br/><br/>スロットルは、ドキュメントのサイズ、ドキュメント内の語句の数、ターゲット コレクションの索引作成ポリシーなど、さまざまな要因により決定されます。コピー操作の場合、もっとよいコレクションを利用し (S3 など)、最大のスループットを得ることができます (毎秒 2,500 要求単位)。 |Integer |いいえ (既定値: 5) |
+| nestingSeparator |入れ子になった文書が必要であることを示すソース列名の特殊文字。 <br/><br/>上記の例の場合: 出力テーブルの `Name.First` は、Cosmos DB ドキュメントで次の JSON 構造を生成します。<br/><br/>"Name": {<br/>    "First":"John"<br/>}, |入れ子レベルの分割に使用される文字。<br/><br/>既定値は `.` (ドット) です。 |入れ子レベルの分割に使用される文字。 <br/><br/>既定値は `.` (ドット) です。 |
+| writeBatchSize |Azure Cosmos DB サービスにドキュメントの作成を要求する並列要求の数。<br/><br/>このプロパティを使って、Cosmos DB との間でデータをコピーするときのパフォーマンスを微調整できます。 writeBatchSize を増やすと、Cosmos DB に送信される並列要求の数が増えるため、パフォーマンスを向上させることができます。 ただし、スロットルは回避する必要があります。「Request rate is large」というエラー メッセージをスローする可能性があります。<br/><br/>スロットルは、ドキュメントのサイズ、ドキュメント内の語句の数、ターゲット コレクションの索引作成ポリシーなど、さまざまな要因により決定されます。コピー操作の場合、もっとよいコレクションを利用し (S3 など)、最大のスループットを得ることができます (毎秒 2,500 要求単位)。 |Integer |いいえ (既定値: 5) |
 | writeBatchTimeout |タイムアウトする前に操作の完了を待つ時間です。 |timespan<br/><br/> 例: "00:30:00" (30 分)。 |なし |
 
 ## <a name="importexport-json-documents"></a>JSON ドキュメントのインポート/エクスポート
-この DocumentDB コネクタを使用して、次の作業を簡単に実行できます。
+この Cosmos DB コネクタを使って、次の作業を簡単に実行できます。
 
-* Azure BLOB、Azure Data Lake、オンプレミスのファイル システム、Azure Data Factory でサポートされているその他のファイル ベースのストアなど、さまざまなソースから DocumentDB に JSON ドキュメントをインポートする。
-* JSON ドキュメントを DocumentDB コレクションからさまざまなファイル ベースのストアにエクスポートする。
-* 2 つの DocumentDB コレクション間でそのままデータを移行する。
+* Azure BLOB、Azure Data Lake、オンプレミスのファイル システム、Azure Data Factory でサポートされているその他のファイル ベースのストアなど、さまざまなソースから Cosmos DB に JSON ドキュメントをインポートする。
+* JSON ドキュメントを Cosmos DB コレクションからさまざまなファイル ベースのストアにエクスポートする。
+* 2 つの Cosmos DB コレクション間でそのままデータを移行する。
 
 このようなスキーマに依存しないコピーを実現するには、次のようにします。 
-* コピー ウィザードを使用する場合は、**[Export as-is to JSON files or DocumentDB collection (JSON ファイルまたは DocumentDB コレクションにそのままエクスポートする)]** オプションを確認します。
-* JSON の編集を使用する場合は、コピー アクティビティで、DocumentDB データセットの "structure" セクションも DocumentDB ソース/シンクの "nestingSeparator" プロパティも指定しないでください。 JSON ファイルに対してインポート/エクスポートを行うには、ファイル ストア データセットで形式を "JsonFormat" に指定し、"filePattern" を構成し、その他の形式設定は省略します。詳細については、「[JSON 形式](data-factory-supported-file-and-compression-formats.md#json-format)」のセクションを参照してください。
+* コピー ウィザードを使う場合は、**[Export as-is to JSON files or Cosmos DB collection]\(JSON ファイルまたは Cosmos DB コレクションにそのままエクスポートする\)** オプションをオンにします。
+* JSON の編集を使う場合は、コピー アクティビティで、Cosmos DB データセットの "structure" セクションも Cosmos DB ソース/シンクの "nestingSeparator" プロパティも指定しないでください。 JSON ファイルに対してインポート/エクスポートを行うには、ファイル ストア データセットで形式を "JsonFormat" に指定し、"filePattern" を構成し、その他の形式設定は省略します。詳細については、「[JSON 形式](data-factory-supported-file-and-compression-formats.md#json-format)」のセクションを参照してください。
 
 ## <a name="json-examples"></a>JSON の使用例
-以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 ここでは、Azure DocumentDB と Azure Blob Storage の間でデータをコピーする方法を示します。 ただし、Azure Data Factory のコピー アクティビティを使用して、**こちら**に記載されているいずれかのシンクに、任意のソースからデータを[直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats)コピーすることができます。
+以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 ここでは、Azure Cosmos DB と Azure Blob Storage の間でデータをコピーする方法を示します。 ただし、Azure Data Factory のコピー アクティビティを使用して、**こちら**に記載されているいずれかのシンクに、任意のソースからデータを[直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats)コピーすることができます。
 
-## <a name="example-copy-data-from-documentdb-to-azure-blob"></a>例: Azure DocumentDB から Azure BLOB にデータをコピーする
+## <a name="example-copy-data-from-azure-cosmos-db-to-azure-blob"></a>例: Azure Cosmos DB から Azure BLOB にデータをコピーする
 下のサンプルで確認できる要素:
 
 1. [DocumentDB](#linked-service-properties)型のリンクされたサービス。
@@ -139,13 +139,13 @@ DocumentDB などのスキーマのないデータ ストアの場合、Data Fac
 4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 5. [DocumentDbCollectionSource](#copy-activity-properties) と [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) を使用するコピー アクティビティを含む [パイプライン](data-factory-create-pipelines.md)。
 
-このサンプルでは、Azure DocumentDB のデータが Azure BLOB にコピーされます。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
+この例は、Azure Cosmos DB のデータを Azure BLOB にコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
-**Azure DocumentDB のリンクされたサービス:**
+**Azure Cosmos DB のリンクされたサービス:**
 
 ```JSON
 {
-  "name": "DocumentDbLinkedService",
+  "name": "CosmosDbLinkedService",
   "properties": {
     "type": "DocumentDb",
     "typeProperties": {
@@ -169,16 +169,16 @@ DocumentDB などのスキーマのないデータ ストアの場合、Data Fac
 ```
 **Azure Document DB 入力データセット:**
 
-このサンプルでは、「 **Person** 」というコレクションが Azure DocumentDB データベースにあるものと想定しています。
+このサンプルでは、**Person** という名前のコレクションが Azure Cosmos DB データベースにあるものと想定しています。
 
 「“external”: ”true”」を設定して externalData ポリシーを指定すると、テーブルが Data Factory に対して外部にあり、Data Factory のアクティビティでは生成されていないことが Azure Data Factory のサービスに通知されます。
 
 ```JSON
 {
-  "name": "PersonDocumentDbTable",
+  "name": "PersonCosmosDbTable",
   "properties": {
     "type": "DocumentDbCollection",
-    "linkedServiceName": "DocumentDbLinkedService",
+    "linkedServiceName": "CosmosDbLinkedService",
     "typeProperties": {
       "collectionName": "Person"
     },
@@ -216,7 +216,7 @@ DocumentDB などのスキーマのないデータ ストアの場合、Data Fac
   }
 }
 ```
-DocumentDB データベースの「Person」コレクションのサンプル JSON 文書:
+Cosmos DB データベースの Person コレクションのサンプル JSON ドキュメント:
 
 ```JSON
 {
@@ -228,7 +228,7 @@ DocumentDB データベースの「Person」コレクションのサンプル JS
   }
 }
 ```
-DocumentDB では、階層的な JSON 文書に SQL タイプの構文を使用し、文書にクエリを実行できます。
+Cosmos DB では、階層的な JSON ドキュメントに SQL タイプの構文を使って、ドキュメントにクエリを実行できます。
 
 例: 
 
@@ -236,7 +236,7 @@ DocumentDB では、階層的な JSON 文書に SQL タイプの構文を使用�
 SELECT Person.PersonId, Person.Name.First AS FirstName, Person.Name.Middle as MiddleName, Person.Name.Last AS LastName FROM Person
 ```
 
-次のパイプラインは DocumentDB データベースの「Person」コレクションから Azure BLOB にデータをコピーします。 コピー アクティビティの一部として、入力データセットと出力データセットが指定されています。  
+次のパイプラインは、Azure Cosmos DB データベースの Person コレクションから Azure BLOB にデータをコピーします。 コピー アクティビティの一部として、入力データセットと出力データセットが指定されています。  
 
 ```JSON
 {
@@ -260,7 +260,7 @@ SELECT Person.PersonId, Person.Name.First AS FirstName, Person.Name.Middle as Mi
         },
         "inputs": [
           {
-            "name": "PersonDocumentDbTable"
+            "name": "PersonCosmosDbTable"
           }
         ],
         "outputs": [
@@ -279,7 +279,7 @@ SELECT Person.PersonId, Person.Name.First AS FirstName, Person.Name.Middle as Mi
   }
 }
 ```
-## <a name="example-copy-data-from-azure-blob-to-azure-documentdb"></a>例: Azure BLOB から Azure DocumentDB にデータをコピーする
+## <a name="example-copy-data-from-azure-blob-to-azure-cosmos-db"></a>例: Azure BLOB から Azure Cosmos DB にデータをコピーする 
 下のサンプルで確認できる要素:
 
 1. [DocumentDB](#azure-documentdb-linked-service-properties)型のリンクされたサービス。
@@ -288,7 +288,7 @@ SELECT Person.PersonId, Person.Name.First AS FirstName, Person.Name.Middle as Mi
 4. [DocumentDbCollection](#azure-documentdb-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 5. [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) と [DocumentDbCollectionSink](#azure-documentdb-copy-activity-type-properties) を使用するコピー アクティビティを含む [パイプライン](data-factory-create-pipelines.md)。
 
-このサンプルでは、Azure BLOB から Azure DocumentDB にデータがコピーされます。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
+このサンプルは、Azure BLOB から Azure Cosmos DB にデータをコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
 **Azure BLOB ストレージのリンクされたサービス:**
 
@@ -303,11 +303,11 @@ SELECT Person.PersonId, Person.Name.First AS FirstName, Person.Name.Middle as Mi
   }
 }
 ```
-**Azure DocumentDB のリンクされたサービス:**
+**Azure Cosmos DB のリンクされたサービス:**
 
 ```JSON
 {
-  "name": "DocumentDbLinkedService",
+  "name": "CosmosDbLinkedService",
   "properties": {
     "type": "DocumentDb",
     "typeProperties": {
@@ -359,13 +359,13 @@ SELECT Person.PersonId, Person.Name.First AS FirstName, Person.Name.Middle as Mi
   }
 }
 ```
-**Azure DocumentDB 出力データセット:**
+**Azure Cosmos DB の出力データセット:**
 
 このサンプルでは、「Person」という名前のコレクションにデータをコピーします。
 
 ```JSON
 {
-  "name": "PersonDocumentDbTableOut",
+  "name": "PersonCosmosDbTableOut",
   "properties": {
     "structure": [
       {
@@ -386,7 +386,7 @@ SELECT Person.PersonId, Person.Name.First AS FirstName, Person.Name.Middle as Mi
       }
     ],
     "type": "DocumentDbCollection",
-    "linkedServiceName": "DocumentDbLinkedService",
+    "linkedServiceName": "CosmosDbLinkedService",
     "typeProperties": {
       "collectionName": "Person"
     },
@@ -397,7 +397,7 @@ SELECT Person.PersonId, Person.Name.First AS FirstName, Person.Name.Middle as Mi
   }
 }
 ```
-次のパイプラインは Azure BLOB から DocumentDB データベースの「Person」コレクションにデータをコピーします。 コピー アクティビティの一部として、入力データセットと出力データセットが指定されています。
+次のパイプラインは、Azure BLOB から Cosmos DB データベースの Person コレクションにデータをコピーします。 コピー アクティビティの一部として、入力データセットと出力データセットが指定されています。
 
 ```JSON
 {
@@ -428,7 +428,7 @@ SELECT Person.PersonId, Person.Name.First AS FirstName, Person.Name.Middle as Mi
         ],
         "outputs": [
           {
-            "name": "PersonDocumentDbTableOut"
+            "name": "PersonCosmosDbTableOut"
           }
         ],
         "policy": {
@@ -447,7 +447,7 @@ SELECT Person.PersonId, Person.Name.First AS FirstName, Person.Name.Middle as Mi
 ```
 1,John,,Doe
 ```
-DocumentDB の JSON は次のようになります。
+Cosmos DB の出力 JSON は次のようになります。
 
 ```JSON
 {
@@ -460,7 +460,7 @@ DocumentDB の JSON は次のようになります。
   "id": "a5e8595c-62ec-4554-a118-3940f4ff70b6"
 }
 ```
-DocumentDB は JSON 文書の NoSQL ストアであり、入れ子構造が許可されます。 Azure Data Factory を利用すると、**nestingSeparator** で階層を示すことができます。 この例では「.」です。 区切り記号により、コピー アクティビティで「Name」オブジェクトが 3 つの子要素 (First、Middle、Last) で生成されます。これはテーブル定義の「Name.First」、「Name.Middle」、「Name.Last」に基づきます。
+Azure Cosmos DB は JSON ドキュメントの NoSQL ストアであり、入れ子構造が許可されます。 Azure Data Factory を利用すると、**nestingSeparator** で階層を示すことができます。 この例では「.」です。 区切り記号により、コピー アクティビティで「Name」オブジェクトが 3 つの子要素 (First、Middle、Last) で生成されます。これはテーブル定義の「Name.First」、「Name.Middle」、「Name.Last」に基づきます。
 
 ## <a name="appendix"></a>付録
 1. **質問:**
@@ -469,17 +469,17 @@ DocumentDB は JSON 文書の NoSQL ストアであり、入れ子構造が許�
     **回答:**
     いいえ。
 2. **質問:**
-    DocumentDB へのコピーを再試行すると、既にコピーしたレコードはどのように扱われますか?
+    Azure Cosmos DB へのコピーを再試行すると、既にコピーしたレコードはどのように扱われますか?
 
     **回答:**
     レコードに "ID" フィールドがあり、コピー操作で同じ ID のレコードが挿入される場合、そのコピー操作はエラーをスローします。  
 3. **質問:**
-    Data Factory は、[範囲またはハッシュ ベースのデータのパーティション分割](https://azure.microsoft.com/documentation/articles/documentdb-partition-data/)をサポートしていますか?
+    Data Factory は、[範囲またはハッシュ ベースのデータのパーティション分割](../documentdb/documentdb-partition-data.md)をサポートしていますか?
 
     **回答:**
     いいえ。
 4. **質問:**
-    1 つのテーブルに複数の DocumentDB コレクションを指定できますか?
+    1 つのテーブルに複数の Azure Cosmos DB コレクションを指定できますか?
 
     **回答:**
     いいえ。 現時点では、1 つのコレクションだけを指定できます。
