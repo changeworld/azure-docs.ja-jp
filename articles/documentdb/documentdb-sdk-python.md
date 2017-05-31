@@ -1,25 +1,25 @@
 ---
-title: "Azure DocumentDB Python API、SDK、およびリソース | Microsoft Docs"
+title: "Azure Cosmos DB Python API、SDK、およびリソース | Microsoft Docs"
 description: "リリース日、提供終了日、DocumentDB Python SDK の各バージョン間の変更など、Python API と SDK に関するあらゆる詳細を提供します。"
-services: documentdb
+services: cosmosdb
 documentationcenter: python
 author: rnagpal
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 3ac344a9-b2fa-4a3f-a4cc-02d287e05469
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 05/01/2017
+ms.date: 05/10/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: af45d745bccb02ce9fd45320e83284a8b33d99bd
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 3e4ff11a81fd3674a480ad43f4147126ad0167a3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -30,7 +30,7 @@ ms.lasthandoff: 05/02/2017
 > * [Node.JS](documentdb-sdk-node.md)
 > * [Java](documentdb-sdk-java.md)
 > * [Python](documentdb-sdk-python.md)
-> * [REST ()](https://docs.microsoft.com/en-us/rest/api/documentdb/)
+> * [REST ()](https://docs.microsoft.com/rest/api/documentdb/)
 > * [REST リソース プロバイダー](https://docs.microsoft.com/rest/api/documentdbresourceprovider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 > 
@@ -52,6 +52,11 @@ ms.lasthandoff: 05/02/2017
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
+### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
+* 1 分あたりの要求ユニット (RU/分) 機能のサポートが追加されました。
+* ConsistentPrefix と呼ばれる新しい一貫性レベルに対応するようになりました。
+
+
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 * 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。
 * DocumentDB Emulator に対しての実行時に、SSL 検証を無効にするためのオプションを追加しました。
@@ -71,7 +76,7 @@ ms.lasthandoff: 05/02/2017
 
 ### <a name="a-name190190"></a><a name="1.9.0"/>1.9.0
 * スロットルされた要求のための再試行ポリシー サポートを追加しました  (スロットルされた要求は、要求レートが大きすぎるという例外をエラー コード 429 で受信します)。既定では、DocumentDB は、エラー コード 429 が発生した場合に、応答ヘッダーの retryAfter 回数に従って要求ごとに 9 回再試行します。 再試行の間にサーバーによって返される retryAfter 回数を無視する場合、固定の再試行間隔の回数を、ConnectionPolicy オブジェクトの RetryOptions プロパティの一部としてここで設定できます。 DocumentDB では、(再試行の回数に関係なく) スロットルされる要求ごとに最大 30 秒待機できるようになり、エラー コード 429 と共に応答を返すようになりました。 この回数は、ConnectionPolicy オブジェクトの RetryOptions プロパティでオーバーライドすることもできます。
-* DocumentDB は、スロットルの再試行の回数と再試行の間の要求の累積待機時間を表すために、すべての要求の応答ヘッダーとして x-ms-throttle-retry-count と x-ms-throttle-retry-wait-time-ms を返すようになりました。
+* Cosmos DB は、スロットルの再試行の回数と再試行の間の要求の累積待機時間を表すために、すべての要求の応答ヘッダーとして x-ms-throttle-retry-count と x-ms-throttle-retry-wait-time-ms を返すようになりました。
 * document_client クラスで公開されている RetryPolicy クラスとそれに対応するプロパティ (retry_policy) が削除され、代わりに、既定の一部の再試行オプションをオーバーライドするために使用できる ConnectionPolicy クラスの RetryOptions プロパティを公開する RetryOptions クラスが導入されました。
 
 ### <a name="a-name180180"></a><a name="1.8.0"/>1.8.0
@@ -112,7 +117,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 新しい機能と最適化は現在の SDK にのみ追加されます。そのため、常に可能な限り最新の SDK バージョンにアップグレードすることが推奨されます。 
 
-提供終了の SDK で DocumentDB に要求した場合、サービスにより却下されます。
+提供終了の SDK を使用した Cosmos DB への要求は、サービスによって拒否されます。
 
 > [!WARNING]
 > バージョン **1.0.0** 以前のすべてのバージョンの Azure DocumentDB SDK for Python は **2016 年 2 月 29 日**で提供が終了します。 
@@ -123,6 +128,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.2.0](#2.2.0) |2017 年 5 月 10 日 |--- |
 | [2.1.0](#2.1.0) |2017 年 5 月 1 日 |--- |
 | [2.0.1](#2.0.1) |2016 年 10 月 30 日 |--- |
 | [2.0.0](#2.0.0) |2016 年 9 月 29 日 |--- |
@@ -148,6 +154,6 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 [!INCLUDE [documentdb-sdk-faq](../../includes/documentdb-sdk-faq.md)]
 
 ## <a name="see-also"></a>関連項目
-DocumentDB に関する詳細は、 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) サービス ページを参照してください。 
+Cosmos DB の詳細については、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) サービス ページをご覧ください。 
 
 

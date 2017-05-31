@@ -1,47 +1,40 @@
 ---
-title: "MongoDB API を使用して DocumentDB Web アプリを構築する | Microsoft Docs"
-description: "MongoDB 用 DocumentDB API を使用してオンライン データベース Web アプリを作成する NoSQL チュートリアル。"
+title: "Azure Cosmos DB の MongoDB 用 API を使用した Web アプリの構築 | Microsoft Docs"
+description: "MongoDB 用 API を使用してオンライン データベース Web アプリを作成する Azure Cosmos DB チュートリアル。"
 keywords: "mongodb の例"
-services: documentdb
+services: cosmosdb
 author: AndrewHoh
 manager: jhubbard
 editor: 
 documentationcenter: 
 ms.assetid: 61a2ab3a-2fc3-4d49-a263-ed87c66628f6
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 04/28/2017
 ms.author: anhoh
-translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: c37304efecb2de247a2d63fe244e71c96966ebe0
-ms.lasthandoff: 03/08/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 3242e3382c5920e69db5ecdbfc2462456aea94bd
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="web-application-development-with-documentdb-api-for-mongodb"></a>DocumentDB: MongoDB 用 API を使用した Web アプリケーション開発
-> [!div class="op_single_selector"]
-> * [.NET](documentdb-dotnet-application.md)
-> * [MongoDB 用 .NET](documentdb-mongodb-application.md)
-> * [Node.JS](documentdb-nodejs-application.md)
-> * [Java](documentdb-java-application.md)
-> * [Python](documentdb-python-application.md)
-> 
-> 
+# <a name="azure-cosmos-db-connect-to-a-mongodb-app-using-net"></a>Azure Cosmos DB: .NET を使用した MongoDB アプリへの接続
 
-次の例は、.NET を使用して DocumentDB: MongoDB Web アプリ用 API を構築する方法を示しています。
+次の例は、.NET を使用して MongoDB 用 API Web アプリを構築する方法を示しています。
 
 この例を使用するための前提条件は、以下のとおりです。
 
-* DocumentDB: MongoDB 用 API アカウントを[作成](documentdb-create-mongodb-account.md)していること
+* Azure Cosmos DB のデータベースを[作成](documentdb-create-mongodb-account.md)していること
 * MongoDB [接続文字列](documentdb-connect-mongodb-account.md)情報を取得していること
 
-ここでは DocumentDB: MongoDB 用 API アカウントに接続する MongoDB アプリケーションを最小限の変更で手間なくセットアップ (ローカルに作成、または Azure Web アプリとして発行) するために、「[仮想マシンで実行される MongoDB に接続する Web アプリを Azure に作成する](../app-service-web/web-sites-dotnet-store-data-mongodb-vm.md)」のチュートリアルに沿って説明します。  
+ここでは MongoDB 用 API アカウントに接続する MongoDB アプリケーションをすぐにセットアップ (ローカルに作成、または Azure Web アプリとして発行) するために、「[仮想マシンで実行される MongoDB に接続する Web アプリを Azure に作成する](../app-service-web/web-sites-dotnet-store-data-mongodb-vm.md)」のチュートリアルに最小限の変更を加えて説明します。  
 
-1. チュートリアルのコードに&1; か所変更を加えます。  Dal.cs のコードを次の内容に置き換えてください。
+1. チュートリアルのコードに 1 か所変更を加えます。  Dal.cs のコードを次の内容に置き換えてください。
 
     ```csharp   
     using System;
@@ -187,5 +180,5 @@ ms.lasthandoff: 03/08/2017
 3. アプリを使用します。
 
 ## <a name="next-steps"></a>次のステップ
-* DocumentDB: MongoDB 用 API アカウントで [MongoChef を使用する](documentdb-mongodb-mongochef.md)方法と [RoboMongo を使用する](documentdb-mongodb-robomongo.md)方法を説明します。
+* Azure Cosmos DB の MongoDB 用 API アカウントで [MongoChef を使用する](documentdb-mongodb-mongochef.md)方法と [RoboMongo を使用する](documentdb-mongodb-robomongo.md)方法を説明します。
 

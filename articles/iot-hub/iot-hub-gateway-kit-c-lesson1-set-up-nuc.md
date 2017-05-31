@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 4c6b70d793a7d734f5a29139e1f0b91f0d41e73a
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 475664845a9922c5225ea1fd8e008bcb5582bd67
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.lasthandoff: 04/12/2017
 ## <a name="what-you-will-do"></a>学習内容
 
 - Intel NUC を IoT ゲートウェイとしてセットアップします。
-- Azure IoT Gateway SDK パッケージを Intel NUC にインストールします。
+- Azure IoT Edge パッケージを Intel NUC にインストールします。
 - Intel NUC で "hello_world" サンプル アプリケーションを実行して、ゲートウェイの機能を検証します。
 
   > 問題が発生した場合は、[トラブルシューティングのページ](iot-hub-gateway-kit-c-troubleshooting.md)で解決策を探してください。
@@ -89,9 +90,9 @@ Intel NUC デバイスの IP アドレスを取得するためのキーボード
    効率的で生産性が高いのは、ホスト コンピューターから Intel NUC を操作することです。 SSH クライアント経由で Intel NUC に接続するには、その Intel NUC の IP アドレス、ユーザー名、およびパスワードが必要です。 macOS での SSH クライアントの使用例を次に示します。
    ![MacOS で実行中の SSH クライアント](media/iot-hub-gateway-kit-lessons/lesson1/ssh.png)
 
-## <a name="install-the-azure-iot-gateway-sdk-package"></a>Azure IoT Gateway SDK パッケージのインストール
+## <a name="install-the-azure-iot-edge-package"></a>Azure IoT Edge パッケージのインストール
 
-Azure IoT Gateway SDK パッケージには、SDK のコンパイル済みバイナリと、依存関係にあるコンパイル済みのバイナリが含まれます。 これらのバイナリは、Azure IoT Gateway SDK、Azure IoT SDK、および対応ツールです。 パッケージには、ゲートウェイの機能を検証するために使用する "hello_world" サンプル アプリケーションも含まれます。 この SDK がゲートウェイの中核です。 
+Azure IoT Edge パッケージには、IoT Edge のコンパイル済みバイナリと、依存関係にあるコンパイル済みのバイナリが含まれます。 これらのバイナリは、Azure IoT Edge、Azure IoT SDK、および対応ツールです。 パッケージには、ゲートウェイの機能を検証するために使用する "hello_world" サンプル アプリケーションも含まれます。 IoT Edge がゲートウェイの中核です。 
 
 パッケージをインストールするには、次の手順に従います。
 
@@ -133,9 +134,9 @@ Azure IoT Gateway SDK パッケージには、SDK のコンパイル済みバイ
 
    パッケージをインストールしたら、Intel NUC はいつでもゲートウェイとして機能します。
 
-## <a name="run-the-azure-iot-gateway-sdk-helloworld-sample-application"></a>Azure IoT Gateway SDK の "hello_world" サンプル アプリケーションの実行
+## <a name="run-the-azure-iot-edge-helloworld-sample-application"></a>Azure IoT Edge の "hello_world" サンプル アプリケーションの実行
 
-次のサンプル アプリケーションは、`hello_world.json` ファイルからゲートウェイを作成し、Azure IoT Gateway SDK アーキテクチャの基本コンポーネントを使用して、5 秒ごとに hello world メッセージをファイル (log.txt) に記録します。
+次のサンプル アプリケーションは、`hello_world.json` ファイルからゲートウェイを作成し、Azure IoT Edge アーキテクチャの基本コンポーネントを使用して、5 秒ごとに hello world メッセージをファイル (log.txt) に記録します。
 
 Hello World サンプルを実行するには、次のコマンドを実行します。
 

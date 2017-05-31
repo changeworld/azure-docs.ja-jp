@@ -1,24 +1,25 @@
 ---
-title: "Azure DocumentDB ポータル ツール: ドキュメント エクスプローラー | Microsoft Docs"
-description: "NoSQL ドキュメント データベースである DocumentDB で JSON の表示と JSON ドキュメントの編集、作成、アップロードを実行するための Azure ポータルのツールである、DocumentDB ドキュメント エクスプローラーについて説明します。"
+title: "Azure Cosmos DB ポータル ツール: ドキュメント エクスプローラー | Microsoft Docs"
+description: "JSON を表示し、ドキュメントを編集、作成、アップロードするための Azure Portal ツール、Azure Cosmos DB ドキュメント エクスプローラーについて説明します。"
 keywords: "json の表示"
-services: documentdb
+services: cosmosdb
 author: kirillg
 manager: jhubbard
 editor: monicar
 documentationcenter: 
 ms.assetid: 029d81b3-6382-4799-a1bd-0dcbccd9968d
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: kirillg
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 4338fc03664175b7c27a48f1ab682179c1035313
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 77f8512d9fa47eee25596aa3c407fd6889edbe0e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -27,14 +28,14 @@ ms.lasthandoff: 04/21/2017
 この記事では、ポータルでドキュメントの作成、編集、およびクエリを行う 2 つの方法 ([ドキュメント エクスプローラー](#launch-document-explorer)と[データ エクスプローラー (プレビュー)](#data-explorer)) の概要を説明します。
 
 > [!NOTE]
-> ドキュメント エクスプローラーは、MongoDB のプロトコル対応の DocumentDB アカウントでは有効になっていません。 この機能が有効になった場合は、このページも更新されます。
+> ドキュメント エクスプローラーは、MongoDB のプロトコル対応の Azure Cosmos DB アカウントでは有効になっていません。 この機能が有効になった場合は、このページも更新されます。
 
 <a id="launch-document-explorer"></a>
 
 ## <a name="launch-document-explorer-in-the-azure-portal"></a>Azure Portal でドキュメント エクスプローラーを起動する
-1. [Azure Portal](https://portal.azure.com) の左側のナビゲーションで、![Azure DocumentDB アイコン](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png) **[NoSQL (DocumentDB)]** をクリックします。 
+1. [Azure Portal](https://portal.azure.com) の左側のナビゲーションで、![Azure Cosmos DB アイコン](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png) **[Azure Cosmos DB]**をクリックします。 
 
-    **[NoSQL (DocumentDB)]** が表示されない場合は、下にある **[その他のサービス]** をクリックしてから、![Azure DocumentDB アイコン](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png) **[NoSQL (DocumentDB)]** をクリックします。
+    **[Azure Cosmos DB]** が表示されない場合は、下にある **[その他のサービス]** をクリックしてから、![Azure Cosmos DB アイコン](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png) **[Azure Cosmos DB]** をクリックします。
 2. アカウント名を選択します。 
 3. リソース メニューの **[ドキュメント エクスプローラー]**をクリックします。 
    
@@ -58,7 +59,7 @@ ms.lasthandoff: 04/21/2017
    > 
    > 
    
-    JSON ファイル、MongoDB、SQL Server、CSV ファイル、Azure Table Storage、Amazon DynamoDB、HBase、またはその他の DocumentDB コレクションのデータが既にある場合は、DocumentDB の [データ移行ツール](documentdb-import-data.md) を使用して、データをすばやくインポートできます。
+    JSON ファイル、MongoDB、SQL Server、CSV ファイル、Azure Table Storage、Amazon DynamoDB、HBase、またはその他の DocumentDB API コレクションのデータが既にある場合は、DocumentDB API の [データ移行ツール](documentdb-import-data.md) を使用して、データをすばやくインポートできます。
 
 ## <a name="edit-a-json-document"></a>JSON ドキュメントを編集する
 1. [ドキュメント エクスプローラーを起動](#launch-document-explorer)します。
@@ -70,7 +71,7 @@ ms.lasthandoff: 04/21/2017
    
     ![Document Explorer の [破棄] コマンドのスクリーンショット](./media/documentdb-view-JSON-document-explorer/discardedit.png)
 
-## <a name="delete-a-document-from-documentdb"></a>DocumentDB からドキュメントを削除する
+## <a name="delete-a-document-from-cosmos-db"></a>Cosmos DB からドキュメントを削除する
 1. [ドキュメント エクスプローラーを起動](#launch-document-explorer)します。
 2. **ドキュメント エクスプローラー**でドキュメントを選択し、**[削除]** をクリックして、削除を確定します。 確定後、そのドキュメントはドキュメント エクスプローラーの一覧から即座に削除されます。
    
@@ -107,7 +108,7 @@ Document Explorer はさまざまなナビゲーション オプションと高�
    
    ![Screenshot of Document Explorer Settings blade](./media/documentdb-view-JSON-document-explorer/documentexplorerfiltersettings2.png)
    
-   ドキュメント エクスプローラーでは、結果が自動的に更新され、フィルター クエリに一致するドキュメントが表示されます。 DocumentDB の SQL 文法の詳細については、[SQL クエリと SQL 構文](documentdb-sql-query.md)に関するページを参照するか、[SQL クエリのチート シート](documentdb-sql-query-cheat-sheet.md)を印刷してください。
+   ドキュメント エクスプローラーでは、結果が自動的に更新され、フィルター クエリに一致するドキュメントが表示されます。 DocumentDB API の SQL 文法の詳細については、[SQL クエリと SQL 構文](documentdb-sql-query.md)に関するページを参照するか、[SQL クエリのチート シート](documentdb-sql-query-cheat-sheet.md)を印刷してください。
    
    **[データベース]** ボックスと **[コレクション]** ボックスを使用すると、Document Explorer を閉じて再度起動することなく、現在表示されているドキュメントが含まれるコレクションを簡単に変更できます。  
    
@@ -157,18 +158,18 @@ Document Explorer はさまざまなナビゲーション オプションと高�
 ![ポータルの [新しいコレクション] ボタンを示しているスクリーンショット](./media/documentdb-view-JSON-document-explorer/azure-documentdb-data-explorer.png)
 
 ## <a name="work-with-json-documents-outside-the-portal"></a>ポータル外での JSON ドキュメントの操作
-Azure ポータルのドキュメント エクスプローラーは、DocumentDB のドキュメントを操作するための 1 つの手段にすぎません。 [REST API](https://msdn.microsoft.com/library/azure/mt489082.aspx) や[クライアント SDK](documentdb-sdk-dotnet.md) を使用してドキュメントを操作することもできます。 コード例については、[.NET SDK のドキュメントの例](documentdb-dotnet-samples.md#document-examples)と [Node.js SDK のドキュメントの例](documentdb-nodejs-samples.md#document-examples)を参照してください。
+Azure Portal のドキュメント エクスプローラーは、Cosmos DB のドキュメントを操作するための 1 つの手段にすぎません。 [REST API](https://msdn.microsoft.com/library/azure/mt489082.aspx) や[クライアント SDK](documentdb-sdk-dotnet.md) を使用してドキュメントを操作することもできます。 コード例については、[.NET SDK のドキュメントの例](documentdb-dotnet-samples.md#document-examples)と [Node.js SDK のドキュメントの例](documentdb-nodejs-samples.md#document-examples)を参照してください。
 
-他のソース (JSON ファイル、MongoDB、SQL Server、CSV ファイル、Azure Table Storage、Amazon DynamoDB、HBase) からファイルをインポートまたは移行する必要がある場合は、DocumentDB の [データ移行ツール](documentdb-import-data.md) を使用すると、データを DocumentDB にすばやくインポートできます。
+他のソース (JSON ファイル、MongoDB、SQL Server、CSV ファイル、Azure Table Storage、Amazon DynamoDB、HBase) からファイルをインポートまたは移行する必要がある場合は、Cosmos DB の [データ移行ツール](documentdb-import-data.md) を使用すると、データを Cosmos DB にすばやくインポートできます。
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 **症状**: Document Explorer から "**ドキュメントが見つかりません**" というメッセージが返されます。
 
 **ソリューション**: ドキュメントが挿入された適切なサブスクリプション、データベース、およびコレクションが選択されていることを確認します。 また、スループット クォータ内で操作していることを確認します。 最大のスループット レベルで運用していて調整が行われている場合は、コレクションのスループットの最大クォータの範囲で動作するように、アプリケーションの使用量を削減します。
 
-**説明**: ポータルは、他のアプリケーションと同様に、DocumentDB データベースおよびコレクションの呼び出しを行います。 別のアプリケーションから行われる呼び出しのために要求が調整中の場合は、ポータルも調整され、リソースがポータルに表示されなくなる可能性があります。 問題を解決するには、スループットの使用量が高くなる原因に対処して、ポータルのブレードを最新の状態に更新します。 スループットの使用量の測定方法と削減方法の詳細については、[パフォーマンスに関するヒント](documentdb-performance-tips.md)の記事の「[スループット](documentdb-performance-tips.md#throughput)」のセクションを参照してください。
+**説明**: ポータルは、他のアプリケーションと同様に、Cosmos DB データベースおよびコレクションの呼び出しを行います。 別のアプリケーションから行われる呼び出しのために要求が調整中の場合は、ポータルも調整され、リソースがポータルに表示されなくなる可能性があります。 問題を解決するには、スループットの使用量が高くなる原因に対処して、ポータルのブレードを最新の状態に更新します。 スループットの使用量の測定方法と削減方法の詳細については、[パフォーマンスに関するヒント](documentdb-performance-tips.md)の記事の「[スループット](documentdb-performance-tips.md#throughput)」のセクションを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-ドキュメント エクスプローラーでサポートされている DocumentDB SQL 文法の詳細については、[SQL クエリと SQL 構文](documentdb-sql-query.md)に関する記事を参照するか、[SQL クエリのチート シート](documentdb-sql-query-cheat-sheet.md)を印刷してください。
+ドキュメント エクスプローラーでサポートされている DocumentDB API SQL 文法の詳細については、[SQL クエリと SQL 構文](documentdb-sql-query.md)に関する記事を参照するか、[SQL クエリのチート シート](documentdb-sql-query-cheat-sheet.md)を印刷してください。
 
 

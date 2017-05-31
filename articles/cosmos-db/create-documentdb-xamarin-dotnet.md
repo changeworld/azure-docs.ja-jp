@@ -98,10 +98,10 @@ Xamarin フォルダーのコードには以下が含まれています。
 ## <a name="build-and-deploy-the-web-app"></a>Web アプリの構築およびデプロイ
 
 1. Azure Portal で、App Service の Web サイトを作成し、リソース トークン ブローカー API をホストします。
-2. Azure Portal で、リソース トークン ブローカー API の Web サイトの [App Settings] (アプリの設定) ブレードを開きます。 次のアプリ設定を入力します。
+2. Azure Portal で、リソース トークン ブローカー API の Web サイトの [App Settings] \(アプリの設定) ブレードを開きます。 次のアプリ設定を入力します。
 
-    * accountUrl - Azure Cosmos DB アカウントの [Keys] (キー) タブの Azure Cosmos DB アカウント URL。
-    * accountKey - Azure Cosmos DB アカウントの [Keys] (キー) タブの Azure Cosmos DB アカウント マスター キー。
+    * accountUrl - Azure Cosmos DB アカウントの [Keys] \(キー) タブの Azure Cosmos DB アカウント URL。
+    * accountKey - Azure Cosmos DB アカウントの [Keys] \(キー) タブの Azure Cosmos DB アカウント マスター キー。
     * 作成したデータベースとコレクションの databaseId と collectionId
 
 3. 作成した Web サイトに ResourceTokenBroker ソリューションを公開します。
