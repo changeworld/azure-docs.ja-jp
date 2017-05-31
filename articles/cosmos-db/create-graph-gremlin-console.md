@@ -1,12 +1,12 @@
 ---
 title: "Azure Cosmos DB チュートリアル: Apache TinkerPops Gremlin コンソールでの作成、クエリ、走査 | Microsoft Docs"
 description: "Azure Cosmos DB Graph API を使用して頂点、辺、およびクエリを作成するための Azure Cosmos DB クイック スタート。"
-services: cosmosdb
+services: cosmos-db
 author: AndrewHoh
 manager: jhubbard
 editor: monicar
 ms.assetid: bf08e031-718a-4a2a-89d6-91e12ff8797d
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: terminal
@@ -41,11 +41,11 @@ Gremlin コンソールは Groovy/Java ベースであり、Linux、Mac、およ
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 
-[!INCLUDE [cosmosdb-create-dbaccount-graph](../../includes/cosmosdb-create-dbaccount-graph.md)]
+[!INCLUDE [cosmos-db-create-dbaccount-graph](../../includes/cosmos-db-create-dbaccount-graph.md)]
 
 ## <a name="add-a-graph"></a>グラフの追加
 
-[!INCLUDE [cosmosdb-create-graph](../../includes/cosmosdb-create-graph.md)]
+[!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
 ## <a id="ConnectAppService"></a>App Service への接続
 1. Gremlin コンソールを開始する前に、*apache-tinkerpop-gremlin-console-3.2.4/conf* ディレクトリで *remote-secure.yaml* 構成ファイルを作成または変更します。
@@ -254,7 +254,7 @@ Thomas のすべての友人を返すようにグラフを走査してみまし�
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 
-[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmosdb-tutorial-review-slas.md)]
+[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

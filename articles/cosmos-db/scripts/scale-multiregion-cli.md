@@ -1,14 +1,14 @@
 ---
 title: "Azure CLI スクリプト - Azure Cosmos DB のマルチリージョン レプリケーション | Microsoft Docs"
 description: "Azure CLI スクリプト サンプル - Azure Cosmos DB のマルチリージョン レプリケーション"
-services: cosmosdb
+services: cosmos-db
 documentationcenter: cosmosdb
 author: mimig1
 manager: jhubbard
 editor: 
 tags: azure-service-management
 ms.assetid: 
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.custom: sample
 ms.devlang: azurecli
 ms.topic: sample

@@ -1,13 +1,13 @@
 ---
 title: "Table API を使用した Azure Cosmos DB .NET アプリケーションの構築 | Microsoft Docs"
 description: ".NET を使用した Azure Cosmos DB の Table API の概要"
-services: cosmosdb
+services: cosmos-db
 documentationcenter: 
 author: arramac
 manager: jhubbard
 editor: 
 ms.assetid: 66327041-4d5e-4ce6-a394-fee107c18e59
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.custom: quick start connect
 ms.workload: 
 ms.tgt_pltfrm: na
@@ -37,11 +37,11 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 
-[!INCLUDE [cosmosdb-create-dbaccount-table](../../includes/cosmosdb-create-dbaccount-table.md)]
+[!INCLUDE [cosmos-db-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)]
 
 ## <a name="add-a-table"></a>テーブルの追加
 
-[!INCLUDE [cosmosdb-create-table](../../includes/cosmosdb-create-table.md)]
+[!INCLUDE [cosmos-db-create-table](../../includes/cosmos-db-create-table.md)]
 
 ## <a name="add-sample-data"></a>サンプル データの追加
 
@@ -142,7 +142,7 @@ github から DocumentDB API アプリを複製し、接続文字列を設定し
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 
-[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmosdb-tutorial-review-slas.md)]
+[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

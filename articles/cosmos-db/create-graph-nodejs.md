@@ -1,13 +1,13 @@
 ---
 title: "Graph API を使用した Azure Cosmos DB Node.js アプリケーションの構築 | Microsoft Docs"
 description: "Azure Cosmos DB への接続とデータの照会に使用できる Node.js コード サンプルについて説明します"
-services: cosmosdb
+services: cosmos-db
 documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: 
 ms.assetid: daacbabf-1bb5-497f-92db-079910703046
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.custom: quick start connect
 ms.workload: 
 ms.tgt_pltfrm: na
@@ -43,11 +43,11 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 ## <a name="create-a-database-account"></a>How to create a DocumentDB account (DocumentDB アカウントの作成方法)
 
-[!INCLUDE [cosmosdb-create-dbaccount-graph](../../includes/cosmosdb-create-dbaccount-graph.md)]
+[!INCLUDE [cosmos-db-create-dbaccount-graph](../../includes/cosmos-db-create-dbaccount-graph.md)]
 
 ## <a name="add-a-graph"></a>グラフの追加
 
-[!INCLUDE [cosmosdb-create-graph](../../includes/cosmosdb-create-graph.md)]
+[!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
@@ -146,7 +146,7 @@ module.exports = config;
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 
-[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmosdb-tutorial-review-slas.md)]
+[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

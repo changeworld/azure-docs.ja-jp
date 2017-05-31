@@ -23,6 +23,7 @@ ms.lasthandoff: 02/22/2017
 
 ---
 # <a name="designing-your-network-for-disaster-recovery"></a>ディザスター リカバリー に対応したネットワークの設計
+
 この記事は IT プロフェッショナルを読者として想定しています。ビジネス継続性とディザスター リカバリー (BCDR: Business Continuity and Disaster Recovery) インフラストラクチャの構築、実装、サポートを担当する方や、BCDR サービスのサポートと強化に Microsoft Azure Site Recovery (ASR) を活用したいと考えている方が対象となります。 ここでは、System Center Virtual Machine Manager サーバーのデプロイ、拡張サブネットとサブネット フェールオーバーの長所と欠点、Microsoft Azure 内の仮想サイトにディザスター リカバリー を構築する方法について実際的な見地から考察します。
 
 ## <a name="overview"></a>概要

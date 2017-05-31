@@ -3,7 +3,7 @@ title: "SQL Data Warehouse のデータを Power BI で視覚化する | Microso
 description: "SQL Data Warehouse のデータを Power BI で視覚化します。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: mlee3gsd
 manager: jhubbard
 editor: 
 ms.assetid: d7fb89d1-da1d-4788-a111-68d0e3fda799

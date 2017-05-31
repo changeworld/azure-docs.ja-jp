@@ -3,7 +3,7 @@ title: "SQL Data Warehouse を使用した統合ソリューションの作成 |
 description: "SQL Data Warehouse と統合されたソリューションを持つツールとパートナー。 "
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: mlee3gsd
 manager: jhubbard
 editor: 
 ms.assetid: e2dc8f3f-10e3-4589-a4e2-50c67dfcf67f

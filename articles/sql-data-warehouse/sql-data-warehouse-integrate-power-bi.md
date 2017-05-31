@@ -3,7 +3,7 @@ title: "SQL Data Warehouse での Power BI の使用 | Microsoft Docs"
 description: "ソリューション開発のための、Azure SQL Data Warehouse での Power BI の使用に関するヒント。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: mlee3gsd
 manager: jhubbard
 editor: 
 ms.assetid: b12bee87-2268-40c2-81bf-ab27588b32e8
