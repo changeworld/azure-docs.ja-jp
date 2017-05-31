@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/08/2017
+ms.date: 05/05/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 511d6dd1933f44cd0cb5ba800972a7c112a24c04
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 489e84f136ffc7aba00159ba53153bdd178c42b1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.lasthandoff: 04/12/2017
 
 [!INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
 
-Ambari は、Linux ベースの HDInsight クラスターに付属する管理および監視ユーティリティです。 Ambari が提供する機能の 1 つに、Hive クエリを実行するときに使用される Web UI があります。 これを **Hive ビュー**と呼びます。これは、HDInsight クラスターに付属する Ambari のビューの一部です。
+Ambari Hive ビューを使用して Hive クエリを実行する方法について説明します。 Ambari は、Linux ベースの HDInsight クラスターに付属する管理および監視ユーティリティです。 Ambari が提供する機能の 1 つに、Hive クエリを実行するときに使用される Web UI があります。
 
 > [!NOTE]
 > Ambari には数多くの機能がありますが、このドキュメントではそれらについて説明しません。 詳細については、「 [Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」を参照してください。
@@ -45,27 +46,28 @@ Azure Portal から Ambari ビューを表示するには、HDInsight クラス�
 
 ![quick links section](./media/hdinsight-hadoop-use-hive-ambari-view/quicklinks.png)
 
-Web ブラウザーで https://CLUSTERNAME.azurehdinsight.net にアクセスして Ambari に直接移動することもできます。 **CLUSTERNAME** を、使用する HDInsight クラスターの名前に置き換えます。 **[管理者]** リンクの横のページ メニューから四角形のセットを選択して、使用可能なビューの一覧を表示します。 **[Hive ビュー]** を選択します。
+Web ブラウザーで https://CLUSTERNAME.azurehdinsight.net にアクセスして Ambari に直接移動することもできます。 **CLUSTERNAME** を、使用する HDInsight クラスターの名前に置き換えます。 使用可能なビューを一覧表示するには、メニューから四角形のセットを選択します。 ビューを開くには、**[Hive ビュー]** エントリを選択します。
 
-![Selecting Ambari views](./media/hdinsight-hadoop-use-hive-ambari-view/selecthiveview.png)に関するページを参照してください。
+![Selecting Ambari views](./media/hdinsight-hadoop-use-hive-ambari-view/select-hive-view.png)に関するページを参照してください。
 
 > [!NOTE]
 > Ambari にアクセスすると、サイトに対する認証が求められます。 クラスターを作成するときに使用した管理者アカウント名 (既定値は `admin`) とパスワードを入力します。
 
-次のようなページが表示されます。
+次の図ようなページが表示されます。
 
-![Image of the hive view page, containing a query editor section](./media/hdinsight-hadoop-use-hive-ambari-view/hiveview.png)
+![Image of the hive view page, containing a query editor section](./media/hdinsight-hadoop-use-hive-ambari-view/ambari-hive-view.png)
 
 ## <a name="view-tables"></a>テーブルを表示する
-ページの **[Database Explorer]** セクションの **[Database]** タブで、**[default]** エントリを選択します。 これにより、既定のデータベース内にあるテーブルの一覧が表示されます。 新しい HDInsight クラスターの場合、存在するテーブルは **hivesampletable**のみです。
 
-![database explorer with the default database expanded](./media/hdinsight-hadoop-use-hive-ambari-view/databaseexplorer.png)
+ページの **[Database Explorer]** セクションの **[Database]** タブで、**[default]** エントリを選択します。 既定のデータベース内にあるテーブルの一覧が表示されます。 HDInsight には、**hivesampletable** という名前のテーブルが含まれています。
+
+![database explorer with the default database expanded](./media/hdinsight-hadoop-use-hive-ambari-view/database-explorer.png)
 
 このドキュメントの手順に従ってテーブルを追加した際、データベース エクスプローラーの右上隅にある更新アイコンを使用すると、一覧を更新できます。
 
 ## <a name="hivequery"></a>クエリ エディター
 
-Hive ビューから、次の手順を使用すると、Hive クエリを実行できます。
+Hive クエリを実行するには、Hive ビューから次の手順を使用します。
 
 1. ページの **[Query Editor]** セクションで、次の HiveQL ステートメントをワークシートに貼り付けます。
 
@@ -79,16 +81,16 @@ Hive ビューから、次の手順を使用すると、Hive クエリを実行�
 
     これらのステートメントは次のアクションを実行します。
 
-   * **DROP TABLE** - テーブルが既存の場合にテーブルとデータ ファイルを削除します。
+   * `DROP TABLE` - テーブルが既存の場合にテーブルとデータ ファイルを削除します。
 
-   * **CREATE EXTERNAL TABLE** - Hive に新しく "外部" テーブルを作成します。
+   * `CREATE EXTERNAL TABLE` - Hive に新しい「外部」テーブルを作成します。
    外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に残されます。
 
-   * **ROW FORMAT** - Hive にデータの形式を示します。 ここでは、各ログのフィールドは、スペースで区切られています。
+   * `ROW FORMAT` - データがどのように書式設定されるか。 ここでは、各ログのフィールドは、スペースで区切られています。
 
-   * **STORED AS TEXTFILE LOCATION** - Hive に、データの格納先 (example/data ディレクトリ) と、データはテキストとして格納されていることを示します。
+   * `STORED AS TEXTFILE LOCATION` - データの格納先、テキストとして格納されています。
 
-   * **SELECT** - t4 列の値が [ERROR] であるすべての行の数を指定します。
+   * `SELECT` - t4 列の値が [ERROR] であるすべての行の数を指定します。
 
      > [!NOTE]
      > 基になるデータが外部ソースによって更新されると考えられる場合は、外部テーブルを使用する必要があります。 たとえば、データの自動アップロード処理や別の MapReduce 操作によってです。 外部テーブルを削除しても、データは削除*されません*。テーブル定義のみが削除されます。
@@ -110,7 +112,7 @@ Hive ビューから、次の手順を使用すると、Hive クエリを実行�
 
 4. このクエリの最初の 4 行を選択し、**[Execute]** を選択します。 ジョブが完了したときに結果は生成されません。 クエリの一部が選択されているときに **[Execute]** ボタンを使用すると、選択したステートメントのみが実行されます。 この場合は、テーブルの行を取得する最後のステートメントが選択範囲に含まれていませんでした。 その行のみを選択して **[Execute]** を使用すると、予想どおりの結果が表示されます。
 
-5. 新しいワークシートを追加するには、**クエリ エディター**の下部にある **[New Worksheet]** ボタンを使用します。 新しいワークシートに、次の HiveQL ステートメントを入力します。
+5. ワークシートを追加するには、**クエリ エディター**の下部にある **[New Worksheet]** ボタンを使用します。 新しいワークシートに、次の HiveQL ステートメントを入力します。
 
     ```hiveql
     CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
@@ -121,9 +123,9 @@ Hive ビューから、次の手順を使用すると、Hive クエリを実行�
 
    * **CREATE TABLE IF NOT EXISTS** - 既存のテーブルがない場合、テーブルを作成します。 **EXTERNAL** キーワードは使用されないため、内部テーブルが作成されます。 内部テーブルは Hive データ ウェアハウスに格納され、完全に Hive によって管理されます。 外部テーブルとは異なり、内部テーブルを削除すると基盤となるデータも削除されます。
 
-   * **STORED AS ORC** - Optimized Row Columnar (ORC) 形式でデータを格納します。 この形式は、Hive にデータを格納するための、非常に効率的で適切な形式です。
+   * **STORED AS ORC** - Optimized Row Columnar (ORC) 形式でデータを格納します。 ORC は、Hive データを格納するための高度に最適化された効率的な形式です。
 
-   * **INSERT OVERWRITE ...SELECT** - [ERROR] を含む **log4jLogs** テーブルの列を選択し、**errorLogs** テーブルにデータを挿入します。
+   * **INSERT OVERWRITE ...SELECT** - `[ERROR]` を含む **log4jLogs** テーブルの列を選択し、**errorLogs** テーブルにデータを挿入します。
 
      **[Execute]** ボタンを使用して、このクエリを実行します。 クエリから返される行が 0 の場合、**[Results]** タブには情報が含まれません。 クエリが完了すると、状態として **[SUCCEEDED]** が表示されます。
 
@@ -133,7 +135,7 @@ Hive ビューから、次の手順を使用すると、Hive クエリを実行�
 
 ![Settings icon for hive view](./media/hdinsight-hadoop-use-hive-ambari-view/hive-view-settings-icon.png)
 
-[Settings] では、Hive の実行エンジンを Tez (既定値) から MapReduce に変更するなど、さまざまな Hive 設定を変更できます。
+設定を使用して、さまざまな Hive 設定を変更できます。 たとえば、Hive の実行エンジンを Tez (既定値) から MapReduce に変更します。
 
 ### <a name="visualization"></a>グラフ
 
@@ -141,7 +143,7 @@ Hive ビューから、次の手順を使用すると、Hive クエリを実行�
 
 ![Visualization icon for hive view](./media/hdinsight-hadoop-use-hive-ambari-view/hive-view-visualization-icon.png)
 
-視覚化のインターフェイスが開き、クエリから返されるデータの視覚化をここで作成できます。 HDInsight に含まれる `hivesampletable` のデータを使用した視覚化の例を次に示します。
+この視覚化のインターフェイスでは、クエリから返されるデータの視覚化を作成できます。 HDInsight に含まれる `hivesampletable` のデータを使用した視覚化の例を次の図に示します。
 
 ![Example visualization](./media/hdinsight-hadoop-use-hive-ambari-view/hive-view-visualization.png)
 
@@ -151,7 +153,7 @@ Hive ビューから、次の手順を使用すると、Hive クエリを実行�
 
 ![Visual explain icon for hive view](./media/hdinsight-hadoop-use-hive-ambari-view/hive-view-visual-explain-icon.png)
 
-これは、クエリの **[Visual Explain]** ビューです。このビューは、複雑なクエリのフローを理解する際に役立ちます。 クエリ エディターの **[Explain]** ボタンを使用して、このビューに対応するテキストを表示できます。
+クエリの **[Visual Explain]** ビューは、複雑なクエリのフローを理解する際に役立ちます。 クエリ エディターの **[Explain]** ボタンを使用して、このビューに対応するテキストを表示できます。
 
 ![visual explain image](./media/hdinsight-hadoop-use-hive-ambari-view/visualexplain.png)
 
@@ -161,7 +163,7 @@ Hive ビューから、次の手順を使用すると、Hive クエリを実行�
 
 ![Tez icon for hive view](./media/hdinsight-hadoop-use-hive-ambari-view/hive-view-tez-icon.png)
 
-このクエリのために Tez で使用される有向非巡回グラフ (DAG) が表示されます (利用できる場合)。 過去に実行したクエリの DAG を表示する場合、または Tez プロセスをデバッグする場合は、 [[Tez View]](hdinsight-debug-ambari-tez-view.md) を使用します。
+クエリの解決に Tez を使用している場合、有向非巡回グラフ (DAG) が表示されます。 過去に実行したクエリの DAG を表示する場合、または Tez プロセスをデバッグする場合は、 [[Tez View]](hdinsight-debug-ambari-tez-view.md) を使用します。
 
 ### <a name="notifications"></a>通知
 
@@ -192,15 +194,15 @@ Hive ビューから、次の手順を使用すると、Hive クエリを実行�
 
 ## <a name="query-history"></a>クエリの履歴
 
-[Hive ビュー] ページの上部にある **[History]** ボタンを選択すると、以前に実行したクエリを表示できます。 これを使用して、以前に実行したクエリの一部を選択できます。 クエリを選択すると、そのクエリがクエリ エディターに表示されます。
+[Hive ビュー] ページの上部にある **[History]** ボタンを選択すると、以前に実行したクエリを表示できます。 ここで、これを使用して、以前に実行したクエリの一部を選択します。 クエリを選択すると、そのクエリがクエリ エディターに表示されます。
 
 ## <a name="user-defined-functions-udf"></a>ユーザー定義関数 (UDF)
 
 Hive は **ユーザー定義関数 (UDF)**で拡張することもできます。 UDF では、HiveQL で簡単にモデル化されない機能やロジックを実装することができます。
 
-Hive ビューの上部にある [UDF] タブでは、**クエリ エディター**で使用できる UDF のセットを宣言して保存できます。
+Hive ビューの上部にある [UDF] タブでは、UDF のセットを宣言して保存できます。 これらの UDF は**クエリ エディター**で使用できます。
 
-Hive ビューに UDF を追加すると、**[Insert udfs]** ボタンが**クエリ エディター**の下部に表示されます。 このボタンを選択すると、Hive ビューで定義した UDF のドロップダウン リストが表示されます。 UDF を選択すると、HiveQL ステートメントがクエリに追加され、UDF が有効になります。
+Hive ビューに UDF を追加すると、**[Insert udfs]** ボタンが**クエリ エディター**の下部に表示されます。 このエントリを選択すると、Hive ビューで定義した UDF のドロップダウン リストが表示されます。 UDF を選択すると、HiveQL ステートメントがクエリに追加され、UDF が有効になります。
 
 たとえば、次のプロパティを持つ UDF を定義したとします。
 
@@ -221,12 +223,13 @@ create temporary function myawesomeudf as 'com.myudfs.Awesome';
 
 これにより、クエリでこの UDF を使用できます。 たとえば、「 `SELECT myawesomeudf(name) FROM people;`」のように入力します。
 
-HDInsight において Hive で UDF を使用する方法の詳細については、以下の記事を参照してください。
+HDInsight において Hive で UDF を使用する方法の詳細については、以下のドキュメントを参照してください。
 
 * [HDInsight における Python と Hive および Pig の使用](hdinsight-python.md)
 * [HDInsight にカスタムの Hive UDF を追加する方法](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
 ## <a id="nextsteps"></a>次のステップ
+
 HDInsight での Hive に関する全般的な情報
 
 * [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)

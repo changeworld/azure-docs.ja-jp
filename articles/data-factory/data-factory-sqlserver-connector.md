@@ -12,19 +12,27 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 05/16/2017
 ms.author: jingwang
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 70c7e2334336be78d26784815fb988ce1d22eb12
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 25fca1ac29817fc6d72dd5ec5033a2962f3f0be4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/05/2017
 
 
 ---
 # <a name="move-data-to-and-from-sql-server-on-premises-or-on-iaas-azure-vm-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスまたは IaaS (Azure VM) の SQL Server との間でデータを移動する
 この記事では、Azure Data Factory のコピー アクティビティを使って、オンプレミスの SQL Server データベースとの間でデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。 
 
-サポートされる任意のソース データ ストアのデータを、SQL Server データベースにデータをコピーしたり、SQL Server データベースのデータを、サポートされる任意のシンク データ ストアにコピーしたりできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)の表をご覧ください。 
+## <a name="supported-scenarios"></a>サポートされるシナリオ
+**SQL Server データベースから**以下のデータ ストアにデータをコピーできます。
+
+[!INCLUDE [data-factory-supported-sink](../../includes/data-factory-supported-sinks.md)]
+
+以下のデータ ストアから **SQL Server データベースに**データをコピーできます。
+
+[!INCLUDE [data-factory-supported-sources](../../includes/data-factory-supported-sources.md)]
 
 ## <a name="supported-sql-server-versions"></a>サポートされる SQL Server のバージョン
 この SQL Server コネクタは、SQL 認証と Windows 認証の両方を使用して、オンプレミスまたは Azure IaaS でホストされている、次のバージョンのインスタンスとの間でのデータのコピーをサポートしています: SQL Server 2016、SQL Server 2014、SQL Server 2012、SQL Server 2008 R2、SQL Server 2008、SQL Server 2005
@@ -45,11 +53,12 @@ SQL Server と同じオンプレミス コンピューターまたはクラウ�
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。 
 
-1. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
-2. コピー操作用の入力データと出力データを表す**データセット**を作成します。 
-3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 
+1. **Data Factory**を作成します。 データ ファクトリは、1 つまたは複数のパイプラインを含むことができます。 
+2. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。 たとえば、SQL Server データベースから Azure Blob Storage にデータをコピーする場合、リンクされたサービスを 2 つ作成して、SQL Server データベースと Azure ストレージ アカウントをデータ ファクトリにリンクします。 SQL Server データベースに固有のリンクされたサービスのプロパティについては、「[リンクされたサービスのプロパティ](#linked-service-properties)」セクションをご覧ください。 
+3. コピー操作用の入力データと出力データを表す**データセット**を作成します。 最後の手順で説明されている例では、データセットを作成して入力データを含む SQL Server データベース内の SQL テーブルを指定します。 また、もう 1 つのデータセットを作成して、BLOB コンテナーと SQL Server データベースからコピーされたデータを保持するフォルダーを指定します。 SQL Server データベースに固有のデータセットのプロパティについては、「[データセットのプロパティ](#dataset-properties)」セクションをご覧ください。
+4. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 前に説明した例では、コピー アクティビティのソースとして SqlSource を、シンクとして BlobSink を使います。 同様に、Azure Blob Storage から SQL Server データベースにコピーする場合は、BlobSource と SqlSink をコピー アクティビティで使います。 SQL Server データベースに固有のコピー アクティビティのプロパティについては、「[コピー アクティビティのプロパティ](#copy-activity-properties)」セクションをご覧ください。 ソースまたはシンクとしてデータ ストアを使う方法について詳しくは、前のセクションのデータ ストアのリンクをクリックしてください。 
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 ツール/API (.NET API を除く) を使う場合、こうした Data Factory エンティティは、JSON 形式で定義します。  オンプレミスの SQL Server データベースとの間でデータをコピーするときに使用する Data Factory エンティティの JSON 定義のサンプルについては、この記事の「[JSON の使用例](#json-examples)」を参照してください。 
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 ツール/API (.NET API を除く) を使う場合、こうした Data Factory エンティティは、JSON 形式で定義します。  オンプレミスの SQL Server データベースとの間でデータをコピーするときに使用する Data Factory エンティティの JSON 定義のサンプルについては、この記事の「[JSON の使用例](#json-examples-for-copying-data-from-and-to-sql-server)」を参照してください。 
 
 次のセクションでは、SQL Server に固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。 
 
@@ -135,7 +144,7 @@ SQL Server データベースからデータを移動する場合は、コピー
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | SqlReaderQuery |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: Select * from MyTable。 入力データセットによって参照されるデータベースから複数のテーブルを参照する場合があります。 指定されていない場合に実行される SQL ステートメント: select from MyTable |いいえ |
-| sqlReaderStoredProcedureName |ソース テーブルからデータを読み取るストアド プロシージャの名前。 |ストアド プロシージャの名前。 最後の SQL ステートメントはストアド プロシージャの SELECT ステートメントにする必要があります。 |いいえ |
+| sqlReaderStoredProcedureName |ソース テーブルからデータを読み取るストアド プロシージャの名前。 |ストアド プロシージャの名前。 最後の SQL ステートメントはストアド プロシージャの SELECT ステートメントにする必要があります。 |なし |
 | storedProcedureParameters |ストアド プロシージャのパラメーター。 |名前と値のペア。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |いいえ |
 
 SqlSource に **sqlReaderQuery** が指定されている場合、コピー アクティビティでは、データを取得するために SQL Server Database ソースに対してこのクエリを実行します。
@@ -158,10 +167,10 @@ SqlReaderQuery または sqlReaderStoredProcedureName を指定しない場合�
 | sliceIdentifierColumnName |自動生成スライス ID を入力するためのコピー アクティビティの列名を指定します。再実行時、特定のスライスのデータを消去するときに使用されます。 詳細については、 [再現性に関するセクション](#repeatability-during-copy) をご覧ください。 |バイナリ (32) のデータ型の列の列名。 |いいえ |
 | sqlWriterStoredProcedureName |対象テーブルにデータをアップサート (更新/挿入) するストアド プロシージャの名前。 |ストアド プロシージャの名前。 |いいえ |
 | storedProcedureParameters |ストアド プロシージャのパラメーター。 |名前と値のペア。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |いいえ |
-| sqlWriterTableType |ストアド プロシージャで使用するテーブル型の名前を指定します。 コピー アクティビティでは、このテーブル型の一時テーブルでデータを移動できます。 その後、ストアド プロシージャのコードにより、コピーされたデータを既存のデータと結合できます。 |テーブルの種類の名前。 |なし |
+| sqlWriterTableType |ストアド プロシージャで使用するテーブル型の名前を指定します。 コピー アクティビティでは、このテーブル型の一時テーブルでデータを移動できます。 その後、ストアド プロシージャのコードにより、コピーされたデータを既存のデータと結合できます。 |テーブルの種類の名前。 |いいえ |
 
 
-## <a name="json-examples"></a>JSON の使用例
+## <a name="json-examples-for-copying-data-from-and-to-sql-server"></a>SQL Server 間でのデータのコピーに関する JSON の例
 以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 次のサンプルは、SQL Server と Azure BLOB ストレージとの間でデータをコピーする方法を示します。 ただし、Azure Data Factory のコピー アクティビティを使用して、 **こちら** に記載されているいずれかのシンクに、任意のソースからデータを [直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats) コピーすることができます。     
 
 ## <a name="example-copy-data-from-sql-server-to-azure-blob"></a>例: SQL Server から Azure BLOB へのデータのコピー

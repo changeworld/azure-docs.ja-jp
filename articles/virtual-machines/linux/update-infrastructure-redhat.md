@@ -14,10 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/13/2017
 ms.author: borisb
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 3ea6083425b9f881ba82077cfecbe24964304a79
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 07815d691ffe57f0349f7a90ced4a2fcc1ab834f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -31,7 +32,7 @@ RHUI によって管理される yum リポジトリの一覧は、プロビジ�
 > 
 
 ## <a name="rhui-azure-infrastructure-update"></a>RHUI Azure インフラストラクチャの更新
-2016 年 9 月より、Azure では Red Hat Update Infrastructure (RHUI) サーバーの新しいセットが提供されています。 これらのサーバーは [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) と共にデプロイされるため、リージョンに関係なく単一のエンドポイント (rhui-1.micrsoft.com) を任意の VM で使用できます。 Azure Marketplace にある新しい RHEL 従量課金制 (PAYG) イメージ (日付が 2016 年 9 月以降のバージョン) では、新しい Azure RHUI サーバーがポイントされるため、追加アクションは不要です。
+2016 年 9 月より、Azure では Red Hat Update Infrastructure (RHUI) サーバーの新しいセットが提供されています。 これらのサーバーは､地域に関係なく､どの VM からも 1 つのエンドポイント (rhui-1.microsoft.com) を利用できるよう､[Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) を使ってデプロイされます｡ Azure Marketplace にある新しい RHEL 従量課金制 (PAYG) イメージ (日付が 2016 年 9 月以降のバージョン) では、新しい Azure RHUI サーバーがポイントされるため、追加アクションは不要です。
 
 ### <a name="determine-if-action-is-required"></a>アクションが必要かどうか判断する
 Azure RHEL PAYG VM から Azure RHUI への接続で問題が生じている場合、次の手順に従います。

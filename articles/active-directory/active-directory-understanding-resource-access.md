@@ -11,12 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 05/08/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: 2d428e0e3aaf8fd4a2138648411da644ccd308f6
-ms.openlocfilehash: 9906aa7ac4296089fd2e41897323e757b181a022
-ms.lasthandoff: 02/08/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: d9143c1ec2075f71659e8deaadc93d1972ea9a85
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -54,7 +55,7 @@ Azure クラシック ポータル内では、Microsoft アカウントを使用
 
 複数のディレクトリにまたがるサブスクリプションを使用しているユーザーは、サブスクリプション フィルターを使用して、Azure クラシック ポータルの現在のコンテキストを切り替えることができます。 内部的には、ディレクトリごとに異なるログインという結果になっていますが、この操作は、シングル サインオン (SSO) によってシームレスに実行されます。
 
-サブスクリプションのディレクトリ ビューが&1; つであるため、複数のサブスクリプション間でリソースを移動する、といった操作はさらに難しくなる可能性があります。 リソースの転送を実行するには、まず最初に **[設定]** の [サブスクリプション] ページから **[ディレクトリの編集]** コマンドを使って、同じディレクトリにサブスクリプションを関連付けます。
+サブスクリプションのディレクトリ ビューが 1 つであるため、複数のサブスクリプション間でリソースを移動する、といった操作はさらに難しくなる可能性があります。 リソースの転送を実行するには、まず最初に **[設定]** の [サブスクリプション] ページから **[ディレクトリの編集]** コマンドを使って、同じディレクトリにサブスクリプションを関連付けます。
 
 ## <a name="next-steps"></a>次のステップ
 * Azure サブスクリプションの管理者を変更する方法の詳細については、「 [Azure 管理者ロールを追加または変更する方法](../billing/billing-add-change-azure-subscription-administrator.md)

@@ -12,12 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2017
+ms.date: 05/16/2017
 ms.author: shlo
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 74f2fafdf7355bbce37cf2bf98a6e709ebb7986e
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 95ffafb276009f0acfa9cd96b9d4e575bd6a9d28
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -94,7 +95,7 @@ Data Factory の関数は、システム変数と共に次の用途で使用で�
 | 日付 |StartOfDay(X) |X: DateTime  |パラメーター X の日コンポーネントで表される日の開始を取得します。<br/><br/>例: 9/15/2013 05:10:23 PM の StartOfDay は 9/15/2013 12:00:00 AM です。 |
 | DateTime |From(X) |X: String |文字列 X を日時にパースします。 |
 | DateTime |Ticks(X) |X: DateTime  |パラメーター X の ticks プロパティを取得します。1 ティックは 100 ナノ秒です。 このプロパティの値は、0001 年 1 月 1 日深夜 12:00:00 以降の経過時間のティック数を表しています。 |
-| Text |Format(X) |X: String 変数 |テキストの書式を設定します。 |
+| Text |Format(X) |X: String 変数 |テキストを書式設定します (`\\'` の組み合わせを使用して `'` 文字をエスケープします)。|
 
 > [!IMPORTANT]
 > 別の関数内で関数を使用する場合、内側の関数に **$$** プレフィックスを付ける必要はありません。 例: $$Text.Format('PartitionKey eq \\'my_pkey_filter_value\\' and RowKey ge \\'{0:yyyy-MM-dd HH:mm:ss}\\'', Time.AddHours(SliceStart, -6)). この例でわかるように、**Time.AddHours** 関数に **$$** プレフィックスは使用されていません。 
@@ -125,8 +126,8 @@ Data Factory の関数は、システム変数と共に次の用途で使用で�
                     "scriptPath": "adfwalkthrough\\scripts\\samplehive.hql",
                     "scriptLinkedService": "StorageLinkedService",
                     "defines": {
-                        "Input": "$$Text.Format('wasb://adfwalkthrough@<storageaccountname>.blob.core.windows.net/samplein/yearno={0:yyyy}/monthno={0:%M}/dayno={0:%d}/', SliceStart)",
-                        "Output": "$$Text.Format('wasb://adfwalkthrough@<storageaccountname>.blob.core.windows.net/sampleout/yearno={0:yyyy}/monthno={0:%M}/dayno={0:%d}/', SliceStart)"
+                        "Input": "$$Text.Format('wasb://adfwalkthrough@<storageaccountname>.blob.core.windows.net/samplein/yearno={0:yyyy}/monthno={0:MM}/dayno={0:dd}/', SliceStart)",
+                        "Output": "$$Text.Format('wasb://adfwalkthrough@<storageaccountname>.blob.core.windows.net/sampleout/yearno={0:yyyy}/monthno={0:MM}/dayno={0:dd}/', SliceStart)"
                     },
                     "scheduler": {
                         "frequency": "Hour",
@@ -207,8 +208,8 @@ SliceStart によって表される日ではなく前の日のデータを読み
                     "scriptLinkedService": "StorageLinkedService",
                     "defines": {
                         "Year": "$$Text.Format('{0:yyyy}',WindowsStart)",
-                        "Month": "$$Text.Format('{0:%M}',WindowStart)",
-                        "Day": "$$Text.Format('{0:%d}',WindowStart)"
+                        "Month": "$$Text.Format('{0:MM}',WindowStart)",
+                        "Day": "$$Text.Format('{0:dd}',WindowStart)"
                     }
                 },
                 "scheduler": {

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 04/28/2017
 ms.author: vturecek
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: 68ca454aebbad30d5ea2511b030f260a6a18b1ca
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 182c3d02883ceae83c9ba12c0f27085d133ac47a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/01/2017
+ms.lasthandoff: 05/04/2017
 
 
 ---
@@ -79,7 +79,7 @@ Service Fabric は、Reliable Services との通信方法において完全な�
     ![ステートフル サービス用のインターフェイス プロジェクトの作成][vs-add-class-library-project]
 
 3. インターフェイスを `ServiceProxy`で使用可能にするには、そのインターフェイスが IService インターフェイスから派生している必要があります。 このインターフェイスは、Service Fabric NuGet パッケージの 1 つに含まれます。 パッケージを追加するには、新しいクラス ライブラリ プロジェクトを右クリックして、 **[NuGet パッケージの管理]**を選択します。
-4. **Microsoft.ServiceFabric.Services** パッケージを探してインストールします。
+4. **Microsoft.ServiceFabric.Services.Remoting** パッケージを検索してインストールします。
    
     ![Services NuGet パッケージの追加][vs-services-nuget-package]
 
@@ -163,12 +163,13 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 1. ASP.NET プロジェクトで、 `ICounter` インターフェイスを含むクラス ライブラリへの参照を追加します。
 
-2. 前にクラス ライブラリ プロジェクトで行ったのと同様に、ASP.NET プロジェクトに Microsoft.ServiceFabric.Services パッケージを追加します。 これにより、 `ServiceProxy` クラスが提供されます。
+2. 前にクラス ライブラリ プロジェクトで行ったのと同様に、ASP.NET プロジェクトに Microsoft.ServiceFabric.Services.Remoting パッケージを追加します。 これにより、 `ServiceProxy` クラスが提供されます。
 
 4. **Controllers** フォルダーで `ValuesController` クラスを開きます。 現時点では、`Get` メソッドはハードコーディングされた文字列配列 "value1" と "value2" を返すだけであることに注意してください。これらは、先にブラウザーに表示されていたものと一致します。 この実装を次のコードに置き換えます。
    
     ```c#
     using MyStatefulService.Interface;
+    using Microsoft.ServiceFabric.Services.Client;
     using Microsoft.ServiceFabric.Services.Remoting.Client;
    
     ...

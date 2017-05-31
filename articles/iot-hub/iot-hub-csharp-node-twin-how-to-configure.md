@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2017
 ms.author: elioda
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: e42ad1b62d4f953e23624841ddec70b1fac28058
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: ca5ee2733df51faa5025c4d8eb687c81df4a3b4f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -214,7 +215,7 @@ ms.lasthandoff: 04/03/2017
     その後、IoT Hub に格納されたデバイス ツインのクエリを 10 秒ごとに実行して、報告された目的のテレメトリ構成を出力します。 すべてのデバイスに関する豊富なレポートを生成する方法については、[IoT Hub のクエリ言語][lnk-query]に関するページを参照してください。
    
    > [!IMPORTANT]
-   > このアプリケーションでは、例示を目的として 10 秒ごとに IoT Hub にクエリを実行します。 変更を検出するためではなく、あらゆるデバイスのユーザー向けのレポートを生成するためにクエリを使用します。 ソリューションにデバイス イベントのリアルタイム通知が必要な場合は、[デバイスからクラウドへのメッセージ][lnk-d2c]を使用します。
+   > このアプリケーションでは、例示を目的として 10 秒ごとに IoT Hub にクエリを実行します。 変更を検出するためではなく、あらゆるデバイスのユーザー向けのレポートを生成するためにクエリを使用します。 ソリューションにデバイス イベントのリアルタイム通知が必要な場合は、[ツイン通知][lnk-twin-notifications]を使用します。
    > 
    > 
 1. 最後に、 **Main** メソッドに次の行を追加します。
@@ -254,7 +255,7 @@ ms.lasthandoff: 04/03/2017
 
 [lnk-devguide-jobs]: iot-hub-devguide-jobs.md
 [lnk-query]: iot-hub-devguide-query-language.md
-[lnk-d2c]: iot-hub-devguide-messaging.md#device-to-cloud-messages
+[lnk-twin-notifications]: iot-hub-devguide-device-twins.md#back-end-operations
 [lnk-methods]: iot-hub-devguide-direct-methods.md
 [lnk-dm-overview]: iot-hub-device-management-overview.md
 [lnk-twin-tutorial]: iot-hub-node-node-twin-getstarted.md
@@ -262,7 +263,6 @@ ms.lasthandoff: 04/03/2017
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
 [lnk-device-management]: iot-hub-node-node-device-management-get-started.md
-[lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
 [lnk-iothub-getstarted]: iot-hub-node-node-getstarted.md
 [lnk-methods-tutorial]: iot-hub-node-node-direct-methods.md
 

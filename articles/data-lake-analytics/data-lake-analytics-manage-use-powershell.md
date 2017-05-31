@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-translationtype: Human Translation
-ms.sourcegitcommit: 5d73d1203faf485d715354e68ce2ccde32562611
-ms.openlocfilehash: 62d5b9d1698dc8f0331fc9ced8fc9611055db06e
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 4dc44ee33c7eee5baa3990ccbd754d3197d164e2
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -30,45 +32,30 @@ Azure PowerShell を使用して、Azure Data Lake Analytics のアカウント�
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+* **Azure PowerShell**。 「 [Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)」の「前提条件」セクションを参照してください。
 
-<!-- ################################ -->
-<!-- ################################ -->
+## <a name="running-the-snippets"></a>スニペットの実行
 
+このチュートリアルの PowerShell スニペットでは、以下の変数を使って各情報を格納します。
 
-## <a name="install-azure-powershell-10-or-greater"></a>Azure PowerShell 1.0 以上をインストールする
-「 [Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)」の「前提条件」セクションを参照してください。
+```
+$rg = "<ResourceGroupName>"
+$adls = "<DataLakeAccountName>"
+$adla = "<DataLakeAnalyticsAccountName>"
+$location = "East US 2"
+```
 
 ## <a name="manage-accounts"></a>アカウントの管理
-Data Lake Analytics ジョブを実行するには、Data Lake Analytics アカウントが必要です。 Azure HDInsight とは異なり、ジョブを実行しなければ、Analytics アカウントには課金されません。  ジョブの実行時にのみ課金されます。  詳細については、「 [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。  
 
-### <a name="create-accounts"></a>アカウントの作成
-    $resourceGroupName = "<ResourceGroupName>"
-    $dataLakeStoreName = "<DataLakeAccountName>"
-    $dataLakeAnalyticsAccountName = "<DataLakeAnalyticsAccountName>"
-    $location = "<Microsoft Data Center>"
+### <a name="create-a-data-lake-analytics-account"></a>Data Lake Analytics アカウントを作成する
 
-    Write-Host "Create a resource group ..." -ForegroundColor Green
-    New-AzureRmResourceGroup `
-        -Name  $resourceGroupName `
-        -Location $location
+```
+New-AzureRmResourceGroup -Name  $rg -Location $location
+New-AdlStore -ResourceGroupName $rg -Name $adls -Location $location
+New-AdlAnalyticsAccount -ResourceGroupName $rg -Name $adla -Location $location -DefaultDataLake $adls
+```
 
-    Write-Host "Create a Data Lake account ..."  -ForegroundColor Green
-    New-AzureRmDataLakeStoreAccount `
-        -ResourceGroupName $resourceGroupName `
-        -Name $dataLakeStoreName `
-        -Location $location 
-
-    Write-Host "Create a Data Lake Analytics account ..."  -ForegroundColor Green
-    New-AzureRmDataLakeAnalyticsAccount `
-        -Name $dataLakeAnalyticsAccountName `
-        -ResourceGroupName $resourceGroupName `
-        -Location $location `
-        -DefaultDataLake $dataLakeStoreName
-
-    Write-Host "The newly created Data Lake Analytics account ..."  -ForegroundColor Green
-    Get-AzureRmDataLakeAnalyticsAccount `
-        -ResourceGroupName $resourceGroupName `
-        -Name $dataLakeAnalyticsAccountName  
+### <a name="create-a-data-lake-analytics-account-using-a-template"></a>テンプレートを使用して Data Lake Analytics アカウントを作成する
 
 Azure リソース グループのテンプレートを使用することもできます。 Data Lake Analytics アカウントと従属する Data Lake Store アカウントを作成するためのテンプレートは、「[付録 A](#appendix-a)」にあります。.json テンプレートを使用してファイルにテンプレートを保存してから、以下の PowerShell スクリプトを使用してそれを呼び出します。
 
@@ -94,19 +81,11 @@ Azure リソース グループのテンプレートを使用することもで�
     New-AzureRmResourceGroupDeployment -Name $DeploymentName -ResourceGroupName $ResourceGroupName -TemplateFile $ARMTemplateFile -TemplateParameterObject $parameters 
 
 
-### <a name="list-account"></a>アカウントのリスト
+### <a name="list-accounts"></a>アカウントの一覧表示
+
 現在のサブスクリプション内の Data Lake Analytics アカウントをリストします。
 
     Get-AzureRmDataLakeAnalyticsAccount
-
-出力は次のようになります。
-
-    Id         : /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/learn1021rg/providers/Microsoft.DataLakeAnalytics/accounts/learn1021adla
-    Location   : eastus2
-    Name       : learn1021adla
-    Properties : Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeAnalyticsAccountProperties
-    Tags       : {}
-    Type       : Microsoft.DataLakeAnalytics/accounts
 
 特定のリソース グループ内の Data Lake Analytics アカウントをリストします。
 
@@ -296,7 +275,7 @@ U-SQL カタログを使用して、U-SQL スクリプトで共有できるよ�
 
 
 ## <a name="use-azure-resource-manager-groups"></a>Azure リソース マネージャー グループの使用
-アプリケーションは通常、Web アプリケーション、データベース、データベース サーバー、ストレージ、サード パーティのサービスなどの、複数のコンポーネントで構成されます。 Azure リソース マネージャー (ARM) を使用すると、アプリケーション内の複数のリソースを&1; つのグループ (Azure リソース グループと呼ばれます) と見なして作業できます。 アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。 デプロイメントにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 グループ全体のロールアップ コストを表示すると、組織の課金ついて明確に把握できます。 詳細については、「 [Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。 
+アプリケーションは通常、Web アプリケーション、データベース、データベース サーバー、ストレージ、サード パーティのサービスなどの、複数のコンポーネントで構成されます。 Azure リソース マネージャー (ARM) を使用すると、アプリケーション内の複数のリソースを 1 つのグループ (Azure リソース グループと呼ばれます) と見なして作業できます。 アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。 デプロイメントにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 グループ全体のロールアップ コストを表示すると、組織の課金ついて明確に把握できます。 詳細については、「 [Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。 
 
 Data Lake Analtyics サービスには、次のコンポーネントを含めることができます。
 
@@ -305,7 +284,7 @@ Data Lake Analtyics サービスには、次のコンポーネントを含める
 * 追加の Azure Data Lake Storage アカウント
 * 追加の Azure Storage アカウント
 
-管理しやすくするために&1; つの ARM グループの下にこれらすべてのコンポーネントを作成することができます。
+管理しやすくするために 1 つの ARM グループの下にこれらすべてのコンポーネントを作成することができます。
 
 ![Azure Data Lake Analytics のアカウントとストレージ](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-arm-structure.png)
 
@@ -373,10 +352,5 @@ Data Lake Analytics アカウントと従属するストレージ アカウン�
         }
       }
     }
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

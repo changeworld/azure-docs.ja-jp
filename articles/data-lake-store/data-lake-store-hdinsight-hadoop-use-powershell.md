@@ -11,12 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/14/2017
+ms.date: 05/08/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: eb92706201760c2682d7b45a51a518c40aba3bd4
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: a6a87bb3d13f5d9acea7cd84fe7eea901ab263e5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -85,18 +86,36 @@ Data Lake Store を作成するには、次の手順に従います。
         $resourceGroupName = "<your new resource group name>"
         New-AzureRmResourceGroup -Name $resourceGroupName -Location "East US 2"
 
-    ![Azure リソース グループの作成](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.PS.CreateResourceGroup.png "Azure リソース グループの作成")
+    出力は次のように表示されます。
+
+        ResourceGroupName : hdiadlgrp
+        Location          : eastus2
+        ProvisioningState : Succeeded
+        Tags              :
+        ResourceId        : /subscriptions/<subscription-id>/resourceGroups/hdiadlgrp
+
 3. Azure Data Lake Store アカウントを作成します。 指定するアカウント名には、小文字と数字のみを含める必要があります。
 
         $dataLakeStoreName = "<your new Data Lake Store name>"
         New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStoreName -Location "East US 2"
 
-    ![Azure Data Lake アカウントの作成](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.PS.CreateADLAcc.png "Azure Data Lake アカウントの作成")
-4. アカウントが正常に作成されたことを確認します。
+    出力は次のように表示されます。
 
-        Test-AzureRmDataLakeStoreAccount -Name $dataLakeStoreName
+        ...
+        ProvisioningState           : Succeeded
+        State                       : Active
+        CreationTime                : 5/5/2017 10:53:56 PM
+        EncryptionState             : Enabled
+        ...
+        LastModifiedTime            : 5/5/2017 10:53:56 PM
+        Endpoint                    : hdiadlstore.azuredatalakestore.net
+        DefaultGroup                :
+        Id                          : /subscriptions/<subscription-id>/resourceGroups/hdiadlgrp/providers/Microsoft.DataLakeStore/accounts/hdiadlstore
+        Name                        : hdiadlstore
+        Type                        : Microsoft.DataLakeStore/accounts
+        Location                    : East US 2
+        Tags                        : {}
 
-    この出力は **True**になります。
 5. いくつかのサンプル データを Azure Data Lake にアップロードします。 このサンプル データは、HDInsight クラスターからデータにアクセスできることを確認するために、この記事の後半で使用します。 アップロードするいくつかのサンプル データを探している場合は、 **Azure Data Lake Git リポジトリ** から [Ambulance Data](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)フォルダーを取得できます。
 
         $myrootdir = "/"
