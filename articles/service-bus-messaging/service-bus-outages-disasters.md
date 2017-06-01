@@ -1,4 +1,4 @@
----
+﻿---
 title: "障害と災害に対する Azure Service Bus アプリケーションの保護 | Microsoft Docs"
 description: "発生する可能性がある Service Bus の障害からアプリケーションを保護するために使用できる手法について説明します。"
 services: service-bus-messaging

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure VM の障害復旧のシナリオ | Microsoft Docs"
 description: "Azure サービスの中断が Azure 仮想マシンに影響を与える場合の対処方法について説明します。"
 services: virtual-machines

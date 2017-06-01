@@ -1,4 +1,4 @@
----
+﻿---
 title: "Site Recovery とは | Microsoft Docs"
 description: "Azure Site Recovery サービスの概要について説明し、デプロイ シナリオについてまとめます。"
 services: site-recovery

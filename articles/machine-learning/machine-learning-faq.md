@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Machine Learning に関してよく寄せられる質問 (FAQ) | Microsoft Docs"
 description: "Azure Machine Learning の概要: 効率的な予測モデリングのためのクラウド サービスについて、その課金、機能、制限についての疑問点に答える FAQ です。"
 keywords: "機械の概要、予測モデリング、機械学習とは"

@@ -1,4 +1,4 @@
----
+﻿---
 title: "StorSimple Virtual Array の障害復旧とデバイス フェールオーバー | Microsoft Docs"
 description: "StorSimple Virtual Array をフェールオーバーする方法の詳細を確認します。"
 services: storsimple

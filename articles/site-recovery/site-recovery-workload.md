@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Site Recovery で保護できるワークロード"
 description: "Azure Site Recovery は、オンプレミスの仮想マシンと物理サーバーの Azure またはセカンダリ オンプレミス サイトへのレプリケーション、フェールオーバー、および復旧を調整することで、ワークロードやアプリケーションを保護します。"
 services: site-recovery

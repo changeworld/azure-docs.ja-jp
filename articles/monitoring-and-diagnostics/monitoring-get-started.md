@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Monitor の使用 | Microsoft Docs"
 description: "Azure Monitor を使用してリソースの動作を把握し、データに基づいてアクションを実行します。"
 author: johnkemnetz

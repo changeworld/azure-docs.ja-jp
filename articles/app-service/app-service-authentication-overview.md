@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure App Service での認証と承認 | Microsoft Docs"
 description: "Azure App Service の認証/承認の機能の概念リファレンスと概要"
 services: app-service
