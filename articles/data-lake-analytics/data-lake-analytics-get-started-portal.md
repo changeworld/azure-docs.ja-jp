@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: edmaca
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 64c5869f3e66c249fefa9af228fe1b33974cf293
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 278c5d4d6bf3b356b51ccb878285a7e35cc3a810
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -41,20 +42,20 @@ Azure Portal を使用して Azure Data Lake Analytics アカウントを作成�
 **Data Lake Analytics アカウントを作成する**
 
 1. [Azure ポータル](https://portal.azure.com)にサインオンします。
-2. **[新規]**、**[インテリジェンス + 分析]**、**[Data Lake Analytics]** の順にクリックします。
-3. 次の値を入力または選択します。
+2. **[新規]** >  **[インテリジェンス + 分析]** > **[Data Lake Analytics]** の順にクリックします。
+3. 次の値を選択します。
 
     ![Azure Data Lake Analytics ポータルのブレード](./media/data-lake-analytics-get-started-portal/data-lake-analytics-portal-create-adla.png)
 
    * **名前**: Data Lake Analytics アカウントに名前を付けます (英小文字と数字のみ使用できます)。
    * **サブスクリプション**: Analytics アカウントに使用する Azure サブスクリプションを選択します。
-   * **リソース グループ**。 既存の Azure リソース グループを選択するか、新しいものを作成します。 Azure リソース マネージャーを使用すると、アプリケーション内の複数リソースを 1 つのグループと見なして作業できます。 詳細については、「 [Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。
-   * **場所**:  Data Lake Analytics アカウントの Azure データ センターを選択します。
-   * **Data Lake Store**: *[必要な設定の構成]* をクリックします。 以下の指示に従って、新しい Data Lake Store アカウントを作成するか、既存のものを選択します。 各 Data Lake Analytics アカウントには、従属する Data Lake Store アカウントがあります。 Data Lake Analytics アカウントと従属する Data Lake Store アカウントは、同じ Azure データ センターに配置する必要があります。
+   * **リソース グループ**。 既存の Azure リソース グループを選択するか、新しいものを作成します。
+   * **場所**。 Data Lake Analytics アカウントの Azure データ センターを選択します。
+   * **Data Lake Store**: 以下の指示に従って、新しい Data Lake Store アカウントを作成するか、既存のものを選択します。 
 4. 価格レベルを選択する  
 5. ページの下部にある **[Create]**」を参照してください。 ポータルのホーム画面に戻り、"Azure Data Lake Analytics のデプロイ中" と示している新しいタイルが表示されます。 デプロイ プロセスでは、Data Lake Analytics アカウントが作成されるまでに数分かかります。 アカウントが作成されると、ポータルの新しいブレードにアカウントが開きます。
 
-Data Lake Analytics アカウントが作成されたら、Data Lake Store アカウントや Azure ストレージ アカウントを追加できます。 手順については、 [Data Lake Analytics アカウント データ ソースの管理](data-lake-analytics-manage-use-portal.md#manage-account-data-sources)に関する記述を参照してください。
+Data Lake Analytics アカウントが作成されたら、Data Lake Store アカウントや Azure ストレージ アカウントを追加できます。 手順については、 [Data Lake Analytics アカウント データ ソースの管理](data-lake-analytics-manage-use-portal.md)に関する記述を参照してください。
 
 ## <a name="prepare-source-data"></a>ソース データの準備
 このチュートリアルでは、検索ログを処理します。  検索ログは、Data Lake Store または Azure Blob Storage に格納できます。
@@ -63,7 +64,7 @@ Azure Portal には、検索ログ ファイルを含むサンプル データ �
 
 **サンプル データ ファイルのコピー**
 
-1. [Azure Portal](https://portal.azure.com) から Data Lake Analytics アカウントを開きます。  アカウントを作成し、ポータルでそのアカウントを開く方法については、[Data Lake Analytics アカウントの管理](data-lake-analytics-get-started-portal.md#create-data-lake-analytics-account)に関する記事をご覧ください。
+1. [Azure Portal](https://portal.azure.com) から Data Lake Analytics アカウントを開きます。  アカウントを作成し、ポータルでそのアカウントを開く方法については、[Data Lake Analytics アカウントの管理](data-lake-analytics-get-started-portal.md)に関する記事をご覧ください。
 2. **[要点]** ウィンドウを展開し、**[サンプル スクリプトを探します]** をクリックします。 **[サンプル スクリプト]** という別のブレードが開きます。
 
     ![Azure Data Lake Analytics ポータルのサンプル スクリプト](./media/data-lake-analytics-get-started-portal/data-lake-analytics-portal-sample-scripts.png)
@@ -83,7 +84,7 @@ Azure Portal には、検索ログ ファイルを含むサンプル データ �
 
      このチュートリアルでは、SearchLog.tsv を使用します。
 
-実際には、リンクされたストレージ アカウントにデータを書き込むか、データをアップロードするようにアプリケーションをプログラムします。 ファイルのアップロードについては、[Data Lake Store へのデータのアップロード](data-lake-analytics-manage-use-portal.md#upload-data-to-adls)または [Blob Storage](data-lake-analytics-manage-use-portal.md#upload-data-to-wasb) へのデータのアップロードに関する記事をご覧ください。
+実際には、リンクされたストレージ アカウントにデータを書き込むか、データをアップロードするようにアプリケーションをプログラムします。 ファイルのアップロードについては、[Data Lake Store へのデータのアップロード](data-lake-analytics-manage-use-portal.md)または [Blob Storage](data-lake-analytics-manage-use-portal.md) へのデータのアップロードに関する記事をご覧ください。
 
 ## <a name="create-and-submit-data-lake-analytics-jobs"></a>Data Lake Analytics ジョブの作成と送信
 ソース データの準備ができたら、U-SQL スクリプトの開発を開始できます。  
@@ -94,7 +95,7 @@ Azure Portal には、検索ログ ファイルを含むサンプル データ �
 
     ![Azure Data Lake Analytics の新しいジョブ ボタン](./media/data-lake-analytics-get-started-portal/data-lake-analytics-new-job-button.png)
 
-    ブレードが表示されない場合は、 [ポータルから Data Lake Analytics アカウントを開く](data-lake-analytics-manage-use-portal.md#access-adla-account)手順を参照してください。
+    ブレードが表示されない場合は、 [ポータルから Data Lake Analytics アカウントを開く](data-lake-analytics-manage-use-portal.md)手順を参照してください。
 2. **ジョブ名**を入力し、次の U-SQL スクリプトを入力します。
 
         @searchlog =
@@ -126,18 +127,14 @@ Azure Portal には、検索ログ ファイルを含むサンプル データ �
 
 1. 上部の **[ジョブの送信]** をクリックします。   
 2. ジョブの状態が **[成功]**に変わるまで待機します。 ジョブが完了するまで約 1 分かかる場合があります。
-
-    ジョブが失敗した場合は、[Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)に関する記事をご覧ください。
-3. ブレードの下部にある **[出力]** タブをクリックし、**SearchLog-from-Data-Lake.csv** をクリックします。 出力ファイルはプレビュー、ダウンロード、名前変更、削除できます。
+3. ジョブが失敗した場合は、[Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)に関する記事をご覧ください。
+4. ブレードの下部にある **[出力]** タブをクリックし、`SearchLog-from-Data-Lake.csv` をクリックします。 出力ファイルはプレビュー、ダウンロード、名前変更、削除できます。
 
     ![Azure Data Lake Analytics ジョブの出力ファイルのプロパティ](./media/data-lake-analytics-get-started-portal/data-lake-analytics-output-file-properties.png)
 
 ## <a name="see-also"></a>関連項目
-* より複雑なクエリを表示する場合は、「 [チュートリアル: Azure Data Lake Analytics を使用して Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)」をご覧ください。
+
 * U-SQL アプリケーションの開発を開始する場合は、「 [チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)」をご覧ください。
 * U-SQL の詳細については、「 [Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」を参照してください。
 * 管理タスクについては、「 [Azure Portal を使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
-* Data Lake Analytics の概要については、「 [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
-* 他のツールを使用する同じチュートリアルを表示するには、ページの上部にあるタブ セレクターをクリックします。
-* 診断情報のログについては、「 [Accessing diagnostics logs for Azure Data Lake Analytics (Azure Data Lake Analytics の診断ログへのアクセス)](data-lake-analytics-diagnostic-logs.md)
 

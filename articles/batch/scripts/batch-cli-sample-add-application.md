@@ -12,21 +12,24 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/20/2017
+ms.date: 05/02/2017
 ms.author: antisch
-translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 342cc2c93304f7a8f651769139e28ebf2e30d412
-ms.lasthandoff: 03/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 5d057eaf32867aedc95d58c5185e2be1f9385ec0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/15/2017
 
 ---
 
 # <a name="adding-applications-to-azure-batch-with-azure-cli"></a>Azure CLI を使用した Azure Batch へのアプリケーションの追加
 
 このスクリプトでは、Azure Batch プールまたはタスクで使用するアプリケーションを設定する方法について説明します。 アプリケーションを設定するには、実行ファイルをすべての依存関係と共に .zip ファイルにパッケージ化します。 この例では、実行可能な zip ファイル名を 'my-application-exe.zip' とします。
-このスクリプトの実行では、Batch アカウントが既に設定されていることを想定しています。 詳細については、[Batch アカウントを作成するためのサンプル スクリプト](./batch-cli-sample-create-account.md)に関するページをご覧ください。
 
-必要に応じて、[Azure CLI インストール ガイド](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページの手順に従って Azure CLI をインストールし、`az login` を実行して Azure にログインします。
+## <a name="prerequisites"></a>前提条件
+
+- Azure CLI をまだインストールしていない場合は、[Azure CLI インストール ガイド](https://docs.microsoft.com/cli/azure/install-azure-cli)の手順に従ってインストールします。
+- Batch アカウントをまだお持ちでない場合は、作成します。 アカウント作成のサンプル スクリプトについては、「[Azure CLI で Batch アカウントを作成する](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-create-account)」を参照してください。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 

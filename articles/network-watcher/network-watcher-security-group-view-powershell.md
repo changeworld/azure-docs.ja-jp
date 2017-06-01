@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: fa79ab0ab80481c8969c6fa653e92b10985cab3b
-ms.openlocfilehash: 44a59a43745494eb943711a5afcb6e436a25a44d
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 363fdd9f1de933bb4050f91e1e111aaf3e419058
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/26/2017
 
 ---
 
@@ -25,7 +26,8 @@ ms.lasthandoff: 03/31/2017
 
 > [!div class="op_single_selector"]
 > - [PowerShell](network-watcher-security-group-view-powershell.md)
-> - [CLI](network-watcher-security-group-view-cli.md)
+> - [CLI 1.0](network-watcher-security-group-view-cli-nodejs.md)
+> - [CLI 2.0](network-watcher-security-group-view-cli.md)
 > - [REST API](network-watcher-security-group-view-rest.md)
 
 セキュリティ グループ ビューは、仮想マシンに適用される構成済みの効果的なネットワーク セキュリティ規則を返します。 この機能は、ネットワーク セキュリティ グループと VM で構成されている規則を監査および診断して、トラフィックが正しく許可または拒否されていることを確認する際に役立ちます。 この記事では、PowerShell を使用して、仮想マシンに適用される構成済みの効果的なセキュリティ規則を取得する方法を説明します。
@@ -51,7 +53,7 @@ $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $n
 
 ## <a name="get-a-vm"></a>VM の取得
 
-`Get-AzureRmNetworkWatcherSecurityGroupView` コマンドレットの実行対象となる仮想マシンが必要です。 次の例では VM オブジェクトを取得します。
+`Get-AzureRmNetworkWatcherSecurityGroupView` コマンドレットを実行する仮想マシンが必要です。 次の例では VM オブジェクトを取得します。
 
 ```powershell
 $VM = Get-AzurermVM -ResourceGroupName testrg -Name testvm1

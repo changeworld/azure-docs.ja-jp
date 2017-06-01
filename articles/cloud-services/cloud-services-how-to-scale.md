@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 05/18/2017
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 488b16623300d80a53a61badee420de106c418b0
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: c7fb1c796556baf09a34c4bc6ed71964071d5874
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 ---
 
@@ -42,9 +43,6 @@ Azure クラシック ポータルの [スケール] ページでは、Web ロ�
 * クラウド サービスにリンクされたリソースの規模を設定できます。 リソースのリンクの詳細については、「 [方法: クラウド サービスに対するリソースのリンク](cloud-services-how-to-manage.md#how-to-link-a-resource-to-a-cloud-service)」を参照してください。
 
 * アプリケーションの高可用性を可能にするには、アプリケーションを 2 つ以上のロール インスタンスと共にデプロイする必要があります。 詳細については、「 [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」を参照してください。
-
-> [!WARNING]
-> 自動スケーリングは、従来の Azure Storage アカウントのみで動作します。 Azure Resource Manager ストレージ アカウントでは動作しません。
 
 ## <a name="schedule-scaling"></a>スケールのスケジュール
 既定では、すべてのロールが特定のスケジュールに従っていません。 そのため、変更した設定はすべての時間およびすべての日に年間を通じて適用されます。 必要に応じて、次のいずれかのモードに対して手動スケールまたは自動スケールを設定できます。

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/26/2017
+ms.date: 05/08/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 5844540801a6f0ff593b3f404f6815473c65a52e
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 66984bef9e82df80818eea31bd37de524b567b33
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -48,8 +48,8 @@ ms.lasthandoff: 04/28/2017
 
 | パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- | 
-|operand1 |はい |int |加算する最初の整数。 |
-|operand2 |はい |int |加算する 2 つ目の整数。 |
+|operand1 |あり |int |加算する最初の整数。 |
+|operand2 |あり |int |加算する 2 つ目の整数。 |
 
 ### <a name="examples"></a>例
 
@@ -91,19 +91,24 @@ ms.lasthandoff: 04/28/2017
 <a id="copyindex" />
 
 ## <a name="copyindex"></a>copyIndex
-`copyIndex(offset)`
+`copyIndex(loopName, offset)`
 
 反復処理のループのインデックスを返します。 
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
+| loopName | いいえ | string | 反復処理の取得対象となるループの名前。 |
 | offset |いいえ |int |0 から始まる反復値に追加する整数。 |
 
 ### <a name="remarks"></a>解説
 
-この関数は常に **copy** オブジェクトと共に使用されます。 **offset** の値が指定されていない場合、現在の反復値が返されます。 反復値は 0 から始まります。 **copyIndex**の使用方法の詳細については、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
+この関数は常に **copy** オブジェクトと共に使用されます。 **offset** の値が指定されていない場合、現在の反復値が返されます。 反復値は 0 から始まります。
+
+copyIndex がリソースの反復処理を指すのかプロパティの反復処理を指すのかは、**loopName** プロパティで指定できます。 **loopName** に値を指定しなかった場合は、現在のリソース タイプの反復処理が使われます。 プロパティに対する反復では、**loopName** に値を指定してください。 
+ 
+**copyIndex**の使用方法の詳細については、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
 
 ### <a name="examples"></a>例
 
@@ -138,8 +143,8 @@ ms.lasthandoff: 04/28/2017
 
 | パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
-| operand1 |はい |int |除算される整数。 |
-| operand2 |はい |int |除算に使用される整数。 0 にすることはできません。 |
+| operand1 |あり |int |除算される整数。 |
+| operand2 |あり |int |除算に使用される整数。 0 にすることはできません。 |
 
 ### <a name="examples"></a>例
 
@@ -187,9 +192,9 @@ ms.lasthandoff: 04/28/2017
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |あり |文字列または整数 |浮動小数点数に変換する値。 |
+| arg1 |はい |文字列または整数 |浮動小数点数に変換する値。 |
 
 ### <a name="examples"></a>例
 
@@ -406,7 +411,7 @@ ms.lasthandoff: 04/28/2017
 | パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
 | operand1 |あり |int |乗算する最初の整数。 |
-| operand2 |はい |int |乗算する 2 つ目の整数。 |
+| operand2 |あり |int |乗算する 2 つ目の整数。 |
 
 ### <a name="examples"></a>例
 
@@ -456,8 +461,8 @@ ms.lasthandoff: 04/28/2017
 
 | パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
-| operand1 |はい |int |減算される整数。 |
-| operand2 |はい |int |減算する整数。 |
+| operand1 |あり |int |減算される整数。 |
+| operand2 |あり |int |減算する整数。 |
 
 ### <a name="examples"></a>例
 

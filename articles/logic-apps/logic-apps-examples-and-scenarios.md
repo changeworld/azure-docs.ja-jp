@@ -13,10 +13,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 03/14/2017
-ms.author: jehollan
-translationtype: Human Translation
+ms.author: LADocs; jehollan
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
 ms.openlocfilehash: dcf089d680249d0a2f9d748b315076d91c8c78e8
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/30/2017
 
 

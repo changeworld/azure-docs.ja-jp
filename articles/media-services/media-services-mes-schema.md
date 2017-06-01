@@ -12,19 +12,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 05/12/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: a526610f5b09ce73a9c192ec45ae8aafab001401
-ms.lasthandoff: 01/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: b35390c6eb912db966648bff4efb59cece2837b3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---
 # <a name="media-encoder-standard-schema"></a>Media Encoder Standard スキーマ
 このトピックでは、[Media Encoder Standard プリセット](media-services-mes-presets-overview.md)のベースとなっている XML スキーマの要素と型をいくつか取り上げます。 ここでは要素とその有効な値について説明します。 完全なスキーマは今後追加される予定です。  
 
-## <a name="a-namepreseta-preset-root-element"></a><a name="Preset"></a> プリセット (ルート要素)
+## <a name="Preset"></a> プリセット (ルート要素)
 エンコード プリセットを定義します。  
 
 ### <a name="elements"></a>要素
@@ -38,7 +39,7 @@ ms.lasthandoff: 01/13/2017
 | --- | --- | --- |
 | **バージョン**<br/><br/> 必須 |**xs:decimal** |プリセット バージョン。 xs:fractionDigits value="1" と xs:minInclusive value="1" という制限が適用されます。たとえば、**version="1.0"** という制限です。 |
 
-## <a name="a-nameencodinga-encoding"></a><a name="Encoding"></a> エンコード
+## <a name="Encoding"></a> エンコード
 次の要素のシーケンスが含まれます。  
 
 ### <a name="elements"></a>要素
@@ -50,24 +51,24 @@ ms.lasthandoff: 01/13/2017
 | **PngImage** |[PngImage](media-services-mes-schema.md#PngImage) |Png イメージの設定。 |
 | **JpgImage** |[JpgImage](media-services-mes-schema.md#JpgImage) |Jpg イメージの設定。 |
 
-## <a name="a-nameh264videoa-h264video"></a><a name="H264Video"></a> H264Video
+## <a name="H264Video"></a> H264Video
 ### <a name="elements"></a>要素
 | 名前 | 型 | 説明 |
 | --- | --- | --- |
-| **TwoPass**<br/><br/> minOccurs="0" |**xs:boolean** |現在サポートされているのは&1; パス エンコードだけです。 |
+| **TwoPass**<br/><br/> minOccurs="0" |**xs:boolean** |現在サポートされているのは 1 パス エンコードだけです。 |
 | **KeyFrameInterval**<br/><br/> minOccurs="0"<br/><br/> **default="00:00:02"** |**xs:time** |IDR フレーム間 (既定の) 間隔を決定します。 |
 | **SceneChangeDetection**<br/><br/> minOccurs="0"<br/><br/> default=”false” |**xs:boolean** |true に設定すると、エンコーダーはビデオ内でシーン変更の検出を試行し、IDR フレームを挿入します。 |
 | **Complexity**<br/><br/> minOccurs="0"<br/><br/> default="Balanced" |**xs:string** |エンコード速度とビデオ品質の間のトレードオフを制御します。 **Speed**、**Balanced**、**Quality** のいずれかの値を指定できます<br/><br/> 既定値: **Balanced** |
 | **SyncMode**<br/><br/> minOccurs="0" | |機能は今後のリリースで公開されます。 |
 | **H264Layers**<br/><br/> minOccurs="0" |[H264Layers](media-services-mes-schema.md#H264Layers) |出力ビデオ レイヤーのコレクション。 |
 
-## <a name="a-nameh264layersa-h264layers"></a><a name="H264Layers"></a> H264Layers
+## <a name="H264Layers"></a> H264Layers
 ### <a name="elements"></a>要素
 | 名前 | 型 | 説明 |
 | --- | --- | --- |
 | **H264Layer**<br/><br/> minOccurs="0" maxOccurs="unbounded" |[H264Layer](media-services-mes-schema.md#H264Layer) |H264 レイヤーのコレクション。 |
 
-## <a name="a-nameh264layera-h264layer"></a><a name="H264Layer"></a> H264Layer
+## <a name="H264Layer"></a> H264Layer
 > [!NOTE]
 > ビデオの制限は、[H264 レベル](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC#Levels)の表で説明されている値に基づきます。  
 > 
@@ -86,11 +87,11 @@ ms.lasthandoff: 01/13/2017
 | **BFrames**<br/><br/> minOccurs="0" |**xs:int** |参照フレーム間の B フレームの数。 |
 | **ReferenceFrames**<br/><br/> minOccurs="0"<br/><br/> default=”3” |**xs:int** |GOP の参照フレームの数。 |
 | **EntropyMode**<br/><br/> minOccurs="0"<br/><br/> default=”Cabac” |**xs:string** |**Cabac** または **Cavlc** のいずれかの値を指定できます。 |
-| **FrameRate**<br/><br/> minOccurs="0" |有理数 |出力ビデオのフレーム レートを決定します。 既定値 "0/1" を使用すると、エンコーダーが、入力ビデオと同じフレーム レートを使用できます。 以下に示すように、使用できる値は、共通のビデオ フレーム レートになります。 ただし、すべての有理数が許可されます。 たとえば、1/1 は 1 fps で、有効です。<br/><br/> - 12/1 (12 fps)<br/><br/> - 15/1 (15 fps)<br/><br/> - 24/1 (24 fps)<br/><br/> - 24000/1001 (23.976 fps)<br/><br/> - 25/1 (25 fps)<br/><br/>  - 30/1 (30 fps)<br/><br/> - 30000/1001 (29.97 fps) |
+| **FrameRate**<br/><br/> minOccurs="0" |有理数 |出力ビデオのフレーム レートを決定します。 既定値 "0/1" を使用すると、エンコーダーが、入力ビデオと同じフレーム レートを使用できます。 以下に示すように、使用できる値は、共通のビデオ フレーム レートになります。 ただし、すべての有理数が許可されます。 たとえば、1/1 は 1 fps で、有効です。<br/><br/> - 12/1 (12 fps)<br/><br/> - 15/1 (15 fps)<br/><br/> - 24/1 (24 fps)<br/><br/> - 24000/1001 (23.976 fps)<br/><br/> - 25/1 (25 fps)<br/><br/>  - 30/1 (30 fps)<br/><br/> - 30000/1001 (29.97 fps) <br/> <br/>**注** マルチビットレート エンコードのカスタム プリセットを作成する場合、プリセットのすべてのレイヤーで同じ FrameRate 値を使用する**必要があります**。|
 | **AdaptiveBFrame**<br/><br/> minOccurs="0" |**xs:boolean** |Azure Media Encoder からコピー |
 | **Slices**<br/><br/> minOccurs="0"<br/><br/> default="0" |**xs:int** |フレームがいくつのスライスに分割されるかを決定します。 既定値を使用することをお勧めします。 |
 
-## <a name="a-nameaacaudioa-aacaudio"></a><a name="AACAudio"></a> AACAudio
+## <a name="AACAudio"></a> AACAudio
  次の要素とグループのシーケンスが含まれます。  
 
  AAC の詳細については、[AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) に関するページをご覧ください。  
@@ -110,7 +111,7 @@ ms.lasthandoff: 01/13/2017
 | --- | --- |
 | [AudioGroup](media-services-mes-schema.md#AudioGroup)<br/><br/> minOccurs="0" |各プロファイルに設定できる適切なチャネル数、サンプリング レート、およびビットレートについては、「[AudioGroup](media-services-mes-schema.md#AudioGroup)」の説明を参照してください。 |
 
-## <a name="a-nameaudiogroupa-audiogroup"></a><a name="AudioGroup"></a> AudioGroup
+## <a name="AudioGroup"></a> AudioGroup
 各プロファイルの有効な値の詳細については、以下の「オーディオ コーデックの詳細」の表を参照してください。  
 
 ### <a name="elements"></a>要素
@@ -128,14 +129,14 @@ ms.lasthandoff: 01/13/2017
 **HEAACV2**|2.<br/><br/> - 22050 : 8 &lt;= ビットレート &lt;= 10<br/><br/> - 24000 : 8 &lt;= ビットレート &lt;= 10<br/><br/> - 32000 : 12 &lt;= ビットレート &lt;= 64<br/><br/> - 44100 : 20 &lt;= ビットレート &lt;= 64<br/><br/> - 48000 : 20 &lt;= ビットレート &lt;= 64<br/><br/> - 88200 : 64 &lt;= ビットレート &lt;= 64  
   
 
-## <a name="a-nameclipa-clip"></a><a name="Clip"></a> クリップ
+## <a name="Clip"></a> クリップ
 ### <a name="attributes"></a>属性
 | 名前 | 型 | 説明 |
 | --- | --- | --- |
 | **StartTime** |**xs:duration** |プレゼンテーションの開始時刻を指定します。 StartTime の値は、入力ビデオの絶対タイムスタンプと一致している必要があります。 たとえば、入力ビデオの最初のフレームのタイムスタンプが 12:00:10.000 の場合、StartTime は 12:00:10.000 以降でなければなりません。 |
 | **Duration** |**xs:duration** |プレゼンテーションの期間 (ビデオのオーバーレイの外観など) を指定します。 |
 
-## <a name="a-nameoutputa-output"></a><a name="Output"></a> 出力
+## <a name="Output"></a> 出力
 ### <a name="attributes"></a>属性
 | 名前 | 型 | 説明 |
 | --- | --- | --- |
@@ -153,7 +154,7 @@ ms.lasthandoff: 01/13/2017
 | **{Extension}** |出力ファイルの "Type" プロパティから継承されます。 出力ファイル名の拡張子は、"mp4"、"ts"、"jpg"、"png"、"bmp" のいずれかになります。 |
 | **{Index}** |サムネイルについては必須。 一度だけ提供されます。 |
 
-## <a name="a-namevideoa-video-complex-type-inherits-from-codec"></a><a name="Video"></a> ビデオ (複合型はコーデックから継承)
+## <a name="Video"></a> ビデオ (複合型はコーデックから継承)
 ### <a name="attributes"></a>属性
 | 名前 | 型 | 説明 |
 | --- | --- | --- |
@@ -162,7 +163,7 @@ ms.lasthandoff: 01/13/2017
 | **Range** |**xs:string** | |
 | **PreserveResolutionAfterRotation** |**xs:boolean** |詳細については、「[PreserveResolutionAfterRotation](media-services-mes-schema.md#PreserveResolutionAfterRotation)」セクションを参照してください |
 
-### <a name="a-namepreserveresolutionafterrotationa-preserveresolutionafterrotation"></a><a name="PreserveResolutionAfterRotation"></a> PreserveResolutionAfterRotation
+### <a name="PreserveResolutionAfterRotation"></a> PreserveResolutionAfterRotation
 PreserveResolutionAfterRotation フラグは、パーセントで表される解像度の値 (Width = "100%" , Height = "100%") と組み合わせて使用することをお勧めします。  
 
 既定では、Media Encoder Standard (MES) プリセットのエンコード解像度設定 (幅、高さ) の対象は、回転が 0 度のビデオです。 たとえば、入力ビデオの解像度が 1280 x 720 で、回転が 0 度の場合、既定のプリセットでは出力の解像度が必ず同じになります。 次の図を参照してください。  
@@ -177,7 +178,7 @@ PreserveResolutionAfterRotation フラグは、パーセントで表される解
 
 ![MESRoation3](./media/media-services-shemas/media-services-mes-roation3.png) 
 
-## <a name="a-nameformatgroupa-formatgroup-group"></a><a name="FormatGroup"></a> FormatGroup (グループ)
+## <a name="FormatGroup"></a> FormatGroup (グループ)
 ### <a name="elements"></a>要素
 | 名前 | 型 | 説明 |
 | --- | --- | --- |
@@ -185,7 +186,7 @@ PreserveResolutionAfterRotation フラグは、パーセントで表される解
 | **PngFormat** |**PngFormat** | |
 | **JpgFormat** |**JpgFormat** | |
 
-## <a name="a-namebmplayera-bmplayer"></a><a name="BmpLayer"></a> BmpLayer
+## <a name="BmpLayer"></a> BmpLayer
 ### <a name="element"></a>要素
 | 名前 | 型 | 説明 |
 | --- | --- | --- |
@@ -197,7 +198,7 @@ PreserveResolutionAfterRotation フラグは、パーセントで表される解
 | --- | --- | --- |
 | **Condition** |**xs:string** | |
 
-## <a name="a-namepnglayera-pnglayer"></a><a name="PngLayer"></a> PngLayer
+## <a name="PngLayer"></a> PngLayer
 ### <a name="element"></a>要素
 | 名前 | 型 | 説明 |
 | --- | --- | --- |
@@ -209,7 +210,7 @@ PreserveResolutionAfterRotation フラグは、パーセントで表される解
 | --- | --- | --- |
 | **Condition** |**xs:string** | |
 
-## <a name="a-namejpglayera-jpglayer"></a><a name="JpgLayer"></a> JpgLayer
+## <a name="JpgLayer"></a> JpgLayer
 ### <a name="element"></a>要素
 | 名前 | 型 | 説明 |
 | --- | --- | --- |
@@ -222,37 +223,37 @@ PreserveResolutionAfterRotation フラグは、パーセントで表される解
 | --- | --- | --- |
 | **Condition** |**xs:string** | |
 
-## <a name="a-namepnglayersa-pnglayers"></a><a name="PngLayers"></a> PngLayers
+## <a name="PngLayers"></a> PngLayers
 ### <a name="elements"></a>要素
 | 名前 | 型 | 説明 |
 | --- | --- | --- |
 | **PngLayer**<br/><br/> minOccurs="0" maxOccurs="unbounded" |[PngLayer](media-services-mes-schema.md#PngLayer) | |
 
-## <a name="a-namebmplayersa-bmplayers"></a><a name="BmpLayers"></a> BmpLayers
+## <a name="BmpLayers"></a> BmpLayers
 ### <a name="elements"></a>要素
 | 名前 | 型 | 説明 |
 | --- | --- | --- |
 | **BmpLayer**<br/><br/> minOccurs="0" maxOccurs="unbounded" |[BmpLayer](media-services-mes-schema.md#BmpLayer) | |
 
-## <a name="a-namejpglayersa-jpglayers"></a><a name="JpgLayers"></a> JpgLayers
+## <a name="JpgLayers"></a> JpgLayers
 ### <a name="elements"></a>要素
 | 名前 | 型 | 説明 |
 | --- | --- | --- |
 | **JpgLayer**<br/><br/> minOccurs="0" maxOccurs="unbounded" |[JpgLayer](media-services-mes-schema.md#JpgLayer) | |
 
-## <a name="a-namebmpimagea-bmpimage-complex-type-inherits-from-video"></a><a name="BmpImage"></a> BmpImage (複合型はビデオから継承)
+## <a name="BmpImage"></a> BmpImage (複合型はビデオから継承)
 ### <a name="elements"></a>要素
 | 名前 | 型 | 説明 |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs="0" |[PngLayers](media-services-mes-schema.md#PngLayers) |Png レイヤー |
 
-## <a name="a-namejpgimagea-jpgimage-complex-type-inherits-from-video"></a><a name="JpgImage"></a> JpgImage (複合型はビデオから継承)
+## <a name="JpgImage"></a> JpgImage (複合型はビデオから継承)
 ### <a name="elements"></a>要素
 | 名前 | 型 | 説明 |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs="0" |[PngLayers](media-services-mes-schema.md#PngLayers) |Png レイヤー |
 
-## <a name="a-namepngimagea-pngimage-complex-type-inherits-from-video"></a><a name="PngImage"></a> PngImage (複合型はビデオから継承)
+## <a name="PngImage"></a> PngImage (複合型はビデオから継承)
 ### <a name="elements"></a>要素
 | 名前 | 型 | 説明 |
 | --- | --- | --- |

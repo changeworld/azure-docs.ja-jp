@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 03/03/2017
 ms.author: carlrab; jognanay
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: a1ede93b5aacf0d8a5bcf83f208f72be328ee72f
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 9daf8be93216aefbcf02e3fcba44d048ab95b43d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -33,7 +34,7 @@ Azure SQL Database には継続的に機能が追加されます。 したがっ
 
 | **機能** | **SQL Server** | **Azure SQL Database** | 
 | --- | :---: | :---: | 
-| アクティブ geo レプリケーションを選択するとき | サポートされていません - [AlwaysOn 可用性グループ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)に関する記事を参照してください | [サポートされています](sql-database-geo-replication-overview.md)
+| アクティブ geo レプリケーション | サポートされていません - [AlwaysOn 可用性グループ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)に関する記事を参照してください | [サポートされています](sql-database-geo-replication-overview.md)
 | Always Encrypted | [サポートされています](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | サポートされています - [証明書ストア](sql-database-always-encrypted.md)と [Key Vault](sql-database-always-encrypted-azure-key-vault.md) に関する記事を参照してください|
 | AlwaysOn 可用性グループ | [サポートされています](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | サポートされていません - [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください |
 | データベースの接続 | [サポートされています](https://docs.microsoft.com/sql/relational-databases/databases/attach-a-database) | サポートされていません |

@@ -12,12 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 02/18/2017
+ms.date: 05/15/2017
 ms.author: marsma
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 5b77598e76de3508d90b35ce5a1f2ee338aca0c8
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: 90b67cf3d136882d59ed7fe4210f93fb694e96a6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -48,7 +49,7 @@ ms.lasthandoff: 04/25/2017
 
 ## <a name="working-with-the-cli"></a>CLI の使用
 
-CLI をインストールすると、コマンド ライン インターフェイス (Bash、Terminal、Command プロンプト) で `az` コマンドを使用して Azure CLI コマンドにアクセスできるようになります。 `az` コマンドを入力すると、下記のような内容が表示されます。
+CLI をインストールすると、コマンド ライン インターフェイス (Bash、Terminal、Command プロンプト) で `az` コマンドを使用して Azure CLI コマンドにアクセスできるようになります。 基礎コマンドの完全な一覧を表示するには、`az` と入力します (次の出力例は切り捨てられています)。
 
 ```
      /\
@@ -62,38 +63,15 @@ Welcome to the cool new Azure CLI!
 
 Here are the base commands:
 
-    account   : Commands to manage subscriptions.
-    acr       : Commands to manage Azure container registries.
-    acs       : Commands to manage Azure container services.
-    ad        : Synchronize on-premises directories and manage Azure Active Directory (AAD)
-                resources.
-    appservice: Commands to manage your Azure web apps and App Service plans.
-    cloud     : Manage the Azure clouds registered.
-    component : Commands to manage and update Azure CLI 2.0 components.
-    configure : Configure Azure CLI 2.0 or view your configuration. The command is
-                interactive, so just type `az configure` and respond to the prompts.
-    container : Set up automated builds and deployments for multi-container Docker applications.
-    disk      : Commands to manage 'Managed Disks'.
-    feature   : Commands to manage resource provider features, such as previews.
-    feedback  : Loving or hating the CLI?  Let us know!
-    group     : Commands to manage resource groups.
-    image     : Commands to manage custom virtual machine images based on managed disks/snapshots.
-    lock
-    login     : Log in to access Azure subscriptions.
-    logout    : Log out to remove access to Azure subscriptions.
-    network   : Manages Network resources.
-    policy    : Commands to manage resource policies.
-    provider  : Manage resource providers.
-    resource  : Generic commands to manage Azure resources.
-    role      : Use role assignments to manage access to your Azure resources.
-    snapshot  : Commands to manage snapshots.
-    storage   : Durable, highly available, and massively scalable cloud storage.
-    tag       : Manage resource tags.
-    vm        : Provision Linux and Windows virtual machines in minutes.
-    vmss      : Create highly available, auto-scalable Linux or Windows virtual machines.
+    account          : Manage subscriptions.
+    acr              : Manage Azure container registries.
+    acs              : Manage Azure Container Services.
+    ad               : Synchronize on-premises directories and manage Azure Active Directory
+                       resources.
+    ...
 ```
 
-コマンド ライン インターフェイスで `az storage -h` コマンドを実行すると、`storage` グループ コマンドとそのサブグループが表示されます。 サブグループの説明として、ストレージ リソースを操作する Azure CLI 機能の概要が表示されます。
+コマンド ライン インターフェイスで `az storage --help` コマンドを実行すると、`storage` コマンドのサブグループが表示されます。 サブグループの説明として、ストレージ リソースを操作する Azure CLI 機能の概要が表示されます。
 
 ```
 Group
@@ -103,14 +81,14 @@ Subgroups:
     account  : Manage storage accounts.
     blob     : Object storage for unstructured data.
     container: Manage blob storage containers.
-    cors     : Manage Storage service Cross-Orgin Resource Sharing (CORS).
+    cors     : Manage Storage service Cross-Origin Resource Sharing (CORS).
     directory: Manage file storage directories.
     entity   : Manage table storage entities.
     file     : File shares that use the standard SMB 3.0 protocol.
     logging  : Manage Storage service logging information.
     message  : Manage queue storage messages.
     metrics  : Manage Storage service metrics.
-    queue    : Effectively scale apps according to traffic using queues.
+    queue    : Use queues to effectively scale applications according to traffic.
     share    : Manage file shares.
     table    : NoSQL key-value storage using semi-structured datasets.
 ```
@@ -141,16 +119,16 @@ export file_to_upload=<file_to_upload>
 export destination_file=<destination_file>
 
 echo "Creating the container..."
-az storage container create -n $container_name
+az storage container create --name $container_name
 
 echo "Uploading the file..."
-az storage blob upload -f $file_to_upload -c $container_name -n $blob_name
+az storage blob upload --container-name $container_name --file $file_to_upload --name $blob_name
 
 echo "Listing the blobs..."
-az storage blob list -c $container_name
+az storage blob list --container-name $container_name --output table
 
 echo "Downloading the file..."
-az storage blob download -c $container_name -n $blob_name -f $destination_file
+az storage blob download --container-name $container_name --name $blob_name --file $destination_file --output table
 
 echo "Done"
 ```
@@ -178,18 +156,19 @@ echo "Done"
 
 ```
 Creating the container...
-Success
----------
-True
-Uploading the file...                                           Percent complete: %100.0
+{
+  "created": true
+}
+Uploading the file...
+Percent complete: %100.0
 Listing the blobs...
-Name           Blob Type      Length  Content Type              Last Modified
--------------  -----------  --------  ------------------------  -------------------------
-test_blob.txt  BlockBlob         771  application/octet-stream  2016-12-21T15:35:30+00:00
+Name       Blob Type      Length  Content Type              Last Modified
+---------  -----------  --------  ------------------------  -------------------------
+README.md  BlockBlob        6700  application/octet-stream  2017-05-12T20:54:59+00:00
 Downloading the file...
 Name
--------------
-test_blob.txt
+---------
+README.md
 Done
 ```
 
@@ -203,12 +182,16 @@ Done
 Azure Storage を使用するには、ストレージ アカウントが必要です。 コンピューターを構成して[サブスクリプションに接続](#connect-to-your-azure-subscription)できるようにすると、新しい Azure Storage アカウントを作成することができます。
 
 ```azurecli
-az storage account create -l <location> -n <account_name> -g <resource_group> --sku <account_sku>
+az storage account create \
+    --location <location> \
+    --name <account_name> \
+    --resource-group <resource_group> \
+    --sku <account_sku>
 ```
 
-* `-l` [必須]: 場所。 たとえば "米国西部" にします。
-* `-n` [必須]: ストレージ アカウント名。 アカウント名に含めることができるのは、英小文字と数字のみで、文字数は 3 ～ 24 文字にする必要があります。
-* `-g`[必須]: リソース グループの名前。
+* `--location` [必須]: 場所。 たとえば "米国西部" にします。
+* `--name` [必須]: ストレージ アカウント名。 アカウント名に含めることができるのは、英小文字と数字のみで、文字数は 3 ～ 24 文字にする必要があります。
+* `--resource-group`[必須]: リソース グループの名前。
 * `--sku` [必須]: ストレージ アカウント SKU。 使用できる値は以下の通りです。
   * `Premium_LRS`
   * `Standard_GRS`
@@ -227,13 +210,15 @@ export AZURE_STORAGE_ACCESS_KEY=<key>
 既定のストレージ アカウントを設定するもう 1 つの方法としては、接続文字列の使用があります。 まず、`show-connection-string` コマンドで接続文字列を取得します。
 
 ```azurecli
-az storage account show-connection-string -n <account_name> -g <resource_group>
+az storage account show-connection-string \
+    --name <account_name> \
+    --resource-group <resource_group>
 ```
 
 出力された接続文字列をコピーし、`AZURE_STORAGE_CONNECTION_STRING` 環境変数を設定します (接続文字列を引用符で囲む必要がある可能性があります)。
 
 ```azurecli
-export AZURE_STORAGE_CONNECTION_STRING=<connection_string>
+export AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
 ```
 
 > [!NOTE]
@@ -247,7 +232,7 @@ Azure Blob Storage は、HTTP または HTTPS 経由で世界中のどこから�
 Azure Storage のすべての BLOB はコンテナーに格納する必要があります。 次の `az storage container create` コマンドを使用して、コンテナーを作成できます。
 
 ```azurecli
-az storage container create -n <container_name>
+az storage container create --name <container_name>
 ```
 
 オプションの `--public-access` 引数を指定して、3 つのレベルの読み取りアクセスのいずれかを新しいコンテナーに設定することができます。
@@ -262,7 +247,10 @@ az storage container create -n <container_name>
 Azure Blob Storage では、ブロック BLOB、追加BLOB、ページ BLOB がサポートされています。 `blob upload` コマンドを使用して、コンテナーに BLOB をアップロードできます。
 
 ```azurecli
-az storage blob upload -f <local_file_path> -c <container_name> -n <blob_name>
+az storage blob upload \
+    --file <local_file_path> \
+    --container-name <container_name> \
+    --name <blob_name>
 ```
 
  既定では `blob upload` コマンドは *.vhd ファイルをページ BLOB にアップロードし、それ以外の場合はブロック BLOB にアップロードします。 BLOB アップロード時に別の種類を指定するには、`--type` 引数を使用することができます。使用できる値は `append`、`block`、および `page` です。
@@ -273,7 +261,10 @@ az storage blob upload -f <local_file_path> -c <container_name> -n <blob_name>
 この例は、BLOB をコンテナーからダウンロードする方法を示しています。
 
 ```azurecli
-az storage blob download -c mycontainer -n myblob.png -f ~/mydownloadedblob.png
+az storage blob download \
+    --container-name mycontainer \
+    --name myblob.png \
+    --file ~/mydownloadedblob.png
 ```
 
 ### <a name="copy-blobs"></a>BLOB をコピーする
@@ -282,20 +273,35 @@ BLOB は、ストレージ アカウント内、またはストレージ アカ�
 次の例は、BLOB をあるストレージ アカウントから別のストレージ アカウントにコピーする方法を示しています。 最初に別のアカウントでコンテナーを作成し、 その BLOB をパブリックおよび匿名アクセス可能と指定します。 次にコンテナーにファイルをアップロードし、最後にそのコンテナーから BLOB を現在のアカウントの **mycontainer** コンテナーにコピーします。
 
 ```azurecli
-az storage container create -n mycontainer2 --account-name <accountName2> --account-key <accountKey2> --public-access blob
+# Create container in second account
+az storage container create \
+    --account-name <accountName2> \
+    --account-key <accountKey2> \
+    --name mycontainer2 \
+    --public-access blob
 
-az storage blob upload -f ~/Images/HelloWorld.png -c mycontainer2 -n myBlockBlob2 --account-name <accountName2> --account-key <accountKey2>
+# Upload blob to container in second account
+az storage blob upload \
+    --account-name <accountName2> \
+    --account-key <accountKey2> \
+    --file ~/Images/HelloWorld.png \
+    --container-name mycontainer2 \
+    --name myBlockBlob2
 
-az storage blob copy start -u https://<accountname2>.blob.core.windows.net/mycontainer2/myBlockBlob2 -b myBlobBlob -c mycontainer
+# Copy blob from second account to current account
+az storage blob copy start \
+    --source-uri https://<accountname2>.blob.core.windows.net/mycontainer2/myBlockBlob2 \
+    --destination-blob myBlobBlob \
+    --destination-container mycontainer
 ```
 
-ソースの BLOB の URL (`-u` によって指定) は、パブリック アクセス可能であるか、共有アクセス署名 (SAS) トークンを含んでいる必要があります。
+ソースの BLOB の URL (`--source-uri` によって指定) は、パブリック アクセス可能であるか、共有アクセス署名 (SAS) トークンを含んでいる必要があります。
 
 ### <a name="delete-a-blob"></a>BLOB を削除する
 BLOB を削除するには、`blob delete` コマンドを使用します。
 
 ```azurecli
-az storage blob delete -c <container_name> -n <blob_name>
+az storage blob delete --container-name <container_name> --name <blob_name>
 ```
 
 ## <a name="create-and-manage-file-shares"></a>ファイル共有を作成および管理する
@@ -305,17 +311,17 @@ Azure File ストレージは、Server Message Block (SMB) プロトコルを使
 Azure File 共有は、Azure 内の SMB ファイル共有です。 ディレクトリとファイルはすべて、ファイル共有に作成する必要があります。 アカウントに含まれる共有の数と、共有に格納できるファイル数には制限がなく、ストレージ アカウントの容量の上限まで増やすことができます。 次の例では、 **myshare**という名前のファイル共有を作成します。
 
 ```azurecli
-az storage share create -n myshare
+az storage share create --name myshare
 ```
 
 ### <a name="create-a-directory"></a>ディレクトリを作成する
-ディレクトリは、Azure ファイル共有の任意の階層構造を示します。 次の例では、ファイル共有に **myDir** という名前のディレクトリを作成します。
+ディレクトリは、Azure ファイル共有の階層構造を示します。 次の例では、ファイル共有に **myDir** という名前のディレクトリを作成します。
 
 ```azurecli
-az storage directory create -n myDir -s myshare
+az storage directory create --name myDir --share-name myshare
 ```
 
-ディレクトリ パスには複数のレベルを含めることができます ( *例*: **a/b**)。 ただし、すべての親ディレクトリが存在することを確認する必要があります。 たとえば、パス **a/b** の場合、最初に**a** ディレクトリを作成した後、**b** ディレクトリを作成する必要があります。
+ディレクトリ パスには複数のレベルを含めることができます (**dir1/dir2**)。 ただし、サブディレクトリを作成する前に、すべての親ディレクトリが存在することを確認する必要があります。 たとえば、パス **dir1/dir2**の場合、最初に**dir1** ディレクトリを作成した後、**dir2** ディレクトリを作成する必要があります。
 
 ### <a name="upload-a-local-file-to-a-share"></a>共有にローカル ファイルをアップロードする
 次の例では、**~/temp/samplefile.txt** から **myshare** ファイル共有のルートにファイルをアップロードします。 `--source` 引数で、アップロードする既存のローカル ファイルを指定します。
@@ -337,13 +343,13 @@ az storage file upload --share-name myshare/myDir --source ~/temp/samplefile.txt
 
 ```azurecli
 # List the files in the root of a share
-az storage file list -s myshare
+az storage file list --share-name myshare --output table
 
 # List the files in a directory within a share
-az storage file list -s myshare/myDir
+az storage file list --share-name myshare/myDir --output table
 
 # List the files in a path within a share
-az storage file list -s myshare -p myDir/mySubDir/MySubDir2
+az storage file list --share-name myshare --path myDir/mySubDir/MySubDir2 --output table
 ```
 
 ### <a name="copy-files"></a>ファイルのコピー        

@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/03/2017
+ms.date: 05/12/2017
 ms.author: osamam
-translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: e678062429605db34c1e6c835841aaf2508d81a3
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 0bb4999aa511e002d6088d69400ba4eececd8cf1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -72,7 +73,7 @@ a.b.c.d/29 は、a.b.c.d/30 と a.b.c.d+4/30 に分割され、プロビジョ�
 Azure パブリック ピアリング パスを利用すれば、パブリック IP アドレスで Azure にホストされているすべてのサービスに接続できます。 たとえば、 [ExpessRoute FAQ](expressroute-faqs.md) の一覧にあるサービスや Microsoft Azure で ISV によりホストされているサービスです。 パブリック ピアリングでの Microsoft Azure への接続は常にネットワークから Microsoft ネットワークに対して開始されます。 Microsoft ネットワークに送信されるトラフィックには、パブリック IP アドレスを使用する必要があります。
 
 ### <a name="microsoft-peering"></a>Microsoft ピアリング
-Microsoft ピアリング パスにより、Azure パブリック ピアリング パスでサポートされていない Microsoft クラウド サービスに接続できます。 そのようなサービスには、Exchange Online、SharePoint Online、Skype for Business、CRM Online のような Office 365 サービスがあります。 Microsoft では、Microsoft ピアリングで双方向接続をサポートしています。 Microsoft クラウド サービスに送信されるトラフィックが Microsoft ネットワークに入るには、有効なパブリック IPv4 アドレスを使用している必要があります。
+Microsoft ピアリング パスにより、Azure パブリック ピアリング パスでサポートされていない Microsoft クラウド サービスに接続できます。 対象となるサービスには、Exchange Online、SharePoint Online、Skype for Business、Dynamics 365 などの Office 365 サービスが含まれます。 Microsoft では、Microsoft ピアリングで双方向接続をサポートしています。 Microsoft クラウド サービスに送信されるトラフィックが Microsoft ネットワークに入るには、有効なパブリック IPv4 アドレスを使用している必要があります。
 
 以下のレジストリのいずれかで IP アドレスと AS 番号が自分に登録されていることを確認します。
 
@@ -180,7 +181,7 @@ Microsoft からアドバタイズされるすべてのルートには、適切�
 | Exchange Online |12076:5010 |
 | SharePoint Online |12076:5020 |
 | Skype for Business Online |12076:5030 |
-| CRM Online |12076:5040 |
+| Dynamics 365 |12076:5040 |
 | その他の Office 365 Online サービス |12076:5100 |
 
 > [!NOTE]
@@ -207,7 +208,7 @@ Microsoft からアドバタイズされるすべてのルートには、適切�
 | Exchange Online |12076:5110 |
 | SharePoint Online |12076:5120 |
 | Skype for Business Online |12076:5130 |
-| CRM Online |12076:5140 |
+| Dynamics 365 |12076:5140 |
 | その他の Office 365 Online サービス |12076:5200 |
 
 ## <a name="next-steps"></a>次のステップ

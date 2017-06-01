@@ -16,10 +16,11 @@ ms.topic: article
 ms.date: 01/17/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 316a3b6bd0ff32213df4baa9f722ff36ecc41d22
-ms.lasthandoff: 04/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: c9c45305d75be59f7840941b1e626e62e93f1758
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -56,12 +57,12 @@ ms.lasthandoff: 04/11/2017
      ![Azure ポータル [参照] ボタン](./media/hdinsight-administer-use-management-portal/azure-portal-browse-button.png)
 
 ## <a name="create-clusters"></a>クラスターの作成
-ポータルを使用した作成手順については、「[HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md)」をご覧ください。
+ポータルを使用した作成手順については、「[HDInsight で Hadoop クラスターを作成する](hdinsight-hadoop-provision-linux-clusters.md)」をご覧ください。
 
 HDInsight は、広範囲の Hadoop コンポーネントで動作します。 検証およびサポートされているコンポーネントの一覧については、「[Azure HDInsight でサポートされている Hadoop のバージョン](hdinsight-component-versioning.md)」を参照してください。 次のいずれかのオプションを使用して、HDInsight をカスタマイズできます。
 
 * Script Action を使用してカスタム スクリプトを実行します。これによってクラスターをカスタマイズして、クラスター構成を変更することや、Giraph や Solr などのカスタム コンポーネントをインストールすることができます。 詳しくは、「[Script Action を使って HDInsight をカスタマイズする](hdinsight-hadoop-customize-cluster.md)」をご覧ください。
-* クラスターの作成中に、HDInsight .NET SDK または Azure PowerShell でクラスター カスタマイズ パラメーターを使用します。 そうすることで、クラスターの有効期間中はこれらの構成変更が保持され、Azure プラットフォームが保守のために定期的に実行するクラスター ノードの再イメージ化の影響も受けません。 クラスター カスタマイズ パラメーターの使用方法の詳細については、「[HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md)」をご覧ください。
+* クラスターの作成中に、HDInsight .NET SDK または Azure PowerShell でクラスター カスタマイズ パラメーターを使用します。 そうすることで、クラスターの有効期間中はこれらの構成変更が保持され、Azure プラットフォームが保守のために定期的に実行するクラスター ノードの再イメージ化の影響も受けません。 クラスター カスタマイズ パラメーターの使用方法の詳細については、「[HDInsight で Hadoop クラスターを作成する](hdinsight-hadoop-provision-linux-clusters.md)」をご覧ください。
 * Mahout や Cascading などの一部のネイティブ Java コンポーネントは、JAR ファイルとしてクラスター上で実行できます。 これらの JAR ファイルは、Azure BLOB ストレージに分配し、Hadoop ジョブ送信メカニズムによって HDInsight クラスターに送信できます。 詳細については、 [プログラムによる Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)に関するページを参照してください。
 
   > [!NOTE]
@@ -88,14 +89,14 @@ HDInsight は、広範囲の Hadoop コンポーネントで動作します。 �
    * **[ダッシュボード]**、**[クラスター ダッシュボード]**、**[URL]: これらはすべてクラスター ダッシュボードにアクセスするために使用します。クラスター ダッシュボードは、Linux ベースのクラスター用の Ambari Web です。-**[SSH (Secure Shell)]**: Secure Shell (SSH) 接続を使用してクラスターに接続する方法を表示します。
    * **[クラスターのスケーリング]**: このクラスターの worker ノードの数を変更できます。
    * **[削除]**: クラスターを削除します。
-   * **[クイック スタート] \(![cloud and thunderbolt icon = quickstart](./media/hdinsight-administer-use-portal-linux/quickstart.png))**: HDInsight の操作を開始するために役立つ情報を表示します。
-   * **[ユーザー] \(![ユーザー アイコン](./media/hdinsight-administer-use-portal-linux/users.png))**: このクラスターの*ポータル管理*に対する権限を、Azure サブスクリプションの他のユーザーに設定できます。
+   * **[クイック スタート]**: HDInsight の操作を開始するために役立つ情報を表示します。
+   * **[ユーザー]: このクラスターの "*ポータル管理*" に対するアクセス許可を、Azure サブスクリプションの他のユーザーに設定できます。
 
      > [!IMPORTANT]
      > これは、Azure ポータルでのこのクラスターへのアクセスと権限 *"だけ"* に影響し、どのユーザーが HDInsight クラスターに接続でき、ジョブを送信できるかには影響しません。
      >
      >
-   * **[タグ] \(![タグ アイコン](./media/hdinsight-administer-use-portal-linux/tags.png))**: タグを使用してキーと値のペアを作成し、クラウド サービスのカスタム分類を定義できます。 たとえば、 **プロジェクト**という名前のキーを作成し、特定のプロジェクトに関連付けられているすべてのサービスに共通の値を使用できます。
+   * **[タグ]**: タグを使用してキーと値のペアを作成し、クラウド サービスのカスタム分類を定義できます。 たとえば、 **プロジェクト**という名前のキーを作成し、特定のプロジェクトに関連付けられているすべてのサービスに共通の値を使用できます。
    * **[Ambari Views]**: Ambari Web へのリンク。
 
      > [!IMPORTANT]
@@ -187,7 +188,7 @@ HDInsight でサポートされているクラスターの種類ごとに、デ�
 
     Storm Web UI は、HDInsight クラスターで使用できます。
 
-    ![HDInsight Storm の規模のバランス調整](./media/hdinsight-administer-use-management-portal/hdinsight.portal.scale.cluster.storm.rebalance.png)
+    ![HDInsight Storm の規模のバランス調整](./media/hdinsight-administer-use-management-portal/hdinsight-portal-scale-cluster-storm-rebalance.png)
 
     CLI コマンドを使用して Storm トポロジのバランスを再調整する方法を次の例で示します。
 
@@ -320,7 +321,7 @@ HDInsight クラスター ブレードの **[使用状況]** セクションに�
 Yarn のユーザー インターフェイスを使用するには、HDInsight クエリ コンソールで **[Yarn UI]** をクリックします。 「[HDInsight クエリ コンソールを開く](#open-hdinsight-query-console)」をご覧ください。
 
 ## <a name="connect-to-clusters-using-rdp"></a>RDP を使用したクラスターへの接続
-クラスターの作成時に指定したクラスターの資格情報を使用するとクラスター上のサービスにアクセスできますが、リモート デスクトップを介してクラスター自体にアクセスすることはできません。 クラスターにプロビジョニングするとき、あるいはクラスターにプロビジョニングした後、リモート デスクトップ アクセスをオンにできます。 作成時にリモート デスクトップを有効にする手順については、「[HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md)」をご覧ください。
+クラスターの作成時に指定したクラスターの資格情報を使用するとクラスター上のサービスにアクセスできますが、リモート デスクトップを介してクラスター自体にアクセスすることはできません。 クラスターにプロビジョニングするとき、あるいはクラスターにプロビジョニングした後、リモート デスクトップ アクセスをオンにできます。 作成時にリモート デスクトップを有効にする手順については、「[HDInsight で Hadoop クラスターを作成する](hdinsight-hadoop-provision-linux-clusters.md)」をご覧ください。
 
 **リモート デスクトップを有効にするには**
 
@@ -371,7 +372,7 @@ Yarn のユーザー インターフェイスを使用するには、HDInsight �
 
 * [Azure PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)
 * [Azure CLI を使用した HDInsight の管理](hdinsight-administer-use-command-line.md)
-* [HDInsight クラスターの作成](hdinsight-provision-clusters.md)
+* [HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)
 * [プログラムによる Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)
 * [Azure HDInsight の概要](hdinsight-hadoop-linux-tutorial-get-started.md)
 * [Azure HDInsight でサポートされている Hadoop のバージョン](hdinsight-component-versioning.md)

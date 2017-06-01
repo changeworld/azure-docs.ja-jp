@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory プレビューでのエンタープライズ アプリケーションのユーザー プロビジョニング管理 | Microsoft Docs"
-description: "Azure Active Directory プレビューを使用してエンタープライズ アプリケーションのユーザー アカウント プロビジョニングを管理する方法について説明します"
+title: "Azure Active Directory でのエンタープライズ アプリのユーザー プロビジョニング管理 | Microsoft Docs"
+description: "Azure Active Directory を使用してエンタープライズ アプリのユーザー アカウント プロビジョニングを管理する方法について説明します"
 services: active-directory
 documentationcenter: 
 author: asmalser
@@ -12,23 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/12/2016
+ms.date: 05/04/2017
 ms.author: asmalser
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 103eade46452d979705e06dd77441f42d7a514b8
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 6cb0269e87f7ecffe7030b86237fb88fd58ef77b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="preview-managing-user-account-provisioning-for-enterprise-apps-in-the-new-azure-portal"></a>プレビュー: 新しい Azure Portal でエンタープライズ アプリケーションのユーザー アカウント プロビジョニングを管理する
-この記事では、[Azure Portal](https://portal.azure.com) を使用して、自動ユーザー アカウント プロビジョニングとプロビジョニング解除をサポートしているアプリケーション (特に [Azure Active Directory アプリケーション ギャラリー](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)の "おすすめ" カテゴリから追加されたアプリケーション) の自動ユーザー アカウント プロビジョニングとプロビジョニング解除を管理する方法について説明します。 新しい Azure Portal では、この管理エクスペリエンスは現在パブリック プレビュー中です。この記事では、新機能と、プレビュー期間中に適用されるいくつかの一時的な制限について説明します。 [プレビューの機能については、こちらの記事をご覧ください。](active-directory-preview-explainer.md)
+# <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Azure Portal でエンタープライズ アプリのユーザー アカウント プロビジョニングを管理する
+この記事では、[Azure Portal](https://portal.azure.com) を使用して、自動ユーザー アカウント プロビジョニングとプロビジョニング解除をサポートしているアプリケーション (特に [Azure Active Directory アプリケーション ギャラリー](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)の "おすすめ" カテゴリから追加されたアプリケーション) の自動ユーザー アカウント プロビジョニングとプロビジョニング解除を管理する方法について説明します。 自動ユーザー アカウント プロビジョニングの詳細とそのしくみについては、「 [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md)」を参照してください。
 
-自動ユーザー アカウント プロビジョニングの詳細とそのしくみについては、「 [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md)」を参照してください。
-
-## <a name="finding-your-apps-in-the-new-portal"></a>新しいポータルでアプリを検索する
-2016 年 9 月の時点で、新しい Azure Portal では、ディレクトリ管理者が [Azure クラシック ポータル](https://manage.windowsazure.com)内の [Azure Active Directory アプリケーション ギャラリー](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)を使用してディレクトリでのシングル サインオンを構成したすべてのアプリケーションを表示および管理できます。
-
-これらのアプリケーションは、新しい Azure Portal の **[エンタープライズ アプリケーション]** セクション (左側のナビゲーション領域にある **[More Services (その他のサービス)]** メニューからアクセスできます) で見つけることができます。 エンタープライズ アプリケーションとは、組織のユーザーが使用するデプロイ済みのアプリケーションです。
+## <a name="finding-your-apps-in-the-portal"></a>ポータルでアプリを検索する
+[Azure Portal](https://portal.azure.com) では、ディレクトリ管理者が [Azure Active Directory アプリケーション ギャラリー](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)を使用してディレクトリでのシングル サインオンを構成したすべてのアプリケーションを表示および管理できます。 これらのアプリケーションは、ポータルの **[その他のサービス]** &gt; **[エンタープライズ アプリケーション]** セクションで見つけることができます。 エンタープライズ アプリとは、組織内で使用されるデプロイ済みのアプリです。
 
 ![Enterprise Applications blade][0]
 
@@ -59,13 +57,13 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
 
 ![Application resource blade][2]
 
-最初のプレビュー期間中にサポートされているカスタマイズは次のとおりです。
+サポートされるカスタマイズは次のとおりです。
 
 * Azure AD ユーザー オブジェクトと SaaS アプリのユーザー オブジェクトなど、特定のオブジェクトのマッピングを有効および無効にする。
 * Azure AD ユーザー オブジェクトからアプリのユーザー オブジェクトにフローする属性を編集する。 属性マッピングの詳細については、「 [属性マッピングの種類について](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-types)」を参照してください。
-* Azure AD がターゲット アプリケーションに対して実行するプロビジョニング操作をフィルター処理する。これは、Azure Portal の新機能です。 Azure AD でオブジェクトを完全に同期するのではなく、実行される操作を制限することができます。 たとえば、**[更新]** のみを選択すると、Azure AD はアプリケーションの既存のユーザー アカウントの更新のみを行い、新しいユーザー アカウントは作成しません。 **[作成]** のみを選択すると、Azure は新しいユーザー アカウントの作成のみを行い、既存のユーザー アカウントは更新しません。 この機能により、アカウントの作成ワークフローと更新ワークフローで異なるマッピングを作成できます。 アプリごとに複数のマッピングを作成する完全な機能の提供は、プレビュー期間の後半に予定しています。
+* Azure AD がターゲット アプリケーションに対して実行するプロビジョニング操作をフィルター処理する。 Azure AD でオブジェクトを完全に同期するのではなく、実行される操作を制限することができます。 たとえば、**[更新]** のみを選択すると、Azure AD はアプリケーションの既存のユーザー アカウントの更新のみを行い、新しいユーザー アカウントは作成しません。 **[作成]** のみを選択すると、Azure は新しいユーザー アカウントの作成のみを行い、既存のユーザー アカウントは更新しません。 この機能により、アカウントの作成ワークフローと更新ワークフローで異なるマッピングを作成できます。
 
-### <a name="settings"></a>Settings
+### <a name="settings"></a>[設定]
 このセクションでは、選択したアプリケーションに対して Azure AD プロビジョニング サービスを開始および停止できるだけでなく、必要に応じてプロビジョニング キャッシュのクリアやサービスの再起動を行うこともできます。
 
 アプリケーションに対して初めてプロビジョニングを有効にする場合は、**[プロビジョニング状態]** を **[オン]** に変更して、サービスを有効にします。 そうすると、Azure AD プロビジョニング サービスが初期同期を実行します。初期同期では、**[ユーザーとグループ]** セクションで割り当てられたユーザーが読み取られ、そのユーザーのターゲット アプリケーションが照会され、Azure AD の **[マッピング]** セクションで定義されているプロビジョニング操作が実行されます。 このプロセス中に、プロビジョニング サービスは管理対象のユーザー アカウントに関するキャッシュ データを格納します。そのため、割り当てのスコープに存在しない、ターゲット アプリケーション内の管理対象外のアカウントはプロビジョニング解除操作の影響を受けません。 初期同期の後、プロビジョニング サービスは 10 分間隔で自動的にユーザーとグループ オブジェクトを同期します。
@@ -79,12 +77,12 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
 
 **プロビジョニング アクティビティ レポート** (Azure AD とターゲット アプリケーションの間で作成、更新、削除されたすべてのユーザーとグループのログが表示されます) および**プロビジョニング エラー レポート** (読み取り、作成、更新、削除に失敗したユーザーとグループ オブジェクトの詳細なエラー メッセージが表示されます) へのリンクがあります。 
 
+##<a name="feedback"></a>フィードバック
+
+Azure AD エクスペリエンスを気に入っていただけることを期待しております。 ぜひフィードバックをお寄せください。 フィードバックや機能の向上についてのアイデアを、[フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal)の **[管理ポータル]** セクションにご投稿ください。  マイクロソフトでは、優れた新しい機能を日々開発しています。ユーザーのアドバイスは、次に何を具体化し、どのように定義するかを考えるうえで非常に有用です。
+
+
 [0]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-blade.PNG
 [1]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-provisioning.PNG
 [2]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-provisioning-mapping.PNG
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

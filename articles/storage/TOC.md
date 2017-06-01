@@ -117,6 +117,7 @@
 #### [Java](storage-client-side-encryption-java.md)
 #### [Python](storage-client-side-encryption-python.md)
 ## 監視とトラブルシューティング
+### [ストレージ エクスプローラーのトラブルシューティング](storage-explorer-troubleshooting.md)
 ### メトリックとログ
 #### [Storage Analytics](storage-analytics.md)
 #### [メトリックスの有効化と表示](storage-enable-and-view-metrics.md)

@@ -14,10 +14,11 @@ ms.devlang: java
 ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: cephalin;robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: 2673a9c0d91510756a97b2dba3801d2925905c9a
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 75e51ca45a899c6b6fa123346aa3c5860fd1600d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -44,11 +45,9 @@ Java ベースの Web アプリを Azure に発行するプロセスを簡略化
 
 ## <a name="create-a-dynamic-web-project-in-eclipse"></a>Eclipse で動的 Web プロジェクトを作成する
 
-Eclipse IDE で、**[File (ファイル)]**、**[New (新規)]**、**[Dynamic Web Project (動的 Web プロジェクト)]** の順にクリックします。
+Eclipse で、**[File]\(ファイル\)**、**[New]\(新規\)**、**[Dynamic Web Project]\(動的 Web プロジェクト\)** の順に選択します。
 
-![新しい動的 Web プロジェクト](./media/app-service-web-get-started-java/file-new-dynamic-web-project-menu.png)
-
-[Dynamic Web Project (動的 Web プロジェクト)] ダイアログ ボックスが表示されたら、アプリケーションに **MyFirstJavaOnAzureWebApp** という名前を付けて、**[Finish (完了)]** をクリックします。
+**[New Dynamic Web Project]\(新しい動的 Web プロジェクト\)** ダイアログで、プロジェクトに **MyFirstJavaOnAzureWebApp** という名前を付けて **[Finish]\(完了\)** を選択します。
    
 ![[Dynamic Web Project (動的 Web プロジェクト)] ダイアログ ボックス](./media/app-service-web-get-started-java/new-dynamic-web-project-dialog-box.png)
 
@@ -73,13 +72,11 @@ Eclipse で新しいページが開いたら、既存の `<body></body>` セク�
 
 ```jsp
 <body>
-<h1><% out.println("Java on Azure!"); %></h1>
+<h1><% out.println("Hello Azure!"); %></h1>
 </body>
 ```
 
 ページの変更内容を保存します。
-
-![JSP コードの編集](./media/app-service-web-get-started-java/creating-index-jsp-page.png)
 
 ## <a name="publish-your-web-app-to-azure"></a>Azure に Web アプリを発行する
 
@@ -183,14 +180,12 @@ Azure Toolkit により、新しい App Service の作成が開始されます�
 <title><% out.println(date.format(new Date())); %></title>
 </head>
 <body>
-<h1><% out.println("Java on Azure!"); %></h1>
+<h1><% out.println("Hello Azure!"); %></h1>
 </body>
 </html>
 ```
 
-![JSP コードの更新](./media/app-service-web-get-started-java/updating-index-jsp-page.png)
-
-ページの変更内容を保存したら、Eclipse の **Project Explorer** でプロジェクトを右クリックし、**[Azure]**、**[Publish as Azure Web App (Azure Web アプリとして発行)]** の順にクリックします。
+変更内容を保存したら、Eclipse の **Project Explorer** でプロジェクトを右クリックし、**[Azure]**、**[Publish as Azure Web App]\(Azure Web アプリとして発行\)** の順にクリックします。
 
 ![更新後の Web アプリの発行](./media/app-service-web-get-started-java/publish-updated-web-app-context-menu.png)
 
@@ -207,9 +202,9 @@ Azure Toolkit により、新しい App Service の作成が開始されます�
 
 ![Web アプリの参照](./media/app-service-web-get-started-java/browse-web-app-2.png)
 
-## <a name="deleting-your-web-app"></a>Web アプリの削除
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-Web アプリを削除するには、**Azure Explorer** を使用します。Azure Explorer は、Azure Toolkit に含まれるツールです。 **[Azure Explorer]** ビューがEclipse に表示されていない場合には、以下の手順に従って表示します。
+Web アプリを削除するには、Azure Toolkit に含まれている **Azure Explorer** を使用します。 **[Azure Explorer]** ビューがEclipse に表示されていない場合には、以下の手順に従って表示します。
 
 1. **[Window (ウィンドウ)]**、**[Show View (ビューの表示)]**、**[Other (その他)]** の順にクリックします。
 

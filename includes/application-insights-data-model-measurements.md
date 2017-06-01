@@ -6,12 +6,12 @@
 Application Analytics で[カスタム測定値](https://analytics.applicationinsights.io/demo?q=H4sIAAAAAAAAA2WLOw6DMAyGd07hZoLeoRPqyMaGGAL8aiPhGCV2kKoeHsHK%2Bj1myyr8LoiaqfrT%2FkUCzRft4LMl8OUeL3LuLLIx%2BxR%2BIF8%2BtcoiNq2o78vgWuFthQaJ1AeGGxt6UlBwKxa1qQ6EpLhAfQAAAA%3D%3D&timespan=PT24H)を照会できます。
 
 ```
-customEvents 
-| where customMeasurements != "" 
+customEvents
+| where customMeasurements != ""
 | summarize avg(todouble(customMeasurements["Completion Time"]) * itemCount)
 ```
 
  > [!NOTE]
- > カスタム測定値は、属するテレメトリ項目に関連付けられています。 その測定値を含むテレメトリ項目のサンプリング対象となります。 他のテレメトリの種類から独立した値を持つ測定値を追跡するには、[メトリック テレメトリ](../articles/application-insights/app-insights-api-custom-events-metrics.md#send-metrics)を使用します。
+ > カスタム測定値は、属するテレメトリ項目に関連付けられています。 その測定値を含むテレメトリ項目のサンプリング対象となります。 他のテレメトリの種類から独立した値を持つ測定値を追跡するには、[メトリック テレメトリ](../articles/application-insights/app-insights-api-custom-events-metrics.md)を使用します。
 
 キーの最大長: 150

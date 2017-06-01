@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: c7062721017176b4caacbd48a513c2610058b835
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 6615fc7f23a8a53ae0b8d855f5b157c3787a1f06
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -34,10 +35,12 @@ ms.lasthandoff: 04/27/2017
 
 この記事では、Azure PowerShell を使用して最初の Azure データ ファクトリを作成します。 その他のツールや SDK を使用してチュートリアルを行うには、ドロップダウン リストでいずれかのオプションを選択します。
 
+このチュートリアルのパイプラインには、1 つのアクティビティ (**HDInsight Hive アクティビティ**) が含まれます。 このアクティビティは、入力データを変換して出力データを生成する Hive スクリプトを Azure HDInsight クラスターで実行します。 このパイプラインは、指定した開始時刻と終了時刻の間で、月 1 回実行されるようスケジュールされています。 
+
 > [!NOTE]
 > このチュートリアルのデータ パイプラインでは、入力データを変換して出力データを生成します。 データをソース データ ストアからターゲット データ ストアにコピーするのではありません。 Azure Data Factory を使用してデータをコピーする方法のチュートリアルについては、[Blob Storage から SQL Database へのデータのコピーのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関するページを参照してください。
 > 
-> 2 つのアクティビティを連鎖させる (アクティビティを連続的に実行する) には、一方のアクティビティの出力データセットを、もう一方のアクティビティの入力データセットとして指定します。 詳細については、[Data Factory でのスケジュールと実行](data-factory-scheduling-and-execution.md)に関するページを参照してください。 
+> 1 つのパイプラインには複数のアクティビティを含めることができます。 また、1 つのアクティビティの出力データセットを別のアクティビティの入力データセットとして指定することで、2 つのアクティビティを連鎖させる (アクティビティを連続的に実行する) ことができます。 詳細については、[Data Factory のスケジュール設定と実行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 * 「 [チュートリアルの概要](data-factory-build-your-first-pipeline.md) 」に目を通し、 **前提条件** の手順を完了する必要があります。
@@ -142,7 +145,6 @@ ms.lasthandoff: 04/27/2017
       "properties": {
         "type": "HDInsightOnDemand",
         "typeProperties": {
-          "version": "3.2",
           "clusterSize": 1,
           "timeToLive": "00:30:00",
           "linkedServiceName": "StorageLinkedService"
@@ -152,9 +154,8 @@ ms.lasthandoff: 04/27/2017
     ```
     次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-   | プロパティ | 説明 |
+   | プロパティ | Description |
    |:--- |:--- |
-   | バージョン |作成された HDInsight のバージョンが 3.2 になるように指定します。 |
    | ClusterSize |HDInsight クラスターのサイズを指定します。 |
    | TimeToLive |削除されるまでの HDInsight クラスターのアイドル時間を指定します。 |
    | linkedServiceName |HDInsight によって生成されるログを保存するために使用されるストレージ アカウントを指定します。 |
@@ -341,7 +342,7 @@ ms.lasthandoff: 04/27/2017
     ```PowerShell
     Get-AzureRmDataFactorySlice $df -DatasetName AzureBlobOutput -StartDateTime 2016-04-01
     ```
-    ここで指定した StartDateTime がパイプライン JSON で指定されている開始時刻と同じであることに注意してください。 次のような出力が表示されます。
+    ここで指定した StartDateTime がパイプライン JSON で指定されている開始時刻と同じであることに注意してください。 出力例を次に示します。
 
     ```PowerShell
     ResourceGroupName : ADFTutorialResourceGroup
@@ -361,7 +362,7 @@ ms.lasthandoff: 04/27/2017
     Get-AzureRmDataFactoryRun $df -DatasetName AzureBlobOutput -StartDateTime 2016-04-01
     ```
 
-    次のような出力が表示されます。
+    出力例を次に示します。 
 
     ```PowerShell
     Id                  : 0f6334f2-d56c-4d48-b427-d4f0fb4ef883_635268096000000000_635292288000000000_AzureBlobOutput

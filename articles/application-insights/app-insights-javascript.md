@@ -3,7 +3,7 @@ title: "JavaScript Web アプリのための Azure Application Insights | Micros
 description: "ページ ビューとセッション数、Web クライアントのデータを取得し、使用パターンを追跡します。 JavaScript Web ページの例外とパフォーマンスの問題を検出します。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 3b710d09-6ab4-4004-b26a-4fa840039500
 ms.service: application-insights

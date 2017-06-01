@@ -13,11 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/27/2017
-ms.author: deli; LADocs
-translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: 9eab48d40c3d9db896724d3bdb574d89fdab2796
-ms.lasthandoff: 04/04/2017
+ms.author: LADocs; deli
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 3faa238b882c88f1a0eb59a4e7a2f8bb6d6e6b9b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 
@@ -86,6 +87,9 @@ ms.lasthandoff: 04/04/2017
 - パスを使用してファイルのメタデータを取得する
 - ルート フォルダー内のファイルを一覧表示する
 - ファイルを更新する
+
+## <a name="view-the-swagger"></a>Swagger の表示
+[Swagger の詳細](/connectors/fileconnector/)を参照してください。 
 
 ## <a name="get-help"></a>問い合わせ
 

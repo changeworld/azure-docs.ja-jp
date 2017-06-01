@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/01/2017
 ms.author: davidmu
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: e1e09f4f75da05ca051b78e57979600fd3e36006
-ms.lasthandoff: 04/27/2017
-
+ms.custom: mvc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 7ddd9244558479f1fc77c0a9f3d02d0d3b95ca9f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/01/2017
 
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Azure における Windows 仮想マシンの概要
@@ -49,7 +50,7 @@ Azure でアプリケーション インフラストラクチャを構築する�
 ### <a name="naming"></a>名前を付ける
 仮想マシンには[名前](infrastructure-naming-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)が割り当てられ、コンピューター名がオペレーティング システムの一部として構成されます。 VM の名前は最大で 15 文字です。
 
-Azure を使用してオペレーティング システム ディスクを作成する場合、コンピューター名と仮想マシン名は同じになります。 以前構成されたオペレーティング システムが含まれる[独自のイメージをアップロードして使用](upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)し、それを基に仮想マシンを作成する場合は、別の名前にすることができます。 独自のイメージ ファイルをアップロードするときは、オペレーティング システムのコンピューター名と仮想マシン名を同じにすることをお勧めします。
+Azure を使用してオペレーティング システム ディスクを作成する場合、コンピューター名と仮想マシン名は同じになります。 以前構成されたオペレーティング システムが含まれる[独自のイメージをアップロードして使用](upload-generalized-managed.md)し、それを基に仮想マシンを作成する場合は、別の名前にすることができます。 独自のイメージ ファイルをアップロードするときは、オペレーティング システムのコンピューター名と仮想マシン名を同じにすることをお勧めします。
 
 ### <a name="locations"></a>場所
 Azure で作成されるすべてのリソースは、世界各地の複数の[地理的リージョン](https://azure.microsoft.com/regions/)に分散されます。 通常、このリージョンは VM の作成時には**場所**と呼ばれます。 VM の場合、この場所によって仮想ハード ディスクの格納場所を指定します。
@@ -83,7 +84,7 @@ Azure には、Windows Server オペレーティング システムのさまざ�
 | Azure PowerShell |[Get-AzureRMVMImagePublisher](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/get-azurermvmimagepublisher) -Location "場所"<BR>[Get-AzureRMVMImageOffer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/get-azurermvmimageoffer) -Location "場所" -Publisher "発行元名"<BR>[Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) -Location "場所" -Publisher "発行元名" -Offer "プラン名" |
 | REST API |[イメージ発行元の一覧表示](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[イメージ プランの一覧表示](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[イメージ SKU の一覧表示](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
 
-[独自のイメージをアップロードして使用](upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)することができますが、そのとき、発行元名、プラン、SKU は使用されません。
+[独自のイメージをアップロードして使用](upload-generalized-managed.md#upload-the-vhd-to-your-storage-account)することができますが、そのとき、発行元名、プラン、SKU は使用されません。
 
 ### <a name="extensions"></a>拡張機能
 VM の[拡張機能](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)は、デプロイ後の構成と自動化タスクを通じて VM に追加の機能を提供します。
@@ -130,7 +131,7 @@ VM は、ブラウザーベースのポータル、スクリプトがサポー�
 | メソッド | 説明 |
 | --- | --- |
 | Azure ポータル |ハブ メニューの **[仮想マシン]** をクリックし、一覧から VM を選択します。 その VM のブレードで、概要情報を確認したり、値の設定やメトリックの監視を実行したりできます。 |
-| Azure PowerShell |PowerShell を使用して VM を管理する方法については、「[Resource Manager と PowerShell を使用した Azure Virtual Machines の管理](ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。 |
+| Azure PowerShell |PowerShell を使用して VM を管理する方法については、「[Azure PowerShell モジュールを使用して Windows VM を作成および管理する](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。 |
 | REST API |[VM 情報の取得](https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-get)操作を使用して、VM に関する情報を取得します。 |
 | クライアント SDK |C# を使用して VM を管理する方法については、「[Azure Resource Manager と C# を使用した Azure 仮想マシンの管理](csharp-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。 |
 

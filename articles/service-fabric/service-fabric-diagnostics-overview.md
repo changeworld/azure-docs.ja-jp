@@ -12,75 +12,112 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/9/2017
+ms.date: 05/10/2017
 ms.author: dekapur
-translationtype: Human Translation
-ms.sourcegitcommit: ebbb29ee031fb477ce284f7a0d27c1522317f4f0
-ms.openlocfilehash: 46a35fa4ec341561ab234f7ec19fb20658fcb2c4
-ms.lasthandoff: 02/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 9c1a3bb6de8756c37903e5f1b9dcf3fdc1ef6a11
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/11/2017
 
 
 ---
-# <a name="monitor-and-diagnose-azure-service-fabric-applications"></a>Azure Service Fabric アプリケーションの監視と診断
+# <a name="monitoring-and-diagnostics-in-azure-service-fabric"></a>Azure Service Fabric での監視と診断
 
-監視と診断は実際の運用環境において不可欠です。 Azure Service Fabric を使用すると、1 台のコンピューターのローカル開発環境と実際の運用クラスターのセットアップの両方でサービスがシームレスに動作できるように、サービスの開発時に監視と診断を実装できます。
+監視と診断は、開発、テスト、および運用環境に正常にデプロイするために非常に重要です。 Service Fabric ソリューションは、監視と診断を最初から実装した場合に最適に機能します。ローカル開発環境および実際の運用クラスターのセットアップでサービスがシームレスに動作することに役立ちます。
 
-監視と診断により、サービスの開発中に次のことが可能になります。
-* 顧客のエクスペリエンスの中断を最小限に抑える。
-* ビジネスの知見を提供する。
-* リソース使用量を監視する。
-* ハードウェアおよびソフトウェアの障害やパフォーマンスの問題を検出する。
-* サービスの潜在的な問題を診断する。
+監視と診断の主な目標は次のとおりです。
+* ハードウェアとインフラストラクチャの問題の検出と診断
+* ソフトウェアおよびアプリケーションの問題の検出と、サービス ダウンタイムの削減
+* リソースの消費量の把握とドライブ操作の決定の支援
+* アプリケーション、サービス、およびインフラストラクチャのパフォーマンスの最適化
+* ビジネス上の洞察の創出と改善する領域の特定
 
-監視は意味の広い言葉です。監視には次の作業が含まれます。
-* コードのインストルメント化
-* インストルメンテーション ログの収集
-* ログの分析
-* ログ データに基づく洞察の視覚化
-* ログの値と洞察に基づくアラートの設定
-* インフラストラクチャの監視
-* 顧客に影響する問題の検出と診断
 
-この記事では、Azure またはオンプレミスでホストされ、Windows または Linux 上にデプロイされているか、Microsoft .NET Framework を使用している Service Fabric クラスターの監視の概要を説明します。 監視と診断の次の 3 つの重要な側面について説明します。
-- コードまたはインフラストラクチャのインストルメント化
-- 生成されたイベントの収集
-- 保存、集計、視覚化、および分析
+監視と診断は、すべてが期待どおりに動作することを保証し、サービスの停止を最小限に抑えて状況に対応できるようにするために重要です。 
 
-この 3 つの領域のすべてに対応する多数の製品がありますが、多くのお客様が監視の各側面に異なるテクノロジを選択しています。 各部分を連携させて、アプリケーションのエンド ツー エンドの監視ソリューションを実現することが重要です。
+監視と診断の全体的なワークフローは、次の 3 つの手順で構成されます。 
+1. **イベントの生成**: これには、インフラストラクチャ (クラスター) とアプリケーション/サービス レベルの両方でのイベント (ログ、トレース、カスタム イベント) が含まれます。 
+2. **イベントの集計**: 生成されたイベントを表示するには、イベントを収集して集計する必要があります。 これは、Windows Azure Diagnostics で設定されたストレージ テーブルを通じて行うことも、EventFlow パイプラインを作成して行うこともできます。
+3. **分析**: イベントは、必要に応じて分析して表示できるように、視覚化して、何らかの形式でアクセスできるようにする必要があります。 Application Insights、Operations Management Suite、Kibana などのツールを使用することもできます。
 
-## <a name="monitoring-infrastructure"></a>インフラストラクチャの監視
+この 3 つの領域のすべてに対応する多数の製品がありますが、多くのお客様がこれらの領域にそれぞれ異なるテクノロジを選択しています。 各製品を連携させて、アプリケーションのエンド ツー エンドの監視ソリューションを実現することが重要です。
 
-Service Fabric を使用すると、インフラストラクチャの障害時にもアプリケーションを実行し続けることができますが、エラーがアプリケーションと基になるインフラストラクチャのどちらで発生しているのかを理解する必要があります。 また、インフラストラクチャを追加または削除する時期を把握するために、容量計画にもインフラストラクチャの監視が必要となります。 Service Fabric デプロイを構成するインフラストラクチャとアプリケーションの両方を監視し、トラブルシューティングを行うことが重要です。 顧客がアプリケーションを使用できる場合でも、インフラストラクチャに問題が発生している可能性があります。
+必要に応じて、診断と監視をさらに拡張して、自動アラートと対応策を含めることができます。これらは多くの場合、使用する分析ツールに組み込まれています。 
 
-### <a name="azure-monitor"></a>Azure Monitor
+## <a name="event-generation"></a>イベントの生成
 
-[Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) を使用して、Service Fabric クラスターの基盤となる Azure リソースの多くを監視できます。 [仮想マシン スケール セット](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets)と個々の[仮想マシン](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesetsvirtualmachines)の一連のメトリックが自動的に収集され、Azure Portal に表示されます。 収集された情報を表示するには、Azure Portal でService Fabric クラスターが含まれているリソース グループを選択します。 次に、表示する仮想マシン スケール セットを選択します。 **[監視]** セクションで**メトリック**を選択すると、値のグラフが表示されます。
+インフラストラクチャ レイヤー (クラスター、コンピューター、または Service Fabric アクションからのすべてのもの) またはアプリケーション層 (アプリに追加される任意のインストルメンテーションとクラスターにデプロイされるサービス) から生成可能なイベント、ログ、およびトレース。
 
-![収集されたメトリック情報の Azure Portal での表示](./media/service-fabric-diagnostics-overview/azure-monitoring-metrics.PNG)
+### <a name="infrastructure-monitoring-the-cluster"></a>インフラストラクチャ: クラスターの監視
 
-グラフをカスタマイズするには、[Microsoft Azure のメトリック](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)に関する記事に記載された手順に従います。 また、「[Azure Monitor での Azure サービス アラートの作成](../monitoring-and-diagnostics/insights-alerts-portal.md)」で説明するように、これらのメトリックに基づいてアラートを作成することもできます。 「[Azure メトリック アラートでの webhook の構成](../monitoring-and-diagnostics/insights-webhooks-alerts.md)」で説明するように、webhook を使用してアラートを通知サービスに送信できます。 Azure Monitor では、サブスクリプションを 1 つだけサポートします。 複数のサブスクリプションを監視する必要がある場合や、追加機能が必要な場合は、Microsoft Operations Management Suite に含まれる [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) が、オンプレミスとクラウド ベースの両方のインフラストラクチャに対応する包括的な IT 管理ソリューションを提供します。 Azure Monitor のデータを Log Analytics に直接ルーティングできるので、環境全体のメトリックとログを 1 か所で確認できます。
+Service Fabric を使用すると、インフラストラクチャの障害時にもアプリケーションを実行し続けることができますが、エラーがアプリケーションと基になるインフラストラクチャのどちらで発生しているのかを理解する必要があります。 また、インフラストラクチャを追加または削除する時期を把握するために、容量計画にもインフラストラクチャの監視が必要となります。 Service Fabric デプロイを構成するインフラストラクチャとアプリケーションの両方を監視し、トラブルシューティングを行うことが重要です。 顧客がアプリケーションを使用できる場合でも、インフラストラクチャが問題の原因となっている可能性があります。 クラスターが期待どおりに動作するように、Service Fabric にはすぐに使える 5 つ異なるログ チャネルが設定されています。
 
-オンプレミスのインフラストラクチャの監視には、Operations Management Suite を使用することをお勧めします。ただし、組織でインフラストラクチャの監視に使用している既存のソリューションを使用することもできます。
+1. 稼働チャネル: Service Fabric とクラスターで実行される高度な操作。起動しているノード、デプロイされている新しいアプリケーション、または SF アップグレードのロールバックなどのイベントが含まれます。 
+2. 顧客情報チャネル: 正常性レポートと負荷分散の決定
+3. Reliable Services イベント: プログラミング モデル固有のイベント
+4. Reliable Actors イベント: プログラミング モデル固有のイベントとパフォーマンス カウンター
+5. サポート ログ: 弊社がサポートを提供する場合にのみ使用する Service Fabric によって生成されたシステム ログ
 
-### <a name="service-fabric-support-logs"></a>Service Fabric のサポート ログ
+クラスターの作成時に、"診断" を有効にすることを強くお勧めします。 これは、次に示すようにポータルで行うことも、診断を含む Azure Resource Manager のテンプレートを使用しても行えます。 
+
+![診断を有効にした Azure Portal のクラスター作成](./media/service-fabric-diagnostics-overview/azure-enable-diagnostics.png)
+
+上に示すように、Application Insights (AppInsights) のインストルメンテーション キーを追加するオプションのフィールドもあります。 任意のイベント分析に AppInsights を使用する場合は (AppInsights は推奨ソリューションの 1 つです)、ここで AppInsights リソースのインストルメンテーション キー (GUID) を指定します。
+
+#### <a name="service-fabric-support-logs"></a>Service Fabric のサポート ログ
 
 Azure Service Fabric クラスターに関する支援を得るために Microsoft サポートに連絡する必要があるときは、ほとんどの場合、サポート ログが必要となります。 クラスターが Azure 内でホストされている場合は、クラスターの作成の一環として、サポート ログが自動的に構成され、収集されます。 ログは、クラスターのリソース グループにある専用のストレージ アカウントに保存されます。 このストレージ アカウントに固定名はありませんが、アカウント内に名前が *fabric* で始まる BLOB コンテナーとテーブルがあります。 スタンドアロン クラスターのログ収集の設定については、[スタンドアロン Azure Service Fabric クラスターの作成と管理](service-fabric-cluster-creation-for-windows-server.md)に関する記事および「[スタンドアロン Windows クラスターの構成設定](service-fabric-cluster-manifest.md)」をご覧ください。 スタンドアロン Service Fabric インスタンスの場合、ログをローカルのファイル共有に送信する必要があります。 これらのログは、サポートを受けるために**必須**となりますが、Microsoft カスタマー サポート チーム以外の人が使用するためのものではありません。
 
-## <a name="instrument-your-code"></a>コードをインストルメント化する
+#### <a name="azure-service-fabric-health-and-load-reporting"></a>Azure Service Fabric の正常性と負荷のレポート
 
-コードのインストルメント化は、サービスの監視の他のほとんどの側面の基礎となります。 インストルメンテーションは、問題点を把握し、修正する必要があるものを診断する唯一の方法です。 運用環境のサービスへのデバッガーの接続は技術的には可能ですが、一般的な方法ではありません。 そのため、詳細なインストルメンテーション データを入手することが重要です。 この大量の情報を生成するときに、すべてのイベントをローカル ノードから配布すると、コストがかかる可能性があります。 多くのサービスでは、大量のインストルメンテーション データを処理するために、次のような二部戦略を使用しています。
-1.  すべてのイベントは、短期間、ローカルのローリング ログ ファイルに保持され、デバッグに必要な場合にのみ収集されます。 通常、コストとリソース使用率を削減するために、詳細な診断に必要なイベントはノード上に残されます。
-2.  サービスの正常性を示すイベントは、中央リポジトリに送信されます。中央リポジトリでこれらのイベントを使用して、問題のあるサービスのアラートを生成できます。 サービス正常性イベントには、エラー イベント、ハートビート イベント、パフォーマンス イベントなどがあります。
+Service Fabric には、次の記事で詳述する独自の正常性モデルがあります。
+- [Service Fabric の正常性モニタリングの概要](service-fabric-health-introduction.md)
+- [サービス正常性のレポートとチェック](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
+- [Service Fabric のカスタム正常性レポートの追加](service-fabric-report-health.md)
+- [Service Fabric の正常性レポートの確認](service-fabric-view-entities-aggregated-health.md)
+
+正常性監視は、サービスの運用のさまざまな側面に不可欠です。 正常性監視は、Service Fabric が指定されたアプリケーションのアップグレードを実行するときに特に重要となります。 サービスの各アップグレード ドメインがアップグレードされ、顧客が利用できるようになった後、デプロイが次のアップグレード ドメインに移る前に、現在のアップグレード ドメインが正常性チェックに合格する必要があります。 正常な状態を実現できない場合、デプロイがロールバックされ、アプリケーションは既知の良好な状態に維持されます。 サービスがロールバックされる前に一部の顧客が影響を受ける場合もありますが、ほとんどの顧客では問題が発生することはありません。 また、人間のオペレーターによる操作を待たなくても、比較的速やかに問題が解決されます。 コードに組み込まれている正常性チェックが増えるほど、デプロイの問題に対するサービスの耐性が向上します。
+
+サービスの正常性のもう 1 つの側面は、サービスのメトリックの報告です。 メトリックはリソース使用量のバランスを取るために使用されるため、Service Fabric において重要です。 また、メトリックはシステムの正常性を示すインジケーターにもなります。 たとえば、多数のサービスを使用するアプリケーションがあり、各インスタンスから 1 秒あたりの要求数 (RPS) メトリックが報告されているとします。 あるサービスが別のサービスよりも多くのリソースを使用している場合、Service Fabric はクラスター内でサービス インスタンスを移動させ、リソース使用率を均等に維持することを試みます。 リソース使用率のしくみの詳細については、「[Service Fabric のリソース使用量と負荷をメトリックで管理する](service-fabric-cluster-resource-manager-metrics.md)」をご覧ください。
+
+メトリックにより、サービスの実行状況に関する知見も得られます。 長期間にわたり、メトリックを使用して、サービスが求められているパラメーターの範囲内で動作していることを確認することもできます。 たとえば、月曜日の午前 9 時の時点での平均 RPS が 1,000 であることを傾向が示している場合、RPS が 500 を下回るか、1,500 を超えたら通知する正常性レポートを設定できます。 すべてがまったく問題ない場合もありますが、顧客の優れたエクスペリエンスを確保するうえで、正常性レポートは一見の価値があります。 サービスでは、正常性チェックのために報告対象にすることができ、クラスターのリソースのバランスには影響を与えない一連のメトリックを定義できます。 これを行うには、メトリックの重みを 0 に設定します。 どのメトリックも最初は重みを 0 にし、メトリックの重み付けがクラスターのリソースのバランスに及ぼす影響を確実に理解できるまで重みを増やさないようにすることをお勧めします。
+
+> [!TIP]
+> 重み付けされたメトリックを使いすぎないようにしてください。 バランスを取るためにサービス インスタンスが移動されている理由を理解しにくくなる可能性があります。 少数のメトリックでも十分に役立ちます。
+
+アプリケーションの正常性とパフォーマンスを示すことができる情報が、メトリックと正常性レポートの候補となります。 CPU パフォーマンス カウンターではノードの使用状況がわかりますが、1 つのノードで複数のサービスが実行されている場合があるため、特定のサービスが正常かどうかを示すわけではありません。 しかし、RPS、処理された項目数、要求の待機時間などのメトリックは、いずれも特定のサービスの正常性を示すことができます。
+
+正常性を報告するには、次のようなコードを使用します。
+
+  ```csharp
+    if (!result.HasValue)
+    {
+        HealthInformation healthInformation = new HealthInformation("ServiceCode", "StateDictionary", HealthState.Error);
+        this.Partition.ReportInstanceHealth(healthInformation);
+    }
+  ```
+
+メトリックを報告するには、次のようなコードを使用します。
+
+  ```csharp
+    this.ServicePartition.ReportLoad(new List<LoadMetric> { new LoadMetric("MemoryInMb", 1234), new LoadMetric("metric1", 42) });
+  ```
+
+
+### <a name="application-instrumenting-code-for-custom-events"></a>アプリケーション: カスタム イベントのためのコードのインストルメント化
+
+コードのインストルメント化は、サービスの監視の他のほとんどの側面の基礎となります。 インストルメンテーションは、問題点を把握し、修正する必要があるものを診断する唯一の方法です。 運用環境のサービスへのデバッガーの接続は技術的には可能ですが、一般的な方法ではありません。 そのため、詳細なインストルメンテーション データを入手することが重要です。 
 
 コードを自動的にインストルメント化する製品もあります。 これらのソリューションが役立つこともありますが、ほとんどの場合、手動でのインストルメント化が必要となります。 最終的には、アプリケーションのフォレンジックなデバッグを実行できるだけの十分な情報が必要です。 以下のセクションでは、コードをインストルメント化するためのさまざまな方法と使用する方法の選択について説明します。
 
-### <a name="eventsource"></a>EventSource
+#### <a name="eventsource"></a>EventSource
 
 Visual Studio でテンプレートから Service Fabric ソリューションを作成すると、**EventSource** 派生クラス (**ServiceEventSource** または **ActorEventSource**) が生成されます。 アプリケーションまたはサービスのイベントを追加できるテンプレートが作成されます。 **EventSource** の名前は一意である**必要があり**、"MyCompany-&lt;solution&gt;-&lt;project&gt;" という既定のテンプレート文字列から名前を変更する必要があります。 同じ名前を使用する複数の **EventSource** 定義があると、実行時に問題が発生します。 定義済みの各イベントには一意の識別子が必要です。 識別子が一意でない場合、ランタイム エラーが発生します。 個々の開発チーム間での競合を回避するために、識別子の値の範囲を事前に割り当てている組織もあります。 詳細については、[Vance のブログ](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)または [MSDN ドキュメント](https://msdn.microsoft.com/library/dn774985(v=pandp.20).aspx)をご覧ください。
 
-#### <a name="using-structured-eventsource-events"></a>構造化された EventSource イベントの使用
+##### <a name="using-structured-eventsource-events"></a>構造化された EventSource イベントの使用
 
-このセクションのコード例の各イベントは、サービスの種類の登録時など、特定のケース用に定義されています。 ユース ケースごとにメッセージを定義すると、データをエラー テキストと共にパッケージ化できます。また、指定したプロパティの名前や値に基づいて、検索とフィルター処理をより簡単に実行できます。 インストルメンテーション出力を構造化すると使いやすくなりますが、ユース ケースごとに新しいイベントを定義するためによく考える必要があり、時間がかかります。 アプリケーション全体で共有できるイベント定義もあります。 たとえば、メソッド開始/停止イベントは、アプリケーション内の多くのサービスで再利用されます。 注文システムのようなドメイン固有のサービスでは、独自のイベントを含む **CreateOrder** イベントを使用することがあります。 この方法では多数のイベントが生成される場合があり、プロジェクト チーム間で識別子の調整が必要になる可能性があります。 Service Fabric の構造化された **EventSource** イベントの完全な例については、パーティ クラスター サンプル内の **PartyCluster.ApplicationDeployService** イベントを参照してください。
+このセクションのコード例の各イベントは、サービスの種類の登録時など、特定のケース用に定義されています。 ユース ケースごとにメッセージを定義すると、データをエラー テキストと共にパッケージ化できます。また、指定したプロパティの名前や値に基づいて、検索とフィルター処理をより簡単に実行できます。 インストルメンテーション出力を構造化すると使いやすくなりますが、ユース ケースごとに新しいイベントを定義するためによく考える必要があり、時間がかかります。 アプリケーション全体で共有できるイベント定義もあります。 たとえば、メソッド開始/停止イベントは、アプリケーション内の多くのサービスで再利用されます。 注文システムのようなドメイン固有のサービスでは、独自のイベントを含む **CreateOrder** イベントを使用することがあります。 この方法では多数のイベントが生成される場合があり、プロジェクト チーム間で識別子の調整が必要になる可能性があります。 
 
 ```csharp
     [EventSource(Name = "MyCompany-VotingState-VotingStateService")]
@@ -110,7 +147,7 @@ Visual Studio でテンプレートから Service Fabric ソリューション�
         }
 ```
 
-#### <a name="using-eventsource-generically"></a>EventSource の汎用的な使用
+##### <a name="using-eventsource-generically"></a>EventSource の汎用的な使用
 
 特定のイベントの定義は難しい場合があるため、多くの開発者は、一般に情報を文字列として出力するパラメーターの共通セットを使用して少数のイベントを定義しています。 構造化された側面の大部分が失われるので、結果の検索とフィルター処理が困難になります。 この方法では、ログ記録レベルに通常は対応する少数のイベントを定義します。 次のスニペットでは、デバッグおよびエラー メッセージを定義しています。
 
@@ -142,11 +179,11 @@ Visual Studio でテンプレートから Service Fabric ソリューション�
 
 構造化されたインストルメンテーションと汎用のインストルメンテーションの組み合わせを使用するのが適している場合もあります。 構造化されたインストルメンテーションは、エラーとメトリックの報告に使用します。 汎用イベントは、エンジニアがトラブルシューティングに使用する詳細なログ記録に使用できます。
 
-### <a name="aspnet-core-logging"></a>ASP.NET Core のログ記録
+#### <a name="aspnet-core-logging"></a>ASP.NET Core のログ記録
 
 コードをインストルメント化する方法を入念に計画することが重要です。 適切なインストルメンテーション計画により、コード ベースの安定性が失われ、コードの再インストルメント化が必要になる状況を回避できます。 リスクを軽減するために、Microsoft ASP.NET Core の一部である [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/) などのインストルメンテーション ライブラリを選択できます。 ASP.NET Core には、既存のコードへの影響を最小限に抑えながら、選択したプロバイダーで使用できる [ILogger](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.ilogger) インターフェイスがあります。 Windows および Linux 上の ASP.NET Core 内と完全な .NET Framework 内でコードを使用できるので、インストルメンテーション コードが標準化されます。
 
-#### <a name="using-microsoftextensionslogging-in-service-fabric"></a>Service Fabric 内での Microsoft.Extensions.Logging の使用
+##### <a name="using-microsoftextensionslogging-in-service-fabric"></a>Service Fabric 内での Microsoft.Extensions.Logging の使用
 
 1. インストルメント化するプロジェクトに、Microsoft.Extensions.Logging NuGet パッケージを追加します。 また、任意のプロバイダー パッケージも追加します (サード パーティ製パッケージについては、次の例を参照してください)。 詳細については、[ASP.NET Core のログ記録](https://docs.microsoft.com/aspnet/core/fundamentals/logging)に関する記事をご覧ください。
 2. Microsoft.Extensions.Logging の **using** ディレクティブをサービス ファイルに追加します。
@@ -216,20 +253,20 @@ Visual Studio でテンプレートから Service Fabric ソリューション�
   > [!NOTE]
   > 前の例で静的 Log.Logger を使用しないことをお勧めします。 Service Fabric は、1 つのプロセス内で同じサービスの種類の複数のインスタンスをホストできます。 静的 Log.Logger を使用すると、プロパティ エンリッチャーの最後のライターが、実行されているすべてのインスタンスの値を示すことになります。 これが、_logger 変数がサービス クラスのプライベート メンバー変数である理由の 1 つです。 また、サービス間で使用できる共通コードで _logger を使用できるようにする必要があります。
 
-### <a name="choosing-a-logging-provider"></a>ログ記録プロバイダーの選択
+#### <a name="choosing-a-logging-provider"></a>ログ記録プロバイダーの選択
 
-アプリケーションが高パフォーマンスに依存する場合は、**EventSource** が最適な方法です。 **EventSource** は*一般に*使用するリソースが少なく、ASP.NET Core のログ記録や使用可能なサード パーティ製ソリューションよりもパフォーマンスが向上します。  多くのサービスではパフォーマンスは問題になりませんが、サービスがパフォーマンス指向の場合は、**EventSource** を使用することをお勧めします。 **EventSource** で構造化されたログ記録と同じ利点を得るには、エンジニアリング チームによる大規模な投資が必要となります。 プロジェクトに使用する方法を決定するときは、各オプションで必要となるものの簡易プロトタイプを実行し、ニーズに最適な方法を選択します。
+アプリケーションが高パフォーマンスに依存する場合は、**EventSource** が最適な方法です。 **EventSource** は*一般に*使用するリソースが少なく、ASP.NET Core のログ記録や使用可能なサード パーティ製ソリューションよりもパフォーマンスが向上します。  多くのサービスではパフォーマンスは問題になりませんが、サービスがパフォーマンス指向の場合は、**EventSource** を使用することをお勧めします。 **EventSource** で構造化されたログ記録と同じ利点を得るには、エンジニアリング チームによるより大規模な投資が必要となります。 プロジェクトに使用する方法を決定するときは、各オプションで必要となるものの簡易プロトタイプを実行し、ニーズに最適な方法を選択します。
 
-## <a name="event-and-log-collection"></a>イベントとログの収集
+## <a name="event-aggregation-and-collection"></a>イベントの集計と収集
 
 ### <a name="azure-diagnostics"></a>Azure 診断
 
 Azure Monitor で提供される情報に加え、Azure では各サービスのイベントを中央の場所で収集します。 詳細については、[Windows](service-fabric-diagnostics-how-to-setup-wad.md) および [Linux](service-fabric-diagnostics-how-to-setup-lad.md) でイベント収集を構成する方法をご覧ください。 これらの記事では、イベント データを収集し、Azure Storage に送信する方法を説明しています。 これは、診断を有効にすることによって、Azure Portal または Azure Resource Manager テンプレートで実行できます。 Azure 診断では、Service Fabric で自動的に生成されるイベント ソースから収集します。
 
+- 稼働チャネルの一部として出力される **ETW** イベント
 - Reliable Actors プログラミング モデルを使用している場合は、**EventSource** イベントとパフォーマンス カウンター。 イベントは、「[Reliable Actors の診断とパフォーマンス監視](service-fabric-reliable-actors-diagnostics.md)」で列挙されています。
 - Reliable Services プログラミング モデルを使用している場合は **EventSource** イベント。 イベントは、「[ステートフル Reliable Services の診断機能](service-fabric-reliable-services-diagnostics.md)」で列挙されています。
-- システム イベントは、Event Tracing for Windows (ETW) イベントとして出力されます。 サービス配置や開始/停止イベントなど、このカテゴリに含まれる多数のイベントが Service Fabric から出力されます。 出力されたイベントを確認する最良の方法は、ローカル コンピューターで [Visual Studio の診断イベント ビューアー](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)を使用することです。 これらのイベントはネイティブ ETW イベントであるため、収集方法にいくつかの制限があります。
-- Service Fabric リリース 5.4 で、正常性と負荷のメトリック イベントが公開されました。 これにより、イベントの収集を履歴レポートとアラートで使用できるようになります。 これらのイベントもネイティブ ETW イベントであるため、収集方法にいくつかの制限があります。
+
 
 診断が有効になっていれば、構成時に、イベントはクラスターを作成したときに作成された Azure ストレージ アカウントに表示されます。 テーブル名は、WADServiceFabricReliableActorEventTable、WADServiceFabricReliableServiceEventTable、WADServiceFabricSystemEventTable です。 正常性イベントは既定で追加されません。これらのイベントを追加するには、Resource Manager テンプレートを変更する必要があります。 詳細については、「[Azure 診断でログを収集する方法](service-fabric-diagnostics-how-to-setup-wad.md)」をご覧ください。
 
@@ -352,7 +389,7 @@ EventFlow を使用するには、次の手順に従います。
 
 Azure Application Insights でイベントを表示するには、Azure Portal で Application Insights リソースに移動します。 イベントを表示するには、**[検索]** ボックスを選択します。
 
-![Application Insights のイベントの [検索] ビュー](./media/service-fabric-diagnostics-overview/ai-search-events.PNG)
+![Application Insights のイベントの [検索] ビュー](./media/service-fabric-diagnostics-overview/ai-search-events.png)
 
 上記のスクリーンショットの下部にトレースが表示されています。 ここではイベントが 2 つしか表示されていません。これは、デバッグ レベルのイベントが EventFlow によって破棄されたことを示しています。 トレースの上の要求エントリは、3 番目の `_logger` インストルメンテーション行です。 この行は、イベントが Application Insights 内で要求メトリックに変換されたことを示しています。
 
@@ -360,48 +397,44 @@ Azure Application Insights でイベントを表示するには、Azure Portal �
 
 ポリシー上の理由からクラウド ベースのソリューションに接続できないスタンドアロン クラスターがある場合は、Elasticsearch を出力として使用できます。 ただし、他の出力を書き込むこともでき、プル要求が促進されます。 ASP.NET Core のログ記録の一部のサード パーティ プロバイダーには、オンプレミスのインストールをサポートするソリューションもあります。
 
-## <a name="azure-service-fabric-health-and-load-reporting"></a>Azure Service Fabric の正常性と負荷のレポート
-
-Service Fabric には、次の記事で詳述する独自の正常性モデルがあります。
-- [Service Fabric の正常性モニタリングの概要](service-fabric-health-introduction.md)
-- [サービス正常性のレポートとチェック](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
-- [Service Fabric のカスタム正常性レポートの追加](service-fabric-report-health.md)
-- [Service Fabric の正常性レポートの確認](service-fabric-view-entities-aggregated-health.md)
-
-正常性監視は、サービスの運用のさまざまな側面に不可欠です。 正常性監視は、Service Fabric が指定されたアプリケーションのアップグレードを実行するときに特に重要となります。 サービスの各アップグレード ドメインがアップグレードされ、顧客が利用できるようになった後、デプロイが次のアップグレード ドメインに移る前に、現在のアップグレード ドメインが正常性チェックに合格する必要があります。 正常な状態を実現できない場合、デプロイがロールバックされ、アプリケーションは既知の良好な状態に維持されます。 サービスがロールバックされる前に一部の顧客が影響を受ける場合もありますが、ほとんどの顧客では問題が発生することはありません。 また、人間のオペレーターによる操作を待たなくても、比較的速やかに問題が解決されます。 コードに組み込まれている正常性チェックが増えるほど、デプロイの問題に対するサービスの耐性が向上します。
-
-サービスの正常性のもう 1 つの側面は、サービスのメトリックの報告です。 メトリックはリソース使用量のバランスを取るために使用されるため、Service Fabric において重要です。 また、メトリックはシステムの正常性を示すインジケーターにもなります。 たとえば、多数のサービスを使用するアプリケーションがあり、各インスタンスから 1 秒あたりの要求数 (RPS) メトリックが報告されているとします。 あるサービスが別のサービスよりも多くのリソースを使用している場合、Service Fabric はクラスター内でサービス インスタンスを移動させ、リソース使用率を均等に維持することを試みます。 リソース使用率のしくみの詳細については、「[Service Fabric のリソース使用量と負荷をメトリックで管理する](service-fabric-cluster-resource-manager-metrics.md)」をご覧ください。
-
-メトリックにより、サービスの実行状況に関する知見も得られます。 長期間にわたり、メトリックを使用して、サービスが求められているパラメーターの範囲内で動作していることを確認することもできます。 たとえば、月曜日の午前 9 時の時点での平均 RPS が 1,000 であることを傾向が示している場合、RPS が 500 を下回るか、1,500 を超えたら通知する正常性レポートを設定できます。 すべてがまったく問題ない場合もありますが、顧客の優れたエクスペリエンスを確保するうえで、正常性レポートは一見の価値があります。 サービスでは、正常性チェックのために報告対象にすることができ、クラスターのリソースのバランスには影響を与えない一連のメトリックを定義できます。 これを行うには、メトリックの重みを 0 に設定します。 どのメトリックも最初は重みを 0 にし、メトリックの重み付けがクラスターのリソースのバランスに及ぼす影響を確実に理解できるまで重みを増やさないようにすることをお勧めします。
-
-> [!TIP]
-> 重み付けされたメトリックを使いすぎないようにしてください。 バランスを取るためにサービス インスタンスが移動されている理由を理解しにくくなる可能性があります。 少数のメトリックでも十分に役立ちます。
-
-アプリケーションの正常性とパフォーマンスを示すことができる情報が、メトリックと正常性レポートの候補となります。 CPU パフォーマンス カウンターではノードの使用状況がわかりますが、1 つのノードで複数のサービスが実行されている場合があるため、特定のサービスが正常かどうかを示すわけではありません。 しかし、RPS、処理された項目数、要求の待機時間などのメトリックは、いずれも特定のサービスの正常性を示すことができます。
-
-正常性を報告するには、次のようなコードを使用します。
-
-  ```csharp
-    if (!result.HasValue)
-    {
-        HealthInformation healthInformation = new HealthInformation("ServiceCode", "StateDictionary", HealthState.Error);
-        this.Partition.ReportInstanceHealth(healthInformation);
-    }
-  ```
-
-メトリックを報告するには、次のようなコードを使用します。
-
-  ```csharp
-    this.ServicePartition.ReportLoad(new List<LoadMetric> { new LoadMetric("MemoryInMb", 1234), new LoadMetric("metric1", 42) });
-  ```
-
-## <a name="watchdogs"></a>ウォッチドッグ
-
-ウォッチドッグは、複数のサービスにわたって正常性と負荷を監視し、正常性モデル階層内のあらゆるものの正常性を報告することができる別のサービスです。 このサービスにより、1 つのサービスの観点では検出されないエラーを防ぐことができます。 また、ウォッチドッグは、ユーザーが介入せずに既知の状況に対して修復アクションを実行できるコードをホストするのに適した場所でもあります。
-
 ## <a name="visualization-analysis-and-alerts"></a>視覚化、分析、およびアラート
 
-監視の最後の部分は、イベント ストリームの視覚化、サービスのパフォーマンスに関するレポート、問題が検出されたときのアラートです。 監視のこの側面には、さまざまなソリューションを使用できます。 Azure Application Insights や Operations Management Suite を使用して、イベントのストリームに基づくアラートを作成できます。 Microsoft Power BI または [Kibana](https://www.elastic.co/products/kibana) や [Splunk](https://www.splunk.com/) などのサード パーティ製ソリューションを使用して、データを視覚化できます。
+監視の最後の部分は、イベント ストリームの視覚化、サービスのパフォーマンスに関するレポート、問題が検出されたときのアラートです。 監視のこの側面には、さまざまなソリューションを使用できます。 イベントのストリームに基づくアラートには、 AppInsights と Operations Management Suite (OMS) を使用します。 Microsoft Power BI または [Kibana](https://www.elastic.co/products/kibana) や [Splunk](https://www.splunk.com/) などのサード パーティ製ソリューションを使用して、データを視覚化できます。
+
+### <a name="appinsights"></a>AppInsights
+
+AppInsights は、アプリケーションとサービスを監視するための推奨ツールの 1 つです。 更新された AI.SDK は、Service Fabric イベントで非常に役立つだけでなく、(AppInsights Analytics を通じて) すばらしいデータ視覚化とクエリ ツールを提供します。また、アプリケーションまたはクラスター内のプロセス間の依存関係のトレースに役立つ正確な AppMap を作成することもできます。
+
+Azure Marketplace で "Application Insights" を検索して、AppInsights リソースを設定します。 作成したら、[*プロパティ*] に移動して、AI インストルメンテーション キー (GUID 形式) を検索します。 これは次の目的で使用されます。
+* Azure Resource Manager テンプレートを通じて直接 Service Fabric クラスターから、またはクラスターの作成時に Azure Portal を通じて、インフラストラクチャ レベルのイベントを受信するため、AppInsights を統合します。診断が有効になっていることが前提です。
+* 上のセクションで示したように、Application Insights にデータを出力するように EventFlow (eventFlowConfig.json) を構成します。
+
+### <a name="oms"></a>OMS
+
+OMS は、Service Fabric クラスターの診断と監視に推奨されるもう 1 つのツールです。 Service Fabric ソリューションは、任意のワークスペースに追加でき、さまざまな種類の Service Fabric イベントを表示するダッシュボードがあります。 OMS ワークスペースには、Log Analytics でログのクエリを実行する強力なツールもあります。
+
+OMS ワークスペースを構成するには、クラスターの診断が有効になっていることを確認します。 Azure Marketplace から "Service Fabric Analytics" を既存の OMS ワークスペースに追加するか、新しく作成します。 クラスターがイベントを書き込んでいる Azure Storage テーブルに接続するように、ワークスペースのデータ ソースを構成します。 
+
+OMS でカスタム イベントを取得するようにするには、アプリケーションに追加するインストルメンテーションが同じ Storage テーブルにも書き込むか、ワークスペースのソースとなるようにも構成されている他のテーブルにも書き込む必要があるかどうかを確認する必要があります。 
+
+OMS は現在、コンテナーの監視と診断が必要な場合に、データを視覚化および分析するために使用する推奨パスでもあります。これは、コンテナー ソリューションを、Service Fabric で調整されたコンテナーとうまく機能するワークスペースに追加できるからです。 これを設定するための簡潔なガイドは、[こちら](service-fabric-diagnostics-containers-windowsserver.md)をご覧ください。
+
+### <a name="azure-monitor"></a>Azure Monitor
+
+[Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) を使用して、Service Fabric クラスターの基盤となる Azure リソースの多くを監視できます。 [仮想マシン スケール セット](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets)と個々の[仮想マシン](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesetsvirtualmachines)の一連のメトリックが自動的に収集され、Azure Portal に表示されます。 収集された情報を表示するには、Azure Portal でService Fabric クラスターが含まれているリソース グループを選択します。 次に、表示する仮想マシン スケール セットを選択します。 **[監視]** セクションで**メトリック**を選択すると、値のグラフが表示されます。
+
+![収集されたメトリック情報の Azure Portal での表示](./media/service-fabric-diagnostics-overview/azure-monitoring-metrics.png)
+
+グラフをカスタマイズするには、[Microsoft Azure のメトリック](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)に関する記事に記載された手順に従います。 また、「[Azure Monitor での Azure サービス アラートの作成](../monitoring-and-diagnostics/insights-alerts-portal.md)」で説明するように、これらのメトリックに基づいてアラートを作成することもできます。 「[Azure メトリック アラートでの webhook の構成](../monitoring-and-diagnostics/insights-webhooks-alerts.md)」で説明するように、webhook を使用してアラートを通知サービスに送信できます。 Azure Monitor では、サブスクリプションを 1 つだけサポートします。 複数のサブスクリプションを監視する必要がある場合や、追加機能が必要な場合は、Microsoft Operations Management Suite に含まれる [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) が、オンプレミスとクラウド ベースの両方のインフラストラクチャに対応する包括的な IT 管理ソリューションを提供します。 Azure Monitor のデータを Log Analytics に直接ルーティングできるので、環境全体のメトリックとログを 1 か所で確認できます。
+
+オンプレミスのインフラストラクチャの監視には、Operations Management Suite を使用することをお勧めします。ただし、組織でインフラストラクチャの監視に使用している既存のソリューションを使用することもできます。
+
+## <a name="additional-steps"></a>追加の手順
+
+### <a name="watchdogs"></a>ウォッチドッグ
+
+ウォッチドッグは、複数のサービスにわたって正常性と負荷を監視し、正常性モデル階層内のあらゆるものの正常性を報告することができる別のサービスです。 このサービスにより、1 つのサービスの観点では検出されないエラーを防ぐことができます。 また、ウォッチドッグは、ユーザーが介入せずに既知の状況に対して修復アクションを実行できるコードをホストするのに適した場所でもあります。 ウォッチドッグ サービスの実装サンプルは、[ここ](https://github.com/Azure-Samples/service-fabric-watchdog-service)で見つけることができます。
+
 
 ## <a name="next-steps"></a>次のステップ
 

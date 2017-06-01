@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/24/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: fba7f5f33d1a0d39219a6790e1d5c6b4515b794c
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 29e8639a6f1f0c2733d24dda78975ea7cfb6107a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -41,9 +42,9 @@ Azure にソリューションをデプロイして実行するだけでなく�
 
 | 解決策 | データの取り込み | デバイス ID | デバイス管理 | コマンドと制御 | ルールとアクション | 予測分析 |
 | --- | --- | --- | --- | --- | --- | --- |
-| [リモート監視][lnk-getstarted-preconfigured] |はい |あり |あり |あり |はい |- |
-| [予測的なメンテナンス][lnk-predictive-maintenance] |はい |あり |- |あり |あり |はい |
-| [コネクテッド ファクトリ][lnk-getstarted-factory] |あり |あり |あり |あり |はい |- |
+| [リモート監視][lnk-getstarted-preconfigured] |はい |はい |はい |はい |はい |- |
+| [予測的なメンテナンス][lnk-predictive-maintenance] |はい |はい |- |はい |はい |はい |
+| [コネクテッド ファクトリ][lnk-getstarted-factory] |あり |はい |はい |はい |はい |- |
 
 * *データの取り込み*: クラウドへの大規模なデータの取り込み。
 * "*デバイス ID*": 一意のデバイス ID を管理し、ソリューションへのデバイス アクセスを制御します。
@@ -107,7 +108,7 @@ IoT Hub のデバイス管理機能を使用すると、ソリューション �
 ## <a name="azure-stream-analytics"></a>Azure Stream Analytics
 構成済みソリューションでは、次の 3 つの [Azure Stream Analytics][lnk-asa] (ASA) ジョブを使用して、デバイスのテレメトリ ストリームをフィルターします。
 
-* "*DeviceInfo ジョブ*" - イベント ハブにデータを出力します。このイベント ハブにより、デバイス登録固有のメッセージが、ソリューションのデバイス レジストリ (DocumentDB データベース) にルーティングされます。 このメッセージは、デバイスが最初に接続するとき、または **デバイス状態の変更** コマンドに応答して送信されます。
+* "*DeviceInfo ジョブ*" - イベント ハブにデータを出力します。このイベント ハブにより、デバイス登録固有のメッセージがソリューションのデバイス レジストリ (Azure Cosmos DB データベース) にルーティングされます。 このメッセージは、デバイスが最初に接続するとき、または **デバイス状態の変更** コマンドに応答して送信されます。
 * *Telemetry ジョブ* - Azure Blob Storage にコールド ストレージの未加工のテレメトリをすべて送信し、ソリューションのダッシュボードに表示されるテレメトリの集計を行います。
 * *Rules ジョブ* - テレメトリ ストリームをフィルターして、いずれかのルールのしきい値を超える値を絞り込み、そのデータをイベント ハブに出力します。 ルールが実行されると、このイベントは、ソリューション ポータルのダッシュボード ビューに、アラーム履歴テーブルの新しい行として表示されます。 このルールは、ソリューション ポータルの**ルール** ビューおよび**アクション** ビューで定義された設定に基づいて、アクションをトリガーすることもできます。
 
@@ -117,10 +118,10 @@ IoT Hub のデバイス管理機能を使用すると、ソリューション �
 この構成済みソリューションでは、イベント プロセッサは一般的な [IoT ソリューション アーキテクチャ][lnk-what-is-azure-iot]の **IoT ソリューション バックエンド**の一部です。
 
 **DeviceInfo** と **Rules** の各 ASA ジョブは、他のバックエンド サービスに配信するために出力をイベント ハブに送信します。 このソリューションでは、[Web ジョブ][lnk-web-job]で実行される [EventProcessorHost][lnk-event-processor] インスタンスを使用して、これらのイベント ハブからメッセージを読み取ります。 **EventProcessorHost** は次のように動作します。
-- **DeviceInfo** データを使用して、DocumentDB データベースのデバイス データを更新します。
+- **DeviceInfo** データを使用して、Cosmos DB データベースのデバイス データを更新します。
 - **Rules** データを使用して、ロジック アプリを呼び出し、ソリューション ポータルのアラートの表示を更新します。
 
-## <a name="device-identity-registry-device-twin-and-documentdb"></a>デバイス ID レジストリ、デバイス ツイン、DocumentDB
+## <a name="device-identity-registry-device-twin-and-cosmos-db"></a>デバイス ID レジストリ、デバイス ツイン、Cosmos DB
 すべての IoT Hub には、デバイス キーを格納する[デバイス ID レジストリ][lnk-identity-registry]が含まれています。 IoT Hub は、この情報を使用してデバイスを認証します (ハブに接続する前に、デバイスが登録され、有効なキーを持っている必要があります)。
 
 [デバイス ツイン][lnk-device-twin]は、IoT Hub によって管理される JSON ドキュメントです。 デバイスのデバイス ツインには次が含まれています。
@@ -129,9 +130,9 @@ IoT Hub のデバイス管理機能を使用すると、ソリューション �
 - デバイスに送信する必要なプロパティ。 このプロパティは、ソリューション ポータルで設定できます。
 - デバイス ツインにのみ存在し、デバイスには存在しないタグ。 このタグを使用して、ソリューション ポータルのデバイスの一覧にフィルターを適用できます。
 
-このソリューションでは、デバイス ツインを使用してデバイス メタデータを管理します。 また、DocumentDB データベースを使用して、ソリューション固有の追加のデバイス データ (各デバイスがサポーするコマンド、コマンドの履歴など) を格納することもできます。
+このソリューションでは、デバイス ツインを使用してデバイス メタデータを管理します。 また、Cosmos DB データベースを使用して、ソリューション固有の追加のデバイス データ (各デバイスがサポートするコマンドやコマンドの履歴など) を格納することもできます。
 
-このソリューションでは、デバイス ID レジストリの情報と DocumentDB データベースのコンテンツの同期が維持されている必要もあります。 **EventProcessorHost** では、**DeviceInfo** Stream Analytics ジョブのデータを使用して、同期を管理します。
+このソリューションでは、デバイス ID レジストリの情報と Cosmos DB データベースのコンテンツの同期が維持されている必要もあります。 **EventProcessorHost** では、**DeviceInfo** Stream Analytics ジョブのデータを使用して、同期を管理します。
 
 ## <a name="solution-portal"></a>ソリューション ポータル
 ![ソリューション ポータル][img-dashboard]
@@ -168,3 +169,4 @@ IoT ソリューション アーキテクチャの詳細については、「[Mi
 [lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
 [lnk-getstarted-factory]: iot-suite-connected-factory-overview.md
+

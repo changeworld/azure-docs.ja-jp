@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2017
+ms.date: 05/16/2017
 ms.author: helaw
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 9c4b7cbdeba7e27b49996f5bcbfd7e62a0d92353
+ms.contentlocale: ja-jp
 ms.lasthandoff: 11/17/2016
 
 

@@ -15,10 +15,11 @@ ms.workload: na
 ms.date: 05/04/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 75a2fa16a7e33cf85746538e120ca90a389b05c5
-ms.lasthandoff: 03/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 25183c6c3c69f7d4c2872252197e2dc8662fefd4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -83,7 +84,7 @@ ID レジストリで ID の **status** プロパティを更新することに�
 
 ## <a name="device-provisioning"></a>デバイス プロビジョニング
 
-特定の IoT ソリューションに格納されるデバイス データは、そのソリューションの具体的な要件によって異なりますが、 ソリューションには少なくともデバイスの ID と認証キーを格納する必要があります。 Azure IoT Hub には、各デバイスの ID、認証キー、状態コードなどの値を保存できる ID レジストリがあります。 ソリューションでは、Azure テーブル ストレージ、Azure BLOB ストレージ、Azure DocumentDB などの Azure サービスを使用して、さらにデバイス データを保存できます。
+特定の IoT ソリューションに格納されるデバイス データは、そのソリューションの具体的な要件によって異なりますが、 ソリューションには少なくともデバイスの ID と認証キーを格納する必要があります。 Azure IoT Hub には、各デバイスの ID、認証キー、状態コードなどの値を保存できる ID レジストリがあります。 ソリューションでは、Azure Table Storage、Azure Blob Storage、Azure Cosmos DB などの Azure サービスを使用して、さらにデバイス データを保存できます。
 
 *デバイス プロビジョニング* とは、最初のデバイス データをソリューション内のストアに追加するプロセスです。 新しいデバイスをハブに接続できるようにするには、デバイスの ID とキーを IoT Hub ID レジストリに追加する必要があります。 プロビジョニング プロセスの一環として、他のソリューション ストアにあるデバイス固有データの初期化が必要になる場合があります。
 
@@ -99,6 +100,50 @@ IoT Hub ID レジストリには、**connectionState** というフィールド�
 
 > [!NOTE]
 > C2D メッセージを送信するかどうかを判断するためだけに IoT ソリューションでデバイス接続状態が必要であり、多数のデバイスにメッセージをブロードキャストしない場合は、簡単なパターンとして短い有効期間の使用を検討する必要があります。 この方法を使用すると、ハートビート パターンを使用してデバイス接続状態レジストリを維持するのと同じ結果を得られますが、効率が向上します。 また、メッセージの受信確認を要求することにより、メッセージを受信できるデバイスおよびオンラインではないデバイスや障害が発生しているデバイスについて IoT Hub から通知を受け取ることもできます。
+
+## <a name="device-lifecycle-notifications"></a>デバイスのライフサイクルの通知
+
+IoT Hub は、デバイスのライフサイクルの通知を送信することで、デバイス ID がいつ作成されたか、またはいつ削除されたかを IoT ソリューションに通知できます。 そのためには、IoT ソリューションでルートを作成し、データ ソースの値を *DeviceLifecycleEvents* に設定する必要があります。 既定では、ライフサイクルの通知は送信されません。つまり、このようなルートは事前に存在しません。 通知メッセージには、プロパティおよび本文が含まれます。
+
+- プロパティ
+
+メッセージのシステム プロパティには、`'$'` シンボルが付きます。
+
+| 名前 | 値 |
+| --- | --- |
+$content-type | application/json |
+$iothub-enqueuedtime |  通知が送信された時刻 |
+$iothub-message-source | deviceLifecycleEvents |
+$content-encoding | utf-8 |
+opType | “createDeviceIdentity” または “deleteDeviceIdentity” |
+hubName | IoT Hub の名前 |
+deviceId | デバイスの ID |
+operationTimestamp | 操作の ISO8601 タイムスタンプ |
+iothub-message-schema | deviceLifecycleNotification |
+
+- body
+
+このセクションは JSON 形式であり、作成されたデバイス ID のツインを表します。 たとえば、次のように入力します。
+``` 
+{
+    "deviceId":"11576-ailn-test-0-67333793211",
+    "etag":"AAAAAAAAAAE=",
+    "properties": {
+        "desired": {
+            "$metadata": {
+                "$lastUpdated": "2016-02-30T16:24:48.789Z"
+            },
+            "$version": 1
+        },
+        "reported": {
+            "$metadata": {
+                "$lastUpdated": "2016-02-30T16:24:48.789Z"
+            },
+            "$version": 1
+        }
+    }
+}
+```
 
 ## <a name="reference-topics"></a>参照トピック:
 

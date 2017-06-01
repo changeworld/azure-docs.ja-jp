@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory プレビューでサインイン ページに言語固有の会社のブランドを追加する | Microsoft Docs"
+title: "Azure Active Directory でサインイン ページに言語固有の会社のブランドを追加する | Microsoft Docs"
 description: "Azure サインイン ページに言語固有の会社のブランドの画像とテキストを追加する方法について説明します。"
 services: active-directory
 documentationcenter: 
@@ -12,17 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2017
+ms.date: 05/04/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: fece49df6a35f09ee73bb4b9ec4c33a0529a9f59
-ms.lasthandoff: 12/29/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: e1fe8d855386ceec39edbc985538cdf32d78a13b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/05/2017
 
 
 ---
-# <a name="add-language-specific-company-branding-to-your-sign-in-page-in-the-azure-active-directory-preview"></a>Azure Active Directory プレビューでサインイン ページに言語固有の会社のブランドを追加する
-多くの企業は、管理下にある Web サイトとサービスに関して利用者が戸惑わないよう、そのすべての外観に統一感を持たせたいと考えています。 Azure Active Directory プレビューでは、会社のロゴや独自の配色でサインイン ページの外観をカスタマイズできるようにすることでこれを実現します。 [プレビューの機能については、こちらの記事をご覧ください。](active-directory-preview-explainer.md) サインイン ページは、Office 365 など、Azure AD を ID プロバイダーとして使用する Web ベースのアプリケーションにサインインするときに表示されるページです。 このページを使用して資格情報を入力します。
+# <a name="add-language-specific-company-branding-to-your-sign-in-page-in-the-azure-active-directory"></a>Azure Active Directory でサインイン ページに言語固有の会社のブランドを追加する
+多くの企業は、管理下にある Web サイトとサービスに関して利用者が戸惑わないよう、そのすべての外観に統一感を持たせたいと考えています。 Azure Active Directory では、会社のロゴや独自の配色でサインイン ページの外観をカスタマイズできるようにすることでこれを実現します。 サインイン ページは、Office 365 など、Azure AD を ID プロバイダーとして使用する Web ベースのアプリケーションにサインインするときに表示されるページです。 このページを使用して資格情報を入力します。
 
 ## <a name="customizing-the-sign-in-page-for-another-language"></a>別の言語のサインイン ページのカスタマイズ
 カスタム サインイン ページに言語固有の要素を追加できるのは、 [サインイン ページへの会社のブランドの追加](active-directory-branding-custom-signon-azure-portal.md)に関する記事の説明に従って、カスタム サインイン ページを既に作成している場合に限られます。 カスタマイズ可能な要素の既定のセットを使用して、ディレクトリごとに 1 つのサインイン ページを構成できます。 ページ要素の既定のセットを構成したら、さまざまなロケール用に追加のバージョンを構成できます。 さまざまな要素を混在させたり、一致させたりすることもできます。 たとえば、次のことが可能です。

@@ -14,17 +14,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/12/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: eaf3df69428124127ef3daf134bc948cd0988ec6
-ms.openlocfilehash: c1956e97444077f197ab5d0fd67097ddea0f7244
-ms.lasthandoff: 03/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 3071bf565b14966de2293205026c4524d7b0f0c5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/27/2017
 
 
 ---
 # <a name="secure-an-app-in-azure-app-service"></a>Azure App Service でのアプリのセキュリティ保護
 この記事は、Azure App Service で Web アプリ、モバイル アプリ バックエンド、API アプリをセキュリティで保護するときに役立ちます。 
 
-Azure App Service のセキュリティには、次の&2; つのレベルがあります。 
+Azure App Service のセキュリティには、次の 2 つのレベルがあります。 
 
 * **インフラストラクチャとプラットフォームのセキュリティ** - 実際にクラウドで安全に操作を行うために必要な Azure のサービスを信頼して利用します。
 * **アプリケーションのセキュリティ** - アプリ自体を安全に設計する必要があります。 これには、Azure Active Directory と統合する方法、証明書を管理する方法、さまざまなサービスと安全に通信できることを確認する方法が含まれます。 
@@ -56,7 +57,7 @@ App Service アプリの脆弱性のテストを開始する最も簡単な方�
 独自の侵入テストを実行するか、別のスキャナー スイートまたはプロバイダーを使用する場合は、 [Azure 侵入テストの承認プロセス](https://security-forms.azure.com/penetration-testing/terms) に従い、事前の承認を得たうえで目的の侵入テストを実行する必要があります。
 
 ## <a name="https"></a> 顧客との通信をセキュリティで保護する
-App Service アプリ用に作成された **\*.azurewebsites.net** ドメイン名を使用する場合は、SSL 証明書がすべての **\*.azurewebsites.net** ドメイン名に提供されているため、すぐに HTTPS を使用できます。 サイトで[カスタム ドメイン名](web-sites-custom-domain-name.md)を使用している場合は、SSL 証明書をアップロードし、カスタム ドメインに対して [HTTPS を有効にする](web-sites-configure-ssl-certificate.md)ことができます。
+App Service アプリ用に作成された **\*.azurewebsites.net** ドメイン名を使用する場合は、SSL 証明書がすべての **\*.azurewebsites.net** ドメイン名に提供されているため、すぐに HTTPS を使用できます。 サイトで[カスタム ドメイン名](app-service-web-tutorial-custom-domain.md)を使用している場合は、SSL 証明書をアップロードし、カスタム ドメインに対して [HTTPS を有効にする](app-service-web-tutorial-custom-ssl.md)ことができます。
 
 [HTTPS](https://en.wikipedia.org/wiki/HTTPS) を有効にすると、アプリとそのユーザー間の通信を狙った MITM 攻撃から保護することができます。
 

@@ -13,11 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
-ms.author: jehollan
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: be14485c9070d7dce5ecbaea778f31f30e13cfa9
-ms.lasthandoff: 03/10/2017
+ms.author: LADocs; jehollan
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: ddb7c2fd9437cb342e68b5a1ad47f9bd06ec476b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -107,7 +108,7 @@ HTTP アクションの再試行回数を 4 回とし、試行までの待ち時
 
 アクションの実行条件には、個々のアクションを指定するだけでなく、複数のアクションを[スコープ](../logic-apps/logic-apps-loops-and-scopes.md)としてグループ化して指定することもできます。このときスコープは、アクションの論理的なまとまりとして作用します。 ロジック アプリのアクションを体系化したり、スコープの状態に対して全体的な評価を実行したりする場合にスコープを活用できます。 スコープ自体には、スコープ内のすべてのアクションが完了した後に状態が返されます。 スコープの状態は、実行条件と同じ条件で判定されます。 実行分岐の最後のアクションが `Failed` または `Aborted` である場合、状態は `Failed` となります。
 
-スコープ内で何らかのエラーが発生した場合に特定のアクションを実行するには、`runAfter` を使用し、スコープが `Failed` としてマークされたことをその条件とします。 スコープの失敗後という実行条件により、スコープ内の "*いずれかの*" アクションが失敗した場合に発生するエラーを&1; つのアクションでキャッチできます。
+スコープ内で何らかのエラーが発生した場合に特定のアクションを実行するには、`runAfter` を使用し、スコープが `Failed` としてマークされたことをその条件とします。 スコープの失敗後という実行条件により、スコープ内の "*いずれかの*" アクションが失敗した場合に発生するエラーを 1 つのアクションでキャッチできます。
 
 ### <a name="getting-the-context-of-failures-with-results"></a>結果と共にエラーのコンテキストを取得する
 
@@ -164,14 +165,14 @@ HTTP アクションの再試行回数を 4 回とし、試行までの待ち時
 
 3. **フィルター後の配列**の出力に対して **For Each** アクションを実行します。 このステップでは、フィルター処理済みの失敗したアクションの結果 "*ごとに*" 特定のアクションが実行されます。
 
-    スコープ内の&1; つのアクションが失敗した場合、`foreach` 内のアクションは&1; 回だけ実行されます。 
-    失敗したアクションが複数ある場合は、エラーごとに&1; つのアクションが実行されることになります。
+    スコープ内の 1 つのアクションが失敗した場合、`foreach` 内のアクションは 1 回だけ実行されます。 
+    失敗したアクションが複数ある場合は、エラーごとに 1 つのアクションが実行されることになります。
 
 4. `foreach` 要素の応答本文 (`@item()['outputs']['body']`) で HTTP POST を送信します。 `@result()` 要素の構造は `@actions()` と同じであり、同じ方法で解析することができます。
 
-5. `@item()['name']` と `@item()['clientTrackingId']` という&2; つのカスタム ヘッダーが含まれます。前者は失敗したアクションの名前、後者は失敗した実行のクライアント追跡 ID です。
+5. `@item()['name']` と `@item()['clientTrackingId']` という 2 つのカスタム ヘッダーが含まれます。前者は失敗したアクションの名前、後者は失敗した実行のクライアント追跡 ID です。
 
-参考例として、前述の例で解析した `name`、`body`、`clientTrackingId` の各プロパティを含む&1; つの `@result()` 要素を次に示します。 `foreach` の外側では、`@result()` によってこれらのオブジェクトの配列が返されます。
+参考例として、前述の例で解析した `name`、`body`、`clientTrackingId` の各プロパティを含む 1 つの `@result()` 要素を次に示します。 `foreach` の外側では、`@result()` によってこれらのオブジェクトの配列が返されます。
 
 ```json
 {
@@ -208,7 +209,7 @@ HTTP アクションの再試行回数を 4 回とし、試行までの待ち時
 ## <a name="azure-diagnostics-and-telemetry"></a>Azure 診断とテレメトリ
 
 ここで取り上げたパターンは、発生したエラーや例外を実行中に処理するうえで、きわめて効果的な方法です。しかし実行そのものとは切り離して、エラーを特定し、対応することもできます。 
-ワークフローで発生したあらゆるイベント (実行とアクションのすべての状態を含む) は、[Azure 診断](../logic-apps/logic-apps-monitor-your-logic-apps.md)を使用することで簡単に Azure Storage アカウントや Azure Event Hub に送信することができます。 ログやメトリックを監視したり、それらを好きな監視ツールに発行したりすることによって、実行の状態を評価することができます。 その中の一つの方法として、すべてのイベントを Azure Event Hub を介して [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) にストリーミングすることが考えられます。 Stream Analytics では、診断ログから得られる異常、平均値、エラーに基づいて適宜必要なクエリを記述することができます。 Stream Analytics からの出力は、キューやトピック、SQL、DocumentDB、Power BI などの他のデータ ソースに簡単に渡すことができます。
+ワークフローで発生したあらゆるイベント (実行とアクションのすべての状態を含む) は、[Azure 診断](../logic-apps/logic-apps-monitor-your-logic-apps.md)を使用することで簡単に Azure Storage アカウントや Azure Event Hub に送信することができます。 ログやメトリックを監視したり、それらを好きな監視ツールに発行したりすることによって、実行の状態を評価することができます。 その中の一つの方法として、すべてのイベントを Azure Event Hub を介して [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) にストリーミングすることが考えられます。 Stream Analytics では、診断ログから得られる異常、平均値、エラーに基づいて適宜必要なクエリを記述することができます。 Stream Analytics からの出力は、キューやトピック、SQL、Azure Cosmos DB、Power BI などの他のデータ ソースに簡単に渡すことができます。
 
 ## <a name="next-steps"></a>次のステップ
 

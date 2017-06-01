@@ -3,7 +3,7 @@ title: "データが存在しない場合のトラブルシューティング - 
 description: "Auzre Application Insights にデータが表示されない場合は、 ここで解決してください。"
 services: application-insights
 documentationcenter: .net
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: e231569f-1b38-48f8-a744-6329f41d91d3
 ms.service: application-insights
@@ -93,7 +93,7 @@ Application Insights をインストールしているとき、またはログ �
 
 ![](./media/app-insights-asp-net-troubleshoot-no-data/access-denied.png)
 
-[Application Insights をアプリに追加したときに作成されたリソース](app-insights-asp-net.md)へのアクセス権が、既定のブラウザーで前回使用された Microsoft サインインにはありません。 次の&2; つの理由が考えられます。 
+[Application Insights をアプリに追加したときに作成されたリソース](app-insights-asp-net.md)へのアクセス権が、既定のブラウザーで前回使用された Microsoft サインインにはありません。 次の 2 つの理由が考えられます。 
 
 * Microsoft アカウントが複数存在する (仕事用と個人用など)。 前回既定のブラウザーで使用されたサインインが、 [Application Insights をプロジェクトに追加](app-insights-asp-net.md)するためのアクセス権を持ったアカウントと異なります。 
   

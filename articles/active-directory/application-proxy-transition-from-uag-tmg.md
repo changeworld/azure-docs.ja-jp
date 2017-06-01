@@ -1,6 +1,6 @@
 ---
-title: "Microsoft Forefront から Azure AD アプリケーション プロキシへの切り替え | Microsoft Docs"
-description: "Microsoft Forefront の TMG および UAG ソリューションから Azure Active Directory アプリケーション プロキシに移行する方法に関する基本事項について説明します。"
+title: "Azure AD アプリケーション プロキシへのアップグレード | Microsoft Docs"
+description: "Microsoft Forefront または Unified Access Gateway からアップグレードする場合に最適なプロキシ ソリューションを選択します。"
 services: active-directory
 documentationcenter: 
 author: kgremban
@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 04/27/2017
 ms.author: kgremban
-ROBOTS: NOINDEX
-translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: 6e95e9abac988ae54a401927a92bdb397dd63eed
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: e9d5caa4d11012744ce9f26648166371f3aa17ba
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/13/2017
 
 ---
-# <a name="transition-to-azure-ad-application-proxies-from-microsoft-forefront"></a>Microsoft Forefront から Azure AD アプリケーション プロキシへの切り替え
+# <a name="upgrade-to-azure-ad-proxies-from-microsoft-forefront-or-unified-access-gateway"></a>Microsoft Forefront または Unified Access Gateway から Azure AD プロキシへのアップグレード
 
 この記事では、Microsoft Forefront の Threat Management Gateway (TMG) および Unified Access Gateway (UAG) ソリューションから Azure AD アプリケーション プロキシに移行する方法について説明します。
 
@@ -28,16 +28,16 @@ Forefront の TMG および UAG からアプリケーション プロキシへ�
 
 ## <a name="functionality-details-for-the-conversion"></a>変換に関する機能の詳細
 
-|**TMG/UAG の機能**|**Web アプリケーション プロキシ/Azure AD アプリケーション プロキシ**|
+|**TMG/UAG の機能**|**最新のソリューション**|
 |:-----|:-----|
-|ブラウザー アプリケーションの選択的な HTTP の公開|Windows Server 2012 R2 の Web アプリケーション プロキシで利用可能。 現在は Azure AD アプリケーション プロキシで利用可能。|
-|Active Directory フェデレーション サービス (AD FS) 統合|Windows Server 2012 R2 の Web アプリケーション プロキシで利用可能。 現在は Azure AD アプリケーション プロキシで利用可能。|
-|さまざまなプロトコルでの公開 (Citrix、Lync、RDG など)|Windows Server 2012 R2 の Web アプリケーション プロキシで利用可能。 現在は Azure AD アプリケーション プロキシで利用可能。|
-|ActiveSync (HTTP Basic) および RDG の事前認証|Web アプリケーション プロキシおよび Azure AD アプリケーション プロキシでは現在利用できません。|
-|ポータル|Web アプリケーション プロキシで Intune または System Center を使用。 Azure AD アプリケーション プロキシで Azure AD アクセス パネルまたは Office 365 アプリ起動ツールを使用。|
-|エンドポイントの正常性の検出|Intune または System Center を使用。|
-|SSL トンネリング|Windows SSL または VPN 機能を使用。|
-|レイヤー 2/3 ファイアウォール|Windows Server の機能を使用。|
+|ブラウザー アプリケーションの選択的な HTTP の公開|Azure AD アプリケーション プロキシ|
+|Active Directory フェデレーション サービス (AD FS) 統合|Azure AD アプリケーション プロキシ|
+|さまざまなプロトコルでの公開 (Citrix、Lync、RDG など)|Azure AD アプリケーション プロキシ|
+|ポータル|Azure AD アプリケーション プロキシの Azure AD アクセス パネルまたは Office 365 アプリ起動ツール|
+|エンドポイントの正常性の検出|Intune または System Center|
+|SSL トンネリング|Windows SSL または VPN|
+|レイヤー 2/3 ファイアウォール|Windows Server|
+|ActiveSync (HTTP Basic) および RDG の事前認証|現在は Microsoft からのソリューションはありません|
 |Web アプリケーション ファイアウォール|現在、Microsoft のソリューションはありません。|
 |セキュリティ保護された Web ゲートウェイ (転送プロキシ)|現在、Microsoft のソリューションはありません。|
 

@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
-ms.author: padmavc
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: b319970e0fd744b21bd0362f1de500a0f182d52e
-ms.lasthandoff: 03/10/2017
+ms.author: LADocs; padmavc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 1bafa072519cff1599a0cae1d361207ad0fa35d5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -32,7 +33,7 @@ Encode X12 Message コネクタでは、EDI およびパートナー固有のプ
 
 * Azure アカウント。[無料アカウント](https://azure.microsoft.com/free)を作成できます。
 * 既に定義され、Azure サブスクリプションに関連付けられている[統合アカウント](logic-apps-enterprise-integration-create-integration-account.md)。 Encode X12 Message コネクタを使用するには、統合アカウントが必要です。
-* 統合アカウントで既に定義されている&2; つ以上の[パートナー](logic-apps-enterprise-integration-partners.md)
+* 統合アカウントで既に定義されている 2 つ以上の[パートナー](logic-apps-enterprise-integration-partners.md)
 * 統合アカウントで既に定義されている [X12 契約](logic-apps-enterprise-integration-x12.md)
 
 ## <a name="encode-x12-messages"></a>X12 メッセージをエンコードする
@@ -92,6 +93,9 @@ X12 Encode コネクタは次のタスクを実行します。
 * 技術確認または機能確認を要求する (構成されている場合)
   * 技術確認は、ヘッダー検証の結果として生成されます。 技術確認は、アドレス受信者によるインターチェンジ ヘッダーとトレーラーの処理の状態を報告します。
   * 機能確認は、本文検証の結果として生成されます。 機能確認は、受信したドキュメントの処理中に発生した各エラーを報告します。
+
+## <a name="view-the-swagger"></a>Swagger の表示
+[Swagger の詳細](/connectors/x12/)を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 [Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報") 

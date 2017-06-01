@@ -12,11 +12,13 @@ ms.devlang: rest-api
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: search
-ms.date: 09/07/2016
+ms.date: 05/01/2017
 ms.author: brjohnst
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 524d3300e621d8e383833198c14c2e2e8461683b
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: ea3fc801074bb6d7e7c32574bc94702c79a61185
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -274,7 +276,7 @@ POST 要求の場合、要求本文でインデックスの名前を指定する
 
 `key` - インデックス内のドキュメントに対する一意の識別子を含んでいるものとしてフィールドをマークします。 正確に 1 つのフィールドを `key` として選択する必要があり、そのフィールドは `Edm.String` 型でなければなりません。 キー フィールドは、 [参照 API](#LookupAPI)を使用してドキュメントを直接参照するために使用できます。
 
-`retrievable` - 検索結果でフィールドを返すことができるかどうかを設定します。  これは、フィールド (たとえば、マージン) をフィルター、並べ替え、またはスコアリングのメカニズムとして使用するけれども、エンド ユーザーに対しては表示したくない場合に役立ちます。  `true` for `key` である必要があります。
+`retrievable` - 検索結果でフィールドを返すことができるかどうかを設定します。  これは、フィールド (たとえば、マージン) をフィルター、並べ替え、またはスコアリングのメカニズムとして使用するけれども、エンド ユーザーに対しては表示したくない場合に役立ちます。 `true` for `key` である必要があります。
 
 `analyzer` - 検索時およびインデックス作成時にフィールドに対して使用するアナライザーの名前を設定します。 指定できる一連の値については、[アナライザー](https://msdn.microsoft.com/library/mt605304.aspx)に関するページを参照してください。 このオプションは、`searchable` フィールドでのみ使用できます。また、`searchAnalyzer` または `indexAnalyzer` と共に設定することはできません。  フィールドのアナライザーを選択した後は変更できません。
 
@@ -1119,7 +1121,7 @@ HTTPS はすべてのサービス要求に必要です。 **List Indexes** 要�
 ## <a name="document-operations"></a>ドキュメントの操作
 Azure Search では、インデックスはクラウドに格納され、サービスにアップロードされた JSON ドキュメントを使用して設定されます。 アップロードされたすべてのドキュメントが、検索データのコーパスを構成します。 ドキュメントにはフィールドが含まれ、その一部はアップロード時に検索語句にトークン化されます。 Azure Search API の `/docs` URL セグメントは、インデックス内のドキュメントのコレクションを表します。 ドキュメントのアップロード、マージ、削除、クエリなど、コレクションに対して実行される操作はすべて単一インデックスのコンテキストで行われるので、これらの操作の URL は常に特定のインデックス名に対する `/indexes/[index name]/docs` で始まります。
 
-アプリケーション コードでは、Azure Search にアップロードする JSON ドキュメントを生成する必要があるか、データ ソースが Azure SQL Database または DocumentDB である場合は、 [インデクサー](https://msdn.microsoft.com/library/dn946891.aspx) を使用してドキュメントを読み込むことができます。 通常、指定した 1 つのデータセットからインデックスが設定されます。
+アプリケーション コードでは、Azure Search にアップロードする JSON ドキュメントを生成する必要があるか、データ ソースが Azure SQL Database または Azure Cosmos DB である場合は、[インデクサー](https://msdn.microsoft.com/library/dn946891.aspx)を使用してドキュメントを読み込むことができます。 通常、指定した 1 つのデータセットからインデックスが設定されます。
 
 検索する各項目に対して 1 つのドキュメントを用意するように計画する必要があります。 たとえば、映画レンタル アプリケーションでは映画ごとに 1 つのドキュメントを使用し、店舗アプリケーションでは SKU ごとに 1 つのドキュメントを使用し、オンライン コースウェア アプリケーションではコースごとに 1 つのドキュメントを使用し、調査会社ではリポジトリ内の論文ごとに 1 つのドキュメントを使用する、という具合です。
 
@@ -1968,9 +1970,4 @@ POST の場合:
       "top": 5,
       "suggesterName": "sg"
     }
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

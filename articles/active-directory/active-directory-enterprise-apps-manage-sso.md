@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory プレビューでのエンタープライズ アプリケーションのシングル サインオン管理 | Microsoft Docs"
+title: "Azure Active Directory でのエンタープライズ アプリのシングル サインオン管理 | Microsoft Docs"
 description: "Azure Active Directory を使用してエンタープライズ アプリケーションのシングル サインオンを管理する方法について説明します"
 services: active-directory
 documentationcenter: 
@@ -12,27 +12,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/30/2016
+ms.date: 05/04/2017
 ms.author: asmalser
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 2f03079498568f52802b34ce57242a414e648fe3
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 118b77064a96585b0d5b951ca56313776021624e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="preview-managing-single-sign-on-for-enterprise-apps-in-the-new-azure-portal"></a>プレビュー: 新しい Azure Portal でエンタープライズ アプリケーションのシングル サインオンを管理する
+# <a name="managing-single-sign-on-for-enterprise-apps"></a>エンタープライズ アプリのシングル サインオンの管理
 > [!div class="op_single_selector"]
-> * [Azure Portal](active-directory-enterprise-apps-manage-sso.md)
+> * [Azure ポータル](active-directory-enterprise-apps-manage-sso.md)
 > * [Azure クラシック ポータル](active-directory-sso-integrate-saas-apps.md)
 > 
-> 
 
-この記事では、[Azure Portal](https://portal.azure.com) を使用して、アプリケーション (特に [Azure Active Directory (Azure AD) アプリケーション ギャラリー](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)から追加されたアプリケーション) のシングル サインオン設定を管理する方法について説明します。 Azure AD のシングル サインオンの管理エクスペリエンスは現在パブリック プレビュー中です。この記事では、新機能と、プレビュー期間中のみに適用されるいくつかの一時的な制限について説明します。 [プレビューの機能については、こちらの記事をご覧ください。](active-directory-preview-explainer.md)
+この記事では、[Azure Portal](https://portal.azure.com) を使用して、アプリケーション (特に [Azure Active Directory アプリケーション ギャラリー](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)から追加されたアプリケーション) のシングル サインオン設定を管理する方法について説明します。 
 
-## <a name="finding-your-apps-in-the-new-portal"></a>新しいポータルでアプリを検索する
-2016 年 9 月の時点で、Azure Portal では、ディレクトリ管理者が [Azure クラシック ポータル](https://manage.windowsazure.com)内の [Azure Active Directory アプリケーション ギャラリー](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)を使用してディレクトリでのシングル サインオンを構成したすべてのアプリケーションを表示および管理できます。
-
-これらのアプリケーションは、[Azure Portal](https://portal.azure.com) の **[エンタープライズ アプリケーション]** セクション (ポータルの **[More Services (その他のサービス)]** の一覧からアクセスできます) で見つけることができます。 エンタープライズ アプリケーションとは、組織のユーザーが使用するデプロイ済みのアプリケーションです。
+## <a name="finding-your-apps"></a>アプリの検索
+## <a name="finding-your-apps-in-the-portal"></a>ポータルでアプリを検索する
+[Azure Portal](https://portal.azure.com) では、ディレクトリ管理者が [Azure Active Directory アプリケーション ギャラリー](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)を使用してディレクトリでのシングル サインオンを構成したすべてのアプリケーションを表示および管理できます。 これらのアプリケーションは、ポータルの **[その他のサービス]** &gt; **[エンタープライズ アプリケーション]** セクションで見つけることができます。 エンタープライズ アプリとは、組織内で使用されるデプロイ済みのアプリです。
 
 ![Enterprise Applications blade][1]
 
@@ -65,14 +65,10 @@ ms.openlocfilehash: 2f03079498568f52802b34ce57242a414e648fe3
 ### <a name="user-attributes"></a>[User Attributes (ユーザー属性)]
 ここでは、ユーザーがサインインするたびに Azure AD がアプリケーションに発行する SAML トークンで送信される属性を確認および編集できます。
 
-最初のプレビュー リリースでは、サポートされている編集可能な属性は、 **[User Identifier (ユーザー識別子)]** 属性のみです。 この属性の値は、アプリケーション内の各ユーザーを一意に識別する Azure AD のフィールドです。 たとえば、ユーザー名と一意識別子として "Email address" を使用してアプリがデプロイされた場合、値は Azure AD の "user.mail" フィールドに設定されます。
-
-後のプレビューでは、追加の属性の編集がサポートされる予定です。
+サポートされている編集可能な属性は、**[User Identifier (ユーザー識別子)]** 属性のみです。 この属性の値は、アプリケーション内の各ユーザーを一意に識別する Azure AD のフィールドです。 たとえば、ユーザー名と一意識別子として "Email address" を使用してアプリがデプロイされた場合、値は Azure AD の "user.mail" フィールドに設定されます。
 
 ### <a name="saml-signing-certificate"></a>[SAML Signing Certificate (SAML 署名証明書)]
 このセクションには、ユーザーが認証するたびにアプリケーションに発行される SAML トークンに署名するために Azure AD が使用する証明書の詳細が表示されます。 有効期限の日付など、現在の証明書のプロパティを確認できます。
-
-証明書のロールオーバーおよび追加の証明書オプションの管理機能は、後のプレビュー リリースでサポートされる予定です。 証明書の完全な管理は、 [Azure クラシック ポータル](active-directory-sso-certs.md)で引き続き実行できます。
 
 ### <a name="application-configuration"></a>[Application Configuration (アプリケーションの構成)]
 最後のセクションでは、Azure Active Directory を ID プロバイダーとして使用するようにアプリケーション自体を構成するために必要なドキュメントやコントロールを提供します。
@@ -80,7 +76,7 @@ ms.openlocfilehash: 2f03079498568f52802b34ce57242a414e648fe3
 **[アプリケーションの構成]** フライアウト メニューでは、アプリケーションを構成するための、新しい簡潔な組み込みの手順が提供されます。 これは、新しい Azure Portal に固有の新機能の 1 つです。
 
 > [!NOTE]
-> 組み込みのドキュメントの完全な例については、Salesforce.com アプリケーションを参照してください。 その他のアプリのドキュメントについては、プレビュー期間中に随時追加されます。
+> 組み込みのドキュメントの完全な例については、Salesforce.com アプリケーションを参照してください。 その他のアプリのドキュメントについては、随時追加されます。
 > 
 > 
 
@@ -96,14 +92,13 @@ ms.openlocfilehash: 2f03079498568f52802b34ce57242a414e648fe3
 
 ![Linked sign-on][5]
 
+##<a name="feedback"></a>フィードバック
+
+改良された Azure AD エクスペリエンスを気に入っていただけることを期待しております。 ぜひフィードバックをお寄せください。 フィードバックや機能の向上についてのアイデアを、[フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal)の **[管理ポータル]** セクションにご投稿ください。  マイクロソフトでは、優れた新しい機能を日々開発しています。ユーザーのアドバイスは、次に何を具体化し、どのように定義するかを考えるうえで非常に有用です。
+
 [1]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade.PNG
 [2]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-sso-blade.PNG
 [3]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-embedded-docs.PNG
 [4]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-password-sso.PNG
 [5]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-linked-sso.PNG
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

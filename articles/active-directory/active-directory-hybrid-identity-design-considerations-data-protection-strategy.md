@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/14/2017
+ms.date: 05/04/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 82bc44b20158a22dfae0d6c8fbf5f1c1f4577c91
-ms.lasthandoff: 03/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 3d0508c5cc31ab9fda728596895aaab8e4cb7814
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -117,20 +118,20 @@ Azure AD を使用してユーザーが認証されたら、そのユーザー�
 
 1. オンプレミスでホストされるアプリケーションへの条件付きアクセス: Windows Server 2012 R2 で AD FS を使用するように構成されたアプリケーションに対して、アクセス ポリシーの登録済みのデバイスを使用できます。 オンプレミスの条件付きアクセスを設定する方法の詳細については、「 [Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](active-directory-conditional-access.md)」を参照してください。
 
-2. Microsoft Azure 管理ポータルに対するアクセス制御: Azure には、RBAC (ロールベースのアクセス制御) を使用して管理ポータルへのアクセスを制御する機能もあります。 この方法により、ユーザーが Azure 管理ポータルにアクセスした時点で実行できる操作の量を会社が制限できます。 RBAC を使用してポータルへのアクセスを制御することで、IT 管理者は、次のアクセスの管理方法を使用してアクセスを委任できます。
+2. Azure Portal へのアクセス制御: Azure では、ロールベースのアクセス制御 (RBAC) を使用して、ポータルへのアクセスを制御することもできます。 この方法により、ユーザーが Azure Portal で実行できる操作の量を会社が制限できます。 RBAC を使用してポータルへのアクセスを制御することで、IT 管理者は、次のアクセスの管理方法を使用してアクセスを委任できます。
 
 * グループベースのロールの割り当て: ローカルの Active Directory から同期できる Azure AD グループにアクセスを割り当てることができます。 これにより、グループ管理用のツールとプロセスに組織が費やした既存の投資を活用できます。 また、Azure AD Premium の委任されたグループ管理機能も使用できます。
 * Azure の組み込みロールの活用: 所有者、共同作業者、閲覧者の 3 つのロールを使用して、ジョブの実行に必要なタスクのみを実行する権限をユーザーとグループに付与できます。
 * リソースへのきめ細かなアクセス: 特定のサブスクリプションのユーザーとグループ、リソース グループ、Web サイトやデータベースなどの個々の Azure リソースにロールを割り当てることができます。 このように、ユーザーが必要なすべてのリソースにアクセスし、管理する必要のないリソースには一切アクセスできないようにすることができます。
 
 > [!NOTE]
-> この機能の詳細については、 [Azure でのロールベースのアクセス制御](https://azure.microsoft.com/updates/role-based-access-control-in-azure-preview-portal/) に関するページを参照してください。 アプリケーションをビルドしていて、それらのアクセス制御をカスタマイズする必要がある開発者の場合、Azure AD アプリケーション ロールを使用して承認を実行することもできます。 この機能を使用するアプリケーションをビルドする方法については、こちらの [WebApp-RoleClaims-DotNet の例](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet) を参照してください。
+> アプリケーションをビルドしていて、それらのアクセスの制御をカスタマイズする必要がある場合、Azure AD アプリケーション ロールを使用して承認を実行することもできます。 この機能を使用するアプリケーションをビルドする方法については、こちらの [WebApp-RoleClaims-DotNet の例](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet) を参照してください。
 >
 >
 
-3.Microsoft Intune を使用した Office 365 アプリケーションへの条件付きアクセス: IT 管理者は、条件付きアクセスのデバイス ポリシーをプロビジョニングすることで、会社リソースをセキュリティで保護し、同時にインフォメーション ワーカーに準拠デバイスからサービスへのアクセスを許可できます。 詳細については、「 [Office 365 サービス用条件付きアクセスのデバイス ポリシー](active-directory-conditional-access-device-policies.md)」を参照してください。
+3. Microsoft Intune を使用した Office 365 アプリケーションへの条件付きアクセス: IT 管理者は、条件付きアクセスのデバイス ポリシーをプロビジョニングすることで、会社リソースをセキュリティで保護し、同時にインフォメーション ワーカーに準拠デバイスからサービスへのアクセスを許可できます。 詳細については、「 [Office 365 サービス用条件付きアクセスのデバイス ポリシー](active-directory-conditional-access-device-policies.md)」を参照してください。
 
-4.Saas アプリの条件付きアクセス: [この機能](http://blogs.technet.com/b/ad/archive/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work.aspx)を使用すると、アプリケーションごとの Multi-Factor Authentication のアクセス規則と、信頼されたネットワークを使用していないユーザーのアクセスをブロックする機能を構成できます。 Multi-Factor Authentication の規則は、アプリケーションに割り当てられているすべてのユーザーに適用することも、指定したセキュリティ グループのユーザーにのみ適用することもできます。 ユーザーが組織のネットワーク内の IP アドレスからアプリケーションにアクセスしている場合は、そのユーザーを Multi-Factor Authentication の要件から除外できます。
+4. Saas アプリの条件付きアクセス: [この機能](http://blogs.technet.com/b/ad/archive/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work.aspx)を使用すると、アプリケーションごとの Multi-Factor Authentication のアクセス規則と、信頼されたネットワークを使用していないユーザーのアクセスをブロックする機能を構成できます。 Multi-Factor Authentication の規則は、アプリケーションに割り当てられているすべてのユーザーに適用することも、指定したセキュリティ グループのユーザーにのみ適用することもできます。 ユーザーが組織のネットワーク内の IP アドレスからアプリケーションにアクセスしている場合は、そのユーザーを Multi-Factor Authentication の要件から除外できます。
 
 アクセス制御のオプションでは複数層のアプローチを使用しているため、オプションを比較することはこのタスクには適しません。 必ず、リソースへのアクセスを制御する必要があるシナリオごとに使用可能なすべてのオプションを使用してください。
 

@@ -16,25 +16,25 @@ ms.workload: NA
 ms.date: 04/14/2017
 ms.author: sashan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: dab476db32b2274049140144847fba24b55856b0
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 8f1f22d1609dc34369a131e79eb2a1c0be9fe552
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/15/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Azure SQL Database を復元する、またはセカンダリにフェールオーバーする
 Azure SQL Database は、障害から回復するために次の機能を備えています。
 
-* [アクティブ geo レプリケーションを選択するとき](sql-database-geo-replication-overview.md)
+* [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)
 * [geo リストア](sql-database-recovery-using-backups.md#point-in-time-restore)
 
 ビジネス継続性のシナリオと、こうしたシナリオをサポートする機能の詳細については、 [ビジネス継続性](sql-database-business-continuity.md)に関するページをご覧ください。
 
 ### <a name="prepare-for-the-event-of-an-outage"></a>障害に備える
-アクティブ geo レプリケーションまたは geo 冗長バックアップのいずれかを使用して、他のデータリージョンに適切に復旧するには、必要な場合に備えて、サーバーを、他のデータ センターが停止したときに新しいプライマリ サーバーとして使用できるように準備する必要があります。また、スムーズに復旧できるように、明確に定義された手順を文書化およびテストする必要もあります。 この準備手順を次に示します。
+アクティブ geo レプリケーションまたは geo 冗長バックアップのいずれかを使用して、他のデータ リージョンに適切に復旧するには、必要な場合に備えて、サーバーを、他のデータ センターが停止したときに新しいプライマリ サーバーとして使用できるように準備する必要があります。また、スムーズに復旧できるように、明確に定義された手順を文書化およびテストする必要もあります。 この準備手順を次に示します。
 
-* 他のリージョンで、新しいプライマリ サーバーとして使用する論理サーバーを特定します。 アクティブ geo レプリケーションを使用する場合、これは少なくとも 1 つで、ほとんどの場合、各セカンダリ サーバーになります。 geo リストアの場合は、通常、データベースが配置されているリージョンの [ペア リージョン](../best-practices-availability-paired-regions.md) にあるサーバーです。
+* 他のリージョンで、新しいプライマリ サーバーとして使用する論理サーバーを特定します。 アクティブ geo レプリケーションを使用する場合、これは少なくとも 1 台のサーバーであり、ほとんどの場合はセカンダリ サーバーになります。 geo リストアの場合は、通常、データベースが配置されているリージョンの [ペア リージョン](../best-practices-availability-paired-regions.md) にあるサーバーです。
 * ユーザーが新しいプライマリ データベースにアクセスするのに必要なサーバー レベルのファイアウォール規則を特定し、必要に応じて定義します。
 * 新しいプライマリ サーバーにユーザーをリダイレクトする方法を決めます。たとえば、接続文字列を変更したり、DNS エントリを変更したりすることでリダイレクトできます。
 * 新しいプライマリ サーバーのマスター データベースに必要なログインを特定し、必要に応じて作成します。また、マスター データベースにあるこれらのログインに、適切なアクセス許可が付与されていることを確認します (ある場合)。 詳細については、[障害復旧後の SQL Database のセキュリティ](sql-database-geo-replication-security-config.md)に関するページをご覧ください。
@@ -56,7 +56,7 @@ Azure SQL Database は、障害から回復するために次の機能を備え�
 ## <a name="wait-for-service-recovery"></a>サービスの回復を待機する
 Azure チームはできるだけ早くサービスが利用できるようになるように作業しますが、根本原因によっては数時間から数日かかることがあります。  アプリケーションが長いダウンタイムを許容できる場合は、回復の完了を待つだけで済みます。 この場合、ユーザーによる操作は必要ありません。 現在のサービスの状態は、 [Azure サービス正常性ダッシュボード](https://azure.microsoft.com/status/)で確認できます。 リージョンの回復後に、アプリケーションの可用性が復元されます。
 
-## <a name="failover-to-geo-replicated-secondary-database"></a>Geo レプリケートのセカンダリ データベースへのフェールオーバー
+## <a name="fail-over-to-geo-replicated-secondary-database"></a>Geo レプリケートのセカンダリ データベースにフェールオーバーする
 アプリケーションのダウンタイムによってビジネス責任が発生する場合は、アプリケーションで geo レプリケートされたデータベースを使用する必要があります。 そうすれば、障害が発生した場合でも異なるリージョンでアプリケーションの可用性を迅速に復元できます。 [geo レプリケーションを構成](sql-database-geo-replication-portal.md)する方法をご覧ください。
 
 データベースの可用性を復元するには、サポートされているいずれかの方法を使用して、geo レプリケートされたセカンダリ データベースへのフェールオーバーを開始する必要があります。
@@ -82,14 +82,14 @@ geo レプリケーション フェールオーバーまたは geo リストア�
 サーバーおよびデータベースで構成されているファイアウォール規則が、プライマリ サーバーとプライマリ データベースで構成されている規則と一致することを確認する必要があります。 詳細については、「 [方法: ファイアウォール設定を構成する (Azure SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
 
 ### <a name="configure-logins-and-database-users"></a>ログインとデータベース ユーザーを構成する
-アプリケーションで使用するすべてのログインが、復旧されたデータベースをホストしているサーバー上に存在することを確認する必要があります。 詳細については、 [geo レプリケーションのセキュリティ構成](sql-database-geo-replication-security-config.md)に関するページをご覧ください。
+アプリケーションで使用するすべてのログインが、復旧されたデータベースをホストしているサーバー上に存在することを確認する必要があります。 詳細については、[geo レプリケーションのセキュリティ構成](sql-database-geo-replication-security-config.md)に関するページをご覧ください。
 
 > [!NOTE]
 > 障害復旧の訓練中に、サーバーのファイアウォール規則とログイン (およびそのアクセス許可) を構成してテストする必要があります。 障害の間は、これらのサーバー レベル オブジェクトとその構成を使用できない場合があります。
 > 
 > 
 
-### <a name="setup-telemetry-alerts"></a>製品利用統計情報アラートをセットアップする
+### <a name="setup-telemetry-alerts"></a>テレメトリ アラートを設定する
 既存のアラート ルールの設定を更新し、復旧されたデータベースおよび異なるサーバーにマップされるようにする必要があります。
 
 データベースのアラート ルールの詳細については、「[アラート通知の受信](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)」および「[サービス正常性を追跡する](../monitoring-and-diagnostics/insights-service-health.md)」を参照してください。

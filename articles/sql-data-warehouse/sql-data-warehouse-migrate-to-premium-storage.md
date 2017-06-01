@@ -3,7 +3,7 @@ title: "Premium Storage への既存の Azure データ ウェアハウスの移
 description: "Premium Storage へ既存のデータ ウェアハウスを移行する手順"
 services: sql-data-warehouse
 documentationcenter: NA
-author: happynicolle
+author: hirokib
 manager: barbkess
 editor: 
 ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: migrate
 ms.date: 11/29/2016
-ms.author: rortloff;barbkess
-translationtype: Human Translation
+ms.author: elbutter;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e66f808da8d301e0adc393ba0ae67ab8618ce814
 ms.openlocfilehash: e73e52665dd22e33054745907613c269b6d57915
+ms.contentlocale: ja-jp
 ms.lasthandoff: 12/16/2016
 
 

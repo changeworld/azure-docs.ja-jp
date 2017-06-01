@@ -16,9 +16,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: jgao
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ec710057c2016175f65578a9d6884f7273b65169
 ms.openlocfilehash: f2a762ad64feeef91802429cdd959cec67b73473
+ms.contentlocale: ja-jp
 ms.lasthandoff: 12/20/2016
 
 
@@ -166,7 +167,7 @@ HDInsight でサポートされているクラスターの種類ごとに、デ�
     
     Storm Web UI は、HDInsight クラスターで使用できます。
     
-    ![HDInsight Storm のスケールのバランス調整](./media/hdinsight-administer-use-management-portal/hdinsight.portal.scale.cluster.storm.rebalance.png)
+    ![HDInsight Storm のスケールのバランス調整](./media/hdinsight-administer-use-management-portal/hdinsight-portal-scale-cluster-storm-rebalance.png)
     
     CLI コマンドを使用して Storm トポロジのバランスを再調整する方法を次の例で示します。
     

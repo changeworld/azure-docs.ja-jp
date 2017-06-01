@@ -15,10 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 03/03/2017
 ms.author: maroche
-translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: ef4517191084148ff3810226c927ee45a61b2c49
-ms.lasthandoff: 03/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 9f9754aef4f1e933163cd80862c84ba8281def80
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.lasthandoff: 03/03/2017
 2016 年 9 月 16 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
 
 * IBM DB2 データ ソースのサポート。 DB2 のデータベース、テーブル、ビューの登録と検出を実行できるようになりました。
-* Azure DocumentDB データ ソースのサポート。 DocumentDB のデータベースとコレクションの登録と検出を実行できるようになりました。
+* Azure Cosmos DB データ ソースのサポート。 Cosmos DB データベースとコレクションの登録と検出を実行できるようになりました。
 * Data Catalog ポータルでのカタログ名のカスタマイズのサポート。 カタログ管理者が、ポータルのタイトルに表示されるテキスト (組織名など) を指定できるようになりました。
 
 ## <a name="whats-new-for-the-week-of-august-26-2016-release"></a>2016 年 8 月 26 日の週のリリースの新機能
@@ -41,7 +42,7 @@ ms.lasthandoff: 03/03/2017
 ## <a name="whats-new-for-the-week-of-august-5-2016-release"></a>2016 年 8 月 5 日の週のリリースの新機能
 2016 年 8 月 5 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
 
-* Data Catalog ポータルでのプロパティ表示の更新。 すべてのデータ資産のプロパティをサイズ変更可能な&1; つのウィンドウで表示および管理できるようになり、エクスペリエンスの一貫性と検出のしやすさが向上しました。
+* Data Catalog ポータルでのプロパティ表示の更新。 すべてのデータ資産のプロパティをサイズ変更可能な 1 つのウィンドウで表示および管理できるようになり、エクスペリエンスの一貫性と検出のしやすさが向上しました。
 
 ## <a name="whats-new-for-the-week-of-july-29-2016-release"></a>2016 年 7 月 29 日の週のリリースの新機能
 2016 年 7 月 29 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
@@ -73,7 +74,7 @@ ms.lasthandoff: 03/03/2017
 ## <a name="whats-new-for-the-week-of-may-20-2016-release"></a>2016 年 5 月 20 日の週のリリースの新機能
 2016 年 5 月 20 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
 
-* Data Catalog ビジネス用語集の機能強化により、ユーザーが&1; 回の操作で複数の用語集の用語を更新できるようになっています。 ユーザーは、複数の用語を選択して次の各フィールドを編集できます。
+* Data Catalog ビジネス用語集の機能強化により、ユーザーが 1 回の操作で複数の用語集の用語を更新できるようになっています。 ユーザーは、複数の用語を選択して次の各フィールドを編集できます。
   * 親の用語: 新しい親の用語を選択することができ、選択した用語はいずれも選択した親の用語の子になるように更新されます。 選択したすべての用語が同じ親を持つ場合、その親はテキスト ボックスに表示され、それ以外の場合、親の用語フィールドには空白が設定されます。   
   * タグと関係者: 複数のデータ資産にタグ付けする場合と同じ操作方法で、複数の用語集の用語に対してタグと関係者を追加および削除できます。
 
@@ -99,7 +100,7 @@ ms.lasthandoff: 03/03/2017
 
 * Azure Data Catalog データ ソース登録ツールでのデータ ソース選択の操作性が再設計されました。 データ ソース登録ツールが更新され、Azure Data Catalog がサポートするデータ ソースからの特定と選択が簡単になりました。
 * Azure Data Catalog ポータルとデータ ソース登録ツールが追加の 10 言語に対応するようになりました。 英語に加え、Azure Data Catalog 環境はドイツ語、スペイン語、フランス語、イタリア語、日本語、韓国語、ポルトガル語 (ブラジル)、ロシア語、簡体字中国語、繁体字中国語で利用できます。 Azure Data Catalog ユーザー エクスペリエンスは、Windows またはユーザーの Web ブラウザーに指定された言語設定に基づいてローカライズされます。
-* ビジネス継続性と障害復旧のための Azure Data Catalog データの geo レプリケーションがサポートされるようになりました。 データ ソースのメタデータとクラウドソースの注釈を含むすべての Azure Data Catalog コンテンツが、お客様への追加コストなしで&2; つの Azure リージョン間でレプリケートされるようになりました。 Azure リージョンは、「 [ビジネス継続性と障害復旧 (BCDR): Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md)」に記載された対応表に従い、500 マイル以上離れた Azure リージョンと事前にペアリングされています。
+* ビジネス継続性と障害復旧のための Azure Data Catalog データの geo レプリケーションがサポートされるようになりました。 データ ソースのメタデータとクラウドソースの注釈を含むすべての Azure Data Catalog コンテンツが、お客様への追加コストなしで 2 つの Azure リージョン間でレプリケートされるようになりました。 Azure リージョンは、「 [ビジネス継続性と障害復旧 (BCDR): Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md)」に記載された対応表に従い、500 マイル以上離れた Azure リージョンと事前にペアリングされています。
 
 ## <a name="whats-new-for-the-week-of-february-5-2016-release"></a>2016 年 2 月 5 日の週のリリースの新機能
 2016 年 2 月 5 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
@@ -244,7 +245,7 @@ ms.lasthandoff: 03/03/2017
 ## <a name="whats-new-for-the-week-of-september-11-2015-release"></a>2015 年 9 月 11 日の週のリリースの新機能
 2015 年 9 月 11 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
 
-* HTTP/HTTPS を介した SQL Server Analysis Services オブジェクトの登録および検出をサポートします。 ユーザーは、サーバー名ではなく URL (https://servername/olap/msmdpump.dll など) を使用して SSAS サーバーに接続できるようになりました。さらに、Windows 認証に加えて、基本認証と匿名接続も使用することができます。 SSAS への HTTP/HTTPS 接続の詳細については、「[インターネット インフォメーション サービス (IIS)&8;.0 上の Analysis Services への HTTP アクセスの構成](https://msdn.microsoft.com/library/gg492140.aspx)」を参照してください。
+* HTTP/HTTPS を介した SQL Server Analysis Services オブジェクトの登録および検出をサポートします。 ユーザーは、サーバー名ではなく URL (https://servername/olap/msmdpump.dll など) を使用して SSAS サーバーに接続できるようになりました。さらに、Windows 認証に加えて、基本認証と匿名接続も使用することができます。 SSAS への HTTP/HTTPS 接続の詳細については、「[インターネット インフォメーション サービス (IIS) 8.0 上の Analysis Services への HTTP アクセスの構成](https://msdn.microsoft.com/library/gg492140.aspx)」を参照してください。
 * HDInsight で Hive データ ソースをサポートします。 ユーザーは、HDInsight データ ソースにおいて、Hadoop の Apache Hive に対する Hive テーブルを登録および検出できるようになりました。 HDInsight での Hive の詳細については、 [HDInsight ドキュメント センター](../hdinsight/hdinsight-use-hive.md)をご覧ください。
 * Oracle データベースと HDFS クラスターをコンテナーとして登録し、検出できるようになりました。 Oracle のテーブルとビューまたは HDFS の登録時に、Azure Data Catalog は、データベース、テーブル、およびビューのエントリを作成します。 データベースは、Azure Data Catalog ポータルを使用して検出し、注釈を付けることができます。 カタログのコンテンツを検索し、フィルター処理するだけでなく、データベースまたはクラスターのコンテンツを検索し、フィルター処理することもできます。
 

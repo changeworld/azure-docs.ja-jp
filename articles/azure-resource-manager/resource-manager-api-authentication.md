@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/27/2016
 ms.author: dugill;tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 8a8a28e6491855434c4445bedd5644d7da109f8a
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
+ms.openlocfilehash: 7830dc4774652f4d108e98660dce3bcea7b32d05
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/23/2017
 
 
 ---
@@ -31,8 +32,6 @@ ms.lasthandoff: 04/21/2017
 2. **アプリケーション専用アクセス**: デーモン サービスやスケジュールされたジョブを実行するアプリケーションの場合。 アプリケーションの ID にリソースへの直接アクセスを許可します。 この方法は、Azure への長期間のヘッドレス (無人) アクセスを必要とするアプリケーションに適しています。
 
 このトピックでは、この両方の承認方法を使用するアプリケーションを作成する手順を説明します。 REST API または C# で各手順を実行する方法を紹介します。 完全な ASP.NET MVC アプリケーションは、 [https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense)で入手できます。
-
-このトピックのコードはすべて、 [http://vipswapper.azurewebsites.net/cloudsense](http://vipswapper.azurewebsites.net/cloudsense)で試用できる Web アプリケーションとして実行されます。
 
 ## <a name="what-the-web-app-does"></a>Web アプリケーションで実行する内容
 Web アプリケーションで実行する内容は次のとおりです。

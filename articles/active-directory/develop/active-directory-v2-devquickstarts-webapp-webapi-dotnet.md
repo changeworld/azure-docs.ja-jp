@@ -14,9 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
-translationtype: Human Translation
+ms.custom: aaddev
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 9cd676554542e4effef54790bf9095c5b7a8f75b
 ms.openlocfilehash: c6cca8fda4ba6a26d5ee74b43e0bae37639865c5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -198,10 +201,5 @@ catch (MsalException ee)
 
 ## <a name="get-security-updates-for-our-products"></a>Microsoft 製品のセキュリティ更新プログラムの取得
 セキュリティの問題が発生したときに通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知を受信登録してください。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

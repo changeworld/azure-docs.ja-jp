@@ -3,7 +3,7 @@ title: "Azure Application Insights における Web アプリのパフォーマ�
 description: "Web アプリのパフォーマンス テレメトリにおける急上昇や段階的変化の自動診断。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd

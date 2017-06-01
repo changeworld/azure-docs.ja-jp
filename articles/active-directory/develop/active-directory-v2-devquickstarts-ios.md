@@ -14,6 +14,7 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: brandwe
+ms.custom: aaddev
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 47dce83cb4e3e5df92e91f1ca9195326634d6c8b
 ms.openlocfilehash: 36c83ad9424c7c1e0bc096696148dda801bc4257

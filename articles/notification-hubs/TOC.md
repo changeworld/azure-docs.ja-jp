@@ -28,7 +28,7 @@
 ### [クロスプラットフォーム通知を送信する](notification-hubs-aspnet-cross-platform-notification.md)
 ### サーバー スクリプトを使用する
 #### [.NET](https://msdn.microsoft.com/library/mt414893.aspx)
-#### [Node.JS](notification-hubs-nodejs-push-notification-tutorial.md)
+#### [Node.js](notification-hubs-nodejs-push-notification-tutorial.md)
 #### [Java](notification-hubs-java-push-notification-tutorial.md)
 #### [PHP](notification-hubs-php-push-notification-tutorial.md)
 #### [Python](notification-hubs-python-push-notification-tutorial.md)
@@ -44,6 +44,7 @@
 
 ## 管理
 ### [登録](notification-hubs-push-notification-registration-management.md)
+### [APNS トークンベースの認証](notification-hubs-push-notification-http2-token-authentification.md)
 
 ## [セキュリティ保護](notification-hubs-push-notification-security.md)
 ### 安全なプッシュ

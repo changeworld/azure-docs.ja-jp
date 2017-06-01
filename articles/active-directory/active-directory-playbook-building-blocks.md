@@ -1,31 +1,33 @@
 ---
-title: "Azure Active Directory PoC 戦略の構成要素 | Microsoft Docs"
+
+title: "Azure Active Directory 概念実証戦略の構成要素 | Microsoft Docs"
 description: "ID とアクセスの管理のシナリオを探索して迅速に実装します。"
 services: active-directory
 keywords: "azure active directory, 戦略, 概念実証, PoC"
 documentationcenter: 
 author: dstefanMSFT
-manager: asuthar
+manager: femila
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/12/2017
+ms.date: 05/04/2017
 ms.author: dstefan
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: b6f26a338450619cef012467bf78b9469622ba08
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 9c81bc0c702d559eee8b5fbf2a0508697f4276a0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/15/2017
 
 
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念実証戦略: 構成要素
 
-## <a name="catalog-of-actors"></a>アクターのカタログ
+## <a name="catalog-of-roles"></a>ロールのカタログ
 
-| アクター | Description | PoC の責任範囲 |
+| 役割 | Description | 概念実証 (PoC) の責任範囲 |
 | --- | --- | --- |
 | **ID アーキテクチャ/開発チーム** | このチームは、通常、ソリューションを設計し、プロトタイプを実装して、承認を得たうえで最後にオペレーションへの引き渡しを行います。 | 必要な環境を提供します。また管理の容易さの観点からさまざまなシナリオを評価する役割を担います。 |
 | **オンプレミス ID オペレーション チーム** | オンプレミスのさまざまな ID ソースを管理します (Active Directory フォレスト、LDAP ディレクトリ、人事システム、フェデレーション ID プロバイダー)。 | PoC のシナリオに必要なオンプレミス リソースへのアクセスを提供します。<br/>このチームの関与はできるだけ少なくする必要があります。|
@@ -184,7 +186,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | 手順 | リソース |
 | --- | --- |
 | ブラウザー拡張機能をインストールします。 | [IE 用アクセス パネル拡張機能](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Chrome 用アクセス パネル拡張機能](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Firefox 用アクセス パネル拡張機能](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
-| ギャラリーからアプリケーションを構成します。 | [Azure Active Directory でのエンタープライズ アプリケーション管理の新機能: 改良された新しいアプリケーション ギャラリー](active-directory-enterprise-apps-whats-new-azure-portal.md#the-new-and-improved-application-gallery) |
+| ギャラリーからアプリケーションを構成します。 | [Azure Active Directory でのエンタープライズ アプリケーション管理の新機能: 改良された新しいアプリケーション ギャラリー](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
 | パスワード SSO を構成します | [新しい Azure Portal でエンタープライズ アプリケーションのシングル サインオンを管理する: パスワードベースのサインオン](active-directory-enterprise-apps-manage-sso.md#password-based-sign-on) |
 | 「前提条件」に示されているグループにアプリを割り当てます。 | [Azure Active Directory でエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](active-directory-coreapps-assign-user-azure-portal.md) |
 | アクセス権のあるテスト ユーザーとして https://myapps.microsoft.com/ にログインします。 |  |
@@ -210,7 +212,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | 前提条件 | リソース |
 | --- | --- |
 | 対象アプリケーションのリストと実際のサインイン URL を事前に準備しておくこと。 たとえば Twitter を使用できます。 | [Twitter (Microsoft Azure Marketplace)](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[Twitter のサインアップ](https://twitter.com/signup?lang=en) |
-| この SaaS アプリケーションの共有資格情報。 | [Azure AD とのアカウントの共有](active-directory-sharing-accounts.md)<br/>[Facebook、Twitter、LinkedIn の Azure AD 自動パスワード ロールオーバーがプレビュー段階になりました - Enterprise Mobility and Security のブログ](https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/) |
+| この SaaS アプリケーションの共有資格情報。 | [Azure AD とのアカウントの共有](active-directory-sharing-accounts.md)<br/>[Facebook、Twitter、LinkedIn の Azure AD 自動パスワード ロールオーバーがプレビュー段階になりました - Enterprise Mobility and Security のブログ] (https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/ ) |
 | 同じアカウントにアクセスする少なくとも 2 人のチーム メンバーの資格情報。 これらのチーム メンバーはセキュリティ グループに属している必要があります。 | [Azure Active Directory でエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](active-directory-coreapps-assign-user-azure-portal.md) |
 | Internet Explorer、Chrome、Firefox 用のアクセス パネル拡張機能をデプロイするコンピューターへのローカル管理者アクセス。 | [IE 用アクセス パネル拡張機能](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Chrome 用アクセス パネル拡張機能](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Firefox 用アクセス パネル拡張機能](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 
@@ -219,7 +221,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | 手順 | リソース |
 | --- | --- |
 | ブラウザー拡張機能をインストールします。 | [IE 用アクセス パネル拡張機能](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Chrome 用アクセス パネル拡張機能](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Firefox 用アクセス パネル拡張機能](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
-| ギャラリーからアプリケーションを構成します。 | [Azure Active Directory でのエンタープライズ アプリケーション管理の新機能: 改良された新しいアプリケーション ギャラリー](active-directory-enterprise-apps-whats-new-azure-portal.md#the-new-and-improved-application-gallery) |
+| ギャラリーからアプリケーションを構成します。 | [Azure Active Directory でのエンタープライズ アプリケーション管理の新機能: 改良された新しいアプリケーション ギャラリー](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
 | パスワード SSO を構成します | [新しい Azure Portal でエンタープライズ アプリケーションのシングル サインオンを管理する: パスワードベースのサインオン](active-directory-enterprise-apps-manage-sso.md#password-based-sign-on) |
 | 「前提条件」に示されているグループにアプリを割り当てるとともに、グループに資格情報を割り当てます。 | [Azure Active Directory でエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](active-directory-coreapps-assign-user-azure-portal.md) |
 | **同じ共有アカウント**としてアプリにアクセスする別のユーザーとしてログインします。  |  |
@@ -287,7 +289,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | Generic LDAP コネクタを追加します。 | [Generic LDAP コネクタに関するテクニカル リファレンス: 新しいコネクタの作成](./connect/active-directory-aadconnectsync-connector-genericldap.md#create-a-new-connector) |
 | 作成したコネクタの実行プロファイルを作成します (フル インポート、差分インポート、完全同期、差分同期、エクスポート)。 | [管理エージェントの実行プロファイルを作成する](https://technet.microsoft.com/library/jj590219(v=ws.10).aspx)<br/> [Azure AD Connect の Sync Service Manager でコネクタを使用する](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md)|
 | フル インポート プロファイルを実行して、コネクタ スペースにオブジェクトが存在することを検証します。 | [コネクタ スペース オブジェクトの検索](https://technet.microsoft.com/library/jj590287(v=ws.10).aspx)<br/>[Azure AD Connect の Sync Service Manager でコネクタを使用する: コネクタ スペースの検索](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md#search-connector-space) |
-| ワークロードに必要な属性がメタバース内のオブジェクトに確実に存在するよう同期規則を作成します。 | [Azure AD Connect Sync: 既定の構成の変更するためのベスト プラクティス: 同期規則に対する変更](/connect/active-directory-aadconnectsync-best-practices-changing-default-configuration.md#changes-to-synchronization-rules)<br/>[Azure AD Connect 同期: 宣言型のプロビジョニングについて](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning.md)<br/>[Azure AD Connect 同期: 宣言型のプロビジョニングの式について](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) |
+| ワークロードに必要な属性がメタバース内のオブジェクトに確実に存在するよう同期規則を作成します。 | [Azure AD Connect Sync: 既定の構成の変更するためのベスト プラクティス: 同期規則に対する変更](./connect/active-directory-aadconnectsync-best-practices-changing-default-configuration.md#changes-to-synchronization-rules)<br/>[Azure AD Connect 同期: 宣言型のプロビジョニングについて](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning.md)<br/>[Azure AD Connect 同期: 宣言型のプロビジョニングの式について](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) |
 | 完全同期サイクルを開始します。 | [Azure AD Connect Sync: スケジューラ: スケジューラの開始](./connect/active-directory-aadconnectsync-feature-scheduler.md#start-the-scheduler) |
 | 問題が発生した場合はトラブルシューティングを行います。 | [Azure AD と同期していないオブジェクトのトラブルシューティング](./connect/active-directory-aadconnectsync-troubleshoot-object-not-syncing.md) |
 | LDAP ユーザーがアプリケーションにサインインしてアクセスできることを確認します。 | https://myapps.microsoft.com |
@@ -381,8 +383,8 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | 前提条件 | リソース |
 | --- | --- |
 | テナントでセルフサービスによるパスワード管理を有効にします。 | [IT 管理者のための Azure Active Directory のパスワード リセット](active-directory-passwords.md) |
-| オンプレミスのパスワードを管理するためのパスワード ライトバックを有効にします。 これには、特定のバージョンの Azure AD Connect が必要となることに注意してください。 | [パスワード ライトバックの前提条件](active-directory-passwords-getting-started.md#writeback-prerequisites) |
-| この機能を使用する PoC ユーザーを把握し、セキュリティ グループのメンバーになっていることを確認します。 この機能を完全に実証するには、ユーザーが非管理者である必要があります。 | [カスタマイズ: Azure AD Password Management: パスワード リセットへのアクセスの制限](active-directory-passwords-customize.md#restrict-access-to-password-reset) |
+| オンプレミスのパスワードを管理するためのパスワード ライトバックを有効にします。 これには、特定のバージョンの Azure AD Connect が必要となることに注意してください。 | [パスワード ライトバックの前提条件](active-directory-passwords-writeback.md) |
+| この機能を使用する PoC ユーザーを把握し、セキュリティ グループのメンバーになっていることを確認します。 この機能を完全に実証するには、ユーザーが非管理者である必要があります。 | [カスタマイズ: Azure AD Password Management: パスワード リセットへのアクセスの制限](active-directory-passwords-writeback.md) |
 
 
 ### <a name="steps"></a>手順

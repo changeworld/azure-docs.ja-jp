@@ -4,7 +4,7 @@ description: "最初の Azure SQL Database を設計する方法について説�
 services: sql-database
 documentationcenter: 
 author: janeng
-manager: jstrauss
+manager: jhubbard
 editor: 
 tags: 
 ms.assetid: 
@@ -14,19 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 03/30/2017
+ms.date: 05/07/2017
 ms.author: janeng
-translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: 0d02954829ebac9275c014f7dac7e1ec423b0fc1
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: a78284276b600172ad9fd6de2f30702a6f05e79b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
 
 # <a name="design-your-first-azure-sql-database"></a>最初の Azure SQL Database の設計
 
-このチュートリアルでは、生徒の成績とコース登録を追跡するための大学データベースを構築します。 このチュートリアルでは、[Azure ポータル](https://portal.azure.com/)と [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) を用いた、Azure SQL Database 論理サーバー上での Azure SQL データベース作成、データベースへのテーブル追加、テーブルへのデータ読み込み、データベース照会の方法を説明します。 また過去の特定時点にデータベースを復元する SQL Database の [ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)機能の使用方法も示します。
+Azure SQL Database とは、Microsoft SQL Server エンジンを使用したサービスとしてのリレーショナル データベースです。 このチュートリアルでは、データベースとテーブルの作成、データの読み込みとクエリ実行、以前の特定の時点へのデータベースの復元などの基本的なデータベース タスクについて説明します。 学習内容は次のとおりです。 
+
+> [!div class="checklist"]
+> * データベースの作成
+> * ファイアウォール規則の設定
+> * [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) を使用した、データベースへの接続
+> * テーブルの作成
+> * データの一括読み込み
+> * データのクエリ実行
+> * SQL Database の[ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)機能を使用した、以前の特定の時点へのデータベースの復元
 
 このチュートリアルを実行するには、最新バージョンの [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) をインストールしておく必要があります。 
 
@@ -280,7 +290,19 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 
 3. **[OK]** をクリックして、[テーブルが追加される前の状態にデータベースを復元](sql-database-recovery-using-backups.md#point-in-time-restore)します。 異なる時点にデータベースを復元すると、[サービス レベル](sql-database-service-tiers.md)の保有期間内であれば、指定した時点の元データベースと同じサーバー内に、データベースが複製されます。
 
-## <a name="next-steps"></a>次のステップ 
 
-一般的なタスクの PowerShell サンプルについては、[SQL Database の PowerShell サンプル](sql-database-powershell-samples.md)に関するページをご覧ください。
+
+## <a name="next-steps"></a>次のステップ 
+このチュートリアルでは、データベースとテーブルの作成、データの読み込みとクエリ実行、以前の特定の時点へのデータベースの復元などの基本的なデータベース タスクについて学習しました。 以下の方法について学習しました。
+> [!div class="checklist"]
+> * データベースの作成
+> * ファイアウォール規則の設定
+> * [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) を使用した、データベースへの接続
+> * テーブルの作成
+> * データの一括読み込み
+> * データのクエリ実行
+> * SQL Database の[ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)機能を使用した、以前の特定の時点へのデータベースの復元。次のチュートリアルに進み、データの移行について学習してください。
+
+> [!div class="nextstepaction"]
+>[SQL Server データベースを Azure SQL Database に移行する](sql-database-migrate-your-sql-server-database.md)
 

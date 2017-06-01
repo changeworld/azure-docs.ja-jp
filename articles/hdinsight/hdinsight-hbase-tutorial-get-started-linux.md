@@ -1,7 +1,7 @@
 ---
 title: "Azure HDInsight での HBase の使用 | Microsoft Docs"
 description: "HDInsight の Hadoop で Apache HBase を使用するには、この HBase チュートリアルの手順に従ってください。 HBase シェルからテーブルを作成し、Hive を使用したクエリを実行します。"
-keywords: "Apache HBase, HBase, HBase シェル, HBase チュートリアル"
+keywords: "Apache HBase, HBase, HBase シェル, HBase チュートリアル, Beeline"
 services: hdinsight
 documentationcenter: 
 author: mumian
@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/22/2017
+ms.date: 05/09/2017
 ms.author: jgao
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 4e9ee21a7eac240cccdfac650992063244364185
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 5f9b421571fa98d9881a9e955b05041de124f922
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -43,12 +43,12 @@ HDInsight で HBase クラスターを作成する方法、HBase テーブルを
 1. 次の画像をクリックして Azure ポータルでテンプレートを開きます。 テンプレートは、パブリック BLOB コンテナー内にあります。 
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-cluster-in-hdinsight.json" target="_blank"><img src="./media/hdinsight-hbase-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy to Azure"></a>
-2. **[カスタム デプロイ]** ブレードで以下を入力します。
+2. **[カスタム デプロイ]** ブレードで以下の値を入力します。
    
    * **サブスクリプション**: クラスターの作成に使用する Azure サブスクリプションを選択します。
-   * **リソース グループ**: 新しい Azure リソース管理グループを作成するか、既存のグループを使用します。
+   * **リソース グループ**: Azure リソース管理グループを作成するか、既存のグループを使用します。
    * **場所**: リソース グループの場所を指定します。 
-   * **ClusterName**: 作成する HBase クラスターの名前を入力します。
+   * **[ClusterName]**: HBase クラスターの名前を入力します。
    * **クラスターのログイン名とパスワード**: 既定のログイン名は **admin** です。
    * **SSH ユーザー名とパスワード**: 既定のユーザー名は **sshuser** です。  この名前は変更できます。
      
@@ -63,7 +63,7 @@ HDInsight で HBase クラスターを作成する方法、HBase テーブルを
 > 
 
 ## <a name="create-tables-and-insert-data"></a>テーブルを作成してデータを挿入する
-SSH を使用して HBase クラスターに接続し、HBase シェルを使用して HBase テーブルの作成、データの挿入、データの照会を行うことができます。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+SSH を使用して HBase クラスターに接続し、HBase シェルを使用して HBase テーブルの作成、データの挿入、データのクエリを行うことができます。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 多くの場合、データは次のような表形式で表示されます。
 
@@ -73,7 +73,6 @@ BigTable の実装である HBase では、同じデータが次のように表�
 
 ![HDInsight HBase の Bigtable データ][img-hbase-sample-data-bigtable]
 
-次の手順を完了すると、この操作をよく理解できます。  
 
 **HBase シェルを使用するには**
 
@@ -137,19 +136,14 @@ HBase では、いくつかの方法でテーブルにデータを読み込こ�
 3. HBase シェルを開き、スキャン コマンドを使用して、テーブルの内容の一覧を表示することができます。
 
 ## <a name="use-hive-to-query-hbase"></a>Hive を使用して HBase を照会する
+
 Hive を使用して HBase テーブルのデータを照会できます。 このセクションでは、HBase テーブルにマッピングする Hive テーブルを作成し、作成した Hive テーブルを使用して HBase テーブルのデータを照会します。
 
-> [!NOTE]
-> Hive と HBase が同じ VNet 内の異なるクラスター上にある場合、Hive シェルの呼び出し中に zookeeper クォーラムを渡す必要があります。
->
->       hive --hiveconf hbase.zookeeper.quorum=zk0-xxxx.xxxxxxxxxxxxxxxxxxxxxxx.cx.internal.cloudapp.net,zk1-xxxx.xxxxxxxxxxxxxxxxxxxxxxx.cx.internal.cloudapp.net,zk2-xxxx.xxxxxxxxxxxxxxxxxxxxxxx.cx.internal.cloudapp.net --hiveconf zookeeper.znode.parent=/hbase-unsecure  
->
->
-
 1. **PuTTY**を開き、クラスターに接続します。  前の手順の指示を参照してください。
-2. Hive シェルを開きます。
-   
-       hive
+2. SSH セッションから、次のコマンドを使用して Beeline を開始します。
+
+        beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin
+    Beeline の詳細については、「[Beeline による HDInsight での Hive と Hadoop の使用](hdinsight-hadoop-use-hive-beeline.md)」を参照してください。
        
 3. 次の HiveQL スクリプトを実行して、HBase テーブルにマップする Hive テーブルを作成します。 ここで、HBase シェルを使用して、先ほど参照したサンプル テーブルが HBase に作成されたことを確認してから、このステートメントを実行してください。
    
@@ -159,31 +153,12 @@ Hive を使用して HBase テーブルのデータを照会できます。 こ�
         TBLPROPERTIES ('hbase.table.name' = 'Contacts');
 4. 次の HiveQL スクリプトを実行して、HBase テーブルのデータを照会します。
    
-         SELECT count(*) FROM hbasecontacts;
+         SELECT count(rowkey) FROM hbasecontacts;
 
 ## <a name="use-hbase-rest-apis-using-curl"></a>Curl を使用して HBase REST API を使用する
-> [!NOTE]
-> Curl、または WebHCat を使用したその他の REST 通信を使用する場合は、HDInsight クラスター管理者のユーザー名とパスワードを指定して要求を認証する必要があります。 また、サーバーへの要求の送信に使用する Uniform Resource Identifier (URI) にクラスター名を含める必要があります。
-> 
-> このセクションのコマンドでは、 **USERNAME** をクラスターに対して認証するユーザーの名前に置き換え、 **PASSWORD** をユーザー アカウントのパスワードに置き換えます。 **CLUSTERNAME** をクラスターの名前に置き換えます。
-> 
-> REST API のセキュリティは、 [基本認証](http://en.wikipedia.org/wiki/Basic_access_authentication)を通じて保護されています。 資格情報をサーバーに安全に送信するには、必ずセキュア HTTP (HTTPS) を使用して要求を行う必要があります。
-> 
-> 
 
-1. コマンド ラインで次のコマンドを使用して、HDInsight クラスターに接続できることを確認します。
-   
-        curl -u <UserName>:<Password> \
-        -G https://<ClusterName>.azurehdinsight.net/templeton/v1/status
-   
-    次のような応答を受け取ります。
-   
-        {"status":"ok","version":"v1"}
-   
-    このコマンドで使用されるパラメーターの意味は次のとおりです。
-   
-   * **-u** : 要求の認証に使用するユーザー名とパスワード
-   * **-G** : GET 要求であることを示します。
+REST API のセキュリティは、 [基本認証](http://en.wikipedia.org/wiki/Basic_access_authentication)を通じて保護されています。 資格情報をサーバーに安全に送信するには、必ずセキュア HTTP (HTTPS) を使用して要求を行う必要があります。
+
 2. 次のコマンドを使用して、既存の HBase テーブルを一覧表示します。
    
         curl -u <UserName>:<Password> \
@@ -207,7 +182,7 @@ Hive を使用して HBase テーブルのデータを照会できます。 こ�
         -d "{\"Row\":[{\"key\":\"MTAwMA==\",\"Cell\": [{\"column\":\"UGVyc29uYWw6TmFtZQ==\", \"$\":\"Sm9obiBEb2xl\"}]}]}" \
         -v
    
-    -d スイッチで指定された値に base64 エンコードを使用する必要があります。  たとえば、次のようになります。
+    -d スイッチで指定された値に base64 エンコードを使用する必要があります。  この例では次のとおりです。
    
    * MTAwMA==: 1000
    * UGVyc29uYWw6TmFtZQ==: Personal:Name
@@ -223,10 +198,20 @@ Hive を使用して HBase テーブルのデータを照会できます。 こ�
 
 HBase Rest の詳細については、「 [Apache HBase reference guide (Apache HBase リファレンス ガイド)](https://hbase.apache.org/book.html#_rest)」をご覧ください。
 
->
 > [!NOTE]
 > Thrift は、HDInsight での HBase ではサポートされていません。
 >
+> Curl、または WebHCat を使用したその他の REST 通信を使用する場合は、HDInsight クラスター管理者のユーザー名とパスワードを指定して要求を認証する必要があります。 また、サーバーへの要求の送信に使用する Uniform Resource Identifier (URI) にクラスター名を含める必要があります。
+> 
+>   
+>        curl -u <UserName>:<Password> \
+>        -G https://<ClusterName>.azurehdinsight.net/templeton/v1/status
+>   
+>    次のような応答が返されます。
+>   
+>        {"status":"ok","version":"v1"}
+   
+
 
 ## <a name="check-cluster-status"></a>クラスターの状態の確認
 HDInsight の HBase には、クラスターを監視するための Web UI が付属します。 この Web UI を使用すると、統計情報やリージョンに関する情報を要求できます。
@@ -254,7 +239,7 @@ HDInsight の HBase には、クラスターを監視するための Web UI が�
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
-HDInsight クラスターの作成で問題が発生した場合は、[アクセス制御の要件](hdinsight-administer-use-portal-linux.md#create-clusters)に関するページを参照してください。
+HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](hdinsight-administer-use-portal-linux.md#create-clusters)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 この HDInsight の HBase のチュートリアルでは、HBase クラスターの作成方法と、テーブルを作成してそのテーブルのデータを HBase シェルから表示する方法について学習しました。 また、HBase テーブルのデータに対して Hive クエリを使用する方法と、HBase C# REST API を使用して HBase テーブルを作成し、テーブルからデータを取得する方法についても学習しました。

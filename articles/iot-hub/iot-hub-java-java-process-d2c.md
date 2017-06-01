@@ -12,11 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/07/2017
+ms.date: 05/25/2017
 ms.author: dobett
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
 ms.openlocfilehash: 616bca96eaff12fa1929605f3480098bd8b867c2
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/31/2017
 
 

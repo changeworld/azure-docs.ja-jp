@@ -1,18 +1,18 @@
 ### <a name="prerequisites"></a>前提条件
 Azure Toolkit for IntelliJ には、以下のソフトウェア コンポーネントが必要です。
 
-* IntelliJ IDEA Ultimate エディション。 <https://www.jetbrains.com/idea/download/> からダウンロードできます。
+* IntelliJ IDEA Ultimate Edition (<https://www.jetbrains.com/idea/download/> からダウンロードできます)。
 
-* Java Developer Kit (JDK) v1.8 以降。
+* Java Developer Kit (JDK) バージョン 1.8 以降。
 
-* オペレーティング システム - Azure Toolkit for IntelliJ は、次のオペレーティング システムでテストされています。
+* オペレーティング システム。 Azure Toolkit for IntelliJ は、次のオペレーティング システムでテストされています。
   
   * Windows 10、Windows 8 および 8.1、Windows 7
   * Windows Server 2012 および 2012 R2、Windows Server 2008 および 2008 R2
   * [Mac OS X](http://www.apple.com/osx) バージョン "Yosemite" 以降
   * [Ubuntu Linux](http://www.ubuntu.com) バージョン 14、15、16
 
-詳細については、JetBrains Plugin Repository の [Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053) ページを参照してください。
+詳細については、JetBrains Plugin Repository の [Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053) のページを参照してください。
 
 <!--
 > [!IMPORTANT]

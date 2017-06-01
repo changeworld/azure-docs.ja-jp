@@ -3,7 +3,7 @@ title: "SQL Data Warehouse ビジネス インテリジェンス パートナー
 description: "SQL Data Warehouse をサポートするソリューションを提供するサードパーティのビジネス インテリジェンス パートナーの一覧。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: jrowlandjones
+author: kevinvngo
 manager: jhubbard
 editor: 
 ms.assetid: 1d9cdbd0-76c0-4b87-8a80-e792b73ffe10
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: partners
 ms.date: 10/31/2016
-ms.author: jrj;barbkess
-translationtype: Human Translation
+ms.author: kevin;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 91b3f016497b268d9f7e9d305ec4f69f0a1cd856
+ms.contentlocale: ja-jp
 ms.lasthandoff: 12/08/2016
 
 

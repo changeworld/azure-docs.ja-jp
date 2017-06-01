@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: ancav
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: 239b8fe2a7724bb34e7060c90af73825e61d8398
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/12/2017
 
 
@@ -62,7 +63,7 @@ Resource Manager テンプレートを使用してアクティビティ ログ �
   "resources": [   
     {
       "type": "Microsoft.Insights/activityLogAlerts",
-      "apiVersion": "2017-03-01-preview",
+      "apiVersion": "2017-04-01",
       "name": "[parameters('activityLogAlertName')]",      
       "location": "Global",
       "properties": {

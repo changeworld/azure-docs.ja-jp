@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/31/2017
-ms.author: jehollan; estfan; LADocs
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 6634f0ee88e68f2fcb09fd7534a88677e8efa029
-ms.lasthandoff: 04/03/2017
+ms.author: LADocs; jehollan; estfan
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 204bf123509729b60b55c306050cef54aa7fecc5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/17/2017
 
 ---
 
@@ -39,7 +40,7 @@ ms.lasthandoff: 04/03/2017
     > [!TIP]
     > 個人用の [Microsoft アカウント](https://account.microsoft.com/account)を取得している場合は、Outlook.com アカウントがあります。 それ以外で Azure の職場または学校アカウントを取得している場合は、**Office 365 Outlook** アカウントがあります。
 
-* Web サイトの RSS フィードへのリンク。 この例では、[MSDN Channel 9 Web サイト](https://channel9.msdn.com/) (`https://s.ch9.ms/Feeds/RSS`) の RSS フィードを使用します。
+* Web サイトの RSS フィードへのリンク。 この例では、[CNN.com Web サイトのトップ記事の RSS フィード](http://rss.cnn.com/rss/cnn_topstories.rss) (`http://rss.cnn.com/rss/cnn_topstories.rss`) を使用します。
 
 ## <a name="add-a-trigger-that-starts-your-workflow"></a>ワークフローを開始するトリガーの追加
 
@@ -74,7 +75,7 @@ ms.lasthandoff: 04/03/2017
      **頻度**と**間隔**を変更することもできます。 
      これらの設定によって、ロジック アプリで新しい項目をチェックする頻度が決まります (その期間中に見つかったすべての項目が返されます)。
 
-     この例では、MSDN Channel 9 Web サイトに投稿された新しい項目を毎日チェックするように設定します。
+     この例では、CNN Web サイトに投稿されたトップ記事を毎日チェックするように設定します。
 
      ![RSS フィード、頻度、および間隔を指定してトリガーを設定する](media/logic-apps-create-a-logic-app/rss-trigger-setup.png)
 

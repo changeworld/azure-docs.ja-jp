@@ -1,6 +1,7 @@
 ---
+
 title: "Azure Active Directory ポータルのサインイン アクティビティ レポート | Microsoft Docs"
-description: "Azure Active Directory ポータルのサインイン アクティビティ レポートの概要 - プレビュー"
+description: "Azure Active Directory ポータルのサインイン アクティビティ レポートの概要"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -12,18 +13,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/06/2017
+ms.date: 05/04/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: f6c0bb59d9eb16da6c7daea2e722e32ac7dbc2d7
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 19cd81c1e6020523d1bea3ec76c957ce22f931ca
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
-# <a name="sign-in-activity-reports-in-the-azure-active-directory-portal---preview"></a>Azure Active Directory ポータルのサインイン アクティビティ レポート - プレビュー
+# <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポート
 
-Azure Active Directory [プレビュー](active-directory-preview-explainer.md)のレポートでは、環境の動作状況を判断するために必要なすべての情報を取得できます。
+環境の動作状況を判断するために必要な情報は、[Azure Portal](https://portal.azure.com) の Azure Active Directory (Azure AD) レポートで入手できます。
 
 Azure Active Directory のレポート アーキテクチャは、次のコンポーネントで構成されます。
 
@@ -44,7 +46,7 @@ Azure Active Directory のレポート アーキテクチャは、次のコン�
 * 1 週間で何人のユーザーがユーザー サインインを行ったか。
 * これらのサインインはどのような状態か。
 
-すべてのサインイン アクティビティ データへの最初のエントリ ポイントは、**[Azure Active Directory]** の [アクティビティ] セクションの **[サインイン]** です 。
+すべてのサインイン アクティビティ データへの最初のエントリ ポイントは、**[Azure Active Directory]** の [アクティビティ] セクションの **[サインイン]** です
 
 
 ![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/61.png "サインイン アクティビティ")

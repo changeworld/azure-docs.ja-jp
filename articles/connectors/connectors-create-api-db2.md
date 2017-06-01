@@ -14,11 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/26/2016
-ms.author: plarsen
-translationtype: Human Translation
-ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
-ms.openlocfilehash: bba03cfb21e8eebdbf67152de9c6e2da6f22f5a2
-ms.lasthandoff: 02/16/2017
+ms.author: plarsen; ladocs
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 2dc4c912f018f5d71d8c874763f204cf6c2c415b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -33,11 +34,11 @@ Microsoft Connector for DB2 は、IBM DB2 データベースに格納されて�
 DB2 コネクタでは、次のデータベース操作をサポートしています。
 
 * データベース テーブルの一覧表示
-* SELECT を使用した&1; つの行の読み取り
+* SELECT を使用した 1 つの行の読み取り
 * SELECT を使用したすべての行の読み取り
-* INSERT を使用した&1; つの行の追加
-* UPDATE を使用した&1; つの行の変更
-* DELETE を使用した&1; つの行の削除
+* INSERT を使用した 1 つの行の追加
+* UPDATE を使用した 1 つの行の変更
+* DELETE を使用した 1 つの行の削除
 
 このトピックでは、ロジック アプリでコネクタを使用してデータベース操作を処理する方法を説明します。
 
@@ -162,8 +163,8 @@ DB2 テーブル内のすべての行を取得するロジック アプリのア
     
     ![](./media/connectors-create-api-db2/Db2connectorGetRowsOutputs.png)
 
-## <a name="add-one-row-using-insert"></a>INSERT を使用した&1; つの行の追加
-DB2 テーブル内の&1; つの行を追加するロジック アプリのアクションを定義できます。 このアクションでは、DB2 の INSERT ステートメント ( `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`など) を処理するようコネクタに指示します。
+## <a name="add-one-row-using-insert"></a>INSERT を使用した 1 つの行の追加
+DB2 テーブル内の 1 つの行を追加するロジック アプリのアクションを定義できます。 このアクションでは、DB2 の INSERT ステートメント ( `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`など) を処理するようコネクタに指示します。
 
 ### <a name="create-a-logic-app"></a>ロジック アプリを作成します
 1. **Azure のスタート画面**で、**[+]** (プラス記号)、**[Web + モバイル]**、**[Logic App]** の順に選択します。
@@ -189,8 +190,8 @@ DB2 テーブル内の&1; つの行を追加するロジック アプリのア�
     
     ![](./media/connectors-create-api-db2/Db2connectorInsertRowOutputs.png)
 
-## <a name="fetch-one-row-using-select"></a>SELECT を使用して&1; つの行を取得する
-DB2 テーブル内の&1; つの行を取得するロジック アプリのアクションを定義できます。 このアクションでは、DB2 の SELECT WHERE ステートメント ( `SELECT FROM AREA WHERE AREAID = '99999'`など) を処理するようコネクタに指示します。
+## <a name="fetch-one-row-using-select"></a>SELECT を使用して 1 つの行を取得する
+DB2 テーブル内の 1 つの行を取得するロジック アプリのアクションを定義できます。 このアクションでは、DB2 の SELECT WHERE ステートメント ( `SELECT FROM AREA WHERE AREAID = '99999'`など) を処理するようコネクタに指示します。
 
 ### <a name="create-a-logic-app"></a>ロジック アプリを作成します
 1. **Azure のスタート画面**で、**[+]** (プラス記号)、**[Web + モバイル]**、**[Logic App]** の順に選択します。
@@ -217,8 +218,8 @@ DB2 テーブル内の&1; つの行を取得するロジック アプリのア�
     
     ![](./media/connectors-create-api-db2/Db2connectorGetRowOutputs.png)
 
-## <a name="change-one-row-using-update"></a>UPDATE を使用して&1; つの行を変更する
-DB2 テーブル内の&1; つの行を変更するロジック アプリのアクションを定義できます。 このアクションでは、DB2 の UPDATE ステートメント ( `UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`など) を処理するようコネクタに指示します。
+## <a name="change-one-row-using-update"></a>UPDATE を使用して 1 つの行を変更する
+DB2 テーブル内の 1 つの行を変更するロジック アプリのアクションを定義できます。 このアクションでは、DB2 の UPDATE ステートメント ( `UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`など) を処理するようコネクタに指示します。
 
 ### <a name="create-a-logic-app"></a>ロジック アプリを作成します
 1. **Azure のスタート画面**で、**[+]** (プラス記号)、**[Web + モバイル]**、**[Logic App]** の順に選択します。
@@ -244,8 +245,8 @@ DB2 テーブル内の&1; つの行を変更するロジック アプリのア�
     
     ![](./media/connectors-create-api-db2/Db2connectorUpdateRowOutputs.png)
 
-## <a name="remove-one-row-using-delete"></a>DELETE を使用した&1; つの行の削除
-DB2 テーブル内の&1; つの行を削除するロジック アプリのアクションを定義できます。 このアクションでは、DB2 の DELETE ステートメント ( `DELETE FROM AREA WHERE AREAID = '99999'`など) を処理するようコネクタに指示します。
+## <a name="remove-one-row-using-delete"></a>DELETE を使用した 1 つの行の削除
+DB2 テーブル内の 1 つの行を削除するロジック アプリのアクションを定義できます。 このアクションでは、DB2 の DELETE ステートメント ( `DELETE FROM AREA WHERE AREAID = '99999'`など) を処理するようコネクタに指示します。
 
 ### <a name="create-a-logic-app"></a>ロジック アプリを作成します
 1. **Azure のスタート画面**で、**[+]** (プラス記号)、**[Web + モバイル]**、**[Logic App]** の順に選択します。
@@ -271,133 +272,6 @@ DB2 テーブル内の&1; つの行を削除するロジック アプリのア�
     
     ![](./media/connectors-create-api-db2/Db2connectorDeleteRowOutputs.png)
 
-## <a name="technical-details"></a>技術的な詳細
-## <a name="actions"></a>アクション
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 DB2 データベース コネクタには、次のアクションがあります。 
-
-| アクション | Description |
-| --- | --- |
-| [GetRow](connectors-create-api-db2.md#get-row) |DB2 テーブルから&1; つの行を取得します |
-| [GetRows](connectors-create-api-db2.md#get-rows) |DB2 テーブルから複数の行を取得します |
-| [InsertRow](connectors-create-api-db2.md#insert-row) |DB2 テーブルに新しい行を挿入します |
-| [DeleteRow](connectors-create-api-db2.md#delete-row) |DB2 テーブルから行を削除します |
-| [GetTables](connectors-create-api-db2.md#get-tables) |DB2 データベースからテーブルを取得します |
-| [UpdateRow](connectors-create-api-db2.md#update-row) |DB2 テーブルの既存の行を更新します |
-
-### <a name="action-details"></a>アクションの詳細
-このセクションでは、必須または任意の入力プロパティ、コネクタに関連付けられた対応する出力など、各アクションに関する具体的な詳細について説明します。
-
-#### <a name="get-row"></a>行を取得する
-DB2 テーブルから&1; つの行を取得します。  
-
-| プロパティ名 | Displayname Settings | Description |
-| --- | --- | --- |
-| table * |テーブル名 |DB2 テーブルの名前 |
-| id * |行 ID |取得する行の一意識別子 |
-
-アスタリスク (*) は、そのプロパティが必須であることを意味します。
-
-##### <a name="output-details"></a>出力の詳細
-項目
-
-| プロパティ名 | データ型 |
-| --- | --- |
-| ItemInternalId |string |
-
-#### <a name="get-rows"></a>行を取得する
-DB2 テーブルから複数の行を取得します。  
-
-| プロパティ名 | Displayname Settings | Description |
-| --- | --- | --- |
-| table* |テーブル名 |DB2 テーブルの名前 |
-| $skip |Skip Count (スキップ数) |スキップするエントリの数 (既定値 = 0) |
-| $top |Maximum Get Count (最大取得数) |取得するエントリの最大数 (既定値 = 256) |
-| $filter |Filter Query (フィルター クエリ) |エントリ数を制限する ODATA filter クエリ |
-| $orderby |Order By (並べ替え) |エントリの順序を指定する ODATA orderBy クエリ |
-
-アスタリスク (*) は、そのプロパティが必須であることを意味します。
-
-##### <a name="output-details"></a>出力の詳細
-ItemsList
-
-| プロパティ名 | データ型 |
-| --- | --- |
-| 値 |array |
-
-#### <a name="insert-row"></a>行を挿入する
-DB2 テーブルに新しい行を挿入します。  
-
-| プロパティ名 | Displayname Settings | Description |
-| --- | --- | --- |
-| table* |テーブル名 |DB2 テーブルの名前 |
-| item* |行 |DB2 の指定されたテーブルに挿入する行 |
-
-アスタリスク (*) は、そのプロパティが必須であることを意味します。
-
-##### <a name="output-details"></a>出力の詳細
-項目
-
-| プロパティ名 | データ型 |
-| --- | --- |
-| ItemInternalId |string |
-
-#### <a name="delete-row"></a>行を削除する
-DB2 テーブルから行を削除します。  
-
-| プロパティ名 | Displayname Settings | Description |
-| --- | --- | --- |
-| table* |テーブル名 |DB2 テーブルの名前 |
-| id* |行 ID |削除する行の一意識別子 |
-
-アスタリスク (*) は、そのプロパティが必須であることを意味します。
-
-##### <a name="output-details"></a>出力の詳細
-なし。
-
-#### <a name="get-tables"></a>テーブルを取得する
-DB2 データベースからテーブルを取得します。  
-
-この呼び出しには、パラメーターはありません。 
-
-##### <a name="output-details"></a>出力の詳細
-TablesList
-
-| プロパティ名 | データ型 |
-| --- | --- |
-| 値 |array |
-
-#### <a name="update-row"></a>行を更新する
-DB2 テーブルの既存の行を更新します。  
-
-| プロパティ名 | Displayname Settings | Description |
-| --- | --- | --- |
-| table* |テーブル名 |DB2 テーブルの名前 |
-| id* |行 ID |更新する行の一意識別子 |
-| item* |行 |更新された値のある行 |
-
-アスタリスク (*) は、そのプロパティが必須であることを意味します。
-
-##### <a name="output-details"></a>出力の詳細
-項目
-
-| プロパティ名 | データ型 |
-| --- | --- |
-| ItemInternalId |string |
-
-### <a name="http-responses"></a>HTTP 応答
-他のアクションを呼び出すとき、特定の応答を受け取る場合があります。 次の表に、これらの応答とその説明を示します。  
-
-| 名前 | 説明 |
-| --- | --- |
-| 200 |OK |
-| 202 |承認済み |
-| 400 |正しくない要求 |
-| 401 |権限がありません |
-| 403 |許可されていません |
-| 404 |見つかりません |
-| 500 |内部サーバー エラー。 不明なエラーが発生しました |
-| default |操作に失敗しました。 |
-
 ## <a name="supported-db2-platforms-and-versions"></a>サポートされている DB2 のプラットフォームとバージョン
 このコネクタでは、次の IBM DB2 のプラットフォームとバージョンに加え、分散型リレーショナル データベース アーキテクチャ (DRDA) SQL アクセス マネージャー (SQLAM) バージョン 10 および 11 に対応している IBM DB2 互換製品 (IBM Bluemix dashDB など) をサポートしています。
 
@@ -408,6 +282,9 @@ DB2 テーブルの既存の行を更新します。
 * IBM DB2 for i 7.1
 * IBM DB2 for LUW 11
 * IBM DB2 for LUW 10.5
+
+## <a name="view-the-swagger"></a>Swagger の表示
+[Swagger の詳細](/connectors/db2/)を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 [ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)します。 [API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。

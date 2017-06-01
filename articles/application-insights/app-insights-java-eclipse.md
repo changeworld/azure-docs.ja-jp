@@ -3,7 +3,7 @@ title: "Eclipse で Java 用に Azure Application Insights を使う | Microsoft
 description: "Eclipse プラグインを使用して、Java Web サイトのパフォーマンスと利用状況を Application Insights で監視できるようにします"
 services: application-insights
 documentationcenter: java
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: e88c9f53-cd90-4abc-b097-1f170937908e
 ms.service: application-insights

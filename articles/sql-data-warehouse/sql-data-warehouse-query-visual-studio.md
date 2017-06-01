@@ -3,7 +3,7 @@ title: "Azure SQL Data Warehouse への接続 (VSTS) | Microsoft Docs"
 description: "Visual Studio で SQL Data Warehouse に対してクエリを実行します。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: antvgski
 manager: jhubbard
 editor: 
 ms.assetid: daace889-95e5-4826-b2fc-047eac9d6d95
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: connect
 ms.date: 10/31/2016
-ms.author: barbkess
-translationtype: Human Translation
+ms.author: anvang;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 342f32596c91d2af7c0f33138a43d5c8925d5350
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/03/2017
 
 

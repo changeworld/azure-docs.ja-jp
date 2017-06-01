@@ -1,6 +1,6 @@
 ---
-title: "HDInsight クラスターでの Apache Kafka のミラー化 | Microsoft Docs"
-description: "Kafka のミラーリング機能を使用してセカンダリ クラスターにトピックをミラーリングすることにより、HDInsight クラスターに Kafka のレプリカを保持する方法について説明します。"
+title: "Mirror Apache Kafka のトピック - Azure HDInsight | Microsoft Docs"
+description: "Apache Kafka のミラーリング機能を使用してセカンダリ クラスターにトピックをミラーリングすることにより、HDInsight クラスターに Kafka のレプリカを保持する方法について説明します。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -13,32 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/13/2017
+ms.date: 05/15/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: c7517f61944b9fdb02a3589d7c9cd83355dae6d8
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 0b8de346d8209dcfd665baf18ce054e5556a883b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/17/2017
 
 ---
-# <a name="use-mirrormaker-to-create-a-replica-of-a-kafka-on-hdinsight-cluster-preview"></a>MirrorMaker を使用した HDInsight クラスターでの Kafka のレプリカの作成 (プレビュー)
+# <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight-preview"></a>MirrorMaker を使用して HDInsight 上の Kafka に Apache Kafka トピックをレプリケートする (プレビュー)
 
-Apache Kafka にはミラーリング機能が含まれているため、1 つの Kafka クラスターから別の Kafka クラスターにトピックをレプリケートすることができます。 たとえば、異なる Azure リージョンの Kafka クラスター間でレコードをレプリケートできます。
+Apache Kafka のミラーリング機能を使用して、セカンダリ クラスターにトピックをレプリケートする方法について説明します。 ミラーリングは、継続的なプロセスとして実行できるほか、1 つのクラスターから別のクラスターにデータを移行する方法として断続的に使用することもできます。
 
-ミラーリングは、継続的なプロセスとして実行できるほか、1 つのクラスターから別のクラスターにデータを移行する方法として断続的に使用することもできます。
+この例では、ミラーリングを使用して、2 つの HDInsight クラスター間でトピックをレプリケートします。 両方のクラスターは同じリージョンの Azure Virtual Network に存在します。
 
 > [!WARNING]
 > ミラーリングは、フォールト トレランスを実現するための手段として考慮するべきではありません。 トピック内の項目へのオフセットは、移行元クラスターと移行先クラスターによって異なるため、クライアントはこれら 2 つを入れ替えて使用することはできません。
-> 
+>
 > フォールト トレランスを考慮する場合は、クラスター内のトピックをレプリケートする設定にします。 詳細については、「[Get started with Kafka on HDInsight (HDInsight での Kafka の使用)](hdinsight-apache-kafka-get-started.md)」を参照してください。
 
-## <a name="prerequisites"></a>前提条件
-
-* Azure Virtual Network: 移行元および移行先の Kafka クラスターは、相互に直接通信できる必要があります。 HDInsight では Kafka API をインターネット上で公開していないため、移行元および移行先のクラスターは、同じ Azure Virtual Network に存在する必要があります。
-
-* 2 つの Kafka クラスター: このドキュメントでは、Azure Resource Manager テンプレートを使用して、Azure Virtual Network 内の HDInsight クラスターに 2 つの Kafka を作成します。
-
-## <a name="how-does-mirroring-work"></a>ミラーリングのしくみ
+## <a name="how-kafka-mirroring-works"></a>Kafka のミラーリングのしくみ
 
 ミラーリングでは、Apache Kafka に含まれるツール MirrorMaker によって移行元クラスターのトピックからレコードが使用され、移行元クラスターにローカル コピーが作成されます。 MirrorMaker では、移行元クラスターから読み取りを行う 1 つ (あるいは複数) の*コンシューマー*と、ローカル (移行先) クラスターへの書き込みを行う*プロデューサー*を使用します。
 
@@ -46,18 +41,22 @@ Apache Kafka にはミラーリング機能が含まれているため、1 つ�
 
 ![ミラーリング プロセスの図](./media/hdinsight-apache-kafka-mirroring/kafka-mirroring.png)
 
+HDInsight の Apache Kafka では、パブリック インターネットを介した Kafka サービスへのアクセスを提供されていません。 Kafka のプロデューサーまたはコンシューマーは、Kafka クラスター内のノードと同じ Azure 仮想ネットワークに存在している必要があります。 この例では、Kafka の移行元クラスターと移行先クラスターの両方を Azure 仮想ネットワーク内に配置します。 次の図に、クラスター間の通信フローを示します。
+
+![Azure 仮想ネットワークにおける、移行元および移行先の Kafka クラスターの図](./media/hdinsight-apache-kafka-mirroring/spark-kafka-vnet.png)
+
 移行元クラスターと移行先クラスターでは、ノードとパーティションの数、およびトピック内のオフセットが異なります。 ミラーリングではパーティション分割に使用するキー値が保持されるため、レコードの順序はキー単位で保存されます。
 
-### <a name="mirroring-between-networks"></a>ネットワーク間のミラーリング
+### <a name="mirroring-across-network-boundaries"></a>ネットワーク境界を超えたミラーリング
 
 異なるネットワークの Kafka クラスター間でミラーリングの必要がある場合には、次の追加の考慮事項があります。
 
 * **ゲートウェイ**: ネットワークは、TCPIP レベルで通信できる必要があります。
 
-* **名前の解決**: 各ネットワークの Kafka クラスターは、ホスト名を使用して相互に接続できる必要があります。 そのためには、要求を他のネットワークに転送するように構成された各ネットワークに、ドメイン ネーム システム (DNS) サーバーが必要です。 
-  
+* **名前の解決**: 各ネットワークの Kafka クラスターは、ホスト名を使用して相互に接続できる必要があります。 そのためには、要求を他のネットワークに転送するように構成された各ネットワークに、ドメイン ネーム システム (DNS) サーバーが必要です。
+
     Azure Virtual Network を作成するときに、ネットワークで自動的に提供される DNS を使用せず、カスタムの DNS サーバーおよびサーバーの IP アドレスを指定する必要があります。 Virtual Network の作成が完了したら、その IP アドレスを使用する Azure Virtual Machine を作成し、そこに DNS ソフトウェアをインストールして構成を行います。
-  
+
     > [!WARNING]
     > カスタム DNS サーバーの作成と構成は、HDInsight を Virtual Network にインストールする前に行うようにします。 HDInsight が Virtual Network 用に構成された DNS サーバーを使用するために必要な、追加の構成はありません。
 
@@ -65,20 +64,13 @@ Apache Kafka にはミラーリング機能が含まれているため、1 つ�
 
 ## <a name="create-kafka-clusters"></a>Kafka クラスターの作成
 
-HDInsight の Apache Kafka では、パブリック インターネットを介した Kafka サービスへのアクセスを提供されていません。 Kafka と通信するすべてのものは、Kafka クラスター内のノードと同じ Azure 仮想ネットワークに存在している必要があります。 この例では、Kafka の移行元クラスターと移行先クラスターの両方を Azure 仮想ネットワーク内に配置します。 次の図に、クラスター間の通信フローを示します。
-
-![Azure 仮想ネットワークにおける、移行元および移行先の Kafka クラスターの図](./media/hdinsight-apache-kafka-mirroring/spark-kafka-vnet.png)
-
-> [!NOTE]
-> Kafka 自体は仮想ネットワーク内の通信に制限されていますが、クラスターの SSH や Ambari などの他のサービスにはインターネット経由でアクセスすることができます。 HDInsight で使用できるパブリック ポートの詳細については、「[HDInsight で使用されるポートと URI](hdinsight-hadoop-port-settings-for-services.md)」を参照してください。
-
 Azure 仮想ネットワークと Kafka クラスターは手動で作成できますが、Azure Resource Manager テンプレートを使用する方が簡単です。 次の手順に従って、Azure 仮想ネットワークと 2 つの Kafka クラスターを Azure サブスクリプションにデプロイします。
 
 1. 次のボタンを使用して Azure にサインインし、Azure Portal でテンプレートを開きます。
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-mirror-cluster-in-vnet.json" target="_blank"><img src="./media/hdinsight-apache-kafka-mirroring/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-mirror-cluster-in-vnet-v2.json" target="_blank"><img src="./media/hdinsight-apache-kafka-mirroring/deploy-to-azure.png" alt="Deploy to Azure"></a>
    
-    Azure Resource Manager テンプレートは **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet.json** にあります。
+    Azure Resource Manager テンプレートは **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.json** にあります。
 
 2. 次の情報に従って、**[カスタム デプロイ]** ブレードの各エントリに入力します。
     
@@ -86,7 +78,7 @@ Azure 仮想ネットワークと Kafka クラスターは手動で作成でき�
     
     * **[リソース グループ]**: グループを作成するか、または既存のグループを選択します。 このグループに HDInsight クラスターが含まれます。
 
-    * **[場所]**: 地理的に近い場所を選択します。 この場所は、__[設定]__ セクションの場所と一致する必要があります。
+    * **[場所]**: 地理的に近い場所を選択します。
      
     * **[Base Cluster Name] \(ベース クラスター名)**: この値は、Kafka クラスターのベース名として使用されます。 たとえば、「**hdi**」と入力すると、**source-hdi** と、**dest-hdi** という名前のクラスターが作成されます。
 
@@ -97,8 +89,6 @@ Azure 仮想ネットワークと Kafka クラスターは手動で作成でき�
     * **[SSH ユーザー名]**: 移行元および移行先の Kafka クラスターの作成に使用する SSHユーザー。
 
     * **[SSH パスワード]**: 移行元および移行先の Kafka クラスター用の SSH ユーザーのパスワード。
-
-    * **[場所]**: クラスターが作成されるリージョン。
 
 3. **使用条件**を読み、**[上記の使用条件に同意する]** をオンにします。
 
@@ -141,12 +131,12 @@ Azure 仮想ネットワークと Kafka クラスターは手動で作成でき�
     ```bash
     echo $SOURCE_ZKHOSTS
     ```
-   
- 次のテキストのような情報が返されます。
-   
-       zk0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181,zk1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181,zk6-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181
-   
- この情報は保存してください。 次のセクションで使用します。
+
+    次のテキストのような情報が返されます。
+
+    `zk0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181,zk1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181,zk6-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181`
+
+    この情報は保存してください。 次のセクションで使用します。
 
 ## <a name="configure-mirroring"></a>ミラーリングの構成
 
@@ -173,7 +163,7 @@ Azure 仮想ネットワークと Kafka クラスターは手動で作成でき�
    
     このファイルでは、移行元の Kafka クラスターからの読み取りに使用するコンシューマー情報について説明します。 コンシューマーの構成の詳細については、「[Consumer Configs (コンシューマーの構成)](https://kafka.apache.org/documentation#consumerconfigs)」(kafka.apache.org) を参照してください。
    
-    **Ctrl + X** キーを押した後、**Y** キーと Enter キーを押してファイルを保存します。
+    ファイルを保存するには、**Ctrl + X** キー、**Y** キー、**Enter** キーの順に押します。
 
 3. 移行先のクラスターと通信するプロデューサーを構成する前に、**移行先**クラスターのブローカー ホストを検索する必要があります。 この情報の取得には、次のコマンドを使用します。
    

@@ -14,9 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/08/2017
 ms.author: mbaldwin
-translationtype: Human Translation
+ms.custom: aaddev
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 06d8cb3ce2fe4419a79a63b76d67cc476d205e08
 ms.openlocfilehash: 4e8c8539fdcab348aa91644baafae217bd5e863a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/13/2017
 
 
 ---
@@ -130,9 +133,4 @@ GitHub でのサンプルに関する情報: [Microsoft Azure Active Directory �
 [Active Directory Graph API の概念とリファレンス](https://msdn.microsoft.com/library/azure/hh974476.aspx)
 
 [Azure AD Graph API Helper Library](https://www.nuget.org/packages/Microsoft.Azure.ActiveDirectory.GraphClient)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

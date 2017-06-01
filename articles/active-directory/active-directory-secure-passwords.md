@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/02/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: 8e625a346c9495d436a99fcf9eadf8ffeffcfdff
-ms.lasthandoff: 03/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 910ca62c331df0825e1403c19fe2f53672a7359d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -73,7 +74,8 @@ Microsoft は[データの侵害](https://www.privacyrights.org/data-breaches)�
 
 Azure Active Directory のパスワード管理については、[パスワード管理のしくみ](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-how-it-works)に関するページを参照してください。
 
-  >![NOTE] Azure AD の管理者の方は、従来のパスワードをユーザーが一切作成できないように、[Windows Hello](https://www.microsoft.com/en-us/windows/windows-hello) を導入することもご検討ください。
+  >[!NOTE]
+  >Azure AD の管理者の方は、従来のパスワードをユーザーが一切作成できないように、[Windows Hello](https://www.microsoft.com/en-us/windows/windows-hello) を導入することもご検討ください。
   >
 
 ## <a name="next-steps"></a>次のステップ

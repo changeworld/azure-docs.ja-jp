@@ -1,6 +1,7 @@
 ---
-title: "Azure Active Directory レポート - プレビュー | Microsoft Docs"
-description: "Azure Active Directory プレビューで使用可能なさまざまなレポートの一覧を示します。"
+
+title: "Azure Active Directory レポート | Microsoft Docs"
+description: "Azure Active Directory で使用可能なさまざまなレポートの一覧を示します。"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -14,19 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/06/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: be986fd7bb1745dcf43a1066dfabc1e1c699ab4c
-ms.openlocfilehash: b9cd11954a52600c1cd50155cb7ce9b7d2355cd3
-ms.lasthandoff: 01/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: c7fe995f097c72ab5275249538fe2bb65efac256
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
-# <a name="azure-active-directory-reporting---preview"></a>Azure Active Directory レポート - プレビュー
+# <a name="azure-active-directory-reporting"></a>Azure Active Directory レポート
 
 
 *このドキュメントは、[Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)の一部です。*
 
-Azure Active Directory プレビューのレポートでは、環境の動作状況を判断するために必要なすべての情報を取得できます。 [プレビューにはどのような機能があるのでしょうか。](active-directory-preview-explainer.md)
+環境の動作状況を判断するために必要な情報は、Azure Active Directory (Azure AD) レポートで入手できます。
 
 レポートには、次の 2 つの主要な領域があります。
 

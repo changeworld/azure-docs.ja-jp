@@ -12,13 +12,15 @@ ms.service: app-service-web
 ms.workload: web
 ms.devlang: azurecli
 ms.tgt_pltfrm: na
-ms.topic: article
+ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cfowler
-translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: b82e51d8d96c98cba1d5989060eed40ed7f2d4fe
-ms.lasthandoff: 04/04/2017
+ms.custom: mvc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: e5259bf40819aa799651e09ea5de7138e2a8ac7d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/15/2017
 
 ---
 # <a name="create-a-web-app-with-continuous-deployment-from-visual-studio-team-services"></a>Visual Studio Team Services からの継続的なデプロイで Web アプリを作成する
@@ -32,7 +34,7 @@ ms.lasthandoff: 04/04/2017
 
 ## <a name="create-app-sample"></a>サンプル アプリの作成
 
-[!code-azurecli[main](../../../cli_scripts/app-service/deploy-vsts-continuous/deploy-vsts-continuous.sh?highlight=3-4 "Visual Studio Team Services からの継続的なデプロイでの Web アプリの作成")]
+[!code-azurecli-interactive[main](../../../cli_scripts/app-service/deploy-vsts-continuous/deploy-vsts-continuous.sh?highlight=3-4 "Visual Studio Team Services からの継続的なデプロイでの Web アプリの作成")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
@@ -53,3 +55,4 @@ ms.lasthandoff: 04/04/2017
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
 
 その他の App Service の CLI サンプル スクリプトは、[Azure App Service のドキュメント](../app-service-cli-samples.md)のページにあります。
+

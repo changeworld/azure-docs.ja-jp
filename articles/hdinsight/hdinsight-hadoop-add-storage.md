@@ -12,13 +12,14 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/23/2017
+ms.date: 05/15/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 0bd6fce848c6d174eb519f8ef8a14f9ead5fa5ce
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 1199840da725afdae3ee69a26db9ceedb2ab37e3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/17/2017
 
 ---
 
@@ -79,15 +80,27 @@ Azure Portal で HDInsight クラスターを表示しているときに、__[�
 
 ストレージ情報が表示されないのは、スクリプトがクラスターの core-site.xml 構成を変更するだけだからです。 この情報は、Azure 管理 API を使用してクラスター情報を取得するときには使用されません。
 
-このスクリプトを使用してクラスターに追加されたストレージ アカウント情報を表示するには、Ambari REST API を使用します。 次のコマンドは、Ambari の JSON データを取得および解析するために [cURL (http://curl.haxx.se/)](http://curl.haxx.se/) および [jq (https://stedolan.github.io/jq/)](https://stedolan.github.io/jq/) を使用する方法を示しています。
+このスクリプトを使用してクラスターに追加されたストレージ アカウント情報を表示するには、Ambari REST API を使用します。 ご使用のクラスターについてこの情報を取得するには、次のコマンドを使用します。
 
-> [!div class="tabbedCodeSnippets" data-resources="OutlookServices.Calendar"]
-> ```PowerShell
-> curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["""fs.azure.account.key.STORAGEACCOUNT.blob.core.windows.net"""] | select(. != null)'
-> ```
-> ```Bash
-> curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.azure.account.key.STORAGEACCOUNT.blob.core.windows.net"] | select(. != null)'
-> ```
+```PowerShell
+$creds = Get-Credential -UserName "admin" -Message "Enter the cluster login credentials"
+$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=1" `
+    -Credential $creds
+$respObj = ConvertFrom-Json $resp.Content
+$respObj.items.configurations.properties."fs.azure.account.key.$storageAccountName.blob.core.windows.net"
+```
+
+> [!NOTE]
+> `$clusterName` には、HDInsight クラスターの名前を設定します。 `$storageAccountName` には、ストレージ アカウントの名前を設定します。 プロンプトが表示されたら、クラスターのログイン (管理者) とパスワードを入力します。
+
+```Bash
+curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.azure.account.key.$STORAGEACCOUNTNAME.blob.core.windows.net"] | select(. != null)'
+```
+
+> [!NOTE]
+> `$PASSWORD` には、クラスター ログイン (管理者) アカウントのパスワードを設定します。 `$CLUSTERNAME` には、HDInsight クラスターの名前を設定します。 `$STORAGEACCOUNTNAME` には、ストレージ アカウントの名前を設定します。
+>
+> この例では、[curl (http://curl.haxx.se/)](http://curl.haxx.se/) と [jq (https://stedolan.github.io/jq/)](https://stedolan.github.io/jq/) を使用して、JSON データを取得して解析します。
 
 このコマンドを使用するときは、__CLUSTERNAME__ を HDInsight クラスターの名前に置き換えます。 __PASSWORD__ は、クラスターの HTTP ログイン パスワードに置き換えます。 __STORAGEACCOUNT__ は、スクリプト アクションを使って追加されたストレージ アカウントの名前に置き換えます。 このコマンドから返される情報は、次のテキストに似たものとなります。
 
@@ -124,9 +137,15 @@ Azure Portal で HDInsight クラスターを表示しているときに、__[�
 
 ストレージ アカウントが HDInsight クラスターとは異なるリージョンにある場合は、パフォーマンスが低下することがあります。 別のリージョンのデータにアクセスすると、そのリージョンの Azure データ センター外にネットワーク トラフィックが送信され、パブリック インターネットを経由するため、遅延が生じる場合があります。
 
+> [!WARNING]
+> HDInsight クラスター以外の場所でストレージ アカウントを使用することはできません。
+
 ### <a name="additional-charges"></a>追加料金が発生する
 
 ストレージ アカウントが HDInsight クラスターとは異なるリージョンにある場合は、Azure の課金にエグレス料金が追加されていることがあります。 エグレス料金は、トラフィックが他のリージョンの別の Azure データ センター宛てであっても、データがリージョンのデータ センターの外に出る場合に適用されます。
+
+> [!WARNING]
+> HDInsight クラスター以外の場所でストレージ アカウントを使用することはできません。
 
 ## <a name="next-steps"></a>次のステップ
 

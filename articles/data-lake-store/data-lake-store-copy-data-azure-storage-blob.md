@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/06/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 4c0b60afdc95a44dc5fdb0e43605e8bb079278e5
-ms.openlocfilehash: 9f8635cd028d7d0d6a69faf6c2dc1de05dc5bb36
-ms.lasthandoff: 12/02/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: c7ccd172440ae36844c7a5863a9f9d55a05411f9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/04/2017
 
 
 ---
@@ -175,6 +176,9 @@ For example:
 ## <a name="performance-considerations-for-using-adlcopy"></a>AdlCopy を使用するときのパフォーマンスに関する考慮事項
 
 AdlCopy では、数千ものファイルとフォルダーを含むデータのコピーに対応していますが、 大規模なデータセットのコピーで問題が発生した場合は、ファイルやフォルダーを、小さなサブフォルダーに分散させてください。 AdlCopy はアドホック コピー用に構築されています。 定期的にデータをコピーする場合は、コピー操作を完全に管理できる [Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md) の使用を検討してください。
+
+## <a name="release-notes"></a>リリース ノート
+* 1.0.13 - 複数の adlcopy コマンドにわたって同じ Azure Data Lake Store アカウントにデータをコピーする場合は、実行するたびに資格情報を再入力する必要がなくなりました。 Adlcopy は複数の実行にまたがる情報をキャッシュするようになりました。
 
 ## <a name="next-steps"></a>次のステップ
 * [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)

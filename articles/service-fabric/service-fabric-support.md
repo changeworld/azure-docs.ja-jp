@@ -3,7 +3,7 @@ title: "Azure Service Fabric のサポート オプションを学習する | Mi
 description: "サポートされている Azure Service Fabric クラスターのバージョンと、サポート チケットを提出するためのリンク。"
 services: service-fabric
 documentationcenter: .net
-author: ChackDan
+author: pkc
 manager: timlt
 editor: 
 ms.assetid: 
@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/10/2017
-ms.author: chackdan
-translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 44e95f78b5fe592713570e53f2469c88202a02aa
-ms.lasthandoff: 03/11/2017
+ms.date: 05/05/2017
+ms.author: pkc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: f87aec3698addae135d4c934bb7217d9fae0e571
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -82,8 +83,14 @@ Azure Service Fabric の問題は、[Service-Fabric-issues git リポジトリ](
 | 5.3.121 より前のすべてのクラスター バージョン |2017 年 1 月 20 日 |
 | 5.3.* |2017 年 2 月 24 日 |
 | 5.4.* |2017 年 5 月 10 日     |
-| 5.5.* |最新バージョンのため、終了日はありません
+| 5.5.* |2017 年 7 月 10 日    |
+| 5.6.* |最新バージョンのため、終了日はありません
 
+<a id="previewversion"></a>
+## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Service Fabric プレビュー バージョン - 運用環境で使用がサポートされていません。
+時折、フィードバックをいただきたい重要な機能を持つバージョンをプレビューとしてリリースします。 これらのプレビュー バージョンは、テスト目的でのみ使用するようにしてください。 運用環境のクラスターは常に、サポートされていて、安定した Service Fabric のバージョンを実行する必要があります。 プレビュー バージョンのメジャーおよびマイナーのバージョン番号は常に 255 で始まります。 たとえば、Service Fabric 255.255.5703.949 のバージョンを参照すると、このリリース バージョンはテスト クラスター内のみで使用されるべきであり、プレビュー段階です。 これらのプレビュー リリースは、[Service Fabric チームのブログ](https://blogs.msdn.microsoft.com/azureservicefabric)でも発表され、含まれる機能の詳細情報があります。
+
+これらのプレビュー リリースの有償サポート オプションはありません。 [Azure Service Fabric の問題を報告する](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-support#report-azure-service-fabric-issues)に含まれるオプションのいずれかを使用して、質問またはフィードバックを提供してください。
 
 ## <a name="next-steps"></a>次のステップ
 

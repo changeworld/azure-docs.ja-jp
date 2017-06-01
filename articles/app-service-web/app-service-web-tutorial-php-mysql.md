@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 05/05/2017
 ms.author: cephalin
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: ae0b63bc338cb3e96eae4593b96265aafbcbc029
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 3ad716fab4f5084c38c83f4bc90a616856666b38
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 06/01/2017
 
 ---
 # <a name="build-a-php-and-mysql-web-app-in-azure"></a>Azure で PHP と MySQL Web アプリを構築する
@@ -160,9 +160,9 @@ php artisan serve
 az login 
 ``` 
 
-### <a name="create-a-resource-group"></a>リソース グループを作成する
+### <a name="create-a-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group#create) コマンドで[リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 Azure リソース グループとは、Web アプリ、データベース、ストレージ アカウントなどの Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+[az group create](/cli/azure/group#create) コマンドを使用して、[リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 Azure リソース グループとは、Web アプリ、データベース、ストレージ アカウントなどの Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
 次の例は、北ヨーロッパ リージョンにリソース グループを作成します。
 
@@ -328,16 +328,7 @@ git commit -m "keep sensitive data out of git"
 
 [az appservice plan create](/cli/azure/appservice/plan#create) コマンドで、App Service プランを作成します。 
 
-> [!NOTE] 
-> App Service プランは、アプリをホストするために使用される物理リソースのコレクションを表しています。 App Service プランに割り当てられたすべてのアプリケーションは、プランで定義されたリソースを共有します。これにより、複数のアプリをホストする際にコストを節約できます。 
-> 
-> App Service プランには、次の定義があります。 
-> 
-> * リージョン (北ヨーロッパ、米国東部、東南アジア) 
-> * インスタンス サイズ (Small、Medium、Large) 
-> * スケール カウント (インスタンス数 1、2、3 など) 
-> * SKU (Free、Shared、Basic、Standard、Premium) 
-> 
+[!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
 次の例では、**Free** 価格レベルを使用して、_myAppServicePlan_ という名前の App Service プランを作成します。
 
@@ -530,7 +521,7 @@ https://<username>@<app_name>.scm.azurewebsites.net:443/<app_name>.git
 
 次の手順で使用するため、ターミナルからの出力をコピーしておきます。 
 
-### <a name="push-to-azure-from-git"></a>Git から Azure にプッシュする
+### <a name="push-to-azure-from-git"></a>Git から Azure へのプッシュ
 
 ローカル Git リポジトリに Azure リモートを追加します。 
 

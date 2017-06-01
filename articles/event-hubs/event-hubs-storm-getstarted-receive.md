@@ -12,19 +12,23 @@ ms.workload: na
 ms.tgt_pltfrm: java
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/30/2017
+ms.date: 05/03/2017
 ms.author: jotaub;sethm
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 35bf064fdf2a766b8f699bed5c32d30c6c4dcd3c
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 195f5b7453a2ca576cfdbf39acd1f644c9edad33
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 ---
 
 # <a name="receive-events-from-event-hubs-using-apache-storm"></a>Apache Storm を使用して Azure Event Hubs からイベントを受信する
+
 [Apache Storm](https://storm.incubator.apache.org) は、境界のないデータ ストリームを確実かつ容易に処理する分散型リアルタイム計算システムです。 このセクションでは、Azure Event Hubs Storm スパウトを使用して、Event Hub からイベントを受信する方法を示します。 Apache Storm を使用して、別々のノードにホストされている複数のプロセスでイベントを分割することができます。 Storm と Event Hub の統合は、Storm の Zookeeper のインストールを使用して、進行状況への透過的なチェックポイントの設定、永続的なチェックポイントの管理、並行した Event Hub からの受信によって、イベントの利用を簡略化します。
 
 Event Hub の受信パターンの詳細については、「[Event Hub の概要][Event Hubs overview]」を参照してください。
+
+## <a name="create-project-and-add-code"></a>プロジェクトの作成とコードの追加
 
 このチュートリアルでは、[HDInsight Storm][HDInsight Storm] インストールを使用します。これは、Event Hubs スパウトと共に既に利用できます。
 
@@ -32,9 +36,9 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
 2. `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` ファイルをローカル開発環境にコピーします。 これには events-storm-spout が含まれています。
 3. 次のコマンドを使用して Maven のローカル ストアにパッケージをインストールします。 これにより、後の手順で Storm プロジェクトに参照として追加できます。
 
-```shell
-        mvn install:install-file -Dfile=target\eventhubs-storm-spout-0.9-jar-with-dependencies.jar -DgroupId=com.microsoft.eventhubs -DartifactId=eventhubs-storm-spout -Dversion=0.9 -Dpackaging=jar
-```
+    ```shell
+    mvn install:install-file -Dfile=target\eventhubs-storm-spout-0.9-jar-with-dependencies.jar -DgroupId=com.microsoft.eventhubs -DartifactId=eventhubs-storm-spout -Dversion=0.9 -Dpackaging=jar
+    ```
 4. Eclipse で、新しい Maven プロジェクトを作成します (**[ファイル]**、**[新規作成]**、**[プロジェクト]** の順にクリックします)。
    
     ![][12]
@@ -42,35 +46,37 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
 6. **maven-archetype-quickstart** アーキタイプを選択し、**[次へ]** をクリックします。
 7. **GroupID** と **ArtifactID** を挿入し、**[完了]** をクリックします。
 8. **pom.xml** で、`<dependency>` ノードに次の依存関係を追加します。
-```xml  
-        <dependency>
-            <groupId>org.apache.storm</groupId>
-            <artifactId>storm-core</artifactId>
-            <version>0.9.2-incubating</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.microsoft.eventhubs</groupId>
-            <artifactId>eventhubs-storm-spout</artifactId>
-            <version>0.9</version>
-        </dependency>
-        <dependency>
-            <groupId>com.netflix.curator</groupId>
-            <artifactId>curator-framework</artifactId>
-            <version>1.3.3</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>log4j</groupId>
-                    <artifactId>log4j</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-log4j12</artifactId>
-                </exclusion>
-            </exclusions>
-            <scope>provided</scope>
-        </dependency>
-```
+
+    ```xml  
+    <dependency>
+        <groupId>org.apache.storm</groupId>
+        <artifactId>storm-core</artifactId>
+        <version>0.9.2-incubating</version>
+        <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>com.microsoft.eventhubs</groupId>
+        <artifactId>eventhubs-storm-spout</artifactId>
+        <version>0.9</version>
+    </dependency>
+    <dependency>
+        <groupId>com.netflix.curator</groupId>
+        <artifactId>curator-framework</artifactId>
+        <version>1.3.3</version>
+        <exclusions>
+            <exclusion>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+            </exclusion>
+            <exclusion>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+            </exclusion>
+        </exclusions>
+        <scope>provided</scope>
+    </dependency>
+    ```
+
 9. **src** フォルダー内に **Config.properties** という名前のファイルを作成し、次の内容をコピーして次の値を代入します。
 
     ```java
@@ -236,12 +242,12 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
 ## <a name="next-steps"></a>次のステップ
 Event Hubs の詳細については、次のリンク先を参照してください:
 
-* [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
+* [Event Hubs の概要][Event Hubs overview]
 * [イベント ハブの作成](event-hubs-create.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)
 
 <!-- Links -->
-[Event Hubs overview]: event-hubs-overview.md
+[Event Hubs overview]: event-hubs-what-is-event-hubs.md
 [HDInsight Storm]: ../hdinsight/hdinsight-storm-overview.md
 [HDInsight センサー分析のチュートリアル]: ../hdinsight/hdinsight-storm-sensor-data-analysis.md
 

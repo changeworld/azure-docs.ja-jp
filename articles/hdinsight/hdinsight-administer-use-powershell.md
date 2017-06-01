@@ -14,11 +14,12 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 05/25/2017
 ms.author: jgao
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
 ms.openlocfilehash: af9e0b7c0f7077b8d4e20ccafdc1fb4e1eb58505
+ms.contentlocale: ja-jp
 ms.lasthandoff: 12/08/2016
 
 
@@ -43,7 +44,7 @@ Azure PowerShell バージョン 0.9x をインストールしている場合は
 
     Get-Module *azure*
 
-以前のバージョンをアンインストールするには、コントロール パネルで [プログラムと機能] を実行します。 
+以前のバージョンをアンインストールするには、コントロール パネルで [プログラムと機能] を実行します。
 
 ## <a name="create-clusters"></a>クラスターの作成
 [Azure PowerShell を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
@@ -72,40 +73,40 @@ Azure PowerShell バージョン 0.9x をインストールしている場合は
 
 > [!NOTE]
 > HDInsight バージョン 3.1.3 以降を使用しているクラスターのみがサポートされます。 クラスターのバージョンがわからない場合、[プロパティ] ページを確認できます。  「[クラスターの一覧と表示](hdinsight-administer-use-portal-linux.md#list-and-show-clusters)」を参照してください。
-> 
-> 
+>
+>
 
 HDInsight でサポートされているクラスターの種類ごとに、データ ノード数を変更した場合の影響:
 
 * Hadoop は、
-  
+
     保留中または実行中のジョブに影響を与えることなく、実行中の Hadoop クラスター内の worker ノードの数をシームレスに増加できます。 処理の進行中に新しいジョブを送信することもできます。 スケール設定処理の失敗は正常に処理され、クラスターは常に機能状態になります。
-  
+
     データ ノードの数を減らして Hadoop クラスターのスケールを小さくした場合、クラスター内の一部のサービスが再起動されます。 これにより、スケール設定処理の完了時に、実行中および保留中のすべてのジョブが失敗します。 ただし、処理が完了した後にジョブを再送信できます。
 * HBase
-  
+
     実行中の HBase クラスターに対して、ノードの追加または削除をシームレスに実行できます。 地域サーバーは、スケール設定処理の完了の数分以内に自動的に分散されます。 ただし、クラスターのヘッドノードにログインし、コマンド プロンプト ウィンドウから次のコマンドを実行して、地域サーバーを手動で分散することもできます。
-  
+
         >pushd %HBASE_HOME%\bin
         >hbase shell
         >balancer
 * Storm
-  
+
     実行中の Storm クラスターに対して、データ ノードの追加または削除をシームレスに実行できます。 ただし、スケール設定処理が正常に完了した後、トポロジのバランス再調整が必要になります。
-  
+
     バランス再調整は、次の 2 つの方法で実行できます。
-  
+
   * Storm Web UI
   * コマンド ライン インターフェイス (CLI) ツール
-    
+
     詳細については、 [Apache Storm に関するドキュメント](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) をご覧ください。
-    
+
     Storm Web UI は、HDInsight クラスターで使用できます。
-    
-    ![HDInsight Storm の規模のバランス調整](./media/hdinsight-administer-use-management-portal/hdinsight.portal.scale.cluster.storm.rebalance.png)
-    
+
+    ![HDInsight Storm の規模のバランス調整](./media/hdinsight-administer-use-management-portal/hdinsight.portal.scale.cluster.png)
+
     CLI コマンドを使用して Storm トポロジのバランスを再調整する方法を次の例で示します。
-    
+
         ## Reconfigure the topology "mytopology" to use 5 worker processes,
         ## the spout "blue-spout" to use 3 executors, and
         ## the bolt "yellow-bolt" to use 10 executors
@@ -146,8 +147,8 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 
 > [!NOTE]
 > アクセス許可を付与するか、取り消すことで、クラスターのユーザー名とパスワードがリセットされます。
-> 
-> 
+>
+>
 
 これは、ポータルを使用して行うこともできます。 [Azure Portal ポータルを使用した HDInsight の管理][hdinsight-admin-portal]に関するページをご覧ください。
 
@@ -164,7 +165,7 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
     $defaultStorageAccountName = ($cluster.DefaultStorageAccount).Replace(".blob.core.windows.net", "")
     $defaultBlobContainerName = $cluster.DefaultStorageContainer
     $defaultStorageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $defaultStorageAccountName)[0].Value
-    $defaultStorageAccountContext = New-AzureStorageContext -StorageAccountName $defaultStorageAccountName -StorageAccountKey $defaultStorageAccountKey 
+    $defaultStorageAccountContext = New-AzureStorageContext -StorageAccountName $defaultStorageAccountName -StorageAccountKey $defaultStorageAccountKey
 
 ## <a name="find-the-resource-group"></a>リソース グループの検索
 Resource Manager モードでは、各 HDInsight クラスターは Azure リソース グループに属しています。  リソース グループを検索するには:
@@ -180,7 +181,7 @@ Resource Manager モードでは、各 HDInsight クラスターは Azure リソ
 
 「 [Windows ベースの HDInsight での Hadoop MapReduce サンプルの実行](hdinsight-run-samples.md)」を参照してください。
 
-**Hive ジョブを送信するには** 
+**Hive ジョブを送信するには**
 
 「 [PowerShell を使用して Hive クエリを実行](hdinsight-hadoop-use-hive-powershell.md)」を参照してください。
 

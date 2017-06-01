@@ -12,16 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/06/2017
+ms.date: 05/03/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 2fe28e7b52af579038ec145c028a6d2796d6cc6e
-ms.openlocfilehash: f47b719f7b1a78264e054ee15edacc32ca35aaf7
-ms.lasthandoff: 02/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 6a5ec66172e7920a89ff8c0592224f01f19c9e41
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="stream-analytics-release-notes"></a>Stream Analytics のリリース ノート
+
+## <a name="notes-for-05032017-update-of-stream-analytics"></a>Stream Analytics の 2017 年 5 月 3 日付けの更新に関するノート
+この更新は、トラブルシューティング ドキュメントのリリースについてお知らせするものです。
+
+[トラブルシューティング ガイド](stream-analytics-troubleshooting-guide.md)とその他のドキュメントがリリースされています。 ぜひご覧になって、フィードバックをお寄せください。
+
 ## <a name="notes-for-02012017-release-of-stream-analytics"></a>Stream Analytics の 2017 年 2 月 1 日付けリリースに関するノート
 このリリースには、次の更新プログラムが含まれています。
 
@@ -78,7 +85,7 @@ ms.lasthandoff: 02/01/2017
 | --- | --- |
 | Azure IoT Suite のパブリック プレビュー |Stream Analytics は、Azure IoT Suite のパブリック プレビューに含まれています。 |
 | Azure ポータルの統合 |Microsoft Azure 管理ポータルで引き続き提供されている Stream Analytics が、 [Azure ポータル](https://azure.microsoft.com/overview/preview-portal/)にも統合されました。 現在、プレビュー ポータルの Stream Analytics 機能は Microsoft Azure 管理ポータルで提供されている機能のサブセットであり、ブラウザ内クエリ テスト、Power BI 出力構成、およびアクセス権を持つサブスクリプション内の新しい入力および出力リソースの参照や作成に関するサポートは提供されていません。 |
-| DocumentDB 出力のサポート |Stream Analytics のジョブを [DocumentDB](https://azure.microsoft.com/services/documentdb/)に出力できるようになりました。 |
+| Cosmos DB の出力のサポート |Stream Analytics のジョブを [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) に出力できるようになりました。 |
 | IoT Hub 入力に対するサポート |Stream Analytics ジョブで、IoT Hub からデータを取り込めるようになりました。 |
 | 多様なイベントに対する TIMESTAMP BY |単一のデータ ストリームに、異なるフィールドにタイムスタンプを持つ複数のイベント タイプが含まれている場合、式と共に [TIMESTAMP BY](http://msdn.microsoft.com/library/mt573293.aspx) を使用してケースごとに異なるタイムスタンプ フィールドを指定できるようになりました。 |
 
@@ -103,7 +110,7 @@ ms.lasthandoff: 02/01/2017
 
 | タイトル | Description |
 | --- | --- |
-| Azure ID から切り離された Power BI の組織 ID |この機能により、任意の種類の Azure アカウント (Live ID または組織 ID) で ASA ジョブの [Power BI 出力](stream-analytics-power-bi-dashboard.md) が可能になりました。 さらに、Azure アカウントに対して&1; つの組織 ID を使用し、Power BI 出力の承認に対して別の ID を使用できます。 |
+| Azure ID から切り離された Power BI の組織 ID |この機能により、任意の種類の Azure アカウント (Live ID または組織 ID) で ASA ジョブの [Power BI 出力](stream-analytics-power-bi-dashboard.md) が可能になりました。 さらに、Azure アカウントに対して 1 つの組織 ID を使用し、Power BI 出力の承認に対して別の ID を使用できます。 |
 | Service Bus キューの出力のサポート |[Service Bus キュー](stream-analytics-define-outputs.md#service-bus-queues)の出力を、Stream Analytics ジョブで使用できるようになりました。 |
 | Service Bus トピックの出力のサポート |[Service Bus トピック](stream-analytics-define-outputs.md#service-bus-topics)の出力を、Stream Analytics ジョブで使用できるようになりました。 |
 
@@ -133,10 +140,10 @@ ms.lasthandoff: 02/01/2017
 | メモリ不足の問題 |順序が適切でないイベントや複雑なクエリに対する Streaming Analytics ジョブの許容範囲が広く、保持している状態が大量になると、ジョブのメモリ不足が発生し、ジョブが再起動されることがあります。 開始と停止の操作は、ジョブの操作ログに記録されます。 この動作を回避するには、クエリを複数のパーティションにスケール アウトしてください。 今後のリリースでは、影響を受けるジョブを再起動する代わりにパフォーマンスを低下させることで、この制限事項が解消される予定です。 |
 | ペイロード タイムスタンプのない大きな BLOB 入力によってメモリ不足の問題が発生する |TIMESTAMP BY でタイムスタンプ フィールドが指定されていない場合、BLOB ストレージから大きなファイルを使用すると、Stream Analytics ジョブがクラッシュすることがあります。 この問題を回避するには、各 BLOB のサイズを 10 MB 以下にしてください。 |
 | SQL Database イベントのボリューム制限 |出力ターゲットとして SQL Database を使用すると、大量の出力データによって Stream Analytics ジョブがタイムアウトになる場合があります。 この問題を解決するには、集計またはフィルター演算子を使用して出力の量を削減するか、出力ターゲットとして Azure BLOB ストレージまたは Event Hubs を選択してください。 |
-| PowerBI データセットにはテーブルを&1; つしか含めることができない |PowerBI では、特定のデータセット内で複数のテーブルがサポートされていません。 |
+| PowerBI データセットにはテーブルを 1 つしか含めることができない |PowerBI では、特定のデータセット内で複数のテーブルがサポートされていません。 |
 
 ## <a name="get-help"></a>問い合わせ
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)

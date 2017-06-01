@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/20/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: bf4e400e30cc93ca8fa0cc727ada0f1b224b05cb
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 70a598c9a5bf514f62baa0c5275b2e44cd9776b8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/21/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -70,7 +70,7 @@ Cloud Services (クラシック) は、他のクラシック リソースと共�
 ## <a name="databases"></a>データベース
 | サービス | リソース マネージャーが有効 | REST API | テンプレートの形式 |
 | --- | --- | --- | --- | --- |
-| DocumentDB |あり |[DocumentDB REST](/rest/api/documentdbresourceprovider) |[DocumentDB のリソース](/azure/templates/microsoft.documentdb/databaseaccounts) |
+| Azure Cosmos DB |あり |[Azure Cosmos DB REST](/rest/api/documentdbresourceprovider) |[Azure Cosmos DB のリソース](/azure/templates/microsoft.documentdb/databaseaccounts) |
 | Redis Cache |はい | [Redis Cache REST](/rest/api/redis) |[Redis のリソース](/azure/templates/microsoft.cache/redis) |
 | SQL Database |あり |[SQL Database REST](/rest/api/sql) |[SQL Database のリソース](/azure/templates/microsoft.sql/servers) |
 | SQL Data Warehouse |あり | | |

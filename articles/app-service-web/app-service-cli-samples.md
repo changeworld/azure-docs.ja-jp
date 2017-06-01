@@ -15,10 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: app-service
 ms.date: 03/08/2017
 ms.author: cfowler
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 5d74f8216edd46fcd36d2b7f8763ec8a69ccad42
-ms.lasthandoff: 03/31/2017
+ms.custom: mvc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 5c995ca118676935f4f9b0c72c266b9d52c181cb
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -44,7 +46,7 @@ ms.lasthandoff: 03/31/2017
 | [Web アプリを SQL Database に接続する](./scripts/app-service-cli-app-service-sql.md?toc=%2fcli%2fazure%2ftoc.json)| Azure Web アプリと SQL データベースを作成し、データベース接続文字列をアプリケーション設定に追加します。 |
 | [Web アプリをストレージ アカウントに接続する](./scripts/app-service-cli-app-service-storage.md?toc=%2fcli%2fazure%2ftoc.json)| Azure Web アプリとストレージ アカウントを作成し、ストレージ接続文字列をアプリケーション設定に追加します。 |
 | [Web アプリを Redis Cache に接続する](./scripts/app-service-cli-app-service-redis.md?toc=%2fcli%2fazure%2ftoc.json) | Azure Web アプリと Redis Cache を作成し、Redis の接続の詳細をアプリケーション設定に追加します。 |
-| [Web アプリを DocumentDB に接続する](./scripts/app-service-cli-app-service-documentdb.md?toc=%2fcli%2fazure%2ftoc.json) | Azure Web アプリと DocumentDB を作成し、DocumentDB の接続の詳細をアプリケーション設定に追加します。 |
+| [Web アプリと Cosmos DB の接続](./scripts/app-service-cli-app-service-documentdb.md?toc=%2fcli%2fazure%2ftoc.json) | Azure Web アプリと Cosmos DB を作成し、Cosmos DB の接続の詳細をアプリケーション設定に追加します。 |
 |**アプリの監視**||
 | [Web サーバー ログによる Web アプリの監視](./scripts/app-service-cli-monitor.md?toc=%2fcli%2fazure%2ftoc.json) | Azure Web アプリを作成し、ログ記録を有効にし、ログをローカル コンピューターにダウンロードします。 |
 | | |

@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/23/2017
+ms.date: 05/16/2017
 ms.author: shnatara
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
 ms.openlocfilehash: bd774d095ba7da1856d2addc2ea087dece92fc5a
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/24/2017
 
 

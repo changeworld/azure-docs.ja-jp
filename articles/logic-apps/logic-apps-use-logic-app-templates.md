@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: klam
+ms.author: LADocs; klam
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5913c81088724ef946ae147f4f3154fa6aefd22e
 ms.openlocfilehash: 17486fd41b471356648656b65ca66e1234313d4c
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/01/2017
 
 

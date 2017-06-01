@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/06/2017
 ms.author: edmaca, yanacai
-translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
-ms.openlocfilehash: c26ac89bd7ef494331ba309aacf87de03506ac4c
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 9be337c3e04959a1ad2152c989c8532383362521
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -41,7 +42,7 @@ U-SQL は、Data Lake 内のすべてのデータを準備、変換、分析す�
     このほか、「[Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」の次の 2 つのセクションに示した方法でも、アカウントを作成して手動でデータをアップロードできます。
 
     1. [Azure Data Lake Analytics アカウントの作成](data-lake-analytics-get-started-portal.md#create-data-lake-analytics-account)
-    2. [既定の Data Lake ストレージ アカウントへの SearchLog.tsv のアップロード](data-lake-analytics-get-started-portal.md#prepare-source-data)
+    2. [既定の Data Lake ストレージ アカウントへの SearchLog.tsv のアップロード](data-lake-analytics-get-started-portal.md)
 
 ## <a name="connect-to-azure"></a>Connect to Azure
 **Data Lake Analytics への接続**
@@ -128,9 +129,9 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。 U-SQL の�
        自動的に作成された名前とメンバーが、行セット、クラス、データベース、スキーマ、ユーザー定義オブジェクト (UDO) に対して表示されます。
 
        カタログ エンティティ (データベース、スキーマ、テーブル、UDO など) に対する IntelliSense は、コンピューティング アカウントと関連付けられています。 現在のアクティブなコンピューティング アカウント、データベース、スキーマを上部のツールバーで確認でき、ドロップダウン リストで切り替えることができます。
-   * *** 列の展開**
+   * **列の * 展開**
 
-       * の右側をクリックすると、* の下に青い線が表示されます。 青い下線にマウス カーソルを合わせて、下矢印をクリックします。
+       \* の右側をクリックすると、* の下に青い線が表示されます。 青い下線にマウス カーソルを合わせて、下矢印をクリックします。
        ![Data Lake Visual Studio ツールでの * の展開](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
 
        **[列の展開]**をクリックすると、* が列名に置き換えられます。
@@ -198,7 +199,7 @@ Data Lake Tools for Visual Studio にはユーザーが選択できるカラー 
 
 ## <a name="run-u-sql-locally"></a>U-SQL のローカル実行
 
-Azure Data Lake Tools for Visual Studio と Azure Data Lake U-SQL SDK を使用して、U-SQL ジョブを、Azure Data Lake サービスで実行するときと同じように、ワークステーションで実行することができます。 この 2 つのローカル実行機能により、U-SQL ジョブのテストとデバッグにかかる時間を節約できます。 
+Azure Data Lake Tools for Visual Studio と Azure Data Lake U-SQL SDK を使用して、U-SQL ジョブを、Azure Data Lake サービスで実行するときと同じように、ワークステーションで実行することができます。 この 2 つのローカル実行機能により、U-SQL ジョブのテストとデバッグにかかる時間を節約できます。
 
 * [ローカル実行と Azure Data Lake U-SQL SDK を使用した U-SQL ジョブのテストおよびデバッグ](data-lake-analytics-data-lake-tools-local-run.md)
 

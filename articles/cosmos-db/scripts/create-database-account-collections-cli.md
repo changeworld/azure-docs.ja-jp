@@ -1,26 +1,26 @@
 ---
 title: "Azure CLI スクリプト - Azure Cosmos DB の DocumentDB API アカウント、データベース、およびコレクションを作成する |Microsoft Docs"
 description: "Azure CLI のサンプル スクリプト - Azure Cosmos DB の DocumentDB API アカウント、データベース、およびコレクションを作成する"
-services: cosmosdb
+services: cosmos-db
 documentationcenter: cosmosdb
 author: mimig1
 manager: jhubbard
 editor: 
 tags: azure-service-management
 ms.assetid: 
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.custom: sample
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 05/10/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 87c9bfc3d23ed2c21d989e06058c017e41009453
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: bad18882dd362ded4dac53beecbd65ff6df4c725
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/15/2017
 
 ---
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 05/10/2017
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-azurecli[メイン](../../../cli_scripts/cosmosdb/create-cosmosdb-account-database/create-cosmosdb-account-database.sh?highlight=15-35 "Azure Cosmos DB の DocumentDB API アカウント、データベース、およびコレクションを作成する")]
+[!code-azurecli-interactive[メイン](../../../cli_scripts/cosmosdb/create-cosmosdb-account-database/create-cosmosdb-account-database.sh?highlight=15-35 "Azure Cosmos DB の DocumentDB API アカウント、データベース、およびコレクションを作成する")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
@@ -57,3 +57,4 @@ az group delete --name myResourceGroup
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
 
 Azure Cosmos DB のその他の CLI サンプル スクリプトについては、[Azure Cosmos DB CLI のドキュメント](../cli-samples.md)をご覧ください。
+

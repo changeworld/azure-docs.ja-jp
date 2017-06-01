@@ -3,7 +3,7 @@ title: "Azure Application Insights を使用した ASP.NET の Web アプリ分�
 description: "オンプレミスまたは Azure でホストされている ASP.NET Web サイトのパフォーマンス、可用性、利用状況の分析を構成します。"
 services: application-insights
 documentationcenter: .net
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: d0eee3c0-b328-448f-8123-f478052751db
 ms.service: application-insights
@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/04/2017
+ms.date: 05/15/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 04bac05363f0f7468e41ccfd96a85e4bd7bf761c
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: af932e111ebc60ee86c823e65000d39fa6ea81cb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/06/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -52,7 +52,12 @@ Application Insights の構成ページに進みます。
 
 **a.** Azure へのアクセスに使用するアカウントとサブスクリプションを選択します。
 
-**b.** Azure のリソースを選択します。このリソースのデータをアプリに表示します。 通常は、各アプリに対して個別のリソースを作成します。 データを格納するリソース グループまたは場所を設定するには、**[設定の構成]** をクリックします。 リソース グループは、データへのアクセスの制御に使用されます。 たとえば、同じシステムの一部を構成する複数のアプリがある場合、そのアプリに関する Application Insights のデータを同じリソース グループ内に配置することができます。
+**b.** Azure のリソースを選択します。このリソースのデータをアプリに表示します。 通常は、次のようにします。
+
+* 単一のアプリケーションの[さまざまなコンポーネント用の 1 つのリソース](app-insights-monitor-multi-role-apps.md)を使用します。 
+* 関係性のない各アプリケーション用に個別のリソースを作成します。
+ 
+データを格納するリソース グループまたは場所を設定するには、**[設定の構成]** をクリックします。 リソース グループは、データへのアクセスの制御に使用されます。 たとえば、同じシステムの一部を構成する複数のアプリがある場合、そのアプリに関する Application Insights のデータを同じリソース グループ内に配置することができます。
 
 **c.** 課金を回避するために、無料のデータ ボリュームの範囲で上限を設定します。 Application Insights では、一定の量までのテレメトリが無料で提供されます。 リソースが作成された後、ポータルで **[機能と価格設定]** > **[データ管理]** > **[日次ボリューム上限]** の順に開いて選択内容を変更することができます。
 

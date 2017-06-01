@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/11/2017
+ms.date: 05/08/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: fcc43e5d98f75b34f2d65c9e1ce8eeba7762caaf
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 0ca7382ed64fd548f8a086893ea2e3187dd26929
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -80,8 +81,8 @@ Azure サブスクリプションとリソース グループのセキュリテ�
    ![Azure Security Center の推奨事項][5]
 2. **[推奨事項]** ブレードで推奨事項を選択すると、詳細な情報を表示したり、問題を解決するためのアクションを実行したりできます。
 
-### <a name="view-the-health-and-security-state-of-your-resources"></a>リソースの正常性とセキュリティの状態を表示
-1. **[セキュリティ センター]** ブレードに戻ります。 **[リソース セキュリティの正常性]** タイルには、仮想マシン、ネットワーク、データ、アプリケーションのセキュリティ状態のインジケーターが表示されています。
+### <a name="view-the-security-state-of-your-resources"></a>リソースのセキュリティの状態を表示する
+1. **[セキュリティ センター]** ブレードに戻ります。 ダッシュボードの **[Prevention]\(防止\)** セクションには、仮想マシン、ネットワーク、データ、アプリケーションのセキュリティ状態インジケーターが表示されます。
 2. **[Compute (コンピューティング)]** を選択して、詳細を表示します。 **[Compute (コンピューティング)]** ブレードが開き、3 つのタブが表示されます。
 
   - **[概要]** - 監視と仮想マシンの推奨事項が表示されます。

@@ -11,12 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/13/2017
+ms.date: 05/17/2017
 ms.author: helaw
-translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: cc9d36edceca74ae7fc1c712931bb5929a325443
-ms.lasthandoff: 04/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 863b3deaa2f2602a2bd3dcd6d0eaad422cc5598f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -87,7 +88,7 @@ After you complete steps in the Azure Stack directory, Mary must provide consent
 ### <a name="providing-consent-to-azure-stack"></a>Providing consent to Azure Stack
 The guest directory administrator must provide consent in order for Azure Stack to read information from the guest directory. The guest administrator opens up a web browser and visits the following URL:  https://portal.local.azurestack.external/guest/signup/< guestDirectoryName >.  This URL takes the guest directory administrator to an AAD sign-in page where they enter their credentials and click **Accept** on the consent screen.
 
-In our example, Mary visits https://portal.azurestack.local/guest/signup/fabrikam.onmicrosoft.com with a web browser.  
+In our example, Mary visits https://portal.local.azurestack.external/guest/signup/fabrikam.onmicrosoft.com with a web browser.  
 
 ### <a name="registering-azure-stack-with-the-guest-directory"></a>Registering Azure Stack with the guest directory
 Once the guest directory administrator has provided consent for Azure Stack to access Fabrikam's directory, they must register Azure Stack with Fabrikam's directory tenant.

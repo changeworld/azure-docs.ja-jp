@@ -4,7 +4,7 @@ IoT Hub シリアライザー クライアント ライブラリでは、モデ�
 
 1. `#include` ステートメントの後に次の変数宣言を追加します。 リモート監視ソリューション ダッシュボードで、プレースホルダー [Device Id] と [Device Key] の値を、書き留めておいたデバイス用の値に置き換えます。 ソリューション ダッシュボードの IoT Hub ホスト名を使用して、[IoTHub Name] を置き換えます。 たとえば、IoT Hub ホスト名が **contoso.azure-devices.net** である場合は、[IoTHub Name] を **contoso** に置き換えます。
    
-    ```
+    ```c
     static const char* deviceId = "[Device Id]";
     static const char* connectionString = "HostName=[IoTHub Name].azure-devices.net;DeviceId=[Device Id];SharedAccessKey=[Device Key]";
     ```
@@ -17,7 +17,7 @@ IoT Hub シリアライザー クライアント ライブラリでは、モデ�
    - IoT Hub のデバイス ツインで設定された必要なプロパティを受信し、そのプロパティを操作する。
    - ソリューション ポータルで呼び出された **Reboot** および **InitiateFirmwareUpdate** ダイレクト メソッド に応答する。 デバイスは、報告されたプロパティを使用して、サポートするダイレクト メソッドに関する情報を送信します。
    
-    ```
+    ```c
     // Define the Model
     BEGIN_NAMESPACE(Contoso);
 
@@ -90,7 +90,7 @@ IoT Hub シリアライザー クライアント ライブラリでは、モデ�
 
 1. 次の関数を追加します。この関数は、ソリューション ダッシュボードで設定された必要なプロパティを処理します。 この必要なプロパティはモデルで定義されています。
 
-    ```
+    ```c
     void onDesiredTemperatureMeanValue(void* argument)
     {
       /* By convention 'argument' is of the type of the MODEL */
@@ -109,7 +109,7 @@ IoT Hub シリアライザー クライアント ライブラリでは、モデ�
 
 1. 次の関数を追加します。この関数は、IoT Hub で呼び出されたダイレクト メソッドを処理します。 このダイレクト メソッドはモデルで定義されています。
 
-    ```
+    ```c
     /* Handlers for direct methods */
     METHODRETURN_HANDLE Reboot(Thermostat* thermostat)
     {
@@ -132,7 +132,7 @@ IoT Hub シリアライザー クライアント ライブラリでは、モデ�
 
 1. 次の関数を追加します。この関数は、構成済みソリューションにメッセージを送信します。
    
-    ```
+    ```c
     /* Send data to IoT Hub */
     static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned char* buffer, size_t size)
     {
@@ -160,7 +160,7 @@ IoT Hub シリアライザー クライアント ライブラリでは、モデ�
 
 1. 次のコールバック ハンドラーを追加します。このハンドラーは、新しく報告されたプロパティ値を、デバイスが構成済みソリューションに送信するときに実行されます。
 
-    ```
+    ```c
     /* Callback after sending reported properties */
     void deviceTwinCallback(int status_code, void* userContextCallback)
     {
@@ -180,7 +180,7 @@ IoT Hub シリアライザー クライアント ライブラリでは、モデ�
     - 1 秒ごとにテレメトリを送信するループを作成する。
     - すべてのリソースの初期化を解除する。
 
-      ```
+      ```c
       void remote_monitoring_run(void)
       {
         if (platform_init() != 0)

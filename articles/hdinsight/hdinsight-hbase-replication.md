@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/22/2017
+ms.date: 05/25/2017
 ms.author: jgao
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: a62cd616f0abd59c83c834bf13b4ba8549a9c73e
 ms.openlocfilehash: 83aabe0e5161cd3f94caa996dec29bc020e5308b
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/23/2017
 
 

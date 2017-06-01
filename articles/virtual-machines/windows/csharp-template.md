@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2017
 ms.author: davidmu
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 738ff9882cffc428f571ab6aea96c0927d2ce443
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 7bed1e96cec49e8b62d671952976025453da6787
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -35,14 +36,14 @@ ms.lasthandoff: 03/31/2017
 
 1. まだ [Visual Studio](https://www.visualstudio.com/) をインストールしていない場合は、インストールを実行します。
 2. Visual Studio で、**[ファイル]** > **[新規]** > **[プロジェクト]**をクリックします。
-3. **[テンプレート]** > の **[Visual C#]** で **[コンソール アプリケーション]** を選択し、プロジェクトの名前と場所を入力して、**[OK]** をクリックします。
+3. **[テンプレート]** > **[Visual C#]** で **[コンソール アプリ (.NET Framework)]** を選択し、プロジェクトの名前と場所を入力して、**[OK]** をクリックします。
 
 ## <a name="step-2-install-libraries"></a>手順 2: ライブラリをインストールする
 
 NuGet パッケージを使用すると、手順を完了するために必要なライブラリを簡単にインストールできます。 リソースを作成するには、Azure Resource Manager ライブラリと Active Directory 認証ライブラリをインストールする必要があります。 Visual Studio でこれらのライブラリを入手するには、次の手順に従います。
 
-1. ソリューション エクスプローラーでプロジェクト名を右クリックし、**[NuGet パッケージの管理]**をクリックし、**[参照]** をクリックします。
-2. 検索ボックスに「*Microsoft.IdentityModel.Clients.ActiveDirectory*」と入力し、**[インストール]** をクリックします。指示に従ってパッケージをインストールします。
+1. ソリューション エクスプローラーでプロジェクト名を右クリックし、**[ソリューションの NuGet パッケージの管理...]** をクリックして、**[参照]** をクリックします。
+2. 検索ボックスに「*Microsoft.IdentityModel.Clients.ActiveDirectory*」と入力し、プロジェクトを選択して、**[インストール]** をクリックします。指示に従ってパッケージをインストールします。
 3. ページの上部で、 **[リリース前のパッケージを含める]**を選択します。 検索ボックスに「*Microsoft.Azure.Management.ResourceManager*」と入力し、**[インストール]** をクリックします。指示に従ってパッケージをインストールします。
 
 これで、ライブラリを使用してアプリケーションの作成を開始する準備が整いました。
@@ -51,7 +52,7 @@ NuGet パッケージを使用すると、手順を完了するために必要�
 
 この手順を開始する前に、[Active Directory サービス プリンシパル](../../resource-group-authenticate-service-principal.md)にアクセスできることを確認します。 このサービス プリンシパルから、Azure Resource Manager への要求を認証するためのトークンを取得します。
 
-1. 作成したプロジェクトの Program.cs ファイルを開き、次の using ステートメントをファイルの先頭に追加します。
+1. 作成したプロジェクトの Program.cs ファイルを開き、次の using ステートメントをファイルの先頭の既存のステートメントに追加します。
 
     ```
     using Microsoft.Azure;
@@ -67,8 +68,8 @@ NuGet パッケージを使用すると、手順を完了するために必要�
     ```
     private static async Task<AuthenticationResult> GetAccessTokenAsync()
     {
-      var cc = new ClientCredential("{client-id}", "{client-secret}");
-      var context = new AuthenticationContext("https://login.windows.net/{tenant-id}");
+      var cc = new ClientCredential("client-id", "client-secret");
+      var context = new AuthenticationContext("https://login.windows.net/tenant-id");
       var token = await context.AcquireTokenAsync("https://management.azure.com/", cc);
       if (token == null)
       {
@@ -80,9 +81,9 @@ NuGet パッケージを使用すると、手順を完了するために必要�
 
     次の値を置き換えます。
     
-    - *{client-id}*: Azure Active Directory アプリケーションの ID。 この ID は、AD アプリケーションの [プロパティ] ブレードで確認できます。 Azure Portal で AD アプリケーションを見つけるには、リソース メニューの **[Azure Active Directory]** をクリックし、**[アプリの登録]** をクリックします。
-    - *{client-secret}*: AD アプリケーションのアクセス キー。 この ID は、AD アプリケーションの [プロパティ] ブレードで確認できます。
-    - *{tenant-id}*: サブスクリプションのテナント ID。 テナント ID は、Azure Portal で Azure Active Directory の [プロパティ] ブレードで確認できます。 *[ディレクトリ ID]* というラベルが付いています。
+    - *client-id*: Azure Active Directory アプリケーションの ID。 この ID は、AD アプリケーションの [プロパティ] ブレードで確認できます。 Azure Portal で AD アプリケーションを見つけるには、リソース メニューの **[Azure Active Directory]** をクリックし、**[アプリの登録]** をクリックします。
+    - *client-secret*: AD アプリケーションのアクセス キー。 この ID は、AD アプリケーションの [プロパティ] ブレードで確認できます。
+    - *tenant-id*: サブスクリプションのテナント ID。 テナント ID は、Azure Portal で Azure Active Directory の [プロパティ] ブレードで確認できます。 *[ディレクトリ ID]* というラベルが付いています。
 
 3. 追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
 
@@ -102,7 +103,7 @@ NuGet パッケージを使用すると、手順を完了するために必要�
     ```
     var groupName = "myResourceGroup";
     var subscriptionId = "subsciptionId";
-    var deploymentName = "deploymentName;
+    var deploymentName = "deploymentName";
     var location = "location";
     ```
 

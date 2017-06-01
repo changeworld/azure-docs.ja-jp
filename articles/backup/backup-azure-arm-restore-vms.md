@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/12/2017
 ms.author: markgal;trinadhk;
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 61f09a6f103b9cedaf19f1128a21fa8d5df974a1
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: ff505246bef15d180e3844558d68a425df60c35f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -102,7 +103,7 @@ VM バックアップから VM またはすべてのディスクを復元する�
    * 完全な仮想マシンの復元
    * バックアップ ディスクの復元
 
-ポータルには、復元される VM の [簡易作成] オプションがあります。 VM 構成をカスタマイズする、または新しい VM 選択肢の作成操作の一環として作成されたリソースの名前をカスタマイズするには、PowerShell またはポータルを使用してバックアップ ディスクを復元し、PowerShell コマンドを使用してそのディスクを VM 構成の選択肢に接続するか、復元ディスクに付属するテンプレートを使用して、復元された VM をカスタマイズします。 複数の NIC を持つ VM またはロード バランサーの VM を復元する方法の詳細については、「[特別なネットワーク構成を持つ VM の復元](#restoring-vms-with-special-network-configurations)」を参照してください。 
+ポータルには、復元される VM の [簡易作成] オプションがあります。 VM 構成をカスタマイズする、または新しい VM 選択肢の作成操作の一環として作成されたリソースの名前をカスタマイズするには、PowerShell またはポータルを使用してバックアップ ディスクを復元し、PowerShell コマンドを使用してそのディスクを VM 構成の選択肢に接続するか、復元ディスクに付属するテンプレートを使用して、復元された VM をカスタマイズします。 複数の NIC を持つ VM またはロード バランサーの VM を復元する方法の詳細については、「[特別なネットワーク構成を持つ VM の復元](#restoring-vms-with-special-network-configurations)」を参照してください。 Windows VM が [HUB ライセンス](../virtual-machines/windows/hybrid-use-benefit-licensing.md)を使用している場合、ディスクを復元し、PowerShell またはテンプレートを以下のように使用して VM を作成します。復元された VM で HUB の利点を利用するために VM を作成する際に LicenseType を "Windows_Server" と指定します。 
  
 ## <a name="create-a-new-vm-from-restore-point"></a>復元ポイントから新しい VM を作成する
 復元ポイントをまだ選択していない場合は、新しい VM を作成する前に、[復元ポイントを選択](#restoring-vms-with-special-network-configurations)しておきます。 復元ポイントが作成されたら、**[復元の構成]** ブレードで、次の各フィールドの値を入力または選択します。
@@ -194,6 +195,7 @@ VM バックアップから VM またはすべてのディスクを復元する�
 * バックアップの構成の間に存在した拡張機能はインストールされますが、有効にはされません。 問題がある場合、拡張機能を再インストールしてください。 
 * バックアップされる VM に静的 IP がある場合は、復元後、復元された VM を作成するときの競合を避けるため、復元される VM には動的 IP が設定されます。 [復元された VM に静的 IP を追加する](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)方法を参照してください。
 * 復元された VM には可用性の値が設定されていません。 復元ディスク オプションを使い、復元されたディスクを使って PowerShell またはテンプレートから VM を作成するときに[可用性セットを追加する](../virtual-machines/windows/create-availability-set.md#use-powershell-to-create-an-availability-set)ことをお勧めします。 
+
 
 ## <a name="backup-for-restored-vms"></a>復元された VM のバックアップ
 最初にバックアップされた VM と同じ名前で同じリソース グループに VM を復元した場合、復元後も VM に対するバックアップは引き続き行われます。 別のリソース グループに VM を復元した場合、または復元された VM に別の名前を指定した場合、この VM は新しい VM として扱われるので、復元された VM に対してバックアップをセットアップする必要があります。

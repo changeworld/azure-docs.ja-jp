@@ -1,7 +1,7 @@
 ---
 title: "HDFS と互換性のある Azure Storage のデータのクエリ | Microsoft Docs"
 description: "Azure Storage と Azure Data Lake Store のデータに対してクエリを実行し、分析結果を格納する方法について説明します。"
-keywords: "Blob Storage,hdfs,構造化データ,非構造化データ,Data Lake Store"
+keywords: "BLOB ストレージ, HDFS, 構造化データ, 非構造化データ, Data Lake Store, Hadoop 入力, Hadoop 出力, Hadoop ストレージ, HDFS 入力, HDFS 出力, HDFS ストレージ, WASB Azure"
 services: hdinsight,storage
 documentationcenter: 
 tags: azure-portal
@@ -10,17 +10,18 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 1d2e65f2-16de-449e-915f-3ffbc230f815
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/27/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: f5c36624360b4a09819ea70f3ac23f943688c120
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: a8f59b891ee048bc71efc6f913e7998f6eed6d62
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -37,7 +38,7 @@ Hadoop は、既定のファイル システムの概念をサポートしてい
 Azure Storage は、堅牢な汎用ストレージ ソリューションであり、HDInsight とシームレスに統合されます。 HDInsight は、クラスターの既定のファイル システムとして Azure Storage 内の BLOB コンテナーを使用できます。 HDInsight のすべてのコンポーネントは、Hadoop 分散ファイル システム (HDFS) のインターフェイスを利用して、BLOB として格納された構造化データまたは非構造化データを直接操作できます。
 
 > [!WARNING]
-> Azure ストレージ アカウントの作成にはいくつかの選択肢があります。 以下の表は、HDInsight に関して利用できる選択肢についての情報です。
+> Azure ストレージ アカウントを作成する場合、いくつかの選択肢があります。 以下の表は、HDInsight に関して利用できる選択肢についての情報です。
 > 
 > | ストレージ アカウントの種類 | ストレージ層 | HDInsight でのサポート |
 > | ------- | ------- | ------- |

@@ -13,11 +13,13 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 01/11/2017
+ms.date: 05/01/2017
 ms.author: ashmaka
-translationtype: Human Translation
-ms.sourcegitcommit: 292c9150822363aba3336b1efce579dc5362cb14
-ms.openlocfilehash: e522d608e8ff51e00b3c1a461bf9ba909b0105af
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 5a601b75ec67824e72d8736bc3c45f8e1231ca86
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -41,11 +43,11 @@ ms.openlocfilehash: e522d608e8ff51e00b3c1a461bf9ba909b0105af
 Azure Search で認識されるデータ形式は JSON です。データセット内のすべてのドキュメントに、インデックス スキーマで定義されたフィールドにマップされるフィールドが存在する必要があります。 
 
 ## <a name="pull-data-into-an-index"></a>インデックスへのデータのプル
-プル モデルは、サポートされているデータ ソースをクロールし、データをインデックスに自動的にアップロードします。 Azure Search では、この機能は*インデクサー*によって実装され、現時点では [Blob Storage](search-howto-indexing-azure-blob-storage.md)、[Table Storage](search-howto-indexing-azure-tables.md)、[DocumentDB](http://aka.ms/documentdb-search-indexer)、[Azure SQL Database、Azure VM 上の SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) で利用可能です。 
+プル モデルは、サポートされているデータ ソースをクロールし、データをインデックスに自動的にアップロードします。 Azure Search では、この機能は "*インデクサー*" によって実装され、現時点では [Blob Storage](search-howto-indexing-azure-blob-storage.md)、[Table Storage](search-howto-indexing-azure-tables.md)、[Azure Cosmos DB](http://aka.ms/documentdb-search-indexer)、[Azure SQL Database、Azure VM 上の SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) で利用可能です。 
 
 インデクサーは、インデックスをデータ ソース (通常はテーブル、ビュー、または同等の構造体) に接続し、ソース フィールドをインデックスの同等のフィールドにマップします。 実行中、行セットが自動的に JSON に変換され、指定したインデックスに読み込まれます。 すべてのインデクサーはスケジューリングをサポートしているため、データの更新頻度を指定できます。 ほとんどのインデクサーは、変更の追跡を提供します (データ ソースでサポートされている場合)。 インデクサーは、新しいドキュメントを認識するだけでなく、既存のドキュメントの変更と削除を追跡するため、インデックス内のデータをアクティブに管理する必要がありません。 
 
-インデクサーの機能は、[Azure Portal](search-import-data-portal.md)、[REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)、および [.NET SDK](https://docs.microsoft.com/otnet/api/microsoft.azure.search.iindexersoperations?redirectedfrom=MSDN#microsoft_azure_search_iindexersoperations) で公開されています。 
+インデクサーの機能は、[Azure Portal](search-import-data-portal.md)、[REST API](/rest/api/searchservice/Indexer-operations)、および [.NET SDK](/dotnet/api/microsoft.azure.search.indexersoperations) で公開されています。 
 
 ポータルを使用する利点は、通常、Azure Search でソース データセットのメタデータを読み取って既定のインデックス スキーマを生成できることです。 生成されたインデックスは、インデックスが処理されるまでは変更可能です。インデックスが処理された後は、インデックスの再作成を必要としないスキーマの編集のみが許可されます。 加えようとしている変更がスキーマに直接影響する場合、インデックスを再構築する必要があります。 
 
@@ -53,12 +55,7 @@ Azure Search で認識されるデータ形式は JSON です。データセッ�
 
 ## <a name="query-an-index-using-search-explorer"></a>Search エクスプローラーを使用したインデックスの照会
 
-ドキュメントのアップロード時に事前チェックを実行する簡単な方法は、ポータルで **Search エクスプローラー**を使用することです。 エクスプローラーを使用すると、コードを記述することなくインデックスを照会できます。 検索エクスペリエンスは、既定の設定 ([単純構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)、既定の [searchMode クエリ パラメーター](https://docs.microsoft.com/rest/api/searchservice/search-documents)など) に基づきます。 結果は JSON で返されるため、ドキュメント全体を確認できます。
+ドキュメントのアップロード時に事前チェックを実行する簡単な方法は、ポータルで **Search エクスプローラー**を使用することです。 エクスプローラーを使用すると、コードを記述することなくインデックスを照会できます。 検索エクスペリエンスは、既定の設定 ([単純構文](/rest/api/searchservice/simple-query-syntax-in-azure-search)、既定の [searchMode クエリ パラメーター](/rest/api/searchservice/search-documents)など) に基づきます。 結果は JSON で返されるため、ドキュメント全体を確認できます。
 
 > [!TIP]
 > 数多くの [Azure Search コード サンプル](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)に埋め込みデータセットやすぐに利用できるデータセットが含まれているため、簡単に使い始めることができます。 ポータルには、("realestate-us-sample" という名前の) 小さな不動産データセットで構成されるサンプルのインデクサーとデータ ソースも用意されています。 サンプル データ ソースで事前構成済みのインデクサーを実行すると、インデックスが作成され、ドキュメントが読み込まれます。このドキュメントは、Search エクスプローラーまたは自分で作成したコードで照会できます。
-
-
-<!--HONumber=Feb17_HO3-->
-
-

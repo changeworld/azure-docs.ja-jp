@@ -13,12 +13,13 @@ ms.devlang: na
 ms.workload: search
 ms.topic: hero-article
 ms.tgt_pltfrm: na
-ms.date: 02/22/2017
+ms.date: 05/01/2017
 ms.author: heidist
-translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 7945ee77be8a09dcac9ddd6b338bdd542ec18540
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: e03d0ff92b0ad6d34314c55d98972997769d09f0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -199,7 +200,7 @@ Azure Portal で、**データのインポート** ウィザードを使用し�
 
   個々のコンポーネントを表示するには、**[インデックス]**、**[インデクサー]**、**[データ ソース]** のいずれかのタイルをダッシュボードでクリックしてください。既存のオブジェクトの一覧が表示されます。 再構築不要なインデックス編集の詳細については、「[Update Index (Azure Search REST API) (インデックスの更新 (Azure Search REST API))](https://docs.microsoft.com/rest/api/searchservice/update-index)」を参照してください。
 
-+ ツールと手順を他のデータ ソースで試してみます。 サンプル データセット `realestate-us-sample` は、Azure Search がクロールできる Azure SQL Database のデータセットです。 Azure Search は Azure SQL Database 以外にも、Azure Table Storage、Blob Storage、Azure VM 上の SQL Server、DocumentDB のフラットなデータ構造のインデックスをクロールおよび推論できます。 これらのデータ ソースはすべて、ウィザードでサポートされます。 コードでは、"*インデクサー*" を使用して簡単にインデックスを作成できます。
++ ツールと手順を他のデータ ソースで試してみます。 サンプル データセット `realestate-us-sample` は、Azure Search がクロールできる Azure SQL Database のデータセットです。 Azure Search は Azure SQL Database 以外にも、Azure Table Storage、Blob Storage、Azure VM 上の SQL Server、Azure Cosmos DB のフラットなデータ構造のインデックスをクロールおよび推論できます。 これらのデータ ソースはすべて、ウィザードでサポートされます。 コードでは、"*インデクサー*" を使用して簡単にインデックスを作成できます。
 
 + インデクサーのない他のデータ ソースはすべて、プッシュ モデルを使用してサポートされます。プッシュ モデルでは、コードは新しい行セットと変更した行セットを JSON でインデックスにプッシュします。 詳細については、[Azure Search でのドキュメントの追加、更新、削除](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)に関するページを参照してください。
 

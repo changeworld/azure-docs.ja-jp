@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: bb6f3a7710c52a210ea8014430285ba8917cc895
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 0ce1dbf9f2baf9369875370866690010fe8e9e37
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -29,8 +30,8 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 
 ### <a name="azure-ad"></a>Azure AD
 * Azure サブスクリプションまたは [Azure 試用版](https://azure.microsoft.com/pricing/free-trial/)サブスクリプション。 このサブスクリプションは、Azure Portal へのアクセスにのみ必要です。Azure AD Connect の使用には不要です。 PowerShell または Office 365 を使用している場合は、Azure サブスクリプションがなくても Azure AD Connect を使用できます。 Office 365 ライセンスを持っている場合は、Office 365 ポータルも使用できます。 有料の Office 365 ライセンスを使用して、Office 365 ポータルから Azure Portal にアクセスすることもできます。
-  * また、[Azure Portal](https://portal.azure.com) で Azure AD プレビュー機能を使用することもできます。 このポータルでは、Azure ライセンスは必要ありません。
-* [ドメインを追加して検証](../active-directory-add-domain.md) します。 たとえば、ユーザー向けに contoso.com を使用する予定の場合は、そのドメインが検証されていることと、使用しているドメインが既定のドメインである contoso.onmicrosoft.com だけではないことを確認します。
+  * [Azure Portal](https://portal.azure.com) を使用することもできます。 このポータルでは、Azure AD ライセンスは必要ありません。
+* [ドメインを追加して検証](../active-directory-domains-add-azure-portal.md) します。 たとえば、ユーザー向けに contoso.com を使用する予定の場合は、そのドメインが検証されていることと、使用しているドメインが既定のドメインである contoso.onmicrosoft.com だけではないことを確認します。
 * Azure AD テナントでは、既定では 50,000 個のオブジェクトを使用できます。 ドメインを検証すると、制限が 300,000 個のオブジェクトに増加します。 Azure AD でさらに多くのオブジェクトが必要な場合は、制限を緩和するサポート ケースを開く必要があります。 500,000 個を超えるオブジェクトが必要な場合は、Office 365、Azure AD Basic、Azure AD Premium、Enterprise Mobility and Security などのライセンスが必要です。
 
 ### <a name="prepare-your-on-premises-data"></a>オンプレミスのデータの準備
@@ -53,6 +54,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 * **パスワード同期**機能を使用する場合、Azure AD Connect サーバーが Windows Server 2008 R2 SP1 以降にインストールされている必要があります。
 * **グループ管理サービス アカウント**を使用する場合、Azure AD Connect サーバーが Windows Server 2012 以降にインストールされている必要があります。
 * Azure AD Connect サーバーには、[.NET Framework 4.5.1](#component-prerequisites) 以降と [Microsoft PowerShell 3.0](#component-prerequisites) 以降がインストールされている必要があります。
+* Azure AD Connect サーバーの PowerShell トランスクリプション グループ ポリシーは有効にしないでください。
 * Active Directory Federation Services をデプロイする場合、AD FS または Web アプリケーション プロキシがインストールされるサーバーは、Windows Server 2012 R2 以降である必要があります。 [Windows リモート管理](#windows-remote-management) を有効にする必要があります。
 * Active Directory フェデレーション サービスがデプロイされている場合は、 [SSL 証明書](#ssl-certificate-requirements)が必要です。
 * Active Directory フェデレーション サービス (AD FS) がデプロイされている場合は、 [名前解決](#name-resolution-for-federation-servers)を構成する必要があります。
@@ -103,6 +105,8 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
         </defaultProxy>
     </system.net>
 ```
+
+* Azure AD Connect がディレクトリ同期の過程で Web 要求を Azure AD に送信するとき、Azure AD から応答が返されるまでに長くて 5 分程度かかる場合があります。 一般に、プロキシ サーバーには、接続アイドル タイムアウトの構成を適用します。 この構成は 6 分以上に設定してください。
 
 詳細については、[既定のプロキシ要素](https://msdn.microsoft.com/library/kd3cf2ex.aspx)に関する MSDN を参照してください。  
 接続に問題が発生した場合は、[接続の問題に対するトラブルシューティング](active-directory-aadconnect-troubleshoot-connectivity.md)についてのページを参照してください。

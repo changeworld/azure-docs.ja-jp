@@ -49,6 +49,7 @@
 #### [Linux コンテナーのデプロイ](service-fabric-deploy-container-linux.md)
 #### [Docker Compose (プレビュー)](service-fabric-docker-compose.md)
 #### [コンテナーとサービスのリソース ガバナンス](service-fabric-resource-governance.md)
+#### [ボリュームとログ ドライバー](service-fabric-containers-volume-logging-drivers.md)
 
 ### Reliable Services サービスの構築
 #### [概要](service-fabric-reliable-services-introduction.md)
@@ -69,7 +70,6 @@
 ##### [Windows での C# ](service-fabric-reliable-services-quick-start.md)
 ##### [Linux での Java](service-fabric-reliable-services-quick-start-java.md)
 
-#### Reliable Services のライフサイクル
 #### [構成](service-fabric-reliable-services-configuration.md)
 #### [通知の送信](service-fabric-reliable-services-notifications.md)
 #### [バックアップと復元](service-fabric-reliable-services-backup-restore.md)
@@ -87,12 +87,12 @@
 ### Reliable Actors サービスの構築
 #### [概要](service-fabric-reliable-actors-introduction.md)
 #### 概念
-#### [アーキテクチャ](service-fabric-reliable-actors-platform.md)
-#### [ライフサイクルとガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)
-#### [状態管理](service-fabric-reliable-actors-state-management.md)
-#### [ポリモーフィズム](service-fabric-reliable-actors-polymorphism.md)
-#### [再入](service-fabric-reliable-actors-reentrancy.md)
-#### [型のシリアル化](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
+##### [アーキテクチャ](service-fabric-reliable-actors-platform.md)
+##### [ライフサイクルとガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)
+##### [状態管理](service-fabric-reliable-actors-state-management.md)
+##### [ポリモーフィズム](service-fabric-reliable-actors-polymorphism.md)
+##### [再入](service-fabric-reliable-actors-reentrancy.md)
+##### [型のシリアル化](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
 
 #### 作業開始
 ##### [Windows での C# ](service-fabric-reliable-actors-get-started.md)
@@ -108,6 +108,7 @@
 #### [サービス通信](service-fabric-connect-and-communicate-with-services.md)
 #### [DNS サービス](service-fabric-dnsservice.md)
 #### [リバース プロキシ](service-fabric-reverseproxy.md)
+#### [セキュリティで保護された通信用のリバース プロキシの構成](service-fabric-reverseproxy-configure-secure-communication.md)
 
 ### [Web フロントエンドの追加](service-fabric-add-a-web-frontend.md)
 
@@ -215,6 +216,7 @@
 ### [セキュリティ保護されたクラスターへの接続](service-fabric-connect-to-secure-cluster.md)
 
 ### [Azure CLI を使用したクラスターの管理](service-fabric-azure-cli.md)
+### [クラスター ノードへのパッチの適用](service-fabric-patch-orchestration-application.md)
 
 ### クラスター リソースを管理および調整する
 #### [Cluster Resource Manager の概要](service-fabric-cluster-resource-manager-introduction.md)
@@ -249,11 +251,13 @@
 #### [Windows](service-fabric-diagnostics-how-to-setup-wad.md)
 #### [Linux](service-fabric-diagnostics-how-to-setup-lad.md)
 ### [サービス プロセスからのログの収集](service-fabric-diagnostic-collect-logs-without-an-agent.md)
+### [Windows Server コンテナーの監視](service-fabric-diagnostics-containers-windowsserver.md)
 ### [ステートフル Reliable Services における診断](service-fabric-reliable-services-diagnostics.md)
 ### [Reliable Actors の診断](service-fabric-reliable-actors-diagnostics.md)
 ### [ローカル クラスターのトラブルシューティング](service-fabric-troubleshoot-local-cluster-setup.md)
 
 # リファレンス
+## [PowerShell (Azure)](/powershell/module/azurerm.servicefabric/)
 ## [PowerShell](/powershell/azure/overview?view=azureservicefabricps)
 ## [Java API](/java/api/)
 ## [.NET](/dotnet/api/)

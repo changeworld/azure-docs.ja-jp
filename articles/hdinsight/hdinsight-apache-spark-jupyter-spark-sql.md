@@ -1,6 +1,7 @@
 ---
-title: "Azure HDInsight における Apache Spark クラスターの概要 | Microsoft Docs"
-description: "HDInsight に Apache Spark クラスターをすばやく作成し、Jupyter Notebook から Spark SQL を使用して対話型クエリを実行する手順を説明します。"
+title: "作業開始 - Apache Spark & 対話型の Spark SQL クエリ - Azure HDInsight | Microsoft Docs"
+description: "HDInsight で Apache Spark クラスターを作成し、Jupyter Notebook を使用して対話型のクエリを実行する方法に関する HDInsight Spark のクイック スタート。"
+keywords: "spark クイック スタート,対話型 spark,対話型クエリ,hdinsight spark,azure spark"
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -9,32 +10,34 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 91f41e6a-d463-4eb4-83ef-7bbb1f4556cc
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/13/2017
+ms.date: 05/12/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: e2a9802e76579a523897d8904add6b317652ff05
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 0c59792423bfe2848ab5773746db466890228ddc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
-# <a name="get-started-create-apache-spark-cluster-in-azure-hdinsight-and-run-interactive-queries-using-spark-sql"></a>概要: Azure HDInsight での Apache Spark クラスターの作成と Spark SQL を使用した対話型クエリの実行
+# <a name="get-started-create-an-apache-spark-cluster-in-hdinsight-and-run-interactive-spark-sql-queries"></a>作業開始: HDInsight で Apache Spark クラスターを作成し、対話型の Spark SQL クエリを実行する
 
-HDInsight で [Apache Spark](hdinsight-apache-spark-overview.md) クラスターを作成し、Spark クラスターで [Jupyter](https://jupyter.org) Notebook を使用して Spark SQL の対話型クエリを実行する方法について説明します。
+HDInsight で [Apache Spark](hdinsight-apache-spark-overview.md) クラスターを作成し、[Jupyter](https://jupyter.org) Notebook を使用して対話型の Spark SQL クエリを実行する方法について説明します。
 
-   ![HDInsight で Apache Spark の使用を開始](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.getstartedflow.png "HDInsight チュートリアルで Apache Spark の使用を開始します。図に示されている手順: ストレージ アカウントを作成し、クラスターを作成して、Spark SQL ステートメントを実行します")
+   ![Azure HDInsight に Apache Spark クラスターを作成する手順を説明するクイック スタート図](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-quickstart-interactive-spark-query-flow.png "HDInsight で Apache Spark を使用する Spark のクイック スタート。図に示されている手順: クラスターを作成し、Spark の対話型クエリを実行します")
 
 ## <a name="prerequisites"></a>前提条件
+
 * **Azure サブスクリプション**。 このチュートリアルを開始する前に、Azure サブスクリプションが必要です。 「[無料の Azure アカウントを今すぐ作成しましょう](https://azure.microsoft.com/free)」をご覧ください。
 
-## <a name="create-a-spark-cluster"></a>Spark クラスターの作成
-このセクションでは、[Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/101-hdinsight-spark-linux/)を利用して、HDInsight で Spark クラスターを作成します。 その他のクラスター作成方法については、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
+## <a name="create-hdinsight-spark-cluster"></a>HDInsight Spark クラスターの作成
+
+このセクションでは、[Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/101-hdinsight-spark-linux/)を使用して HDInsight Spark クラスターを作成します。 その他のクラスター作成方法については、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 
 1. 次の画像をクリックして Azure ポータルでテンプレートを開きます。         
 
@@ -42,7 +45,7 @@ HDInsight で [Apache Spark](hdinsight-apache-spark-overview.md) クラスター
 
 2. 次の値を入力します。
 
-    ![Azure Resource Manager テンプレートを使用した HDInsight での Spark クラスターの作成](./media/hdinsight-apache-spark-jupyter-spark-sql/create-spark-cluster-in-hdinsight-using-azure-resource-manager-template.png "Azure Resource Manager テンプレートを使用した HDInsight での Spark クラスターの作成")
+    ![Azure Resource Manager テンプレートを使用して HDInsight Spark クラスターを作成する](./media/hdinsight-apache-spark-jupyter-spark-sql/create-spark-cluster-in-hdinsight-using-azure-resource-manager-template.png "Azure Resource Manager テンプレートを使用して HDInsight で Spark クラスターを作成する")
 
     * **サブスクリプション**: このクラスター向けに Azure サブスクリプションを選択します。
     * **リソース グループ**: リソース グループを作成するか、既存のリソース グループを選択します。 リソース グループは、プロジェクトの Azure リソースを管理するために使用されます。
@@ -61,19 +64,19 @@ HDInsight で [Apache Spark](hdinsight-apache-spark-overview.md) クラスター
 >
 >
 
-## <a name="run-a-spark-sql-query"></a>Spark SQL クエリの実行
+## <a name="run-an-interactive-spark-sql-query"></a>対話型の Spark SQL クエリの実行
 
-このセクションでは、Jupyter Notebook を使用して、Spark クラスターに対して Spark SQL クエリを実行します。 HDInsight の Spark クラスターには、Jupyter Notebook で使用できる 3 つのカーネルが用意されています。 次のとおりです。
+このセクションでは、Jupyter Notebook を使用して、先ほど作成した Spark クラスターに対して対話型の Spark SQL クエリを実行します。 HDInsight の Spark クラスターには、Jupyter Notebook で使用できる 3 つのカーネルが用意されています。 次のとおりです。
 
 * **PySpark** (Python で記述されたアプリケーション用)
 * **PySpark3** (Python3 で記述されたアプリケーション用)
 * **Spark** (Scala で記述されたアプリケーション用)
 
-この記事では、**PySpark** カーネルを使用します。 これらのカーネルの詳細については、[HDInsight での Apache Spark クラスターと Jupyter Notebook カーネルの使用](hdinsight-apache-spark-jupyter-notebook-kernels.md)に関する記事を参照してください。 PySpark カーネルを使用した場合の主な利点のいくつかを次に示します。
+この記事では、対話型の Spark SQL クエリを実行する Notebook で **PySpark** カーネルを使用します。 これらのカーネルの詳細については、[HDInsight での Apache Spark クラスターと Jupyter Notebook カーネルの使用](hdinsight-apache-spark-jupyter-notebook-kernels.md)に関する記事を参照してください。 PySpark カーネルを使用した場合の主な利点のいくつかを次に示します。
 
 * Spark と Hive のコンテキストが自動的に設定されます。
-* セル マジック (`%%sql` など) を使用すると、コード スニペットを付けずに SQL または Hive クエリが直接実行されます。
-* SQL または Hive クエリの出力は、自動的に視覚化されます。
+* セル マジック (`%%sql` など) を使用すると、コード スニペットを付けずに対話型の SQL または Hive クエリが直接実行されます。
+* 対話型のクエリの出力は、自動的に視覚化されます。
 
 ### <a name="create-jupyter-notebook-with-pyspark-kernel"></a>PySpark カーネルを使用した Jupyter Notebook の作成
 
@@ -85,23 +88,23 @@ HDInsight で [Apache Spark](hdinsight-apache-spark-overview.md) クラスター
 
 3. **クイック リンク**で **[クラスター ダッシュボード]** をクリックし、**[Jupyter Notebook]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。
 
-   ![HDInsight クラスター ダッシュボード](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-azure-portal-cluster-dashboards.png "HDInsight クラスター ダッシュボード")
+   ![Jupyter Notebook を開いて対話型の Spark SQL クエリを実行する](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Jupyter Notebook を開いて対話型の Spark SQL クエリを実行する")
 
    > [!NOTE]
-   > ブラウザーで次の URL を開き、クラスターの Jupyter Notebook にアクセスすることもできます。 **CLUSTERNAME** をクラスターの名前に置き換えます。
+   > ブラウザーで次の URL を開くことで、クラスターの Jupyter Notebook にアクセスすることもできます。 **CLUSTERNAME** をクラスターの名前に置き換えます。
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
    >
    >
 3. Notebook を作成します。 **[新規]** をクリックし、**[PySpark]** をクリックします。
 
-   ![Jupyter Notebook の作成](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.note.jupyter.createnotebook.png "Jupyter Notebook の作成")
+   ![対話型の Spark SQL クエリを実行する Jupyter Notebook を作成する](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-Spark-SQL-query.png "対話型の Spark SQL クエリを実行する Jupyter Notebook を作成する")
 
    Untitled(Untitled.pynb) という名前の新しい Notebook が作成されて開かれます。
 
 4. 上部の Notebook 名をクリックし、目的のわかりやすい名前を入力します。
 
-    ![Notebook の名前を指定](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.note.jupyter.notebook.name.png "Notebook の名前を指定")
+    ![対話型の Spark クエリを実行する Jupter Notebook に名前を指定する](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-jupyter-notebook-name.png "対話型の Spark クエリを実行する Jupter Notebook に名前を指定する")
 
 5. 次のコードを空のセルに貼り付け、**Shift + Enter** キーを押してコードを実行します。 このコードにより、このシナリオに必要な種類がインポートされます。
 
@@ -109,9 +112,9 @@ HDInsight で [Apache Spark](hdinsight-apache-spark-overview.md) クラスター
 
     PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。 最初のコード セルを実行すると、Spark コンテキストと Hive コンテキストが自動的に作成されます。
 
-    ![Jupyter Notebook ジョブのステータス](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.jupyter.job.status.png "Jupyter Notebook ジョブのステータス")
+    ![対話型の Spark SQL クエリの状態](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-interactive-spark-query-status.png "対話型の Spark SQL クエリの状態")
 
-    Jupyter でジョブを実行するたびに、Web ブラウザー ウィンドウのタイトルに **[(ビジー)]** ステータスと Notebook のタイトルが表示されます。 また、右上隅にある **PySpark** というテキストの横に塗りつぶされた円も表示されます。 ジョブが完了すると、白抜きの円に変化します。
+    Jupyter で対話型のクエリを実行するたびに、Web ブラウザー ウィンドウのタイトルに **[(ビジー)]** ステータスと Notebook のタイトルが表示されます。 また、右上隅にある **PySpark** というテキストの横に塗りつぶされた円も表示されます。 ジョブが完了すると、白抜きの円に変化します。
 
 6. 次のコードを実行してサンプル データセットを一時テーブル (**hvac**) として登録します。
 
@@ -132,32 +135,29 @@ HDInsight で [Apache Spark](hdinsight-apache-spark-overview.md) クラスター
 
     HDInsight の Spark クラスターにはサンプル データ ファイル **hvac.csv** が付属しています。このファイルは **\HdiSamples\HdiSamples\SensorSampleData\hvac** にあります。
 
-7. データを照会するには、次のコードを実行します。
+7. そのデータに対して対話型のクエリを実行するには、次のコードを使用します。
 
         %%sql
         SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"
 
-   PySpark カーネルを使用しているため、`%%sql` マジックを使用して、作成した一時テーブル **hvac** に対して SQL クエリを直接実行できます。 `%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、[Spark HDInsight クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)に関する記事を参照してください。
+   PySpark カーネルを使用しているため、`%%sql` マジックを使用して、作成した一時テーブル **hvac** に対して対話型の SQL クエリを直接実行できます。 `%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、[Spark HDInsight クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)に関する記事を参照してください。
 
    次の表形式の出力が既定で表示されます。
 
-     ![クエリ結果のテーブル出力](./media/hdinsight-apache-spark-jupyter-spark-sql/tabular.output.png "クエリ結果のテーブル出力")
+     ![対話型の Spark クエリの表形式の出力](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-interactive-spark-query-result.png "対話型の Spark クエリの表形式の出力")
 
     他の視覚化でも結果を表示できます。 たとえば、ある出力の領域グラフは次のようになります。
 
-    ![クエリ結果の領域グラフ](./media/hdinsight-apache-spark-jupyter-spark-sql/area.output.png "クエリ結果の領域グラフ")
+    ![対話型の Spark クエリ結果の領域グラフ](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-interactive-spark-query-result-area-chart.png "対話型の Spark クエリ結果の領域グラフ")
 
 9. アプリケーションの実行後は、Notebook をシャットダウンしてクラスター リソースを解放します。 そのためには、Notebook の **[ファイル]** メニューの **[Close and Halt]** (閉じて停止) をクリックします。
 
-## <a name="troubleshoot"></a>トラブルシューティング
-
-ここでは、HDInsight クラスターを使用しているときに遭遇する可能性のある一般的な問題を取り上げます。
-
-### <a name="access-control-requirements"></a>アクセス制御の要件
-HDInsight クラスターの作成で問題が発生した場合は、[アクセス制御の要件](hdinsight-administer-use-portal-linux.md#create-clusters)に関するページを参照してください。
-
 ## <a name="delete-the-cluster"></a>クラスターを削除する
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+
+## <a name="troubleshoot-access-control"></a>アクセス制御のトラブルシューティング
+
+HDInsight クラスターの作成で問題が発生した場合は、[アクセス制御の要件](hdinsight-administer-use-portal-linux.md#create-clusters)に関するページを参照してください。
 
 ## <a name="see-also"></a>関連項目
 * [概要: Azure HDInsight での Apache Spark](hdinsight-apache-spark-overview.md)

@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 05/04/2017
 ms.author: curtand;jeffsta
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 77d857e8d692f8bf47e00d655071a825533290b6
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: b1ea25a3ec4c10d1821ea876055b15e38d269432
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -58,7 +60,7 @@ ms.openlocfilehash: 77d857e8d692f8bf47e00d655071a825533290b6
 Azure AD ディレクトリ内にこのようなリソースがある場合は、カスタム ドメイン名を削除する前に、そのリソースを変更するか削除する必要があります。
 
 ## <a name="use-powershell-or-graph-api-to-manage-domain-names"></a>PowerShell または Graph API を使用してドメイン名を管理する
-Azure Active Directory のドメイン名に関する管理作業の多くは、Microsoft PowerShell を使用するか、プログラムから Azure AD Graph API (パブリック プレビュー中) を使用して行うこともできます。
+Azure Active Directory のドメイン名に関する管理作業の多くは、Microsoft PowerShell を使用するか、プログラムから Azure AD Graph API を使用して行うこともできます。
 
 * [PowerShell を使用して Azure AD のドメイン名を管理する](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
 * [Graph API を使用して Azure AD のドメイン名を管理する](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
@@ -66,10 +68,5 @@ Azure Active Directory のドメイン名に関する管理作業の多くは、
 ## <a name="next-steps"></a>次のステップ
 * [Azure AD のドメイン名について確認する](active-directory-add-domain-concepts.md)
 * [カスタム ドメイン名を管理する](active-directory-add-manage-domain-names.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 03/17/2017
 ms.author: cfowler
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 9bd8db6c765f8f702a6e4ea5b17507269d3310d1
-ms.lasthandoff: 04/26/2017
-
+ms.custom: mvc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: df34052acc401fb5bb1e3f808c649c0ea0bcf33c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 ---
 # <a name="create-a-python-application-on-web-app"></a>Web アプリでの Python アプリケーションの作成
@@ -27,9 +28,9 @@ ms.lasthandoff: 04/26/2017
 
 ![hello-world-in-browser](media/app-service-web-get-started-python/hello-world-in-browser.png)
 
-以下の手順は、Mac、Windows、または Linux コンピューターを使用して実行することができます。 以下の手順全体を、約 5 分で完了できます。
+以下の手順は、Mac、Windows、または Linux コンピューターを使用して実行できます。 以下の手順全体を、約 5 分で完了できます。
 
-## <a name="before-you-begin"></a>開始する前に
+## <a name="prerequisites"></a>前提条件
 
 このサンプルを実行する前に、前提条件となる以下をローカルにインストールします。
 
@@ -107,19 +108,11 @@ az group create --name myResourceGroup --location westeurope
 
 ## <a name="create-an-azure-app-service"></a>Azure App Service の作成
 
-[az appservice plan create](/cli/azure/appservice/plan#create) コマンドで、Linux ベースの App Service プランを作成します。
+[az appservice plan create](/cli/azure/appservice/plan#create) コマンドで、App Service プランを作成します。
 
-> [!NOTE]
-> App Service プランは、アプリをホストするために使用される物理リソースのコレクションを表しています。 App Service プランに割り当てられたすべてのアプリケーションは、プランで定義されたリソースを共有します。これにより、複数のアプリをホストする際にコストを節約できます。
->
-> App Service プランには、次の定義があります。
-> * リージョン (北ヨーロッパ、米国東部、東南アジア)
-> * インスタンス サイズ (Small、Medium、Large)
-> * スケール カウント (インスタンス数 1、2、3 など)
-> * SKU (Free、Shared、Basic、Standard、Premium)
->
+[!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-次の例では、**Free** 価格レベルを使用して、Linux ワーカー上に `quickStartPlan` という名前の App Service プランを作成します。
+次の例では、**Free** 価格レベルを使用して、`quickStartPlan` という名前の App Service プランを作成します。
 
 ```azurecli
 az appservice plan create --name quickStartPlan --resource-group myResourceGroup --sku FREE
@@ -152,7 +145,7 @@ App Service プランが作成されると、Azure CLI によって、次の例�
 
 ## <a name="create-a-web-app"></a>Web アプリを作成する
 
-App Service プランは作成したので、`quickStartPlan` App Service プラン内に Web アプリを作成します。 Web アプリにより、コードをデプロイするためのホスト領域が取得され、デプロイされたアプリケーションを表示するための URL が提供されます。 Web アプリを作成するには、[az appservice web create](/cli/azure/appservice/web#create) コマンドを使用します。
+App Service プランを作成したので、`quickStartPlan` App Service プラン内に Web アプリを作成します。 Web アプリにより、コードをデプロイするためのホスト領域が取得され、デプロイされたアプリケーションを表示するための URL が提供されます。 Web アプリを作成するには、[az appservice web create](/cli/azure/appservice/web#create) コマンドを使用します。
 
 次のコマンドで、`<app_name>` プレースホルダーを独自の一意のアプリ名に置き換えてください。 `<app_name>` は、Web アプリの既定の DNS サイトとして使用されます。そのため、名前は Azure のすべてのアプリ間で一意である必要があります。 後で、Web アプリをユーザーに公開する前に、任意のカスタム DNS エントリを Web アプリにマップできます。
 
@@ -290,7 +283,7 @@ http://<app_name>.azurewebsites.net
 
 今回は、Azure App Service Web アプリとして実行されている Python コードを使用して、Hello World メッセージを表示するページが実行されています。
 
-![]()
+![hello-world-in-browser](media/app-service-web-get-started-python/hello-world-in-browser.png)
 
 ## <a name="updating-and-deploying-the-code"></a>コードの更新とデプロイ
 
@@ -309,9 +302,9 @@ git push azure master
 
 デプロイが完了したら、「アプリの参照」の手順で開いたブラウザー ウィンドウに戻り、表示を更新します。
 
-![hello-world-in-browser](media/app-service-web-get-started-python/hello-world-in-browser.png)
+![hello-azure-in-browser](media/app-service-web-get-started-python/hello-azure-in-browser.png)
 
-## <a name="manage-your-new-azure-web-app"></a>新しい Azure Web アプリの管理
+## <a name="manage-your-new-azure-web-app"></a>新しい Azure Web アプリを管理する
 
 Azure Portal に移動し、作成したばかりの Web アプリを表示します。
 
@@ -319,13 +312,13 @@ Azure Portal に移動し、作成したばかりの Web アプリを表示し�
 
 左側のメニューで **[App Services (App Services)]** をクリックした後、Azure Web アプリの名前をクリックします。
 
-![Azure Web アプリへのポータル ナビゲーション](./media/app-service-web-get-started-python/Python-docs-hello-world-app-service-list.png)
+![Azure Web アプリへのポータル ナビゲーション](./media/app-service-web-get-started-python/app-service-list.png)
 
 Web アプリの "_ブレード_" (水平方向に開かれるポータル ページ) が表示されます。
 
 既定では、Web アプリのブレードは **[概要]** ページを表示します。 このページでは、アプリの動作状態を見ることができます。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクも行うことができます。 ブレードの左側にあるタブは、開くことができるさまざまな構成ページを示しています。
 
-![Azure Portal の App Service ブレード](media/app-service-web-get-started-python/Python-docs-hello-world-app-service-detail.png)
+![Azure Portal の App Service ブレード](media/app-service-web-get-started-python/app-service-detail.png)
 
 ブレードのこれらのタブは、Web アプリに追加することができるさまざまな優れた機能を示しています。 次の一覧では、ほんの一部の例を示しています。
 
@@ -341,4 +334,6 @@ Web アプリの "_ブレード_" (水平方向に開かれるポータル ペ�
 
 ## <a name="next-steps"></a>次のステップ
 
-事前作成されている [Web Apps の CLI スクリプト](app-service-cli-samples.md)を調べます。
+> [!div class="nextstepaction"]
+> [Web アプリの CLI スクリプト サンプルを見る](app-service-cli-samples.md)
+

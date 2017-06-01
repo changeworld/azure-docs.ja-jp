@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/10/2017
+ms.date: 5/9/2017
 ms.author: vturecek
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: c78f07cb780d5e7cd758fb782fc6ba37946f9537
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 3e61ad19df34c6a57da43e26bd2ab9d7ecdbf98e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -50,8 +51,28 @@ Service Fabric では、ネーム サービスという検出および解決サ�
 * **接続**: 取得したエンドポイントでサービスが使用するプロトコルを介してサービスに接続します。
 * **再試行**: 接続試行はさまざまな理由で失敗する可能性があります。たとえば、エンドポイント アドレスの前回の解決時からサービスが移動している場合などに失敗します。 このような場合、前の解決と接続の手順を再試行する必要があり、このサイクルは接続が確立されるまで繰り返されます。
 
+## <a name="connecting-to-other-services"></a>その他のサービスに接続する
+クラスター内の各ノードは同じローカル ネットワーク上にあるため、クラスター内で相互接続しているサービスは、通常、他のサービスのエンドポイントに直接アクセスできます。 サービス間の接続を簡単にするために、Service Fabric では、Naming Service を使用する追加サービスを提供します。 DNS サービスとリバース プロキシ サービスです。
+
+
+### <a name="dns-service"></a>DNS サービス
+コンテナー化されたサービスなど多くのサービスには既存の URL 名が含まれるため、標準の DNS プロトコル (Naming Service プロトコルではなく) を使用してこれらを解決できます。これは特にアプリケーションの移行 (リフトアンドシフト) シナリオで便利です。 まさにこれが、DNS サービスの役割です。 DNS 名をサービス名にマップして、エンドポイントの IP アドレスを解決できます。 
+
+次の図に示すように、Service Fabric クラスターで実行されている DNS サービスが DNS 名をサービス名にマップすると、Naming Service によって解決されて、接続するエンドポイントのアドレスが返されます。 サービスの DNS 名は、作成時に提供されます。 
+
+![service endpoints][9]
+
+DNS サービスの使用方法の詳細については、「[DNS service in Azure Service Fabric (Azure Service Fabric での DNS サービス)](service-fabric-dnsservice.md)」をご覧ください。
+
+### <a name="reverse-proxy-service"></a>リバース プロキシ サービス
+リバース プロキシは、HTTPS を含む HTTP エンドポイントを公開するクラスター内のサービスを処理します。 リバース プロキシは、特定の URI 形式を持つことにより、他のサービスとそのメソッドの呼び出しを大幅に簡略化します。Naming Serivce を使用して、1 つのサービスが他のサービスと通信するのに必要となる、解決、接続、再試行の各ステップを処理します。 言い換えると、他のサービスを呼び出すとき、それを 1 つの URL を呼び出すのと同様にシンプルにして、Naming Service が見えないようにしています。
+
+![service endpoints][10]
+
+リバース プロキシ サービスの使用方法の詳細については、「[Azure Service Fabric のリバース プロキシ](service-fabric-reverseproxy.md)」をご覧ください。
+
 ## <a name="connections-from-external-clients"></a>外部クライアントからの接続
-クラスター内の各ノードは同じローカル ネットワーク上にあることが多いため、クラスター内で相互接続しているサービスは、通常は他のサービスのエンドポイントに直接アクセスできます。 ただし、一部の環境では、限られた組み合わせのポートを介して外部からの受信トラフィックをルーティングするロード バランサーの背後にクラスターが配置されている場合があります。 そのような場合もサービスが互いに通信し、ネーム サービスを使用してアドレスを解決することはできますが、外部クライアントがサービスに接続できるようにするには、追加の手順を実行する必要があります。
+クラスター内の各ノードは同じローカル ネットワーク上にあるため、クラスター内で相互接続しているサービスは、通常、他のサービスのエンドポイントに直接アクセスできます。 ただし、一部の環境では、限られた組み合わせのポートを介して外部からの受信トラフィックをルーティングするロード バランサーの背後にクラスターが配置されている場合があります。 そのような場合もサービスが互いに通信し、ネーム サービスを使用してアドレスを解決することはできますが、外部クライアントがサービスに接続できるようにするには、追加の手順を実行する必要があります。
 
 ## <a name="service-fabric-in-azure"></a>Azure の Service Fabric
 Azure の Service Fabric クラスターは、Azure Load Balancer の背後に配置されています。 クラスターへのすべての外部トラフィックは、ロード バランサーを通過する必要があります。 ロード バランサーは、指定されたポートの受信トラフィックを、同じポートが開いているランダムな *ノード* に自動的に転送します。 Azure Load Balancer が把握しているのは*ノード*上の開いているポートのみであり、個々の*サービス*によって開放されているポートについての情報は持ちません。
@@ -152,7 +173,7 @@ Azure の Service Fabric クラスターは、Azure Load Balancer の背後に�
 
 Azure Load Balancer とプローブが把握しているのは*ノード*についての情報のみであり、ノードで実行されている*サービス*については把握していないことを覚えておいてください。 Azure Load Balancer は、プローブに応答するノードに対して常にトラフィックを送信します。そのため、プローブに応答できるノードでサービスを利用可能にする必要があります。
 
-## <a name="built-in-communication-api-options"></a>組み込みの通信 API オプション
+## <a name="reliable-services-built-in-communication-api-options"></a>Reliable Services: 組み込みの通信 API オプション
 Reliable Services フレームワークには、事前に構築されたいくつかの通信オプションが用意されています。 最適なオプションの決定は、プログラミング モデル、通信フレームワーク、およびサービスが作成されているプログラミング言語に応じて異なります。
 
 * **特定のプロトコルがない場合**: 特定の通信フレームワークを選択していないものの、すぐに利用できるようにすることが必要という場合、最適なオプションは[サービスのリモート処理](service-fabric-reliable-services-communication-remoting.md)です。これにより、Reliable Services と Reliable Actors 向けの厳密に型指定されたリモート プロシージャ コールが可能になります。 これは、サービスの通信を開始する最も簡単ですばやい方法です。 サービスのリモート処理では、サービス アドレスの解決、接続、再試行、エラー処理を扱います。 これは、C# と Java のアプリケーションの両方で利用できます。
@@ -172,4 +193,6 @@ Reliable Services フレームワークには、事前に構築されたいく�
 [5]: ./media/service-fabric-connect-and-communicate-with-services/loadbalancerport.png
 [7]: ./media/service-fabric-connect-and-communicate-with-services/distributedservices.png
 [8]: ./media/service-fabric-connect-and-communicate-with-services/loadbalancerprobe.png
+[9]: ./media/service-fabric-connect-and-communicate-with-services/dns.png
+[10]: ./media/service-fabric-reverseproxy/internal-communication.png
 

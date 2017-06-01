@@ -3,7 +3,7 @@ title: "SQL Data Warehouse へのスキーマの移行 | Microsoft Docs"
 description: "ソリューション開発のための Azure SQL Data Warehouse へのスキーマの移行に関するヒント。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: jrowlandjones
+author: sqlmojo
 manager: jhubbard
 editor: 
 ms.assetid: 538b60c9-a07f-49bf-9ea3-1082ed6699fb
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: migrate
 ms.date: 10/31/2016
-ms.author: jrj;barbkess
-translationtype: Human Translation
+ms.author: joeyong;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 0630f43642a0be98c470032d32b74ca14ee144e5
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/03/2017
 
 

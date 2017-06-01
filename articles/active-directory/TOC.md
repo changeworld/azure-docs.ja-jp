@@ -1,8 +1,9 @@
 # 概要
 ## [Azure Active Directory とは](active-directory-whatis.md)
 ## [エディションの選択](active-directory-editions.md)
-
 ## [Azure の ID 管理について](identity-fundamentals.md)
+## [Azure ID ソリューションについて](understand-azure-identity-solutions.md)
+## [Azure ポータルのエクスペリエンスをプレビューします。](active-directory-preview-explainer.md)
 
 # 作業開始
 ## [Azure AD テナントを取得する](active-directory-howto-tenant.md)
@@ -89,18 +90,19 @@
 ### トラブルシューティング
 #### [見つからない監査データ](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [ダウンロードに見つからないデータ](active-directory-reporting-troubleshoot-missing-data-download.md)
-###    プログラムによるアクセス
+###    [プログラムによるアクセス](active-directory-reporting-api-getting-started-azure-portal.md)
 #### [監査のリファレンス](active-directory-reporting-api-audit-reference.md)
-#### [監査のサンプル](active-directory-reporting-api-audit-samples.md)
-#### [データの取得](active-directory-reporting-api-with-certificates.md)
-#### [前提条件](active-directory-reporting-api-prerequisites.md)
 #### [サインインの参照](active-directory-reporting-api-sign-in-activity-reference.md)
+#### [前提条件](active-directory-reporting-api-prerequisites-azure-portal.md)
+#### [監査のサンプル](active-directory-reporting-api-audit-samples.md)
 #### [サインインのサンプル](active-directory-reporting-api-sign-in-activity-samples.md)
+#### [データの取得](active-directory-reporting-api-with-certificates.md)
 ### [クラシック ポータル](active-directory-view-access-usage-reports.md)
 #### [Azure AD レポート](active-directory-reporting-getting-started.md)
 #### [レポート ガイド](active-directory-reporting-guide.md)
 #### [既知のネットワーク](active-directory-known-networks.md)
 #### [API](active-directory-reporting-api-getting-started.md)
+##### [前提条件](active-directory-reporting-api-prerequisites.md)
 #### [イベントを監査する](active-directory-reporting-audit-events.md)
 #### [待機時間](active-directory-reporting-latencies.md)
 #### [Notifications](active-directory-reporting-notifications.md)
@@ -113,7 +115,7 @@
 ##### [不明なソース](active-directory-reporting-sign-ins-from-unknown-sources.md)
 ##### [異常なサインイン](active-directory-reporting-users-with-anomalous-sign-in-activity.md)
 
-## [パスワードの管理](active-directory-passwords.md)
+## [パスワードの管理](active-directory-passwords-overview.md)
 ### ユーザー ドキュメント
 #### [パスワードのリセットまたは変更](active-directory-passwords-update-your-own-password.md)
 #### [パスワードのベスト プラクティス](active-directory-secure-passwords.md)
@@ -171,11 +173,14 @@
 ##### [KCD を使用した SSO](active-directory-application-proxy-sso-using-kcd.md)
 ##### [ヘッダーを使用した SSO](application-proxy-ping-access.md)
 ##### [パスワード保管を使用した SSO](application-proxy-sso-azure-portal.md)
-#### ベスト プラクティスについて
+#### 概念
 ##### [コネクタ](application-proxy-understand-connectors.md)
 ##### [セキュリティ](application-proxy-security-considerations.md)
 ##### [ネットワーク](application-proxy-network-topology-considerations.md)
-#### 
+
+
+##### [TMG または UAG からのアップグレード](application-proxy-transition-from-uag-tmg.md)
+
 #### 詳細な構成
 ##### [異なるネットワークに発行する](active-directory-application-proxy-connectors-azure-portal.md)
 ##### [プロキシ サーバー](application-proxy-working-with-proxy-servers.md)
@@ -186,7 +191,6 @@
 #### 発行に関するチュートリアル
 ##### [リモート デスクトップ](application-proxy-publish-remote-desktop.md)
 ##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
-##### [Microsoft Forefront](application-proxy-transition-from-uag-tmg.md)
 #### [トラブルシューティング](active-directory-application-proxy-troubleshoot.md)
 #### クラシック ポータルの使用
 ##### [コネクタをダウンロードする](application-proxy-enable-classic-portal.md)
@@ -201,12 +205,6 @@
 #### [ユーザーを削除する](active-directory-coreapps-remove-assignment-azure-portal.md)
 #### [すべてのアプリを表示する](active-directory-coreapps-view-azure-portal.md)
 #### [ユーザー アカウントのプロビジョニング管理](active-directory-enterprise-apps-manage-provisioning.md)
-
-### 開発
-#### [ユーザーを割り当てる](active-directory-applications-guiding-developers-assigning-users.md)
-#### [グループを割り当てる](active-directory-applications-guiding-developers-assigning-groups.md)
-#### [必要な割り当て](active-directory-applications-guiding-developers-requiring-user-assignment.md)
-#### [LoB アプリの開発](active-directory-applications-guiding-developers-for-lob-applications.md)
 
 ### [アプリへのアクセスを管理する](active-directory-managing-access-to-apps.md)
 #### [セルフ サービス アクセス](active-directory-self-service-application-access.md)
@@ -226,7 +224,7 @@
 ##### [アクセス パネル](active-directory-application-access-panel-content-map.md)
 ##### [アプリケーション プロキシ](active-directory-application-proxy-content-map.md)
 ##### [条件付きアクセス](active-directory-application-conditional-access-content-map.md)
-
+### [アプリの開発](active-directory-applications-guiding-developers-for-lob-applications.md)
 ### [ドキュメント ライブラリ](active-directory-apps-index.md)
 
 ## ディレクトリの管理
@@ -294,11 +292,13 @@
 ##### [リソース別](role-based-access-control-configure.md)
 #### [組み込みのロール](role-based-access-built-in-roles.md)
 #### [カスタム ロール](role-based-access-control-custom-roles.md)
+#### [内部ユーザーと外部ユーザーのカスタム ロールの割り当て](role-based-access-control-create-custom-roles-for-internal-external-users.md)
 #### [レポート](role-based-access-control-access-change-history-report.md)
 #### その他のロール管理方法
 ##### [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
 ##### [PowerShell](role-based-access-control-manage-access-powershell.md)
-##### [REST](role-based-access-control-manage-access-rest.md)
+##### [REST ()](role-based-access-control-manage-access-rest.md)
+#### [テナント管理者のアクセス権の昇格](role-based-access-control-tenant-admin-access.md)
 #### [トラブルシューティング](role-based-access-control-troubleshooting.md)
 #### [リソース プロバイダー操作](role-based-access-control-resource-provider-operations.md)
 ### [トークンの有効期間を構成する](active-directory-configurable-token-lifetimes.md)
@@ -306,12 +306,13 @@
 ## ID をセキュリティで保護する
 ### [条件付きアクセス](active-directory-conditional-access-azure-portal.md)
 #### [作業開始](active-directory-conditional-access-azure-portal-get-started.md)
+#### [ベスト プラクティス](active-directory-conditional-access-best-practices.md)
+#### [テクニカル リファレンス](active-directory-conditional-access-technical-reference.md)
 #### [サポート対象アプリ](active-directory-conditional-access-supported-apps.md)
 #### [デバイス ポリシーについて](active-directory-conditional-access-device-policies.md)
 #### [接続されているアプリに対するアクセスのセットアップ](active-directory-conditional-access-policy-connected-applications.md)
-#### [テクニカル リファレンス](active-directory-conditional-access-technical-reference.md)
-#### [FAQ](active-directory-conditional-faqs.md)
 #### [修復](active-directory-conditional-access-device-remediation.md)
+#### [FAQ](active-directory-conditional-faqs.md)
 #### [クラシック ポータル](active-directory-conditional-access.md)
 ##### [作業開始](active-directory-conditional-access-azuread-connected-apps.md)
 
@@ -332,6 +333,7 @@
 #### [サインイン エクスペリエンス](active-directory-identityprotection-flows.md)
 #### [リスク イベントをシミュレートする](active-directory-identityprotection-playbook.md)
 #### [ユーザーのブロックを解除する](active-directory-identityprotection-unblock-howto.md)
+#### [FAQ](active-directory-identity-protection-faqs.md)
 #### [用語集](active-directory-identityprotection-glossary.md)
 #### [Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
 ### [Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)

@@ -15,10 +15,11 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: jonatul
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: f15654f621bafb2617bdb456bbda0233db656be5
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 5818986c939c464a364c52ab31225e15130ab30e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/15/2017
 
 ---
 
@@ -66,9 +67,11 @@ CNAME レコード セットは、同じ名前を持つ他のレコード セッ
 
 ### <a name="ns-records"></a>NS レコード
 
-NS レコード セットは各ゾーンの頂点に自動的に作成され (名前は "@")、ゾーンが削除されると自動的に削除されます (個別に削除することはできません)。  このレコード セットの TTL は変更できますが、レコードに変更を加えることはできません。レコードは、ゾーンに割り当てられている Azure DNS ネーム サーバーを参照するよう事前に構成されています。
+ゾーンの頂点の NS レコード セット (名前は "@") は各 DNS ゾーンで自動的に作成され、ゾーンが削除されると自動的に削除されます (個別に削除することはできません)。
 
-ゾーンの頂点を除いて、ゾーン内で NS レコードを作成および削除できます。  この操作により、子ゾーンを構成できます (詳細については、「[Azure DNS サブドメインの委任](dns-domain-delegation.md)」を参照してください)。
+このレコード セットには、ゾーンに割り当てられている Azure DNS ネーム サーバーの名前が含まれています。 複数の DNS プロバイダーによる共同ホスト ドメインをサポートする目的で、この NS レコード セットにネーム サーバーを追加できます。 このレコード セットの TTL とメタデータを変更することもできます。 ただし、あらかじめ入力されている Azure DNS ネーム サーバーを削除または変更することはできません。 
+
+これは、ゾーンの頂点にある NS レコード セットにのみ適用されます。 (子ゾーンの委任に使用される) ゾーンの他の NS レコード セットは制約なしで作成、変更、削除できます。
 
 ### <a name="soa-records"></a>SOA レコード
 

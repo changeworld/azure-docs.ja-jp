@@ -12,143 +12,247 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/17/2017
+ms.date: 05/12/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 8ecf7c058b90fd18e41fd4e1cbc29e22dfeb0883
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: a8e35456af8c9f2cf1bf9e9c364e33641f29a477
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/15/2017
 
 
 ---
-# <a name="deploy-multiple-instances-of-resources-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでの複数のリソース インスタンスのデプロイ
+# <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでリソースまたはプロパティの複数のインスタンスをデプロイする
 このトピックでは、Azure リソース マネージャー テンプレートで反復処理して、リソースの複数のインスタンスを作成する方法について説明します。
 
-## <a name="copy-and-copyindex"></a>copy および copyIndex
+## <a name="resource-iteration"></a>リソースの反復
+あるリソース タイプのインスタンスを複数作成するには、そのリソース タイプに `copy` 要素を追加します。 copy 要素には、そのループの反復回数と名前を指定します。 数値は正の整数で、800 を超えることはできません。 リソース マネージャーは、並列でリソースを作成します。 そのため、作成される順序は保証されません。 反復処理されるリソースを順番に作成する場合は、「[シリアル コピー](#serial-copy)」を参照してください。 
+
 複数回作成されるリソースは、次の形式を取ります。
 
 ```json
-"resources": [ 
-  { 
-      "name": "[concat('examplecopy-', copyIndex())", 
-      "type": "Microsoft.Web/sites", 
-      "location": "East US", 
-      "apiVersion": "2015-08-01",
-      "copy": { 
-         "name": "websitescopy", 
-         "count": "[parameters('count')]" 
-      }, 
-      "properties": {
-          "serverFarmId": "hostingPlanName"
-      } 
-  } 
-]
-```
-
-反復回数が copy オブジェクトで指定されていることを確認します。
-
-```json
-"copy": { 
-    "name": "websitescopy", 
-    "count": "[parameters('count')]" 
-} 
-```
-
-数値は正の整数で、800 を超えることはできません。
-
-各リソースの名前には、現在のループの反復を返す `copyIndex()` 関数が含まれます。
-
-```json
-"name": "[concat('examplecopy-', copyIndex())]",
-```
-
-次の 3 つの web サイトをデプロイする場合に命名されます。
-
-* examplecopy-0
-* examplecopy-1
-* examplecopy-2.
-
-インデックス値をオフセットするには、`copyIndex(1)` のような copyIndex() 関数に値を渡します。 実行する反復処理の数は copy 要素で指定されたままですが、copyIndex の値が指定された値でオフセットされます。 そのため前の例と同じテンプレートを使用しても、 copyIndex(1) を指定すると、次の名前の 3 つの Web サイトがデプロイされます。
-
-* examplecopy-1
-* examplecopy-2
-* examplecopy-3
-
-リソース マネージャーは、並列でリソースを作成します。 そのため、作成される順序は保証されません。 連続して繰り返されるリソースを作成する場合は、[Azure Resource Manager テンプレートでの連続ループ](resource-manager-sequential-loop.md)に関するページを参照してください。 
-
-copy オブジェクトは、最上位のリソースにのみ適用できます。 リソースの種類のプロパティや子リソースには適用できません。 次の擬似コードの例で、copy を適用できる場所を示します。
-
-```json
-"resources": [
-  {
-    "type": "{provider-namespace-and-type}",
-    "name": "parentResource",
-    "copy": {  
-      /* Yes, copy can be applied here */
-    },
-    "properties": {
-      "exampleProperty": {
-        /* No, copy cannot be applied here */
-      }
-    },
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
     "resources": [
-      {
-        "type": "{provider-type}",
-        "name": "childResource",
-        /* No, copy cannot be applied here. The resource must be promoted to top-level. */ 
-      }
-    ]
-  }
-] 
+        {
+            "apiVersion": "2016-01-01",
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {},
+            "copy": {
+                "name": "storagecopy",
+                "count": 3
+            }
+        }
+    ],
+    "outputs": {}
+}
 ```
 
-子リソースを反復処理するには、[子リソースの複数インスタンス作成](#create-multiple-instances-of-a-child-resource)を参照してください。
+各リソースの名前には、現在のループの反復を返す `copyIndex()` 関数が含まれます。 `copyIndex()` は 0 から始まります。 次の例を見てください。
 
-copy をプロパティに適用することはできませんが、プロパティは、今までどおりそのプロパティが含まれるリソースの反復の一部です。 したがって、プロパティ内で copyIndex() を使用して値を指定することができます。 プロパティに複数の値を作成するには、[リソースタイプに複数プロパティのインスタンスを作成する](resource-manager-property-copy.md)を参照してください。
+```json
+"name": "[concat('storage', copyIndex())]",
+```
 
-## <a name="use-copy-with-array"></a>配列でのコピーの使用
-コピー操作は、配列内の各要素に対して反復処理するため、配列で作業するときに便利です。 次の 3 つの Web サイトをデプロイするには:
+この場合、以下の名前が作成されます。
 
-* examplecopy-Contoso
-* examplecopy-Fabrikam
-* examplecopy-Coho
+* storage0
+* storage1
+* storage2
 
-次のテンプレートを使用します。
+インデックス値をオフセットするには、copyIndex() 関数に値を渡します。 実行する反復処理の数は copy 要素で指定されたままですが、copyIndex の値が指定された値でオフセットされます。 次の例を見てください。
+
+```json
+"name": "[concat('storage', copyIndex(1))]",
+```
+
+この場合、以下の名前が作成されます。
+
+* storage1
+* storage2
+* storage3
+
+コピー操作は、配列内の各要素に対して反復処理するため、配列で作業するときに便利です。 配列で反復回数を指定するには `length` 関数を使います。また、配列における現在のインデックスを取得するには `copyIndex` を使います。 次の例を見てください。
 
 ```json
 "parameters": { 
   "org": { 
      "type": "array", 
      "defaultValue": [ 
-         "Contoso", 
-         "Fabrikam", 
-         "Coho" 
+         "contoso", 
+         "fabrikam", 
+         "coho" 
       ] 
   }
 }, 
 "resources": [ 
   { 
-      "name": "[concat('examplecopy-', parameters('org')[copyIndex()])]", 
-      "type": "Microsoft.Web/sites", 
-      "location": "East US", 
-      "apiVersion": "2015-08-01",
+      "name": "[concat('storage', parameters('org')[copyIndex()])]", 
       "copy": { 
-         "name": "websitescopy", 
+         "name": "storagecopy", 
          "count": "[length(parameters('org'))]" 
       }, 
-      "properties": {
-          "serverFarmId": "hostingPlanName"
-      } 
+      ...
   } 
 ]
 ```
 
-数の指定には、必ず `length` 関数を使用してください。 length 関数のパラメーターとして、配列を指定します。
+この場合、以下の名前が作成されます。
+
+* storagecontoso
+* storagefabrikam
+* storagecoho
+
+## <a name="serial-copy"></a>シリアル コピー
+
+copy 要素を使用して、あるリソース タイプのインスタンスを複数作成する場合、Resource Manager によって既定でそれらのインスタンスが並列的にデプロイされます。 しかし、リソースが順番にデプロイされるように指定したい場合もあります。 たとえば、運用環境を更新するとき、一度に特定の数だけ更新されるように更新時間をずらす必要がある場合があります。
+
+Resource Manager では、複数のインスタンスを順番にデプロイできるようにするプロパティを copy 要素に指定できます。 copy 要素で `mode` を **serial** に設定し、`batchSize` を一度にデプロイするインスタンスの数に設定します。 シリアル モードでは、Resource Manager はループ内で前のインスタンスへの依存関係を作成するので、前のバッチが完了するまで次のバッチは実行されません。
 
 ```json
 "copy": {
-    "name": "websitescopy",
-    "count": "[length(parameters('siteNames'))]"
+    "name": "iterator",
+    "count": "[parameters('numberToDeploy')]",
+    "mode": "serial",
+    "batchSize": 2
+},
+```
+
+mode プロパティでも **parallel** が既定値として使用されます。
+
+実際のリソースを作成せずにシリアル コピーをテストするには、空の入れ子になったテンプレートをデプロイする次のテンプレートを使用します。
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "numberToDeploy": {
+      "type": "int",
+      "minValue": 2,
+      "defaultValue": 5
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2015-01-01",
+      "type": "Microsoft.Resources/deployments",
+      "name": "[concat('loop-', copyIndex())]",
+      "copy": {
+        "name": "iterator",
+        "count": "[parameters('numberToDeploy')]",
+        "mode": "serial",
+        "batchSize": 1
+      },
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {},
+          "variables": {},
+          "resources": [],
+          "outputs": {
+          }
+        }
+      }
+    }
+  ],
+  "outputs": {
+  }
+}
+```
+
+デプロイ履歴で、入れ子になったデプロイが順番に処理されていることに注意してください。
+
+![シリアル デプロイ](./media/resource-group-create-multiple/serial-copy.png)
+
+より現実に即したシナリオでは、次の例のように、Linux VM の 2 つのインスタンスを、入れ子になったテンプレートから一度にデプロイします。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "adminUsername": {
+            "type": "string",
+            "metadata": {
+                "description": "User name for the Virtual Machine."
+            }
+        },
+        "adminPassword": {
+            "type": "securestring",
+            "metadata": {
+                "description": "Password for the Virtual Machine."
+            }
+        },
+        "dnsLabelPrefix": {
+            "type": "string",
+            "metadata": {
+                "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
+            }
+        },
+        "ubuntuOSVersion": {
+            "type": "string",
+            "defaultValue": "16.04.0-LTS",
+            "allowedValues": [
+                "12.04.5-LTS",
+                "14.04.5-LTS",
+                "15.10",
+                "16.04.0-LTS"
+            ],
+            "metadata": {
+                "description": "The Ubuntu version for the VM. This will pick a fully patched image of this given Ubuntu version."
+            }
+        }
+    },
+    "variables": {
+        "templatelink": "https://raw.githubusercontent.com/rjmax/Build2017/master/Act1.TemplateEnhancements/Chapter03.LinuxVM.json"
+    },
+    "resources": [
+        {
+            "apiVersion": "2015-01-01",
+            "name": "[concat('nestedDeployment',copyIndex())]",
+            "type": "Microsoft.Resources/deployments",
+            "copy": {
+                "name": "myCopySet",
+                "count": 4,
+                "mode": "serial",
+                "batchSize": 2
+            },
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('templatelink')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "adminUsername": {
+                        "value": "[parameters('adminUsername')]"
+                    },
+                    "adminPassword": {
+                        "value": "[parameters('adminPassword')]"
+                    },
+                    "dnsLabelPrefix": {
+                        "value": "[parameters('dnsLabelPrefix')]"
+                    },
+                    "ubuntuOSVersion": {
+                        "value": "[parameters('ubuntuOSVersion')]"
+                    },
+                    "index":{
+                        "value": "[copyIndex()]"
+                    }
+                }
+            }
+        }
+    ]
 }
 ```
 
@@ -162,16 +266,18 @@ copy をプロパティに適用することはできませんが、プロパテ
     "parameters": {},
     "resources": [
         {
-            "apiVersion": "2015-06-15",
+            "apiVersion": "2016-01-01",
             "type": "Microsoft.Storage/storageAccounts",
-            "name": "[concat('storage', uniqueString(resourceGroup().id), copyIndex())]",
+            "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
             "location": "[resourceGroup().location]",
-            "properties": {
-                "accountType": "Standard_LRS"
+            "sku": {
+                "name": "Standard_LRS"
             },
-            "copy": { 
-                "name": "storagecopy", 
-                "count": 3 
+            "kind": "Storage",
+            "properties": {},
+            "copy": {
+                "name": "storagecopy",
+                "count": 3
             }
         },
         {
@@ -238,7 +344,6 @@ copy をプロパティに適用することはできませんが、プロパテ
 
 ## <a name="next-steps"></a>次のステップ
 * テンプレートのセクションについては、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
-* 連続して繰り返されるリソースを作成する場合は、[Azure Resource Manager テンプレートでの連続ループ](resource-manager-sequential-loop.md)に関するページを参照してください。
 * テンプレートをデプロイする方法については、「 [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
 

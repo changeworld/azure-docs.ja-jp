@@ -14,9 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/16/2016
 ms.author: dastrock
-translationtype: Human Translation
-ms.sourcegitcommit: 3e0bb32a6c60011d71606c896cc506f430bc3c27
-ms.openlocfilehash: 19d8d860e39139d3003c216659b7203e2482154e
+ms.custom: aaddev
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: b961254274409215d79b5cb2c9ee230a97b42769
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -45,10 +48,5 @@ ms.openlocfilehash: 19d8d860e39139d3003c216659b7203e2482154e
 Live SDK のサポートを無効にすると、アプリケーション シークレットは Azure AD データ ストアにしか書き込まれません。  Azure AD データ ストアでは、FISMA 準拠など、特定の標準を満たすことができるようにするためのエンタープライズ クラスの規定を取り入れています。  Live SDK のサポートを有効にすると、アプリケーションがこれらの標準のうちのいくつかに準拠しなくなる可能性があります。
 
 Azure AD v2.0 エンドポイントの使用に限定する場合は、Live SDK のサポートを無効にしてかまいません。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

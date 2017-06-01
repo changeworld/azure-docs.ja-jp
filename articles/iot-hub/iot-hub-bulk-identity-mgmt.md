@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/06/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 6d878b00094f573adc440d2384c426506fea0a40
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 9ea3896f73e0e97b89743d8b17c8fd1e723153c3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -120,6 +121,52 @@ while(true)
 {"id":"Device5","eTag":"MA==","status":"enabled","authentication":{"symmetricKey":{"primaryKey":"abc=","secondaryKey":"def="}}}
 ```
 
+デバイスにツイン データがある場合は、デバイスのデータと共にツイン データもエクスポートされます。 次の例は、この形式を示しています。 "twinETag" 行から最後の行までがツイン データです。
+```
+{
+   "id":"export-6d84f075-0",
+   "eTag":"MQ==",
+   "status":"enabled",
+   "statusReason":"firstUpdate",
+   "authentication":null,
+   "twinETag":"AAAAAAAAAAI=",
+   "tags":{
+      "Location":"LivingRoom"
+   },
+   "properties":{
+      "desired":{
+         "Thermostat":{
+            "Temperature":75.1,
+            "Unit":"F"
+         },
+         "$metadata":{
+            "$lastUpdated":"2017-03-09T18:30:52.3167248Z",
+            "$lastUpdatedVersion":2,
+            "Thermostat":{
+               "$lastUpdated":"2017-03-09T18:30:52.3167248Z",
+               "$lastUpdatedVersion":2,
+               "Temperature":{
+                  "$lastUpdated":"2017-03-09T18:30:52.3167248Z",
+                  "$lastUpdatedVersion":2
+               },
+               "Unit":{
+                  "$lastUpdated":"2017-03-09T18:30:52.3167248Z",
+                  "$lastUpdatedVersion":2
+               }
+            }
+         },
+         "$version":2
+      },
+      "reported":{
+         "$metadata":{
+            "$lastUpdated":"2017-03-09T18:30:51.1309437Z"
+         },
+         "$version":1
+      }
+   }
+}
+```
+
 コード内のこのデータにアクセスする必要がある場合、 **ExportImportDevice** クラスを使用すると、データを簡単に逆シリアル化できます。 次の C# コード スニペットでは、以前にブロック BLOB にエクスポートしたデバイス情報を読み取る方法を示します。
 
 ```csharp
@@ -170,6 +217,8 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
 JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
 ```
 
+この方法を使用して、デバイス ツインのデータをインポートすることもできます。 データ入力の形式は、**ExportDevicesAsync** セクションに示されているものと同じです。 この方法で、エクスポートされたデータを再インポートすることもできます。 $Metadata はオプションです。
+
 ## <a name="import-behavior"></a>インポートの動作
 
 **ImportDevicesAsync** メソッドを使用して、ID レジストリで次の一括操作を実行することができます。
@@ -179,18 +228,21 @@ JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasU
 * 状態の一括変更 (デバイスの有効化または無効化)
 * 新しいデバイス認証キーの一括割り当て
 * デバイス認証キーの一括自動再生成
+* ツイン データの一括更新
 
 上記の操作の任意の組み合わせを 1 回の **ImportDevicesAsync** 呼び出しで実行できます。 たとえば、新しいデバイスの登録と、既存のデバイスの削除または更新とを同時に行うことができます。 **ExportDevicesAsync** メソッドと一緒に使用すると、すべてのデバイスを一つの IoT Hub から別の IoT Hub へ完全に移行できます。
+
+インポート ファイルがツイン メタデータを指定している場合は、このメタデータが、ツインの既存のメタデータを上書きします。 指定していない場合は、`lastUpdateTime` メタデータのみが現在の時刻を使用して更新されます。 
 
 デバイスごとにインポート プロセスを制御するには、デバイスごとのインポート シリアル化データにオプションの **importMode** プロパティを使用します。 **importMode** プロパティには、次のオプションが用意されています。
 
 | importMode | 説明 |
 | --- | --- |
-| **createOrUpdate** |指定した **ID**を持つデバイスが存在しない場合は、新たに登録されます。 <br/>該当するデバイスが既に存在する場合、既存の情報は、 **ETag** 値に関係なく、指定した入力データで上書きされます。 |
-| **create** |指定した **ID**を持つデバイスが存在しない場合は、新たに登録されます。 <br/>該当するデバイスが既に存在する場合は、エラーがログ ファイルに書き込まれます。 |
+| **createOrUpdate** |指定した **ID**を持つデバイスが存在しない場合は、新たに登録されます。 <br/>該当するデバイスが既に存在する場合、既存の情報は、 **ETag** 値に関係なく、指定した入力データで上書きされます。 <br> 必要に応じて、デバイス データと共にツイン データを指定できます。 ツインの etag が指定された場合は、デバイスの etag とは別に処理されます。 既存のツインの etag と一致しない場合は、ログ ファイルにエラーが書き込まれます。 |
+| **create** |指定した **ID**を持つデバイスが存在しない場合は、新たに登録されます。 <br/>該当するデバイスが既に存在する場合は、エラーがログ ファイルに書き込まれます。 <br> 必要に応じて、デバイス データと共にツイン データを指定できます。 ツインの etag が指定された場合は、デバイスの etag とは別に処理されます。 既存のツインの etag と一致しない場合は、ログ ファイルにエラーが書き込まれます。 |
 | **update** |指定した **ID** を持つデバイスが既に存在する場合、**ETag** 値に関係なく、既存の情報は指定した入力データで上書きされます。 <br/>該当するデバイスが存在しない場合は、エラーがログ ファイルに書き込まれます。 |
 | **updateIfMatchETag** |指定した **ID** を持つデバイスが既に存在する場合、**ETag** 値が一致した場合に限り、既存の情報は指定した入力データで上書きされます。 <br/>該当するデバイスが存在しない場合は、エラーがログ ファイルに書き込まれます。 <br/>**ETag** 値が不一致である場合は、ログ ファイルにエラーが書き込まれます。 |
-| **createOrUpdateIfMatchETag** |指定した **ID**を持つデバイスが存在しない場合は、新たに登録されます。 <br/>該当するデバイスが既に存在する場合、 **ETag** 値が一致した場合に限り、既存の情報は指定した入力データで上書きされます。 <br/>**ETag** 値が不一致である場合は、ログ ファイルにエラーが書き込まれます。 |
+| **createOrUpdateIfMatchETag** |指定した **ID**を持つデバイスが存在しない場合は、新たに登録されます。 <br/>該当するデバイスが既に存在する場合、 **ETag** 値が一致した場合に限り、既存の情報は指定した入力データで上書きされます。 <br/>**ETag** 値が不一致である場合は、ログ ファイルにエラーが書き込まれます。 <br> 必要に応じて、デバイス データと共にツイン データを指定できます。 ツインの etag が指定された場合は、デバイスの etag とは別に処理されます。 既存のツインの etag と一致しない場合は、ログ ファイルにエラーが書き込まれます。 |
 | **delete** |指定した **ID** を持つデバイスが既に存在する場合、そのデバイスは **ETag** 値に関係なく削除されます。 <br/>該当するデバイスが存在しない場合は、エラーがログ ファイルに書き込まれます。 |
 | **deleteIfMatchETag** |指定した **ID** を持つデバイスが既に存在する場合、そのデバイスは **ETag** 値が一致した場合に限り削除されます。 該当するデバイスが存在しない場合は、エラーがログ ファイルに書き込まれます。 <br/>ETag 値が不一致である場合は、ログ ファイルにエラーが書き込まれます。 |
 
@@ -355,11 +407,11 @@ static string GetContainerSasUri(CloudBlobContainer container)
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
 * [IoT Hub 開発者ガイド][lnk-devguide]
-* [IoT Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
+* [IoT Edge を使用したデバイスのシミュレーション][lnk-iotedge]
 
 [lnk-metrics]: iot-hub-metrics.md
 [lnk-monitor]: iot-hub-operations-monitoring.md
 
 [lnk-devguide]: iot-hub-devguide.md
-[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md
 

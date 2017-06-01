@@ -1,5 +1,5 @@
-﻿---
-title: "Jupyter Notebook のローカルでのインストールと Azure Spark クラスターへの接続 | Microsoft Docs"
+---
+title: "Jupyter をローカルにインストールして Azure HDInsight Spark クラスターに接続する | Microsoft Docs"
 description: "Jupyter Notebook をローカル コンピューターにインストールして Azure HDInsight 上の Apache Spark クラスターに接続する方法を説明します。"
 services: hdinsight
 documentationcenter: 
@@ -14,18 +14,19 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2017
+ms.date: 05/10/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: 26cdaf4dc68876fa2bed4ca15d8bfb7fd3ac4b6d
-ms.lasthandoff: 01/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: c2949fbda0503c779b117aebb14d4d7b76bae426
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/17/2017
 
 
 ---
-# <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-cluster-on-hdinsight"></a>Jupyter Notebook をコンピューターにインストールして HDInsight の Apache Spark クラスターに接続する
+# <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter Notebook をコンピューターにインストールして HDInsight の Apache Spark に接続する
 
-この記事では、カスタム PySpark (Python の場合) カーネルと Spark (Scala の場合) カーネル、Spark マジックと共に Jupyter Notebook をインストールし、HDInsight クラスターにノートブックを接続する方法について説明します。 さまざまな理由から、Jupyter をローカル コンピューターにインストールすることが必要になるケースがあります。またローカル コンピューターへのインストールには、いくつかの課題もあります。 これらの理由と課題については、この記事の最後のセクション「[Jupyter をローカル コンピューターにインストールする理由](#why-should-i-install-jupyter-on-my-computer)」をご覧ください。
+この記事では、カスタム PySpark (Python の場合) カーネルと Spark (Scala の場合) カーネル、Spark マジックと共に Jupyter Notebook をインストールし、HDInsight クラスターにノートブックを接続する方法について説明します。 さまざまな理由から、Jupyter をローカル コンピューターにインストールすることが必要になるケースがあります。またローカル コンピューターへのインストールには、いくつかの課題もあります。 この点について詳しくは、この記事の最後のセクション「[Jupyter をローカル コンピューターにインストールする理由](#why-should-i-install-jupyter-on-my-computer)」を参照してください。
 
 Jupyter と Spark マジックは大きく 3 つの手順でコンピューターにインストールします。
 
@@ -42,7 +43,8 @@ HDInsight クラスターの Jupyter Notebook で使用できるカスタム カ
 * HDInsight での Apache Spark クラスター。 手順については、 [Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
 
 ## <a name="install-jupyter-notebook-on-your-computer"></a>Jupyter Notebook をコンピューターにインストールする
-Jupyter Notebook をインストールする前に Python をインストールする必要があります。 Python と Jupyter はどちらも、 [Ananconda ディストリビューション](https://www.continuum.io/downloads)に同梱されています。 Anaconda をインストールすると、実質的に Python のディストリビューションがインストールされます。 Jupyter 環境は、Anaconda のインストール後にコマンドを実行して追加することになります。 そのために必要な手順をこのセクションで紹介しています。
+
+Jupyter Notebook をインストールする前に Python をインストールする必要があります。 Python と Jupyter はどちらも、 [Ananconda ディストリビューション](https://www.continuum.io/downloads)に同梱されています。 Anaconda をインストールすると、Python のディストリビューションがインストールされます。 Jupyter 環境は、Anaconda のインストール後に適切なコマンドを実行して追加することになります。
 
 1. ご使用のプラットフォーム用の [Anaconda インストーラー](https://www.continuum.io/downloads) をダウンロードし、セットアップ プログラムを実行します。 セットアップ ウィザードを実行する過程で、Anaconda を PATH 変数に追加するためのオプションを忘れずに選択してください。
 2. 次のコマンドを実行して Jupyter をインストールします。
@@ -52,13 +54,15 @@ Jupyter Notebook をインストールする前に Python をインストール�
     Jupyter のインストールの詳細については、 [Anaconda を使用した Jupyter のインストール](http://jupyter.readthedocs.io/en/latest/install.html)に関するページを参照してください。
 
 ## <a name="install-the-kernels-and-spark-magic"></a>カーネルと Spark マジックをインストールする
-Spark マジック、PySpark カーネル、および Spark カーネルのインストール手順については、GitHub の [sparkmagic ドキュメント](https://github.com/jupyter-incubator/sparkmagic#installation) を参照してください。
 
-クラスター v3.4 の場合は、`pip install sparkmagic==0.2.3` を実行して sparkmagic 0.5.0 をインストールします。
+Spark マジック、PySpark カーネル、Spark カーネルのインストール方法については、GitHub の [sparkmagic ドキュメント](https://github.com/jupyter-incubator/sparkmagic#installation)で説明されているインストール手順を参照してください。 Spark マジックのドキュメントでは、最初の手順として Spark マジックをインストールするように求められます。 このリンク先のページにある最初の手順を、接続する HDInsight クラスターのバージョンに応じて以下のコマンドに置き換えてください。 その後、Spark マジックのドキュメントにある残りの手順を実行します。 異なるカーネルをインストールする必要がある場合は、Spark マジックのインストール方法を説明したセクションの手順 3. を実行してください。
 
-クラスター v3.5 の場合は、`pip install sparkmagic==0.8.4` を実行して sparkmagic 0.8.4 をインストールします。
+* クラスター v3.4 の場合は、`pip install sparkmagic==0.2.3` を実行して sparkmagic 0.2.3 をインストールします。
 
-## <a name="configure-spark-magic-to-access-the-hdinsight-spark-cluster"></a>HDInsight の Spark クラスターにアクセスするように Spark マジックを構成する
+* クラスター v3.5 と v3.6 の場合は、`pip install sparkmagic==0.11.2` を実行して sparkmagic 0.11.2 をインストールします。
+
+## <a name="configure-spark-magic-to-connect-to-hdinsight-spark-cluster"></a>HDInsight の Spark クラスターに接続するように Spark マジックを構成する
+
 このセクションでは、先ほどインストールした Spark マジックに対し、Apache Spark クラスターに接続するための構成を行います。Apache Spark クラスターは、あらかじめ Azure HDInsight に作成しておく必要があります。
 
 1. Jupyter の構成情報は通常、ユーザーの home ディレクトリに格納されます。 home ディレクトリは、任意の OS プラットフォームで以降に示したコマンドを入力して検索できます。
@@ -88,19 +92,17 @@ Spark マジック、PySpark カーネル、および Spark カーネルのイ�
           }
         }
 
-4. **{USERNAME}****{CLUSTERDNSNAME}****{BASE64ENCODEDPASSWORD}**は、それぞれ適切な値に置き換えてください。 base64 エンコード パスワードは、ご利用のプログラミング言語のユーティリティまたはオンライン ユーティリティを使用して、実際のパスワードから生成してください。 コマンド プロンプトから実行する単純な Python スニペットの例を以下に示します。
-
-        python -c "import base64; print(base64.b64encode('{YOURPASSWORD}'))"
+4. **{USERNAME}****{CLUSTERDNSNAME}****{BASE64ENCODEDPASSWORD}**は、それぞれ適切な値に置き換えてください。 base64 エンコード パスワードは、ご利用のプログラミング言語のユーティリティまたはオンライン ユーティリティを使用して、実際のパスワードから生成してください。
 
 5. `config.json` で右側のハートビート設定を構成します。 この設定は、前に追加した `kernel_python_credentials` と`kernel_scala_credentials` のスニペットと同じレベルに追加する必要があります。 ハートビート設定を追加する方法と場所の例については、こちらの [ config.json のサンプル](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json)を参照してください。
 
-    * `sparkmagic 0.5.0` (クラスター V3.4) の場合は、次が含まれます。
+    * `sparkmagic 0.2.3` (クラスター V3.4) の場合は、次が含まれます。
 
             "should_heartbeat": true,
             "heartbeat_refresh_seconds": 5,
             "heartbeat_retry_seconds": 1
 
-    * `sparkmagic 0.8.4` (クラスター V3.5) の場合は、次が含まれます。
+    * `sparkmagic 0.11.2` (クラスター V3.5 と v3.6) の場合は、次が含まれます。
 
             "heartbeat_refresh_seconds": 5,
             "livy_server_heartbeat_timeout_seconds": 60,
@@ -115,19 +117,16 @@ Spark マジック、PySpark カーネル、および Spark カーネルのイ�
 
 7. Jupyter Notebook を使用してクラスターに接続できること、カーネルに備わっている Spark マジックを使用できることを確認します。 次の手順に従います。
 
-   1. 新しい Notebook を作成します。 右隅にある **[新規]**をクリックします。 既定のカーネル **Python2** に加え、新たにインストールする 2 つの新しいカーネル (**PySpark** と **Spark**) が確認できます。
+    a. 新しい Notebook を作成します。 右隅にある **[新規]**をクリックします。 既定のカーネル **Python2** に加え、新たにインストールする 2 つの新しいカーネル (**PySpark** と **Spark**) が確認できます。 **[PySpark]**をクリックします。
 
-       ![新しい Jupyter Notebook の作成](./media/hdinsight-apache-spark-jupyter-notebook-install-locally/jupyter-kernels.png "新しい Jupyter Notebook の作成")
+    ![Jupyter Notebook のカーネル](./media/hdinsight-apache-spark-jupyter-notebook-install-locally/jupyter-kernels.png "Jupyter Notebook のカーネル")
 
-        **[PySpark]**をクリックします。
+    b. 次のコード スニペットを実行します。
 
+        %%sql
+        SELECT * FROM hivesampletable LIMIT 5
 
-    2. 次のコード スニペットを実行します。
-
-            %%sql
-            SELECT * FROM hivesampletable LIMIT 5
-
-        出力結果が正しく得られた場合、HDInsight クラスターへの接続テストは完了です。
+    出力結果が正しく得られた場合、HDInsight クラスターへの接続テストは完了です。
 
     >[!TIP]
     >別のクラスターに接続するようにノートブックの構成を更新する必要がある場合は、前の手順 3. を参照して、config.json の一連の値を更新してください。

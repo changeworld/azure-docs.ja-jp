@@ -13,17 +13,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
-ms.author: jehollan
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: d0d283f21caf53406c51670e75bf2796a175be51
-ms.lasthandoff: 03/25/2017
+ms.author: LADocs; jehollan
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 291fb1bb3a8925ccc39d846d23328f028cb826b8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="handle-content-types-in-logic-apps"></a>ロジック アプリにおける各種コンテンツの扱い
 
-ロジック アプリには、JSON、XML、フラット ファイル、バイナリ データなど、さまざまな種類のコンテンツを渡すことができます。 Logic Apps エンジンはあらゆる種類のコンテンツに対応していますが、Logic Apps エンジンでネイティブに認識されるコンテンツもあれば、 適宜キャストや変換が必要なコンテンツもあります。 この記事では、Logic Apps エンジンで各種コンテンツがどのように扱われるか、また、必要に応じて各種コンテンツを正しく処理するにはどうすればよいかについて説明します。
+ロジック アプリには、JSON、XML、フラット ファイル、バイナリ データなど、さまざまな種類のコンテンツを渡すことができます。 Logic Apps エンジンはあらゆる種類のコンテンツに対応しています。一部のコンテンツは Logic Apps エンジンでネイティブに認識されます。 適宜キャストや変換が必要なコンテンツもあります。 この記事では、Logic Apps エンジンで各種コンテンツがどのように扱われるか、また、必要に応じて各種コンテンツを正しく処理するにはどうすればよいかについて説明します。
 
 ## <a name="content-type-header"></a>Content-Type ヘッダー
 
@@ -54,7 +55,7 @@ ms.lasthandoff: 03/25/2017
 
 ### <a name="parse-json-action"></a>"Parse JSON" アクション
 
-`Parse JSON` アクションを使用すると、JSON コンテンツを解析して、ロジック アプリが利用しやすいトークンにすることができます。 要求トリガーと同様に、解析するコンテンツの JSON スキーマを入力または生成することができます。 Service Bus や DocumentDB などからデータを取り出す手段としては、こちらの方がはるかに簡単です。
+`Parse JSON` アクションを使用すると、JSON コンテンツを解析して、ロジック アプリが利用しやすいトークンにすることができます。 要求トリガーと同様に、解析するコンテンツの JSON スキーマを入力または生成することができます。 Service Bus や Azure Cosmos DB などからデータを取り出す手段としては、こちらの方がはるかに簡単です。
 
 ![Parse JSON](./media/logic-apps-content-type/ParseJSON.png)
 

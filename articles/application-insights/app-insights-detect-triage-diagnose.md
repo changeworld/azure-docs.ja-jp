@@ -1,7 +1,7 @@
 ---
 title: "Web アプリの問題の検出と診断 - Azure Application Insights | Microsoft Docs"
 description: "クラッシュを分析し、アプリケーションのパフォーマンスに関する問題を検出して診断する"
-author: alancameronwills
+author: CFreemanwa
 services: application-insights
 documentationcenter: 
 manager: carmonm

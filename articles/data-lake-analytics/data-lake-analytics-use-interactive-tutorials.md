@@ -14,20 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-translationtype: Human Translation
-ms.sourcegitcommit: 194b5d79505afbfd0208f63dd182a0e03227ba69
-ms.openlocfilehash: 36677be6bc5599f55f1f15bc145c59033ad20e0a
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: ca88b355416b4ae4785bc69244185a67756ca916
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
 # <a name="use-azure-data-lake-analytics-interactive-tutorials"></a>Azure Data Lake Analytics の対話型チュートリアルの使用
 Azure Portal では、Data Lake Analytics を使用するための対話型チュートリアルが提供されます。 この記事では、Web サイト ログを分析するためのチュートリアルを読み進める方法を示します。
-
-> [!NOTE]
-> Visual Studio を使用する同じチュートリアルを読み進める場合は、「 [Data Lake Analytics を使用する Web サイト ログの分析](data-lake-analytics-analyze-weblogs.md)」を参照してください。
-> ポータルにはさらに対話型チュートリアルが追加されます。
-> 
-> 
 
 他のチュートリアルについては、以下を参照してください。
 
@@ -62,7 +58,7 @@ Azure Portal では、Data Lake Analytics を使用するための対話型チ�
    * **名前**: Analytics アカウントに名前を付けます。
    * **Data Lake Store**: 各 Data Lake Analytics アカウントには、従属する Data Lake Store アカウントがあります。 Data Lake Analytics アカウントと従属する Data Lake Store アカウントは、同じ Azure データ センターに配置する必要があります。 以下の指示に従って、Data Lake Store アカウントを作成するか、既存のものを選択します。
    * **サブスクリプション**: Analytics アカウントに使用する Azure サブスクリプションを選択します。
-   * **リソース グループ**。 既存の Azure リソース グループを選択するか、新しいものを作成します。 アプリケーションは通常、Web アプリ、データベース、データベース サーバー、ストレージ、サード パーティのサービスなど、複数のコンポーネントで構成されます。 Azure リソース マネージャー (ARM) を使用すると、アプリケーション内の複数のリソースを&1; つのグループ (Azure リソース グループと呼ばれます) と見なして作業できます。 アプリケーションのこれらのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。 デプロイにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 グループ全体のロールアップ コストを表示すると、組織の課金ついて明確に把握できます。 詳細については、「 [Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。 
+   * **リソース グループ**。 既存の Azure リソース グループを選択するか、新しいものを作成します。 アプリケーションは通常、Web アプリ、データベース、データベース サーバー、ストレージ、サード パーティのサービスなど、複数のコンポーネントで構成されます。 Azure リソース マネージャー (ARM) を使用すると、アプリケーション内の複数のリソースを 1 つのグループ (Azure リソース グループと呼ばれます) と見なして作業できます。 アプリケーションのこれらのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。 デプロイにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 グループ全体のロールアップ コストを表示すると、組織の課金ついて明確に把握できます。 詳細については、「 [Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。 
    * **場所**:  Data Lake Analytics アカウントの Azure データ センターを選択します。 
 8. **[スタート画面にピン留めする]**を選択します。 このチュートリアルに従う場合はこれが必要です。
 9. **[作成]**をクリックします。 ポータルのスタート画面が表示されます。 新しいタイルはホーム ページに追加され、"Azure Data Lake Analytics のデプロイ" を示すラベルが付けられます。 Data Lake Analytics アカウントの作成にはしばらく時間がかかります。 アカウントが作成されると、ポータルの新しいブレードにアカウントが開きます。
@@ -87,10 +83,5 @@ Azure Portal では、Data Lake Analytics を使用するための対話型チ�
 * [Azure PowerShell で Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-powershell.md)
 * [Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)
 * [Azure Data Lake Analytics を使用する Web サイト ログの分析](data-lake-analytics-analyze-weblogs.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

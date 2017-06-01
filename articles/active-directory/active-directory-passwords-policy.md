@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/26/2017
 ms.author: joflore
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: f318499ac18a9d03bb108675de199481ab52fd1c
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 0c586692720512d2822e67994e22e1f6d50fd921
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -28,20 +28,43 @@ ms.lasthandoff: 05/03/2017
 
 ## <a name="administrator-password-policy-differences"></a>管理者パスワード ポリシーの相違点
 
-Microsoft では、Azure 管理者ロール (例: グローバル管理者、ヘルプデスク管理者、パスワード管理者など) に対して、既定の強力なパスワード リセット ポリシーを適用します。
+Microsoft では、Azure 管理者ロール (例: 全体管理者、ヘルプデスク管理者、パスワード管理者など) に対して、既定の強力な **2 ゲート** パスワード リセット ポリシーを適用します。
 
 これにより、管理者がセキュリティの質問を使用できなくなり、次のことが適用されます。
 
-認証データの 1 つの部分を必要とする 1 つのゲート ポリシーは、次の状況で適用されます。
+認証データの 2 つの部分 (電子メール アドレス**および**電話番号) を必要とする 2 つのゲート ポリシーは、次の状況で適用されます。
+
+* すべての Azure 管理者ロール
+  * ヘルプデスク管理者
+  * サービス サポート管理者
+  * 課金管理者
+  * パートナー レベル 1 のサポート
+  * パートナー レベル 2 のサポート
+  * Exchange サービス管理者
+  * Lync サービス管理者
+  * ユーザー アカウント管理者
+  * ディレクトリ ライター
+  * グローバル管理者/会社の管理者
+  * SharePoint サービス管理者
+  * コンプライアンス管理者
+  * アプリケーション管理者
+  * セキュリティ管理者
+  * 特権ロール管理者
+  * Intune サービス管理者
+  * アプリケーション プロキシ サービス管理者
+  * CRM サービス管理者
+  * Power BI サービス管理者
+  
+* 30 日間の試用期間が経過した、**または**
+* バニティ ドメインが存在する (contoso.com)、**または**
+* Azure AD Connect がオンプレミスのディレクトリからの ID を同期している
+
+### <a name="exceptions"></a>例外
+認証データの 1 つの部分 (電子メール アドレス**または**電話番号) を必要とする 1 つのゲート ポリシーは、次の状況で適用されます。
 
 * 最初の 30 日間の試用期間、**または**
 * バニティ ドメインが存在しない (*.onmicrosoft.com)、**かつ**、Azure AD Connect が ID を同期していない
 
-認証データの 2 つの部分を必要とする 2 つのゲート ポリシーは、次の状況で適用されます。
-
-* 30 日間の試用期間が経過した、**または**
-* バニティ ドメインが存在する (contoso.com)、**または**
-* Azure AD Connect がオンプレミスのディレクトリからの ID を同期している
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>すべてのユーザー アカウントに適用される UserPrincipalName ポリシー
 
@@ -109,12 +132,13 @@ Microsoft クラウド サービスのグローバル管理者は、Windows Powe
 
 次のリンク先では、Azure AD を使用したパスワードのリセットに関する追加情報が得られます。
 
-* [**クイック スタート**](active-directory-passwords-getting-started.md) - Azure AD のセルフ サービスによるパスワードのリセットの管理を始めることができます 
-* [**ライセンス**](active-directory-passwords-licensing.md) - Azure AD のライセンスを構成します
+* [**クイック スタート**](active-directory-passwords-getting-started.md) - Azure AD のセルフサービスによるパスワードのリセットの管理を始めることができます。 
+* [**ライセンス**](active-directory-passwords-licensing.md) - Azure AD のライセンスを構成します。
 * [**データ**](active-directory-passwords-data.md) - パスワード管理に必要なデータとその使用方法がわかります
 * [**展開**](active-directory-passwords-best-practices.md) - ここで見つかるガイダンスを使用してユーザーに対する SSPR を計画してデプロイできます
 * [**カスタマイズ**](active-directory-passwords-customize.md) - 会社の SSPR エクスペリエンスの外観をカスタマイズします。
 * [**レポート**](active-directory-passwords-reporting.md) - ユーザーが SSPR 機能にアクセスしたかどうかや、アクセスしたタイミングと場所を検出します
 * [**技術的詳細**](active-directory-passwords-how-it-works.md) - しくみを詳しく説明しています
-* [**よく寄せられる質問**](active-directory-passwords-faq.md) - 方法は? なぜですか? 何ですか? どこですか? 誰ですか? いつですか? - ずっと確認したかった質問に対する回答
+* [**よく寄せられる質問**](active-directory-passwords-faq.md) - どのようにですか? なぜですか? 何ですか? どこですか? 誰がですか? いつですか? - ずっと確認したかった質問に対する回答
 * [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - SSPR の一般的な問題を解決する方法について説明しています
+

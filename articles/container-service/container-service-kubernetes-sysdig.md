@@ -16,14 +16,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/09/2016
 ms.author: bburns
-translationtype: Human Translation
-ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
-ms.openlocfilehash: daabc3ccda51cfd165e2ae6e1d329e866b3ebbcb
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 0a344f3254802f787472a6d7cf91d658259955dc
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/17/2017
 
 
 ---
 
-# <a name="monitor-an-azure-container-service-kubenrnetes-cluster-using-sysdig"></a>Sysdig を使って Azure Container Service Kubenrnetes クラスターを監視する
+# <a name="monitor-an-azure-container-service-kubernetes-cluster-using-sysdig"></a>Sysdig を使用した Azure Container Service Kubernetes クラスターの監視
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルでは、[Azure Container Service を使用して Kubernetes クラスターを作成](container-service-kubernetes-walkthrough.md)したことを想定します。
@@ -60,7 +62,7 @@ Sysdig クラウドの Web サイトへのログイン後に自分のユーザ�
 
 ## <a name="installing-the-sysdig-agents-to-kubernetes"></a>Kubernetes への Sysdig エージェントのインストール
 コンテナーを監視するには、Sysdig で、Kubernetes `DaemonSet` を使用して各コンピューターでプロセスを実行します。
-DaemonSet は、コンピューターごとに&1; つのコンテナーの&1; つのインスタンスを実行する Kubernetes API オブジェクトです。
+DaemonSet は、コンピューターごとに 1 つのコンテナーの 1 つのインスタンスを実行する Kubernetes API オブジェクトです。
 Sysdig の監視エージェントなどのツールをインストールする場合に最適です。
 
 Sysdig DaemonSet をインストールするには、まず[テンプレート](https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml)を sysdig からダウンロードします。 そのファイルを `sysdig-daemonset.yaml` という名前で保存します。
@@ -89,9 +91,4 @@ $ kubectl create -f sysdig-daemonset.yaml
 インストールして実行したら、エージェントが Sysdig にデータを返します。  [Sysdig ダッシュボード](https://app.sysdigcloud.com)に戻ると、コンテナーに関する情報が表示されます。
 
 [新しいダッシュボード ウィザード](https://app.sysdigcloud.com/#/dashboards/new)を使用して、Kubernetes 固有のダッシュボードをインストールすることもできます。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

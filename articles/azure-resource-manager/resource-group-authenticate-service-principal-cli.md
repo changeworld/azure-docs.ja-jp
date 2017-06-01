@@ -12,26 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/31/2017
+ms.date: 05/15/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: c8a883dedee31d9efab6e2eb4c0ac67b467afe34
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: fe05b9fd3bc2737ba157f620f91c25654114b480
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---
 # <a name="use-azure-cli-to-create-a-service-principal-to-access-resources"></a>リソースにアクセスするためのサービス プリンシパルを Azure CLI で作成する
-> [!div class="op_single_selector"]
-> * [PowerShell](resource-group-authenticate-service-principal.md)
-> * [Azure CLI](resource-group-authenticate-service-principal-cli.md)
-> * [ポータル](resource-group-create-service-principal-portal.md)
-> 
-> 
 
-リソースへのアクセスを必要とするアプリケーションやスクリプトがある場合は、そのアプリの ID を設定し、それをお客様自身の資格情報で認証できます。 この ID は、サービス プリンシパルと呼ばれます。 このアプローチを使用すると、以下のことが実行できます。
+リソースへのアクセスを必要とするアプリやスクリプトがある場合は、アプリの ID を設定し、アプリを独自の資格情報で認証できます。 この ID は、サービス プリンシパルと呼ばれます。 このアプローチを使用すると、以下のことを実行できます。
 
-* お客様自身のアクセス許可とは異なるアクセス許可を、アプリケーション ID に割り当てることができます。 通常、こうしたアクセス許可は、アプリが行う必要があることに制限されます。
+* ユーザー自身のアクセス許可とは異なるアクセス許可を、アプリケーション ID に割り当てることができます。 通常、こうしたアクセス許可は、アプリが行う必要があることに制限されます。
 * 無人インストール用スクリプトを実行するときに、証明書を使用して認証できます。
 
 この記事では、[Azure CLI 1.0](../cli-install-nodejs.md) を使用してアプリケーションをその独自の資格情報と ID で実行する設定方法について説明します。 [Azure CLI 1.0](../cli-install-nodejs.md) の最新バージョンをインストールし、自分の環境がこの記事の例と一致するかどうかを確認します。
@@ -285,9 +280,9 @@ azure ad app set --applicationId 4fd39843-c338-417d-b549-a545f584a745 --cert-val
 
 サービス プリンシパルの作成時に、以下のエラーが発生することがあります。
 
-* **"Authentication_Unauthorized"** または **"コンテキストにサブスクリプトが見つかりません"** - アカウントが Azure Active Directory でアプリを登録するために[必要なアクセス許可](#required-permissions)を持っていない場合に、このエラーが表示されます。 通常は、Azure Active Directory の管理者ユーザーのみがアプリを登録できるときに、自分のアカウントが管理者でない場合に、このエラーが発生します。 管理者ロールに割り当てるか、ユーザーがアプリケーションを登録できるように、管理者に依頼します。
+* **"Authentication_Unauthorized"** または **"コンテキストにサブスクリプトが見つかりません"** - アカウントが Azure Active Directory でアプリを登録するために[必要なアクセス許可](#required-permissions)を持っていない場合に、このエラーが表示されます。 通常は、Azure Active Directory の管理者ユーザーのみがアプリを登録できるときに、自分のアカウントが管理者でない場合に、このエラーが発生します。 管理者に連絡して、自分を管理者ロールに割り当ててもらうか、ユーザーがアプリケーションを登録できるようにしてもらいます。
 
-* アカウントに**「'/subscriptions/{guid} ' をスコープとした 'Microsoft.Authorization/roleAssignments/write' のアクションを実行するためのアクセス権限がありません」と表示される場合** -自分のアカウントが ID にロールを割り当てるのに十分なアクセス許可を持っていない場合に、このエラーが表示されます。 サブスクリプション管理者に連絡して、ユーザー アクセス管理者ロールに追加してもらいます。
+* アカウントに**「'/subscriptions/{guid} ' をスコープとした 'Microsoft.Authorization/roleAssignments/write' のアクションを実行するためのアクセス権限がありません」:**このエラーは、自分のアカウントが ID にロールを割り当てるのに十分なアクセス許可を持っていない場合に表示されます。 サブスクリプション管理者に連絡して、自分をユーザー アクセス管理者ロールに追加してもらいます。
 
 ## <a name="sample-applications"></a>サンプル アプリケーション
 サービス プリンシパルとしてログインする方法については、以下のサンプル アプリケーションで紹介されています。
@@ -320,5 +315,5 @@ azure ad app set --applicationId 4fd39843-c338-417d-b549-a545f584a745 --cert-val
 ## <a name="next-steps"></a>次のステップ
 * アプリケーションを Azure に統合してリソースを管理する詳しい手順については、「 [Azure Resource Manager API を使用した承認の開発者ガイド](resource-manager-api-authentication.md)」を参照してください。
 * 証明書と Azure CLI の使用方法の詳細については、「 [Certificate-based authentication with Azure Service Principals from Linux command line (Linux コマンド ラインからの Azure サービス プリンシパルの証明書での認証)](http://blogs.msdn.com/b/arsen/archive/2015/09/18/certificate-based-auth-with-azure-service-principals-from-linux-command-line.aspx)」を参照してください。 
-
+* ユーザーに対して許可または拒否される場合がある使用可能なアクションの一覧については、「[Azure Resource Manager のリソース プロバイダー操作](../active-directory/role-based-access-control-resource-provider-operations.md)」を参照してください。
 

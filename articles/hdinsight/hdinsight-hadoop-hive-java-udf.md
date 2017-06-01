@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/04/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 9691b7ffb9c2bd9dd3f9900a29fb898652d8d7bf
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 229bebe16b619f61f2dd4acb73602b97e64cb294
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -31,7 +32,7 @@ Hive と連携する Java ベースのユーザー定義関数 (UDF) を作成�
 * HDInsight クラスター (Windows ベースまたは Linux ベース)
 
     > [!IMPORTANT]
-    > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight 3.2 および 3.3 の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関するページを参照してください。
+    > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
 
     このドキュメントのほとんどの手順は、両方の種類のクラスターで動作します。 ただし、コンパイル済みの UDF をクラスターにアップロードして実行するための手順は、Linux ベースのクラスター固有の内容です。 Windows ベースのクラスターで使用できる情報へのリンクが提供されます。
 

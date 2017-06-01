@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: f2c67bb0629c8a37e557d4813e3efa459f3c82ad
-ms.lasthandoff: 05/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 693a4a0dbe7e067492040a12c6cb3b003bbcc54e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -301,15 +302,15 @@ Service Bus キューには、送信者から受信者への 1 対 1 の通信�
 | エンコード |CSV または JSON 形式の場合、エンコードを指定する必要があります。 現在のところ、UTF-8 が、唯一サポートされているエンコード形式です。 |
 | 区切り記号 |CSV のシリアル化のみに適用されます。 Stream Analytics は、CSV 形式のデータをシリアル化するために、一般的な区切り記号をサポートしています。 サポートしている値は、コンマ、セミコロン、スペース、タブ、および縦棒です。 |
 
-## <a name="documentdb"></a>DocumentDB
-[Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) は完全に管理された NoSQL ドキュメント データベース サービスであり、スキーマのないデータに対するクエリとトランザクション、予測可能で信頼性のあるパフォーマンス、および迅速な開発を実現します。
+## <a name="azure-cosmos-db"></a>Azure Cosmos DB
+[Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) は完全に管理された NoSQL ドキュメント データベース サービスであり、スキーマのないデータに対するクエリとトランザクション、予測可能で信頼性の高いパフォーマンス、および迅速な開発を実現します。
 
-以下に、DocumentDB 出力を作成するためのプロパティ名とその説明の詳細を示します。
+以下に、Azure Cosmos DB 出力を作成するためのプロパティ名とその説明の詳細を示します。
 
 * **出力のエイリアス** – ASA クエリ内でこの出力を意味するエイリアス。  
-* **アカウント名** – DocumentDB アカウントの名前またはエンドポイント URI。  
-* **アカウント キー** – DocumentDB アカウントの共有アクセス キー。  
-* **データベース** – DocumentDB データベース名。  
+* **アカウント名** – Cosmos DB アカウントの名前またはエンドポイント URI。  
+* **アカウント キー** – Cosmos DB アカウントの共有アクセス キー。  
+* **データベース** – Cosmos DB データベース名。  
 * **コレクション名のパターン** – 使用するコレクションのコレクション名またはそのパターン。 コレクション名の形式は、オプションの {partition} トークンを使用して構成できます。この場合、パーティションは 0 から開始します。 有効な入力値のサンプルを次に示します。  
   1\) MyCollection – "MyCollection" という名前のコレクションが 1 つ必要です。  
   2\) MyCollection{partition} – "MyCollection0"、"MyCollection1"、"MyCollection2" などのコレクションが必要です。  

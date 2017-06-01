@@ -1,5 +1,5 @@
 ---
-title: "Scala Maven アプリケーションを作成して Azure Spark クラスターで実行する | Microsoft Docs"
+title: "Scala アプリケーションを作成して Azure HDInsight Spark クラスターで実行する | Microsoft Docs"
 description: "Maven を利用してスタンドアロン Scala アプリケーションを作成し、HDInsight Spark クラスターで実行する方法を説明します。"
 services: hdinsight
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: c435e8ec21b568afcadaa1af95964753d36d0ccb
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 3cc921bdd6c9b374bda7bbfc3781f7a1327ae438
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/06/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -66,7 +66,7 @@ IntelliJ IDEA のインストールで、Scala プラグインを有効にする
    * **[Project SDK (プロジェクトのSDK)]** を指定します。 [New (新規)] をクリックし、Java のインストール ディレクトリに移動します。通常は、`C:\Program Files\Java\jdk1.8.0_66` です。
    * **[Create from archetype (アーキタイプからの作成)]** オプションを選択します。
    * アーキタイプの一覧から、 **org.scala-tools.archetypes:scala-archetype-simple**を選択します。 これによって、正しいディレクトリ構造が作成され、Scala プログラムを作成するのに必要な既定の依存関係がダウンロードされます。
-2. **[GroupId]**、**[ArtifactId]**、および **[Version]** に関連する値を指定します。 **[次へ]**をクリックします。
+2. **[GroupId]**、**[ArtifactId]**、および **[Version]** に関連する値を指定します。 **[次へ]** をクリックします。
 3. 次のダイアログ ボックスでは (ここでは、Maven ホーム ディレクトリとその他のユーザー設定を指定)、既定の設定をそのまま使用し、 **[Next (次へ)]**をクリックします。
 4. 最後のダイアログ ボックスで、プロジェクト名と場所を指定し、 **[Finish (完了)]**をクリックします。
 5. **src\test\scala\com\microsoft\spark\example** にある **MySpec.Scala** ファイルを削除します。 これはアプリケーションに必要ありません。

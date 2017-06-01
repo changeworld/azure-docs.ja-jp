@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2017
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 97ed0ae7cf9f741155c57053bc8b34a0246d0586
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: 492e0ca675f2a827b172c33fcd33226abc95dcec
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/13/2017
 
 
 ---
@@ -47,7 +48,7 @@ Azure 診断からデータを受け取る Event Hubs は、Azure SDK 2.9 以降
 * *.wadcfgx* ファイルと次のいずれかの方法の利用した Azure 診断の構成がアプリケーションに存在する
   * Visual Studio: [Azure クラウド サービスおよび仮想マシン用の診断の構成](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)
   * Windows PowerShell: [PowerShell を使用した Azure Cloud Services での診断の有効化](../cloud-services/cloud-services-diagnostics-powershell.md)
-* 「Event Hubs の使用」(../event-hubs/event-hubs-csharp-ephcs-getstarted.md) に従ってプロビジョニングされた Event Hubs 名前空間
+* 「[Event Hubs の使用](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)」に従ってプロビジョニングされた Event Hubs 名前空間
 
 ## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>Azure 診断を Event Hubs シンクに接続する
 既定では、Azure 診断では常に、ログとメトリックが Azure Storage アカウントに送信されます。 *.wadcfgx* ファイルの **PublicConfig**  / セクションの **WadCfg** 要素に新しい **Sinks** セクションを追加することで、アプリケーションでデータを Event Hubs に送信することもできます。 Visual Studio の場合、*.wadcfgx* ファイルは **[Cloud Service Project (クラウド サービス プロジェクト)]** > **[ロール]** > **[(ロール名)]** > **diagnostics.wadcfgx** ファイルに保存されています。

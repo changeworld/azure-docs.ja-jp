@@ -3,7 +3,7 @@ title: "PowerShell での Azure Application Insights の自動化 | Microsoft Do
 description: "Azure Resource Manager テンプレートを使用して、PowerShell でのリソース、アラート、および可用性テストの作成を自動化します。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 9f73b87f-be63-4847-88c8-368543acad8b
 ms.service: application-insights

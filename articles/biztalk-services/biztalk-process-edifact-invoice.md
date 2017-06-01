@@ -14,13 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/31/2016
 ms.author: deonhe
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: b7ad7b91c6b836f26b45959ef65a99666a4bf69a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/08/2016
 
 
 ---
 # <a name="tutorial-process-edifact-invoices-using-azure-biztalk-services"></a>チュートリアル: Azure BizTalk Services を使用して EDIFACT 請求書を処理する
+
+> [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
+
 BizTalk Services ポータルを使用して、X12 契約と EDIFACT 契約を構成し、デプロイできます。 このチュートリアルでは、EDIFACT 契約を作成し、取引先間で請求書を交換する方法について説明します。 このチュートリアルは、EDIFACT メッセージを交換している Northwind と Contoso という 2 社の取引先を対象とするエンド ツー エンドのビジネス ソリューションに基づいて作成されています。  
 
 ## <a name="sample-based-on-this-tutorial"></a>このチュートリアルをベースにしたサンプル
@@ -277,10 +282,5 @@ BizTalk Services EDI ブリッジでは、メッセージを一括送信する�
 [16]: ./media/biztalk-process-edifact-invoice/process-edifact-invoices-with-auzure-bts-16.PNG  
 [17]: ./media/biztalk-process-edifact-invoice/process-edifact-invoices-with-auzure-bts-17.PNG  
 [18]: ./media/biztalk-process-edifact-invoice/process-edifact-invoices-with-auzure-bts-18.PNG
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

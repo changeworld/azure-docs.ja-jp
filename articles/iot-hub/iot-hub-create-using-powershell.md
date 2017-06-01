@@ -11,12 +11,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/23/2017
+ms.date: 05/04/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 5c6ab3a8fdacb43546801518b76a15314d0b4b0f
-ms.lasthandoff: 03/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 8271c10cceb7a98879b06704b65a716cd9ac6822
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -34,14 +35,26 @@ Azure PowerShell コマンドレットを使用すると、Azure IoT Hub を作�
 このチュートリアルを完了するには、以下が必要です。
 
 * アクティブな Azure アカウント。 <br/>アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
-* [Azure PowerShell 1.0][lnk-powershell-install] 以降。
-* [Azure Resource Manager コマンドレット][lnk-rm-install]。
+* [Azure PowerShell コマンドレット][lnk-powershell-install]。
 
 ## <a name="connect-to-your-azure-subscription"></a>Azure サブスクリプションへの接続
 PowerShell コマンド プロンプトから、次のコマンドを入力して Azure サブスクリプションにサインインします。
 
 ```powershell
 Login-AzureRmAccount
+```
+
+複数の Azure サブスクリプションがある場合は、Azure にサインインすると、資格情報に関連付けられているすべての Azure サブスクリプションへのアクセスが許可されます。 次のコマンドで、使用できる Azure サブスクリプションの一覧を表示します。
+
+```powershell
+Get-AzureRMSubscription
+```
+
+以下のコマンドを使用して、コマンドを実行して IoT ハブを作成するために使用するサブスクリプションを選択します。 前のコマンドの出力から、サブスクリプション名または ID のいずれかを使用できます。
+
+```powershell
+Select-AzureRMSubscription `
+    -SubscriptionName "{your subscription name}"
 ```
 
 ## <a name="create-resource-group"></a>Create resource group
@@ -111,17 +124,16 @@ IoT Hub の開発に関する詳細については、以下の記事をご覧く
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-* [IoT Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
+* [IoT Edge を使用したデバイスのシミュレーション][lnk-iotedge]
 
 <!-- Links -->
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
-[lnk-powershell-install]: /powershell/azureps-cmdlets-docs
-[lnk-iothub-cmdlets]: /powershell/resourcemanager/azurerm.iothub/v1.3.0/azurerm.iothub
-[lnk-rm-install]: /powershell/resourcemanager/
-[lnk-rest-api]: https://msdn.microsoft.com/library/mt589014.aspx
+[lnk-powershell-install]: https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[lnk-iothub-cmdlets]: https://docs.microsoft.com/powershell/module/azurerm.iothub/
+[lnk-rest-api]: https://docs.microsoft.com/rest/api/iothub/iothubresource
 
 [lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
 [lnk-sdks]: iot-hub-devguide-sdks.md
 
-[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md
 

@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/09/2017
+ms.date: 05/15/2017
 ms.author: robb
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 66f733d7602a8d26627fcc205f357e7a4a266d11
 ms.openlocfilehash: b76ef954d8a00e190817e3d7f8e2b064210d0357
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/22/2017
 
 

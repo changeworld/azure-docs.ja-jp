@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 03/01/2017
 ms.author: cahann
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 0a9c3b447fc1ffa6bcbe315c030303bfaa3e2dcb
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 35060acf1ebaf17175a8995e6784927bce2acb30
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/15/2017
 
 ---
 # <a name="language-understanding-intelligent-services-luis-frequently-asked-questions"></a>Language Understanding Intelligent Services (LUIS) Frequently Asked Questions
@@ -54,7 +54,7 @@ You have one of two options:
 
 The second option takes more labeling effort while the first might be easier.
 
-## <a name="i-see-some-errors-in-the-performance-analysis-pane-for-some-of-the-models-in-my-app-how-can-i-address-this-problem"></a>I see some errors in the performance analysis pane for some of the models in my app. How can I address this problem?
+## <a name="i-see-some-errors-in-the-batch-testing-pane-for-some-of-the-models-in-my-app-how-can-i-address-this-problem"></a>I see some errors in the batch testing pane for some of the models in my app. How can I address this problem?
 
 This is an indication that there is some discrepancy between your labels and the predictions from your models. You need to do one or both of the following:
 1.    Add more labels to help LUIS make the discrimination among intents better.

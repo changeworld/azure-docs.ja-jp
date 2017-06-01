@@ -14,10 +14,11 @@ ms.workload: infrastructure
 ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 758c9112539ebaedc6c8180b7e6642d5d26fa16d
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: 18501fc0fdb3174b3ec74e3dde3422b27898bf10
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -27,11 +28,11 @@ ms.lasthandoff: 04/12/2017
 
 このガイドの 5 つのパートで取り上げるトピックは次のとおりです。
 
-- [概要とアーキテクチャ](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [インフラストラクチャと接続](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [SAP HANA のインストール](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [高可用性と障害復旧](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [トラブルシューティングと監視](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure での SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [SAP HANA on Azure (L インスタンス) のインストールと構成の方法](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure での SAP HANA (L インスタンス) の高可用性とディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [SAP HANA on Azure (L インスタンス) のトラブルシューティングと監視の方法](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="definitions"></a>定義
 
@@ -132,7 +133,7 @@ L インスタンス スタンプの完全なインフラストラクチャは 1
 - Azure とは異なり、SAP HANA on Azure (L インスタンス) サーバーは特定のお客様に専用のサーバーです。 サーバーを再起動またはシャットダウンしても、オペレーティング システムと SAP HANA が別のサーバーにデプロイされることはありません  (唯一の例外は、サーバーで問題が発生している可能性があり、別のブレードで再デプロイを実行する必要がある場合です)。
 - Azure とは異なり、価格/パフォーマンス比が最も高くなるようにホスト プロセッサの種類を選択する場合は、Intel E7v3 プロセッサ ラインの最もパフォーマンスが高いプロセッサが SAP HANA on Azure (L インスタンス) 用に選択されます。
 
-複数のお客様が SAP HANA on Azure (L インスタンス) ハードウェアでのデプロイを実行し、独自の VLAN にデプロイすることでハードウェアが相互に保護されます。 HANA L インスタンスを Azure Virtual Network (VNet) に接続するために、適切なネットワーク コンポーネントによって、ハードウェア インフラストラクチャ内の Azure VNet の IP アドレス範囲と VLAN の IP アドレス空間の間のネットワーク アドレス変換 (NAT) が行われます。
+複数のお客様が SAP HANA on Azure (L インスタンス) ハードウェアでのデプロイを実行し、独自の VLAN にデプロイすることでハードウェアが相互に保護されます。 HANA L インスタンスを Azure Virtual Network (VNet) に接続するために、しかるべきネットワーク コンポーネントにより、テナントの Azure サブスクリプションの Azure VNet に対し、隔離された方法でその HANA L インスタンス ユニットが接続されます。 
 
 ## <a name="operations-model-and-responsibilities"></a>運用モデルと責任
 
@@ -179,11 +180,11 @@ HANA L インスタンスの基になるインフラストラクチャは、OS �
 
 通常、HANA L インスタンスのサイズ変更は HANA のサイズ変更とまったく同じです。 デプロイ済みの既存のシステムでは、他の RDBMS から HANA への移動が必要な場合があり、既存の SAP システムで実行する複数のレポートが SAP から提供されています。 これらはデータを確認し、HANA にデータベースを移動する場合のテーブルのメモリ要件を計算します。 これらのレポートを実行する方法、およびレポートの最新の修正プログラム/バージョンを入手する方法の詳細については、次の SAP ノートを参照してください。
 
-- SAP Note #1793345 - Sizing for SAP Suite on HANA (SAP ノート #1793345 - HANA での SAP Suite のサイズ変更)
-- SAP Note #1872170 - Suite on HANA and S/4 HANA sizing report (SAP ノート #1872170 - Suite on HANA および S/4 HANA のサイズ変更レポート)
-- SAP Note #2121330 - FAQ: SAP BW on HANA Sizing Report (SAP ノート #2121330 - FAQ: SAP BW on HANA のサイズ変更レポート)
-- SAP Note #1736976 - Sizing Report for BW on HANA (SAP ノート #1736976 - BW on HANA のサイズ変更レポート)
-- SAP Note #2296290 - New Sizing Report for BW on HANA (SAP ノート #2296290 - BW on HANA の新しいサイズ変更レポート)
+- [SAP Note #1793345 - Sizing for SAP Suite on HANA (SAP ノート #1793345 - HANA での SAP Suite のサイズ変更)](https://launchpad.support.sap.com/#/notes/1793345)
+- [SAP Note #1872170 - Suite on HANA and S/4 HANA sizing report (SAP ノート #1872170 - Suite on HANA および S/4 HANA のサイズ変更レポート)](https://launchpad.support.sap.com/#/notes/1872170)
+- [SAP Note #2121330 - FAQ: SAP BW on HANA Sizing Report (SAP ノート #2121330 - FAQ: SAP BW on HANA のサイズ変更レポート)](https://launchpad.support.sap.com/#/notes/2121330)
+- [SAP Note #1736976 - Sizing Report for BW on HANA (SAP ノート #1736976 - BW on HANA のサイズ変更レポート)](https://launchpad.support.sap.com/#/notes/1736976)
+- [SAP Note #2296290 - New Sizing Report for BW on HANA (SAP ノート #2296290 - BW on HANA の新しいサイズ変更レポート)](https://launchpad.support.sap.com/#/notes/2296290)
 
 緑色のフィールドの実装では、SAP Quick Sizer を使用して、HANA 上への SAP ソフトウェアの実装に必要なメモリを計算できます。
 
@@ -217,7 +218,9 @@ SAP HANA on Azure (L インスタンス) を実行する場合の要件があり
 > Microsoft が提供するオペレーティング システムは Red Hat に登録されません。また、Red Hat Subscription Manager インスタンスにも接続されません。
 
 - Azure VM 上の Azure にデプロイされる Red Hat Subscription Manager。 これにより、SAP HANA on Azure (L インスタンス) を Red Hat で登録し、個々に更新できるようになります (Azure L インスタンス スタンプにデプロイされたテナント内から直接インターネットにアクセスできないため)。
-- 特定の Linux バージョンのサブスクリプションに明示的に含まれる Linux プロバイダーのサービスとサポート用の連絡先、または使用される特定の Linux バージョンに対応し、SAP の条件を満たしているその他のサービスとサポート用の連絡先。
+- SAP が定める要件上、Linux プロバイダーとのサポート契約も必要です。 HANA L インスタンスのソリューションであるということ、または Linux を Azure 内で実行するという事実によって、この要件がなくなるわけではありません。 いくつかの Linux Azure ギャラリー イメージとは異なり、HANA L インスタンスのソリューション プランにサービス使用料は含まれません。 Linux ディストリビューターとのサポート契約に関して、お客様ご自身で SAP の要件を満たす必要があります。   
+   - SUSE Linux については、「[SAP Note #1984787 - SUSE LINUX Enterprise Server 12: Installation notes (SAP ノート #1984787 - SUSE LINUX Enterprise Server 12: インストールに関する注意事項)](https://launchpad.support.sap.com/#/notes/1984787)」と「[SAP Note #1056161 - SUSE Priority Support for SAP applications (SAP ノート #1056161 - SAP アプリケーションの SUSE 優先サポート)](https://launchpad.support.sap.com/#/notes/1056161)」でサポート契約の要件を確認してください。
+   - Red Hat Linux の場合、サポートとサービス (HANA L インスタンスのオペレーティング システムに対する更新) を含んだ適切なサブスクリプション レベルを満たしている必要があります。 サポートとサービスに関して、Red Hat は "RHEL for SAP Business Applications" サブスクリプションの取得を推奨しています。 詳しくは、「[SAP Note #2002167 - Red Hat Enterprise Linux 7.x: Installation and Upgrade (SAP ノート #2002167 - Red Hat Enterprise Linux 7.x: インストールとアップグレード)](https://launchpad.support.sap.com/#/notes/2002167)」と「[SAP ノート #1496410 - Red Hat Enterprise Linux 6.x: インストールとアップグレード](https://launchpad.support.sap.com/#/notes/1496410)」をご覧ください。
 
 **データベース:**
 
@@ -235,6 +238,19 @@ SAP HANA on Azure (L インスタンス) を実行する場合の要件があり
 - "SAP HANA Installation" の資格を持つ担当者。
 - SAP HANA に関連する高可用性と障害復旧を設計するための SAP アーキテクトのスキル。
 
+
+## <a name="storage"></a>Storage
+
+SAP HANA on Azure (L インスタンス) のストレージ レイアウトは、SAP により推奨されたベスト プラクティスを使用し、SAP HANA on Azure サービス管理によって構成されています。詳細はホワイト ペーパー『[SAP HANA Storage Requirements (SAP HANA ストレージ要件)](http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)』を参照してください。
+
+HANA L インスタンスには通常、ストレージ容量の 4 倍のメモリが搭載されます。 このユニットには、HANA ログ バックアップを保存するためのボリュームが用意されています。 詳しくは、「[SAP HANA on Azure (L インスタンス) のインストールと構成の方法](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
+
+バックアップ/復元やディザスター リカバリーを目的としてストレージ スナップショットを利用するかどうかは、お客様が選択できます。 この点について詳しくは、「[Azure での SAP HANA (L インスタンス) の高可用性とディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
+
+### <a name="encryption-of-data-at-rest"></a>保存データの暗号化
+HANA L インスタンス用のストレージでは、ディスクに保存されるデータを透過的に暗号化することができます。 HANA L インスタンス ユニットのデプロイ時に、このタイプの暗号化を有効にするかどうかをお客様が選択できます。 また、暗号化の対象ボリュームをデプロイ後に変更することもできます。 非暗号化ボリュームから暗号化ボリュームへの移行は透過的に行われ、ダウンタイムは発生しません。 
+
+
 ## <a name="networking"></a>ネットワーク
 
 Azure ネットワークのアーキテクチャは、SAP アプリケーションのデプロイを成功させるための重要な要素です。 通常、SAP HANA on Azure (L インスタンス) デプロイメントには、サイズとデータベース、CPU リソース使用量、メモリ使用量が異なる複数の SAP ソリューションを含む大規模な SAP ランドスケープが存在します。 SAP HANA に基づくこのような SAP システムは 1 つまたは 2 つだけである可能性が高いため、SAP ランドスケープは次のコンポーネントを活用するハイブリッド構成になる場合がほとんどです。
@@ -251,23 +267,26 @@ Azure にデプロイされた SAP システムにおける Azure ネットワ�
 - Azure Virtual Network (VNet) は、オンプレミスのネットワークに接続する Azure ExpressRoute 回線に接続する必要があります。
 - 通常、ExpressRoute 回線には 1 Gbps 以上の帯域幅が必要です。 これにより、オンプレミスのシステムと Azure VM で実行するシステム間のデータ転送 (およびオンプレミスのエンド ユーザーから Azure システムへの接続) に十分な帯域幅を確保できます。
 - Azure 内のすべての SAP システムを Azure VNet で設定して、相互通信を可能にする必要があります。
-- オンプレミスでホストされる Active Directory と DNS は、ExpressRoute 経由で Azure に拡張されます。
+- オンプレミスでホストされる Active Directory と DNS は、ExpressRoute 経由でオンプレミスから Azure に拡張されます。
 
-**推奨事項:**Azure 上の完全な SAP ランドスケープを、単一の Azure サブスクリプション内にデプロイします。 SAP ランドスケープ内における多くの手順では、SAP の開発、テスト、および実稼働インスタンス間の透過的な少数のネットワーク接続が必要です。SAP NetWeaver アーキテクチャには、これらの異なるインスタンス間の透過的なネットワークに依存する多くの自動作用があります。 そのため、1 つの Azure サブスクリプションで完全な SAP ランドスケープを保持することを (そのランドスケープが複数の Azure リージョンにわたってデプロイされる場合であっても) 強くお勧めします。
-
-SAP HANA on Azure (L インスタンス) に関連するアーキテクチャとプロセスは上記の推奨事項に基づいて構築されます。
 
 > [!NOTE] 
 > 1 つの Azure サブスクリプションは、特定の Azure リージョン内の L インスタンス スタンプの 1 つのテナントにのみリンクできます。逆に言うと、1 つの L インスタンス スタンプのテナントを 1 つの Azure サブスクリプションにのみリンクできます。
 
-SAP HANA on Azure (L インスタンス) を 2 つの異なる Azure リージョンにデプロイすると、別のテナントが L インスタンス スタンプにデプロイされます。 ただし、2 つのインスタンスが同じ SAP ランドスケープに含まれている限り、それらは同じ Azure サブスクリプションに属すると想定できます。
+SAP HANA on Azure (L インスタンス) を 2 つの異なる Azure リージョンにデプロイすると、別のテナントが L インスタンス スタンプにデプロイされます。 ただし、2 つのインスタンスが同じ SAP ランドスケープに含まれている限り、それらは同じ Azure サブスクリプションで実行することができます。 
 
 > [!IMPORTANT] 
 > Azure Resource Management デプロイメントは SAP HANA on Azure (L インスタンス) でサポートされます。
 
+### <a name="internet-connectivity-of-hana-large-instances"></a>HANA L インスタンスのインターネット接続
+HANA L インスタンスには、インターネットとの間に直接的な接続がありません。 そのため機能上の制約が生じます (OS イメージを直接 OS ベンダーに登録できないなど)。 ローカル SLES SMT サーバーや RHEL サブスクリプション マネージャーに対する作業が必要となる場合があります。
+
+### <a name="data-encryption-between-azure-vms-and-hana-large-instances"></a>Azure VM と HANA L インスタンス間のデータの暗号化
+HANA L インスタンスと Azure VM 間で転送されるデータは暗号化されません。 ただし HANA DBMS 側と JDBC/ODBC ベースのアプリケーションとの間で純粋にデータを交換する目的であれば、トラフィックを暗号化することが可能です。 [SAP から提供されているこちらのドキュメント](http://help-legacy.sap.com/saphelp_hanaplatform/helpdata/en/db/d3d887bb571014bf05ca887f897b99/content.htm?frameset=/en/dd/a2ae94bb571014a48fc3b22f8e919e/frameset.htm&current_toc=/en/de/ec02ebbb57101483bdf3194c301d2e/plain.htm&node_id=20&show_children=false)をご覧ください。  
+
 ### <a name="additional-azure-vnet-information"></a>Azure VNet の追加情報
 
-Azure VNet を ExpressRoute に接続するには、Azure ゲートウェイを作成する必要があります (「[ExpressRoute 用の仮想ネットワーク ゲートウェイについて](../../../expressroute/expressroute-about-virtual-network-gateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照)。 Azure ゲートウェイを使用すると、Azure の外部にあるインフラストラクチャ (または Azure L インスタンス スタンプ) への ExpressRoute 接続を確立したり、Azure VNet 間を接続したりできます (「[PowerShell を使用した Resource Manager の VNet 間接続の構成](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照)。 Azure ゲートウェイは最大 4 つの異なる ExpressRoute に接続できます (ExpressRoute の接続元が異なる MS Enterprise Exchange (MSEE) である場合のみ)。
+Azure VNet を ExpressRoute に接続するには、Azure ゲートウェイを作成する必要があります (「[ExpressRoute 用の仮想ネットワーク ゲートウェイについて](../../../expressroute/expressroute-about-virtual-network-gateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照)。 Azure ゲートウェイを使用すると、Azure の外部にあるインフラストラクチャ (または Azure L インスタンス スタンプ) への ExpressRoute 接続を確立したり、Azure VNet 間を接続したりできます (「[PowerShell を使用した Resource Manager の VNet 間接続の構成](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照)。 Azure ゲートウェイは最大 4 つの異なる ExpressRoute に接続できます (ExpressRoute の接続元が異なる MS Enterprise Edges (MSEE) である場合のみ)。  詳しくは、「[Azure での SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。 
 
 > [!NOTE] 
 > Azure ゲートウェイが提供するスループットは 2 つのユース ケースで異なります (「[VPN Gateway について](../../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照)。 ExpressRoute 接続を使用して VNet ゲートウェイで実現する最大スループットは 10 Gbps です。 Azure VNet 内の Azure VM とオンプレミスのシステム間で (単一のコピー ストリームとして) ファイルをコピーすると、複数のゲートウェイ SKU の最大限のスループットを確保できません。 VNet ゲートウェイのすべての帯域幅を活用するには、複数のストリームを使用するか、1 つのファイルのパラレル ストリームで複数のファイルをコピーする必要があります。
@@ -296,7 +315,12 @@ SAP アプリケーション インスタンスをホストする Azure VM 用�
 
 ### <a name="multiple-sap-systems-or-large-sap-systems"></a>複数の SAP システムまたは大規模な SAP システム
 
-SAP HANA on Azure (L インスタンス) に接続する複数の SAP システムまたは大規模な SAP システムがデプロイされる場合は、HighPerformance VNet ゲートウェイ SKU のスループットがボトルネックになる可能性があると想定することが妥当です。 その場合は、UltraPerformance SKU を選択してください (使用可能な場合)。 ただし、HighPerformance SKU (最大 2 Gbps) しか使用できない場合や、UltraPerformance SKU (最大 10 Gbps) では不十分な可能性がある場合は、アプリケーション層を複数の Azure VNet に分割する必要があります。
+SAP HANA on Azure (L インスタンス) に接続する複数の SAP システムまたは大規模な SAP システムがデプロイされる場合は、HighPerformance VNet ゲートウェイ SKU のスループットがボトルネックになる可能性があると想定することが妥当です。 その場合は、UltraPerformance SKU を選択してください (使用可能な場合)。 ただし、HighPerformance SKU (最大 2 Gbps) しか使用できない場合や、UltraPerformance SKU (最大 10 Gbps) では不十分な可能性がある場合は、アプリケーション層を複数の Azure VNet に分割する必要があります。 また次のようなケースでは、HANA L インスタンスに接続する特別な VNet を作成することをお勧めします。
+
+- NFS 共有のホストとなる Azure 内の VM に対して HANA L インスタンス内の HANA インスタンスから直接バックアップを実行する。
+- HANA L インスタンス ユニットから、バックアップ ファイルなど大きなファイルを Azure 内の管理されたディスク領域にコピーする。
+
+ストレージを管理する VM を別個の VNet でホストすれば、HANA L インスタンスから Azure に大きなファイルやデータが転送されることによる影響が、VNet ゲートウェイ (SAP アプリケーション レイヤーを実行する VM に対してサービスを提供する) に及ぶことはありません。 
 
 スケーラブルなネットワーク アーキテクチャでは次のように対応します。
 
@@ -307,36 +331,8 @@ SAP HANA on Azure (L インスタンス) に接続する複数の SAP システ�
 
 ![複数の Azure VNet にわたる SAP アプリケーション層のデプロイ](./media/hana-overview-architecture/image4-networking-architecture.png)
 
-上の図に示すように、SAP アプリケーション層 (コンポーネント) を複数の Azure VNet にわたってデプロイした場合、Azure VNet でホストされるアプリケーション間の通信時に発生する待機時間のオーバーヘッドを回避できませんでした。 既定では、異なる VNet にある Azure VM 間のネットワーク トラフィックは、この構成では MSEE ルーター経由で発生します。 ただし、2016 年 9 月以降、これを回避して最適化できます。 2 つの VNet 間の通信を最適化し、遅延時間を削減する方法は、同じリージョン内の Azure VNet をピアリングすることです。 これは、サブスクリプションが異なっていても行われます。 Azure VNet のピアリングを使用することで、2 つの異なる Azure VNet 内の VM 間の通信は、Azure ネットワークのバックボーンを使用して直接的に相互に通信できます。 その結果、VM が同じ VNet 内に存在する場合と同様の遅延時間が示されます。 これに対し、Azure VNet ゲートウェイ経由で接続される IP アドレス範囲のトラフィックは、VNet の個別の VNet ゲートウェイ経由でルーティングされます。 Azure VNet のピアリングの詳細については、「[VNet ピアリング](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview)」を参照してください。
-### <a name="minimal-deployment"></a>最小限のデプロイメント
+上の図に示すように、SAP アプリケーション層 (コンポーネント) を複数の Azure VNet にわたってデプロイした場合、Azure VNet でホストされるアプリケーション間の通信時に発生する待機時間のオーバーヘッドを回避できませんでした。 既定では、異なる VNet にある Azure VM 間のネットワーク トラフィックは、この構成では MSEE ルーター経由で発生します。 ただし、2016 年 9 月以降、これを回避して最適化できます。 2 つの VNet 間の通信を最適化し、遅延時間を削減する方法は、同じリージョン内の Azure VNet をピアリングすることです。 これは、サブスクリプションが異なっていても行われます。 Azure VNet のピアリングを使用することで、2 つの異なる Azure VNet 内の VM 間の通信は、Azure ネットワークのバックボーンを使用して直接的に相互に通信できます。 その結果、VM が同じ VNet 内に存在する場合と同様の遅延時間が示されます。 これに対し、Azure VNet ゲートウェイ経由で接続される IP アドレス範囲のトラフィックは、VNet の個別の VNet ゲートウェイ経由でルーティングされます。 Azure VNet のピアリングの詳細については、「[VNet ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)」を参照してください。
 
-小規模な SAP システム (最小限のデプロイメント) では、Azure VM がネイティブの Azure (1 つの VNet 内) で SAP アプリケーション層をホストし、ExpressRoute 経由で L インスタンス スタンプに接続します。 SAP HANA on Azure (L インスタンス) を使用するための準備を行うには、次の手順に従ってください。
-
-- 次に示す 4 つの異なる IP アドレス範囲に関連する情報を収集します。
-
-  1. P2P 接続用の /29 アドレス範囲。ExpressRoute 回線に使用します。
-  
-  2. /24 (推奨) の一意の CIDR ブロック。SAP HANA on Azure (L インスタンス) に必要な特定の IP アドレスの割り当てに使用します。
-  3. Azure VNet テナントのサブネット用の 1 つ以上の /24 (推奨) の CIDR ブロック。 これらは、SAP 関連の Azure VM が含まれるお客様の Azure サブスクリプション内のサブネットです。このアドレスを使用すると、SAP HANA on Azure (L インスタンス) にアクセスできます。 サブネットごとにテナントのアドレス ブロックが 1 つ必要です。隣接していて同じ VNet にあるブロックは集約される場合があります。
-  4. VNet ゲートウェイ サブネットの 1 つの /28 (P2S ネットワークが必要な場合は、/27 を使用してください)。
-
-  - 最初の 2 つの範囲は必須です (Azure サブスクリプションとリージョンに 1 つずつ)。 上記の項目 3 と 4 の IP アドレス範囲は Azure VNet ごとに必要になります。1 つの VNet 内に複数のサブネット/テナントが必要な場合は、項目 3 について複数の範囲を指定してください。
-![SAP HANA on Azure (L インスタンス) の最小限のデプロイメントに必要な IP アドレス範囲](./media/hana-overview-architecture/image5-ip-address-range-a.png)
-
-  -  Azure VNet に複数のテナントのサブネットを構成する場合は、次のようになります。![Azure VNet のアドレス空間が隣接する IP アドレス範囲](./media/hana-overview-architecture/image6-ip-address-range-b.png)
-
-> [!IMPORTANT] 
-> 上で指定した各 IP アドレス範囲がその他の範囲と重複しないようにしてください。他の範囲のサブネットでない個別の範囲を使用する必要があります。 Azure VNet には項目 3 と 4 で定義したアドレスだけを適用する必要があり、その他のアドレスはすべて L インスタンスの接続とルーティングに使用されます。 また、ベスト プラクティスとして、アドレス空間のアドレスの範囲がサブネット範囲と一致するようにし、空の空間や未割り当ての空間が含まれないようにしてください。 項目 1 と 2 で定義した範囲と項目 3 と 4 で定義した範囲が重複する場合、Azure VNet は ExpressRoute 回線に接続しません。
-
-- Azure サブスクリプションと L インスタンス スタンプの間の ExpressRoute 回線は Microsoft が作成します。
-- L インスタンス スタンプにネットワーク テナントを作成します。
-- Azure VNet 内で指定された範囲の IP アドレスを受け入れるために、SAP HANA on Azure (L インスタンス) インフラストラクチャでネットワークを構成します。このインフラストラクチャは HANA L インスタンスと通信します。
-- L インスタンス スタンプのお客様のテナントでネットワーク アドレス変換 (NAT) を設定します (テナントの内部 IP アドレスが Azure 用のテナントで定義された IP アドレスにマップされるようにするため)。
-- 購入した SAP HANA on Azure (L インスタンス) SKU に応じて、テナント ネットワークにコンピューティング ユニットを割り当て、ストレージを割り当ててマウントし、オペレーティング システム (SUSE または RedHat Linux) をインストールします。
-
-SAP HANA on Azure (L インスタンス) のネットワーク アーキテクチャの最小限のデプロイメント:
-
-![最小限のデプロイメントと IP アドレス範囲](./media/hana-overview-architecture/image7-minimal-deployment.png)
 
 ### <a name="routing-in-azure"></a>Azure でのルーティング
 
@@ -344,14 +340,14 @@ SAP HANA on Azure (L インスタンス) のネットワーク ルーティン�
 
 1. SAP HANA on Azure (L インスタンス) には、専用の ExpressRoute 接続の Azure VM からのみアクセスできます。オンプレミスから直接アクセスすることはできません。 そのため、直接アクセスを必要とする管理クライアントやアプリケーション (オンプレミスで実行する SAP Solution Manager など) は SAP HANA データベースに接続できません。
 
-2. SAP HANA on Azure (L インスタンス) には定義済みの NAT プールから IP アドレスが割り当てられます。 この IP アドレスには、Azure サブスクリプションと ExpressRoute を経由してアクセスできます。 この IP アドレスは NAT プールに含まれているため、環境内で追加のネットワーク構成を実行する必要があります。 詳細については、SAP HANA のインストールに関連する記事を参照してください。
+2. SAP HANA on Azure (L インスタンス) ユニットには、お客様が提出したサーバー IP プールのアドレス範囲から IP アドレスが割り当てられます (詳しくは「[Azure での SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください)。  この IP アドレスには、Azure VNet を HANA on Azure (L インスタンス) に接続する ExpressRoute と Azure サブスクリプションを介してアクセスできます。 サーバー IP プールのアドレス範囲から割り当てられる IP アドレスは、このソリューションの最初のデプロイにおけるケースであるため、直接ハードウェア ユニットに割り当てられ、NAT 変換されません。 
 
 > [!NOTE] 
-> "_データ ウェアハウス_" のシナリオ (直接実行されている SAP HANA データベースにアプリケーションまたはエンド ユーザーが接続する必要がある) で SAP HANA on Azure (L インスタンス) に接続する必要がある場合は、別のネットワーク コンポーネントを使用してください (データを相互にルーティングするためのリバース プロキシ)。 たとえば、仮想ファイアウォール/トラフィック ルーティング ソリューションとして Azure にデプロイする F5 BIG-IP (および Traffic Manager) などです。
+> "_データ ウェアハウス_" のシナリオ (直接実行されている SAP HANA データベースにアプリケーションまたはエンド ユーザーが接続する必要がある) で SAP HANA on Azure (L インスタンス) に接続する必要がある場合は、別のネットワーク コンポーネントを使用してください (データを相互にルーティングするためのリバース プロキシ)。 たとえば、仮想ファイアウォール/トラフィック ルーティング ソリューションとして Azure にデプロイする F5 BIG-IP や NGINX (および Traffic Manager) などです。
 
 ### <a name="leveraging-in-multiple-regions"></a>複数のリージョンでの活用
 
-障害復旧を除くその他の理由で SAP HANA on Azure (L インスタンス) を複数の Azure リージョンにデプロイしなければならない場合があります。 このような場合はおそらく、リージョン内の異なる VNet にデプロイされた各 VM から HANA L インスタンスにアクセスする必要があります。 複数の HANA L インスタンス サーバーの NAT 変換された IP アドレスは (ゲートウェイ経由でインスタンスに直接接続されている) Azure VNet を超えて反映されないため、前述の VNet の設計はわずかに変更されます。Azure VNet ゲートウェイは、複数の MSEE の 4 つの異なる ExpressRoute 回線を処理できます。いずれかの L インスタンス スタンプに接続される各 VNet は別の Azure リージョン内の L インスタンス スタンプに接続できます。
+障害復旧を除くその他の理由で SAP HANA on Azure (L インスタンス) を複数の Azure リージョンにデプロイしなければならない場合があります。 このような場合はおそらく、リージョン内の異なる VNet にデプロイされた各 VM から HANA L インスタンスにアクセスする必要があります。 複数の HANA L インスタンス ユニットに割り当てられた IP アドレスは (ゲートウェイ経由でインスタンスに直接接続されている) Azure VNet を超えて反映されないため、前述の VNet の設計はわずかに変更されます。Azure VNet ゲートウェイは、複数の MSEE の 4 つの異なる ExpressRoute 回線を処理できます。いずれかの L インスタンス スタンプに接続される各 VNet は別の Azure リージョン内の L インスタンス スタンプに接続できます。
 
 ![複数の Azure リージョン内の Azure L インスタンス スタンプに接続される Azure VNet](./media/hana-overview-architecture/image8-multiple-regions.png)
 

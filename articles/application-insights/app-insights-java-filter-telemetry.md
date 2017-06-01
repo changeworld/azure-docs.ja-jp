@@ -3,7 +3,7 @@ title: "Java Web アプリでの Azure Application Insights Telemetry のフィ�
 description: "監視する必要のないイベントをフィルターで除外して、テレメトリのトラフィックを削減します。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd

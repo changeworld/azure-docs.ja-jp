@@ -13,10 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/28/2017
-ms.author: stepsic
-translationtype: Human Translation
+ms.author: LADocs; stepsic
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 9f7d623ec213de6d46f59547aff9d4417ac95ede
 ms.openlocfilehash: 41aafe94d24f0e22fe2256ab213c7668b670764c
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/15/2017
 
 

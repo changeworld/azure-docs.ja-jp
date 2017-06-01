@@ -1,6 +1,6 @@
 ---
 title: "Azure Search のインデクサー | Microsoft Docs"
-description: "Azure SQL Database、DocumentDB、または Azure Storage をクロールして検索可能なデータを抽出し、Azure Search インデックスを作成します。"
+description: "Azure SQL Database、Azure Cosmos DB、または Azure Storage をクロールして検索可能なデータを抽出し、Azure Search インデックスを作成します。"
 services: search
 documentationcenter: 
 author: HeidiSteen
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 10/27/2016
+ms.date: 05/01/2017
 ms.author: heidist
-translationtype: Human Translation
-ms.sourcegitcommit: 4bcd31a200024a182ee3d5a21bcbcb621fed595f
-ms.openlocfilehash: fd46641709d260f8b468556972aae14205fdb515
-ms.lasthandoff: 01/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 52b154895fca9fc465a9c6cc2fb6bf2d5384b057
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 
@@ -28,9 +29,9 @@ ms.lasthandoff: 01/19/2017
 > * [概要](search-indexer-overview.md)
 > * [ポータル](search-import-data-portal.md)
 > * [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-> * [DocumentDB](search-howto-index-documentdb.md)
-> * [Blob Storage (プレビュー)](search-howto-indexing-azure-blob-storage.md)
-> * [Table Storage (プレビュー)](search-howto-indexing-azure-tables.md)
+> * [Azure Cosmos DB](search-howto-index-documentdb.md)
+> * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
+> * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 >
 >
 
@@ -41,7 +42,7 @@ Azure Search の **インデクサー** は、検索可能なデータとメタ�
 インデクサーは、オンデマンドで実行することも、または 15 分ごとに実行される定期的なデータ更新スケジュールで実行することもできます。 より頻繁に更新するには、Azure Search と外部データ ソースの両方のデータを同時に更新するプッシュ モデルが必要です。
 
 ## <a name="approaches-for-creating-and-managing-indexers"></a>インデクサーの作成と管理の方法
-Azure SQL や DocumentDB のように広く提供されているインデクサーでは、次の方法でインデクサーを作成したり管理したりすることができます。
+Azure SQL や Azure Cosmos DB のように広く提供されているインデクサーでは、次の方法でインデクサーを作成および管理することができます。
 
 * [Portal のデータのインポート ウィザード](search-get-started-portal.md)
 * [サービス REST API](https://msdn.microsoft.com/library/azure/dn946891.aspx)
@@ -57,7 +58,7 @@ Azure SQL や DocumentDB のように広く提供されているインデクサ�
 インデクサーは、接続文字列などの情報を保持している **データ ソース** からデータをプルします。 現在、次のデータ ソースがサポートされています。
 
 * [Azure SQL Database または Azure 仮想マシン上の SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [DocumentDB](search-howto-index-documentdb.md)
+* [Azure Cosmos DB](search-howto-index-documentdb.md)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) (PDF、Office ドキュメント、HTML、XML からテキストを抽出するために使用されます)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 
@@ -70,9 +71,9 @@ Azure SQL や DocumentDB のように広く提供されているインデクサ�
 基本的な概念の説明は以上です。次のステップとしてデータ ソースの種類ごとの要件とタスクを確認してください。
 
 * [Azure SQL Database または Azure 仮想マシン上の SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [DocumentDB](search-howto-index-documentdb.md)
+* [Azure Cosmos DB](search-howto-index-documentdb.md)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) (PDF、Office ドキュメント、HTML、XML からテキストを抽出するために使用されます)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
-* [Azure Search BLOB インデクサー (プレビュー) を使用した CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)
-* [Azure Search BLOB インデクサー (プレビュー) を使用した JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)
+* [Azure Search BLOB インデクサーを使用した CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)
+* [Azure Search BLOB インデクサーを使用した JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)
 

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/11/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
-ms.openlocfilehash: 569777b7034ebeccddf6d9ef89ee2f9fb667cc3f
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 40eb1d80830818a492c78d5091aaa9cca8d48f16
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/04/2017
 
 
 ---
@@ -68,7 +69,7 @@ Exchange で用意されているプロトコルは大きく 2 つのカテゴ�
 * **従来のプロトコル**。 従来のプロトコルは、AD FS を使用してブロックすることができます。 最新でない Office クライアント (先進認証に対応していない Office 2013 や、それより前のバージョンの Office など) へのアクセスは、この方法でブロックすることができます。
 
 ### <a name="use-ad-fs-to-block-legacy-protocol"></a>AD FS を使用して従来のプロトコルをブロックする
-従来のプロトコルを使用したアクセスは、以下の例に示した規則を使用して AD FS レベルでブロックすることができます。 一般に、次の 2 つの構成からいずれかを選ぶことになります。
+従来のプロトコルを使用したアクセスは、以下の例に示した発行承認規則を使用して AD FS レベルでブロックすることができます。 一般に、次の 2 つの構成からいずれかを選ぶことになります。
 
 #### <a name="option-1-allow-exchange-activesync-and-allow-legacy-apps-but-only-on-the-intranet"></a>オプション 1: Exchange ActiveSync を許可し、レガシ アプリケーションについては、イントラネット上でのみ許可する
 Microsoft Office 365 ID プラットフォームの AD FS 証明書利用者信頼に次の 3 つの規則を適用すると、Exchange ActiveSync トラフィック、ブラウザー トラフィック、先進認証トラフィックにアクセス権が与えられます。 エクストラネットからのレガシ アプリケーションはブロックされます。

@@ -13,12 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 04/12/2017
+ms.date: 05/09/2017
 ms.author: owend
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: a83e313413d87179b89e78d2b90a08a9bcc92fa1
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 88d0c2495a13ccf02f7d0e56ce7158ac80dcc2d5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -33,9 +34,9 @@ Excel でのサーバーへの接続は、Excel 2016 の Get Data またはそ�
 
 **Excel 2016 で接続するには**
 
-1. Excel 2016 では、**[データ]** リボンで **[外部データの取り込み]** > **[その他のデータ ソース]** > **[From Analysis Services (Analysis Services)]** をクリックします。
+1. Excel 2016 では、**[データ]** リボンで **[外部データの取り込み]** > **[その他のデータ ソース]** > **[From Analysis Services] (Analysis Services)** をクリックします。
 
-2. データ接続ウィザードで、**[サーバー名]** にクリップボードのサーバー名を貼り付けます。 そして **[ログオン資格情報]** で **[以下のユーザー名とパスワードを使用する]** を選択し、組織でのユーザー名 (たとえば nancy@adventureworks.com) とパスワードを入力します。
+2. データ接続ウィザードで、**[サーバー名]** にプロトコルや URI などのサーバー名を入力します。 そして **[ログオン資格情報]** で **[以下のユーザー名とパスワードを使用する]** を選択し、組織でのユーザー名 (たとえば nancy@adventureworks.com) とパスワードを入力します。
 
     ![Excel ログオンから接続する](./media/analysis-services-connect-excel/aas-connect-excel-logon.png)
 

@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: markvi;andkjell
-translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 9238141fc56abcb618d71e4bfd1eccb77f282c71
-ms.lasthandoff: 03/08/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 08df9939eb31c224d62d96a0d034d1cda10ba270
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -102,6 +103,7 @@ ms.lasthandoff: 03/08/2017
 | msExchAuditOwner |○ | | | |
 | msExchBlockedSendersHash |○ |○ | | |
 | msExchBypassAudit |○ | | | |
+| msExchBypassModerationLink | | |○ |Azure AD Connect バージョン 1.1.524.0 で利用可能 |
 | msExchCoManagedByLink | | |○ | |
 | msExchDelegateListLink |○ | | | |
 | msExchELCExpirySuspensionEnd |○ | | | |
@@ -430,6 +432,18 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 | msExchUCVoiceMailSettings |○ | | |ユニファイド メッセージング (UM) の有効化 - オンラインのボイス メール: Microsoft Lync Server の統合で使用され、オンプレミスの Lync Server に対して、ユーザーがオンライン サービスでボイス メールを使用していることを示します。 |
 | msExchUserHoldPolicies |○ | | |訴訟ホールド: クラウド サービスが訴訟ホールド状態のユーザーを特定できるようにします。 |
 | proxyAddresses |○ |○ |○ |Exchange Online の x500 アドレスのみが挿入されます。 |
+
+## <a name="exchange-mail-public-folder"></a>Exchange メールのパブリック フォルダー
+次の属性は、**Exchange メールのパブリック フォルダー**を有効にすると、オンプレミス Active Directory から Azure AD に同期されます。
+
+| 属性名 | PublicFolder | コメント |
+| --- | :---:| --- |
+| displayName | ○ |  |
+| mail | ○ |  |
+| msExchRecipientTypeDetails | ○ |  |
+| objectGUID | ○ |  |
+| proxyAddresses | ○ |  |
+| targetAddress | ○ |  |
 
 ## <a name="device-writeback"></a>デバイスの書き戻し
 デバイス オブジェクトは、Active Directory に作成されます。 これらのオブジェクトは、Azure AD に参加しているデバイス、またはドメインに参加している Windows 10 コンピューターです。

@@ -13,13 +13,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 736801cd7afce0fced9943e26c98e73ef471e7d4
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: ce07cf026ca9dae40afe3205685f3ab463492e39
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.lasthandoff: 04/27/2017
 このトピックでは、Azure HDInsight の Windows ベースの Hadoop クラスターで完了した YARN (Yet Another Resource Negotiator) アプリケーションのログにアクセスする方法について説明します
 
 > [!IMPORTANT]
-> このドキュメントの情報は、Windows ベースの HDInsight クラスターに固有のものです。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。 Linux ベースの HDInsight クラスター上の YARN ログへのアクセスの詳細については、「 [Access YARN application logs on Linux-based Hadoop on HDInsight (HDInsight の Linux ベースの Hadoop 上の YARN アプリケーション ログにアクセスする)](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+> このドキュメントの情報は、Windows ベースの HDInsight クラスターに固有のものです。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。 Linux ベースの HDInsight クラスター上の YARN ログへのアクセスの詳細については、「 [Access YARN application logs on Linux-based Hadoop on HDInsight (HDInsight の Linux ベースの Hadoop 上の YARN アプリケーション ログにアクセスする)](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 >
 
 

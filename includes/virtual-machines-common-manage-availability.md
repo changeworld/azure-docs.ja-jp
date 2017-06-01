@@ -7,9 +7,9 @@
 前述のようなイベントが 1 つ以上発生した場合にダウンタイムの影響を低減するため、下記のような高可用性のためのベスト プラクティスを仮想マシンに適用することをお勧めします。
 
 * [冗長性実現のために複数の仮想マシンを可用性セット内に構成する]
+* [可用性セット内の VM に管理ディスクを使用する]
 * [各アプリケーション層に対して別々の可用性セットを構成する]
 * [ロード バランサーと可用性セットを結合する]
-* [可用性セット内の VM に管理ディスクを使用する]
 
 ## <a name="configure-multiple-virtual-machines-in-an-availability-set-for-redundancy"></a>冗長性実現のために複数の仮想マシンを可用性セット内に構成する
 アプリケーションに冗長性をもたらすには、可用性セット内に 2 つ以上の仮想マシンをグループ化することをお勧めします。 このような構成により、計画済み、または計画外のメンテナンス イベント中に、少なくとも 1 つの仮想マシンが利用可能となり、99.95% の Azure SLA を満たします。 詳細については、「 [Virtual Machines の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)」を参照してください。
@@ -24,9 +24,23 @@
 <!--Image reference-->
    ![更新ドメインと障害ドメインの構成の概念図](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
 
-### <a name="managed-disk-fault-domains-and-availability-sets"></a>Managed Disk の障害ドメインと可用性セット
-[Azure Managed Disks](../articles/storage/storage-faq-for-disks.md) を使用している VM の場合、VM は管理対象の可用性セットを使用している場合に管理ディスクの障害ドメインに合わせて配置されます。 この配置により、VM に接続されたすべての管理ディスクは必ず同じ管理ディスクの障害ドメイン内にあります。 管理対象の可用性セットには、管理ディスクを持つ VM だけを作成できます。 管理ディスクの障害ドメインの数はリージョンによって異なり、管理ディスクの障害ドメインはリージョンあたり 2 つまたは 3 つになります。
+## <a name="use-managed-disks-for-vms-in-an-availability-set"></a>可用性セット内の VM に管理ディスクを使用する
+現在、管理されていないディスクを持つ VM を使用している場合は、[可用性セット内の VM を Managed Disks を使用するように変換する](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md#convert-vms-in-an-availability-set-to-managed-disks-in-a-managed-availability-set)ことを強くお勧めします。
 
+[管理ディスク](../articles/storage/storage-managed-disks-overview.md)では、可用性セットの VM のディスクが、単一障害点にならないように相互に十分に分離されるため、可用性セットの信頼性が向上します。 これは、ディスクをさまざまな記憶域クラスターに自動的に配置することによって実現されます。 ハードウェアやソフトウェアの障害によって記憶域クラスターが機能しなくなった場合、そのスタンプ上のディスクを使用する VM インスタンスだけが機能しなくなります。 
+
+![管理ディスク FD](./media/virtual-machines-common-manage-availability/md-fd.png)
+
+> [!IMPORTANT]
+> 管理対象の可用性セットに使用される障害ドメインの数は、リージョンによって異なります (リージョンあたり 2 つまたは 3 つになります)。 リージョンあたりの数を以下の表に示します。
+
+[!INCLUDE [managed-disks-common-fault-domain-region-list](managed-disks-common-fault-domain-region-list.md)]
+
+[管理されていないディスク](../articles/storage/storage-about-disks-and-vhds-windows.md#types-of-disks)を持つ VM を使用する計画がある場合は、VM の仮想ハード ディスク (VHD) が[ページ BLOB](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) として格納されているストレージ アカウント用の、以下のベスト プラクティスに従います。 
+
+1. **VM に関連付けられているすべてのディスク (OS とデータ) を同じストレージ アカウント内に保持する。**
+2. ストレージ アカウントにさらに VHD を追加する前に、**ストレージ アカウント内の管理されていないディスクの数に関する[制限](../articles/storage/storage-scalability-targets.md)を確認する。**
+3. **可用性セット内の VM ごとに個別のストレージ アカウントを使用します。** 同じ可用性セット内の複数の VM でストレージ アカウントを共有しないでください。 上のベスト プラクティスに従っていれば、異なる可用性セットの VM でストレージ アカウントを共有してもかまいません。
 
 ## <a name="configure-each-application-tier-into-separate-availability-sets"></a>各アプリケーション層に対して別々の可用性セットを構成する
 仮想マシンがすべてほぼ同一で、アプリケーションに対する役割が同じである場合は、アプリケーションの各層に対して別々の可用性セットを構成することをお勧めします。  同じ可用性セットの中に 2 つの異なる層を配置した場合、同じアプリケーション層内にあるすべての仮想マシンを一度に再起動できます。 各層に対する別々の可用性セット内に少なくとも 2 つの仮想マシンを構成することで、各層あたり 1 つ以上の仮想マシンの可用性が確保されます。
@@ -41,21 +55,11 @@
 
 複数の仮想マシン間でトラフィックを分散するためのロード バランサーが構成されていない場合、計画済みメンテナンス イベントによって、トラフィックを提供している仮想マシンのみに影響が生じ、アプリケーション層の機能停止が生じます。 同じ層の複数の仮想マシンを、同じロード バランサーと可用性セット以下に配置することで、少なくとも 1 つのインスタンスによってトラフィックの提供を継続することができます。
 
-## <a name="use-managed-disks-for-vms-in-availability-set"></a>可用性セット内の VM に管理ディスクを使用する
-現在、管理されていないディスクを持つ VM を使用している場合は、[可用性セット内の VM を Managed Disks を使用するように変換する](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md#convert-vms-in-an-availability-set-to-managed-disks-in-a-managed-availability-set)ことを強くお勧めします。
-
-[管理ディスク](../articles/storage/storage-managed-disks-overview.md)では、可用性セットの VM のディスクが、単一障害点にならないように相互に十分に分離されるため、可用性セットの信頼性が向上します。 これは、ディスクをさまざまなストレージ スケール ユニット (スタンプ) に自動的に配置することによって実現されます。 ハードウェアやソフトウェアの障害によってスタンプが機能しなくなった場合、そのスタンプ上のディスクを使用する VM インスタンスだけが機能しなくなります。 
-
-[管理されていないディスク](../articles/storage/storage-about-disks-and-vhds-windows.md#types-of-disks)を持つ VM を使用する計画がある場合は、VM の仮想ハード ディスク (VHD) が[ページ BLOB](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) として格納されているストレージ アカウント用の、以下のベスト プラクティスに従います。 
-
-1. **VM に関連付けられているすべてのディスク (OS とデータ) を同じストレージ アカウント内に保持する。**
-2. ストレージ アカウントにさらに VHD を追加する前に、**ストレージ アカウント内の管理されていないディスクの数に関する[制限](../articles/storage/storage-scalability-targets.md)を確認する。**
-3. **可用性セット内の VM ごとに個別のストレージ アカウントを使用します。** 同じ可用性セット内の複数の VM でストレージ アカウントを共有しないでください。 上のベスト プラクティスに従っていれば、異なる可用性セットの VM でストレージ アカウントを共有してもかまいません。
 
 <!-- Link references -->
 [冗長性実現のために複数の仮想マシンを可用性セット内に構成する]: #configure-multiple-virtual-machines-in-an-availability-set-for-redundancy
 [各アプリケーション層に対して別々の可用性セットを構成する]: #configure-each-application-tier-into-separate-availability-sets
 [ロード バランサーと可用性セットを結合する]: #combine-a-load-balancer-with-availability-sets
 [Avoid single instance virtual machines in availability sets]: #avoid-single-instance-virtual-machines-in-availability-sets
-[可用性セット内の VM に管理ディスクを使用する]: #use-managed-disks-for-vms-in-availability-set
+[可用性セット内の VM に管理ディスクを使用する]: #use-managed-disks-for-vms-in-an-availability-set
 

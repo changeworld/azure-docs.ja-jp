@@ -13,12 +13,13 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 04/17/2017
-ms.author: andrela;sstein;carlrab
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 119ffa3ac31e0ea6e76f8232f13b4dd8667f78aa
-ms.lasthandoff: 04/21/2017
+ms.date: 05/23/2017
+ms.author: andrela
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 4faa029062fef6495debd5d787a1d86f4747453b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -26,20 +27,23 @@ ms.lasthandoff: 04/21/2017
 
 このクイック スタートでは、Windows、Mac OS、Ubuntu Linux の各プラットフォームから [C# と ADO.NET](https://msdn.microsoft.com/library/kb9s9ks0.aspx) を使って Azure SQL データベースに接続し、Transact-SQL ステートメントを使ってデータベース内のデータを照会、挿入、更新、削除する方法について説明します。
 
+## <a name="prerequisites"></a>前提条件
+
 このクイック スタートでは、次のクイック スタートで作成されたリソースが出発点として使用されます。
 
 - [DB の作成 - ポータル](sql-database-get-started-portal.md)
 - [DB の作成 - CLI](sql-database-get-started-cli.md)
+- [DB の作成 - PowerShell](sql-database-get-started-powershell.md)
 
 ## <a name="install-net"></a>.NET のインストール
 
-このセクションの手順では、.NET による開発には慣れているが、Azure SQL Database を初めて使用するユーザーを想定しています。 .NET による開発の経験がない場合は、「[Build an app using SQL Server (SQL Server を使用してアプリを構築する)](https://www.microsoft.com/en-us/sql-server/developer-get-started/)」に移動し、**C#** を選択してから、使用しているオペレーティング システムを選択します。
+このセクションの手順では、.NET による開発には慣れているが、Azure SQL Database を初めて使用するユーザーを想定しています。 .NET による開発の経験がない場合は、「[Build an app using SQL Server (SQL Server を使用してアプリを構築する)](https://www.microsoft.com/sql-server/developer-get-started/)」に移動し、**C#** を選択してから、使用しているオペレーティング システムを選択します。
 
 ### <a name="windows-net-framework-and-net-core"></a>**Windows .NET Framework と .NET Core**
 
 Visual Studio 2017 Community は、さまざまな機能が用意された、拡張可能な無料の IDE です。Web およびデータベース アプリケーションやクラウド サービスだけでなく、Android、iOS、Windows 向けの最新のアプリケーションの作成に使用できます。 完全な .NET Framework をインストールすることも、.NET Core だけをインストールすることもできます。 どちらの場合も、このクイック スタートのコード スニペットは正しく動作します。 既にコンピューターに Visual Studio がインストールされている場合、次のいくつかの手順はスキップします。
 
-1. [インストーラー](https://go.microsoft.com/fwlink/?LinkId=691978)をダウンロードします。 
+1. [Visual Studio 2017 インストーラー](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)をダウンロードします。 
 2. インストーラーを実行し、表示されるインストールの指示に従って、インストールを完了します。
 
 ### <a name="mac-os"></a>**Mac OS**
@@ -54,7 +58,7 @@ ln -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/
 ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 ```
 
-macOS では、.NET Core をインストールします。 [公式インストーラー](https://go.microsoft.com/fwlink/?linkid=843444)をダウンロードします。 このインストーラーは、ツールをインストールしてパスに配置します。これにより、コンソールから .NET を実行できるようになります。
+macOS では、.NET Core をインストールします。 [公式インストーラー](https://go.microsoft.com/fwlink/?linkid=843444)をダウンロードします。 このインストーラーは、ツールをインストールして環境変数 PATH に追加します。これにより、コンソールから .NET を実行できるようになります。
 
 ### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
 ターミナルを開き、.NET Core プロジェクトの作成先となるディレクトリに移動します。 次のコマンドを入力して、**.NET Core** をインストールします。
@@ -70,9 +74,9 @@ sudo apt-get install dotnet-dev-1.0.1
 
 Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名、データベース名、ログイン情報が必要になります。
 
-1. [Azure Portal](https://portal.azure.com/) にログインします。
+1. [Azure ポータル](https://portal.azure.com/)にログインします。
 2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
-3. データベースの **[概要]** ページで、次の図に示すように、完全修飾サーバー名を確認します。 サーバー名をポイントすると、**[コピーするにはクリックします]** オプションが表示されます。 
+3. データベースの [**概要**] ページで、次の図に示すように、完全修飾サーバー名を確認します。 サーバー名をポイントすると、[**コピーするにはクリックします**] オプションが表示されます。 
 
    ![server-name](./media/sql-database-connect-query-dotnet/server-name.png) 
 
@@ -308,13 +312,9 @@ namespace ConsoleApplication1
 ```
 
 ## <a name="next-steps"></a>次のステップ
+- [最初の Azure SQL Database の設計](sql-database-design-first-database.md)
+- [.NET ドキュメント](https://docs.microsoft.com/dotnet/).
+- [SSMS を使用した接続とクエリ](sql-database-connect-query-ssms.md)
+- [Visual Studio Code を使用した接続とクエリ](sql-database-connect-query-vscode.md)
 
-- .NET のドキュメントについては、「[.NET ドキュメント](https://docs.microsoft.com/dotnet/)」を参照してください。
-- SQL Server Management Studio を使用して接続とクエリを実行するには、[SSMS を使用した接続とクエリ](sql-database-connect-query-ssms.md)に関するページを参照してください。
-- Visual Studio を使用して接続とデータの照会を行うには、[Visual Studio Code を使った接続とデータの照会](sql-database-connect-query-vscode.md)に関するページを参照してください。
-- PHP を使用して接続とデータの照会を行うには、[PHP を使った接続とデータの照会](sql-database-connect-query-php.md)に関するページを参照してください。
-- Node.js を使用して接続とデータの照会を行うには、[Node.js を使った接続とデータの照会](sql-database-connect-query-nodejs.md)に関するページを参照してください。
-- Java を使用して接続とデータの照会を行うには、[Java を使った接続とデータの照会](sql-database-connect-query-java.md)に関するページを参照してください。
-- Python を使用して接続とデータの照会を行うには、[Python を使った接続とデータの照会](sql-database-connect-query-python.md)に関するページを参照してください。
-- Ruby を使用して接続とデータの照会を行うには、[Ruby を使った接続とデータの照会](sql-database-connect-query-ruby.md)に関するページを参照してください。
 

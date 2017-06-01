@@ -15,15 +15,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/13/2017
 ms.author: cgronlun;tedway;olgali
-translationtype: Human Translation
-ms.sourcegitcommit: 25e1def880dbb8431e1a0cae9d8b84c6f5906315
-ms.openlocfilehash: 50963d47d030d43d1c98dfb9a5878af7b9e99d47
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 247c26b3988664bcf93fb5face6514a3dc74cebc
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/11/2017
 
 
 ---
 # <a name="introduction-to-azure-machine-learning-in-the-cloud"></a>クラウドでの Azure Machine Learning の概要
 ## <a name="what-is-machine-learning"></a>機械学習とは
-機械学習は、将来の動き、結果、傾向を予測するためにコンピューターで既存のデータからの学習を行う、データ サイエンスの手法の&1; つ です。  
+機械学習は、将来の動き、結果、傾向を予測するためにコンピューターで既存のデータからの学習を行う、データ サイエンスの手法の 1 つ です。  
 
 機械学習からのこうした予想や予測によってアプリやデバイスの機能性を高めることができます。 オンライン ショッピングでは、ユーザーが今までに購入した製品に基づいて他の商品をお勧めするのに機械学習が役立っています。 クレジット カードが読み取られると、機械学習は、トランザクションをトランザクションのデータベースと比較し、不正の検出を支援します。 ロボット掃除機が部屋を掃除するとき、機械学習は、作業が行われているかどうかを判断するのを支援します。
 
@@ -50,7 +52,7 @@ Azure Machine Learning には、大規模なアルゴリズム ライブラリ�
 * [Cortana Intelligence ギャラリー](machine-learning-gallery-how-to-use-contribute-publish.md)では、他の開発者が作成した分析ソリューションを試すことも、自分のソリューションを共有することもできます。 また、質問や実験に関するコメントをコミュニティに投稿したり、LinkedIn や Twitter などのソーシャル ネットワークで実験のリンクを共有したりすることができます。
 
   ![予測実験を試したり、自分の実験を Azure Cortana Intelligence ギャラリーに投稿したりします。](./media/machine-learning-what-is-machine-learning/machine-learning-cortana-intelligence-gallery.png)
-* Machine Learning Studio にある [Machine Learning アルゴリズムとモジュール](https://msdn.microsoft.com/library/azure/f5c746fd-dcea-4929-ba50-2a79c4c067d7) の大規模なライブラリを使用して、予測モデルをすぐに開始します。 サンプル実験、R と Python のパッケージ、Xbox や Bing など Microsoft のビジネスで使われている最高クラスのアルゴリズムを選ぶことができます。 [R](machine-learning-r-quickstart.md) と [Python](machine-learning-execute-python-scripts.md) の独自のカスタム スクリプトで Studio モジュールを拡張できます。
+* Machine Learning Studio にある [Machine Learning アルゴリズムとモジュール](https://msdn.microsoft.com/library/azure/f5c746fd-dcea-4929-ba50-2a79c4c067d7) の大規模なライブラリを使用して、予測モデルをすぐに開始します。 サンプル実験、R と Python のパッケージ、Xbox や Bing など Microsoft のビジネスで使われている最高クラスのアルゴリズムを選ぶことができます。 [R](machine-learning-extend-your-experiment-with-r.md) と [Python](machine-learning-execute-python-scripts.md) の独自のカスタム スクリプトで Studio モジュールを拡張できます。
 
   ![予測分析とは: Azure Machine Learning Studio の予測分析実験の例](./media/machine-learning-what-is-machine-learning/azure-machine-learning-studio-predictive-score-experiment.png)
 
@@ -112,9 +114,4 @@ Azure Machine Learning には、大規模なアルゴリズム ライブラリ�
 
 <!-- Module References -->
 [learning-with-counts]: https://msdn.microsoft.com/library/azure/81c457af-f5c0-4b2d-922c-fdef2274413c/
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

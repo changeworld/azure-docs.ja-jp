@@ -3,7 +3,7 @@ title: "SQL Data Warehouse システム ビュー| Microsoft Docs"
 description: "SQL Data Warehouse のシステム ビュー コンテンツへのリンク。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: kevinvngo
 manager: jhubbard
 editor: 
 ms.assetid: 21ec594b-d270-4202-a8cd-bb150e5ae12c
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: reference
 ms.date: 10/31/2016
-ms.author: barbkess
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: c73e24c13f69db893d63e9925116d860dccc1120
-ms.lasthandoff: 12/08/2016
+ms.author: kevin;barbkess
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 2c3cc25a651c9b5d9e0aa6180629abc44f2a4d89
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -165,6 +166,7 @@ SQL Data Warehouse はマイクロソフトの MPP テクノロジに基づい�
 | sys.dm_pdw_nodes_exec_requests |[sys.dm_exec_requests](http://msdn.microsoft.com/library/ms177648.aspx) |
 | sys.dm_pdw_nodes_exec_sessions |[sys.dm_exec_sessions](https://msdn.microsoft.com/en-us/library/ms176013.aspx) |
 | sys.dm_pdw_nodes_io_pending_io_requests |[sys.dm_io_pending_io_requests](http://msdn.microsoft.com/library/ms188762.aspx) |
+| sys.dm_pdw_nodes_io_virtual_file_stats |[sys.dm_io_virtual_file_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql.md) |
 | sys.dm_pdw_nodes_os_buffer_descriptors |[sys.dm_os_buffer_descriptors](http://msdn.microsoft.com/library/ms173442.aspx) |
 | sys.dm_pdw_nodes_os_child_instances |[sys.dm_os_child_instances](http://msdn.microsoft.com/library/ms165698.aspx) |
 | sys.dm_pdw_nodes_os_cluster_nodes |[sys.dm_os_cluster_nodes](http://msdn.microsoft.com/library/ms187341.aspx) |

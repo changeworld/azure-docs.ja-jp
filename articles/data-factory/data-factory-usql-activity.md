@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: b41d906d6948f0f9e3cdb38b4a478b39f55ce219
-ms.lasthandoff: 03/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 88628fb2c07ad72c646f7e3ed076e7a4b1519200
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -40,8 +41,7 @@ Azure Data Factory のパイプラインは、リンクされたコンピュー�
 > Data Lake Analytics U-SQL アクティビティでパイプラインを作成する前に、Azure Data Lake Analytics アカウントを作成します。 Azure Data Lake Analytics の詳細については、 [Azure Data Lake Analytics の使用開始](../data-lake-analytics/data-lake-analytics-get-started-portal.md)に関するページをご覧ください。
 > 
 > Data Factory、リンクされたサービス、データセット、およびパイプラインを作成する詳細な手順については、 [最初のパイプラインを作成するチュートリアル](data-factory-build-your-first-pipeline.md) に関するページを確認してください。 Data Factory エディター、Visual Studio、または Azure PowerShell と JSON のスニペットを使用して、Data Factory エンティティを作成できます。
-> 
-> 
+
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics リンク サービス
 **Azure Data Lake Analytics** リンク サービスを作成して、Azure Data Lake Analytics コンピューティング サービスを Azure Data Factory にリンクします。 パイプラインの Data Lake Analytics U-SQL アクティビティは、このリンク サービスを参照します。 
@@ -176,12 +176,14 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 | 型 |type プロパティは、 **DataLakeAnalyticsU-SQL**に設定する必要があります。 |はい |
 | scriptPath |U-SQL スクリプトを含むフォルダーのパス。 ファイル名は大文字と小文字が区別されます。 |いいえ (スクリプトを使用する場合) |
 | scriptLinkedService |Data Factory に対するスクリプトを含むストレージをリンクするリンク サービス |いいえ (スクリプトを使用する場合) |
-| script (スクリプト) |scriptPath と scriptLinkedService を指定する代わりに、インライン スクリプトを指定します。 例: "script": "CREATE DATABASE test" |いいえ (scriptPath と scriptLinkedService を使用する場合) |
+| script (スクリプト) |scriptPath と scriptLinkedService を指定する代わりに、インライン スクリプトを指定します。 たとえば、「 `"script": "CREATE DATABASE test"`」のように入力します。 |いいえ (scriptPath と scriptLinkedService を使用する場合) |
 | degreeOfParallelism |ジョブを実行するために同時に使用される最大ノード数。 |なし |
 | priority |キューされているすべてのジョブのうち、先に実行するジョブを決定します。 数値が小さいほど、優先度は高くなります。 |なし |
-| parameters |U-SQL スクリプトのパラメーター |なし |
+| parameters |U-SQL スクリプトのパラメーター |いいえ |
+| runtimeVersion | 使用する U-SQL エンジンのランタイム バージョン。 | いいえ | 
+| compilationMode | <p>U-SQL のコンパイル モード。 次のいずれかの値を指定する必要があります。</p> <ul><li>**Semantic:** セマンティック チェックと必要なサニティ チェックのみを実行します。</li><li>**Full:** 構文チェック、最適化、コード生成などを含めた完全コンパイルを実行します。</li><li>**SingleBox:** TargetType を SingleBox に設定して完全コンパイルを実行します。</li></ul><p>このプロパティの値を指定しない場合、サーバーが最適なコンパイル モードを決定します。 </p>| いいえ | 
 
-スクリプト定義については、 [SearchLogProcessing.txt のスクリプト定義](#script-definition) をご覧ください。 
+スクリプト定義については、 [SearchLogProcessing.txt のスクリプト定義](#sample-u-sql-script) をご覧ください。 
 
 ## <a name="sample-input-and-output-datasets"></a>入力データセットと出力データセットの例
 ### <a name="input-dataset"></a>入力データセット

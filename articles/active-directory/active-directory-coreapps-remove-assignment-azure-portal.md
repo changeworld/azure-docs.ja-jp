@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory プレビューでエンタープライズ アプリケーションからユーザーまたはグループの割り当てを削除する | Microsoft Docs"
+title: "Azure Active Directory でエンタープライズ アプリからユーザーまたはグループの割り当てを削除する | Microsoft Docs"
 description: "Azure Active Directory でエンタープライズ アプリケーションからユーザーまたはグループのアクセスの割り当てを削除する方法"
 services: active-directory
 documentationcenter: 
@@ -12,16 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 05/04/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b38a613a1f93d9c36254f7642655f716e048e9e3
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 02f122acfb53c2107e2b0af66c6195aa127a2c77
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/05/2017
 
 
 ---
-# <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory-preview"></a>Azure Active Directory プレビューでエンタープライズ アプリケーションからユーザーまたはグループの割り当てを削除する
-Azure Active Directory (Azure AD) プレビューで、エンタープライズ アプリケーションのいずれかに割り当てられているアクセスからユーザーまたはグループを簡単に削除できます。 [プレビューの機能については、こちらの記事をご覧ください。](active-directory-preview-explainer.md) エンタープライズ アプリケーションを管理するには、適切なアクセス許可が必要です。 現在のプレビューでは、ディレクトリの全体管理者である必要があります。
+# <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory でエンタープライズ アプリからユーザーまたはグループの割り当てを削除する
+Azure Active Directory (Azure AD) で、エンタープライズ アプリのいずれかに割り当てられているアクセスからユーザーまたはグループを簡単に削除できます。 エンタープライズ アプリを管理するには、適切なアクセス許可が必要です。また、ディレクトリの全体管理者である必要があります。
 
 ## <a name="how-do-i-remove-a-user-or-group-assignment"></a>ユーザーまたはグループの割り当てを削除する方法
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
@@ -43,9 +45,4 @@ Azure Active Directory (Azure AD) プレビューで、エンタープライズ 
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](active-directory-coreapps-assign-user-azure-portal.md)
 * [エンタープライズ アプリケーションのユーザー サインインを無効にする](active-directory-coreapps-disable-app-azure-portal.md)
 * [エンタープライズ アプリケーションの名前またはロゴを変更する](active-directory-coreapps-change-app-logo-user-azure-portal.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

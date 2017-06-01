@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory での条件付きアクセスの基本 - プレビュー | Microsoft Docs"
+title: "Azure Active Directory での条件付きアクセスの基本 | Microsoft Docs"
 description: "場所の条件を使用して、条件付きアクセスをテストします。"
 services: active-directory
 keywords: "アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー"
@@ -12,27 +12,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/23/2017
+ms.date: 05/04/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: ae60cd810b4beb26f714e2ea2566e5354c482fa8
-ms.openlocfilehash: 3022f5e27ddaf125161bbf7132b41a27024f40b6
-ms.lasthandoff: 01/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 52b65b24867906d0c574a323904d980e126bcbd2
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/05/2017
 
 
 ---
-# <a name="get-started-with-conditional-access-in-azure-active-directory---preview"></a>Azure Active Directory での条件付きアクセスの基本 - プレビュー
+# <a name="get-started-with-conditional-access-in-azure-active-directory"></a>Azure Active Directory での条件付きアクセスの基本
 
-このトピックで説明する動作は、現在[プレビュー段階](active-directory-preview-explainer.md)にあります。
-
-条件付きアクセスは、条件の定義を可能にする Azure Active Directory の&1; 機能で、この条件では、承認されたユーザーがアプリにアクセスできるようになります。 
+条件付きアクセスは、条件の定義を可能にする Azure Active Directory の 1 機能で、この条件では、承認されたユーザーがアプリにアクセスできるようになります。 
 
 このトピックでは、環境内の場所の条件に基づいて条件付きアクセスをテストするための手順を説明します。  
 
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-多くの組織で共通する要件の&1; つとして、企業のイントラネットから実行されないアプリへのアクセスに対してのみ多要素認証が必要になることが挙げられます。 Azure Active Directory を使えば、場所ベースの条件付きアクセス ポリシーを構成して、この目標を簡単に実現できます。 このトピックでは、関連するポリシーを構成するための詳細な手順を説明します。 ポリシーは[信頼できる IP](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips) を利用して、企業のイントラネットからのアクセス試行と他のすべての場所からのアクセス試行を区別します。
+多くの組織で共通する要件の 1 つとして、企業のイントラネットから実行されないアプリへのアクセスに対してのみ多要素認証が必要になることが挙げられます。 Azure Active Directory を使えば、場所ベースの条件付きアクセス ポリシーを構成して、この目標を簡単に実現できます。 このトピックでは、関連するポリシーを構成するための詳細な手順を説明します。 ポリシーは[信頼できる IP](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips) を利用して、企業のイントラネットからのアクセス試行と他のすべての場所からのアクセス試行を区別します。
 
 
 ## <a name="prerequisites"></a>前提条件

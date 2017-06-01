@@ -3,7 +3,7 @@ title: "Azure Log Analytics への Linux コンピューターの接続 | Micros
 description: "Log Analytics を使用すると、Linux コンピューターから生成されたデータを収集し、そのデータに基づいた行動を起こすことができます。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: ab5b76d8-9ab5-406e-8768-76fb0632d830
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2017
-ms.author: banders
+ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: b01b0d3d61168c1eec52f3fd040b829e0c51a878
-ms.lasthandoff: 03/30/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 10da54ebce28dfdcd0f793b1c717e738150b72ae
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -750,7 +751,7 @@ sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.conf /etc/opt/microsoft/oms
 ### <a name="azure-diagnostics"></a>Azure 診断
 Azure で実行されている Linux 仮想マシンの場合、Azure 診断と Operations Management Suite によるデータ収集を有効にするには、別途作業が必要となります。 **Version 2.2** が必要です。
 
-Diagnostic Extension for Linux のインストールと構成の詳細については、「[Azure CLI コマンドを使用して Linux Diagnostic Extension を有効にする](../virtual-machines/linux/classic/diagnostic-extension.md#use-the-azure-cli-command-to-enable-the-linux-diagnostic-extension)」を参照してください。
+Diagnostic Extension for Linux のインストールと構成の詳細については、「[Azure CLI コマンドを使用して Linux Diagnostic Extension を有効にする](../virtual-machines/linux/classic/diagnostic-extension-v2.md#use-the-azure-cli-command-to-enable-the-linux-diagnostic-extension)」を参照してください。
 
 **Linux Diagnostics Extension 2.0 から 2.2 へのアップグレード (Azure CLI ASM):**
 

@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/27/2017
+ms.date: 05/12/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: db3a68e532775728099854a46d1ad0841e38b4a8
-ms.openlocfilehash: 3161a05a051ba741cf76e149f7b5e5a4324be0a4
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: 5ce72ffef4394bf3bbe39fa420c4fcaa965ae35c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/13/2017
 
 
 ---
@@ -69,6 +70,9 @@ Get メソッドを使用して、保存した検索条件のすべてのスケ�
 ### <a name="creating-a-schedule"></a>スケジュールを作成する
 新しいスケジュールを作成するには、Put メソッドに一意のスケジュール ID を渡します。  2 つのスケジュールが同じ ID を持つことはできないことに注意してください。スケジュールに関連付けられている、保存した検索条件がそれぞれ異なるとしても同様です。  OMS コンソールでスケジュールを作成すると、スケジュール ID に対して GUID が作成されます。
 
+> [!NOTE]
+> Log Analytics API で作成する、すべての保存した検索条件、スケジュール、およびアクションは、小文字にする必要があります。
+
     $scheduleJson = "{'properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Active':'true' } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/mynewschedule?api-version=2015-03-20 $scheduleJson
 
@@ -86,7 +90,7 @@ Get メソッドを使用して、保存した検索条件のすべてのスケ�
 
 
 ## <a name="actions"></a>アクション
-スケジュールでは複数のアクションを使用できます。 アクションでは、メールの送信や Runbook の開始など、実行する&1; つ以上のプロセスを定義するか、または検索結果が条件に一致するためのしきい値を定義できます。  一部のアクションはそれらの両方を定義し、しきい値に達したときにプロセスが実行されます。
+スケジュールでは複数のアクションを使用できます。 アクションでは、メールの送信や Runbook の開始など、実行する 1 つ以上のプロセスを定義するか、または検索結果が条件に一致するためのしきい値を定義できます。  一部のアクションはそれらの両方を定義し、しきい値に達したときにプロセスが実行されます。
 
 すべてのアクションには、次の表に示したプロパティがあります。  後で説明するように、アラートの種類によって異なる追加のプロパティもあります。
 
@@ -108,6 +112,9 @@ Get メソッドと共にアクション ID を使用して、スケジュール
 ### <a name="creating-or-editing-actions"></a>アクションの作成または編集
 新しいアクションを作成するには、スケジュールに固有のアクション ID を Put メソッドに渡します。  OMS コンソールでアクションを作成するときの GUID は、そのアクション ID を定義するためのものです。
 
+> [!NOTE]
+> Log Analytics API で作成する、すべての保存した検索条件、スケジュール、およびアクションは、小文字にする必要があります。
+
 同じ保存した検索条件のアクションを編集するには、既存のアクション ID を Put メソッドに渡します。  要求の本体には、スケジュールの etag が含まれている必要があります。
 
 新しいアクションを作成するための要求の形式は、アクションの種類によって異なるため、以下のセクションに例を示しています。
@@ -118,7 +125,7 @@ Get メソッドと共にアクション ID を使用して、スケジュール
     armclient delete /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}/Actions/{Action ID}?api-version=2015-03-20
 
 ### <a name="alert-actions"></a>アラート アクション
-スケジュールには、アラート アクションを&1; つだけ指定する必要があります。  アラート アクションには、次の表に示したセクションが&1; つ以上含まれています。  それぞれについて、以下で詳しく説明します。
+スケジュールには、アラート アクションを 1 つだけ指定する必要があります。  アラート アクションには、次の表に示したセクションが 1 つ以上含まれています。  それぞれについて、以下で詳しく説明します。
 
 | セクション | 説明 |
 |:--- |:--- |
@@ -127,7 +134,7 @@ Get メソッドと共にアクション ID を使用して、スケジュール
 | 修復 |識別された問題を解決するための Runbook を Azure Automation で開始します。 |
 
 #### <a name="thresholds"></a>しきい値
-アラート アクションには、しきい値を&1; つだけ指定する必要があります。  保存した検索条件の結果が、その検索に関連付けられているアクションのしきい値に一致すると、そのアクションの他のすべてのプロセスが実行されます。  また、アクションにしきい値だけを含めて、しきい値を含まない他の種類のアクションと共に使用することもできます。
+アラート アクションには、しきい値を 1 つだけ指定する必要があります。  保存した検索条件の結果が、その検索に関連付けられているアクションのしきい値に一致すると、そのアクションの他のすべてのプロセスが実行されます。  また、アクションにしきい値だけを含めて、しきい値を含まない他の種類のアクションと共に使用することもできます。
 
 しきい値には、次の表に示したプロパティがあります。
 

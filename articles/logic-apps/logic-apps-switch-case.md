@@ -14,10 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
-ms.author: deli; LADocs
-translationtype: Human Translation
+ms.author: LADocs; deli
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
 ms.openlocfilehash: 196f6d03567cbad8e061d45be546bc86015ede2e
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/04/2017
 
 ---

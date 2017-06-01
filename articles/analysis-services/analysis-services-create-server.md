@@ -13,16 +13,17 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 04/17/2017
+ms.date: 05/16/2017
 ms.author: owend
-translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 466595773663d43ad8e25fa9ec0ec0163a3f5962
-ms.lasthandoff: 03/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 1782c7e5f7cd710d6e17a26197f9fcc84c967902
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
-# <a name="create-an-analysis-services-server"></a>Analysis Services サーバーを作成する
+# <a name="create-an-azure-analysis-services-server-in-azure-portal"></a>Azure Portal で Azure Analysis Services サーバーを作成する
 この記事では、Azure サブスクリプションで Analysis Services サーバー リソースを作成する手順について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
@@ -33,11 +34,11 @@ ms.lasthandoff: 03/24/2017
 * **リソース グループ**: 既存のリソース グループを使うか、[新しいリソース グループを作成](../azure-resource-manager/resource-group-overview.md)します。
 
 > [!NOTE]
-> Analysis Services サーバーを作成すると、新しい課金対象サービスが作成される可能性があります。 詳しくは、「[Azure Analysis Services の価格](https://azure.microsoft.com/pricing/details/analysis-services/)」をご覧ください。
+> サーバーを作成すると、新しい課金対象サービスを使用することになる場合があります。 詳しくは、「[Azure Analysis Services の価格](https://azure.microsoft.com/pricing/details/analysis-services/)」をご覧ください。
 > 
 > 
 
-## <a name="create-an-analysis-services-server"></a>Analysis Services サーバーを作成する
+## <a name="to-create-a-server-in-azure-portal"></a>Azure Portal でサーバーを作成するには
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 2. **[+ 新規]** > **[インテリジェンス + 分析]** > **[Analysis Services]** の順にクリックします。
 3. **[Analysis Services]** ブレードで、必要なフィールドを入力して **[作成]** をクリックします。
@@ -48,19 +49,12 @@ ms.lasthandoff: 03/24/2017
    * **[サブスクリプション]**: このサーバーの課金先のサブスクリプションを選びます。
    * **[リソース グループ]**: Azure リソースのコレクション管理のサポートを目的としたコンテナーです。 詳しくは、「[Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)」をご覧ください。
    * **[場所]**: この Azure データセンターの場所でサーバーをホストします。 最大のユーザー ベースに最も近い場所を選びます。
-   * **[価格レベル]**: 価格レベルを選びます。 最大 100 GB の表形式モデルがサポートされます。 詳しくは、「[Azure Analysis Services の価格](https://azure.microsoft.com/pricing/details/analysis-services/)」をご覧ください。
+   * **[価格レベル]**: 価格レベルを選びます。 最大 400 GB の表形式モデルがサポートされます。 詳しくは、「[Azure Analysis Services の価格](https://azure.microsoft.com/pricing/details/analysis-services/)」をご覧ください。
 4. **[作成]**をクリックします。
 
 通常、作成にかかる時間は 1 分未満であり、たいていはわずか数秒で終わります。 **[Add to Portal]** (ポータルに追加) を選んだ場合は、ポータルに移動して新しいサーバーを確認します。 または、**[その他のサービス]** > **[Analysis Services]** に移動し、サーバーの準備ができていることを確認します。
 
  ![ダッシュボード](./media/analysis-services-create-server/aas-create-server-dashboard.png)
-
-## <a name="automate-server-creation"></a>サーバー作成の自動化
-Azure Resource Manager テンプレート ファイルを使用して即座にサーバー プロビジョニングを自動化できます。 詳しくは、次のビデオをご覧ください。
-
->[!VIDEO https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation/player]
->
->
 
 
 ## <a name="next-steps"></a>次のステップ

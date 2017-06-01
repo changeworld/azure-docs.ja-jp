@@ -11,23 +11,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/11/2016
+ms.date: 05/03/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
-ms.openlocfilehash: 179dc3fa0c1ab534cb1116269832f3bc81c4c434
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: b1d00fb84695d2289f37647f55a7c56cf28c8c96
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 ---
 
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Azure Traffic Manager での機能低下状態のトラブルシューティング
 
-この記事では、機能低下状態になっている Azure Traffic Manager プロファイルをトラブルシューティングする方法について説明します。 このシナリオでは、.cloudapp.net ホステッド サービスの一部を参照するように Traffic Manager プロファイルを構成しているとします。 Traffic Manager の正常性を確認すると、状態が "低下" していることがわかります。
+この記事では、機能低下状態になっている Azure Traffic Manager プロファイルをトラブルシューティングする方法について説明します。 このシナリオでは、.cloudapp.net ホステッド サービスの一部を参照するように Traffic Manager プロファイルを構成しているとします。 Traffic Manager の正常性が **機能低下** 状態の場合は､1 つまたは複数のエンドポイントのステータスも**機能低下**している可能性があります｡
 
-![低下した状態](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degraded.png)
+![エンドポイントの機能低下状態](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
 
-そのプロファイルの [エンドポイント] タブに移動すると、1 つまたは複数のエンドポイントがオフライン状態になっています。
+Traffic Manager の正常性が **Inactive** 状態の場合は､両方のエンドポイントが **Disabled** されている可能性があります｡
 
-![offline](./media/traffic-manager-troubleshooting-degraded/traffic-manager-offline.png)
+![Traffic Manager の Inactive 状態](./media/traffic-manager-troubleshooting-degraded/traffic-manager-inactive.png)
 
 ## <a name="understanding-traffic-manager-probes"></a>Traffic Manager のプローブについて
 
@@ -94,9 +96,4 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 [Azure Traffic Manager コマンドレット][1]
 
 [1]: https://msdn.microsoft.com/library/mt125941(v=azure.200).aspx
-
-
-
-<!--HONumber=Nov16_HO5-->
-
 

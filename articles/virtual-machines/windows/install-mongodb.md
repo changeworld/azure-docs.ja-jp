@@ -12,31 +12,31 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2016
+ms.date: 05/11/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: ce95c31f34c86ac6fd4a7348024206bf45135995
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 5fdf061d6bf9961455377935304e9075ef4e59fa
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/12/2017
 
 
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>Azure の Windows VM に MongoDB をインストールして構成する
-[MongoDB](http://www.mongodb.org) は、高いパフォーマンスを特徴とし、広く普及しているオープン ソースの NoSQL データベースです。 この記事では、Azure の Windows Server 2012 R2 仮想マシン (VM) での MongoDB のインストールと構成について説明します。 [Azure の Linux VM に MongoDB をインストールする](../linux/install-mongodb.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)こともできます。
+[MongoDB](http://www.mongodb.org) は、高いパフォーマンスを特徴とし、広く普及しているオープン ソースの NoSQL データベースです。 この記事では、Azure の Windows Server 2012 R2 仮想マシン (VM) での MongoDB のインストールと構成について説明します。 [Azure の Linux VM に MongoDB をインストールする](../linux/install-mongodb.md)こともできます。
 
 ## <a name="prerequisites"></a>前提条件
 MongoDB をインストールして構成する前に、VM を作成し、できればそれにデータ ディスクを追加する必要があります。 VM を作成し、データ ディスクを追加するには、以下の記事を参照してください。
 
-* [Azure Portal を使用した Windows Server VM の作成](../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)または [Azure PowerShell を使用した Windows Server VM の作成](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事
-* [Azure Portal を使用した Windows Server VM へのデータ ディスクの接続](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)または [Azure PowerShell を使用した Windows Server VM へのデータ ディスクの接続](https://msdn.microsoft.com/library/mt603673.aspx)に関する記事
+* [Azure Portal](quick-create-portal.md) または [Azure PowerShell](quick-create-powershell.md) を使用して Windows Server VM を作成します。
+* [Azure Portal](attach-disk-portal.md) または [Azure PowerShell](attach-disk-ps.md) を使用して Windows Server VM にデータ ディスクを接続します。
 
-MongoDB のインストールと構成を開始するには、リモート デスクトップを使用して [Windows Server VM にログオン](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)してください。
+MongoDB のインストールと構成を開始するには、リモート デスクトップを使用して [Windows Server VM にログオン](connect-logon.md)してください。
 
 ## <a name="install-mongodb"></a>MongoDB のインストール
 > [!IMPORTANT]
 > 認証、IP アドレス バインドなどの MongoDB セキュリティ機能は既定では有効になっていません。 MongoDB を運用環境に展開する前に、セキュリティ機能を有効にすることをお勧めします。 詳細については、[MongoDB のセキュリティと認証](http://www.mongodb.org/display/DOCS/Security+and+Authentication)に関するページを参照してください。
-> 
-> 
+
 
 1. リモート デスクトップを使用して VM に接続したら、VM の **[スタート]** メニューから Internet Explorer を開きます。
 2. Internet Explorer を初めて開くときは **[お勧めのセキュリティ、プライバシー、互換性の設定を使う]** を選択し、**[OK]** をクリックします。
@@ -65,7 +65,7 @@ MongoDB のインストールと構成を開始するには、リモート デ�
      
      ![PATH 変数の構成](./media/install-mongodb/configure-path-variables.png)
      
-     MongoDB の `bin` フォルダーへのパスを追加します。 MongoDB は、通常、`C:\Program Files\MongoDB` にインストールされます。 自分の VM でのインストール パスを確認してください。 次の例では、`PATH` 変数に MongoDB の既定のインストール場所を追加しています。
+     MongoDB の `bin` フォルダーへのパスを追加します。 MongoDB は、通常は *C:\Program Files\MongoDB* にインストールされます。 自分の VM でのインストール パスを確認してください。 次の例では、`PATH` 変数に MongoDB の既定のインストール場所を追加しています。
      
      ```
      ;C:\Program Files\MongoDB\Server\3.2\bin
@@ -73,8 +73,7 @@ MongoDB のインストールと構成を開始するには、リモート デ�
      
      > [!NOTE]
      > `PATH` 変数に場所を追加していることを示すために、先頭にセミコロン (`;`) を追加してください。
-     > 
-     > 
+
 2. データ ディスクに MongoDB データ ディレクトリとログ ディレクトリを作成します。 **[スタート]** メニューの **[コマンド プロンプト]** を選択します。 次の例では、ドライブ F: にディレクトリを作成しています。
    
     ```
@@ -91,8 +90,7 @@ MongoDB のインストールと構成を開始するには、リモート デ�
    
    > [!NOTE]
    > MongoDB インスタンスが実行している間は、コマンド プロンプトのフォーカスがこのタスクに設定された状態になります。 MongoDB を実行し続けるためには、コマンド プロンプト ウィンドウを開いたままにしておく必要があります。 ただし、サービスとして MongoDB をインストールすれば、その必要はありません。詳しい手順については、以下で説明します。
-   > 
-   > 
+
 4. MongoDB のエクスペリエンスをより堅牢にするには、`mongod.exe` をサービスとしてインストールします。 サービスを作成すると、MongoDB を使用するたびにコマンド プロンプトを実行したままにする必要がなくなります。 サービスは、次のようにして作成します。データ ディレクトリとログ ディレクトリへのパスは、適宜調整してください。
    
     ```
@@ -148,19 +146,22 @@ exit
 ## <a name="configure-firewall-and-network-security-group-rules"></a>ファイアウォールおよびネットワーク セキュリティ グループの規則の構成
 これで MongoDB がインストールされました。この MongoDB は現在実行されています。次は MongoDB にリモート接続するために、Windows ファイアウォールのポートを開きます。 新しい受信規則を作成して TCP ポート 27017 を許可するには、管理 PowerShell プロンプトを開き、次のコマンドを入力します。
 
-```powerShell
-New-NetFirewallRule -DisplayName "Allow MongoDB" -Direction Inbound `
-    -Protocol TCP -LocalPort 27017 -Action Allow
+```powerahell
+New-NetFirewallRule `
+    -DisplayName "Allow MongoDB" `
+    -Direction Inbound `
+    -Protocol TCP `
+    -LocalPort 27017 `
+    -Action Allow
 ```
 
 **セキュリティが強化された Windows ファイアウォール**のグラフィカル管理ツールを使用して、規則を作成することもできます。 TCP ポート 27017 を許可する新しい受信規則を作成します。
 
-必要に応じて、既存の Azure 仮想ネットワーク サブネットの外部から MongoDB にアクセスすることを許可するネットワーク セキュリティ グループの規則を作成します。 ネットワーク セキュリティ グループの規則を作成するには、[Azure Portal](nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) または [Azure PowerShell](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を使用します。 Windows ファイアウォール規則と同様に、TCP ポート 27017 から MongoDB VM の仮想ネットワーク インターフェイスへの接続を許可します。
+必要に応じて、既存の Azure 仮想ネットワーク サブネットの外部から MongoDB にアクセスすることを許可するネットワーク セキュリティ グループの規則を作成します。 ネットワーク セキュリティ グループの規則を作成するには、[Azure Portal](nsg-quickstart-portal.md) または [Azure PowerShell](nsg-quickstart-powershell.md) を使用します。 Windows ファイアウォール規則と同様に、TCP ポート 27017 から MongoDB VM の仮想ネットワーク インターフェイスへの接続を許可します。
 
 > [!NOTE]
 > TCP ポート 27017 は、MongoDB によって使用される既定のポートです。 このポートを変更するには、`mongod.exe` サービスを手動で開始するかサービスから開始するときに、`--port` パラメーターを使用します。 ポートを変更した場合には、前の手順の Windows ファイアウォールとネットワーク セキュリティ グループの規則を更新してください。
-> 
-> 
+
 
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Windows VM に MongoDB をインストールして構成する方法を学習しました。 これで、[MongoDB のドキュメント](https://docs.mongodb.com/manual/)の高度なトピックに従って、Windows VM の MongoDB にアクセスできます。

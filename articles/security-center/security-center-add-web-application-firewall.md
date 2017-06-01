@@ -1,6 +1,6 @@
 ---
 title: "Azure Security Center で Web アプリケーション ファイアウォールを追加する | Microsoft Docs"
-description: "このドキュメントでは、Azure Security Center の推奨事項である &quot;**Web アプリケーション ファイアウォールの追加**&quot; と &quot;**アプリケーション保護を完了する**&quot; を実装する方法について説明します。"
+description: "このドキュメントでは、Azure Security Center の推奨事項である **&quot;Web アプリケーション ファイアウォールを追加する&quot;** と **&quot;アプリケーションの保護を完了する&quot;** を実装する方法について説明します。"
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/01/2016
+ms.date: 05/09/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 2286437f4ab13384f895e906ccda48ac1b4c553d
-ms.openlocfilehash: b44a0373ceca84b423984e01eee1e57a67d97cdd
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: d04a07237029953d8a9b20704d85e852ce45d867
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -39,19 +41,24 @@ Security Center では、仮想マシン上および App Service 環境 (ASE) �
    ![Add a web application firewall][2]
 3. 利用可能な場合は、既存の Web アプリケーション ファイアウォールを使用することを選択するか、または新しい WAF を作成することができます。 この例では、利用可能な既存の WAF がないため、WAF を作成します。
 4. WAF を作成するには、統合されたパートナーの一覧からソリューションを選択します。 この例では、**[Barracuda Web アプリケーション ファイアウォール]** を選択します。
-5. パートナー ソリューションに関する情報を提供する **[Barracuda Web アプリケーション ファイアウォール]** ブレードが開きます。 情報ブレードで **[作成]** クリックします。
-   ![Firewall information blade][3]
+5. パートナー ソリューションに関する情報を提供する **[Barracuda Web アプリケーション ファイアウォール]** ブレードが開きます。 情報ブレードで **[作成]** をクリックします。
+
+   ![ファイアウォール情報ブレード][3]
+
 6. **[新しい Web アプリケーション ファイアウォール]** ブレードが開きます。ここで **VM 構成手順**を実行して、**WAF 情報**を提供できます。 情報ブレードで **[VM 構成]**を選択します。
 7. **[VM 構成]** ブレードで、WAF を実行する仮想マシンの起動に必要な情報を入力します。
    ![VM configuration][4]
 8. **[新しい Web アプリケーション ファイアウォール]** ブレードに戻り、**[WAF 情報]** を選択します。 **[WAF 情報]** ブレードで、WAF 自体を構成します。 手順 7. では、WAF が実行される仮想マシンを構成できます。手順 8. では、WAF 自体をプロビジョニングできます。
 
 ## <a name="finalize-application-protection"></a>アプリケーション保護を完了する
-1. **[推奨事項]** ブレードに戻ります。 WAF を作成した後は、 **[Finalize application protection (アプリケーション保護を完了する)]**という新しいエントリが生成されています。 このエントリは、WAF によるアプリケーションの保護を有効にするには、Azure Virtual Network 内で実際に WAF を接続するプロセスを完了する必要があることを示しています。
+1. **[推奨事項]** ブレードに戻ります。 WAF を作成した後は、**[Finalize application protection] (アプリケーション保護を完了する)** という新しいエントリが生成されています。 このエントリは、WAF によるアプリケーションの保護を有効にするには、Azure Virtual Network 内で実際に WAF を接続するプロセスを完了する必要があることを示しています。
+
    ![アプリケーション保護を完了する][5]
-2. **[Finalize application protection (アプリケーション保護を完了する)]**を選択します。 新しいブレードが開きます。 トラフィックを再ルーティングする必要がある Web アプリケーションがあることが確認できます。
+
+2. **[Finalize application protection] (アプリケーション保護を完了する)** を選択します。 新しいブレードが開きます。 トラフィックを再ルーティングする必要がある Web アプリケーションがあることが確認できます。
 3. 対象の Web アプリケーションを選択します。 Web アプリケーション ファイアウォールのセットアップを完了するための手順が表示されたブレードが開きます。 手順を最後まで実行し、 **[トラフィックを制限する]**を選択します。 Security Center によって WAF が接続されます。
-   ![[トラフィックを制限する]][6]
+
+   ![トラフィックを制限する][6]
 
 > [!NOTE]
 > セキュリティ センターで複数の Web アプリケーションを保護するには、対象のアプリケーションを既存の WAF デプロイに追加します。
@@ -60,7 +67,7 @@ Security Center では、仮想マシン上および App Service 環境 (ASE) �
 
 その WAF からのログは完全に統合されます。 セキュリティ センターは、重要なセキュリティ アラートを表示できるように、ログの収集と分析を自動的に開始できます。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 このドキュメントでは、"Web アプリケーションの追加" というセキュリティ センターの推奨事項を実装する方法について説明しました。 Web アプリケーション ファイアウォールを構成する方法の詳細については、次を参照してください。
 
 * [App Service 環境の Web アプリケーション ファイアウォール (WAF) を構成する](../app-service-web/app-service-app-service-environment-web-application-firewall.md)
@@ -81,9 +88,4 @@ Security Center では、仮想マシン上および App Service 環境 (ASE) �
 [4]: ./media/security-center-add-web-application-firewall/select-vm-config.png
 [5]: ./media/security-center-add-web-application-firewall/finalize-waf.png
 [6]: ./media/security-center-add-web-application-firewall/restrict-traffic.png
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

@@ -13,32 +13,40 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 04/21/2017
+ms.date: 05/02/2017
 ms.author: nepeters
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 6bc28290f5ae0466b8e1a260d411b7eab6f12439
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: a7511a35a7b186fc424088e7ff5cbc933d325712
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 
 # <a name="manage-azure-disks-with-powershell"></a>PowerShell を使用した Azure ディスクの管理
 
-このチュートリアルでは、さまざまな種類の VM ディスクを紹介し、ディスク構成を選択する方法とディスクを作成して Azure VM に接続する方法を説明します。 このチュートリアルでは、ディスクのスナップショットの作成についても説明します。  
+Azure の仮想マシンでは、VM のオペレーティング システム、アプリケーション、データの格納にディスクを使用します。 VM を作成するときは、予測されるワークロードに適したディスクのサイズと構成を選択する必要があります。 このチュートリアルでは、VM ディスクのデプロイと管理について説明します。 内容は次のとおりです。
 
-このチュートリアルの手順は、最新バージョンの [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) モジュールを使用して行うことができます。
+> [!div class="checklist"]
+> * OS ディスクと一時ディスク
+> * データ ディスク
+> * Standard ディスクと Premium ディスク
+> * ディスクのパフォーマンス
+> * データ ディスクの接続と準備
+
+このチュートリアルには、Azure PowerShell モジュール バージョン 3.6 以降が必要です。 バージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページをご覧ください。
 
 ## <a name="default-azure-disks"></a>既定の Azure ディスク
 
 Azure 仮想マシンを作成すると、2 つのディスクが仮想マシンに自動的に接続されます。 
 
-**オペレーティング システム ディスク** - オペレーティング システム ディスクは、最大 1 TB までサイズを変更でき、VM のオペレーティング システムをホストします。  OS ディスクには、既定でドライブ文字 `c:` が割り当てられます。 OS ディスクのディスク キャッシュ構成は、OS パフォーマンスの向上のために最適化されています。 OS ディスクでアプリケーションやデータをホスト**しないでください**。 アプリケーションとデータには、この記事の後半で説明するデータ ディスクを使用してください。
+**オペレーティング システム ディスク** - オペレーティング システム ディスクは、最大 1 TB までサイズを変更でき、VM のオペレーティング システムをホストします。  OS ディスクには、既定でドライブ文字 *c:* が割り当てられます。 OS ディスクのディスク キャッシュ構成は、OS パフォーマンスの向上のために最適化されています。 OS ディスクでアプリケーションやデータをホスト**しないでください**。 アプリケーションとデータには、この記事の後半で説明するデータ ディスクを使用してください。
 
-**一時ディスク** - 一時ディスクは、VM と同じ Azure ホストに配置されているソリッド ステート ドライブを使用します。 一時ディスクは、パフォーマンスが高く、一時的なデータ処理などの操作に使用される場合があります。 ただし、VM を新しいホストに移動すると、一時ディスクに格納されているデータは削除されます。 一時ディスクのサイズは VM のサイズによって決まります。 一時ディスクには、既定でドライブ文字 `d:` が割り当てられます。
+**一時ディスク** - 一時ディスクは、VM と同じ Azure ホストに配置されているソリッド ステート ドライブを使用します。 一時ディスクは、パフォーマンスが高く、一時的なデータ処理などの操作に使用される場合があります。 ただし、VM を新しいホストに移動すると、一時ディスクに格納されているデータは削除されます。 一時ディスクのサイズは VM のサイズによって決まります。 一時ディスクには、既定でドライブ文字 *d:* が割り当てられます。
 
 ### <a name="temporary-disk-sizes"></a>一時ディスクのサイズ
 
-| 型 | VM サイズ | 一時ディスクの最大サイズ |
+| 型 | VM サイズ | 一時ディスクの最大サイズ (GB) |
 |----|----|----|
 | [汎用](sizes-general.md) | A および D シリーズ | 800 |
 | [コンピューティングの最適化](sizes-compute.md) | F シリーズ | 800 |
@@ -86,12 +94,12 @@ Premium ディスクは、SSD ベースの高性能で待機時間の短いデ�
 
 ## <a name="create-and-attach-disks"></a>ディスクを作成して接続する
 
-このチュートリアルの例を完了するには、既存の仮想マシンが必要です。 必要に応じて、この[サンプル スクリプト](../scripts/virtual-machines-windows-powershell-sample-create-vm.md)で自動的に作成できます。 このチュートリアルを実行するときは、リソース グループと VM の名前を適宜置き換えてください。
+このチュートリアルの例を完了するには、既存の仮想マシンが必要です。 必要に応じて、この[サンプル スクリプト](../scripts/virtual-machines-windows-powershell-sample-create-vm.md)で仮想マシンを作成できます。 このチュートリアルを実行するときは、リソース グループと VM の名前を適宜置き換えてください。
 
 [New-AzureRmDiskConfig](/powershell/module/azurerm.compute/new-azurermdiskconfig) を使用して、初期構成を作成します。 次の例では、サイズが 128 ギガバイトのディスクを構成します。
 
 ```powershell
-$diskConfig = New-AzureRmDiskConfig -Location westus -CreateOption Empty -DiskSizeGB 128
+$diskConfig = New-AzureRmDiskConfig -Location EastUS -CreateOption Empty -DiskSizeGB 128
 ```
 
 [New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk) コマンドを使用して、データ ディスクを作成します。
@@ -135,6 +143,17 @@ Format-Volume -FileSystem NTFS -NewFileSystemLabel "myDataDisk" -Confirm:$false
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、VM ディスクについて学習しました。 次のチュートリアルに進み、VM 構成を自動化する方法について学習してください。
+このチュートリアルでは、VM ディスクについて、次のようなトピックを学習しました。
 
-[VM 構成の自動化](./tutorial-automate-vm-deployment.md)
+> [!div class="checklist"]
+> * OS ディスクと一時ディスク
+> * データ ディスク
+> * Standard ディスクと Premium ディスク
+> * ディスクのパフォーマンス
+> * データ ディスクの接続と準備
+
+次のチュートリアルに進み、VM 構成を自動化する方法について学習してください。
+
+> [!div class="nextstepaction"]
+> [VM 構成の自動化](./tutorial-automate-vm-deployment.md)
+

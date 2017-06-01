@@ -15,10 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 04/14/2016
 ms.author: owend
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: c29a6627f712b9d89ac65e845f3ccb4fb87bf8fb
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 6457b7d30b12a7bb138f9912e21418742814be09
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -34,7 +35,7 @@ Power BI Desktop や Excel などの Microsoft クライアント アプリケ�
 クライアント接続用のクライアント ライブラリは、Azure Analysis Services サーバーをデータ ソースに接続するために必要なデータ プロバイダーとは異なります。 データソース接続について詳しくは、「[Datasource connections](analysis-services-datasource.md)」(データソース接続) をご覧ください。
 
 ## <a name="download-the-latest-preview-client-libraries"></a>最新**プレビュー** クライアント ライブラリのダウンロード  
-次のクライアント ライブラリを使用して、最新のバグ修正と更新プログラムを取得します。 Azure Analysis Services または SQL Server vNext Analysis Services に接続するときには、これらをお勧めします。
+次のクライアント ライブラリを使用して、最新のバグ修正と更新プログラムを取得します。 Azure Analysis Services または SQL Server 2017 Analysis Services に接続するときには、これらをお勧めします。
 
 [MSOLAP (amd64) プレビュー](http://download.microsoft.com/download/4/8/2/482E5799-9B8E-4724-8A4C-F301BAE788EE/14.0.500.170/amd64/SQL_AS_OLEDB.msi)</br>
 [MSOLAP (x86) プレビュー](http://download.microsoft.com/download/4/8/2/482E5799-9B8E-4724-8A4C-F301BAE788EE/14.0.500.170/x86/SQL_AS_OLEDB.msi)</br>

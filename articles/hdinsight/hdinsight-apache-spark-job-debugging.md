@@ -1,5 +1,5 @@
 ---
-title: "Azure HDInsight の Apache Spark クラスターで実行されるジョブのデバッグ | Microsoft Docs"
+title: "Azure HDInsight で実行される Apache Spark ジョブのデバッグ | Microsoft Docs"
 description: "Azure HDInsight の Spark クラスターで実行されるジョブの追跡とデバッグには、YARN UI、Spark UI、Spark History Server を使用します。"
 services: hdinsight
 documentationcenter: 
@@ -17,16 +17,16 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: d6d7c0d112778172633fa068a119ba075c0fd900
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: df647b77f5f826b7f852bea981bc92089852b35a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 01/24/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
-# <a name="track-and-debug-jobs-running-on-apache-spark-cluster-in-hdinsight"></a>HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ
+# <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Azure HDInsight で実行される Apache Spark ジョブのデバッグ
 
-この記事では、YARN UI と Spark UI、Spark History Server を使用して Spark ジョブの追跡とデバッグを行う方法について説明します。 この記事では、「 **Machine Learning: MLlib を使用した食品検査データの予測分析**」で使用した Spark クラスターのノートブックを使用して Spark ジョブを実行します。 他の方法 ( **spark-submit**など) で送信したアプリケーションについても、以下の手順に従って追跡することができます。
+この記事では、YARN UI と Spark UI、Spark History Server を使用して、HDInsight 上で実行される Spark ジョブの追跡とデバッグを行う方法について説明します。 この記事では、「 **Machine Learning: MLlib を使用した食品検査データの予測分析**」で使用した Spark クラスターのノートブックを使用して Spark ジョブを実行します。 他の方法 ( **spark-submit**など) で送信したアプリケーションについても、以下の手順に従って追跡することができます。
 
 ## <a name="prerequisites"></a>前提条件
 次のものが必要です。

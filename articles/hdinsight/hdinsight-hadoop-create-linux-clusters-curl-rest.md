@@ -1,6 +1,6 @@
 ---
-title: "cURL と REST を使用して Azure HDInsight (Hadoop) を作成する | Microsoft Docs"
-description: "cURL、Azure Resource Manager テンプレート、および Azure REST API を使用して HDInsight クラスターを作成する方法について説明します。 クラスターの種類 (Hadoop、HBase、または Storm) を指定するか、スクリプトを使用してカスタム コンポーネントをインストールすることができます。"
+title: "Azure REST API を使用して HDInsight (Hadoop) を作成する | Microsoft Docs"
+description: "Azure Resource Manager テンプレートを Azure REST API に送信して HDInsight クラスターを作成する方法について説明します。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/17/2017
+ms.date: 05/17/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: c3440ac34a195bfc831ee2fa2ff916b16e92a2ac
-ms.lasthandoff: 04/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 85d241d7c81d1c40abb6f98b84983aca8240463d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
-# <a name="create-hdinsight-clusters-using-curl-and-the-azure-rest-api"></a>cURL と Azure REST API を使用して HDInsight クラスターを作成する
+# <a name="create-hadoop-clusters-using-the-azure-rest-api"></a>Azure REST API を使用して Hadoop クラスターを作成する
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
@@ -32,36 +33,16 @@ Azure Resource Manager テンプレートと Azure REST API を使用して HDIn
 Azure REST API を使用すると、Azure プラットフォームでホストされたサービスで、HDInsight クラスターなど新しいリソースの作成を含む管理操作を実行できます。
 
 > [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
 
-## <a name="prerequisites"></a>前提条件
-
-[!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
-
-* **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-
-* **Azure CLI 2.0 (プレビュー)**。 Azure CLI を使用してサービス プリンシパルを作成し、Azure REST API に対する要求用の認証トークンを生成します。 Azure CLI 2.0 プレビューの詳細については、「[Get started with Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)」 (Azure CLI 2.0 の使用を開始する) を参照してください。
-
-* **cURL**。 このユーティリティは、パッケージ管理システムを通じて、または [http://curl.haxx.se/](http://curl.haxx.se/)からダウンロードして使用できます。
-
-  > [!NOTE]
-  > このドキュメントのコマンドを実行するのに PowerShell を使用する場合は、既定で作成される `curl` エイリアスをまず削除する必要があります。 このエイリアスは、cURL ではなく Invoke-WebRequest を使用します。 このエイリアスを削除しないと、このドキュメントで使用されている一部のコマンドでエラーが発生する可能性があります。
-  >
-  > このエイリアスを削除するには、PowerShell プロンプトから次のコマンドを実行します。
-  >
-  > `Remove-item alias:curl`
-  >
-  > エイリアスが削除されると、システムにインストールした cURL のバージョンを使用できるようになります。
-
-### <a name="access-control-requirements"></a>アクセス制御の要件
-
-[!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
+> [!NOTE]
+> このドキュメントの手順では、[curl (https://curl.haxx.se/)](https://curl.haxx.se/) ユーティリティを使用して Azure REST API と通信します。
 
 ## <a name="create-a-template"></a>テンプレートの作成
 
 Azure Resource Manager テンプレートは、**リソース グループ**とその中のすべてのリソース (HDInsight など) について記述する JSON ドキュメントです。このテンプレート ベースのアプローチでは、HDInsight で必要なリソースを 1 つのテンプレートで定義することができます。
 
-以下に示すのは [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password) からのテンプレートとパラメーター ファイルを併せたもので、ここでは、SSH ユーザー アカウントをセキュリティ保護するためにパスワードを使用して Linux ベースのクラスターを作成します。
+次の JSON ドキュメントは [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password) からのテンプレートとパラメーター ファイルを併せたもので、ここでは、SSH ユーザー アカウントをセキュリティ保護するためにパスワードを使用して Linux ベースのクラスターを作成します。
 
    ```json
    {
@@ -70,22 +51,6 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
                "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
                "contentVersion": "1.0.0.0",
                "parameters": {
-                   "location": {
-                       "type": "string",
-                       "allowedValues": ["Central US",
-                       "East Asia",
-                       "East US",
-                       "Japan East",
-                       "Japan West",
-                       "North Europe",
-                       "South Central US",
-                       "Southeast Asia",
-                       "West Europe",
-                       "West US"],
-                       "metadata": {
-                           "description": "The location where all azure resources are deployed."
-                       }
-                   },
                    "clusterType": {
                        "type": "string",
                        "allowedValues": ["hadoop",
@@ -147,7 +112,7 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
                "resources": [{
                    "name": "[parameters('clusterStorageAccountName')]",
                    "type": "Microsoft.Storage/storageAccounts",
-                   "location": "[parameters('location')]",
+                   "location": "[resourceGroup().location]",
                    "apiVersion": "[variables('defaultApiVersion')]",
                    "dependsOn": [],
                    "tags": {
@@ -160,7 +125,7 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
                {
                    "name": "[parameters('clusterName')]",
                    "type": "Microsoft.HDInsight/clusters",
-                   "location": "[parameters('location')]",
+                   "location": "[resourceGroup().location]",
                    "apiVersion": "[variables('clusterApiVersion')]",
                    "dependsOn": ["[concat('Microsoft.Storage/storageAccounts/',parameters('clusterStorageAccountName'))]"],
                    "tags": {
@@ -226,9 +191,6 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
            },
            "mode": "incremental",
            "Parameters": {
-               "location": {
-                   "value": "North Europe"
-               },
                "clusterName": {
                    "value": "newclustername"
                },
@@ -310,45 +272,47 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
 
 次のコマンドを使用して、認証トークンを取得します。
 
-    curl -X "POST" "https://login.microsoftonline.com/TenantID/oauth2/token" \
-    -H "Cookie: flight-uxoptin=true; stsservicecookie=ests; x-ms-gateway-slice=productionb; stsservicecookie=ests" \
-    -H "Content-Type: application/x-www-form-urlencoded" \
-    --data-urlencode "client_id=AppID" \
-    --data-urlencode "grant_type=client_credentials" \
-    --data-urlencode "client_secret=password" \
-    --data-urlencode "resource=https://management.azure.com/"
+```bash
+curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
+-H "Cookie: flight-uxoptin=true; stsservicecookie=ests; x-ms-gateway-slice=productionb; stsservicecookie=ests" \
+-H "Content-Type: application/x-www-form-urlencoded" \
+--data-urlencode "client_id=$APPID" \
+--data-urlencode "grant_type=client_credentials" \
+--data-urlencode "client_secret=$PASSWORD" \
+--data-urlencode "resource=https://management.azure.com/"
+```
 
-    Replace **TenantID**, **AppID**, and **password** with the values obtained or used previously.
+`$TENANTID`、`$APPID`、`$PASSWORD` に、前に取得または使用した値を設定します。
 
-    If this request is successful, you receive a 200 series response and the response body contains a JSON document.
+この要求が成功したら、200 シリーズの応答が届きます。応答本文に JSON ドキュメントが含まれています。
 
-    The JSON document returned by this request contains an element named **access_token**. The value of **access_token** is used to authentication requests to the REST API.
+この要求によって返される JSON ドキュメントには、**access_token** という名前の要素が含まれます。 **access_token** の値が、REST API への認証要求で使用されます。
 
-   ```json
-   {
-       "token_type":"Bearer",
-       "expires_in":"3599",
-       "expires_on":"1463409994",
-       "not_before":"1463406094",
-       "resource":"https://management.azure.com/","access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWoNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuYXp1cmUuY29tLyIsImlzcyI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI2Ny8iLCJpYXQiOjE0NjM0MDYwOTQsIm5iZiI6MTQ2MzQwNjA5NCwiZXhwIjoxNDYzNDA5OTk5LCJhcHBpZCI6IjBlYzcyMzM0LTZkMDMtNDhmYi04OWU1LTU2NTJiODBiZDliYiIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny8iLCJvaWQiOiJlNjgxZTZiMi1mZThkLTRkZGUtYjZiMS0xNjAyZDQyNWQzOWYiLCJzdWIiOiJlNjgxZTZiMi1mZThkLTRkZGUtYjZiMS0xNjAyZDQyNWQzOWYiLCJ0aWQiOiI3MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDciLCJ2ZXIiOiIxLjAifQ.nJVERbeDHLGHn7ZsbVGBJyHOu2PYhG5dji6F63gu8XN2Cvol3J1HO1uB4H3nCSt9DTu_jMHqAur_NNyobgNM21GojbEZAvd0I9NY0UDumBEvDZfMKneqp7a_cgAU7IYRcTPneSxbD6wo-8gIgfN9KDql98b0uEzixIVIWra2Q1bUUYETYqyaJNdS4RUmlJKNNpENllAyHQLv7hXnap1IuzP-f5CNIbbj9UgXxLiOtW5JhUAwWLZ3-WMhNRpUO2SIB7W7tQ0AbjXw3aUYr7el066J51z5tC1AK9UC-mD_fO_HUP6ZmPzu5gLA6DxkIIYP3grPnRVoUDltHQvwgONDOw"
-   }
-   ```
+```json
+{
+    "token_type":"Bearer",
+    "expires_in":"3599",
+    "expires_on":"1463409994",
+    "not_before":"1463406094",
+    "resource":"https://management.azure.com/","access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWoNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuYXp1cmUuY29tLyIsImlzcyI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI2Ny8iLCJpYXQiOjE0NjM0MDYwOTQsIm5iZiI6MTQ2MzQwNjA5NCwiZXhwIjoxNDYzNDA5OTk5LCJhcHBpZCI6IjBlYzcyMzM0LTZkMDMtNDhmYi04OWU1LTU2NTJiODBiZDliYiIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny8iLCJvaWQiOiJlNjgxZTZiMi1mZThkLTRkZGUtYjZiMS0xNjAyZDQyNWQzOWYiLCJzdWIiOiJlNjgxZTZiMi1mZThkLTRkZGUtYjZiMS0xNjAyZDQyNWQzOWYiLCJ0aWQiOiI3MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDciLCJ2ZXIiOiIxLjAifQ.nJVERbeDHLGHn7ZsbVGBJyHOu2PYhG5dji6F63gu8XN2Cvol3J1HO1uB4H3nCSt9DTu_jMHqAur_NNyobgNM21GojbEZAvd0I9NY0UDumBEvDZfMKneqp7a_cgAU7IYRcTPneSxbD6wo-8gIgfN9KDql98b0uEzixIVIWra2Q1bUUYETYqyaJNdS4RUmlJKNNpENllAyHQLv7hXnap1IuzP-f5CNIbbj9UgXxLiOtW5JhUAwWLZ3-WMhNRpUO2SIB7W7tQ0AbjXw3aUYr7el066J51z5tC1AK9UC-mD_fO_HUP6ZmPzu5gLA6DxkIIYP3grPnRVoUDltHQvwgONDOw"
+}
+```
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
 次のコマンドを実行してリソース グループを作成します。
 
-* **SubscriptionID** をサービス プリンシパルの作成時に受信するサブスクリプション ID に置き換えます。
-* **AccessToken** を前の手順で受け取ったアクセス トークンに置き換えます。
-* **DataCenterLocation** をリソース グループやリソースを作成するデータ センターに置き換えます。 たとえば、"South Central US" のようになります。
-* **ResourceGroupName** をこのグループに使用する名前に置き換えます。
+* `$SUBSCRIPTIONID` には、サービス プリンシパルの作成時に受け取ったサブスクリプション ID に設定します。
+* `$ACCESSTOKEN` には、前の手順で受け取ったアクセス トークンを設定します。
+* `DATACENTERLOCATION` をリソース グループやリソースを作成するデータ センターに置き換えます。 たとえば、"South Central US" のようになります。
+* `$RESOURCEGROUPNAME` には、このグループで使用する名前を設定します。
 
 ```bash
-curl -X "PUT" "https://management.azure.com/subscriptions/SubscriptionID/resourcegroups/ResourceGroupName?api-version=2015-01-01" \
-    -H "Authorization: Bearer AccessToken" \
+curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME?api-version=2015-01-01" \
+    -H "Authorization: Bearer $ACCESSTOKEN" \
     -H "Content-Type: application/json" \
     -d $'{
-"location": "DataCenterLocation"
+"location": "DATACENTERLOCATION"
 }'
 ```
 
@@ -358,13 +322,11 @@ curl -X "PUT" "https://management.azure.com/subscriptions/SubscriptionID/resourc
 
 次のコマンドを実行して、テンプレートをリソース グループにデプロイします。
 
-* **SubscriptionID** と **AccessToken** を前に使用した値に置き換えます。
-* **ResourceGroupName** を前のセクションで作成したリソース グループの名前に置き換えます。
-* **DeploymentName** を、このデプロイに使用する名前に置き換えます。
+* `$DEPLOYMENTNAME` には、このデプロイで使用する名前を設定します。
 
 ```bash
-curl -X "PUT" "https://management.azure.com/subscriptions/SubscriptionID/resourcegroups/ResourceGroupName/providers/microsoft.resources/deployments/DeploymentName?api-version=2015-01-01" \
--H "Authorization: Bearer AccessToken" \
+curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME/providers/microsoft.resources/deployments/$DEPLOYMENTNAME?api-version=2015-01-01" \
+-H "Authorization: Bearer $ACCESSTOKEN" \
 -H "Content-Type: application/json" \
 -d "{set your body string to the template and parameters}"
 ```
@@ -377,22 +339,23 @@ curl -X "PUT" "https://management.azure.com/subscriptions/SubscriptionID/resourc
 この要求が成功したら、200 シリーズの応答が届きます。応答本文に含まれる JSON ドキュメントにデプロイ操作に関する情報が含まれています。
 
 > [!IMPORTANT]
-> デプロイは送信済みですが、この時点ではまだ完了していません。 デプロイを完了するには時間がかかる場合があります (通常約 15 分)。
+> デプロイは送信済みですが、まだ完了していません。 デプロイを完了するには時間がかかる場合があります (通常約 15 分)。
 
 ## <a name="check-the-status-of-a-deployment"></a>デプロイの状態の確認
 
 デプロイの状態を確認するには、次のコマンドを使用します。
 
-* **SubscriptionID** と **AccessToken** を前に使用した値に置き換えます。
-* **ResourceGroupName** を前のセクションで作成したリソース グループの名前に置き換えます。
-
 ```bash
-curl -X "GET" "https://management.azure.com/subscriptions/SubscriptionID/resourcegroups/ResourceGroupName/providers/microsoft.resources/deployments/DeploymentName?api-version=2015-01-01" \
--H "Authorization: Bearer AccessToken" \
+curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME/providers/microsoft.resources/deployments/$DEPLOYMENTNAME?api-version=2015-01-01" \
+-H "Authorization: Bearer $ACCESSTOKEN" \
 -H "Content-Type: application/json"
 ```
 
 これにより返される JSON ドキュメントにデプロイ操作に関する情報が含まれています。 `"provisioningState"` 要素にはデプロイの状態が含まれています。 この要素に値 `"Succeeded"` が含まれている場合は、デプロイが正常に完了しています。
+
+## <a name="troubleshoot"></a>トラブルシューティング
+
+HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](hdinsight-administer-use-portal-linux.md#create-clusters)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

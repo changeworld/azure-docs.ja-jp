@@ -1,5 +1,5 @@
 ---
-redirect_url: active-directory-passwords
+redirect_url: active-directory-passwords-update-your-own-password
 redirect_document_id: TRUE
 ms.translationtype: Human Translation
 ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2

@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/10/2016
 ms.author: zivr
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 18c7a013c01fee26c5455535af6d9fba2b98fac7
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 627aa117ded0aaa519052d4ea1a1995ba2e363ee
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -50,7 +51,12 @@ Azure Metadata Service によって、VM 内部からの REST エンドポイン
 Virtual Machine が Virtual Network (VNet) 内で作成されている場合、メタデータ サービスはルーティング不可能な IP (169.254.169.254) 経由で提供されます。それ以外の場合は、クラウド サービスとクラシック VM の既定の設定として、使用するエンドポイントを検出するための追加のロジックが必要となります。 ホスト エンドポイントを検出する方法については、[こちらのサンプル] (https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm) を参照してください。
 
 ### <a name="versioning"></a>バージョン管理 
-メタデータ サービスでは、http://{ip}/metadata/{version}/scheduledevents の形式でバージョン管理された API が使用されます。サービスが、http://{ip}/metadata/latest/scheduledevents で提供されている最新のバージョンを使用するようにすることをお勧めします。
+インスタンス メタデータ サービスはバージョン管理されています。 バージョンは必須で、最新のバージョンは 2017-03-01 です。
+
+> [!NOTE] 
+> スケジュールされたイベントの前のプレビュー リリースでは、api-version として {latest} がサポートされていました。 この形式はサポートされなくなり、今後廃止される予定です。
+>
+
 
 ### <a name="using-headers"></a>ヘッダの使用
 メタデータ サービスのクエリを実行するときは、ヘッダー *Metadata: true* を指定する必要があります。 
@@ -67,7 +73,8 @@ Virtual Machine が Virtual Network (VNet) 内で作成されている場合、�
 ### <a name="query-for-events"></a>イベントのクエリ
 次の呼び出しを行うだけで、スケジュールされたイベントのクエリを実行できます。
 
-    curl -H Metadata:true http://169.254.169.254/metadata/latest/scheduledevents
+    curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2017-03-01
+
 
 応答には、スケジュールされたイベントの配列が含まれています。 空の配列は、現在スケジュールされているイベントがないことを意味します。
 スケジュールされたイベントがある場合は、応答にイベントの配列が含まれます。 
@@ -85,13 +92,25 @@ Virtual Machine が Virtual Network (VNet) 内で作成されている場合、�
          }
      ]
     }
+    
+### <a name="event-properties"></a>イベントのプロパティ
+|プロパティ  |  説明 |
+| - | - |
+| EventId |イベントのグローバル一意識別子。 <br><br> 例: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
+| EventType | イベントによって発生する影響。 <br><br> 値: <br><ul><li> <i>Freeze</i>: Virtual Machine は数秒間の一時停止がスケジュールされています。 メモリ、開いているファイル、ネットワーク接続への影響はありません。 <li> <i>Reboot</i>: Virtual Machine は再起動がスケジュールされています (メモリはワイプされます)。<li> <i>Redeploy</i>: Virtual Machine は別のノードへの移動がスケジュールされています (一時ディスクは失われます)。 |
+| ResourceType | イベントが影響を与えるリソースの種類。 <br><br> 値: <ul><li>VirtualMachine|
+| リソース| イベントが影響を与えるリソースの一覧。 <br><br> 例: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
+| EventStatus | イベントの状態。 <br><br> 値: <ul><li><i>Scheduled:</i> イベントは、<i>NotBefore</i> プロパティに指定された時間が経過した後で開始するようにスケジュールされています。<li><i>Started</i>: イベントは開始されています。</i>
+| NotBefore| イベントは、この時間が経過した後で開始することができます。 <br><br> 例: <br><ul><li> 2016-09-19T18:29:47Z  |
 
-EventType は、以下の場合に Virtual Machine が受けると想定される影響をキャプチャします。
-- Freeze: Virtual Machine は数秒間の一時停止がスケジュールされています。 メモリ、開いているファイル、ネットワーク接続への影響はありません。
-- 再起動: Virtual Machine は再起動がスケジュールされています (メモリをワイプします)。
-- 再デプロイ: Virtual Machine は別のノードへの移動がスケジュールされています (一時ディスクは失われます)。 
+### <a name="event-scheduling"></a>イベントのスケジューリング
+各イベントは、スケジュールされているイベントの種類に基づいて、将来の最小値の時間でスケジュールされます。 この時間は、イベントの <i>NotBefore</i> プロパティに反映されます。 
 
-イベントがスケジュールされている (Status = Scheduled) 場合、Azure は (NotBefore フィールドで指定された) イベントを開始できる時間を共有します。
+|EventType  | 最小値の通知 |
+| - | - |
+| Freeze| 約 15 分 |
+| Reboot | 約 15 分 |
+| Redeploy | 10 分 |
 
 ### <a name="starting-an-event-expedite"></a>イベントの開始 (高速化)
 
@@ -113,11 +132,13 @@ function GetScheduledEvents($uri)
 }
 
 # How to approve a scheduled event
-function ApproveScheduledEvent($eventId, $uri)
+function ApproveScheduledEvent($eventId, $docIncarnation, $uri)
 {    
-    # Create the Scheduled Events Approval Json
+    # Create the Scheduled Events Approval Document
     $startRequests = [array]@{"EventId" = $eventId}
-    $scheduledEventsApproval = @{"StartRequests" = $startRequests} 
+    $scheduledEventsApproval = @{"StartRequests" = $startRequests; "DocumentIncarnation" = $docIncarnation} 
+    
+    # Convert to JSON string
     $approvalString = ConvertTo-Json $scheduledEventsApproval
 
     Write-Host "Approving with the following: `n" $approvalString
@@ -136,7 +157,7 @@ function HandleScheduledEvents($scheduledEvents)
 
 # Set up the scheduled events uri for VNET enabled VM
 $localHostIP = "169.254.169.254"
-$scheduledEventURI = 'http://{0}/metadata/latest/scheduledevents' -f $localHostIP 
+$scheduledEventURI = 'http://{0}/metadata/scheduledevents?api-version=2017-03-01' -f $localHostIP 
 
 
 # Get the document
@@ -154,7 +175,7 @@ foreach($event in $scheduledEvents.Events)
     $entry = Read-Host "`nApprove event? Y/N"
     if($entry -eq "Y" -or $entry -eq "y")
     {
-    ApproveScheduledEvent $event.EventId $scheduledEventURI 
+    ApproveScheduledEvent $event.EventId $scheduledEvents.DocumentIncarnation $scheduledEventURI 
     }
 }
 ``` 
@@ -170,7 +191,7 @@ Metadata Service と通信する API を表示するクライアントのサン�
 
         public ScheduledEventsClient()
         {
-            scheduledEventsEndpoint = string.Format("http://{0}/metadata/latest/scheduledevents", defaultIpAddress);
+            scheduledEventsEndpoint = string.Format("http://{0}/metadata/scheduledevents?api-version=2017-03-01", defaultIpAddress);
         }
         /// Retrieve Scheduled Events 
         public string GetDocument()
@@ -200,6 +221,7 @@ Metadata Service と通信する API を表示するクライアントのサン�
 ```csharp
     public class ScheduledEventsDocument
     {
+        public string DocumentIncarnation;
         public List<CloudControlEvent> Events { get; set; }
     }
 
@@ -210,11 +232,12 @@ Metadata Service と通信する API を表示するクライアントのサン�
         public string EventType { get; set; }
         public string ResourceType { get; set; }
         public List<string> Resources { get; set; }
-        public DateTime NoteBefore { get; set; }
+        public DateTime? NotBefore { get; set; }
     }
 
     public class ScheduledEventsApproval
     {
+        public string DocumentIncarnation;
         public List<StartRequest> StartRequests = new List<StartRequest>();
     }
 
@@ -252,7 +275,11 @@ public class Program
             Console.ReadLine();
 
             // Approve events
-            ScheduledEventsApproval scheduledEventsApprovalDocument = new ScheduledEventsApproval();
+            ScheduledEventsApproval scheduledEventsApprovalDocument = new ScheduledEventsApproval()
+        {
+            DocumentIncarnation = scheduledEventsDocument.DocumentIncarnation
+        };
+        
             foreach (CloudControlEvent ccevent in scheduledEventsDocument.Events)
             {
                 scheduledEventsApprovalDocument.StartRequests.Add(new StartRequest(ccevent.EventId));
@@ -293,7 +320,7 @@ import urllib2
 import socket
 import sys
 
-metadata_url="http://169.254.169.254/metadata/latest/scheduledevents"
+metadata_url="http://169.254.169.254/metadata/scheduledevents?api-version=2017-03-01"
 headers="{Metadata:true}"
 this_host=socket.gethostname()
 
@@ -329,4 +356,5 @@ if __name__ == '__main__':
 ```
 ## <a name="next-steps"></a>次のステップ 
 [Azure での仮想マシンに対する計画的なメンテナンス](linux/planned-maintenance.md)
+[インスタンス メタデータ サービス](virtual-machines-instancemetadataservice-overview.md)
 

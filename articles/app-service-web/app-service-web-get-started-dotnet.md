@@ -12,13 +12,14 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/27/2017
+ms.date: 05/05/2017
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
-ms.openlocfilehash: 24e9f1d7bdf4401d009ba04fb62351b6abda6079
-ms.lasthandoff: 04/21/2017
-
+ms.custom: mvc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 018a46452c13886b9519ed5d2311bc65649c3c69
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 ---
 # <a name="create-your-first-aspnet-web-app-in-azure-in-five-minutes"></a>初めての ASP.NET Web アプリを Azure に 5 分で作成する
@@ -29,7 +30,7 @@ ms.lasthandoff: 04/21/2017
 
 ![Azure App Service での ASP.NET Web アプリ](./media/app-service-web-get-started-dotnet/updated-azure-web-app.png)
 
-## <a name="before-you-begin"></a>開始する前に
+## <a name="prerequisites"></a>前提条件
 
 このチュートリアルでは、Visual Studio 2017 を使用して ASP.NET Web アプリをビルドし、Azure にデプロイする方法を示します。 まだ Visual Studio 2017 をインストールしていない場合は、**無料**の [Visual Studio 2017 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
 
@@ -37,7 +38,7 @@ ms.lasthandoff: 04/21/2017
 
 ## <a name="create-an-aspnet-web-app"></a>ASP.NET Web アプリを作成する
 
-Visual Studio で、`Ctrl` + `Shift` + `N` キーを押して、新しいプロジェクトを作成します。
+Visual Studio で、`Ctrl` + `Shift` + `N` キーを押してプロジェクトを作成します。
 
 **[新しいプロジェクト]** ダイアログ ボックスで、**[Visual C#]、[Web]、[ASP.NET Web アプリケーション (.NET Framework)]** の順にクリックします。
 
@@ -86,31 +87,19 @@ Visual Studio で、`Ctrl` + `Shift` + `N` キーを押して、新しいプロ�
 
 ## <a name="create-an-app-service-plan"></a>App Service プランを作成する
 
-Azure Web アプリには、"_App Service プラン_" も必要です。 
-
-> [!NOTE]
-> App Service プランは、アプリをホストするために使用される物理リソースのコレクションを表しています。 App Service プランに割り当てられたすべてのアプリは、プランで定義されたリソースを共有します。これにより、複数のアプリをホストする際にコストを節約できます。 
->
-> App Service プランには、次の定義があります。
->
-> - リージョン (北ヨーロッパ、米国東部、東南アジア)
-> - インスタンス サイズ (Small、Medium、Large)
-> - スケール カウント (インスタンス数 1、2、3 など) 
-> - SKU (Free、Shared、Basic、Standard、Premium)
->
->
+[!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
 **[App Service プラン]** の横にある **[新規]** をクリックします。 
 
 **[App Service プランの構成]** ダイアログ ボックスで、新しい App Service プランを次の設定で構成します。
 
 - **[App Service プラン]**: 「**myAppServicePlan**」と入力します。 
-- **[場所]**: **[西ヨーロッパ]**、または他の任意のリージョンを選択します。
-- **[サイズ]**: **[無料]**、または他の任意の[価格レベル](https://azure.microsoft.com/pricing/details/app-service/)を選択します。
+- **[場所]**: **[西ヨーロッパ]**、または最寄りのリージョンを選択します。
+- **[サイズ]**: **[無料]**、または他の[価格レベル](https://azure.microsoft.com/pricing/details/app-service/)を選択します。
 
 **[OK]**をクリックします。
 
-![新しい App Service プランを作成する](./media/app-service-web-get-started-dotnet/configure-app-service-plan.png)
+![Create App Service plan](./media/app-service-web-get-started-dotnet/configure-app-service-plan.png)
 
 ## <a name="create-and-publish-the-web-app"></a>Web アプリを作成して発行する
 
@@ -165,11 +154,11 @@ Azure Portal に移動し、作成したばかりの Web アプリを表示し�
 
 Web アプリの "_ブレード_" (水平方向に開かれるポータル ページ) が表示されます。 
 
-既定では、Web アプリのブレードは **[概要]** ページを表示します。 このページでは、アプリの動作状態を見ることができます。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクも行うことができます。 ブレードの左側にあるタブは、開くことができるさまざまな構成ページを示しています。 
+既定では、Web アプリのブレードは **[概要]** ページを表示します。 このページでは、アプリの動作状態を見ることができます。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクも行うことができます。  
 
 ![Azure Portal の App Service ブレード](./media/app-service-web-get-started-dotnet/web-app-blade.png)
 
-ブレードのこれらのタブは、Web アプリに追加することができるさまざまな優れた機能を示しています。 次の一覧では、ほんの一部の例を示しています。
+ブレードの左側にあるタブは、開くことができるさまざまな構成ページを示しています。 次の一覧では、ほんの一部の例を示しています。
 
 - カスタム DNS 名をマップする
 - カスタム SSL 証明書をバインドする
@@ -193,5 +182,9 @@ Web アプリの "_ブレード_" (水平方向に開かれるポータル ペ�
 
 ## <a name="next-steps"></a>次のステップ
 
-事前作成されている [Web アプリの PowerShell スクリプト](app-service-powershell-samples.md)を調べます。
+> [!div class="nextstepaction"]
+> [SQL Database を使用して Azure に ASP.NET アプリを作成する方法について調べる](app-service-web-tutorial-dotnet-sqldatabase.md)
+
+> [!div class="nextstepaction"]
+> [Web アプリの PowerShell スクリプト サンプルを見る](app-service-powershell-samples.md)
 

@@ -3,7 +3,7 @@ title: "Azure Application Insights の価格とデータ ボリュームの管�
 description: "Application Insights でテレメトリの量を管理し、コストを監視します。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: ebd0d843-4780-4ff3-bc68-932aa44185f6
 ms.service: application-insights
@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2017
-ms.author: awills
+ms.date: 05/10/2017
+ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 6f84365acb9a1cc1fc31fa5f3c04cd112f68087b
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 0a66567d7381f38787f9aa7652c944e4bb3aef82
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -148,10 +148,7 @@ Application Insights の課金は Azure の課金内容に加えられます。 
 ![クォータと価格のブレードから、[サンプル] タイルをクリックして、サンプリングの割合を選択します。](./media/app-insights-pricing/04.png)
 
 > [!WARNING]
-> [サンプル保持の割合] タイルに表示される値は、インジェスト サンプリングに設定した値のみを示します。 アプリの SDK で動作するサンプリング レートは反映されません。 
-> 
-> 受信テレメトリが既に SDK でサンプリングされている場合、インジェスト サンプリングは適用されません。
-> 
+> [データのサンプリング] ブレードでは、インジェストのサンプリングの値を制御するだけです。 アプリで Application Insights SDK によって適用されているサンプリング レートは反映されません。 受信テレメトリが既に SDK でサンプリングされている場合、インジェスト サンプリングは適用されません。
 > 
 
 適用されている場所に関係なく、実際のサンプリング レートを検出するには、次のように [Analytics クエリ](app-insights-analytics.md) を使用します。

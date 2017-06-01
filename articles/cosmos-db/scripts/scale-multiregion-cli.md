@@ -1,26 +1,26 @@
 ---
 title: "Azure CLI スクリプト - Azure Cosmos DB のマルチリージョン レプリケーション | Microsoft Docs"
 description: "Azure CLI スクリプト サンプル - Azure Cosmos DB のマルチリージョン レプリケーション"
-services: cosmosdb
+services: cosmos-db
 documentationcenter: cosmosdb
 author: mimig1
 manager: jhubbard
 editor: 
 tags: azure-service-management
 ms.assetid: 
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.custom: sample
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 05/10/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: b6b93574953c4a1c8715da5901fe1a532fc51c0b
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: cde5ff007dc7b26db33e195dd6cb528675ecd391
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/15/2017
 
 ---
 
@@ -32,7 +32,7 @@ Azure CLI を使ってさまざまな種類の Azure Cosmos DB データベー�
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-azurecli[main](../../../cli_scripts/cosmosdb/scale-cosmosdb-replicate-multiple-regions/scale-cosmosdb-replicate-multiple-regions.sh?highlight=21-31 "複数リージョンへの Azure Cosmos DB のスケーリング")]
+[!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/scale-cosmosdb-replicate-multiple-regions/scale-cosmosdb-replicate-multiple-regions.sh?highlight=21-31 "複数リージョンへの Azure Cosmos DB のスケーリング")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 

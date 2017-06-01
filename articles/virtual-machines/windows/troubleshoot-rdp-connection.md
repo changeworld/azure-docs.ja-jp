@@ -4,7 +4,7 @@ description: "リモート デスクトップを使用して Azure で Windows �
 keywords: "リモート デスクトップ エラー,リモート デスクトップ接続エラー,VM に接続できない,リモート デスクトップのトラブルシューティング"
 services: virtual-machines-windows
 documentationcenter: 
-author: iainfoulds
+author: genlin
 manager: timlt
 editor: 
 tags: top-support-issue,azure-service-management,azure-resource-manager
@@ -14,11 +14,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: support-article
-ms.date: 02/09/2017
-ms.author: iainfou
-translationtype: Human Translation
+ms.date: 05/26/2017
+ms.author: genli
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: 25e19b14e1cad41a365ee88ed317078bf551c36a
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/27/2017
 
 
@@ -45,8 +46,7 @@ Windows ベースの Azure 仮想マシン (VM) に対するリモート デス�
 
 > [!TIP]
 > ポータルで **[接続]** ボタンが淡色表示され、[Express Route](../../expressroute/expressroute-introduction.md) や[サイト間 VPN](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) 接続で Azure に接続されていない場合は、VM を作成してパブリック IP アドレスを割り当ててから RDP を使用する必要があります。 [Azure におけるパブリック IP アドレス](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)に関するページをご覧ください。
-> 
-> 
+
 
 ## <a name="ways-to-troubleshoot-rdp-issues"></a>RDP 問題をトラブルシューティングする方法
 次のメソッドのいずれかを使用して、Resource Manager デプロイメント モデルを使用して作成された VM のトラブルシューティングを行うことができます。
@@ -120,8 +120,6 @@ RDP の問題が解決しない場合は、[サポート要求を申請](https:/
 
 > [!NOTE]
 > [Set-AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) PowerShell コマンドレットを使用して、ユーザーの資格情報と RDP 構成をリセットします。 次の例では、`myVMAccessExtension` がプロセスの一部として指定した名前になります。 VMAccessAgent を前に操作したことがある場合は、`Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"` を使用して VM のプロパティをチェックすることで、既存の拡張機能の名前を取得できます。 名前を確認するには、出力の 'Extensions' セクションを調べます。
-> 
-> 
 
 トラブルシューティングの各手順を実行した後、再度 VM に接続してみてください。 それでも接続できない場合は、次の手順をお試しください。
 

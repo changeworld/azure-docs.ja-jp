@@ -11,6 +11,7 @@
 ## [コネクティッド ファクトリ ソリューションの概要](iot-suite-connected-factory-overview.md)
 ## [リモート監視ソリューションのチュートリアル](iot-suite-remote-monitoring-sample-walkthrough.md)
 ## [予測的なメンテナンス ソリューションのチュートリアル](iot-suite-predictive-walkthrough.md)
+## [コネクティッド ファクトリ ソリューションのチュートリアル](iot-suite-connected-factory-sample-walkthrough.md)
 ## [Raspberry Pi を接続する](iot-suite-raspberry-pi-kit-get-started.md)
 ### C の使用
 #### [シミュレートされたデータ](iot-suite-raspberry-pi-kit-c-get-started-simulator.md)
@@ -29,7 +30,6 @@
 ### [Windows 上の C](iot-suite-connecting-devices.md)
 ### [Linux 上の C](iot-suite-connecting-devices-linux.md)
 ### [Node.JS](iot-suite-connecting-devices-node.md)
-## [mbed デバイスを接続する](iot-suite-connecting-devices-mbed.md)
 ## [ロジック アプリをリモート監視ソリューションへに接続する](iot-suite-logic-apps-tutorial.md)
 ## [構成済みソリューションのカスタマイズ](iot-suite-guidance-on-customizing-preconfigured-solutions.md)
 ## [リモート監視ソリューションでの動的テレメトリを使用する](iot-suite-dynamic-telemetry.md)

@@ -3,7 +3,7 @@ title: "Log Analytics でのデータ使用状況の分析 | Microsoft Docs"
 description: "OMS サービスに送信されているデータの量は、Log Analytics の使用量ダッシュボードで確認できます。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: 74d0adcb-4dc2-425e-8b62-c65537cef270
@@ -13,10 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/12/2017
-ms.author: banders
-translationtype: Human Translation
+ms.author: magoedte
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 7e3d4b83fefdc70f292cf85b682cf8ed756bf4c5
 ms.openlocfilehash: e7f04df679604f274c8ad9bf4daddc63c8b5418a
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/22/2017
 
 

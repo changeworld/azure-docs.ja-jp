@@ -12,16 +12,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 2/17/2017
+ms.date: 5/16/2017
 ms.author: msfussell
-translationtype: Human Translation
-ms.sourcegitcommit: 47b3fffb2d5c24b7473884e490be19ff17b61b61
-ms.openlocfilehash: 97b0cb7a5f04f2c5c547cb4b70d87273aa8f2383
-ms.lasthandoff: 02/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 17e9f4f81c60d86f804d1d9e6df2014dd4568d75
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/17/2017
 
 
 ---
-# <a name="preview-deploy-a-windows-container-to-service-fabric"></a>プレビュー: Service Fabric への Windows コンテナーのデプロイ
+# <a name="deploy-a-windows-container-to-service-fabric"></a>Service Fabric への Windows コンテナーのデプロイ
 > [!div class="op_single_selector"]
 > * [Windows コンテナーのデプロイ](service-fabric-deploy-container.md)
 > * [Docker コンテナーのデプロイ](service-fabric-deploy-container-linux.md)
@@ -29,10 +30,6 @@ ms.lasthandoff: 02/21/2017
 > 
 
 この記事では、コンテナー化されたサービスを Windows コンテナーに構築する手順を紹介します。
-
-> [!NOTE]
-> Windows Server 2016 では、この機能はプレビュー段階です。
->  
 
 Service Fabric には、コンテナー化されたマイクロサービスで構成されたアプリケーションの構築に役立つ、いくつかのコンテナー機能が用意されています。 
 
@@ -83,7 +80,7 @@ ARM を使用してクラスターをデプロイするには、Azure で **Wind
 "vmImageSku": { "defaultValue": "2016-Datacenter-with-Containers","type": "string"     },
 "vmImageVersion": { "defaultValue": "latest","type": "string"     },  
 ```
-[こちらの&5; ノード ARM テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype)を使用してクラスターを作成することもできます。 または、Service Fabric と Windows コンテナーの使用方法に関する[こちらの Leok のブログ記事](https://loekd.blogspot.com/2017/01/running-windows-containers-on-azure.html)をご覧ください。
+[こちらの 5 ノード ARM テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype)を使用してクラスターを作成することもできます。 または、Service Fabric と Windows コンテナーの使用方法に関する[こちらの Leok のブログ記事](https://loekd.blogspot.com/2017/01/running-windows-containers-on-azure.html)をご覧ください。
 
 <a id="manually"></a>
 
@@ -114,7 +111,7 @@ Service Fabric の [アプリケーション モデル](service-fabric-applicati
 コンテナー内で実行されるコンマ区切りの一連のコマンドによりオプションの `Commands` 要素を指定することで、入力コマンドを指定することができます。
 
 ## <a name="understand-resource-governance"></a>リソース ガバナンスについて
-リソース ガバナンスは、コンテナー機能の&1; つです。コンテナーがホスト上で使用できるリソースを制限します。 アプリケーション マニフェストで指定された `ResourceGovernancePolicy` は、サービス コード パッケージのリソース制限を宣言するために使用します。 次のリソースのリソースの制限を設定できます。
+リソース ガバナンスは、コンテナー機能の 1 つです。コンテナーがホスト上で使用できるリソースを制限します。 アプリケーション マニフェストで指定された `ResourceGovernancePolicy` は、サービス コード パッケージのリソース制限を宣言するために使用します。 次のリソースのリソースの制限を設定できます。
 
 * メモリ
 * MemorySwap

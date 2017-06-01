@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 04/24/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fbf77e9848ce371fd8d02b83275eb553d950b0ff
-ms.openlocfilehash: 5a50f583831b398ae22416e7ade23c33846de55c
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 6a83d5e5939744137e11a441048ade407c63ee86
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/03/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -33,36 +33,35 @@ ms.lasthandoff: 02/03/2017
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
-Azure Data Factory の**コピー ウィザード**を使用すると、データの取り込み/移動の要件を満たしたパイプラインがすばやく簡単に作成できます。 データ移動のシナリオを想定したサンプル パイプラインを作成するときはまず、このウィザードを使用することをお勧めします。 このチュートリアルでは、Azure Data Factory を作成し、コピー ウィザードを起動して、一連の手順を実行する方法を紹介しながら、データの取り込み/移動のシナリオについて詳しく説明します。 ウィザードの手順が完了すると、Azure Blob Storage から Azure SQL Database にデータを複製するコピー アクティビティを含んだパイプラインが自動的に作成されます。 コピー アクティビティの詳細については、「 [データ移動アクティビティ](data-factory-data-movement-activities.md) 」をご覧ください。 
+このチュートリアルでは、**コピー ウィザード**を使用して、Azure Blob Storage から Azure SQL データベースにデータをコピーする方法を示します。 
+
+Azure Data Factory の**コピー ウィザード**を使用すると、サポートされているソース データ ストアからサポートされているターゲット データ ストアにデータをコピーするデータ パイプラインを簡単に作成することができます。 そのため、データ移動のシナリオを想定したサンプル パイプラインを作成する場合は、まずこのウィザードを使用することをお勧めします。 コピー アクティビティのソースおよびターゲットとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関するセクションを参照してください。  
+
+このチュートリアルでは、Azure Data Factory を作成し、コピー ウィザードを起動して、一連の手順を実行する方法を紹介しながら、データの取り込み/移動のシナリオについて詳しく説明します。 ウィザードの手順が完了すると、Azure Blob Storage から Azure SQL Database にデータを複製するコピー アクティビティを含んだパイプラインが自動的に作成されます。 コピー アクティビティの詳細については、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
-- [チュートリアルの概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) のページに目を通して、チュートリアルの概要を理解し、 **前提条件** の手順を完了します。
-
+このチュートリアルを実行する前に、 [チュートリアルの概要](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) に関する記事に記載されている前提条件を満たしてください。
 
 ## <a name="create-data-factory"></a>データ ファクトリの作成
 この手順では、Azure ポータルを使用して、 **ADFTutorialDataFactory**という名前の Azure データ ファクトリを作成します。
 
-1. [Azure Portal](https://portal.azure.com) にログインした後、左上隅の **[+ 新規]** をクリックし、**[インテリジェンス + 分析]** をクリックして **[Data Factory]** をクリックします。 
+1. [Azure Portal](https://portal.azure.com) にログインします。
+2. 左上隅の **[+ 新規]**、**[データ + 分析]**、**[Data Factory]** の順にクリックします。 
    
    ![[新規] -> [DataFactory]](./media/data-factory-copy-data-wizard-tutorial/new-data-factory-menu.png)
 2. **[新しいデータ ファクトリ]** ブレードで以下の手順を実行します。
    
    1. **[名前]** に「**ADFTutorialDataFactory**」と入力します。
-       Azure Data Factory の名前はグローバルに一意にする必要があります。 **""ADFTutorialDataFactory" という名前の Data Factory は使用できません"**というエラーが発生した場合は、データ ファクトリの名前を変更して (yournameADFTutorialDataFactory など) 作成し直してください。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。  
+       Azure Data Factory の名前はグローバルに一意にする必要があります。 `Data factory name “ADFTutorialDataFactory” is not available` エラーが発生した場合は、データ ファクトリの名前を (yournameADFTutorialDataFactoryYYYYMMDD などに) 変更して作成し直してください。 Data Factory アーティファクトの名前付け規則については、「 [Azure Data Factory - 名前付け規則](data-factory-naming-rules.md) 」を参照してください。  
       
-       ![使用できない Data Factory 名](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-not-available.png)
-      
-      > [!NOTE]
-      > データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
-      > 
-      > 
+       ![使用できない Data Factory 名](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-not-available.png)    
    2. Azure **サブスクリプション**を選択します。
    3. リソース グループについて、次の手順のいずれかを行います。 
       
       - **[既存のものを使用]** を選択し、既存のリソース グループを選択します。
       - **[新規作成]** を選択し、リソース グループの名前を入力します。
-         
-          このチュートリアルの一部の手順は、 **ADFTutorialResourceGroup** という名前のリソース グループを使用することを前提としています。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。
+          
+        このチュートリアルの一部の手順は、 **ADFTutorialResourceGroup** という名前のリソース グループを使用することを前提としています。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。
    4. データ ファクトリの**場所**を選択します。
    5. ブレードの一番下にある **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。  
    6. **[作成]**をクリックします。
@@ -73,21 +72,19 @@ Azure Data Factory の**コピー ウィザード**を使用すると、デー�
    ![データ ファクトリのホーム ページ](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-home-page.png)
 
 ## <a name="launch-copy-wizard"></a>コピー ウィザードの起動
-1. Data Factory のホーム ページで **[データのコピー]** タイルをクリックして、**コピー ウィザード**を起動します。 
+1. [Data Factory] ブレードで **[データのコピー (プレビュー)]** タイルをクリックして、**コピー ウィザード**を起動します。 
    
    > [!NOTE]
-   > 承認中であることを示すメッセージが表示されたまま Web ブラウザーが停止してしまう場合は、**サード パーティの Cookie とサイト データをブロック**する設定を無効にしてください。または、有効な状態のまま **login.microsoftonline.com** に対する例外を作成し、そのうえで、もう一度ウィザードを起動してください。
-   > 
-   > 
+   > 承認の処理が進行中であることを示すメッセージが表示されたまま Web ブラウザーが停止してしまう場合は、ブラウザーで**サード パーティの Cookie とサイト データをブロック**する設定を無効にしてください。または、有効な状態のまま **login.microsoftonline.com** に対する例外を作成し、そのうえで、もう一度ウィザードを起動してください。
 2. **[プロパティ]** ページで次の操作を実行します。
    
    1. **[タスク名]** に「**CopyFromBlobToAzureSql**」と入力します。
    2. **説明** を入力します (省略可能)。
-   3. **[Start date time (開始日時)]** と **[End date time (終了日時)]** を変更します。終了日は今日の日付に、開始日はその 5 日前の日付に設定してください。  
-   4. ページの下部にある **[次へ]**」を参照してください。  
+   3. **[Start date time]\(開始日時\)** と **[End date time]\(終了日時\)** を変更します。終了日は今日の日付に、開始日は 5 日前の日付に設定してください。  
+   4. **[次へ]** をクリックします。  
       
       ![Copy Tool - Properties page](./media/data-factory-copy-data-wizard-tutorial/copy-tool-properties-page.png) 
-3. **[Source data store (ソース データ ストア)]** ページで、**[Azure Blob Storage]** タイルをクリックします。 このページを使用して、コピー タスクのソース データ ストアを指定します。 既存のデータ ストアのリンクされたサービスを使用するか、新しいデータ ストアを指定できます。 既存のリンクされたサービスを使用するには、 **[FROM EXISTING LINKED SERVICES (既存のリンクされたサービスから)]** をクリックし、適切なリンクされたサービスを選択します。 
+3. **[Source data store (ソース データ ストア)]** ページで、**[Azure Blob Storage]** タイルをクリックします。 このページを使用して、コピー タスクのソース データ ストアを指定します。 
    
     ![Copy Tool - Source data store page](./media/data-factory-copy-data-wizard-tutorial/copy-tool-source-data-store-page.png)
 4. **[Specify the Azure Blob storage account (Azure BLOB ストレージ アカウントの指定)]** ページで次の操作を実行します。
@@ -100,9 +97,8 @@ Azure Data Factory の**コピー ウィザード**を使用すると、デー�
       ![Copy Tool - Specify the Azure Blob storage account](./media/data-factory-copy-data-wizard-tutorial/copy-tool-specify-azure-blob-storage-account.png)
 5. **[Choose the input file or folder (入力ファイルまたはフォルダーの選択)]** ページで次の操作を実行します。
    
-   1. **adftutorial** フォルダーに移動します。
+   1. **[adftutorial]** (フォルダー) をダブルクリックします。
    2. **emp.txt** を選択し、**[選択]** をクリックします。
-   3. **[次へ]**をクリックします。 
       
       ![Copy Tool - Choose the input file or folder](./media/data-factory-copy-data-wizard-tutorial/copy-tool-choose-input-file-or-folder.png)
 6. **[Choose the input file or folder (入力ファイルまたはフォルダーの選択)]** ページで、**[次へ]** をクリックします。 **[Binary copy (バイナリ コピー)]**は選択しないでください。 
@@ -141,23 +137,21 @@ Azure Data Factory の**コピー ウィザード**を使用すると、デー�
 1. **[デプロイ]** ページでリンク `Click here to monitor copy pipeline` をクリックします。
    
    ![Copy Tool - Deployment succeeded](./media/data-factory-copy-data-wizard-tutorial/copy-tool-deployment-succeeded.png)  
-2. [監視アプリを使用したパイプラインの監視と管理](data-factory-monitor-manage-app.md) に関するページの指示に従って、作成したパイプラインを監視する方法を確認します。 **[ACTIVITY WINDOWS (アクティビティ ウィンドウ)]** 一覧の **[更新]** アイコンをクリックして、スライスを表示します。 
+2. Web ブラウザーの別のタブに監視アプリケーションが起動されます。   
    
-   ![Monitoring App](./media/data-factory-copy-data-wizard-tutorial/monitoring-app.png) 
-   
-   
-   **[ACTIVITY WINDOWS (アクティビティ ウィンドウ)]** 一覧の一番下にある **[更新]** ボタンをクリックして最新の状態を確認します。 自動的には更新されません。 
+   ![Monitoring App](./media/data-factory-copy-data-wizard-tutorial/monitoring-app.png)   
+3. 下部の **[ACTIVITY WINDOWS]\(アクティビティ ウィンドウ\)** 一覧の **[更新]** ボタンをクリックして、時間スライスの最新の状態を表示します。 パイプラインの開始時刻と終了時刻の間の 5 日間分の 5 つのアクティビティ ウィンドウが表示されます。 この一覧は自動的に更新されないため、準備完了状態のすべてのアクティビティ ウィンドウを表示するために [更新] を繰り返しクリックすることが必要になる場合があります。 
+4. 一覧で、アクティビティ ウィンドウを選択します。 右側の **[Activity Window Explorer]\(アクティビティ ウィンドウ エクスプローラー\)** に詳細が表示されます。
 
-> [!NOTE]
-> このチュートリアルのデータ パイプラインでは、ソース データ ストアからターゲット データ ストアにデータをコピーします。 入力データを変換して出力データを生成するのではありません。 Azure Data Factory を使用してデータを変換する方法のチュートリアルについては、「[チュートリアル: Hadoop クラスターを使用してデータを処理する最初のパイプラインを作成する](data-factory-build-your-first-pipeline.md)」を参照してください。
-> 
-> 2 つのアクティビティを連鎖させる (アクティビティを連続的に実行する) には、一方のアクティビティの出力データセットを、もう一方のアクティビティの入力データセットとして指定します。 詳細については、[Data Factory でのスケジュールと実行](data-factory-scheduling-and-execution.md)に関するページを参照してください。
+    ![Activity window details](media/data-factory-copy-data-wizard-tutorial/activity-window-details.png)    
 
-## <a name="see-also"></a>関連項目
-| トピック | Description |
-|:--- |:--- |
-| [パイプライン](data-factory-create-pipelines.md) |この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法を説明します。 |
-| [データセット](data-factory-create-datasets.md) |この記事では、Azure Data Factory のデータセットについて説明します。 |
-| [スケジュールと実行](data-factory-scheduling-and-execution.md) |この記事では、Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。 |
+    11 日、12 日、13 日、14 日、および 15 日は緑色で表示されています。これは、これらの日付の日次スライス出力が既に生成されていることを示します。 この色分けは、ダイアグラム ビューのパイプラインと出力データセットにも使用されています。 前の手順では、既に生成済みのスライスが 2 つ、現在処理中のスライスが 1 つ、処理を待機している状態のスライスが 2 つありました (色分けに基づく)。 
 
+    このアプリケーションの使用に関する詳細については、[監視アプリを使用したパイプラインの監視および管理](data-factory-monitor-manage-app.md)に関する記事を参照してください。
 
+## <a name="next-steps"></a>次のステップ
+このチュートリアルでは、Azure Blob Storage をコピー操作のソース データ ストア、Azure SQL データベースをターゲット データ ストアとして使用しました。 次の表は、コピー アクティビティによってソースおよびターゲットとしてサポートされているデータ ストアの一覧です。 
+
+[!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
+
+データ ストアのコピー ウィザードに表示されるフィールドおよびプロパティの詳細については、表内のデータ ストアへのリンクをクリックしてください。 

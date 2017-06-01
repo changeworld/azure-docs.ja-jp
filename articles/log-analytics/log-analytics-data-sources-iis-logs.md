@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/24/2017
+ms.date: 05/23/2017
 ms.author: bwren
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c6e2ecebf6cd1b246c155c158d12d4d83bd1feda
 ms.openlocfilehash: bda2da933accb769bae4c9b420ae330014fc2ba0
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/27/2017
 
 

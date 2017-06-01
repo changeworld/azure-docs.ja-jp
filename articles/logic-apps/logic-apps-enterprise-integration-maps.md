@@ -13,10 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
-ms.author: estfan
-translationtype: Human Translation
+ms.author: LADocs; padmavc
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 7729890157900d0211b3a7ec05096ca315018875
 ms.openlocfilehash: 23d79fb83c1c4b103407c001dcafb8b1f3cfa5a7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -98,10 +100,5 @@ Visual Studio 2015 の [Enterprise Integration Pack](logic-apps-enterprise-integ
 * [Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")  
 * [契約についての詳細情報](../logic-apps/logic-apps-enterprise-integration-agreements.md "Enterprise Integration の契約についての詳細情報")  
 * [変換の詳細](logic-apps-enterprise-integration-transform.md "エンタープライズ統合変換についての詳細")  
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

@@ -12,13 +12,15 @@ ms.service: app-service-web
 ms.workload: web
 ms.devlang: azurecli
 ms.tgt_pltfrm: na
-ms.topic: article
+ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: 184b099e0b723016180adaef95dc092da4d4224c
-ms.lasthandoff: 04/04/2017
+ms.custom: mvc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 6ee3008ab00fcdca3d1eb8330237bed196fad813
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/15/2017
 
 ---
 
@@ -30,7 +32,7 @@ ms.lasthandoff: 04/04/2017
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-azurecli[main](../../../cli_scripts/app-service/deploy-deployment-slot/deploy-deployment-slot.sh "Web アプリの作成およびステージング環境へのコードのデプロイ")]
+[!code-azurecli-interactive[main](../../../cli_scripts/app-service/deploy-deployment-slot/deploy-deployment-slot.sh "Web アプリの作成およびステージング環境へのコードのデプロイ")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
@@ -53,3 +55,4 @@ ms.lasthandoff: 04/04/2017
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
 
 その他の App Service の CLI サンプル スクリプトは、[Azure App Service のドキュメント](../app-service-cli-samples.md)のページにあります。
+

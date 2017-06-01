@@ -14,24 +14,25 @@ ms.devlang: PowerShell
 ms.topic: article
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 03/07/2017
+ms.date: 05/23/2017
 ms.author: janeng
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 528cb66bee6717a10864a78498c5004337bece02
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 5bb1f0b4b6e548cf4164dae55d13cbebb660232f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/27/2017
 
 ---
 
 # <a name="configure-sql-database-auditing-and-threat-detection-using-powershell"></a>PowerShell を使用して SQL Database の監査と脅威検出を構成する
 
-この PowerShell のサンプル スクリプトは、SQL Database の監査と脅威検出を構成します。 このサンプルを実行するには、最新の [Azure PowerShell](/powershell/azure/overview) がインストールされていることを確認してください。
+この PowerShell のサンプル スクリプトは、SQL Database の監査と脅威検出を構成します。 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-powershell[main](../../../powershell_scripts/sql-database/database-auditing-and-threat-detection/database-auditing-and-threat-detection.ps1 "監査と脅威検出の構成")]
+[!code-powershell[main](../../../powershell_scripts/sql-database/database-auditing-and-threat-detection/database-auditing-and-threat-detection.ps1?highlight=13-14 "監査と脅威検出の構成")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 

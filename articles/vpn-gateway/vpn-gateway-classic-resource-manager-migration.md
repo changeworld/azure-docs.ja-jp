@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/28/2016
+ms.date: 05/02/2017
 ms.author: amsriva
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 32ca2e4b1dcf5715602b8e1e1f3026cb785fbe0c
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 1164fc24355657af22b6befaad74685ebbc2b5cb
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -40,7 +41,7 @@ Resource Manager モデルは従来のモデルと異なり、仮想ネットワ
 
 サポートされていないシナリオ。  
 
-* 現在 ExpressRoute ゲートウェイを格納している VNet では、移行をサポートしていません。 そのため、同じ VNet 上の ExpressRoute ゲートウェイとの共存は現在サポートされていません。
+* ExpressRoute ゲートウェイと VPN ゲートウェイの両方を備えた VNet は、現在サポートされていません。
 * VM 拡張機能がオンプレミスのサーバーに接続している場合のトランジット シナリオ。 トランジット VPN 接続の制限は次のとおりです。
 
 > [!NOTE]

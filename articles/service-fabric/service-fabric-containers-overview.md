@@ -12,18 +12,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 2/6/2017
+ms.date: 5/16/2017
 ms.author: msfussell
-translationtype: Human Translation
-ms.sourcegitcommit: 93e0493e6a62a70a10b8315142765a3c3892acd1
-ms.openlocfilehash: abf5e4bc69aa32ca9af8998ef81de20baae24560
-ms.lasthandoff: 02/08/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: b8334d0ca0d1460edad9b0ef399e9b3428b1ef8d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/17/2017
 
 
 ---
-# <a name="preview-service-fabric-and-containers"></a>プレビュー: Service Fabric とコンテナー
+# <a name="service-fabric-and-containers"></a>Service Fabric とコンテナー
 > [!NOTE]
-> この機能は、Linux と Windows Server 2016 についてはプレビュー段階です。 
+> この機能は、Linux ではプレビュー段階にあります。 
 >   
 
 ## <a name="introduction"></a>はじめに
@@ -37,7 +38,7 @@ Service Fabric では、今後のいくつかのリリースにわたり、ネ�
 
 コンテナーは、システムの基礎となるオペレーティング システムをアプリケーションで仮想化する、仮想化テクノロジです。 コンテナーは、さまざまなレベルで分離されたアプリケーションを実行するための変更不可能な環境を提供します。 コンテナーはカーネル上で直接動作し、ファイルシステムなどのリソースの分離されたビューを備えています。 仮想マシンと比較して、コンテナーには次の利点があります。
 
-* **サイズが小さい**: コンテナーは、各レイヤーに&1; つの記憶域スペースと小規模な差分を使用するだけなので、効率性が上がります。
+* **サイズが小さい**: コンテナーは、各レイヤーに 1 つの記憶域スペースと小規模な差分を使用するだけなので、効率性が上がります。
 * **起動が高速**: コンテナーではオペレーティング システムを起動する必要がないため、仮想マシンよりかなり早く起動が完了します。通常は数秒で使用できるようになります。
 * **移植性**: コンテナー化されたアプリケーションのイメージを、クラウドまたはオンプレミスで実行されるように移植することができます。仮想マシンへの移植または物理マシン上への直接の移植が可能です。
 * **リソース ガバナンスを実現し** 、コンテナーがホスト上で利用する物理リソースを制限できるようにします。

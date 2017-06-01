@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 04/26/2017
 ms.author: sethm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: b7bcf6de0c8306492d7f7745cc5c091f9ddb76db
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: b9421e4d899982af5e4caf9d23eebb73188a8db1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -133,7 +133,7 @@ Storage キューと Service Bus キューは、どちらも現在 Microsoft Azu
 
 | 比較条件 | Storage キュー | Service Bus キュー |
 | --- | --- | --- |
-| 最大キュー サイズ |**200 TB**<br/><br/>(1 つのストレージ アカウントの容量) |**1 GB ～ 80 GB**<br/><br/>(キューの作成時と[パーティション分割を有効化](service-bus-partitioning.md)するときに定義します。追加情報セクションをご覧ください) |
+| 最大キュー サイズ |**500 TB**<br/><br/>([1 つのストレージ アカウントの容量](../storage/storage-introduction.md#queue-storage)に制限) |**1 GB ～ 80 GB**<br/><br/>(キューの作成時と[パーティション分割を有効化](service-bus-partitioning.md)するときに定義します。追加情報セクションをご覧ください) |
 | 最大メッセージ サイズ |**64 KB**<br/><br/>(**Base64** エンコードを使用する場合は 48 KB)<br/><br/>Azure では、キューと BLOB を組み合わせることでサイズの大きいメッセージをサポートし、1 つのアイテムに対して最大 200 GB までのメッセージをエンキューできます。 |**256 KB** ～ **1 MB**<br/><br/>(ヘッダーと本文の両方を含む。ヘッダーの最大サイズは 64 KB)<br/><br/>[サービス レベル](service-bus-premium-messaging.md)に依存します。 |
 | メッセージの最大 TTL |**7 日** |**`TimeSpan.Max`** |
 | キューの最大数 |**無制限** |**10,000**<br/><br/>(サービス名前空間あたり。増やすことができます) |

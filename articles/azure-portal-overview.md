@@ -14,15 +14,16 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/16/2015
 ms.author: dwrede
-translationtype: Human Translation
-ms.sourcegitcommit: 6ab02779d65dfc1519b457486678ace5fafc9fb5
-ms.openlocfilehash: 60733f973e7b88389816c1ea7cc15532ba967693
-ms.lasthandoff: 02/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: e4c1c2b956b2cae673e60223ce777ba1096dce33
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/12/2017
 
 
 ---
 # <a name="microsoft-azure-portal-overview"></a>Microsoft Azure ポータルの概要
-Azure リソースのプロビジョニングと管理は、Microsoft Azure ポータルを使って&1; か所で行うことができます。  このチュートリアルは、ポータルについて説明し、次のような主要な機能を使用する方法を示します。
+Azure リソースのプロビジョニングと管理は、Microsoft Azure ポータルを使って 1 か所で行うことができます。  このチュートリアルは、ポータルについて説明し、次のような主要な機能を使用する方法を示します。
 
 * **包括的なマーケットプレイス** : マイクロソフトや他のベンダーから購入またはプロビジョニングできる数千に及ぶアイテムを参照できます。
 * **統合されたスケーラブルな参照機能** : 関心のあるリソースの検索やさまざまな管理操作の簡単な実行を可能にします。
@@ -32,7 +33,7 @@ Azure リソースのプロビジョニングと管理は、Microsoft Azure ポ�
   ![Azure ポータル UI の説明][UIOrientation]
 
 ## <a name="before-you-get-started"></a>開始する前に
-このチュートリアルを使用するには、有効な Azure サブスクリプションが必要です。  お持ちでない場合は、今すぐ [無料試用版にサインアップ](https://azure.microsoft.com/pricing/free-trial/) してください。  サブスクリプションの取得後すぐに、[https://portal.azure.com] にアクセスできるようになります。
+このチュートリアルを使用するには、有効な Azure サブスクリプションが必要です。  お持ちでない場合は、今すぐ [無料試用版にサインアップ](https://azure.microsoft.com/pricing/free-trial/) してください。  サブスクリプションを取得すると、ポータル (<https://portal.azure.com>) にアクセスできるようになります。
 
 ## <a name="how-to-create-a-resource"></a>リソースの作成方法
 Azure には、1 か所で作成できる何千という項目を備えたマーケットプレースが用意されています。  たとえば、Windows Server 2012 VM を新規作成する必要があると仮定します。  +NEW ハブは、マーケットプレースの選りすぐりのカテゴリ セットにアクセスするためのエントリ ポイントです。  各カテゴリには、一部のお勧め項目と、すべてのカテゴリおよび検索結果を表示するマーケットプレース全体へのリンクがあります。 新しい Windows Server 2012 VM を作成するには、次の操作を実行します。  

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 10/18/2016
-ms.author: jehollan
-translationtype: Human Translation
+ms.author: LADocs; jehollan
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
 ms.openlocfilehash: e736bf626cd379e1bffe2dbf023e86addb09539f
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/21/2017
 
 

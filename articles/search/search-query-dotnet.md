@@ -11,11 +11,13 @@ ms.devlang: dotnet
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 12/08/2016
+ms.date: 05/19/2017
 ms.author: brjohnst
-translationtype: Human Translation
-ms.sourcegitcommit: 7d45759915f38ba4337b745eb2b28dcbc72dbbe0
-ms.openlocfilehash: 88d5148806e58d61b7b64327e07809eea5126211
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
+ms.openlocfilehash: ffc27db4de5bd699dbd8175930a597fb85947140
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/22/2017
 
 
 ---
@@ -51,13 +53,17 @@ Azure Search インデックスの作成は済んでいるので、.NET SDK を�
 ## <a name="create-an-instance-of-the-searchindexclient-class"></a>SearchIndexClient クラスのインスタンスの作成
 Azure Search .NET SDK を使用してクエリを発行するには、`SearchIndexClient` クラスのインスタンスを作成する必要があります。 このクラスにはいくつかのコンストラクターがあります。 目的のコンストラクターは、検索サービスの名前、インデックスの名前、および `SearchCredentials` オブジェクトをパラメーターとして使用します。 `SearchCredentials` は API キーをラップします。
 
-次のコードは、アプリケーションの構成ファイル (`app.config` または `web.config`) に保存されている検索サービスの名前と API キーを表す値を使用して、"hotels" というインデックス (「[.NET SDK を使用した Azure Search インデックスの作成](search-create-index-dotnet.md)」で作成したもの) の `SearchIndexClient` を新たに作成します。
+次のコードは、アプリケーションの構成ファイル ([サンプル アプリケーション](http://aka.ms/search-dotnet-howto)では `appsettings.json`) に保存されている検索サービスの名前と API キーを表す値を使用して、"hotels" というインデックス (「[.NET SDK を使用した Azure Search インデックスの作成](search-create-index-dotnet.md)」で作成したもの) の `SearchIndexClient` を新たに作成します。
 
 ```csharp
-string searchServiceName = ConfigurationManager.AppSettings["SearchServiceName"];
-string queryApiKey = ConfigurationManager.AppSettings["SearchServiceQueryApiKey"];
+private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot configuration)
+{
+    string searchServiceName = configuration["SearchServiceName"];
+    string queryApiKey = configuration["SearchServiceQueryApiKey"];
 
-SearchIndexClient indexClient = new SearchIndexClient(searchServiceName, "hotels", new SearchCredentials(queryApiKey));
+    SearchIndexClient indexClient = new SearchIndexClient(searchServiceName, "hotels", new SearchCredentials(queryApiKey));
+    return indexClient;
+}
 ```
 
 `SearchIndexClient` には `Documents` プロパティがあります。 このプロパティは、Azure Search インデックスの照会に必要なすべてのメソッドを提供します。
@@ -165,10 +171,5 @@ ID: 2   Base rate: 79.99        Description: Cheapest hotel in town     Descript
 ```
 
 上記のサンプル コードでは、コンソールを使って検索結果を出力します。 同様に、独自のアプリケーションに検索結果を表示する場合もあります。 ASP.NET MVC ベースの Web アプリケーションで検索結果を表示する方法を示した例については、 [GitHub でこちらのサンプル](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetSample) を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 
