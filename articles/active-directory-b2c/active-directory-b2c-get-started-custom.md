@@ -74,8 +74,8 @@ Azure AD B2C では、ユーザーのサインアップとサインインのた�
 1. `Azure Active Directory` ブレードを開きます (Azure AD B2C ブレードではありません)。 **[> More Services]**(> その他のサービス) をクリックしてブレードを探すことが必要な場合があります。
 1. **[アプリの登録]** を選択します。
 1. **[+ New application registration]**(+ 新規アプリケーション登録) をクリックします。
-   * [Name](名前): `IdentityExperienceFramework`
-   * [Application type](アプリケーションの種類): `Web app/API`
+   * [Name] \(名前): `IdentityExperienceFramework`
+   * [Application type] \(アプリケーションの種類): `Web app/API`
    * [Sign-on URL]\(サインオン URL\): `https://login.microsoftonline.com/yourtenant.onmicrosoft.com` (`yourtenant` は Azure AD B2C テナントのドメイン名)
 1. **[作成]**をクリックします。
 1. 作成されたら、新しく作成されたアプリケーション `IdentityExperienceFramework` を選択して、**[プロパティ]** をクリックし、アプリケーション ID をコピーして後で使用するために保存します。
@@ -84,9 +84,9 @@ Azure AD B2C では、ユーザーのサインアップとサインインのた�
 
 1. **[アプリの登録]** を選択します。
 1. **[+ New application registration]**(+ 新規アプリケーション登録) をクリックします。
-   * [Name](名前): `ProxyIdentityExperienceFramework`
-   * [Application type](アプリケーションの種類): `Native`
-   * [Sign-on URL](サインオン URL): `https://login.microsoftonline.com/yourtenant.onmicrosoft.com` (`yourtenant` は Azure AD B2C テナント)
+   * [Name] \(名前): `ProxyIdentityExperienceFramework`
+   * [Application type] \(アプリケーションの種類): `Native`
+   * [Sign-on URL] \(サインオン URL): `https://login.microsoftonline.com/yourtenant.onmicrosoft.com` (`yourtenant` は Azure AD B2C テナント)
 1. **[作成]**をクリックします。
 1. 作成されたら、アプリケーション `ProxyIdentityExperienceFramework` を選択して、**[プロパティ]** をクリックし、アプリケーション ID をコピーして後で使用するために保存します。
 1. **[Required permissions]**(必要なアクセス許可) を選択し、**[+ Add]**(+ 追加) を選択し、**API を選択**します。
