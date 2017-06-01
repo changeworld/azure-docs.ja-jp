@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 8928581d9636f571008f965185eeb61b414a16e7
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: da9e5f015f93090f4efb00f6c3af07ba2f5503bc
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -135,7 +136,7 @@ Atlassian Cloud での Azure AD シングル サインオンを構成してテ�
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_05.png)
  1. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
- 2. **[次へ]**をクリックします。
+ 2. **[次へ]** をクリックします。
 
 5. アプリケーションの SSO を構成するには、管理者権限で Atlassian ポータルにログインします。
 
@@ -208,7 +209,7 @@ Atlassian Cloud での Azure AD シングル サインオンを構成してテ�
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-atlassian-cloud-tutorial/create_aaduser_05.png) 
   1. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
   2. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
-  3. **[次へ]**をクリックします。
+  3. **[次へ]** をクリックします。
 
 6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
 
@@ -217,7 +218,7 @@ Atlassian Cloud での Azure AD シングル サインオンを構成してテ�
    2. **[姓]** ボックスに「**Simon**」と入力します。
    3. **[表示名]** ボックスに「**Britta Simon**」と入力します。
    4. **[ロール]** 一覧で **[ユーザー]** を選択します。
-   5. **[次へ]**をクリックします。
+   5. **[次へ]** をクリックします。
 
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
 
@@ -252,7 +253,7 @@ Atlassian Cloud インスタンスに管理者権限でログインし、次の�
  
 4. **[Create user (ユーザーの作成)]** ボタンをクリックします。これで、招待状が電子メールでユーザーに送信され、招待状を受け取ったユーザーがシステムをアクティブ化します。 
 
-### <a name="assig-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、Britta Simon に Atlassian Cloud へのアクセスを許可して、このユーザーが Azure SSO を使用できるようにします。
 

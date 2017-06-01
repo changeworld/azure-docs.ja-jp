@@ -13,19 +13,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 1481fcb070f383d158c5a6ae32504e498de4a66b
-ms.openlocfilehash: ca6347e079c0e85d1e9583f77b2e43632bedb206
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 1414baf9e51d648cc3a46c4f8635040b4d276910
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/01/2017
 
 ---
 
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用して Azure DNS で DNS ゾーンを管理する方法
 
 > [!div class="op_single_selector"]
+> * [ポータル](dns-operations-dnszones-portal.md)
+> * [PowerShell](dns-operations-dnszones.md)
 > * [Azure CLI 1.0](dns-operations-dnszones-cli-nodejs.md)
 > * [Azure CLI 2.0](dns-operations-dnszones-cli.md)
-> * [PowerShell](dns-operations-dnszones.md)
+
 
 このガイドでは、Windows、Mac、および Linux で使用できるクロス プラットフォームの Azure CLI を使用して、DNS ゾーンを管理する方法について説明します。 DNS ゾーンは、[Azure PowerShell](dns-operations-dnszones.md) または Azure Portal を使用して管理することもできます。
 
@@ -66,7 +69,7 @@ az login
 az account list
 ```
 
-### <a name="choose-which-of-your-azure-subscriptions-to-use"></a>使用する Azure サブスクリプションを選択します。
+使用する Azure サブスクリプションを選択します。
 
 ```azurecli
 az account set --subscription "subscription name"

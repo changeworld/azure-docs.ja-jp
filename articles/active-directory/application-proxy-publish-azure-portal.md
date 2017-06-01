@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/13/2017
+ms.date: 05/23/2017
 ms.author: kgremban
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 8cb8aff4c3035ef8557e0ae0d254fcd750a9228a
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: a6dc6148c3307d41801a4c1112397f3e63006ae8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/31/2017
 
 ---
 
 
-# <a name="publish-applications-using-azure-ad-application-proxy---public-preview"></a>Azure AD アプリケーション プロキシを使用したアプリケーションの発行 - パブリック プレビュー
+# <a name="publish-applications-using-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用してアプリケーションを発行する
 
 > [!div class="op_single_selector"]
 > * [Azure ポータル](application-proxy-publish-azure-portal.md)

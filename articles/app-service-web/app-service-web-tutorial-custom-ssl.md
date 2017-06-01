@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: cephalin
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: a0e245121f2a9ff4109b281cd7286ed601bf64ac
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: c5ec6dc244cc70591806dab171a289a0e55ff0a0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
-
+ms.lasthandoff: 06/01/2017
 
 ---
 # <a name="bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>既存のカスタム SSL 証明書の Azure Web Apps へのバインド
@@ -45,7 +45,7 @@ ms.lasthandoff: 05/09/2017
 このチュートリアルの内容に従う前に、次の作業が完了していることを確認してください。
 
 - [App Service アプリを作成する](/azure/app-service/)
-- [カスタム DNS 名を Web アプリにマップする](web-sites-custom-domain-name.md)
+- [カスタム DNS 名を Web アプリにマップする](app-service-web-tutorial-custom-domain.md)
 - 信頼された証明機関から SSL 証明書を取得する
 
 <a name="requirements"></a>
@@ -140,16 +140,16 @@ App Service による証明書のアップロードが完了すると、**[SSL �
 
 アップロードした証明書が **[SSL 証明書]** ページに表示されています。
 
-**[SSL バインディング]** セクションで、**[Add bindings] (バインドの追加)** をクリックします。
+**[SSL バインディング]** セクションで、**[Add bindings] \(バインドの追加)** をクリックします。
 
-**[Add SSL Binding] (SSL バインドの追加)** ブレードで、ドロップダウンから保護するドメインの名前と使用する証明書を選択します。 
+**[Add SSL Binding] \(SSL バインドの追加)** ブレードで、ドロップダウンから保護するドメインの名前と使用する証明書を選択します。 
 
-**[SSL Type] (SSL の種類)** で、**[Server Name Indication (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)** ベースの SSL を使用するか IP ベースの SSL を使用するかを選択します。
+**[SSL Type] \(SSL の種類)** で、**[Server Name Indication (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)** ベースの SSL を使用するか IP ベースの SSL を使用するかを選択します。
    
 - **SNI ベースの SSL** - SNI ベースの SSL バインドを複数追加することができます。 このオプションでは、複数の SSL 証明書を使用して、同一の IP アドレス上の複数のドメインを保護できます。 最新のブラウザーのほとんど (Inernet Explorer、Chrome、Firefox、Opera など) が SNI をサポートしています (ブラウザーのサポートに関するより包括的な情報については、「[Server Name Indication](http://wikipedia.org/wiki/Server_Name_Indication)」を参照してください)。
 - **IP ベースの SSL** - IP ベースの SSL バインドを 1 つだけ追加することができます。 このオプションでは、SSL 証明書を 1 つだけ使用して、専用のパブリック IP アドレスを保護します。 複数のドメインを保護するには、同じ SSL 証明書を使用してすべてのドメインを保護する必要があります。 これは、SSL バインドの従来のオプションです。 
 
-**[Add Binding] (バインドの追加)** をクリックします。
+**[Add Binding] \(バインドの追加)** をクリックします。
 
 ![SSL 証明書のバインド](./media/app-service-web-tutorial-custom-ssl/bind-certificate.png)
 

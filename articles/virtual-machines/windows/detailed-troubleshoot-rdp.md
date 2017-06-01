@@ -3,7 +3,7 @@ title: "Azure でのリモート デスクトップの詳細なトラブルシ�
 description: "Azure の Windows 仮想マシンに接続できないリモート デスクトップ エラーをトラブルシューティングする詳細な手順の確認"
 services: virtual-machines-windows
 documentationcenter: 
-author: iainfoulds
+author: genlin
 manager: timlt
 editor: 
 tags: top-support-issue,azure-service-management,azure-resource-manager
@@ -14,12 +14,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: support-article
-ms.date: 12/20/2016
-ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 2e84a7f8d0f8d15a808092deab8cc7a9bca1541d
-ms.lasthandoff: 04/27/2017
+ms.date: 05/26/2017
+ms.author: genli
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 3ba81282cd7b58cc118497c14e911fc89815d6d4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -27,9 +28,9 @@ ms.lasthandoff: 04/27/2017
 この記事では、Windows ベースの Azure 仮想マシンの複雑なリモート デスクトップのエラーを診断して修正するための詳細なトラブルシューティング手順を説明します。
 
 > [!IMPORTANT]
-> リモート デスクトップのより一般的なエラーを解消するには、先に進む前に、必ず[リモート デスクトップの基本的なトラブルシューティングの記事](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)をお読みください。
+> リモート デスクトップのより一般的なエラーを解消するには、先に進む前に、必ず[リモート デスクトップの基本的なトラブルシューティングの記事](troubleshoot-rdp-connection.md)をお読みください。
 
-[リモート デスクトップの基本的なトラブルシューティング ガイド](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)で扱われている具体的なエラー メッセージのいずれにも似ていないエラー メッセージがリモート デスクトップで表示されることもあります。 次の手順に従って、リモート デスクトップ (RDP) クライアントが Azure VM 上の RDP サービスに接続できない原因を特定してください。
+[リモート デスクトップの基本的なトラブルシューティング ガイド](troubleshoot-rdp-connection.md)で扱われている具体的なエラー メッセージのいずれにも似ていないエラー メッセージがリモート デスクトップで表示されることもあります。 次の手順に従って、リモート デスクトップ (RDP) クライアントが Azure VM 上の RDP サービスに接続できない原因を特定してください。
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -81,7 +82,7 @@ RDP 接続には以下のコンポーネントが関連しています。
 
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_2.png)
 
-インターネットに直接接続されているコンピューターがない場合は、リソース グループまたはクラウド サービス内に新しい Azure 仮想マシンを作成してテストします。 詳細については、「[Azure 上で Windows を実行する仮想マシンの作成](../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。 仮想マシンとリソース グループまたはクラウド サービスは、テスト後に削除できます。
+インターネットに直接接続されているコンピューターがない場合は、リソース グループまたはクラウド サービス内に新しい Azure 仮想マシンを作成してテストします。 詳細については、「[Azure 上で Windows を実行する仮想マシンの作成](../virtual-machines-windows-hero-tutorial.md)」を参照してください。 仮想マシンとリソース グループまたはクラウド サービスは、テスト後に削除できます。
 
 インターネットに直接接続されているコンピューターとのリモート デスクトップ接続を作成できるのなら、組織のイントラネットのエッジ デバイスで以下を確認してください。
 
@@ -98,10 +99,8 @@ RDP 接続には以下のコンポーネントが関連しています。
 
 > [!NOTE]
 > リソース マネージャーで作成された仮想マシンについては、「 [ソース 4: ネットワーク セキュリティ グループ](#source-4-network-security-groups)」はスキップしてください。
-> 
-> 
 
-同じクラウド サービスまたは仮想ネットワーク内に別の仮想マシンがない場合、作成します。 「[Azure 上で Windows を実行する仮想マシンの作成](../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」の手順に従ってください。 テストが完了した後は、テスト用の仮想マシンを削除します。
+同じクラウド サービスまたは仮想ネットワーク内に別の仮想マシンがない場合、作成します。 「[Azure 上で Windows を実行する仮想マシンの作成](../virtual-machines-windows-hero-tutorial.md)」の手順に従ってください。 テストが完了した後は、テスト用の仮想マシンを削除します。
 
 同じクラウド サービスまたは仮想ネットワーク内の仮想マシンにリモート デスクトップ経由で接続できる場合は、以下の設定を確認してください。
 
@@ -125,7 +124,7 @@ RDP 接続には以下のコンポーネントが関連しています。
 ## <a name="source-5-windows-based-azure-vm"></a>ソース 5: Windows ベースの Azure VM
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_5.png)
 
-[この記事](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)の手順に従ってください。 この記事では、仮想マシン上のリモート デスクトップ サービスを次のようにリセットします。
+[この記事](reset-rdp.md)の手順に従ってください。 この記事では、仮想マシン上のリモート デスクトップ サービスを次のようにリセットします。
 
 * 「リモート デスクトップ」 の Windows ファイアウォールの既定ルール (TCP ポート 3389) が有効になる。
 * HKLM\System\CurrentControlSet\Control\Terminal Server\fDenyTSConnections レジストリ値が 0 に設定されるため、リモート デスクトップ接続が有効になる。
@@ -145,10 +144,12 @@ RDP 接続には以下のコンポーネントが関連しています。
 
 次に、Azure のサブスクリプション名、クラウド サービス名、および仮想マシン名を入力してから (< および > 文字を削除する)、これらのコマンドを実行します。
 
-    $subscr="<Name of your Azure subscription>"
-    $serviceName="<Name of the cloud service that contains the target virtual machine>"
-    $vmName="<Name of the target virtual machine>"
-    .\InstallWinRMCertAzureVM.ps1 -SubscriptionName $subscr -ServiceName $serviceName -Name $vmName
+```powershell
+$subscr="<Name of your Azure subscription>"
+$serviceName="<Name of the cloud service that contains the target virtual machine>"
+$vmName="<Name of the target virtual machine>"
+.\InstallWinRMCertAzureVM.ps1 -SubscriptionName $subscr -ServiceName $serviceName -Name $vmName
+```
 
 正しいサブスクリプション名は、*Get-AzureSubscription* コマンドで表示される **SubscriptionName** プロパティから取得できます。 仮想マシンのクラウド サービス名は、*Get-AzureVM* コマンドに表示される **ServiceName** 列から取得できます。
 
@@ -156,37 +157,49 @@ RDP 接続には以下のコンポーネントが関連しています。
 
 次に以下のコマンドを使用して、リモート Azure PowerShell セッションを開始します。
 
-    $uri = Get-AzureWinRMUri -ServiceName $serviceName -Name $vmName
-    $creds = Get-Credential
-    Enter-PSSession -ConnectionUri $uri -Credential $creds
+```powershell
+$uri = Get-AzureWinRMUri -ServiceName $serviceName -Name $vmName
+$creds = Get-Credential
+Enter-PSSession -ConnectionUri $uri -Credential $creds
+```
 
 有効な管理者の資格情報を入力すると、Azure PowerShell プロンプトで次のように表示されます。
 
-    [cloudservice4testing.cloudapp.net]: PS C:\Users\User1\Documents>
+```powershell
+[cloudservice4testing.cloudapp.net]: PS C:\Users\User1\Documents>
+```
 
 このメッセージの最初の部分は、ターゲット VM を含むクラウド サービス名です。これは、"cloudservice4testing.cloudapp.net" とは異なる場合もあります。 これでこのクラウド サービスに対する Azure PowerShell コマンドを発行して、前述したその他の問題を調査して構成を修正することができます。
 
 ### <a name="to-manually-correct-the-remote-desktop-services-listening-tcp-port"></a>リモート デスクトップ サービスでリッスンする TCP ポートの手動修正
 リモートの Azure PowerShell セッション プロンプトで、このコマンドを実行します。
 
-    Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" -Name "PortNumber"
+```powershell
+Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" -Name "PortNumber"
+```
 
 PortNumber プロパティは、現在のポート番号を表示します。 必要に応じて、次のコマンドを使用してリモート デスクトップのポート番号を既定値 (3389) に戻してください。
 
-    Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" -Name "PortNumber" -Value 3389
+```powershell
+Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" -Name "PortNumber" -Value 3389
+```
 
 次のコマンドを使用して、ポートが 3389 に変更されたことを確認します。
 
-    Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" -Name "PortNumber"
+```powershell
+Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" -Name "PortNumber"
+```
 
 次のコマンドを使用して、リモートの Azure PowerShell セッションを終了します。
 
-    Exit-PSSession
+```powershell
+Exit-PSSession
+```
 
 Azure VM のリモート デスクトップのエンドポイントでも、内部ポートとして TCP ポート 3398 が使用されていることを確認します。 Azure VM を再起動し、もう一度リモート デスクトップ接続を試してみてください。
 
 ## <a name="additional-resources"></a>その他のリソース
-[Windows 仮想マシンのパスワードまたはリモート デスクトップ サービスをリセットする方法](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[Windows 仮想マシンのパスワードまたはリモート デスクトップ サービスをリセットする方法](reset-rdp.md)
 
 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)
 
