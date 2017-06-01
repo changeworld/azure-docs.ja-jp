@@ -1,6 +1,6 @@
 ---
 
-title: "Azure Active Directory プレビューのライセンスの概要 | Microsoft Docs"
+title: "Azure Active Directory のライセンスの概要 | Microsoft Docs"
 description: "Office 365、Microsoft Intune、Azure Active Directory Premium エディションと Basic エディションを含む、Azure Active Directory のライセンス、しくみ、使用方法、ベスト プラクティスの説明"
 services: active-directory
 keywords: "Azure AD のライセンス"
@@ -14,18 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/27/2017
+ms.date: 05/05/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 3bad24f35cf7867f1e02e8470c602a7f6a9ce8fb
-ms.lasthandoff: 03/09/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 8e9d6900910f45b5f17600fc5608191871c5ab21
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
 
-# <a name="license-yourself-and-your-users-in-azure-active-directory-preview"></a>Azure Active Directory プレビューでの自分とユーザーのライセンスの取得
+# <a name="license-yourself-and-your-users-in-azure-active-directory"></a>Azure Active Directory での自分とユーザーのライセンスの取得
 
 > [!div class="op_single_selector"]
 > * [Azure ポータル](active-directory-licensing-get-started-azure-portal.md)
@@ -59,7 +60,7 @@ Enterprise Mobility Suite、Azure AD Premium、Azure AD Basic を購入または
 
 有料機能を構成するうえで必要なことはサブスクリプションの入手だけですが、Azure AD の有料機能を使用するには、適切なユーザーにライセンスを配布する必要があります。 一般に、Azure AD の有料機能へのアクセスが必要なユーザーや Azure AD の有料機能で管理されているユーザーには、ライセンスを割り当てる必要があります。 ライセンスの割り当てとは、ユーザーと Azure AD Premium、Basic、Enterprise Mobility Suite などの購入済みのサービスとのマッピングです。
 
-ディレクトリ内のどのユーザーにライセンスを付与する必要があるかは簡単に管理できます。 これは、Azure ポータルを使用してグループにライセンスを割り当てるか、ポータル、PowerShell、または API を使用して適切なユーザーに直接ライセンスを割り当てることで実現できます。 ライセンスをグループに割り当てると、グループ メンバー全員にライセンスが割り当てられます。 グループに追加されたユーザーには該当するライセンスが割り当てられ、グループから削除されたユーザーは該当するライセンスが削除されます。 グループの割り当てには、使用可能な任意のグループ管理を利用できます。これは、アプリケーションへのグループ ベースの割り当てと一貫しています。 この方法を使用して、ディレクトリ内のすべてのユーザーが自動的に割り当てられるようにルールを設定することや、適切な役職を持つすべてのユーザーにライセンスを確実に付与することができます。さらには、組織内の他の管理者に決定を委任することもできます。 
+ディレクトリ内のどのユーザーにライセンスを付与する必要があるかは簡単に管理できます。 これは、Azure Portal を使用してグループにライセンスを割り当てるか (パブリック プレビューの機能)、ポータル、PowerShell、または API を使用して適切なユーザーに直接ライセンスを割り当てることで実現できます。 ライセンスをグループに割り当てると、グループ メンバー全員にライセンスが割り当てられます。 グループに追加されたユーザーには該当するライセンスが割り当てられ、グループから削除されたユーザーは該当するライセンスが削除されます。 グループの割り当てには、使用可能な任意のグループ管理を利用できます。これは、アプリケーションへのグループ ベースの割り当てと一貫しています。 この方法を使用して、ディレクトリ内のすべてのユーザーが自動的に割り当てられるようにルールを設定することや、適切な役職を持つすべてのユーザーにライセンスを確実に付与することができます。さらには、組織内の他の管理者に決定を委任することもできます。 
 
 高度なシナリオや Office 365 ライセンスのシナリオを含め、グループにライセンス割り当てる方法の詳細については、[この記事](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-assignment-azure-portal)を参照してください。
 

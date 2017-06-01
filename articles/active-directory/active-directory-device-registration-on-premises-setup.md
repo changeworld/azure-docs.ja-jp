@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 05/04/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: fbc3807351a9d83e4bcc5ba0661001754621f430
-ms.lasthandoff: 03/10/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 7a9ec95348f4aa8a14a716a758fb362c1ede61b3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.lasthandoff: 03/10/2017
 > 
 > 
 
-オンプレミスの条件付きアクセス シナリオの詳細については、「 [任意のデバイスからの職場への参加による業務用アプリケーション間の SSO とシームレスな&2; 要素認証](https://technet.microsoft.com/library/dn280945.aspx)」をご覧ください。
+オンプレミスの条件付きアクセス シナリオの詳細については、「 [任意のデバイスからの職場への参加による業務用アプリケーション間の SSO とシームレスな 2 要素認証](https://technet.microsoft.com/library/dn280945.aspx)」をご覧ください。
 
 これらの機能は、Azure Active Directory Premium ライセンスを購入したお客様に提供されます。
 
@@ -112,10 +113,7 @@ Azure Active Directory Device Registration サービスを Azure Active Director
    2. Azure AD Connect のインストールと実行: 「[Azure AD Connect のカスタム インストール](connect/active-directory-aadconnect-get-started-custom.md)」の手順に従って Azure AD Connect をインストールします。
    3. ディレクトリの同期を確認および管理します。 この手順では、シングル サインオンの手順を利用できます。
    
-   > [!NOTE]
-   > 上記のリンクされたドキュメントで概説されているように、AD FS とのフェデレーションを構成します。 プレビュー機能を構成する必要はありません。
-   > 
-   > 
+   「[Azure AD Connect のカスタム インストール](connect/active-directory-aadconnect-get-started-custom.md)」で概説されているように、AD FS とのフェデレーションも構成します。
 
 ## <a name="upgrade-your-active-directory-domain-services-schema"></a>Active Directory ドメイン サービス スキーマをアップグレードする
 > [!NOTE]
@@ -130,13 +128,13 @@ Azure Active Directory Device Registration サービスを Azure Active Director
 
 ## <a name="prepare-your-active-directory-to-support-devices"></a>デバイスをサポートするために Active Directory の準備を行う
 > [!NOTE]
-> これは、デバイスをサポートするために Active Directory フォレストを準備する際に実行する必要のある&1; 回限りの操作です。 この手順を完了するには、エンタープライズ管理者権限を使用してログオンする必要があり、Active Directory フォレストに Windows Server 2012 R2 スキーマが組み込まれている必要があります。
+> これは、デバイスをサポートするために Active Directory フォレストを準備する際に実行する必要のある 1 回限りの操作です。 この手順を完了するには、エンタープライズ管理者権限を使用してログオンする必要があり、Active Directory フォレストに Windows Server 2012 R2 スキーマが組み込まれている必要があります。
 > 
 > 
 
 ## <a name="prepare-your-active-directory-forest-to-support-devices"></a>デバイスをサポートするために Active Directory フォレストの準備を行う
 > [!NOTE]
-> これは、デバイスをサポートするために Active Directory フォレストを準備する際に実行する必要のある&1; 回限りの操作です。 この手順を完了するには、エンタープライズ管理者権限を使用してログオンする必要があり、Active Directory フォレストに Windows Server 2012 R2 スキーマが組み込まれている必要があります。
+> これは、デバイスをサポートするために Active Directory フォレストを準備する際に実行する必要のある 1 回限りの操作です。 この手順を完了するには、エンタープライズ管理者権限を使用してログオンする必要があり、Active Directory フォレストに Windows Server 2012 R2 スキーマが組み込まれている必要があります。
 > 
 > 
 
@@ -166,7 +164,7 @@ Azure Active Directory Device Registration では、iOS デバイスに対して
 
     https://enterpriseregistration.windows.net/enrollmentserver/otaprofile/contoso.com
 
-この URL は、さまざまな方法ユーザーに伝えることができます。 その&1; つとして、AD FS 内のカスタム アプリケーション アクセス拒否メッセージで、この URL を発行する方法が推奨されます。 これについては、以降の「 [アプリケーションのアクセス ポリシーとカスタム アクセス拒否メッセージを作成する](#create-an-application-access-policy-and-custom-access-denied-message)」セクションで説明します。
+この URL は、さまざまな方法ユーザーに伝えることができます。 その 1 つとして、AD FS 内のカスタム アプリケーション アクセス拒否メッセージで、この URL を発行する方法が推奨されます。 これについては、以降の「 [アプリケーションのアクセス ポリシーとカスタム アクセス拒否メッセージを作成する](#create-an-application-access-policy-and-custom-access-denied-message)」セクションで説明します。
 
 ### <a name="join-a-windows-81-device-using-azure-active-directory-device-registration"></a>Azure Active Directory Device Registration を使用して Windows 8.1 デバイスを参加させる
 1. Windows 8.1 デバイスで、**[PC 設定]**  >  **[ネットワーク]**  >  **[社内]** の順に移動します。
@@ -220,7 +218,7 @@ LDP.exe または ADSI Edit を使用して、デバイス オブジェクトが
 
 この iOS デバイスを職場に参加させる。
 
-**Windows 8.1 デバイス**を使用している場合は、**[PC 設定]** >  **[ネットワーク]**  >  **、[社内]** にアクセスすると、デバイスを参加させることができます。
+**Windows 8.1 デバイスを使用している場合は**、**[PC 設定] **> **[ネットワーク]**  >  **[社内]** にアクセスして、デバイスを参加させることができます。
 
 ここで、"**relying party trust name**" は、AD FS にあるアプリケーション証明書利用者の信頼オブジェクトの名前です。
 ここで、 **yourdomain.com** は、Azure Active Directory で構成したドメイン名です。 たとえば、contoso.com です。

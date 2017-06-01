@@ -14,13 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2017
+ms.date: 05/05/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: a7240c52e9351a60e3cf577d8112862c7dc8d913
-ms.lasthandoff: 03/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: d4c509c43ff647f3d9b96ffd136073312a81049b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -115,8 +116,7 @@ ms.lasthandoff: 03/14/2017
 グループ ライセンスの割り当ての際、利用場所が指定されていないユーザーは、ディレクトリの場所を継承します。 異なる場所にユーザーがいる場合、そのことをユーザー オブジェクトに正しく反映させてから、ライセンスが付与されたグループにユーザーを追加するようにしてください。
 
 ## <a name="use-powershell-to-see-who-has-inherited-and-direct-licenses"></a>PowerShell を使用して、継承したライセンスと直接ライセンスを持つユーザーを表示する
-
-Azure AD リリースのプレビュー期間中は、PowerShell を使用してグループのライセンス割り当てを完全に制御することはできません。 ただし、ユーザーの状態に関する基本情報の検出や、ライセンスがグループから継承されたか直接割り当てられたかの判定には使用できます。 次のコード サンプルは、管理者がライセンス割り当てについての基本的なレポートを生成する方法を示しています。
+グループベースのライセンスのパブリック プレビュー中は、PowerShell を使用してグループのライセンス割り当てを完全に制御することはできません。 ただし、ユーザーの状態に関する基本情報の検出や、ライセンスがグループから継承されたか直接割り当てられたかの判定には使用できます。 次のコード サンプルは、管理者がライセンス割り当てについての基本的なレポートを生成する方法を示しています。
 
 1. `connect-msolservice` コマンドレットを実行してテナントを認証し、接続します。
 

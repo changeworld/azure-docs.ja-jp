@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory プレビューにカスタム ドメイン名を追加する | Microsoft Docs"
+title: "Azure Active Directory へのカスタム ドメイン名の追加 | Microsoft Docs"
 description: "Azure Active Directory に会社のドメイン名を追加する方法とドメイン名を検証する方法"
 services: active-directory
 documentationcenter: 
@@ -12,23 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2016
+ms.date: 05/04/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: f1f3d6fa1ba29b0d43d29c7d9cccfc430fdd6f1e
-ms.openlocfilehash: 5153926f34961a397ef9632ca1f8ac868ba1986e
-ms.lasthandoff: 02/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 8f61e947d9667f5047729ac19dc2bf1e03a48c6b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="add-a-custom-domain-name-to-azure-active-directory-preview"></a>Azure Active Directory プレビューにカスタム ドメイン名を追加する
+# <a name="add-a-custom-domain-name-to-azure-active-directory"></a>Azure Active Directory へのカスタム ドメイン名の追加
 > [!div class="op_single_selector"]
-> * [Azure Portal](active-directory-domains-add-azure-portal.md)
+> * [Azure ポータル](active-directory-domains-add-azure-portal.md)
 > * [Azure クラシック ポータル](active-directory-add-domain.md)
 > 
-> 
 
-組織にはビジネス向けに使用する&1; つ以上のドメイン名があり、ユーザーはその会社のドメイン名を使用してその会社のネットワークにサインインします。 Azure Active Directory (Azure AD) プレビューを使用して、会社のドメイン名を Azure AD にも追加することもできます。 [プレビューの機能については、こちらの記事をご覧ください。](active-directory-preview-explainer.md) これにより、ディレクトリ内で "alice@contoso.com" のようなユーザーにとって馴染みのあるユーザー名を割り当てることができます。 この場合のプロセスは単純です。
+組織にはビジネス向けに使用する 1 つ以上のドメイン名があり、ユーザーはその会社のドメイン名を使用してその会社のネットワークにサインインします。 Azure Active Directory (Azure AD) を使用して、会社のドメイン名を Azure AD に追加することもできます。 これにより、ディレクトリ内で "alice@contoso.com" のようなユーザーにとって馴染みのあるユーザー名を割り当てることができます。 この場合のプロセスは単純です。
 
 1. カスタム ドメイン名をディレクトリに追加する
 2. ドメイン名レジストラーでドメイン名の DNS エントリを追加する
@@ -75,7 +75,7 @@ DNS レコードが反映された後でないと、ドメイン名を検証で�
 ## <a name="troubleshooting"></a>トラブルシューティング
 カスタム ドメイン名を検証できない場合は、次のことを試してください。 以下では、最も一般的な原因から順に列挙します。
 
-1. **1 時間待つ**。 DNS レコードは、Azure AD がドメインを検証する前に反映されている必要があります。 これに&1; 時間以上かかる場合があります。
+1. **1 時間待つ**。 DNS レコードは、Azure AD がドメインを検証する前に反映されている必要があります。 これに 1 時間以上かかる場合があります。
 2. **DNS レコードが正しく入力されていることを確認する**。 ドメインのドメイン名レジストラーの Web サイトで、この手順を実行します。 Azure AD は、DNS エントリが DNS ゾーン ファイルに存在しない場合、または Azure AD によって提供された DNS エントリと完全に一致しない場合は、ドメイン名を検証できません。 ドメインの DNS レコードをドメイン名レジストラーで更新するアクセス権がない場合は、組織内でそのアクセス権を持つ人物またはチームと DNS エントリを共有し、DNS エントリの追加を依頼します。
 3. **Azure AD の他のディレクトリから、そのドメイン名を削除する**。 ドメイン名は、1 つのディレクトリ内だけでしか検証できません。 ドメイン名が以前に他のディレクトリで検証されていた場合は、新しいディレクトリで検証する前に、前のディレクトリ内から削除されている必要があります。 ドメイン名の削除については、[カスタム ドメイン名の管理](active-directory-domains-manage-azure-portal.md)に関する記事を参照してください。    
 

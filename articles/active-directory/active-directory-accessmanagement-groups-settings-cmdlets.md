@@ -12,23 +12,31 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/05/2017
-ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 49ba7e6d5d67b109632b08ce936357804c80da40
-ms.lasthandoff: 04/27/2017
+ms.date: 05/04/2017
+ms.author: rodejo
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 81fdae033afd90b77d3725f8c39b8a6c6bbc3812
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/05/2017
 
 
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>グループの設定を構成するための Azure Active Directory コマンドレット
 
 > [!IMPORTANT]
-> このコンテンツは、Office 365 グループとも呼ばれる統合グループにのみ適用されます。 これらのコマンドレットは、この時点で、パブリック プレビュー中です。
+> このコンテンツは、Office 365 グループとも呼ばれる統合グループにのみ適用されます。 
 
 Office365 グループの設定は、Settings オブジェクトおよび SettingsTemplate オブジェクトを使用して構成します。 最初は、ディレクトリには Settings オブジェクトが表示されません。 つまり、ディレクトリは既定の設定で構成されています。 既定の設定を変更するには、Settings テンプレートを使用して新しい Settings オブジェクトを作成する必要があります。 Settings テンプレートは、Microsoft によって定義されます。 複数の Settings テンプレートがサポートされています。 ディレクトリのグループ設定を構成するには、"Group.Unified" という名前のテンプレートを使用します。 1 つのグループのグループ設定を構成するには、"Group.Unified.Guest" という名前のテンプレートを使用します。 このテンプレートは、グループへのゲストのアクセスを管理するために使用します。 
 
-コマンドレットは、Azure Active Directory PowerShell V2 モジュールの一部です。 このモジュールの詳細と、モジュールをダウンロードしてお使いのコンピューターにインストールする手順については、「[Azure Active Directory PowerShell Version 2](https://docs.microsoft.com/powershell/azuread/)」を参照してください。 これらのコマンドレットは現時点ではパブリック プレビュー中のため、モジュールのプレビュー リリースをインストールする必要があることに注意してください。このモジュールは、[ここ](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.85)にあります。
+コマンドレットは、Azure Active Directory PowerShell V2 モジュールの一部です。 このモジュールの詳細と、モジュールをダウンロードしてお使いのコンピューターにインストールする手順については、「[Azure Active Directory PowerShell Version 2](https://docs.microsoft.com/powershell/azuread/)」を参照してください。 公開版のバージョン 2 モジュールは、[ここ](https://www.powershellgallery.com/packages/AzureAD/)からインストールできます。
+
+## <a name="retrieve-a-specific-settings-value"></a>特定の設定値の取得
+取得する設定の名前がわかっている場合、以下のコマンドレットを使って、現在の設定値を取得することができます。 この例では、"UsageGuidelinesUrl" という名前の設定の値を取得しています。 ディレクトリの設定と名前の詳細については、この記事の後の方で説明します。
+
+```powershell
+(Get-AzureADDirectorySetting).Values | Where-Object -Property Name -Value UsageGuidelinesUrl -EQ
+```
 
 ## <a name="create-settings-at-the-directory-level"></a>ディレクトリ レベルでの設定の作成
 次の手順では、ディレクトリ内のすべての統合グループに適用される設定をディレクトリ レベルで作成します。

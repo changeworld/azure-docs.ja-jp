@@ -1,4 +1,5 @@
 ---
+
 title: "Azure AD レポート API の概要 | Microsoft Docs"
 description: "Azure Active Directory Reporting API の概要について説明します"
 services: active-directory
@@ -12,11 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/25/2016
+ms.date: 05/04/2017
 ms.author: dhanyahk;markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3a8e9c802c265dacd1b8c3688855ce6ec0d90bb1
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 414e6b0f23616f8f3d059f250335b0e530729741
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -26,7 +29,7 @@ ms.openlocfilehash: 3a8e9c802c265dacd1b8c3688855ce6ec0d90bb1
 Azure Active Directory は多様なレポートを提供しています。 これらのレポートのデータは、SIEM システム、監査、ビジネス インテリジェンス ツールなどのアプリケーションに非常に役立ちます。 Azure AD レポート API は、一連の REST ベースの API を使用してプログラムによってデータにアクセスできるようにします。 これらの API は、さまざまなプログラミング言語とツールから呼び出すことができます。
 
 この記事では、Azure AD のレポート API の使用を開始するために必要な情報を提供します。
-次のセクションでは、監査 API およびサインイン API の使用に関して詳しく説明します。 その他のすべての API については、 [Azure AD のレポートとイベント (プレビュー)](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-reports-and-events-preview) に関する記事を参照してください。
+次のセクションでは、監査 API およびサインイン API の使用に関して詳しく説明します。 その他のすべての API については、[Azure AD のレポートとイベント (プレビュー)](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-reports-and-events-preview) に関する記事を参照してください。
 
 質問、問題点、またはフィードバックについては、 [AAD レポート ヘルプ](mailto:aadreportinghelp@microsoft.com)にお問い合わせください。
 
@@ -43,10 +46,5 @@ Azure Active Directory は多様なレポートを提供しています。 こ�
 
 ## <a name="next-steps"></a>次のステップ
 提供されているすべての Azure AD Graph API エンドポイントについては、 [https://graph.windows.net/tenant-name/reports/$metadata?api-version=beta](https://graph.windows.net/tenant-name/reports/$metadata?api-version=beta)にナビゲートしてください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
