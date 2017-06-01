@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/12/2017
 ms.author: cherylmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 679b6962633cd734a1b1e339e8422da5b9c4ddfd
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 873a3b83bf85c7e2d6d299bd25ebb135c300aacb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -33,8 +33,8 @@ ExpressRoute を使用して Microsoft クラウド サービスに接続する�
 
 ## <a name="connectivity-provider"></a>接続プロバイダー
 
-* [ExpressRoute 接続パートナー](expressroute-locations.md#partners) と連携して Microsoft Cloud に接続することができます。 [3 とおりの方法](expressroute-introduction.md)でオンプレミス ネットワークと Microsoft の間に接続をセットアップできます。 
-* プロバイダーが ExpressRoute 接続パートナーではない場合でも、 [クラウド エクスチェンジ プロバイダー](expressroute-locations.md#c1partners)を通じて Microsoft Cloud に接続できます。
+* [ExpressRoute 接続パートナー](expressroute-locations.md#partners) と連携して Microsoft Cloud に接続することができます。 [3 とおりの方法](expressroute-introduction.md)でオンプレミス ネットワークと Microsoft の間に接続をセットアップできます。
+* プロバイダーが ExpressRoute 接続パートナーではない場合でも、 [クラウド エクスチェンジ プロバイダー](expressroute-locations.md#connectivity-through-exchange-providers)を通じて Microsoft Cloud に接続できます。
 
 ## <a name="network-requirements"></a>ネットワークの要件
 * **接続の冗長性**: プロバイダーとの物理接続に対する冗長性の要件はありません。 Microsoft の要件では、 [クラウド エクスチェンジへの物理接続が 1 つ](expressroute-faqs.md#onep2plink)しかない場合でも、Microsoft のルーターとピアリング ルーターの間に冗長 BGP セッションを設定することが必要です。

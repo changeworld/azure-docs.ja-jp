@@ -12,13 +12,14 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 02/27/2017
+ms.date: 05/22/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: 91fab2cd7ad2babd567380308698f0608dda4cbf
-ms.lasthandoff: 05/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 162f4e753524f0d1236575618fc8413466481857
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -323,7 +324,7 @@ private static async Task CreatePoolIfNotExistAsync(BatchClient batchClient, str
         // Batch service. This CloudPool instance is therefore considered "unbound," and we can modify its properties.
         pool = batchClient.PoolOperations.CreatePool(
             poolId: poolId,
-            targetDedicated: 3,                                                         // 3 compute nodes
+            targetDedicatedComputeNodes: 3,                                             // 3 compute nodes
             virtualMachineSize: "small",                                                // single-core, 1.75 GB memory, 225 GB disk
             cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "4"));   // Windows Server 2012 R2
 
@@ -365,7 +366,7 @@ private static async Task CreatePoolIfNotExistAsync(BatchClient batchClient, str
 [CreatePool][net_pool_create] を使用してプールを作成する場合は、コンピューティング ノードの数、[ノードのサイズ](../cloud-services/cloud-services-sizes-specs.md)、ノードのオペレーティング システムなど、いくつかのパラメーターを指定します。 *DotNetTutorial* では、[CloudServiceConfiguration][net_cloudserviceconfiguration] を使用して、[Cloud Services](../cloud-services/cloud-services-guestos-update-matrix.md) から Windows Server 2012 R2 を指定します。 ただし、代わりに [VirtualMachineConfiguration][net_virtualmachineconfiguration] を指定することにより、Marketplace イメージから作成されたノードのプールを作成できます。これには、Windows と Linux 両方のイメージが含まれます。詳細については、「[Azure Batch プールの Linux コンピューティング ノードのプロビジョニング](batch-linux-nodes.md)」を参照してください。
 
 > [!IMPORTANT]
-> Batch のコンピューティング リソースには料金がかかります。 コストを最小限に抑えるために、サンプルを実行する前に `targetDedicated` を 1 に引き下げることもできます。
+> Batch のコンピューティング リソースには料金がかかります。 コストを最小限に抑えるために、サンプルを実行する前に `targetDedicatedComputeNodes` を 1 に引き下げることもできます。
 >
 >
 
@@ -558,7 +559,7 @@ private static async Task<bool> MonitorTasks(
 
     // All tasks have reached the "Completed" state, however, this does not
     // guarantee all tasks completed successfully. Here we further check each task's
-    // ExecutionInfo property to ensure that it did not encounter a scheduling error
+    // ExecutionInfo property to ensure that it did not encounter a failure
     // or return a non-zero exit code.
 
     // Update the detail level to populate only the task id and executionInfo
@@ -568,32 +569,25 @@ private static async Task<bool> MonitorTasks(
 
     foreach (CloudTask task in tasks)
     {
-        // Populate the task's properties with the latest info from the
-        // Batch service
+        // Populate the task's properties with the latest info from the Batch service
         await task.RefreshAsync(detail);
 
-        if (task.ExecutionInformation.SchedulingError != null)
+        if (task.ExecutionInformation.Result == TaskExecutionResult.Failure)
         {
-            // A scheduling error indicates a problem starting the task on the node.
-            // It is important to note that the task's state can be "Completed," yet
-            // still have encountered a scheduling error.
+            // A task with failure information set indicates there was a problem with the task. It is important to note that
+            // the task's state can be "Completed," yet still have encountered a failure.
 
             allTasksSuccessful = false;
 
-            Console.WriteLine("WARNING: Task [{0}] encountered a scheduling error: {1}",
-                task.Id,
-                task.ExecutionInformation.SchedulingError.Message);
-        }
-        else if (task.ExecutionInformation.ExitCode != 0)
-        {
-            // A non-zero exit code may indicate that the application executed by
-            // the task encountered an error during execution. As not every
-            // application returns non-zero on failure by default (e.g. robocopy),
-            // your implementation of error checking may differ from this example.
+            Console.WriteLine("WARNING: Task [{0}] encountered a failure: {1}", task.Id, task.ExecutionInformation.FailureInformation.Message);
+            if (task.ExecutionInformation.ExitCode != 0)
+            {
+                // A non-zero exit code may indicate that the application executed by the task encountered an error
+                // during execution. As not every application returns non-zero on failure by default (e.g. robocopy),
+                // your implementation of error checking may differ from this example.
 
-            allTasksSuccessful = false;
-
-            Console.WriteLine("WARNING: Task [{0}] returned a non-zero exit code - this may indicate task execution or completion failure.", task.Id);
+                Console.WriteLine("WARNING: Task [{0}] returned a non-zero exit code - this may indicate task execution or completion failure.", task.Id);
+            }
         }
     }
 

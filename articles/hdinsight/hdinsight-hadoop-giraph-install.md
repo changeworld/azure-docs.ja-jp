@@ -16,10 +16,11 @@ ms.topic: article
 ms.date: 02/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 643a8b6bfadd9464303ffc12b29cd739a7e41f1e
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 1eda530368170be7cd99c5860e72f5700c015248
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.lasthandoff: 04/12/2017
 Script Action を使用して Windows ベースの HDInsight クラスターを Giraph でカスタマイズする方法と、Giraph を使用して大規模なグラフを処理する方法について説明します。 Linux ベースのクラスターでの Giraph の操作については、「 [HDInsight Hadoop クラスターに Giraph をインストールする (Linux)](hdinsight-hadoop-giraph-install-linux.md)」を参照してください。
 
 > [!IMPORTANT]
-> このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。 Windows では、バージョン 3.4 より前の HDInsight のみを使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。 Linux ベースの HDInsight クラスターでの Giraph のインストール方法については、[HDInsight Hadoop クラスターへの Giraph のインストール (Linux)](hdinsight-hadoop-giraph-install-linux.md) に関するページを参照してください。
+> このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。 Windows では、バージョン 3.4 より前の HDInsight のみを使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。 Linux ベースの HDInsight クラスターでの Giraph のインストール方法については、[HDInsight Hadoop クラスターへの Giraph のインストール (Linux)](hdinsight-hadoop-giraph-install-linux.md) に関するページを参照してください。
 
 
 *スクリプト アクション*を使用し、Azure HDInsight の任意の種類のクラスター (Hadoop、Storm、HBase、Spark) に Giraph をインストールできます。 HDInsight クラスターに Giraph をインストールするサンプル スクリプトは、 [https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1)の読み取り専用の Azure ストレージ BLOB から入手できます。 サンプル スクリプトは、HDInsight クラスター version 3.1 でのみ機能します。 HDInsight クラスター バージョンの詳細については、「 [HDInsight クラスター バージョン](hdinsight-component-versioning.md)」をご覧ください。
@@ -88,7 +89,7 @@ SimpleShortestPathsComputation サンプルを使用して、グラフのオブ�
 2. SimpleShortestPathsComputation サンプルを実行します。 tiny_graph.txt ファイルを入力として使用し、次の Azure PowerShell コマンドレットを使用してサンプルを実行します。
 
     > [!IMPORTANT]
-    > Azure サービス マネージャーを使用した HDInsight リソースの管理に関する Azure PowerShell のサポートは、2017 年 1 月 1 日までに**廃止**される予定です。 このドキュメントの手順では、Azure Resource Manager で機能する新しい HDInsight コマンドレットを使用します。
+    > Azure Service Manager を使用した HDInsight リソースの管理に関する Azure PowerShell のサポートは**廃止**され、2017 年 1 月 1 日に削除されました。 このドキュメントの手順では、Azure Resource Manager で機能する新しい HDInsight コマンドレットを使用します。
     >
     > [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs) に関するページの手順に従い、Azure PowerShell の最新バージョンをインストールしてください。 Azure Resource Manager で機能する新しいコマンドレットを使用するようにスクリプトを変更する必要がある場合、詳細については、「 [Migrating to Azure Resource Manager-based development tools for HDInsight clusters (HDInsight クラスターの Azure Resource Manager ベースの開発ツールへの移行)](hdinsight-hadoop-development-using-azure-resource-manager.md) 」をご覧ください。
 

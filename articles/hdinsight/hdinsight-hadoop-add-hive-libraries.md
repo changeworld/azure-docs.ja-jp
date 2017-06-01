@@ -15,10 +15,11 @@ ms.workload: big-data
 ms.date: 04/14/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: dd5df541c0362b8fe8265fd26dc73908215076ad
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 6f6d7bf50878cc6938f19ba7f79f968f44f82ed6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 ---
 # <a name="add-custom-hive-libraries-when-creating-your-hdinsight-cluster"></a>HDInsight クラスター作成時のカスタム Hive ライブラリの追加
@@ -46,7 +47,7 @@ HDInsight の Hive で頻繁に使用するライブラリがある場合、こ�
 **Windows ベースのクラスター**: [https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1](https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1)
 
 > [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
 
 **要件**
 

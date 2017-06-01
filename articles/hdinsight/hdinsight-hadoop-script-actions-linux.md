@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/02/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: 37f26e8af09c9ff77fad7f275769e90b82596881
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: aaa5134fafea387e63fc9c9819422d24de6baed0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 05/04/2017
 Bash スクリプトを使用して、HDInsight クラスターをカスタマイズする方法について説明します。 スクリプト アクションは、クラスターの作成時または作成後に、HDInsight をカスタマイズする方法です。
 
 > [!IMPORTANT]
-> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、「[HDInsight コンポーネントのバージョン](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)」を参照してください。
+> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
 
 ## <a name="what-are-script-actions"></a>スクリプト アクションとは
 

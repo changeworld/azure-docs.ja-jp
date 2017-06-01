@@ -1,13 +1,13 @@
 ---
 title: "Azure Cosmos DB: .NET Core と DocumentDB API による Web アプリの構築 | Microsoft Docs"
 description: "Azure Cosmos DB DocumentDB API への接続とクエリに使用できる .NET Core コード サンプルについて説明します"
-services: cosmosdb
+services: cosmos-db
 documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: 
 ms.assetid: 
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.custom: quick start connect
 ms.workload: 
 ms.tgt_pltfrm: na
@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 52cf1a729e4e86f764f9ded3712eaba558f1fc7f
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 9c0806a9edb52f0c05cced55edbda6b207398e3c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 05/10/2017
 
 Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成およびクエリできます。 
 
-このクイック スタートでは、Azure Portal を使用して、Azure Cosmos DB アカウント、ドキュメント データベース、コレクションを作成する方法を説明します。 さらに、次のスクリーンショットに示すように、[DocumentDB .NET Core API](../documentdb/documentdb-introduction.md) で構築された todo リスト Web アプリを構築してデプロイします。 
+このクイック スタートでは、Azure Portal を使用して、Azure Cosmos DB アカウント、ドキュメント データベース、コレクションを作成する方法を説明します。 さらに、次のスクリーンショットに示すように、[DocumentDB .NET Core API](documentdb-introduction.md) で構築された todo リスト Web アプリを構築してデプロイします。 
 
 ![todo アプリとサンプル データ](./media/create-documentdb-dotnet-core/azure-cosmosdb-todo-app-list.png)
 
@@ -43,15 +43,15 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 
-[!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
+[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 ## <a name="add-a-collection"></a>コレクションの追加
 
-[!INCLUDE [cosmosdb-create-collection](../../includes/cosmosdb-create-collection.md)]
+[!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
 ## <a name="add-sample-data"></a>サンプル データの追加
 
-[!INCLUDE [cosmosdb-create-sample-data](../../includes/cosmosdb-create-sample-data.md)]
+[!INCLUDE [cosmos-db-create-sample-data](../../includes/cosmos-db-create-sample-data.md)]
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
@@ -69,7 +69,7 @@ github から DocumentDB API アプリを複製し、接続文字列を設定し
     
 ## <a name="review-the-code"></a>コードの確認
 
-[!INCLUDE [cosmosdb-tutorial-review-code-dotnet](../../includes/cosmosdb-tutorial-review-code-dotnet.md)]
+[!INCLUDE [cosmos-db-tutorial-review-code-dotnet](../../includes/cosmos-db-tutorial-review-code-dotnet.md)]
 
 ## <a name="update-your-connection-string"></a>接続文字列の更新
 
@@ -109,7 +109,7 @@ github から DocumentDB API アプリを複製し、接続文字列を設定し
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 
-[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmosdb-tutorial-review-slas.md)]
+[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -123,5 +123,5 @@ github から DocumentDB API アプリを複製し、接続文字列を設定し
 このクイックスタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してコレクションを作成し、Web アプリを実行する方法を説明しました。 これで、Cosmos DB アカウントに追加のデータをインポートできます。 
 
 > [!div class="nextstepaction"]
-> [Azure Cosmos DB へのデータのインポート](../documentdb/documentdb-import-data.md)
+> [Azure Cosmos DB へのデータのインポート](import-data.md)
 

@@ -79,7 +79,7 @@ Azure では、イメージから VM を作成します。 イメージは通常
 
 Azure Marketplace のイメージから VM を作成するときは、実際にはテンプレートを使用します。 Azure Resource Manager のテンプレートは、宣言型の JavaScript Object Notation (JSON) ファイルで、VM、ストレージ、仮想ネットワークなどで構成される複雑なアプリケーション環境を作成するために使用できます。[独自のテンプレートを作成する](../articles/resource-group-authoring-templates.md)方法など、[Azure Resource Manager のテンプレート](../articles/azure-resource-manager/resource-group-overview.md)を使用する方法については、詳細をお読みください。
 
-独自のカスタム イメージを作成し、[Azure CLI](../articles/virtual-machines/linux/upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) または [Azure PowerShell](../articles/virtual-machines/windows/upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を使用してアップロードし、特定のビルド要件を満たすカスタム VM をすばやく作成することもできます。
+独自のカスタム イメージを作成し、[Azure CLI](../articles/virtual-machines/linux/upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) または [Azure PowerShell](../articles/virtual-machines/windows/upload-generalized-managed.md) を使用してアップロードし、特定のビルド要件を満たすカスタム VM をすばやく作成することもできます。
 
 ## <a name="availability-sets"></a>可用性セット
 可用性セットは VM の論理グループで、これによって Azure は、冗長性と可用性を提供するためにアプリケーションが構築された方法を理解することができます。 高可用性アプリケーションを提供し、[99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) に適合するために、1 つの可用性セット内に 2 つ以上の VM を作成することをお勧めします。 1 つの VM が [Azure Premium Storage](../articles/storage/storage-premium-storage.md) を使用している場合、Azure SLA は計画外メンテナンス イベントに適用されます。 可用性セットは、ハードウェアの障害から保護する障害ドメイン (FD) と、更新の安全な適用を可能にする更新ドメイン (UD) という 2 つの追加グループによって機能します。

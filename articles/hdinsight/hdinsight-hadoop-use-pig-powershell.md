@@ -16,10 +16,11 @@ ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: dcc248d398f2e2aa0f563a0868e80b1e7ee6a3fb
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: e782a065fb680e37cfe5ac58e9b276aeadc748d5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 ---
 # <a name="use-azure-powershell-to-run-pig-jobs-with-hdinsight"></a>Azure PowerShell を使用して HDInsight で Pig ジョブを使用する
@@ -36,7 +37,7 @@ ms.lasthandoff: 04/12/2017
 * **Azure HDInsight クラスター**
 
   > [!IMPORTANT]
-  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
 
 * **Azure PowerShell を実行できるワークステーション**。
 

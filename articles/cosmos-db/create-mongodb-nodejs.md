@@ -1,13 +1,13 @@
 ---
 title: "Node.js を使用して MongoDB アプリをAzure Cosmos DB に接続する | Microsoft Docs"
 description: "既存の Node.js MongoDB アプリを Azure Cosmos DB に接続する方法について説明します"
-services: cosmosdb
+services: cosmos-db
 documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: 
 ms.assetid: 
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.custom: quick start connect
 ms.workload: 
 ms.tgt_pltfrm: na
@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 0e5657e4d110af095c934431cb6e3bf8824f791d
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: bfdf42ef717c090bffb89e9f276a135c58b1884f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 05/10/2017
 
 Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成およびクエリできます。 
 
-このクイック スタートでは、Node.js で記述された既存の [MongoDB](../documentdb/documentdb-protocol-mongodb.md) アプリを使用して Azure Cosmos DB データベースに接続する方法を示します。これは MongoDB のクライアント接続をサポートしています。 言い換えると、Node.js アプリケーションは、MongoDB API を使用して MongoDB データベースに接続していることだけを認識します。 データが Azure Cosmos DB に格納されることは、アプリケーションにとっては透過です。
+このクイック スタートでは、Node.js で記述された既存の [MongoDB](mongodb-introduction.md) アプリを使用して Azure Cosmos DB データベースに接続する方法を示します。これは MongoDB のクライアント接続をサポートしています。 言い換えると、Node.js アプリケーションは、MongoDB API を使用して MongoDB データベースに接続していることだけを認識します。 データが Azure Cosmos DB に格納されることは、アプリケーションにとっては透過です。
 
 操作を完了すると、MEAN アプリケーション (MongoDB、Express、AngularJS、および Node.js) が [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) で実行されます。 
 
@@ -137,7 +137,7 @@ DB/databaseAccounts/<cosmosdb_name>",
 
 ## <a name="retrieve-the-key"></a>キーを取得する
 
-Azure Cosmos DB データベースに接続するには、データベース キーが必要です。 [az documentdb list-keys](/cli/azure/documentdb#list-keys) コマンドを使用して、プライマリ キーを取得します。
+Azure Cosmos DB データベースに接続するには、データベース キーが必要です。 [az cosmosdb list-keys](/cli/azure/cosmosdb#list-keys) コマンドを使用して、プライマリ キーを取得します。
 
 ```azurecli
 az cosmosdb list-keys --name <cosmosdb_name> --resource-group myResourceGroup
@@ -174,7 +174,7 @@ module.exports = {
 ```
 
 > [!NOTE] 
-> [Azure Cosmos DBでは SSL が必須](../documentdb/documentdb-connect-mongodb-account.md#connection-string-requirements)なので、`ssl=true` オプションは重要です。 
+> [Azure Cosmos DBでは SSL が必須](connect-mongodb-account.md#connection-string-requirements)なので、`ssl=true` オプションは重要です。 
 >
 >
 
@@ -229,9 +229,9 @@ git commit -m "configured MongoDB connection string"
 ```
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-このアプリの使用を続けない場合は、次の手順に従って、このクイック スタートで作成したすべてのリソースを Azure ポータルで削除します。
+このアプリの使用を続けない場合は、以下の手順に従い、Azure Portal でこのクイック スタートで作成したすべてのリソースを削除してください。
 
-1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックしてから、作成したリソースの名前をクリックします。 
+1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックし、作成したリソースの名前をクリックします。 
 2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次のステップ
@@ -239,5 +239,5 @@ git commit -m "configured MongoDB connection string"
 このクイック スタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用して MongoDB コレクションを作成する方法を学習しました。 これで、MongoDB データを Azure Cosmos DB に移行できます。  
 
 > [!div class="nextstepaction"]
-> [MongoDB データを Azure Cosmos DB にインポートする](../documentdb/documentdb-mongodb-migrate.md)
+> [MongoDB データを Azure Cosmos DB にインポートする](mongodb-migrate.md)
 

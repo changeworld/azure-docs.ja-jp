@@ -17,10 +17,10 @@ ms.workload: big-data
 ms.date: 04/04/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 269294f14dd4add5ab038f13b6818db345665c3b
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: ccb2c827aa95ea967d740860ed17e6cc7bd3b392
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 05/03/2017
 このドキュメントの手順では、Azure CLI 1.0 を使用して HDInsight 3.5 クラスターをプロセスを順を追って説明します。
 
 > [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight 3.2 および 3.3 の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関するページを参照してください。
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -127,7 +127,7 @@ Azure CLI をインストールして構成したら、コマンド プロンプ
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
-HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御要件](hdinsight-administer-use-portal-linux.md#create-clusters)」を参照してください。
+HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](hdinsight-administer-use-portal-linux.md#create-clusters)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

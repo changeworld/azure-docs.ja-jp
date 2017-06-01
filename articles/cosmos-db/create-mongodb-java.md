@@ -1,13 +1,13 @@
 ---
 title: "Azure Cosmos DB: Java と MongoDB API によるコンソール アプリの構築 | Microsoft Docs"
 description: "Azure Cosmos DB MongoDB API への接続とクエリに使用できる Java コード サンプルについて説明します。"
-services: cosmosdb
+services: cosmos-db
 documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: 
 ms.assetid: 
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.custom: quick start connect
 ms.workload: 
 ms.tgt_pltfrm: na
@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 22bce387c2b33759c1b83247f253c72fb3132739
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 1683afd842294b3b45ae4d0e53bbecdccadc1ed5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -39,13 +39,13 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 
-[!INCLUDE [mongodb-create-dbaccount](../../includes/cosmosdb-create-dbaccount-mongodb.md)]
+[!INCLUDE [mongodb-create-dbaccount](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
 ## <a name="add-a-collection"></a>コレクションの追加
 
 新しいデータベースに **db**、新しいコレクションに **coll** という名前を付けます。
 
-[!INCLUDE [cosmosdb-create-collection](../../includes/cosmosdb-create-collection.md)]
+[!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
@@ -109,11 +109,11 @@ github から MongoDB API アプリを複製し、接続文字列を設定して
 
 2. ターミナルで `mvn exec:java -D exec.mainClass=GetStarted.Program` を実行し、Java アプリケーションを起動します。
 
-これで、[Robomongo](../documentdb/documentdb-mongodb-robomongo.md) / [Studio 3T](../documentdb/documentdb-mongodb-mongochef.md) を使用して、この新しいデータをクエリ、変更、および操作できるようになりました。
+これで、[Robomongo](mongodb-robomongo.md) / [Studio 3T](mongodb-mongochef.md) を使用して、この新しいデータをクエリ、変更、および操作できるようになりました。
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 
-[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmosdb-tutorial-review-slas.md)]
+[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -127,7 +127,7 @@ github から MongoDB API アプリを複製し、接続文字列を設定して
 このクイック スタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してコレクションを作成し、コンソール アプリを実行する方法を説明しました。 これで、Cosmos DB アカウントに追加のデータをインポートできます。 
 
 > [!div class="nextstepaction"]
-> [MongoDB データの Azure Cosmos DB へのインポート](../documentdb/documentdb-mongodb-migrate.md)
+> [MongoDB データの Azure Cosmos DB へのインポート](mongodb-migrate.md)
 
 
 

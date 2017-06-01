@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: iainfou
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 079289f385266293ecfce7cd02b1673a774afbbe
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 817f6763ba663de994a40aefcda31dc8466ef12a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 06/01/2017
 
 ---
 
@@ -35,8 +36,9 @@ ms.lasthandoff: 05/15/2017
 > * 動作中のロード バランサーを表示する
 > * ロード バランサーに VM を追加または削除する
 
-このチュートリアルには、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 アップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
+このチュートリアルには、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 
 
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="azure-load-balancer-overview"></a>Azure Load Balancer の概要
 Azure Load Balancer は、着信トラフィックを正常な VM に分散することで高可用性を実現する第 4 層 (TCP、UDP) のロード バランサーです。 ロード バランサーの正常性プローブは、各 VM の特定のポートを監視し、稼働している VM にのみトラフィックを分散します。
@@ -53,7 +55,7 @@ Azure Load Balancer は、着信トラフィックを正常な VM に分散す�
 ## <a name="create-azure-load-balancer"></a>Azure Load Balancer を作成する
 このセクションでは、ロード バランサーの各コンポーネントを作成および設定する方法について説明します。 ロード バランサーを作成する前に、[az group create](/cli/azure/group#create) を使用してリソース グループを作成します。 次の例では、*myResourceGroupLoadBalancer* という名前のリソース グループを場所 *eastus* に作成します。
 
-```azurecli
+```azurecli-interactive
 az group create --name myResourceGroupLoadBalancer --location eastus
 ```
 

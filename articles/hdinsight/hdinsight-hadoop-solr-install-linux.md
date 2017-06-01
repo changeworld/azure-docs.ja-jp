@@ -16,10 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 741e67d1419eb54e0ca1913dd0d4fb5e56895bbd
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 9035dd639433f1edc628db85f1663add4abfdbd3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.lasthandoff: 04/18/2017
 スクリプト アクションを使用して Azure HDInsight に Solr をインストールする方法について説明します。 Solr は強力な検索プラットフォームで、Hadoop が管理するデータに対してエンタープライズ レベルの検索機能を提供します。
 
 > [!IMPORTANT]
-    > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関するページを参照してください。
+    > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
 
 > [!IMPORTANT]
 > このドキュメントで使用するサンプル スクリプトは、特定の構成で Solr クラスターを作成します。 この構成とは異なるコレクションやシャード、スキーマ、レプリカなどで Solr クラスターを構成する場合には、スクリプトと Solr バイナリを変更する必要があります。

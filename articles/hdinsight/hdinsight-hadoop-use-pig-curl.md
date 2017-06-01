@@ -17,10 +17,10 @@ ms.workload: big-data
 ms.date: 05/03/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: e729868bd64dfaa3f471f0c49f6a2c98aaf87215
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 1c719a33001654755ec8d83f4bf43ca1fc52954e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -38,7 +38,7 @@ Azure HDInsight クラスターに REST を要求して Pig Latin ジョブを�
 * Azure HDInsight (HDInsight での Hadoop) クラスター (Linux または Windows ベース)
 
   > [!IMPORTANT]
-  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、「[HDInsight コンポーネントのバージョン](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)」を参照してください。
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
 
 * [Curl](http://curl.haxx.se/)
 
