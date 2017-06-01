@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/12/2017
 ms.author: raynew
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: b7b7347fef8ea6f6bf643e98bbcc0a6292c083ed
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: de45957d4531202005d6b38e8b218ffe023fa0b2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -272,10 +272,6 @@ Site Recovery は指定された設定を使用して VMware サーバーに接�
 
     ![Enable replication](./media/site-recovery-vmware-to-azure/enable-replication7.png)
 13. **[レプリケーションを有効にする]**をクリックします。 **[設定]** > **[ジョブ]** > **[Site Recovery ジョブ]** の順にクリックして、**保護の有効化**ジョブの進行状況を追跡できます。 **保護の最終処理** ジョブが実行されると、マシンはフェールオーバーできる状態になります。
-
-レプリケーションを有効にした後、プッシュ インストールを設定している場合はモビリティ サービスがインストールされます。 モビリティ サービスが VM でプッシュ インストールされると、保護ジョブが開始されて失敗します。 ジョブの失敗後、各マシンを手動で再起動する必要があります。 その後、保護ジョブが再び開始され、最初のレプリケーションが実行されます。
-
-
 
 ### <a name="view-and-manage-vm-properties"></a>VM プロパティを表示して管理する
 

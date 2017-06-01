@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/03/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: e650731c3186b47adeb0e799a852961c30338550
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
+ms.openlocfilehash: ec20115e8316b96d740e1966494096964ec884b1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/22/2017
 
 
 ---
@@ -33,7 +34,7 @@ Azure Event Hubs では、Web サイト、アプリ、デバイスで発生す�
 * HDInsight クラスター バージョン 3.5 での Apache Storm。 詳細については、[HDInsight クラスターでの Storm の使用](hdinsight-apache-storm-tutorial-get-started-linux.md)に関する記事を参照してください。
 
     > [!IMPORTANT]
-    > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight 3.3 と 3.4 の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関するページを参照してください。
+    > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
 
 * [Azure Event Hub](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)。
 
@@ -242,6 +243,7 @@ HDInsight は Hortonworks Data Platform をベースとします。 HDInsight 3.
     <includePluginDependencies>false</includePluginDependencies>
     <classpathScope>compile</classpathScope>
     <mainClass>${storm.topology}</mainClass>
+    <cleanupDaemonThreads>false</cleanupDaemonThreads>
     </configuration>
 </plugin>
 ```

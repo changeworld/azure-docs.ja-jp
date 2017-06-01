@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 68860006266a60bf8e87f72d8669fb26ed3a5486
-ms.lasthandoff: 03/04/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: bf0c01a9af0e28647d11ad89a9d164716d5c8312
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -26,8 +27,10 @@ ms.lasthandoff: 03/04/2017
 > [!div class="op_single_selector"]
 > - [Azure ポータル](network-watcher-check-ip-flow-verify-portal.md)
 > - [PowerShell](network-watcher-check-ip-flow-verify-powershell.md)
-> - [CLI](network-watcher-check-ip-flow-verify-cli.md)
+> - [CLI 1.0](network-watcher-check-ip-flow-verify-cli-nodejs.md)
+> - [CLI 2.0](network-watcher-check-ip-flow-verify-cli.md)
 > - [Azure REST API](network-watcher-check-ip-flow-verify-rest.md)
+
 
 IP フロー検証は Network Watcher の機能であり、仮想マシンから送受信されるトラフィックが許可されているかどうかを確認できます。 このシナリオは仮想マシンが現在、外部リソースまたはバックエンドと通信可能な状態にあるかを確認する際に役立ちます。 IP フロー検証を使用すると、ネットワーク セキュリティ グループ (NSG) 規則が適切に構成されているかを検証し、NSG 規則によってブロックされているフローのトラブルシューティングを行うことができます。 ブロック対象のトラフィックが NSG により適切にブロックされているかどうかを確認することも、IP フロー検証を使用する別の理由として挙げられます。
 
@@ -61,7 +64,7 @@ $VM = Get-AzurermVM -ResourceGroupName "testrg" -Name "testvm1"
 仮想マシンの NIC の IP アドレスが必要になります。この例では、仮想マシン上の NIC を取得します。 仮想マシン上のテスト対象 IP アドレスが既にわかっている場合、この手順は省略できます。
 
 ```powershell
-$Nics = Get-AzureRmNetworkInterface | Where {$_.Id -eq $vm.NetworkInterfaceIDs.ForEach({$_})}
+$Nics = Get-AzureRmNetworkInterface | Where {$_.Id -eq $vm.NetworkProfile.NetworkInterfaces.Id.ForEach({$_})}
 ```
 
 ## <a name="run-ip-flow-verify"></a>IP フロー検証の実行

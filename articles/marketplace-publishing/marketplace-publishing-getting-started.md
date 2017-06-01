@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 87bd4e1d2b51857526b9137c09b7013c5221c698
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 8fbf201343f6710d2781a4b56ae54833ed4c06cf
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -91,16 +91,16 @@ Microsoft アカウントを [Microsoft 開発者アカウント](marketplace-pu
 ## <a name="manage-your-solution"></a>ソリューションを管理する
 以下のリソースを参照してソリューションを管理します。
 * [仮想マシン プランの作成後ガイドを読む](marketplace-publishing-vm-image-post-publishing.md)
-* [プランまたは SKU の技術面以外の詳細を更新する](marketplace-publishing-vm-image-post-publishing.md#2-how-to-update-the-non-technical-details-of-an-offer-or-a-sku)
-* [プランまたは SKU の技術面の詳細を更新する](marketplace-publishing-vm-image-post-publishing.md#1-how-to-update-the-technical-details-of-a-sku)
-* [表示されているプランに新しい SKU を追加する](marketplace-publishing-vm-image-post-publishing.md#3-how-to-add-a-new-sku-under-a-listed-offer)
-* [表示されている SKU のデータ ディスク数を変更する](marketplace-publishing-vm-image-post-publishing.md#4-how-to-change-the-data-disk-count-for-a-listed-sku)
+* [プランまたは SKU の技術面以外の詳細を更新する](marketplace-publishing-vm-image-post-publishing.md#update-the-nontechnical-details-of-an-offer-or-a-sku)
+* [プランまたは SKU の技術面の詳細を更新する](marketplace-publishing-vm-image-post-publishing.md#update-the-technical-details-of-a-sku)
+* [表示されているプランに新しい SKU を追加する](marketplace-publishing-vm-image-post-publishing.md#add-a-new-sku-under-a-listed-offer)
+* [表示されている SKU のデータ ディスク数を変更する](marketplace-publishing-vm-image-post-publishing.md#change-the-data-disk-count-for-a-listed-sku)
 * [表示されているプランを Azure Marketplace から削除する](marketplace-publishing-vm-image-post-publishing.md)
-* [表示されている SKU を Azure Marketplace から削除する](marketplace-publishing-vm-image-post-publishing.md#6-how-to-delete-a-listed-sku-from-the-azure-marketplace)
-* [表示されている SKU の現在のバージョンを Azure Marketplace から削除する](marketplace-publishing-vm-image-post-publishing.md#7-how-to-delete-the-current-version-of-a-listed-sku-from-the-azure-marketplace)
-* [表示価格を運用時の値に戻す](marketplace-publishing-vm-image-post-publishing.md#8-how-to-revert-listing-price-to-production-values)
-* [課金モデルを運用時の値に戻す](marketplace-publishing-vm-image-post-publishing.md#9-how-to-revert-billing-model-to-production-values)
-* [表示されている SKU の可視性の設定を運用時の値に戻す](marketplace-publishing-vm-image-post-publishing.md#10-how-to-revert-visibility-setting-of-a-listed-sku-to-the-production-value)
+* [表示されている SKU を Azure Marketplace から削除する](marketplace-publishing-vm-image-post-publishing.md#delete-a-listed-sku-from-the-marketplace)
+* [表示されている SKU の現在のバージョンを Azure Marketplace から削除する](marketplace-publishing-vm-image-post-publishing.md#delete-the-current-version-of-a-listed-sku-from-the-marketplace)
+* [表示価格を運用時の値に戻す](marketplace-publishing-vm-image-post-publishing.md#revert-the-listing-price-to-production-values)
+* [課金モデルを運用時の値に戻す](marketplace-publishing-vm-image-post-publishing.md#revert-the-billing-model-to-production-values)
+* [表示されている SKU の可視性の設定を運用時の値に戻す](marketplace-publishing-vm-image-post-publishing.md#revert-the-visibility-setting-of-a-listed-sku-to-the-production-value)
 * [Cloud Solution Provider のリセラー インセンティブを変更する](marketplace-publishing-csp-incentive.md)
 * [支払いレポートを理解する](marketplace-publishing-report-payout.md)
 * [Get support as a publisher (発行元としてサポートを受ける)](marketplace-publishing-get-publisher-support.md)

@@ -17,10 +17,10 @@ ms.workload: database
 ms.date: 05/23/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 826a5213b5b64529df60d9b9ce8433d5c6b3a522
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: cb3412398e566cc16dadc8348241a603e78a098c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/27/2017
 
 ---
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 04/27/2017
 
 ## <a name="copy-a-database-to-a-new-server"></a>新しいサーバーにデータベースをコピーする
 
-[!code-powershell[main](../../../powershell_scripts/sql-database/copy-database-to-new-server/copy-database-to-new-server.ps1 "新しいサーバーにデータベースをコピーする")]
+[!code-powershell[main](../../../powershell_scripts/sql-database/copy-database-to-new-server/copy-database-to-new-server.ps1?highlight=18-21 "新しいサーバーにデータベースをコピーする")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 

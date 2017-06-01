@@ -17,10 +17,10 @@ ms.workload: database
 ms.date: 05/23/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: da96cf25d155c1aec42bd6d4bd1813d9bf8241f7
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 5231f5b13c3502a5a45ceea0b329f30a2e1c311c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/27/2017
 
 ---
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 04/27/2017
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-powershell[main](../../../powershell_scripts/sql-database/monitor-and-scale-pool/monitor-and-scale-pool.ps1 "単一の SQL Database の監視とスケーリング")]
+[!code-powershell[main](../../../powershell_scripts/sql-database/monitor-and-scale-pool/monitor-and-scale-pool.ps1?highlight=16-17 "単一の SQL Database の監視とスケーリング")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
