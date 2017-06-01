@@ -14,13 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
 ms.openlocfilehash: 4fb13a158c660105a5fc8f79a92c67ba65c5356d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 
 ---
 # <a name="biztalk-services-issuer-name-and-issuer-key"></a>BizTalk サービス: 発行者名および発行者キーに関するページ
+
+> [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
+
 Azure BizTalk Services では、サービス バス発行者名および発行者キーと Access Control 発行者名および発行者キーが使用されます。 具体的には次の処理が行われます。
 
 | タスク | 発行者名および発行者キー |
@@ -97,10 +102,5 @@ Azure BizTalk Services に関するその他のトピック:
 * [BizTalk Services: [ダッシュボード]、[監視]、および [スケール] タブ](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
 * [BizTalk サービス: バックアップと復元に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
 * [BizTalk サービス: 調整](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -15,6 +15,7 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/02/2017
 ms.author: nepeters
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: eacfac5971396590ce2e65613701e8980e6b1b21

@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/04/2017
 ms.author: cephalin
-translationtype: Human Translation
+ms.custom: mvc
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
 ms.openlocfilehash: 2a1e1004a4dab48aed75740a24ff5556242eaa67
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/06/2017
-
 
 ---
 # <a name="web-apps-overview"></a>Web Apps の概要

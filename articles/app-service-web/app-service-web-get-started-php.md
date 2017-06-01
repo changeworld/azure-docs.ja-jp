@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/04/2017
 ms.author: cfowler
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: 0541778e07193c4903a90ce0b91db224bdf60342
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/10/2017
-
 
 ---
 # <a name="create-a-php-application-on-web-app"></a>Web アプリでの PHP アプリケーションの作成

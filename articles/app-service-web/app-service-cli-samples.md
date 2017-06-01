@@ -15,6 +15,7 @@ ms.tgt_pltfrm: na
 ms.workload: app-service
 ms.date: 03/08/2017
 ms.author: cfowler
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: 5c995ca118676935f4f9b0c72c266b9d52c181cb

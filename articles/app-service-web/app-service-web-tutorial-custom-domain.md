@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: cephalin
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
 ms.openlocfilehash: 000440fb2c38eadc0ffdcab84a3c23bb034e834f
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/09/2017
-
 
 ---
 # <a name="map-an-existing-custom-dns-name-to-azure-web-apps"></a>既存のカスタム DNS 名を Azure Web Apps にマップする

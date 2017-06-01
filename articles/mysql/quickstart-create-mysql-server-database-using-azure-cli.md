@@ -51,7 +51,7 @@ az group create --name mycliresource --location westus
 次の例は、`westus` にあるリソース グループ `mycliresource` に、`mycliserver` という名前の Azure Database for MySQL サーバーを作成します。 サーバーの管理者ログインの名前は `myadmin`、パスワードは `Password01!` です。 サーバーのパフォーマンス レベルは **Basic**、**50** のコンピューティング ユニットを同じサーバー内のすべてのデータベースで共有します。 アプリケーションのニーズに応じて、コンピューティング ユニットとストレージは自由にスケーリングできます。
 
 ```azurecli
-az mysql server create --resource-group mycliresource --name mycliserver--location westus --user myadmin --password Password01! --performance-tier Basic --compute-units 50
+az mysql server create --resource-group mycliresource --name mycliserver --location westus --admin-user myadmin --admin-password Password01! --performance-tier Basic --compute-units 50
 ```
 
 ![Azure CLI を使用した Azure Database for MySQL サーバーの作成](./media/quickstart-create-mysql-server-database-using-azure-cli/3_az-mysq-server-create.png)

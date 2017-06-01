@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: sunbuild
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: 9515a2ff614161cd28ad80b26ff793f81e41b9a3
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/10/2017
-
 
 ---
 # <a name="create-a-web-app-from-the-azure-marketplace"></a>Azure Marketplace から Web アプリを作成する
