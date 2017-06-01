@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/22/2016
 ms.author: vidarmsft
-translationtype: Human Translation
-ms.sourcegitcommit: 37f795fe59496b0267120537115cf56d44cc5325
-ms.openlocfilehash: 60cde851a466a5b4b0752908f11272eedb246b0a
-ms.lasthandoff: 12/23/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 270f890b5ec58ffd009ff913a6df9d941889a6dc
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/08/2017
 
 ---
 
@@ -30,12 +31,12 @@ ms.lasthandoff: 12/23/2016
 ## <a name="prerequisites"></a>前提条件
 
 開始する前に、次の要件が満たされていることを確認します。
-*   Visual Studio 2012、2013、または 2015 がインストールされている。
-*   Azure Powershell がインストールされている。 [Azure PowerShell のダウンロード](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)。
-*   データ変換ジョブを初期化するための構成設定 (この設定を取得する手順については、ここで説明します)。
-*   リソース グループ内のハイブリッド データ リソースでジョブ定義が正しく構成されている。
-*   すべての必須 dll。 この dll は [GitHub リポジトリ](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls)からダウンロードします。
-*   GitHub リポジトリの `Get-ConfigurationParams.ps1` [スクリプト](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1)。
+*    Visual Studio 2012、2013、または 2015 がインストールされている。
+*    Azure Powershell がインストールされている。 [Azure PowerShell のダウンロード](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)。
+*    データ変換ジョブを初期化するための構成設定 (この設定を取得する手順については、ここで説明します)。
+*    リソース グループ内のハイブリッド データ リソースでジョブ定義が正しく構成されている。
+*    すべての必須 dll。 この dll は [GitHub リポジトリ](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls)からダウンロードします。
+*    GitHub リポジトリの `Get-ConfigurationParams.ps1` [スクリプト](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1)。
 
 ## <a name="step-by-step"></a>詳細な手順:
 
@@ -51,7 +52,11 @@ ms.lasthandoff: 12/23/2016
         ActiveDirectoryKey と AppName のすべての値を渡すことができます。
 
 
-2. このスクリプトは次の値を出力します:      - クライアント ID      - テナント ID      - Active Directory キー (上記で入力した値と同じ)      - サブスクリプション ID
+2. このスクリプトは､次の値を出力します｡
+    * [クライアント ID]
+    * テナント ID
+    * Active Directory キー (上記で入力したものと同じ)
+    * サブスクリプション ID
 
 3. Visual Studio 2012、2013、または 2015 を使用して、C# .NET コンソール アプリケーションを作成します。
 
@@ -63,7 +68,7 @@ ms.lasthandoff: 12/23/2016
     5. **場所**として「**C:\DataTransformation**」を入力します。
     6. **[OK]** をクリックしてプロジェクトを作成します。
 
-4.  ここで、[dlls](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) フォルダーに存在するすべての DLL を、作成したプロジェクトに**参照**として追加します。 dll ファイルをダウンロードするには、次の操作を行います。
+4.    ここで、[dlls](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) フォルダーに存在するすべての DLL を、作成したプロジェクトに**参照**として追加します。 dll ファイルをダウンロードするには、次の操作を行います。
 
     1. Visual Studio で、**[表示] > [ソリューション エクスプ ローラー]** の順に移動します。
     1. データ変換アプリ プロジェクトの左側にある矢印をクリックします。 **[参照]** をクリックし、**[参照の追加]** を右クリックします。

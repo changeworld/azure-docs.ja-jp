@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/09/2016
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: 23fb716997145152bd09d177b75973ad0b4ca9f3
-ms.openlocfilehash: 171cfe2a8750025914545701fa3423c7b9baa5f2
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 0bf872a44b8ed7cae53d2659aa7be878902130e9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -187,12 +189,6 @@ Key Vault シークレットのリソース ID を動的に生成するには、
 
 ## <a name="next-steps"></a>次のステップ
 * Key Vault の全般的な情報については、「[Azure Key Vault の概要](../key-vault/key-vault-get-started.md)」をご覧ください。
-* 仮想マシンで Key Vault を使用する方法については、「 [Azure Resource Manager のセキュリティに関する考慮事項](best-practices-resource-manager-security.md)」をご覧ください。
 * キー シークレットの詳細な参照例については、 [Key Vault の例](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)を参照してください。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

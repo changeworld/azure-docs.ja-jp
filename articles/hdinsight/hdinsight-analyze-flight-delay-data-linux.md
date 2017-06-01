@@ -13,13 +13,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 05/04/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 6c92292a67d14ac43c0fe5dbe7e14672c74b216b
-ms.lasthandoff: 04/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: cf460eed4bd290fbdcb9670a4ec4999f4c96c275
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/05/2017
 
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-on-linux-based-hdinsight"></a>Linux ベースの HDInsight 上の Hive を使用したフライト遅延データの分析
@@ -157,9 +158,9 @@ Linux ベースの HDInsight で Hive を使用してフライト遅延データ
     FROM delays_raw;
     ```
 
-2. **Ctrl + X** キーを押した後、**Y** キーを押してファイルを保存します。
+2. ファイルを保存するには、**Ctrl + X** キーを押した後、**Y** キーを押します。
 
-3. 次のコマンドを使用して Hive を起動し、 **flightdelays.hql** ファイルを実行します。
+3. Hive を起動し、**flightdelays.hql** ファイルを実行するには、次のコマンドを使用します。
 
     ```
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin -f flightdelays.hql
@@ -194,7 +195,7 @@ Linux ベースの HDInsight で Hive を使用してフライト遅延データ
 
 SQL Database が既にある場合は、サーバー名を取得していることになります。 サーバー名を確認するには、[Azure Portal](https://portal.azure.com) で **[SQL データベース]** を選択し、使用するデータベースの名前でフィルターをかけます。 サーバー名は **[サーバー]** 列に表示されます。
 
-SQL Database がまだない場合は、「 [SQL Database チュートリアル: Azure ポータルを使用して数分で SQL データベースを作成する](../sql-database/sql-database-get-started.md) 」の説明に従って作成してください。 データベースに使用したサーバー名は保存しておく必要があります。
+SQL Database がまだない場合は、「 [SQL Database チュートリアル: Azure ポータルを使用して数分で SQL データベースを作成する](../sql-database/sql-database-get-started.md) 」の説明に従って作成してください。 データベースに使用したサーバー名を保存します。
 
 ## <a name="create-a-sql-database-table"></a>SQL Database テーブルの作成
 
@@ -237,23 +238,23 @@ SQL Database がまだない場合は、「 [SQL Database チュートリアル:
     GO
     ```
 
-    `GO` ステートメントを入力すると、前のステートメントが評価されます。 これにより、クラスター化インデックス付きの、**delays** という名前のテーブルが作成されます。
+    `GO` ステートメントを入力すると、前のステートメントが評価されます。 このクエリにより、クラスター化インデックス付きの、**delays** という名前のテーブルが作成されます。
 
-    次を使用して、テーブルが作成されたことを確認します。
+    次のクエリを使用して、テーブルが作成されたことを確認します。
 
     ```
     SELECT * FROM information_schema.tables
     GO
     ```
 
-    次のように出力されます。
+    出力は次のテキストのようになります。
 
     ```
     TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE
     databaseName       dbo     delays      BASE TABLE
     ```
 
-5. `exit` at the `1>` 」と入力して、tsql ユーティリティを終了します。
+5. Enter `exit` at the `1>`」と入力して、tsql ユーティリティを終了します。
 
 ## <a name="export-data-with-sqoop"></a>Sqoop を使用したデータのエクスポート
 

@@ -14,13 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2016
 ms.author: mandia
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 331c03cd0819aa4935f9b486ff38f54d23d6a7fd
 ms.openlocfilehash: e3d5f89b1c8525f791e73667d6f7cd6a999ab971
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 
 ---
 # <a name="what-you-can-and-cant-do-using-the-biztalk-service-state"></a>BizTalk サービスの状態を使用して実行できる操作と実行できない操作
+
+> [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
+
 BizTalk サービスの現在の状態によっては、BizTalk サービスで実行できる操作と実行できない操作があります。
 
 たとえば、Azure クラシック ポータルで新しい BizTalk サービスをプロビジョニングするとします。 正常に完了すると、BizTalk サービスが `active` 状態になります。 アクティブ状態では、BizTalk サービスを停止、中断、および削除できます。 BizTalk サービスを停止し、停止に失敗すると、BizTalk サービスは `StopFailed` 状態になります。 `StopFailed` 状態では、BizTalk サービスを再起動できます。 許可されていない操作 (再開など) を実行しようとすると、次のエラーが発生します。
@@ -56,10 +61,5 @@ BizTalk サービスの現在の状態によっては、BizTalk サービスで�
 * [BizTalk Services でのスロットル](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
 * [BizTalk サービスに対して Service Bus および Access Control の発行者名と発行者キーの値を取得](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
 * [Visual Studio でのプロジェクトの作成](http://go.microsoft.com/fwlink/p/?LinkID=302335)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

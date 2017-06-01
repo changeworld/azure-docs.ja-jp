@@ -1,14 +1,14 @@
 ---
 title: "Graph API の Azure Cosmos DB グローバル分散チュートリアル | Microsoft Docs"
 description: "Graph API を使用して Azure Cosmos DB グローバル分散をセットアップする方法について説明します。"
-services: cosmosdb
+services: cosmos-db
 keywords: "グローバル分散, グラフ, gremlin"
 documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 8b815047-2868-4b10-af1d-40a1af419a70
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 36cc08bc1482c2f3be260adcf2b8219168260de5
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: c38b5345bd67008de0e15f9288b4016935837978
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -33,14 +33,14 @@ ms.lasthandoff: 05/10/2017
 > * Azure Portal を使用してグローバル分散を構成する
 > * [Graph API](graph-introduction.md) (プレビュー) を使用してグローバル分散を構成する
 
-[!INCLUDE [cosmosdb-tutorial-global-distribution-portal](../../includes/cosmosdb-tutorial-global-distribution-portal.md)]
+[!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
 
 ## <a name="connecting-to-a-preferred-region-using-the-graph-api-using-the-net-sdk"></a>.NET SDK で Graph API を使用して優先リージョンに接続する
 
 Graph API は DocumentDB SDK の拡張ライブラリとして公開されます。
 
-[グローバル配布](../documentdb/documentdb-distribute-data-globally.md)を活用するために、クライアント アプリケーションでは、ドキュメントの操作の実行に使用するリージョンの順序付き優先リストを指定できます。 これは、接続ポリシーを設定して行います。 Azure Cosmos DB アカウント構成、現在のリージョンの可用性、指定された優先リストに基づいて、書き込み操作と読み取り操作を実行する SDK によって最適なエンドポイントが選択されます。
+[グローバル配布](distribute-data-globally.md)を活用するために、クライアント アプリケーションでは、ドキュメントの操作の実行に使用するリージョンの順序付き優先リストを指定できます。 これは、接続ポリシーを設定して行います。 Azure Cosmos DB アカウント構成、現在のリージョンの可用性、指定された優先リストに基づいて、書き込み操作と読み取り操作を実行する SDK によって最適なエンドポイントが選択されます。
 
 この優先リストは、SDK を使用して接続を初期化する際に指定されます。 SDK は、Azure リージョンの順序付きリストである省略可能なパラメーター "PreferredLocations" を受け取ります。
 
@@ -80,7 +80,7 @@ DocumentClient docClient = new DocumentClient(
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
 
-このチュートリアルはこれで終わりです。 [Azure Cosmos DB の一貫性レベル](../documentdb/documentdb-consistency-levels.md)に関する記事を読んで、グローバルにレプリケートされたアカウントの整合性を管理する方法について確認できます。 また、Azure Cosmos DB におけるグローバル データベース レプリケーションの動作の詳細については、[Azure Cosmos DB を使用したデータのグローバル分散](../documentdb/documentdb-distribute-data-globally.md)に関する記事を参照してください。
+このチュートリアルはこれで終わりです。 [Azure Cosmos DB の一貫性レベル](consistency-levels.md)に関する記事を読んで、グローバルにレプリケートされたアカウントの整合性を管理する方法について確認できます。 また、Azure Cosmos DB におけるグローバル データベース レプリケーションの動作の詳細については、[Azure Cosmos DB を使用したデータのグローバル分散](distribute-data-globally.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -93,7 +93,7 @@ await docClient.OpenAsync().ConfigureAwait(false);
 これで次のチュートリアルに進むことができます。Azure Cosmos DB ローカル エミュレーターを使用してローカルで開発する方法について学びます。
 
 > [!div class="nextstepaction"]
-> [エミュレーターを使用したローカル開発](../documentdb/documentdb-nosql-local-emulator.md)
+> [エミュレーターを使用したローカル開発](local-emulator.md)
 
 [regions]: https://azure.microsoft.com/regions/
 

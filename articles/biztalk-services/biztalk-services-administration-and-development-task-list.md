@@ -14,13 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 1013419f9283c3e81a6a6e8ed56a34d6ee5937ea
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 
 ---
 # <a name="administration-and-development-task-list-in-biztalk-services"></a>BizTalk Services の管理および開発タスク一覧
+
+> [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
+
 ## <a name="getting-started"></a>Getting Started (概要)
 Microsoft Azure BizTalk Services を使用する場合、考慮する必要があるオンプレミスおよびクラウドベースのコンポーネントがいくつかあります。 まずはじめに、次のプロセス フローを考慮します。  
 
@@ -53,10 +58,5 @@ Microsoft Azure BizTalk Services を使用する場合、考慮する必要が�
 [メッセージ マップおよび変換の学習および作成](https://msdn.microsoft.com/library/azure/hh689905.aspx)  
 [BizTalk アダプター サービス (BAS) の使用](https://msdn.microsoft.com/library/azure/hh689889.aspx)  
 [Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=303664)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

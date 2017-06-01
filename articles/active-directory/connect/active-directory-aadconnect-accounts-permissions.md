@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 4ef0118435020edc3a922c88a5a55400992cbc09
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: 366c2c43ec50b0b6c47a25ea9b0e9d7109827429
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -66,7 +67,7 @@ AD DS の読み取りと書き込み用に作成された [アカウント](#act
 | パスワードのリセット |パスワード ライトバックを有効にするための準備 |
 
 ## <a name="custom-settings-installation"></a>カスタム設定を使用したインストール
-カスタム設定を使用する場合、インストール前に Active Directory への接続に使用するアカウントを作成する必要があります。 このアカウントに付与する必要があるアクセス許可については、「 [AD DS アカウントの作成](#create-the-ad-ds-account)」を参照してください。
+以前のバージョンでは、カスタム設定を使用する場合、インストール前に Active Directory への接続に使用するアカウントを作成しておく必要があります。 このアカウントに付与する必要があるアクセス許可については、「 [AD DS アカウントの作成](#create-the-ad-ds-account)」を参照してください。 Azure AD Connect バージョン 1.1.524.0 以降では、Azure AD Connect ウィザードで自動的にアカウントを作成することを選択できるようになっています。
 
 | ウィザード ページ | 収集される資格情報 | 必要なアクセス許可 | 用途 |
 | --- | --- | --- | --- |
@@ -86,9 +87,11 @@ Azure AD Connect をインストールした場合、**[ディレクトリの接
 
 | 機能 | アクセス許可 |
 | --- | --- |
+| msDS-ConsistencyGuid 機能 |「[設計概念 - sourceAnchor としての msDS-ConsistencyGuid の使用](active-directory-aadconnect-design-concepts.md#using-msds-consistencyguid-as-sourceanchor)」に記載された msDS-ConsistencyGuid 属性への書き込みアクセス許可。 | 
 | パスワードの同期 |<li>ディレクトリの変更のレプリケート</li>  <li>ディレクトリの変更をすべてにレプリケート |
 | Exchange ハイブリッドのデプロイメント |ユーザー、グループ、連絡先用の「[Exchange ハイブリッドの書き戻し](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback)」に記載された属性への書き込みアクセス許可。 |
-| パスワードの書き戻し |ユーザー向けの「[パスワード管理の概要](../active-directory-passwords-getting-started.md#step-4-set-up-the-appropriate-active-directory-permissions)」に記載された属性への書き込みアクセス許可。 |
+| Exchange メールのパブリック フォルダー |パブリック フォルダーに関して、「[Exchange メールのパブリック フォルダー](active-directory-aadconnectsync-attributes-synchronized.md#exchange-mail-public-folder)」に記載された属性への読み取りアクセス許可。 | 
+| パスワードの書き戻し |ユーザー向けの「[パスワード管理の概要](../active-directory-passwords.md)」に記載された属性への書き込みアクセス許可。 |
 | デバイスの書き戻し |「[デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md)」に説明されているように、PowerShell スクリプトを使用して付与されたアクセス許可。 |
 | グループの書き戻し |配布グループが配置されている OU 内のグループ オブジェクトの読み取り、作成、更新、および削除。 |
 
@@ -179,11 +182,13 @@ Azure AD のアカウントは、同期サービスで使用するために作�
 
 ![AD アカウント](./media/active-directory-aadconnect-accounts-permissions/aadsyncserviceaccount.png)
 
-アカウントが使用されるサーバーの名前は、ユーザー名の 2 番目の部分で識別できます。 図では、サーバー名は FABRIKAMCON です。 ステージング サーバーがある場合、各サーバーに独自のアカウントが指定されます。 Azure AD での同期サービスのアカウント数の上限は 10 です。
+アカウントが使用されるサーバーの名前は、ユーザー名の 2 番目の部分で識別できます。 図では、サーバー名は FABRIKAMCON です。 ステージング サーバーがある場合、各サーバーに独自のアカウントが指定されます。
 
 サービス アカウントの作成時には、有効期限のない長く複雑なパスワードが設定されます。 このアカウントには、ディレクトリ同期タスクの実行権限のみを持つ特別なロール **ディレクトリ同期アカウント** が付与されます。 この特別な組み込みのロールは Azure AD Connect ウィザード以外では付与できず、Azure Portal では、このアカウントは **[ユーザー]**ロールを持つものとして表示されます。
 
-![AD アカウント ロール](./media/active-directory-aadconnect-accounts-permissions/aadsyncserviceaccountrole.png)
+Azure AD での同期サービスのアカウント数の上限は 20 です。 Azure AD で既存の Azure AD サービス アカウントの一覧を取得するには、次の Azure AD PowerShell コマンドレットを実行します。`Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
+
+使用されていない Azure AD サービス アカウントを削除するには、次の Azure AD PowerShell コマンドレットを実行します。`Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
 
 ## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](../active-directory-aadconnect.md)」をご覧ください。

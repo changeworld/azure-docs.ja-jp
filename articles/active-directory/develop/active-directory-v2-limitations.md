@@ -12,21 +12,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 05/01/2017
 ms.author: dastrock
-translationtype: Human Translation
-ms.sourcegitcommit: 3e0bb32a6c60011d71606c896cc506f430bc3c27
-ms.openlocfilehash: 5d1ceabeeee8cef0170b928703488845f70656ef
+ms.custom: aaddev
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: bd24c8ba65277b224869351e261e365d699b56e3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>v2.0 エンドポイントの使用が適しているかどうかを判断するには
-Azure Active Directory (Azure AD) と統合されるアプリケーションを構築する場合は、v2.0 エンドポイントと認証プロトコルがニーズを満たすかどうかを判断する必要があります。 元の Azure AD エンドポイントは引き続き完全にサポートされ、いくつかの点では v2.0 よりも機能が豊富です。 ただし、v2.0 エンドポイントは、開発者に[大きなメリット](active-directory-v2-compare.md)を提供します。 v2.0 のメリットは、新しいプログラミング モデルを利用する理由になると考えられます。
+Azure Active Directory と統合するアプリケーションを構築する場合は、v2.0 エンドポイントと認証プロトコルがニーズを満たすか判断する必要があります。 Azure Active Directory の元のエンドポイントは引き続き完全にサポートされ、いくつかの点においては v2.0 よりも機能が豊富です。 ただし、v2.0 エンドポイントは、開発者に[大きなメリット](active-directory-v2-compare.md)を提供します。
 
-次に、v2.0 エンドポイントを直ちに使用する場合の推奨事項を示します。
+現時点での開発者向けの推奨は、下記のようにシンプルです。
 
-* アプリケーションで個人の Microsoft アカウントをサポートする場合は、v2.0 エンドポイントを使用します。 その準備として、この記事で説明する制限事項を必ず理解してください。特に職場および学校のアカウントに適用される制限事項について理解してください。
-* アプリケーションで職場および学校のアカウントのみをサポートする必要がある場合は、[元の Azure AD エンドポイント](active-directory-developers-guide.md)を使用してください。
+* アプリケーションで個人の Microsoft アカウントをサポートする必要がある場合は、v2.0 エンドポイントを使用します。 ただしその準備として、この記事で説明する制限事項を必ず理解してください。
+* アプリケーションでサポートする必要があるのが Microsoft の職場と学校アカウントのみである場合は、v2.0 エンドポイントを使用しないでください。 代わりに、[Azure AD 開発者ガイド](active-directory-developers-guide.md)に関するページをご覧ください。
 
 今後、v2.0 エンドポイントはこの一覧に記載された制限事項をなくすように拡張され、v2.0 エンドポイントのみを使用すればよくなる予定です。 その間も、この記事には、v2.0 エンドポイントがニーズを満たすかを判断する際に役立つ情報が記載されています。 v2.0 エンドポイントの現在の状態を反映するように、この記事を引き続き更新する予定です。 v2.0 の機能に対して、要件を再確認してください。
 
@@ -40,25 +43,17 @@ v2.0 エンドポイントを使用すると [OAuth 2.0 で保護された Web A
 
 同じアプリケーション ID を持つクライアントからのトークンを受け付ける Web API の構築方法については、[Getting Started (概要)](active-directory-appmodel-v2-overview.md#getting-started) セクションに掲載されている v2.0 エンドポイントの Web API サンプルを参照してください。
 
-### <a name="web-api-on-behalf-of-flow"></a>Web API の On-Behalf-Of フロー
-v2.0 エンドポイントによって保護された Web API から、同じように保護された別の下流の Web API を呼び出す手法は、多くのアーキテクチャで使われています。 このシナリオは、Web API バック エンドを持つネイティブ クライアントでよく見られます。この Web API から Microsoft Online Services のインスタンスや、Azure AD をサポートしている別のカスタム ビルド Web API が呼び出されます。
-
-このようなシナリオは、OAuth 2.0 JSON Web トークン (JWT) ベアラー資格情報許可 (On-Behalf-Of フロー) を使用して作成できます。 ただし、現時点では、v2.0 エンドポイントは On-Behalf-Of フローをサポートしていません。 一般提供版 Azure AD サービスにおけるこのフローの動作については、[GitHub の On-Behalf-Of コード サンプル](https://github.com/AzureADSamples/WebAPI-OnBehalfOf-DotNet)を参照してください。
-
 ## <a name="restrictions-on-app-registrations"></a>アプリの登録に関する制限事項
 現在、v2.0 エンドポイントと統合するアプリごとに、新しい [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)にアプリの登録を作成する必要があります。 既存の Azure AD または Microsoft アカウント アプリは、v2.0 エンドポイントと互換性がありません。 アプリケーション登録ポータル以外のポータルに登録されているアプリは、v2.0 エンドポイントと互換性がありません。 今後、既存のアプリケーションを v2.0 アプリとして使用する方法を提供する予定です。 ただし、現時点では、既存のアプリを移行して v2.0 エンドポイントで機能させる方法はありません。
 
-アプリケーション登録ポータルで登録されたアプリは、元の Azure AD 認証エンドポイントでは機能しません。 ただし、アプリケーション登録ポータルで作成されたアプリを使用して、Microsoft アカウント認証エンドポイント `https://login.live.com` と統合することができます。
-
 また、[アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)で作成したアプリケーションの登録には、次の注意点があります。
 
-* *サインオン URL* とも呼ばれる**ホームページ** プロパティは、サポートされていません。 ホームページがない場合、Office MyApps パネルにこれらのアプリケーションは表示されません。
-* 現時点で、アプリケーション ID ごとに許可されるアプリ シークレットは 2 種類のみです。
-* アプリの登録を表示および管理できるのは、1 人の開発者アカウントのみです。 複数の開発者間で共有することはできません。
+* アプリケーション ID ごとに許可されるアプリ シークレットは 2 種類のみです。
+* ユーザーが個人の Microsoft アカウントで登録したアプリの登録は、1 つの開発者アカウントでのみ表示および管理できます。 複数の開発者間で共有することはできません。  アプリケーションの登録を複数の開発者の間で共有したい場合は、Azure AD アカウントで登録ポータルにサインインすることでアプリケーションを作成できます。
 * 許可されるリダイレクト URI の形式には、いくつかの制限事項があります。 リダイレクト URI の詳細については、次のセクションを参照してください。
 
 ## <a name="restrictions-on-redirect-uris"></a>リダイレクト URI に関する制限事項
-現在、アプリケーション登録ポータルで登録されるアプリは、限られたリダイレクト URI 値に限定されています。 Web アプリと Web サービスのリダイレクト URI はスキーム `https` で始める必要があり、すべてのリダイレクト URI 値で 1 つの DNS ドメインを共有する必要があります。 たとえば、次の直接 URI のいずれかを含む Web アプリを登録することはできません。
+現在、アプリケーション登録ポータルで登録されるアプリは、限られたリダイレクト URI 値に限定されています。 Web アプリと Web サービスのリダイレクト URI はスキーム `https` で始める必要があり、すべてのリダイレクト URI 値で 1 つの DNS ドメインを共有する必要があります。 たとえば、次のリダイレクト URI のいずれかを含む Web アプリを登録することはできません。
 
 `https://login-east.contoso.com`  
 `https://login-west.contoso.com`
@@ -103,38 +98,21 @@ v2.0 エンドポイントによって保護された Web API から、同じよ
 現時点では、v2.0 エンドポイントのライブラリ サポートは制限されています。 運用環境のアプリケーションで v2.0 エンドポイントを使用する場合は、次の選択肢があります。
 
 * Web アプリケーションを構築する場合は、Microsoft が一般提供しているサーバー側のミドルウェアを使用して、サインインとトークンの検証を安全に実行できます。 このようなミドルウェアには、OWIN の ASP.NET 用 Open ID Connect ミドルウェアや Node.js 用 Passport プラグインなどがあります。 Microsoft のミドルウェアを使用するコード サンプルについては、[Getting Started (概要)](active-directory-appmodel-v2-overview.md#getting-started) セクションを参照してください。
-* 他のプラットフォームやネイティブ アプリケーションとモバイル アプリケーションでは、アプリケーション コードで直接プロトコル メッセージを送受信することで v2.0 エンドポイントと統合できます。 v2.0 の OpenID Connect プロトコルと OAuth プロトコルについては、このような統合の実行に役立つように、[明確に文書化](active-directory-v2-protocols.md)されています。
+* デスクトップまたはモバイル アプリケーションを作成する場合は、Microsoft の認証ライブラリ (MSAL) プレビューのいずれかを使用できます。  これらのライブラリは、運用環境でサポートされているプレビュー版なので、実稼働アプリケーションで使用しても安全です。 プレビューの使用条件と使用可能なライブラリの詳細については、[認証ライブラリのリファレンス](active-directory-v2-libraries.md)に関するページをご覧ください。
+* Microsoft ライブラリの対象ではないプラットフォームでは、アプリケーション コードで直接プロトコル メッセージを送受信することで v2.0 エンドポイントと統合できます。 v2.0 の OpenID Connect プロトコルと OAuth プロトコルについては、このような統合の実行に役立つように、[明確に文書化](active-directory-v2-protocols.md)されています。
 * オープン ソースの Open ID Connect および OAuth のライブラリを使用して、v2.0 エンドポイントと統合できます。 v2.0 のプロトコルは通常、大幅な変更を加えなくても、多数のオープンソース プロトコル ライブラリと互換性があります。 これらのライブラリが使用可能かどうかは、言語とプラットフォームによって異なります。 [Open ID Connect](http://openid.net/connect/) および [OAuth 2.0](http://oauth.net/2/) の Web サイトでは、一般的な実装のリストを公開しています。 詳細については、「[Azure Active Directory (AD) v2.0 と認証ライブラリ](active-directory-v2-libraries.md)」、および v2.0 エンドポイントでテスト済みのオープンソース クライアント ライブラリとサンプルの一覧を参照してください。
 
-Microsoft は、.NET 専用の [Microsoft 認証ライブラリ (MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) の初期プレビューをリリースしました。 このライブラリは .NET クライアントとサーバー アプリケーションで試用いただけますが、プレビュー ライブラリのため一般公開 (GA) 品質のサポートはありません。
-
 ## <a name="restrictions-on-protocols"></a>プロトコルに関する制限事項
-v2.0 エンドポイントは、Open ID Connect と OAuth 2.0 のみをサポートしています。 ただし、各プロトコルの一部の機能がまだ v2.0 エンドポイントには組み込まれていません。
+v2.0 エンドポイントは SAML と WS-Federation をサポートしていません。OpenID 接続と OAuth 2.0 のみをサポートしています。  OAuth プロトコルの一部の機能がまだ v2.0 エンドポイントには組み込まれていません。 現時点では、次のプロトコルの機能が v2.0 エンドポイントで*利用できません*。
 
-次の一般的なプロトコルの機能は、現在 v2.0 エンドポイントでは*利用できません*。
-
-* ユーザー側のセッションの終了をアプリに許可する OpenID Connect `end_session_endpoint` パラメーターは、v2.0 エンドポイントでは利用できません。
-* v2.0 エンドポイントで発行される ID トークンには、ユーザーのペアワイズ識別子のみが含まれます。 これは、同一ユーザーに対して異なる 2 つのアプリケーションが異なる ID を受け取ることを意味します。 Microsoft Graph `/me` エンドポイントにクエリを実行すると、アプリケーション間で使用可能なユーザーの相関 ID を取得できます。
 * ユーザーから電子メールを表示する許可を取得していても、v2.0 エンドポイントが発行する ID トークンにはユーザーの `email` の要求は含まれません。
 * v2.0 エンドポイントに OpenID Connect UserInfo エンドポイントは実装されていません。 ただし、このエンドポイントで受け取る可能性のあるすべてのユーザー プロファイル データは、Microsoft Graph `/me` エンドポイントから使用できます。
 * v2.0 エンドポイントで ID トークン内のロールまたはグループの要求の発行はサポートされていません。
+* [OAuth 2.0 リソース所有者パスワード資格情報の付与](https://tools.ietf.org/html/rfc6749#section-4.3)は、v2.0 エンドポイントでサポートされていません。
+
+また、v2.0 エンドポイントは、SAML と WS-Federation プロトコルのいかなる形式もサポートしていません。
 
 v2.0 エンドポイントでサポートされているプロトコル機能の範囲について詳しく理解するには、[OpenID Connect および OAuth 2.0 プロトコルに関するリファレンス](active-directory-v2-protocols.md)を参照してください。
 
 ## <a name="restrictions-for-work-and-school-accounts"></a>職場および学校のアカウントの制限
-いくつかの Microsoft のエンタープライズ ユーザー向けの機能は、v2.0 エンドポイントでまだサポートされていません。 詳細については、以降のセクションを参照してください。
-
-### <a name="device-based-conditional-access-native-and-mobile-apps-and-microsoft-graph"></a>デバイス ベースの条件付きアクセス、ネイティブとモバイルのアプリ、Microsoft Graph
-iOS または Android で実行されるネイティブ アプリのようなモバイル アプリケーションとネイティブ アプリケーションのデバイス認証は、v2.0 エンドポイントではまだサポートされていません。 そのため、一部の組織では、ネイティブ アプリケーションが Microsoft Graph を呼び出せない可能性があります。 管理者がアプリケーションのデバイス ベースの条件付きアクセス ポリシーを設定するときに、デバイス認証が必要となります。 v2.0 のエンドポイントでデバイス ベースの条件付きアクセスを行う可能性が最も高いシナリオは、管理者が Outlook API などの Microsoft Graph のリソースにポリシーを設定する場合です。 管理者がこのポリシーを設定し、ネイティブ アプリケーションが Microsoft Graph にトークンを要求した場合、デバイス認証がまだサポートされていないため、要求は最終的に失敗します。 ただし、デバイス ベースのポリシーが構成された場合、Microsoft Graph にトークンを要求する Web アプリケーションはサポートされます。 Web アプリのシナリオでは、デバイス認証はユーザーの Web ブラウザーを介して実行されます。
-
-開発者は、Microsoft Graph のリソースにポリシーが設定されるタイミングについては、ほとんど制御することができません。 設定されるタイミングを認識できない可能性もあります。 職場または学校のユーザー向けにアプリケーションを構築している場合は、v2.0 エンドポイントでデバイス認証がサポートされるまで、 [元の Azure AD エンドポイント](active-directory-developers-guide.md) を使用する必要があります。 詳細については、[Azure AD でのデバイス ベースの条件付きアクセス](../active-directory-conditional-access.md#device-based-conditional-access)に関するセクションを参照してください。
-
-### <a name="windows-integrated-authentication-for-federated-tenants"></a>フェデレーション テナントの統合 Windows 認証
-Windows アプリケーションで (元の Azure AD エンドポイントで) Active Directory 認証ライブラリ (ADAL) を使用している場合は、Security Assertion Markup Language (SAML) アサーションの付与と呼ばれる仕組みを活用している可能性があります。 この付与により、フェデレーション Azure AD テナントのユーザーは資格情報を入力せずに、オンプレミスの Active Directory インスタンスで自動的に認証できます。 現在、SAML アサーションの付与は、v2.0 のエンドポイントではサポートされていません。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
-
-
+Windows アプリケーションで Active Directory Authentication Library (ADAL) を使用している場合は、Windows 統合認証を活用している可能性がありますが、これは Security Assertion Markup Language (SAML) アサーション付与を使用しています。 この付与により、フェデレーション Azure AD テナントのユーザーは資格情報を入力せずに、オンプレミスの Active Directory インスタンスで自動的に認証できます。 現在、SAML アサーションの付与は、v2.0 のエンドポイントではサポートされていません。

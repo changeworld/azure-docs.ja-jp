@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/16/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
-ms.openlocfilehash: b5c3257f6e2134a3e7e7eb9b4a12b95ebb70535e
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 7b24bb8391f5d9d4a3e084445aed83bc59295044
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -30,15 +32,10 @@ IoT ソリューションのセキュリティ保護の詳細については、�
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-* [IoT Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
+* [Azure IoT Edge を使用したデバイスのシミュレーション][lnk-iotedge]
 
 [lnk-security-architecture]: iot-hub-security-architecture.md
 [lnk-security-deployment]: iot-hub-security-deployment.md
 
-[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
-
-
-
-<!--HONumber=Feb17_HO3-->
-
+[lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md
 

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 05/11/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 942e3b4fbc9a954eae0cc609e800d0fe0b882475
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: 1436b39fdb9a66a00903442496cc5203b47c1bcb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/13/2017
 
 
 ---
@@ -30,7 +30,7 @@ ms.lasthandoff: 05/11/2017
 
 ## <a name="example-template"></a>テンプレートの例
 
-異なるリソースをデプロイ対象とするには、入れ子になった (リンクされた) テンプレートをデプロイ時に使う必要があります。 `Microsoft.Resources/deployments` リソース タイプには、`resourceGroup` というパラメーターがあり、親テンプレートで使われているリソース グループとは異なるリソース グループを指定することができます。 すべてのリソース グループは、デプロイの実行前に存在している必要があります。 次の例では、2 つのストレージ アカウントをデプロイしています。1 つは、デプロイ時に指定されるリソース グループ内のストレージ アカウントで、もう 1 つは、`crossResourceGroupDeployment` という名前のリソース グループ内のストレージ アカウントです。
+異なるリソースをデプロイ対象とするには、入れ子になった (リンクされた) テンプレートをデプロイ時に使う必要があります。 `Microsoft.Resources/deployments` リソース タイプには、`resourceGroup` というパラメーターがあり、入れ子になったデプロイ用に異なるリソース グループを指定することができます。 すべてのリソース グループは、デプロイの実行前に存在している必要があります。 次の例では、2 つのストレージ アカウントをデプロイしています。1 つは、デプロイ時に指定されるリソース グループ内のストレージ アカウントで、もう 1 つは、`crossResourceGroupDeployment` という名前のリソース グループ内のストレージ アカウントです。
 
 ```json
 {
@@ -123,3 +123,4 @@ az group deployment create \
 * テンプレートでパラメーターを定義する方法については、「[Azure Resource Manager テンプレートの構造と構文の詳細](resource-group-authoring-templates.md)」を参照してください。
 * 一般的なデプロイ エラーを解決するうえでのヒントについては、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](resource-manager-common-deployment-errors.md)」を参照してください。
 * SAS トークンを必要とするテンプレートをデプロイする方法については、「[Deploy private template with SAS token (SAS トークンを使用したプライベート テンプレートのデプロイ)](resource-manager-powershell-sas-token.md)」を参照してください。
+

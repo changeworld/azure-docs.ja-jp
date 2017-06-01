@@ -12,11 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 05/01/2017
 ms.author: dastrock
-translationtype: Human Translation
-ms.sourcegitcommit: 3e0bb32a6c60011d71606c896cc506f430bc3c27
-ms.openlocfilehash: 86055605be6fe264fcb53b26d87a36bcba568a53
+ms.custom: aaddev
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: ab08c126b746ad6f8a835585b7e9773a505e8317
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -92,9 +95,9 @@ Web API は、すべての種類のアプリ (Web サーバー アプリ、デ�
 
 ![Web API 認証フロー](../../media/active-directory-v2-flows/convergence_scenarios_webapi.png)
 
-承認コード、更新トークン、およびアクセス トークンの取得手順については、[OAuth 2.0 プロトコル](active-directory-v2-protocols-oauth-code.md)に関する記事を参照してください。
-
 OAuth2 アクセス トークンを使用して Web API をセキュリティ保護する方法については、「[Getting Started (概要)](active-directory-appmodel-v2-overview.md#getting-started)」セクションで Web API コード サンプルを確認してください。
+
+多くの場合、Web API は Azure Active Directory で保護されているその他のダウンストリーム Web API に、送信要求を行う必要もあります。  そのために、Web API は Azure AD の**代理**フローを利用できます。それにより、Web API は受信アクセス トークンを、送信要求で使用される別のアクセス トークンに交換できます。  v2.0 エンドポイントの代理フローの詳細については、[ここ](active-directory-v2-protocols-oauth-on-behalf-of.md)で説明されています。
 
 ## <a name="mobile-and-native-apps"></a>モバイル アプリとネイティブ アプリ
 多くの場合、モバイル アプリやデスクトップ アプリなど、デバイスにインストールされているアプリは、データを格納し、ユーザーの代わりにさまざまな処理を実行するバックエンド サービスや Web API にアクセスする必要があります。 これらのアプリは、[OAuth 2.0 承認コード フロー](active-directory-v2-protocols-oauth-code.md)を使ってバックエンド サービスにサインインと承認を追加します。
@@ -112,7 +115,7 @@ OAuth2 アクセス トークンを使用して Web API をセキュリティ保
 
 このシナリオを実際に確認するには、「[Getting Started (概要)](active-directory-appmodel-v2-overview.md#getting-started)」セクションのいずれかのシングル ページ アプリのコード サンプルを試してください。
 
-### <a name="daemons-and-server-side-apps"></a>デーモンおよびサーバー側のアプリ
+## <a name="daemons-and-server-side-apps"></a>デーモンおよびサーバー側のアプリ
 長時間実行されるプロセスを含んだアプリや、ユーザーの介入なしで動作するアプリも、セキュリティで保護されたリソース (Web API など) にアクセスする必要があります。 これらのアプリは、OAuth 2.0 クライアント資格情報フローで (ユーザーの委任 ID ではなく) アプリの ID を使用して認証を行い、トークンを取得することができます。
 
 このフローでは、アプリは `/token` エンドポイントと直接対話してトークンを取得します。
@@ -120,18 +123,4 @@ OAuth2 アクセス トークンを使用して Web API をセキュリティ保
 ![デーモン アプリの認証フロー](../../media/active-directory-v2-flows/convergence_scenarios_daemon.png)
 
 デーモン アプリを作成するには、「[Getting Started (概要)](active-directory-appmodel-v2-overview.md#getting-started)」セクションのクライアントの資格情報に関する記述を参照するか、または [.NET サンプル アプリ](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)をお試しください。
-
-## <a name="current-limitations"></a>現時点での制限事項
-現時点では、このセクションのアプリの種類は v2.0 エンドポイントでサポートされていませんが、今後の開発で対応が予定されています。 v2.0 エンドポイントのその他の制限事項については、[v2.0 の制限事項](active-directory-v2-limitations.md)に関する記事を参照してください。
-
-### <a name="chained-web-apis-on-behalf-of"></a>Web API の連鎖 (On-Behalf-Of)
-v2.0 エンドポイントによって保護された Web API から、同じように保護された別の下流の Web API を呼び出す手法は、多くのアーキテクチャで使われています。 このシナリオは、バックエンドの Web API から Microsoft Online サービス (Office 365、Graph API など) のインスタンスを呼び出すネイティブ クライアントでよく見られます。
-
-このように Web API を連鎖的に呼び出すシナリオは、OAuth 2.0 JSON Web Token (JWT) Bearer Credential Grant ([On-Behalf-Of フロー](active-directory-v2-protocols.md)) を使用してサポートできます。 現時点では、v2.0 エンドポイントに On-Behalf-Of フローは実装されていません。 一般提供版 Azure AD サービスにおけるこのフローの動作については、[GitHub の On-Behalf-Of コード サンプル](https://github.com/AzureADSamples/WebAPI-OnBehalfOf-DotNet)を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

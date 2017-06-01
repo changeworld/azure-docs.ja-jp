@@ -1,14 +1,14 @@
 ---
 title: "MongoDB API の Azure Cosmos DB グローバル分散チュートリアル | Microsoft Docs"
 description: "MongoDB API を使用して Azure Cosmos DB グローバル分散をセットアップする方法について説明します。"
-services: cosmosdb
+services: cosmos-db
 keywords: "グローバル分散, MongoDB"
 documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 8b815047-2868-4b10-af1d-40a1af419a70
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 3cff5f474eac5be48cef1655ac312563c3ff473b
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 119ebb3f4966de08934c7d1fbd139229bda1d060
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -31,9 +31,9 @@ ms.lasthandoff: 05/10/2017
 
 > [!div class="checklist"]
 > * Azure Portal を使用してグローバル分散を構成する
-> * [MongoDB API](../documentdb/documentdb-protocol-mongodb.md) を使用してグローバル分散を構成する
+> * [MongoDB API](mongodb-introduction.md) を使用してグローバル分散を構成する
 
-[!INCLUDE [cosmosdb-tutorial-global-distribution-portal](../../includes/cosmosdb-tutorial-global-distribution-portal.md)]
+[!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
 ## <a name="verifying-your-regional-setup-using-the-mongodb-api"></a>MongoDB API を使用してリージョン設定を検証する
 MongoDB 用 API 内のグローバル構成を再確認する最も簡単な方法は、Mongo シェルから *isMaster()* コマンドを実行することです。
@@ -94,7 +94,7 @@ var tag = new Tag("region", "Southeast Asia");
 collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode.Secondary, new[] { new TagSet(new[] { tag }) }));
 ```
 
-このチュートリアルはこれで終わりです。 [Azure Cosmos DB の一貫性レベル](../documentdb/documentdb-consistency-levels.md)に関する記事を読んで、グローバルにレプリケートされたアカウントの整合性を管理する方法について確認できます。 また、Azure Cosmos DB におけるグローバル データベース レプリケーションの動作の詳細については、[Azure Cosmos DB を使用したデータのグローバル分散](../documentdb/documentdb-distribute-data-globally.md)に関する記事を参照してください。
+このチュートリアルはこれで終わりです。 [Azure Cosmos DB の一貫性レベル](consistency-levels.md)に関する記事を読んで、グローバルにレプリケートされたアカウントの整合性を管理する方法について確認できます。 また、Azure Cosmos DB におけるグローバル データベース レプリケーションの動作の詳細については、[Azure Cosmos DB を使用したデータのグローバル分散](distribute-data-globally.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -107,4 +107,4 @@ collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode
 これで次のチュートリアルに進むことができます。Azure Cosmos DB ローカル エミュレーターを使用してローカルで開発する方法について学びます。
 
 > [!div class="nextstepaction"]
-> [エミュレーターを使用したローカル開発](../documentdb/documentdb-nosql-local-emulator.md)
+> [エミュレーターを使用したローカル開発](local-emulator.md)

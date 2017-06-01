@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: cephalin
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 6563d1520149ae5ced7e2de80686ef1624ebb651
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 3ae3e5d55454a33a35950057667f9648b63bb331
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
-
+ms.lasthandoff: 06/01/2017
 
 ---
 # <a name="build-an-aspnet-app-in-azure-with-sql-database"></a>SQL Database を使用して Azure に ASP.NET アプリを作成する
@@ -111,19 +111,7 @@ ms.lasthandoff: 05/09/2017
 
 ### <a name="create-an-app-service-plan"></a>App Service プランを作成する
 
-Azure Web アプリには、"_App Service プラン_" も必要です。 
-
-> [!NOTE]
-> App Service プランは、アプリをホストするために使用される物理リソースのコレクションを表しています。 App Service プランに割り当てられたすべてのアプリは、プランで定義されたリソースを共有します。これにより、複数のアプリをホストする際にコストを節約できます。 
->
-> App Service プランには、次の定義があります。
->
-> - リージョン (北ヨーロッパ、米国東部、東南アジア)
-> - インスタンス サイズ (Small、Medium、Large)
-> - スケール カウント (インスタンス数 1、2、3 など) 
-> - SKU (Free、Shared、Basic、Standard、Premium)
->
->
+[!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
 **[App Service プラン]** の横にある **[新規]** をクリックします。 
 
@@ -447,7 +435,7 @@ az group delete --name myResourceGroup
 > * Azure にアプリケーションをデプロイする
 > * データ モデルを更新し、アプリを再デプロイする
 > * Azure からターミナルにログをストリーミングする
-> * Azure Portal でアプリを管理する
+> * Azure ポータルでアプリを管理する
 
 次のチュートリアルに進み、カスタム DNS 名をマップする方法を学習してください。
 

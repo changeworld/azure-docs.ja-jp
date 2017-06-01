@@ -51,7 +51,7 @@ az group create --name mycliresource --location westus
 次の例は、`westus` にあるリソース グループ `mycliresource` に、`mycliserver` という名前の Azure Database for MySQL サーバーを作成します。 サーバーの管理者ログインの名前は `myadmin`、パスワードは `Password01!` です。 サーバーのパフォーマンス レベルは **Basic**、**50** のコンピューティング ユニットを同じサーバー内のすべてのデータベースで共有します。 アプリケーションのニーズに応じて、コンピューティング ユニットとストレージは自由にスケーリングできます。
 
 ```azurecli
-az mysql server create --resource-group mycliresource --name mycliserver--location westus --user myadmin --password Password01! --performance-tier Basic --compute-units 50
+az mysql server create --resource-group mycliresource --name mycliserver --location westus --admin-user myadmin --admin-password Password01! --performance-tier Basic --compute-units 50
 ```
 
 ![Azure CLI を使用した Azure Database for MySQL サーバーの作成](./media/quickstart-create-mysql-server-database-using-azure-cli/3_az-mysq-server-create.png)
@@ -168,7 +168,7 @@ mysql>
 ## <a name="connect-to-the-server-using-the-mysql-workbench-gui-tool"></a>MySQL Workbench GUI ツールを使用したサーバーへの接続
 1.    クライアント コンピューターで MySQL Workbench アプリケーションを起動します。 MySQL Workbench は[ここ](https://dev.mysql.com/downloads/workbench/)からダウンロードしてインストールできます。
 
-2.    **[Setup New Connection] (新しい接続のセットアップ)** ダイアログ ボックスで、次の情報を **[Parameters] (パラメーター)** タブに入力します。
+2.    **[Setup New Connection] \(新しい接続のセットアップ)** ダイアログ ボックスで、次の情報を **[Parameters] \(パラメーター)** タブに入力します。
 
 | **パラメーター** | **説明** |
 |----------------|-----------------|
@@ -181,7 +181,7 @@ mysql>
 
    ![新しい接続のセットアップ](./media/quickstart-create-mysql-server-database-using-azure-cli/setup-new-connection.png)
 
-**[Test Connection] (接続のテスト)** をクリックして、すべてのパラメーターが正しく構成されているかをテストします。
+**[Test Connection] \(接続のテスト)** をクリックして、すべてのパラメーターが正しく構成されているかをテストします。
 これで、作成したばかりの接続をクリックして、サーバーに正常に接続できます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ

@@ -3,8 +3,8 @@ title: "iOS から Azure Blob Storage を使用する方法 | Microsoft Docs"
 description: "Azure BLOB ストレージ (オブジェクト ストレージ) を使用して、非構造化データをクラウドに格納します。"
 services: storage
 documentationcenter: ios
-author: seguler
-manager: jahogg
+author: michaelhauss
+manager: vamshik
 editor: tysonn
 ms.assetid: df188021-86fc-4d31-a810-1b0e7bcd814b
 ms.service: storage
@@ -12,12 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 01/30/2017
-ms.author: seguler
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: b6e5d2dce97c2f10d0e440a0bde05d50d8965833
-ms.lasthandoff: 04/06/2017
+ms.date: 05/11/2017
+ms.author: michaelhauss
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: d5c004f3123c203a665fb421f81f4a14cfbeb26c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -34,49 +35,67 @@ ms.lasthandoff: 04/06/2017
 [!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
 ## <a name="import-the-azure-storage-ios-library-into-your-application"></a>Azure Storage iOS ライブラリをアプリケーションにインポートする
-[Azure Storage CocoaPod](https://cocoapods.org/pods/AZSClient) を使用するか、または **フレームワーク** ファイルをインポートするかのいずれかにより、Azure Storage iOS ライブラリをアプリケーションにインポートすることができます。
+[Azure Storage CocoaPod](https://cocoapods.org/pods/AZSClient) を使用するか、または **フレームワーク** ファイルをインポートするかのいずれかにより、Azure Storage iOS ライブラリをアプリケーションにインポートすることができます。 既存のプロジェクトについては､フレームワーク ファイルからのインポートの方が煩わしさは少なくなりますが､ライブラリの統合が容易になるため､CocoaPod はお勧めの方法です｡
+
+このライブラリを使用するには､以下が必要です｡
+- iOS 8+
+- Xcode 7+
 
 ## <a name="cocoapod"></a>CocoaPod
 1. まだ実行していない場合は、ターミナル ウィンドウを開いて次のコマンドを実行し、コンピューターに [CocoaPods をインストール](https://guides.cocoapods.org/using/getting-started.html#toc_3) します。
-   
+    
+    ```shell   
     sudo gem install cocoapods
+    ```
 
 2. 次に、プロジェクト ディレクトリ (.xcodeproj ファイルが含まれるディレクトリ) に、_Podfile_ という新しいファイル (ファイル拡張子なし) を作成します。 _Podfile_ に次のコードを追加して保存します。
-   
-    pod 'AZSClient'
+
+    ```ruby
+    platform :ios, '8.0'
+
+    target 'TargetName' do
+      pod 'AZSClient'
+    end
+    ```
 
 3. ターミナル ウィンドウでプロジェクト ディレクトリに移動し、次のコマンドを実行します。
-   
+
+    ```shell    
     pod install
+    ```
 
 4. Xcode で .xcodeproj が開いている場合は閉じます。 プロジェクト ディレクトリで、拡張子が .xcworkspace の、新しく作成されたプロジェクト ファイルを開きます。 以降の作業にはこのファイルを使用します。
 
 ## <a name="framework"></a>フレームワーク
-Azure Storage iOS ライブラリを使用するには、最初にフレームワーク ファイルを作成する必要があります。
+このライブラリを利用するもう 1 つの方法は､フレームワークを手動で構築する方法です｡
 
 1. まずは、 [azure-storage-ios リポジトリ](https://github.com/azure/azure-storage-ios)をダウンロードまたは複製します。
-2. *azure-storage-ios* -> *Lib* -> *Azure Storage Client Library* の順に移動し、AZSClient.xcodeproj を Xcode で開きます。
+2. *azure-storage-ios* -> *Lib* -> *Azure Storage Client Library* の順に移動し、`AZSClient.xcodeproj` を Xcode で開きます。
 3. Xcode の左上部分で、アクティブ スキームを "Azure Storage Client Library" から "Framework" に変更します。
-4. プロジェクトをビルド (⌘ + B キー) します。 これによって、AZSClient.framework ファイルがデスクトップ上に作成されます。
+4. プロジェクトをビルド (⌘ + B キー) します。 これにより､デスクトップ上に `AZSClient.framework` ファイルが作成されます｡
 
 次に、以下の手順を実行すると、フレームワーク ファイルをアプリケーションにインポートできます。
 
 1. Xcode で新しいプロジェクトを作成するか、既存のプロジェクトを開きます。
-2. 左側のナビゲーションでプロジェクトをクリックし、プロジェクト エディターの上部にある *[General]* タブをクリックします。
-3. *[Linked Frameworks and Libraries]* セクションの下で、追加ボタン (+) をクリックします。
-4. *[Add Other]*をクリックします。 作成した `AZSClient.framework` ファイルに移動して、それを追加します。
-5. *[Linked Frameworks and Libraries]* セクションの下で、追加ボタン (+) をもう一度クリックします。
-6. 既に表示されているライブラリの一覧で `libxml2.2.dylib` を検索し、それをプロジェクトに追加します。
-7. プロジェクト エディターの上部にある *[Build Settings]* タブをクリックします。
-8. *[Search Paths]* セクションで *[Framework Search Paths]* をダブルクリックし、`AZSClient.framework` ファイルへのパスを追加します。
+2. `AZSClient.framework` を Xcode プロジェクト ナビゲーターにドラッグします｡
+3. *[Copy items if needed (必要に応じてアイテムをコピー)]* を選択し、*[Finishu (完了)]* をクリックします。
+4. 左側のナビゲーションでプロジェクトをクリックし、プロジェクト エディターの上部にある *[General]* タブをクリックします。
+5. *[Linked Frameworks and Libraries]* セクションの下で、追加ボタン (+) をクリックします。
+6. 既に表示されているライブラリの一覧で `libxml2.2.tbd` を検索し、それをプロジェクトに追加します。
 
-## <a name="import-statement"></a>import ステートメント
-ファイル内の Azure Storage API を呼び出す場所に、次の import ステートメントを加える必要があります。
-
+## <a name="import-the-library"></a>ライブラリをインポートする 
 ```objc
 // Include the following import statement to use blob APIs.
 #import <AZSClient/AZSClient.h>
 ```
+
+Swift を使用する場合は､ブリッジヘッダーを作成し､<AZSClient/AZSClient.h> をインポートする必要があります｡
+
+1. ヘッダー ファイル `Bridging-Header.h` を作成し､上記の import ステートメントを追加します｡
+2. [*Build Settings*] タブに移動し､[*Objective-C Bridging Header*] を探します｡
+3. [*Objective-C Bridging Header*] のフィールドをダブルクリックし､ヘッダー ファイルにパスを追加します｡ `ProjectName/Bridging-Header.h`
+4. プロジェクトをビルド (⌘+B) して､ブリッジ ヘッダーが Xcode によって取得されたことを確認します｡
+5. 任意の Swift ファイルでのライブラリの直接使用を開始します｡import ステートメントは必要ありません｡
 
 [!INCLUDE [storage-mobile-authentication-guidance](../../includes/storage-mobile-authentication-guidance.md)]
 
@@ -153,7 +172,7 @@ Azure Storage のどの BLOB もコンテナーに格納する必要がありま
 ```
 
 ## <a name="upload-a-blob-into-a-container"></a>コンテナーに BLOB をアップロードする
-「 [BLOB サービスの概念](#blob-service-concepts) 」セクションで説明したように、BLOB ストレージには、ブロック BLOB、追加 BLOB、ページ BLOB という 3 種類の BLOB が用意されています。 現在、Azure Storage iOS ライブラリでは、ブロック BLOB のみがサポートされています。 ほとんどの場合は、ブロック BLOB を使用することをお勧めします。
+「 [BLOB サービスの概念](#blob-service-concepts) 」セクションで説明したように、BLOB ストレージには、ブロック BLOB、追加 BLOB、ページ BLOB という 3 種類の BLOB が用意されています。 Azure Storage iOS ライブラリは、3 つのタイプの BLOB すべてをサポートしています。 ほとんどの場合は、ブロック BLOB を使用することをお勧めします。
 
 次の例では、NSString からブロック BLOB をアップロードする方法を示します。 同じ名前の BLOB が既にこのコンテナーに存在する場合は、この BLOB の内容が上書きされます。
 
@@ -194,18 +213,18 @@ Azure Storage のどの BLOB もコンテナーに格納する必要がありま
 }
 ```
 
-このコード例が正常に機能していることを確認するには、[Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com)で、コンテナー *containerpublic* に BLOB *sampleblob* が含まれていることを確認します。 この例ではパブリック コンテナーを使用したため、次の BLOB URI にアクセスすることによっても、これを確認できます。
+このコード例が正常に機能していることを確認するには、[Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com)で、コンテナー *containerpublic* に BLOB *sampleblob* が含まれていることを確認します。 この例では､パブリック コンテナーが使用されているため、このアプリケーションが機能することは､次の BLOB URI にアクセスすることによっても確認できます。
 
     https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblob
 
-NSString からブロック BLOB をアップロードする場合だけでなく、NSData、NSInputStream、またはローカル ファイルの場合にも同様のメソッドが存在します。
+NSString からのブロック BLOB のアップロードばかりでなく、NSData、NSInputStream、あるいはローカル ファイルについても同様の方法が存在します。
 
 ## <a name="list-the-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
 次の例では、コンテナー内のすべての BLOB を一覧表示する方法を示します。 この操作を実行する場合は、次のパラメーターに注意してください。     
 
 * **continuationToken** - 継続トークンは、一覧表示操作の開始位置を表します。 トークンが指定されていない場合、最初から BLOB を一覧表示します。 0 から設定された最大値まで、BLOB はいくつでも一覧表示できます。 このメソッドによって返される結果が 0 件でも、 `results.continuationToken` が nil でない場合は、一覧表示されていない BLOB がもっとサービス上に存在する可能性があります。
 * **prefix** - BLOB の一覧表示に使用するプレフィックスを指定できます。 このプレフィックスで始まる名前の BLOB のみが一覧表示されます。
-* **useFlatBlobListing** - 「 [コンテナーおよび BLOB の名前付けと参照](#naming-and-referencing-containers-and-blobs) 」セクションで説明したように、BLOB サービスはフラット ストレージ スキームですが、パス情報を使用して BLOB に名前を付けることで、仮想階層を作成できます。 ただし、フラットでない一覧表示は現在サポート対象外であり、近日対応予定です。 現時点では、この値は **YES** にする必要があります。
+* **useFlatBlobListing** - 「 [コンテナーおよび BLOB の名前付けと参照](#naming-and-referencing-containers-and-blobs) 」セクションで説明したように、BLOB サービスはフラット ストレージ スキームですが、パス情報を使用して BLOB に名前を付けることで、仮想階層を作成できます。 ただし、フラットでない一覧表示は現在サポートされておらず､ まもなく公開されます｡ 現時点では、この値は **YES** にする必要があります。
 * **blobListingDetails** - BLOB を一覧表示するときに含める項目を指定できます。
   * _AZSBlobListingDetailsNone_: コミット済みの BLOB のみを一覧表示し、BLOB メタデータは返しません。
   * _AZSBlobListingDetailsSnapshots_: コミット済みの BLOB と BLOB スナップショットを一覧表示します。
@@ -373,7 +392,7 @@ NSString からブロック BLOB をアップロードする場合だけでな�
 * [Azure Storage Services REST API (Azure Storage サービスの REST API)](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage)
 
-このライブラリに関してご質問がある場合は、お気軽に [MSDN Azure フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) または [スタック オーバーフロー](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files) に投稿してください。
+このライブラリに関してご質問がある場合は、お気軽に [MSDN Azure フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) または [Stack Overflow](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files) に投稿してください。
 Azure Storage の機能についてご提案がある場合は、 [Azure Storage のフィードバック](https://feedback.azure.com/forums/217298-storage/)に投稿してください。
 
 

@@ -15,10 +15,11 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 01/25/2017
 ms.author: cakarst;barbkess
-translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: aca0e4cfdcfb3e3ed2e69ad8153b4c965b299806
-ms.lasthandoff: 03/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: cb2d789a53ee2fa16db8d2553086a18043d4976e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 
@@ -161,7 +162,7 @@ WITH
 PolyBase によるデータの読み込みは、厳密に型指定されます。 これは、取り込むデータの各行がテーブルのスキーマ定義を満たす必要があることを意味します。
 特定の行がスキーマの定義と一致しない場合、その行の読み込みは拒否されます。
 
-Reject_Type と Reject_Value を使用すると、最終的なテーブルに必要なデータの行数または割合を定義できます。
+REJECT_TYPE および REJECT_VALUE オプションでは､最終のテーブルに存在する必要がある行数またはデータの割合を定義することができます｡ 
 読み込み中に値が定義した数または割合に達すると、読み込み操作が失敗します。 行が拒否される最も一般的な原因は、スキーマ定義との不一致です。
 たとえば、ファイルに含まれるデータが文字列の場合に、列に int 型のスキーマが指定されていると、すべての行の読み込みが失敗します。
 

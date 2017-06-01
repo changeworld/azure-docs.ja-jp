@@ -1,13 +1,13 @@
 ---
 title: "Azure Cosmos DB でのパーティション分割と水平スケーリング | Microsoft Docs"
 description: "Azure Cosmos DB でのパーティション分割のしくみ、パーティション分割とパーティション キーを構成する方法、アプリケーションに適したパーティション キーを選択する方法について説明します。"
-services: cosmosdb
+services: cosmos-db
 author: arramac
 manager: jhubbard
 editor: monicar
 documentationcenter: 
 ms.assetid: cac9a8cd-b5a3-4827-8505-d40bb61b2416
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,10 +16,10 @@ ms.date: 05/10/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 920c6f810e723712b72f642b783f093bb5d4f7d4
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: cd3b13b9988f51fd3755ced48714fdc18cf1ea3c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -66,7 +66,7 @@ Cosmos DB には、ハッシュベースのパーティション分割が使用�
 Azure Cosmos DB コンテナーは、"固定" または "無制限" として作成することができます。 固定サイズのコンテナーの上限は、容量が 10 GB で、スループットが毎秒 10,000 RU となります。 固定サイズのコンテナーに関して、一部の API ではパーティション キーを省略することができます。 コンテナーを無制限として作成する場合は、スループットに最低でも 2,500 RU/秒を指定する必要があります。
 
 ## <a name="partitioning-and-provisioned-throughput"></a>パーティション分割とプロビジョニング済みスループット
-Cosmos DB は、予測可能なパフォーマンスが得られるように設計されています。 コンテナーを作成するときに、**[1 秒あたりの要求ユニット数](../documentdb/documentdb-request-units.md) (RU) と 1 分あたりの追加 RU 見込み**でスループットを予約します。 各要求には、操作で使用されるシステム リソースの量 (CPU、メモリ、IO など) に比例する、要求ユニットの負担が割り当てられます。 Session 一貫性での 1 KB のドキュメントの読み取りでは、1 要求ユニットを使用します。 読み取りは、格納された項目の数や、同時に実行する同時要求の数にかかわらず 1 RU になります。 サイズの大きい項目では、サイズに応じた、さらに多くの要求ユニットが必要になります。 アプリケーションにサポートする必要のあるエンティティのサイズと読み取りの数がわかっている場合は、アプリケーションの読み取りに必要な正確な量のスループットをプロビジョニングできます。 
+Cosmos DB は、予測可能なパフォーマンスが得られるように設計されています。 コンテナーを作成するときに、**[1 秒あたりの要求ユニット数](request-units.md) (RU) と 1 分あたりの追加 RU 見込み**でスループットを予約します。 各要求には、操作で使用されるシステム リソースの量 (CPU、メモリ、IO など) に比例する、要求ユニットの負担が割り当てられます。 Session 一貫性での 1 KB のドキュメントの読み取りでは、1 要求ユニットを使用します。 読み取りは、格納された項目の数や、同時に実行する同時要求の数にかかわらず 1 RU になります。 サイズの大きい項目では、サイズに応じた、さらに多くの要求ユニットが必要になります。 アプリケーションにサポートする必要のあるエンティティのサイズと読み取りの数がわかっている場合は、アプリケーションの読み取りに必要な正確な量のスループットをプロビジョニングできます。 
 
 > [!NOTE]
 > コンテナーのフル スループットを達成するには、個々のパーティション キー値に対して要求を均等に分散できるパーティション キーを選択する必要があります。
@@ -78,7 +78,7 @@ Cosmos DB は、予測可能なパフォーマンスが得られるように設�
 コンテナーは、Azure Portal または Azure CLI を使って作成し、いつでもスケーリングすることができます。 このセクションでは、コンテナーを作成してスループットとパーティション キーの定義を指定する方法を、サポートされている API ごとに紹介します。
 
 ### <a name="documentdb-api"></a>DocumentDB API
-次のコードは、DocumentDB API を使ってコンテナー (コレクション) を作成するサンプルです。 詳細については、[DocumentDB API でのパーティション分割](../documentdb/documentdb-partition-data.md)に関するページを参照してください。
+次のコードは、DocumentDB API を使ってコンテナー (コレクション) を作成するサンプルです。 詳細については、[DocumentDB API でのパーティション分割](partition-data.md)に関するページを参照してください。
 
 ```csharp
 DocumentClient client = new DocumentClient(new Uri(endpoint), authKey);
@@ -207,8 +207,8 @@ Cosmos DB を使用したマルチテナント アプリケーションを実装
 ## <a name="next-steps"></a>次のステップ
 この記事では、Azure Cosmos DB API を使ったパーティション分割の概念とベスト プラクティスについて概説しました。 
 
-* [Azure Cosmos DB におけるスループットのプロビジョニング](../documentdb/documentdb-request-units.md)について理解します。
-* [Azure Cosmos DB の世界規模での分散](../documentdb/documentdb-distribute-data-globally.md)について理解します。
+* [Azure Cosmos DB におけるスループットのプロビジョニング](request-units.md)について理解します。
+* [Azure Cosmos DB の世界規模での分散](distribute-data-globally.md)について理解します。
 
 
 

@@ -132,7 +132,7 @@ return request.CreateResponse<ResponseContent>(
 
 ## <a name="step-4---include-the-rest-service-claims-exchange-as-an-orchestration-step-in-your-profile-edit-user-journey-in-your-trustframeworkextensionsxml"></a>手順 4 - TrustFrameworkExtensions.xml のプロファイルの編集ユーザー体験に REST サービス要求交換をオーケストレーション手順として含める
 
-ユーザーが認証され (オーケストレーション手順 1. ～ 4.。以下を参照)、ユーザーから更新されたプロファイル情報が提供された (手順 5.) 後の手順をプロファイルの編集ユーザー体験に追加しましょう。
+ユーザーが認証され (オーケストレーション手順 1. ～ 4. 以下を参照)、ユーザーから更新されたプロファイル情報が提供された (手順 5.) 後の手順をプロファイルの編集ユーザー体験に追加しましょう。
 
 > [!NOTE]
 > REST API 呼び出しをオーケストレーション手順として使用できる多くのユース ケースがあります。  オーケストレーション手順としては、ユーザーが最初の登録やプロファイルの更新などのタスクを正常に完了した後に REST API 呼び出しを外部システムに対する更新として使用して、情報の同期状態を保つことができます。  このケースでは、プロファイルの編集後にアプリケーションに提供される情報を増やすために使用されています。

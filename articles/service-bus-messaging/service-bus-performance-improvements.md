@@ -12,16 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/02/2017
+ms.date: 05/10/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: a9fd01e533f4ab76a68ec853a645941eff43dbfd
-ms.openlocfilehash: d077099a9fdc50cf78157bcb7f28d1d28583bea1
-ms.lasthandoff: 02/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: e6a0e480f7748f12f5e566cf4059b5b2c4242c09
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Service Bus メッセージングを使用したパフォーマンス向上のためのベスト プラクティス
+
 この記事では、[Azure Service Bus メッセージング](https://azure.microsoft.com/services/service-bus/)を使用して、ブローカー メッセージを交換する際のパフォーマンスを最適化する方法について説明します。 このトピックの前半では、パフォーマンスの向上に役立つさまざまなメカニズムについて説明します。 後半では、特定のシナリオでパフォーマンスを最大限に高めるための Service Bus の使用方法に関するガイダンスを示します。
 
 このトピック全体で、"クライアント" という用語は Service Bus にアクセスするすべてのエンティティを指します。 クライアントは送信側または受信側の役割を実行できます。 "送信側" という用語は、Service Bus キューまたはトピックにメッセージを送信する Service Bus キューまたはトピックのクライアントを指します。 "受信側" という用語は、Service Bus キューまたはサブスクリプションからメッセージを受信する Service Bus キューまたはサブスクリプションのクライアントを指します。
@@ -29,7 +31,7 @@ ms.lasthandoff: 02/22/2017
 以下のセクションでは、パフォーマンスを向上するために Service Bus で利用される概念をいくつか紹介します。
 
 ## <a name="protocols"></a>プロトコル
-Service Bus を使用すると、クライアントは次の&3; つのプロトコルのいずれかを使用してメッセージを送受信できます。
+Service Bus を使用すると、クライアントは次の 3 つのプロトコルのいずれかを使用してメッセージを送受信できます。
 
 1. Advanced Message Queuing Protocol (AMQP)
 2. Service Bus メッセージング プロトコル (SBMP)
@@ -78,7 +80,7 @@ AMQP と SBMP は、メッセージング ファクトリが存在する限り�
     Console.WriteLine("{0} complete", m.Label);
   }
   ```
-* **マルチ ファクトリ**: 同じファクトリによって作成されるすべてのクライアント (送信側と受信側) が&1; つの TCP 接続を共有します。 最大メッセージ スループットはこの TCP 接続を通過できる操作の数によって制限されます。 1 つのファクトリで取得できるスループットは、TCP ラウンドトリップ時間とメッセージ サイズによって大幅に変わります。 より高いスループット レートを得るには、複数のメッセージ ファクトリを使用する必要があります。
+* **マルチ ファクトリ**: 同じファクトリによって作成されるすべてのクライアント (送信側と受信側) が 1 つの TCP 接続を共有します。 最大メッセージ スループットはこの TCP 接続を通過できる操作の数によって制限されます。 1 つのファクトリで取得できるスループットは、TCP ラウンドトリップ時間とメッセージ サイズによって大幅に変わります。 より高いスループット レートを得るには、複数のメッセージ ファクトリを使用する必要があります。
 
 ## <a name="receive-mode"></a>受信モード
 キューまたはサブスクリプションのクライアントを作成するときに、受信モードに、"*ピーク/ロック*" または "*受信して削除*" を指定できます。 既定の受信モードは [PeekLock][PeekLock] です。 このモードで操作するとき、クライアントは Service Bus からメッセージを受信する要求を送信します。 クライアントはメッセージを受信した後で、メッセージを完了する要求を送信します。
@@ -88,7 +90,7 @@ AMQP と SBMP は、メッセージング ファクトリが存在する限り�
 Service Bus は "受信して削除" 操作のトランザクションをサポートしません。 また、クライアントでメッセージの遅延または[配信不能](service-bus-dead-letter-queues.md)が必要なシナリオではピーク/ロック セマンティクスが必要になります。
 
 ## <a name="client-side-batching"></a>クライアント側のバッチ処理
-クライアント側のバッチ処理により、キューまたはトピックのクライアントはメッセージの送信を一定期間遅らせることができます。 クライアントがこの期間内に追加のメッセージを送信すると、1 つのバッチで複数のメッセージが送信されます。 また、クライアント側のバッチ処理では、キューまたはサブスクリプションのクライアントが、複数の**完了**要求を&1; つの要求でバッチ処理します。 バッチ処理を使用できるのは、非同期の**送信**と**完了**操作のみです。 同期操作はすぐに Service Bus サービスに送信されます。 バッチ処理はピーク操作や受信操作では行われません。また、クライアント間でも行われません。
+クライアント側のバッチ処理により、キューまたはトピックのクライアントはメッセージの送信を一定期間遅らせることができます。 クライアントがこの期間内に追加のメッセージを送信すると、1 つのバッチで複数のメッセージが送信されます。 また、クライアント側のバッチ処理では、キューまたはサブスクリプションのクライアントが、複数の**完了**要求を 1 つの要求でバッチ処理します。 バッチ処理を使用できるのは、非同期の**送信**と**完了**操作のみです。 同期操作はすぐに Service Bus サービスに送信されます。 バッチ処理はピーク操作や受信操作では行われません。また、クライアント間でも行われません。
 
 既定では、クライアントは 20 ミリ秒のバッチ間隔を使用します。 バッチ間隔を変更するには、メッセージング ファクトリを作成する前に、[BatchFlushInterval][BatchFlushInterval] プロパティを設定します。 この設定は、このファクトリによって作成されるすべてのクライアントに影響します。
 
@@ -130,7 +132,8 @@ Queue q = namespaceManager.CreateQueue(qd);
 プリフェッチは課金対象のメッセージ操作数に影響を与えません。また、Service Bus クライアント プロトコルでのみ利用できます。 HTTP プロトコルはプリフェッチをサポートしません。 プリフェッチは同期受信操作と非同期受信操作の両方で使用できます。
 
 ## <a name="express-queues-and-topics"></a>エクスプレス キューとエクスプレス トピック
-エクスプレス エンティティはスループットを増やし、待機時間を減らします。 エクスプレス エンティティを利用する場合は、キューまたはトピックにメッセージが送信されても、メッセージはメッセージング ストアにすぐに格納されません。 代わりに、メモリにキャッシュされます。 キューに格納されてから数秒以上経過したメッセージは安定したストレージに自動的に書き込まれ、障害による消失から保護されます。 メモリ キャッシュにメッセージが書き込まれると、スループットが増え、待機時間が減ります。メッセージが送信されるとき、安定したストレージにアクセスしないためです。 数秒以内に使用されるメッセージはメッセージング ストアに書き込まれません。 次の例では、エクスプレス トピックが作成されます。
+
+エクスプレス エンティティは、高スループットと待機時間が削減されたシナリオを可能するもので、Standard メッセージング レベルでのみサポートされます。 [Premium 名前空間](service-bus-premium-messaging.md)で作成したエンティティは、エクスプレス オプションをサポートしていません。 エクスプレス エンティティを利用する場合は、キューまたはトピックにメッセージが送信されても、メッセージはメッセージング ストアにすぐに格納されません。 代わりに、メモリにキャッシュされます。 キューに格納されてから数秒以上経過したメッセージは安定したストレージに自動的に書き込まれ、障害による消失から保護されます。 メモリ キャッシュにメッセージが書き込まれると、スループットが増え、待機時間が減ります。メッセージが送信されるとき、安定したストレージにアクセスしないためです。 数秒以内に使用されるメッセージはメッセージング ストアに書き込まれません。 次の例では、エクスプレス トピックが作成されます。
 
 ```csharp
 TopicDescription td = new TopicDescription(TopicName);
@@ -141,7 +144,7 @@ namespaceManager.CreateTopic(td);
 消失してはならない重要な情報が含まれているメッセージがエクスプレス エンティティに送信される場合、[ForcePersistence][ForcePersistence] プロパティを **true** に設定することで、送信側は Service Bus で強制的にメッセージを安定したストレージに直ちに保存できます。
 
 > [!NOTE]
-> エクスプレス エンティティがトランザクションをサポートしていないことに注意してください。
+> エクスプレス エンティティはトランザクションをサポートしていません。
 
 ## <a name="use-of-partitioned-queues-or-topics"></a>パーティション分割されたキューまたはトピックの使用
 内部的には、Service Bus は同じノードとメッセージング ストアを使用して、メッセージング エンティティ (キューまたはトピック) のすべてのメッセージを処理し、格納します。 一方、パーティション分割されたキューまたはトピックは複数のノードとメッセージング ストアの間で分散されます。 パーティション分割されたキューとトピックは通常のキューとトピックより高いスループットを生むだけでなく、可用性にも優れています。 パーティション分割されたエンティティを作成するには、次の例のように、[EnablePartitioning][EnablePartitioning] プロパティを **true** に設定します。 パーティション分割されたエンティティの詳細については、[パーティション分割されたメッセージング エンティティ][Partitioned messaging entities]に関する記事をご覧ください。
@@ -155,7 +158,7 @@ namespaceManager.CreateQueue(qd);
 
 ## <a name="use-of-multiple-queues"></a>複数のキューの使用
 
-パーティション分割されたキューまたはトピックを使用できない場合、または予想される負荷をパーティション分割された&1; つのキューまたはトピックで処理できない場合、複数のメッセージング エンティティを使用する必要があります。 複数のエンティティを使用するときは、すべてのエンティティに同じクライアントを使用するのではなく、エンティティごとに専用のクライアントを作成します。
+パーティション分割されたキューまたはトピックを使用できない場合、または予想される負荷をパーティション分割された 1 つのキューまたはトピックで処理できない場合、複数のメッセージング エンティティを使用する必要があります。 複数のエンティティを使用するときは、すべてのエンティティに同じクライアントを使用するのではなく、エンティティごとに専用のクライアントを作成します。
 
 ## <a name="development-and-testing-features"></a>開発およびテストの機能
 
@@ -167,7 +170,7 @@ Service Bus には、[TopicDescription.EnableFilteringMessagesBeforePublishing][
 次のセクションでは、一般的なメッセージング シナリオについて説明し、好ましい Service Bus 設定について概要を説明します。 スループット レートは小 (1 メッセージ/秒未満)、中 (1 メッセージ/秒以上、100 メッセージ/秒未満)、高 (100 メッセージ/秒以上) に分類されます。 クライアントの数は小 (5 以下)、中 (5 より大きく 20 以下)、大 (20 より大きい) に分類されます。
 
 ### <a name="high-throughput-queue"></a>高スループット キュー
-目標:&1; つのキューのスループットを最大にします。 送信側と受信側の数は小です。
+目標: 1 つのキューのスループットを最大にします。 送信側と受信側の数は小です。
 
 * パフォーマンスと可用性の改善のために、パーティション分割されたキューを使用します。
 * キューへの全体的な送信レートを上げるには、複数のメッセージ ファクトリを使用して送信側を作成します。 送信側ごとに、非同期操作または複数のスレッドを使用します。
@@ -189,7 +192,7 @@ Service Bus には、[TopicDescription.EnableFilteringMessagesBeforePublishing][
 * クライアント側のバッチ処理を無効にします。 クライアントはすぐにメッセージを送信します。
 * バッチ処理ストア アクセスを無効にします。 サービスはメッセージをストアに直ちに書き込みます。
 * 1 つのクライアントを使用している場合、プリフェッチ数を受信側の処理レートの 20 倍に設定します。 複数のメッセージが同時にキューに到着すると、Service Bus クライアント プロトコルはそれらすべてを同時に送信します。 クライアントが次のメッセージを受信するとき、そのメッセージは既にローカル キャッシュにあります。 キャッシュは小にします。
-* 複数のクライアントを使用している場合、プリフェッチ数を 0 に設定します。 これにより、最初のクライアントが最初のメッセージを処理している間に、2 番目のクライアントは&2; 番目のメッセージを受信できます。
+* 複数のクライアントを使用している場合、プリフェッチ数を 0 に設定します。 これにより、最初のクライアントが最初のメッセージを処理している間に、2 番目のクライアントは 2 番目のメッセージを受信できます。
 
 ### <a name="queue-with-a-large-number-of-senders"></a>送信側の数が多いキュー
 目標: 送信側の数が多いキューまたはトピックのスループットを最大にします。 送信側はそれぞれ中程度のレートでメッセージを送信します。 受信側の数は小です。
@@ -199,7 +202,7 @@ Service Bus によって、メッセージング エンティティに最大 100
 スループットを最大化するには、次の手順を実行します。
 
 * パフォーマンスと可用性の改善のために、パーティション分割されたキューを使用します。
-* 各送信側が異なるプロセスに存在する場合、プロセスごとに&1; つのファクトリのみを使用します。
+* 各送信側が異なるプロセスに存在する場合、プロセスごとに 1 つのファクトリのみを使用します。
 * クライアント側のバッチ処理を活用するには非同期操作を使用します。
 * 20 ミリ秒の既定のバッチ処理間隔を使用して、Service Bus クライアント プロトコル伝送の数を減らします。
 * バッチ処理ストア アクセスを有効なままにします。 これにより、メッセージをキューまたはトピックに書き込む全体的なレートが上がります。
@@ -213,7 +216,7 @@ Service Bus によって、エンティティに最大 1000 件同時接続で�
 スループットを最大化するには、次の手順を実行します。
 
 * パフォーマンスと可用性の改善のために、パーティション分割されたキューを使用します。
-* 各受信側が異なるプロセスに存在する場合、プロセスごとに&1; つのファクトリのみを使用します。
+* 各受信側が異なるプロセスに存在する場合、プロセスごとに 1 つのファクトリのみを使用します。
 * 受信側は同期操作または非同期操作を使用できます。 各受信側の受信レートを中にすると、受信側のスループットは完了要求のクライアント側のバッチ処理の影響を受けません。
 * バッチ処理ストア アクセスを有効なままにします。 これにより、エンティティ全体の負荷が軽減されます。 これにより、メッセージをキューまたはトピックに書き込む全体的なレートも下がります。
 * プリフェッチ数を小さい値 (PrefetchCount = 10 など) に設定します。 これにより、他の受信側が大量のメッセージをキャッシュしている間に受信側がアイドル状態になることを防止できます。
@@ -252,12 +255,12 @@ Service Bus のパフォーマンスの最適化の詳細については、[パ�
 [MessagingFactory]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory
 [PeekLock]: /dotnet/api/microsoft.servicebus.messaging.receivemode
 [ReceiveAndDelete]: /dotnet/api/microsoft.servicebus.messaging.receivemode
-[BatchFlushInterval]: /dotnet/api/microsoft.servicebus.messaging.netmessagingtransportsettings#Microsoft_ServiceBus_Messaging_NetMessagingTransportSettings_BatchFlushInterval
-[EnableBatchedOperations]: /dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_EnableBatchedOperations
-[QueueClient.PrefetchCount]: /dotnet/api/microsoft.servicebus.messaging.queueclient#Microsoft_ServiceBus_Messaging_QueueClient_PrefetchCount
-[SubscriptionClient.PrefetchCount]: /dotnet/api/microsoft.servicebus.messaging.subscriptionclient#Microsoft_ServiceBus_Messaging_SubscriptionClient_PrefetchCount
-[ForcePersistence]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ForcePersistence
-[EnablePartitioning]: /dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_EnablePartitioning
+[BatchFlushInterval]: /dotnet/api/microsoft.servicebus.messaging.netmessagingtransportsettings.batchflushinterval#Microsoft_ServiceBus_Messaging_NetMessagingTransportSettings_BatchFlushInterval
+[EnableBatchedOperations]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.enablebatchedoperations#Microsoft_ServiceBus_Messaging_QueueDescription_EnableBatchedOperations
+[QueueClient.PrefetchCount]: /dotnet/api/microsoft.servicebus.messaging.queueclient.prefetchcount#Microsoft_ServiceBus_Messaging_QueueClient_PrefetchCount
+[SubscriptionClient.PrefetchCount]: /dotnet/api/microsoft.servicebus.messaging.subscriptionclient.prefetchcount#Microsoft_ServiceBus_Messaging_SubscriptionClient_PrefetchCount
+[ForcePersistence]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage.forcepersistence#Microsoft_ServiceBus_Messaging_BrokeredMessage_ForcePersistence
+[EnablePartitioning]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning#Microsoft_ServiceBus_Messaging_QueueDescription_EnablePartitioning
 [Partitioned messaging entities]: service-bus-partitioning.md
-[TopicDescription.EnableFilteringMessagesBeforePublishing]: /dotnet/api/microsoft.servicebus.messaging.topicdescription#Microsoft_ServiceBus_Messaging_TopicDescription_EnableFilteringMessagesBeforePublishing
+[TopicDescription.EnableFilteringMessagesBeforePublishing]: /dotnet/api/microsoft.servicebus.messaging.topicdescription.enablefilteringmessagesbeforepublishing#Microsoft_ServiceBus_Messaging_TopicDescription_EnableFilteringMessagesBeforePublishing
 

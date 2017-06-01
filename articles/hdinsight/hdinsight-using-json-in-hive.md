@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 04/26/2017
 ms.author: jgao
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 1f59558d69993907bc2c37eaba03ad23e5ef8543
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 034b61fdeb34c03bb4b58145f04138410e0d6fc6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -252,7 +252,7 @@ Hive コンソールの出力を次に示します。
 * [HDInsight で Hadoop と共に Hive と HiveQL を使用して Apache log4j サンプル ファイルを分析する](hdinsight-use-hive.md)
 * [HDInsight での Hive を使用したフライトの遅延データの分析](hdinsight-analyze-flight-delay-data.md)
 * [HDInsight での Hive を使用した Twitter データの分析](hdinsight-analyze-twitter-data.md)
-* [DocumentDB と HDInsight を使用した Hadoop ジョブの実行](../documentdb/documentdb-run-hadoop-with-hdinsight.md)
+* [Azure Cosmos DB と HDInsight を使用した Hadoop ジョブの実行](../documentdb/documentdb-run-hadoop-with-hdinsight.md)
 
 [hdinsight-python]: hdinsight-python.md
 

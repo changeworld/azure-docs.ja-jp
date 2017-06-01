@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/09/2017
+ms.date: 05/12/2017
 ms.author: tabrezm;tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 7111b02432a774e056b5a5e13f93ae7f11fb6848
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: 34c0f2f88e6af5a0f822ec116e7e2334e4e29e8d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/13/2017
 
 
 ---
 # <a name="microsoftcommonsection-ui-element"></a>Microsoft.Common.Section UI 要素
-見出しの下の 1 つまたは複数の要素をグループ化するコントロールです。
+見出しの下の 1 つまたは複数の要素をグループ化するコントロールです。 この要素は、[Azure マネージ アプリケーションを作成する](managed-application-publishing.md)ときに使用します。
 
 ## <a name="ui-sample"></a>UI サンプル
 ![Microsoft.Common.Section](./media/managed-application-elements/microsoft.common.section.png)
@@ -63,6 +63,7 @@ basics('section1').element1
 `Microsoft.Common.Section` という種類の要素には、それ自体の出力値はありません。
 
 ## <a name="next-steps"></a>次のステップ
+* マネージ アプリケーションの概要については、「[Azure マネージ アプリケーションの概要](managed-application-overview.md)」を参照してください。
 * UI 定義の作成の概要については、「[CreateUiDefinition の基本概念](managed-application-createuidefinition-overview.md)」を参照してください。
 * UI 要素の共通プロパティの説明については、「[CreateUiDefinition の要素](managed-application-createuidefinition-elements.md)」を参照してください。
 

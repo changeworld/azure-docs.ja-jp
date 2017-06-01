@@ -1,4 +1,5 @@
 ---
+
 title: "SaaS アプリと Azure Active Directory シングル サインオンを統合する | Microsoft Docs"
 description: "Azure Active Directory での SaaS アプリのシングル サインオン認証およびユーザー プロビジョニングによるアクセス管理の一元化を有効にします。 Azure Active Directory を SaaS アプリに統合する方法の概要について説明します。"
 services: active-directory
@@ -13,11 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/13/2017
+ms.date: 05/04/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: e4896c1a3adf76477899336f1ff1ee215cc7c9aa
-ms.openlocfilehash: a451ab54144222676e8063b764a6d22f44a690d7
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: b48488719d8bcef54e3742a338f0444db82f76d1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -30,7 +33,7 @@ ms.openlocfilehash: a451ab54144222676e8063b764a6d22f44a690d7
 
 [!INCLUDE [active-directory-sso-use-case-intro](../../includes/active-directory-sso-use-case-intro.md)]
 
-組織に展開するアプリのためのシングル サインオンのセットアップ作業では、Azure Active Directory (Azure AD) 内にある既存のディレクトリを使用します。 Microsoft Azure、Office 365、または Windows Intune を通じて取得した Azure AD ディレクトリを使用できます。 これらのうち&2; つ以上を所有している場合は、「 [Azure AD ディレクトリの管理](active-directory-administer.md) 」を参照して、どれを使用するかを判断してください。
+組織に展開するアプリのためのシングル サインオンのセットアップ作業では、Azure Active Directory (Azure AD) 内にある既存のディレクトリを使用します。 Microsoft Azure、Office 365、または Windows Intune を通じて取得した Azure AD ディレクトリを使用できます。 これらのうち 2 つ以上を所有している場合は、「 [Azure AD ディレクトリの管理](active-directory-administer.md) 」を参照して、どれを使用するかを判断してください。
 
 ## <a name="authentication"></a>認証
 プロトコル SAML 2.0、Ws-federation、または OpenID Connect をサポートしているアプリケーションは、Azure Active Directory を使用して署名証明書を信頼関係を確立できます。 詳細については、「 [フェデレーション シングル サインオンのための証明書の管理](active-directory-sso-certs.md)」を参照してください。
@@ -72,11 +75,5 @@ Azure AD には、組織内のエンド ユーザーにアプリケーション�
 
 Azure.com ライブラリには、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をはじめとして、ここで紹介した問題に関する詳細情報があります。
 
-## <a name="next-steps"></a>次のステップ
-* [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
+「[Azure Active Directory のアプリケーション構成の管理に関する記事の索引](active-directory-apps-index.md)」も是非ご覧ください。
 

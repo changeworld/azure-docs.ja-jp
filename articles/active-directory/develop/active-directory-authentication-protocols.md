@@ -14,10 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/27/2017
 ms.author: priyamo
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 51c6a8ae17821d4eb00bf26612bc6e1e434ebbd9
-ms.lasthandoff: 04/18/2017
+ms.custom: aaddev
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 27c582436bd57adfb5e8edb0f63c0f206db66c89
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -30,7 +32,8 @@ Azure Active Directory (Azure AD) では、最も広く使用されている認�
 * [フェデレーション メタデータ](active-directory-federation-metadata.md) - Azure AD が生成するメタデータ ドキュメントの検索と解釈の方法について説明します。
 * [Azure AD での OAuth 2.0](active-directory-protocols-oauth-code.md) - Azure AD での OAuth 2.0 の実装について説明します。
 * [OpenID Connect 1.0](active-directory-protocols-openid-connect-code.md) - 認証に OAuth 2.0 (承認プロトコル) を使用する方法について説明します。
-* [サービス間の呼び出し](active-directory-protocols-oauth-service-to-service.md) - サービス間の呼び出しのための OAuth 2.0 クライアント資格情報許可フローを使用する方法について説明します。
+* [クライアント資格情報を使用したサービス間の呼び出し](active-directory-protocols-oauth-service-to-service.md) - サービス間の呼び出しに OAuth 2.0 クライアント資格情報許可フローを使用する方法について説明します。
+* [On-Behalf-Of フローを使用したサービス間の呼び出し](active-directory-protocols-oauth-on-behalf-of.md) - サービス間の呼び出しに OAuth 2.0 On-Behalf-Of フローを使用する方法について説明します。
 * [SAML プロトコル リファレンス](active-directory-saml-protocol-reference.md) - Azure AD のシングル サインオンおよびシングル サインアウト SAML プロファイルについて説明します。
 
 ## <a name="see-also"></a>関連項目
@@ -39,5 +42,4 @@ Azure Active Directory (Azure AD) では、最も広く使用されている認�
 [認証に Azure AD を使用する](../../app-service-web/web-sites-authentication-authorization.md)
 
 [Active Directory のコード例](active-directory-code-samples.md)
-
 

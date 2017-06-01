@@ -15,9 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Identity
 ms.date: 02/07/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 28b5da6098316f8fbe84966e0dac88f5b7d2cb1d
-ms.openlocfilehash: 177c622171c4b0e1813c85d1c22bda87aeafce06
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: f824f80aaba2cd2de7590ecf4560bb5559a66e82
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -70,6 +72,64 @@ Azure AD でオブジェクトを作成して、ID を同期した後に、sourc
 * 別の Azure AD Connect サーバーをインストールする場合は、前に使用したのと同じ sourceAnchor 属性を選択する必要があります。 以前に DirSync を使用していて Azure AD Connect に移行する場合は、**objectGUID** を使用する必要があります。これは、DirSync で使用される属性です。
 * Azure AD へのオブジェクトのエクスポート後に sourceAnchor の値を変更すると、Azure AD Connect Sync からエラーがスローされます。問題を解決してソース ディレクトリで sourceAnchor を元に戻すまでは、そのオブジェクトをそれ以上変更できなくなります。
 
+## <a name="using-msds-consistencyguid-as-sourceanchor"></a>sourceAnchor としての msDS-ConsistencyGuid の使用
+Azure AD Connect (バージョン 1.1.486.0 以前) では既定で、objectGUID が sourceAnchor 属性として使用されます。 ObjectGUID はシステムによって生成されます。 その値を、オンプレミスの AD オブジェクトを作成するときに自分で指定することはできません。 「[sourceAnchor](#sourceanchor)」セクションで説明したように、シナリオによっては、sourceAnchor の値を自分で指定する必要があります。 そのシナリオが自分に当てはまる場合は、設定によって変更できる AD 属性 (msDS-ConsistencyGuid など) を sourceAnchor 属性として使用してください。
+
+Azure AD Connect (バージョン 1.1.524.0 以降) では、msDS-ConsistencyGuid 機能が sourceAnchor 属性として使用できるようになりました。 この機能を使用すると、次のことを行う同期規則が Azure AD Connect によって自動的に構成されます。
+
+1. ユーザー オブジェクトの場合、sourceAnchor 属性として msDS-ConsistencyGuid が使用されます。 その他の種類のオブジェクトでは、ObjectGUID が使用されます。
+
+2. msDS-ConsistencyGuid 属性の値が設定されていないオンプレミスの AD ユーザー オブジェクトについては、その objectGUID の値がオンプレミス Active Directory の msDS-ConsistencyGuid 属性に書き戻されます。 msDS-ConsistencyGuid 属性に値が設定された後、そのオブジェクトが Azure AD Connect によって Azure AD にエクスポートされます。
+
+>[!NOTE]
+> オンプレミス AD オブジェクトが Azure AD Connect にインポートされた (つまり、AD のコネクタ スペースにインポートされてメタバースに反映された) 後は、その sourceAnchor の値は変更できなくなります。 特定のオンプレミス AD オブジェクトに対して sourceAnchor の値を指定するには、そのオブジェクトが Azure AD Connect にインポートされる前に、その msDS-ConsistencyGuid 属性を構成してください。
+
+### <a name="how-to-enable-the-consistencyguid-feature"></a>ConsistencyGuid 機能を有効にする方法
+現在この機能を有効にできるのは、Azure AD Connect の新規インストール時に限られます。
+
+#### <a name="express-installation"></a>高速インストール
+Azure AD Connect を高速モードでインストールする場合、sourceAnchor 属性として最適な AD 属性が Azure AD Connect ウィザードによって自動的に決定されます。その際、以下のロジックが使用されます。
+
+* まず、以前の Azure AD Connect インストール (存在する場合) で sourceAnchor 属性として使用されていた AD 属性を、Azure AD Connect ウィザードが Azure AD テナントに照会して取得します。 この情報が判明した場合は、同じ AD 属性が使用されます。 この情報が判明しなかった場合は、以下の処理が実行されます。
+
+* オンプレミス Active Directory の msDS-ConsistencyGuid 属性の状態がウィザードによってチェックされます。 この属性がディレクトリ内のどのオブジェクトに対しても構成されていない場合、msDS-ConsistencyGuid が sourceAnchor 属性として使用されます。 ディレクトリ内の少なくとも 1 つのオブジェクトに対してこの属性が構成済みであった場合は、この属性が他のアプリケーションによって使用されており、sourceAnchor 属性としては適さないと判断されます。
+
+* その場合は、代わりに objectGUID が sourceAnchor 属性として使用されます。
+
+* sourceAnchor 属性が決まると、その情報が Azure AD テナントに格納されます。 この情報は、その後 Azure AD Connect のインストールに使用されます。
+
+  >[!NOTE]
+  > 使用されている sourceAnchor 属性についての情報を Azure AD テナントに格納するのは、比較的新しいバージョンの Azure AD Connect (1.1.524.0 以降) だけです。 それより前のバージョンの Azure AD Connect には該当しません。
+
+高速インストールが完了すると、ソース アンカー属性として選択された属性が、ウィザードから通知されます。
+
+![sourceAnchor として選択された AD 属性がウィザードから通知される](./media/active-directory-aadconnect-design-concepts/consistencyGuid-01.png)
+
+#### <a name="custom-installation"></a>カスタム インストール
+カスタム モードで Azure AD Connect をインストールする場合、Azure AD Connect ウィザードで sourceAnchor 属性を構成するときに 2 つのオプションが表示されます。
+
+![カスタム インストール - sourceAnchor 構成](./media/active-directory-aadconnect-design-concepts/consistencyGuid-02.png)
+
+| Setting | Description |
+| --- | --- |
+| ソース アンカーの管理を Azure に任せる | Azure AD に属性を選択させる場合は、このオプションを選択します。 このオプションを選択した場合、Azure AD Connect ウィザードで[高速インストール時に使用される sourceAnchor 属性の選択ロジック](#express-installation)が同じように適用されます。 高速インストールと同様、どの属性がソース アンカー属性として選択されたかは、カスタム インストールの完了後、ウィザードに表示されます。 |
+| 特有の属性 | sourceAnchor 属性として既存の AD 属性を指定する場合は、このオプションを選択します。 |
+
+### <a name="permission-required"></a>必要なアクセス許可
+この機能を利用するためには、オンプレミス Active Directory との同期に使用する AD DS アカウントに、オンプレミス Active Directory 内の msDS-ConsistencyGuid 属性への書き込みアクセス許可を付与する必要があります。
+
+### <a name="impact-on-ad-fs-or-third-party-federation-configuration"></a>AD FS の構成またはサードパーティのフェデレーションの構成に対する影響
+Azure AD Connect を使用してオンプレミス AD FS デプロイを管理している場合、同じ AD 属性を sourceAnchor として使用するように、要求規則が自動的に更新されます。 これによって、ADFS によって生成される ImmutableID 要求と Azure AD にエクスポートされる sourceAnchor 値との整合性が確実に保たれます。
+
+Azure AD Connect を使わずに AD FS を管理している場合や、サードパーティのフェデレーション サーバーを認証に使用している場合は、ImmutableID 要求の要求規則を手動で更新して、Azure AD にエクスポートされる sourceAnchor 値との整合性を確保する必要があります (「[AD FS の要求規則を変更する](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-management#modclaims)」を参照)。 インストールが完了するとウィザードから次の警告が返されます。
+
+![サード パーティのフェデレーション構成](./media/active-directory-aadconnect-design-concepts/consistencyGuid-03.png)
+
+### <a name="adding-new-directories-to-existing-deployment"></a>既存のデプロイに対する新しいディレクトリの追加
+既に ConsistencyGuid 機能を有効にして Azure AD Connect がデプロイされているとき、そのデプロイにもう 1 つディレクトリを追加する必要が生じたとしましょう。 ディレクトリを追加しようとすると、そのディレクトリ内の mSDS-ConsistencyGuid 属性の状態が Azure AD Connect ウィザードによってチェックされます。 ディレクトリ内の少なくとも 1 つのオブジェクトに対してこの属性が構成済みであった場合は、この属性が他のアプリケーションによって使用されていると判断され、以下の図のようなエラーが返されます。 この属性が、既存のアプリケーションで使用されていないことが確実である場合は、サポートに連絡してエラーの抑制方法を入手する必要があります。
+
+![既存のデプロイに対する新しいディレクトリの追加](./media/active-directory-aadconnect-design-concepts/consistencyGuid-04.png)
+
 ## <a name="azure-ad-sign-in"></a>Azure AD のサインイン
 オンプレミス ディレクトリを Azure AD に統合する場合、同期の設定がユーザーの認証方法に与える影響について理解することが重要です。 Azure AD では、userPrincipalName (UPN) がユーザーの認証に使用されます。 ただし、ユーザーを同期する場合は、userPrincipalName の値として使用される属性を慎重に選択する必要があります。
 
@@ -95,10 +155,5 @@ John は、contoso.com に属するユーザーです。 Azure AD ディレク�
 
 ## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2016
 ms.author: rachelap
-translationtype: Human Translation
-ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
-ms.openlocfilehash: 50630084a3df9bc1fed27efb41bc557d0e03916f
-ms.lasthandoff: 12/06/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 08a84ace63465e7c058add69a25687fe46c7ea07
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -45,8 +46,8 @@ Azure App Service には、 Free、Shared、Basic、Standard、および Premium
 
 これらの基本的な設定に加えて、以下の設定もあります。
 
-* **Secure Socket Layer (SSL)** 暗号化。 カスタム ドメイン名で SSL を使用するには、SSL 証明書を取得し、それを使用するように Web アプリを設定する必要があります。 「 [Azure App Service での Web アプリの HTTPS の有効化](web-sites-configure-ssl-certificate.md)」を参照してください。
-* **カスタム ドメイン名。**  Web アプリは、自動的に azurewebsites.net 下のサブドメインを持ちます。 contoso.com などのカスタム ドメイン名を関連付けることができます。 「 [Azure App Service でのカスタム ドメイン名の構成](web-sites-custom-domain-name.md)」を参照してください。
+* **Secure Socket Layer (SSL)** 暗号化。 カスタム ドメイン名で SSL を使用するには、SSL 証明書を取得し、それを使用するように Web アプリを設定する必要があります。 「 [Azure App Service での Web アプリの HTTPS の有効化](app-service-web-tutorial-custom-ssl.md)」を参照してください。
+* **カスタム ドメイン名。** Web アプリは、自動的に azurewebsites.net 下のサブドメインを持ちます。 contoso.com などのカスタム ドメイン名を関連付けることができます。 「 [Azure App Service でのカスタム ドメイン名の構成](app-service-web-tutorial-custom-domain.md)」を参照してください。
 
 言語固有の構成:
 
@@ -58,7 +59,7 @@ Web アプリの運用中、それが利用可能であり、ユーザー トラ
 
 ### <a name="monitoring"></a>監視
 * Azure ポータルにより、CPU 使用率やクライアント要求の数などの [パフォーマンス メトリックを追加する](web-sites-monitor.md) ことができます。
-* トラフィックに応じた [Web アプリのスケーリング](web-sites-scale.md)。 レベルに応じて、VM の数や VM インスタンスのサイズのスケーリングが可能です。  Standard および Premium レベルの場合には、自動スケーリングを設定することができます。その場合、Web アプリは、固定スケジュールに従って、または負荷に応じて、自動スケールされます。  
+* トラフィックに応じた [Web アプリのスケーリング](web-sites-scale.md)。 レベルに応じて、VM の数や VM インスタンスのサイズのスケーリングが可能です。 Standard および Premium レベルの場合には、自動スケーリングを設定することができます。その場合、Web アプリは、固定スケジュールに従って、または負荷に応じて、自動スケールされます。  
 
 ### <a name="backups"></a>バックアップ
 * Web アプリの [自動バックアップ](web-sites-backup.md) を設定します。 バックアップについては、 [このビデオ](https://azure.microsoft.com/documentation/videos/azure-websites-automatic-and-easy-backup/)を参照してください。

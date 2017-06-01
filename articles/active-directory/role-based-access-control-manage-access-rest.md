@@ -12,11 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 05/16/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 4547a805c1827a703bf0ef118387882e45c3f241
-ms.openlocfilehash: f63381e3349063ba9dd4ceb67d644c1d71d73369
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 6decf3e228bf31f9da4ea2bfa4d0ada0b2ffad61
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -26,7 +28,7 @@ ms.openlocfilehash: f63381e3349063ba9dd4ceb67d644c1d71d73369
 > * [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
 > * [REST API](role-based-access-control-manage-access-rest.md)
 
-Azure ポータルと Azure Resource Manager API のロールベースの Access Control (RBAC) を使用すると、サブスクリプションとリソースへのアクセスを詳細に管理できます。 この機能を使用すると、Active Directory ユーザー、グループ、サービス プリンシパルに特定のスコープで役割を割り当てて、アクセス権を付与できます。
+Azure Portal のロールベースのアクセス制御 (RBAC) と Azure Resource Manager API を使用すると、サブスクリプションとリソースへのアクセスをきめ細かいレベルで管理できます。 この機能を使用すると、Active Directory ユーザー、グループ、サービス プリンシパルに特定のスコープで役割を割り当てて、アクセス権を付与できます。
 
 ## <a name="list-all-role-assignments"></a>ロールの割り当てをすべて一覧表示する
 指定されたスコープとサブスコープにあるロールの割り当てをすべて一覧表示します。
@@ -393,7 +395,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 
 URI 内の次の項目を置換して要求をカスタマイズします。
 
-1. *{scope}* は、カスタム ロールの&1; つ目の *AssignableScope* に置き換えます。 各種レベルのスコープを指定する例を次に示します。
+1. *{scope}* は、カスタム ロールの 1 つ目の *AssignableScope* に置き換えます。 各種レベルのスコープを指定する例を次に示します。
 
    * サブスクリプション: /subscriptions/{subscription-id}  
    * リソース グループ: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
@@ -496,7 +498,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 
 URI 内の次の項目を置換して要求をカスタマイズします。
 
-1. *{scope}* は、カスタム ロールの&1; つ目の *AssignableScope* に置き換えます。 各種レベルのスコープを指定する例を次に示します。
+1. *{scope}* は、カスタム ロールの 1 つ目の *AssignableScope* に置き換えます。 各種レベルのスコープを指定する例を次に示します。
 
    * サブスクリプション: /subscriptions/{subscription-id}  
    * リソース グループ: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
@@ -650,9 +652,4 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 ## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

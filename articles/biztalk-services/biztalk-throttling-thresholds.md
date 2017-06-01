@@ -14,13 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
 ms.openlocfilehash: e14f42497d5ee0c89fe1fa0824431e2d82e6555a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 
 ---
 # <a name="biztalk-services-throttling"></a>BizTalk Services: 調整
+
+> [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
+
 Azure BizTalk Services は、メモリ使用率およびメッセージの同時処理数という 2 つの条件に基づいてサービスの調整を実装します。 このトピックでは、スロットルのしきい値を示し、スロットル条件が発生したときのランタイムの動作について説明します。
 
 ## <a name="throttling-thresholds"></a>調整のしきい値
@@ -65,10 +70,5 @@ Azure BizTalk Services が調整状態になると、次のことが発生しま
 * [BizTalk Services: [ダッシュボード]、[監視]、および [スケール] タブ](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
 * [BizTalk サービス: バックアップと復元に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
 * [BizTalk サービス: 発行者名および発行者キー](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

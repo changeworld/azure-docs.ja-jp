@@ -1,5 +1,5 @@
 ---
-title: "Azure Data Lake Analytics ジョブの U-SQL ユーザー定義演算子の開発 | Microsoft Docs"
+title: "U-SQL ユーザー定義演算子 (UDO) の開発 | Microsoft Docs"
 description: "Data Lake Analytics ジョブで使用および再使用されるユーザー定義演算子の開発方法について説明します。 "
 services: data-lake-analytics
 documentationcenter: 
@@ -14,24 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: ef0fa131cc665df68e13ee7be58330f571f3ac90
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: ef310a094667f390addd5d0df3dc68d67100d2f4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
-# <a name="develop-u-sql-user-defined-operators-for-azure-data-lake-analytics-jobs"></a>Azure Data Lake Analytics ジョブの U-SQL ユーザー定義演算子の開発
-Data Lake Analytics ジョブで使用および再使用されるユーザー定義演算子の開発方法について説明します。 国名を変換するカスタム演算子を開発します。
+# <a name="develop-u-sql-user-defined-operators-udos"></a>U-SQL ユーザー定義演算子 (UDO) の開発
+U-SQL ジョブ内のデータを処理するユーザー定義演算子を開発する方法について説明します。
 
 U-SQL の汎用アセンブリを開発する手順については、「[Develop U-SQL assemblies for Azure Data Lake Analytics jobs (Azure Data Lake Analytics ジョブの U-SQL アセンブリの開発)](data-lake-analytics-u-sql-develop-assemblies.md)」を参照してください
-
-## <a name="prerequisites"></a>前提条件
-* Visual Studio 2015、Visual Studio 2013 update 4、または Visual Studio 2012 (Visual C++ インストール済み)。
-* Microsoft Azure SDK for .NET バージョン 2.5 以上。  Web Platform Installer を使用してインストールします。
-* Data Lake Analytics アカウント。  「[Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」を参照してください。
-* 「 [Azure Data Lake Analytics U-SQL Studio の使用](data-lake-analytics-u-sql-get-started.md) 」チュートリアルを読み進める。
-* Azure に接続します。
-* ソース データのアップロード。[Azure Data Lake Analytics U-SQL Studio の使用](data-lake-analytics-u-sql-get-started.md)に関するページを参照してください。 
 
 ## <a name="define-and-use-user-defined-operator-in-u-sql"></a>U-SQL でのユーザー定義演算子の定義と使用
 **U-SQL ジョブを作成して送信するには**
@@ -99,7 +93,7 @@ U-SQL の汎用アセンブリを開発する手順については、「[Develop
                 }
             }
         }
-6. Script.usql を開き、次の U-SQL スクリプトを貼り付けます。
+6. **Script.usql** を開き、次の U-SQL スクリプトを貼り付けます。
 
         @drivers =
             EXTRACT UserID      string,
@@ -128,13 +122,14 @@ U-SQL の汎用アセンブリを開発する手順については、「[Develop
         OUTPUT @drivers_CountryName
             TO "/Samples/Outputs/Drivers.csv"
             USING Outputters.Csv(Encoding.Unicode);
-7. **ソリューション エクスプローラー**で **Script.usql** を右クリックし、**[スクリプトのビルド]** をクリックします。
-8. **ソリューション エクスプローラー**で **Script.usql** を右クリックし、**[スクリプトの送信]** をクリックします。
-9. Azure サブスクリプションに接続していない場合は、Azure アカウント資格情報の入力を求められます。
-10. **[Submit]**をクリックします。 送信が完了すると、[結果] ウィンドウに送信結果とジョブのリンクが示されます。
-11. 最新のジョブの状態を表示して、画面を更新するには、[更新] をクリックする必要があります。
+7. Data Lake Analytics アカウント、データベース、スキーマを指定します。
+8. **ソリューション エクスプローラー**で **Script.usql** を右クリックし、**[スクリプトのビルド]** をクリックします。
+9. **ソリューション エクスプローラー**で **Script.usql** を右クリックし、**[スクリプトの送信]** をクリックします。
+10. Azure サブスクリプションに接続していない場合は、Azure アカウント資格情報の入力を求められます。
+11. **[Submit]**をクリックします。 送信が完了すると、[結果] ウィンドウに送信結果とジョブのリンクが示されます。
+12. 最新のジョブの状態を表示して、画面を更新するには、**[更新]** ボタンをクリックします。
 
-**ジョブの出力を表示するには**
+**出力を表示するには**
 
 1. **サーバー エクスプローラー**で、**[Azure]**、**[Data Lake Analytics]**、Data Lake Analytics アカウント、**[ストレージ アカウント]** の順に展開し、既定のストレージを右クリックしてから **[エクスプローラー]** をクリックします。
 2. [サンプル]、[出力] の順にクリックしてから、 **Drivers.csv**をダブルクリックします。
@@ -143,9 +138,4 @@ U-SQL の汎用アセンブリを開発する手順については、「[Develop
 * [PowerShell で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-powershell.md)
 * [Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
 * [U-SQL アプリケーションを開発するための Data Lake Tools for Visual Studio の使用](data-lake-analytics-data-lake-tools-get-started.md)
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

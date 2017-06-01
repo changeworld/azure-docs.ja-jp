@@ -15,31 +15,30 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 04/14/2017
 ms.author: owend
-translationtype: Human Translation
-ms.sourcegitcommit: a287ebd634a9305229424d0efea266146f88a952
-ms.openlocfilehash: 234032630cb3911deb7c7d32cfc4963ad6aee43f
-ms.lasthandoff: 01/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: aebabd15e781e726def545960ce3c1ec7674c530
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/05/2017
 
 
 ---
 # <a name="datasource-connections"></a>データ ソースの接続
 Azure Analysis Services のデータ モデルでは、特定のデータ ソースに接続するときに異なるデータ プロバイダーが必要になる場合があります。 場合によっては、SQL Server Native Client (SQLNCLI11) などのネイティブ プロバイダーを使ってデータ ソースに接続する表形式モデルがエラーを返すことがあります。
 
-たとえば、Azure SQL Database などのクラウド データ ソースに接続するメモリ内データ モデルまたは直接クエリ データ モデルがある場合、SQLOLEDB 以外のネイティブ プロバイダーを使うと、**"The provider 'SQLNCLI11.1' is not registered"** (プロバイダー 'SQLNCLI11.1' は登録されていません) というエラー メッセージが表示される場合があります。
-
-または、オンプレミスのデータ ソースに接続する直接クエリ モデルがある場合、ネイティブ プロバイダーを使うと、**"Error creating OLE DB row set.Incorrect syntax near 'LIMIT'"** (OLE DB 行セットの作成でエラーが発生しました。'LIMIT' の周辺に正しくない構文があります") というエラー メッセージが表示される場合があります。
+Azure SQL Database などのクラウド データ ソースに接続するメモリ内データ モデルまたは DirectQuery データ モデルがある場合、SQLOLEDB 以外のネイティブ プロバイダーを使うと、**"The provider 'SQLNCLI11.1' is not registered"** (プロバイダー 'SQLNCLI11.1' は登録されていません) というエラー メッセージが表示される場合があります。 または、オンプレミスのデータ ソースに接続する直接クエリ モデルがある場合、ネイティブ プロバイダーを使うと、**"Error creating OLE DB row set.Incorrect syntax near 'LIMIT'"** (OLE DB 行セットの作成でエラーが発生しました。'LIMIT' の周辺に正しくない構文があります") というエラー メッセージが表示される場合があります。
 
 ## <a name="data-source-providers"></a>データ ソース プロバイダー
-クラウドまたはオンプレミスのデータ ソースに接続する場合、メモリ内データ モデルまたは直接クエリ データ モデルに対しては次のデータ ソース プロバイダーがサポートされます。
+クラウドまたはオンプレミスのデータ ソースに接続する場合、メモリ内データ モデルまたは DirectQuery データ モデルに対しては次のデータ ソース プロバイダーがサポートされます。
 
 ### <a name="cloud"></a>クラウド
-| **データ ソース** | **メモリ内** | **直接クエリ** |
+| **データ ソース** | **メモリ内** | **DirectQuery** |
 |  --- | --- | --- |
 | Azure SQL Data Warehouse |SQL Server 用の .NET Framework データ プロバイダー |SQL Server 用の .NET Framework データ プロバイダー |
 | Azure SQL Database |SQL Server 用の .NET Framework データ プロバイダー |SQL Server 用の .NET Framework データ プロバイダー | |
 
 ### <a name="on-premises-via-gateway"></a>オンプレミス (ゲートウェイ経由)
-|**データ ソース** | **メモリ内** | **直接クエリ** |
+|**データ ソース** | **メモリ内** | **DirectQuery** |
 |  --- | --- | --- |
 | SQL Server |SQL Server Native Client 11.0 |SQL Server 用の .NET Framework データ プロバイダー |
 | SQL Server |Microsoft OLE DB Provider for SQL Server |SQL Server 用の .NET Framework データ プロバイダー | |
@@ -76,6 +75,7 @@ Azure Analysis Services のデータ モデルでは、特定のデータ ソー
 * SQL 認証を使っている場合、権限借用にはサービス アカウントを使う必要があります。
 
 ## <a name="next-steps"></a>次のステップ
-オンプレミスのデータ ソースがある場合は、[オンプレミスのゲートウェイ](analysis-services-gateway.md)をインストールする必要があります。 SSDT または SSMS でのサーバーの管理について詳しくは、[サーバーの管理に関する記事](analysis-services-manage.md)をご覧ください。
+オンプレミスのデータ ソースがある場合は、[オンプレミスのゲートウェイ](analysis-services-gateway.md)をインストールする必要があります。   
+SSDT または SSMS でのサーバーの管理について詳しくは、[サーバーの管理に関する記事](analysis-services-manage.md)をご覧ください。
 
 

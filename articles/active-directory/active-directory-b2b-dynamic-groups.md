@@ -13,12 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 04/12/2017
+ms.date: 05/04/2017
 ms.author: sasubram
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 9519719a63387cb8c341c72e262c2aeaacc3cd4a
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: a694d01281cfdc4559f779f18b92d0412d59cf45
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.lasthandoff: 04/12/2017
 ## <a name="what-are-dynamic-groups"></a>動的グループとは
 Azure Active Directory (Azure AD) のセキュリティ グループ メンバーシップの動的な構成は、[Azure Portal](https://portal.azure.com) で利用できます。 管理者は、ユーザー属性 (userType、部門、国など) に基づいて、Azure Active Directory で作成されたグループのメンバーを設定するためのルールを指定できます。 このルールにより、メンバーは属性の変化に基づいて自動的にセキュリティ グループに追加されたり、セキュリティ グループから削除されたりします。 これらのグループを使用すると、アプリケーションやクラウド リソース (SharePoint サイトやドキュメントなど) へのアクセスを付与したり、メンバーにライセンスを割り当てたりすることができます。 動的なグループの詳細については、「[Azure Active Directory の専用グループ](active-directory-accessmanagement-dedicated-groups.md)」を参照してください。
 
-AAD Premium P1 または P2 サブスクリプションでは、Azure Portal で Azure Active Directory グループに対してより複雑な属性ベースの動的メンバーシップを利用できる高度なルールを作成できるようになりました。 高度なルールの作成の詳細については、「[属性を使用して Azure Active Directory プレビューのグループ メンバーシップの高度なルールを作成する](active-directory-groups-dynamic-membership-azure-portal.md)」を参照してください。
+AAD Premium P1 または P2 サブスクリプションでは、Azure Portal で Azure Active Directory グループに対してより複雑な属性ベースの動的メンバーシップを利用できる高度なルールを作成できるようになりました。 高度なルールの作成の詳細については、「[属性を使用して Azure Active Directory のグループ メンバーシップの高度なルールを作成する](active-directory-groups-dynamic-membership-azure-portal.md)」を参照してください。
 
 ## <a name="what-are-the-built-in-dynamic-groups"></a>組み込みの動的グループとは
 **[すべてのユーザー]** 動的グループを使用すると、テナント管理者は、テナントのすべてのユーザーを含むグループをワンクリックで作成できます。 既定では、**[すべてのユーザー]** グループには、メンバーとゲストを含む、ディレクトリ内のすべてのユーザーが含まれます。

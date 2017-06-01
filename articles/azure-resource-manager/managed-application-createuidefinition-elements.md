@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/09/2017
+ms.date: 05/12/2017
 ms.author: tabrezm;tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 84f5d5cb1696a911e8c5ef197f22f16d6341bfc8
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: 635e44a7ec6f9244f5fe75eb5ad947cdd8ae59a4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/13/2017
 
 
 ---
 # <a name="createuidefinition-elements"></a>CreateUiDefinition の要素
-この記事では、CreateUiDefinition でサポートされるすべての要素のスキーマとプロパティについて説明します。 ほとんどの要素のスキーマは、次のようになっています。
+この記事では、CreateUiDefinition でサポートされるすべての要素のスキーマとプロパティについて説明します。 これらの要素は、[Azure マネージ アプリケーションを作成する](managed-application-publishing.md)ときに使用します。 ほとんどの要素のスキーマは、次のようになっています。
 
 ```json
 {
@@ -36,7 +36,7 @@ ms.lasthandoff: 05/11/2017
   "visible": true
 }
 ```
-| プロパティ | 必須 | Description |
+| プロパティ | 必須 | 説明 |
 | -------- | -------- | ----------- |
 | name | あり | 要素の特定のインスタンスを参照するための内部的な識別子。 要素名が最もよく使用されるのは `outputs` で、指定した要素の出力値がテンプレートのパラメーターにマッピングされます。 これを使って要素の出力値を別の要素の `defaultValue` にバインドすることもできます。 |
 | type | あり | レンダリングする要素の UI コントロール。 サポートされる型の一覧については、「[要素](#elements)」を参照してください。 |
@@ -66,5 +66,6 @@ ms.lasthandoff: 05/11/2017
 - [Microsoft.Storage.StorageAccountSelector](managed-application-microsoft-storage-storageaccountselector.md)
 
 ## <a name="next-steps"></a>次のステップ
+* マネージ アプリケーションの概要については、「[Azure マネージ アプリケーションの概要](managed-application-overview.md)」を参照してください。
 * UI 定義の作成の概要については、「[CreateUiDefinition の基本概念](managed-application-createuidefinition-overview.md)」を参照してください。
 

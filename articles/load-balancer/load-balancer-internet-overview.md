@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
-ms.openlocfilehash: 2684e09daa3554a5768a96ae18757a669e221efe
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 1a0f69e6530f1ab3734e1a44e5be056aacb0fff0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 ---
 
@@ -29,7 +30,7 @@ Azure Load Balancer は、着信トラフィックのパブリック IP アド�
 
 *Servicedefinition.csdef* ファイルにはエンドポイント構成が含まれており、Web ロールまたは worker ロールのデプロイ用の複数のロール インスタンスがある場合は、ロード バランサーをセットアップできます。 インスタンスをクラウド デプロイメントに追加するには、サービス構成ファイル (.csfg) でインスタンス数を変更します。
 
-次の図は、暗号化された Web トラフィック用の負荷分散されたエンドポイントを示しています。このエンドポイントは、パブリックとプライベートの TCP ポートが 80 である 3 台の仮想マシン間で共有されています。 この 3 台の仮想マシンは、1 つの負荷分散セット内にあります。
+次の図は、Web トラフィック用の負荷分散されたエンドポイントを示しています。このエンドポイントは、パブリックとプライベートの TCP ポートが 80 である 3 台の仮想マシン間で共有されています。 この 3 台の仮想マシンは、1 つの負荷分散セット内にあります。
 
 ![パブリックのロード バランサーの例](./media/load-balancer-internet-overview/IC727496.png))
 

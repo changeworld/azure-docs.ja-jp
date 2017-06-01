@@ -13,9 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/30/2016
 ms.author: jejiang
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 98b04d28d1b905dad19ad6cf608733c6554f01cf
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: c49f80f8dcd330d7f46726241e7178351b9cc28f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -32,8 +34,8 @@ U-SQL により、C#、VB.Net、F# など、.NET 言語の独自のカスタム 
 こうした欠点に対処するには、分離コードをアセンブリに変換し、そのアセンブリを Data Lake Analytics カタログに登録します。
 
 ## <a name="prerequisites"></a>前提条件
-* Visual Studio 2015、Visual Studio 2013 update 4、または Visual Studio 2012 (Visual C++ インストール済み)。
-* Microsoft Azure SDK for .NET バージョン 2.5 以上。  Web Platform Installer を使用してインストールします。
+* Visual Studio 2017、Visual Studio 2015、Visual Studio 2013 Update 4、または Visual Studio 2012 (Visual C++ インストール済み)
+* Microsoft Azure SDK for .NET バージョン 2.5 以上。  Web Platform Installer または Visual Studio Installer を使用してインストールします
 * Data Lake Analytics アカウント。  「[Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」を参照してください。
 * 「 [Azure Data Lake Analytics U-SQL Studio の使用](data-lake-analytics-u-sql-get-started.md) 」チュートリアルを読み進める。
 * Azure に接続します。
@@ -79,8 +81,3 @@ U-SQL により、C#、VB.Net、F# など、.NET 言語の独自のカスタム 
 * [U-SQL アプリケーションを開発するための Data Lake Tools for Visual Studio の使用](data-lake-analytics-data-lake-tools-get-started.md)
 * [Data Lake Analytics(U-SQL) カタログの使用](data-lake-analytics-use-u-sql-catalog.md)
 * [Azure Data Lake Tools for Visual Studio Code の使用](data-lake-analytics-data-lake-tools-for-vscode.md)
-
-
-<!--HONumber=Dec16_HO2-->
-
-
