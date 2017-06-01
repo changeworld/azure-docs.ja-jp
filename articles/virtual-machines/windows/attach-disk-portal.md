@@ -1,6 +1,6 @@
 ---
-title: "データ ディスクを Windows VM に接続する | Microsoft Docs"
-description: "Azure ポータルでリソース マネージャー デプロイ モデルを使用して、新規または既存のデータ ディスクを Windows VM に接続する方法。"
+title: "管理されていないデータ ディスクを Windows VM に接続する - Azure | Microsoft Docs"
+description: "Azure Portal で Resource Manager デプロイ モデルを使用して、管理されていない新規または既存のデータ ディスクを Windows VM に接続する方法。"
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -13,70 +13,72 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2016
+ms.date: 05/09/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 3a3dce590013187e4136a65a47a10c9532321b1e
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: d02f92a8809efd6f58312af8cb40739299ea28f6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="how-to-attach-a-data-disk-to-a-windows-vm-in-the-azure-portal"></a>Azure ポータルで Windows VM にデータ ディスクを接続する方法
-この記事では、Azure ポータルを使用して新しいディスクと既存のディスクの両方を Windows 仮想マシンに接続する方法について示します。 [Azure ポータルで Linux VM にデータ ディスクを接続する](../linux/attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)こともできます。 接続する前に、次のヒントを確認してください。
+# <a name="how-to-attach-an-unmanaged-data-disk-to-a-windows-vm-in-the-azure-portal"></a>Azure Portal で Windows VM に管理されていないデータ ディスクを接続する方法
 
-* 仮想マシンのサイズによって、接続できるデータ ディスク数は変わります。 詳細については、「 [仮想マシンのサイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+この記事では、管理されていない新規と既存の両方のディスクを Azure Portal で Windows 仮想マシンに接続する方法について説明します。 [PowerShell を使用してデータ ディスクを接続する](./attach-disk-ps.md)こともできます。 接続する前に、次のヒントを確認してください。
+
+* 仮想マシンのサイズによって、接続できるデータ ディスク数は変わります。 詳細については、「 [仮想マシンのサイズ](sizes.md)」を参照してください。
 * Premium Storage を使用するには、DS シリーズまたは GS シリーズの仮想マシンが必要です。 これらの仮想マシンでは、Premium および Standard のストレージ アカウントのディスクを使用できます。 Premium Storage は特定のリージョンで使用できます。 詳細については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../storage/storage-premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 * 新しいディスクの場合、接続時に Azure で自動的に作成されるので、最初に作成する必要はありません。
-* 既存のディスクの場合、Azure ストレージ アカウントで .vhd ファイルを使用できる必要があります。 別の仮想マシンに接続されていない場合は既存の .vhd を使用できます。そうでなければ、独自の .vhd ファイルをストレージ アカウントにアップロードできます。
+
 
 [Powershell を使用してデータ ディスクを接続する](attach-disk-ps.md)こともできます。
 
 
-
 ## <a name="find-the-virtual-machine"></a>仮想マシンの検索
 1. [Azure ポータル](https://portal.azure.com/)にサインインします。
-2. ハブ メニューで **[Virtual Machines]**をクリックします。
+2. 左側のメニューの **[仮想マシン]** をクリックします。
 3. 一覧から仮想マシンを選択します。
-4. [仮想マシン] ブレードにアクセスし、**[要点]** で、**[ディスク]** の順にクリックします。
+4. [仮想マシン] ブレードで、**[ディスク]** をクリックします。
    
-    ![ディスク設定を開く](./media/attach-disk-portal/find-disk-settings.png)
-
 次の手順に従って、[新しいディスク](#option-1-attach-a-new-disk)または[既存のディスク](#option-2-attach-an-existing-disk)を接続します。
 
 ## <a name="option-1-attach-and-initialize-a-new-disk"></a>オプション 1: 新しいディスクを接続し、初期化する
-1. **[ディスク]** ブレードの **[新しいディスクの接続]** をクリックします。
-2. 既定の設定を確認し、必要に応じて更新して、 **[OK]**をクリックします。
+1. **[ディスク]** ブレードで、**[+ Add data disk]** (データ ディスクの追加) をクリックします。
+2. **[Attach managed disk] (管理ディスクの接続)** ブレードで、**[名前]** にディスクの名前を入力し、**[ソースの種類]** で **[新規 (空のディスク)]** を選択します。
+3. **ストレージ コンテナー** の下にある **[参照]** ボタンをクリックし、新しい VHD を格納するストレージ アカウントとコンテナーまで移動して、**[選択]** をクリックします。 
+  
+   ![ディスク設定を確認する](./media/attach-disk-portal/attach-empty-unmanaged.png)
    
-   ![ディスク設定を確認する](./media/attach-disk-portal/attach-new.png)
-3. Azure でディスクが作成され、仮想マシンに接続されると、仮想マシンのディスク設定の **[データ ディスク]**に新しいディスクが表示されます。
+3. データ ディスクの設定が完了したら、**[OK]** をクリックします。
+4. **[ディスク]** ブレードに戻り、**[保存]** をクリックしてディスクを VM の構成に追加します。
+
 
 ### <a name="initialize-a-new-data-disk"></a>新しいデータ ディスクの初期化
 
 1. 仮想マシンへの接続 手順については、「 [Windows が実行されている Azure 仮想マシンに接続してログオンする方法](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
-2. 仮想マシンにログオンした後、 **サーバー マネージャー**を開きます。 左側のウィンドウで、 **[ファイル サービスと記憶域サービス]**を選択します。
-   
-    ![サーバー マネージャーを開く](./media/attach-disk-portal/fileandstorageservices.png)
-3. メニューを展開し、 **[ディスク]**を選択します。
-4. **[ディスク]** セクションにディスクが一覧表示されます。 普通、disk 0、disk 1、disk 2 といった名前です。 disk 0 はオペレーティング システム ディスク、disk 1 は一時ディスク、disk 2 は VM にアタッチしたデータ ディスクです。 新しいデータ ディスクのパーティションは **[不明]**と表示されます。 ディスクを右クリックし、 **[初期化]**を選択します。
-5. ディスクの初期化時にすべてのデータが消去されることが通知されます。 **[はい]** をクリックして警告を了解し、ディスクを初期化します。 完了すると、パーティションは **[GPT]**と表示されます。 もう一度ディスクを右クリックし、 **[新しいボリューム]**を選択します。
-6. 既定の値を使用してウィザードを完了します。 ウィザードが終了すると、 **[ボリューム]** セクションに新しいボリュームが表示されます。 ディスクがオンラインになり、データを格納できるようになります。
-
-    ![ボリュームの初期化に成功](./media/attach-disk-portal/newvolumecreated.png)
+1. VM で **[スタート]** メニューをクリックし、「**diskmgmt.msc**」と入力して **Enter** キーを押します。 ディスクの管理スナップインが開始されます。
+2. 新しい未初期化のディスクがディスクの管理によって認識され、[ディスクの初期化] ウィンドウが表示されます。
+3. 新しいディスクが選択されていることを確認し、**[OK]** をクリックしてディスクを初期化します。
+4. 新しいディスクが、**未割り当て**として表示されます。 ディスクの任意の場所を右クリックし、**[新しいシンプル ボリューム]** を選択します。 **[新しいシンプル ボリューム ウィザード]** が起動します。
+5. すべての設定を既定値のままウィザードを進め、完了したら **[完了]** を選択します。
+6. ディスクの管理を閉じます。
+7. 新しいディスクは使用する前にフォーマットする必要がある、というポップアップが表示されます。 **[ディスクのフォーマット]** をクリックします。
+8. **[新しいディスクのフォーマット]** ダイアログで設定を確認し、**[開始]** をクリックします。
+9. ディスクをフォーマットするとデータがすべて削除されることを警告するメッセージが表示されます。**[OK]** をクリックします。
+10. フォーマットが完了したら、**[OK]** をクリックします。
 
 
 ## <a name="option-2-attach-an-existing-disk"></a>オプション 2: 既存のディスクを接続する
-1. **[ディスク]** ブレードの **[既存のディスクの接続]** をクリックします。
-2. **[既存のディスクの接続]** の **[VHD ファイル]** をクリックします。
-   
-   ![既存のディスクを接続する](./media/attach-disk-portal/attach-existing.png)
-3. **[ストレージ アカウント]**で、アカウントと、.vhd ファイルが格納されているコンテナーを選択します。
-   
-   ![VHD の場所を検索する](./media/attach-disk-portal/find-storage-container.png)
-4. .vhd ファイルを選択します。
-5. **[既存のディスクの接続]** の **[VHD ファイル]** に、選択したファイルが表示されます。 **[OK]**をクリックします。
-6. Azure で仮想マシンにディスクが接続されると、仮想マシンのディスク設定の **[データ ディスク]**にそのディスクが表示されます。
+1. **[ディスク]** ブレードで、**[+ Add data disk]** (データ ディスクの追加) をクリックします。
+2. **[管理されていないディスクの接続]** ブレードで、**[ソースの種類]** として **[既存の BLOB]** を選択します。
 
+    ![ディスク設定を確認する](./media/attach-disk-portal/attach-existing-unmanaged.png)
+
+    3. **[参照]** をクリックして、既存の VHD が配置されているストレージ アカウントとコンテナーに移動します。 VHD をクリックし、**[選択]** をクリックします。
+4. **[管理されていないディスクの接続]** ブレードで **[OK]** をクリックします。
+5. **[ディスク]** ブレードで、**[保存]** をクリックしてディスクを VM の構成に追加します。
+   
 
 
 ## <a name="use-trim-with-standard-storage"></a>Standard Storage での TRIM の使用

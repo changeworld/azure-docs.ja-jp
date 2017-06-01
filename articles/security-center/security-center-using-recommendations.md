@@ -1,6 +1,6 @@
 ---
 title: "Azure Security Center の推奨事項を使用してセキュリティを強化する |Microsoft Docs"
-description: " セキュリティ ポリシーと Azure Security Center の推奨事項を使用してセキュリティ攻撃を軽減する方法を説明します. "
+description: " セキュリティ ポリシーと Azure Security Center の推奨事項を使用して、セキュリティ攻撃を軽減する方法を説明します。 "
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/11/2017
+ms.date: 05/08/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 313801fc3b845cd30506b1a26918660e77d2a986
-ms.openlocfilehash: 67095e0d8752fb3a2bca692f65e77cde5fd1a966
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 36dd149812a0e8c8ca8ef2bac09c1920ec15d3ba
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -75,10 +77,10 @@ Jeff は [Azure Portal](https://azure.microsoft.com/features/azure-portal/) に�
 
 1. Jeff は **[推奨事項]** タイルを選択して、**[推奨事項]** ブレードを開きます。
    ![[推奨事項] タイルを選択する][3]
-2. Jeff は、推奨事項の一覧を確認します。 Security Center によって優先度順 (優先度最高から最低の順) に推奨事項の一覧が提供されていることを確認します。 そこで、一覧の優先度が一番高い推奨事項に対処することにします。 **[推奨事項]** ブレードで、**[Endpoint Protection のインストール ]** を選択します。
+2. Jeff は、推奨事項の一覧を確認します。 Security Center によって優先度順 (優先度最高から最低の順) に推奨事項の一覧が提供されていることを確認します。 一覧にある優先度の高い推奨事項から取り組むことを判断します。 **[推奨事項]** ブレードで、**[Endpoint Protection のインストール ]** を選択します。
 3. **[Endpoint Protection をインストールします]** ブレードが開き、マルウェア対策が有効になっていない VM の一覧が表示されます。 Jeff は VM の一覧を確認し、すべての VM を選択して、**[Install on 3 VMs]** (3 台の VM にインストール) を選択します。
    ![[Endpoint Protection のインストール]][4]
-4. **[Select Endpoint Protection]** (Endpoint Protection の選択) ブレードに&2; つのマルウェア対策ソリューションが表示されます。 Jeff は **[Microsoft マルウェア対策]** ソリューションを選択します。
+4. **[Select Endpoint Protection]** (Endpoint Protection の選択) ブレードに 2 つのマルウェア対策ソリューションが表示されます。 Jeff は **[Microsoft マルウェア対策]** ソリューションを選択します。
 5. マルウェア対策ソリューションに関する追加情報が表示されます。 Jeff は **[作成]** を選択します。
    ![[Microsoft マルウェア対策]][5]
 6. Jeff は **[インストール]** ブレードで必要な構成設定を入力して、**[OK]** を選択します。
@@ -100,7 +102,7 @@ Jeff は、[Microsoft Security Response Center (MSRC)](../security/azure-securit
 4. Jeff は、重大度が高い警告に関する電子メールを受信するために、**[Send me emails about alerts]** (警告に関する電子メールを受け取る) オプションもオンにします。
 5. Jeff は、**[OK]** を選択して、セキュリティ連絡先の情報を Contoso のサブスクリプションに適用します。
 
-Jeff は最後に、優先度の低い推奨事項 **[Remediate OS vulnerabilities]** (OS の修復の脆弱性) を確認し、この推奨事項は適用可能でないと判断します。 推奨事項を無視したいと考えます。 Jeff は、右側に表示される&3; つのドットを選択し、**[閉じる]** を選択します。
+Jeff は最後に、優先度の低い推奨事項 **[Remediate OS vulnerabilities]** (OS の修復の脆弱性) を確認し、この推奨事項は適用可能でないと判断します。 推奨事項を無視したいと考えます。 Jeff は、右側に表示される 3 つのドットを選択し、**[閉じる]** を選択します。
    ![推奨事項を閉じる][7]
 
 ## <a name="conclusion"></a>まとめ
@@ -114,9 +116,4 @@ Security Center の推奨事項を監視することにより、攻撃が行わ�
 [5]:./media/security-center-using-recommendations/microsoft-antimalware.png
 [6]: ./media/security-center-using-recommendations/provide-security-contact-details.png
 [7]: ./media/security-center-using-recommendations/dismiss-recommendation.png
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

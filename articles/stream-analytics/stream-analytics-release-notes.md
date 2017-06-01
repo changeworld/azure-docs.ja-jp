@@ -15,10 +15,10 @@ ms.workload: data-services
 ms.date: 05/03/2017
 ms.author: jeffstok
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 05c5476cbfd616ce47d6d93627c6e7dd4d8a0d6f
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 6a5ec66172e7920a89ff8c0592224f01f19c9e41
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -85,7 +85,7 @@ ms.lasthandoff: 05/03/2017
 | --- | --- |
 | Azure IoT Suite のパブリック プレビュー |Stream Analytics は、Azure IoT Suite のパブリック プレビューに含まれています。 |
 | Azure ポータルの統合 |Microsoft Azure 管理ポータルで引き続き提供されている Stream Analytics が、 [Azure ポータル](https://azure.microsoft.com/overview/preview-portal/)にも統合されました。 現在、プレビュー ポータルの Stream Analytics 機能は Microsoft Azure 管理ポータルで提供されている機能のサブセットであり、ブラウザ内クエリ テスト、Power BI 出力構成、およびアクセス権を持つサブスクリプション内の新しい入力および出力リソースの参照や作成に関するサポートは提供されていません。 |
-| DocumentDB 出力のサポート |Stream Analytics のジョブを [DocumentDB](https://azure.microsoft.com/services/documentdb/)に出力できるようになりました。 |
+| Cosmos DB の出力のサポート |Stream Analytics のジョブを [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) に出力できるようになりました。 |
 | IoT Hub 入力に対するサポート |Stream Analytics ジョブで、IoT Hub からデータを取り込めるようになりました。 |
 | 多様なイベントに対する TIMESTAMP BY |単一のデータ ストリームに、異なるフィールドにタイムスタンプを持つ複数のイベント タイプが含まれている場合、式と共に [TIMESTAMP BY](http://msdn.microsoft.com/library/mt573293.aspx) を使用してケースごとに異なるタイムスタンプ フィールドを指定できるようになりました。 |
 

@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/24/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: 627f9dccb48712fced81f2c6dc694043f7162205
-ms.lasthandoff: 05/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 5b5aa75756d2a7061d531d50a59a2c52dfb75cbe
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -333,7 +334,7 @@ Event Hubs、Service Bus、Kafka などの使用可能なコネクタがあり�
             </td>
             <td width="246" valign="top">
                 <p>
-トポロジの多くの出力をサポートしており、各出力にはダウンストリーム処理のためのカスタム ロジックがあることがあります。 既定の Storm には、 PowerBI、Azure Event Hubs、Azure Blob Store、Azure DocumentDB、SQL、HBase のコネクタが含まれています。 サポートされていないコネクタは、カスタム コードを使用して実装できます。
+トポロジの多くの出力をサポートしており、各出力にはダウンストリーム処理のためのカスタム ロジックがあることがあります。 既定の Storm には、PowerBI、Azure Event Hubs、Azure Blob Store、Azure Cosmos DB、SQL、HBase のコネクタが含まれています。 サポートされていないコネクタは、カスタム コードを使用して実装できます。
                 </p>
             </td>
         </tr>
@@ -569,7 +570,7 @@ Storm クラスターの アップタイム 99.9% の SLA。 Apache Storm は、
             </td>
             <td width="246" valign="top">
                 <p>
-データ サイズに制限はありません。 HBase、DocumentDB、SQL Server、Azure に利用可能なコネクタ。 サポートされていないコネクタは、カスタム コードを使用して実装できます。
+データ サイズに制限はありません。 HBase、Azure Cosmos DB、SQL Server、Azure のコネクタが利用可能です。 サポートされていないコネクタは、カスタム コードを使用して実装できます。
                 </p>
                 <p>
 参照データの更新は、カスタム コードで処理される必要があります。

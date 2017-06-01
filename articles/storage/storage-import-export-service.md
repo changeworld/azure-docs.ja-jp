@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: muralikk
-translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: 132c1cf6b06924b8d23d696ea732856886be975d
-ms.lasthandoff: 05/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 1aebecdaacd3525bec07a9359e52d2bc3d1539de
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -76,7 +77,8 @@ WAImportExport ツールは、64 ビット Windows オペレーティング シ�
 >
 
 ### <a name="hard-disk-drives"></a>ハード ディスク ドライブ
-Import/Export サービスで使用できるのは、2.5 インチ SSD か、2.5 (または 3.5) SATA II または III の内部ハード ドライブだけです。 最大 10 TB のハード ドライブを使用できます。
+Import/Export サービスで使用できるのは、2.5 インチ SSD か、2.5 (または 3.5) SATA II または III の内部 HDD だけです。 単一の Import/Export ジョブは最大 10 個の HDD や SSD を持つことができ、個々の HDD や SSD はどのようなサイズでも構いません。 多数のドライブを複数のジョブに分散でき、また、作成可能なジョブの数に制限はありません。 
+
 インポート ジョブの場合は、ドライブの最初のデータ ボリュームだけが処理されます。 データ ボリュームは NTFS でフォーマットされている必要があります。
 
 > [!IMPORTANT]
@@ -508,6 +510,14 @@ FedEx、DHL、UPS などの既知の運送業者や、アメリカ郵政公社�
 
 「 [Azure Backup でのオフライン バックアップのワークフロー](../backup/backup-azure-backup-import-export.md)」をご覧ください。
 
+** 一度に発送できる HDD は最大で何個ですか?
+
+HDD は一度の発送で何個でも送ることができます。ディスクが複数のジョブに属している場合は、a) 対応するジョブ名でディスクをラベル付けする、 b) -1、-2 などのサフィックスが付いた追跡番号でジョブを更新することをお勧めします。
+  
+* * Disk Import/Export でサポートされるブロック BLOB とページ BLOB の最大サイズはいくつですか?
+
+ブロック BLOB の最大サイズは、約 4.768 TB または 5,000,000 MB です。
+ページ BLOB の最大サイズは 1 TB です。
 ## <a name="next-steps"></a>次のステップ
 
 * [Setting up the WAImportExport tool](storage-import-export-tool-how-to.md) (WAImportExport ツールの設定)

@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 03/29/2017
+ms.date: 05/09/2017
 ms.author: barclayn
-translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: f7c2f702a4ff2af8bb7487d49f5c6f9bf5199a49
-ms.lasthandoff: 04/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 5e135be1e21173add3236f851609f1df0a5b0dee
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.lasthandoff: 04/14/2017
 Azure Active Directory 監査イベントを利用すると、Azure Active Directory で発生した特権アクションを識別できます。 [Azure Active Directory 監査レポートのイベント](/active-directory/active-directory-reporting-audit-events#list-of-audit-report-events.md)を確認することで、追跡できるイベントのタイプを確認できます。
 
 >[!NOTE]
-この記事の手順を実行する前に、「[はじめに](security-azure-log-integration-get-started.md)」の記事の手順を正常に完了している必要があります。
+この記事の手順を実行する前に、[作業開始](security-azure-log-integration-get-started.md)に関する記事を確認し、**インストール後と検証**に関するセクションの 3 番までの手順をすべて完了してください。
 
 ## <a name="steps-to-integrate-azure-active-directory-audit-logs"></a>Azure Active Directory 監査ログを統合する手順
 
@@ -35,9 +36,9 @@ Azure Active Directory 監査イベントを利用すると、Azure Active Direc
 2. 次のコマンドを実行します。
 
  ``azlog createazureid``
- 
+
  このコマンドは Azure ログインを要求します。 このコマンドは、管理者、共同管理者、または所有者としてログインしている、Azure サブスクリプションをホストする Azure AD テナントに Azure Active Directory サービス プリンシパルを作成します。 単なる Guest ユーザーとして Azure AD テナントにログインしている場合、コマンドは失敗します。 Azure への認証は、Azure Active Directory (AD) によって行われます。 Azlog 統合のサービス プリンシパルを作成すると、Azure AD の ID が作成され、Azure サブスクリプションからの読み取りアクセス許可が付与されます。
- 
+
 3. tenantID を提供するコマンドを実行します。 コマンドを実行するには、テナント管理者ロールのメンバーである必要があります。
 
 ``Azlog.exe authorizedirectoryreader tenantId``
@@ -53,7 +54,7 @@ Azure Active Directory 監査イベントを利用すると、Azure Active Direc
 
 標準的な SIEM ファイル フォワーダー コネクタで、SIEM インスタンスにデータをパイプ処理する適切なフォルダーをポイントします。 使用している SIEM 製品に基づいて、フィールド マッピングが必要になる可能性があります。
 
-[Azure ログ統合に関する MSDN フォーラム](https://social.msdn.microsoft.com/Forums/office/home?forum=AzureLogIntegration)を通して、コミュニティの支援を受けることができます。 このフォーラムでは AzLog コミュニティに、Azure ログ統合を最大限に活用する方法についての質問、回答、ヒント、およびコツによる相互サポート機能を提供しています。 さらに、Azure ログ統合チームがこのフォーラムを監視しており、可能なときにはいつでも支援を提供します。 
+[Azure ログ統合に関する MSDN フォーラム](https://social.msdn.microsoft.com/Forums/office/home?forum=AzureLogIntegration)を通して、コミュニティの支援を受けることができます。 このフォーラムでは AzLog コミュニティに、Azure ログ統合を最大限に活用する方法についての質問、回答、ヒント、およびコツによる相互サポート機能を提供しています。 さらに、Azure ログ統合チームがこのフォーラムを監視しており、可能なときにはいつでも支援を提供します。
 
 [サポート要求](../azure-supportability/how-to-create-azure-support-request.md)を出すこともできます。 これを行うには、サポートを依頼しようとしているサービスとして **[ログ統合]** を選択します。
 
