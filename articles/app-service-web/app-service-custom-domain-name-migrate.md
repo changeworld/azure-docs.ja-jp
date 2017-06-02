@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: d6d506eef720488969c5b33fe4b94c02752c6b58
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 6adc34f208c6c4363b73f6e42b4a4d6ae2e4483f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -30,7 +31,7 @@ ms.lasthandoff: 04/03/2017
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事では、[App Service にカスタム ドメインを手動でマップする](web-sites-custom-domain-name.md)方法を把握していることを前提とします。
+この記事では、[App Service にカスタム ドメインを手動でマップする](app-service-web-tutorial-custom-domain.md)方法を把握していることを前提とします。
 
 ## <a name="bind-the-domain-name-preemptively"></a>ドメイン名の事前バインド
 
@@ -43,7 +44,7 @@ ms.lasthandoff: 04/03/2017
 
 次の手順に従ってください。
 
-1. 最初に、「[DNS レコードを作成する](web-sites-custom-domain-name.md#createdns)」の手順に従って、DNS レジストリで検証用 TXT レコードを作成します。
+1. 最初に、「[DNS レコードを作成する](app-service-web-tutorial-custom-domain.md#create-a)」の手順に従って、DNS レジストリで検証用 TXT レコードを作成します。
 追加の TXT レコードでは、&lt;*subdomain*>.&lt;*rootdomain*> を &lt;*appname*>.azurewebsites.net にマップする規則が適用されます。
 例については、次の表を参照してください。  
  
@@ -70,16 +71,16 @@ ms.lasthandoff: 04/03/2017
     </tr>
     </table>
 
-2. 次に、「[アプリのカスタム ドメイン名を有効にする](web-sites-custom-domain-name.md#enable)」の手順に従って、Azure アプリにカスタム ドメイン名を追加します。
+2. 次に、「[アプリのカスタム ドメイン名を有効にする](app-service-web-tutorial-custom-domain.md#enable-a)」の手順に従って、Azure アプリにカスタム ドメイン名を追加します。
 
     カスタム ドメインが Azure アプリで有効になります。 残りの作業は、ドメイン レジストラーで DNS レコードを更新することだけです。
 
-3. 最後に、「[DNS レコードを作成する](web-sites-custom-domain-name.md#createdns)」の手順に従って、Azure アプリを指すようにドメインの DNS レコードを更新します。 
+3. 最後に、「[DNS レコードを作成する](app-service-web-tutorial-custom-domain.md#create-a)」の手順に従って、Azure アプリを指すようにドメインの DNS レコードを更新します。 
 
     DNS に反映されるとすぐに、ユーザー トラフィックが Azure アプリにリダイレクトされます。
 
 ## <a name="next-steps"></a>次のステップ
-HTTPS でカスタム ドメイン名をセキュリティ保護する方法を確認します。そのためには、[Azure で SSL 証明書を購入](web-sites-purchase-ssl-web-site.md)するか、[別の場所からの SSL 証明書を使用](web-sites-configure-ssl-certificate.md)します。
+HTTPS でカスタム ドメイン名をセキュリティ保護する方法を確認します。そのためには、[Azure で SSL 証明書を購入](web-sites-purchase-ssl-web-site.md)するか、[別の場所からの SSL 証明書を使用](app-service-web-tutorial-custom-ssl.md)します。
 
 > [!NOTE]
 > Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。

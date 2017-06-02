@@ -15,10 +15,11 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: d8acfd6e0206e8e97b7d49e280a7e72e0acadb6d
-ms.openlocfilehash: 9ce5278e66afb81c5cbfe3662c6654d39bbc9a54
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: a5bc3a72eccc48ec26ef5f029d780175d66080c0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/01/2017
 
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>StorSimple Virtual Array のデプロイ - Azure Portal の準備
@@ -75,7 +76,7 @@ StorSimple Virtual Array をデプロイするには、次の記事を順番に�
   
   * 最小で 4 コア。
   * 少なくとも 8 GB の RAM。 ファイル サーバーとして仮想アレイを構成する予定がある場合、8 GB でサポートできるのは 2 百万個のファイルです。 2 百万から 4 百万個のファイルをサポートするには 16 GB の RAM が必要です。
-  * ネットワーク インターフェイス&1; つ。
+  * ネットワーク インターフェイス 1 つ。
   * システム データ用の 500 GB の仮想ディスク。
 
 ### <a name="for-the-datacenter-network"></a>データセンター ネットワークの前提条件
@@ -91,7 +92,7 @@ StorSimple Virtual Array をデプロイするには、次の記事を順番に�
 
 ## <a name="step-1-create-a-new-service"></a>手順 1. 新しいサービスを作成する
 
-StorSimple デバイス マネージャー サービスの&1; つのインスタンスで、複数の StorSimple Virtual Array を管理できます。 StorSimple デバイス マネージャー サービスのインスタンスを作成するには、次の手順を実行します。 既存の StorSimple デバイス マネージャー サービスで仮想アレイを管理する場合、この手順は省略して、「[手順 2: サービス登録キーを取得する](#step-2-get-the-service-registration-key)」に進みます。
+StorSimple デバイス マネージャー サービスの 1 つのインスタンスで、複数の StorSimple Virtual Array を管理できます。 StorSimple デバイス マネージャー サービスのインスタンスを作成するには、次の手順を実行します。 既存の StorSimple デバイス マネージャー サービスで仮想アレイを管理する場合、この手順は省略して、「[手順 2: サービス登録キーを取得する](#step-2-get-the-service-registration-key)」に進みます。
 
 [!INCLUDE [storsimple-virtual-array-create-new-service](../../includes/storsimple-virtual-array-create-new-service.md)]
 

@@ -14,10 +14,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: parakhj
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: fdf9f494f30f11a00831b6c56a3d6ac40582c0ad
-ms.lasthandoff: 03/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: cd4b8048245be49ea79bcb1b364f2f99c56f8291
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -31,8 +32,6 @@ Microsoft の ID プラットフォームには、OAuth2 や OpenID Connect と�
 >
 
 ここで紹介する構成サンプルは OAuth2 や OpenID Connect に精通している読者を想定しており、それ以外の方にとっては、あまり参考にならない可能性があります。 その場合は、 [対応プロトコルについて簡単に解説したこちらの記事](active-directory-b2c-reference-protocols.md)に目を通すことをお勧めします。
-
-Azure Active Directory のシナリオおよび機能のすべてが B2C プラットフォームでサポートされているわけではありません。  B2C プラットフォームを使用する必要があるかどうかを判断するには、 [B2C の制限事項](active-directory-b2c-limitations.md)に関するページをお読みください。
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Azure AD B2C ディレクトリの取得
 

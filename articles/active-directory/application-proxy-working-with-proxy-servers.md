@@ -11,12 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 05/22/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: f31625783aa03dd01a73b5e5b39dd899e109b3b9
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: ea928ba4d13970a32123a8ada8575658cecde5d8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -118,7 +119,7 @@ Microsoft Edge でプロキシ設定を構成するには、次の手順を実�
 コネクタ サービスへのアクセスに、次のエンドポイントへのアクセスを許可します。
 
 * *.msappproxy.net
-* *.servicebus.microsoft.net
+* *.servicebus.windows.net
 
 最初の登録では、次のエンドポイントへのアクセスを許可します。
 

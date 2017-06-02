@@ -14,13 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-translationtype: Human Translation
-ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
-ms.openlocfilehash: c4a8ea0612ab4792f2fccb2295bdf365b742111d
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: c0c83361f94ffd9c30d7fcc551ff4b85ad7d6fa5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/01/2017
 
 
 ---
 # <a name="biztalk-services-troubleshoot-using-operation-logs"></a>BizTalk Services: 操作ログを使用したトラブルシューティング
+
+> [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
+
 ## <a name="what-are-the-operation-logs"></a>操作ログとは
 操作ログは、Azure クラシック ポータルで使用できる管理サービス機能で、BizTalk サービスを含む Azure サービスで実行された操作の履歴ログを表示することができます。 BizTalk サービス サブスクリプションにおける管理操作に関する履歴データを 180 日間分、確認できます。
 
@@ -36,7 +41,7 @@ ms.openlocfilehash: c4a8ea0612ab4792f2fccb2295bdf365b742111d
 3. チェックマークを選択すると、フィルター処理された一覧が表示されます。 次の図では、testbiztalkservice に関連するアクティビティが表示されています。 ![操作ログを表示][ViewLogs] 
 4. 特定の操作について詳細を表示するには、操作の行を選択して、下部のタスク バーにある [ **詳細** ] をクリックします。
 
-## <a name="a-namebizopsaoperations-tracked-using-azure-management-services"></a><a name="bizops"></a>Azure 管理サービスを使用して追跡される操作
+## <a name="bizops"></a>Azure 管理サービスを使用して追跡される操作
 Azure 管理サービスを使用して追跡される操作の一覧を次の表に示します。
 
 | 操作の名前 | タスク |
@@ -69,10 +74,5 @@ Azure 管理サービスを使用して追跡される操作の一覧を次の�
 * [Visual Studio でのプロジェクトの作成](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [ViewLogs]: ./media/biztalk-troubleshoot-using-ops-logs/Operation-Logs.png
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

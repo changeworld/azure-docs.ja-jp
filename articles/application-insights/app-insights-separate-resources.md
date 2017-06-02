@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 896bf83de9095007e4f189f50a5e13c216e6ebd2
+ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
+ms.openlocfilehash: 0ee19b46a0e882571f6193471be69fa097d98936
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/22/2017
 
 
 ---
@@ -140,7 +140,26 @@ iKey は、アプリの Web ページや、 [クイック スタート ブレー
 
     MSBuild がバージョン番号を生成できるようにするには、AssemblyReference.cs で `1.0.*` のようなバージョンを設定します。
 
+## <a name="version-and-release-tracking"></a>バージョンおよびリリースの追跡
+アプリケーションのバージョンを追跡するには、Microsoft Build Engine プロセスによって `buildinfo.config` が生成されたことを確認してください。 .csproj ファイルに、次のコードを追加します。  
+
+```XML
+
+    <PropertyGroup>
+      <GenerateBuildInfoConfigFile>true</GenerateBuildInfoConfigFile>    <IncludeServerNameInBuildInfo>true</IncludeServerNameInBuildInfo>
+    </PropertyGroup>
+```
+
+ビルド情報がある場合、Application Insights Web モジュールは、 **アプリケーションのバージョン** をプロパティとしてテレメトリのすべての項目に自動的に追加します。 これにより、[診断の検索](app-insights-diagnostic-search.md)を実行するとき、または[メトリックを調べる](app-insights-metrics-explorer.md)ときに、バージョンによってフィルター処理できます。
+
+ただし、Visual Studio での開発者向けのビルドではなく、Microsoft Build Engine でのみビルド バージョン番号が生成されることに注意してください。
+
+### <a name="release-annotations"></a>リリース注釈
+Visual Studio Team Services を使用する場合は、新しいバージョンをリリースするたびに、グラフに[注釈マーカーを追加](app-insights-annotations.md)できます。 このマーカーは、次の図のように表示されます。
+
+![グラフのリリース注釈の例のスクリーンショット](./media/app-insights-asp-net/release-annotation.png)
 ## <a name="next-steps"></a>次のステップ
 
 * [複数のロール用の共有リソース](app-insights-monitor-multi-role-apps.md)
 * [A |B のバリアントを区別するためのテレメトリ初期化子を作成する](app-insights-api-filtering-sampling.md#add-properties)
+

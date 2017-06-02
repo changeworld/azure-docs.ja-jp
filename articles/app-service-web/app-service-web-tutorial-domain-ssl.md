@@ -14,10 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 03/29/2017
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: 78358e97f76454c19d5a377a2dac2bbf08c616ce
-ms.lasthandoff: 04/04/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 535a7dbe24a1badc8539b61d34c09bdeda41ad40
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -54,17 +55,9 @@ az group create --name myResourceGroup --location westeurope
 
 ## <a name="create-an-app-service-plan"></a>App Service プランを作成する
 
-[az appservice plan create](/cli/azure/appservice/plan#create) コマンドを使用して、Linux ベースの App Service プランを作成します。 
+[az appservice plan create](/cli/azure/appservice/plan#create) コマンドで、App Service プランを作成します。 
 
-> [!NOTE] 
-> App Service プランは、アプリをホストするために使用される物理リソースのコレクションを表しています。 App Service プランに割り当てられたすべてのアプリケーションは、プランで定義されたリソースを共有します。これにより、複数のアプリをホストする際にコストを節約できます。 
-> 
-> App Service プランには、次の定義があります。 
-> * リージョン (北ヨーロッパ、米国東部、東南アジア) 
-> * インスタンス サイズ (Small、Medium、Large) 
-> * スケール カウント (インスタンス数 1、2、3 など) 
-> * SKU (Free、Shared、Basic、Standard、Premium) 
-> 
+[!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
 次の例では、**Basic** 価格レベルを使用して、`myAppServicePlan` という名前の App Service プランを作成します。
 

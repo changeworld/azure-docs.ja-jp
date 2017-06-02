@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-translationtype: Human Translation
-ms.sourcegitcommit: 194b5d79505afbfd0208f63dd182a0e03227ba69
-ms.openlocfilehash: 1915201480f57c5f132e13bb5ce4283fbea975fe
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: b2b19a6f2ea20c414119e9dfbf84fda92dd93402
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -31,7 +33,7 @@ Azure ポータルを使用して、Data Lake Analytics ジョブのトラブル
 
 * **Data Lake Analytics ジョブ プロセスの基本的な知識**。 「 [Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」を参照してください。
 * **Data Lake Analytics アカウント**。 「[Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md#create-data-lake-analytics-account)」を参照してください。
-* **既定の Data Lake Store アカウントへのサンプル データのコピー**。  「 [ソース データの準備](data-lake-analytics-get-started-portal.md#prepare-source-data)
+* **既定の Data Lake Store アカウントへのサンプル データのコピー**。  「 [ソース データの準備](data-lake-analytics-get-started-portal.md)
 
 ## <a name="submit-a-data-lake-analytics-job"></a>Data Lake Analytics ジョブの送信
 ここでは、不適切なソース ファイル名で U-SQL ジョブを作成します。  
@@ -40,7 +42,7 @@ Azure ポータルを使用して、Data Lake Analytics ジョブのトラブル
 
 1. Azure ポータルで、左上隅にある **[Microsoft Azure]** をクリックします。
 2. Data Lake Analytics アカウント名のタイルをクリックします。  ここにはアカウントの作成時にピン留めされます。
-   アカウントがそこにピン留めされていない場合は、 [ポータルから Analytics アカウントを開く](data-lake-analytics-manage-use-portal.md#access-adla-account)手順を参照してください。
+   アカウントがそこにピン留めされていない場合は、 [ポータルから Analytics アカウントを開く](data-lake-analytics-manage-use-portal.md#manage-data-sources)手順を参照してください。
 3. 上部のメニューから **[新しいジョブ]** をクリックします。
 4. ジョブ名および以下の U-SQL スクリプトを入力します。
 
@@ -102,9 +104,4 @@ Azure ポータルを使用して、Data Lake Analytics ジョブのトラブル
 * [Azure PowerShell で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-powershell.md)
 * [Visual Studio で Azure Data Lake Analytics と U-SQL の使用を開始する](data-lake-analytics-u-sql-get-started.md)
 * [Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 
