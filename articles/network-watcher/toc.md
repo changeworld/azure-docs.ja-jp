@@ -13,34 +13,41 @@
 ## パケット キャプチャの管理
 ### [ポータル](network-watcher-packet-capture-manage-portal.md)
 ### [PowerShell](network-watcher-packet-capture-manage-powershell.md)
-### [CLI](network-watcher-packet-capture-manage-cli.md)
+### [CLI 1.0](network-watcher-packet-capture-manage-cli-nodejs.md)
+### [CLI 2.0](network-watcher-packet-capture-manage-cli.md)
 ### [REST ()](network-watcher-packet-capture-manage-rest.md)
 ## VM との間の IP フローの確認
 ### [ポータル](network-watcher-check-ip-flow-verify-portal.md)
 ### [PowerShell](network-watcher-check-ip-flow-verify-powershell.md)
-### [CLI](network-watcher-check-ip-flow-verify-cli.md)
+### [CLI 1.0](network-watcher-check-ip-flow-verify-cli-nodejs.md)
+### [CLI 2.0](network-watcher-check-ip-flow-verify-cli.md)
 ### [REST ()](network-watcher-check-ip-flow-verify-rest.md)
 ## 次ホップの分析
 ### [ポータル](network-watcher-check-next-hop-portal.md)
 ### [PowerShell](network-watcher-check-next-hop-powershell.md)
-### [CLI](network-watcher-check-next-hop-cli.md)
+### [CLI 1.0](network-watcher-check-next-hop-cli-nodejs.md)
+### [CLI 2.0](network-watcher-check-next-hop-cli.md)
 ### [REST ()](network-watcher-check-next-hop-rest.md)
 ## ネットワーク トポロジの表示
 ### [PowerShell](network-watcher-topology-powershell.md)
-### [CLI](network-watcher-topology-cli.md)
+### [CLI 1.0](network-watcher-topology-cli-nodejs.md)
+### [CLI 2.0](network-watcher-topology-cli.md)
 ### [REST ()](network-watcher-topology-rest.md)
 ## VPN Gateway と接続のトラブルシューティング
 ### [PowerShell](network-watcher-troubleshoot-manage-powershell.md)
-### [CLI](network-watcher-troubleshoot-manage-cli.md)
+### [CLI 1.0](network-watcher-troubleshoot-manage-cli-nodejs.md)
+### [CLI 2.0](network-watcher-troubleshoot-manage-cli.md)
 ### [REST ()](network-watcher-troubleshoot-manage-rest.md)
 ## ネットワーク セキュリティ グループ ビューの分析
 ### [PowerShell](network-watcher-security-group-view-powershell.md)
-### [CLI](network-watcher-security-group-view-cli.md)
+### [CLI 1.0](network-watcher-security-group-view-cli-nodejs.md)
+### [CLI 2.0](network-watcher-security-group-view-cli.md)
 ### [REST ()](network-watcher-security-group-view-rest.md)
 ## NSG フロー ログの構成
 ### [ポータル](network-watcher-nsg-flow-logging-portal.md)
 ### [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
-### [CLI](network-watcher-nsg-flow-logging-cli.md)
+### [CLI 1.0](network-watcher-nsg-flow-logging-cli-nodejs.md)
+### [CLI 2.0](network-watcher-nsg-flow-logging-cli.md)
 ### [REST ()](network-watcher-nsg-flow-logging-rest.md)
 # 方法
 ## [Azure Automation を使用して VPN Gateway を監視する](network-watcher-monitor-with-azure-automation.md)
