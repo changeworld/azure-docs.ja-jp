@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: beverst
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 554843c5f3161a45ff984b000944f546b44dd472
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: ca086f76e50cb27f012bb2e7f05595be5fdcb241
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 06/01/2017
 
 ---
 # <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a>Azure で Docker Python と PostgreSQL アプリを構築する
@@ -355,16 +355,7 @@ docker push <registry_name>.azurecr.io/flask-postgresql-sample
 
 [az appservice plan create](/cli/azure/appservice/plan#create) コマンドで、App Service プランを作成します。 
 
-> [!NOTE] 
-> App Service プランは、アプリをホストするために使用される物理リソースのコレクションを表しています。 App Service プランに割り当てられたすべてのアプリケーションは、プランで定義されたリソースを共有します。これにより、複数のアプリをホストする際にコストを節約できます。 
-> 
-> App Service プランには、次の定義があります。 
-> 
-> * リージョン (北ヨーロッパ、米国東部、東南アジアなど) 
-> * インスタンス サイズ (Small、Medium、Large) 
-> * スケール カウント (インスタンス数 1、2、3 など) 
-> * SKU (Free、Shared、Basic、Standard、Premium) 
-> 
+[!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
 次の例では、S1 価格レベルを使用して、`myAppServicePlan` という名前の Linux ベースの App Service プランを作成します。
 

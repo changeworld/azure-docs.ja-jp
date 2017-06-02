@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: ed2fc2b34ff10acc806daec84986f8db58e713c3
-ms.openlocfilehash: 84cd0c3eb2753a209d0aebda405f0b98a487140d
-ms.lasthandoff: 02/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 2c967d759806b47862179ecf9e9a89801134192a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -137,7 +138,7 @@ Litmos で Azure AD のシングル サインオンを構成してテストす�
    
     2. **[応答 URL]** ボックスに、前の手順で Litmos アプリケーションからコピーした値を貼り付けます。
    
-    3. **[次へ]**をクリックします。
+    3. **[次へ]** をクリックします。
 9. **[Litmos でのシングル サインオンの構成]** ページで、次の手順を実行します。
    
     ![Azure AD のシングル サインオン][2] 
@@ -174,7 +175,7 @@ Litmos で Azure AD のシングル サインオンを構成してテストす�
     | --- | --- |
     | 電子メール |User.mail |
     | FirstName |User.givenname |
-    | Lastname |User.surname |
+    | LastName |User.surname |
     
     上の表のデータ行ごとに、次の手順を実行します。
     
@@ -214,7 +215,7 @@ Litmos で Azure AD のシングル サインオンを構成してテストす�
    
     2. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
-    3. **[次へ]**をクリックします。
+    3. **[次へ]** をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。 
    
    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-litmos-tutorial/create_aaduser_06.png) 
@@ -226,7 +227,7 @@ Litmos で Azure AD のシングル サインオンを構成してテストす�
    3. **[表示名]** ボックスに「**Britta Simon**」と入力します。
    
    4. **[ロール]** 一覧で **[ユーザー]** を選択します。
-   5. **[次へ]**をクリックします。
+   5. **[次へ]** をクリックします。
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-litmos-tutorial/create_aaduser_07.png) 
