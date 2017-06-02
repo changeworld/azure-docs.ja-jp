@@ -12,7 +12,9 @@
 ## [IoT Hub イベント ソースを作成する](time-series-insights-how-to-add-an-event-source-iothub.md)
 ## [環境をスケーリングする](time-series-insights-how-to-scale-your-environment.md)
 ## [問題の診断と解決](time-series-insights-diagnose-and-solve-problems.md)
-## [C# を使用してデータのクエリを実行する](time-series-insights-query-data-csharp.md)
+## 開発
+### [認証と権限承認](time-series-insights-authentication-and-authorization.md)
+### [C# を使用してデータのクエリを実行する](time-series-insights-query-data-csharp.md)
 
 # リファレンス
 ## [クエリ API](/rest/api/time-series-insights/time-series-insights-reference-queryapi)
