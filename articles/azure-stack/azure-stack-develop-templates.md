@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/4/2016
+ms.date: 05/23/2016
 ms.author: helaw
-translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 5530d2d10695f1760ff56e9f171af836f926bead
-ms.lasthandoff: 03/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 457f26bd80704ddb25bd02414426886b2936d644
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -36,13 +37,13 @@ Azure service versions may differ between Azure and Azure Stack. Each resource r
 
 | Resource Provider | apiVersion |
 | --- | --- |
-| Compute |'2015-06-15' |
-| Network |'2015-06-15', '2015-05-01-preview' |
-| Storage |'2016-01-01', '2015-06-15', '2015-05-01-preview' |
-| KeyVault | '2015-06-01' |
-| App Service |'2015-08-01' |
-| MySQL |'2015-09-01' |
-| SQL |'2014-04-01-preview' |
+| Compute |`'2015-06-15'` |
+| Network |`'2015-06-15'`, `'2015-05-01-preview'` |
+| Storage |`'2016-01-01'`, `'2015-06-15'`, `'2015-05-01-preview'` |
+| KeyVault | `'2015-06-01'` |
+| App Service |`'2015-08-01'` |
+| MySQL |`'2015-09-01'` |
+| SQL |`'2014-04-01-preview'` |
 
 ## <a name="template-functions"></a>Template functions
 Resource Manager [functions](../azure-resource-manager/resource-group-template-functions.md) provide capabilities required to build dynamic templates. As an example, you can use functions for tasks like:

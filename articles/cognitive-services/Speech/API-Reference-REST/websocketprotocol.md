@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: prrajan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 613abceb015b895e57e7b5e63f80a355ee75509e
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: c8d4c29e2c8a8fe9e4b23fce5574c8f530bae18c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 ---
 # <a name="speech-protocol"></a>Speech Protocol
@@ -28,14 +28,14 @@ Connections to the Microsoft Speech Service require a web socket that conforms t
 Connections require a web socket handshake. To begin this handshake, the client application sends an HTTPS GET request to the service and includes standard web socket upgrade headers along with other headers that are specific to speech. 
 
 ```HTTP
-GET /ws/api/v1/speech/recognition HTTP/1.1
-Host: speech.bing.com
+GET /speech/recognize/interactive/cognitiveservices/v1 HTTP/1.1
+Host: speech.platform.bing.com
 Upgrade: websocket
 ProtoSec-WebSocket-Key: wPEE5FzwR6mxpsslyRRpgP==
 Sec-WebSocket-Version: 13
 Authorization: t=EwCIAgALBAAUWkziSCJKS1VkhugDegv7L0eAAJqBYKKTzpPZOeGk7RfZmdBhYY28jl&p=
 X-ConnectionId: A140CAF92F71469FA41C72C7B5849253  
-Origin: http://speech.bing.com
+Origin: https://speech.platform.bing.com
 ```
 The service responds with
 ```HTTP
@@ -69,7 +69,7 @@ Clients **must** support the standard redirection mechanisms specified by the [H
 
 ## <a name="speech-endpoint"></a>Speech Endpoint
 
-Clients **must** use the path /ws/api/v1/speech/recognition when connecting to the Microsoft Speech Service.
+Clients **must** use a path to the Microsoft Speech Service as outlined in [Endpoints](BingVoiceRecognition.md#endpoints).
 
 ## <a name="reporting-connection-errors"></a>Reporting Connection Errors
 
@@ -343,7 +343,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 
 {
   "RecognitionStatus": "Success",
-  "DisplayText": "Remind me to buy 5 iPhones.",
+  "DisplayText": "Remind me to buy 5 pencils.",
   "Offset": 0,
   "Duration": 12300000
 }
@@ -421,6 +421,8 @@ X-RequestId: 123e4567e89b12d3a456426655440000
   }
 }
 ```
+
+The body of the *turn.start* message is a JSON structure that contains context for the start of the turn. The *context* element contains a *serviceTag* property; this property specifies a tag value that the service has associated with the turn. This value can be used by Microsoft if you need help troubleshooting failures in your application.
 
 ## <a name="turn-end"></a>Turn End
 The *turn.end* signals the end of a turn from the perspective of the service. The *turn.end* message is the always the **last** response message you will receive for any request. Clients can use the receipt of this message as a signal for cleanup activities and transitioning to an idle state. If you do not receive a *turn.end* message, you should assume that the state of the service connection is invalid; in those cases, you should close the existing connection to the service and reconnect.

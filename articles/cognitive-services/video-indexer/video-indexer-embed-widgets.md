@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: juliako;
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 167c622aa3c94724e1e01c480d1d1315e685b677
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: d5c8463d1669a03c82601cff7eacb9e9d7a461b9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -23,7 +23,7 @@ Video Indexer supports embedding two types of widgets into your application: **C
 
 ## <a name="embedding-public-content"></a>Embedding public content
 
-1. Sign in to your [Video Indexer](http://vi.microsoft.com) account. 
+1. Sign in to your [Video Indexer](https://vi.microsoft.com) account. 
 2. Click the "embed" button that appears below the video.
 
     ![Widget](./media/video-indexer-embed-widgets/video-indexer-widget01.png)

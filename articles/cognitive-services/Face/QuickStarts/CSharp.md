@@ -7,12 +7,13 @@ manager: yutkuo
 ms.service: cognitive-services
 ms.technology: face
 ms.topic: article
-ms.date: 03/21/2017
+ms.date: 05/23/2017
 ms.author: anroth
-translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 396d6eb62b461284f477ab6195013ca61d2c9e06
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: 056a7f2e5cbe970af28a5ea8429c8ad1f289f607
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 ---
 
@@ -26,7 +27,7 @@ This article provides information and code samples to help you quickly get start
 * Learn more about obtaining free Subscription Keys [here](../../Computer-vision/Vision-API-How-to-Topics/HowToSubscribe.md)
 
 ## Detect Faces in Images With Face API Using C# <a name="Detect"> </a>
-Use the [Face - Detect method](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) to detect faces in an image and return face attributes including:
+Use the [Face - Detect method](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) to detect faces in an image and return face attributes including:
 * Face ID: Unique ID used in a number of Face API scenarios. 
 * Face Rectangle: The left, top, width, and height indicating the location of the face in the image.
 * Landmarks: An array of 27-point face landmarks pointing to the important positions of face components.
@@ -34,6 +35,9 @@ Use the [Face - Detect method](https://westus.dev.cognitive.microsoft.com/docs/s
 
 #### <a name="face-detect-c-example-request"></a>Face Detect C# Example Request
 The sample is written in C# using the Face API client library. 
+
+Create a new Console solution in Visual Studio, then replace Program.cs with the following code. Change the `string uri` to use the region where you obtained your subscription keys, and replace the "Ocp-Apim-Subscription-Key" value with your valid subscription key.
+
 ```c#
 using System;
 using System.IO;
@@ -67,11 +71,15 @@ namespace CSHttpClientSample
             var client = new HttpClient();
 
             // Request headers - replace this example key with your valid key.
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "6726adbabb494773a28a7a5a21d5974a");
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "13hc77781f7e4b19b5fcdd72a8df7156");
 
-            // Request parameters and URI string.
+            // Request parameters.
             string queryString = "returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender";
-            string uri = "https://westus.api.cognitive.microsoft.com/face/v1.0/detect?" + queryString;
+
+            // NOTE: You must use the same region in your REST call as you used to obtain your subscription keys.
+            //   For example, if you obtained your subscription keys from westus, replace "westcentralus" in the 
+            //   URI below with "westus".
+            string uri = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect?" + queryString;
 
             HttpResponseMessage response;
             string responseContent;
@@ -237,10 +245,13 @@ A successful response will be returned in JSON. Following is an example of a suc
 ]
 ```
 ## Create a Person Group With Face API Using C# <a name="Create"> </a>
-Use the [Person Group - Create a Person Group method](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) to create a new person group with specified personGroupId, name, and user-provided userData.
+Use the [Person Group - Create a Person Group method](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) to create a new person group with specified personGroupId, name, and user-provided userData.
 
 #### <a name="person-group---create-a-person-group-c-example-request"></a>Person Group - Create a Person Group C# Example Request
-```C#
+
+Create a new Console solution in Visual Studio, then replace Program.cs with the following code. Change the `string uri` to use the region where you obtained your subscription keys, and replace the "Ocp-Apim-Subscription-Key" value with your valid subscription key.
+
+```c#
 using System;
 using System.Net.Http.Headers;
 using System.Net.Http;
@@ -270,7 +281,10 @@ namespace CSHttpClientSample
             client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "6726adbabb494773a28a7a5a21d5974a");
 
             // Request URI string.
-            string uri = "https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups/" + personGroupId;
+            // NOTE: You must use the same region in your REST call as you used to obtain your subscription keys.
+            //   For example, if you obtained your subscription keys from westus, replace "westcentralus" in the 
+            //   URI below with "westus".
+            string uri = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/persongroups/" + personGroupId;
 
             // Here "name" is for display and doesn't have to be unique. Also, "userData" is optional.
             string json = "{\"name\":\"My Group\", \"userData\":\"Some data related to my group.\"}";
