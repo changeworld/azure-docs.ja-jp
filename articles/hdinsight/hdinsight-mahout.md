@@ -14,7 +14,7 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/14/2017
+ms.date: 05/25/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
@@ -228,7 +228,6 @@ foreach($blob in $blobs)
 [upload]: hdinsight-upload-data.md
 [ml]: http://en.wikipedia.org/wiki/Machine_learning
 [forest]: http://en.wikipedia.org/wiki/Random_forest
-[management]: https://manage.windowsazure.com/
 [enableremote]: ./media/hdinsight-mahout/enableremote.png
 [connect]: ./media/hdinsight-mahout/connect.png
 [hadoopcli]: ./media/hdinsight-mahout/hadoopcli.png

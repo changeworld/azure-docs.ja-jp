@@ -14,11 +14,12 @@ ms.workload: na
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 06/01/2017
 ms.author: negat
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e869b06935736fae72bd3b5407ebab7c3830098d
 ms.openlocfilehash: de3687a1bf36bf49db400a5660ac631f20b629d0
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/14/2017
 
 

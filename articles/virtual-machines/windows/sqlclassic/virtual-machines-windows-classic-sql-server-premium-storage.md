@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 11/28/2016
+ms.date: 06/01/2017
 ms.author: jroth
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
 ms.openlocfilehash: aba69b95db8313dd9ce711ddc6c26e5df55d79a4
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/04/2017
 
 
@@ -1067,7 +1068,7 @@ TLOG ボリュームの場合、これらを NONE に設定する必要があり
     Get-AzureVM –ServiceName $destcloudsvc –Name $vmNameToMigrate  | Add-AzureEndpoint -Name $epname -Protocol $prot -LocalPort $locport -PublicPort $pubport -ProbePort 59999 -ProbeIntervalInSeconds 5 -ProbeTimeoutInSeconds 11  -ProbeProtocol "TCP" -InternalLoadBalancerName $ilb -LBSetName $ilb -DirectServerReturn $true | Update-AzureVM
 
 
-    #STOP!!! CHECK in the Azure classic portal or Machine Endpoints through powershell that these Endpoints are created!
+    #STOP!!! CHECK in the Azure portal or Machine Endpoints through PowerShell that these Endpoints are created!
 
     #SET ACLs or Azure Network Security Groups & Windows FWs
 

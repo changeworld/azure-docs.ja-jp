@@ -8,6 +8,7 @@ ms.author: cfowler
 ms.date: 04/27/2017
 ms.topic: sample
 ms.service: functions
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
 ms.openlocfilehash: f87cf7d300b4c2b89ad692aadcda958e9747c7f9
@@ -20,6 +21,10 @@ ms.lasthandoff: 05/15/2017
 このサンプル スクリプトでは、[従量課金プラン](../functions-scale.md#consumption-plan)を使用して関連リソースと共に Function App を作成し、GitHub レポジトリから関数コードをデプロイします。(継続的なデプロイは行いません)。 GitHub から関数コードを継続的に配信する場合は、[Function App の作成と関数と GitHub から継続的なデプロイ](functions-cli-create-function-app-github-continuous.md)に関するページをご覧ください
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="sample-script"></a>サンプル スクリプト
 

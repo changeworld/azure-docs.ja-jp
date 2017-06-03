@@ -9,7 +9,7 @@ editor:
 tags: azure-service-management
 ms.assetid: 
 ms.service: cosmos-db
-ms.custom: sample
+ms.custom: sammvcple
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: cosmosdb

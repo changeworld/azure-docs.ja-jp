@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: anhoh
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: d92244361cf86ee8b3c8dc2384f3085644b92e60
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/31/2017
-
 
 ---
 # <a name="azure-cosmos-db-connect-to-a-mongodb-app-using-net"></a>Azure Cosmos DB: .NET を使用した MongoDB アプリへの接続

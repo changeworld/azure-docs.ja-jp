@@ -378,7 +378,7 @@ PS C:\> $details = Get-AzureRmRecoveryServicesBackupJobDetails -Job $restorejob
   管理対象外の暗号化されていない VM には、次のサンプルを使用します。
 
     ```
-    PS C:\> Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.VirtualHardDisk.Uri -CreateOption "Attach"
+    PS C:\> Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
     PS C:\> $vm.StorageProfile.OsDisk.OsType = $obj.'properties.StorageProfile'.OsDisk.OsType
     PS C:\> foreach($dd in $obj.'properties.StorageProfile'.DataDisks)
      {

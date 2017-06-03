@@ -14,9 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/02/2017
 ms.author: subramar
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
 ms.openlocfilehash: 9cfdb94d1e030fe9d467389acf8894d79efd17d1
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/29/2017
 
 
@@ -99,7 +100,7 @@ HTTPS プロトコルはサーバー認証を提供し、また、クライア�
 
 HTTPS で設定する必要がある ApplicationManifest の例を次に示します  証明書のサムプリントを指定する必要があります。 EndpointRef は、HTTPS プロトコルを設定する ServiceManifest 内の EndpointResource への参照です。 複数の EndpointCertificate を追加することができます。  
 
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationManifest ApplicationTypeName="Application1Type"
                      ApplicationTypeVersion="1.0.0"

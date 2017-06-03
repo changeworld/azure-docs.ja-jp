@@ -1,6 +1,6 @@
 ---
 redirect_url: /azure/app-service-web/app-service-web-tutorial-custom-ssl
-redirect_document_id: FALSE
+redirect_document_id: TRUE
 ROBOTS: NOINDEX
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3

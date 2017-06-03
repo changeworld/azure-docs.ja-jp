@@ -8,6 +8,7 @@ ms.author: cfowler
 ms.date: 04/28/2017
 ms.topic: sample
 ms.service: functions
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
 ms.openlocfilehash: 8e5d8bdf61746d3bda5acc7bed97b164c311a3c3

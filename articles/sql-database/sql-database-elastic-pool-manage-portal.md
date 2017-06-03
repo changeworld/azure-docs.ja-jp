@@ -11,14 +11,15 @@ ms.assetid: 3dc9b7a3-4b10-423a-8e44-9174aca5cf3d
 ms.service: sql-database
 ms.custom: multiple databases
 ms.devlang: NA
-ms.date: 04/18/2016
+ms.date: 05/08/2017
 ms.author: ninarn
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
 ms.openlocfilehash: 66f7cc63d311b6b5cd223fe0d8a9bf9f636abef1
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/20/2017
 
 
@@ -30,7 +31,7 @@ ms.lasthandoff: 04/20/2017
 
 エラスティック プールを作成する方法は 2 つあります。 目的のプール設定がわかっている場合は、一から作成できます。また、サービスによる推奨設定から始めることもできます。 SQL Database には、データベースの過去の使用状況テレメトリに基づいてコスト効率が高いエラスティック プール設定を推奨するインテリジェンスが組み込まれています。
 
-サーバーに複数のプールを作成することはできますが、同じプールに異なるサーバーからデータベースを追加することはできません。 
+サーバーに複数のプールを作成することはできますが、同じプールに異なるサーバーからデータベースを追加することはできません。
 
 > [!NOTE]
 > エラスティック プールは、現在プレビュー段階にあるインド西部を除くすべての Azure リージョンで一般公開 (GA) されています。  プレビュー段階のリージョンでも、できるだけ早く一般公開される予定です。
@@ -158,7 +159,7 @@ Azure Portal を使用すると、プール内のエラスティック プール
 
     ![[編集] をクリックする](./media/sql-database-elastic-pool-manage-portal/edit-chart.png)
 
-    
+
 
 3. 次に、 **[OK]**をクリックします
 

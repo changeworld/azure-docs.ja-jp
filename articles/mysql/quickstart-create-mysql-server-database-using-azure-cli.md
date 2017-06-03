@@ -13,6 +13,7 @@ ms.topic: hero-article
 ms.tgt_pltfrm: portal
 ms.workload: 
 ms.date: 05/24/2017
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
 ms.openlocfilehash: 9f78163e4ff1166a2abd94150d686256ee338286

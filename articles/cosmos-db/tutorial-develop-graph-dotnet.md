@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: arramac
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: 94909fd1db426267eb60e5d7f4d753de82ca0377
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/31/2017
-
 
 ---
 # <a name="azure-cosmos-db-develop-with-the-graph-api-in-net"></a>Azure Cosmos DB: .NET での Graph API を使用した開発

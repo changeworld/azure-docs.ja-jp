@@ -9,7 +9,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: quick start create
+ms.custom: quick start create, mvc
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: azurecli
@@ -38,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [az login](/cli/azure/#login) コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
 
-```azure-cli
+```azurecli-interactive
 az login
 ```
 
@@ -46,7 +46,7 @@ az login
 
 このクイック スタートのスクリプトで使用する変数を定義します。
 
-```azure-cli
+```azurecli-interactive
 # The data center and resource name for your resources
 export resourcegroupname = myResourceGroup
 export location = westeurope
@@ -66,14 +66,14 @@ export databasename = mySampleDatabase
 
 [az group create](/cli/azure/group#create) コマンドで [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。 次の例では、`myResourceGroup` という名前のリソース グループを `westeurope` の場所に作成します。
 
-```azurazure-cliecli
+```azurecli-interactive
 az group create --name $resourcegroupname --location $location
 ```
 ## <a name="create-a-logical-server"></a>論理サーバーの作成
 
 [az sql server create](/cli/azure/sql/server#create) コマンドで [Azure SQL Database 論理サーバー](sql-database-features.md)を作成します。 論理サーバーには、ひとまとめにして管理される一連のデータベースが含まれています。 次の例では、管理者ログイン `ServerAdmin` とパスワード `ChangeYourAdminPassword1` を使用し、ランダムに名前を付けたサーバーをリソース グループ内に作成しています。 これらの定義済みの値は、必要に応じて別の値に置き換えてください。
 
-```azure-cli
+```azurecli-interactive
 az sql server create --name $servername --resource-group $resourcegroupname --location $location \
     --admin-user $adminlogin --admin-password $password
 ```
@@ -82,7 +82,7 @@ az sql server create --name $servername --resource-group $resourcegroupname --lo
 
 [az sql server firewall create](/cli/azure/sql/server/firewall-rule#create) コマンドで [Azure SQL Database サーバーレベルのファイアウォール規則](sql-database-firewall-configure.md)を作成します。 サーバーレベルのファイアウォール規則を作成すると、SQL Server Management Studio や SQLCMD ユーティリティのような外部アプリケーションから、SQL Database サービスのファイアウォールを介して SQL データベースに接続できます。 次の例では、他の Azure リソースに対してのみファイアウォールを開放しています。 外部から接続できるようにするには、実際の環境に合わせて IP アドレスを変更してください。 すべての IP アドレスを開放するには、開始 IP アドレスとして 0.0.0.0 を、終了アドレスとして 255.255.255.255 を使用します。  
 
-```azure-cli
+```azurecli-interactive
 az sql server firewall-rule create --resource-group $resourcegroupname --server $servername \
     -n AllowYourIp --start-ip-address $startip --end-ip-address $endip
 ```
@@ -95,7 +95,7 @@ az sql server firewall-rule create --resource-group $resourcegroupname --server 
 
 [az sql db create](/cli/azure/sql/db#create) コマンドで [S0 パフォーマンス レベル](sql-database-service-tiers.md)のデータベースをサーバーに作成します。 次の例では、`mySampleDatabase` というデータベースを作成し、このデータベースに AdventureWorksLT のサンプル データを読み込みます。 必要に応じて、これらの定義済みの値を置き換えてください (このコレクションの他のクイック スタートは、このクイック スタートの値に基づいています)。
 
-```azure-cli
+```azurecli-interactive
 az sql db create --resource-group $resourcegroupname --server $servername \
     --name $databasename --sample-name AdventureWorksLT --service-objective S0
 ```
@@ -108,7 +108,7 @@ az sql db create --resource-group $resourcegroupname --server $servername \
 > 引き続きクイック スタートの作業を行う場合は、このクイック スタートで作成したリソースをクリーンアップしないでください。 これ以上作業を行わない場合は、以下の手順に従い、このクイック スタートで作成したすべてのリソースを Azure Portal で削除してください。
 >
 
-```azurecli
+```azurecli-interactive
 az group delete --name $resourcegroupname
 ```
 

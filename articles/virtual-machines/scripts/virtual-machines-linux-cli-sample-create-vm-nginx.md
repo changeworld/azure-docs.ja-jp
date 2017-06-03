@@ -56,7 +56,7 @@ apt-get -y install nginx
 
 次のコマンドを実行して、リソース グループ、VM、すべての関連リソースを削除します。
 
-```azurecli
+```azurecli-interactive 
 az group delete --name myResourceGroup
 ```
 

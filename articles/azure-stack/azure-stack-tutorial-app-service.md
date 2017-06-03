@@ -11,15 +11,15 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 5/10/2017
 ms.author: erikje
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: 89bf300bf3205f6c8cbce6ba29571431e5c67212
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/10/2017
-
 
 ---
 # <a name="make-web-mobile-and-api-apps-available-to-your-azure-stack-users"></a>Make web, mobile, and API apps available to your Azure Stack users

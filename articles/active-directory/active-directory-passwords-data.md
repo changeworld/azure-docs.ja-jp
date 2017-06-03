@@ -14,6 +14,8 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: joflore
+ms.editor: gahug
+ms.custom: it-pro
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
 ms.openlocfilehash: f7ecb22ee46d83867453e035f8a639bc7f7f2d81

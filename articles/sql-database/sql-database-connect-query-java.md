@@ -8,11 +8,11 @@ manager: jhubbard
 editor: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: quick start connect
+ms.custom: quick start connect, mvc
 ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: java
-ms.topic: article
+ms.topic: hero-article
 ms.date: 05/23/2017
 ms.author: andrela
 ms.translationtype: Human Translation

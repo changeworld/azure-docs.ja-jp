@@ -15,9 +15,10 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: iainfou
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 1ace4120bd302ba10742bc9cd2af5b788a0537da
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/03/2017
 
 
@@ -246,7 +247,7 @@ myUMDiskFromVHD    https://vhdstoragezw9.blob.core.windows.net/system/Microsoft.
 az vm create --resource-group myResourceGroup --location westus \
     --name myVM --os-type linux \
     --admin-username azureuser --ssh-key-value ~/.ssh/id_rsa.pub \
-    --attach-os-disk https://vhdstoragezw9.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/my_image-osDisk.vhd
+    --attach-os-disk myUMDiskFromVHD
 ```
 
 ### <a name="azure-20---unmanaged-disks"></a>Azure 2.0 - 非管理対象ディスク
