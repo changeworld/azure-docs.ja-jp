@@ -12,21 +12,26 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/20/2017
+ms.date: 05/02/2017
 ms.author: antisch
-translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: d5ef87e6e7092820a65c5736c1942fd5cec57462
-ms.lasthandoff: 03/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 5fe1e3595d9459e60b2fd54d6f17f6822731f453
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/15/2017
 
 ---
 
 # <a name="running-jobs-on-azure-batch-with-azure-cli"></a>Azure CLI を使用して Azure Batch でジョブを実行する
 
-このスクリプトでは、Batch のジョブを作成してそのジョブに一連のタスクを追加します。 ジョブとそのタスクを監視する方法を説明します。
-このスクリプトの実行では、Batch アカウントが既に設定されており、プールとアプリケーションの両方が構成されていると想定しています。 詳細については、これらの各トピックに関連した[サンプル スクリプト](../batch-cli-samples.md)に関するページをご覧ください。
+このスクリプトでは、Batch のジョブを作成してそのジョブに一連のタスクを追加します。 ジョブとそのタスクを監視する方法を説明します。 最後に、ジョブのタスクに関する情報を Batch サービスで効率的にクエリする方法を示します。
 
-必要に応じて、[Azure CLI インストール ガイド](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページの手順に従って Azure CLI をインストールし、`az login` を実行して Azure にログインします。
+## <a name="prerequisites"></a>前提条件
+
+- Azure CLI をまだインストールしていない場合は、[Azure CLI インストール ガイド](https://docs.microsoft.com/cli/azure/install-azure-cli)の手順に従ってインストールします。
+- Batch アカウントをまだお持ちでない場合は、作成します。 アカウント作成のサンプル スクリプトについては、「[Azure CLI で Batch アカウントを作成する](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-create-account)」を参照してください。
+- 開始タスクからアプリケーションを実行するように構成していない場合は、そのように構成します。 アプリケーションを作成し、アプリケーション パッケージを Azure にアップロードするサンプル スクリプトについては、「[Azure CLI を使用した Azure Batch へのアプリケーションの追加](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-add-application)」を参照してください。
+- ジョブを実行するプールを構成します。 クラウド サービス構成または仮想マシン構成でプールを作成するサンプル スクリプトについては、「[Azure CLI を使用した Azure Batch プールの管理](https://docs.microsoft.com/azure/batch/batch-cli-sample-manage-pool)」を参照してください。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -34,7 +39,7 @@ ms.lasthandoff: 03/24/2017
 
 ## <a name="clean-up-job"></a>ジョブのクリーンアップ
 
-上記のサンプル スクリプトを実行したら、次のコマンドを実行して、ジョブとそのすべてのタスクを削除します。 プールは別途削除する必要があることに注意してください。[プールの管理に関するチュートリアル](./batch-cli-sample-manage-pool.md)に関する記事を参照してください。
+上記のサンプル スクリプトを実行したら、次のコマンドを実行して、ジョブとそのすべてのタスクを削除します。 プールは別に削除する必要があることに注意してください。 プールの作成と削除の詳細については、「[Azure CLI を使用した Azure Batch プールの管理](./batch-cli-sample-manage-pool.md)」を参照してください。
 
 ```azurecli
 az batch job delete --job-id myjob
@@ -52,6 +57,7 @@ az batch job delete --job-id myjob
 | [az batch job show](https://docs.microsoft.com/cli/azure/batch/job#show) | 指定された Batch ジョブの詳細を取得します。  |
 | [az batch task create](https://docs.microsoft.com/cli/azure/batch/task#create) | 指定された Batch ジョブにタスクを追加します。  |
 | [az batch task show](https://docs.microsoft.com/cli/azure/batch/task#show) | 指定された Batch ジョブから、タスクの詳細を取得します。  |
+| [az batch task list](https://docs.microsoft.com/cli/azure/batch/task#list) | 指定したジョブに関連するタスクを一覧表示します。  |
 
 ## <a name="next-steps"></a>次のステップ
 

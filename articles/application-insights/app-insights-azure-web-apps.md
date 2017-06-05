@@ -3,7 +3,7 @@ title: "Azure Web アプリのパフォーマンスの監視 |Microsoft Docs"
 description: "Azure Web アプリのアプリケーション パフォーマンスの監視。 チャートの読み込みおよび応答時間、依存関係の情報やパフォーマンス警告を設定します。"
 services: application-insights
 documentationcenter: .net
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 0b2deb30-6ea8-4bc4-8ed0-26765b85149f
 ms.service: azure-portal
@@ -11,12 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/30/2017
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: c6f25b8cf8c133f44644db1507958b2176efa230
-ms.lasthandoff: 04/13/2017
+ms.date: 05/05/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: da09e09bb0605da583716e125f5d961bfb7af0c7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -40,9 +41,19 @@ Azure で Web アプリを既に実行している場合、要求率とエラー
 2. Application Insights をインストールしたら、**Web アプリをインストルメント化**します。 
    
     ![Web アプリをインストルメント化する](./media/app-insights-azure-web-apps/restart-web-app-for-insights.png)
+
+   ページ ビューとユーザー テレメトリに対する**クライアント側の監視を有効にします**。
+
+   * [設定]、[アプリケーションの設定] の順に選択します
+   * [アプリ設定] で、新しいキー値ペアを追加します。 
+   
+    キー: `APPINSIGHTS_JAVASCRIPT_ENABLED` 
+    
+    値: `true`
+   * 設定を **[保存]** し、アプリを **[再起動]** します。
 3. **アプリを監視**し、  [データを探索](#explore-the-data)します。
 
-後で必要に応じて、Application Insights でアプリをビルドして再デプロイできます。
+後で必要に応じて、Application Insights でアプリを構築できます。
 
 *Application Insights を削除するか、送信先を別のリソースに切り替えるにはどうすればよいですか。*
 
@@ -104,6 +115,7 @@ Application Insights では、アプリへの SDK のインストールによっ
 
 ## <a name="next-steps"></a>次のステップ
 * [実行中のアプリに対してプロファイラーを実行](app-insights-profiler.md)します。
+* [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) - Application Insights で Azure Functions を監視する
 * [Azure 診断](app-insights-azure-diagnostics.md) が Application Insights に送信されるように設定します。
 * [サービスの正常性メトリックを監視](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)して、サービスの可用性と応答性を確認します。
 * 操作イベントが発生したり、メトリックがしきい値を超えたりするたびに、[アラート通知を受け取り](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)ます。

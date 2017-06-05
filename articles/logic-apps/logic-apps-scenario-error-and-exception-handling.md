@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/29/2016
-ms.author: b-hoedid
-translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: b996ed1889ec39de78dcee9bbcb18a5982fc5f7f
-ms.lasthandoff: 04/04/2017
+ms.author: LADocs; b-hoedid
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: f68b27e007ad2de9e880f1fe0736d403f74dc80b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -46,12 +47,12 @@ ms.lasthandoff: 04/04/2017
 
 ## <a name="how-we-solved-the-problem"></a>問題の解決方法
 
-ここでは、[Azure DocumentDB](https://azure.microsoft.com/services/documentdb/ "Azure DocumentDB") をログとエラーのレコードを格納するリポジトリとして選びました (DocumentDB では、レコードはドキュメントと呼ばれます)。 Azure Logic Apps にはあらゆる応答の標準テンプレートが用意されています。そのためカスタム スキーマを作成する必要はないだろうと考えました。 場合によっては、エラー レコードとログ レコードの**挿入**と**クエリ**を行う API アプリを作成することもできます。 また、それぞれのスキーマを API アプリ内で定義してもかまいません。  
+ここでは、[Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/ "Azure Cosmos DB") をログとエラーのレコードを格納するリポジトリとして選びました (Cosmos DB では、レコードはドキュメントと呼ばれます)。 Azure Logic Apps にはあらゆる応答の標準テンプレートが用意されています。そのためカスタム スキーマを作成する必要はないだろうと考えました。 場合によっては、エラー レコードとログ レコードの**挿入**と**クエリ**を行う API アプリを作成することもできます。 また、それぞれのスキーマを API アプリ内で定義してもかまいません。  
 
-もう 1 つの要件は、特定の日付を越えたらレコードを消去するというものでした。 DocumentDB には [Time to Live](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Time to Live") (TTL) というプロパティがあり、レコードごと、またはコレクションに対して **Time to Live** 値を設定することができます。 この機能により、DocumentDB から手動でレコードを削除する手間が省かれました。
+もう 1 つの要件は、特定の日付を越えたらレコードを消去するというものでした。 Cosmos DB には [Time to Live](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Time to Live") (TTL) というプロパティがあり、レコードごと、またはコレクションに対して **Time to Live** 値を設定することができます。 この機能により、Cosmos DB から手動でレコードを削除する手間が省かれました。
 
 > [!IMPORTANT]
-> このチュートリアルの作業を行うためには、DocumentDB データベースと 2 つのコレクション (ログとエラー) を作成する必要があります。
+> このチュートリアルの作業を行うためには、Cosmos DB データベースと 2 つのコレクション (ログとエラー) を作成する必要があります。
 
 ## <a name="create-the-logic-app"></a>ロジック アプリの作成
 
@@ -258,7 +259,7 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
 }             
 ```
 
-#### <a name="insert-error-into-documentdb--request"></a>DocumentDB へのエラーの挿入 (要求)
+#### <a name="insert-error-into-cosmos-db--request"></a>Cosmos DB へのエラーの挿入 (要求)
 
 ``` json
 
@@ -281,7 +282,7 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
 }
 ```
 
-#### <a name="insert-error-into-documentdb--response"></a>DocumentDB へのエラーの挿入 (応答)
+#### <a name="insert-error-into-cosmos-db--response"></a>Cosmos DB へのエラーの挿入 (応答)
 
 ``` json
 {
@@ -399,16 +400,16 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
 ```
 
 
-## <a name="documentdb-repository-and-portal"></a>DocumentDB リポジトリとポータル
+## <a name="cosmos-db-repository-and-portal"></a>Cosmos DB リポジトリとポータル
 
-ソリューションの機能は、 [DocumentDB](https://azure.microsoft.com/services/documentdb) を使って拡張されています。
+ソリューションの機能は、[Cosmos DB](https://azure.microsoft.com/services/documentdb) を使って拡張されています。
 
 ### <a name="error-management-portal"></a>エラー管理ポータル
 
-エラーを表示するには、DocumentDB からエラー レコードを取得して表示する MVC Web アプリを作成します。 現在のバージョンでは、**一覧表示**、**詳細表示**、**編集**、**削除**の各操作が含まれます。
+エラーを表示するには、Cosmos DB からエラー レコードを取得して表示する MVC Web アプリを作成します。 現在のバージョンでは、**一覧表示**、**詳細表示**、**編集**、**削除**の各操作が含まれます。
 
 > [!NOTE]
-> 編集操作について: DocumentDB では、ドキュメント全体が置き換えられます。 **一覧表示**と**詳細表示**に示したレコードは、あくまでサンプルです。 実際の患者予約レコードではありません。
+> 編集操作について: Cosmos DB では、ドキュメント全体が置き換えられます。 **一覧表示**と**詳細表示**に示したレコードは、あくまでサンプルです。 実際の患者予約レコードではありません。
 
 これまでに説明した方法で作成した MVC アプリのサンプルの詳細を以下に示します。
 
@@ -492,3 +493,4 @@ lLogic Apps 例外管理 API アプリケーションのソース コードは�
 * [さらに他のロジック アプリ の例とシナリオを見る](../logic-apps/logic-apps-examples-and-scenarios.md)
 * [ロジック アプリの監視について知る](../logic-apps/logic-apps-monitor-your-logic-apps.md)
 * [ロジック アプリの自動デプロイ テンプレートを作成する](../logic-apps/logic-apps-create-deploy-template.md)
+

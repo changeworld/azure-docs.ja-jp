@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2017
+ms.date: 05/12/2017
 ms.author: joflore
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: f9dc195040d0fa1321dff9ec97d9ca1e4770d325
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: fde08bfc3a73c54ee53b5d8efffd3001894416b3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 05/13/2017
 
 
 ---
@@ -74,11 +74,23 @@ ms.lasthandoff: 05/08/2017
 
     多くの場合、特定のメッセージが表示され、問題解決の手段がユーザーに通知されます。
 
-## <a name="scenarios-supported-for-password-writeback"></a>パスワード ライトバックでサポートされるシナリオ
+## <a name="configuring-password-writeback"></a>パスワード ライトバックの構成
 
 パスワード ライトバックを使用する場合、マイクロソフトでは [Azure AD Connect](./connect/active-directory-aadconnect-get-started-express.md) の自動更新機能を使用することをお勧めしています。
 
-[DirSync と Azure AD Sync のサポート ライフサイクル](connect/active-directory-aadconnect-dirsync-deprecated.md)に関する追加情報
+DirSync と Azure AD Sync は、パスワード ライトバックを有効にする方法としてはサポートされなくなりました。[DirSync と Azure AD Sync からのアップグレード](connect/active-directory-aadconnect-dirsync-deprecated.md)に関する記事に、切り替えに役立つ情報が記載されています。
+
+以下の手順では、既に環境内で[簡単設定](./connect/active-directory-aadconnect-get-started-express.md)または[カスタム設定](./connect/active-directory-aadconnect-get-started-custom.md)を使用して Azure AD Connect を構成済みであることが前提となっています。
+
+1. パスワード ライトバックを構成および有効化するには、Azure AD Connect サーバーにログインして **Azure AD Connect** 構成ウィザードを開始します。
+2. [ようこそ] 画面で **[構成]** をクリックします。
+3. [追加のタスク] 画面で **[同期オプションのカスタマイズ]** をクリックし、**[次へ]** をクリックします。
+4. [Azure AD に接続] 画面で全体管理者の資格情報を入力し、**[次へ]** を選択します。
+5. [ディレクトリの接続] 画面と [ドメインと OU のフィルタリング] 画面で、**[次へ]** を選択します。
+6. [オプション機能] 画面で **[パスワード ライトバック]** の横にあるチェック ボックスをオンにし、**[次へ]** をクリックします。
+   ![Azure AD Connect でパスワード ライトバックを有効にする][Writeback]
+7. [構成の準備完了] 画面で **[構成]** をクリックし、処理が完了するまで待ちます。
+8. [構成が完了しました] と表示されたら、**[終了]** をクリックします。
 
 ## <a name="licensing-requirements-for-password-writeback"></a>パスワード ライトバックに必要なライセンス
 
@@ -172,15 +184,15 @@ ms.lasthandoff: 05/08/2017
 
 次のリンク先では、Azure AD を使用したパスワードのリセットに関する追加情報が得られます。
 
-* [**クイック スタート**](active-directory-passwords-getting-started.md) - Azure AD のセルフ サービスによるパスワードのリセットの管理を始めることができます。 
+* [**クイック スタート**](active-directory-passwords-getting-started.md) - Azure AD のセルフサービスによるパスワードのリセットの管理を始めることができます。 
 * [**ライセンス**](active-directory-passwords-licensing.md) - Azure AD のライセンスを構成します。
-* [**データ**](active-directory-passwords-data.md) - パスワード管理に必要なデータとその使用方法がわかります。
-* [**展開**](active-directory-passwords-best-practices.md) - ここにあるガイダンスを使用してユーザーに対する SSPR を計画してデプロイできます。
+* [**データ**](active-directory-passwords-data.md) - パスワード管理に必要なデータとその使用方法がわかります
+* [**展開**](active-directory-passwords-best-practices.md) - ここで見つかるガイダンスを使用してユーザーに対する SSPR を計画してデプロイできます
 * [**カスタマイズ**](active-directory-passwords-customize.md) - 会社の SSPR エクスペリエンスの外観をカスタマイズします。
-* [**ポリシー**](active-directory-passwords-policy.md) - Azure AD のパスワード ポリシーを把握し、設定します。
-* [**レポート**](active-directory-passwords-reporting.md) - ユーザーが SSPR 機能にアクセスしたかどうかや、アクセスしたタイミングと場所を検出します。
-* [**技術的詳細**](active-directory-passwords-how-it-works.md) - しくみを詳しく説明しています。
+* [**ポリシー**](active-directory-passwords-policy.md) - Azure AD のパスワード ポリシーを把握し、設定します
+* [**レポート**](active-directory-passwords-reporting.md) - ユーザーが SSPR 機能にアクセスしたかどうかや、アクセスしたタイミングと場所を検出します
+* [**技術的詳細**](active-directory-passwords-how-it-works.md) - しくみを詳しく説明しています
 * [**よく寄せられる質問**](active-directory-passwords-faq.md) - どのようにですか? なぜですか? 何ですか? どこですか? 誰がですか? いつですか? - ずっと確認したかった質問に対する回答
 * [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - SSPR の一般的な問題を解決する方法について説明しています
 
-
+[Writeback]: ./media/active-directory-passwords-writeback/enablepasswordwriteback.png "Azure AD Connect でパスワード ライトバックを有効にする"

@@ -13,12 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2017
+ms.date: 05/10/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 6ce37a9bc4db2473c3751955e46cc9796cb051e1
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 2b0e664be70cafe1b474382b939b4ceaa2eb80d9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -34,7 +35,9 @@ MSDN Azure 特典のサブスクライバーと MSDN 開発テスト用従量課
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>仮想マシンではどれくらいのストレージ容量を使用できますか。
 各データ ディスクで最大 1 TB (テラバイト) を利用できます。 使用できるデータ ディスクの数は、仮想マシンのサイズによって決まります。 詳細については、「 [仮想マシンのサイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
-Azure のストレージ アカウントでは、オペレーティング システム ディスクと任意のデータ ディスクのストレージを利用できます。 各ディスクは、実際には .vhd ファイルであり、ページ BLOB として保存されます。 価格の詳細については、「 [Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。
+Azure Managed Disks は、Azure Virtual Machines でデータの永続的な記憶域として使用できる、おすすめの新規ディスク ストレージ サービスです。 各仮想マシンで複数の管理ディスクを使用することができます。 管理ディスクには、耐用性別に Premium 管理ディスクと Standard 管理ディスクの 2 種類のストレージ オプションがあります。 価格情報については、「[Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks)」を参照してください。
+
+Azure のストレージ アカウントでは、オペレーティング システム ディスクと任意のデータ ディスクのストレージも利用できます。 各ディスクは、実際には .vhd ファイルであり、ページ BLOB として保存されます。 価格の詳細については、「 [Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。
 
 ## <a name="how-can-i-access-my-virtual-machine"></a>仮想マシンへのアクセス方法を教えてください。
 Windows VM 用のリモート デスクトップ接続 (RDP) を使用してリモート接続を確立します。 手順については、「 [Windows が実行されている Azure 仮想マシンに接続してログオンする方法](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。 最大 2 つの同時接続がサポートされます (サーバーがリモート デスクトップ サービスのセッション ホストとして構成されている場合を除く)。  
@@ -54,27 +57,31 @@ Hyper-V に慣れている場合は、VMConnect と同様のツールを検討�
 
 ## <a name="can-i-add-an-existing-vm-to-an-availability-set"></a>既存の VM を可用性セットに追加できますか。
 いいえ。 VM を可用性セットの一部にする場合は、VM を作成するときにセットに追加する必要があります。 作成後に VM を可用性セットに追加する方法は現在ありません。
+
 ## <a name="can-i-upload-a-virtual-machine-to-azure"></a>仮想マシンを Azure にアップロードすることができますか。
-はい。 手順については、「 [Windows VM イメージを Microsoft Azure にアップロードする ](upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+はい。 手順については、[オンプレミス VM を Azure に移行する](on-prem-to-azure.md)方法に関するページを参照してください。
 
 ## <a name="can-i-resize-the-os-disk"></a>OS ディスクのサイズを変更できますか。
 はい。 手順については、「 [Azure リソース グループで仮想マシンの OS ドライブを展開する方法](expand-os-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
 ## <a name="can-i-copy-or-clone-an-existing-azure-vm"></a>既存の Azure VM をコピーまたは複製できますか。
-はい。 手順については、「 [Resource Manager デプロイ モデルで Windows 仮想マシンのコピーを作成する方法](vhd-copy.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+はい。 管理対象イメージを利用し、仮想マシンのイメージを作成し、そのイメージを利用して複数の新しい VM を構築できます。 手順については、[VM のカスタム イメージを作成する](tutorial-custom-images.md)方法に関するページを参照してください。
 
 ## <a name="why-am-i-not-seeing-canada-central-and-canada-east-regions-through-azure-resource-manager"></a>Azure Resource Manager でカナダ中部およびカナダ東部のリージョンが表示されない理由を教えてください。
 
 カナダ中部およびカナダ東部の 2 つの新しいリージョンは、既存の Azure サブスクリプションで仮想マシンを作成した場合、自動的には登録されません。 Azure Resource Manager を使用してこれら以外の任意のリージョンに Azure ポータルから仮想マシンをデプロイすると、この登録は自動的に行われます。 その他の任意の Azure リージョンに仮想マシンがデプロイされると、新しいリージョンを後続の仮想マシンで使用できるようになります。
 
 ## <a name="does-azure-support-linux-vms"></a>Azure では Linux VM がサポートされていますか?
-はい。 Linux VM をすばやく作成して試してみるには、「 [ポータルを使用して Azure に Linux VM を作成する](../linux/quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
+はい。 Linux VM をすばやく作成して試してみるには、「 [ポータルを使用して Azure に Linux VM を作成する](../linux/quick-create-portal.md)」を参照してください。
 
 ## <a name="can-i-add-a-nic-to-my-vm-after-its-created"></a>VM の作成後、NIC を VM に追加できますか。
 はい、できるようになりました。 最初に VM を停止して割り当てを解除する必要があります。 その後、NIC を追加または削除 (VM 上の最後の NIC でない場合) できます。 
 
 ## <a name="are-there-any-computer-name-requirements"></a>コンピューター名の要件はありますか。
 はい。 コンピューター名は最大 15 文字の長さまで指定できます。 リソースの名前付けの詳細については、「 [インフラストラクチャの名前付けガイドライン](infrastructure-naming-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 」を参照してください。
+
+## <a name="are-there-any-resource-group-name-requirements"></a>リソース グループの名前に関する要件はありますか。
+はい。 リソース グループ名は最大 90 文字の長さまで指定できます。 リソース グループの詳細については、[インフラストラクチャ リソース グループ ガイドライン](infrastructure-resource-groups-guidelines.md)を参照してください。
 
 ## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>VM を作成する際のユーザー名の要件は何ですか。
 

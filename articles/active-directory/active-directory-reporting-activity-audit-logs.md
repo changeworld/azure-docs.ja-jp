@@ -1,6 +1,7 @@
 ---
-title: "Azure Active Directory ポータルの監査アクティビティ レポート - プレビュー | Microsoft Docs"
-description: "Azure Active Directory ポータル プレビューの監査アクティビティ レポートの概要"
+
+title: "Azure Active Directory ポータルの監査アクティビティ レポート | Microsoft Docs"
+description: "Azure Active Directory ポータルの監査アクティビティ レポートの概要"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -12,20 +13,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/07/2017
+ms.date: 05/04/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: d88f8bed0cbd14ee49986d6749396731a810034b
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 4065682658bdd99066266b8b4e5e4c4605ff3db9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
-# <a name="audit-activity-reports-in-the-azure-active-directory-portal---preview"></a>Azure Active Directory ポータルの監査アクティビティ レポート - プレビュー
+# <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルの監査アクティビティ レポート 
 
-Azure Active Directory [プレビュー](active-directory-preview-explainer.md)のレポートでは、環境の動作状況を判断するために必要なすべての情報を取得できます。
+環境の動作状況を判断するために必要な情報は、Azure Active Directory (Azure AD) レポートで入手できます。
 
-Azure Active Directory のレポート アーキテクチャは、次のコンポーネントで構成されます。
+Azure AD のレポート アーキテクチャは、次のコンポーネントで構成されます。
 
 - **アクティビティ** 
     - **サインイン アクティビティ** – マネージ アプリケーションの使用状況とユーザー サインイン アクティビティに関する情報

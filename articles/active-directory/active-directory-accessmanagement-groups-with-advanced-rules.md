@@ -1,6 +1,6 @@
 ---
-title: "属性を使用した高度なルールの作成 | Microsoft Docs"
-description: "サポートされる式のルールの演算子とパラメーターを含むグループの高度な規則を作成する方法。"
+title: "Azure Active Directory でユーザー属性に基づきグループのメンバーを動的に設定する | Microsoft Docs"
+description: "サポートされている式のルール演算子とパラメーターを含む、グループ メンバーシップの高度なルールを作成する方法。"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -12,23 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2017
+ms.date: 05/14/2017
 ms.author: curtand
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 24f56b68a9313ed1bce859b9343a14de83d9b600
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: b0c8eb46b6c01662f0b53213843f8a7ad295e5aa
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/16/2017
 
 
 ---
-# <a name="using-attributes-to-create-advanced-rules"></a>属性を使用した高度なルールの作成
-Azure クラシック ポータルを使用すると、高度なルールを作成し、Azure Active Directory (Azure AD) グループに複雑で動的な属性ベースのメンバーシップを適用できます。  
+# <a name="populate-groups-dynamically-based-on-user-attributes"></a>ユーザー属性に基づきグループのメンバーを動的に設定する 
+Azure クラシック ポータルでは、Azure Active Directory (Azure AD) グループに対して、より複雑な属性ベースの動的メンバーシップを有効化できます。  
 
-ユーザーが任意の属性を変更すると、システムではディレクトリ内のすべての動的なグループ ルールを評価して、このユーザーの属性の変更によって、グループの追加または削除がトリガーされるかどうかを確認します。 ユーザーがグループのルールを満たしている場合は、そのグループにメンバーとして追加されます。 メンバーになっているグループのルールを満たさなくなった場合は、そのグループのメンバーから削除されます。
+ユーザーのいずれかの属性が変更されると、システムはディレクトリ内のすべての動的なグループ ルールを評価して、このユーザーの属性の変更によってグループの追加または削除がトリガーされるかどうかを確認します。 ユーザーがグループのルールを満たしている場合は、そのグループにメンバーとして追加されます。 メンバーになっているグループのルールを満たさなくなった場合は、そのグループのメンバーから削除されます。
 
 > [!NOTE]
-> セキュリティ グループまたは Office 365 グループには、動的メンバーシップのルールを設定できます。 現在、アプリケーションに対するグループ ベースの割り当てでは入れ子になったグループ メンバーシップはサポートされていません。
+> セキュリティ グループまたは Office 365 グループには、動的メンバーシップのルールを設定できます。 
 >
 > グループの動的メンバーシップを実行するには、次のユーザーに Azure AD Premium ライセンスが割り当てられている必要があります。
 >

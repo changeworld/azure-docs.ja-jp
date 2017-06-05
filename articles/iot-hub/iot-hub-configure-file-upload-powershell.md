@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 5ae6057dbcbffa5d8496819d015ec060d7ca6cc9
-ms.lasthandoff: 03/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: deac38afc200a0c68751a061d3fb284f8244225b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -136,7 +137,7 @@ Azure IoT Hub の管理についてさらに学習するには、次のリンク
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
 * [IoT Hub 開発者ガイド][lnk-devguide]
-* [IoT Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
+* [IoT Edge を使用したデバイスのシミュレーション][lnk-iotedge]
 * [IoT ソリューションの徹底的なセキュリティ保護][lnk-securing]
 
 [lnk-upload]: iot-hub-devguide-file-upload.md
@@ -146,7 +147,7 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-monitor]: iot-hub-operations-monitoring.md
 
 [lnk-devguide]: iot-hub-devguide.md
-[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md
 [lnk-securing]: iot-hub-security-ground-up.md
 [lnk-powershell-install]: https://docs.microsoft.com/powershell/azure/install-azurerm-ps
 [lnk-powershell-storage]: https://docs.microsoft.com/powershell/module/azurerm.storage/

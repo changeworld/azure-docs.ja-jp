@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/10/2017
 ms.author: markgal;trinadhk;
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: a7b55e3949cf8406f7c62e9dfd6cc1567d3a5996
-ms.lasthandoff: 03/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 52b7360230efd0a63e411339fe32f929a905391d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -49,8 +50,6 @@ ms.lasthandoff: 03/14/2017
 
 ## <a name="download-the-vault-credential-file"></a>資格情報コンテナーの資格情報ファイルのダウンロード
 データを Azure にバックアップする前に、オンプレミスのコンピューターをバックアップ コンテナーで認証する必要があります。 認証は *コンテナーの資格情報*を使用して実行されます。 資格情報コンテナーの資格情報ファイルは、セキュリティで保護されたチャネルを介してクラシック ポータルからダウンロードされます。 証明書の秘密キーは、ポータルやサービスには保持されません。
-
-[コンテナーの資格情報を使用した Backup サービスでの認証](backup-introduction-to-azure-backup.md#what-is-the-vault-credential-file)の詳細を参照してください。
 
 ### <a name="to-download-the-vault-credential-file-to-a-local-machine"></a>コンテナーの資格情報ファイルをローカル コンピューターにダウンロードするには
 1. 左側のナビゲーション ウィンドウで **[Recovery Services]**をクリックし、作成したバックアップ コンテナーを選択します。
@@ -116,7 +115,7 @@ ms.lasthandoff: 03/14/2017
 3. バックアップのスケジュール ウィザードの [作業の開始] ページで、 **[次へ]**をクリックします。
 4. [バックアップする項目の選択] 画面で、 **[項目の追加]**をクリックします。
 5. バックアップするファイルとフォルダーを選択し、 **[OK]**をクリックします。
-6. ページの下部にある **[次へ]**」を参照してください。
+6. **[次へ]** をクリックします。
 7. **[バックアップ スケジュールの選択]** ページで**バックアップ スケジュール**を指定し、**[次へ]** をクリックします。
 
     毎日 (1 日に最大 3 回) または毎週のバックアップをスケジュールすることができます。

@@ -1,6 +1,6 @@
 ---
-title: "HDInsight での Apache Kafka の概要 | Microsoft Docs"
-description: "HDInsight での Kafka の作成と操作の基本について説明します。"
+title: "Apache Kafka の開始 - Azure HDInsight | Microsoft Docs"
+description: "Azure HDInsight で Apache Kafka クラスターを作成する方法について説明します。 トピック、サブスクライバー、コンシューマーの作成方法について説明します。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -13,31 +13,25 @@ ms.devlang:
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/14/2017
+ms.date: 05/16/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 695c6bd0a08e88be2d8e28eb15d903f3ae1eccaf
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: f92d71542a2aa797b84f8742f74a02fea895e25a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/17/2017
 
 ---
-# <a name="get-started-with-apache-kafka-preview-on-hdinsight"></a>HDInsight での Apache Kafka (プレビュー) の概要
+# <a name="start-with-apache-kafka-preview-on-hdinsight"></a>HDInsight での Apache Kafka (プレビュー) の開始
 
-[Apache Kafka](https://kafka.apache.org) は、HDInsight で使用可能なオープンソースの分散ストリーミング プラットフォームです。 発行/サブスクライブ メッセージ キューと同様の機能を備えているため、メッセージ ブローカーとして多く使われています。 このドキュメントでは、HDInsight クラスターで Kafka を作成し、Java アプリケーションとの間でデータを送受信する方法について説明します。
+Azure HDInsight で [Apache Kafka](https://kafka.apache.org) クラスターを作成および使用する方法について説明します。 Apache Kafka は、HDInsight で利用できるオープンソースの分散ストリーミング プラットフォームです。 発行/サブスクライブ メッセージ キューと同様の機能を備えているため、メッセージ ブローカーとして多く使われています。
 
 > [!NOTE]
 > 現時点では、HDInsight で使用可能な Kafka のバージョンには 0.9.0 (HDInsight 3.4) と 0.10.0 (HDInsight 3.5) の 2 つがあります。 このドキュメントの手順では、HDInsight 3.5 で Kafka を使用していることを想定しています。
 
-## <a name="prerequisite"></a>前提条件
-
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-Apache Kafka チュートリアルを正常に完了するには、次の条件を満たす必要があります。
-
-* **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-
-* **SSH と SCP を熟知していること**。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+## <a name="prerequisites"></a>前提条件
 
 * [Java JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html) または同等の OpenJDK など。
 
@@ -94,7 +88,7 @@ HDInsight で Kafka クラスターを作成するには、次の手順に従い
 
 ## <a name="connect-to-the-cluster"></a>クラスターへの接続
 
-クライアントから、SSH を使用してクラスターに接続します。 Linux、Unix、MacOS を使用している場合、または Windows 10 上で Bash を使用している場合は、次のコマンドを入力します。
+クライアントから、SSH を使用してクラスターに接続します。
 
 ```ssh SSHUSER@CLUSTERNAME-ssh.azurehdinsight.net```
 
@@ -104,7 +98,7 @@ HDInsight で Kafka クラスターを作成するには、次の手順に従い
 
 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-##<a id="getkafkainfo"></a>Zookeeper およびブローカーのホスト情報を取得する
+## <a id="getkafkainfo"></a>Zookeeper およびブローカーのホスト情報を取得する
 
 Kafka を使用する場合、*Zookeeper* ホストと*ブローカー* ホストという 2 つのホストの値を知る必要があります。 これらのホストは、Kafka の API や、Kafka に付属するユーティリティの多くで使用されます。
 
@@ -116,12 +110,12 @@ Kafka を使用する場合、*Zookeeper* ホストと*ブローカー* ホス�
     sudo apt -y install jq
     ```
 
-2. 次のコマンドを使用して、Ambari から取得した情報で環境変数を設定します。 __KAFKANAME__ は、Kafka クラスターの名前に置き換えます。 __PASSWORD__ は、クラスターの作成時に使用したログイン (管理者) パスワードに置き換えます。
+2. 次のコマンドを使用して、Ambari から取得した情報で環境変数を設定します。 __CLUSTERNAME__ は Kafka クラスターの名前に置き換えます。 __PASSWORD__ は、クラスターの作成時に使用したログイン (管理者) パスワードに置き換えます。
 
     ```bash
-    export KAFKAZKHOSTS=`curl --silent -u admin:'PASSWORD' -G http://headnodehost:8080/api/v1/clusters/KAFKANAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")'`
+    export KAFKAZKHOSTS=`curl --silent -u admin:'PASSWORD' -G http://headnodehost:8080/api/v1/clusters/CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")'`
 
-    export KAFKABROKERS=`curl --silent -u admin:'PASSWORD' -G http://headnodehost:8080/api/v1/clusters/KAFKANAME/services/HDFS/components/DATANODE | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")'`
+    export KAFKABROKERS=`curl --silent -u admin:'PASSWORD' -G http://headnodehost:8080/api/v1/clusters/CLUSTERNAME/services/HDFS/components/DATANODE | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")'`
 
     echo '$KAFKAZKHOSTS='$KAFKAZKHOSTS
     echo '$KAFKABROKERS='$KAFKABROKERS
@@ -136,8 +130,8 @@ Kafka を使用する場合、*Zookeeper* ホストと*ブローカー* ホス�
     `wn1-kafka.eahjefxxp1netdbyklgqj5y1ud.cx.internal.cloudapp.net:9092,wn0-kafka.eahjefxxp1netdbyklgqj5y1ud.cx.internal.cloudapp.net:9092`
    
     > [!WARNING]
-    > このセッションで返された情報は、常に正しいわけではありません。 クラスターをスケーリングすると、新しくブローカーが追加されるか削除されます。 障害が発生しノードが交換された場合、そのノードのホスト名が変わる可能性があります。 
-    > 
+    > このセッションで返された情報は、常に正しいわけではありません。 クラスターをスケーリングすると、新しくブローカーが追加されるか削除されます。 障害が発生しノードが交換された場合、そのノードのホスト名が変わる可能性があります。
+    >
     > 有効な情報を得るために、Zookeeper ホストとブローカー ホストの情報は、使用する直前に取得するようにしてください。
 
 ## <a name="create-a-topic"></a>トピックを作成する
@@ -176,7 +170,7 @@ Kafka では、トピック内に*レコード*が格納されます。 レコ�
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper $KAFKAZKHOSTS --topic test --from-beginning
     ```
    
-    これにより、レコードがトピックから取得され、表示されます。 `--from-beginning` を使用することで、すべてのレコードが取得されるように、コンシューマーにストリームの先頭から開始するように指示しています。
+    このコマンドにより、レコードがトピックから取得され、表示されます。 `--from-beginning` を使用することで、すべてのレコードが取得されるように、コンシューマーにストリームの先頭から開始するように指示しています。
 
 3. __Ctrl+C__ キーを使用してコンシューマーを停止します。
 
@@ -192,12 +186,12 @@ Kafka では、トピック内に*レコード*が格納されます。 レコ�
 
     * **Consumer** - トピックからレコードを読み取ります。
 
-2. 開発環境で、コマンド ラインからサンプルの `Producer-Consumer` ディレクトリの場所に移動し、次のコマンドを使用して jar パッケージを作成します。
-   
+2. サンプルの `Producer-Consumer` ディレクトリの場所に移動し、次のコマンドを使用して jar パッケージを作成します。
+
     ```
     mvn clean package
     ```
-   
+
     このコマンドにより、`kafka-producer-consumer-1.0-SNAPSHOT.jar` というファイルを含む `target` という名前のディレクトリが作成されます。
 
 3. 次のコマンドを使用して、HDInsight クラスターに `kafka-producer-consumer-1.0-SNAPSHOT.jar` ファイルをコピーします。
@@ -208,13 +202,13 @@ Kafka では、トピック内に*レコード*が格納されます。 レコ�
    
     **SSHUSER** は、クラスターの SSH ユーザーに置き換えます。また、**CLUSTERNAME** はクラスターの名前に置き換えます。 メッセージが表示されたら、SSH ユーザーのパスワードを入力します。
 
-4. `scp` コマンドによるファイルのコピーが完了したら、SSH を使用してクラスターに接続し、次のコマンドを使用して、先ほど作成した test トピックにレコードを書き込みます。
-   
+4. `scp` コマンドによるファイルのコピーが完了したら、SSH を使用してクラスターに接続します。 次のコマンドを使用し、テスト トピックにレコードを書き込みます。
+
     ```bash
     ./kafka-producer-consumer.jar producer $KAFKABROKERS
     ```
-   
-    このコマンドにより、プロデューサーが開始され、レコードが書き込まれます。 書き込まれたレコードの数を確認できるように、カウンターが表示されます。
+
+    書き込まれたレコードの数を確認できるように、カウンターが表示されます。
 
     > [!NOTE]
     > アクセス許可の拒否エラーが発生した場合は、```chmod +x kafka-producer-consumer.jar``` コマンドを使用してファイルを実行可能にしてください。
@@ -240,7 +234,7 @@ Kafka の重要なコンセプトとして、コンシューマーはレコー�
     ```
 
     > [!NOTE]
-    > これは新しい SSH セッションであるため、「[Zookeeper およびブローカーのホスト情報を取得する](#getkafkainfo)」セクションのコマンドを使用して `$KAFKABROKERS` を設定する必要があります。
+    > 「[Zookeeper およびブローカーのホスト情報を取得する](#getkafkainfo)」セクションのコマンドを使用して、この SSH セッションの `$KAFKABROKERS` を設定してください。
 
 2. 各セッションでトピックから取得されたレコード数がカウントされる様子を確認します。 両方のセッションの合計は、先ほど 1 つのコンシューマーから取得したレコード数と同じになるはずです。
 
@@ -260,11 +254,11 @@ Kafka に格納されたレコードは、受信した順番でパーティシ�
     このプロジェクトには、上記で作成した `test` トピックからレコードを読み取る `Stream` というクラスのみが含まれています。 このクラスは読み取った単語数をカウントしてから、`wordcounts` という名前のトピックに各単語とカウントを出力します。 `wordcounts` トピックは、このセクションの後の手順で作成します。
 
 2. 開発環境で、コマンド ラインから `Streaming` ディレクトリの場所に移動し、次のコマンドを使用して jar パッケージを作成します。
-   
-    ```
+
+    ```bash
     mvn clean package
     ```
-   
+
     このコマンドにより、`kafka-streaming-1.0-SNAPSHOT.jar` というファイルを含む `target` という名前のディレクトリが作成されます。
 
 3. 次のコマンドを使用して、HDInsight クラスターに `kafka-streaming-1.0-SNAPSHOT.jar` ファイルをコピーします。
@@ -332,7 +326,7 @@ Kafka に格納されたレコードは、受信した順番でパーティシ�
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
-HDInsight クラスターの作成で問題が発生した場合は、[アクセス制御の要件](hdinsight-administer-use-portal-linux.md#create-clusters)に関するページを参照してください。
+HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](hdinsight-administer-use-portal-linux.md#create-clusters)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,7 +3,7 @@ title: "Azure Log Analytics におけるログ検索でのデータ収集 | Micr
 description: "ユーザーはログの検索を通じて、環境内のさまざまなソースから収集したコンピューター データを組み合わせて相互の関係を比較することができます。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: bwren
 manager: carmonm
 editor: 
 ms.assetid: 0d7b6712-1722-423b-a60f-05389cde3625
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
-ms.author: banders
+ms.date: 05/16/2017
+ms.author: bwren
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
-ms.openlocfilehash: d4935af0647f0629cca327a7e87c29f1252af382
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: b005d0fb25483f3dce14133038d7759dff07fc7c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/28/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -149,7 +149,7 @@ EventLog=System TimeGenerated>NOW-24HOURS
 
 
 #### <a name="to-search-using-a-boolean-operator"></a>ブール演算子を使用して検索するには
-* 検索クエリ フィールドに、「 `EventLog=System TimeGenerated>NOW-24HOURS"`  
+* 検索クエリ フィールドに、「 `EventLog=System TimeGenerated>NOW-24HOURS`  
     ![ブール演算子を使用した検索](./media/log-analytics-log-searches/oms-search-boolean.png)
 
 期間は視覚的に制御でき、ほとんどの場合そうしたいと思いますが、時間フィルターを直接クエリに含めることには利点があります。 たとえば、これはダッシュボードで非常に役立ちます。ダッシュボードでは、ダッシュボード ページの "*グローバル*" なタイム セレクターに関係なく、各タイルの時間をオーバーライドできます。 詳細については、[ダッシュボードでの時間の問題](http://cloudadministrator.wordpress.com/2014/10/19/system-center-advisor-restarted-time-matters-in-dashboard-part-6/)に関するページを参照してください。

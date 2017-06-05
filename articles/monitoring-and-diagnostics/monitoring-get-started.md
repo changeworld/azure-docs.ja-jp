@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: johnkem
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
 ms.openlocfilehash: 6e1a1f522b9632c7d162d36ad5baa23d6130f8b6
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/31/2017
 
 

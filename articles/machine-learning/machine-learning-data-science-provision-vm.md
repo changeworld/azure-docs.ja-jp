@@ -9,16 +9,15 @@ editor: cgronlun
 ms.assetid: e1467c0f-497b-48f7-96a0-7f806a7bec0b
 ms.service: machine-learning
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 8df9fbf4b09cb63cafc9d43592edc68068a28f14
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 1469e7a2f5f41ef52c0ff77e6e70378951594135
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/20/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -160,7 +159,7 @@ VM には複数の Azure ツールがインストールされます。
 * **AzCopy**: Microsoft Azure ストレージ アカウントとの間でのデータ移動に使用します。 利用状況を表示するには、コマンド プロンプトで「 **Azcopy** 」と入力します。 
 * **Microsoft Azure ストレージ エクスプローラー**: Azure ストレージ アカウントに保存したオブジェクトを参照し、Azure ストレージとの間でデータを転送するために使用します。 検索で「 **Storage Explorer** 」と入力するか、Windows の [スタート] メニューから このツールにアクセスします。 
 * **Adlcopy**: Azure Data Lake にデータを移動するために使用します。 利用状況を表示するには、コマンド プロンプトで「 **adlcopy** 」と入力します。 
-* **dtui**はクラウドにおける NoSQL データベースである Azure DocumentDB との間でデータを移動するために使用します。 コマンド プロンプトに「 **dtui** 」と入力します。 
+* **dtui** はクラウドにおける NoSQL データベースである Azure Cosmos DB との間でデータを移動するために使用します。 コマンド プロンプトに「 **dtui** 」と入力します。 
 * **Microsoft Data Management Gateway**: オンプレミスのデータ ソースとクラウド間のデータ移動を可能にします。 Azure Data Factory のようなツール内で使用されます。 
 * **Microsoft Azure PowerShell**: PowerShell スクリプト言語で Azure リソースを管理するためのツールです。やはり VM にインストールされます。 
 

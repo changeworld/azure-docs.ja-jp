@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: integrate
 ms.date: 03/02/2017
-ms.author: kevin
-translationtype: Human Translation
+ms.author: kevin;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
 ms.openlocfilehash: a5befbf1dc1862b3b0803eb4940341d246ec036c
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/14/2017
 
 

@@ -12,6 +12,7 @@
 ### [既にライブの Web アプリ](app-insights-monitor-performance-live-website-now.md)
 ### [Windows サービス](app-insights-windows-services.md)
 ### [Windows デスクトップ](app-insights-windows-desktop.md)
+### [ASP.NET Core](app-insights-asp-net-core.md)
 
 ## Java アプリの監視
 ### [Web アプリ](app-insights-java-get-started.md)
@@ -33,7 +34,8 @@
 ## 計画と設計
 ### [Web アプリおよびサービスの詳細な診断](app-insights-devops.md)
 ### [Web アプリケーションのパフォーマンスを監視する](app-insights-web-monitor-performance.md)
-### [Application Insights リソースの分離](app-insights-separate-resources.md)
+### [開発、テスト、運用の分離](app-insights-separate-resources.md)
+### [複数のコンポーネントを含むアプリの監視](app-insights-monitor-multi-role-apps.md)
 ### [Application Insights での作業](app-insights-how-do-i.md)
 
 
@@ -112,7 +114,6 @@
 ### [カスタム イベントとメトリックの API](app-insights-api-custom-events-metrics.md)
 ### [テレメトリのフィルター処理および前処理](app-insights-api-filtering-sampling.md)
 ### [サンプリング](app-insights-sampling.md)
-### [ASP.NET Core](app-insights-asp-net-core.md)
 
 ## 管理
 ### [価格とクォータの管理](app-insights-pricing.md)
@@ -138,7 +139,7 @@
 ## [.NET](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights)
 ## [Java](/java/api/com.microsoft.applicationinsights)
 ## [JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
-## [REST ()](https://dev.applicationinsights.io/)
+## [データ アクセス API](https://dev.applicationinsights.io/)
 ## [データ モデル](application-insights-data-model.md)
 ### [要求](application-insights-data-model-request-telemetry.md)
 ### [依存関係](application-insights-data-model-dependency-telemetry.md)
@@ -146,6 +147,7 @@
 ### [トレース](application-insights-data-model-trace-telemetry.md)
 ### [Event](application-insights-data-model-event-telemetry.md)
 ### [メトリック](application-insights-data-model-metric-telemetry.md)
+### [コンテキスト](application-insights-data-model-context.md)
 ## [テレメトリの関連付け](application-insights-correlation.md)
 
 # リソース

@@ -12,12 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 05/22/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 7faa27220bcc07fff0bb2a77e7b90c386cc5ae1e
-ms.lasthandoff: 03/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: 726f1e2caa4ad313510355c52bcdc100fc1fb488
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -34,9 +35,20 @@ ms.lasthandoff: 03/14/2017
 > * [Data Lake Analytics U-SQL アクティビティ](data-factory-usql-activity.md)
 > * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
 
-Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ変換アクティビティを使用して、生データを予測や洞察に変換および処理します。 ストアド プロシージャ アクティビティは、Data Factory でサポートされる変換アクティビティの 1 つです。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](data-factory-data-transformation-activities.md) に関する記事に基づいています。
+## <a name="overview"></a>概要
+Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ変換アクティビティを使用して、生データを予測や洞察に変換および処理します。 ストアド プロシージャ アクティビティは、Data Factory でサポートされる変換アクティビティの 1 つです。 この記事は、データ変換と Data Factory でサポートされる変換アクティビティの概要を説明する、[データ変換アクティビティ](data-factory-data-transformation-activities.md)に関する記事に基づいています。
 
-ストアド プロシージャ アクティビティを使用して、次のデータ ストアのいずれかでストアド プロシージャを呼び出すことができます。社内または Azure 仮想マシン (VM) 内のAzure SQL Database、Azure SQL Data Warehouse、SQL Server Database。  SQL Server を使用している場合、データベースをホストするコンピューターと同じコンピューターまたはデータベースにアクセスできる別のコンピューター上にデータ管理ゲートウェイをインストールします。 データ管理ゲートウェイは、安全かつ管理された方法でオンプレミスまたは Azure VM 上のデータ ソースをクラウド サービスに接続するコンポーネントです。 詳細については、[データ管理ゲートウェイ](data-factory-data-management-gateway.md)に関する記事をご覧ください。
+ストアド プロシージャ アクティビティを使用して、社内または Azure 仮想マシン (VM) 上の次のいずれかのデータ ストアでストアド プロシージャを呼び出すことができます。 
+
+- Azure SQL Database
+- Azure SQL Data Warehouse
+- SQL Server データベース  SQL Server を使用している場合、データベースをホストするコンピューターと同じコンピューターまたはデータベースにアクセスできる別のコンピューター上にデータ管理ゲートウェイをインストールします。 データ管理ゲートウェイは、安全かつ管理された方法でオンプレミスまたは Azure VM 上のデータ ソースをクラウド サービスに接続するコンポーネントです。 詳細については、[データ管理ゲートウェイ](data-factory-data-management-gateway.md)に関する記事をご覧ください。
+
+> [!IMPORTANT]
+> Azure SQL Database または SQL Server にデータをコピーする場合、**sqlWriterStoredProcedureName** プロパティを使用してストアド プロシージャを呼び出すように、コピー アクティビティで **SqlSink** を構成できます。 詳細については、[コピー アクティビティからのストアド プロシージャの呼び出し](data-factory-invoke-stored-procedure-from-copy-activity.md)に関する記事をご覧ください。 プロパティの詳細については、[Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties) の各コネクタに関する記事をご覧ください。
+>  
+> Azure SQL Database、SQL Server、または Azure SQL Data Warehouse からデータをコピーする場合、**sqlReaderStoredProcedureName** プロパティを使用して、ソース データベースからデータを読み取るストアド プロシージャを呼び出すように、コピー アクティビティで **SqlSource** を構成できます。 詳細については、[Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties)、[Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties) の各コネクタに関する記事をご覧ください。          
+
 
 次のチュートリアルでは、ストアド プロシージャ アクティビティをパイプラインで使用して、Azure SQL Databases でストアド プロシージャを呼び出します。 
 
@@ -95,7 +107,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
    ![Data Factory ホーム ページ](media/data-factory-stored-proc-activity/data-factory-home-page.png)
 
 ### <a name="create-an-azure-sql-linked-service"></a>Azure SQL のリンク サービスを作成する
-データ ファクトリの作成後、Azure SQL Database をデータ ファクトリに関連付ける Azure SQL リンク サービスを作成します。 このデータベースには、sampletable テーブルと sp_sample ストアド プロシージャが含まれます。
+データ ファクトリの作成後、sampletable テーブルと sp_sample ストアド プロシージャが格納された Azure SQL Database をデータ ファクトリにリンクする、Azure SQL のリンクされたサービスを作成します。
 
 1. **SProcDF** の **[Data Factory]** ブレードで、**[作成およびデプロイ]** をクリックして Data Factory エディターを起動します。
 2. コマンド バーの **[新しいデータ ストア]** をクリックし、**[Azure SQL Database]** を選択します。 Azure SQL のリンク サービスを作成するための JSON スクリプトがエディターに表示されます。
@@ -114,6 +126,8 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
     ![リンクされたサービスを表示しているツリー ビュー](media/data-factory-stored-proc-activity/tree-view.png)
 
 ### <a name="create-an-output-dataset"></a>出力データセットの作成
+ストアド プロシージャがデータを生成しない場合でも、ストアド プロシージャ アクティビティの出力データセットを指定する必要があります。 これは、出力データセットによってアクティビティのスケジュール (時間単位、日単位など、アクティビティの実行頻度) が開始されるためです。 出力データセットでは、ストアド プロシージャを実行する、Azure SQL Database、Azure SQL Data Warehouse、または SQL Server Database を表す**リンクされたサービス**を使用する必要があります。 出力データセットは、パイプラインの別のアクティビティ ([連鎖するアクティビティ](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)) による後続処理のために、ストアド プロシージャの結果を渡す 1 つの方法として使用できます。 ただし、Data Factory では、ストアド プロシージャの出力をこのデータセットに自動的に書き込むわけではありません。 出力データセットが参照する SQL テーブルへの書き込みは、ストアド プロシージャが実行します。 出力データセットに**ダミー データセット** (ストアド プロシージャの出力を実際には保持しないテーブルを参照するデータセット) を指定できる場合もあります。 このダミー データセットは、ストアド プロシージャ アクティビティを実行するスケジュールの指定にのみ使用されます。 
+
 1. **[...More (その他)]** (ツール バー上) をクリックし、**[新しいデータセット]**、**[Azure SQL]** の順にクリックします。 コマンド バーの **[新しいデータセット]** をクリックし、**[Azure SQL]** を選択します。
 
     ![リンクされたサービスを表示しているツリー ビュー](media/data-factory-stored-proc-activity/new-dataset.png)
@@ -140,8 +154,14 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
     ![リンクされたサービスを表示しているツリー ビュー](media/data-factory-stored-proc-activity/tree-view-2.png)
 
 ### <a name="create-a-pipeline-with-sqlserverstoredprocedure-activity"></a>SqlServerStoredProcedure アクティビティでパイプラインを作成する
-今度は、SqlServerStoredProcedure アクティビティでパイプラインを作成しましょう。
+次に、ストアド プロシージャ アクティビティを含むパイプラインを作成しましょう。 
 
+次のプロパティに注意してください。 
+
+- **type** プロパティを **SqlServerStoredProcedure** に設定します。 
+- type プロパティの **storedProcedureName** を **sp_sample** (ストアド プロシージャの名前) に設定します。
+- **storedProcedureParameters** セクションには、**DataTime** という名前のパラメーターが 1 つ含まれています。 JSON でのパラメーターの名前は、大文字と小文字の区別も含め、ストアド プロシージャの定義でのパラメーターの名前と一致する必要があります。 パラメーターで null を渡す必要がある場合は、構文として `"param1": null` (すべて小文字) を使用します。
+ 
 1. **[...More (その他)]** (コマンド バー上) をクリックし、**[新しいパイプライン]** をクリックします。
 2. 次の JSON スニペットをコピーして貼り付けます。   
 
@@ -170,16 +190,12 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
                     "name": "SprocActivitySample"
                 }
             ],
-             "start": "2016-08-02T00:00:00Z",
-             "end": "2016-08-02T05:00:00Z",
+             "start": "2017-04-02T00:00:00Z",
+             "end": "2017-04-02T05:00:00Z",
             "isPaused": false
         }
     }
     ```
-
-    **storedProcedureName** は **sp_sample** に設定します。 パラメーター **DateTime** の名前は、大文字と小文字の区別も含め、ストアド プロシージャの定義と一致させる必要があります。
-
-    パラメーターで null を渡す必要がある場合は、構文として "param1": null (すべて小文字) を使用します。
 3. パイプラインをデプロイするには、ツール バーの **[デプロイ]** をクリックします。  
 
 ### <a name="monitor-the-pipeline"></a>パイプラインの監視
@@ -198,10 +214,74 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
 
    Azure Data Factory パイプラインの監視の詳細については、 [パイプラインの監視](data-factory-monitor-manage-pipelines.md) に関するページを参照してください。  
 
-> [!NOTE]
-> この例では、SprocActivitySample に入力がありません。 このアクティビティをアップストリームのアクティビティ (つまり、前の処理) と連鎖させる場合は、アップストリーム アクティビティの出力をこのアクティビティの入力として使用できます。 この場合、アップストリーム アクティビティが完了し、アップストリーム アクティビティの出力が使用可能 (準備完了状態) になるまで、このアクティビティは実行されません。 入力は、ストアド プロシージャ アクティビティのパラメーターとして直接使用できません。
->
->
+
+## <a name="specify-an-input-dataset"></a>入力データセットの指定
+このチュートリアルでは、ストアド プロシージャ アクティビティに入力データセットはありません。 入力データセットを指定すると、入力データセットのスライスが使用可能 (準備完了状態) になるまでストアド プロシージャ アクティビティは実行されません。 データセットには、(同じパイプラインの別のアクティビティで生成されるものではない) 外部データセットを指定することも、アップストリーム アクティビティ (このアクティビティの前に実行されるアクティビティ) で生成される内部データセットを指定することもできます。 ストアド プロシージャ アクティビティの複数の入力データセットを指定できます。 この場合、ストアド プロシージャ アクティビティは、入力データセットのすべてのスライスが使用可能 (準備完了状態) である場合にのみ実行されます。 ストアド プロシージャで入力データセットをパラメーターとして使用することはできません。 入力データセットは、ストアド プロシージャ アクティビティを開始する前に、依存関係の確認にのみ使用されます。
+
+## <a name="chaining-with-other-activities"></a>他のアクティビティとの連鎖
+アップストリーム アクティビティをこのアクティビティと連鎖させる場合は、アップストリーム アクティビティの出力をこのアクティビティの入力として指定します。 この場合、アップストリーム アクティビティが完了し、アップストリーム アクティビティの出力データセットが使用可能 (準備完了状態) になるまでストアド プロシージャ アクティビティは実行されません。 複数のアップストリーム アクティビティの出力データセットを、ストアド プロシージャ アクティビティの入力データセットとして指定できます。 この場合、ストアド プロシージャ アクティビティは、入力データセットのすべてのスライスが使用可能である場合にのみ実行されます。  
+
+次の例では、コピー アクティビティの出力である OutputDataset が、ストアド プロシージャ アクティビティの入力になります。 そのため、コピー アクティビティが完了し、OutputDataset のスライスが使用可能 (準備完了状態) になるまで、ストアド プロシージャ アクティビティは実行されません。 複数の入力データセットを指定した場合、入力データセットのすべてのスライスが使用可能 (準備完了状態) になるまで、ストアド プロシージャ アクティビティは実行されません。 入力データセットは、ストアド プロシージャ アクティビティのパラメーターとして直接使用することはできません。 
+
+連鎖するアクティビティの詳細については、「[パイプライン内の複数アクティビティ](data-factory-create-pipelines.md#multiple-activities-in-a-pipeline)」をご覧ください。
+
+```json
+{
+
+    "name": "ADFTutorialPipeline",
+    "properties": {
+        "description": "Copy data from a blob to blob",
+        "activities": [
+            {
+                "type": "Copy",
+                "typeProperties": {
+                    "source": {
+                        "type": "BlobSource"
+                    },
+                    "sink": {
+                        "type": "BlobSink",
+                        "writeBatchSize": 0,
+                        "writeBatchTimeout": "00:00:00"
+                    }
+                },
+                "inputs": [ { "name": "InputDataset" } ],
+                "outputs": [ { "name": "OutputDataset" } ],
+                "policy": {
+                    "timeout": "01:00:00",
+                    "concurrency": 1,
+                    "executionPriorityOrder": "NewestFirst"
+                },
+                "name": "CopyFromBlobToSQL"
+            },
+            {
+                "type": "SqlServerStoredProcedure",
+                "typeProperties": {
+                    "storedProcedureName": "SPSproc"
+                },
+                "inputs": [ { "name": "OutputDataset" } ],
+                "outputs": [ { "name": "SQLOutputDataset" } ],
+                "policy": {
+                    "timeout": "01:00:00",
+                    "concurrency": 1,
+                    "retry": 3
+                },
+                "name": "RunStoredProcedure"
+            }
+
+        ],
+        "start": "2017-04-12T00:00:00Z",
+        "end": "2017-04-13T00:00:00Z",
+        "isPaused": false,
+    }
+}
+```
+
+同様に、ストアド プロシージャ アクティビティを**ダウンストリーム アクティビティ** (ストアド プロシージャ アクティビティの完了後に実行されるアクティビティ) とリンクするには、ストアド プロシージャ アクティビティの出力データセットを、パイプラインのダウンストリーム アクティビティの入力として指定します。
+
+> [!IMPORTANT]
+> Azure SQL Database または SQL Server にデータをコピーする場合、**sqlWriterStoredProcedureName** プロパティを使用してストアド プロシージャを呼び出すように、コピー アクティビティで **SqlSink** を構成できます。 詳細については、[コピー アクティビティからのストアド プロシージャの呼び出し](data-factory-invoke-stored-procedure-from-copy-activity.md)に関する記事をご覧ください。 プロパティの詳細については、[Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties) の各コネクタに関する記事をご覧ください。
+>  
+> Azure SQL Database、SQL Server、または Azure SQL Data Warehouse からデータをコピーする場合、**sqlReaderStoredProcedureName** プロパティを使用して、ソース データベースからデータを読み取るストアド プロシージャを呼び出すように、コピー アクティビティで **SqlSource** を構成できます。 詳細については、[Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties)、[Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties) の各コネクタに関する記事をご覧ください。          
 
 ## <a name="json-format"></a>JSON 形式
 JSON 形式のストアド プロシージャ アクティビティの定義を次に示します。
@@ -225,15 +305,16 @@ JSON 形式のストアド プロシージャ アクティビティの定義を�
 }
 ```
 
-## <a name="json-properties"></a>JSON のプロパティ
+次の表に、JSON のプロパティを示します。
+
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | name | アクティビティの名前 |はい |
 | 説明 |アクティビティの用途を説明するテキストです。 |なし |
 | type | **SqlServerStoredProcedure** に設定する必要があります | はい |
 | inputs | 省略可能。 入力データセットを指定した場合、ストアド プロシージャ アクティビティの実行に使用できる ("準備完了" 状態である) 必要があります。 ストアド プロシージャで入力データセットをパラメーターとして使用することはできません。 入力データセットは、ストアド プロシージャ アクティビティを開始する前に、依存関係の確認にのみ使用されます。 |なし |
-| outputs | ストアド プロシージャ アクティビティの出力データセットを指定する必要があります。 出力データセットでは、ストアド プロシージャ アクティビティの**スケジュール** (毎時、毎週、毎月など) を指定します。 <br/><br/>出力データセットでは、ストアド プロシージャを実行する、Azure SQL Database、Azure SQL Data Warehouse、または SQL Server Database を表す**リンクされたサービス**を使用する必要があります。 <br/><br/>出力データセットは、パイプラインの別のアクティビティ ([連鎖するアクティビティ](data-factory-scheduling-and-execution.md#run-activities-in-a-sequence)) による後続処理のために、ストアド プロシージャの結果を渡す 1 つの方法として使用できます。 ただし、Data Factory では、ストアド プロシージャの出力をこのデータセットに自動的に書き込むわけではありません。 出力データセットが参照する SQL テーブルへの書き込みは、ストアド プロシージャが実行します。 <br/><br/>出力データセットに**ダミー データセット**を指定できる場合もあります。ダミー データセットは、ストアド プロシージャ アクティビティを実行するスケジュールの指定にのみ使用されます。 |あり |
-| storedProcedureName |出力テーブルに使用するリンク サービスで示される Azure SQL データベースまたは Azure SQL Data Warehouse のストアド プロシージャ名を指定します。 |はい |
+| outputs | ストアド プロシージャ アクティビティの出力データセットを指定する必要があります。 出力データセットでは、ストアド プロシージャ アクティビティの**スケジュール** (毎時、毎週、毎月など) を指定します。 <br/><br/>出力データセットでは、ストアド プロシージャを実行する、Azure SQL Database、Azure SQL Data Warehouse、または SQL Server Database を表す**リンクされたサービス**を使用する必要があります。 <br/><br/>出力データセットは、パイプラインの別のアクティビティ ([連鎖するアクティビティ](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)) による後続処理のために、ストアド プロシージャの結果を渡す 1 つの方法として使用できます。 ただし、Data Factory では、ストアド プロシージャの出力をこのデータセットに自動的に書き込むわけではありません。 出力データセットが参照する SQL テーブルへの書き込みは、ストアド プロシージャが実行します。 <br/><br/>出力データセットに**ダミー データセット**を指定できる場合もあります。ダミー データセットは、ストアド プロシージャ アクティビティを実行するスケジュールの指定にのみ使用されます。 |あり |
+| storedProcedureName |出力テーブルで使用するリンクされたサービスで表される Azure SQL Database、Azure SQL Data Warehouse、または SQL Server データベースのストアド プロシージャの名前を指定します。 |あり |
 | storedProcedureParameters |ストアド プロシージャのパラメーター値を指定します。 パラメーターで null を渡す必要がある場合は、構文として "param1": null (すべて小文字) を使用します。 このプロパティの使用方法については、次のサンプルをご覧ください。 |なし |
 
 ## <a name="passing-a-static-value"></a>静的な値を渡す

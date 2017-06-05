@@ -1,5 +1,5 @@
 ---
-title: "コンテナーと BLOB への匿名読み取りアクセスを管理する | Microsoft Docs"
+title: "Azure Blob Storage のコンテナーと BLOB に対するパブリック読み取りアクセスを有効にする | Microsoft Docs"
 description: "コンテナーと BLOB で匿名アクセスを使用できるようにする方法、およびこれらにプログラムでアクセスする方法について説明します。"
 services: storage
 documentationcenter: 
@@ -12,47 +12,50 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 04/26/2017
 ms.author: marsma
-translationtype: Human Translation
-ms.sourcegitcommit: 931503f56b32ce9d1b11283dff7224d7e2f015ae
-ms.openlocfilehash: 4fe41c3aabf5e6d9ae899cea0b9f9b6c9c305cf0
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: c7b83667b58649c156a62fa68cebd854c13e2cba
+ms.contentlocale: ja-jp
+ms.lasthandoff: 04/27/2017
 
 ---
-# <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>コンテナーと BLOB への匿名読み取りアクセスを管理する
-## <a name="overview"></a>Overview
-既定では、ストレージ アカウントの所有者のみがそのアカウントを使ってストレージ リソースにアクセスできます。 Blob Storage の場合にのみ、コンテナーとその BLOB への匿名読み取りアクセスを許可するように、コンテナーのアクセス許可を設定できます。これにより、アカウント キーを共有せずにこれらのリソースへのアクセスを許可できます。
 
-匿名アクセスは、特定の BLOB で匿名読み取りアクセスを常に使用できるようにするシナリオに最適です。 詳細な制御では、さまざまなアクセス許可を使用し、指定された期間において、制限付きアクセスを委任するための Shared Access Signature を作成できます。 Shared Access Signature の作成方法の詳細については、「 [Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
+# <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>コンテナーと BLOB への匿名読み取りアクセスを管理する
+Azure Blob Storage のコンテナーとその BLOB に対する匿名のパブリック読み取りアクセスを有効にすることができます。 そうすることで、アカウント キーを共有せず、Shared Access Signature (SAS) も必要とせずに、これらのリソースに対する読み取り専用のアクセスを付与できます。
+
+パブリック読み取りアクセスは、特定の BLOB を匿名読み取りアクセスで常に使用できるようにするシナリオに最適です。 より細かく制御するには、Shared Access Signature を作成できます。 Shared Access Signature を使用すると、特定の期間、異なるアクセス許可を使用して制限付きのアクセスを提供できます。 Shared Access Signature の作成方法の詳細については、[Azure Storage での Shared Access Signature (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)に関するページを参照してください。
 
 ## <a name="grant-anonymous-users-permissions-to-containers-and-blobs"></a>コンテナーと BLOB への匿名ユーザーのアクセス許可を付与します。
 既定では、コンテナーとコンテナー内の BLOB には、上位のストレージ アカウントの所有者のみがアクセスできます。 コンテナーとその BLOB に対する読み取りアクセス許可を匿名ユーザーに付与する場合は、コンテナーのアクセス許可を設定し、パブリック アクセスを許可できます。 パブリック アクセスが許可されたコンテナー内の BLOB は、匿名ユーザーが読み取ることができ、その際に要求の認証は不要です。
 
-コンテナーへのアクセスは次のように管理できます。
+以下のアクセス許可を備えたコンテナーを構成できます。
 
-* **完全なパブリック読み取りアクセス:** コンテナーと BLOB のデータを匿名の要求で読み取ることができます。 クライアントは匿名要求でコンテナー内の BLOB を列挙できますが、ストレージ アカウント内のコンテナーを列挙することはできません。
-* **BLOB に限定したパブリック読み取りアクセス:** 該当するコンテナー内の BLOB データは匿名要求で読み取り可能ですが、コンテナー データは参照できません。 クライアントはコンテナー内の BLOB を匿名要求で列挙することはできません。
-* **パブリック読み取りアクセスなし:** コンテナーと BLOB のデータはアカウント所有者に限り読み取ることができます。
+* **パブリック読み取りアクセスなし:** コンテナーとその BLOB には、ストレージ アカウント所有者だけがアクセスできます。 これは、すべての新しいコンテナーの既定値です。
+* **BLOB に限定したパブリック読み取りアクセス:** コンテナー内の BLOB は匿名要求で読み取り可能ですが、コンテナー データは使用できません。 匿名クライアントはコンテナー内の BLOB を列挙することはできません。
+* **完全なパブリック読み取りアクセス:** すべてのコンテナーと BLOB のデータを匿名要求で読み取ることができます。 クライアントは匿名要求でコンテナー内の BLOB を列挙できますが、ストレージ アカウント内のコンテナーを列挙することはできません。
 
-コンテナーのアクセス許可は次の方法で設定できます。
+コンテナーのアクセス許可は、次の方法で設定することができます。
 
-* [Azure ポータル](https://portal.azure.com)から設定。
-* ストレージ クライアント ライブラリまたは REST API を使用して、プログラムで設定。
-* PowerShell を使用して設定。 Azure PowerShell からのコンテナー アクセス許可の設定については、 [Azure Storage での Azure PowerShell の使用](storage-powershell-guide-full.md#how-to-manage-azure-blobs)に関するページを参照してください。
+* [Azure ポータル](https://portal.azure.com)
+* [Azure PowerShell](storage-powershell-guide-full.md#how-to-manage-azure-blobs)
+* [Azure CLI 2.0](storage-azure-cli.md#create-and-manage-blobs)
+* ストレージ クライアント ライブラリのいずれか、または REST API を使用して、プログラムで設定
 
-### <a name="setting-container-permissions-from-the-azure-portal"></a>Azure ポータルからコンテナーのアクセス許可を設定する
-[Azure ポータル](https://portal.azure.com)からコンテナーのアクセス許可を設定するには、次の手順に従います。
+### <a name="set-container-permissions-in-the-azure-portal"></a>Azure Portal でコンテナーのアクセス許可を設定する
+[Azure Portal](https://portal.azure.com) でコンテナーのアクセス許可を設定するには、次の手順に従います。
 
-1. ストレージ アカウントのダッシュボードに移動します。
-2. 一覧からコンテナーの名前を選択します。 名前をクリックすると、選択したコンテナー内の BLOB が公開されます。
-3. ツール バーから **[アクセス ポリシー]** を選択します。
-4. 次のスクリーンショットに示すように、 **[アクセスの種類]** フィールドから目的のアクセス許可レベルを選択します。
+1. ポータルで **[ストレージ アカウント]** ブレードを開きます。 ストレージ アカウントを検索するには、メイン ポータル メニュー ブレードで **[ストレージ アカウント]** を選択します。
+1. メニュー ブレードの **[BLOB サービス]** で、**[コンテナー]** を選択します。
+1. コンテナーの行を右クリックするか、省略記号を選択して、コンテナーの**コンテキスト メニュー**を開きます。
+1. コンテキスト メニューの **[アクセス ポリシー]** を選択します。
+1. ドロップダウン メニューの **[アクセスの種類]** を選択します。
 
     ![Edit Container Metadata dialog](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
 
-### <a name="setting-container-permissions-programmatically-using-net"></a>.NET を使用してプログラムでコンテナーのアクセス許可を設定する
-.NET クライアント ライブラリを使用してコンテナーのアクセス許可を設定するには、まず **GetPermissions** メソッドを呼び出して、コンテナーの既存のアクセス許可を取得します。 次に、**GetPermissions** メソッドによって返される **BlobContainerPermissions** オブジェクトに対して **PublicAccess** プロパティを設定します。 最後に、更新されたアクセス許可を使用して **SetPermissions** メソッドを呼び出します。
+### <a name="set-container-permissions-with-net"></a>.NET でコンテナーのアクセス許可を設定する
+C# と .NET 用ストレージ クライアント ライブラリを使用してコンテナーのアクセス許可を設定するには、まず、**GetPermissions** メソッドを呼び出して、コンテナーの既存のアクセス許可を取得します。 次に、**GetPermissions** メソッドによって返される **BlobContainerPermissions** オブジェクトに対して **PublicAccess** プロパティを設定します。 最後に、更新されたアクセス許可を使用して **SetPermissions** メソッドを呼び出します。
 
 次の例では、コンテナーのアクセス許可を完全なパブリック読み取りアクセスに設定します。 アクセス許可を BLOB 限定のパブリック読み取りアクセスに設定するには、**PublicAccess** プロパティを **BlobContainerPublicAccessType.Blob** に設定します。 匿名ユーザーのすべてのアクセス許可を削除するには、このプロパティを **BlobContainerPublicAccessType.Off**に設定します。
 
@@ -104,7 +107,6 @@ public static void ListBlobsAnonymously()
 }
 ```
 
-
 ### <a name="reference-a-blob-anonymously"></a>BLOB を匿名で参照する
 匿名アクセスを使用できる BLOB の URL がある場合は、この URL を使用して BLOB を直接参照することができます。
 
@@ -148,14 +150,9 @@ public static void DownloadBlobAnonymously()
 | ページ範囲の取得 |すべて |すべて |
 | Append Blob |所有者のみ |所有者のみ |
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
+
 * [Azure Storage サービスの認証](https://msdn.microsoft.com/library/azure/dd179428.aspx)
 * [Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)
 * [Shared Access Signature を使用したアクセスの委任](https://msdn.microsoft.com/library/azure/ee395415.aspx)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

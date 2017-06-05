@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: overview
 ms.date: 3/1/2017
-ms.author: elbutter
-translationtype: Human Translation
+ms.author: elbutter;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 49cbfca4f733356548b6c8f491fead9e2d7fdf5c
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/03/2017
 
 

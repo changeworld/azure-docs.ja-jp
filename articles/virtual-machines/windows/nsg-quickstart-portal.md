@@ -12,20 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/09/2017
+ms.date: 05/11/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 7b7c0251c0b2616f82b03b7288cbfe3b3b22c9c4
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 20aa8247a16195310a8cb03c13c34186456fd7af
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/11/2017
 
 
 ---
-# <a name="opening-ports-to-a-vm-in-azure-using-the-azure-portal"></a>Azure Portal を使用した Azure の VM へのポートの開放
+# <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Azure Portal を使用して仮想マシンへのポートを開く方法
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 ## <a name="quick-commands"></a>クイック コマンド
-[これらの手順は、Azure PowerShell を使用して実行](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)することもできます。
+[これらの手順は、Azure PowerShell を使用して実行](nsg-quickstart-powershell.md)することもできます。
 
 最初に、ネットワーク セキュリティ グループを作成します。 ポータルでリソース グループを選択し、**[追加]** をクリックして、[ネットワーク セキュリティ グループ] を探して選択します。
 

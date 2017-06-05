@@ -1,4 +1,4 @@
---- 
+---
 title: "Azure Automation の概要 | Microsoft Docs"
 description: "この記事では、Auzre Marketplace のサービスをオンボードする準備として、主要な概念と実装の詳細を確認しながら Azure Automation サービスの概要について説明します。"
 services: automation
@@ -15,16 +15,16 @@ ms.topic: get-started-article
 ms.date: 05/02/2017
 ms.author: magoedte
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 8a04fda8eaf6e14a278941e7bb55b23012f67850
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 9b4982ffece9283304ad3ab3c82a471ac1dbd463
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/11/2017
 
 ---
 
 ## <a name="getting-started-with-azure-automation"></a>Azure Automation の概要
 
-この概要ガイドでは、Azure Automation のデプロイに関連する主要な概念を紹介します。 Azure Automation を初めて使用する方や、System Center Orchestrator などの自動化ワークフロー ソフトウェアの使用経験がある方向けに、概念およびデプロイの詳細について説明します。 
+この概要ガイドでは、Azure Automation のデプロイに関連する主要な概念を紹介します。 Azure Automation を初めて使用する方や、System Center Orchestrator などの自動化ワークフロー ソフトウェアの使用経験がある方向けに、概念およびデプロイの詳細について説明します。
 
 ## <a name="key-concepts"></a>主要な概念
 
@@ -83,14 +83,14 @@ Hybrid Runbook のジョブを実行するコンピューターを指定する�
 ## <a name="security"></a>セキュリティ
 Azure Automation を使用すると、Azure 内のリソース、オンプレミスのリソース、他のクラウド プロバイダーのリソースに対するタスクを自動化できます。  Runbook が必要な操作を実行するためには、操作対象のリソースに安全に、サブスクリプション内で必要な最低限の権限だけでアクセスするための、アクセス許可が必要です。  
 
-### <a name="automation-account"></a>Automation アカウント 
+### <a name="automation-account"></a>Automation アカウント
 Azure Automation で Azure コマンドレットを使用してリソースに対して実行するすべての Automation タスクは、Azure Active Directory の組織 ID 資格情報に基づく認証を使用して、Azure に対する認証を行います。  Automation アカウントは、Azure リソースを構成および使用するためにポータルにサインインするときに使用するアカウントとは異なります。  
 
 各 Automation アカウントの Automation リソースは単一の Azure リージョンと関連付けられていますが、Automation アカウントではサブスクリプションのすべてのリソースを管理できます。 ポリシーにより、データやリソースを特定のリージョンに分離する必要がある場合は、異なるリージョンで Automation アカウントを作成します。
 
 > [!NOTE]
 > Azure ポータルで作成した Automation アカウントおよび各アカウントに含まれるリソースには、Azure クラシック ポータルでアクセスすることはできません。 これらのアカウントとリソースを Windows PowerShell で管理するには、[Azure リソース マネージャー] モジュールを使用する必要があります。
-> 
+>
 
 Azure Portal で Automation アカウントを作成すると、次の 2 つの認証エンティティが自動的に作成されます。
 
@@ -102,17 +102,17 @@ Azure Portal で Automation アカウントを作成すると、次の 2 つの�
 #### <a name="authentication-methods"></a>認証方法
 次の表は、Azure Automation によってサポートされる各環境のさまざまな認証方法をまとめたものです。
 
-| メソッド | 環境 
-| --- | --- | 
+| メソッド | 環境
+| --- | --- |
 | Azure 実行アカウントとクラシック実行アカウント |Azure Resource Manager と Azure クラシック デプロイメント |  
 | Azure AD ユーザー アカウント |Azure Resource Manager と Azure クラシック デプロイメント |  
 | Windows 認証 |Hybrid Runbook Worker を使用するローカル データ センターまたは他のクラウド プロバイダー |  
 | AWS 資格情報 |Amazon Web Services |  
 
 **「方法」の「認証とセキュリティ」**セクションにあるサポート記事では、そうした環境専用の既存または新規のアカウントを使用して、その環境の認証を構成するための概要と実装手順を説明しています。  Azure 実行アカウントとクラシック実行アカウントについては、「[PowerShell を使用して Automation 実行アカウントを更新する](automation-update-account-powershell.md)」を参照してください。既存の Automation アカウントが最初に実行アカウントまたはクラシック実行アカウントと共に構成されていない場合に、PowerShell を使用して、既存の Automation アカウントと実行アカウントを更新する方法について説明します。   
- 
+
 ## <a name="network"></a>ネットワーク
-Hybrid Runbook Worker を Microsoft Operations Management Suite (OMS) に接続して登録するには、その Hybrid Runbook Worker は、以下で説明するポート番号と URL にアクセスできる必要があります。  OMS に接続するには、[Microsoft Monitoring Agent に必要なポートと URL](../log-analytics/log-analytics-proxy-firewall.md#configure-settings-with-the-microsoft-monitoring-agent) のほかに、このポートと URL が必要です。 エージェントと OMS サービス間の通信にプロキシ サーバーを使用する場合、適切なリソースにアクセスできることを確認する必要があります。 ファイアウォールを使用してインターネットへのアクセスを制限している場合は、アクセスを許可するようにファイアウォールを構成する必要があります。
+Hybrid Runbook Worker を Microsoft Operations Management Suite (OMS) に接続して登録するには、その Hybrid Runbook Worker は、以下で説明するポート番号と URL にアクセスできる必要があります。  OMS に接続するには、[Microsoft Monitoring Agent に必要なポートと URL](../log-analytics/log-analytics-windows-agents.md) のほかに、このポートと URL が必要です。 エージェントと OMS サービス間の通信にプロキシ サーバーを使用する場合、適切なリソースにアクセスできることを確認する必要があります。 ファイアウォールを使用してインターネットへのアクセスを制限している場合は、アクセスを許可するようにファイアウォールを構成する必要があります。
 
 Automation と通信するには、次の一覧に示すポートと URL が Hybrid Runbook Worker に必要です。
 
@@ -136,11 +136,11 @@ Automation アカウントが特定のリージョンに対して定義されて
 | 英国南部 | uks-jobruntimedata-prod-su1.azure-automation.net |
 | 米国政府バージニア州 | usge-jobruntimedata-prod-su1.azure-automation.us |
 
-名前ではなく、IP アドレスの一覧を確認するには、Microsoft ダウンロード センターから [Azure データ センターの IP アドレス](https://www.microsoft.com/download/details.aspx?id=41653) xml ファイルをダウンロードして確認してください。 
+名前ではなく、IP アドレスの一覧を確認するには、Microsoft ダウンロード センターから [Azure データ センターの IP アドレス](https://www.microsoft.com/download/details.aspx?id=41653) xml ファイルをダウンロードして確認してください。
 
 > [!NOTE]
-> このファイルには、Microsoft Azure データ センターで使用される IP アドレス範囲 (Compute、SQL、および Storage の範囲を含む) が含まれています。 毎週投稿される最新のファイルには、現在デプロイされている範囲と今後変更される IP 範囲が反映されています。 ファイルに含まれている新しい範囲は、少なくとも 1 週間はデータ センターで使用されません。 Azure で実行されているサービスを正しく識別するために、毎週新しい xml ファイルをダウンロードし、サイトで必要な変更を実行してください。 ExpressRoute ユーザーは、このファイルを使用して、毎月第 1 週に Azure 領域の BGP アドバタイズが更新されていることに注目してください。 
-> 
+> このファイルには、Microsoft Azure データ センターで使用される IP アドレス範囲 (Compute、SQL、および Storage の範囲を含む) が含まれています。 毎週投稿される最新のファイルには、現在デプロイされている範囲と今後変更される IP 範囲が反映されています。 ファイルに含まれている新しい範囲は、少なくとも 1 週間はデータ センターで使用されません。 Azure で実行されているサービスを正しく識別するために、毎週新しい xml ファイルをダウンロードし、サイトで必要な変更を実行してください。 ExpressRoute ユーザーは、このファイルを使用して、毎月第 1 週に Azure 領域の BGP アドバタイズが更新されていることに注目してください。
+>
 
 
 ## <a name="implementation"></a>実装
@@ -175,16 +175,16 @@ Automation の推奨されるオンボード方法は、Marketplace から [Auto
 
 4. サービスの説明を読んだら、**[作成]** をクリックします。  
 
-5. **[Automation & Control]** 設定ブレードで、**[OMS ワークスペース]** を選択します。  **[OMS ワークスペース]** ブレードで、Automation アカウントと同じ Azure サブスクリプションに関連付けられている OMS ワークスペースを選択するか、OMS ワークスペースを作成します。  OMS ワークスペースがない場合は、**[新しいワークスペースの作成]** を選択し、**[OMS ワークスペース]** ブレードで次の手順を実行します。 
+5. **[Automation & Control]** 設定ブレードで、**[OMS ワークスペース]** を選択します。  **[OMS ワークスペース]** ブレードで、Automation アカウントと同じ Azure サブスクリプションに関連付けられている OMS ワークスペースを選択するか、OMS ワークスペースを作成します。  OMS ワークスペースがない場合は、**[新しいワークスペースの作成]** を選択し、**[OMS ワークスペース]** ブレードで次の手順を実行します。
    - 新しい **OMS ワークスペース**の名前を指定します。
    - 関連付ける**サブスクリプション**をドロップダウン リストから選択します (既定値が適切でない場合)。
    - **[リソース グループ]** では、リソース グループを作成するか、既存のリソース グループを選択できます。  
    - **[場所]**を選択します。  現在選択できる場所は、**オーストラリア南東部**、**米国東部**、**東南アジア**、**米国中西部**、および**西ヨーロッパ**のみです。
    - **[価格レベル]** を選択します。  このソリューションは、Free とノードごと (OMS) の 2 つのレベルで提供されています。  Free レベルは、1 日に収集できるデータの量、リテンション期間、Runbook ジョブの実行時間 (分) に上限が設けられています。  ノードごと (OMS) レベルでは 1 日に収集できるデータの量に上限がありません。  
-   - **[Automation アカウント]** を選択します。  OMS ワークスペースを新たに作成する場合はさらに、先ほど指定した新しい OMS ワークスペース (Azure サブスクリプション、リソース グループ、リージョンを含む) に関連付ける Automation アカウントを作成する必要があります。  **[Automation アカウントの作成]** を選択し、**[Automation アカウント]** ブレードで次の情報を入力します。 
+   - **[Automation アカウント]** を選択します。  OMS ワークスペースを新たに作成する場合はさらに、先ほど指定した新しい OMS ワークスペース (Azure サブスクリプション、リソース グループ、リージョンを含む) に関連付ける Automation アカウントを作成する必要があります。  **[Automation アカウントの作成]** を選択し、**[Automation アカウント]** ブレードで次の情報を入力します。
   - **[名前]** フィールドに、Automation アカウントの名前を入力します。
 
-    それ以外のオプションはすべて、選択した OMS ワークスペースに基づいて自動的に入力されます。これらのオプションを変更することはできません。  このサービスでは、Azure 実行アカウントが既定の認証方法になります。  **[OK]** をクリックすると、設定したオプションが検証され、Automation アカウントが作成されます。  進行状況は、メニューの **[通知]** で追跡できます。 
+    それ以外のオプションはすべて、選択した OMS ワークスペースに基づいて自動的に入力されます。これらのオプションを変更することはできません。  このサービスでは、Azure 実行アカウントが既定の認証方法になります。  **[OK]** をクリックすると、設定したオプションが検証され、Automation アカウントが作成されます。  進行状況は、メニューの **[通知]** で追跡できます。
 
     または、既存の Automation 実行アカウントを選択します。  既に別の OMS ワークスペースに関連付けられているアカウントは選択できません。選択すると、通知メッセージがブレードに表示されます。  既に関連付けられている場合は、別の Automation 実行アカウントを選択するか、作成する必要があります。
 
@@ -194,7 +194,7 @@ Automation の推奨されるオンボード方法は、Marketplace から [Auto
 
 7. **[Automation & Control]** 設定ブレードで、事前に選択された推奨ソリューションをインストールすることを確認します。 選択を解除したソリューションは、後で個別にインストールできます。  
 
-8. **[作成]** をクリックして、Automation と OMS ワークスペースのオンボードを続行します。 すべての設定が検証された後、ご利用のサブスクリプションへのサービスのデプロイが試行されます。  このプロセスは、完了までに数秒かかる場合があります。進行状況は、メニューの **[通知]** で確認してください。 
+8. **[作成]** をクリックして、Automation と OMS ワークスペースのオンボードを続行します。 すべての設定が検証された後、ご利用のサブスクリプションへのサービスのデプロイが試行されます。  このプロセスは、完了までに数秒かかる場合があります。進行状況は、メニューの **[通知]** で確認してください。
 
 サービスがオンボードされた後は、Runbook の作成、有効にした管理ソリューションの利用を開始することや、[Log Analytics](https://docs.microsoft.com/azure/log-analytics) を使用して、クラウドまたはオンプレミス環境のリソースによって生成されたデータの収集を開始することができます。   
 
@@ -202,5 +202,4 @@ Automation の推奨されるオンボード方法は、Marketplace から [Auto
 * 新しい Automation アカウントが Azure リソースに対して認証できることを確認するには、「[Azure Automation 実行アカウントの認証をテストする](automation-verify-runas-authentication.md)」を参照してください。
 * PowerShell Runbook の使用を開始するには、「[初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md)」を参照してください。
 * グラフィカル作成の詳細については、「[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)」を参照してください。
-
 

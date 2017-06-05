@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/10/2017
+ms.date: 05/11/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 7185ab62ee0e4383a7128fe731bd68da0ae87e66
-ms.lasthandoff: 03/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: b7e99f8a4d7bc1cd30c71ce08ad38c13203f8b69
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -84,7 +85,7 @@ Generic SQL コネクタを作成するには、**[同期サービス]** で **[
 
 **DN はアンカー**: このオプションを選択した場合、DN はまた、アンカー属性として使用されます。 これは、単純な実装に使用できるものの、次の制限事項があります。
 
-* コネクタはオブジェクトの種類を&1; つのみサポートします。 したがって、参照属性は、同じオブジェクトの種類しか参照できません。
+* コネクタはオブジェクトの種類を 1 つのみサポートします。 したがって、参照属性は、同じオブジェクトの種類しか参照できません。
 
 **エクスポートの種類: オブジェクトの置換**: エクスポート中には、一部の属性しか変更されていなくても、オブジェクト全体がすべての属性を伴ってエクスポートされ、既存のオブジェクトに置き換わります。
 
@@ -101,7 +102,7 @@ Generic SQL コネクタを作成するには、**[同期サービス]** で **[
   ![スキーマ1b](./media/active-directory-aadconnectsync-connector-genericsql/schema1b.png)
 * **テーブル/ビュー/ストアド プロシージャ**: テーブル/ビュー/ストアド プロシージャの名前を指定し、次にオブジェクトの種類の一覧を指定する列名を指定します。 ストアド プロシージャを使用する場合はさらに、そのパラメーターを **[Name]:[Direction]:[Value]**の形式で指定します。 各パラメーターを個別の行に指定します (新しい行を取得するには、Ctrl + Enter キーを使用します)。  
   ![スキーマ1c](./media/active-directory-aadconnectsync-connector-genericsql/schema1c.png)
-* **SQL クエリ**: このオプションでは、オブジェクトの種類を含んでいる&1; つの列を返す SQL クエリを指定できます (例: `SELECT [Column Name] FROM TABLENAME`)。 返される列は、文字列型 (varchar) でなければなりません。
+* **SQL クエリ**: このオプションでは、オブジェクトの種類を含んでいる 1 つの列を返す SQL クエリを指定できます (例: `SELECT [Column Name] FROM TABLENAME`)。 返される列は、文字列型 (varchar) でなければなりません。
 
 ### <a name="schema-2-detect-attribute-types"></a>スキーマ 2 (属性の型を検出する)
 このページでは、属性の名前と型を検出する方法を構成します。 前のページで検出されたすべてのオブジェクトについて構成オプションが一覧表示されます。
@@ -111,7 +112,7 @@ Generic SQL コネクタを作成するには、**[同期サービス]** で **[
 **属性の型の検出方法**: コネクタでは、[スキーマの 1] 画面で検出されたすべてのオブジェクトで属性の型を検出する以下の方法をサポートしています。
 
 * **テーブル/ビュー/ストアド プロシージャ**: 属性の名前を検索する場合に使用する必要があるテーブル/ビュー/ストアド プロシージャの名前を指定します。 ストアド プロシージャを使用する場合はさらに、そのパラメーターを **[Name]:[Direction]:[Value]**の形式で指定します。 各パラメーターを個別の行に指定します (新しい行を取得するには、Ctrl + Enter キーを使用します)。 複数値の属性内で属性名を検出するには、テーブルまたはビューのコンマ区切りのリストを指定します。 親テーブルと子テーブルの列名が同じである場合、複数値のシナリオはサポートされません。
-* **SQL クエリ**: このオプションでは、属性名を含んでいる&1; つの列を返す SQL クエリを指定できます (例: `SELECT [Column Name] FROM TABLENAME`)。 返される列は、文字列型 (varchar) でなければなりません。
+* **SQL クエリ**: このオプションでは、属性名を含んでいる 1 つの列を返す SQL クエリを指定できます (例: `SELECT [Column Name] FROM TABLENAME`)。 返される列は、文字列型 (varchar) でなければなりません。
 
 ### <a name="schema-3-define-anchor-and-dn"></a>スキーマ 3 (アンカーと DN を定義する)
 このページでは、検出されたオブジェクトの種類ごとにアンカーと DN 属性を構成することができます。 複数の属性を選択することでアンカーを一意にできます。
@@ -121,6 +122,7 @@ Generic SQL コネクタを作成するには、**[同期サービス]** で **[
 * 複数値の属性とブール型の属性は表示されません。
 * [接続] ページで **[DN はアンカー]** が選択されていない限り、DN とアンカーに対して同じ属性を使用することはできません。
 * [接続] ページで **[DN はアンカー]** が選択されている場合、このページでは DN 属性のみが必要です。 DN 属性は、アンカー属性としても使用されます。
+
   ![スキーマ3b](./media/active-directory-aadconnectsync-connector-genericsql/schema3b.png)
 
 ### <a name="schema-4-define-attribute-type-reference-and-direction"></a>スキーマ4 (属性の型、参照、および方向を定義する)
@@ -130,7 +132,8 @@ Generic SQL コネクタを作成するには、**[同期サービス]** で **[
 
 * **DataType**: 属性の型を、同期エンジンで認識されている種類にマップするために使用します。 既定では SQL スキーマで検出された型と同じ型を使用しますが、DateTime 型と参照型は簡単に検出されません。 そのような場合は、**DateTime** または**参照**を指定する必要があります。
 * **方向**: 属性の方向は Import、Export、または ImportExport に設定することができます。 ImportExport が既定値です。
-  ![スキーマ4b](./media/active-directory-aadconnectsync-connector-genericsql/schema4b.png)
+
+![スキーマ4b](./media/active-directory-aadconnectsync-connector-genericsql/schema4b.png)
 
 注:
 
@@ -150,6 +153,12 @@ Generic SQL コネクタを作成するには、**[同期サービス]** で **[
 
 ![グローバルパラメーター3](./media/active-directory-aadconnectsync-connector-genericsql/any-option.png)
 
+>[!IMPORTANT]
+ 2017 年 5 月の時点で、“*” (別名、**任意のオプション**) が変更され、インポートおよびエクスポート フローをサポートするようになりました。 このオプションを使用する場合、複数値のテーブル/ビューに、オブジェクトの種類を含む属性を追加する必要があります。
+
+![](./media/active-directory-aadconnectsync-connector-genericsql/any-02.png)
+
+ </br> "*" が選択されている場合、オブジェクトの種類が含まれる列の名前も指定する必要があります。</br> ![](./media/active-directory-aadconnectsync-connector-genericsql/any-03.png)
 
 インポートが完了すると、次の図のような情報が表示されます。
 
@@ -162,8 +171,7 @@ Generic SQL コネクタを作成するには、**[同期サービス]** で **[
 
 ![グローバルパラメーター1](./media/active-directory-aadconnectsync-connector-genericsql/globalparameters1.png)
 
->[!IMPORTANT]
- エクスポート/削除操作では、"*"、つまり "**任意のオプション*" は使用できません。
+
 
 Generic SQL コネクタでは、差分インポートの次の方法をサポートしています。
 
@@ -189,7 +197,7 @@ Generic SQL コネクタでは、差分インポートの次の方法をサポ�
 
 このコネクタでは、2 つの方法でパスワード同期をサポートしています。
 
-* **ストアド プロシージャ**: この方法では、パスワードの設定と変更に対応するために&2; つのストアド プロシージャが必要です。 次の例に示すように、**[Set Password SP Parameters (パスワード SP パラメーターの設定)]** と **[Change Password SP Parameters (パスワード SP パラメーターの変更)]** に、パスワードの追加操作とパスワードの変更操作に必要なすべてのパラメーターを入力します。
+* **ストアド プロシージャ**: この方法では、パスワードの設定と変更に対応するために 2 つのストアド プロシージャが必要です。 次の例に示すように、**[Set Password SP Parameters (パスワード SP パラメーターの設定)]** と **[Change Password SP Parameters (パスワード SP パラメーターの変更)]** に、パスワードの追加操作とパスワードの変更操作に必要なすべてのパラメーターを入力します。
   ![グローバルパラメーター3](./media/active-directory-aadconnectsync-connector-genericsql/globalparameters3.png)
 * **パスワード拡張**: この方法ではパスワード拡張 DLL が必要です ( [IMAExtensible2Password](https://msdn.microsoft.com/library/microsoft.metadirectoryservices.imaextensible2password.aspx) インターフェイスを実装する拡張 DLL 名を指定する必要があります)。 コネクタが実行時に DLL を読み込むことができるように、拡張フォルダーにパスワード拡張アセンブリを配置する必要があります。
   ![グローバルパラメーター4](./media/active-directory-aadconnectsync-connector-genericsql/globalparameters4.png)
@@ -267,7 +275,7 @@ Generic SQL コネクタでは、次の方法を使用したフル インポー�
 ### <a name="export"></a>エクスポート
 ![実行手順7](./media/active-directory-aadconnectsync-connector-genericsql/runstep7.png)
 
-Generic SQL コネクタでは、次に示す&4; つのサポートされた方法を使用したエクスポートをサポートしています。
+Generic SQL コネクタでは、次に示す 4 つのサポートされた方法を使用したエクスポートをサポートしています。
 
 * テーブル
 * 表示
@@ -280,7 +288,7 @@ Generic SQL コネクタでは、次に示す&4; つのサポートされた方�
 **ストアド プロシージャ**  
 ![実行手順8](./media/active-directory-aadconnectsync-connector-genericsql/runstep8.png)
 
-[ストアド プロシージャ] オプションを選択した場合、エクスポートには、挿入/更新/削除の操作を実行する&3; 種類のストアド プロシージャが必要です。
+[ストアド プロシージャ] オプションを選択した場合、エクスポートには、挿入/更新/削除の操作を実行する 3 種類のストアド プロシージャが必要です。
 
 * **[Add SP Name (SP 名の追加)]**: この SP は、それぞれのテーブルで挿入を行うために任意のオブジェクトがコネクタに渡された場合に実行されます。
 * **[Update SP Name (SP 名の更新)]**: この SP は、それぞれのテーブルで更新を行うために任意のオブジェクトがコネクタに渡された場合に実行されます。
@@ -291,7 +299,7 @@ Generic SQL コネクタでは、次に示す&4; つのサポートされた方�
 **SQL query**  
 ![実行手順9](./media/active-directory-aadconnectsync-connector-genericsql/runstep9.png)
 
-[SQL クエリ] オプションを選択した場合、エクスポートには、挿入/更新/削除の操作を実行する&3; 種類のクエリが必要です。
+[SQL クエリ] オプションを選択した場合、エクスポートには、挿入/更新/削除の操作を実行する 3 種類のクエリが必要です。
 
 * **[挿入クエリ]**: このクエリは、それぞれのテーブルで挿入を行うためにコネクタに任意のオブジェクトが渡された場合に実行されます。
 * **[更新クエリ]**: このクエリは、それぞれのテーブルで更新を行うためにコネクタに任意のオブジェクトが渡された場合に実行されます。

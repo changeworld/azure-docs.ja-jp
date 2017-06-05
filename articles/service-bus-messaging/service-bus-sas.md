@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/14/2017
+ms.date: 05/17/2017
 ms.author: sethm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 09577d3160137b7879a5c128552d8dcbef89bb0d
 ms.openlocfilehash: c025629c7700c0ee7b6495a922b9bf6823769cfa
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -31,7 +33,7 @@ Service Bus の SAS 認証サポートは、Azure SDK バージョン 2.0 以降
 
 ## <a name="overview-of-sas"></a>SAS の概要
 
-Shared Access Signature は、SHA-256 セキュア ハッシュまたは URI に基づいた認証メカニズムです。 SAS は、すべての Service Bus サービスによって使用される非常に強力なメカニズムです。 実際の使用では、SAS には*共有アクセス ポリシー*と *Shared Access Signature* (多くの場合*トークン*と呼ばれます) という&2; つのコンポーネントがあります。
+Shared Access Signature は、SHA-256 セキュア ハッシュまたは URI に基づいた認証メカニズムです。 SAS は、すべての Service Bus サービスによって使用される非常に強力なメカニズムです。 実際の使用では、SAS には*共有アクセス ポリシー*と *Shared Access Signature* (多くの場合*トークン*と呼ばれます) という 2 つのコンポーネントがあります。
 
 Service Bus の SAS 認証には、Service Bus リソースに対する関連した権限を使用した暗号化キーの構成が伴います。 クライアントは SAS トークンを渡して Service Bus のリソースへのアクセスを要求します。 このトークンは、アクセスされるリソース URI と、構成されたキーで署名された有効期限で構成されます。
 
@@ -44,7 +46,7 @@ SAS 認証では、次の要素が使用されます。
 
 ## <a name="shared-access-policy"></a>共有アクセス ポリシー
 
-SAS を理解するうえで重要な点の&1; つは、SAS の基盤はポリシーであるということです。 各ポリシーについて、**名前**、**スコープ**、および**アクセス許可**という&3; 種類の情報を決定します。 **名前**とは、文字どおり名前を表します。そのスコープ内で一意の名前です。 スコープは簡単です。対象となるリソースの URI です。 Service Bus 名前空間の場合、スコープは、`https://<yournamespace>.servicebus.windows.net/` のような完全修飾ドメイン名 (FQDN) です。
+SAS を理解するうえで重要な点の 1 つは、SAS の基盤はポリシーであるということです。 各ポリシーについて、**名前**、**スコープ**、および**アクセス許可**という 3 種類の情報を決定します。 **名前**とは、文字どおり名前を表します。そのスコープ内で一意の名前です。 スコープは簡単です。対象となるリソースの URI です。 Service Bus 名前空間の場合、スコープは、`https://<yournamespace>.servicebus.windows.net/` のような完全修飾ドメイン名 (FQDN) です。
 
 ポリシーに使用可能な権限は、いずれも名前から意味がわかりやすくなっています。
 
@@ -247,7 +249,7 @@ Service Bus へのデータ送信を開始する前に、発行元から適切�
 
 次の手順は、[AMQP.Net Lite](https://github.com/Azure/amqpnetlite) ライブラリを使用して、AMQP プロトコルで SAS トークンを送信する方法を示しています。 この方法は、C\#で開発する公式の Service Bus SDK (WinRT、.Net Compact Framework、.Net Micro Framework、Mono など) を使用できない場合に有効です。当然ながら、HTTP レベル ("Authorization" ヘッダー内で送信される HTTP POST 要求と SAS トークン) の場合と同様に、要求ベースのセキュリティが AMQP レベルでどのように機能するかを理解するためにもこのライブラリは役立ちます。 AMQP についてこのような詳しい知識が不要な場合は、公式の Service Bus SDK と .NET Framework アプリケーションを利用できます。これがその役割を果たします。
 
-### <a name="c35"></a>C (&)&#35;；
+### <a name="c35"></a>C&#35;
 
 ```csharp
 /// <summary>
@@ -305,9 +307,9 @@ private bool PutCbsToken(Connection connection, string sasToken)
 > 
 > 
 
-次に、発行元は、SAS トークンの送信とサービスからの応答 (トークンの検証結果) の受信に使用される&2; つの AMQP リンクを作成します。
+次に、発行元は、SAS トークンの送信とサービスからの応答 (トークンの検証結果) の受信に使用される 2 つの AMQP リンクを作成します。
 
-AMQP メッセージには一連のプロパティと、簡単なメッセージより多くの情報が含まれています。 SAS トークンはメッセージの本文です (コンストラクターを使用)。 **"ReplyTo"** プロパティは、受信側リンクで検証結果を受信するノード名に設定されます (必要に応じて名前を変更できます。名前はサービスで自動的に作成されます)。 最後の&3; つの application/custom プロパティは、実行する必要がある操作の種類を示すためにサービスで使用されます。 CBS ドラフト仕様に記載されているように、**操作名** ("put-token")、**トークンの種類** (この例では、"servicebus.windows.net:sastoken")、およびトークンを適用する**オーディエンスの "名前"** (エンティティ全体) を設定する必要があります。
+AMQP メッセージには一連のプロパティと、簡単なメッセージより多くの情報が含まれています。 SAS トークンはメッセージの本文です (コンストラクターを使用)。 **"ReplyTo"** プロパティは、受信側リンクで検証結果を受信するノード名に設定されます (必要に応じて名前を変更できます。名前はサービスで自動的に作成されます)。 最後の 3 つの application/custom プロパティは、実行する必要がある操作の種類を示すためにサービスで使用されます。 CBS ドラフト仕様に記載されているように、**操作名** ("put-token")、**トークンの種類** (この例では、"servicebus.windows.net:sastoken")、およびトークンを適用する**オーディエンスの "名前"** (エンティティ全体) を設定する必要があります。
 
 発行元は、送信側リンクで SAS トークンを送信した後に、受信側リンクの応答を読み取る必要があります。 応答は、**"status-code"** というアプリケーション プロパティを含む簡単な AMQP メッセージです。このプロパティには、HTTP 状態コードと同じ値を含めることができます。
 
@@ -368,8 +370,3 @@ Service Bus メッセージングの詳細については、次のトピック�
 * [Service Bus のトピックとサブスクリプションの使用方法](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 
 [Azure portal]: https://portal.azure.com
-
-
-<!--HONumber=Feb17_HO3-->
-
-

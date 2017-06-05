@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: juluk
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: da78ec5c82a6ea46565a22fce49435d4b4d93a35
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: e789283ab9b25f634c50b341ca882bbf9c70a225
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/17/2017
 
 ---
 
-# <a name="features--tools"></a>機能とツール
+# <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell の機能とツール
 Azure Cloud Shell は、Azure リソースを開発および管理するための、ブラウザー ベースのシェル環境です。
 
 Cloud Shell は、インストール、バージョン管理、およびコンピューター管理のオーバーヘッドなしで、ブラウザーでアクセスできる、事前構成済みのシェル環境を提供します。

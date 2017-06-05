@@ -4,7 +4,7 @@ description: "Application Insights は、アプリのテレメトリの詳細な
 services: application-insights
 documentationcenter: windows
 author: rakefetj
-manager: douge
+manager: carmonm
 ms.assetid: 2eeb4a35-c7a1-49f7-9b68-4f4b860938b2
 ms.service: application-insights
 ms.workload: tbd
@@ -12,11 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2016
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: fe2596a7fed52118425c612ebf50c01134928bf6
-ms.lasthandoff: 03/16/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 0331a20d60fd856c0d852b26f125c47a3614f1ad
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/04/2017
 
 
 ---
@@ -43,7 +44,7 @@ ms.lasthandoff: 03/16/2017
 検出には 3 種類あります。
 
 * [スマート検出 - 失敗の異常](app-insights-proactive-failure-diagnostics.md)。 機械学習を使用して、負荷などの要因と関連付けて、アプリの要求が失敗すると予想される率を設定します。 障害発生率が、予想の包絡線を超えた場合、アラートが送信されます。
-* [スマート検出 - パフォーマンスの異常](app-insights-proactive-performance-diagnostics.md)。 応答時間と障害発生率の中から異常なパターンを毎日検索します。 これらの問題を、場所、ブラウザー、クライアント OS、サーバー インスタンス、時刻などのプロパティに関する問題と関連付けます。
+* [スマート検出 - パフォーマンスの異常](app-insights-proactive-performance-diagnostics.md)。 操作の応答時間または依存関係の継続期間が過去の基準と比較して低下している場合や、応答時間またはページの読み込み時間に異常なパターンが特定された場合は、通知を受信します。   
 * [スマート検出 - Azure クラウド サービスの問題](https://azure.microsoft.com/blog/proactive-notifications-on-cloud-service-issues-with-azure-diagnostics-and-application-insights/)。 アプリを Azure Cloud Services でホストしている場合に、起動エラー、頻繁なリサイクル、ランタイム クラッシュがロール インスタンスで発生すると、アラートを受け取ります
 
 (各通知のヘルプ リンクをクリックすると関連する記事が表示されます)。

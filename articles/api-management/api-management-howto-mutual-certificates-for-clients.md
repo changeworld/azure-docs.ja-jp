@@ -13,9 +13,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2017
 ms.author: apimpm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
 ms.openlocfilehash: 7f1d55b90af4e5397d74a8e37b44b5a88530897d
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/31/2017
 
 ---
@@ -32,7 +33,7 @@ API Management には、クライアント証明書を使用して API (つま�
 
 ```
 <choose>
-    <when condition="@(context.Request.Certificate == null || context.Request.Certificate.NotAfter > DateTime.Now)" >
+    <when condition="@(context.Request.Certificate == null || context.Request.Certificate.NotAfter < DateTime.Now)" >
         <return-response>
             <set-status code="403" reason="Invalid client certificate" />
         </return-response>

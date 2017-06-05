@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2017
 ms.author: chackdan
-translationtype: Human Translation
-ms.sourcegitcommit: 0231c3148d03ffef0a518a68bb79398462da2605
-ms.openlocfilehash: 89721efbb9f05871716ca1b16ad0d54eaf1ffd62
-ms.lasthandoff: 02/16/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 0b63228e5b09f5d22fc55818986a0a2eb1204278
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -163,7 +164,7 @@ Microsoft は、Azure クラスターで実行されるファブリック コー
 ここでは、稼働中のクラスターに関して、アップグレード モードの設定以外に変更できる構成について取り上げます。
 
 ### <a name="certificates"></a>証明書
-ポータルを使用すると、クラスターの新しい証明書の追加、または削除を簡単に行うことができます。  [詳細な手順については、こちらのドキュメント](service-fabric-cluster-security-update-certs-azure.md)
+ポータルを使用すると、クラスターの新しい証明書の追加、または削除を簡単に行うことができます。 [詳細な手順については、こちらのドキュメント](service-fabric-cluster-security-update-certs-azure.md)
 
 ![スクリーンショットは、Azure ポータルの証明書の拇印を示しています。][CertificateUpgrade]
 
@@ -206,15 +207,15 @@ Microsoft は、Azure クラスターで実行されるファブリック コー
 カスタマイズできる設定とその方法については、 [Service Fabric クラスターのファブリック設定](service-fabric-cluster-fabric-settings.md) に関するページをご覧ください。
 
 ### <a name="os-patches-on-the-vms-that-make-up-the-cluster"></a>クラスターを構成する VM の OS 修正プログラム
-この機能は、今後自動化される予定です。 ただし、現時点では、お客様が VM に修正プログラムを適用する必要があります。 同時に複数の VM を停止しないように、この操作は、VM 1 つずつで実行する必要があります。
+[パッチ オーケストレーション アプリケーション](service-fabric-patch-orchestration-application.md)に関するページを参照してください。このアプリケーションをクラスターにデプロイすることにより、体系的な方法で Windows Update からパッチをインストールし、常時サービスの稼働状態を維持することができます。 
 
 ### <a name="os-upgrades-on-the-vms-that-make-up-the-cluster"></a>クラスターを構成する VM の OS アップグレード
 クラスターの仮想マシンで OS イメージをアップグレードする必要がある場合は、一度に 1 つの VM で行う必要があります。 お客様がこのアップグレードを実行する必要があります。現時点では自動化はされていません。
 
 ## <a name="next-steps"></a>次のステップ
-*  [Service Fabric クラスターのファブリック設定](service-fabric-cluster-fabric-settings.md)
-*  [クラスターのスケールアップとスケールダウン](service-fabric-cluster-scale-up-down.md)
-*  [アプリケーションのアップグレード](service-fabric-application-upgrade.md)
+* [Service Fabric クラスターのファブリック設定](service-fabric-cluster-fabric-settings.md)
+* [クラスターのスケールアップとスケールダウン](service-fabric-cluster-scale-up-down.md)
+* [アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 
 <!--Image references-->
 [CertificateUpgrade]: ./media/service-fabric-cluster-upgrade/CertificateUpgrade2.png

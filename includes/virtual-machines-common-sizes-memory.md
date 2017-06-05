@@ -46,7 +46,7 @@ ACU: 180 ～ 240
 
 ACU: 210 ～ 250
 
-| サイズ | CPU コア数 | メモリ: GiB | ローカル SSD: GiB | 最大データ ディスク数 | キャッシュが有効な場合の最大ディスク スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC/ネットワーク帯域幅 |
+| サイズ | CPU コア数 | メモリ: GiB | ローカル SSD: GiB | 最大データ ディスク数 | キャッシュが有効な場合のローカル ディスクの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC/ネットワーク帯域幅 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS11_v2 |2 |14 |28 |4 |8,000/64 (72) |6,400/96 |2/高 |
 | Standard_DS12_v2 |4 |28 |56 |8 |16,000/128 (144) |12,800/192 |4/高 |
@@ -58,7 +58,7 @@ MBps = 10^6 バイト/秒、GiB = 1024^3 バイト。
 
 * DSv2 シリーズの VM で実現可能な最大ディスク スループット (IOPS または MBps) は、接続ディスクの数、サイズ、ストライピングによって制限される場合があります。  詳細については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../articles/storage/storage-premium-storage.md)」を参照してください。
 
-** 一部のリージョンでは、Standard_DS15_v2 サイズで高速ネットワークを使用できます。 利用状況と可用性の詳細については、「[Accelerated Networking is in Preview (Accelerated Networking はプレビュー段階)](https://azure.microsoft.com/updates/accelerated-networking-in-preview/)」および「[仮想マシンの Accelerated Networking](../articles/virtual-network/virtual-network-accelerated-networking-powershell.md)」を参照してください。
+** 一部のリージョンでは、Standard_DS15_v2 サイズで高速ネットワークを使用できます。 利用状況と可用性の詳細については、「[Accelerated Networking is in Preview (Accelerated Networking はプレビュー段階)](https://azure.microsoft.com/updates/accelerated-networking-in-preview/)」および「[仮想マシンの Accelerated Networking](../articles/virtual-network/virtual-network-create-vm-accelerated-networking.md)」を参照してください。
 
 ***インスタンスは、単一の顧客専用のハードウェアに分離されます。
 <br>
@@ -78,7 +78,7 @@ ACU: 210 ～ 250
 | Standard_D14_v2   | 16        | 112         | 800            | 48000/750/375                                        | 32 / 32x500                       | 8/極めて高           |
 | Standard_D15_v2** | 20        | 140         | 1,000          | 60000/937/468                                        | 40 / 40x500                       | 8/極めて高*          |
 
-* 一部のリージョンでは、Standard_D15_v2 サイズで高速ネットワークを使用できます。 利用状況と可用性の詳細については、「[Accelerated Networking is in Preview (Accelerated Networking はプレビュー段階)](https://azure.microsoft.com/updates/accelerated-networking-in-preview/)」および「[仮想マシンの Accelerated Networking](../articles/virtual-network/virtual-network-accelerated-networking-powershell.md)」を参照してください。
+* 一部のリージョンでは、Standard_D15_v2 サイズで高速ネットワークを使用できます。 利用状況と可用性の詳細については、「[Accelerated Networking is in Preview (Accelerated Networking はプレビュー段階)](https://azure.microsoft.com/updates/accelerated-networking-in-preview/)」および「[仮想マシンの Accelerated Networking](../articles/virtual-network/virtual-network-create-vm-accelerated-networking.md)」を参照してください。
 
 **インスタンスは、単一の顧客専用のハードウェアに分離されます。
 
@@ -88,7 +88,7 @@ ACU: 210 ～ 250
 
 ACU: 160
 
-| サイズ | CPU コア数 | メモリ: GiB | ローカル SSD: GiB | 最大データ ディスク数 | キャッシュが有効な場合の最大ディスク スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC/ネットワーク帯域幅 |
+| サイズ | CPU コア数 | メモリ: GiB | ローカル SSD: GiB | 最大データ ディスク数 | キャッシュが有効な場合のローカル ディスクの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC/ネットワーク帯域幅 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS11 |2 |14 |28 |4 |8,000/64 (72) |6,400/64 |2/高 |
 | Standard_DS12 |4 |28 |56 |8 |16,000/128 (144) |12,800/128 |4/高 |

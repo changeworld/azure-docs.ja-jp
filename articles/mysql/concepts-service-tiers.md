@@ -3,19 +3,17 @@ title: "Azure Database for MySQL のサービス レベル | Microsoft Docs"
 description: "Azure Database for MySQL のサービス レベル"
 services: mysql
 author: v-chenyh
-ms.author: v-chenyh
 manager: jhubbard
 editor: jasonh
-ms.assetid: 
 ms.service: mysql-database
-ms.tgt_pltfrm: portal
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 05/16/2017
+ms.author: v-chenyh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: b647db3c3a48ac6c151814ee68b3117a92c1d4d8
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 9ae42c9b151c53a1f57d6856bc29cd7f71a7f9be
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/17/2017
 
 ---
 # <a name="azure-database-for-mysql-options-and-performance-understand-whats-available-in-each-service-tier"></a>Azure Database for MySQL のオプションとパフォーマンス: 各サービス レベルで使用できる内容
@@ -39,18 +37,17 @@ Azure Database for MySQL には、Basic と Standard の 2 つのサービス �
 | Basic | IOPS 保証なしのスケーラブルなコンピューティングおよびストレージを必要とする小規模なワークロードに最適です。 たとえば、開発やテスト、使用頻度の低い小規模なアプリケーションに使用するサーバーがこれに該当します。 |
 | Standard | IOPS 保証を必要とするクラウド アプリケーション向けの主要オプションで、高スループットを実現するために個別に高コンピューティングおよびストレージにスケールできます。 たとえば、Web アプリケーションや分析アプリケーションがこれに該当します。 |
 | プレミアム | トランザクションおよび IO 待ち時間を短くする必要があり、高い IO およびワークロード スループットが要求されるワークロードに適しています。 多くの同時実行ユーザーに対して最適なサポートを提供します。 ミッション クリティカルなアプリケーションをサポートするデータベースに適用できます。<br />Premium サービス レベルはプレビュー段階では使用できません。 |
-| &nbsp; | &nbsp; |
+
 
 サービス レベルを決定するには、まず、ワークロードに IOPS 保証が必要かどうかを確認します。 その後、最低限必要な機能を特定します。
 
 | **サービス レベルの機能** | **Basic** | **Standard** | **Premium** * |
 | :------------------------ | :-------- | :----------- | :------------ |
-| 最大コンピューティング ユニット数 | 100 | 2000 | プレビュー段階では利用できません |
-| 最大合計ストレージ | 1050 GB | 10000 GB | プレビュー段階では利用できません |
+| 最大コンピューティング ユニット数 | 100 | 2,000 | プレビュー段階では利用できません |
+| 最大合計ストレージ | 1,050 GB | 10,000 GB | プレビュー段階では利用できません |
 | ストレージ IOPS 保証 | 該当なし  | あり | プレビュー段階では利用できません |
-| 最大ストレージ IOPS | 該当なし  | 30,000 | プレビュー段階では利用できません |
+| 最大ストレージ IOPS | 該当なし  | 3,000 | プレビュー段階では利用できません |
 | データベース バックアップのリテンション期間 | 7 日 | 35 日 | 35 日 |
-| &nbsp; | &nbsp; | &nbsp; | &nbsp; |
 
 > [!NOTE]
 > プレビュー段階の Standard サービス レベルは現在、最大 800 コンピューティング ユニットと、最大 1000 GB のストレージをサポートしています。
@@ -63,40 +60,36 @@ Azure Database for MySQL には、Basic と Standard の 2 つのサービス �
 > プレビュー段階の Basic レベルと Standard レベルは現在、ストレージの動的スケーリングをサポートしていません。 この機能は今後追加する予定です。
 
 > [!NOTE]
-> Standard サービス レベルでは、IOPS が、プロビジョニング済みストレージに対して 3 対 1 の固定比率で比例的にスケールされます。 組み込まれている 125 GB のストレージでは、375 のプロビジョニング済み IOPS と、それぞれについて最大 256 KB の IO サイズが保証されます。 1000 GB をプロビジョニングする場合は、3000 のプロビジョニング済み IOPS を取得できます。 使用可能なプロビジョニング済み IOPS を最大限に活用するには、サーバー コンピューティング ユニットの使用量を監視して、スケールアップする必要があります。
+> Standard サービス レベルでは、IOPS が、プロビジョニング済みストレージに対して 3 対 1 の固定比率で比例的にスケールされます。 組み込まれている 125 GB のストレージでは、375 のプロビジョニング済み IOPS と、それぞれについて最大 256 KB の IO サイズが保証されます。 1000 GB をプロビジョニングする場合は、3000 のプロビジョニング済み IOPS を取得します。 使用可能なプロビジョニング済み IOPS を最大限に活用するには、サーバー コンピューティング ユニットの使用量を監視して、スケールアップする必要があります。
 
 ## <a name="service-tiers-and-performance-levels"></a>サービス プランとパフォーマンス レベル
 
 Azure Database for MySQL には、各サービス レベル内に複数のパフォーマンス レベルが用意されています。 次のいずれかを使用して、ワークロードのニーズに最適なレベルを柔軟に選択できます。
-
 - [Azure ポータル](quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md)
 
 各 MySQL サーバーでホストされるデータベースの数にかかわらず、データベースは、所定のリソースを取得します。サーバーの期待されるパフォーマンス特性は影響を受けません。
 
-Basic サービス レベル: 
+### <a name="basic-service-tier"></a>Basic サービス レベル: 
 
 | **パフォーマンス レベル** | **50** | **100** |
 | :-------------------- | :----- | :------ |
 | 最大コンピューティング ユニット数 | 50 | 100 |
 | 基本ストレージ サイズ | 50 GB | 50 GB |
-| 最大サーバー ストレージ サイズ\* | 1050 GB | 1050 GB |
-| 最大同時ログイン数 | &nbsp; | &nbsp; |
-| 最大接続数 | &nbsp; | &nbsp; |
-| &nbsp; | &nbsp; | &nbsp; |
+| 最大サーバー ストレージ サイズ\* | 1,050 GB | 1,050 GB |
 
-Standard サービス レベル: 
+\* 最大サーバー ストレージ サイズは、サーバーのプロビジョニング済みストレージの最大サイズを意味します。
+
+
+### <a name="standard-service-tier"></a>Standard サービス レベル: 
 
 | **パフォーマンス レベル** | **100** | **200** | **400** | **800** |
 | :-------------------- | :------ | :------ | :------ | :------ |
 | 最大コンピューティング ユニット数 | 100 | 200 | 400 | 800 |
-| 基本ストレージ サイズとプロビジョニング済み IOPS | 125 GB、375 IOPS | &nbsp; | &nbsp; | &nbsp; |
-| 最大サーバー ストレージ サイズ\* | 1 TB (テラバイト) | &nbsp; | &nbsp; | &nbsp; |
-| 最大サーバー プロビジョニング済み IOPS | 3000 IOPS | &nbsp; | &nbsp; | &nbsp; |
-| GB あたりの最大サーバー プロビジョニング済み IOPS | GB あたり 3 IOPS 固定 | &nbsp; | &nbsp; | &nbsp; |
-| 最大同時ログイン数 | &nbsp; | &nbsp; | &nbsp; | &nbsp; |
-| 最大接続数 | &nbsp; | &nbsp; | &nbsp; | &nbsp; |
-| &nbsp; | &nbsp; | &nbsp; | &nbsp; | &nbsp; |
+| 基本ストレージ サイズとプロビジョニング済み IOPS | 125 GB、<br/> 375 IOPS | 125 GB、<br/> 375 IOPS | 125 GB、<br/> 375 IOPS | 125 GB、<br/> 375 IOPS |
+| 最大サーバー ストレージ サイズ\* | 1 TB (テラバイト) | 1 TB (テラバイト) | 1 TB (テラバイト) | 1 TB (テラバイト) |
+| 最大サーバー プロビジョニング済み IOPS | 3,000 IOPS | 3,000 IOPS | 3,000 IOPS | 3,000 IOPS |
+| GB あたりの最大サーバー プロビジョニング済み IOPS | GB あたり 3 IOPS 固定 | GB あたり 3 IOPS 固定 | GB あたり 3 IOPS 固定 | GB あたり 3 IOPS 固定 |
 
 \* 最大サーバー ストレージ サイズは、サーバーのプロビジョニング済みストレージの最大サイズを意味します。
 
@@ -109,12 +102,15 @@ Standard サービス レベル:
 全体のスケールアップ プロセスにかかる時間は、変更前後のサーバーのサイズとサービス レベルによって異なります。 たとえば、コンピューティング ユニットを Standard サービス レベルとの間または Standard サービス レベル内で変更するサーバーの場合は、数分以内に完了します。 サーバーの新しいプロパティは、変更が完了するまで適用されません。
 
 ### <a name="documentation-about-the-steps-for-scaling-up-or-down"></a>スケールアップまたはスケールダウンに関するドキュメント
+[Azure CLI での Azure Database for MySQL サーバーの監視とスケーリング](scripts/sample-scale-server.md)
 
-- [Azure Portal での単一のサーバーの管理](quickstart-create-mysql-server-database-using-azure-portal.md)
-- [Azure CLI での単一のサーバーの管理](quickstart-create-mysql-server-database-using-azure-cli.md)
 
 ### <a name="details-about-scaling-up-or-down"></a>スケールアップまたはスケールダウンの詳細
 
 - サーバーをダウングレードするには、サーバーのストレージ ユニットが、ダウングレード後のサービス レベルで許可されている最大サイズより小さい必要があります。
-- サービス階層によって、提供されている復元サービスは異なります。 ダウングレードすると、特定の時点に復元する機能を使えなくなったり、バックアップの保存期間が短くなったりする可能性があります。 詳細については、[Azure Portal を使用して Azure Database for MySQL サーバーをバックアップおよび復元する方法](./howto-restore-server-portal.md)に関するページをご覧ください
+- サービス階層によって、提供されている復元サービスは異なります。 ダウングレードすると、特定の時点に復元する機能を使えなくなったり、バックアップの保存期間が短くなったりする可能性があります。 詳細については、[Azure Portal を使用して Azure Database for MySQL サーバーをバックアップおよび復元する方法](howto-restore-server-portal.md)に関するページをご覧ください
 - サーバーの新しいプロパティは、変更が完了するまで適用されません。
+
+## <a name="next-steps"></a>次のステップ
+[コンピューティング ユニットとストレージ ユニットの説明](concepts-compute-unit-and-storage.md)
+

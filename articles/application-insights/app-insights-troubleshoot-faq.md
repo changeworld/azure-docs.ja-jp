@@ -3,7 +3,7 @@ title: "Azure Application Insights の FAQ | Microsoft Docs"
 description: "Application Insights についてよく寄せられる質問。"
 services: application-insights
 documentationcenter: .net
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 0e3b103c-6e2a-4634-9e8c-8b85cf5e9c84
 ms.service: application-insights
@@ -12,11 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 191d9e1197c3526d2f72b972b7fada76dee84447
-ms.lasthandoff: 04/13/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 8a6a8027b93d0d5b353c41c103d2c9ad5faa70c1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -103,7 +104,7 @@ IIS Web サーバーで Web アプリ内の Application Insights を構成する
 サーバーの Web アプリから:
 
 * HTTP 要求
-* [依存関係](app-insights-asp-net-dependencies.md)。 SQL Database の呼び出し、外部サービスの HTTP 呼び出し、Azure DocumentDB、テーブル、Blob Storage、およびキューの呼び出し。 
+* [依存関係](app-insights-asp-net-dependencies.md)。 SQL Database の呼び出し、外部サービスの HTTP 呼び出し、Azure Cosmos DB、テーブル、Blob Storage、およびキューの呼び出し。 
 * [例外](app-insights-asp-net-exceptions.md)とスタック トレース。
 * [パフォーマンス カウンター](app-insights-performance-counters.md) - [Status Monitor](app-insights-monitor-performance-live-website-now.md)、Azure 監視 (app-insights-azure-web-apps.md)、または [Application Insights collectd ライター](app-insights-java-collectd.md)を使用している場合。
 * コード化する[カスタム イベントとカスタム メトリック](app-insights-api-custom-events-metrics.md)。
@@ -171,6 +172,8 @@ Web クライアントの IP アドレス (IPv4 または IPv6) の検索に [Ge
 POST データは自動ではログに記録されませんが、TrackTrace 呼び出しを使用してメッセージ パラメーターにデータを格納できます。 文字列プロパティの制限よりもサイズ制限は大きいですが、フィルター処理には使用できません。
 
 ## <a name="should-i-use-single-or-multiple-application-insights-resources"></a>Application Insights リソースは、単一リソースと複数リソースのどちらを使用すべきですか?
+
+1 つのビジネス システム内のすべてのコンポーネントまたはロールに対しては、単一リソースを使用します。 開発、テスト、およびリリースのバージョン、および独立したアプリケーションに対しては、複数のリソースを使用します。
 
 * [こちら](app-insights-separate-resources.md)の説明を参照してください
 * [例 - worker ロールと web ロールを使用したクラウド サービス](app-insights-cloudservices.md)

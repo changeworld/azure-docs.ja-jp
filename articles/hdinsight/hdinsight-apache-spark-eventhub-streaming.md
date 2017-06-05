@@ -1,6 +1,7 @@
 ---
-title: "Azure HDInsight での Apache Spark を使用した Event Hubs からのデータのストリーミング | Microsoft Docs"
-description: "Azure Event Hub にデータ ストリームを送信し、Scala アプリケーションを使用して HDInsight Spark でイベントを受信する方法の詳細な手順を説明します"
+title: "Azure HDInsight で Event Hub と共に Apache Spark ストリーミングを使用する | Microsoft Docs"
+description: "Apache Spark ストリーミング サンプルを作成して、Azure Event Hub にデータ ストリームを送信し、Scala アプリケーションを使用して HDInsight Spark クラスターでイベントを受信します。"
+keywords: "apache spark ストリーミング,spark ストリーミング,spark サンプル,apache spark ストリーミング例,event hub azure サンプル,spark サンプル"
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -9,28 +10,28 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 68894e75-3ffa-47bd-8982-96cdad38b7d0
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 05/12/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 91c60e944dd3b72f5bf1137d93ba2ae70537b2f7
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 86ec34dccb4518c31d9762e68f272382ee544713
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/29/2017
+ms.lasthandoff: 05/15/2017
 
 
 ---
-# <a name="spark-streaming-process-events-from-azure-event-hubs-with-apache-spark-cluster-on-hdinsight"></a>Spark ストリーミング: HDInsight で Apache Spark クラスターを使用して Azure Event Hubs からのイベントを処理する
+# <a name="apache-spark-streaming-process-data-from-azure-event-hubs-with-spark-cluster-on-hdinsight"></a>Apache Spark ストリーミング: HDInsight で Spark クラスターを使用して Azure Event Hub のデータを処理する
 
-この記事では、Apache Spark を使用したストリーミングに関連するいくつかの概念を理解し、以下の手順を含むストリーミング ソリューションを作成します。
+この記事では、次の手順で Apache Spark ストリーミング サンプルを作成します。
 
 1. スタンドアロン アプリケーションを使用して、Azure Event Hub にメッセージを取り込みます。
 
-2. Azure HDInsight の Spark クラスターで実行されているアプリケーションを使用して、Event Hub からリアルタイムでメッセージを取得します。
+2. HDInsight の Spark クラスターで実行されているアプリケーションを使用して、Event Hub からリアルタイムでメッセージを読み取ります。
 
 3. Azure Storage Blob、Hive テーブル、SQL テーブルなどのさまざまな出力にデータを送信します。 
 
@@ -40,31 +41,31 @@ ms.lasthandoff: 03/29/2017
 
 * HDInsight での Apache Spark クラスター。 手順については、 [Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
 
-## <a name="spark-streaming-concepts"></a>Spark ストリーミングの概念
+## <a name="what-is-apache-spark-streaming"></a>Apache Spark ストリーミングとは
 
-Apache Spark でのストリーミングの処理方法の詳細については、[Apache Spark ストリーミングの概要](http://spark.apache.org/docs/latest/streaming-programming-guide.html#overview)を参照してください。 HDInsight は、Azure の Spark クラスターに同じストリーミング機能をもたらします。  
+Spark ストリーミングの詳細については、[Apache Spark ストリーミングの概要](http://spark.apache.org/docs/latest/streaming-programming-guide.html#overview)を参照してください。 HDInsight は、Azure の Spark クラスターに同じストリーミング機能をもたらします。  
 
 ## <a name="what-does-this-solution-do"></a>このソリューションの内容
 
-この記事では、ストリーミング ソリューションを作成するために、次の手順を実行します。
+この記事では、Spark ストリーミングのサンプルを作成するために、次の手順を実行します。
 
 1. イベントのストリームを受信する Azure Event Hub を作成します。
 
 2. イベントを生成し、それを Azure Event Hub にプッシュするローカルのスタンドアロン アプリケーションを実行します。 サンプル アプリケーションは [https://github.com/hdinsight/spark-streaming-data-persistence-examples](https://github.com/hdinsight/spark-streaming-data-persistence-examples)に公開されています。
 
-3. Azure Event Hub からストリーミング イベントを読み取り、さまざまな場所 (Azure BLOB、Hive テーブル、および SQL データベース テーブル) にプッシュするリモート ストリーミング アプリケーションを Spark クラスター上で実行します。 
+3. Azure Event Hub からストリーミング イベントを読み取り、さまざまな場所 (Azure BLOB、Hive テーブル、および SQL データベース テーブルなど) に書き込む Event Hub Azure サンプルを Spark クラスター上で実行します。
 
-## <a name="create-azure-event-hub"></a>Azure Event Hub の作成
+## <a name="create-an-azure-event-hub"></a>Azure Event Hub を作成します
 
 1. [Azure Portal](https://manage.windowsazure.com) にログインし、画面の左上にある **[新規]** をクリックします。
 
 2. **[モノのインターネット]**、**[イベント ハブ]** の順にクリックします。
    
-    ![イベント ハブの作成](./media/hdinsight-apache-spark-eventhub-streaming/create-event-hub9.png)
+    ![Spark ストリーミング サンプルの Event Hub を作成](./media/hdinsight-apache-spark-eventhub-streaming/hdinsight-create-event-hub-for-spark-streaming.png "Spark ストリーミング サンプルの Event Hub を作成")
 
 3. **[名前空間の作成]** ブレードで、名前空間の名前を入力します。 価格レベル (Basic または Standard) を選択します。 Azure サブスクリプション、リソース グループ、リソースが作成される場所を選択します。 **[作成]** をクリックして、名前空間を作成します。
    
-    ![イベント ハブの作成](./media/hdinsight-apache-spark-eventhub-streaming/create-event-hub1.png)
+    ![Spark ストリーミング サンプルの Event Hub 名を指定](./media/hdinsight-apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "Spark ストリーミング サンプルの Event Hub 名を指定")
 
     > [!NOTE]
        > 待機時間とコストを削減するために、HDInsight の Apache Spark クラスターと同じ **[場所]** を選択する必要があります。
@@ -76,62 +77,54 @@ Apache Spark でのストリーミングの処理方法の詳細については�
     
 5. 名前空間ブレードで **[Event Hubs]** をクリックし、**[+ Event Hub]** をクリックして新しいイベント ハブを作成します。
    
-    ![イベント ハブの作成](./media/hdinsight-apache-spark-eventhub-streaming/create-event-hub3.png)
+    ![Spark ストリーミング サンプルの Event Hub を作成](./media/hdinsight-apache-spark-eventhub-streaming/hdinsight-open-event-hubs-blade-for-spark-streaming-example.png "Spark ストリーミング サンプルの Event Hub を作成")
 
 6. Event Hub の名前を入力して、パーティションの数を 10 に設定し、メッセージのリテンション期間を 1 に設定します。 このソリューション内のメッセージはアーカイブされていないため、残りを既定値のままにして、**[作成]** をクリックできます。
    
-    ![イベント ハブの作成](./media/hdinsight-apache-spark-eventhub-streaming/create-event-hub5.png)
+    ![Spark ストリーミング サンプルの Event Hub 詳細を指定](./media/hdinsight-apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "Spark ストリーミング サンプルの Event Hub 詳細を指定")
 
 7. 新しく作成した Event Hub が Event Hub のブレードに表示されます。
     
-     ![](./media/hdinsight-apache-spark-eventhub-streaming/create-event-hub6.png)
+     ![Spark ストリーミング サンプルの Event Hub を表示](./media/hdinsight-apache-spark-eventhub-streaming/hdinsight-view-event-hub-for-spark-streaming-example.png "Spark ストリーミング サンプルの Event Hub を表示")
 
 8. 名前空間ブレード (特定のイベント ハブ ブレードではなく) に戻り、**[共有アクセス ポリシー]** をクリックし、**[RootManageSharedAccessKey]** をクリックします。
     
-     ![](./media/hdinsight-apache-spark-eventhub-streaming/create-event-hub7.png)
+     ![Spark ストリーミング サンプルの Event Hub ポリシーを設定](./media/hdinsight-apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "Spark ストリーミング サンプルの Event Hub ポリシーを設定")
 
 9. コピー ボタンをクリックして **RootManageSharedAccessKey** プライマリ キーと接続文字列をクリップボードにコピーします。 このチュートリアルの後半で使用するためにこれらを保存します。
     
-     ![](./media/hdinsight-apache-spark-eventhub-streaming/create-event-hub8.png)
+     ![Spark ストリーミング例の Event Hub ポリシー キーを表示](./media/hdinsight-apache-spark-eventhub-streaming/hdinsight-view-event-hub-policy-keys.png "Spark ストリーミング例の Event Hub ポリシー キーを表示")
 
-## <a name="send-messages-to-an-azure-event-hub-using-a-scala-application"></a>Scala アプリケーションを使用して Azure Event Hub にメッセージを送信する
+## <a name="send-messages-to-azure-event-hub-using-a-sample-scala-application"></a>サンプル Scala アプリケーションを使用して Azure Event Hub にメッセージを送信する
 
-このセクションでは、イベントのストリームを生成するローカルのスタンドアロン Scala アプリケーションを使用して、前の手順で作成した Azure Event Hub に送信します。 このアプリケーションは GitHub ( [https://github.com/hdinsight/eventhubs-sample-event-producer](https://github.com/hdinsight/eventhubs-sample-event-producer)) で入手できます。 ここに示す手順は、この GitHub リポジトリが既にフォークされていることを前提とします。
+このセクションでは、イベントのストリームを生成するローカルのスタンドアロン Scala アプリケーションを使用して、以前に作成した Azure Event Hub に送信します。 このアプリケーションは GitHub ( [https://github.com/hdinsight/eventhubs-sample-event-producer](https://github.com/hdinsight/eventhubs-sample-event-producer)) で入手できます。 ここに示す手順は、この GitHub リポジトリが既にフォークされていることを前提とします。
 
 1. このアプリケーションを実行するコンピューターに次のソフトウェアがインストールされていることを確認します。
 
     * Oracle Java Development kit。 [ここ](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)からインストールできます。
     * Java IDE。 この記事では、IntelliJ IDEA 15.0.1 を使用します。 [こちら](https://www.jetbrains.com/idea/download/)からインストールできます。
 
-
 2. IntelliJ IDEA で、アプリケーション **EventhubsSampleEventProducer**を開きます。
 
-3. プロジェクトをビルドします。 **[Build] \(ビルド)** メニューの **[Make Project] \(プロジェクトの作成)** をクリックします。 IntelliJ IDEA の構成に応じて、出力 jar が **\classes\artifacts** の下に作成されます。
+3. プロジェクトをビルドします。 **[Build] \(ビルド)** メニューの **[Make Project] \(プロジェクトの作成)** をクリックします。 IntelliJ IDEA の構成に応じた場所に出力 jar が作成されます。 通常は **\classes\artifacts** 内です。
 
-    > [!TIP]
-    > IntelliJ IDEA で提供されているオプションを使用して、GitHub リポジトリからプロジェクトを直接作成することもできます。 その方法については、ガイダンスの次のセクションに記載された手順を参照してください。 そのセクションで記載されている手順の多くは、この手順で作成する Scala アプリケーションには適用されないので注意してください。 次に例を示します。
-    > 
-    > * Spark バージョンを取り込むときに POM を更新する必要はありません。 それは、このアプリケーションを作成するための依存関係が Spark に存在しないからです。
-    > * プロジェクト ライブラリにいくつかの依存関係 jar を追加する必要はありません。 このプロジェクトで、それらの jar は必要ないからです。
-    > 
-    > 
+## <a name="create-application-to-receive-messages-from-event-hub-into-a-spark-cluster"></a>Event Hub から Spark クラスターを受け取るアプリケーションを作成する 
 
-## <a name="receive-messages-from-the-event-hub-using-a-streaming-application-running-on-spark-cluster"></a>Spark クラスターで実行されているストリーミング アプリケーションを使用して Event Hub からメッセージを受信する
-
-イベントを受信し、それをさまざまな宛先にルーティングするサンプル Scala アプリケーションは、 [https://github.com/hdinsight/spark-streaming-data-persistence-examples](https://github.com/hdinsight/spark-streaming-data-persistence-examples)で入手できます。 以下の手順に従ってアプリケーションを更新し、出力 jar を作成してください。
+Scala で記述された Spark ストリーミングのサンプル アプリケーションは、イベントを受信し、それをさまざまな宛先にルーティングします。これは [https://github.com/hdinsight/spark-streaming-data-persistence-examples](https://github.com/hdinsight/spark-streaming-data-persistence-examples) で入手できます。 以下の手順に従って、Event Hub 構成についてアプリケーションを更新し、出力 jar を作成してください。
 
 1. IntelliJ IDEA を起動し、起動画面から **[Check out from Version Control]\(バージョン管理からチェックアウト)** を選択し、**[Git]** をクリックします。
    
-    ![Git からのソースの取得](./media/hdinsight-apache-spark-eventhub-streaming/get-source-from-git.png)
+    ![Apache Spark ストリーミング サンプル - Git からソースを取得](./media/hdinsight-apache-spark-eventhub-streaming/spark-streaming-example-get-source-from-git.png "Apache Spark ストリーミング サンプル - Git からソースを取得")
+
 2. **[Clone Repository] \(リポジトリの複製)** ダイアログ ボックスで、複製元の Git リポジトリの URL および複製先のディレクトリを指定し、**[Clone] \(複製)** をクリックします。
    
-    ![Git からの複製](./media/hdinsight-apache-spark-eventhub-streaming/clone-from-git.png)
+    ![Apache Spark ストリーミング サンプル - Git から複製](./media/hdinsight-apache-spark-eventhub-streaming/spark-streaming-example-clone-from-git.png "Apache Spark ストリーミング サンプル - Git から複製")
 3. プロジェクトが完全に複製されるまで、画面の指示に従います。 **Alt + 1** キーを押して、**[Project View] \(プロジェクト ビュー)** を開きます。 次のようになります。
    
-    ![[Project View (プロジェクト ビュー)]](./media/hdinsight-apache-spark-eventhub-streaming/project-view.png)
+    ![Apache Spark ストリーミング サンプル - プロジェクト ビュー](./media/hdinsight-apache-spark-eventhub-streaming/spark-streaming-example-project-view.png "Apache Spark ストリーミング サンプル - プロジェクト ビュー")
 4. アプリケーション コードが Java8 でコンパイルされるように設定します。 このためには、**[File] \(ファイル)**、**[Project Structure] \(プロジェクトの構造)** の順にクリックし、**[Project] \(プロジェクト)** タブで [Project language level] \(プロジェクトの言語レベル) を **[8 - Lambdas, type annotations, etc.] \(8 - ラムダ、型注釈など)** に設定します。
    
-    ![プロジェクト構造](./media/hdinsight-apache-spark-eventhub-streaming/java-8-compiler.png)
+    ![Apache Spark ストリーミング サンプル - コンパイラーの設定](./media/hdinsight-apache-spark-eventhub-streaming/spark-streaming-example-java-8-compiler.png "Apache Spark ストリーミング サンプル - コンパイラーの設定")
 5. **pom.xml** を開き、Spark のバージョンが正しいことを確認します。 `<properties>` ノードで、次のスニペットを検索し、Spark のバージョンを確認します。
    
         <scala.version>2.11.8</scala.version>
@@ -139,46 +132,47 @@ Apache Spark でのストリーミングの処理方法の詳細については�
         <scala.binary.version>2.11</scala.binary.version>
         <spark.version>2.0.0</spark.version>
 
-6. アプリケーションでは、**JDBC driver jar** と呼ばれる依存関係 jar が必要です。 Event Hub から受信したメッセージを Azure SQL データベースに書き込むために必要です。 この jar ファイルの v4.1 以降を、 [ここ](https://msdn.microsoft.com/sqlserver/aa937724.aspx)からダウンロードできます。 プロジェクト ライブラリでこの jar への参照を追加します。 次の手順に従います。
+6. アプリケーションでは、**JDBC driver jar** と呼ばれる依存関係 jar が必要です。 Event Hub から受信したメッセージを Azure SQL データベースに書き込むために必要です。 この jar (v4.1 以降) を[ここ](https://msdn.microsoft.com/sqlserver/aa937724.aspx)からダウンロードできます。 プロジェクト ライブラリでこの jar への参照を追加します。 次の手順に従います。
      
      1. アプリケーションが開かれている IntelliJ IDEA ウィンドウで、**[File] \(ファイル)**、**[Project Structure] \(プロジェクトの構造)**、**[Libraries] \(ライブラリ)** の順にクリックします。 
      2. 追加アイコン (![追加アイコン](./media/hdinsight-apache-spark-eventhub-streaming/add-icon.png)) をクリックし、 **[Java]**をクリックして、JDBC driver jar をダウンロードした場所に移動します。 画面の指示に従って、Jar ファイルをプロジェクト ライブラリに追加します。
         
          ![不足している依存関係の追加](./media/hdinsight-apache-spark-eventhub-streaming/add-missing-dependency-jars.png "不足している依存関係 jar の追加")
      3. **[Apply]**をクリックします。
+
 7. 出力 jar ファイルを作成します。 次の手順に従います。
    
    1. **[Project Structure] \(プロジェクトの構造)** ダイアログ ボックスで、**[Artifacts] \(アーティファクト)** をクリックし、プラス記号をクリックします。 ポップアップ ダイアログ ボックスで、**[JAR]** をクリックし、**[From modules with dependencie] \(依存関係を持つモジュールから)** をクリックします。
       
-       ![JAR の作成](./media/hdinsight-apache-spark-eventhub-streaming/create-jar-1.png)
+       ![Apache Spark ストリーミング サンプル - JAR の作成](./media/hdinsight-apache-spark-eventhub-streaming/spark-streaming-example-create-jar.png "Apache Spark ストリーミング サンプル - JAR の作成")
    2. **[Create JAR from Modules] \(モジュールから JAR を作成)** ダイアログ ボックスで、**[Main Class] \(メイン クラス)** の省略記号 (![省略記号](./media/hdinsight-apache-spark-eventhub-streaming/ellipsis.png)) をクリックします。
    3. **[Select Main Class] \(メイン クラスの選択)** ダイアログ ボックスで、使用可能なクラスのいずれかを選択し、**[OK]** をクリックします。
       
-       ![JAR の作成](./media/hdinsight-apache-spark-eventhub-streaming/create-jar-2.png)
+       ![Apache Spark ストリーミング サンプル - jar のクラスの選択](./media/hdinsight-apache-spark-eventhub-streaming/spark-streaming-example-select-class-for-jar.png "Apache Spark ストリーミング サンプル - jar のクラスの選択")
    4. **[Create JAR from Modules] \(モジュールから JAR を作成)** ダイアログ ボックスで、**[extract to the target JAR] \(ターゲット JAR に抽出する)** オプションが選択されていることを確認し、**[OK]** をクリックします。 これにより、すべての依存関係を持つ 1 つの JAR が作成されます。
       
-       ![JAR の作成](./media/hdinsight-apache-spark-eventhub-streaming/create-jar-3.png)
+       ![Apache Spark ストリーミング サンプル - モジュールから jar を作成](./media/hdinsight-apache-spark-eventhub-streaming/spark-streaming-example-create-jar-from-modules.png "Apache Spark ストリーミング サンプル - モジュールから jar を作成")
    5. **[Output Layout (出力レイアウト)]** タブに、Maven プロジェクトの一部として取り込まれたすべての jar が一覧表示されます。 Scala アプリケーションと直接的な依存関係がないものについては、選択し削除できます。 ここで作成するアプリケーションの場合は、最後の 1 つ (**microsoft-spark-streaming-examples compile output**) を除き、あとはすべて削除することができます。 削除する jar を選択し、**[Delete] \(削除)** アイコン (![削除アイコン](./media/hdinsight-apache-spark-eventhub-streaming/delete-icon.png)) をクリックします。
       
-       ![JAR の作成](./media/hdinsight-apache-spark-eventhub-streaming/delete-output-jars.png)
+       ![Apache Spark ストリーミング サンプル - 抽出した jar を削除](./media/hdinsight-apache-spark-eventhub-streaming/spark-streaming-example-delete-output-jars.png "Apache Spark ストリーミング サンプル - 抽出した jar を削除")
       
        **[Build on make] \(作成時にビルド)** ボックスが選択されていることを確認します。それにより、プロジェクトがビルドまたは更新されるたびに jar が確実に作成されます。 **[Apply]**をクリックします。
    6. **[Output Layout] \(出力レイアウト)** タブで、右側にある **[Available Elements] \(利用可能な要素)** ボックスの下部に、先ほどプロジェクト ライブラリに追加した SQL JDBC jar があります。 これは **[Output Layout (出力レイアウト)]** タブに追加する必要があります。 jar ファイルを右クリックし、 **[Extract Into Output Root (出力ルートに抽出)]**をクリックします。
       
-       ![依存関係 jar の抽出](./media/hdinsight-apache-spark-eventhub-streaming/extract-dependency-jar.png)  
+       ![Apache Spark ストリーミング サンプル - 依存関係 jar の抽出](./media/hdinsight-apache-spark-eventhub-streaming/spark-streaming-example-extract-dependency-jar.png "Apache Spark ストリーミング サンプル - 依存関係 jar の抽出")  
       
        これで、 **[Output Layout (出力レイアウト)]** タブは次のようになります。
       
-       ![[最終出力] タブ](./media/hdinsight-apache-spark-eventhub-streaming/final-output-tab.png)        
+       ![Apache Spark ストリーミング サンプル - 最終的な出力のタブ](./media/hdinsight-apache-spark-eventhub-streaming/spark-streaming-example-final-output-tab.png "Apache Spark ストリーミング サンプル - 最終的な出力のタブ")        
       
        **[Project Structure] \(プロジェクトの構造)** ダイアログ ボックスで、**[Apply] \(適用)** をクリックし、**[OK]** をクリックします。    
    7. メニュー バーの **[Build] \(ビルド)** をクリックし、**[Make Project] \(プロジェクトの作成)** をクリックします。 **[Build Artifact (アーティファクトのビルド)]** をクリックして、jar を作成することもできます。 出力 jar が **\classes\artifacts** の下に作成されます。
       
-       ![JAR の作成](./media/hdinsight-apache-spark-eventhub-streaming/output.png)
+       ![Apache Spark ストリーミング サンプル - 出力 JAR](./media/hdinsight-apache-spark-eventhub-streaming/spark-streaming-example-output-jar.png "Apache Spark ストリーミング サンプル - 出力 JAR")
 
-## <a name="run-the-applications-remotely-on-a-spark-cluster-using-livy"></a>Livy を使用して Spark クラスターでアプリケーションをリモートで実行する
+## <a name="run-the-application-remotely-on-a-spark-cluster-using-livy"></a>Livy を使用して Spark クラスターでアプリケーションをリモートで実行する
 
-Livy を使用して Spark クラスターでストリーミング アプリケーションをリモートで実行します。 HDInsight Spark クラスターで Livy を使用する方法の詳細については、「 [Azure HDInsight の Apache Spark クラスターへのジョブのリモート送信](hdinsight-apache-spark-livy-rest-interface.md)」を参照してください。 Spark を使用してイベントをストリーミングするリモート ジョブを実行するには、事前にいくつかの操作を実行する必要があります。
+この記事では、Livy を使用して Spark クラスターで Apache Spark ストリーミング アプリケーションをリモートで実行します。 HDInsight Spark クラスターで Livy を使用する方法の詳細については、「 [Azure HDInsight の Apache Spark クラスターへのジョブのリモート送信](hdinsight-apache-spark-livy-rest-interface.md)」を参照してください。 Spark ストリーミング アプリケーションを実行するには、事前にいくつかの操作を実行する必要があります。
 
 1. ローカルのスタンドアロン アプリケーションを起動して、イベントを生成し、Event Hub に送信します。 それを行うには、次のコマンドを使用します。
    
@@ -187,7 +181,7 @@ Livy を使用して Spark クラスターでストリーミング アプリケ�
 2. ストリーミング jar (**spark-streaming-data-persistence-examples.jar**) を、クラスターに関連付けられた Azure Blob Storage にコピーします。 これにより、jar で Livy にアクセスできるようになります。 コピーには、[**AzCopy**](../storage/storage-use-azcopy.md) コマンド ライン ユーティリティを使用できます。 データのアップロードに使用できるクライアントは、他にも多数あります。 詳細については、「 [HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」を参照してください。
 3. これらのアプリケーションを実行するコンピューターに CURL をインストールします。 CURL を使用して、ジョブをリモートで実行する Livy エンドポイントを呼び出します。
 
-### <a name="run-the-applications-to-receive-the-events-into-an-azure-storage-blob-as-text"></a>Azure Storage BLOB へのイベントをテキストとして受信するアプリケーションを実行する
+### <a name="run-the-spark-streaming-application-to-receive-the-events-into-an-azure-storage-blob-as-text"></a>Azure Storage Blob へのイベントをテキストとして受信する Spark ストリーミング アプリケーションを実行する
 
 コマンド プロンプトを開き、CURL をインストールしたディレクトリに移動し、次のコマンドを実行します (ユーザー名/パスワードおよびクラスター名を置き換える)。
 
@@ -225,7 +219,7 @@ Livy を使用して Spark クラスターでストリーミング アプリケ�
 
 出力の最後行にあるバッチ ID (この例では '1') をメモします。 アプリケーションが正常に実行していることを確認するには、クラスターに関連付けられた Azure ストレージ アカウントを調べて、**/EventCount/EventCount10** フォルダーが作成されていることを確かめます。 このフォルダーには、パラメーター **batch-interval-in-seconds** で指定された期間内に処理されたイベント数をキャプチャする BLOB が含まれている必要があります。
 
-アプリケーションは、強制終了するまで、実行を継続します。 強制終了するには、次のコマンドを使用します。
+Spark ストリーミング アプリケーションは、強制終了するまで、実行を継続します。 強制終了するには、次のコマンドを使用します。
 
     curl -k --user "admin:mypassword1!" -v -X DELETE "https://mysparkcluster.azurehdinsight.net/livy/batches/1"
 
@@ -243,7 +237,7 @@ Livy を使用して Spark クラスターでストリーミング アプリケ�
  コマンドを実行したら、クラスターに関連付けられた Azure ストレージ アカウントを調べて、**/EventCount/EventCount10** フォルダーが作成されていることを確かめます。 **part-** というプレフィックスの付いたファイルを開き、JSON 形式で処理されるイベントがあることを確認します。
 
 ### <a name="run-the-applications-to-receive-the-events-into-a-hive-table"></a>Hive テーブルへのイベントを受信するアプリケーションを実行する
-Hive テーブルにイベントをストリーミングするアプリケーションを実行するには、追加のコンポーネントがいくつか必要です。 次のとおりです。
+Hive テーブルにイベントをストリーミングするSpark ストリーミング アプリケーションを実行するには、追加のコンポーネントがいくつか必要です。 次のとおりです。
 
 * datanucleus-api-jdo-3.2.6.jar
 * datanucleus-rdbms-3.2.9.jar
@@ -294,7 +288,7 @@ SELECT クエリを実行して、テーブルの内容を表示することも�
 
 
 ### <a name="run-the-applications-to-receive-the-events-into-an-azure-sql-database-table"></a>Azure SQL データベース テーブルへのイベントを受信するアプリケーションを実行する
-この手順を実行する前に、Azure SQL データベースが作成されていることを確認してください。 手順については、[数分での SQL データベースの作成](../sql-database/sql-database-get-started.md)に関する記事を参照してください。 このセクションを完了するには、データベース名、データベース サーバー名、およびデータベース管理者の資格情報がパラメーターとして必要です。 ただし、データベース テーブルを作成する必要はありません。 ストリーミング アプリケーションによって自動的に作成されます。
+この手順を実行する前に、Azure SQL データベースが作成されていることを確認してください。 手順については、[数分での SQL データベースの作成](../sql-database/sql-database-get-started.md)に関する記事を参照してください。 このセクションを完了するには、データベース名、データベース サーバー名、およびデータベース管理者の資格情報がパラメーターとして必要です。 ただし、データベース テーブルを作成する必要はありません。 Spark ストリーミング アプリケーションによって自動的に作成されます。
 
 コマンド プロンプトを開き、CURL をインストールしたディレクトリに移動し、次のコマンドを実行します。
 

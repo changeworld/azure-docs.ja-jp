@@ -14,6 +14,7 @@ ms.devlang: java
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: xerners
+ms.custom: aaddev
 ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: 590e2bc759567cf3d679e261592dff1e699ba295

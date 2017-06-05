@@ -1,5 +1,5 @@
 ---
-title: "ポータルでのクラウド サービスの自動スケール (クラシック ポータル) | Microsoft Docs"
+title: "ポータルでのクラウド サービスの自動スケール | Microsoft Docs"
 description: "ポータルを使用して、Azure でクラウド サービスの Web ロールおよび worker ロールの自動スケール ルールを構成する方法について説明します。"
 services: cloud-services
 documentationcenter: 
@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 05/18/2017
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 7891fbd326340ed102f885e84993ef987e044023
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be747170a0d8a7a6defd790a3f8a122c4d397671
+ms.openlocfilehash: e746decaea19477e52aba3ce714d8dd10140602e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/23/2017
 
 ---
 
@@ -44,19 +45,16 @@ ms.lasthandoff: 03/25/2017
 
 * アプリケーションの高可用性を可能にするには、アプリケーションを 2 つ以上のロール インスタンスと共にデプロイする必要があります。 詳細については、「 [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」を参照してください。
 
-> [!WARNING]
-> 自動スケーリングは、従来の Azure Storage アカウントのみで動作します。 Azure Resource Manager Storage アカウントでは動作しません。
-
 
 ## <a name="where-scale-is-located"></a>スケールの設定
 クラウド サービスを選択したら、該当するクラウド サービス ブレードを表示状態にします。
 
 1. クラウド サービス ブレードの **[ロールとインスタンス]** タイルで、クラウド サービスの名前を選択します。   
    **重要**: ロールの下にあるロール インスタンスではなく、クラウド サービス ロールを必ずクリックしてください。
-   
+
     ![](./media/cloud-services-how-to-scale-portal/roles-instances.png)
 2. **[スケール]** タイルを選択します。
-   
+
     ![](./media/cloud-services-how-to-scale-portal/scale-tile.png)
 
 ## <a name="automatic-scale"></a>自動スケール
@@ -78,25 +76,25 @@ ms.lasthandoff: 03/25/2017
 プロファイルでは、スケールにおけるインスタンスの最大数と最小数、ならびにこのスケール範囲を有効にするタイミングを設定します。
 
 * **Always (常に)**
-  
+
     常に、この使用可能なインスタンスの範囲を保持します。  
-  
+
     ![常時スケールされるクラウド サービス](./media/cloud-services-how-to-scale-portal/select-always.png)
 * **定期的なアイテム**
-  
+
     スケールする曜日セットを選択します。
-  
+
     ![定期的なスケジュールで行われるクラウド サービスのスケール](./media/cloud-services-how-to-scale-portal/select-recurrence.png)
 * **指定日**
-  
+
     指定された日付範囲でロールをスケールします。
-  
+
     ![指定日に行われるクラウド サービスのスケール](./media/cloud-services-how-to-scale-portal/select-fixed.png)
 
 プロファイルを構成したら、プロファイル ブレードの下部にある **[OK]** ボタンを選択します。
 
 #### <a name="rule"></a>ルール
-ルールは、プロファイルに追加されて、スケールをトリガーする条件を示します。 
+ルールは、プロファイルに追加されて、スケールをトリガーする条件を示します。
 
 ルールのトリガーは、条件値を追加可能なクラウド サービスのメトリック (CPU の使用率、ディスク アクティビティ、またはネットワーク アクティビティ) に基づいて設定されます。 さらに、メッセージ キュー、またはサブスクリプションに関連付けられているその他の Azure リソースのメトリックに基づいてトリガーを設定することができます。
 
@@ -109,12 +107,11 @@ ms.lasthandoff: 03/25/2017
 
 ![プロファイルとルールを使用したクラウド サービスのスケール設定](./media/cloud-services-how-to-scale-portal/manual-basics.png)
 
-この設定により、ロールから自動スケールが削除され、インスタンス数を直接設定できるようになります。 
+この設定により、ロールから自動スケールが削除され、インスタンス数を直接設定できるようになります。
 
 1. スケール (手動または自動) オプション。
 2. スケールするインスタンスを設定するロール インスタンス スライダー。
 3. スケールするロールのインスタンス。
 
 スケール設定を構成したら、上部にある **[保存]** アイコンを選択します。
-
 

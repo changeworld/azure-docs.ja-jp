@@ -1,6 +1,6 @@
 ---
 title: "Azure HDInsight の Hadoop コンポーネントのリリース ノート | Microsoft Docs"
-description: "Azure HDInsight の Hadoop コンポーネントの最新のリリース ノートとバージョン。 Hadoop、Apache Storm、HBase に関する開発のヒントと詳細情報を示します。"
+description: "Azure HDInsight の Hadoop コンポーネントの最新のリリース ノートとバージョン。 Spark、R Server、Hive などの開発に関するヒントや詳細を紹介します。"
 services: hdinsight
 documentationcenter: 
 editor: cgronlun
@@ -9,23 +9,24 @@ author: nitinme
 tags: azure-portal
 ms.assetid: a363e5f6-dd75-476a-87fa-46beb480c1fe
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 4/06/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: e9bcb0cb33eefc743ed220cb2a874f9ae11b5fe7
-ms.lasthandoff: 04/10/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: 782cab231e1b152c720abebff1fc76ae0559d12a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/13/2017
 
 
 ---
 # <a name="release-notes-for-hadoop-components-on-azure-hdinsight"></a>Azure HDInsight の Hadoop コンポーネントのリリース ノート
 
-この記事では、**最近**の Azure HDInsight リリース更新に関する情報を提供します。 それ以前のリリースについては、「[HDInsight リリース ノートのアーカイブ](hdinsight-release-notes-archive.md)」を参照してください。
+この記事では、**最近**の Azure HDInsight リリース更新に関する情報を提供します。 以前のリリースについて詳しくは、「[HDInsight リリース ノートのアーカイブ](hdinsight-release-notes-archive.md)」を参照してください。
 
 > [!IMPORTANT]
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight のバージョン管理に関する記事](hdinsight-component-versioning.md)に関するページを参照してください。
@@ -76,7 +77,7 @@ Spark 2.0.1 は、現在 Spark クラスター (HDInsight バージョン 3.5) �
 
 ## <a name="11162016---release-of-r-server-90-on-hdinsight-35-spark-20"></a>2016 年 11 月 16 日 - HDinsight 3.5 (Spark 2.0) での R Server 9.0 の リリース
 *    R Server クラスターのバージョン オプションに、HDI 3.5 (Spark 2.0) の R Server 9.0 と HDI 3.4 (Spark 1.6) の R Server 8.0 の 2 つが追加されました。
-*    HDI 3.5 (Spark 2.0) の R Server 9.0 は R 3.3.2 上に構築され、Hive および Parquet から直接 Spark DataFrames にデータを読み込み ScaleR で分析するための、RxHiveData と RxParquetData という新しい ScaleR データ ソース関数が追加されています。 詳細については、R の ?RxHiveData コマンドおよび ?RxParquetData コマンドで表示されるこれらの関数のインライン ヘルプを参照してください。
+*    HDI 3.5 (Spark 2.0) の R Server 9.0 は R 3.3.2 上に構築され、Hive および Parquet から直接 Spark DataFrames にデータを読み込み ScaleR で分析するための、RxHiveData と RxParquetData という新しい ScaleR データ ソース関数が追加されています。 詳細については、R の **?RxHiveData** コマンドおよび **?RxParquetData** コマンドで表示されるこれらの関数のインライン ヘルプを参照してください。
 *    RStudio コミュニティ エディションが、プロビジョニング フローの一環として、[クラスターの構成] ブレードにおいて既定で (オプトアウト オプションで) インストールされるようになりました。
 
 ## <a name="11092016---release-of-spark-20-on-hdinsight"></a>2016 年 11 月 9 日 - HDInsight での Spark 2.0 の リリース
@@ -86,7 +87,7 @@ Spark 2.0.1 は、現在 Spark クラスター (HDInsight バージョン 3.5) �
 * エッジ ノードへのアクセス用の URI が、**clustername**-ed-ssh.azurehdinsight.net に変更されました。
 * HDInsight クラスターでの R Server のプロビジョニングの効率が向上しています。
 * HDInsight の R Server が、標準の HDInsight "R Server" クラスター タイプとして使用可能になりました。今後は別の HDInsight アプリケーションとしてインストールする必要はありません。 エッジ ノードと R Server バイナリは、R Server クラスター デプロイメントの一部としてプロビジョニングされるようになりました。 これにより、プロビジョニングの速度と信頼性が向上します。 これに伴い、R Server の価格モデルも更新されます。
-* R Server クラスター タイプの価格は、Standard Tier の価格に R Server の追加料金を加えたものになります。 Premium Tier は、今後は複数のクラスター タイプで使用可能な Premium 機能用になり、R Server クラスター タイプでは使用されなくなります。 この変更は、実際の R Server の価格には影響しません。請求書の記載方法が変わるだけです。 既存のすべての R Server クラスターは引き続き実行でき、ARM テンプレートは非推奨に関する通知が行われるまで使用できます。 **ただし、スクリプト化したデプロイメントが新しい ARM テンプレートを使用するように更新することをお勧めします。**
+* R Server クラスター タイプの価格は、Standard Tier の価格に R Server の追加料金を加えたものになります。 Premium Tier は、複数のクラスター タイプで使用可能な Premium 機能用になり、R Server クラスター タイプでは使用されなくなります。 この変更は、実際の R Server の価格には影響しません。請求書の記載方法が変わるだけです。 既存のすべての R Server クラスターは引き続き実行でき、Resource Manager テンプレートは非推奨に関する通知が行われるまで使用できます。 **ただし、スクリプト化したデプロイメントが新しい Resource Manager テンプレートを使用するように更新することをお勧めします。**
 
 ## <a name="08302016---release-of-r-server-on-hdinsight"></a>2016 年 8 月 30 日 - HDInsight での R Server のリリース
 今回のリリースがデプロイされている Linux ベースの HDInsight クラスターのバージョン番号は、以下のとおりです。

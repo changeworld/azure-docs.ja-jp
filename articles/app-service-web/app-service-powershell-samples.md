@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: app-service
 ms.date: 03/08/2017
 ms.author: cfowler
-translationtype: Human Translation
+ms.custom: mvc
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
 ms.openlocfilehash: e35cea1a057b9c5f86325bfb6cf6e0e27f4ce203
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/06/2017
-
 
 ---
 # <a name="azure-powershell-samples"></a>Azure PowerShell のサンプル

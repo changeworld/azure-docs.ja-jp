@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 05/31/2016
-ms.author: stepsic
-translationtype: Human Translation
+ms.author: LADocs; stepsic
+ms.translationtype: Human Translation
 ms.sourcegitcommit: a3ae5ce7d16ac9ed3a06c313ff3c48e8cbf79c54
 ms.openlocfilehash: f1bf19e6dfbcf187635730a53c93162244c17c6a
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/01/2017
 
 

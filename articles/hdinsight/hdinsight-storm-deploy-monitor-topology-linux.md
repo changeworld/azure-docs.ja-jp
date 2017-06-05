@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 03/22/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 53092b0cfcf2bf9a09b36f6425724669f770e7fb
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 7db9f78641d1604b3804f9a3d1cac484b58b334d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/12/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/12/2017
 このドキュメントでは、HDInsight クラスターで Storm を実行している Storm トポロジを管理および監視する方法の基本について説明します。
 
 > [!IMPORTANT]
-> この記事の手順では、HDInsight クラスター上の Linux ベースの Storm が必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。 
+> この記事の手順では、HDInsight クラスター上の Linux ベースの Storm が必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。 
 >
 > Windows ベースの HDInsight でトポロジをデプロイおよび監視する方法については、「 [HDInsight での Apache Storm トポロジのデプロイと管理](hdinsight-storm-deploy-monitor-topology.md)
 
@@ -118,7 +118,7 @@ Visual Studio を使用してトポロジが正常に送信されたら、クラ
 
 トポロジを再調整すると、トポロジの並列処理が変更されます。 たとえば、クラスターのサイズを変更してノートを追加すると、再調整によってトポロジに新しいノードが表示されます。
 
-トポロジを再調整するには、__[トポロジの概要]__の上部にある __[再調整]__ ボタンを使用します。
+トポロジを再調整するには、__[トポロジの概要]__ の上部にある __[再調整]__ ボタンを使用します。
 
 > [!WARNING]
 > トポロジを再調整すると、まずトポロジのアクティブ化が解除され、worker がクラスター全体に平均的に再分配され、最終的に、トポロジは再調整の発生前の状態に戻ります。 そのため、トポロジがアクティブであった場合は、再度アクティブになります。 非アクティブであった場合は、非アクティブのままになります。

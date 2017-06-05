@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 04/04/2017
 ms.author: saeeda
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: 215f9baeda7cd0bcf3fd66893919575647849e7d
+ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
+ms.openlocfilehash: 9de6a57671cf65c4aa5d8695d21e0932175b1183
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 05/22/2017
 
 ---
 # <a name="azure-active-directory-b2c-ui-customization-in-a-custom-policy"></a>Azure Active Directory B2C: カスタム ポリシーでの UI カスタマイズ
@@ -30,14 +30,6 @@ ms.lasthandoff: 05/02/2017
 ## <a name="prerequisites"></a>前提条件
 
 処理を実行する前に、[カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)を完了する必要があります。  ローカル アカウントでのサインアップとサインインのために作業用カスタム ポリシーを持つ必要があります。
-
-### <a name="confirming-your-b2c-tenant"></a>B2C テナントの確認
-
-カスタム ポリシーはまだプライベート プレビュー段階のため、カスタム ポリシーのアップロードのために Azure AD B2C テナントが有効になっていることを確認します。
-
-1. [Azure Portal](https://portal.azure.com) で、[Azure AD B2C テナントのコンテキストに切り替え](active-directory-b2c-navigate-to-b2c-context.md)、[Azure AD B2C] ブレードを開きます。
-1. **[All Policies]**(すべてのポリシー) をクリックします。
-1. **[Upload Policy]**(アップロード ポリシー) が利用可能なことを確認します。  ボタンが無効になっている場合、AADB2CPreview@microsoft.com までメールでお知らせください。
 
 ## <a name="the-page-ui-customization-feature"></a>ページ UI カスタマイズ機能
 

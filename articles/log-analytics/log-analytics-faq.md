@@ -3,7 +3,7 @@ title: "Log Analytics についてよく寄せられる質問 | Microsoft Docs"
 description: "Azure Log Analytics サービスについてよく寄せられる質問とその回答"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: ad536ff7-2c60-4850-a46d-230bc9e1ab45
@@ -13,10 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
-ms.author: banders
-translationtype: Human Translation
+ms.author: magoedte
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 9ee8f4aafcc35e43c4fcba5a3a72b043dd9fc32c
 ms.openlocfilehash: 4695669dc20b4b4b90ccdaf4db06df2cfcba2167
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/21/2017
 
 

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: b53bd4d9db9c1ca030a770e56427f35204b90ab3
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: fbc5cc4a332877451867ca434db40d67ee623a0f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -44,15 +45,17 @@ ms.lasthandoff: 03/31/2017
 | [Enterprise Dev/Test](https://azure.microsoft.com/ofers/ms-azr-0148p/) |0148P |Windows 10 |
 
 ## <a name="check-your-azure-subscription"></a>Azure サブスクリプションの確認
-プラン ID を把握していない場合は、Azure ポータルまたはアカウント ポータルから取得できます。
+プラン ID を把握していない場合は、次の 2 つの方法で Azure ポータルから取得できます。  
 
-サブスクリプションのプラン ID は、 Azure ポータル内の 'サブスクリプション' ブレードに示されています。
+- [サブスクリプション] ブレードで:
 
-![Azure ポータルからのプラン ID の詳細](./media/client-images/offer_id_azure_portal.png) 
+  ![Azure ポータルからのプラン ID の詳細](./media/client-images/offer-id-azure-portal.png) 
+
+- または、**[課金情報]** をクリックした後、サブスクリプション ID をクリックします。 [課金情報] ブレードにプラン ID が表示されます。
 
 また、Azure アカウント ポータルの ['サブスクリプション' タブ](http://account.windowsazure.com/Subscriptions) からプラン ID を表示することもできます。
 
-![Azure アカウント ポータルからのプラン ID の詳細](./media/client-images/offer_id_azure_account_portal.png) 
+![Azure アカウント ポータルからのプラン ID の詳細](./media/client-images/offer-id-azure-account-portal.png) 
 
 ## <a name="next-steps"></a>次のステップ
 これで、[PowerShell](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)、[Resource Manager テンプレート](ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)、または [Visual Studio](../../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) を使用して VM をデプロイすることができます。

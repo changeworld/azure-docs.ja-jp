@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 05/02/2017
+ms.date: 05/11/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 031fa71b8f5aac558569eea7001e16df4cae917c
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: fefa78f7e0ba4bd40e6c0985080403237d6eb916
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -482,11 +483,7 @@ Redis コマンドの詳細については、 [http://redis.io/commands](http://
 **Redis コンソール**を使用して Azure Redis Cache インスタンスにコマンドを安全に発行できます。このコンソールは Standard キャッシュと Premium キャッシュに対して使用できます。
 
 > [!IMPORTANT]
-> Redis コンソールは、VNET、クラスタリング、0 以外のデータベースでは機能しません。 
-> 
-> * [VNET](cache-how-to-premium-vnet.md) : キャッシュが VNET の一部である場合は、VNET のクライアントだけがキャッシュにアクセスできます。 Redis コンソールは、VNET の一部ではない VM でホストされている redis-cli.exe クライアントを使用するため、キャッシュに接続できません。
-> * [クラスタリング](cache-how-to-premium-clustering.md): Redis コンソールは、現時点ではクラスタリングをサポートしていない redis-cli.exe クライアントを使用します。 GitHub で Redis リポジトリの[不安定な](http://redis.io/download)ブランチにある redis-cli ユーティリティは、`-c` スイッチ付きで起動した場合、基本的なサポートを実装しています。 詳細については、[http://redis.io](http://redis.io) の「[Redis cluster tutorial (Redis クラスター チュートリアル)](http://redis.io/topics/cluster-tutorial)」で「[Playing with the cluster (クラスターの使用)](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster)」をご覧ください。
-> * Redis コンソールは、コマンドを送信するたびに、データベース 0 への新しい接続を作成します。 データベースは各コマンドで 0 にリセットされるため、 `SELECT` コマンドを使用して別のデータベースを選択することはできません。 別のデータベースへの変更など、Redis コマンドの実行については、「 [Redis コマンドの実行方法](cache-faq.md#how-can-i-run-redis-commands)
+> [VNET](cache-how-to-premium-vnet.md) では Redis コンソールを使用できません。 キャッシュが VNET の一部である場合は、VNET のクライアントだけがキャッシュにアクセスできます。 Redis コンソールは、VNET の外部にあるローカル ブラウザーで実行されるため、キャッシュに接続できません。
 > 
 > 
 

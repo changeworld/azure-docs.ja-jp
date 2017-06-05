@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/31/2017
+ms.date: 05/15/2017
 ms.author: ancav
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 9a290422bf897397942fccf2e3733d0709701e91
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: 240f7f3788f6a432bcb1ec3b244bc76e3157445a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---

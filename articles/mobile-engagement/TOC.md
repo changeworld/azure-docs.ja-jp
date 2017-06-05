@@ -76,7 +76,6 @@
 ### リーチ
 #### [プッシュを使用して管理する](mobile-engagement-how-tos.md)
 #### [通知で絵文字を送信する](mobile-engagement-use-emoji-with-push.md)
-#### [個人用に設定した通知を送信する](mobile-engagement-send-personalized-notifications.md)
 
 ### サービス API にアクセスする
 #### [REST ()](mobile-engagement-dotnet-rest-service-api.md)

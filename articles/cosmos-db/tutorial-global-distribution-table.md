@@ -1,14 +1,14 @@
 ---
 title: "Table API の Azure Cosmos DB グローバル分散チュートリアル | Microsoft Docs"
 description: "Table API を使用して Azure Cosmos DB グローバル分散をセットアップする方法について説明します。"
-services: cosmosdb
+services: cosmos-db
 keywords: "グローバル分散, Table"
 documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 8b815047-2868-4b10-af1d-40a1af419a70
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 3282dd96fb51ba9eeb27560c6897211c55738f1e
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 63c9e530a4982e2e6e478fea56e015fc77851e1d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -33,12 +33,12 @@ ms.lasthandoff: 05/10/2017
 > * Azure Portal を使用してグローバル分散を構成する
 > * [Table API](table-introduction.md) を使用してグローバル分散を構成する
 
-[!INCLUDE [cosmosdb-tutorial-global-distribution-portal](../../includes/cosmosdb-tutorial-global-distribution-portal.md)]
+[!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
 
 ## <a name="connecting-to-a-preferred-region-using-the-table-api"></a>Table API を使用して優先リージョンに接続する
 
-[グローバル配布](../documentdb/documentdb-distribute-data-globally.md)を活用するために、クライアント アプリケーションでは、ドキュメントの操作の実行に使用するリージョンの順序付き優先リストを指定できます。 このためには、`TablePreferredLocations` 構成値をプレビュー Azure Storage SDK のアプリ構成で設定します。 Azure Cosmos DB アカウント構成、現在のリージョンの可用性、指定された優先リストに基づいて、書き込み操作と読み取り操作を実行する Azure Storage SDK によって最適なエンドポイントが選択されます。
+[グローバル配布](distribute-data-globally.md)を活用するために、クライアント アプリケーションでは、ドキュメントの操作の実行に使用するリージョンの順序付き優先リストを指定できます。 このためには、`TablePreferredLocations` 構成値をプレビュー Azure Storage SDK のアプリ構成で設定します。 Azure Cosmos DB アカウント構成、現在のリージョンの可用性、指定された優先リストに基づいて、書き込み操作と読み取り操作を実行する Azure Storage SDK によって最適なエンドポイントが選択されます。
 
 `TablePreferredLocations` に読み取りの優先場所 (マルチホーム) をコンマで区切って指定してください。 各クライアント インスタンスは、低待機時間で読み取りを行えるように、優先順位を付けてこれらのリージョンのサブセットを指定できます。 リージョンは[表示名](https://msdn.microsoft.com/library/azure/gg441293.aspx) (`West US` など) を使用して指定する必要があります。
 
@@ -56,7 +56,7 @@ SDK は、すべての書き込みを現在の書き込みリージョンに自�
     </appSettings>
 ```
 
-このチュートリアルはこれで終わりです。 [Azure Cosmos DB の一貫性レベル](../documentdb/documentdb-consistency-levels.md)に関する記事を読んで、グローバルにレプリケートされたアカウントの整合性を管理する方法について確認できます。 また、Azure Cosmos DB におけるグローバル データベース レプリケーションの動作の詳細については、[Azure Cosmos DB を使用したデータのグローバル分散](../documentdb/documentdb-distribute-data-globally.md)に関する記事を参照してください。
+このチュートリアルはこれで終わりです。 [Azure Cosmos DB の一貫性レベル](consistency-levels.md)に関する記事を読んで、グローバルにレプリケートされたアカウントの整合性を管理する方法について確認できます。 また、Azure Cosmos DB におけるグローバル データベース レプリケーションの動作の詳細については、[Azure Cosmos DB を使用したデータのグローバル分散](distribute-data-globally.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -69,4 +69,4 @@ SDK は、すべての書き込みを現在の書き込みリージョンに自�
 これで次のチュートリアルに進むことができます。Azure Cosmos DB ローカル エミュレーターを使用してローカルで開発する方法について学びます。
 
 > [!div class="nextstepaction"]
-> [エミュレーターを使用したローカル開発](../documentdb/documentdb-nosql-local-emulator.md)
+> [エミュレーターを使用したローカル開発](local-emulator.md)

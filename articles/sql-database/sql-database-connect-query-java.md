@@ -13,27 +13,31 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 04/17/2017
-ms.author: andrela;carlrab;sstein
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 6ba2880b1ce9eed0f5c3b8e3ed4255c7e4ec7f29
-ms.lasthandoff: 04/21/2017
+ms.date: 05/23/2017
+ms.author: andrela
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 63ab7345b70d456d9d1ad23255d9ca7e777e161d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/31/2017
 
 
 ---
 # <a name="azure-sql-database-use-java-to-connect-and-query-data"></a>Azure SQL Database: Java を使って接続とデータの照会を行う
 
-このクイック スタートでは、Mac OS、Ubuntu Linux、Windows の各プラットフォームから [Java](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) を使って Azure SQL Database に接続し、Transact-SQL ステートメントを使ってデータベース内のデータを照会、挿入、更新、削除する方法について説明します。
+このクイック スタートでは、Mac OS、Ubuntu Linux、Windows の各プラットフォームから [Java](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) を使用して Azure SQL Database に接続し、Transact-SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法について説明します。
+
+## <a name="prerequisites"></a>前提条件
 
 このクイック スタートでは、次のクイック スタートで作成されたリソースが出発点として使用されます。
 
 - [DB の作成 - ポータル](sql-database-get-started-portal.md)
 - [DB の作成 - CLI](sql-database-get-started-cli.md)
+- [DB の作成 - PowerShell](sql-database-get-started-powershell.md)
 
 ## <a name="install-java-software"></a>Java ソフトウェアのインストール
 
-このセクションの手順では、Java による開発には慣れているが、Azure SQL Database を初めて使用するユーザーを想定しています。 Java による開発の経験がない場合は、「[Build an app using SQL Server (SQL Server を使用してアプリを構築する)](https://www.microsoft.com/en-us/sql-server/developer-get-started/)」に移動し、**Java** を選択してから、使用しているオペレーティング システムを選択します。
+このセクションの手順では、Java による開発には慣れていて、Azure SQL Database は初めて使用するユーザーを想定しています。 Java による開発の経験がない場合は、「[Build an app using SQL Server (SQL Server を使用してアプリを構築する)](https://www.microsoft.com/en-us/sql-server/developer-get-started/)」に移動し、**Java** を選択してから、使用しているオペレーティング システムを選択します。
 
 ### <a name="mac-os"></a>**Mac OS**
 ターミナルを開き、Java プロジェクトの作成先となるディレクトリに移動します。 次のコマンドを入力して、**brew** と **Maven** をインストールします。 
@@ -45,7 +49,7 @@ brew install maven
 ```
 
 ### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
-ターミナルを開き、Java プロジェクトの作成先となるディレクトリに移動します。 次のコマンドを入力して、**Maven** をインストールします。 
+ターミナルを開き、Java プロジェクトの作成先となるディレクトリに移動します。 次のコマンドを入力して、**Maven** をインストールします。
 
 ```bash
 sudo apt-get install maven
@@ -64,7 +68,7 @@ Azure SQL データベースに接続するために必要な接続情報を取�
 
    ![server-name](./media/sql-database-connect-query-dotnet/server-name.png) 
 
-4. Azure SQL Database サーバーのログイン情報を忘れた場合は、[SQL データベース サーバー] ページに移動して、サーバー管理者名を表示し、必要に応じてパスワードをリセットします。
+4. サーバーのログイン情報を忘れた場合は、[SQL データベース サーバー] ページに移動して、サーバー管理者名を表示し、必要に応じてパスワードをリセットします。
 5. **[データベース接続文字列の表示]** をクリックします。
 
 6. 完全な **JDBC** 接続文字列を確認します。
@@ -105,7 +109,7 @@ public class App {
     public static void main(String[] args) {
     
         // Connect to database
-        String hostName = "your_server.database.windows.net";
+        String hostName = "your_server";
         String dbName = "your_database";
         String user = "your_username";
         String password = "your_password";
@@ -160,7 +164,7 @@ public class App {
     public static void main(String[] args) {
     
         // Connect to database
-        String hostName = "your_server.database.windows.net";
+        String hostName = "your_server";
         String dbName = "your_database";
         String user = "your_username";
         String password = "your_password";
@@ -216,7 +220,7 @@ public class App {
     public static void main(String[] args) {
     
         // Connect to database
-        String hostName = "your_server.database.windows.net";
+        String hostName = "your_server";
         String dbName = "your_database";
         String user = "your_username";
         String password = "your_password";
@@ -267,7 +271,7 @@ public class App {
     public static void main(String[] args) {
     
         // Connect to database
-        String hostName = "your_server.database.windows.net";
+        String hostName = "your_server";
         String dbName = "your_database";
         String user = "your_username";
         String password = "your_password";
@@ -300,15 +304,8 @@ public class App {
 ```
 
 ## <a name="next-steps"></a>次のステップ
-
-- GitHub レポジトリの [SQL Server 用 Microsoft JDBC ドライバー](https://github.com/microsoft/mssql-jdbc)。
-- [問題/質問を登録します](https://github.com/microsoft/mssql-jdbc/issues)。
-- SQL Server Management Studio を使用して接続とクエリを実行するには、[SSMS を使用した接続とクエリ](sql-database-connect-query-ssms.md)に関するページを参照してください。
-- Visual Studio を使用して接続とデータの照会を行うには、[Visual Studio Code を使った接続とデータの照会](sql-database-connect-query-vscode.md)に関するページを参照してください。
-- .NET を使用して接続とデータの照会を行うには、[.NET を使った接続とデータの照会](sql-database-connect-query-dotnet.md)に関するページを参照してください。
-- PHP を使用して接続とデータの照会を行うには、[PHP を使った接続とデータの照会](sql-database-connect-query-php.md)に関するページを参照してください。
-- Node.js を使用して接続とデータの照会を行うには、[Node.js を使った接続とデータの照会](sql-database-connect-query-nodejs.md)に関するページを参照してください。
-- Python を使用して接続とデータの照会を行うには、[Python を使った接続とデータの照会](sql-database-connect-query-python.md)に関するページを参照してください。
-- Ruby を使用して接続とデータの照会を行うには、[Ruby を使った接続とデータの照会](sql-database-connect-query-ruby.md)に関するページを参照してください。
+- [最初の Azure SQL Database の設計](sql-database-design-first-database.md)
+- [SQL Server 用 Microsoft JDBC ドライバー](https://github.com/microsoft/mssql-jdbc)
+- [問題の報告/質問](https://github.com/microsoft/mssql-jdbc/issues)
 
 

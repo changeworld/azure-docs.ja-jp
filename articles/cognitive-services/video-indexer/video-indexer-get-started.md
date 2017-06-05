@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 05/02/2017
 ms.author: juliako;
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: b4b93541b1453e83aab2a4aa64fc576e8f08efe5
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: c032357cb14cb3acf148390b263fe8c13b8d35b0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -25,7 +25,7 @@ To read a detailed overview of the Video Indexer service, see the [overview](vid
 
 ## <a name="sign-up-and-sign-in"></a>Sign up and sign in
 
-To start developing with Video Indexer, you must first Sign up and sign in to the [Video Indexer](https://www.vi.microsoft.com) portal. 
+To start developing with Video Indexer, you must first Sign up and sign in to the [Video Indexer](http://vi.microsoft.com) portal. 
 
 You can sign up for the service using existing AAD, LinkedIn, Facebook, Google, or MSA account. 
 

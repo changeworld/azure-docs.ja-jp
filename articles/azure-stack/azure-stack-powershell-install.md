@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2017
+ms.date: 05/16/2017
 ms.author: sngun
 ms.translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 3acfd728af944efef6e82dfe14ad52e726b5d635
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 70334f915f9778e97ad44570691dcca54421e57b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/21/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -40,7 +40,13 @@ Get-PSRepository
 
 ## <a name="install-the-required-version-of-powershell-modules"></a>Install the required version of PowerShell modules
 
-Use the following steps to install PowerShell for Azure Stack:  
+Before installing the required version, make sure that you uninstall any existing Azure PowerShell modules. To uninstall, close all the active PowerShell sessions and run the following command: 
+
+```powershell
+Get-Module -ListAvailable | where-Object {$_.Name -like “Azure*”} | Uninstall-Module
+```
+
+Now,use the following steps to install PowerShell for Azure Stack:  
 
 1. Azure Stack compatible AzureRM modules are installed through API version profiles.
 To learn about API version profiles and the cmdlets provided by them, refer to the [manage API version profiles](azure-stack-version-profiles.md) article. The AzureRM.Bootstrapper module provides PowerShell commands that are required to work with API version profiles. Use the following command to install the AzureRM.Bootstrapper module:  
@@ -53,7 +59,7 @@ To learn about API version profiles and the cmdlets provided by them, refer to t
 2. Run the following command to install the **2017-03-09-profile** version of the AzureRM modules for Compute, Storage, Network, Key Vault etc.  
 
   ```powershell
-  # Installs and imports the API Version Profile required by Azure Stack into the current PowerShell session.
+  # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
   Use-AzureRmProfile `
     -Profile 2017-03-09-profile
   ```

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Machine Learning に関してよく寄せられる質問 (FAQ) | Microsoft Docs"
 description: "Azure Machine Learning の概要: 効率的な予測モデリングのためのクラウド サービスについて、その課金、機能、制限についての疑問点に答える FAQ です。"
 keywords: "機械の概要、予測モデリング、機械学習とは"
@@ -13,17 +13,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/23/2017
+ms.date: 05/23/2017
 ms.author: garye
-translationtype: Human Translation
-ms.sourcegitcommit: 21d2c20a3ac8dc4fee0680028d6c004c80a3ae38
-ms.openlocfilehash: 2835e4e8be2a11b659118f836d53c84a2c021263
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: bb4d64f799027c9af74fd50ab724449bdede7804
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Azure Machine Learning に関してよく寄せられる質問: 課金、機能、制限、サポート
 ここでは、Web サービスを使用して予測モデルの作成とソリューションの運用を可能にするクラウド サービスである Azure Machine Learning についてよく寄せられる質問とその回答をいくつか紹介します。 この FAQ では、課金モデル、機能、制限、サポートなど、サービスの使用方法に関する質問を取り上げています。
+
+**ここで見つからない質問がある場合**
+
+MSDN には、Azure Machine Learning に関するフォーラムがあり、データ サイエンス コミュニティのメンバーはここで、Azure Machine Learning に関する質問をすることができます。 このフォーラムは Azure Machine Learning チームが監視しています。 [Azure Machine Learning フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning)にアクセスして、既存の回答を検索するか、ご自身で新たに質問を投稿してください。
 
 ## <a name="general-questions"></a>一般的な質問
 **Azure Machine Learning とは**
@@ -36,7 +41,7 @@ Azure Machine Learning は、クラウドで予測分析ソリューションを
 
 Machine Learning Studio は、Web ブラウザーを使用してアクセスするワークベンチ環境です。 Machine Learning Studio は、視覚的な構成インターフェイスにモジュールのパレットを備えており、実験の形式でエンド ツー エンドのデータサイエンス ワークフローを容易に構築できます。
 
-Machine Learning Studio の詳細については、「 [Machine Learning Studio とは](machine-learning-what-is-ml-studio.md)」をご覧ください。
+Machine Learning Studio の詳細については、「 [Machine Learning Studio とは](machine-learning-what-is-ml-studio.md)
 
 **Machine Learning API サービスとは**
 
@@ -154,7 +159,7 @@ Machine Learning Studio は、拡張性の高い強化された意思決定ツ�
 
 **提供されているアルゴリズムから 1 つのアルゴリズムを選ぶ際のガイドラインはありますか。**
 
-「[アルゴリズムの選択方法](machine-learning-algorithm-choice.md)」に関するページをご覧ください。
+[アルゴリズムの選択方法](machine-learning-algorithm-choice.md)」に関するページをご覧ください。
 
 **提供されているアルゴリズムは、R または Python で記述されていますか。**
 
@@ -213,10 +218,10 @@ Machine Learning Studio では Jupyter Notebooks を使用できます。 詳細
 
 [Azure サブスクリプションの制限](../azure-subscription-service-limits.md)に関するページをご覧ください。
 
-### <a name="use"></a>使用
+### <a name="use"></a>最初の起動時にドメインに参加しているマシンになるように VM をプロビジョニングするには、
 **バッチ実行サービスと要求応答サービスとして予測モデルを実行するのはいつがいいですか。**
 
-要求応答サービス (RRS) は、待ち時間が短く、拡張性の高い Web サービスで、実験環境で作成、デプロイされたステートレスなモデルへのインターフェイスを提供するために使用されます。 バッチ実行サービス (BES) は、データ レコードのバッチに対して非同期でスコアを付けるサービスです。 BES への入力は、RRS で使用されるデータ入力と似ています。 主な違いは、BES が、Azure Blob Storage、Azure Table Storage、Azure SQL Database、HDInsight (Hive クエリ)、HTTP ソースなど、さまざまなソースからレコードのブロックを読み取る点です。 詳細については、「 [How to consume Machine Learning web services (Machine Learning Web サービスを使用する方法)](machine-learning-consume-web-services.md)」をご覧ください。
+要求応答サービス (RRS) は、待ち時間が短く、拡張性の高い Web サービスで、実験環境で作成、デプロイされたステートレスなモデルへのインターフェイスを提供するために使用されます。 バッチ実行サービス (BES) は、データ レコードのバッチに対して非同期でスコアを付けるサービスです。 BES への入力は、RRS で使用されるデータ入力と似ています。 主な違いは、BES が、Azure Blob Storage、Azure Table Storage、Azure SQL Database、HDInsight (Hive Query)、HTTP ソースなど、さまざまなソースからレコードのブロックを読み取る点です。 詳細については、「 [How to consume Machine Learning web services (Machine Learning Web サービスを使用する方法)](machine-learning-consume-web-services.md)」をご覧ください。
 
 **Web サービスにデプロイされたモデルはどのように更新できますか。**
 
@@ -292,9 +297,9 @@ Machine Learning Studio は、ワークフローの実行時に中間データ�
 
 **ストレージ アカウントのアクセス キーの同期が失われてしまった場合はどうなりますか?**
 
-Machine Learning Studio は、ワークフローの実行時に中間データを格納する際、ユーザーが指定した Azure Storage アカウントを使用します。 この Storage アカウントは、ワークスペースの作成時に Machine Learning Studio に提供され、アクセス キーはそのワークスペースに関連付けられます。 ワークスペースの作成後にアクセス キーが変更されると、ワークスペースは Storage アカウントにアクセスできなくなります。 その場合、機能が停止し、そのワークスペース内のすべての実験が失敗します。
+Machine Learning Studio は、ワークフローの実行時に中間データを格納する際、ユーザーが指定した Azure ストレージ アカウントを使用します。 このストレージ アカウントは、ワークスペースの作成時に Machine Learning Studio に提供され、アクセス キーはそのワークスペースに関連付けられます。 ワークスペースの作成後にアクセス キーが変更されると、ワークスペースはストレージ アカウントにアクセスできなくなります。 その場合、機能が停止し、そのワークスペース内のすべての実験が失敗します。
 
-Storage アカウントのアクセス キーを変更した場合は、Azure クラシック ポータルを使用してワークスペースのアクセス キーを再同期します。  
+ストレージ アカウントのアクセス キーを変更した場合は、Azure クラシック ポータルを使用してワークスペースのアクセス キーを再同期します。  
 
 ## <a name="support-and-training"></a>サポートとトレーニング
 **どこで Azure Machine Learning のトレーニングを受講できますか?**
@@ -355,9 +360,9 @@ API コンピューティング時間は、Machine Learning コンピューテ�
 
 実稼働 API 呼び出しにかかる時間は状況により大幅に異なりますが、一般的には数百ミリ秒から数秒までの範囲です。 データ処理と機械学習モデルの複雑さによっては、API 呼び出しに数分かかることもあります。 実稼働 API 呼び出しにかかる時間を推定するための最適な方法は、Machine Learning サービスでモデルのベンチマークを実行することです。
 
-**Studio コンピューティング時間とは何ですか?**
+**スタジオ コンピューティング時間とは何ですか?**
 
-Studio コンピューティング時間は、Studio でコンピューティング リソースを実験に使用した時間の総計を表す課金単位です。
+スタジオ コンピューティング時間は、スタジオでコンピューティング リソースを実験に使用した時間の総計を表す課金単位です。
 
 **新しい (Azure Resource Manager ベースの) Web サービスでの開発/テスト レベルとは何のためのものですか?**
 

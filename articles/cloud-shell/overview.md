@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: juluk
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 47627bc6df93db1d92aa29350fe6e48039dc6f1b
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 63f1c468b5f8f4b0bb298cb67adea8c01b065427
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/16/2017
 
 ---
 # <a name="overview-of-azure-cloud-shell-preview"></a>Azure Cloud Shell (プレビュー) の概要
@@ -39,19 +39,22 @@ Cloud Shell は、作業のスピードを高めるために、広く使われ�
 Azure CLI 2.0 ですばやくリソースにアクセスできるよう、Cloud Shell では各セッションで安全に自動認証が行われます。
 
 ### <a name="connect-your-azure-file-storage"></a>Azure File Storage の接続
-Cloud Shell マシンは一時的なものであるため、お使いの $Home ディレクトリを永続化するためには、Azure ファイル共有をマウントする必要があります。
+Cloud Shell マシンは一時的なものであるため、お使いの $Home ディレクトリを永続化するためには、Azure ファイル共有を `clouddrive` としてマウントする必要があります。
 Cloud Shell の初回起動時に、リソース グループとストレージ アカウント、ファイル共有を自動的に作成するよう促されます。 これは 1 回限りの作業であり、それ以降はすべてのセッションで自動的に接続されます。 
 
 ![](media/storage-prompt.png)
 
-既定の 5 GB のディスク イメージを含んだ Azure ファイル共有と共に、LRS ストレージ アカウントが自動的に作成されます。
-このディスク イメージを使って $Home ディレクトリが同期され、永続化されます。 ストレージのコストは通常どおりに適用されます。
+既定の 5 GB のディスク イメージを含んだ Azure ファイル共有と共に、LRS ストレージ アカウントが自動的に作成されます。 $Home ディレクトリの同期と永続化に使用されるディスク イメージとのファイル共有操作のために、ファイル共有が `clouddrive` としてマウントされます。 ストレージのコストは通常どおりに適用されます。
+
 以下の 3 つのリソースが自動的に作成されます。
 1. `cloud-shell-storage-<region>` という名前のリソース グループ
 2. `cs-uniqueGuid` という名前のストレージ アカウント
 3. `cs-<user>-<domain>-com-uniqueGuid` という名前のファイル共有
 
-[Cloud Shell におけるファイルの永続化について詳しくは、こちらを参照してください](persisting-shell-storage.md)。
+> [!Note]
+> SSH キーなど、$Home ディレクトリ内のすべてのファイルが、マウントされたファイル共有に格納されたユーザー ディスク イメージに永続化されます。 $Home ディレクトリおよびマウントされたファイル共有へのファイルの保存時に、ベスト プラクティスを適用します。
+
+[Cloud Shell ストレージ、ファイル共有の更新、ファイルのアップロード/ダウンロードについては、こちらを参照してください] [persisting-shell-storage.md]
 
 ## <a name="concepts"></a>概念
 * Cloud Shell は、ユーザーごとにセッション単位で一時的に提供されるマシン上で実行されます。

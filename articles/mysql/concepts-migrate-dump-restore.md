@@ -11,19 +11,19 @@ ms.service: mysql-database
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: portal
-ms.date: 05/10/2017
+ms.date: 05/17/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: c09a6fa947d235189ab0137b074b6d7d9c925827
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: c0029e025cf6d0af478d1f21dc6acc7860905a81
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/18/2017
 
 ---
 
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>ダンプと復元を使用した Azure Database for MySQL への MySQL データベースの移行
 この記事では、Azure Database for MySQL でデータベースをバックアップして復元する一般的な 2 つの方法について説明します
-- コマンド ラインからのバックアップと復元 (mysqldump を使用) 
-- PHPMyAdmin を使用したバックアップと復元 
+- コマンド ラインからバックアップと復元を行う (mysqldump を使用) 
+- PowerShell を使用してバックアップと復元を行う 
 
 ## <a name="before-you-begin"></a>開始する前に
 このハウツー ガイドの手順を実行するには、以下が必要です。
@@ -66,11 +66,8 @@ $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sq
 $ mysqldump -u root -p --all-databases > alldb_backup.sql 
 ```
 
-## <a name="upload-files"></a>ファイルのアップロード
-WinSCP を使用すると、ローカルにある既存の MySQL 環境 (Azure または Azure 以外) のインポートまたはダンプを、エクスポートの目的で SFTP プロトコルまたは FTPS プロトコルにより簡単にアップロードおよび管理できます。
-
 ## <a name="create-a-database-on-the-target-azure-mysql-server"></a>対象 Azure MySQL サーバーでのデータベースの作成
-MySQL Workbench、Toad、Navicat、または MySQL 用のサード パーティ製ツールを使用して、データの移行先 Azure Database for MySQL サーバーで空のデータベースを作成する必要があります。 データベースの名前は、ダンプされたデータが含まれるデータベースと同じにすることも、別の名前でデータベースを作成することもできます。
+MySQL Workbench、Toad、Navicat、または MySQL 用のサード パーティ製ツールを使用して、データの移行先 Azure Database for MySQL サーバー上に空のデータベースを作成する必要があります。 データベースの名前は、ダンプされたデータが含まれるデータベースと同じにすることも、別の名前でデータベースを作成することもできます。
 
 ![Azure Database for MySQL の接続文字列](./media/concepts-migrate-import-export/p5.png)
 

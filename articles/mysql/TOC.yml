@@ -39,9 +39,9 @@
       href: concepts-supported-versions.md
   - name: リソース
     items:
-    - name: サービス階層
+    - name: 価格レベル
       href: concepts-service-tiers.md
-    - name: コンピューティング ユニットとストレージ ユニット
+    - name: コンピューティング ユニット
       href: concepts-compute-unit-and-storage.md
     - name: 制限
       href: concepts-limits.md
@@ -85,6 +85,8 @@
       href: howto-connection-string.md
     - name: SSL の構成
       href: howto-configure-ssl.md
+    - name: Web アプリ
+      href: howto-connect-webapp.md
 - name: リファレンス
   items:
   - name: Azure CLI

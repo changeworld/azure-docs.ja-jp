@@ -14,20 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2017
 ms.author: darosa;sethm
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: f86336de4e1d5bda1eba12f0f95079b950963bde
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: 03756c15d0cd46731e66df3d81c97099f13dcd17
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---
 # <a name="azure-event-hubs-archive"></a>Azure Event Hubs Archive の概要
-Azure Event Hubs Archive を利用すると、Event Hubs のストリーミング データを任意の Blob Storage アカウントに自動的に配信できます。その際、時間やサイズを柔軟に指定可能です。 Archive の設定は手軽で、実行に伴う管理コストは生じません。また、Event Hubs の[スループット単位](event-hubs-what-is-event-hubs.md#capacity)に応じて自動的にスケールします。 Event Hubs Archive は Azure にストリーミング データを読み込む最も簡単な方法であり、これを利用すれば、データのキャプチャではなくデータの処理に注力できるようになります。
+Azure Event Hubs Archive を利用すると、Event Hubs のストリーミング データを任意の Blob Storage アカウントに自動的に配信できます。その際、時間やサイズを柔軟に指定可能です。 Archive の設定は手軽で、実行に伴う管理コストは生じません。また、Event Hubs の[スループット単位](event-hubs-features.md#capacity)に応じて自動的にスケールします。 Event Hubs Archive は Azure にストリーミング データを読み込む最も簡単な方法であり、これを利用すれば、データのキャプチャではなくデータの処理に注力できるようになります。
 
 Event Hubs Archive を利用すると、リアルタイムおよびバッチベースのパイプラインを同じストリームで処理できます。 そのため、変化するニーズに合わせて拡大可能なソリューションを構築できます。 将来のリアルタイム処理を視野に入れてバッチベースのシステムを構築している場合も、既存のリアルタイム ソリューションに効率的なコールド パスを追加したいと考えている場合も、Event Hubs Archive ならストリーミング データの操作が容易です。
 
 ## <a name="how-event-hubs-archive-works"></a>Event Hubs Archive の機能のしくみ
-Event Hubs は分散ログに似た、テレメトリの受信のための持続的バッファーです。 Event Hubs でのスケーリングの鍵となるのは、[パーティション分割されたコンシューマー モデル](event-hubs-what-is-event-hubs.md#partitions)です。 各パーティションは独立したデータのセグメントであり、個別に使用されます。 このデータは、構成可能なリテンション期間に基づいて、所定のタイミングで破棄されます。 そのため、特定のイベント ハブが "いっぱい" になることはありません。
+Event Hubs は分散ログに似た、テレメトリの受信のための持続的バッファーです。 Event Hubs でのスケーリングの鍵となるのは、[パーティション分割されたコンシューマー モデル](event-hubs-features.md#partitions)です。 各パーティションは独立したデータのセグメントであり、個別に使用されます。 このデータは、構成可能なリテンション期間に基づいて、所定のタイミングで破棄されます。 そのため、特定のイベント ハブが "いっぱい" になることはありません。
 
 Event Hubs Archive では、アーカイブされたデータを格納するための独自の Azure BLOB ストレージ アカウントとコンテナーを指定することができます。 このアカウントのリージョンはイベント ハブと同じであっても、別のリージョンであってもかまわないため、Event Hubs Archive 機能の柔軟性がさらに高まっています。
 
@@ -41,7 +42,7 @@ Event Hubs Archive では、アーカイブを制御する "ウィンドウ" を
 ```
 
 ### <a name="scaling-to-throughput-units"></a>スループット単位へのスケーリング
-Event Hubs のトラフィックは [スループット単位](event-hubs-what-is-event-hubs.md#capacity)で制御されます。 受信の場合、1 スループット単位は最大 1 MB/秒または 1,000 イベント/秒となり、送信の場合はその倍となります。 Standard Event Hubs には 1 ～ 20 のスループット単位を構成でき、クォータの引き上げの[サポート要求][support request]を通じてさらに購入することもできます。 購入済みのスループット単位を超えた使用分については、調整されます。 Event Hubs Archive は内部 Event Hubs ストレージからデータを直接コピーするため、スループット単位の送信クォータを回避でき、他の処理リーダー (Stream Analytics や Spark など) のために送信を節約できます。
+Event Hubs のトラフィックは [スループット単位](event-hubs-features.md#capacity)で制御されます。 受信の場合、1 スループット単位は最大 1 MB/秒または 1,000 イベント/秒となり、送信の場合はその倍となります。 Standard Event Hubs には 1 ～ 20 のスループット単位を構成でき、クォータの引き上げの[サポート要求][support request]を通じてさらに購入することもできます。 購入済みのスループット単位を超えた使用分については、調整されます。 Event Hubs Archive は内部 Event Hubs ストレージからデータを直接コピーするため、スループット単位の送信クォータを回避でき、他の処理リーダー (Stream Analytics や Spark など) のために送信を節約できます。
 
 Event Hubs Archive は、構成後、最初のイベントを送信するとすぐに自動的に実行されます。 そして常時実行された状態が続きます。 ダウンストリーム処理で処理が行われていることを把握しやすいように、Event Hubs はデータがないときは空のファイルを書き込みます。 これにより、バッチ プロセッサに提供可能な、予測しやすいパターンとマーカーが得られます。
 

@@ -3,7 +3,7 @@ title: "脅威の検出 - Azure SQL Database | Microsoft Docs"
 description: "脅威の検出は、データベースに対する潜在的なセキュリティ脅威を示す異常なデータベース アクティビティを検出します。"
 services: sql-database
 documentationcenter: 
-author: ronitr
+author: rmatchoro
 manager: jhubbard
 editor: v-romcal
 ms.assetid: b50d232a-4225-46ed-91e7-75288f55ee84
@@ -13,81 +13,88 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 07/10/2016
+ms.date: 05/01/2017
 ms.author: ronmat; ronitr
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: c6f580a35115ed93e5575f51956e55dc7b5b8d0a
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 5c2742a1d8ed6df7496a14226a38e02ca993abf3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/02/2017
 
 
 ---
 # <a name="sql-database-threat-detection"></a>SQL Database の脅威の検出
 
-脅威の検出は、データベースに対する潜在的なセキュリティ脅威を示す異常なデータベース アクティビティを検出します。  脅威の検出は現在プレビュー段階です。
+SQL の脅威の検出は、データベースにアクセスしたりデータベースを悪用したりしようとする、異常で有害な可能性がある不自然な動作を検出します。
 
 ## <a name="overview"></a>概要
 
-脅威の検出で提供される新しいセキュリティ階層は、異常なアクティビティに対するセキュリティ アラートを提供することによって、発生する可能性のある脅威をユーザーが検出して対応できるようにします。  ユーザーは、[SQL Database の監査](sql-database-auditing.md)を使って疑わしいイベントを調査し、データベース内のデータに対するアクセス、侵害、または悪用の試行による結果かどうかを判断できます。
-脅威の検出を使用するとデータベースに対する潜在的な脅威に簡単に対処でき、セキュリティの専門家である必要や、高度なセキュリティ監視システムを管理する必要はありません。
+SQL の脅威の検出で提供される新しいセキュリティ階層は、異常なアクティビティに対するセキュリティ アラートを提供することによって、潜在的な脅威をユーザーが検出し、それが発生したときに対応できるようにします。  不審なデータベース アクティビティ、潜在的な脆弱性、SQL インジェクション攻撃や、異常なデータベース アクセス パターンが見つかった場合に、ユーザーはアラートを受信します。 SQL の脅威の検出によるアラートは、不審なアクティビティの詳細と、脅威の調査や危険性の軽減のために推奨される対処方法を提供します。 ユーザーは、[SQL Database の監査](sql-database-auditing.md)を使って疑わしいイベントを調査し、データベース内のデータに対するアクセス、侵害、または悪用の試行による結果かどうかを判断できます。 脅威の検出を使用するとデータベースに対する潜在的な脅威に簡単に対処でき、セキュリティの専門家である必要や、高度なセキュリティ監視システムを管理する必要はありません。
 
-たとえば、脅威の検出は、SQL インジェクションの可能性を示す特定の異常なデータベース アクティビティを検出します。 SQL インジェクションはインターネットでの一般的な Web アプリケーションのセキュリティの問題の 1 つであり、データ駆動型アプリケーションの攻撃に使用されます。 攻撃者は、アプリケーションの脆弱性を利用してアプリケーションの入力フィールドに悪意のある SQL ステートメントを挿入し、データベースのデータを侵害または変更します。
+たとえば、SQL インジェクションはインターネットにおける Web アプリケーションの一般的なセキュリティ問題の 1 つであり、データ駆動型アプリケーションの攻撃に使用されます。 攻撃者は、アプリケーションの脆弱性を利用してアプリケーションの入力フィールドに悪意のある SQL ステートメントを挿入し、データベースのデータを侵害または変更します。
+
+SQL の脅威の検出によるアラートは [Azure Security Center](https://azure.microsoft.com/en-us/services/security-center/) と統合されています。保護対象の各 SQL Database サーバーは、Azure Security Center Standard レベルの価格 (15 ドル/ノード/月) で課金されます。保護対象の SQL Database サーバーは、それぞれ 1 つのノードとしてカウントされます。 60 日間は無料で試用版をご利用いただけます。 
 
 ## <a name="set-up-threat-detection-for-your-database-in-the-azure-portal"></a>Azure Portal でデータベースの脅威検出を設定する
 1. [https://portal.azure.com](https://portal.azure.com) で Azure Portal を起動します。
-2. 監視する SQL Database の構成ブレードに移動します。 [設定] ブレードで、**[監査と脅威の検出]** を選択します。
-   
+2. 監視する SQL Database の構成ブレードに移動します。 [設定] ブレードで、**[監査と脅威の検出]** を選択します。 
     ![ナビゲーション ウィンドウ][1]
-3. **[監査と脅威の検出]** 構成ブレードで、監査を **[ON]** にすると、脅威の検出の設定が表示されます。
-   
+3. **[監査と脅威検出]** 構成ブレードで、監査を **[ON]** にすると、脅威の検出の設定が表示されます。
+  
     ![ナビゲーション ウィンドウ][2]
 4. 脅威の検出を **[ON]** にします。
 5. 異常なデータベース アクティビティが検出されたときにセキュリティ アラートを受け取る電子メールのリストを構成します。
-6. **[監査と脅威の検出]** ブレードの **[保存]** をクリックして、新規または更新済みの監査と脅威の検出のポリシーを保存します。
-   
+6. **[監査と脅威検出]** ブレードの **[保存]** をクリックして、新規または更新済みの監査と脅威検出の設定を保存します。
+       
     ![ナビゲーション ウィンドウ][3]
 
 ## <a name="set-up-threat-detection-using-powershell"></a>PowerShell を使用して脅威検出を設定する
 
-スクリプトの例については、[PowerShell を使用した監査と脅威の検出](scripts/sql-database-auditing-and-threat-detection-powershell.md)に関するページをご覧ください。
+スクリプトの例については、[PowerShell を使用した監査と脅威検出の構成](scripts/sql-database-auditing-and-threat-detection-powershell.md)に関するページを参照してください。
 
 ## <a name="explore-anomalous-database-activities-upon-detection-of-a-suspicious-event"></a>疑わしいイベントが検出されたときの異常なデータベース アクティビティの調査
 1. 異常なデータベース アクティビティが検出されると、電子メールで通知を受け取ります。 <br/>
-   電子メールでは、異常なアクティビティの特徴、データベース名、サーバー名、イベントの時刻など、疑わしいセキュリティ イベントについての情報が提供されます。 さらに、データベースへの潜在的な脅威の考えられる原因および調査や緩和のための推奨されるアクションについての情報も提供されます。<br/>
-   
+   電子メールでは、異常なアクティビティの特徴、データベース名、サーバー名、アプリケーション名、イベントの時刻など、疑わしいセキュリティ イベントについての情報が提供されます。 さらに、データベースへの潜在的な脅威の考えられる原因と調査や緩和のための推奨されるアクションについての情報も提供されます。<br/>
+     
     ![ナビゲーション ウィンドウ][4]
-2. 電子メールの **[Azure SQL 監査ログ]** リンクをクリックすると、Azure ポータルが起動し、疑わしいイベントの時刻前後の関連する監査レコードが表示されます。
+2. 電子メール アラートには、SQL 監査ログへの直接リンクが含まれています。 このリンクをクリックすると、Azure Portal が起動され、疑わしいイベントの前後の時間の SQL 監査レコードが開かれます。 監査レコードをクリックして、疑わしいデータベース アクティビティについての詳細を表示すると、実行された SQL ステートメントを見つけ (だれがアクセスし、いつ何をしたか)、正当なイベントであるか悪意のあるイベントであるかを判断することが容易になります (たとえば、SQL インジェクションに対するアプリケーションの脆弱性が悪用された、だれかが機微なデータを侵害した、など)。<br/>
+   ![ナビゲーション ウィンドウ][5]
+
+
+## <a name="explore-threat-detection-alerts-for-your-database-in-the-azure-portal"></a>Azure Portal でデータベースの脅威検出のアラートを調査する
+
+SQL Database の脅威の検出では、アラートが [Azure Security Center](https://azure.microsoft.com/en-us/services/security-center/) と統合されています。 Azure Portal のデータベース ブレード内のライブ SQL セキュリティ タイルでは、アクティブな脅威の状態が追跡されます。 
+
+   ![ナビゲーション ウィンドウ][6]
    
-    ![ナビゲーション ウィンドウ][5]
-3. 監査レコードをクリックすると、SQL ステートメント、エラーの理由、クライアントの IP など、疑わしいデータベース アクティビティについての詳細が表示されます。
-   
-    ![ナビゲーション ウィンドウ][6]
-4. [監査レコード] ブレードの **[Excel で開く]** をクリックすると、あらかじめ構成されている Excel テンプレートが開き、疑わしいイベントの時刻前後の監査ログがインポートされて詳細な分析が実行されます。<br/>
-   **注:** Excel 2010 以降では、Power Query と**高速結合**の設定が必要です。
-   
-    ![ナビゲーション ウィンドウ][7]
-5. **[高速結合]** の設定を構成するには、**[POWER QUERY]** リボン タブの **[オプション]** を選択して [オプション] ダイアログ ボックスを表示します。 [プライバシー] セクションを選択し、2 番目のオプション [プライバシー レベルを無視し、可能であればパフォーマンスを向上させる] をオンにします。
-   
-    ![ナビゲーション ウィンドウ][8]
-6. SQL 監査ログをロードするには、[設定] タブのパラメーターが正しく設定されていることを確認してから、データのリボンを選択し、[すべて更新] ボタンをクリックします。
-   
-    ![ナビゲーション ウィンドウ][9]
-7. **[SQL 監査ログ]** シートに結果が表示されます。このシートでは、検出された異常なアクティビティを詳細に分析し、アプリケーションでのセキュリティ イベントの影響を軽減できます。
+1. SQL セキュリティ タイルをクリックすると、Azure Security Center のアラート ブレードが起動され、データベースに対して検出されたアクティブな SQL 脅威の概要が表示されます。 
+
+  ![ナビゲーション ウィンドウ][7]
+
+2. 特定のアラートをクリックすると、より詳細な情報と、この脅威を調査し、今後の脅威に対処するためのアクションが表示されます。
+
+  ![ナビゲーション ウィンドウ][8]
+
 
 ## <a name="next-steps"></a>次のステップ
 
-* SQL Database の監査の概要については、[データベースの監査に関するページ](sql-database-auditing.md)をご覧ください。
-* PowerShell スクリプトの例については、[PowerShell を使用した監査と脅威の検出](scripts/sql-database-auditing-and-threat-detection-powershell.md)に関するページをご覧ください。
+* 脅威の検出の詳細については、[Azure ブログ](https://azure.microsoft.com/en-us/blog/azure-sql-database-threat-detection-general-availability-in-spring-2017/)を参照してください 
+* [Azure SQL Database 監査](sql-database-auditing.md)の詳細について参照してください
+* [Azure Security Center](https://docs.microsoft.com/en-us/azure/security-center/security-center-intro) の詳細について参照してください
+* 価格の詳細については、[SQL Database の料金のページ](https://azure.microsoft.com/en-us/pricing/details/sql-database/)を参照してください  
+* PowerShell スクリプトの例については、[PowerShell を使用した監査と脅威検出の構成](scripts/sql-database-auditing-and-threat-detection-powershell.md)に関するページを参照してください
+
+
 
 <!--Image references-->
-[1]: ./media/sql-database-threat-detection-get-started/1_td_click_on_settings.png
-[2]: ./media/sql-database-threat-detection-get-started/2_td_turn_on_auditing.png
-[3]: ./media/sql-database-threat-detection-get-started/3_td_turn_on_threat_detection.png
-[4]: ./media/sql-database-threat-detection-get-started/4_td_email.png
-[5]: ./media/sql-database-threat-detection-get-started/5_td_audit_records.png
-[6]: ./media/sql-database-threat-detection-get-started/6_td_audit_record_details.png
-[7]: ./media/sql-database-threat-detection-get-started/7_td_audit_records_open_excel.png
-[8]: ./media/sql-database-threat-detection-get-started/8_td_excel_fast_combine.png
-[9]: ./media/sql-database-threat-detection-get-started/9_td_excel_parameters.png
+[1]: ./media/sql-database-threat-detection/1_td_click_on_settings.png
+[2]: ./media/sql-database-threat-detection/2_td_turn_on_auditing.png
+[3]: ./media/sql-database-threat-detection/3_td_turn_on_threat_detection.png
+[4]: ./media/sql-database-threat-detection/4_td_email.png
+[5]: ./media/sql-database-threat-detection/5_td_audit_record_details.png
+[6]: ./media/sql-database-threat-detection/6_td_security_tile_view_alerts.png
+[7]: ./media/sql-database-threat-detection/7_td_SQL_security_alerts_list.png
+[8]: ./media/sql-database-threat-detection/8_td_SQL_security_alert_details.png
+
 
 

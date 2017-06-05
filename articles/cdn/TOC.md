@@ -36,6 +36,7 @@
 ### [詳細な HTTP レポートを生成する](cdn-advanced-http-reports.md)
 ### [リアルタイム統計情報を表示する](cdn-real-time-stats.md)
 ### [エッジ ノードのパフォーマンスを分析する](cdn-edge-performance.md)
+### [診断ログを使用してメトリックをエクスポートする](cdn-log-analysis.md)
 
 ## 開発
 ### [.NET](cdn-app-dev-net.md)

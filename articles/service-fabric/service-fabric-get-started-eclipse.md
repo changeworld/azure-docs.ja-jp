@@ -1,4 +1,4 @@
----
+--- 
 title: "Eclipse 用の Azure Service Fabric プラグイン | Microsoft Docs"
 description: "Eclipse 用の Service Fabric プラグインの概要を紹介します。"
 services: service-fabric
@@ -12,12 +12,13 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/06/2017
+ms.date: 05/03/2016
 ms.author: saysa
-translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: 0407eab7e70649999ba07730425366b7b62e4e7a
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: c50c77b3288bc0a2d9148d04c6fc45aa24882ebb
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -34,7 +35,7 @@ Service Fabric プラグインを Eclipse にインストールすることが�
     -   Eclipse Neon の更新プログラムを確認してインストールするには、**[Help (ヘルプ)]** > **[Check for Updates (更新プログラムの確認)]** の順に移動します。
 
 2.  Service Fabric プラグインをインストールするには、Eclipse Neon で **[Help (ヘルプ)]** > **[Install New Software (新しいソフトウェアのインストール)]** の順に移動します。
-  1.    **[Work with (作業対象)]** ボックスに、「**http://dl.windowsazure.com/eclipse/servicefabric**」と入力します。
+  1.    **[Work with]\(作業対象\)** ボックスに、「**http://dl.microsoft.com/eclipse**」と入力します。
   2.    **[追加]**をクリックします。
     ![Eclipse Neon 用の Service Fabric プラグイン][sf-eclipse-plugin-install]
   3.    Service Fabric プラグインを選択して **[Next (次へ)]** をクリックします。
@@ -43,7 +44,7 @@ Service Fabric プラグインを Eclipse にインストールすることが�
 Service Fabric プラグインを既にインストールしてある場合は、最新バージョンを使用していることを確認してください。 使用できる更新プログラムを確認するには、**[Help (ヘルプ)]** > **[Installation Details (インストールの詳細)]** の順に移動します。 インストールされているプラグインの一覧で Service Fabric を選択して、**[Update (更新)]** をクリックします。 使用できる更新プログラムがインストールされます。
 
 > [!NOTE]
-> Service Fabric プラグインのインストールまたは更新に時間がかかる場合、Eclipse の設定が原因である可能性があります。 Eclipse は、Eclipse インスタンスに登録されている更新サイトに対するすべての変更のメタデータを収集します。 Service Fabric プラグインの更新プログラムを確認してインストールする手順を高速化するには、**[Available Software Sites (利用できるソフトウェア サイト)]** に移動します。 Service Fabric プラグインの場所 (http://dl.windowsazure.com/eclipse/servicefabric) を指すサイトを除き、すべてのサイトのチェック ボックスをオフにします。
+> Service Fabric プラグインのインストールまたは更新に時間がかかる場合、Eclipse の設定が原因である可能性があります。 Eclipse は、Eclipse インスタンスに登録されている更新サイトに対するすべての変更のメタデータを収集します。 Service Fabric プラグインの更新プログラムを確認してインストールする手順を高速化するには、**[Available Software Sites (利用できるソフトウェア サイト)]** に移動します。 Service Fabric プラグインの場所 (http://dl.microsoft.com/eclipse/azure/servicefabric) を指すサイトを除き、すべてのサイトのチェック ボックスをオフにします。
 
 ## <a name="create-a-service-fabric-application-in-eclipse"></a>Eclipse での Service Fabric アプリケーションの作成
 
@@ -123,6 +124,12 @@ Eclipse 実行構成を使用して Service Fabric アプリケーションを�
 5.  サービスの追加後、プロジェクト全体の構造は次のようになります。
 
     ![Service Fabric のサービス追加のページ 4][add-service/p4]
+
+## <a name="edit-manifest-versions-of-your-service-fabric-java-application"></a>Service Fabric Java アプリケーションのマニフェスト バージョンの編集
+
+マニフェスト バージョンを編集するには、プロジェクトを右クリックし、**[Service Fabric]** に移動して、メニューのドロップダウンから **[マニフェスト バージョンの編集]** を選択します。 ウィザードで、アプリケーション マニフェストとサービス マニフェストのバージョン、さらに **Code**、**Config**、**Data** パッケージのバージョンを更新することができます。
+
+**[アプリケーションとサービスのバージョンを自動的に更新する]** チェック ボックスをオンにし、バージョンを更新すると、マニフェストのバージョンが自動的に更新されます。 たとえば、最初にこのチェック ボックスをオンにしたうえで、**Code** のバージョンを 0.0.0 から 0.0.1 に更新し、**[完了]** をクリックすると、サービス マニフェストのバージョンとアプリケーション マニフェストのバージョンが自動的に 0.0.1 に更新されます。
 
 ## <a name="upgrade-your-service-fabric-java-application"></a>Service Fabric Java アプリケーションのアップグレード
 

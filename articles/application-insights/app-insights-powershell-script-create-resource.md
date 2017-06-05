@@ -3,7 +3,7 @@ title: "Application Insights リソースを作成するための PowerShell ス
 description: "Application Insights リソースの作成を自動化します。"
 services: application-insights
 documentationcenter: windows
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: f0082c9b-43ad-4576-a417-4ea8e0daf3d9
 ms.service: application-insights

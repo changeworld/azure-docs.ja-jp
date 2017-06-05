@@ -13,9 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2016
 ms.author: jonatul
-translationtype: Human Translation
-ms.sourcegitcommit: 5d73d1203faf485d715354e68ce2ccde32562611
-ms.openlocfilehash: f5865e07df4e1f253079ac1c8b257e2525da5ef3
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 0b7040d6273b3a6b85cd55850d596807226b87fc
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/26/2017
 
 ---
 
@@ -221,11 +223,5 @@ DNS ゾーン保護のための多層防御手法としては、リソースの�
 
 * RBAC の操作の詳細については、「[Azure Portal でのアクセス管理の概要](../active-directory/role-based-access-control-what-is.md)」を参照してください。
 * リソース ロックの操作の詳細については、「[Azure Resource Manager によるリソースのロック](../azure-resource-manager/resource-group-lock-resources.md)」を参照してください。
-* Azure リソースのセキュリティ保護の詳細については、「[Azure Resource Manager のセキュリティに関する考慮事項](../best-practices-resource-manager-security.md)」を参照してください。
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

@@ -1,5 +1,6 @@
 # 概要
 ## [Event Hubs とは](event-hubs-what-is-event-hubs.md)
+## [Event Hubs の機能](event-hubs-features.md)
 ## [FAQ](event-hubs-faq.md)
 
 # 作業の開始

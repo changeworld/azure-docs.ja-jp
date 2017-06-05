@@ -16,9 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/02/2016
 ms.author: wesmc
-translationtype: Human Translation
-ms.sourcegitcommit: c8e9f9709d13295c9414e525f1f60abf0d0accb7
-ms.openlocfilehash: 0bfbfd3828aacdee0b6630ced034f2c1e0451abd
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: 04a8563a0035992cfa4b7d25a4edc14e1db80e44
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -50,7 +52,7 @@ Azure Event Hubs を初めて使用する場合は、「[Azure Event Hub の概�
 }
 ```
 
-`consumerGroup` は、ハブのイベントにサブスクライブするための[コンシューマー グループ](../event-hubs/event-hubs-what-is-event-hubs.md#event-consumers)の設定に使用される、省略可能なプロパティです。 省略した場合は、`$Default` コンシューマー グループが使用されます。  
+`consumerGroup` は、ハブのイベントにサブスクライブするための[コンシューマー グループ](../event-hubs/event-hubs-features.md#event-consumers)の設定に使用される、省略可能なプロパティです。 省略した場合は、`$Default` コンシューマー グループが使用されます。  
 `connection` は、イベント ハブの名前空間への接続文字列を含むアプリ設定の名前である必要があります。
 この接続文字列をコピーするには、イベント ハブ自体ではなく、"*名前空間*" の **[接続情報]** をクリックします。 この接続文字列には、トリガーをアクティブにするために少なくとも読み取りアクセス許可が必要です。
 
@@ -84,7 +86,7 @@ function.json の `bindings` 配列に次のイベント ハブ トリガーが�
 
 <a name="triggercsharp"></a>
 
-### <a name="trigger-sample-in-c"></a>C でのトリガー サンプル# #
+### <a name="trigger-sample-in-c"></a>C# でのトリガー サンプル #
 
 ```cs
 using System;
@@ -97,7 +99,7 @@ public static void Run(string myEventHubMessage, TraceWriter log)
 
 <a name="triggerfsharp"></a>
 
-### <a name="trigger-sample-in-f"></a>F でのトリガー サンプル# #
+### <a name="trigger-sample-in-f"></a>F# でのトリガー サンプル #
 
 ```fsharp
 let Run(myEventHubMessage: string, log: TraceWriter) =
@@ -167,7 +169,7 @@ function.json の `bindings` 配列に次のイベント ハブ出力バイン�
 
 <a name="outcsharp"></a>
 
-### <a name="output-sample-in-c"></a>C での出力サンプル# #
+### <a name="output-sample-in-c"></a>C# での出力サンプル #
 
 ```cs
 using System;
@@ -194,7 +196,7 @@ public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessa
 
 <a name="outfsharp"></a>
 
-### <a name="output-sample-in-f"></a>F での出力サンプル# #
+### <a name="output-sample-in-f"></a>F# での出力サンプル #
 
 ```fsharp
 let Run(myTimer: TimerInfo, outputEventHubMessage: byref<string>, log: TraceWriter) =
@@ -233,9 +235,4 @@ module.exports = function(context) {
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/28/2017
+ms.date: 05/11/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
-ms.openlocfilehash: 244ca634cfd47ee37e3845380ac05dc68d406621
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 3c91cb00d6535a4bc01a3b95547ef940cbff7fcb
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -38,11 +39,35 @@ Forefront Identity Manager (FIM) と Microsoft Identity Manager (MIM) のコネ�
 * [PowerShell コネクタ](active-directory-aadconnectsync-connector-powershell.md) リファレンス ドキュメント
 * [Lotus Domino コネクタ](active-directory-aadconnectsync-connector-domino.md) リファレンス ドキュメント
 
+## <a name="115220"></a>1.1.522.0
+
+### <a name="enhancements"></a>強化された機能:
+
+* Generic SQL:
+  * **シナリオ: 再実装:** "*" 機能
+  * **ソリューションの説明:** [複数値参照属性処理](active-directory-aadconnectsync-connector-genericsql.md)の手法を変更。
+
+
+### <a name="fixed-issues"></a>修正された問題:
+
+* 一般的な Web サービス:
+  * WebService コネクタが存在する場合、サーバー構成をインポートできない
+  * WebService コネクタが複数の Web サービスと連動しない
+
+* Generic SQL:
+  * 単一値参照属性に対して、オブジェクトの種類が一覧表示されない
+  * 複数値テーブルから値が削除されるとき、変更追跡方針の差分インポートによりオブジェクトが削除される
+  * GSQL コネクタの OverflowException、AS/400 に DB2
+
+Lotus:
+  * GlobalParameters ページを開く前に OU 検索の有効/無効を切り替えるオプションを追加
+
 ## <a name="114430"></a>1.1.443.0
 
 リリース日: 2017 年 3 月
 
 ### <a name="enhancements"></a>強化された機能
+
 * Generic SQL:</br>
   **シナリオの現象:** 1 つのオブジェクトの種類への参照のみが許可され、メンバーによる相互参照が必要であるということは、よく知られている SQL コネクタの制限事項です。 </br>
   **ソリューションの説明:** [*] オプションが選択されている参照の処理手順では、オブジェクトの種類の "すべての" 組み合わせが同期エンジンに返されます。

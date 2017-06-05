@@ -1,6 +1,6 @@
 ---
 title: "Azure CLI を使用した Hadoop クラスターの管理 |Microsoft Docs"
-description: "Azure CLI を使用して HDInsight で Hadoop クラスターを管理する方法"
+description: "Azure コマンド ライン インターフェイスを使用して、Azure HDInsight で Hadoop クラスターを管理する方法について説明します。 Azure CLI は、Windows、Mac、Linux で機能します。"
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
@@ -9,17 +9,18 @@ tags: azure-portal
 documentationcenter: 
 ms.assetid: 4f26c79f-8540-44bd-a470-84722a9e4eca
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 05/25/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: e70e24951481c33525a852479c9c9647a45e71ac
-ms.lasthandoff: 03/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: c8067e582dd7e20b4ca35771123303de6c4a4ef6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -46,12 +47,12 @@ ms.lasthandoff: 03/21/2017
   
         azure config mode arm
 
-ヘルプを取得するには、 **-h** スイッチを使用します。  次に例を示します。
+ヘルプを取得するには、 **-h** スイッチを使用します。  For example:
 
     azure hdinsight cluster create -h
 
-## <a name="create-clusters"></a>クラスターの作成
-「 [Azure CLI を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-azure-cli.md)」を参照してください。
+## <a name="create-clusters-with-the-cli"></a>CLI を使用したクラスターの作成
+「[Azure CLI を使用した HDInsight クラスターの作成](hdinsight-hadoop-create-linux-clusters-azure-cli.md)」を参照してください。
 
 ## <a name="list-and-show-cluster-details"></a>クラスターの一覧と詳細の表示
 クラスターの一覧と詳細を表示するには、次のコマンドを使用します。
@@ -59,7 +60,7 @@ ms.lasthandoff: 03/21/2017
     azure hdinsight cluster list
     azure hdinsight cluster show <Cluster Name>
 
-![HDI.CLIListCluster][image-cli-clusterlisting]
+![クラスター一覧のコマンドライン表示][image-cli-clusterlisting]
 
 ## <a name="delete-clusters"></a>クラスターの削除
 クラスターを削除するには、次のコマンドを使用します。
@@ -107,5 +108,5 @@ Hadoop クラスターのサイズを変更するには:
 [image-cli-account-download-import]: ./media/hdinsight-administer-use-command-line/HDI.CLIAccountDownloadImport.png
 [image-cli-clustercreation]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreation.png
 [image-cli-clustercreation-config]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreationConfig.png
-[image-cli-clusterlisting]: ./media/hdinsight-administer-use-command-line/HDI.CLIListClusters.png "クラスターの一覧と表示"
+[image-cli-clusterlisting]: ./media/hdinsight-administer-use-command-line/command-line-list-of-clusters.png "クラスターの一覧と表示"
 

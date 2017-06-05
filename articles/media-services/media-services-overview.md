@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/05/2017
 ms.author: juliako;anilmur
-translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: f22b87fc5bdfe2db5de39adaafe9c71d8c32b26a
-ms.lasthandoff: 01/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 0a84e69f33ae30040c2365e6a5180e17e8df7539
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -74,7 +75,7 @@ Azure Media Services の概念については、「 [概念](media-services-conc
 
 Azure Media Services のすべての主要コンポーネントを紹介する入門シリーズについては、 [Azure Media Services のステップバイステップ チュートリアル](https://docs.com/fukushima-shigeyuki/3439/english-azure-media-services-step-by-step-series)に関するページを参照してください。 このシリーズでは、概念の概要をわかりやすく示し、AMSE ツールを使用して AMS タスクについて説明しています。 AMSE ツールは Windows ツールです。 このツールは、[AMS SDK for .NET](https://github.com/Azure/azure-sdk-for-media-services)、[Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java)、または [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php) を使用してプログラムで実行できるほとんどのタスクをサポートしています。
 
-## <a name="a-idvodscenariosadelivering-media-on-demand-with-azure-media-services-common-scenarios-and-tasks"></a><a id="vod_scenarios"></a>Azure Media Services によるメディアのオンデマンド配信: 共通のシナリオとタスク
+## <a id="vod_scenarios"></a>Azure Media Services によるメディアのオンデマンド配信: 共通のシナリオとタスク
 このセクションでは、一般的なシナリオについて説明し、関連するトピックへのリンクを提供します。 次の図は、コンテンツのオンデマンド配信に関連する Media Services プラットフォームの主要な部分を示しています。
 
 ![VoD ワークフロー](./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png)
@@ -126,7 +127,7 @@ Media Analytics は音声および視覚コンポーネントの集合体であ�
     SAS ロケーターを使用する場合、コンテンツは Azure BLOB ストレージからダウンロードされます。 この場合、開始状態のストリーミング エンドポイントは必要ありません。
 4. コンテンツを徐々にダウンロードします。
 
-## <a name="a-idlivescenariosadelivering-live-streaming-events-with-azure-media-services"></a><a id="live_scenarios"></a>Azure Media Services を使用してライブ ストリーミング イベントを配信する
+## <a id="live_scenarios"></a>Azure Media Services を使用してライブ ストリーミング イベントを配信する
 ライブ ストリーミングを使用する場合は、通常、次のコンポーネントが関連しています。
 
 * イベントのブロードキャストに使用されるカメラ。
@@ -185,8 +186,7 @@ Media Services では、Azure CDN との統合をサポートしています。 
 **Media Services** は、アカウントのプロビジョニングに使用する **[ストリーミング予約ユニット]** と **[エンコード予約ユニット]** の数を指定することで規模を設定できます。
 
 ストレージ アカウントを追加して、Media Services アカウントの規模を設定することもできます。 各ストレージ アカウントの上限は 500 TB (テラバイト) です。 既定の上限を超えるストレージ容量を設定するために、複数のストレージ アカウントを単一の Media Services アカウントにアタッチすることを選択できます。
-Media Services のお客様は、必要に応じて、**Standard** ストリーミング エンドポイントか、1 つ以上の **Premium** ストリーミング エンドポイントを選択できます。 Standard ストリーミング エンドポイントはほとんどのストリーミング ワークロードに適しています。 これには Premium ストリーミング ユニットと同じ機能が含まれています。
-Standard ストリーミング エンドポイントはほとんどのストリーミング ワークロードに適しています。 高度なワークロードがある場合、ストリーミング容量の要件が Standard ストリーミング エンドポイントのスループット目標に合わない場合、スケール ユニット (Premium ストリーミング ユニットとも呼ばれる) を調整して StreamingEndpoint サービスの容量を制御し、増大する帯域幅のニーズに対応する必要がある場合は、スケール ユニットを割り当てることをお勧めします。
+Media Services のお客様は、必要に応じて、**Standard** ストリーミング エンドポイントか、1 つ以上の **Premium** ストリーミング エンドポイントを選択できます。 Standard ストリーミング エンドポイントはほとんどのストリーミング ワークロードに適しています。 これには Premium ストリーミング ユニットと同じ機能が含まれています。 高度なワークロードがある場合、ストリーミング容量の要件が Standard ストリーミング エンドポイントのスループット目標に合わない場合、スケール ユニット (Premium ストリーミング ユニットとも呼ばれる) を調整して StreamingEndpoint サービスの容量を制御し、増大する帯域幅のニーズに対応する必要がある場合は、スケール ユニットを割り当てることをお勧めします。
 
 [この](media-services-portal-scale-streaming-endpoints.md) トピックは、関連するトピックにリンクしています。
 

@@ -21,7 +21,7 @@ ms.openlocfilehash: f307a26bfbb55b395f4073f4368432ae69b867ae
 
 ---
 # <a name="enable-logging-for-machine-learning-web-services"></a>Machine Learning Web サービスのログ記録の有効化
-このドキュメントは、クラシック Web サービスのログ記録機能について説明します。 Web サービスでのログ記録を有効にすると、エラー番号とメッセージの他に追加の情報を得ることができ、。Machine Learning APIs の呼び出しをトラブルシューティングするときに役立ちます。  
+このドキュメントは、クラシック Web サービスのログ記録機能について説明します。 Web サービスでのログ記録を有効にすると、エラー番号とメッセージの他に追加の情報を得ることができ、Machine Learning API の呼び出しをトラブルシューティングするときに役立ちます。  
 
 Azure クラシック ポータルで Web サービスのログ記録を有効化するには:   
 
@@ -47,7 +47,7 @@ Azure Machine Learning Web Services ポータルでのログ記録を有効に�
 
 Azure のストレージ アカウントを探索できる複数のツールを使って、ログを表示できます。 最も簡単な方法は、Azure クラシック ポータルで [ストレージ アカウント] に移動し、**[コンテナー]** をクリックすることです。 そうすることで、 **"ml-diagnostics"**という名前のコンテナーを確認できます。 このコンテナーには、このストレージ アカウントに関連付けられているすべてのワークスペースの Web サービス エンドポイントの診断情報が保持されています。 
 
-## <a name="log-blob-detail-information"></a>ログ BLO の詳細情報
+## <a name="log-blob-detail-information"></a>ログ BLOB の詳細情報
 コンテナーの各 BLOB には、次の診断情報が 1 つだけ保持されています。
 
 * バッチ実行メソッドの実行  

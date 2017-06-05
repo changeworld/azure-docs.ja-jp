@@ -16,10 +16,11 @@ ms.topic: article
 ms.date: 10/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
-translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 96a7410ec90d31e565ea8338d908564c209c6a4f
-ms.lasthandoff: 04/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: e6af6f915a4356ae137ba3b92dd0331f7b5411c0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -29,14 +30,14 @@ ms.lasthandoff: 04/11/2017
 この記事の情報は、Windows ベースの HDInsight クラスターに固有のものです。 Linux ベースのクラスターについては、「 [Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
 
 > [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
 
-HDInsight クラスターは、その他さまざまな方法でカスタマイズできます。たとえば、Azure ストレージ アカウントの追加、Hadoop 構成ファイルの変更 (core-site.xml、hive-site.xml など)、クラスター内の一般的な場所への共有ライブラリの追加 (Hive、Oozie など) といった方法があります。 これらのカスタマイズは、Azure PowerShell、Azure HDInsight .NET SDK、Azure ポータルから実行できます。 詳細については、[HDInsight での Hadoop クラスターの作成][hdinsight-provision-cluster]に関する記事をご覧ください。
+HDInsight クラスターは、その他さまざまな方法でカスタマイズできます。たとえば、Azure ストレージ アカウントの追加、Hadoop 構成ファイルの変更 (core-site.xml、hive-site.xml など)、クラスター内の一般的な場所への共有ライブラリの追加 (Hive、Oozie など) といった方法があります。 これらのカスタマイズは、Azure PowerShell、Azure HDInsight .NET SDK、または Azure Portal から実行できます。 詳細については、[HDInsight での Hadoop クラスターの作成][hdinsight-provision-cluster]に関する記事をご覧ください。
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell-cli-and-dotnet-sdk.md)]
 
 ## <a name="script-action-in-the-cluster-creation-process"></a>クラスターの作成処理でのスクリプト アクション
-Script Action は、クラスターが作成中にのみ使用されます。 次の図は、作成処理中にスクリプト アクションが実行された場合を示しています。
+スクリプト アクションは、クラスターの作成中にのみ使用されます。 次の図は、作成処理中にスクリプト アクションが実行された場合を示しています。
 
 ![クラスター作成時の HDInsight クラスターのカスタマイズと段階][img-hdi-cluster-states]
 
@@ -61,10 +62,10 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 | - **Giraph のインストール** |https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1。 「 [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md)」をご覧ください。 |
 | **Hive ライブラリの事前読み込み** |https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1 「[HDInsight クラスター作成時の Hive ライブラリの追加](hdinsight-hadoop-add-hive-libraries.md)」を参照してください。 |
 
-## <a name="call-scripts-using-the-azure-portal"></a>Azure ポータルを使用してスクリプトを呼び出す
-**Azure ポータル**
+## <a name="call-scripts-using-the-azure-portal"></a>Azure Portal を使用してスクリプトを呼び出す
+**Azure Portal**
 
-1. [HDInsight での Hadoop クラスターの作成](hdinsight-provision-clusters.md)に関する記事の説明に従って、クラスターの作成を開始します。
+1. [HDInsight での Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関する記事の説明に従って、クラスターの作成を開始します。
 2. [オプションの構成] の **[スクリプト アクション]** ブレードで、**[スクリプト アクションの追加]** をクリックし、次に示すように、スクリプト アクションの詳細を指定します。
 
     ![スクリプト アクションを使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-customize-cluster/HDI.CreateCluster.8.png "スクリプト アクションを使ってクラスターをカスタマイズする")
@@ -326,7 +327,7 @@ HDInsight サービスでは、カスタム コンポーネントを使用する
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts.md
 [hdinsight-write-script]: hdinsight-hadoop-script-actions.md
-[hdinsight-provision-cluster]: hdinsight-provision-clusters.md
+[hdinsight-provision-cluster]: hdinsight-hadoop-provision-linux-clusters.md
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
 
 

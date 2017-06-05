@@ -15,30 +15,30 @@ ms.workload: na
 ms.date: 04/27/2017
 ms.author: TomSh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 6a0fa55e19c50ea2218949632d1bf941739f2a79
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 47e3c9f35cb8d58d77226f7efa2bbe70e0683afe
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
 
 # <a name="azure-operational-security"></a>Azure で運用可能なセキュリティ
-## <a name="10-introduction"></a>1.0 はじめに
+## <a name="introduction"></a>はじめに
 
-### <a name="11-overview"></a>1.1 概要
+### <a name="overview"></a>概要
 セキュリティはクラウドの最優先の課題であり、Azure セキュリティについての正確でタイムリーな情報を得ることがどれだけ重要かを、私たちは認識しています。 アプリケーションとサービスに Azure を使用する最大の理由の 1 つは、さまざまなセキュリティ ツールや機能を活用できることです。 これらのツールや機能により、Azure プラットフォーム上にセキュリティで保護されたソリューションを作成できるようになります。 Windows Azure では、透過的な説明責任を実現しつつ、顧客データの機密性、整合性、および可用性を提供する必要があります。
 
 Microsoft Azure に実装されている多数のセキュリティ コントロールについて、お客様側と Microsoft 側の運用上の観点からご理解いただくために、このホワイト ペーパー「Azure で運用可能なセキュリティ」では、Windows Azure で使用できる運用上のセキュリティについて総合的に説明します。
 
-### <a name="12-azure-platform"></a>1.2 Azure プラットフォーム
+### <a name="azure-platform"></a>Azure プラットフォーム
 Azure は、オペレーティング システム、プログラミング言語、フレームワーク、ツール、データベース、デバイスにおいて幅広い選択肢をサポートするパブリック クラウド サービス プラットフォームです。 Docker を統合した Linux コンテナーの実行、JavaScript、Python、.NET、PHP、Java、Node.js によるアプリの構築、iOS、Android、Windows の各デバイスに対応したバックエンドの構築を行えます。 Azure パブリック クラウド サービスでは、何百万人もの開発者や IT プロフェッショナルから現在信頼が寄せられているのと同じテクノロジがサポートされています。
 
 IT 資産を構築し、パブリック クラウド サービス プロバイダーに移行したとしましょう。このとき、移行したアプリケーションやデータをどこまで保護できるかは、採用したプロバイダーがクラウド ベースの資産のセキュリティ管理のためにどのようなサービスと体制を用意しているかに応じて変わってきます。
 
 Azure のインフラストラクチャでは、数百万の顧客を同時にホストできるように施設からアプリケーションまでが設計されており、ビジネスのセキュリティ要件を満たす信頼性の高い基盤となっています。 また、Azure には構成可能な幅広いセキュリティ オプションと制御機能が用意されており、組織によるデプロイの独自の要件を満たすようにセキュリティをカスタマイズできます。 このドキュメントでは、Azure のセキュリティ機能を使用して、これらの要件をどのように満たすことができるかをわかりやすく説明します。
 
-### <a name="13-abstract"></a>1.3 要約
+### <a name="abstract"></a>要約
 Azure で運用可能なセキュリティとは、ユーザーのデータ、アプリケーション、および Microsoft Azure にあるその他の資産を保護するために使用できる、サービス、コントロール、機能を指します。 Azure で運用可能なセキュリティは、Microsoft セキュリティ開発ライフサイクル (SDL)、Microsoft セキュリティ レスポンス センター プログラム、およびサイバー セキュリティの脅威状況に対する深い認識など、Microsoft に固有のさまざまな機能の使用経験から得られた知識が組み込まれたフレームワーク上に構築されています。
 
 このホワイト ペーパーでは、Microsoft Azure クラウド プラットフォーム内での Azure で運用可能なセキュリティに対する Microsoft の取り組みと、次のサービスについて説明します。
@@ -55,7 +55,7 @@ Azure で運用可能なセキュリティとは、ユーザーのデータ、�
 6.    [Azure Active directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)
 
 
-## <a name="20-microsoft-operations-management-suite"></a>2.0 Microsoft Operations Management Suite
+## <a name="microsoft-operations-management-suite"></a>Microsoft Operations Management Suite
 
 
 Microsoft Operations Management Suite (OMS) は、ハイブリッド クラウド向けの IT 管理ソリューションです。 OMS は単独で使用されるかまたは System Center の既存のデプロイを拡張するために使用され、インフラストラクチャをクラウドベースで管理するための柔軟な制御を最大限に実現します。
@@ -64,7 +64,7 @@ Microsoft Operations Management Suite (OMS) は、ハイブリッド クラウ�
 
 OMS を使用すれば、オンプレミス型、Azure、AWS、Windows Server、Linux、VMware、OpenStack など、あらゆるクラウドのインスタンスを競合ソリューションよりも低コストで管理できます。 クラウド中心に構築された OMS は、新しいビジネス課題に対応し、新しいワークロード、アプリケーション、およびクラウド環境にも対応する最も高速でコスト効率の良い新たな企業の管理方法を提供します。
 
-### <a name="21-oms-services"></a>2.1 OMS サービス
+### <a name="oms-services"></a>OMS サービス
 
 OMS のコア機能は、Azure で実行される一連のサービスによって提供されます。 サービスごとに固有の管理機能があり、サービスを組み合わせてさまざまな管理シナリオを実現できます。
 
@@ -75,7 +75,7 @@ OMS のコア機能は、Azure で実行される一連のサービスによっ�
 | バックアップ | 重要なデータのバックアップと復元を行います。 |
 | Site Recovery | 重要なアプリケーションの高可用性を実現します。 |
 
-### <a name="22-log-analytics"></a>2.2 Log Analytics
+### <a name="log-analytics"></a>Log Analytics
 
 [Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) は、管理対象のリソースから中央リポジトリにデータを収集する OMS の監視サービスです。 このデータには、API 経由で提供されたイベント、パフォーマンス データ、カスタム データが含まれます。 一度収集されたデータは、アラート、分析、エクスポートに使用できます。
 
@@ -94,7 +94,7 @@ Log Analytics サービスは次の方法でクラウドベースのデータを
 -    セキュリティ基準認定
 
 
-### <a name="23-azure-backup"></a>2.3 Azure Backup
+### <a name="azure-backup"></a>Azure Backup
 
 OMS スイートの製品およびサービスの一部である [Azure Backup](http://azure.microsoft.com/documentation/services/backup) は、データのバックアップと復元サービスを提供します。
 アプリケーション データを保護し、長年にわたってデータを保管できます。設備投資は不要で、運用コストも最小限で済みます。 SQL Server や SharePoint などのアプリケーション ワークロードだけでなく、Windows の物理サーバーや仮想サーバーのデータもバックアップできます。 また、[System Center Data Protection Manager (DPM)](https://en.wikipedia.org/wiki/System_Center_Data_Protection_Manager) で Azure Backup を使用することで、保護データを Azure にレプリケートし、冗長性と長期保存を実現しています。
@@ -102,7 +102,7 @@ OMS スイートの製品およびサービスの一部である [Azure Backup](
 
 Azure Backup で保護されるデータは、特定の地域リージョンにあるバックアップ コンテナーに格納されます。 データは同じリージョン内でレプリケートされます。コンテナーのタイプによっては、回復性を高めるために別のリージョンにレプリケートされることもあります。
 
-### <a name="24-management-solutions"></a>2.4 管理ソリューション
+### <a name="management-solutions"></a>管理ソリューション
 [Microsoft Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) は、Microsoft のクラウドベースの IT 管理ソリューションです。OMS を使用して、オンプレミスとクラウドのインフラストラクチャを管理し、保護することができます。
 
 
@@ -115,11 +115,11 @@ Azure Backup で保護されるデータは、特定の地域リージョンに�
 
 必要な更新プログラムをインストールするために、デプロイ作成時に [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) の Runbook が使用されます。 このプロセスはすべてポータルで管理するため、根底にある詳細について配慮する必要はありません。
 
-## <a name="30-azure-security-center"></a>3.0 Azure Security Center
+## <a name="azure-security-center"></a>[Azure Security Center] (Azure Security Center)
 
 Azure Security Center によって、Azure リソースを保護します。 Azure サブスクリプション間のセキュリティ監視とポリシー管理を総合的に提供します。 サービス内では、Azure サブスクリプションに対してだけでなく[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)に対してもポリシーを定義できるので、より細かい定義が行えます。
 
-### <a name="31-security-policies-and-recommendations"></a>3.1 セキュリティ ポリシーと推奨事項
+### <a name="security-policies-and-recommendations"></a>セキュリティ ポリシーと推奨事項
 
 セキュリティ ポリシーは、指定されたサブスクリプションまたはリソース グループ内のリソースに推奨されるコントロールのセットを定義します。
 
@@ -131,11 +131,11 @@ Security Center では、セキュリティに関する会社の要件、アプ�
 右側の図に示すように、サブスクリプション レベルで有効になっているポリシーは、サブスクリプション内のすべてのリソース グループに自動的に反映されます。
 
 
-### <a name="32-data-collection"></a>3.2 データ収集
+### <a name="data-collection"></a>データ収集
 
 Security Center では、仮想マシン (VM) のセキュリティ状態へのアクセス、セキュリティ推奨事項の提供、脅威についての警告を行うために、その仮想マシンからデータを収集します。 最初に Security Center にアクセスするときは、サブスクリプション内のすべての VM に対してデータ収集が有効になっています。 データ収集は有効にしておくことをお勧めしますが、Security Center のポリシーでデータ収集をオフにして、オプトアウトすることもできます。
 
-### <a name="33-data-sources"></a>3.3 データ ソース
+### <a name="data-sources"></a>データ ソース
 
 - Azure Security Center は、セキュリティ状態の可視化、脆弱性の識別、軽減策の提案、アクティブな脅威の検出のために、次のソースからのデータを分析します。
 
@@ -147,7 +147,7 @@ Security Center では、仮想マシン (VM) のセキュリティ状態への�
 
 -    仮想マシン: 仮想マシンからの構成情報とセキュリティ イベントについての情報 (Windows のイベントおよび監査ログ、IIS ログ、syslog メッセージ、クラッシュ ダンプ ファイルなど) を使用します。
 
-### <a name="34-data-protection"></a>3.4 データ保護
+### <a name="data-protection"></a>データ保護
 
 Azure Security Center では、脅威に対する防御と検出、対応を支援するために、構成情報、メタデータ、イベント ログ、クラッシュ ダンプ ファイルなど、セキュリティに関連するさまざまなデータを収集、処理しています。 Microsoft ではコーディングからサービスの運用まで、厳密なコンプライアンスとセキュリティのガイドラインに準拠しています。
 
@@ -157,7 +157,7 @@ Azure Security Center では、脅威に対する防御と検出、対応を支�
 
 -    **データの使用**: Microsoft は、防止と検出の機能を強化するために、複数のテナントにわたって見られるパターンおよび脅威インテリジェンスを使用します。その際に、[プライバシーに関する声明](https://www.microsoft.com/privacystatement/OnlineServices/Default.aspx)で説明されている誓約に従います。
 
-### <a name="35-data-location"></a>3.5 データの場所
+### <a name="data-location"></a>データの場所
 
 Azure Security Center は、クラッシュ ダンプ ファイルの一時的なコピーを収集し、悪用の試行と成功した侵害の証拠がないか分析します。 Azure Security Center は、この分析をワークスペースと同じ geo 内で行い、分析が完了すると、一時的なコピーを削除します。 マシン アーティファクトは、VM と同じリージョンに一元的に格納されます。
 
@@ -166,7 +166,7 @@ Azure Security Center は、クラッシュ ダンプ ファイルの一時的�
 -    **Azure Security Center ストレージ**: パートナーの警告、推奨事項、セキュリティの正常性状態を含むセキュリティ警告に関する情報は、現在米国内に一元的に保存されます。 この情報には、仮想マシンから収集された関連の構成情報やセキュリティ イベントが含まれる場合があります。これらは、セキュリティ警告、推奨事項、またはセキュリティの正常性状態をユーザーに提供するために必要な情報です。
 
 
-## <a name="40-azure-monitor"></a>4.0 Azure Monitor
+## <a name="azure-monitor"></a>Azure Monitor
 
 [OMS のセキュリティ](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources) と監査ソリューションによって、IT 管理者はすべてのリソースを能動的に監視できるようになるため、セキュリティ インシデントの影響を最小限に抑えることができます。 OMS のセキュリティと監査には、リソースを監視するために利用できるセキュリティ ドメインがあります。 セキュリティ ドメインによって各オプションへの速やかなアクセスが可能になるほか、セキュリティを監視するうえで、次に示すドメインの監視対象がさらに詳細になります。
 
@@ -183,7 +183,7 @@ Azure Monitor では、特定の種類のリソースについての詳しい情
 
 さらに、監視データを使用して、アプリケーションに関する深い洞察を得ることもできます。 そのような知識は、アプリケーションのパフォーマンスや保守容易性を向上させたり、手作業での介入が必要な操作を自動化したりするうえで役立ちます。
 
-### <a name="41-azure-activity-log"></a>4.1 Azure アクティビティ ログ
+### <a name="azure-activity-log"></a>[Azure Activity Log (Azure アクティビティ ログ)]
 
 
 サブスクリプションのリソースに対して実行された操作を調査できるログです。 アクティビティ ログではサブスクリプションのコントロール プレーン イベントが報告されるため、以前は "監査ログ" または "操作ログ" と呼ばれていました。
@@ -192,7 +192,7 @@ Azure Monitor では、特定の種類のリソースについての詳しい情
 
 アクティビティ ログを使用すると、サブスクリプションのリソースに対して発生する書き込み操作 (PUT、POST、DELETE) すべてについて、"いつ誰が何を" 行ったのかを確認できます。 さらに、操作の状態など、重要性の大きなプロパティを確認することもできます。 アクティビティ ログには、読み取り (GET) 操作や、クラシック モデルを使用するリソースに対する操作は含まれていません。
 
-### <a name="42-azure-diagnostic-logs"></a>4.2 Azure 診断ログ
+### <a name="azure-diagnostic-logs"></a>Azure 診断ログ
 
 Azure 診断ログは、リソースによって出力され、そのリソースの操作に関する豊富なデータを提供します。 これらのログの内容は、リソースの種類によって異なります。
 
@@ -200,7 +200,7 @@ Azure 診断ログは、リソースによって出力され、そのリソー�
 
 診断ログは、[アクティビティ ログ (以前は監査ログまたは操作ログと呼ばれていたもの)](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) とは異なります。 アクティビティ ログでは、サブスクリプションのリソースに対して実行された操作を調査できます。 診断ログでは、リソース自体が実行した操作を調査できます。
 
-### <a name="43-metrics"></a>4.3 メトリック
+### <a name="metrics"></a>メトリック
 
 Azure Monitor では、テレメトリを使用して、Azure のワークロードのパフォーマンスと正常性を視覚的に確認できます。 Azure テレメトリ データの種類の中でも最も重要なのは、Azure リソースのほとんどから出力されるメトリックであり、これはパフォーマンス カウンターとも呼ばれます。 Azure Monitor では、この[メトリック](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)を複数の方法で構成して使用することで、監視やトラブルシューティングを実行できます。 テレメトリの重要なソースであるメトリックを使用すると、次の作業を行うことができます。
 
@@ -214,11 +214,11 @@ Azure Monitor では、テレメトリを使用して、Azure のワークロー
 
 -    **アーカイブする**: コンプライアンスまたは監査の目的で、リソースのパフォーマンスや正常性の履歴をアーカイブします。
 
-### <a name="44-azure-diagnostics"></a>4.4 Azure 診断
+### <a name="azure-diagnostics"></a>Azure 診断
 
 デプロイされたアプリケーションで診断データを収集できるようにする Azure 内の機能です。 さまざまなソースで診断拡張機能を使用することができます。 現時点でのサポート対象は、[Azure クラウド サービスの Web ロールおよび Worker ロール](https://docs.microsoft.com/azure/vs-azure-tools-configure-roles-for-cloud-service)、Microsoft Windows を実行している [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/overview)、および [Service Fabric](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) となっています。 その他の Azure サービスには、独自の独立した診断があります。
 
-## <a name="50-azure-network-watcher"></a>5.0 Azure Network Watcher
+## <a name="azure-network-watcher"></a>Azure Network Watcher
 
 ネットワークの脆弱性を検出し、IT セキュリティおよび規制ガバナンス モデルへのコンプライアンスを確保するためには、ネットワーク セキュリティの監査が不可欠です。 セキュリティ グループ ビューでは、構成したネットワーク セキュリティ グループとセキュリティ ルール、および有効なセキュリティ ルールを取得できます。 適用済みのルール一覧に基づいて、開いているポートを特定し、ネットワークの脆弱性を評価できます。
 
@@ -239,7 +239,7 @@ Azure Monitor では、テレメトリを使用して、Azure のワークロー
 
 -    **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview">NSG フロー ログ</a>** - ネットワーク セキュリティ グループのフロー ログにより、そのグループのセキュリティ規則で許可または拒否されるトラフィックに関係するログを記録できます。 フローは 5 タプル情報 (送信元 IP、宛先 IP送信元ポート、宛先ポート、プロトコル) で定義されます。
 
-##  <a name="60-azure-storage-analytics"></a>6.0 Azure Storage Analytics
+## <a name="azure-storage-analytics"></a>Azure Storage Analytics
 
 [Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) では、ストレージ サービスへの要求に関して集計されたトランザクション統計情報と容量データを含むメトリックを格納できます。 トランザクションは、API 操作レベルとストレージ サービス レベルの両方でレポートされます。容量は、ストレージ サービス レベルでレポートされます。 メトリック データは、ストレージ サービスの使用状況の分析、ストレージ サービスに対する要求に関する問題の診断、サービスを使用するアプリケーションのパフォーマンスの向上に利用できます。
 
@@ -275,7 +275,7 @@ Storage Analytics によって実行される次の操作には料金が発生�
 | Shared Access Signature (SAS) を使用した要求 (失敗した要求と成功した要求を含む) |クライアントとサーバーの両方のタイムアウト エラー |
 |     データの分析要求 |     エラー コード 304 (変更されていません) で失敗した GET 要求 |
 | Storage Analytics そのものによる要求 (ログの作成/削除など) は記録されません。 ログに記録されるデータの一覧については、「[Storage Analytics によって記録される操作およびステータス メッセージ](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages)」および「[Storage Analytics のログの形式](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format)」をご覧ください。 | その他の失敗した匿名要求は一切記録されません。 ログに記録されるデータの全一覧については、「[Storage Analytics によって記録される操作やステータス メッセージ](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages)」および「[Storage Analytics のログの形式](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format)」を参照してください。 |
-## <a name="70-azure-active-directory"></a>7.0 Azure Active Directory
+## <a name="azure-active-directory"></a>Azure Active Directory
 
 Azure AD には、多要素認証、デバイスの登録、セルフサービスのパスワード管理、セルフサービスのグループ管理、特権を持つアカウントの管理、ロール ベースのアクセス制御、アプリケーション使用状況の監視、機能豊富な監査とセキュリティの監視、アラートなど、一連の ID 管理機能も用意されています。
 
@@ -310,7 +310,7 @@ Azure AD の監査レポートのイベントは、180 日間保持されます�
 
 [監査イベント](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-audit-events)を長期間保存する場合は、Reporting API を使用して監査イベントを定期的に別のデータ ストアにプルできます。
 
-## <a name="80-summary"></a>8.0 まとめ
+## <a name="summary"></a>概要
 
 この記事は、組織の IT インフラストラクチャの管理に役立つソフトウェアやサービスを提供しながら、お客様のプライバシーとデータを保護する方法についてまとめています。 Microsoft は、他者にデータを委託する場合、信頼には厳格なセキュリティが必要であることを把握しております。 Microsoft ではコーディングからサービスの運用まで、厳密なコンプライアンスとセキュリティのガイドラインに準拠しています。 Microsoft においてデータの保護は最優先事項になります。
 

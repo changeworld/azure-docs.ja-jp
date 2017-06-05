@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: prrajan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: e83a83b5b4d4d5ed09e1714e28ebe47bf00f3d3f
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 61446940aeb559d67f37f02527400fdc56000f11
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/11/2017
 
 ---
 
@@ -24,17 +24,17 @@ The API reference for converting speech to text using http based REST protocol o
 Microsoft's Cognitive Services REST Speech Recognition API is an HTTP 1.1 protocol definition for building simple speech applications that perform speech recognition. The REST Speech Recognition API is most suitable for applications where real-time user feedback is not required or for platforms that do not support the IETF web socket standard.
 
 * Continuous recognition is not supported. 
-* Utterances are limited to a maximum of 12 seconds
+* Utterances are limited to a maximum of 15 seconds
 * Partial results are not returned. Only the final phrase result is returned.
 * Service endpointing is not supported; clients must determine the end of speech. 
 * The single recognition phrase result is returned to the client only after the client stops writing to the request stream.
 
 If these features are important to your app's functionality, use the web socket API instead.
 
-## <a name="websocket"></a>Websocket
-Microsoft's Cognitive Services Web Socket Speech Recognition API is a WebSocket-based service protocol definition that enables subscribers to build full-featured speech applications that provide a rich user experience. This protocol extends the Microsoft Speech SDK protocol, which powers a wide variety of speech applications throughout the industry.
+## <a name="websocket"></a>WebSocket
+Microsoft's Cognitive Services WebSocket Speech Recognition API is a WebSocket-based service protocol definition that enables subscribers to build full-featured speech applications that provide a rich user experience. This protocol extends the Microsoft Speech SDK protocol, which powers a wide variety of speech applications throughout the industry.
 
-An SDK is available based on the Javascript protocol. SDKs for additional languages and platforms are in development. If your language or platform does not yet have an SDK, create your own implementation based on the documented [protocol](websocketprotocol.md).
+[Javascript SDK](../GetStarted/GettingStartedJSWebsockets.md) is available based on this version of websocket protocol. SDKs for additional languages and platforms are in development. If your language or platform does not yet have an SDK, create your can create your own implementation based on the [documented protocol](websocketprotocol.md).
 
 ## <a name="endpoints"></a>Endpoints
 The API endpoints based on user scenario are highlighted here:
@@ -51,7 +51,7 @@ There are three modes of recognition: interactive, conversational, and dictation
 > [!NOTE]
 > Recognition modes may have different behaviors in the REST protocol than they do in the web socket protocol. For example, the REST API does not support continuous recognition, even in conversational or dictation mode.
 
-The Microsoft Speech Service returns only one recognition phrase result for all recognition modes. There is a maximum limit of 12 seconds for any single utterance.
+The Microsoft Speech Service returns only one recognition phrase result for all recognition modes. There is a maximum limit of 15 seconds for any single utterance.
 
 ### <a name="interactive-mode"></a>Interactive Mode
 In **interactive** mode, a user makes short requests and expects the application to perform an action in response. 
@@ -59,7 +59,7 @@ In **interactive** mode, a user makes short requests and expects the application
 The following characteristics are typical of interactive mode applications:
 * Users know they are speaking to a machine instead of another human.
 * The application user knows ahead of time what they want to say based on what they want the application to do.
-* Utterances last about 2-3 seconds.
+* Utterances typically last about 2-3 seconds.
 
 ### <a name="conversational-mode"></a>Conversational Mode
 In **conversational** mode, users are engaged in a human-to-human conversation.
@@ -84,7 +84,7 @@ The following characteristics are typical of dictation mode applications:
 The following locales are supported by the Speech Recognition API.
 
 ### <a name="interactive-and-dictation-mode"></a>Interactive and dictation mode
-These `language:country` codes are supported in **interactive** and **dictation** mode.
+These `locale` codes are supported in **interactive** and **dictation** mode.
 
 |Code |  | Code |  |
 |-----|-----|-----|-----|
@@ -105,7 +105,7 @@ These `language:country` codes are supported in **interactive** and **dictation*
 | fr-FR | French (France) | ||
 
 ### <a name="conversational-mode"></a>Conversational mode
-These `language:country` codes are supported in **conversational** mode.
+These `locale` codes are supported in **conversational** mode.
 
 |Code||Code||
 |-----|-----|-----|-----|

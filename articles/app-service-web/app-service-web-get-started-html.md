@@ -3,7 +3,7 @@ title: "静的な HTML Web アプリを Azure に 5 分で作成する | Microso
 description: "サンプル アプリをデプロイして、App Service での Web アプリの実行がいかに簡単であるかを説明します。"
 services: app-service\web
 documentationcenter: 
-author: cephalin
+author: rick-anderson
 manager: wpickett
 editor: 
 ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
@@ -12,73 +12,77 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/17/2017
-ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: ba9b9b780da74c44f6314fa289f1d6b8c231dd30
-ms.lasthandoff: 05/03/2017
-
+ms.date: 05/08/2017
+ms.author: riande
+ms.custom: mvc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 895906e1ab4bc50093ed3b18f043c3dd515ca054
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 ---
 # <a name="create-a-static-html-web-app-in-azure-in-five-minutes"></a>静的な HTML Web アプリを Azure に 5 分で作成する
-[!INCLUDE [app-service-web-selector-get-started](../../includes/app-service-web-selector-get-started.md)] 
 
-このクイック スタートを読むと、単純な HTML+CSS サイトを [Azure App Service](../app-service/app-service-value-prop-what-is.md) に数分でデプロイできるようになります。
+このクイック スタートでは、基本的な HTML+CSS サイトを Azure にデプロイする方法について説明します。 [Azure App Service プラン](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview)を使用してアプリを実行し、[Azure CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli) を使用してその内部に Web アプリを作成します。 Git を使用して、アプリを Azure にデプロイします。 前提条件がインストールされた後、このチュートリアルを完了するには約 5 分かかります。
 
-開始する前に、Azure CLI がインストールされていることを確認してください。 詳細については、[Azure CLI インストール ガイド](https://docs.microsoft.com/cli/azure/install-azure-cli)を参照してください。
+![hello-world-in-browser](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 
-## <a name="log-in-to-azure"></a>Azure へのログイン
-`az login` を実行し、画面の指示に従って Azure にログインします。
-   
-```azurecli
-az login
+## <a name="prerequisites"></a>前提条件
+
+このサンプルを作成する前に、次のコンポーネントをダウンロードしてインストールします。
+
+- [Git](https://git-scm.com/)
+- [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="download-the-sample"></a>サンプルのダウンロード
+
+ターミナル ウィンドウで、サンプル アプリ リポジトリをローカル コンピューターに複製します。
+
+```bash
+git clone https://github.com/Azure-Samples/html-docs-hello-world.git
 ```
 
-## <a name="create-a-resource-group"></a>リソース グループの作成   
-[リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 ここには、Web アプリとその SQL Database バックエンドなど、まとめて管理するすべての Azure リソースを置くことができます。
+## <a name="view-the-html"></a>HTML を表示する
 
-```azurecli
-az group create --location "West Europe" --name myResourceGroup
+サンプル HTML が含まれているディレクトリに移動します。 ブラウザーで *index.html* ファイルを開きます。
+
+![hello-world-in-browser](media/app-service-web-get-started-html/hello-world-in-browser.png)
+
+[!INCLUDE [login-to-azure](../../includes/login-to-azure.md)] 
+[!INCLUDE [configure-deployment-user](../../includes/configure-deployment-user.md)] 
+
+[!INCLUDE [app-service-web-quickstart1](../../includes/app-service-web-quickstart1.md)] 
+
+`quickStartPlan` App Service プランで [Web アプリ](app-service-web-overview.md)を作成します。 Web アプリによってコード用のホスト領域が提供され、デプロイされたアプリを表示するための URL が提供されます。
+
+[!INCLUDE [app-service-web-quickstart2](../../includes/app-service-web-quickstart2.md)] 
+
+このページは、Azure App Service Web アプリとして実行されています。
+
+![hello-world-in-browser](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
+
+## <a name="update-and-redeploy-the-app"></a>アプリを更新して再デプロイする
+
+*index.html* ファイルを開きます。 マークアップを変更します。 たとえば、`Hello world!` を `Hello Azure!` に変更します
+
+Git で変更をコミットしてから、コード変更を Azure にプッシュします。
+
+```bash
+git commit -am "updated HTML"
+git push azure master
 ```
 
-`--location` に使用できる値を確認するには、Azure CLI コマンド `az appservice list-locations` を使用してください。
+デプロイが完了したら、ブラウザーを更新して変更を表示します。
 
+[!INCLUDE [manage-azure-web-app](../../includes/manage-azure-web-app.md)]
 
-## <a name="create-an-app-service-plan"></a>App Service プランを作成する
-"Free" [App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)を作成します。 
-
-```azurecli
-az appservice plan create --name my-free-appservice-plan --resource-group myResourceGroup --sku FREE
-```
-
-## <a name="create-a-web-app"></a>Web アプリを作成する
-`<app_name>` に一意の名前を指定して Web アプリを作成します。
-
-```azurecli
-az appservice web create --name <app_name> --resource-group myResourceGroup --plan my-free-appservice-plan
-```
-
-## <a name="deploy-sample-application"></a>サンプル アプリケーションをデプロイする
-GitHub からサンプル HTML サイトをデプロイします。
-
-```azurecli
-az appservice web source-control config --name <app_name> --resource-group myResourceGroup \
---repo-url "https://github.com/Azure-Samples/app-service-web-html-get-started.git" --branch master --manual-integration 
-```
-
-## <a name="browse-to-web-app"></a>Web アプリを確認する
-Azure でアプリがライブ実行されるのを確認するには、次のコマンドを実行します。
-
-```azurecli
-az appservice web browse --name <app_name> --resource-group myResourceGroup
-```
-
-初めての静的 HTML サイトを Azure App Services でライブ実行することができました。
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
-[Web アプリの CLI スクリプト](app-service-cli-samples.md) サンプルに目を通します。
-
+- [Web アプリの CLI スクリプト](app-service-cli-samples.md) サンプルを見ます。
+- [カスタム ドメイン名](app-service-web-tutorial-custom-domain.md) (contoso.com など) を [App Service アプリにマップする](app-service-web-tutorial-custom-domain.md)方法を学習します。

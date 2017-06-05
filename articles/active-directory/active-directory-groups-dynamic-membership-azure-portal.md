@@ -1,6 +1,6 @@
 ---
 
-title: "Azure Active Directory プレビューの属性ベースの動的グループ メンバーシップ | Microsoft Docs"
+title: "Azure Active Directory の属性ベースの動的グループ メンバーシップ | Microsoft Docs"
 description: "サポートされている式のルールの演算子とパラメーターを含む、動的グループ メンバーシップの高度なルールを作成する方法。"
 services: active-directory
 documentationcenter: 
@@ -13,20 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 05/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 6ef550047a28a6070cad5da2e00cf18fbca3f9fa
-ms.lasthandoff: 03/09/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: da03dc8afa58ddfe97301dabed186ed325410937
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory-preview"></a>Azure Active Directory プレビューで動的グループ メンバーシップの属性ベースのルールを作成する | Microsoft Docs
-Azure ポータルでは、Azure Active Directory (Azure AD) プレビュー グループの複雑な属性ベースの動的メンバーシップを有効にする高度なルールを作成できます。 [プレビューの機能については、こちらの記事をご覧ください](active-directory-preview-explainer.md)。 
-
-この記事では、動的なメンバーシップ ルールを作成するための属性と構文について詳しく説明します。
+# <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Azure Active Directory で動的グループ メンバーシップの属性ベースのルールを作成する
+Azure Active Directory (Azure AD) では、グループの複雑な属性ベースの動的メンバーシップを有効にする高度なルールを作成できます。 この記事では、動的なメンバーシップ ルールを作成するための属性と構文について詳しく説明します。
 
 ## <a name="to-create-the-advanced-rule"></a>高度なルールを作成するには
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
@@ -46,13 +45,13 @@ Azure ポータルでは、Azure Active Directory (Azure AD) プレビュー グ
 7. **[作成]** on the **[グループ]** をクリックして、グループを作成します。
 
 ## <a name="constructing-the-body-of-an-advanced-rule"></a>高度なルール本体の作成
-グループの動的なメンバーシップ管理を目的として作成される高度なルールは基本的に、3 つの構成要素から成る、true または false を結果として返す&2; 項演算式です。 その&3; つの構成要素を次に示します。
+グループの動的なメンバーシップ管理を目的として作成される高度なルールは基本的に、3 つの構成要素から成る、true または false を結果として返す 2 項演算式です。 その 3 つの構成要素を次に示します。
 
 * 左辺のパラメーター
 * 2 項演算子
 * 右辺の定数
 
-たとえば全体で見ると、(leftParameter binaryOperator "RightConstant") のようになります。2 項演算式全体を開きかっこと閉じかっこで囲んだ上で、右辺の定数は二重引用符で囲む必要があります。左辺のパラメーターの構文は user.property という形式で入力します。 高度なルールは、複数の&2; 項演算式を論理演算子 (-and、-or、-not) で組み合わせることができます。
+たとえば全体で見ると、(leftParameter binaryOperator "RightConstant") のようになります。2 項演算式全体を開きかっこと閉じかっこで囲んだ上で、右辺の定数は二重引用符で囲む必要があります。左辺のパラメーターの構文は user.property という形式で入力します。 高度なルールは、複数の 2 項演算式を論理演算子 (-and、-or、-not) で組み合わせることができます。
 
 以下に示したのは、正しい構文に沿って作成された高度なルールの例です。
 

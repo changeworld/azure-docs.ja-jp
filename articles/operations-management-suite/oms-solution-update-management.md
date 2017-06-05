@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/02/2017
+ms.date: 05/23/2017
 ms.author: magoedte
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 03a6c1f20632691c08f5de4afe74eacc6f79608e
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: ff8d911750a551f4a099fcba13841c98881104a9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -51,7 +51,11 @@ OMS で管理されるコンピューターでは、評価と更新プログラ�
 更新プログラムの展開で指定した日時に、対象のコンピューターでデプロイが並行して実行されます。  まず、スキャンが実行され、その更新プログラムが必須であることが確認されてからインストールされます。  WSUS クライアント コンピューターの場合、更新プログラムが WSUS で承認されていないと更新プログラムの展開は失敗するので、注意してください。  適用された更新プログラムの結果は OMS に転送され、そこで処理されてダッシュボードに要約が表示されます。また、イベントを検索することもできます。     
 
 ## <a name="prerequisites"></a>前提条件
-* このソリューションでサポートされるのは、Windows Server 2008 以降に対する更新プログラムの評価と、Windows Server 2012 以降に対する更新プログラムの展開の実行です。  Server Core と Nano Server のインストール オプションはサポートされていません。
+* このソリューションでサポートされるのは、Windows Server 2008 以降に対する更新プログラムの評価と、Windows Server 2008 R2 以降に対する更新プログラムの展開の実行です。  Server Core と Nano Server のインストール オプションはサポートされていません。
+
+    > [!NOTE]
+    > Windows Server 2008 R2 に更新プログラムをデプロイするためには、.NET Framework 4.5 および WMF 5.0 以降が必要です。
+    >  
 * Windows クライアント オペレーティング システムはサポートされていません。  
 * Windows エージェントは、Windows Server Update Services (WSUS) サーバーと通信するか Microsoft Update にアクセスできるように構成する必要があります。  
   

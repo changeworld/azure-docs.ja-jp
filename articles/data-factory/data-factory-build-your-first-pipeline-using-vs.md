@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: 0ceba4142fd7b0e6edc1b7a6c14470d21806004a
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
+ms.openlocfilehash: 9d788bf8e41fe225a4c24a4f5b464e8664f3d677
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/22/2017
 
 
 ---
@@ -36,6 +37,8 @@ ms.lasthandoff: 04/13/2017
 
 > [!NOTE]
 > このチュートリアルでは、Azure Data Factory を使用してデータをコピーする方法は説明しません。 Azure Data Factory を使用してデータをコピーする方法のチュートリアルについては、[Blob Storage から SQL Database へのデータのコピーのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関するページを参照してください。
+> 
+> 1 つのパイプラインには複数のアクティビティを含めることができます。 また、1 つのアクティビティの出力データセットを別のアクティビティの入力データセットとして指定することで、2 つのアクティビティを連鎖させる (アクティビティを連続的に実行する) ことができます。 詳細については、[Data Factory のスケジュール設定と実行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)に関するページを参照してください。
 
 
 ## <a name="walkthrough-create-and-publish-data-factory-entities"></a>チュートリアル: Data Factory エンティティの作成と発行
@@ -54,8 +57,8 @@ ms.lasthandoff: 04/13/2017
 5. 発行した後、Azure Portal のブレードと、監視と管理アプリを使用して、パイプラインを監視します。 
   
 ### <a name="prerequisites"></a>前提条件
-1. 「 [チュートリアルの概要](data-factory-build-your-first-pipeline.md) 」に目を通し、 **前提条件** の手順を完了する必要があります。 冒頭のドロップダウン リストの **[Overview and prerequisites (概要と前提条件)]** というオプションを選択して、その記事に移動することもできます。 前提条件を満たすことができたら、ドロップダウン リストの **[Visual Studio]** というオプションを選択して、この記事に戻ります。  
-2. Data Factory エンティティを Visual Studio から Azure Data Factory に発行できる **Azure サブスクリプションの管理者** である必要があります。 
+1. 「 [チュートリアルの概要](data-factory-build-your-first-pipeline.md) 」に目を通し、 **前提条件** の手順を完了する必要があります。 冒頭のドロップダウン リストの **[Overview and prerequisites (概要と前提条件)]** というオプションを選択して、その記事に移動することもできます。 前提条件を満たすことができたら、ドロップダウン リストの **[Visual Studio]** というオプションを選択して、この記事に戻ります。
+2. Data Factory インスタンスを作成するには、サブスクリプション/リソース グループ レベルで [Data Factory の共同作業者](../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) ロールのメンバーである必要があります。  
 3. コンピューターに以下がインストールされている必要があります。
    * Visual Studio 2013 または Visual Studio 2015
    * Azure SDK for Visual Studio 2013 または Visual Studio 2015 をダウンロードします。 [Azure ダウンロード ページ](https://azure.microsoft.com/downloads/)に移動し、**.NET** セクションの **[VS 2013]** または **[VS 2015]** をクリックします。
@@ -103,7 +106,6 @@ Azure Storage のリンクされたサービスは、接続情報を提供する
         "properties": {
         "type": "HDInsightOnDemand",
             "typeProperties": {
-                "version": "3.2",
                 "clusterSize": 1,
                 "timeToLive": "00:30:00",
                 "linkedServiceName": "AzureStorageLinkedService1"
@@ -114,9 +116,8 @@ Azure Storage のリンクされたサービスは、接続情報を提供する
 
     次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-    プロパティ | 説明
+    プロパティ | Description
     -------- | ----------- 
-    バージョン | 作成する HDInsight Hadoop クラスターのバージョンを指定します。
     ClusterSize | HDInsight Hadoop クラスターのサイズを指定します。
     TimeToLive | 削除されるまでの HDInsight クラスターのアイドル時間を指定します。
     linkedServiceName | HDInsight Hadoop クラスターによって生成されるログを保存するために使用されるストレージ アカウントを指定します。 
@@ -558,7 +559,7 @@ Azure Data Factory のエンティティを VS で発行するときに、その
 
 
 ## <a name="see-also"></a>関連項目
-| トピック | 説明 |
+| トピック | Description |
 |:--- |:--- |
 | [パイプライン](data-factory-create-pipelines.md) |この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにデータ主導ワークフローを作成する方法を説明します。 |
 | [データセット](data-factory-create-datasets.md) |この記事では、Azure Data Factory のデータセットについて説明します。 |

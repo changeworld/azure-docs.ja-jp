@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: backup-recovery
-ms.date: 2/11/2017
+ms.date: 5/31/2017
 ms.author: bsiva
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b7f26df96ddedb579cf5d9d20fee6b2599e762e0
 ms.openlocfilehash: 555ea8eed17e42019513029f7b3ac2167f002578
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/13/2017
 
 ---
 
@@ -50,9 +52,4 @@ ms.openlocfilehash: 555ea8eed17e42019513029f7b3ac2167f002578
 
 ## <a name="next-steps"></a>次のステップ
 [レプリケーションの設定を構成する](./site-recovery-setup-replication-settings-vmware.md)。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

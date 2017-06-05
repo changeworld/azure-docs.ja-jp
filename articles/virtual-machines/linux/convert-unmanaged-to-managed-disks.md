@@ -15,10 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 8429ee543d8cf838765ff9e8624390746474ee0d
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 7b1bfcc8163d7166831123524f3ec53f4a3dfe09
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/11/2017
 
 ---
 
@@ -36,7 +37,7 @@ Azure にストレージ アカウントの非管理対象ディスクを使っ�
 - [az vm disk attach](/cli/azure/vm/disk#attach) を使って、コピーした VHD を Managed Disks で実行中の VM に接続します。
 
 ## <a name="convert-vm-to-azure-managed-disks"></a>VM を Azure Managed Disks に変換する
-このセクションでは、既存の Azure VM を非管理対象ディスクから Managed Disks に変換する方法について説明します。 このプロセスを使って、Premium (SDD) の非管理対象ディスクから Premium Managed Disks に、または Standard (HDD) の非管理対象ディスクから Standard Managed Disks に変換できます。
+このセクションでは、既存の Azure VM を非管理対象ディスクから Managed Disks に変換する方法について説明します。 このプロセスを使って、Premium (SSD) の非管理対象ディスクから Premium Managed Disks に、または Standard (HDD) の非管理対象ディスクから Standard Managed Disks に変換できます。
 
 > [!IMPORTANT]
 > 以下の手順を実行した後、既定の vhds コンテナーにはブロック BLOB が 1 つ残ります。 ファイルの名前は "VMName.xxxxxxx.status" です。 この残っているステータス オブジェクトを削除しないでください。 この問題には今後の作業で対処されます。

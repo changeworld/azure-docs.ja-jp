@@ -37,10 +37,10 @@ Azure Active Directory (Azure AD) の各ディレクトリは、完全に独立�
 * あるディレクトリでユーザーの管理者ロールを変更 (追加または削除) した場合、変更は、別のディレクトリでそのユーザーに割り当てられている可能性のある管理者ロールには影響しません。
 
 ## <a name="synchronization-independence"></a>同期の独立
-次のどちらかの&1; つのインスタンスからデータが同期されるように各 Azure AD ディレクトリを独立して構成することができます。
+次のどちらかの 1 つのインスタンスからデータが同期されるように各 Azure AD ディレクトリを独立して構成することができます。
 
 * 1 つは、単一の AD フォレストとデータを同期するディレクトリ同期 (DirSync) ツールです。
-* もう&1; つは、1 つ以上のオンプレミスのフォレストと Azure AD 以外のデータ ソースのいずれか、または両方とデータを同期する Forefront Identity Manager 用 Azure Active Directory コネクタです。
+* もう 1 つは、1 つ以上のオンプレミスのフォレストと Azure AD 以外のデータ ソースのいずれか、または両方とデータを同期する Forefront Identity Manager 用 Azure Active Directory コネクタです。
 
 ## <a name="add-an-azure-ad-directory"></a>Azure AD ディレクトリを追加する
 Azure クラシック ポータルで Azure AD ディレクトリを追加するには、左側で Azure Active Directory 拡張機能を選択し、 **[追加]**をタップします。

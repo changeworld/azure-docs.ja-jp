@@ -1,6 +1,6 @@
 ---
 title: "Python ライブラリを使用した Azure Spark クラスターでの Web サイト ログの分析 | Microsoft Docs"
-description: "HDInsight の Spark クラスターとカスタム ライブラリを使用して、Web サイト ログを分析する"
+description: "HDInsight の Spark クラスターとカスタム Python ライブラリを使用して、Web サイト ログを分析する"
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -17,14 +17,14 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 3f5b7409c5245ee975b0208f812668a0c35ff1c3
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: d55005ecea7ba6b31c638af3d26c44932e3d12bc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/18/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
-# <a name="analyze-website-logs-using-a-custom-library-with-apache-spark-cluster-on-hdinsight"></a>HDInsight でカスタム ライブラリと Apache Spark クラスターを使用して Web サイト ログを分析する
+# <a name="analyze-website-logs-using-a-custom-python-library-with-spark-cluster-on-hdinsight"></a>HDInsight でカスタム Python ライブラリと Spark クラスターを使用して Web サイト ログを分析する
 
 この Notebook では、HDInsight の Spark でカスタム ライブラリを使用してログ データを分析する方法を示します。 使用するカスタム ライブラリは、 **iislogparser.py**と呼ばれる Python ライブラリです。
 
@@ -57,10 +57,10 @@ ms.lasthandoff: 03/18/2017
    >
 3. 新しい Notebook を作成します。 **[新規]** をクリックし、**[PySpark]** をクリックします。
 
-    ![新しい Jupyter Notebook の作成](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdispark.note.jupyter.createnotebook.png "新しい Jupyter Notebook の作成")
+    ![新しい Jupyter Notebook の作成](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "新しい Jupyter Notebook の作成")
 4. Untitled.pynb という名前の新しい Notebook が作成されて開かれます。 上部の Notebook 名をクリックし、わかりやすい名前を入力します。
 
-    ![Notebook の名前を指定](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdispark.note.jupyter.notebook.name.png "Notebook の名前を指定")
+    ![Notebook の名前を指定](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdinsight-name-jupyter-notebook.png "Notebook の名前を指定")
 5. PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。 最初のコード セルを実行すると、Spark および Hive コンテキストが自動的に作成されます。 このシナリオに必要な種類をインポートすることから始めることができます。 次のスニペットを空のセルに貼り付けて、 **Shift + Enter**キーを押します。
 
         from pyspark.sql import Row
@@ -188,7 +188,7 @@ ms.lasthandoff: 03/18/2017
 
    出力は次のように表示されます。
 
-   ![SQL クエリ出力](./media/hdinsight-apache-spark-custom-library-website-log-analysis/sql.output.png "SQL クエリ出力")
+   ![SQL クエリ出力](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdinsight-jupyter-sql-qyery-output.png "SQL クエリ出力")
 
    `%%sql` マジックについて詳しくは、「[%%sql マジックでサポートされるパラメーター](hdinsight-apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)」をご覧ください。
 7. データの視覚効果の構築に使用するライブラリ、Matplotlib を使用して、プロットを作成できます。 プロットはローカルに保持された **averagetime** データフレームから作成する必要があるため、コード スニペットは `%%local` マジックで始める必要があります。 これにより、コードは Jupyter サーバーでローカルに実行されます。
@@ -203,7 +203,7 @@ ms.lasthandoff: 03/18/2017
 
    出力は次のように表示されます。
 
-   ![Matplotlib の出力](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdi-apache-spark-web-log-analysis-plot.png "Matplotlib の出力")
+   ![Matplotlib の出力](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdinsight-apache-spark-web-log-analysis-plot.png "Matplotlib の出力")
 8. アプリケーションの実行が完了したら、Notebook をシャットダウンしてリソースを解放する必要があります。 そのためには、Notebook の **[ファイル]** メニューの **[Close and Halt]** (閉じて停止) をクリックします。 これにより、Notebook がシャットダウンされ、閉じられます。
 
 ## <a name="seealso"></a>関連項目

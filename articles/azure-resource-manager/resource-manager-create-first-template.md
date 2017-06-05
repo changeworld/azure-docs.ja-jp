@@ -14,10 +14,11 @@ ms.devlang: na
 ms.date: 04/18/2017
 ms.topic: get-started-article
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 3c5520f30b75c0e0a2b1aee890f79d01d325d543
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 745e115409a5b1e5e4f343ca0a5bb922272d3020
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/11/2017
 
 ---
 
@@ -184,7 +185,7 @@ ms.lasthandoff: 04/20/2017
 
 ![関数の表示](./media/resource-manager-create-first-template/show-functions.png)
 
-関数は角かっこで囲まれていることに注目してください。 この [resourceGroup](resource-group-template-functions.md#resourcegroup) 関数は、`location` というプロパティを備えたオブジェクトを返すものです。 リソース グループは、ソリューションに関連するあらゆるリソースを保持しています。 location プロパティには "Central US" のような値をハードコーディングすることもできますが、そうすると、テンプレートのデプロイ先を変更する場合に、手作業が必要になります。 `resourceGroup` 関数を使用すると、このテンプレートのデプロイ先を別の場所にある別のリソース グループに簡単に変更することができます。
+関数は角かっこで囲まれていることに注目してください。 この [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) 関数は、`location` というプロパティを備えたオブジェクトを返すものです。 リソース グループは、ソリューションに関連するあらゆるリソースを保持しています。 location プロパティには "Central US" のような値をハードコーディングすることもできますが、そうすると、テンプレートのデプロイ先を変更する場合に、手作業が必要になります。 `resourceGroup` 関数を使用すると、このテンプレートのデプロイ先を別の場所にある別のリソース グループに簡単に変更することができます。
 
 ここまでの作業が終わった時点で、テンプレートは以下のようになります。
 
@@ -216,7 +217,7 @@ ms.lasthandoff: 04/20/2017
 ## <a name="add-parameters-and-variables"></a>パラメーターと変数の追加
 テンプレートに設定する値はあと 2 つだけです。具体的には、**name** と **sku.name** です。 この 2 つのプロパティには、デプロイ時に値をカスタマイズできるパラメーターを追加します。 
 
-ストレージ アカウント名には制約がいくつもあるため、設定の難易度が高くなっています。 名前の長さは 3 ～ 24 文字で、使用できるのは数字と小文字のみです。また、一意になっている必要があります。 ここでは、制約に抵触しない一意の値を当て推量で設定するのではなく、[uniqueString](resource-group-template-functions.md#uniquestring) 関数を使ってハッシュ値を生成することにしましょう。 プレフィックスを追加してこのハッシュ値に意味を持たせると、ハッシュ値がストレージ アカウントを示すものであることがデプロイ後にわかりやすくなります。 
+ストレージ アカウント名には制約がいくつもあるため、設定の難易度が高くなっています。 名前の長さは 3 ～ 24 文字で、使用できるのは数字と小文字のみです。また、一意になっている必要があります。 ここでは、制約に抵触しない一意の値を当て推量で設定するのではなく、[uniqueString](resource-group-template-functions-string.md#uniquestring) 関数を使ってハッシュ値を生成することにしましょう。 プレフィックスを追加してこのハッシュ値に意味を持たせると、ハッシュ値がストレージ アカウントを示すものであることがデプロイ後にわかりやすくなります。 
 
 1. 名前付け規則に合致するプレフィックスを渡すには、テンプレートの **parameters** セクションに移動します。 テンプレートに、ストレージ アカウント名のプレフィックスを受け取るパラメーターを追加します。
 

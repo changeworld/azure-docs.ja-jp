@@ -3,7 +3,7 @@ title: "Azure SQL Data Warehouse の操作について | Microsoft Docs"
 description: 'SQL Data Warehouse''s elasticity lets you grow, shrink, or pause compute power by using a sliding scale of data warehouse units (DWUs). This article explains the data warehouse metrics and how they relate to DWUs. '
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: jrowlandjones
 manager: jhubbard
 editor: 
 ms.assetid: cadffa9c-589d-4db7-888a-1f202a753bc5
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: performance
 ms.date: 10/31/2016
-ms.author: barbkess;mausher
-translationtype: Human Translation
+ms.author: jrj;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 43ab6a2f71ab51c50847b1ba5249f51c48e03fea
 ms.openlocfilehash: 79fedaabc438bc4cd884af6b494e43d32361950a
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/24/2017
 
 

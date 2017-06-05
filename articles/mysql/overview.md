@@ -20,6 +20,7 @@ ms.lasthandoff: 05/10/2017
 
 ---
 
+
 # <a name="what-is-azure-database-for-mysql-service-introduction"></a>Azure Database for MySQL とは何か (サービスの概要)
 Azure Database for MySQL は、Microsoft Cloud における、[MySQL Community Edition](https://www.mysql.com/products/community/) のデータベース エンジンをベースとしたリレーショナル データベース サービスです。  Azure Database for MySQL には、次の特長があります。
 

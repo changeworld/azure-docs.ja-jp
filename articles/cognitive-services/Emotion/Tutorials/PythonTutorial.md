@@ -7,7 +7,7 @@ manager: yutkuo
 ms.service: cognitive-services
 ms.technology: emotion
 ms.topic: article
-ms.date: 01/30/2017
+ms.date: 05/23/2017
 ms.author: anroth
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82

@@ -5,11 +5,4 @@
    
     ![プロジェクトに追加された Docker ファイル](media/vs-azure-tools-docker-add-docker-support/docker-files-added.png)
 
-> [!NOTE]
-> [Docker for Windows のベータ版](https://beta.docker.com)を使用している場合は、Properties\Docker.props を開き、既定値を削除して、Visual Studio を再起動すると、値が反映されます。
-> 
-> ```
-> <DockerMachineName Condition="'$(DockerMachineName)'=='' "></DockerMachineName>
-> ```
-> 
 

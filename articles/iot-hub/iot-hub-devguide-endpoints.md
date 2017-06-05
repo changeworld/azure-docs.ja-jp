@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
-ms.openlocfilehash: cdc50ec4bf98d7924ad5bf97c9a757f0bac01173
-ms.lasthandoff: 03/23/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: b0b2e8f375fa0b80e4f933515e1e8a689478483e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -74,7 +75,7 @@ IoT Hub でメッセージのルーティングを機能させるには、これ
 ## <a name="field-gateways"></a>フィールド ゲートウェイ
 IoT ソリューションでは、*フィールド ゲートウェイ*はデバイスと IoT Hub エンドポイントの間に配置され、 通常はデバイスの近くにあります。 デバイスは、そのデバイスでサポートされているプロトコルを使用してフィールド ゲートウェイと直接通信します。 フィールド ゲートウェイは、IoT Hub でサポートされているプロトコルを使用して IoT Hub エンドポイントに接続します。 フィールド ゲートウェイとして使用できるのは、非常に特殊なハードウェアまたは低電力コンピューターであり、そこで実行されているソフトウェアによって、ゲートウェイが対象としているエンド ツー エンド シナリオが実現します。
 
-[Azure IoT Gateway SDK][lnk-gateway-sdk] を使用してフィールド ゲートウェイを実装できます。 この SDK には、同じ IoT Hub 接続上で複数のデバイスからの通信を多重化する機能などの固有の機能が用意されています。
+[Azure IoT Edge][lnk-gateway-sdk] を使用してフィールド ゲートウェイを実装できます。 この IoT Edge には、同じ IoT Hub 接続上で複数のデバイスからの通信を多重化する機能などの固有の機能が用意されています。
 
 ## <a name="next-steps"></a>次のステップ
 この IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです。
@@ -83,7 +84,7 @@ IoT ソリューションでは、*フィールド ゲートウェイ*はデバ�
 * [クォータと調整][lnk-devguide-quotas]
 * [IoT Hub の MQTT サポート][lnk-devguide-mqtt]
 
-[lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
+[lnk-gateway-sdk]: https://github.com/Azure/iot-edge
 
 [img-endpoints]: ./media/iot-hub-devguide-endpoints/endpoints.png
 [lnk-amqp]: https://www.amqp.org/

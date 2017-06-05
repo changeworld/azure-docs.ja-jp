@@ -1,6 +1,6 @@
 ---
-title: "HDInsight での Apache Kafka の概要 | Microsoft Docs"
-description: "HDInsight での Apache Kafka の概要を説明します。 Apache Kafka の機能と役割について説明し、例および概要情報の入手先を紹介します。"
+title: "HDInsight での Apache Kafka の概要 - Azure | Microsoft Docs"
+description: "HDInsight での Apache Kafka について説明します。その機能と役割について説明し、例と概要情報の入手先を紹介します。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/09/2017
+ms.date: 05/03/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: a3ceca6cd0f470a5cd6849c345867f094b870a85
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: f3e1cfb23a28d0d1fc7a60bdc8b282b72984fd03
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 ---
 # <a name="introducing-apache-kafka-on-hdinsight-preview"></a>HDInsight での Apache Kafka の概要 (プレビュー)
@@ -48,10 +49,6 @@ Kafka には、次の機能が用意されています。
 * **集計**: ストリーム処理を使用して異なるストリームからの情報を集計し、情報をまとめて運用データに一元化することができます。
 
 * **変換**: ストリーム処理を使用して入力された複数のトピックからのデータを結合し、1 つまたは複数の出力トピックに変換することができます。
-
-## <a name="where-do-i-start"></a>どこから始めるか
-
-Kafka クラスターの作成と Kafka の使用 (プロデューサー、コンシューマー、およびストリーミング API の使用に関する Java ベースの例を含む) の手順については、「[Get started with Kafka on HDInsight (HDInsight での Kafka の使用)](hdinsight-apache-kafka-get-started.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

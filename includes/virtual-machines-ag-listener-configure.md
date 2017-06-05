@@ -1,106 +1,92 @@
 可用性グループ リスナーとは、SQL Server 可用性グループがリッスンする IP アドレスとネットワーク名のことです。 可用性グループ リスナーを作成するには、次の手順を実行します。
 
-1. [クラスター ネットワーク リソースの名前を取得する](#getnet)。
+1. <a name="getnet"></a>クラスター ネットワーク リソースの名前を取得します。
 
-1. [クライアント アクセス ポイントを追加する](#addcap)。
+    a. プライマリ レプリカのホストとなっている Azure 仮想マシンに RDP で接続します。 
 
-1. [可用性グループの IP リソースを構成する](#congroup)。
+    b. フェールオーバー クラスター マネージャーを開きます。
 
-1. [SQL Server 可用性グループ リソースがクライアント アクセス ポイントに依存するように設定する。](#dependencyGroup)
-
-1. [クライアント アクセス ポイント リソースが IP アドレスに依存するように設定する](#listname)。
-
-1. [PowerShell でクラスターのパラメーターを設定する](#setparam)。
-
-以下の各セクションで、個々の手順の詳細を示します。 
-
-#### <a name="getnet"></a>クラスター ネットワーク リソースの名前を取得する
-
-1. プライマリ レプリカのホストとなっている Azure 仮想マシンに RDP で接続します。 
-
-1. フェールオーバー クラスター マネージャーを開きます。
-
-1. **Networks** ノードを選択し、クラスター ネットワーク名をメモします。 この名前は、PowerShell スクリプトの `$ClusterNetworkName` 変数に使用します。
-
-   次の図では、クラスター ネットワーク名は **Cluster Network 1** です。
+    c. **Networks** ノードを選択し、クラスター ネットワーク名をメモします。 この名前は、PowerShell スクリプトの `$ClusterNetworkName` 変数に使用します。 次の図では、クラスター ネットワーク名は **Cluster Network 1** です。
 
    ![クラスター ネットワーク名](./media/virtual-machines-ag-listener-configure/90-clusternetworkname.png)
 
-#### <a name="addcap"></a>クライアント アクセス ポイントを追加する
+2. <a name="addcap"></a>クライアント アクセス ポイントを追加します。  
+    クライアント アクセス ポイントは、アプリケーションが可用性グループ内のデータベースに接続するために使用するネットワーク名です。 クライアント アクセス ポイントは、フェールオーバー クラスター マネージャーで作成します。
 
-クライアント アクセス ポイントは、アプリケーションが可用性グループ内のデータベースに接続するために使用するネットワーク名です。 クライアント アクセス ポイントは、フェールオーバー クラスター マネージャーで作成します。 
+    a. クラスター名を展開して、 **[ロール]**をクリックします。
 
-1. クラスター名を展開して、 **[ロール]**をクリックします。
-
-1. **[ロール]** ウィンドウで、可用性グループ名を右クリックし、**[リソースの追加]** > **[クライアント アクセス ポイント]** の順に選択します。
+    b. **[ロール]** ウィンドウで、可用性グループ名を右クリックし、**[リソースの追加]** > **[クライアント アクセス ポイント]** の順にクリックします。
 
    ![クライアント アクセス ポイント](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)
 
-1. **[名前]** ボックスで、この新しいリスナーの名前を指定します。 
-
-   この新しいリスナーの名前が、アプリケーションが SQL Server 可用性グループ内のデータベースへの接続に使用するネットワーク名になります。
+    c. **[名前]** ボックスで、この新しいリスナーの名前を指定します。 
+   新しいリスナーの名前は、アプリケーションが SQL Server 可用性グループ内のデータベースへの接続に使用するネットワーク名です。
    
-   **[次へ]** を 2 回クリックしてから **[完了]** をクリックし、リスナーの作成を完了します。 この時点では、リスナーまたはリソースをオンラインにしないでください。
-   
-#### <a name="congroup"></a>可用性グループの IP リソースを構成する
+    d. **[次へ]** を 2 回クリックしてから **[完了]** をクリックし、リスナーの作成を完了します。 この時点では、リスナーまたはリソースをオンラインにしないでください。
 
-1. **[リソース]** タブをクリックして、作成したクライアント アクセス ポイントを展開します。 クライアント アクセス ポイントはオフラインになっています。
+3. <a name="congroup"></a>可用性グループの IP リソースを構成します。
+
+    a. **[リソース]** タブをクリックして、作成したクライアント アクセス ポイントを展開します。  
+    クライアント アクセス ポイントはオフラインになっています。
 
    ![クライアント アクセス ポイント](./media/virtual-machines-ag-listener-configure/94-newclientaccesspoint.png) 
 
-1. IP リソースを右クリックし、[プロパティ] をクリックします。 IP アドレスの名前をメモします。 この名前は、PowerShell スクリプトの `$IPResourceName` 変数に使用します。
+    b. IP リソースを右クリックし、[プロパティ] をクリックします。 この IP アドレス名はメモしておき、PowerShell スクリプトの `$IPResourceName` 変数に使用します。
 
-1. **[IP アドレス]** で **[静的 IP アドレス]** をクリックします。 静的 IP アドレスを、Azure Portal でロード バランサーのアドレス設定時に使用したものと同じアドレスに設定します。
+    c. **[IP アドレス]** で **[静的 IP アドレス]** をクリックします。 静的 IP アドレスを、Azure Portal でロード バランサーのアドレス設定時に使用したものと同じアドレスに設定します。
 
    ![IP リソース](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
 
-<!-----------------------I don't see this option on server 2016
-1. Disable NetBIOS for this address and click **OK**. Repeat this step for each IP resource if your solution spans multiple Azure VNets. 
-------------------------->
+    <!-----------------------Server 2016 ではこのオプションが表示されない
+    1. このアドレスに対して NetBIOS を無効にし、 **[OK]**をクリックします。 ソリューションが複数の Azure VNet にまたがる場合は、IP リソースごとにこの手順を繰り返します。 
+    ------------------------->
 
-#### <a name = "dependencyGroup"></a>SQL Server 可用性グループ リソースがクライアント アクセス ポイントに依存するよう設定する
+4. <a name = "dependencyGroup"></a>SQL Server 可用性グループ リソースがクライアント アクセス ポイントに依存するように設定します。
 
-1. フェールオーバー クラスター マネージャーで、**[ロール]**、可用性グループの順にクリックします。
+    a. フェールオーバー クラスター マネージャーで、**[ロール]**、可用性グループの順にクリックします。
 
-1. **[リソース]** タブで **[サーバー名]** の下にある可用性リソース グループを右クリックし、**[プロパティ]** をクリックします。 
+    b. **[その他のリソース]** の下の **[リソース]** タブで可用性リソース グループを右クリックし、**[プロパティ]** をクリックします。 
 
-1. [依存関係] タブで、名前リソースを追加します。 このリソースがクライアント アクセス ポイントになります。 
+    c. [依存関係] タブで、クライアント アクセス ポイント (リスナー) リソースの名前を追加します。
 
    ![IP リソース](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png) 
 
-1. **[OK]**をクリックします。
+    d. **[OK]**をクリックします。
 
-#### <a name="listname"></a>クライアント アクセス ポイント リソースが IP アドレスに依存するよう設定する
+5. <a name="listname"></a>クライアント アクセス ポイント リソースが IP アドレスに依存するように設定します。
 
-1. フェールオーバー クラスター マネージャーで、**[ロール]**、可用性グループの順にクリックします。 
+    a. フェールオーバー クラスター マネージャーで、**[ロール]**、可用性グループの順にクリックします。 
 
-1. **[リソース]** タブで **[サーバー名]** の下にあるクライアント アクセスポイント リソースを右クリックし、**[プロパティ]** をクリックします。 
+    b. **[リソース]** タブで **[サーバー名]** の下にあるクライアント アクセスポイント リソースを右クリックし、**[プロパティ]** をクリックします。 
 
    ![IP リソース](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
 
-1. **[依存関係]** タブをクリックします。 リスナー リソース名への依存関係を設定します。 複数のリソースが一覧表示される場合は、IP アドレスに OR (AND ではなく) 依存関係があることを確認します。 **[OK]**をクリックします。 
+    c. **[依存関係]** タブをクリックします。 IP アドレスが依存関係の要素であることを確認します。 そうでない場合は、IP アドレスへの依存関係を設定します。 複数のリソースが一覧表示される場合は、IP アドレスに OR (AND ではなく) 依存関係があることを確認します。 **[OK]**をクリックします。 
 
    ![IP リソース](./media/virtual-machines-ag-listener-configure/98-propertiesdependencies.png) 
 
-1. リスナー名を右クリックし、 **[オンラインにする]**をクリックします。 
+    d. リスナー名を右クリックし、**[オンラインにする]** をクリックします。 
 
-#### <a name="setparam"></a>PowerShell でクラスターのパラメーターを設定する
-
-1. いずれかの SQL Server に次の PowerShell スクリプトをコピーします。 環境に合わせて変数を更新してください。     
-   ```PowerShell
-   $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
-   $IPResourceName = "<IPResourceName>" # the IP Address resource name
-   $ILBIP = “<n.n.n.n>” # the IP Address of the Internal Load Balancer (ILB). This is the static IP address for the load balancer you configured in the Azure portal.
-   [int]$ProbePort = <nnnnn>
-
-   Import-Module FailoverClusters
-
-   Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
-   ```
-
-2. いずれかのクラスター ノード上で PowerShell スクリプトを実行して、クラスター パラメーターを設定します。  
-
-> [!NOTE]
-> SQL Server が別個のリージョンに存在する場合は、PowerShell スクリプトを 2 回実行する必要があります。 1 回目の実行では、1 番目のリージョンの `$ILBIP` と `$ProbePort` を使用します。 2 回目の実行では、2 番目のリージョンの `$ILBIP` と `$ProbePort` を使用します。 クラスター ネットワーク名とクラスター IP リソース名は同じものを使用します。 
+    >[!TIP]
+    >依存関係が正しく構成されていることを確認できます。 フェールオーバー クラスター マネージャーで [ロール] に移動します。次に、可用性グループを右クリックし、**[他の操作]** をクリックしてから、**[依存関係レポートの表示]** をクリックします。 依存関係が正しく構成されると、可用性グループはネットワーク名に依存し、ネットワーク名は IP アドレスに依存します。 
 
 
+6. <a name="setparam"></a>PowerShell でクラスターのパラメーターを設定します。
+    
+    a. いずれかの SQL Server インスタンスに次の PowerShell スクリプトをコピーします。 環境に合わせて変数を更新してください。     
+    
+    ```PowerShell
+    $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
+    $IPResourceName = "<IPResourceName>" # the IP Address resource name
+    $ILBIP = “<n.n.n.n>” # the IP Address of the Internal Load Balancer (ILB). This is the static IP address for the load balancer you configured in the Azure portal.
+    [int]$ProbePort = <nnnnn>
+    
+    Import-Module FailoverClusters
+    
+    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
+    ```
+
+    b. いずれかのクラスター ノード上で PowerShell スクリプトを実行して、クラスター パラメーターを設定します。  
+
+    > [!NOTE]
+    > SQL Server インスタンスが別個のリージョンに存在する場合は、PowerShell スクリプトを 2 回実行する必要があります。 1 回目の実行では、1 番目のリージョンの `$ILBIP` と `$ProbePort` を使用します。 2 回目の実行では、2 番目のリージョンの `$ILBIP` と `$ProbePort` を使用します。 クラスター ネットワーク名とクラスター IP リソース名は同じものを使用します。 

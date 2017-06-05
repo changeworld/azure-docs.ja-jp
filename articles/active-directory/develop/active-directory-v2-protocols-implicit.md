@@ -14,9 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
-translationtype: Human Translation
-ms.sourcegitcommit: ba958d029e5bf1bc914a2dff4b6c09282d578c67
-ms.openlocfilehash: 1ea1f54832a13b57caf3d6783e482fad4ba00781
+ms.custom: aaddev
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 2ac6f92d027c893316b6e310e4c3103ab0e51785
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -69,7 +72,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | --- | --- | --- |
 | テナント |必須 |要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。  使用できる値は、`common`、`organizations`、`consumers` およびテナント識別子です。  詳細については、 [プロトコルの基礎](active-directory-v2-protocols.md#endpoints)に関するページを参照してください。 |
 | client_id |必須 |登録ポータル ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) によってアプリに割り当てられたアプリケーション ID。 |
-| response_type |必須 |OpenID Connect サインインでは、 `id_token` を指定する必要があります。  response_type `token` が含まれる場合もあります。 ここで `token` を使用すると、アプリでは承認エンドポイントへ&2; 度目の要求を行うことなく、承認エンドポイントからアクセス トークンをすぐに受け取ることができます。  `token` response_type を使用する場合、`scope` パラメーターには、トークンを発行するリソースを示すスコープを含める必要があります。 |
+| response_type |必須 |OpenID Connect サインインでは、 `id_token` を指定する必要があります。  response_type `token` が含まれる場合もあります。 ここで `token` を使用すると、アプリでは承認エンドポイントへ 2 度目の要求を行うことなく、承認エンドポイントからアクセス トークンをすぐに受け取ることができます。  `token` response_type を使用する場合、`scope` パラメーターには、トークンを発行するリソースを示すスコープを含める必要があります。 |
 | redirect_uri |推奨 |アプリ の redirect_uri。アプリは、この URI で認証応答を送受信することができます。  ポータルで登録したいずれかの redirect_uri と完全に一致させる必要があります (ただし、URL エンコードが必要)。 |
 | scope |必須 |スコープのスペース区切りリスト。  OpenID Connect では、スコープとして `openid` を指定する必要があります。このスコープは、承認 UI で "サインイン" アクセス許可に変換されます。  必要に応じて、その他のユーザー データにアクセスするために `email` または `profile` [スコープ](active-directory-v2-scopes.md)を含めることも可能です。  さまざまなリソースに同意を求めるこの要求には、他のスコープが含まれていてもかまいません。 |
 | response_mode |推奨 |結果として得られたトークンをアプリに返す際に使用するメソッドを指定します。  暗黙的フローでは `fragment` を指定する必要があります。 |
@@ -122,7 +125,7 @@ error=access_denied
 ## <a name="validate-the-idtoken"></a>id_token を検証する
 単に id_token を受け取るだけでは、ユーザーを認証するには不十分です。id_token の署名を検証し、そのトークンに含まれる要求をアプリの要件に従って確認する必要があります。  v2.0 エンドポイントは、[JSON Web トークン (JWT)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) と公開キー暗号を使用してトークンに署名し、それらが有効であることを証明します。
 
-クライアント コードで `id_token` を検証することもできますが、`id_token` をバックエンド サーバーに送信して検証を実行するのが一般的な方法です。  id_token の署名を検証した後に、確認の必要な要求がいくつか存在します。  [トークンの検証](active-directory-v2-tokens.md#validating-tokens)と[署名キーのロールオーバーに関する重要な情報](active-directory-v2-tokens.md#validating-tokens)などの詳細については、「[v2.0 トークンのリファレンス](active-directory-v2-tokens.md)」を参照してください。  トークンの解析および検証には、ほとんどの言語とプラットフォームに少なくとも&1; つは用意されているライブラリを活用することをお勧めします。
+クライアント コードで `id_token` を検証することもできますが、`id_token` をバックエンド サーバーに送信して検証を実行するのが一般的な方法です。  id_token の署名を検証した後に、確認の必要な要求がいくつか存在します。  [トークンの検証](active-directory-v2-tokens.md#validating-tokens)と[署名キーのロールオーバーに関する重要な情報](active-directory-v2-tokens.md#validating-tokens)などの詳細については、「[v2.0 トークンのリファレンス](active-directory-v2-tokens.md)」を参照してください。  トークンの解析および検証には、ほとんどの言語とプラットフォームに少なくとも 1 つは用意されているライブラリを活用することをお勧めします。
 <!--TODO: Improve the information on this-->
 
 シナリオに応じてその他の要求も検証することができます。  以下に一般的な検証の例をいくつか挙げます。
@@ -219,29 +222,13 @@ Iframe 要求でこのエラーを受信した場合、ユーザーは対話形�
 `id_token` と `access_token` はどちらも短時間で期限切れになるため、トークンを定期的に更新するようにアプリを準備しておく必要があります。  どちらの種類のトークンを更新する場合も、Azure AD の動作を制御する `prompt=none` パラメーターを使用して、上記と同じ非表示の iframe 要求を実行できます。  新しい `id_token` を取得する場合は、`nonce` に加えて、必ず `response_type=id_token` と `scope=openid` を使用してください。
 
 ## <a name="send-a-sign-out-request"></a>サインアウト要求を送信する
-OpenIdConnect `end_session_endpoint` は現在、v2.0 エンドポイントではサポートされていません。 したがって、v2.0 エンドポイントに対しアプリから、ユーザーのセッションを終了し、v2.0 エンドポイントによって設定された Cookie をクリアする要求を送信することはできません。
-ユーザーをサインアウトさせるには、単にアプリ側でユーザーとのセッションを終了し、ユーザー側の v2.0 エンドポイントとのセッションは放置してください。  次回ユーザーがサインインしようとすると "アカウントの選択" ページが表示され、実際にサインインしているアカウントが一覧表示されます。
-そのページでユーザーは任意のアカウントを選んでサインアウトし、v2.0 エンドポイントとのセッションを終了することができます。
-
-<!--
-
-When you wish to sign the user out of the  app, it is not sufficient to clear your app's cookies or otherwise end the session with the user.  You must also redirect the user to the v2.0 endpoint for sign out.  If you fail to do so, the user will be able to re-authenticate to your app without entering their credentials again, because they will have a valid single sign-on session with the v2.0 endpoint.
-
-You can simply redirect the user to the `end_session_endpoint` listed in the OpenID Connect metadata document:
+OpenIdConnect の `end_session_endpoint` により、ユーザーのセッションを終了し、v2.0 エンドポイントによって設定された Cookie をクリアする要求を、アプリから v2.0 エンドポイントに送信することができます。  ユーザーが Web アプリケーションから完全にサインアウトするには、アプリがユーザーとのセッションを終了し (通常、トークン キャッシュをクリアするか Cookie を切断する)、ブラウザーを以下にリダイレクトする必要があります。
 
 ```
-GET https://login.microsoftonline.com/common/oauth2/v2.0/logout?
-post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
+https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redirect_uri=https://localhost/myapp/
 ```
 
-| Parameter | | Description |
-| ----------------------- | ------------------------------- | ------------ |
-| post_logout_redirect_uri | recommended | The URL which the user should be redirected to after successful logout.  If not included, the user will be shown a generic message by the v2.0 endpoint.  |
-
--->
-
-
-
-<!--HONumber=Jan17_HO4-->
-
-
+| パラメーターが含まれる必要があります。 |  | Description |
+| --- | --- | --- |
+| テナント |必須 |要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。  使用できる値は、`common`、`organizations`、`consumers` およびテナント識別子です。  詳細については、 [プロトコルの基礎](active-directory-v2-protocols.md#endpoints)に関するページを参照してください。 |
+| post_logout_redirect_uri | 推奨 | ログアウト完了後にユーザーが戻る URL。 この値は、アプリケーションに登録されているリダイレクト URI のいずれかと一致する必要があります。 一致しない場合、v2.0 エンドポイントにより汎用メッセージが表示されます。 |

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 5/10/2017
 ms.author: johnkem
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: c0e7eb271b7ab19131c500e139ea3b1f6b2e7479
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: ff47eaa27351f8d1685090edc54d90e5e91a1de0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -623,6 +623,63 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |AMLCalloutRequests|関数の要求|カウント|合計|関数の要求|
 |AMLCalloutFailedRequests|失敗した関数の要求|カウント|合計|失敗した関数の要求|
 |AMLCalloutInputEvents|関数のイベント|カウント|合計|関数のイベント|
+
+## <a name="microsoftwebserverfarms"></a>Microsoft.Web/serverfarms
+
+|メトリック|メトリックの表示名|単位|集計の種類|Description|
+|---|---|---|---|---|
+|CpuPercentage|CPU の割合|Percent|平均|CPU の割合|
+|MemoryPercentage|メモリの割合|Percent|平均|メモリの割合|
+|DiskQueueLength|ディスク キューの長さ|カウント|合計|ディスク キューの長さ|
+|HttpQueueLength|HTTP キューの長さ|カウント|合計|HTTP キューの長さ|
+|BytesReceived|受信データ|Bytes|合計|受信データ|
+|BytesSent|送信データ|Bytes|合計|送信データ|
+
+## <a name="microsoftwebsites-including-functions"></a>Microsoft.Web/sites (関数を含みます)
+
+|メトリック|メトリックの表示名|単位|集計の種類|Description|
+|---|---|---|---|---|
+|CpuTime|CPU 時間|Seconds|合計|CPU 時間|
+|要求数|要求数|カウント|合計|要求数|
+|BytesReceived|受信データ|Bytes|合計|受信データ|
+|BytesSent|送信データ|Bytes|合計|送信データ|
+|Http101|Http 101|カウント|合計|Http 101|
+|Http2xx|HTTP 2xx|カウント|合計|HTTP 2xx|
+|Http3xx|HTTP 3xx|カウント|合計|HTTP 3xx|
+|Http401|HTTP 401|カウント|合計|HTTP 401|
+|Http403|HTTP 403|カウント|合計|HTTP 403|
+|Http404|HTTP 404|カウント|合計|HTTP 404|
+|Http406|HTTP 406|カウント|合計|HTTP 406|
+|Http4xx|HTTP 4xx|カウント|合計|HTTP 4xx|
+|Http5xx|HTTP サーバー エラー|カウント|合計|HTTP サーバー エラー|
+|MemoryWorkingSet|メモリ ワーキング セット|バイト|平均|メモリ ワーキング セット|
+|AverageMemoryWorkingSet|平均メモリ ワーキング セット|Bytes|平均|平均メモリ ワーキング セット|
+|AverageResponseTime|平均応答時間|Seconds|平均|平均応答時間|
+|FunctionExecutionUnits|関数の実行単位|カウント|平均|関数の実行単位|
+|FunctionExecutionCount|関数の実行回数|カウント|平均|関数の実行回数|
+
+## <a name="microsoftwebsitesslots"></a>Microsoft.Web/sites/slots
+
+|メトリック|メトリックの表示名|単位|集計の種類|Description|
+|---|---|---|---|---|
+|CpuTime|CPU 時間|Seconds|合計|CPU 時間|
+|要求数|要求数|カウント|合計|要求数|
+|BytesReceived|受信データ|Bytes|合計|受信データ|
+|BytesSent|送信データ|Bytes|合計|送信データ|
+|Http101|Http 101|カウント|合計|Http 101|
+|Http2xx|HTTP 2xx|カウント|合計|HTTP 2xx|
+|Http3xx|HTTP 3xx|カウント|合計|HTTP 3xx|
+|Http401|HTTP 401|カウント|合計|HTTP 401|
+|Http403|HTTP 403|カウント|合計|HTTP 403|
+|Http404|HTTP 404|カウント|合計|HTTP 404|
+|Http406|HTTP 406|カウント|合計|HTTP 406|
+|Http4xx|HTTP 4xx|カウント|合計|HTTP 4xx|
+|Http5xx|HTTP サーバー エラー|カウント|合計|HTTP サーバー エラー|
+|MemoryWorkingSet|メモリ ワーキング セット|バイト|平均|メモリ ワーキング セット|
+|AverageMemoryWorkingSet|平均メモリ ワーキング セット|Bytes|平均|平均メモリ ワーキング セット|
+|AverageResponseTime|平均応答時間|Seconds|平均|平均応答時間|
+|FunctionExecutionUnits|関数の実行単位|カウント|平均|関数の実行単位|
+|FunctionExecutionCount|関数の実行回数|カウント|平均|関数の実行回数|
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Monitor のメトリックを確認します](monitoring-overview-metrics.md)

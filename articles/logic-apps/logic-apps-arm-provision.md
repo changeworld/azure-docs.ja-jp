@@ -13,10 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2016
-ms.author: mandia
-translationtype: Human Translation
+ms.author: LADocs; mandia
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2f407a428aa176cc5c2a3b6bb236b522bda5ab64
 ms.openlocfilehash: 1305fdc4cf87905eef701ec5471d6329006c2b5f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -109,10 +111,5 @@ ms.openlocfilehash: 1305fdc4cf87905eef701ec5471d6329006c2b5f
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json -g ExampleDeployGroup
 
 
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

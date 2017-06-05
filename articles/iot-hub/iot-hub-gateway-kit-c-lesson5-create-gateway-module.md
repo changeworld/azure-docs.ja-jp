@@ -17,15 +17,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
-ms.sourcegitcommit: 027597c73d7282ef929363bab904e7d3d423d3d4
-ms.openlocfilehash: db2757015cf8e821cffcfe39bcbd1559c23fc7ed
-ms.lasthandoff: 02/23/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 5e28422158684c3aaf0ac3fdf5b19c80fbccfb02
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="lesson-5-create-your-first-azure-iot-gateway-module"></a>レッスン 5: 初めての Azure IoT Gateway モジュールの作成
-Gateway SDK を使用すると、Java、.NET、または Node.js で記述されたモジュールを作成できますが、このチュートリアルでは、C 言語でモジュールを構築する手順を説明します。
+Azure IoT Edge を使用すると、Java、.NET、または Node.js で記述されたモジュールを作成できますが、このチュートリアルでは、C 言語でモジュールを構築する手順を説明します。
 
 ## <a name="what-you-will-do"></a>学習内容
 
@@ -41,7 +42,7 @@ Gateway SDK を使用すると、Java、.NET、または Node.js で記述され
 
 ## <a name="what-you-need"></a>必要なもの
 
-ホスト コンピューターにインストールされている Azure IoT Gateway SDK。
+ホスト コンピューターにインストールされている Azure IoT Edge。
 
 ## <a name="folder-structure"></a>フォルダー構造
 
@@ -54,7 +55,7 @@ Gateway SDK を使用すると、Java、.NET、または Node.js で記述され
 
 ## <a name="compile-and-run-the-helloworld-sample-app-on-intel-nuc"></a>Intel NUC で hello_world サンプル アプリをコンパイルして実行する
 
-`hello_world` サンプルは、アプリに関連付けられた&2; つの事前定義モジュールを指定する `hello_world.json` ファイルに基づいてゲートウェイを作成します。 ゲートウェイは、5 秒ごとに "hello world" メッセージをファイルに記録します。 このセクションでは、既定のモジュールで `hello_world` アプリをコンパイルして実行します。
+`hello_world` サンプルは、アプリに関連付けられた 2 つの事前定義モジュールを指定する `hello_world.json` ファイルに基づいてゲートウェイを作成します。 ゲートウェイは、5 秒ごとに "hello world" メッセージをファイルに記録します。 このセクションでは、既定のモジュールで `hello_world` アプリをコンパイルして実行します。
 
 `hello_world` アプリをコンパイルして実行するには、ホスト コンピューターで次の手順を実行します。
 
@@ -103,7 +104,7 @@ Gateway SDK を使用すると、Java、.NET、または Node.js で記述され
 
 ここでは、新しいモジュールを作成し、Intel NUC でコンパイルする手順を示します。 このモジュールを実行すると、受信したメッセージがタイムスタンプと共に出力されます。 このセクションでは、初めてのカスタマイズされたゲートウェイ モジュールを作成します。
 
-すべての Azure IoT Gateway SDK モジュールは、次のインターフェイスを実装する必要があります。
+すべての Azure IoT Edge モジュールは、次のインターフェイスを実装する必要があります。
 
    ```C
    pfModule_ParseConfigurationFromJson Module_ParseConfigurationFromJson

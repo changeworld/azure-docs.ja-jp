@@ -13,20 +13,27 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: 
 ms.topic: article
-ms.date: 05/01/2017
+ms.date: 05/02/2017
 ms.author: iainfou
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: bbd4f044d85f2e22f27edc44b91fd42aef304ed2
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 8a5f6e8bf01c8bc38f3fd327acd0ddc8f9cdd7de
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/09/2017
 
 ---
 
 # <a name="create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows"></a>仮想マシン スケール セットを作成して Windows に高可用性アプリをデプロイする
-このチュートリアルでは、Azure で仮想マシン スケール セットを使うことにより、アプリを実行する仮想マシン (VM) の数をすばやく拡張する方法について説明します。 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU の使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケーリングするルールを定義したりできます。 実際に動いている仮想マシン スケール セットを確認するため、複数の Windows VM で動作する基本的な IIS Web サイトを作成します。
+仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU の使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケーリングするルールを定義したりできます。 このチュートリアルでは、仮想マシン スケール セットを Azure にデプロイします。 学習内容は次のとおりです。
 
-このチュートリアルの手順は、最新バージョンの [Azure PowerShell](/powershell/azureps-cmdlets-docs/) モジュールを使用して行うことができます。
+> [!div class="checklist"]
+> * カスタム スクリプト拡張機能を使用して、スケールする IIS サイトを定義する
+> * スケール セットのロード バランサーを作成する
+> * 仮想マシン スケール セットを作成する
+> * スケール セット内のインスタンスの数を増減させる
+> * 自動スケール ルールを作成する
+
+このチュートリアルには、Azure PowerShell モジュール バージョン 3.6 以降が必要です。 バージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
 
 
 ## <a name="scale-set-overview"></a>スケール セットの概要
@@ -38,10 +45,10 @@ Azure プラットフォーム イメージを使う場合、スケール セッ
 
 
 ## <a name="create-an-app-to-scale"></a>スケーリングするアプリを作成する
-スケール セットを作成する前に、[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) を使用してリソース グループを作成します。 次の例では、*myResourceGroupAutomate* という名前のリソース グループを場所 *westus* に作成します。
+スケール セットを作成する前に、[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) を使用してリソース グループを作成します。 次の例では、*myResourceGroupAutomate* という名前のリソース グループを場所 *EastUS* に作成します。
 
 ```powershell
-New-AzureRmResourceGroup -ResourceGroupName myResourceGroupScaleSet -Location westus
+New-AzureRmResourceGroup -ResourceGroupName myResourceGroupScaleSet -Location EastUS
 ```
 
 少し前のチュートリアルでは、カスタム スクリプト拡張機能を使用して [VM の構成を自動化](tutorial-automate-vm-deployment.md)する方法を説明しました。 IIS をインストールして構成するには、スケール セットの構成を作成したのち、カスタム スクリプト拡張機能を適用します。
@@ -49,7 +56,7 @@ New-AzureRmResourceGroup -ResourceGroupName myResourceGroupScaleSet -Location we
 ```powershell
 # Create a config object
 $vmssConfig = New-AzureRmVmssConfig `
-    -Location WestUS `
+    -Location EastUS `
     -SkuCapacity 2 `
     -SkuName Standard_DS2 `
     -UpgradePolicyMode Automatic
@@ -78,7 +85,7 @@ Azure Load Balancer は、着信トラフィックを正常な VM に分散す�
 # Create a public IP address
 $publicIP = New-AzureRmPublicIpAddress `
   -ResourceGroupName myResourceGroupScaleSet `
-  -Location westus `
+  -Location EastUS `
   -AllocationMethod Static `
   -Name myPublicIP
 
@@ -92,7 +99,7 @@ $backendPool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name myBackEndPo
 $lb = New-AzureRmLoadBalancer `
   -ResourceGroupName myResourceGroupScaleSet `
   -Name myLoadBalancer `
-  -Location westus `
+  -Location EastUS `
   -FrontendIpConfiguration $frontendIP `
   -BackendAddressPool $backendPool
 
@@ -142,7 +149,7 @@ $subnet = New-AzureRmVirtualNetworkSubnetConfig `
 $vnet = New-AzureRmVirtualNetwork `
   -ResourceGroupName "myResourceGroupScaleSet" `
   -Name "myVnet" `
-  -Location "westus" `
+  -Location "EastUS" `
   -AddressPrefix 10.0.0.0/16 `
   -Subnet $subnet
 $ipConfig = New-AzureRmVmssIpConfig `
@@ -194,7 +201,7 @@ $scaleset = Get-AzureRmVmss `
   -VMScaleSetName myScaleSet
 
 # Loop through the instanaces in your scale set
-for ($i=0; $i -le ($set.Sku.Capacity - 1); $i++) {
+for ($i=0; $i -le ($scaleset.Sku.Capacity - 1); $i++) {
     Get-AzureRmVmssVM -ResourceGroupName myResourceGroupScaleSet `
       -VMScaleSetName myScaleSet `
       -InstanceId $i
@@ -284,6 +291,17 @@ Add-AzureRmAutoscaleSetting `
 
 
 ## <a name="next-steps"></a>次のステップ
-このチュートリアルでは、仮想マシン スケール セットの作成方法を説明しました。 次のチュートリアルでは、仮想マシンでの負荷分散の概念について詳しく説明します。
+このチュートリアルでは、仮想マシン スケール セットを作成しました。 以下の方法について学習しました。
 
-[仮想マシンを負荷分散する](tutorial-load-balancer.md)
+> [!div class="checklist"]
+> * カスタム スクリプト拡張機能を使用して、スケールする IIS サイトを定義する
+> * スケール セットのロード バランサーを作成する
+> * 仮想マシン スケール セットを作成する
+> * スケール セット内のインスタンスの数を増減させる
+> * 自動スケール ルールを作成する
+
+次のチュートリアルでは、仮想マシンでの負荷分散の概念について詳しく説明します。
+
+> [!div class="nextstepaction"]
+> [仮想マシンを負荷分散する](tutorial-load-balancer.md)
+

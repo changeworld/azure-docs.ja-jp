@@ -12,12 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2017
+ms.date: 05/04/2017
 ms.author: abnarain
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: dfa78d1773afd0094ff98a5761a771101016ee13
-ms.lasthandoff: 03/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 01f3ef6d0e8e43e702b8292a7c215d3df58817f2
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -138,7 +139,7 @@ Data Management Gateway は、次の方法でインストールすることが�
 | --- | --- | --- |
 | *.servicebus.windows.net |443、80 |Data Movement Service のバックエンドとの通信に使用 |
 | *.core.windows.net |443 |Azure BLOB を使用した段階的なコピーに使用 (構成されている場合)|
-| *frontend.clouddatahub.net |443 |Data Movement Service のバックエンドとの通信に使用 |
+| *. frontend.clouddatahub.net |443 |Data Movement Service のバックエンドとの通信に使用 |
 
 
 Windows のファイアウォール レベルでは、通常これらの送信ポートが有効になっています。 有効でない場合は、ゲートウェイ コンピューターに応じたドメインとポートを構成することができます。
@@ -425,7 +426,7 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. Azure PowerShell で、**C:\Program Files\Microsoft Data Management Gateway\2.0\PowerShellScript\** フォルダーに移動します。次のコマンドに示すように、ローカル変数 **$Key** に関連付けられた**RegisterGateway.ps1** スクリプトを実行します。 このスクリプトは、コンピューターにインストールされているクライアント エージェントを、前に作成した論理ゲートウェイに登録します。
+1. Azure PowerShell で、**C:\Program Files\Microsoft Data Management Gateway\2.0\PowerShellScript\** フォルダーに移動します。 次のコマンドに示すように、ローカル変数 **$Key*** に関連付けられた **RegisterGateway.ps1** スクリプトを実行します。 このスクリプトは、コンピューターにインストールされているクライアント エージェントを、前に作成した論理ゲートウェイに登録します。
 
     ```PowerShell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key

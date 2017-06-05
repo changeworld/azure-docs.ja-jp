@@ -3,7 +3,7 @@ title: Azure Application Insights for ASP.NET Core | Microsoft Docs
 description: "Web アプリケーションの可用性、パフォーマンス、使用状況を監視します。"
 services: application-insights
 documentationcenter: .net
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 3b722e47-38bd-4667-9ba4-65b7006c074c
 ms.service: application-insights

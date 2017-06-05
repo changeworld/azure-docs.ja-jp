@@ -13,38 +13,46 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/25/2017
+ms.date: 05/02/2017
 ms.author: nepeters
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: bcb075b320bab942c6421be72ea1445d5fa3f603
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: e22fa4ed45ffaed1a05292e9b86d5cebc0079117
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/17/2017
 
 ---
 
 # <a name="create-and-manage-linux-vms-with-the-azure-cli"></a>Azure CLI を使用した Linux VM の作成と管理
 
-このチュートリアルでは、VM サイズや VM イメージの選択および VM のデプロイなど、Azure 仮想マシンの作成に関する基本事項について説明します。 また、状態の管理や VM の削除およびサイズ変更といった基本的な管理操作についても説明します。
+Azure 仮想マシンは、完全に構成可能で柔軟なコンピューティング環境を提供します。 このチュートリアルでは、VM サイズや VM イメージの選択、VM のデプロイなどの Azure 仮想マシンのデプロイに関する基本事項について説明します。 学習内容は次のとおりです。
 
-このチュートリアルの手順は、最新バージョンの [Azure CLI 2.0](/cli/azure/install-azure-cli) を使用して行うことができます。
+> [!div class="checklist"]
+> * VM を作成して VM に接続する
+> * VM イメージを選択して使用する
+> * 特定の VM サイズを確認して使用する
+> * VM のサイズを変更する
+> * VM の状態の表示して理解する
+
+このチュートリアルには、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 アップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 ブラウザーから [Cloud Shell](/azure/cloud-shell/quickstart) を使用することもできます。
 
 ## <a name="create-resource-group"></a>Create resource group
 
 [az group create](https://docs.microsoft.com/cli/azure/group#create) コマンドでリソース グループを作成します。 
 
-Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 仮想マシンの前にリソース グループを作成する必要があります。 この例では、`myResourceGroupVM` という名前のリソース グループが `westus` リージョンに作成されます。 
+Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 仮想マシンの前にリソース グループを作成する必要があります。 この例では、*myResourceGroupVM* という名前のリソース グループが *eastus* リージョンに作成されます。 
 
 ```azurecli
-az group create --name myResourceGroupVM --location westus
+az group create --name myResourceGroupVM --location eastus
 ```
 
-チュートリアルの各手順で示しているように、VM の作成時や変更時にはこのリソース グループを指定します。
+このチュートリアル全体で示しているように、VM の作成時または変更時にリソース グループを指定します。
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 
 仮想マシンを作成するには、[az vm create](https://docs.microsoft.com/cli/azure/vm#create) コマンドを使用します。 
 
-仮想マシンを作成するときに、オペレーティング システム イメージ、ディスクのサイズ、管理者資格情報など、いくつかの選択肢があります。 この例では、Ubuntu Server を実行する `myVM` という名前の仮想マシンを作成します。 
+仮想マシンを作成するときに、オペレーティング システム イメージ、ディスクのサイズ、管理者資格情報など、いくつかの選択肢があります。 この例では、Ubuntu Server を実行する *myVM* という名前の仮想マシンを作成します。 
 
 ```azurecli
 az vm create --resource-group myResourceGroupVM --name myVM --image UbuntuLTS --generate-ssh-keys
@@ -56,7 +64,7 @@ VM が作成されると、Azure CLI で VM に関する以下の情報が出力
 {
   "fqdns": "",
   "id": "/subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroupVM/providers/Microsoft.Compute/virtualMachines/myVM",
-  "location": "westus",
+  "location": "eastus",
   "macAddress": "00-0D-3A-23-9A-49",
   "powerState": "VM running",
   "privateIpAddress": "10.0.0.4",
@@ -81,7 +89,7 @@ exit
 
 ## <a name="understand-vm-images"></a>VM イメージについて
 
-Azure Marketplace には、新しい VM の作成に使用できるさまざまなイメージが用意されています。 前の手順では、Ubuntu のイメージを使用して仮想マシンを作成しました。 この手順では、Azure CLI を使用して Marketplace で CentOS のイメージを検索し、このイメージを使用して 2 台目の仮想マシンをデプロイします。  
+Azure Marketplace には、VM の作成に使用できる多くのイメージが用意されています。 前の手順では、Ubuntu のイメージを使用して仮想マシンを作成しました。 この手順では、Azure CLI を使用して Marketplace で CentOS のイメージを検索し、このイメージを使用して 2 台目の仮想マシンをデプロイします。  
 
 [az vm image list](/cli/azure/vm/image#list) コマンドを使用して、よく使用されるイメージのリストを表示します。
 
@@ -107,7 +115,7 @@ Debian         credativ                8                   credativ:Debian:8:lat
 CoreOS         CoreOS                  Stable              CoreOS:CoreOS:Stable:latest                                     CoreOS               latest
 ```
 
-`--all` 引数を追加すると、リスト全体を確認できます。 また、`--publisher` か `–offer` を使用してリストをフィルタリングすることも可能です。 この例では、`CentOS` に一致するプランがあるすべてのイメージを表示するように、リストをフィルタリングします。 
+`--all` 引数を追加すると、リスト全体を確認できます。 また、`--publisher` か `–-offer` を使用してリストをフィルタリングすることも可能です。 この例では、*CentOS* に一致するプランがあるすべてのイメージを表示するように、リストをフィルター処理します。 
 
 ```azurecli
 az vm image list --offer CentOS --all --output table
@@ -126,7 +134,7 @@ CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20160309     
 CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20170207       6.5.20170207
 ```
 
-イメージを指定して VM をデプロイするために、`Urn` 列の値を記録します。 イメージを指定するときにイメージのバージョン数を "latest" で置き換えることもできます。このようにすると、ディストリビューションの最新バージョンが選択されます。 この例では、`--image` 引数を使用して、CentOS 6.5 イメージの最新バージョンを指定します。  
+特定のイメージを使用して VM をデプロイするために、*Urn* 列の値を書き留めておきます。 イメージを指定するときにイメージのバージョン数を "latest" で置き換えることもできます。このようにすると、ディストリビューションの最新バージョンが選択されます。 この例では、`--image` 引数を使用して、CentOS 6.5 イメージの最新バージョンを指定します。  
 
 ```azurecli
 az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:CentOS:6.5:latest --generate-ssh-keys
@@ -138,16 +146,16 @@ az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:C
 
 ### <a name="vm-sizes"></a>VM サイズ
 
-次の表に、各サイズをユース ケース別に示します。  
+次の表は、ユース ケース別にサイズを分類したものです。  
 
-| 型                     | サイズ           |    Description       |
+| 型                     | サイズ           |    説明       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [汎用](sizes-general.md)         |DSv2、Dv2、DS、D、Av2、A0 ～ 7| CPU とメモリのバランスがとれています。 開発/テスト環境や、小中規模のアプリケーションとデータ ソリューションに最適です。  |
 | [コンピューティングの最適化](sizes-compute.md)   | Fs、F             | メモリに対する CPU の比が大きくなっています。 トラフィックが中程度のアプリケーション、ネットワーク アプライアンス、バッチ処理に適しています。        |
 | [メモリの最適化](../virtual-machines-windows-sizes-memory.md)    | GS、G、DSv2、DS、Dv2、D   | コアに対するメモリの比が大きくなっています。 リレーショナル データベース、中から大規模のキャッシュ、およびインメモリ分析に適しています。                 |
 | [ストレージの最適化](../virtual-machines-windows-sizes-storage.md)      | Ls                | 高いディスク スループットと IO。 ビッグ データ、SQL、および NoSQL のデータベースに最適です。                                                         |
 | [GPU](sizes-gpu.md)          | NV、NC            | 負荷の高いグラフィック処理やビデオ編集に特化した VM です。       |
-| [高性能](sizes-hpc.md) | H、A8 ～ 11          | 最も強力な CPU を備え、オプションで高スループットのネットワーク インターフェイス (RDMA) も搭載可能な VM です。 
+| [高性能](sizes-hpc.md) | H、A8 ～ 11          | オプションで高スループットのネットワーク インターフェイス (RDMA) を備えた、最も強力な CPU VM です。 
 
 
 ### <a name="find-available-vm-sizes"></a>使用可能な VM サイズを確認する
@@ -155,7 +163,7 @@ az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:C
 特定の地域で利用可能な VM サイズのリストを確認するには、[az vm list-sizes](/cli/azure/vm#list-sizes) コマンドを使用します。 
 
 ```azurecli
-az vm list-sizes --location westus --output table
+az vm list-sizes --location eastus --output table
 ```
 
 出力の一部を次に示します。
@@ -186,7 +194,12 @@ az vm list-sizes --location westus --output table
 上記の VM 作成の例ではサイズを指定しなかったため、サイズは既定のものになっています。 VM のサイズは、作成時に `--size` 引数を付けて [az vm create](/cli/azure/vm#create) を使用することで指定できます。 
 
 ```azurecli
-az vm create --resource-group myResourceGroupVM --name myVM3 --image UbuntuLTS --size Standard_F4s --generate-ssh-keys
+az vm create \
+    --resource-group myResourceGroupVM \
+    --name myVM3 \
+    --image UbuntuLTS \
+    --size Standard_F4s \
+    --generate-ssh-keys
 ```
 
 ### <a name="resize-a-vm"></a>VM のサイズを変更する
@@ -224,13 +237,13 @@ az vm start --resource-group myResourceGroupVM --name myVM
 
 ## <a name="vm-power-states"></a>VM の電源の状態
 
-Azure VM にはさまざまな電源状態があり、そのうちの 1 つが設定されます。 この状態は、ハイパーバイザーから見た VM の現在の状態を表しています。 
+Azure VM は、さまざまな電源状態のいずれかになります。 この状態は、ハイパーバイザーから見た VM の現在の状態を表しています。 
 
 ### <a name="power-states"></a>電源の状態
 
-| 電源の状態 | Description
+| 電源の状態 | 説明
 |----|----|
-| Starting | 仮想マシンが起動中であることを示します。 |
+| 開始中 | 仮想マシンが起動中であることを示します。 |
 | 実行中 | 仮想マシンが実行中であることを示します。 |
 | 停止中 | 仮想マシンが停止中であることを示します。 | 
 | 停止済み | 仮想マシンが停止されていることを示します。 仮想マシンが停止済みの状態でも、コンピューティング料金は発生します。  |
@@ -243,7 +256,10 @@ Azure VM にはさまざまな電源状態があり、そのうちの 1 つが�
 特定の VM の状態を取得するには、[az vm get instance-view](/cli/azure/vm#get-instance-view) コマンドを使用します。 必ず仮想マシンとリソース グループの有効な名前を指定してください。 
 
 ```azurecli
-az vm get-instance-view --name myVM --resource-group myResourceGroupVM --query instanceView.statuses[1] --output table
+az vm get-instance-view \
+    --name myVM \
+    --resource-group myResourceGroupVM \
+    --query instanceView.statuses[1] --output table
 ```
 
 出力:
@@ -278,7 +294,7 @@ az vm stop --resource-group myResourceGroupVM --name myVM
 az vm start --resource-group myResourceGroupVM --name myVM
 ```
 
-### <a name="delete-resource-group"></a>Delete resource group
+### <a name="delete-resource-group"></a>リソース グループの削除
 
 リソース グループを削除すると、そこに含まれているリソースもすべて削除されます。
 
@@ -288,6 +304,17 @@ az group delete --name myResourceGroupVM --no-wait --yes
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、基本的な VM の作成と管理について説明しました。 次のチュートリアルに進み、VM ディスクの詳細を確認してください。  
+このチュートリアルでは、次のような基本的な VM の作成と管理を実行する方法について説明しました。
 
-[VM ディスクの作成と管理](./tutorial-manage-disks.md)
+> [!div class="checklist"]
+> * VM を作成して VM に接続する
+> * VM イメージを選択して使用する
+> * 特定の VM サイズを確認して使用する
+> * VM のサイズを変更する
+> * VM の状態の表示して理解する
+
+次のチュートリアルに進み、VM ディスクについて確認してください。  
+
+> [!div class="nextstepaction"]
+> [VM ディスクの作成と管理](./tutorial-manage-disks.md)
+

@@ -14,13 +14,15 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: fbf77e9848ce371fd8d02b83275eb553d950b0ff
-ms.openlocfilehash: c9f2e3beafd19e0d4d62e409a80da336be17b90b
-ms.lasthandoff: 02/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: c54a1ed648022875f489179a3321dedf2d290d7e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
+
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-portal"></a>チュートリアル: Azure Portal を使用した初めての Azure データ ファクトリの作成
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-build-your-first-pipeline.md)
@@ -31,12 +33,14 @@ ms.lasthandoff: 02/03/2017
 > * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
 
-この記事では、 [Azure ポータル](https://portal.azure.com/) を使用して最初の Azure データ ファクトリを作成する方法について説明します。 その他のツールや SDK を使用してチュートリアルを行うには、ドロップダウン リストでいずれかのオプションを選択します。 
+この記事では、[Azure Portal](https://portal.azure.com/) を使用して最初の Azure データ ファクトリを作成する方法について説明します。 その他のツールや SDK を使用してチュートリアルを行うには、ドロップダウン リストでいずれかのオプションを選択します。 
+
+このチュートリアルのパイプラインには、1 つのアクティビティ (**HDInsight Hive アクティビティ**) が含まれます。 このアクティビティは、入力データを変換して出力データを生成する Hive スクリプトを Azure HDInsight クラスターで実行します。 このパイプラインは、指定した開始時刻と終了時刻の間で、月 1 回実行されるようスケジュールされています。 
 
 > [!NOTE]
-> このチュートリアルのデータ パイプラインでは、入力データを変換して出力データを生成します。 データをソース データ ストアからターゲット データ ストアにコピーするのではありません。 Azure Data Factory を使用してデータをコピーする方法のチュートリアルについては、[Blob Storage から SQL Database へのデータのコピーのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関するページを参照してください。
+> このチュートリアルのデータ パイプラインでは、入力データを変換して出力データを生成します。 Azure Data Factory を使用してデータをコピーする方法のチュートリアルについては、[Blob Storage から SQL Database へのデータのコピーのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関するページを参照してください。
 > 
-> 2 つのアクティビティを連鎖させる (アクティビティを連続的に実行する) には、一方のアクティビティの出力データセットを、もう一方のアクティビティの入力データセットとして指定します。 詳細については、[Data Factory でのスケジュールと実行](data-factory-scheduling-and-execution.md)に関するページを参照してください。 
+> 1 つのパイプラインには複数のアクティビティを含めることができます。 また、1 つのアクティビティの出力データセットを別のアクティビティの入力データセットとして指定することで、2 つのアクティビティを連鎖させる (アクティビティを連続的に実行する) ことができます。 詳細については、[Data Factory のスケジュール設定と実行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 1. 「 [チュートリアルの概要](data-factory-build-your-first-pipeline.md) 」に目を通し、 **前提条件** の手順を完了する必要があります。
@@ -61,13 +65,15 @@ ms.lasthandoff: 02/03/2017
    >
 4. データ ファクトリを作成する **Azure サブスクリプション** を選択します。
 5. 既存の **リソース グループ** を選択するか、新しいリソース グループを作成します。 このチュートリアルでは、 **ADFGetStartedRG**という名前のリソース グループを作成します。
-6. **[新しい Data Factory]** ブレードで **[作成]** をクリックします。
+6. データ ファクトリの **場所** を選択します。 Data Factory サービスによってサポートされているリージョンのみ、ドロップダウン リストに表示されます。
+7. **[ダッシュボードにピン留めする]** をオンにします。 
+8. **[新しい Data Factory]** ブレードで **[作成]** をクリックします。
 
    > [!IMPORTANT]
    > Data Factory インスタンスを作成するには、サブスクリプション/リソース グループ レベルで [Data Factory の共同作業者](../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) ロールのメンバーである必要があります。
    >
    >
-7. 次のように、Azure ポータルの **スタート画面** にデータ ファクトリを作成中であることが示されます。   
+7. ダッシュボードに、[Deploying data factory]\(データ ファクトリをデプロイしています\) というステータスを示したタイルが表示されます。    
 
    ![Data factory を作成中の状態](./media/data-factory-build-your-first-pipeline-using-editor/creating-data-factory-image.png)
 8. ご利用ありがとうございます。 これで、最初のデータ ファクトリが正常に作成されました。 データ ファクトリが正常に作成されると、データ ファクトリの内容を表示するデータ ファクトリ ページが表示されます。     
@@ -114,7 +120,6 @@ ms.lasthandoff: 02/03/2017
       "properties": {
         "type": "HDInsightOnDemand",
         "typeProperties": {
-          "version": "3.2",
           "clusterSize": 1,
           "timeToLive": "00:30:00",
           "linkedServiceName": "AzureStorageLinkedService"
@@ -125,9 +130,8 @@ ms.lasthandoff: 02/03/2017
 
     次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-   | プロパティ | 説明 |
+   | プロパティ | Description |
    |:--- |:--- |
-   | バージョン |作成された HDInsight のバージョンが 3.2 になるように指定します。 |
    | ClusterSize |HDInsight クラスターのサイズを指定します。 |
    | TimeToLive |削除されるまでの HDInsight クラスターのアイドル時間を指定します。 |
    | linkedServiceName |HDInsight によって生成されるログを保存するために使用されるストレージ アカウントを指定します。 |
@@ -184,13 +188,16 @@ ms.lasthandoff: 02/03/2017
 
    | プロパティ | 説明 |
    |:--- |:--- |
-   | type |データは Azure Blob Storage に存在するため、type プロパティを AzureBlob に設定しています。 |
-   | linkedServiceName |前に作成した AzureStorageLinkedService を参照します。 |
-   | fileName |このプロパティは省略可能です。 このプロパティを省略した場合は、folderPath のすべてのファイルが取得されます。 このチュートリアルでは、input.log のみが処理されます。 |
-   | type |ログ ファイルはテキスト形式です。そのため、TextFormat を使用します。 |
-   | columnDelimiter |ログ ファイル内の列はコンマ (,) で区切られています。 |
-   | frequency/interval |frequency を Month に設定し、interval を 1 に設定しています。そのため、入力スライスは 1 か月ごとになります。 |
-   | 外部 |Data Factory サービスによって入力データが生成されない場合は、このプロパティを true に設定します。 |
+   | type |データは Azure Blob Storage に存在するため、type プロパティを **AzureBlob** に設定しています。 |
+   | linkedServiceName |前に作成した **AzureStorageLinkedService** を参照します。 |
+   | folderPath | BLOB **コンテナー**と、入力 BLOB を格納する**フォルダー**を指定します。 | 
+   | fileName |このプロパティは省略可能です。 このプロパティを省略した場合は、folderPath のすべてのファイルが取得されます。 このチュートリアルでは、**input.log** のみが処理されます。 |
+   | type |ログ ファイルはテキスト形式です。そのため、**TextFormat** を使用します。 |
+   | columnDelimiter |ログ ファイル内の列は**コンマ (`,`)** で区切られています。 |
+   | frequency/interval |frequency を **Month** に設定し、interval を **1** に設定しています。そのため、入力スライスは 1 か月ごとになります。 |
+   | 外部 | このパイプラインによって入力データが生成されない場合は、このプロパティを **true** に設定します。 このチュートリアルでは、input.log ファイルはこのパイプラインで生成されないため、プロパティを true に設定します。 |
+
+    これらの JSON プロパティの詳細については、[Azure BLOB コネクタ](data-factory-azure-blob-connector.md#dataset-properties)に関する記事を参照してください。
 3. コマンド バーの **[デプロイ]** をクリックして、新しく作成したデータセットをデプロイします。 データセットが左側のツリー ビューに表示されます。
 
 ### <a name="create-output-dataset"></a>出力データセットの作成
@@ -385,7 +392,7 @@ ms.lasthandoff: 02/03/2017
 この記事では、オンデマンド HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。 コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、「 [チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」を参照してください。
 
 ## <a name="see-also"></a>関連項目
-| トピック | 説明 |
+| トピック | Description |
 |:--- |:--- |
 | [パイプライン](data-factory-create-pipelines.md) |この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法を説明します。 |
 | [データセット](data-factory-create-datasets.md) |この記事では、Azure Data Factory のデータセットについて説明します。 |

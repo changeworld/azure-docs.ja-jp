@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 05/02/2017
 ms.author: onewth
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 6ec62b4f87602faffc90374f095eea18a6654a95
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 497aec125fcb3cade7ca4a35440e279a7f6275fb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/17/2017
 
 ---
 
@@ -43,12 +43,24 @@ The service can be used to detect which language the input text is written in. 1
 
 ## <a name="supported-languages"></a>Supported Languages
 
-The supported languages are as follows:
+| Language    | Language code | Sentiment | Key phrases | Topics |
+|:----------- |:----:|:----:|:----:|:----:|
+| Danish      | `da` | ✔ \* |  |   |
+| German       | `de` | ✔ \* | ✔ |   |
+| Greek       | `el` | ✔ \* |  |   |
+| English     | `en` | ✔ | ✔ | ✔ |
+| Spanish     | `es` | ✔ | ✔ |   |
+| Finnish     | `fi` | ✔ \* |  |   |
+| French      | `fr` | ✔ |  |   |
+| Japanese    | `ja` |  | ✔ |   |
+| Italian     | `it` | ✔ \* |  |   |
+| Dutch       | `nl` | ✔ \* |  |   |
+| Norwegian   | `no` | ✔ \* |  |   |
+| Polish      | `pl` | ✔ \* |  |   |
+| Portuguese  | `pt` | ✔ |  |   |
+| Russian     | `ru` | ✔ \* |  |   |
+| Swedish     | `sv` | ✔ \* |  |   |
+| Turkish     | `tr` | ✔ \* |  |   |
 
-| Feature | Supported language codes |
-|:--- |:--- |
-| Sentiment |`en` (English), `es` (Spanish), `fr` (French), `pt` (Portuguese) |
-| Sentiment (additional preview languages) |`da` (Danish), `de` (German), `el` (Greek), `fi` (Finnish), `it` (Italian), `nl` (Dutch), `no` (Norwegian), `pl` (Polish), `ru` (Russian), `sv` (Swedish), `tr` (Turkish) |
-| Key Phrases |`de` (German), `en` (English), `es` (Spanish), `ja` (Japanese) |
-| Topics |`en` (English) |
+\* indicates language support in preview
 

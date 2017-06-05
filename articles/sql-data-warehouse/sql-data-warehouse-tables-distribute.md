@@ -3,7 +3,7 @@ title: "SQL Data Warehouse のテーブルの分散 | Microsoft Docs"
 description: "Azure SQL Data Warehouse のテーブルの分散の概要です。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: jrowlandjones
+author: shivaniguptamsft
 manager: barbkess
 editor: 
 ms.assetid: 5ed4337f-7262-4ef6-8fd6-1809ce9634fc
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
 ms.date: 10/31/2016
-ms.author: jrj;barbkess
-translationtype: Human Translation
+ms.author: shigu;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: fe47cc1e5489d094f08b771cc8ec89de84509972
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/03/2017
 
 

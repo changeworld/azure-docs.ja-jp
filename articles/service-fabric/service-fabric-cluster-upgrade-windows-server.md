@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: chackdan
-translationtype: Human Translation
-ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
-ms.openlocfilehash: 6196cb7fa13cf664faa72b7f5f5e0645e4402739
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 0c62f84993c83619cd55f9081450deaf0b21c090
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -112,6 +113,10 @@ Service Fabric の新しいバージョンが利用可能になると、パッ�
 > インターネットに接続されていないクラスターを実行している場合、新しいリリースの情報は Service Fabric チーム ブログで確認する必要があります。 新しいリリースについて通知する、クラスターの正常性に関する警告は表示されません。  
 >
 >
+
+#### <a name="auto-provisioning-vs-manual-provisioning"></a>自動プロビジョニングと手動プロビジョニングの比較
+最新バージョンのコードの自動ダウンロードおよび自動登録を有効にするには、Service Fabric 更新サービスを設定します。 手順については、[スタンドアロン パッケージ](service-fabric-cluster-standalone-package-contents.md)内の Tools\ServiceFabricUpdateService.zip\Readme_InstructionsAndHowTos.txt を参照してください。
+手動プロセスの場合は、次の手順に従ってください。
 
 構成のアップグレードを開始する前に、クラスター構成を変更して次のプロパティを false に設定します。
 

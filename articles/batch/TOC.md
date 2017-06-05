@@ -29,6 +29,10 @@
 ## 管理
 ### [Batch PowerShell コマンドレット](batch-powershell-cmdlets-get-started.md)
 ### [Azure CLI](batch-cli-get-started.md)
+#### [Batch アカウントを作成する](./scripts/batch-cli-sample-create-account.md)
+#### [アプリケーションを追加する](./scripts/batch-cli-sample-add-application.md)
+#### [プールを管理する](./scripts/batch-cli-sample-manage-pool.md)
+#### [ジョブとタスクを実行する](./scripts/batch-cli-sample-run-job.md)
 
 # リファレンス
 ## [PowerShell](/powershell/module/azurerm.batch)
@@ -63,7 +67,6 @@
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=)
 ## [C# コード サンプル](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
 ## [Python コード サンプル](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
-## [CLI のサンプル](batch-cli-samples.md)
 ## [大規模なコンピューティング リソース](big-compute-resources.md)
 ## [ブログ](https://blogs.technet.microsoft.com/windowshpc/)
 

@@ -12,12 +12,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/20/2017
+ms.date: 05/02/2017
 ms.author: antisch
-translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 7cec2a8c66868c601c38dc2dea61dda38d3cd3b2
-ms.lasthandoff: 03/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 2556b02459886390b803407c5cb828687229a44e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/15/2017
 
 ---
 
@@ -25,14 +26,16 @@ ms.lasthandoff: 03/24/2017
 
 これらのスクリプトでは、Azure Batch サービスでコンピューティング ノードのプールを作成して管理するために、Azure CLI で使用できるツールの一部を示します。
 
-これらのスクリプトの実行では、Batch アカウントが既に設定されており、プールとアプリケーションが構成されていることを前提としています。 詳細については、これらの各トピックに関連した[サンプル スクリプト](../batch-cli-samples.md)を参照してください。
-
 > [!NOTE]
-> このサンプルのコマンドでは、Azure Virtual Machines を作成します。 Vm を実行すると、ご自分のアカウントへの課金が発生します。 この料金を最小限に抑えるには、サンプルの実行が完了したら VM を削除してください。 「[プールのクリーンアップ](#clean-up-pools)」を参照してください。
+> このサンプルのコマンドでは、Azure Virtual Machines を作成します。 VM を実行すると、ご自分のアカウントへの課金が発生します。 この料金を最小限に抑えるには、サンプルの実行が完了したら VM を削除してください。 「[プールのクリーンアップ](#clean-up-pools)」を参照してください。
 
-必要に応じて、[Azure CLI インストール ガイド](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページの手順に従って Azure CLI をインストールし、`az login` を実行して Azure にログインします。
+Batch プールは、クラウド サービスの構成 (Windows のみ)、または仮想マシンの構成 (Windows および Linux) という 2 つの方法を使用して構成できます。 以下のサンプル スクリプトでは、両方の構成でプールを作成する方法を説明します。
 
-Batch プールは、クラウド サービスの構成 (Windows のみ)、または仮想マシンの構成 (Windows および Linux) という 2 つの方法を使用して構成できます。
+## <a name="prerequisites"></a>前提条件
+
+- Azure CLI をまだインストールしていない場合は、[Azure CLI インストール ガイド](https://docs.microsoft.com/cli/azure/install-azure-cli)の手順に従ってインストールします。
+- Batch アカウントをまだお持ちでない場合は、作成します。 アカウント作成のサンプル スクリプトについては、「[Azure CLI で Batch アカウントを作成する](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-create-account)」を参照してください。
+- 開始タスクからアプリケーションを実行するように構成していない場合は、そのように構成します。 アプリケーションを作成し、アプリケーション パッケージを Azure にアップロードするサンプル スクリプトについては、「[Azure CLI を使用した Azure Batch へのアプリケーションの追加](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-add-application)」を参照してください。
 
 ## <a name="pool-with-cloud-service-configuration-sample-script"></a>クラウド サービス構成サンプル スクリプトによるプール
 

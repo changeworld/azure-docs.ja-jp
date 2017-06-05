@@ -79,7 +79,7 @@ Azure では、イメージから VM を作成します。 イメージは通常
 
 Azure Marketplace のイメージから VM を作成するときは、実際にはテンプレートを使用します。 Azure Resource Manager のテンプレートは、宣言型の JavaScript Object Notation (JSON) ファイルで、VM、ストレージ、仮想ネットワークなどで構成される複雑なアプリケーション環境を作成するために使用できます。[独自のテンプレートを作成する](../articles/resource-group-authoring-templates.md)方法など、[Azure Resource Manager のテンプレート](../articles/azure-resource-manager/resource-group-overview.md)を使用する方法については、詳細をお読みください。
 
-独自のカスタム イメージを作成し、[Azure CLI](../articles/virtual-machines/linux/upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) または [Azure PowerShell](../articles/virtual-machines/windows/upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を使用してアップロードし、特定のビルド要件を満たすカスタム VM をすばやく作成することもできます。
+独自のカスタム イメージを作成し、[Azure CLI](../articles/virtual-machines/linux/upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) または [Azure PowerShell](../articles/virtual-machines/windows/upload-generalized-managed.md) を使用してアップロードし、特定のビルド要件を満たすカスタム VM をすばやく作成することもできます。
 
 ## <a name="availability-sets"></a>可用性セット
 可用性セットは VM の論理グループで、これによって Azure は、冗長性と可用性を提供するためにアプリケーションが構築された方法を理解することができます。 高可用性アプリケーションを提供し、[99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) に適合するために、1 つの可用性セット内に 2 つ以上の VM を作成することをお勧めします。 1 つの VM が [Azure Premium Storage](../articles/storage/storage-premium-storage.md) を使用している場合、Azure SLA は計画外メンテナンス イベントに適用されます。 可用性セットは、ハードウェアの障害から保護する障害ドメイン (FD) と、更新の安全な適用を可能にする更新ドメイン (UD) という 2 つの追加グループによって機能します。
@@ -93,6 +93,13 @@ Azure Marketplace のイメージから VM を作成するときは、実際に�
 
 #### <a name="managed-disk-fault-domains-and-availability-sets"></a>管理ディスクの障害ドメインと可用性セット
 +[Azure Managed Disks](../articles/storage/storage-faq-for-disks.md) を使用している VM の場合、VM は管理対象の可用性セットを使用している場合に管理ディスクの障害ドメインに合わせて配置されます。 この配置により、VM に接続されたすべての管理ディスクは必ず同じ管理ディスクの障害ドメイン内にあります。 管理対象の可用性セットには、管理ディスクを持つ VM だけを作成できます。 管理ディスクの障害ドメインの数はリージョンによって異なり、管理ディスクの障害ドメインはリージョンあたり 2 つまたは 3 つになります。
+
+![管理ディスク FD](./media/virtual-machines-common-manage-availability/md-fd.png)
+
+> [!IMPORTANT]
+> 管理対象の可用性セットに使用される障害ドメインの数は、リージョンによって異なります (リージョンあたり 2 つまたは 3 つになります)。 リージョンあたりの数を以下の表に示します。
+
+[!INCLUDE [managed-disks-common-fault-domain-region-list](managed-disks-common-fault-domain-region-list.md)]
 
 ### <a name="update-domains"></a>更新ドメイン
 更新ドメインは、メンテナンスや再起動が同時に行われる可能性のある、基盤となるハードウェアの論理グループです。 可用性セット内に作成した VM は、Azure プラットフォームにより自動で複数の更新ドメインに分散して配布されます。 これにより、Azure プラットフォームに定期メンテナンスを実施している間もアプリケーションのインスタンスが常に 1 つは稼働している状態を確保することができます。 計画済みメンテナンス中は、更新ドメインの再起動が順番に処理されない場合がありますが、一度に再起動される更新ドメインは 1 つのみです。

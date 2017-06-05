@@ -1,5 +1,6 @@
 ---
-title: "Azure Active Directory プレビューで削除された Office 365 グループを復元する | Microsoft Docs"
+
+title: "Azure Active Directory で削除された Office 365 グループを復元する | Microsoft Docs"
 description: "Azure Active Directory で、削除されたグループを復元する方法、復元可能なグループを表示する方法、およびグループを完全に削除する方法"
 services: active-directory
 documentationcenter: 
@@ -12,19 +13,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2017
+ms.date: 05/04/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 4e2fe22953ff74214c0c20fdf2fabceeda63be35
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 473f3e464324cc2667428485235e3b942c736382
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
 
 # <a name="restore-a-deleted-office-365-group-in-azure-active-directory"></a>Azure Active Directory で削除された Office 365 グループを復元する
 
-Azure Active Directory (Azure AD) プレビューで Office 365 グループを削除すると、削除されたグループは表示されなくなりますが、削除日から 30 日間は保持されます。 これは、必要に応じて、グループとその内容を復元できるようにするためです。 この機能は、Azure AD の Office 365 グループに限定されます。 セキュリティ グループや配布グループでは使用できません。
+Azure Active Directory (Azure AD) で Office 365 グループを削除すると、削除されたグループは表示されなくなりますが、削除日から 30 日間は保持されます。 これは、必要に応じて、グループとその内容を復元できるようにするためです。 この機能は、Azure AD の Office 365 グループに限定されます。 セキュリティ グループや配布グループでは使用できません。
 
 グループを復元するために必要なアクセス許可は、次のいずれかになります。
 
@@ -36,8 +38,7 @@ User | ユーザーが所有する、削除されたすべての Office 365 グ�
 
 
 ## <a name="how-to-view-deleted-office-365-groups-that-are-available-to-restore"></a>復元可能な削除済み Office 365 グループを表示する方法
-次のコマンドレットを使用すると、削除されたグループを表示して、目的のグループがまだ完全には削除されていないことを確認できます。 これらのコマンドレットは、[Azure Active Directory PowerShell V2 プレビュー モジュール](https://www.powershellgallery.com/packages/AzureADPreview) に含まれています。 このモジュールの詳細については、「[Azure Active Directory PowerShell Version 2 (Azure Active Directory PowerShell バージョン 2)](/powershell/azure/install-adv2?view=azureadps-2.0)」をご覧ください。
-論理的な削除と回復を管理するためのコマンドレットはパブリック プレビューにあり、弊社ではプレビュー コマンドレットに重大な変更を加えることが必要な場合があります。 このため、実稼働環境でこれらのコマンドレットを使用することはお勧めできません。
+次のコマンドレットを使用すると、削除されたグループを表示して、目的のグループがまだ完全には削除されていないことを確認できます。 これらのコマンドレットは、[Azure AD PowerShell モジュール](https://www.powershellgallery.com/packages/AzureAD/)に含まれています。 このモジュールの詳細については、「[Azure Active Directory PowerShell Version 2 (Azure Active Directory PowerShell バージョン 2)](/powershell/azure/install-adv2?view=azureadps-2.0)」をご覧ください。
 
 1.    次のコマンドレットを実行して、テナント内のまだ復元可能なすべての削除済み Office 365 グループを表示します。
   ```

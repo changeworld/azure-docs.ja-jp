@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 05/12/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: 570a98aafca6babc5a7089880d4120c2a8f4a0d8
-ms.openlocfilehash: 5a275620639a801d7e60ef9ada1af29062dfe440
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: cba1b2cfee379e7d2b079bcb3089981ef1044d66
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -34,7 +36,7 @@ ms.openlocfilehash: 5a275620639a801d7e60ef9ada1af29062dfe440
    
    * Azure プライベート ピアリングを有効にする - 仮想ネットワーク内にデプロイされている VM / クラウドに接続するには、このピアリングを有効にする必要があります。
    * Azure パブリック ピアリングを有効にする - パブリック IP アドレスにホストされている Azure サービスに接続する場合、Azure パブリック ピアリングを有効にする必要があります。 Azure プライベート ピアリングの既定のルーティングを有効にする場合、これが Azure リソースにアクセスするための要件となります。
-   * Microsoft ピアリングを有効にする - Office 365 と CRM Online サービスにアクセスするにはこれを有効にする必要があります。 
+   * Microsoft ピアリングを有効にする - Office 365 と Dynamics 365 サービスにアクセスするにはこれを有効にする必要があります。 
      
      > [!IMPORTANT]
      > Microsoft に接続するには、インターネットに使用しているプロキシ/エッジとは別のプロキシ/エッジを使用する必要があります。 ExpressRoute とインターネットの両方に同じエッジを使用すると、ルーティングが非同期になり、ネットワークの接続が停止します。
@@ -115,10 +117,5 @@ BGP プロビジョニング状態からは、Microsoft エッジで BGP セッ�
   * [ExpressRoute 回線の作成](expressroute-howto-circuit-arm.md)
   * [ルーティングの構成](expressroute-howto-routing-arm.md)
   * [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-arm.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

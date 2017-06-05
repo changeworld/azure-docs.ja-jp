@@ -1,6 +1,7 @@
 ---
-title: "Azure Active Directory プレビューですべての既存のグループを表示する | Microsoft Docs"
-description: "Azure Active Directory プレビューでグループを表示または検索する方法"
+
+title: "Azure Active Directory ですべての既存のグループを表示する | Microsoft Docs"
+description: "Azure Active Directory でグループを表示または検索する方法"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -12,18 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 05/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 58768cd59a922483bcb37797a6dcd515d159ef4c
-ms.openlocfilehash: 3546ae6951a514108e62f8840a601930aa1ac4c2
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 1cc8b9194433840df9ce16baf1a0ec2c3dd08ad9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
 # <a name="view-or-search-for-your-user-groups-in-azure-active-directory"></a>Azure Active Directory でユーザー グループを表示または検索する
-この記事では、Azure Active Directory (Azure AD) プレビューですべてのグループを表示する方法について説明します。 [プレビューの機能については、こちらの記事をご覧ください。](active-directory-preview-explainer.md) Azure Active Directory (Azure AD) ユーザー管理の機能の&1; つに、ユーザーを追加できるグループを作成する機能があります。 グループは、複数のユーザーにライセンスまたはアクセス許可を一度に割り当てるような管理タスクを実行するために使用します。
+この記事では、Azure Active Directory (Azure AD) ですべてのグループを表示する方法について説明します。 Azure AD ユーザー管理の機能の 1 つに、グループを使って一度に多数のユーザーにライセンスまたはアクセス許可を割り当てることができる機能があります。
 
 ## <a name="how-do-i-see-all-the-groups"></a>すべてのグループを表示する方法
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。

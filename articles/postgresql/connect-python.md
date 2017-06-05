@@ -89,7 +89,7 @@ Azure Portal から Azure Database for PostgreSQL の接続文字列の値を取
 | :--  | :--     | :--           |
 | host | -h | myazurepostgresql.database.windows.net |
 | ユーザー | -U | myalias@myazurepostgresql |
-| dbname | -d | postgres<br />"*(すべての PostgreSQL サーバーに **postgres** という名前のデータベースがあります)*" |
+| dbname | -d | postgres<br />"*(すべての PostgreSQL サーバーに* **postgres** *という名前のデータベースがあります)*" |
 | ポート | -p | 5432 "*(多くの場合、この特定値 5432)*" |
 | パスワード | -P | MySecretPassword |
 ||||

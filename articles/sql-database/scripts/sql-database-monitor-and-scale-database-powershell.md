@@ -14,12 +14,13 @@ ms.devlang: PowerShell
 ms.topic: article
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 03/07/2017
+ms.date: 05/23/2017
 ms.author: janeng
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: b214b2d0317ff9e7adf2d75fe462a5ad9f640298
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: fab0994ff9ec4471e0a6814e681b2d3e36433301
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/27/2017
 
 ---
 
@@ -31,7 +32,7 @@ ms.lasthandoff: 04/27/2017
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-powershell[main](../../../powershell_scripts/sql-database/monitor-and-scale-database/monitor-and-scale-database.ps1 "単一の SQL Database の監視とスケーリング")]
+[!code-powershell[main](../../../powershell_scripts/sql-database/monitor-and-scale-database/monitor-and-scale-database.ps1?highlight=13-14 "単一の SQL Database の監視とスケーリング")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 

@@ -3,7 +3,7 @@ title: "Azure Application Insights のダッシュボードおよびナビゲー
 description: "重要な APM グラフとクエリのビューを作成します。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 39b0701b-2fec-4683-842a-8a19424f67bd
 ms.service: application-insights

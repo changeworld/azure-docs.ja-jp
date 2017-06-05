@@ -33,7 +33,7 @@ ms.lasthandoff: 03/01/2017
 >
 
 
-Azure Active Directory (Azure AD) は、マイクロソフトのサービスとしての ID (IDaaS) ソリューションおよびプラットフォームです。 Azure AD は、Office 365、Dynamics、Microsoft Intune、Azure (このモードでは Azure AD の使用料金は発生しません) などの任意の Microsoft サービスと使用できる Azure AD 無料版から、Enterprise Mobility Suite (EMS)、Azure AD Premium や Basic、Azure Multi-Factor Authentication (MFA) などの Azure AD の有料バージョンまで、さまざま機能と技術のバージョンが提供されています。 多くの Microsoft オンライン サービスと同様、ほとんどの Azure AD の有料バージョンは、Office 365、Microsoft Intune、Azure AD のように、ユーザーごとの資格を通じて提供されます。 このような場合、サービスの購入は&1; つ以上のサブスクリプションで表され、各サブスクリプションには、テナントで事前に購入したライセンスの数が含まれます。 ユーザーごとの資格はライセンスの割り当てによって実現されます。ユーザーと製品が関連付けられ、ユーザーに対してサービス コンポーネントが有効になり、前払いライセンスの&1; つが使用されます。
+Azure Active Directory (Azure AD) は、マイクロソフトのサービスとしての ID (IDaaS) ソリューションおよびプラットフォームです。 Azure AD は、Office 365、Dynamics、Microsoft Intune、Azure (このモードでは Azure AD の使用料金は発生しません) などの任意の Microsoft サービスと使用できる Azure AD 無料版から、Enterprise Mobility Suite (EMS)、Azure AD Premium や Basic、Azure Multi-Factor Authentication (MFA) などの Azure AD の有料バージョンまで、さまざま機能と技術のバージョンが提供されています。 多くの Microsoft オンライン サービスと同様、ほとんどの Azure AD の有料バージョンは、Office 365、Microsoft Intune、Azure AD のように、ユーザーごとの資格を通じて提供されます。 このような場合、サービスの購入は 1 つ以上のサブスクリプションで表され、各サブスクリプションには、テナントで事前に購入したライセンスの数が含まれます。 ユーザーごとの資格はライセンスの割り当てによって実現されます。ユーザーと製品が関連付けられ、ユーザーに対してサービス コンポーネントが有効になり、前払いライセンスの 1 つが使用されます。
 
 [今すぐ Azure AD premium をお試しください。](https://portal.office.com/Signup/Signup.aspx?OfferId=01824d11-5ad8-447f-8523-666b0848b381&ali=1#0)
 
@@ -46,7 +46,7 @@ Azure AD サービスの機能の概要については、「 [Azure AD とは](a
 [Azure AD サービス レベルの詳細](https://azure.microsoft.com/support/legal/sla/)
 
 > [!NOTE]
-> Azure の従量課金制のサブスクリプションは、ディレクトリで表され、Azure リソースを作成でき、支払い方法にマップされる点が異なります。 この場合、サブスクリプションに関連付けられているライセンス数は&0; です。 ユーザーのサブスクリプションとの関連付け、つまり管理するサブスクリプション リソースへのアクセスは、サブスクリプションにマップされている Azure のリソースを操作するためのアクセス許可が付与されることによって実現されます。
+> Azure の従量課金制のサブスクリプションは、ディレクトリで表され、Azure リソースを作成でき、支払い方法にマップされる点が異なります。 この場合、サブスクリプションに関連付けられているライセンス数は 0 です。 ユーザーのサブスクリプションとの関連付け、つまり管理するサブスクリプション リソースへのアクセスは、サブスクリプションにマップされている Azure のリソースを操作するためのアクセス許可が付与されることによって実現されます。
 >
 >
 
@@ -55,7 +55,7 @@ Azure AD サービスの機能の概要については、「 [Azure AD とは](a
 
 Enterprise Mobility Suite、Azure AD Premium、Azure AD Basic を購入またはアクティブにすると、有効期間や前払いライセンスを含め、ディレクトリとサブスクリプションが更新されます。 状態、次のライフサイクル イベント、割り当てられているライセンスの数、使用可能なライセンスの数などのサブスクリプション情報は、Azure クラシック ポータルの該当するディレクトリの [ライセンス] タブから入手できます。 この場所は、ライセンスの割り当ての管理にも最適です。
 
-各サブスクリプションは&1; つ以上のサービス プランで構成され、各サービス プランはそのサービスの種類に含まれる機能レベル (Azure AD、Azure MFA、Microsoft Intune、Exchange Online、SharePoint Online など) に対応します。 Azure AD のライセンス管理では、サービス プラン レベルの管理は不要です。 これは、含まれるサービスのアクセス管理に詳細な構成モードを利用する Office 365 とは異なります。 Azure AD では、機能の有効化と個々のアクセス許可の管理には、使用中の構成を利用します。
+各サブスクリプションは 1 つ以上のサービス プランで構成され、各サービス プランはそのサービスの種類に含まれる機能レベル (Azure AD、Azure MFA、Microsoft Intune、Exchange Online、SharePoint Online など) に対応します。 Azure AD のライセンス管理では、サービス プラン レベルの管理は不要です。 これは、含まれるサービスのアクセス管理に詳細な構成モードを利用する Office 365 とは異なります。 Azure AD では、機能の有効化と個々のアクセス許可の管理には、使用中の構成を利用します。
 
 一般に、Azure AD のサブスクリプション情報は、Azure クラシック ポータルの該当するディレクトリの [ライセンス] タブで管理されます。 Azure AD Premium 以外の Azure AD サブスクリプションは Office ポータルに表示されません。
 
@@ -137,7 +137,7 @@ Azure AD ライセンスの割り当て中に割り当てエラーが発生す�
 
 ![割り当てられたライセンスの確認](./media/active-directory-licensing-what-is/view_assigned_licenses.png)
 
-(直接または&1; つ以上のグループから継承された) 割り当ての状態とパスを含む、割り当て済みのユーザーとグループの詳細な一覧は、ライセンス プランに移動すると確認できます。
+(直接または 1 つ以上のグループから継承された) 割り当ての状態とパスを含む、割り当て済みのユーザーとグループの詳細な一覧は、ライセンス プランに移動すると確認できます。
 
 ![ライセンスプランに割り当てられたライセンスの詳細](./media/active-directory-licensing-what-is/assigned_licenses_detail.png)
 

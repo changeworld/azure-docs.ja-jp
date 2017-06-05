@@ -13,24 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/02/2017
+ms.date: 05/11/2017
 ms.author: markvi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 85a59eddf3c453ee112f279d439c94853b2f62b5
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 5a1ce66e02943caedd52976c5dcb3cf75c23bd49
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/11/2017
 
 
 ---
-# <a name="conditional-access-in-azure-active-directory---preview"></a>Azure Active Directory の条件付きアクセス - プレビュー
+# <a name="conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセス
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](active-directory-conditional-access-azure-portal.md)
+> * [Azure ポータル](active-directory-conditional-access-azure-portal.md)
 > * [Azure クラシック ポータル](active-directory-conditional-access.md)
-
-
-このトピックで説明する動作は、現在[プレビュー段階](active-directory-preview-explainer.md)にあります。
 
 モバイル ファースト、クラウド ファーストの世界で、Azure Active Directory を使用してデバイス、アプリ、およびサービスにどこからでもサインオンできます。 デバイス (BYOD を含みます) や企業ネットワーク外での作業、サードパーティが提供する SaaS アプリの急増によって、IT プロフェッショナルは、次の 2 つの対立する目標を達成することを迫られています。
 
@@ -117,13 +114,17 @@ SharePoint での制限付きアクセスを要求する方法について詳し
 
 - **どのように**: アプリへのアクセスが制御可能な状況で実行されている限り、ユーザーがどのようにクラウド アプリにアクセスしているかについて、さらに制限する必要はありません。 ただし、クラウド アプリへのアクセスが、たとえば信頼されていないネットワークや準拠していないデバイスから実行される場合は、状況は異なります。 条件文に、アプリへのアクセスがどのように実行されているかを示す追加要件があるアクセス条件を定義できます。
 
-    ![条件](./media/active-directory-conditional-access-azure-portal/01.png)
+    ![条件](./media/active-directory-conditional-access-azure-portal/21.png)
 
 
 ## <a name="conditions"></a>条件
 
 Azure Active Directory の現在の実装では、次の領域の条件を定義できます。
 
+- **サインイン リスク** – サインイン リスクは、サインイン試行がユーザー アカウントの正当な所有者によって行われなかった可能性を追跡する目的で Azure Active Directory が利用するオブジェクトです。 このオブジェクトには、この可能性 (高、中、低) が[サインイン リスク レベル](active-directory-reporting-risk-events.md#risk-level)と呼ばれる属性で格納されます。 このオブジェクトは、ユーザーのサインイン中に Azure Active Directory がサインイン リスクを検出した場合に生成されます。 詳細については、「[Risky sign-ins (リスクの高いサインイン)](active-directory-identityprotection.md#risky-sign-ins)」を参照してください。  
+計算されたサインイン リスク レベルを条件付きアクセス ポリシーの条件として利用できます。 
+
+    ![条件](./media/active-directory-conditional-access-azure-portal/22.png)
 
 - **デバイス プラットフォーム**: デバイス プラットフォームは、デバイスで実行されているオペレーティング システムによって分類されます (Android、iOS、Windows Phone、Windows)。 ポリシーの対象とするデバイス プラットフォームだけでなく、ポリシーから除外するデバイス プラットフォームも定義できます。  
 デバイス プラットフォームをポリシーで使用するには、構成トグル スイッチを **[はい]** に変更してから、ポリシーを適用するデバイス プラットフォームを選択します (すべてを選択するか、個別に選択します)。 デバイス プラットフォームを個別に選択した場合、ポリシーは、選択したプラットフォームにのみ影響します。 この場合、サポートされているその他のプラットフォームへのサインインがポリシーに影響されることはありません。
@@ -140,65 +141,6 @@ Azure Active Directory の現在の実装では、次の領域の条件を定義
 従来の認証とは、最新の認証を使用しない古い Office クライアントなどの基本認証を使用しているクライアントを指します。 現時点では、従来の認証では条件付きアクセスはサポートされません。
 
     ![条件](./media/active-directory-conditional-access-azure-portal/04.png)
-
-
-## <a name="what-you-should-know"></a>知っておくべきこと
-
-### <a name="do-i-need-to-assign-a-user-to-my-policy"></a>ポリシーにユーザーを割り当てる必要がありますか。
-
-条件付きアクセス ポリシーを構成するときは、少なくとも 1 つのグループを割り当てる必要があります。 ユーザーとグループが割り当てられていない条件付きアクセス ポリシーは、トリガーされることはありません。
-
-ポリシーに複数のユーザーとグループを割り当てる予定の場合は、ユーザーまたはグループを 1 つだけ割り当てて構成をテストすることから始めてください。 ポリシーが期待どおりに動作したら、追加の割り当てを行うことができます。  
-
-
-### <a name="how-are-assignments-evaluated"></a>割り当てはどのように評価されますか。
-
-すべての割り当ては、論理的に **AND** 処理されます。 複数の割り当てを構成した場合、ポリシーをトリガーするには、すべての割り当てを満たす必要があります。  
-
-組織のネットワークの外部から行われたすべての接続に適用される場所の条件を構成する必要がある場合は、次の割り当てを行うことでこれを実現できます。
-
-- **すべての場所**を含める
-- **すべての信頼できる IP** を除外する
-
-### <a name="what-happens-if-you-have-policies-in-the-azure-classic-portal-and-azure-portal-configured"></a>Azure クラシック ポータルと Azure Portal の両方にポリシーが構成されている場合はどうなりますか。  
-Azure Active Directory によって両方のポリシーが適用されます。ユーザーは、すべての要件が満たされた場合のみ、アクセスできます。
-
-### <a name="what-happens-if-you-have-policies-in-the-intune-silverlight-portal-and-the-azure-portal"></a>Intune Silverlight ポータルと Azure Portal の両方にポリシーが構成されている場合はどうなりますか。
-Azure Active Directory によって両方のポリシーが適用されます。ユーザーは、すべての要件が満たされた場合のみ、アクセスできます。
-
-### <a name="what-happens-if-i-have-multiple-policies-for-the-same-user-configured"></a>同じユーザーに対して複数のポリシーが構成されている場合はどうなりますか。  
-毎回のサインインで、すべてのポリシーが Azure Active Directory によって評価され、すべての要件が満たされていることを確認したうえで、ユーザーのアクセスが許可されます。
-
-
-### <a name="does-conditional-access-work-with-exchange-activesync"></a>条件付きアクセスは、Exchange ActiveSync と連携しますか。
-
-はい。条件付きアクセス ポリシーで Exchange ActiveSync を使用できます。
-
-
-### <a name="what-happens-if-i-require-multi-factor-authentication-or-a-compliant-device"></a>多要素認証または準拠デバイスが必要な場合は、どうなりますか。
-
-現時点では、ユーザーは、デバイスに関係なく多要素認証が求められます。
-
-
-## <a name="what-you-should-avoid-doing"></a>避けるべきこと
-
-条件付きアクセス フレームワークは、優れた構成柔軟性を提供します。 ただし、柔軟性が高いということは、リリースの前に各構成ポリシーを慎重に見直して、望ましくない結果を避ける必要があることも意味します。 この状況では、**すべてのユーザー/グループ/クラウド アプリ**などの完全なセットに影響する割り当てには特に注意を払う必要があります。
-
-お客様の環境では、次の構成を避ける必要があります。
-
-
-**すべてのユーザー、すべてのクラウド アプリに対して:**
-
-- **アクセスのブロック** - この構成では組織全体がブロックされるため、明らかによい方法ではありません。
-
-- **準拠デバイスが必要です** - 登録されたデバイスをまだ持っていないユーザーに対して、このポリシーは Intune ポータルへのアクセスを含むすべてのアクセスをブロックします。 このポリシーにより、登録済みのデバイスを持たない管理者は、Azure Portal に戻ってポリシーを変更することができなくなります。
-
-- **ドメインへの参加が必要** - このポリシーでは、ドメイン参加済みデバイスをまだ持っていない場合に、組織内のすべてのユーザーのアクセスがブロックされる可能性もあります。
-
-
-**すべてのユーザー、すべてのクラウド アプリ、すべてのデバイス プラットフォームに対して:**
-
-- **アクセスのブロック** - この構成では組織全体がブロックされるため、明らかによい方法ではありません。
 
 
 ## <a name="common-scenarios"></a>一般的なシナリオ
@@ -228,3 +170,4 @@ Azure Active Directory によって両方のポリシーが適用されます。
 
 条件付きアクセスポリシーの構成方法については、[Azure Active Directory での条件付きアクセスの使用](active-directory-conditional-access-azure-portal-get-started.md)に関する記事を参照してください。
 
+条件付きアクセス ポリシーを構成するときに知っておくべきことと避けるべきことについては、次をご覧ください。 

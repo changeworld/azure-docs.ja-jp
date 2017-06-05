@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: b0bd7539e0ec3dbbeaa759f66f3097ed6caab1a8
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 66884a73a8ea1cbf72a48f9a776fa45ae1976591
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/12/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/12/2017
 HDInsight クラスターに Hue をインストールし、トンネリングを利用して Hue に要求を送信する方法について学習します。
 
 > [!IMPORTANT]
-> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。
+> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
 
 ## <a name="what-is-hue"></a>Hue とは
 Hue は Hadoop クラスターとの情報のやりとりに使用される一連の Web アプリケーションです。 Hue を利用して Hadoop クラスターに関連付けられているストレージを閲覧したり (HDInsight クラスターの場合、WASB)、Hive ジョブや Pig スクリプトを実行したりできます。HDInsight Hadoop クラスターにインストールした Hue では次のコンポーネントが利用可能です。
@@ -66,7 +66,7 @@ Linux ベースの HDInsight クラスターに Hue をインストールする�
    >
 2. **[オプションの構成]** ブレードで **[スクリプト アクション]** を選択し、以下のように情報を指定します。
 
-    ![Hue のスクリプト アクション パラメーターを指定する](./media/hdinsight-hadoop-hue-linux/hue_script_action.png "Hue のスクリプト アクション パラメーターを指定する")
+    ![Hue のスクリプト アクション パラメーターを指定する](./media/hdinsight-hadoop-hue-linux/hue-script-action.png "Hue のスクリプト アクション パラメーターを指定する")
 
    * **[名前]**: スクリプト アクションの表示名を入力します。
    * **SCRIPT URI**: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
@@ -108,15 +108,15 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
    >
    >
 
-    ![Hue ポータルにログインする](./media/hdinsight-hadoop-hue-linux/HDI.Hue.Portal.Login.png "Hue ポータルの資格情報を指定する")
+    ![Hue ポータルにログインする](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-login.png "Hue ポータルの資格情報を指定する")
 
 ### <a name="run-a-hive-query"></a>Hive クエリを実行する
 1. Hue ポータルから、**[クエリ エディター]** をクリックし、**[Hive]** をクリックして Hive エディターを開きます。
 
-    ![Hive を使用する](./media/hdinsight-hadoop-hue-linux/HDI.Hue.Portal.Hive.png "Hive を使用する")
+    ![Hive を使用する](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png "Hive を使用する")
 2. **[支援]** タブの **[データベース]** に **hivesampletable** が表示されるはずです。 これは HDInsight のすべての Hadoop クラスターに含まれるサンプル テーブルです。 右ペインでサンプル クエリを入力します。スクリーン キャプチャに示すように、下のペインの **[結果]** タブに出力が表示されます。
 
-    ![Hive クエリを実行する](./media/hdinsight-hadoop-hue-linux/HDI.Hue.Portal.Hive.Query.png "Hive クエリを実行する")
+    ![Hive クエリを実行する](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png "Hive クエリを実行する")
 
     **[グラフ]** タブを使用し、結果を視覚的に表示することもできます。
 
@@ -124,7 +124,7 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
 1. Hue ポータルから、メニュー バーの右上隅にある **[ファイル ブラウザー]** をクリックします。
 2. 既定では、ファイル ブラウザーは **/user/myuser** ディレクトリで起動します。 パスのユーザー ディレクトリの直前の斜線をクリックし、クラスターに関連付けられている Azure ストレージ コンテナーのルートに移動します。
 
-    ![ファイル ブラウザーを使用する](./media/hdinsight-hadoop-hue-linux/HDI.Hue.Portal.File.Browser.png "ファイル ブラウザーを使用する")
+    ![ファイル ブラウザーを使用する](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-file-browser.png "ファイル ブラウザーを使用する")
 3. ファイルまたはフォルダーを右クリックし、利用可能な操作を表示します。 現在のディレクトリにファイルをアップロードするには、右隅にある **[アップロード]** ボタンを使用します。 新しいファイルやディレクトリを作成するには、 **[新規]** ボタンを使用します。
 
 > [!NOTE]
@@ -142,7 +142,7 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
 
 4. Linux クラスターの場合、サービスをプライマリ ヘッドノードで実行し、Resource Manager をセカンダリ ヘッドノードで実行するシナリオがありえます。 そのようなシナリオの場合、Hue を利用してクラスターで「実行中」のジョブの詳細を表示するとき、エラーが発生する可能性があります (下の画像を参照)。 ただし、ジョブが完了したときにジョブの詳細を表示できます。
 
-   ![Hue ポータル エラー](./media/hdinsight-hadoop-hue-linux/HDI.Hue.Portal.Error.png "Hue ポータル エラー")
+   ![Hue ポータル エラー](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-error.png "Hue ポータル エラー")
 
    これは既知の問題によるものです。 この問題を回避するには、アクティブな Resource Manager もプライマリ ヘッドノードで実行されるように Ambari を変更します。
 5. HDInsight クラスターが `wasbs://` で Azure Storage を使用するとき、Hue は WebHDFS を認識します。 そのため、スクリプト アクションで使用されるカスタム スクリプトは WebWasb をインストールします。これは WASB と通信するための WebHDFS 互換サービスです。 そのため、Hue ポータルに HDFS と表示されている場合でも (**ファイル ブラウザー**の上にマウスを移動したときなど)、WASB として解釈するべきです。

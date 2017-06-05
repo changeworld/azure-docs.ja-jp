@@ -100,7 +100,7 @@ Resource Manager 仮想マシンの場合は、次の PowerShell の例を使用
 
 ```PowerShell
 Login-AzureRMAccount
-Select-AzureSubscription -SubscriptionId "**"
+Select-AzureRMSubscription -SubscriptionId "**"
 
 $workspaceName = "your workspace name"
 $VMresourcegroup = "**"

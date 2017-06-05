@@ -3,7 +3,7 @@ title: "Azure Application Insights の Analytics のツアー | Microsoft Docs"
 description: "Analytics のすべてのメイン クエリの短いサンプル、Application Insights の強力な検索ツール。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: bddf4a6d-ea8d-4607-8531-1fe197cc57ad
 ms.service: application-insights

@@ -14,9 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/15/2016
 ms.author: vittorib;bryanla
-translationtype: Human Translation
+ms.custom: aaddev
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f3f8292eb505c73b5fda86499581fe85ad3f8e47
 ms.openlocfilehash: 980cac016b37e3744441508b93e5cd504045d638
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -69,9 +72,4 @@ JavaScript ベースのアプローチを全面的に採用したアプリケー
 [ACOM-How-To-Integrate]: active-directory-how-to-integrate.md
 [OAuth2-Spec-Implicit-Misuse]: https://tools.ietf.org/html/rfc6749#section-10.16
 [OAuth2-Threat-Model-And-Security-Implications]: https://tools.ietf.org/html/rfc6819
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

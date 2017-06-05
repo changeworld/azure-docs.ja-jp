@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
-ms.author: mandia
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 5733592fc1633d8722905c33dd267b4cbe1fe184
-ms.lasthandoff: 03/10/2017
+ms.author: LADocs; mandia
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 09a2373585f49a39192a841072d86e395ff311db
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -30,7 +31,7 @@ Azure Logic Apps の AS2 メッセージを交換する前に、AS2 契約を作
 必要な項目を次に示します。
 
 * 既に定義され、Azure サブスクリプションに関連付けられている[統合アカウント](../logic-apps/logic-apps-enterprise-integration-accounts.md)
-* 統合アカウントで既に定義され、**ビジネス ID** の AS2 修飾子を使用して構成されている&2; つ以上の[パートナー](logic-apps-enterprise-integration-partners.md)
+* 統合アカウントで既に定義され、**ビジネス ID** の AS2 修飾子を使用して構成されている 2 つ以上の[パートナー](logic-apps-enterprise-integration-partners.md)
 
 > [!NOTE]
 > 契約を作成する場合は、契約のファイルの内容が契約の種類と一致している必要があります。    
@@ -49,7 +50,7 @@ Azure Logic Apps の AS2 メッセージを交換する前に、AS2 契約を作
     ![[その他のサービス]、"統合" でのフィルター処理、[アカウントの統合] の選択](./media/logic-apps-enterprise-integration-agreements/overview-1.png)
 
 3. 表示された **[統合アカウント]** ブレードで、契約を作成する統合アカウントを選択します。
-統合アカウントが表示されない場合は、[最初に統合アカウントを&1; つ作成](../logic-apps/logic-apps-enterprise-integration-accounts.md "統合アカウントについて")します。  
+統合アカウントが表示されない場合は、[最初に統合アカウントを 1 つ作成](../logic-apps/logic-apps-enterprise-integration-accounts.md "統合アカウントについて")します。  
 
     ![契約を作成する統合アカウントの選択](./media/logic-apps-enterprise-integration-overview/overview-3.png)
 
@@ -132,7 +133,7 @@ Azure Logic Apps の AS2 メッセージを交換する前に、AS2 契約を作
 
 4. メッセージを圧縮するには、**[メッセージの圧縮を有効にしてください]** チェック ボックスをオンにします。
 
-5. HTTP Content-Type ヘッダーを&1; 行に展開するには、**[HTTP のヘッダーを展開する]** チェック ボックスをオンにします。
+5. HTTP Content-Type ヘッダーを 1 行に展開するには、**[HTTP のヘッダーを展開する]** チェック ボックスをオンにします。
 
 6. 送信メッセージに対する同期 MDN を受信するには、**[MDN を要求する]** チェック ボックスをオンにします。
 
@@ -155,7 +156,7 @@ Azure Logic Apps の AS2 メッセージを交換する前に、AS2 契約を作
 | 暗号化アルゴリズム |メッセージの暗号化に使用する暗号化アルゴリズム。 メッセージを暗号化するためのゲスト パートナーの公開証明書を構成します。 |
 | 証明書 |メッセージを暗号化するために使用する証明書。 メッセージを暗号化するためのゲスト パートナーのプライベート証明書を構成します。 |
 | メッセージの圧縮を有効にしてください |この契約から送信されるすべてのメッセージを圧縮することを要求します。 |
-| HTTP のヘッダーを展開する |HTTP Content-Type ヘッダーを&1; 行に配置します。 |
+| HTTP のヘッダーを展開する |HTTP Content-Type ヘッダーを 1 行に配置します。 |
 | MDN を要求する |この契約から送信されるすべてのメッセージに対する MDN を要求します。 |
 | 署名付き MDN を要求する |この契約に対して送信されるすべての MDN に署名することを要求します。 |
 | 非同期 MDN を要求する |この契約に対して非同期 MDN を送信することを要求します。 |
@@ -171,6 +172,9 @@ Azure Logic Apps の AS2 メッセージを交換する前に、AS2 契約を作
 2.    また、統合アカウントの概要で、契約を表示することもできます。 統合アカウント ブレードで、**[概要]**、**[契約]** タイルの順に選択します。 
 
     ![すべての契約が表示される [契約] タイルの選択](./media/logic-apps-enterprise-integration-agreements/agreement-6.png)
+
+## <a name="view-the-swagger"></a>Swagger の表示
+[Swagger の詳細](/connectors/as2/)を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 * [Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")  

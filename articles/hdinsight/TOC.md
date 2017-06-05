@@ -1,5 +1,5 @@
 # 概要
-## [Hadoop](hdinsight-hadoop-introduction.md)
+## [HDInsight と Hadoop について](hdinsight-hadoop-introduction.md)
 ## [HDInsight の Hadoop コンポーネント](hdinsight-component-versioning.md)
 ## [R Server](hdinsight-hadoop-r-server-overview.md)
 ## [Apache Spark](hdinsight-apache-spark-overview.md)
@@ -133,6 +133,7 @@
 ### [ブートストラップを使用してクラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-bootstrap.md)
 ### [スクリプト アクションを使用したクラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)
 ### [スクリプト アクションを開発する](hdinsight-hadoop-script-actions-linux.md)
+### [Presto をインストールして使用する](hdinsight-hadoop-install-presto.md)
 ### [Mono のインストールまたは更新](hdinsight-hadoop-install-mono.md)
 ### [Hive ライブラリを追加する](hdinsight-hadoop-add-hive-libraries.md)
 ### [Giraph の使用](hdinsight-hadoop-giraph-install-linux.md)
@@ -221,5 +222,6 @@
 ### [Ambari API を使用してクラスターを監視する](hdinsight-monitor-use-ambari-api.md)
 
 # リソース
+## [HDInsight 用の Windows ツール](hdinsight-hadoop-windows-tools.md)
 ## [フォーラムで質問する](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight)
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)

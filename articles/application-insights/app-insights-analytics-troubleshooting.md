@@ -3,7 +3,7 @@ title: "Azure Application Insights の Analytics のトラブルシューティ�
 description: "Application Insights Analyticsで問題が発生しましたか? ここから開始します。 "
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 9bbd5859-3584-4d80-9b6d-d5910fa48baa
 ms.service: application-insights

@@ -4,7 +4,7 @@ description: "この記事は、Azure Security Center の監視機能の使用�
 services: security-center
 documentationcenter: na
 author: YuriDio
-manager: swadhwa
+manager: mbaldwin
 editor: 
 ms.assetid: 3bd5b122-1695-495f-ad9a-7c2a4cd1c808
 ms.service: security-center
@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
+ms.date: 05/09/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
-ms.openlocfilehash: d796566676e13b312832dd543f52d3475d877ef8
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: f7f50c305a5ae6ad7bba4e793f4cb6a0735b80b4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -28,18 +29,17 @@ ms.lasthandoff: 03/31/2017
 私たちは監視について、状況に対処できるように、イベントが発生するのを監視して待機することだと考えがちです。 セキュリティの監視は、組織の標準やベスト プラクティスを満たしていないシステムを識別するために、リソースを監査するプロアクティブな戦略を持つことを意味します。
 
 ## <a name="monitoring-security-health"></a>セキュリティ ヘルスの監視
-サブスクリプションのリソースに対して[セキュリティ ポリシー](security-center-policies.md)を有効にすると、Security Center は、リソースのセキュリティを分析して潜在的な脆弱性を特定します。 ネットワークの構成に関する情報は、すぐに利用可能になります。 これに対して、セキュリティ更新プログラムの状態やオペレーティング システムの構成など、仮想マシンの構成に関する情報は、利用可能になるまで 1 時間以上かかることがあります。 リソースのセキュリティの状態は、**[Resources security health (リソース セキュリティの正常性)]** ブレードに表示されます。問題がある場合には、同じブレードで問題も確認できます。 これらの問題の一覧は、 **[推奨事項]** ブレードでも確認できます。
+サブスクリプションのリソースに対して[セキュリティ ポリシー](security-center-policies.md)を有効にすると、Security Center は、リソースのセキュリティを分析して潜在的な脆弱性を特定します。 ネットワークの構成に関する情報は、すぐに利用可能になります。 これに対して、セキュリティ更新プログラムの状態やオペレーティング システムの構成など、仮想マシンの構成に関する情報は、利用可能になるまで 1 時間以上かかることがあります。 リソースのセキュリティの状態は、**[Prevention]\(防止\)** セクションに表示されます。問題がある場合には、同じブレードで問題も確認できます。 これらの問題の一覧は、**[Recommendations]\(推奨事項\)** タイルでも確認できます。
 
 推奨事項の適用方法の詳細については、「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」を参照してください。
 
-**[Resource security health (リソース セキュリティの正常性)]** タイルでは、リソースのセキュリティの状態を監視することができます。 以下の例では、重大度が高レベルと中レベルの問題が多数あります。いずれも、注意が必要な問題です。 有効になっているセキュリティ ポリシーが、監視されているコントロールのタイプに影響します。
+**[Prevention]\(防止\)** セクションでは、ご利用のリソースに関するセキュリティの状態を監視できます。 以下の例のように、各リソースのタイル (コンピューティング、ネットワーク、ストレージとデータ、アプリケーション) で、特定された問題の総数を確認できます。
 
-![[Resources security health (リソース セキュリティの正常性)] タイル](./media/security-center-monitoring/security-center-monitoring-fig1-new001-2017.png)
+![[Resources security health (リソース セキュリティの正常性)] タイル](./media/security-center-monitoring/security-center-monitoring-fig1-newUI-2017.png)
 
-セキュリティ更新プログラムが適用されていない仮想マシンや[ネットワーク セキュリティ グループ](/virtual-network/virtual-networks-nsg.md)がないサブネットなど、対処する必要がある脆弱性が Security Center によって特定された場合、ここに表示されます。
 
 ### <a name="monitor-compute"></a>コンピューティングの監視
-**[Resource security health (リソース セキュリティの正常性)]** タイルの **[Compute (コンピューティング)]** をクリックすると、**[Compute (コンピューティング)]** ブレードが開いて 3 つのタブが表示されます。
+**[Compute]\(コンピューティング\)** タイルをクリックすると、**[Compute]\(コンピューティング\)** ブレードが開いて 3 つのタブが表示されます。
 
 - **[概要]**: 監視と仮想マシンの推奨事項です。
 - **[仮想マシン]**: すべての仮想マシンと現在のセキュリティの状態が一覧表示されます。
@@ -119,7 +119,7 @@ ms.lasthandoff: 03/31/2017
 ![クラウド サービスの推奨事項](./media/security-center-monitoring/security-center-monitoring-fig8-new4.png)  
 
 ### <a name="monitor-virtual-networks"></a>仮想ネットワークの監視
-**[Resources security health (リソース セキュリティの正常性)]** タイルで **[ネットワーク]** をクリックすると、**[ネットワーク]** ブレードが開き、以下のスクリーンショットに示すような詳細が表示されます。
+**[ネットワーク]** タイルをクリックすると、**[ネットワーク]** ブレードが開き、以下のスクリーンショットに示すような詳細が表示されます。
 
 ![Networking blade](./media/security-center-monitoring/security-center-monitoring-fig9-new3.png)
 
@@ -170,11 +170,11 @@ ms.lasthandoff: 03/31/2017
 
 このブレードの下部には、この仮想マシンに対する推奨事項が表示されます。推奨事項の内容は、前に説明したものとほぼ同じです。 ここでは、推奨事項をクリックして詳細を確認したり、必要なセキュリティ制御または構成を適用したりできます。
 
-### <a name="monitor-data"></a>データの監視
+### <a name="monitor-storage--data"></a>ストレージとデータの監視
 
-**[Resources security health (リソースのセキュリティ正常性)]** タイルの **[SQL & Data (SQL & データ)]** をクリックすると、**[Data Resources (データ リソース)]** ブレードが開いて SQL とストレージの推奨事項が表示されます。 また、データベースの全般的な正常性状態に関する [推奨事項](security-center-sql-service-recommendations.md) も示されます。 ストレージの暗号化の詳細については、「[Enable encryption for Azure storage account in Azure Security Center (Azure Security Center における Azure ストレージ アカウントの暗号化の有効化)](security-center-enable-encryption-for-storage-account.md)」を参照してください。
+**[Prevention]\(防止\)** セクションの **[Storage & data]\(ストレージとデータ\)** をクリックすると、**[Data Resources]\(データ リソース\)** ブレードが開き、SQL と Storage の推奨事項が表示されます。 また、データベースの全般的な正常性状態に関する [推奨事項](security-center-sql-service-recommendations.md) も示されます。 ストレージの暗号化の詳細については、「[Enable encryption for Azure storage account in Azure Security Center (Azure Security Center における Azure ストレージ アカウントの暗号化の有効化)](security-center-enable-encryption-for-storage-account.md)」を参照してください。
 
-![データ リソース](./media/security-center-monitoring/security-center-monitoring-fig13-ga-new.png)
+![データ リソース](./media/security-center-monitoring/security-center-monitoring-fig13-newUI-2017.png)
 
 **[SQL Recommendations (SQL の推奨事項)]** で任意の推奨事項をクリックすると、問題解決のためのアクションの詳細を確認できます。 次の例では、**[Database Auditing & Threat detection on SQL databases (データベースの監査と SQL Database の脅威の検出)]** という推奨事項を展開した状態を示しています。
 

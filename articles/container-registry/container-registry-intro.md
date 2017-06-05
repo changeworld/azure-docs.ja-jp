@@ -17,10 +17,11 @@ ms.workload: na
 ms.date: 03/24/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 25301f1bbacdf2f1e3d04ed3470eafd31098ea32
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 300958a69fc854cb8db02120a383a4cbbfcacd7b
+ms.openlocfilehash: 5a5085416bff96c37fcde8a25deffe7dbd8f70d6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/20/2017
 
 ---
 # <a name="introduction-to-private-docker-container-registries"></a>プライベート Docker コンテナー レジストリの概要
@@ -69,6 +70,6 @@ Azure コンテナー レジストリからさまざまなデプロイ ターゲ
 * [Azure Portal を使用したコンテナー レジストリの作成](container-registry-get-started-portal.md)
 * [Azure CLI を使用したコンテナー レジストリの作成](container-registry-get-started-azure-cli.md)
 * [Docker CLI を使用した最初のイメージのプッシュ](container-registry-get-started-docker-cli.md)
-* Visual Studio Team Services、Azure Container Service、Azure Container Registry を使用して継続的な統合とデプロイ ワークフローを構築する場合は、[こちらのチュートリアル](../container-service/container-service-setup-ci-cd.md)を参照してください。
+* Visual Studio Team Services、Azure Container Service、Azure Container Registry を使用して継続的な統合とデプロイ ワークフローを構築する場合は、[こちらのチュートリアル](../container-service/container-service-docker-swarm-setup-ci-cd.md)を参照してください。
 * Azure で (パブリック エンドポイントなしの) 独自の Docker プライベート レジストリを設定したい場合は、「[Azure への独自のプライベート Docker Registry のデプロイ](../virtual-machines/virtual-machines-linux-docker-registry-in-blob-storage.md)」を参照してください。
 

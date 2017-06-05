@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2017
 ms.author: jingwang
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 06f7b38f5d08f2182f08d38a11dec526042c1828
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 4b496eb3d82249e8dc29833fa7bf94ffbfd87ea0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -82,7 +83,7 @@ Azure Data Factory は次のファイル形式をサポートしています。
 * テキスト ファイルからコピーして、データやヘッダー情報を含まない先頭の数行をスキップする:  `skipLineCount` を指定して、スキップする行数を示します。 ファイルの残りの部分にヘッダー行が含まれている場合は、`firstRowAsHeader` も指定できます。 `skipLineCount` と `firstRowAsHeader` の両方を指定した場合は、まず行がスキップされ、次に入力ファイルからヘッダー情報が読み取られます。
 
 ## <a name="json-format"></a>JSON 形式
-**JSON ファイルをそのまま DocumentDB にインポートしたり、DocumentDB からエクスポートしたりする**には、[Azure DocumentDB との間でのデータ移動](data-factory-azure-documentdb-connector.md)に関する記事の「[JSON ドキュメントのインポート/エクスポート](data-factory-azure-documentdb-connector.md#importexport-json-documents)」を参照してください。
+**Azure Cosmos DB との間で JSON ファイルをそのままインポート/エクスポートする**場合は、[Azure Cosmos DB との間でのデータの移動](data-factory-azure-documentdb-connector.md)に関する記事の「[JSON ドキュメントのインポート/エクスポート](data-factory-azure-documentdb-connector.md#importexport-json-documents)」をご覧ください。
 
 JSON ファイルを解析するか、JSON 形式でデータを書き込む場合は、`format` セクションの `type` プロパティを **JsonFormat** に設定します。 `format` セクションに**オプションの**プロパティを指定することもできます。 構成方法については、「[JsonFormat の例](#jsonformat-example)」セクションを参照してください。
 

@@ -12,12 +12,13 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 04/02/2017
+ms.date: 05/01/2017
 ms.author: liamca
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 56eeed7634fca840172ab828be5f202d80f3f4fb
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: f4e371fc16bc57e6963f1ec51c0ea864fa568f0c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -80,7 +81,7 @@ Bing や Google などの検索エンジンとこれらが提供する高いパ�
 分散した Search サービスの同期を維持するには、[Azure Search インデクサー](search-indexer-overview.md)を使用するか、Push API ([Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/) とも呼ばれます) を使用します。  
 
 ### <a name="azure-search-indexers"></a>Azure Search インデクサー
-Azure Search インデクサーを使用している場合は、Azure SQL DB や DocumentDB などの中央のデータストアからデータの変更を既にインポートしています。 新しい Search サービスを作成するときは、この同じデータストアを参照する、そのサービス用の新しい Azure Search インデクサーも作成します。 これにより、新しい変更がデータストアに書き込まれるたびに、さまざまなインデクサーによってインデックスが作成されます。  
+Azure Search インデクサーを使用している場合は、Azure SQL DB や Azure Cosmos DB などの中央のデータストアからデータの変更を既にインポートしています。 新しい Search サービスを作成するときは、この同じデータストアを参照する、そのサービス用の新しい Azure Search インデクサーも作成します。 これにより、新しい変更がデータストアに書き込まれるたびに、さまざまなインデクサーによってインデックスが作成されます。  
 
 このアーキテクチャの例を次に示します。
 

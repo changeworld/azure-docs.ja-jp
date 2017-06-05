@@ -6,7 +6,7 @@
 Azure Resource Manager テンプレートでは、リソース間の依存関係を定義することで、JSON 言語で Azure IaaS インフラストラクチャを宣言によって指定できます。 Azure リソース マネージャー テンプレートの概要については、次の記事をご覧ください。
 
 * [リソース グループの概要](../articles/azure-resource-manager/resource-group-overview.md)
-* [Azure PowerShell を使用したテンプレートのデプロイ](../articles/virtual-machines/windows/ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Azure PowerShell を使用したテンプレートのデプロイ](../articles/virtual-machines/windows/ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ### <a name="prerequisites"></a>前提条件
 1. お使いのオペレーティング システムの Azure コマンドライン ツールを[ここ](https://azure.microsoft.com/downloads/)からダウンロードします。

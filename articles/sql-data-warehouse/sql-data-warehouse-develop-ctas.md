@@ -3,7 +3,7 @@ title: "SQL Data Warehouse の CREATE TABLE AS SELECT (CTAS) | Microsoft Docs"
 description: "ソリューションの開発のために、Azure SQL Data Warehouse の CREATE TABLE AS SELECT (CTAS) ステートメントでコーディングする際のヒントです。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: jrowlandjones
+author: shivaniguptamsft
 manager: jhubbard
 editor: 
 ms.assetid: 68ac9a94-09f9-424b-b536-06a125a653bd
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: queries
 ms.date: 01/30/2017
-ms.author: jrj;barbkess
-translationtype: Human Translation
+ms.author: shigu;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 68655fff239bfd76f93ab9177d161d9534cbb901
 ms.openlocfilehash: 150113dda95ab021dd7ad8696b5886373ba982b8
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/31/2017
 
 

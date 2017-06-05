@@ -1,40 +1,44 @@
 ---
-title: "Azure Search 用の DocumentDB データ ソースのインデックス作成 | Microsoft Docs"
-description: "この記事では、DocumentDB をデータ ソースとする Azure Search インデクサーの作成方法について説明します。"
+title: "Azure Search 用の Cosmos DB データ ソースのインデックス作成 | Microsoft Docs"
+description: "この記事では、Cosmos DB をデータ ソースとする Azure Search インデクサーの作成方法について説明します。"
 services: search
 documentationcenter: 
 author: chaosrealm
 manager: pablocas
 editor: 
 ms.assetid: 
-ms.service: documentdb
+ms.service: cosmosdb
 ms.devlang: rest-api
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: search
-ms.date: 04/11/2017
+ms.date: 05/01/2017
 ms.author: eugenesh
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 5f657ed128103d4bf1304dfc5fae8d86ef950d87
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 333f8320820a1729a14ffc2e29446e7452aa768e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="connecting-documentdb-with-azure-search-using-indexers"></a>インデクサーを使用した DocumentDB と Azure Search の接続
+# <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>インデクサーを使用した Cosmos DB と Azure Search の接続
 
-DocumentDB データの優れた検索エクスペリエンスを実装する必要がある場合、Azure Search インデクサーを使用すると、Azure Search インデックスにデータをプルできます。 この記事では、インデックス作成のインフラストラクチャを保守するコードを記述することなく Azure DocumentDB と Azure Search を統合する方法を説明します。
+Cosmos DB データの優れた検索エクスペリエンスを実装する必要がある場合、Azure Search インデクサーを使用すると、Azure Search インデックスにデータをプルできます。 この記事では、インデックス作成のインフラストラクチャを保守するコードを記述することなく Azure Cosmos DB と Azure Search を統合する方法を説明します。
 
-DocumentDB のインデクサーをセットアップするには、[Azure Search サービス](search-create-service-portal.md)、インデックス、データ ソース、そして最後に、インデクサーが必要です。 これらのオブジェクトは、[ポータル](search-import-data-portal.md)、[.NET SDK](/dotnet/api/microsoft.azure.search)、または .NET 以外のすべての言語用の [REST API](/rest/api/searchservice/) を使用して作成します。 
+Cosmos DB のインデクサーをセットアップするには、[Azure Search サービス](search-create-service-portal.md)、インデックス、データ ソース、そして最後に、インデクサーが必要です。 これらのオブジェクトは、[ポータル](search-import-data-portal.md)、[.NET SDK](/dotnet/api/microsoft.azure.search)、または .NET 以外のすべての言語用の [REST API](/rest/api/searchservice/) を使用して作成します。 
 
 ポータルを選択した場合は、[データのインポート ウィザード](search-import-data-portal.md)に従って、これらすべてのリソースを作成します。
 
 > [!NOTE]
-> **データのインポート** ウィザードを DocumentDB ダッシュボードから起動して、そのデータ ソースのインデックス作成を簡略化できます。 左側のナビゲーションで、**[コレクション]** > **[Add Azure Search (Azure Search の追加)]** に移動します。
+> Cosmos DB とは、次世代の DocumentDB です。 製品名は変更されていますが、構文は以前と同じです。 このインデクサーの記事で指示されているように、引き続き `documentdb` を指定してください。 
+
+> [!TIP]
+> **データのインポート** ウィザードを Cosmos DB ダッシュボードから起動して、そのデータ ソースのインデックス作成を簡略化できます。 左側のナビゲーションで、**[コレクション]** > **[Add Azure Search (Azure Search の追加)]** に移動します。
 
 <a name="Concepts"></a>
 ## <a name="azure-search-indexer-concepts"></a>Azure Search インデクサーの概念
-Azure Search では、データ ソース (DocumentDB を含む) とそのデータ ソースに対して動作するインデクサーの作成および管理をサポートしています。
+Azure Search では、データ ソース (Cosmos DB を含む) とそのデータ ソースに対して動作するインデクサーの作成および管理をサポートしています。
 
 **データ ソース**は、インデックスを作成するデータ、資格情報、およびデータの変更を識別するためのポリシー (コレクション内の変更または削除されたドキュメントなど) を指定します。 データ ソースは、複数のインデクサーから使用できるように、独立したリソースとして定義します。
 
@@ -67,20 +71,20 @@ Azure Search では、データ ソース (DocumentDB を含む) とそのデー
 
 要求の本文には、次のフィールドを含むデータ ソースの定義が含まれている必要があります。
 
-* **name**: DocumentDB データベースを表す名前を選択します。
+* **name**: Cosmos DB データベースを表す名前を選択します。
 * **type**: は `documentdb` である必要があります。
 * **credentials**:
   
-  * **connectionString**: 必須。 次の形式で Azure DocumentDB データベースへの接続情報を指定します。`AccountEndpoint=<DocumentDB endpoint url>;AccountKey=<DocumentDB auth key>;Database=<DocumentDB database id>`
+  * **connectionString**: 必須。 次の形式で Azure Cosmos DB データベースへの接続情報を指定します。`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`
 * **container**:
   
-  * **name**: 必須。 インデックスを作成する DocumentDB コレクションの ID を指定します。
+  * **name**: 必須。 インデックスを作成する Cosmos DB コレクションの ID を指定します。
   * **query**: 省略可能。 任意の JSON ドキュメントを、Azure Search がインデックスを作成できるフラット スキーマにフラット化するクエリを指定できます。
 * **dataChangeDetectionPolicy**: 推奨。 「[変更されたドキュメントのインデックス作成](#DataChangeDetectionPolicy)」セクションを参照してください。
 * **dataDeletionDetectionPolicy**: 省略可能。 「[削除されたドキュメントのインデックス作成](#DataDeletionDetectionPolicy)」セクションを参照してください。
 
 ### <a name="using-queries-to-shape-indexed-data"></a>インデックス作成するデータの処理にクエリを活用する
-DocumentDB クエリを指定すると、ネストされたプロパティや配列の平坦化、JSON プロパティのプロジェクション、インデックス作成するデータのフィルター処理を行うことができます。 
+Cosmos DB クエリを指定すると、ネストされたプロパティや配列の平坦化、JSON プロパティのプロジェクション、インデックスを作成するデータのフィルター処理を行うことができます。 
 
 ドキュメントのサンプル:
 
@@ -142,7 +146,7 @@ DocumentDB クエリを指定すると、ネストされたプロパティや配
 ターゲット インデックスのスキーマがソース JSON ドキュメントのスキーマまたはカスタムのクエリ プロジェクションの出力と互換性があることを確認します。
 
 > [!NOTE]
-> パーティション分割されたコレクションでは、DocumentDB の `_rid` プロパティが既定のドキュメント キーになります。これは、Azure Search では `rid` という名前に変更されます。 また、DocumentDB の `_rid` 値には、Azure Search キーでは無効な文字が含まれています。 そのため、`_rid` 値は Base64 でエンコードされます。
+> パーティション分割されたコレクションでは、Cosmos DB の `_rid` プロパティが既定のドキュメント キーになります。これは、Azure Search では `rid` という名前に変更されます。 また、Cosmos DB の `_rid` 値には、Azure Search キーでは無効な文字が含まれています。 そのため、`_rid` 値は Base64 でエンコードされます。
 > 
 > 
 
@@ -229,7 +233,7 @@ DocumentDB クエリを指定すると、ネストされたプロパティや配
 
 <a name="DataChangeDetectionPolicy"></a>
 ## <a name="indexing-changed-documents"></a>変更されたドキュメントのインデックス作成
-データ変更の検出ポリシーの目的は、変更されたデータ項目を効率的に識別することです。 現在、唯一サポートされているポリシーは、次に示すように、DocumentDB によって指定される `_ts` (タイムスタンプ) プロパティを使用した `High Water Mark` ポリシーです。
+データ変更の検出ポリシーの目的は、変更されたデータ項目を効率的に識別することです。 現在、唯一サポートされているポリシーは、次に示すように、Cosmos DB によって指定される `_ts` (タイムスタンプ) プロパティを使用した `High Water Mark` ポリシーです。
 
     {
         "@odata.type" : "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",
@@ -277,7 +281,7 @@ DocumentDB クエリを指定すると、ネストされたプロパティや配
     }
 
 ## <a name="NextSteps"></a>次のステップ
-ご利用ありがとうございます。 DocumentDB のインデクサーを使用して、Azure DocumentDB を Azure Search と統合する方法についての説明は以上で終了です。
+ご利用ありがとうございます。 Cosmos DB のインデクサーを使用して、Azure Cosmos DB を Azure Search と統合する方法についての説明は以上で終了です。
 
-* Azure DocumentDB の詳細については、 [DocumentDB サービス ページ](https://azure.microsoft.com/services/documentdb/)をご覧ください。
+* Azure Cosmos DB の詳細については、[Cosmos DB のサービス ページ](https://azure.microsoft.com/services/documentdb/)をご覧ください。
 * Azure Search の詳細については、 [Search サービス ページ](https://azure.microsoft.com/services/search/)をご覧ください。
