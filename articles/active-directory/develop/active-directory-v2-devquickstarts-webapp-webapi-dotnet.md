@@ -115,7 +115,7 @@ public void ConfigureAuth(IAppBuilder app)
 
 ```PM> Install-Package Microsoft.Identity.Client -ProjectName TodoList-WebApp -IncludePrerelease```
 
-* MSAL 用の `App_Start\Startup.Auth.cs` ファイルにもう&1; つの `using` ステートメントを追加します。
+* MSAL 用の `App_Start\Startup.Auth.cs` ファイルにもう 1 つの `using` ステートメントを追加します。
 * 新しいメソッドとして `OnAuthorizationCodeReceived` イベント ハンドラーを追加します。  このハンドラーは、MSAL を使用して To-Do List API へのアクセス トークンを取得し、後で使用できるように MSAL のトークン キャッシュに格納します。
 
 ```C#
