@@ -46,7 +46,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 
 | パラメーター |  | Description |
 | --- | --- | --- |
-| ID |必須 |Azure AD はこの属性を使用して、返される応答の `InResponseTo` 属性を設定します。 ID の&1; 文字目に数字を使用することはできないので、一般的な方法としては、GUID の文字列表現の前に "id" のような文字列を付加します。 たとえば、 `id6c1c178c166d486687be4aaf5e482730` は有効な ID です。 |
+| ID |必須 |Azure AD はこの属性を使用して、返される応答の `InResponseTo` 属性を設定します。 ID の 1 文字目に数字を使用することはできないので、一般的な方法としては、GUID の文字列表現の前に "id" のような文字列を付加します。 たとえば、 `id6c1c178c166d486687be4aaf5e482730` は有効な ID です。 |
 | バージョン |必須 |これは、 **2.0**にする必要があります。 |
 | IssueInstant |必須 |これは、UTC 値と [ラウンドトリップ書式 ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx)の DateTime 文字列です。 Azure AD はこの型の DateTime 値を期待しますが、値を評価または使用することはありません。 |
 | AssertionConsumerServiceUrl |省略可能 |指定する場合、この値は Azure AD でのクラウド サービスの `RedirectUri` と一致する必要があります。 |
@@ -85,7 +85,7 @@ Azure AD は、`AuthnRequest` の `Conditions` 要素も無視します。
 Azure AD は `AllowCreate` 属性を無視します。
 
 ### <a name="requestauthncontext"></a>RequestAuthnContext
-`RequestedAuthnContext` 要素は、必要な認証方法を指定します。 Azure AD に送信される `AuthnRequest` 要素では省略可能です。 Azure AD がサポートする `AuthnContextClassRef` の値は、`urn:oasis:names:tc:SAML:2.0:ac:classes:Password` のただ&1; つです。
+`RequestedAuthnContext` 要素は、必要な認証方法を指定します。 Azure AD に送信される `AuthnRequest` 要素では省略可能です。 Azure AD がサポートする `AuthnContextClassRef` の値は、`urn:oasis:names:tc:SAML:2.0:ac:classes:Password` のただ 1 つです。
 
 ### <a name="scoping"></a>Scoping
 ID プロバイダーのリストが含まれる `Scoping` 要素は、Azure AD に送信される `AuthnRequest` 要素では省略可能です。
