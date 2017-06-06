@@ -56,7 +56,7 @@ Azure Logic Apps 用の Visual Studio ツールをインストールして構成
 1.    Cloud Explorer を開くには、**[表示]** メニューの **[Cloud Explorer]** を選択します。
 2.    リソース グループまたはリソースの種類のいずれかでロジック アプリを参照します。 
 
-    リソース タイプで参照する場合は、Azure サブスクリプションを選択し、[Logic Apps] セクションを展開してロジック アプリを&1; つ選択します。 
+    リソース タイプで参照する場合は、Azure サブスクリプションを選択し、[Logic Apps] セクションを展開してロジック アプリを 1 つ選択します。 
     ロジック アプリを右クリックするか、Cloud Explorer の下部にある **[アクション]** メニューから選択できます。
 
     ![ロジック アプリを参照する](./media/logic-apps-manage-from-vs/browse.png)
