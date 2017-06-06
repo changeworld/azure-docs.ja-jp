@@ -12,11 +12,12 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 1/24/2017
+ms.date: 06/05/2017
 ms.author: nisoneji
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
 ms.openlocfilehash: 6e52a647e817b64e331937c0b0f1d44f9f6c11a0
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/06/2017
 
 

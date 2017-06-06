@@ -13,10 +13,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/12/2017
-ms.author: clemensv;jotaub;hillaryc;sethm
-translationtype: Human Translation
+ms.author: clemensv;hillaryc;sethm
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: 9197e429f25f5431d7ea36170c3339cd4d4bc32d
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/12/2017
 
 

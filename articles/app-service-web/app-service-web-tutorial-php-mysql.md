@@ -50,6 +50,8 @@ ms.lasthandoff: 06/01/2017
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
 ## <a name="prepare-local-mysql"></a>ローカル MySQL を準備する
 
 この手順では、このチュートリアルで使用するデータベースをローカル MySQL サーバーに作成します。
@@ -156,7 +158,7 @@ php artisan serve
 
 ターミナル ウィンドウで Azure CLI 2.0 を使用して、Azure App Service で PHP アプリケーションをホストするために必要なリソースを作成します。 [az login](/cli/azure/#login) コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。 
 
-```azurecli 
+```azurecli-interactive 
 az login 
 ``` 
 
@@ -166,7 +168,7 @@ az login
 
 次の例は、北ヨーロッパ リージョンにリソース グループを作成します。
 
-```azurecli
+```azurecli-interactive
 az group create --name myResourceGroup --location "North Europe"
 ```
 
@@ -178,7 +180,7 @@ az group create --name myResourceGroup --location "North Europe"
 
 次のコマンドの _&lt;mysql_server_name>_ プレースホルダーを独自の一意の MySQL サーバー名に置き換えます。 この名前は、MySQL サーバーのホスト名 (`<mysql_server_name>.database.windows.net`) の一部であるため、グローバルに一意である必要があります。 同様に、_&lt;admin_user>_ と _&lt;admin_password>_ を独自の値に置き換えます。
 
-```azurecli
+```azurecli-interactive
 az mysql server create \
     --name <mysql_server_name> \
     --resource-group myResourceGroup \
@@ -206,7 +208,7 @@ MySQL サーバーが作成されると、Azure CLI によって、次の例の�
 
 [az mysql server firewall-rule create](/cli/azure/mysql/server/firewall-rule#create) コマンドを使用して、MySQL サーバーのクライアントへの接続を許可するファイアウォール ルールを作成します。 
 
-```azurecli
+```azurecli-interactive
 az mysql server firewall-rule create \
     --name allIPs \
     --server <mysql_server_name> \
@@ -332,7 +334,7 @@ git commit -m "keep sensitive data out of git"
 
 次の例では、**Free** 価格レベルを使用して、_myAppServicePlan_ という名前の App Service プランを作成します。
 
-```azurecli
+```azurecli-interactive
 az appservice plan create \
     --name myAppServicePlan \
     --resource-group myResourceGroup \
@@ -363,7 +365,7 @@ App Service プランを作成したので、_myAppServicePlan_ App Service プ�
 
 次のコマンドの _&lt;appname>_ プレースホルダーを独自の一意のアプリ名に置き換えます。 この一意の名前は、Web アプリの既定のドメイン名の一部として使用されます。そのため、この名前は Azure のすべてのアプリで一意である必要があります。 後で、Web アプリをユーザーに公開する前に、任意のカスタム DNS エントリを Web アプリにマップできます。 
 
-```azurecli
+```azurecli-interactive
 az appservice web create \
     --name <app_name> \
     --resource-group myResourceGroup \
@@ -393,7 +395,7 @@ Web アプリが作成されると、Azure CLI によって次の例のような
 
 次のコマンドは、PHP のバージョンを _7.0_ に設定します。
 
-```azurecli
+```azurecli-interactive
 az appservice web config update \
     --name <app_name> \
     --resource-group myResourceGroup \
@@ -408,7 +410,7 @@ App Service では、[az appservice web config appsettings update](/cli/azure/ap
 
 次のコマンドを使用して、アプリの `DB_HOST`、`DB_DATABASE`、`DB_USERNAME`、および`DB_PASSWORD`の各設定を構成できます。 プレースホルダーの _&lt;appname>_、_&lt;mysql_server_name>_、_&lt;phpapp_user>_、および _&lt;phpapp_password>_ を置き換えます。
 
-```azurecli
+```azurecli-interactive
 az appservice web config appsettings update \
     --name <app_name> \
     --resource-group myResourceGroup \
@@ -440,7 +442,7 @@ php artisan key:generate --show
 
 [az appservice web config appsettings update](/cli/azure/appservice/web/config/appsettings#update) コマンドを使用して、App Service Web アプリにアプリケーション キーを設定します。 プレースホルダーの _&lt;appname>_ と _&lt;outputofphpartisankey:generate>_ を置き換えます。
 
-```azurecli
+```azurecli-interactive
 az appservice web config appsettings update \
     --name <app_name> \
     --resource-group myResourceGroup \
@@ -483,13 +485,13 @@ FTP とローカル Git の場合、デプロイを認証するには、サー�
 
 デプロイ ユーザー名とパスワードを作成している場合は、次のコマンドを使用してユーザー名を表示できます。
 
-```azurecli
+```azurecli-interactive
 az appservice web deployment user show
 ```
 
 デプロイ ユーザーを構成していない場合は、[az appservice web deployment user set](/cli/azure/appservice/web/deployment/user#set) コマンドを実行してデプロイ資格情報を作成します。 
 
-```azurecli
+```azurecli-interactive
 az appservice web deployment user set \
     --user-name <username> \
     --password <minimum-8-char-capital-lowercase-number>
@@ -507,7 +509,7 @@ az appservice web deployment user set \
 
 Azure Web アプリへのローカル Git アクセスを構成するには、[az appservice web source-control config-local-git](/cli/azure/appservice/web/source-control#config-local-git) コマンドを使用します。 
 
-```azurecli
+```azurecli-interactive
 az appservice web source-control config-local-git \
     --name <app_name> \
     --resource-group myResourceGroup
@@ -718,7 +720,7 @@ Azure App Service で PHP アプリケーションを実行している間、コ
 
 ログのストリーミングを開始するには、[az appservice web log tail](/cli/azure/appservice/web/log#tail) コマンドを使用します。
 
-```azurecli 
+```azurecli-interactive 
 az appservice web log tail \
     --name <app_name> \
     --resource-group myResourceGroup 
@@ -763,7 +765,7 @@ Web アプリの "_ブレード_" (水平方向に開かれるポータル ペ�
  
 これらのリソースが別のチュートリアルで不要である場合 (「[次のステップ](#next)」を参照)、次のコマンドを実行して削除することができます。 
   
-```azurecli 
+```azurecli-interactive
 az group delete --name myResourceGroup 
 ``` 
 

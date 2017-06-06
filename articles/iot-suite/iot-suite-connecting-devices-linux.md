@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/25/2017
+ms.date: 06/05/2017
 ms.author: dobett
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c844f9a84878f12fbdf7a5b4eaf7bbf19f4ce666
 ms.openlocfilehash: 4a1615c4bea8c54d506c3252e2de42642bb55e46
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/27/2017
 
 
@@ -122,7 +123,7 @@ int main(void)
     cmake_minimum_required(VERSION 2.8.11)
     compileAsC99()
 
-    set(AZUREIOT_INC_FOLDER ".." "../parson" "/usr/include/azureiot" "/usr/include/azureiot/inc")
+    set(AZUREIOT_INC_FOLDER "${CMAKE_SOURCE_DIR}" "${CMAKE_SOURCE_DIR}/parson" "/usr/include/azureiot" "/usr/include/azureiot/inc")
 
     include_directories(${AZUREIOT_INC_FOLDER})
 
@@ -137,8 +138,7 @@ int main(void)
         ./remote_monitoring.h
     )
 
-    add_executable(sample_app ${sample_application_c_files} ${sample_application_h
-    _files})
+    add_executable(sample_app ${sample_application_c_files} ${sample_application_h_files})
 
     target_link_libraries(sample_app
         serializer

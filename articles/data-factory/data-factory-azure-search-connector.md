@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 06/04/2017
 ms.author: jingwang
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
 ms.openlocfilehash: 73cd37a83ba31f428b3d0262230e4c650692a842
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/10/2017
 
 ---

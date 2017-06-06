@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 02/06/2017
+ms.date: 06/05/2017
 ms.author: nisoneji
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: bb078183b24cd5c5172b48f1135eced061220cf5
 ms.openlocfilehash: 3c0c00bf9e4380a682ff1e155fb6d9a3826f4b00
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/21/2017
 
 

@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ums.workload: na
 ms.date: 03/22/2017
 ms.author: barclayn
-translationtype: Human Translation
+ms.custom: azlog
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
 ms.openlocfilehash: ba97d1a98b72c5afc98bbdf6c81b0ec19f338e74
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/13/2017
 
 

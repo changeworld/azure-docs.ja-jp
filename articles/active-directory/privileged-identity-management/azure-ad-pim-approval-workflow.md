@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/28/2017
 ms.author: barclayn
+ms.custom: pim
 ms.translationtype: Human Translation
 ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
 ms.openlocfilehash: 31b797361fca0c92db228f4150a6bff7e38e2b22
 ms.contentlocale: ja-jp
 ms.lasthandoff: 04/29/2017
-
 
 ---
 

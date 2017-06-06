@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 2/15/2017
+ms.date: 06/05/2017
 ms.author: pratshar
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6b1a5b2879a7b98ec4ad3e8ebbc9e95c0740d89f
 ms.openlocfilehash: 3aaa005319b1ce2a10cd913c63b31860d31b797e
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/23/2017
 
 
@@ -27,7 +28,7 @@ ms.lasthandoff: 02/23/2017
 > * [テスト フェールオーバー (VMM から VMM)](./site-recovery-test-failover-vmm-to-vmm.md)
 
 
-この記事では、復旧サイトとして VMM で管理されたオンプレミスのサイトを使う Site Recovery で保護されている仮想マシンと物理サーバーのテスト フェールオーバーまたは DR ドリルを行うための情報と手順について説明します。 
+この記事では、復旧サイトとして VMM で管理されたオンプレミスのサイトを使う Site Recovery で保護されている仮想マシンと物理サーバーのテスト フェールオーバーまたは DR ドリルを行うための情報と手順について説明します。
 
 コメントや質問はこの記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)で投稿してください。
 
@@ -49,7 +50,7 @@ ms.lasthandoff: 02/23/2017
 テスト フェールオーバーに関係している仮想マシンが DHCP を使用する場合、テスト DHCP サーバーは、テスト フェールオーバー用に作成された、分離したネットワーク内で作成する必要があります。
 
 ### <a name="prepare-active-directory"></a>Active Directory の準備
-アプリケーションのテストのためにテスト フェールオーバーを実行するには、テスト環境内に Active Directory 運用環境のコピーが必要です。 詳細については、 [Active Directory 用のテスト フェールオーバーの考慮事項](site-recovery-active-directory.md#test-failover-considerations) を参照してください。 
+アプリケーションのテストのためにテスト フェールオーバーを実行するには、テスト環境内に Active Directory 運用環境のコピーが必要です。 詳細については、 [Active Directory 用のテスト フェールオーバーの考慮事項](site-recovery-active-directory.md#test-failover-considerations) を参照してください。
 
 ### <a name="prepare-dns"></a>DNS の準備
 次のように、テスト フェールオーバー用の DNS サーバーを準備します。
@@ -76,9 +77,9 @@ ms.lasthandoff: 02/23/2017
 
 1. **[復旧計画]**  >  *recoveryplan_name* を選択します。 **フェールオーバー** > **Test フェールオーバー**で投稿してください。
 1. **[テスト フェールオーバー]** ブレードで、テスト フェールオーバー後に仮想マシンをネットワークに接続する方法を指定します。 詳しくは[ネットワーク オプション](#network-options-in-site-recovery)をご覧ください。
-1. **[ジョブ]** タブで、フェールオーバーの進行状況を追跡します。 
+1. **[ジョブ]** タブで、フェールオーバーの進行状況を追跡します。
 1. 完了後に、仮想マシンが正常に起動することを確認します。
-1. 完了したら、復旧計画の **[Cleanup test failover (テスト フェールオーバーのクリーンアップ)]** をクリックします。 **[メモ]** を使用して、テスト フェールオーバーに関連する観察結果をすべて記録し、保存します。 これで、テスト フェールオーバー中に作成された仮想マシンとネットワークが削除されます。 
+1. 完了したら、復旧計画の **[Cleanup test failover (テスト フェールオーバーのクリーンアップ)]** をクリックします。 **[メモ]** を使用して、テスト フェールオーバーに関連する観察結果をすべて記録し、保存します。 これで、テスト フェールオーバー中に作成された仮想マシンとネットワークが削除されます。
 
 
 ## <a name="network-options-in-site-recovery"></a>Site Recovery のネットワーク オプション
@@ -97,10 +98,10 @@ ms.lasthandoff: 02/23/2017
 >
 
 
-## <a name="test-failover-to-a-production-network-on-recovery-site"></a>復旧サイトの運用ネットワークへのテスト フェールオーバー 
+## <a name="test-failover-to-a-production-network-on-recovery-site"></a>復旧サイトの運用ネットワークへのテスト フェールオーバー
 テスト フェールオーバーを行うときは、**[ネットワーク マッピング]** で指定した運用復旧サイト ネットワークとは異なるネットワークを選ぶことをお勧めします。 ただし、フェールオーバーされた仮想マシンでエンド ツー エンドのネットワーク接続を実際に検証したい場合は、次の点に注意してください。
 
-1. テスト フェールオーバーを実行するときは、プライマリ仮想マシンがシャットダウンされていることを確認します。 そうしないと、同じ ID を持つ&2; つの仮想マシンが同じネットワークで同時に実行することになり、望ましくない結果を生じる可能性があります。 
+1. テスト フェールオーバーを実行するときは、プライマリ仮想マシンがシャットダウンされていることを確認します。 そうしないと、同じ ID を持つ&2; つの仮想マシンが同じネットワークで同時に実行することになり、望ましくない結果を生じる可能性があります。
 1. テスト フェールオーバー仮想マシンに加えた変更は、テスト フェールオーバー仮想マシンをクリーンアップすると失われます。 これらの変更は、プライマリ仮想マシンにはレプリケートされません。
 1. このようなテスト方法では、運用アプリケーションのダウンタイムにつながります。 DR ドリルの実行中はアプリケーションのユーザーにアプリケーションを使わないよう指示する必要があります。  
 

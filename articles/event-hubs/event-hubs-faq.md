@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2017
-ms.author: sethm;jotaub;shvija
+ms.author: sethm;shvija
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
 ms.openlocfilehash: 7bae4ae6d41e6dc6515a3fcdf574ffd193ae1aa3
 ms.contentlocale: ja-jp
 ms.lasthandoff: 03/14/2017
+
 
 ---
 

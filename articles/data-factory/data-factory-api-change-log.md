@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/15/2017
+ms.date: 06/05/2017
 ms.author: spelluru
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
 ms.openlocfilehash: 06702281ab2a44641231783aa1ddad87c22095e8
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/29/2017
 
 
