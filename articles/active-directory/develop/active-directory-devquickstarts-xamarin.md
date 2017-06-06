@@ -40,12 +40,12 @@ Xamarin アプリから、保護されたリソースにアクセスする必要
 * [スケルトン プロジェクトをダウンロード](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/skeleton.zip)するか、または[完全なサンプル](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/complete.zip)をダウンロードします。 どちらのダウンロードも Visual Studio 2013 ソリューションです。
 * ユーザーを作成し、アプリを登録するための Azure AD テナントも必要です。 テナントを所有していない場合は、「 [How to get an Azure Active Directory tenant (Azure Active Directory テナントの取得方法)](active-directory-howto-tenant.md)」を参照して取得してください。
 
-準備ができたら、次の&4; つのセクションで説明されている手順を実行します。
+準備ができたら、次の 4 つのセクションで説明されている手順を実行します。
 
 ## <a name="step-1-set-up-your-xamarin-development-environment"></a>手順 1: Xamarin の開発環境を設定する
 このチュートリアルには iOS、Android、Windows 用のプロジェクトが含まれるため、Visual Studio と Xamarin の両方が必要です。 必要な環境を構築するには、MSDN の [Visual Studio と Xamarin のセットアップとインストール](https://msdn.microsoft.com/library/mt613162.aspx)に関するページの手順を完了します。 この手順では、Xamarin の詳細情報が記載された資料を紹介しています。インストール中の待ち時間でご覧ください。
 
-セットアップを完了した後、Visual Studio でソリューションを開きます。 そこには&6; つのプロジェクトが表示されます。5 つはプラットフォームに固有のプロジェクトであり、1 つはすべてのプラットフォームで共有される PCL (DirectorySearcher.cs) です。
+セットアップを完了した後、Visual Studio でソリューションを開きます。 そこには 6 つのプロジェクトが表示されます。5 つはプラットフォームに固有のプロジェクトであり、1 つはすべてのプラットフォームで共有される PCL (DirectorySearcher.cs) です。
 
 ## <a name="step-2-register-the-directorysearcher-app"></a>手順 2: DirectorySearcher アプリを登録する
 アプリでトークンを取得できるようにするには、まず、アプリを Azure AD テナントに登録し、Azure AD Graph API にアクセスするためのアクセス許可を付与する必要があります。 その方法は次のとおりです。
@@ -87,7 +87,7 @@ Xamarin アプリから、保護されたリソースにアクセスする必要
     PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -ProjectName DirSearchClient-Universal
     `
 
-    ADAL の PCL 部分とプラットフォーム固有部分という&2; つのライブラリ参照が、各プロジェクトに追加されていることに注意してください。
+    ADAL の PCL 部分とプラットフォーム固有部分という 2 つのライブラリ参照が、各プロジェクトに追加されていることに注意してください。
 2. DirectorySearcherLib プロジェクトで、DirectorySearcher.cs を開きます。
 3. クラス メンバーの値を Azure Portal で入力した値に置き換えます。 これらの値は、コードで ADAL を使用する際に常に参照されます。
 
@@ -186,7 +186,7 @@ List<User> results = await DirectorySearcherLib.DirectorySearcher.SearchByAlias(
 
 まだテナントにユーザーを設定していない場合は、ここで設定しましょう。
 
-1. DirectorySearcher アプリを実行し、ユーザーの&1; 人としてサインインします。
+1. DirectorySearcher アプリを実行し、ユーザーの 1 人としてサインインします。
 2. UPN に基づいて、他のユーザーを検索します。
 
 ADAL を使用することにより、共通 ID 機能を容易にアプリに組み込むことができます。 キャッシュ管理、OAuth プロトコル サポート、ユーザーへのログイン UI の表示、有効期限切れとなったトークンの更新など、面倒な操作を容易に実装できます。 知っておく必要があるのは、`authContext.AcquireToken*(…)` の API 呼び出しだけです。
