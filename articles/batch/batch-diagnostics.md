@@ -48,7 +48,7 @@ ms.lasthandoff: 02/28/2017
 
 [診断ログの収集を有効にする方法](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-diagnostic-logs)
 
-「[Azure 診断ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)」をすべて読み、ログを有効化する方法だけではなく、さまざまな Azure サービスでサポートされるログ カテゴリについて理解することをお勧めします。 たとえば、Azure Batch で現在サポートされている&1; つのログ カテゴリは**サービス ログ**です。
+「[Azure 診断ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)」をすべて読み、ログを有効化する方法だけではなく、さまざまな Azure サービスでサポートされるログ カテゴリについて理解することをお勧めします。 たとえば、Azure Batch で現在サポートされている 1 つのログ カテゴリは**サービス ログ**です。
 
 ## <a name="service-logs"></a>サービス ログ
 Azure Batch サービス ログには、プールやタスクなどの Batch リソースの存続期間中に Azure Batch サービスが出力するイベントが含まれます。 Batch が出力する各イベントは、指定のストレージ アカウントに JSON 形式で格納されます。 たとえば、次に示すのはサンプルの**プール作成イベント**の本文です。
