@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 05/06/2017
 ms.author: edmaca
 ms.translationtype: Human Translation
-ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
-ms.openlocfilehash: 02cb05f42e555931dffa0fdec21b19ce0468e1de
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: d44570c7faa3e2468022ef539239c88f0418b2fa
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/23/2017
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -49,9 +49,7 @@ Azure Data Lake Analytics は、ビッグ データ分析を簡略化するオ�
 ## <a name="see-also"></a>関連項目
 * 作業開始
   
-  * [Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
-  * [Azure PowerShell で Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-powershell.md)
-  * [Azure .NET SDK で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-net-sdk.md)
+  * [Azure Portal](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [Azure .NET SDK](data-lake-analytics-get-started-net-sdk.md) で Azure Data Lake Analytics の使用を開始する
   * [Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)
 
 * 管理

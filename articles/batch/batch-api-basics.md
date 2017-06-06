@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 05/05/2017
+ms.date: 05/22/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: f8279eb672e58c7718ffb8e00a89bc1fce31174f
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 84f9677daebe13f54a54802b1b16cc6487a0b845
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -344,18 +344,24 @@ Azure Batch ソリューションを設計するときは、いつ、どのよ�
 
 ## <a name="pool-network-configuration"></a>プール ネットワーク構成
 
-Azure Batch でコンピューティング ノードのプールを作成すると、プールのコンピューティング ノードを作成する必要のある Azure [仮想ネットワーク (VNet)](../virtual-network/virtual-networks-overview.md) の ID を API を通じて指定できます。
+Azure Batch でコンピューティング ノードのプールを作成する際には、プールのコンピューティング ノードを作成する必要のある Azure [仮想ネットワーク (VNet)](../virtual-network/virtual-networks-overview.md) のサブネット ID を指定できます。
 
 * VNet は次の要件を満たす必要があります。
 
    * Azure Batch アカウントと同じ Azure **リージョン**に存在する。
    * Azure Batch アカウントと同じ**サブスクリプション**に存在する。
 
-* VNet には、プールの `targetDedicated` プロパティに対応できるよう十分な空き **IP アドレス**が必要です。 サブネットの空き IP アドレスが十分でない場合、Batch サービスによってプールのコンピューティング ノードが部分的に割り当てられ、サイズ変更のエラーが返されます。
+* サポートされる VNet の種類は、Batch アカウントに対してプールがどのように割り当てられているかによって異なります。
+    - **poolAllocationMode** プロパティを "BatchService" に設定して Batch アカウントが作成された場合、指定する VNet はクラシック VNet である必要があります。
+    - **poolAllocationMode** プロパティを "UserSubscription" に設定して Batch アカウントが作成された場合、指定する VNet は、クラシック VNet と Azure Resource Manager VNet のどちらでもかまいません。 VNet を使用するためには、仮想マシン構成でプールを作成する必要があります。 クラウド サービス構成で作成されたプールはサポートされません。
+
+* **poolAllocationMode** プロパティを "BatchService" に設定して Batch アカウントが作成された場合、Batch サービス プリンシパルに対し、VNet へのアクセス許可を付与する必要があります。 "Microsoft Azure Batch" または "MicrosoftAzureBatch" という名前の Batch サービス プリンシパルには、指定した VNet に対する[クラシック仮想マシンの共同作成者の RBAC (ロールベースのアクセス制御)](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/#classic-virtual-machine-contributor) ロールが必要です。 この RBAC ロールが付与されていないと、Batch サービスから 400 (無効な要求) が返されます。
+
+* 指定したサブネットには、全ターゲット ノード数 (つまりプールの `targetDedicatedNodes` プロパティと `targetLowPriorityNodes` プロパティの合計) を収容できるだけの十分な空き **IP アドレス**が必要です。 サブネットの空き IP アドレスが十分でない場合、Batch サービスによってプールのコンピューティング ノードが部分的に割り当てられ、サイズ変更のエラーが返されます。
 
 * コンピューティング ノードのタスクのスケジュールを設定できるように、Batch サービスからの通信を指定したサブネットで許可する必要があります。 VNet に関連付けられた**ネットワーク セキュリティ グループ (NSG)** によってコンピューティング ノードとの通信が拒否された場合、コンピューティング ノードの状態は Batch サービスによって**使用不可**に設定されます。
 
-* 指定した VNet に NSG が関連付けられている場合は、受信通信を有効にする必要があります。 Linux と Windows のどちらのプールでも、ポート 29876 と 29877 を有効にする必要があります。 必要に応じて、Linux プールでは SSH 用に、Windows プールでは RDP 用にそれぞれポート 22 または 3389 を有効に (または選択してフィルター処理) できます。
+* 指定した VNet にネットワーク セキュリティ グループ (NSG) が関連付けられている場合、予約されているいくつかのシステム ポートの受信通信を有効にする必要があります。 仮想マシン構成で作成されたプールの場合、ポート 29876 と 29877 を有効にしたうえで、Linux の場合はポート 22 を、Windows の場合はポート 3389 を有効にします。 クラウド サービス構成で作成されたプールの場合、10100、20100、30100 の各ポートを有効にします。 さらに、ポート 443 では、Azure Storage への送信接続を有効にしてください。
 
 VNet の追加設定は、Batch アカウントのプール割り当てモードによって異なります。
 
@@ -415,16 +421,24 @@ Batch ソリューション内でタスク エラーとアプリケーション 
 ### <a name="task-failure-handling"></a>タスクのエラー処理
 タスク エラーは、以下のカテゴリに分類されます。
 
-* **スケジュール エラー**
+* **前処理エラー**
 
-    タスク用に指定されたファイルの転送がなんらかの理由で失敗すると、タスクに "*スケジュール エラー*" が設定されます。
+    タスクを開始できなかった場合、そのタスクには前処理エラーが設定されます。  
 
-    スケジュール エラーの原因には、タスクのリソース ファイルが移動された、Storage アカウントが利用できなくなった、ノードへのコピーを失敗させるようなその他の問題が発生した、などがあります。
+    前処理エラーの原因には、タスクのリソース ファイルが移動された、Storage アカウントが利用できなくなった、ノードへのファイルのコピーに支障をきたす別の問題が発生した、などがあります。
+
+* **ファイル アップロード エラー**
+
+    タスクに対して指定されたファイルのアップロードがなんらかの理由で失敗すると、タスクにファイル アップロード エラーが設定されます。
+
+    ファイル アップロード エラーの原因には、Azure Storage にアクセスするために指定された SAS が無効であるか書き込み権限がない、ストレージ アカウントが利用できなくなった、ノードからのファイルのコピーに支障をきたす別の問題が発生した、などがあります。    
+
 * **アプリケーション エラー**
 
     タスクのコマンド ラインで指定されたプロセスも失敗することがあります。 タスクで実行されたプロセスによってゼロ以外の終了コードが返された場合、プロセスが失敗したと見なされます (次のセクションの「 *タスクの終了コード* 」を参照)。
 
     アプリケーション エラーについては、指定された回数まで自動的にタスクを再試行するように Batch を構成することができます。
+
 * **制約エラー**
 
     ジョブまたはタスクの最大実行期間を指定する制約である *maxWallClockTime*を設定することができます。 これは、処理に失敗したタスクを終了させる場合に便利です。
@@ -435,6 +449,7 @@ Batch ソリューション内でタスク エラーとアプリケーション 
 * `stderr` と `stdout`
 
     アプリケーションの実行中に、問題のトラブルシューティングに利用できる診断情報が生成される場合があります。 前述の「[ファイルとディレクトリ](#files-and-directories)」セクションで説明したように、Batch サービスは、コンピューティング ノードのタスク ディレクトリにある `stdout.txt` ファイルと `stderr.txt` ファイルに標準出力と標準エラー出力を書き込みます。 これらのファイルは Azure Portal またはいずれかの Batch SDK を使用してダウンロードすることができます。 たとえば、Batch .NET ライブラリの [ComputeNode.GetNodeFile][net_getfile_node] や [CloudTask.GetNodeFile][net_getfile_task] でこれらのファイルを取得して、トラブルシューティングに利用できます。
+
 * **タスクの終了コード**
 
     前述したように、タスクによって実行されたプロセスからゼロ以外の終了コードが返された場合、そのタスクには、失敗したことを示すマークが Batch サービスによって設定されます。 タスクでプロセスが実行されると、Batch によって、そのタスクの終了コード プロパティに "*プロセスのリターン コード*" が設定されます。 タスクの終了コードを決めるのは Batch サービスでは**ない**ことに注意してください。 タスクの終了コードは、プロセス自体またはそのプロセスを実行したオペレーティング システムによって決定されます。
@@ -445,7 +460,7 @@ Batch ソリューション内でタスク エラーとアプリケーション 
 断続的に発生する問題によって、タスクが応答を停止したり、実行に長い時間がかかるようになる場合もあります。 このような場合は、タスクに最大実行間隔を設定することができます。 最大実効間隔を超過すると、Batch サービスによってタスク アプリケーションが中断されます。
 
 ### <a name="connecting-to-compute-nodes"></a>コンピューティング ノードへの接続
-リモートからコンピューティング ノードにサインインすることによって、さらに踏み込んだデバッグやトラブルシューティングを実行できます。 Azure Portal を使用して、Windows ノードのリモート デスクトップ プロトコル (RDP) ファイルをダウンロードしたり、Linux ノードの Secure Shell (SSH) 接続情報を取得したりすることができます。 このような操作は、Batch API ([Batch .NET][net_rdpfile]、[Batch Python](batch-linux-nodes.md#connect-to-linux-nodes) など) で実行することもできます。
+リモートからコンピューティング ノードにサインインすることによって、さらに踏み込んだデバッグやトラブルシューティングを実行できます。 Azure Portal を使用して、Windows ノードのリモート デスクトップ プロトコル (RDP) ファイルをダウンロードしたり、Linux ノードの Secure Shell (SSH) 接続情報を取得したりすることができます。 このような操作は、Batch API ([Batch .NET][net_rdpfile]、[Batch Python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh) など) で実行することもできます。
 
 > [!IMPORTANT]
 > RDP や SSH を通じてノードに接続するには、まず、ノード上にユーザーを作成する必要があります。 Azure Portal から Batch REST API を使用して[ユーザー アカウントをノードに追加][rest_create_user]し、Batch .NET の [ComputeNode.CreateComputeNodeUser][net_create_user] メソッドを呼び出すか、Batch Python モジュールの [add_user][py_add_user] メソッドを呼び出してください。

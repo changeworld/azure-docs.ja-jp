@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/11/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 209f8869e9ed681285865154bdd4d2d7a0f22456
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 7701d46be70901d361f8a045c386bfa4cdaf98b6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -145,6 +146,7 @@ Azure AD から証明書を自動更新するように ADFS サーバーを更�
 |バージョン履歴 | [バージョン履歴](active-directory-aadconnect-version-history.md)|
 |DirSync、Azure ADSync、Azure AD Connect の比較 | [ディレクトリ統合ツールの比較](../active-directory-hybrid-identity-design-considerations-tools-comparison.md)|
 |Azure AD の非 ADFS 互換性リスト | [Azure AD のフェデレーション互換性リスト](active-directory-aadconnect-federation-compatibility.md)|
+|SAML 2.0 IdP の構成|[シングル サインオンでの SAML 2.0 ID プロバイダー (IdP) の使用](active-directory-aadconnect-federation-saml-idp.md)|
 |同期される属性 | [同期される属性](active-directory-aadconnectsync-attributes-synchronized.md)|
 |Azure AD Connect Health を使用した監視 | [Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md)|
 |よく寄せられる質問 | [Azure AD Connect の FAQ](active-directory-aadconnect-faq.md)|

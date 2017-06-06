@@ -14,23 +14,29 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: raynew
-translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 4674985363bc1267449e018ab15a53757a8fd32d
-ms.lasthandoff: 03/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 3d2b3509666633df4f6f6f0c385af3667f4bcf3e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/31/2017
 
 
 ---
-# <a name="how-does-azure-site-recovery-work"></a>Azure Site Recovery のしくみ
 
-この記事では、[Azure Site Recovery](site-recovery-overview.md) サービスの基になるアーキテクチャと、それを機能させるためのコンポーネントについて説明します。
+# <a name="how-does-azure-site-recovery-work-for-on-premises-infrastructure"></a>オンプレミス インフラストラクチャに対する Azure Site Recovery の動作
+
+> [!div class="op_single_selector"]
+> * [Azure 仮想マシンのレプリケート](site-recovery-azure-to-azure-architecture.md)
+> * [オンプレミス マシンのレプリケート](site-recovery-components.md)
+
+この記事では、[Azure Site Recovery](site-recovery-overview.md) サービスのベースとなっているアーキテクチャと、オンプレミスから Azure にワークロードをレプリケートする働きを持ったコンポーネントについて説明します。
 
 コメントはこの記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)で投稿してください。
 
 
 ## <a name="replicate-to-azure"></a>Azure へのレプリケート
 
-以下のものを Azure にレプリケートすることができます。
+Azure にレプリケートして保護することができるオンプレミス インフラストラクチャ上の要素は次のとおりです。
 
 - **VMware**: [サポートされているホスト](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers)上で実行されているオンプレミス VMware VM。 [サポートされているオペレーティング システム](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)を実行している VMware VM をレプリケートできます。
 - **Hyper-V**: [サポートされているホスト](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers)上で実行されているオンプレミス Hyper-V VM。
@@ -42,12 +48,11 @@ VMware VM を Azure にレプリケートするために必要なものを次に
 
 領域 | コンポーネント | 詳細
 --- | --- | ---
-**Azure** | Azure では、Azure アカウント、Azure ストレージ アカウント、および Azure ネットワークが必要です。 | ストレージとネットワークには、Resource Manager アカウントまたはクラシック アカウントを指定できます。<br/><br/>  レプリケートされたデータはストレージ アカウントに格納され、オンプレミス サイトからのフェールオーバーが発生したときにそのレプリケートされたデータで Azure VM が作成されます。 Azure VM は、作成時に Azure 仮想ネットワークに接続します。
 **構成サーバー** | 単一の管理サーバー (VMWare VM) が、すべてのオンプレミス コンポーネント (構成サーバー、プロセス サーバー、マスター ターゲット サーバー) を実行します | 構成サーバーは、オンプレミスと Azure の間の通信を調整し、データのレプリケーションを管理します。
  **プロセス サーバー**:  | 構成サーバーに既定でインストールされます。 | レプリケーション ゲートウェイとして機能します。 レプリケーション データを受信し、そのデータをキャッシュ、圧縮、暗号化によって最適化して、Azure Storage に送信します。<br/><br/> また、プロセス サーバーは保護されたマシンへのモビリティ サービスのプッシュ インストールを処理し、VMware VM の自動検出を実行します。<br/><br/> デプロイメントの拡大に合わせて、増大するレプリケーション トラフィックの処理を実行する独立した専用プロセス サーバーを追加できます。
  **マスター ターゲット サーバー** | 既定で、オンプレミスの構成サーバーにインストールされます。 | Azure からのフェールバック中にレプリケーション データを処理します。<br/><br/> フェールバックのトラフィックの量が多い場合は、フェールバック用に別のマスター ターゲット サーバーをデプロイすることができます。
-**VMware サーバー** | VMware VM は vSphere ESXi サーバー上でホストされます。vCenter サーバーでホストを管理することをおすすめします。 | VMware サーバーは Recovery Services コンテナーに追加します。<br/><br/> I
-**レプリケートされたマシン** | レプリケートする各 VMware VM にモビリティ サービスがインストールされます。 このサービスは、各マシンに手動でインストールすることも、プロセス サーバーからのプッシュ インストールでインストールすることもできます。
+**VMware サーバー** | VMware VM は vSphere ESXi サーバー上でホストされます。vCenter サーバーでホストを管理することをおすすめします。 | VMware サーバーは Recovery Services コンテナーに追加します。<br/><br/>
+**レプリケートされたマシン** | レプリケートする各 VMware VM にモビリティ サービスがインストールされます。 このサービスは、各マシンに手動でインストールすることも、プロセス サーバーからのプッシュ インストールでインストールすることもできます。| -
 
 **図 1: VMware から Azure へのコンポーネント**
 
@@ -76,14 +81,6 @@ VMware VM を Azure にレプリケートするために必要なものを次に
 3. フェールオーバーを実行すると、レプリカ VM が Azure に作成されます。 フェールオーバーをコミットして、レプリカの Azure VM からワークロードへのアクセスを開始します。
 4. プライマリ オンプレミス サイトが再度使用可能になると、フェールバックできます。 フェールバック インフラストラクチャをセットアップし、セカンダリ サイトからプライマリへのマシンのレプリケートを開始して、セカンダリ サイトから計画外フェールオーバーを実行します。 このフェールオーバーをコミットすると、データがオンプレミスに戻るため、Azure へのレプリケーションをもう一度有効にする必要があります。 [詳細情報](site-recovery-failback-azure-to-vmware.md)
 
-フェールバックの要件がいくつかあります。
-
-
-- **Azure 上の一時的なプロセス サーバー**: フェールオーバー後に Azure からフェールバックする場合は、Azure からのレプリケーションを処理するために、プロセス サーバーとして構成された Azure VM をセットアップする必要があります。 この VM は、フェールバックの完了後に削除できます。
-- **VPN 接続**: フェールバックするには、Azure ネットワークからオンプレミス サイトへの VPN 接続 (または Azure ExpressRoute) をセットアップする必要があります。
-- **独立したオンプレミス マスター ターゲット サーバー**: オンプレミスのマスター ターゲット サーバーによって、フェールバックが処理されます。 マスター ターゲット サーバーは、既定では管理サーバーにインストールされますが、大量のトラフィックをフェールバックする場合は、この目的用にオンプレミスのマスター ターゲット サーバーをセットアップする必要があります。
-- **フェールバック ポリシー**: オンプレミスにもう一度レプリケートするには、フェールバック ポリシーが必要です。 これは、レプリケーション ポリシーを作成したときに自動的に作成されます。
-
 **図 3: VMware/物理マシンのフェールバック**
 
 ![フェールバック](./media/site-recovery-components/enhanced-failback.png)
@@ -96,16 +93,6 @@ VMware VM を Azure にレプリケートするために必要なものを次に
 - フェールバック用にオンプレミスの VMware インフラストラクチャが必要になります。 物理マシンにはフェールバックできません。
 
 ## <a name="hyper-v-to-azure"></a>Hyper-V から Azure
-
-Hyper-V VM を Azure にレプリケートするために必要なものを次に示します。
-
-**領域** | **コンポーネント** | **詳細**
---- | --- | ---
-**Azure** | Azure では、Microsoft Azure アカウント、Azure ストレージ アカウント、Azure ネットワークが必要です。 | ストレージとネットワークには、Resource Manager ベースのアカウントまたはクラシック アカウントを指定できます。<br/><br/> レプリケートされたデータはストレージ アカウントに格納され、オンプレミス サイトからのフェールオーバーが発生したときにそのレプリケートされたデータで Azure VM が作成されます。<br/><br/> Azure VM は、作成時に Azure 仮想ネットワークに接続します。
-**VMM サーバー** | VMM クラウドに配置されている Hyper-V ホスト | Hyper-V ホストが VMM クラウドで管理されている場合は、VMM サーバーを Recovery Services コンテナーに登録します。<br/><br/> VMM サーバーで、Azure とのレプリケーションの調整のために、Site Recovery Provider をインストールします。<br/><br/> ネットワーク マッピングを構成するには、論理ネットワークと VM ネットワークをセットアップする必要があります。 VM ネットワークは、クラウドに関連付けられた論理ネットワークにリンクされている必要があります。
-**Hyper-V ホスト** | Hyper-V サーバーは、VMM サーバーがあってもなくてもデプロイできます。 | VMM サーバーがない場合は、インターネット経由でレプリケーションを Site Recovery と調整するために、Site Recovery Provider がホストにインストールされます。 VMM サーバーがある場合は、Provider がホストではなく VMM サーバーにインストールされます。<br/><br/> Recovery Services エージェントは、データのレプリケーションを処理するために、ホストにインストールされます。<br/><br/> プロバイダーとエージェントの両方からの通信は、セキュリティで保護され、暗号化されます。 Azure Storage 内のレプリケートされたデータも暗号化されます。
-**Hyper-V VM** | Hyper-V ホスト サーバー上に&1; つ以上の VM が必要です。 | VM に明示的にインストールする必要があるものはありません
-
 
 ### <a name="replication-process"></a>レプリケーション プロセス
 
@@ -152,7 +139,6 @@ InMage Scout を使用して、VMware VM または物理サーバーをセカン
 
 **領域** | **コンポーネント** | **詳細**
 --- | --- | ---
-**Azure** | InMage Scout。 | InMage Scout を入手するには、Azure サブスクリプションが必要です。<br/><br/> Recovery Services コンテナーを作成した後、InMage Scout をダウンロードし、最新の更新プログラムをインストールして、デプロイを設定します。
 **プロセス サーバー** | プライマリ サイトにあります。 | キャッシュ、圧縮、データ最適化を処理するプロセス サーバーをデプロイします。<br/><br/> プロセス サーバーでは、保護するマシンへの統合エージェントのプッシュ インストールも処理します。
 **構成サーバー** | セカンダリ サイトにあります。 | 構成サーバーは、管理 Web サイトまたは vContinuum コンソールを使用して、デプロイを管理、構成、監視します。
 **vContinuum サーバー** | 省略可能。 構成サーバーと同じ場所にインストールされます。 | 保護対象の環境を管理および監視するためのコンソールを提供します。
@@ -180,10 +166,9 @@ Hyper-V VM をセカンダリ サイトにレプリケートするために必�
 
 **領域** | **コンポーネント** | **詳細**
 --- | --- | ---
-**Azure** | Microsoft Azure のアカウントが必要です。 |
-**VMM サーバー** | プライマリ サイトに&1; つの VMM サーバーを配置し、セカンダリ サイトにもう&1; つの VMM サーバーを配置することをお勧めします | 各 VMM サーバーは、インターネットに接続している必要があります。<br/><br/> 各サーバーには、Hyper-V 機能プロファイルが設定されている VMM プライベート クラウドが少なくとも&1; つ必要です。<br/><br/> VMM サーバーに Azure Site Recovery プロバイダーをインストールします。 Provider は、インターネット経由で Site Recovery サービスを使用してレプリケーションを調整および統制します。 プロバイダーと Azure の間の通信は、セキュリティで保護され、暗号化されます。
-**Hyper-V サーバー** |  プライマリおよびセカンダリ VMM クラウドの&1; つ以上の Hyper-V ホスト サーバー。<br/><br/> サーバーはインターネットに接続している必要があります。<br/><br/> プライマリ Hyper-V ホスト サーバーとセカンダリ Hyper-V ホスト サーバーとの間で Kerberos または証明書認証を使用して LAN または VPN 経由で、データがレプリケートされます。  
-**Hyper-V VM** | ソース Hyper-V ホスト サーバー上にあります。 | ソース ホスト サーバーには、レプリケートする VM が少なくとも&1; つ必要です。
+**VMM サーバー** | プライマリ サイトに 1 つの VMM サーバーを配置し、セカンダリ サイトにもう 1 つの VMM サーバーを配置することをお勧めします | 各 VMM サーバーは、インターネットに接続している必要があります。<br/><br/> 各サーバーには、Hyper-V 機能プロファイルが設定されている VMM プライベート クラウドが少なくとも 1 つ必要です。<br/><br/> VMM サーバーに Azure Site Recovery プロバイダーをインストールします。 Provider は、インターネット経由で Site Recovery サービスを使用してレプリケーションを調整および統制します。 プロバイダーと Azure の間の通信は、セキュリティで保護され、暗号化されます。
+**Hyper-V サーバー** |  プライマリおよびセカンダリ VMM クラウドの 1 つ以上の Hyper-V ホスト サーバー。<br/><br/> サーバーはインターネットに接続している必要があります。<br/><br/> プライマリ Hyper-V ホスト サーバーとセカンダリ Hyper-V ホスト サーバーとの間で Kerberos または証明書認証を使用して LAN または VPN 経由で、データがレプリケートされます。  
+**Hyper-V VM** | ソース Hyper-V ホスト サーバー上にあります。 | ソース ホスト サーバーには、レプリケートする VM が少なくとも 1 つ必要です。
 
 ### <a name="replication-process"></a>レプリケーション プロセス
 

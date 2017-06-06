@@ -12,16 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/12/2016
+ms.date: 05/30/2017
 ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 75188a8f74b08d28b92259348626d5734ed4ce6c
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 015782373e59d1aaf10a7b089c84c982031b36b2
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/31/2017
 
 
 ---
 # <a name="create-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボの作成
+Azure DevTest Labs におけるラボとは、Virtual Machines (VM) などのリソース グループを包含するインフラストラクチャであり、制限とクォータを指定することでこれらのリソースをより適切に管理することができます。 この記事では、Azure Portal を使用してラボを作成する手順を説明します。
+
 ## <a name="prerequisites"></a>前提条件
 ラボを作成するには、次のものが必要です。
 
@@ -30,20 +33,25 @@ ms.lasthandoff: 04/20/2017
 ## <a name="steps-to-create-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボを作成する手順
 次の手順は、Azure Portal を使用して Azure DevTest Labs でラボを作成する方法を示しています。 
 
-1. [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
-2. **[その他のサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
-3. **[DevTest ラボ]** ブレードで **[追加]** をクリックします。
+1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
+1. 左側のメイン メニューから **[その他のサービス]** (リスト最下部) を選択します。
+
+    ![[その他のサービス] メニュー オプション](./media/devtest-lab-create-lab/more-services-menu-option.png)
+
+1. 利用可能なサービスの一覧から **[DevTest Labs]** を選択します。
+1. **[DevTest ラボ]** ブレードで **[追加]** をクリックします。
    
     ![Add a lab](./media/devtest-lab-create-lab/add-lab-button.png)
-4. **[DevTest ラボの作成]** ブレードで:
+
+1. **[DevTest ラボの作成]** ブレードで:
    
-   1. 新しいラボの **[ラボ名]** を入力します。
-   2. ラボに関連付ける **[サブスクリプション]** を選択します。
-   3. ラボを格納する **[場所]** を選択します。
-   4. **[自動シャットダウン]** を選択し、ラボのすべての VM の自動シャットダウンを有効にする (およびそのパラメーターを定義する) かどうかを指定します。 
-   5. ラボのショートカットをポータルのダッシュボードに表示したい場合、**[ダッシュボードにピン留めする]** チェック ボックスをオンにします。
-   6. **[Automation オプション]** を選択して、構成を自動化するための Azure Resource Manager テンプレートを取得します。 
-   7. **[作成]**を選択します。
+    1. 新しいラボの **[ラボ名]** を入力します。
+    2. ラボに関連付ける **[サブスクリプション]** を選択します。
+    3. ラボを格納する **[場所]** を選択します。
+    4. **[自動シャットダウン]** を選択し、ラボのすべての VM の自動シャットダウンを有効にする (およびそのパラメーターを定義する) かどうかを指定します。 自動シャットダウン機能は、主にコストを削減する機能で、VM をいつ自動的にシャットダウンするかを指定することができます。 自動シャットダウンの設定は、ラボの作成後に、「[Azure DevTest Labs でラボのすべてのポリシーを管理](./devtest-lab-set-lab-policy.md#set-auto-shutdown)」という記事に書かれている手順に従って変更することができます。
+    5. ラボのショートカットをポータルのダッシュボードに表示したい場合、**[ダッシュボードにピン留めする]** チェック ボックスをオンにします。
+    6. **[Automation オプション]** を選択して、構成を自動化するための Azure Resource Manager テンプレートを取得します。 
+    7. **[作成]**を選択します。 **[作成]** を選択すると、**[DevTest Labs]** ブレードが表示されます。 ラボ作成プロセスの状態は、**[通知]** 領域を見て監視できます。 完了後、ページを最新の情報に更新すると、ラボの一覧に新しく作成されたラボが表示されます。  
     
     ![Create a lab blade](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
 

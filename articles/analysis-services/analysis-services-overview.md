@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 05/16/2017
+ms.date: 05/26/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 89c19e9b64fc4e1fea68c717fd5f5e0e054ac10c
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: cc85ae1c6642e763e57327c151ec68845f7673f7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -55,11 +55,9 @@ Azure Analysis Services は、互換性レベル 1200 および 1400 プレビ�
 ## <a name="data-sources"></a>データ ソース
 Azure のサーバーにデプロイされるデータ モデルは、組織のオンプレミス データ ソースまたはクラウドのデータ ソースへの接続をサポートします。 ハイブリッド BI ソリューションでは、オンプレミスとクラウド両方のデータ ソースのデータを組み合わせます。
 
-![データ ソース](./media/analysis-services-overview/aas-overview-data-sources.png)
+サーバーはクラウド内にあるため、クラウドのデータ ソースへの接続はシームレスです。 オンプレミス データ ソースに接続するときは、[オンプレミス データ ゲートウェイ](analysis-services-gateway.md)によってクラウドのサーバーとの高速で安全な接続が保証されます。
 
-サーバーはクラウド内にあるため、クラウドのデータ ソースへの接続はシームレスです。 オンプレミス データ ソースに接続するときは、[オンプレミス データ ゲートウェイ](analysis-services-gateway.md)によってクラウドの Analysis Services サーバーとの高速で安全な接続が保証されます。
-
-\* 表形式 1400 モデルのみ。
+サポートされるオンプレミス データ ソースについて詳しくは、「[Data sources supported in Azure Analysis Services (Azure Analysis Services でサポートされるデータ ソース)](analysis-services-datasource.md)」を参照してください。
 
 
 ## <a name="explore-your-data-from-anywhere"></a>任意の場所からデータを取得

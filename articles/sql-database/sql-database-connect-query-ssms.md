@@ -10,28 +10,32 @@ manager: jhubbard
 editor: 
 ms.assetid: 7cd2a114-c13c-4ace-9088-97bd9d68de12
 ms.service: sql-database
-ms.custom: quick start manage
+ms.custom: quick start manage, mvc
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/15/2017
+ms.date: 05/26/2017
 ms.author: carlrab
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 9ffad92e668b76c9a4e2941b20d075bf52132d16
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 05cbc0c80a4e622f537772c698e2711a7a85c00d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/31/2017
 
 
 ---
 # <a name="azure-sql-database-use-sql-server-management-studio-to-connect-and-query-data"></a>Azure SQL Database: SQL Server Management Studio を使って接続とデータの照会を行う
 
-[SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) は、ユーザー インターフェイスまたはスクリプトから SQL Server リソースの作成と管理を行うことができる管理ツールです。 このクイック スタートでは、SSMS を使って Azure SQL データベースに接続し Transact-SQL ステートメントを使ってデータベース内のデータを照会、挿入、更新、削除する方法について説明します。 
+[SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) は、SQL Server から SQL Database まで、Microsoft Windows を対象としたあらゆる SQL インフラストラクチャを管理するための統合環境です。 このクイック スタートでは、SSMS を使って Azure SQL データベースに接続し Transact-SQL ステートメントを使ってデータベース内のデータを照会、挿入、更新、削除する方法について説明します。 
+
+## <a name="prerequisites"></a>前提条件
 
 このクイック スタートでは、次のクイック スタートで作成されたリソースが出発点として使用されます。
 
 - [DB の作成 - ポータル](sql-database-get-started-portal.md)
 - [DB の作成 - CLI](sql-database-get-started-cli.md)
+- [DB の作成 - PowerShell](sql-database-get-started-powershell.md)
 
 開始する前に、必ず最新バージョンの [SSMS](https://msdn.microsoft.com/library/mt238290.aspx) をインストールしておいてください。 
 
@@ -39,15 +43,15 @@ ms.lasthandoff: 04/20/2017
 
 Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名、データベース名、ログイン情報が必要になります。
 
-1. [Azure Portal](https://portal.azure.com/) にログインします。
+1. [Azure ポータル](https://portal.azure.com/)にログインします。
 2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
-3. データベースの **[概要]** ページで、次の図に示すように、完全修飾サーバー名を確認します。 サーバー名をポイントすると、**[コピーするにはクリックします]** オプションが表示されます。
+3. データベースの [**概要**] ページで、次の図に示すように、完全修飾サーバー名を確認します。 サーバー名をポイントすると、**[コピーするにはクリックします]** オプションが表示されます。
 
    ![接続情報](./media/sql-database-connect-query-ssms/connection-information.png) 
 
-4. Azure SQL Database サーバーのログイン情報を忘れた場合は、[SQL データベース サーバー] ページに移動して、サーバー管理者名を表示し、必要に応じてパスワードをリセットします。 
+4. Azure SQL Database サーバーのログイン情報を忘れた場合は、[SQL データベース サーバー] ページに移動して、サーバー管理者名を表示し、必要に応じて、パスワードをリセットします。 
 
-## <a name="connect-to-your-database-in-the-sql-database-logical-server"></a>SQL Database 論理サーバーのデータベースに接続する
+## <a name="connect-to-your-database"></a>データベースに接続する
 
 SQL Server Management Studio を使用して、Azure SQL Database サーバーに対する接続を確立します。 
 
@@ -58,11 +62,14 @@ SQL Server Management Studio を使用して、Azure SQL Database サーバー�
 1. SQL Server Management Studio を開きます。
 
 2. **[サーバーへの接続]** ダイアログ ボックスで、次の情報を入力します。
-   - **[サーバーの種類]**: データベース エンジンを指定します
-   - **[サーバー名]**: 完全修飾サーバー名を入力します (**mynewserver20170313.database.windows.net** など)
-   - **[認証]**: SQL Server 認証を指定します
-   - **[ログイン]**: サーバー管理者アカウントを入力します
-   - **[パスワード]**: サーバー管理者アカウントのパスワードを入力します
+
+   | 設定       | 推奨値 | Description | 
+   | ------------ | ------------------ | ------------------------------------------------- | 
+   | **サーバーの種類** | データベース エンジン | この値は必須です。 |
+   | **[サーバー名]** | 完全修飾サーバー名 | 名前は **mynewserver20170313.database.windows.net** のような形式で指定する必要があります。 |
+   | **認証** | パブリック | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
+   | **ログイン** | サーバー管理者アカウント | これは、サーバーの作成時に指定したアカウントです。 |
+   | **パスワード** | サーバー管理者アカウントのパスワード | これは、サーバーの作成時に指定したパスワードです。 |
 
    ![[サーバーへの接続]](./media/sql-database-connect-query-ssms/connect.png)  
 

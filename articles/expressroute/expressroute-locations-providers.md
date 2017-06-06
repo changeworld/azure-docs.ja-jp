@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/22/2017
-ms.author: cherylmc
+ms.date: 05/24/2017
+ms.author: kaanan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
-ms.openlocfilehash: b72acb9c1d2b746bfdc3ac724b9c8760e0d4b257
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 597c0840f5b8bca3c19c644782d7cac20833ce1a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/23/2017
+ms.lasthandoff: 05/26/2017
 
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
@@ -42,7 +42,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
 | **地理的リージョン** | **Azure リージョン** | **ExpressRoute の場所** |
 | --- | --- | --- |
-| **北米** |米国東部、米国西部、米国東部 2、米国西部 2、米国中部、米国中南部、米国中北部、米国中西部、カナダ中部、カナダ東部 |アトランタ、シカゴ、ダラス、デンバー+、ラスベガス、ロサンゼルス、マイアミ、ニューヨーク、シアトル、シリコン バレー、ワシントン DC、モントリオール、ケベックシティ、トロント |
+| **北米** |米国東部、米国西部、米国東部 2、米国西部 2、米国中部、米国中南部、米国中北部、米国中西部、カナダ中部、カナダ東部 |アトランタ、シカゴ、ダラス、デンバー、ラスベガス、ロサンゼルス、マイアミ、ニューヨーク、シアトル、シリコン バレー、ワシントン DC、モントリオール、ケベックシティ、トロント |
 | **南アメリカ** |ブラジル南部 |サンパウロ |
 | **ヨーロッパ** |北ヨーロッパ、西ヨーロッパ、英国西部、英国南部 |アムステルダム、ダブリン、ロンドン、ニューポート (ウェールズ)、パリ |
 | **アジア** |東アジア、東南アジア |香港、シンガポール |
@@ -76,7 +76,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **チェンナイ** | Airtel+、Global CloudXchange (GCX)、SIFY、Tata Communications |
 | **シカゴ** |AT&T NetBond、Comcast、Equinix、Level 3 Communications、Megaport、Verizon、Zayo Group |
 | **ダラス** |Aryaka Networks、AT&T NetBond、Cologix、Equinix、Level 3 Communications、Megaport、Verizon、Zayo Group+ |
-| **デンバー** |CoreSite+ |
+| **デンバー** |CoreSite |
 | **ダブリン** |Colt、Telecity Group |
 | **香港** |Aryaka Networks、British Telecom、China Telecom Global、Equinix、Megaport、Orange、PCCW Global Limited、Tata Communications、Verizon |
 | **ラスベガス** |Level 3 Communications+、Megaport |
@@ -86,8 +86,8 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **マイアミ** |Megaport |
 | **モントリオール** |Bell Canada、Cologix |
 | **ムンバイ** |Airtel+、Tata Communications |
-| **ニューポート (ウェールズ)** |Next Generation Data |
 | **ニューヨーク** |CoreSite、Equinix、Megaport、Zayo Group |
+| **ニューポート (ウェールズ)** |Next Generation Data |
 | **大阪** |Equinix、Internet Initiative Japan Inc. - IIJ、NTT Communications、Softbank |
 | **パリ** |Interxion、Equinix |
 | **ケベック シティ** | Megaport |
@@ -129,7 +129,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **ベルリン** |Colt+、e-shelter、Megaport+ |
 | **フランクフルト** |Colt、Equinix、Interxion |
 
-## <a name="c1partners"></a>一覧にないサービス プロバイダー経由の接続
+## <a name="c1partners"></a>Exchange プロバイダー経由の接続
 接続プロバイダーが上記のセクションの一覧にない場合でも、接続を作成できます。
 
 * 接続プロバイダーが上の表に記載されているいずれかの Exchange に接続されているかどうかをその接続プロバイダーに確認します。 次のリンクから、Exchange プロバイダーが提供するサービスの詳細情報を収集できます。 一部の接続プロバイダーは既にイーサネット Exchange に接続されています。
@@ -145,6 +145,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 * Microsoft に接続するために、接続プロバイダーとしてその Exchange で ExpressRoute 回線を要求します。
   * 「 [ExpressRoute 回線の作成](expressroute-howto-circuit-classic.md) 」の手順に従い、接続を構築します。
 
+## <a name="c1partners"></a>その他のサービス プロバイダー経由の接続
 | **場所** | **Exchange** | **接続プロバイダー** |
 | --- | --- | --- |
 | **アムステルダム** | Equinix、Telecity | Eurofiber 、Fastweb S.p.A、Nianet |
@@ -155,7 +156,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **ロサンゼルス** | Equinix |Transtelco |
 | **マドリッド** | Level3 | Zertia |
 | **モントリオール** | Cologix、Equinix | Airgate Technologies. Inc、Cogeco Peer 1、Rogers |
-| **ニューヨーク** |Equinix | Lightower |
+| **ニューヨーク** |Equinix、Megaport | Lightower、Webair |
 | **シアトル** |Equinix | Alaska Communications |
 | **シリコン バレー** |Equinix | Cox Business、Windstream |
 | **シンガポール** |Equinix |1CLOUDSTAR、Epsilon Telecommunications Limited |

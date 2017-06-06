@@ -12,13 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/12/2017
+ms.date: 05/25/2017
 ms.author: joflore
+ms.editor: gahug
+ms.custom: it-pro
 ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: 6cc1589f2ebad9267334f70926be369b32c8e075
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 5bd17fc68447b8387dfaad33fe2d0055596ec086
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/13/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -41,7 +43,7 @@ ms.lasthandoff: 05/13/2017
 
 ## <a name="email-based-rollout"></a>電子メール ベースの展開
 
-多くのお客様は、電子メール キャンペーンで簡単な使用手順を配布することがユーザーの SSPR の使用を促す最も簡単な方法だと考えています。 展開に役立つテンプレートとして使用できる 3 つの簡単な電子メールを作成しました。
+多くのお客様は、電子メール キャンペーンで簡単な使用手順を配布することがユーザーの SSPR の使用を促す最も簡単な方法だと考えています。 [展開に役立つテンプレートとして使用できる 3 つの簡単な電子メールを作成しました。](https://onedrive.live.com/?authkey=%21AD5ZP%2D8RyJ2Cc6M&id=A0B59A91C740AB16%2125063&cid=A0B59A91C740AB16)
 
 * **準備中**電子メール テンプレート。ユーザーに必要な作業を通知するために展開の数週間前または数日前に使用します。
 * **利用開始**電子メール テンプレート。ユーザーが必要なときに SSPR を使用できるように、登録し、認証データを確認してもらうために展開当日に使用します。
