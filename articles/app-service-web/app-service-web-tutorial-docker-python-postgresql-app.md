@@ -37,9 +37,9 @@ ms.lasthandoff: 06/01/2017
 1. [Docker Community Edition をダウンロードし、インストールします](https://www.docker.com/community-edition)
 1. [Azure CLI 2.0 をダウンロードし、インストールします](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="test-local-postgresql-installation-and-create-a-database"></a>PostgreSQL のローカル インストールをテストし、データベースを作成する
 この手順では、ローカル PostgreSQL データベースが実行されていることを確認します。

@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/27/2017
+ms.date: 06/05/2017
 ms.author: mihauss
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
 ms.openlocfilehash: 618d31e991d9405ece6533727d700e316ae85bec
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/06/2017
 
 

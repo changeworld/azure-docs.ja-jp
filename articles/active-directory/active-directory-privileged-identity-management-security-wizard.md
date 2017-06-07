@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2017
 ms.author: billmath
-ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.custom: pim ; H1Hack27Feb2017
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b9a3b64d9de48f17a295ca7a9ea58cf26e8f83ed
 ms.openlocfilehash: ba06eb7e9f3f09e2d1d04cb4118dd81b9e66853e
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/28/2017
 
 ---
