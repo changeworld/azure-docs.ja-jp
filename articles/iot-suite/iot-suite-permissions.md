@@ -69,7 +69,7 @@ Azure 共同管理者、サービス管理者、アカウント管理者のロ�
 * **Admin:** デバイスの追加、管理、削除、および設定の変更をすべて実行できます。
 * **ReadOnly:** デバイス、ルール、アクション、ジョブ、およびテレメトリを表示できます。
 
-[RolePermissions.cs] [ lnk-resource-cs] ソース ファイルで、各ロールに割り当てられるアクセス許可を確認できます。
+[RolePermissions.cs][lnk-resource-cs] ソース ファイルで、各ロールに割り当てられるアクセス許可を確認できます。
 
 ### <a name="changing-application-roles-for-a-user"></a>ユーザーのアプリケーション ロールの変更
 
