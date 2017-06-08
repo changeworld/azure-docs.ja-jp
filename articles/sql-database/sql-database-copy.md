@@ -8,16 +8,17 @@ manager: jhubbard
 editor: 
 ms.assetid: 5aaf6bcd-3839-49b5-8c77-cbdf786e359b
 ms.service: sql-database
-ms.custom: move data
+ms.custom: load & move data
 ms.devlang: NA
 ms.date: 04/05/2017
 ms.author: sashan;carlrab
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: af953e16103951fe2fd283898b3c466a1ebe91fd
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/27/2017
 
 

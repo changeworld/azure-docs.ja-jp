@@ -7,16 +7,17 @@ manager: jhubbard
 author: ddove
 ms.assetid: 2540de0e-2235-4cdd-9b6a-b841adba00e5
 ms.service: sql-database
-ms.custom: multiple databases
+ms.custom: scale out apps
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: ddove
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
 ms.openlocfilehash: 12f84f7ee418955f34316686c836a8697be94ea2
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/10/2017
 
 

@@ -8,16 +8,17 @@ author: ddove
 editor: 
 ms.assetid: d15a2e3f-5adf-41f0-95fa-4b945448e184
 ms.service: sql-database
-ms.custom: multiple databases
+ms.custom: scale out apps
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: ddove
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
 ms.openlocfilehash: 2a7c761062dcf5da016a2e106274839f5f6c0d13
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/20/2017
 
 

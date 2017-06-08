@@ -12,11 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/19/2017
+ms.date: 06/07/2017
 ms.author: motanv
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
 ms.openlocfilehash: 8975df6b0fe594b092c9890352c7b3787733d8db
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -253,9 +255,4 @@ Connect-ServiceFabricCluster $connection
 
 Invoke-ServiceFabricFailoverTestScenario -TimeToRunMinute $timeToRun -MaxServiceStabilizationTimeoutSec $maxStabilizationTimeSecs -WaitTimeBetweenFaultsSec $waitTimeBetweenFaultsSec -ServiceName $serviceName -PartitionKindSingleton
 ```
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

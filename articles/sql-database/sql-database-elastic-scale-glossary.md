@@ -8,16 +8,18 @@ author: ddove
 editor: 
 ms.assetid: a23a4e81-6706-452d-afc1-a550e5e47af9
 ms.service: sql-database
-ms.custom: multiple databases
+ms.custom: scale out apps
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: ebd5224caa41efe61bdea14b4570005880f4411c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -91,10 +93,5 @@ Azure SQL Database の機能である [Elastic Database ツール](sql-database-
 [1]: ./media/sql-database-elastic-scale-glossary/glossary.png
 [2]: ./media/sql-database-elastic-scale-glossary/mappings.png
 [3]: ./media/sql-database-elastic-scale-glossary/h_versus_vert.png
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

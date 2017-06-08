@@ -9,15 +9,17 @@ editor:
 ms.assetid: bfc9d820-edbd-4fca-bfbf-1f339cfcc448
 ms.service: sql-database
 ms.workload: sql-database
-ms.custom: multiple databases
+ms.custom: scale out apps
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: aa438680348748a771f9016ecdcc68372c6c5e86
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -62,10 +64,5 @@ ms.openlocfilehash: aa438680348748a771f9016ecdcc68372c6c5e86
 
 <!--Image references-->
 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
