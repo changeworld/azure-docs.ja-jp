@@ -1,11 +1,27 @@
 ---
-
-ROBOTS: NOINDEX, NOFOLLOW
+title: "(非推奨) 正規分布の Web サービス スイート - Azure | Microsoft Docs"
+description: "(非推奨) 正規分布の Web サービス スイート"
+services: machine-learning
+documentationcenter: 
+author: ireiter
+manager: jhubbard
+editor: cgronlun
+ms.assetid: aab7b92e-953b-43d8-b0af-031394406bfe
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 01/06/2017
+ms.author: ireiter
+ROBOTS: NOINDEX
 redirect_url: https://gallery.cortanaintelligence.com/
-translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 28d39639e687dd0b768d0d4c780a24f7b727efa6
-ms.lasthandoff: 05/03/2017
+redirect_document_id: TRUE
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
+ms.openlocfilehash: da7b70171d13c82e9269064069e69a35b9b2daaa
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/11/2017
 
 
 ---
@@ -14,13 +30,13 @@ ms.lasthandoff: 05/03/2017
 > [!NOTE]
 > Microsoft DataMarket は間もなく提供終了となる予定です。この API は推奨されていません。 
 > 
-> [Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com)では、便利なサンプル実験や API が多数提供されています。 ギャラリーについて詳しくは、「 [Cortana Intelligence ギャラリーでリソースを共有および発見する](machine-learning-gallery-how-to-use-contribute-publish.md)」をご覧ください。
+> [Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com)では、便利なサンプル実験や API が提供されています。 ギャラリーについて詳しくは、「 [Cortana Intelligence ギャラリーでリソースを共有および発見する](machine-learning-gallery-how-to-use-contribute-publish.md)」をご覧ください。
 
 正規分布のスイートは、一連のサンプル Web サービス ([正規分布ジェネレーター](https://datamarket.azure.com/dataset/aml_labs/ndg7)、[変位値計算](https://datamarket.azure.com/dataset/aml_labs/ndq5)、[確率計算](https://datamarket.azure.com/dataset/aml_labs/ndp5)) で、正規分布を生成し処理します。 これらのサービスにより、任意の長さの正規分布シーケンスの生成、与えられた確率からの変位値の計算、および与えられた変位値からの確率の計算ができます。 それぞれのサービスは、選択したサービスに基づいて異なる結果を出力します (以下の説明を参照してください)。 正規分布スイートは、R の統計パッケージに含まれている R 関数 qnorm、rnorm、および pnorm に基づいています。
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-> この Web サービスは、モバイル アプリ、Web サイト、ローカル コンピューターなどからユーザーが使用できます。 この Web サービスのもう 1 つの目的は、Azure Machine Learning を使用して R コード上に Web サービスを作成する方法の例を示すことです。 数行の R コードを記述し、Azure Machine Learning Studio 内でボタンを何回かクリックするだけで、R コードで実験を作成し、Web サービスとして発行できます。 この Web サービスは Azure Marketplace に発行され、Web サービスの作成者がインフラストラクチャを設定することなく、世界中のユーザーやデバイスで使用されます。  
+> この Web サービスは、モバイル アプリ、Web サイト、ローカル コンピューターなどからユーザーが使用できます。 この Web サービスのもう&1; つの目的は、Azure Machine Learning を使用して R コード上に Web サービスを作成する方法の例を示すことです。 数行の R コードを記述し、Azure Machine Learning Studio 内でボタンを何回かクリックするだけで、R コードで実験を作成し、Web サービスとして発行できます。 この Web サービスは Azure Marketplace に発行され、Web サービスの作成者がインフラストラクチャを設定することなく、世界中のユーザーやデバイスで使用されます。  
 > 
 > 
 
@@ -32,7 +48,7 @@ ms.lasthandoff: 05/03/2017
 
 入力引数は、次のとおりです。
 
-* p – 正規分布のイベントの 1 つの確率 
+* p – 正規分布のイベントの&1; つの確率 
 * mean – 正規分布の平均
 * SD – 正規分布の標準偏差 
 * Side - L は分布の下部、U は分布の上部
@@ -44,7 +60,7 @@ ms.lasthandoff: 05/03/2017
 
 入力引数は、次のとおりです。
 
-* q – 正規分布でのイベントの 1 つの変位値 
+* q – 正規分布でのイベントの&1; つの変位値 
 * mean – 正規分布の平均
 * SD – 正規分布の標準偏差 
 * Side - L は分布の下部、U は分布の上部

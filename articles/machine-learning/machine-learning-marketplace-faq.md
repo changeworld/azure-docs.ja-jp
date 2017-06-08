@@ -1,11 +1,27 @@
 ---
-
-ROBOTS: NOINDEX, NOFOLLOW
+title: "(非推奨) Azure Marketplace での Machine Learning アプリの公開と使用に関する FAQ | Microsoft Docs"
+description: "(非推奨) Azure Marketplace での Machine Learning アプリの公開に関する FAQ"
+services: machine-learning
+documentationcenter: 
+author: bharaths
+manager: jhubbard
+editor: cgronlun
+ms.assetid: 26b3a1e7-8b9a-4004-98bc-17456d4c25e8
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 01/06/2017
+ms.author: bharaths
+ROBOTS: NOINDEX
 redirect_url: https://gallery.cortanaintelligence.com/
-translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 4f6e2816a55eb48fe947cc5bf21ee466e8116feb
-ms.lasthandoff: 05/03/2017
+redirect_document_id: TRUE
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 85a58e09e05fdb50984055ab25c4c2fe520dab4d
+ms.openlocfilehash: 9e2d4a2d46bd461a71217cd2b2d75f5a50e8b617
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/10/2017
 
 
 ---
@@ -34,7 +50,7 @@ ms.lasthandoff: 05/03/2017
 
 **要求の処理中に予期しないエラーが発生しました。もう一度実行してください。**
 
-Marketplace の **[このデータセットの参照]** ページで Web サービスを使用するときに、Web サービスの 1 つ以上の入力パラメーターが長さの制限を超過した可能性があります。 HTTP POST メソッドを使用して、より長い入力文字列でサービスを呼び出すことができます。 例については、「 [Azure ML で R を使用して構築され、Marketplace に発行されたサンプル Web サービス](machine-learning-r-csharp-web-service-examples.md)」をご覧ください。
+Marketplace の **[このデータセットの参照]** ページで Web サービスを使用するときに、Web サービスの&1; つ以上の入力パラメーターが長さの制限を超過した可能性があります。 HTTP POST メソッドを使用して、より長い入力文字列でサービスを呼び出すことができます。 例については、「 [Azure ML で R を使用して構築され、Marketplace に発行されたサンプル Web サービス](machine-learning-r-csharp-web-service-examples.md)」をご覧ください。
 
 **4.なぜ Azure クラシック ポータルのストアの [API エクスプローラー] タブに何も表示されないのでしょうか。** 
 

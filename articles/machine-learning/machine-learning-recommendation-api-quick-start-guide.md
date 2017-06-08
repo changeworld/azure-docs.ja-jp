@@ -14,11 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: luisca
-ROBOTS: NOINDEX, NOFOLLOW
+ROBOTS: NOINDEX
 redirect_url: machine-learning-datamarket-deprecation
-translationtype: Human Translation
+redirect_document_id: TRUE
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 21cf8b726ffd9b05f771c8ac6480140a6ed3199e
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/03/2017
 
 

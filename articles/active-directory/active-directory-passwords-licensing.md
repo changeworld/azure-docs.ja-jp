@@ -6,6 +6,7 @@ keywords:
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
+editor: gahug
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
@@ -14,7 +15,6 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: joflore
-ms.editor: gahug
 ms.custom: it-pro
 ms.translationtype: Human Translation
 ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2

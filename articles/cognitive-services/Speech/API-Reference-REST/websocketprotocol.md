@@ -31,6 +31,7 @@ Connections require a web socket handshake. To begin this handshake, the client 
 GET /speech/recognize/interactive/cognitiveservices/v1 HTTP/1.1
 Host: speech.platform.bing.com
 Upgrade: websocket
+Connection: Upgrade
 ProtoSec-WebSocket-Key: wPEE5FzwR6mxpsslyRRpgP==
 Sec-WebSocket-Version: 13
 Authorization: t=EwCIAgALBAAUWkziSCJKS1VkhugDegv7L0eAAJqBYKKTzpPZOeGk7RfZmdBhYY28jl&p=
@@ -100,7 +101,7 @@ Like text web socket messages, binary web socket messages consist of a header an
 Headers in a binary web socket message are encoded in the same format as in text web socket messages, in *name:value* format separated by a single carriage-return-newline pair. Binary web socket messages must specify a message path in the header *Path*.
 The value of this header must be one of the speech protocol message types defined later in this document.
 
-#    <a name="speech-protocol"></a>Speech Protocol
+#   <a name="speech-protocol"></a>Speech Protocol
 This section describes the web socket message types that make up the protocol for Microsoft Speech Service requests.
 
 # <a name="client-originated-message-types"></a>Client-Originated Message Types

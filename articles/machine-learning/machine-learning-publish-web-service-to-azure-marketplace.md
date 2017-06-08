@@ -11,11 +11,12 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: deprecated
+ms.topic: article
 ms.date: 06/02/2017
 ms.author: bharaths
-ROBOTS: NOINDEX, NOFOLLOW
+ROBOTS: NOINDEX
 redirect_url: machine-learning-gallery-experiments
+redirect_document_id: TRUE
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 85a58e09e05fdb50984055ab25c4c2fe520dab4d
 ms.openlocfilehash: 2d62966f130f6778c9561393cc7fc338f8903f1e

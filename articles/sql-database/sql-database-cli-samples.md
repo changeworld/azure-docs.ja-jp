@@ -9,7 +9,7 @@ editor: tysonn
 tags: azure-service-management
 ms.assetid: 
 ms.service: sql-database
-ms.custom: sample, mvc
+ms.custom: overview-samples
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: sql-database

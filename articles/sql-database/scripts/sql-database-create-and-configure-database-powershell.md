@@ -9,7 +9,7 @@ editor: carlrab
 tags: azure-service-management
 ms.assetid: 
 ms.service: sql-database
-ms.custom: mvc
+ms.custom: DBs and servers
 ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
