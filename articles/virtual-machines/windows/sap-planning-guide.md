@@ -659,7 +659,7 @@ Azure での名前解決と IP 解決の構成については、さまざまな�
 ##### <a name="azure-virtual-networks"></a>Azure 仮想ネットワーク
 Azure Virtual Network を作成することで、Azure の DHCP 機能によって割り当てられたプライベート IP アドレスのアドレス範囲を定義できます。 クロスプレミス シナリオでは、定義されている IP アドレス範囲が Azure によって DHCP を使用して割り当てられます。 ただし、ドメイン名解決は (VM がオンプレミス ドメインの一部であると想定して) オンプレミスで実行されるため、複数の Azure Cloud Services にまたがってアドレスを解決できます。
 
-[comment]: <> (MSSedusch まだ必要ですか?TODO 当初、Azure Virtual Network はアフィニティ グループに関連付けられていました。これにより、Azure 内の Virtual Network は、アフィニティ グループの割り当て先の Azure スケール ユニットに制限されていました。このことは最終的に、Virtual Network が Azure スケール ユニット内で使用できるリソースに制限されるということを意味していました。そのため、これは変更され、Azure Virtual Network を 1 つ以上の Azure スケール ユニットにまたがって拡張できるようになりました。ただし、これは、Azure Virtual Network が作成時にアフィニティ グループに関連付けられて **いない** ことを条件としています。これについては、1 年前の推奨事項には反しますが、**今後は Azure アフィニティ グループを使用しない** ように既にお伝えしています。詳細については、こちら (<https://azure.microsoft.com/blog/regional-virtual-networks/>)) を参照してください。
+[comment]: <> (MSSedusch まだ必要ですか?TODO 当初、Azure Virtual Network はアフィニティ グループに関連付けられていました。これにより、Azure 内の Virtual Network は、アフィニティ グループの割り当て先の Azure スケール ユニットに制限されていました。このことは最終的に、Virtual Network が Azure スケール ユニット内で使用できるリソースに制限されるということを意味していました。そのため、これは変更され、Azure Virtual Network を 1 つ以上の Azure スケール ユニットにまたがって拡張できるようになりました。ただし、これは、Azure Virtual Network が作成時にアフィニティ グループに関連付けられて **いない** ことを条件としています。これについては、1 年前の推奨事項には反しますが、**今後は Azure アフィニティ グループを使用しない** ように既にお伝えしています。詳細については、こちら (<https://azure.microsoft.com/blog/regional-virtual-networks/>) を参照してください)
 
 Azure 内のすべての仮想マシンは、Virtual Network に接続される必要があります。
 

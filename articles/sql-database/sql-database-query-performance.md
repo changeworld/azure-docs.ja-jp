@@ -8,16 +8,17 @@ manager: jhubbard
 editor: monicar
 ms.assetid: c2f580b2-3835-453f-89f5-140e02dd2ea7
 ms.service: sql-database
-ms.custom: monitor and tune
+ms.custom: monitor & manage
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 08/09/2016
 ms.author: sstein
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ddf93a0db278fffa2aa45fdc73a1c7f57a84fb39
 ms.openlocfilehash: 14140a6aa8c8cccf658f8e98305659e8ae76dcad
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/31/2017
 
 

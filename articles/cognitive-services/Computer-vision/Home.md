@@ -93,7 +93,7 @@ Based on a list of 86 concepts seen in the following diagram, visual features fo
 
 ![Analyze Categories](./Images/analyze_categories.jpg)
 
-Image                                                   | Response
+Image                                                  | Response
 ------------------------------------------------------ | ----------------
 ![Woman Roof](./Images/woman_roof.jpg)                 | people
 ![Family Photo](./Images/family_photo.jpg)             | people_crowd

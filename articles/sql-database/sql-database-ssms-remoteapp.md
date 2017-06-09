@@ -7,16 +7,17 @@ author: adhurwit
 manager: jhubbard
 ms.assetid: 1052c83c-e7f5-4736-922f-216194d8874b
 ms.service: sql-database
-ms.custom: manage-how-to
+ms.custom: monitor & manage
 ms.workload: data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2016
 ms.author: adhurwit
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 92cad42344fb6f77b3088f74ea0e37a542bd0378
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/03/2017
 
 

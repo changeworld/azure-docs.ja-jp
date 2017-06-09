@@ -8,16 +8,17 @@ manager: jhubbard
 editor: 
 ms.assetid: 37767380-975f-4dee-a28d-80bc2036dda3
 ms.service: sql-database
-ms.custom: manage
+ms.custom: monitor & manage
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/03/2017
 ms.author: carlrab
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
 ms.openlocfilehash: 9b0a3a314e576db2133e5c63fada43bb11a4e520
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/04/2017
 
 
