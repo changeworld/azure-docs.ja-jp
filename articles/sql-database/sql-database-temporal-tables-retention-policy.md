@@ -157,7 +157,7 @@ CREATE NONCLUSTERED INDEX IX_WebHistNCI ON WebsiteUserInfoHistory ([UserName])
 次の図は、シンプルなクエリのクエリ プランを示しています。
 
 ````
-SELECT * FROM dbo.WebsiteUserInfo FROM SYSTEM_TIME ALL;
+SELECT * FROM dbo.WebsiteUserInfo FOR SYSTEM_TIME ALL;
 ````
 
 クエリ プランには、履歴テーブル (ハイライト表示) での「Clustered Index Scan」操作の期間終了列 (ValidTo) に適用される追加のフィルターが含まれます。 この例では、WebsiteUserInfo テーブルに 1 か月のリテンション期間が設定されていると想定しています。

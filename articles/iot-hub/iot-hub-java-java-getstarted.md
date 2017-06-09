@@ -12,7 +12,7 @@ ms.devlang: java
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/25/2017
+ms.date: 06/09/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
@@ -213,7 +213,7 @@ IoT Hub の作成は以上です。 このチュートリアルを完了する�
                       receivedEvent.getSystemProperties().getSequenceNumber(), 
                       receivedEvent.getSystemProperties().getEnqueuedTime()));
                     System.out.println(String.format("| Device ID: %s", receivedEvent.getSystemProperties().get("iothub-connection-device-id")));
-                    System.out.println(String.format("| Message Payload: %s", new String(receivedEvent.getBody(),
+                    System.out.println(String.format("| Message Payload: %s", new String(receivedEvent.getBytes(),
                       Charset.defaultCharset())));
                     batchSize++;
                   }
