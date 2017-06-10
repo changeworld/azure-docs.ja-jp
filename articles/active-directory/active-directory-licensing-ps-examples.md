@@ -86,7 +86,7 @@ Get-MsolGroup -All | Where {$_.Licenses}  | Foreach {
     $licenseAssignedCount = 0;
     $licenseErrorCount = 0;
 
-    Get-MsolGroupMember -GroupObjectId $groupId | 
+    Get-MsolGroupMember -All -GroupObjectId $groupId | 
     #get full info about each user in the group
     Get-MsolUser -ObjectId {$_.ObjectId} | 
     Foreach { 
@@ -105,7 +105,7 @@ Get-MsolGroup -All | Where {$_.Licenses}  | Foreach {
         }     
     }
 
-    /#aggregate results for this group
+    #aggregate results for this group
     New-Object Object | 
                     Add-Member -NotePropertyName GroupName -NotePropertyValue $groupName -PassThru |
                     Add-Member -NotePropertyName GroupId -NotePropertyValue $groupId -PassThru |
@@ -152,7 +152,7 @@ ObjectId                             DisplayName             GroupType Descripti
 $groupId = '11151866-5419-4d93-9141-0603bbf78b42'
 
 #get all user members of the group
-Get-MsolGroupMember -GroupObjectId $groupId |
+Get-MsolGroupMember -All -GroupObjectId $groupId |
     #get full information about user objects
     Get-MsolUser -ObjectId {$_.ObjectId} |
     #filter out users without license errors and users with licenense errors from other groups
@@ -322,7 +322,7 @@ $servicePlansFromGroups = ("EXCHANGE_S_ENTERPRISE", "SHAREPOINTENTERPRISE", "OFF
 $expectedDisabledPlans = GetDisabledPlansForSKU $skuId $servicePlansFromGroups
 
 #process all members in the group
-Get-MsolGroupMember -GroupObjectId $groupId | 
+Get-MsolGroupMember -All -GroupObjectId $groupId | 
     #get full info about each user in the group
     Get-MsolUser -ObjectId {$_.ObjectId} | 
     Foreach { 
