@@ -54,7 +54,7 @@ ms.lasthandoff: 02/13/2017
     ![Choose goals](./media/site-recovery-set-up-vmware-to-azure/choose-goals2.png)
 
 ## <a name="set-up-the-source-environment"></a>ソース環境をセットアップする
-ソース環境のセットアップ作業には、主に&2; つのアクティビティが含まれます。
+ソース環境のセットアップ作業には、主に 2 つのアクティビティが含まれます。
 
 - Site Recovery を使用して構成サーバーをインストールし、登録する。
 - Site Recovery をオンプレミスの VMware vCenter または vSphere EXSi ホストに接続して、オンプレミスの仮想マシンを検出する。
@@ -66,7 +66,7 @@ ms.lasthandoff: 02/13/2017
     ![Set up source](./media/site-recovery-set-up-vmware-to-azure/set-source1.png)
 2. **[サーバーの追加]** ブレードで、**[サーバーの種類]** に **[構成サーバー]** が表示されていることを確認します。
 4. Site Recovery 統合セットアップ インストール ファイルをダウンロードします。
-5. コンテナー登録キーをダウンロードします。 統合セットアップを実行する際には、登録キーが必要です。 キーは生成後&5; 日間有効です。
+5. コンテナー登録キーをダウンロードします。 統合セットアップを実行する際には、登録キーが必要です。 キーは生成後 5 日間有効です。
 
     ![Set up source](./media/site-recovery-set-up-vmware-to-azure/set-source2.png)
 6. 構成サーバーとして使用するマシンで**Azure Site Recovery 統合セットアップ**を実行して、構成サーバー、プロセス サーバー、マスター ターゲット サーバーをインストールします。
@@ -74,7 +74,7 @@ ms.lasthandoff: 02/13/2017
 #### <a name="run-azure-site-recovery-unified-setup"></a>Azure Site Recovery 統合セットアップを実行する
 
 > [!TIP]
-> コンピューターのシステム クロックの時刻と現地時刻との差が&5; 分を超えている場合は、構成サーバーの登録が失敗します。 インストールを開始する前に、システム クロックを[タイム サーバー](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)と同期させてください。
+> コンピューターのシステム クロックの時刻と現地時刻との差が 5 分を超えている場合は、構成サーバーの登録が失敗します。 インストールを開始する前に、システム クロックを[タイム サーバー](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)と同期させてください。
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 

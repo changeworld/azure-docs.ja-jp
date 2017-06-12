@@ -30,7 +30,7 @@ ms.lasthandoff: 01/27/2017
 > 
 > 
 
-1 人のユーザーがロックアウトされたり、アカウントが削除されたりしたときのために、特権ロール管理者ロールを割り当てられたユーザーが常に少なくとも&2; 人いるようにしてください。
+1 人のユーザーがロックアウトされたり、アカウントが削除されたりしたときのために、特権ロール管理者ロールを割り当てられたユーザーが常に少なくとも 2 人いるようにしてください。
 
 ## <a name="give-another-user-access-to-manage-pim"></a>PIM を管理するためのアクセス権を別のユーザーに付与する
 1. [Azure Portal](https://portal.azure.com/) にサインインし、ダッシュボードで **Azure AD Privileged Identity Management** アプリを選択します。
@@ -47,7 +47,7 @@ ms.lasthandoff: 01/27/2017
 6. [Azure AD Privileged Identity Management の使用](active-directory-privileged-identity-management-getting-started.md)へのリンクをユーザーに送信します。
 
 ## <a name="remove-another-users-access-rights-for-managing-pim"></a>別のユーザーに付与された、PIM を管理するためのアクセス権を削除する
-特権ロール管理者ロールからユーザーを削除する際は、割り当てられているユーザーの人数が削除後も&2; 人以上になるように、必ず事前に確認してください。
+特権ロール管理者ロールからユーザーを削除する際は、割り当てられているユーザーの人数が削除後も 2 人以上になるように、必ず事前に確認してください。
 
 1. PIM ダッシュボードで、 **[特権ロール管理者]**ロールをクリックします。  そのロールの現在のユーザー一覧が表示されます。
 2. ユーザーの一覧でユーザーをクリックします。

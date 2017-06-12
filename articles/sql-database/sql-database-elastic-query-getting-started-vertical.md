@@ -34,7 +34,7 @@ Elastic Database クエリ機能の詳細については、「[Azure SQL Databas
 ユーザーは、ALTER ANY EXTERNAL DATA SOURCE アクセス許可を所有している必要があります。 このアクセス許可は、ALTER DATABASE アクセス許可に含まれています。 ALTER ANY EXTERNAL DATA SOURCE アクセス許可は、基になるデータ ソースを参照するために必要です。
 
 ## <a name="create-the-sample-databases"></a>サンプル データベースの作成
-最初に、同じ論理サーバーか異なる論理サーバーで「**Customers**」と「**Orders**」という&2; つのデータベースを作成する必要があります。   
+最初に、同じ論理サーバーか異なる論理サーバーで「**Customers**」と「**Orders**」という 2 つのデータベースを作成する必要があります。   
 
 「**Orders**」データベースで次のクエリを実行し、「**OrderInformation**」テーブルを作成し、サンプル データを入力します。 
 
