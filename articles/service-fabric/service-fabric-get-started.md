@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/17/2017
+ms.date: 05/26/2017
 ms.author: ryanwi, mikhegn
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: dc07c709df84bbfcbf677bc3c2977590e651b194
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 25243603abd2f30adc11640f00b782c8d827796e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -71,8 +71,8 @@ SDK のみが必要な場合は、次のパッケージをインストールす�
 > ご不便をおかけして申し訳ありません。 
 
 現在のバージョンは次のとおりです。
-* Service Fabric SDK 2.6.204
-* Service Fabric ランタイム 5.6.204
+* Service Fabric SDK 2.6.210
+* Service Fabric ランタイム 5.6.210
 * Visual Studio 2015 Tools 1.6.50508.2
 * Visual Studio 2017 Update 2
 

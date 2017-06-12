@@ -14,13 +14,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/07/2016
 ms.author: mandia
-translationtype: Human Translation
-ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
-ms.openlocfilehash: b8d2b49a416883376302c9b3cc5924877b404a95
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 718b57a801a9ba62a0154ae42da2ac0c0741f203
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/01/2017
 
 
 ---
 # <a name="biztalk-services-editions-chart"></a>BizTalk Services: エディション チャート
+
+> [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
+
 Azure BizTalk Services には複数のエディションがあります。 この記事では、シナリオとビジネス ニーズに合ったエディションを決定する方法について説明します。
 
 ## <a name="compare-the-editions"></a>各エディションを比較する
@@ -54,12 +59,12 @@ Standard エディションのすべての機能が含まれており、ハイ�
         <th>開発者</th>
         <th>Basic</th>
         <th>Standard</th>
-        <th>Premium</th>
+        <th>プレミアム</th>
 </tr>
 
 <tr>
 <td><strong>開始価格</strong></td>
-<td colspan="5"><a HREF="http://go.microsoft.com/fwlink/p/?LinkID=304011"> Azure BizTalk Services の価格</a> <br/><br/> <a HREF="http://azure.microsoft.com/pricing/calculator/?scenario=full"> Azure 料金計算ツール</a></td>
+<td colspan="5"><a HREF="http://go.microsoft.com/fwlink/p/?LinkID=304011">Azure BizTalk Services の価格</a> <br/><br/> <a HREF="http://azure.microsoft.com/pricing/calculator/?scenario=full">Azure 料金計算ツール</a></td>
 </tr>
 <tr>
 <td><strong>既定の最小構成</strong></td>
@@ -251,10 +256,5 @@ Azure BizTalk Services を Azure ポータルで作成するには、 [BizTalk S
 * [BizTalk サービス: 調整](biztalk-throttling-thresholds.md)<br/>
 * [BizTalk サービス: 発行者名および発行者キー](biztalk-issuer-name-issuer-key.md)<br/>
 * [Visual Studio でのプロジェクトの作成](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

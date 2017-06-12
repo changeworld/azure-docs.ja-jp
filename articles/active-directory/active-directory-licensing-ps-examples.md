@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/02/2017
+ms.date: 06/05/2017
 ms.author: curtand
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: 36ea3356648a1a6333c2a1e2c042d27ae2f829b4
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/27/2017
 
 
@@ -69,7 +70,7 @@ ObjectId                             DisplayName              Licenses
 7023a314-6148-4d7b-b33f-6c775572879a EMS E5 – Licensed users  EMSPREMIUM
 cf41f428-3b45-490b-b69f-a349c8a4c38e PowerBi - Licensed users POWER\_BI\_STANDARD
 962f7189-59d9-4a29-983f-556ae56f19a5 O365 E3 - Licensed users ENTERPRISEPACK
-c2652d63-9161-439b-b74e-fcd8228a7074 EMSandOffice               {ENTERPRISEPREMIUM,EMSPREMIUM}
+c2652d63-9161-439b-b74e-fcd8228a7074 EMSandOffice             {ENTERPRISEPREMIUM,EMSPREMIUM}
 ```
 
 ## <a name="get-statistics-for-groups-with-licenses"></a>ライセンスを持つグループの統計を取得する
@@ -85,7 +86,7 @@ Get-MsolGroup -All | Where {$_.Licenses}  | Foreach {
     $licenseAssignedCount = 0;
     $licenseErrorCount = 0;
 
-    Get-MsolGroupMember -GroupObjectId $groupId | 
+    Get-MsolGroupMember -All -GroupObjectId $groupId | 
     #get full info about each user in the group
     Get-MsolUser -ObjectId {$_.ObjectId} | 
     Foreach { 
@@ -104,7 +105,7 @@ Get-MsolGroup -All | Where {$_.Licenses}  | Foreach {
         }     
     }
 
-    /#aggregate results for this group
+    #aggregate results for this group
     New-Object Object | 
                     Add-Member -NotePropertyName GroupName -NotePropertyValue $groupName -PassThru |
                     Add-Member -NotePropertyName GroupId -NotePropertyValue $groupId -PassThru |
@@ -151,7 +152,7 @@ ObjectId                             DisplayName             GroupType Descripti
 $groupId = '11151866-5419-4d93-9141-0603bbf78b42'
 
 #get all user members of the group
-Get-MsolGroupMember -GroupObjectId $groupId |
+Get-MsolGroupMember -All -GroupObjectId $groupId |
     #get full information about user objects
     Get-MsolUser -ObjectId {$_.ObjectId} |
     #filter out users without license errors and users with licenense errors from other groups
@@ -321,7 +322,7 @@ $servicePlansFromGroups = ("EXCHANGE_S_ENTERPRISE", "SHAREPOINTENTERPRISE", "OFF
 $expectedDisabledPlans = GetDisabledPlansForSKU $skuId $servicePlansFromGroups
 
 #process all members in the group
-Get-MsolGroupMember -GroupObjectId $groupId | 
+Get-MsolGroupMember -All -GroupObjectId $groupId | 
     #get full info about each user in the group
     Get-MsolUser -ObjectId {$_.ObjectId} | 
     Foreach { 

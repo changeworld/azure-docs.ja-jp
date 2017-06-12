@@ -1,11 +1,27 @@
 ---
-
-ROBOTS: NOINDEX, NOFOLLOW
+title: "(非推奨) バイナリ分類器 - Azure | Microsoft Docs"
+description: "(非推奨) バイナリ分類器"
+services: machine-learning
+documentationcenter: 
+author: jaymathe
+manager: jhubbard
+editor: cgronlun
+ms.assetid: 8045038a-9dcf-44b9-a6de-7f1f8e791575
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 01/06/2017
+ms.author: jaymathe
+ROBOTS: NOINDEX
 redirect_url: https://gallery.cortanaintelligence.com/
-translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 6dfd2beac84b00969b678a12b102328879d3d9bc
-ms.lasthandoff: 05/03/2017
+redirect_document_id: TRUE
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
+ms.openlocfilehash: d1d4f35a7e77a5fac1e8ecb1a82c14cca3406676
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/11/2017
 
 
 ---
@@ -14,7 +30,7 @@ ms.lasthandoff: 05/03/2017
 > [!NOTE]
 > Microsoft DataMarket は間もなく提供終了となる予定です。この API は推奨されていません。 
 > 
-> [Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com)では、便利なサンプル実験や API が多数提供されています。 ギャラリーについて詳しくは、「 [Cortana Intelligence ギャラリーでリソースを共有および発見する](machine-learning-gallery-how-to-use-contribute-publish.md)」をご覧ください。
+> [Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com)では、便利なサンプル実験や API が提供されています。 ギャラリーについて詳しくは、「 [Cortana Intelligence ギャラリーでリソースを共有および発見する](machine-learning-gallery-how-to-use-contribute-publish.md)」をご覧ください。
 
 データセットを用意し、独立変数に基づいてバイナリ従属変数を予測するとします。 'ロジスティック回帰' は、こうした予測のための一般的な統計手法です。 ここでは、従属変数はバイナリ変数や二値変数で、p は関心のある特性が存在する確率です。 
 
@@ -22,7 +38,7 @@ ms.lasthandoff: 05/03/2017
 
 単純なシナリオとしては、研究者が情報 (高校の GPA、家族の収入、居住状況、性別) を基に、見込みのある学生が大学への入学許可を受け入れるかどうかを予測しようとする場合が考えられます。 予測結果は、見込みのある学生が入学許可を受け入れる確率です。 この [Web サービス](https://datamarket.azure.com/dataset/aml_labs/log_regression) は、ロジスティック回帰モデルをデータに適合させ、データ内の観測ごとに、確率の値 (y) を出力します。  
 
-> この Web サービスは、モバイル アプリ、Web サイト、ローカル コンピューターなどからユーザーが使用できます。 この Web サービスのもう 1 つの目的は、Azure Machine Learning を使用して R コード上に Web サービスを作成する方法の例を示すことです。 数行の R コードを記述し、Azure Machine Learning Studio 内でボタンを何回かクリックするだけで、R コードで実験を作成し、Web サービスとして発行できます。 この Web サービスは Azure Marketplace に発行され、Web サービスの作成者がインフラストラクチャを設定することなく、世界中のユーザーやデバイスで使用されます。  
+> この Web サービスは、モバイル アプリ、Web サイト、ローカル コンピューターなどからユーザーが使用できます。 この Web サービスのもう&1; つの目的は、Azure Machine Learning を使用して R コード上に Web サービスを作成する方法の例を示すことです。 数行の R コードを記述し、Azure Machine Learning Studio 内でボタンを何回かクリックするだけで、R コードで実験を作成し、Web サービスとして発行できます。 この Web サービスは Azure Marketplace に発行され、Web サービスの作成者がインフラストラクチャを設定することなく、世界中のユーザーやデバイスで使用されます。  
 > 
 > 
 
@@ -72,7 +88,7 @@ ms.lasthandoff: 05/03/2017
 > 
 > 
 
-Azure Machine Learning 内で、新しい空白の実験が作成され、ワークスペース上に 2 つの [R スクリプトの実行][execute-r-script] を取得しました。 この Web サービスは、基になる R スクリプトで Azure Machine Learning の実験を実行します。 つまり、この実験には、スキーマ定義とモデルのトレーニング + スコア付けの 2 つの部分があります。 最初のモジュールは、入力されたデータセットに必要な構造を定義します。最初の変数を従属変数、残りを独立変数とします。 2 番目のモジュールは、入力データを汎用ロジスティック回帰モデルに適合させます。    
+Azure Machine Learning 内で、新しい空白の実験が作成され、ワークスペース上に&2; つの [R スクリプトの実行][execute-r-script] を取得しました。 この Web サービスは、基になる R スクリプトで Azure Machine Learning の実験を実行します。 つまり、この実験には、スキーマ定義とモデルのトレーニング + スコア付けの 2 つの部分があります。 最初のモジュールは、入力されたデータセットに必要な構造を定義します。最初の変数を従属変数、残りを独立変数とします。 2 番目のモジュールは、入力データを汎用ロジスティック回帰モデルに適合させます。    
 
 ![実験フロー][2]
 

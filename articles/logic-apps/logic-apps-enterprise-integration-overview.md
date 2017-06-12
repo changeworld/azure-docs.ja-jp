@@ -26,13 +26,13 @@ ms.lasthandoff: 02/15/2017
 
 Azure Logic Apps での企業間 (B2B) のワークフローとシームレスな通信を実現するために、Microsoft のクラウド ベースのソリューションである Enterprise Integration Pack を使用して、エンタープライズ統合シナリオを有効にすることができます。 組織は、異なるプロトコルと形式を使用している組織ともメッセージを電子的に交換することができます。 Enterprise Integration Pack により、メッセージの形式が組織のシステムで解釈して処理できる形式に変換されます。 メッセージの交換には、[AS2](../logic-apps/logic-apps-enterprise-integration-as2.md)、[X12](logic-apps-enterprise-integration-x12.md)、[EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md) などの業界標準のプロトコルを使用できます。 暗号化とデジタル署名を使用して、メッセージをセキュリティで保護することもできます。
 
-BizTalk Server または Microsoft Azure BizTalk Services を使い慣れている方は、ほとんどの概念が類似しているため、Enterprise Integration の機能を使いやすいと感じるものと思われます。 主な違いの&1; つは、B2B 通信で使用されるアーティファクトの保管と管理を簡単にするために、Enterprise Integration では統合アカウントを使用する点です。 
+BizTalk Server または Microsoft Azure BizTalk Services を使い慣れている方は、ほとんどの概念が類似しているため、Enterprise Integration の機能を使いやすいと感じるものと思われます。 主な違いの 1 つは、B2B 通信で使用されるアーティファクトの保管と管理を簡単にするために、Enterprise Integration では統合アカウントを使用する点です。 
 
 Enterprise Integration Pack のアーキテクチャは、"統合アカウント" をベースにしています。 統合アカウントは、スキーマ、パートナー、証明書、マップ、契約などのアーティファクトをすべて格納するクラウド ベースのコンテナーです。 これらのアーティファクトを使用して、B2B アプリケーションを設計、デプロイ、管理できるほか、ロジック アプリの B2B ワークフローを構築することもできます。 ただし、アーティファクトを使用する前に、統合アカウントとロジック アプリの関連付けを行っておく必要があります。 その後、ロジック アプリから統合アカウントのアーティファクトにアクセスできるようになります。
 
 ## <a name="why-should-you-use-enterprise-integration"></a>Enterprise Integration を使用する理由
 
-* Enterprise Integration を使用すれば、対象のアーティファクトをすべて&1; か所 (統合アカウント) に格納できます。
+* Enterprise Integration を使用すれば、対象のアーティファクトをすべて 1 か所 (統合アカウント) に格納できます。
 * Azure Logic Apps エンジンとそのコネクタすべてを利用することで、B2B ワークフローを構築し、サード パーティの SaaS アプリケーション、オンプレミスのアプリケーション、カスタム アプリケーションと統合できます。
 * Azure Functions を使用して、ロジック アプリのカスタム コードを作成できます。
 

@@ -7,12 +7,13 @@ manager: yutkuo
 ms.service: cognitive-services
 ms.technology: face
 ms.topic: article
-ms.date: 03/21/2017
+ms.date: 05/23/2017
 ms.author: anroth
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: a9337ce9a2f46ca20fd1a91145c09d3e2574c11f
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: bd1f27b3ecd8fc5ff1da9fb81c31b2002a707ac6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 ---
 
@@ -32,10 +33,13 @@ Use the [Face - Detect method](https://dev.projectoxford.ai/docs/services/563879
 
 #### <a name="face-detect-curl-example-request"></a>Face Detect cURL Example Request
 
+> [!NOTE]
+> You must use the same location in your REST call as you used to obtain your subscription keys. For example, if you obtained your subscription keys from westus, replace "westcentralus" in the URL below with "westus".
+
 ```javascript  
 @ECHO OFF
 
-curl -v -X POST "https://westus.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes={string}"
+curl -v -X POST "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes={string}"
 -H "Content-Type: application/json"
 -H "Ocp-Apim-Subscription-Key: {subscription key}"
 
@@ -189,10 +193,14 @@ A successful response will be returned in JSON. Following is an example of a suc
 Use the [Face - Identify method](https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) identify people based on a detected face and people database (defined as a person group) which needs to be created in advance and can be edited over time
 
 #### <a name="face---identify-curl-example-request"></a>Face - Identify cURL Example Request
+
+> [!NOTE]
+> You must use the same location in your REST call as you used to obtain your subscription keys. For example, if you obtained your subscription keys from westus, replace "westcentralus" in the URL below with "westus".
+
 ```javascript
 @ECHO OFF
 
-curl -v -X POST "https://westus.api.cognitive.microsoft.com/face/v1.0/identify"
+curl -v -X POST "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/identify"
 -H "Content-Type: application/json"
 -H "Ocp-Apim-Subscription-Key: {subscription key}"
 

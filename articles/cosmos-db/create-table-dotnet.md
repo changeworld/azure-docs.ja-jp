@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 66327041-4d5e-4ce6-a394-fee107c18e59
 ms.service: cosmos-db
-ms.custom: quick start connect
+ms.custom: quick start connect, mvc
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
@@ -105,7 +105,7 @@ github から DocumentDB API アプリを複製し、接続文字列を設定し
 
 1. [Azure Portal](http://portal.azure.com/) で、Azure Cosmos DB アカウントの左のナビゲーションから、**[キー]** をクリックし、**[読み取り/書き込みキー]** をクリックします。 次の手順では、画面の右側のコピー ボタンを使用して、URI とプライマリ キーを app.config ファイルにコピーします。
 
-    ![Azure Portal の [キー] ブレードでアクセス キーを表示およびコピーする](./media/create-documentdb-dotnet-core/keys.png)
+    ![Azure Portal の [キー] ブレードでアクセス キーを表示およびコピーする](./media/create-table-dotnet/keys.png)
 
 2. Visual Studio で app.config ファイルを開きます。 
 

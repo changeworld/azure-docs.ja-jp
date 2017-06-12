@@ -7,16 +7,17 @@ manager: jhubbard
 author: torsteng
 ms.assetid: a8bf0e2c-bc74-44d0-9b1e-bcc9a6aa2e33
 ms.service: sql-database
-ms.custom: multiple databases
+ms.custom: scale out apps
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2016
 ms.author: torsteng
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 430fed27780076738e319dabca4cc9abaed70691
 ms.openlocfilehash: 6c066599cc8fcff6344aaba5f0d2ad01acc71b5a
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/22/2017
 
 

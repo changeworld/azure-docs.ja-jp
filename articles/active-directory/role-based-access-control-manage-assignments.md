@@ -1,4 +1,5 @@
 ---
+
 title: "Azure リソースのアクセス権の割り当ての確認 | Microsoft Docs"
 description: "Azure Portal の任意のユーザーまたはグループについて、すべてのロールベースのアクセス制御の割り当てを確認および管理する"
 services: active-directory
@@ -12,21 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 3/21/2017
+ms.date: 05/04/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 82f084b220ba321945975c8d1a6d22e419acf5e4
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: e3b31a3db4b8f435c29cbc9dbdd09d100e821026
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="view-access-assignments-for-users-and-groups-in-the-azure-portal---public-preview"></a>Azure Portal のユーザーとグループのアクセス権の割り当てを表示 - パブリック プレビュー
+# <a name="view-access-assignments-for-users-and-groups-in-the-azure-portal"></a>Azure Portal のユーザーとグループのアクセス権の割り当てを表示
 > [!div class="op_single_selector"]
 > * [ユーザーまたはグループによるアクセスの管理](role-based-access-control-manage-assignments.md)
 > * [リソースによるアクセスの管理](role-based-access-control-configure.md)
 
-Azure Active Directory のロールベースのアクセス制御 (RBAC) のプレビューでは、Azure リソースへのアクセス権を管理できます。 [プレビューの機能については、こちらの記事をご覧ください。](active-directory-preview-explainer.md)
+Azure Active Directory (Azure AD) のロールベースのアクセス制御 (RBAC) により、Azure リソースへのアクセス権を管理できます。 
 
 2 つの方法でアクセス許可を制限できるため、RBAC ではアクセス権をきめ細かく割り当てられます。
 

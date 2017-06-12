@@ -11,13 +11,17 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: deprecated
-ms.date: 01/06/2017
+ms.topic: article
+ms.date: 06/02/2017
 ms.author: bharaths
-ROBOTS: NOINDEX, NOFOLLOW
-translationtype: Human Translation
+ROBOTS: NOINDEX
+redirect_url: machine-learning-gallery-experiments
+redirect_document_id: TRUE
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 85a58e09e05fdb50984055ab25c4c2fe520dab4d
 ms.openlocfilehash: 2d62966f130f6778c9561393cc7fc338f8903f1e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/10/2017
 
 
 ---
@@ -92,10 +96,5 @@ Azure Machine Learning Web サービスを Azure Marketplace に発行するた�
 [workspace]:./media/machine-learning-publish-web-service-to-azure-marketplace/selectworkspace.png
 [apikey]:./media/machine-learning-publish-web-service-to-azure-marketplace/apikey.png
 [odata]:./media/machine-learning-publish-web-service-to-azure-marketplace/odata.png
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

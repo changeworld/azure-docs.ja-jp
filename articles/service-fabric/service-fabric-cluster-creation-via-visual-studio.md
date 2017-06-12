@@ -13,10 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/21/2017
-ms.author: mikhegn@microsoft.com
-translationtype: Human Translation
+ms.author: mikhegn
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0eefa64d6292dec14842c031ebad80fa9094436d
 ms.openlocfilehash: 535e33eec22ed1c488cace9442328084b416b7a8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -143,9 +145,4 @@ Visual Studio の出力ウィンドウで、デプロイ プロセスの進行�
 [1]: ./media/service-fabric-cluster-creation-via-visual-studio/azure-resource-group-project-creation.png
 [2]: ./media/service-fabric-cluster-creation-via-visual-studio/selecting-azure-template.png
 [3]: ./media/service-fabric-cluster-creation-via-visual-studio/deploy-to-azure.png
-
-
-
-<!--HONumber=Feb17_HO4-->
-
 

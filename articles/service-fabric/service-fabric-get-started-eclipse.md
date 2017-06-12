@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 05/03/2016
 ms.author: saysa
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: c50c77b3288bc0a2d9148d04c6fc45aa24882ebb
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 9cc621380a6b22a6b1da617d76c56e4773bb3dde
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -37,7 +37,8 @@ Service Fabric プラグインを Eclipse にインストールすることが�
 2.  Service Fabric プラグインをインストールするには、Eclipse Neon で **[Help (ヘルプ)]** > **[Install New Software (新しいソフトウェアのインストール)]** の順に移動します。
   1.    **[Work with]\(作業対象\)** ボックスに、「**http://dl.microsoft.com/eclipse**」と入力します。
   2.    **[追加]**をクリックします。
-    ![Eclipse Neon 用の Service Fabric プラグイン][sf-eclipse-plugin-install]
+
+         ![Eclipse Neon 用の Service Fabric プラグイン][sf-eclipse-plugin-install] 
   3.    Service Fabric プラグインを選択して **[Next (次へ)]** をクリックします。
   4.    インストール手順を完了し、マイクロソフト ソフトウェア ライセンス条項に同意します。
 
@@ -149,7 +150,7 @@ Eclipse Neon を使用してアプリケーションをアップグレードす�
 
 <!-- Images -->
 
-[sf-eclipse-plugin-install]: ./media/service-fabric-get-started-mac/sf-eclipse-plugin-install.png
+[sf-eclipse-plugin-install]: ./media/service-fabric-get-started-eclipse/service-fabric-eclipse-plugin.png
 
 [create-application/p1]:./media/service-fabric-get-started-eclipse/create-application/p1.png
 [create-application/p2]:./media/service-fabric-get-started-eclipse/create-application/p2.png

@@ -10,17 +10,18 @@ manager: jhubbard
 editor: 
 ms.assetid: 676bd799-a571-4bb8-848b-fb1720007866
 ms.service: sql-database
-ms.custom: quick start manage
+ms.custom: quick start manage, mvc
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 04/17/2017
+ms.date: 05/24/2017
 ms.author: carlrab
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 45405c7bb9993d1fd529b25b599c3cd7f459843c
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 82c8a34fcccb6d19dc82110a6d95a80d748835f0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -28,10 +29,13 @@ ms.lasthandoff: 04/20/2017
 
 [Visual Studio Code](https://code.visualstudio.com/docs) は、Linux、macOS、Windows で使用できるグラフィカル コード エディターです。Microsoft SQL Server、Azure SQL Database、SQL Data Warehouse のデータを照会するために、[mssql 拡張機能](https://aka.ms/mssql-marketplace)など、各種の拡張機能をサポートしています。 このクイック スタートでは、Visual Studio Code を使って Azure SQL データベースに接続し、Transact-SQL ステートメントを使ってデータベース内のデータを照会、挿入、更新、削除する方法について説明します。
 
+## <a name="prerequisites"></a>前提条件
+
 このクイック スタートでは、次のクイック スタートで作成されたリソースが出発点として使用されます。
 
 - [DB の作成 - ポータル](sql-database-get-started-portal.md)
 - [DB の作成 - CLI](sql-database-get-started-cli.md)
+- [DB の作成 - PowerShell](sql-database-get-started-powershell.md)
 
 開始する前に、必ず最新バージョンの [Visual Studio Code](https://code.visualstudio.com/Download) をインストールして [mssql 拡張機能](https://aka.ms/mssql-marketplace)を読み込んでおいてください。 mssql 拡張機能のインストール ガイダンスについては、「[Install VS Code (VS コードのインストール)](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-vs-code)」と「[mssql for Visual Studio Code (Visual Studio Code 用 mssql)](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql)」を参照してください。 
 
@@ -61,7 +65,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名、データベース名、ログイン情報が必要になります。
 
-1. [Azure Portal](https://portal.azure.com/) にログインします。
+1. [Azure ポータル](https://portal.azure.com/)にログインします。
 2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
 3. データベースの **[概要]** ページで、次の図に示すように、完全修飾サーバー名を確認します。 サーバー名をポイントすると、**[コピーするにはクリックします]** オプションが表示されます。
 
@@ -96,17 +100,15 @@ Visual Studio Code を使用して、Azure SQL Database サーバーに対する
 
 4. プロンプトに従って、新しい接続プロファイルの接続プロパティを指定します。 それぞれの値を指定したら、**Enter** キーを押して続行します。 
 
-   次の表で、接続プロファイルのプロパティについて説明します。
-
-   | Setting | Description |
-   |-----|-----|
-   | **[サーバー名]** | 完全修飾サーバー名を入力します (**mynewserver20170313.database.windows.net** など) |
-   | **[データベース名]** | データベース名を入力します (**mySampleDatabase** など) |
-   | **認証** | [SQL ログイン] を選択します |
-   | **ユーザー名** | サーバー管理者アカウントを入力します |
-   | **[パスワード (SQL ログイン)]** | サーバー管理者アカウントのパスワードを入力します | 
-   | **[パスワードを保存しますか?]** | **[はい]** または **[いいえ]** を選択します |
-   | **(省略可能) [このプロファイルの名前を入力してください]** | 接続プロファイルの名前を入力します (**mySampleDatabase**) 
+   | 設定       | 推奨値 | Description |
+   | ------------ | ------------------ | ------------------------------------------------- | 
+   | **[サーバー名] | 完全修飾サーバー名 | 名前は **mynewserver20170313.database.windows.net** のような形式で指定する必要があります。 |
+   | **[データベース名]** | mySampleDatabase | 接続先のデータベースの名前です。 |
+   | **認証** | SQL ログイン| このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
+   | **ユーザー名** | サーバー管理者アカウント | これは、サーバーの作成時に指定したアカウントです。 |
+   | **[パスワード (SQL ログイン)]** | サーバー管理者アカウントのパスワード | これは、サーバーの作成時に指定したパスワードです。 |
+   | **[パスワードを保存しますか?]** | はい/いいえ | パスワードを毎回入力する手間を省くには、[はい] を選択します。 |
+   | **[このプロファイルの名前を入力してください]** | プロファイル名 (**mySampleDatabase** など) | 保存されたプロファイル名によって、以降のログインで、より速く接続できるようになります。 | 
 
 5. **Esc** キーを押して、プロファイルが作成され、接続が確立されたことを示す情報メッセージを閉じます。
 

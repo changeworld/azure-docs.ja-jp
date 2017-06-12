@@ -11,14 +11,17 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: deprecated
+ms.topic: article
 ms.date: 01/18/2017
 ms.author: zhangya;bradsev
-ROBOTS: NOINDEX, NOFOLLOW
+ROBOTS: NOINDEX
 redirect_url: machine-learning-data-science-create-features
-translationtype: Human Translation
+redirect_document_id: TRUE
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ba61d00f277af579c87a130336ead9879b82a6de
 ms.openlocfilehash: c6b88355df430e78594fc1283c9df01ad6e27e20
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/13/2016
 
 
 ---
@@ -78,7 +81,7 @@ Azure Machine Learning の実験では、これら&4; つのトレーニング �
 
 ![パフォーマンス結果の比較](./media/machine-learning-feature-selection-and-engineering/result1.png)
 
-### <a name="a-nameexample2a-example-2-creating-features-in-text-mining"></a><a name="example2"></a> 例 2: テキスト マイニングで特徴を作成する
+### <a name="example2"></a> 例 2: テキスト マイニングで特徴を作成する
 特徴エンジニアリングは、ドキュメントの分類やセンチメント分析などのテキスト マイニングに関連するタスクに広く適用されています。 たとえば、ドキュメントをいくつかのカテゴリに分類する場合は、通常、1 つのドキュメントのカテゴリに含まれる単語や語句が別のドキュメントのカテゴリに存在する可能性が低いことを前提とします。 つまり、単語や語句の分布の頻度から、さまざまなドキュメント カテゴリを特徴付けることができます。 テキスト マイニング アプリケーションでは、通常、テキスト コンテンツの各部分が入力データとして機能するため、出現する単語や語句の頻度を含む特徴を作成するために特徴エンジニアリング プロセスが必要になります。
 
 このタスクを実現するには、"*特徴ハッシュ*" と呼ばれる手法を適用して、任意のテキストの特徴を効率的にインデックスに変えます。 各テキストの特徴 (単語や語句) を特定のインデックスに関連付ける代わりに、ハッシュ関数を特徴に適用し、そのハッシュ値を直接インデックスとして使用することでこのメソッドが機能します。
@@ -133,9 +136,4 @@ Azure Machine Learning Studio には、特徴選択のためのモジュール�
 [feature-hashing]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/
 [filter-based-feature-selection]: https://msdn.microsoft.com/library/azure/918b356b-045c-412b-aa12-94a1d2dad90f/
 [fisher-linear-discriminant-analysis]: https://msdn.microsoft.com/library/azure/dcaab0b2-59ca-4bec-bb66-79fd23540080/
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

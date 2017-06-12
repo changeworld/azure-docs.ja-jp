@@ -4,7 +4,7 @@ description: ".NET から Event Hubs の名前空間とエンティティを管�
 services: event-hubs
 cloud: na
 documentationcenter: na
-author: jtaubensee
+author: sethmanheim
 manager: timlt
 ms.assetid: 
 ms.service: event-hubs
@@ -13,10 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 4/10/2017
-ms.author: jotaub;sethm
-translationtype: Human Translation
+ms.author: sethm
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: a9023448c4ced1edf54c84bb103454cbd76fbfba
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/12/2017
 
 

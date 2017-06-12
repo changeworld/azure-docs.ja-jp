@@ -8,16 +8,18 @@ manager: jhubbard
 author: ddove
 ms.assetid: 6fa47cf2-1162-4534-a206-6e2d95b78580
 ms.service: sql-database
-ms.custom: multiple databases
+ms.custom: scale out apps
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
 ms.openlocfilehash: 0d95f9f0e0c5b69aed6ba74a2488e46540589c00
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/23/2016
 
 
 ---
@@ -143,10 +145,5 @@ Azure SQL Database のカスタム グループを定義し、ジョブを実行
 [1]: ./media/sql-database-elastic-jobs-overview/elastic-jobs.png
 <!--anchors-->
 
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

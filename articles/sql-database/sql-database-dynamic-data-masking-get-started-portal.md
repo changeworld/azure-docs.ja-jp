@@ -8,16 +8,17 @@ manager: jhubbard
 editor: 
 ms.assetid: 2
 ms.service: sql-database
-ms.custom: security-protect
+ms.custom: security
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 11/22/2016
 ms.author: ronitr; ronmat
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 07913359addaa49fe8d408a8e363f554419e4de2
 ms.openlocfilehash: 16db41c83ca5c582aca7581ae9b6a03a3d99ab15
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/16/2017
 
 

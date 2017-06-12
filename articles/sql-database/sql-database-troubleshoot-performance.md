@@ -9,17 +9,18 @@ editor:
 keywords: "SQL のパフォーマンスのチューニング, データベース パフォーマンスのチューニング, SQL のパフォーマンスのチューニングのヒント, SQL Database のパフォーマンスのチューニング"
 ms.assetid: eb7b3f66-3b33-4e1b-84fb-424a928a6672
 ms.service: sql-database
-ms.custom: monitor and tune
+ms.custom: monitor & manage
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: v-shysun
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: faf2d9632462c434c38dc9c2d65f7c9e58f801d8
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 984adf244596578a3301719e5ac2f68a841153bf
+ms.openlocfilehash: 3bfcaf4ae29d23754a19a61f2775d1b12e3e69ba
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -39,6 +40,6 @@ ms.lasthandoff: 04/20/2017
 
 ## <a name="steps-to-improve-database-performance-with-more-resources"></a>その他のリソースを含むデータベースのパフォーマンスを改善する手順
 1. スタンドアロン データベースの場合は、[サービス レベルの変更](sql-database-service-tiers.md) をオンデマンドで行うことで、データベースのパフォーマンスを改善できます。
-2. 複数のデータベースの場合は、リソースを自動的にスケーリングするための [エラスティック プール](sql-database-elastic-pool.md) の使用を検討してください。
+2. 複数のデータベースの場合は、リソースを自動的にスケーリングするための [エラスティック プール](sql-database-elastic-pool-guidance.md) の使用を検討してください。
 
 

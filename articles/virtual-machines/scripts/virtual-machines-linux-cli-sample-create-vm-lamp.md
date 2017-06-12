@@ -46,7 +46,7 @@ ms.lasthandoff: 05/15/2017
 
 次のコマンドを実行して、リソース グループ、スケール セット、VM、およびすべての関連リソースを削除します。
 
-```azurecli
+```azurecli-interactive 
 az group delete -n myResourceGroup
 ```
 

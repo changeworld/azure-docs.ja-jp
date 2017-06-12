@@ -97,7 +97,7 @@ ADAL を使用する際の基本方針は、アプリがアクセス トーク�
     }
     ```
 
-2. `Search(...)` メソッドを見つけます。これは、ユーザーがアプリの UI の **[Search] (検索)** ボタンをクリックしたときに呼び出されます。 このメソッドは、指定された検索語句で UPN が始まるユーザーをクエリするための、Azure AD Graph API に対する GET 要求を実行します。 Graph API に対してクエリを実行するために、要求の **Authorization** ヘッダーにアクセス トークンを設定します。 ここで、ADAL の出番です。
+2. `Search(...)` メソッドを見つけます。これは、ユーザーがアプリの UI の **[Search] \(検索)** ボタンをクリックしたときに呼び出されます。 このメソッドは、指定された検索語句で UPN が始まるユーザーをクエリするための、Azure AD Graph API に対する GET 要求を実行します。 Graph API に対してクエリを実行するために、要求の **Authorization** ヘッダーにアクセス トークンを設定します。 ここで、ADAL の出番です。
 
     ```C#
     private async void Search(object sender, RoutedEventArgs e)
@@ -133,7 +133,7 @@ ADAL を使用する際の基本方針は、アプリがアクセス トーク�
     // Update the page UI to represent the signed-in user
     ActiveUser.Text = result.UserInfo.DisplayableId;
     ```
-5. また、ADAL を使用してユーザーをアプリからサインアウトさせることもできます。 ユーザーが **[Sing Out] (サインアウト)** ボタンをクリックした場合、次回の `AcquireTokenAsync(...)` の呼び出しではサインイン ビューが表示されるようにします。 ADAL を使用すると、この操作は、トークン キャッシュをクリアするだけで実現できます。
+5. また、ADAL を使用してユーザーをアプリからサインアウトさせることもできます。 ユーザーが **[Sing Out] \(サインアウト)** ボタンをクリックした場合、次回の `AcquireTokenAsync(...)` の呼び出しではサインイン ビューが表示されるようにします。 ADAL を使用すると、この操作は、トークン キャッシュをクリアするだけで実現できます。
 
     ```C#
     private void SignOut()

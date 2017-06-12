@@ -3,7 +3,7 @@ title: "Azure Relay の例外とその解決方法 | Microsoft Docs"
 description: "Azure Relay の例外と、それを解決するための推奨されるアクションの一覧を確認できます。"
 services: service-bus-relay
 documentationcenter: na
-author: jtaubensee
+author: sethmanheim
 manager: timlt
 editor: 
 ms.assetid: 5f9dd02c-cce0-43b3-8eb8-744f0c27f38c
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2017
-ms.author: sethm;jotaub
+ms.author: sethm
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
 ms.openlocfilehash: a0414648dc6cecf4a502f7efa75adbcb1456a8b4

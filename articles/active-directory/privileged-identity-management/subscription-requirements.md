@@ -12,11 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2017
+ms.date: 06/01/2017
 ms.author: barclayn
-translationtype: Human Translation
+ms.custom: pim
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 9364a1449ba17568c82832bc1e97d40febbb30ab
 ms.openlocfilehash: c6aea0b7280ad8f1365c04203c78a1499ba0aa58
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/27/2017
 
 
 ---
@@ -61,9 +64,4 @@ Azure AD Premium P2 サブスクリプションまたは EMS E5 サブスクリ�
 
 - [Azure AD Privileged Identity Management の使用](../active-directory-privileged-identity-management-getting-started.md)
 - [Azure AD Privileged Identity Management におけるロール](../active-directory-privileged-identity-management-roles.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

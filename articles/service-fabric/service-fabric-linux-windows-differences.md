@@ -15,25 +15,28 @@ ms.workload: NA
 ms.date: 03/23/2017
 ms.author: subramar
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: 00c1f10f7df865344233143ce9cdf546e64acca0
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: e2d21b28c482427c60f708171336e6901b50e544
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
 # <a name="differences-between-service-fabric-on-linux-preview-and-windows-generally-available"></a>Linux での Service Fabric (プレビュー) と Windows での Service Fabric (一般公開) の違い
 
-Linux での Service Fabric はプレビュー版であるため、Windows ではサポートされているものの Linux ではまだサポートされていない機能が一部存在します。 いずれ Linux での Service Fabric が一般公開されるときに、これらの一連の機能は Windows と同様に使用できるようになります。
+Linux での Service Fabric はプレビュー版であるため、Windows ではサポートされているものの Linux ではまだサポートされていない機能が一部存在します。 いずれ Linux での Service Fabric が一般公開されるときに、これらの一連の機能は Windows と同様に使用できるようになります。 今後のリリースで、この機能差は小さくなっていきます。 リリースされている最新バージョン (Windows ではバージョン 5.6、Linux ではバージョン 5.5) では、次の違いがあります。 
 
-* Reliable Collection (と信頼できるステートフル サービス) は Linux ではサポートされていません。
-* ReverseProxy は Linux では利用できません。
-* スタンドアロンのインストーラーは Linux では利用できません。
-* マニフェスト ファイルの XML スキーマ検証は、Linux では実行されません。 
-* コンソールのリダイレクトは、Linux ではサポートされていません。 
-* Fault Analysis Service (FAS) は、Linux では利用できません。
-* Azure Active Directory のサポートは、Linux では利用できません。
-* PowerShell コマンドと同等の一部の CLI コマンドは使用できません。
+* Reliable Collection (と信頼できるステートフル サービス) 
+* ReverseProxy 
+* スタンドアロン インストーラー 
+* マニフェスト ファイルの XML スキーマ検証 
+* コンソール リダイレクト 
+* Fault Analysis Service (FAS)
+* Docker Compose およびコンテナーのボリュームとログ ドライバー 
+* コンテナーとサービスのリソース ガバナンス 
+* DNS サービス
+* Azure Active Directory のサポート
+* 特定の PowerShell コマンドと同等の CLI コマンド 
 * Linux クラスターに対して実行できる PowerShell コマンドは、一部のものに限られています (詳しくは次のセクションを参照)。
 
 >[!NOTE]

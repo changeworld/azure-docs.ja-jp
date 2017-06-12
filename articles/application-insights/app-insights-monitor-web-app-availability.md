@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/26/2017
+ms.date: 05/25/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 0916c10afd526abaaf6c8e1e3aa311af5c7d84cd
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 74cd4dbf74afbf5e7e0e7d0b7aca49b5aa214b83
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -249,6 +249,13 @@ Web サイトに対してロード テストを実行できます。 可用性�
 [概要] ブレードで、**[設定]**、**[Performance Tests (パフォーマンス テスト)]** の順に開きます。 テストを作成するときに、Visual Studio Team Services アカウントへの接続を求められるか、Visual Studio Team Services アカウントを作成します。
 
 テストが完了すると、応答時間と成功率が表示されます。
+
+
+![パフォーマンス テスト](./media/app-insights-monitor-web-app-availability/perf-test.png)
+
+> [!TIP]
+> パフォーマンス テストの影響を観察するには、[Live Stream](app-insights-live-stream.md) と [Profiler](app-insights-profiler.md) を使用します。
+>
 
 ## <a name="automation"></a>Automation
 * [PowerShell スクリプトを使用して、可用性テストを自動的に設定します](app-insights-powershell.md#add-an-availability-test)。

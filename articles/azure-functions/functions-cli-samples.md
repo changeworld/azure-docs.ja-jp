@@ -15,6 +15,7 @@ ms.tgt_pltfrm: na
 ms.workload: functions
 ms.date: 04/11/2017
 ms.author: cfowler, glenga
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: e182f95bde376cecd78f4e805c3de67ff466c8f4

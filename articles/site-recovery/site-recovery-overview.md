@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 03/14/2017
 ms.author: raynew
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 89921997f68bd72ee6086d2b635361eeeaba1c28
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 276d7949e01b8936804514c5fe8bd26af438bd08
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -32,15 +32,14 @@ Azure Recovery Services は BCDR 戦略を支援します。 [Azure Backup](http
 
 ## <a name="what-does-site-recovery-provide"></a>Site Recovery で提供されるもの
 
-- **クラウドでのディザスター リカバリー** - VM や物理サーバーで実行されているワークロードを、セカンダリ サイトではなく Azure にレプリケートできます。 これにより、セカンダリ データセンターの管理に伴うコストと手間が削減されます。
-- **ハイブリッド環境向けの柔軟なレプリケーション** - サポートされているオンプレミスの Hyper-V VM、VMware VM、Windows/Linux 物理サーバーで実行されているワークロードをレプリケートできます。
-- **移行** - Site Recovery を使用すると、AWS インスタンスを Azure VM に移行したり、Azure リージョン間で Azure VM を移行したりできます。
+- **クラウドでのディザスター リカバリー** - Azure から Azure へのディザスター リカバリー ソリューションを使用することにより、Azure 上で実行されている VM をレプリケートして保護することができます。 VM や物理サーバーで実行されているワークロードを、セカンダリ サイトではなく Azure にレプリケートできます。 これにより、セカンダリ データセンターの管理に伴うコストと手間が削減されます。
+- **ハイブリッド環境向けの柔軟なレプリケーション** - Azure VM、オンプレミスの Hyper-V VM、VMware VM、Windows/Linux 物理サーバー上でサポートされているあらゆるワークロードをレプリケートできます。
+- **移行** - Site Recovery を使用すると、オンプレミスや AWS のインスタンスを Azure VM に移行できます。また、Azure リージョン間で Azure VM を移行することもできます。
 - **BCDR の簡素化** - Azure Portal の 1 つの場所からレプリケーションをデプロイできます。  1 つまたは複数のマシンのシンプルなフェールオーバーとフェールバックを実行できます。
-- **復元性** - Site Recovery は、アプリケーション データをインターセプトせずに、レプリケーションとフェールオーバーを調整します。
-レプリケートされたデータは、元の復元性を備えた状態で Azure Storage に格納されます。 フェールオーバーが発生すると、レプリケートされたデータに基づいて Azure VM が作成されます。
-- **レプリケーションのパフォーマンス** - Site Recovery は、Hyper-V では 30 秒のレプリケーション頻度を提供し、VMware では連続レプリケーションを実現します。 目標復旧時点 (RPO) のしきい値を設定して、データの復旧ポイントを作成する頻度を制御できます。また、Site Recovery の自動回復プロセス、および [Azure Traffic Manager](https://azure.microsoft.com/en-us/blog/reduce-rto-by-using-azure-traffic-manager-with-azure-site-recovery/) との統合により、目標復旧時間 (RTO) を短縮できます。
-- **アプリケーションの整合性** - マシンでは、アプリケーションの整合性スナップショットを使用してレプリケーションを実行します。 アプリケーションの整合性スナップショットは、ディスク データをキャプチャするだけでなく、メモリのすべてのデータとプロセスのすべてのトランザクションもキャプチャします。
-- **中断なしのテスト** - 運用環境に影響を与えずに、ディザスター リカバリー の訓練をサポートするテスト フェールオーバーを簡単に実行できます。
+- **復元性** - Site Recovery は、アプリケーション データをインターセプトせずに、レプリケーションとフェールオーバーを調整します。 レプリケートされたデータは、Azure Storage の復元性を備えた状態で Azure Storage に格納されます。 フェールオーバーが発生すると、レプリケートされたデータに基づいて Azure VM が作成されます。
+- **レプリケーションのパフォーマンス** - Azure VM と VMware VM に関しては連続レプリケーションが、Hyper-V では 30 秒ごとのレプリケーション頻度が実現されています。 Site Recovery の自動回復プロセス、および [Azure Traffic Manager](https://azure.microsoft.com/blog/reduce-rto-by-using-azure-traffic-manager-with-azure-site-recovery/) との統合により、目標復旧時間 (RTO) を短縮できます。
+- **アプリケーション整合性** - 復旧ポイントには、アプリケーション整合性を確保したスナップショットを構成できます。 アプリケーションの整合性スナップショットは、ディスク データをキャプチャするだけでなく、メモリのすべてのデータとプロセスのすべてのトランザクションもキャプチャします。
+- **中断なしのテスト** - 運用環境と実行中のレプリケーションに影響を与えずに、ディザスター リカバリーの訓練をサポートするテスト フェールオーバーを簡単に実行できます。
 - **柔軟なフェールオーバーと復旧** - 予期された停止の場合は、データ損失ゼロの計画されたフェールオーバーを実行できます。予期しない障害が発生した場合は、(レプリケーションの頻度に応じて) データ損失を最小限に抑えて計画外のフェールオーバーを実行できます。 プライマリ サイトには、そのサイトが再度使用できるようになった時点で簡単にフェールバックできます。
 - **カスタマイズされた復旧計画** - 復旧計画を使用すると、複数の VM に分散する多層アプリケーションのフェールオーバーと復旧をモデル化およびカスタマイズできます。 計画内のグループに順序付けし、スクリプトと手動アクションを追加します。 復旧計画は、Azure Automation Runbook と統合できます。
 - **多層アプリケーション** - 多層アプリケーションの順序付けられたフェールオーバーと復旧の復旧計画を作成できます。 復旧計画内でさまざまな層 (データベース、Web、アプリケーションなど) のマシンをグループ化し、各グループのフェールオーバーと起動の方法をカスタマイズできます。
@@ -54,21 +53,26 @@ Azure Recovery Services は BCDR 戦略を支援します。 [Azure Backup](http
 **サポートされています** | **詳細**
 --- | ---
 **Site Recovery のサポート対象のリージョン** | [サポートされているリージョン](https://azure.microsoft.com/en-us/regions/services/) |
-**レプリケート対象** | オンプレミスの VMware VM、Hyper-V VM、Windows および Linux 物理サーバー。
-**レプリケート対象のマシンで必要なオペレーティング システム** | VMware VM の[サポートされているオペレーティング システム](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)<br/><br/> Hyper-V VM の場合、Azure でサポートされている[ゲスト OS](https://technet.microsoft.com/en-us/windows-server-docs/compute/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) と Hyper-V がサポートされています。<br/><br/> 物理サーバーの[オペレーティング システム](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)
-**レプリケート先** | Azure ストレージ、またはセカンダリ データセンター<br/><br/> Hyper-V の場合、セカンダリ データセンターにレプリケートできるのは、System Center VMM クラウドで管理されている Hyper-V ホスト上の VM だけです。
+**レプリケート対象** | Azure VM (プレビュー)、オンプレミスの VMware VM、Hyper-V VM、Windows および Linux 物理サーバー。
+**レプリケート対象のマシンで必要なオペレーティング システム** | Azure VM の[サポートされているオペレーティング システム](site-recovery-support-matrix-azure-to-azure.md#support-for-replicated-machine-os-versions)<br></br>VMware VM の[サポートされているオペレーティング システム](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)<br/><br/> Hyper-V VM の場合、Azure でサポートされている[ゲスト OS](https://technet.microsoft.com/en-us/windows-server-docs/compute/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) と Hyper-V がサポートされています。<br/><br/> 物理サーバーの[オペレーティング システム](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)
+**レプリケート先** | Azure VM の場合、別の Azure リージョンにレプリケートすることができます。 <br></br> オンプレミス マシンの場合、Azure Storage やセカンダリ データセンターにレプリケートすることができます。<br/><br/> 
+
+>[!NOTE]
+>
+> Hyper-V の場合、セカンダリ データセンターにレプリケートできるのは、System Center VMM クラウドで管理されている Hyper-V ホスト上の VM だけです。
+
 **必要な VMware サーバー/ホスト** | レプリケートする VMware VM は、[サポートされている vSphere ホスト/vCenter サーバー](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers)によって管理できます。
 **レプリケートできるワークロード** | サポートされているレプリケーション マシンで実行されている任意のワークロードをレプリケートできます。 さらに、Site Recovery チームは、[いくつかのアプリ](site-recovery-workload.md#workload-summary)に対してアプリに固有のテストを行っています。
 
 
 ## <a name="which-azure-portal"></a>Azure Portal とは
 
-* Site Recovery は、新しい [Azure Portal](https://portal.azure.com) と [Azure クラシック ポータル](https://manage.windowsazure.com/)のどちらでもデプロイできます。
-* Azure クラシック ポータルでは、クラシック サービス管理モデルで Site Recovery をサポートできます。
-* Azure Portal では、クラシック モデルをサポートすることも、新しい [Resource Manager デプロイ モデル](../azure-resource-manager/resource-manager-deployment-model.md)をサポートすることもできます。
+* Site Recovery は、[Azure Portal](https://portal.azure.com) でデプロイすることができます。
+* Azure クラシック ポータルでは、クラシック サービス管理モデルで Site Recovery を管理できます。
 - クラシック ポータルは、既存の Site Recovery デプロイを維持する目的でのみ使用します。 クラシック ポータルで新しいコンテナーを作成することはできません。
 
 ## <a name="next-steps"></a>次のステップ
+* [Azure 仮想マシンのレプリケート](site-recovery-azure-to-azure.md)の詳細を確認する。
 * [ワークロードのサポート](site-recovery-workload.md)の詳細を確認する。
 * [Site Recovery のアーキテクチャとコンポーネント](site-recovery-components.md)の詳細を確認する。
 

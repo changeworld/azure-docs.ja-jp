@@ -55,14 +55,14 @@ Azure Load Balancer は、着信トラフィックを正常な VM に分散す�
 ## <a name="create-azure-load-balancer"></a>Azure Load Balancer を作成する
 このセクションでは、ロード バランサーの各コンポーネントを作成および設定する方法について説明します。 ロード バランサーを作成する前に、[az group create](/cli/azure/group#create) を使用してリソース グループを作成します。 次の例では、*myResourceGroupLoadBalancer* という名前のリソース グループを場所 *eastus* に作成します。
 
-```azurecli-interactive
+```azurecli-interactive 
 az group create --name myResourceGroupLoadBalancer --location eastus
 ```
 
 ### <a name="create-a-public-ip-address"></a>パブリック IP アドレスの作成
 インターネット上のアプリにアクセスするには、ロード バランサーのパブリック IP アドレスが必要です。 パブリック IP アドレスは、[az network public-ip create](/cli/azure/public-ip#create) で作成します。 次の例では、*myPublicIP* という名前のパブリック IP アドレスを *myResourceGroupLoadBalancer* リソース グループに作成します。
 
-```azurecli
+```azurecli-interactive 
 az network public-ip create \
     --resource-group myResourceGroupLoadBalancer \
     --name myPublicIP
@@ -71,7 +71,7 @@ az network public-ip create \
 ### <a name="create-a-load-balancer"></a>ロード バランサーの作成
 ロード バランサーは、[az network lb create](/cli/azure/network/lb#create) で作成します。 次の例では、*myLoadBalancer* という名前のロード バランサーを作成し、*myPublicIP* アドレスをフロントエンド IP 構成に割り当てます。
 
-```azurecli
+```azurecli-interactive 
 az network lb create \
     --resource-group myResourceGroupLoadBalancer \
     --name myLoadBalancer \
@@ -87,7 +87,7 @@ az network lb create \
 
 TCP 正常性プローブを作成するには、[az network lb probe create](/cli/azure/network/lb/probe#create) を使用します。 次の例では、*myHealthProbe* という名前の正常性プローブを作成します。
 
-```azurecli
+```azurecli-interactive 
 az network lb probe create \
     --resource-group myResourceGroupLoadBalancer \
     --lb-name myLoadBalancer \
@@ -101,7 +101,7 @@ az network lb probe create \
 
 ロード バランサー規則は、[az network lb rule create](/cli/azure/network/lb/rule#create) で作成します。 次の例では、*myLoadBalancerRule* という名前の規則を作成し、*myHealthProbe* 状態 PLOB を使用して、ポート *80* でトラフィックを負荷分散します。
 
-```azurecli
+```azurecli-interactive 
 az network lb rule create \
     --resource-group myResourceGroupLoadBalancer \
     --lb-name myLoadBalancer \
@@ -121,7 +121,7 @@ az network lb rule create \
 ### <a name="create-network-resources"></a>ネットワーク リソースを作成する
 [az network vnet create](/cli/azure/vnet#create) を使用して仮想ネットワークを作成します。 次の例では、*mySubnet* という名前のサブネットと共に、*myVnet* という名前の仮想ネットワークを作成します。
 
-```azurecli
+```azurecli-interactive 
 az network vnet create \
     --resource-group myResourceGroupLoadBalancer \
     --name myVnet \
@@ -130,7 +130,7 @@ az network vnet create \
 
 ネットワーク セキュリティ グループを追加するには、[az network nsg create](/cli/azure/network/nsg#create) を使用します。 次の例では、*myNetworkSecurityGroup* という名前のネットワーク セキュリティ グループを作成します。
 
-```azurecli
+```azurecli-interactive 
 az network nsg create \
     --resource-group myResourceGroupLoadBalancer \
     --name myNetworkSecurityGroup
@@ -138,7 +138,7 @@ az network nsg create \
 
 [az network nsg rule create](/cli/azure/network/nsg/rule#create) を使用してネットワーク セキュリティ グループの規則を作成します。 次の例では、*myNetworkSecurityGroupRule* という名前のネットワーク セキュリティ グループ規則を作成します。
 
-```azurecli
+```azurecli-interactive 
 az network nsg rule create \
     --resource-group myResourceGroupLoadBalancer \
     --nsg-name myNetworkSecurityGroup \
@@ -215,7 +215,7 @@ runcmd:
 
 可用性セットを作成するには、[az vm availability-set create](/cli/azure/vm/availability-set#create) を使用します。 次の例では、*myAvailabilitySet* という名前の可用性セットを作成します。
 
-```azurecli
+```azurecli-interactive 
 az vm availability-set create \
     --resource-group myResourceGroupLoadBalancer \
     --name myAvailabilitySet \
@@ -246,7 +246,7 @@ done
 ## <a name="test-load-balancer"></a>ロード バランサーをテストする
 ロード バランサーのパブリック IP アドレスを取得するには、[az network public-ip show](/cli/azure/network/public-ip#show) を使用します。 次の例では、先ほど作成した *myPublicIP* の IP アドレスを取得します。
 
-```azurecli
+```azurecli-interactive 
 az network public-ip show \
     --resource-group myResourceGroupLoadBalancer \
     --name myPublicIP \
@@ -267,7 +267,7 @@ az network public-ip show \
 ### <a name="remove-a-vm-from-the-load-balancer"></a>ロード バランサーから VM を除外する
 バックエンド アドレス プールから VM を削除するには、[az network nic ip-config address-pool remove](/cli/azure/network/nic/ip-config/address-pool#remove) を使用できます。 次の例では、**myVM2** の仮想 NIC を *myLoadBalancer* から削除します。
 
-```azurecli
+```azurecli-interactive 
 az network nic ip-config address-pool remove \
     --resource-group myResourceGroupLoadBalancer \
     --nic-name myNic2 \
@@ -281,7 +281,7 @@ az network nic ip-config address-pool remove \
 ### <a name="add-a-vm-to-the-load-balancer"></a>ロード バランサーに VM を追加する
 VM のメンテナンスを実施した後や、処理能力の引き上げが必要となった場合は、[az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool#add) でバックエンド アドレス プールに VM を追加できます。 次の例では、**myVM2** の仮想 NIC を *myLoadBalancer* に追加します。
 
-```azurecli
+```azurecli-interactive 
 az network nic ip-config address-pool add \
     --resource-group myResourceGroupLoadBalancer \
     --nic-name myNic2 \

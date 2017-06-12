@@ -9,24 +9,24 @@ manager: jhubbard
 editor: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: tutorial
+ms.custom: scale out apps
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
-ms.date: 05/22/2017
+ms.topic: article
+ms.date: 05/24/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 31be50ca3f64cc183e516f1b0f06f5a4265f6103
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: bf003a3677ed27bc833de59ef61f7637a6899d37
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 06/01/2017
 
 
 ---
 # <a name="run-ad-hoc-analytics-queries-across-all-wingtip-saas-tenants"></a>すべての Wingtip SaaS テナントにわたるアドホック分析クエリの実行
 
-このチュートリアルでは、アドホック分析データベースを作成し、すべてのテナントにわたって複数のクエリを実行します。 これらのクエリでは、WTP アプリの日常業務データに埋もれている洞察を抽出できます。
+このチュートリアルでは、アドホック分析データベースを作成し、すべてのテナントにわたって複数のクエリを実行します。 これらのクエリでは、Wingtip SaaS アプリの日常業務データに埋もれている洞察を抽出できます。
 
 アドホック分析クエリを (複数のテナントにわたって) 実行するために、Wingtip SaaS アプリは分析データベースと共に[エラスティック クエリ](sql-database-elastic-query-overview.md)を使用します。
 
@@ -35,8 +35,9 @@ ms.lasthandoff: 05/25/2017
 
 > [!div class="checklist"]
 
-> * アドホック分析データベースをデプロイする
-> * すべてのテナント データベースにわたって分散クエリを実行する
+> * テナントの境界を越えたクエリを可能にする、各データベースのグローバル ビューについて
+> * アドホック分析データベースをデプロイする方法
+> * すべてのテナント データベースにわたって分散クエリを実行する方法
 
 
 
@@ -57,23 +58,19 @@ SaaS アプリケーションで得られる優れた機会の 1 つは、クラ
 Wingtip SaaS のスクリプトとアプリケーション ソース コードは、[WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub リポジトリから入手できます。 [Wingtip SaaS のスクリプトをダウンロードする手順](sql-database-wtp-overview.md#download-the-wingtip-saas-scripts)。
 
 
-## <a name="explore-the-global-views-in-the-tenant-databases"></a>テナント データベースのグローバル ビューを調べる
+## <a name="explore-the-global-views"></a>グローバル ビューを詳しく知る
 
-Wingtip SaaS アプリケーションは、データベースあたりのテナント モデルを使用して構築されるため、テナント データベース スキーマはシングル テナントの観点から定義されます。 テナント固有の情報は、*Venue* という 1 つのテーブルに存在します。このテーブルは常に 1 行で構成されており、さらに主キーなしでヒープとして設計されています。  スキーマ内の他のテーブルは、*Venue* テーブルに関連付ける必要はありません。通常の用途では、データがどのテナントに属しているかは明白です。  ただし、すべてのデータベースに対してクエリを実行する際は、データベース内のテーブルのデータを特定のテナントに関連付けることが重要になります。 これを簡単にするために、各テナントの "グローバル" ビューを提供する一連のビューがテナント データベースに追加されます。 これらのグローバル ビューは、グローバルにクエリが実行される各テーブルにテナント ID を投影します。 これにより、各テナントのデータを簡単に識別できます。 便宜上、これらのビューはすべてのテナント データベースに事前に作成されています (さらに、新しいテナントがプロビジョニングされたときにこれらのビューが使用できるように、ゴールデン データベースにも事前に作成されています)。
+Wingtip SaaS アプリケーションは、データベースあたりのテナント モデルを使用して構築されるため、テナント データベース スキーマはシングル テナントの観点から定義されます。 テナント固有の情報は、*Venue* という 1 つのテーブルに存在します。このテーブルは常に 1 行で構成されており、さらに主キーなしでヒープとして設計されています。  スキーマ内の他のテーブルは、*Venue* テーブルに関連付ける必要はありません。通常の用途では、データがどのテナントに属しているかは明白です。  ただし、すべてのデータベースに対してクエリを実行する際は、データベース内のテーブルのデータを特定のテナントに関連付けることが重要になります。 これを簡単にするために、各テナントの "グローバル" ビューを提供する一連のビューがテナント データベースに追加されます。 これらのグローバル ビューは、グローバルにクエリが実行される各テーブルにテナント ID を投影します。 これにより、各テナントのデータを簡単に識別できます。 便宜上、これらのビューはすべてのテナント データベースに事前に作成されています (さらに、新しいテナントがプロビジョニングされたときにこれらのグローバル ビューが使用できるように、ゴールデン データベースにも事前に作成されています)。
 
 1. SSMS を開き、[tenants1-&lt;USER&gt; サーバーに接続します](sql-database-wtp-overview.md#explore-database-schema-and-execute-sql-queries-using-ssms)。
 1. **[データベース]** を展開し、**[contosoconcerthall]** を右クリックして、**[新しいクエリ]** を選択します。
-1. 次のクエリを実行して、グローバル ビューを調べます。
+1. 次のクエリを実行して、シングル テナント テーブルとグローバル ビューの違いを調べます。
 
    ```T-SQL
    -- This is the base Venue table, that has no VenueId associated.
    SELECT * FROM Venue
 
    -- Notice the plural name 'Venues'. This view projects a VenueId column.
-   -- In the sample database we calculated an integer id from a hash of the Venue name,
-   -- but any approach could be used to introduce a unique value.
-   -- This is similar to how we create the tenant key in the catalog,
-   -- but there is no requirement that the catalog key and this id be the same.
    SELECT * FROM Venues
 
    -- The base Events table which has no VenueId column.
@@ -83,7 +80,9 @@ Wingtip SaaS アプリケーションは、データベースあたりのテナ�
    SELECT * FROM VenueEvents
    ```
 
-ビューを調べて、それがどのように作成されたかを確認するには:
+サンプル データベースでは、Venue 名のハッシュから整数 ID を計算しましたが、一意の値はどのような方法で求めてもかまいません。 これは、カタログにテナント キーを作成する方法と似ていますが、*adhocanalytics* データベース内のテナント ID とカタログ キーとが同じでなければならないという要件はありません。
+
+"*ビュー*" を調べて、それがどのように作成されたかを確認するには:
 
 1. **オブジェクト エクスプローラー**で、**[contosoconcethall]** > **[ビュー]** の順に展開します。
 
@@ -98,26 +97,29 @@ Wingtip SaaS アプリケーションは、データベースあたりのテナ�
 
 この演習では、*adhocanalytics* データベースをデプロイします。 このデータベースには、すべてのテナント データベースに対してクエリを実行する場合に使用されるスキーマが含まれています。 データベースは、既存のカタログ サーバーにデプロイされます。これは、管理関連のデータベースすべてが格納されているサーバーです。
 
-1. *PowerShell ISE* で ...\\Learning Modules\\Operational Analytics\\Adhoc Analytics\\*Demo-AdhocAnalytics.ps1* を開き、次の値を設定します。
-   * **$DemoScenario** = 2、**アドホック分析データベースをデプロイする**。
-
-1. スクリプト内を下にスクロールし、データベースのスキーマを含む SQL スクリプトまで移動します。  そのスクリプトを確認し、次の点に注意します。
+1. ...\\Learning Modules\\Operational Analytics\\Adhoc Analytics\\*Deploy-AdhocAnalyticsDB.ps1* を開きます。
+1. 下へスクロールして、SQL スクリプトに `$commandText` を代入しているセクションに移動します。 そのスクリプトを確認し、次の点に注意します。
 
    1. エラスティック クエリは、データベース スコープの資格情報を使用して、各テナント データベースにアクセスします。 この資格情報は、すべてのデータベースで使用できる必要があり、通常、これらのアドホック クエリを有効にするために必要な最小限の権限が付与されている必要があります。
    1. カタログ データベースでテナント シャード マップを使用するように定義されている外部データ ソース。  これを外部データ ソースとして使用すると、クエリが実行された時点でカタログに登録されているすべてのデータベースにクエリが分散されます。
    1. 前のセクションで説明したグローバル ビューを参照する外部テーブル。
    1. 作成され、データが設定されているローカル テーブル *VenueTypes*。  この参照データ テーブルは、すべてのテナント データベースで共通するため、ここではローカル テーブルとして表すことができます。このテーブルでは、クエリによっては、テナント データベースと *adhocanalytics* データベースの間で移動されるデータ量が削減される場合があります。
 
+
+1. 今度は、*PowerShell ISE* で ...\\Learning Modules\\Operational Analytics\\Adhoc Analytics\\*Demo-AdhocAnalytics.ps1* を開き、次の値を設定します。
+   * **$DemoScenario** = 2、**アドホック分析データベースをデプロイする**。
+
 1. **F5** キーを押してスクリプトを実行し、*adhocanalytics* データベースを作成します。
 
    ここでは、"*RPC サーバーを利用できません*" という警告は無視してかまいません。
 
-
 これで、分散クエリを実行するために使用できる *adhocanalytics* データベースが用意され、すべてのテナントにわたって洞察を集めることができるようになりました。
+
+![adhocanalytics データベース](media/sql-database-saas-tutorial-adhoc-analytics/adhocanalytics.png)
 
 ## <a name="run-ad-hoc-analytics-queries"></a>アドホック分析クエリの実行
 
-この演習では、アドホック分析クエリを実行して、WTP アプリケーションからのテナントの洞察を明らかにします。
+*adhocanalytics* データベースの設定が済んだら、いくつかのアドホック クエリを実行します。
 
 1. SSMS で ....\\Learning Modules\\Operational Analytics\\Adhoc Analytics\\*Demo-AdhocAnalyticsQueries.sql* を開きます。
 1. **adhocanalytics** データベースに接続していることを確認します。
@@ -141,6 +143,6 @@ Wingtip SaaS アプリケーションは、データベースあたりのテナ�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [Wingtip SaaS アプリケーションの初期のデプロイに基づく作業のための追加のチュートリアル](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
+* [Wingtip SaaS アプリケーションに基づく作業のための追加のチュートリアル](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [エラスティック クエリ](sql-database-elastic-query-overview.md)
 

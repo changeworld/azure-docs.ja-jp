@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/22/2017
+ms.date: 06/06/2017
 ms.author: cynthn
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 7db935bb8e40c3ddd446a9a529f3886c5a221435
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/03/2017
 
 
@@ -39,3 +40,4 @@ ms.lasthandoff: 04/03/2017
 
 ## <a name="next-steps"></a>次のステップ
 [Azure コンピューティング ユニット (ACU)](../windows/acu.md) を確認することで、Azure SKU 全体の処理性能を比較できます。
+

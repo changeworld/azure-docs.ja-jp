@@ -8,11 +8,11 @@ manager: jhubbard
 editor: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: quick start connect
+ms.custom: develop apps
 ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: java
-ms.topic: article
+ms.topic: hero-article
 ms.date: 05/23/2017
 ms.author: andrela
 ms.translationtype: Human Translation
@@ -73,7 +73,7 @@ Azure SQL データベースに接続するために必要な接続情報を取�
 
 6. 完全な **JDBC** 接続文字列を確認します。
 
-    ![JDBC 接続文字列](./media/sql-database-connect-query-jdbc/jdbc-connection-string.png)    
+    ![JDBC 接続文字列](./media/sql-database-connect-query-jdbc/jdbc-connection-string.png)   
 
 ### <a name="create-maven-project"></a>**Maven プロジェクトの作成**
 ターミナルから新しい Maven プロジェクトを作成します。 
@@ -295,7 +295,7 @@ public class App {
                         int count = prep.executeUpdate();
                         System.out.println("Deleted: " + count + " row(s)");
                 }
-        }        
+        }       
         catch (Exception e) {
                 e.printStackTrace();
         }
