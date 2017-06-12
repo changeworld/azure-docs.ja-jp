@@ -14,9 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
-translationtype: Human Translation
-ms.sourcegitcommit: ba958d029e5bf1bc914a2dff4b6c09282d578c67
-ms.openlocfilehash: 02bf4191e60bfe7a49a37eed10f7571e08502150
+ms.custom: aaddev
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: b665f45c66b35ab93e19ed1b54a6e215c93dcf57
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -26,11 +29,11 @@ v2.0 エンドポイントは、業界標準のプロトコルである OpenID C
 
 > [!NOTE]
 > Azure Active Directory のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。  v2.0 エンドポイントを使用する必要があるかどうかを判断するには、 [v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
-> 
-> 
+>
+>
 
 ## <a name="the-basics"></a>基本操作
-OAuth と OpenID Connect におけるフローはほぼすべて、情報のやり取りに&4; つの当事者が関係します。
+OAuth と OpenID Connect におけるフローはほぼすべて、情報のやり取りに 4 つの当事者が関係します。
 
 ![OAuth 2.0 Roles](../../media/active-directory-v2-flows/protocols_roles.png)
 
@@ -56,7 +59,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 ```
 
-ここで、 `{tenant}` は次の&4; つの値のいずれかになります。
+ここで、 `{tenant}` は次の 4 つの値のいずれかになります。
 
 | 値 | Description |
 | --- | --- |
@@ -79,12 +82,5 @@ v2.0 エンドポイントで使われている各種トークンの詳細につ
 * [Open ID Connect で Web Apps を作成する](active-directory-v2-protocols-oidc.md)
 * [OAuth 2.0 Implicit Flow で単一ページのアプリを作成する](active-directory-v2-protocols-implicit.md)
 * [OAuth 2.0 Client Credentials Flow でデーモンまたはサーバー側プロセスを作成する](active-directory-v2-protocols-oauth-client-creds.md)
-* OAuth 2.0 On Behalf Of Flow を使用して Web API でトークンを取得する (近日公開予定)
-
-<!-- - Get tokens using a username & password with the OAuth 2.0 Resource Owner Password Credentials Flow (coming soon) --> 
-
-
-
-<!--HONumber=Jan17_HO4-->
-
+* [OAuth 2.0 On Behalf Of Flow を使用して Web API でトークンを取得する](active-directory-v2-protocols-oauth-on-behalf-of.md)
 

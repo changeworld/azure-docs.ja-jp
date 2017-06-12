@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/16/2017
+ms.date: 05/25/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 92d591054244ceb01adbfbd8ff027d47b04a6c83
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 02ecc95d97719908a18f615dc3e19af2a563cc73
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -36,7 +36,7 @@ HDInsight で Spark を使用して、Application Insight テレメトリ デー
 * Linux ベースの HDInsight クラスターの作成に慣れていること。 詳細については、[HDInsight での Spark の作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関する記事をご覧ください。
 
   > [!IMPORTANT]
-  > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight 3.3 の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関するページを参照してください。
+  > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
 
 * Web ブラウザー。
 
@@ -89,7 +89,9 @@ HDInsight クラスターを作成する場合は、クラスターの作成中�
 
 3. ページの 1 番目のフィールド (**セル**と呼びます) に、次のテキストを入力します。
 
-        sc._jsc.hadoopConfiguration().set('mapreduce.input.fileinputformat.input.dir.recursive', 'true')
+   ```python
+   sc._jsc.hadoopConfiguration().set('mapreduce.input.fileinputformat.input.dir.recursive', 'true')
+   ```
 
     このコードにより、Spark が入力データのディレクトリ構造へ再帰的にアクセスするよう構成されます。 Application Insights テレメトリは、`/{telemetry type}/YYYY-MM-DD/{##}/` のようなディレクトリ構造で記録されます。
 
@@ -104,8 +106,10 @@ HDInsight クラスターを作成する場合は、クラスターの作成中�
         SparkContext and HiveContext created. Executing user code ...
 5. 最初のセルの下に新しいセルが作成されます。 この新しいセルに次のテキストを入力します。 `CONTAINER` と `STORAGEACCOUNT` を、Azure ストレージ アカウントの名前と Application Insights データを含む BLOB コンテナーの名前に置き換えます。
 
-        %%bash
-        hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
+   ```python
+   %%bash
+   hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
+   ```
 
     **Shift + Enter** キーを押してこのセルを実行します。 次のような結果が表示されます。
 
@@ -119,13 +123,17 @@ HDInsight クラスターを作成する場合は、クラスターの作成中�
 
 6. 次のセルに、次のコードを入力します。`WASB_PATH` を前の手順のパスに置き換えます。
 
-        jsonFiles = sc.textFile('WASB_PATH')
-        jsonData = sqlContext.read.json(jsonFiles)
+   ```python
+   jsonFiles = sc.textFile('WASB_PATH')
+   jsonData = sqlContext.read.json(jsonFiles)
+   ```
 
     このコードにより、連続エクスポート プロセスでエクスポートされた JSON ファイルからデータフレームが作成されます。 **Shift + Enter** キーを押してこのセルを実行します。
 7. 隣のセルに次のコードを入力して実行し、JSON ファイル用に Spark で作成されたスキーマを表示します。
 
-        jsonData.printSchema()
+   ```python
+   jsonData.printSchema()
+   ```
 
     スキーマは、テレメトリの種類ごとに異なります。 Web 要求 ( `Requests` サブディレクトリに保管されているデータ) について生成されたスキーマを次に示します。
 
@@ -191,8 +199,11 @@ HDInsight クラスターを作成する場合は、クラスターの作成中�
         |    |    |    |-- protocol: string (nullable = true)
 8. 次のコードを使用して、データフレームを一時テーブルとして登録し、データに対してクエリを実行します。
 
-        jsonData.registerTempTable("requests")
-        sqlContext.sql("select context.location.city from requests where context.location.city is not null")
+   ```python
+   jsonData.registerTempTable("requests")
+   df = sqlContext.sql("select context.location.city from requests where context.location.city is not null")
+   df.show()
+   ```
 
     このクエリでは、context.location.city が null ではない上位 20 レコードの都市情報が返されます。
 
@@ -219,7 +230,9 @@ HDInsight クラスターを作成する場合は、クラスターの作成中�
 2. Jupyter のページの右上隅にある **[新規作成]** をクリックし、**[Scala]** を選択します。 新しいブラウザーのタブが開き、Scala ベースの Jupyter Notebook が表示されます。
 3. ページの 1 番目のフィールド (**セル**と呼びます) に、次のテキストを入力します。
 
-        sc.hadoopConfiguration.set("mapreduce.input.fileinputformat.input.dir.recursive", "true")
+   ```scala
+   sc.hadoopConfiguration.set("mapreduce.input.fileinputformat.input.dir.recursive", "true")
+   ```
 
     このコードにより、Spark が入力データのディレクトリ構造へ再帰的にアクセスするよう構成されます。 Application Insights テレメトリは、`/{telemetry type}/YYYY-MM-DD/{##}/` のようなディレクトリ構造で記録されます。
 
@@ -234,8 +247,10 @@ HDInsight クラスターを作成する場合は、クラスターの作成中�
         SparkContext and HiveContext created. Executing user code ...
 5. 最初のセルの下に新しいセルが作成されます。 この新しいセルに次のテキストを入力します。 `CONTAINER` と `STORAGEACCOUNT` を、Azure ストレージ アカウントの名前と Application Insights ログを含む BLOB コンテナーの名前に置き換えます。
 
-        %%bash
-        hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
+   ```scala
+   %%bash
+   hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
+   ```
 
     **Shift + Enter** キーを押してこのセルを実行します。 次のような結果が表示されます。
 
@@ -249,13 +264,19 @@ HDInsight クラスターを作成する場合は、クラスターの作成中�
 
 6. 次のセルに、次のコードを入力します。`WASB\_PATH` を前の手順のパスに置き換えます。
 
-        jsonFiles = sc.textFile('WASB_PATH')
-        jsonData = sqlContext.read.json(jsonFiles)
+   ```scala
+   var jsonFiles = sc.textFile('WASB_PATH')
+   val sqlContext = new org.apache.spark.sql.SQLContext(sc)
+   var jsonData = sqlContext.read.json(jsonFiles)
+   ```
 
     このコードにより、連続エクスポート プロセスでエクスポートされた JSON ファイルからデータフレームが作成されます。 **Shift + Enter** キーを押してこのセルを実行します。
+
 7. 隣のセルに次のコードを入力して実行し、JSON ファイル用に Spark で作成されたスキーマを表示します。
 
-        jsonData.printSchema
+   ```scala
+   jsonData.printSchema
+   ```
 
     スキーマは、テレメトリの種類ごとに異なります。 Web 要求 ( `Requests` サブディレクトリに保管されているデータ) について生成されたスキーマを次に示します。
 
@@ -319,10 +340,13 @@ HDInsight クラスターを作成する場合は、クラスターの作成中�
         |    |    |    |-- hashTag: string (nullable = true)
         |    |    |    |-- host: string (nullable = true)
         |    |    |    |-- protocol: string (nullable = true)
+
 8. 次のコードを使用して、データフレームを一時テーブルとして登録し、データに対してクエリを実行します。
 
-        jsonData.registerTempTable("requests")
-        var city = sqlContext.sql("select context.location.city from requests where context.location.city is not null limit 10").show()
+   ```scala
+   jsonData.registerTempTable("requests")
+   var city = sqlContext.sql("select context.location.city from requests where context.location.city is not null limit 10").show()
+   ```
 
     このクエリでは、context.location.city が null ではない上位 20 レコードの都市情報が返されます。
 

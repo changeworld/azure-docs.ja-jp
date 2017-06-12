@@ -13,18 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 36fa9cd757b27347c08f80657bab8a06789a3c2f
-ms.openlocfilehash: 9b545937f3e375dfcef815a66263a57bd5042f69
-ms.lasthandoff: 02/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 588c87749f049eff5b9e0729f6769c8367ba41e4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/01/2017
 
 ---
 
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli-10"></a>Azure CLI 1.0 を使用して Azure DNS で DNS ゾーンを管理する方法
 
 > [!div class="op_single_selector"]
-> * [Azure CLI](dns-operations-dnszones-cli.md)
+> * [ポータル](dns-operations-dnszones-portal.md)
 > * [PowerShell](dns-operations-dnszones.md)
+> * [Azure CLI 1.0](dns-operations-dnszones-cli-nodejs.md)
+> * [Azure CLI 2.0](dns-operations-dnszones-cli.md)
 
 このガイドでは、Windows、Mac、および Linux で使用できるクロス プラットフォームの Azure CLI 1.0 を使用して、DNS ゾーンを管理する方法について説明します。 DNS ゾーンは、[Azure PowerShell](dns-operations-dnszones.md) または Azure Portal を使用して管理することもできます。
 
@@ -63,7 +66,7 @@ azure network dns zone create MyResourceGroup contoso.com
 
 ### <a name="to-create-a-dns-zone-with-tags"></a>タグのある DNS ゾーンを作成するには
 
-次の例では、`--tags` パラメーター (短縮形 `-t`) を使用して、*project = demo* と *env = test* の&2; つ [Azure Resource Manager タグ](dns-zones-records.md#tags)を含む DNS ゾーンを作成する方法を示します。
+次の例では、`--tags` パラメーター (短縮形 `-t`) を使用して、*project = demo* と *env = test* の 2 つ [Azure Resource Manager タグ](dns-zones-records.md#tags)を含む DNS ゾーンを作成する方法を示します。
 
 ```azurecli
 azure network dns zone create MyResourceGroup contoso.com -t "project=demo";"env=test"

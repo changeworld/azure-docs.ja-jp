@@ -2,32 +2,32 @@
 title: "Azure Cosmos DB の MongoDB 用 API を使用した Web アプリの構築 | Microsoft Docs"
 description: "MongoDB 用 API を使用してオンライン データベース Web アプリを作成する Azure Cosmos DB チュートリアル。"
 keywords: "mongodb の例"
-services: cosmosdb
+services: cosmos-db
 author: AndrewHoh
 manager: jhubbard
 editor: 
 documentationcenter: 
 ms.assetid: 61a2ab3a-2fc3-4d49-a263-ed87c66628f6
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: anhoh
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 7d78ac544c7e001444c5112b20824f75f9723652
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 47ec9998c68455a90b505c917156d9b6b0fe0f24
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 06/03/2017
 
 ---
 # <a name="azure-cosmos-db-connect-to-a-mongodb-app-using-net"></a>Azure Cosmos DB: .NET を使用した MongoDB アプリへの接続
 
 Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成およびクエリできます。 
 
-このチュートリアルでは、Azure Portal を使用して Azure Cosmos DB アカウントを作成する方法と、[MongoDB API](../documentdb/documentdb-protocol-mongodb.md)を使用してデータを格納するデータベースおよびコレクションの作成方法を説明します。 
+このチュートリアルでは、Azure Portal を使用して Azure Cosmos DB アカウントを作成する方法と、[MongoDB API](mongodb-introduction.md)を使用してデータを格納するデータベースおよびコレクションの作成方法を説明します。 
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -42,13 +42,13 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 まず最初に、Azure Portal で Azure Cosmos DB アカウントを作成します。  
 
 > [!TIP]
-> * もう Azure Cosmos DB アカウント作成しましたか。 その場合は、「[Visual Studio ソリューションをセットアップする](#SetupVS)」に進みます。
-> * 既に Azure DocumentDB アカウントを持っていましたか。 この場合、そのアカウントが Azure Cosmos DB アカウントになります。「[Visual Studio ソリューションをセットアップする](#SetupVS)」に進みます。  
-> * Azure Cosmos DB Emulator を使用する場合は、[Azure Cosmos DB Emulator](../documentdb/documentdb-nosql-local-emulator.md) に関する記事に記載されている手順に従って、エミュレーターをセットアップし、「[Visual Studio ソリューションをセットアップする](#SetupVS)」に進んでください。 
+> * 既に Azure Cosmos DB アカウントをお持ちですか。 その場合は、「[Visual Studio ソリューションをセットアップする](#SetupVS)」に進みます。
+> * 既に Azure DocumentDB アカウントをお持ちでしたか。 この場合、そのアカウントが Azure Cosmos DB アカウントになります。「[Visual Studio ソリューションをセットアップする](#SetupVS)」に進んでください。  
+> * Azure Cosmos DB Emulator を使用する場合は、[Azure Cosmos DB Emulator](local-emulator.md) に関する記事に記載されている手順に従って、エミュレーターをセットアップし、「[Visual Studio ソリューションをセットアップする](#SetupVS)」に進んでください。 
 >
 >
 
-[!INCLUDE [cosmosdb-create-dbaccount-mongodb](../../includes/cosmosdb-create-dbaccount-mongodb.md)]
+[!INCLUDE [cosmos-db-create-dbaccount-mongodb](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
 ## <a name="update-your-connection-string"></a>接続文字列を更新する
 
@@ -225,6 +225,6 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 次のチュートリアルに進んで、MongoDB データを Azure Cosmos DB にインポートすることができます。  
 
 > [!div class="nextstepaction"]
-> [MongoDB データの Azure Cosmos DB へのインポート](../documentdb/documentdb-mongodb-migrate.md)
+> [MongoDB データの Azure Cosmos DB へのインポート](mongodb-migrate.md)
 
 

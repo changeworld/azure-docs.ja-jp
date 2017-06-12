@@ -7,12 +7,13 @@ manager: yutkuo
 ms.service: cognitive-services
 ms.technology: face
 ms.topic: article
-ms.date: 03/21/2017
+ms.date: 05/23/2017
 ms.author: anroth
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 054498cc76d7318f1c1e58b5309f80342879034a
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: 8443fd82268c7622dd16659bac5cc614bb485b86
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 ---
 
@@ -32,24 +33,29 @@ Use the [Face - Detect method](https://dev.projectoxford.ai/docs/services/563879
 
 #### <a name="face-detect-ruby-example-request"></a>Face Detect Ruby Example Request
 
-```Ruby 
+Change the REST URL to use the location where you obtained your subscription keys, replace the "Ocp-Apim-Subscription-Key" value with your valid subscription key, and add a URL to a photograph to the `body` variable.
+
+```ruby 
 require 'net/http'
 
-uri = URI('https://westus.api.cognitive.microsoft.com/face/v1.0/detect')
+# NOTE: You must use the same region in your REST call as you used to obtain your subscription keys.
+#   For example, if you obtained your subscription keys from westus, replace "westcentralus" in the 
+#   URL below with "westus".
+uri = URI('https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect')
 uri.query = URI.encode_www_form({
     # Request parameters
     'returnFaceId' => 'true',
     'returnFaceLandmarks' => 'false',
-    'returnFaceAttributes' => '{string}'
+    'returnFaceAttributes' => 'age,gender'
 })
 
 request = Net::HTTP::Post.new(uri.request_uri)
 # Request headers
 request['Content-Type'] = 'application/json'
-# Request headers
-request['Ocp-Apim-Subscription-Key'] = '{subscription key}'
+# NOTE: Replace the "Ocp-Apim-Subscription-Key" value with a valid subscription key.
+request['Ocp-Apim-Subscription-Key'] = '13hc77781f7e4b19b5fcdd72a8df7156'
 # Request body
-request.body = "{body}"
+request.body = "{\"url\":\"http://example.com/1.jpg\"}"
 
 response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
     http.request(request)
@@ -205,18 +211,24 @@ A successful response will be returned in JSON. Following is an example of a suc
 Use the [Face - Identify method](https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) identify people based on a detected face and people database (defined as a person group) which needs to be created in advance and can be edited over time
 
 #### <a name="face---identify-ruby-example-request"></a>Face - Identify Ruby Example Request
+
+Change the REST URL to use the location where you obtained your subscription keys, replace the "Ocp-Apim-Subscription-Key" value with your valid subscription key, and add a URL to a photograph to the `body` variable.
+
 ```ruby
 require 'net/http'
 
-uri = URI('https://westus.api.cognitive.microsoft.com/face/v1.0/identify')
+# NOTE: You must use the same region in your REST call as you used to obtain your subscription keys.
+#   For example, if you obtained your subscription keys from westus, replace "westcentralus" in the 
+#   URL below with "westus".
+uri = URI('https://westcentralus.api.cognitive.microsoft.com/face/v1.0/identify')
 uri.query = URI.encode_www_form({
 })
 
 request = Net::HTTP::Post.new(uri.request_uri)
 # Request headers
 request['Content-Type'] = 'application/json'
-# Request headers
-request['Ocp-Apim-Subscription-Key'] = '{subscription key}'
+# NOTE: Replace the "Ocp-Apim-Subscription-Key" value with a valid subscription key.
+request['Ocp-Apim-Subscription-Key'] = '13hc77781f7e4b19b5fcdd72a8df7156'
 # Request body
 request.body = "{body}"
 

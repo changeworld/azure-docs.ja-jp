@@ -12,12 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2017
+ms.date: 05/16/2017
 ms.author: shlo
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 446a7b585ca1204d49d76f71106799cbd2b0aa70
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 3013607e62a3ac532cb0c035130fe35e503a345c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -40,6 +41,7 @@ ms.lasthandoff: 03/29/2017
 | [オンプレミスの Hortonworks Hadoop を使用したハイブリッド パイプライン](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HybridPipelineWithOnPremisesHortonworksHadoop) |Data Factory でジョブを実行するためのコンピューティング ターゲットとしてオンプレミスの Hadoop クラスターを使用するサンプルです。HDInsight ベースの Hadoop クラスターなど、他のコンピューティング ターゲットをクラウドに追加する感覚でオンプレミスの Hadoop クラスターを使用します。 |
 | [JSON 変換ツール](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSONConversionTool) |2015-07-01-preview 未満のバージョンの JSON を最新または 2015-07-01-preview (既定) に変換するツールです。 |
 | [U-SQL サンプル入力ファイル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/U-SQL%20Sample%20Input%20File) |このファイルは、U-SQL アクティビティで使用するサンプル ファイルです。 |
+| [BLOB ファイルの削除](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/DeleteBlobFileFolderCustomActivity) | このサンプルは、ファイルがコピーされたらソースの Azure BLOB の場所からファイルを削除するために ADF カスタム .net アクティビティの一部として使用できる #C ファイルを示します。|
 
 ## <a name="azure-resource-manager-templates"></a>Azure リソース マネージャーのテンプレート
 GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレートがあります。
@@ -102,7 +104,7 @@ GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレ
    3. データ ファクトリを作成する **Azure サブスクリプション** を選択します。
    4. データ ファクトリの **リソース グループ** を選択します。
    5. **リージョン**として **[米国西部]**、**[米国東部]**、または **[北ヨーロッパ]** を選択します。
-   6. **[次へ]**をクリックします。
+   6. **[次へ]** をクリックします。
 6. **[Configure data stores]** (データ ストアの構成) ページで、既存の **Azure SQL Database** と **Azure ストレージ アカウント**を指定するか、データベースかストレージを作成して、[次へ] をクリックします。
 7. **[コンピューティングの構成]** ページで、既定値を選択し、**[次へ]** をクリックします。
 8. **[概要]** ページで、すべての設定を確認し、**[次へ]** をクリックします。

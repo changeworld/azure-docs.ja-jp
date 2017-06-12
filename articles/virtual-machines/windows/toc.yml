@@ -130,6 +130,8 @@
     items:
     - name: VM の作成の概要
       href: creation-choices.md
+    - name: 特殊化した VHD から VM を作成する
+      href: create-vm-specialized.md
     - name: テンプレートを使用した VM の作成
       href: ps-template.md
     - name: 'C# を使用した VM の作成'
@@ -215,20 +217,6 @@
       href: expand-data-disks.md
     - name: 'データ ディスクとして D: を使用する'
       href: change-drive-letter.md
-    - name: 非管理対象ディスクを使用した VM の作成
-      items:
-      - name: VHD のアップロード
-        href: upload-image.md
-      - name: 非管理対象イメージを作成する
-        href: capture-image.md
-      - name: 一般化された VHD から非管理対象 VM を作成する
-        href: create-vm-generalized.md
-      - name: VM をコピーする
-        href: vhd-copy.md
-      - name: 特殊化した VHD から VM を作成する
-        href: create-vm-specialized.md
-      - name: 非管理対象データ ディスクを接続する
-        href: attach-disk-portal.md
   - name: VM ネットワーク
     href: ps-common-network-ref.md
     items:
@@ -341,10 +329,8 @@
       items:
       - name: アマゾン ウェブ サービス (AWS) から Azure に移行する
         href: aws-to-azure.md
-    - name: 一般化した VHD から VM をアップロードおよび作成する
-      href: upload-generalized-managed.md
-    - name: 特殊化した VHD から VM をアップロードおよび作成する
-      href: upload-specialized.md
+      - name: 一般化した VHD から VM をアップロードおよび作成する
+        href: upload-generalized-managed.md
     - name: クラシックから Azure Resource Manager に移行する
       href: migration-classic-resource-manager-overview.md
       items:

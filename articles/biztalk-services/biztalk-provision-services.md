@@ -14,18 +14,22 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 11/07/2016
 ms.author: mandia
-translationtype: Human Translation
-ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
-ms.openlocfilehash: 12606d312ba95d9ef73e988fa4677a8314f9a579
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 299a6fb23cd0fa725324bbdbdc669ff125a99d1b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/01/2017
 
 
 ---
 # <a name="create-biztalk-services-using-the-azure-portal"></a>Azure ポータルを使用して BizTalk Services を作成する
 
+> [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
+
+
 > [!TIP]
 > Azure ポータルにサインインするには、Azure アカウントと Azure サブスクリプションが必要です。 アカウントがない場合は、無料の試用アカウントを数分で作成することができます。 [Azure 無料評価版のサイト](http://go.microsoft.com/fwlink/p/?LinkID=239738)を参照してください。
-> 
-> 
+
 
 ## <a name="create-a-biztalk-service"></a>BizTalk サービスを作成する
 選択したエディションによっては、BizTalk サービスの設定の一部が使用できないことがあります。
@@ -65,10 +69,8 @@ ms.openlocfilehash: 12606d312ba95d9ef73e988fa4677a8314f9a579
     </td>
     </tr>
     </table>
-   次へ進む矢印を選択します。
-5. ストレージとデータベースの設定を入力します。
-   
-    <table border="1">
+次へ進む矢印を選択します。
+5. ストレージとデータベースの設定を入力します。  <table border="1">
     <tr>
     <td><strong>ストレージ アカウントの監視/アーカイブ</strong></td>
     <td>既存のストレージ アカウントを選択するか、新しいストレージ アカウントを作成します。 <br/><br/>新しいストレージ アカウントを作成する場合は、<strong>[ストレージ アカウント名]</strong> に入力します。</td>
@@ -78,21 +80,19 @@ ms.openlocfilehash: 12606d312ba95d9ef73e988fa4677a8314f9a579
     <td>既存の Azure SQL データベースを使用する場合に、そのデータベースを別の BizTalk サービスでも使用することはできません。 Azure SQL データベース サーバーの作成時に入力したログイン名とパスワードが必要です。<br/><br/><strong>ヒント</strong> トラッキング データベースと監視/アーカイブ ストレージ アカウントを BizTalk サービスと同じリージョンに作成します。</td>
     </tr>
     </table>
-   次へ進む矢印を選択します。
-6. データベースの設定を入力します。
-   
-    <table border="1">
+次へ進む矢印を選択します。
+6. データベースの設定を入力します。  <table border="1">
     <tr>
     <td><strong>名前</strong></td>
     <td>前の画面で <strong>[新しい SQL データベース インスタンスを使用する]</strong> を選択した場合に指定できます。
     <br/><br/>
-    BizTalk サービスで使用される SQL データベース名を入力します。</td>
+BizTalk サービスで使用される SQL データベース名を入力します。</td>
     </tr>
     <tr>
     <td><strong>サーバー</strong></td>
     <td>前の画面で <strong>[新しい SQL データベース インスタンスを使用する]</strong> を選択した場合に指定できます。
     <br/><br/>
-    既存の SQL データベース サーバーを選択するか、新しい SQL データベース サーバーを作成します。</td>
+既存の SQL データベース サーバーを選択するか、新しい SQL データベース サーバーを作成します。</td>
     </tr>
     <tr>
     <td><strong>サーバー ログイン名</strong></td>
@@ -120,7 +120,7 @@ BizTalk サービスの状態によっては、一部の操作を完了できま
 * [運用対応証明書を追加する](#AddCert)
 * [Access Control 名前空間を取得する](#ACS)
 
-#### <a name="a-nameinstallcertainstall-the-certificate-on-a-local-computer"></a><a name="InstallCert"></a>証明書をローカル コンピューターにインストールする
+#### <a name="InstallCert"></a>証明書をローカル コンピューターにインストールする
 BizTalk サービスをプロビジョニングするときに、自己署名証明書が作成されて BizTalk サービス サブスクリプションに関連付けられます。 コンピューターから BizTalk サービス アプリケーションをデプロイする、または BizTalk サービス エンドポイントにメッセージを送信するには、この証明書をダウンロードしてそのコンピューターにインストールする必要があります。
 
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
@@ -130,13 +130,13 @@ BizTalk サービスをプロビジョニングするときに、自己署名証
    ![SSL 証明書の変更][QuickGlance]
 5. 証明書をダブルクリックし、ウィザードを最後まで実行して証明書をインストールします。 この証明書は必ず **[信頼されたルート証明機関]** ストアにインストールしてください。
 
-#### <a name="a-nameaddcertaadd-a-production-ready-certificate"></a><a name="AddCert"></a>運用対応証明書を追加する
+#### <a name="AddCert"></a>運用対応証明書を追加する
 BizTalk サービスの作成時に自動的に作成される自己署名証明書は、開発環境に限定して使用するためのものです。 本稼働のときは、この証明書を運用対応証明書で置き換えます。
 
 1. **[ダッシュボード]** タブで、**[SSL 証明書の更新]** を選択します。
 2. BizTalk サービス名が含まれているプライベート SSL 証明書 (*CertificateName*.pfx) を一覧から選択し、パスワードを入力して、チェック マークをクリックします。
 
-#### <a name="a-nameacsaget-the-access-control-namespace"></a><a name="ACS"></a>Access Control 名前空間を取得する
+#### <a name="ACS"></a>Access Control 名前空間を取得する
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
 2. 左側のナビゲーション ウィンドウで **[BizTalk Services]** を選択し、BizTalk サービスを選択します。
 3. タスク バーで **[接続情報]** をクリックします。  
@@ -171,7 +171,7 @@ Access Control サービス ID は、アプリケーションまたはクライ�
 <td>Azure サブスクリプション</td>
 <td>どのユーザーが Azure ポータルにサインインできるかは、サブスクリプションによって決まります。 アカウント保有者がサブスクリプションを <a HREF="https://account.windowsazure.com/Subscriptions">Azure サブスクリプションのページ</a>で作成します。
 <br/><br/>
-1 つの Azure アカウントで複数のサブスクリプションを契約することもでき、管理は許可を受けたユーザーであればだれでも行うことができます。 たとえば、Azure アカウント保有者が <em>BizTalkServiceSubscription</em> という名前のサブスクリプションを作成して、社内の BizTalk 管理者 (たとえば ContosoBTSAdmins@live.com)) にこのサブスクリプションへのアクセスを許可するとします。 このシナリオでは、BizTalk 管理者は、Azure ポータルにサインインすると、Azure BizTalk Services を含む、サブスクリプション内のすべてのホステッド サービスに対する完全な管理者権限を持つことになります。 BizTalk 管理者は Azure アカウント保有者ではないため、課金情報へはアクセスできません。
+1 つの Azure アカウントで複数のサブスクリプションを契約することもでき、管理は許可を受けたユーザーであればだれでも行うことができます。 たとえば、Azure アカウント保有者が <em>BizTalkServiceSubscription</em> という名前のサブスクリプションを作成して、社内の BizTalk 管理者 (たとえば ContosoBTSAdmins@live.com) にこのサブスクリプションへのアクセスを許可するとします。 このシナリオでは、BizTalk 管理者は、Azure ポータルにサインインすると、Azure BizTalk Services を含む、サブスクリプション内のすべてのホステッド サービスに対する完全な管理者権限を持つことになります。 BizTalk 管理者は Azure アカウント保有者ではないため、課金情報へはアクセスできません。
 <br/><br/>詳細については、
 <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=267577">Azure Portal でのサブスクリプションとストレージ アカウントの管理</a>に関するページをご覧ください。
 </td>
@@ -232,7 +232,7 @@ Azure BizTalk サービスが作成されるときに、BizTalk サービス名�
 <br/>
 
 <ul>
-<li><strong>拡張キー使用法</strong>: 少なくとも、Azure BizTalk サービスにはサーバー認証が必要です。</li>
+<li><strong>拡張キー使用法</strong>: 少なくとも、Azure BizTalk Services にはサーバー認証が必要です。</li>
 <li><strong>共通名</strong>: Azure BizTalk サービス URL の完全修飾ドメイン名 (FQDN) を入力します。 この記事の「<a HREF="#BizTalk">BizTalk サービスを作成する</a>」を参照してください。</li>
 </ul>
 <br/>
@@ -271,9 +271,4 @@ BizTalk サービスが作成されたので、 [BizTalk サービス: [ダッ�
 [QuickGlance]: ./media/biztalk-provision-services/WABS_QuickGlance.png
 [ACSServiceIdentities]: ./media/biztalk-provision-services/WABS_ACSServiceIdentities.png
 [HybridConnectionTab]: ./media/biztalk-provision-services/WABS_HybridConnectionTab.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

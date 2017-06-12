@@ -12,12 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/14/2017
+ms.date: 05/16/2017
 ms.author: jingwang
-translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 0637fb4d7c6cb8c3cfd4aab5d06571bd83f59683
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 183cb2ad4f2a80f9a0e1e7a33f1cacae006c0df4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -113,7 +114,7 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 **cloudDataMovementUnits** プロパティに**使用できる値**は、1 (既定値)、2、4、8、16、32 です。 コピー操作が実行時に使用する **クラウド DMU の実際の数** は、データ パターンに応じて、構成されている値以下になります。
 
 > [!NOTE]
-> スループットをより高めるためにさらにクラウド DMU が必要な場合は、 [Azure サポート](https://azure.microsoft.com/support/)にお問い合わせください。 現在、8 以上を設定できるのは、**複数のファイルを、Blob Storage/Data Lake Store/Amazon S3/クラウド FTP から Blob Storage/Data Lake Store/Azure SQL Database にコピーする**場合のみです。
+> スループットをより高めるためにさらにクラウド DMU が必要な場合は、 [Azure サポート](https://azure.microsoft.com/support/)にお問い合わせください。 現在、8 以上を設定できるのは、**複数のファイルを、Blob Storage/Data Lake Store/Amazon S3/クラウド FTP/クラウド SFTP から Blob Storage/Data Lake Store/Azure SQL Database にコピーする**場合のみです。
 >
 >
 
@@ -307,15 +308,15 @@ Microsoft のデータ ストアについては、データ ストアに特化�
 * SQL Server や Oracle など、**Data Management Gateway** を使用する必要がある**オンプレミスのリレーショナル データベース**の場合は、「[Data Management Gateway に関する考慮事項](#considerations-for-data-management-gateway)」を参照してください。
 
 ### <a name="nosql-stores"></a>NoSQL ストア
-*(Table Storage、Azure DocumentDB など)*
+*(Table Storage、Azure Cosmos DB など)*
 
 * **Table Storage**の場合:
   * **パーティション**: インターリーブされたパーティションにデータを書き込むと、パフォーマンスが大幅に低下します。 データが複数のパーティションに順次効率よく挿入されるように、パーティション キーでソース データを並べ替えるか、データが 1 つのパーティションに書き込まれるようにロジックを調整します。
-* **DocumentDB**の場合:
-  * **バッチ サイズ**: **writeBatchSize** プロパティは、ドキュメントを作成する DocumentDB サービスへの並列要求の数を設定します。 **writeBatchSize** を増やすとパフォーマンスがよくなります。DocumentDB に送信される並列要求の数が増えるためです。 ただし、DocumentDB に書き込む際は、スロットルに注意してください (エラー メッセージは "要求率が大きいです")。 スロットルは、ドキュメントのサイズ、ドキュメント内の語句の数、ターゲット コレクションの索引作成ポリシーなど、さまざまな要因によって発生する可能性があります。 コピーのスループットを高めるには、より適切なコレクション (S3 など) の使用を検討してください。
+* **Azure Cosmos DB** の場合:
+  * **バッチ サイズ**: **writeBatchSize** プロパティは、ドキュメントを作成する Azure Cosmos DB サービスへの並列要求の数を設定します。 **writeBatchSize** を増やすとパフォーマンスがよくなります。Azure Cosmos DB に送信される並列要求の数が増えるためです。 ただし、Azure Cosmos DB に書き込む際は、スロットルに注意してください (エラー メッセージは "要求率が大きいです")。 スロットルは、ドキュメントのサイズ、ドキュメント内の語句の数、ターゲット コレクションの索引作成ポリシーなど、さまざまな要因によって発生する可能性があります。 コピーのスループットを高めるには、より適切なコレクション (S3 など) の使用を検討してください。
 
 ## <a name="considerations-for-serialization-and-deserialization"></a>シリアル化と逆シリアル化に関する考慮事項
-入力データ セットまたは出力データ セットがファイルであると、シリアル化および逆シリアル化が実行されることがあります。 現在、コピー アクティビティでは Avro および Text (CSV や TSV など) データ形式をサポートしています。
+入力データ セットまたは出力データ セットがファイルであると、シリアル化および逆シリアル化が実行されることがあります。 コピー アクティビティでサポートされているファイル形式について詳しくは、「[サポートされているファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md)」をご覧ください。
 
 **コピー動作**:
 
@@ -339,7 +340,7 @@ Microsoft のデータ ストアについては、データ ストアに特化�
 ## <a name="considerations-for-column-mapping"></a>列マッピングに関する考慮事項
 コピー アクティビティの **columnMappings** プロパティを設定して、入力列のすべてまたはサブセットを出力列にマップすることができます。 データ移動サービスは、ソースからデータを読み取った後、データをシンクに書き込む前に、データに対して列マッピングを実行する必要があります。 この追加の処理により、コピーのスループットが低下します。
 
-ソース データ ストアがクエリ可能な場合 (たとえば、SQL Database や SQL Server のようなリレーショナル ストアであるか、Table Storage や DocumentDB のような NoSQL ストアである場合) は、列マッピングを使用するのでなく、列フィルタリングと順序変更ロジックを **query** プロパティにプッシュすることを検討してください。 そうした場合、データ移動サービスがソース データ ストアからデータを読み取る際にプロジェクションが発生し、効率が大幅に向上します。
+ソース データ ストアがクエリ可能な場合 (たとえば、SQL Database や SQL Server のようなリレーショナル ストアであるか、Table Storage や Azure Cosmos DB のような NoSQL ストアである場合) は、列マッピングを使用するのでなく、列フィルタリングと順序変更ロジックを **query** プロパティにプッシュすることを検討してください。 そうした場合、データ移動サービスがソース データ ストアからデータを読み取る際にプロジェクションが発生し、効率が大幅に向上します。
 
 ## <a name="considerations-for-data-management-gateway"></a>Data Management Gateway に関する考慮事項
 ゲートウェイのセットアップにおける推奨事項については、「 [Data Management Gateway に関する考慮事項](data-factory-data-management-gateway.md#considerations-for-using-gateway)」を参照してください。
@@ -406,7 +407,7 @@ Data Factory が同じデータ ストアに同時に接続することを必要
 * Azure Storage (Blob Storage と Table Storage を含む): [Azure Storage のスケーラビリティのターゲット](../storage/storage-scalability-targets.md)に関する記事と [Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../storage/storage-performance-checklist.md)に関する記事
 * Azure SQL Database: [パフォーマンスを監視](../sql-database/sql-database-single-database-monitor.md) し、データベース トランザクション ユニット (DTU) の割合を確認できます。
 * Azure SQL Data Warehouse: 処理能力は Data Warehouse ユニット (DWU) で測定されます。「[Azure SQL Data Warehouse のコンピューティング能力の管理 (概要)](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)」を参照してください。
-* Azure DocumentDB: 「 「 [DocumentDB のパフォーマンス レベル](../documentdb/documentdb-performance-levels.md)
+* Azure Cosmos DB: [Azure Cosmos DB のパフォーマンス レベル](../documentdb/documentdb-performance-levels.md)に関する記事
 * オンプレミスの SQL Server: 「 [Monitor and tune for performance (パフォーマンスの監視とチューニング)](https://msdn.microsoft.com/library/ms189081.aspx)
 * オンプレミスのファイル サーバー: 「 [Performance Tuning for File Servers (ファイル サーバーのパフォーマンス チューニング)](https://msdn.microsoft.com/library/dn567661.aspx)
 

@@ -8,16 +8,18 @@ author: ddove
 editor: 
 ms.assetid: 72e0edaf-795e-4856-84a5-6594f735fb7e
 ms.service: sql-database
-ms.custom: multiple databases
+ms.custom: scale out apps
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
 ms.openlocfilehash: 16e8c4ba332cbaba86a13d7b815d0561618cb28b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/23/2016
 
 
 ---
@@ -76,10 +78,5 @@ ms.openlocfilehash: 16e8c4ba332cbaba86a13d7b815d0561618cb28b
 [Elastic Database ジョブの概要](sql-database-elastic-jobs-getting-started.md)
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

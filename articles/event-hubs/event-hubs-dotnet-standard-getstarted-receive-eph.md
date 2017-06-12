@@ -3,7 +3,7 @@ title: ".NET Standard を使用して Azure Event Hubs からイベントを受�
 description: ".NET standard で EventProcessorHost を使用したメッセージ受信を開始する"
 services: event-hubs
 documentationcenter: na
-author: jtaubensee
+author: sethmanheim
 manager: timlt
 editor: 
 ms.assetid: 
@@ -13,11 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
-ms.author: jotaub;sethm
-translationtype: Human Translation
+ms.author: sethm
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
 ms.openlocfilehash: e286693b585a5991dbecd537fe5cd6621dd27e01
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/26/2017
+
 
 ---
 

@@ -3,7 +3,7 @@ title: "C を使用して Azure Event Hubs にイベントを送信する | Micr
 description: "C を使用して Azure Event Hubs にイベントを送信する"
 services: event-hubs
 documentationcenter: 
-author: jtaubensee
+author: sethmanheim
 manager: timlt
 editor: 
 ms.assetid: 
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: c
 ms.devlang: csharp
 ms.topic: article
 ms.date: 05/03/2017
-ms.author: jotaub;sethm
+ms.author: sethm
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
 ms.openlocfilehash: e1aeb2708e829480b0e4a520f6f9ee08894bfaf9

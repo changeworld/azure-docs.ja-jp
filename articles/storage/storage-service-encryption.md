@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 05/09/2017
 ms.author: robinsh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
-ms.openlocfilehash: 680f41dc15b9681059847174a6910cfc937abd8b
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 7b91be16b5820f379f7408b477311ea86b213ccd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/21/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -30,23 +30,15 @@ Azure Storage Service Encryption (SSE) for Data at Rest は、データの安全
 ## <a name="overview"></a>概要
 Azure Storage で提供される包括的なセキュリティ機能のセットを利用して、開発者はセキュリティで保護されたアプリケーションを構築できます。 アプリケーションと Azure の間で送信されるデータは、 [クライアント側暗号化](storage-client-side-encryption.md)、HTTPS、または SMB 3.0 使用して保護できます。 Storage Service Encryption は保存時の暗号化を提供し、暗号化、復号化、キー管理を完全に透過的な方法で処理します。 現在利用できるブロック暗号化の中でも最強レベルの 256 ビット [AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)によってすべてのデータを暗号化します。
 
-SSE は、Azure Storage に書き込まれるデータを書き込みの時点で暗号化する機能で、Azure Blob Storage と File Storage (プレビュー) に使用できます。 これは、以下に利用できます。
+SSE は、Azure Storage に書き込まれるデータを書き込みの時点で暗号化する機能で、Azure Blob Storage と File Storage で使用できます。 これは、以下に利用できます。
 
-* 汎用ストレージ アカウントと Blob Storage アカウント
-* Standard Storage と Premium Storage 
+* 標準ストレージ: Blob の汎用ストレージ アカウントと、ファイル ストレージ アカウントおよび Blob ストレージ アカウント
+* Premium Storage 
 * すべての冗長性レベル (LRS、ZRS、GRS、RA-GRS)
 * Azure Resource Manager ストレージ アカウント (クラシック以外) 
-* BLOB Storage の場合、すべてのリージョン。 File Storage については、利用可能なリージョンに関するセクションを確認してください。
-
-Storage Service Encryption - File Storage 内のデータを暗号化するための Files Preview SSE が利用可能になりました。 これは現在プレビューの段階です。 File Storage 向け SSE が利用可能なリージョンの一覧を次に示します。
-
-SSE Files のプレビューへの参加を希望する方は、ssediscussions@microsoft.com までお問い合わせください。
+* すべてのリージョン
 
 詳細については、よく寄せられる質問に関するセクションを参照してください。
-
-### <a name="availability-for-file-storage"></a>File Storage を利用できるリージョン
-File Storage の Storage Service Encryption は、現在すべての Azure リージョンで使用できます。
-
 
 特定のストレージ アカウントについてストレージ サービスの暗号化を有効または無効にするには、 [Azure Portal](https://azure.portal.com) にログインしてストレージ アカウントを選択します。 [設定] ブレードで [BLOB サービス] セクション (次のスクリーンショットを参照) を探し、[暗号化] をクリックします。
 
@@ -59,22 +51,17 @@ File Storage の Storage Service Encryption は、現在すべての Azure リ�
 [暗号化] をクリックした後、Storage Service Encryption を有効または無効にできます。
 
 ![暗号化プロパティが表示されたポータルのスクリーンショット](./media/storage-service-encryption/image2.png)
-<br/>"*図 1.1: Blob service の SSE を有効にする (手順 2)*"
+<br/>*図 3: Blob Service と File Service の SSE を有効にする (手順 2)*
 
-![暗号化プロパティが表示されたポータルのスクリーンショット](./media/storage-service-encryption/image4.png)
-<br/>"*図 2.1: File Service の SSE を有効にする (手順 2)*"
 ## <a name="encryption-scenarios"></a>暗号化のシナリオ
-Storage Service Encryption は、ストレージ アカウント レベルで有効にできます。 次のカスタマー シナリオがサポートされています。
+Storage Service Encryption は、ストレージ アカウント レベルで有効にできます。 有効にしたら、暗号化するサービスを選択します。 次のカスタマー シナリオがサポートされています。
 
-* BLOB Storage と File Storage の暗号化。
-* Resource Manager ストレージ アカウントに移行したクラシック ストレージ アカウントの暗号化については、Blob service の暗号化はサポートされますが、File Service はサポートされません。
-* File Storage の暗号化は、新しく作成されたストレージ アカウントでのみサポートされます。
+* Resource Manager アカウントで Blob Storage と File Storage を暗号化する。
+* Resource Manager ストレージ アカウントに移行されたクラシック ストレージ アカウントで Blob Service と File Service を暗号化する。
 
 SSE には次の制限事項があります。
 
 * クラシック ストレージ アカウントの暗号化はサポートされていません。
-* Resource Manager ストレージ アカウントに移行したクラシック ストレージ アカウントの暗号化については、Blob service の暗号化はサポートされますが、File Service はサポートされません。
-* File Storage の暗号化は、新しく作成されたストレージ アカウントでのみサポートされます。
 * 既存のデータ - SSE は暗号化有効化後に新しく作成されたデータだけを暗号化します。 たとえば、暗号化を有効にしないで新しい Resource Manager ストレージ アカウントを作成し、BLOB またはアーカイブ済み VHD をそのストレージ アカウントにアップロードした後、SSE を有効にした場合、それらの BLOB は、再作成またはコピーしない限り、暗号化されません。
 * Marketplace のサポート - [Azure Portal](https://portal.azure.com)、PowerShell、Azure CLI を使用して Marketplace で作成された VM の暗号化を有効にします。 VHD の基本イメージは暗号化されません。ただし、VM が稼働した後の書き込みはすべて暗号化されます。
 * テーブルとキューのデータは暗号化されません。
@@ -134,19 +121,19 @@ A: いいえ。SSE は Resource Manager ストレージ アカウントでのみ
 
 A: 新しい Resource Manager ストレージ アカウントを作成し、 [AzCopy](storage-use-azcopy.md) を使用して既存のクラシック ストレージ アカウントから新しく作成した Resource Manager ストレージ アカウントにデータをコピーします。 
 
-クラシック ストレージ アカウントを Resource Manager ストレージ アカウントに移行する場合、移行中にデータが暗号化されることはありません。 ただし、ストレージ アカウントを移行した後で暗号化を有効にした場合、ストレージ アカウントに書き込まれる新しいデータはすべて暗号化されます。 詳しくは、「 [Platform Supported Migration of IaaS Resources from Classic to Resource Manager (プラットフォームでサポートされているクラシックから Resource Manager への IaaS リソースの移行)](https://azure.microsoft.com/blog/iaas-migration-classic-resource-manager/)」をご覧ください。 これは Blob Storage でのみサポートされています。 File Storage (プレビュー) の場合、ユーザーは新しい Resource Manager ストレージ アカウントを作成する必要があります。
+クラシック ストレージ アカウントを Resource Manager ストレージ アカウントに移行する場合、この操作は即時に行われ、アカウントの種類が変更されますが、既存のデータには影響しません。 書き込まれた新しいデータは、暗号化を有効にした後にのみ暗号化されます。 詳しくは、「[Platform Supported Migration of IaaS Resources from Classic to Resource Manager (プラットフォームでサポートされているクラシックから Resource Manager への IaaS リソースの移行)](https://azure.microsoft.com/blog/iaas-migration-classic-resource-manager/)」をご覧ください。 これは Blob Service と File Service でのみサポートされています。
 
 **Q: 既存の Resource Manager ストレージ アカウントがあります。このアカウントで SSE を有効にできますか?**
 
-A: はい。ただし、新しく書き込まれた BLOB のみが暗号化されます。 前に戻って、既に存在するデータを暗号化することはありません。 これは、File Storage (プレビュー) ではまだサポートされていません。
+A: はい。ただし、新しく書き込まれたデータのみが暗号化されます。 前に戻って、既に存在するデータを暗号化することはありません。 これは、File Storage (プレビュー) ではまだサポートされていません。
 
 **Q: 既存の Resource Manager ストレージ アカウント内に現在あるデータを暗号化できますか?**
 
-A: Resource Manager ストレージ アカウントではいつであっても SSE を有効にすることができます。 ただし、既にある BLOB は暗号化されません。 これらの BLOB を暗号化するには、別の名前または別のコンテナーにコピーしてから、暗号化されていないバージョンを削除します。これは、File Storage (プレビュー) ではまだサポートされていません。
+A: Resource Manager ストレージ アカウントではいつであっても SSE を有効にすることができます。 ただし、既にあるデータは暗号化されません。 既存のデータを暗号化するには、別の名前または別のコンテナーにコピーしてから、暗号化されていないバージョンを削除します。
 
 **Q: Premium Storage を使用しています。SSE を使用できますか?**
 
-A: はい。SSE は Standard Storage と Premium Storage の両方でサポートされています。これは、File Storage (プレビュー) ではまだサポートされていません。
+A: はい。SSE は Standard Storage と Premium Storage の両方でサポートされています。  Premium Storage は File Service ではサポートされていません。
 
 **Q: 新しいストレージ アカウントを作成して SSE を有効にし、そのストレージ アカウントを使用して新しい VM を作成した場合、その VM は暗号化されますか?**
 

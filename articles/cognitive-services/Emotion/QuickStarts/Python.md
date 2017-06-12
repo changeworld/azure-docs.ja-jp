@@ -7,13 +7,13 @@ manager: yutkuo
 ms.service: cognitive-services
 ms.technology: emotion
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 05/23/2017
 ms.author: anroth
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: 354c6f2fa73c30cc0ca1d575adc4de71e28d1a3f
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: 6db35bd352dba796a3fb54ff5f9d01d650ee0556
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 05/25/2017
 
 ---
 
@@ -25,7 +25,9 @@ This article provides information and code samples to help you quickly get start
 
 ## <a name="recognize-emotions-python-example-request"></a>Recognize Emotions Python Example Request
 
-```Python
+Copy the appropriate section for your version of Python and save it to a file such as `test.py`. Replace the "Ocp-Apim-Subscription-Key" value with your valid subscription key, add a URL to a photograph of a celebrity to the `body` variable, and change the REST URL to use the region where you obtained your subscription keys.
+
+```python
 ########### Python 2.7 #############
 import httplib, urllib, base64
 
@@ -42,6 +44,9 @@ params = urllib.urlencode({
 body = "{ 'url': 'http://example.com/picture.jpg' }"
 
 try:
+    # NOTE: You must use the same region in your REST call as you used to obtain your subscription keys.
+    #   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the 
+    #   URL below with "westcentralus".
     conn = httplib.HTTPSConnection('westus.api.cognitive.microsoft.com')
     conn.request("POST", "/emotion/v1.0/recognize?%s" % params, body, headers)
     response = conn.getresponse()
@@ -69,6 +74,9 @@ params = urllib.parse.urlencode({
 body = "{ 'url': 'http://example.com/picture.jpg' }"
 
 try:
+    # NOTE: You must use the same region in your REST call as you used to obtain your subscription keys.
+    #   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the 
+    #   URL below with "westcentralus".
     conn = http.client.HTTPSConnection('westus.api.cognitive.microsoft.com')
     conn.request("POST", "/emotion/v1.0/recognize?%s" % params, body, headers)
     response = conn.getresponse()

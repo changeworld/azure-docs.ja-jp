@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/03/2017
+ms.date: 06/01/2017
 ms.author: ryanwi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 52f9a3146852ef83c31bd93e1c538e12f0d953eb
 ms.openlocfilehash: e44ecf5860becffb39d199e36d36d96f50bf7cf3
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/16/2017
 
 

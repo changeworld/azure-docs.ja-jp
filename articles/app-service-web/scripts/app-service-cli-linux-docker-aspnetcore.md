@@ -15,6 +15,7 @@ ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
 ms.openlocfilehash: 1876052306c5452dd0d183ce290ab6ff49e8fbae
@@ -28,6 +29,10 @@ ms.lasthandoff: 05/15/2017
 このシナリオでは、リソース グループ、Linux App Service プラン、および Web アプリを作成し、Docker コンテナーを使用して ASP.NET Core Web アプリケーションをデプロイします。
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="sample-script"></a>サンプル スクリプト
 

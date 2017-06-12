@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/02/2017
-ms.author: sethm;jotaub
+ms.author: sethm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 7f3ddc2d7036b9951d4796cf4664f870a0c5f4b6
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 612fb681ab0c8fe77652041f8a1fc23ad0d3428a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -92,9 +92,16 @@ Shared Access Signature は、SHA-256 セキュア ハッシュまたは URI に
 
 ## <a name="subscription-and-namespace-management"></a>サブスクリプションと名前空間の管理
 ### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>別の Azure サブスクリプションに名前空間を移行する方法を教えてください
-Azure Portal を使うと、[こちら](../azure-resource-manager/resource-group-move-resources.md#use-portal)の説明に従って、Service Bus 名前空間を別のサブスクリプションに移行できます。 PowerShell を使う方がよい場合は、次の手順のようにします。 
 
-次の一連のコマンドでは、別の Azure サブスクリプションへ名前空間を移行します。 この操作を実行するには、名前空間がアクティブになっており、PowerShell コマンドを実行するユーザーが、ソースとターゲットのサブスクリプションの管理者である必要があります。
+[Azure Portal](https://portal.azure.com) または PowerShell コマンドを使用して、ある Azure サブスクリプションから別のサブスクリプションに名前空間を移行できます。 操作を実行するには、名前空間が既にアクティブになっている必要があります。 コマンドを実行するユーザーは、ソースとターゲットの両方のサブスクリプションの管理者である必要があります。
+
+#### <a name="portal"></a>ポータル
+
+Azure Portal を使用して Service Bus 名前空間を別のサブスクリプションに移行するには、[こちら](../azure-resource-manager/resource-group-move-resources.md#use-portal)の説明に従ってください。 
+
+#### <a name="powershell"></a>PowerShell
+
+次の一連の PowerShell コマンドでは、別の Azure サブスクリプションへ名前空間を移行します。 この操作を実行するには、名前空間がアクティブになっており、PowerShell コマンドを実行するユーザーが、ソースとターゲットのサブスクリプションの管理者である必要があります。
 
 ```powershell
 # Create a new resource group in target subscription

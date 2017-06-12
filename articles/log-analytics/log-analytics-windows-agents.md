@@ -3,7 +3,7 @@ title: "Windows コンピューターを Azure Log Analytics に接続する | M
 description: "この記事では、Microsoft Monitoring Agent (MMA) のカスタマイズされたバージョンを使用して、オンプレミスのインフラストラクチャ内の Windows コンピューターを Log Analytics サービスに接続する手順について説明します。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: 932f7b8c-485c-40c1-98e3-7d4c560876d2
@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
-ms.author: banders
+ms.date: 05/12/2017
+ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: 0868eb2269b3675a132e106cd66740b0ce52b00a
-ms.lasthandoff: 03/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: d95ab33460d5d86b1d2f6d7f0d4e7a9040568c29
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/13/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.lasthandoff: 03/07/2017
 エージェントのインストールには、セットアップ コマンド ラインを使用するか、Azure Automation の Desired State Configuration (DSC) を使用します。  
 
 >[!NOTE]
-Azure で実行されている仮想マシンの場合、[仮想マシン拡張機能](log-analytics-azure-vm-extension.md)を使用してインストールを簡略化できます。
+Azure で実行される仮想マシンの場合、[仮想マシン拡張機能](log-analytics-azure-vm-extension.md)を使用してインストールを簡略化できます。
 
 コンピューターがインターネットに接続されている場合、エージェントはインターネットへの接続を介して OMS にデータを送信します。 インターネットに接続されていないコンピューターの場合は、プロキシまたは [OMS ゲートウェイ](log-analytics-oms-gateway.md)を使用できます。
 
@@ -43,15 +44,37 @@ OMS への Windows コンピューターの接続は、次の 3 つの手順を�
 
 ![oms-direct-agent-diagram](./media/log-analytics-windows-agents/oms-direct-agent-diagram.png)
 
+IT セキュリティ ポリシーがネットワーク上のコンピューターによるインターネットへの接続を許可していない場合は、OMS ゲートウェイに接続するようにコンピューターを構成できます。 サーバーが OMS ゲートウェイ経由で OMS サービスと通信するように構成する方法の詳細と手順については、「[インターネットにアクセスできないコンピューターを OMS ゲートウェイを使って OMS に接続する](log-analytics-oms-gateway.md)」を参照してください。
 
 ## <a name="system-requirements-and-required-configuration"></a>システム要件と必要な構成
 エージェントをインストールまたはデプロイする前に、次の詳細を検証して、要件が満たされていることを確認してください。
 
 - OMS MMA は、Windows Server 2008 SP 1 以上または Windows 7 SP1 以上を搭載したコンピューターにのみインストールできます。
-- OMS サブスクリプションが必要です。  詳細については、「 [Get started with Log Analytics (Log Analytics の概要)](log-analytics-get-started.md)」を参照してください。
+- Azure サブスクリプションが必要です。  詳細については、「[Log Analytics の起動と開始](log-analytics-get-started.md)」を参照してください。
 - 各 Windows コンピューターは、HTTPS でインターネットに、または OMS ゲートウェイに接続できる必要があります。 インターネット接続には、直接接続、プロキシを経由した接続、OMS ゲートウェイを介した接続を使用できます。
 - OMS MMA は、スタンドアロン コンピューター、サーバー、および仮想マシンにインストールできます。 Azure でホストされる仮想マシンを OMS に接続する場合は、「[Azure 仮想マシンを Log Analytics に接続する](log-analytics-azure-vm-extension.md)」を参照してください。
-- エージェントは、TCP ポート 443 を使用してさまざまなリソースに対応する必要があります。 詳細については、「 [Configure proxy and firewall settings in Log Analytics (Log Analytics のプロキシとファイアウォールの設定を構成する)](log-analytics-proxy-firewall.md)」を参照してください。
+- エージェントは、TCP ポート 443 を使用してさまざまなリソースに対応する必要があります。
+
+### <a name="network"></a>ネットワーク
+
+Windows エージェントを OMS サービスに接続して登録するには、ドメイン URL とポート番号を含むネットワーク リソースへのアクセスが必要です。
+
+- プロキシ サーバーでは、適切なプロキシ サーバーのリソースがエージェントの設定で構成されていることを確認する必要があります。
+- インターネットへのアクセスを制限するためにファイアウォールを使用する場合は、ユーザーまたはネットワーク エンジニアがOMS へのアクセスを許可するようにファイアウォールを構成する必要があります。 エージェントの設定で必要な操作はありません。
+
+次の表は、通信で必要なリソースを示しています。
+
+>[!NOTE]
+>次の一部のリソースは、OMS の旧バージョンである Operational Insights を指しています。 表示されたリソースは、今後変更される予定です。
+
+| エージェントのリソース | ポート | バイパス HTTPS 検査 |
+|---|---|---|
+| *.ods.opinsights.azure.com | 443 | あり |
+| *.oms.opinsights.azure.com | 443 | あり |
+| *.blob.core.windows.net | 443 | あり |
+| *.azure-automation.net | 443 | あり |
+
+
 
 ## <a name="download-the-agent-setup-file-from-oms"></a>OMS からエージェントのセットアップ ファイルをダウンロードする
 1. OMS ポータルにある **[概要]** ページで、**[設定]** タイルをクリックします。  上部の **[接続されたソース]** タブをクリックします。  
@@ -65,7 +88,7 @@ OMS への Windows コンピューターの接続は、次の 3 つの手順を�
 2. [ようこそ] ページで **[次へ]**をクリックします。
 3. [ライセンス条項] ページの記述内容を確認し、 **[同意する]**をクリックします。
 4. [インストール先フォルダー] ページで、既定のインストール フォルダーを変更するか、そのまま使用して、 **[次へ]**をクリックします。
-5. [エージェントのセットアップ オプション] ページでは、Azure Log Analytics (OMS) または Operations Manager へのエージェントの接続を選択できます。後でエージェントを構成する場合は、空白にしておいてかまいません。 ページの下部にある **[次へ]**」を参照してください。   
+5. [エージェントのセットアップ オプション] ページでは、Azure Log Analytics (OMS) または Operations Manager へのエージェントの接続を選択できます。後でエージェントを構成する場合は、空白にしておいてかまいません。 **[次へ]** をクリックします。   
     - Azure Log Analytics (OMS) への接続を選択した場合は、前の手順でメモ帳にコピーしておいた**ワークスペース ID** と**ワークスペース キー (主キー)** を貼り付けて、**[次へ]** をクリックします。  
         ![ワークスペース ID と主キーの貼り付け](./media/log-analytics-windows-agents/connect-workspace.png)
     - Operations Manager への接続を選択した場合は、**管理グループ名**、**管理サーバー**名、および**管理サーバー ポート**を入力して、**[次へ]** をクリックします。 [エージェント アクション アカウント] ページで、ローカル システム アカウントまたはローカル ドメイン アカウントのいずれかを選択し、 **[次へ]**をクリックします。  
@@ -75,24 +98,96 @@ OMS への Windows コンピューターの接続は、次の 3 つの手順を�
 7. [構成は正常に終了しました] ページで **[完了]**をクリックします。
 8. 完了すると、**コントロール パネル**に **Microsoft Monitoring Agent** が表示されます。 そこでは構成を検証して、エージェントが Operational Insights (OMS) に接続されていることを確認できます。 OMS に接続されると、エージェントにより **Microsoft Monitoring Agent は Microsoft Operations Management Suite サービスに正常に接続しました**
 
+## <a name="configure-proxy-settings"></a>プロキシ設定の構成
+
+コントロール パネルから Microsoft Monitoring Agent のプロキシ設定を構成する際には、以下の手順を使用してください。 この手順は、各サーバーに対して行う必要があります。 構成が必要なサーバーの数が多い場合には、このプロセスを自動化するスクリプトを使った方が作業が簡単に済むことも考えられます。 そのような場合は、1 つ先の手順の「 [スクリプトを使って Microsoft Monitoring Agent のプロキシ設定を構成するには](#to-configure-proxy-settings-for-the-microsoft-monitoring-agent-using-a-script)」をご覧ください。
+
+### <a name="to-configure-proxy-settings-for-the-microsoft-monitoring-agent-using-control-panel"></a>コントロール パネルを使って Microsoft Monitoring Agent のプロキシ設定を構成するには
+1. **[コントロール パネル]**を開きます。
+2. **[Microsoft Monitoring Agent]**を開きます。
+3. **[プロキシ設定]** タブをクリックします。  
+    ![proxy settings tab](./media/log-analytics-windows-agents/proxy-direct-agent-proxy.png)
+4. 例に示したように、 **[プロキシ サーバーを使用する]** をオンにして、URL と (必要に応じて) ポート番号を入力します。 プロキシ サーバーで認証が必要な場合には、プロキシ サーバーにアクセスするためのユーザー名とパスワードを入力します。
+
+
+### <a name="verify-agent-connectivity-to-oms"></a>OMS へのエージェント接続を確認する
+
+次の手順を使用して、エージェントが OMS と通信しているかどうかを簡単に確認できます。
+
+1.    Windows エージェントがあるコンピューターで、コントロール パネルを開きます。
+2.    [Microsoft Monitoring Agent] を開きます。
+3.    [Azure Log Analytics (OMS)] タブをクリックします。
+4.    [状態] 列に、エージェントが Operations Management Suite サービスに正常に接続されていることが表示されます。
+
+![エージェントが接続されている](./media/log-analytics-windows-agents/mma-connected.png)
+
+
+### <a name="to-configure-proxy-settings-for-the-microsoft-monitoring-agent-using-a-script"></a>スクリプトを使って Microsoft Monitoring Agent のプロキシ設定を構成するには
+次の例をコピーして、使用する環境にあった情報を使って更新します。PS1 ファイル名の拡張子で保存して、OMS サービスに直接接続する各コンピューターでスクリプトを実行します。
+
+    param($ProxyDomainName="http://proxy.contoso.com:80", $cred=(Get-Credential))
+
+    # First we get the Health Service configuration object.  We need to determine if we
+    #have the right update rollup with the API we need.  If not, no need to run the rest of the script.
+    $healthServiceSettings = New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg'
+
+    $proxyMethod = $healthServiceSettings | Get-Member -Name 'SetProxyInfo'
+
+    if (!$proxyMethod)
+    {
+         Write-Output 'Health Service proxy API not present, will not update settings.'
+         return
+    }
+
+    Write-Output "Clearing proxy settings."
+    $healthServiceSettings.SetProxyInfo('', '', '')
+
+    $ProxyUserName = $cred.username
+
+    Write-Output "Setting proxy to $ProxyDomainName with proxy username $ProxyUserName."
+    $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetNetworkCredential().password)
+
+
+
 ## <a name="install-the-agent-using-the-command-line"></a>コマンド ラインを使用してエージェントをインストールする
 - コマンド ラインを使用してエージェントをインストールする場合は、次の例を変更してから使用してください。 この例では、完全なサイレント インストールが実行されます。
 
     >[!NOTE]
     エージェントをアップグレードするには、Log Analytics スクリプト API を使用する必要があります。 次のセクションを参照してエージェントをアップグレードしてください。
 
-    ```
+    ```dos
     MMASetup-AMD64.exe /Q:A /R:N /C:"setup.exe /qn ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_ID=<your workspace id> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1"
     ```
 
-エージェントは、`/c` コマンドを使用して、IExpress を自己解凍ツールとして使用します。 [IExpress のコマンドライン スイッチに関するページ](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages)でコマンド ライン スイッチを調べて、ニーズに合わせてこの例を更新できます。
+エージェントは、`/c` コマンドを使用して、IExpress を自己解凍ツールとして使用します。 [IExpress のコマンドライン スイッチ](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages)に関するページでコマンド ライン スイッチを調べて、ニーズに合わせてこの例を更新できます。
 
-## <a name="upgrade-the-agent-and-add-a-workspace-using-a-script"></a>スクリプトによるエージェントのアップグレードとワークスペースの追加
-エージェントのアップグレードとワークスペースの追加は、次の例のように PowerShell コマンドから Log Analytics スクリプト API を使用して実行できます。
+|MMA 固有のオプション                   |メモ         |
+|---------------------------------------|--------------|
+|ADD_OPINSIGHTS_WORKSPACE               | 1 = ワークスペースに報告するようにエージェントを構成します                |
+|OPINSIGHTS_WORKSPACE_ID                | 追加するワークスペースのワークスペース ID (guid)                    |
+|OPINSIGHTS_WORKSPACE_KEY               | ワークスペースで最初に認証するために使用するワークスペース キー |
+|OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE  | ワークスペースが配置されるクラウド環境を指定します <br> 0 = Azure 商用クラウド (既定値) <br> 1 = Azure Government |
 
-```
+>[!NOTE]
+`OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE` パラメーターを使用したときに `Command line option syntax error.` が発生した場合は、次の回避策を使用できます。
+```dos
+MMASetup-AMD64.exe /C /T:.\MMAExtract
+cd .\MMAExtract
+setup.exe /qn ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=1 OPINSIGHTS_WORKSPACE_ID=<your workspace id> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
+
+## Add a workspace using a script
+Add a workspace using the Log Analytics agent scripting API with the following example:
+
+```PowerShell
 $mma = New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg'
 $mma.AddCloudWorkspace($workspaceId, $workspaceKey)
+$mma.ReloadConfiguration()
+```
+
+Azure for US Government でワークスペースを追加するには、次のサンプル スクリプトを使用します。
+```PowerShell
+$mma = New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg'
+$mma.AddCloudWorkspace($workspaceId, $workspaceKey, 1)
 $mma.ReloadConfiguration()
 ```
 
@@ -116,7 +211,7 @@ $mma.ReloadConfiguration()
 4.    Azure Automation の DSC を使用してエージェントをインストールする場合は、次の例を変更してから使用してください。 Azure Automation インターフェイスまたはコマンドレットを使用して、Azure Automation に MMAgent.ps1 をインポートします。
 5.    構成にノードを割り当てます。 15 分以内に、ノードはその構成を確認し、MMA がノードにプッシュされます。
 
-```
+```PowerShell
 Configuration MMAgent
 {
     $OIPackageLocalPath = "C:\MMASetup-AMD64.exe"
@@ -157,7 +252,7 @@ Configuration MMAgent
 
 MMAgent.ps1 スクリプトの `ProductId value` は、各エージェントのバージョンに固有です。 各エージェントの更新バージョンが発行されると、ProductId 値が変更されます。 そのため、ProductId が今後変更された場合でも、単純なスクリプトを使用してエージェントのバージョンを確認できます。 テスト サーバーに最新バージョンをインストールした後、次のスクリプトを使用してインストールされた ProductId 値を取得できます。 最新の ProductId 値を使用して、MMAgent.ps1 スクリプトの値を更新できます。
 
-```
+```PowerShell
 $InstalledApplications  = Get-ChildItem hklm:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
 
 
@@ -215,19 +310,8 @@ IT インフラストラクチャ内で Operations Manager を使用する場合
 8.    **[エージェント アクション アカウント]**で、ローカル システム アカウントまたはローカル ドメイン アカウントのいずれかを選択します。
 9.    **[OK]** をクリックして **[管理グループを追加する]** ダイアログ ボックスを閉じ、さらに **[OK]** をクリックして **[Microsoft Monitoring Agent のプロパティ]** ダイアログ ボックスを閉じます。
 
-## <a name="optionally-configure-agents-to-use-the-oms-gateway"></a>必要に応じて、OMS ゲートウェイを使用するようにエージェントを構成します。
-
-インターネットに接続されていないサーバーまたはクライアントがある場合は、OMS ゲートウェイを使用することで、該当するサーバーまたはクライアントから OMS にデータを送信することができます。  ゲートウェイを使用した場合、エージェントからのデータはすべて、インターネットにアクセスできる単一のサーバーを介して送信されます。 ゲートウェイは、エージェントから OMS にデータを直接転送し、転送するデータについては分析を行いません。
-
-セットアップや構成を含むゲートウェイの詳細については、「[OMS ゲートウェイ](log-analytics-oms-gateway.md)」を参照してください。
-
-プロキシ サーバー (この場合は、OMS ゲートウェイ) を使用するようにエージェントを構成する方法については、「[Log Analytics のプロキシ設定とファイアウォール設定の構成](log-analytics-proxy-firewall.md)」を参照してください。
-
-## <a name="optionally-configure-proxy-and-firewall-settings"></a>必要に応じてプロキシとファイアウォール設定を構成する
-インターネットへのアクセスを制限しているプロキシ サーバーまたはファイアウォールが環境内に存在する場合、エージェントが OMS サービスと通信できるようにするには、「 [Log Analytics のプロキシ設定とファイアウォール設定の構成](log-analytics-proxy-firewall.md) 」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 - [ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md) 」を参照してください。
-- [Configure proxy and firewall settings in Log Analytics (Log Analytics のプロキシとファイアウォールの設定を構成する) (Log Analytics のプロキシとファイアウォールの設定を構成する)](log-analytics-proxy-firewall.md) 」を参照してください。
 

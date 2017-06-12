@@ -7,7 +7,7 @@ author: douglaslMS
 manager: jhubbard
 editor: 
 tags: 
-ms.custom: 
+ms.custom: reference
 ms.assetid: 
 ms.service: sql-database
 ms.devlang: na
@@ -16,9 +16,10 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 03/20/2017
 ms.author: douglasl
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
 ms.openlocfilehash: 53ae23dba61cf835c6a4826b528772b1cd2e1622
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/29/2017
 
 

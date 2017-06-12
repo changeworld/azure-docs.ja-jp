@@ -8,16 +8,17 @@ manager: cshepard
 editor: 
 ms.assetid: ac463d1c-aec8-443d-b66e-fa5eadcccfa8
 ms.service: sql-database
-ms.custom: troubleshoot
+ms.custom: monitor & tune
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/03/2017
 ms.author: daleche
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
 ms.openlocfilehash: 914084ff790ceb2e11852c5dae757b935f813062
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/15/2017
 
 

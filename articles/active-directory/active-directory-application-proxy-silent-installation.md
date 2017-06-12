@@ -12,16 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 05/03/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 081e45e0256134d692a2da7333ddbaafc7366eaa
-ms.openlocfilehash: cf00d47efc613f7bdc152c1b5f0d0830fb44a785
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: f4d72d4d11ee64e3431879f6ad1b5d8d091a0c87
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/15/2017
 
 
 ---
-# <a name="how-to-silently-install-the-azure-ad-application-proxy-connector"></a>Azure AD アプリケーション プロキシ コネクタをサイレント インストールする方法
-複数の Windows サーバーまたはユーザー インターフェイスが有効になっていない Windows サーバーにインストール スクリプトを送信できます。 このトピックでは、無人インストールを有効にし、Azure AD アプリケーション プロキシ コネクタをインストールして登録する Windows PowerShell スクリプトを作成する方法について説明します。
+# <a name="silently-install-the-azure-ad-application-proxy-connector"></a>Azure AD アプリケーション プロキシ コネクタのサイレント インストール
+複数の Windows サーバーまたはユーザー インターフェイスが有効になっていない Windows サーバーにインストール スクリプトを送信できます。 このトピックでは、Azure AD アプリケーション プロキシ コネクタの無人インストールおよび登録を有効にする Windows PowerShell スクリプトの作成方法について説明します。
 
 この機能は次の場合に便利です。
 
@@ -30,10 +32,9 @@ ms.openlocfilehash: cf00d47efc613f7bdc152c1b5f0d0830fb44a785
 * コネクタのインストールと登録を別の手順の一部として統合する。
 * コネクタのビットを含むが未登録の標準的なサーバー イメージを作成する。
 
-## <a name="enabling-access"></a>アクセスの実現
-アプリケーション プロキシは、社内ネットワークに "コネクタ" と呼ばれる軽量の Windows Server サービスをインストールすることによって機能します。 アプリケーション プロキシ コネクタを機能させるには、グローバル管理者のアカウントとパスワードを使用して、Azure AD ディレクトリにコネクタを登録する必要があります。 通常、この情報は、コネクタのインストール時にポップアップ ダイアログ ボックスに入力します。 または、Windows PowerShell を使用して資格情報オブジェクトを作成することで登録情報を入力することも、独自のトークンを作成して、登録情報の入力に使用することもできます。
+アプリケーション プロキシは、社内ネットワークに "コネクタ" と呼ばれる軽量の Windows Server サービスをインストールすることによって機能します。 アプリケーション プロキシ コネクタを機能させるには、グローバル管理者のアカウントとパスワードを使用して、Azure AD ディレクトリにコネクタを登録する必要があります。 通常、この情報は、コネクタのインストール時にポップアップ ダイアログ ボックスに入力します。 ただし、Windows PowerShell を使用し、資格情報オブジェクトを作成して登録情報を入力することも、独自のトークンを作成し、登録情報を入力するために使用することもできます。
 
-## <a name="step-1--install-the-connector-without-registration"></a>手順 1: 登録せずにコネクタをインストールする
+## <a name="install-the-connector"></a>コネクタをインストールする
 次のように、コネクタを登録せずにコネクタ MSI をインストールします。
 
 1. コマンド プロンプトを開きます。
@@ -41,20 +42,20 @@ ms.openlocfilehash: cf00d47efc613f7bdc152c1b5f0d0830fb44a785
    
         AADApplicationProxyConnectorInstaller.exe REGISTERCONNECTOR="false" /q
 
-## <a name="step-2-register-the-connector-with-azure-active-directory"></a>手順 2: コネクタを Azure Active Directory に登録する
-次の方法のいずれかを使用してこれを行うこともできます。
+## <a name="register-the-connector-with-azure-ad"></a>コネクタを Azure AD に登録する
+コネクタを登録するために使用できる方法は 2 つあります。
 
 * Windows PowerShell 資格情報オブジェクトを使用してコネクタを登録する
 * オフラインで作成したトークンを使用してコネクタを登録する
 
 ### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>Windows PowerShell 資格情報オブジェクトを使用してコネクタを登録する
-1. 次のスクリプトを実行して、Windows PowerShell 資格情報オブジェクトを作成します。\<username\> と \<password\> をディレクトリのユーザー名とパスワードに置き換えます。
+1. 次のコマンドを実行して Windows PowerShell 資格情報オブジェクトを作成します。 *\<username\>* と *\<password\>* は、ディレクトリのユーザー名とパスワードに置き換えてください。
    
         $User = "<username>"
         $PlainPassword = '<password>'
         $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
         $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
-2. **C:\Program Files\Microsoft AAD App Proxy Connector** に移動し、作成済みの PowerShell 資格情報オブジェクトを使用してスクリプトを実行します。ここで、$cred は作成済みの PowerShell 資格情報オブジェクトの名前です。
+2. **C:\Program Files\Microsoft AAD App Proxy Connector** に移動し、作成済みの PowerShell 資格情報オブジェクトを使用してスクリプトを実行します。 *$cred* は、作成した PowerShell 資格情報オブジェクトの名前に置き換えてください。
    
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred
 
@@ -128,10 +129,5 @@ ms.openlocfilehash: cf00d47efc613f7bdc152c1b5f0d0830fb44a785
 * [シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)
 * [アプリケーション プロキシで発生した問題のトラブルシューティングを行う](active-directory-application-proxy-troubleshoot.md)
 
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

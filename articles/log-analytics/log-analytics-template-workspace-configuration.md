@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: json
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 06/01/2017
 ms.author: richrund
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
 ms.openlocfilehash: f392b3c0ab6b4d2e133d59766732188ce97c2f3e
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/03/2017
 
 
@@ -131,7 +132,7 @@ ms.lasthandoff: 03/03/2017
         "sku": {
           "Name": "[parameters('serviceTier')]"
         },
-    "retentionInDays": "[parameters('dataRetention')]"
+    "retention": "[parameters('dataRetention')]"
       },
       "resources": [
         {

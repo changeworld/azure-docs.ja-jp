@@ -15,9 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: nepeters
-translationtype: Human Translation
+ms.custom: mvc
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
 ms.openlocfilehash: 35ddd5c90dfba7e2e368a5f69e33616998581ff7
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/31/2017
 
 

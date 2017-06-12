@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 4/18/2017
+ms.date: 5/17/2017
 ms.author: raiye
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: d471f5826cc05fb52ff4c24184628235477c075d
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 16a773e0c406f257925a9af01155ed157ffaf014
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -29,16 +30,21 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 > 
 > 
 
-<!-- -->
 
-> [!TIP]
-> [ゲスト OS 更新 RSS フィード][rss]をサブスクライブして、ゲスト OS のすべての変更に関する通知をタイムリーに受信してください。
+> [!NOTE]
+> RSS フィードは最近使用されなくなりました。 近日公開予定の新しいフィードに関する更新をお待ちください。
 > 
 > 
-
+ 
 ゲスト OS が不明か、ゲスト OS リリースのしくみが不明な場合は、 [こちら](#how-it-works)のセクションをお読みください。
 
 ## <a name="news-updates"></a>最新情報
+###### <a name="may-17-2017"></a>**2017 年 5 月 17 日**
+セキュリティ バグがあるため、ポータルからの[解決策]がない 2016 年 12 月と 2017 年 1 月にリリースされた次の OS は無効になっています。WA-GUEST-OS-5.4_201612-01、WA-GUEST-OS-4.39_201612-01、WA-GUEST-OS-3.46_201612-01、WA-GUEST-OS-2.59_201701-01
+
+###### <a name="may-12-2017"></a>**2017 年 5 月 12 日**
+5 月のゲスト OS のロールアウトは、5 月 12 日に開始され、6 月 13 日にリリースされる予定です。
+
 ###### <a name="april-18-2017"></a>**2017 年 4 月 18 日**
 4 月のゲスト OS ロールアウトは、4 月 18 日に開始し、5 月 9 日にリリースされる予定です。
 
@@ -72,9 +78,10 @@ Windows Server 2016 は、2016 年 11 月 1 日に .NET 4.6 のサポート付�
 
 | 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-5.6_201704-01 |2017 年 5 月 9 日 |Post 5.8 |TBD | 
 | WA-GUEST-OS-5.5_201703-01 |2017 年 4 月 10 日 |Post 5.7 |TBD | 
-| WA-GUEST-OS-5.4_201612-01 |2017 年 1 月 10 日 |Post 5.6 |TBD | 
-| WA-GUEST-OS-5.3_201611-01 |2016 年 12 月 14 日 |Post 5.5 |TBD |
+|~~WA-GUEST-OS-5.4_201612-01~~ |2017 年 1 月 10 日 |Post 5.6 |TBD | 
+|~~WA-GUEST-OS-5.3_201611-01~~ |2016 年 12 月 14 日 |2017 年 5 月 9 日 |TBD |
 |~~WA-GUEST-OS-5.2_201610-02~~ |2016 年 11 月 1 日 |2017 年 4 月 10 日 |TBD |
 
 ## <a name="family-4-releases"></a>ファミリ 4 のリリース
@@ -89,9 +96,10 @@ Windows Server 2016 は、2016 年 11 月 1 日に .NET 4.6 のサポート付�
 
 | 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-4.41_201704-01 |2017 年 5 月 9 日 |Post 4.43 |TBD |
 | WA-GUEST-OS-4.40_201703-01 |2017 年 4 月 10 日 |Post 4.42 |TBD |
-| WA-GUEST-OS-4.39_201612-01 |2017 年 1 月 10 日 |Post 4.41 |TBD |
-| WA-GUEST-OS-4.38_201611-01 |2016 年 12 月 14 日 |Post 4.40 |TBD |
+|~~WA-GUEST-OS-4.39_201612-01~~ |2017 年 1 月 10 日 |Post 4.41 |TBD |
+|~~WA-GUEST-OS-4.38_201611-01~~ |2016 年 12 月 14 日 |2017 年 5 月 9 日 |TBD |
 |~~WA-GUEST-OS-4.37_201610-02~~ |2016 年 11 月 16 日 |2017 年 4 月 10 日 |TBD |
 |~~WA-GUEST-OS-4.36_201609-01~~ |2016 年 10 月 13 日 |2017 年 1 月 14 日 |TBD |
 |~~WA-GUEST-OS-4.35_201608-01~~ |2016 年 9 月 13 日 |2016 年 12 月 16 日 |TBD |
@@ -115,10 +123,11 @@ Windows Server 2016 は、2016 年 11 月 1 日に .NET 4.6 のサポート付�
 
 | 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-3.48_201704-01 |2017 年 5 月 9 日 |Post 3.50 |TBD |
 | WA-GUEST-OS-3.47_201703-01 |2017 年 4 月 10 日 |Post 3.49 |TBD |
-| WA-GUEST-OS-3.46_201612-01 |2017 年 1 月 10 日 |Post 3.48 |TBD |
-| WA-GUEST-OS-3.45_201611-01 |2016 年 12 月 14 日 |Post 3.47 |TBD |
-| WA-GUEST-OS-3.44_201610-02 |2016 年 11 月 16 日 |2017 年 5 月 1 日 |TBD |
+| ~~WA-GUEST-OS-3.46_201612-01~~ |2017 年 1 月 10 日 |Post 3.48 |TBD |
+| ~~WA-GUEST-OS-3.45_201611-01~~ |2016 年 12 月 14 日 |2017 年 5 月 9 日 |TBD |
+| ~~WA-GUEST-OS-3.44_201610-02~~ |2016 年 11 月 16 日 |2017 年 5 月 1 日 |TBD |
 | ~~WA-GUEST-OS-3.43_201609-01~~ |2016 年 10 月 13 日 |2017 年 1 月 14 日 |TBD |
 | ~~WA-GUEST-OS-3.42_201608-01~~ |2016 年 9 月 13 日 |2016 年 12 月 16 日 |TBD |
 | ~~WA-GUEST-OS-3.41_201607-01~~ |2016 年 8 月 8 日 |2016 年 11 月 13 日 |TBD |
@@ -141,9 +150,10 @@ Windows Server 2016 は、2016 年 11 月 1 日に .NET 4.6 のサポート付�
 
 | 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-2.61_201704-01 |2017 年 5 月 9 日 |Post 2.63 |TBD |
 | WA-GUEST-OS-2.60_201703-01 |2017 年 4 月 10 日 |Post 2.62 |TBD |
-| WA-GUEST-OS-2.59_201701-01 |2017 年 1 月 10 日 |Post 2.61 |TBD |
-| WA-GUEST-OS-2.58_201612-01 |2017 年 1 月 10 日 |Post 2.60 |TBD |
+|~~WA-GUEST-OS-2.59_201701-01~~ |2017 年 1 月 10 日 |Post 2.61 |TBD |
+|~~WA-GUEST-OS-2.58_201612-01~~ |2017 年 1 月 10 日 |2017 年 5 月 9 日|TBD |
 |~~WA-GUEST-OS-2.57_201611-01~~ |2016 年 12 月 14 日 |2017 年 4 月 10 日 |TBD |
 |~~WA-GUEST-OS-2.56_201610-02~~ |2016 年 11 月 16 日 |2017 年 2 月 10 日 |TBD |
 |~~WA-GUEST-OS-2.55_201609-01~~ |2016 年 10 月 13 日 |2017 年 1 月 14 日 |TBD |
@@ -200,7 +210,7 @@ Windows Server 2016 は、2016 年 11 月 1 日に .NET 4.6 のサポート付�
 ## <a name="guest-os-system-update-process"></a>ゲスト OS システムの更新プロセス
 このページには、今後予定されているゲスト OS のリリースに関する情報が含まれます。 "自動" 更新に設定している場合はクラウド サービスのロールが再起動されるため、リリースのタイミングを把握する必要があるとお客様から指摘を受けています。 ゲスト OS のリリースは、通常、毎月第 2 火曜日に発生する MSRC 更新プログラムのリリースから少なくとも 5 日以内に発生します。 新しいリリースには、ゲスト OS ファミリごとに関連するすべての MSRC 修正プログラムが含まれます。 
 
-Microsoft Azure では、常に更新プログラムがリリースされています。 ゲスト OS は、パイプラインにおいて唯一のこのような更新です。 リリースは、ここに記載できないほどの多く要因の影響を受ける可能性があります。 さらに、Azure は、実際には数十万台のコンピューターで実行されています。 つまり、ロールが再起動される正確な日時を指定することはできません。 [ゲスト OS の更新 RSS フィード][rss]は最新の情報で更新されていますが、その時刻はおおよその時間帯であると考えてください。 これは問題視されているため、再起動の制限や時間の指定をできるように取り組んでいます。 
+Microsoft Azure では、常に更新プログラムがリリースされています。 ゲスト OS は、パイプラインにおいて唯一のこのような更新です。 リリースは、ここに記載できないほどの多く要因の影響を受ける可能性があります。 さらに、Azure は、実際には数十万台のコンピューターで実行されています。 つまり、ロールが再起動される正確な日時を指定することはできません。 これは問題視されているため、再起動の制限や時間の指定をできるように取り組んでいます。 
 
 ゲスト OS の新しいリリースが公開されると、Azure 全体で完全に反映されるまでに時間がかかります。 サービスが新しいゲスト OS に更新されると、更新ドメインに従って再起動されます。 "自動" 更新プログラムを使用するように設定されているサービスで、まずリリースが取得されます。 更新後、Azure クラシック ポータルでは、ご使用のサービスの新しいゲスト OS バージョンの一覧が表示されます。 この期間に再リリースが発生する場合があります。 一部のバージョンは長期間にわたってデプロイされることがあります。また、正式なリリース日以降何週間も自動アップグレードの再起動が行われないこともあります。 ゲスト OS が使用可能になると、ポータルや構成ファイルから明示的にそのバージョンを選択できます。 
 
@@ -213,7 +223,6 @@ Microsoft Azure では、常に更新プログラムがリリースされてい�
 
 [Install .NET on a Cloud Service Role]: https://azure.microsoft.com/en-us/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
 [Azure Guest OS Update Settings]: cloud-services-how-to-configure.md
-[rss]: http://sxp.microsoft.com/feeds/3.0/msdntn/WindowsAzureOSUpdates
 [ssl3 announcement]: http://azure.microsoft.com/blog/2014/12/09/azure-security-ssl-3-0-update/
 [Microsoft Security Advisory 3009008]: https://technet.microsoft.com/library/security/3009008.aspx
 [ssl3-fixit]: http://go.microsoft.com/?linkid=9863266
@@ -230,5 +239,6 @@ Microsoft Azure では、常に更新プログラムがリリースされてい�
 [patches]: cloud-services-guestos-msrc-releases.md
 [retirepolicy]: cloud-services-guestos-retirement-policy.md
 [fam1retire]: cloud-services-guestos-family1-retirement.md
+[解決策]: https://technet.microsoft.com/en-us/library/security/ms17-010.aspx
 
 

@@ -1,11 +1,27 @@
 ---
-
-ROBOTS: NOINDEX, NOFOLLOW
+title: "(非推奨) 辞書ベースの感情分析 - Azure | Microsoft Docs"
+description: "(非推奨) 辞書ベースのセンチメント分析"
+services: machine-learning
+documentationcenter: 
+author: pengxia
+manager: jhubbard
+editor: cgronlun
+ms.assetid: 912f41af-966c-4d79-a413-6f9fc02823df
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 01/06/2017
+ms.author: pengxia
+ROBOTS: NOINDEX
 redirect_url: https://gallery.cortanaintelligence.com/
-translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 9c7b8e4378cbc19255e60aa177207afe3d552087
-ms.lasthandoff: 05/03/2017
+redirect_document_id: TRUE
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
+ms.openlocfilehash: 02a6005c47734419903f324f6fb60440f9d62664
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/11/2017
 
 
 ---
@@ -14,17 +30,17 @@ ms.lasthandoff: 05/03/2017
 > [!NOTE]
 > Microsoft DataMarket は間もなく提供終了となる予定です。この API は推奨されていません。 
 > 
-> [Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com)では、便利なサンプル実験や API が多数提供されています。 ギャラリーについて詳しくは、「 [Cortana Intelligence ギャラリーでリソースを共有および発見する](machine-learning-gallery-how-to-use-contribute-publish.md)」をご覧ください。
+> [Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com)では、便利なサンプル実験や API が提供されています。 ギャラリーについて詳しくは、「 [Cortana Intelligence ギャラリーでリソースを共有および発見する](machine-learning-gallery-how-to-use-contribute-publish.md)」をご覧ください。
 
 Facebook の投稿記事、ツイート、レビューなど、オンライン ソーシャル ネットワーク上のブランドやトピックに対するユーザーの意見や態度はどのように測定できるでしょうか。 センチメント分析は、このような質問を分析するための方法を提供します。
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-センチメント分析には、一般的な 2 つの方法があります。 1 つは、教師あり学習アルゴリズムを使用します。もう 1 つは教師なし学習として扱うことができます。 教師あり学習アルゴリズムは、一般に大規模な注釈付きコーパスの分類モデルを構築します。 その精度は主として注釈の品質に依存し、通常、トレーニング プロセスには長い時間がかかります。 その上、アルゴリズムを別のドメインに適用すると、通常よい結果は得られません。 教師あり学習に対して、辞書ベースの教師なし学習はセンチメント辞書を使用します。これには、大規模なデータ コーパスやトレーニングを格納する必要がないため、全体の処理がはるかに高速になります。 
+センチメント分析には、一般的な&2; つの方法があります。 1 つは、教師あり学習アルゴリズムを使用します。もう&1; つは教師なし学習として扱うことができます。 教師あり学習アルゴリズムは、一般に大規模な注釈付きコーパスの分類モデルを構築します。 その精度は主として注釈の品質に依存し、通常、トレーニング プロセスには長い時間がかかります。 その上、アルゴリズムを別のドメインに適用すると、通常よい結果は得られません。 教師あり学習に対して、辞書ベースの教師なし学習はセンチメント辞書を使用します。これには、大規模なデータ コーパスやトレーニングを格納する必要がないため、全体の処理がはるかに高速になります。 
 
-この[サービス](https://datamarket.azure.com/dataset/aml_labs/lexicon_based_sentiment_analysis)は、最もよく使用される主観性辞書の 1 つである MPQA 主観性用語集 (http://mpqa.cs.pitt.edu/lexicons/subj_lexicon/) 上に構築されています。 MPQA には 5,097 個の負の単語と 2,533 個の正の単語があります。 これらの単語はすべて、強い極性または弱い極性の注釈が付けられています。 コーパス全体は、GNU General Public License (GNU 一般公衆ライセンス) で許諾されています。 この Web サービスは、ツイート、Facebook の投稿などの短い文章に適用できます。 
+この[サービス](https://datamarket.azure.com/dataset/aml_labs/lexicon_based_sentiment_analysis)は、最もよく使用される主観性辞書の&1; つである MPQA 主観性用語集 (http://mpqa.cs.pitt.edu/lexicons/subj_lexicon/) 上に構築されています。 MPQA には 5,097 個の負の単語と 2,533 個の正の単語があります。 これらの単語はすべて、強い極性または弱い極性の注釈が付けられています。 コーパス全体は、GNU General Public License (GNU 一般公衆ライセンス) で許諾されています。 この Web サービスは、ツイート、Facebook の投稿などの短い文章に適用できます。 
 
-> この Web サービスは、モバイル アプリ、Web サイト、ローカル コンピューターなどからユーザーが使用できます。 この Web サービスのもう 1 つの目的は、Azure Machine Learning を使用して R コード上に Web サービスを作成する方法の例を示すことです。 数行の R コードを記述し、Azure Machine Learning Studio 内でボタンを何回かクリックするだけで、R コードで実験を作成し、Web サービスとして発行できます。 この Web サービスは Azure Marketplace に発行され、Web サービスの作成者がインフラストラクチャを設定することなく、世界中のユーザーやデバイスで使用されます。
+> この Web サービスは、モバイル アプリ、Web サイト、ローカル コンピューターなどからユーザーが使用できます。 この Web サービスのもう&1; つの目的は、Azure Machine Learning を使用して R コード上に Web サービスを作成する方法の例を示すことです。 数行の R コードを記述し、Azure Machine Learning Studio 内でボタンを何回かクリックするだけで、R コードで実験を作成し、Web サービスとして発行できます。 この Web サービスは Azure Marketplace に発行され、Web サービスの作成者がインフラストラクチャを設定することなく、世界中のユーザーやデバイスで使用されます。
 > 
 > 
 
@@ -74,7 +90,7 @@ Facebook の投稿記事、ツイート、レビューなど、オンライン �
 > 
 > 
 
-Azure Machine Learning 内で、新しい空白の実験が作成されました。 次の図は、辞書ベースのセンチメント分析の実験フローを示します。 "Sent_dict.csv" は MPQA 主観性辞書であり、[R スクリプトの実行][execute-r-script]の入力の 1 つとして設定されています。 他の入力は、Amazon レビューのデータセットからテスト用にサンプリングされたレビューです。選択、列名の変更、分割操作を実行しました。 ハッシュ パッケージを使用して主観性辞書をメモリに格納し、スコアの計算プロセスを高速化します。 テキスト全体は、"tm" パッケージによってトークン化され、センチメント辞書の単語と比較されます。 最後に、テキストの主観的な各単語の重みを追加して、スコアが計算されます。 
+Azure Machine Learning 内で、新しい空白の実験が作成されました。 次の図は、辞書ベースのセンチメント分析の実験フローを示します。 "Sent_dict.csv" は MPQA 主観性辞書であり、[R スクリプトの実行][execute-r-script]の入力の&1; つとして設定されています。 他の入力は、Amazon レビューのデータセットからテスト用にサンプリングされたレビューです。選択、列名の変更、分割操作を実行しました。 ハッシュ パッケージを使用して主観性辞書をメモリに格納し、スコアの計算プロセスを高速化します。 テキスト全体は、"tm" パッケージによってトークン化され、センチメント辞書の単語と比較されます。 最後に、テキストの主観的な各単語の重みを追加して、スコアが計算されます。 
 
 ### <a name="experiment-flow"></a>実験フロー:
 ![実験フロー][2]

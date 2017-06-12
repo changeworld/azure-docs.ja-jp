@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/18/2017
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 58ee6e9cc14b01f10e20dfc3f289bfc6cc386e2a
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: d66489b43e983f313028a846d2b7da1534c86b53
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -147,7 +148,7 @@ Azure で提供される DNS は、Microsoft によって提供されるマル�
 はい。 Resource Manager デプロイメント モデルを使用してデプロイされた VM に接続されているすべてのネットワーク インターフェイス (NIC) は、VNet に接続されている必要があります。 クラシック デプロイメント モデルを使用してデプロイされた VM は、必要に応じて VNet に接続できます。
 
 ### <a name="what-are-the-different-types-of-ip-addresses-i-can-assign-to-vms"></a>VM に割り当てることができる IP アドレスにはどのような種類がありますか。
-* **プライベート:** 各 VM 内の各 NIC に割り当てられます。 アドレスは、静的または動的な割り当て方法を使用して割り当てられます。 プライベート IP アドレスは、VNet のサブネット設定で指定した範囲から割り当てられます。 クラシック デプロイメント モデルを使用してデプロイされたリソースは、VNet に接続されていなくてもプライベート IP アドレスを受け取ります。 動的なプライベート IP アドレスは、リソースが割り当て解除 (VM) または削除 (VM またはクラウド サービス デプロイ スロット) されるまで、リソースに割り当てられたままになります。 静的なプライベート IP アドレスは、リソースが削除されるまで、リソースに割り当てられたままになります。
+* **プライベート:** 各 VM 内の各 NIC に割り当てられます。 アドレスは、静的または動的な方法を使用して割り当てられます。 プライベート IP アドレスは、VNet のサブネット設定で指定した範囲から割り当てられます。 クラシック デプロイメント モデルを使用してデプロイされたリソースは、VNet に接続されていなくてもプライベート IP アドレスが割り当てられます。 動的な方法で割り当てられたプライベート IP アドレスは、リソース (VM またはクラウド サービス デプロイ スロット) が削除されるまで、リソースに割り当てられたままになります。 動的な方法で割り当てられたプライベート IP アドレスは、VM が停止 (割り当て解除) 状態になった後、再起動されたときに変化する場合があります。 静的な方法で割り当てられたプライベート IP アドレスは、リソースが削除されるまで、そのリソースに割り当てられたままになります。 リソースが削除されるまでそのプライベート IP アドレスを固定する必要がある場合は、静的な方法でプライベート IP アドレスを割り当ててください。
 * **パブリック:** 必要に応じて、Azure Resource Manager デプロイメント モデルを使用してデプロイされた VM に接続されている NIC に割り当てられます。 アドレスは、静的または動的な割り当て方法を使用して割り当てることができます。 クラシック デプロイメント モデルを使用してデプロイされたすべての VM および Cloud Services ロール インスタンスは、"*動的な*" パブリック仮想 IP (VIP) アドレスが割り当てられたクラウド サービス内に存在します。 パブリックな "*静的*" IP アドレスは、[予約済み IP アドレス](virtual-networks-reserved-public-ip.md)と呼ばれ、必要に応じて VIP として割り当てることができます。 パブリック IP アドレスは、クラシック デプロイメント モデルを使用してデプロイされた個々の VM または Cloud Services ロール インスタンスに割り当てることができます。 これらのアドレスは、[インスタンス レベルのパブリック IP (ILPIP)](virtual-networks-instance-level-public-ip.md) アドレスと呼ばれ、動的に割り当てることができます。
 
 ### <a name="can-i-reserve-a-private-ip-address-for-a-vm-that-i-will-create-at-a-later-time"></a>後で作成する VM 用にプライベート IP アドレスを予約することはできますか。

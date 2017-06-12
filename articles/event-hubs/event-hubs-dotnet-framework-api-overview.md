@@ -12,15 +12,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2017
-ms.author: jotaub;sethm
-translationtype: Human Translation
-ms.sourcegitcommit: aa7244849f6286e8ef9f9785c133b4c326193c12
-ms.openlocfilehash: 0e59d117bd9a1355b5b58c76cf9b39ec3005b122
-ms.lasthandoff: 02/02/2017
+ms.date: 05/03/2017
+ms.author: sethm
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 41435316adaee5c66de503571184fce8937d38ee
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/04/2017
 
 
 ---
+
 # <a name="event-hubs-net-framework-api-overview"></a>Event Hubs .NET Framework API の概要
 この記事は主要な Event Hubs .NET Framework クライアント API についてまとめてあります。 2 つのカテゴリがあります。管理 API とランタイム API です。 ランタイム API はメッセージの送受信に必要なすべての操作で構成されています。 管理操作では、エンティティを作成、更新、削除することで Event Hubs エンティティの状態を管理できます。
 
@@ -127,7 +129,7 @@ await host.RegisterEventProcessorAsync<SimpleEventProcessor>();
 await host.UnregisterEventProcessorAsync();
 ```
 
-[IEventProcessor](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.ieventprocessor) インターフェイスは次のように定義されています。
+[IEventProcessor](/dotnet/api/microsoft.servicebus.messaging.ieventprocessor) インターフェイスは次のように定義されています。
 
 ```csharp
 public class SimpleEventProcessor : IEventProcessor
@@ -178,5 +180,5 @@ Event Hubs シナリオに関する詳細については、次のリンク先を
 .NET API リファレンスはここにあります。
 
 * [Microsoft.ServiceBus.Messaging](/dotnet/api/microsoft.servicebus.messaging)
-* [Microsoft.Azure.ServiceBus.EventProcessorHost](/dotnet/api/microsoft.azure.servicebus.eventprocessorhost)
+* [Microsoft.Azure.EventHubs.EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)
 

@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/20/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: bbe76873c94aea0db7843af36d8a8d44d7565bbb
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: 9550b0076105b018bd8ede50519ac96bfb773001
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -45,7 +46,7 @@ ms.lasthandoff: 04/22/2017
 
 * ExpressRoute/S2S と共存する接続の作成ではない。
 * 既存の接続のある Resource Manager デプロイメント モデルを使用して作成した仮想ネットワークがある。
-* VNet の仮想ネットワーク ゲートウェイがルートベースである。 PolicyBased の VPN ゲートウェイである場合は、仮想ネットワーク ゲートウェイを削除して、ルートベースとして新しい VPN ゲートウェイを作成する必要があります。
+* VNet の仮想ネットワーク ゲートウェイがルートベースである。 VPN ゲートウェイがポリシーベースの場合は、仮想ネットワーク ゲートウェイを削除して、ルートベースとして新しい VPN ゲートウェイを作成する必要があります。
 * この VNet が接続する VNet のアドレスの範囲のいずれも重複していないこと。
 * 互換性のある VPN デバイスがあり、デバイスを構成できる人員がいる。 「 [VPN デバイスについて](vpn-gateway-about-vpn-devices.md)」を参照してください。 VPN デバイスの構成に詳しくない場合や、オンプレミス ネットワーク構成の IP アドレス範囲を把握していない場合は、詳細な情報を把握している担当者と協力して作業を行ってください。
 * VPN デバイスの外部接続用パブリック IP アドレスがある。 この IP アドレスを NAT の内側に割り当てることはできません。
@@ -94,3 +95,4 @@ ms.lasthandoff: 04/22/2017
 ## <a name="next-steps"></a>次のステップ
 
 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、仮想マシンの [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/virtual-machines) を参照してください。
+

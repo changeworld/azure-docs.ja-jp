@@ -1,14 +1,14 @@
 ---
 title: "Azure Cosmos DB で SQL を使用してクエリを実行する方法 | Microsoft Docs"
 description: "Azure Cosmos DB で SQL を使用して DocumentDB データのクエリを実行する方法を学習する"
-services: cosmosdb
+services: cosmos-db
 documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: 
 tags: 
 ms.assetid: 
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.custom: tutorial-develop
 ms.devlang: na
 ms.topic: article
@@ -17,17 +17,17 @@ ms.workload:
 ms.date: 05/10/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: dd34ff43e78175b0d6a6e38bbd1303070f6549ab
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: a2a562c06c6302b9548e758b4c6754ec13b6001d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/01/2017
 
 
 ---
 
 # <a name="azure-cosmos-db-how-to-query-using-sql"></a>Azure Cosmos DB: SQL を使用してクエリを実行する方法
 
-Azure Cosmos DB [DocumentDB API](../documentdb/documentdb-introduction.md) では SQL を使用したドキュメントのクエリがサポートされます。 この記事には、1 つのサンプル ドキュメントと 2 つのサンプル SQL クエリおよび結果が含まれます。
+Azure Cosmos DB [DocumentDB API](documentdb-introduction.md) では SQL を使用したドキュメントのクエリがサポートされます。 この記事には、1 つのサンプル ドキュメントと 2 つのサンプル SQL クエリおよび結果が含まれます。
 
 この記事に含まれるタスクは次のとおりです。 
 
@@ -68,10 +68,10 @@ Azure Cosmos DB [DocumentDB API](../documentdb/documentdb-introduction.md) で�
 ```
 ## <a name="where-can-i-run-sql-queries"></a>SQL クエリを実行できるところ
 
-クエリを実行するには、Azure Portal のデータ エクスプローラーを使用するか、[REST API および SDK](../documentdb/documentdb-query-collections-query-explorer.md) で行います。既存のサンプル データ セットに対してクエリを実行する [Query Playground](https://www.documentdb.com/sql/demo) を使用することもできます。
+クエリを実行するには、Azure Portal のデータ エクスプローラーを使用するか、[REST API および SDK](documentdb-sdk-dotnet.md) で行います。既存のサンプル データ セットに対してクエリを実行する [Query Playground](https://www.documentdb.com/sql/demo) を使用することもできます。
 
 SQL クエリについて詳しくは、次を参照してください。
-* [SQL クエリと SQL 構文](../documentdb/documentdb-sql-query.md)
+* [SQL クエリと SQL 構文](documentdb-sql-query.md)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -89,23 +89,34 @@ SQL クエリについて詳しくは、次を参照してください。
 
 **結果**
 
-    [{
-        "id": "AndersenFamily",
-        "lastName": "Andersen",
-        "parents": [
-           { "firstName": "Thomas" },
-           { "firstName": "Mary Kay"}
-        ],
-        "children": [
-           {
-               "firstName": "Henriette Thaulow", "gender": "female", "grade": 5,
-               "pets": [{ "givenName": "Fluffy" }]
-           }
-        ],
-        "address": { "state": "WA", "county": "King", "city": "seattle" },
-        "creationDate": 1431620472,
-        "isRegistered": true
-    }]
+```json
+{
+  "id": "WakefieldFamily",
+  "parents": [
+      { "familyName": "Wakefield", "givenName": "Robin" },
+      { "familyName": "Miller", "givenName": "Ben" }
+  ],
+  "children": [
+      {
+        "familyName": "Merriam", 
+        "givenName": "Jesse", 
+        "gender": "female", "grade": 1,
+        "pets": [
+            { "givenName": "Goofy" },
+            { "givenName": "Shadow" }
+        ]
+      },
+      { 
+        "familyName": "Miller", 
+         "givenName": "Lisa", 
+         "gender": "female", 
+         "grade": 8 }
+  ],
+  "address": { "state": "NY", "county": "Manhattan", "city": "NY" },
+  "creationDate": 1431620462,
+  "isRegistered": false
+}
+```
 
 ## <a name="example-query-2"></a>サンプル クエリ 2
 

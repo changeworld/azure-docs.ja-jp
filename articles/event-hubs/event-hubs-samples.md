@@ -3,7 +3,7 @@ title: "Azure Event Hubs アーカイブ | Microsoft Docs"
 description: "Azure Event Hubs サンプル"
 services: event-hubs
 documentationcenter: na
-author: jtaubensee
+author: sethmanheim
 manager: timlt
 editor: 
 ms.assetid: 
@@ -13,11 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2017
-ms.author: jotaub;sethm
-translationtype: Human Translation
+ms.author: sethm
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
 ms.openlocfilehash: 89049688ab60842910f1bab8e56c349029dd17a7
+ms.contentlocale: ja-jp
 ms.lasthandoff: 05/02/2017
+
 
 ---
 

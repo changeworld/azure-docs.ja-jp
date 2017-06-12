@@ -8,16 +8,17 @@ manager: jhubbard
 editor: MightyPen
 ms.assetid: c2bf14a0-905b-47b4-afb6-efe9a61147d5
 ms.service: sql-database
-ms.custom: development
+ms.custom: develop databases
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/22/2016
 ms.author: jodebrui
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
 ms.openlocfilehash: db2d6dbdec80e8c443014c72c80172ad3effb82c
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/10/2017
 
 

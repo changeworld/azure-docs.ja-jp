@@ -15,6 +15,7 @@ ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
 ms.openlocfilehash: 6babf3f8530ec4c5e8ed3e5af6c093b8d0856f77
@@ -28,6 +29,10 @@ ms.lasthandoff: 05/15/2017
 このシナリオでは、リソース グループ、App Service プラン、Web アプリの作成方法について説明します。 その後、App Service プランのスケールを単一インスタンスから複数インスタンスへと拡張します。
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="sample-script"></a>サンプル スクリプト
 

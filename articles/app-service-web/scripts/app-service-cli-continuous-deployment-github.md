@@ -15,6 +15,7 @@ ms.tgt_pltfrm: na
 ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
 ms.openlocfilehash: dfb4c7651f6cfd378f9b1706abcdd732e56d7eb1

@@ -8,16 +8,17 @@ manager: jhubbard
 editor: 
 ms.assetid: 8c851d8e-8fd5-4327-89c1-9178b20ddd69
 ms.service: sql-database
-ms.custom: multiple databases
+ms.custom: scale out apps
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-management
 ms.date: 10/24/2016
 ms.author: ddove
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
 ms.openlocfilehash: 6f51f0585dfc75d28da72d1056ef7173c06b24fd
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/17/2017
 
 

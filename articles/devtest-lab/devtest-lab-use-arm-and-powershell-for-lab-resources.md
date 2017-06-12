@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 8ee0301a48265b91f951c96c3339a3c3e3bdb1cb
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: cea4531175df2cc39790497dc049d27e23ffa0c6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -32,9 +33,9 @@ DevTest ラボが提供する数多くの Azure Resource Manager テンプレー
 あらかじめ定義された [Azure Resource Manager テンプレート](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)と [PowerShell スクリプト](https://github.com/Azure/azure-devtestlab/tree/master/Scripts)が、当社が公開する [Github リポジトリ](https://github.com/Azure/azure-devtestlab)にあります。 これらをそのまま使用するか、ニーズに合わせてカスタマイズして、独自の[プライベート Git リポジトリ](devtest-lab-add-artifact-repo.md)に保管できます。 
 
 ## <a name="step-2-modify-your-azure-resource-manager-template"></a>ステップ 2: Azure Resource Manager テンプレートの変更
-[Azure Resource Manager テンプレートを使用してマルチ VM 環境と PaaS リソースを作成する](devtest-lab-create-environment-from-arm.md)では、Azure Resource Manager テンプレートを DevTest ラボ内で使用して Azure ソリューションのインフラストラクチャと構成を定義し、複数の VM を一貫した状態で繰り返しデプロイする方法を説明しています。
+これまでテンプレートを作成したことがない場合は、「[初めての Azure Resource Manager テンプレートを作成する](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-create-first-template)」の手順に従うことができます。
 
-たとえば、新しい仮想ネットワークを作成して既存のラボすべてに適用したい場合は、Azure Resource Manager テンプレートを使用すると簡単にできます。
+さらに、「[Azure Resource Manager テンプレートを作成するためのベスト プラクティス](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices)」では、信頼性が高く使いやすい Azure Resource Manager テンプレートの作成に役立つ多くのガイドラインと推奨事項を紹介しています。 通常、紹介されているいずれかのアプローチや例のバリエーションを使用し、ニーズに応じてテンプレートを変更します。
 
 ## <a name="step-3-deploy-resources-with-powershell"></a>ステップ 3: PowerShell によりリソースをデプロイする
 テンプレートやスクリプトをカスタマイズした後で、[Resource Manager テンプレートと Azure PowerShell を使用してリソースをデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)するために必要な手順に従ってください。 この記事では、Azure PowerShell と Azure Resource Manager テンプレートを使用してリソースを Azure にデプロイする場合の概要を説明します。

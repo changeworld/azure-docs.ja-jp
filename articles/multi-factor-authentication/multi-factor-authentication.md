@@ -13,11 +13,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 06/03/2017
 ms.author: kgremban
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e028130569a1e55834f68bde87f21f6f7505d41f
 ms.openlocfilehash: 7a47c0278d42d62cc273c6f0671f0613671db4f3
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/23/2017
 
 

@@ -15,28 +15,16 @@ ms.workload: na
 ms.date: 11/17/2016
 ms.author: juanpere
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: ef0e64cc7b52a67c8e9e735cb6aa4a378b9a8557
+ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
+ms.openlocfilehash: def3feb2760c0ec2bb9ff39c6ef8a85bb142a0a7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/19/2017
 
 
 ---
 # <a name="get-started-with-device-management-netnode"></a>デバイス管理の開始 (.NET/Node)
 
 [!INCLUDE [iot-hub-selector-dm-getstarted](../../includes/iot-hub-selector-dm-getstarted.md)]
-## <a name="introduction"></a>はじめに
-バックエンド アプリは、Azure IoT Hub のプリミティブ (デバイス ツインとダイレクト メソッド) を使用して、デバイス上でデバイス管理アクションをリモートで開始して監視できます。  この記事では、バックエンド アプリとデバイスが、IoT Hub を使用したデバイスの再起動をリモートで開始して監視するためにどのように連携するかについて説明し、それらの操作を実行するためのコードを示します。
-
-クラウド ベースのバックエンド アプリから、デバイスのデバイス管理操作をリモートで起動して監視するには、[デバイス ツイン][lnk-devtwin]や[ダイレクト メソッド][lnk-c2dmethod]などの IoT Hub プリミティブを使用します。 このチュートリアルでは、バックエンド アプリケーションとデバイスをどのように連携させると、IoT Hub からデバイスの再起動をリモートで開始して監視できるかについて示します。
-
-ダイレクト メソッドを使用して、クラウド内のバックエンド アプリケーションからデバイス管理操作 (再起動、出荷時の設定に戻す、ファームウェアの更新など) を開始します。 デバイスは次の操作を担当します。
-
-* IoT Hub から送信されたメソッド要求の処理。
-* デバイスでの対応するデバイス固有の操作の開始。
-* 報告されるプロパティを介した IoT Hub への状態更新の提供。
-
-クラウドでバックエンド アプリを使用してデバイス ツインのクエリを実行することで、デバイス管理操作の進行状況を報告できます。
 
 このチュートリアルでは、次の操作方法について説明します。
 
@@ -217,22 +205,7 @@ ms.lasthandoff: 05/10/2017
 
 3. ダイレクト メソッドに対するデバイスの応答がコンソールに表示されます。
 
-## <a name="customize-and-extend-the-device-management-actions"></a>デバイス管理操作のカスタマイズと拡張を行う
-IoT ソリューションでは、定義された一連のデバイス管理パターンを拡張したり、デバイス ツインと cloud-to-device メソッド プリミティブを使用してカスタム パターンを作成したりできます。 デバイス管理操作の他の例には、出荷時の設定への復帰、ファームウェアの更新、ソフトウェアの更新、電源管理、ネットワークと接続の管理、データの暗号化などがあります。
-
-## <a name="device-maintenance-windows"></a>デバイスのメンテナンス期間
-通常、デバイスは、中断やダウンタイムを最小限に抑えることができる時間に操作を実行するように構成します。  デバイスのメンテナンス期間は、デバイスがその構成を更新する必要がある時間を定義する一般的に使用されるパターンです。 バックエンド ソリューションは、デバイス ツインの必要なプロパティを使用して、メンテナンス期間を可能にするデバイスのポリシーを定義してアクティブにすることができます。 デバイスは、メンテナンス期間ポリシーを受信したときに、デバイス ツインの報告されたプロパティを使用してポリシーの状態を報告することができます。 その後、バックエンド アプリケーションは、デバイス ツインのクエリを使用して、デバイスが各ポリシーに対応していることを確認できます。
-
-## <a name="next-steps"></a>次のステップ
-このチュートリアルでは、ダイレクト メソッドを使用して、デバイスのリモート再起動をトリガーしました。 報告されるプロパティを使用してデバイスの最後の再起動時間を報告し、デバイス ツインのクエリを実行してクラウドからデバイスの最後の再起動時間を検出しました。
-
-ファームウェアのリモートでのワイヤレス更新などの IoT Hub による他のデバイス管理パターンを確認するには、次の記事を参照してください。
-
-[チュートリアル: ファームウェアを更新する方法][lnk-fwupdate]
-
-IoT ソリューションの拡張と複数のデバイスでのメソッドの呼び出しをスケジュールする方法については、「[ジョブのスケジュールとブロードキャスト][lnk-tutorial-jobs]」チュートリアルを参照してください。
-
-引き続き IoT Hub の使用方法を確認するには、[IoT Edge の使用][lnk-gateway-SDK]に関する記事を参照してください。
+[!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]
 
 <!-- images and links -->
 [img-output]: media/iot-hub-get-started-with-dm/image6.png
@@ -243,12 +216,9 @@ IoT ソリューションの拡張と複数のデバイスでのメソッドの�
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
 
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[lnk-fwupdate]: iot-hub-node-node-firmware-update.md
 [Azure portal]: https://portal.azure.com/
 [Using resource groups to manage your Azure resources]: ../azure-portal/resource-group-portal.md
 [lnk-dm-github]: https://github.com/Azure/azure-iot-device-management
-[lnk-tutorial-jobs]: iot-hub-node-node-schedule-jobs.md
-[lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
 
 [lnk-devtwin]: iot-hub-devguide-device-twins.md
 [lnk-c2dmethod]: iot-hub-devguide-direct-methods.md

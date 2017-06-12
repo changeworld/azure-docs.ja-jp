@@ -8,18 +8,18 @@ manager: jhubbard
 editor: 
 ms.assetid: 7faca033-24b4-4f64-9301-b4de41e73dfd
 ms.service: sql-database
-ms.custom: quick start connect
+ms.custom: develop apps
 ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 05/07/2017
-ms.author: andrela;sstein;carlrab
+ms.date: 05/23/2017
+ms.author: andrela
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 0dff167c370fcd2df40aa2ac302d0f09990e1d41
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 4faa029062fef6495debd5d787a1d86f4747453b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -27,14 +27,17 @@ ms.lasthandoff: 05/09/2017
 
 このクイック スタートでは、Windows、Mac OS、Ubuntu Linux の各プラットフォームから [C# と ADO.NET](https://msdn.microsoft.com/library/kb9s9ks0.aspx) を使って Azure SQL データベースに接続し、Transact-SQL ステートメントを使ってデータベース内のデータを照会、挿入、更新、削除する方法について説明します。
 
+## <a name="prerequisites"></a>前提条件
+
 このクイック スタートでは、次のクイック スタートで作成されたリソースが出発点として使用されます。
 
 - [DB の作成 - ポータル](sql-database-get-started-portal.md)
 - [DB の作成 - CLI](sql-database-get-started-cli.md)
+- [DB の作成 - PowerShell](sql-database-get-started-powershell.md)
 
 ## <a name="install-net"></a>.NET のインストール
 
-このセクションの手順では、.NET による開発には慣れているが、Azure SQL Database を初めて使用するユーザーを想定しています。 .NET による開発の経験がない場合は、「[Build an app using SQL Server (SQL Server を使用してアプリを構築する)](https://www.microsoft.com/en-us/sql-server/developer-get-started/)」に移動し、**C#** を選択してから、使用しているオペレーティング システムを選択します。
+このセクションの手順では、.NET による開発には慣れているが、Azure SQL Database を初めて使用するユーザーを想定しています。 .NET による開発の経験がない場合は、「[Build an app using SQL Server (SQL Server を使用してアプリを構築する)](https://www.microsoft.com/sql-server/developer-get-started/)」に移動し、**C#** を選択してから、使用しているオペレーティング システムを選択します。
 
 ### <a name="windows-net-framework-and-net-core"></a>**Windows .NET Framework と .NET Core**
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/26/2017
+ms.date: 05/15/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 9b75d0ede3ec1b291936ee0a53778afe10ba91db
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: 9932ac04699f49b7a3ea3dabe4d380fdc4d05ec1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -591,7 +591,7 @@ base64 形式を文字列に変換します。
 
 | パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |あり |string |検索対象の項目を含む値。 |
+| stringToSearch |はい |string |検索対象の項目を含む値。 |
 | stringToFind |あり |string |検索対象の値。 |
 
 ### <a name="examples"></a>例
@@ -694,7 +694,7 @@ base64 形式を文字列に変換します。
 | パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |はい |string |検索対象の項目を含む値。 |
-| stringToFind |はい |string |検索対象の値。 |
+| stringToFind |あり |string |検索対象の値。 |
 
 ### <a name="examples"></a>例
 
@@ -744,7 +744,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列または文字列 |最後の要素または文字を取得する値。 |
 
@@ -790,10 +790,10 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |あり |string |検索対象の項目を含む値。 |
-| stringToFind |はい |string |検索対象の値。 |
+| stringToSearch |はい |string |検索対象の項目を含む値。 |
+| stringToFind |あり |string |検索対象の値。 |
 
 ### <a name="examples"></a>例
 
@@ -843,9 +843,9 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |あり |配列または文字列 |要素の数を取得するために使用する配列、または文字の数を取得するために使用する文字列。 |
+| arg1 |はい |配列または文字列 |要素の数を取得するために使用する配列、または文字の数を取得するために使用する文字列。 |
 
 ### <a name="examples"></a>例
 
@@ -939,21 +939,21 @@ base64 形式を文字列に変換します。
 <a id="replace" />
 
 ## <a name="replace"></a>replace
-`replace(originalString, oldCharacter, newCharacter)`
+`replace(originalString, oldString, newString)`
 
-指定された文字列内で、1 文字を別の文字で置き換えたすべてのインスタンスを含む新しい文字列を返します。
+ある文字列のすべてのインスタンスを別の文字列で置き換えた、新しい文字列を返します。
 
 ### <a name="parameters"></a>parameters
 
 | パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
-| originalString |あり |string |ある文字のすべてのインスタンスが別の文字に置き換えられた値。 |
-| oldCharacter |あり |string |元の文字列から削除する文字。 |
-| newCharacter |はい |string |削除された文字の代わりに追加する文字。 |
+| originalString |あり |string |別の文字列で置き換えられる文字列の全インスタンスを含む値。 |
+| oldString |あり |string |元の文字列から削除する文字列。 |
+| newString |あり |string |削除された文字列の代わりに追加する文字列。 |
 
 ### <a name="examples"></a>例
 
-次の例では、ユーザーが指定した文字列からすべてのダッシュ (-) を削除する方法を示します。
+次の例では、ユーザーが指定した文字列からすべてのダッシュを削除し、その文字列の部分を別の文字列に置き換える方法を示します。
 
 ```json
 {
@@ -967,9 +967,13 @@ base64 形式を文字列に変換します。
     },
     "resources": [],
     "outputs": {
-        "stringOutput": {
+        "firstOutput": {
             "type": "string",
             "value": "[replace(parameters('testString'),'-', '')]"
+        },
+        "secodeOutput": {
+            "type": "string",
+            "value": "[replace(parameters('testString'),'1234', 'xxxx')]"
         }
     }
 }
@@ -990,7 +994,7 @@ base64 形式を文字列に変換します。
 
 | パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
-| originalValue |あり |配列または文字列 |スキップ対象の配列または文字列。 |
+| originalValue |はい |配列または文字列 |スキップ対象の配列または文字列。 |
 | numberToSkip |はい |int |スキップする要素または文字の数。 この値が 0 以下である場合は、値内のすべての要素または文字が返されます。 配列または文字列の長さを超える場合は、空の配列または文字列が返されます。 |
 
 ### <a name="examples"></a>例

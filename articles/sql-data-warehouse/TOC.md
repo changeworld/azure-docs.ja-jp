@@ -11,7 +11,7 @@
 ## [ベスト プラクティス](sql-data-warehouse-best-practices.md)
 ## [管理](sql-data-warehouse-overview-manage.md)
 ## [サポートを受ける](sql-data-warehouse-get-started-create-support-ticket.md)
-## [トラブルシューティング](sql-data-warehouse-troubleshoot.md)
+
 
 # 方法
 
@@ -114,7 +114,7 @@
 
 ### [概要](sql-data-warehouse-overview-manage-user-queries.md)
 ### [列ストア圧縮](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
-### [クエリ](sql-data-warehouse-manage-monitor.md)
+### [監視](sql-data-warehouse-manage-monitor.md)
 ### [ワークロード](sql-data-warehouse-develop-concurrency.md)
 
 ## セキュリティ
@@ -126,6 +126,9 @@
 ### [暗号化](sql-data-warehouse-encryption-tde.md)
 ### [T-SQL を使用した暗号化](sql-data-warehouse-encryption-tde-tsql.md)
 ### [脅威の検出](sql-data-warehouse-security-threat-detection.md)
+
+## トラブルシューティング
+### [トラブルシューティング](sql-data-warehouse-troubleshoot.md)
 
 # リファレンス
 

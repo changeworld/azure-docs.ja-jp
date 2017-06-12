@@ -12,12 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/29/2016
+ms.date: 05/01/2017
 ms.author: skwan;bryanla
-translationtype: Human Translation
-ms.sourcegitcommit: 9710381787cc1fe570443467b6980616879c503f
-ms.openlocfilehash: ab5576d09e5a51cd7ae602d57693558715e12d66
-ms.lasthandoff: 02/27/2017
+ms.custom: aaddev
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: f0dcb0a9a7c2c9fd362f0ed242471f6c4e495234
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -42,57 +44,48 @@ v2.0 エンドポイントを使用する場合は標準に準拠した任意の
 
 v2.0 エンドポイントで動作するライブラリの一覧については、この記事の次のセクションを参照してください。
 
-## <a name="microsoft-supported-client-libraries"></a>Microsoft がサポートするクライアント ライブラリ
-| プラットフォーム | ライブラリ名 | ダウンロード | ソース コード | サンプル |
-|:---:|:---:|:---:|:---:|:---:|
-| .NET、Windows ストア、Xamarin |.NET 用 Microsoft 認証ライブラリ (MSAL) |[Microsoft.Identity.Client (NuGet)][ClientLib-NET-Lib] |[MSAL for .NET (GitHub)][ClientLib-NET-Repo] |[Windows デスクトップのネイティブ クライアントのサンプル][ClientLib-NET-Sample] |
-| Node.js |Microsoft Azure Active Directory Passport.js プラグイン |[Passport-Azure-AD (npm)][ClientLib-Node-Lib] |[Passport-Azure-AD (GitHub)][ClientLib-Node-Repo] |近日対応予定 |
 
-<!--- COMMENTING OUT UNTIL THEY ARE READY
-| iOS, Mac | Microsoft Authentication Library (MSAL) for ObjC | In development | In development | In development |
-| Android | Microsoft Authentication Library (MSAL) for Android | In development | In development | In development |
-| JavaScript | Microsoft Authentication Library (MSAL) for JavaScript | In development | In development | In development |
- -->
+## <a name="microsoft-supported-client-libraries"></a>Microsoft がサポートするクライアント ライブラリ
+
+> [!IMPORTANT]
+> MSAL プレビュー ライブラリは、運用環境での使用に適しています。 これらのライブラリには、現在の運用ライブラリ (ADAL) と同様の運用レベル サポートが提供されています。 プレビュー中に、それらのライブラリの MSAL API、内部キャッシュ フォーマット、およびその他のメカニズムが予告なく変更されることがあり、それらをバグ フィックスや機能改善とともに取り込むことが必要になります。 これは、アプリケーションに影響を与える場合があります。 たとえば、キャッシュ フォーマットの変更は、再度サインインが必要になるなどユーザーに影響を与える場合があります。 API の変更では、コードの更新が必要な場合があります。 リリースの一般提供が開始されると、プレビュー バージョンのライブラリを使用して作成されたアプリケーションが機能しなくなるため、6 か月以内に一般提供バージョンに更新していただく必要があります。
+
+| プラットフォーム | ライブラリ | ダウンロード | ソース コード | サンプル | リファレンス
+| --- | --- | --- | --- | --- | --- |
+| .NET クライアント、Windows ストア、UWP、Xamarin iOS、Android | MSAL .NET (プレビュー) |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Client) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [デスクトップ アプリ](guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) |  |
+| JavaScript | MSAL.js (プレビュー) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js) | [シングル ページ アプリケーション](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) |  |
+| iOS、macOS | MSAL (プレビュー) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) | [iOS アプリ](https://github.com/Azure-Samples/active-directory-msal-ios-swift) |  |
+| Android | MSAL (プレビュー) | [中央リポジトリ](https://repo1.maven.org/maven2/com/microsoft/identity/client/msal/) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-android) | [Android アプリ](guidedsetups/active-directory-mobileanddesktopapp-android-intro.md) | [JavaDocs](http://javadoc.io/doc/com.microsoft.identity.client/msal) |
 
 ## <a name="microsoft-supported-server-middleware-libraries"></a>Microsoft がサポートするサーバー ミドルウェア ライブラリ
-| プラットフォーム | ライブラリ名 | ダウンロード | ソース コード | サンプル |
-|:---:|:---:|:---:|:---:|:---:|
-| .NET 4.x |OWIN の ASP.NET 用 OpenID Connect ミドルウェア |[Microsoft.Owin.Security.OpenIdConnect (NuGet)][ServerLib-Net4-Owin-Oidc-Lib] |[Katana プロジェクト (CodePlex)][ServerLib-Net4-Owin-Oidc-Repo] |[Web アプリのサンプル][ServerLib-Net4-Owin-Oidc-Sample] |
-| .NET 4.x |OWIN の ASP.NET 用 OAuth Bearer ミドルウェア |[Microsoft.Owin.Security.OAuth (NuGet)][ServerLib-Net4-Owin-Oauth-Lib] |[Katana プロジェクト (CodePlex)][ServerLib-Net4-Owin-Oauth-Repo] |[Web API のサンプル][ServerLib-Net4-Owin-Oauth-Sample] |
-| .NET Core |OWIN の .NET Core 用 OpenID Connect ミドルウェア |[Microsoft.AspNetCore.Authentication.OpenIdConnect (NuGet)][ServerLib-NetCore-Owin-Oidc-Lib] |[ASP.NET のセキュリティ (GitHub)][ServerLib-NetCore-Owin-Oidc-Repo] |[Web アプリのサンプル][ServerLib-NetCore-Owin-Oidc-Sample] |
-| .NET Core |OWIN の .NET Core 用 OAuth Bearer ミドルウェア |[Microsoft.AspNetCore.Authentication.OAuth (NuGet)][ServerLib-NetCore-Owin-Oauth-Lib] |[ASP.Net のセキュリティ (GitHub)][ServerLib-NetCore-Owin-Oauth-Repo] |近日対応予定 |
-| Node.js |Microsoft Azure Active Directory Passport.js プラグイン |[Passport-Azure-AD (npm)][ServerLib-Node-Lib] |[Passport-Azure-AD (GitHub)][ServerLib-Node-Repo] |[Web アプリのサンプル][ServerLib-Node-Sample] |
 
-<!--- COMMENTING UNTIL SAMPLE IS AVAILABLE
-| .NET 4.x, .NET Core | JSON Web Token Handler for .NET | [System.IdentityModel.Tokens.Jwt (NuGet)][ServerLib-Net-Jwt-Lib] | [Azure AD identity model extensions for .NET (GitHub)][ServerLib-Net-Jwt-Repo] | Coming soon |
---->
+| プラットフォーム | ライブラリ | ダウンロード | ソース コード | サンプル | リファレンス
+| --- | --- | --- | --- | --- | --- |
+| .NET 4.x | OWIN OpenID Connect ミドルウェア |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect) |[CodePlex](http://katanaproject.codeplex.com) |[MVC アプリ](guidedsetups/active-directory-serversidewebapp-aspnetwebappowin-intro.md) | |
+| .NET 4.x | AzureAD 用 OWIN OAuth Bearer ミドルウェア |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.ActiveDirectory/) |[CodePlex](http://katanaproject.codeplex.com) |  | |
+| .NET 4.x | JWT Handler for .NET 4.5 | [NuGet](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt/4.0.4.403061554) | [GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | | |
+| .NET Core | ASP.NET OpenID Connect ミドルウェア |[Microsoft.AspNetCore.Authentication.OpenIdConnect (NuGet)][ServerLib-NetCore-Owin-Oidc-Lib] |[ASP.Net のセキュリティ (GitHub)][ServerLib-NetCore-Owin-Oidc-Repo] |[MVC アプリ](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore-v2) |
+| .NET Core | ASP.NET OAuth Bearer ミドルウェア |[Microsoft.AspNetCore.Authentication.OAuth (NuGet)][ServerLib-NetCore-Owin-Oauth-Lib] |[ASP.Net のセキュリティ (GitHub)][ServerLib-NetCore-Owin-Oauth-Repo] |  |
+| .NET Core | JWT Handler for .NET Core  |[NuGet](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt) |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | | |
+| Node.js |Azure AD Passport |[npm](https://www.npmjs.com/package/passport-azure-ad) |[GitHub](https://github.com/AzureAD/passport-azure-ad) | [Web アプリ](active-directory-v2-devquickstarts-node-web.md)| |
+
 ## <a name="compatible-client-libraries"></a>互換性のあるクライアント ライブラリ
 | プラットフォーム | ライブラリ名 | テスト済みのバージョン | ソース コード | サンプル |
 |:---:|:---:|:---:|:---:|:---:|
 | Android |[OIDCAndroidLib](https://github.com/kalemontes/OIDCAndroidLib/wiki) |0.2.1 |[OIDCAndroidLib](https://github.com/kalemontes/OIDCAndroidLib) |[ネイティブ アプリのサンプル](active-directory-v2-devquickstarts-android.md) |
 | iOS |[NXOAuth2Client](https://github.com/nxtbgthng/OAuth2Client) |1.2.8 |[NXOAuth2Client](https://github.com/nxtbgthng/OAuth2Client) |[ネイティブ アプリのサンプル](active-directory-v2-devquickstarts-ios.md) |
-| Java | [Scribe Java scribejava](https://github.com/scribejava/scribejava) | [バージョン 3.2.0](https://github.com/scribejava/scribejava/releases/tag/scribejava-3.2.0) | [ScribeJava](https://github.com/scribejava/scribejava/archive/scribejava-3.2.0.zip) | 近日対応予定 |
 | JavaScript |[Hello.js](https://adodson.com/hello.js/) |1.13.5 |[Hello.js](https://github.com/MrSwitch/hello.js) |[SPA](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2) |
-| PHP | [PHP League oauth2-client](https://github.com/thephpleague/oauth2-client) | [バージョン 1.4.2](https://github.com/thephpleague/oauth2-client/releases/tag/1.4.2) | [oauth2-client](https://github.com/thephpleague/oauth2-client/archive/1.4.2.zip) | 近日対応予定 |
-| Python-Flask |[Flask-OAuthlib](https://github.com/lepture/flask-oauthlib) |0.9.3 |[Flask-OAuthlib](https://github.com/lepture/flask-oauthlib) |[Web アプリ](https://github.com/Azure-Samples/active-directory-python-flask-graphapi-web-v2) |
-| Ruby |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth:1.3.1</br>omniauth-oauth2:1.4.0 |[OmniAuth](https://github.com/omniauth/omniauth)</br>[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |近日対応予定 |
-
-<!--- REMOVING BRANDON'S FOR NOW
-|  |  |  |  |  |
-| Android | [OAuth2 Client](https://github.com/wuman/android-oauth-client) |   | [OAuth2 Client](https://github.com/wuman/android-oauth-client)  | Coming soon  |
-| Java | [WSO2 Identity Server](https://docs.wso2.com/display/IS500/Introducing+the+Identity+Server) | [Version 5.2.0](http://wso2.com/products/identity-server/) | [Source](https://docs.wso2.com/display/IS500/Building+from+Source) | [Samples index](https://docs.wso2.com/display/IS500/Samples)  |
-| Java | [Java Gluu Server](https://gluu.org/docs/) |   | [oxAuth](https://github.com/GluuFederation/oxAuth)  | Coming soon |
-| Node.js | [NPM passport-openidconnect](https://www.npmjs.com/package/passport-openidconnect) | 0.0.1  | [Passport-OpenID Connect](https://github.com/jaredhanson/passport-openidconnect) | Coming soon  |
-| PHP | [OpenID Connect Basic Client](https://github.com/jumbojett/OpenID-Connect-PHP) |   | [OpenID Connect Basic Client](https://github.com/jumbojett/OpenID-Connect-PHP)  | Coming soon  |
--->
 
 ## <a name="compatible-server-middleware-libraries"></a>互換性のあるサーバー ミドルウェア ライブラリ
-近日対応予定
+| プラットフォーム | ライブラリ名 | テスト済みのバージョン | ソース コード | サンプル |
+|:---:|:---:|:---:|:---:|:---:|
+| Java | [Scribe Java scribejava](https://github.com/scribejava/scribejava) | [バージョン 3.2.0](https://github.com/scribejava/scribejava/releases/tag/scribejava-3.2.0) | [ScribeJava](https://github.com/scribejava/scribejava/archive/scribejava-3.2.0.zip) | |
+| PHP | [PHP League oauth2-client](https://github.com/thephpleague/oauth2-client) | [バージョン 1.4.2](https://github.com/thephpleague/oauth2-client/releases/tag/1.4.2) | [oauth2-client](https://github.com/thephpleague/oauth2-client/archive/1.4.2.zip) | |
+| Python-Flask |[Flask-OAuthlib](https://github.com/lepture/flask-oauthlib) |0.9.3 |[Flask-OAuthlib](https://github.com/lepture/flask-oauthlib) |[Web アプリ](https://github.com/Azure-Samples/active-directory-python-flask-graphapi-web-v2) |
+| Ruby |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth:1.3.1</br>omniauth-oauth2:1.4.0 |[OmniAuth](https://github.com/omniauth/omniauth)</br>[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |  |
 
 ## <a name="related-content"></a>関連コンテンツ
 Azure AD v2.0 エンドポイントの詳細については、[Azure AD アプリ モデル v2.0 の概要][AAD-App-Model-V2-Overview]に関するページを参照してください。
-
-コンテンツ改善のため、この記事の後の Disqus コメント機能を使用してご意見をお寄せください。
 
 <!--Image references-->
 

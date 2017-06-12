@@ -13,18 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/08/2017
+ms.date: 05/04/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: ca390e1e93660eb27c08d1fce0574c6e3646a329
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: b9dcb069003c647073c978feb588debb689d560e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
 # <a name="use-datafu-with-pig-on-hdinsight"></a>HDInsight の Pig で DataFu を使用する
 
-DataFu は、Hadoop で使用するオープン ソース ライブラリのコレクションです。 このドキュメントでは、HDInsight クラスターで DataFu を使用する方法、および Pig で DataFu ユーザー定義関数 (UDF) を使用する方法を説明します。
+HDInsight での DataFu の使用方法について説明します。 DataFu は、Hadoop 上の Pig で使用するオープン ソース ライブラリのコレクションです。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,7 +34,7 @@ DataFu は、Hadoop で使用するオープン ソース ライブラリのコ�
 * Azure HDInsight クラスター (Linux または Windows ベース)
 
   > [!IMPORTANT]
-  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
 
 * [HDInsight での Pig の使用](hdinsight-use-pig.md)
 
@@ -54,43 +55,45 @@ DataFu は、Maven リポジトリからダウンロードしてインストー�
     wget http://central.maven.org/maven2/com/linkedin/datafu/datafu/1.2.0/datafu-1.2.0.jar
     ```
 
-3. 次に、HDInsight クラスターの既定のストレージにファイルをアップロードします。 これにより、クラスターのすべてのノードでファイルを使用できるようになり、クラスターを削除して再作成してもファイルはストレージに残っています。
+3. 次に、HDInsight クラスターの既定のストレージにファイルをアップロードします。 このファイルを既定のストレージに配置すると、クラスター内のすべてのノードで使用できるようになります。
 
     ```
     hdfs dfs -put datafu-1.2.0.jar /example/jars
     ```
 
     > [!NOTE]
-    > 上の例では jar を `/example/jars` に格納しています。このディレクトリはクラスターのストレージに既に存在しています。 HDInsight クラスター ストレージのどこでも使用できます。
+    > 前のコマンドでは jar を `/example/jars` に格納しています。このディレクトリはクラスターのストレージに既に存在しています。 HDInsight クラスター ストレージのどこでも使用できます。
 
 ## <a name="use-datafu-with-pig"></a>Pig で DataFu を使用する
 
-読者は HDInsight での Pig の使用に慣れていることが前提なので、このセクションの手順では Pig Latin ステートメントのみを示し、クラスターでそれを使用する方法の手順は示しません。 HDInsight で Pig を使用する方法の詳細については、 [HDInsight での Pig の使用](hdinsight-use-pig.md)に関するページをご覧ください。
+このセクションの手順では、HDInsight での Pig の使用について理解していることを前提としています。 HDInsight で Pig を使用する方法の詳細については、 [HDInsight での Pig の使用](hdinsight-use-pig.md)に関するページをご覧ください。
 
 > [!IMPORTANT]
 > Linux ベースの HDInsight クラスター上の Pig から DataFu を使用する場合は、最初に jar ファイルを登録する必要があります。
 >
-> クラスターで Azure Storage を使用する場合は、`wasb://` パスを使用する必要があります。 たとえば、「 `register wasb:///example/jars/datafu-1.2.0.jar`」のように入力します。
+> クラスターで Azure Storage を使用する場合は、`wasb://` パスを使用します。 たとえば、「 `register wasb:///example/jars/datafu-1.2.0.jar`」のように入力します。
 >
-> クラスターで Azure Data Lake Store を使用する場合は、`adl://` パスを使用する必要があります。 たとえば、「 `register adl://home/example/jars/datafu-1.2.0.jar`」のように入力します。
+> クラスターで Azure Data Lake Store を使用する場合は、`adl://` パスを使用します。 たとえば、「 `register adl://home/example/jars/datafu-1.2.0.jar`」のように入力します。
 >
 > Windows ベースの HDInsight クラスターでは、DataFu は既定で登録されます。
 
-通常は、DataFu の関数にエイリアスを定義します。 次に例を示します。
+通常は、DataFu の関数にエイリアスを定義します。 For example:
 
     DEFINE SHA datafu.pig.hash.SHA();
 
-これは、SHA ハッシュ関数に対して `SHA` というエイリアスを定義します。 その後は、Pig Latin スクリプトでこれを使用して、入力データのハッシュを生成できます。 たとえば、次の例では入力データ内の名前をハッシュ値に置き換えています。
+このステートメントは、SHA ハッシュ関数に対して `SHA` というエイリアスを定義します。 その後は、Pig Latin スクリプトでこのエイリアスを使用して、入力データのハッシュを生成できます。 たとえば、次のコードでは入力データ内の名前をハッシュ値に置き換えています。
 
-    raw = LOAD '/data/raw/' USING PigStorage(',') AS  
-        (name:chararray,
-        int1:int,
-        int2:int,
-        int3:int);
-    mask = FOREACH raw GENERATE SHA(name), int1, int2, int3;
-    DUMP mask;
+```piglatin
+raw = LOAD '/data/raw/' USING PigStorage(',') AS  
+    (name:chararray,
+    int1:int,
+    int2:int,
+    int3:int);
+mask = FOREACH raw GENERATE SHA(name), int1, int2, int3;
+DUMP mask;
+```
 
-これを次の入力データで使用すると、
+このコードは、次の入力データで使用されます。
 
     Lana Zemljaric,5,9,1
     Qiong Zhong,9,3,6

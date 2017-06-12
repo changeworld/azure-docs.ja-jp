@@ -1,14 +1,14 @@
 ---
 title: "Azure Cosmos DB: Xamarin と Facebook 認証を使用した Web アプリの構築 | Microsoft Docs"
 description: "Azure Cosmos DB への接続とデータの照会に使用できる .NET コード サンプルについて説明します"
-services: cosmosdb
+services: cosmos-db
 documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: 
 ms.assetid: 
-ms.service: cosmosdb
-ms.custom: quick start connect
+ms.service: cosmos-db
+ms.custom: quick start connect, mvc
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 80aa96973799584118125829f9479fbd14431ac0
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: c8e2e688a7a8b99272c304df37ceff0f9ec52b19
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 05/10/2017
 
 Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成およびクエリできます。 
 
-このクイック スタートでは、Azure Portal を使用して、Azure Cosmos DB アカウント、ドキュメント データベース、コレクションを作成する方法を説明します。 次に、[DocumentDB .NET API](../documentdb/documentdb-sdk-dotnet.md)、 [Xamarin](https://www.xamarin.com/)、および Azure Cosmos DB 認証エンジンで構築された ToDo リストの Web アプリケーションを構築およびデプロイします。 ToDo リストの Web アプリでは、ユーザーが Facebook 認証を使用してログインし、独自の ToDo 項目を管理できるようにする、ユーザーごとのデータ パターンを実装します。
+このクイック スタートでは、Azure Portal を使用して、Azure Cosmos DB アカウント、ドキュメント データベース、コレクションを作成する方法を説明します。 次に、[DocumentDB .NET API](documentdb-sdk-dotnet.md)、 [Xamarin](https://www.xamarin.com/)、および Azure Cosmos DB 認証エンジンで構築された ToDo リストの Web アプリケーションを構築およびデプロイします。 ToDo リストの Web アプリでは、ユーザーが Facebook 認証を使用してログインし、独自の ToDo 項目を管理できるようにする、ユーザーごとのデータ パターンを実装します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,11 +37,11 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 
-[!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
+[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 ## <a name="add-a-collection"></a>コレクションの追加
 
-[!INCLUDE [cosmosdb-create-collection](../../includes/cosmosdb-create-collection.md)]
+[!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
@@ -114,7 +114,7 @@ Xamarin フォルダーのコードには以下が含まれています。
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 
-[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmosdb-tutorial-review-slas.md)]
+[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -128,5 +128,5 @@ Xamarin フォルダーのコードには以下が含まれています。
 このクイックスタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してコレクションを作成し、Xamarin アプリを構築およびデプロイする方法を説明しました。 これで、Cosmos DB アカウントに追加のデータをインポートできます。 
 
 > [!div class="nextstepaction"]
-> [Azure Cosmos DB へのデータのインポート](../documentdb/documentdb-import-data.md)
+> [Azure Cosmos DB へのデータのインポート](import-data.md)
 

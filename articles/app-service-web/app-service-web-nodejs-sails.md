@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 62f674945745eb019c92173798b6eef43337c9f3
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 09ececc567c09ea4e0b77d4d37445b7c232de23c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -188,7 +188,7 @@ Azure のデータベースに接続するには、Azure SQL Database、MySQL、
 
 1. [MongoDB プロトコル対応の Cosmos DB アカウントを作成します](../documentdb/documentdb-create-mongodb-account.md)。
 2. [Cosmos DB のコレクションとデータベースを作成します](../documentdb/documentdb-create-collection.md)。 コレクションの名前は重要ではありませんが、Sails.js からの接続時にデータベースの名前が必要になります。
-3. [Cosmos DB データベースの接続情報を取得します](../documentdb/documentdb-connect-mongodb-account.md#a-idgetcustomconnectiona-get-the-mongodb-connection-string-to-customize)。
+3. [Cosmos DB データベースの接続情報を取得します](../cosmos-db/connect-mongodb-account.md#a-idgetcustomconnectiona-get-the-mongodb-connection-string-to-customize)。
 2. コマンド ライン ターミナルから、MongoDB アダプターをインストールします。
 
         npm install sails-mongo --save
@@ -206,7 +206,7 @@ Azure のデータベースに接続するには、Azure SQL Database、MySQL、
         },
 
     > [!NOTE] 
-    > [Cosmos DB では SSL が必須](../documentdb/documentdb-connect-mongodb-account.md#connection-string-requirements)なので、`ssl: true` オプションは重要です。 
+    > [Cosmos DB では SSL が必須](../cosmos-db/connect-mongodb-account.md#connection-string-requirements)なので、`ssl: true` オプションは重要です。 
     >
     >
 

@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/13/2017
+ms.date: 05/22/2017
 ms.author: erikje
-translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: da6c3a013b8d7539160f05a692655bfcdd72312f
-ms.lasthandoff: 04/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be747170a0d8a7a6defd790a3f8a122c4d397671
+ms.openlocfilehash: 45b56af1e9d857f7f5ee652804a6d4891cf86d48
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/23/2017
 
 
 ---
@@ -34,8 +35,8 @@ For Azure Active Directory deployments, you can register Azure Stack with Azure 
 
 Before registering Azure Stack with Azure, you must have:
 
-- The subscription ID for an Azure subscription (China, Germany, government cloud, and CSP subscriptions are not supported in TP3)
-- The username and password for an account that is an owner for the subscription (Hotmail.com, live.com domains and 2FA accounts are not supported)
+- The subscription ID for an Azure subscription. To get this, sign in to Azure, click **More services** > **Subscriptions**, click the subscription you want to use, and under **Essentials** you can find the **Subscription ID**. China, Germany, government cloud, and CSP subscriptions are not supported in TP3.
+- The username and password for an account that is an owner for the subscription (Hotmail.com, live.com domains and 2FA accounts are not supported).
 - The AAD directory for the Azure subscription. You can find this directory in Azure by hovering over your avatar at the top right corner of the Azure portal. 
 
 If you don’t have an Azure subscription that meets these requirements, you can [create a free Azure account here](https://azure.microsoft.com/en-us/free/?b=17.06). Registering Azure Stack incurs no cost on your Azure subscription.

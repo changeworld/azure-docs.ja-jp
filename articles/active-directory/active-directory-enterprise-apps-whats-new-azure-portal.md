@@ -12,28 +12,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/08/2016
+ms.date: 05/04/2017
 ms.author: asteen
-translationtype: Human Translation
-ms.sourcegitcommit: d15020779b398dbcd055352dbf38822b1bd02b7c
-ms.openlocfilehash: 0f0cf786f91c75f7a514790dccfbfc1f05b67e56
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 36de09434ae5082e5f92dcc9a82bba88f5b89c85
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/08/2017
 
 
 ---
 # <a name="whats-new-in-enterprise-application-management-in-azure-active-directory"></a>Azure Active Directory でのエンタープライズ アプリケーション管理の新機能 
 
-新しい Azure Portal では、Azure クラシック ポータルで使用されていたエンタープライズ アプリケーション管理ツールの一部の機能が強化され、いくつかの新しい機能によって、アプリをより簡単かつ効率的に管理できるようになっています。
+Azure Active Directory (Azure AD) では、エンタープライズ アプリケーション管理ツールが強化され、いくつかの新しい機能によって、アプリをより簡単かつ効率的に管理できるようになっています。
 
-Azure Portal での Azure AD の機能強化の一部を次に示します。
+[Azure Portal](https://portal.azure.com) での Azure AD の機能強化の一部を次に示します。
 
-- 改良された新しいアプリケーション ギャラリー エクスペリエンス。単純化されたアプリケーション作成モデルが使用され、クラシック ポータルで使用していたすべての種類のアプリケーションがサポートされます。 
-- 最新のクイック スタート エクスペリエンス。新しいアプリケーションの試験運用を迅速に進めることができます。 
-- ほんの数回のクリックでセルフサービス ポリシーを構成する機能。 
-- 最後に、アプリケーション プロキシとシングル サインオン構成の大幅な向上と、独自開発アプリケーションの持ち込みによって、新しいポータルはこれまでにない操作性の高さを実現しています。 これらの優れた新しい機能の説明をお読みください。
+- 改良されたアプリケーション ギャラリー エクスペリエンス。単純化されたアプリケーション作成モデルが使用され、使用していたすべての種類のアプリケーションがサポートされます。 
+- 最新のクイック スタート エクスペリエンス。アプリケーションの試験運用を進めることができます。 
+- ほんの数回のクリックでセルフサービス ポリシーを構成できます。 
+- アプリケーション プロキシとシングル サインオン構成の改良と、独自開発アプリケーションの持ち込みにより、これまでにない操作性の高さを実現しています。
 
-## <a name="the-new-and-improved-application-gallery"></a>改良された新しいアプリケーション ギャラリー
+## <a name="improvements-to-the-azure-active-directory-application-gallery"></a>Azure Active Directory アプリケーション ギャラリーの改良。
 
-新しいスリム化されたエクスペリエンスを使用して、お気に入りのアプリケーションを簡単に追加できるようになりました。マイクロソフトの大規模ギャラリーのアプリケーションも、クラウドに展開しているカスタム アプリケーションも、自社で開発した新しいアプリケーションも追加できます。  この新しいエクスペリエンスは、**エンタープライズ アプリケーション**の概要画面または **[すべてのアプリケーション]** ブレードで **[追加]** ボタンをクリックすることで開始できます。
+[アプリケーション ギャラリー](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)のアプリケーションでも、クラウドに展開しているカスタム アプリケーションでも、開発中の新しいアプリケーションでも、お気に入りのアプリケーションを追加できます。  この新しいエクスペリエンスは、**エンタープライズ アプリケーション**の概要画面または **[すべてのアプリケーション]** ブレードで **[追加]** をクリックすることで開始できます。
  
   ![アプリケーションの追加](./media/active-directory-enterprise-apps-whats-new-azure-portal/01.png)
 
@@ -148,17 +150,12 @@ Azure Portal での Azure AD の機能強化の一部を次に示します。
 
 ##<a name="feedback"></a>フィードバック
 
-マイクロソフトでは、更新したプレビュー エクスペリエンスが快適に使用されることを期待しています。 ぜひフィードバックをお寄せください。 フィードバックや機能の向上についてのアイデアを、[フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal)の **[管理ポータル]** セクションにご投稿ください。  マイクロソフトでは、優れた新しい機能を日々開発しています。ユーザーのアドバイスは、次に何を具体化し、どのように定義するかを考えるうえで非常に有用です。
+改良された Azure AD エクスペリエンスを気に入っていただけることを期待しております。 ぜひフィードバックをお寄せください。 フィードバックや機能の向上についてのアイデアを、[フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal)の **[管理ポータル]** セクションにご投稿ください。  マイクロソフトでは、優れた新しい機能を日々開発しています。ユーザーのアドバイスは、次に何を具体化し、どのように定義するかを考えるうえで非常に有用です。
 
 ## <a name="next-steps"></a>次のステップ
 
 詳細については、「[Azure Active Directory でのアプリケーションの管理](active-directory-enable-sso-scenario.md)」を参照してください。
 
 
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

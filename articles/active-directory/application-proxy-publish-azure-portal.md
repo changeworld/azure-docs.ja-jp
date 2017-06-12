@@ -12,16 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 05/23/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 5acfbfbe7327fc28fa909e6ef7e0f9b6ce8b0e54
-ms.openlocfilehash: e0be8f4617c2fdbe1cb6fe2f904bf9ea7056c55e
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: a6dc6148c3307d41801a4c1112397f3e63006ae8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/31/2017
 
 ---
 
 
-# <a name="publish-applications-using-azure-ad-application-proxy---public-preview"></a>Azure AD アプリケーション プロキシを使用したアプリケーションの発行 - パブリック プレビュー
+# <a name="publish-applications-using-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用してアプリケーションを発行する
 
 > [!div class="op_single_selector"]
 > * [Azure ポータル](application-proxy-publish-azure-portal.md)
@@ -41,7 +43,7 @@ Azure Active Directory (AD) アプリケーション プロキシを使用して
 > アプリケーション プロキシを初めて使用する場合は、既にパスワード ベースの認証が設定されているアプリケーションを選択してください。 アプリケーション プロキシは、これ以外の種類の認証もサポートしていますが、短時間で操作を完了するには、パスワード ベースのアプリが最も適しています。 
 
 1. [Azure Portal](https://portal.azure.com/) に管理者としてサインインします。
-2. **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]**  >  **[追加]**を選択します。
+2. **[Azure Active Directory]** > **[エンタープライズ アプリケーション]** > **[新しいアプリケーション]** を選択します。
 
   ![エンタープライズ アプリケーションの追加](./media/application-proxy-publish-azure-portal/add-app.png)
 
@@ -97,9 +99,4 @@ Azure Active Directory (AD) アプリケーション プロキシを使用して
 - [コネクタのダウンロード](active-directory-application-proxy-enable.md)と[コネクタ グループの作成](active-directory-application-proxy-connectors-azure-portal.md)を行って、アプリケーションを別のネットワークや場所に発行します。
 
 - 新しく発行したアプリに対する[シングル サインオンを設定](application-proxy-sso-azure-portal.md)します。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -8,18 +8,18 @@ manager: jhubbard
 editor: 
 ms.assetid: 4e71db4a-a22f-4f1c-83e5-4a34a036ecf3
 ms.service: sql-database
-ms.custom: quick start connect
+ms.custom: develop apps
 ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: php
-ms.topic: article
-ms.date: 05/07/2017
-ms.author: meetb;carlrab;sstein
+ms.topic: hero-article
+ms.date: 05/24/2017
+ms.author: meetb
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 2c0dc1bef0bf2b7b78e8858943ad6e0ede214681
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 693bfdf7bb3d9d72fbd6ac42734ca261af7b492d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -27,10 +27,13 @@ ms.lasthandoff: 05/09/2017
 
 このクイック スタートでは、Mac OS、Ubuntu Linux、Windows の各プラットフォームから [PHP](http://php.net/manual/en/intro-whatis.php) を使用して Azure SQL Database に接続し、Transact-SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法について説明します。
 
+## <a name="prerequisites"></a>前提条件
+
 このクイック スタートでは、次のクイック スタートで作成されたリソースが出発点として使用されます。
 
 - [DB の作成 - ポータル](sql-database-get-started-portal.md)
 - [DB の作成 - CLI](sql-database-get-started-cli.md)
+- [DB の作成 - PowerShell](sql-database-get-started-powershell.md)
 
 ## <a name="install-php-and-database-communications-software"></a>PHP とデータベースの通信ソフトウェアのインストール
 

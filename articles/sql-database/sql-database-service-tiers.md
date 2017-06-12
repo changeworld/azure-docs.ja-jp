@@ -9,18 +9,18 @@ manager: jhubbard
 editor: 
 ms.assetid: f5c5c596-cd1e-451f-92a7-b70d4916e974
 ms.service: sql-database
-ms.custom: resources
+ms.custom: DBs & servers
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-wms.date: 05/14/2017
+wms.date: 05/31/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 1811c325e240a6688b09f7260b33fbe19d022cea
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 9ea73d39a8fcee82e749d20accdd3a3c30cba94e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -54,7 +54,7 @@ ms.lasthandoff: 05/18/2017
 | エラスティック プール内のデータベースの最大サイズ | 2 GB | 250 GB | 500 GB | 500 GB |
 | プールあたりのデータベースの最大数 | 500  | 500 | 100 | 100 |
 | 単一データベースの最大 DTU | 5 | 100 | 4000 | 1,000 |
-| エラスティック プール内のデータベースあたりの最大 DTU | 5 | 100 | 4000 | 1,000 |
+| エラスティック プール内のデータベースあたりの最大 DTU | 5 | 3000 | 4000 | 1,000 |
 | データベース バックアップのリテンション期間 | 7 日 | 35 日 | 35 日 | 35 日 |
 ||||||
 

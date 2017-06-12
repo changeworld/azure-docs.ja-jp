@@ -64,7 +64,6 @@
 #### [ポータル](resource-group-create-service-principal-portal.md)
 ### [サブスクリプションにアクセスするための認証 API](resource-manager-api-authentication.md)
 ### [リソースのロック](resource-group-lock-resources.md)
-### [セキュリティに関する考慮事項](best-practices-resource-manager-security.md)
 
 ## リソース ポリシーの設定
 ### [リソース ポリシーとは](resource-manager-policy.md)

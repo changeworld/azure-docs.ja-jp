@@ -24,7 +24,7 @@ ms.lasthandoff: 01/31/2017
 ---
 # <a name="overview-of-enterprise-integration-with-flat-files"></a>フラット ファイルでのエンタープライズ統合の概要
 
-企業間 (B2B) シナリオでのビジネス パートナーに送信する前に、XML の内容をエンコードする必要がある場合があります。 ロジック アプリでは、フラット ファイル エンコーディング コネクタを使用してこれを実行できます。 作成するロジック アプリは、HTTP 要求トリガー、別のアプリケーション、さらには多くの [コネクタ](../connectors/apis-list.md)の&1; つなど、さまざまなソースから XML の内容を取得できます。 Logic Apps の詳細については、[Logic Apps のドキュメント](logic-apps-what-are-logic-apps.md "Logic Apps についての詳細情報")を参照してください。  
+企業間 (B2B) シナリオでのビジネス パートナーに送信する前に、XML の内容をエンコードする必要がある場合があります。 ロジック アプリでは、フラット ファイル エンコーディング コネクタを使用してこれを実行できます。 作成するロジック アプリは、HTTP 要求トリガー、別のアプリケーション、さらには多くの [コネクタ](../connectors/apis-list.md)の 1 つなど、さまざまなソースから XML の内容を取得できます。 Logic Apps の詳細については、[Logic Apps のドキュメント](logic-apps-what-are-logic-apps.md "Logic Apps についての詳細情報")を参照してください。  
 
 ## <a name="create-the-flat-file-encoding-connector"></a>コネクタをエンコードするフラット ファイルの作成
 フラット ファイル エンコーディング コネクタをロジック アプリに追加するには、次の手順に従います。

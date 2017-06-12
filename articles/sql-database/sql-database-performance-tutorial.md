@@ -8,7 +8,7 @@ manager: jhubbard
 author: jan-eng
 ms.assetid: 
 ms.service: sql-database
-ms.custom: performance
+ms.custom: performance, mvc
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na

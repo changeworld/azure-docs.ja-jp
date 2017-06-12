@@ -117,7 +117,7 @@ GitHub でのサンプルに関する情報: [Microsoft Azure Active Directory �
 | C#/.NET |[ADAL - ネイティブ アプリ対 REST サービス - ブラウザー ダイアログを介した ACS での認証](http://code.msdn.microsoft.com/AAL-Native-App-to-REST-de57f2cc) |[Azure AD Authentication Library (ADAL)](active-directory-authentication-libraries.md) および [Access Control Service 2.0 (ACS)](http://msdn.microsoft.com/library/azure/hh147631.aspx) を使用して、WPF クライアントにユーザー認証機能を追加します。 |
 | C#/.NET |[ADAL - サーバー対サーバー認証](http://go.microsoft.com/fwlink/?LinkId=259816) |[Azure AD Authentication Library (ADAL)](active-directory-authentication-libraries.md) を使用して、サーバー側プロセスから MVC4 Web API REST サービスへのサービス呼び出しのセキュリティを保護します。 |
 | C#/.NET |[Azure AD を使用した Web アプリケーションへのサインオンの追加](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) |.NET アプリケーションを構成して、Azure AD エンタープライズ ディレクトリに対する Web シングル サインオンを実行します。 |
-| C#/.NET |[Azure AD でのマルチテナント Web アプリケーションの開発](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect) |Azure AD を使用して、複数の組織で機能する&1; つの .NET アプリケーションのシングル サインオンおよびディレクトリ アクセス機能を追加します。 |
+| C#/.NET |[Azure AD でのマルチテナント Web アプリケーションの開発](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect) |Azure AD を使用して、複数の組織で機能する 1 つの .NET アプリケーションのシングル サインオンおよびディレクトリ アクセス機能を追加します。 |
 | Java |[Azure AD Graph API 用の Java サンプル アプリ](http://go.microsoft.com/fwlink/?LinkId=263969) |Graph API を使用して、Azure AD からのディレクトリ データにアクセスします。 |
 | PHP |[Azure AD Graph API 用の PHP サンプル アプリ](http://code.msdn.microsoft.com/PHP-Sample-App-For-Windows-228c6ddb) |Graph API を使用して、Azure AD からのディレクトリ データにアクセスします。 |
 | C#/.NET |[Azure AD Graph API 用のサンプル アプリ](http://go.microsoft.com/fwlink/?LinkID=262648) |Graph API を使用して、Azure AD からのディレクトリ データにアクセスします。 |

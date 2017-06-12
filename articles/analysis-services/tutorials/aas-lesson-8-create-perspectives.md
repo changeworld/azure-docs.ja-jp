@@ -1,0 +1,62 @@
+---
+title: "Azure Analysis Services チュートリアルのレッスン 8: パースペクティブを作成する | Microsoft Docs"
+description: "この Azure Analysis Services チュートリアル プロジェクトでは、パースペクティブを作成する方法について説明します。"
+services: analysis-services
+documentationcenter: 
+author: minewiskan
+manager: erikre
+editor: 
+tags: 
+ms.assetid: 
+ms.service: analysis-services
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: na
+ms.date: 05/26/2017
+ms.author: owend
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: eea5c20f348e462282e22b7dd2f9274c344b68c4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/05/2017
+
+---
+# <a name="lesson-8-create-perspectives"></a>レッスン 8: パースペクティブを作成する
+
+[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+
+このレッスンでは、Internet Sales パースペクティブを作成します。 パースペクティブでは、表示可能なモデルのサブセットを定義して、集中的、ビジネス固有またはアプリケーション固有のビューポイントを作成できます。 ユーザーがパースペクティブを使用してモデルに接続すると、そのパースペクティブで定義されているフィールドと同じモデル オブジェクト (テーブル、列、メジャー、階層、KPI) のみ表示されます。 詳細については、「[パースペクティブ](https://docs.microsoft.com/sql/analysis-services/tabular-models/perspectives-ssas-tabular)」を参照してください。
+  
+このレッスンで作成する Internet Sales パースペクティブは、DimCustomer テーブル オブジェクトを除外します。 特定のオブジェクトをビューから除外するパースペクティブを作成しても、そのオブジェクトはまだモデルに存在します。ただし、レポートするクライアントのフィールドリストには表示されません。 計算列やメジャーは、パースペクティブに含まれていてもいなくても、除外されているオブジェクト データから計算可能です。  
+  
+このレッスンの目的は、パースペクティブの作成方法について理解し、表形式モデルの作成ツールに慣れることです。 後でこのモデルを展開して追加のテーブルを含める場合は、追加のパースペクティブを作成して、在庫や販売など、モデルの別のビューポイントを定義することができます。  
+  
+このレッスンの推定所要時間: **5 分**  
+  
+## <a name="prerequisites"></a>前提条件  
+このトピックは、表形式モデルのチュートリアルの一部であり、順番に従って実行する必要があります。 このレッスンの作業を実行する前に、前のレッスン「[レッスン 7: 主要業績評価指標を作成する](../tutorials/aas-lesson-7-create-key-performance-indicators.md)」を完了している必要があります。  
+  
+## <a name="create-perspectives"></a>パースペクティブを作成する  
+  
+#### <a name="to-create-an-internet-sales-perspective"></a>Internet Sales パースペクティブを作成するには  
+  
+1.  **[モデル]** メニュー > **[パースペクティブ]** > **[作成と管理]** をクリックします。  
+  
+2.  **[パースペクティブ]** ダイアログ ボックスで、**[新しいパースペクティブ]** をクリックします。  
+  
+3.  **[新しいパースペクティブ]** の列見出しをダブルクリックし、名前を **Internet Sales** に変更します。  
+  
+4.  **DimCustomer** を*除く*すべてのテーブルを選択します。  
+  
+    ![aas-lesson8-perspectives](../tutorials/media/aas-lesson8-perspectives.png)
+  
+    後のレッスンでは、[Excel で分析] 機能を使用して、このパースペクティブをテストすることができます。 Excel の [ピボットテーブル フィールド] リストには、DimCustomer テーブルを除く各テーブルが含まれます。  
+
+## <a name="whats-next"></a>次の手順
+[レッスン 9: 階層を作成する](../tutorials/aas-lesson-9-create-hierarchies.md)
+  
+  
+  
+  
+

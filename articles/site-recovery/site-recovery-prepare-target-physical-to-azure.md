@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: backup-recovery
-ms.date: 2/11/2017
+ms.date: 5/31/2017
 ms.author: bsiva
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b7f26df96ddedb579cf5d9d20fee6b2599e762e0
 ms.openlocfilehash: 9dd4e9007da6cf276f976e2f3f25305286830544
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/13/2017
 
 ---
 
@@ -42,7 +44,7 @@ ms.openlocfilehash: 9dd4e9007da6cf276f976e2f3f25305286830544
 1. **サブスクリプション:** ドロップダウン メニューから、物理サーバーのレプリケート先のサブスクリプションを選びます。
 2. **デプロイメント モデル:** デプロイメント モデルを選びます (クラシックまたは Resource Manager)。
 
-選んだデプロイメント モデルに基づいて検証が実行され、物理サーバーのレプリケートおよびフェールオーバー先のターゲット サブスクリプションに、互換性のあるストレージ アカウントと仮想ネットワークが少なくとも&1; つはあることが確認されます。
+選んだデプロイメント モデルに基づいて検証が実行され、物理サーバーのレプリケートおよびフェールオーバー先のターゲット サブスクリプションに、互換性のあるストレージ アカウントと仮想ネットワークが少なくとも 1 つはあることが確認されます。
 
 検証が正常に完了した後、[OK] をクリックして次の手順に進みます。
 
@@ -50,9 +52,4 @@ ms.openlocfilehash: 9dd4e9007da6cf276f976e2f3f25305286830544
 
 ## <a name="next-steps"></a>次のステップ
 [レプリケーションの設定を構成する](./site-recovery-setup-replication-settings-vmware.md)。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -1,5 +1,6 @@
 ---
-title: "Azure Active Directory プレビューでグループのメンバーを管理する | Microsoft Docs"
+
+title: "Azure Active Directory でグループのメンバーを管理する | Microsoft Docs"
 description: "Azure Active Directory でグループのユーザーとデバイスを追加または削除する方法"
 services: active-directory
 documentationcenter: 
@@ -12,18 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 05/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 58768cd59a922483bcb37797a6dcd515d159ef4c
-ms.openlocfilehash: 3373af848720c7c04e679d7fd4b075c5571fb417
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 044e88f95712e1cc5b5532f5492c78d711a8d858
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/08/2017
 
 
 ---
 # <a name="manage-group-membership-for-users-in-your-azure-active-directory-tenant"></a>Azure Active Directory テナントでユーザーのグループ メンバーシップを管理する
-この記事では、Azure Active Directory (Azure AD) プレビューでグループのメンバーを管理する方法について説明します。 プレビューの機能については、[こちらの記事](active-directory-preview-explainer.md)をご覧ください。
+この記事では、Azure Active Directory (Azure AD) でグループのメンバーを管理する方法について説明します。
 
 ## <a name="how-do-i-find-the-members-and-manage-them"></a>メンバーを検索して管理する方法
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
@@ -34,13 +36,13 @@ ms.lasthandoff: 03/01/2017
 
    ![グループ ブレードを開く](./media/active-directory-groups-members-azure-portal/view-groups-blade.png)
 4. **[ユーザーとグループ - すべてのグループ]** ブレードで、グループを選択します。
-5. **[グループ - *グループ名*]** ブレードで、**メンバー** を選択します。
+5. **[グループ - *グループ名*]** ブレードで、**[メンバー]** を選択します。
 
    ![[メンバー] ブレードを開く](./media/active-directory-groups-members-azure-portal/view-group-members.png)
 6. グループにメンバーを追加するには、**[グループ - メンバー]** ブレードで、**[メンバーの追加]** をクリックします。
 
    ![[メンバーの追加] コマンド](./media/active-directory-groups-members-azure-portal/add-group-members-command.png)
-7. **[メンバー]** ブレードで、グループに追加する&1; 人以上のユーザーまたは&1; つ以上のデバイスを選択し、ブレードの下部にある **[選択]** をクリックしてグループに追加します。 **[ユーザー]** ボックスでは、入力内容とユーザー名またはデバイス名の一部との一致に基づいて表示がフィルター処理されます。 このボックスではワイルドカード文字は使用できません。
+7. **[メンバー]** ブレードで、グループに追加する 1 人以上のユーザーまたは 1 つ以上のデバイスを選択し、ブレードの下部にある **[選択]** をクリックしてグループに追加します。 **[ユーザー]** ボックスでは、入力内容とユーザー名またはデバイス名の一部との一致に基づいて表示がフィルター処理されます。 このボックスではワイルドカード文字は使用できません。
 8. グループからメンバーを削除するには、 **[グループ - メンバー]** ブレードで、メンバーを選択します。
 9. ***[メンバー名]*** ブレードで **[削除]** をクリックし、表示されたメッセージで削除を確定します。
 

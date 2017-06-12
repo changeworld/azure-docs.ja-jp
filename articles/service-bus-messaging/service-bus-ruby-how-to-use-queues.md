@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/27/2017
 ms.author: sethm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
-ms.openlocfilehash: 9f0eb5a265777bdf249c46c41a065ef427fac920
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: b649bab171770b1edb3ed4b4e345375d948e6a97
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -31,38 +31,13 @@ ms.lasthandoff: 04/28/2017
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
    
-## <a name="create-a-ruby-application"></a>Ruby アプリケーションの作成
-Ruby アプリケーションを作成します。 手順については、[Microsoft Azure での Ruby アプリケーションの作成](../virtual-machines/linux/classic/virtual-machines-linux-classic-ruby-rails-web-app.md) に関するページを参照してください。
-
-## <a name="configure-your-application-to-use-service-bus"></a>Service Bus を使用するようにアプリケーションを構成する
-Azure Service Bus を使用するには、Azure Ruby パッケージをダウンロードして使用します。このパッケージには、ストレージ REST サービスと通信するための便利なライブラリのセットが含まれています。
-
-### <a name="use-rubygems-to-obtain-the-package"></a>RubyGems を使用してパッケージを取得する
-1. **PowerShell** (Windows)、**ターミナル** (Mac)、**Bash** (Unix) などのコマンド ライン インターフェイスを使用します。
-2. コマンド ウィンドウに「gem install azure」と入力して、gem と依存関係をインストールします。
-
-### <a name="import-the-package"></a>パッケージをインポートする
-任意のテキスト エディターを使用して、ストレージを使用するアプリケーションの Ruby ファイルの先頭に次のコードを追加します。
-
-```
-require "azure"
-```
-
-## <a name="set-up-an-azure-service-bus-connection"></a>Azure Service Bus 接続の設定
-Azure モジュールは、Service Bus 名前空間に接続するために必要な情報として、環境変数 **AZURE\_SERVICEBUS\_NAMESPACE** と **AZURE\_SERVICEBUS\_ACCESS_KEY** を読み取ります。 これらの環境変数が設定されていない場合は、**Azure::ServiceBusService** を使用する前に、次のコードを使用して名前空間情報を指定する必要があります。
-
-```ruby
-Azure.config.sb_namespace = "<your azure service bus namespace>"
-Azure.config.sb_access_key = "<your azure service bus access key>"
-```
-
-作成した値には、URL 全体ではなく、名前空間値を設定してください。 たとえば、**"yourexamplenamespace.servicebus.windows.net"** ではなく、"yourexamplenamespace" を使用します。
+[!INCLUDE [service-bus-ruby-setup](../../includes/service-bus-ruby-setup.md)]
 
 ## <a name="how-to-create-a-queue"></a>キューの作成方法
 **Azure::ServiceBusService** オブジェクトを使用して、キューを操作できます。 キューを作成するには、**create_queue()** メソッドを使用します。 次の例では、キューを作成するか、すべてのエラーを出力します。
 
 ```ruby
-azure_service_bus_service = Azure::ServiceBusService.new
+azure_service_bus_service = Azure::ServiceBus::ServiceBusService.new(sb_host, { signer: signer})
 begin
   queue = azure_service_bus_service.create_queue("test-queue")
 rescue

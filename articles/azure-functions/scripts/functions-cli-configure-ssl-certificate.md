@@ -15,6 +15,7 @@ ms.tgt_pltfrm: na
 ms.topic: sample
 ms.date: 04/10/2017
 ms.author: glenga
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
 ms.openlocfilehash: 9b7f84f5ad01335a3ce72b6b2aa654968fdd9499

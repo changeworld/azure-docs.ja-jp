@@ -13,21 +13,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 05/02/2017
+ms.date: 05/08/2017
 ms.author: cynthn
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: ab19073735816ebb32a9840ec03b31b358ccb565
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 773b37ec8f775d68f1faca0d252f3064c7de0317
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/09/2017
 
 ---
 
 # <a name="create-a-custom-image-of-an-azure-vm-using-powershell"></a>PowerShell を使用した Azure VM のカスタム イメージの作成
 
-このチュートリアルでは、Azure 仮想マシンの独自のカスタム イメージを定義する方法を学習します。 カスタム イメージを使用すると、既に構成しているイメージを使用して VM を作成できます。 カスタム イメージは、バイナリとアプリケーションの事前読み込み、アプリケーションの構成、VM データ ディスクの定義、その他の OS 構成をブートストラップするために使用できます。 カスタム イメージを作成すると、カスタマイズした VM に加えて、接続されているすべてのディスクがイメージ内に含まれます。
+カスタム イメージは Marketplace のイメージに似ていますが、カスタム イメージは自分で作成します。 カスタム イメージは、アプリケーションのプリロード、アプリケーションの構成、その他の OS 構成などの構成のブートストラップを実行するために使用できます。 このチュートリアルでは、Azure 仮想マシンの独自のカスタム イメージを作成します。 学習内容は次のとおりです。
 
-このチュートリアルの手順は、最新バージョンの [Azure PowerShell](/powershell/azure/overview) モジュールを使用して行うことができます。
+> [!div class="checklist"]
+> * VM を sysprep して汎用化する
+> * カスタム イメージを作成する
+> * カスタム イメージから VM を作成する
+> * サブスクリプション内のすべてのイメージを一覧表示する
+> * イメージを削除する
+
+このチュートリアルには、Azure PowerShell モジュール バージョン 3.6 以降が必要です。 バージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -169,11 +177,40 @@ New-AzureRmVM `
     -VM $vmConfig
 ```
 
+## <a name="image-management"></a>イメージの管理 
+
+ここでは、一般的なイメージ管理タスクと PowerShell を使用してそれらを完了する方法の例をいくつか示します。
+
+すべてのイメージの名前を一覧表示します。
+
+```powershell
+$images = Find-AzureRMResource -ResourceType Microsoft.Compute/images 
+$images.name
+```
+
+イメージを削除します。 この例では、*myOldImage* という名前のイメージを *myResourceGroup* から削除します。
+
+```powershell
+Remove-AzureRmImage `
+    -ImageName myOldImage `
+    -ResourceGroupName myResourceGroup
+```
+
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、カスタム VM カスタム イメージを作成する方法を説明しました。 次のチュートリアルに進み、仮想マシンの高可用性について学習してください。
+このチュートリアルでは、カスタム VM イメージを作成しました。 以下の方法について学習しました。
 
-[高可用性 VM の作成](tutorial-availability-sets.md)
+> [!div class="checklist"]
+> * VM を sysprep して汎用化する
+> * カスタム イメージを作成する
+> * カスタム イメージから VM を作成する
+> * サブスクリプション内のすべてのイメージを一覧表示する
+> * イメージを削除する
+
+次のチュートリアルに進み、仮想マシンの高可用性について学習してください。
+
+> [!div class="nextstepaction"]
+> [高可用性 VM の作成](tutorial-availability-sets.md)
 
 
 

@@ -13,32 +13,47 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2017
+ms.date: 05/08/2017
 ms.author: cynthn
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 831c55939ad3673aa8e44f165e18e826f64b54cc
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 022396a8bf0478414be179b9f7341a459ed2bc60
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
-
+ms.lasthandoff: 05/09/2017
 
 ---
 
 # <a name="how-to-use-availability-sets"></a>可用性セットの使用方法
 
-このチュートリアルでは、可用性セットと呼ばれる論理的なグループに仮想マシン (VM) を配置することで、その可用性を高める方法について説明します。 可用性セット内で VM を作成する場合、Azure プラットフォームにより、基になるインフラストラクチャ全体に VM が分散されます。 ハードウェア障害が発生したり、プラットフォームで計画的なメンテナンスが実施されたりした場合、可用性セットを使用していると、少なくとも 1 つの VM を必ず動作させることができます。
+このチュートリアルでは、可用性セットと呼ばれる機能を使用して、Azure で仮想マシン ソリューションの可用性と信頼性を向上させる方法を学習します。 可用性セットは、Azure にデプロイする VM を、複数の分離されたハードウェア クラスターに分散します。 これにより、Azure 内でハードウェアまたはソフトウェアの障害が発生した場合に影響を受けるのは VM のサブ セットに限定され、ソリューションを使用している顧客から見れば、ソリューション全体は引き続き利用可能であり、運用可能であることが保証されます。 
 
-このチュートリアルの手順は、最新バージョンの [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) モジュールを使用して行うことができます。
+このチュートリアルで学習する内容は次のとおりです。
+
+> [!div class="checklist"]
+> * 可用性セットの作成
+> * 可用性セットに VM を作成する
+> * 使用可能な VM のサイズを確認する
+
+このチュートリアルには、Azure PowerShell モジュール バージョン 3.6 以降が必要です。 バージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
 
 ## <a name="availability-set-overview"></a>可用性セットの概要
 
-仮想マシンは、基になる Azure データセンターのハードウェアの論理的なグループにまたがって作成することができます。 複数の VM を作成すると、コンピューティング リソースとストレージ リソースは、サーバー、ネットワーク スイッチ、ストレージなどのハードウェアにまたがって分散されます。 万一ハードウェア コンポーネントにメンテナンスが必要な状況が生じても、この分散によってアプリの稼働率が保たれます。 可用性セットでは、この論理的なグループ化を定義できます。
+可用性セットは、Azure で使用できる論理グループ作成機能であり、グループに配置された VM リソースは、Azure データ センター内にデプロイされるときに互いに分離されます。 Azure では、可用性セット内に配置された VM は、複数の物理サーバー、コンピューティング ラック、ストレージ ユニット、およびネットワーク スイッチ間で実行されます。 これにより、ハードウェアまたは Azure ソフトウェアの障害が発生した場合に影響を受けるのは VM のサブ セットに限定され、アプリケーション全体が停止することはなく、顧客は引き続きアプリケーションを利用できることが保証されます。 可用性セットの使用は、信頼性の高いクラウド ソリューションを構築する際に活用する不可欠の機能です。
 
-可用性セットによって、VM の高可用性が実現します。 アプリケーションが障害やメンテナンス イベントを必ず許容するように設計することも必要になります。
+4 台のフロント エンド Web サーバーとデータベースをホストする 2 台のバック エンド VM を使用する一般的な VM ベースのソリューションについて考えてみましょう。 Azure で VM をデプロイする前に、2 つの可用性セット ("Web" 階層用に 1 つ、"データベース" 層用に 1 つ) を定義します。 新しい VM を作成するときに、az vm create コマンドのパラメーターとして可用性セットを指定でき、可用性セット内に作成した VM は、Azure によって複数の物理的なハードウェア リソースに自動的に分離されます。 これは、いずれかの Web サーバーまたはデータベース サーバー VM で問題が発生した場合でも、Web サーバーとデータベース サーバー VM の他のインスタンスは別のハードウェアで実行されているため、正常に稼働し続けることを意味します。
+
+Azure 内で信頼性の高い VM ベースのソリューションをデプロイする場合は、常に可用性セットを使用する必要があります。
 
 ## <a name="create-an-availability-set"></a>可用性セットの作成
 
 可用性セットは、[New-AzureRmAvailabilitySet](/powershell/module/azurerm.compute/new-azurermavailabilityset) を使用して作成します。 この例では、*myResourceGroupAvailability* リソース グループ内の *myAvailabilitySet* という名前の可用性セットに対して、更新ドメインと障害ドメインの両方の数として *2* を設定します。
+
+リソース グループを作成します。
+
+```powershell
+New-AzureRmResourceGroup -Name myResourceGroupAvailability -Location EastUS
+```
 
 
 ```powershell
@@ -159,9 +174,17 @@ Get-AzureRmVMSize `
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、仮想マシン スケール セットの作成方法を説明しました。 次のチュートリアルに進み、仮想マシンのスケール セットについて学習してください。
+このチュートリアルで学習した内容は次のとおりです。
 
-[VM スケール セットの作成](tutorial-create-vmss.md)
+> [!div class="checklist"]
+> * 可用性セットの作成
+> * 可用性セットに VM を作成する
+> * 使用可能な VM のサイズを確認する
+
+次のチュートリアルに進み、仮想マシンのスケール セットについて学習してください。
+
+> [!div class="nextstepaction"]
+> [VM スケール セットの作成](tutorial-create-vmss.md)
 
 
 

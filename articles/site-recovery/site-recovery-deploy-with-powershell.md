@@ -12,11 +12,12 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 05/31/2017
 ms.author: bsiva
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: 51065a48c2f797b0ab764bf1b57425bd0696e2bd
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/27/2017
 
 

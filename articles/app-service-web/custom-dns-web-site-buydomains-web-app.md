@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9c5c0b40d796130d93111545c93bedf86c374fd9
-ms.lasthandoff: 11/17/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 625eeefe94ec0d068cc9cc68b59c371697c786a8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -101,7 +102,7 @@ Web アプリのドメイン名を持っていない場合は、[Azure Portal](h
 * カスタム ドメインは作成されましたが、ブレードがまだ更新されていない可能性があります。 **[カスタム ドメインおよび SSL]** ブレードをもう一度開いてください。
 * ある時点でカスタム ドメインを削除した可能性があります。 アプリのメイン ブレードから **[設定]** > **[監査ログ]** の順にクリックし、監査ログを確認してください。 
 * 探している **[カスタム ドメインおよび SSL]** ブレードが、別の Azure サブスクリプションで作成されたアプリに属している可能性があります。 別のサブスクリプションの別のアプリに切り替え、その **[カスタム ドメインおよび SSL]** ブレードを確認してください。  
-    ポータル内では、アプリと異なる Azure サブスクリプションで作成されたカスタム ドメインを表示または管理できません。 ただし、ドメインの **[ドメインの管理]** ブレードの **[詳細管理]** をクリックすると、ドメイン プロバイダーの Web サイトにリダイレクトされます。そのサイトで、別の Azure サブスクリプションで作成されたアプリの  [カスタム ドメインを (任意の外部カスタム ドメインと同様に) 手動で構成](web-sites-custom-domain-name.md)できます。 
+    ポータル内では、アプリと異なる Azure サブスクリプションで作成されたカスタム ドメインを表示または管理できません。 ただし、ドメインの **[ドメインの管理]** ブレードの **[詳細管理]** をクリックすると、ドメイン プロバイダーの Web サイトにリダイレクトされます。そのサイトで、別の Azure サブスクリプションで作成されたアプリの  [カスタム ドメインを (任意の外部カスタム ドメインと同様に) 手動で構成](app-service-web-tutorial-custom-domain.md)できます。 
    
 
 

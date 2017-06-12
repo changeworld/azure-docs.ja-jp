@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/28/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: feb6e388a98cd6e133d010cada97f895140c3f4f
-ms.openlocfilehash: ee9a3b605c5445007f880a37e96c2326dd7c9b89
-ms.lasthandoff: 03/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: fe7f508ed1c4eb57663f7e252d286719af03dbb1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -27,16 +28,16 @@ ms.lasthandoff: 03/02/2017
 この機能は、ビルド 1.1.105.0 (2016 年 2 月リリース) で導入されました。
 
 ## <a name="overview"></a>概要
-Azure AD Connect 同期は、オンプレミス ディレクトリで発生した変更を、スケジューラを使用して同期します。 スケジューラが行う処理は&2; つあり、1 つはパスワードの同期で、もう&1; つはオブジェクト/属性の同期と、メンテナンス タスクです。 このトピックでは、後者について説明します。
+Azure AD Connect 同期は、オンプレミス ディレクトリで発生した変更を、スケジューラを使用して同期します。 スケジューラが行う処理は 2 つあり、1 つはパスワードの同期で、もう 1 つはオブジェクト/属性の同期と、メンテナンス タスクです。 このトピックでは、後者について説明します。
 
 以前のリリースでは、オブジェクトと属性のスケジューラは同期エンジンの外部にあり、 Windows タスク スケジューラまたは別の Windows サービスを使用して、同期プロセスをトリガーしました。 スケジューラは、1.1 リリースで同期エンジンに組み込まれ、いくつかのカスタマイズが可能になりました。 新しい既定の同期頻度は、30 分です。
 
-スケジューラは、次の&2; つのタスクを担当します。
+スケジューラは、次の 2 つのタスクを担当します。
 
 * **同期サイクル**。 変更をインポート、同期、およびエクスポートする処理です。
 * **メンテナンス タスク**。 パスワードのリセットと Device Registration Service (DRS) のためにキーと証明書を更新します。 操作ログの古いエントリを消去します。
 
-スケジューラ自体は常に実行されていますが、これらのタスクの&1; つだけを実行したり、どれも実行しないように構成することができます。 たとえば、独自の同期サイクル処理が必要な場合は、スケジューラのこのタスクを無効にし、メンテナンス タスクは実行するように指定できます。
+スケジューラ自体は常に実行されていますが、これらのタスクの 1 つだけを実行したり、どれも実行しないように構成することができます。 たとえば、独自の同期サイクル処理が必要な場合は、スケジューラのこのタスクを無効にし、メンテナンス タスクは実行するように指定できます。
 
 ## <a name="scheduler-configuration"></a>スケジューラの構成
 現在の構成設定を確認するには、PowerShell に移動し、 `Get-ADSyncScheduler`を実行します。 次のような設定が表示されます。
@@ -45,9 +46,9 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
 
 このコマンドレットを実行するときに「 **sync コマンドまたはコマンドレットを使用できません** 」と表示される場合、PowerShell モジュールが読み込まれません。 この問題は、PowerShell 制限レベルが既定の設定よりも高いドメイン コント ローラーまたはサーバーで Azure AD Connect を実行する場合に発生する可能性があります。 このエラーが発生する場合、 `Import-Module ADSync` を実行してコマンドレットを使用できるようにします。
 
-* **AllowedSyncCycleInterval**。 Azure AD で同期の実行が許可される最大の頻度です。 この設定よりも頻繁に同期してサポートを受けることはできません。
+* **AllowedSyncCycleInterval**。 Azure AD で利用できる同期サイクルの最短の時間間隔です。 この設定よりも頻繁に同期してサポートを受けることはできません。
 * **CurrentlyEffectiveSyncCycleInterval**。 現時点で有効になっているスケジュールです。 AllowedSyncInterval よりも高い頻度でない場合は、CustomizedSyncInterval と同じ値です (設定されている場合)。 1.1.281 より前のビルドを使用している場合、CustomizedSyncCycleInterval を変更すると、次回の同期サイクルの後に有効になります。 ビルド 1.1.281 以降を使用している場合、変更はすぐに反映されます。
-* **CustomizedSyncCycleInterval**。 既定の 30 分以外の頻度でスケジューラを実行する場合は、この設定を構成します。 上の図では、スケジューラは&1; 時間ごとに実行されるように設定されています。 この設定を AllowedSyncInterval より低い値に設定すると、その値が使用されます。
+* **CustomizedSyncCycleInterval**。 既定の 30 分以外の頻度でスケジューラを実行する場合は、この設定を構成します。 上の図では、スケジューラは 1 時間ごとに実行されるように設定されています。 この設定を AllowedSyncInterval より低い値に設定すると、その値が使用されます。
 * **NextSyncCyclePolicyType**。 Delta または Initial です。 次回の実行で、変更の差分だけを処理するのか、完全なインポートと同期を行って、 新規の規則と変更した規則のすべてを再処理するのかを定義します。
 * **NextSyncCycleStartTimeInUTC**。 スケジューラが次回の同期サイクルを開始する時刻です。
 * **PurgeRunHistoryInterval**。 操作ログを保持する時間です。 ログは Synchronization Service Manager で参照できます。 既定では、ログは 7 日間保持されます。
@@ -164,7 +165,7 @@ Get-ADSyncConnectorRunStatus
 ```
 
 ![Connector Run Status](./media/active-directory-aadconnectsync-feature-scheduler/getconnectorrunstatus.png)  
-上の図の&amp;1; 行目は、同期エンジンがアイドル状態であることを示しています。 2 行目は、Azure AD コネクタが実行されていることを示しています。
+上の図の 1 行目は、同期エンジンがアイドル状態であることを示しています。 2 行目は、Azure AD コネクタが実行されていることを示しています。
 
 ## <a name="scheduler-and-installation-wizard"></a>スケジューラとインストール ウィザード
 インストール ウィザードを開始すると、スケジューラは一時的に中断されます。 この動作は、構成が変更されても、同期エンジンがアクティブに実行されていると、この設定を適用できないためです。 このようなしくみになっているので、インストール ウィザードを開いたままにしないでください。開いたままにすると、同期エンジンが同期操作を実行できません。

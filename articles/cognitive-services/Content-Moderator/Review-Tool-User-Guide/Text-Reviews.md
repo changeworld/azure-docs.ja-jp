@@ -9,14 +9,15 @@ ms.technology: content-moderator
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: sajagtap
-translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: 7b6dfba0023f96702ee7aa8e0eedc132bac55112
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 3ffdf7de5bf31610ae37abcf37b7991d521c4d13
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 ---
 
-# <a name="text-moderation-reviews"></a>Text Moderation Reviews #
+# <a name="text-moderation-reviews"></a>Text Moderation reviews #
 
 ## <a name="select-or-enter-the-text-to-review"></a>Select or enter the text to review ##
 
@@ -25,8 +26,6 @@ Click the **Try** TAB and select the "Text" option to bring up the Text Moderati
 ## <a name="get-ready-to-review-results"></a>Get ready to review results ##
 
 The review tool will call the text moderation API and generate text reviews with the detected tags and match scores results within the review tool for your team's attention.
-
-![Ready for text reviews](images/2-Text-Submitted.png)
 
 ## <a name="review-text-results"></a>Review text results ##
 

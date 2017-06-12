@@ -8,10 +8,10 @@ manager: jhubbard
 editor: jasonh
 ms.assetid: 
 ms.service: postgresql-database
-ms.custom: tutorial
+ms.custom: tutorial, mvc
 ms.tgt_pltfrm: portal
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: article
 ms.date: 05/10/2017
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4

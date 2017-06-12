@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/05/2017
 ms.author: raynew
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 5348cedf369264defc5bb8417397aae046915ca7
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 77ebe20940bce0e21caa60567e1ccffaba7351b3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -53,7 +54,7 @@ Site Recovery をデプロイすると、オンプレミス VM や物理サー�
 
 1. Recovery Services コンテナーの設定
 2. 移行対象に応じて必要な管理サーバー (VMware、VMM、Hyper-V) を構成し、そのサーバーをコンテナーに追加して、レプリケーションの設定を指定します。
-3. 移行するマシンのレプリケーションを有効にし、
+3. 移行するマシンのレプリケーションを有効にします。
 4. 初回移行の後、簡単なテスト フェールオーバーを実行して、すべてが予期したとおりに動作することを確認します。
 5. レプリケーション環境が動作していることを確認したら、シナリオで[サポートされている内容](site-recovery-failover.md)に応じて、計画フェールオーバーまたは計画外フェールオーバーを使用します。 可能であれば計画フェールオーバーの使用をお勧めします。
 6. 移行の場合、フェールオーバーをコミットする必要はなく、削除する必要もありません。 代わりに、移行する各マシンの **[移行の完了]** オプションを選択します。
@@ -80,4 +81,6 @@ AWS インスタンスを Azure VM に移行できます。 このシナリオ�
 - [Hyper-V VM (VMM なし) を Azure に移行する](site-recovery-hyper-v-site-to-azure.md)
 - [Azure リージョン間で Azure VM を移行する](site-recovery-migrate-azure-to-azure.md)
 - [AWS インスタンスを Azure に移行する](site-recovery-migrate-aws-to-azure.md)
+- ディザスター リカバリーの要件に沿って、[移行したマシンを別のリージョンにレプリケートできるように準備する](site-recovery-azure-to-azure-after-migration.md)
+- [Azure 仮想マシンをレプリケート](site-recovery-azure-to-azure.md)してワークロードの保護を開始する
 

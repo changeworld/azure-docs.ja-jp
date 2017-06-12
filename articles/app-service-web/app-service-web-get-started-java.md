@@ -14,12 +14,12 @@ ms.devlang: java
 ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: cephalin;robmcm
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 75e51ca45a899c6b6fa123346aa3c5860fd1600d
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 1249d7ac42bec02227d47500fe3aabb601a36f88
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/08/2017
-
+ms.lasthandoff: 06/01/2017
 
 ---
 # <a name="create-your-first-java-web-app-in-azure-in-five-minutes"></a>初めての Java Web アプリを Azure に 5 分で作成する
@@ -30,7 +30,7 @@ ms.lasthandoff: 05/08/2017
 
 ![Web アプリの参照](./media/app-service-web-get-started-java/browse-web-app-1.png)
 
-## <a name="before-you-begin"></a>開始する前に
+## <a name="prerequisites"></a>前提条件
 
 このチュートリアルでは、Eclipse IDE for Java EE Devlopers を使用して Java ベースの Web アプリをビルドし、Azure にデプロイする方法を示します。 Eclipse をまだインストールしていない場合には、http://www.eclipse.org/ から無料でダウンロードできます。
 
@@ -155,7 +155,7 @@ Azure Toolkit により、新しい App Service の作成が開始されます�
 
 ![Azure に Web アプリをデプロイ](./media/app-service-web-get-started-java/deploy-web-app-to-azure.png)
 
-ご利用ありがとうございます。 Azure に Web アプリが正常にデプロイされました。 これで、Azure の Web サイトで Web アプリをプレビューできます。
+ご利用ありがとうございます。 Azure に Web アプリが正常にデプロイされました。 これで、Azure の Web サイトで Web アプリを表示できます。
 
 ![Web アプリの参照](./media/app-service-web-get-started-java/browse-web-app-1.png)
 

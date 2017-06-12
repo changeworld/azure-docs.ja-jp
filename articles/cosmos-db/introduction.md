@@ -1,25 +1,25 @@
 ---
 title: "Azure Cosmos DB の概要 | Microsoft Docs"
 description: "Azure Cosmos DB について説明します。 このグローバルに分散されたマルチモデル データベースは、待ち時間が少なく、柔軟なスケーラビリティを備え、高可用性を実現することを目指して構築されています。"
-services: cosmosdb
+services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: monicar
 documentationcenter: 
 ms.assetid: a855183f-34d4-49cc-9609-1478e465c3b7
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/10/2017
 ms.author: mimig
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 1591a7935b10e22164d26a09c4e923101b517227
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 0736a6f9790b70686c4d936f2af80d5e42b89615
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 05/31/2017
 
 ---
 
@@ -29,9 +29,9 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 ![Azure Cosmos DB は Microsoft のグローバルに分散されたデータベース サービスであり、柔軟なスケールアウト、短い待ち時間の保証、5 つの整合性モデル、包括的な保証を提供する SLA を特徴としています](./media/introduction/azure-cosmos-db.png)
 
-Azure Cosmos DB は、書き込みのために最適化され、リソースが管理され、スキーマに関係なく使えるデータベース エンジンを採用しており、キーと値、ドキュメント、グラフ、列指向の 4 つのデータ モデルをネイティブでサポートしています。 また、[MongoDB](../documentdb/documentdb-protocol-mongodb.md)、[DocumentDB SQL](../documentdb/documentdb-introduction.md)、[Gremlin](graph-introduction.md) (プレビュー)、[Azure Tables](table-introduction.md) (プレビュー) など、データにアクセスするためのさまざまな API による拡張もサポートしています。 
+Azure Cosmos DB は、書き込みのために最適化され、リソースが管理され、スキーマに関係なく使えるデータベース エンジンを採用しており、キーと値、ドキュメント、グラフ、列指向の 4 つのデータ モデルをネイティブでサポートしています。 また、[MongoDB](mongodb-introduction.md)、[DocumentDB SQL](documentdb-introduction.md)、[Gremlin](graph-introduction.md) (プレビュー)、[Azure Tables](table-introduction.md) (プレビュー) など、データにアクセスするためのさまざまな API による拡張もサポートしています。 
 
-Azure Cosmos DB はもともと、Microsoft 社内の大規模なアプリケーションについて開発者が直面する問題に対処するため、2010 年後期に運用が開始されました。 その後、グローバルに分散されたアプリケーションを構築する作業が問題となるのは Microsoft だけではないことから、Azure DocumentDB というサービスの形で、Azure の開発者を対象に外部にも提供するようになりました。 このたび提供を開始した Azure Cosmos DB は、その DocumentDB がさらに大きな進歩を遂げたものです。 今回 Azure Cosmos DB がリリースされたことを受けて、DocumentDB を使用しているお客様は、(そのデータも含め) Azure Cosmos DB に自動で移行します。 この切り替えはシームレスに行われるため、Azure Cosmos DB が提供する幅広い新機能にすぐにアクセスできます。 
+Azure Cosmos DB はもともと、Microsoft 社内の大規模なアプリケーションについて開発者が直面する問題に対処するため、2010 年後期に運用が開始されました。 その後、グローバル分散型のアプリケーションを構築する作業が問題となるのは Microsoft だけではないことから、Azure DocumentDB というサービスの形で、Azure の開発者を対象に外部にも提供されるようになりました。 このたび提供を開始した Azure Cosmos DB は、DocumentDB がさらに大きな進歩を遂げたものです。 今回 Azure Cosmos DB がリリースされたことを受けて、DocumentDB を使用しているお客様は、(そのデータも含め) Azure Cosmos DB に自動的に移行します。 この切り替えはシームレスに行われるため、Azure Cosmos DB が提供する幅広い新機能にすぐにアクセスできます。 
 
 ## <a name="capability-comparison"></a>機能の比較
 
@@ -59,7 +59,7 @@ Azure Cosmos DB はグローバルに分散されたデータベース サービ
     * クエリには SQL と Gremlin を使用できます。 
 
 * [**世界中のどこからでも、必要なときにスループットとストレージを柔軟にスケール**](#horizontal-scale)
-    * [秒単位](../documentdb/documentdb-request-units.md)と[分単位](https://aka.ms/acdbrupm)の 2 種類の粒度でスループットを簡単にスケールし、必要なときにいつでも変更できます。 
+    * [秒単位](request-units.md)と[分単位](https://aka.ms/acdbrupm)の 2 種類の粒度でスループットを簡単にスケールし、必要なときにいつでも変更できます。 
     * ストレージを[透過的かつ自動的に](partition-data.md)スケールできるため、現在も将来も変わらずサイズに関する要件に対応できます。
 
 * [**応答性に優れたミッション クリティカルなアプリケーションを構築**](#low-latency) 
@@ -68,10 +68,10 @@ Azure Cosmos DB はグローバルに分散されたデータベース サービ
 * [**"常時オン" の可用性の確保**](#high-availability)
     * 1 リージョン内では、99.99% の可用性を実現しています。
     * いくつもの [Azure リージョン](https://azure.microsoft.com/regions)にデプロイすることによって、可用性をさらに高めることもできます。
-    * データ損失ゼロを保証しているリージョンでは、[障害のシミュレーション](../documentdb/documentdb-regional-failovers.md)が可能です。 
+    * データ損失ゼロを保証しているリージョンでは、[障害のシミュレーション](regional-failover.md)が可能です。 
 
 * [**グローバルに分散されたアプリケーションを正しく作成**](#consistency)
-    * [5 種類の整合性モデル](../documentdb/documentdb-consistency-levels.md)により、SQL のような厳密な整合性から NoSQL のような結果整合性 (およびその 2 つの中間) に至るまで、幅広く対応できます。 
+    * [5 種類の整合性モデル](consistency-levels.md)により、SQL のような厳密な整合性から NoSQL のような結果整合性 (およびその 2 つの中間) に至るまで、幅広く対応できます。 
   
 * [**返金保証**](#sla) 
     * データを短時間で取得できない場合には、返金します。 
@@ -96,19 +96,17 @@ Azure Cosmos DB のコンテナーは、2 重に分散されています。
 
 ストレージとスループットにスケールが必要になると、Cosmos DB が全リージョンにまたがるパーティション管理の操作を透過的に実行してくれます。 このため、Cosmos DB からはスケール、分散、障害とは関係なく常に、グローバルに分散されたリソースのシステム イメージが 1 つだけ提供されます。 
 
-Cosmos DB によるリソースのグローバル分散は、[わずかな操作ですぐに利用できます](../documentdb/documentdb-distribute-data-globally.md)。 必要になった時点でボタンを数回クリックする (か、プログラムを使って API の呼び出しを 1 回実行する) だけで、データベース アカウントにリージョンをいくつでも関連付けることができます。 
+Cosmos DB によるリソースのグローバル分散は、[わずかな操作ですぐに利用できます](distribute-data-globally.md)。 必要になった時点でボタンを数回クリックする (か、プログラムを使って API の呼び出しを 1 回実行する) だけで、データベース アカウントにリージョンをいくつでも関連付けることができます。 
 
 Cosmos DB では、データの量やリージョンの数に関係なく、新しく関連付けられた各リージョンでクライアントの要求の処理の 99% が 1 時間以内に開始されることが保証されています。 このことは、ソースとなるリソース パーティションすべてから新しく関連付けられたリージョンにデータをシードおよびコピーする処理を並列的に実行することによって実現しました。 お客様はほかにも、既存のリージョンを削除したり、以前にデータベース アカウントに関連付けたリージョンをオフラインにしたりすることができます。
 
 <a id="data-models"></a>
 ## <a name="multi-model-multi-api-support"></a>モデルも API も多数サポート
  Azure Cosmos DB では、ドキュメント、キーと値、グラフ、列ファミリの 4 つのデータ モデルをネイティブでサポートしています。 Cosmos DB のデータベース エンジンの核となるコンテンツモデルは、アトム レコード シーケンス (ARS) に基づくものです。 アトムは、文字列型、ブール型、数値型などのプリミティブ型の小規模な集合から成る概念です。 レコードは、これらの型で構成される構造体です。 シーケンスは、アトム、レコード、またはシーケンスから成る配列です。 
-
-![モデルと API を多数サポートする Azure Cosmos DB](./media/introduction/azure-cosmos-db-multimodel.png) 
  
  Cosmos DB のデータベース エンジンは、さまざまなデータ モデルを ARS ベースのデータ モデルに効率的に変換し、射影することができます。 Cosmos DB の核となるデータ モデルは、動的型付プログラミング言語を使ってネイティブにアクセスできるほか、JSON としてそのまま公開することができます。 
  
- このサービスではほかにも、データに対するアクセスとクエリに使用するものとして人気の高い API をサポートしています。 Cosmos DB のデータベース エンジンでは現在、[DocumentDB SQL](../documentdb/documentdb-introduction.md)、[MongoDB](../documentdb/documentdb-protocol-mongodb.md)、[Azure Tables](table-introduction.md) (プレビュー)、[Gremlin](graph-introduction.md) (プレビュー) をサポートしています。 引き続き人気の OSS API を使ってアプリケーションを構築することもできます。この場合でも、厳格なテストに耐え、完全に管理され、グローバルに分散されたデータベース サービスのメリットを余すところなく享受できます。 
+ このサービスではほかにも、データに対するアクセスとクエリに使用するものとして人気の高い API をサポートしています。 Cosmos DB のデータベース エンジンでは現在、[DocumentDB SQL](documentdb-introduction.md)、[MongoDB](mongodb-introduction.md)、[Azure Tables](table-introduction.md) (プレビュー)、[Gremlin](graph-introduction.md) (プレビュー) をサポートしています。 引き続き人気の OSS API を使ってアプリケーションを構築することもできます。この場合でも、厳格なテストに耐え、完全に管理され、グローバルに分散されたデータベース サービスのメリットを余すところなく享受できます。 
 
 <a id="horizontal-scale"></a>
 ## <a name="horizontal-scaling-of-storage-and-throughput"></a>ストレージとスループットの水平スケール
@@ -116,7 +114,7 @@ Cosmos DB のコンテナーに格納されるデータ (ドキュメントの�
  
 ![Azure Cosmos DB は水平方向のスケーラビリティを備えています](./media/introduction/azure-cosmos-db-partitioning.png) 
 
-プログラムで [1 秒あたりの要求ユニット (RU/s)](../documentdb/documentdb-request-units.md) を使ってスループットをプロビジョニングすると、Azure Cosmos DB コンテナーのスループットを柔軟にスケールできます。 このとき、サービスの内部では、コンテナーに指定されたスループットを実現するため、リソース パーティションが透過的に管理されます。 そのため、Cosmos DB ではコンテナーに関連付けられている全リージョンでスループットを利用できる状態が確保されます。 新たにプロビジョニングしたスループットは、構成されたスループットの値の変更から 5 秒以内に有効になります。 
+プログラムで [1 秒あたりの要求ユニット (RU/s)](request-units.md) を使ってスループットをプロビジョニングすると、Azure Cosmos DB コンテナーのスループットを柔軟にスケールできます。 このとき、サービスの内部では、コンテナーに指定されたスループットを実現するため、リソース パーティションが透過的に管理されます。 そのため、Cosmos DB ではコンテナーに関連付けられている全リージョンでスループットを利用できる状態が確保されます。 新たにプロビジョニングしたスループットは、構成されたスループットの値の変更から 5 秒以内に有効になります。 
 
 Cosmos DB コンテナーのスループットは、秒単位と[分単位 (RU/m)](request-units-per-minute.md) の 2 種類の粒度でプロビジョニングできます。 分単位の粒度のスループットをプロビジョニングする目的は、秒単位の粒度で発生するワークロードの想定外のスパイクに対処することにあります。 
 
@@ -128,7 +126,7 @@ Cosmos DB では SLA の一環として、お客様に対してエンドツー�
 ## <a name="transparent-multi-homing-and-9999-high-availability"></a>透過的なマルチホームと 99.99% を誇る高可用性
 Azure Cosmos DB のデータベース アカウントに関連付けられているリージョンには、動的に "優先度" を割り当てることができます。 この優先度は、リージョンで障害が発生した場合にどのリージョンに要求を転送するかの判定に使用します。 リージョンに障害が発生すると、Cosmos DB では優先順位に従って自動でフェールオーバーを実施します。
 
-アプリケーションのエンドツーエンドの可用性をテストする必要があるときは、[フェールオーバーを手動でトリガーする](../documentdb/documentdb-regional-failovers.md)ことができます (ただし、1 時間に 2 回までとなります)。 Cosmos DB は、手動によるリージョン間フェールオーバーの実行中にデータ損失が発生しないことを保証しています。 また、あるリージョンに障害が発生した場合については、システムによる自動フェールオーバーの実行中に発生するデータ損失に上限が保証されています。 リージョン間フェールオーバーの後にアプリケーションをもう一度デプロイする必要はありません。可用性に関する SLA は、Azure Cosmos DB によって維持されます。 
+アプリケーションのエンドツーエンドの可用性をテストする必要があるときは、[フェールオーバーを手動でトリガーする](regional-failover.md)ことができます (ただし、1 時間に 2 回までとなります)。 Cosmos DB は、手動によるリージョン間フェールオーバーの実行中にデータ損失が発生しないことを保証しています。 また、あるリージョンに障害が発生した場合については、システムによる自動フェールオーバーの実行中に発生するデータ損失に上限が保証されています。 リージョン間フェールオーバーの後にアプリケーションをもう一度デプロイする必要はありません。可用性に関する SLA は、Azure Cosmos DB によって維持されます。 
 
 このようなシナリオについて、Cosmos DB では、論理 (リージョンに依存しない) エンドポイントまたは物理 (リージョン固有の) エンドポイントを使用してリソースを操作できるようになっています。 前者を使用すると、フェールオーバーが発生した場合にアプリケーションを透過的にマルチホームにすることができます。 後者では、アプリケーションをきめ細かく制御して、読み取りと書き込みを特定のリージョンにリダイレクトできます。 Cosmos DB は、あらゆるデータベース アカウントに対して SLA により 99.99% の可用性を保証しています。 この可用性の数字は、スケール (プロビジョニングされているスループットとストレージ)、リージョン数、特定のデータベースに関連付けられているリージョンの地理的距離のいずれとも無関係に保証されます。 
 
@@ -136,7 +134,7 @@ Azure Cosmos DB のデータベース アカウントに関連付けられてい
 ## <a name="multiple-well-defined-consistency-models"></a>明確に定義された各種の整合性モデル
 分散型の商用データベースは、2 つのカテゴリに分けることができます。1 つは整合性に関して明確に定義された証明可能な選択肢が用意されていないデータベース、もう 1 つはプログラム面で大きく異なる 2 つの選択肢 (厳密な整合性と結果整合性) が存在するデータベースです。 前者はレプリケーションのプロトコルが細かく、アプリケーション開発者にとって負担となります。また、整合性、可用性、待ち時間、スループットのトレードオフを検討するという難しい作業が発生します。 後者は、まったく異なる 2 つの選択肢から 1 つを選ばなければならないという点が大きな重圧となります。 整合性モデルに関する調査や提案はこれまでに幾度となく実施されており、対象となったモデルの種類も 50 以上にのぼりますが、分散データベースのコミュニティでは依然として、厳密な整合性と結果整合性を超える整合性レベルの商品化には至っていません。 
 
-Cosmos DB では、整合性の程度に応じて[明確に定義された 5 種類の整合性モデル](../documentdb/documentdb-consistency-levels.md)のなかから選択することができます。具体的には、"厳密"、"有界整合性制約"、"[セッション](http://dl.acm.org/citation.cfm?id=383631)"、"一貫性のあるプレフィックス"、"結果的" の 5 つが用意されています。 
+Cosmos DB では、整合性の程度に応じて[明確に定義された 5 種類の整合性モデル](consistency-levels.md)のなかから選択することができます。具体的には、"厳密"、"有界整合性制約"、"[セッション](http://dl.acm.org/citation.cfm?id=383631)"、"一貫性のあるプレフィックス"、"結果的" の 5 つが用意されています。 
 
 ![Azure Cosmos DB では、明確に定義された (緩やかな) 整合性モデルがいくつも用意されており、そこから 1 つを選択できます](media/introduction/azure-cosmos-db-consistency-levels.png)
 

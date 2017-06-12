@@ -12,21 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 1/5/2017
+ms.date: 05/12/2017
 ms.author: rambala
-translationtype: Human Translation
-ms.sourcegitcommit: 1a4206c80bc3581034b140de0003c64556b90303
-ms.openlocfilehash: 49ed6dd2184e69487cedae81a89665f5ccc3843d
-ms.lasthandoff: 01/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 67f9626faadc539f26110e5aa23b3c0a878923b9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/15/2017
 
 
 ---
 # <a name="verifying-expressroute-connectivity"></a>ExpressRoute 接続の検証
-ExpressRoute は、接続プロバイダーが提供する専用プライベート接続を介してオンプレミスのネットワークを Microsoft クラウドに拡張するもので、次の&3; つの異なるネットワーク ゾーンが含まれています。
+ExpressRoute は、接続プロバイダーが提供する専用プライベート接続を介してオンプレミスのネットワークを Microsoft クラウドに拡張するもので、次の 3 つの異なるネットワーク ゾーンが含まれています。
 
--   顧客のネットワーク
--   プロバイダーのネットワーク
--   Microsoft のデータセンター
+-     顧客のネットワーク
+-      プロバイダーのネットワーク
+-      Microsoft のデータセンター
 
 このドキュメントの目的は、ユーザーが接続の問題が発生している場所 (発生しているかどうかも) と、その問題がどのゾーン内にあるかを特定し、その結果、その問題を解決するのに適切なチームに支援を依頼できるようにすることです。 問題の解決に Microsoft サポートが必要な場合は、[Microsoft サポート][Support]でサポート チケットを開いてください。
 
@@ -43,20 +44,20 @@ ExpressRoute は、接続プロバイダーが提供する専用プライベー�
 
 ExpressRoute 接続モデル (クラウド交換コロケーション、ポイント ツー ポイントのイーサネット接続、または任意の環境間 (IPVPN)) に応じて、ネットワーク ポイント 3 と 4 がスイッチになる場合があります (レイヤー 2 デバイス)。 図に示されている主なネットワーク ポイントは次のとおりです。
 
-1.  顧客のコンピューティング デバイス (例: サーバーや PC)
-2.  CE: 顧客のエッジ ルーター 
-3.  PE (CE に接続): 顧客のエッジ ルーターに接続している、プロバイダーのエッジ ルーターまたはスイッチ
-4.  PE (MSEE に接続): MSEE に接続している、プロバイダーのエッジ ルーターまたはスイッチ
-5.  MSEE: Microsoft エンタープライズ エッジ (MSEE) ExpressRoute ルーター
-6.  仮想ネットワーク (VNet) ゲートウェイ
-7.  Azure VNet 上のコンピューティング デバイス
+1.    顧客のコンピューティング デバイス (例: サーバーや PC)
+2.    CE: 顧客のエッジ ルーター 
+3.    PE (CE に接続): 顧客のエッジ ルーターに接続している、プロバイダーのエッジ ルーターまたはスイッチ
+4.    PE (MSEE に接続): MSEE に接続している、プロバイダーのエッジ ルーターまたはスイッチ
+5.    MSEE: Microsoft エンタープライズ エッジ (MSEE) ExpressRoute ルーター
+6.    仮想ネットワーク (VNet) ゲートウェイ
+7.    Azure VNet 上のコンピューティング デバイス
 
 クラウド交換コロケーションまたはポイント ツー ポイントのイーサネット接続の接続モデルが使用されている場合は、顧客のエッジ ルーター (2) が MSEE (5) との BGP ピアリングを確立します。 ネットワーク ポイント 3 と 4 はまだ存在しますが、レイヤー 2 デバイスとして若干透過的になります。
 
 任意の環境間 (IPVPN) 接続モデルが使用されている場合は、PE (MSEE に接続) (4) が MSEE (5) との BGP ピアリングを確立します。 その後、ルートは、IPVPN サービス プロバイダーのネットワークを介して顧客のネットワークに反映されます。
 
 >[!NOTE]
->ExpressRoute の可用性が高い場合、Microsoft は、MSEE (5) と MSEE-PR (4) の間で BGP セッションの冗長ペアを必要とします。 また、顧客のネットワークと MSEE-PR の間にはネットワーク パスの冗長ペアも推奨されます。 ただし、任意の環境間 (IPVPN) 接続モデルでは、単一の CE デバイス (2) が&1; つ以上の PE (3) に接続される可能性があります。
+>ExpressRoute の可用性が高い場合、Microsoft は、MSEE (5) と MSEE-PR (4) の間で BGP セッションの冗長ペアを必要とします。 また、顧客のネットワークと MSEE-PR の間にはネットワーク パスの冗長ペアも推奨されます。 ただし、任意の環境間 (IPVPN) 接続モデルでは、単一の CE デバイス (2) が 1 つ以上の PE (3) に接続される可能性があります。
 >
 >
 
@@ -114,18 +115,18 @@ ExpressRoute 回線を運用可能にするには、*[回線の状態]* が *[�
     Etag                             : W/"################################"
     ProvisioningState                : Succeeded
     Sku                              : {
-                                        "Name": "Standard_UnlimitedData",
-                                        "Tier": "Standard",
-                                        "Family": "UnlimitedData"
-                                        }
+                                         "Name": "Standard_UnlimitedData",
+                                         "Tier": "Standard",
+                                         "Family": "UnlimitedData"
+                                           }
     CircuitProvisioningState         : Enabled
     ServiceProviderProvisioningState : Provisioned
     ServiceProviderNotes             : 
     ServiceProviderProperties        : {
-                                        "ServiceProviderName": "****",
-                                        "PeeringLocation": "******",
-                                        "BandwidthInMbps": 100
-                                        }
+                                         "ServiceProviderName": "****",
+                                         "PeeringLocation": "******",
+                                         "BandwidthInMbps": 100
+                                           }
     ServiceKey                       : **************************************
     Peerings                         : []
     Authorizations                   : []
@@ -169,7 +170,7 @@ ExpressRoute 回線が運用可能かどうかを確認するには、特に次�
 >
 
 ##<a name="validate-peering-configuration"></a>ピアリング構成を検証する
-サービス プロバイダーが ExpressRoute 回線のプロビジョニングを完了すると、MSEE-PR (4) と MSEE (5) の間の ExpressRoute 回線でルーティング構成を作成できます。 各 ExpressRoute 回線では、1 つ、2 つ、または 3 つのルーティング コンテキストを有効にしておくことができます。これらのルーティング コンテキストとは、Azure プライベート ピアリング (Azure 内のプライベート仮想ネットワークへのトラフィック)、Azure パブリック ピアリング (Azure 内のパブリック IP アドレスへのトラフィック)、Microsoft ピアリング (Office 365 と CRM Online へのピアリング) です。 ルーティング構成の作成と変更方法の詳細については、「[ExpressRoute 回線のルーティングの作成と変更を行う][CreatePeering]」を参照してください。
+サービス プロバイダーが ExpressRoute 回線のプロビジョニングを完了すると、MSEE-PR (4) と MSEE (5) の間の ExpressRoute 回線でルーティング構成を作成できます。 各 ExpressRoute 回線では、1 つ、2 つ、または 3 つのルーティング コンテキストを有効にしておくことができます。これらのルーティング コンテキストとは、Azure プライベート ピアリング (Azure 内のプライベート仮想ネットワークへのトラフィック)、Azure パブリック ピアリング (Azure 内のパブリック IP アドレスへのトラフィック)、Microsoft ピアリング (Office 365 と Dynamics 365 へのピアリング) です。 ルーティング構成の作成と変更方法の詳細については、「[ExpressRoute 回線のルーティングの作成と変更を行う][CreatePeering]」を参照してください。
 
 ###<a name="verification-via-the-azure-portal"></a>Azure Portal を使用した検証
 >[!IMPORTANT]
@@ -178,8 +179,8 @@ ExpressRoute 回線が運用可能かどうかを確認するには、特に次�
 >
 
 <p/>
->[!NOTE] >レイヤー 3 がサービス プロバイダーによって提供されていて、ポータルでピアリングが空白になっている場合は、PowerShell を使用すると、サービス プロバイダーによって構成された設定を確認できます.
->
+>[!NOTE] レイヤー 3 がサービス プロバイダーによって提供されていて、ポータルでピアリングが空白になっている場合は、PowerShell を使用すると、サービス プロバイダーによって構成された設定を確認できます。
+>>
 >
 
 Azure Portal で、ExpressRoute 回線の状態を確認するには、左側のバーにあるメニューで ![2][2] を選択し、ExpressRoute 回線を選択します。 [すべてのリソース] の下に表示されている ExpressRoute 回線を選択すると、[ExpressRoute circuit (ExpressRoute 回線)] ブレードが開きます。 このブレードの ![3][3] セクションで、次のスクリーン ショットに示されているように、ExpressRoute の要点が表示されます。
@@ -243,8 +244,8 @@ Microsoft ピアリング構成の詳細を取得するには、次のコマン�
 >
 
 <p/>
->[!NOTE] >ピアリングが有効になっていない場合は、割り当てられたプライマリ サブネットとセカンダリ サブネットが、リンクされた MSEE-PR 上の構成と一致するかどうかを確認してください。 さらに、適切な t*VlandId*,、*AzureASN*、d*PeerASN* が MSEE で使用されているかどうかと、これらの値がリンクされた MSEE-PR で使用されている値に対応しているかどうかも確認してください。 MD5 ハッシュを選択すると、MSEE と MSEE-PR のペアで共有キーは同じにする必要があります。 MSEE ルーター上の構成を変更するには、「[ExpressRoute 回線のルーティングの作成と変更を行う][CreatePeering]」を参照してください.  
->
+>[!NOTE] ピアリングが有効になっていない場合は、割り当てられたプライマリ サブネットとセカンダリ サブネットが、リンクされた MSEE-PR 上の構成と一致するかどうかを確認してください。 さらに、適切な *VlandId*、*AzureASN*、*PeerASN* が MSEE で使用されているかどうかと、これらの値がリンクされた MSEE-PR で使用されている値に対応しているかどうかも確認してください。 MD5 ハッシュを選択すると、MSEE と MSEE-PR のペアで共有キーは同じにする必要があります。 MSEE ルーター上の構成を変更するには、「[ExpressRoute 回線のルーティングの作成と変更を行う][CreatePeering]」を参照してください。  
+>>
 >
 
 ###<a name="verification-via-powershell-classic"></a>PowerShell (クラシック) を使用した検証
@@ -283,8 +284,8 @@ Microsoft ピアリング構成の詳細を取得するには、次のコマン�
 >
 
 <p/>
->[!NOTE] >ピアリングが有効になっていない場合は、割り当てられたプライマリ ピアとセカンダリ ピアのサブネットが、リンクされた MSEE-PR 上の構成と一致するかどうかを確認してください。 さらに、適切な t*VlanId*、,*AzureAsn*、d*PeerAsn* が MSEE で使用されているかどうかと、これらの値がリンクされた MSEE-PR で使用されている値に対応しているかどうかも確認してください。 MSEE ルーター上の構成を変更するには、「[ExpressRoute 回線のルーティングの作成と変更を行う][CreatePeering]」を参照してください.
->
+>[!NOTE] ピアリングが有効になっていない場合は、割り当てられたプライマリ ピアとセカンダリ ピアのサブネットが、リンクされた MSEE-PR 上の構成と一致するかどうかを確認してください。 さらに、適切な *VlanId*、*AzureAsn*、*PeerAsn* が MSEE で使用されているかどうかと、これらの値がリンクされた MSEE-PR で使用されている値に対応しているかどうかも確認してください。 MSEE ルーター上の構成を変更するには、「[ExpressRoute 回線のルーティングの作成と変更を行う][CreatePeering]」を参照してください。
+>>
 >
 
 ## <a name="validate-arp-between-microsoft-and-the-service-provider"></a>Microsoft とサービス プロバイダーの間の ARP を検証する
@@ -304,7 +305,7 @@ Microsoft ピアリング構成の詳細を取得するには、次のコマン�
     ARP Info:
 
                  Age           Interface           IpAddress          MacAddress
-                 113             On-Prem       10.0.0.1           e8ed.f335.4ca9
+                 113             On-Prem       10.0.0.1            e8ed.f335.4ca9
                    0           Microsoft       10.0.0.2           7c0e.ce85.4fc9
 
 同様に、*Private*/*Public*/*Microsoft* ピアリングについて、*Primary*/*Secondary* パスで MSEE から ARP テーブルを確認できます。
@@ -315,7 +316,7 @@ Microsoft ピアリング構成の詳細を取得するには、次のコマン�
        
 >[!NOTE]
 >ARP テーブルでインターフェイスの IP アドレスが MAC アドレスにマップされていない場合は、次の情報を確認してください。
->1. MSEE-PR と MSEE の間のリンクに割り当てられた /30 サブネットの最初の IP アドレスが MSEE-PR のインターフェイスで使用されている場合は、 Azure では、常に MSEE の&2; 番目の IP アドレスが使用されます。
+>1. MSEE-PR と MSEE の間のリンクに割り当てられた /30 サブネットの最初の IP アドレスが MSEE-PR のインターフェイスで使用されている場合は、 Azure では、常に MSEE の 2 番目の IP アドレスが使用されます。
 >2. MSEE-PR と MSEE のペアで顧客 (S-Tag) とサービス (S-Tag) VLAN タグの両方が一致することを確認します。
 >
 >
@@ -347,8 +348,8 @@ Microsoft ピアリング構成の詳細を取得するには、次のコマン�
 >
 
 <p/>
->[!NOTE] >特定の宛先に特定のピアリングを介して到達できない場合は、特定のピアリング コンテキストに属している MSEE のルーティング テーブルを確認してください。 一致するプレフィックス (NAT された ID の場合があります) がルーティング テーブルに存在する場合は、パスにファイアウォール/NSG/ACL があるかどうかと、それらがトラフィックを許可しているかどうかを確認してください.
->
+>[!NOTE] 特定の宛先に特定のピアリングを介して到達できない場合は、特定のピアリング コンテキストに属している MSEE のルーティング テーブルを確認してください。 一致するプレフィックス (NAT された ID の場合があります) がルーティング テーブルに存在する場合は、パスにファイアウォール/NSG/ACL があるかどうかと、それらがトラフィックを許可しているかどうかを確認してください。
+>>
 >
 
 特定の *Private* ルーティング コンテキストについて、*Primary* パスで MSEE からルーティング テーブル全体を取得するには、次のコマンドを使用します。

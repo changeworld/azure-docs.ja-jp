@@ -16,10 +16,11 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 9da3cf830857211fe414f55e250e222b9d17438b
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 098904d8b5262d8a19d1c10003e0bcaa668ef2dc
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -42,7 +43,7 @@ AWS やオンプレミスの仮想化ソリューションから Azure に VHD �
 |----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | Azure Managed Disks に移行する既存の AWS EC2 インスタンスがある                                     | [アマゾン ウェブ サービス (AWS) から Azure Managed Disks に移行する](aws-to-azure.md)                           |
 | 複数の Azure VM を作成するためのイメージとして使用する他の仮想化プラットフォームの VM がある。 | [汎用化された VHD の Azure へのアップロードと、Managed Disks を使用した新しい VM の作成](upload-generalized-managed.md)に関する記事 |
-| Azure で再作成する一意にカスタマイズされた VM がある。                                                      | [特殊化された VHD の Azure へのアップロードと、Managed Disks を使用した新しい VM の作成](upload-specialized.md)に関する記事         |
+| Azure で再作成する一意にカスタマイズされた VM がある。                                                      | [特殊化された VHD の Azure へのアップロードと、Managed Disks を使用した新しい VM の作成](create-vm-specialized.md)に関する記事         |
 
 
 ## <a name="overview-of-managed-disks"></a>Managed Disks の概要

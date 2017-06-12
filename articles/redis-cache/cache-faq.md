@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 04/27/2017
+ms.date: 05/25/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: cbd764b3c6ce912c825aa2756ac6f35c23d047bf
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: eeddc0da23192a0082f2fcddbb0cc5f3e4a72074
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -76,8 +77,6 @@ Azure Redis Cache についてよく寄せられる質問の回答、パター�
 このセクションの FAQ では、監視とトラブルシューティングに関する一般的な質問について説明します。 Azure Redis Cache インスタンスの監視とトラブルシューティングの詳細については、「[Azure Redis Cache の監視方法](cache-how-to-monitor.md)」および「[Azure Redis Cache のトラブルシューティング方法](cache-how-to-troubleshoot.md)」を参照してください。
 
 * [キャッシュの正常性とパフォーマンスの監視方法](#how-do-i-monitor-the-health-and-performance-of-my-cache)
-* [キャッシュ診断ストレージ アカウントの設定を変更した場合](#my-cache-diagnostics-storage-account-settings-changed-what-happened)
-* [新しいキャッシュの診断を有効にして、それ以外は有効にしない理由](#why-are-diagnostics-enabled-for-some-new-caches-but-not-others)
 * [タイムアウトが発生する理由](#why-am-i-seeing-timeouts)
 * [クライアントがキャッシュから切断される理由](#why-was-my-client-disconnected-from-the-cache)
 
@@ -426,12 +425,6 @@ Redis Cache の **[Resource menu]** (リソース メニュー) にも、キャ�
 * **[新しいサポート要求]** には、キャッシュのサポート要求を開くためのオプションが用意されています。
 
 これらのツールによって、Azure Redis Cache インスタンスの正常性を監視し、キャッシュ アプリケーションを管理できます。 「[Azure Redis Cache の構成方法](cache-configure.md)」の「サポートおよびトラブルシューティングの設定」を参照してください。
-
-### <a name="my-cache-diagnostics-storage-account-settings-changed-what-happened"></a>キャッシュ診断ストレージ アカウントの設定を変更した場合
-同じリージョンやサブスクリプションにあるキャッシュは診断ストレージ設定を共有するため、構成が変更される (診断が有効/無効に設定される、またはストレージ アカウントが変更される) と、その変更がそのリージョンにあるサブスクリプションのすべてのキャッシュに適用されます。 キャッシュの診断設定が変更された場合は、同じサブスクリプションおよびリージョンの、別のキャッシュの診断設定が変更されたかどうかを確認します。 確認する 1 つの方法として、 `Write DiagnosticSettings` イベントのキャッシュの監査ログを表示します。 監査ログの操作方法の詳細については、「[イベントと監査ログの表示](../monitoring-and-diagnostics/insights-debugging-with-events.md)」と「[Resource Manager の監査操作](../azure-resource-manager/resource-group-audit.md)」を参照してください。 Azure Redis Cache イベントの監視の詳細については、「 [処理とアラート](cache-how-to-monitor.md#operations-and-alerts)」を参照してください。
-
-### <a name="why-are-diagnostics-enabled-for-some-new-caches-but-not-others"></a>新しいキャッシュの診断を有効にして、それ以外は有効にしない理由
-同じリージョンとサブスクリプションのキャッシュは、同じ診断ストレージの設定を共有します。 新しいキャッシュを、別のキャッシュとして同じリージョンとサブスクリプションに作成し、診断を有効にすると、同じ設定が新しいキャッシュの診断で使用されます。
 
 <a name="cache-timeouts"></a>
 

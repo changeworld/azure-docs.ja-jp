@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2017
-ms.author: sethm;jotaub;shvija
+ms.author: sethm;shvija
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
 ms.openlocfilehash: 7bae4ae6d41e6dc6515a3fcdf574ffd193ae1aa3
 ms.contentlocale: ja-jp
 ms.lasthandoff: 03/14/2017
+
 
 ---
 
@@ -64,7 +65,7 @@ Azure Event Hubs は、サポートされているすべての Azure リージ�
 ## <a name="best-practices"></a>ベスト プラクティス
 
 ### <a name="how-many-partitions-do-i-need"></a>パーティションはいくつ必要ですか。
-セットアップの終了後は、イベント ハブのパーティション数を変更できないことに注意してください。 作業を開始する前に、その点を考慮して、必要なパーティションの数を検討する必要があります。  
+セットアップの終了後は、Event Hub のパーティション数を変更できないことに注意してください。 作業を開始する前に、その点を考慮して、必要なパーティションの数を検討する必要があります。 
 
 Event Hubs は、コンシューマー グループ 1 つにつきパーティション リーダーを 1 つ許可するように設計されています。 ほとんどのユース ケースでは、既定の設定の 4 つのパーティションで十分です。 イベント処理のスケール設定を予定している場合は、パーティションを追加したほうが良い場合があります。 パーティションには特定のスループット制限はありませんが、名前空間の総スループットは、スループット単位の数によって制限されます。 名前空間内のスループット単位の数を増やすときは、独自の最大スループットを実現するために、同時読み取りを許可するための追加のパーティションが必要になる場合があります。
 
@@ -76,13 +77,13 @@ Event Hubs は、コンシューマー グループ 1 つにつきパーティ�
 Event Hubs 料金の詳細については、「 [Event Hubs 料金](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
 
 ### <a name="is-there-a-charge-for-retaining-event-hubs-events-for-more-than-24-hours"></a>Event Hubs のイベントを 24 時間以上保有する場合に料金はかかりますか。
-Event Hubs Standard レベルでは、24 時間を超えて最大 7 日間メッセージを保有できます。 保存されたイベントの合計数が選択したスループット単位数のストレージの上限 (スループット単位あたり 84 GB) を超える場合、上限を超えるサイズには公開された Azure BLOB ストレージ レートの料金が発生します。 各スループット単位のストレージの上限は、スループット単位が受信の上限まで使用された場合でも、24 時間の保有期間に対するすべてのストレージ コストをカバーします。
+Event Hubs Standard レベルでは、24 時間を超えて最大 7 日間メッセージを保持できます。 保存されたイベントの合計数が選択したスループット単位数のストレージの上限 (スループット単位あたり 84 GB) を超える場合、上限を超えるサイズには公開された Azure Blob ストレージ レートの料金が発生します。 各スループット単位のストレージの上限は、スループット単位が受信の上限まで使用された場合でも、24 時間の保持期間に対するすべてのストレージ コストをカバーします。
 
 ### <a name="how-is-the-event-hubs-storage-size-calculated-and-charged"></a>Event Hubs のストレージ サイズはどのように計算され、課金されますか。
-保存されたすべてのイベントの合計サイズは、すべての Event Hubs のイベント ヘッダーまたはディスク ストレージ構造の内部オーバーヘッドを含めて、1 日中測定されます。 1 日の終わりに、ピーク ストレージ サイズが計算されます。 1 日あたりのストレージの上限は、その日に選択されたスループット単位の最小数に基づいて計算されます (それぞれのスループット単位には 84 GB の上限が与えらえます)。 合計サイズが計算された 1 日あたりのストレージの上限を超過した場合は、超過したストレージが、Azure BLOB ストレージ レート ( **Locally Redundant Storage (LRS)** ) を使用して課金されます。
+保存されたすべてのイベントの合計サイズは、すべての Event Hubs のイベント ヘッダーまたはディスク ストレージ構造の内部オーバーヘッドを含めて、1 日中測定されます。 1 日の終わりに、ピーク ストレージ サイズが計算されます。 1 日あたりのストレージの上限は、その日に選択されたスループット単位の最小数に基づいて計算されます (それぞれのスループット単位には 84 GB の上限が与えらえます)。 合計サイズが計算された 1 日あたりのストレージの上限を超過した場合は、超過したストレージが、Azure Blob ストレージ レート ( **Locally Redundant Storage (LRS)** ) を使用して課金されます。
 
-### <a name="how-are-event-hubs-ingress-events-calculated"></a>Event Hubs の入力イベントはどのように計算されますか。
-Event Hubs に送信されたイベントは、それぞれが課金対象メッセージとしてカウントされます。 1 つの *入力イベント* は 64 KB 以下の単位のデータと定義されます。 サイズが 64 KB 以下のイベントは、1 つの課金対象イベントとみなされます。 イベントが 64 KB よりも大きい場合、課金対象イベントの数はイベント サイズに従って計算され、64 KB の倍数になります。 たとえば、Event Hubs に送信された 8 KB のイベントは 1 つのイベントとして課金されますが、Event Hubs に送信された 96 KB のメッセージは 2 つのイベントとして課金されます。
+### <a name="how-are-event-hubs-ingress-events-calculated"></a>Event Hubs のイングレス イベントはどのように計算されますか。
+Event Hubs に送信されたイベントは、それぞれが課金対象メッセージとしてカウントされます。 1 つの *イングレス イベント* は 64 KB 以下の単位のデータと定義されます。 サイズが 64 KB 以下のイベントは、1 つの課金対象イベントとみなされます。 イベントが 64 KB よりも大きい場合、課金対象イベントの数はイベント サイズに従って計算され、64 KB の倍数になります。 たとえば、Event Hub に送信された 8 KB のイベントは 1 つのイベントとして課金されますが、Event Hub に送信された 96 KB のメッセージは 2 つのイベントとして課金されます。
 
 Event Hub や管理操作、チェックポイントなどの制御呼び出しで使用されるイベントは、課金対象受信イベントとしてはカウントされませんが、スループット単位の上限まで蓄積されます。
 
@@ -93,8 +94,8 @@ Event Hub や管理操作、チェックポイントなどの制御呼び出し�
 Archive が有効になるのは、名前空間内のいずれかのイベント ハブでアーカイブ機能が有効になっている場合です。 Archive は購入済みのスループット単位ごとに時間単位で課金されます。 スループット単位数が増減すると、Event Hubs Archive の課金についても、全体の時間の増分にスループット単位数の変化が反映されます。
 Event Hubs Archive の課金の詳細については、[Event Hubs の料金情報](https://azure.microsoft.com/pricing/details/event-hubs/)に関するページをご覧ください。
 
-### <a name="will-i-be-billed-for-the-storage-account-i-select-for-event-hubs-archive"></a>Event Hubs アーカイブ用に選択した Storage アカウントに対しては課金されますか。
-イベント ハブで有効にされた場合、Archive はお客様の指定したストレージ アカウントを使用します。 お客様のストレージ アカウントであるため、このアカウントに関する変更はお客様の Azure サブスクリプションに課金されます。
+### <a name="will-i-be-billed-for-the-storage-account-i-select-for-event-hubs-archive"></a>Event Hubs Archive 用に選択したストレージ アカウントに対しては課金されますか。
+Event Hub で有効にされた場合、Archive はお客様の指定したストレージ アカウントを使用します。 お客様のストレージ アカウントであるため、このアカウントに関する変更はお客様の Azure サブスクリプションに課金されます。
 
 ## <a name="quotas"></a>クォータ
 
@@ -107,7 +108,7 @@ Event Hubs のすべてのクォータの一覧については、[クォータ](
 発生する可能性がある Event Hubs 例外の一覧については、[例外の概要](event-hubs-messaging-exceptions.md)に関するページを参照してください。
 
 ### <a name="diagnostic-logs"></a>診断ログ
-Event Hubs では、アーカイブ エラー ログと運用ログの&2; 種類の[診断ログ](event-hubs-diagnostic-logs.md)がサポートされており、両方とも JSON で表されます。この診断ログは Azure Portal で有効にできます。
+Event Hubs では、アーカイブ エラー ログと運用ログの 2 種類の[診断ログ](event-hubs-diagnostic-logs.md)がサポートされており、両方とも JSON で表されます。この診断ログは Azure Portal で有効にできます。
 
 ### <a name="support-and-sla"></a>サポートと SLA
 Event Hubs のテクニカル サポートは、 [コミュニティ フォーラム](https://social.msdn.microsoft.com/forums/azure/home)を通して利用できます。 課金とサブスクリプション管理のサポートは無料で提供されます。

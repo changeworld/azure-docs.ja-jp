@@ -16,10 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/10/2017
 ms.author: masaran;trinadhk;pullabhk;markgal
-translationtype: Human Translation
-ms.sourcegitcommit: d8289128414bc67a7c064c827a9bec047f6f22bc
-ms.openlocfilehash: 1462ee0e247fb5d590a70d23ece5723a065b4140
-ms.lasthandoff: 01/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: e8838095d621957fe6b4ee50464154617e1c4740
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -42,7 +43,7 @@ ms.lasthandoff: 01/28/2017
 Infrastructure as a Server (IaaS) ワークロード (Azure の VM など) を保護することもできます。
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して&2; 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、Resource Manager モデルを使用してデプロイされた VM を復元するための情報および手順を示しています。
+> Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、Resource Manager モデルを使用してデプロイされた VM を復元するための情報および手順を示しています。
 >
 >
 
@@ -69,9 +70,12 @@ Azure Backup Server を使用したワークロードの保護には、数多く
 Windows Server の重複除去を使用して DPM ストレージの重複を除去することができます。 Hyper-V VM にデプロイするときは、 [DPM と重複除去](https://technet.microsoft.com/library/dn891438.aspx) が連携するしくみの詳細を確認してください。
 
 > [!NOTE]
-> ドメイン コントローラーとして実行されているコンピューターに Azure Backup Server をインストールすることはできません。
->
->
+> Azure Backup Server は、単一目的の専用サーバーで動作するように設計されています。 Azure Backup Server を次の場所にインストールすることはできません。
+> - ドメイン コントローラーとして実行されているコンピューター
+> - アプリケーション サーバー ロールがインストールされているコンピューター
+> - System Center Operations Manager 管理サーバーであるコンピューター
+> - Exchange Server が実行されているコンピューター
+> - クラスターのノードであるコンピューター
 
 Azure Backup Server はドメインに参加させる必要があります。 サーバーを別のドメインに移動する場合には、Azure Backup Server のインストール前に新しいドメインにサーバーを参加させることをお勧めします。 デプロイ後の、新しいドメインへの既存の Azure Backup Server マシンの移動は *サポートされていません*。
 

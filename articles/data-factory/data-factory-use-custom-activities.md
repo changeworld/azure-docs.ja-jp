@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 864526efd2bc90bdd4beeb4c81173e85eee6f34b
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 44e0d7c920bc32bf3293ca5ab197b6d2332a43f8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -35,7 +36,6 @@ ms.lasthandoff: 04/27/2017
 > * [Data Lake Analytics U-SQL アクティビティ](data-factory-usql-activity.md)
 > * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
 
-
 Azure Data Factory パイプラインでは、2 種類のアクティビティを使用できます。
 
 - [サポートされるソース データ ストアとシンク データ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)の間でデータを移動する[データ移動アクティビティ](data-factory-data-movement-activities.md)。
@@ -51,7 +51,7 @@ Data Factory でサポートされていないデータ ストアとの間でデ
 > - カスタム .NET アクティビティは、Windows ベースの HDInsight クラスター上でのみ実行します。 この制限を回避するには、Map Reduce アクティビティを使って、Linux ベースの HDInsight クラスター上でカスタム Java コードを実行します。 もう 1 つの方法は、HDInsight クラスターを使う代わりに仮想マシンの Azure Batch プールを使ってカスタム アクティビティを実行します。
 > - カスタム アクティビティからデータ管理ゲートウェイを使用してオンプレミスのデータ ソースにアクセスすることはできません。 現時点では、[データ管理ゲートウェイ](data-factory-data-management-gateway.md)でサポートされるのは Data Factory でのコピー アクティビティとストアド プロシージャ アクティビティのみです。   
 
-## <a name="walkthrough"></a>チュートリアル
+## <a name="walkthrough-create-a-custom-activity"></a>チュートリアル: カスタム アクティビティの作成
 ### <a name="prerequisites"></a>前提条件
 * Visual Studio 2012/2013/2015
 * [Azure .NET SDK][azure-developer-center] のダウンロードとインストール
@@ -63,7 +63,7 @@ Data Factory でサポートされていないデータ ストアとの間でデ
 
 1. **Azure ポータル** を使用して、 [Azure Batch アカウント](http://portal.azure.com)を作成します。 手順については、「[Azure Batch アカウントの作成と管理][batch-create-account]」の記事を参照してください。
 2. Azure Batch のアカウント名とアカウント キー、URI、プール名をメモしておきます。 Azure Batch のリンクされたサービスを作成するためにこれらが必要になります。
-    1. Azure Batch アカウントのホーム ページに、`https://myaccount.westus.batch.azure.com` の形式で **URL** が表示されます。 この例では、**myaccount** が Azure Batch のアカウント名です。 リンクされたサービスの定義で使用する URI は、URL からアカウント名を除いたものです。 (例: `https://westus.batch.azure.com`)。
+    1. Azure Batch アカウントのホーム ページに、`https://myaccount.westus.batch.azure.com` の形式で **URL** が表示されます。 この例では、**myaccount** が Azure Batch のアカウント名です。 リンクされたサービスの定義で使用する URI は、URL からアカウント名を除いたものです。 (例: `https://<region>.batch.azure.com`)。
     2. 左側のメニューの **[キー]** をクリックして、**プライマリ アクセス キー**をコピーします。
     3. 既存のプールを使用するには、メニューの **[プール]** をクリックして、プールの **ID** をメモしておきます。 既存のプールがない場合は、次の手順に進みます。     
 2. **Azure Batch プール**を作成します。
@@ -88,7 +88,7 @@ Data Factory でサポートされていないデータ ストアとの間でデ
 1. シンプルなデータ変換/処理ロジックが含まれまるカスタム アクティビティを作成します。
 2. カスタム アクティビティを使用するパイプラインを備えた Azure Data Factory を作成します。
 
-## <a name="create-a-custom-activity"></a>カスタム アクティビティの作成
+### <a name="create-a-custom-activity"></a>カスタム アクティビティの作成
 .NET カスタム アクティビティを作成するには、その **IDotNetActivity** インターフェイスを実装したクラスを含む **.NET クラス ライブラリ**プロジェクトを作成します。 このインターフェイスには、 [Execute](https://msdn.microsoft.com/library/azure/mt603945.aspx) という 1 つのメソッドのみが含まれ、そのシグネチャは次のとおりです。
 
 ```csharp
@@ -112,10 +112,10 @@ public IDictionary<string, string> Execute(
 ### <a name="procedure"></a>手順
 1. **.NET クラス ライブラリ** プロジェクトを作成します。
    <ol type="a">
-     <li><b>Visual Studio 2015</b>、<b>Visual Studio 2013</b>、または <b>Visual Studio 2012</b> を起動します。</li>
+     <li><b>Visual Studio 2017</b>、<b>Visual Studio 2015</b>、<b>Visual Studio 2013</b>、または <b>Visual Studio 2012</b> を起動します。</li>
      <li><b>[ファイル]</b> をクリックし、<b>[新規作成]</b> をポイントして、<b>[プロジェクト]</b> をクリックします。</li>
      <li><b>[テンプレート]</b> を展開し、<b>[Visual C#]</b> を選択します。 このチュートリアルでは C# を使用しますが、カスタム アクティビティの開発には、どの .NET 言語でも使用できます。</li>
-     <li>右側にあるプロジェクトの種類の一覧から <b>[クラス ライブラリ]</b> を選択します。</li>
+     <li>右側にあるプロジェクトの種類の一覧から <b>[クラス ライブラリ]</b> を選択します。 VS 2017 で、<b>[クラス ライブラリ (.NET Framework)]</b>  を選択します。</li>
      <li><b>[プロジェクト名]</b> に「<b>MyDotNetActivity</b>」と入力します。</li>
      <li><b>[場所]</b> は <b>[C:\ADFGetStarted]</b> を選択します。</li>
      <li><b>[OK]</b> をクリックしてプロジェクトを作成します。</li>
@@ -137,16 +137,27 @@ public IDictionary<string, string> Execute(
 5. 次の **using** ステートメントをプロジェクト内のソース ファイルに追加します。
 
     ```csharp
-    using System.IO;
-    using System.Globalization;
-    using System.Diagnostics;
-    using System.Linq;
 
-    using Microsoft.Azure.Management.DataFactories.Models;
-    using Microsoft.Azure.Management.DataFactories.Runtime;
+// Comment these lines if using VS 2017
+using System.IO;
+using System.Globalization;
+using System.Diagnostics;
+using System.Linq;
+// --------------------
 
-    using Microsoft.WindowsAzure.Storage;
-    using Microsoft.WindowsAzure.Storage.Blob;
+// Comment these lines if using <= VS 2015
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+// ---------------------
+
+using Microsoft.Azure.Management.DataFactories.Models;
+using Microsoft.Azure.Management.DataFactories.Runtime;
+
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
     ```
 6. **名前空間**の名前を **MyDotNetActivityNS** に変更します。
 
@@ -378,14 +389,13 @@ public IDictionary<string, string> Execute(
     > カスタム アクティビティの zip ファイル内のファイルは、いずれもサブフォルダーがない **最上位レベル** に置く必要があります。
 
     ![バイナリ出力ファイル](./media/data-factory-use-custom-activities/Binaries.png)
-14. **customactivitycontainer** という名前の BLOB コンテナーがまだ存在していない場合は、作成します。
+14. **customactivitycontainer** という名前の BLOB コンテナーがまだ存在していない場合は、作成します。    
 15. AzureStorageLinkedService によって参照される**汎用** Azure Blob Storage (ホット/クール BLOB ストレージでない) の customactivitycontainer に MyDotNetActivity.zip を BLOB としてアップロードします。  
 
-> [!NOTE]
-> この .NET アクティビティ プロジェクトを Visual Studio で Data Factory プロジェクトを含むソリューションに追加し、Data Factory アプリケーション プロジェクトから .NET アクティビティ プロジェクトへの参照を追加する場合は、最後の 2 つの手順 (手動での zip ファイルの作成と汎用 Azure Blob Storage へのアップロード) を実行する必要はありません。 Data Factory エンティティを Visual Studio を使用して発行すると、これらの手順は発行プロセスによって自動的に実行されます。 Visual Studio を使用した Data Factory エンティティの作成と発行の詳細については、記事「[Visual Studio を使用した初めてのパイプラインの作成](data-factory-build-your-first-pipeline-using-vs.md)」と記事「[チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](data-factory-copy-activity-tutorial-using-visual-studio.md)」を参照してください。  
+> [!IMPORTANT]
+> この .NET アクティビティ プロジェクトを Visual Studio で Data Factory プロジェクトを含むソリューションに追加し、Data Factory アプリケーション プロジェクトから .NET アクティビティ プロジェクトへの参照を追加する場合は、最後の 2 つの手順 (手動での zip ファイルの作成と汎用 Azure Blob Storage へのアップロード) を実行する必要はありません。 Data Factory エンティティを Visual Studio を使用して発行すると、これらの手順は発行プロセスによって自動的に実行されます。 詳しくは、[Visual Studio での Data Factory プロジェクト](#data-factory-project-in-visual-studio)に関するセクションをご覧ください。
 
-
-## <a name="create-a-data-factory"></a>Data Factory を作成する。 
+## <a name="create-a-pipeline-with-custom-activity"></a>カスタム アクティビティを使用したパイプラインの作成
 カスタム アクティビティを作成し、バイナリと zip ファイルを**汎用**の Azure ストレージ アカウントの BLOB コンテナーにアップロードしました。 ここでは、カスタム アクティビティを使用したパイプラインで Azure Data Factory を作成します。
 
 カスタム アクティビティの入力データセットは、Blob Storage の adftutorial コンテナーの customactivityinput フォルダー内にある BLOB (ファイル) を表します。 カスタム アクティビティの出力データセットは、Blob Storage の adftutorial コンテナーの customactivityoutput フォルダー内にある出力 BLOB を表します。
@@ -650,7 +660,21 @@ adftutorial\customactivityoutput folder フォルダーには、1 つ以上の�
 
 データセットやパイプラインを監視するための詳細な手順については、「 [パイプラインの監視と管理](data-factory-monitor-manage-pipelines.md) 」を参照してください。      
 
-### <a name="data-factory-and-batch-integration"></a>Data Factory と Batch の統合
+## <a name="data-factory-project-in-visual-studio"></a>Visual Studio でのData Factory プロジェクト  
+Data Factory エンティティを作成して発行するには、Azure ポータルではなく Visual Studio を使用します。 Visual Studio を使用した Data Factory エンティティの作成と発行の詳細については、記事「[Visual Studio を使用した初めてのパイプラインの作成](data-factory-build-your-first-pipeline-using-vs.md)」と記事「[Azure BLOB から Azure SQL にデータをコピーする](data-factory-copy-activity-tutorial-using-visual-studio.md)」を参照してください。
+
+Visual Studio で Data Factory プロジェクトを作成する場合は、次の追加の手順を実行します。
+ 
+1. カスタム アクティビティ プロジェクトを含む Visual Studio ソリューションに Data Factory プロジェクトを追加します。 
+2. Data Factory プロジェクトから .NET アクティビティ プロジェクトへの参照を追加します。 Data Factory プロジェクトを右クリックし、**[追加]** をポイントして、**[参照]** をクリックします。 
+3. **[参照の追加]** ダイアログボックスで、**MyDotNetActivity** プロジェクトを選択し、**[OK]** をクリックします。
+4. ソリューションをビルドして発行します。
+
+    > [!IMPORTANT]
+    > Data Factory エンティティの発行時に、zip ファイルが自動的に作成され、BLOB コンテナー: customactivitycontainer にアップロードされます。 BLOB コンテナーが存在しない場合、これも自動的に作成されます。  
+
+
+## <a name="data-factory-and-batch-integration"></a>Data Factory と Batch の統合
 Data Factory サービスによって、Azure Batch に **adf-poolname: job-xxx** という名前のジョブが作成されます。 左側のメニューで **[ジョブ]** をクリックします。 
 
 ![Azure Data Factory - Batch ジョブ](media/data-factory-use-custom-activities/data-factory-batch-jobs.png)
@@ -880,7 +904,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 ```
 
 ## <a name="create-a-custom-activity-by-using-net-sdk"></a>.NET SDK を使ってカスタム アクティビティを作成する
-次のコードでは、.NET SDK を使って、この記事のチュートリアルからデータ ファクトリを作成します。 SDK を使ってプログラムでパイプラインを作成する方法について詳しくは、[こちらの記事](data-factory-copy-activity-tutorial-using-dotnet-api.md)をご覧ください。
+この記事のチュートリアルでは、Azure ポータルを使って、カスタム アクティビティを使用するパイプラインを備えたデータ ファクトリを作成します。 次のコードでは、代わりに .NET SDK を使用してデータ ファクトリを作成する方法を示しています。 SDK を使ってプログラムによりパイプラインを作成する方法については、「[コピー アクティビティがあるパイプラインを .NET API で作成する](data-factory-copy-activity-tutorial-using-dotnet-api.md)」をご覧ください。 
 
 ```csharp
 using System;
@@ -1119,8 +1143,11 @@ namespace DataFactoryAPITestApp
 }
 ```
 
+## <a name="debug-custom-activity-in-visual-studio"></a>Visual Studio でカスタム アクティビティをデバッグする
+GitHub の [Azure Data Factory - ローカル環境](https://github.com/gbrueckl/Azure.DataFactory.LocalEnvironment)のサンプルには、Visual Studio 内でカスタム .NET アクティビティをデバッグできるツールが含まれています。  
 
-## <a name="examples"></a>例
+
+## <a name="sample-custom-activities-on-github"></a>GitHub 上のサンプルのカスタム アクティビティ
 | サンプル | カスタム アクティビティの動作 |
 | --- | --- |
 | [HTTP データ ダウンローダー](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample) |Data Factory のカスタム C# アクティビティを使用して、HTTP エンドポイントから Azure Blob Storage にデータをダウンロードします。 |
@@ -1128,8 +1155,6 @@ namespace DataFactoryAPITestApp
 | [R スクリプトの実行](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample) |既に R がインストールされている HDInsight クラスターで RScript.exe を実行し、R スクリプトを呼び出します。 |
 | [クロス AppDomain .NET アクティビティ](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) |Data Factory 起動ツールによって使用されているアセンブリ バージョンとは別のバージョンを使用します。 |
 | [Azure Analysis Services でモデルを再処理する](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample) |  Azure Analysis Services でモデルを再処理します。 |
-| [カスタム アクティビティをローカルにデバッグする](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFCustomActivityRunner) | カスタム アクティビティ ランナーを使うと、パイプラインで構成されている情報を使うことで、Azure Data Factory (ADF) のカスタム .NET アクティビティにステップインしてデバッグできます。 | 
-
 
 [batch-net-library]: ../batch/batch-dotnet-get-started.md
 [batch-create-account]: ../batch/batch-account-create-portal.md

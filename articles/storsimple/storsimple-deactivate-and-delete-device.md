@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/27/2017
+ms.date: 05/17/2017
 ms.author: anbacker
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 80fde4dfe7de89dffd39242d94fe46f68e41d611
-ms.openlocfilehash: 833dee54ef9de46c50e9e760594359baf4f89b5e
-ms.lasthandoff: 02/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: c000a642aa088ac80cc7077453b87e9a47f96900
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -29,7 +30,7 @@ StorSimple デバイスをサービスから切り離したいことがありま
 デバイスを非アクティブ化すると、デバイスにローカルに保存されていたすべてのデータにアクセスできなくなります。 復元できるのは、クラウドに保存されていた、デバイスに関連付けられているデータだけです。  
 
 > [!WARNING]
-> 非アクティブ化は永続的な操作であるため、元に戻すことはできません。 ファクトリで最初にリセットしない限り、非アクティブ化されたデバイスを StorSimple Manager サービスに登録することはできません。 
+> 非アクティブ化は永続的な操作であるため、元に戻すことはできません。 非アクティブ化されたデバイスは、既定の工場出荷時設定にリセットしてからでなければ、StorSimple Manager サービスに登録することはできません。 
 > 
 > 出荷時の設定にリセットするプロセスにより、お使いのデバイスにローカルに保存されているすべてのデータが削除されます。 したがって、デバイスを非アクティブ化する前に、すべてのデータのクラウド スナップショットを取得することが不可欠です。 これを行うことにより、後ですべてのデータを回復できます。
 > 

@@ -1,13 +1,13 @@
 ---
 title: "Azure Cosmos DB: 1 分あたりの要求ユニット (RU/m) | Microsoft Docs"
 description: "1 分あたりの要求ユニットを使用してコストを削減する方法について説明します。"
-services: cosmosdb
+services: cosmos-db
 documentationcenter: 
 author: arnomicrosoft
 manager: jhubbard
 editor: 
 ms.assetid: 
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: acomet
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 878b7335fb5e09bc8704f7211cc6293ad6ea4bea
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: ea63b988a72801ae4c288048021a915b20a34794
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -112,7 +112,7 @@ await client.ReplaceOfferAsync(offerV2);
 
 このセクションでは、1 分あたりの要求ユニットの使用が適していると考えられるシナリオを簡単に紹介します。
 
-**開発/テスト環境:** 使用が適していると言えます。 開発中にさまざまなワークロードでアプリケーションをテストしているときには、RU/m を使うと柔軟性を高めることができます。 Azure Cosmos DB のテストに利用できるツールとしては無料の[エミュレーター](../documentdb/documentdb-nosql-local-emulator.md)も優秀ですが、 クラウド環境で作業を開始する場合には、RU/m を使えばその場限りのパフォーマンス ニーズに対応できる優れた柔軟性が得られます。 最初の時点でパフォーマンス面のニーズを心配する必要が少なくなり、これまでよりも多くの時間を開発に割けるようになります。 初めは RU/s のプロビジョニングを最小限にして RU/m を有効にすることをお勧めします。
+**開発/テスト環境:** 使用が適していると言えます。 開発中にさまざまなワークロードでアプリケーションをテストしているときには、RU/m を使うと柔軟性を高めることができます。 Azure Cosmos DB のテストに利用できるツールとしては無料の[エミュレーター](local-emulator.md)も優秀ですが、 クラウド環境で作業を開始する場合には、RU/m を使えばその場限りのパフォーマンス ニーズに対応できる優れた柔軟性が得られます。 最初の時点でパフォーマンス面のニーズを心配する必要が少なくなり、これまでよりも多くの時間を開発に割けるようになります。 初めは RU/s のプロビジョニングを最小限にして RU/m を有効にすることをお勧めします。
 
 **予測が困難で、スパイクがよく発生し、分単位の粒度が必要:** 使用が適しており、25 ～ 75% の節約が可能です。 RU/m では、これまでに大幅なコスト削減を実現してきました。ほとんどの運用環境のシナリオが、このグループに該当します。 IoT ワークロードで 1 分間にスパイクが数回発生する場合や、システムで一度に大量のデータを挿入するときにクエリを実行する場合には、ニーズのスパイクに対応するために追加の容量が必要になります。 以下で紹介する段階的アプローチを使って、リソースに対するニーズを最適化することをお勧めします。
 
@@ -175,8 +175,8 @@ var query = client.CreateDocumentQuery<Book>(
 
 この記事では、Azure Cosmos DB でのパーティション分割のしくみ、パーティション分割コレクションの作成方法、またアプリケーションに最適なパーティション キーの選択方法を説明しました。
 
-* Azure Cosmos DB のスケールとパフォーマンスのテストを行う。 サンプルについては、「[Azure Cosmos DB のパフォーマンスとスケールのテスト](../documentdb/documentdb-performance-testing.md)」を参照してください。
-* [SDK](../documentdb/documentdb-sdk-dotnet.md) または [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を使ってコーディングを開始します。
-* Azure Cosmos DB における[スループットのプロビジョニング](../documentdb/documentdb-request-units.md)について理解します。 
+* Azure Cosmos DB のスケールとパフォーマンスのテストを行う。 サンプルについては、「[Azure Cosmos DB のパフォーマンスとスケールのテスト](performance-testing.md)」を参照してください。
+* [SDK](documentdb-sdk-dotnet.md) または [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を使ってコーディングを開始します。
+* Azure Cosmos DB における[スループットのプロビジョニング](request-units.md)について理解します。 
 
 

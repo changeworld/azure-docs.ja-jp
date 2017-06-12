@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 1aa8fff31d8d1908b1ea93cb970487d08ea4adf6
-ms.openlocfilehash: ddd6fcc8de133a5ff5f427d070c6c6ec207d9236
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 7db29c186cf6e6f3b40a680ab76f1d2763f806ba
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -26,18 +27,20 @@ ms.lasthandoff: 03/31/2017
 > [!div class="op_single_selector"]
 > - [Azure ポータル](network-watcher-check-ip-flow-verify-portal.md)
 > - [PowerShell](network-watcher-check-ip-flow-verify-powershell.md)
-> - [CLI](network-watcher-check-ip-flow-verify-cli.md)
+> - [CLI 1.0](network-watcher-check-ip-flow-verify-cli-nodejs.md)
+> - [CLI 2.0](network-watcher-check-ip-flow-verify-cli.md)
 > - [Azure REST API](network-watcher-check-ip-flow-verify-rest.md)
 
-IP フロー検証は Network Watcher の機能であり、仮想マシンから送受信されるトラフィックが許可されているかどうかを確認できます。 検証は、受信または送信トラフィックに対して実行できます。 このシナリオは、仮想マシンが現在外部リソースまたは別のリソースと通信可能な状態であるかどうかを確認する際に役立ちます。 IP フロー検証を使用すると、ネットワーク セキュリティ グループ (NSG) 規則が適切に構成されているかどうかを検証し、NSG 規則によってブロックされているフローのトラブルシューティングを行うことができます。 IP フロー検証を使用するもう 1 つの理由は、ブロック対象のトラフィックが NSG によって適切にブロックされているかどうかを確認するためです。
+
+IP フロー検証は Network Watcher の機能であり、仮想マシンから送受信されるトラフィックが許可されているかどうかを確認できます。 検証は、受信または送信トラフィックに対して実行できます。 このシナリオは、仮想マシンが現在外部リソースまたは別のリソースと通信可能な状態であるかどうかを確認する際に役立ちます。 IP フロー検証を使用すると、ネットワーク セキュリティ グループ (NSG) 規則が適切に構成されているかどうかを検証し、NSG 規則によってブロックされているフローのトラブルシューティングを行うことができます。 ブロック対象のトラフィックが NSG により適切にブロックされているかどうかを確認することも、IP フロー検証を使用する別の理由として挙げられます。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関する記事の手順に従って Network Watcher を作成済みであるか、または既存の Network Watcher インスタンスがあることを前提としています。 また、有効な仮想マシンがあるリソース グループを使用することも前提としています。
+このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関するページの手順に従って Network Watcher を作成済みであること、または既存の Network Watcher インスタンスを保持していることを前提としています。 また、有効な仮想マシンのあるリソース グループを使用することも前提としています。
 
 ## <a name="scenario"></a>シナリオ
 
-このシナリオでは、IP フロー検証を使用して、仮想マシンがポート 443 で別のマシンと通信可能かどうかを確認します。 トラフィックが拒否された場合、そのトラフィックを拒否しているセキュリティ規則が返されます。 IP フロー検証の詳細については、[IP フロー検証の概要](network-watcher-ip-flow-verify-overview.md)に関する記事をご覧ください。
+このシナリオでは、IP フロー検証を使用して、仮想マシンがポート 443 で別のマシンと通信可能かどうかを確認します。 トラフィックが拒否されている場合は、そのトラフィックを拒否するセキュリティ規則が返されます。 IP フロー検証の詳細については、[IP フロー検証の概要](network-watcher-ip-flow-verify-overview.md)に関する記事をご覧ください。
 
 ### <a name="run-ip-flow-verify"></a>IP フロー検証の実行
 

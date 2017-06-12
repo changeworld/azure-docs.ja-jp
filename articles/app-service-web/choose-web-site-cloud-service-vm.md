@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2016
 ms.author: glenga
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 2f5e6d100effee99b1a1576c0e21f1a311f8131b
-ms.lasthandoff: 12/08/2016
-
+ms.custom: mvc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 17289f6401b36ff6e6a201564aa387f42c712699
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/01/2017
 
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure App Service、Virtual Machines、Service Fabric、Cloud Services の比較
@@ -51,7 +52,7 @@ Service Fabric は、新しいアプリを作成する場合やマイクロサ�
 | 統合されたサービスとしての MySQL のサポート |○ |○ |○ | |Cloud Services は、ClearDB のサービスを介してサービスとしての MySQL を統合できますが、Azure ポータル ワークフローの一部として統合することはできません。 |
 | ASP.NET、クラシック ASP、Node.js、PHP、Python のサポート |○ |○ |○ |○ |Service Fabric では、[ASP.NET 5](../service-fabric/service-fabric-add-a-web-frontend.md) を使用した Web フロントエンドの作成がサポートされています。または、あらゆる種類のアプリケーション (Node.js、Java など) を[ゲスト実行可能ファイル](../service-fabric/service-fabric-deploy-existing-app.md)としてデプロイできます。 |
 | 再デプロイなしでの複数インスタンスへのスケールアウト |○ |○ |○ |○ |Virtual Machines は複数のインスタンスにスケールアウトできますが、そこで実行されるサービスが、このようなスケールアウトに対応できるように記述されていなければなりません。 要求を複数のコンピューターにルーティングするためのロード バランサーを構成すると共に、アフィニティ グループを作成して、メンテナンスやハードウェアの障害で全インスタンスが同時に再起動するのを防ぐ必要があります。 |
-| SSL のサポート |○ |○ |○ |○ |App Service Web Apps の場合、カスタム ドメイン名の SSL は Basic モードと Standard モードでのみサポートされます。 Web Apps での SSL の使い方については、[Azure Web サイトの SSL 証明書の構成](web-sites-configure-ssl-certificate.md)に関するページを参照してください。 |
+| SSL のサポート |○ |○ |○ |○ |App Service Web Apps の場合、カスタム ドメイン名の SSL は Basic モードと Standard モードでのみサポートされます。 Web Apps での SSL の使い方については、[Azure Web サイトの SSL 証明書の構成](app-service-web-tutorial-custom-ssl.md)に関するページを参照してください。 |
 | Visual Studio 統合 |○ |○ |○ |○ | |
 | リモート デバッグ |○ |○ |○ | | |
 | TFS によるコードのデプロイ |○ |○ |○ |○ | |

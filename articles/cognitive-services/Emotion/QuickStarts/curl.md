@@ -7,13 +7,13 @@ manager: yutkuo
 ms.service: cognitive-services
 ms.technology: emotion
 ms.topic: article
-ms.date: 01/30/2017
+ms.date: 05/23/2017
 ms.author: anroth
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: 96a626c4bc7d186f96cf7b80263521931a54f60a
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: 758e0019a85f20171483998429867b10f2f1caa6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 05/25/2017
 
 ---
 
@@ -24,6 +24,9 @@ This article provides information and code samples to help you quickly get start
 * Get your free Subscription Key [here](https://azure.microsoft.com/en-us/try/cognitive-services/)
 
 ## <a name="recognize-emotions-curl-example-request"></a>Recognize Emotions cURL Example Request
+
+> [!NOTE]
+> You must use the same location in your REST call as you used to obtain your subscription keys. For example, if you obtained your subscription keys from westcentralus, replace "westus" in the URL below with "westcentralus".
 
 ```json
 @ECHO OFF

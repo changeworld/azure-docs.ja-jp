@@ -13,21 +13,22 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2017
+ms.date: 05/02/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 9068e0e92e15491d3377a1b8f42071b56373396e
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: aaa5134fafea387e63fc9c9819422d24de6baed0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
 # <a name="script-action-development-with-hdinsight"></a>HDInsight でのスクリプト アクション開発
 
-スクリプト アクションは、クラスターの構成設定を指定したり、追加のサービス、ツール、その他のソフトウェアをクラスターにインストールしたりして、Azure HDInsight クラスターをカスタマイズする方法です。 クラスターの作成時または実行中のクラスターで、Script Action を使用できます。
+Bash スクリプトを使用して、HDInsight クラスターをカスタマイズする方法について説明します。 スクリプト アクションは、クラスターの作成時または作成後に、HDInsight をカスタマイズする方法です。
 
 > [!IMPORTANT]
-> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。
+> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
 
 ## <a name="what-are-script-actions"></a>スクリプト アクションとは
 
@@ -35,9 +36,9 @@ Script Action は、Azure がクラスター ノードで実行して、構成�
 
 スクリプト アクションは次の方法によって適用できます。
 
-| これを使用してスクリプトを適用する... | クラスター作成時... | 実行中のクラスターで... |
+| この方法を使用してスクリプトを適用する... | クラスター作成時... | 実行中のクラスターで... |
 | --- |:---:|:---:|
-| Azure ポータル |✓ |✓ |
+| Azure ポータル |✓  |✓ |
 | Azure PowerShell |✓ |✓ |
 | Azure CLI |&nbsp; |✓ |
 | HDInsight .NET SDK |✓ |✓ |
@@ -61,7 +62,7 @@ HDInsight クラスター向けのカスタム スクリプトを開発する際
 * [再試行ロジックを使用して一時的なエラーから回復する](#bps9)
 
 > [!IMPORTANT]
-> スクリプト アクションは 60 分以内に完了する必要があります。そうしないと、タイムアウトします。 ノードのプロビジョニング中、スクリプトは他のセットアップ プロセスや構成プロセスと同時に実行されます。 CPU 時間やネットワーク帯域幅などのリソースの競合が原因で、開発環境の場合よりスクリプトの完了に時間がかかる可能性があります。
+> スクリプト アクションは 60 分以内に完了する必要があります。 そのようにしないと、スクリプトは失敗します。 ノードのプロビジョニング中、スクリプトは他のセットアップ プロセスや構成プロセスと同時に実行されます。 CPU 時間やネットワーク帯域幅などのリソースの競合が原因で、開発環境の場合よりスクリプトの完了に時間がかかる可能性があります。
 
 ### <a name="bPS1"></a>Hadoop のバージョンを対象にする
 
@@ -69,11 +70,11 @@ HDInsight のバージョンが異なれば、異なるバージョンの Hadoop
 
 ### <a name="bps10"></a>ターゲット OS バージョン
 
-Linux ベースの HDInsight は、Ubuntu Linux ディストリビューションに基づいています。 異なるバージョンの HDInsight は、異なるバージョンの Ubuntu に依存し、スクリプトの動作に影響する可能性があります。 たとえば、HDInsight 3.4 以前は、Upstart を使用する Ubuntu バージョンに基づいています。 バージョン 3.5 は、Systemd を使用する Ubuntu 16.04 に基づいています。 Systemd と Upstart は、異なるコマンドに依存しているため、両方で動作するスクリプトを記述する必要があります。
+Linux ベースの HDInsight は、Ubuntu Linux ディストリビューションに基づいています。 異なるバージョンの HDInsight は、異なるバージョンの Ubuntu に依存し、スクリプトの動作が変わる可能性があります。 たとえば、HDInsight 3.4 以前は、Upstart を使用する Ubuntu バージョンに基づいています。 バージョン 3.5 は、Systemd を使用する Ubuntu 16.04 に基づいています。 Systemd と Upstart は、異なるコマンドに依存しているため、両方で動作するスクリプトを記述する必要があります。
 
 HDInsight 3.4 と 3.5 のもう 1 つの重要な違いは `JAVA_HOME` が Java 8 を指すようになった点です。
 
-`lsb_release` を使用して、オペレーティング システムのバージョンを確認できます。 Hue のインストール スクリプトからの次のコード スニペットでは、スクリプトが Ubuntu 14 または 16 で実行されているかどうかを判断する方法を示しています。
+`lsb_release` を使用して、オペレーティング システムのバージョンを確認できます。 次のコードでは、スクリプトが Ubuntu 14 または 16 で実行されているかどうかを判断する方法を示しています。
 
 ```bash
 OS_VERSION=$(lsb_release -sr)
@@ -112,7 +113,7 @@ Systemd と Upstart の違いを理解するには、「[Systemd for Upstart use
 
 ### <a name="bPS2"></a>スクリプト リソースへの安定したリンクの提供
 
-スクリプトとスクリプトで使用されるリソースがクラスターの有効期間全体で使用できること、実行中これらのファイルのバージョンが変更されないことを確認する必要があります。 これらのリソースは、スケーリング処理中に、新しいノードをクラスターに追加する場合に必要です。
+スクリプトとそれに関連付けられているリソースは、クラスターの有効期間を通じて使用可能である必要があります。 これらのリソースは、スケーリング処理中に、新しいノードをクラスターに追加する場合に必要です。
 
 ベスト プラクティスとして、すべてをダウンロードして、Azure Storage アカウントのサブスクリプションにアーカイブする方法があります。
 
@@ -123,57 +124,59 @@ Systemd と Upstart の違いを理解するには、「[Systemd for Upstart use
 
 ### <a name="bPS4"></a>プリコンパイル済みリソースの使用
 
-スクリプトの実行にかかる時間を短縮するために、ソース コードからリソースをコンパイルする操作を行わないようにしてください。 代わりに、リソースを事前にコンパイルし、バイナリ バージョンを Azure Blob ストレージに格納して、スクリプトからクラスターにすばやくダウンロードできるようにします。
+スクリプトの実行にかかる時間を短縮するために、ソース コードからリソースをコンパイルする操作を行わないようにしてください。 リソースをプリコンパイルし、すぐにダウンロードできるように、それらを Azure Blob ストレージに保存します。
 
 ### <a name="bPS3"></a>クラスターのカスタマイズ スクリプトはべき等にする
 
-スクリプトが複数回実行された場合に、クラスターが実行されるたびに同じ状態に戻ることをスクリプトが確認するという意味で、スクリプトはべき等であるように設計する必要があります。
+スクリプトはべき等にする必要があります。 スクリプトを複数回実行する場合、クラスターは毎回同じ状態に戻ります。
 
-たとえば、カスタム スクリプトが最初の実行時にアプリケーションを /usr/local/bin にインストールする場合、その後スクリプトを実行するたびに、スクリプトはアプリケーションが /usr/local/bin に既に存在するかどうかを確認した後で、スクリプト内の他のステップを続行する必要があります。
+たとえば、複数回実行する場合は、構成ファイルを変更するスクリプトは重複したエントリに追加しないでください。
 
 ### <a name="bPS5"></a>クラスターのアーキテクチャの高可用性を確保
 
-Linux ベースの HDInsight クラスターは、クラスター内で有効な 2 つのヘッド ノードを提供し、スクリプト アクションがその両方のノードで実行されます。 インストールするコンポーネントで 1 つのヘッド ノードしか期待されない場合は、そのコンポーネントがクラスターの 2 つのヘッド ノードのいずれかにしかインストールされないスクリプトを設計する必要があります。
+Linux ベースの HDInsight クラスターは、クラスター内で有効な 2 つのヘッド ノードを提供し、スクリプト アクションがその両方のノードで実行されます。 インストールするコンポーネントにヘッド ノードを 1 つのみ予定する場合は、両方のヘッド ノードにコンポーネントをインストールしないでください。
 
 > [!IMPORTANT]
-> HDInsight の一部としてインストールされている既定のサービスは必要に応じて 2 つのヘッド ノードの間でフェールオーバーされるように設計されていますが、この機能はスクリプト アクションでインストールされるカスタム コンポーネントには拡張されません。 スクリプト アクションからインストールされるコンポーネントを高可用性にする必要がある場合は、使用可能な 2 つのヘッド ノードを使用する独自のフェールオーバー メカニズムを実装する必要があります。
+> HDInsight の一部として提供されるサービスは、必要に応じて 2 つのヘッド ノードの間でフェールオーバーするように設計されています。 この機能は、スクリプト アクションを使用してインストールするカスタム コンポーネントには拡張されません。 カスタム コンポーネントに高可用性が必要な場合は、独自のフェールオーバー メカニズムを実装する必要があります。
 
 ### <a name="bPS6"></a>Azure BLOB ストレージを使用するカスタム コンポーネントの構成
 
-クラスターにインストールするコンポーネントに、Hadoop 分散ファイル システム (HDFS) ストレージを使用する既定の構成が含まれる可能性があります。 HDInsight は、既定のストレージとして Azure BLOB ストレージ (WASB) を使用します。 これは、クラスターが削除された場合でも、データを保持する HDFS 互換ファイル システムを提供します。 HDFS の代わりに WASB を使用するように、インストールするコンポーネントを構成する必要があります。
+クラスターにインストールするコンポーネントに、Hadoop 分散ファイル システム (HDFS) ストレージを使用する既定の構成が含まれる可能性があります。 HDInsight は、既定のストレージとして Azure Storage または Data Lake Store のいずれかを使用します。 両方ともデータを保持する HDFS 互換ファイル システムを提供します (、クラスターが削除された場合でも)。 HDFS の代わりに WASB または ADL を使用するように、インストールするコンポーネントを構成しなければならない場合があります。
 
-たとえば、次の場合 giraph-examples.jar ファイルがローカル ファイル システムから WASB にコピーされます。
+ほとんどの操作では、ファイル システムを指定する必要はありません。 たとえば、次の場合 giraph-examples.jar ファイルがローカル ファイル システムからクラスター ストレージにコピーされます。
 
 ```bash
 hdfs dfs -put /usr/hdp/current/giraph/giraph-examples.jar /example/jars/
 ```
 
+この例では、`hdfs` コマンドは、既定のクラスター ストレージを透過的に使用します。 一部の操作では、URI を指定しなければならない場合があります。 たとえば、Data Lake Store には `adl:///example/jars`、Azure Storage には `wasb:///example/jars` を指定します。
+
 ### <a name="bPS7"></a>STDOUT および STDERR に情報を書き込む
 
-スクリプトの実行時に STDOUT および STDERR に書き込まれる情報はログに記録され、Ambari の Web UI を使用して表示することができます。
+HDInsight のログは、STDOUT と STDERR に書き込まれた出力を記述します。 Ambari Web UI を使用して、この情報を表示できます。
 
 > [!NOTE]
 > Ambari は、クラスターが正常に作成された場合にのみ使用できます。 クラスターの作成時にスクリプト アクションを使用して作成に失敗した場合は、 [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) に関するトラブルシューティング セクションで、ログに記録された情報にアクセスする他の方法を確認してください。
 
-ほとんどのユーティリティとインストール パッケージは情報を STDOUT および STDERR に書き込みますが、ログ記録を追加することもできます。 STDOUT にテキストを送信するには、 `echo`を使用します。 次に例を示します。
+ほとんどのユーティリティとインストール パッケージは STDOUT および STDERR に情報を書き込みますが、ログ記録を追加したい場合もあります。 STDOUT にテキストを送信するには、`echo` を使用します。 For example:
 
 ```bash
 echo "Getting ready to install Foo"
 ```
 
-既定では、 `echo` は、文字列を STDOUT に送信します。 STDERR に転送するには、`echo` の前に `>&2` を追加します。 For example:
+既定では、`echo` は STDOUT に文字列を送信します。 STDERR に転送するには、`echo` の前に `>&2` を追加します。 For example:
 
 ```bash
 >&2 echo "An error occurred installing Foo"
 ```
 
-これにより、STDOUT (既定の 1 であるため記載していません) に送信された情報が STDERR (2) にリダイレクトされます。 IO リダイレクトの詳細については、 [http://www.tldp.org/LDP/abs/html/io-redirection.html](http://www.tldp.org/LDP/abs/html/io-redirection.html)を参照してください。
+これは、代わりに、STDOUT に書き込まれた情報を　STDERR (2) にリダイレクトします。 IO リダイレクトの詳細については、 [http://www.tldp.org/LDP/abs/html/io-redirection.html](http://www.tldp.org/LDP/abs/html/io-redirection.html)を参照してください。
 
 スクリプト アクションによってログに記録される情報の表示の詳細については、 [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)
 
 ### <a name="bps8"></a> LF 行の終わりで、ファイルを ASCII として保存する
 
-Bash スクリプトは、行が LF で終了する ASCII 形式で保存する必要があります。 ファイルが UTF-8 として保存される場合、ファイルの先頭や、Windows エディターでは一般的な CRLF 行の終わりにバイト オーダー マークが含まれる可能性があるため、スクリプトが次のようなエラーで失敗します。
+Bash スクリプトは、行が LF で終了する ASCII 形式で保存する必要があります。 UTF-8 として保存するか、または行の終わりに CRLF を使用するファイルは、次のエラーで失敗する可能性があります。
 
 ```
 $'\r': command not found
@@ -184,7 +187,7 @@ line 1: #!/usr/bin/env: No such file or directory
 
 ファイルのダウンロード時、apt-get を使用したパッケージのインストール時、またはインターネット経由でデータを転送するその他の操作時に、一時的なネットワーク エラーにより、操作に失敗する場合があります。 たとえば、通信対象のリモート リソースが、バックアップ ノードへのフェールオーバー中である可能性があります。
 
-一時的なエラーに対するスクリプトの回復力を高めるには、再試行ロジックを実装します。 以下に示す関数の例では、渡された任意のコマンドを実行し、(コマンドが失敗した場合に) 最大 3 回まで再試行します。 再試行の間隔は 2 秒です。
+一時的なエラーに対するスクリプトの回復力を高めるには、再試行ロジックを実装します。 次の関数は、再試行ロジックを実装する方法を示します。 失敗する前に、操作を3 回再試行します。
 
 ```bash
 #retry
@@ -210,7 +213,7 @@ retry() {
 }
 ```
 
-この関数の使用例を次に示します。
+次の例では、この関数を使用する方法を示します。
 
 ```bash
 retry ls -ltr foo
@@ -220,19 +223,19 @@ retry wget -O ./tmpfile.sh https://hdiconfigactions.blob.core.windows.net/linuxh
 
 ## <a name="helpermethods"></a>カスタム スクリプトのためのヘルパー メソッド
 
-スクリプト アクションのヘルパー メソッドは、カスタム スクリプトの記述で利用できるユーティリティです。 これらは [https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh)で定義されており、次を使用してスクリプトに含めることができます。
+スクリプト アクションのヘルパー メソッドは、カスタム スクリプトの記述で利用できるユーティリティです。 これらのメソッドは、[https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) スクリプトに含まれています。 次を使用してダウンロードし、これらをスクリプトの一部として使用します。
 
 ```bash
 # Import the helper method module.
 wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh && source /tmp/HDInsightUtilities-v01.sh && rm -f /tmp/HDInsightUtilities-v01.sh
 ```
 
-これにより、スクリプトで、次のヘルパーが使用できるようになります。
+次のヘルパーがスクリプトで使用できます。
 
 | ヘルパーの使用 | 説明 |
 | --- | --- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |元の URI から指定されたファイルのパスに、ファイルをダウンロードします。 既定では、既存のファイルは上書きされません。 |
-| `untar_file TARFILE DESTDIR` |tar ファイルを ( `-xf`を使用して) インストール先ディレクトリに抽出します。 |
+| `untar_file TARFILE DESTDIR` |tar ファイルを (`-xf`を使用して) インストール先ディレクトリに抽出します。 |
 | `test_is_headnode` |クラスターのヘッド ノードで実行された場合は 1 を返し、それ以外の場合は 0 を返します。 |
 | `test_is_datanode` |現在のノードがデータ (ワーカー) ノードの場合は 1 を返し、それ以外の場合は 0 を返します。 |
 | `test_is_first_datanode` |現在のノードが最初のデータ (ワーカー) ノード (workernode0) の場合は 1 を返し、それ以外の場合は 0 を返します。 |
@@ -248,25 +251,25 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 ### <a name="passing-parameters-to-a-script"></a>スクリプトにパラメーターを渡す
 
-場合によっては、スクリプトにパラメーターが必要な場合があります。 たとえば、Ambari の REST API から情報を取得するには、クラスターの管理者パスワードが必要になる場合があります。
+場合によっては、スクリプトにパラメーターが必要な場合があります。 たとえば、Ambari の REST API の使用時に、クラスターの管理者パスワードが必要になる場合があります。
 
 スクリプトに渡されるパラメーターは*位置指定パラメーター*と呼ばれ、最初のパラメーターでは `$1` に、2 番目のパラメーターでは `$2` に割り当てられ、以下同様です。 `$0` にはスクリプト自体の名前が含まれています。
 
-パラメーターとしてスクリプトに渡される値は、その値がリテラルとして扱われ、含まれている '!' などの文字に特別な処理が指定されないように、単一引用符 (') で囲む必要があります。
+パラメーターとしてスクリプトに渡される値は、単一引用符 (') で囲む必要があります。 これにより、渡された値はリテラルとして処理されます。
 
 ### <a name="setting-environment-variables"></a>環境変数の設定
 
-環境変数を設定すると、次のように実行されます。
+環境変数を設定すると、次のステートメントで実行されます。
 
     VARIABLENAME=value
 
-VARIABLENAME は、変数の名前です。 この後に変数にアクセスするには、 `$VARIABLENAME`を使用します。 たとえば、PASSWORD という名前の環境変数として位置指定パラメーターで指定された値を割り当てるには、次のように使用します。
+VARIABLENAME は、変数の名前です。 変数にアクセスするには、`$VARIABLENAME` を使用します。 たとえば、PASSWORD という名前の環境変数として位置指定パラメーターで指定された値を割り当てるには、次のステートメントを使用します。
 
     PASSWORD=$1
 
 以後のこの情報へのアクセスでは `$PASSWORD`が使用されます。
 
-スクリプト内で設定された環境変数は、スクリプトのスコープ内でのみ存在します。 場合によっては、スクリプトの終了後に永続化されるシステム全体の環境変数を追加する必要があります。 通常、これは SSH を使用してクラスターに接続するユーザーが、スクリプトによってインストールされるコンポーネントを使用できるようにするためです。 これは、環境変数を `/etc/environment`に追加することで実行できます。 たとえば、次の場合、**HADOOP\_CONF\_DIR** が追加されます。
+スクリプト内で設定された環境変数は、スクリプトのスコープ内でのみ存在します。 場合によっては、スクリプトの終了後に永続化されるシステム全体の環境変数を追加する必要があります。 システム全体に関連する環境変数を追加するには、変数を `/etc/environment` に追加します。 たとえば、次のステートメントは `HADOOP_CONF_DIR` を追加します。
 
 ```bash
 echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
@@ -276,20 +279,20 @@ echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
 
 クラスターのカスタマイズに使用したスクリプトは、次の場所のいずれかに保存する必要があります。
 
-* クラスターの__既定のストレージ アカウント__。
+* クラスターに関連付けられている __Azure Storage アカウント__。
 
 * クラスターに関連付けられている__追加のストレージ アカウント__。
 
-* __パブリックに読み取り可能な URI__ (OneDrive、Dropbox など)。
+* __パブリックに読み取り可能な URI__。 たとえば、OneDrive、Dropbox、その他の ホスティング サービスに格納されたデータの URL。
 
 * HDInsight クラスターに関連付けられている __Azure Data Lake Store アカウント__。 HDInsight での Azure Data Lake Store の使用の詳細については、[Data Lake Store での HDInsight クラスターの作成](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)に関するページをご覧ください。
 
     > [!NOTE]
     > HDInsight が Data Lake Store へのアクセスに使用するサービス プリンシパルには、スクリプトに対する読み取りアクセスが必要です。
 
-スクリプトが他の場所に配置されているリソースにアクセスする場合、パブリックでもアクセスできる (少なくともパブリック読み取り専用にする) ようにする必要があります。 たとえば、 `download_file`を使用してクラスターにファイルをダウンロードすることができます。
+スクリプトによって使用されるリソースも公開されている必要があります。
 
-クラスター (既定のストレージ アカウントなど) からアクセスできる Azure のストレージ アカウントにファイルを格納すると、このストレージが Azure ネットワーク内にあるため、アクセスが速くなります。
+Azure Storage account または Azure Data Lake Store にファイルを格納すると、Azure ネットワーク内の両方で高速アクセスが可能になります。
 
 > [!NOTE]
 > スクリプトの参照に使用する URI 形式は、使用されるサービスによって異なります。 HDInsight クラスターに関連付けられているストレージ アカウントの場合は、`wasb://` または `wasbs://` を使用します。 パブリックに読み取り可能な URI の場合は、`http://` または `https://` を使用します。 Data Lake Store の場合は、`adl://` を使用します。
@@ -298,7 +301,7 @@ echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
 
 異なるバージョンの HDInsight は、特定のバージョンの Ubuntu に依存します。 スクリプトで確認する必要がある OS バージョンによって違いがある可能性があります。 たとえば、Ubuntu のバージョンに関連付けられているバイナリをインストールする必要がある可能性があります。
 
-オペレーティング システムのバージョンを確認するには、`lsb_release` を使用します。 たとえば、以下は、OS のバージョンによって異なる tar ファイルを参照する方法を示します。
+オペレーティング システムのバージョンを確認するには、`lsb_release` を使用します。 たとえば、以下のスクリプトは、OS のバージョンによって異なる特定の tar ファイルを参照する方法を示します。
 
 ```bash
 OS_VERSION=$(lsb_release -sr)
@@ -315,26 +318,30 @@ fi
 
 スクリプトのデプロイを準備する際に実行した手順を次に示します。
 
-* カスタム スクリプトが含まれているファイルを、デプロイ時にクラスター ノードからアクセス可能な場所に配置します。 これには、クラスターのデプロイ時に指定された既定または追加のストレージ アカウント、またはその他のパブリックにアクセス可能なストレージ コンテナーを指定できます。
-* スクリプトがべき等に実行されるようにチェックを追加し、スクリプトが同じノードで複数回実行できるようにします。
+* カスタム スクリプトが含まれているファイルを、デプロイ時にクラスター ノードからアクセス可能な場所に配置します。 たとえば、クラスターの既定のストレージ。 ファイルは、パブリックに読み取り可能なホスティング サービスにも格納できます。
+* スクリプトがべき等であることを確認します。 これにより、スクリプトを同じノードで複数回実行できるようになります。
 * /tmp などの一時ファイル ディレクトリを使用して、スクリプトで使用するダウンロード済みファイルを維持し、スクリプトの実行後にそれらをクリーンアップします。
-* OS レベル設定や Hadoop サービス構成ファイルが変更された場合、スクリプトに設定された環境変数などの OS レベル設定を有効にするために、HDInsight サービスを再起動することをお勧めします。
+* OS レベル設定や Hadoop サービス構成ファイルが変更された場合は、HDInsight サービスの再起動が必要になる場合があります。
 
 ## <a name="runScriptAction"></a>Script Action の実行方法
 
-Script Action を使用して、Azure Portal、Azure PowerShell、Azure Resource Manager テンプレート、または HDInsight .NET SDK によって HDInsight クラスターをカスタマイズすることができます。 手順については、 [スクリプト アクションの使用方法](hdinsight-hadoop-customize-cluster-linux.md)に関するページを参照してください。
+次のメソッドを使用して HDInsight クラスターをカスタマイズする場合、スクリプト アクションを使用できます。
+
+* Azure ポータル
+* Azure PowerShell
+* Azure リソース マネージャーのテンプレート
+* HDInsight .NET SDK
+
+各メソッドの使用に関する詳細については、「[スクリプト アクションの使用方法](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
 
 ## <a name="sampleScripts"></a>カスタム スクリプトのサンプル
 
-Microsoft は、HDInsight クラスターにコンポーネントをインストールするサンプル スクリプトを提供しています。 サンプル スクリプトとその使用方法については、以下のリンクから入手できます。
+Microsoft は、HDInsight クラスターにコンポーネントをインストールするサンプル スクリプトを提供しています。 その他のスクリプト アクションの例については、次のリンクを参照してください。
 
 * [HDInsight クラスターに Hue をインストールして使用する](hdinsight-hadoop-hue-linux.md)
-* [HDInsight Hadoop クラスターに R をインストールして使用する](hdinsight-hadoop-r-scripts-linux.md)
 * [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install-linux.md)
-* [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install-linux.md)  
-
-> [!NOTE]
-> 上のリンクのドキュメントは、Linux ベースの HDInsight クラスターに固有のものです。 Windows ベースの HDInsight と連携するスクリプトについては、 [HDInsight でのスクリプト アクションの開発 (Windows)](hdinsight-hadoop-script-actions.md) に関する記述を参照するか、各記事の上部にあるリンクを使用します。
+* [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install-linux.md)
+* [HDInsight クラスターでの Mono のインストールまたはアップグレード](hdinsight-hadoop-install-mono.md)
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -353,20 +360,20 @@ Windows の多くのテキスト エディターでは CRLF が一般的な行�
 
 | コマンド | メモ |
 | --- | --- |
-| `unix2dos -b INFILE` |元のファイルは .BAK の拡張子でバックアップされます |
+| `unix2dos -b INFILE` |元のファイルは .BAK 拡張子でバックアップされます |
 | `tr -d '\r' < INFILE > OUTFILE` |OUTFILE には改行が LF のみのバージョンが含まれます |
-| `perl -pi -e 's/\r\n/\n/g' INFILE` |新しいファイルを作成せずに、ファイルを直接変更します |
-| ```sed 's/$'"/`echo \\\r`/" INFILE > OUTFILE``` |OUTFILE には改行が LF のみのバージョンが含まれます。 |
+| `perl -pi -e 's/\r\n/\n/g' INFILE` | ファイルを直接変更します |
+| ```sed 's/$'"/`echo \\\r`/" INFILE > OUTFILE``` |OUTFILE には改行が LF のみのバージョンが含まれます |
 
 **エラー**: `line 1: #!/usr/bin/env: No such file or directory`.
 
 *原因*: このエラーはスクリプトがバイト オーダー マーク (BOM) を含む UTF-8 として保存された場合に発生します。
 
-*解決*: ファイルを ASCII として、または BOM なしの UTF-8 として保存します。 Linux または Unix システムで次のコマンドを使用して、BOM なしの新しいファイルを作成することもできます。
+*解決*: ファイルを ASCII として、または BOM なしの UTF-8 として保存します。 Linux または Unix システムで次のコマンドを使用して、BOM なしのファイルを作成することもできます。
 
     awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 
-上記のコマンドで、 **INFILE** を BOM を含むファイルに置き換えます。 **OUTFILE** は、BOM なしのスクリプトを含む新しいファイルの名前にする必要があります。
+`INFILE` を BOM を含むファイルに置き換えます。 `OUTFILE` は、BOM なしのスクリプトを含む新しいファイルの名前にする必要があります。
 
 ## <a name="seeAlso"></a>次のステップ
 

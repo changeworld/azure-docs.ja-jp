@@ -14,9 +14,12 @@ ms.tgt_pltfrm: mobile-windows-store
 ms.devlang: dotnet
 ms.date: 02/20/2016
 ms.author: dastrock
-translationtype: Human Translation
-ms.sourcegitcommit: 146d1377a017becdcdcd7fed7b97f07c2cb2bb39
-ms.openlocfilehash: 349633ed039f3af2ee04d10e944eba404bb30950
+ms.custom: aaddev
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: 8013fc618fe78ea16c21a4605deb91797bf00f7d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -31,10 +34,5 @@ ms.openlocfilehash: 349633ed039f3af2ee04d10e944eba404bb30950
     ## Get security updates for our products
 
 セキュリティの問題が発生したときに通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知を受信登録してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

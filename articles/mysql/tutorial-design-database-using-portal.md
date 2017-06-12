@@ -12,6 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: portal
 ms.date: 05/10/2017
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: 2958486a0ec055cf1fe334e97389536b2c2bb01f

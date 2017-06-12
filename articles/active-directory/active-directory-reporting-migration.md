@@ -1,4 +1,5 @@
 ---
+
 title: "Azure Portal でアクティビティ レポートを見つける | Microsoft Docs"
 description: "Azure Portal で Azure Active Directory のアクティビティ レポートを見つける方法について説明します。"
 services: active-directory
@@ -12,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/01/2017
+ms.date: 05/04/2017
 ms.author: dhanyahk;markvi
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: f2f5ed98df88df69ee300c9da94ad013a631b3b9
-ms.lasthandoff: 03/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 7f6d82d211e9b3d25b0efe62ab8dd32f827b08ef
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -124,8 +126,8 @@ Azure Portal では、**[Azure Active Directory]** ブレードの **[セキュ�
 
 セキュリティ レポートの詳細については、次のトピックを参照してください。
 
-- [Azure Active Directory ポータルの危険な状態のユーザー セキュリティ レポート - プレビュー](active-directory-reporting-security-user-at-risk.md)
-- [Azure Active Directory ポータルのリスクの高いサインイン レポート - プレビュー](active-directory-reporting-security-risky-sign-ins.md)
+- [Azure Active Directory ポータルの危険な状態のユーザー セキュリティ レポート](active-directory-reporting-security-user-at-risk.md)
+- [Azure Active Directory ポータルのリスクの高いサインイン レポート](active-directory-reporting-security-risky-sign-ins.md)
 
 
 ## <a name="activity-reports-in-the-azure-classic-portal-vs-the-azure-portal"></a>Azure クラシック ポータルと Azure Portal のアクティビティ レポートの違い
@@ -143,7 +145,7 @@ Azure Portal では、**[Azure Active Directory]** ブレードの **[セキュ�
 | パスワード リセット登録アクティビティ | **アクティビティのカテゴリ**として **[Self-service Password Management] \(セルフサービスによるパスワード管理)** を選択します。     |
 | セルフ サービス グループ アクティビティ         | **アクティビティのカテゴリ**として **[セルフサービスによるグループ管理]** を選択します。        |
 | アカウント プロビジョニングのアクティビティ        | **アクティビティのカテゴリ**として **[Account User Provisioning (アカウント ユーザーのプロビジョニング)]** を選択します。         |
-| パスワード ロールオーバーの状態             | **アクティビティのカテゴリ**として、**[Automatic App Password Rollover (アプリ パスワードの自動ロールオーバー)]** を選択します。      |
+| パスワード ロールオーバーの状態             | **アクティビティのカテゴリ**として、**[Automatic App Password Rollover (アプリ パスワードの自動ロールオーバー)]**  を選択します。      |
 | アカウント プロビジョニング エラー          | **アクティビティのカテゴリ**として **[Account User Provisioning (アカウント ユーザーのプロビジョニング)]** を選択します。        |
 | Office 365 グループ名の変更         | **アクティビティのカテゴリ**として **[Self-service Password Management] \(セルフサービスによるパスワード管理)** を選択します。 **アクティビティのリソースの種類**として **[グループ]** を選択します。 **アクティビティのソース**として **[O365 グループ]** を選択します。|
 

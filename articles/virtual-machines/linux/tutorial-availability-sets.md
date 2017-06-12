@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2017
+ms.date: 05/22/2017
 ms.author: cynthn
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: b3bb7d9d14293aae78c3a1c2ac6badcc48dcbe2c
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: bfa4135600cb94d3947323219969872c2da7912b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 06/01/2017
 
 ---
 
@@ -32,11 +32,14 @@ ms.lasthandoff: 05/17/2017
 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * 可用性セットを作成する
-> * 可用性セット内に VM を作成する
+> * 可用性セットの作成
+> * 可用性セットに VM を作成する
 > * 使用可能な VM のサイズを確認する
 
-このチュートリアルには、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 アップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 ブラウザーから [Cloud Shell](/azure/cloud-shell/quickstart) を使用することもできます。
+このチュートリアルには、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
 
 ## <a name="availability-set-overview"></a>可用性セットの概要
 
@@ -53,12 +56,12 @@ Azure 内で信頼性の高い VM ベースのソリューションをデプロ�
 
 リソース グループを作成します。
 
-```azurecli
+```azurecli-interactive 
 az group create --name myResourceGroupAvailability --location eastus
 ```
 
 
-```azurecli
+```azurecli-interactive 
 az vm availability-set create \
     --resource-group myResourceGroupAvailability \
     --name myAvailabilitySet \
@@ -74,7 +77,7 @@ VM は、ハードウェア全体で適切に分散させるために、可用�
 
 [az vm create](/cli/azure/vm#create) を使用して VM を作成するときに、`--availability-set` パラメーターを使用して可用性セットを指定し、可用性セットの名前を指定します。
 
-```azurecli
+```azurecli-interactive 
 for i in `seq 1 2`; do
    az vm create \
      --resource-group myResourceGroupAvailability \
@@ -96,7 +99,7 @@ VM を追加するときに発生することの 1 つは、特定の VM サイ�
 
 可用性セットには後で VM をさらに追加することができますが、そのハードウェアで使用可能な VM のサイズを把握しておく必要があります。 ハードウェア クラスターで可用性セットに使用可能なすべてのサイズを一覧表示するには、[az vm availability-set list-sizes](/cli/azure/availability-set#list-sizes) を使用します。
 
-```azurecli
+```azurecli-interactive 
 az vm availability-set list-sizes \
      --resource-group myResourceGroupAvailability \
      --name myAvailabilitySet \
@@ -109,7 +112,7 @@ az vm availability-set list-sizes \
 
 > [!div class="checklist"]
 > * 可用性セットの作成
-> * 可用性セット内に VM を作成する
+> * 可用性セットに VM を作成する
 > * 使用可能な VM のサイズを確認する
 
 次のチュートリアルに進み、仮想マシンのスケール セットについて学習してください。

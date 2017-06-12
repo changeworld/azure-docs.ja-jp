@@ -13,11 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 01/23/2017
+ms.date: 05/15/2017
 ms.author: maroche
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 76cc9c79851cc040e6a36c5499a77c0d95948154
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: c91f840077ccd9e55a403533c97a852542f0d326
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -108,7 +110,7 @@ Azure Data Catalog フォーラムを使用して、問題の報告、情報の�
 Azure Data Catalog へのデータ ソースの追加には積極的に取り組んでいるところです。 サポートされることを期待するデータ ソースがある場合は、 [Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)で、それを提案 (またはそれが既に提案されている場合は、その指示を表明) してください。
 
 ## <a name="q-how-is-azure-data-catalog-related-to-the-data-catalog-in-power-bi-for-office-365"></a>Q: Azure Data Catalog は Power BI for Office 365 のデータ カタログとどのように関連しますか。
-Azure Data Catalog は Data Catalog の進化と考えることができます。 Azure Data Catalog は、データ ソースの発行と検出のための同様の機能を提供しますが、より広範なシナリオに焦点を合わせ、Office 365 に依存しません。 Azure Data Catalog の一般提供開始後すぐに、2 つのカタログは 1 つのサービスに結合されます。
+Azure Data Catalog は、Power BI での Data Catalog の進化と考えることができます。 2017 年春以降、Excel 2016 および Power Query for Excel でのクエリの共有と検出を有効にするために Azure Data Catalog が使用されています。 Excel での Data Catalog の機能は、Power BI Pro ライセンスを持つユーザーが使用できます。
 
 ## <a name="q-what-permissions-does-a-user-need-to-register-assets-with-azure-data-catalog"></a>Q: ユーザーは Azure Data Catalog に資産を登録するために、どのようなアクセス許可が必要ですか。
 Azure Data Catalog 登録ツールを実行するユーザーは、データ ソースに対し、そのソースからメタデータを読み取ることができるアクセス許可が必要です。 ユーザーがプレビューも含めるように選択した場合、登録されるオブジェクトからのデータの読み取りができるアクセス許可も必要です。
@@ -127,9 +129,4 @@ A: カタログに既に登録されているデータ資産のメタデータ�
 
 ## <a name="q-my-question-isnt-answered-here--what-should-i-do"></a>Q: ここに質問の答えがありません。どうすればいいですか。
 [Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)にアクセスしてください。 そこで寄せられている質問に、ここでの方法が見つかります。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

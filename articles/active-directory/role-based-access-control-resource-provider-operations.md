@@ -13,10 +13,10 @@ ms.workload: identity
 ms.date: 04/28/2017
 ms.author: jaboes
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: 3d32ded77382fe852682d63c96a66aacd141fdf6
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 95c6a1e9cfadeb19a0ec5a53fffb15ef220bfec0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/01/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -67,7 +67,7 @@ ms.lasthandoff: 05/01/2017
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 
-| 操作 | Description |
+| 操作 | 説明 |
 |---|---|
 |/checkNameAvailability/action|指定されたサービス名を使用できるかどうかを確認します。|
 |/register/action|Microsoft.ApiManagement リソース プロバイダーにサブスクリプションを登録します。|
@@ -162,7 +162,7 @@ ms.lasthandoff: 05/01/2017
 |/service/authorizationServers/write|新しい承認サーバーを作成するか、既存の承認サーバーの詳細を更新します。|
 |/service/authorizationServers/delete|既存の承認サーバーを削除します。|
 |/service/reports/bySubscription/read|サブスクリプションごとに集計されたレポートを取得します。|
-|/service/reports/byRequest/read|データの再送信要求を取得します。|
+|/service/reports/byRequest/read|要求のレポート データを取得します。|
 |/service/reports/byOperation/read|操作ごとに集計されたレポートを取得します。|
 |/service/reports/byGeo/read|地理的リージョンごとに集計されたレポートを取得します。|
 |/service/reports/byUser/read|開発者ごとに集計されたレポートを取得します。|
@@ -293,7 +293,7 @@ ms.lasthandoff: 05/01/2017
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
-| 操作 | 説明 |
+| 操作 | Description |
 |---|---|
 |/register/action|Batch リソース プロバイダーにサブスクリプションを登録し、Batch アカウントを作成できるようにします。|
 |/batchAccounts/write|新しい Batch アカウントを作成するか、既存の Batch アカウントを更新します。|
@@ -521,7 +521,7 @@ ms.lasthandoff: 05/01/2017
 
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
 
-| 操作 | 説明 |
+| 操作 | Description |
 |---|---|
 |/register/action|従来のストレージに登録します。|
 |/checkStorageAccountAvailability/action|ストレージ アカウントを使用できるかどうかを確認します。|
@@ -553,7 +553,7 @@ ms.lasthandoff: 05/01/2017
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 
-| 操作 | 説明 |
+| 操作 | Description |
 |---|---|
 |/accounts/read|API アカウントを読み取ります。|
 |/accounts/write|API アカウントを書き込みます。|
@@ -573,7 +573,7 @@ ms.lasthandoff: 05/01/2017
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
-| 操作 | 説明 |
+| 操作 | Description |
 |---|---|
 |/register/action|Microsoft.Compute リソース プロバイダーにサブスクリプションを登録します。|
 |/restorePointCollections/read|復元ポイント コレクションのプロパティを取得します。|
@@ -711,7 +711,7 @@ ms.lasthandoff: 05/01/2017
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
 
-| 操作 | Description |
+| 操作 | 説明 |
 |---|---|
 |/checkNameAvailability/action|テナントのカタログ名を使用できるかどうかを確認します。|
 |/catalogs/read|サブスクリプションまたはリソース グループでカタログのプロパティを取得します。|
@@ -740,7 +740,7 @@ ms.lasthandoff: 05/01/2017
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
 
-| 操作 | 説明 |
+| 操作 | Description |
 |---|---|
 |/accounts/read|DataLakeAnalytics アカウントに関する情報を取得します。|
 |/accounts/write|DataLakeAnalytics アカウントを作成または更新します。|
@@ -934,7 +934,7 @@ ms.lasthandoff: 05/01/2017
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 
-| 操作 | Description |
+| 操作 | 説明 |
 |---|---|
 |/checkNameAvailability/action|特定のサブスクリプションで名前空間を使用できるかどうかを確認します。|
 |/register/action|EventHub リソース プロバイダーにサブスクリプションを登録し、EventHub リソースを作成できるようにします。|
@@ -1082,7 +1082,7 @@ ms.lasthandoff: 05/01/2017
 
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
 
-| 操作 | 説明 |
+| 操作 | Description |
 |---|---|
 |/register/action|Machine Learning Web サービス リソース プロバイダーにサブスクリプションを登録し、Web サービスを作成できるようにします。|
 |/webServices/action|サポートされているリージョンのリージョン固有の Web サービス プロパティを作成します。|
@@ -1122,7 +1122,7 @@ ms.lasthandoff: 05/01/2017
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
-| 操作 | 説明 |
+| 操作 | Description |
 |---|---|
 |/register/action|サブスクリプションを登録します。|
 |/unregister/action|サブスクリプションの登録を解除します。|
@@ -1285,7 +1285,7 @@ ms.lasthandoff: 05/01/2017
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 
-| 操作 | 説明 |
+| 操作 | Description |
 |---|---|
 |/register/action|NotifciationHubs リソース プロバイダーにサブスクリプションを登録し、名前空間と NotificationHubs を作成できるようにします。|
 |/CheckNamespaceAvailability/action|指定された名前空間リソース名を NotificationHub サービス内で使用できるかどうかを確認します。|
@@ -1569,7 +1569,7 @@ ms.lasthandoff: 05/01/2017
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
-| 操作 | 説明 |
+| 操作 | Description |
 |---|---|
 |/register/action|検索リソース プロバイダーにサブスクリプションを登録し、検索サービスを作成できるようにします。|
 |/checkNameAvailability/action|サービス名を使用できるかどうかを確認します。|

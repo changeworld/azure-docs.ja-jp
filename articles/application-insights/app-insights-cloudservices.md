@@ -3,6 +3,7 @@ title: "Azure Cloud Services 向けの Application Insights | Microsoft Docs"
 description: "Application Insights で Web と worker ロールを効果的に監視する"
 services: application-insights
 documentationcenter: 
+keywords: "WAD2AI, Azure 診断"
 author: CFreemanwa
 manager: carmonm
 editor: alancameronwills
@@ -15,15 +16,15 @@ ms.workload: tbd
 ms.date: 05/05/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: bfae0fcf992c38d7afef6140fdd79d87ab0ecb4f
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: a5e5cc37c4635b78279a5e240603b6a728922eb8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services 向けの Application Insights
-[Microsoft Azure クラウド サービス アプリ](https://azure.microsoft.com/services/cloud-services/)の可用性、パフォーマンス、障害、および使用状況を [Application Insights][start] で監視できます。 アプリのパフォーマンスと効果に関するフィードバックが得られたら、各開発ライフサイクルにおける設計の方向性について、情報に基づいて選択できます。
+[Microsoft Azure Cloud Services アプリ](https://azure.microsoft.com/services/cloud-services/)の可用性、パフォーマンス、障害、使用状況は、[Application Insights][start] で監視できます。それには、Application Insights の SDK から得られるデータと、Cloud Services から得られる [Azure 診断](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/azure-diagnostics)データとを組み合わせて使用します。 アプリのパフォーマンスと効果に関するフィードバックが得られたら、各開発ライフサイクルにおける設計の方向性について、情報に基づいて選択できます。
 
 ![例](./media/app-insights-cloudservices/sample.png)
 
@@ -143,7 +144,7 @@ Visual Studio で、Application Insights SDK を各クラウド アプリ プロ
 * [トラブルシューティング][qna]に関するページを参照してください。
 
 ## <a name="view-azure-diagnostic-events"></a>Azure 診断イベントを表示する
-診断データは次の場所で見つかります。
+Application Insights では、[Azure 診断](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/azure-diagnostics)の情報が以下のように表示されます。
 
 * パフォーマンス カウンターは、カスタム メトリックとして表示されます。 
 * Windows イベント ログは、トレースとカスタム イベントとして表示されます。

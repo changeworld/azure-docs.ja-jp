@@ -8,16 +8,17 @@ manager: jhubbard
 editor: 
 ms.assetid: 4e288e17-bc3e-4255-9fbe-0a2ac0dbd7dd
 ms.service: sql-database
-ms.custom: multiple databases
+ms.custom: DBs & servers
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-management
 ms.date: 05/27/2016
 ms.author: srinia
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
 ms.openlocfilehash: a3acd5f4ec63061254b550737ae9fb4d39b343c6
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/10/2017
 
 

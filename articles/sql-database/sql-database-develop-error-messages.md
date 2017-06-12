@@ -9,16 +9,17 @@ manager: jhubbard
 editor: 
 ms.assetid: 2a23e4ca-ea93-4990-855a-1f9f05548202
 ms.service: sql-database
-ms.custom: development
+ms.custom: develop apps
 ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2016
 ms.author: sstein
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 407d8cef2508e4b2344953db86bc9829081cda7c
 ms.openlocfilehash: 72faf68d8a9779b612723f9ee6589cc332bf5ed5
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/16/2017
 
 

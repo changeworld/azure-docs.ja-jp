@@ -9,16 +9,18 @@ manager: jhubbard
 editor: 
 ms.assetid: 0cccf6bd-1327-44f7-a6f9-8eff0c210463
 ms.service: sql-database
-ms.custom: monitor and tune
+ms.custom: monitor & tune
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: sqldb-performance
 ms.workload: data-management
 ms.date: 11/08/2016
 ms.author: bonova
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 46d33a7b2dbaeb447452d8c94e897e59ec915dcc
 ms.openlocfilehash: 104a2d91ee9ca657fcc431d947d6a4be5d57a056
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -62,10 +64,5 @@ Azure のクエリ ストアは、すべてのクエリに関する詳細な履�
 * [クエリ ストアを使用したパフォーマンスの監視](https://msdn.microsoft.com/library/dn817826.aspx)
 * [クエリ ストアの使用シナリオ](https://msdn.microsoft.com/library/mt614796.aspx)
 * [クエリ ストアを使用したパフォーマンスの監視](https://msdn.microsoft.com/library/dn817826.aspx) 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

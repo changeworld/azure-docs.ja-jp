@@ -11,12 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 05/04/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 564dd782834898709f89f85e10627d07b17138ce
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 3f6ae31f577eb1bc70a06e183518aadbc6279159
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -138,7 +139,7 @@ Dropbox、Salesforce、ServiceNow などの SaaS アプリケーションで、�
 | 機能の説明と、一般的な質問に対する回答 |[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md) |
 | Azure AD と SaaS アプリ間で情報を照合する方法の構成 |[属性マッピングのカスタマイズ](active-directory-saas-customizing-attribute-mappings.md)<br><br>[属性マッピングの式の書き方](active-directory-saas-writing-expressions-for-attribute-mappings.md) |
 | SCIM プロトコルをサポートしている任意のアプリへの自動プロビジョニングを有効にする方法 |[SCIM を使用して、Azure Active Directory からアプリケーションへのユーザーとグループの自動プロビジョニングを有効にする](active-directory-scim-provisioning.md) |
-| プロビジョニング エラーの通知を受け取る |[アカウント プロビジョニング通知](active-directory-saas-account-provisioning-notifications.md) |
+| ユーザー プロビジョニングについてのレポートとトラブルシューティングの方法 |[自動ユーザー プロビジョニングについてのレポート](active-directory-saas-provisioning-reporting.md)<br><br>[プロビジョニング通知](active-directory-saas-account-provisioning-notifications.md)<br><br>[ユーザー プロビジョニングのトラブルシューティング](active-directory-application-provisioning-content-map.md) |
 | 属性値に基づいて、アプリケーションにプロビジョニングされるユーザーを制限する |[スコープ フィルターを使用する属性ベースのアプリ プロビジョニング](active-directory-saas-scoping-filters.md) |
 
 自動化されたユーザー プロビジョニングは、Azure AD のすべてのエディションで、ユーザー 1 人につき最大 10 個のアプリに使用できます。 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) では、サポートされるアプリケーション数に制限はありません。 所属する組織が [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) または [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) を所有している場合は、[プロビジョニングの対象となるユーザーの管理にグループを使用](#managing-access-to-applications)できます。
@@ -168,16 +169,16 @@ Dropbox、Salesforce、ServiceNow などの SaaS アプリケーションで、�
 グループ ベースのアプリケーション アクセス管理は、[Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) と [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) で使用できます。 セルフサービス グループ管理、セルフサービス アプリケーション管理、および動的グループは、 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) の機能です。
 
 ### <a name="b2b-collaboration-enable-partner-access-to-applications"></a>B2B コラボレーション: アプリケーションへのパートナー アクセスを有効化
-他の企業と提携している場合は、社内アプリケーションへのパートナー アクセスを管理することが必要になる場合があります。 Azure Active Directory B2B コラボレーションを使用すると、アプリをパートナーと簡単かつ安全に共有できます。 現在、この機能はプレビュー段階にあります。
+他の企業と提携している場合は、社内アプリケーションへのパートナー アクセスを管理することが必要になる場合があります。 Azure Active Directory B2B コラボレーションを使用すると、アプリをパートナーと簡単かつ安全に共有できます。
 
 | 記事の紹介 |  |
 |:---:| --- |
 | パートナー、顧客などの外部ユーザーの管理に役立つさまざまな Azure AD 機能の概要 |[Azure Active Directory を使用して外部 ID を管理するための機能の比較](active-directory-b2b-compare-external-identities.md) |
-| B2B コラボレーション プレビューの概要と使用を開始する方法 |[Azure AD との簡単で安全なクラウド パートナー統合](active-directory-b2b-what-is-azure-ad-b2b.md)<br /><br />[Azure Active Directory (Azure AD) の B2B コラボレーション](active-directory-b2b-collaboration-overview.md) |
-| Azure AD B2B コラボレーションの詳細とその使用方法 |[B2B コラボレーション: しくみ](active-directory-b2b-how-it-works.md)<br /><br />[Azure AD B2B コラボレーション プレビューの現在の制限事項](active-directory-b2b-current-preview-limitations.md)<br /><br />[Azure Active Directory (Azure AD) B2B コラボレーション プレビューの詳細なチュートリアル](active-directory-b2b-detailed-walkthrough.md) |
+| B2B コラボレーションの概要と使用を開始する方法 |[Azure AD との簡単で安全なクラウド パートナー統合](active-directory-b2b-what-is-azure-ad-b2b.md)<br /><br />[Azure Active Directory (Azure AD) の B2B コラボレーション](active-directory-b2b-collaboration-overview.md) |
+| Azure AD B2B コラボレーションの詳細とその使用方法 |[B2B コラボレーション: しくみ](active-directory-b2b-how-it-works.md)<br /><br />[Azure AD B2B コラボレーションの現在の制限事項](active-directory-b2b-current-limitations.md)<br /><br />[Azure AD B2B コラボレーションの使用方法に関する詳細なチュートリアル](active-directory-b2b-detailed-walkthrough.md) |
 | Azure AD B2B コラボレーションのしくみの技術的な詳細を含むリファレンス記事 |[パートナー ユーザーを追加するための CSV ファイルの形式](active-directory-b2b-references-csv-file-format.md)<br /><br />[Azure AD B2B コラボレーションの影響を受けるユーザー属性](active-directory-b2b-references-external-user-object-attribute-changes.md)<br /><br />[Azure Active Directory (Azure AD) B2B コラボレーション プレビューの外部ユーザー トークンの形式](active-directory-b2b-references-external-user-token-format.md) |
 
-B2B コラボレーション プレビューは、現在、 [Azure Active Directory のすべてのエディション](https://azure.microsoft.com/pricing/details/active-directory/)で利用できます。
+B2B コラボレーションは、現在、[Azure Active Directory のすべてのエディション](https://azure.microsoft.com/pricing/details/active-directory/)で利用できます。
 
 ### <a name="access-panel-a-portal-for-accessing-apps-and-self-service-features"></a>アクセス パネル: アプリやセルフサービス機能にアクセスするためポータル
 Azure AD アクセス パネルでは、エンド ユーザーがアプリを起動したり、アプリとグループ メンバーシップを管理できるセルフサービス機能にアクセスしたりすることができます。 下の一覧には、アクセス パネルのほか、SSO 対応アプリにアクセスするためのその他のオプションも示されています。

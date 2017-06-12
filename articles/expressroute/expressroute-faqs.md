@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure ExpressRoute の FAQ | Microsoft Docs"
 description: "ExpressRoute の FAQ には、サポートされている Azure サービス、料金、データと接続、SLA、プロバイダーと提供地域、帯域幅、およびその他の技術的な詳細に関する情報が記載されています。"
 documentationcenter: na
@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/29/2017
+ms.date: 05/12/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 5b7e2d8df2723f77aa8283d9faab22656198ed47
-ms.lasthandoff: 03/30/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 3f9fb86a5bf63d24432c1ba9945a4da6cf794f13
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -66,7 +67,7 @@ ExpressRoute は、さまざまな種類のサービスのために、[3 つの�
 
 ### <a name="microsoft-peering"></a>Microsoft ピアリング
 * [Office 365](http://aka.ms/ExpressRouteOffice365)
-* ほとんどの Dynamics 365 サービス (旧称 CRM Online)
+* Dynamics 365 (旧称 CRM Online)
   * Dynamics 365 for Sales
   * Dynamics 365 for Customer Service
   * Dynamics 365 for Field Service
@@ -193,10 +194,10 @@ ExpressRoute Premium は、次に示す機能で構成されたサービスで�
 * プライベート ピアリング用ルートの上限が 4,000 から 10,000 に増加されたルーティング テーブル。
 * ExpressRoute 回線に接続できる数が増加された VNET (既定は 10)。 詳細については、下の表を参照してください。
 * Microsoft のコア ネットワーク経由のグローバル接続。 ある地理的リージョンにある VNET を別のリージョン内の ExpressRoute 回線に接続できるようになります。 **例:** 西ヨーロッパで作成された VNET をシリコン バレーで作成された ExpressRoute 回線に接続できます。 **その他の例:** パブリック ピアリングで、他の地理的リージョンのプレフィックスがアドバタイズされ、たとえばシリコン バレーの回線から西ヨーロッパの SQL Azure に接続できるようになります。
-* Office 365 サービスおよび CRM Online への接続。
+* Office 365 や Dynamics 365 への接続。
 
 ### <a name="how-many-vnets-can-i-link-to-an-expressroute-circuit-if-i-enabled-expressroute-premium"></a>ExpressRoute Premium を有効にすると、どれくらいの VNET を ExpressRoute 回線に接続できますか。
-次の表は、ExpressRoute の制限と、ExpressRoute 回線ごとの VNET の数を示しています。
+次の表は、ExpressRoute の制限と、ExpressRoute 回線ごとの VNet の数を示しています。
 
 [!INCLUDE [expressroute-limits](../../includes/expressroute-limits.md)]
 
@@ -215,31 +216,31 @@ ExpressRoute Premium を無効にするには、専用回線の更新用の API 
 ### <a name="do-i-pay-for-expressroute-premium-in-addition-to-standard-expressroute-charges"></a>ExpressRoute Premium の料金は、標準の ExpressRoute 料金に追加して支払うのですか。
 はい。 ExpressRoute Premium 料金は、ExpressRoute 回線の料金と接続プロバイダーに必要な料金に追加する形で適用されます。
 
-## <a name="expressroute-and-office-365-services-and-crm-online"></a>ExpressRoute と、Office 365 サービスおよび CRM Online
+## <a name="expressroute-for-office-365-and-dynamics-365"></a>Office 365 および Dynamics 365 向けの ExpressRoute
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
-### <a name="how-do-i-create-an-expressroute-circuit-to-connect-to-office-365-services-and-crm-online"></a>Office 365 サービスおよび CRM Online に接続する ExpressRoute 回線はどのようにして作成しますか。
+### <a name="how-do-i-create-an-expressroute-circuit-to-connect-to-office-365-services-and-dynamics-365"></a>Office 365 サービスおよび Dynamics 365 に接続する ExpressRoute 回線はどのようにして作成しますか。
 1. [ExpressRoute の前提条件のページ](expressroute-prerequisites.md)を参照して、要件を満たしていることを確認します。
 2. [ExpressRoute のパートナーと提供地域](expressroute-locations.md) に関するページでサービス プロバイダーとサービスの場所の一覧を参照し、接続ニーズが満たされることを確認します。
 3. 「 [Office 365 のネットワーク計画とパフォーマンスのチューニング](http://aka.ms/tune/)」を参照して、容量の要件を計画します。
 4. 接続をセットアップするには、「[回線のプロビジョニングと回線の状態の ExpressRoute ワークフロー](expressroute-workflows.md)」に示されている手順に従います。
 
 > [!IMPORTANT]
-> Office 365 サービスおよび CRM Online への接続を構成するときは、ExpressRoute Premium アドオンを有効にしていることを確認します。
+> Office 365 サービスおよび Dynamics 365 への接続を構成するときは、ExpressRoute Premium アドオンを有効にしていることを確認します。
 > 
 > 
 
-### <a name="do-i-need-to-enable-azure-public-peering-to-connect-to-office-365-services-and-crm-online"></a>Office 365 サービスと CRM Online に接続するには、Azure パブリック ピアリングを有効にする必要がありますか。
+### <a name="do-i-need-to-enable-azure-public-peering-to-connect-to-office-365-services-and-dynamics-365"></a>Office 365 サービスと Dynamics 365 に接続するには、Azure パブリック ピアリングを有効にする必要がありますか。
 いいえ、有効にする必要があるのは Microsoft ピアリングだけです。 Azure AD への認証トラフィックは Microsoft ピアリングを介して送信されます。 
 
-### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-office-365-services-and-crm-online"></a>既存の ExpressRoute 回線が Office 365 サービスおよび CRM Online への接続をサポートするようにできますか。
+### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-office-365-services-and-dynamics-365"></a>既存の ExpressRoute 回線が Office 365 サービスおよび Dynamics 365 への接続をサポートするようにできますか。
 はい。 既存の ExpressRoute 回線を、Office 365 サービスへの接続をサポートするように構成できます。 Office 365 サービスに接続するための十分な容量があり、Premium アドオンを有効にしていることを確認します。 [Office 365 のネットワーク プランニングとパフォーマンス チューニング](http://aka.ms/tune/) に関するページが、接続ニーズを計画するのに役立ちます。 「 [ExpressRoute 回線の作成と変更](expressroute-howto-circuit-classic.md)」も参照してください。
 
 ### <a name="what-office-365-services-can-be-accessed-over-an-expressroute-connection"></a>ExpressRoute 接続経由でアクセスできる Office 365 のサービスはどれですか。
 ExpressRoute でサポートされているサービスの最新の状態の一覧については、「[Office 365 URL および IP アドレス範囲](http://aka.ms/o365endpoints)」を参照してください。
 
-### <a name="how-much-does-expressroute-for-office-365-services-and-crm-online-cost"></a>Office 365 サービスおよび CRM Online に対応した ExpressRoute の料金はいくらですか。
-Office 365 サービス および CRM Online では、Premium アドオンを有効にする必要があります。 ExpressRoute の料金の詳細については、 [料金の詳細](https://azure.microsoft.com/pricing/details/expressroute/) に関するページを参照してください。
+### <a name="how-much-does-expressroute-for-office-365-services-and-dynamics-365-cost"></a>Office 365 サービスおよび Dynamics 365 に対応した ExpressRoute の料金はいくらですか。
+Office 365 サービスおよび Dynamics 365 では、Premium アドオンを有効にする必要があります。 ExpressRoute の料金の詳細については、 [料金の詳細](https://azure.microsoft.com/pricing/details/expressroute/) に関するページを参照してください。
 
 ### <a name="what-regions-is-expressroute-for-office-365-supported-in"></a>ExpressRoute for Office 365 はどのリージョンでサポートされていますか。
 ExpressRoute がサポートされているパートナーと地域の一覧については、 [ExpressRoute のパートナーと提供地域](expressroute-locations.md) に関するページを参照してください。

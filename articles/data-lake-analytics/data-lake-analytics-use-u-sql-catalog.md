@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 64427583dba57716c23e1a01df820a263c5e7298
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: ef766161f53b92003c266f26af10a37790d8fad8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -38,7 +40,7 @@ U-SQL データベースには以下のものが含まれています。
 各 Azure Data Lake Analytics アカウントには、既定の Azure Data Lake Store アカウントが関連付けられています。 この Data Lake Store アカウントを既定の Data Lake Store アカウントと呼びます。 U-SQL カタログは、/catalog フォルダーの下の既定の Data Lake Store アカウントに格納されます。 /catalog フォルダー内のファイルは削除しないでください。
 
 ### <a name="use-azure-portal"></a>Azure Portal の使用
-[ポータルを使用した Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md#view-u-sql-catalog)に関するセクションを参照してください。
+[ポータルを使用した Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md#manage-data-lake-analytics-accounts)に関するセクションを参照してください。
 
 ### <a name="use-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio の使用
 Data Lake Tools for Visual Studio を使用して、カタログを管理できます。  ツールの詳細については、 [Data Lake Tools for Visual Studio の使用](data-lake-analytics-data-lake-tools-get-started.md)に関する記述を参照してください。
@@ -60,30 +62,24 @@ Data Lake Tools for Visual Studio を使用して、カタログを管理でき�
 
 ## <a name="see-also"></a>関連項目
 * 作業開始
-  
+
   * [Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
   * [Azure PowerShell で Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-powershell.md)
   * [Azure .NET SDK で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-net-sdk.md)
   * [Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)
   * [Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)
 * U-SQL と開発
-  
+
   * [Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)
   * [Azure Data Lake Analytics ジョブに U-SQL ウインドウ関数を使用する](data-lake-analytics-use-window-functions.md)
   * [Data Lake Analytics ジョブの U-SQL ユーザー定義演算子の開発](data-lake-analytics-u-sql-develop-user-defined-operators.md)
 * 管理
-  
+
   * [Azure ポータルを使用して Azure Data Lake Analytics を管理する](data-lake-analytics-manage-use-portal.md)
   * [Azure PowerShell を使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-powershell.md)
   * [Azure ポータルを使用して Azure Data Lake Analytics ジョブの監視とトラブルシューティングを行う](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 * エンド ツー エンド チュートリアル
-  
+
   * [Azure Data Lake Analytics の対話型チュートリアルの使用](data-lake-analytics-use-interactive-tutorials.md)
   * [Azure Data Lake Analytics を使用する Web サイト ログの分析](data-lake-analytics-analyze-weblogs.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

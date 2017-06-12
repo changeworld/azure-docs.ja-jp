@@ -8,16 +8,17 @@ manager: cshepard
 editor: 
 ms.assetid: 340b41bd-9df8-47fb-adfc-03216de38a5e
 ms.service: sql-database
-ms.custom: restore
+ms.custom: business continuity
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2017
 ms.author: daleche
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 9992b6a2bf73fd84c7c47783d1f4f13e10889a81
 ms.openlocfilehash: 8c074243db2ae729c4fd1a483e5ac40fbbebd750
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/19/2017
 
 

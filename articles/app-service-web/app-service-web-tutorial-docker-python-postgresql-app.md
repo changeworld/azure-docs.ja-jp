@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: beverst
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 554843c5f3161a45ff984b000944f546b44dd472
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: ca086f76e50cb27f012bb2e7f05595be5fdcb241
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 06/01/2017
 
 ---
 # <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a>Azure で Docker Python と PostgreSQL アプリを構築する
@@ -36,6 +36,8 @@ ms.lasthandoff: 05/10/2017
 1. [PostgreSQL をダウンロード、インストール、および実行します](https://www.postgresql.org/download/)
 1. [Docker Community Edition をダウンロードし、インストールします](https://www.docker.com/community-edition)
 1. [Azure CLI 2.0 をダウンロードし、インストールします](https://docs.microsoft.com/cli/azure/install-azure-cli)
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -120,7 +122,7 @@ Flask を任意のタイミングで停止するには、ターミナルで `Ctr
 
 ターミナル ウィンドウで Azure CLI 2.0 を使用して、Azure App Service で Python アプリケーションをホストするために必要なリソースを作成します。  [az login](/cli/azure/#login) コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。 
 
-```azurecli 
+```azurecli-interactive 
 az login 
 ``` 
    
@@ -130,7 +132,7 @@ az login
 
 次の例は、米国西部リージョンにリソース グループを作成します。
 
-```azurecli
+```azurecli-interactive
 az group create --name myResourceGroup --location "West US"
 ```
 
@@ -142,7 +144,7 @@ az group create --name myResourceGroup --location "West US"
 
 次のコマンドの `<postgresql_name>` プレースホルダーを独自の一意の PostgreSQL サーバー名に置き換えます。 この一意の名前は、PostgreSQL エンドポイント (`https://<postgresql_name>.postgres.database.azure.com`) の一部として使用されます。そのため、この名前は Azure のすべてのサーバーで一意である必要があります。 
 
-```azurecli
+```azurecli-interactive
 az postgres server create --resource-group myResourceGroup --name <postgresql_name> --admin-user <my_admin_username>
 ```
 
@@ -178,7 +180,7 @@ Azure Database for PostgreSQL サーバーが作成されると、Azure CLI に�
 
 データベースにアクセスする前に、すべての IP アドレスからデータベースにアクセスできるようにする必要があります。 これは、次の Azure CLI コマンドを使用して行うことができます。
 
-```azurecli
+```azurecli-interactive
 az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql_name> --start-ip-address=0.0.0.0 --end-ip-address=255.255.255.255 --name AllowAllIPs
 ```
 
@@ -288,7 +290,7 @@ INFO  [alembic.runtime.migration] Will assume transactional DDL.
 
 コンテナー レジストリを作成する次のコマンドの `<registry_name>` を、選択した一意の Azure Container Registry 名に置き換えます。
 
-```azurecli
+```azurecli-interactive
 az acr create --name <registry_name> --resource-group myResourceGroup --location "West US" --sku Basic
 ```
 
@@ -318,7 +320,7 @@ az acr create --name <registry_name> --resource-group myResourceGroup --location
 
 資格情報にアクセスする前に、管理者モードにする必要があります。
 
-```azurecli
+```azurecli-interactive
 az acr update --name <registry_name> --admin-enabled true
 az acr credential show -n <registry_name>
 ```
@@ -355,20 +357,11 @@ docker push <registry_name>.azurecr.io/flask-postgresql-sample
 
 [az appservice plan create](/cli/azure/appservice/plan#create) コマンドで、App Service プランを作成します。 
 
-> [!NOTE] 
-> App Service プランは、アプリをホストするために使用される物理リソースのコレクションを表しています。 App Service プランに割り当てられたすべてのアプリケーションは、プランで定義されたリソースを共有します。これにより、複数のアプリをホストする際にコストを節約できます。 
-> 
-> App Service プランには、次の定義があります。 
-> 
-> * リージョン (北ヨーロッパ、米国東部、東南アジアなど) 
-> * インスタンス サイズ (Small、Medium、Large) 
-> * スケール カウント (インスタンス数 1、2、3 など) 
-> * SKU (Free、Shared、Basic、Standard、Premium) 
-> 
+[!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
 次の例では、S1 価格レベルを使用して、`myAppServicePlan` という名前の Linux ベースの App Service プランを作成します。
 
-```azurecli
+```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku S1 --is-linux
 ```
 
@@ -416,7 +409,7 @@ App Service プランを作成したので、`myAppServicePlan` App Service プ�
 
 次のコマンドで、`<app_name>` プレースホルダーを独自の一意のアプリ名に置き換えます。 この一意の名前は、Web アプリの既定のドメイン名の一部として使用されます。そのため、この名前は Azure のすべてのアプリで一意である必要があります。 後で、Web アプリをユーザーに公開する前に、任意のカスタム DNS エントリを Web アプリにマップできます。 
 
-```azurecli
+```azurecli-interactive
 az appservice web create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan
 ```
 
@@ -448,7 +441,7 @@ App Service では、[az appservice web config appsettings update](/cli/azure/ap
 
 次のコマンドを使用して、データベース接続の詳細をアプリ設定として指定できます。 さらに、`PORT` 変数を使用して、Docker コンテナーのポート 5000 をポート 80 で HTTP トラフィックを受信するようにマップすることを指定します。
 
-```azurecli
+```azurecli-interactive
 az appservice web config appsettings update --name <app_name> --resource-group myResourceGroup --settings DBHOST="<postgresql_name>.postgres.database.azure.com" DBUSER="manager@<postgresql_name>" DBPASS="supersecretpass" DBNAME="eventregistration" PORT=5000
 ```
 
@@ -464,7 +457,7 @@ az appservice web config container update --resource-group myResourceGroup --nam
 
 Docker コンテナーの更新または上記の設定の変更を行った場合は、常にアプリを再起動して、すべての設定が適用され、最新のコンテナーがレジストリからプルされるようにします。
 
-```azurecli
+```azurecli-interactive
 az appservice web restart --resource-group myResourceGroup --name <app_name>
 ```
 

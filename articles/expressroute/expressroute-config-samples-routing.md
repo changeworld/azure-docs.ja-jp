@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: b77a20274e22827aaa8aa4d354b62d086a19b206
-ms.openlocfilehash: 6fefb9cfa96b0a6b7acfe4d7fcb17cb13ec240a0
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 032e584dc5abf59e9e3e8d80673b402f1fbf721b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -28,7 +30,12 @@ ms.openlocfilehash: 6fefb9cfa96b0a6b7acfe4d7fcb17cb13ec240a0
 > 
 > 
 
+## <a name="mtu-and-tcp-mss-settings-on-router-interfaces"></a>ルーターのインターフェイスの MTU および TCP MSS 設定
+* ExpressRoute インターフェイスの MTU は 1500 で、これは、ルーターでの Ethernet インターフェイスの一般的な既定の MTU です。 これとは異なる MTU がお使いのルーターに設定されていない限り、ルーター インターフェイスで値を指定する必要はありません。
+* Azure VPN Gateway とは異なり、ExpressRoute 回線の TCP MSS を指定する必要はありません。
+
 以下のルーター構成サンプルは、すべてのピアリングを対象としています。 詳細については、「[ExpressRoute のピアリング](expressroute-circuit-peerings.md)」および「[ExpressRoute のルーティングの要件](expressroute-routing.md)」をご覧ください。
+
 
 ## <a name="cisco-ios-xe-based-routers"></a>Cisco IOS-XE ベースのルーター
 このセクションのサンプルは、IOS-XE OS ファミリを実行するルーターを対象としています。
@@ -206,10 +213,5 @@ ms.openlocfilehash: 6fefb9cfa96b0a6b7acfe4d7fcb17cb13ec240a0
 
 ## <a name="next-steps"></a>次のステップ
 詳細については、 [ExpressRoute の FAQ](expressroute-faqs.md) を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

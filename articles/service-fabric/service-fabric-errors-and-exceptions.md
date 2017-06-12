@@ -12,11 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/16/2017
+ms.date: 06/01/2017
 ms.author: ryanwi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 491f61afe899c746c193f0d3703d3212f9258e63
 ms.openlocfilehash: 578046d6939b90cb58d457087bb465006630b4c1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -47,10 +49,5 @@ FabricClient を使用して実行できる操作の種類は多岐にわたり�
 | InvalidX509Store |X509 証明書ストアを開くことができません。 |
 | InvalidSubjectName |サブジェクト名が無効です。 |
 | InvalidAllowedCommonNameList |共通名リスト文字列の形式が無効です。 コンマ区切りで指定する必要があります。 |
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

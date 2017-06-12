@@ -16,10 +16,10 @@ ms.workload: identity
 ms.date: 05/04/2017
 ms.author: markvi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 4065682658bdd99066266b8b4e5e4c4605ff3db9
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: d8c49272789e7d33c6f0684875765a1ecea5a2ff
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -38,6 +38,10 @@ Azure AD のレポート アーキテクチャは、次のコンポーネント�
 
 このトピックでは、監査アクティビティの概要を説明します。
  
+## <a name="who-can-access-the-data"></a>誰がデータにアクセスできますか。
+* セキュリティ管理者またはセキュリティ リーダーの役割のユーザー
+* グローバル管理者
+* 個々のユーザー (非管理者) が自分のアクティビティを閲覧可能
 
 
 ## <a name="audit-logs"></a>監査ログ
@@ -102,10 +106,11 @@ Azure Active Directory の監査ログは、コンプライアンスのために
 - コア ディレクトリ
 - セルフサービスによるパスワード管理
 - セルフサービスのグループ管理
-- アカウント プロビジョニング
-- 自動パスワード ロールオーバー
+- アカウント プロビジョニング - 自動パスワード ロールオーバー
 - 招待されたユーザー
 - MIM サービス
+- Identity Protection
+- B2C
 
 **[アクティビティのリソースの種類]** フィルターでは、次のフィルターのいずれかを選択できます。
 
@@ -124,148 +129,9 @@ Azure Active Directory の監査ログは、コンプライアンスのために
 - O365
 
 
-
-
 **[アクティビティ]** フィルターは、カテゴリとアクティビティ リソースの種類の選択に基づいたものです。 参照する特定のアクティビティを選択することも、すべてを選択することもできます。 
 
-| アクティビティ カテゴリ| アクティビティのリソースの種類| アクティビティ |
-| :-- | :-: | :-- |
-| Core Directory (コア ディレクトリ)| グループ| グループ設定の削除|
-| Core Directory (コア ディレクトリ)| Directory| ドメインの更新|
-| Core Directory (コア ディレクトリ)| Directory| 会社からのパートナーの削除|
-| Core Directory (コア ディレクトリ)| User| ロールの更新|
-| Core Directory (コア ディレクトリ)| User| テンプレートからのロールの追加|
-| Core Directory (コア ディレクトリ)| グループ| グループへのアプリ ロールの割り当ての追加|
-| Core Directory (コア ディレクトリ)| グループ| ユーザーに対するグループ ベースのライセンスの適用の開始|
-| Core Directory (コア ディレクトリ)| アプリケーション| サービス プリンシパルの追加|
-| Core Directory (コア ディレクトリ)| [ポリシー]| ポリシーの更新|
-| Core Directory (コア ディレクトリ)| [ポリシー]| サービス プリンシパルへのポリシーの追加|
-| Core Directory (コア ディレクトリ)| デバイス| デバイスへの登録済み所有者の追加|
-| Core Directory (コア ディレクトリ)| デバイス| デバイスへの登録済みユーザーの追加|
-| Core Directory (コア ディレクトリ)| デバイス| デバイス構成の更新|
-| Self-service Password Management \(セルフサービスによるパスワード管理)| User| パスワードのリセット (セルフサービス)|
-| Self-service Password Management \(セルフサービスによるパスワード管理)| User| ユーザー アカウントのロック解除 (セルフサービス)|
-| Self-service Password Management \(セルフサービスによるパスワード管理)| User| パスワードのリセット (管理者)|
-| セルフサービスによるグループ管理| グループ| 保留になっているグループへの参加要求の削除|
-| アカウント プロビジョニング| アプリケーション| プロセス エスクロー|
-| 自動パスワード ロールオーバー| アプリケーション| 自動パスワード ロールオーバー|
-| 招待されたユーザー| 他の| 処理されたバッチ招待|
-| Core Directory (コア ディレクトリ)| Directory| 確認済みドメインの削除|
-| Core Directory (コア ディレクトリ)| Directory| 未確認ドメインの追加|
-| Core Directory (コア ディレクトリ)| Directory| 確認済みドメインの追加|
-| Core Directory (コア ディレクトリ)| Directory| テナントへのディレクトリ機能の設定|
-| Core Directory (コア ディレクトリ)| Directory| DirSyncEnabled フラグの設定|
-| Core Directory (コア ディレクトリ)| Directory| 会社の設定の作成|
-| Core Directory (コア ディレクトリ)| Directory| 会社の設定の更新|
-| Core Directory (コア ディレクトリ)| Directory| 会社の設定の削除|
-| Core Directory (コア ディレクトリ)| Directory| 会社で許可されるデータの場所の設定|
-| Core Directory (コア ディレクトリ)| Directory| 会社の多国対応機能を有効にする設定|
-| Core Directory (コア ディレクトリ)| User| ユーザーの更新|
-| Core Directory (コア ディレクトリ)| User| ユーザーの削除|
-| Core Directory (コア ディレクトリ)| グループ| グループからのメンバーの削除|
-| Core Directory (コア ディレクトリ)| グループ| グループ ライセンスの設定|
-| Core Directory (コア ディレクトリ)| グループ| グループ設定の作成|
-| Core Directory (コア ディレクトリ)| アプリケーション| サービス プリンシパルの更新|
-| Core Directory (コア ディレクトリ)| アプリケーション| アプリケーションの削除|
-| Core Directory (コア ディレクトリ)| アプリケーション| アプリケーションの更新|
-| Core Directory (コア ディレクトリ)| アプリケーション| サービス プリンシパルの削除|
-| Core Directory (コア ディレクトリ)| アプリケーション| サービス プリンシパルの資格情報の追加|
-| Core Directory (コア ディレクトリ)| アプリケーション| サービス プリンシパルからのアプリ ロールの割り当ての削除|
-| Core Directory (コア ディレクトリ)| アプリケーション| アプリケーションからの所有者の削除|
-| Core Directory (コア ディレクトリ)| デバイス| デバイスからの登録済み所有者の削除|
-| Self-service Password Management \(セルフサービスによるパスワード管理)| User| セルフサービスのパスワード リセット フロー アクティビティの進行状況|
-| アカウント プロビジョニング| アプリケーション| 管理|
-| アカウント プロビジョニング| アプリケーション| ディレクトリ操作|
-| MIM サービス| グループ| メンバーの削除|
-| Core Directory (コア ディレクトリ)| [ポリシー]| ポリシーの削除|
-| 招待されたユーザー| User| バイラル テナントの作成|
-| Core Directory (コア ディレクトリ)| Directory| 外部シークレットの更新|
-| Core Directory (コア ディレクトリ)| Directory| 権限管理プロパティの設定|
-| Core Directory (コア ディレクトリ)| Directory| 会社の更新|
-| Core Directory (コア ディレクトリ)| User| ユーザーの追加|
-| Core Directory (コア ディレクトリ)| User| フェデレーション ユーザーの管理対象ユーザーへの変換|
-| Core Directory (コア ディレクトリ)| User| ユーザーのアプリケーション パスワードの作成|
-| Core Directory (コア ディレクトリ)| グループ| グループへのメンバーの追加|
-| Core Directory (コア ディレクトリ)| グループ| グループの追加|
-| Core Directory (コア ディレクトリ)| アプリケーション| アプリケーションへの同意|
-| Core Directory (コア ディレクトリ)| アプリケーション| アプリケーションの追加|
-| Core Directory (コア ディレクトリ)| アプリケーション| サービス プリンシパルへの所有者の追加|
-| Core Directory (コア ディレクトリ)| アプリケーション| Oauth2Permissiongrant の削除|
-| Core Directory (コア ディレクトリ)| [ポリシー]| ポリシー資格情報の削除|
-| Core Directory (コア ディレクトリ)| デバイス| デバイス構成の削除|
-| セルフサービスによるグループ管理| グループ| 動的グループのプロパティの設定|
-| セルフサービスによるグループ管理| グループ| ライフサイクル管理ポリシーの更新|
-| アカウント プロビジョニング| アプリケーション| 同期規則の操作|
-| 招待されたユーザー| 他の| アップロードされたバッチ招待|
-| MIM サービス| グループ| メンバーの追加|
-| Core Directory (コア ディレクトリ)| User| ライセンス プロパティの設定|
-| Core Directory (コア ディレクトリ)| User| ユーザーの復元|
-| Core Directory (コア ディレクトリ)| User| ロールからのメンバーの削除|
-| Core Directory (コア ディレクトリ)| User| ユーザーからのアプリ ロールの割り当ての削除|
-| Core Directory (コア ディレクトリ)| User| ロールからのスコープを持つメンバーの削除|
-| Core Directory (コア ディレクトリ)| グループ| グループの更新|
-| Core Directory (コア ディレクトリ)| グループ| グループへの所有者の追加|
-| Core Directory (コア ディレクトリ)| グループ| ユーザーに対するグループ ベースのライセンスの適用の終了|
-| Core Directory (コア ディレクトリ)| グループ| グループからのアプリ ロールの割り当ての削除|
-| Core Directory (コア ディレクトリ)| グループ| ユーザーが管理するグループの設定|
-| Core Directory (コア ディレクトリ)| アプリケーション| Oauth2Permissiongrant の追加|
-| Core Directory (コア ディレクトリ)| アプリケーション| サービス プリンシパルへのアプリ ロールの割り当ての追加|
-| Core Directory (コア ディレクトリ)| アプリケーション| サービス プリンシパルの資格情報の削除|
-| Core Directory (コア ディレクトリ)| [ポリシー]| サービス プリンシパルからのポリシーの削除|
-| Core Directory (コア ディレクトリ)| デバイス| デバイスの更新|
-| Core Directory (コア ディレクトリ)| デバイス| デバイスの追加|
-| Core Directory (コア ディレクトリ)| デバイス| デバイス構成の追加|
-| Self-service Password Management \(セルフサービスによるパスワード管理)| User| パスワードの変更 (セルフサービス)|
-| Self-service Password Management \(セルフサービスによるパスワード管理)| User| セルフサービスのパスワード リセットを登録したユーザー|
-| セルフサービスによるグループ管理| グループ| 保留になっているグループへの参加要求の承認|
-| Core Directory (コア ディレクトリ)| Directory| 未確認ドメインの削除|
-| Core Directory (コア ディレクトリ)| Directory| ドメインの確認|
-| Core Directory (コア ディレクトリ)| Directory| ドメインの認証の設定|
-| Core Directory (コア ディレクトリ)| Directory| パスワード ポリシーの設定|
-| Core Directory (コア ディレクトリ)| Directory| 会社へのパートナーの追加|
-| Core Directory (コア ディレクトリ)| Directory| パートナーへの会社の昇格|
-| Core Directory (コア ディレクトリ)| Directory| パートナーシップの設定|
-| Core Directory (コア ディレクトリ)| Directory| 誤削除のしきい値の設定|
-| Core Directory (コア ディレクトリ)| Directory| パートナーの降格|
-| 招待されたユーザー| User| 外部ユーザーの招待|
-| アカウント プロビジョニング| アプリケーション| インポート|
-| Core Directory (コア ディレクトリ)| アプリケーション| サービス プリンシパルからの所有者の削除|
-| Core Directory (コア ディレクトリ)| デバイス| デバイスからの登録済みユーザーの削除|
-| Core Directory (コア ディレクトリ)| Directory| 会社情報の設定|
-| Core Directory (コア ディレクトリ)| Directory| ドメインのフェデレーションの設定|
-| Core Directory (コア ディレクトリ)| Directory| 会社の作成|
-| Core Directory (コア ディレクトリ)| Directory| 権限管理プロパティの消去|
-| Core Directory (コア ディレクトリ)| Directory| DirSync 機能の設定|
-| Core Directory (コア ディレクトリ)| Directory| 電子メール検証済みドメインの確認|
-| Core Directory (コア ディレクトリ)| User| ユーザー ライセンスの変更|
-| Core Directory (コア ディレクトリ)| User| ユーザー パスワードの変更|
-| Core Directory (コア ディレクトリ)| User| ユーザー パスワードのリセット|
-| Core Directory (コア ディレクトリ)| User| ユーザーへのアプリ ロールの割り当て許可の追加|
-| Core Directory (コア ディレクトリ)| User| ロールへのメンバーの追加|
-| Core Directory (コア ディレクトリ)| User| ユーザーのアプリケーション パスワードの削除|
-| Core Directory (コア ディレクトリ)| User| ユーザーの資格情報の更新|
-| Core Directory (コア ディレクトリ)| User| ユーザー管理の設定|
-| Core Directory (コア ディレクトリ)| User| ロールへのスコープを持つメンバーの追加|
-| Core Directory (コア ディレクトリ)| グループ| グループの削除|
-| Core Directory (コア ディレクトリ)| グループ| グループからの所有者の削除|
-| Core Directory (コア ディレクトリ)| グループ| グループ設定の更新|
-| Core Directory (コア ディレクトリ)| アプリケーション| アプリケーションへの所有者の追加|
-| Core Directory (コア ディレクトリ)| アプリケーション| 同意の取り消し|
-| Core Directory (コア ディレクトリ)| [ポリシー]| ポリシーの追加|
-| Core Directory (コア ディレクトリ)| デバイス| デバイスの削除|
-| Self-service Password Management \(セルフサービスによるパスワード管理)| User| セルフサービスのパスワード リセットのブロック|
-| セルフサービスによるグループ管理| グループ| グループへの参加要求|
-| セルフサービスによるグループ管理| グループ| ライフサイクル管理ポリシーの作成|
-| セルフサービスによるグループ管理| グループ| 保留になっているグループへの参加要求の拒否|
-| セルフサービスによるグループ管理| グループ| 保留になっているグループへの参加要求のキャンセル|
-| セルフサービスによるグループ管理| グループ| グループの更新|
-| アカウント プロビジョニング| アプリケーション| エクスポート|
-| アカウント プロビジョニング| アプリケーション| 他の|
-| 招待されたユーザー| User| 外部ユーザーの招待の利用|
-| 招待されたユーザー| User| バイラル ユーザーの作成|
-| 招待されたユーザー| User| アプリケーションへの外部ユーザーの割り当て|
-
-
+Graph API https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta を使用して全監査アクティビティのリストを取得できます ($tenantdomain は実際のドメイン名)。[監査レポートのイベント](active-directory-reporting-audit-events.md#list-of-audit-report-events)に関する記事を参照してください。
 
 
 ## <a name="audit-logs-shortcuts"></a>監査ログのショートカット
@@ -274,9 +140,6 @@ Azure Active Directory の監査ログは、コンプライアンスのために
 
 - [概要]
 - エンタープライズ アプリケーション
-
-監査レポート アクティビティの完全な一覧については、 [監査レポートのイベントの一覧](active-directory-reporting-audit-events.md#list-of-audit-report-events)を参照してください。
-
 
 ### <a name="users-and-groups-audit-logs"></a>ユーザーとグループの監査ログ
 

@@ -9,7 +9,7 @@ editor:
 tags: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: tutorial-secure
+ms.custom: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -112,7 +112,7 @@ SQL 認証を使用するユーザーを作成するには、次の手順に従�
 3. クエリ ウィンドウに次のクエリを入力します。
 
     ```sql
-    CREATE USER 'ApplicationUserUser' WITH PASSWORD = 'strong_password';
+    CREATE USER ApplicationUserUse' WITH PASSWORD = 'YourStrongPassword1';
     ```
 
 4. ツール バーの **[実行]** をクリックして、ユーザーを作成します。
@@ -120,8 +120,8 @@ SQL 認証を使用するユーザーを作成するには、次の手順に従�
 5. 既定では、ユーザーはデータベースに接続できますが、データを読み取ったり書き込んだりするアクセス許可は付与されていません。 新しく作成したユーザーにこれらのアクセス許可を付与するには、新しいクエリ ウィンドウで次の 2 つのコマンドを実行します。
 
     ```sql
-    ALTER ROLE db_datareader ADD MEMBER 'ApplicationUserUser';
-    ALTER ROLE db_datawriter ADD MEMBER 'ApplicationUserUser';
+    ALTER ROLE db_datareader ADD MEMBER ApplicationUserUser;
+    ALTER ROLE db_datawriter ADD MEMBER ApplicationUserUser;
     ```
 
 新しいユーザーの作成のような管理者タスクを実行する必要がない場合は、データベースに接続するために、これらの非管理者アカウントをデータベース レベルで作成することをお勧めします。 Azure Active Directory を使用して認証を行う方法については、[Azure Active Directory のチュートリアル](./sql-database-aad-authentication-configure.md)を参照してください。

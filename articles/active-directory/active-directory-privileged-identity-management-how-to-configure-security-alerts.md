@@ -12,12 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/14/2017
+ms.date: 06/06/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.custom: pim
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: dd8987a05c71643b49e0ac9e3c8ae43d47743225
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/29/2016
 
 ---
 # <a name="how-to-configure-security-alerts-in-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management でセキュリティ アラートを構成する方法
@@ -66,9 +68,4 @@ ms.openlocfilehash: dd8987a05c71643b49e0ac9e3c8ae43d47743225
 
 [1]: ./media/active-directory-privileged-identity-management-how-to-configure-security-alerts/PIM_security_dash.png
 [2]: ./media/active-directory-privileged-identity-management-how-to-configure-security-alerts/PIM_security_settings.png
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

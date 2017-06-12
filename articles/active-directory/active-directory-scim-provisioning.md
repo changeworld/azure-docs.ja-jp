@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2016
+ms.date: 05/04/2017
 ms.author: asmalser
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 3349f890391aec7fc6361b149d148d828cbe3b97
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: c4e482e9f985553938ce132c617ba0b1a2128106
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -32,7 +34,7 @@ Azure Active Directory では、 [SCIM 2.0 プロトコル仕様](https://tools.
 Azure Active Directory には、次の 2 つの SCIM のユース ケースがあります。
 
 * **SCIM をサポートするアプリケーションにユーザーとグループをプロビジョニングする** - SCIM 2.0 をサポートし、認証に OAuth ベアラー トークンを使用するアプリケーションは、そのままで Azure AD と連携します。
-* **他の API ベースのプロビジョニングをサポートするアプリケーション用に独自のプロビジョニング ソリューションを構築する** - SCIM 以外のアプリケーションの場合は、ユーザー プロビジョニング用に、SCIM のエンドポイントを作成して、Azure AD の SCIM エンドポイントと、アプリケーションがサポートする任意の API との間で変換を行うことができます。  SCIM エンドポイントの開発をサポートする目的で、SCIM エンドポイントを提供して SCIM メッセージを変換する方法を示すコード サンプルと共に、CLI ライブラリを提供しています。  
+* **他の API ベースのプロビジョニングをサポートするアプリケーション用に独自のプロビジョニング ソリューションを構築する** - SCIM 以外のアプリケーションの場合は、ユーザー プロビジョニング用に、SCIM のエンドポイントを作成して、Azure AD SCIM のエンドポイントと、アプリケーションがサポートする任意の API との間で変換を行うことができます。  SCIM エンドポイントの開発をサポートする目的で、SCIM エンドポイントを提供して SCIM メッセージを変換する方法を示すコード サンプルと共に、CLI ライブラリを提供しています。  
 
 ## <a name="provisioning-users-and-groups-to-applications-that-support-scim"></a>SCIM をサポートするアプリケーションにユーザーとグループをプロビジョニングする
 Azure Active Directory は、 [System for Cross-domain Identity Management 2 (SCIM)](https://tools.ietf.org/html/draft-ietf-scim-api-19) Web サービスを実装し、認証用に OAuth ベアラー トークンを受け取るアプリケーションに対し、割り当て済みのユーザーとグループを自動的にプロビジョニングするように構成できます。 SCIM 2.0 仕様の中で、アプリケーションは次の要件を満たす必要があります。
@@ -96,7 +98,7 @@ Azure AD からのプロビジョニング要求を受信できる SCIM エン�
 
 **サンプルの SCIM エンドポイントを作成するには:**
 
-1.  [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master)
+1. [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master)
 2. パッケージを解凍し、Windows コンピューターの C:\AzureAD-BYOA-Provisioning-Samples\ などの場所に配置します。
 3. このフォルダーから、Visual Studio で FileProvisioningAgent ソリューションを起動します。
 4. **[ツール]、[ライブラリ パッケージ マネージャー]、[パッケージ マネージャー コンソール]** の順に選択し、FileProvisioningAgent プロジェクトに対して下記のコマンドを実行して、ソリューションの参照を解決します。
@@ -116,16 +118,16 @@ Azure AD からのプロビジョニング要求を受信できる SCIM エン�
 2. **[Active Directory]、[ディレクトリ]、自分のディレクトリ、[アプリケーション]** の順に参照し、**[追加]、[ギャラリーからアプリケーションを追加します]** を選択します。
 3. 左側の **[カスタム]** タブを選択し、"SCIM Test App" などの名前を入力して、チェックマーク アイコンをクリックすると、アプリケーション オブジェクトが作成されます。 作成されるアプリケーション オブジェクトは、単なる SCIM エンドポイントではなく、シングル サインオンのプロビジョニングと実装の対象であるアプリケーションを表していることに注意してください。
 
-![][2]
+  ![][2]
 
-1. 表示された画面で、2 番目のボタン **[アカウント プロビジョニングの構成]** を選択します。
+4. 表示された画面で、2 番目のボタン **[アカウント プロビジョニングの構成]** を選択します。
 2. ダイアログ ボックスで、インターネットに公開されている URL か SCIM エンドポイントのポートを入力します。 入力内容は、http://testmachine.contoso.com:9000 または http://<IP アドレス>: 9000/ のようになります。<IP アドレス> は、インターネットに公開されている IP アドレスです。  
-3. **[次へ]**、**[テストの開始]** の順にクリックすると、Azure Active Directory が SCIM エンドポイントへの接続を試みます。 失敗した場合は、診断情報が表示されます。  
-4. Web サービスへの接続が成功した場合は、以降の画面を**[次へ]** をクリックして進み、**[完了]** をクリックしてダイアログを閉じます。
-5. 表示された画面で、3 番目のボタン **[アカウントの割り当て]** をクリックします。 表示された [ユーザーとグループ] セクションで、アプリケーションにプロビジョニングするユーザーまたはグループを割り当てます。
-6. ユーザーとグループが割り当てられたら、画面の上部付近にある **[構成]** タブをクリックします。
-7. **[アカウント プロビジョニング]**で、[状態] が [オン] に設定されていることを確認します。 
-8. **[ツール]** で **[アカウント プロビジョニングを再開する]** をクリックし、プロビジョニング プロセスを開始します。
+5. **[次へ]**、**[テストの開始]** の順にクリックすると、Azure Active Directory が SCIM エンドポイントへの接続を試みます。 失敗した場合は、診断情報が表示されます。  
+6. Web サービスへの接続が成功した場合は、以降の画面を**[次へ]** をクリックして進み、**[完了]** をクリックしてダイアログを閉じます。
+7. 表示された画面で、3 番目のボタン **[アカウントの割り当て]** をクリックします。 表示された [ユーザーとグループ] セクションで、アプリケーションにプロビジョニングするユーザーまたはグループを割り当てます。
+8. ユーザーとグループが割り当てられたら、画面の上部付近にある **[構成]** タブをクリックします。
+9. **[アカウント プロビジョニング]**で、[状態] が [オン] に設定されていることを確認します。 
+10. **[ツール]** で **[アカウント プロビジョニングを再開する]** をクリックし、プロビジョニング プロセスを開始します。
 
 プロビジョニング プロセスが開始されて SCIM エンドポイントに要求が送信されるまでに 5 ～ 10 分かかることがあります。  アプリケーションの [ダッシュボード] タブに、接続の試行に関する概要が表示されます。また、ディレクトリの [レポート] タブから、プロビジョニング アクティビティとプロビジョニング エラーに関するレポートをダウンロードできます。
 
@@ -678,9 +680,4 @@ externalId 属性に特定の値を持つユーザーを照会する上記のサ
 [3]: ./media/active-directory-scim-provisioning/scim-figure-3.PNG
 [4]: ./media/active-directory-scim-provisioning/scim-figure-4.PNG
 [5]: ./media/active-directory-scim-provisioning/scim-figure-5.PNG
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 
