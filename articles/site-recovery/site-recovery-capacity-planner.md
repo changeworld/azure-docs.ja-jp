@@ -37,9 +37,9 @@ Site Recovery Capacity Planner では、ソース環境やワークロードを�
 
 
 1. VM、VM あたりのディスク数、ディスクあたりのストレージなど、環境の情報を収集します。
-2. レプリケートされたデータの&1; 日の変更 (チャーン) 率を識別します。 これを行うには、次の手順を実行します。
+2. レプリケートされたデータの 1 日の変更 (チャーン) 率を識別します。 これを行うには、次の手順を実行します。
 
-   * Hyper-V の VM をレプリケートする場合、[Hyper-V 容量計画ツール](https://www.microsoft.com/download/details.aspx?id=39057) をダウンロードして変更率を得ます。 [こちら](site-recovery-capacity-planning-for-hyper-v-replication.md) を参照してください。 このツールは&1; 週間に渡って実行して平均をキャプチャすることをお勧めします。
+   * Hyper-V の VM をレプリケートする場合、[Hyper-V 容量計画ツール](https://www.microsoft.com/download/details.aspx?id=39057) をダウンロードして変更率を得ます。 [こちら](site-recovery-capacity-planning-for-hyper-v-replication.md) を参照してください。 このツールは 1 週間に渡って実行して平均をキャプチャすることをお勧めします。
    * VMware 仮想マシンをレプリケートする場合、[Azure Site Recovery Deployment Planner](./site-recovery-deployment-planner.md) を使用してチャーン率を算出します。
    * 物理サーバーをレプリケートする場合は、手動で評価を行う必要があります。
 
@@ -62,14 +62,14 @@ Site Recovery Capacity Planner では、ソース環境やワークロードを�
    * **[デルタ レプリケーションに必要な帯域幅** (MB/秒)]。 1 日の平均データ変更率に基づいてデルタ レプリケーションのネットワーク帯域幅が計算されます。
    * **[初期レプリケーションに必要な帯域幅** (MB/秒)]。 入力した初期レプリケーションの値に基づいて初期レプリケーションのネットワーク帯域幅が計算されます。
    * **[必要なストレージ (単位: GB)]** は Azure で必要なストレージの合計です。
-   * **[Standard Storage アカウントの IOPS 合計]** は、Standard Storage アカウントの合計での IOPS が 8K の単位サイズで計算されます。  Quick Planner の場合は、この数値はすべてのソース VM ディスクおよび&1; 日のデータ変更率に基づいて計算されます。 Detailed Planner の場合、この数値は、標準の Azure VM にマップされている VM 数の合計およびそれらの VM でのデータ変更率に基づいて計算されます。
+   * **[Standard Storage アカウントの IOPS 合計]** は、Standard Storage アカウントの合計での IOPS が 8K の単位サイズで計算されます。  Quick Planner の場合は、この数値はすべてのソース VM ディスクおよび 1 日のデータ変更率に基づいて計算されます。 Detailed Planner の場合、この数値は、標準の Azure VM にマップされている VM 数の合計およびそれらの VM でのデータ変更率に基づいて計算されます。
    * **[Standard Storage アカウントの数]** は、VM の保護に必要な Standard Storage アカウントの総数を示します。 Standard Storage アカウントの場合は、Standard Storage のすべての VM で最大 20000 の IOPS まで対応でき、またディスクごとでは最大 500 の IOPS まで対応できます。
    * **[必要な BLOB ディスク数]** は、Azure ストレージに作成されるディスクの数を示します。
    * **[必要な Premium Storage アカウント数]** は、VM の保護に必要な Premium Storage アカウントの総数を示します。 IOPS が多い (20000 を超える) ソース VM には、Premium Storage アカウントが必要です。 Premium Storage アカウントでは、最大 80000 の IOPS に対応できます。
-   * **[Premium Storage の IOPS 合計]** は、Premium Storage アカウントの合計での IOPS が 256K の単位サイズで計算されます。  Quick Planner の場合は、この数値はすべてのソース VM ディスクおよび&1; 日のデータ変更率に基づいて計算されます。 Detailed Planner の場合、この数値は、Premium の Azure VM (DS および GS シリーズ) にマップされている VM 数の合計およびそれらの VM でのデータ変更率に基づいて計算されます。
+   * **[Premium Storage の IOPS 合計]** は、Premium Storage アカウントの合計での IOPS が 256K の単位サイズで計算されます。  Quick Planner の場合は、この数値はすべてのソース VM ディスクおよび 1 日のデータ変更率に基づいて計算されます。 Detailed Planner の場合、この数値は、Premium の Azure VM (DS および GS シリーズ) にマップされている VM 数の合計およびそれらの VM でのデータ変更率に基づいて計算されます。
    * **[Number of configuration servers required (必要な構成サーバーの数)]** は、デプロイに必要な構成サーバーの数を示します。
    * **[Number of additional process servers required (必要なその他のプロセス サーバーの数)]** は、既定で構成サーバーで実行しているプロセス サーバーの他に追加のプロセス サーバーが必要かどうかを示しています。
-   * **[ソースに&100;% の追加ストレージ]** は、ソースの場所に追加ストレージが必要かどうかを示しています。
+   * **[ソースに 100% の追加ストレージ]** は、ソースの場所に追加ストレージが必要かどうかを示しています。
 
    ![出力](./media/site-recovery-capacity-planner/output.png)
 
@@ -87,7 +87,7 @@ Site Recovery Capacity Planner では、ソース環境やワークロードを�
    * **[ストレージ合計 (GB)]** には、VM ストレージの合計サイズを指定します。 たとえば、ソース サーバーにそれぞれ 500 GB のディスクが 3 つある場合、ストレージの合計サイズは 1500 GB になります。
    * **[Number of disks attached (接続されているディスクの数)]** には、ソース サーバーのディスクの合計数を指定します。
    * **[Disk capacity utilization (ディスク容量の使用率)]** には、平均使用率を指定します。
-   * **[日次変更率 (%)]** には、ソース サーバーの&1; 日のデータ変更率を指定します。
+   * **[日次変更率 (%)]** には、ソース サーバーの 1 日のデータ変更率を指定します。
    * **[Mapping Azure size (マッピングする Azure サイズ)]** には、マップする Azure VM のサイズを入力します。 **[Compute IaaS VMs (IaaS VM を計算する)]** をクリックすると、この操作を手動で行わずに済みます。手動で設定を入力し、[Compute IaaS VMs (IaaS VM を計算する)] をクリックすると、最も一致する Azure VM のサイズが計算プロセスによって自動的に特定されるため、手動の設定が上書きされることがあります。
 
    ![Workload Qualification ](./media/site-recovery-capacity-planner/workload-qualification.png)
@@ -104,14 +104,14 @@ AA から AE の列が出力され、各 VM の情報が示されます。
 ![Workload Qualification ](./media/site-recovery-capacity-planner/workload-qualification-2.png)
 
 ### <a name="example"></a>例
-例として、テーブルに示した値を持つ&6; つの VM に最も一致する Azure VM および Azure ストレージ要件が、ツールによって計算されて割り当てられます。
+例として、テーブルに示した値を持つ 6 つの VM に最も一致する Azure VM および Azure ストレージ要件が、ツールによって計算されて割り当てられます。
 
 ![Workload Qualification ](./media/site-recovery-capacity-planner/workload-qualification-3.png)
 
 * 出力例では、以下に注意してください。
 
   * 最初の列は、VM、ディスク、およびチャーンの検証列です。
-  * 5 つの VM に Standard Storage アカウントが&2; つと Premium Storage アカウントが&1; つ必要でした。
+  * 5 つの VM に Standard Storage アカウントが 2 つと Premium Storage アカウントが 1 つ必要でした。
   * 1 つ以上のディスクが 1 TB 以上であるため、VM3 は保護の対象とはなりません。
   * VM1 と VM2 は、最初の Standard Storage アカウントを使用できます。
   * VM4 は、2 つ目の Standard Storage アカウントを使用できます。
