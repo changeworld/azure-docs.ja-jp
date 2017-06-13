@@ -71,7 +71,7 @@
     href: agent-user-guide.md
   - name: '[Azure Security Center](Azure Security Center)'
     href: ../../security-center/security-center-virtual-machine.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-  - name: 災害復旧
+  - name: ディザスター リカバリー
     href: ../virtual-machines-disaster-recovery-guidance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
   - name: Azure の計画メンテナンス
     href: planned-maintenance.md
@@ -194,12 +194,12 @@
         href: ../../storage/storage-faq-for-disks.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: 管理ディスクの作成
       href: create-managed-disk-ps.md
-    - name: VM を管理ディスクに移行する
+    - name: VM を Managed Disks に移行する
       href: migrate-to-managed-disks.md
       items:
       - name: 非管理ディスクから管理ディスクに変換する
         href: convert-unmanaged-to-managed-disks.md
-      - name: クラシック VM を管理ディスクに移行する
+      - name: クラシック VM を Managed Disks に移行する
         href: migrate-single-classic-to-resource-manager.md
     - name: 管理ディスクのスナップショットを作成する
       href: snapshot-copy-managed-disk.md
@@ -327,7 +327,7 @@
     - name: Azure への AWS とオンプレミスの VM の移行の概要
       href: on-prem-to-azure.md
       items:
-      - name: Amazon Web Services (AWS) から Azure に移行する
+      - name: アマゾン ウェブ サービス (AWS) から Azure に移行する
         href: aws-to-azure.md
       - name: 一般化した VHD から VM をアップロードおよび作成する
         href: upload-generalized-managed.md
