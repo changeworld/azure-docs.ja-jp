@@ -12,9 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
-ms.sourcegitcommit: b481f480d44696476497e0eaeeee7150ed8d365b
-ms.openlocfilehash: 6c0f96adff93080f88a6a23edbdf5a622279049f
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 350264be2b885720359b72660397d24dc4d03e11
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/02/2017
 
 ---
 # <a name="vpn-gateway-documentation"></a>VPN Gateway のドキュメント
@@ -142,8 +144,9 @@ ms.openlocfilehash: 6c0f96adff93080f88a6a23edbdf5a622279049f
                 <div class="card">
                     <div class="cardText">
                         <h3>コマンド ライン</h3>
-                        <p><a href="https://msdn.microsoft.com/library/mt163510(v=azure.300)">PowerShell (Resource Manager)</a></p>
-                        <p><a href="https://msdn.microsoft.com/library/mt270335(v=azure.300)">PowerShell (クラシック)</a></p>
+                        <p><a href="/powershell/module/azurerm.network/#vpn">PowerShell (Resource Manager)</a></p>
+                        <p><a href="/powershell/module/azure/#networking">PowerShell (クラシック)</a></p> 
+                        <p><a href="/cli/azure/network/vnet-gateway">Azure CLI</a></p> 
                     </div>
                 </div>
             </div>
@@ -155,7 +158,7 @@ ms.openlocfilehash: 6c0f96adff93080f88a6a23edbdf5a622279049f
                 <div class="card">
                     <div class="cardText">
                         <h3>REST ()</h3>
-                        <p><a href="https://msdn.microsoft.com/library/mt163859">REST (Resource Manager)</a></p>
+                        <p><a href="/rest/api/network/virtualnetworkgateways">REST (Resource Manager)</a></p>
                         <p><a href="https://msdn.microsoft.com/library/jj154113">REST (クラシック)</a></p>
                     </div>
                 </div>
@@ -164,10 +167,5 @@ ms.openlocfilehash: 6c0f96adff93080f88a6a23edbdf5a622279049f
     </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

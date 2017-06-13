@@ -8,16 +8,18 @@ author: ddove
 editor: 
 ms.assetid: 62a349db-bebe-406f-a120-2f1986f2b286
 ms.service: sql-database
-ms.custom: multiple databases
+ms.custom: scale out apps
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 540ef8379145b764d0926649095db57fddb27329
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -77,10 +79,5 @@ ms.openlocfilehash: 540ef8379145b764d0926649095db57fddb27329
 **重要**: この手法は、更新されるマッピング用の範囲が空であることが確実である場合のみ使用します。  上記の方法では、移動される範囲のデータはチェックされないため、コード内にチェックを含めることが最善です。  移動される範囲内に行が存在する場合、実際のデータ分布は更新されたシャード マップと一致しなくなります。 このような場合は、 [分割/マージ ツール](sql-database-elastic-scale-overview-split-and-merge.md) を代わりに使用して操作を行ってください。  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

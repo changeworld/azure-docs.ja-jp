@@ -9,9 +9,9 @@ editor: carlrab
 tags: azure-service-management
 ms.assetid: 
 ms.service: sql-database
-ms.custom: sample
+ms.custom: monitor & tune
 ms.devlang: azurecli
-ms.topic: samples
+ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 04/24/2017
@@ -42,7 +42,7 @@ ms.lasthandoff: 05/15/2017
 
 スクリプト サンプルの実行後は、次のコマンドを使用してリソース グループとすべての関連リソースを削除することができます。
 
-```azurecli
+```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 

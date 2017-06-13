@@ -12,11 +12,12 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 01/19/2017
+ms.date: 06/05/2017
 ms.author: sutalasi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 28e905a20d878eab1428a4b88113544aa742124a
 ms.openlocfilehash: 9c34ea792aa561b8155a915845ffb857dfef7a90
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/21/2017
 
 
@@ -55,7 +56,7 @@ ms.lasthandoff: 02/21/2017
 ![構成サーバーの関連付け](./media/site-recovery-setup-replication-settings-vmware/Associate-CS-1.PNG)
 
 3. サーバーの一覧から [構成サーバー] を選択します。
-4. **[OK]**をクリックします。 1 ～&2; 分で構成サーバーが関連付けられます。
+4. **[OK]**をクリックします。 1 ～ 2 分で構成サーバーが関連付けられます。
 
 ![構成サーバーの関連付け](./media/site-recovery-setup-replication-settings-vmware/Associate-CS-2.png)
 
@@ -67,7 +68,7 @@ ms.lasthandoff: 02/21/2017
 ![レプリケーション ポリシー設定の編集](./media/site-recovery-setup-replication-settings-vmware/Edit-Policy.png)
 
 3. 必要に応じて設定を変更します。
-4. **[保存]**をクリックします。 そのレプリケーション ポリシーを使用している VM の数に応じて、2 ～&5; 分でポリシーが保存されます。
+4. **[保存]**をクリックします。 そのレプリケーション ポリシーを使用している VM の数に応じて、2 ～ 5 分でポリシーが保存されます。
 
 ![レプリケーション ポリシーの保存](./media/site-recovery-setup-replication-settings-vmware/Save-Policy.png)
 
@@ -75,10 +76,10 @@ ms.lasthandoff: 02/21/2017
 1. 構成サーバーを関連付けるレプリケーション ポリシーを選択します。
 2. **[関連付けの解除]** をクリックします。
 3. サーバーの一覧から [構成サーバー] を選択します。
-4. **[OK]**をクリックします。 1 ～&2; 分で構成サーバーの関連付けが解除されます。
+4. **[OK]**をクリックします。 1 ～ 2 分で構成サーバーの関連付けが解除されます。
 
     > [!NOTE]
-    > そのポリシーを使用してレプリケートされた項目が&1; つでもある場合は、構成サーバーの関連付けを解除することはできません。 構成サーバーの関連付けを解除する前に、そのポリシーを使用してレプリケートされた項目がないことを確認してください。
+    > そのポリシーを使用してレプリケートされた項目が 1 つでもある場合は、構成サーバーの関連付けを解除することはできません。 構成サーバーの関連付けを解除する前に、そのポリシーを使用してレプリケートされた項目がないことを確認してください。
 
 ## <a name="delete-a-replication-policy"></a>レプリケーション ポリシーを削除する
 
@@ -86,5 +87,5 @@ ms.lasthandoff: 02/21/2017
 2. [ **削除**] をクリックします。 30 ～ 60 秒でポリシーが削除されます。
 
     > [!NOTE]
-    > 関連付けられている構成サーバーが&1; つでもある場合は、レプリケーション ポリシーを削除することはできません。 ポリシーを削除する前に、そのポリシーを使用してレプリケートされた項目がないことを確認し、関連付けられているすべての構成サーバーを削除してください。
+    > 関連付けられている構成サーバーが 1 つでもある場合は、レプリケーション ポリシーを削除することはできません。 ポリシーを削除する前に、そのポリシーを使用してレプリケートされた項目がないことを確認し、関連付けられているすべての構成サーバーを削除してください。
 

@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Active Directory ポータルのサインイン アクティビティ レポート | Microsoft Docs"
 description: "Azure Active Directory ポータルのサインイン アクティビティ レポートの概要"
 services: active-directory
@@ -16,10 +15,10 @@ ms.workload: identity
 ms.date: 05/04/2017
 ms.author: markvi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 19cd81c1e6020523d1bea3ec76c957ce22f931ca
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 0e8ae05b5f8644d4dfd0e6205224cabfb0919531
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -37,6 +36,17 @@ Azure Active Directory のレポート アーキテクチャは、次のコン�
     - **リスクのフラグ付きユーザー** - リスクの高いユーザーは、侵害された可能性があるユーザー アカウントの指標です。 詳細については、「Users flagged for risk (リスクのフラグ付きユーザー)」を参照してください。
 
 このトピックでは、サインイン アクティビティの概要を説明します。
+
+## <a name="pre-requisite"></a>前提条件
+
+### <a name="who-can-access-the-data"></a>誰がデータにアクセスできますか。
+* セキュリティ管理者またはセキュリティ リーダーの役割のユーザー
+* グローバル管理者
+* 任意のユーザー (非管理者) が自分のサインインにアクセス可能 
+
+### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>サインイン アクティビティにアクセスするために必要な Azure AD ライセンスを教えてください。
+* すべてのサインイン アクティビティ レポートを閲覧するためには、ご利用のテナントに、Azure AD Premium ライセンスが関連付けられている必要があります。
+
 
 ## <a name="signs-in-activities"></a>サインイン アクティビティ
 

@@ -4,7 +4,7 @@ description: "Azure Cloud Services に影響を与える Azure サービスの�
 services: cloud-services
 documentationcenter: 
 author: mmccrory
-manager: drewm
+manager: timlt
 editor: 
 ms.assetid: e52634ab-003d-4f1e-85fa-794f6cd12ce4
 ms.service: cloud-services
@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: mmccrory
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
 ms.openlocfilehash: b20f846caa12866ce8815c7931a2c66346cd4085
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/04/2017
 
 

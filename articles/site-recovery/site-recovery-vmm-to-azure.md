@@ -11,7 +11,7 @@ ms.service: site-recovery
 ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-=article
+ms.topic: hero-article
 ms.date: 04/05/2017
 ms.author: raynew
 ms.translationtype: Human Translation
@@ -210,7 +210,7 @@ Hyper-V ホストで実行されている Recovery Services エージェント�
 
 2. Site Recovery によって、互換性のある Azure ストレージ アカウントとネットワークが 1 つ以上あるかどうかが確認されます。
 
-      ![Storage](./media/site-recovery-vmm-to-azure/compatible-storage.png)
+    ![Storage](./media/site-recovery-vmm-to-azure/compatible-storage.png)
 
 3. まだストレージ アカウントを作成しておらず、Resource Manager を使用して作成する場合は、**[+ ストレージ アカウント]** をクリックしてインラインで作成します。  **[ストレージ アカウントの作成]** ブレードで、アカウント名、種類、サブスクリプション、場所を指定します。 アカウントは、Recovery Services コンテナーと同じ場所にある必要があります。
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/10/2017
 ms.author: helaw
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: dcfe1cef98f4cf563470f8a2b1da1c33858cf57a
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/10/2017
-
 
 ---
 

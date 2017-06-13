@@ -12,12 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/03/2017
+ms.date: 06/06/2017
 ms.author: kgremban
-translationtype: Human Translation
+ms.custom: pim
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 081e45e0256134d692a2da7333ddbaafc7366eaa
 ms.openlocfilehash: b31863124b4c1aa64951de5a9afb1d6d85d54ee0
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/06/2017
 
 ---
 # <a name="how-to-complete-an-access-review-in-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management でアクセス レビューを完了する方法
@@ -58,9 +60,4 @@ ms.openlocfilehash: b31863124b4c1aa64951de5a9afb1d6d85d54ee0
 <!--Image references-->
 
 [1]: ./media/active-directory-privileged-identity-management-how-to-complete-review/PIM_review_buttons.png
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

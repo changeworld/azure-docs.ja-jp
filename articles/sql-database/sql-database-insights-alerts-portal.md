@@ -1,23 +1,24 @@
 ---
 title: "Azure Portal での SQL Database アラートの作成 | Microsoft Docs"
 description: "Azure Portal を使用して SQL Database アラートを作成します。このアラートにより、指定した条件が満たされたときに通知やオートメーションをトリガーできます。"
-author: aamalvea
+author: CarlRabeler
 manager: jhubbard
 editor: 
 services: sql-database
 documentationcenter: 
 ms.assetid: f7457655-ced6-4102-a9dd-7ddf2265c0e2
 ms.service: sql-database
-ms.custom: monitor and tune
+ms.custom: monitor & tune
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2017
-ms.author: aamalvea
-translationtype: Human Translation
+ms.author: carlrab
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2679681c77dd6a3410bbe6ddbcf562924b13bfe6
 ms.openlocfilehash: afa21052281200768db24ce35a94097f23f23efe
+ms.contentlocale: ja-jp
 ms.lasthandoff: 11/17/2016
 
 
@@ -74,7 +75,7 @@ ms.lasthandoff: 11/17/2016
 
 ## <a name="sql-database-alert-values-and-thresholds"></a>SQL Database のアラート値およびしきい値
 
-| リソースの種類    | メトリックの名前 | フレンドリ名 | 集計の種類 | 最短アラート時間ウィンドウ|
+| リソースの種類 | メトリックの名前 | フレンドリ名 | 集計の種類 | 最短アラート時間ウィンドウ|
 | --- | --- | --- | --- | --- |
 | SQL データベース | cpu_percent | CPU の割合 | 平均 | 5 分 |
 | SQL データベース | physical_data_read_percent | データ IO の割合 | 平均 | 5 分 |
@@ -91,7 +92,7 @@ ms.lasthandoff: 11/17/2016
 | SQL データベース | sessions_percent | セッションの割合 | 平均 | 5 分 |
 | SQL データベース | dtu_limit | DTU の上限 | 平均 | 5 分 |
 | SQL データベース | dtu_used | 使用された DTU | 平均 | 5 分 |
-||||||               
+||||||           
 | SQL Data Warehouse | cpu_percent | CPU の割合 | 平均 | 10 分 |
 | SQL Data Warehouse | physical_data_read_percent | データ IO の割合 | 平均 | 10 分 |
 | SQL Data Warehouse | storage | 合計データベース サイズ | 最大値 | 10 分 |
@@ -102,7 +103,7 @@ ms.lasthandoff: 11/17/2016
 | SQL Data Warehouse | dwu_limit | DWU 上限 | 最大値 | 10 分 |
 | SQL Data Warehouse | dwu_consumption_percent | DWU の割合 | 平均 | 10 分 |
 | SQL Data Warehouse | dwu_used | 使用済み DWU | 平均 | 10 分 |
-||||||                     
+||||||               
 | エラスティック プール | cpu_percent | CPU の割合 | 平均 | 5 分 |
 | エラスティック プール | physical_data_read_percent | データ IO の割合 | 平均 | 5 分 |
 | エラスティック プール | log_write_percent | ログ IO の割合 | 平均 | 5 分 |

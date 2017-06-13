@@ -1,5 +1,5 @@
 ---
-title: "Azure MFA における&2; 段階認証について | Microsoft Docs"
+title: "Azure MFA における 2 段階認証について | Microsoft Docs"
 description: "Multi-Factor Authentication とは、MFA を使用する理由、Multi-factor Authentication クライアントに関する詳細、使用可能なさまざまな認証方法とバージョン。 "
 keywords: "MFA の概要, mfaの概要, mfa とは"
 services: multi-factor-authentication
@@ -13,17 +13,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 06/03/2017
 ms.author: kgremban
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e028130569a1e55834f68bde87f21f6f7505d41f
 ms.openlocfilehash: 7a47c0278d42d62cc273c6f0671f0613671db4f3
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/23/2017
 
 
 ---
 # <a name="what-is-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication とは
-2 段階認証は、複数の確認方法を要求することで、ユーザーのサインインとトランザクションにさらなる重要なセキュリティ レイヤーを追加する認証方法です。 これらは、次の確認方法のうち&2; つ以上を要求することで機能します。
+2 段階認証は、複数の確認方法を要求することで、ユーザーのサインインとトランザクションにさらなる重要なセキュリティ レイヤーを追加する認証方法です。 これらは、次の確認方法のうち 2 つ以上を要求することで機能します。
 
 * ユーザーが知っているもの (通常はパスワード)
 * ユーザーが持っているもの (携帯電話など、簡単には複製できない信頼できるデバイス)
@@ -31,7 +32,7 @@ ms.lasthandoff: 02/23/2017
 
 <center>![ユーザー名とパスワード](./media/multi-factor-authentication/pword.png) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![証明書](./media/multi-factor-authentication/phone.png) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![スマート フォン](./media/multi-factor-authentication/hware.png) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![スマート カード](./media/multi-factor-authentication/smart.png) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![仮想スマート カード](./media/multi-factor-authentication/vsmart.png) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![ユーザー名とパスワード](./media/multi-factor-authentication/cert.png)</center>
 
-Azure Multi-Factor Authentication (MFA) は、Microsoft の&2; 段階認証ソリューションです。 Azure MFA では、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護することができます。 電話、テキスト メッセージ、モバイル アプリによる確認など、一連の照合方法を通じて確実な認証を行うことができます。
+Azure Multi-Factor Authentication (MFA) は、Microsoft の 2 段階認証ソリューションです。 Azure MFA では、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護することができます。 電話、テキスト メッセージ、モバイル アプリによる確認など、一連の照合方法を通じて確実な認証を行うことができます。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/WA-MFA-Overview/player]
 >

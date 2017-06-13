@@ -15,6 +15,7 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 05/04/2017
 ms.author: davidmu
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
 ms.openlocfilehash: 2bf6e3cf2f039a9c92617203a3d4cf2aac8901ce

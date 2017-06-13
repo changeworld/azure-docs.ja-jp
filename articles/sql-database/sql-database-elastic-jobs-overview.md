@@ -8,16 +8,18 @@ manager: jhubbard
 author: ddove
 ms.assetid: 6fa47cf2-1162-4534-a206-6e2d95b78580
 ms.service: sql-database
-ms.custom: multiple databases
+ms.custom: scale out apps
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
 ms.openlocfilehash: 0d95f9f0e0c5b69aed6ba74a2488e46540589c00
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/23/2016
 
 
 ---
@@ -45,7 +47,7 @@ ms.openlocfilehash: 0d95f9f0e0c5b69aed6ba74a2488e46540589c00
 
 **レポート**
 
-Azure SQL Database の集合から&1; つの対象テーブルにデータを集める
+Azure SQL Database の集合から 1 つの対象テーブルにデータを集める
 
 **オーバーヘッドの削減**
 
@@ -69,7 +71,7 @@ Azure SQL Database のカスタム グループを定義し、ジョブを実行
 * 参照データ、すなわちすべてのデータベースに共通の製品情報を更新します。 または、平日の営業時間終了後に自動更新されるようにスケジュールします。
 * インデックスを再構築して、クエリのパフォーマンスを向上します。 ピーク時以外の時間などに、データベース コレクション全体に対して定期的に実行するように再構築を構成できます。
 * データベース セットのクエリ結果をリアルタイムで中央のテーブルに収集します。 パフォーマンス クエリを継続的に実行して、その他のタスクの実行をトリガーするように構成できます。
-* 顧客の製品利用統計情報収集など、大規模なデータセット全体に対して、時間がかかるデータ処理クエリを実行します。 結果は&1; つの対象テーブルに収集され、分析に使用されます。
+* 顧客の製品利用統計情報収集など、大規模なデータセット全体に対して、時間がかかるデータ処理クエリを実行します。 結果は 1 つの対象テーブルに収集され、分析に使用されます。
 
 ## <a name="elastic-database-jobs-end-to-end"></a>Elastic Database ジョブ: エンド ツー エンド
 1. **エラスティック データベース ジョブ** コンポーネントをインストールします。 詳細については、「 [エラスティック データベース ジョブのインストール](sql-database-elastic-jobs-service-installation.md)」を参照してください。 インストールが失敗した場合は、「 [アンインストールする方法](sql-database-elastic-jobs-uninstall.md)」をご覧ください。
@@ -94,7 +96,7 @@ Azure SQL Database のカスタム グループを定義し、ジョブを実行
 スクリプトが数回の試行後に失敗した場合、ジョブはエラーをログに記録し、続行します。 ジョブの終了後 (つまり、グループ内のすべてのデータベースに対して実行した後)、エラーが発生した試行の一覧を確認できます。 ログには、問題のあるスクリプトをデバッグするための詳細があります。 
 
 ## <a name="group-types-and-creation"></a>グループの種類と作成
-次の&2; 種類のグループがあります。 
+次の 2 種類のグループがあります。 
 
 1. シャード セット
 2. カスタム グループ
@@ -106,7 +108,7 @@ Azure SQL Database のカスタム グループを定義し、ジョブを実行
 ## <a name="components-and-pricing"></a>コンポーネントと価格
 次のコンポーネントは、連携して管理ジョブのアドホック実行を可能にする Azure クラウド サービスを作成します。 コンポーネントはサブスクリプションで、セットアップ時に自動的にインストールされ、構成されます。 これらはすべて同じ自動生成された名前を持っているため、サービスを識別できます。 名前は一意であり、プレフィックス "edj" とその後に続くランダムに生成された 21 文字で構成されます。
 
-* **Azure Cloud Service**: エラスティック データベース ジョブ (プレビュー) は、顧客によってホストされる AzureCloud Service として配信され、要求されたタスクを実行します。 ポータルから、サービスは Microsoft Azure サブスクリプションにデプロイされ、ホストされます。 デプロイされる既定のサービスは、高可用性のための&2; つの worker ロールの最小値で実行されます。 各 worker ロール (ElasticDatabaseJobWorker) の既定のサイズは A0 インスタンスで実行されます。 料金については、「 [Cloud Services 料金](https://azure.microsoft.com/pricing/details/cloud-services/)」をご覧ください。 
+* **Azure Cloud Service**: エラスティック データベース ジョブ (プレビュー) は、顧客によってホストされる AzureCloud Service として配信され、要求されたタスクを実行します。 ポータルから、サービスは Microsoft Azure サブスクリプションにデプロイされ、ホストされます。 デプロイされる既定のサービスは、高可用性のための 2 つの worker ロールの最小値で実行されます。 各 worker ロール (ElasticDatabaseJobWorker) の既定のサイズは A0 インスタンスで実行されます。 料金については、「 [Cloud Services 料金](https://azure.microsoft.com/pricing/details/cloud-services/)」をご覧ください。 
 * **Azure SQL Database**: このサービスは、**管理データベース**と呼ばれる Azure SQL Database を使用してすべてのジョブ メタデータを保持します。 既定のサービス層は、S0 です。 詳細については、「 [SQL Database の料金](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
 * **Azure Service Bus**: Azure Service Bus は、Azure Cloud Service 内の作業を調整します。 「 [Service Bus 料金](https://azure.microsoft.com/pricing/details/service-bus/)」をご覧ください。
 * **Azure Storage**: Azure ストレージ アカウントは問題にさらにデバッグが必要な場合に、診断出力のログ記録を格納するために使用されます (「 [Azure Cloud Services および Virtual Machines の診断機能](../cloud-services/cloud-services-dotnet-diagnostics.md)」を参照してください)。 料金については、「 [Azure Storage の料金](https://azure.microsoft.com/pricing/details/storage/)」をご覧ください。
@@ -114,7 +116,7 @@ Azure SQL Database のカスタム グループを定義し、ジョブを実行
 ## <a name="how-elastic-database-jobs-work"></a>エラスティック データベース ジョブの機能
 1. Azure SQL Database には、すべてのメタデータと状態データが保存される **管理データベース** が指定されています。
 2. 実行するジョブの開始と追跡のために、 **ジョブ サービス** から管理データベースにアクセスされます。
-3. 次の&2; 種類のロールが管理データベースと通信します。 
+3. 次の 2 種類のロールが管理データベースと通信します。 
    * コントローラー: 要求されたジョブを実行するタスクが必要なジョブを決定し、新しいジョブ タスクを作成して失敗したジョブを再試行します。
    * ジョブ タスク実行: ジョブ タスクを実行します。
 
@@ -143,10 +145,5 @@ Azure SQL Database のカスタム グループを定義し、ジョブを実行
 [1]: ./media/sql-database-elastic-jobs-overview/elastic-jobs.png
 <!--anchors-->
 
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

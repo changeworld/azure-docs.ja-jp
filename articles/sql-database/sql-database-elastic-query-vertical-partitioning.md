@@ -7,16 +7,17 @@ manager: jhubbard
 author: torsteng
 ms.assetid: 84c261f2-9edc-42f4-988c-cf2f251f5eff
 ms.service: sql-database
-ms.custom: multiple databases
+ms.custom: scale out apps
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 430fed27780076738e319dabca4cc9abaed70691
 ms.openlocfilehash: 078784bcdf7a3a6d4423389d2f5ca4ffdb67c89f
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/22/2017
 
 
@@ -139,7 +140,7 @@ SCHEMA_NAME 句と OBJECT_NAME 句は、外部テーブル定義をリモート 
 外部テーブルへのアクセス権を持つユーザーは、外部データ ソース定義に指定された資格情報の下で、基になるリモート テーブルへのアクセス権を自動的に取得します。 外部データ ソースの資格情報を介した特権の不要な昇格を回避するために、外部テーブルへのアクセスを慎重に管理する必要があります。 外部テーブルへのアクセスは、通常の SQL 権限を使用して、通常のテーブルの場合と同様に許可または禁止することができます。  
 
 ## <a name="example-querying-vertically-partitioned-databases"></a>例: 列方向にパーティション分割されたデータベースのクエリ
-次のクエリは、注文と注文明細行用の&2; つのローカル テーブルと、顧客用のリモート テーブルの間で&3; 方向の結合を実行します。 これは、エラスティック クエリの参照データのユース ケースの例を示します。 
+次のクエリは、注文と注文明細行用の 2 つのローカル テーブルと、顧客用のリモート テーブルの間で 3 方向の結合を実行します。 これは、エラスティック クエリの参照データのユース ケースの例を示します。 
 
     SELECT      
      c_id as customer,

@@ -80,7 +80,7 @@ no-wait オプションを使用するため、コマンドは各 VM がプロ�
 
 サンプル スクリプトの実行後、次のコマンドを使用すると、リソース グループ、VM、およびすべての関連リソースを削除できます。
 
-```azurecli
+```azurecli-interactive 
 az group delete -n myResourceGroup --no-wait --yes
 ```
 

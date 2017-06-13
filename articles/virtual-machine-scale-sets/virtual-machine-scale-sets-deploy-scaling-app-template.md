@@ -12,12 +12,13 @@ ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: getting-started
+ms.topic: get-started-article
 ms.date: 4/4/2017
 ms.author: ryanwi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
 ms.openlocfilehash: 8a903cd870f01f9ca6224efd1386b68c63e3aa98
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/06/2017
 
 
@@ -188,3 +189,4 @@ if(Test-Path $parametersFilePath) {
 ## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [mvss-next-steps-include](../../includes/mvss-next-steps.md)]
+

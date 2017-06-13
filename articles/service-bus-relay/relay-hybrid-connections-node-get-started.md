@@ -3,7 +3,7 @@ title: "Node での Azure Relay ハイブリッド接続の概要 | Microsoft Do
 description: "ハイブリッド接続用の Node コンソール アプリケーションを作成する方法"
 services: service-bus-relay
 documentationcenter: node
-author: jtaubensee
+author: sethmanheim
 manager: timlt
 editor: 
 ms.assetid: e44e4867-3cf3-46be-8f8a-7671e2013bc4
@@ -13,7 +13,7 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: node
 ms.workload: na
 ms.date: 05/22/2017
-ms.author: jotaub;sethm
+ms.author: sethm
 ms.translationtype: Human Translation
 ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
 ms.openlocfilehash: a97082b38d146964d77cd9029ce74baa781c6c27

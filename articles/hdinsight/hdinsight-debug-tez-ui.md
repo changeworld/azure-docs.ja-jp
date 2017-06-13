@@ -15,10 +15,11 @@ ms.workload: big-data
 ms.date: 01/17/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 3934d26e119c7064328671816943b636b6f90d76
-ms.lasthandoff: 04/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 870d8001b67b43d09427a626761ede1833101ddf
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.lasthandoff: 04/11/2017
 Tez UI は、Windows ベースの HDInsight クラスターで実行エンジンとして Tez を使用するジョブの確認とデバッグに使用できる Web ページです。 Tez UI を使用すると、関連付けられた項目のグラフとしてジョブを可視化し、各項目をドリルダウンして、統計情報やログ情報を取得することができます。
 
 > [!IMPORTANT]
-> このドキュメントの手順では、Windows を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。
+> このドキュメントの手順では、Windows を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 * Windows ベースの HDInsight クラスター。 新しいクラスターの作成手順については、「 [Hadoop チュートリアル: Windows 上の HDInsight で Hadoop を使用する](hdinsight-hadoop-tutorial-get-started-windows.md)」を参照してください。

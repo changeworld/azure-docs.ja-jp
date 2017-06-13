@@ -7,13 +7,13 @@ manager: yutkuo
 ms.service: cognitive-services
 ms.technology: emotion
 ms.topic: article
-ms.date: 01/30/2017
+ms.date: 05/23/2017
 ms.author: anroth
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: 6dcd1e2b703b77399f1d59fbda4fd6b21eb10135
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: 47759a184b28995ef32ba8430ceea3359b37eca8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 05/25/2017
 
 ---
 
@@ -25,7 +25,9 @@ This article provides information and code samples to help you quickly get start
 
 ## <a name="recognize-emotions-javascript-example-request"></a>Recognize Emotions JavaScript Example Request
 
-```JavaScript
+Copy the following and save it to a file such as `test.html`. Change the `url` to use the location where you obtained your subscription keys, and replace the "Ocp-Apim-Subscription-Key" value with your valid subscription key, and change the request body to the location of an image you want to use. To run the sample, drag-and-drop the file into your browser.
+
+```javascript
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,15 +43,20 @@ This article provides information and code samples to help you quickly get start
         };
       
         $.ajax({
+            // NOTE: You must use the same location in your REST call as you used to obtain your subscription keys.
+            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the 
+            //   URL below with "westcentralus".
             url: "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize?" + $.param(params),
             beforeSend: function(xhrObj){
                 // Request headers
                 xhrObj.setRequestHeader("Content-Type","application/json");
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","{subscription key}");
+
+                // NOTE: Replace the "Ocp-Apim-Subscription-Key" value with a valid subscription key.
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","13hc77781f7e4b19b5fcdd72a8df7156");
             },
             type: "POST",
             // Request body
-            data: "{body}",
+            data: '{"url": "http://www.example.com/images/image.jpg"}',
         })
         .done(function(data) {
             alert("success");

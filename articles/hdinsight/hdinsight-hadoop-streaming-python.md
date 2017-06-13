@@ -165,7 +165,7 @@ Python では、STDIN からの読み取りに `sys` モジュールを、STDOUT
 3. Mapper.py および reducer.py が正しい行末を持つようにするには、次のコマンドを使用します。
 
     ```bash
-    perl -pi -e 's/\r\n/\n/g' mappery.py
+    perl -pi -e 's/\r\n/\n/g' mapper.py
     perl -pi -e 's/\r\n/\n/g' reducer.py
     ```
 

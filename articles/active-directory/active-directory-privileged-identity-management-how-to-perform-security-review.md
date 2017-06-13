@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/14/2017
+ms.date: 06/06/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.custom: pim
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 5b5dabe301fae4000112aa467a22cc5c37b9b592
+ms.contentlocale: ja-jp
 ms.lasthandoff: 12/29/2016
-
 
 ---
 # <a name="how-to-perform-an-access-review-in-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management でアクセス レビューを実行する方法

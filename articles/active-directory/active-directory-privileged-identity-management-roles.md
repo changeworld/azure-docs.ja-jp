@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2017
 ms.author: billmath
-ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.custom: pim ; H1Hack27Feb2017
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b9a3b64d9de48f17a295ca7a9ea58cf26e8f83ed
 ms.openlocfilehash: be32a7125807905f12699dba92b260d80ac2c4de
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/28/2017
 
 ---
@@ -28,7 +29,7 @@ Azure AD の別の管理者ロールに組織内のユーザーを割り当て�
 
 グローバル管理者は、`Add-MsolRoleMember` や `Remove-MsolRoleMember` などの PowerShell コマンドレットを使用して、または [Azure Active Directory の管理者ロールの割り当て](active-directory-assign-admin-roles.md)で説明されているとおりにクラシックポータルから、どのユーザーが**永続的に** Azure AD のロールに割り当てられているかを更新できます。
 
-Azure AD Privileged Identity Management (PIM) は、Azure AD でのユーザーの特権アクセス用のポリシーを管理します。 PIM は、Azure AD で&1; つ以上のロールにユーザーを割り当てます。あるユーザーをロールに永続的に割り当てることも、ロールの候補にすることもできます。 ユーザーが永続的にロールに割り当てられるか、ロールの候補としての割り当てを有効にすると、ユーザーは Azure Active Directory、Office 365、およびユーザーのロールにアクセス許可が割り当てられているその他のアプリケーションを管理できます。
+Azure AD Privileged Identity Management (PIM) は、Azure AD でのユーザーの特権アクセス用のポリシーを管理します。 PIM は、Azure AD で 1 つ以上のロールにユーザーを割り当てます。あるユーザーをロールに永続的に割り当てることも、ロールの候補にすることもできます。 ユーザーが永続的にロールに割り当てられるか、ロールの候補としての割り当てを有効にすると、ユーザーは Azure Active Directory、Office 365、およびユーザーのロールにアクセス許可が割り当てられているその他のアプリケーションを管理できます。
 
 ロールへの永続的な割り当てと、ロールの候補としての割り当てに、アクセスの違いはありません。 常時のアクセスを必要としないユーザーがいる、というのが唯一の違いです。 その場合はロールの候補として、必要な場合にアクセスをオンにしたりオフにしたりできます。
 

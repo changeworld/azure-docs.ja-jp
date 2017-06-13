@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 01/19/2017
+ms.date: 06/05/2017
 ms.author: rajanaki
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
 ms.openlocfilehash: 664a1bd9df9ace4993a8389dbeb049e721932082
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/06/2017
 
 
@@ -156,7 +157,7 @@ Azure Site Recovery のサポート チケットを発行するには、Azure �
 
 ### <a name="configuration"></a>構成
 * [保護グループを作成できない: サーバーの一覧を取得中にエラーが発生する。](http://blogs.technet.com/b/somaning/archive/2015/08/12/unable-to-create-the-protection-group-in-azure-site-recovery-portal.aspx)
-* [Hyper-V ホスト クラスターに少なくとも&1; つの静的なネットワーク アダプターが含まれているか、DHCP を使用するように接続されたアダプターが構成されていない。](http://social.technet.microsoft.com/wiki/contents/articles/25498.hyper-v-host-cluster-contains-at-least-one-static-network-adapter-or-no-connected-adapters-are-configured-to-use-dhcp.aspx)
+* [Hyper-V ホスト クラスターに少なくとも 1 つの静的なネットワーク アダプターが含まれているか、DHCP を使用するように接続されたアダプターが構成されていない。](http://social.technet.microsoft.com/wiki/contents/articles/25498.hyper-v-host-cluster-contains-at-least-one-static-network-adapter-or-no-connected-adapters-are-configured-to-use-dhcp.aspx)
 * [操作を完了するための、Virtual Machine Manager のアクセス許可がない。](http://social.technet.microsoft.com/wiki/contents/articles/31110.vmm-does-not-have-permissions-to-complete-an-action.aspx)
 * [保護を構成するときに、サブスクリプション内のストレージ アカウントを選択できない。](http://social.technet.microsoft.com/wiki/contents/articles/32027.can-t-select-the-storage-account-within-the-subscription-while-configuring-protection.aspx)
 

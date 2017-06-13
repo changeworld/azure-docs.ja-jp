@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/27/2017
 ms.author: v-jysur
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 66d643088da9e071ce8d440c8300e1f8124d00aa
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 5218a5f8f74e7a26696e4b3d9b88d5cef3e67ff8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -33,9 +33,8 @@ ms.lasthandoff: 05/03/2017
 - リソース グループ名
 - 場所
 - Service Manager サーバーの詳細 (サーバー名、ドメイン、ユーザー名、パスワード)
-- デプロイ先の URL
-- Web アプリのサイト名
-- BizTalk サービス名。
+- Web アプリのサイト名のプレフィックス
+- ServiceBus 名前空間。
 
 スクリプトによって、指定した名前で (一意の名前にするために文字列をいくつか追加して) Web アプリが作成されます。 また、スクリプトによって、**Web アプリの URL**、**クライアント ID**、**クライアント シークレット**が生成されます。
 
@@ -50,17 +49,15 @@ Windows 10 では、既定で 5.1 がインストールされています。 こ
 
 ```
 ###################################
-
 # User Configuration Section Begins
 ####################################
-
 # Subscription name in Azure account. Check in Azure Portal.
 $azureSubscriptionName = ""
 
 # Resource group name for resource deployment. Could be an existing resource group or a new one to be created.
 $resourceGroupName = ""
 
-# Location for Resource group deployment
+# Location for existing resource group or new resource group deployment
 ################################### List of available regions #################################################
 # centralus,eastasia,southeastasia,eastus,eastus2,westus,westus2,northcentralus,southcentralus,westcentralus,
 # northeurope,westeurope,japaneast,japanwest,brazilsouth,australiasoutheast,australiaeast,westindia,southindia,
@@ -75,10 +72,11 @@ $username = ""
 $password = ""
 
 
-# Site Name Prefix. Default is "smoc". It can be configured to any desired value.
+# Azure site Name Prefix. Default is "smoc". It can be configured to any desired value.
 $siteNamePrefix = ""
 
-# BizTalk Service Name. Please provide an already existing biz talk service name. If it doesn't exist, a new one with that name will be created.
+# Service Bus namespace. Please provide an already existing service bus namespace.
+# If it doesn't exist, a new one will be created with name $siteName + "sbn" which can also be later reused for any other hybrid connections.
 $serviceName = ""
 
 ##################################
@@ -106,7 +104,7 @@ if(!$module -or ($module.Version.Major -lt 3))
     {
         # In case of Win 10 Anniversary update
         Install-Module AzureRM -MinimumVersion 3.3.0 -Scope CurrentUser -Force -WarningAction SilentlyContinue -AllowClobber
-    }
+   }
     catch
     {
         Install-Module AzureRM -MinimumVersion 3.3.0 -Scope CurrentUser -Force -WarningAction SilentlyContinue
@@ -223,30 +221,34 @@ $connStrings['ida:Password'] = $kvp
 
 Set-AzureRMWebAppSlot -ResourceGroupName $resourceGroupName -Name $siteName -AppSettings $appSettings -ConnectionStrings $connStrings -Slot production -WarningAction SilentlyContinue
 
-# Biz Talk Service
+# Relay Namespace
 ###################
 
 if(!$serviceName)
 {
-    $serviceName = "ITSMbiz"
+    $serviceName = $siteName + "sbn"
 }
-$resource = Find-AzureRmResource -ResourceNameContains $serviceName -ResourceType Microsoft.BizTalkServices/BizTalk
+$resource = Find-AzureRmResource -ResourceNameContains $serviceName -ResourceType Microsoft.Relay/namespaces
 
 if(!$resource)
 {
+    $serviceName = $siteName + "sbn"
     $properties = @{
-                    "sku"= @{
-                                                "name" = "Free"
-                                                "unitCount" = 1
-        }
+                    "sku" = @{
+            "name"= "Standard"
+            "tier"= "Standard"
+            "capacity"= 1
+         }
     }
     try
     {
-        New-AzureRmResource -ResourceName $serviceName -Location "West US" -PropertyObject $properties -ResourceGroupName $resourceGroupName -ResourceType Microsoft.BizTalkServices/BizTalk -ApiVersion 2014-04-01-preview -Force
+        Write-Host "Creating Service Bus namespace..."
+        New-AzureRmResource -ResourceName $serviceName -Location $location -PropertyObject $properties -ResourceGroupName $resourceGroupName -ResourceType Microsoft.Relay/namespaces -ApiVersion 2016-07-01 -Force
     }
     catch
     {
-        "Creation of BizTalk Service failed...Please create it manually from Azure Portal.`n"
+        $err = $TRUE
+        "Creation of Service Bus Namespace failed...Please create it manually from Azure Portal.`n"
     }
 
 }
@@ -258,6 +260,10 @@ Write-Host "App Name:"  $siteName
 Write-Host "Client Id:"  $clientId
 Write-Host "Client Secret:"  $clientSecret
 Write-Host "URI:"  $azureSite
+if(!$err)
+{
+    Write-Host "ServiceBus Namespace:"  $serviceName  
+}
 
 ```
 ## <a name="next-steps"></a>次のステップ

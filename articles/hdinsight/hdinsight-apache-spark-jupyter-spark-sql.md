@@ -15,7 +15,7 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/12/2017
+ms.date: 05/25/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
 ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
@@ -193,6 +193,5 @@ HDInsight クラスターの作成で問題が発生した場合は、[アクセ
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 

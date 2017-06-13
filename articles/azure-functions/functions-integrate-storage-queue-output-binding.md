@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/02/2017
 ms.author: glenga
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
 ms.openlocfilehash: ccafe4d440f533560fcb3780d4e0e440a4399021
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/18/2017
-
 
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Functions を使用して Azure Storage キューにメッセージを追加する
@@ -41,11 +41,11 @@ Azure Functions では、入力および出力バインディングによって�
  
 1. Function App と関数の両方を展開します。
 
-2. **[Integrate] (統合)** と **[+ New output] (+ 新しい出力)** をクリックしてから、**[Azure Queue storage] (Azure Queue Storage)** をクリックし、**[Select] (選択)** をクリックします。
+2. **[Integrate] \(統合)** と **[+ New output] \(+ 新しい出力)** をクリックしてから、**[Azure Queue storage] \(Azure Queue Storage)** をクリックし、**[Select] \(選択)** をクリックします。
     
     ![Azure Portal 内の関数に Queue Storage の出力バインディングを追加します。](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
 
-3. テーブルに指定されている設定を使用し、**[Save] (保存)** をクリックします。 
+3. テーブルに指定されている設定を使用し、**[Save] \(保存)** をクリックします。 
 
     ![Azure Portal 内の関数に Queue Storage の出力バインディングを追加します。](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding-2.png)
 
@@ -88,7 +88,7 @@ HTTP トリガーに渡される値は、キューに追加されるメッセー
  
 ## <a name="test-the-function"></a>関数をテストする 
 
-1. コードの変更が保存されたら、**[Run] (実行)** をクリックします。 
+1. コードの変更が保存されたら、**[Run] \(実行)** をクリックします。 
 
     ![Azure Portal 内の関数に Queue Storage の出力バインディングを追加します。](./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png)
 
@@ -100,11 +100,11 @@ HTTP トリガーに渡される値は、キューに追加されるメッセー
 
 既に Storage エクスプローラーをインストールしてストレージ アカウントに接続している場合は、最初の 3 つの手順をスキップします。    
 
-1. 関数で、**[Integrate] (統合)** と新しい **[Azure Queue storage] (Azure Queue Storage)** 出力バインディングをクリックし、**[Documentation] (ドキュメント)** を展開します。 **[アカウント名]** と **[アカウント キー]** の両方をコピーします。 これらの資格情報を使用して、ストレージ アカウントに接続します。
+1. 関数で、**[Integrate] \(統合)** と新しい **[Azure Queue storage] \(Azure Queue Storage)** 出力バインディングをクリックし、**[Documentation] \(ドキュメント)** を展開します。 **[アカウント名]** と **[アカウント キー]** の両方をコピーします。 これらの資格情報を使用して、ストレージ アカウントに接続します。
  
     ![ストレージ アカウント接続の資格情報を取得します。](./media/functions-integrate-storage-queue-output-binding/function-get-storage-account-credentials.png)
 
-2. [Microsoft Azure Storage Explorer](http://storageexplorer.com/) ツールを実行し、左側の接続アイコンをクリックして、**[Use a storage account name and key] (ストレージ アカウント名とキーを使用)** を選択し、**[次へ]** をクリックします。
+2. [Microsoft Azure Storage Explorer](http://storageexplorer.com/) ツールを実行し、左側の接続アイコンをクリックして、**[Use a storage account name and key] \(ストレージ アカウント名とキーを使用)** を選択し、**[次へ]** をクリックします。
 
     ![ストレージ アカウント エクスプローラー ツールを実行します。](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-1.png)
     
@@ -112,7 +112,7 @@ HTTP トリガーに渡される値は、キューに追加されるメッセー
   
     ![ストレージ資格情報を入力し、接続します。](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-2.png)
 
-4. 接続されたストレージ アカウントを展開し、**[Queues] (キュー)** を右クリックして、**myqueue-items** という名前のキューが存在することを確認します。 既にメッセージもキューに表示されているはずです。  
+4. 接続されたストレージ アカウントを展開し、**[Queues] \(キュー)** を右クリックして、**myqueue-items** という名前のキューが存在することを確認します。 既にメッセージもキューに表示されているはずです。  
  
     ![ストレージ キューを作成します。](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
  

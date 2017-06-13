@@ -1,137 +1,139 @@
 ---
-title: Languages that support Text Moderation API in Content Moderator | Microsoft Docs
-description: Here&quot;s a list of languages that support the Text Moderation API in Content Moderator.
+title: Languages supported by Azure Content Moderator | Microsoft Docs
+description: Here&quot;s a list of languages supported by Content Moderator.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
-ms.service: cognitive-services
+Tms.service: cognitive-services
 ms.technology: content-moderator
 ms.topic: article
-ms.date: 12/01/2016
+ms.date: 05/15/2017
 ms.author: sajagtap
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 12d2f2f6808800d7d0b67f7e27d56515d8a4dce8
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: dedc0895d33bd3d6e1eae1a26a4c58204308db06
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 ---
 
-# <a name="text-moderation-api---supported-languages"></a>Text Moderation API - Supported Languages
+# <a name="supported-languages-by-feature"></a>Supported languages by feature
 
-| Language              |    Code   |
-| --------------------|-----------|
-| Afrikaans           |    afr    |
-| Albanian            |    sqi    |   
-| Amharic             |    amh    |
-| Arabic              |    ara    |
-| Armenian            |    hye    |
-| Assamese            |    asm    |
-| Azerbaijani         |    aze    |
-| Bangla Bangladesh   |    bng    |
-| Bangla India        |    ben    |
-| Basque              |    eus    |
-| Belarusian          |    bel    |
-| Bosnian Cyrillic    |    bos    |
-| Bosnian Latin       |    bsb    |
-| Breton [non-GeoPol] |    bre    |
-| Bulgarian           |    bul    |
-| Catalan             |    cat    |
-| Central Kurdish     |    kur    |
-| Cherokee            |    bul    |
-| Catalan             |    chr    |
-| Chinese (Simplified)|    zho    |
-| Chinese (Traditional) Hong Kong SAR            |    zh-hk    |
-| Chinese (Traditional) Taiwan             |    zh-tw    |
-| Croatian            |    hrv    |
-| Czech               |    ces    |
-| Danish              |    dan    |
-| Dari                |    prs    |
-| Dutch               |    nld    |
-| English              |    eng    |
-| Estonian            |    est    |
-| Filipino            |    fil    |
-| Finnish              |    fin    |
-| French              |    fra    |
-| Galician            |    glg    |
-| Georgian              |    kat    |
-| German              |    deu    |
-| Greek                  |    ell    |
-| Gujarati              |    guj    |
-| Hausa               |    hau    |
-| Hebrew                |    heb    |
-| Hindi                  |    hin    |
-| Hungarian           |    hun    |
-| Icelandic             |    isl    |
-| Igbo                  |    ibo    |
-| Indonesian          |    ind    |
-| Inuktitut             |    iku    |
-| Irish                  |    gle    |
-| isiXhosa              |    xho    |
-| isiZulu             |    zul    |
-| Italian             |    ita    |
-| Japanese              |    jpn    |
-| Kannada              |    kan    |
-| Kazakh              |    kaz    |
-| Khmer               |    khm    |
-| K'iche              |    quc    |
-| Kinyarwanda            |    kin    |
-| Kiswahili              |    swa    |
-| Konkani              |    kok    |
-| Korean              |    kor    |
-| Kyrgyz               |    kir    |
-| Lao                 |    lao    |
-| Latvian              |    lav    |
-| Lithuanian          |    lit    |
-| Luxembourgish       |    ltz    |
-| Macedonian             |    mac    |
-| Malay                 |    msa    |
-| Malayalam              |    mym    |
-| Maltese             |    mlt    |
-| Maori                 |    mri    |
-| Marathi             |    mar    |
-| Mongolian              |    mon    |
-| Nepali              |    nep    |
-| Norwegian (Bokmål)  |    nob    |
-| Norwegian (Nynorsk) |    nno    |
-| Odia                |    ori    |
-| Pashto              |    pus    |
-| Persian              |    fas    |
-| Polish              |    pol    |
-| Portuguese Brazil   |    por    |
-| Portuguese Portugal |    1or    |
-| Pulaar              |    ful    |
-| Punjabi              |    pan    |
-| Punjabi (Pakistan)  |    pnb    |
-| Quechua (Peru)      |    qup    |
-| Romanian            |    ron    |
-| Russian              |    rus    |
-| Scottish Gaelic     |    gla    |
-| Serbian (Cyrillic)  |    srp    |
-| Serbian (Cyrillic, Bosnia and Herzegovina)      |    srn    |
-| Serbian (Latin)     |    1rp    |
-| Sesotho              |    sot    |
-| Sesotho sa Leboa    |    nso    |
-| Setswana            |    tsn    |
-| Sinhala             |    sin    |
-| Slovak              |    slk    |
-| Slovenian              |    slv    |
-| Spanish             |    spa    |
-| Swedish             |    swe    |
-| Tajik               |    tgk    |
-| Tamil                |    tam    |
-| Tatar                  |    tat    |
-| Telugu              |    tel    |
-| Thai                |    tha    |
-| Tigrinya            |    tir    |
-| Turkish                |    tur    |
-| Turkmen              |    tuk    |
-| Ukrainian           |    ukr    |
-| Urdu                |    urd    |
-| Uyghur              |    uig    |
-| Uzbek                |    uzb    |
-| Valencian              |    cat    |
-| Vietnamese          |    vie    |
-| Welsh               |    cym    |
-| Wolof               |    wol    |
-| Yoruba                |    yor    |
+| Auto-detected | Profanity   | OCR    |
+| -------------------- |-------------|--------|
+| Arabic (Romanized)   | Afrikaans   | Arabic
+| Balinese | Albanian | Chinese (Simplified)
+| Bengali | Amharic | Chinese (Traditional)
+| Buginese | Arabic | Czech
+| Buhid | Armenian | Danish
+| Carian | Assamese | Dutch
+| Chinese (Simplified) | Azerbaijani | English
+| Chinese (Traditional) | Bangla - Bangladesh | Finnish
+| Church (Slavic) | Bangla - India | French
+| Coptic | Basque | German
+| Dhivehi | Belarusian | Greek (modern)
+| Farsi | Bosnian - Cyrillic | Hungarian
+| Greek | Bosnian - Latin | Italian
+| Haitian (Creole) | Breton [non-GeoPol] | Japanese
+| Hebrew | Bulgarian | Korean
+| Hmong | Catalan | Norwegian
+| Kurdish (Arabic) | Central Kurdish | Polish
+| Kurdish (Latin) | Cherokee | Portuguese
+| Lepcha | Chinese (Simplified) | Romanian
+| Limbu | Chinese (Traditional) - Hong Kong SAR | Russian
+| Lu | Chinese (Traditional) - Taiwan | Serbian Cyrillic
+| Lycian | Croatian | Serbian Latin
+| Lydian | Czech | Slovak
+| Mycenaean (Greek) | Danish | Spanish
+| Nko | Dari | Swedish
+| Norwegian (Bokmal) | Dutch | Turkish
+| Norwegian (Nynorsk) | English 
+| Old (Persian) | Estonian 
+| Pashto | Filipino
+| Punjabi | Finnish
+| Rejang | French
+| Santali | Galician
+| Sasak | Georgian
+| Saurashtra | German
+| Serbian (Cyrillic) | Greek
+| Serbian (Latin) | Gujarati
+| Sinhala | Hausa
+| Slovenian | Hebrew
+| Sylheti | Hindi
+| Syriac | Hungarian
+| Tagbanwa | Icelandic
+| Tai (Nua) | Igbo
+| Tamashek | Indonesian
+| Ugaritic | Inuktitut
+| Uzbek (Cyrillic) | Irish
+| Uzbek (Latin) | isiXhosa
+| Vai | isiZulu
+| Yi | Italian
+| Zhuang, Chuang | Japanese
+| | Kannada
+| | Kazakh
+| | Khmer
+| | K'iche
+| | Kinyarwanda
+| | Kiswahili
+| | Konkani
+| | Korean
+| | Kyrgyz
+| | Lao
+| | Latvian
+| | Lithuanian
+| | Luxembourgish
+| | Macedonian
+| | Malay
+| | Malayalam
+| | Maltese
+| | Maori
+| | Marathi
+| | Mongolian
+| | Nepali
+| | Norwegian (Bokmål)
+| | Norwegian (Nynorsk)
+| | Odia
+| | Pashto
+| | Persian
+| | Polish
+| | Portuguese - Brazil
+| | Portuguese - Portugal
+| | Pulaar
+| | Punjabi
+| | Punjabi (Pakistan)
+| | Quechua (Peru)
+| | Romanian
+| | Russian
+| | Scottish Gaelic
+| | Serbian (Cyrillic)
+| | Serbian (Cyrillic, Bosnia and Herzegovina)
+| | Serbian (Latin)
+| | Sesotho
+| | Sesotho sa Leboa
+| | Setswana
+| | Sindhi
+| | Sinhala
+| | Slovak
+| | Slovenian
+| | Spanish
+| | Swedish
+| | Tajik
+| | Tamil
+| | Tatar
+| | Telugu
+| | Thai
+| | Tigrinya
+| | Turkish
+| | Turkmen
+| | Ukrainian
+| | Urdu
+| | Uyghur
+| | Uzbek
+| | Valencian
+| | Vietnamese
+| | Welsh
+| | Wolof
+| | Yoruba
+
 

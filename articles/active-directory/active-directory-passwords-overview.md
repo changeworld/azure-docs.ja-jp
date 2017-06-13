@@ -6,6 +6,7 @@ services: active-directory
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
+editor: gahug
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
@@ -14,6 +15,7 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: joflore
+ms.custom: it-pro
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 300958a69fc854cb8db02120a383a4cbbfcacd7b
 ms.openlocfilehash: 9f72a4900f20282827ff939aa41bc4f306e547a3

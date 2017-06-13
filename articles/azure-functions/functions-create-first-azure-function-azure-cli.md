@@ -9,6 +9,7 @@ ms.assetid: 674a01a7-fd34-4775-8b69-893182742ae0
 ms.date: 05/02/2017
 ms.topic: hero-article
 ms.service: functions
+ms.custom: mvc
 ms.devlang: azure-cli
 manager: erikre
 ms.translationtype: Human Translation
@@ -35,11 +36,13 @@ ms.lasthandoff: 05/18/2017
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
 ## <a name="log-in-to-azure"></a>Azure へのログイン
 
 [az login](/cli/azure/#login) コマンドを使用して Azure サブスクリプションにサインインし、画面上の指示に従います。 
 
-```azurecli
+```azurecli-interactive
 az login
 ```
 
@@ -49,7 +52,7 @@ az login
 
 次の例では、`myResourceGroup` という名前のリソース グループを作成します。
 
-```azurecli
+```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
 ```
 ## <a name="create-an-azure-storage-account"></a>Azure Storage アカウントの作成
@@ -58,7 +61,7 @@ Functions は、関数に関する状態その他の情報を維持するため�
 
 次のコマンドで、`<storage_name>` プレースホルダーをグローバルで一意な独自のストレージ アカウント名に置き換えます。 ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。
 
-```azurecli
+```azurecli-interactive
 az storage account create --name <storage_name> --location westeurope --resource-group myResourceGroup --sku Standard_LRS
 ```
 
@@ -88,7 +91,7 @@ az storage account create --name <storage_name> --location westeurope --resource
 
 次のコマンドで、`<app_name>` プレースホルダーを独自の一意の Function App 名に、`<storage_name>` をストレージ アカウント名に置き換えます。 `<app_name>` は、Function App の既定の DNS ドメインとして使用されます。そのため、名前は Azure のすべてのアプリ間で一意である必要があります。 
 
-```azurecli
+```azurecli-interactive
 az functionapp create --name <app_name> --storage-account  <storage_name>  --resource-group myResourceGroup --consumption-plan-location westeurope
 ```
 既定では、Function App は従量課金ホスティング プランで作成されます。つまり、リソースは関数の要求に応じて動的に追加され、関数が実行されている場合にのみ課金されます。 詳細については、「[Azure Functions の適切なサービス プランを選択する](functions-scale.md)」を参照してください。 
@@ -119,7 +122,7 @@ Function App が作成されると、Azure CLI によって次の例のような
 
 新しい Function App で関数コードを作成する方法はいくつかあります。 このトピックでは、GitHub のサンプル レポジトリについて説明します。 前回と同様、次のコードで `<app_name>` プレースホルダーを作成済みの Function App の名前に置き換えます。 
 
-```azurecli
+```azurecli-interactive
 az functionapp deployment source config --name <app_name> --resource-group myResourceGroup --repo-url https://github.com/Azure-Samples/functions-quickstart --branch master --manual-integration
 ```
 デプロイ ソースの設定後に、次の例のような情報が Azure CLI に表示されます (読みやすくするために null 値は削除してあります)。
@@ -159,7 +162,7 @@ curl http://<app_name>.azurewebsites.net/api/HttpTriggerJS1?name=<yourname>
 
 このコレクションの他のクイックスタートは、このクイックスタートに基づいています。 引き続きクイックスタートまたはチュートリアルの作業を行う場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 作業する予定がない場合は、次のコマンドを使用して、このクイックスタートで作成したすべてのリソースを削除してください。
 
-```azurecli
+```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 確認を求められたら「`y`」と入力します。

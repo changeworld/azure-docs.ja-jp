@@ -3,7 +3,7 @@ title: "Azure リレー API の概要 | Microsoft Docs"
 description: "使用可能な Azure リレー API の概要"
 services: event-hubs
 documentationcenter: na
-author: jtaubensee
+author: sethmanheim
 manager: timlt
 editor: 
 ms.assetid: fdaa1d2b-bd80-4e75-abb9-0c3d0773af2d
@@ -13,10 +13,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2017
-ms.author: jotaub
-translationtype: Human Translation
+ms.author: sethm
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
 ms.openlocfilehash: edc730aa383b07dc308da8a160203faf3636208b
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/27/2017
 
 ---

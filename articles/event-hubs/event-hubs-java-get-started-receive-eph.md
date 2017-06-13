@@ -3,7 +3,7 @@ title: "Java を使用して Azure Event Hubs からイベントを受信する 
 description: "Java を使用して Event Hubs からの受信を開始する"
 services: event-hubs
 documentationcenter: 
-author: jtaubensee
+author: sethmanheim
 manager: timlt
 editor: 
 ms.assetid: 38e3be53-251c-488f-a856-9a500f41b6ca
@@ -13,14 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
-ms.author: jotaub;sethm
-translationtype: Human Translation
+ms.author: sethm
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aa7244849f6286e8ef9f9785c133b4c326193c12
 ms.openlocfilehash: 852a0fab2fa7a50eb315e7107749e391031b463e
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/02/2017
 
 
 ---
+
 # <a name="receive-events-from-azure-event-hubs-using-java"></a>Java を使用して Azure Event Hubs からイベントを受信する
 
 ## <a name="introduction"></a>はじめに

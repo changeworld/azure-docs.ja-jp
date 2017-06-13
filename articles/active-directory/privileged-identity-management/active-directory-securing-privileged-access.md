@@ -14,6 +14,7 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: kgremban
+ms.custom: pim
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
 ms.openlocfilehash: c96a0bd6710d60629bc631fe7e1f642cdb2bada6

@@ -1,11 +1,27 @@
 ---
-
-ROBOTS: NOINDEX, NOFOLLOW
+title: "(非推奨) 比率検定での相違 - Azure | Microsoft Docs"
+description: "(非推奨) 比率検定での相違"
+services: machine-learning
+documentationcenter: 
+author: aniedea
+manager: jhubbard
+editor: cgronlun
+ms.assetid: 9356b821-5345-44f6-8e26-719f2dea5e6d
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 01/06/2017
+ms.author: aniedea
+ROBOTS: NOINDEX
 redirect_url: https://gallery.cortanaintelligence.com/
-translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: b2194dd1742d175abb4f85158c4aae81bb4aa044
-ms.lasthandoff: 05/03/2017
+redirect_document_id: TRUE
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
+ms.openlocfilehash: 18023b5057d1eeca88a341d62cbeb543102b3abf
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/11/2017
 
 
 ---
@@ -14,15 +30,15 @@ ms.lasthandoff: 05/03/2017
 > [!NOTE]
 > Microsoft DataMarket は間もなく提供終了となる予定です。この API は推奨されていません。 
 > 
-> [Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com)では、便利なサンプル実験や API が多数提供されています。 ギャラリーについて詳しくは、「 [Cortana Intelligence ギャラリーでリソースを共有および発見する](machine-learning-gallery-how-to-use-contribute-publish.md)」をご覧ください。
+> [Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com)では、便利なサンプル実験や API が提供されています。 ギャラリーについて詳しくは、「 [Cortana Intelligence ギャラリーでリソースを共有および発見する](machine-learning-gallery-how-to-use-contribute-publish.md)」をご覧ください。
 
-2 つの比率は統計的に異なりますか。 ユーザーが 2 つのムービーを比較して、一方のムービーが他方のムービーと比べて "いいね" の比率が大幅に高いかどうかを判断したいとします。 大規模なサンプルでは、0.50 と 0.51 の比率の間に統計上重大は相違が発生する可能性があります。 小規模なサンプルでは、これらの比率が実際に相違を生じているかを判別するにはデータ量が十分ではない可能性があります。 
+2 つの比率は統計的に異なりますか。 ユーザーが&2; つのムービーを比較して、一方のムービーが他方のムービーと比べて "いいね" の比率が大幅に高いかどうかを判断したいとします。 大規模なサンプルでは、0.50 と 0.51 の比率の間に統計上重大は相違が発生する可能性があります。 小規模なサンプルでは、これらの比率が実際に相違を生じているかを判別するにはデータ量が十分ではない可能性があります。 
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 この [Web サービス](https://datamarket.azure.com/dataset/aml_labs/prop_test) は、ユーザーが入力した 2 つの比較グループに対する成功の数と試行回数の合計に基づいて、2 つの比率の仮説検定を実行します。 この Web サービスはムービー比較アプリから呼び出すことができ、ムービー評価に基づいて、あるムービーが他のムービーと比較して実際に「いいね」と評価されている場合が多いかどうかをユーザーに示すというシナリオが考えられます。
 
-> この Web サービスは、モバイル アプリ、Web サイト、ローカル コンピューターなどからユーザーが使用できます。 この Web サービスのもう 1 つの目的は、Azure Machine Learning を使用して R コード上に Web サービスを作成する方法の例を示すことです。 数行の R コードを記述し、Azure Machine Learning Studio 内でボタンを何回かクリックするだけで、R コードで実験を作成し、Web サービスとして発行できます。 この Web サービスは Azure Marketplace に発行され、Web サービスの作成者がインフラストラクチャを設定することなく、世界中のユーザーやデバイスで使用されます。
+> この Web サービスは、モバイル アプリ、Web サイト、ローカル コンピューターなどからユーザーが使用できます。 この Web サービスのもう&1; つの目的は、Azure Machine Learning を使用して R コード上に Web サービスを作成する方法の例を示すことです。 数行の R コードを記述し、Azure Machine Learning Studio 内でボタンを何回かクリックするだけで、R コードで実験を作成し、Web サービスとして発行できます。 この Web サービスは Azure Marketplace に発行され、Web サービスの作成者がインフラストラクチャを設定することなく、世界中のユーザーやデバイスで使用されます。
 > 
 > 
 

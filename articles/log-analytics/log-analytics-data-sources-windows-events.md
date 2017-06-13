@@ -1,6 +1,6 @@
 ---
 title: "OMS Log Analytics での Windows イベント ログの収集と分析 | Microsoft Docs"
-description: "Windows イベント ログは、Log Analytics で使用される最も一般的なデータ ソースの&1; つです。  この記事では、Windows イベント ログの収集を構成する方法と OMS リポジトリに作成されるレコードの詳細について説明します。"
+description: "Windows イベント ログは、Log Analytics で使用される最も一般的なデータ ソースの 1 つです。  この記事では、Windows イベント ログの収集を構成する方法と OMS リポジトリに作成されるレコードの詳細について説明します。"
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -23,7 +23,7 @@ ms.lasthandoff: 01/24/2017
 
 ---
 # <a name="windows-event-log-data-sources-in-log-analytics"></a>Log Analytics での Windows イベント ログのデータ ソース
-Windows イベント ログは、多くのアプリケーションが書き込みを行うため、Windows エージェントを使用してデータを収集する際の最も一般的な[データ ソース](log-analytics-data-sources.md) の&1; つです。  システムやアプリケーションなどの標準ログに加えて、アプリケーションによって作成される監視が必要なカスタム ログを指定して、イベントを収集できます。
+Windows イベント ログは、多くのアプリケーションが書き込みを行うため、Windows エージェントを使用してデータを収集する際の最も一般的な[データ ソース](log-analytics-data-sources.md) の 1 つです。  システムやアプリケーションなどの標準ログに加えて、アプリケーションによって作成される監視が必要なカスタム ログを指定して、イベントを収集できます。
 
 ![Windows イベント](media/log-analytics-data-sources-windows-events/overview.png)     
 

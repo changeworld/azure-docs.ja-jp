@@ -10,16 +10,17 @@ editor:
 tags: 
 ms.assetid: 0a65a93f-d5dc-424b-a774-7ed62d996f8c
 ms.service: sql-database
-ms.custom: security-access
+ms.custom: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 01/23/2017
 ms.author: rickbyh
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
 ms.openlocfilehash: f29b2c1da0d9b761634370f5f08ea942b66d9f1f
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/15/2017
 
 

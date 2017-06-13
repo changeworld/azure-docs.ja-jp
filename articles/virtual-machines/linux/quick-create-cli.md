@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: nepeters
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 2f1f63d14468467c8cf3956324beb829adce296f
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 935cc417e7fa60e725c26560adf97ed00cf4bf06
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 06/01/2017
 
 ---
 
@@ -29,13 +30,15 @@ Azure CLI は、コマンドラインやスクリプトで Azure リソースを
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-このクイック スタートには、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 ブラウザーから [Cloud Shell](/azure/cloud-shell/quickstart) を使用することもできます。
+このクイック スタートには、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="log-in-to-azure"></a>Azure へのログイン 
 
-[az login](/cli/azure/#login) コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
+[az login](/cli/azure/#login) コマンドで Azure サブスクリプションにログインし、画面上の指示に従うか、**[使ってみる]** をクリックして Cloud Shell を使用します。
 
-```azurecli
+```azurecli-interactive 
 az login
 ```
 
@@ -45,7 +48,7 @@ az login
 
 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
-```azurecli
+```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
@@ -55,13 +58,13 @@ az group create --name myResourceGroup --location eastus
 
 次の例では、*myVM* という名前の VM を作成し、既定のキーの場所にまだ SSH キーが存在しない場合は SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。  
 
-```azurecli
+```azurecli-interactive 
 az vm create --resource-group myResourceGroup --name myVM --image UbuntuLTS --generate-ssh-keys
 ```
 
 VM が作成されると、Azure CLI によって次の例のような情報が表示されます。 `publicIpAddress` を書き留めておきます。 このアドレスは、VM へのアクセスに使用されます。
 
-```azurecli
+```azurecli-interactive 
 {
   "fqdns": "",
   "id": "/subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -78,7 +81,7 @@ VM が作成されると、Azure CLI によって次の例のような情報が�
 
 Azure にデプロイされている Linux 仮想マシンに対しては、既定で SSH 接続のみが許可されます。 この VM を Web サーバーとして使用する場合は、インターネットからポート 80 を開く必要があります。 [az vm open-port](/cli/azure/vm#open-port) コマンドを使用して、目的のポートを開きます。  
  
- ```azurecli 
+ ```azurecli-interactive 
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 ```
 
@@ -111,11 +114,11 @@ NGINX をインストールし、VM のポート 80 をインターネットか�
 ![NGINX の既定のサイト](./media/quick-create-cli/nginx.png) 
 
 
-## <a name="delete-virtual-machine"></a>仮想マシンの削除
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 必要がなくなったら、[az group delete](/cli/azure/group#delete) コマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
 
-```azurecli
+```azurecli-interactive 
 az group delete --name myResourceGroup
 ```
 

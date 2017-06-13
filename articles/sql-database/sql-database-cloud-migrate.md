@@ -9,16 +9,17 @@ manager: jhubbard
 editor: 
 ms.assetid: 9cf09000-87fc-4589-8543-a89175151bc2
 ms.service: sql-database
-ms.custom: migrate
+ms.custom: load & move data
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: sqldb-migrate
 ms.date: 02/08/2017
 ms.author: carlrab
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
 ms.openlocfilehash: 9fb1d12f5895e27929b2698edbf8c207aa2ee377
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/18/2017
 
 

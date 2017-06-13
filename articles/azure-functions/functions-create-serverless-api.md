@@ -10,6 +10,7 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: mahender
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: 2b11d08b95d658ae2b0303107367549e6d0b5dff

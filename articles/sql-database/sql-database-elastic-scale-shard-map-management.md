@@ -8,16 +8,18 @@ author: ddove
 editor: 
 ms.assetid: 0e9d647a-9ba9-4875-aa22-662d01283439
 ms.service: sql-database
-ms.custom: multiple databases
+ms.custom: scale out apps
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eb5483e497ef1c1a239f207a034eb8c67f485a39
 ms.openlocfilehash: c7a46ebf0df6db92d2e66c7523e00c0a574ebf56
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -31,12 +33,12 @@ SQL Azure でデータベースを簡単にスケールアウトするには、�
 ## <a name="shard-maps-and-shard-mappings"></a>シャード マップとシャードのマッピング
 シャードごとに、作成するシャード マップの種類を選択する必要があります。 何を選択するかはデータベースのアーキテクチャによって異なります。 
 
-1. データベースごとに&1; つのテナント  
+1. データベースごとに 1 つのテナント  
 2. データベースごとに複数のテナント (2 種類):
    1. リスト マッピング
    2. 範囲マッピング
 
-シングルテナント モデルの場合は、 **リスト マッピング** シャード マップを作成します。 シングルテナント モデルでは、テナントごとに&1; つのデータベースが割り当てられます。 これは、管理が簡単なので、SaaS 開発者に有効なモデルです。
+シングルテナント モデルの場合は、 **リスト マッピング** シャード マップを作成します。 シングルテナント モデルでは、テナントごとに 1 つのデータベースが割り当てられます。 これは、管理が簡単なので、SaaS 開発者に有効なモデルです。
 
 ![リスト マッピング][1]
 
@@ -44,7 +46,7 @@ SQL Azure でデータベースを簡単にスケールアウトするには、�
 
 ![範囲マッピング][2]
 
-または、 *リスト マッピング* を使用して複数のテナントを&1; つのデータベースに割り当てることにより、マルチテナント データベース モデルを実装できます。 たとえば、ID が 1 と 5 のテナントに関する情報を DB1 に格納し、DB2 にテナント 7 と 10 のデータを格納する、といったことができます。 
+または、 *リスト マッピング* を使用して複数のテナントを 1 つのデータベースに割り当てることにより、マルチテナント データベース モデルを実装できます。 たとえば、ID が 1 と 5 のテナントに関する情報を DB1 に格納し、DB2 にテナント 7 と 10 のデータを格納する、といったことができます。 
 
 ![単一 DB 上の複数のテナント][3] 
 
@@ -89,7 +91,7 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
 上に示す各テーブルは、 **ShardMap** オブジェクトの概念上の例です。 各行は、個々の **PointMapping** (リスト シャード マップ) オブジェクトまたは **RangeMapping** (範囲シャード マップ) オブジェクトの簡単な例です。
 
 ## <a name="shard-map-manager"></a>シャード マップ マネージャー
-クライアント ライブラリでは、シャード マップ マネージャーはシャード マップのコレクションです。 **ShardMapManager** インスタンスによって管理されるデータは、次の&3; つの場所に保持されます。 
+クライアント ライブラリでは、シャード マップ マネージャーはシャード マップのコレクションです。 **ShardMapManager** インスタンスによって管理されるデータは、次の 3 つの場所に保持されます。 
 
 1. **グローバル シャード マップ (GSM)**: すべてのシャード マップとマッピングのリポジトリとして機能するデータベースを指定します。 この情報を管理するために、特殊なテーブルとストアド プロシージャが自動的に作成されます。 通常、これは小さなデータベースで簡単にアクセスでき、アプリケーションの他の目的には使用されません。 このテーブルは、**__ShardManagement** という名前の特殊なスキーマに含まれます。 
 2. **ローカル シャード マップ (LSM)**: シャードとして指定されたすべてのデータベースは、シャードに固有のシャード マップ情報を格納と管理するためのいくつかの小さなテーブルと特殊なストアド プロシージャを含むように変更されます。 この情報は GSM 内の情報を冗長化したもので、これにより、アプリケーションは、GSM に負荷をかけることなくキャッシュされたシャード マップ情報を検証できます。アプリケーションは、LSM を使用して、キャッシュされたマッピングがまだ有効であるかどうかを判定できます。 各シャードの LSM に対応するテーブルも、スキーマ **__ShardManagement** に含まれます。
@@ -98,7 +100,7 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
 ## <a name="constructing-a-shardmapmanager"></a>ShardMapManager の作成
 **ShardMapManager** オブジェクトは、 [ファクトリ](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.aspx) パターンを使用して作成されます。 **[ShardMapManagerFactory.GetSqlShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx)** メソッドは、(サーバー名と、GSM を保持しているデータベースの名前を含む) **ConnectionString** 形式の資格情報を受け取り、**ShardMapManager** のインスタンスを返します。  
 
-**注意**: **ShardMapManager** は、アプリケーションの初期化コード内でアプリケーション ドメインごとに&1; 回だけインスタンス化する必要があります。 同じアプリケーション ドメインで ShardMapManager の追加のインスタンスを作成すると、アプリケーションのメモリ使用率と CPU 使用率が増加します。 **ShardMapManager** には、任意の数のシャード マップを含めることができます。 多くのアプリケーションでは、シャード マップは&1; つあれば十分です。ただし、異なるスキーマ用や一意性を確保する目的のためにデータベースの異なるセットを使用する場合は、複数のシャード マップを使用することをお勧めします。 
+**注意**: **ShardMapManager** は、アプリケーションの初期化コード内でアプリケーション ドメインごとに 1 回だけインスタンス化する必要があります。 同じアプリケーション ドメインで ShardMapManager の追加のインスタンスを作成すると、アプリケーションのメモリ使用率と CPU 使用率が増加します。 **ShardMapManager** には、任意の数のシャード マップを含めることができます。 多くのアプリケーションでは、シャード マップは 1 つあれば十分です。ただし、異なるスキーマ用や一意性を確保する目的のためにデータベースの異なるセットを使用する場合は、複数のシャード マップを使用することをお勧めします。 
 
 次のコードでは、アプリケーションは、 **TryGetSqlShardMapManager メソッド** を使用して既存の [ShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)を開こうとします。  グローバル **ShardMapManager** (GSM) を表すオブジェクトがデータベース内に存在しない場合、クライアント ライブラリは [CreateSqlShardMapManager メソッド](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx)を使用してこれを作成します。
 
@@ -295,9 +297,9 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
 * シャードにマップされるポイントまたは範囲を作成または削除するには: **[CreateRangeMapping](https://msdn.microsoft.com/library/azure/dn841993.aspx)**、[RangeShardMapping](https://msdn.microsoft.com/library/azure/dn807318.aspx) クラスの **[DeleteMapping](https://msdn.microsoft.com/library/azure/dn824200.aspx)**、[ListShardMap](https://msdn.microsoft.com/library/azure/dn842123.aspx) の **[CreatePointMapping](https://msdn.microsoft.com/library/azure/dn807218.aspx)** を使用します。
   
     多くの異なるポイントまたは範囲を同じシャードにマップできます。 これらのメソッドは、メタデータにのみ作用し、シャードに既に存在するデータには作用しません。 **DeleteMapping** 操作に合わせてデータをデータベースから削除する必要がある場合は、これらのメソッドを組み合わせてこれらの操作を別個に実行する必要があります。  
-* 既存の範囲を&2; つに分割する、または隣接する範囲を&1; つにマージするには: **[SplitMapping](https://msdn.microsoft.com/library/azure/dn824205.aspx)** と **[MergeMappings](https://msdn.microsoft.com/library/azure/dn824201.aspx)** を使用します。  
+* 既存の範囲を 2 つに分割する、または隣接する範囲を 1 つにマージするには: **[SplitMapping](https://msdn.microsoft.com/library/azure/dn824205.aspx)** と **[MergeMappings](https://msdn.microsoft.com/library/azure/dn824201.aspx)** を使用します。  
   
-    分割操作とマージ操作を行っても、**キー値がマップされているシャードは変更されない**ことに注意してください。 分割操作を実行すると、既存の範囲が&2; つの部分に分割されます。このとき、どちらの部分も同じシャードにマップされたままになります。 マージ操作を実行すると、同じシャードに既にマップされている&2; つの隣接する範囲が&1; つの範囲に結合されます。  シャード間でのポイントまたは範囲自体の移動は、実際のデータの移動と組み合わせて **UpdateMapping** を使用して調整する必要があります。  Elastic Database ツールの一部である **Split/Merge** サービスを使用すると、データの移動が必要な場合にシャード マップの変更をデータの移動と連携させることができます。 
+    分割操作とマージ操作を行っても、**キー値がマップされているシャードは変更されない**ことに注意してください。 分割操作を実行すると、既存の範囲が 2 つの部分に分割されます。このとき、どちらの部分も同じシャードにマップされたままになります。 マージ操作を実行すると、同じシャードに既にマップされている 2 つの隣接する範囲が 1 つの範囲に結合されます。  シャード間でのポイントまたは範囲自体の移動は、実際のデータの移動と組み合わせて **UpdateMapping** を使用して調整する必要があります。  Elastic Database ツールの一部である **Split/Merge** サービスを使用すると、データの移動が必要な場合にシャード マップの変更をデータの移動と連携させることができます。 
 * 個々のポイントまたは範囲を別のシャードに再マップ (移動) するには: **[UpdateMapping](https://msdn.microsoft.com/library/azure/dn824207.aspx)**の値に基づいて適切なデータベースに接続できます。  
   
     データは **UpdateMapping** 操作に合わせてシャード間で移動することが必要になる場合があるため、これらのメソッドを使いながら移動操作を別個に実行する必要があります。
@@ -322,9 +324,4 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
 [1]: ./media/sql-database-elastic-scale-shard-map-management/listmapping.png
 [2]: ./media/sql-database-elastic-scale-shard-map-management/rangemapping.png
 [3]: ./media/sql-database-elastic-scale-shard-map-management/multipleonsingledb.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

@@ -2,6 +2,6 @@
 
 リソースをクリーンアップするには、次のコマンドを実行します。
 
-```azurecli
+```azurecli-interactive
 az group delete --name myResourceGroup
 ```

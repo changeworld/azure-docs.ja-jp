@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/14/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 08dac5205e50dd5c33d71ba15277da66fd7b22fe
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 4dcccb313c517982680266656c36b9f23dee44c4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.lasthandoff: 04/18/2017
 HDInsight の Ambari Web UI には Tez ビューが含まれています。Tez ビューは、Tez を使用するジョブの確認とデバッグに使用できます。 Tez ビューを使用すると、関連付けられた項目のグラフとしてジョブを可視化し、各項目をドリルダウンして、統計情報やログ情報を取得することができます。
 
 > [!IMPORTANT]
-> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関するページを参照してください。
+> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

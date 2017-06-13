@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/14/2017
+ms.date: 05/31/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 78b8902927977c3b7dca3bd6e24633858ef8e6e9
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 9ab6d3e5e41f155b1404cee8a555078409c09c60
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 05/11/2017
 ```json
 "resources": [ 
   { 
-      "apiVersion": "2015-01-01", 
+      "apiVersion": "2017-05-10", 
       "name": "linkedTemplate", 
       "type": "Microsoft.Resources/deployments", 
       "properties": { 
@@ -53,7 +53,7 @@ ms.lasthandoff: 05/11/2017
 他の種類のリソース同様、リンクされたテンプレートとその他のリソース間の依存関係を設定できます。 したがって、その他のリソースにリンクされたテンプレートからの出力値が必要な場合、リンクされたテンプレートが他のリソースの前にデプロイされるようにすることができます。 または、リンクされたテンプレートが他のリソースに依存する場合は、リンクされたテンプレートの前に他のリソースがデプロイされるようにすることができます。 リンクされたテンプレートから値を取得するには、次の構文を使用します。
 
 ```json
-"[reference('linkedTemplate').outputs.exampleProperty]"
+"[reference('linkedTemplate').outputs.exampleProperty.value]"
 ```
 
 Resource Manager サービスは、リンクされたテンプレートにアクセスできる必要があります。 ローカル ファイルや、リンクされたテンプレートのローカル ネットワークだけで使用可能なファイルを指定することはできません。 **http** または **https** のいずれかを含む URI 値のみを指定できます。 オプションの 1 つとして、ストレージ アカウントにリンク先のテンプレートを配置し、次の例に示すように、その項目の URI を使用します。
@@ -75,7 +75,7 @@ Resource Manager サービスは、リンクされたテンプレートにアク
 },
 "resources": [
     {
-        "apiVersion": "2015-01-01",
+        "apiVersion": "2017-05-10",
         "name": "linkedTemplate",
         "type": "Microsoft.Resources/deployments",
         "properties": {
@@ -101,7 +101,7 @@ Resource Manager では、各リンクされたテンプレートは個別のデ
 ```json
 "resources": [ 
   { 
-     "apiVersion": "2015-01-01", 
+     "apiVersion": "2017-05-10", 
      "name": "linkedTemplate", 
      "type": "Microsoft.Resources/deployments", 
      "properties": { 
@@ -142,116 +142,6 @@ Resource Manager では、各リンクされたテンプレートは個別のデ
 }
 ```
 
-## <a name="conditionally-linking-to-templates"></a>テンプレートへの条件付きリンク
-リンクされたテンプレートの URI の構築に使用されるパラメーター値を渡すことによって、別のテンプレートにリンクすることができます。 この方法は、どのリンクされたテンプレートを使用するかをデプロイ中に指定する必要がある場合に適しています。 たとえば、既存のストレージ アカウント用に 1 つのテンプレートと、新しいストレージ アカウント用にもう 1 つのテンプレートを指定できます。
-
-次の例では、ストレージ アカウント名のパラメーターと、ストレージ アカウントが新規か既存かを指定するためのパラメーターを示しています。
-
-```json
-"parameters": {
-    "storageAccountName": {
-        "type": "String"
-    },
-    "newOrExisting": {
-        "type": "String",
-        "allowedValues": [
-            "new",
-            "existing"
-        ]
-    }
-},
-```
-
-新規または既存のパラメーターの値を含む、テンプレート URI の変数を作成します。
-
-```json
-"variables": {
-    "templatelink": "[concat('https://raw.githubusercontent.com/exampleuser/templates/master/',parameters('newOrExisting'),'StorageAccount.json')]"
-},
-```
-
-この変数値をデプロイ リソースに指定します。
-
-```json
-"resources": [
-    {
-        "apiVersion": "2015-01-01",
-        "name": "linkedTemplate",
-        "type": "Microsoft.Resources/deployments",
-        "properties": {
-            "mode": "incremental",
-            "templateLink": {
-                "uri": "[variables('templatelink')]",
-                "contentVersion": "1.0.0.0"
-            },
-            "parameters": {
-                "StorageAccountName": {
-                    "value": "[parameters('storageAccountName')]"
-                }
-            }
-        }
-    }
-],
-```
-
-URI は、**existingStorageAccount.json** または **newStorageAccount.json** という名前のテンプレートに解決されます。 これらの URI のためのテンプレートを作成します。
-
-次の例は、 **existingStorageAccount.json** テンプレートを示しています。
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "storageAccountName": {
-      "type": "String"
-    }
-  },
-  "variables": {},
-  "resources": [],
-  "outputs": {
-    "storageAccountInfo": {
-      "value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')),providers('Microsoft.Storage', 'storageAccounts').apiVersions[0])]",
-      "type" : "object"
-    }
-  }
-}
-```
-
-次の例は、 **newStorageAccount.json** テンプレートを示しています。 既存のストレージ アカウント テンプレートの同様に、出力でストレージ アカウント オブジェクトが返されることに注意してください。 マスター テンプレートは、リンクされたテンプレートにも対応しています。
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "storageAccountName": {
-      "type": "string"
-    }
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "name": "[parameters('StorageAccountName')]",
-      "apiVersion": "2016-01-01",
-      "location": "[resourceGroup().location]",
-      "sku": {
-        "name": "Standard_LRS"
-      },
-      "kind": "Storage",
-      "properties": {
-      }
-    }
-  ],
-  "outputs": {
-    "storageAccountInfo": {
-      "value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('StorageAccountName')),providers('Microsoft.Storage', 'storageAccounts').apiVersions[0])]",
-      "type" : "object"
-    }
-  }
-}
-```
-
 ## <a name="complete-example"></a>完全な例
 次のサンプル テンプレートは、この記事で取り上げている概念を説明するために、リンクされたテンプレートの簡略化した配置を示しています。 パブリック アクセスを無効にした状態で、テンプレートがストレージ アカウント内の同じコンテナーに追加されていることを前提としています。 リンクされたテンプレートは **outputs** セクションのメイン テンプレートに値を渡します。
 
@@ -266,7 +156,7 @@ URI は、**existingStorageAccount.json** または **newStorageAccount.json** �
   },
   "resources": [
     {
-      "apiVersion": "2015-01-01",
+      "apiVersion": "2017-05-10",
       "name": "linkedTemplate",
       "type": "Microsoft.Resources/deployments",
       "properties": {
@@ -280,8 +170,8 @@ URI は、**existingStorageAccount.json** または **newStorageAccount.json** �
   ],
   "outputs": {
     "result": {
-      "type": "object",
-      "value": "[reference('linkedTemplate').outputs.result]"
+      "type": "string",
+      "value": "[reference('linkedTemplate').outputs.result.value]"
     }
   }
 }
@@ -317,8 +207,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateUri 
 Azure CLI 2.0 では、コンテナーのトークンを取得し、次のコードを使用してテンプレートをデプロイします。
 
 ```azurecli
-seconds='@'$(( $(date +%s) + 1800 ))
-expiretime=$(date +%Y-%m-%dT%H:%MZ --date=$seconds)
+expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)
 connection=$(az storage account show-connection-string \
     --resource-group ManageGroup \
     --name storagecontosotemplates \

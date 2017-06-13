@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/02/2017
-ms.author: sethm;jotaub
+ms.author: sethm
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: 612fb681ab0c8fe77652041f8a1fc23ad0d3428a

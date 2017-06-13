@@ -641,7 +641,7 @@ ms.lasthandoff: 05/10/2017
 次の例は、 `"https://portal.azure.com/"`を返します。
 
 ```json
-"[encodeUriComponent('https%3A%2F%2Fportal.azure.com%2F')]"
+"[decodeUriComponent('https%3A%2F%2Fportal.azure.com%2F')]"
 ```
 
 ## <a name="math-functions"></a>算術関数

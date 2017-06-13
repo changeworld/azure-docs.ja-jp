@@ -9,12 +9,12 @@ editor:
 tags: azure-service-management
 ms.assetid: 
 ms.service: cosmos-db
-ms.custom: sample
+ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: cosmosdb
 ms.workload: database
-ms.date: 04/20/2017
+ms.date: 06/02/2017
 ms.author: mimig
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
@@ -30,6 +30,8 @@ ms.lasthandoff: 05/15/2017
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
 ## <a name="sample-script"></a>サンプル スクリプト
 
 [!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/scale-cosmosdb-throughput/scale-cosmosdb-throughput.sh?highlight=40-46 "Azure Cosmos DB のスループットのスケーリング")]
@@ -38,7 +40,7 @@ ms.lasthandoff: 05/15/2017
 
 スクリプト サンプルの実行後は、次のコマンドを使用してリソース グループとすべての関連リソースを削除することができます。
 
-```azurecli
+```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 

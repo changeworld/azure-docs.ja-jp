@@ -8,16 +8,17 @@ manager: jhubbard
 editor: 
 ms.assetid: c8c0f232-0751-4a7f-a36e-67a0b29fa1b8
 ms.service: sql-database
-ms.custom: development
+ms.custom: develop databases
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: sql-database
 ms.date: 01/10/2017
 ms.author: bonova
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
 ms.openlocfilehash: e00345ddd9e52e2613789ba78c48e8f993d2415c
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/13/2017
 
 
@@ -43,7 +44,7 @@ ms.lasthandoff: 01/13/2017
 > 
 
 ### <a name="create-new-table"></a>新しいテーブルの作成
-SSMS オブジェクト エクスプローラーの "システム バージョン管理テーブルの新規作成" というコンテキスト メニュー項目を使用して、クエリ エディターを開き、テンポラル テーブル テンプレート スクリプトを表示した後、[テンプレート パラメーターの値の指定] (Ctrl + Shift + M) を使用してテンプレートに値を入力します。
+SSMS オブジェクト エクスプローラーの "システム バージョン管理テーブルの新規作成" というコンテキスト メニュー項目を使用して、クエリ エディターを開き、テンポラル テーブル テンプレート スクリプトを表示した後、[テンプレート パラメーターの値の指定] \(Ctrl + Shift + M) を使用してテンプレートに値を入力します。
 
 ![SSMSNewTable](./media/sql-database-temporal-tables/AzureTemporal2.png)
 
@@ -132,7 +133,7 @@ SELECT TOP 10 * FROM dbo.WebsiteUserInfo FOR SYSTEM_TIME AS OF @hourAgo
 ORDER BY PagesVisited DESC
 ````
 
-このクエリにほんの少し変更を加えれば、1 日前や&1; か月前など過去の任意の時点におけるサイトのアクセス数を分析することができます。
+このクエリにほんの少し変更を加えれば、1 日前や 1 か月前など過去の任意の時点におけるサイトのアクセス数を分析することができます。
 
 前日の基本的な統計分析を実行するには、次の例を使用します。
 

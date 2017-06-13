@@ -12,26 +12,41 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/10/2017
+ms.date: 05/26/2017
 ms.author: sngun
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 5e73f63e6e4e507e354c9569078696eda69de02a
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 834909afb7f2b170cbbeae00140bdd5ac248d2e1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/01/2017
 
 
 ---
 # <a name="add-the-windows-server-2016-vm-image-to-the-azure-stack-marketplace"></a>Add the Windows Server 2016 VM image to the Azure Stack marketplace
 
-By default, there aren’t any virtual machine images available in the Azure stack marketplace. The administrator must add a Virtual Machine image to the Azure Stack marketplace before users can create them. This topic describes the steps required to add a Windows Server 2016 image to the marketplace by using PowerShell. The steps described in this topic are helpful if you have deployed your Azure Stack instance in a disconnected scenario.
+By default, there aren’t any virtual machine images available in the Azure stack marketplace. The administrator must add an image to the marketplace before users can use them. You can add the Windows Server 2016 image to the Azure Stack marketplace by using one of the following two methods:
 
-> [!NOTE]
-> If you are operating in a connected scenario and if you have registered your Azure Stack instance with Azure, then you can download the Windows Server 2016 VM image from the Azure Marketplace by using the steps described in the [Download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md) topic. 
+* [Add the image by downloading it from the Azure Marketplace](#add-the-image-by-downloading-it-from-the-Azure-marketplace) - Use this option if you are operating in a connected scenario and if you have registered your Azure Stack instance with Azure.
 
-1. After deploying Azure Stack, sign in to the MAS-CON01 virtual machine.
+* [Add the image by using PowerShell](#add-the-image-by-using-powershell) - Use this option if you have deployed Azure Stack in a disconnected scenario or in scenarios with limited connectivity.
 
-2. Go to https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2016 and download the Windows Server 2016 evaluation. When prompted, select the **ISO** version of the download. Record the path to the download location, which is used later in these steps.
+## <a name="add-the-image-by-downloading-it-from-the-azure-marketplace"></a>Add the image by downloading it from the Azure Marketplace
+
+1. After deploying Azure Stack, sign in to the Azure Stack POC computer.
+
+2. click **More services** > **Marketplace Management** > **Add from Azure** 
+
+3. Find or search for the **Windows Server 2016 Datacenter – Eval** image > click **Download**
+
+   ![Download image from Azure](media/azure-stack-add-default-image/download-image.png)
+
+After the download completes, the image it is added to the **Marketplace Management** blade and it is also made available from the **Virtual Machines** blade.
+
+## <a name="add-the-image-by-using-powershell"></a>Add the image by using PowerShell
+
+1. After deploying Azure Stack, sign in to the Azure Stack POC computer.
+
+2. Go to https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2016 and download the Windows Server 2016 evaluation. When prompted, select the **ISO** version of the download. Record the path to the download location, which is used later in these steps. This step requires internet connectivity.
 
 3. Open PowerShell ISE as an administrator.
 
@@ -57,7 +72,7 @@ By default, there aren’t any virtual machine images available in the Azure sta
     
     ```PowerShell
     $TenantID = Get-DirectoryTenantID `
-      -AADTenantName "<myaadtenant>.onmicrosoft.com" `
+      -AADTenantName "<myDirectoryTenantName>.onmicrosoft.com" `
       -EnvironmentName AzureStackAdmin
     ```
     b. **Active Directory Federation Services**, use the following cmdlet:

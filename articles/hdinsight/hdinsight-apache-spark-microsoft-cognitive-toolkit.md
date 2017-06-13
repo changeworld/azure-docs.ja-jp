@@ -13,7 +13,7 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 05/25/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
@@ -127,6 +127,5 @@ Azure HDInsight Spark クラスターで Microsoft Cognitive Toolkit を使用�
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 

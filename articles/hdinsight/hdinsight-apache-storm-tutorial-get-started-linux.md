@@ -13,7 +13,7 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/17/2017
+ms.date: 05/25/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.translationtype: Human Translation
@@ -206,7 +206,6 @@ HDInsight 上の Storm で使用できるトポロジの例については、以
 [stormdocs]: http://storm.incubator.apache.org/documentation/Documentation.html
 [stormstarter]: https://github.com/apache/storm/tree/master/examples/storm-starter
 [stormjavadocs]: https://storm.incubator.apache.org/apidocs/
-[azureportal]: https://manage.windowsazure.com/
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 [preview-portal]: https://portal.azure.com/
 

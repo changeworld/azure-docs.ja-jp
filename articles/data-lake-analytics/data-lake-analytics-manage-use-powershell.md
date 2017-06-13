@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: 4dc44ee33c7eee5baa3990ccbd754d3197d164e2
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 4dd1ba30101d364fa52738a4e1c3e07874c5ed1f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -253,26 +253,6 @@ U-SQL カタログを使用して、U-SQL スクリプトで共有できるよ�
         -Account $adlAnalyticsAccountName `
         -ItemType Database `
         -Path "master"
-
-### <a name="create-catalog-secret"></a>カタログ シークレットの作成
-    New-AzureRmDataLakeAnalyticsCatalogSecret  `
-            -Account $adlAnalyticsAccountName `
-            -DatabaseName "master" `
-            -Secret (Get-Credential -UserName "username" -Message "Enter the password")
-
-### <a name="modify-catalog-secret"></a>カタログ シークレットの変更
-    Set-AzureRmDataLakeAnalyticsCatalogSecret  `
-            -Account $adlAnalyticsAccountName `
-            -DatabaseName "master" `
-            -Secret (Get-Credential -UserName "username" -Message "Enter the password")
-
-
-
-### <a name="delete-catalog-secret"></a>カタログ シークレットの削除
-    Remove-AzureRmDataLakeAnalyticsCatalogSecret  `
-            -Account $adlAnalyticsAccountName `
-            -DatabaseName "master"
-
 
 ## <a name="use-azure-resource-manager-groups"></a>Azure リソース マネージャー グループの使用
 アプリケーションは通常、Web アプリケーション、データベース、データベース サーバー、ストレージ、サード パーティのサービスなどの、複数のコンポーネントで構成されます。 Azure リソース マネージャー (ARM) を使用すると、アプリケーション内の複数のリソースを 1 つのグループ (Azure リソース グループと呼ばれます) と見なして作業できます。 アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。 デプロイメントにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 グループ全体のロールアップ コストを表示すると、組織の課金ついて明確に把握できます。 詳細については、「 [Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。 

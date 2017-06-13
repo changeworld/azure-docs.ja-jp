@@ -13,11 +13,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2017
+ms.date: 03/31/2017
 ms.author: iainfou
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
 ms.openlocfilehash: fea8d8dff9c98f928ed7c5ed2b130c7f614f3f9e
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/25/2017
 
 
@@ -73,8 +74,6 @@ Symantec のセキュリティ拡張機能がインストールされ、最新�
 
 <!--Link references-->
 [Symantec]: http://www.symantec.com/connect/blogs/symantec-endpoint-protection-now-microsoft-azure
-
-[Portal]: http://manage.windowsazure.com
 
 [Create]:tutorial.md
 

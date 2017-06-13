@@ -3,7 +3,7 @@ title: "Azure Relay のしくみと利点の概要 | Microsoft Docs"
 description: "Azure Relay の概要"
 services: service-bus-relay
 documentationcenter: .net
-author: banisadr
+author: sethmanheim
 manager: timlt
 editor: 
 ms.assetid: 1e3e971d-2a24-4f96-a88a-ce3ea2b1a1cd
@@ -13,10 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 03/09/2017
-ms.author: babanisa;sethm
-translationtype: Human Translation
+ms.author: sethm
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
 ms.openlocfilehash: 9fd40892c77630bd4f0b7abf5c3458a6dc200402
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/10/2017
 
 
@@ -30,7 +31,7 @@ ms.lasthandoff: 03/10/2017
 
 Relay によって実現される主な機能要素は、ネットワーク境界越しに行われるバッファーを使用しない双方向通信です。TCP と同様の帯域幅調整、エンドポイント検出、接続状態、エンドポイント セキュリティのオーバーレイを備えています。 リレー機能は、1 台のコンピューター上にある単一のアプリケーション エンドポイントに限定できるという点でネットワーク レベルの統合テクノロジ (VPN など) とは異なります。VPN テクノロジは、ネットワーク環境を変えることによって成り立っており、その意味でリレーよりも、はるかに大がかりなテクノロジと言えます。
 
-Azure Relay には、次の&2; つの機能があります。
+Azure Relay には、次の 2 つの機能があります。
 
 1. [ハイブリッド接続](#hybrid-connections) - オープン スタンダードの Web ソケットを使用することで、マルチプラットフォームの用途に対応します。
 2. [WCF リレー](#wcf-relays) - Windows Communication Foundation (WCF) を使用してリモート プロシージャ コールに対応します。 WCF リレーは従来からあるリレー サービスで、多くのお客様がその WCF プログラミング モデルを既に利用しています。
@@ -53,7 +54,7 @@ Azure Relay には、次の&2; つの機能があります。
 WCF リレーは、完全な .NET Framework (NETFX) と WCF で使用できます。 オンプレミス サービスとリレー サービス間の接続を開始するには、一連の WCF "リレー" バインディングを使用します。 バックグラウンドで、リレー バインディングは、新しいトランスポート バインディング要素にマッピングされます。この要素は、クラウド内の Service Bus と統合される WCF チャネル コンポーネントを作成するように設計されています。
 
 ## <a name="service-history"></a>サービスの経緯
-ハイブリッド接続は、Azure Service Bus WCF Relay に基づいて構築された、従来からある "BizTalk Services" の同様の名前の機能に取って代わるものです。 新しいハイブリッド接続機能は、既存の WCF リレーを補完します。リレー サービスには当面、この&2; つのサービス機能が一緒に存在することになります。 両者は共通のゲートウェイを共有しますが、それ以外の点では実装が異なります。
+ハイブリッド接続は、Azure Service Bus WCF Relay に基づいて構築された、従来からある "BizTalk Services" の同様の名前の機能に取って代わるものです。 新しいハイブリッド接続機能は、既存の WCF リレーを補完します。リレー サービスには当面、この 2 つのサービス機能が一緒に存在することになります。 両者は共通のゲートウェイを共有しますが、それ以外の点では実装が異なります。
 
 ## <a name="next-steps"></a>次のステップ:
 * [Relay に関する FAQ](relay-faq.md)

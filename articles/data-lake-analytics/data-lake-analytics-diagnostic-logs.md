@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 05/03/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fb2fe0efe00a7ef7fd1c22ca94c76b2d5f4c5510
-ms.openlocfilehash: 9366bce634fd3855080d267c797e2fecb8ab4ce9
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 71a839d9c076d33c404a56bf0544666dc86eaa4d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/11/2017
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -31,14 +31,6 @@ ms.lasthandoff: 02/11/2017
 * データにアクセスしたユーザーの一覧。
 * データがアクセスされる頻度。
 * アカウントで保存されているデータの量。
-
-## <a name="prerequisites"></a>前提条件
-
-* **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-
-* **Azure サブスクリプションを有効にします** 。 [手順](data-lake-analytics-get-started-portal.md)を参照してください。
-
-* **Azure Data Lake Analytics アカウント**。 「 [Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」の手順に従ってください。
 
 ## <a name="enable-logging"></a>ログの有効化
 

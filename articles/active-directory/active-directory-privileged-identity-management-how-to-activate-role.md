@@ -14,10 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/14/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.custom: pim
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 081e45e0256134d692a2da7333ddbaafc7366eaa
 ms.openlocfilehash: f70fec829b273de97fc49e61ba42d511b6b141b3
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/06/2017
 
 ---
 # <a name="how-to-activate-or-deactivate-roles-in-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management でロールをアクティブ化または非アクティブ化する方法
@@ -42,7 +44,7 @@ Azure Active Directory (AD) Privileged Identity Management を使用すると、
 2. **[ロールをアクティブ化する]**をクリックします。 割り当てられているロールの一覧が表示されます。
 3. アクティブ化するロールを選択します。
 4. **[アクティブ化]**を選択します。 **[ロール アクティブ化要求]** ブレードが表示されます。
-5. 一部のロールをアクティブ化するには、多要素認証 (MFA) が必要になります。 認証は、セッションごとに&1; 回だけ行う必要があります。
+5. 一部のロールをアクティブ化するには、多要素認証 (MFA) が必要になります。 認証は、セッションごとに 1 回だけ行う必要があります。
    
     ![ロール アクティブ化前の MFA の確認 - スクリーンショット][2]
 6. テキスト フィールドにアクティブ化要求の理由を入力します。  一部のロールでは、トラブル チケット番号を入力するように求められます。
@@ -62,9 +64,4 @@ Azure AD Privileged Identity Management の詳細を、次のリンクで確認�
 
 [1]: ./media/active-directory-privileged-identity-management-configure/PIM_EnablePim.png
 [2]: ./media/active-directory-privileged-identity-management-how-to-activate-role/PIM_activation_MFA.png
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

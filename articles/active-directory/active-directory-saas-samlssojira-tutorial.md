@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2017
+ms.date: 05/18/2017
 ms.author: jeedes
 ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: 59db0f71f1eec6a2bd5e2b0b7ee8c2c4bc373430
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: cde5983710185d1e46a5601b16bbfb1c0fcae382
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/13/2017
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -123,7 +123,7 @@ SAML SSO for Jira by resolution GmbH で Azure AD のシングル サインオ�
     **[サインオン URL]** ボックスに、`https://<server-base-url>/plugins/servlet/samlsso` のパターンを使用して URL を入力します。
      
     > [!NOTE] 
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[SAML SSO for Jira by resolution GmbH クライアント サポート チーム](mailto:c.eitel@resolution.de)に問い合わせます。 
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[SAML SSO for Jira by resolution GmbH クライアント サポート チーム](https://www.resolution.de/go/support)に問い合わせます。 
 
 5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
@@ -288,7 +288,7 @@ SAML SSO for Jira by resolution GmbH の場合、プロビジョニングは手�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [SAML SSO for Jira by resolution GmbH] タイルをクリックすると、SAML SSO for Jira by resolution GmbH アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)に関する記事をご覧ください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)に関する記事をご覧ください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

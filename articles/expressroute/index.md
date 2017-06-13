@@ -12,10 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
-ms.sourcegitcommit: 8a169425aa6e99b1a710f5ca56a76445fb1e09bc
-ms.openlocfilehash: 0d06677f6f3815e8ebb35d13f906481350069d4c
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 1c9d64f415a94c35bc6e41706ce78b0da34a0131
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/02/2017
 
 ---
 
@@ -90,10 +91,11 @@ ExpressRoute を使用して、オンプレミス インフラストラクチャ
                 <div class="card">
                     <div class="cardText">
                         <h3>コマンド ライン</h3>
-                        <p><a href="/powershell/resourcemanager/azurerm.network/v3.4.0/azurerm.network">PowerShell</a></p>
+                        <p><a href="/powershell/module/azurerm.network/#expressroute">PowerShell</a></p>
+                        <p><a href="/cli/azure/network/express-route">Azure CLI</a></p>
                     </div>
                 </div>
-            </div>
+            </div> 
         </div>
     </li>
     <li>

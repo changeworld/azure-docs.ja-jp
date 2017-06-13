@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: anhoh
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: ab4fb39f8784a2d6aa956056a30649aab1d08487
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/31/2017
-
 
 ---
 

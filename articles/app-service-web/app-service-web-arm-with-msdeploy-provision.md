@@ -13,9 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2016
 ms.author: jodehavi
-translationtype: Human Translation
-ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
-ms.openlocfilehash: f836bffd0610224b5cb69f4f6836dbc55e0721a3
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 071be50ff7f72ecd711b2c3036f39b70df01a6ba
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -123,7 +125,7 @@ MSDeploy リソースは、次のように定義された **packageUri** プロ�
 
 この **packageUri** は、パッケージ zip ファイルのアップロード先となるストレージ アカウントを参照するストレージ アカウント URI を取得します。 テンプレートのデプロイ時に、Azure リソース マネージャーは [Shared Access Signature](../storage/storage-dotnet-shared-access-signature-part-1.md) を利用して、ストレージ アカウントからパッケージをローカルに取得します。 このプロセスは、パッケージをアップロードし、Azure Management API を呼び出して必要なキーを作成し、それらのキーをパラメーター (*_artifactsLocation* および *_artifactsLocationSasToken*) としてテンプレートに渡す、PowerShell スクリプトによって自動化されます。 ストレージ コンテナーの下に、パッケージのアップロード先のフォルダーとファイル名のパラメーターを定義する必要があります。
 
-次に、もう 1 つの入れ子になったリソースを追加して、カスタム ドメインを利用するようにホスト名のバインドを設定する必要があります。 まず、ホスト名を所有していることを確認し、Azure によって所有者が確認されるようにホスト名を設定する必要があります。[Azure App Service のカスタム ドメイン名の構成](web-sites-custom-domain-name.md)に関するページを参照してください。 この作業が完了したら、テンプレートの Microsoft.Web/sites リソース セクションの下に、次コードを追加します。
+次に、もう 1 つの入れ子になったリソースを追加して、カスタム ドメインを利用するようにホスト名のバインドを設定する必要があります。 まず、ホスト名を所有していることを確認し、Azure によって所有者が確認されるようにホスト名を設定する必要があります。[Azure App Service のカスタム ドメイン名の構成](app-service-web-tutorial-custom-domain.md)に関するページを参照してください。 この作業が完了したら、テンプレートの Microsoft.Web/sites リソース セクションの下に、次コードを追加します。
 
     {
         "apiVersion": "2015-08-01",
@@ -196,10 +198,5 @@ MSDeploy リソースは、次のように定義された **packageUri** プロ�
     Set-AzureRmResource -ApiVersion 2014-11-01 -Name nameofwebsite -ResourceGroupName $rgName -ResourceType Microsoft.Web/sites -PropertyObject $props
 
 この時点でアプリケーションがデプロイされているので、https://www.yourcustomdomain.com から参照できます。
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

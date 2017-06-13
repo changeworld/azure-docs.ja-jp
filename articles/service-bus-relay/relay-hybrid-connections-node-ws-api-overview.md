@@ -3,7 +3,7 @@ title: "Azure Relay ノード API の概要 | Microsoft Docs"
 description: "Relay ノード API の概要"
 services: service-bus-relay
 documentationcenter: na
-author: jtaubensee
+author: sethmanheim
 manager: timlt
 editor: 
 ms.assetid: b7d6e822-7c32-4cb5-a4b8-df7d009bdc85
@@ -13,10 +13,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/23/2017
-ms.author: jotaub
-translationtype: Human Translation
+ms.author: sethm
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
 ms.openlocfilehash: 74e020992f5d841d9692dee2cb0bea97a9f27f8e
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/27/2017
 
 ---

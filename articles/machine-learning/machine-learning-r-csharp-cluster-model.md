@@ -1,11 +1,27 @@
 ---
-
-ROBOTS: NOINDEX, NOFOLLOW
+title: "(非推奨) クラスター モデル - Azure | Microsoft Docs"
+description: "(非推奨) クラスター モデル"
+services: machine-learning
+documentationcenter: 
+author: FrancescaLazzeri
+manager: jhubbard
+editor: cgronlun
+ms.assetid: 51b8d012-ed44-4312-920c-9c808dfd4ff6
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 01/06/2017
+ms.author: lazzeri
+ROBOTS: NOINDEX
 redirect_url: https://gallery.cortanaintelligence.com/
-translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 2a38334c417de12d0284587fef238f6ef96a9a6f
-ms.lasthandoff: 05/03/2017
+redirect_document_id: TRUE
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
+ms.openlocfilehash: 84c94b83878f851c2ac281fe33afe53e02f8456c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/11/2017
 
 
 ---
@@ -14,15 +30,15 @@ ms.lasthandoff: 05/03/2017
 > [!NOTE]
 > Microsoft DataMarket は間もなく提供終了となる予定です。この API は推奨されていません。 
 > 
-> [Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com)では、便利なサンプル実験や API が多数提供されています。 ギャラリーについて詳しくは、「 [Cortana Intelligence ギャラリーでリソースを共有および発見する](machine-learning-gallery-how-to-use-contribute-publish.md)」をご覧ください。
+> [Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com)では、便利なサンプル実験や API が提供されています。 ギャラリーについて詳しくは、「 [Cortana Intelligence ギャラリーでリソースを共有および発見する](machine-learning-gallery-how-to-use-contribute-publish.md)」をご覧ください。
 
 クレジット カード発行者の償却リスクを軽減するために、クレジット カード所有者グループの行動を予測することはできますか。 職場でのパフォーマンスを向上させるために、従業員の性格特性グループを定義することができますか。 医師が、病気の特性に基づいて患者をグループに分類できますか。 原則として、こうした質問はすべて、クラスター分析によって回答できます。   
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-クラスター分析は、変数の組み合わせに基づいて、一連の観察を 2 つ以上の相互に排他的な未知のグループに分類します。 クラスター分析の目的は、観察 (通常は人々やその特性に対する観察) をグループに整理する方法を発見することです。グループのメンバーは、通常、プロパティを共有しています。 この[サービス](https://datamarket.azure.com/dataset/aml_labs/k_cluster_model)は、一般的に使用されるクラスタリング手法である K 平均法を使用して、任意のデータをグループに分類します。 この Web サービスは、入力としてデータとクラスターの数 k を取得し、各観察がどの k グループに属するかの予測を生成します。 
+クラスター分析は、変数の組み合わせに基づいて、一連の観察を&2; つ以上の相互に排他的な未知のグループに分類します。 クラスター分析の目的は、観察 (通常は人々やその特性に対する観察) をグループに整理する方法を発見することです。グループのメンバーは、通常、プロパティを共有しています。 この[サービス](https://datamarket.azure.com/dataset/aml_labs/k_cluster_model)は、一般的に使用されるクラスタリング手法である K 平均法を使用して、任意のデータをグループに分類します。 この Web サービスは、入力としてデータとクラスターの数 k を取得し、各観察がどの k グループに属するかの予測を生成します。 
 
-> この Web サービスは、モバイル アプリ、Web サイト、ローカル コンピューターなどからユーザーが使用できます。 この Web サービスのもう 1 つの目的は、Azure Machine Learning を使用して R コード上に Web サービスを作成する方法の例を示すことです。 数行の R コードを記述し、Azure Machine Learning Studio 内でボタンを何回かクリックするだけで、R コードで実験を作成し、Web サービスとして発行できます。 この Web サービスは Azure Marketplace に発行され、Web サービスの作成者がインフラストラクチャを設定することなく、世界中のユーザーやデバイスで使用されます。  
+> この Web サービスは、モバイル アプリ、Web サイト、ローカル コンピューターなどからユーザーが使用できます。 この Web サービスのもう&1; つの目的は、Azure Machine Learning を使用して R コード上に Web サービスを作成する方法の例を示すことです。 数行の R コードを記述し、Azure Machine Learning Studio 内でボタンを何回かクリックするだけで、R コードで実験を作成し、Web サービスとして発行できます。 この Web サービスは Azure Marketplace に発行され、Web サービスの作成者がインフラストラクチャを設定することなく、世界中のユーザーやデバイスで使用されます。  
 > 
 > 
 
@@ -75,7 +91,7 @@ ms.lasthandoff: 05/03/2017
 > 
 > 
 
-Azure Machine Learning 内で、新しい空白の実験が作成され、ワークスペース上に 2 つの [R スクリプトの実行][execute-r-script] を取得しました。 データ スキーマは、単純な [R スクリプトの実行][execute-r-script] で作成されました。 次にそのデータ スキーマがクラスター モデル セクションにリンクされ、[R スクリプト実行][execute-r-script] をやり直して作成されました。 クラスター モデルに使用された [R スクリプトの実行][execute-r-script] では、Web サービスは "k-means" 関数を使用します。この関数は、Azure Machine Learning の [R スクリプト実行][execute-r-script] に事前に組み込まれています。    
+Azure Machine Learning 内で、新しい空白の実験が作成され、ワークスペース上に&2; つの [R スクリプトの実行][execute-r-script] を取得しました。 データ スキーマは、単純な [R スクリプトの実行][execute-r-script] で作成されました。 次にそのデータ スキーマがクラスター モデル セクションにリンクされ、[R スクリプト実行][execute-r-script] をやり直して作成されました。 クラスター モデルに使用された [R スクリプトの実行][execute-r-script] では、Web サービスは "k-means" 関数を使用します。この関数は、Azure Machine Learning の [R スクリプト実行][execute-r-script] に事前に組み込まれています。    
 
 ![実験フロー][3]
 

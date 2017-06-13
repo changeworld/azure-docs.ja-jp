@@ -2,8 +2,7 @@
 ## [Data Lake Analytics とは](data-lake-analytics-overview.md)
 
 # 作業開始
-## [対話式チュートリアル: Web サイト ログを分析する](data-lake-analytics-use-interactive-tutorials.md)
-## [Azure Portal](data-lake-analytics-get-started-portal.md)
+## [Azure ポータル](data-lake-analytics-get-started-portal.md)
 ## [PowerShell](data-lake-analytics-get-started-powershell.md)
 ## [.NET SDK](data-lake-analytics-get-started-net-sdk.md)
 ## [Java SDK](data-lake-analytics-get-started-java-sdk.md)
@@ -27,6 +26,8 @@
 
 ## ソリューションを作成する
 ### [Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)
+### [対話式チュートリアル: Web サイト ログを分析する](data-lake-analytics-use-interactive-tutorials.md)
+
 
 ## 管理
 ### [Azure Portal](data-lake-analytics-manage-use-portal.md)

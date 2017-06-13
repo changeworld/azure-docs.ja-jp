@@ -9,10 +9,11 @@ ms.technology: speech
 ms.topic: article
 ms.date: 12/09/2016
 ms.author: prrajan
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 4b76e18dd34f02ae76ae636c0b9901e480aeb5ba
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: a79a1453eac1d495df2f1e5055358ca72fbce690
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 ---
 
@@ -36,7 +37,7 @@ Before creating the example, you must subscribe to Speech API which is part of C
 
 Create an Android application project to implement use of the Speech Recognition API
 
-1.    Open Android Studio.
+1.    Open Android Studio.Import build.gradle package under samples/SpeechRecoExample.
 2.    Paste your subscription key into the **primaryKey** string in the **..\samples\SpeechRecoExample\res\values** folder. 
     
     >[!NOTE]

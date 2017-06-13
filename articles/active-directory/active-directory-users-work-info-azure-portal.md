@@ -1,5 +1,6 @@
 ---
-title: "Azure Active Directory プレビューでユーザーの勤務先情報を追加または変更する | Microsoft Docs"
+
+title: "Azure Active Directory でユーザーの勤務情報を追加または変更する | Microsoft Docs"
 description: "Azure Active Directory で、電話番号や部門名など、ユーザーの勤務先情報を追加する方法について説明します。"
 services: active-directory
 documentationcenter: 
@@ -12,17 +13,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2017
+ms.date: 05/04/2017
 ms.author: curtand;jeffsta
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b344136bdcfba22416933ced9a91ef2a82082d11
-ms.lasthandoff: 11/17/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: a7197ed0f08d38bb604641115a424b98ba5b5908
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="add-or-change-work-information-for-a-user-in-azure-active-directory-preview"></a>Azure Active Directory プレビューでユーザーの勤務先情報を追加または変更する
-この記事では、Azure Active Directory (Azure AD) プレビューでユーザーの勤務先情報 (電話番号や部門名など) を追加または変更する方法について説明します。 [プレビューの機能については、こちらの記事をご覧ください。](active-directory-preview-explainer.md) 組織内の新しいユーザーの追加については、[Azure Active Directory への新しいユーザーの追加](active-directory-users-create-external-azure-portal.md)に関する記事をご覧ください。
+# <a name="add-or-change-work-information-for-a-user-in-azure-active-directory"></a>Azure Active Directory でユーザーの勤務先情報を追加または変更する
+この記事では、Azure Active Directory (Azure AD) でユーザーの勤務先情報 (電話番号や部門名など) を追加または変更する方法について説明します。 組織内の新しいユーザーの追加については、[Azure Active Directory への新しいユーザーの追加](active-directory-users-create-external-azure-portal.md)に関する記事をご覧ください。
 
 ## <a name="to-change-work-information"></a>勤務先情報の変更
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
@@ -39,9 +41,9 @@ ms.lasthandoff: 11/17/2016
 6. 勤務先情報を追加または変更します。 コマンド バーで、**[保存]**を選択します。
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure Active Directory プレビューに新しいユーザーを追加する](active-directory-users-create-azure-portal.md)
-* [Azure Active Directory プレビューでのユーザー パスワードのリセット](active-directory-users-reset-password-azure-portal.md)
-* [Azure Active Directory プレビューでユーザーを管理者ロールに割り当てる](active-directory-users-assign-role-azure-portal.md)
-* [Azure Active Directory プレビューでユーザーのプロファイル情報を追加または変更する](active-directory-users-profile-azure-portal.md)
-* [Azure Active Directory プレビューでディレクトリからユーザーを削除する](active-directory-users-delete-user-azure-portal.md)
+* [Azure Active Directory に新しいユーザーを追加する](active-directory-users-create-azure-portal.md)
+* [Azure Active Directory でのユーザー パスワードのリセット](active-directory-users-reset-password-azure-portal.md)
+* [Azure Active Directory でユーザーを管理者ロールに割り当てる](active-directory-users-assign-role-azure-portal.md)
+* [Azure Active Directory でユーザーのプロファイル情報を追加または変更する](active-directory-users-profile-azure-portal.md)
+* [Azure Active Directory でディレクトリからユーザーを削除する](active-directory-users-delete-user-azure-portal.md)
 

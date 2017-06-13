@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/29/2017
+ms.date: 05/20/2017
 ms.author: TomSh
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 931105183156efc958d4daef50a6858ea36ea3bb
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
+ms.openlocfilehash: 616a29b3f7db817e63a3a3673b845cc86752af77
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/23/2017
 
 
 ---
@@ -26,7 +27,7 @@ Azure ログ統合と、その主な機能およびしくみについて紹介�
 
 ## <a name="overview"></a>概要
 
-Azure ログ統合は無料のソリューションで、未加工のログを、Azure リソースからオンプレミスのセキュリティ情報/イベント管理 (SIEM) システムに統合できるようにします。 
+Azure ログ統合は無料のソリューションで、未加工のログを、Azure リソースからオンプレミスのセキュリティ情報/イベント管理 (SIEM) システムに統合できるようにします。
 
 Azure ログ統合では、Windows イベント ビューアー チャネルからの Windows イベント、[Azure アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)、[Azure Security Center アラート](../security-center/security-center-intro.md)、および Azure リソースからの [Azure 診断ログ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)を収集します。 この統合は、SIEM ソリューションですべての資産についてのオンプレミスまたはクラウドの統合ダッシュボードを提供する助けとなります。これによりセキュリティ イベントの集計、関連付け、分析を実行し、アラートを生成できます。
 
@@ -48,7 +49,7 @@ Azure サービスでは、すべてのサービスの広範なログ記録を�
 
 | ログのタイプ  |JSON (Splunk、ELK) をサポートする Log Analytics| ArcSight  | QRadar  |   
 |---|---|---|---|
-|  AAD 監査ログ |  ○ | FlexConnector JSON パーサー ファイルの作成が必要です。 詳しくは、ArcSight のドキュメントをご覧ください。  |  ログ ソース拡張機能を作成する必要があります。 詳しくは、QRadar のドキュメントをご覧ください。 |  
+|  AAD 監査ログ |  あり | FlexConnector JSON パーサー ファイルの作成が必要です。 詳しくは、ArcSight のドキュメントをご覧ください。  |  ログ ソース拡張機能を作成する必要があります。 詳しくは、QRadar のドキュメントをご覧ください。 |  
 | アクティビティ ログ  | はい  |  ダウンロード センターおよび Azure ログ統合ダウンロードで入手可能な FlexConnector JSON パーサー ファイル |  [QRadar DSM](https://www.ibm.com/support/knowledgecenter/SSKMKU/com.ibm.dsm.doc/c_dsm_guide_microsoft_azure_overview.html) (Syslog 経由で送信) |  
 | ASC アラート  | はい  |  FlexConnector JSON パーサー ファイルの作成が必要です。 詳しくは、ArcSight のドキュメントをご覧ください。 | [QRadar DSM](https://www.ibm.com/support/knowledgecenter/SSKMKU/com.ibm.dsm.doc/c_dsm_guide_microsoft_azure_overview.html) (Syslog 経由で送信)   |   
 | 診断ログ (リソース ログ) | はい | エンド ユーザーは FlexConnector JSON パーサー ファイルを作成する必要があります。 方法については ArcSight のドキュメントをご覧ください。 | ログ ソース拡張機能を作成する必要があります。 詳しくは、QRadar のドキュメントをご覧ください。 |
@@ -57,7 +58,7 @@ Azure サービスでは、すべてのサービスの広範なログ記録を�
 >[!NOTE]
 Azure ログの統合は無料のソリューションですが、ログ ファイル情報の保存によって Azure Storage のコストが発生します。
 
-[Azure ログ統合に関する MSDN フォーラム](https://social.msdn.microsoft.com/Forums/office/home?forum=AzureLogIntegration)を通して、コミュニティの支援を受けることができます。 このフォーラムでは、AzLog コミュニティに、Azure ログ統合を最大限に活用する方法についての質問、回答、ヒント、およびコツによる相互サポート機能を提供しています。 さらに、Azure ログ統合チームがこのフォーラムを監視しており、可能なときにはいつでも支援を提供します。 
+[Azure ログ統合に関する MSDN フォーラム](https://social.msdn.microsoft.com/Forums/office/home?forum=AzureLogIntegration)を通して、コミュニティの支援を受けることができます。 このフォーラムでは、AzLog コミュニティに、Azure ログ統合を最大限に活用する方法についての質問、回答、ヒント、およびコツによる相互サポート機能を提供しています。 さらに、Azure ログ統合チームがこのフォーラムを監視しており、可能なときにはいつでも支援を提供します。
 
 [サポート要求](../azure-supportability/how-to-create-azure-support-request.md)を出すこともできます。 これを行うには、サポートを依頼しようとしているサービスとして **[ログ統合]** を選択します。
 

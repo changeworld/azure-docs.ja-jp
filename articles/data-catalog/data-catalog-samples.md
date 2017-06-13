@@ -13,12 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 05/03/2017
+ms.date: 05/05/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2e84eb020b46fe89426e547b389715d6190fc03c
-ms.lasthandoff: 11/17/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 0c76287232e578df695f73e5d9792ee457266db9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -27,14 +28,18 @@ Data Catalog REST API を使用して Data Catalog アプリの開発を開始�
 
 GitHub に以下のサンプルがあります。
 
-* [Azure Data Catalog の概要](https://azure.microsoft.com/documentation/samples/data-catalog-dotnet-get-started/)
+* [Azure Data Catalog の概要](https://azure.microsoft.com/resources/samples/data-catalog-dotnet-get-started/)
   
   Data Catalog REST API を使用してデータ資産を登録、検索、および削除するために Azure AD で認証を行う方法を示すサンプルです。
-* [一括登録および注釈付け](https://azure.microsoft.com/documentation/samples/data-catalog-dotnet-excel-register-data-assets/)
+* [一括登録および注釈付け](https://azure.microsoft.com/resources/samples/data-catalog-dotnet-excel-register-data-assets/)
   
   Data Catalog REST API と Open XML を使用して、Excel ブックからデータ資産を一括で登録する方法を示すサンプルです。
-* [Import/Export ツール](https://azure.microsoft.com/documentation/samples/data-catalog-dotnet-import-export/)
+* [Import/Export ツール](https://azure.microsoft.com/resources/samples/data-catalog-dotnet-import-export/)
   
   Data Catalog REST API を使用して Azure Data Catalog からアセットを取得し、ファイルにシリアル化する方法を示すサンプルです。 また、JSON としてシリアル化されたアセットのセットを取得して、それらをカタログにプッシュする方法も示します。 検索クエリを使用したカタログのサブセットのエクスポートをサポートします。
+
+* [一括インポート用語集の用語](https://azure.microsoft.com/resources/samples/data-catalog-bulk-import-glossary/)
+
+    このサンプルでは、CSV ファイルから ADC 用語集に用語集の用語をインポートする方法を示します。
 
 

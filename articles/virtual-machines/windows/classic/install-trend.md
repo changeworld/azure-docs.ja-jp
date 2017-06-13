@@ -15,9 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: iainfou
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: e2ccb78da419b12a9845d720efb5b0229d4f455b
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/27/2017
 
 
@@ -35,8 +36,6 @@ ms.lasthandoff: 04/27/2017
 Trend Micro のオンプレミスのソリューション用サブスクリプションが既にある場合は、それを使用して Azure の仮想マシンを保護できます。 サブスクリプションがない場合には、サインアップして試用サブスクリプションを利用できます。 このソリューションの詳細については、Trend Micro ブログの Deep Security 用の [Microsoft Azure VM エージェント拡張機能](http://go.microsoft.com/fwlink/p/?LinkId=403945)に関する投稿を参照してください。
 
 ## <a name="install-the-deep-security-agent-on-a-new-vm"></a>新しい VM に Deep Security Agent をインストールする
-
-<!-- old portal [Azure classic portal](http://manage.windowsazure.com) -->
 
 [Azure ポータル](http://portal.azure.com) を使用すると、**Marketplace** のイメージを使用して仮想マシンを作成するときに、Trend Micro のセキュリティ拡張機能をインストールできます。 仮想マシンを 1 つだけ作成する場合には、この方法が Trend Micro の保護機能を追加する最も簡単な方法です。
 

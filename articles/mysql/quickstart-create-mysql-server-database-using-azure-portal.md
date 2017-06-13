@@ -12,6 +12,7 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: portal
 ms.date: 05/10/2017
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
 ms.openlocfilehash: 85bb0396809297f0efb7323bef081055f17ede62

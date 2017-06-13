@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 05/02/2017
 ms.author: glenga
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 1478a2eedad496d3113fef28920d10859d11b1ce
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: f35f693131bd1f4f47b161afb0a4f38d4f00bbd6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/12/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -47,18 +47,20 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-timer-triggered-function"></a>タイマーによってトリガーされる関数の作成
 
-1. Function App を展開し、**[関数]** の横にある **[+]** ボタンをクリックし、使用する言語の **TimerTrigger** テンプレートをクリックします。 テーブルに指定されている設定を使用して、**[作成]** をクリックします。
+1. Function App を展開し、**[関数]** の横にある **[+]** ボタンをクリックし、使用する言語の **TimerTrigger** テンプレートをクリックします。 次の表で指定されている設定を使用してください。
 
-| 設定 | 推奨値 | 説明 |
-|---|---|---|
-| **関数名の指定** | TimerTriggerCSharp1 | タイマーによってトリガーされる関数の名前を定義します。 |
-| **[スケジュール](http://en.wikipedia.org/wiki/Cron#CRON_expression)** | 0 \*/1 \* \* \* \* | 関数を毎分実行するようにスケジュールする 6 つのフィールドの [CRON 式](http://en.wikipedia.org/wiki/Cron#CRON_expression)。 |
+    ![タイマーによってトリガーされる関数を Azure Portal で作成する。](./media/functions-create-scheduled-function/functions-create-timer-trigger.png)
 
-選択した言語で、毎分実行する関数が作成されます。
+    | 設定 | 推奨値 | 説明 |
+    |---|---|---|
+    | **関数名の指定** | TimerTriggerCSharp1 | タイマーによってトリガーされる関数の名前を定義します。 |
+    | **[スケジュール](http://en.wikipedia.org/wiki/Cron#CRON_expression)** | 0 \*/1 \* \* \* \* | 関数を毎分実行するようにスケジュールする 6 つのフィールドの [CRON 式](http://en.wikipedia.org/wiki/Cron#CRON_expression)。 |
 
-1. ログに書き込まれたトレース情報を表示して、実行を確認します。
+2. ページの下部にある **[Create]**」を参照してください。 選択した言語で、毎分実行する関数が作成されます。
 
-![Azure Portal の関数ログ ビューアー。](./media/functions-create-scheduled-function/functions-timer-trigger-view-logs2.png)
+3. ログに書き込まれたトレース情報を表示して、実行を確認します。
+
+    ![Azure Portal の関数ログ ビューアー。](./media/functions-create-scheduled-function/functions-timer-trigger-view-logs2.png)
 
 ここで、1 時間ごとなど、少ない頻度で実行するように、関数のスケジュールを変更できます。 
 

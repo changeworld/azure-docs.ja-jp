@@ -7,16 +7,17 @@ manager: jhubbard
 author: ddove
 ms.assetid: 204fd902-0397-4185-985a-dea3ed7c7d9f
 ms.service: sql-database
-ms.custom: multiple databases
+ms.custom: scale out apps
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
 ms.openlocfilehash: b2e45a77b900092390a2ca66a8d1286193023f29
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/13/2017
 
 
@@ -62,7 +63,7 @@ Split-Merge ツールは、Azure Web サービスとして実行されます。 
 
 Split-Merge は、お客様側でホストされるサービスとして提供されます。 このサービスは、Microsoft Azure サブスクリプション内でデプロイし、ホストする必要があります。 NuGet からダウンロードするパッケージには構成テンプレートが含まれていて、これに特定のデプロイの情報を入力します。 詳細については、「 [Elastic Scale の分割とマージ サービス チュートリアル](sql-database-elastic-scale-configure-deploy-split-and-merge.md) 」を参照してください。 このサービスは Azure サブスクリプション内で実行されるため、サービスのセキュリティに関するほとんどの側面を制御および構成できます。 既定のテンプレートには、SSL、証明書ベースのクライアント認証、保存された資格情報の暗号化、DoS 対策、IP 制限を構成するためのオプションが含まれています。 セキュリティの側面については、「 [Elastic Scale のセキュリティの構成](sql-database-elastic-scale-split-merge-security-configuration.md)」を参照してください。
 
-既定では、デプロイされたサービスは、1 つの worker ロールと&1; つの Web ロールを使用して実行されます。 それぞれは、Azure Cloud Services の A1 VM サイズを使用します。 これらの設定は、パッケージをデプロイするときに変更することはできませんが、実行中のクラウド サービスへのデプロイが成功した後に (Azure ポータルを通じて) 変更することができます。 技術的な理由により、複数のインスタンスに worker ロールを構成しないでください。 
+既定では、デプロイされたサービスは、1 つの worker ロールと 1 つの Web ロールを使用して実行されます。 それぞれは、Azure Cloud Services の A1 VM サイズを使用します。 これらの設定は、パッケージをデプロイするときに変更することはできませんが、実行中のクラウド サービスへのデプロイが成功した後に (Azure ポータルを通じて) 変更することができます。 技術的な理由により、複数のインスタンスに worker ロールを構成しないでください。 
 
 **シャード マップの統合**
 
@@ -74,7 +75,7 @@ Split-Merge サービスは、アプリケーションのシャード マップ�
 
 **シャードレットの可用性の管理**
 
-前述のように、接続の強制終了をシャードレットの現在のバッチに制限すると、使用不可能となるシャードレットのスコープが一度に&1; つのバッチに限定されます。 これは、分割/マージ操作の進行中にすべてのシャードレットに対してシャード全体がオフラインになるような方法よりも好ましいアプローチです。 一度に移動する個別のシャードレットの数として定義されるバッチのサイズは、1 つの構成パラメーターです。 これは、アプリケーションの可用性とパフォーマンスのニーズに応じて分割/マージ操作ごとに定義できます。 シャード マップでロックされている範囲は、指定されたバッチ サイズよりも大きくなる場合があります。 これは、サービスによって、データ内のシャーディング キー値の実際の数がバッチ サイズとほぼ一致するように範囲のサイズが選択されるためです。 これは、シャーディング キー値の数がスパースな場合に関して特に覚えておく必要があります。 
+前述のように、接続の強制終了をシャードレットの現在のバッチに制限すると、使用不可能となるシャードレットのスコープが一度に 1 つのバッチに限定されます。 これは、分割/マージ操作の進行中にすべてのシャードレットに対してシャード全体がオフラインになるような方法よりも好ましいアプローチです。 一度に移動する個別のシャードレットの数として定義されるバッチのサイズは、1 つの構成パラメーターです。 これは、アプリケーションの可用性とパフォーマンスのニーズに応じて分割/マージ操作ごとに定義できます。 シャード マップでロックされている範囲は、指定されたバッチ サイズよりも大きくなる場合があります。 これは、サービスによって、データ内のシャーディング キー値の実際の数がバッチ サイズとほぼ一致するように範囲のサイズが選択されるためです。 これは、シャーディング キー値の数がスパースな場合に関して特に覚えておく必要があります。 
 
 **メタデータのストレージ**
 
@@ -151,7 +152,7 @@ Split-Merge サービスでは、完了した要求と実行中の要求を監�
 * **詳細**: 詳細な進捗状況レポートを提供する XML 値。 行のセットがソースからターゲットにコピーされるときに、進捗状況レポートが定期的に更新されます。 エラーまたは例外が発生した場合、この列にはエラーに関するより詳細な情報も含まれます。
 
 ### <a name="azure-diagnostics"></a>Azure 診断
-Split-Merge サービスは、監視と診断を行うために Azure SDK 2.5 に基づく Azure 診断を使用します。 「 [Azure Cloud Services および Virtual Machines の診断機能](../cloud-services/cloud-services-dotnet-diagnostics.md)」で説明したように、診断構成を制御します。 ダウンロード パッケージには、Web ロール用と worker ロール用の&2; つの診断構成が含まれています。 サービスのこれらの診断構成は、「 [Microsoft Azure のクラウド サービスの基礎](https://code.msdn.microsoft.com/windowsazure/Cloud-Service-Fundamentals-4ca72649)」のガイダンスに従っています。 これには、パフォーマンス カウンター、IIS ログ、Windows イベント ログ、および Split-Merge アプリケーション イベント ログを記録するための定義が含まれます。 
+Split-Merge サービスは、監視と診断を行うために Azure SDK 2.5 に基づく Azure 診断を使用します。 「 [Azure Cloud Services および Virtual Machines の診断機能](../cloud-services/cloud-services-dotnet-diagnostics.md)」で説明したように、診断構成を制御します。 ダウンロード パッケージには、Web ロール用と worker ロール用の 2 つの診断構成が含まれています。 サービスのこれらの診断構成は、「 [Microsoft Azure のクラウド サービスの基礎](https://code.msdn.microsoft.com/windowsazure/Cloud-Service-Fundamentals-4ca72649)」のガイダンスに従っています。 これには、パフォーマンス カウンター、IIS ログ、Windows イベント ログ、および Split-Merge アプリケーション イベント ログを記録するための定義が含まれます。 
 
 ## <a name="deploy-diagnostics"></a>診断のデプロイ
 NuGet パッケージで提供される Web ロール用と worker ロール用の診断構成を使用して、監視と診断を有効にするには、Azure PowerShell を使用して次のコマンドを実行します。 

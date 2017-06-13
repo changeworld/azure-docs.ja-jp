@@ -342,7 +342,7 @@ Azure Portal の仮想ネットワークの下で、セカンダリ ドメイン
 4. **[プリンシパルの選択]** をクリックし、**CORP\Install** を検索して、**[OK]** をクリックします。
 5. **[すべてのプロパティの読み取り]** チェック ボックスをオンにします。
 
-6. **[Create Computer objects] (コンピューター オブジェクトの作成)** チェック ボックスをオンにします。
+6. **[Create Computer objects] \(コンピューター オブジェクトの作成)** チェック ボックスをオンにします。
 
      ![corp のユーザーのアクセス許可](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/33-addpermissions.png)
 7. **[OK]** をクリックし、もう一度 **[OK]** をクリックします。 **corp** のプロパティ ウィンドウを閉じます。

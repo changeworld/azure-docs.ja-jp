@@ -14,11 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: onewth
-ROBOTS: NOINDEX, NOFOLLOW
+ROBOTS: NOINDEX
 redirect_url: ../cognitive-services/cognitive-services-text-analytics-quick-start
-translationtype: Human Translation
+redirect_document_id: TRUE
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: f4389705a81b531bd706cbabc0b4c3b171febd5f
+ms.contentlocale: ja-jp
 ms.lasthandoff: 11/17/2016
 
 

@@ -15,9 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2017
 ms.author: iainfou
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
 ms.openlocfilehash: 7cf2c0a9e5e7785397a7229e3b44e9dbcc26f429
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/27/2017
 
 
@@ -55,6 +56,4 @@ ms.lasthandoff: 03/27/2017
 [MongoDB]: http://www.mongodb.org/
 [AzurePortal]: https://portal.azure.com/
 
-<!-- Classic portal. Removed 03/07/2017 -->
-<!-- [AzurePortal]: http://manage.windowsazure.com  -->
 

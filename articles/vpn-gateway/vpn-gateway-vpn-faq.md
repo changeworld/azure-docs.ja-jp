@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/04/2017
-ms.author: cherylmc
+ms.date: 05/30/2017
+ms.author: cherylmc,yushwang
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: d8f69793e9ed71137adcf4ee1e6ac3e4ccb49456
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 3627b3dfa5067883625b9a714645164ec99c8a51
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -195,6 +195,11 @@ Windows Server 2012 ルーティングとリモート アクセス (RRAS) サー
 ### <a name="can-i-connect-a-virtual-network-with-ipsec-vpns-to-my-expressroute-circuit"></a>IPsec VPN を使用している仮想ネットワークを自社の ExpressRoute 回線に接続できますか。
 
 はい、これはサポートされています。 詳細については、 [共存する ExpressRoute とサイト間 VPN の接続の構成](../expressroute/expressroute-howto-coexist-classic.md)を参照してください。
+
+## <a name="ipsecike-policy"></a>IPsec/IKE ポリシー
+
+[!INCLUDE [vpn-gateway-ipsecikepolicy-faq-include](../../includes/vpn-gateway-ipsecikepolicy-faq-include.md)]
+
 
 ## <a name="bgp"></a>BGP
 

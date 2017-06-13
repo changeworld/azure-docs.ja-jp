@@ -7,16 +7,17 @@ manager: jhubbard
 author: torsteng
 ms.assetid: f86eccb8-6323-4ba7-8559-8a7c039049f3
 ms.service: sql-database
-ms.custom: multiple databases
+ms.custom: scale out apps
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 430fed27780076738e319dabca4cc9abaed70691
 ms.openlocfilehash: c43b34124fd0ccdbe03ce3d336388cbd3b77ad9a
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/22/2017
 
 
@@ -150,7 +151,7 @@ DISTRIBUTION 句は、このテーブルに使用するデータ分散を指定�
 外部データ ソースと外部テーブルを定義すると、外部テーブルに対して完全に T-SQL を使用できるようになります。
 
 ## <a name="example-querying-horizontal-partitioned-databases"></a>例: 行方向にパーティション分割されたデータベースのクエリ
-次のクエリでは、倉庫、注文、および注文明細行の間で&3; 方向結合を実行し、いくつかの集計と選択的フィルターを使用します。 ここでは、(1) 行方向のパーティション分割 (シャーディング) のほか、(2) 倉庫、注文、および注文明細行が倉庫の ID 列でシャード化されること、エラスティック クエリがシャード上の結合を併置できること、クエリの負荷の高い部分をシャード上で並列に処理できることを想定しています。 
+次のクエリでは、倉庫、注文、および注文明細行の間で 3 方向結合を実行し、いくつかの集計と選択的フィルターを使用します。 ここでは、(1) 行方向のパーティション分割 (シャーディング) のほか、(2) 倉庫、注文、および注文明細行が倉庫の ID 列でシャード化されること、エラスティック クエリがシャード上の結合を併置できること、クエリの負荷の高い部分をシャード上で並列に処理できることを想定しています。 
 
     select  
          w_id as warehouse,

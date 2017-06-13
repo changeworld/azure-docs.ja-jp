@@ -1,5 +1,6 @@
 # 概要
 ## [Azure Analysis Services とは](analysis-services-overview.md)
+## [サポートされるデータ ソース](analysis-services-datasource.md)
 
 # クイック スタート
 ## [サーバーの作成 - ポータル](analysis-services-create-server.md)
@@ -17,7 +18,7 @@
 ### [レッスン 6: メジャーを作成する](tutorials/aas-lesson-6-create-measures.md)  
 ### [レッスン 7: 主要業績評価指標を作成する](tutorials/aas-lesson-7-create-key-performance-indicators.md)  
 ### [レッスン 8: パースペクティブを作成する](tutorials/aas-lesson-8-create-perspectives.md) 
-### [レッスン 9: 階層を作成する](tutorials/aas-lesson-9-create-hierarchies.md)  
+### [レッスン 9: 階層を作成する](tutorials/aas-lesson-9-create-hierarchies.md) 
 ### [レッスン 10: パーティションを作成する](tutorials/aas-lesson-10-create-partitions.md) 
 ### [レッスン 11: ロールを作成する](tutorials/aas-lesson-11-create-roles.md)
 ### [レッスン 12: Excel で分析する](tutorials/aas-lesson-12-analyze-in-excel.md)
@@ -36,7 +37,6 @@
 ## [クライアント ライブラリの取得](analysis-services-data-providers.md)
 ## [バックアップと復元](analysis-services-backup.md)
 ## [高可用性](analysis-services-bcdr.md)
-## [データ ソースの接続](analysis-services-datasource.md)
 ## [.odc ファイルの作成](analysis-services-odc.md)
 
 # リファレンス
