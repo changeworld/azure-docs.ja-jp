@@ -1,6 +1,6 @@
 ---
-title: "Azure SQL Database のバックアップから&1; つのテーブルを復元する | Microsoft Docs"
-description: "Azure SQL Database のバックアップから&1; つのテーブルを復元する方法を説明します。"
+title: "Azure SQL Database のバックアップから 1 つのテーブルを復元する | Microsoft Docs"
+description: "Azure SQL Database のバックアップから 1 つのテーブルを復元する方法を説明します。"
 services: sql-database
 documentationcenter: 
 author: dalechen
@@ -23,8 +23,8 @@ ms.lasthandoff: 01/19/2017
 
 
 ---
-# <a name="how-to-restore-a-single-table-from-an-azure-sql-database-backup"></a>Azure SQL Database のバックアップから&1; つのテーブルを復元する方法
-SQL Database のデータを誤って変更してしまい、影響を受けた&1; つのテーブルを回復することが必要になる場合があります。 この記事では、SQL Database [自動バックアップ](sql-database-automated-backups.md)のいずれかからデータベース内の&1; つのテーブルを復元する方法を説明します。
+# <a name="how-to-restore-a-single-table-from-an-azure-sql-database-backup"></a>Azure SQL Database のバックアップから 1 つのテーブルを復元する方法
+SQL Database のデータを誤って変更してしまい、影響を受けた 1 つのテーブルを回復することが必要になる場合があります。 この記事では、SQL Database [自動バックアップ](sql-database-automated-backups.md)のいずれかからデータベース内の 1 つのテーブルを復元する方法を説明します。
 
 ## <a name="preparation-steps-rename-the-table-and-restore-a-copy-of-the-database"></a>準備手順: テーブルの名前を変更し、データベースのコピーを復元する
 1. Azure SQL Database で、復元したコピーで置き換えるテーブルを識別します。 テーブルの名前を変更するには、Microsoft SQL Management Studio を使用します。 たとえば、&lt;テーブル名&gt;_old のような名前に変更します。
