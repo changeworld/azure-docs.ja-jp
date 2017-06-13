@@ -12,11 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 01/25/2017
+ms.date: 06/07/2017
 ms.author: bharatn
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: a3b0362f0c3b42e4a61348abe306c3beaa6f0c86
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -126,10 +128,5 @@ var result = calculatorServiceCommunicationClient.InvokeWithRetryAsync(
 * [Reliable Services のリモート処理によるリモート プロシージャ コール](service-fabric-reliable-services-communication-remoting.md)
 * [Reliable Services の OWIN 対応 Web API](service-fabric-reliable-services-communication-webapi.md)
 * [Reliable Services の通信のセキュリティ保護](service-fabric-reliable-services-secure-communication.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
