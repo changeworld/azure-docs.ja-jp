@@ -4,7 +4,7 @@ description: "Azure Backup のパフォーマンスに関する問題の原因�
 services: backup
 documentationcenter: 
 author: genlin
-manager: jimpark
+manager: cshepard
 editor: 
 ms.assetid: e379180a-db13-4e0c-90e4-28e5dd6f5b14
 ms.service: backup
@@ -12,11 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 06/13/2017
 ms.author: genli
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: ac68ae449a03b6d9e77e6093531a47c905654f16
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -87,9 +89,4 @@ Backup エージェントを VM で実行している場合、パフォーマン
 
 * **データ転送の進行状況が UI に表示されている**。 データは依然として転送中です。 ネットワーク帯域幅またはデータ サイズが原因で、遅延が生じている可能性があります。
 * **データ転送の進行状況が UI に表示されていない**。 C:\Microsoft Azure Recovery Services Agent\Temp にあるログを開き、FileProvider::EndData というログ エントリが記録されているかどうかを確認します。 このエントリは、データ転送が完了し、カタログ化の処理が進行中であることを表します。 バックアップ ジョブを取り消さないようにしてください。 そのまま、カタログ化の処理が完了するまでしばらく待ちます。 問題が解決しない場合は、 [Azure サポート](https://portal.azure.com/#create/Microsoft.Support)にお問い合わせください。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

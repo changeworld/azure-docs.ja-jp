@@ -14,11 +14,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 06/13/2017
 ms.author: genli
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
 ms.openlocfilehash: 280fcb04c40921e0184caf7afc044cc2783a10eb
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/31/2017
 
 
