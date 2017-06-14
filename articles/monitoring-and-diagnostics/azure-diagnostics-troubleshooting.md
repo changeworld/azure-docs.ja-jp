@@ -14,9 +14,10 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2017
 ms.author: robb
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
 ms.openlocfilehash: 81f9a5a8e5ce8389c12a40eb02dd554fc140e009
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/22/2017
 
 
@@ -119,14 +120,40 @@ Azure 診断データを保持する Azure Storage 内のテーブルの名前�
 たとえば次のようになります。
 
 ```XML
-        <EtwEventSourceProviderConfiguration provider=”prov1”>
-          <Event id=”1” />
-          <Event id=”2” eventDestination=”dest1” />
+        <EtwEventSourceProviderConfiguration provider="prov1">
+          <Event id="1" />
+          <Event id="2" eventDestination="dest1" />
           <DefaultEvents />
         </EtwEventSourceProviderConfiguration>
-        <EtwEventSourceProviderConfiguration provider=”prov2”>
-          <DefaultEvents eventDestination=”dest2” />
+        <EtwEventSourceProviderConfiguration provider="prov2">
+          <DefaultEvents eventDestination="dest2" />
         </EtwEventSourceProviderConfiguration>
+```
+```JSON
+"EtwEventSourceProviderConfiguration": [
+    {
+        "provider": "prov1",
+        "Event": [
+            {
+                "id": 1
+            },
+            {
+                "id": 2,
+                "eventDestination": "dest1"
+            }
+        ],
+        "DefaultEvents": {
+            "eventDestination": "DefaultEventDestination",
+            "sinks": ""
+        }
+    },
+    {
+        "provider": "prov2",
+        "DefaultEvents": {
+            "eventDestination": "dest2"
+        }
+    }
+]
 ```
 
 4 つのテーブルが生成されます。
