@@ -1,5 +1,5 @@
-﻿---
-title: "StorSimple Virtual Array の障害復旧とデバイス フェールオーバー | Microsoft Docs"
+---
+title: "StorSimple Virtual Array のディザスター リカバリーとデバイス フェールオーバー | Microsoft Docs"
 description: "StorSimple Virtual Array をフェールオーバーする方法の詳細を確認します。"
 services: storsimple
 documentationcenter: NA
@@ -15,22 +15,23 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
 ms.openlocfilehash: 12079f8dbc409afe5acc274fa08bda878c90b76e
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/13/2017
 
 ---
-# <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Azure Portal を介した StorSimple Virtual Array の障害復旧とデバイスのフェールオーバー
+# <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Azure Portal を介した StorSimple Virtual Array のディザスター リカバリーとデバイスのフェールオーバー
 
 ## <a name="overview"></a>概要
-この記事では、Microsoft Azure StorSimple Virtual Array の障害復旧、たとえば、他の仮想アレイへの詳細なフェールオーバー手順について説明します。 フェールオーバーにより、データを、データセンターの "*ソース*" デバイスから "*ターゲット*" デバイスに移動することができます。 ターゲット デバイスは、地理的に同じ場所または別の場所に配置できます。 デバイスのフェールオーバーは、デバイス全体に対して行われます。 フェールオーバーの間、ソース デバイスのクラウド データの所有権はターゲット デバイスに移ります。
+この記事では、Microsoft Azure StorSimple Virtual Array のディザスター リカバリー、たとえば、他の仮想アレイへの詳細なフェールオーバー手順について説明します。 フェールオーバーにより、データを、データセンターの "*ソース*" デバイスから "*ターゲット*" デバイスに移動することができます。 ターゲット デバイスは、地理的に同じ場所または別の場所に配置できます。 デバイスのフェールオーバーは、デバイス全体に対して行われます。 フェールオーバーの間、ソース デバイスのクラウド データの所有権はターゲット デバイスに移ります。
 
 この記事は、StorSimple Virtual Array にのみ適用されます。 8000 シリーズのデバイスのフェールオーバーについては、「[StorSimple デバイスのフェールオーバーと障害復旧](storsimple-device-failover-disaster-recovery.md)」を参照してください。
 
-## <a name="what-is-disaster-recovery-and-device-failover"></a>障害復旧とデバイスのフェールオーバーとは
+## <a name="what-is-disaster-recovery-and-device-failover"></a>ディザスター リカバリーとデバイスのフェールオーバーとは
 
-障害復旧 (DR) シナリオでは、プライマリ デバイスの機能が停止します。 このシナリオでは、障害が発生したデバイスに関連付けられているクラウドのデータを別のデバイスに移動できます。 プライマリ デバイスを "*ソース*" として使用し、別のデバイスを "*ターゲット*" として指定できます。 このプロセスを *フェールオーバー*といいます。 フェールオーバー時には、ソース デバイスのすべてのボリュームまたは共有の所有権がターゲット デバイスに移ります。 データのフィルター処理はできません。
+ディザスター リカバリー (DR) シナリオでは、プライマリ デバイスの機能が停止します。 このシナリオでは、災害が発生したデバイスに関連付けられているクラウドのデータを別のデバイスに移動できます。 プライマリ デバイスを "*ソース*" として使用し、別のデバイスを "*ターゲット*" として指定できます。 このプロセスを *フェールオーバー*といいます。 フェールオーバー時には、ソース デバイスのすべてのボリュームまたは共有の所有権がターゲット デバイスに移ります。 データのフィルター処理はできません。
 
 DR は、ヒート マップをベースとした階層化と追跡を使用して、デバイスの完全な復元としてモデル化されます。 ヒート マップは、読み取りと書き込みのパターンに基づいてデータにヒート値を割り当てることで定義されます。 ヒート マップによって、まずヒート値が最も低いデータ チャンクがクラウドに階層化され、ヒート値が高い (よく使用される) データ チャンクはローカル層に保持されます。 StorSimple は、DR 時にこのヒート マップを使用して、クラウドからデータを復元します。 デバイスが (内部で決められたとおりに) 最新のバックアップ内のボリューム/共有をすべてフェッチし、そのバックアップからの復元を実行します。 全体的な DR プロセスは仮想アレイによって調整されます。
 
@@ -171,7 +172,7 @@ DR が開始された後、デバイスの復元が完了する前にクラウ�
 
 事前チェックのいずれかに問題があると、エラーが表示されます。
 
-## <a name="business-continuity-disaster-recovery-bcdr"></a>ビジネス継続性障害復旧 (BCDR)
+## <a name="business-continuity-disaster-recovery-bcdr"></a>ビジネス継続性ディザスター リカバリー (BCDR)
 
 ビジネス継続性障害復旧 (BCDR) シナリオは、Azure データセンター全体が機能を停止したときに発生します。 このような状況が発生すると、StorSimple デバイス マネージャー サービスと、関連する StorSimple デバイスに影響が及ぶ可能性があります。
 
