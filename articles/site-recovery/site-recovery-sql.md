@@ -1,4 +1,4 @@
----
+﻿---
 title: "SQL Server および Azure Site Recovery を使用したアプリケーションのレプリケート | Microsoft Docs"
 description: "この記事では、SQL Server の災害機能の Azure Site Recovery を使用して、SQL Server をレプリケートする方法について説明します。"
 services: site-recovery

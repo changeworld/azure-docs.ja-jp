@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Event Hubs の FAQ | Microsoft Docs"
 description: "Azure Event Hubs のよく寄せられる質問 (FAQ)"
 services: event-hubs

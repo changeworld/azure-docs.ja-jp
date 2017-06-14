@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Event Hubs の説明と使用する理由 | Microsoft Docs"
 description: "Azure Event Hubs の概要 - Web サイト、アプリ、デバイスからのテレメトリをクラウド規模で収集"
 services: event-hubs

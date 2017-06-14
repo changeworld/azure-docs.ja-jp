@@ -1,4 +1,4 @@
----
+﻿---
 title: "Team Data Science Process ライフサイクル | Microsoft Docs"
 description: "データ サイエンス プロジェクトを構成するための、ライフサイクルのステップとコンポーネントについて説明します。"
 services: machine-learning

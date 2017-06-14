@@ -1,4 +1,4 @@
----
+﻿---
 title: "Flow、Logic Apps、Functions、WebJobs の比較 | Microsoft Docs"
 description: "Microsoft のクラウド統合サービスを比較対照し、使用するサービスの判断に役立てます。"
 services: functions,app-service\logic

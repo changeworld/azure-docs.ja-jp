@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure イベント ハブを作成する | Microsoft Docs"
 description: "Azure Portal を使用して Azure Event Hubs 名前空間とイベント ハブを作成します"
 services: event-hubs

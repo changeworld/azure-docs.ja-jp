@@ -80,7 +80,7 @@ Azure Monitor では、テレメトリを使用して、Azure のワークロー
    ![Azure Monitor の 1 か所ですべてのメトリックにアクセス](./media/monitoring-overview-metrics/MetricsOverview2.png)
 
 > [!NOTE]
-> ホスト レベルのメトリックには、VM (Azure Resource Manager ベース) および仮想マシン スケール セットからアクセスできます。その際、追加の診断設定は不要です。 この新しいホスト レベルのメトリックは、Windows と Linux のインスタンスで使用できます。 VM や仮想マシン スケール セットで Azure 診断をオンにしている場合にアクセスできる、ゲスト OS レベルのメトリックと混同しないでください。 Azure 診断の構成の詳細については、「[What is Microsoft Azure Diagnostics (Microsoft Azure 診断とは)](../azure-diagnostics.md)」を参照してください。
+> ホスト レベルのメトリックには、VM (Azure Resource Manager ベース) および Virtual Machine Scale Sets からアクセスできます。その際、追加の診断設定は不要です。 この新しいホスト レベルのメトリックは、Windows と Linux のインスタンスで使用できます。 VM や Virtual Machine Scale Sets で Azure 診断をオンにしている場合にアクセスできる、ゲスト OS レベルのメトリックと混同しないでください。 Azure 診断の構成の詳細については、「[What is Microsoft Azure Diagnostics (Microsoft Azure 診断とは)](../azure-diagnostics.md)」を参照してください。
 >
 >
 
@@ -113,7 +113,7 @@ Azure Monitor REST API を使用した詳細なチュートリアルについて
  ![Azure Monitor のメトリックとアラート ルール](./media/monitoring-overview-metrics/MetricsOverview4.png)
 
 ### <a name="autoscale-your-azure-resources"></a>Azure リソースの自動スケール
-Azure リソースの中には、複数のインスタンスをスケールアウトまたはスケールインして、ワークロードを処理できるものがあります。 自動スケールは、App Services (Web Apps)、仮想マシン スケール セット、および従来の Azure Cloud Services に適用されます。 ワークロードに影響する特定のメトリックが、指定したしきい値を超えたときにスケールアウトまたはスケールインするように、自動スケール ルールを構成することができます。 詳細については、 [自動スケールの概要](monitoring-overview-autoscale.md)に関するページをご覧ください。
+Azure リソースの中には、複数のインスタンスをスケールアウトまたはスケールインして、ワークロードを処理できるものがあります。 自動スケールは、App Services (Web Apps)、Virtual Machine Scale Sets、および従来の Azure Cloud Services に適用されます。 ワークロードに影響する特定のメトリックが、指定したしきい値を超えたときにスケールアウトまたはスケールインするように、自動スケール ルールを構成することができます。 詳細については、 [自動スケールの概要](monitoring-overview-autoscale.md)に関するページをご覧ください。
 
  ![Azure Monitor のメトリックと自動スケール](./media/monitoring-overview-metrics/MetricsOverview5.png)
 
@@ -121,7 +121,7 @@ Azure リソースの中には、複数のインスタンスをスケールア�
 Azure Monitor は、新しいメトリック インフラストラクチャです。 Azure Portal と、新しいバージョンの Azure Monitor API で、次の Azure サービスをサポートしています。
 
 * VM (Azure Resource Manager ベース)
-* 仮想マシン スケール セット
+* Virtual Machine Scale Sets
 * Batch
 * Event Hubs 名前空間
 * Service Bus 名前空間 (Premium SKU のみ)

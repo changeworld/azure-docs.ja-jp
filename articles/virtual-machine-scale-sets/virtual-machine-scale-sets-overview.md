@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure 仮想マシン スケール セットの概要 | Microsoft Docs"
 description: "Azure 仮想マシン スケール セットについて説明します"
 services: virtual-machine-scale-sets

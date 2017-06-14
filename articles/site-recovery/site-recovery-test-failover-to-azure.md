@@ -1,4 +1,4 @@
----
+﻿---
 title: "Site Recovery での Azure へのフェールオーバーをテストする | Microsoft Docs"
 description: "オンプレミスから Azure へのテスト フェールオーバーの実行について説明します"
 services: site-recovery

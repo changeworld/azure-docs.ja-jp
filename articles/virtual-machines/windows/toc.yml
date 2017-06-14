@@ -13,7 +13,7 @@
     href: quick-create-powershell.md
   - name: VM の作成 - Azure CLI
     href: quick-create-cli.md
-- name: Tutorials (チュートリアル)
+- name: チュートリアル
   items:
   - name: 1 - VM の作成/管理
     href: tutorial-manage-vm.md
@@ -69,16 +69,16 @@
       href: template-description.md
   - name: Azure Windows エージェント
     href: agent-user-guide.md
-  - name: '[Azure Security Center] (Azure Security Center)'
+  - name: '[Azure Security Center](Azure Security Center)'
     href: ../../security-center/security-center-virtual-machine.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
   - name: ディザスター リカバリー
     href: ../virtual-machines-disaster-recovery-guidance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
   - name: Azure の計画メンテナンス
     href: planned-maintenance.md
     items:
-    - name: メンテナンスの保持
+    - name: 保持メンテナンス
       href: preserving-maintenance.md
-    - name: メンテナンスの再開
+    - name: 再起動メンテナンス
       href: impactful-maintenance.md
     - name: スケジュール
       href: planned-maintenance-schedule.md
@@ -87,13 +87,13 @@
     items:
     - name: 汎用
       href: sizes-general.md
-    - name: コンピューティングの最適化
+    - name: コンピューティング最適化
       href: sizes-compute.md
-    - name: メモリの最適化
+    - name: メモリ最適化
       href: sizes-memory.md
-    - name: ストレージの最適化
+    - name: ストレージ最適化
       href: sizes-storage.md
-    - name: GPU の最適化
+    - name: GPU 最適化
       href: sizes-gpu.md
     - name: ハイ パフォーマンス コンピューティング
       href: sizes-hpc.md
@@ -106,7 +106,7 @@
       href: compute-benchmark-scores.md
     - name: Windows VM の実行に関するベスト プラクティス
       href: guidance-compute-single-vm.md
-  - name: デプロイメントに関する考慮事項
+  - name: デプロイに関する考慮事項
     items:
     - name: インフラストラクチャのガイドライン
       href: infrastructure-virtual-machine-guidelines.md
@@ -116,7 +116,7 @@
       href: infrastructure-naming-guidelines.md
     - name: リソース グループ
       href: infrastructure-resource-groups-guidelines.md
-    - name: Storage
+    - name: ストレージ
       href: infrastructure-storage-solutions-guidelines.md
     - name: ネットワーク
       href: infrastructure-networking-guidelines.md
@@ -197,7 +197,7 @@
     - name: VM を Managed Disks に移行する
       href: migrate-to-managed-disks.md
       items:
-      - name: 非管理対象ディスクから管理ディスクに変換する
+      - name: 非管理ディスクから管理ディスクに変換する
         href: convert-unmanaged-to-managed-disks.md
       - name: クラシック VM を Managed Disks に移行する
         href: migrate-single-classic-to-resource-manager.md
@@ -246,7 +246,7 @@
       href: create-availability-set.md
     - name: VM の可用性セットの変更
       href: change-availability-set.md
-    - name: Load Balancer の概要
+    - name: ロード バランサーの概要
       href: load-balance.md
       items:
       - name: ロード バランサーの作成

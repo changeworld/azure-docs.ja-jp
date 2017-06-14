@@ -1,4 +1,4 @@
----
+﻿---
 title: "RBAC を使用したアクセスとアクセス許可の管理 - Azure RBAC | Microsoft Docs"
 description: "Azure ポータルで Azure のロールベースのアクセス制御を使用したアクセス管理を開始します。 ロールの割り当てを使用して、ディレクトリ内でアクセス許可を割り当てます。"
 services: active-directory
