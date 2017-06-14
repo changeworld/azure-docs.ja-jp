@@ -53,7 +53,7 @@ Azure Resource Manager テンプレートを開発する目的は、Azure イン
 
 この Azure Resource Manager テンプレートには、次のパラメーター値が必要です。
 
-| パラメーター名 | Description |
+| パラメーター名 | 説明 |
 | --- | --- |
 | ADMINUSERNAME |仮想マシンと Azure SQL Database で使う管理者ユーザー名。 |
 | ADMINPASSWORD |Azure 仮想マシンと SQL Database で使う管理者パスワード。 |

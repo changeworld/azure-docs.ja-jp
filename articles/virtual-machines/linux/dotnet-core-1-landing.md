@@ -53,7 +53,7 @@ Azure Resource Manager テンプレートを開発する目的は、Azure イン
 
 この Azure Resource Manager テンプレートには、次のパラメーター値が必要です。
 
-| パラメーター名 | Description |
+| パラメーター名 | 説明 |
 | --- | --- |
 | SSHKEYDATA |仮想マシンへのアクセスをセキュリティで保護するために使う SSH キー データ。 SSH キー ペアの作成については、[Azure の Linux VM 用 SSH キーの作成](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。 |
 | ADMINUSERNAME |仮想マシンと Azure SQL Database で使う管理者ユーザー名。 |
