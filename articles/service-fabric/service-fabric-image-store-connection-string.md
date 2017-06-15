@@ -12,11 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/08/2017
+ms.date: 06/07/2017
 ms.author: alexwun
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: be4275d55410a763d38dcb954df5349db287c015
 ms.openlocfilehash: 5eb8f9489dcc29122892165111f62d63be1766f2
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -56,9 +58,4 @@ Service Fabric は、マイクロソフトの社内で数多くの多様なチ�
 [10]: service-fabric-deploy-remove-applications.md
 [11]: service-fabric-cluster-creation-via-portal.md
 [12]: service-fabric-publish-app-remote-cluster.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 
