@@ -27,14 +27,14 @@ MySQL では、業界標準の ODBC および JDBC と互換性のあるアプ�
 
 | **言語** | **プラットフォーム** | **追加リソース** | **ダウンロード** |
 | :----------- | :------------| :-----------------------| :------------|
-| PHP | Windows、Linux | [PHP 用 MySQL ネイティブ ドライバー - mysqlnd](https://dev.mysql.com/downloads/connector/php-mysqlnd/) | [ダウンロード](http://php.net/downloads.php) |
-| ODBC | Windows、Linux、Mac OS X、Unix プラットフォーム | [MySQL コネクタ/ODBC 開発者ガイド](https://dev.mysql.com/doc/connector-odbc/en/) | [ダウンロード](https://dev.mysql.com/downloads/connector/odbc/) |
-| ADO.NET | Windows | [MySQL コネクタ/Net 開発者ガイド](https://dev.mysql.com/doc/connector-net/en/) | [ダウンロード](https://dev.mysql.com/downloads/connector/net/) |
-| JDBC | プラットフォームに依存しない | [MySQL コネクタ/J 5.1 開発者ガイド](https://dev.mysql.com/doc/connector-j/5.1/en/) | [ダウンロード](https://dev.mysql.com/downloads/connector/j/) |
+| PHP | Windows、Linux | [PHP 用 MySQL Native Driver - mysqlnd](https://dev.mysql.com/downloads/connector/php-mysqlnd/) | [ダウンロード](http://php.net/downloads.php) |
+| ODBC | Windows、Linux、Mac OS X、Unix プラットフォーム | [MySQL Connector/ODBC 開発者ガイド](https://dev.mysql.com/doc/connector-odbc/en/) | [ダウンロード](https://dev.mysql.com/downloads/connector/odbc/) |
+| ADO.NET | Windows | [MySQL Connector/Net 開発者ガイド](https://dev.mysql.com/doc/connector-net/en/) | [ダウンロード](https://dev.mysql.com/downloads/connector/net/) |
+| JDBC | プラットフォームに依存しない | [MySQL Connector/J 5.1 開発者ガイド](https://dev.mysql.com/doc/connector-j/5.1/en/) | [ダウンロード](https://dev.mysql.com/downloads/connector/j/) |
 | Node.js | Windows、Linux、Mac OS X | [sidorares/node-mysql2](https://github.com/sidorares/node-mysql2/tree/master/documentation) | [ダウンロード](https://github.com/sidorares/node-mysql2) |
-| Python | Windows、Linux、Mac OS X | [MySQL コネクタ/Python 開発者ガイド](https://dev.mysql.com/doc/connector-python/en/) | [ダウンロード](https://dev.mysql.com/downloads/connector/python/) |
-| C++ | Windows、Linux、Mac OS X | [MySQL コネクタ/C++ 開発者ガイド](https://dev.mysql.com/doc/connector-cpp/en/) | [ダウンロード](https://dev.mysql.com/downloads/connector/python/) |
-| C | Windows、Linux、Mac OS X | [MySQL コネクタ/C 開発者ガイド](https://dev.mysql.com/doc/connector-c/en/) | [ダウンロード](https://dev.mysql.com/downloads/connector/c/)
+| Python | Windows、Linux、Mac OS X | [MySQL Connector/Python 開発者ガイド](https://dev.mysql.com/doc/connector-python/en/) | [ダウンロード](https://dev.mysql.com/downloads/connector/python/) |
+| C++ | Windows、Linux、Mac OS X | [MySQL Connector/C++ 開発者ガイド](https://dev.mysql.com/doc/connector-cpp/en/) | [ダウンロード](https://dev.mysql.com/downloads/connector/python/) |
+| C | Windows、Linux、Mac OS X | [MySQL Connector/C 開発者ガイド](https://dev.mysql.com/doc/connector-c/en/) | [ダウンロード](https://dev.mysql.com/downloads/connector/c/)
 
 
 ## <a name="next-steps"></a>次のステップ
