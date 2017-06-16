@@ -1,4 +1,4 @@
-﻿---
+---
 title: "SQL Server および Azure Site Recovery を使用したアプリケーションのレプリケート | Microsoft Docs"
 description: "この記事では、SQL Server の災害機能の Azure Site Recovery を使用して、SQL Server をレプリケートする方法について説明します。"
 services: site-recovery
@@ -8,7 +8,7 @@ manager: gauravd
 editor: 
 ms.assetid: 9126f5e8-e9ed-4c31-b6b4-bf969c12c184
 ms.service: site-recovery
-ms.workload: backup-recovery
+ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
@@ -101,18 +101,18 @@ SQL Server を正常に実行するために、セカンダリ復旧サイトに
 この記事に記載された手順は、2 番目の拠点でドメイン コントローラーが使用できることを前提としています。 [こちら](site-recovery-active-directory.md) を参照してください。
 
 
-## <a name="integrate-with-sql-server-always-on-for-replication-to-azure"></a>SQL Server Always On との統合: Azure へのレプリケーション 
+## <a name="integrate-with-sql-server-always-on-for-replication-to-azure"></a>SQL Server Always On との統合: Azure へのレプリケーション
 
 次の手順を実行する必要があります。
 
-1. Azure Automation アカウントにスクリプトをインポートします。 これは SQL 可用性グループをフェールオーバーするスクリプトを [Resource Manager 仮想マシン](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1)と[クラシック仮想マシン](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1)に含んでいます。 
+1. Azure Automation アカウントにスクリプトをインポートします。 これは SQL 可用性グループをフェールオーバーするスクリプトを [Resource Manager 仮想マシン](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1)と[クラシック仮想マシン](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1)に含んでいます。
 
     [![Azure へのデプロイ](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 
 1. 復旧計画の最初のグループの事前アクションとして、ASR SQL-FailoverAG を追加します。
 
-1. 可用性グループの名前を指定するオートメーション変数を作成するには、スクリプトで使用できる指示に従います。 
+1. 可用性グループの名前を指定するオートメーション変数を作成するには、スクリプトで使用できる指示に従います。
 
 ### <a name="steps-to-do-a-test-failover"></a>テスト フェールオーバーを実行する手順
 
@@ -124,13 +124,13 @@ SQL Always On は、テスト フェールオーバーをネイティブでサ�
 
     ![Azure Backup からの復元 ](./media/site-recovery-sql/restore-from-backup.png)
 
-1. バックアップから復元された仮想マシンで[クォーラムを強制](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/force-a-wsfc-cluster-to-start-without-a-quorum#PowerShellProcedure)します。 
+1. バックアップから復元された仮想マシンで[クォーラムを強制](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/force-a-wsfc-cluster-to-start-without-a-quorum#PowerShellProcedure)します。
 
-1. リスナーの IP アドレスをテスト フェールオーバーのネットワークで利用できる IP アドレスに更新します。 
- 
+1. リスナーの IP アドレスをテスト フェールオーバーのネットワークで利用できる IP アドレスに更新します。
+
     ![リスナー IP を更新する](./media/site-recovery-sql/update-listener-ip.png)
 
-1. リスナーをオンラインにします。 
+1. リスナーをオンラインにします。
 
     ![リスナーをオンラインにする](./media/site-recovery-sql/bring-listener-online.png)
 
@@ -144,7 +144,7 @@ SQL Always On は、テスト フェールオーバーをネイティブでサ�
 
 ### <a name="steps-to-do-a-failover"></a>フェールオーバーを実行する手順
 
-復旧計画でスクリプトを追加し、テスト フェールオーバーを実行することで復旧計画を検証したら、復旧計画のフェールオーバーを行うことができます。 
+復旧計画でスクリプトを追加し、テスト フェールオーバーを実行することで復旧計画を検証したら、復旧計画のフェールオーバーを行うことができます。
 
 
 ## <a name="integrate-with-sql-server-always-on-for-replication-to-a-secondary-on-premises-site"></a>SQL Server Always On との統合: セカンダリ オンプレミス サイトへのレプリケーション
@@ -155,7 +155,7 @@ SQL Server が可用性グループ (または FCI) を使用して高可用性�
 1. セカンダリ サイトに、仮想ネットワークを作成します。
 1. 仮想ネットワークとプライマリ サイトの間に、サイト間 VPN 接続を設定します。
 1. 復旧サイトに仮想マシンを作成し、SQL Server を仮想マシンにインストールします。
-1. 新しい SQL Server VM に、既存の Always On 可用性グループを拡張します。 この SQL Server インスタンスは、非同期レプリカ コピーとして構成します。 
+1. 新しい SQL Server VM に、既存の Always On 可用性グループを拡張します。 この SQL Server インスタンスは、非同期レプリカ コピーとして構成します。
 1. 可用性グループ リスナーを作成するか、または既存のリスナーを更新して、非同期のレプリカ仮想マシンを含めます。
 1. アプリケーション ファームがリスナーを使用してセットアップされていることを確認します。 データベース サーバー名を使用してセットアップされている場合は、リスナーを使用するように更新して、フェールオーバー後に再構成する必要がないようにしてください。
 

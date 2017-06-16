@@ -8,7 +8,7 @@ manager: cfreeman
 editor: 
 ms.assetid: c413efcd-d750-4b22-b34b-15bcaa03934a
 ms.service: site-recovery
-ms.workload: backup-recovery
+ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
@@ -16,9 +16,10 @@ ms.date: 03/14/2017
 ms.author: raynew
 ROBOTS: NOINDEX, NOFOLLOW
 redirect_url: site-recovery-support-matrix-to-azure
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
 ms.openlocfilehash: a53e2a09fb2aabe96dd5347ea7509815d92bfdb8
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/15/2017
 
 ---

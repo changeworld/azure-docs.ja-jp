@@ -8,7 +8,7 @@ manager: garavd
 editor: 
 ms.assetid: 
 ms.service: site-recovery
-ms.workload: backup-recovery
+ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
@@ -108,8 +108,8 @@ DB-Disk4 | Disk4 |G:\ |ユーザー データベース 2
 
 **ゲスト オペレーティング システム ディスク番号** | **ドライブ文字** | **ディスクに格納されているデータの種類**
 --- | --- | ---
-DISK0 |    C:\ | オペレーティング システム ディスク
-Disk1 |    E:\ | 一時記憶域</br /> </br />このディスクは Azure によって追加され、利用可能な最初のドライブ文字が割り当てられます。
+DISK0 | C:\ | オペレーティング システム ディスク
+Disk1 | E:\ | 一時記憶域</br /> </br />このディスクは Azure によって追加され、利用可能な最初のドライブ文字が割り当てられます。
 Disk2 | D:\ | SQL システム データベースとユーザー データベース 1
 Disk3 | G:\ | ユーザー データベース 2
 
@@ -141,13 +141,13 @@ SQL の tempdb ディスクとして使用されていた Disk3 (tempdb フォ�
 3. 次の sqlcmd を実行して、tempdb のパスを新しいパスに変更します。
 
         sqlcmd -A -S SalesDB        **Use your SQL DBname**
-        USE master;        
-        GO        
-        ALTER DATABASE tempdb        
+        USE master;     
+        GO      
+        ALTER DATABASE tempdb       
         MODIFY FILE (NAME = tempdev, FILENAME = 'E:\MSSQL\tempdata\tempdb.mdf');
-        GO        
-        ALTER DATABASE tempdb        
-        MODIFY FILE (NAME = templog, FILENAME = 'E:\MSSQL\tempdata\templog.ldf');        
+        GO      
+        ALTER DATABASE tempdb       
+        MODIFY FILE (NAME = templog, FILENAME = 'E:\MSSQL\tempdata\templog.ldf');       
         GO
 
 
@@ -173,9 +173,9 @@ Azure からオンプレミスの VMware または Hyper-V ホストにフェー
 **ゲスト オペレーティング システム ディスク番号** | **ドライブ文字** | **ディスクに格納されているデータの種類**
 --- | --- | ---
 DISK0 | C:\ | オペレーティング システム ディスク
-Disk1 |    E:\ | 一時記憶域</br /> </br />このディスクは Azure によって追加され、利用可能な最初のドライブ文字が割り当てられます。
-Disk2 |    D:\ | SQL システム データベースとユーザー データベース 1
-Disk3 |    G:\ | ユーザー データベース 2
+Disk1 | E:\ | 一時記憶域</br /> </br />このディスクは Azure によって追加され、利用可能な最初のドライブ文字が割り当てられます。
+Disk2 | D:\ | SQL システム データベースとユーザー データベース 1
+Disk3 | G:\ | ユーザー データベース 2
 
 
 #### <a name="vmware-to-azure"></a>VMware から Azure
@@ -186,8 +186,8 @@ Azure からオンプレミスの VMware に対して計画されたフェール
 **ゲスト オペレーティング システム ディスク番号** | **ドライブ文字** | **ディスクに格納されているデータの種類**
 --- | --- | ---
 DISK0 | C:\ | オペレーティング システム ディスク
-Disk1 |    D:\ | SQL システム データベースとユーザー データベース 1
-Disk2 |    G:\ | ユーザー データベース 2
+Disk1 | D:\ | SQL システム データベースとユーザー データベース 1
+Disk2 | G:\ | ユーザー データベース 2
 
 #### <a name="hyper-v-to-azure"></a>Hyper-V から Azure
 元の場所へのフェールバックの場合、フェールバック仮想マシンのディスク構成は、Hyper-V で使用されていた元の仮想マシンのディスク構成と同じになります。 VMware から Azure へのレプリケーションで除外されたディスクは、フェールバック仮想マシンで利用できます。
@@ -196,7 +196,7 @@ Azure からオンプレミスの Hyper-V に対して計画されたフェー�
 
 **ディスク名** | **ゲスト オペレーティング システム ディスク番号** | **ドライブ文字** | **ディスクに格納されているデータの種類**
 --- | --- | --- | ---
-DB-Disk0-OS | DISK0 |    C:\ | オペレーティング システム ディスク
+DB-Disk0-OS | DISK0 |   C:\ | オペレーティング システム ディスク
 DB-Disk1 | Disk1 | D:\ | SQL システム データベースとユーザー データベース 1
 DB-Disk2 (除外されたディスク) | Disk2 | E:\ | 一時ファイル
 DB-Disk3 (除外されたディスク) | Disk3 | F:\ | SQL tempdb データベース (フォルダーのパスは F:\MSSQL\Data\)

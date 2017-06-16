@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage
-ms.date: 03/07/2017
+ms.date: 06/15/2017
 ms.author: robinsh
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: bffc77ba9e0413356ac366e85f2accb3c2087192
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/03/2017
 
 
