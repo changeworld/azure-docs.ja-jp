@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/25/2017
+ms.date: 06/16/2017
 ms.author: DavidBosland
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 97cd45563dbd2341620658e05dbbd9ff0519b1aa
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -45,9 +47,4 @@ ms.openlocfilehash: 97cd45563dbd2341620658e05dbbd9ff0519b1aa
 [2]: ./media/marketplace-publishing-csp-incentive/profile-boxes.png
 [3]: ./media/marketplace-publishing-csp-incentive/profile-publishers-boxes.png
 [4]: ./media/marketplace-publishing-csp-incentive/profile-publishers-change-boxes.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

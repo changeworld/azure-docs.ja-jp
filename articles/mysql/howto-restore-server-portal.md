@@ -5,12 +5,9 @@ services: mysql
 author: v-chenyh
 ms.author: v-chenyh
 manager: jhubbard
-editor: jasonh
-ms.assetid: 
+editor: jasonwhowell
 ms.service: mysql-database
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: portal
 ms.date: 05/10/2017
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
@@ -40,7 +37,7 @@ Azure Database for MySQL では、過去の特定の時点までサーバーの�
 
 2. Azure Database for MySQL サーバーを検索します。 左側のウィンドウで、**[All resources (すべてのリソース)]** を選択し、一覧からサーバーを選択します。
 
-3.    サーバーの概要ブレードの上部で、ツールバーの **[復元]** をクリックします。 [復元] ブレードが開きます。
+3.  サーバーの概要ブレードの上部で、ツールバーの **[復元]** をクリックします。 [復元] ブレードが開きます。
 ![[復元] ボタンをクリックする](./media/howto-restore-server-portal/click-restore-button.png)
 
 4. [復元] フォームに必要な情報を入力します。
