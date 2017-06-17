@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/15/2017
+ms.date: 06/16/2017
 ms.author: ryanwi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: 51ed17ab8f036f00b285232500dc9f606f2a7e2f
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/27/2017
 
 
@@ -49,7 +50,7 @@ ms.lasthandoff: 04/27/2017
             {
                 "CertificateThumbprint": "[Thumbprint]",
                 "IsAdmin": false
-            }, 
+            },
             {
                 "CertificateThumbprint": "[Thumbprint]",
                 "IsAdmin": true
@@ -58,17 +59,17 @@ ms.lasthandoff: 04/27/2017
         "ClientCertificateCommonNames": [
             {
                 "CertificateCommonName": "[CertificateCommonName]",
-                "CertificateIssuerThumbprint" : "[Thumbprint]",
+                "CertificateIssuerThumbprint": "[Thumbprint]",
                 "IsAdmin": true
             }
-        ]
-        "ReverseProxyCertificate":{
+        ],
+        "ReverseProxyCertificate": {
             "Thumbprint": "[Thumbprint]",
             "ThumbprintSecondary": "[Thumbprint]",
             "X509StoreName": "My"
         }
     }
-}
+},
 ```
 
 このセクションでは、スタンドアロンの Windows クラスターをセキュリティで保護するために必要な証明書に関する情報が示されています。 クラスター証明書を指定する場合は、**ClusterCredentialType** の値を  _**X509**_ に設定します。 外部接続用にサーバー証明書を指定する場合は、**ClusterCredentialType** を  _**X509**_ に設定します。 必須ではありませんが、これらの証明書はどちらも、正しくセキュリティで保護されたクラスターにすることをお勧めします。 これらの値を *X509* に設定する場合は、対応する証明書を指定する必要があります。または、Service Fabric が例外をスローします。 一部のシナリオでは、_ClientCertificateThumbprints_ または _ReverseProxyCertificate_ のみを指定することがあります。 これらのシナリオでは、_ClusterCredentialType_ または _ServerCredentialType_ を _X509_ に設定する必要がありません。
