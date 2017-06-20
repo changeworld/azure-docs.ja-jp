@@ -12,7 +12,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2017
+ms.date: 06/20/2017
 ms.author: jingwang
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
@@ -357,7 +357,7 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
 **ゲートウェイ コンピューターで以下を実行します。**
 
-1.    **Ksetup** ユーティリティを実行して、Kerberos の KDC サーバーと領域を構成します。
+1.  **Ksetup** ユーティリティを実行して、Kerberos の KDC サーバーと領域を構成します。
 
     Kerberos 領域は Windows ドメインとは異なるため、コンピューターをワークグループのメンバーとして構成する必要があります。 これは、次のように Kerberos 領域を設定し、KDC サーバーを追加することで実現できます。 必要に応じて、*REALM.COM* を独自の領域に置き換えます。
 
@@ -366,7 +366,7 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
     これら 2 つのコマンドを実行した後、コンピューターを**再起動**します。
 
-2.    **Ksetup** コマンドを使用して、構成を確認します。 出力は次のようになります。
+2.  **Ksetup** コマンドを使用して、構成を確認します。 出力は次のようになります。
 
             C:> Ksetup
             default realm = REALM.COM (external)
@@ -380,8 +380,8 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 ### <a name="kerberos-mutual-trust"></a>オプション 2: Windows ドメインと Kerberos 領域間の相互の信頼関係を有効にする
 
 #### <a name="requirement"></a>要件:
-*    ゲートウェイ コンピューターは、Windows ドメインに参加している必要があります。
-*    ドメイン コントローラーの設定を更新できるアクセス許可が必要です。
+*   ゲートウェイ コンピューターは、Windows ドメインに参加している必要があります。
+*   ドメイン コントローラーの設定を更新できるアクセス許可が必要です。
 
 #### <a name="how-to-configure"></a>構成方法:
 
@@ -390,7 +390,7 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
 **KDC サーバーで以下を実行します。**
 
-1.    **krb5.conf** ファイルの KDC 構成を編集して、KDC が次の構成テンプレートを参照している Windows ドメインを信頼するようにします。 既定では、この構成は **/etc/krb5.conf** に置かれています。
+1.  **krb5.conf** ファイルの KDC 構成を編集して、KDC が次の構成テンプレートを参照している Windows ドメインを信頼するようにします。 既定では、この構成は **/etc/krb5.conf** に置かれています。
 
             [logging]
              default = FILE:/var/log/krb5libs.log
@@ -428,24 +428,24 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
   構成したら KDC サービスを**再起動**します。
 
-2.    次のコマンドを使用して、**krbtgt/REALM.COM@AD.COM** という名前のプリンシパルを KDC サーバー内に準備します。
+2.  次のコマンドを使用して、**krbtgt/REALM.COM@AD.COM** という名前のプリンシパルを KDC サーバー内に準備します。
 
             Kadmin> addprinc krbtgt/REALM.COM@AD.COM
 
-3.    **hadoop.security.auth_to_local** HDFS サービス構成ファイルに、`RULE:[1:$1@$0](.*@AD.COM)s/@.*//` を追加します。
+3.  **hadoop.security.auth_to_local** HDFS サービス構成ファイルに、`RULE:[1:$1@$0](.*@AD.COM)s/@.*//` を追加します。
 
 **ドメイン コントローラーで、以下を実行します。**
 
-1.    次の **Ksetup** コマンドを実行して、領域エントリを追加します。
+1.  次の **Ksetup** コマンドを実行して、領域エントリを追加します。
 
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
-2.    Windows ドメインから Kerberos 領域への信頼関係を確立します。 [password] は、**krbtgt/REALM.COM@AD.COM** プリンシパルのパスワードです。
+2.  Windows ドメインから Kerberos 領域への信頼関係を確立します。 [password] は、**krbtgt/REALM.COM@AD.COM** プリンシパルのパスワードです。
 
             C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
 
-3.    Kerberos で使用される暗号化アルゴリズムを選択します。
+3.  Kerberos で使用される暗号化アルゴリズムを選択します。
 
     1. サーバー マネージャーに移動し、[グループ ポリシー管理]、[ドメイン]、[グループ ポリシー オブジェクト]、[既定のポリシー] または [Active Domain ポリシー] の順に選択します。
 
@@ -459,7 +459,7 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
                 C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
 
-4.    Windows ドメインで Kerberos プリンシパルを使用するために、ドメイン アカウントと Kerberos プリンシパル間のマッピングを作成します。
+4.  Windows ドメインで Kerberos プリンシパルを使用するために、ドメイン アカウントと Kerberos プリンシパル間のマッピングを作成します。
 
     1. 管理ツールを起動し、**[Active Directory ユーザーとコンピュータ]** を選択します。
 
