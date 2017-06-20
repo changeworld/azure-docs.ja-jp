@@ -14,6 +14,7 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/08/2017
 ms.author: curtand
+ms.custom: aaddev
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
 ms.openlocfilehash: 2ec65409287bf55f2892e573131739cfca49dd9d
