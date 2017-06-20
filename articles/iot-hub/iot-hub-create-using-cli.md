@@ -12,11 +12,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/23/2017
+ms.date: 06/16/2017
 ms.author: dobett
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
 ms.openlocfilehash: 159aed19b4c5e381ef15c40c15cf6bd7694d2fa3
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/24/2017
 
 
