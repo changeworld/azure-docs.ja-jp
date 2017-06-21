@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/15/2017
 ms.author: cherylmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: d28468adbfeb8af5b9c0a126c7cf337c428ad8ca
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 6d5572a2fa7a89d51ec62e3ae05bdc9939ca3a24
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -29,9 +29,9 @@ ms.lasthandoff: 05/25/2017
 この記事では、PowerShell を使用して、ポイント対サイト接続を備えた VNet を Resource Manager デプロイメント モデルで作成する手順を説明します。 また、この構成の作成には、次のリストから別のオプションを選択して、別のデプロイ ツールまたはデプロイ モデルを使用することもできます。
 
 > [!div class="op_single_selector"]
-> * [Resource Manager - Azure Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
-> * [Resource Manager - PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
-> * [クラシック - Azure Portal](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
+> * [Azure ポータル](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
+> * [PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
+> * [Azure Portal (クラシック)](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
 >
 >
 
@@ -192,7 +192,7 @@ VNet の仮想ネットワーク ゲートウェイを構成、作成します�
 ```powershell
 New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 -Location $Location -IpConfigurations $ipconf -GatewayType Vpn `
--VpnType RouteBased -EnableBgp $false -GatewaySku Standard `
+-VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 `
 -VpnClientAddressPool $VPNClientAddressPool -VpnClientRootCertificates $p2srootcert
 ```
 

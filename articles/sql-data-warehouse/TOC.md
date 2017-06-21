@@ -48,6 +48,7 @@
 #### [データ型](sql-data-warehouse-tables-data-types.md)
 #### [分散テーブル](sql-data-warehouse-tables-distribute.md)
 #### [インデックス](sql-data-warehouse-tables-index.md)
+#### [ID](sql-data-warehouse-tables-identity.md)
 #### [パーティション](sql-data-warehouse-tables-partition.md)
 #### [統計](sql-data-warehouse-tables-statistics.md)
 #### [一時](sql-data-warehouse-tables-temporary.md)

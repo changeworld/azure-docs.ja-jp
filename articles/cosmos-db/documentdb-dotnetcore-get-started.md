@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 05/22/2017
 ms.author: arramac
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: cb0ff55a6d09ce52a7633316bc03aa3e25ff9b17
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: d2d2892cf7704078c4ee21cbdf33dd4f1cf86316
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -209,7 +209,7 @@ private async Task GetStartedDemo()
 
 ## <a id="CreateColl"></a>手順 5: コレクションを作成する
 > [!WARNING]
-> **CreateDocumentCollectionAsync** は、予約済みのスループットで新しいコレクションを作成します。これによって価格に影響があります。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/documentdb/)を参照してください。
+> **CreateDocumentCollectionAsync** は、予約済みのスループットで新しいコレクションを作成します。これによって価格に影響があります。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。
 
 [コレクション](documentdb-resources.md#collections)は、**DocumentClient** クラスの [CreateDocumentCollectionAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionasync.aspx) メソッドを使用して作成できます。 コレクションには、JSON ドキュメントのほか、関連する JavaScript アプリケーション ロジックが格納されます。
 

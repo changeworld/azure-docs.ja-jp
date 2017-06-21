@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql-database
 ms.custom: mvc
 ms.topic: hero-article
-ms.date: 05/10/2017
+ms.date: 06/19/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: c67ada15c11b81021ff5e6f6e5edc5cb530ece98
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 7bbf70786bff83ad3cfae9cb9b893f41736874b5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 
@@ -145,7 +145,7 @@ GUI ツール _pgAdmin_ を使用して Azure PostgreSQL に接続する手順�
     - **SSL Mode (SSL モード):** 必須
         - 既定では、すべての Azure PostgreSQL サーバーは SSL 適用が有効化された状態で作成されます。 SSL 適用を無効にするには、[SSL の適用](./concepts-ssl-connection-security.md)に関する記事を参照してください。
 5.  **[Save (保存)]** をクリックします。
-6.  左側の [Browser (ブラウザー)] ウィンドウで **[Servers Groups (サーバー グループ)]** を展開します。 **Azure PostgreSQL Server** サーバーを選択します。
+6.  左側の [Browser (ブラウザー)] ウィンドウで **[Servers Groups (サーバー グループ)]** を展開します。 サーバー **Azure PostgreSQL Server** を選択します。
 7.  接続した**サーバー**を選択してから、その下の **[Databases (データベース)]** を選択します。 
 8.  **[Databases (データベース)]** を右クリックしてデータベースを作成します。
 9.  データベース名 **mypgsqldb** と、その所有者としてサーバー管理者ログイン **mylogin** を選択します。
@@ -169,6 +169,6 @@ GUI ツール _pgAdmin_ を使用して Azure PostgreSQL に接続する手順�
 3.  削除するサーバーの名前を確認し、影響を受けるデータベースをその下に表示します。 テキスト ボックスに「**mypgserver-20170401**」と入力し、[削除] をクリックします。
 
 ## <a name="next-steps"></a>次のステップ
-- [エクスポートとインポート](./howto-migrate-using-export-and-import.md)または[ダンプと復元](./howto-migrate-using-dump-and-restore.md)を使用して、データベースを移行します。
-- Azure CLI を使用して Azure Database for PostgreSQL サーバーを作成するには、「[PostgreSQL サーバーの作成 - CLI](./quickstart-create-server-database-azure-cli.md)」を参照してください。
-- 技術的な概要については、「[Azure Database for PostgreSQL とは](./overview.md)」を参照してください。
+> [!div class="nextstepaction"]
+> [エクスポートとインポートを使用したデータベースの移行](./howto-migrate-using-export-and-import.md)
+

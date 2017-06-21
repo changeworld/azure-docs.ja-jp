@@ -18,10 +18,10 @@ ms.date: 03/24/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 300958a69fc854cb8db02120a383a4cbbfcacd7b
-ms.openlocfilehash: 5a5085416bff96c37fcde8a25deffe7dbd8f70d6
+ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
+ms.openlocfilehash: bc0c8ccad64166582dcb3f7162280a8772abc6b3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/20/2017
+ms.lasthandoff: 06/21/2017
 
 ---
 # <a name="introduction-to-private-docker-container-registries"></a>プライベート Docker コンテナー レジストリの概要
@@ -40,7 +40,7 @@ Docker とコンテナーに関する背景情報については、次を参照�
 Azure コンテナー レジストリからさまざまなデプロイ ターゲットにイメージをプルできます。
 
 * [DC/OS](https://docs.mesosphere.com/)、[Docker Swarm](https://docs.docker.com/swarm/)、[Kubernetes](http://kubernetes.io/docs/) など、ホストのクラスターのコンテナー化されたアプリケーションを管理する**スケーラブルなオーケストレーション システム**。
-* [Container Service](../container-service/index.md)、[App Service](/app-service/index.md)、[Batch](../batch/index.md)、[Service Fabric](../service-fabric/index.md) など、アプリケーションの大規模な構築と実行をサポートする **Azure サービス**。
+* [Container Service](../container-service/index.yml)、[App Service](/app-service/index.md)、[Batch](../batch/index.md)、[Service Fabric](../service-fabric/index.md) など、アプリケーションの大規模な構築と実行をサポートする **Azure サービス**。
 
 開発者は、コンテナー開発ワークフローの一環としてコンテナー レジストリにプッシュすることもできます。 たとえば、[Visual Studio Team Services](https://www.visualstudio.com/docs/overview) や [Jenkins](https://jenkins.io/) などの継続的な統合とデプロイ ツールからコンテナー レジストリを対象にすることができます。
 

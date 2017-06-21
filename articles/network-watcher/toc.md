@@ -34,6 +34,7 @@
 ### [CLI 2.0](network-watcher-topology-cli.md)
 ### [REST ()](network-watcher-topology-rest.md)
 ## VPN Gateway と接続のトラブルシューティング
+### [ポータル](network-watcher-troubleshoot-manage-portal.md)
 ### [PowerShell](network-watcher-troubleshoot-manage-powershell.md)
 ### [CLI 1.0](network-watcher-troubleshoot-manage-cli-nodejs.md)
 ### [CLI 2.0](network-watcher-troubleshoot-manage-cli.md)

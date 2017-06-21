@@ -7,15 +7,15 @@
 ## [デプロイする場所を選択する](multi-factor-authentication-get-started.md)
 ## [クラウドでの MFA](multi-factor-authentication-get-started-cloud.md)
 ## [オンプレミスでの MFA](multi-factor-authentication-get-started-server.md)
-## [O365 のユーザーの MFA](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6)
+## [O365 のユーザーの MFA](https://support.office.com/article/Plan-for-multi-factor-authentication-for-Office-365-Deployments-043807b2-21db-4d5c-b430-c8a6dee0e6ba)
 ## [セキュリティのベスト プラクティス](multi-factor-authentication-security-best-practices.md)
 
 # 方法
 ## デプロイと使用
-### [認証プロバイダーを作成する](multi-factor-authentication-get-started-auth-provider.md)
 ### [設定を構成する](multi-factor-authentication-whats-next.md)
 ### [MFA でのレポート](multi-factor-authentication-manage-reports.md)
 ### [既存のネットワーク ポリシー サーバーを使用する](multi-factor-authentication-nps-extension.md)
+### [認証プロバイダーを作成する](multi-factor-authentication-get-started-auth-provider.md)
 ### オンプレミスでの Azure MFA
 #### [ユーザー ポータルをインストールする](multi-factor-authentication-get-started-portal.md)
 #### [高度な VPN 構成](multi-factor-authentication-advanced-vpn-configurations.md)

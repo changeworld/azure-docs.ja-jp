@@ -18,10 +18,10 @@ ms.topic: get-started-article
 ms.date: 05/25/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 0c59792423bfe2848ab5773746db466890228ddc
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 925dbf5e595941da58e7d705175d0cc63bbf6a16
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/12/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -177,7 +177,7 @@ HDInsight クラスターの作成で問題が発生した場合は、[アクセ
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
 * [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
 * [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
+* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-zeppelin-notebook.md)
 * [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 * [Jupyter Notebook で外部のパッケージを使用する](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
 * [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
