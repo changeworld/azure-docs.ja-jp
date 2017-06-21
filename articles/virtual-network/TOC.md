@@ -40,12 +40,7 @@
 #### [PowerShell (クラシック)](virtual-network-create-udr-classic-ps.md)
 #### [CLI (クラシック)](virtual-network-create-udr-classic-cli.md)
 
-### 仮想ネットワーク ピアリング
-#### [ポータル](virtual-networks-create-vnetpeering-arm-portal.md)
-#### [PowerShell](virtual-networks-create-vnetpeering-arm-ps.md)
-#### [テンプレート](virtual-networks-create-vnetpeering-arm-template-click.md)
-
-### [パブリック IP アドレス](virtual-network-public-ip-address.md)
+### [仮想ネットワーク ピアリング](virtual-network-create-peering.md)
 
 ### 仮想マシン
 #### 静的パブリック IP アドレスを持つ VM を作成する
@@ -118,6 +113,7 @@
 #### [IP アドレスの追加、変更、削除](virtual-network-network-interface-addresses.md)
 ### 仮想マシン
 #### [VM を別のサブネットに移動する](virtual-networks-move-vm-role-to-subnet.md)
+### [パブリック IP アドレス](virtual-network-public-ip-address.md)
 
 ## トラブルシューティング
 ### ネットワーク セキュリティ グループ
