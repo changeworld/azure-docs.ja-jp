@@ -25,9 +25,9 @@
    ![更新ドメインと障害ドメインの構成の概念図](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
 
 ## <a name="use-managed-disks-for-vms-in-an-availability-set"></a>可用性セット内の VM に管理ディスクを使用する
-現在、管理されていないディスクを持つ VM を使用している場合は、[可用性セット内の VM を Managed Disks を使用するように変換する](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md#convert-vms-in-an-availability-set-to-managed-disks-in-a-managed-availability-set)ことを強くお勧めします。
+現在、管理されていないディスクを持つ VM を使用している場合は、[可用性セット内の VM を Managed Disks を使用するように変換する](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md)ことを強くお勧めします。
 
-[管理ディスク](../articles/storage/storage-managed-disks-overview.md)では、可用性セットの VM のディスクが、単一障害点にならないように相互に十分に分離されるため、可用性セットの信頼性が向上します。 これは、ディスクをさまざまな記憶域クラスターに自動的に配置することによって実現されます。 ハードウェアやソフトウェアの障害によって記憶域クラスターが機能しなくなった場合、そのスタンプ上のディスクを使用する VM インスタンスだけが機能しなくなります。 
+[管理ディスク](../articles/storage/storage-managed-disks-overview.md)では、可用性セットの VM のディスクが、単一障害点にならないように相互に十分に分離されるため、可用性セットの信頼性が向上します。 これは、ディスクをさまざまな記憶域クラスターに自動的に配置することによって実現されます。 ハードウェアやソフトウェアの障害によって記憶域クラスターが機能しなくなった場合、そのスタンプ上のディスクを使用する VM インスタンスだけが機能しなくなります。
 
 ![管理ディスク FD](./media/virtual-machines-common-manage-availability/md-fd.png)
 
@@ -36,7 +36,7 @@
 
 [!INCLUDE [managed-disks-common-fault-domain-region-list](managed-disks-common-fault-domain-region-list.md)]
 
-[管理されていないディスク](../articles/storage/storage-about-disks-and-vhds-windows.md#types-of-disks)を持つ VM を使用する計画がある場合は、VM の仮想ハード ディスク (VHD) が[ページ BLOB](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) として格納されているストレージ アカウント用の、以下のベスト プラクティスに従います。 
+[管理されていないディスク](../articles/storage/storage-about-disks-and-vhds-windows.md#types-of-disks)を持つ VM を使用する計画がある場合は、VM の仮想ハード ディスク (VHD) が[ページ BLOB](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) として格納されているストレージ アカウント用の、以下のベスト プラクティスに従います。
 
 1. **VM に関連付けられているすべてのディスク (OS とデータ) を同じストレージ アカウント内に保持する。**
 2. ストレージ アカウントにさらに VHD を追加する前に、**ストレージ アカウント内の管理されていないディスクの数に関する[制限](../articles/storage/storage-scalability-targets.md)を確認する。**
@@ -62,4 +62,3 @@
 [ロード バランサーと可用性セットを結合する]: #combine-a-load-balancer-with-availability-sets
 [Avoid single instance virtual machines in availability sets]: #avoid-single-instance-virtual-machines-in-availability-sets
 [可用性セット内の VM に管理ディスクを使用する]: #use-managed-disks-for-vms-in-an-availability-set
-

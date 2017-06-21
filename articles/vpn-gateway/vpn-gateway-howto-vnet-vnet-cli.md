@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/22/2017
 ms.author: cherylmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
-ms.openlocfilehash: 0b82a0c4e140d2084d7570f8c7eab1f809f15d9d
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: a05c878f876eadc5160ef9765f764595cade76a9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/23/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -28,10 +28,10 @@ ms.lasthandoff: 05/23/2017
 この記事では、仮想ネットワーク間で VPN Gateway 接続を確立する方法について説明します。 仮想ネットワークが属しているリージョンやサブスクリプションは異なっていてもかまいません。 この記事の手順は、Resource Manager デプロイメント モデルに適用されます。また、この手順では Azure CLI を使用します。 また、この構成の作成には、次のリストから別のオプションを選択して、別のデプロイ ツールまたはデプロイ モデルを使用することもできます。
 
 > [!div class="op_single_selector"]
-> * [Resource Manager - Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
-> * [Resource Manager - PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
-> * [Resource Manager - Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
-> * [クラシック - Azure Portal](vpn-gateway-howto-vnet-vnet-portal-classic.md)
+> * [Azure ポータル](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
+> * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
+> * [Azure Portal (クラシック)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 > * [異なるデプロイメント モデルの接続 - Azure Portal](vpn-gateway-connect-different-deployment-models-portal.md)
 > * [異なるデプロイメント モデルの接続 - PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 >
@@ -146,7 +146,7 @@ VNet 間接続の詳細については、この記事の最後にある「[VNet 
 7. TestVNet1 用の仮想ネットワーク ゲートウェイを作成します。 VNet 間構成では、RouteBased VpnType が必要です。 このコマンドの実行時に "--no-wait" パラメーターを使用した場合には、フィードバックや出力が表示されなくなります。 "--no-wait" パラメーターを使用すると、ゲートウェイをバックグラウンドで作成できます。 これは、VPN ゲートウェイの作成がすぐに完了するという意味ではありません。 使用するゲートウェイ SKU によっては、ゲートウェイの作成に 45 分以上かかる場合も少なくありません。
 
   ```azurecli
-  az network vnet-gateway create -n VNet1GW -l eastus --public-ip-address VNet1GWIP -g TestRG1 --vnet TestVNet1 --gateway-type Vpn --sku Standard --vpn-type RouteBased --no-wait
+  az network vnet-gateway create -n VNet1GW -l eastus --public-ip-address VNet1GWIP -g TestRG1 --vnet TestVNet1 --gateway-type Vpn --sku VpnGw1 --vpn-type RouteBased --no-wait
   ```
 
 ### <a name="TestVNet4"></a>手順 3 - TestVNet4 を作成し、構成する
@@ -181,7 +181,7 @@ VNet 間接続の詳細については、この記事の最後にある「[VNet 
 6. TestVNet4 の仮想ネットワーク ゲートウェイを作成します。
 
   ```azurecli
-  az network vnet-gateway create -n VNet4GW -l westus --public-ip-address VNet4GWIP -g TestRG4 --vnet TestVNet4 --gateway-type Vpn --sku Standard --vpn-type RouteBased --no-wait
+  az network vnet-gateway create -n VNet4GW -l westus --public-ip-address VNet4GWIP -g TestRG4 --vnet TestVNet4 --gateway-type Vpn --sku VpnGw1 --vpn-type RouteBased --no-wait
   ```
 
 ### <a name="step-4---create-the-connections"></a>手順 4 - 接続を作成する
@@ -318,10 +318,10 @@ VNet 間接続の詳細については、この記事の最後にある「[VNet 
 6. TestVNet5 ゲートウェイを作成する
 
   ```azurecli
-  az network vnet-gateway create -n VNet5GW -l japaneast --public-ip-address VNet5GWIP -g TestRG5 --vnet TestVNet5 --gateway-type Vpn --sku Standard --vpn-type RouteBased --no-wait
+  az network vnet-gateway create -n VNet5GW -l japaneast --public-ip-address VNet5GWIP -g TestRG5 --vnet TestVNet5 --gateway-type Vpn --sku VpnGw1 --vpn-type RouteBased --no-wait
   ```
 
-### <a name="step-6---create-the-connections"></a>手順 8 - 接続を作成する
+### <a name="step-8---create-the-connections"></a>手順 8 - 接続を作成する
 
 ゲートウェイが異なるサブスクリプションにあるため、**[サブスクリプション 1]** と **[サブスクリプション 5]** というマークの付いた 2 つの CLI セッションにこの手順を分けました。 サブスクリプションを切り替えるには、"az account list --all" を実行して、アカウントで使用できるサブスクリプションを一覧表示します。次に、"az account set --subscription <subscriptionID>" を実行して、使用するサブスクリプションに切り替えます。
 
@@ -371,3 +371,4 @@ VNet 間接続の詳細については、この記事の最後にある「[VNet 
 
 * 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines のドキュメント](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)を参照してください。
 * BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関する記事と [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関する記事を参照してください。
+

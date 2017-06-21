@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 02/08/2017
 ms.author: rli
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: ede96c450e1aa5e87d4dd2c1131cefec7cf3493c
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 299e55e095ac323ed0ded7c7844d7cd103174af2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -51,7 +51,7 @@ Azure CDN 製品には、**Azure CDN Standard from Akamai**、**Azure CDN Standa
 
 |  | Standard Akamai | Standard Verizon | Premium Verizon |
 | --- | --- | --- | --- |
-| [Storage](cdn-create-a-storage-account-with-cdn.md)、[Cloud Services](cdn-cloud-service-with-cdn.md)、[Web Apps](../app-service-web/cdn-websites-with-cdn.md)、[Media Services](../media-services/media-services-portal-manage-streaming-endpoints.md) などの Azure サービスと簡単に統合 |**&#x2713;** |**&#x2713;** |**&#x2713;** |
+| [Storage](cdn-create-a-storage-account-with-cdn.md)、[Cloud Services](cdn-cloud-service-with-cdn.md)、[Web Apps](../app-service-web/app-service-web-tutorial-content-delivery-network.md)、[Media Services](../media-services/media-services-portal-manage-streaming-endpoints.md) などの Azure サービスと簡単に統合 |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [REST API](https://msdn.microsoft.com/library/mt634456.aspx)、[.NET](cdn-app-dev-net.md)、[Node.js](cdn-app-dev-node.md)、[PowerShell](cdn-manage-powershell.md) を介した管理。 |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | CDN エンドポイントでの HTTPS のサポート |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | カスタム ドメイン HTTPS | |**&#x2713;** |**&#x2713;** |

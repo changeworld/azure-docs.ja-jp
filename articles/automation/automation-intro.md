@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/10/2016
 ms.author: magoedte;bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 15456a887aab29ac6c4ee74d15b8b8ef8d3047d3
-ms.openlocfilehash: 4e7488f954ce50298aba0da83ae07f7a0de6a73d
-ms.lasthandoff: 02/16/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: e37e79f3990d920a656330c4f4c5cf7748183441
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -51,7 +52,7 @@ Azure Automation での Runbook は、Windows PowerShell または Windows Power
 [Azure Automation DSC](automation-dsc-overview.md) は PowerShell DSC 用のクラウド ベースのソリューションであり、エンタープライズ環境に必要なサービスを提供します。  DSC リソースを Azure Automation で管理し、Azure クラウド内の DSC プル サーバーから構成を取得する仮想マシンおよび物理コンピューターに構成を適用できます。  また、Azure Automation DSC が提供するレポート サービスは、ノードが割り当てられている構成から逸脱したときや、新しい構成が適用されたときなど、重要なイベントをユーザーに通知します。 
 
 ## <a name="creating-your-own-dsc-configurations-with-azure-automation"></a>Azure Automation での独自の DSC 構成の作成
-[DSC 構成](automation-dsc-overview.md#azure-automation-dsc-terms) はノードの望ましい状態を指定します。  複数のノードで同じ構成を適用し、すべてが同一の状態を維持できます。  ローカル コンピューターで任意のテキスト エディターを使用して構成を作成した後、Azure Automation にインポートしてコンパイルし、ノードに適用できます。
+[DSC 構成](automation-dsc-overview.md) はノードの望ましい状態を指定します。  複数のノードで同じ構成を適用し、すべてが同一の状態を維持できます。  ローカル コンピューターで任意のテキスト エディターを使用して構成を作成した後、Azure Automation にインポートしてコンパイルし、ノードに適用できます。
 
 ## <a name="getting-modules-and-configurations"></a>モジュールと構成の取得
 Runbook や DSC の構成で使用できるコマンドレットを含む [PowerShell モジュール](automation-runbook-gallery.md#modules-in-powershell-gallery)を、[PowerShell ギャラリー](http://www.powershellgallery.com/)から取得できます。 このギャラリーを Azure ポータルから起動して、Azure Automation にモジュールを直接インポートできます。または、手動でダウンロードしてインポートすることもできます。 Azure ポータルからは、直接モジュールをインストールすることはできませんが、他のモジュールと同じように、ダウンロードしてインストールすることはできます。 

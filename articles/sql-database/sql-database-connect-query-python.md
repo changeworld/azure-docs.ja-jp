@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 05/24/2017
 ms.author: meetb
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 5fae11119500fd3be3af3e573d45f6cc5880e037
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 99195b43a1577f978562864bac5fa12cdeb95d63
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 06/17/2017
 
 ---
 # <a name="azure-sql-database-use-python-to-connect-and-query-data"></a>Azure SQL Database: Python を使って接続とデータの照会を行う
@@ -36,7 +36,7 @@ ms.lasthandoff: 05/26/2017
 
 ## <a name="install-the-python-and-database-communication-libraries"></a>Python とデータベースの通信ライブラリをインストールします。
 
-このセクションの手順では、Python による開発には慣れていて、Azure SQL Database は初めて使用するユーザーを想定しています。 Python による開発の経験がない場合は、「[Build an app using SQL Server (SQL Server を使用してアプリを構築する)](https://www.microsoft.com/en-us/sql-server/developer-get-started/)」に移動し、**Python** を選択してから、使用しているオペレーティング システムを選択します。
+このセクションの手順では、Python による開発には慣れていて、Azure SQL Database は初めて使用するユーザーを想定しています。 Python による開発の経験がない場合は、「[Build an app using SQL Server (SQL Server を使用してアプリを構築する)](https://www.microsoft.com/sql-server/developer-get-started/)」に移動し、**Python** を選択してから、使用しているオペレーティング システムを選択します。
 
 ### <a name="mac-os"></a>**Mac OS**
 ターミナルを開き、python スクリプトの作成先となるディレクトリに移動します。 次のコマンドを入力して、**brew**、**Microsoft ODBC Driver for Mac**、**pyodbc** をインストールします。 pyodbc は、Linux 上で Microsoft ODBC Driver を使用して SQL データベースに接続します。
@@ -88,7 +88,7 @@ Azure SQL データベースに接続するために必要な接続情報を取�
    
 ## <a name="select-data"></a>データの選択
 
-次のコードを使用して、[pyodbc.connect]((https://github.com/mkleehammer/pyodbc/wiki)) 関数と [SELECT](https://docs.microsoft.com/sql/t-sql/queries/select-transact-sql) Transact-SQL ステートメントを使用し、カテゴリ単位で上位 20 の製品を照会します。 [cursor.execute](https://mkleehammer.github.io/pyodbc/api-cursor.html) 関数は、SQL Database に対するクエリから結果セットを取得するために使用されます。 この関数はクエリを受け取り、[cursor.fetchone()](https://mkleehammer.github.io/pyodbc/api-cursor.html) を使用して反復処理できる結果セットを返します。 サーバー、データベース、ユーザー名、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。
+次のコードを使用して、[pyodbc.connect](https://github.com/mkleehammer/pyodbc/wiki) 関数と [SELECT](https://docs.microsoft.com/sql/t-sql/queries/select-transact-sql) Transact-SQL ステートメントを使用し、カテゴリ単位で上位 20 の製品を照会します。 [cursor.execute](https://github.com/mkleehammer/pyodbc/wiki/Cursor) 関数は、SQL Database に対するクエリから結果セットを取得するために使用されます。 この関数はクエリを受け取り、**cursor.fetchone()** を使用して反復処理できる結果セットを返します。 サーバー、データベース、ユーザー名、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。
 
 ```Python
 import pyodbc
@@ -107,7 +107,7 @@ while row:
 ```
 
 ## <a name="insert-data"></a>データを挿入する
-次のコードを使用して、[cursor.execute](https://mkleehammer.github.io/pyodbc/api-cursor.html) 関数と [INSERT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) Transact-SQL ステートメントを使用し、SalesLT.Product テーブルに新しい製品を挿入します。 サーバー、データベース、ユーザー名、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。
+次のコードを使用して、[cursor.execute](https://github.com/mkleehammer/pyodbc/wiki/Cursor) 関数と [INSERT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) Transact-SQL ステートメントを使用し、SalesLT.Product テーブルに新しい製品を挿入します。 サーバー、データベース、ユーザー名、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。
 
 ```Python
 import pyodbc
@@ -124,7 +124,7 @@ cnxn.commit()
 ```
 
 ## <a name="update-data"></a>データの更新
-次のコードを使用して、[cursor.execute](https://mkleehammer.github.io/pyodbc/api-cursor.html) 関数と [UPDATE](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql) Transact-SQL ステートメントを使用し、先ほど追加した新しい製品を更新します。 サーバー、データベース、ユーザー名、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。
+次のコードを使用して、[cursor.execute](https://github.com/mkleehammer/pyodbc/wiki/Cursor) 関数と [UPDATE](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql) Transact-SQL ステートメントを使用し、先ほど追加した新しい製品を更新します。 サーバー、データベース、ユーザー名、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。
 
 ```Python
 import pyodbc
@@ -143,7 +143,7 @@ cnxn.commit()
 ```
 
 ## <a name="delete-data"></a>データの削除
-次のコードを使用して、[cursor.execute](https://mkleehammer.github.io/pyodbc/api-cursor.html) 関数と [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL ステートメントを使用し、先ほど追加した新しい製品を削除します。 サーバー、データベース、ユーザー名、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。
+次のコードを使用して、[cursor.execute](https://github.com/mkleehammer/pyodbc/wiki/Cursor) 関数と [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL ステートメントを使用し、先ほど追加した新しい製品を削除します。 サーバー、データベース、ユーザー名、パスワードのパラメーターを、AdventureWorksLT サンプル データでデータベースを作成したときに指定した値に置き換えます。
 
 ```Python
 import pyodbc
@@ -164,6 +164,6 @@ cnxn.commit()
 
 - [最初の Azure SQL Database の設計](sql-database-design-first-database.md)
 - [SQL Server 用 Microsoft Python ドライバー](https://docs.microsoft.com/sql/connect/python/python-driver-for-sql-server/)
-- [Python デベロッパー センター](/develop/python/)
+- [Python デベロッパー センター](https://azure.microsoft.com/develop/python/?v=17.23h)
 
 
