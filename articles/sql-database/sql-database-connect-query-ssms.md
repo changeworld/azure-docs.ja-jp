@@ -47,7 +47,7 @@ Azure SQL データベースに接続するために必要な接続情報を取�
 2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
 3. データベースの [**概要**] ページで、次の図に示すように、完全修飾サーバー名を確認します。 サーバー名をポイントすると、**[コピーするにはクリックします]** オプションが表示されます。
 
-   ![接続情報](./media/sql-database-connect-query-ssms/connection-information.png) 
+   ![接続情報](./media/sql-database-get-started-portal/server-name.png) 
 
 4. Azure SQL Database サーバーのログイン情報を忘れた場合は、[SQL データベース サーバー] ページに移動して、サーバー管理者名を表示し、必要に応じて、パスワードをリセットします。 
 

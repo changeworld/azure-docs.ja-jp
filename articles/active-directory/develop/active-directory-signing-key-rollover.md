@@ -3,7 +3,7 @@ title: "Azure AD の署名キーのロールオーバー | Microsoft Docs"
 description: "この記事では、Azure Active Directory の署名キーのロール オーバーのベスト プラクティスについて説明します"
 services: active-directory
 documentationcenter: .net
-author: gsacavdm
+author: dstrockis
 manager: krassk
 editor: 
 ms.assetid: ed964056-0723-42fe-bb69-e57323b9407f
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2016
-ms.author: gsacavdm
+ms.author: dastrock
 ms.custom: aaddev
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1

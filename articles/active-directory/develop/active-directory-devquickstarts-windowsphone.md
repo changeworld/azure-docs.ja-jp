@@ -3,7 +3,7 @@ title: "Azure AD Windows Phone の概要 | Microsoft Docs"
 description: "サインインし、OAuth を使用して Azure AD で保護されている API を呼び出すために Azure AD と連携する Windows Phone アプリケーションを構築する方法を説明します。"
 services: active-directory
 documentationcenter: windows
-author: dstrockis
+author: jmprieur
 manager: mbaldwin
 editor: 
 ms.assetid: 66f5ac20-5e1f-4b9d-bb99-9b3305e26416
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: mobile-windows-phone
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: dastrock
+ms.author: jmprieur
 ms.custom: aaddev
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6

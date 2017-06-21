@@ -2,7 +2,7 @@
 title: "Azure AD でサポートされているさまざまなトークンと要求の種類について | Microsoft Docs"
 description: "Azure Active Directory (AAD) によって発行された SAML 2.0 トークンおよび JSON Web トークン (JWT) のクレームを、理解および評価するためのガイド"
 documentationcenter: na
-author: bryanla
+author: dstrockis
 services: active-directory
 manager: mbaldwin
 editor: 
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/08/2017
-ms.author: mbaldwin
+ms.author: dastrock
 ms.custom: aaddev
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 83bb2090d3a2fbd4fabdcd660c72590557cfcafc

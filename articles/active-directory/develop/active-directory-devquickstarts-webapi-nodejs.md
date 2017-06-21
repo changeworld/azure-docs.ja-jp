@@ -3,7 +3,7 @@ title: "Azure AD Node.js の概要 | Microsoft Docs"
 description: "認証のために Azure AD と連携する Node.js REST Web API を構築する方法。"
 services: active-directory
 documentationcenter: nodejs
-author: brandwe
+author: navyasric
 manager: mbaldwin
 editor: 
 ms.assetid: 7654ab4c-4489-4ea5-aba9-d7cdc256e42a
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: xerners
+ms.author: nacanuma
 ms.custom: aaddev
 ms.translationtype: Human Translation
 ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228

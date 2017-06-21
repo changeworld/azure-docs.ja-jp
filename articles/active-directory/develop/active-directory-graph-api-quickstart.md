@@ -3,7 +3,7 @@ title: "Azure AD Graph API のクイック スタート | Microsoft Docs"
 description: "Azure Active Directory Graph API を使用すると、OData REST API エンドポイントを介して Azure AD にプログラムによってアクセスできます。 アプリケーションでは、Graph API を使用して、ディレクトリのデータとオブジェクトに対して、作成、読み取り、更新、および削除 (CRUD) の各操作を実行できます。"
 services: active-directory
 documentationcenter: n/a
-author: PatAltimore
+author: viv-liu
 manager: mbaldwin
 editor: 
 tags: 
@@ -14,7 +14,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/28/2017
-ms.author: patricka
+ms.author: viviali
 ms.custom: aaddev
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
