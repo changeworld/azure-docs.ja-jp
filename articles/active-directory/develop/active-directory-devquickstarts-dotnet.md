@@ -3,7 +3,7 @@ title: "Azure AD .NET の概要 | Microsoft Docs"
 description: "サインインし、OAuth を使用して Azure AD で保護されている API を呼び出すために Azure AD と連携する .NET Windows デスクトップ アプリケーションを構築する方法を説明します。"
 services: active-directory
 documentationcenter: .net
-author: dstrockis
+author: jmprieur
 manager: mbaldwin
 editor: 
 ms.assetid: ed33574f-6fa3-402c-b030-fae76fba84e1
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: dastrock
+ms.author: jmprieur
 ms.custom: aaddev
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 9cd676554542e4effef54790bf9095c5b7a8f75b

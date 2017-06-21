@@ -3,7 +3,7 @@ title: "Azure AD Xamarin の概要 | Microsoft Docs"
 description: "Azure AD と連携して、OAuth を使用してサインインし、Azure AD で保護された API を呼び出すことができる、Xamarin アプリケーションを構築します。"
 services: active-directory
 documentationcenter: xamarin
-author: dstrockis
+author: jmprieur
 manager: mbaldwin
 editor: 
 ms.assetid: 198cd2c3-f7c8-4ec2-b59d-dfdea9fe7d95
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: dastrock
+ms.author: jmprieur
 ms.custom: aaddev
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 9c40d273f102339fac8ea633c870b869d10106a7

@@ -2,7 +2,7 @@
 title: "Azure Active Directory 認証プロトコル | Microsoft Docs"
 description: "Azure Active Directory (AD) でサポートされる認証プロトコルの概要"
 documentationcenter: dev-center-name
-author: bryanla
+author: priyamohanram
 services: active-directory
 manager: mbaldwin
 editor: 

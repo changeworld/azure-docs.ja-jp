@@ -3,7 +3,7 @@ title: "Azure Active Directory のアプリケーション マニフェストに
 description: "Azure Active Directory アプリケーション マニフェストについて詳しく説明しています。このマニフェストは、Azure AD テナントでのアプリケーションの ID 構成を表しています。また、OAuth 認証、同意エクスペリエンスなどを利用しやすくするために使用されます。"
 services: active-directory
 documentationcenter: 
-author: bryanla
+author: sureshja
 manager: mbaldwin
 editor: 
 ms.assetid: 4804f3d4-0ff1-4280-b663-f8f10d54d184
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/08/2017
-ms.author: dkershaw;bryanla
+ms.author: sureshja
 ms.custom: aaddev
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 7d6525f4614c6301f0ddb621b0483da70842a71b
