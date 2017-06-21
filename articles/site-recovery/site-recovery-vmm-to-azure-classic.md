@@ -8,15 +8,16 @@ manager: jwhit
 editor: 
 ms.assetid: 9d526a1f-0d8e-46ec-83eb-7ea762271db5
 ms.service: site-recovery
-ms.workload: backup-recovery
+ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 02/06/2017
 ms.author: raynew
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: ed97f2aeb19566b12342e5194ac8a01293f453bf
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/03/2017
 
 

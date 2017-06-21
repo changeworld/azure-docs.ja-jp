@@ -42,7 +42,7 @@ ms.lasthandoff: 05/18/2017
 
 [az login](/cli/azure/#login) コマンドを使用して Azure サブスクリプションにサインインし、画面上の指示に従います。 
 
-```azurecli-interactive
+```azurecli
 az login
 ```
 

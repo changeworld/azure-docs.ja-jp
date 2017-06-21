@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/09/2017
+ms.date: 06/16/2017
 ms.author: corywink
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
 ms.openlocfilehash: 5e3221395082513f842863615d40f7d3ebf2562e
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/10/2017
 
 
@@ -53,7 +54,7 @@ ms.lasthandoff: 03/10/2017
 6. **[要求]** を選択します。 この操作によって、特定の JSON 形式のペイロードを含む受信 HTTP 要求がトリガーとして機能するようになります。
 7. 要求本文の JSON スキーマには、以下のコードを貼り付けます。
    
-    ```
+    ```json
     {
       "$schema": "http://json-schema.org/draft-04/schema#",
       "id": "/",
@@ -109,14 +110,14 @@ ms.lasthandoff: 03/10/2017
 
 1. git クライアントを使用して、最新バージョンの [azure-iot-remote-monitoring github リポジトリ][lnk-rmgithub]を複製します。 次に例を示します。
    
-    ```
+    ```cmd
     git clone https://github.com/Azure/azure-iot-remote-monitoring.git
     ```
 2. Visual Studio で、リポジトリのローカル コピーの **RemoteMonitoring.sln** を開きます。
 3. **Infrastructure\\Repository** フォルダーの **ActionRepository.cs** ファイルを開きます。
 4. 以下のように、ロジック アプリからメモした **[この URL に対する HTTP POST]** を使用して **actionIds** ディクショナリを更新します。
    
-    ```
+    ```csharp
     private Dictionary<string,string> actionIds = new Dictionary<string, string>()
     {
         { "Send Message", "<Http Post to this URL>" },
@@ -132,9 +133,9 @@ ms.lasthandoff: 03/10/2017
 2. ローカルでデプロイする場合は、[ローカル デプロイ][lnk-localdeploy]の手順に従ってください。
 3. クラウドにデプロイし、既存のクラウド デプロイを更新する場合は、[クラウド デプロイ][lnk-clouddeploy]の手順に従ってください。 デプロイ名として、元のデプロイの名前を使用します。 たとえば、元のデプロイ名が **demologicapp**の場合は、以下のコマンドを使用します。
    
-   ``
+   ```cmd
    build.cmd cloud release demologicapp
-   ``
+   ```
    
    ビルド スクリプトを実行する場合は、ソリューションのプロビジョニング時に使用したものと同じ Azure アカウント、サブスクリプション、リージョン、および Active Directory インスタンスを必ず使用してください。
 

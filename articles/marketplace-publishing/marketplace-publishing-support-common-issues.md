@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2016
+ms.date: 06/16/2017
 ms.author: v-jeana; hascipio; v-dabosl
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 11b5fb0ed1b3939d8278156fcf2c831befc5f7ff
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -30,8 +32,8 @@ ms.openlocfilehash: 11b5fb0ed1b3939d8278156fcf2c831befc5f7ff
 
 > [!NOTE]
 > 顧客または Azure リセラーから、返金またはクレジットの要求が Microsoft 宛になされた場合、Azure サービスの提供で使用するのと同じポリシーが適用されます。 それらのポリシーで返金またはクレジットが指示される場合、弊社は事前に振り出して、発行元は Microsoft が発行元に代わって行う顧客または Azure リセラー宛ての返金またはクレジットを承認することになります。 ポリシーで返金もクレジットも指示されない場合、顧客または Azure リセラーに対して、直接発行元に連絡を取るように通知する場合があります。
-> 
-> 
+>
+>
 
   ![1_RequestRefund][1]
 
@@ -39,12 +41,12 @@ ms.openlocfilehash: 11b5fb0ed1b3939d8278156fcf2c831befc5f7ff
 2. **[問題の種類]** ボックスで、**[顧客の管理]** を選択します。
 3. **[カテゴリ]** ボックスで、**[お客様への返金の承認または要求]** を選択します。
 4. **[要求の開始]**をクリックします。
-   
+
    ![2_RequestRefund][2]
 
 1. 連絡先情報を提供する。
 2. **[どんな問題ですか?]** ボックスに、次の情報を入力します。
-   
+
    * 影響を受ける顧客のサブスクリプション ID
    * 顧客名
    * クレジットの合計金額
@@ -83,8 +85,8 @@ ms.openlocfilehash: 11b5fb0ed1b3939d8278156fcf2c831befc5f7ff
 
 > [!NOTE]
 > 電話番号または電子メール アドレスで検証できます。
-> 
-> 
+>
+>
 
 ![protectacct][6]
 
@@ -121,9 +123,4 @@ ms.openlocfilehash: 11b5fb0ed1b3939d8278156fcf2c831befc5f7ff
 [6]: ./media/marketplace-publishing-support-common-issues/protectacct.png
 [7]: ./media/marketplace-publishing-support-common-issues/acctdetails.png
 [8]: ./media/marketplace-publishing-support-common-issues/manageadmins.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

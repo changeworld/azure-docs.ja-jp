@@ -1,6 +1,6 @@
 ---
 title: "Azure のサイト間接続用に強制トンネリングを構成する: Resource Manager | Microsoft Docs"
-description: "すべてのインターネットへのトラフィックをオンプレミスの場所に &quot;強制的に&quot; リダイレクトする方法。"
+description: "すべてのインターネットへのトラフィックをオンプレミスの場所に \"強制的に\" リダイレクトする方法。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/11/2017
+ms.date: 06/19/2017
 ms.author: cherylmc
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: e31f125d7f0cc82cb2f409d9142e728e1f83ad69
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/27/2017
 
 
@@ -129,7 +130,7 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
   $pip = New-AzureRmPublicIpAddress -Name "GatewayIP" -ResourceGroupName "ForcedTunneling" -Location "North Europe" -AllocationMethod Dynamic
   $gwsubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
   $ipconfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name "gwIpConfig" -SubnetId $gwsubnet.Id -PublicIpAddressId $pip.Id
-  New-AzureRmVirtualNetworkGateway -Name "Gateway1" -ResourceGroupName "ForcedTunneling" -Location "North Europe" -IpConfigurations $ipconfig -GatewayType Vpn -VpnType RouteBased -GatewayDefaultSite $lng1 -EnableBgp $false
+  New-AzureRmVirtualNetworkGateway -Name "Gateway1" -ResourceGroupName "ForcedTunneling" -Location "North Europe" -IpConfigurations $ipconfig -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -GatewayDefaultSite $lng1 -EnableBgp $false
   ```
 10. サイト間 VPN 接続を確立します。
 

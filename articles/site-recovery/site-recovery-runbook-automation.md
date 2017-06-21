@@ -11,12 +11,13 @@ ms.service: site-recovery
 ms.devlang: powershell
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.workload: required
+ms.workload: storage-backup-recovery
 ms.date: 02/22/2017
 ms.author: ruturajd@microsoft.com
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: 198caeea693fbc48b6e0eb1c9c8ee559e0553261
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/31/2017
 
 
@@ -33,7 +34,7 @@ Azure Automation について聞いたことがない場合は、[こちら](htt
 
     ![](media/site-recovery-runbook-automation-new/essentials-rp.PNG)
 - - -
-1. カスタマイズ ボタンをクリックして、Runbook の追加を開始します。 
+1. カスタマイズ ボタンをクリックして、Runbook の追加を開始します。
 
     ![](media/site-recovery-runbook-automation-new/customize-rp.PNG)
 
@@ -41,10 +42,10 @@ Azure Automation について聞いたことがない場合は、[こちら](htt
 1. 開始グループ 1 を右クリックし、[事後アクションの追加] を選択して追加します。
 2. 新しいブレードでスクリプトをクリックして選択します。
 3. スクリプトに "Hello World" という名前を付けます。
-4. Automation アカウント名を選択します。 
+4. Automation アカウント名を選択します。
     >[!NOTE]
     > Automation アカウントは、Azure のいずれの geo のものでもかまいませんが、Site Recovery コンテナーと同じサブスクリプションのものである必要があります。
-    
+
 5. Automation アカウントから Runbook を選択します。 この Runbook は、最初のグループの復旧後、復旧計画の実行中に実行されるスクリプトです。
 
     ![](media/site-recovery-runbook-automation-new/update-rp.PNG)
@@ -71,13 +72,13 @@ Azure Automation について聞いたことがない場合は、[こちら](htt
         "VmMap":{"7a1069c6-c1d6-49c5-8c5d-33bfce8dd183":
 
                 { "SubscriptionId":"7a1111111-c1d6-49c5-8c5d-111ce8dd183",
-                
+
                 "ResourceGroupName":"ContosoRG",
-                
+
                 "CloudServiceName":"pod02hrweb-Chicago-test",
 
                 "RoleName":"Fabrikam-Hrweb-frontend-test",
-                
+
                 "RecoveryPointId":"TimeStamp"}
 
                 }
@@ -165,15 +166,15 @@ NSG を入力として受け取り、復旧計画の VM に適用するスクリ
     $NSGValue = $RecoveryPlanContext.RecoveryPlanName + "-NSG"
     $NSGRGValue = $RecoveryPlanContext.RecoveryPlanName + "-NSGRG"
 
-    $NSGnameVar = Get-AutomationVariable -Name $NSGValue 
+    $NSGnameVar = Get-AutomationVariable -Name $NSGValue
     $RGnameVar = Get-AutomationVariable -Name $NSGRGValue
 ```
 
 次に、これらの変数を Runbook の中で使用して、それに該当する NSG を、フェールオーバーされた仮想マシンのネットワーク インターフェイスに適用することができます。
 
 ```
-     InlineScript { 
-         if (($Using:NSGname -ne $Null) -And ($Using:NSGRGname -ne $Null)) {
+     InlineScript {
+        if (($Using:NSGname -ne $Null) -And ($Using:NSGRGname -ne $Null)) {
             $NSG = Get-AzureRmNetworkSecurityGroup -Name $Using:NSGname -ResourceGroupName $Using:NSGRGname
             Write-output $NSG.Id
             #Apply the NSG to a network interface
@@ -213,17 +214,17 @@ NSG を入力として受け取り、復旧計画の VM に適用するスクリ
 3. この変数を Runbook で使用し、指定された VMGUID が復旧計画のコンテキストに見つかった場合、仮想マシンに NSG を適用します。
 
     ```
-        $VMDetailsObj = Get-AutomationVariable -Name $RecoveryPlanContext.RecoveryPlanName 
+        $VMDetailsObj = Get-AutomationVariable -Name $RecoveryPlanContext.RecoveryPlanName
     ```
 
 4. Runbook で復旧計画のコンテキストの VM を反復処理しながら、その VM が **$VMDetailsObj** にも存在するかどうかをチェックします。 存在する場合は、変数のプロパティにアクセスして NSG を適用します。
     ```
         $VMinfo = $RecoveryPlanContext.VmMap | Get-Member | Where-Object MemberType -EQ NoteProperty | select -ExpandProperty Name
         $vmMap = $RecoveryPlanContext.VmMap
-           
+
         foreach($VMID in $VMinfo) {
             Write-output $VMDetailsObj.value.$VMID
-            
+
             if ($VMDetailsObj.value.$VMID -ne $Null) { #If the VM exists in the context, this will not b Null
                 $VM = $vmMap.$VMID
                 # Access the properties of the variable

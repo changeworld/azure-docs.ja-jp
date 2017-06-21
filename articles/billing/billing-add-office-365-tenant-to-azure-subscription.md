@@ -13,11 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 02/16/2017
+ms.date: 06/13/2017
 ms.author: cjiang
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 1cb57e5156dab976599ddfa9a58f26ca8ef1ee0e
 ms.openlocfilehash: 42db903244e5642dbf273e71994d402f8aeda1e9
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/22/2017
 
 

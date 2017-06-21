@@ -43,5 +43,5 @@
 | VPN Gateway ごとのポイント対サイト ルート証明書 |20 |20 |
 | 仮想ネットワークごとのセカンダリ IP 構成 |1,000 |サポートにお問い合わせください |
 
-制限値を既定値から引き上げる必要がある場合は、[サポートにお問い合わせ](../articles/azure-supportability/how-to-create-azure-support-request.md)ください。
+制限値を既定値から引き上げる必要がある場合は、[サポートにお問い合わせ](../articles/azure-supportability/resource-manager-core-quotas-request.md )ください。
 

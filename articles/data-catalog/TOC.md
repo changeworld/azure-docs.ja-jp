@@ -23,6 +23,7 @@
 
 # リファレンス
 ## [REST ()](/rest/api/datacatalog/)
+## [検索構文リファレンス](/rest/api/datacatalog/data-catalog-search-syntax-reference)
 ## [開発者の概念](data-catalog-developer-concepts.md)
 ## [開発者向けサンプル](data-catalog-samples.md)
 
@@ -34,8 +35,3 @@
 ## [料金](https://azure.microsoft.com/pricing/details/data-catalog/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-catalog)
-
-
-<!--HONumber=Feb17_HO1-->
-
-

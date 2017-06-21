@@ -5,10 +5,8 @@ services: mysql
 author: jasonh
 ms.author: kamathsun
 manager: jhubbard
-editor: jasonh
-ms.assetid: 
+editor: jasonwhowell
 ms.service: mysql-database
-ms.tgt_pltfrm: portal
 ms.topic: article
 ms.date: 05/10/2017
 ms.translationtype: Human Translation
@@ -47,9 +45,9 @@ Azure Database for MySQL では、サーバーを作成するときに複数の�
 
 ## <a name="preview-functional-limitations"></a>プレビュー中の機能制限: 
 ### <a name="scale-operations"></a>スケール操作: 
-1.    サービス レベル間でのサーバーの動的スケーリングは現在サポートされていません。 つまり、Basic サービス レベルと Standard サービス レベルの間での切り替えです。
-2.    現時点では、事前に作成されたサーバーのストレージをオンデマンドで動的に増やすことはできません。
-3.    サーバー ストレージを減らすことはできません。
+1.  サービス レベル間でのサーバーの動的スケーリングは現在サポートされていません。 つまり、Basic サービス レベルと Standard サービス レベルの間での切り替えです。
+2.  現時点では、事前に作成されたサーバーのストレージをオンデマンドで動的に増やすことはできません。
+3.  サーバー ストレージを減らすことはできません。
 
 ### <a name="server-version-upgrades"></a>サーバー バージョンのアップグレード: 
 - データベース エンジンのメジャー バージョン間での自動移行は現在サポートされていません。
@@ -58,8 +56,8 @@ Azure Database for MySQL では、サーバーを作成するときに複数の�
 - サブスクリプションとリソース グループ間での事前作成されたサーバーの動的な移動は現在サポートされていません。
 
 ### <a name="point-in-time-restore"></a>ポイントインタイム リストア: 
-1.    別のサービス レベルやコンピューティング ユニットおよびストレージ サイズに復元することはできません。
-2.    破棄されたサーバーへの復元はサポートされていません。
+1.  別のサービス レベルやコンピューティング ユニットおよびストレージ サイズに復元することはできません。
+2.  破棄されたサーバーへの復元はサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ:
 [各サービス レベルで使用できる内容](concepts-service-tiers.md)

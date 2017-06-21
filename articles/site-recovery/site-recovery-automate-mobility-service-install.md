@@ -8,15 +8,16 @@ manager: lorenr
 editor: 
 ms.assetid: 1f8cd3ac-0522-48eb-a5f0-679ee9192ddb
 ms.service: site-recovery
-ms.workload: backup-recovery
+ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: krnese
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2b9a8b5d7b889926f1cdbb6787fea1579dd21190
 ms.openlocfilehash: 941bc07fa9be765403e8fe541caf660eef15585e
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/22/2017
 
 

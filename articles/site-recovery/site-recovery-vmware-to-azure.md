@@ -8,18 +8,19 @@ manager: jwhit
 editor: 
 ms.assetid: dab98aa5-9c41-4475-b7dc-2e07ab1cfd18
 ms.service: site-recovery
-ms.workload: backup-recovery
+ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2017
+ms.date: 06/14/2017
 ms.author: raynew
+ROBOTS: NOINDEX, NOFOLLOW
+redirect_url: vmware-walkthrough-overview
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
 ms.openlocfilehash: de45957d4531202005d6b38e8b218ffe023fa0b2
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/18/2017
-
 
 ---
 # <a name="replicate-vmware-virtual-machines-to-azure-with-site-recovery"></a>Site Recovery を使用して VMware 仮想マシンを Azure にレプリケートする

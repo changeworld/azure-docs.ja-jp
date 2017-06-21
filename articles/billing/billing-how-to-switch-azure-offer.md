@@ -13,11 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 06/13/2017
 ms.author: genli
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 9c4c872d03a3927d02d17de6cc2aae6e684f1fad
 ms.openlocfilehash: b6a1e6175833ea0cdc785b18c88b43e06a7ad57c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/13/2017
 
 
 ---
@@ -106,10 +108,5 @@ Azure プランとは、ご利用の Azure サブスクリプションの*種類
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 まだ他に質問がある場合は、問題を迅速に解決できるよう [サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ください。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 
