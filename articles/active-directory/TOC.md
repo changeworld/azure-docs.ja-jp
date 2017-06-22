@@ -5,6 +5,7 @@
 ## [Azure ID ソリューションについて](understand-azure-identity-solutions.md)
 ## [Azure ポータルのエクスペリエンスをプレビューします。](active-directory-preview-explainer.md)
 
+
 # 作業開始
 ## [Azure AD テナントを取得する](active-directory-howto-tenant.md)
 ## [Azure AD Premium へのサインアップ](active-directory-get-started-premium.md)
@@ -14,7 +15,8 @@
 ### [クラシック ポータル](active-directory-licensing-what-is.md)
 ## [組織で Azure を導入する](sign-up-organization.md)
 ## [FAQ](active-directory-faq.md)
-## [SaaS アプリのチュートリアル](active-directory-saas-tutorial-list.md)
+## [Azure Active Directory のサポートを得る方法](active-directory-troubleshooting-support-howto.md)
+## [SaaS アプリの統合に関するチュートリアル](active-directory-saas-tutorial-list.md)
 
 # 方法
 ## 計画と設計

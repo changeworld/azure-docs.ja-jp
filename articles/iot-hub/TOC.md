@@ -12,10 +12,6 @@
 #### [Node.JS](iot-hub-node-node-getstarted.md)
 #### [Python](iot-hub-python-getstarted.md)
 
-### シミュレートされたゲートウェイの使用
-#### [Linux でのシミュレーション](iot-hub-linux-iot-edge-get-started.md)
-#### [Windows でのシミュレーション](iot-hub-windows-iot-edge-get-started.md)
-
 ### 物理デバイスの使用
 #### [Node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md)
 #### [C での Raspberry Pi](iot-hub-raspberry-pi-kit-c-get-started.md)
@@ -31,6 +27,8 @@
 ##### [ゲートウェイとしての Intel NUC のセットアップ](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
 ##### [IoT Hub へのゲートウェイの接続](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
 ##### [ゲートウェイを使用したデータ変換](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
+
+### [オンライン デバイス シミュレーターの使用](iot-hub-raspberry-pi-web-simulator-get-started.md)
 
 ## [iothub-explorer を使用したクラウド デバイス メッセージングの管理](iot-hub-explorer-cloud-device-messaging.md)
 ## [Azure データ ストレージへの IoT Hub メッセージの保存](iot-hub-store-data-in-azure-table-storage.md)
@@ -48,15 +46,21 @@
 ### [その他のプロトコルのサポート](iot-hub-protocol-gateway.md)
 ## [開発](iot-hub-how-to.md)
 ### [開発者ガイド](iot-hub-devguide.md)
-#### [メッセージを送受信する](iot-hub-devguide-messaging.md)
 #### [デバイスからクラウドの機能ガイド](iot-hub-devguide-d2c-guidance.md)
 #### [クラウドからデバイスの機能ガイド](iot-hub-devguide-c2d-guidance.md)
+#### [メッセージを送受信する](iot-hub-devguide-messaging.md)
+##### [デバイスからクラウドへのメッセージを IoT Hub に送信する](iot-hub-devguide-messages-d2c.md)
+##### [デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る](iot-hub-devguide-messages-read-builtin.md)
+##### [デバイスからクラウドへのメッセージにカスタム エンドポイントとルーティング ルールを使用する](iot-hub-devguide-messages-read-custom.md)
+##### [クラウドからデバイスへのメッセージを IoT Hub から送信する](iot-hub-devguide-messages-c2d.md)
+##### [IoT Hub メッセージを作成し、読み取る](iot-hub-devguide-messages-construct.md)
 #### [デバイスからのファイルをアップロードする](iot-hub-devguide-file-upload.md)
 #### [デバイス ID を管理する](iot-hub-devguide-identity-registry.md)
 #### [IoT Hub へのアクセスの制御](iot-hub-devguide-security.md)
 #### [デバイス ツインを理解する](iot-hub-devguide-device-twins.md)
 #### [デバイスでダイレクト メソッドを呼び出す](iot-hub-devguide-direct-methods.md)
 #### [複数デバイスでのジョブをスケジュール設定する](iot-hub-devguide-jobs.md)
+#### [通信プロトコルの選択](iot-hub-devguide-protocols.md)
 #### [IoT Hub エンドポイント](iot-hub-devguide-endpoints.md)
 #### [クエリ言語](iot-hub-devguide-query-language.md)
 #### [クォータとスロットル](iot-hub-devguide-quotas-throttling.md)
@@ -119,18 +123,22 @@
 ### [セキュリティのアーキテクチャ](iot-hub-security-architecture.md)
 ### [IoT デプロイのセキュリティ保護](iot-hub-security-deployment.md)
 ## IoT Edge
+### 作業開始
+#### [Linux](iot-hub-linux-iot-edge-get-started.md)
+#### [Windows](iot-hub-windows-iot-edge-get-started.md)
 ### デバイスのシミュレーション
 #### [Linux](iot-hub-linux-iot-edge-simulated-device.md)
 #### [Windows](iot-hub-windows-iot-edge-simulated-device.md)
 ### [実在のデバイスの使用](iot-hub-iot-edge-physical-device.md)
 
 # リファレンス
-## [Azure CLI 2.0 プレビュー](/cli/azure/iot)
+## [Azure CLI 2.0](/cli/azure/iot)
 ## [.NET (サービス)](/dotnet/api/microsoft.azure.devices)
 ## [.NET (デバイス)](/dotnet/api/microsoft.azure.devices.client)
 ## [Java (サービス)](/java/api/com.microsoft.azure.sdk.iot.service)
 ## [Java (デバイス)](/java/api/com.microsoft.azure.sdk.iot.device)
-## [Azure IoT SDK](http://azure.github.io/azure-iot-sdks/)
+## [Node.js SDK](http://azure.github.io/azure-iot-sdk-node/)
+## [C デバイス SDK](https://azure.github.io/azure-iot-sdk-c/index.html)
 ## [Azure IoT Edge](http://azure.github.io/iot-edge/)
 ## [REST (リソース プロバイダー)](https://docs.microsoft.com/rest/api/iothub/iothubresource)
 ## [REST (デバイス ID)](https://docs.microsoft.com/rest/api/iothub/deviceapi)

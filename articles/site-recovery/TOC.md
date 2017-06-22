@@ -1,13 +1,14 @@
 # 概要
 ## [Site Recovery とは](site-recovery-overview.md)
-## [Site Recovery のしくみ](site-recovery-components.md)
+## [Site Recovery のしくみ](site-recovery-azure-to-azure-architecture.md)
 ## [Azure への Hyper-V のレプリケーションのしくみ](site-recovery-hyper-v-azure-architecture.md)
 ## [保護できるワークロード](site-recovery-workload.md)
-## [Site Recovery のサポート マトリックス](site-recovery-support-matrix-to-azure.md)
+## [Site Recovery のサポート マトリックス](site-recovery-support-matrix-azure-to-azure.md)
 ## [FAQ](site-recovery-faq.md)
 ## [概要を見る](https://azure.microsoft.com/resources/videos/index/?services=site-recovery)
 
 # 作業の開始
+## [Azure 仮想マシンのレプリケート (プレビュー)](site-recovery-azure-to-azure.md)
 ## [VMware VM を Azure にレプリケート](site-recovery-vmware-to-azure.md)
 ## [物理サーバーを Azure にレプリケート](site-recovery-physical-servers-to-azure.md)
 ## [Hyper-V VM を Azure にレプリケートする (VMM 使用)](site-recovery-vmm-to-azure.md)
@@ -18,9 +19,10 @@
 
 # 方法
 ## プラン
-### [Azure へのレプリケーションの前提条件](site-recovery-prereq.md)
-### [ネットワーク インフラストラクチャの計画](site-recovery-network-design.md)
-### [ネットワーク マッピングの計画](site-recovery-network-mapping.md)
+### [Azure へのレプリケーションの前提条件](site-recovery-azure-to-azure-prereq.md)
+### [Azure VM のネットワーク送信接続の計画 (プレビュー)](site-recovery-azure-to-azure-networking-guidance.md)
+### [オンプレミス マシン向けのネットワーク インフラストラクチャの計画](site-recovery-network-design.md)
+### [ネットワーク マッピングの計画](site-recovery-network-mapping-azure-to-azure.md)
 ### [容量の計画と Azure への VMware レプリケーションのスケーリング](site-recovery-plan-capacity-vmware.md)
 ### [Azure への VMware レプリケーションのための Deployment Planner](site-recovery-deployment-planner.md)
 ### [Hyper-V レプリケーションのための Capacity Planner](site-recovery-capacity-planner.md)
@@ -33,19 +35,21 @@
 ### [VMware のレプリケーション用にモビリティ サービスをデプロイする](site-recovery-vmware-to-azure-install-mob-svc.md)
 #### [System Center Configuration Manager を使用してモビリティ サービスをデプロイする](site-recovery-install-mobility-service-using-sccm.md)
 #### [Azure Automation DSC を使用してモビリティ サービスをデプロイする](site-recovery-automate-mobility-service-install.md)
-### [Enable replication](site-recovery-replicate-vmware-to-azure.md)
+### [Enable replication](site-recovery-replicate-azure-to-azure.md)
 ## フェールオーバーとフェールバック
-### [保護されたマシンのフェールオーバー](site-recovery-failover.md)
 ### [復旧計画を設定する](site-recovery-create-recovery-plans.md)
 #### [復旧計画に Azure Runbook を追加する](site-recovery-runbook-automation.md)
 ### [テスト フェールオーバーの実行](site-recovery-test-failover-to-azure.md)
-### [フェールオーバー後のマシンの再保護](site-recovery-how-to-reprotect.md)
+### [保護されたマシンのフェールオーバー](site-recovery-failover.md)
+### [フェールオーバー後のマシンの再保護](site-recovery-how-to-reprotect-azure-to-azure.md)
 ### [Azure からのフェールバック](site-recovery-failback-azure-to-vmware.md)
 
 ## 移行
 ### [Azure への移行](site-recovery-migrate-to-azure.md)
 ### [Azure リージョンの間で移行](site-recovery-migrate-azure-to-azure.md)
 ### [AWS Windows インスタンスの Azure への移行](site-recovery-migrate-aws-to-azure.md)
+### [別の Azure リージョンへの移行マシンのレプリケート](site-recovery-azure-to-azure-after-migration.md)
+
 ## ワークロード
 ### [Active Directory と DNS](site-recovery-active-directory.md)
 ### [SQL Server](site-recovery-sql.md)
@@ -68,7 +72,10 @@
 ### [スケールアウト プロセス サーバーの管理](site-recovery-vmware-to-azure-manage-scaleout-process-server.md)
 ### [vCenter サーバーの管理](site-recovery-vmware-to-azure-manage-vCenter.md)
 ### [サーバーの削除と保護の無効化](site-recovery-manage-registration-and-protection.md)
-## [監視とトラブルシューティング](site-recovery-monitoring-and-troubleshooting.md)
+## トラブルシューティング
+### [ログの収集](site-recovery-monitoring-and-troubleshooting.md)
+### [Azure VM レプリケーションの問題](site-recovery-azure-to-azure-troubleshoot-errors.md)
+### [オンプレミスから Azure へのレプリケーションの問題](site-recovery-vmware-to-azure-protection-troubleshoot.md)
 
 # リファレンス
 ## [PowerShell](/powershell/module/azurerm.siterecovery)

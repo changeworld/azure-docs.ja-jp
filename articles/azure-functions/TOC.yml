@@ -69,7 +69,7 @@
     href: functions-how-to-use-azure-function-app-settings.md
   - name: Azure Functions の継続的なデプロイ
     href: functions-continuous-deployment.md
-  - name: コードとしてのインフラストラクチャを使用した Functions のデプロイ
+  - name: リソースのデプロイの自動化
     href: functions-infrastructure-as-code.md
   - name: Azure Functions の監視
     href: functions-monitoring.md
@@ -85,35 +85,31 @@
   items:
   - name: バインド
     items:
-    - name: Cosmos DB のバインド
+    - name: BLOB ストレージ
+      href: functions-bindings-storage-blob.md
+    - name: Cosmos DB
       href: functions-bindings-documentdb.md
-    - name: Event Hub のバインド
+    - name: イベント ハブ
       href: functions-bindings-event-hubs.md
-    - name: HTTP と webhook のバインド
+    - name: 外部ファイル
+      href: functions-bindings-external-file.md
+    - name: HTTP と webhook
       href: functions-bindings-http-webhook.md
-    - name: Mobile Apps のバインド
+    - name: Mobile Apps
       href: functions-bindings-mobile-apps.md
-    - name: Notification Hub 出力バインド
+    - name: Notification Hubs
       href: functions-bindings-notification-hubs.md
-    - name: キューとトピックの Service Bus トリガーとバインド
+    - name: Queue Storage
+      href: functions-bindings-storage-queue.md
+    - name: SendGrid
+      href: functions-bindings-sendgrid.md
+    - name: Service Bus
       href: functions-bindings-service-bus.md
-    - name: SendGrid のバインド
-      href: functions-bindings-sendgrid.md
-    - name: Storage のバインド
-      items:
-      - name: BLOB のバインド
-        href: functions-bindings-storage-blob.md
-      - name: キューのバインド
-        href: functions-bindings-storage-queue.md
-      - name: テーブルのバインド
-        href: functions-bindings-storage-table.md
-      - name: 外部ファイルのバインド
-        href: functions-bindings-external-file.md
-    - name: SendGrid のバインド
-      href: functions-bindings-sendgrid.md
-    - name: タイマー トリガー
+    - name: テーブル ストレージ
+      href: functions-bindings-storage-table.md
+    - name: Timer
       href: functions-bindings-timer.md
-    - name: Twilio 出力のバインド
+    - name: Twilio
       href: functions-bindings-twilio.md
   - name: OpenAPI リファレンス
     href: functions-api-definition.md     

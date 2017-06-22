@@ -3,8 +3,10 @@
 ## [OMS アーキテクチャ](operations-management-suite-architecture.md)
 
 # 作業開始
-## チュートリアル
-### [サービス マップ](operations-management-suite-walkthrough-servicemap.md)
+## [Log Analytics](../log-analytics/log-analytics-get-started.md)
+## [Automation](../automation/automation-offering-get-started.md)
+## [Backup](../backup/backup-introduction-to-azure-backup.md)
+## [Site Recovery](../site-recovery/site-recovery-overview.md)
 
 
 # 方法
@@ -35,13 +37,15 @@
 #### [AD 評価](../log-analytics/log-analytics-ad-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [AD レプリケーションの状態](../log-analytics/log-analytics-ad-replication-status.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [アラートの管理](../log-analytics/log-analytics-solution-alert-management.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-#### [サービス マップ](operations-management-suite-service-map.md)
-##### [構成](operations-management-suite-service-map-configure.md)
 #### [Azure Networking Analytics](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [コンテナー](../log-analytics/log-analytics-containers.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Key Vault Analytics](../log-analytics/log-analytics-azure-key-vault.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [ネットワーク パフォーマンス監視](../log-analytics/log-analytics-network-performance-monitor.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Service Fabric 分析](../log-analytics/log-analytics-service-fabric.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+#### サービス マップ
+##### [チュートリアル](operations-management-suite-walkthrough-servicemap.md)
+##### [最初の起動時にドメインに参加しているマシンになるように VM をプロビジョニングするには、](operations-management-suite-service-map.md)
+##### [構成](operations-management-suite-service-map-configure.md)
 #### [SQL の評価](../log-analytics/log-analytics-sql-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Surface Hub](../log-analytics/log-analytics-surface-hubs.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [アップグレード分析](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics?f=255&MSPPError=-2147217396)
@@ -60,6 +64,9 @@
 ### [ログ検索とアラート](operations-management-suite-solutions-resources-searches-alerts.md)
 ### [ビュー](operations-management-suite-solutions-resources-views.md)
 ### [ベスト プラクティス](operations-management-suite-solutions-best-practices.md)
+
+## 管理のシナリオ
+### [Runbook からの分析データの収集](operations-management-suite-runbook-datacollect.md)
 
 ## [OMS との統合](operations-management-suite-integration.md)
 
