@@ -15,8 +15,6 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/07/2017
 ms.author: iainfou
-experimental: true
-experiment_id: rasquill-ssh-20170308
 translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 4316f0690ac0941521f84d92f62b4fc3f42f76e0
