@@ -12,11 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/24/2017
+ms.date: 06/21/2017
 ms.author: ryanwi;chackdan
-translationtype: Human Translation
+redirect_url: /azure/service-fabric/service-fabric-cluster-creation-via-arm
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
 ms.openlocfilehash: ba1f6e5662700c309fcf198a4e114fd9b2b47c5f
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/29/2017
 
 
