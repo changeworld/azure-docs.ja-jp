@@ -1,4 +1,5 @@
 # 概要
+
 ## [Azure DNS とは](dns-overview.md)
 ## [DNS ゾーンとレコード](dns-zones-records.md)
 ## [Azure DNS による DNS 委任](dns-domain-delegation.md)
@@ -18,17 +19,21 @@
 # 方法
 
 ## DNS ゾーンの管理
+### [ポータル](dns-operations-dnszones-portal.md)
 ### [PowerShell](dns-operations-dnszones.md)
-### [Azure CLI](dns-operations-dnszones-cli.md)
+### [Azure CLI 1.0](dns-operations-dnszones-cli-nodejs.md)
+### [Azure CLI 2.0](dns-operations-dnszones-cli.md)
 
-
-## [DNS レコードの管理](dns-operations-recordsets-portal.md)
+## DNS レコードの管理
+### [ポータル](dns-operations-recordsets-portal.md)
 ### [PowerShell](dns-operations-recordsets.md)
-### [Azure CLI](dns-operations-recordsets-cli.md)
+### [Azure CLI 1.0](dns-operations-recordsets-cli-nodejs.md)
+### [Azure CLI 2.0](dns-operations-recordsets-cli.md)
 
-## [逆引き DNS レコードを管理する](dns-reverse-dns-record-operations-ps.md)
-### [Azure CLI](dns-reverse-dns-record-operations-cli.md)
-### [PowerShell](dns-reverse-dns-record-operations-classic-ps.md)
+## 逆引き DNS の管理
+### [概要](dns-reverse-dns-overview.md)
+### [Azure DNS での逆引き参照ゾーンのホスト](dns-reverse-dns-hosting.md)
+### [Azure サービスの逆引き DNS レコードの管理](dns-reverse-dns-for-azure-services.md)
 
 ## [DNS ゾーン ファイルのインポートとエクスポート](dns-import-export.md)
 ## [他の Azure サービスとの統合](dns-for-azure-services.md)
