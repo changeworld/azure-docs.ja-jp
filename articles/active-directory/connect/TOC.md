@@ -32,6 +32,7 @@
 ### [ユーザー サインオンのオプション](active-directory-aadconnect-user-signin.md)
 ### [フェデレーションに使用する複数ドメインのサポート](active-directory-aadconnect-multiple-domains.md)
 ### [自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)
+### [シングル サインオンに SAML 2.0 ID プロバイダー (IdP) を使用する](active-directory-aadconnect-federation-saml-idp.md)
 
 
 

@@ -17,6 +17,7 @@
 
 ## [Azure CLI 2.0](/cli/azure/acr)
 ## [REST ()](/rest/api/containerregistry)
+## [テレメトリ ヘッダー](container-registry-headers.md)
 
 # 関連項目
 

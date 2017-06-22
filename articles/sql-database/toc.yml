@@ -13,14 +13,12 @@
     href: sql-database-get-started-cli.md
   - name: DB の作成 - PowerShell
     href: sql-database-get-started-powershell.md
-  - name: 管理
+  - name: 接続とクエリ
     items:
     - name: SSMS
       href: sql-database-connect-query-ssms.md
     - name: VS Code
       href: sql-database-connect-query-vscode.md
-  - name: 接続
-    items:
     - name: .NET
       href: sql-database-connect-query-dotnet.md
     - name: PHP
@@ -37,7 +35,7 @@
   items:
   - name: 1 - 新しい SQL DB の作成/設定
     href: sql-database-design-first-database.md
-  - name: 2 - 既存の SQL Server の移行
+  - name: 2 - SQL Server DB の移行
     href: sql-database-migrate-your-sql-server-database.md
   - name: 3 - SQL DB をセキュリティ保護する
     href: sql-database-security-tutorial.md
@@ -45,26 +43,8 @@
     href: sql-database-performance-tutorial.md
   - name: 5 - マルチテナント アプリの実装
     href: sql-database-multi-tenant-application.md
-  - name: Wingtip SaaS に関するチュートリアル
-    items:
-    - name: Wingtip SaaS の概要
-      href: sql-database-wtp-overview.md
-    - name: Wingtip SaaS サンプルのデプロイ
-      href: sql-database-saas-tutorial.md
-    - name: 新しいテナントのプロビジョニング/カタログ登録
-      href: sql-database-saas-tutorial-provision-and-catalog.md
-    - name: パフォーマンスの監視
-      href: sql-database-saas-tutorial-performance-monitoring.md
-    - name: シングル テナントの復元
-      href: sql-database-saas-tutorial-restore-single-tenant.md
-    - name: テナント スキーマの管理
-      href: sql-database-saas-tutorial-schema-management.md
-    - name: アドホック分析の実行
-      href: sql-database-saas-tutorial-adhoc-analytics.md
-    - name: Log Analytics による監視
-      href: sql-database-saas-tutorial-log-analytics.md
-    - name: テナント分析の管理
-      href: sql-database-saas-tutorial-tenant-analytics.md
+  - name: 6 - 地理的に分散したデータベースの実装
+    href: sql-database-implement-geo-distributed-database.md 
 - name: サンプル
   items:
   - name: Azure CLI
@@ -145,7 +125,7 @@
       href: sql-database-ssms-mfa-authentication.md
     - name: 監査
       href: sql-database-auditing.md
-    - name: 監査と TDS
+    - name: テーブルの監査と TDS
       href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
     - name: 脅威の検出
       href: sql-database-threat-detection.md
@@ -175,25 +155,12 @@
       href: sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md
     - name: アプリのアップグレード
       href: sql-database-manage-application-rolling-upgrade.md
-  - name: 開発
+  - name: データベース開発
     items:
     - name: 概要
       href: sql-database-develop-overview.md
     - name: 接続
       href: sql-database-libraries.md
-    - name: アプリの設計 - SaaS
-      href: sql-database-design-patterns-multi-tenancy-saas-applications.md
-    - name: セキュリティ - SaaS
-      href: sql-database-elastic-tools-multi-tenant-row-level-security.md
-    - name: ポート - ADO.NET
-      href: sql-database-develop-direct-route-ports-adonet-v12.md
-    - name: アプリの認証
- 
-      href: sql-database-client-id-keys.md
-    - name: エラー メッセージ
-      href: sql-database-develop-error-messages.md
-    - name: Dapper
-      href: sql-database-elastic-scale-working-with-dapper.md
     - name: JSON データ
       href: sql-database-json-features.md
     - name: メモリ内
@@ -231,8 +198,6 @@
       href: sql-database-monitoring-with-dmvs.md
     - name: パフォーマンス ガイダンス
       href: sql-database-performance-guidance.md
-    - name: バッチ処理
-      href: sql-database-use-batching-to-improve-performance.md
     - name: 拡張イベント
       href: sql-database-xevent-db-diff-from-svr.md
     - name: 互換性レベル
@@ -355,6 +320,8 @@
       href: sql-database-xevent-code-event-file.md
     - name: 拡張イベント - リング バッファー
       href: sql-database-xevent-code-ring-buffer.md
+    - name: 診断ログの記録
+      href: sql-database-metrics-diag-logging.md
   - name: 管理
     items:
     - name: Azure Automation
@@ -363,6 +330,25 @@
       href: sql-database-ssms-remoteapp.md
     - name: SSMS - MFA
       href: sql-database-ssms-mfa-authentication-configure.md
+  - name: アプリケーションの開発
+    items:
+    - name: ポート - ADO.NET
+      href: sql-database-develop-direct-route-ports-adonet-v12.md
+    - name: アプリの認証
+ 
+      href: sql-database-client-id-keys.md
+    - name: エラー メッセージ
+      href: sql-database-develop-error-messages.md
+    - name: Dapper
+      href: sql-database-elastic-scale-working-with-dapper.md
+    - name: パフォーマンスを高めるためのバッチ処理
+      href: sql-database-use-batching-to-improve-performance.md
+    - name: SaaS アプリの設計
+      href: sql-database-design-patterns-multi-tenancy-saas-applications.md
+    - name: SaaS アプリのセキュリティ
+      href: sql-database-elastic-tools-multi-tenant-row-level-security.md
+    - name: SaaS アプリのチュートリアル
+      href: sql-database-wtp-overview.md
 - name: リファレンス
   items:
   - name: PowerShell
@@ -442,5 +428,3 @@
       href: https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools
     - name: エラスティック プール カスタム ダッシュボード
       href: https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools-custom-dashboard
-
-

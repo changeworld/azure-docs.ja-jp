@@ -140,6 +140,14 @@
       href: move-vm.md
     - name: 高可用性 VM の作成
       href: create-cli-complete.md
+    - name: Ansible
+      items:
+      - name: インストールと構成
+        href: ansible-install-configure.md
+      - name: 基本的な VM の作成
+        href: ansible-create-vm.md
+      - name: 完全な VM の作成
+        href: ansible-create-complete-vm.md
     - name: VM テンプレートを使用したアプリのデプロイ
       items:
       - name: チュートリアルの概要
@@ -194,7 +202,7 @@
       href: upload-vhd.md
     - name: 既存の VM をイメージにキャプチャする
       href: capture-image.md
-    - name: Azure での動作保証済みイメージ
+    - name: Azure のイメージを作成する
       items:
       - name: Ubuntu
         href: create-upload-ubuntu.md
@@ -206,6 +214,8 @@
         href: create-upload-centos.md
       - name: Oracle Linux
         href: oracle-create-upload-vhd.md
+      - name: OpenBSD
+        href: create-upload-openbsd.md
   - name: VM ストレージの管理
     items:
     - name: Azure Managed Disks

@@ -10,6 +10,7 @@
 ### [高度な脅威検出](azure-threat-detection.md)
 ### [ログ記録と監査](azure-log-audit.md)
 ### [パブリック クラウドでの分離](azure-isolation.md)
+### [セキュリティの技術的な機能](azure-security-technical-capabilities.md)
 
 # 作業の開始
 ## [Azure のセキュリティの概要](azure-security-getting-started.md)
@@ -18,6 +19,7 @@
 
 ## ネットワークのセキュリティ
 ### [ネットワーク セキュリティのベスト プラクティス](azure-security-network-security-best-practices.md)
+###[Azure のネットワーク セキュリティ](azure-network-security.md)
 ### [境界のセキュリティ](../best-practices-network-security.md?toc=%2fazure%2fsecurity%2ftoc.json)
 ### [セキュリティ保護されたハイブリッド ネットワーク アーキテクチャ](../guidance/guidance-iaas-ra-secure-vnet-hybrid.md?toc=%2fazure%2fsecurity%2ftoc.json)
 

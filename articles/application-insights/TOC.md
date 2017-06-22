@@ -116,7 +116,7 @@
 ### [サンプリング](app-insights-sampling.md)
 
 ## 管理
-### [価格とクォータの管理](app-insights-pricing.md)
+### [価格とデータ ボリュームの管理](app-insights-pricing.md)
 ### [SCOM での Application Insights を使用したアプリケーション パフォーマンス監視](app-insights-scom.md)
 
 ## エクスポート

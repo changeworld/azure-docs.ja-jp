@@ -7,6 +7,7 @@
 ## [初めてのロジック アプリの作成](logic-apps-create-a-logic-app.md)
 ## [ロジック アプリのテンプレート](logic-apps-use-logic-app-templates.md)
 ## [テンプレートからのロジック アプリの作成](logic-apps-arm-provision.md)
+## [Logic Apps への MABS アプリの移行](logic-apps-move-from-mabs.md)
 
 # 方法
 ## 構築
@@ -80,6 +81,7 @@
 ### [料金](https://azure.microsoft.com/pricing/details/logic-apps/)
 ### [使用量の測定](logic-apps-pricing.md)
 
+
 # サーバーレス
 ## 概要
 ### [Azure でのサーバーレス](logic-apps-serverless-overview.md)
@@ -128,6 +130,8 @@
 ### [Twitter](../connectors/connectors-create-api-twitter.md)
 ### [X12](logic-apps-enterprise-integration-x12.md)
 ### [XML の検証](logic-apps-enterprise-integration-xml-validation.md)
+
+## [コネクタ: 詳細](https://docs.microsoft.com/connectors/)
 ## スキーマの履歴
 ### [一般公開](logic-apps-schema-2016-04-01.md)
 ### [プレビュー](logic-apps-schema-2015-08-01.md)

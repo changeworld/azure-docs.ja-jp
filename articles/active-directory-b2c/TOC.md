@@ -3,6 +3,7 @@
 # 作業開始
 ## [Azure AD B2C ディレクトリの作成](active-directory-b2c-get-started.md)
 ## [アプリケーションの登録](active-directory-b2c-app-registration.md)
+## [組み込みのポリシー](active-directory-b2c-reference-policies.md)
 ## モバイル アプリとデスクトップ アプリ
 ### [概要](active-directory-b2c-reference-oauth-code.md)
 ### iOS
@@ -24,7 +25,8 @@
 ### [Hello を使用した JavaScript](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi)
 ## Web API
 ### [ASP.NET](active-directory-b2c-devquickstarts-api-dotnet.md)
-### [Node.JS](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)
+### [ASP.NET Core](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi)
+### [Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)
 ### [.NET Web API の呼び出し](active-directory-b2c-devquickstarts-web-api-dotnet.md)
 
 # ガイド
@@ -63,6 +65,7 @@
 #### [追加の要求の取得](active-directory-b2c-rest-api-step-custom.md)
 ### ログインのカスタマイズ
 #### [ユーザー入力の構成](active-directory-b2c-configure-signup-self-asserted-custom.md)
+#### [カスタム属性](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
 #### [UI のカスタマイズ](active-directory-b2c-ui-customization-custom.md)
 #### [トークンのカスタマイズ](active-directory-b2c-reference-manage-sso-and-token-configuration.md)
 ### トラブルシューティング
@@ -74,7 +77,6 @@
 ## 用語集
 ### [アプリケーションの種類](active-directory-b2c-apps.md)
 ### [認証プロトコル](active-directory-b2c-reference-protocols.md)
-### [組み込みのポリシー](active-directory-b2c-reference-policies.md)
 ### [トークン](active-directory-b2c-reference-tokens.md)
 ## [利用可能なリージョンとデータの保存場所](active-directory-b2c-reference-tenant-type.md)
 ## [課金の有効化](active-directory-b2c-how-to-enable-billing.md)

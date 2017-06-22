@@ -17,12 +17,22 @@
 ### [クラシック ポータルでの Windows Server](backup-client-automation-classic.md)
 
 ## Azure Backup Server
-### [Azure Portal での Azure Backup Server ワークロードの準備](backup-azure-microsoft-azure-backup.md)
-### [クラシック ポータルでの Azure Backup Server ワークロードの準備](backup-azure-microsoft-azure-backup-classic.md)
-### [Azure Backup Server を使用した VMware サーバーのバックアップ](backup-azure-backup-server-vmware.md)
-### [Azure Backup Server を使用した Exchange のバックアップ](backup-azure-exchange-mabs.md)
-### [Azure Backup Server を使用した SharePoint ファームのバックアップ](backup-azure-backup-sharepoint-mabs.md)
-### [Azure Backup Server を使用した SQL のバックアップ](backup-azure-sql-mabs.md)
+### [Azure Backup Server の保護マトリックス](backup-mabs-protection-matrix.md)
+### インストールまたはアップグレード
+#### [Azure Portal での Azure Backup Server ワークロードの準備](backup-azure-microsoft-azure-backup.md)
+#### [クラシック ポータルでの Azure Backup Server ワークロードの準備](backup-azure-microsoft-azure-backup-classic.md)
+#### [Azure Backup Server へのストレージの追加](backup-mabs-add-storage.md)
+#### [Azure Backup Server の v.2 へのアップグレード](backup-mabs-upgrade-to-v2.md)
+#### [Azure Backup Server の無人インストール](backup-mabs-unattended-install.md)
+### ワークロードの保護
+#### [Azure Backup Server を使用した VMware サーバーのバックアップ](backup-azure-backup-server-vmware.md)
+#### [Azure Backup Server を使用した Exchange のバックアップ](backup-azure-exchange-mabs.md)
+#### [Azure Backup Server を使用した SharePoint ファームのバックアップ](backup-azure-backup-sharepoint-mabs.md)
+#### [Azure Backup Server を使用した SQL のバックアップ](backup-azure-sql-mabs.md)
+#### [システムの状態とベア メタル回復の保護](backup-mabs-system-state-and-bmr.md)
+### トラブルシューティング
+#### [Azure Backup Server のトラブルシューティング](backup-azure-mabs-troubleshoot.md)
+
 
 ## Data Protection Manager
 ### [Azure Portal での DPM ワークロードの準備](backup-azure-dpm-introduction.md)
@@ -33,19 +43,25 @@
 ### [DPM を使った SharePoint ファームのバックアップ](backup-azure-backup-sharepoint.md)
 
 ## Azure VM
-### [Azure 仮想マシンの準備](backup-azure-vms-prepare.md)
-### [Resource Manager によりデプロイされた仮想マシンの準備](backup-azure-arm-vms-prepare.md)
-### [VM のバックアップ インフラストラクチャの計画](backup-azure-vms-introduction.md)
-### [Backup 資格情報コンテナーへの Azure 仮想マシンのバックアップ](backup-azure-vms.md)
-### [Recovery Services 資格情報コンテナーへの Azure 仮想マシンのバックアップ](backup-azure-arm-vms.md)
-### [暗号化された仮想マシンのバックアップと復元](backup-azure-vms-encryption.md)
-### [クラシック ポータルでの Azure VM のバックアップの管理と監視](backup-azure-manage-vms-classic.md)
-### [Azure Portal での Azure VM のバックアップの管理](backup-azure-manage-vms.md)
-### [Azure Portal での Azure VM のバックアップに関するアラートの監視](backup-azure-monitor-vms.md)
-### [Azure VM のバックアップからファイルを回復する](backup-azure-restore-files-from-vm.md)
-### [Azure での仮想マシンの復元](backup-azure-restore-vms.md)
-### [Resource Manager でデプロイされた VM の Azure Portal での復元](backup-azure-arm-restore-vms.md)
-### [Azure Backup を使用して暗号化された VM の Key Vault のキーとシークレットの復元](backup-azure-restore-key-secret.md)
+### VM を準備する
+#### [Azure 仮想マシンの準備](backup-azure-vms-prepare.md)
+#### [Resource Manager によりデプロイされた仮想マシンの準備](backup-azure-arm-vms-prepare.md)
+### 環境を計画する
+#### [VM のバックアップ インフラストラクチャの計画](backup-azure-vms-introduction.md)
+### サーバーとワークロードのバックアップ
+#### [バックアップ コンテナーへの Azure 仮想マシンのバックアップ](backup-azure-vms.md)
+#### [Recovery Services 資格情報コンテナーへの Azure 仮想マシンのバックアップ](backup-azure-arm-vms.md)
+#### [暗号化された仮想マシンのバックアップ](backup-azure-vms-encryption.md)
+### VM の管理と監視
+#### [クラシック ポータルでの Azure VM のバックアップの管理と監視](backup-azure-manage-vms-classic.md)
+#### [Azure Portal での Azure VM のバックアップの管理](backup-azure-manage-vms.md)
+#### [Azure Portal での Azure VM のバックアップに関するアラートの監視](backup-azure-monitor-vms.md)
+### VM からのデータの復元
+#### [Azure VM のバックアップからファイルを回復する](backup-azure-restore-files-from-vm.md)
+#### [Azure での仮想マシンの復元](backup-azure-restore-vms.md)
+#### [Resource Manager でデプロイされた VM の Azure Portal での復元](backup-azure-arm-restore-vms.md)
+#### [Azure Backup を使用して暗号化された VM の Key Vault のキーとシークレットの復元](backup-azure-restore-key-secret.md)
+#### [暗号化された仮想マシンの復元](backup-azure-vms-encryption.md)
 
 ## Azure SQL Database
 ### [長期のバックアップ リテンション期間の構成](../sql-database/sql-database-configure-long-term-retention.md?toc=%2fazure%2fbackup%2ftoc.json)
@@ -66,7 +82,6 @@
 ## トラブルシューティング
 ### [Azure Portal での Azure VM のバックアップに関する問題](backup-azure-vms-troubleshoot.md)
 ### [クラシック ポータルでの Azure VM のバックアップに関する問題](backup-azure-vms-troubleshoot-classic.md)
-### [Azure Backup Server](backup-azure-mabs-troubleshoot.md)
 ### [Azure VM のバックアップの失敗: スナップショットの状態について VM エージェントと通信できませんでした - スナップショット VM サブタスクがタイムアウトしました](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)
 ### [Azure Backup でファイルとフォルダーのバックアップが遅い](backup-azure-troubleshoot-slow-backup-performance-issue.md)
 

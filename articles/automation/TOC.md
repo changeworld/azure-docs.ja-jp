@@ -41,6 +41,7 @@
 ### [管理のためのマシンのオンボード](automation-dsc-onboarding.md)
 ### [DSC 構成のコンパイル](automation-dsc-compile.md)
 ### [Chocolatey を使用した継続的なデプロイ](automation-dsc-cd-chocolatey.md)
+### [OMS Log Analytics への Azure Automation DSC レポート データの転送](automation-dsc-diagnostics.md)
 ## Automation 資産の管理
 ### [証明書](automation-certificates.md)
 ### [接続](automation-connections.md)

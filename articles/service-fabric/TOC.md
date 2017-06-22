@@ -200,13 +200,13 @@
 #### [削除](service-fabric-cluster-delete.md)
 
 ### スタンドアロンのクラスター
-#### [スタンドアロン パッケージの内容](service-fabric-cluster-standalone-package-contents.md)
 #### [デプロイの計画と準備](service-fabric-cluster-standalone-deployment-preparation.md)
 #### 作成
 ##### [オンプレミスでの作成](service-fabric-cluster-creation-for-windows-server.md)
 ##### [Azure 仮想マシンでの作成](service-fabric-cluster-creation-with-windows-azure-vms.md)
 ##### [証明書を使用したセキュリティ保護](service-fabric-windows-cluster-x509-security.md)  
 ##### [Windows セキュリティを使用したセキュリティ保護](service-fabric-windows-cluster-windows-security.md)
+##### [スタンドアロン パッケージの内容](service-fabric-cluster-standalone-package-contents.md)
 #### [スケール](service-fabric-cluster-windows-server-add-remove-nodes.md)
 #### [アクセス制御の設定](service-fabric-cluster-security-roles.md)
 #### [構成](service-fabric-cluster-manifest.md)
@@ -233,34 +233,35 @@
 #### [調整](service-fabric-cluster-resource-manager-advanced-throttling.md)
 #### [サービスの移動](service-fabric-cluster-resource-manager-movement-cost.md)
 
-### [セキュリティ保護されたクラスターへの接続](service-fabric-connect-to-secure-cluster.md)
-
-## アプリケーションとクラスターの正常性の確認
-### [Service Fabric の正常性の監視](service-fabric-health-introduction.md)
-### [サービス正常性のレポートとチェック](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
-### [カスタム正常性レポートの追加](service-fabric-report-health.md)
-### [システム正常性レポートを使用したトラブルシューティング](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
-### [正常性レポートの確認](service-fabric-view-entities-aggregated-health.md)
-
 ## 監視と診断
 ### [アプリケーションの監視と診断](service-fabric-diagnostics-overview.md)
-### ローカルでのサービスの監視と診断
-#### [Windows](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
-#### [Linux](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
-### Azure 診断ログ
-#### [Windows](service-fabric-diagnostics-how-to-setup-wad.md)
-#### [Linux](service-fabric-diagnostics-how-to-setup-lad.md)
-### [サービス プロセスからのログの収集](service-fabric-diagnostic-collect-logs-without-an-agent.md)
-### [Windows Server コンテナーの監視](service-fabric-diagnostics-containers-windowsserver.md)
-### [ステートフル Reliable Services における診断](service-fabric-reliable-services-diagnostics.md)
-### [Reliable Actors の診断](service-fabric-reliable-actors-diagnostics.md)
+### イベントの生成
+#### [インフラストラクチャ レベルのイベントの生成](service-fabric-diagnostics-event-generation-infra.md)
+##### [Reliable Services のイベント](service-fabric-reliable-services-diagnostics.md)
+##### [Reliable Actors のイベント](service-fabric-reliable-actors-diagnostics.md)
+#### [アプリケーション レベルのイベントの生成](service-fabric-diagnostics-event-generation-app.md)
+### アプリケーションとクラスターの正常性の確認
+#### [Service Fabric の正常性の監視](service-fabric-health-introduction.md)
+#### [サービス正常性のレポートとチェック](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
+#### [カスタム正常性レポートの追加](service-fabric-report-health.md)
+#### [システム正常性レポートを使用したトラブルシューティング](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
+#### [正常性レポートの確認](service-fabric-view-entities-aggregated-health.md)
+### 集計値
+#### [EventFlow を使ったイベントの集計](service-fabric-diagnostics-event-aggregation-eventflow.md)
+#### Azure 診断を使ったイベントの集計
+##### [Windows](service-fabric-diagnostics-event-aggregation-wad.md)
+##### [Linux](service-fabric-diagnostics-event-aggregation-lad.md)
+### イベントの分析
+#### [Application Insight を使ったイベントの分析](service-fabric-diagnostics-event-analysis-appinsights.md)
+#### [OMS を使ったイベントの分析](service-fabric-diagnostics-event-analysis-oms.md)
 ### [ローカル クラスターのトラブルシューティング](service-fabric-troubleshoot-local-cluster-setup.md)
 
 # リファレンス
 ## [PowerShell (Azure)](/powershell/module/azurerm.servicefabric/)
 ## [PowerShell](/powershell/azure/overview?view=azureservicefabricps)
-## [Java API](/java/api/)
-## [.NET](/dotnet/api/)
+## [Azure CLI](/cli/azure/sf)
+## [Java API](/java/api/overview/azure/servicefabric)
+## [.NET](/dotnet/api/overview/azure/servicefabric?view=azure-dotnet)
 ## [REST ()](/rest/api/servicefabric)
 
 # リソース

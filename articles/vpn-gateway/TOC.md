@@ -7,6 +7,7 @@
 ## [VPN Gateway の計画と設計](vpn-gateway-plan-design.md)
 ## [VPN Gateway の設定について](vpn-gateway-about-vpn-gateway-settings.md)
 ## [VPN デバイスについて](vpn-gateway-about-vpn-devices.md)
+## [暗号化の要件について](vpn-gateway-about-compliance-crypto.md)
 ## [BGP および VPN Gateway について](vpn-gateway-bgp-overview.md)
 ## [高可用性接続について](vpn-gateway-highlyavailable.md)
 
@@ -32,18 +33,25 @@
 ## デプロイメント モデル間の VNet 間接続の構成
 ### [Azure ポータル](vpn-gateway-connect-different-deployment-models-portal.md)
 ### [PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
-## [サイト対サイトおよび ExpressRoute の共存接続の構成](../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
-## 強制トンネリングについて
-### [PowerShell](vpn-gateway-forced-tunneling-rm.md)
-### [PowerShell (クラシック)](vpn-gateway-about-forced-tunneling.md)
+## サイト対サイトおよび ExpressRoute の共存接続の構成
+### [PowerShell](../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 ## 複数のサイト対サイト接続
 ### [Azure ポータル](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
 ### [PowerShell (クラシック)](vpn-gateway-multi-site.md)
-## [VPN ゲートウェイ用の BGP の構成](vpn-gateway-bgp-resource-manager-ps.md)
-## [高可用性のアクティブ/アクティブ接続の構成](vpn-gateway-activeactive-rm-powershell.md)
+## 複数のポリシーベース VPN デバイスの接続
+### [PowerShell](vpn-gateway-connect-multiple-policybased-rm-ps.md)
+## 接続に対する IPsec/IKE ポリシーの構成
+### [PowerShell](vpn-gateway-ipsecikepolicy-rm-powershell.md)
+## 高可用性のアクティブ/アクティブ接続の構成
+### [PowerShell](vpn-gateway-activeactive-rm-powershell.md)
+## VPN ゲートウェイ用の BGP の構成
+### [PowerShell](vpn-gateway-bgp-resource-manager-ps.md)
+## 強制トンネリングについて
+### [PowerShell](vpn-gateway-forced-tunneling-rm.md)
+### [PowerShell (クラシック)](vpn-gateway-about-forced-tunneling.md)
 ## ローカル ネットワーク ゲートウェイの設定を変更する
 ### [PowerShell](vpn-gateway-modify-local-network-gateway.md)
-### [CLI](vpn-gateway-modify-local-network-gateway-cli.md)
+### [Azure CLI](vpn-gateway-modify-local-network-gateway-cli.md)
 ## [VPN Gateway 接続の確認](vpn-gateway-verify-connection-resource-manager.md)
 ## [VPN Gateway のリセット](vpn-gateway-resetgw-classic.md)
 ## VPN ゲートウェイの削除
@@ -55,11 +63,11 @@
 ### [VNet への VPN スループットの確認](vpn-gateway-validate-throughput-to-vnet.md)
 
 # リファレンス
-## [PowerShell](/powershell/module/azurerm.network)
-## [PowerShell (クラシック)](/powershell/module/azure/?view=azuresmps-3.7.0)
-## [REST ()](https://docs.microsoft.com/rest/api/network/virtualnetworkgateways)
+## [PowerShell](/powershell/module/azurerm.network/?view=azurermps-4.0.0#vpn)
+## [PowerShell (クラシック)](/powershell/module/azure/?view=azuresmps-3.7.0#networking)
+## [REST ()](/rest/api/network/virtualnetworkgateways)
 ## [REST (クラシック)](https://msdn.microsoft.com/library/jj154113)
-## [Azure CLI](https://docs.microsoft.com/cli/azure/network/vnet-gateway)
+## [Azure CLI](/cli/azure/network/vnet-gateway)
 
 # 関連項目
 ## [Virtual Network](/azure/virtual-network/)
