@@ -11,7 +11,7 @@ keywords: "Azure Functions, 関数, イベント処理, Cosmos DB, 動的コン�
 ms.assetid: 
 ms.service: functions
 ms.devlang: multiple
-ms.topic: ms-hero
+ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/08/2017
@@ -164,3 +164,4 @@ Azure Functions の詳細については、次のトピックを参照してく�
 [!INCLUDE [Getting help note](../../includes/functions-get-help.md)]
 
 [!INCLUDE [functions-quickstart-next-steps](../../includes/functions-quickstart-next-steps.md)]
+
