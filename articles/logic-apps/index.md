@@ -12,10 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: a942b83d1089667a5a9960bfbba849bd243746ec
-ms.lasthandoff: 03/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 7f9790a52365b76e9d3dd1fdf1a17ab2aaaf8b5a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/02/2017
 
 ---
 
@@ -43,7 +44,7 @@ ms.lasthandoff: 03/17/2017
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/documentation/videos/index/?services=app-service">
+        <a href="https://azure.microsoft.com/resources/videos/index/?services=logic-apps">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -53,7 +54,7 @@ ms.lasthandoff: 03/17/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>App Service のビデオ ライブラリ</h3>
+                        <h3>Logic Apps のビデオ ライブラリ</h3>
                     </div>
                 </div>
             </div>

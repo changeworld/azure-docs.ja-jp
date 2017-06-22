@@ -1,6 +1,7 @@
 # 概要
 ## [Azure のネットワークについて](networking-overview.md)
 ## アーキテクチャ
+### [仮想データセンター](networking-virtual-datacenter.md)
 ### [複数のネットワーク パスを使用した非対称ルーティング](../expressroute/expressroute-asymmetric-routing.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [セキュリティで保護されたネットワーク設計](../best-practices-network-security.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [ハブスポーク トポロジ](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)
@@ -44,6 +45,7 @@
 ### [VM の IP フローの確認](../network-watcher/network-watcher-check-ip-flow-verify-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ## サンプルのスクリプト
 ### [Azure CLI](cli-samples.md)
+### [PowerShell](powershell-samples.md)
 ## Tutorials (チュートリアル)
 ### [VM の負荷分散](../virtual-machines/linux/tutorial-load-balance-nodejs.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [仮想ネットワークへのコンピューターの接続](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
