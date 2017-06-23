@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 05/18/2017
 ms.author: sngun
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
-ms.openlocfilehash: 19fb0521f93fc4e506c2c74d96f3d7a0e0ff5a3d
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 1948dd1ce49538c404f31ef8b976a772d5cf5116
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/19/2017
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -52,7 +52,7 @@ If the virtual machine image is available locally on the Azure Stack POC compute
     
     ```PowerShell
     $TenantID = Get-DirectoryTenantID `
-      -AADTenantName "<myaadtenant>.onmicrosoft.com" `
+      -AADTenantName "<myDirectoryTenantName>.onmicrosoft.com" `
       -EnvironmentName AzureStackAdmin
     ```
     b. **Active Directory Federation Services**, use the following cmdlet:
