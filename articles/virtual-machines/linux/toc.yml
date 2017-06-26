@@ -51,7 +51,7 @@
     href: endorsed-distros.md
   - name: リージョンと可用性
     href: regions-and-availability.md
-  - name: Storage
+  - name: ストレージ
     href: azure-vm-storage-overview.md
   - name: ネットワーク
     href: azure-vm-network-overview.md
@@ -116,7 +116,7 @@
       href: infrastructure-naming-guidelines.md
     - name: リソース グループ
       href: infrastructure-resource-groups-guidelines.md
-    - name: Storage
+    - name: ストレージ
       href: infrastructure-storage-solutions-guidelines.md
     - name: ネットワーク
       href: infrastructure-networking-guidelines.md
@@ -140,6 +140,12 @@
       href: move-vm.md
     - name: 高可用性 VM の作成
       href: create-cli-complete.md
+    - name: Terraform
+      items:
+      - name: インストールと構成
+        href: ../terraform-install-configure.md
+      - name: 基本的なインフラストラクチャの作成
+        href: ../terraform-create-complete-vm.md
     - name: Ansible
       items:
       - name: インストールと構成
@@ -202,6 +208,8 @@
       href: upload-vhd.md
     - name: 既存の VM をイメージにキャプチャする
       href: capture-image.md
+    - name: Packer でイメージを作成する
+      href: build-image-with-packer.md
     - name: Azure のイメージを作成する
       items:
       - name: Ubuntu
@@ -312,7 +320,11 @@
   - name: アプリケーションの実行
     items:
     - name: Cloud Foundry
-      href: cloudfoundry-get-started.md
+      items:
+      - name: 概要
+        href: cloudfoundry-get-started.md
+      - name: 初めてのアプリのデプロイ
+        href: cloudfoundry-deploy-your-first-app.md
     - name: Data Science VM の概要
       href: ../../machine-learning/machine-learning-data-science-virtual-machine-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: MongoDB
@@ -366,6 +378,8 @@
       href: migration-classic-resource-manager-faq.md
   - name: トラブルシューティング
     items:
+    - name: システムの再起動を理解する
+      href: understand-vm-reboot.md
     - name: SSH 接続
       href: troubleshoot-ssh-connection.md
       items:

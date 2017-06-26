@@ -1,6 +1,7 @@
 # 概要
 
 ## [はじめに](storage-introduction.md)
+## [BLOB、ファイル、またはデータ ディスクを選択する](storage-decide-blobs-files-disks.md)
 
 # 作業の開始
 
@@ -50,6 +51,7 @@
 ### [Linux VM に管理ディスクを追加する](../virtual-machines/linux/add-disk.md)
 ### [Windows のスナップショットを使用して管理ディスクとして格納された VHD のコピーを作成する](../virtual-machines/windows/snapshot-copy-managed-disk.md)
 ### [Linux のスナップショットを使用して管理ディスクとして格納された VHD のコピーを作成する](../virtual-machines/linux/snapshot-copy-managed-disk.md)
+### [Resource Manager テンプレートでの Managed Disks の使用](storage-using-managed-disks-template-deployments.md)
 
 # 方法
 ## [ストレージ アカウントの作成](storage-create-storage-account.md)
@@ -70,7 +72,8 @@
 ### [サンプル](https://azure.microsoft.com/documentation/samples/?service=storage&term=table)
 ## ファイルの使用
 ### [概要](/rest/api/storageservices/File-Service-Concepts)
-### [Azure Files のトラブルシューティング](storage-troubleshoot-file-connection-problems.md)
+### [Azure Files のトラブルシューティング - Windows](storage-troubleshoot-windows-file-connection-problems.md)
+### [Azure Files のトラブルシューティング - Linux](storage-troubleshoot-linux-file-connection-problems.md)
 ### [サンプル](https://azure.microsoft.com/documentation/samples/?service=storage&term=file)
 ## ディスクの使用
 ### [Windows VM 用のディスクと VHD](storage-about-disks-and-vhds-windows.md)
@@ -109,6 +112,7 @@
 ## セキュリティ保護
 ### [セキュリティ ガイド](storage-security-guide.md)
 ### [保存データの暗号化](storage-service-encryption.md)
+### [カスタマー キーでの保存時の暗号化](storage-service-encryption-customer-managed-keys.md)
 ### [共有キー認証](https://msdn.microsoft.com/library/dd179428.aspx)
 ### [Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md)
 ### [チュートリアル: Azure Key Vault を使用して BLOB を暗号化および復号化する](storage-encrypt-decrypt-blobs-key-vault.md)
@@ -130,7 +134,8 @@
 ### [障害復旧ガイダンス](storage-disaster-recovery-guidance.md)
 ## データの転送
 ### [Storage との間でデータを移動する](storage-moving-data.md)
-### [AzCopy コマンドライン ユーティリティ](storage-use-azcopy.md)
+### [Windows での AzCopy](storage-use-azcopy.md)
+### [Linux での AzCopy](storage-use-azcopy-linux.md)
 ### [Import/Export サービスを使用する](storage-import-export-service.md)
 ### [Import/Export ツールを使用する](storage-import-export-tool-how-to.md)
 #### [Import/Export ツールを設定する](storage-import-export-tool-setup.md)

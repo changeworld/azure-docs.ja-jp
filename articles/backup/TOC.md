@@ -48,7 +48,7 @@
 #### [Resource Manager によりデプロイされた仮想マシンの準備](backup-azure-arm-vms-prepare.md)
 ### 環境を計画する
 #### [VM のバックアップ インフラストラクチャの計画](backup-azure-vms-introduction.md)
-### サーバーとワークロードのバックアップ
+### VM をバックアップする
 #### [バックアップ コンテナーへの Azure 仮想マシンのバックアップ](backup-azure-vms.md)
 #### [Recovery Services 資格情報コンテナーへの Azure 仮想マシンのバックアップ](backup-azure-arm-vms.md)
 #### [暗号化された仮想マシンのバックアップ](backup-azure-vms-encryption.md)

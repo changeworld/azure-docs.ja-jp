@@ -16,12 +16,13 @@
 ### [トラブルシューティングと監視](troubleshooting-monitoring.md)
 ## Virtual Machines 上の SAP HANA
 ### [単一インスタンスの SAP HANA](hana-get-started.md)
-### [S/4 HANA または BW/4 HANA のデプロイ ガイド](cal-s4h.md)
+### [S/4 HANA または BW/4 HANA SAP CAL のデプロイ ガイド](cal-s4h.md)
 ### [VM の高可用性](sap-hana-high-availability.md)
 ### [Backup の概要](sap-hana-backup-guide.md)
 ### [ファイル レベルのバックアップ](sap-hana-backup-file-level.md)
 ### [ストレージ スナップショット バックアップ](sap-hana-backup-storage-snapshots.md)
 ## SAP Netweaver
+### [Windows/SQL Server SAP CAL への SAP IDES デプロイ ガイド](sap-cal-ides-erp6-ehp7-sp3-sql.md)
 ### [概要とアーキテクチャ](suse-quickstart.md)
 ### [計画と実装](planning-guide.md)
 ### [高可用性](high-availability-guide.md)

@@ -78,6 +78,7 @@
 ## [サービス REST (プレビュー)](search-api-2015-02-28-preview.md)
 ## [料金](https://azure.microsoft.com/pricing/details/search/)
 ## デモ サイト
+### [アナライザーのデモを検索する](http://alice.unearth.ai/)
 ### [求人情報アプリ](http://aka.ms/azjobsdemo)
 ### [ライブ デモ アプリ](https://searchsamples.azurewebsites.net/)
 ## コースウェアとチュートリアル

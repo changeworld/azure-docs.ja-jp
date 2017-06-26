@@ -1,4 +1,5 @@
 # [概要](active-directory-developers-guide.md)
+## [Azure AD を選ぶ理由](https://azure.microsoft.com/develop/identity/signin/)
 ## [認証の基本](active-directory-authentication-scenarios.md)
 ## [アプリの種類](active-directory-authentication-scenarios.md#application-types-and-scenarios)
 # 作業の開始
@@ -71,6 +72,7 @@
 ### [サポートされているトークンと要求の種類](active-directory-token-and-claims.md)
 ### [署名キーのロールオーバー](active-directory-signing-key-rollover.md)
 ### [フェデレーション メタデータ](active-directory-federation-metadata.md)
+### [証明書の資格情報](active-directory-certificate-credentials.md)
 ## [アプリケーション オブジェクト](active-directory-application-objects.md)
 ### [アプリと Azure AD](active-directory-how-applications-are-added.md)
 ## [アプリケーション マニフェスト](active-directory-application-manifest.md)
@@ -101,4 +103,5 @@
 #### [OAuth 2.0 クライアント資格情報の付与](active-directory-v2-protocols-oauth-client-creds.md)
 #### [OAuth 2.0 の On-Behalf-Of フロー](active-directory-v2-protocols-oauth-on-behalf-of.md)
 #### [トークンのリファレンス](active-directory-v2-tokens.md)
+#### [証明書の資格情報](active-directory-certificate-credentials.md)
 ### [スコープ](active-directory-v2-scopes.md)

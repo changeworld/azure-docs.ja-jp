@@ -1,6 +1,5 @@
 # 概要
 ## [エディション](biztalk-editions-feature-chart.md)
-## [ハイブリッド接続について](integration-hybrid-connection-overview.md)
 
 # 作業の開始
 ## [BizTalk Services の作成](biztalk-provision-services.md)
@@ -12,8 +11,6 @@
 ## 構成
 ### [調整](biztalk-throttling-thresholds.md)
 ### [サービス設定と監視](biztalk-dashboard-monitor-scale-tabs.md)
-## 統合
-### [ハイブリッド接続](integration-hybrid-connection-create-manage.md)
 ## 移行
 ### [BizTalk Services への BizTalk Server EDI ソリューション](biztalk-migrating-to-edi-guide.md)
 ## 監視
@@ -21,6 +18,9 @@
 ## セキュリティ保護
 ### [アクセス制御](biztalk-issuer-name-issuer-key.md)
 ## [トラブルシューティング](biztalk-troubleshoot-using-ops-logs.md)
+## Hybrid Connections (ハイブリッド接続)
+### [概要](integration-hybrid-connection-overview.md)
+### [作成と管理](integration-hybrid-connection-create-manage.md)
 
 # リソース
 ## [リリース ノート](biztalk-release-notes.md)

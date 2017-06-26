@@ -11,7 +11,7 @@
 ### [スタンドアロン Automation アカウントを作成する](automation-create-standalone-account.md)
 ### [Azure AD ユーザー アカウントを作成する](automation-create-aduser-account.md)
 ### [AWS を使って認証を構成する](automation-config-aws-account.md)
-### [PowerShell で Azure 実行アカウントを作成する](automation-update-account-powershell.md)
+### [Automation 実行アカウントを作成する](automation-create-runas-account.md)
 ### [Automation アカウントの構成を検証する](automation-verify-runas-authentication.md)
 ### [ロールベースのアクセス制御を管理する](automation-role-based-access-control.md)
 ### [Automation アカウントを管理する](automation-manage-account.md)
@@ -56,12 +56,12 @@
 ### [Azure VM アラートを修復する](automation-azure-vm-alert-integration.md)
 ### [JSON タグを使用して VM を起動/停止する](automation-scenario-start-stop-vm-wjson-tags.md)
 ### [リソース グループを削除する](automation-scenario-remove-resourcegroup.md)
-### [勤務時間外に VM を起動/停止する](automation-solution-vm-management.md)
 ### [GitHub Enterprise によるソース管理の統合](automation-scenario-source-control-integration-with-github-ent.md)
 ### [VSTS によるソース管理の統合](automation-scenario-source-control-integration-with-VSTS.md)
 ## 解決方法
 ### [変更の追跡](../log-analytics/log-analytics-change-tracking.md)
 ### [更新管理](../operations-management-suite/oms-solution-update-management.md)
+### [勤務時間外に VM を起動/停止する](automation-solution-vm-management.md)
 ## 監視
 ### [Log Analytics に Azure Automation のジョブ データを転送する](automation-manage-send-joblogs-log-analytics.md)
 ### [Log Analytics から Azure Automation アカウントのリンクを解除する](automation-unlink-from-log-analytics.md)
