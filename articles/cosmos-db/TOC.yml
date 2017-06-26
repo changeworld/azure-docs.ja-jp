@@ -13,8 +13,6 @@
     items:
     - name: .NET
       href: create-documentdb-dotnet.md
-    - name: .NET Core
-      href: create-documentdb-dotnet-core.md
     - name: Java
       href: create-documentdb-java.md
     - name: Node.js
@@ -188,12 +186,10 @@
           href: documentdb-nodejs-samples.md
         - name: Python のサンプル
           href: documentdb-python-samples.md
-        - name: SQL 構文
-          href: https://msdn.microsoft.com/library/azure/dn782250.aspx
-        - name: SQL の文法チート シート
-          href: documentdb-sql-query-cheat-sheet.md
       - name: リソース
         items:
+        - name: SQL の文法チート シート
+          href: documentdb-sql-query-cheat-sheet.md
         - name: スタック オーバーフロー
           href: http://stackoverflow.com/questions/tagged/azure-cosmosdb
         - name: ビデオ
@@ -302,6 +298,8 @@
       href: /rest/api/documentdb/
     - name: REST リソース プロバイダー
       href: /rest/api/documentdbresourceprovider/
+    - name: SQL
+      href: documentdb-sql-query-reference.md
   - name: テーブル API
     items:
     - name: .NET

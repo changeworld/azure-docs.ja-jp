@@ -1,6 +1,6 @@
 # 概要
 ## [Azure Resource Manager とは](resource-group-overview.md)
-## [サポートされているサービス](resource-manager-supported-services.md)
+## [リソース プロバイダーと種類](resource-manager-supported-services.md)
 ## [Resource Manager デプロイメントとクラシック デプロイメント](resource-manager-deployment-model.md)
 ## [サブスクリプションのガバナンス](resource-manager-subscription-governance.md)
 ## [マネージ アプリケーション](managed-application-overview.md)
@@ -67,12 +67,13 @@
 
 ## リソース ポリシーの設定
 ### [リソース ポリシーとは](resource-manager-policy.md)
-### [ポータルでポリシーを割り当てる](resource-manager-policy-portal.md)
-### [ポリシーの割り当てのスクリプトを作成する](resource-manager-policy-create-assign.md)
-### [リソースのタグ ポリシー](resource-manager-policy-tags.md)
-### [ストレージのポリシー](resource-manager-policy-storage.md)
-### [Linux VM のポリシー](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [Windows VM のポリシー](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [ポータルを使用してポリシーを割り当てる](resource-manager-policy-portal.md)
+### [スクリプトを使用してポリシーを割り当てる](resource-manager-policy-create-assign.md)
+### 例
+#### [リソース タグ](resource-manager-policy-tags.md)
+#### [Storage](resource-manager-policy-storage.md)
+#### [Linux VM](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+#### [Windows VM](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 
 ## マネージ アプリケーションの使用
 ### [マネージ アプリケーションの発行](managed-application-publishing.md)

@@ -41,6 +41,7 @@
 ### [ポータル](application-gateway-create-probe-portal.md)
 ### [PowerShell](application-gateway-create-probe-ps.md)
 ### [PowerShell (クラシック)](application-gateway-create-probe-classic-ps.md)
+## [Azure Security Center の統合](application-gateway-integration-security-center.md)
 ## [負荷分散サービスの結合](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fapplication-gateway%2ftoc.json)
 ## トラブルシューティング
 ### [Application Gateway のエラーのトラブルシューティング](application-gateway-troubleshooting-502.md)

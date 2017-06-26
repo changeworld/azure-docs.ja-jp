@@ -22,6 +22,8 @@
 ### [優先順位の低い VM](batch-low-pri-vms.md)
 ### [Batch Management .NET で Batch アカウントを管理する](batch-management-dotnet.md)
 ### [ジョブとタスク出力を保持する](batch-task-output.md)
+#### [Batch API で出力を保持する](batch-task-output-files.md)
+#### [ファイル規則ライブラリで出力を保持する](batch-task-output-file-conventions.md)
 ### [Batch での MPI ジョブの実行](batch-mpi.md)
 ### [Task dependencies](batch-task-dependencies.md)
 ### [タスクを実行するためのユーザー アカウント](batch-user-accounts.md)

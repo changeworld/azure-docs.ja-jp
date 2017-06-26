@@ -19,13 +19,11 @@
 
 # 方法
 ## 計画と設計
-### [🔧Azure サービスとの統合に関する一般的なシナリオ](event-hubs-common-integrations.md)
 ### [Event Hubs Dedicated](event-hubs-dedicated-overview.md)
 ### [認証とセキュリティ モデルの概要](event-hubs-authentication-and-security-model-overview.md)
 ### [可用性と一貫性](event-hubs-availability-and-consistency.md)
+### [スループット単位の自動スケール](event-hubs-auto-inflate.md)
 ## 開発
-### [🔧エラー処理と再試行](event-hubs-handling-errors-retry.md)
-### [🔧パフォーマンスとスケールの管理](event-hubs-performance-scale.md)
 ### [利用可能な API](event-hubs-api-overview.md)
 #### [.NET Standard](event-hubs-dotnet-standard-api-overview.md)
 #### [.NET Framework](event-hubs-dotnet-framework-api-overview.md)

@@ -11,6 +11,7 @@
 ### [ログ記録と監査](azure-log-audit.md)
 ### [パブリック クラウドでの分離](azure-isolation.md)
 ### [セキュリティの技術的な機能](azure-security-technical-capabilities.md)
+### [Azure でのガバナンス](governance-in-azure.md)
 
 # 作業の開始
 ## [Azure のセキュリティの概要](azure-security-getting-started.md)

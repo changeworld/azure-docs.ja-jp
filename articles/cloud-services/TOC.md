@@ -102,7 +102,11 @@
 ### [一般的なデプロイの問題](cloud-services-troubleshoot-deployment-problems.md)
 ### [ロールが起動しない](cloud-services-troubleshoot-roles-that-fail-start.md)
 ### [復旧ガイダンス](cloud-services-disaster-recovery-guidance.md)
-### [Cloud Services に関する FAQ](cloud-services-faq.md)
+### Cloud Services に関する FAQ
+#### [アプリケーションとサービスの可用性に関するよくあるご質問](cloud-services-application-and-service-availability-faq.md)
+#### [構成と管理に関するよくあるご質問](cloud-services-configuration-and-management-faq.md)
+#### [接続とネットワークに関するよくあるご質問](cloud-services-connectivity-and-networking-faq.md)
+#### [デプロイに関するよくあるご質問](cloud-services-deployment-faq.md)
 
 # リファレンス
 ## [.csdef XMLSchema](https://msdn.microsoft.com/library/azure/ee758711)
