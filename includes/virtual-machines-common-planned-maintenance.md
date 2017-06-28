@@ -20,7 +20,7 @@ Microsoft Azure の更新のクラスの場合、実行中の仮想マシンに�
 
 SLA の詳細については、「[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」の Cloud Services と Virtual Machines のセクションを参照してください。
 
-## <a name="multi-instance-configuration-updates"></a>マルチインスタンス構成の更新
+## <a name="multi-instance-configuration-updates"></a>複数インスタンス構成の更新
 計画的なメンテナンス時に、Azure プラットフォームは最初に仮想マシンのセットを更新します。 この更新により、仮想マシンが再起動され、約 15 分間のダウンタイムが発生します。
 
 複数インスタンス構成の更新では、仮想マシンは、それぞれが可用性セット内の他のマシンと同様の機能を提供していると仮定しています。 この設定では、更新プロセス全体にわたって可用性が維持されるように仮想マシンが更新されます。
