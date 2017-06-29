@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 05/21/2017
 ms.author: arramac
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 597b12b98edb07e453fc3cd5a0884c584a5bfd14
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 3491aa53a55d988876710c0ac19383e642dda27b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -61,7 +61,7 @@ github から Graph API アプリの複製を作成し、接続文字列を設�
 
 アプリで何が行われているかを簡単に確認してみましょう。 Program.cs ファイルを開くと、以下のコード行によって、Azure Cosmos DB リソースが作成されていることがわかります。 
 
-* DocumentClient が初期化されます。 プレビューでは、DocumentDB クライアントでグラフ拡張機能 API を追加しました。 DocumentDB クライアントおよびリソースから切り離されたスタンドアロンのグラフ クライアントで作業しています。
+* DocumentClient が初期化されます。 プレビューでは、Azure Cosmos DB クライアントでグラフ拡張機能 API を追加しました。 Azure Cosmos DB クライアントおよびリソースから切り離されたスタンドアロンのグラフ クライアントで作業しています。
 
     ```csharp
     using (DocumentClient client = new DocumentClient(

@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-translationtype: Human Translation
-ms.sourcegitcommit: 194b5d79505afbfd0208f63dd182a0e03227ba69
-ms.openlocfilehash: e6440522ced33a48925cfabc64da055b8700b253
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 769cf9b09eecd204c8b5b944065dad57a6d73231
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -34,8 +36,8 @@ Azure SDK for Node.js を使用して、Azure Data Lake Analytics アカウン�
 
 ## <a name="features"></a>Features (機能)
 * アカウント管理: 作成、取得、一覧表示、更新、および削除。
-* ジョブ管理: 送信、取得、一覧表示、取り消し。
-* カタログ管理: 取得、一覧表示、作成 (シークレット)、更新 (シークレット)、削除 (シークレット)。
+* ジョブ管理: 送信、取得、一覧表示、および取り消し。
+* カタログ管理: 取得および一覧表示。
 
 ## <a name="how-to-install"></a>インストール方法
 ```bash
@@ -137,10 +139,5 @@ catalogClient.catalog.listDatabases(accountName, function (err, result, request,
 ## <a name="see-also"></a>関連項目
 * [Microsoft Azure SDK for Node.js](https://github.com/azure/azure-sdk-for-node)
 * [Microsoft Azure SDK for Node.js - Data Lake Store の管理](https://github.com/Azure/azure-sdk-for-node/tree/autorest/lib/services/dataLake.Store)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

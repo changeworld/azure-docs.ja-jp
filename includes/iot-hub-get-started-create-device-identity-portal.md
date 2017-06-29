@@ -1,5 +1,5 @@
 ## <a name="create-a-device-identity"></a>デバイス ID の作成
-このセクションでは、[Azure Portal][lnk-azure-portal] を使用して、IoT ハブの ID レジストリにデバイス ID を作成します。 IoT hub に接続するデバイスは、あらかじめ ID レジストリに登録されている必要があります。 詳細については、[IoT Hub 開発者ガイド][lnk-devguide-identity]の ID レジストリに関するセクションをご覧ください。 デバイスからクラウドへのメッセージを IoT Hub に送信するときにそのデバイスを識別する一意の ID とキーは、ポータルの **Device Explorer** で生成できます。
+このセクションでは、[Azure Portal][lnk-azure-portal] を使用して、IoT ハブの ID レジストリにデバイス ID を作成します。 IoT hub に接続するデバイスは、あらかじめ ID レジストリに登録されている必要があります。 詳細については、[IoT Hub 開発者ガイド][lnk-devguide-identity]の ID レジストリに関するセクションをご覧ください。 デバイスからクラウドへのメッセージを IoT Hub に送信するときにそのデバイスを識別する一意の ID とキーは、ポータルの **Device Explorer** で生成できます。 デバイス ID には大文字と小文字の区別があります。
 
 1. [Azure Portal][lnk-azure-portal] にサインインしていることを確認します。 
 

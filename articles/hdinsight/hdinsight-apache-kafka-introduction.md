@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/03/2017
+ms.date: 06/15/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: f3e1cfb23a28d0d1fc7a60bdc8b282b72984fd03
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: f6a49be148ded1a90a642b83d3d70a83e572f4e4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/17/2017
 
 ---
 # <a name="introducing-apache-kafka-on-hdinsight-preview"></a>HDInsight での Apache Kafka の概要 (プレビュー)
@@ -39,6 +39,12 @@ Kafka には、次の機能が用意されています。
 * 順番通りに処理: 各パーティション内で、レコードは、受信された順番にストリームに格納されます。 パーティションごとに 1 つのコンシューマー プロセスを関連付けることで、レコードが順番通りに確実に処理されるようになります。
 
 * フォールト トレラント: パーティションをノード間でレプリケートできるため、フォールト トレランスを提供します。
+
+* Azure Managed Disks との統合: Managed Disks は、HDInsight クラスターの仮想マシンで使われるディスクのスケールとスループットを高める機能を提供します。
+
+    HDInsight 上の Kafka では Managed Disks は既定で有効になり、ノードごとに使われるディスクの数は HDInsight の作成時に構成できます。 Managed Disks について詳しくは、「[Azure Managed Disks の概要](../storage/storage-managed-disks-overview.md)」をご覧ください。
+
+    HDInsight 上の Kafka での Managed Disks の構成について詳しくは、「[HDInsight 上の Apache Kafka 用に記憶域とスケーラビリティを構成する](hdinsight-apache-kafka-scalability.md)」をご覧ください。
 
 ## <a name="use-cases"></a>ユース ケース
 

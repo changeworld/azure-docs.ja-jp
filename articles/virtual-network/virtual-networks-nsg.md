@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: dfa9f6e4bc95a1cd99f84e58167192d951960a7a
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 4043c68a3c8559eab6f5e4352bb599015366e5b5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -182,7 +183,7 @@ NSG はサブネットに適用できるため、リソースをサブネット�
 1. WEB サーバーと DB サーバーの間のトラフィックを分離。
 2. 負荷分散ルールでロード バランサーからのトラフィックをすべての Web サーバーのポート 80 に転送。
 3. ロード バランサーのポート 50001 に送信されるトラフィックを、ロード バランサーの NAT 規則で WEB1 VM のポート 3389 に転送。
-4. 要件 1 と 3 を除き、フロントエンドまたはバックエンドの VM に対するインターネットからのアクセスを拒否。
+4. 要件 2 と 3 を除き、フロントエンドまたはバックエンドの VM に対するインターネットからのアクセスを拒否。
 5. WEB サーバーと DB サーバーからの送信インターネット アクセスを拒否。
 6. FrontEnd サブネットからは、すべての Web サーバーのポート 3389 に対するアクセスを許可。
 7. FrontEnd サブネットからは、すべての DB サーバーのポート 3389 に対するアクセスを許可。

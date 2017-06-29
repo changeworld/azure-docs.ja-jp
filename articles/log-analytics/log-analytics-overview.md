@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/29/2017
+ms.date: 06/12/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: c2e78e0191be6ac7d828402859c04c486e8df594
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 391870380280d6783223849ce383113bf1dd6d31
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/13/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.lasthandoff: 04/21/2017
 Log Analytics は、[Operations Management Suite \(OMS\)](../operations-management-suite/operations-management-suite-overview.md) のサービスであり、クラウド環境とオンプレミス環境を監視して可用性とパフォーマンスを維持します。  Log Analytics を使用すると、クラウドおよびオンプレミスの環境内にあるリソースによって生成されたデータや、他の監視ツールのデータを収集し、複数のソースにわたる分析を行えます。  この記事では、Log Analytics によって提供される価値と Log Analytics の動作について概要を説明すると共に、さらにより詳しい内容へのリンクを紹介します。
 
 ## <a name="is-log-analytics-for-you"></a>Log Analytics のメリット
-現在 Azure 環境の監視を行っていない場合は、Azure リソースの監視データを収集および分析するための [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) から始めてください。  Log Analytics を使用すると、Azure Monitor からデータを収集して他のデータと関連付け、追加の分析を行うことができます。
+現在 Azure 環境の監視を行っていない場合は、Azure リソースの監視データを収集および分析するための [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) から始めてください。  Log Analytics を使用すると、[Azure Monitor からデータを収集](log-analytics-azure-storage.md)して他のデータと関連付け、追加の分析を行うことができます。
 
 オンプレミス環境を監視する場合や、Azure Monitor、System Center Operations Manager などのサービスを使用して監視を既に行っている場合は、Log Analytics を使用すると大きなメリットが得られます。  Log Analytics では、エージェントだけでなく、他のツールのデータも直接収集して単一のリポジトリに格納できます。  Log Analytics のログ検索、ビュー、ソリューションなどの分析ツールは、収集されたすべてのデータに対して動作し、環境全体の一元的な分析を実現します。
 

@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/06/2017
+ms.date: 06/06/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 4547a805c1827a703bf0ef118387882e45c3f241
-ms.openlocfilehash: 5bbd7088f5d4986a5b1c9f5695a5defb678307a9
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: 7ab7e693909f807781744ae53eed75d425096590
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -52,25 +54,25 @@ PhoneFactor エージェント v5.x 以前から Azure Multi-factor Authenticati
 
 2. Web サービス SDK が既にインストールされている場合は、Multi-Factor Authentication Server のユーザー インターフェイスより新しい Web サービス SDK をインストールします。
 
-  既定の仮想ディレクトリ名は、"PhoneFactorWebServiceSdk" ではなく "MultiFactorAuthWebServiceSdk" になります。 以前の名前を使用する場合は、インストール時に仮想ディレクトリ名を変更する必要があります。 そのようにしない場合、インストールで新しい既定の名前の使用を許可する場合は、ユーザー ポータルやモバイル アプリ Web サービスなどの Web サービス SDK を参照する任意のアプリケーションの URL を正しい場所を示すように変更する必要があります。
+  既定の仮想ディレクトリ名は、**PhoneFactorWebServiceSdk** ではなく **MultiFactorAuthWebServiceSdk** になります。 以前の名前を使用する場合は、インストール時に仮想ディレクトリ名を変更する必要があります。 そのようにしない場合、インストールで新しい既定の名前の使用を許可する場合は、(ユーザー ポータルやモバイル アプリ Web サービスなど) Web サービス SDK を参照する任意のアプリケーションの URL を正しい場所を示すように変更する必要があります。
 
 3. ユーザー ポータルが既に PhoneFactor エージェント サーバーにインストールされている場合は、Multi-Factor Authentication Server のユーザー インターフェイスより、新しい Multi-Factor Authentication ユーザー ポータルをインストールします。
 
-  既定の仮想ディレクトリ名は、"PhoneFactor" ではなく "MultiFactorAuth" になります。 以前の名前を使用する場合は、インストール時に仮想ディレクトリ名を変更する必要があります。 そのようにしない場合、インストールで新しい既定の名前の使用を許可する場合は、Multi-Factor Authentication Server の [ユーザー ポータル] アイコンをクリックし、[設定] タブのユーザー ポータル URL を更新する必要があります。
+  既定の仮想ディレクトリ名は、**PhoneFactor** ではなく **MultiFactorAuth** になります。 以前の名前を使用する場合は、インストール時に仮想ディレクトリ名を変更する必要があります。 そのようにしない場合、インストールで新しい既定の名前の使用を許可する場合は、Multi-Factor Authentication Server の [ユーザー ポータル] アイコンをクリックし、[設定] タブのユーザー ポータル URL を更新する必要があります。
 
 4. 過去にユーザー ポータルまたはモバイル アプリ Web サービスが、PhoneFactor エージェントとは別のサーバーにインストールされていた場合は、次の手順を実行します。
 
-  1. インストール場所 (例: C:\Program Files\PhoneFactor) に移動して適切なインストーラーをもう一方のサーバーにコピーします。 ユーザー ポータルとモバイル アプリ Web サービスには、32 ビットおよび 64 ビットのインストーラーがあります。 それぞれ、MultiFactorAuthenticationUserPortalSetupXX.msi と MultiFactorAuthenticationMobileAppWebServiceSetupXX.msi という名前です。
+  1. インストール場所 (例: C:\Program Files\PhoneFactor) に移動して、インストーラーをもう一方のサーバーにコピーします。 ユーザー ポータルとモバイル アプリ Web サービスには、32 ビットおよび 64 ビットのインストーラーがあります。 MultiFactorAuthenticationUserPortalSetupXX.msi および MultiFactorAuthenticationMobileAppWebServiceSetupXX.msi という名前です。
 
   2. Web サーバー上にユーザー ポータルをインストールするには、コマンド プロンプトを管理者として開き、MultiFactorAuthenticationUserPortalSetupXX.msi を実行します。
 
-    既定の仮想ディレクトリ名は、"PhoneFactor" ではなく "MultiFactorAuth" になります。 以前の名前を使用する場合は、インストール時に仮想ディレクトリ名を変更する必要があります。 そのようにしない場合、インストールで新しい既定の名前の使用を許可する場合は、Multi-Factor Authentication Server の [ユーザー ポータル] アイコンをクリックし、[設定] タブのユーザー ポータル URL を更新する必要があります。 既存のユーザーに、新しい URL を通知する必要があります。
+    既定の仮想ディレクトリ名は、**PhoneFactor** ではなく **MultiFactorAuth** になります。 以前の名前を使用する場合は、インストール時に仮想ディレクトリ名を変更する必要があります。 そのようにしない場合、インストールで新しい既定の名前の使用を許可する場合は、Multi-Factor Authentication Server の [ユーザー ポータル] アイコンをクリックし、[設定] タブのユーザー ポータル URL を更新する必要があります。 既存のユーザーに、新しい URL を通知する必要があります。
 
   3. ユーザー ポータルのインストール先 (C:\inetpub\wwwroot\MultiFactorAuth など) に移動し、web.config ファイルを編集します。 新しい web.config ファイルへのアップグレード前にバックアップされた元の web.config ファイルから、appSettings および applicationSettings セクションの値をコピーします。 Web サービス SDK をインストールするときに新しい既定の仮想ディレクトリ名が保持された場合は、正しい場所を示すように applicationSettings セクションの URL を変更します。 他の任意の既定値が以前の web.config ファイルで変更された場合、その同様の変更を新しい web.config ファイルに適用します。
 
   4. モバイル アプリ Web サービスを Web サーバーにインストールするには、コマンド プロンプトを管理者として開き、MultiFactorAuthenticationMobileAppWebServiceSetupXX.msi を実行します。
 
-    既定の仮想ディレクトリ名は、"PhoneFactorPhoneAppWebService" ではなく "MultiFactorAuthMobileAppWebService" になります。 以前の名前を使用する場合は、インストール時に仮想ディレクトリ名を変更する必要があります。 エンドユーザーがモバイル デバイスに簡単に入力できるように、短い名前を選択できます。 そのようにしない場合、インストールで新しい既定の名前の使用を許可する場合は、Multi-Factor Authentication Server の [モバイル アプリ] アイコンをクリックし、モバイル アプリ Web サービス URL を更新する必要があります。
+    既定の仮想ディレクトリ名は、**PhoneFactorPhoneAppWebService** ではなく **MultiFactorAuthMobileAppWebService** になります。 以前の名前を使用する場合は、インストール時に仮想ディレクトリ名を変更する必要があります。 エンドユーザーがモバイル デバイスに簡単に入力できるように、短い名前を選択できます。 そのようにしない場合、インストールで新しい既定の名前の使用を許可する場合は、Multi-Factor Authentication Server の [モバイル アプリ] アイコンをクリックし、モバイル アプリ Web サービス URL を更新する必要があります。
 
   5. モバイル アプリ Web サービスのインストール先 (C:\inetpub\wwwroot\MultiFactorAuthMobileAppWebService など) に移動し、web.config ファイルを編集します。 新しい web.config ファイルへのアップグレード前にバックアップされた元の web.config ファイルから、appSettings および applicationSettings セクションの値をコピーします。 Web サービス SDK をインストールするときに新しい既定の仮想ディレクトリ名が保持された場合は、正しい場所を示すように applicationSettings セクションの URL を変更します。 他の任意の既定値が以前の web.config ファイルで変更された場合、その同様の変更を新しい web.config ファイルに適用します。
 
@@ -79,9 +81,4 @@ PhoneFactor エージェント v5.x 以前から Azure Multi-factor Authenticati
 - Azure Multi-Factor Authentication Server の[ユーザー ポータルをインストールする](multi-factor-authentication-get-started-portal.md)。
 
 - アプリケーションの [Windows 認証を構成する](multi-factor-authentication-get-started-server-windows.md)。 
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

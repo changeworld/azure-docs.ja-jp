@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/21/2017
 ms.author: venkatja
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 92e3e64f235e165a6a1772b6e1724789f3ec3049
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: d7c01e18355b66670c9ab7d964f5cdb7ba72bb8f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/16/2017
 
 ---
 # <a name="send-events-to-a-time-series-insights-environment-via-event-hub"></a>イベント ハブ経由で Time Series Insights 環境にイベントを送信する
@@ -163,7 +164,6 @@ namespace Microsoft.Rdx.DataGenerator
 |--------|---------------|
 |device1|2016-01-08T01:08:00Z|
 |device2|2016-01-08T01:17:00Z|
-
 ### <a name="sample-3"></a>サンプル 3
 
 #### <a name="input"></a>入力
@@ -196,6 +196,8 @@ namespace Microsoft.Rdx.DataGenerator
 ### <a name="sample-4"></a>サンプル 4
 
 #### <a name="input"></a>入力
+
+2 つの JSON オブジェクトを含む入れ子になった JSON 配列を含む JSON オブジェクト。 この入力は、グローバル プロパティが複雑な JSON オブジェクトによって表現できることを示しています。
 
 ```json
 {
@@ -231,7 +233,7 @@ namespace Microsoft.Rdx.DataGenerator
 |location|manufacturerInfo.name|manufacturerInfo.location|events.deviceId|events.deviceTimestamp|events.deviceData.type|events.deviceData.units|events.deviceData.value|
 |---|---|---|---|---|---|---|---|
 |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|pressure|psi|108.09|
-|WestUs|manufacturer1|EastUs|device1|2016-01-08T01:17:00Z|vibration|abs G|217.09|
+|WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|vibration|abs G|217.09|
 
 ## <a name="next-steps"></a>次のステップ
 

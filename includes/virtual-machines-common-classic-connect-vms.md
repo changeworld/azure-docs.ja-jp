@@ -11,17 +11,32 @@
 ## <a name="connect-vms-in-a-virtual-network"></a>仮想ネットワークでの VM の接続
 仮想マシンを仮想ネットワークで接続する方法:
 
-1. [Azure ポータル](../articles/virtual-network/virtual-networks-create-vnet-classic-pportal.md)で仮想ネットワークを作成します。
-2. デプロイメントで可用性セットと負荷分散用の設計を反映させるため、クラウド サービスのセットを作成します。 Azure クラシック ポータルで、各クラウド サービスについて **[新規]、[Compute]、[クラウド サービス]、[カスタム作成]** の順にクリックします。
-3. 新しい仮想マシンを作成するには、それぞれについて **[新規]、[Compute]、[仮想マシン]、[ギャラリーから]** の順にクリックします。 VM の適切なクラウド サービスと仮想ネットワークを選択します。 仮想ネットワークに既に参加しているクラウド サービスがある場合、その名前が既定で選択されます。
+1. [Azure ポータル](../articles/virtual-network/virtual-networks-create-vnet-classic-pportal.md)で仮想ネットワークを作成し、[クラシック デプロイ] を指定します。
+2. デプロイメントで可用性セットと負荷分散用の設計を反映させるため、クラウド サービスのセットを作成します。 Azure ポータルで、各クラウド サービスについて **[新規]、[コンピューティング]、[クラウド サービス]** の順にクリックします。
 
-![Selecting a cloud service for a virtual machine](./media/virtual-machines-common-classic-connect-vms/VMConfig1.png)
+  クラウド サービスの詳細を入力するときは、仮想ネットワークで使用されるものと同じ "_リソース グループ_" を選択します。
+
+3. 新しい仮想マシンを作成するには、**[新規]、[コンピューティング]** の順にクリックした後、**[おすすめアプリ]** から適切な VM イメージを選択します。
+
+  VM の **[基本]** ブレードで、仮想ネットワークで使用されるものと同じ "_リソース グループ_" を選択します。
+
+  ![VNet を使用する場合の VM の [基本] ブレード](./media/virtual-machines-common-classic-connect-vms/CreateVM_Basics_VN.png)
+
+4. VM の**設定**を入力するときは、VM に適した "_クラウド サービス_" または "_仮想ネットワーク_" を選択します。
+
+  その他の項目は、選択内容に基づいて、Azure が選択します。
+
+  ![VNet を使用する場合の VM の [設定] ブレード](./media/virtual-machines-common-classic-connect-vms/CreateVM_Settings_VN.png)
+
 
 ## <a name="connect-vms-in-a-standalone-cloud-service"></a>スタンドアロン クラウド サービスでの VM の接続
 仮想マシンをスタンドアロンのクラウド サービスで接続するには:
 
-1. [Azure クラシック ポータル](http://manage.windowsazure.com)でクラウド サービスを作成します。 **[新規]、[Compute]、[クラウド サービス]、[カスタム作成]** の順にクリックします。 また、仮想マシンを初めて作成するときに、デプロイメント用のクラウド サービスを作成することもできます。
-2. 仮想マシンを作成するときは、前の手順で作成したクラウド サービスの名前を選択します。
-   
-   ![仮想マシンを既存のクラウド サービスに追加する](./media/virtual-machines-common-classic-connect-vms/Connect-VM-to-CS.png)
+1. [Azure ポータル](http://portal.azure.com)でクラウド サービスを作成します。 **[新規]、[コンピューティング]、[クラウド サービス]** の順にクリックします。 また、仮想マシンを初めて作成するときに、デプロイメント用のクラウド サービスを作成することもできます。
+2. 仮想マシンを作成するときは、クラウド サービスで使用されるものと同じリソース グループを選択します。
 
+  ![仮想マシンを既存のクラウド サービスに追加する](./media/virtual-machines-common-classic-connect-vms/CreateVM_Basics_SA.png)
+
+3.  VM の詳細を入力するときは、最初の手順で作成したクラウド サービスの名前を選択します。
+
+  ![Selecting a cloud service for a virtual machine](./media/virtual-machines-common-classic-connect-vms/CreateVM_Settings_SA.png)

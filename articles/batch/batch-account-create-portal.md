@@ -12,14 +12,14 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/27/2017
+ms.date: 06/20/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 8cfe8689494a9f85d1533d259a2744e18407ecef
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: 053e2ae7f382bc55a6638ccd612289ab2ba64e52
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -82,7 +82,12 @@ Batch アカウントとシナリオの背景情報については、[機能の�
 
     ![サブスクリプションのアクセスの制御][subscription_access]
 
-4. **[アクセス許可の追加]** ブレードで、**[共同作成者]** ロールを選択し、**[MicrosoftAzureBatch]** (スペースなし) を探します。 **[MicrosoftAzureBatch]** を選択し、**[保存]** をクリックします。
+4. **[アクセス許可の追加]** ブレードで、**[共同作成者]** ロールを選択し、Batch API を探します。 API が見つかるまで、次の各文字列を検索します。
+    1. **MicrosoftAzureBatch**。
+    2. **Microsoft Azure Batch**。 新しい Azure AD テナントでは、この名前が使用される場合があります。
+    3. **ddbf3205-c6bd-46ae-8127-60eb93363864** は Batch API の ID です。 
+
+5. Batch API を見つけたら選択して、**[保存]** をクリックします。
 
     ![Batch のアクセス許可を追加する][add_permission]
 

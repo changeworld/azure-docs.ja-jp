@@ -17,10 +17,10 @@ ms.topic: get-started-article
 ms.date: 3/10/2017
 ms.author: markgal;giridham;arunak;trinadhk;
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: aabd0481e6dd264e9a5e91c2e4b2b83f01227db1
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 17b0740f11fcfe200191f8695b6d885df41e68e2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/20/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -156,10 +156,13 @@ Azure Backup エージェントでは NTFS が使用されています。 [フ�
 はい。 ゲスト Windows OS に Azure Backup エージェントをインストールして、ファイルやフォルダーを一時的なストレージにバックアップすることはできますが、 一時的なストレージのデータが消去されるとバックアップ ジョブは失敗します。 また、一時的なストレージのデータが削除された場合、復元先に指定できるのは非揮発性ストレージのみになります。
 
 
-## <a name="azure-backup-server-and-data-protection-manager"></a>Azure Backup Server と Data Protection Manager
+## <a name="azure-backup-server-and-system-center-data-protection-manager"></a>Azure Backup Server と System Center Data Protection Manager
 
 ### <a name="can-i-use-azure-backup-server-to-create-a-bare-metal-recovery-bmr-backup-for-a-physical-server-br"></a>Azure Backup Server を使用して、物理サーバーのベア メタル回復 (BMR) バックアップを作成できますか。 <br/>
 はい。
+
+### <a name="can-i-register-my-dpm-server-to-multiple-vaults-br"></a>自分の DPM サーバーを複数のコンテナーに登録できますか。 <br/>
+いいえ。 DPM または MABS サーバーは 1 つのコンテナーにしか登録できません。
 
 ### <a name="which-version-of-system-center-data-protection-manager-is-supported-br"></a>System Center Data Protection Manager は、どのバージョンがサポートされていますか。 <br/>
 [最新版](http://aka.ms/azurebackup_agent)の Azure Backup エージェントを System Center Data Protection Manager (DPM) の最新の更新プログラムのロールアップ (UR) にインストールすることをお勧めします。 2016 年 8 月現在、更新プログラムのロールアップ 11 が最新の更新プログラムです。
@@ -182,7 +185,7 @@ Azure VM のバックアップ ジョブを取り消した場合、転送済み�
 はい、Backup サービスには、PowerShell スクリプトで使用できるイベント ベースのアラートがいくつかあります。 詳細については、[通知の構成](backup-azure-monitor-vms.md#configure-notifications)に関するページをご覧ください。
 
 ### <a name="are-there-limits-on-when-or-how-many-times-a-backup-job-can-be-scheduledbr"></a>バックアップ ジョブをスケジュール設定できる時刻や回数に制限はありますか。<br/>
-はい。 Windows Server または Windows ワークステーションでは、1 日に最大&3; 回バックアップ ジョブを実行できます。 System Center DPM では、1 日に最大&2; 回バックアップ ジョブを実行できます。 IaaS VM では、1 日に&1; 回バックアップ ジョブを実行できます。 Windows Server または Windows ワークステーションのスケジューリング ポリシーを使用して毎日または毎週のスケジュールを指定することができます。 System Center DPM を使用した場合、スケジュールには毎日、毎週、毎月、毎年を指定できます。
+はい。 Windows Server または Windows ワークステーションでは、1 日に最大 3 回バックアップ ジョブを実行できます。 System Center DPM では、1 日に最大 2 回バックアップ ジョブを実行できます。 IaaS VM では、1 日に 1 回バックアップ ジョブを実行できます。 Windows Server または Windows ワークステーションのスケジューリング ポリシーを使用して毎日または毎週のスケジュールを指定することができます。 System Center DPM を使用した場合、スケジュールには毎日、毎週、毎月、毎年を指定できます。
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-i-backed-upbr"></a>Recovery Services コンテナーに転送されたデータのサイズが、バックアップしたデータよりも小さいのはなぜでしょうか。<br/>
  Azure Backup エージェント、SCDPM、または Azure Backup Server からバックアップしたすべてのデータは、圧縮および暗号化されてから転送されます。 圧縮と暗号化が適用されると、バックアップ コンテナー内のデータは 30 ～ 40% 小さくなります。

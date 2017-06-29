@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: kumud
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 3d30024920295298ad2a8a6e22e11ef829934255
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: a5164282264124835692bc72a4ab61891aa7af9d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/02/2017
 
 ---
 
@@ -45,7 +45,7 @@ Azure Portal を使用して Traffic Manager プロファイルを作成でき�
 
 ## <a name="disable-enable-or-delete-a-profile"></a>プロファイルの無効化、有効化、または削除
 
-Traffic Manager が構成済みのエンドポイントに対するユーザーの要求を参照しないように、既存のプロファイルを無効にすることができます。 Traffic Manager プロファイルを無効にすると、プロファイルとプロファイルに含まれる情報は元のまま残ります。このため、Traffic Manager インターフェイスで編集することもできます。  プロファイルをもう一度有効にすると、参照が再開されます。 Traffic Manager プロファイルは、Azure クラシック ポータルで作成すると自動的に有効になります。 プロファイルが不要になった場合は、削除できます。
+Traffic Manager が構成済みのエンドポイントに対するユーザーの要求を参照しないように、既存のプロファイルを無効にすることができます。 Traffic Manager プロファイルを無効にすると、プロファイルとプロファイルに含まれる情報は元のまま残ります。このため、Traffic Manager インターフェイスで編集することもできます。  プロファイルをもう一度有効にすると、参照が再開されます。 Traffic Manager プロファイルは、Azure ポータルで作成すると自動的に有効になります。 プロファイルが不要になった場合は、削除できます。
 
 ### <a name="to-disable-a-profile"></a>プロファイルを無効にするには
 

@@ -13,13 +13,14 @@ ms.devlang: multiple
 ms.topic: hero-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/10/2017
+ms.date: 06/08/2017
 ms.author: glenga
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 0c7ef7004618966ae8c2d32027c460b2b643923e
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: f00ca3b8a35c0c49277457bd42fe8a314520d5a5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -51,7 +52,7 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
 1. 新しい Function App を展開し、**[関数]** の横にある **+** ボタンをクリックします。
 
-2.  **[関数への早道]** ページで、**[webhook + API]** をクリックし、関数の言語を選択して、**[この関数を作成する]** をクリックします。 
+2.  **[関数への早道]** ページで、**[webhook + API]** を選択し、関数の言語を選択して、**[この関数を作成する]** をクリックします。 
    
     ![Azure Portal での関数のクイック スタート。](./media/functions-create-first-azure-function/function-app-quickstart-node-webhook.png)
 
@@ -59,7 +60,7 @@ HTTP によってトリガーされる関数のテンプレートを使用して
 
 ## <a name="test-the-function"></a>関数をテストする
 
-1. 新しい関数で、**[</> 関数の URL の取得]** をクリックし、**関数 URL** をコピーします。 
+1. 新しい関数で、**[</> 関数の URL の取得]** をクリックし、**[default (Function key)\(既定 (関数キー)\)]** を選択して、**[コピー]** をクリックします。 
 
     ![Azure Portal からの関数 URL のコピー](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 

@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/10/2017
+ms.date: 06/09/2017
 ms.author: arramac
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: d1e1f977c9023f4727d8c444b5e490e8f5ba8d9e
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 07dc5e1520cf60e19a1961ad85d2aea0cc7bd15f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 05/31/2017
 
 ![Azure Table Storage API と Azure Cosmos DB](./media/table-introduction/premium-tables.png) 
 
-Azure Cosmos DB では、柔軟なスキーマによるキー/値ストアを必要とするアプリケーションのために Table API が提供されます。 Azure Cosmos DB で [Azure Table Storage](../storage/storage-introduction.md) SDK および REST API を使用できます。 Azure Cosmos DB を使用して、高スループット要件のテーブルを作成できます。 Azure Cosmos DB ではスループットが最適化されたテーブル (通称 "Premium テーブル") がサポートされ、現在パブリック プレビューが行われています。 
+Azure Cosmos DB は、柔軟なスキーマによるキー値ストア、予測可能なパフォーマンス、グローバルな分散、および高スループットを必要とするアプリケーション向けの Table API (プレビュー) を提供します。 Table API は、Azure Table Storage と同じ機能を提供しますが、Azure Cosmos DB エンジンのメリットを活用します。 
 
 Azure Table Storage は、ストレージ要件が高くスループット要件が低いテーブルに対して、引き続き使用できます。 Azure Cosmos DB では、将来の更新時にストレージ最適化テーブルのサポートが導入される予定であり、既存および新規の Azure Table Storage アカウントは Azure Cosmos DB にアップグレードされます。
 
@@ -56,3 +56,4 @@ Azure Table Storage は、ストレージ要件が高くスループット要件
 * 既存の .NET Table SDK を使用した [Azure Cosmos DB の Table API](create-table-dotnet.md) の概要。
 * [Azure Cosmos DB の世界規模での分散](distribute-data-globally.md)について理解します。
 * [Azure Cosmos DB におけるスループットのプロビジョニング](request-units.md)について理解します。
+

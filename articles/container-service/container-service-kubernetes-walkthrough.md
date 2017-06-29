@@ -1,6 +1,6 @@
 ---
-title: "Azure の Kubernetes クラスターのクイック スタート | Microsoft Docs"
-description: "Azure Container Service で Kubernetes クラスターをデプロイして使ってみます"
+title: "クイックスタート - Linux 用 Azure Kubernetes クラスター | Microsoft Docs"
+description: "Azure CLI を使用して Azure Container Service で Linux コンテナー用 Kubernetes クラスターを作成する方法を簡単に説明します。"
 services: container-service
 documentationcenter: 
 author: anhowe
@@ -14,191 +14,154 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/08/2017
+ms.date: 05/31/2017
 ms.author: anhowe
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 0604a85192ed632b621113b98cc44172c584ea01
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 25043f6bf5e5ab3def8563bd2c096b79706bfec1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 
-# <a name="get-started-with-a-kubernetes-cluster-in-container-service"></a>Container Service で Kubernetes クラスターを使用する
+# <a name="deploy-kubernetes-cluster-for-linux-containers"></a>Linux コンテナー用の Kubernetes クラスターをデプロイする
 
+Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このガイドでは、Azure CLI を使用して、[Kubernetes](https://kubernetes.io/docs/home/) クラスターを [Azure Container Service](container-service-intro.md) にデプロイする方法を詳しく説明します。 クラスターをデプロイしたら、Kubernetes `kubectl` コマンドライン ツールを使用してクラスターに接続し、最初の Linux コンテナーをデプロイします。
 
-このチュートリアルでは、Azure CLI 2.0 コマンドを使って Azure Container Service に Kubernetes クラスターを作成する方法について説明します。 その後、`kubectl` コマンドライン ツールを使用して、クラスター内のコンテナーの操作を開始します。
+このチュートリアルには、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 アップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
-次の図は、1 つの Linux マスターと 2 つの Linux エージェントを含む Container Service クラスターのアーキテクチャを示します。 マスターは Kubernetes REST API を提供します。 エージェント ノードは、Azure 可用性セットにグループ化され、コンテナーを実行します。 すべての VM は同一のプライベート仮想ネットワーク内にあり、完全な相互アクセスが可能です。
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-![Azure 上の Kubernetes クラスターの図](media/container-service-kubernetes-walkthrough/kubernetes.png)
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-詳しい背景については、[Azure Container Service の概要](container-service-intro.md)に関するページと [Kubernetes のドキュメント](https://kubernetes.io/docs/home/)を参照してください。
+## <a name="log-in-to-azure"></a>Azure へのログイン 
 
-## <a name="prerequisites"></a>前提条件
-Azure CLI 2.0 を使用して Azure Container Service クラスターを作成するには、以下のものが必要です。
-* Azure アカウント ([無料試用版はこちら](https://azure.microsoft.com/pricing/free-trial/))
-* インストールして設定した [Azure CLI 2.0](/cli/azure/install-az-cli2)
+[az login](/cli/azure/#login) コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
 
-さらに、次のものが必要です (または Azure CLI を使用して、クラスターのデプロイ時に自動的に生成することもできます)。
-
-* **SSH RSA 公開キー**: Secure Shell (SSH) RSA キーを事前に作成する場合は、[macOS と Linux](../virtual-machines/linux/mac-create-ssh-keys.md) のガイダンスまたは [Windows](../virtual-machines/linux/ssh-from-windows.md) のガイダンスを参照してください。 
-
-* **サービス プリンシパル クライアント ID とシークレット**: Azure Active Directory サービス プリンシパルの作成手順とさらに詳しい情報については、[Kubernetes クラスターのサービス プリンシパル](container-service-kubernetes-service-principal.md)に関するページを参照してください。
-
- この記事のコマンド例では、SSH キーとサービス プリンシパルを自動的に生成します。
-
-## <a name="create-your-kubernetes-cluster"></a>Kubernetes クラスターの作成
-
-Azure CLI 2.0 を使用してクラスターを作成する簡単な Bash シェル コマンドを次に示します。 
-
-### <a name="create-a-resource-group"></a>リソース グループの作成
-クラスターを作成するには、まず、Azure Container Service を[利用できる](https://azure.microsoft.com/regions/services/)場所にリソース グループを作成する必要があります。 次のようなコマンドを実行します。
-
-```azurecli
-RESOURCE_GROUP=my-resource-group
-LOCATION=westus
-az group create --name=$RESOURCE_GROUP --location=$LOCATION
+```azurecli-interactive
+az login
 ```
 
-### <a name="create-a-cluster"></a>クラスターの作成
-`--orchestrator-type=kubernetes` を指定した `az acs create` コマンドを使用して、リソース グループに Kubernetes クラスターを作成します。 コマンド構文については、`az acs create` の[ヘルプ](/cli/azure/acs#create)を参照してください。
+## <a name="create-a-resource-group"></a>リソース グループの作成
 
-このバージョンのコマンドでは、Kubernetes クラスターのサービス プリンシパルと SSH RSA キーが自動的に生成されます。
+[az group create](/cli/azure/group#create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理グループです。 
 
+次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
-
-```azurecli
-DNS_PREFIX=some-unique-value
-CLUSTER_NAME=any-acs-cluster-name
-az acs create --orchestrator-type=kubernetes --resource-group $RESOURCE_GROUP --name=$CLUSTER_NAME --dns-prefix=$DNS_PREFIX --generate-ssh-keys
+```azurecli-interactive 
+az group create --name myResourceGroup --location eastus
 ```
 
-数分後、コマンドが完了すると、Kubernetes クラスターが稼働状態となります。
+## <a name="create-kubernetes-cluster"></a>Kubernetes クラスターを作成する
+[az acs create](/cli/azure/acs#create) コマンドを使用して Azure Container Service に Kubernetes クラスターを作成します。 
 
-> [!IMPORTANT]
-> ご利用のアカウントに Azure AD サービス プリンシパルを作成するためのアクセス許可がない場合、このコマンドを実行すると、"**この操作を完了するのに十分な特権がありません**" という内容のエラーが発生します。 詳細については、[Kubernetes クラスターのサービス プリンシパル](container-service-kubernetes-service-principal.md)に関するページを参照してください。
-> 
-
+次の例では、1 つの Linux マスター ノードと 2 つの Linux エージェント ノードを含む、*myK8sCluster* という名前のクラスターを作成します。 この例では SSH キーを作成します (既定の場所に存在しない場合)。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。 クラスター名は環境に適したものに更新してください。 
 
 
-### <a name="connect-to-the-cluster"></a>クラスターへの接続
+
+```azurecli-interactive 
+az acs create --orchestrator-type=kubernetes \
+    --resource-group myResourceGroup \
+    --name=myK8sCluster \
+    --agent-count=2 \
+    --generate-ssh-keys 
+```
+
+数分してコマンドが完了すると、デプロイに関する情報が表示されます。
+
+## <a name="install-kubectl"></a>kubectl のインストール
 
 クライアント コンピューターから Kubernetes クラスターに接続するには、Kubernetes コマンドライン クライアント ([`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/)) を使用します。 
 
-`kubectl` をまだインストールしていない場合は、`az acs kubernetes install-cli` を使用してインストールできます  ([Kubernetes サイト](https://kubernetes.io/docs/tasks/kubectl/install/)からダウンロードすることもできます)。
+Azure CloudShell を使用している場合、`kubectl` は既にインストールされています。 ローカルにインストールする場合には、[az acs kubernetes install-cli](/cli/azure/acs/kubernetes#install-cli) コマンドを使用します。
 
-```azurecli
-sudo az acs kubernetes install-cli
+次の Azure CLI の例では `kubectl` がご使用のシステムにインストールされます。 Azure CLI を macOS または Linux で実行しているとき、場合によっては `sudo` を使用してコマンドを実行する必要があります。
+
+```azurecli-interactive 
+az acs kubernetes install-cli 
 ```
 
-> [!TIP]
-> 既定では、`kubectl` バイナリが `/usr/local/bin/kubectl` (Linux または macOS システム) または `C:\Program Files (x86)\kubectl.exe` (Windows) にインストールされます。 別のインストール パスを指定する場合は、`--install-location` パラメーターを使用してください。
->
-> `kubectl` のインストール後、そのディレクトリのパスを通して (ディレクトリをシステム パスに追加して) ください。 
->
+## <a name="connect-with-kubectl"></a>kubectl を使用して接続する
 
+Kubernetes クラスターに接続するように `kubectl` を構成するには、[az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials) コマンドを実行します。 次の例では、Kubernetes クラスターのクラスター構成がダウンロードされます。
 
-そのうえで、次のコマンドを実行して、マスターの Kubernetes クラスター構成を `~/.kube/config` ファイルにダウンロードします。
-
-```azurecli
-az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUSTER_NAME
+```azurecli-interactive 
+az acs kubernetes get-credentials --resource-group=myResourceGroup --name=myK8sCluster
 ```
 
-`kubectl` をインストールして構成する方法については、[Azure Container Service クラスターへの接続](container-service-connect.md)に関するトピックを参照してください。
+コンピューターからクラスターへの接続を確認するために、次のコマンドを実行してみます。
 
-この時点で、自分のコンピューターからクラスターにアクセスできます。 次を実行してみてください。
-
-```bash
+```azurecli-interactive
 kubectl get nodes
 ```
 
-クラスター内にコンピューターの一覧が表示されることを確認します。
+`kubectl` によって、マスター ノードとエージェント ノードが一覧表示されます。
 
-## <a name="create-your-first-kubernetes-service"></a>最初の Kubernetes サービスの作成
+```azurecli-interactive
+NAME                    STATUS                     AGE       VERSION
+k8s-agent-98dc3136-0    Ready                      5m        v1.5.3
+k8s-agent-98dc3136-1    Ready                      5m        v1.5.3
+k8s-master-98dc3136-0   Ready,SchedulingDisabled   5m        v1.5.3
 
-このチュートリアルを完了すると、次の方法がわかります。
-* Docker アプリケーションをデプロイして公開する
-* `kubectl exec` を使用してコンテナーでコマンドを実行する 
-* Kubernetes ダッシュボードにアクセスする
-
-### <a name="start-a-container"></a>コンテナーの開始
-次のコマンドを実行して、コンテナー (この場合は Nginx Web サーバー) を実行できます。
-
-```bash
-kubectl run nginx --image nginx
 ```
 
-このコマンドにより、いずれかのノードにあるポッドで Nginx Docker コンテナーが開始されます。
 
-実行中のコンテナーを表示するには、次を実行します。
+## <a name="deploy-an-nginx-container"></a>NGINX コンテナーをデプロイする
 
-```bash
+1 つ以上のコンテナーが含まれる Kubernetes の "*ポッド*" 内で Docker コンテナーを実行できます。 
+
+次のコマンドは、いずれかのノード上の Kubernetes ポッド内で NGINX Docker コンテナーを起動します。 このケースでは、コンテナーは [Docker Hub](https://hub.docker.com/_/nginx/) のイメージからプルされた NGINX Web サーバーを実行します。
+
+```azurecli-interactive
+kubectl run nginx --image nginx
+```
+コンテナーが実行していることを確認するには、次のコマンドを実行します。
+
+```azurecli-interactive
 kubectl get pods
 ```
 
-### <a name="expose-the-service-to-the-world"></a>サービスを公開する
-サービスを公開するには、タイプが `LoadBalancer` の Kubernetes `Service` を作成します。
+## <a name="view-the-nginx-welcome-page"></a>NGINX のようこそページの表示
+パブリック IP アドレスで NGINX サーバーを世界に公開するには、次のコマンドを入力します。
 
-```bash
+```azurecli-interactive
 kubectl expose deployments nginx --port=80 --type=LoadBalancer
 ```
 
-このコマンドにより、パブリック IP アドレスを持つ Azure Load Balancer ルールが、Kubernetes によって作成されます。 変更がロード バランサーに反映されるまでに数分かかります。 詳細については、「[Azure Container Service の Kubernetes クラスターのコンテナーで負荷を分散する](container-service-kubernetes-load-balancing.md)」を参照してください。
+このコマンドにより、サービスと、サービスのためのパブリック IP アドレスを持つ [Azure Load Balancer ルール](container-service-kubernetes-load-balancing.md)が、Kubernetes によって作成されます。 
 
-次のコマンドを実行して、サービスが `pending` から変更され、外部 IP アドレスを表示されることを確認します。
+次のコマンドを実行して、サービスの状態を確認します。
 
-```bash
-watch 'kubectl get svc'
+```azurecli-interactive
+kubectl get svc
 ```
 
-  ![保留中から外部 IP アドレスへの切り替え確認の画像](media/container-service-kubernetes-walkthrough/kubernetes-nginx3.png)
-
-外部 IP アドレスを確認したら、ブラウザーでそれを参照できます。
-
-  ![Nginx の参照の画像](media/container-service-kubernetes-walkthrough/kubernetes-nginx4.png)  
-
-
-### <a name="browse-the-kubernetes-ui"></a>Kubernetes UI を参照する
-Kubernetes Web インターフェイスを表示するには、次のコマンドを使用できます。
-
-```bash
-kubectl proxy
-```
-このコマンドは、localhost 上で認証済みのプロキシを実行します。これを使用して、[http://localhost:8001/ui](http://localhost:8001/ui) で実行されている Kubernetes Web UI を表示することができます。 詳細については、「[Azure Container Service で Kubernetes Web UI を使用する](container-service-kubernetes-ui.md)」を参照してください。
-
-![Kubernetes ダッシュボードの画像](media/container-service-kubernetes-walkthrough/kubernetes-dashboard.png)
-
-### <a name="remote-sessions-inside-your-containers"></a>コンテナー内のリモート セッション
-Kubernetes では、クラスターで実行されているリモートの Docker コンテナー内でコマンドを実行することができます。
-
-```bash
-# Get the name of your nginx pods
-kubectl get pods
+初期状態では IP アドレスが `pending` として表示されます。 数分後に、サービスの外部 IP アドレスが設定されます。
+  
+```azurecli-interactive
+NAME         CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE       
+kubernetes   10.0.0.1       <none>          443/TCP        21h       
+nginx        10.0.111.25    52.179.3.96     80/TCP         22m
 ```
 
-ポッドの名前を使用すると、ポッドに対してリモート コマンドを実行できます。 次に例を示します。
+任意の Web ブラウザーを使用して、外部 IP アドレスで NGINX の既定のようこそページを確認します。
 
-```bash
-kubectl exec <pod name> date
+![Nginx の参照の画像](media/container-service-kubernetes-walkthrough/kubernetes-nginx4.png)  
+
+
+## <a name="delete-cluster"></a>クラスターを削除する
+クラスターが必要なくなったら、[az group delete](/cli/azure/group#delete) コマンドを使用して、リソース グループ、コンテナー サービス、およびすべての関連リソースを削除できます。
+
+```azurecli-interactive 
+az group delete --name myResourceGroup
 ```
-
-`-it` フラグを使用して、完全な対話型セッションを取得することもできます。
-
-```bash
-kubectl exec <pod name> -it bash
-```
-
-![コンテナー内のリモート セッション](media/container-service-kubernetes-walkthrough/kubernetes-remote.png)
-
 
 
 ## <a name="next-steps"></a>次のステップ
 
-Kubernetes クラスターで他の操作を行うには、次のリソースを参照してください。
+このクイック スタートでは、`kubectl` で接続される Kubernetes クラスターをデプロイし、NGINX コンテナーを含むポッドをデプロイしました。 Azure Container Service の詳細を学ぶには、Kubernetes クラスターのチュートリアルに進みます。
 
-* [Kubernetes ブートキャンプ](https://katacoda.com/embed/kubernetes-bootcamp/1/) - コンテナー化されたアプリケーションをデプロイ、スケール、更新、デバッグする方法について説明されています。
-* [Kubernetes ユーザー ガイド](http://kubernetes.io/docs/user-guide/) - 既存の Kubernetes クラスターでのプログラム実行に関する情報が記載されています。
-* [Kubernetes の例](https://github.com/kubernetes/kubernetes/tree/master/examples) - Kubernetes を使って実際のアプリケーションを実行する方法の例が記載されています。
+> [!div class="nextstepaction"]
+> [ACS Kubernetes クラスターの管理](./container-service-tutorial-kubernetes-prepare-app.md)
 

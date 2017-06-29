@@ -4,7 +4,7 @@ description: "このドキュメントは、Operations Management Suite のセ�
 services: operations-management-suite
 documentationcenter: na
 author: YuriDio
-manager: swadhwa
+manager: mbaldwin
 editor: 
 ms.assetid: 754796ef-a43e-468a-86c9-04a2eda55b5b
 ms.service: operations-management-suite
@@ -13,13 +13,13 @@ ms.topic: get-started-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/19/2017
+ms.date: 06/13/2017
 ms.author: yurid
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: c6944fd4f93d2daa9071bb27f76ea0f772bdb743
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 5753511d26c06f385fd4ff717d8592c321338172
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/20/2017
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -139,6 +139,12 @@ ID アクティビティを監視することにより、インシデントが�
 ### <a name="threat-intelligence"></a>[脅威インテリジェンス]
 
 IT 管理者は、OMS の [セキュリティおよび監査] で利用できる [脅威インテリジェンス] オプションを利用することで、特定のコンピューターがボットネットの一部であるかどうかを確認するなど、環境に対するセキュリティの脅威を特定することができます。 コンピューターをひそかにコマンド アンド コントロール サーバーに接続するマルウェアが攻撃者によって不正にインストールされた場合、そのコンピューターはボットネットのノードになる可能性があります。 また、ダークネットのようなアンダーグラウンド通信チャネルに由来する潜在的な脅威を特定することもできます。 脅威インテリジェンスの詳細については、「[Operations Management Suite のセキュリティと監査ソリューションでのセキュリティの警告に対する監視と応答](oms-security-responding-alerts.md)」を参照してください。
+
+シナリオによっては、監視対象コンピューターからアクセスされた潜在的な悪意のある IP に気付くことがあります。
+
+![threat intel map](./media/oms-security-responding-alerts/oms-security-responding-alerts-fig6.png)
+
+このアラートおよび同じカテゴリの他のアラートは、[Microsoft 脅威インテリジェンス](https://youtu.be/O4WtxgUrDc8)を利用して OMS Security によって生成されます。 脅威インテリジェンス データは、Microsoft によって収集されるだけでなく、大手の脅威インテリジェンス プロバイダーから購入されます。 このデータは頻繁に更新され、刻々と進化する脅威に適応されます。 その性質上、セキュリティ アラートを[調査](https://blogs.technet.microsoft.com/msoms/2016/12/08/investigating-suspicious-activity-in-a-hybrid-cloud-with-oms-security/)するときは、他のセキュリティ情報ソースと組み合わせる必要があります。 
 
 ### <a name="baseline-assessment"></a>ベースライン評価
 

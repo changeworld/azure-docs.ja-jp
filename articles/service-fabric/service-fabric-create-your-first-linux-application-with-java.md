@@ -3,7 +3,7 @@ title: "Java を使用して Linux で初めての Azure マイクロサービ�
 description: "Java を使用して Service Fabric アプリケーションを作成およびデプロイします"
 services: service-fabric
 documentationcenter: java
-author: seanmck
+author: rwike77
 manager: timlt
 editor: 
 ms.assetid: 02b51f11-5d78-4c54-bb68-8e128677783e
@@ -12,16 +12,17 @@ ms.devlang: java
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/05/2017
-ms.author: seanmck
-translationtype: Human Translation
-ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
-ms.openlocfilehash: eedddf7a40acfba7513efd810d115f1afe2f224d
-ms.lasthandoff: 03/23/2017
+ms.date: 06/02/2017
+ms.author: ryanwi
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 4ffab9eb858b05d3f5894e8753fb0fd4f38c4087
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/03/2017
 
 
 ---
-# <a name="create-your-first-azure-service-fabric-application"></a>最初の Azure Service Fabric アプリケーションを作成する
+# <a name="create-your-first-service-fabric-java-application-on-linux"></a>Linux で初めての Service Fabric Java アプリケーションを作成する
 > [!div class="op_single_selector"]
 > * [C# - Windows](service-fabric-create-your-first-application-in-visual-studio.md)
 > * [Java - Linux](service-fabric-create-your-first-linux-application-with-java.md)
@@ -29,38 +30,21 @@ ms.lasthandoff: 03/23/2017
 >
 >
 
-Service Fabric では、.NET Core と Java の両方で Linux 上のサービスを構築するための SDK を提供しています。 このチュートリアルでは、Linux 用アプリケーションを作成し、Java を使用するサービスを構築します。  
-
-> [!NOTE]
-> Java は優れた組み込みプログラミング言語として、Linux プレビューでのみサポートされています (Windows でのサポートは計画中)。 ただし、Java アプリケーションを含むすべてのアプリケーションは、Windows と Linux のゲスト実行可能ファイルとして、またはコンテナー内で実行できます。 詳細については、[Azure Service Fabric への既存実行ファイルのデプロイ](service-fabric-deploy-existing-app.md)に関するページと [Service Fabric へのコンテナーのデプロイ](service-fabric-deploy-container.md)に関するページを参照してください。
->
-
-## <a name="video-tutorial"></a>ビデオ チュートリアル
-
-次の Microsoft Virtual Academy ビデオで、Linux で Java アプリを作成する手順について説明しています。  
-<center><a target="\_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=DOX8K86yC_206218965">  
-<img src="./media/service-fabric-create-your-first-linux-application-with-java/LinuxVid.png" WIDTH="360" HEIGHT="244">  
-</a></center>
-
+このクイック スタートでは、Linux 開発環境で初めての Azure Service Fabric Java アプリケーションをほんの数分で作成できます。  作業が終了すると、ローカル開発クラスターで実行される単純な Java 単一サービス アプリケーションが作成されます。  
 
 ## <a name="prerequisites"></a>前提条件
-作業を開始する前に、 [Linux 開発環境がセットアップ](service-fabric-get-started-linux.md)されていることを確認してください。 Mac OS X を使用している場合は、 [Vagrant を使用して仮想マシンに Linux ワンボックス環境を設定](service-fabric-get-started-mac.md)します。
+作業を開始する前に、[Linux 開発環境](service-fabric-get-started-linux.md)に Service Fabric SDK と Azure CLI をインストールし、開発クラスターをセットアップします。 Mac OS X を使用している場合は、[Vagrant を使用して仮想マシンに Linux 開発環境をセットアップする](service-fabric-get-started-mac.md)ことができます。
 
 ## <a name="create-the-application"></a>アプリケーションを作成する
-Service Fabric のアプリケーションには、アプリケーションの機能を提供する際にそれぞれ特定の役割を果たすサービスを 1 つ以上含めることができます。 Linux 用の Service Fabric SDK には、[Yeoman](http://yeoman.io/) ジェネレーターが含まれています。これを使用すると、初めてサービスを作成したり、後で追加したりする作業が簡単になります。 Yeoman を使用して、単一のサービスを持つアプリケーションを作成しましょう。
+Service Fabric アプリケーションには、アプリケーションの機能を提供する際にそれぞれ特定の役割を果たすサービスが 1 つ以上含まれます。 Linux 用の Service Fabric SDK には、[Yeoman](http://yeoman.io/) ジェネレーターが含まれています。これを使用すると、初めてサービスを作成したり、後で追加したりする作業が簡単になります。  Eclipse 用のプラグインを使用して、Service Fabric Java アプリケーションを作成、ビルド、およびデプロイすることもできます。 [Eclipse を使用した初めての Java アプリケーションの作成とデプロイ](service-fabric-get-started-eclipse.md)に関するページを参照してください。 このクイック スタートでは、Yeoman を使用して、カウンター値の格納と取得という単一のサービスを行うアプリケーションを作成します。
 
 1. ターミナルで、「``yo azuresfjava``」と入力します。
-2. アプリケーションに名前を付けます。
-3. 最初のサービスの種類を選択し、名前を付けます。 このチュートリアルでは、"Reliable Actor Service" を選択します。
-
-   ![Service Fabric Yeoman generator for Java][sf-yeoman]
-
-> [!NOTE]
-> オプションの詳細については、「 [Service Fabric プログラミング モデルの概要](service-fabric-choose-framework.md)」を参照してください。
->
+2. アプリケーションに名前を付けます。 
+3. 最初のサービスの種類を選択し、名前を付けます。 このチュートリアルでは、[Reliable Actor サービス] を選択します。 他の種類のサービスの詳細については、「[Service Fabric プログラミング モデルの概要](service-fabric-choose-framework.md)」を参照してください。
+   ![Java 用 Service Fabric Yeoman ジェネレーター][sf-yeoman]
 
 ## <a name="build-the-application"></a>アプリケーションのビルド
-Service Fabric Yeoman テンプレートには、[Gradle](https://gradle.org/) のビルド スクリプトが含まれています。端末からアプリをビルドするために、これを使用することができます。
+Service Fabric Yeoman テンプレートには、[Gradle](https://gradle.org/) のビルド スクリプトが含まれています。端末からアプリをビルドするために、これを使用することができます。 アプリをビルドしてパッケージ化するには、次のコマンドを実行します。
 
   ```bash
   cd myapp
@@ -76,48 +60,49 @@ Service Fabric Yeoman テンプレートには、[Gradle](https://gradle.org/) �
     azure servicefabric cluster connect
     ```
 
-2. テンプレートに用意されているインストール スクリプトを使用してクラスターのイメージ ストアにアプリケーション パッケージをコピーし、アプリケーションの種類を登録して、アプリケーションのインスタンスを作成します。
+2. テンプレートに用意されているインストール スクリプトを実行してクラスターのイメージ ストアにアプリケーション パッケージをコピーし、アプリケーションの種類を登録して、アプリケーションのインスタンスを作成します。
 
     ```bash
     ./install.sh
     ```
 
-3. ブラウザーを開き、http://localhost:19080/Explorer の Service Fabric Explorer に移動します (Mac OS X で Vagrant を使用している場合は、localhost を VM のプライベート IP に置き換えます)。
+3. ブラウザーを開き、http://localhost:19080/Explorer の [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) に移動します (Mac OS X で Vagrant を使用している場合は、localhost を VM のプライベート IP に置き換えます)。
 
-4. Applications ノードを展開し、アプリケーションの種類のエントリと、その種類の最初のインスタンスのエントリができたことを確認します。
+4. **[アプリケーション]** ノードを展開し、アプリケーションの種類のエントリと、その種類の最初のインスタンスのエントリができたことを確認します。
 
 ## <a name="start-the-test-client-and-perform-a-failover"></a>テスト クライアントの起動と、フェールオーバーの実行
-アクター プロジェクトは、それ自体では何も行いません。 これにメッセージを送信する別のサービスまたはクライアントが必要です。 アクター テンプレートには、アクター サービスとの対話に使用できる簡単なテスト スクリプトが含まれています。
+アクターは単独では何も実行しません。メッセージを送信するには、別のサービスまたはクライアントが必要です。 アクター テンプレートには、アクター サービスとの対話に使用できる簡単なテスト スクリプトが含まれています。
 
-1. ウォッチ ユーティリティを使用してスクリプトを実行し、アクター サービスの出力を確認します。
+1. ウォッチ ユーティリティを使用してスクリプトを実行し、アクター サービスの出力を確認します。  テスト スクリプトは、アクターに対して `setCountAsync()` メソッドを呼び出してカウンターを増分させ、`getCountAsync()` メソッドを呼び出して新しいカウンター値を取得し、その値をコンソールに表示します。
 
     ```bash
     cd myactorsvcTestClient
     watch -n 1 ./testclient.sh
     ```
 
-2. Service Fabric Explorer で、アクター サービスのプライマリ レプリカをホストしているノードを見つけます。 次のスクリーンショットでは、ノード 3 です。
+2. Service Fabric Explorer で、アクター サービスのプライマリ レプリカをホストしているノードを見つけます。 次のスクリーンショットでは、ノード 3 です。 プライマリ サービス レプリカは、読み取り操作と書き込み操作を処理します。  サービスの状態の変更がセカンダリ レプリカにレプリケートされます (次のスクリーンショットでは、ノード 0 のノード 1 で実行されています)。
 
     ![Finding the primary replica in Service Fabric Explorer][sfx-primary]
 
-3. 前の手順で見つけたノードをクリックし、[アクション] メニューの **[非アクティブにする (再起動)]** を選択します。 ローカル クラスターの 5 つのノードのいずれかが再起動され、別のノードで実行されているセカンダリ レプリカのいずれかに強制的にフェールオーバーされます。 このアクションを行うときは、テスト クライアントからの出力に注意してください。また、フェールオーバーにかかわらず、カウンターが増加していることに注意してください。
+3. **[ノード]** で、前の手順で見つけたノードをクリックし、[アクション] メニューの **[非アクティブにする (再起動)]** を選択します。 この操作によって、プライマリ サービス レプリカを実行しているノードが再起動され、別のノードで実行されているセカンダリ レプリカのいずれかに強制的にフェールオーバーされます。  フェールオーバーされたセカンダリ レプリカがプライマリに昇格し、別のノードに別のセカンダリ レプリカが作成され、プライマリ レプリカによる読み取り/書き込み操作が開始されます。 ノードが再起動したら、テスト クライアントからの出力を監視して、フェールオーバーにかかわらず、カウンターが増加し続けることを確認してください。
 
-## <a name="create-and-deploy-an-application-with-the-eclipse-neon-plugin"></a>Eclipse Neon プラグインによるアプリケーションの作成とデプロイ
-
-Service Fabric では、Eclipse を使用して Service Fabric Java アプリケーションの作成、ビルド、デプロイのプロビジョニングを行うこともできます。 Eclipse をインストールするときに、**Java 開発者向け Eclipse IDE** を選択します。 さらに、Service Fabric では現在、Eclipse **Neon** のプラグインがサポートされています。 [Linux で Eclipse 用の Service Fabric プラグインを使用した最初の Service Fabric Java アプリケーションの作成とデプロイ](service-fabric-get-started-eclipse.md)に関する詳細なドキュメントをご覧ください。
-
-## <a name="adding-more-services-to-an-existing-application"></a>既存アプリケーションへのサービスの追加
-
-### <a name="using-command-line-utility"></a>コマンド ライン ユーティリティを使用する
-`yo` を使用して作成したアプリケーションにサービスを追加するには、次の手順を実行します。
+## <a name="add-another-service-to-the-application"></a>別のサービスをアプリケーションに追加する
+`yo` を使用して既存のアプリケーションにサービスを追加するには、次の手順を実行します。
 1. ディレクトリを既存アプリケーションのルートに変更します。  たとえば、Yeoman で作成したアプリケーションが `MyApplication` の場合は、`cd ~/YeomanSamples/MyApplication` です。
 2. `yo azuresfjava:AddService` を実行します。
+3. 上記の手順に従って、アプリをビルドしてデプロイします。
 
-### <a name="using-service-fabric-eclipse-plugin-for-java-on-linux"></a>Linux で Java 用の Service Fabric Eclipse プラグインを使用する
-Service Fabric Eclipse プラグインを使用して作成された既存のアプリケーションにサービスを追加する場合、[こちら](service-fabric-get-started-eclipse.md#add-a-service-fabric-service-to-your-service-fabric-application)のドキュメントを参照してください。
+## <a name="remove-the-application"></a>アプリケーションを削除する
+テンプレートに用意されているアンインストール スクリプトを使用して、アプリ インスタンスを削除し、アプリケーション パッケージの登録を解除し、クラスターのイメージ ストアからアプリケーション パッケージを削除します。
+
+```bash
+./uninstall.sh
+```
+
+Service Fabric explorer で、アプリケーションとアプリケーションの種類が **[アプリケーション]** ノードに表示されていないことを確認します。
 
 ## <a name="next-steps"></a>次のステップ
-* [Linux で Eclipse 用の Service Fabric プラグインを使用した最初の Service Fabric Java アプリケーションの作成とデプロイ](service-fabric-get-started-eclipse.md)
+* [Linux で初めての Service Fabric Java アプリケーションを作成する](service-fabric-get-started-eclipse.md)
 * [Service Fabric Reliable Actors の概要](service-fabric-reliable-actors-introduction.md)
 * [Azure CLI を使用した Service Fabric クラスターの対話操作](service-fabric-azure-cli.md)
 * [デプロイのトラブルシューティング](service-fabric-azure-cli.md#troubleshooting)

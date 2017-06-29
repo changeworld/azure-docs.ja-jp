@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
-ms.openlocfilehash: 9d788bf8e41fe225a4c24a4f5b464e8664f3d677
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 7ea9988b02bc09626a11efb5e95c2349b378256a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/22/2017
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -204,7 +204,7 @@ Azure Storage のリンクされたサービスは、接続情報を提供する
     }
     ```
     この JSON スニペットでは、パイプラインの Hive アクティビティによって生成される出力データを表す **AzureBlobOutput** というデータセットを定義します。 Hive アクティビティによって生成される出力データが、`adfgetstarted` という BLOB コンテナーと `partitioneddata` というフォルダーに配置されるように指定します。 
-     
+    
     **availability** セクションでは、出力データセットが 1 か月ごとに生成されることを指定します。 出力データセットにより、パイプラインのスケジュールが開始されます。 パイプラインは、開始時刻と終了時刻の間で、毎月実行されます。 
 
     これらのプロパティの説明については、「 **入力データセットを作成する** 」セクションを参照してください。 パイプラインによってデータセットが生成されるため、出力データセットの external プロパティは設定しません。
@@ -322,7 +322,7 @@ Azure Storage のリンクされたサービスは、接続情報を提供する
 
 - "**サブスクリプションが名前空間 Microsoft.DataFactory を使用するように登録されていません**" というエラー メッセージが表示された場合は、以下のいずれかの操作を行ってから、もう一度発行してみます。
     - Azure PowerShell で次のコマンドを実行して、Data Factory プロバイダーを登録します。
-        ```PowerShell    
+        ```PowerShell   
         Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
         ```
         Data Factory プロバイダーが登録されたことを確認するには、次のコマンドを実行します。

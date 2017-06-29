@@ -1,10 +1,10 @@
 ---
 title: "Azure SQL Database サービスとは | Microsoft Docs"
-description: 'Get an introduction to SQL Database: technical details and capabilities of Microsoft''s relational database management system (RDBMS) in the cloud.'
+description: "SQL Database の概要: クラウド内の Microsoft のリレーショナル データベース管理システム (RDBMS) の技術の詳細と機能について説明します。"
 keywords: "sql の概要,sql の紹介,sql database とは"
 services: sql-database
 documentationcenter: 
-author: shontnew
+author: CarlRabeler
 manager: jhubbard
 editor: cgronlun
 ms.assetid: c561f600-a292-4e3b-b1d4-8ab89b81db48
@@ -14,54 +14,153 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 03/17/2017
-ms.author: shkurhek
+ms.date: 06/19/2017
+ms.author: carlrab
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 36a9fd78f5c53891f38bc3a8356cef666f4d0ca2
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: 3b4706f50498616df64f1924cc83ceccec70f92b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/20/2017
 
 ---
-# <a name="what-is-sql-database-introduction-to-sql-database"></a>SQL Database とは SQL Database の概要
-SQL Database は、市場をリードする Microsoft SQL Server エンジンとミッション クリティカルなワークロードを処理する機能を基盤とする、Microsoft Cloud のリレーショナル データベース サービスです。 SQL Database は、複数のサービス レベルでの予測可能なパフォーマンス、ダウンタイムなしの動的なスケーラビリティ、組み込みのビジネス継続性、およびデータ保護を提供します。どの機能も、管理作業をほとんど必要としません。 これらの機能を使用すると、貴重な時間とリソースを仮想マシンとインフラストラクチャの管理に奪われることなく、迅速なアプリケーション開発や、製品化に要する時間の短縮化に専念することができます。 SQL Database は [SQL Server](https://msdn.microsoft.com/library/bb545450.aspx) エンジンを基盤としているので、既存の SQL Server ツール、ライブラリ、および API がサポートされています。 そのため、新たなスキルを学習しなくても、新しいソリューションの開発、既存の SQL Server ソリューションの移動、Microsoft Cloud への既存の SQL Server ソリューションの拡張を簡単に行うことができます。
+# <a name="what-is-the-azure-sql-database-service"></a>Azure SQL Database サービスとは 
 
-この記事では、パフォーマンス、スケーラビリティ、および管理容易性に関連する、SQL Database の中心概念および機能について紹介し、詳細を参照するためのリンクも提供します。 すぐに始めるには、次のクイック スタートをご覧ください。
- - [Azure Portal で SQL データベースを作成する](sql-database-get-started-portal.md)  
- - [Azure CLI で SQL データベースを作成する](sql-database-get-started-cli.md)
- - [PowerShell を使用して SQL データベースを作成する](sql-database-get-started-powershell.md)
+Azure SQL Database は、Microsoft クラウド ("Azure") の完全に管理されたサービスとしてのリレーショナル データベース (DBaaS) です。 このサービスとしてのプラットフォームでは、SQL コード ベースに対する修正プログラムの適用と更新を Microsoft がすべてシームレスで処理するため、基になるインフラストラクチャの管理はすべて不要になります。 SQL Database は、そのコード ベースを [Microsoft SQL Server データベース エンジン](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation)と共有しています。 
 
-Azure CLI と PowerShell の各種サンプルについては、以下のページをご覧ください。
- - [Azure SQL Database 用の Azure CLI サンプル](sql-database-cli-samples.md)
- - [Azure SQL Database 用の Azure PowerShell サンプル](sql-database-powershell-samples.md)
+現在、Microsoft では、幅広い用途のアプリケーションとワークロードを実行する数百万の実稼働データベースを管理しています。その範囲は、単純なトランザクション データ処理アプリケーションから、世界規模の高度なデータ処理を必要とするデータ集約型のミッション クリティカルなアプリケーションまで及んでいます。 SQL Database サービスは、現在、世界中の 38 か所のデータ センターで提供されていますが、新しいデータ センターが定期的に開設されています。  
 
-## <a name="adjust-performance-and-scale-without-downtime"></a>ダウンタイムなしでのパフォーマンスの調整とスケール
-SQL Database サービスには、Basic、Standard、Premium、および Premium RS という 3 つのサービス レベルが用意されています。 各サービス階層では、軽量のデータベース ワークロードから重量のデータベース ワークロードに至るまでサポートできるように、 [さまざまなレベルのパフォーマンスと機能](sql-database-service-tiers.md) を提供しています。 最初にアプリを月数ドルの小規模データベースでビルドし、後でいつでもソリューションのニーズに合わせて手動またはプログラムで[サービス レベルを変更](sql-database-service-tiers.md)することができます。 その際に、アプリにも顧客にも、ダウンタイムは発生しません。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができ、必要なときに必要な分のリソースにのみ課金されます。
+SQL Database は、リレーショナル データ、JSON、空間、XML などの構造をサポートする汎用リレーショナル データベースです。 それは、[動的にスケーラブルなパフォーマンス](sql-database-service-tiers.md)を提供し、徹底的な解析的分析とレポートを行うための[列ストア インデックス](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview)や、極度のトランザクション処理を行うための[インメモリ OLTP](sql-database-in-memory.md) などのオプションを備えています。 
 
-## <a name="elastic-pools-to-maximize-resource-utilization"></a>リソース使用率を最大化するためのエラスティック プール
-特に使用パターンが比較的予測可能である場合、多くのビジネスとアプリにおいて、単一データベースを作成し、要求に応じてパフォーマンスを調整する能力は十分です。 しかし、使用パターンが予測できない場合、コストおよびビジネス モデルを管理するのが難しくなる可能性があります。 [エラスティック プール](sql-database-elastic-pool.md)は、この問題を解決するように設計されています。 概念は単純です。 パフォーマンス リソースを個々のデータベースではなくプールに割り当て、課金は単一のデータベースのパフォーマンスではなくプールの全体的なパフォーマンス リソースに対して行われます。 エラスティック プールを使用すると、リソースの需要が変動しても、データベース パフォーマンスの調整に気を配る必要がなくなります。 プールされたデータベースは、必要に応じて、エラスティック プールのパフォーマンス リソースを使用します。 しかし、プールされたデータベースの使用は、プールの上限を超えることはありません。したがって、個々のデータベースの使用状況が予測できなくても、コストが予測可能なことに変わりはありません。 さらに、[プールに対してデータベースの追加および削除を行う](sql-database-elastic-pool-manage-portal.md)ことで、完全に設定予算内で、アプリケーションを数個のデータベースから何千ものデータベースに及ぶ範囲でスケーリングすることができます。 また、プール内のデータベースが使用できるリソースの下限と上限を制御して、プール内のいずれかのデータベースがプールのすべてのリソースを使用してしまわないようにしたり、プールされているすべてのデータベースに最小限のリソースが保証されるようにしたりすることもできます。 エラスティック プールを使用する SaaS アプリケーションの設計パターンの詳細については、「 [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)」を参照してください。
+Microsoft のクラウド優先戦略に基づく SQL Server の最新機能のリリースは SQL Database から始まり、その後 SQL Server 自体に対してリリースされます。 この方法によって、修正プログラムの適用やアップグレードなしで SQL Server の最新の機能をユーザーに提供することができ、数百万のデータベースでこれらの新機能をテストすることができます。 発表される新しい機能の詳細については、以下を参照してください。
 
-## <a name="blend-single-databases-with-pooled-databases"></a>単一データベースとプールされたデータベースの組み合わせ
-単一データベースとエラスティック プールのどちらの方法を採っても、その方法に固定されることはありません。 単一データベースをエラスティック プールと組み合わせると、状況に合わせて単一データベースとエラスティック プールのサービス レベルをすばやく簡単に変更することができます。 さらに、Azure の強力さと幅広さを利用して、他の Azure サービスを SQL Database とうまく組み合わせることにより、独自のアプリ設計のニーズを満たし、コストとリソースの効率性を向上させ、新たなビジネス チャンスを開くことができます。
+- **[SQL Database に関するAzure ロードマップ](https://azure.microsoft.com/roadmap/?category=databases)**: 最新情報や今後の予定を知ることができます。 
+- **[Azure SQL Database のブログ](https://azure.microsoft.com/blog/topics/database)**: SQL Database に関するニュースと機能についての SQL Server 製品チームのメンバーのブログです。 
 
-## <a name="monitoring-and-alerting"></a>監視とアラート
+SQL Database は、パフォーマンスを予測できる複数のサービス レベルで提供され、ダウンタイムがない動的なスケーラビリティ、組み込みのインテリジェントな最適化、グローバルなスケーラビリティと可用性、および高度なセキュリティ オプションを備えています。それらはすべてほぼ管理する必要がありません。 これらの機能を使用すると、貴重な時間とリソースを仮想マシンとインフラストラクチャの管理に奪われることなく、迅速なアプリケーション開発や、製品化に要する時間の短縮化に専念することができます。 
+
+> [!NOTE]
+> Azure のプラットフォームのセキュリティについては、[Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/security/)を参照してください。
+>
+
+## <a name="scalable-performance-and-pools"></a>スケーラブルなパフォーマンスとプール
+
+SQL Database では、各データベースは互いに分離しており、移植可能です。各データベースは、パフォーマンス レベルが保証された独自の[サービス レベル](sql-database-service-tiers.md)で提供されます。 SQL Database には、さまざまなニーズに対応するための複数のパフォーマンス レベルがあり、リソースを最大限に利用してコストの節約するためにデータベースをプールすることができます。
+
+### <a name="adjust-performance-and-scale-without-downtime"></a>ダウンタイムなしでのパフォーマンスの調整とスケール
+
+SQL Database には、データベースの軽量のワークロードから重量のワークロードまでをサポートする、Basic、Standard、Premium、および Premium RS という 4 つのサービス レベルがあります。 最初にアプリを月数ドルの小さな 1 つのデータベースでビルドし、後でいつでもソリューションのニーズに合わせて手動またはプログラムでサービス レベルを変更することができます。 アプリにも顧客にもダウンタイムを発生させずにパフォーマンスを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができ、必要なときに必要な分のリソースにのみ課金されます。
+
+   ![スケーリング](./media/sql-database-what-is-a-dtu/single_db_dtus.png)
+
+### <a name="elastic-pools-to-maximize-resource-utilization"></a>リソース使用率を最大化するためのエラスティック プール
+
+多くのビジネスとアプリケーションにとって、特に使用パターンが比較的予測可能である場合、単一データベースを作成し、要求に応じてパフォーマンスを調整することができれば、それで十分です。 しかし、使用パターンが予測できない場合、コストおよびビジネス モデルを管理するのが難しくなる可能性があります。 [エラスティック プール](sql-database-elastic-pool.md)は、この問題を解決するように設計されています。 概念は単純です。 パフォーマンス リソースを個々のデータベースではなくプールに割り当て、課金は単一のデータベースのパフォーマンスではなくプールの全体的なパフォーマンス リソースに対して行われます。 
+
+   ![エラスティック プール](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
+
+エラスティック プールを使用すると、リソースの需要が変動しても、データベース パフォーマンスの調整に気を配る必要がなくなります。 プールされたデータベースは、必要に応じて、エラスティック プールのパフォーマンス リソースを使用します。 しかし、プールされたデータベースの使用は、プールの上限を超えることはありません。したがって、個々のデータベースの使用状況が予測できなくても、コストが予測可能なことに変わりはありません。 さらに、[プールに対してデータベースの追加および削除を行う](sql-database-elastic-pool-manage-portal.md)ことで、完全に設定予算内で、アプリケーションを数個のデータベースから何千ものデータベースに及ぶ範囲でスケーリングすることができます。 また、プール内のデータベースが使用できるリソースの下限と上限を制御して、プール内のいずれかのデータベースがプールのすべてのリソースを使用してしまわないようにしたり、プールされているすべてのデータベースに最小限のリソースが保証されるようにしたりすることもできます。 エラスティック プールを使用する SaaS アプリケーションの設計パターンの詳細については、「[マルチテナント SaaS アプリケーションと Azure SQL Database の設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)」を参照してください。
+
+### <a name="blend-single-databases-with-pooled-databases"></a>単一データベースとプールされたデータベースの組み合わせ
+
+単一データベースとエラスティック プールのどちらの方法を採っても、その方法に固定されることはありません。 単一データベースをエラスティック プールと組み合わせると、状況に合わせて単一データベースとエラスティック プールのサービス レベルをすばやく簡単に変更することができます。 Azure の強力さと幅広さを利用して、他の Azure サービスを SQL Database とうまく組み合わせることにより、独自のアプリ設計のニーズを満たし、コストとリソースの効率性を向上させ、新たなビジネス チャンスを開くことができます。
+
+### <a name="extensive-monitoring-and-alerting-capabilities"></a>広範囲に及ぶ監視とアラートの機能
+
 しかし、単一データベースとエラスティック プールの相対的なパフォーマンスは、どのような方法で比較すればよいでしょうか? パフォーマンスの高低を調整するとき、何に基づいて右クリックでストップをかけますか? [組み込みのパフォーマンス監視ツール](sql-database-performance.md)と[アラート ツール](sql-database-insights-alerts-portal.md)を、パフォーマンス評価と組み合わせて使用してください。この評価は、[単一データベースの場合はデータベース トランザクション ユニット (DTU)、エラスティック プールの場合はエラスティック DTU (eDTU)](sql-database-what-is-a-dtu.md) に基づいています。 これらのツールを使用すると、現在または今後のパフォーマンスのニーズに基づいて、スケールアップとスケールダウンの影響をすばやく評価することができます。 詳細については、「 [SQL Database のオプションとパフォーマンス: 各サービス階層で使用できる内容について理解します](sql-database-service-tiers.md) 」を参照してください。
 
-## <a name="keep-your-app-and-business-running"></a>アプリケーションとビジネスの継続的な稼働
-Microsoft が管理するデータセンターのグローバル ネットワークによって強化された、Azure の業界をリードする可用性 99.99% のサービス レベル アグリーメント [(SLA)](http://azure.microsoft.com/support/legal/sla/) により、アプリケーションの 24 時間 365 日の継続的な稼働が可能になります。 すべての SQL Database で、組み込みのセキュリティ、フォールト トレランス、[データ保護](sql-database-automated-backups.md)を利用できます。これらは、本来なら自身で購入または設計し、構築、管理する必要があります。 SQL Database では、サービス レベルごとに、包括的な一連のビジネス継続性に関する機能とオプションが用意されており、これらを使用すると、稼働させてその状態を維持することができます。 [ポイントインタイム リストア](sql-database-recovery-using-backups.md)を使用すると、データベースを 35 日間分さかのぼって以前の状態に戻すことができます。 [長期的なバックアップ保有期間](sql-database-long-term-retention.md)を構成すると、セキュリティで保護されたコンテナーにバックアップを最大で 10 年間格納しておくことができます。 さらに、データベースをホストしているデータ センターで障害が発生した場合は、[最新のバックアップの geo 冗長コピー](sql-database-recovery-using-backups.md)からデータベースを復元することができます。 必要であれば、データ センターの停止時に迅速にフェールオーバーできるように、1 つまたは複数のリージョンに [geo 冗長読み取り可能レプリカ](sql-database-geo-replication-overview.md)を構成することもできます。 別の地理的リージョンでの読み取りパフォーマンスを向上させたり、[ダウンタイムなしでアプリケーションをアップグレード](sql-database-manage-application-rolling-upgrade.md)したりするために、これらのレプリカを使用することもできます。 
+さらに、SQL Database では、監視を容易にするための[メトリックと診断ログを出力](sql-database-metrics-diag-logging.md)することができます。 リソース使用率、ワーカーとセッション、および接続性を次の Azure リソースのいずれかに格納するように SQL Database を構成することができます。
 
-![SQL Database の Geo レプリケーション](./media/sql-database-technical-overview/azure_sqldb_map.png)
+- **Azure Storage**: 大量のテレメトリを低価格でアーカイブします
+- **Azure Event Hub**: SQL Database のテレメトリを、カスタム監視ソリューションまたはホット パイプラインと統合します
+- **Azure Log Analytics**: レポート機能、アラート機能、および移行機能を備えた組み込みの監視ソリューション用です
 
-それぞれのサービス階層で使用できるさまざまなビジネス継続性機能の詳細については、「 [ビジネス継続性](sql-database-business-continuity.md) 」をご覧ください。
+    ![アーキテクチャ](./media/sql-database-metrics-diag-logging/architecture.png)
 
-## <a name="secure-your-data"></a>データのセキュリティ保護
-SQL Server は、アクセスの制限、データの保護、および監視アクティビティの支援を行う機能を備えた SQL Database によって、データ セキュリティを維持してきました。 SQL Database で提供されているセキュリティ オプションの迅速なランダウンについては、「 [SQL Database のセキュリティ保護](sql-database-security-overview.md) 」をご覧ください。 セキュリティ機能をより包括的に把握したい場合は、「 [SQL Server データベース エンジンと SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589) 」をご覧ください。 Azure のプラットフォーム セキュリティについては、「 [Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/security/) 」をご覧ください。
+## <a name="availability-capabilities"></a>可用性に関する機能
+
+Microsoft が管理するデータセンターのグローバル ネットワークによって強化された、Azure の業界をリードする可用性 99.99% のサービス レベル アグリーメント [(SLA)](http://azure.microsoft.com/support/legal/sla/) により、アプリケーションの 24 時間 365 日の継続的な稼働が可能になります。 さらに、SQL Database には、次のような、組み込みの[ビジネス継続性とグローバルなスケーラビリティ](sql-database-business-continuity.md)の機能を備えています。
+
+- **[自動バックアップ](sql-database-automated-backups.md)**: SQL Database は、完全バックアップ、差分バックアップ、およびトランザクション ログ バックアップを自動的に実行します。
+- **[ポイントインタイム リストア](sql-database-recovery-using-backups.md)**: SQL Database は、自動バックアップのリテンション期間内の任意の時点への回復をサポートします。
+- **[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)**: SQL Database を使用すると、同じ Azure データ センターまたは世界各地に分散された Azure データ センター内に、最大 4 つの読み取り可能なセカンダリ データベースを構成することができます。  たとえば、カタログ データベースを使用する SaaS アプリケーションで大量の同時実行の読み取り専用トランザクションが行われる場合は、アクティブ geo レプリケーションを使用してグローバル スケールの読み取りを有効することで、読み取りワークロードによるプライマリ上のボトルネックを取り除くことができます。 
+- **[フェールオーバー グループ](sql-database-geo-replication-overview.md)**: SQL Database を使用すると、透過的な geo レプリケーションや大量のデータベースとエラスティック プールのフェールオーバーなどによって、高可用性と負荷分散をグローバル スケールで有効にすることができます。 フェールオーバー グループとアクティブ geo レプリケーションを使用すると、グローバルに分散された SaaS アプリケーションを最小限の管理オーバーヘッドで作成することができ、複雑な監視、ルーティング、およびフェールオーバーのオーケストレーションは、すべて SQL Database にまかせることができます。
+
+## <a name="built-in-intelligence"></a>組み込みのインテリジェンス
+
+SQL Database には、インテリジェンスが組み込まれています。このインテリジェンスによって、データベースの運用コストと管理コストは大幅に削減され、アプリケーションのパフォーマンスとセキュリティの両方が最大化されます。 数百万の顧客のワークロードを 24 時間実行する SQL Database は、水面下で顧客のプライバシーを 100% 尊重しながら、膨大な量のテレメトリ データを収集して処理します。 アプリケーションの状況をサービスが学習し、状況に適応することができるように、さまざまなアルゴリズムによってテレメトリ データが継続的に評価されます。 この分析に基づいて、サービスは、特定のワークロードに合わせたパフォーマンスの向上に関する推奨事項を考え出すことができます。 
+
+### <a name="automatic-performance-tuning"></a>パフォーマンスの自動チューニング
+
+SQL Database は、監視する必要があるクエリの詳細な洞察を提供します。 SQL Database は、データベースのパターンについて学習し、データベース スキーマをワークロードに適応させることができます。 SQL Database は、[SQL Database Advisor](sql-database-advisor.md) を使用して、パフォーマンスのチューニングに関する推奨事項を提示します。チューニング アクションを確認してそれらを適用できます。 ただし、データベースを常に監視することは厄介で面倒なタスクであり、多数のデータベースを処理する場合は特にそうなります。 膨大な数のデータベースを管理することは、SQL Database と Azure ポータルが備えているすべての使用可能なツールとレポートを使用しても、効率的に実行するのは不可能な場合があります。 データベースの監視とチューニングを手動で行う代わりに、自動チューニング機能を使用して、監視とチューニング アクションの一部を SQL Database に委任することを検討できます。 SQL Database は、推奨事項を自動的に適用し、テストを行い、各チューニング アクションを検証して、パフォーマンスが向上していることを確認します。 このように、SQL Database は、制御された安全な方法で、ワークロードに自動的に適応します。 自動チューニングは、データベースのパフォーマンスを注意深く監視し、すべてのチューニング アクションの実行前と実行後のパフォーマンスを比較し、パフォーマンスが向上していない場合はチューニング アクションを取り消すことを意味します。
+
+今日、SQL Database 上で [SaaS マルチテナント アプリ](sql-database-design-patterns-multi-tenancy-saas-applications.md)を実行している当社の多数のパートナーは、パフォーマンスの自動チューニングを信頼して、アプリケーションが常に安定した予測可能なパフォーマンスで実行されるようにしています。 パートナーにとって、この機能は、真夜中にパフォーマンス上の問題が発生するリスクを大幅に軽減するものです。 さらに、顧客ベースの一部では、SQL Server も使用しているため、SQL Database が提示するのと同じインデックスに関する推奨事項を使用して、SQL Server を使用している顧客を支援しています。
+
+SQL Database では、次の 2 つの自動チューニングを使用できます。
+
+- **[自動インデックス管理](sql-database-automatic-tuning.md#automatic-index-management)**: データベースに追加するインデックスと削除するインデックスを識別します。
+- **[プランの自動修正](sql-database-automatic-tuning.md#automatic-plan-choice-correction)**: 問題のあるプランを識別し、SQL プランのパフォーマンスに関する問題を修正します (近日公開予定。SQL Server 2017 では既に利用可能)。
+
+### <a name="adaptive-query-processing"></a>クエリの適応処理
+
+SQL Database には、クエリの適応処理機能ファミリも追加されています。この中には、[複数ステートメントのテーブル値関数のインターリーブ実行、バッチ モードのメモリ許可のフィードバック](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/04/19/introducing-interleaved-execution-for-multi-statement-table-valued-functions/)、[バッチ モードの適応型結合](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/04/19/introducing-batch-mode-adaptive-joins/)が含まれています。 これらのクエリの適応処理機能には類似の "学習して適応する" 手法が適用されています。この手法は、解決困難なクエリの最適化問題に関連するパフォーマンス問題にさらに深く取り組むために役立っています。
+
+### <a name="intelligent-threat-detection"></a>インテリジェントな脅威の検出
+
+ [SQL の脅威の検出](sql-database-threat-detection.md)では、[SQL Database の監査](sql-database-auditing.md)を活用して、Azure SQL データベースの機密データに対する潜在的に有害なアクセスの試みを継続的に監視します。 SQL の脅威の検出で提供される新しいセキュリティ階層は、異常なアクティビティに対するセキュリティ アラートを提供することによって、潜在的な脅威が発生したときにユーザーがそれを検出して対応できるようにします。 不審なデータベース アクティビティ、潜在的な脆弱性、SQL インジェクション攻撃、異常なデータベース アクセス パターンが見つかった場合に、ユーザーはアラートを受信します。 SQL の脅威の検出によるアラートは、不審なアクティビティの詳細と、脅威の調査や危険性の軽減のために推奨される対処方法を提供します。 ユーザーは、疑わしいイベントを調査して、そのイベントがデータベース内のデータに対するアクセス、侵害、または悪用の試行による結果かどうかを判断できます。 脅威の検出を使用するとデータベースに対する潜在的な脅威に簡単に対処でき、セキュリティの専門家である必要や、高度なセキュリティ監視システムを管理する必要はありません。
+
+## <a name="advanced-security-and-compliance"></a>高度なセキュリティとコンプライアンス
+
+SQL Database は、アプリケーションがさまざまなセキュリティとコンプライアンスの要件を満たすために役立つ、幅広い[組み込みのセキュリティ機能とコンプライアンス機能](sql-database-security-overview.md)を備えています。 
+
+### <a name="auditing-for-compliance-and-security"></a>コンプライアンスとセキュリティの監査
+
+[SQL Database の監査](sql-database-auditing.md)では、データベース イベントを追跡し、Azure Storage アカウントの監査ログにイベントを書き込みます。 監査により、規定遵守の維持、データベース活動の理解、およびビジネス上の懸念やセキュリティ違犯の疑いを示す差異や異常に対する洞察が容易になります。
+
+### <a name="data-encryption-at-rest"></a>保存データの暗号化
+
+SQL Database の[透過的なデータ暗号化](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database)を使用すると、データベース、関連付けられているバックアップ、保管されているトランザクション ログ ファイルの暗号化と暗号化解除をリアルタイムで実行することにより、悪意のあるアクティビティの脅威からデータを保護できます。アプリケーションを変更する必要はありません。 2017 年 5 月以降、新しく作成されるすべての Azure SQL データベースは、透過的なデータ暗号化 (TDE) によって自動的に保護されます。 TDE は、記憶域メディアの盗難を防ぐために多くのコンプライアンス基準で必要とされている、SQL の実証済みの保存データの暗号化テクノロジです。 顧客は、Azure Key Vault を使用して、TDE 暗号化キーとその他のシークレットをセキュリティで保護された準拠する方法で管理できます。
+
+### <a name="data-encryption-in-motion"></a>移動中のデータの暗号化
+
+SQL Database は、[Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) を使用して、転送中、保存中、およびクエリの処理中に機密データを保護する唯一のデータベース システムです。 Always Encrypted は、重要なデータの盗難を含む侵害に対する、これまでにないデータ セキュリティを提供する業界初の機能です。 たとえば、顧客のクレジット カード番号は、Always encrypted によって常に暗号化されてデータベースに格納されます。暗号化はクエリ処理中も行われます。復号化は、データを処理する必要がある承認されたスタッフまたはアプリケーションが使用するときに実行することができます。
+
+### <a name="dynamic-data-masking"></a>動的データ マスク
+
+[SQL Database の動的データ マスク](sql-database-dynamic-data-masking-get-started.md)は、特権のないユーザーに対して重要なデータをマスクすることでデータの公開を制限します。 動的データ マスクでは、公開するデリケートなデータの量を指定することで、デリケートなデータに対する未承認のアクセスを防ぎ、アプリケーション レイヤーへの影響は最小限に抑えられます。 これはポリシー ベースのセキュリティ機能であり、指定されたデータベース フィールドに対するクエリの結果セットに含まれるデリケートなデータが表示されないようにします。データベース内のデータは変更されません。
+
+### <a name="row-level-security"></a>行レベルのセキュリティ
+
+[行レベルのセキュリティ](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)を使用して、クエリを実行しているユーザーの特性 (グループのメンバーシップや実行コンテキストなど) に基づいて、データベース テーブル内の行へのアクセスを制御できます。 行レベルのセキュリティ (RLS) により、アプリケーションでのセキュリティの設計やコーディングが簡略化されます。 RLS を使用すると、データ行のアクセスに対して制限を実装できます。 たとえば、ワーカーが自分の部署に関連するデータ行にのみアクセスできるようにしたり、顧客のデータ アクセスをその顧客の会社のデータにのみ制限したりできます。
+
+### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory との統合と多要素認証
+
+SQL Database では、[Azure Active Directory との統合](sql-database-aad-authentication.md)によって、データベース ユーザーの ID とその他の Microsoft サービスを一元的に管理できます。 この機能は、アクセス許可の管理を簡略化し、セキュリティを強化します。 Azure Active Directory は、[多要素認証](sql-database-ssms-mfa-authentication.md) (MFA) をサポートしています。これにより、シングル サインイン プロセスをサポートすると同時に、データとアプリケーションのセキュリティが強化されます。
+
+### <a name="compliance-certification"></a>コンプライアンス認証
+
+SQL Database は、定期監査に参加し、さまざまなコンプライアンス基準に対する認証を受けています。 詳細については、「[Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)」をご覧ください。ここから最新の [SQL Database コンプライアンス証明書](https://azure.microsoft.com/support/trust-center/services/)の一覧を入手できます。
+
+## <a name="easy-to-use-tools"></a>使いやすいツール
+
+SQL Database は、アプリケーションの開発と管理をより簡単で生産的にします。 SQL Database を使用すると、優れたアプリの構築に注力することができます。 既に所有しているツールとスキルを使用して、SQL Database で管理と開発を行うことができます。
+
+- **[Azure ポータル](https://portal.azure.com/)**: すべての Azure サービスを管理するための Web ベースのアプリケーションです。 
+- **[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)**: SQL Server から SQL Database まで、あらゆる SQL インフラストラクチャを管理するための、無料でダウンロードできるクライアント アプリケーションです。
+- **[Visual Studio の SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)**: SQL Server リレーショナル データベース、Azure SQL データベース、Integration Services パッケージ、Analysis Services データ モデル、および Reporting Services レポートを開発するための、無料でダウンロードできるクライアント アプリケーションです。
+- **[Visual Studio Code](https://code.visualstudio.com/docs)**: Linux、macOS、および Windows 用の無料でダウンロードできるオープン ソースのコード エディターです。Microsoft SQL Server、Azure SQL Database、および SQL Data Warehouse のデータを照会するための [mssql 拡張機能](https://aka.ms/mssql-marketplace)を含む拡張機能をサポートします。
+
+SQL Database は、MacOS、Linux、および Windows での Python、Java、Node.js、PHP、Ruby、および .NET によるアプリケーションの構築をサポートします。 SQL Database は、SQL Server と同じ[接続ライブラリ](sql-database-libraries.md)をサポートします。
 
 ## <a name="next-steps"></a>次のステップ
-ここでは、SQL Database の概要を紹介し、"SQL Database とは何か" という問いに対する答えを示したので、次のステップに進むことができます。
 
-* 単一データベースとエラスティック プールのコストの比較と計算ツールについては、[価格に関するページ](https://azure.microsoft.com/pricing/details/sql-database/)を参照してください。
-* [エラスティック プール](sql-database-elastic-pool.md)について学習します。
-* [最初のデータベースを作成する](sql-database-get-started-portal.md)ことによって作業を開始します。
-* 初めてのアプリを C#、Java、Node.js、PHP、Python、Ruby で作成します。「[SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)」を参照してください。
+- 単一データベースとエラスティック プールのコストの比較と計算ツールについては、[価格に関するページ](https://azure.microsoft.com/pricing/details/sql-database/)を参照してください。
 
+- すぐに始めるには、次のクイック スタートをご覧ください。
+
+  - [Azure Portal で SQL データベースを作成する](sql-database-get-started-portal.md)  
+  - [Azure CLI で SQL データベースを作成する](sql-database-get-started-cli.md)
+  - [PowerShell を使用して SQL データベースを作成する](sql-database-get-started-powershell.md)
+
+- Azure CLI と PowerShell の各種サンプルについては、以下のページをご覧ください。
+  - [Azure SQL Database 用の Azure CLI サンプル](sql-database-cli-samples.md)
+  - [Azure SQL Database 用の Azure PowerShell サンプル](sql-database-powershell-samples.md)
