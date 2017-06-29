@@ -10,16 +10,16 @@ tags:
 ms.assetid: 
 ms.service: analysis-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 05/26/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 81a245f985c007f490acae102f1dd5c2096150e7
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: cd74b0cb0d58036cc7b1198a58649ba38e386322
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/03/2017
 
 ---
 # <a name="supplemental-lesson---dynamic-security"></a>補足のレッスン - 動的なセキュリティ
@@ -30,9 +30,9 @@ ms.lasthandoff: 05/05/2017
   
 動的なセキュリティを実装するには、モデルに接続してモデル オブジェクトやデータを参照できるユーザーのユーザー名が含まれているテーブルをモデルに追加します。 このチュートリアルを使用して作成するモデルは、Adventure Works のコンテキスト内にありますが、このレッスンを完了するには、自分のドメインのユーザーが含まれているテーブルを追加する必要があります。 追加するユーザー名のパスワードは必要ありません。 自分のドメインの少人数のサンプル ユーザーを使用して EmployeeSecurity テーブルを作成するには、貼り付け機能を使用して、Excel のスプレッドシートから従業員データを貼り付けます。 実際のシナリオでは、ユーザー名が含まれたテーブルは通常、データ ソースとしての実際のデータベースのテーブルです (たとえば、実際の DimEmployee テーブルなど)。  
   
-動的なセキュリティを実装するには、[USERNAME 関数 (DAX)](http://msdn.microsoft.com/22dddc4b-1648-4c89-8c93-f1151162b93f) および [LOOKUPVALUE 関数 (DAX)](http://msdn.microsoft.com/73a51c4d-131c-4c33-a139-b1342d10caab) という 2 つの DAX 関数を使用します。 行フィルター式に適用されるこれらの関数は、新しいロールで定義されています。 数式は LOOKUPVALUE 関数を使用して EmployeeSecurity テーブルの値を指定し、その値を USERNAME 関数に渡します。この関数は、ログオンしているユーザーのユーザー名がこのロールに属することを指定します。 ユーザーは、ロールの行フィルターによって指定されたデータのみを参照できます。 このシナリオでは、販売担当者がインターネット上で自分の販売区域の売上データのみを参照できるように指定します。  
+動的なセキュリティを実装するには、[USERNAME 関数 (DAX)](http://msdn.microsoft.com/22dddc4b-1648-4c89-8c93-f1151162b93f) および [LOOKUPVALUE 関数 (DAX)](http://msdn.microsoft.com/73a51c4d-131c-4c33-a139-b1342d10caab) という 2 つの DAX 関数を使用します。 行フィルター式に適用されるこれらの関数は、新しいロールで定義されています。 LOOKUPVALUE 関数を使用した場合、この数式は EmployeeSecurity テーブルの値を指定します。 次に、その値を USERNAME 関数に渡し、ログオンしたユーザーのユーザー名がこのロールに属していることを指定します。 ユーザーは、ロールの行フィルターによって指定されたデータのみを参照できます。 このシナリオでは、販売担当者がインターネット上で自分の販売区域の売上データのみを参照できるように指定します。  
   
-この補足のレッスンでは、一連の作業を行います。 この Adventure Works 表形式モデルのシナリオに固有の作業で、実際のシナリオに必ずしも適用されないものは、そのように記載されています。 各作業には、作業の目的を説明する追加情報が含まれています。  
+この Adventure Works 表形式モデルのシナリオに固有の作業で、実際のシナリオに必ずしも適用されないものは、そのように記載されています。 各作業には、作業の目的を説明する追加情報が含まれています。  
   
 このレッスンの推定所要時間: **30 分**  
   
@@ -59,11 +59,11 @@ ms.lasthandoff: 05/05/2017
 9. テーブルのインポートが正常に完了したら、**[閉じる]** をクリックします。  
 
 ## <a name="add-a-table-with-user-name-data"></a>ユーザー名データを含むテーブルの追加  
-AdventureWorksDW サンプル データベース内の DimEmployee テーブルには AdventureWorks ドメインのユーザーが含まれており、それらのユーザー名はご使用の環境に存在しないため、組織の実在ユーザーから小人数 (3 人) のサンプルを含むテーブルをモデルに作成する必要があります。 その後、これらのユーザーを新しいロールにメンバーとして追加します。 サンプルのユーザー名のパスワードは不要ですが、自分のドメインの実際の Windows ユーザー名が必要になります。  
+AdventureWorksDW サンプル データベース内の DimEmployee テーブルには、AdventureWorks ドメインのユーザーが含まれています。 ご使用の環境にこれらのユーザー名は存在しないので、 組織内の実際のユーザー (少なくとも 3 名) を使った小さいサンプルを含むテーブルをモデル内に作成する必要があります。 その後、これらのユーザーを新しいロールにメンバーとして追加します。 サンプルのユーザー名のパスワードは不要ですが、自分のドメインの実際の Windows ユーザー名が必要になります。  
   
 #### <a name="to-add-an-employeesecurity-table"></a>EmployeeSecurity テーブルを追加するには  
   
-1.  Microsoft Excel を開き、新しいワークシートを作成します。  
+1.  Microsoft Excel を開き、ワークシートを作成します。  
   
 2.  ヘッダー行を含む次のテーブルをコピーし、ワークシートに貼り付けます。  
 
@@ -76,7 +76,7 @@ AdventureWorksDW サンプル データベース内の DimEmployee テーブル�
       |3|5|<user first name>|<user last name>|\<domain\username>|  
     ```
 
-3.  名、姓、および domain\username を組織の 3 人のユーザーの名前とログイン ID に置き換えます。 先頭の 2 つの行に、EmployeeId 1 の同じユーザーを配置します。 これは、このユーザーが複数の販売区域に属していることを示します。 EmployeeId フィールドと SalesTerritoryId フィールドはそのままにします。  
+3.  名、姓、および domain\username を組織の 3 人のユーザーの名前とログイン ID に置き換えます。 最初の 2 行 (EmployeeId 1 の行) には同じユーザーを入力します。これは、このユーザーが複数の販売区域に属していることを示します。 EmployeeId フィールドと SalesTerritoryId フィールドはそのままにします。  
   
 4.  ワークシートを **SampleEmployee** として保存します。  
   
@@ -99,11 +99,11 @@ FactInternetSales、DimGeography、および DimSalesTerritory テーブルは�
   
 #### <a name="to-create-relationships-between-the-factinternetsales-dimgeography-and-the-dimsalesterritory-table"></a>FactInternetSales、DimGeography、および DimSalesTerritory テーブル間のリレーションシップを作成するには  
   
-1.  モデル デザイナーのダイアグラム ビューの **DimGeography** テーブルで、**SalesTerritoryId** 列をクリックし、そのままカーソルを **DimSalesTerritory** テーブル内の **SalesTerritoryId** 列にドラッグして離します。  
+1.  ダイアグラム ビューの **DimGeography** テーブルで、**SalesTerritoryId** 列をクリックし、そのままカーソルを **DimSalesTerritory** テーブル内の **SalesTerritoryId** 列にドラッグして離します。  
   
 2.  **FactInternetSales** テーブルで、**SalesTerritoryId** 列をクリックし、そのままカーソルを **DimSalesTerritory** テーブル内の **SalesTerritoryId** 列にドラッグして離します。  
   
-    このリレーションシップの Active (アクティブ) プロパティは False であり、非アクティブであることを意味します。これは、FactInternetSales テーブルには別のアクティブなリレーションシップが既にあるためです。  
+    このリレーションシップの Active プロパティが False (つまり非アクティブ) になっていることを確認します。 FactInternetSales テーブルには、既に別のアクティブなリレーションシップがあります。  
   
 ## <a name="hide-the-employeesecurity-table-from-client-applications"></a>クライアント アプリケーションで EmployeeSecurity テーブルを非表示にする  
 この作業では、EmployeeSecurity テーブルを非表示にして、クライアント アプリケーションのフィールド リストに表示されないようにします。 テーブルを非表示にしても、セキュリティで保護されるわけではないことに注意してください。 方法を知っている場合、ユーザーは引き続き EmployeeSecurity テーブル データのクエリを実行できます。 EmployeeSecurity テーブル データをセキュリティで保護し、ユーザーがデータに対してクエリを実行できないようにするには、後の作業で取り上げられるフィルターを適用します。  
@@ -113,7 +113,7 @@ FactInternetSales、DimGeography、および DimSalesTerritory テーブルは�
 -   モデル デザイナーのダイアグラム ビューで、**Employee** テーブルの見出しを右クリックし、**[クライアント ツールに非表示]** をクリックします。  
   
 ## <a name="create-a-sales-employees-by-territory-user-role"></a>Sales Employees by Territory ユーザー ロールの作成  
-この作業では、新しいユーザー ロールを作成します。 このロールには、DimSalesTerritory テーブル内のどの行がユーザーに表示されるかを定義する行フィルターが含まれます。 このフィルターは、一対多のリレーションシップの方向で、DimSalesTerritory に関連する他のすべてのテーブルに適用されます。 また、ロールのメンバーであるユーザーならだれでもクエリを実行できる状況を避けるために、EmployeeSecurity テーブル全体を保護するフィルターも適用します。  
+この作業では、ユーザー ロールを作成します。 このロールには、DimSalesTerritory テーブル内のどの行がユーザーに表示されるかを定義する行フィルターが含まれます。 このフィルターは、一対多のリレーションシップの方向で、DimSalesTerritory に関連する他のすべてのテーブルに適用されます。 また、ロールのメンバーであるユーザーならだれでもクエリを実行できる状況を避けるために、EmployeeSecurity テーブル全体を保護するフィルターも適用します。  
   
 > [!NOTE]  
 > このレッスンで作成する Sales Employees by Territory ロールによって、メンバーが参照 (またはクエリを実行) できるデータは、自分が属する販売区域の売上データのみに制限されます。 Sales Employees by Territory ロールにメンバーとして追加したユーザーが、「[レッスン 11: ロールの作成](../tutorials/aas-lesson-11-create-roles.md)」で作成したロールのメンバーでもある場合、権限は組み合わせとなります。 あるユーザーが複数のロールのメンバーである場合、各ロールに対して定義された権限と行フィルターは累積されます。 つまり、ロールを組み合わせることでユーザーの権限は引き上げられます。  
@@ -144,7 +144,7 @@ FactInternetSales、DimGeography、および DimSalesTerritory テーブルは�
       =FALSE()  
     ```
   
-    この数式は、すべての列がブール値条件 false に解決されることを指定します。このため、EmployeeSecurity テーブルで Sales Employees by Territory ユーザー ロールのメンバーがクエリを実行できる列はありません。  
+    この式は、すべての列が false ブール条件に解決されることを指定します。 Sales Employees by Territory ユーザー ロールのメンバーは、EmployeeSecurity テーブルの列を照会できません。  
   
 9. **DimSalesTerritory** テーブルには、次の数式を入力します。  
 
@@ -176,7 +176,7 @@ FactInternetSales、DimGeography、および DimSalesTerritory テーブルは�
   
     Excel で新しいブックが開きます。 ピボットテーブルが自動的に作成されます。 [ピボットテーブルのフィールド] リストには、新しいモデルで使用できるほとんどのデータ フィールドが表示されます。  
   
-    EmployeeSecurity テーブルは [ピボットテーブルのフィールド] リストに表示されないことに注意してください。これは、前の作業でクライアント ツールからこのテーブルを非表示にしたためです。  
+    EmployeeSecurity テーブルが [ピボットテーブルのフィールド] リストに表示されていないことを確認します。 このテーブルは、前の作業でクライアント ツールから非表示にしました。  
   
 5.  **[フィールド]** リストの **∑ Internet Sales** (メジャー) で、**InternetTotalSales** メジャーを選択します。 メジャーは "**値**" フィールドに入力されます。  
   
@@ -184,7 +184,7 @@ FactInternetSales、DimGeography、および DimSalesTerritory テーブルは�
   
     使用した有効なユーザー名が属している 1 つのリージョンのインターネット販売成績のみが表示されていることに注意してください。 たとえば DimGeography テーブルの City など、別の列を "行ラベル" フィールドとして選択すると、有効なユーザーが属する販売区域の都市のみが表示されます。  
   
-    このユーザーは、自分が属する区域以外の区域のインターネット販売データを参照したり、クエリを実行することはできません。 このように制限されるのは、Sales Employees by Territory ユーザー ロールで DimSalesTerritory テーブルに定義された行フィルターによって、他の販売区域に関連するすべてのデータが効果的に保護されているためです。  
+    このユーザーは、自分が属する区域以外の区域のインターネット販売データを参照したり、クエリを実行することはできません。 このように制限されるのは、Sales Employees by Territory ユーザー ロールで DimSalesTerritory テーブルに定義された行フィルターによって、他の販売区域に関連するすべてのデータが保護されているためです。  
   
 ## <a name="see-also"></a>関連項目  
 [USERNAME 関数 (DAX)](https://msdn.microsoft.com/library/hh230954.aspx)  

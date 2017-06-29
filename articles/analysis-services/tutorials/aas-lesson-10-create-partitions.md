@@ -10,16 +10,16 @@ tags:
 ms.assetid: 
 ms.service: analysis-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 05/26/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 74a9577e2fb5cc83dd3f01d8ff87374240798700
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: df74d9cbdcf4916c24955e491767589e72389155
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/03/2017
 
 ---
 # <a name="lesson-10-create-partitions"></a>レッスン 10: パーティションを作成する
@@ -53,9 +53,9 @@ ms.lasthandoff: 05/05/2017
 
     ![aas-lesson10-filter-rows](../tutorials/media/aas-lesson10-filter-rows.png)
     
-    Query Editor の APPLIED STEPS に Filtered Rows という名前の別のステップがあります｡これは､2010 年以降の注文日のみ選択するさいに適用したフィルターです｡
+    クエリ エディターの [適用したステップ] に、Filtered Rows という名前の新しいステップがあります。 このフィルターを使って、2010 年以降の注文日のみを選択します。
 
-8.  **[Import]** をクリックしてクエリを実行します｡
+8.  **[インポート]**をクリックします。
 
     Partition Manager のクエリ式に Filtered Rows 句が追加されています｡
 
@@ -113,7 +113,7 @@ Partition Manager で､新しく作成した各パーティションの **Last 
   
     Impersonation 資格証明を求められた場合は､レッスン 2 で使用した Windows ユーザー名とパスワードを入力します｡  
   
-    **[Data Processing]** ダイアログ ボックスに､各パーティションの処理詳細が表示されます｡ 転送される行数は､パーティションごとに異なります｡ これは､各パーティションに､SQL ステートメントの WHERE 句に指定された年度の行数のみ含まれるためです｡ 処理を終えたら､[Data Processing] ダイアログ ボックスを閉じます｡  
+    **[Data Processing]** ダイアログ ボックスに､各パーティションの処理詳細が表示されます｡ 転送される行数は､パーティションごとに異なります｡ 各パーティションには､SQL ステートメントの WHERE 句に指定された年度の行数のみが含まれます｡ 処理を終えたら､[Data Processing] ダイアログ ボックスを閉じます｡  
   
     ![aas-lesson10-process-complete](../tutorials/media/aas-lesson10-process-complete.png)
   

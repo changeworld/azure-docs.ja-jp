@@ -14,10 +14,10 @@ ms.tgt_pltfrm: na
 ms.date: 04/26/2017
 ms.author: ashmaka
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: a6e9e504f4ccb8fb1e0a151dcfe76339fcc8051a
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: a22b82829df4659681940267e64c98d345453958
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -62,4 +62,10 @@ Azure Search では、検索結果のページングを簡単に実装できま�
 ## <a name="hit-highlighting"></a>検索結果の強調表示
 Azure Search では、検索クエリに一致する検索結果の特定の部分を正確に強調表示できます。これは、`highlight`、`highlightPreTag`、`highlightPostTag` の各パラメーターを使用して簡単に行えます。 一致するテキストを強調表示する*検索可能*フィールドを指定できるほか、Azure Search から返される一致テキストの先頭と末尾に追加する文字列タグを正確に指定することもできます。
 
+## <a name="try-out-query-syntax"></a>クエリ構文を試してみる
 
+構文の違いを理解する最善の方法は、クエリを実行して結果を確認することです。
+
++ Azure Portal で[検索エクスプローラー](search-explorer.md)を使用します。 [サンプル インデックス](search-get-started-portal.md)をデプロイすることで、ポータルのツールを使用してインデックスを簡単に照会できます。
+
++ [Fiddler](search-fiddler.md) または Chrome Postman を使用して、検索サービスにアップロードしたインデックスにクエリを発行します。 どちらのツールも、HTTP エンドポイントへの REST 呼び出しをサポートしています。 

@@ -10,16 +10,16 @@ tags:
 ms.assetid: 
 ms.service: analysis-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 05/26/2017
+ms.date: 06/01/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 492bfd19c2b364089e13f7ae53010cb5ce14123d
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: e77de4b9a74b528fa8a7ce86424fc14628b2cacc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/03/2017
 
 ---
 
@@ -63,11 +63,11 @@ Get Data を使うことで､Azure SQL Database や Oracle､Sybase､OData Fee
 
     ![aas-lesson2-select-tables](../tutorials/media/aas-lesson2-select-tables.png)
   
-[OK] をクリックすると､Query Editor が表示されます｡次のセクションではインポートするデータをフィルターします｡
+[OK] をクリックすると、クエリ エディターが開きます。 次のセクションでは、インポートするデータのみを選択します。
 
   
 ## <a name="filter-the-table-data"></a>テーブルのデータをフィルターする  
-AdventureWorksDW2014 サンプル データベースのテー部には､モデルに含める必要のないデータがあります｡ 必要に応じて､利用しないデータをフィルターで除外して､モデルが使用するインメモリー空間を保存します｡ フィルターで列の一部をテーブルから除外し､ワークスペース データベースやデプロイ後のモデル データベースにインポートされないようにします｡ 
+AdventureWorksDW2014 サンプル データベースのテー部には､モデルに含める必要のないデータがあります｡ 可能であれば、不要なデータをフィルターで除外して､モデルが使用するインメモリー空間を確保します｡ フィルターで列の一部をテーブルから除外し､ワークスペース データベースやデプロイ後のモデル データベースにインポートされないようにします｡ 
   
 #### <a name="to-filter-the-table-data-before-importing"></a>インポートの前にテーブル データをフィルターする  
   

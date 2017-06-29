@@ -10,16 +10,16 @@ tags:
 ms.assetid: 
 ms.service: analysis-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 05/26/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 2058e74c1c2e719e879a3808d24790bfe86a9e1b
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: fde5cd9a9efc3a13e731a91962ced5c086a72355
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/03/2017
 
 ---
 # <a name="supplemental-lesson---detail-rows"></a>補足のレッスン - 詳細行
@@ -42,7 +42,7 @@ ms.lasthandoff: 05/05/2017
 
     ![aas-lesson-detail-rows-pivottable](../tutorials/media/aas-lesson-detail-rows-pivottable.png)
 
-3. ピボットテーブルで、年およびリージョン名の集計値をダブルクリックします。 ここでは、Australia と 2014 年の値をダブルクリックしています。 多くのデータが含まれた新しいシートが開きますが、このシートは実際には役に立ちません。
+3. ピボットテーブルで、年およびリージョン名の集計値をダブルクリックします。 ここでは、Australia と 2014 年の値をダブルクリックしています。 データが含まれた新しいシートが開きますが、このデータは実際には役に立ちません。
 
     ![aas-lesson-detail-rows-pivottable](../tutorials/media/aas-lesson-detail-rows-sheet.png)
   

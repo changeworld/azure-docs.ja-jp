@@ -10,28 +10,28 @@ tags:
 ms.assetid: 
 ms.service: analysis-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 05/26/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: eea9b247b42db81f30b7169f71ddf0d5068f6a5e
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 085a36edd2a0e80123ac8754b438bceadfa6c0e9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/03/2017
 
 ---
 # <a name="lesson-11-create-roles"></a>レッスン 11: ロールを作成する
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-このレッスンでは､ロールを作成します｡ ロールは､ロールのメンバーである thoseSa ユーザーにのみアクセス権を制限することによってモデル データベース オブジェクトとデータをセキュリティ保護します｡ 各ロールには､1 つの許可 (なし､読み取り､読み取りと処理､処理､管理者のいずれか) のみ定義します｡ ロールは､モデルのオーサリング中に Role Manager を使用して定義できます｡ モデルをデプロイした後は､SQL Server Management Studio (SSMS) を使用してロールを管理できます｡ 詳細は、[ロール](https://docs.microsoft.com/sql/analysis-services/tabular-models/roles-ssas-tabular) を参照してください。
+このレッスンでは､ロールを作成します｡ ロールは､ロールのメンバーであるユーザーにのみアクセス権を制限することによって、モデル データベース オブジェクトとデータをセキュリティ保護します｡ 各ロールには､1 つの許可 (なし､読み取り､読み取りと処理､処理､管理者のいずれか) のみ定義します｡ ロールは､モデルのオーサリング中に Role Manager を使用して定義できます｡ モデルをデプロイした後は､SQL Server Management Studio (SSMS) を使用してロールを管理できます｡ 詳細は、[ロール](https://docs.microsoft.com/sql/analysis-services/tabular-models/roles-ssas-tabular) を参照してください。
   
 > [!NOTE]  
-> このチュートリアルでは､ロールの作成は必須のレッスンではありません｡ 既定では､現在のログインに使用したアカウントがモデルの管理者権限を保有します｡ ただし､組織の他のユーザーがレポート用クライアントを使ってモデルを参照できるようにするには､読み取り許可を持つロールを少なくとも 1 つ作成し､そのユーザーをメンバーとして追加する必要があります｡  
+> このチュートリアルでは､ロールの作成は必須のレッスンではありません｡ 既定では､現在のログインに使用したアカウントがモデルの管理者権限を保有します｡ ただし､組織の他のユーザーがレポート用クライアントを使って参照できるようにするには､読み取り許可を持つロールを少なくとも 1 つ作成し､そのユーザーをメンバーとして追加する必要があります｡  
   
-3 つのルールを作成します｡  
+3 つのロールを作成します｡  
   
 -   **Sales Manager** – このロールには､すべてのモデル オブジェクトとデータに対する読み取り権限を割り当てるユーザーを登録できます｡  
   
@@ -39,7 +39,7 @@ ms.lasthandoff: 05/05/2017
   
 -   **Administrator** – このロールには､管理者権限を持たせるユーザーを登録できます｡管理者権限では､モデル データベースに対する管理作業を行うために無制限のアクセスと権限が許可されます｡  
   
-社内の Windows ユーザー アカウントとグループ アカウントは一意であるため､特定のアカウントをメンバーに追加できます｡ ただし､このチュートリアルでは､メンバーを空白のままにしておくこともできます｡ 各ロールの効果は､後で｢レッスン 12: Excel で分析する｣でテストすることができます｡  
+社内の Windows ユーザー アカウントとグループ アカウントは一意であるため､特定のアカウントをメンバーに追加できます｡ ただし､このチュートリアルでは､メンバーを空白のままにしておくこともできます｡ 各ロールの効果は､後で｢レッスン 12: Excel で分析する｣でテストします｡  
   
 このレッスンの推定所要時間: **15 分**  
   
@@ -54,7 +54,7 @@ ms.lasthandoff: 05/05/2017
   
 2.  [ロール マネージャー] で **[新規]** をクリックします。  
   
-3.  新しいロールをクリックし、**[名前]** 列で、ロール名を **Sales Manger** に変更します。  
+3.  新しいロールをクリックし、**Name** 列で、ロール名を **Sales Manger** に変更します。  
   
 4.  **[権限]** 列で、ドロップダウン リストをクリックし、**[読み取り]** 権限を選択します。 
 
@@ -70,7 +70,7 @@ ms.lasthandoff: 05/05/2017
   
 3.  このロールに**読み取り**権限を付与します｡  
   
-4.  [Row Filters]タブをクリックし､**DimGeography** テーブルのみについて､DAX Filter 列に次の式を入力します｡  
+4.  [Row Filters] タブをクリックし､**DimGeography** テーブルのみについて､DAX Filter 列に次の式を入力します｡  
   
     ```Administrator
     =DimGeography[CountryRegionCode] = "US" 

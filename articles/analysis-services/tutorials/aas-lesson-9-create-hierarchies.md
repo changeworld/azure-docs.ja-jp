@@ -10,16 +10,16 @@ tags:
 ms.assetid: 
 ms.service: analysis-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 05/26/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: abe9edb0cbcdae18964731b1ab90a27117fc0c15
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: d628dc621335acf231342a6d9186079de16e85f4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/03/2017
 
 ---
 # <a name="lesson-9-create-hierarchies"></a>レッスン 9: 階層を作成する
@@ -58,7 +58,7 @@ ms.lasthandoff: 05/05/2017
   
 #### <a name="to-create-hierarchies-in-the-dimdate-table"></a>DimDate テーブルで階層を作成するには  
   
-1.  **DimDate** テーブルで、**Calendar** という名前の新しい階層を作成します。  
+1.  **DimDate** テーブルで、**Calendar** という名前の階層を作成します。  
   
 3.  次の列を順番通りに追加します。
 
