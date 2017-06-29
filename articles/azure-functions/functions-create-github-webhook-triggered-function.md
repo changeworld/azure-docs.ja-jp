@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/02/2017
+ms.date: 05/31/2017
 ms.author: glenga
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: d79ce0e047e71d9f6af7ca55f55bea405c280b1d
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: accd5c55e7adafd5a387bf420660b808335192e6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 06/02/2017
 
 ---
 # <a name="create-a-function-triggered-by-a-github-webhook"></a>GitHub webhook でトリガーされる関数の作成
@@ -31,11 +31,8 @@ GitHub 固有のペイロードを含む HTTP webhook 要求によってトリ�
 
 ## <a name="prerequisites"></a>前提条件
 
-このサンプルを実行する前に、以下が必要です。
-
-- 1 つ以上のプロジェクトを含む GitHub アカウント。
-
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
++ 1 つ以上のプロジェクトを含む GitHub アカウント。
++ Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
 [!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
@@ -51,9 +48,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-github-webhook-triggered-function"></a>GitHub webhook でトリガーされる関数の作成
 
-1. Function App を展開し、**[関数]** の横にある **+** ボタンをクリックし、目的の言語の **GitHubWebHook** テンプレートをクリックします。 **関数に名前を付け**てから、**[作成]** をクリックします。
+1. Function App を展開し、**[関数]** の横にある **[+]** ボタンをクリックします。 これが Function App で初めての関数の場合、**[カスタム関数]** を選びます。 関数テンプレートの完全なセットが表示されます。
 
-1. 新しい関数で、**[</> 関数の URL の取得]** をクリックし、値をコピーして保存します。 **[</> GitHub シークレットの取得]** で同じ操作を行います。 これらの値は GitHub で webhook を構成するために使用します。
+    ![Azure Portal での関数のクイック スタート ページ](./media/functions-create-github-webhook-triggered-function/add-first-function.png)
+
+2. 目的の言語の **GitHubWebHook** テンプレートを選びます。 **関数に名前を付け**てから、**[作成]** を選びます。
+
+     ![Azure Portal での GitHub webhook でトリガーされる関数の作成](./media/functions-create-github-webhook-triggered-function/functions-create-github-webhook-trigger.png) 
+
+3. 新しい関数で、**[</> 関数の URL の取得]** をクリックし、値をコピーして保存します。 **[</> GitHub シークレットの取得]** で同じ操作を行います。 これらの値は GitHub で webhook を構成するために使用します。
 
     ![関数コードの確認](./media/functions-create-github-webhook-triggered-function/functions-copy-function-url-github-secret.png)
 

@@ -3,7 +3,7 @@ title: "アプリケーションのブランド化ガイドライン | Microsoft
 description: "Azure Active Directory の開発者向けリソースの包括的なガイド"
 services: active-directory
 documentationcenter: dev-center-name
-author: bryanla
+author: skwan
 manager: mbaldwin
 editor: 
 ms.assetid: 72f4e464-1352-4a49-a18f-c37f58e7d5c4
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/27/2017
-ms.author: bryanla
+ms.author: skwan
 ms.custom: aaddev
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 146d1377a017becdcdcd7fed7b97f07c2cb2bb39

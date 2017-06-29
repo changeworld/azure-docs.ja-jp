@@ -10,23 +10,23 @@ tags:
 ms.assetid: 
 ms.service: analysis-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 05/26/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 1691ef4a3de8f17d61aeead05b7d9eaeadc2d58a
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: d78808421dd5acd907aa9e9000bb3b770a42c061
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/03/2017
 
 ---
 # <a name="lesson-7-create-key-performance-indicators"></a>レッスン 7: 主要業績評価指標を作成する
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-このレッスンでは､主要業績評価指標 (KPI) を作成します｡ KPI は､業績面からある値 (*Base* メジャーで定義) と *Target* 値(メジャーまたは絶対値で定義) との比較評価に使用されます｡ レポート用のクライアント アプリケーションでは､KPI はビジネスのプロが事業の成功の摘要を理解したり､傾向を把握したりする容易で迅速な手段になります｡ 詳細は、[KPI](https://docs.microsoft.com/sql/analysis-services/tabular-models/kpis-ssas-tabular) を参照してください。
+このレッスンでは､主要業績評価指標 (KPI) を作成します｡ KPI は､業績面からある値 (*Base* メジャーで定義) と *Target* 値 (メジャーまたは絶対値で定義) との比較評価に使用されます｡ レポート用のクライアント アプリケーションでは､KPI はビジネスのプロが事業の成功の摘要を理解したり､傾向を把握したりする容易で迅速な手段になります｡ 詳細は、[KPI](https://docs.microsoft.com/sql/analysis-services/tabular-models/kpis-ssas-tabular) を参照してください。
   
 このレッスンの推定所要時間: **15 分**  
   
@@ -60,7 +60,7 @@ ms.lasthandoff: 05/05/2017
     ![aas-lesson7-kpi](../tutorials/media/aas-lesson7-kpi.png)
     
     > [!TIP]  
-    > 使用可能なアイコンのスタイルの下に展開可能な **Descriptions** ラベルがあります｡ このフィールドを使用して､クライアント アプリケーションでより分かりやすいよう各種 KPI 要素の説明を入力できます｡  
+    > 使用可能なアイコンのスタイルの下に展開可能な **Descriptions** ラベルがあります｡ このフィールドを使用して､クライアント アプリケーションでよりわかりやすいよう各種 KPI 要素の説明を入力できます｡  
   
 9. **[OK]** をクリックして KPI を終了します。  
   

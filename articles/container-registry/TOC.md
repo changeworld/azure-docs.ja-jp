@@ -5,6 +5,7 @@
 # 作業の開始
 ## [ポータルでのレジストリの作成](container-registry-get-started-portal.md)
 ## [Azure CLI 2.0 を使用したレジストリの作成](container-registry-get-started-azure-cli.md)
+## [Azure PowerShell でのレジストリの作成](container-registry-get-started-powershell.md)
 ## [イメージのプッシュとプル](container-registry-get-started-docker-cli.md)
 ## [リポジトリの表示](container-registry-repositories.md)
 
@@ -17,6 +18,7 @@
 
 ## [Azure CLI 2.0](/cli/azure/acr)
 ## [REST ()](/rest/api/containerregistry)
+## [テレメトリ ヘッダー](container-registry-headers.md)
 
 # 関連項目
 

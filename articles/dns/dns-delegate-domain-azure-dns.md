@@ -13,10 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 992b08a1e88062923d0775c59b8baf93fee5364b
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 33b3ec24432ff1268860b9a2e9d5098600a8dedc
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/16/2017
 
 ---
 
@@ -300,7 +301,7 @@ az network dns record-set ns add-record --resource-group contosorg --zone-name c
 
 1. Azure Portal の **[お気に入り]** ウィンドウで **[すべてのリソース]** をクリックします。 [すべてのリソース] ブレードで **contosorg** リソース グループをクリックします。 選択したサブスクリプションに既存のリソースがいくつもある場合は、**[名前でフィルター]** ボックスに「**contosorg**」と入力すると、 目的のリソース グループがすぐに見つかります。
 1. **contosorg** ブレードで **[削除]** ボタンをクリックします。
-1. 削除の意図を確認するために、リソース グループの名前を入力するよう求められます。 **[削除]** をクリックし、リソース グループの名前に「*contosorg*」と入力して、**[削除]** をクリックします。 リソース グループを削除すると、そこに含まれているリソースもすべて削除されます。削除する前に、リソース グループの内容を必ず確認してください。 まずリソース グループに含まれているすべてのリソースが削除された後、リソース グループそのものが削除されます。 このプロセスには数分かかります。
+1. 削除の意図を確認するために、リソース グループの名前を入力するよう求められます。 リソース グループの名前として「*contosorg*」と入力し、**[削除]** をクリックします。 リソース グループを削除すると、そこに含まれているリソースもすべて削除されます。削除する前に、リソース グループの内容を必ず確認してください。 まずリソース グループに含まれているすべてのリソースが削除された後、リソース グループそのものが削除されます。 このプロセスには数分かかります。
 
 ## <a name="next-steps"></a>次のステップ
 

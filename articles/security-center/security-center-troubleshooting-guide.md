@@ -4,7 +4,7 @@ description: "このドキュメントは、Azure Security Center で問題を�
 services: security-center
 documentationcenter: na
 author: YuriDio
-manager: swadhwa
+manager: mbaldwin
 editor: 
 ms.assetid: 44462de6-2cc5-4672-b1d3-dbb4749a28cd
 ms.service: security-center
@@ -12,17 +12,22 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/15/2017
+ms.date: 06/16/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: b9f4a8b185f9fb06f8991b6da35a5d8c94689367
-ms.openlocfilehash: dbbec729c14d0d9dc5781e7a88a1db3f66f7df97
-ms.lasthandoff: 02/16/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: fa70dffc2a4bade44e1dec583bdfcf7b5dae6801
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/17/2017
 
 
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center トラブルシューティング ガイド
 このガイドは、所属組織が Azure Security Center を使用しており、Security Center に関連する問題のトラブルシューティングを必要としている情報技術 (IT) プロフェッショナル、情報セキュリティ アナリスト、クラウド管理者を対象としています。
+
+>[!NOTE] 
+>2017 年 6 月上旬以降、Security Center では、Microsoft Monitoring Agent を使用してデータの収集と格納を行います。 詳細については、「[Azure Security Center のプラットフォームの移行](security-center-platform-migration.md)」を参照してください。 この記事の情報は、Microsoft Monitoring Agent に移行した後の Security Center の機能を示しています。
+>
 
 ## <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 このガイドでは、Security Center に関連する問題のトラブルシューティングの方法について説明します。 Security Center で行われるトラブルシューティングのほとんどは、問題の生じたコンポーネントの [監査ログ](https://azure.microsoft.com/updates/audit-logs-in-azure-preview-portal/) レコードを確認することから始まります。 監査ログを使用すると、次の内容を判断することができます。
@@ -35,47 +40,48 @@ ms.lasthandoff: 02/16/2017
 
 監査ログには、リソースで実行されたすべての書き込み操作 (PUT、POST、DELETE) が含まれます。ただし、読み取り操作 (GET) は含まれません。
 
-## <a name="troubleshooting-monitoring-agent-installation-in-windows"></a>Windows における監視エージェントのインストールのトラブルシューティング
-Security Center 監視エージェントは、データ収集を実行するために使用されます。 データ収集が有効になり、ターゲット コンピューターにエージェントが正常にインストールされた後には、次のプロセスが実行されています。
+## <a name="microsoft-monitoring-agent"></a>Microsoft Monitoring Agent
+Security Center では、Microsoft Monitoring Agent を使用して、仮想マシンからセキュリティ データを収集します。これは Operations Management Suite と Log Analytics サービスで使用されるものと同じエージェントです。 データ収集が有効になり、ターゲット コンピューターにエージェントが正常にインストールされた後、次のプロセスが実行されます。
 
-* ASMAgentLauncher.exe - Azure 監視エージェント 
-* ASMMonitoringAgent.exe - Azure セキュリティ監視拡張機能
-* ASMSoftwareScanner.exe – Azure スキャン マネージャー
+* HealthService.exe
 
-Azure セキュリティ監視拡張機能では、さまざまなセキュリティ関連の構成がスキャンされ、仮想マシンからセキュリティ ログが収集されます。 スキャン マネージャーは、パッチ スキャナーとして使用されます。
+サービス管理コンソール (services.msc) を開くと、次のように Microsoft Monitoring Agent サービスも実行されていることを確認できます。
 
-インストールが正常に実行されている場合は、ターゲット VM の監査ログに次のようなエントリが示されます。
+![サービス](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig5.png)
 
-![Audit Logs](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig1.png)
+エージェントのバージョンを確認するには、**タスク マネージャー**を開き、**[プロセス]** タブで **Microsoft Monitoring Agent サービス**を見つけます。サービスを右クリックし、**[プロパティ]** をクリックします。 **[詳細]** タブで、次のようなファイルのバージョンを確認します。
 
-*%systemdrive%\windowsazure\logs* (C:\WindowsAzure\Logs など) にあるエージェント ログを確認して、インストール プロセスに関する詳しい情報を入手することもできます。
+![ファイル](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
+   
 
-> [!NOTE]
-> Azure Security Center エージェントが正常に動作していない場合、ターゲット VM を再起動する必要があります。これは、エージェントの停止と開始のコマンドがないためです。
+## <a name="microsoft-monitoring-agent-installation-scenarios"></a>Microsoft Monitoring Agent のインストール シナリオ
+コンピューターに Microsoft Monitoring Agent をインストールするシナリオは 2 つあり、生成される結果が異なります。 サポートされるシナリオは次のとおりです。
 
+* **Security Center による自動的なエージェントのインストール**: このシナリオでは、Security Center とログ検索の両方にアラートが表示されます。 リソースが属しているサブスクリプション用のセキュリティ ポリシー内に構成した電子メール アドレスに電子メール通知が送信されます
+。
+* **Azure の VM へのエージェントの手動インストール**: このシナリオでは、2017 年 2 月以前に手動でダウンロードしてインストールしたエージェントを使用している場合、Security Center ポータルにアラートを表示できるのは、ワークスペースが属しているサブスクリプションをフィルター処理している場合のみです。 リソースが属しているサブスクリプションをフィルター処理している場合、アラートを表示することはできません。 ワークスペースが属しているサブスクリプション用のセキュリティ ポリシー内に構成した電子メール アドレスに電子メール通知が送信されます。
 
-データの収集に関する問題が引き続き発生する場合は、次の手順に従ってエージェントをアンインストールできます。
+>[!NOTE]
+> 後者の動作を回避するために、必ずエージェントの最新バージョンをダウンロードしてください。
+> 
 
-1. **Azure Portal** から、データ収集の問題が発生している仮想マシンを選び、**[拡張機能]** をクリックします。
-2. **[Microsoft.Azure.Security.Monitoring]** を右クリックし、**[アンインストール]** をクリックして選択します。
+## <a name="troubleshooting-monitoring-agent-network-requirements"></a>監視エージェントのネットワーク要件のトラブルシューティング
+Security Center に接続して登録するエージェントには、ドメイン URL とポート番号を含むネットワーク リソースへのアクセスが必要です。
 
-![エージェントの削除](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig4.png)
+- プロキシ サーバーでは、適切なプロキシ サーバーのリソースがエージェントの設定で構成されていることを確認する必要があります。 詳細については、[プロキシ設定を変更する方法](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-windows-agents#configure-proxy-settings)に関する記事を参照してください。
+- インターネットへのアクセスを制限するファイアウォールでは、OMS へのアクセスを許可するようにファイアウォールを構成する必要があります。 エージェントの設定で必要な操作はありません。
 
-Azure セキュリティ監視拡張機能が数分以内に自動的に再インストールされます。
+次の表は、通信で必要なリソースを示しています。
 
-## <a name="troubleshooting-monitoring-agent-installation-in-linux"></a>Linux における監視エージェントのインストールのトラブルシューティング
-Linux システムでの VM エージェントのインストールをトラブルシューティングする場合、必ず /var/lib/waagent/ に拡張機能をダウンロードしておく必要があります。 次のコマンドを実行すると、拡張機能がインストールされているかどうかを確認できます。
+| エージェントのリソース | ポート | バイパス HTTPS 検査 |
+|---|---|---|
+| *.ods.opinsights.azure.com | 443 | あり |
+| *.oms.opinsights.azure.com | 443 | あり |
+| *.blob.core.windows.net | 443 | あり |
+| *.azure-automation.net | 443 | あり |
 
-`cat /var/log/waagent.log` 
+エージェントのオンボードに関する問題が発生した場合は、「[Operations Management Suite オンボードに関する問題のトラブルシューティング方法](https://support.microsoft.com/en-us/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues)」の記事を参照してください。
 
-トラブルシューティングの目的で確認できるその他のログ ファイルには、次のものがあります。 
-
-* /var/log/mdsd.err
-* /var/log/azure/
-
-動作中のシステムでは、TCP 29130 での mdsd プロセスへの接続が表示されます。 これは、mdsd プロセスと通信している syslog です。 この動作は、次のコマンドを実行することで検証できます。
-
-`netstat -plantu | grep 29130`
 
 ## <a name="troubleshooting-endpoint-protection-not-working-properly"></a>Endpoint Protection が正しく動作していない場合のトラブルシューティング
 
@@ -96,7 +102,7 @@ Linux システムでの VM エージェントのインストールをトラブ�
 Security Center ダッシュボードを読み込む際に問題が発生した場合は、Security Center のサブスクリプションを登録するユーザー (つまり、サブスクリプションで Security Center を最初に開いたユーザー) と、データの収集を有効にするユーザーが、サブスクリプションに対する "*所有者*" または"*共同作成者*" であることを確認します。 その時点から、サブスクリプションの "*閲覧者*" も dashboard/alerts/recommendation/policy を参照できます。
 
 ## <a name="contacting-microsoft-support"></a>Microsoft サポートへの問い合わせ
-一部の問題は、この記事に示したガイドラインを基に特定できます。その他の問題については、Security Center パブリック [フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter)でドキュメントを確認できます。 ただし、トラブルシューティングがさらに必要な場合は、次に示すように **Azure Portal** を使用して新しいサポート要求を開くことができます。 
+一部の問題は、この記事に示したガイドラインを基に特定できます。その他の問題については、Security Center パブリック [フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter)でドキュメントを確認できます。 ただし、さらにトラブルシューティングが必要な場合は、次に示すように **Azure ポータル**を使用して新しいサポート要求を開くことができます。 
 
 ![Microsoft Support](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 

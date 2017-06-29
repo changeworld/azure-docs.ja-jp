@@ -5,20 +5,21 @@ services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: yossib
 ms.assetid: def7a534-cfb2-492a-9124-87fb1148ab1f
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/16/2017
+ms.date: 06/16/2017
 ms.author: kgremban
-translationtype: Human Translation
+ms.reviewer: yossib
+ms.custom: it-pro
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 999361daa2faebe3e88cab0b6085a938d6f40e9d
 ms.openlocfilehash: 07b14394b0e07fd78d70d77aeef8a2feb17284e0
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/17/2017
-
 
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA Server と Active Directory 間のディレクトリ統合
@@ -95,7 +96,7 @@ Azure Multi-Factor Authentication には、次の&3; つのフィルター オ�
 | 内線番号 |ユーザー レコード内の内線番号を含む属性の属性名を入力します。  内線番号フィールドの値は、代表電話番号に対する内線番号としてのみ使用されます。  既定値は空白です。 <br><br>内線番号属性が指定されていない場合は、電話属性の一部として内線番号を含めることができます。 その場合は、正しく解析されるように、内線番号の前に "x" を付けてください。  たとえば 555-123-4567 x 890 は、555-123-4567 が電話番号として、890 が内線番号として解析されます。 |
 | [既定値に戻す] ボタン |すべての属性を既定値に戻すには、**[既定値に戻す]** をクリックします。  既定値は、通常の Active Directory または ADAM スキーマで正常に動作します。 |
 
-属性を編集するには、[属性] タブの **[編集]** をクリックします。  属性を編集するためのウィンドウが表示されます。 表示する属性を選択できるウィンドウを開くには、各属性の横の **[...]** を選択します。 
+属性を編集するには、[属性] タブの **[編集]** をクリックします。  属性を編集するためのウィンドウが表示されます。 表示する属性を選択できるウィンドウを開くには、各属性の横の **[...]** を選択します。
 
 ![属性の編集](./media/multi-factor-authentication-get-started-server-dirint/dirint4.png)
 
@@ -138,5 +139,4 @@ LDAP ディレクトリが DirSync に対応していて、かつ DirSync を使
 追加の Multi-factor Auth Server を、バックアップ RADIUS プロキシ、LDAP プロキシ、または IIS 認証として機能するように設定できます。 同期構成は、すべてのエージェント間で共有されます。 ただし、Multi-Factor Auth Server サービスは、これらのエージェントのいずれかのみで実行できます。 このタブで、同期するために有効にする必要がある Multi-Factor Auth Server を選択できます。
 
 ![Multi-Factor-Auth Server](./media/multi-factor-authentication-get-started-server-dirint/dirint6.png)
-
 

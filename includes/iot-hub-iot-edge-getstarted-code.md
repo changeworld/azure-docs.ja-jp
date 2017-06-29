@@ -36,9 +36,9 @@ Hello World サンプルによってログ ファイルに書き込まれた出�
 
 ### <a name="iot-edge-gateway-creation"></a>IoT Edge ゲートウェイの作成
 
-開発者は *ゲートウェイ プロセス*を作成する必要があります。 このプログラムは、内部インフラストラクチャ (ブローカー) を作成し、IoT Edge のモジュールを読み込んで、すべてが正常に動作するように設定します。 IoT Edge には、JSON ファイルからゲートウェイのブートストラップを行うための **Gateway\_Create\_From\_JSON** 関数が含まれています。 **Gateway\_Create\_From\_JSON** 関数を使用するには、読み込む IoT Edge モジュールを指定する JSON ファイルへのパスを渡す必要があります。
+*ゲートウェイ プロセス*を実装する必要があります。 このプログラムは、内部インフラストラクチャ (ブローカー) を作成し、IoT Edge のモジュールを読み込んで、ゲートウェイ プロセスを構成します。 IoT Edge には、JSON ファイルからゲートウェイのブートストラップを行うための **Gateway\_Create\_From\_JSON** 関数が含まれています。 **Gateway\_Create\_From\_JSON** 関数を使うには、読み込む IoT Edge モジュールを指定する JSON ファイルへのパスを渡します。
 
-ゲートウェイ プロセスのコードは、[main.c][lnk-main-c] ファイルの Hello World サンプル内にあります。 次のスニペットは、ゲートウェイ プロセス コードを読みやすく省略したものです。 このサンプル プログラムは、ゲートウェイを作成し、ユーザーが **Enter** キーを押すまで待機してから、ゲートウェイを破棄します。
+ゲートウェイ プロセスのコードは、[main.c][lnk-main-c] ファイルの *Hello World* サンプル内にあります。 次のスニペットは、ゲートウェイ プロセス コードを読みやすく省略したものです。 このサンプル プログラムは、ゲートウェイを作成し、ユーザーが **Enter** キーを押すまで待機してから、ゲートウェイを破棄します。
 
 ```c
 int main(int argc, char** argv)
@@ -62,7 +62,7 @@ int main(int argc, char** argv)
 JSON 設定ファイルには、読み込む IoT Edge モジュールおよびモジュール間のリンクの一覧が含まれています。 各 IoT Edge モジュールについて、以下を指定する必要があります。
 
 * **name**: モジュールの一意の名前。
-* **loader**: 必要なモジュールを読み込む方法を認識しているローダー。 ローダーは、さまざまな種類のモジュールを読み込むための拡張ポイントです。 ネイティブ C、Node.js、Java、.NET で記述されたモジュールで使用するローダーが提供されます。 Hello World サンプルでは、このサンプル内のすべてのモジュールが C で記述されたダイナミック ライブラリであるため、ネイティブ C ローダーのみが使用されます。各種言語で記述された IoT Edge モジュールの使用の詳細については、[Node.js](https://github.com/Azure/iot-edge/blob/master/samples/nodejs_simple_sample/)、[Java](https://github.com/Azure/iot-edge/tree/master/samples/java_sample)、または [.NET](https://github.com/Azure/iot-edge/tree/master/samples/dotnet_binding_sample) のサンプルを参照してください。
+* **loader**: 必要なモジュールを読み込む方法を認識しているローダー。 ローダーは、さまざまな種類のモジュールを読み込むための拡張ポイントです。 IoT Edge では、ネイティブ C、Node.js、Java、.NET で記述されたモジュールで使用するローダーが提供されます。 Hello World サンプルでは、このサンプル内のすべてのモジュールが C で記述されたダイナミック ライブラリであるため、ネイティブ C ローダーのみが使用されます。各種言語で記述された IoT Edge モジュールの使用の詳細については、[Node.js](https://github.com/Azure/iot-edge/blob/master/samples/nodejs_simple_sample/)、[Java](https://github.com/Azure/iot-edge/tree/master/samples/java_sample)、または [.NET](https://github.com/Azure/iot-edge/tree/master/samples/dotnet_binding_sample) のサンプルを参照してください。
     * **name**: モジュールの読み込みに使用されるローダーの名前。
     * **entrypoint**: モジュールを含むライブラリへのパス。 このライブラリは、Linux の場合は .so ファイル、Windows の場合は .dll ファイルです。 このエントリ ポイントは、使用されているローダーの種類に固有です。 Node.js ローダーのエントリ ポイントは、.js ファイルです。 Java ローダーのエントリ ポイントは、クラスパスとクラス名です。 .NET ローダーのエントリ ポイントは、アセンブリ名とクラス名です。
 
@@ -98,10 +98,10 @@ JSON 設定ファイルには、読み込む IoT Edge モジュールおよび�
 
 JSON ファイルには、ブローカーに渡されるモジュール間のリンクも含まれています。 リンクには、2 つのプロパティがあります。
 
-* **source**: `modules` セクションからのモジュール名か、"\*"。
+* **source**: `modules` セクションからのモジュール名、または `\*`。
 * **sink**: `modules` セクションからのモジュール名。
 
-各リンクにより、メッセージのルートと方向が定義されます。 モジュール `source` からのメッセージはモジュール `sink` に配信されます。 `source` は "\*" に設定することもできます。これは、任意のモジュールからのメッセージが `sink` によって受信されることを示します。
+各リンクにより、メッセージのルートと方向が定義されます。 **source** モジュールからのメッセージは、**sink** モジュールに配信されます。 **source** モジュールを `\*` に設定できます。これは、**sink** モジュールがすべてのモジュールからのメッセージを受け取ることを意味します。
 
 次のコードは、Linux 上の hello\_world サンプルで使用されているモジュール間のリンクを構成するための JSON を示しています。 `hello_world` モジュールから生成されたメッセージは、いずれも `logger` モジュールによって使用されます。
 
@@ -180,7 +180,7 @@ static void HelloWorld_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messag
 
 logger モジュールはブローカーからメッセージを受信し、ファイルに書き込みます。 メッセージを発行することはありません。 このため、logger モジュールのコードで **Broker_Publish** 関数を呼び出すことはありません。
 
-[logger.c][lnk-logger-c] ファイル内の **Logger_Recieve** 関数は、logger モジュールにメッセージを配信するためにブローカーが呼び出すコールバックです。 次のスニペットは、コメントを追加してエラー処理コードを取り除き、読みやすくした修正版です。
+[logger.c][lnk-logger-c] ファイル内の **Logger_Receive** 関数は、logger モジュールにメッセージを配信するためにブローカーが呼び出すコールバックです。 次のスニペットは、コメントを追加してエラー処理コードを取り除き、読みやすくした修正版です。
 
 ```c
 static void Logger_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHandle)
@@ -223,14 +223,13 @@ static void Logger_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHan
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure IoT Edge の使用方法については、以下の記事を参照してください。
+この記事では、ログ ファイルにメッセージを書き込む簡単な IoT Edge ゲートウェイを実行しました。 IoT Hub にメッセージを送信するサンプルを実行するには、「[IoT Edge – Linux を使用してシミュレートされたデバイスから D2C メッセージを送信する][lnk-gateway-simulated-linux]」または「[IoT Edge – Windows を使用してシミュレートされたデバイスから D2C メッセージを送信する][lnk-gateway-simulated-windows]」をご覧ください。
 
-* [IoT Edge – Linux を使用してシミュレートされたデバイスから D2C メッセージを送信する][lnk-gateway-simulated]
-* GitHub の [Azure IoT Edge][lnk-iot-edge]
 
 <!-- Links -->
 [lnk-main-c]: https://github.com/Azure/iot-edge/blob/master/samples/hello_world/src/main.c
 [lnk-helloworld-c]: https://github.com/Azure/iot-edge/blob/master/modules/hello_world/src/hello_world.c
 [lnk-logger-c]: https://github.com/Azure/iot-edge/blob/master/modules/logger/src/logger.c
 [lnk-iot-edge]: https://github.com/Azure/iot-edge/
-[lnk-gateway-simulated]: ../articles/iot-hub/iot-hub-linux-iot-edge-simulated-device.md
+[lnk-gateway-simulated-linux]: ../articles/iot-hub/iot-hub-linux-iot-edge-simulated-device.md
+[lnk-gateway-simulated-windows]: ../articles/iot-hub/iot-hub-windows-iot-edge-simulated-device.md

@@ -1,14 +1,16 @@
-- name: "Custom Decision Service"
+- name: Custom Decision Service
   href: ../index.md
-- name: "Overview"
+- name: 概要
   href: custom-decision-service-overview.md
-- name: "Get started"
+- name: 作業開始
   items:
-  - name: "Call API from a browser"
+  - name: アプリケーションの登録
+    href: custom-decision-service-get-started-register.md
+  - name: ブラウザーから API を呼び出す
     href: custom-decision-service-get-started-browser.md
-  - name: "Call API from an app"
+  - name: アプリから API を呼び出す
     href: custom-decision-service-get-started-app.md
-- name: "Tutorial"
+- name: チュートリアル
   href: custom-decision-service-tutorial.md
-- name: "API reference"
+- name: API リファレンス
   href: custom-decision-service-api-reference.md

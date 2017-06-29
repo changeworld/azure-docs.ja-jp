@@ -10,16 +10,16 @@ tags:
 ms.assetid: 
 ms.service: analysis-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 05/26/2017
+ms.date: 06/01/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: b20adfa6c69488b848d4ca5bee2cb4baeca806b8
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: a613bbe84a3834ab4fb237779248c7ad8d75b563
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/03/2017
 
 ---
 # <a name="azure-analysis-services---adventure-works-tutorial"></a>Azure Analysis Services - Adventure Works チュートリアル
@@ -28,9 +28,9 @@ ms.lasthandoff: 05/05/2017
 
 このチュートリアルは､[SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) を使用して 1400 互換性レベルで表形式モデルを作成､配備する方法に関するレッスンで構成されます｡  
 
-Analysis Services および表形式モデルが初めてという方には､このチュートリアルを最後まで終えることが基本的な表形式モデルを作成し､実際の Analysis Server サーバーにそのモデルをデプロイする方法を最短で学ぶ方法です｡ 前提条件となるものをすべて整えた後､このチュートリアルを終えるのに要する時間は 2 ないし 3 時間です｡  
+Analysis Services および表形式モデルが初めてという方は､このチュートリアルを最後まで終えることで、基本的な表形式モデルを作成してデプロイする方法を最短で学ぶことができます｡ 前提条件となるものをすべて整えた後､このチュートリアルを終えるのに要する時間は 2 ～ 3 時間です｡  
   
-## <a name="what-youll-learn"></a>学習内容   
+## <a name="what-you-learn"></a>学習内容   
   
 -   SSDT において **1400 互換性レベル**で新しい表形式モデルのプロジェクトを作成する方法
   
@@ -49,7 +49,7 @@ Analysis Services および表形式モデルが初めてという方には､�
 -   **Azure Analysis Services** サーバーまたはオンプレミスの SQL Server 2017 Analysis Services サーバーに表形式モデルをデプロイする方法  
   
 ## <a name="prerequisites"></a>前提条件  
-このチュートリアルを完了するには、以下が必要になります。  
+このチュートリアルを完了するには、次のものが必要です。  
   
 -   モデルのデプロイ先となる Azure Analysis Services または SQL Server 2017 Analysis Services インスタンス。 無料の [試用版 Azure Analysis Services ](https://azure.microsoft.com/services/analysis-services/) へのサインアップと [サーバーの作成](../analysis-services-create-server.md) [SQL Server 2017 Community Technology Preview](https://www.microsoft.com/evalcenter/evaluate-sql-server-vnext-ctp) へのサインアップとダウンロード 
 
@@ -64,13 +64,13 @@ Analysis Services および表形式モデルが初めてという方には､�
 -   [Power BI Desktop](https://powerbi.microsoft.com/desktop/) または Excel などのクライアント アプリケーション 
 
 ## <a name="scenario"></a>シナリオ  
-このチュートリアルは､Adventure Works Cycles という架空の会社を題材にしています｡ Adventure Works は､金属製および複合材料製の自転車を製造し､北米､ヨーロッパ､およびアジアに流通市場を持つ大きな多国籍の製造企業です｡ ワシントン州ボセルに本社があり､従業員数は 500 人です｡ また､Adventure Works はその市場拠点で複数の地域担当販売チームも有しています｡ このチュートリアルでは､営業ユーザーのために AdventureWorksDW サンプルデータベースのインターネット販売データを分析するための表形式モデルを作成します｡  
+このチュートリアルは､Adventure Works Cycles という架空の会社を題材にしています｡ Adventure Works は､金属製および複合材料製の自転車を製造し､北米､ヨーロッパ､およびアジアに流通市場を持つ大きな多国籍の製造企業です｡ 従業員は 500 人です。 また､Adventure Works はその市場拠点で複数の地域担当販売チームも有しています｡ このチュートリアルでは､営業ユーザーのために AdventureWorksDW データベースのインターネット販売データを分析するための表形式モデルを作成します｡  
   
-チュートリアル全体は､いくつかのレッスンから構成されています｡ 1 つのレッスンはいくつかのタスクから構成され､レッスンを終えるには､各タスクを順に終了する必要があります｡ 1 つのレッスンには､似たような結果になるタスクがいくつ含まれることがありますが､各タスクの実行手順は少しずつ異なります｡ これは､しばしば､同じタスクであってもその実行方法が複数あることを意味し､前のレッスンやタスクで学習したスキルを活用すること挑戦になります｡  
+チュートリアル全体は､いくつかのレッスンから構成されています｡ 各レッスンには、いくつかのタスクがあります。 レッスンを終えるには､各タスクを順に終了する必要があります｡ 1 つのレッスンには､似たような結果になるタスクがいくつ含まれることがありますが､各タスクの実行手順は少しずつ異なります｡ これは､同じタスクであってもその実行方法が複数あることを意味しており､前のレッスンやタスクで学習したスキルを活用して課題に取り組んでもらうことを目的としています｡  
   
-レッスンの目的は､SSDT に含まれる機能の多くを利用することによって動作する基本的な表形式モデルをオーサリングする手順を手引きすることにあります｡ レッスンはそれぞれその前のレッスンに基づいているため､全レッスンを順序通りに行ってください｡ すべてのレッスンを終了すると､Adventure Works のインターネット販売に関する表形式モデル例をオーサリングし､Analysis Services サーバーにデプロイしたことになります｡  
+レッスンの目的は､SSDT に含まれる機能の多くを利用することによって動作する基本的な表形式モデルをオーサリングする手順を手引きすることにあります｡ レッスンはそれぞれその前のレッスンに基づいているため､全レッスンを順序通りに行ってください｡
   
-このチュートリアルには､Azure Portal における Azure Analysis Services サーバーの管理や､ SQL Server Management Studio (SSMS) を使用することによりサーバーやデプロイされたデータベースの管理､デプロイされたモデルに接続してモデルデータを閲覧するための報告用クライアント アプリケーションに関するレッスンや情報は含まれていません｡  
+このチュートリアルでは、Azure Portal でのサーバーの管理、SSMS を使用したサーバーやデータベースの管理、クライアント アプリケーションを使用したモデル データの参照についてのレッスンは提供していません。 
 
 
 ## <a name="lessons"></a>レッスン  

@@ -6,7 +6,13 @@
 ## [開発環境のセットアップ](media-services-set-up-computer.md)
 ###[.NET](media-services-dotnet-how-to-use.md)
 ###[REST ()](media-services-rest-how-to-use.md)  
-## プログラムによる接続
+## [AAD 認証を使用して API にアクセスする](media-services-use-aad-auth-to-access-ams-api.md)
+###[ポータルを使用して AAD 認証を管理する](media-services-portal-get-started-with-aad.md)
+###[.NET で API にアクセスする](media-services-dotnet-get-started-with-aad.md)
+###[REST で API にアクセスする](media-services-rest-connect-with-aad.md)
+###[CLI を使用して AAD アプリを作成および構成する](media-services-cli-create-and-configure-aad-app.md)
+###[PowerShell を使用して AAD アプリを作成および構成する](media-services-powershell-create-and-configure-aad-app.md)
+## ACS キーを使用してプログラムで接続する
 ### [.NET](media-services-dotnet-connect-programmatically.md)
 ### [REST ()](media-services-rest-connect-programmatically.md)
 
@@ -214,7 +220,7 @@
 ## [PowerShell (Resource Manager)](/powershell/module/azurerm.media)
 ## [PowerShell (サービス管理)](/powershell/module/azure/?view=azuresmps-3.7.0)
 ## [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client)
-## [REST ()](/rest/api/media)
+## [REST ()](/rest/api/media/mediaservice)  
 
 # リソース
 ## [リリース ノート](media-services-release-notes.md)

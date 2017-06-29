@@ -13,10 +13,10 @@ ms.topic: landing-page
 ms.date: 05/25/2017
 ms.author: carolz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c5ada5ff9a0ba37cecff9e2d507736457cc11eb5
-ms.openlocfilehash: b04ec1a07bd1d74aa061409823c78ea814d127fc
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 0e7431332d46ba3891dff0cf70685be0277d4ddd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/09/2017
+ms.lasthandoff: 06/02/2017
 
 ---
 #<a name="data-catalog-documentation"></a>Data Catalog のドキュメント
@@ -73,6 +73,7 @@ Data Catalog を使用して、組織やチームがデータ ソースを検出
                     <div class="cardText">
                         <h3>REST ()</h3>
                         <p><a href="/rest/api/datacatalog/">REST API</a></p>
+                        <p><a href="/rest/api/datacatalog/data-catalog-search-syntax-reference">検索構文リファレンス</a></p>
                     </div>
                 </div>
             </div>

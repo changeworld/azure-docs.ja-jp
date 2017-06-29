@@ -1,5 +1,5 @@
 ---
-title: "Azure で Java と MySQL Web アプリを構築する | Microsoft Docs"
+title: "Azure で Java と MySQL Web アプリを構築する"
 description: "Azure MySQL データベース サービスに接続する Java アプリを Azure App Service で動作させる方法について説明します。"
 services: app-service\web
 documentationcenter: Java
@@ -12,58 +12,66 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 05/06/2017
+ms.date: 05/22/2017
 ms.author: bbenz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: fab7759154b38b8043a17c933f896d7af9514c85
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: e3a8bc6b11cccf7f6b277e800dbcedcd90e87006
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/03/2017
 
 ---
+
 # <a name="build-a-java-and-mysql-web-app-in-azure"></a>Azure で Java と MySQL Web アプリを構築する
-このチュートリアルでは、Azure で Java Web アプリを作成し、MySQL データベースに接続する方法について説明します。 最初の手順は、ローカル コンピューターにアプリケーションを複製し、ローカル MySQL インスタンスで動作させることです。
-次の手順は、Java アプリと MySQL 用に Azure サービスを設定した後、アプリケーションを Azure App Service にデプロイすることです。
-このチュートリアルを完了すると、Azure で実行され、Azure MySQL データベース サービスに接続する To-Do List アプリケーションが完成します。
+
+このチュートリアルでは、Azure で Java Web アプリを作成し、MySQL データベースに接続する方法について説明します。 完了すると、[Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) で実行中の [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/overview) にデータを格納する [Spring Boot](https://projects.spring.io/spring-boot/) アプリケーションが完成します。
 
 ![Azure App Service で実行される Java アプリ](./media/app-service-web-tutorial-java-mysql/appservice-web-app.png)
 
-## <a name="before-you-begin"></a>開始する前に
+このチュートリアルで学習する内容は次のとおりです。
 
-このサンプルを実行する前に、前提条件となる以下をローカルにインストールします。
+> [!div class="checklist"]
+> * Azure で MySQL データベースを作成する
+> * サンプル アプリをデータベースに接続する
+> * Azure にアプリケーションをデプロイする
+> * アプリを更新して再デプロイする
+> * Azure から診断ログをストリーミングする
+> * Azure Portal でアプリを監視する
+
+
+## <a name="prerequisites"></a>前提条件
 
 1. [Git をダウンロードし、インストールします](https://git-scm.com/)
-1. [Java 7 以降をダウンロードし、インストールします](http://Java.net/downloads.Java)
-1. [Maven をダウンロードし、インストールします](https://maven.apache.org/download.cgi)
+1. [Java 7 JDK 以降をダウンロードし、インストールします](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 1. [MySQL をダウンロード、インストール、および起動します](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
-1. [Azure CLI 2.0 をダウンロードし、インストールします](https://docs.microsoft.com/cli/azure/install-azure-cli)
+1. [Azure CLI 2.0 をインストールします](https://docs.microsoft.com/cli/azure/install-azure-cli)
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prepare-local-mysql-database"></a>ローカル MySQL データベースを準備する
+## <a name="prepare-local-mysql"></a>ローカル MySQL を準備する 
 
-この手順では、このチュートリアルで使用するデータベースをローカル MySQL サーバーに作成します。
+この手順では、ローカル コンピューターでアプリをテストするのに使用するローカル MySQL サーバーにデータベースを作成します。
 
 ### <a name="connect-to-mysql-server"></a>MySQL サーバーに接続する
+
 コマンドラインからローカル MySQL サーバーに接続します。
 
 ```bash
 mysql -u root -p
 ```
 
-コマンドが正常に実行されれば、MySQL サーバーは既に実行されています。 正常に実行されない場合は、[MySQL のインストール後の手順](https://dev.mysql.com/doc/refman/5.7/en/postinstallation.html)に従って、MySQL サーバーが起動されたことを確認してください。
-
 パスワードの入力を求められたら、`root` アカウントのパスワードを入力します。 ルート アカウントのパスワードを思い出せない場合は、「[MySQL: root のパスワードをリセットする方法](https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html)」を参照してください。
 
+コマンドが正常に実行されれば、MySQL サーバーは既に実行されています。 正常に実行されない場合は、[MySQL のインストール後の手順](https://dev.mysql.com/doc/refman/5.7/en/postinstallation.html)に従って、MySQL サーバーが起動されたことを確認してください。
 
-### <a name="create-a-database-and-table"></a>データベースとテーブルを作成する
+### <a name="create-a-database"></a>データベースを作成する 
 
 `mysql` プロンプトで、データベースと To-Do 項目テーブルを作成します。
 
 ```sql
-CREATE DATABASE todoItemDb;
-USE todoItemDb;
-CREATE TABLE ITEMS ( id varchar(255), name varchar(255), category varchar(255), complete bool);
+CREATE DATABASE tododb;
 ```
 
 「`quit`」と入力して、サーバー接続を終了します。
@@ -72,148 +80,134 @@ CREATE TABLE ITEMS ( id varchar(255), name varchar(255), category varchar(255), 
 quit
 ```
 
-## <a name="create-local-java-application"></a>ローカル Java アプリケーションを作成する
-この手順では、GitHub レポジトリを複製し、MySQL データベース接続を構成し、アプリをローカルで実行します。 
+## <a name="create-and-run-the-sample-app"></a>サンプル アプリの作成と実行 
+
+この手順では、サンプル Spring Boot アプリを複製し、ローカルの MySQL データベースを使用するように構成してから、コンピューターで実行します。 
 
 ### <a name="clone-the-sample"></a>サンプルを複製する
 
-コマンド プロンプトから、作業ディレクトリに移動します。  
-
-次のコマンドを実行して、サンプル リポジトリを複製します。 
+コマンド プロンプトから作業ディレクトリに移動し、サンプル リポジトリを複製します。 
 
 ```bash
-git clone https://github.com/bbenz/azure-mysql-java-todo-app
+git clone https://github.com/azure-samples/mysql-spring-boot-todo
 ```
 
-次に、レポジトリの Readme の手順に従って、lombok.jar を設定します。
+### <a name="configure-the-app-to-use-the-mysql-database"></a>MySQL データベースを使用するようにアプリを構成する
 
-
-### <a name="configure-mysql-connection"></a>MySQL 接続を構成する
-
-このアプリケーションでは、Maven Jetty プラグインを使用してアプリケーションをローカルで実行し、MySQL データベースに接続します。
-ローカル MySQL インスタンスにアクセスできるようにするには、ローカル MySQL のユーザー ID とパスワードを WebContent/WEB-INF/jetty-env.xml に設定します。
-
-ユーザーとパスワードの値をローカル MySQL インスタンスのユーザー ID とパスワードで更新します。
+MySQL コマンド プロンプトを開くのに使用したのと同じルート パスワードで、`spring.datasource.password` および *spring-boot-mysql-todo/src/main/resources/application.properties* の値を更新します。
 
 ```
-<Configure id='wac' class="org.eclipse.jetty.webapp.WebAppContext">
-  <New id="itemdb" class="org.eclipse.jetty.plus.jndi.Resource">
-     <Arg></Arg>
-     <Arg>jdbc/todoItemDb</Arg>
-     <Arg>
-        <New class="com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource">
-           <Set name="Url">jdbc:mysql://localhost:3306/itemdb</Set>
-           <Set name="User">root</Set>
-           <Set name="Password"></Set>
-        </New>
-     </Arg>
-    </New>
-</Configure>
-
+spring.datasource.password=mysqlpass
 ```
 
-&gt; [!NOTE]
-&gt;Jetty による `jetty-env.xml` ファイルの使用方法については、[Jetty XML リファレンス](http://www.eclipse.org/jetty/documentation/9.4.x/jetty-env-xml.html)を参照してください。
-&gt; &gt;
+### <a name="build-and-run-the-sample"></a>サンプルのビルドと実行
 
-### <a name="run-the-sample"></a>サンプルを実行する
-
-Maven コマンドを使用してサンプルを実行します。 
+リポジトリに含まれている Maven Wrapper を使用してサンプルをビルドし、実行します。
 
 ```bash
-mvn package jetty:run
+cd spring-boot-mysql-todo
+mvnw package spring-boot:run
 ```
 
-次に、ブラウザーで `http://localhost:8080` に移動します。 ページにいくつかのタスクを追加します。
+ブラウザーで http://localhost:8080 を開いて、サンプルの動作を確認します。 一覧にタスクを追加する際は、MySQL コマンド プロンプトで次の SQL コマンドを使用して、MySQL に格納されているデータを表示します。
 
-アプリケーションを任意のタイミングで停止するには、コマンド プロンプトで `Ctrl`+`C` キーを押します。 
+```SQL
+use testdb;
+select * from todo_item;
+```
 
-## <a name="create-a-mysql-database-in-azure"></a>Azure で MySQL データベースを作成する
+コマンド プロンプトで `Ctrl`+`C` を押してアプリケーションを停止します。 
 
-この手順では、MySQL データベースを[Azure Database for MySQL (Preview)](/azure/mysql) に作成します。 その後、このデータベースに接続するように Java アプリケーションを構成します。
+## <a name="create-an-azure-mysql-database"></a>Azure MySQL データベースを作成する
 
-### <a name="log-in-to-azure"></a>Azure にログインする
+この手順では、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) を使用して [Azure Database for MySQL](../mysql/quickstart-create-mysql-server-database-using-azure-cli.md) インスタンスを作成します。 後のチュートリアルでこのデータベースを使用できるように、サンプル アプリケーションを構成します。
 
 ターミナル ウィンドウで Azure CLI 2.0 を使用して、Azure App Service で Java アプリケーションをホストするために必要なリソースを作成します。 [az login](/cli/azure/#login) コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。 
 
-```azurecli 
+```azurecli-interactive 
 az login 
-``` 
+```   
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group#create) コマンドを使用して、[リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 Azure リソース グループとは、Web アプリ、データベース、ストレージ アカウントなどの Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+[az group create](/cli/azure/group#create) コマンドを使用して、[リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 Azure リソース グループとは、Web アプリ、データベース、ストレージ アカウントなどの関連リソースがデプロイおよび管理される論理コンテナーです。 
 
 次の例は、北ヨーロッパ リージョンにリソース グループを作成します。
 
-```azurecli
-az group create --name myResourceGroup  --location "North Europe"
-```
+```azurecli-interactive
+az group create --name myResourceGroup --location "North Europe"
+```    
 
 `--location` に使用できる値を確認するには、[az appservice list-locations](/cli/azure/appservice#list-locations) コマンドを使用します。
 
 ### <a name="create-a-mysql-server"></a>MySQL サーバーを作成する
 
-[az mysql server create](/cli/azure/mysql/server#create) コマンドを使用して、Azure Database for MySQL (Preview) にサーバーを作成します。
+[az mysql server create](/cli/azure/mysql/server#create) コマンドを使用して、Azure Database for MySQL (Preview) にサーバーを作成します。    
+`<mysql_server_name>` プレースホルダーを独自の一意の MySQL サーバー名に置き換えます。 この名前は、MySQL サーバーのホスト名 (`<mysql_server_name>.mysql.database.azure.com`) の一部であるため、グローバルに一意である必要があります。 `<admin_user>` と `<admin_password>` も独自の値に置き換えます。
 
-`&lt;mysql_server_name&gt;` プレースホルダーを独自の一意の MySQL サーバー名に置き換えます。 この名前は、MySQL サーバーのホスト名 (`&lt;mysql_server_name&gt;.database.windows.net`) の一部であるため、グローバルに一意である必要があります。 `&lt;admin_user&gt;` と `&lt;admin_password&gt;` も独自の値に置き換えます。
-
-```azurecli
-az mysql server create --name &lt;mysql_server_name&gt; --resource-group myResourceGroup --location "North Europe" --user &lt;admin_user&gt; --password &lt;admin_password&gt;
+```azurecli-interactive
+az mysql server create --name <mysql_server_name> \ 
+    --resource-group myResourceGroup \ 
+    --location "North Europe" \
+    --admin-user <admin_user> \ 
+    --admin-password <admin_password>
 ```
 
 MySQL サーバーが作成されると、Azure CLI によって、次の例のような情報が表示されます。
 
 ```json
 {
-  "administratorLogin": "&lt;admin_user&gt;",
+  "administratorLogin": "admin_user",
   "administratorLoginPassword": null,
-  "fullyQualifiedDomainName": "&lt;mysql_server_name&gt;.database.windows.net",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforMySQL/servers/&lt;mysql_server_name&gt;",
+  "fullyQualifiedDomainName": "mysql_server_name.mysql.database.azure.com",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforMySQL/servers/mysql_server_name",
   "location": "northeurope",
-  "name": "&lt;mysql_server_name&gt;",
-  "resourceGroup": "myResourceGroup",
+  "name": "mysql_server_name",
+  "resourceGroup": "mysqlJavaResourceGroup",
   ...
+  < Output has been truncated for readability >
 }
 ```
 
-### <a name="configure-a-server-firewall"></a>サーバーのファイアウォールを構成する
+### <a name="configure-server-firewall"></a>サーバーのファイアウォールを構成する
 
 [az mysql server firewall-rule create](/cli/azure/mysql/server/firewall-rule#create) コマンドを使用して、MySQL サーバーのクライアントへの接続を許可するファイアウォール ルールを作成します。 
 
-```azurecli
-az mysql server firewall-rule create --name allIPs --server &lt;mysql_server_name&gt; --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
+```azurecli-interactive
+az mysql server firewall-rule create \
+    --name allIPs \
+    --server <mysql_server_name>  \ 
+    --resource-group myResourceGroup \ 
+    --start-ip-address 0.0.0.0 \ 
+    --end-ip-address 255.255.255.255
 ```
 
-&gt; [!NOTE]
-&gt; 現時点では、Azure Database for MySQL (Preview) は、Azure Services からの接続のみを有効にすることはできません。 Azure の IP アドレスは動的に割り当てられるため、当面はすべての IP アドレスを有効にしておくことをお勧めします。 サービスはプレビュー段階であるため、データベースを保護するためのより優れた方法はまもなく利用可能になる予定です。
-&gt; &gt;
+> [!NOTE]
+> 現時点では、Azure Database for MySQL (Preview) は、Azure Services からの接続を自動的に有効にすることはできません。 Azure の IP アドレスは動的に割り当てられるため、当面はすべての IP アドレスを有効にしておくことをお勧めします。 サービスは引き続きプレビュー段階にあり、データベースを保護するためのより優れた方法が利用可能になる予定です。
 
-### <a name="connect-to-the-mysql-server"></a>MySQL サーバーに接続する
+## <a name="configure-the-azure-mysql-database"></a>Azure MySQL データベースを構成する
 
-ターミナル ウィンドウで、Azure の MySQL サーバーに接続します。 `&lt;admin_user&gt;` と `&lt;mysql_server_name&gt;` に指定した値を使用します。
+コンピューターのターミナル ウィンドウで、Azure の MySQL サーバーに接続します。 `<admin_user>` と `<mysql_server_name>` に指定した値を使用します。
 
 ```bash
-mysql -u &lt;admin_user&gt;@&lt;mysql_server_name&gt; -h &lt;mysql_server_name&gt;.database.windows.net -P 3306 -p
+mysql -u <admin_user>@<mysql_server_name> -h <mysql_server_name>.mysql.database.azure.com -P 3306 -p
 ```
 
-### <a name="create-a-database-and-table-in-the-azure-mysql-service"></a>Azure MySQL サービスにデータベースとテーブルを作成する
+### <a name="create-a-database"></a>データベースを作成する 
 
 `mysql` プロンプトで、データベースと To-Do 項目テーブルを作成します。
 
 ```sql
-CREATE DATABASE todoItemDb;
-USE todoItemDb;
-CREATE TABLE ITEMS ( id varchar(255), name varchar(255), category varchar(255), complete bool);
+CREATE DATABASE tododb;
 ```
 
 ### <a name="create-a-user-with-permissions"></a>アクセス許可を持つユーザーを作成する
 
-データベース ユーザーを作成し、`todoItemDb` データベースのすべての特権を付与します。 プレースホルダーの `&lt;Javaapp_user&gt;` と `&lt;Javaapp_password&gt;` を独自の一意の名前に置き換えます。
+データベース ユーザーを作成し、`tododb` データベースのすべての特権を付与します。 プレースホルダーの `<Javaapp_user>` と `<Javaapp_password>` を独自の一意の名前に置き換えます。
 
 ```sql
-CREATE USER '&lt;Javaapp_user&gt;' IDENTIFIED BY '&lt;Javaapp_password&gt;'; 
-GRANT ALL PRIVILEGES ON todoItemDb.* TO '&lt;Javaapp_user&gt;';
+CREATE USER '<Javaapp_user>' IDENTIFIED BY '<Javaapp_password>'; 
+GRANT ALL PRIVILEGES ON tododb.* TO '<Javaapp_user>';
 ```
 
 「`quit`」と入力して、サーバー接続を終了します。
@@ -222,78 +216,20 @@ GRANT ALL PRIVILEGES ON todoItemDb.* TO '&lt;Javaapp_user&gt;';
 quit
 ```
 
-### <a name="configure-the-local-mysql-connection-with-the-new-azure-mysql-service"></a>ローカル MySQL 接続を新しい Azure MySQL サービスで構成する
+## <a name="deploy-the-sample-to-azure-app-service"></a>サンプルを Azure App Service にデプロイする
 
-この手順では、Java アプリケーションを Azure Database for MySQL (Preview) に作成した MySQL データベースに接続します。 
+[az appservice plan create](/cli/azure/appservice/plan#create) CLI コマンドを使用して、**Free** 価格レベルで Azure App Service プランを作成します。 App Service プランは、アプリをホストするために使用される物理リソースを定義します。 App Service プランに割り当てられたすべてのアプリケーションは、これらのリソースを共有します。これにより、複数のアプリをホストする際にコストを節約できます。 
 
-ローカル アプリケーションから Azure MySQL サービスにアクセスできるようにするには、新しい MySQL エンドポイント、ユーザー ID、およびパスワードを WebContent/WEB-INF/jetty-env.xml に設定します。
-
-```
-<Configure id='wac' class="org.eclipse.jetty.webapp.WebAppContext">
-  <New id="itemdb" class="org.eclipse.jetty.plus.jndi.Resource">
-     <Arg></Arg>
-     <Arg>jdbc/todoItemDb</Arg>
-     <Arg>
-        <New class="com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource">
-           <Set name="Url">jdbc:mysql:<paste the endpoint for the Azure MySQL Service>/itemdb</Set>
-           <Set name="User">Azure MySQL userID</Set>
-           <Set name="Password">Azure MySQL Password</Set>
-        </New>
-     </Arg>
-    </New>
-</Configure>
-
+```azurecli-interactive
+az appservice plan create \
+    --name myAppServicePlan \ 
+    --resource-group myResourceGroup \
+    --sku FREE
 ```
 
-変更を保存します。
+プランの準備が完了すると、Azure CLI で次の例のような出力が表示されます。
 
-## <a name="test-the-application"></a>アプリケーションをテストする
-
-前回と同じ Maven コマンドを使用してサンプルをローカルでもう一度実行しますが、今回は Azure MySQL サービスに接続します。 
-
-```bash
-mvn package jetty:run
-```
-
-ブラウザーで `http://localhost:8080` にアクセスします。 エラーの発生なしでページが読み込まれれば、Java アプリケーションは Azure の MySQL データベースに接続しています。 
-
-ページにタスクを追加する必要はありません。
-
-アプリケーションを任意のタイミングで停止するには、ターミナルで `Ctrl`+`C` キーを押します。 
-
-### <a name="secure-sensitive-data"></a>機微なデータをセキュリティで保護する
-
-`WebContent/WEB-INF/jetty-env.xml` の機微なデータが Git にコミットされないことを確認します。
-
-これを行うには、レポジトリのルートから `.gitignore` を開き、新しい行に `WebContent/WEB-INF/jetty-env.xml` を追加します。 変更を保存します。
-
-変更を `.gitignore` にコミットします。
-
-```bash
-git add .gitignore
-git commit -m "keep sensitive data in WebContent/WEB-INF/jetty-env.xml out of git"
-```
-
-## <a name="deploy-the-java-application-to-azure"></a>Azure に Java アプリケーションを展開する
-次に、Java アプリケーションを Azure App Service にデプロイします。
-
-### <a name="create-an-appservice-plan"></a>App Service プランを作成する
-
-[az appservice plan create](/cli/azure/appservice/plan#create) コマンドを使用して、App Service プランを作成します。 
-
-&gt; [!NOTE] 
-&gt; App Service プランは、アプリをホストするために使用される物理リソースのコレクションを表しています。 App Service プランに割り当てられたすべてのアプリケーションは、プランで定義されたリソースを共有します。これにより、複数のアプリをホストする際にコストを節約できます。 
-&gt; &gt; App Service プランは、&gt; &gt; * リージョン (北ヨーロッパ、米国東部、東南アジア) &gt; * インスタンス サイズ (大、中、小) &gt; * スケール カウント (インスタンス数 1、2、3 など) &gt; * SKU (Free、Shared、Basic、Standard、Premium) &gt; の各項目を選択して定義します。 
-
-次の例は、**Free** 価格レベルを使用して、`myAppServicePlan` という名前の App Service プランを作成します。
-
-```azurecli
-az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
-```
-
-App Service プランが作成されると、Azure CLI によって、次の例のような情報が表示されます。
-
-```json 
+```json
 { 
   "adminSiteName": null,
   "appServicePlanName": "myAppServicePlan",
@@ -304,24 +240,25 @@ App Service プランが作成されると、Azure CLI によって、次の例�
   "location": "North Europe",
   "maximumNumberOfWorkers": 1,
   "name": "myAppServicePlan",
-  &lt; JSON data removed for brevity. &gt;
-  "targetWorkerSizeId": 0,
-  "type": "Microsoft.Web/serverfarms",
-  "workerTierName": null
+  ...
+  < Output has been truncated for readability >
 } 
 ``` 
 
 ### <a name="create-an-azure-web-app"></a>Azure Web アプリを作成する
 
-App Service プランを作成したので、`myAppServicePlan` App Service プラン内に Azure Web アプリを作成します。 Web アプリにより、コードをデプロイするためのホスト領域が取得され、デプロイされたアプリケーションを表示するための URL が提供されます。 Web アプリを作成するには、[az appservice web create](/cli/azure/appservice/web#create) コマンドを使用します。 
+ [az webapp create](/cli/azure/appservice/web#create) CLI コマンドを使用して、`myAppServicePlan` App Service プランで Web アプリ定義を作成します。 Web アプリ定義によって、アプリケーションにアクセスするための URL が提供され、Azure にコードをデプロイするためのいくつかのオプションが構成されます。 
 
-次のコマンドで、`&lt;app_name&gt;` プレースホルダーを独自の一意のアプリ名に置き換えます。 この一意の名前は、Web アプリの既定のドメイン名の一部として使用されます。そのため、この名前は Azure のすべてのアプリで一意である必要があります。 後で、Web アプリをユーザーに公開する前に、任意のカスタム DNS エントリを Web アプリにマップできます。 
-
-```azurecli
-az appservice web create --name &lt;app_name&gt; --resource-group myResourceGroup --plan myAppServicePlan
+```azurecli-interactive
+az webapp create \
+    --name <app_name> \ 
+    --resource-group myResourceGroup \
+    --plan myAppServicePlan
 ```
 
-Web アプリが作成されると、Azure CLI によって次の例のような情報が表示されます。 
+`<app_name>` プレースホルダーを独自の一意のアプリ名で置き換えます。 この一意の名前は、Web アプリの既定のドメイン名の一部です。そのため、この名前は Azure のすべてのアプリで一意である必要があります。 Web アプリをユーザーに公開する前に、カスタム ドメイン名エントリを Web アプリにマップできます。
+
+Web アプリ定義の準備が完了すると、Azure CLI によって次の例のような情報が表示されます。 
 
 ```json 
 {
@@ -331,108 +268,226 @@ Web アプリが作成されると、Azure CLI によって次の例のような
   "cloningInfo": null,
   "containerSize": 0,
   "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "&lt;app_name&gt;.azurewebsites.net",
+  "defaultHostName": "<app_name>.azurewebsites.net",
   "enabled": true,
-  "enabledHostNames": [
-    "&lt;app_name&gt;.azurewebsites.net",
-    "&lt;app_name&gt;.scm.azurewebsites.net"
-  ],
-  "gatewaySiteName": null,
-  "hostNameSslStates": [
-    {
-      "hostType": "Standard",
-      "name": "&lt;app_name&gt;.azurewebsites.net",
-      "sslState": "Disabled",
-      "thumbprint": null,
-      "toUpdate": null,
-      "virtualIp": null
-    }
-    &lt; JSON data removed for brevity. &gt;
+   ...
+  < Output has been truncated for readability >
 }
 ```
 
-### <a name="set-the-java-version-the-java-application-server-type-and-the-application-server-version"></a>Java のバージョン、Java アプリケーション サーバーの種類、およびアプリケーション サーバーのバージョンを設定する
+### <a name="configure-java"></a>Java を構成する 
 
-[az appservice web config update](/cli/azure/appservice/web/config#update) コマンドを使用して、Java のバージョン、Java App Server (コンテナー)、およびコンテナーのバージョンを設定します。
+[az appservice web config update](/cli/azure/appservice/web/config#update) コマンドを使用して、アプリで必要な Java ランタイム構成を設定します。
 
-次のコマンドは、Java のバージョンを 8 に、Java App Server を Jetty に、Jetty のバージョンを Newest Jetty 9.3 に設定します。
+次のコマンドでは、最新の Java 8 JDK および [Apache Tomcat](http://tomcat.apache.org/) 8.0 で動作するように Web アプリを構成します。
 
-```azurecli
-az appservice web config update --name &lt;app_name&gt; --resource-group myResourceGroup --java-version 1.8 --java-container Jetty --java-container-version 9.3
+```azurecli-interactive
+az webapp config set \ 
+    --name <app_name> \
+    --resource-group myResourceGroup \ 
+    --java-version 1.8 \ 
+    --java-container Tomcat \
+    --java-container-version 8.0
 ```
 
+### <a name="configure-the-app-to-use-the-azure-sql-database"></a>Azure SQL データベースを使用するようにアプリを構成する
 
-### <a name="get-credentials-for-deployment-to-the-web-app-using-ftp"></a>FTP を使用して Web アプリにデプロイするための資格情報を取得する 
+サンプル アプリを実行する前に、Azure で作成した Azure MySQL データベースを使用するように Web アプリのアプリケーション設定を行います。 これらのプロパティは環境変数として Web アプリケーションに公開され、パッケージ化された Web アプリ内の application.properties で設定されている値をオーバーライドします。 
 
-アプリケーションを Azure App Service にデプロイするには、FTP、ローカル Git、GitHub、Visual Studio Team Services、BitBucket など、さまざまな方法があります。 この例では、Maven を使用して .WAR ファイルをコンパイルし、FTP を使用して .WAR ファイルを Web アプリにデプロイします。
+CLI で [az webapp config appsettings](https://docs.microsoft.com/cli/azure/appservice/web/config/appsettings) を使用してアプリケーションの設定を行います。
+
+```azurecli-interactive
+az webapp config appsettings set \
+    --settings SPRING_DATASOURCE_URL="jdbc:mysql://<mysql_server_name>.mysql.database.azure.com:3306/tododb?verifyServerCertificate=true&useSSL=true&requireSSL=false" \
+    --resource-group myResourceGroup \
+    --name <app_name>
+```
+
+```azurecli-interactive
+az webapp config appsettings set \
+    --settings SPRING_DATASOURCE_USERNAME=Javaapp_user@mysql_server_name  \
+    --resource-group myResourceGroup \ 
+    --name <app_name>
+```
+
+```azurecli-interactive
+az webapp config appsettings set \
+    --settings SPRING_DATASOURCE_URL=Javaapp_password \
+    --resource-group myResourceGroup \ 
+    --name <app_name>
+```
+
+### <a name="get-ftp-deployment-credentials"></a>FTP デプロイ資格情報を取得する 
+アプリケーションを Azure App Service にデプロイするには、FTP、ローカル Git、GitHub、Visual Studio Team Services、BitBucket など、さまざまな方法があります。 この例では、事前にローカル コンピューターでビルドした .WAR ファイルを Azure App Service にデプロイするために FTP を使用します。
 
 ftp コマンドで Web アプリに渡す資格情報を確認するには、[az appservice web deployment list-publishing-profiles](https://docs.microsoft.com/cli/azure/appservice/web/deployment#list-publishing-profiles) コマンドを次のように使用します。 
 
-```azurecli
-
-az appservice web deployment list-publishing-profiles --name &lt;app_name&gt; --resource-group myResourceGroup --query "[?publishMethod=='FTP'].{URL:publishUrl, Username:userName,Password:userPWD}" --o table
-
+```azurecli-interactive
+az webapp deployment list-publishing-profiles \ 
+    --name <app_name> \ 
+    --resource-group myResourceGroup \
+    --query "[?publishMethod=='FTP'].{URL:publishUrl, Username:userName,Password:userPWD}" \ 
+    --output json
 ```
-### <a name="compile-the-local-application-to-deply-to-the-web-app"></a>Web アプリにデプロイするローカル アプリケーションをコンパイルする 
 
-ローカル Java アプリケーションを Azure Web アプリで実行するための準備を行うには、Java アプリケーション内のすべてのリソースを単一の .WAR ファイルに再コンパイルしてデプロイできるようにします。 アプリケーションの pom.xml があるディレクトリに移動し、次のように入力します。
+```JSON
+[
+  {
+    "Password": "aBcDeFgHiJkLmNoPqRsTuVwXyZ",
+    "URL": "ftp://waws-prod-blu-069.ftp.azurewebsites.windows.net/site/wwwroot",
+    "Username": "app_name\\$app_name"
+  }
+]
+```
 
-```bash 
-mvn clean package
-``` 
-Maven パッケージ プロセスの最後に .WAR ファイルの場所が表示されます。  出力は次のようになります。
+### <a name="upload-the-app-using-ftp"></a>FTP を使用してアプリをアップロードする
+
+お好みの FTP ツールを使用して、上記のコマンドで `URL` フィールドから取得したサーバー アドレス上の */site/wwwroot/webapps* フォルダーに .WAR ファイルをデプロイします。 既存の既定 (ROOT) アプリケーション ディレクトリを削除して、既存の ROOT.war を、このチュートリアルでビルド済みの .WAR ファイルで置き換えます。
 
 ```bash
-
-[INFO] Processing war project
-[INFO] Copying webapp resources [local-location\GitHub\mysql-java-todo-app\WebContent]
-[INFO] Webapp assembled in [1519 msecs]
-[INFO] Building war: C:\Users\your\localGitHub\mysql-java-todo-app\target\azure-appservice-mysql-java-sample-0.0.1-SNAPSHOT.war
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-
+ftp waws-prod-blu-069.ftp.azurewebsites.windows.net
+Connected to waws-prod-blu-069.drip.azurewebsites.windows.net.
+220 Microsoft FTP Service
+Name (waws-prod-blu-069.ftp.azurewebsites.windows.net:raisa): app_name\$app_name
+331 Password required
+Password:
+cd /site/wwwroot/webapps
+mdelete -i ROOT/*
+rmdir ROOT/
+put target/TodoDemo-0.0.1-SNAPSHOT.war ROOT.war
 ```
 
-.War の場所をメモし、任意の FTP メソッドを使用して .War ファイルを Jetty WebApps フォルダーにデプロイします。  Jetty WebApps フォルダーは Azure Web App の /site/wwwroot/webapps に配置されています。 
+### <a name="test-the-web-app"></a>Web アプリをテストする
 
-### <a name="browse-to-the-azure-web-app"></a>Azure Web アプリを参照する
-
-`http://&lt;app_name&gt;.azurewebsites.net/&lt;app_name&gt;` を参照し、一覧にいくつかのタスクを追加します。 
+`http://<app_name>.azurewebsites.net/` を参照し、一覧にいくつかのタスクを追加します。 
 
 ![Azure App Service で実行される Java アプリ](./media/app-service-web-tutorial-java-mysql/appservice-web-app.png)
 
-
 **お疲れさまでした。** データ主導型の Java アプリが Azure App Service で実行されています。
-アプリを更新するには、mvn clean package コマンドを繰り返し実行し、FTP 経由でアプリを再びデプロイします。
+
+## <a name="update-the-app-and-redeploy"></a>アプリを更新して再デプロイする
+
+ToDo リストに項目の作成日の列を追加するように、アプリケーションを更新します。 Spring Boot では、データ モデルの変更時に、既存のデータベース レコードを変更することなく、データベース スキーマの更新処理を自動で行います。
+
+1. ローカル システムで *src/main/java/com/example/fabrikam/TodoItem.java* を開き、次のインポートをクラスに追加します。   
+
+    ```java
+    import java.text.SimpleDateFormat;
+    import java.util.Calendar;
+    ```
+
+2. `String` プロパティの `timeCreated` を *src/main/java/com/example/fabrikam/TodoItem.java* に追加し、オブジェクト作成時のタイムスタンプで初期化します。 このファイルを編集する際に、新しい `timeCreated` プロパティのゲッターおよびセッターを追加します。
+
+    ```java
+    private String name;
+    private boolean complete;
+    private String timeCreated;
+    ...
+
+    public TodoItem(String category, String name) {
+       this.category = category;
+       this.name = name;
+       this.complete = false;
+       this.timeCreated = new SimpleDateFormat("MMMM dd, YYYY").format(Calendar.getInstance().getTime());
+    }
+    ...
+    public void setTimeCreated(String timeCreated) {
+       this.timeCreated = timeCreated;
+    }
+
+    public String getTimeCreated() {
+        return timeCreated;
+    }
+    ```
+
+3. *src/main/java/com/example/fabrikam/TodoDemoController.java* を `updateTodo` メソッドの行で更新し、タイムスタンプを設定します。
+
+    ```java
+    item.setComplete(requestItem.isComplete());
+    item.setId(requestItem.getId());
+    item.setTimeCreated(requestItem.getTimeCreated());
+    repository.save(item);
+    ```
+
+4. Thymeleaf テンプレートの新しいフィールドのサポートを追加します。 *src/main/resources/templates/index.html* を、タイムスタンプ用の新しいテーブル ヘッダー、および各テーブル データ行にタイムスタンプの値を表示する新しいフィールドで更新します。
+
+    ```html
+    <th>Name</th>
+    <th>Category</th>
+    <th>Time Created</th>
+    <th>Complete</th>
+    ...
+    <td th:text="${item.category}">item_category</td><input type="hidden" th:field="*{todoList[__${i.index}__].category}"/>
+    <td th:text="${item.timeCreated}">item_time_created</td><input type="hidden" th:field="*{todoList[__${i.index}__].timeCreated}"/>
+    <td><input type="checkbox" th:checked="${item.complete} == true" th:field="*{todoList[__${i.index}__].complete}"/></td>
+    ```
+
+5. 次のように、アプリケーションをリビルドします。
+
+    ```bash
+    mvnw clean package 
+    ```
+
+6. 前記のように更新済みの .WAR を FTP で転送して、既存の *site/wwwroot/webapps/ROOT* ディレクトリと *ROOT.war* を削除し、更新済みの .WAR ファイルを ROOT.war としてアップロードします。 
+
+アプリを更新すると、**Time Created** 列が表示されるようになります。 新しいタスクを追加すると、アプリによってタイムスタンプが自動的に入力されます。 基になるデータ モデルが変更された場合でも、既存のタスクは変更されず、アプリで動作します。 
+
+![新しい列で更新された Java アプリ](./media/app-service-web-tutorial-java-mysql/appservice-updates-java.png)
+      
+## <a name="stream-diagnostic-logs"></a>診断ログをストリーミングする 
+
+Azure App Service で Java アプリケーションを実行している間、コンソール ログをターミナルに直接パイプできます。 このようにすると、アプリケーション エラーのデバッグに役立つ同じ診断メッセージを取得できます。
+
+ログのストリーミングを開始するには、[az webapp log tail](/cli/azure/appservice/web/log#tail) コマンドを使用します。
+
+```azurecli-interactive 
+az webapp log tail \
+    --name <app_name> \
+    --resource-group myResourceGroup 
+``` 
 
 ## <a name="manage-your-azure-web-app"></a>Azure Web アプリを管理する
 
-Azure ポータルに移動し、[https://portal.azure.com](https://portal.azure.com) にサインインして、作成した Web アプリを表示します。
+Azure Portal に移動し、作成した Web アプリを表示します。
+
+そのためには、[https://portal.azure.com](https://portal.azure.com) にサインインします。
 
 左側のメニューで **[App Service]** をクリックした後、Azure Web アプリの名前をクリックします。
 
-Web アプリの "_ブレード_" (水平方向に開かれるポータル ページ) が表示されます。
+![Azure Web アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-java-mysql/access-portal.png)
 
-既定では、Web アプリのブレードは **[概要]** ページを表示します。 このページでは、アプリの動作状態を見ることができます。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクも行うことができます。 ブレードの左側にあるタブは、開くことができるさまざまな構成ページを示しています。
+既定では、Web アプリのブレードは **[概要]** ページを表示します。 このページでは、アプリの動作状態を見ることができます。 ここでは、停止、開始、再開、削除のような管理タスクも行うことができます。 ブレードの左側にあるタブは、開くことができるさまざまな構成ページを示しています。
 
-**[アプリケーション設定]** ページでは、次の設定を管理できます。 
-
-![Azure aAp Service Web アプリのアプリケーション設定](./media/app-service-web-tutorial-java-mysql/appservice-web-app-application-settings.png)
-
-
+![Azure Portal の App Service ブレード](./media/app-service-web-tutorial-java-mysql/web-app-blade.png)
 
 ブレードのこれらのタブは、Web アプリに追加することができるさまざまな優れた機能を示しています。 次の一覧では、ほんの一部の例を示しています。
-
 * カスタム DNS 名をマップする
 * カスタム SSL 証明書をバインドする
 * 継続的なデプロイを構成する
 * スケールアップとスケールアウトを行う
 * ユーザー認証を追加する
 
-## <a name="more-resources"></a>その他のリソース
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-- [既存のカスタム DNS 名を Azure Web Apps にマップする](app-service-web-tutorial-custom-domain.md)
-- [既存のカスタム SSL 証明書を Azure Web Apps にバインドする](app-service-web-tutorial-custom-ssl.md)
-- [Web アプリの CLI スクリプト](app-service-cli-samples.md)</PRE>
+これらのリソースが別のチュートリアルで不要である場合 (「[次のステップ](#next)」を参照)、次のコマンドを実行して削除することができます。 
+  
+```azurecli-interactive
+az group delete --name myResourceGroup 
+``` 
 
+<a name="next"></a>
+
+## <a name="next-steps"></a>次のステップ
+
+> [!div class="checklist"]
+> * Azure で MySQL データベースを作成する
+> * サンプル Java アプリを MySQL に接続する
+> * Azure にアプリケーションをデプロイする
+> * アプリを更新して再デプロイする
+> * Azure から診断ログをストリーミングする
+> * Azure ポータルでアプリを管理する
+
+次のチュートリアルに進み、カスタム DNS 名をアプリにマップする方法を学習してください。
+
+> [!div class="nextstepaction"] 
+> [既存のカスタム DNS 名を Azure Web Apps にマップする](app-service-web-tutorial-custom-domain.md)

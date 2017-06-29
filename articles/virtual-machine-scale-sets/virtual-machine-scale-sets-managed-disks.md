@@ -13,12 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 2/21/2017
+ms.date: 6/01/2017
 ms.author: negat
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 4ec20a30f423d4b30e953f873100be90167f987b
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: f9cc157f25e70a8154614b659fb7e59b7fd06ed1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -45,7 +46,7 @@ az vmss create -g dsktest -n dskvmss --image ubuntults --instance-count 10 --dat
 
 ## <a name="api-versions"></a>API のバージョン
 
-管理ディスクを使用するスケール セットの一般公開されている最新の API バージョンは `2016-04-30-preview` です。 非管理対象ディスクを使用するスケール セットは、管理ディスクをサポートする新しい API バージョンでも、引き続き現在と同様に機能します。 ただし、非管理対象ディスクを使用するスケール セットでは、これらの新しい API バージョンでも管理ディスクの利点は得られません。
+管理対象ディスクとスケール セットには、`2016-04-30-preview` 以降のバージョンの Microsoft.Compute API が必要です。 非管理対象ディスクを使用するスケール セットは、管理ディスクをサポートする新しい API バージョンでも、引き続き現在と同様に機能します。 ただし、非管理対象ディスクを使用するスケール セットでは、これらの新しい API バージョンでも管理ディスクの利点は得られません。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -15,8 +15,6 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 04/03/2017
 ms.author: jroth
-experimental: true
-experimental_id: a641df96-f27d-40
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
 ms.openlocfilehash: c51908058bb785cb33da21de76ba3c956b6b9f1f

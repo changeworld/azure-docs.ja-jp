@@ -15,23 +15,26 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/24/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: d0cedf73aa3f73e672a73b6abaca5eb8c22a76a7
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 63d0972f31c2b26b391d5ba019f3e415d8053511
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/17/2017
 
 
 ---
 # <a name="create-a-vnet-with-a-site-to-site-connection-using-the-classic-portal-classic"></a>クラシック ポータルを使用してサイト間接続を備えた VNet を作成する (クラシック)
 
+[!INCLUDE [deployment models](../../includes/vpn-gateway-classic-deployment-model-include.md)]
+
 この記事では、クラシック ポータルを使用して、オンプレミス ネットワークから VNet へのサイト間 VPN Gateway 接続を作成する方法について説明します。 この記事のこの手順は、クラシック デプロイメント モデルに適用されます。 また、この構成の作成には、次のリストから別のオプションを選択して、別のデプロイ ツールまたはデプロイ モデルを使用することもできます。
 
 > [!div class="op_single_selector"]
-> * [Resource Manager - Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-> * [Resource Manager - PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
-> * [Resource Manager - CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
-> * [クラシック - Azure Portal](vpn-gateway-howto-site-to-site-classic-portal.md)
-> * [クラシック - クラシック ポータル](vpn-gateway-site-to-site-create.md)
+> * [Azure ポータル](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+> * [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
+> * [Azure Portal (クラシック)](vpn-gateway-howto-site-to-site-classic-portal.md)
+> * [クラシック ポータル (クラシック)](vpn-gateway-site-to-site-create.md)
 > 
 >
 

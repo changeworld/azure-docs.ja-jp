@@ -1,7 +1,7 @@
 ---
-title: "Azure HDInsight での HBase の使用 | Microsoft Docs"
-description: "HDInsight の Hadoop で Apache HBase を使用するには、この HBase チュートリアルの手順に従ってください。 HBase シェルからテーブルを作成し、Hive を使用したクエリを実行します。"
-keywords: "Apache HBase, HBase, HBase シェル, HBase チュートリアル, Beeline"
+title: "HDInsight での HBase の例の概要 - Azure | Microsoft Docs"
+description: "この Apache HBase の例に従って、HDInsight を使い始めることができます。 HBase シェルからテーブルを作成し、Hive を使用したクエリを実行します。"
+keywords: "hbasecommand,hbase の例"
 services: hdinsight
 documentationcenter: 
 author: mumian
@@ -9,7 +9,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 4d6a2658-6b19-4268-95ee-822890f5a33a
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,21 +17,21 @@ ms.topic: get-started-article
 ms.date: 05/09/2017
 ms.author: jgao
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 5f9b421571fa98d9881a9e955b05041de124f922
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 5bac1fcc39d052dd1bd9bf710a45a3494b70cae9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
-# <a name="hbase-tutorial-get-started-using-apache-hbase-in-hdinsight"></a>HBase チュートリアル: HDInsight で Apache HBase を使用する
+# <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>HDInsight で Apache HBase の例を使用する
 
 HDInsight で HBase クラスターを作成する方法、HBase テーブルを作成する方法、Hive を使用してテーブルを照会する方法について説明します。 HBase の概要については、[HDInsight HBase の概要][hdinsight-hbase-overview]に関する記事を参照してください。
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 ## <a name="prerequisites"></a>前提条件
-この HBase のチュートリアルを読み始める前に、次の項目を用意する必要があります。
+この HBase の例を試す前に、次の項目を用意する必要があります。
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 * [Secure Shell(SSH)](hdinsight-hadoop-linux-use-ssh-unix.md)。 
@@ -76,7 +76,7 @@ BigTable の実装である HBase では、同じデータが次のように表�
 
 **HBase シェルを使用するには**
 
-1. SSH から次のコマンドを実行します。
+1. SSH から次の HBase コマンドを実行します。
    
         hbase shell
 2. 2 つの列ファミリを持つ HBase を作成します。

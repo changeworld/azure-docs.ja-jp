@@ -13,11 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2016
+ms.date: 06/13/2016
 ms.author: cjiang
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 5313b454a6c6cdc7b9f212302351fafd69c21650
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/03/2017
 
 

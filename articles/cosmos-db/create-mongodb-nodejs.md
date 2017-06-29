@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: hero-article
-ms.date: 05/10/2017
+ms.date: 06/19/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: bfdf42ef717c090bffb89e9f276a135c58b1884f
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: 0265503689e189a3e2e30c2ae9fff39641647d0c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -29,13 +29,17 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 このクイック スタートでは、Node.js で記述された既存の [MongoDB](mongodb-introduction.md) アプリを使用して Azure Cosmos DB データベースに接続する方法を示します。これは MongoDB のクライアント接続をサポートしています。 言い換えると、Node.js アプリケーションは、MongoDB API を使用して MongoDB データベースに接続していることだけを認識します。 データが Azure Cosmos DB に格納されることは、アプリケーションにとっては透過です。
 
-操作を完了すると、MEAN アプリケーション (MongoDB、Express、AngularJS、および Node.js) が [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) で実行されます。 
+操作を完了すると、MEAN アプリケーション (MongoDB、Express、AngularJS、および Node.js) が [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) で実行されます。 
 
 ![Azure App Service で実行されている MEAN.js アプリ](./media/create-mongodb-nodejs/meanjs-in-azure.png)
 
-## <a name="prerequisites"></a>前提条件 
 
-このクイック スタートを始める前に、コンピューターに [Azure CLI がインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)されていることを確認してください。 さらに、[Node.js](https://nodejs.org/) と [Git](http://www.git-scm.com/downloads) が必要です。 `az`、`npm`、および `git` の各コマンドを実行します。
+[!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
+
+CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+
+## <a name="prerequisites"></a>前提条件 
+`npm` コマンドと `git` コマンドを実行するには、Azure CLI に加えて、[Node.js](https://nodejs.org/) と [Git](http://www.git-scm.com/downloads) がローカルにインストールされていることが必要です。
 
 Node.js の実用的な知識が必要です。 このクイック スタートは、一般的な Node.js アプリケーションの開発を支援するためのものではありません。
 
@@ -61,19 +65,17 @@ npm start
 
 ## <a name="log-in-to-azure"></a>Azure へのログイン
 
-ターミナル ウィンドウで Azure CLI 2.0 を使用して、Azure App Service で Node.js アプリケーションをホストするために必要なリソースを作成します。  [az login](/cli/azure/#login) コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。 
+インストールされた Azure CLI を使用する場合は、[az login](/cli/azure/#login) コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。 Azure Cloud Shell を使用する場合は、この手順を省略できます。
 
-```azurecli 
+```azurecli
 az login 
 ``` 
    
-### <a name="add-the-azure-cosmos-db-module"></a>Azure Cosmos DB モジュールを追加する
+## <a name="add-the-azure-cosmos-db-module"></a>Azure Cosmos DB モジュールを追加する
 
-Azure Cosmos DB コマンドを使用するには、Azure Cosmos DB モジュールを追加します。 
+インストールされた Azure CLI を使用する場合は、`az` コマンドを実行して、`cosmosdb` コンポーネントが既にインストールされているかどうかを調べます。 `cosmosdb` が基本コマンドの一覧にある場合は、次のコマンドに進みます。 Azure Cloud Shell を使用する場合は、この手順を省略できます。
 
-```azurecli
-az component update --add cosmosdb
-```
+`cosmosdb` が基本コマンドの一覧にない場合は、[Azure CLI 2.0]( /cli/azure/install-azure-cli) を再インストールします。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
@@ -81,17 +83,19 @@ az component update --add cosmosdb
 
 次の例は、西ヨーロッパ リージョンにリソース グループを作成します。 リソース グループには一意の名前を選択します。
 
-```azurecli
+Azure Cloud Shell を使用する場合は、**[試してみる]** をクリックし、画面のプロンプトに従ってログインしてから、コマンドをコマンド プロンプトにコピーします。
+
+```azurecli-interactive
 az group create --name myResourceGroup --location "West Europe"
 ```
 
-## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントの作成
+## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントを作成する
 
 [az cosmosdb create](/cli/azure/cosmosdb#create) コマンドを使用して Azure Cosmos DB アカウントを作成します。
 
 次のコマンドの `<cosmosdb_name>` プレースホルダーを独自の一意の Cosmos DB アカウント名に置き換えます。 この一意の名前は、Azure Cosmos DB エンドポイント (`https://<cosmosdb_name>.documents.azure.com/`) の一部として使用されます。そのため、この名前は Azure のすべての Azure Cosmos DB アカウントで一意である必要があります。 
 
-```azurecli
+```azurecli-interactive
 az cosmosdb create --name <cosmosdb_name> --resource-group myResourceGroup --kind MongoDB
 ```
 
@@ -139,7 +143,7 @@ DB/databaseAccounts/<cosmosdb_name>",
 
 Azure Cosmos DB データベースに接続するには、データベース キーが必要です。 [az cosmosdb list-keys](/cli/azure/cosmosdb#list-keys) コマンドを使用して、プライマリ キーを取得します。
 
-```azurecli
+```azurecli-interactive
 az cosmosdb list-keys --name <cosmosdb_name> --resource-group myResourceGroup
 ```
 

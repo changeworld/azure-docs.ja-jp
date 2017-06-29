@@ -21,6 +21,9 @@
 ### [テナント ID を変更する](key-vault-subscription-move-fix.md)
 ### [可用性と冗長性](key-vault-disaster-recovery-guidance.md)
 ### [キー コンテナーのセキュリティ保護](key-vault-secure-your-key-vault.md)
+### [セキュリティ ワールドの概要](key-vault-ovw-security-worlds.md)
+### [論理的な削除の概要](key-vault-ovw-soft-delete.md)
+### [ストレージ アカウント キーの概要](key-vault-ovw-storage-keys.md)
 
 ## 自動化
 ### [Azure Automation](automation-manage-key-vault.md)
@@ -43,7 +46,7 @@
 ## [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 
 # リソース
-## [キーとシークレットについて](https://msdn.microsoft.com/en-us/library/azure/dn903623)
+## [キー、シークレット、証明書について](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates)
 ## [コード サンプル](https://www.microsoft.com/download/details.aspx?id=45343)
 ## [料金](https://azure.microsoft.com/pricing/details/key-vault/)
 ## [ブログ](http://blogs.technet.com/b/kv/)

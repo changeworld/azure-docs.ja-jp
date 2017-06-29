@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 05/22/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 08fd1956d3c6499f059b138de22d3b104a9da6c1
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 79156c0b511dafcb43ed91800f01338dbb7ee5f3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -30,15 +30,6 @@ ms.lasthandoff: 05/31/2017
 ![Azure DocumentDB API](./media/documentdb-introduction/cosmosdb-documentdb.png) 
 
 DocumentDB API を使用すると、Azure Cosmos DB で豊富で使い慣れた [SQL クエリ機能](documentdb-sql-query.md)を利用できるようになるほか、スキーマレスの JSON データに対する待機時間が一貫して低くなります。 この記事では、Azure Cosmos DB の DocumentDB API の概要を説明します。また、Azure Cosmos DB を使用して大量の JSON データを格納し、数ミリ秒の待ち時間でデータを照会する方法、スキーマを簡単に進化させる方法についても説明します。 
-
-## <a name="how-can-i-learn-about-the-documentdb-api"></a>DocumentDB API について学ぶ方法
-DocumentDB API を簡単に理解して動作を確認するには、次の 3 つの手順に従います。 
-
-1. [Azure Cosmos DB について](https://azure.microsoft.com/documentation/videos/what-is-azure-documentdb/)説明する 2 分間のビデオを視聴します。このビデオでは、Azure Cosmos DB を使用する利点が紹介されています。
-2. [Azure での Azure Cosmos DB の作成](https://azure.microsoft.com/documentation/videos/create-documentdb-on-azure/)に関する 3 分間のビデオを視聴します。このビデオでは、Azure Portal を使用して Azure Cosmos DB の使用を開始する方法が紹介されています。
-3. [クエリのプレイ グラウンド](http://www.documentdb.com/sql/demo)にアクセスします。このページでは、DocumentDB で利用できる豊富なクエリ機能について理解するためのさまざまな手順を確認できます。 次に [サンドボックス] タブに移動して、独自のカスタム SQL クエリを実行し、DocumentDB を試してみます。
-
-次に、この記事に戻ります。ここでは、より詳しく説明します。  
 
 ## <a name="what-capabilities-and-key-features-does-azure-cosmos-db-offer"></a>Azure Cosmos DB の主な機能
 DocumentDB API を使った場合の Azure Cosmos DB の主な機能とメリットは次のとおりです。
@@ -78,13 +69,13 @@ Azure Cosmos DB 内のリソースはいずれも、JSON ドキュメントと�
 
 ## <a name="develop"></a>DocumentDB API でアプリを開発する方法
 
-Azure Cosmos DB が公開するリソースには、HTTP/HTTPS 要求機能を持つ任意の言語から DocumentDB REST API を呼び出すことでアクセスできます。 さらに、DocumentDB API にはいくつかの主要な言語のプログラミング ライブラリも用意されています。 アドレスのキャッシュ、例外管理、自動再試行のような細かい処理がクライアント ライブラリ側で行われるため、API の操作が多くの点で単純化されます。 ライブラリは、次の言語およびプラットフォーム用が現在提供されています。  
+Azure Cosmos DB が公開するリソースには、HTTP/HTTPS 要求機能を持つ任意の言語から REST API を呼び出すことでアクセスできます。 さらに、DocumentDB API にはいくつかの主要な言語のプログラミング ライブラリも用意されています。 アドレスのキャッシュ、例外管理、自動再試行のような細かい処理がクライアント ライブラリ側で行われるため、API の操作が多くの点で単純化されます。 ライブラリは、次の言語およびプラットフォーム用が現在提供されています。  
 
 | ダウンロード | ドキュメント |
 | --- | --- |
-| [.NET SDK](http://go.microsoft.com/fwlink/?LinkID=402989) |[.NET ライブラリ](https://msdn.microsoft.com/library/azure/dn948556.aspx) |
+| [.NET SDK](http://go.microsoft.com/fwlink/?LinkID=402989) |[.NET ライブラリ](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet) |
 | [Node.js SDK](http://go.microsoft.com/fwlink/?LinkID=402990) |[Node.js ライブラリ](http://azure.github.io/azure-documentdb-node/) |
-| [Java SDK](http://go.microsoft.com/fwlink/?LinkID=402380) |[Java ライブラリ](http://azure.github.io/azure-documentdb-java/) |
+| [Java SDK](http://go.microsoft.com/fwlink/?LinkID=402380) |[Java ライブラリ](/java/api/com.microsoft.azure.documentdb) |
 | [JavaScript SDK](http://go.microsoft.com/fwlink/?LinkID=402991) |[JavaScript ライブラリ](http://azure.github.io/azure-documentdb-js/) |
 | 該当なし |[サーバー側の JavaScript SDK](http://azure.github.io/azure-documentdb-js-server/) |
 | [Python SDK](https://pypi.python.org/pypi/pydocumentdb) |[Python ライブラリ](http://azure.github.io/azure-documentdb-python/) |

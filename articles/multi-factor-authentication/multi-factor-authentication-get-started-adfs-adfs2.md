@@ -5,19 +5,20 @@ services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: yossib
 ms.assetid: 96168849-241a-4499-a224-d829913caa7e
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/24/2017
+ms.date: 06/14/2017
 ms.author: kgremban
-ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.reviewer: yossib
+ms.custom: H1Hack27Feb2017, it-pro
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e4ef137656c12cf6495a00450eed308ac6a8a872
 ms.openlocfilehash: ea0853929cd8670b6458a546e7fb1b3a229c09d7
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/28/2017
 
 ---
@@ -37,9 +38,9 @@ ms.lasthandoff: 02/28/2017
    <center>![セットアップ](./media/multi-factor-authentication-get-started-adfs-adfs2/setup1.png)</center>
 
 4. ユーザー名、パスワード、ドメインの変数を自動的に検出するには、[フォームベースの Web サイトの自動構成] ダイアログ ボックス内でログイン URL (例: https://sso.contoso.com/adfs/ls) を入力し、**[OK]** をクリックします。
-5. すべてのユーザーがサーバーにインポート済みであるかインポート予定であり、2 段階認証の対象となる場合は、**[Require Azure Multi-Factor Authentication user match (Azure Multi-Factor Authentication のユーザー照合が必要)]** ボックスをオンにします。 多数のユーザーがまだサーバーにインポートされていない、または&2; 段階認証から除外される場合、ボックスはオフのままにします。 
+5. すべてのユーザーがサーバーにインポート済みであるかインポート予定であり、2 段階認証の対象となる場合は、**[Require Azure Multi-Factor Authentication user match (Azure Multi-Factor Authentication のユーザー照合が必要)]** ボックスをオンにします。 多数のユーザーがまだサーバーにインポートされていない、または&2; 段階認証から除外される場合、ボックスはオフのままにします。
 6. ページ変数を自動で検出できなかった場合には、[フォームベースの Web サイトの自動構成] ダイアログ ボックスの **[手動で指定...]** ボタンをクリックします。
-7. [フォームベースの Web サイトの追加] ダイアログ ボックスの [送信 URL] フィールドに、AD FS ログイン ページへの URL (例: https://sso.contoso.com/adfs/ls) を入力し、アプリケーション名を入力します (省略可能)。 アプリケーション名は Azure Multi-Factor Authentication レポートに表示され、SMS またはモバイル アプリの認証メッセージにも表示される場合があります。 
+7. [フォームベースの Web サイトの追加] ダイアログ ボックスの [送信 URL] フィールドに、AD FS ログイン ページへの URL (例: https://sso.contoso.com/adfs/ls) を入力し、アプリケーション名を入力します (省略可能)。 アプリケーション名は Azure Multi-Factor Authentication レポートに表示され、SMS またはモバイル アプリの認証メッセージにも表示される場合があります。
 8. [要求の形式] を **[POST または GET]** に設定します。
 9. ユーザー名変数 (ctl00 $contentplaceholder1 $usernametextbox) とパスワード変数 (ctl00 $contentplaceholder1 $passwordtextbox) を入力します。 フォーム ベースのログイン ページにドメイン テキスト ボックスが表示される場合、[ドメイン変数] も入力します。 ログイン ページ内の入力ボックスの名前を検索するには、Web ブラウザーでログイン ページに移動し、ページを右クリックし、**[ソースの表示]** を選択します。
 10. すべてのユーザーがサーバーにインポート済みであるかインポート予定であり、2 段階認証の対象となる場合は、**[Require Azure Multi-Factor Authentication user match (Azure Multi-Factor Authentication のユーザー照合が必要)]** ボックスをオンにします。 多数のユーザーがまだサーバーにインポートされていない、または&2; 段階認証から除外される場合、ボックスはオフのままにします。
@@ -51,7 +52,7 @@ ms.lasthandoff: 02/28/2017
     - プライマリ資格情報の認証方法の選択
 
 12. AD FS プロキシ サーバーはドメインに参加しない可能性があるため、ユーザー インポートや事前認証のためのドメイン コントローラーへの接続に LDAP を使用できます。 [フォームベースの Web サイトの詳細設定] ダイアログ ボックスで、**[プライマリ認証]** タブをクリックし、事前認証の種類に **[LDAP バインド]** を選択します。
-13. 完了したら、**[OK]** をクリックして、[フォームベースの Web サイトの追加] ダイアログ ボックスに戻ります。 
+13. 完了したら、**[OK]** をクリックして、[フォームベースの Web サイトの追加] ダイアログ ボックスに戻ります。
 14. **[OK]** をクリックしてダイアログ ボックスを閉じます。
 15. URL とページの変数が検出または入力されたら、フォームベースのパネルにその Web サイトのデータが表示されます。
 16. **[ネイティブ モジュール]** タブをクリックし、サーバー、AD FS プロキシが実行されている Web サイト (例: "既定の Web サイト")、または AD FS プロキシ アプリケーション (例: "adfs" の下の "ls") を選び、必要なレベルで IIS プラグインを有効にします。
@@ -93,14 +94,14 @@ AD FS プロキシを使用しない場合でも、AD FS をセキュリティ�
 3. **[追加]**をクリックします。
 4. [基本 URL の追加] ダイアログ ボックスで、HTTP 認証が実行される AD FS Web サイトの URL (例: https://sso.domain.com/adfs/ls/auth/integrated) を [基本 URL] フィールドに入力します。 入力が終わったら、アプリケーション名を入力します (省略可能)。 アプリケーション名は Azure Multi-factor Authentication レポートに表示され、SMS またはモバイル アプリの認証メッセージにも表示される場合があります。
 5. 必要な場合、アイドル状態のタイムアウトと最大セッション時間を調整します。
-6. すべてのユーザーがサーバーにインポート済みであるかインポート予定であり、2 段階認証の対象となる場合は、**[Require Azure Multi-Factor Authentication user match (Azure Multi-Factor Authentication のユーザー照合が必要)]** ボックスをオンにします。 多数のユーザーがまだサーバーにインポートされていない、または&2; 段階認証から除外される場合、ボックスはオフのままにします。 
+6. すべてのユーザーがサーバーにインポート済みであるかインポート予定であり、2 段階認証の対象となる場合は、**[Require Azure Multi-Factor Authentication user match (Azure Multi-Factor Authentication のユーザー照合が必要)]** ボックスをオンにします。 多数のユーザーがまだサーバーにインポートされていない、または&2; 段階認証から除外される場合、ボックスはオフのままにします。
 7. 必要な場合は、[クッキーのキャッシュ] ボックスをオンにします。
 
    <center>![セットアップ](./media/multi-factor-authentication-get-started-adfs-adfs2/noproxy.png)</center>
 
 8. **[OK]**をクリックします。
 9. **[ネイティブ モジュール]** タブをクリックし、サーバー、Web サイト (例: [既定の Web サイト])、または AD FS アプリケーション (例: [adfs] の下の [ls]) を選び、必要なレベルで IIS プラグインを有効にします。
-10. 画面上部にある **[IIS 認証を有効にする]** ボックスをクリックします。 
+10. 画面上部にある **[IIS 認証を有効にする]** ボックスをクリックします。
 
 Azure Multi-Factor Authentication は、AD FS をセキュリティ保護するようになりました。
 

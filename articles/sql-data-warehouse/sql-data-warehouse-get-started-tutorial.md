@@ -16,10 +16,10 @@ ms.custom: quickstart
 ms.date: 01/26/2017
 ms.author: elbutter;barbkess
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 9d3029817cae6570ff8871fbcb068250544595d7
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 75c2e0f119ac5669c3ab5bd528899d6e4b7818c9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/21/2017
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -577,6 +577,9 @@ SQL Data Warehouse は、CREATE TABLE AS SELECT (CTAS) と呼ばれる重要な�
 6. データ ウェアハウスを 400 DWU にスケールバックします。 100 DWU ごとに、1 つのコンピューティング ノードが Azure SQL Data Warehouse に追加されることに注意してください。
 
 7. もう一度クエリを実行します。 大きな違いに気付くはずです。 
+
+    > [!NOTE]
+    > クエリは大量のデータを返すため、SSMS を実行するコンピューターの帯域幅の可用性がパフォーマンス上のボトルネックになる場合があります。 この結果、パフォーマンスの向上が見られない可能性があります。
 
 > [!NOTE]
 > Azure SQL Data Warehouse では、超並列処理を使用しています。 Azure SQL Data Warehouse の真価は、特に数百万行のデータに対してスキャンまたは分析機能を実行するクエリにおいて発揮されます。

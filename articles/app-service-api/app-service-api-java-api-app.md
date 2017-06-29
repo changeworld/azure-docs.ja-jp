@@ -14,10 +14,11 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.date: 04/25/2017
 ms.author: rachelap;robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
-ms.openlocfilehash: 26f2fba953870564292ef3e986a3151373f6babf
-ms.lasthandoff: 01/05/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 26011d72644f8b13a711d847d83175ce384f2053
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -153,7 +154,7 @@ swagger.io オンライン エディターを使用して、API の構造を表�
 1. [Visual Studio Code] または使い慣れたテキスト エディターを使用して、*Contact.java* モデル ファイルを開きます。このファイルは、*src/gen/java/io/swagger/model* フォルダーにあります。 
    
     ![Open Contact Model File][open-contact-model-file]
-2. **Contact** クラスに次のコンストラクターを追加します。 
+2. **Contact** クラス内に次のコンストラクターを追加します。 
    
         public Contact(Integer id, String name, String email) 
         {
@@ -291,7 +292,7 @@ Java での Azure の使用の詳細については、 [Azure Java デベロッ�
 [Jax-RS]: https://jax-rs-spec.java.net/
 [Maven]: https://maven.apache.org/
 [無料試用版]: https://azure.microsoft.com/
-[オンライン Swagger Editor]: http://editor.swagger.io/
+[オンライン Swagger Editor]: http://editor2.swagger.io/
 [Postman]: https://www.getpostman.com/
 [Storage SDK for Java]: ../storage/storage-java-how-to-use-blob-storage.md
 [Swagger Editor]: http://swagger.io/

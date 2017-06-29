@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: raymondl;garye
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: f307a26bfbb55b395f4073f4368432ae69b867ae
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -63,10 +65,5 @@ Azure のストレージ アカウントを探索できる複数のツールを�
 * batch (バッチ)  
 * score/requests (スコア/要求)  
 * score/init (スコア/初期化)  
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

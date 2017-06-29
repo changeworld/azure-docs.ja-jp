@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Microsoft Azure Linux VM 用のディスクと VHD について | Microsoft Docs"
 description: "Azure での Linux 仮想マシン用のディスクと VHD の基本について説明します。"
 services: storage
@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2017
 ms.author: robinsh
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
 ms.openlocfilehash: 15bb061fb42249ba1318e3dde4e68f9315c6a5db
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/06/2017
 
 

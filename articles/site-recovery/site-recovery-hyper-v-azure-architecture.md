@@ -8,17 +8,19 @@ manager: jwhit
 editor: 
 ms.assetid: c413efcd-d750-4b22-b34b-15bcaa03934a
 ms.service: site-recovery
-ms.workload: backup-recovery
+ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/05/2017
+ms.date: 06/14/2017
 ms.author: raynew
-translationtype: Human Translation
+ROBOTS: NOINDEX, NOFOLLOW
+redirect_url: site-recovery-architecture-hyper-v-to-azure
+ms.translationtype: Human Translation
 ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
 ms.openlocfilehash: 9adf266c6a2ac00c3aaa34e2a29aefe34abe2871
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/18/2017
-
 
 ---
 # <a name="how-does-hyper-v-replication-to-azure-work"></a>Azure への Hyper-V レプリケーションのしくみ

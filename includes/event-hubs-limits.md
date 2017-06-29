@@ -10,5 +10,5 @@
 | Event Hubs 名の最大サイズ |エンティティ |静的 |- |50 文字 |
 | コンシューマー グループあたりの非エポック受信者の数 |エンティティ |静的 |- |5 |
 | イベント データの最大リテンション期間 |エンティティ |静的 |- |1 ～ 7 日間 |
-| 最大スループット ユニット |名前空間 |静的 |スループット ユニットの制限を超えると、データが調整され、**ServerBusyException** が生成されます。 サポート チケットを申請することによって、Standard レベルの追加のスループット ユニットをリクエストできます。 追加スループット ユニットは、20 個単位で購入できます。 |20 |
+| 最大スループット ユニット |名前空間 |静的 |スループット ユニットの制限を超えると、データが調整され、**[ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)** が生成されます。 [サポート リクエスト](/azure/azure-supportability/how-to-create-azure-support-request)を申請することによって、Standard レベルの多数のスループット ユニットをリクエストできます。 [追加スループット ユニット](../articles/event-hubs/event-hubs-auto-inflate.md)は、20 単位で購入できます。 |20 |
 

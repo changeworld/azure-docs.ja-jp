@@ -37,7 +37,7 @@
     href: app-service-web-tutorial-custom-domain.md
   - name: 3 - SSL 証明書のバインド
     href: app-service-web-tutorial-custom-ssl.md
-  - name: 4 - Content Delivery Network の追加
+  - name: 4 - CDN の追加
     href: app-service-web-tutorial-content-delivery-network.md
 #  - name: 5 - Monitor your app
 #    href: app-service-web-tutorial-monitoring.md
@@ -95,10 +95,6 @@
         href: java-create-azure-website-using-java-sdk.md
       - name: 既存のアプリのアップロード
         href: web-sites-java-add-app.md
-      - name: Eclipse のリモート デバッグ
-        href: app-service-web-debug-java-web-app-in-eclipse.md
-      - name: IntelliJ のリモート デバッグ
-        href: app-service-web-debug-java-web-app-in-intellij.md
     - name: Python
       items:
       - name: MySQL を使用した Django アプリ
@@ -162,8 +158,6 @@
       items:
       - name: ドメインの購入
         href: custom-dns-web-site-buydomains-web-app.md
-      - name: サード パーティのドメインのマップ
-        href: web-sites-custom-domain-name.md
       - name: Traffic Manager を使用したドメインのマップ
         href: web-sites-traffic-manager-custom-domain-name.md
       - name: GoDaddy ドメインのマップ
@@ -204,10 +198,6 @@
         href: web-sites-authentication-authorization.md
       - name: マルチテナント データベースを使用したアプリ
         href: web-sites-dotnet-entity-framework-row-level-security.md
-    - name: カスタム SSL の割り当て
-      items:
-      - name: サード パーティの SSL 証明書の構成
-        href: web-sites-configure-ssl-certificate.md
     - name: HTTPS の適用
       href: web-sites-configure-ssl-certificate.md#enforce-https-on-your-app
     - name: TLS 相互認証の構成
@@ -278,6 +268,16 @@
       href: app-service-web-troubleshoot-http-502-http-503.md
     - name: パフォーマンスに関する問題のトラブルシューティング
       href: app-service-web-troubleshoot-performance-degradation.md
+    - name: FAQ
+      items:
+      - name: 可用性、パフォーマンス、アプリケーションに関する FAQ
+        href: app-service-web-availability-performance-application-issues-faq.md
+      - name: デプロイに関する FAQ
+        href: app-service-web-deployment-faq.md
+      - name: オープン ソース テクノロジに関する FAQ
+        href: app-service-web-open-source-technologies-faq.md
+      - name: 構成と管理に関する FAQ
+        href: app-service-web-configuration-and-management-faq.md
   - name: 価格
     href: https://azure.microsoft.com/pricing/details/app-service/
   - name: クォータの情報

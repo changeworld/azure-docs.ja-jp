@@ -8,17 +8,17 @@ manager: garavd
 editor: 
 ms.assetid: 
 ms.service: site-recovery
-ms.workload: backup-recovery
+ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 2/21/2017
+ms.date: 06/05/2017
 ms.author: nisoneji
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: 5c716069bdff2a23bf81b2d2d0793a8616cf9c83
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 3c72026a7a6c6b348a77560c7f35d76d93c75e17
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -140,7 +140,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 | -Operation | StartProfiling |
 | -Server | プロファイリングの対象となる VM がある vCenter サーバー/vSphere ESXi ホストの完全修飾ドメイン名または IP アドレス。|
 | -User | vCenter サーバー/vSphere ESXi ホストに接続するためのユーザー名。 ユーザーには、少なくとも読み取り専用アクセス権が必要です。|
-| -VMListFile |    プロファイリングの対象となる VM のリストを含むファイル。 ファイルは、絶対パスまたは相対パスで指定できます。 このファイルには、1 行につき 1 つの VM 名または IP アドレスが記述されている必要があります。 このファイルに指定する仮想マシン名は、vCenter サーバー/vSphere ESXi ホスト上の VM 名と一致している必要があります。<br>たとえば VMList.txt ファイルに、次のように VM を記述することができます。<ul><li>virtual_machine_A</li><li>10.150.29.110</li><li>virtual_machine_B</li><ul> |
+| -VMListFile | プロファイリングの対象となる VM のリストを含むファイル。 ファイルは、絶対パスまたは相対パスで指定できます。 このファイルには、1 行につき 1 つの VM 名または IP アドレスが記述されている必要があります。 このファイルに指定する仮想マシン名は、vCenter サーバー/vSphere ESXi ホスト上の VM 名と一致している必要があります。<br>たとえば VMList.txt ファイルに、次のように VM を記述することができます。<ul><li>virtual_machine_A</li><li>10.150.29.110</li><li>virtual_machine_B</li><ul> |
 | -NoOfDaysToProfile | プロファイリングを実行する日数。 プロファイリングの実行期間は 15 日間より長くすることをお勧めします。それだけの期間があれば、実際の環境のワークロード パターンを十分に観察し、正確な情報を把握することができます。 |
 | -Directory | (省略可) プロファイリング中に生成されたプロファイリング データの格納先となる UNC (汎用名前付け規則) パスまたはローカル ディレクトリ パス。 ディレクトリ名を指定しなかった場合、現在のパスの "ProfiledData" という名前のディレクトリが既定のディレクトリとして使用されます。 |
 | -Password | (省略可) vCenter サーバー/vSphere ESXi ホストに接続するためのパスワード。 ここで指定しなかった場合は、コマンドの実行時に入力を求められます。|
@@ -205,10 +205,7 @@ Deployment Planner ツールでは、デプロイの推奨情報をすべてま�
 | -StartDate | (省略可) 開始日時を MM-DD-YYYY:HH:MM (24 時間形式) で指定します。 *StartDate* は *EndDate* と一緒に指定する必要があります。 StartDate を指定した場合、StartDate から EndDate までの間に収集されたプロファイリング データを対象にレポートが生成されます。 |
 | -EndDate | (省略可) 終了日時を MM-DD-YYYY:HH:MM (24 時間形式) で指定します。 *EndDate* は *StartDate* と一緒に指定する必要があります。 EndDate を指定した場合、StartDate から EndDate までの間に収集されたプロファイリング データを対象にレポートが生成されます。 |
 | -GrowthFactor | (省略可) 増加率 (%)。 既定値は 30% です。 |
-| -UseManagedDisks | (省略可) UseManagedDisks (Yes/No)。 既定値は Yes です。 1 つのストレージ アカウントに配置できる仮想マシンの数は、フェールオーバー/テスト フェールオーバーに使用する管理ディスクが選択されているかどうかに基づいて計算されます。 |
-
-仮想マシンのフェールオーバー/テスト フェールオーバーが、(非管理対象ディスクに対してではなく) 管理ディスクに対して実行されることを想定して、1 つのストレージ アカウントへの配置が計算されます。 |
-
+| -UseManagedDisks | (省略可) UseManagedDisks (Yes/No)。 既定値は Yes です。 1 つのストレージ アカウントに配置できる仮想マシンの数は、仮想マシンのフェールオーバー/テスト フェールオーバーが、非管理対象ディスクではなく、管理ディスクに対して実行されることを想定して計算されます。 |
 
 #### <a name="example-1-generate-a-report-with-default-values-when-the-profiled-data-is-on-the-local-drive"></a>例 1: 既定値でレポートを生成する (プロファイリング データがローカル ドライブにある場合)
 ```
@@ -531,11 +528,11 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 
 **レプリケーション先のストレージ** | **レプリケーション元の平均ディスク I/O サイズ** |**レプリケーション元ディスクの平均データ変更頻度** | **レプリケーション元ディスクの 1 日あたりのデータ変更頻度合計**
 ---|---|---|---
-Standard Storage | 8 KB    | 2 MBps | (ディスクあたり) 168 GB
-Premium P10 ディスク | 8 KB    | 2 MBps | (ディスクあたり) 168 GB
-Premium P10 ディスク | 16 KB | 4 MBps |    (ディスクあたり) 336 GB
+Standard Storage | 8 KB | 2 MBps | (ディスクあたり) 168 GB
+Premium P10 ディスク | 8 KB | 2 MBps | (ディスクあたり) 168 GB
+Premium P10 ディスク | 16 KB | 4 MBps | (ディスクあたり) 336 GB
 Premium P10 ディスク | 32 KB 以上 | 8 MBps | (ディスクあたり) 672 GB
-Premium P20 または P30 ディスク | 8 KB    | 5 MBps | (ディスクあたり) 421 GB
+Premium P20 または P30 ディスク | 8 KB  | 5 MBps | (ディスクあたり) 421 GB
 Premium P20 または P30 ディスク | 16 KB 以上 |10 MBps | (ディスクあたり) 842 GB
 
 前述の数値は、I/O のオーバーラップを 30% とした場合の平均値です。 Site Recovery は、オーバーラップ比に基づくより高いスループットと、より大きな書き込みサイズ、そして実ワークロード I/O 動作を扱うことができます。 上記の数値には、標準的なバックログとして約 5 分が想定されています。 つまりデータはアップロード後 5 分以内に処理されて復旧ポイントが作成されます。

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 05/26/2017
 ms.author: ryanwi, mikhegn
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 25243603abd2f30adc11640f00b782c8d827796e
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 3e2dba1af69820382c67b368da5d6f6325b72c50
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -62,13 +62,6 @@ Visual Studio 2015 では、Service Fabric ツールは、Web Platform Installer
 ### <a name="sdk-installation-only"></a>SDK のみのインストール
 SDK のみが必要な場合は、次のパッケージをインストールすることができます。
 * [Microsoft Azure Service Fabric SDK のインストール][core-sdk]
-
-> [!WARNING]
-> これらの起動リンクを使用した場合、または Chrome ブラウザーでこれらのリンクを使用した場合、インストール中にエラーが発生することが報告されています。 これらのエラーは Web Platform Installer の既知の問題であり、現在対処中です。  次の回避策をお試しください。
->- Internet Explorer または Edge ブラウザーで前のリンクを開く
->- [スタート] メニューから Web Platform Installer を起動し、"Service Fabric" を検索して、SDK をインストールする
-> 
-> ご不便をおかけして申し訳ありません。 
 
 現在のバージョンは次のとおりです。
 * Service Fabric SDK 2.6.210

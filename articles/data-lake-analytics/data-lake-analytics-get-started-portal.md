@@ -15,14 +15,14 @@ ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: edmaca
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: eb85d8ef6b29605d7e26b0d2139a4a95c35141fb
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: b004310a3b2667134c9ad890bd907dc8ae439dd9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---
-# <a name="tutorial-get-started-with-azure-data-lake-analytics-using-azure-portal"></a>チュートリアル: Azure Portal で Azure Data Lake Analytics の使用を開始する
+# <a name="get-started-with-azure-data-lake-analytics-using-azure-portal"></a>Azure Portal で Azure Data Lake Analytics の使用を開始する
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 Azure Portal を使用して Azure Data Lake Analytics アカウントを作成し、[U-SQL](data-lake-analytics-u-sql-get-started.md) でジョブを定義して、Data Lake Analytics サービスにジョブを送信する方法について説明します。 Data Lake Analytics の詳細については、「 [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
@@ -31,9 +31,9 @@ Azure Portal を使用して Azure Data Lake Analytics アカウントを作成�
 
 このチュートリアルを開始する前に、**Azure サブスクリプション**が必要です。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
-## <a name="create-data-lake-analytics-account"></a>Data Lake Analytics アカウントを作成する
+## <a name="create-a-data-lake-analytics-account"></a>Data Lake Analytics アカウントを作成する
 
-次に、Data Lake Analytics アカウントと Data Lake Store アカウントを同時に作成します。  この手順は単純な作業で、所要時間は約 60 秒です。
+次に、Data Lake Analytics アカウントと Data Lake Store アカウントを同時に作成します。  この手順は単純であり、所要時間は約 60 秒です。
 
 1. [Azure ポータル](https://portal.azure.com)にサインオンします。
 2. **[新規]** >  **[インテリジェンス + 分析]** > **[Data Lake Analytics]** の順にクリックします。
@@ -46,38 +46,32 @@ Azure Portal を使用して Azure Data Lake Analytics アカウントを作成�
 4. 必要に応じて、Data Lake Analytics アカウントの価格レベルを選択します。
 5. ページの下部にある **[Create]**」を参照してください。 
 
-## <a name="create-and-submit-data-lake-analytics-jobs"></a>Data Lake Analytics ジョブの作成と送信
-ソース データの準備ができたら、U-SQL スクリプトの開発を開始できます。  
 
-**ジョブを送信するには**
+## <a name="your-first-u-sql-script"></a>最初の U-SQL スクリプト
 
-1. Data Lake Analytics アカウントから **[新しいジョブ]** をクリックします。
-2. **ジョブ名**を入力し、次の U-SQL スクリプトを入力します。
+次のテキストは、非常に単純な U-SQL スクリプトです。 このスクリプトが実行するのは、スクリプト内に小さなデータセットを定義し、そのデータセットを `/data.csv` という名前のファイルとして既定の Data Lake Store に書き出すことだけです。
 
 ```
-@searchlog =
-    EXTRACT UserId          int,
-            Start           DateTime,
-            Region          string,
-            Query           string,
-            Duration        int?,
-            Urls            string,
-            ClickedUrls     string
-    FROM "/Samples/Data/SearchLog.tsv"
-    USING Extractors.Tsv();
-
-OUTPUT @searchlog   
-    TO "/Output/SearchLog-from-Data-Lake.csv"
+@a  = 
+    SELECT * FROM 
+        (VALUES
+            ("Contoso", 1500.0),
+            ("Woodgrove", 2700.0)
+        ) AS 
+              D( customer, amount );
+OUTPUT @a
+    TO "/data.csv"
     USING Outputters.Csv();
 ```
 
+## <a name="submit-a-u-sql-job"></a>U-SQL ジョブの送信
 
-この U-SQL スクリプトでは、**Extractors.Tsv()** を使用してソース データ ファイルを読み取ってから、**Outputters.Csv()** を使用して csv ファイルを作成します。
-
-1. **[ジョブの送信]**をクリックします。   
-2. ジョブの状態が **[成功]**に変わるまで待機します。
-3. ジョブが失敗した場合は、[Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)に関する記事をご覧ください。
-4. **[出力]** タブをクリックし、`SearchLog-from-Data-Lake.csv` をクリックします。 
+1. Data Lake Analytics アカウントから **[新しいジョブ]** をクリックします。
+2. 上記の U-SQL スクリプトのテキストを貼り付けます。 
+3. **[ジョブの送信]**をクリックします。   
+4. ジョブの状態が **[成功]** に変わるまで待機します。
+5. ジョブが失敗した場合は、[Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)に関する記事をご覧ください。
+6. **[出力]** タブをクリックし、`SearchLog-from-Data-Lake.csv` をクリックします。 
 
 ## <a name="see-also"></a>関連項目
 

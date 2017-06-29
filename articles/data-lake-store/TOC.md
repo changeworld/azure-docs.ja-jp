@@ -10,7 +10,6 @@
 ## [.NET SDK の使用](data-lake-store-get-started-net-sdk.md)
 ## [Java SDK の使用](data-lake-store-get-started-java-sdk.md)
 ## [REST API の使用](data-lake-store-get-started-rest-api.md)
-## [Azure CLI の使用](data-lake-store-get-started-cli.md)
 ## [Azure CLI 2.0 の使用](data-lake-store-get-started-cli-2.0.md)
 ## [Node.js の使用](data-lake-store-manage-use-nodejs.md)
 ## [Python の使用](data-lake-store-get-started-python.md)

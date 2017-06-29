@@ -10,27 +10,27 @@ tags:
 ms.assetid: 
 ms.service: analysis-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 05/26/2017
+ms.date: 06/01/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 0cce578185ba7811e4b13cc061a2adcb18452b13
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 893371145d77e156843271907aeef0c3756d0403
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/03/2017
 
 ---
 # <a name="lesson-5-create-calculated-columns"></a>レッスン 5: 計算列を作成する
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-このレッスンでは､計算列を追加することによってモデルに新しいデータを作成します｡ 計算列 (カスタム列) は､Get Data を使用するときや Query Editor を使用して､あるいは､このレッスンで行うように後でモデル デザイナーで作成することができます｡ 詳細は､[計算列](https://docs.microsoft.com/sql/analysis-services/tabular-models/ssas-calculated-columns)を参照してください｡
+このレッスンでは､計算列を追加することによってモデルにデータを作成します｡ 計算列 (カスタム列) は､Get Data を使用するとき、またはクエリ エディターを使用して､あるいは､このレッスンで行うように後でモデル デザイナーで作成することができます｡ 詳細は､[計算列](https://docs.microsoft.com/sql/analysis-services/tabular-models/ssas-calculated-columns)を参照してください｡
   
-3 つのテーブルに 5 つの計算列を新しく作成します｡ 手順は､作業ごとに少しずつ異なります｡ ここでの目的は､新しい列の作成や列名の変更､テーブル内のさまざまな場所に列を配置する方法はいくつかあることを紹介することにあります｡  
+3 つのテーブルに 5 つの計算列を新しく作成します｡ 手順はタスクごとに若干異なります。これは、新しい列の作成や列名の変更､テーブル内のさまざまな場所に列を配置する方法はいくつかあることを示しています。  
 
-また､ここでは Data Analysis Expressions (DAX) を初めて使用します｡ DAX は､表形式モデルに対して高度にカスタマイズ可能な数式を作成するための専用言語です｡ このチュートリアルでは､DAX を使用して､計算列､メジャー､ロール フィルターを作成します｡ 詳細は、[表形式モデルにおけるDAX](https://docs.microsoft.com/sql/analysis-services/tabular-models/understanding-dax-in-tabular-models-ssas-tabular) を参照してください｡ 
+また､このレッスンでは Data Analysis Expressions (DAX) を初めて使用します｡ DAX は､表形式モデルに対して高度にカスタマイズ可能な数式を作成するための専用言語です｡ このチュートリアルでは､DAX を使用して､計算列､メジャー､ロール フィルターを作成します｡ 詳細は、[表形式モデルにおけるDAX](https://docs.microsoft.com/sql/analysis-services/tabular-models/understanding-dax-in-tabular-models-ssas-tabular) を参照してください｡ 
   
 このレッスンの推定所要時間: **15 分**  
   
@@ -51,13 +51,13 @@ ms.lasthandoff: 05/05/2017
   
     **Calculated Column 1** という名前の新しい列が**Calendar Quarter** 列の左側に追加されます｡  
   
-4.  テーブルの上の数式バーに次の DAX 式を入力します｡ AutoComplete は列やテーブルの完全修飾名を入力するのに役立つとともに､使用可能な関数をすべて一覧表示します｡  
+4.  テーブルの上の数式バーに次の DAX 式を入力します。AutoComplete は列やテーブルの完全修飾名を入力するのに役立つとともに､使用可能な関数をすべて一覧表示します｡  
   
     ```  
     =RIGHT(" " & FORMAT([MonthNumberOfYear],"#0"), 2) & " - " & [EnglishMonthName]  
     ``` 
   
-    計算列のすべての行に値が入力されます｡ テーブルを下方向にスクロールすると､この列の各行のデータに基づいて､行にさまざまな値が設定さていることが分かります｡    
+    計算列のすべての行に値が入力されます｡ テーブルを下方向にスクロールすると､この列の各行のデータに基づいて､行にさまざまな値が設定さていることがわかります｡    
   
 5.  列名を **MonthCalendar** に変更します｡ 
 
@@ -67,7 +67,7 @@ MonthCalendar 計算列は､月の名前で並べ替えが可能な列です｡
   
 #### <a name="create-a-dayofweek-calculated-column-in-the-dimdate-table"></a>DimDate テーブルに DayOfWeek 計算列を作成する  
   
-1.  **DimDate** テーブルがアクティブなままの状態で､**[列]** メニューをクリックし､**[Add Column]** をクリックします｡  
+1.  **DimDate** テーブルがアクティブなままの状態で､**[列]** メニューをクリックし､**[列の追加]** をクリックします｡  
   
 2.  数式バーに次の式を入力します｡  
     

@@ -6,17 +6,15 @@
 # [作業の開始](iot-hub-get-started.md)
 
 ## デバイスのセットアップ
-### シミュレートされたデバイスの使用
+### [PC でデバイスをシミュレートする](iot-hub-get-started-simulated.md)
 #### [.NET](iot-hub-csharp-csharp-getstarted.md)
 #### [Java](iot-hub-java-java-getstarted.md)
 #### [Node.JS](iot-hub-node-node-getstarted.md)
 #### [Python](iot-hub-python-getstarted.md)
 
-### シミュレートされたゲートウェイの使用
-#### [Linux でのシミュレーション](iot-hub-linux-iot-edge-get-started.md)
-#### [Windows でのシミュレーション](iot-hub-windows-iot-edge-get-started.md)
+### [オンライン シミュレーターを使用する](iot-hub-raspberry-pi-web-simulator-get-started.md)
 
-### 物理デバイスの使用
+### [物理デバイスを使用する](iot-hub-get-started-physical.md)
 #### [Node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md)
 #### [C での Raspberry Pi](iot-hub-raspberry-pi-kit-c-get-started.md)
 
@@ -32,13 +30,14 @@
 ##### [IoT Hub へのゲートウェイの接続](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
 ##### [ゲートウェイを使用したデータ変換](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
 
-## [iothub-explorer を使用したクラウド デバイス メッセージングの管理](iot-hub-explorer-cloud-device-messaging.md)
-## [Azure データ ストレージへの IoT Hub メッセージの保存](iot-hub-store-data-in-azure-table-storage.md)
-## [Power BI でのデータ視覚化](iot-hub-live-data-visualization-in-power-bi.md)
-## [Web Apps でのデータ視覚化](iot-hub-live-data-visualization-in-web-apps.md)
-## [Azure Machine Learning を使用した天気予報](iot-hub-weather-forecast-machine-learning.md)
-## [iothub-explorer を使用したデバイス管理](iot-hub-device-management-iothub-explorer.md)
-## [Logic Apps を使用したリモートの監視と通知](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
+## IoT の拡張シナリオ
+### [iothub-explorer を使用したクラウド デバイス メッセージングの管理](iot-hub-explorer-cloud-device-messaging.md)
+### [Azure データ ストレージへの IoT Hub メッセージの保存](iot-hub-store-data-in-azure-table-storage.md)
+### [Power BI でのデータ視覚化](iot-hub-live-data-visualization-in-power-bi.md)
+### [Web Apps でのデータ視覚化](iot-hub-live-data-visualization-in-web-apps.md)
+### [Azure Machine Learning を使用した天気予報](iot-hub-weather-forecast-machine-learning.md)
+### [iothub-explorer を使用したデバイス管理](iot-hub-device-management-iothub-explorer.md)
+### [Logic Apps を使用したリモートの監視と通知](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 
 # 方法
 ## プラン
@@ -48,9 +47,15 @@
 ### [その他のプロトコルのサポート](iot-hub-protocol-gateway.md)
 ## [開発](iot-hub-how-to.md)
 ### [開発者ガイド](iot-hub-devguide.md)
-#### [メッセージを送受信する](iot-hub-devguide-messaging.md)
 #### [デバイスからクラウドの機能ガイド](iot-hub-devguide-d2c-guidance.md)
 #### [クラウドからデバイスの機能ガイド](iot-hub-devguide-c2d-guidance.md)
+#### [メッセージを送受信する](iot-hub-devguide-messaging.md)
+##### [デバイスからクラウドへのメッセージを IoT Hub に送信する](iot-hub-devguide-messages-d2c.md)
+##### [デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る](iot-hub-devguide-messages-read-builtin.md)
+##### [デバイスからクラウドへのメッセージにカスタム エンドポイントとルーティング ルールを使用する](iot-hub-devguide-messages-read-custom.md)
+##### [クラウドからデバイスへのメッセージを IoT Hub から送信する](iot-hub-devguide-messages-c2d.md)
+##### [IoT Hub メッセージを作成し、読み取る](iot-hub-devguide-messages-construct.md)
+##### [通信プロトコルの選択](iot-hub-devguide-protocols.md)
 #### [デバイスからのファイルをアップロードする](iot-hub-devguide-file-upload.md)
 #### [デバイス ID を管理する](iot-hub-devguide-identity-registry.md)
 #### [IoT Hub へのアクセスの制御](iot-hub-devguide-security.md)
@@ -118,19 +123,37 @@
 ### [セキュリティのベスト プラクティス](iot-hub-security-best-practices.md)
 ### [セキュリティのアーキテクチャ](iot-hub-security-architecture.md)
 ### [IoT デプロイのセキュリティ保護](iot-hub-security-deployment.md)
-## IoT Edge
+## Azure IoT Edge
+### [概要](iot-hub-iot-edge-overview.md)
+### 作業開始
+#### [Linux](iot-hub-linux-iot-edge-get-started.md)
+#### [Windows](iot-hub-windows-iot-edge-get-started.md)
 ### デバイスのシミュレーション
 #### [Linux](iot-hub-linux-iot-edge-simulated-device.md)
 #### [Windows](iot-hub-windows-iot-edge-simulated-device.md)
 ### [実在のデバイスの使用](iot-hub-iot-edge-physical-device.md)
+### モジュールを作成する
+#### [Java](https://github.com/Azure-Samples/iot-edge-samples#how-to-run-java-modules-windows-10ubuntu-linux-14)
+#### [.NET Framework](https://github.com/Azure-Samples/iot-edge-samples#how-to-run-net-modules-windows-10)
+#### [Node.JS](https://github.com/Azure-Samples/iot-edge-samples#how-to-run-javascript-modules-windows-10ubuntu-linux-14)
+### 構築
+#### [.NET Framework](https://github.com/Azure/iot-edge/tree/master/samples/dotnet_binding_sample)
+#### [.NET Core モジュール](https://github.com/Azure/iot-edge/tree/master/samples/dotnet_core_module_sample)
+#### [.NET Core マネージ ゲートウェイ](https://github.com/Azure/iot-edge/tree/master/samples/dotnet_core_managed_gateway)
+#### [Java](https://github.com/Azure/iot-edge/tree/master/samples/java_sample)
+#### [Node.JS](https://github.com/Azure/iot-edge/tree/master/samples/nodejs_simple_sample)
+#### [モジュールを動的に追加する](https://github.com/Azure/iot-edge/tree/master/samples/dynamically_add_module_sample)
+#### [プロセス外プロキシ モジュール](https://github.com/Azure/iot-edge/tree/master/samples/proxy_sample)
+#### [ネイティブ モジュール ホスト](https://github.com/Azure/iot-edge/tree/master/samples/native_module_host_sample)
 
 # リファレンス
-## [Azure CLI 2.0 プレビュー](/cli/azure/iot)
+## [Azure CLI](/cli/azure/iot)
 ## [.NET (サービス)](/dotnet/api/microsoft.azure.devices)
 ## [.NET (デバイス)](/dotnet/api/microsoft.azure.devices.client)
 ## [Java (サービス)](/java/api/com.microsoft.azure.sdk.iot.service)
 ## [Java (デバイス)](/java/api/com.microsoft.azure.sdk.iot.device)
-## [Azure IoT SDK](http://azure.github.io/azure-iot-sdks/)
+## [Node.js SDK](http://azure.github.io/azure-iot-sdk-node/)
+## [C デバイス SDK](https://azure.github.io/azure-iot-sdk-c/index.html)
 ## [Azure IoT Edge](http://azure.github.io/iot-edge/)
 ## [REST (リソース プロバイダー)](https://docs.microsoft.com/rest/api/iothub/iothubresource)
 ## [REST (デバイス ID)](https://docs.microsoft.com/rest/api/iothub/deviceapi)
@@ -156,4 +179,4 @@
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/iot-hub/)
 ## [Azure IoT デベロッパー センター](https://azure.microsoft.com/develop/iot/)
 ## [IoT デバイス カタログ向けの Azure 認定](https://catalog.azureiotsuite.com/)
-## [技術的なケース スタディ](https://microsoft.github.io/techcasestudies/#technology=IoT)
+## [技術的なケース スタディ](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured)

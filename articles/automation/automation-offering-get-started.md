@@ -1,6 +1,6 @@
----
+--- 
 title: "Azure Automation の概要 | Microsoft Docs"
-description: "この記事では、Auzre Marketplace のサービスをオンボードする準備として、主要な概念と実装の詳細を確認しながら Azure Automation サービスの概要について説明します。"
+description: "この記事では、Auzre Marketplace のサービスをオンボードする準備として、設計と実装の詳細を確認しながら Azure Automation サービスの概要について説明します。"
 services: automation
 documentationcenter: 
 author: mgoedtel
@@ -12,44 +12,30 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/02/2017
+ms.date: 06/16/2017
 ms.author: magoedte
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 9b4982ffece9283304ad3ab3c82a471ac1dbd463
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: 800c4c5928f24a7e879a433d46b096dfbbbaa910
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 
-## <a name="getting-started-with-azure-automation"></a>Azure Automation の概要
+# <a name="getting-started-with-azure-automation"></a>Azure Automation の概要
 
-この概要ガイドでは、Azure Automation のデプロイに関連する主要な概念を紹介します。 Azure Automation を初めて使用する方や、System Center Orchestrator などの自動化ワークフロー ソフトウェアの使用経験がある方向けに、概念およびデプロイの詳細について説明します。
+この概要ガイドでは、Azure Automation のデプロイに関連する主要な概念を紹介します。 Azure 上の Automation を初めて使用する方や、System Center Orchestrator などの自動化ワークフロー ソフトウェアの使用経験がある方向けに、まず Automation の準備とオンボードの方法について説明します。  この後、プロセス自動化ニーズに対応するために Runbook の開発を始める準備が整います。 
 
-## <a name="key-concepts"></a>主要な概念
 
-### <a name="automation-service"></a>Automation サービス
-Automation は、Windows PowerShell および Azure テクノロジを使用して、Azure、クラウド、およびオンプレミスのインフラストラクチャとアプリケーションの管理の制御を支援する Azure サービスです。  Azure Automation を使用すると、プロセスの自動化による自動デプロイ、PowerShell Desired State Configuration を使用したオペレーティング システムの構成、更新管理と変更の追跡による継続的な更新と監視、トラブルシューティングと修復の自動化によって、サービスとアプリケーションのライフサイクル全体を管理できます。
+## <a name="automation-architecture-overview"></a>Automation アーキテクチャの概要
 
-### <a name="automation-account"></a>Automation アカウント
-Automation アカウントは、自分で作成する Azure リソースです。  Azure、クラウド、およびオンプレミスのリソースをすべて 1 つの Automation アカウントで管理できます。  Automation アカウントは、自動化の実現に必要なもの (Runbook、モジュール、資産 (資格情報やスケジュールなど)、および構成) のコンテナーです。 複数の Automation アカウントを使用してリソースを異なる論理環境 (開発、テスト、および運用) または地理的リージョンに分けることができます。  
-
-### <a name="hybrid-runbook-worker"></a>Hybrid Runbook Worker
-ローカル データ センター、Azure、または他のクラウド プロバイダーの物理または仮想システムで Runbook を実行する場合は、Hybrid Runbook Worker 機能を使用して、そうしたローカル リソースへのアクセスと管理を行うことができます。     
-
-### <a name="automation-desired-state-configuration"></a>Automation Desired State Configuration
-PowerShell DSC 上に構築された Automation Desired State Configuration (DSC) は、Azure、オンプレミス、または別のクラウドでホストされているオペレーティング システムの目的の状態を構成、監視、および自動更新します。  
-
-### <a name="management-solutions"></a>管理ソリューション
-更新管理や変更の追跡などの管理ソリューションは、Azure Automation の機能を拡張し、Log Analytics と組み合わせて使用します。  Automation Runbook、Log Analytics の定義済みの検索クエリとアラート、視覚化など、特定の管理シナリオをサポートするリソースを複数含めることができます。  
-
-## <a name="architecture-overview"></a>アーキテクチャの概要
+![Azure Automation の概要](media/automation-offering-get-started/automation-infradiagram-networkcomms.png)
 
 Azure Automation は、Runbook を使用してプロセスを自動化し、Desired State Configuration (DSC) を使用して Azure、他のクラウド サービス、またはオンプレミスの Windows システムと Linux システムに対する構成の変更を管理する、拡張性と信頼性の高いマルチテナント環境を提供するサービスとしてのソフトウェア (SaaS) アプリケーションです。 Runbook、資産、実行アカウントなど、Automation アカウントに含まれるエンティティは、自分や自分以外のサブスクリプション内の他の Automation アカウントから分離されます。  
 
-Azure で実行する Runbook は、Azure のプラットフォームとしてのサービス (PaaS) 仮想マシンでホストされる Automation サンドボックスで実行されます。  Automation サンドボックスは、Runbook の実行のあらゆる側面 (モジュール、ストレージ、メモリ、ネットワーク通信、ジョブ ストリームなど) に対するテナントの分離を実現します。このロールは、サービスによって管理されており、Azure アカウントまたは Azure Automation アカウントからアクセスして自分で管理することはできません。         
+Azure で実行する Runbook は、Azure のプラットフォームとしてのサービス (PaaS) 仮想マシンでホストされる Automation サンドボックスで実行されます。  Automation サンドボックスの使用により、Runbook の実行のあらゆる側面 (モジュール、ストレージ、メモリ、ネットワーク通信、ジョブ ストリームなど) においてテナントの分離性が生み出されます。このロールは、サービスによって管理されており、Azure アカウントまたは Azure Automation アカウントからアクセスして自分で管理することはできません。         
 
-ローカル データ センターまたは他のクラウド サービスのリソースのデプロイと管理を自動化する場合は、Hybrid Runbook Worker (HRW) ロールを実行する 1 つ以上のコンピューターを指定できます。  各 HRW には、Microsoft Management Agent (MMA) のほかに、Automation アカウントと Log Analytics ワークスペースへの接続が必要です。  Log Analytics は、インストールのブートストラップ、MMA エージェントの管理、および HRW の機能の監視に使用されます。  Runbook の配信と Runbook の実行指示は、Azure Automation によって行われます。
+ご利用のローカル データ センターまたは他のクラウド サービス上のリソースのデプロイと管理を自動化する場合は、Automation アカウントを作成した後で、[Hybrid Runbook Worker (HRW)](automation-hybrid-runbook-worker.md) ロールを実行する 1 つ以上のマシンを指定できます。  各 HRW には、Microsoft Management Agent (MMA) のほかに、Automation アカウントと Log Analytics ワークスペースへの接続が必要です。  Log Analytics は、インストールのブートストラップ、MMA エージェントの管理、および HRW の機能の監視に使用されます。  Runbook の配信と Runbook の実行指示は、Azure Automation によって行われます。
 
 複数の HRW をデプロイすると、Runbook の高可用性を実現し、Runbook ジョブの負荷を分散できます。場合によっては、Runbook を特定のワークロードや環境専用にすることもできます。  HRW は、TCP 送信ポート 443 を介して Automation サービスと通信します。  データ センター内の他のコンピューターやサービスに対する管理タスクを実行する Runbook をデータ センター内の HRW で実行する場合、その Runbook では他のポートにアクセスすることが必要になる可能性があります。  IT セキュリティ ポリシーでネットワーク上のコンピューターがインターネットに接続することが許可されていない場合は、[OMS ゲートウェイ](../log-analytics/log-analytics-oms-gateway.md)に関する記事を参照してください。OMS ゲートウェイは HRW のプロキシとして機能して、ジョブの状態を収集し、Automation アカウントから構成情報を受け取ります。
 
@@ -57,9 +43,7 @@ HRW で実行される Runbook は、コンピューターのローカル シス
 
 Azure Automation に格納されている DSC 構成 は、Azure 仮想マシンに直接適用できます。 それ以外の物理マシンと仮想マシンは、Azure Automation DSC プル サーバーに構成を要求できます。  オンプレミスの物理または仮想 Windows システムおよび Linux システムの構成を管理するために、Automation DSC プル サーバーをサポートするインフラストラクチャをデプロイする必要はありません。必要なのは Automation DSC によって管理される各システムからの発信インターネット アクセスのみで、OMS サービスとは TCP ポート 443 を介して通信します。   
 
-![Azure Automation の概要](media/automation-offering-get-started/automation-infradiagram-networkcomms.png)
-
-## <a name="prerequisites"></a>前提条件
+## <a name="requirements"></a>必要条件
 
 ### <a name="automation-dsc"></a>Automation DSC
 以下のさまざまなマシンを管理する際に、Azure Automation DSC を使用できます。
@@ -70,7 +54,7 @@ Azure Automation に格納されている DSC 構成 は、Azure 仮想マシン
 * オンプレミス、または Azure と AWS 以外のクラウド内の物理/仮想 Windows コンピューター
 * オンプレミス、または Azure と AWS 以外のクラウド内の物理/仮想 Linux コンピューター
 
-Windows 用 PowerShell DSC エージェントを Azure Automation と通信できるようにするには、最新バージョンの WMF 5 をインストールする必要があります。 Linux を Azure Automation と通信できるようにするには、最新バージョンの [Linux 用 PowerShell DSC エージェント](https://www.microsoft.com/en-us/download/details.aspx?id=49150)をインストールする必要があります。
+Windows 用 PowerShell DSC エージェントを Azure Automation と通信できるようにするには、最新バージョンの WMF 5 をインストールする必要があります。 Linux と Azure Automation 間で通信できるようにするには、最新バージョンの [Linux 用 PowerShell DSC エージェント](https://www.microsoft.com/en-us/download/details.aspx?id=49150)をインストールする必要があります。
 
 ### <a name="hybrid-runbook-worker"></a>Hybrid Runbook Worker  
 Hybrid Runbook のジョブを実行するコンピューターを指定する際に、そのコンピューターに必要なものは以下のとおりです。
@@ -80,17 +64,24 @@ Hybrid Runbook のジョブを実行するコンピューターを指定する�
 * 少なくとも 2 つのコア
 * 少なくとも 4 GB の RAM
 
-## <a name="security"></a>セキュリティ
+## <a name="authentication-planning"></a>認証の計画
 Azure Automation を使用すると、Azure 内のリソース、オンプレミスのリソース、他のクラウド プロバイダーのリソースに対するタスクを自動化できます。  Runbook が必要な操作を実行するためには、操作対象のリソースに安全に、サブスクリプション内で必要な最低限の権限だけでアクセスするための、アクセス許可が必要です。  
 
-### <a name="automation-account"></a>Automation アカウント
-Azure Automation で Azure コマンドレットを使用してリソースに対して実行するすべての Automation タスクは、Azure Active Directory の組織 ID 資格情報に基づく認証を使用して、Azure に対する認証を行います。  Automation アカウントは、Azure リソースを構成および使用するためにポータルにサインインするときに使用するアカウントとは異なります。  
+### <a name="what-is-an-automation-account"></a>Automation アカウントとは 
+Azure Automation で Azure コマンドレットを使用してリソースに対して実行するすべての Automation タスクは、Azure Active Directory の組織 ID 資格情報に基づく認証を使用して、Azure に対する認証を行います。  Automation アカウントは、Azure リソースを構成および使用するためにポータルにサインインするときに使用するアカウントとは異なります。  アカウントに含まれている Automation リソースを次に示します。
+
+* **証明書** - Runbook または DSC 構成で認証に使用される証明書が含まれます。または追加されます。
+* **接続** - Runbook または DSC 構成から外部サービスまたはアプリケーションに接続するために必要な認証情報と構成情報が含まれます。
+* **資格情報** - Runbook または DSC 構成から認証するために必要なユーザー名やパスワードなど、セキュリティ資格情報を含む PSCredential オブジェクトです。
+* **統合モジュール** - Azure Automation アカウントに含まれる、コマンドレットを Runbook や DSC 構成内で利用するための PowerShell モジュールです。
+* **スケジュール** - Runbook を指定時刻に開始または終了するためのスケジュールと繰り返し頻度が含まれます。
+* **変数** - Runbook または DSC 構成で使用可能な値が含まれます。
 
 各 Automation アカウントの Automation リソースは単一の Azure リージョンと関連付けられていますが、Automation アカウントではサブスクリプションのすべてのリソースを管理できます。 ポリシーにより、データやリソースを特定のリージョンに分離する必要がある場合は、異なるリージョンで Automation アカウントを作成します。
 
 > [!NOTE]
 > Azure ポータルで作成した Automation アカウントおよび各アカウントに含まれるリソースには、Azure クラシック ポータルでアクセスすることはできません。 これらのアカウントとリソースを Windows PowerShell で管理するには、[Azure リソース マネージャー] モジュールを使用する必要があります。
->
+> 
 
 Azure Portal で Automation アカウントを作成すると、次の 2 つの認証エンティティが自動的に作成されます。
 
@@ -102,17 +93,17 @@ Azure Portal で Automation アカウントを作成すると、次の 2 つの�
 #### <a name="authentication-methods"></a>認証方法
 次の表は、Azure Automation によってサポートされる各環境のさまざまな認証方法をまとめたものです。
 
-| メソッド | 環境
-| --- | --- |
+| メソッド | 環境 
+| --- | --- | 
 | Azure 実行アカウントとクラシック実行アカウント |Azure Resource Manager と Azure クラシック デプロイメント |  
 | Azure AD ユーザー アカウント |Azure Resource Manager と Azure クラシック デプロイメント |  
 | Windows 認証 |Hybrid Runbook Worker を使用するローカル データ センターまたは他のクラウド プロバイダー |  
 | AWS 資格情報 |Amazon Web Services |  
 
-**「方法」の「認証とセキュリティ」**セクションにあるサポート記事では、そうした環境専用の既存または新規のアカウントを使用して、その環境の認証を構成するための概要と実装手順を説明しています。  Azure 実行アカウントとクラシック実行アカウントについては、「[PowerShell を使用して Automation 実行アカウントを更新する](automation-update-account-powershell.md)」を参照してください。既存の Automation アカウントが最初に実行アカウントまたはクラシック実行アカウントと共に構成されていない場合に、PowerShell を使用して、既存の Automation アカウントと実行アカウントを更新する方法について説明します。   
-
-## <a name="network"></a>ネットワーク
-Hybrid Runbook Worker を Microsoft Operations Management Suite (OMS) に接続して登録するには、その Hybrid Runbook Worker は、以下で説明するポート番号と URL にアクセスできる必要があります。  OMS に接続するには、[Microsoft Monitoring Agent に必要なポートと URL](../log-analytics/log-analytics-windows-agents.md) のほかに、このポートと URL が必要です。 エージェントと OMS サービス間の通信にプロキシ サーバーを使用する場合、適切なリソースにアクセスできることを確認する必要があります。 ファイアウォールを使用してインターネットへのアクセスを制限している場合は、アクセスを許可するようにファイアウォールを構成する必要があります。
+**「方法」の「認証とセキュリティ」**セクションにあるサポート記事では、そうした環境専用の既存または新規のアカウントを使用して、その環境の認証を構成するための概要と実装手順を説明しています。  Azure 実行アカウントとクラシック実行アカウントについては、「[Automation 実行アカウントを更新する](automation-create-runas-account.md)」を参照してください。既存の Automation アカウントが最初に実行アカウントまたはクラシック実行アカウントと共に構成されていない場合に、ポータルまたは PowerShell を使用して、既存の Automation アカウントと実行アカウントを更新する方法について説明します。 エンタープライズ証明機関 (CA) から発行された証明書で実行アカウントとクラシック実行アカウントを作成しようとする場合は、この記事を読み、この構成を使用してアカウントを作成する方法を確認してください。     
+ 
+## <a name="network-planning"></a>ネットワークの計画
+Hybrid Runbook Worker を Microsoft Operations Management Suite (OMS) に接続して登録するには、その Hybrid Runbook Worker は、以下で説明するポート番号と URL にアクセスできる必要があります。  OMS に接続するには、[Microsoft Monitoring Agent に必要なポートと URL](../log-analytics/log-analytics-windows-agents.md#network) のほかに、このポートと URL が必要です。 エージェントと OMS サービス間の通信にプロキシ サーバーを使用する場合、適切なリソースにアクセスできることを確認する必要があります。 ファイアウォールを使用してインターネットへのアクセスを制限している場合は、アクセスを許可するようにファイアウォールを構成する必要があります。
 
 Automation と通信するには、次の一覧に示すポートと URL が Hybrid Runbook Worker に必要です。
 
@@ -136,28 +127,25 @@ Automation アカウントが特定のリージョンに対して定義されて
 | 英国南部 | uks-jobruntimedata-prod-su1.azure-automation.net |
 | 米国政府バージニア州 | usge-jobruntimedata-prod-su1.azure-automation.us |
 
-名前ではなく、IP アドレスの一覧を確認するには、Microsoft ダウンロード センターから [Azure データ センターの IP アドレス](https://www.microsoft.com/download/details.aspx?id=41653) xml ファイルをダウンロードして確認してください。
+名前ではなく、IP アドレスの一覧を確認するには、Microsoft ダウンロード センターから [Azure データ センターの IP アドレス](https://www.microsoft.com/download/details.aspx?id=41653) xml ファイルをダウンロードして確認してください。 
 
 > [!NOTE]
-> このファイルには、Microsoft Azure データ センターで使用される IP アドレス範囲 (Compute、SQL、および Storage の範囲を含む) が含まれています。 毎週投稿される最新のファイルには、現在デプロイされている範囲と今後変更される IP 範囲が反映されています。 ファイルに含まれている新しい範囲は、少なくとも 1 週間はデータ センターで使用されません。 Azure で実行されているサービスを正しく識別するために、毎週新しい xml ファイルをダウンロードし、サイトで必要な変更を実行してください。 ExpressRoute ユーザーは、このファイルを使用して、毎月第 1 週に Azure 領域の BGP アドバタイズが更新されていることに注目してください。
->
+> このファイルには、Microsoft Azure データ センターで使用される IP アドレス範囲 (Compute、SQL、および Storage の範囲を含む) が含まれています。 毎週投稿される最新のファイルには、現在デプロイされている範囲と今後変更される IP 範囲が反映されています。 ファイルに含まれている新しい範囲は、少なくとも 1 週間はデータ センターで使用されません。 Azure で実行されているサービスを正しく識別するために、毎週新しい xml ファイルをダウンロードし、サイトで必要な変更を実行してください。 ExpressRoute ユーザーは、このファイルを使用して、毎月第 1 週に Azure 領域の BGP アドバタイズが更新されていることに注目してください。 
+> 
 
-
-## <a name="implementation"></a>実装
-
-### <a name="creating-an-automation-account"></a>Automation アカウントの作成
+## <a name="creating-an-automation-account"></a>Automation アカウントの作成
 
 Azure Portal で Automation アカウントを作成する方法は複数あります。  次の表では、各種のデプロイ方法とそれらの違いについて説明しています。  
 
 |メソッド | Description |
 |-------|-------------|
-| Marketplace から [Automation & Control] を選択する | 相互に関連付けられた Automation アカウントと OMS ワークスペースの両方を同じリソース グループとリージョンに作成するサービス。  変更の追跡と更新管理ソリューションのデプロイも行います。これらのソリューションは、既定で有効になります。 |
+| Marketplace から [Automation & Control] を選択する | 相互に関連付けられた Automation アカウントと OMS ワークスペースの両方を同じリソース グループとリージョンに作成するサービス。  OMS との統合には、Log Analytics を使用して Runbook のジョブ ステータスとジョブ ストリームを長期にわたって監視および分析したり、問題をエスカレートまたは調査する高度な機能を利用したりするメリットも含まれます。 また、Change Tracking & Update Management ソリューションのデプロイも行います。これらのソリューションは、既定で有効になります。 |
 | Marketplace から [Automation] を選択する | OMS ワークスペースに関連付けられていない Automation アカウントを新規または既存のリソース グループ内に作成します。Automation & Control サービスで利用可能なソリューションは含まれません。 これは、Automation の概要がわかる基本的な構成です。Runbook、DSC 構成を作成し、サービスの機能を使用する方法を学習するのに役立ちます。 |
 | 選択した管理ソリューション | ソリューション (**[更新管理](../operations-management-suite/oms-solution-update-management.md)**、**[作業時間外に VM を開始/停止する](automation-solution-vm-management.md)**、または**[変更の追跡](../log-analytics/log-analytics-change-tracking.md)**) を選択した場合、ソリューションをサブスクリプションにデプロイするために、既存の Automation と OMS ワークスペースを選択するよう求められるか、必要に応じて両方を作成するオプションが提示されます。 |
 
 このトピックでは、Automation & Control サービスをオンボードして、Automation アカウントと OMS ワークスペースを作成する方法について説明します。  テスト用のスタンドアロン Automation アカウントを作成するか、サービスをプレビューする場合は、「[Create standalone Automation account (スタンドアロン Automation アカウントを作成する)](automation-create-standalone-account.md)」を参照してください。  
 
-### <a name="create-automation-account-integrated-with-log-analytics"></a>Log Analytics と統合された Automation アカウントの作成
+### <a name="create-automation-account-integrated-with-oms"></a>OMS と統合された Automation アカウントを作成する
 Automation の推奨されるオンボード方法は、Marketplace から [Automation & Control] サービスを選択することです。  このサービスでは、Automation アカウントが作成され、OMS ワークスペースとの統合が確立されます。このサービスで使用できる管理ソリューションをインストールすることもできます。  
 
 >[!NOTE]
@@ -175,16 +163,16 @@ Automation の推奨されるオンボード方法は、Marketplace から [Auto
 
 4. サービスの説明を読んだら、**[作成]** をクリックします。  
 
-5. **[Automation & Control]** 設定ブレードで、**[OMS ワークスペース]** を選択します。  **[OMS ワークスペース]** ブレードで、Automation アカウントと同じ Azure サブスクリプションに関連付けられている OMS ワークスペースを選択するか、OMS ワークスペースを作成します。  OMS ワークスペースがない場合は、**[新しいワークスペースの作成]** を選択し、**[OMS ワークスペース]** ブレードで次の手順を実行します。
+5. **[Automation & Control]** 設定ブレードで、**[OMS ワークスペース]** を選択します。  **[OMS ワークスペース]** ブレードで、Automation アカウントと同じ Azure サブスクリプションに関連付けられている OMS ワークスペースを選択するか、OMS ワークスペースを作成します。  OMS ワークスペースがない場合は、**[新しいワークスペースの作成]** を選択し、**[OMS ワークスペース]** ブレードで次の手順を実行します。 
    - 新しい **OMS ワークスペース**の名前を指定します。
    - 関連付ける**サブスクリプション**をドロップダウン リストから選択します (既定値が適切でない場合)。
    - **[リソース グループ]** では、リソース グループを作成するか、既存のリソース グループを選択できます。  
    - **[場所]**を選択します。  現在選択できる場所は、**オーストラリア南東部**、**米国東部**、**東南アジア**、**米国中西部**、および**西ヨーロッパ**のみです。
    - **[価格レベル]** を選択します。  このソリューションは、Free とノードごと (OMS) の 2 つのレベルで提供されています。  Free レベルは、1 日に収集できるデータの量、リテンション期間、Runbook ジョブの実行時間 (分) に上限が設けられています。  ノードごと (OMS) レベルでは 1 日に収集できるデータの量に上限がありません。  
-   - **[Automation アカウント]** を選択します。  OMS ワークスペースを新たに作成する場合はさらに、先ほど指定した新しい OMS ワークスペース (Azure サブスクリプション、リソース グループ、リージョンを含む) に関連付ける Automation アカウントを作成する必要があります。  **[Automation アカウントの作成]** を選択し、**[Automation アカウント]** ブレードで次の情報を入力します。
+   - **[Automation アカウント]** を選択します。  OMS ワークスペースを新たに作成する場合はさらに、先ほど指定した新しい OMS ワークスペース (Azure サブスクリプション、リソース グループ、リージョンを含む) に関連付ける Automation アカウントを作成する必要があります。  **[Automation アカウントの作成]** を選択し、**[Automation アカウント]** ブレードで次の情報を入力します。 
   - **[名前]** フィールドに、Automation アカウントの名前を入力します。
 
-    それ以外のオプションはすべて、選択した OMS ワークスペースに基づいて自動的に入力されます。これらのオプションを変更することはできません。  このサービスでは、Azure 実行アカウントが既定の認証方法になります。  **[OK]** をクリックすると、設定したオプションが検証され、Automation アカウントが作成されます。  進行状況は、メニューの **[通知]** で追跡できます。
+    それ以外のオプションはすべて、選択した OMS ワークスペースに基づいて自動的に入力されます。これらのオプションを変更することはできません。  このサービスでは、Azure 実行アカウントが既定の認証方法になります。  **[OK]** をクリックすると、設定したオプションが検証され、Automation アカウントが作成されます。  進行状況は、メニューの **[通知]** で追跡できます。 
 
     または、既存の Automation 実行アカウントを選択します。  既に別の OMS ワークスペースに関連付けられているアカウントは選択できません。選択すると、通知メッセージがブレードに表示されます。  既に関連付けられている場合は、別の Automation 実行アカウントを選択するか、作成する必要があります。
 
@@ -194,12 +182,13 @@ Automation の推奨されるオンボード方法は、Marketplace から [Auto
 
 7. **[Automation & Control]** 設定ブレードで、事前に選択された推奨ソリューションをインストールすることを確認します。 選択を解除したソリューションは、後で個別にインストールできます。  
 
-8. **[作成]** をクリックして、Automation と OMS ワークスペースのオンボードを続行します。 すべての設定が検証された後、ご利用のサブスクリプションへのサービスのデプロイが試行されます。  このプロセスは、完了までに数秒かかる場合があります。進行状況は、メニューの **[通知]** で確認してください。
+8. **[作成]** をクリックして、Automation と OMS ワークスペースのオンボードを続行します。 すべての設定が検証された後、ご利用のサブスクリプションへのサービスのデプロイが試行されます。  このプロセスは、完了までに数秒かかる場合があります。進行状況は、メニューの **[通知]** で確認してください。 
 
-サービスがオンボードされた後は、Runbook の作成、有効にした管理ソリューションの利用を開始することや、[Log Analytics](https://docs.microsoft.com/azure/log-analytics) を使用して、クラウドまたはオンプレミス環境のリソースによって生成されたデータの収集を開始することができます。   
+サービスがオンボードされた後は、Runbook の作成、有効にした管理ソリューションの利用の開始、[Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) ロールのデプロイ、または [Log Analytics](https://docs.microsoft.com/azure/log-analytics) を使用して、クラウドまたはオンプレミス環境のリソースによって生成されたデータの収集を開始することができます。   
 
 ## <a name="next-steps"></a>次のステップ
 * 新しい Automation アカウントが Azure リソースに対して認証できることを確認するには、「[Azure Automation 実行アカウントの認証をテストする](automation-verify-runas-authentication.md)」を参照してください。
-* PowerShell Runbook の使用を開始するには、「[初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md)」を参照してください。
-* グラフィカル作成の詳細については、「[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)」を参照してください。
+* Runbook を作成するには、開始する前に、サポートされている [Automation の Runbook の種類](automation-runbook-types.md)と関連する考慮事項を確認してください。
+
+
 

@@ -12,61 +12,36 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/05/2017
+ms.date: 06/16/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 1b0d278c102497eca978d8cd3fa29cd2527f186c
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 19f71e0d5a8a4642b86ae60a3ab2a4042fa2990e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/17/2017
 
 
 ---
-# <a name="security-alerts-by-type-in-azure-security-center"></a>Azure Security Center における各種のセキュリティ アラート
-この記事では、Azure Security Center で利用できるさまざまなセキュリティ アラートについてわかりやすく説明します。 アラートを管理する方法の詳細については、「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」を参照してください。
+# <a name="understanding-security-alerts-in-azure-security-center"></a>Azure Security Center のセキュリティ アラートの概要
+この記事では、Azure Security Center で利用できるさまざまなセキュリティ アラートと関連する分析情報についてわかりやすく説明します。 アラートとインシデントを管理する方法の詳細については、「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」を参照してください。
 
 > [!NOTE]
 > 高度な検出をセットアップする場合には、Azure Security Center Standard にアップグレードする必要があります。 60 日間の無料試用版が提供されています。 アップグレードするには、[[セキュリティ ポリシー]](security-center-policies.md) で **[価格レベル]** を選択します。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
 >
->
 
 ## <a name="what-type-of-alerts-are-available"></a>使用できる警告の種類
-Azure Security Center では、サイバー キル チェーンの各段階に応じた各種の警告が用意されています。 以下の図では、さまざまなアラートを紹介しています。アラートはそれぞれ、ここに示したサイバー キル チェーンの段階のいくつかに関係します。
-
-![Kill chain](./media/security-center-alerts-type/security-center-alerts-type-fig1.png)
-
-**ターゲットと攻撃**
-
-* 受信 RDP/SSH 攻撃
-* アプリケーションと DDoS 攻撃 (WAF パートナー)
-* 不正侵入検出 (NG ファイアウォール パートナー)
-
-**インストールとエクスプロイト**
-
-* 既知のマルウェア シグネチャ (AM パートナー)
-* インメモリ マルウェアとエクスプロイトの試行
-* 疑わしいプロセスの実行
-* 検出を防ぐ回避行動
-* 侵入拡大
-* 内部偵察
-* 疑わしい PowerShell アクティビティ
-
-**侵害後**  
-
-* 既知の悪意のある IP との通信 (データの搾取、コマンド アンド コントロール)
-* セキュリティの侵害されたリソースを使用した追加の攻撃の開始 (送信ポート スキャン RDP/SSH ブルート フォース攻撃、スパム)
-
-さまざまな種類の攻撃が各段階に関連し、さまざまなサブシステムをターゲットとしています。 これらの段階の攻撃に対処するために、Security Center では警告に 3 つのカテゴリを設けています。
+Azure Security Center では、さまざまな[検出機能](security-center-detection-capabilities.md)を使用して、お客様の環境を対象とする攻撃の可能性を通知します。 通知される警告には、警告を発生させたイベント、攻撃対象となったリソース、および攻撃元に関する重要な情報が含まれています。 こうした情報は、脅威を検出するために使用された分析の種類によって異なります。 インシデントには、脅威を調査する際に活用できる追加のコンテキスト情報も含まれる可能性があります。  この記事では、次の警告の種類について説明します。
 
 * 仮想マシンの動作分析 (VMBA)
 * ネットワーク分析
 * リソース分析
+* コンテキスト情報
 
 ## <a name="virtual-machine-behavioral-analysis"></a>仮想マシンの動作分析
 Azure Security Center は動作分析を使用し、仮想マシンのイベント ログの分析に基づいて、侵害の発生したリソースを特定します。 分析対象となるイベントには、プロセス作成イベント、ログイン イベントなどがあります。 また、他のシグナルとの間には、蔓延している攻撃の裏付けとなる兆候を確認できる相関関係が存在します。
 
 > [!NOTE]
 > Security Center の検出機能に関する詳細については、「[Azure Security Center の検出機能](security-center-detection-capabilities.md)」を参照してください。
->
 >
 
 ### <a name="crash-analysis"></a>クラッシュ分析
@@ -258,6 +233,18 @@ SQL インジェクションとは、後で SQL Server のインスタンスに�
 このアラートは、最後の期間に見られなかった不明な IP アドレスからのアクセス イベントがサーバーで検出された場合にトリガーされます。
 
 ![Unusual access alert](./media/security-center-alerts-type/security-center-alerts-type-fig13-new.png)
+
+## <a name="contextual-information"></a>コンテキスト情報
+アナリストが調査を行い、脅威の性質とそれを軽減する方法を判断するためには、追加のコンテキストが必要になります。  たとえば、ネットワーク異常が検出された際に、ネットワーク上で発生していたその他のイベントや対象となっているリソースを把握できなければ、対処法を決めることは困難です。 この判断を助けるため、セキュリティ インシデントにはアーティファクトや関連イベントのほか、調査に役立つ情報が含まれています。 利用できる追加情報は、検出された脅威の種類や環境内の構成によって異なります。また、すべてのセキュリティ インシデントで追加情報が利用できるとは限りません。
+
+追加情報が利用可能な場合は、セキュリティ インシデントの警告の一覧の下に表示されます。 次のような情報が含まれます。
+
+- ログの消去イベント
+- 不明なデバイスからの PNP デバイスの接続
+- 対応できないアラート 
+
+![Unusual access alert](./media/security-center-alerts-type/security-center-alerts-type-fig20.png) 
+
 
 ## <a name="see-also"></a>関連項目
 この記事では、Security Center のさまざまな種類のセキュリティ アラートについて説明しました。 セキュリティ センターの詳細については、次を参照してください。

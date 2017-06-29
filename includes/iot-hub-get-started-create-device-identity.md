@@ -1,6 +1,6 @@
 ## <a name="create-a-device-identity"></a>デバイス ID の作成
 
-このセクションでは、[iothub-explorer][iot-hub-explorer] という Node.js ツールを使用して、このチュートリアル用のデバイス ID を作成します。
+このセクションでは、[iothub-explorer][iot-hub-explorer] という Node.js ツールを使用して、このチュートリアル用のデバイス ID を作成します。 デバイス ID には大文字と小文字の区別があります。
 
 1. コマンドライン環境で次のコマンドを実行します。
 

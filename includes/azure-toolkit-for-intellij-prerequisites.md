@@ -1,4 +1,4 @@
-### <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>前提条件
 Azure Toolkit for IntelliJ には、以下のソフトウェア コンポーネントが必要です。
 
 * IntelliJ IDEA Ultimate Edition (<https://www.jetbrains.com/idea/download/> からダウンロードできます)。

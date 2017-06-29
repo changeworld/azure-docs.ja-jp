@@ -43,6 +43,7 @@
 ### Azure
 #### [プロファイラー](app-insights-profiler.md)
 #### [診断](app-insights-azure-diagnostics.md)
+#### [プレビュー](app-insights-previews.md)
 
 ### ASP.NET
 #### [その他のテレメトリの収集](app-insights-asp-net-more.md)
@@ -91,8 +92,9 @@
 
 ### 使用法
 #### [概要](app-insights-usage-overview.md)
-#### [保持](app-insights-usage-retention.md)
 #### [ユーザー、セッション、イベント](app-insights-usage-segmentation.md)
+#### [保持](app-insights-usage-retention.md)
+#### [ブック](app-insights-usage-workbooks.md)
 
 ### 分析
 
@@ -108,6 +110,7 @@
 ### [リソースの作成](app-insights-powershell-script-create-resource.md)
 ### [アラートを設定する](app-insights-powershell-alerts.md)
 ### [Azure 診断の実行](app-insights-powershell-azure-diagnostics.md)
+### [Microsoft Flow で自動化する](app-insights-automate-with-flow.md)
 
 ## 開発
 
@@ -116,7 +119,7 @@
 ### [サンプリング](app-insights-sampling.md)
 
 ## 管理
-### [価格とクォータの管理](app-insights-pricing.md)
+### [価格とデータ ボリュームの管理](app-insights-pricing.md)
 ### [SCOM での Application Insights を使用したアプリケーション パフォーマンス監視](app-insights-scom.md)
 
 ## エクスポート

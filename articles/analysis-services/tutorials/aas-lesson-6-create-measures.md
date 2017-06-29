@@ -10,20 +10,23 @@ tags:
 ms.assetid: 
 ms.service: analysis-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 05/02/2017
+ms.date: 06/01/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: c4977758997c91f0191e0367fb57923f43080b56
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 90833fa9744eac298b0da82cd3d12f27cc237510
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/03/2017
 
 ---
 # <a name="lesson-6-create-measures"></a>レッスン 6: メジャーを作成する
-このレッスンでは､モデルに取り込むメジャーを作成します｡ 前のレッスンで作成した計算列同様､メジャーは DAX 数式を使用して作成される計算値です｡ ただし､計算列と異なり､メジャーはユーザーが選択した*フィルター*に基づいて評価されます｡ピボットテーブル内の [Row Labels] フィールドに追加された列あるいはスライサーなどです｡ フィルター内の各セルの値は､適用されたメジャーによって求められます｡ メジャーは､ほぼあらゆる表形式モデルに含めることが可能で､数値データに対して動的な計算を行うことができる強力で柔軟な計算手段です｡ 詳細は､[Measures](https://docs.microsoft.com/sql/analysis-services/tabular-models/measures-ssas-tabular) を参照してください｡
+
+[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+
+このレッスンでは､モデルに取り込むメジャーを作成します｡ 前のレッスンで作成した計算列同様､メジャーは DAX 数式を使用して作成される計算値です｡ ただし、計算列とは異なり、メジャーはユーザーが選択した "*フィルター*" に基づいて評価されます。 たとえば、ピボットテーブルの行ラベル フィールドに追加された特定の列やスライサーなどです。 フィルター内の各セルの値は､適用されたメジャーによって求められます｡ メジャーは､ほぼあらゆる表形式モデルに含めることが可能で､数値データに対して動的な計算を行うことができる強力で柔軟な計算手段です｡ 詳細は､[Measures](https://docs.microsoft.com/sql/analysis-services/tabular-models/measures-ssas-tabular) を参照してください｡
   
 メジャーを作成するには､*Measure Grid* を使用します｡ 既定では､各テーブルにはメジャー グリッドが 1 つあります｡しかしながら､通常､必ずしもすべてのテーブルにメジャーを作成することはありません｡ メジャー グリッドは､モデル デザイナーでデータ ビューを表示しているときにテーブルの下に表示されます｡ テーブルのメジャー グリッドを非表示または表示するには､**[テーブル]** メニューをクリックし､**[Show Measure Grid]** をクリックします｡  
   
@@ -67,7 +70,7 @@ ms.lasthandoff: 05/05/2017
     DaysInCurrentQuarter:=COUNTROWS( DATESBETWEEN( 'DimDate'[Date], STARTOFQUARTER( LASTDATE('DimDate'[Date])), ENDOFQUARTER('DimDate'[Date])))
     ```
   
-    現在進行中の期間と前期間の比較比率を作成する場合､数式は経過した期間の割合を考慮し､その割合と前期間の同じ割合とを比較する必要があります｡ この場合は､ [DaysCurrentQuarterToDate]/[DaysInCurrentQuarter] が現期間で経過した割合を示します｡  
+    未完了の期間とその前の期間との間で比較率を作成する場合、 数式では、経過した期間の割合を計算し、それを前の期間内の同じ割合と比較する必要があります。 この場合は､ [DaysCurrentQuarterToDate]/[DaysInCurrentQuarter] が現期間で経過した割合を示します｡  
   
 #### <a name="to-create-an-internetdistinctcountsalesorder-measure-in-the-factinternetsales-table"></a>FactInternetSales テーブルにInternetDistinctCountSalesOrder メジャーを作成する  
   

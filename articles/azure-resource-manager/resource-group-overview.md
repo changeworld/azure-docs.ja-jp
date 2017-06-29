@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/23/2017
+ms.date: 06/09/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 4b7192b22d1583be2b2ab027b040c9a2fce8a293
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: db97edd3c4fbfdbe955c49cc9a58de30c5085305
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/21/2017
+ms.lasthandoff: 06/13/2017
 
 
 ---
@@ -82,39 +82,9 @@ Resource Manager では、Azure PowerShell、Azure CLI、Azure Portal、REST API
 ## <a name="resource-providers"></a>リソース プロバイダー
 Azure サービスを扱うための一連のリソースと操作は、それぞれのリソース プロバイダーから得られます。 たとえば、キーとシークレットを格納するためには、 **Microsoft.KeyVault** リソース プロバイダーを使用します。 このリソース プロバイダーには、キー コンテナーを作成するための **vaults** という名前のリソースの種類が用意されています。 
 
-リソースのデプロイを始める前に、利用可能なリソース プロバイダーを把握する必要があります。 リソース プロバイダーとリソースの名前がわかれば、Azure にデプロイするリソースの定義に役立ちます。
+リソースの種類を表す名前は、**{resource-provider}/{resource-type}** のような形式になります。 たとえば、キー コンテナーの種類は **Microsoft.KeyVault\vaults** です。
 
-すべてのリソース プロバイダーは、ポータルに表示されます。 サブスクリプションのブレードで、**[リソース プロバイダー]** を選択します。
-
-![リソース プロバイダーの表示](./media/resource-group-overview/view-resource-providers.png)
-
-次の PowerShell コマンドレットですべてのリソース プロバイダーを取得します。
-
-```powershell
-Get-AzureRmResourceProvider -ListAvailable
-```
-
-または、Azure CLI 2.0 で次のコマンドを使用してすべてのリソース プロバイダーを取得します。
-
-```azurecli
-az provider list
-```
-
-返される一覧で、使用する必要のあるリソース プロバイダーを確認できます。
-
-リソース プロバイダーの詳細を取得するには、コマンドにプロバイダーの名前空間を追加します。 このコマンドは、リソース プロバイダーでサポートされているリソースの種類のほか、リソースの種類ごとに、サポートされている場所と API バージョンを返します。 次の PowerShell コマンドレットで、Microsoft.Compute についての詳細を取得します。
-
-```powershell
-(Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute).ResourceTypes
-```
-
-または、Azure CLI 2.0 で次のコマンドを使用して、Microsoft.Compute のサポートされているリソースの種類、場所、および API のバージョンを取得します。
-
-```azurecli
-az provider show --namespace Microsoft.Compute
-```
-
-詳細については、「[Resource Manager のプロバイダー、リージョン、API のバージョン、およびスキーマ](resource-manager-supported-services.md)」を参照してください。
+リソースのデプロイを始める前に、利用可能なリソース プロバイダーを把握する必要があります。 リソース プロバイダーとリソースの名前がわかれば、Azure にデプロイするリソースの定義に役立ちます。 また、各リソースの種類の有効な場所と API のバージョンを把握しておく必要があります。 詳細については、「[リソース プロバイダーと種類](resource-manager-supported-services.md)」を参照してください。
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 Resource Manager では、Azure ソリューションのインフラストラクチャと構成を定義する JSON 形式のテンプレートを作成できます。 テンプレートを使えば、ソリューションをそのライフサイクル全体で繰り返しデプロイできます。また、常にリソースが一貫した状態でデプロイされます。 ポータルからソリューションを作成すると、ソリューションには自動的にデプロイ テンプレートが含まれます。 最初からテンプレートを作成する必要はありません。はじめにソリューション向けのテンプレートを使用して、それを特定のニーズに合わせてカスタマイズできます。 リソース グループの現在の状態をエクスポートするか、特定のデプロイに使用されたテンプレートを表示することで、既存のリソース グループのテンプレートを取得できます。 [エクスポートしたテンプレート](resource-manager-export-template.md)を表示すると、テンプレートの構文について理解するのに役立ちます。

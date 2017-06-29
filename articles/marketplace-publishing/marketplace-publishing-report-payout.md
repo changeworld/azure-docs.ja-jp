@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/11/2017
+ms.date: 06/16/2017
 ms.author: v-jeana; hascipio; v-dabosl
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e86e4dcc39f9d34dc04afbdccb017d89969f548f
 ms.openlocfilehash: fade348a599c41a7f099e7bbd8b45a3b4ccbf910
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -107,9 +109,4 @@ ms.openlocfilehash: fade348a599c41a7f099e7bbd8b45a3b4ccbf910
 [7]: ./media/marketplace-publishing-report-payout/financialdefinitions.png
 [8]: ./media/marketplace-publishing-report-payout/ledgerdefinitions.png
 [9]: ./media/marketplace-publishing-report-payout/payoutquestions.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

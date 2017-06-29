@@ -14,13 +14,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/18/2016
 ms.author: ccompy
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 397a922bf3bf4c39c89f5f69015de4942bda0af9
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 9367d6f57e694c8a438781004ef29a09de77aaa8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/03/2017
 
 
 ---
 # <a name="hybrid-connections-overview"></a>ハイブリッド接続の概要
+
+> [!IMPORTANT]
+> BizTalk ハイブリッド接続は廃止され、App Service ハイブリッド接続に置き換えられています。 既存の BizTalk ハイブリッド接続の管理方法など詳しくは、「[Azure App Services からのハイブリッド接続](../app-service/app-service-hybrid-connections.md)」をご覧ください。
+
 ハイブリッド接続の概要では、サポートされる構成と必要な TCP ポートを示します。
 
 ## <a name="what-is-a-hybrid-connection"></a>ハイブリッド接続とは
@@ -100,9 +106,4 @@ ms.openlocfilehash: 397a922bf3bf4c39c89f5f69015de4942bda0af9
 [HybridConnectionTab]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionTab.png
 [HCOnPremSetup]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionOnPremSetup.png
 [HCManageConnection]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionManageConn.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

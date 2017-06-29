@@ -7,6 +7,7 @@
 ## [初めてのロジック アプリの作成](logic-apps-create-a-logic-app.md)
 ## [ロジック アプリのテンプレート](logic-apps-use-logic-app-templates.md)
 ## [テンプレートからのロジック アプリの作成](logic-apps-arm-provision.md)
+## [Logic Apps への MABS アプリの移行](logic-apps-move-from-mabs.md)
 
 # 方法
 ## 構築
@@ -44,10 +45,12 @@
 ### [EDIFACT のエンタープライズ統合](logic-apps-enterprise-integration-edifact.md)
 ### [EDIFACT のエンコード](logic-apps-enterprise-integration-edifact-encode.md)
 ### [EDIFACT のデコード](logic-apps-enterprise-integration-edifact-decode.md)
+### [UNH2.5 セグメントを持つ EDIFACT ドキュメントを処理する方法](logic-apps-enterprise-integration-edifact_inputfile_unh2.5.md)
 ### [X12 のエンタープライズ統合](logic-apps-enterprise-integration-x12.md)
 ### [X12 のエンコード](logic-apps-enterprise-integration-x12-encode.md)
 ### [X12 のデコード](logic-apps-enterprise-integration-x12-decode.md)
 ### [障害復旧](logic-apps-enterprise-integration-b2b-business-continuity.md)
+### [エラーと解決策](logic-apps-enterprise-integration-b2b-list-errors-solutions.md)
 
 ## オンプレミスのデータへのアクセス
 ### [オンプレミスのデータに接続する](logic-apps-gateway-connection.md)
@@ -74,11 +77,11 @@
 ### [Azure Functions を使用してロジック アプリを呼び出す](logic-apps-scenario-function-sb-trigger.md)
 ### [エラーと例外の処理を追加する](logic-apps-scenario-error-and-exception-handling.md)
 ### [B2B の処理](logic-apps-enterprise-integration-b2b.md)
-### [UNH2.5 セグメントを持つ EDIFACT ドキュメントを処理する方法](logic-apps-enterprise-integration-edifact_inputfile_unh2.5.md)
 
 ## 価格と課金
 ### [料金](https://azure.microsoft.com/pricing/details/logic-apps/)
 ### [使用量の測定](logic-apps-pricing.md)
+
 
 # サーバーレス
 ## 概要
@@ -114,6 +117,7 @@
 ### [HTTP Webhook](../connectors/connectors-native-webhook.md)
 ### [Informix](../connectors/connectors-create-api-informix.md)
 ### [統合アカウント](logic-apps-enterprise-integration-metadata.md)
+### [MQ](../connectors/connectors-create-api-mq.md)
 ### [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md)
 ### [Oracle Database](../connectors/connectors-create-api-oracledatabase.md)
 ### [要求/応答](../connectors/connectors-native-reqres.md)
@@ -128,6 +132,8 @@
 ### [Twitter](../connectors/connectors-create-api-twitter.md)
 ### [X12](logic-apps-enterprise-integration-x12.md)
 ### [XML の検証](logic-apps-enterprise-integration-xml-validation.md)
+
+## [コネクタ: 詳細](https://docs.microsoft.com/connectors/)
 ## スキーマの履歴
 ### [一般公開](logic-apps-schema-2016-04-01.md)
 ### [プレビュー](logic-apps-schema-2015-08-01.md)

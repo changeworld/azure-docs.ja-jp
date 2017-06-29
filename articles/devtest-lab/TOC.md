@@ -2,6 +2,7 @@
 ## [Azure DevTest Labs とは](devtest-lab-overview.md)
 ## [概念](devtest-lab-concepts.md)
 ## シナリオ
+### [開発者向けのラボの使用](devtest-lab-developer-lab.md)
 ### [トレーニングでのラボの使用](devtest-lab-training-lab.md)
 
 # 作業開始

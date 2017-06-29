@@ -1,9 +1,9 @@
 ---
-title: "HDInsight の R Server 概要 | Microsoft Docs"
+title: "HDInsight の R Server 概要 - Azure | Microsoft Docs"
 description: "R Server を含む HDInsight クラスターで Apache Spark を作成し、クラスターで R スクリプトを送信する方法について説明します。"
 services: HDInsight
 documentationcenter: 
-author: jeffstokes72
+author: bradsev
 manager: jhubbard
 editor: cgronlun
 ms.assetid: b5e111f3-c029-436c-ba22-c54a4a3016e3
@@ -13,13 +13,13 @@ ms.devlang: R
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 04/13/2017
-ms.author: jeffstok
+ms.date: 06/20/2017
+ms.author: bradsev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: bf5b1c0a6e76f712e0be1f16ed1a6b2ac78d68de
+ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
+ms.openlocfilehash: 6c0b381772a6c8ea64bbcf6455fe630b0ca2916a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 06/21/2017
 
 
 ---
@@ -29,7 +29,7 @@ HDInsight には、HDInsight クラスターに R Server を統合するオプ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション**: このチュートリアルを開始する前に、Azure サブスクリプションが必要です。 詳細については、[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関する記事を参照してください。
+* **Azure サブスクリプション**: このチュートリアルを開始する前に、Azure サブスクリプションが必要です。 詳しくは、[Microsoft Azure 無料試用版の入手](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関する記事をご覧ください。
 * **Secure Shell (SSH) クライアント**: SSH クライアントを使用して、HDInsight クラスターにリモート接続し、クラスター上でコマンドを直接実行します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 * **SSH キー (省略可能)**: クラスターへの接続に使用する SSH アカウントは、パスワードまたはパブリック キーを使用してセキュリティで保護できます。 パスワードを使用する方が簡単で、公開/秘密のキー ペアを作成しなくても使い始めることができます。 ただし、キーを使用した方が安全です。
 
@@ -41,9 +41,9 @@ HDInsight には、HDInsight クラスターに R Server を統合するオプ�
 
 Azure Resource Manager テンプレート、SDK のほか、PowerShell も使用して、HDInsight R Server の作成を自動化できます。
 
-* Azure Resource Manager テンプレートを使用して R Server を作成するには、「[Deploy an R-server HDInsight cluster (R Server HDInsight クラスターのデプロイ)](https://azure.microsoft.com/resources/templates/101-hdinsight-rserver/)」を参照してください。
+* Azure Resource Manager テンプレートを使って R Server を作成するには、「[Deploy an R-server HDInsight cluster](https://azure.microsoft.com/resources/templates/101-hdinsight-rserver/)」(R Server HDInsight クラスターのデプロイ) をご覧ください。
 * .NET SDK テンプレートを使用して R Server を作成するには、「[.NET SDK を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)」を参照してください。
-* PowerShell を使用して R Server をデプロイするには、[PowerShell を使用した HDInsight の R Server の作成](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)に関する記事を参照してください。
+* PowerShell を使用して R Server をデプロイするには、[PowerShell を使用した HDInsight の R Server の作成](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)に関する記事をご覧ください。
 
 
 ## <a name="create-the-cluster-using-the-azure-portal"></a>Azure Portal を使用してクラスターを作成する
@@ -52,62 +52,61 @@ Azure Resource Manager テンプレート、SDK のほか、PowerShell も使用
 
 2. **[新規]**、**[インテリジェンス + 分析]**、**[HDInsight]** の順に選びます。
 
-    ![新しいクラスターの作成の画像](./media/hdinsight-getting-started-with-r/newcluster.png)
+    ![新しいクラスターの作成の画像](./media/hdinsight-hadoop-r-server-get-started/newcluster.png)
 
 3. **[簡易作成]** エクスペリエンスで、クラスターの名前を **[クラスター名]** フィールドに入力します。 複数の Azure サブスクリプションがある場合、**[サブスクリプション]** エントリを使用して、使用するサブスクリプションを選択します。
 
-    ![クラスター名とサブスクリプションの選択](./media/hdinsight-getting-started-with-r/clustername.png)
+    ![クラスター名とサブスクリプションの選択](./media/hdinsight-hadoop-r-server-get-started/clustername.png)
 
 4. **[クラスターの種類]** を選択し、**[クラスターの構成]** ブレードを開きます。 **[クラスターの構成]** ブレードで、次のオプションを選択します。
 
-   * **[クラスターの種類]**: R Server
-   * **[バージョン]**: クラスターにインストールする R Server のバージョンを選択します。 最新の機能を使用するには最新バージョンを選択します。 その他のバージョンは、互換性のために必要な場合に選択できます。 使用可能な各バージョンのリリース ノートは、[こちら](https://msdn.microsoft.com/en-us/microsoft-r/notes/r-server-notes)にあります。
-   * **[R Studio community edition for R Server] \(R Server 向けの R Studio コミュニティ エディション)**: このブラウザーベースの IDE は、既定でエッジ ノードにインストールされます。  この IDE をインストールしない場合は、チェックボックスをオフにします。 インストールを選択した場合、クラスターの作成後に、ポータルでクラスターの [アプリケーション] ブレードに RStudio Server へのアクセス用の URL が表示されます。
+    * **[クラスターの種類]**: R Server
+    * **[バージョン]**: クラスターにインストールする R Server のバージョンを選択します。 現在利用できるバージョンは ***R Server 9.1 (HDI 3.6)*** です。 使用可能な R Server のバージョンのリリース ノートは、[こちら](https://msdn.microsoft.com/microsoft-r/notes/r-server-notes)にあります。
+    * **[R Studio community edition for R Server] \(R Server 向けの R Studio コミュニティ エディション)**: このブラウザーベースの IDE は、既定でエッジ ノードにインストールされます。 この IDE をインストールしない場合は、チェックボックスをオフにします。 インストールを選択した場合、クラスターの作成後に、ポータルでクラスターのアプリケーション ブレードに RStudio Server へのアクセス用の URL が表示されます。
+    * その他のオプションは既定値のままにして、**[選択]** ボタンをクリックし、クラスターの種類を保存します。
 
-   その他のオプションは既定値のままにして、**[選択]** ボタンをクリックし、クラスターの種類を保存します。
-
-   ![[クラスターの種類] ブレードのスクリーン ショット](./media/hdinsight-getting-started-with-r/clustertypeconfig.png)
+        ![[クラスターの種類] ブレードのスクリーン ショット](./media/hdinsight-hadoop-r-server-get-started/clustertypeconfig.png)
 
 5. **[クラスター ログイン ユーザー名]** と **[クラスター ログイン パスワード]** を入力します。
 
-   **[SSH ユーザー名]** を指定します。  SSH は、**Secure Shell (SSH)** クライアントを使用してクラスターにリモート接続する場合に使用します。 このダイアログ ボックスで SSH ユーザーを指定するか、クラスターを作成した後に (クラスターの [構成] タブで) SSH ユーザーを指定することができます。 R Server は、**[SSH ユーザー名]** に “remoteuser” が入力されることを想定して構成されています。  **別のユーザー名を使用する場合は、クラスターを作成した後に他の手順を実行する必要があります。**
+    **[SSH ユーザー名]** を指定します。 SSH は、**Secure Shell (SSH)** クライアントを使用してクラスターにリモート接続する場合に使用します。 このダイアログ ボックスで SSH ユーザーを指定するか、クラスターを作成した後に (クラスターの [構成] タブで) SSH ユーザーを指定することができます。 R Server は、**[SSH ユーザー名]** に “remoteuser” が入力されることを想定して構成されています。  **別のユーザー名を使用する場合は、クラスターを作成した後に他の手順を実行する必要があります。**
 
-   公開キーを使用する場合を除き、**[クラスター ログインと同じパスワードを使用します]** のチェック ボックスをオンのままにして、認証の種類として **[パスワード]** を使用します。  RTVS、RStudio、または別のデスクトップ IDE など、リモート クライアントを使用してクラスターの R Server にアクセスする場合は、公開キーと秘密キーのペアが必要になります。 RStudio Server コミュニティ エディションをインストールした場合、SSH パスワードを選択する必要があります。     
+    公開キーを使用する場合を除き、**[クラスター ログインと同じパスワードを使用します]** のチェック ボックスをオンのままにして、認証の種類として **[パスワード]** を使用します。  RTVS、RStudio、または別のデスクトップ IDE など、リモート クライアントを使ってクラスターの R Server にアクセスする場合は、公開キーと秘密キーのペアが必要になります。 RStudio Server コミュニティ エディションをインストールする場合は、SSH パスワードを選ぶ必要があります。     
 
-   公開/秘密キーのペアを作成して使用する場合、**[クラスター ログインと同じパスワードを使用します]** のチェック ボックスをオフにしてから **[公開キー]** を選択し、次のように進みます。  次の手順では、Cygwin と、ssh-keygen または同等のものがインストールされていることを前提としています。
+    公開/秘密キーのペアを作成して使う場合、**[クラスター ログインと同じパスワードを使用します]** をオフにしてから **[公開キー]** を選択し、次のようにします。 次の手順では、Cygwin と、ssh-keygen または同等のものがインストールされていることを前提としています。
 
-   * ラップトップ コンピューターのコマンド プロンプトから、公開キーと秘密キーのペアを生成します。
+    * ラップトップ コンピューターのコマンド プロンプトから、公開キーと秘密キーのペアを生成します。
 
-   `ssh-keygen -t rsa -b 2048`
+        ssh-keygen -t rsa -b 2048
 
-   * キー ファイル名の指定を求めるプロンプトに従い、セキュリティ強化のためのパスフレーズを入力します。 画面は次のようになります。
+    * キー ファイル名の指定を求めるプロンプトに従い、セキュリティ強化のためのパスフレーズを入力します。 画面は次のようになります。
 
-   ![Windows での SSH コマンドライン](./media/hdinsight-getting-started-with-r/sshcmdline.png)
+        ![Windows での SSH コマンドライン](./media/hdinsight-hadoop-r-server-get-started/sshcmdline.png)
 
-   * これにより、秘密キー ファイルと、<秘密キーのファイル名>.pub という名前の公開キー ファイルが作成されます (furiosa と furiosa.pub など)。
+    * これにより、秘密キー ファイルと、<秘密キーのファイル名>.pub という名前の公開キー ファイルが作成されます (furiosa と furiosa.pub など)。
 
-   ![SSH ディレクトリ](./media/hdinsight-getting-started-with-r/dir.png)
+        ![SSH ディレクトリ](./media/hdinsight-hadoop-r-server-get-started/dir.png)
 
-   * 次に HDI クラスターの資格情報を割り当てるときに公開キー ファイル (*.pub) を指定し、最後に、リソース グループとリージョンを確認して **[次へ]** を選択します。
+    * 次に HDI クラスターの資格情報を割り当てるときに公開キー ファイル (&#42;.pub) を指定し、最後に、リソース グループとリージョンを確認して **[次へ]** を選びます。
 
-   ![[資格情報] ブレード](./media/hdinsight-getting-started-with-r/publickeyfile.png)  
+        ![[資格情報] ブレード](./media/hdinsight-hadoop-r-server-get-started/publickeyfile.png)  
 
-   * ノート パソコンでの秘密キー ファイルのアクセス許可の変更
+   * ノート パソコンの秘密キー ファイルでアクセス許可を変更します。
 
-   `chmod 600 <private-key-filename>`
+        chmod 600 <秘密キーのファイル名>
 
-   * リモート ログインの SSH を使用した秘密キー ファイルの使用
+   * リモート ログインの SSH では秘密キー ファイルを使います。
 
-   `ssh –i <private-key-filename> remoteuser@<hostname public ip>`
+        ssh –i <秘密キーのファイル名> remoteuser@<hostname public ip>
 
-   または、クライアントの R Server の Hadoop Spark コンピューティング コンテキストの定義の一部として使用します (オンラインの [Get started with SacaleR on Apache Spark (Apache Spark での SacaleR の概要)](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)に関するドキュメントの「[Creating a Compute Context for Spark」(Spark 用のコンピューティング コンテキストの作成)](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started#creating-a-compute-context-for-spark) セクションで、「Using Microsoft R Server as a Hadoop Client」(Hadoop クライアントとして Microsoft R Server を使用する) を参照してください)。
+      または、クライアントの R Server の Hadoop Spark コンピューティング コンテキストの定義の一部として。 「[Create a Compute Context for Spark](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started#creating-a-compute-context-for-spark)」(Spark のコンピューティング コンテキストを作成する) の「**Using Microsoft R Server as a Hadoop Client**」(Hadoop クライアントとしての Microsoft R Server の使用) をご覧ください。
 
 6. [簡易作成] 画面が **[ストレージ]** ブレードに切り替わったら、クラスターで使用される HDFS ファイル システムのプライマリ ロケーションで使用するストレージ アカウントの設定を選択します。 新規または既存の Azure Storage アカウントか、既存の Data Lake ストレージ アカウントのいずれかを選びます。
 
-   1. Azure Storage アカウントを選択する場合は、**[ストレージ アカウントの選択]** を選択してからアカウントを選択することで、既存のアカウントを選択できます。 または、**[ストレージ アカウントの選択]** セクションで **[新規作成]** リンクを使用して新しいアカウントを作成します。
+    - Azure Storage アカウントを選択する場合は、**[ストレージ アカウントの選択]** を選択してから関連するアカウントを選択することで、既存のアカウントが選択されます。 **[ストレージ アカウントの選択]** セクションで **[新規作成]** リンクを使用して新しいアカウントを作成します。
 
       > [!NOTE]
-      > **[新規]** を選択した場合、新しいストレージ アカウントの名前を入力する必要があります。 名前を使用できる場合は、緑色のチェック マークが表示されます。
+      > **[新規]** を選択した場合、新しいストレージ アカウントの名前を入力する必要があります。 名前が受け付けられると、緑色のチェック マークが表示されます。
 
       **[既定のコンテナー]** は、既定ではクラスターの名前になります。 この値はこのままにします。
 
@@ -118,34 +117,34 @@ Azure Resource Manager テンプレート、SDK のほか、PowerShell も使用
       > [!IMPORTANT]
       > 既定のデータ ソースの場所を選択すると、HDInsight クラスターの場所も設定されます。 クラスターと既定のデータ ソースは、同じリージョンにする必要があります。
 
-   2. 既存の Data Lake Store を使用する場合、使用する ADLS ストレージ アカウントを選び、クラスター ADD アイデンティティをクラスターに追加してストアにアクセスできるようにします。 このプロセスの詳細については、「[Azure Portal を使用して、Data Lake Store を使用する HDInsight クラスターを作成する](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-hdinsight-hadoop-use-portal)」を参照してください。
+    - 既存の Data Lake Store を使う場合は、使う ADLS ストレージ アカウントを選び、クラスター *ADD* アイデンティティをクラスターに追加してストアにアクセスできるようにします。 このプロセスについて詳しくは、「[Azure Portal を使用して、Data Lake Store を使用する HDInsight クラスターを作成する](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-hdinsight-hadoop-use-portal)」をご覧ください。
 
-   **[選択]** ボタンを使用し、データ ソースの構成を保存します。
+    **[選択]** ボタンを使用し、データ ソースの構成を保存します。
 
 
 7. 次に、すべての設定を検証するために **[概要]** ブレードが表示されます。 ここでは、**クラスター サイズ**を変更して、クラスター内のサーバーの数を変更し、実行する**スクリプト アクション**を指定することもできます。 大きいクラスターが必要になることがわかっている場合を除き、worker ノードの数は既定値の `4` のままにします。 クラスターの推定コストがブレード内に表示されます。
 
-   ![クラスターの概要](./media/hdinsight-getting-started-with-r/clustersummary.png)
+    ![クラスターの概要](./media/hdinsight-hadoop-r-server-get-started/clustersummary.png)
 
    > [!NOTE]
    > 必要に応じて、後でポータルから ([クラスター]、[設定]、[クラスターのスケール設定]) クラスターのサイズを変更して、worker ノードの数を変更できます。  これは、使用しないクラスターをアイドル状態にする場合や、大規模なタスクのニーズに合わせて容量を追加する場合に役立ちます。
    >
    >
 
-    クラスター、データ ノード、エッジ ノードのサイズを変更するときに、次の点に留意します。  
+   クラスター、データ ノード、エッジ ノードのサイズを変更するときに、次の点に留意します。  
 
    * データが大きいとき、Spark での分散 R Server 分析のパフォーマンスは、worker ノードの数に比例します。  
 
-   * R Server 分析のパフォーマンスは、分析されているデータのサイズに比例します。 次に例を示します。  
+   * R Server 分析のパフォーマンスは、分析されているデータのサイズに比例します。 For example:  
 
-     * データのサイズが中程度までの場合は、エッジ ノードのローカルのコンピューティング コンテキストで分析するときにパフォーマンスが最高になります。  ローカルと Spark コンピューティング コンテキストのパフォーマンスが最高になるシナリオの詳細については、「Compute context options for R Server on HDInsight」(HDInsight での R Server のコンピューティング コンテキスト オプション) を参照してください。<br>
-     * エッジ ノードにログインして R スクリプトを実行すると、ScaleR rx 関数以外のすべてがエッジ ノードで<strong>ローカル</strong>で実行され、エッジ ノードのメモリとコアの数が適宜調整されます。 ノート パソコンからリモート コンピューティング コンテキストとして HDI の RServer を使用する場合、同じことがあてはまります。
+     * データのサイズが中程度までの場合は、エッジ ノードのローカルのコンピューティング コンテキストで分析するときにパフォーマンスが最高になります。  ローカルと Spark コンピューティング コンテキストのパフォーマンスが最高になるシナリオの詳細については、「Compute context options for R Server on HDInsight」(HDInsight での R Server のコンピューティング コンテキスト オプション) をご覧ください。<br>
+     * エッジ ノードにログインして R スクリプトを実行すると、ScaleR rx 関数を除くすべてが、エッジ ノードで<strong>ローカルに</strong>実行されます。 したがって、エッジ ノードのメモリとコアの数を適切なサイズにする必要があります。 ノート パソコンからリモート コンピューティング コンテキストとして HDI の RServer を使用する場合、同じことがあてはまります。
 
-     ![[ノード価格レベル] ブレード](./media/hdinsight-getting-started-with-r/pricingtier.png)
+     ![[ノード価格レベル] ブレード](./media/hdinsight-hadoop-r-server-get-started/pricingtier.png)
 
      **[選択]** ボタンを使用し、ノードの価格構成を保存します。
 
-   **テンプレートおよびパラメーターをダウンロードする**ためのリンクもあります。 このリンクをクリックすると、選んだ構成でクラスターの作成を自動化するために使用するスクリプトが表示されます。 これらのスクリプトは、クラスターが作成されていれば、そのクラスターの Azure Portal のエントリから入手できます。
+   **[テンプレートとパラメーターのダウンロード]** リンクもあることに注意してください。 このリンクをクリックすると、選んだ構成でクラスターの作成を自動化するために使用するスクリプトが表示されます。 これらのスクリプトは、クラスターが作成されていれば、そのクラスターの Azure Portal のエントリから入手できます。
 
    > [!NOTE]
    > クラスターが作成されるまで、通常は約 20 分かかります。 作成プロセスをチェックするには、スタート画面のタイル、またはページの左側にある **[通知]** エントリを使用してください。
@@ -178,7 +177,7 @@ SSH を使用して HDInsight クラスターの R Server エッジ ノードに
 > [!NOTE]
 > クラスターを選択し、**[すべての設定]**、**[アプリ]**、**[RServer]** の順にクリックし、Azure Portal で `USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net` のアドレスを確認することもできます。 これにより、エッジ ノードの SSH エンドポイント情報が表示されます。
 >
-> ![エッジ ノードの SSH エンドポイントの画像](./media/hdinsight-getting-started-with-r/sshendpoint.png)
+> ![エッジ ノードの SSH エンドポイントの画像](./media/hdinsight-hadoop-r-server-get-started/sshendpoint.png)
 >
 >
 
@@ -194,48 +193,42 @@ SSH ユーザー アカウントを保護するためにパスワードを使用
 
 1. SSH セッションから、次のコマンドを使用して R コンソールを起動します。  
 
-   ```
-   R
+        R
 
-   You will see output similar to the following.
-   R version 3.2.2 (2015-08-14) -- "Fire Safety"
-   Copyright (C) 2015 The R Foundation for Statistical Computing
-   Platform: x86_64-pc-linux-gnu (64-bit)
+2. 次のような出力が表示されます。
+    
+    R version 3.2.2 (2015-08-14) -- "Fire Safety"  Copyright (C) 2015 The R Foundation for Statistical Computing  Platform: x86_64-pc-linux-gnu (64-bit)
 
-   R is free software and comes with ABSOLUTELY NO WARRANTY.
-   You are welcome to redistribute it under certain conditions.
-   Type 'license()' or 'licence()' for distribution details.
+    R is free software and comes with ABSOLUTELY NO WARRANTY.
+    You are welcome to redistribute it under certain conditions.
+    Type 'license()' or 'licence()' for distribution details.
 
-   Natural language support but running in an English locale
+    Natural language support but running in an English locale
 
-   R is a collaborative project with many contributors.
-   Type 'contributors()' for more information and
-   'citation()' on how to cite R or R packages in publications.
+    R is a collaborative project with many contributors.
+    Type 'contributors()' for more information and 'citation()' on how to cite R or R packages in publications.
 
-   Type 'demo()' for some demos, 'help()' for on-line help, or
-   'help.start()' for an HTML browser interface to help.
-   Type 'q()' to quit R.
+    Type 'demo()' for some demos, 'help()' for on-line help, or 'help.start()' for an HTML browser interface to help.
+    Type 'q()' to quit R.
 
-   Microsoft R Server version 8.0: an enhanced distribution of R
-   Microsoft packages Copyright (C) 2016 Microsoft Corporation
+    Microsoft R Server version 8.0: an enhanced distribution of R  Microsoft packages Copyright (C) 2016 Microsoft Corporation
 
-   Type 'readme()' for release notes.
-   >
-   ```
+    Type 'readme()' for release notes.
+    >
 
-2. `>` プロンプトから R コードを入力できます。 R Server には、Hadoop との対話を容易にし、分散計算を実行するためのパッケージが含まれています。 たとえば、次のコマンドを使用して、HDInsight クラスターの既定のファイル システムのルートを表示します。
+3. `>` プロンプトから R コードを入力できます。 R Server には、Hadoop との対話を容易にし、分散計算を実行するためのパッケージが含まれています。 たとえば、次のコマンドを使用して、HDInsight クラスターの既定のファイル システムのルートを表示します。
 
-`rxHadoopListFiles("/")`
+    rxHadoopListFiles("/")
 
-WASB スタイルのアドレス指定も使用できます。
+4. WASB スタイルのアドレス指定も使用できます。
 
-`rxHadoopListFiles("wasbs:///")`
+    rxHadoopListFiles("wasbs:///")
 
 ## <a name="using-r-server-on-hdi-from-a-remote-instance-of-microsoft-r-server-or-microsoft-r-client"></a>Microsoft R Server または Microsoft R Client のリモート インスタンスから HDI の R Server を使用する
 
-クラスターにアクセスするための公開キーと秘密キーのペアの使用について説明する前のセクションに従って、デスクトップまたはラップトップで実行されている Microsoft R Server または Microsoft R Client のリモート インスタンスから HDI Hadoop Spark コンピューティング コンテキストへのアクセスを設定することができます (オンラインの [RevoScaleR Hadoop Spark の概要ガイド](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)に関するドキュメントの「[Creating a Compute Context for Spark (Spark 用のコンピューティング コンテキストの作成)](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started#creating-a-compute-context-for-spark)」セクションで、「Using Microsoft R Server as a Hadoop Client (Hadoop クライアントとして Microsoft R Server を使用する)」を参照してください)。  そのためには、ラップトップで RxSpark コンピューティング コンテキストを定義するときに、オプション (hdfsShareDir、shareDir、sshUsername、sshHostname、sshSwitches、sshProfileScript) を指定する必要があります。 次に例を示します。
+公開/秘密キー ペアを使ったクラスターへのアクセスについての前のセクションに関しては、デスクトップまたはラップトップで実行している Microsoft R Server または Microsoft R Client のリモート インスタンスから HDI Hadoop Spark コンピューティング コンテキストへのアクセスを設定することもできます。 「[Creating a Compute Context for Spark](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started#creating-a-compute-context-for-spark)」(Spark 用のコンピューティング コンテキストの作成) の「**Using Microsoft R Server as a Hadoop Client**」(Hadoop クライアントとしての Microsoft R Server の使用) をご覧ください。 そのためには、ラップトップで RxSpark コンピューティング コンテキストを定義するときに、オプション (hdfsShareDir、shareDir、sshUsername、sshHostname、sshSwitches、sshProfileScript) を指定する必要があります。 For example:
 
-```
+
     myNameNode <- "default"
     myPort <- 0
 
@@ -257,12 +250,11 @@ WASB スタイルのアドレス指定も使用できます。
       port         = myPort,
       consoleOutput= TRUE
     )
-```
 
 
 ## <a name="use-a-compute-context"></a>コンピューティング コンテキストを使用する
 
-コンピューティング コンテキストを使用すると、計算をエッジ ノードでローカルに実行するか、HDInsight クラスターのノード全体に分散するかを制御することができます。
+コンピューティング コンテキストを使うと、計算をエッジ ノードでローカルに実行するか、HDInsight クラスターのノード全体に分散するかを制御することができます。
 
 1. RStudio Server または R コンソール (SSH セッション) から次をコマンドを実行し、HDInsight の既定のストレージにサンプル データを読み込みます。
 
@@ -363,7 +355,7 @@ WASB スタイルのアドレス指定も使用できます。
          Condition number of final variance-covariance matrix: 11904202
          Number of iterations: 7
 
-4. 次に、Spark コンテキストを使用して同じロジスティック回帰を実行してみましょう。 Spark コンテキストを使用すると、HDInsight クラスターのすべてのワーカー ノードに処理が分散されます。
+4. 次に、Spark コンテキストを使用して同じロジスティック回帰を実行してみましょう。 Spark コンテキストを使うと、HDInsight クラスターのすべてのワーカー ノードに処理が分散されます。
 
         # Define the Spark compute context
         mySparkCluster <- RxSpark()
@@ -386,14 +378,12 @@ WASB スタイルのアドレス指定も使用できます。
 
 ## <a name="distribute-r-code-to-multiple-nodes"></a>複数のノードに R コードを分散する
 
-R Server では、既存の R コードを容易に取得し、 `rxExec`を使用してクラスター内の複数のノード全体で実行することができます。 これは、パラメーター スイープまたはシミュレーションを行うときに便利です。 `rxExec`を使用する方法の例を次に示します。
+R Server では、既存の R コードを容易に取得し、`rxExec` を使ってクラスター内の複数のノード全体で実行することができます。 これは、パラメーター スイープまたはシミュレーションを行うときに便利です。 `rxExec` を使う方法の例を次に示します。
 
-`rxExec( function() {Sys.info()["nodename"]}, timesToRun = 4 )`
+    rxExec( function() {Sys.info()["nodename"]}, timesToRun = 4 )
 
-Spark や MapReduce のコンテキストを使用している場合は、コード `(Sys.info()["nodename"])` が実行されている worker ノードのノード名の値が返されます。 たとえば、4 ノードのクラスタでは次のような出力が表示されます。
+Spark や MapReduce のコンテキストを使っている場合は、コード `(Sys.info()["nodename"])` が実行されているワーカー ノードのノード名の値が返されます。 たとえば、4 ノードのクラスターでは次のような出力が表示されます。
 
-
-    ```
     $rxElem1
         nodename
     "wn3-myrser"
@@ -409,36 +399,25 @@ Spark や MapReduce のコンテキストを使用している場合は、コー
     $rxElem4
         nodename
     "wn3-myrser"
-    ```
+
 
 ## <a name="accessing-data-in-hive-and-parquet"></a>Hive および Parquet 内のデータへのアクセス
 
-R Server 9.0 以上で利用可能な新機能を使用すると、Hive および Parquet 内のデータに直接アクセスし、Spark のコンピューティング コンテキスト内の ScaleR 関数で使用できます。 RxHiveData と RxParquetData という新しい ScaleR データ ソース関数で、以下の機能を使用できます。これらの関数は、ローカルのデータを ScaleR で分析できるように、Spark SQL を使用して Spark データフレームに直接読み込みます。  
+R Server 9.1 で利用可能な機能を使うと、Hive および Parquet 内のデータに直接アクセスし、Spark のコンピューティング コンテキスト内の ScaleR 関数で使うことができます。 RxHiveData と RxParquetData という新しい ScaleR データ ソース関数で、以下の機能を使用できます。これらの関数は、ローカルのデータを ScaleR で分析できるように、Spark SQL を使用して Spark データフレームに直接読み込みます。  
 
 次に、これらの新しい関数の使用方法に関するサンプル コードを示します。
 
-
-
-    ```
-    #..create a Spark compute context
-
+    #Create a Spark compute context:
     myHadoopCluster <- rxSparkConnect(reset = TRUE)
-    ```
 
-
-    ```
-    #..retrieve some sample data from Hive and run a model
-
+    #Retrieve some sample data from Hive and run a model:
     hiveData <- RxHiveData("select * from hivesampletable",
                      colInfo = list(devicemake = list(type = "factor")))
     rxGetInfo(hiveData, getVarInfo = TRUE)
 
     rxLinMod(querydwelltime ~ devicemake, data=hiveData)
-    ```
 
-    ```
-    #..retrieve some sample data from Parquet and run a model
-
+    #Retrieve some sample data from Parquet and run a model:
     rxHadoopMakeDir('/share')
     rxHadoopCopyFromLocal(file.path(rxGetOption('sampleDataDir'), 'claimsParquet/'), '/share/')
     pqData <- RxParquetData('/share/claimsParquet',
@@ -450,30 +429,26 @@ R Server 9.0 以上で利用可能な新機能を使用すると、Hive およ�
     rxGetInfo(pqData, getVarInfo = TRUE)
 
     rxNaiveBayes(type ~ age + cost, data = pqData)
-    ```
 
-
-    ```
-    #..check on Spark data objects, cleanup, and close the Spark session
-
+    #Check on Spark data objects, cleanup, and close the Spark session:
     lsObj <- rxSparkListData() # two data objs are cached
     lsObj
     rxSparkRemoveData(lsObj)
     rxSparkListData() # it should show empty list
     rxSparkDisconnect(myHadoopCluster)
-    ```
 
-これらの新関数の使用方法の詳細については、R Server で ?RxHivedata コマンドおよび ?RxParquetData を使用すると表示されるオンライン ヘルプをご覧ください。  
+
+これらの新関数の使用方法の詳細については、R Server で `?RxHivedata` コマンドおよび `?RxParquetData` コマンドを使うと表示されるオンライン ヘルプをご覧ください。  
 
 
 ## <a name="install-r-packages"></a>R パッケージをインストールする
 
 エッジ ノードに追加の R パッケージをインストールする場合、SSH 経由でエッジ ノードに接続していれば、R コンソールから `install.packages()` を直接使用できます。 ただし、クラスターのワーカー ノードに R パッケージをインストールする場合は、スクリプト アクションを使用する必要があります。
 
-スクリプト アクションは、HDInsight クラスターの構成を変更するか、追加のソフトウェアをインストールするために使用する Bash スクリプトです。 この場合は追加の R パッケージをインストールするために使用します。 スクリプト アクションを使用して追加のパッケージをインストールするには、次の手順に従います。
+スクリプト アクションは、HDInsight クラスターの構成を変更するか、追加のソフトウェアをインストールするために使用する Bash スクリプトです。 この場合は追加の R パッケージをインストールするために使用します。 スクリプト アクションを使って追加のパッケージをインストールするには、次の手順に従います。
 
 > [!IMPORTANT]
-> スクリプト アクションを使用した追加の R パッケージのインストールは、クラスターが作成された後にのみ使用できます。 スクリプトは完全にインストールと構成がされている R Server に依存するため、クラスターの作成中は使用できません。
+> スクリプト アクションを使用した追加の R パッケージのインストールは、クラスターが作成された後にのみ使用できます。 スクリプトは完全にインストールと構成がされている R Server に依存するため、クラスターの作成中はこの手順を実行しないでください。
 >
 >
 
@@ -481,7 +456,7 @@ R Server 9.0 以上で利用可能な新機能を使用すると、Hive およ�
 
 2. **[設定]** ブレードで、**[スクリプト アクション]**、**[新規で送信]** と選び、新しいスクリプト アクションを送信します。
 
-   ![[スクリプト アクション] ブレードの画像](./media/hdinsight-getting-started-with-r/scriptaction.png)
+   ![[スクリプト アクション] ブレードの画像](./media/hdinsight-hadoop-r-server-get-started/scriptaction.png)
 
 3. **[スクリプト操作を追加]** ブレードで、次の情報を指定します。
 
@@ -493,7 +468,7 @@ R Server 9.0 以上で利用可能な新機能を使用すると、Hive およ�
 
    * **[ワーカー]**: **オンに設定**します
 
-   * **[エッジ ノード]**: **オフに設定**します
+   * **[Edge nodes]**: **オフに設定**します
 
    * **[Zookeeper]**: **オフに設定**します
 
@@ -516,59 +491,57 @@ R Server 9.0 以上で利用可能な新機能を使用すると、Hive およ�
 
 データ モデリングが完了したら、モデルを運用化して、新しいデータについての予測を行うことができます。 Microsoft R Server の運用化を構成するには、次の手順を実行します。
 
-最初に、Edge ノードに SSH 接続します。 たとえば、「 ```ssh -L USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net```」のように入力します。
+最初に、Edge ノードに SSH 接続します。 たとえば、次のように入力します。 
 
-SSH を使用した後、ディレクトリを次のディレクトリに変更し、次に示すように dotnet dll を sudo します。
+    ssh -L USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
 
-```
-   cd /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil
-   sudo dotnet Microsoft.DeployR.Utils.AdminUtil.dll
-```
+SSH を使った後、ディレクトリを次のディレクトリに変更し、dotnet dll を sudo します。
+
+    cd /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil
+    sudo dotnet Microsoft.DeployR.Utils.AdminUtil.dll
 
 Microsoft R Server の運用化をワンボックス構成で構成するには、次の操作を行います。
 
-* "1.  Configure R Server for Operationalization" を選択します。
-* "A.  One-box (web + compute nodes)" を選択します。
-* **admin** ユーザーのパスワードを入力します。
+1. "Configure R Server for Operationalization" を選択します。
+2. "A.  One-box (web + compute nodes)" を選択します。
+3. **admin** ユーザーのパスワードを入力します。
 
 ![ワンボックス操作](./media/hdinsight-hadoop-r-server-get-started/admin-util-one-box-.png)
 
 省略可能な手順として、次のように診断テストを実行することで、診断チェックを実行できます。
 
-* "6.  Run diagnostic tests" を選択します。
-* "A.  Test configuration" を選択します。
-* Username として admin を、パスワードとして前の手順で入力したパスワードを入力します。
-* Overall Health が pass になっていることを確認します。
-* 管理ユーティリティを終了します。
-* SSH を終了します。
+1. "6.  Run diagnostic tests" を選択します。
+2. "A.  Test configuration" を選択します。
+3. Username として admin を、パスワードとして前の構成手順で入力したパスワードを入力します。
+4. Overall Health が pass になっていることを確認します。
+5. 管理ユーティリティを終了します。
+6. SSH を終了します。
 
 ![操作の診断](./media/hdinsight-hadoop-r-server-get-started/admin-util-diagnostics.png)
 
-この段階で、運用化の構成が完了しました。 これで、RClient の 'mrsdeploy' パッケージを使用して Edge ノードの運用化に接続し、[リモート実行](https://msdn.microsoft.com/microsoft-r/operationalize/remote-execution)や [Web サービス](https://msdn.microsoft.com/microsoft-r/mrsdeploy/mrsdeploy-websrv-vignette)などの機能の使用を開始できます。 クラスターが仮想ネットワーク上に設定されているか否かに応じて、SSH ログイン経由のポート転送トンネリングの設定が必要になる場合があります。
+この段階で、運用化の構成が完了しました。 これで、RClient の 'mrsdeploy' パッケージを使用して Edge ノードの運用化に接続し、[リモート実行](https://msdn.microsoft.com/microsoft-r/operationalize/remote-execution)や [Web サービス](https://msdn.microsoft.com/microsoft-r/mrsdeploy/mrsdeploy-websrv-vignette)などの機能の使用を開始できます。 クラスターが仮想ネットワーク上に設定されているか否かに応じて、SSH ログイン経由のポート転送トンネリングの設定が必要になる場合があります。 以降のセクションでは、その方法について説明します。
 
 ### <a name="rserver-cluster-on-virtual-network"></a>仮想ネットワーク上の RServer クラスター
 
 ポート 12800 から Edge ノードへのトラフィックを許可していることを確認します。 これで、運用化機能への接続に Edge ノードを使用できます。
 
-```
-library(mrsdeploy)
 
-remoteLogin(
-    deployr_endpoint = "http://[your-cluster-name]-ed-ssh.azurehdinsight.net:12800",
-    username = "admin",
-    password = "xxxxxxx"
-)
-```
+    library(mrsdeploy)
+
+    remoteLogin(
+        deployr_endpoint = "http://[your-cluster-name]-ed-ssh.azurehdinsight.net:12800",
+        username = "admin",
+        password = "xxxxxxx"
+    )
+
 
 remoteLogin() では Edge ノードに接続できないが、Edge ノードに SSH 接続できる場合は、ポート 12800 でトラフィックを許可するルールが適切に設定されていることを確認する必要があります。 問題が解決しない場合は、SSH 経由のポート転送トンネリングを設定する回避策を使用できます。
 
 ### <a name="rserver-cluster-not-set-up-on-virtual-network"></a>仮想ネットワーク上にセットアップされていない RServer クラスター
 
-クラスターが VNet 上にセットアップされていない場合、または VNet 経由の接続で問題が発生する場合は、次に示す SSH ポート転送トンネリングを使用することができます。
+クラスターが VNet 上にセットアップされていない場合、または VNet 経由の接続で問題が発生する場合は、SSH ポート転送トンネリングを使用することができます。
 
-```
-ssh -L localhost:12800:localhost:12800 USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
-```
+    ssh -L localhost:12800:localhost:12800 USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
 
 Putty でも、同様にセットアップできます。
 
@@ -576,22 +549,21 @@ Putty でも、同様にセットアップできます。
 
 SSH セッションがアクティブになったら、コンピューターのポート 12800 からのトラフィックは、SSH セッション経由で Edge ノードのポート 12800 に転送されます。 remoteLogin() メソッドで `127.0.0.1:12800` を使用していることを確認してください。 これは、ポート転送経由で Edge ノードの運用化にログインします。
 
-```
-library(mrsdeploy)
 
-remoteLogin(
-    deployr_endpoint = "http://127.0.0.1:12800",
-    username = "admin",
-    password = "xxxxxxx"
-)
-```
+    library(mrsdeploy)
+
+    remoteLogin(
+        deployr_endpoint = "http://127.0.0.1:12800",
+        username = "admin",
+        password = "xxxxxxx"
+    )
+
 
 ## <a name="how-to-scale-microsoft-r-server-operationalization-compute-nodes-on-hdinsight-worker-nodes"></a>HDInsight ワーカー ノードで Microsoft R Server 運用化コンピューティング ノードをスケーリングする方法
 
-
 ### <a name="decommission-the-worker-nodes"></a>ワーカー ノードを使用停止する
 
-Microsoft R Server は、現時点では Yarn を通じて管理されません。 ワーカー ノードが使用停止されていない場合、Yarn リソース マネージャーは予期したとおりに機能しません。これは、リソースがサーバーによって使用されることを認識しないためです。 これを防ぐために、コンピューティング ノードをスケーリングするワーカー ノードの使用停止を行うことをお勧めします。
+Microsoft R Server は、現時点では Yarn を通じて管理されません。 ワーカー ノードが使用停止されていない場合、Yarn リソース マネージャーは予期したとおりに機能しません。これは、リソースがサーバーによって使用されることを認識しないためです。 この状況を防ぐため、コンピューティング ノードをスケールアウトする前に、ワーカー ノードの使用を停止することをお勧めします。
 
 ワーカー ノードを使用停止する手順:
 
@@ -600,22 +572,22 @@ Microsoft R Server は、現時点では Yarn を通じて管理されません�
 
    ![ワーカー ノードの使用停止](./media/hdinsight-hadoop-r-server-get-started/get-started-operationalization.png)  
 
-* [アクション]、[選択したホスト]、[DataNodes] の順に選択し、[使用停止] をクリックします。
-* [アクション]、[選択したホスト]、[NodeManagers] の順に選択し、[使用停止] をクリックします。
-* [アクション]、[選択したホスト]、[DataNodes] の順に選択し、[停止] をクリックします。
-* [アクション]、[選択したホスト]、[NodeManagers] の順に選択し、[停止] をクリックします。
-* [アクション]、[選択したホスト]、[ホスト] の順に選択し、[Stop All Components (すべてのコンポーネントを停止)] をクリックします。
+* **[アクション]** > **[選択したホスト]** > **[DataNodes]** の順に選択し、**[使用停止]** をクリックします。
+* **[アクション]** > **[選択したホスト]** > **[NodeManagers]** の順に選択し、**[使用停止]** をクリックします。
+* **[アクション]** > **[選択したホスト]** > **[DataNodes]** の順に選択し、**[停止]** をクリックします。
+* **[アクション]** > **[選択したホスト]** > **[NodeManagers]** の順に選択し、**[停止]** をクリックします。
+* **[アクション]** > **[選択したホスト]** > **[ホスト]** の順に選択し、**[Stop All Components\(すべてのコンポーネントを停止\)]** をクリックします。
 * ワーカー ノードの選択を解除し、ヘッド ノードを選択します。
-* [アクション]、[選択したホスト]、[ホスト] の順に選択し、[Restart All Components (すべてのコンポーネントを再起動)] をクリックします。
+* **[アクション]** > **[選択したホスト]** > **[ホスト]** の順に選択し、**[Restart All Components\(すべてのコンポーネントを再起動\)]** をクリックします。
 
 
-###    <a name="configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>使用停止されたワーカー ノードにコンピューティング ノードを構成する
+### <a name="configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>使用停止されたワーカー ノードにコンピューティング ノードを構成する
 
-* 使用停止されたワーカー ノードに SSH 接続します。
-* 以下を使用して管理ユーティリティを実行します。`dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll`
-* 「1」を入力して、オプション "1.  Configure R Server for Operationalization" を選択します。
-* 「c」を入力して、オプション "C.  Compute node" を選択します。 これで、ワーカー ノードでコンピューティング ノードが構成されます。
-* 管理ユーティリティを終了します。
+1. 使用停止されたワーカー ノードに SSH 接続します。
+2. `dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll` を使って、管理ユーティリティを実行します。
+3. 「1」を入力して、オプションの "Configure R Server for Operationalization" を選択します。
+4. 「c」を入力して、オプション "C.  Compute node" を選択します。 これで、ワーカー ノードでコンピューティング ノードが構成されます。
+5. 管理ユーティリティを終了します。
 
 ### <a name="add-compute-nodes-details-on-web-node"></a>Web ノードにコンピューティング ノードの詳細を追加する
 
@@ -625,15 +597,15 @@ Microsoft R Server は、現時点では Yarn を通じて管理されません�
 * `vi /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Server.WebAPI/appsettings.json` を実行します。
 * "URI" セクションを見つけて、ワーカー ノードの IP とポートの詳細を追加します。
 
-![ワーカー ノードの使用停止のコマンドライン](./media/hdinsight-hadoop-r-server-get-started/get-started-op-cmd.png)
+    ![ワーカー ノードの使用停止のコマンドライン](./media/hdinsight-hadoop-r-server-get-started/get-started-op-cmd.png)
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
-HDInsight クラスターの作成で問題が発生した場合は、[アクセス制御の要件](hdinsight-administer-use-portal-linux.md#create-clusters)に関するページを参照してください。
+HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](hdinsight-administer-use-portal-linux.md#create-clusters)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-ここでは、R Server を含む新しい HDInsight クラスターを作成する方法、SSH セッションから R コンソールを使用する方法の基本を説明しました。次のリンクを使用して、HDInsight で R Server を使用するための他の方法を見てみましょう。
+R Server を含む新しい HDInsight クラスターを作成する方法と、SSH セッションから R コンソールを使う基礎を理解できたはずです。 以下のトピックでは、HDInsight 上の R Server を管理および使用する他の方法について説明します。
 
 * [HDInsight へ RStudio Server を追加する (クラスター作成時にインストールされていない場合)](hdinsight-hadoop-r-server-install-r-studio.md)
 * [HDInsight の R Server (プレビュー) の計算コンテキストのオプション](hdinsight-hadoop-r-server-compute-contexts.md)

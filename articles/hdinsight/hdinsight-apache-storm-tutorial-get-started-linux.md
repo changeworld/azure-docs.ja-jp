@@ -1,7 +1,7 @@
 ---
-title: "Azure HDInsight で Apache Storm を使ってみる | Microsoft Docs"
-description: "Linux ベースの HDInsight での Apache Storm および Storm Starter サンプルを使用したビッグ データ分析の概要 Storm を使用してデータをリアルタイムに処理する方法について説明します。"
-keywords: "Apache Storm, Apache Storm チュートリアル, ビッグ データの分析, Storm Starter"
+title: "HDInsight 上の Apache Storm での storm-starter の例 - Azure | Microsoft Docs"
+description: "HDInsight 上で Apache Storm と storm-starter の例を使って、ビッグ データ分析を行い、データをリアルタイムで処理する方法を説明します。"
+keywords: "storm-starter, apache storm の例"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -15,15 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/25/2017
 ms.author: larryfr
-ms.custom: H1Hack27Feb2017,hdinsightactive
+ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 5976051ea06896e4158071cb6839ba415b4622d2
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 5936a45973eb41d2c5b3a1a47c663e393e628f54
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/09/2017
 
 ---
-#<a name="get-started-with-the-storm-starter-samples-for-big-data-analytics-on-linux-based-hdinsight"></a>Storm Starter サンプルを使用した Linux ベースの HDInsight でのビッグ データ分析の概要
+#<a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>storm-starter の例を使って HDInsight で Apache Storm の使用を開始する
+
+storm-starter の例を使って HDInsight で Apache Storm を使う方法について説明します。
 
 Apache Storm は、データ ストリームの処理を目的とし、スケーラビリティとフォールト トレランスに優れた、分散型のリアルタイム計算システムです。 Azure HDInsight の Storm を使用して、Storm でリアルタイムで ビッグ データ分析を実行するクラウドベースの Storm クラスターを作成できます。
 
@@ -84,7 +86,7 @@ HDInsight で Storm クラスターを作成するには、次の手順に従い
     > [!NOTE]
     > クラスターの作成には最大で 20 分かかります。
 
-## <a name="run-a-storm-starter-sample-on-hdinsight"></a>HDInsight での Storm Starter サンプルの実行
+## <a name="run-a-storm-starter-sample-on-hdinsight"></a>HDInsight で storm-starter のサンプルを実行する
 
 1. SSH を使用して HDInsight クラスターに接続します。
 
@@ -106,9 +108,9 @@ HDInsight で Storm クラスターを作成するには、次の手順に従い
     > [!NOTE]
     > 独自のトポロジをクラスターに送信する場合、まずクラスターを含む jar ファイルをコピーしてから、`storm` コマンドを実行します。 `scp` コマンドを使用して、ファイルをコピーします。 たとえば、 `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`
     >
-    > WordCount の例と他の Storm スターターの例は、 `/usr/hdp/current/storm-client/contrib/storm-starter/`のクラスターに既に含まれています。
+    > WordCount の例と他の storm-starter の例は、`/usr/hdp/current/storm-client/contrib/storm-starter/` のクラスターに既に含まれています。
 
-Storm スターターの例のコードを確認したい場合、そのコードは [https://github.com/apache/storm/tree/1.0.x-branch/examples/storm-starter](https://github.com/apache/storm/tree/1.0.x-branch/examples/storm-starter) で見つかります。 このリンクは、HDInsight 3.5 に付属している Storm 1.0.x 用です。 Storm の他のバージョンについては、このページの上部にある __[Branch (分岐)]__ ボタンを使用して、別の Storm バージョンを選択してください。
+storm-starter の例のソースを見たい場合、コードは [https://github.com/apache/storm/tree/1.0.x-branch/examples/storm-starter](https://github.com/apache/storm/tree/1.0.x-branch/examples/storm-starter) にあります。 このリンクは、HDInsight 3.5 に付属している Storm 1.0.x 用です。 Storm の他のバージョンについては、このページの上部にある __[Branch (分岐)]__ ボタンを使用して、別の Storm バージョンを選択してください。
 
 ## <a name="monitor-the-topology"></a>トポロジの監視
 
@@ -123,7 +125,7 @@ Storm UI には、トポロジの実行を操作する Web インターフェイ
 
 2. **[トポロジの概要]** で、**[名前]** 列の **[wordcount]** エントリを選択します。 トポロジの情報が表示されます。
 
-    ![Storm Starter WordCount トポロジの情報が含まれている Storm ダッシュボード。](./media/hdinsight-apache-storm-tutorial-get-started-linux/topology-summary.png)
+    ![storm-starter WordCount トポロジの情報が含まれている Storm ダッシュボード。](./media/hdinsight-apache-storm-tutorial-get-started-linux/topology-summary.png)
 
     このページには、次の情報が表示されます。
 

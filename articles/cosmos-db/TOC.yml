@@ -13,8 +13,6 @@
     items:
     - name: .NET
       href: create-documentdb-dotnet.md
-    - name: .NET Core
-      href: create-documentdb-dotnet-core.md
     - name: Java
       href: create-documentdb-java.md
     - name: Node.js
@@ -60,9 +58,9 @@
   - name: 2 - インポート
     items:
     - name: DocumentDB
-      href: ../documentdb/documentdb-import-data.md
+      href: import-data.md
     - name: MongoDB
-      href: ../documentdb/documentdb-mongodb-migrate.md
+      href: mongodb-migrate.md
   - name: 3 - クエリ
     items:
     - name: DocumentDB
@@ -86,9 +84,9 @@
   - name: 5 - ローカルでの開発
     items:
     - name: エミュレーターの使用
-      href: ../documentdb/documentdb-nosql-local-emulator.md
+      href: local-emulator.md
     - name: 証明書のエクスポート
-      href: ../documentdb/documentdb-nosql-local-emulator-export-ssl-certificates.md
+      href: local-emulator-export-ssl-certificates.md
 - name: サンプル
   items:
   - name: Azure CLI 2.0
@@ -98,32 +96,35 @@
 - name: 概念
   items:
   - name: グローバル配信
-    href: ../documentdb/documentdb-distribute-data-globally.md
+    href: distribute-data-globally.md
   - name: パーティション分割
     href: partition-data.md
   - name: 整合性
-    href: ../documentdb/documentdb-consistency-levels.md
+    href: consistency-levels.md
   - name: スループット
-    href: ../documentdb/documentdb-request-units.md
+    href: request-units.md
     items:
     - name: 1 分あたりの要求ユニット
       href: request-units-per-minute.md
   - name: マルチモデルの API
     items:
     - name: DocumentDB
-      href: ../documentdb/documentdb-introduction.md
+      href: documentdb-introduction.md
     - name: MongoDB
-      href: ../documentdb/documentdb-protocol-mongodb.md
+      href: mongodb-introduction.md
     - name: テーブル
       href: table-introduction.md
     - name: Graph
       href: graph-introduction.md
   - name: セキュリティ
-    href: ../documentdb/documentdb-nosql-database-security.md
+    href: database-security.md
   - name: TCO
     href: https://aka.ms/documentdb-tco-paper
   - name: ユース ケース
-    href: ../documentdb/documentdb-use-cases.md
+    href: use-cases.md
+    items:
+      - name: ソーシャル メディア アプリ
+        href: social-media-apps.md
 - name: ハウツー ガイド
   items:
   - name: 開発
@@ -131,87 +132,88 @@
     - name: DocumentDB API
       items:
       - name: リソース
-        href: ../documentdb/documentdb-resources.md
+        href: documentdb-resources.md
       - name: SQL クエリ
-        href: ../documentdb/documentdb-sql-query.md
+        href: documentdb-sql-query.md
       - name: SQL のプレイグラウンド
         href: https://www.documentdb.com/sql/demo
       - name: パーティション分割
-        href: ../documentdb/documentdb-partition-data.md
+        href: documentdb-partition-data.md
       - name: ストアド プロシージャ、トリガー、UDF
-        href: ../documentdb/documentdb-programming.md
+        href: programming.md
       - name: パフォーマンス テスト
-        href: ../documentdb/documentdb-performance-testing.md
+        href: performance-testing.md
       - name: パフォーマンスに関するヒント
-        href: ../documentdb/documentdb-performance-tips.md
+        href: performance-tips.md
       - name: 複数のマスターのセットアップ
-        href: ../documentdb/documentdb-multi-region-writers.md
+        href: multi-region-writers.md
       - name: DateTime
-        href: ../documentdb/documentdb-working-with-dates.md
+        href: working-with-dates.md
+      - name: ドキュメント データのモデリング
+ 
+        href: modeling-data.md 
       - name: Tutorials (チュートリアル)
         items:
         - name: 最初のアプリを記述する
           items:
           - name: .NET
-            href: ../documentdb/documentdb-get-started.md
+            href: documentdb-get-started.md
           - name: .NET Core
-            href: ../documentdb/documentdb-dotnetcore-get-started.md
+            href: documentdb-dotnetcore-get-started.md
           - name: Java
-            href: ../documentdb/documentdb-java-get-started.md
+            href: documentdb-java-get-started.md
           - name: Node.js
-            href: ../documentdb/documentdb-nodejs-get-started.md
+            href: documentdb-nodejs-get-started.md
           - name: C++
-            href: ../documentdb/documentdb-cpp-get-started.md
+            href: documentdb-cpp-get-started.md
         - name: Web アプリを構築する
           items:
           - name: .NET
-            href: ../documentdb/documentdb-dotnet-application.md
+            href: documentdb-dotnet-application.md
           - name: Xamarin
-            href: ../documentdb/documentdb-mobile-apps-with-xamarin.md
+            href: mobile-apps-with-xamarin.md
           - name: Node.js
-            href: ../documentdb/documentdb-nodejs-application.md
+            href: documentdb-nodejs-application.md
           - name: Java
-            href: ../documentdb/documentdb-java-application.md
+            href: documentdb-java-application.md
           - name: Python Flask
-            href: ../documentdb/documentdb-python-application.md
+            href: documentdb-python-application.md
       - name: サンプル
         items:
         - name: .NET のサンプル
-          href: ../documentdb/documentdb-dotnet-samples.md
+          href: documentdb-dotnet-samples.md
         - name: Node.js のサンプル
-          href: ../documentdb/documentdb-nodejs-samples.md
+          href: documentdb-nodejs-samples.md
         - name: Python のサンプル
-          href: ../documentdb/documentdb-python-samples.md
-        - name: SQL 構文
-          href: https://msdn.microsoft.com/library/azure/dn782250.aspx
-        - name: SQL の文法チート シート
-          href: ../documentdb/documentdb-sql-query-cheat-sheet.md
+          href: documentdb-python-samples.md
       - name: リソース
         items:
+        - name: SQL の文法チート シート
+          href: documentdb-sql-query-cheat-sheet.md
         - name: スタック オーバーフロー
-          href: http://stackoverflow.com/questions/tagged/azure-documentdb
+          href: http://stackoverflow.com/questions/tagged/azure-cosmosdb
         - name: ビデオ
-          href: https://azure.microsoft.com/documentation/videos/index/?services=documentdb
+          href: https://azure.microsoft.com/documentation/videos/index/?services=cosmos-db
         - name: サービスの更新情報
-          href: https://azure.microsoft.com/updates/?product=documentdb
+          href: https://azure.microsoft.com/updates/?product=cosmos-db
         - name: コミュニティ ポータル
-          href: ../documentdb/documentdb-community.md
+          href: community.md
         - name: スキーマ独立型インデックス作成資料
           href: http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf
         - name: S1、S2、S3 の廃止
-          href: ../documentdb/documentdb-performance-levels.md
+          href: performance-levels.md
     - name: MongoDB API
       items:
       - name: MongoDB アカウントへの接続
-        href: ../documentdb/documentdb-connect-mongodb-account.md
+        href: connect-mongodb-account.md
       - name: MongoChef の使用
-        href: ../documentdb/documentdb-mongodb-mongochef.md
+        href: mongodb-mongochef.md
       - name: Robomongo の使用
-        href: ../documentdb/documentdb-mongodb-robomongo.md
+        href: mongodb-robomongo.md
       - name: Tutorials (チュートリアル)
         items:
         - name: Node.js コンソール アプリ
-          href: ../documentdb/documentdb-mongodb-samples.md
+          href: mongodb-samples.md
     - name: Graph API
       items:
       - name: Gremlin サポート
@@ -221,57 +223,49 @@
       - name: テーブル ストレージ
         href: https://docs.microsoft.com/rest/api/storageservices/fileservices/Table-Service-Concepts
     - name: Change Feed
-      href: ../documentdb/documentdb-change-feed.md
+      href: change-feed.md
     - name: GeoSpatial
-      href: ../documentdb/documentdb-geospatial.md
+      href: geospatial.md
     - name: インデックス作成
-      href: ../documentdb/documentdb-indexing-policies.md
+      href: indexing-policies.md
   - name: 管理
     items:
     - name: コスト効率の優れた読み取りと書き込み
-      href: ../documentdb/documentdb-key-value-store-cost.md
+      href: key-value-store-cost.md
     - name: データを自動的に期限切れにする
-      href: ../documentdb/documentdb-time-to-live.md
+      href: time-to-live.md
     - name: バックアップおよび復元
-      href: ../documentdb/documentdb-online-backup-and-restore.md
+      href: online-backup-and-restore.md
     - name: リージョン内フェールオーバー
-      href: ../documentdb/documentdb-regional-failovers.md
+      href: regional-failover.md
     - name: スループットの設定
-      href: ../documentdb/documentdb-set-throughput.md
+      href: set-throughput.md
     - name: SLA の監視
-      href: ../documentdb/documentdb-monitor-accounts.md
+      href: monitor-accounts.md
     - name: キーと整合性の管理
-      href: ../documentdb/documentdb-manage-account.md
-    - name: Automation
-      items:
-      - name: Azure CLI 1.0 - アカウントの作成
-        href: ../documentdb/documentdb-automation-resource-manager-cli-nodejs.md
-      - name: Azure CLI 1.0 - リージョンの追加または削除
-        href: ../documentdb/documentdb-automation-region-management.md
-      - name: Azure PowerShell
-        href: ../documentdb/documentdb-manage-account-with-powershell.md
+      href: manage-account.md
     - name: セキュリティ
       items:
       - name: 保存時の暗号化
-        href: ../documentdb/documentdb-nosql-database-encryption-at-rest.md
+        href: database-encryption-at-rest.md
       - name: ファイアウォールのサポート
-        href: ../documentdb/documentdb-firewall-support.md
+        href: firewall-support.md
       - name: データへのアクセスのセキュリティ保護
-        href: ../documentdb/documentdb-secure-access-to-data.md
+        href: secure-access-to-data.md
   - name: 統合
     items:
     - name: Spark に接続する
-      href: ../documentdb/documentdb-spark-connector.md
+      href: spark-connector.md
     - name: Spark GraphX に接続する
       href: spark-connector-graph.md      
     - name: Azure App Service で Web アプリをデプロイする
-      href: ../documentdb/documentdb-create-documentdb-website.md
+      href: create-website.md
     - name: Logic Apps を使用したアプリケーション ログ記録
       href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md
     - name: Azure Functions にバインドする
       href: ../azure-functions/functions-bindings-documentdb.md
     - name: Hadoop でデータを分析する
-      href: ../documentdb/documentdb-run-hadoop-with-hdinsight.md
+      href: run-hadoop-with-hdinsight.md
     - name: Azure Search と統合する
       href: ../search/search-howto-index-documentdb.md
     - name: Azure Data Factory を使用してデータを移動する
@@ -279,31 +273,33 @@
     - name: Azure Stream Analytics でリアルタイム データを分析する
       href: ../stream-analytics/stream-analytics-define-outputs.md#documentdb
     - name: Logic Apps を使用して変更された HL7 FHIR レコードを取得する
-      href: ../documentdb/documentdb-change-feed-hl7-fhir-logic-apps.md
+      href: change-feed-hl7-fhir-logic-apps.md
     - name: センサー データをリアルタイムで処理する
       href: ../hdinsight/hdinsight-storm-iot-eventhub-documentdb.md
     - name: Power BI でデータを視覚化する
-      href: ../documentdb/documentdb-powerbi-visualize.md
+      href: powerbi-visualize.md
     - name: ODBC ドライバーを利用してデータを視覚化する
-      href: ../documentdb/documentdb-nosql-odbc-driver.md
+      href: odbc-driver.md
 - name: リファレンス
   items:
   - name: DocumentDB API
     items:
     - name: Java
-      href: ../documentdb/documentdb-sdk-java.md
+      href: documentdb-sdk-java.md
     - name: .NET
-      href: ../documentdb/documentdb-sdk-dotnet.md
+      href: documentdb-sdk-dotnet.md
     - name: .NET Core
-      href: ../documentdb/documentdb-sdk-dotnet-core.md
+      href: documentdb-sdk-dotnet-core.md
     - name: Node.js
-      href: ../documentdb/documentdb-sdk-node.md
+      href: documentdb-sdk-node.md
     - name: Python
-      href: ../documentdb/documentdb-sdk-python.md
+      href: documentdb-sdk-python.md
     - name: REST ()
       href: /rest/api/documentdb/
     - name: REST リソース プロバイダー
       href: /rest/api/documentdbresourceprovider/
+    - name: SQL
+      href: documentdb-sql-query-reference.md
   - name: テーブル API
     items:
     - name: .NET
@@ -315,10 +311,10 @@
 - name: リソース
   items:
   - name: 価格
-    href: https://azure.microsoft.com/pricing/details/documentdb/
+    href: https://azure.microsoft.com/pricing/details/cosmos-db/
   - name: FAQ
-    href: ../documentdb/documentdb-faq.md
+    href: faq.md
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-cosmos-db
+    href: http://stackoverflow.com/questions/tagged/azure-cosmosdb
   - name: 野球で説明するデータ整合性
     href: http://research.microsoft.com/apps/pubs/default.aspx?id=206913

@@ -3,7 +3,7 @@ title: "Azure Active Directory v2.0 Android アプリ | Microsoft Docs"
 description: "サインインに個人の Microsoft アカウントと会社/学校アカウントの両方を使用し、サード パーティのライブラリを使用して Graph API を呼び出す Android アプリの構築方法を説明します。"
 services: active-directory
 documentationcenter: 
-author: brandwe
+author: danieldobalian
 manager: mbaldwin
 editor: 
 ms.assetid: 16294c07-f27d-45c9-833f-7dbb12083794
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2017
-ms.author: brandwe
+ms.author: dadobali
 ms.custom: aaddev
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6

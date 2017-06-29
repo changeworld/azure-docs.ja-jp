@@ -3,7 +3,7 @@ title: "Azure Active Directory のコード例 | Microsoft Docs"
 description: "シナリオ別に整理された Azure Active Directory のコード サンプルのインデックスです。"
 services: active-directory
 documentationcenter: dev-center-name
-author: priyamohanram
+author: msmbaldwin
 manager: mbaldwin
 editor: 
 ms.assetid: a242a5ff-7300-40c2-ba83-fb6035707433

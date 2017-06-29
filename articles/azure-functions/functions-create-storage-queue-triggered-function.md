@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 04/25/2017
+ms.date: 05/31/2017
 ms.author: glenga
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 42fabff59577db5feb98e5c03d7a2b6d3d2461c3
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: ba8db575c8731e4f9067a6635e745da12c8667dd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
-
+ms.lasthandoff: 06/02/2017
 
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>Azure Queue Storage によってトリガーされる関数の作成
@@ -33,7 +33,7 @@ Azure Storage キューにメッセージが送信されたときにトリガー
 
 - [Microsoft Azure ストレージ エクスプローラーをダウンロードしてインストールする](http://storageexplorer.com/)。
 
-- Azure サブスクリプションが必要です。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+- Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
 [!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
@@ -49,15 +49,21 @@ Azure Storage キューにメッセージが送信されたときにトリガー
 
 ## <a name="create-a-queue-triggered-function"></a>キューによってトリガーされる関数の作成
 
-Function App で、**[関数]** の横にある **[+]** ボタンをクリックし、使用する言語の **QueueTrigger** テンプレートをクリックします。 次に、テーブルに指定されている設定を使用し、**[作成]** をクリックします。
+1. Function App を展開し、**[関数]** の横にある **[+]** ボタンをクリックします。 これが Function App で初めての関数の場合、**[カスタム関数]** を選びます。 関数テンプレートの完全なセットが表示されます。
 
-![ストレージ キューによってトリガーされる関数を作成します。](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png)
+    ![Azure Portal での関数のクイック スタート ページ](./media/functions-create-storage-queue-triggered-function/add-first-function.png)
 
-| Setting | 推奨値 | Description |
-|---|---|---|
-| **キュー名**   | myqueue-items    | ストレージ アカウント内の接続先のキューの名前。 |
-| **ストレージ アカウント接続** | AzureWebJobStorage | Function App によって既に使用されているストレージ アカウント接続を使用するか、新しく作成できます。  |
-| **関数名の指定** | Function App 内で一意 | このキューによってトリガーされる関数の名前。 |
+2. 目的の言語の **QueueTrigger** テンプレートを選び、次の表で指定されている設定を使います。
+
+    ![ストレージ キューによってトリガーされる関数を作成します。](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png)
+    
+    | Setting | 推奨値 | Description |
+    |---|---|---|
+    | **キュー名**   | myqueue-items    | ストレージ アカウント内の接続先のキューの名前。 |
+    | **ストレージ アカウント接続** | AzureWebJobStorage | Function App によって既に使用されているストレージ アカウント接続を使用するか、新しく作成できます。  |
+    | **関数名の指定** | Function App 内で一意 | このキューによってトリガーされる関数の名前。 |
+
+3. **[作成]** をクリックして関数を作成します。
 
 次に、Azure Storage アカウントに接続し、**myqueue-items** ストレージ キューを作成します。
 

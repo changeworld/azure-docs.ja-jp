@@ -15,59 +15,61 @@ ms.workload: big-data
 ms.date: 05/04/2017
 ms.author: edmaca
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: 6985dff332928d704f30e167c3bddb62bcc6cac1
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: faf17bcac66a70fc78bb171e172886fd2dcadca8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---
-# <a name="tutorial-get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>チュートリアル: Azure PowerShell で Azure Data Lake Analytics の使用を開始する
+# <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>Azure PowerShell で Azure Data Lake Analytics の使用を開始する
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 Azure PowerShell を使って Azure Data Lake Analytics アカウントを作成し、U-SQL ジョブを送信して実行する方法について説明します。 Data Lake Analytics の詳細については、「 [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
+
 このチュートリアルを開始する前に、次の条件を満たしておく必要があります。
 
-* **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+* **Azure Data Lake Analytics アカウント**。 「[Data Lake Analytics の使用を開始する](https://docs.microsoft.com/en-us/azure/data-lake-analytics/data-lake-analytics-get-started-portal)」を参照してください。
 * **Azure PowerShell を実行できるワークステーション**。 「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。
 
-## <a name="preparing-for-the-tutorial"></a>チュートリアルの準備
-Data Lake Analytics アカウントを作成するには、最初に次の事柄を定義する必要があります。
+## <a name="log-in-to-azure"></a>Azure へのログイン
 
-* **Azure リソース グループ**: Data Lake Analytics アカウントは、Azure リソース グループ内に作成する必要があります。
-* **Data Lake Analytics アカウント名**: Data Lake Analytics アカウント名には小文字と数字のみを含める必要があります。
-* **場所**: Data Lake Analytics をサポートするいずれかの Azure データ センター。
-* **既定の Data Lake Store アカウント**: 各 Data Lake Analytics アカウントには既定の Data Lake Store アカウントがあります。 これらのアカウントは同じ場所に存在する必要があります。
+このチュートリアルでは、既に Azure PowerShell を使い慣れていることを前提としています。 特に、Azure にログインする方法を理解している必要があります。 ヘルプが必要な場合は、[Azure PowerShell の概要](https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps)に関するページを参照してください。
+
+サブスクリプション名でログインするには:
+
+```
+Login-AzureRmAccount -SubscriptionName "ContosoSubscription"
+```
+
+サブスクリプション名の代わりに、サブスクリプション ID を使用してログインすることもできます。
+
+```
+Login-AzureRmAccount -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+```
+
+成功した場合、このコマンドの出力は、次のテキストのようになります。
+
+```
+Environment           : AzureCloud
+Account               : joe@contoso.com
+TenantId              : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+SubscriptionId        : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+SubscriptionName      : ContosoSubscription
+CurrentStorageAccount :
+```
+
+## <a name="preparing-for-the-tutorial"></a>チュートリアルの準備
 
 このチュートリアルの PowerShell スニペットでは、以下の変数を使って各情報を格納します。
 
 ```
 $rg = "<ResourceGroupName>"
-$adls = "<DataLakeAccountName>"
+$adls = "<DataLakeStoreAccountName>"
 $adla = "<DataLakeAnalyticsAccountName>"
 $location = "East US 2"
-```
-
-## <a name="create-a-data-lake-analytics-account"></a>Data Lake Analytics アカウントを作成する
-
-まだ使用するリソース グループがない場合は、新たに作成します。 
-
-```
-New-AzureRmResourceGroup -Name  $rg -Location $location
-```
-
-すべての Data Lake Analytics アカウントに、ログの保存を目的とした既定の Data Lake Store アカウントが必要です。 既にあるアカウントを再利用するか、新しいアカウントを作成してください。 
-
-```
-New-AdlStore -ResourceGroupName $rg -Name $adls -Location $location
-```
-
-リソース グループと Data Lake Store アカウントが用意できたら、Data Lake Analytics アカウントを作成します。
-
-```
-New-AdlAnalyticsAccount -ResourceGroupName $rg -Name $adla -Location $location -DefaultDataLake $adls
 ```
 
 ## <a name="get-information-about-a-data-lake-analytics-account"></a>Data Lake Analytics アカウントに関する情報を取得する
@@ -78,9 +80,10 @@ Get-AdlAnalyticsAccount -ResourceGroupName $rg -Name $adla
 
 ## <a name="submit-a-u-sql-job"></a>U-SQL ジョブの送信
 
-次の U-SQL スクリプトを含んだテキスト ファイルを作成します。
+U-SQL スクリプトを保持する PowerShell 変数を作成します。
 
 ```
+$script = @"
 @a  = 
     SELECT * FROM 
         (VALUES
@@ -91,26 +94,29 @@ Get-AdlAnalyticsAccount -ResourceGroupName $rg -Name $adla
 OUTPUT @a
     TO "/data.csv"
     USING Outputters.Csv();
+
+"@
 ```
 
 このスクリプトを送信します。
 
 ```
-Submit-AdlJob -AccountName $adla –ScriptPath "d:\test.usql"Submit
+$job = Submit-AdlJob -AccountName $adla –Script $script
 ```
 
-## <a name="monitor-u-sql-jobs"></a>U-SQL ジョブの監視
-
-アカウントに存在するすべてのジョブを一覧表示します。 出力結果には、現在実行されているジョブと最近完了したジョブが含まれます。
+または、スクリプトをファイルとして保存し、次のコマンドで送信できます。
 
 ```
-Get-AdlJob -Account $adla
+$filename = "d:\test.usql"
+$script | out-File $filename
+$job = Submit-AdlJob -AccountName $adla –ScriptPath $filename
 ```
 
-特定のジョブの状態を取得します。
+
+特定のジョブの状態を取得します。 ジョブが完了するまで、このコマンドレットを使い続けます。
 
 ```
-Get-AdlJob -AccountName $adla -JobId $job.JobId
+$job = Get-AdlJob -AccountName $adla -JobId $job.JobId
 ```
 
 ジョブが完了するまで Get-AdlAnalyticsJob を何度も呼び出す代わりに、Wait-AdlJob コマンドレットを使用することができます。
@@ -119,31 +125,10 @@ Get-AdlJob -AccountName $adla -JobId $job.JobId
 Wait-AdlJob -Account $adla -JobId $job.JobId
 ```
 
-ジョブの完了後、フォルダー内のファイルを一覧表示して、出力ファイルが存在するかどうかを確認します。
+出力ファイルをダウンロードします。
 
 ```
-Get-AdlStoreChildItem -Account $adls -Path "/"
-```
-
-ファイルの存在を確認します。
-
-```
-Test-AdlStoreItem -Account $adls -Path "/data.csv"
-```
-
-## <a name="uploading-and-downloading-files"></a>ファイルのアップロードとダウンロード
-
-U-SQL スクリプトの出力をダウンロードします。
-
-```
-Export-AdlStoreItem -AccountName $adls -Path "/data.csv"  -Destination "D:\data.csv"
-```
-
-
-U-SQL スクリプトへの入力として使用するファイルをアップロードします。
-
-```
-Import-AdlStoreItem -AccountName $adls -Path "D:\data.tsv" -Destination "/data_copy.csv" 
+Export-AdlStoreItem -AccountName $adls -Path "/data.csv" -Destination "C:\data.csv"
 ```
 
 ## <a name="see-also"></a>関連項目

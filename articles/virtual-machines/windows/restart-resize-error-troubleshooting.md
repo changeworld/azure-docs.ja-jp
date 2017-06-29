@@ -13,12 +13,13 @@ ms.topic: support-article
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.workload: required
-ms.date: 01/10/2017
+ms.date: 06/13/2017
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: a99af3b7087d5d7af2687a080deb05ed566fdb63
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/31/2017
 
 

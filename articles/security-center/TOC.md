@@ -5,11 +5,13 @@
 ## シナリオ
 ### [インシデント対応](security-center-incident-response.md)
 ### [推奨事項を使用してセキュリティを強化する](security-center-using-recommendations.md)
+## [プラットフォームの移行](security-center-platform-migration.md)
 
 # 作業開始
 ## [クイック スタート](security-center-get-started.md)
 ## [計画と運用](security-center-planning-and-operations-guide.md)
 ## [アクセス許可](security-center-permissions.md)
+## [サポートされているプラットフォーム](security-center-os-coverage.md)
 ## [パートナー統合](security-center-partner-integration.md)
 ## [FAQ](security-center-faq.md)
 

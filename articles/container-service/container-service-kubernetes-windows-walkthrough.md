@@ -1,7 +1,6 @@
 ---
-title: "Windows 用 Azure Kubernetes クラスター | Microsoft Docs"
-description: "Azure Container Service で Windows コンテナー用 Kubernetes クラスターをデプロイして使ってみます"
-services: container-service
+title: "クイックスタート - Windows 用 Azure Kubernetes クラスター | Microsoft Docs"
+description: "Azure CLI を使用して Azure Container Service で Windows コンテナー用 Kubernetes クラスターを作成する方法を簡単に説明します。"
 documentationcenter: 
 author: dlepow
 manager: timlt
@@ -14,218 +13,203 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/04/2017
+ms.date: 05/31/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: 4e730b65a98af05ea00c5f8ebd9914e3367b66a7
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 929a4dec638da9488dd0b43fd123ed0cce77bcf3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
 
-# <a name="get-started-with-kubernetes-and-windows-containers-in-container-service"></a>Container Service で Kubernetes と Windows コンテナーを使用する
+# <a name="deploy-kubernetes-cluster-for-windows-containers"></a>Windows コンテナー用の Kubernetes クラスターをデプロイする
 
+Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このガイドでは、Azure CLI を使用して、[Kubernetes](https://kubernetes.io/docs/home/) クラスターを [Azure Container Service](container-service-intro.md) にデプロイする方法を詳しく説明します。 クラスターをデプロイしたら、Kubernetes `kubectl` コマンドライン ツールを使用してクラスターに接続し、最初の Windows コンテナーをデプロイします。
 
-この記事では、Windows ノードを含む Azure Container Service で Kubernetes クラスターを作成し、Windows コンテナーを実行する方法について説明します。 最初に Azure CLI 2.0 コマンドの `az acs` を使って Azure Container Service に Kubernetes クラスターを作成します。 その後、Kubernetes の `kubectl` コマンド ライン ツールで、Docker イメージから構築された Windows コンテナーを操作します。 
+このチュートリアルには、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 アップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 > [!NOTE]
 > Azure Container Service における Kubernetes での Windows コンテナーのサポートはプレビュー段階です。 
 >
 
+## <a name="log-in-to-azure"></a>Azure へのログイン 
 
+[az login](/cli/azure/#login) コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
 
-次の図は、1 つの Linux マスター ノードと 2 つの Windows エージェント ノードを含む、Azure Container Service の Kubernetes クラスターのアーキテクチャを示しています。 
-
-![Azure 上の Kubernetes クラスターの図](media/container-service-kubernetes-windows-walkthrough/kubernetes-windows.png)
-
-* Linux マスターは Kubernetes REST API を提供し、ポート 22 の SSH またはポート 443 の `kubectl` でアクセスできます。 
-* Windows エージェント ノードは、Azure 可用性セットにグループ化され、コンテナーを実行します。 Windows ノードには、マスター ノードを介して RDP SSH トンネル経由でアクセスできます。 Azure Load Balancer ルールは、公開されているサービスに応じてクラスターに動的に追加されます。
-
-
-
-すべての VM は同一のプライベート仮想ネットワーク内にあり、完全な相互アクセスが可能です。 すべての VM で、kubelet、Docker、およびプロキシが実行されます。
-
-詳しい背景については、[Azure Container Service の概要](container-service-intro.md)に関するページと [Kubernetes のドキュメント](https://kubernetes.io/docs/home/)を参照してください。
-
-## <a name="prerequisites"></a>前提条件
-Azure CLI 2.0 を使用して Azure Container Service クラスターを作成するには、以下のものが必要です。
-* Azure アカウント ([無料試用版はこちら](https://azure.microsoft.com/pricing/free-trial/))
-* [Azure CLI 2.0](/cli/azure/install-az-cli2) のインストールとログイン
-
-また、Kubernetes クラスターには以下の情報が必要となります。 これらは事前に準備しておくか、クラスターのデプロイ時に `az acs create` コマンド オプションを使って自動的に生成してください。 
-
-* **SSH RSA 公開キー**: Secure Shell (SSH) RSA キーを作成する場合は、[macOS と Linux](../virtual-machines/linux/mac-create-ssh-keys.md) のガイダンスまたは [Windows](../virtual-machines/linux/ssh-from-windows.md) のガイダンスを参照してください。 
-
-* **サービス プリンシパル クライアント ID とシークレット**: Azure Active Directory サービス プリンシパルの作成手順とさらに詳しい情報については、[Kubernetes クラスターのサービス プリンシパル](container-service-kubernetes-service-principal.md)に関するページを参照してください。
-
-この記事のコマンド例では、SSH キーとサービス プリンシパルを自動的に生成します。
-  
-## <a name="create-your-kubernetes-cluster"></a>Kubernetes クラスターの作成
-
-クラスターを作成するための Azure CLI 2.0 コマンドは以下のとおりです。 
-
-### <a name="create-a-resource-group"></a>リソース グループの作成
-Azure Container Service が[利用できる場所](https://azure.microsoft.com/regions/services/)にリソース グループを作成します。 次のコマンドは、*westus* に *myKubernetesResourceGroup* という名前のリソース グループを作成します。
-
-```azurecli
-az group create --name=myKubernetesResourceGroup --location=westus
+```azurecli-interactive 
+az login
 ```
 
-### <a name="create-a-kubernetes-cluster-with-windows-agent-nodes"></a>Windows エージェント ノードから成る Kubernetes クラスターの作成
+## <a name="create-a-resource-group"></a>リソース グループの作成
 
-`az acs create` コマンドに `--orchestrator-type=kubernetes` と `--windows` エージェント オプションを指定して、Kubernetes クラスターをリソース グループに作成します。 コマンド構文については、`az acs create` の[ヘルプ](/cli/azure/acs#create)を参照してください。
+[az group create](/cli/azure/group#create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理グループです。 
 
-以下のコマンドでは、*myKubernetesClusterName* という名前の Container Service クラスターを作成します。管理ノードには DNS プレフィックスとして *myPrefix* を使用し、各 Windows ノードにアクセスするための資格情報を指定しています。 このバージョンのコマンドでは、Kubernetes クラスターのサービス プリンシパルと SSH RSA キーが自動的に生成されます。
+次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+
+```azurecli-interactive 
+az group create --name myResourceGroup --location eastus
+```
+
+## <a name="create-kubernetes-cluster"></a>Kubernetes クラスターを作成する
+[az acs create](/cli/azure/acs#create) コマンドを使用して Azure Container Service に Kubernetes クラスターを作成します。 
+
+次の例では、1 つの Windows マスター ノードと 2 つの Linux エージェント ノードを含む、*myK8sCluster* という名前のクラスターを作成します。 この例では、Linux のマスターに接続するために必要な SSH キーを作成します。 この例では、Windows ノードの管理ユーザーの名前に *azureuser*、パスワードに *myPassword12* を使用します。 これらの値を、環境に適した内容に更新します。 
 
 
-```azurecli
+
+```azurecli-interactive 
 az acs create --orchestrator-type=kubernetes \
-    --resource-group myKubernetesResourceGroup \
-    --name=myKubernetesClusterName \
-    --dns-prefix=myPrefix \
+    --resource-group myResourceGroup \
+    --name=myK8sCluster \
     --agent-count=2 \
     --generate-ssh-keys \
-    --windows --admin-username myWindowsAdminName \
-    --admin-password myWindowsAdminPassword
+    --windows --admin-username azureuser \
+    --admin-password myPassword12
 ```
 
-数分後、コマンドが完了すると、Kubernetes クラスターが稼働状態となります。
+数分してコマンドが完了すると、デプロイに関する情報が表示されます。
 
-> [!IMPORTANT]
-> ご利用のアカウントに Azure AD サービス プリンシパルを作成するためのアクセス許可がない場合、このコマンドを実行すると、"`Insufficient privileges to complete the operation.`" というエラーが発生します。詳細については、[Kubernetes クラスターのサービス プリンシパル](container-service-kubernetes-service-principal.md)に関するページを参照してください。 
-> 
-
-## <a name="connect-to-the-cluster-with-kubectl"></a>kubectl によるクラスターへの接続
+## <a name="install-kubectl"></a>kubectl のインストール
 
 クライアント コンピューターから Kubernetes クラスターに接続するには、Kubernetes コマンドライン クライアント ([`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/)) を使用します。 
 
-`kubectl` をまだローカルにインストールしていない場合は、`az acs kubernetes install-cli` でインストールできます  ([Kubernetes サイト](https://kubernetes.io/docs/tasks/kubectl/install/)からダウンロードすることもできます)。
+Azure CloudShell を使用している場合、`kubectl` は既にインストールされています。 ローカルにインストールする場合には、[az acs kubernetes install-cli](/cli/azure/acs/kubernetes#install-cli) コマンドを使用します。
 
-**Linux または macOS**
+次の Azure CLI の例では `kubectl` がご使用のシステムにインストールされます。 Windows では、管理者として次のコマンドを実行します。
 
-```azurecli
-sudo az acs kubernetes install-cli
-```
-
-**Windows**
-```azurecli
+```azurecli-interactive 
 az acs kubernetes install-cli
 ```
 
-> [!TIP]
-> 既定では、`kubectl` バイナリが `/usr/local/bin/kubectl` (Linux または macOS システム) または `C:\Program Files (x86)\kubectl.exe` (Windows) にインストールされます。 別のインストール パスを指定する場合は、`--install-location` パラメーターを使用してください。
->
-> `kubectl` のインストール後、そのディレクトリのパスを通して (ディレクトリをシステム パスに追加して) ください。 
 
+## <a name="connect-with-kubectl"></a>kubectl を使用して接続する
 
-そのうえで、次のコマンドを実行して、マスターの Kubernetes クラスター構成をローカル `~/.kube/config` ファイルにダウンロードします。
+Kubernetes クラスターに接続するように `kubectl` を構成するには、[az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials) コマンドを実行します。 次の例では、Kubernetes クラスターのクラスター構成がダウンロードされます。
 
-```azurecli
-az acs kubernetes get-credentials --resource-group=myKubernetesResourceGroup --name=myKubernetesClusterName
+```azurecli-interactive 
+az acs kubernetes get-credentials --resource-group=myResourceGroup --name=myK8sCluster
 ```
 
-この時点で、自分のコンピューターからクラスターにアクセスできます。 次を実行してみてください。
+コンピューターからクラスターへの接続を確認するために、次のコマンドを実行してみます。
 
-```bash
+```azurecli-interactive
 kubectl get nodes
 ```
 
-クラスター内にコンピューターの一覧が表示されることを確認します。
+`kubectl` によって、マスター ノードとエージェント ノードが一覧表示されます。
 
-![Kubernetes クラスターで実行されているノード](media/container-service-kubernetes-windows-walkthrough/kubectl-get-nodes.png)
+```azurecli-interactive
+NAME                    STATUS                     AGE       VERSION
+k8s-agent-98dc3136-0    Ready                      5m        v1.5.3
+k8s-agent-98dc3136-1    Ready                      5m        v1.5.3
+k8s-master-98dc3136-0   Ready,SchedulingDisabled   5m        v1.5.3
 
-## <a name="create-your-first-kubernetes-service"></a>最初の Kubernetes サービスの作成
+```
 
-クラスターを作成し、`kubectl` で接続した後、Docker コンテナーから Windows アプリを起動し、インターネットに公開してみましょう。 この基本的な例では、JSON ファイルを使って Microsoft Internet Information Server (IIS) コンテナーを指定し、`kubctl apply` を使って作成します。 
+## <a name="deploy-a-windows-iis-container"></a>Windows IIS コンテナーをデプロイする
 
-1. `iis.json` という名前のローカル ファイルを作成し、以下の内容をコピーします。 このファイルによって、[Docker Hub](https://hub.docker.com/r/microsoft/iis/) からのパブリック イメージを使用し、Windows Server 2016 Server Core で IIS を実行するよう Kubernetes に伝えられます。 このコンテナーにはポート 80 が使用されていますが、初期状態ではクラスター ネットワーク内からしかアクセスできません。
+1 つ以上のコンテナーが含まれる Kubernetes の "*ポッド*" 内で Docker コンテナーを実行できます。 
 
-  ```JSON
-  {
-    "apiVersion": "v1",
-    "kind": "Pod",
-    "metadata": {
-      "name": "iis",
-      "labels": {
-        "name": "iis"
-      }
-    },
-    "spec": {
-      "containers": [
-        {
-          "name": "iis",
-          "image": "microsoft/iis",
-          "ports": [
-            {
-            "containerPort": 80
-            }
-          ]
-        }
-      ],
-      "nodeSelector": {
-        "beta.kubernetes.io/os": "windows"
-      }
+この基本的な例では、JSON ファイルを使って Microsoft Internet Information Server (IIS) コンテナーを指定し、その後、`kubctl apply` を使ってポッドを作成します。 
+
+`iis.json` という名前のローカル ファイルを作成し、次のテキストをコピーします。 このファイルによって、[Docker Hub](https://hub.docker.com/r/nanoserver/iis/) からのパブリック コンテナー イメージを使用し、Windows Server 2016 Nano Server で IIS を実行するよう Kubernetes に伝えられます。 このコンテナーにはポート 80 が使用されていますが、初期状態ではクラスター ネットワーク内からしかアクセスできません。
+
+ ```JSON
+ {
+  "apiVersion": "v1",
+  "kind": "Pod",
+  "metadata": {
+    "name": "iis",
+    "labels": {
+      "name": "iis"
     }
-  }
-  ```
-2. アプリケーションを起動するには、次のように入力します。  
+  },
+  "spec": {
+    "containers": [
+      {
+        "name": "iis",
+        "image": "nanoserver/iis",
+        "ports": [
+          {
+          "containerPort": 80
+          }
+        ]
+      }
+    ],
+    "nodeSelector": {
+     "beta.kubernetes.io/os": "windows"
+     }
+   }
+ }
+ ```
+
+ポッドを開始するには次のように入力します。
   
-  ```bash
-  kubectl apply -f iis.json
-  ```  
-3. コンテナーのデプロイを追跡するには、次のように入力します。  
-  ```bash
-  kubectl get pods
-  ```
-  コンテナーのデプロイ中は、状態が `ContainerCreating` になります。 
+```azurecli-interactive
+kubectl apply -f iis.json
+```  
 
-  ![ContainerCreating 状態の IIS コンテナー](media/container-service-kubernetes-windows-walkthrough/iis-pod-creating.png)   
-
-  IIS イメージのサイズ上、コンテナーが `Running` 状態になるまでに数分かかる場合があります。
-
-  ![Running 状態の IIS コンテナー](media/container-service-kubernetes-windows-walkthrough/iis-pod-running.png)
-
-4. このコンテナーを外部に公開するには、次のコマンドを入力します。
-
-  ```bash
-  kubectl expose pods iis --port=80 --type=LoadBalancer
-  ```
-
-  このコマンドにより、パブリック IP アドレスを持つ Azure Load Balancer ルールが、Kubernetes によって作成されます。 変更がロード バランサーに反映されるまでに数分かかります。 詳細については、「[Azure Container Service の Kubernetes クラスターのコンテナーで負荷を分散する](container-service-kubernetes-load-balancing.md)」を参照してください。
-
-5. 次のコマンドを実行して、サービスの状態を確認します。
-
-  ```bash
-  kubectl get svc
-  ```
-
-  初期状態では IP アドレスが `pending` として表示されます。
-
-  ![保留状態の外部 IP アドレス](media/container-service-kubernetes-windows-walkthrough/iis-svc-expose.png)
-
-  数分後、IP アドレスが次のように設定されます。
+デプロイを追跡するには次のように入力します。
   
-  ![IIS の外部 IP アドレス](media/container-service-kubernetes-windows-walkthrough/iis-svc-expose-public.png)
+```azurecli-interactive
+kubectl get pods
+```
+
+ポッドのデプロイ中は、状態が `ContainerCreating` になります。 コンテナーの状態が `Running` になるまでに数分かかることがあります。
+
+```azurecli-interactive
+NAME     READY        STATUS        RESTARTS    AGE
+iis      1/1          Running       0           32s
+```
+
+## <a name="view-the-iis-welcome-page"></a>IIS のようこそページの表示
+
+パブリック IP アドレスでポッドを世界に公開するには、次のコマンドを入力します。
+
+```azurecli-interactive
+kubectl expose pods iis --port=80 --type=LoadBalancer
+```
+
+このコマンドにより、サービスと、サービスのためのパブリック IP アドレスを持つ [Azure Load Balancer ルール](container-service-kubernetes-load-balancing.md)が、Kubernetes によって作成されます。 
+
+次のコマンドを実行して、サービスの状態を確認します。
+
+```azurecli-interactive
+kubectl get svc
+```
+
+初期状態では IP アドレスが `pending` として表示されます。 数分後に、`iis`ポッドの外部 IP アドレスが設定されます。
+  
+```azurecli-interactive
+NAME         CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE       
+kubernetes   10.0.0.1       <none>          443/TCP        21h       
+iis          10.0.111.25    13.64.158.233   80/TCP         22m
+```
+
+任意の Web ブラウザーを使用して、外部 IP アドレスで IIS の既定のようこそページを確認します。
+
+![IIS にブラウザーでアクセスしたところ](media/container-service-kubernetes-windows-walkthrough/kubernetes-iis.png)  
 
 
-6. 外部 IP アドレスが利用できる状態になったら、そのアドレスにブラウザーでアクセスすることができます。
+## <a name="delete-cluster"></a>クラスターを削除する
+クラスターが必要なくなったら、[az group delete](/cli/azure/group#delete) コマンドを使用して、リソース グループ、コンテナー サービス、およびすべての関連リソースを削除できます。
 
-  ![IIS にブラウザーでアクセスしたところ](media/container-service-kubernetes-windows-walkthrough/kubernetes-iis.png)  
+```azurecli-interactive 
+az group delete --name myResourceGroup
+```
 
-7. IIS ポッドを削除するには、次のように入力します。
-
-  ```bash
-  kubectl delete pods iis
-  ```
 
 ## <a name="next-steps"></a>次のステップ
 
-* Kubernetes UI を使用するには、`kubectl proxy` コマンドを実行します。 その後、ブラウザーで http://localhost:8001/ui にアクセスします。
+このクイック スタートでは、`kubectl` で接続される Kubernetes クラスターをデプロイし、IIS コンテナーを含むポッドをデプロイしました。 Azure Container Service の詳細を学ぶには、Kubernetes のチュートリアルに進みます。
 
-* カスタム IIS Web サイトを構築して Windows コンテナーで実行する手順については、[Docker Hub](https://hub.docker.com/r/microsoft/iis/) のガイダンスを参照してください。
-
-* PuTTy を使用し、マスター ノードへの RDP SSH トンネルを介して Windows ノードにアクセスする方法については、[ACS-Engine のドキュメント](https://github.com/Azure/acs-engine/blob/master/docs/ssh.md#create-port-80-tunnel-to-the-master)を参照してください。 
+> [!div class="nextstepaction"]
+> [ACS Kubernetes クラスターの管理](./container-service-tutorial-kubernetes-prepare-app.md)
 

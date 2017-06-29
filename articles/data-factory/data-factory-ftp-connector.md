@@ -3,7 +3,7 @@ title: "Azure Data Factory を使用した FTP サーバーからのデータ移
 description: "Azure Data Factory を使用して FTP サーバーからデータを移動する方法を説明します。"
 services: data-factory
 documentationcenter: 
-author: spelluru
+author: linda33wj
 manager: jhubbard
 editor: monicar
 ms.assetid: eea3bab0-a6e4-4045-ad44-9ce06229c718
@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2017
-ms.author: spelluru
-translationtype: Human Translation
+ms.date: 06/19/2017
+ms.author: jingwang
+ms.translationtype: Human Translation
 ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
 ms.openlocfilehash: 1c37802e2b908747773afa093a28ea218dd60509
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/19/2017
 
 

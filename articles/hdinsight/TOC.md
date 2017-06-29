@@ -22,7 +22,8 @@
 ## [Hadoop サンドボックス](hdinsight-hadoop-emulator-get-started.md)
 ## [Data Lake Tools と Hortonworks サンドボックス](hdinsight-hadoop-emulator-visual-studio.md)
 ## [Tools for Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md)
-## [HDInsight ストレージのオプション](hdinsight-hadoop-use-blob-storage.md)
+## [Azure Storage を使用する HDInsight](hdinsight-hadoop-use-blob-storage.md)
+## [Azure Data Lake Store を使用する HDInsight](hdinsight-hadoop-use-data-lake-store.md)
 
 # 方法
 ## バッチ クエリへの Hadoop の使用
@@ -105,14 +106,17 @@
 ### [Hive ポリシーを構成する](hdinsight-domain-joined-run-hive.md)
 ## Kafka の使用 (プレビュー)
 ### [Kafka データのレプリケート](hdinsight-apache-kafka-mirroring.md)
+### [Kafka の記憶域とスケーラビリティの構成](hdinsight-apache-kafka-scalability.md)
 ### [Virtual Networks での使用](hdinsight-apache-kafka-connect-vpn-gateway.md)
-### [Spark での使用](hdinsight-apache-spark-with-kafka.md)
+### [Spark での使用 (構造化ストリーミング)](hdinsight-apache-kafka-spark-structured-streaming.md)
+### [Spark での使用 (DStream)](hdinsight-apache-spark-with-kafka.md)
 ### [Storm での使用](hdinsight-apache-storm-with-kafka.md)
 ## 開発
 ### [C# ストリーミング MapReduce プログラムを開発する](hdinsight-hadoop-dotnet-csharp-mapreduce-streaming.md)
 ### [Java MapReduce プログラムを開発する](hdinsight-develop-deploy-java-mapreduce-linux.md)
 ### [Scalding MapReduce ジョブを開発する](hdinsight-hadoop-mapreduce-scalding.md)
 ### [HDInsight Tools を使用して Spark アプリを作成する](hdinsight-apache-spark-eclipse-tool-plugin.md)
+### [HDInsight Tools を使用して Spark アプリをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-debug-remotely.md)
 ### [空のエッジ ノードを使用する](hdinsight-apps-use-edge-node.md)
 ### [Python ストリーミング プログラムを開発する](hdinsight-hadoop-streaming-python.md)
 ### [JSON ドキュメントを処理および分析する](hdinsight-using-json-in-hive.md)
@@ -141,7 +145,7 @@
 ### [R を使用する](hdinsight-hadoop-r-scripts-linux.md)
 ### [Solr を使用する](hdinsight-hadoop-solr-install-linux.md)
 ### [Virtual Network を使用する](hdinsight-extend-hadoop-virtual-network.md)
-### [Zeppelin を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
+### [Zeppelin を使用する](hdinsight-apache-spark-zeppelin-notebook.md)
 ### HDInsight アプリケーションの構築
 #### [HDInsight アプリをインストールする](hdinsight-apps-install-applications.md)
 #### [カスタム アプリをインストールする](hdinsight-apps-install-custom-applications.md)
@@ -222,6 +226,7 @@
 ### [Ambari API を使用してクラスターを監視する](hdinsight-monitor-use-ambari-api.md)
 
 # リソース
-## [HDInsight 用の Windows ツール](hdinsight-hadoop-windows-tools.md)
+## [ビッグ データに関する Microsoft プロフェッショナル プログラム](https://academy.microsoft.com/en-us/professional-program/big-data/)
 ## [フォーラムで質問する](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight)
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
+## [HDInsight 用の Windows ツール](hdinsight-hadoop-windows-tools.md)

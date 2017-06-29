@@ -7,7 +7,7 @@ Premium キャッシュを作成するには、[Azure Portal](https://portal.azu
 > 
 > 
 
-Premium 機能を構成するには、まず **[料金レベルの選択]** ブレードで [Premium] 価格レベルのいずれかを選択します。
+Premium 機能を構成するには、まず **[料金レベル]** ドロップダウン リストで Premium 価格レベルのいずれかを選択します。 各価格レベルの詳細については、**[価格の詳細を表示]** をクリックし、**[価格レベルの選択]** ブレードから価格レベルを選択します。
 
 ![[料金レベルの選択]](media/redis-cache-premium-create/redis-cache-premium-pricing-tier.png)
 

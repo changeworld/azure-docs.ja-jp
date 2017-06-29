@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/02/2017
+ms.date: 06/13/2017
 ms.author: amanbha
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
 ms.openlocfilehash: 0d942fa9f4a3b9094d8122e4745c0450f507ea16
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/31/2017
 
 

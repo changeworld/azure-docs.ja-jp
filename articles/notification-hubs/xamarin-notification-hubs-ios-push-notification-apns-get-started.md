@@ -15,9 +15,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 53f9d5b37e6f754540e70b534555750dd54895d0
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 426294e0dc3e877565bd57e899fdc79a1bd31c21
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -31,7 +33,7 @@ ms.openlocfilehash: 53f9d5b37e6f754540e70b534555750dd54895d0
 > 
 
 このチュートリアルでは、Azure Notification Hubs を使用して iOS アプリケーションにプッシュ通知を送信する方法について説明します。
-[Apple Push Notification サービス (APNs)](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html)を使用してプッシュ通知を受信する空の Xamarin.iOS アプリケーションを作成します。 完了すると、通知ハブを使用して、アプリケーションを実行するすべてのデバイスにプッシュ通知をブロードキャストできるようになります。 完成したコードは、[NotificationHubs アプリ][GitHub] サンプルで参照できます。
+[Apple Push Notification サービス (APNs)](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html)を使用してプッシュ通知を受信する空の Xamarin.iOS アプリケーションを作成します。 完了すると、通知ハブを使用して、アプリケーションを実行するすべてのデバイスにプッシュ通知をブロードキャストできるようになります。 完成したコードは、[NotificationHubs アプリケーション][GitHub] サンプルで参照できます。
 
 このチュートリアルでは、Notification Hubs を使用した簡単なプッシュ メッセージ ブロードキャスト シナリオのデモンストレーションを行います。
 
@@ -76,7 +78,7 @@ ms.openlocfilehash: 53f9d5b37e6f754540e70b534555750dd54895d0
 #### <a name="create-a-new-project"></a>新しいプロジェクトを作成する
 1. Xamarin Studio で、新しい iOS プロジェクトを作成し、**[Unified API (統合 API)]** > **[Single View Application (単一ビュー アプリケーション)]** テンプレートを選択します。
    
-       ![Xamarin Studio - Select Application Type][31]
+     ![Xamarin Studio - アプリケーションの種類を選択する][31]
 2. Azure Messaging コンポーネントへの参照を追加します。 [Solution (ソリューション)] ビューで、プロジェクトの **[Components (コンポーネント)]** フォルダーを右クリックし、**[Get More Components (他のコンポーネントを取得する)]** を選択します。 **Azure Messaging** コンポーネントを検索し、そのコンポーネントをプロジェクトに追加します。
 3. **AppDelegate.cs**で、次の using ステートメントを追加します。
    
@@ -278,16 +280,16 @@ Apple の「 [Local and Push Notification Programming Guide (ローカルおよ�
 
 <!-- URLs. -->
 [Mobile Services iOS SDK]: http://go.microsoft.com/fwLink/?LinkID=266533
-[アプリの提出のページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Windows 向け Live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
+[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 
 [Mobile Services の使用]: /develop/mobile/tutorials/get-started-xamarin-ios
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
 [Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
 [iOS 向けの Notification Hubs の使用方法]: http://msdn.microsoft.com/library/jj927168.aspx
 [Install Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
-[iOS プロビジョニング ポータル]: http://go.microsoft.com/fwlink/p/?LinkId=272456
+[iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
 
 [Notification Hubs を使用したユーザーへのプッシュ通知]: /manage/services/notification-hubs/notify-users-aspnet
 [Notification Hubs を使用したニュース速報の送信]: /manage/services/notification-hubs/breaking-news-dotnet
@@ -295,14 +297,9 @@ Apple の「 [Local and Push Notification Programming Guide (ローカルおよ�
 [Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
 [Apple Push Notification Service]: http://go.microsoft.com/fwlink/p/?LinkId=272584
 
-[Azure Mobile Services コンポーネント]: http://components.xamarin.com/view/azure-mobile-services/
+[Azure Mobile Services Component]: http://components.xamarin.com/view/azure-mobile-services/
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkId=331329
 [Xamarin Studio]: http://xamarin.com/download
 [WindowsAzure.Messaging]: https://github.com/infosupport/WindowsAzure.Messaging.iOS
 [Azure Portal]: https://portal.azure.com
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

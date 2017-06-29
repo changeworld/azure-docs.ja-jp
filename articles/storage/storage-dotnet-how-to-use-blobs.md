@@ -14,9 +14,10 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 03/27/2017
 ms.author: marsma
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
 ms.openlocfilehash: e9cfcdd9d6e36c1154b91904da60483825ff8b94
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/25/2017
 
 ---
@@ -53,7 +54,7 @@ Blob Storage を使用したその他の例については、「 [Getting Starte
 次の **using** ディレクティブを `Program.cs` ファイルの先頭に追加します。
 
 ```csharp
-using Microsoft.Azure; // Namespace for CloudConfigurationManager
+using Microsoft.WindowsAzure; // Namespace for CloudConfigurationManager
 using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
 using Microsoft.WindowsAzure.Storage.Blob; // Namespace for Blob storage types
 ```

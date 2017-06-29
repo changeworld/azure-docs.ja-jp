@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/13/2017
+ms.date: 6/21/2017
 ms.author: johnkem
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
 ms.openlocfilehash: 4ea07a1cade7e3007b0f85214b4d41a61b527001
+ms.contentlocale: ja-jp
 ms.lasthandoff: 12/22/2016
 
 
@@ -109,9 +110,9 @@ Resource Manager テンプレートを使用してアラートを作成するに
         },
         "windowSize": {
             "type": "string",
-            "defaultValue": "00:05:00",
+            "defaultValue": "PT5M",
             "metadata": {
-                "description": "Period of time used to monitor alert activity based on the threshold. Must be between 00:05:00 and 24:00:00. ISO 8601 duration format."
+                "description": "Period of time used to monitor alert activity based on the threshold. Must be between five minutes and one day. ISO 8601 duration format."
             }
         },
         "sendToServiceOwners": {
@@ -241,7 +242,7 @@ Resource Manager テンプレートのアラートは、多くの場合、リソ
         "metricName": "Percentage CPU",
         "operator": "GreaterThan",
         "threshold": "80",
-        "windowSize": "00:10:00",
+        "windowSize": "PT5M",
         "aggregation": "Average",
         "customEmails": "",
         "sendToServiceOwners": true,

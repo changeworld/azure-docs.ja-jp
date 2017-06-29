@@ -9,9 +9,10 @@ ms.technology: academic-knowledge
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: alch
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: fe81d6f9c22c263ac0443efed312e84c8e77eff0
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/12/2017
 
 ---
@@ -23,7 +24,7 @@ The **graph search** REST API is used to return a set of academic entities based
 
 **REST endpoint:**  
 ```
-https://westus.api.cognitive.microsoft.com/academic/graph/v1.0/search?
+https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search?
 ```   
 <br>
 
@@ -48,7 +49,7 @@ For the *lambda* search, the POST body is a plain-text string. The POST body is 
 Name | Description
 -------|-----   
 **results** | An array of 0 or more entities that match the query expression. Each entity contains the values of requested attributes. This field is present if the request has been successfully processed.
-**error** |    HTTP status codes. This field is present if the request fails.
+**error** | HTTP status codes. This field is present if the request fails.
 **message** | Error message. This field is present if the request fails.
 
 If a query cannot be processed within _800 ms_, a _timeout_ error will be returned. 
@@ -58,7 +59,7 @@ If a query cannot be processed within _800 ms_, a _timeout_ error will be return
 
 ##### <a name="json-search"></a>JSON Search
 ```
-https://westus.api.cognitive.microsoft.com/academic/graph/v1.0/search?mode=json
+https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search?mode=json
 ```
 <br>
 For the *json* search, if we want to get the papers whose titles contain "graph engine" and written by "bin shao", we can specify the query as follows.
@@ -130,7 +131,7 @@ The output of a query is an array of graph paths. A graph path is an array of no
 ##### <a name="lambda-search"></a>Lambda Search 
 
 ```
-https://westus.api.cognitive.microsoft.com/academic/graph/v1.0/search?mode=lambda
+https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search?mode=lambda
 ```
 <br>
 For the *lambda* search, if we want to get the author IDs of a given paper, we can write a query like the following one.

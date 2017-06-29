@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 05/26/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: cc85ae1c6642e763e57327c151ec68845f7673f7
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 34726377836d00d484ca01edb098f6c7cbfa9dbf
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -31,7 +31,6 @@ Microsoft SQL Server Analysis Services の実績のある分析エンジン上�
 このビデオでは、Azure Analysis Services がマイクロソフトの BI 機能全体にどのように組み込まれ、データ モデルのクラウドへの移行によりどのようなメリットが得られるのかを説明しています。
 
 
->
 >[!VIDEO https://channel9.msdn.com/series/Azure-Analysis-Services/Azure-Analysis-Services-overview/player]
 >
 >
@@ -43,7 +42,7 @@ Azure Analysis Services は SQL Server Analysis Services Enterprise Edition と�
 ## <a name="use-the-tools-you-already-know"></a>既に知っているツールの使用
 ![BI 開発者用ツール](./media/analysis-services-overview/aas-overview-dev-tools.png)
 
-Azure Analysis Services のデータ モデルを作成するときは、SQL Server Analysis Services と同じツールを使います。 モデルの作成とデプロイには、[SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)、または [Azure Powershell](/powershell/azureps-cmdlets-docs) と [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx) の [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) テンプレートを使います。
+Azure Analysis Services のデータ モデルを作成するときは、SQL Server Analysis Services と同じツールを使います。 [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx) を使って、モデルを作成してデプロイします。 [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx) を使って、サーバーとモデル データベースを管理します。 また、[Powershell](analysis-services-powershell.md) および [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) テンプレートでタスクを自動化します。 
 
 ## <a name="supports-the-latest-features"></a>最新機能のサポート
 Azure Analysis Services は、互換性レベル 1200 および 1400 プレビューの表形式モデルをサポートしています。
@@ -55,9 +54,7 @@ Azure Analysis Services は、互換性レベル 1200 および 1400 プレビ�
 ## <a name="data-sources"></a>データ ソース
 Azure のサーバーにデプロイされるデータ モデルは、組織のオンプレミス データ ソースまたはクラウドのデータ ソースへの接続をサポートします。 ハイブリッド BI ソリューションでは、オンプレミスとクラウド両方のデータ ソースのデータを組み合わせます。
 
-サーバーはクラウド内にあるため、クラウドのデータ ソースへの接続はシームレスです。 オンプレミス データ ソースに接続するときは、[オンプレミス データ ゲートウェイ](analysis-services-gateway.md)によってクラウドのサーバーとの高速で安全な接続が保証されます。
-
-サポートされるオンプレミス データ ソースについて詳しくは、「[Data sources supported in Azure Analysis Services (Azure Analysis Services でサポートされるデータ ソース)](analysis-services-datasource.md)」を参照してください。
+サーバーはクラウド内にあるため、クラウドのデータ ソースへの接続はシームレスです。 オンプレミス データ ソースに接続するときは、[オンプレミス データ ゲートウェイ](analysis-services-gateway.md)によってクラウドのサーバーとの高速で安全な接続が保証されます。 サポートされるオンプレミス データ ソースについて詳しくは、「[Data sources supported in Azure Analysis Services (Azure Analysis Services でサポートされるデータ ソース)](analysis-services-datasource.md)」を参照してください。
 
 
 ## <a name="explore-your-data-from-anywhere"></a>任意の場所からデータを取得
@@ -84,13 +81,17 @@ Azure Analysis Services は、[Microsoft オンライン サービス使用条�
 Azure のセキュリティについて詳しくは、[Microsoft セキュリティ センター](https://www.microsoft.com/trustcenter/Security/AzureSecurity)をご覧ください。
 
 ## <a name="get-help"></a>問い合わせ
-Azure Analysis Services は簡単にセットアップして管理できます。 サーバーの作成と管理に必要なすべての情報はこちらで確認できます。 データ モデルの作成とサーバーへのデプロイは、オンプレミスのサーバーにデプロイするデータ モデルを作成する場合とほぼ同じです。 概念、手順、チュートリアル、リファレンスの記事の広範なライブラリが、[Analysis Services に関する MSDN](https://msdn.microsoft.com/library/bb522607.aspx) にあります。
 
-また、[Azure Analysis Services に関する Channel 9](https://channel9.msdn.com/series/Azure-Analysis-Services) には役に立つビデオが多数あります。
+### <a name="documentation"></a>ドキュメント
+Azure Analysis Services は簡単にセットアップして管理できます。 サーバーの作成と管理に必要なすべての情報はこちらで確認できます。 データ モデルの作成とサーバーへのデプロイは、オンプレミスのサーバーにデプロイするデータ モデルを作成する場合とほぼ同じです。 概念、手順、チュートリアル、リファレンスの記事の広範なライブラリが、[Analysis Services](https://docs.microsoft.com/sql/analysis-services/analysis-services) にあります。
 
-内容は急速に変化しています。 最新情報は [Azure Analysis Services のブログ](https://go.microsoft.com/fwlink/?linkid=830920)で常に入手できます。
+### <a name="videos"></a>ビデオ
+[Azure Analysis Services に関する Channel 9](https://channel9.msdn.com/series/Azure-Analysis-Services) にある、役立つビデオをご確認ください。
 
-## <a name="community"></a>コミュニティ
+### <a name="blogs"></a>ブログ
+内容は急速に変化しています。 最新情報は、[Analysis Services チーム ブログ](https://blogs.msdn.microsoft.com/analysisservices/)および [Azure ブログ](https://azure.microsoft.com/blog/)で常に入手できます。
+
+### <a name="community"></a>コミュニティ
 Analysis Services には活気のあるユーザー コミュニティがあります。 [Azure Analysis Services フォーラム](https://aka.ms/azureanalysisservicesforum)の会話に参加してください。
 
 ## <a name="feedback"></a>フィードバック
@@ -100,5 +101,4 @@ Analysis Services には活気のあるユーザー コミュニティがあり�
 
 ## <a name="next-steps"></a>次のステップ
 Azure Analysis Services について理解できたら、実際に始めてみてください。 Azure で[サーバーを作成する](analysis-services-create-server.md)方法およびサーバーに[表形式モデルをデプロイする](analysis-services-deploy.md)方法を学習してください。
-
 

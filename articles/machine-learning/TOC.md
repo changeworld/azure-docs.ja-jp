@@ -155,7 +155,7 @@
 #### [既存の Wweb サービスの再トレーニングを行う](machine-learning-retrain-existing-resource-manager-based-web-service.md)
 #### [トラブルシューティング](machine-learning-troubleshooting-retraining-models.md)
 ### モデルを使用する
-#### [概要](machine-learning-connect-to-azure-machine-learning-web-service.md)
+#### [概要](machine-learning-consume-web-services.md)
 #### [Excel を使用する](machine-learning-consuming-from-excel.md)
 #### [Excel アドインを使用する](machine-learning-excel-add-in-for-web-services.md)
 #### [Web アプリ テンプレートを使用する](machine-learning-consume-web-service-with-web-app-template.md)

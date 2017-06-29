@@ -1,4 +1,4 @@
-App Service プランは、アプリのホストとなる Web サーバー ファームの場所、サイズ、機能を規定するものです。 1 つの App Service プランを共有するように Web アプリを構成することで、複数のアプリをホストするときのコストを抑えることができます。
+[App Service プラン](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)は、アプリのホストとなる Web サーバー ファームの場所、サイズ、機能を規定します。 1 つの App Service プランを共有するように Web アプリを構成することで、複数のアプリをホストするときのコストを抑えることができます。
 
 App Service プランには、次の定義があります。
 

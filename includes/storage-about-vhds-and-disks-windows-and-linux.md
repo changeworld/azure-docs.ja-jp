@@ -27,7 +27,7 @@ VM ディスクを利用した Standard Storage の使用の詳細について�
 
 ### <a name="premium-storage"></a>Premium Storage 
 
-Premium Storage では、SSD が使用されており、I/O 集中型のワークロードを実行している VM 向けに高パフォーマンスで待ち時間の少ないディスク サポートを提供します。 Premium Storage は、DS シリーズ、DSv2 シリーズ、GS シリーズ、FS シリーズ の Azure VM で使用できます。 詳細については、[Premium Storage](../articles/storage/storage-premium-storage.md) に関する記事を参照してください。
+Premium Storage では、SSD が使用されており、I/O 集中型のワークロードを実行している VM 向けに高パフォーマンスで待ち時間の少ないディスク サポートを提供します。 Premium Storage は、DS シリーズ、DSv2 シリーズ、GS シリーズ、Ls シリーズ、または FS シリーズの Azure VM で使用できます。 詳細については、[Premium Storage](../articles/storage/storage-premium-storage.md) に関する記事を参照してください。
 
 ### <a name="unmanaged-disks"></a>非管理対象ディスク
 
@@ -50,6 +50,7 @@ Managed Disks の多くの機能を活用するために、新しい VM には M
 | ディスクの種類 | ソリッド ステート ドライブ (SSD) | ハード ディスク ドライブ (HDD)  |
 | 概要  | I/O 集中型のワークロードを実行している VM またはミッション クリティカルな運用環境をホストしている VM 向けの、SSD ベースの高パフォーマンスで待ち時間の少ないディスク サポート | 開発/テスト VM のシナリオ向けの HDD ベースのコスト効率の高いディスク サポート |
 | シナリオ  | 運用環境のワークロードやパフォーマンスに影響されやすいワークロード | 開発/テスト、低重要度、 <br>アクセスが頻繁でない |
-| ディスク サイズ | P10: 128 GB<br>P20: 512 GB<br>P30: 1,024 GB | 非管理対象ディスク: 1 GB – 1 TB <br><br>管理ディスク:<br> S4: 32 GB <br>S6: 64 GB <br>S10: 128 GB <br>S20: 512 GB <br>S30: 1,024 GB |
-| ディスクあたりの最大スループット | 200 MB/s | 60 MB/s |
-| ディスクあたりの最大 IOPS | 5,000 IOPS | 500 IOPS |
+| ディスク サイズ | P4: 32 GB<br>P6: 64 GB<br>P10: 128 GB<br>P20: 512 GB<br>P30: 1,024 GB<br>P40: 2048 GB<br>P50: 4095 GB | 非管理対象ディスク: 1 GB ～ 4 TB (4095 GB) <br><br>管理ディスク:<br> S4: 32 GB <br>S6: 64 GB <br>S10: 128 GB <br>S20: 512 GB <br>S30: 1,024 GB <br>S40: 2048 GB<br>S50: 4095 GB| 
+| ディスクあたりの最大スループット | 250 MB/秒 | 60 MB/s | 
+| ディスクあたりの最大 IOPS | 7,500 IOPS | 500 IOPS | 
+

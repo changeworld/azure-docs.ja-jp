@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/02/2017
+ms.date: 05/31/2017
 ms.author: glenga
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: c0d1271bc083688bbc72bd2556546c2f738e7345
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: a55f28fad4c70e49e417d2856568791b313ad1eb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 06/20/2017
 
 ---
 # <a name="create-a-function-triggered-by-azure-blob-storage"></a>Azure Blob Storage によってトリガーされる関数の作成
@@ -31,11 +31,8 @@ Azure Blob Storage でファイルをアップロードしたり、更新した�
 
 ## <a name="prerequisites"></a>前提条件
 
-このサンプルを実行する前に、次のことを実行しておく必要があります。
-
-- [Microsoft Azure ストレージ エクスプローラーをダウンロードしてインストールする](http://storageexplorer.com/)。
-
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
++ [Microsoft Azure ストレージ エクスプローラーをダウンロードしてインストールする](http://storageexplorer.com/)。
++ Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
 [!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
@@ -51,15 +48,21 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-blob-storage-triggered-function"></a>Blob Storage でトリガーされる関数の作成
 
-Function App で、**[関数]** の横にある **[+]** ボタンをクリックし、使用する言語の **BlobTrigger** テンプレートをクリックします。 テーブルに指定されている設定を使用して、**[作成]** をクリックします。
+1. Function App を展開し、**[関数]** の横にある **[+]** ボタンをクリックします。 これが Function App で初めての関数の場合、**[カスタム関数]** を選びます。 関数テンプレートの完全なセットが表示されます。
 
-![Blob Storage でトリガーされる関数を作成します。](./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal.png)
+    ![Azure Portal での関数のクイック スタート ページ](./media/functions-create-storage-blob-triggered-function/add-first-function.png)
 
-| Setting | 推奨値 | Description |
-|---|---|---|
-| **パス**   | mycontainer/{name}    | 監視されている Blob Storage ストレージ内の位置。 Blob のファイル名は、_name_ パラメーターとしてバインディングで渡されます。  |
-| **ストレージ アカウント接続** | AzureWebJobStorage | Function App によって既に使用されているストレージ アカウント接続を使用するか、新しく作成できます。  |
-| **関数名の指定** | Function App 内で一意 | このキューによってトリガーされる関数の名前。 |
+2. 目的の言語の **BlobTrigger** テンプレートを選び、次の表で指定されている設定を使います。
+
+    ![Blob Storage でトリガーされる関数を作成します。](./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal.png)
+
+    | Setting | 推奨値 | Description |
+    |---|---|---|
+    | **パス**   | mycontainer/{name}    | 監視されている Blob Storage ストレージ内の位置。 Blob のファイル名は、_name_ パラメーターとしてバインディングで渡されます。  |
+    | **ストレージ アカウント接続** | AzureWebJobStorage | Function App によって既に使用されているストレージ アカウント接続を使用するか、新しく作成できます。  |
+    | **関数名の指定** | Function App 内で一意 | この BLOB によってトリガーされる関数の名前。 |
+
+3. **[作成]** をクリックして関数を作成します。
 
 次に、Azure Storage アカウントに接続し、**mycontainer** コンテナーを作成します。
 
@@ -69,7 +72,7 @@ Function App で、**[関数]** の横にある **[+]** ボタンをクリック
 
     ![ストレージ アカウント接続の資格情報を取得します。](./media/functions-create-storage-blob-triggered-function/functions-storage-account-connection.png)
 
-1. [Microsoft Azure Storage Explorer](http://storageexplorer.com/) ツールを実行し、左側の接続アイコンをクリックして、**[Use a storage account name and key] (ストレージ アカウント名とキーを使用)** を選択し、**[次へ]** をクリックします。
+1. [Microsoft Azure Storage Explorer](http://storageexplorer.com/) ツールを実行し、左側の接続アイコンをクリックして、**[Use a storage account name and key] \(ストレージ アカウント名とキーを使用)** を選択し、**[次へ]** をクリックします。
 
     ![ストレージ アカウント エクスプローラー ツールを実行します。](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-connect-1.png)
 
@@ -111,3 +114,4 @@ Blob Storage で Blob が追加または更新されたときに実行する関�
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 
 Blob Storage トリガーの詳細については、「[Azure Functions における Blob Storage バインディング](functions-bindings-storage-blob.md)」を参照してください。
+
