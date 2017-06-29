@@ -1,6 +1,6 @@
 ---
-title: "初めての Java Web アプリを Azure に 5 分で作成する | Microsoft Docs"
-description: "シンプルな Java アプリケーションをデプロイして、App Service での Web アプリの実行がいかに簡単であるかを説明します。"
+title: "Azure で初めての Java Web アプリを作成する"
+description: "基本の Java アプリをデプロイして、App Service で Web アプリを実行する方法を確認します。"
 services: app-service\web
 documentationcenter: 
 author: rmcmurray
@@ -12,63 +12,58 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: hero-article
-ms.date: 04/17/2017
+ms.date: 6/7/2017
 ms.author: cephalin;robmcm
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 1249d7ac42bec02227d47500fe3aabb601a36f88
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: a805d92fbe1043b9143140bdbfb8626362aa8bb5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
+ms.lasthandoff: 06/20/2017
 
 ---
-# <a name="create-your-first-java-web-app-in-azure-in-five-minutes"></a>初めての Java Web アプリを Azure に 5 分で作成する
+# <a name="create-your-first-java-web-app-in-azure"></a>Azure で初めての Java Web アプリを作成する
 
-[!INCLUDE [app-service-web-selector-get-started](../../includes/app-service-web-selector-get-started.md)] 
+[Azure App Service](../app-service/app-service-value-prop-what-is.md) の [Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) 機能は、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このクイックスタートでは、[Eclipse IDE for Java EE Developers](http://www.eclipse.org/) を使って、Java Web アプリを App Service にデプロイする方法を示します。
 
-このクイック スタートを読むと、初めての Java Web アプリを [Azure App Service](../app-service/app-service-value-prop-what-is.md) に数分でデプロイできるようになります。 このチュートリアルを完了すると、Java ベースのシンプルな Web アプリがクラウドで稼働している状態になります。
-
-![Web アプリの参照](./media/app-service-web-get-started-java/browse-web-app-1.png)
+!["Hello Azure!" Web アプリの例](./media/app-service-web-get-started-java/browse-web-app-1.png)
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、Eclipse IDE for Java EE Devlopers を使用して Java ベースの Web アプリをビルドし、Azure にデプロイする方法を示します。 Eclipse をまだインストールしていない場合には、http://www.eclipse.org/ から無料でダウンロードできます。
+このクイック スタートを完了するには、以下をインストールします。
 
-Java ベースの Web アプリを Azure に発行するプロセスを簡略化するため、このチュートリアルの手順では [Azure Toolkit for Eclipse](/azure/azure-toolkit-for-eclipse) を使用します。 このツールキットをインストールする手順については、「[Azure Toolkit for Eclipse のインストール](/azure/azure-toolkit-for-eclipse-installation)」をご覧ください。
+* 無料の [Eclipse IDE for Java EE Developers](http://www.eclipse.org/downloads/)。 このクイック スタートでは Eclipse Neon を使用します。
+* [Azure Toolkit for Eclipse](/azure/azure-toolkit-for-eclipse-installation)。
 
-> [!NOTE]
->
-> このチュートリアルの手順では、JetBrains の [IntelliJ IDEA](https://www.jetbrains.com/idea/) を使用してもかまいません。 この開発環境に使用するものとしては、[Azure Toolkit for IntelliJ](/azure/azure-toolkit-for-intellij) が用意されています。いくつかの手順が多少異なりますが、発行のプロセスを簡素化してくれるという点では同じです。
->
-
-このチュートリアルの手順を完了するには、ほかにも Azure サブスクリプションが必要です。 Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[Azure の無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-a-dynamic-web-project-in-eclipse"></a>Eclipse で動的 Web プロジェクトを作成する
 
-Eclipse で、**[File]\(ファイル\)**、**[New]\(新規\)**、**[Dynamic Web Project]\(動的 Web プロジェクト\)** の順に選択します。
+Eclipse で、**[ファイル]** > **[新規]** > **[Dynamic Web Project\(動的 Web プロジェクト\)]** の順にクリックします。
 
-**[New Dynamic Web Project]\(新しい動的 Web プロジェクト\)** ダイアログで、プロジェクトに **MyFirstJavaOnAzureWebApp** という名前を付けて **[Finish]\(完了\)** を選択します。
+**[New Dynamic Web Project\(新しい動的 Web プロジェクト\)]** ダイアログ ボックスで、プロジェクトに **MyFirstJavaOnAzureWebApp** という名前を付けて、**[完了]**をクリックします。
    
-![[Dynamic Web Project (動的 Web プロジェクト)] ダイアログ ボックス](./media/app-service-web-get-started-java/new-dynamic-web-project-dialog-box.png)
+![[New Dynamic Web Project\(新しい動的 Web プロジェクト\)] ダイアログ ボックス](./media/app-service-web-get-started-java/new-dynamic-web-project-dialog-box.png)
 
-> [!NOTE]
->
-> ローカルに [Apache Tomcat](https://tomcat.apache.org/) などのランタイム環境がインストールされている場合には、**[Target runtime (ターゲット ランタイム)]** フィールドでそのランタイム環境を指定できます。
->
+### <a name="add-a-jsp-page"></a>JSP ページを追加する
 
-動的 Web プロジェクトを作成した後は、新しい JSP ページを追加します。これには、Project Explorer でそのプロジェクトを展開し、**[WebContent]** フォルダーを右クリックして、**[New (新規)]**、**[JSP File (JSP ファイル)]** の順にクリックします。
+プロジェクト エクスプローラーが表示されない場合は、復元します。
 
-![新しい JSP ファイルのメニュー](./media/app-service-web-get-started-java/new-jsp-file-menu.png)
+![Eclipse 用の Java EE ワークスペース](./media/app-service-web-get-started-java/pe.png)
 
-[New JSP File (新しい JSP ファイル)] ダイアログ ボックスが表示されたら、ファイルに **index.jsp** という名前を付け、親フォルダーは **MyFirstJavaOnAzureWebApp/WebContent** のままにして **[Next (次へ)]** をクリックします。
+プロジェクト エクスプローラーで、**[MyFirstJavaOnAzureWebApp]** プロジェクトを展開します。
+**[WebContent]** を右クリックして、**[新規]** > **[JSP ファイル]**の順にクリックします。
 
-![[New JSP File (新しい JSP ファイル)] ダイアログ ボックス](./media/app-service-web-get-started-java/new-jsp-file-dialog-box-page-1.png)
+![プロジェクト エクスプローラーの新しい JSP ファイルのメニュー](./media/app-service-web-get-started-java/new-jsp-file-menu.png)
 
-[New JSP File (新しい JSP ファイル)] ダイアログ ボックスの 2 ページ目で、ファイルに **index.jsp** という名前を付け、親フォルダーは **MyFirstJavaOnAzureWebApp/WebContent** のままにして **[Finish (完了)]** をクリックします。
+**[New JSP File\(新しい JSP ファイル\)]** ダイアログ ボックス
 
-![[New JSP File (新しい JSP ファイル)] ダイアログ ボックス](./media/app-service-web-get-started-java/new-jsp-file-dialog-box-page-2.png)
+* ファイル名を **index.jsp** にします。
+* **[完了]** を選択します。
 
-Eclipse で新しいページが開いたら、既存の `<body></body>` セクションの内容を以下のコードで置き換えます。
+  ![[New JSP File\(新しい JSP ファイル\)] ダイアログ ボックス](./media/app-service-web-get-started-java/new-jsp-file-dialog-box-page-1.png)
+
+Index.jsp ファイルで、`<body></body>` を次のマークアップに置き換えます。
 
 ```jsp
 <body>
@@ -76,162 +71,133 @@ Eclipse で新しいページが開いたら、既存の `<body></body>` セク�
 </body>
 ```
 
-ページの変更内容を保存します。
+変更を保存します。
 
-## <a name="publish-your-web-app-to-azure"></a>Azure に Web アプリを発行する
+## <a name="publish-the-web-app-to-azure"></a>Web アプリを Azure に発行する
 
-Web アプリを Azure にデプロイするときには、Azure Toolkit for Eclipse の機能をいくつか使用します。
+プロジェクト エクスプローラーで、プロジェクトを右クリックし、**[Azure]** > **[Publish as Azure Web App\(Azure Web アプリとして発行\)]** の順にクリックします。
 
-まずは発行プロセスを開始するため、次のいずれかの方法を使用します。
+![[Publish as Azure Web App\(Azure Web アプリとして発行\)] コンテキスト メニュー](./media/app-service-web-get-started-java/publish-as-azure-web-app-context-menu.png)
 
-* Eclipse の **Project Explorer** でプロジェクトを右クリックし、**[Azure]**、**[Publish as Azure Web App (Azure Web アプリとして発行)]** の順にクリックします。
+**[Azure Sign In\(Azure へのサインイン\)]** ダイアログ ボックスで、**[対話]** オプションをそのままにした状態で、**[サインイン]** をクリックします。
 
-   ![[Publish as Azure Web App (Azure Web アプリとして発行)] コンテキスト メニュー](./media/app-service-web-get-started-java/publish-as-azure-web-app-context-menu.png)
+サインインの手順に従います。
 
-* Eclipse のツールバーで **[Publish (発行)]** アイコンをクリックし、**[Publish as Azure Web App (Azure Web アプリとして発行)]** をクリックします。
+### <a name="deploy-web-app-dialog-box"></a>[Deploy Web App\(Web アプリのデプロイ\)] ダイアログ ボックス
 
-   ![[Publish as Azure Web App (Azure Web アプリとして発行)] ドロップダウン メニュー](./media/app-service-web-get-started-java/publish-as-azure-web-app-drop-down-menu.png)
+Azure アカウントにサインインしたら、**[Deploy Web App\(Web アプリのデプロイ\)]** ダイアログ ボックスが表示されます。
 
-まだ Azure アカウントにサインインしていない場合には、サインインを求めるメッセージが表示されます。 そのためには、次の手順を実行してください。
+**[作成]**を選択します。
 
-1. Azure アカウントへのサインインには、2 つのオプションがあります。このチュートリアルでは、**[対話型]** を選択します。
+![[Deploy Web App\(Web アプリのデプロイ\)] ダイアログ ボックス](./media/app-service-web-get-started-java/deploy-web-app-dialog-box.png)
 
-   ![[Azure Sign In (Azure サインイン)] ダイアログ ボックス](./media/app-service-web-get-started-java/azure-signin-dialog-box.png)
+### <a name="create-app-service-dialog-box"></a>[App Service の作成] ダイアログ ボックス
 
-1. Azure の資格情報を入力し、**[サインイン]** をクリックします。
+既定値が設定された状態で**[App Service の作成]** ダイアログ ボックスが表示されます。 次の画像に示された **170602185241** という数値は、実際のダイアログ ボックスでは異なります。
 
-   ![Azure のログイン ダイアログ ボックス](./media/app-service-web-get-started-java/azure-login-dialog-box.png)
+![[App Service の作成] ダイアログ ボックス](./media/app-service-web-get-started-java/cas1.png)
 
-1. Azure サブスクリプションを選択し、**[選択]** をクリックします。
+**[App Service の作成]** ダイアログ ボックスで、次の操作を行います。
 
-   ![Azure のログイン ダイアログ ボックス](./media/app-service-web-get-started-java/select-azure-subscriptions-dialog-box.png)
+* 生成された Web アプリの名前をそのまま使用します。 この名前は Azure 全体で一意である必要があります。 名前は、Web アプリの URL アドレスの一部です。 例: Web アプリケーションの名前が **MyJavaWebApp** の場合、URL は *myjavawebapp.azurewebsites.net* です。
+* 既定の Web コンテナーをそのまま使用します。
+* Azure サブスクリプションを選択します。
+* **[App Service プラン]** タブで、次の操作を行います。
 
-> [!NOTE]
->
-> **[対話型]** と **[自動]** の 2 つのサインインの詳しい手順は、記事「[Azure Sign In Instructions for the Azure Toolkit for Eclipse (Azure Toolkit for Eclipse で Azure にサインインする場合の手順)](https://go.microsoft.com/fwlink/?linkid=846174)」で説明しています。
->
-
-Azure アカウントにサインインしたら、**[Deploy Web App (Web アプリのデプロイ)]** ダイアログ ボックスが表示されます。 Web アプリを Azure に発行するのが初めてであれば、App Service が 1 つも表示されないはずです。 この場合 (または、新しい App Service を作成する場合)、次の手順は新しい App Service の作成になります。 これを行うには、**[作成]** をクリックします。
-
-![[Deploy Web App (Web アプリのデプロイ)] ダイアログ ボックス](./media/app-service-web-get-started-java/deploy-web-app-dialog-box.png)
-
-**[App Service の作成]** ダイアログ ボックスが表示されたら、初期データとして以下を入力します。
-
-* Web アプリの一意の名前。これは、その Web アプリの DNS アドレスになります。たとえば、**MyJavaWebApp** であれば *myjavawebapp.azurewebsites.net* となります。
-
-* Web アプリが使用する Web コンテナー。たとえば、**Newest Tomcat 8.5** です。
-
-* Azure サブスクリプション。
+  * **[新規作成]**。既定値の App Service プラン名をそのまま使用します。
+  * **[場所]**。**[西ヨーロッパ]** または現在地付近を選択します。
+  * **[価格レベル]**。無料オプションを選択します。 機能については、「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/)」をご覧ください。
 
    ![[App Service の作成] ダイアログ ボックス](./media/app-service-web-get-started-java/create-app-service-dialog-box.png)
 
-既存の App Service プランがない場合、または新しいサービス プランを作成する場合には、以下の情報を入力する必要があります。
+[!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-* 新しいサービス プランの一意の名前。ここで設定した名前は、将来 Azure Toolkit を使用する Web アプリを発行したときや、[Azure Portal](https://portal.azure.com) でアカウントを管理するときに表示されます。
+### <a name="resource-group-tab"></a>[リソース グループ] タブ
 
-* サービス プランを作成する場所。
+**[リソース グループ]** タブを選択します。 リソース グループのために生成された既定値をそのまま使用します。
 
-* サービス プランの価格レベル。
+![[リソース グループ] タブ](./media/app-service-web-get-started-java/create-app-service-resource-group.png)
 
-   ![App Service プランの作成](./media/app-service-web-get-started-java/create-app-service-plan.png)
+[!INCLUDE [resource-group](../../includes/resource-group.md)]
 
-次に、**[リソース グループ]** タブをクリックします。 既存のリソース グループがない場合、または新しいリソース グループを作成する場合には、新しいリソース グループに対して一意の名前を指定する必要があります。リソース グループを新たに作成しない場合には、ドロップダウン メニューから既存のリソース グループを選択します。
+**[作成]**を選択します。
 
-![App Service プランの作成](./media/app-service-web-get-started-java/create-app-service-resource-group.png)
+<!--
+### The JDK tab
 
-最後に、**[JDK]** タブをクリックします。 このタブにはいくつかのオプションが用意されており、サードパーティまたは独自の Java 開発キット (JDK) を指定できます。もっとも、このチュートリアルでは **[既定]** を選択して、**[作成]** をクリックします。
+Select the **JDK** tab. Keep the default, and then select **Create**.
 
-![App Service プランの作成](./media/app-service-web-get-started-java/create-app-service-specify-jdk.png)
+![Create App Service plan](./media/app-service-web-get-started-java/create-app-service-specify-jdk.png)
+-->
 
-Azure Toolkit により、新しい App Service の作成が開始されます。処理が行われている間は、進行状況を示すダイアログ ボックスが表示されます。
+Azure Toolkit によって Web アプリが作成され、進行状況を示すダイアログ ボックスが表示されます。
 
-![[Create App Service Progress (App Service の作成の進行状況)] バー](./media/app-service-web-get-started-java/create-app-service-progress-bar.png)
+![[Create App Service Progress\(App Service の作成の進行状況\)] ダイアログ ボックス](./media/app-service-web-get-started-java/create-app-service-progress-bar.png)
 
-新しい App Service サービスの作成が終わったら、最後のオプションとして、Web アプリを Web サイトのルートにデプロイするかどうかを選択する必要があります。 たとえば、App Service が *wingtiptoys.azurewebsites.net* に存在している場合に、ルートにデプロイしないことを選択すると、Web アプリ **MyFirstJavaOnAzureWebApp** が *wingtiptoys.azurewebsites.net/MyFirstJavaOnAzureWebApp* にデプロイされます。
+### <a name="deploy-web-app-dialog-box"></a>[Deploy Web App\(Web アプリのデプロイ\)] ダイアログ ボックス
 
-![Web アプリをルートにデプロイ](./media/app-service-web-get-started-java/deploy-web-app-to-root.png)
+**[Deploy Web App\(Web アプリのデプロイ\)]** ダイアログ ボックスで、**[Deploy to root\(ルートにデプロイする\)]** を選びます。 App Service が *wingtiptoys.azurewebsites.net* に存在している場合に、ルートにデプロイしないことを選択すると、Web アプリ **MyFirstJavaOnAzureWebApp** は *wingtiptoys.azurewebsites.net/MyFirstJavaOnAzureWebApp* にデプロイされます。
 
-ここまでの手順がすべて完了したら、**[デプロイ]** をクリックして Web アプリを Azure に発行します。
+![[Deploy Web App\(Web アプリのデプロイ\)] ダイアログ ボックス](./media/app-service-web-get-started-java/deploy-web-app-to-root.png)
 
-![Azure に Web アプリをデプロイ](./media/app-service-web-get-started-java/deploy-web-app-to-azure.png)
+ダイアログ ボックスに、Azure、JDK、および Web コンテナーの選択内容が表示されます。
 
-ご利用ありがとうございます。 Azure に Web アプリが正常にデプロイされました。 これで、Azure の Web サイトで Web アプリを表示できます。
+**[デプロイ]** を選択して、Web アプリを Azure に発行します。
 
-![Web アプリの参照](./media/app-service-web-get-started-java/browse-web-app-1.png)
+発行が完了したら、**[Azure の活動ログ]** ダイアログ ボックスで **[発行済み]** リンクをクリックします。
 
-## <a name="updating-your-web-app"></a>Web アプリの更新
+![[Azure 活動ログ] ダイアログ ボックス](./media/app-service-web-get-started-java/aal.png)
 
-ここまでの手順では、Web アプリを Azure に発行しました。Web アプリの更新は、これよりも格段にシンプルなプロセスとなっています。以下の手順では、Web アプリに対する変更を発行するプロセスを 1 つずつ説明します。
+お疲れさまでした。 Azure に Web アプリが正常にデプロイされました。 
 
-まず、先ほども使用したサンプルの JSP コードを変更します。具体的には、タイトルを今日の日付に変更します。
+!["Hello Azure!" Web アプリの例](./media/app-service-web-get-started-java/browse-web-app-1.png)
+
+## <a name="update-the-web-app"></a>Web アプリを更新する
+
+サンプルの JSP コードを別のメッセージに変更します。
 
 ```jsp
-<%@ page
-    language="java"
-    contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"
-    import="java.text.SimpleDateFormat"
-    import="java.util.Date" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<% SimpleDateFormat date = new SimpleDateFormat("yyyy/MM/dd"); %>
-<title><% out.println(date.format(new Date())); %></title>
-</head>
 <body>
-<h1><% out.println("Hello Azure!"); %></h1>
+<h1><% out.println("Hello again Azure!"); %></h1>
 </body>
-</html>
 ```
 
-変更内容を保存したら、Eclipse の **Project Explorer** でプロジェクトを右クリックし、**[Azure]**、**[Publish as Azure Web App]\(Azure Web アプリとして発行\)** の順にクリックします。
+変更を保存します。
 
-![更新後の Web アプリの発行](./media/app-service-web-get-started-java/publish-updated-web-app-context-menu.png)
+プロジェクト エクスプローラーで、プロジェクトを右クリックし、**[Azure]** > **[Publish as Azure Web App\(Azure Web アプリとして発行\)]** の順にクリックします。
 
-**[Deploy Web App (Web アプリのデプロイ)]** ダイアログ ボックスが表示され、先ほどデプロイした App Service が表示されます。 Web アプリを更新するうえで必要な操作は、App Service を強調表示し、**[デプロイ]** をクリックするだけです。これで、変更が発行されます。
-
-![Azure に Web アプリをデプロイ](./media/app-service-web-get-started-java/deploy-web-app-to-azure.png)
+**[Deploy Web App\(Web アプリのデプロイ\)]** ダイアログ ボックスが表示されます。ボックスには、以前に作成したアプリ サービスが表示されています。 
 
 > [!NOTE]
+> 発行するときは、毎回、**[Deploy to root\(ルートにデプロイする\)]** を選びます。
 >
-> Web アプリを App Service のルートにデプロイしている場合には、変更を発行するたびに **[Deploy to root (ルートにデプロイ)]** をオンにし直す必要があります。
->
 
-変更内容を発行すると、ブラウザーでページのタイトルが今日の日付に変更されていることがわかります。
+Web アプリを選択し、**[デプロイ]** をクリックして変更を発行します。
 
-![Web アプリの参照](./media/app-service-web-get-started-java/browse-web-app-2.png)
+**[発行中]** リンクが表示されたら、リンクをクリックして Web アプリを参照し、変更を確認します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="manage-the-web-app"></a>Web アプリを管理する
 
-Web アプリを削除するには、Azure Toolkit に含まれている **Azure Explorer** を使用します。 **[Azure Explorer]** ビューがEclipse に表示されていない場合には、以下の手順に従って表示します。
+<a href="https://portal.azure.com" target="_blank">Azure Portal</a> に移動して、作成した Web アプリを確認します。
 
-1. **[Window (ウィンドウ)]**、**[Show View (ビューの表示)]**、**[Other (その他)]** の順にクリックします。
+左のメニューから、**[リソース グループ]**を選びます。
 
-   ![[Show View (ビューの表示)] メニュー](./media/app-service-web-get-started-java/show-azure-explorer-view-1.png)
+![リソース グループへのポータル ナビゲーション](media/app-service-web-get-started-java/rg.png)
 
-2. **[Show View (ビューの表示)]** ダイアログ ボックスが表示されたら、**[Azure Explorer]** を選択して **[OK]** をクリックします。
+リソース グループを選択します。 ページには、このクイック スタートで作成したリソースが表示されます。
 
-   ![[Show View (ビューの表示)] ダイアログ ボックス](./media/app-service-web-get-started-java/show-azure-explorer-view-2.png)
+![リソース グループ myResourceGroup](media/app-service-web-get-started-java/rg2.png)
 
-Azure Explorer から Web アプリを削除するには、**[Web アプリ]** ノードを展開し、該当する Web アプリを右クリックして **[削除]** をクリックします。
+Web アプリ (上の画像の **webapp-170602193915**) を選択します。
 
-![Web アプリの削除](./media/app-service-web-get-started-java/delete-web-app-context-menu.png)
+**[概要]** ページが表示されます。 このページでは、アプリの動作状態を見ることができます。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクを行うことができます。 ページの左側にあるタブは、開くことができるさまざまな構成ページを示しています。 
 
-Web アプリの削除を求めるメッセージが表示されたら、**[OK]** をクリックします。
+![Azure Portal の [App Service] ページ](media/app-service-web-get-started-java/web-app-blade.png)
+
+[!INCLUDE [clean-up-section-portal-web-app](../../includes/clean-up-section-portal-web-app.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Toolkits for Java IDE の詳細については、次のリンクをご覧ください。
-
-* [Azure Toolkit for Eclipse (この記事)](../azure-toolkit-for-eclipse.md)
-  * [Azure Toolkit for Eclipse の新機能](../azure-toolkit-for-eclipse-whats-new.md)
-  * [Azure Toolkit for Eclipse のインストール](../azure-toolkit-for-eclipse-installation.md)
-  * [Azure Toolkit for Eclipse のサインイン手順](https://go.microsoft.com/fwlink/?linkid=846174)
-* [Azure Toolkit for IntelliJ](../azure-toolkit-for-intellij.md)
-  * [Azure Toolkit for IntelliJ の新機能](../azure-toolkit-for-intellij-whats-new.md)
-  * [Azure Toolkit for IntelliJ のインストール](../azure-toolkit-for-intellij-installation.md)
-  * [Azure Toolkit for IntelliJ のサインイン手順](https://go.microsoft.com/fwlink/?linkid=846179)
-
-Java での Azure の使用の詳細については、 [Azure Java デベロッパー センター](https://azure.microsoft.com/develop/java/) と[Java Tools for Visual Studio Team Services](https://java.visualstudio.com/) を参照してください。
+> [!div class="nextstepaction"]
+> [カスタム ドメインをマップする](app-service-web-tutorial-custom-domain.md)
 
