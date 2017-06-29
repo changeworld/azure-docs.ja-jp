@@ -12,7 +12,7 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/05/2017
+ms.date: 06/27/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
@@ -96,7 +96,7 @@ Get-AzureRmResourceLock
 特定のリソースのロックをすべて取得するには、次のように入力します。
 
 ```powershell
-New-AzureRmResourceLock -ResourceName examplesite -ResourceType Microsoft.Web/sites `
+Get-AzureRmResourceLock -ResourceName examplesite -ResourceType Microsoft.Web/sites `
   -ResourceGroupName exampleresourcegroup
 ```
 
