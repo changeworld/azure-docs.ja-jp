@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: amsriva
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: 0ba2158a45eb4ec9254ef829894152fe92276920
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 50863b60f2843f033bdb07f4564d937cd6f0b7be
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -124,6 +124,12 @@ Application Gateway の正常性を監視することは重要です。 Web ア�
 #### <a name="azure-monitor"></a>Azure Monitor
 
 各アプリケーション ゲートウェイのログは、[Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) と統合されます。  そのため、WAF のアラートやログなどの診断情報を追跡できます。  この機能は、ポータルの Application Gateway リソース内の **[診断]** タブから、または Azure Monitor サービスから直接利用できます。 Application Gateway の診断ログの有効化について詳しくは、[Application Gateway の診断](application-gateway-diagnostics.md)に関する記事を参照してください。
+
+#### <a name="azure-security-center"></a>Azure Security Center
+
+[Azure Security Center](../security-center/security-center-intro.md) は、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応できるようにします。 これで、アプリケーション ゲートウェイは、[Azure Security Center に統合](application-gateway-integration-security-center.md)されました。 Azure Security Center では、環境をスキャンして、保護されていない Web アプリケーションを検出します。 これらの脆弱なリソースを保護するために、アプリケーション ゲートウェイの WAF が推奨されます。 アプリケーション ゲートウェイの WAF は、Azure Security Center から直接作成できます。  これらの WAF インスタンスは Azure Security Center に統合され、アラートおよび正常性情報をレポートとして Azure Security Center に送信します。
+
+![図 1](./media/application-gateway-web-application-firewall-overview/figure1.png)
 
 #### <a name="logging"></a>ログの記録
 
