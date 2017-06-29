@@ -1,4 +1,4 @@
----
+﻿---
 title: "チュートリアル: Azure Active Directory と LINE WORKS の統合 | Microsoft Docs"
 description: "Azure Active Directory と LINE WORKS の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
@@ -140,6 +140,7 @@ WORKS MOBILE で Azure AD の SSO を構成してテストするには、次の�
     ![Configure Single Sign-On](./media/active-directory-saas-worksmobile-tutorial/tutorial_worksmobile_07.png)
 
 10. アプリケーション用に構成された SSO を取得するには、[WORKS MOBILE サポート チーム](mailto:dl_ssoinfo@worksmobile.com)に連絡し、次の項目を情報として提供してください。• ダウンロードした**証明書ファイル**、• **SAML シングル サインオン サービス URL**、• **SAML エンティティ ID**、• **サインアウト URL**
+
   
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Microsoft Azure 管理ポータルで Britta Simon というテスト ユーザーを作成することです。
