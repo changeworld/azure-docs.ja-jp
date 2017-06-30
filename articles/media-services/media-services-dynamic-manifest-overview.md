@@ -12,11 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 12/07/2016
+ms.date: 06/29/2017
 ms.author: cenkd;juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
 ms.openlocfilehash: d0f9899d6b8cc83ea4f2836444b41a9dabe7fea7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/14/2016
 
 
 ---
@@ -92,7 +94,7 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
 > 
 > 
 
-### <a name="a-idfiltersafilters"></a><a id="filters"></a>フィルター
+### <a id="filters"></a>フィルター
 次の&2; 種類のアセット フィルターがあります。 
 
 * グローバル フィルター (Azure Media Services アカウントのすべてのアセットに適用可能。有効期間付きアカウント) 
@@ -100,7 +102,7 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
 
 グローバル フィルターとローカル フィルターのプロパティはまったく同じです。 この&2; つのフィルターの主な違いは、適しているシナリオが異なることです。 グローバル フィルターは通常、デバイス プロファイル (演奏フィルター処理) に適していますが、ローカル フィルターは特定のアセットのトリミングに使用できます。
 
-## <a name="a-idscenariosacommon-scenarios"></a><a id="scenarios"></a>一般的なシナリオ
+## <a id="scenarios"></a>一般的なシナリオ
 コンテンツ (ストリーミング ライブ イベントまたはビデオ オンデマンド) を顧客に配信する場合、その目標は、異なるネットワーク条件におけるさまざまなデバイスに高品質のビデオを配信することにあると既に説明しました。 それに加えて、アセットのフィルタ―処理や、 **動的マニフェスト**の使用に関するその他の要件も考慮する必要があります。 次のセクションでは、さまざまなフィルター処理のシナリオについて、簡単に説明します。
 
 * 特定のデバイスで処理できるオーディオやビデオ演奏のサブセットのみを指定する (アセットに関連付けられているすべての演奏ではなく)。 
@@ -210,9 +212,4 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
 [language_filter]: ./media/media-services-dynamic-manifest-overview/media-services-language-filter.png
 [dvr_filter]: ./media/media-services-dynamic-manifest-overview/media-services-dvr-filter.png
 [skiing]: ./media/media-services-dynamic-manifest-overview/media-services-skiing.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 
