@@ -12,11 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2016
+ms.date: 06/29/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 99c43c63f75e01713600ef5ca46a8d11e8c5c7ce
 ms.openlocfilehash: b6560fdd50c93a7e84f12047ec4401328b601deb
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/09/2016
 
 
 ---
@@ -40,7 +42,6 @@ Azure Media Services (AMS) を使用して、サービスのテレメトリ/メ�
 [.NET を使用したテレメトリの有効化](media-services-dotnet-telemetry.md)に関するトピック 
 
 [REST を使用したテレメトリの有効化](media-services-rest-telemetry.md)に関するトピック
-
 
 ## <a name="consuming-telemetry-information"></a>テレメトリ情報の使用
 
@@ -67,11 +68,9 @@ Azure Media Services (AMS) を使用して、サービスのテレメトリ/メ�
 - 特定のサービスの特定の日付範囲にあるすべてのデータの取得。
 - サービスの最新データの取得。
 
-
 ### <a name="telemetry-table-storage-output-schema"></a>テレメトリ テーブル ストレージの出力スキーマ
 
 テレメトリ データは、1 つのテーブルにまとめて格納されます (例: "TelemetryMetrics20160321"。"20160321" はテーブルの作成日です)。 テレメトリ システムでは、00:00 UTC に基づいて日が変わるごとに個別のテーブルが作成されます。 テーブルは、繰り返し発生する値 (特定の時間帯の取り込みビットレートや送信されたバイト数など) を格納するために使用されます。 
-
 
 プロパティ|値|例/メモ
 ---|---|---
@@ -83,7 +82,6 @@ Name|テレメトリ イベントの名前|ChannelHeartbeat/StreamingEndpointReq
 ObservedTime|テレメトリ イベントが発生した時刻 (UTC)|2016-09-09T22:42:36.924Z<br/><br/>監視時刻は、テレメトリを送信するエンティティ (たとえばチャネル) によって提供されます。 コンポーネント間で時間同期問題が存在する可能性があるため、この値は概算値です。
 ServiceID|{サービス ID}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 エンティティ固有のプロパティ|イベントによって定義されたとおり|StreamName: stream1, Bitrate 10123, …<br/><br/>残りのプロパティは、指定されたイベントの種類に対して定義されます。 Azure Table の内容は、キーと値のペアです   (つまり、テーブル内の異なる行には、異なるプロパティのセットが格納されます)。
-
 
 ### <a name="entity-specific-schema"></a>エンティティ固有のスキーマ
 
@@ -112,7 +110,6 @@ BytesSent|集計された送信バイト数|2987358
 ServerLatency|サーバーの平均待機時間 (ストレージを含みます)|129
 E2ELatency|エンド ツー エンドの平均待機時間|250
 
-
 **ライブ チャネル**
 
 プロパティ|値|例/メモ
@@ -138,7 +135,6 @@ UnalignedPresentationTime|プレゼンテーション時間がアラインされ
 UnexpectedBitrate|オーディオ/ビデオ トラックの計算ビットレートまたは実ビットレートが > 40,000 bps であり、IncomingBitrate == 0 であるか IncomingBitrate と actualBitrate の差が 50% の場合は True |True
 Healthy|次の場合は True: <br/>overlapCount、 <br/>DiscontinuityCount、 <br/>NonIncreasingCount、 <br/>UnalignedKeyFrames、 <br/>UnalignedPresentationTime、 <br/>UnexpectedBitrate<br/> がいずれも 0|True <br/><br/>Healthy は、次の条件のいずれかに該当する場合は false を返す複合関数です。<br/><br/>- OverlapCount > 0<br/>- DiscontinuityCount > 0<br/>- NonincreasingCount > 0<br/>- UnalignedKeyFrames == True<br/>- UnalignedPresentationTime == True<br/>- UnexpectedBitrate == True
 
-
 **ライブ アーカイブ**
 
 プロパティ|値|例/メモ
@@ -156,7 +152,6 @@ TrackType|トラックの種類|Audio/video
 カスタム属性|名前とビットレートが同じ複数のトラックを区別する&16; 進数の文字列 (マルチ カメラ アングル)|
 Bitrate|トラックのビットレート|785000
 Healthy|FragmentDiscardedCount == 0 && ArchiveAcquisitionError == False の場合は True|True (これら&2; つの値はメトリック内には存在しないがソース イベントには存在する)<br/><br/>Healthy は、次の条件のいずれかに該当する場合は false を返す複合関数です。<br/><br/>- FragmentDiscardedCount > 0<br/>- ArchiveAcquisitionError == True
-
 
 ## <a name="general-qa"></a>全般的な Q&A
 
@@ -226,9 +221,4 @@ Healthy|FragmentDiscardedCount == 0 && ArchiveAcquisitionError == False の場�
 ## <a name="provide-feedback"></a>フィードバックの提供
 
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

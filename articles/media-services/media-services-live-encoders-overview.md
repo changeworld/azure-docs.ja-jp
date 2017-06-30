@@ -12,11 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2016
+ms.date: 06/29/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 555e0b6340d09517bfd87efe209f0304f3266788
 ms.openlocfilehash: 0ebed14fe5a24f2b161c0bab0a0e1d36dadb6b5b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/27/2017
 
 
 ---
@@ -43,10 +45,5 @@ ms.openlocfilehash: 0ebed14fe5a24f2b161c0bab0a0e1d36dadb6b5b
 
 ## <a name="see-also"></a>関連項目
 [Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

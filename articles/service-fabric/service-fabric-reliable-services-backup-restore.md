@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/1/2017
+ms.date: 6/29/2017
 ms.author: mcoskun
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
 ms.openlocfilehash: babda2a4ad7dade942a0c7ece84a6f1d65bd3453
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/29/2017
 
 

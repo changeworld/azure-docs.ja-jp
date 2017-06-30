@@ -1,4 +1,4 @@
---- 
+---
 title: "Eclipse 用の Azure Service Fabric プラグイン | Microsoft Docs"
 description: "Eclipse 用の Service Fabric プラグインの概要を紹介します。"
 services: service-fabric
@@ -12,7 +12,7 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/03/2016
+ms.date: 06/29/2016
 ms.author: saysa
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
@@ -38,7 +38,7 @@ Service Fabric プラグインを Eclipse にインストールすることが�
   1.    **[Work with]\(作業対象\)** ボックスに、「**http://dl.microsoft.com/eclipse**」と入力します。
   2.    **[追加]**をクリックします。
 
-         ![Eclipse Neon 用の Service Fabric プラグイン][sf-eclipse-plugin-install] 
+         ![Eclipse Neon 用の Service Fabric プラグイン][sf-eclipse-plugin-install]
   3.    Service Fabric プラグインを選択して **[Next (次へ)]** をクリックします。
   4.    インストール手順を完了し、マイクロソフト ソフトウェア ライセンス条項に同意します。
 

@@ -41,8 +41,8 @@ ms.lasthandoff: 05/11/2017
       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
       "contentVersion": "1.0.0.0",
       "parameters": {
-            "storageAccountName": {
-                "type": "String"
+          "storageAccountName": {
+              "type": "String"
           }
       },
       "resources": [{
@@ -54,10 +54,10 @@ ms.lasthandoff: 05/11/2017
               "name": "Standard_LRS"
           },
           "kind": "Storage",
-          "properties": {        
+          "properties": {       
           }
       }],
-      "outputs": {        
+      "outputs": {      
       }
   }
   ```
@@ -102,7 +102,7 @@ ms.lasthandoff: 05/11/2017
               "Parameters": {
                   "storageAccountName": {
                       "value": "[parameters('storageAccountName')]"
-                  }                
+                  }             
               }
           }
       }]
@@ -118,13 +118,13 @@ ms.lasthandoff: 05/11/2017
 次に、顧客に代わってリソースを管理するときに使うユーザー グループまたはアプリケーションを作成します。 このユーザー グループまたはアプリケーションがマネージ リソース グループに対して持つアクセス許可は、ロールによって表されます。 そのロールには、組み込みの RBAC ロール (**所有者**、**共同作成者**など) をどれでも使用できます。 リソースを管理するためのアクセス許可は個々のユーザーに付与することもできますが、ユーザー グループに割り当てるのが一般的です。 新しい Active Directory ユーザー グループを作成するには、次のように入力します。
 
 ```azurecli
-az ad group create –display-name "name" –mail-nickname "nickname"
+az ad group create --display-name "name" --mail-nickname "nickname"
 ```
 
 既存のグループを使うこともできます。 新しく作成したユーザー グループまたは既存のユーザー グループのオブジェクト ID が必要となります。 グループの作成に使用された表示名からオブジェクト ID を取得する例を次に示します。
 
 ```azurecli
-az ad group show –group "groupName"
+az ad group show --group "groupName"
 ```
 
 例:
@@ -210,3 +210,4 @@ az managedapp definition create -n ravtestAppDef4 -l "westcentralus"
 * サンプル ファイルについては、[マネージ アプリケーションのサンプル](https://github.com/Azure/azure-managedapp-samples/tree/master/samples)に関するページを参照してください。
 * コンシューマーから見た利用形態については、「[Azure マネージ アプリケーションの実行](managed-application-consumption.md)」を参照してください。
 * マネージ アプリケーションの UI 定義ファイルの作成については、「[CreateUiDefinition の基本概念](managed-application-createuidefinition-overview.md)」を参照してください。
+

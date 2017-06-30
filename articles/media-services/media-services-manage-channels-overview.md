@@ -12,11 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 06/29/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
 ms.openlocfilehash: e4bb75b0a45dd922479cbd40ad94190c30b4333f
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/13/2017
 
 
@@ -121,7 +122,7 @@ Media Services においてライブ ストリーミング コンテンツの処
 >
 >
 
-### <a name="a-idstatesachannel-states-and-how-they-map-to-the-billing-mode"></a><a id="states"></a>チャネルの状態と、どのように課金モードにマッピングされているか
+### <a id="states"></a>チャネルの状態と、どのように課金モードにマッピングされているか
 現在のチャネルの状態。 指定できる値は、次のとおりです。
 
 * **停止済み**。 これは、チャネル作成後の初期状態です (ポータルで自動開始が選択されなかった場合)。この状態では、課金は行われません。 この状態で、チャネルのプロパティを更新できますが、ストリーミングは許可されていません。
