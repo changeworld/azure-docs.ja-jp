@@ -12,7 +12,7 @@ ms.devlang: csharp
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/02/2017
+ms.date: 6/28/2017
 ms.author: subramar
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
