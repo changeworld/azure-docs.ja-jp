@@ -171,7 +171,7 @@ SqlReaderQuery または sqlReaderStoredProcedureName を指定しない場合�
 
 
 ## <a name="json-examples-for-copying-data-from-and-to-sql-server"></a>SQL Server 間でのデータのコピーに関する JSON の例
-以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 次のサンプルは、SQL Server と Azure BLOB ストレージとの間でデータをコピーする方法を示します。 ただし、Azure Data Factory のコピー アクティビティを使用して、 **こちら** に記載されているいずれかのシンクに、任意のソースからデータを [直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats) コピーすることができます。     
+以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 次のサンプルは、SQL Server と Azure BLOB ストレージとの間でデータをコピーする方法を示します。 ただし、Azure Data Factory のコピー アクティビティを使用して、 [こちら](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に記載されているいずれかのシンクに、任意のソースからデータを **直接**コピーすることができます。     
 
 ## <a name="example-copy-data-from-sql-server-to-azure-blob"></a>例: SQL Server から Azure BLOB へのデータのコピー
 次のサンプルは以下を示しています。
