@@ -12,11 +12,13 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/10/2017
+ms.date: 06/29/2017
 ms.author: vturecek
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 56220f357cbb44946d601167234636a1bce03bfa
 ms.openlocfilehash: d0488999f55b7ccc393f4852f22c6adf4a031b1f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/13/2017
 
 
 ---
@@ -103,9 +105,4 @@ Cloud Services から Service Fabric への最も単純な移行パスは、Clou
 [9]: ./media/service-fabric-cloud-services-migration-differences/cloud-services-architecture.png
 [10]: ./media/service-fabric-cloud-services-migration-differences/service-fabric-architecture-simple.png
 [11]: ./media/service-fabric-cloud-services-migration-differences/service-fabric-architecture-full.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 
