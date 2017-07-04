@@ -27,7 +27,7 @@ ms.lasthandoff: 02/18/2017
 Azure Active Directory (Azure AD) は、各認証フローを処理する際に、複数の種類のセキュリティ トークンを出力します。 このドキュメントでは、各トークンの種類の形式、セキュリティ特性、内容について説明します。
 
 ## <a name="types-of-tokens"></a>トークンの種類
-Azure AD は [OAuth 2.0 承認プロトコル](active-directory-protocols-oauth-code.md)をサポートしており、access_token と refresh_token の両方を利用します。  また、[OpenID Connect](active-directory-protocols-openid-connect-code.md) による認証とサインインもサポートしており、これによって&3; 種類目のトークンである id_token が導入されます。  これらの各トークンは、「ベアラー トークン」として表されます。
+Azure AD は [OAuth 2.0 承認プロトコル](active-directory-protocols-oauth-code.md)をサポートしており、access_token と refresh_token の両方を利用します。  また、[OpenID Connect](active-directory-protocols-openid-connect-code.md) による認証とサインインもサポートしており、これによって 3 種類目のトークンである id_token が導入されます。  これらの各トークンは、「ベアラー トークン」として表されます。
 
 ベアラー トークンは、保護されたリソースへの "ベアラー" アクセスを許可する簡易セキュリティ トークンです。 この意味で、"ベアラー" はトークンを提示できる任意の利用者を表します。 ベアラー トークンを受信するには Azure AD による認証が必要となりますが、意図しない利用者による傍受を防ぐために、トークンをセキュリティで保護する対策を講じる必要があります。 ベアラー トークンには、許可されていない利用者がトークンを使用できないようにするための組み込みメカニズムがないため、トランスポート層セキュリティ (HTTPS) などのセキュリティで保護されたチャネルで転送する必要があります。 ベアラー トークンが暗号化されずに転送された場合、中間者攻撃によってトークンが取得され、保護されたリソースに不正アクセスされる可能性があります。 後で使用するためにベアラー トークンを保存またはキャッシュするときにも、同じセキュリティ原則が適用されます。 アプリケーションでは、常に安全な方法でベアラー トークンを転送および保存してください。 ベアラー トークンのセキュリティに関する考慮事項の詳細については、 [RFC 6750 セクション 5](http://tools.ietf.org/html/rfc6750)をご覧ください。
 
@@ -72,7 +72,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 | `scp` |スコープ |クライアント アプリケーションに付与される偽装アクセス許可を示します。 既定のアクセス許可は `user_impersonation`です。 保護されたリソースの所有者は、別の値を Azure AD に登録できます。 <br><br> **JWT 値の例**: <br> `"scp": "user_impersonation"` |
 | `sub` |[件名] |トークンが情報をアサートするプリンシパルを示します (アプリケーションのユーザーなど)。 この値は変更不可で、再割り当ても再利用もできません。したがってこの値を使用すると、安全に承認チェックができます。 サブジェクトは、Azure AD が発行するトークン内に常に存在するため、汎用性のある承認システムでこの値を使用することをお勧めします。 <br> `SubjectConfirmation` は要求ではありません。 これは、トークンのサブジェクトの検証方法を示します。 `Bearer` は、トークンを所有していることでサブジェクトが確認されることを示します。 <br><br> **SAML 値の例**: <br> `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>` <br><br> **JWT 値の例**: <br> `"sub":"92d0312b-26b9-4887-a338-7b00fb3c5eab"` |
 | `tid` |テナント ID |トークンを発行したディレクトリ テナントを識別する、変更不可で、再利用できない識別子です。 この値を使用すると、マルチ テナント アプリケーションのテナント固有のディレクトリ リソースにアクセスできます。 たとえば、この値を使用すると、Graph API への呼び出しでテナントを識別できます。 <br><br> **SAML 値の例**: <br> `<Attribute Name=”http://schemas.microsoft.com/identity/claims/tenantid”>`<br>`<AttributeValue>cbb1a5ac-f33b-45fa-9bf5-f37db0fed422<AttributeValue>` <br><br> **JWT 値の例**: <br> `"tid":"cbb1a5ac-f33b-45fa-9bf5-f37db0fed422"` |
-| `nbf`、`exp` |トークンの有効期間 |トークンが有効である期間を定義します。 トークンを検証するサービスは、現在の日付がトークンの有効期間内にあることを確認し、有効期限内にない場合は、トークンを拒否する必要があります。 サービスでは、Azure AD とサービスの間のクロック タイムの違い (「時間のずれ」) を考慮して、トークンの有効期間の範囲を最大&5; 分まで延長する場合があります。 <br><br> **SAML 値の例**: <br> `<Conditions`<br>`NotBefore="2013-03-18T21:32:51.261Z"`<br>`NotOnOrAfter="2013-03-18T22:32:51.261Z"`<br>`>` <br><br> **JWT 値の例**: <br> `"nbf":1363289634, "exp":1363293234` |
+| `nbf`、`exp` |トークンの有効期間 |トークンが有効である期間を定義します。 トークンを検証するサービスは、現在の日付がトークンの有効期間内にあることを確認し、有効期限内にない場合は、トークンを拒否する必要があります。 サービスでは、Azure AD とサービスの間のクロック タイムの違い (「時間のずれ」) を考慮して、トークンの有効期間の範囲を最大 5 分まで延長する場合があります。 <br><br> **SAML 値の例**: <br> `<Conditions`<br>`NotBefore="2013-03-18T21:32:51.261Z"`<br>`NotOnOrAfter="2013-03-18T22:32:51.261Z"`<br>`>` <br><br> **JWT 値の例**: <br> `"nbf":1363289634, "exp":1363293234` |
 | `upn` |ユーザー プリンシパル名 |ユーザー プリンシパルのユーザー名が格納されます。<br><br> **JWT 値の例**: <br> `"upn": frankm@contoso.com` |
 | `ver` |バージョン |トークンのバージョン番号が格納されます。 <br><br> **JWT 値の例**: <br> `"ver": "1.0"` |
 
@@ -100,11 +100,11 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 
 id_token または access_token を検証するには、アプリはトークンの署名とクレームの両方を検証する必要があります。 アクセス トークンを検証するには、発行者、対象ユーザー、および署名トークンをアプリで検証する必要もあります。 これらの検証は、OpenID 探索ドキュメント内の値に対して行ってください。 たとえば、テナントに依存しないバージョンのドキュメントは [https://login.windows.net/common/.well-known/openid-configuration](https://login.windows.net/common/.well-known/openid-configuration) にあります。 Azure AD ミドルウェアにはアクセス トークンを検証するための機能が組み込まれており、選択した言語の[サンプル](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-code-samples)を参照できます。 JWT トークンを明示的に検証する方法の詳細については、[手動による JWT の検証のサンプル](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation)を参照してください。  
 
-トークンの検証を簡単に処理する方法を示すライブラリとコード サンプルが提供されています。以下の情報は、基になるプロセスを理解したい開発者だけを対象としたものです。  JWT の検証に使用できるサード パーティ製オープン ソース ライブラリも複数あります。ほとんどすべてのプラットフォームと言語に対して少なくとも&1; つのライブラリがあります。 Azure AD 認証ライブラリとコード サンプルの詳細については、「[Azure Active Directory 認証ライブラリ](active-directory-authentication-libraries.md)」を参照してください。
+トークンの検証を簡単に処理する方法を示すライブラリとコード サンプルが提供されています。以下の情報は、基になるプロセスを理解したい開発者だけを対象としたものです。  JWT の検証に使用できるサード パーティ製オープン ソース ライブラリも複数あります。ほとんどすべてのプラットフォームと言語に対して少なくとも 1 つのライブラリがあります。 Azure AD 認証ライブラリとコード サンプルの詳細については、「[Azure Active Directory 認証ライブラリ](active-directory-authentication-libraries.md)」を参照してください。
 
 #### <a name="validating-the-signature"></a>署名の検証
 
-JWT には&3; つのセグメントがあり、 `.` 文字で区切られています。  1 番目のセグメントは**ヘッダー**、2 番目は**本文**、3 番目は**署名**と呼ばれます。  署名セグメントを使用してトークンの信頼性を検証し、アプリで信頼できることを確認できます。
+JWT には 3 つのセグメントがあり、 `.` 文字で区切られています。  1 番目のセグメントは**ヘッダー**、2 番目は**本文**、3 番目は**署名**と呼ばれます。  署名セグメントを使用してトークンの信頼性を検証し、アプリで信頼できることを確認できます。
 
 Azure AD によって発行されるトークンは、RSA 256 などの業界標準の非対称暗号アルゴリズムを使用して署名されます。 JWT のヘッダーには、トークンの署名に使用されたキーと暗号方法に関する情報が含まれます。
 
