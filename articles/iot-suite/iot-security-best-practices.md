@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2017
+ms.date: 07/03/2017
 ms.author: yurid
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: de7db3f353f1f6c815ee61cbdfbf9b2b38471a8d
 ms.openlocfilehash: 87647756be65f577850fe8209173280b89de15ea
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/02/2017
 
 
