@@ -1,16 +1,20 @@
 - name: Custom Decision Service
   href: ../index.md
-- name: 概要
+- name: Overview
   href: custom-decision-service-overview.md
-- name: 作業開始
+- name: Get started
   items:
-  - name: アプリケーションの登録
+  - name: Register your application
     href: custom-decision-service-get-started-register.md
-  - name: ブラウザーから API を呼び出す
+  - name: Call API from a browser
     href: custom-decision-service-get-started-browser.md
-  - name: アプリから API を呼び出す
+  - name: Call API from an app
     href: custom-decision-service-get-started-app.md
-- name: チュートリアル
+- name: Tutorial
   href: custom-decision-service-tutorial.md
-- name: API リファレンス
+- name: API reference
   href: custom-decision-service-api-reference.md
+- name: Resources
+  items:
+  - name: Azure Roadmap
+    href: https://azure.microsoft.com/roadmap/

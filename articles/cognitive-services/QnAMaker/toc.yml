@@ -1,31 +1,35 @@
-- name: "QnAMaker API Documentation"
+- name: QnAMaker API Documentation
   href: ../index.md
-- name: "Overview"
+- name: Overview
   items:
-  - name: "Learn about QnAMaker"
+  - name: Learn about QnAMaker
     href: Home.md
-- name: "Quickstarts"
+- name: Quickstarts
   expanded: true
   items: 
-  - name: "Get started with QnAMaker"
+  - name: Get started with QnAMaker
     href: Quickstart.md
-- name: "How to Guides"
+- name: How to Guides
   items: 
-  - name: "Create a knowledge base"
+  - name: Create a knowledge base
     href: Guides/CreateKB.md
-  - name: "Train a knowledge base"
+  - name: Train a knowledge base
     href: Guides/TrainKB.md
-  - name: "Share a knowledge base"
+  - name: Share a knowledge base
     href: Guides/share-knowledgebase-qnamaker.md
-  - name: "Update a knowledge base"
+  - name: Update a knowledge base
     href: Guides/UpdateKB.md
-  - name: "Publish a knowledge base"
+  - name: Publish a knowledge base
     href: Guides/PublishKB.md
-  - name: "Authentication"
+  - name: Authentication
     href: SubscriptionKeys.md
-- name: "Reference"
+- name: Reference
   items: 
-  - name: "API Reference"
+  - name: API Reference
     href: HTTPEndPoint.md
-  - name: "FAQ"
+  - name: FAQ
     href: FAQs.md
+- name: Resources
+  items:
+  - name: Azure Roadmap
+    href: https://azure.microsoft.com/roadmap/
