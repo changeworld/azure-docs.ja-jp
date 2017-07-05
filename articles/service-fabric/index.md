@@ -13,10 +13,10 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: 8300bb8883917519d27c5c31c17b0ba3eaf973af
+ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
+ms.openlocfilehash: 95499b3ca42e17a6586f97ca3e28919d2fc64a80
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/07/2017
+ms.lasthandoff: 06/23/2017
 
 ---
 #<a name="service-fabric-documentation"></a>Service Fabric のドキュメント
@@ -129,7 +129,7 @@ Service Fabric を使用して、拡張性と信頼性の高いマイクロサ�
                     <div class="cardText">
                         <h3>コマンド ライン</h3>
                         <p><a href="/powershell/module/azurerm.servicefabric">PowerShell (Azure)</a></p>
-                        <p><a href="/powershell/azure/overview?view=azureservicefabricps">PowerShell</a></p>
+                        <p><a href="/powershell/module/servicefabric/?view=azureservicefabricps">PowerShell</a></p>
                     </div>
                 </div>
             </div>

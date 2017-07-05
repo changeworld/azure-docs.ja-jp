@@ -1,28 +1,30 @@
-- name: "Custom Speech Service Documentation"
+- name: Custom Speech Service Documentation
   href: ../index.md
-- name: "Overview"
+- name: Overview
   items:
-  - name: "Learn about the Custom Speech Service"
+  - name: Learn about the Custom Speech Service
     href: cognitive-services-custom-speech-home.md
-- name: "Get started"
+- name: Get started
   items:
-  - name: "Explore the main features"
+  - name: Explore the main features
     href: cognitive-services-custom-speech-get-started.md
-  - name: "Learn how to create a custom acoustic model"
+  - name: Learn how to create a custom acoustic model
     href: CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-acoustic-model.md
-  - name: "Learn how to create a custom language model"
+  - name: Learn how to create a custom language model
     href: CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-language-model.md
-  - name: "Adapt pronunciations to your needs"
+  - name: Adapt pronunciations to your needs
     href: CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-custom-pronunciation.md
-  - name: "Create a custom speech-to-text endpoint"
+  - name: Create a custom speech-to-text endpoint
     href: CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-endpoint.md
-  - name: "Use a custom speech-to-text endpoint"
+  - name: Use a custom speech-to-text endpoint
     href: CustomSpeech-How-to-Topics/cognitive-services-custom-speech-use-endpoint.md
-- name: "Resources"
+- name: Resources
   items:
-  - name: "Transcription guidelines"
+  - name: Azure Roadmap
+    href: https://azure.microsoft.com/roadmap/
+  - name: Transcription guidelines
     href: CustomSpeech-How-to-Topics/cognitive-services-custom-speech-transcription-guidelines.md
-  - name: "FAQ"
+  - name: FAQ
     href: cognitive-services-custom-speech-faq.md
-  - name: "Glossary"
+  - name: Glossary
     href: cognitive-services-custom-speech-glossary.md
