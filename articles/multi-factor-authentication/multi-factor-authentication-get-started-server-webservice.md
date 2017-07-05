@@ -48,7 +48,7 @@ Microsoft Authenticator アプリを使用するには、アプリがモバイ�
 * Azure Multi-Factor Authentication Server がインストールされているサーバー上の IIS 7.x 以降に、Azure Multi-Factor Authentication Web サービス SDK をインストールします。
 * Azure Multi-Factor Authentication Web サービス SDK は、SSL 証明書で保護されている必要があります。
 * モバイル アプリ Web サービスは、SSL 経由で Azure Multi-Factor Authentication Web サービス SDK に接続できる必要があります。
-* モバイル アプリ Web サービスは、"PhoneFactor Admins" セキュリティ グループのメンバーであるサービス アカウントの資格情報を使用して、Azure MFA Web サービス SDK に対して認証できる必要があります。。 Azure Multi-Factor Authentication Server がドメインに参加しているサーバーで実行されている場合、このサービス アカウントとグループは Active Directory に存在します。 このサービス アカウントとグループは、Azure Multi-Factor Authentication Server がドメインに参加していない場合、Azure Multi-Factor Authentication Server のローカルに存在します。
+* モバイル アプリ Web サービスは、"PhoneFactor Admins" セキュリティ グループのメンバーであるサービス アカウントの資格情報を使用して、Azure MFA Web サービス SDK に対して認証できる必要があります。 Azure Multi-Factor Authentication Server がドメインに参加しているサーバーで実行されている場合、このサービス アカウントとグループは Active Directory に存在します。 このサービス アカウントとグループは、Azure Multi-Factor Authentication Server がドメインに参加していない場合、Azure Multi-Factor Authentication Server のローカルに存在します。
 
 
 ## <a name="install-the-web-service-sdk"></a>Web サービス SDK のインストール
