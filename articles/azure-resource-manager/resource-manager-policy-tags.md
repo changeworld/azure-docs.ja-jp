@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/20/2017
+ms.date: 07/05/2017
 ms.author: tomfitz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
 ms.openlocfilehash: 04338b62d942774368149b27e8b35713b77f8d7c
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/21/2017
 
 
