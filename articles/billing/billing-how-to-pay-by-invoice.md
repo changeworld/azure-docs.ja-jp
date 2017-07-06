@@ -4,7 +4,7 @@ description: "Azure サブスクリプションを請求書で支払う方法に
 services: 
 documentationcenter: 
 author: genlin
-manager: vikdesai
+manager: jlian
 editor: 
 tags: billing
 ms.service: billing
