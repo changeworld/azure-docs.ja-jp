@@ -114,7 +114,7 @@ C# 関数の場合、入力テーブルの単一のエンティティ (または
 
 <a name="inputcsharp"></a>
 
-### <a name="input-sample-in-c"></a>C での入力サンプル# #
+### <a name="input-sample-in-c"></a>C# での入力サンプル
 ```csharp
 public static void Run(string myQueueItem, Person personEntity, TraceWriter log)
 {
@@ -132,7 +132,7 @@ public class Person
 
 <a name="inputfsharp"></a>
 
-### <a name="input-sample-in-f"></a>F での入力サンプル# #
+### <a name="input-sample-in-f"></a>F# での入力サンプル
 ```fsharp
 [<CLIMutable>]
 type Person = {
@@ -226,7 +226,7 @@ Node.js または C# 関数でオブジェクトをシリアル化できます�
 
 <a name="outcsharp"></a>
 
-### <a name="output-sample-in-c"></a>C での出力サンプル# #
+### <a name="output-sample-in-c"></a>C# での出力サンプル
 ```csharp
 public static void Run(string input, ICollector<Person> tableBinding, TraceWriter log)
 {
@@ -253,7 +253,7 @@ public class Person
 ```
 <a name="outfsharp"></a>
 
-### <a name="output-sample-in-f"></a>F での出力サンプル# #
+### <a name="output-sample-in-f"></a>F# での出力サンプル
 ```fsharp
 [<CLIMutable>]
 type Person = {
@@ -293,7 +293,7 @@ module.exports = function (context) {
 
 <a name="readmulti"></a>
 
-## <a name="sample-read-multiple-table-entities-in-c"></a>サンプル: C での複数のテーブル エンティティの読み取り#  #
+## <a name="sample-read-multiple-table-entities-in-c"></a>サンプル: C# での複数のテーブル エンティティの読み取り
 次の *function.json* および C# コード例では、キュー メッセージに指定されたパーティション キーのエンティティを読み取ります。
 
 ```json
