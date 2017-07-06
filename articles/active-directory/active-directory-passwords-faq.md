@@ -6,7 +6,7 @@ keywords: "Active Directory パスワード管理, パスワード管理, Azure 
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
-editor: gahug
+ms.reviewer: gahug
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity

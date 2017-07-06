@@ -1,6 +1,6 @@
 ---
 title: "Azure クラシック ポータルの既知のネットワーク | Microsoft Docs"
-description: "既知のネットワークを構成すると、&quot;複数の地域からのサインイン&quot; レポートおよび &quot;疑わしいアクティビティを示す IP アドレスからのサインイン&quot; レポートに、組織が所有する IP アドレスが含まれないようにすることができます。"
+description: "既知のネットワークを構成すると、\"複数の地域からのサインイン\" レポートおよび \"疑わしいアクティビティを示す IP アドレスからのサインイン\" レポートに、組織が所有する IP アドレスが含まれないようにすることができます。"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2017
+ms.date: 07/05/2017
 ms.author: markvi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c8f41a5f9dcb6a069850c59e18dfdcfa92daa333
 ms.openlocfilehash: f14ced0c578fc54a48dd027aedfc24ad3478aef4
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/19/2017
 
 
