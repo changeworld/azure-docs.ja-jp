@@ -16,24 +16,24 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 1530f64a38ac5e8a87f88fb97eb86aa2b67d0b12
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: 12c89a6fcbb6d299b64e6b0ec9d1dba29bb41d16
 ms.contentlocale: ja-jp
 
 
 ---
 
 ## <a name="create-an-application-express"></a>アプリケーションの作成 (簡易)
-次の手順に従って、*Microsoft アプリケーション登録ポータル*でアプリケーションを登録する必要があります。
+次の手順に従って *Microsoft アプリケーション登録ポータル*でアプリケーションを登録する必要があります。
 1. [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=windowsDesktop&step=configure)でアプリケーションを登録します。
-2.    アプリケーションの名前とお使いのメール アドレスを入力します。
-3.    ガイド付きセットアップのオプションがオンになっていることを確認します。
-4.    手順に従ってアプリケーション ID を取得し、それをコードに貼り付けます。
+2.  アプリケーションの名前とお使いのメール アドレスを入力します
+3.  ガイド付きセットアップのオプションがオンになっていることを確認します。
+4.  手順に従ってアプリケーション ID を取得し、それをコードに貼り付けます。
 
 ### <a name="add-your-application-registration-information-to-your-solution-advanced"></a>ソリューションへのアプリケーション登録情報の追加 (上級)
-次の手順に従って、*Microsoft アプリケーション登録ポータル*でアプリケーションを登録する必要があります。
-1. [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/portal/register-app)に移動して、アプリケーションを登録します。
-2. アプリケーションの名前とお使いのメール アドレスを入力します。 
+次の手順に従って *Microsoft アプリケーション登録ポータル*でアプリケーションを登録する必要があります。
+1. [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/portal/register-app)に移動して、アプリケーションを登録します
+2. アプリケーションの名前とお使いのメール アドレスを入力します 
 3. ガイド付きセットアップのオプションがオフになっていることを確認します。
 4. [`Add Platforms`] (プラットフォームの追加) をクリックしてから [`Native Application`] (ネイティブ アプリケーション) を選択し、[保存] をクリックします。
 5. アプリケーション ID の GUID をコピーし、Visual Studio に戻って `App.xaml.cs` を開き、`your_client_id_here` を登録したアプリケーション ID に置き換えます。
