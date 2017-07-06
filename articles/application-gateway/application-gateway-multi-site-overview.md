@@ -30,7 +30,7 @@ ms.lasthandoff: 06/08/2017
 
 http://contoso.com に対する要求は ContosoServerPool にルーティングされ、http://fabrikam.com に対する要求は FabrikamServerPool にルーティングされます。
 
-同様に、同じ親ドメインの 2 つのサブドメインも、同じアプリケーション ゲートウェイ デプロイでホストすることができます。 サブドメインを使用する例としては、http://blog.contoso.com とhttp://app.contoso.com が 1 つのアプリケーション ゲートウェイ デプロイでホストされるという局面が考えられます。
+同様に、同じ親ドメインの 2 つのサブドメインも、同じアプリケーション ゲートウェイ デプロイでホストすることができます。 サブドメインを使用する例としては、http://blog.contoso.com と http://app.contoso.com が 1 つのアプリケーション ゲートウェイ デプロイでホストされるという局面が考えられます。
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>ホスト ヘッダーと Server Name Indication (SNI)
 
