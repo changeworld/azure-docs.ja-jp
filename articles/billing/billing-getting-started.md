@@ -4,7 +4,7 @@ description: "Azure の課金内容が予想外の金額となるのを防ぐ方
 services: 
 documentationcenter: 
 author: jlian
-manager: mattstee
+manager: tonguyen
 editor: 
 tags: billing
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
