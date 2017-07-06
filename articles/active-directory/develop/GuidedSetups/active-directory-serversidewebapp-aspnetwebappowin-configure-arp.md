@@ -16,10 +16,10 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: b10c8bd6878f6891b2420ae7fb4b65b19144762c
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: 6c6a44cbbd79cf6422515a6d70d48ac12cba4f9f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -27,11 +27,11 @@ ms.lasthandoff: 05/10/2017
 
 この手順では、SSL を使用するようにプロジェクトを構成した後、SSL URL を使用してアプリケーションの登録情報を構成します。 その後、*web.config* を介して、アプリケーションの登録情報をソリューションに追加します。
 
-1.    ソリューション エクスプローラーで、プロジェクト選択して [`Properties`] (プロパティ) ウィンドウを確認します ([プロパティ] ウィンドウが表示されない場合は F4 キーを押します)。
-2.    以下のように [`SSL Enabled`] (SSL 有効) を `True` に変えます。<br/>
+1.  ソリューション エクスプローラーで、プロジェクト選択して [`Properties`] (プロパティ) ウィンドウを確認します ([プロパティ] ウィンドウが表示されない場合は F4 キーを押します)。
+2.  以下のように [`SSL Enabled`] (SSL 有効) を `True` に変えます。<br/>
 ![プロジェクトのプロパティ](media/active-directory-serversidewebapp-aspnetwebappowin-configure/vsprojectproperties.png)<br />
-3.    上の画像にある [`SSL URL`] の値をコピーしてこのページの最上部にある [`Redirect URL`] (リダイレクト URL) フィールドに貼り付け、*[更新]* をクリックします。
-4.    `configuration\appSettings` セクションのルート フォルダーにあるファイル `web.config` に、以下のコードを追加します。
+3.  上の画像にある [`SSL URL`] の値をコピーしてこのページの最上部にある [`Redirect URL`] (リダイレクト URL) フィールドに貼り付け、*[更新]* をクリックします。
+4.  `configuration\appSettings` セクションのルート フォルダーにあるファイル `web.config` に、以下のコードを追加します。
 
 ```xml
 <add key="ClientId" value="[Enter the application Id here]" />

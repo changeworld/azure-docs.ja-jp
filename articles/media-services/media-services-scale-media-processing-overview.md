@@ -12,7 +12,7 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 07/04/2017
 ms.author: juliako
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e

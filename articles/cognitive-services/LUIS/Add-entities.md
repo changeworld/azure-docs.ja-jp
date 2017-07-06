@@ -1,6 +1,6 @@
 ---
 title: Add entities in LUIS apps | Microsoft Docs
-description: Add entities (key data in your application&quot;s domain) in Language Understanding Intelligent Service (LUIS) apps.
+description: Add entities (key data in your application's domain) in Language Understanding Intelligent Service (LUIS) apps.
 services: cognitive-services
 author: cahann
 manager: hsalama
@@ -13,7 +13,7 @@ ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: 84ba4b97f606192b0210f8c000b87825f2edf833
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 ---
 

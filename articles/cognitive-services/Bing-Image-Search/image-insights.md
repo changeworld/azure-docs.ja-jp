@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 5b8e73dced65d1dec301ee719c21af8ce34cf411
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 6453904e5b30daff11569f4e349e90458c066f38
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 ---
 
