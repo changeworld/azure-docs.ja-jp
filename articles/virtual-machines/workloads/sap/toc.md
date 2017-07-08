@@ -22,10 +22,12 @@
 ### [ファイル レベルのバックアップ](sap-hana-backup-file-level.md)
 ### [ストレージ スナップショット バックアップ](sap-hana-backup-storage-snapshots.md)
 ## SAP Netweaver
-### [Windows/SQL Server SAP CAL への SAP IDES デプロイ ガイド](sap-cal-ides-erp6-ehp7-sp3-sql.md)
+### [Windows/SQL Server SAP CAL への SAP IDES デプロイ ガイド](cal-ides-erp6-erp7-sp3-sql.md)
 ### [概要とアーキテクチャ](suse-quickstart.md)
 ### [計画と実装](planning-guide.md)
 ### [高可用性](high-availability-guide.md)
 ### [マルチ SID 構成](high-availability-multi-sid.md)
 ### [デプロイ ガイド](deployment-guide.md)
 ### [DBMS デプロイ ガイド](dbms-guide.md)
+# リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)

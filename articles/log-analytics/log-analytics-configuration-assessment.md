@@ -1,13 +1,10 @@
 ---
 redirect_url: /azure/log-analytics/log-analytics-add-solutions
-translationtype: Human Translation
-ms.sourcegitcommit: c97018c48c03dd051b5cb5f511fab427be7ba43e
-ms.openlocfilehash: 24e423a5e6a63f58fb20a76eac9b36089a365439
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 7858948ca3d35427b426053f9ec2c1b0f10ac79d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 ---
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

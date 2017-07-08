@@ -12,11 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/8/2017
+ms.date: 6/29/2017
 ms.author: sumukhs
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f7edee399717ecb96fb920d0a938da551101c9e1
 ms.openlocfilehash: e787f48f14539dff3035c51e14243c7bd9dcbb73
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -124,10 +126,5 @@ OptimizeForLowerDiskUsage を true に設定すると、ログ ファイルの�
 MaxRecordSizeInKB 設定は、レプリケーターがログ ファイルに書き込むことのできるレコードの最大サイズを定義します。 ほとんどすべてのケースで、最適なレコードのサイズは既定の 1,024 KB ですが、 サービスで大きなデータ項目を状態情報に含めようとしている場合、この値を増やさなければならない場合があります。 小さいレコードは小さいレコードに必要な領域しか使用しないため、MaxRecordSizeInKB を 1024 より小さくしてもほとんど効果はありません。 これを変更する必要があるのは、まれなケースだけであると予想されます。
 
 SharedLogId と SharedLogPath の設定は常に一緒に使用して、サービスがノードの既定の共有ログとは別の共有ログを使用できるようにします。 最適な効率を得るため、できるだけ多くのサービスで同じ共有ログを指定してください。 共有ログ ファイルは、ヘッドの移動の競合が減るように、共有ログ ファイル専用に使用されるディスクに配置する必要があります。 これを変更する必要があるのは、まれなケースだけであると予想されます。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

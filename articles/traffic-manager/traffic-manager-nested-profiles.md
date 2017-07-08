@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: e274d10b59c6f198962974fda0a804f4d993c324
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 2dacb50ab9b8604e48f5ba08e8f8e94fa4a71bd5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/09/2017
 
 ---
 
@@ -45,7 +46,7 @@ Traffic Manager プロファイルごとに 1 つのトラフィック ルーテ
 
 この構成では、親プロファイルを使用して転送されるトラフィックによって、通常どおりリージョン全体にトラフィックが振り分けられます。 西ヨーロッパ内では、入れ子になったプロファイルによって、割り当てられた重みに従って運用エンドポイントとテスト エンドポイントにトラフィックが分散されます。
 
-親プロファイルで "パフォーマンス" トラフィック ルーティング方法を使用するときは、各エンドポイントに場所を割り当てる必要があります。 場所は、エンドポイントを構成するときに割り当てます。 デプロイメントに最も近い Azure リージョンを選択してください。 Azure のリージョンは、インターネット待機時間テーブルでサポートされている場所の値です。 詳細については、[Traffic Manager の "パフォーマンス" によるトラフィック ルーティング方法](traffic-manager-routing-methods.md#performance-traffic-routing-method)に関する記事をご覧ください。
+親プロファイルで "パフォーマンス" トラフィック ルーティング方法を使用するときは、各エンドポイントに場所を割り当てる必要があります。 場所は、エンドポイントを構成するときに割り当てます。 デプロイメントに最も近い Azure リージョンを選択してください。 Azure のリージョンは、インターネット待機時間テーブルでサポートされている場所の値です。 詳細については、[Traffic Manager の "パフォーマンス" によるトラフィック ルーティング方法](traffic-manager-routing-methods.md#a-name--performanceaperformance-traffic-routing-method)に関する記事をご覧ください。
 
 ## <a name="example-2-endpoint-monitoring-in-nested-profiles"></a>例 2: 入れ子になったプロファイルでのエンドポイントの監視
 

@@ -12,7 +12,7 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 06/23/2017
 ms.author: raynew
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 67b4861ac564565b2a36932ae15141a1e1f56035

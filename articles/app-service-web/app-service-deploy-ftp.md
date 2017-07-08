@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2016
 ms.author: cephalin;dariac
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 816113f7635a003e22a5172113e5039dbcc1ceac
 ms.openlocfilehash: 5dc546849bd02ccf4d02f3e6363a3e2fc3898259
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -72,9 +74,4 @@ ms.openlocfilehash: 5dc546849bd02ccf4d02f3e6363a3e2fc3898259
 
 * [PHP-MySQL Web アプリの作成と FTP でのデプロイ](web-sites-php-mysql-deploy-use-ftp.md)。
 * [Azure App Service のデプロイ資格情報](app-service-deploy-ftp.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

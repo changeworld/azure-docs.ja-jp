@@ -14,16 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: edaacfb8e7c179ac6e4831a113656b3cf128f985
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 09b67ca9258a490338d29763710c40ea2da23ce7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
 # <a name="use-the-storsimple-manager-service-to-clone-a-volume"></a>StorSimple Manager サービスを使用してボリュームを複製する
 [!INCLUDE [storsimple-version-selector-clone-volume](../../includes/storsimple-version-selector-clone-volume.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 StorSimple Manager サービスの **[バックアップ カタログ]** ページには、手動バックアップまたは自動バックアップを実行したときに作成されたすべてのバックアップ セットが表示されます。 このページを使用すると、バックアップ ポリシーまたはボリュームのすべてのバックアップを一覧表示したり、バックアップを選択または削除したりできます。また、バックアップを使用してボリュームを復元または複製することもできます。
 
 ![[バックアップ カタログ] ページ](./media/storsimple-clone-volume/HCS_BackupCatalog.png)  
@@ -48,11 +50,11 @@ StorSimple Manager サービスの **[バックアップ カタログ]** ペー�
       > 
       > 
    2. 複製の一意の [ボリューム名] を指定します。 名前は 3 文字以上 127 文字以下にする必要があります。
-   3. 矢印アイコン  ![矢印アイコン](./media/storsimple-clone-volume/HCS_ArrowIcon.png)  をクリックして、次のページに進みます。
+   3. 矢印アイコン  ![矢印アイコン](./media/storsimple-clone-volume/HCS_ArrowIcon.png) をクリックして、次のページに進みます。
 5. **[このボリュームを使用できるホストの指定]**で、次の手順を実行します。
    
    1. 複製のアクセス制御レコード (ACR) を指定します。 新しい ACR を追加することも、既存の一覧から選択することもできます。
-   2. 操作を完了するには、チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-clone-volume/HCS_CheckIcon.png) をクリックします。
+   2. 操作を完了するには、チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-clone-volume/HCS_CheckIcon.png)をクリックします。
 6. 複製ジョブが開始され、ジョブが正常に作成されると通知が表示されます。 **[ジョブの表示]** をクリックすると **[ジョブ]** ページで複製ジョブを監視できます。
 7. 複製ジョブが完了したら、次の手順を実行します。
    
@@ -89,10 +91,5 @@ StorSimple の複製機能と復元機能を使用して、削除されたファ
 ## <a name="next-steps"></a>次のステップ
 * [バックアップ セットからの StorSimple ボリュームの復元方法](storsimple-restore-from-backup-set.md)
 * [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

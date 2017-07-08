@@ -1,11 +1,14 @@
 # 概要
 ## [Azure Analysis Services とは](analysis-services-overview.md)
 ## [サポートされるデータ ソース](analysis-services-datasource.md)
+## [認証とユーザーのアクセス許可](analysis-services-manage-users.md)
 
 # クイック スタート
 ## [サーバーの作成 - ポータル](analysis-services-create-server.md)
 ## [モデルのデプロイ - SSDT](analysis-services-deploy.md)
 
+# サンプル
+## [GitHub の Analysis Services サンプル](https://github.com/Microsoft/Analysis-Services)
 
 # チュートリアル
 ## モデルの作成とデプロイ
@@ -29,9 +32,9 @@
 
 # 操作方法 
 ## [サーバーの管理](analysis-services-manage.md)
-## [ユーザーの管理](analysis-services-manage-users.md)
+## [データベース ユーザーの管理](analysis-services-database-users.md)
+## [サーバー管理者の管理](analysis-services-server-admins.md)
 ## [オンプレミスのデータ ゲートウェイの統合](analysis-services-gateway.md)
-## [サーバーへの接続](analysis-services-connect.md)
 ## [Excel を使用した接続](analysis-services-connect-excel.md)
 ## [Power BI を使用した接続](analysis-services-connect-pbi.md)
 ## [クライアント ライブラリの取得](analysis-services-data-providers.md)
@@ -44,13 +47,15 @@
 ## [REST ()](/rest/api/analysisservices)
 ## [DAX](https://msdn.microsoft.com/library/gg413422.aspx)
 ## [Power Query M](https://msdn.microsoft.com/library/mt211003.aspx)
+## [Tabular Model Scripting Language (TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)
 
 # リソース
 ## [Analysis Services チーム ブログ](https://blogs.msdn.microsoft.com/analysisservices/)
 ## [Azure Analysis Services フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureAnalysisServices)
-## [フィードバック](https://feedback.azure.com/forums/556165-azure-analysis-services)
-## [StackOverflow](http://stackoverflow.com/questions/tagged/azure-analysis-services)
-## [料金](https://azure.microsoft.com/pricing/details/analysis-services/)
-## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [Azure の状態](https://azure.microsoft.com/status/)
+## [フィードバック](https://feedback.azure.com/forums/556165-azure-analysis-services)
+## [料金](https://azure.microsoft.com/pricing/details/analysis-services/)
+## [StackOverflow](http://stackoverflow.com/questions/tagged/azure-analysis-services)
+## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest)
 

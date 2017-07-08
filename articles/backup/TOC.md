@@ -91,6 +91,8 @@
 ## [Azure Backup 資格情報コンテナーを削除する](backup-azure-delete-vault.md)
 ## [ロールベースのアクセス制御](backup-rbac-rs-vault.md)
 ## [ハイブリッド バックアップのセキュリティ](backup-azure-security-feature.md)
+## [Azure Backup レポートの構成](backup-azure-configure-reports.md)
+## [Azure Backup レポートのデータ モデル](backup-azure-reports-data-model.md)
 ## [オフライン バックアップの構成](backup-azure-backup-import-export.md)
 ## [テープ ライブラリの交換](backup-azure-backup-cloud-as-tape.md)
 ## [Linux VM のアプリケーション整合性バックアップ](backup-azure-linux-app-consistent.md)
@@ -100,7 +102,8 @@
 ## [.NET](/dotnet/api/microsoft.azure.management.recoveryservices.backup)
 
 # リソース
-## [料金](https://azure.microsoft.com/pricing/details/backup/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazureonlinebackup)
-## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=backup)
+## [料金](https://azure.microsoft.com/pricing/details/backup/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=backup)
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=backup)

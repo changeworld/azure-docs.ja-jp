@@ -4,7 +4,7 @@ description: "Office 365 ディレクトリ (テナント) を Azure サブス�
 services: 
 documentationcenter: 
 author: JiangChen79
-manager: vikdesai
+manager: jlian
 editor: 
 tags: billing,top-support-issue
 ms.assetid: cc9c57c6-7bfd-4dea-9027-c75ef3737589

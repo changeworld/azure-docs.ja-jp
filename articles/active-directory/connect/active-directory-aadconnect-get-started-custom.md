@@ -18,7 +18,7 @@ ms.translationtype: Human Translation
 ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
 ms.openlocfilehash: f36d5da78818410e028a73a36a502a758400e5a5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -200,8 +200,8 @@ Azure AD のスキーマは、組織によって追加されたカスタム属�
 ### <a name="enabling-single-sign-on-sso"></a>シングル サインオン (SSO) の有効化
 パスワード同期またはパススルー認証で使用するシングル サインオンを構成するのは簡単です。Azure AD に同期されているフォレストごとに一度プロセスを完了するだけでかまいません。 構成には次の 2 つの手順が含まれます。
 
-1.    オンプレミスの Active Directory での必要なコンピューター アカウントの作成。
-2.    シングル サインオンをサポートするクライアント コンピューターのイントラネット ゾーンの構成。
+1.  オンプレミスの Active Directory での必要なコンピューター アカウントの作成。
+2.  シングル サインオンをサポートするクライアント コンピューターのイントラネット ゾーンの構成。
 
 #### <a name="create-the-computer-account-in-active-directory"></a>Active Directory でのコンピューター アカウントの作成
 Azure AD Connect で追加されたフォレストごとに、ドメイン管理者の資格情報を入力する必要があります。そうすることで、フォレストごとにコンピューター アカウントを作成できます。 資格情報はアカウントの作成にのみ使用され、他の操作のために保存されたり使用されたりすることはありません。 次に示す Azure AD Connect ウィザードの **[シングル サインオンを有効にする]** ページで、資格情報を入力します。
@@ -215,20 +215,20 @@ Azure AD Connect で追加されたフォレストごとに、ドメイン管理
 クライアントがイントラネット ゾーンに自動的にサインインするように、2 つの URL はイントラネット ゾーンに含まれるものにする必要があります。 これを行うことで、ドメインに参加しているコンピューターが、企業ネットワークに接続された際に Kerberos チケットを Azure AD に自動的に送信するようになります。
 グループ ポリシー管理ツールがあるコンピューターで次の手順を実行します。
 
-1.    グループ ポリシー管理ツールを開きます。
-2.    すべてのユーザーに適用されるグループ ポリシーを編集します。 既定のドメイン ポリシーなどです。
-3.    **[ユーザーの構成]、[管理用テンプレート]、[Windows コンポーネント]、[Internet Explorer]、[インターネット コントロール パネル]、[セキュリティ]** の順に移動して、下の図のように **[サイトとゾーンの割り当て一覧]** を選択します。
-4.    ポリシーを有効にして、ダイアログ ボックスで次の 2 つの項目を入力します。
+1.  グループ ポリシー管理ツールを開きます。
+2.  すべてのユーザーに適用されるグループ ポリシーを編集します。 既定のドメイン ポリシーなどです。
+3.  **[ユーザーの構成]、[管理用テンプレート]、[Windows コンポーネント]、[Internet Explorer]、[インターネット コントロール パネル]、[セキュリティ]** の順に移動して、下の図のように **[サイトとゾーンの割り当て一覧]** を選択します。
+4.  ポリシーを有効にして、ダイアログ ボックスで次の 2 つの項目を入力します。
 
-        値: `https://autologon.microsoftazuread-sso.com`  
-        Data 1  
-        値: `https://aadg.windows.net.nsatc.net`  
-        Data 1
+        Value: `https://autologon.microsoftazuread-sso.com`  
+        Data: 1  
+        Value: `https://aadg.windows.net.nsatc.net`  
+        Data: 1
 
-5.    次のようになります。  
+5.  次のようになります。  
 ![イントラネット ゾーン](./media/active-directory-aadconnect-get-started-custom/sitezone.png)
 
-6.    **[OK]** を 2 回クリックします。
+6.  **[OK]** を 2 回クリックします。
 
 ## <a name="configuring-federation-with-ad-fs"></a>AD FS とのフェデレーションの構成
 Azure AD Connect との AD FS の構成は、わずか数クリックで簡単です。 構成の前に、以下のものを用意する必要があります。

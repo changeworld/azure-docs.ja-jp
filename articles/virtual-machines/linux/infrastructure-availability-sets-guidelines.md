@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2017
+ms.date: 06/26/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 2c4c44cc0f1f55a46d797b78ab56f88ddcf3953e
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: c5fad478a8fbbdeef2fe72f0b8f2ebe32852bbc5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -48,13 +48,13 @@ Azure では、可用性セットと呼ばれる論理的なグループに仮�
 
 Azure における基になるインフラストラクチャは、複数のハードウェア クラスターに分割されます。 各ハードウェア クラスターは、特定の範囲の VM サイズをサポートできます。 可用性セットは、常に 1 つのハードウェア クラスターでのみホストできます。 そのため、1 つの可用性セット内に存在できる VM サイズの範囲は、ハードウェア クラスターによってサポートされる VM サイズの範囲に制限されます。 可用性セット用のハードウェア クラスターは、可用性セット内の最初の VM がデプロイされるとき、またはすべての VM が停止済み (割り当て解除) 状態のときに可用性セット内の最初の VM が起動されるときに選択されます。 次の CLI コマンドを使用して、可用性セットで使用できる VM サイズの範囲を判断できます: "az vm list-sizes --location \<string\>"
 
-各ハードウェア クラスターは、複数の更新ドメインと障害ドメインに分割されます。 これらのドメインは、共通の一般的な更新サイクルを共有するホスト、または類似の物理インフラストラクチャ (電源やネットワークなど) を共有するホストで定義されます。 Azure は、ドメイン間で可用性セット内に VM を自動的に分散し、可用性とフォールト トレランスを維持します。 可用性セット内のアプリケーションのサイズと VM の数に応じて、使用するドメインの数を調整できます。 詳細については、[更新ドメインと障害ドメインの可用性と使用の管理](manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページをご覧ください。
+各ハードウェア クラスターは、複数の更新ドメインと障害ドメインに分割されます。 これらのドメインは、共通の一般的な更新サイクルを共有するホスト、または類似の物理インフラストラクチャ (電源やネットワークなど) を共有するホストで定義されます。 Azure は、ドメイン間で可用性セット内に VM を自動的に分散し、可用性とフォールト トレランスを維持します。 可用性セット内のアプリケーションのサイズと VM の数に応じて、使用するドメインの数を調整できます。 詳細については、[更新ドメインと障害ドメインの可用性と使用の管理](manage-availability.md)に関するページをご覧ください。
 
 アプリケーション インフラストラクチャを設計する場合は、使用するアプリケーション層について計画します。 目的が同じ VM を、可用性セットごとにグループ化します (nginx または Apache が実行されているフロントエンド VM の可用性セットなど)。 MongoDB または MySQL が実行されているバックエンド VM 用に、別の可用性セットを作成します。 目標は、アプリケーションの各コンポーネントを可用性セットで保護することで、少なくとも 1 つのインスタンスが常に実行されているようにすることです。
 
 ロード バランサーを可用性セットと併せて各アプリケーション層の前で使用することで、実行中のインスタンスにトラフィックが常にルーティングされるようにすることができます。 ロード バランサーを使用しなくても、計画内および計画外のメンテナンス イベント時に VM を実行し続けることはできますが、エンド ユーザーは、プライマリ VM が利用できない場合にそれらのイベントを解決できない可能性があります。
 
-ストレージ層での高可用性を実現するようにアプリケーションを設計します。 ベスト プラクティスは、[可用性セット内の VM に Managed Disks を使用する](manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)ことです。 管理されていないディスクを現在使用している場合は、[可用性セット内の VM を Managed Disks を使用するように変換する](convert-unmanaged-to-managed-disks.md#convert-vm-in-an-availability-set-to-managed-disks)ことを強くお勧めします。
+ストレージ層での高可用性を実現するようにアプリケーションを設計します。 ベスト プラクティスは、[可用性セット内の VM に Managed Disks を使用する](manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)ことです。 管理されていないディスクを現在使用している場合は、[可用性セット内の VM を Managed Disks を使用するように変換する](convert-unmanaged-to-managed-disks.md#convert-vms-in-an-availability-set)ことを強くお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]

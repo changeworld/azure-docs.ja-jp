@@ -27,7 +27,8 @@
 ## [ポートの設定](relay-port-settings.md)
 
 # リソース
-## [サンプル](https://github.com/azure/azure-relay/tree/master/samples)
-## [料金](https://azure.microsoft.com/pricing/details/service-bus/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [ブログ](https://blogs.msdn.microsoft.com/servicebus/)
+## [料金](https://azure.microsoft.com/pricing/details/service-bus/)
+## [サンプル](https://github.com/azure/azure-relay/tree/master/samples)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-servicebusrelay)

@@ -31,10 +31,12 @@
       href: sql-database-connect-query-python.md
     - name: Ruby
       href: sql-database-connect-query-ruby.md
-- name: Tutorials (チュートリアル)
+- name: チュートリアル
   items:
-  - name: 1 - 新しい SQL DB の作成/設定
+  - name: 1 - SSMS を使用して DB を設計する
     href: sql-database-design-first-database.md
+  - name: 1 - .NET を使用して DB を設計する
+    href: sql-database-design-first-database-csharp.md
   - name: 2 - SQL Server DB の移行
     href: sql-database-migrate-your-sql-server-database.md
   - name: 3 - SQL DB をセキュリティ保護する
@@ -55,10 +57,8 @@
   items:
   - name: データベースとサーバー
     items:
-    - name: データベース
-      href: sql-database-overview.md
-    - name: サーバー
-      href: sql-database-server-overview.md
+    - name: 概要
+      href: sql-database-servers-databases.md
     - name: サービス階層
       href: sql-database-service-tiers.md
     - name: エラスティック プール
@@ -75,8 +75,6 @@
       href: sql-database-paas-vs-sql-server-iaas.md  
     - name: Features (機能)
       href: sql-database-features.md
-    - name: ツール
-      href: sql-database-manage-overview.md
   - name: セキュリティ
     items:
     - name: 概要
@@ -100,7 +98,7 @@
     - name: SQL DB での TDE
       href: https://msdn.microsoft.com/library/dn948096
     - name: Always Encrypted
-      href: https://msdn.microsoft.com/library/mt163865.aspx
+      href: https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine
     - name: データ マスク
       href: sql-database-dynamic-data-masking-get-started.md
   - name: ビジネス継続性
@@ -139,6 +137,8 @@
       href: sql-database-import.md
     - name: DB のエクスポート
       href: sql-database-export.md
+    - name: データの同期
+      href: sql-database-sync-data.md
   - name: 監視とチューニング
     items:
     - name: 概要
@@ -391,6 +391,8 @@
       href: https://msdn.microsoft.com/library/mt654048.aspx
 - name: リソース
   items:
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/
   - name: FAQ
     href: sql-database-faq.md
   - name: パブリック データ セット

@@ -15,26 +15,17 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 6bfbb0b5eaae3fb3ce45d719ea1d3dec48ed0467
-ms.openlocfilehash: 359aaa1af6765270d9fe0f449007fcb4323b0ad4
-ms.lasthandoff: 02/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
+ms.openlocfilehash: 74196c7d3989cc748a27026c04ea837b29a2785f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/06/2017
 
 
 ---
 # <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスのオンとオフ
 ## <a name="overview"></a>概要
 Microsoft Azure StorSimple デバイスを通常のシステム運用の一環としてシャットダウンする必要はありません。 ただし、やむを得ずシャットダウンしたデバイスや新しいデバイスの電源をオンにしなければならないケースはあります。 一般にシャットダウンは、故障したハードウェアを交換するときや、物理的に装置を移動するとき、デバイスを廃棄するときに必要となります。 このチュートリアルでは、さまざまな状況で StorSimple デバイスの電源をオンにしたりシャットダウンしたりするために必要な手順を説明します。
-
-次の表は、StorSimple デバイスの電源オンとシャットダウンの各種シナリオの一覧です。必要な手順へのリンクも記載しています。
-
-| シナリオ | 参照トピック |
-|:--- |:--- |
-| 新しいデバイスの電源をオンにする |[新しいデバイスの電源をオンにする](#turn-on-a-new-device)<ul><li>[主エンクロージャのみを備える新しいデバイス](#new-device-with-primary-enclosure-only)</li><li>[EBOD エンクロージャを備える新しいデバイス](#new-device-with-ebod-enclosure)</li></ul> |
-| シャットダウン後にデバイスの電源をオンにする |[シャットダウン後にデバイスの電源をオンにする](#turn-on-a-device-after-shutdown)<ul><li>[主エンクロージャのみを備えるデバイス](#device-with-primary-enclosure-only)</li><li>[EBOD エンクロージャを備えるデバイス](#device-with-ebod-enclosure)</li></ul> |
-| 電力喪失後にデバイスの電源をオンにする |[電力喪失後にデバイスの電源をオンにする](#turn-on-a-device-after-a-power-loss)<ul><li>[主エンクロージャのみを備えるデバイス](#8100)</li><li>[EBOD エンクロージャを備えるデバイス](#8600)</li></ul> |
-| 主エンクロージャと EBOD の接続が失われた後にデバイスの電源をオンにする |[主エンクロージャと EBOD エンクロージャの接続が失われた後にデバイスの電源をオンにする](#turn-on-a-device-after-the-primary-and-ebod-enclosure-connection-is-lost) |
-| 動作中のデバイスをシャットダウンする |[動作中のデバイスの電源をオフにする](#turn-off-a-running-device)<ul><li>[主エンクロージャのみを備えるデバイス](#8100a)</li><li>[EBOD エンクロージャを備えるデバイス](#8600a)</li></ul> |
 
 ## <a name="turn-on-a-new-device"></a>新しいデバイスの電源をオンにする
 StorSimple デバイスの電源を初めてオンにする手順は、デバイスが 8100 と 8600 のどちらのモデルであるかによって異なります。 8100 は 1 つの主エンクロージャを持つデバイスであり、8600 は 1 つの主エンクロージャと 1 つの EBOD エンクロージャを持つデュアル エンクロージャ デバイスです。 両モデルの詳しい手順を次の各セクションで説明します。
@@ -86,7 +77,7 @@ EBOD エンクロージャを備えていない主エンクロージャのみの
    2. 両方のコントローラーのステータス LED が緑色で点灯していること。
    3. 一方のコントローラーの青い LED が点滅していること。これは、コントローラーがアクティブであることを示します。
       
-      これらの条件のいずれか&1; つでも満たされていない場合、デバイス は正常ではありません。 [Microsoft サポートにお問い合わせ](storsimple-contact-microsoft-support.md)ください。
+      これらの条件のいずれか 1 つでも満たされていない場合、デバイス は正常ではありません。 [Microsoft サポートにお問い合わせ](storsimple-contact-microsoft-support.md)ください。
 
 ### <a name="device-with-ebod-enclosure"></a>EBOD エンクロージャを備えるデバイス
 主エンクロージャと EBOD エンクロージャを備える StorSimple デバイスで、シャットダウン後に電源を入れるには、以下の手順を実行します。 説明されているとおりに各手順を正しく順に実行してください。 正しく実行しないとデータが失われる可能性があります。
@@ -111,7 +102,7 @@ EBOD エンクロージャを備えていない主エンクロージャのみの
 
 ### <a name="device-with-ebod-enclosure-a-name8600"></a>EBOD エンクロージャを備えるデバイス <a name="8600">
 #### <a name="power-loss-on-one-power-supply"></a>1 つの電源で電力喪失が発生
-主エンクロージャまたは EBOD エンクロージャの&1; つの電源で電力喪失が発生しても通常の操作を継続することができます。 ただし、デバイスの高可用性を確保するため、できるだけ早く電源を復旧してください。
+主エンクロージャまたは EBOD エンクロージャの 1 つの電源で電力喪失が発生しても通常の操作を継続することができます。 ただし、デバイスの高可用性を確保するため、できるだけ早く電源を復旧してください。
 
 #### <a name="power-loss-on-both-power-supplies-on-primary-and-ebod-enclosures"></a>プライマリ エンクロージャおよび EBOD エンクロージャ上の両方の電源で電力喪失が発生
 両方の電源で停止や瞬停が発生すると、EBOD エンクロージャは直ちにシャットダウンされ、主エンクロージャは所定の制御手順でシャットダウンされます。 電源が復旧すると、アプライアンスは自動的に起動します。
@@ -146,7 +137,7 @@ EBOD エンクロージャだけ両方の電源で異常が発生した場合は
 7. 緑の LED がオンになっていることをチェックすることで EBOD エンクロージャがオンになっていることを確認します。
 8. 主エンクロージャをオンにします。
 9. コントローラーの緑の LED がオンになっていることをチェックすることで主エンクロージャがオンになっていることを確認します。
-10. SAS レーン LED (EBOD コントローラーあたり&4; つ) がすべてオンになっていることをチェックすることで、EBOD エンクロージャと主エンクロージャ間の接続が正常であることを確認します。
+10. SAS レーン LED (EBOD コントローラーあたり 4 つ) がすべてオンになっていることをチェックすることで、EBOD エンクロージャと主エンクロージャ間の接続が正常であることを確認します。
 
 > [!IMPORTANT]
 > システムをオンにしたときに、SAS ケーブルに欠陥がある場合、または EBOD エンクロージャと主エンクロージャ間の接続が正常でない場合、回復モードになります。 このような場合は、 [Microsoft サポートにお問い合わせください](storsimple-contact-microsoft-support.md) 。

@@ -14,10 +14,10 @@ ms.tgt_pltfrm: na
 ms.date: 04/24/2017
 ms.author: ashmaka
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: db227bfea10255322c090e68b197cfb2dd1cf15b
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: 99685748120b40cd02328f6ece0b8dde55042d61
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/08/2017
 
 ---
 # <a name="what-is-azure-search"></a>Azure Search とは
@@ -31,7 +31,7 @@ Azure Search の機能について説明します。
 
 ### <a name="full-text-search-and-text-analysis"></a>フルテキスト検索とテキスト分析
 
-[フル テキスト検索](https://en.wikipedia.org/wiki/Full_text_search)は、大部分の検索ベース アプリの主な用途です。 Azure Search では、論理演算子、語句検索演算子、後置演算子、優先順位の演算子を備えた[簡単なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)を使用してクエリを作成できます。 さらに、 [Lucene クエリ構文](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) では、あいまい検索、近接検索、項目ブースト、および正規表現を有効にすることができます。 さらに、Azure Search は、アプリケーションで発音照合と正規表現を使用して、複雑な検索クエリを処理できる[カスタム字句アナライザー](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)もサポートしています。
+[フル テキスト検索](search-lucene-query-architecture.md)は、大部分の検索ベース アプリの主な用途です。 Azure Search では、論理演算子、語句検索演算子、後置演算子、優先順位の演算子を備えた[簡単なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)を使用してクエリを作成できます。 さらに、 [Lucene クエリ構文](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) では、あいまい検索、近接検索、項目ブースト、および正規表現を有効にすることができます。 さらに、Azure Search は、アプリケーションで発音照合と正規表現を使用して、複雑な検索クエリを処理できる[カスタム字句アナライザー](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)もサポートしています。
 
 ### <a name="language-support"></a>言語のサポート
 

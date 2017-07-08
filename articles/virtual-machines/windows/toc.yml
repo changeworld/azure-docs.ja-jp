@@ -134,13 +134,13 @@
       href: create-vm-specialized.md
     - name: テンプレートを使用した VM の作成
       href: ps-template.md
-    - name: 'C# を使用した VM の作成'
+    - name: 'C# を使用した VM の作成/管理'
       href: csharp.md
     - name: 'C# とテンプレートを使用した VM の作成'
       href: csharp-template.md
     - name: Chef を使用した VM の作成
       href: chef-automation.md
-    - name: Python を使用した VM の作成
+    - name: Python を使用した VM の作成/管理
       href: python.md
     - name: Terraform を使用した VM の作成
       items:
@@ -173,8 +173,6 @@
       href: cli-manage.md
     - name: CLI を使用して VM を管理する
       href: cli-deploy-templates.md
-    - name: 'C# を使用して VM を管理する'
-      href: csharp-manage.md
   - name: RDP を使用した接続
     items:
     - name: VM へのログオン
@@ -187,6 +185,8 @@
       href: hybrid-use-benefit-licensing.md
     - name: Windows クライアント イメージを使用する
       href: client-images.md
+    - name: VHD のダウンロード
+      href: download-vhd.md
     - name: VHD のアップロードを準備する
       href: prepare-for-upload-vhd-image.md
     - name: 管理ディスク イメージを作成する
@@ -366,15 +366,22 @@
         href: troubleshoot-specific-rdp-errors.md
     - name: RDP パスワードをリセットする
       href: reset-rdp.md
+    - name: NIC のリセット
+      href: reset-network-interface.md
     - name: ブート診断
  
       href: boot-diagnostics.md
     - name: VM の作成
       href: troubleshoot-deployment-new-vm.md
+    - name: デプロイの問題
+ 
+      href: troubleshoot-deploy-vm.md
     - name: VM の再起動またはサイズ変更
       href: restart-resize-error-troubleshooting.md
     - name: アプリケーション アクセス
       href: troubleshoot-app-connection.md
+    - name: ライセンス認証の問題
+      href: troubleshoot-activation-problems.md
     - name: 割り当ての失敗
       href: allocation-failure.md
     - name: VM を再デプロイする
@@ -409,6 +416,8 @@
   items:
   - name: テンプレートの作成
     href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/
   - name: コミュニティ テンプレート
     href: https://azure.microsoft.com/documentation/templates
   - name: 価格

@@ -70,6 +70,7 @@
 ### [1.3 以降](azure-diagnostics-schema-1dot3-and-later.md)
 
 # リソース
-## [PowerShell のサンプル](insights-powershell-samples.md)
 ## [Azure CLI 1.0 のサンプル](insights-cli-samples.md)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [PowerShell のサンプル](insights-powershell-samples.md)
 ## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=monitor)

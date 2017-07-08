@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: Mingfeiy;willzhan;Juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 30bd93e54da4b8e7fcb58fcdc1f5c1bb5240fa53
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 25b4da6a555fa2a5e029eadbea45eb6148518e70
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -27,7 +29,7 @@ ms.openlocfilehash: 30bd93e54da4b8e7fcb58fcdc1f5c1bb5240fa53
 > 
 > 
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 この記事では、PlayReady と Widevine DRM の両方を使用して AMS で動的に暗号化されたストリームを、Azure Media Services (AMS) を使用して配信する方法について説明します。 PlayReady ライセンスは Media Services PlayReady サーバーから取得し、Widevine ライセンスは **castLabs** ライセンス サーバーから取得します。
 
 CENC で保護されているストリーミング コンテンツを再生するには (PlayReady や Widevine)、 [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html)を使用できます。 詳細については、 [AMP のドキュメント](http://amp.azure.net/libs/amp/latest/docs/) を参照してください。
@@ -111,10 +113,5 @@ Web アプリケーション (STS) を使用するには、次の手順に従い
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -62,14 +62,15 @@
 ## [Azure クラウドでの Batch ソリューションと HPC ソリューション](batch-hpc-solutions.md)
 
 # リソース
-## [料金](https://azure.microsoft.com/pricing/details/batch/)
-## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-us/home?forum=azurebatch)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-batch)
-## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=batch)
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=)
-## [C# コード サンプル](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
-## [Python コード サンプル](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [大規模なコンピューティング リソース](big-compute-resources.md)
 ## [ブログ](https://blogs.technet.microsoft.com/windowshpc/)
+## [C# コード サンプル](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
+## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-us/home?forum=azurebatch)
+## [料金](https://azure.microsoft.com/pricing/details/batch/)
+## [Python コード サンプル](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-batch)
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=batch)
 
 

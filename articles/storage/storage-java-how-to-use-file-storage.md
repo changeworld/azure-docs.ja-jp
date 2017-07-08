@@ -14,9 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 60d4bcafa51a6eedea06901a0557d13b4e85ec7a
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 33630644e2b3b6565d009276145ecf220802cc63
+ms.openlocfilehash: 49b35ff1b82f5384b105d99ce95773648a11f6f4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -25,7 +27,7 @@ ms.openlocfilehash: 60d4bcafa51a6eedea06901a0557d13b4e85ec7a
 
 [!INCLUDE [storage-check-out-samples-java](../../includes/storage-check-out-samples-java.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 このガイドでは、Microsoft Azure ファイル ストレージ サービスで基本的な操作を実行する方法を紹介します。 Java で記述されたサンプルを利用し、共有とディレクトリを作成し、ファイルをアップロード、一覧表示、削除する方法を紹介します。 Microsoft Azure のファイル ストレージ サービスを初めて利用する場合、各セクションのコンセプトをお読みください。サンプルを理解する上で非常に役立ちます。
 
 [!INCLUDE [storage-file-concepts-include](../../includes/storage-file-concepts-include.md)]
@@ -233,10 +235,5 @@ try
 * [Azure Storage Services REST API (Azure Storage サービスの REST API)](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 * [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: e917385cb9afc13ba459aed48e5f06cc156efac5
-ms.lasthandoff: 05/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 3dfe8571114d936cc07d887392ec294ec8a67120
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/04/2017
 
 ---
 
@@ -43,11 +44,11 @@ Stream Analytics の JavaScript ユーザー定義関数では実行できない
 ## <a name="add-a-javascript-user-defined-function-in-the-azure-portal"></a>Azure Portal での JavaScript ユーザー定義関数の追加
 既存の Stream Analytics ジョブの下で単一の JavaScript ユーザー定義関数を作成するには、次の手順を実行します。
 
-1.    Azure Portal で Stream Analytics ジョブを見つけます。
+1.  Azure Portal で Stream Analytics ジョブを見つけます。
 2.  **[ジョブ トポロジ]** で、関数を選択します。 空の関数一覧が表示されます。
-3.    新しいユーザー関数を作成するには、**[追加]** を選択します。
-4.    **[新しい関数]** ブレードの **[関数の種類]** で、**[JavaScript]** を選択します。 既定の関数テンプレートがエディターに表示されます。
-5.    **[UDF alias (UDF エイリアス)]** に「**hex2Int**」と入力し、関数の実装を次のように変更します。
+3.  新しいユーザー関数を作成するには、**[追加]** を選択します。
+4.  **[新しい関数]** ブレードの **[関数の種類]** で、**[JavaScript]** を選択します。 既定の関数テンプレートがエディターに表示されます。
+5.  **[UDF alias (UDF エイリアス)]** に「**hex2Int**」と入力し、関数の実装を次のように変更します。
 
     ```
     // Convert Hex value to integer.
@@ -56,13 +57,13 @@ Stream Analytics の JavaScript ユーザー定義関数では実行できない
     }
     ```
 
-6.    [ **保存**] を選択します。 作成した関数が関数一覧に表示されます。
-7.    新しい **hex2Int** 関数を選択し、関数の定義を確認します。 すべての関数で、関数のエイリアスにプレフィックス **UDF** が追加されています。 Stream Analytics クエリでは、関数を呼び出す際に*プレフィックスを含める*必要があります。 この場合は、**UDF.hex2Int** を呼び出します。
+6.  [ **保存**] を選択します。 作成した関数が関数一覧に表示されます。
+7.  新しい **hex2Int** 関数を選択し、関数の定義を確認します。 すべての関数で、関数のエイリアスにプレフィックス **UDF** が追加されています。 Stream Analytics クエリでは、関数を呼び出す際に*プレフィックスを含める*必要があります。 この場合は、**UDF.hex2Int** を呼び出します。
 
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>クエリでの JavaScript ユーザー定義関数の呼び出し
 
 1. クエリ エディターの **[ジョブ トポロジ]** で、**[クエリ]** を選択します。
-2.    クエリを編集し、次のようにユーザー定義関数を呼び出します。
+2.  クエリを編集し、次のようにユーザー定義関数を呼び出します。
 
     ```
     SELECT
@@ -74,8 +75,8 @@ Stream Analytics の JavaScript ユーザー定義関数では実行できない
         InputStream
     ```
 
-3.    サンプル データ ファイルをアップロードするには、ジョブ入力を右クリックします。
-4.    クエリをテストするには、**[テスト]** を選択します。
+3.  サンプル データ ファイルをアップロードするには、ジョブ入力を右クリックします。
+4.  クエリをテストするには、**[テスト]** を選択します。
 
 
 ## <a name="supported-javascript-objects"></a>サポートされている JavaScript オブジェクト
@@ -144,7 +145,7 @@ FROM
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
-* [Azure Stream Analytics の使用](stream-analytics-get-started.md)
+* [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 * [Azure Stream Analytics クエリ言語リファレンス](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics の管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/dn835031.aspx)

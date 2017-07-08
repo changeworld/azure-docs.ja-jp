@@ -16,19 +16,19 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: jdial
 ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: f1fb0f6348b579121be64bff4411952026f8528d
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 871d469ada9857af6d6fe70f1dd38385fb18e312
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/13/2017
+ms.lasthandoff: 06/02/2017
 
 
 ---
 
 # <a name="create-change-or-delete-network-interfaces"></a>ネットワーク インターフェイスの作成、変更、削除
 
-ネットワーク インターフェイスの作成、設定変更、削除の方法について説明します。 NIC は、Azure 仮想マシン (VM) がインターネット、Azure、オンプレミスのリソースと通信するために使用します。 Azure Portal を使用して VM を作成すると、既定の設定で NIC が 1 つ自動的に作成されます。 カスタム設定で NIC を作成することもできます。自分で作成すると、1 つ以上の NIC を VM に追加できます。 また、既存の NIC に対して、既定の NIC 設定を変更することもできます。 この記事では、カスタム設定を使用して NIC を作成する方法、ネットワーク フィルターの割り当て (ネットワーク セキュリティ グループ)、サブネットの割り当て、DNS サーバーの設定、IP 転送などの既存の NIC 設定を変更する方法、および NIC を削除する方法について説明します。 
+ネットワーク インターフェイスの作成、設定変更、削除の方法について説明します。 NIC は、Azure 仮想マシン (VM) がインターネット、Azure、オンプレミスのリソースと通信するために使用します。 Azure Portal を使用して VM を作成すると、既定の設定で NIC が 1 つ自動的に作成されます。 カスタム設定で NIC を作成することもできます。自分で作成すると、1 つ以上の NIC を VM に追加できます。 また、既存の NIC に対して、既定の NIC 設定を変更することもできます。 この記事では、カスタム設定を使用して NIC を作成する方法、ネットワーク フィルターの割り当て (ネットワーク セキュリティ グループ)、サブネットの割り当て、DNS サーバーの設定、IP 転送などの既存の NIC 設定を変更する方法、および NIC を削除する方法について説明します。
 
-NIC に対して IP アドレスの追加、変更、削除が必要な場合は、[IP アドレスの追加、変更、削除](virtual-network-network-interface-addresses.md)に関する記事をご覧ください。 VM への NIC の追加または VM からの NIC の削除が必要な場合は、[NIC の追加と削除](virtual-network-network-interface-vm.md)に関する記事をご覧ください。 
+NIC に対して IP アドレスの追加、変更、削除が必要な場合は、[IP アドレスの追加、変更、削除](virtual-network-network-interface-addresses.md)に関する記事をご覧ください。 VM への NIC の追加または VM からの NIC の削除が必要な場合は、[NIC の追加と削除](virtual-network-network-interface-vm.md)に関する記事をご覧ください。
 
 
 ## <a name="before"></a>開始する前に
@@ -37,7 +37,7 @@ NIC に対して IP アドレスの追加、変更、削除が必要な場合は
 
 - NIC の制限について、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関する記事をご覧ください。
 - Azure アカウントを使用して、Azure Portal、Azure コマンド ライン インターフェイス (CLI)、または Azure PowerShell にログインします。 まだ Azure アカウントを持っていない場合は、[無料試用版アカウント](https://azure.microsoft.com/free)にサインアップしてください。
-- PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事の手順を実行して、Azure PowerShell をインストールして構成します。 最新バージョンの Azure PowerShell コマンドレットがインストールされていることを確認してください。 PowerShell コマンドのヘルプとサンプルを表示するには、「`get-help <command> -full`」と入力します。
+- PowerShell コマンドを使用して、この記事のタスクを実行する場合、[Azure PowerShell のインストールと設定方法](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事の手順を実行して、Azure PowerShell をインストールして設定します。 最新バージョンの Azure PowerShell コマンドレットがインストールされていることを確認してください。 PowerShell コマンドのヘルプとサンプルを表示するには、「`get-help <command> -full`」と入力します。
 - Azure コマンド ライン インターフェイス (CLI) コマンドを使用して、この記事のタスクを実行する場合は、[Azure CLI のインストールと構成の方法](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事の手順を実行して、Azure CLI をインストールして構成します。 最新バージョンの Azure CLI がインストールされていることを確認してください。 CLI コマンドのヘルプを表示するには、「`az <command> --help`」と入力します。
 
 ## <a name="create-nic"></a>NIC の作成
@@ -54,7 +54,7 @@ Azure Portal を使用して VM を作成すると、既定の設定で NIC が 
     |Virtual Network|あり|NIC に接続する VNet を選択します。 NIC を接続できるのは、NIC と同じサブスクリプションと場所に存在する VNet のみです。 NIC が作成された後で、接続先の VNet を変更することはできません。 NIC を追加する VM も、NIC と同じ場所とサブスクリプションに存在する必要があります。|
     |サブネット|あり|選択した VNet 内のサブネットを選択します。 NIC の接続先のサブネットは、作成した後で変更できます。|
     |プライベート IP アドレスの割り当て|あり| 次の割り当て方法から選択します。**動的:** このオプションを選択すると、選択したサブネットのアドレス空間から使用可能なアドレスが自動的に割り当てられます。 VM が停止 (割り当て解除) 状態になった後で再起動された場合は、NIC に異なるアドレスが割り当てられる可能性があります。 停止 (割り当て解除) 状態にならずに VM が再起動された場合、アドレスは変わりません。 **静的:** このオプションを選択した場合は、選択したサブネットのアドレス空間内から使用可能な IP アドレスを手動で割り当てる必要があります。 静的アドレスは、手動で変更するか NIC が削除されるまで変わることはありません。 NIC の作成後に、割り当て方法を変更することができます。 このアドレスは Azure DHCP サーバーによって VM のオペレーティング システム内の NIC に割り当てられます。|
-    |ネットワーク セキュリティ グループ|いいえ| **[なし]** に設定されたままにするか、既存のネットワーク セキュリティ グループ (NSG) を選択するか、新しい NSG を作成することができます。 NSG を使用すると、NIC と外部との間のネットワーク トラフィックをフィルター処理できます。 NSG について詳しくは、[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)に関する記事をご覧ください。 NSG を作成する方法については、[NSG の作成](virtual-networks-create-nsg-arm-pportal.md)に関する記事をご覧ください。 NIC には 0 個以上の NSG を適用できます。 0 個または 1 個の NSG は、その NIC の接続先の NIC にも適用できます。 NSG を NIC と接続先のサブネットに適用すると、予期しない結果が発生することがあります。 NIC に適用された NSG をトラブルシューティングする方法については、[NSG のトラブルシューティング](virtual-network-nsg-troubleshoot-portal.md#view-effective-security-rules-for-a-network-interface)に関する記事をご覧ください。|
+    |ネットワーク セキュリティ グループ|いいえ| **[なし]** に設定されたままにするか、既存のネットワーク セキュリティ グループ (NSG) を選択するか、新しい NSG を作成することができます。 NSG を使用すると、NIC と外部との間のネットワーク トラフィックをフィルター処理できます。 NSG について詳しくは、[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)に関する記事をご覧ください。 NSG を作成する方法については、[NSG の作成](virtual-networks-create-nsg-arm-pportal.md)に関する記事をご覧ください。 NIC には 0 個以上の NSG を適用できます。 0 個または 1 個の NSG は、その NIC の接続先の NIC にも適用できます。 NSG を NIC と接続先のサブネットに適用すると、予期しない結果が発生することがあります。 NIC に適用された NSG をトラブルシューティングする方法については、[NSG のトラブルシューティング](virtual-network-nsg-troubleshoot-portal.md#a-namensgaview-effective-security-rules-for-a-network-security-group-nsg)に関する記事をご覧ください。|
     |サブスクリプション|あり|ご利用の Azure [サブスクリプション](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)を 1 つ選択します。 NIC のアタッチ先の VM と接続先の Vnet は、同じサブスクリプションに存在していることが必要です。|
     |リソース グループ|あり|既存の[リソース グループ](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)を選択するか、新しく作成することができます。 NIC は、アタッチ先の VM や接続先の Vnet と、同じリソース グループに存在することも、違うリソース グループに存在することも可能です。|
     |場所|あり|NIC のアタッチ先の VM と接続先の Vnet は、同じ[場所](https://azure.microsoft.com/regions)に存在している必要があります。この場所はリージョンとも呼ばれます。|
@@ -84,7 +84,7 @@ NIC に関するほとんどの設定を表示して変更できます。
     - **DNS サーバー:** Azure DHCP サーバーが NIC に割り当てる DNS サーバーを指定できます。 この設定は、NIC が接続されている VNet から継承するか、カスタム設定を使用して VNet の設定を上書きすることができます。 表示される内容を変更するには、この記事のセクション「[DNS サーバーの変更](#dns)」の手順を実行します。
     - **ネットワーク セキュリティ グループ (NSG):** NIC に関連付けられている NSG (ある場合) が表示されます。 NSG には、NIC のネットワーク トラフィックをフィルター処理するための送受信の規則が含まれています。 NSG が NIC に関連付けられている場合は、関連付けられている NSG の名前が表示されます。 表示される内容を変更するには、この記事の「[NSG とネットワーク インターフェイスの関連付けまたは関連付け解除](#associate-nsg)」セクションの手順を実行します。
     - **プロパティ:** NIC の MAC アドレスや NIC が存在するサブスクリプションなど、NIC に関する重要な設定が表示されます (NIC が VM に接続されていない場合は空白です)。
-    - **有効なセキュリティ規則:** セキュリティ規則が一覧表示されるのは、NIC が実行中の VM にアタッチされ、NSG が NIC または NIC の接続先サブネット (あるいは両方) に関連付けられている場合です。 表示される内容について詳しくは、[ネットワーク セキュリティ グループのトラブルシューティング](virtual-network-nsg-troubleshoot-portal.md#view-effective-security-rules-for-a-network-interface)に関する記事をご覧ください。 NSG について詳しくは、[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)に関する記事をご覧ください。
+    - **有効なセキュリティ規則:** セキュリティ規則が一覧表示されるのは、NIC が実行中の VM にアタッチされ、NSG が NIC または NIC の接続先サブネット (あるいは両方) に関連付けられている場合です。 表示される内容について詳しくは、[ネットワーク セキュリティ グループのトラブルシューティング](virtual-network-nsg-troubleshoot-portal.md#a-namensgaview-effective-security-rules-for-a-network-security-group-nsg)に関する記事をご覧ください。 NSG について詳しくは、[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)に関する記事をご覧ください。
     - **有効なルート:** ルートが一覧表示されるのは、NIC が実行中の VM にアタッチされている場合です。 ルートは、Azure 既定ルート、ユーザー定義ルート (UDR)、BGP ルート (NIC の接続先サブネットに存在する場合) が組み合わされたものです。 表示される内容について詳しくは、[ルートのトラブルシューティング](virtual-network-routes-troubleshoot-portal.md#view-effective-routes-for-a-network-interface)に関する記事をご覧ください。 Azure 既定ルートと UDR について詳しくは、[ユーザー定義ルート](virtual-networks-udr-overview.md)に関する記事をご覧ください。
     - **Azure Resource Manager の一般的な設定:** Azure Resource Manager の一般的な設定については、[アクティビティ ログ](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs)、[Access Control](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)、[タグ](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags)[ロック](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、および [Automation スクリプト](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group) に関する各記事をご覧ください。
 

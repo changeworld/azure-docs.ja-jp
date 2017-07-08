@@ -78,6 +78,7 @@
 
 
 # リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [料金](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux)
 ## [リージョン別の提供状況](https://azure.microsoft.com/regions/services)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-machine)

@@ -114,8 +114,9 @@
 ## [REST ()](https://msdn.microsoft.com/library/azure/ee460812)
 
 # リソース
-## [料金](https://azure.microsoft.com/pricing/details/cloud-services/)
-## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-us/home?forum=windowsazuredevelopment)
-## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=cloud-services)
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform=)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/cloud-services/)
+## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-us/home?forum=windowsazuredevelopment)
+## [料金](https://azure.microsoft.com/pricing/details/cloud-services/)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform=)
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=cloud-services)

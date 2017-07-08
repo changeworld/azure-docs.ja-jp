@@ -99,3 +99,5 @@
 #### [仮想ネットワークへのコンピューターの接続](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [次のステップ](azure-operations-guide.md#next-steps)
+# リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)

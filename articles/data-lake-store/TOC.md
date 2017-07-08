@@ -68,10 +68,11 @@
 ## [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/dls)
 
 # リソース
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=data-lake-store)
-## [料金](https://azure.microsoft.com/pricing/details/data-lake-store/)
-## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
-## [Stack Overflow フォーラム](http://stackoverflow.com/questions/tagged/azure-data-lake)
-## [UserVoice に関するフィードバックを送信する](https://feedback.azure.com/forums/327234-data-lake)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [Data Lake Store のブログ](https://blogs.msdn.microsoft.com/azuredatalake/)
+## [UserVoice に関するフィードバックを送信する](https://feedback.azure.com/forums/327234-data-lake)
+## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
+## [料金](https://azure.microsoft.com/pricing/details/data-lake-store/)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=data-lake-store)
+## [Stack Overflow フォーラム](http://stackoverflow.com/questions/tagged/azure-data-lake)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=data-lake-store)

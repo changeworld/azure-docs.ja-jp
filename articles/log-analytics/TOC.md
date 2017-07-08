@@ -56,15 +56,17 @@
 ### [アクティビティ ログ分析](log-analytics-activity.md)
 ### [AD 評価](log-analytics-ad-assessment.md)
 ### [AD レプリケーションの状態](log-analytics-ad-replication-status.md)
+### [Agent Health](../operations-management-suite/oms-solution-agenthealth.md?toc=%2fazure%2flog-analytics%2ftoc.json)
 ### [アラートの管理](log-analytics-solution-alert-management.md)
+### [Application Insights Connector](log-analytics-app-insights-connector.md)
 ### [Azure SQL Analytics](log-analytics-azure-sql.md)
 ### [Azure Web Apps Analytics](log-analytics-azure-web-apps-analytics.md)
 ### [容量とパフォーマンス](log-analytics-capacity.md)
 ### [変更の追跡](log-analytics-change-tracking.md)
 ### [コンテナー](log-analytics-containers.md)
 ### [DNS 分析](log-analytics-dns.md)
-### [OMS の IT Service Management Connector](log-analytics-itsmc-overview.md)
-#### [OMS の IT Service Management 接続](log-analytics-itsmc-connections.md)
+### [IT Service Management Connector](log-analytics-itsmc-overview.md)
+#### [IT Service Management 接続](log-analytics-itsmc-connections.md)
 ### [Key Vault](log-analytics-azure-key-vault.md)
 ### Logic Apps B2B メッセージ
 #### [Logic Apps B2B メッセージ ソリューション](../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json)
@@ -89,6 +91,7 @@
 ### [PowerShell コマンドレット](log-analytics-powershell-workspace-configuration.md)
 ### [Resource Manager テンプレート](log-analytics-template-workspace-configuration.md)
 ### [ログ検索 API](log-analytics-log-search-api.md)
+#### [Python](log-analytics-log-search-api-python.md)
 ### [アラート API](log-analytics-api-alerts.md)
 
 # リファレンス
@@ -96,6 +99,7 @@
 ## [REST ()](/rest/api/loganalytics)
 
 # リソース
-## [Windows Analytics](https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [料金](https://azure.microsoft.com/pricing/details/log-analytics/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=log-analytics)
+## [Windows Analytics](https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics)

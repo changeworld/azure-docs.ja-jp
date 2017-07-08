@@ -4,17 +4,14 @@
 # 作業開始
 ## [アカウントの作成と管理](media-services-portal-create-account.md)
 ## [開発環境のセットアップ](media-services-set-up-computer.md)
-###[.NET](media-services-dotnet-how-to-use.md)
-###[REST ()](media-services-rest-how-to-use.md)  
+### [.NET](media-services-dotnet-how-to-use.md)
+### [REST ()](media-services-rest-how-to-use.md)  
 ## [AAD 認証を使用して API にアクセスする](media-services-use-aad-auth-to-access-ams-api.md)
-###[ポータルを使用して AAD 認証を管理する](media-services-portal-get-started-with-aad.md)
-###[.NET で API にアクセスする](media-services-dotnet-get-started-with-aad.md)
-###[REST で API にアクセスする](media-services-rest-connect-with-aad.md)
-###[CLI を使用して AAD アプリを作成および構成する](media-services-cli-create-and-configure-aad-app.md)
-###[PowerShell を使用して AAD アプリを作成および構成する](media-services-powershell-create-and-configure-aad-app.md)
-## ACS キーを使用してプログラムで接続する
-### [.NET](media-services-dotnet-connect-programmatically.md)
-### [REST ()](media-services-rest-connect-programmatically.md)
+### [ポータルを使用して AAD 認証を管理する](media-services-portal-get-started-with-aad.md)
+### [.NET で API にアクセスする](media-services-dotnet-get-started-with-aad.md)
+### [REST で API にアクセスする](media-services-rest-connect-with-aad.md)
+### [CLI を使用して AAD アプリを作成および構成する](media-services-cli-create-and-configure-aad-app.md)
+### [PowerShell を使用して AAD アプリを作成および構成する](media-services-powershell-create-and-configure-aad-app.md)
 
 ## ビデオ オン デマンドの配信
 ### [ポータル](media-services-portal-vod-get-started.md)
@@ -223,7 +220,8 @@
 ## [REST ()](/rest/api/media/mediaservice)  
 
 # リソース
-## [リリース ノート](media-services-release-notes.md)
-## [料金](https://azure.microsoft.com/pricing/details/media-services/)
 ## [Azure Media Services コミュニティ](media-services-community.md)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [料金](https://azure.microsoft.com/pricing/details/media-services/)
+## [リリース ノート](media-services-release-notes.md)
 ## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=media-services)

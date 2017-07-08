@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: d83e84e8ea2158ecf6c8b966732ca1d8961389e0
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 013a3175d5e19689629d1d0ea3b413184e71c485
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -87,7 +87,7 @@ Eclipse 用の HDInsight Tools は、Azure Toolkit for Eclipse に付属して�
    * Spark SDK が、SDK をダウンロードした場所に設定されていることを確認します。 ダウンロード場所へのリンクは、この記事の前の「[前提条件](#prerequisites)」にあります。 このダイアログ ボックスにあるリンクから SDK をダウンロードすることもできます。
 
     ![[New HDInsight Scala Project]\(新しい HDInsight Scala プロジェクト\) ダイアログ ボックス](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-3.png)
-4.    次のダイアログ ボックスで **[Libraries]\(ライブラリ\)** タブをクリックし、既定値をそのまま受け入れて **[Finish]\(完了\)** をクリックします。 
+4.  次のダイアログ ボックスで **[Libraries]\(ライブラリ\)** タブをクリックし、既定値をそのまま受け入れて **[Finish]\(完了\)** をクリックします。 
    
     ![[Libraries]\(ライブラリ\) タブ](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-4.png)
 
@@ -208,7 +208,7 @@ Windows コンピューターでローカルの Spark Scala アプリケーシ�
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
 * [Azure Toolkit for IntelliJ を使用して Spark Scala アプリケーションを作成して送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
 * [Azure Toolkit for IntelliJ を使用して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
+* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-zeppelin-notebook.md)
 * [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 * [Jupyter Notebook で外部のパッケージを使用する](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
 * [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](hdinsight-apache-spark-jupyter-notebook-install-locally.md)

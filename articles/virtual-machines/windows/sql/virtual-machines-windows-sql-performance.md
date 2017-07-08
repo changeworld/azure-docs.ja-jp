@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 04/28/2017
+ms.date: 06/27/2017
 ms.author: jroth
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: d09d2317fc7b94f7b63712e7309a49e16fd1aaa2
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 9704c6cc846df5a8e129f48ea6378140c8338279
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -165,8 +165,6 @@ Premium Storage (DS シリーズ、DSv2 シリーズ、および GS シリーズ
 * **Azure 内の SQL Server データ ファイル**: [Azure 内の SQL Server データ ファイル](https://msdn.microsoft.com/library/dn385720.aspx)は、SQL Server 2014 以降で使用できる新機能です。 Azure 内のデータ ファイルを使用して SQL Server を実行すると、Azure データ ディスクを使用する場合と同等のパフォーマンス特性が得られます。
 
 ## <a name="next-steps"></a>次のステップ
-
-SQL Server と Premium Storage についてさらに詳しく調べたい場合は、「[Virtual Machines 上での Azure Premium Storage と SQL Server の使用](../classic/sql-server-premium-storage.md)」をご覧ください。
 
 セキュリティのベスト プラクティスについては、[Azure Virtual Machines における SQL Server のセキュリティに関する考慮事項](virtual-machines-windows-sql-security.md)に関するページをご覧ください。
 

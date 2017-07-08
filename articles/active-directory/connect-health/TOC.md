@@ -20,5 +20,6 @@
 ## [ハイブリッド ID 設計ガイド](../active-directory-hybrid-identity-design-considerations-overview.md)
 
 # リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ##[Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 

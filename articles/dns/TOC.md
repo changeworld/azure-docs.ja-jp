@@ -62,8 +62,9 @@
 ## [Web アプリ](/azure/app-service-web/)
 
 # リソース
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=dns)
-## [料金](https://azure.microsoft.com/pricing/details/dns/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [機能に関する要求](https://feedback.azure.com/forums/217313-networking/category/77466-domain-name-service-dns-traffic-manager)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [ネットワークのブログ](http://azure.microsoft.com/blog/topics/networking)
-## [機能に関する要求](https://feedback.azure.com/forums/217313-networking/category/77466-domain-name-service-dns-traffic-manager)
+## [料金](https://azure.microsoft.com/pricing/details/dns/)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=dns)
