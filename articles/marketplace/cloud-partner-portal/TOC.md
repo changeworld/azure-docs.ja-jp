@@ -32,3 +32,5 @@
 ## [公開元プロファイルの管理](./cloud-partner-portal-manage-publisher-profile.md)
 ## [ユーザーの管理](./cloud-partner-portal-manage-users.md)
 ## [サポートを受ける](./cloud-partner-portal-support-for-cloud-partner-portal.md)
+# リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)

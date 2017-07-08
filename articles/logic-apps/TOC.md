@@ -139,6 +139,7 @@
 ### [プレビュー](logic-apps-schema-2015-08-01.md)
 
 # リソース
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=logic-apps)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azurelogicapps)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=logic-apps)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-logic-apps)

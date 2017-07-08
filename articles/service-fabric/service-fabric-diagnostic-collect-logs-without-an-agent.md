@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/18/2017
 ms.author: karolz
-translationtype: Human Translation
-ms.sourcegitcommit: d7f7b157d8d6fb54259c8f23d5005509f4eb7872
-ms.openlocfilehash: 22acb6afbfbfff753e71b5e821385798cc76ffdd
-ms.lasthandoff: 01/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: 08f7b57985382f2abbb90ba1e13a30f40b38917f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/15/2017
 
 
 ---
@@ -53,15 +54,15 @@ EventFlow バイナリは、一連の NuGet パッケージとして入手でき
 
 EventFlow をホストするサービスには、アプリケーション ログの送信元と送信先に応じた適切なパッケージが含まれる必要があります。 次のパッケージを追加します。 
 
-* `Microsoft.Diagnostics.EventFlow.Input.EventSource` 
+* `Microsoft.Diagnostics.EventFlow.Inputs.EventSource` 
     * (サービスの EventSource クラス、および *Microsoft-ServiceFabric-Services* や *Microsoft-ServiceFabric-Actors* などの標準 EventSource からデータをキャプチャするため)
-* `Microsoft.Diagnostics.EventFlow.Output.ApplicationInsights` 
+* `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights` 
     * (ここでは、Azure Application Insights リソースにログを送信します)  
 * `Microsoft.Diagnostics.EventFlow.ServiceFabric` 
     * (Service Fabric サービス構成からの EventFlow パイプラインの初期化を可能にし、診断データの送信に関する問題を Service Fabric 正常性レポートとして報告します)
 
 > [!NOTE]
-> `Microsoft.Diagnostics.EventFlow.Input.EventSource` パッケージでは、サービス プロジェクトが .NET Framework 4.6 以降を対象とする必要があります。 このパッケージをインストールする前に、プロジェクトのプロパティで適切な対象フレームワークが設定されていることを確認します。 
+> `Microsoft.Diagnostics.EventFlow.Inputs.EventSource` パッケージでは、サービス プロジェクトが .NET Framework 4.6 以降を対象とする必要があります。 このパッケージをインストールする前に、プロジェクトのプロパティで適切な対象フレームワークが設定されていることを確認します。 
 
 すべてのパッケージをインストールした後は、サービスで EventFlow を構成して有効にします。
 
@@ -176,3 +177,4 @@ namespace Stateless1
 <!--Image references-->
 [1]: ./media/service-fabric-diagnostics-collect-logs-without-an-agent/eventflow-nugets.png
 [2]: ./media/service-fabric-diagnostics-collect-logs-without-an-agent/ai-traces.png
+

@@ -73,21 +73,22 @@
 ## [REST (管理)](/rest/api/searchmanagement)
 
 # リソース
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=search)
 ## [API のバージョン](search-api-versions.md)
-## [サービス REST (プレビュー)](search-api-2015-02-28-preview.md)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [料金](https://azure.microsoft.com/pricing/details/search/)
+## [サービス REST (プレビュー)](search-api-2015-02-28-preview.md)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=search)
+## コースウェアとチュートリアル
 ## デモ サイト
-### [アナライザーのデモを検索する](http://alice.unearth.ai/)
+## パートナーとコミュニティ
+### [Azure Search GitHub](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
+### [Azure Search GitHub](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
+### [フォーラム](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureSearch)
 ### [求人情報アプリ](http://aka.ms/azjobsdemo)
 ### [ライブ デモ アプリ](https://searchsamples.azurewebsites.net/)
-## コースウェアとチュートリアル
-### [バーチャル アカデミー](https://mva.microsoft.com/training-courses/using-windows-azure-search-10540?l=ADkxnd97_9304984382)
-### [ビデオとチュートリアル](search-video-demo-tutorial-list.md)
-### [Azure Search GitHub](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
-## パートナーとコミュニティ
 ### [リレーショナル データをモデル化する](http://blogs.technet.com/b/onsearch/archive/2015/09/08/modeling-the-adventureworks-inventory-database-for-azure-search.aspx)
 ### [多層構造ファセット](http://blogs.technet.com/b/onsearch/archive/2015/09/09/multi-level-taxonomy-facets-in-azure-search.aspx)
-### [フォーラム](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureSearch)
+### [アナライザーのデモを検索する](http://alice.unearth.ai/)
 ### [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-search)
-### [Azure Search GitHub](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
+### [ビデオとチュートリアル](search-video-demo-tutorial-list.md)
+### [バーチャル アカデミー](https://mva.microsoft.com/training-courses/using-windows-azure-search-10540?l=ADkxnd97_9304984382)

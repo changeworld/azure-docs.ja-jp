@@ -14,12 +14,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 12/21/2016
+ms.date: 05/30/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 8c5342fd2c35bbda94ec8496e9ca74454d44d17f
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 24f903c6b8b982599904b95f86d648927a3be5ce
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -225,10 +226,7 @@ az vm redeploy --resource-group myResourceGroup --name myVM
 
 * [Azure ポータル](https://portal.azure.com)からリモート アクセスをリセットします。 Azure Portal で、VM を選択し **[Reset Remote... (リモートのリセット...)**] ボタンをクリックします。
 * VM を再起動します。 [Azure Portal](https://portal.azure.com) で、VM を選択し、**[再起動]** ボタンをクリックします。
-  
-    - または -
-  
-    [Azure クラシック ポータル](https://manage.windowsazure.com)で、**[仮想マシン]** > **[インスタンス]** > **[再起動]** をクリックします。
+    
 * 仮想マシンを新しい Azure ノードに VM を再デプロイします。 VM の再デプロイ方法については、「[新しい Azure ノードへの仮想マシンの再デプロイ](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
   
     この操作を行うと、一時ディスクのデータが失われ、仮想マシンに関連付けられている動的 IP アドレスが更新されます。

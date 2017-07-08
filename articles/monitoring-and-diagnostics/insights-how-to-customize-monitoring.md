@@ -12,16 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2015
+ms.date: 06/06/2017
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c9f907e55664e266fe994fb851ce744679dfb3e4
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 5ccb5c0b3c2ffaf8aba855a9dbe3da9691ab149b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/08/2017
 
 
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Microsoft Azure のメトリックの概要
-すべての Azure サービスでは、サービスの正常性、パフォーマンス、可用性、使用状況を監視するための重要なメトリックが追跡されます。 Azure Portal でこれらのメトリックを参照できますが、[REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx) または [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights/) を使用してすべてのメトリックにプログラムでアクセスすることもできます。
+すべての Azure サービスでは、サービスの正常性、パフォーマンス、可用性、使用状況を監視するための重要なメトリックが追跡されます。 Azure Portal でこれらのメトリックを参照できますが、[REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx) または [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor) を使用してすべてのメトリックにプログラムでアクセスすることもできます。
 
 サービスによっては、メトリックを表示するために診断を有効にする必要がある場合があります。 また、Virtual Machines などのサービスでは、基本的なメトリック セットを利用できますが、使用頻度の高いメトリックをすべて有効にする必要もあります。 詳細については、「 [監視と診断の有効化](insights-how-to-use-diagnostics.md) 」を参照してください。
 
@@ -58,7 +60,7 @@ ms.openlocfilehash: c9f907e55664e266fe994fb851ce744679dfb3e4
 
 ![使用法](./media/insights-how-to-customize-monitoring/Insights_UsageChart.png)
 
-メトリックと同様に、[REST API](https://msdn.microsoft.com/library/azure/dn931963.aspx) または [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights/) を使用して、すべての使用量クォータにプログラムでアクセスできます。
+メトリックと同様に、[REST API](https://msdn.microsoft.com/library/azure/dn931963.aspx) または [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor) を使用して、すべての使用量クォータにプログラムでアクセスできます。
 
 ## <a name="next-steps"></a>次のステップ
 * [アラート通知を受信](insights-receive-alert-notifications.md) します。
@@ -67,10 +69,5 @@ ms.openlocfilehash: c9f907e55664e266fe994fb851ce744679dfb3e4
 * [アプリケーションのパフォーマンスを監視](../application-insights/app-insights-azure-web-apps.md) します。
 * [JavaScript のアプリや Web ページに Application Insights](../application-insights/app-insights-web-track-usage.md) を使用して、Web ページを参照しているブラウザーに関するクライアント分析を取得します。
 * [Web ページの可用性と応答性を監視](../application-insights/app-insights-monitor-web-app-availability.md) すると、ページがダウンしているかどうかを検出できます。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

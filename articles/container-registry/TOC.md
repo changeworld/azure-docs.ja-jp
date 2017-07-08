@@ -25,7 +25,8 @@
 ## [Container Service](/azure/container-service/)
 
 # リソース
-## [利用可能なリージョン](https://azure.microsoft.com/regions/services/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [料金](https://azure.microsoft.com/pricing/details/container-registry/)
+## [利用可能なリージョン](https://azure.microsoft.com/regions/services/)
 ## [サービスの更新情報](https://azure.microsoft.com/en-us/updates/?product=container-registry&updatetype=&platform=)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-container-registry)

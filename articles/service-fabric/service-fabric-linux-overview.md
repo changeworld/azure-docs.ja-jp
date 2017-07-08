@@ -12,12 +12,13 @@ ms.devlang: Java
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/02/2017
+ms.date: 6/28/2017
 ms.author: SubramaR
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 62d7e0088c66a538dff7f3b99882ebef4949211b
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: ad20216374306d8b5035140f3d8e107c595b623e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/30/2017
 
 
 ---

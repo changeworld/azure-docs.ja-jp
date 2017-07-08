@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 08/31/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
-ms.openlocfilehash: 22fe6397120c36e1aa716f4711fbe9e7c72d17e8
-ms.lasthandoff: 04/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 1895094b28d9596eec644078b6f9a877b526b89e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -287,10 +288,13 @@ RP 信頼構成にロール要求としてグループ メンバーシップが�
     }
    
     <mark>[Authorize(Roles="Domain Admins")]</mark>
-    public ActionResult Contact()  {      ViewBag.Message = "Your contact page.";
+    public ActionResult Contact()
+    {
+        ViewBag.Message = "Your contact page.";
    
         return View();
-    }  </pre>
+    }
+    </pre>
    
     この AD FS ラボ環境では **Test User** を **Test Group** に追加しているため、Test Group を使用して `About` に関する承認をテストします。 `Contact` については、**Test User** が属していない **Domain Admins** を使用して失敗のケースをテストします。
 3. `F5` キーを押してデバッガーを起動してサインインし、 **[About]**をクリックします。 認証されたユーザーによるこの操作の実行が承認されている場合、 `~/About/Index` ページが正常に表示されます。
@@ -350,7 +354,6 @@ Azure App Service Web Apps では、[ハイブリッド接続](../biztalk-servic
 <a name="bkmk_resources"></a>
 
 ## <a name="further-resources"></a>他の関連リソース
-* [SSL と Authorize 属性を使用してアプリケーションを保護する](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md#protect-the-application-with-ssl-and-the-authorize-attribute)
 * [Azure アプリでのオンプレミス Active Directory を使用した認証](web-sites-authentication-authorization.md)
 * [Azure Active Directory 認証を使用した基幹業務 Azure アプリの作成](web-sites-dotnet-lob-application-azure-ad.md)
 * [Visual Studio 2013 で ASP.NET のオンプレミス組織認証オプション (ADFS) を使用する方法に関するページ](http://www.cloudidentity.com/blog/2014/02/12/use-the-on-premises-organizational-authentication-option-adfs-with-asp-net-in-visual-studio-2013/)

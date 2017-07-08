@@ -33,9 +33,10 @@
 
 
 # リソース
-## [サンプル アプリケーション](https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [JavaScript 埋め込みサンプル](https://microsoft.github.io/PowerBI-JavaScript/demo/)
 ## [JavaScript の Git リポジトリ](https://github.com/Microsoft/PowerBI-JavaScript)
 ## [Power BI C# のGit リポジトリ](https://github.com/Microsoft/PowerBI-CSharp)
 ## [Power BI コミュニティ](http://community.powerbi.com/t5/Developer/bd-p/Developer)
+## [サンプル アプリケーション](https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/powerbi)

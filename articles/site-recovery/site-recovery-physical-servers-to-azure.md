@@ -14,13 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: raynew
+ROBOTS: NOINDEX, NOFOLLOW
+redirect_url: physical-walkthrough-overview
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: ab2a4b2771a4d45c947e35c8ee032e5ddf20a8aa
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: a9655ce1540c788d02d178eb619d2051cddda1c2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 06/29/2017
 
-
+---
 ---
 # <a name="replicate-physical-machines-to-azure-by-using-site-recovery"></a>Site Recovery を使用して物理マシンを Azure にレプリケートする
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/12/2016
 ms.author: cephalin
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 3071bf565b14966de2293205026c4524d7b0f0c5
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: b70d74441f3d6d9793ae516b3f04e36e786a9a8f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -38,7 +38,7 @@ App Service は、Azure VM、ストレージ、ネットワーク接続、Web �
 * App Service アプリと外部リソース (PowerShell 管理、コマンドライン インターフェイス、Azure SDK、REST API、ハイブリッド接続など) の間のすべての通信が適切に暗号化されていること。
 * 24 時間体制の脅威管理によって、App Service のリソースがマルウェア、分散型サービス拒否 (DDoS)、man-in-the-middle (MITM) などの脅威から保護されていること。 
 
-Azure のインフラストラクチャとプラットフォームのセキュリティの詳細については、 [Azure セキュリティ センター](/support/trust-center/security/)を参照してください。
+Azure のインフラストラクチャとプラットフォームのセキュリティの詳細については、 [Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/security/)を参照してください。
 
 #### <a name="application-security"></a>アプリケーションのセキュリティ
 アプリケーションが実行されるインフラストラクチャとプラットフォームをセキュリティで保護することは Azure の役割ですが、アプリケーション自体をセキュリティで保護することはユーザーの役割です。 つまり、ユーザーは、アプリケーションのコードとコンテンツを安全な方法で開発、デプロイ、管理する必要があります。 これが実現されなければ、アプリケーションのコードまたはコンテンツは、次のような脅威に対して脆弱なままになる可能性があります。

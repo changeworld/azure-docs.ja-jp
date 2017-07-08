@@ -11,10 +11,10 @@ ms.topic: hero-article
 ms.date: 06/14/2017
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 3e0aa1ecccdb55b75dd332818e09b21431716fdc
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: dba50b369fb87d5f6d5118038c75392bd719cc10
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
+ms.lasthandoff: 07/06/2017
 
 ---
 

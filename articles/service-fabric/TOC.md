@@ -2,11 +2,11 @@
 # 概要
 ## [Service Fabric とは](service-fabric-overview.md)
 ## [マイクロサービスの概要](service-fabric-overview-microservices.md)
+## [全体像](service-fabric-content-roadmap.md)
 ## [アプリケーションのシナリオ](service-fabric-application-scenarios.md)
 ## [パターンとシナリオ](service-fabric-patterns-and-scenarios.md)
 ## [アーキテクチャ](service-fabric-architecture.md)
 ## [用語集](service-fabric-technical-overview.md)
-## [基本](service-fabric-content-roadmap.md)
 
 # 作業開始
 ## 開発環境を設定する
@@ -131,6 +131,10 @@
 #### [Windows](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 #### [Linux](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
 
+### API Management との統合
+#### [概要](service-fabric-api-management-overview.md)
+#### [クイック スタート](service-fabric-api-management-quick-start.md)
+
 ### Cloud Services から移行する
 #### [Cloud Services と Service Fabric の比較](service-fabric-cloud-services-migration-differences.md)
 #### [Service Fabric への移行](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
@@ -142,6 +146,7 @@
 ### [ImageStoreConnectionString 設定について](service-fabric-image-store-connection-string.md)
 ### アプリケーションをデプロイまたは削除する
 #### [PowerShell](service-fabric-deploy-remove-applications.md)
+#### [Azure CLI 2.0](service-fabric-application-lifecycle-azure-cli-2-0.md)
 #### [Visual Studio](service-fabric-publish-app-remote-cluster.md)
 #### [FabricClient API](service-fabric-deploy-remove-applications-fabricclient.md)
 ### アプリケーションのアップグレード
@@ -215,7 +220,8 @@
 ### [クラスターの視覚化](service-fabric-visualizing-your-cluster.md)
 ### [セキュリティ保護されたクラスターへの接続](service-fabric-connect-to-secure-cluster.md)
 
-### [Azure CLI を使用したクラスターの管理](service-fabric-azure-cli.md)
+### [XPlat CLI を使用したクラスターの管理](service-fabric-azure-cli.md)
+### [Azure CLI 2.0 コマンドを使用したクラスターの管理](service-fabric-azure-cli-2-0.md)
 ### [クラスター ノードへのパッチの適用](service-fabric-patch-orchestration-application.md)
 
 ### クラスター リソースを管理および調整する
@@ -258,18 +264,19 @@
 
 # リファレンス
 ## [PowerShell (Azure)](/powershell/module/azurerm.servicefabric/)
-## [PowerShell](/powershell/azure/overview?view=azureservicefabricps)
+## [PowerShell](/powershell/module/servicefabric/?view=azureservicefabricps)
 ## [Azure CLI](/cli/azure/sf)
 ## [Java API](/java/api/overview/azure/servicefabric)
 ## [.NET](/dotnet/api/overview/azure/servicefabric?view=azure-dotnet)
 ## [REST ()](/rest/api/servicefabric)
 
 # リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [Service Fabric に関する一般的な質問](service-fabric-common-questions.md)
-## [Service Fabric のサポート オプション](service-fabric-support.md)
-## [コード サンプル](http://aka.ms/servicefabricsamples)
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/service-fabric/)
-## [料金](https://azure.microsoft.com/pricing/details/service-fabric/)
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=service-fabric)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureServiceFabric)
+## [料金](https://azure.microsoft.com/pricing/details/service-fabric/)
+## [コード サンプル](http://aka.ms/servicefabricsamples)
+## [Service Fabric のサポート オプション](service-fabric-support.md)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=service-fabric)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=service-fabric)

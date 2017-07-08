@@ -42,6 +42,7 @@
 #### [Azure ログ統合の使用](security-azure-log-integration-get-started.md)
 #### [Azure Active Directory の監査ログの統合](security-azure-log-integration-ad.md)
 #### [Security Center のアラートの統合](security-azure-log-integration-security-center.md)
+#### [Event Hubs を使用した Key Vault のログの統合](security-azure-log-integration-keyvault-eventhub.md)
 #### [FAQ](security-azure-log-integration-faq.md)
 
 ## ID 管理
@@ -72,9 +73,10 @@
 ## [Operations Management Suite](../operations-management-suite/oms-security-getting-started.md)
 
 # リソース
-## [セキュリティとコンプライアンスのブログ](http://blogs.msdn.com/b/azuresecurity/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [Azure セキュリティの MVP プログラム](azure-security-mvp.md)
 ## [サイバーセキュリティに関する相談](azure-security-cyber-services.md)
+## [セキュリティとコンプライアンスのブログ](http://blogs.msdn.com/b/azuresecurity/)
 ## [Virtual Academy のセキュリティ講座](security-microsoft-virtual-academy.md)
 ## [Channel 9 で配信中のセキュリティに関するビデオ](security-channel-nine.md)
 ## [Threat Modeling Tool](azure-security-threat-modeling-tool.md)

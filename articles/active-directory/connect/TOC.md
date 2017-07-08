@@ -105,5 +105,6 @@
 
 
 # リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ##[Azure AD Connect の FAQ](active-directory-aadconnect-faq.md)
 ##[DirSync の廃止](active-directory-aadconnect-dirsync-deprecated.md)

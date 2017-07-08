@@ -59,9 +59,10 @@
 ## [REST ()](https://msdn.microsoft.com/library/mt163658.aspx)
 
 # リソース
-## [ネットワークのブログ](http://azure.microsoft.com/blog/topics/networking)
 ## [テンプレートの作成](/azure/azure-resource-manager/resource-group-authoring-templates?toc=%2fazure%2fnetworking%2ftoc.json)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [コミュニティ テンプレート](https://azure.microsoft.com/resources/templates/)
+## [ネットワークのブログ](http://azure.microsoft.com/blog/topics/networking)
 ## [料金](https://azure.microsoft.com/pricing)
 ## [リージョン別の提供状況](https://azure.microsoft.com/regions/services/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-network)

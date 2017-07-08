@@ -28,10 +28,11 @@
 ## [開発者向けサンプル](data-catalog-samples.md)
 
 # リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [Azure Data Catalog 用のキーボード ショートカット](data-catalog-keyboard-shortcuts.md)
-## [用語集](data-catalog-terminology.md)
+## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog)
+## [料金](https://azure.microsoft.com/pricing/details/data-catalog/)
 ## [リリース ノート](data-catalog-whats-new.md)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=data-catalog)
-## [料金](https://azure.microsoft.com/pricing/details/data-catalog/)
-## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-catalog)
+## [用語集](data-catalog-terminology.md)

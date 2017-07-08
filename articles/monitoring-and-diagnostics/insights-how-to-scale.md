@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2015
+ms.date: 06/06/2017
 ms.author: robb
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 8f1c94ae5389739e03a7b1a70421e538516c873f
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 44bcf3ed1be8007a3c1ab9b727acf9a249cf84cc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 04/27/2017
 
 インスタンス数に基づいたスケール変更を行う前に、スケール変更は、インスタンス数に加えて **価格レベル** の影響を受けることを考慮する必要があります。 価格レベルに応じてコアとメモリの数も異なるため、インスタンス数が同じでもパフォーマンスが向上することがあります (これが "*スケールアップ*" または "*スケールダウン*" です)。 この記事では、特に、"*スケールイン*" と "*スケールアウト*" について説明します。
 
-ポータルでスケール変更することも、[REST API](https://msdn.microsoft.com/library/azure/dn931953.aspx) または [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights/) を使用して手動または自動でスケールを調整することもできます。
+ポータルでスケール変更することも、[REST API](https://msdn.microsoft.com/library/azure/dn931953.aspx) または [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor) を使用して手動または自動でスケールを調整することもできます。
 
 > [!NOTE]
 > この記事では、ポータル ([http://portal.azure.com](http://portal.azure.com)) で自動スケール設定を作成する方法について説明します。 このポータルで作成した自動スケール設定は、クラシック ポータル ([http://manage.windowsazure.com](http://manage.windowsazure.com)) では編集できません。

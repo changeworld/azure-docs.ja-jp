@@ -111,5 +111,6 @@
 
 # リソース
 ## [Azure リージョン](https://azure.microsoft.com/regions/)
-## [ビデオ](https://azure.microsoft.com/resources/videos/home/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [サンプル](https://azure.microsoft.com/resources/samples/)
+## [ビデオ](https://azure.microsoft.com/resources/videos/home/)

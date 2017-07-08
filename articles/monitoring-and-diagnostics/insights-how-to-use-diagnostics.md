@@ -12,16 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2015
+ms.date: 06/06/2017
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c30ffa9e392bb6411312b0789ae6e8218f770bc1
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: b82bb1ab419831e803689edb2a2a7fe256dde5a2
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/07/2017
 
 
 ---
 # <a name="enable-monitoring-and-diagnostics"></a>監視と診断の有効化
-[Azure ポータル](https://portal.azure.com)では、リソースに関する監視と診断の頻度の高い豊富なデータを構成することができます。 また、[REST API](https://msdn.microsoft.com/library/azure/dn931932.aspx) または [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights/) を使用して、プログラムで診断を構成することもできます。
+[Azure ポータル](https://portal.azure.com)では、リソースに関する監視と診断の頻度の高い豊富なデータを構成することができます。 また、[REST API](https://msdn.microsoft.com/library/azure/dn931932.aspx) または [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor) を使用して、プログラムで診断を構成することもできます。
 
 Azure の診断、監視、およびメトリック データは、選択したストレージ アカウントに保存されます。 これにより、ストレージ エクスプローラーから、Power BI、サード パーティ製ツールまで、どれでも好きなツールを使用してデータを読み取ることができます。
 
@@ -65,10 +67,5 @@ Azure の診断、監視、およびメトリック データは、選択した�
 * [アプリケーションのパフォーマンスを監視](../application-insights/app-insights-azure-web-apps.md) します。
 * [イベントとアクティビティ ログを表示](insights-debugging-with-events.md)して、サービスで発生したすべてのことを理解します。
 * [サービス正常性を追跡](insights-service-health.md) して、Azure でパフォーマンスの低下やサービスの中断が発生したことを検出します。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

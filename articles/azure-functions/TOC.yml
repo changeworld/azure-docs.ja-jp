@@ -74,6 +74,8 @@
        href: functions-test-a-function.md
      - name: ローカルでの開発とデバッグ
        href: functions-run-local.md
+     - name: Visual Studio 開発
+       href: functions-develop-vs.md
   - name: デプロイ
     items:
     - name: 継続的なデプロイ
@@ -100,7 +102,7 @@
       href: functions-bindings-storage-blob.md
     - name: Cosmos DB
       href: functions-bindings-documentdb.md
-    - name: イベント ハブ
+    - name: Event Hubs
       href: functions-bindings-event-hubs.md
     - name: 外部ファイル
       href: functions-bindings-external-file.md
@@ -126,6 +128,8 @@
     href: functions-api-definition.md     
 - name: リソース
   items:
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/
   - name: 価格
     href: https://azure.microsoft.com/pricing/details/functions/
   - name: リージョン別の提供状況

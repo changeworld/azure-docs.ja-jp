@@ -14,3 +14,5 @@
 
 # リファレンス
 ## [Azure CLI 2.0](/cli/azure) 
+# リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)

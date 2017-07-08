@@ -14,16 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: af8137de4be532465930524aab8db6bf1cf57dff
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 67b6b120785d812057f0e064cba99c5265e06c1b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/09/2017
 
 ---
 
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>地理的トラフィック ルーティング方法で Azure Traffic Manager によって使用される国/リージョン階層
 
-この記事では、Azure Traffic Manager の**地理的**トラフィック ルーティング方法で使用される国および地域の一覧を示します。 この情報は、[Azure Traffic Manager の REST API](https://docs.microsoft.com/rest/api/trafficmanager/) を呼び出すことによってプログラムからも取得することができます。  
+この記事では、Azure Traffic Manager の**地理的**トラフィック ルーティング方法で使用される国および地域の一覧を示します。 この情報は、[Azure Traffic Manager の REST API](https://docs.microsoft.com/rest/api/trafficmanager/) を呼び出すことによってプログラムからも取得することができます。 
 
 - WORLD(世界)
 
@@ -701,8 +702,5 @@ ms.lasthandoff: 03/22/2017
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Traffic Manager の地理的トラフィック ルーティング方法](traffic-manager-routing-methods.md#geographic-traffic-routing-method)の詳細について学習します。
-
-
-
+- [Azure Traffic Manager の地理的トラフィック ルーティング方法](traffic-manager-routing-methods.md#a-name--geographicageographic-traffic-routing-method)の詳細について学習します。
 

@@ -6,3 +6,5 @@
 ## [Oracle ASM の構成](configure-oracle-asm.md)
 ## [Oracle DataGuard の構成](configuring-oracle-dataguard.md)
 ## [Oracle GoldenGate の構成](configure-oracle-golden-gate.md)
+# リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
