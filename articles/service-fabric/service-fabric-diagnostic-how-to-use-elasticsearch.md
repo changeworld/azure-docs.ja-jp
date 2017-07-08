@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/07/2017
 ms.author: karolz@microsoft.com
-redirect_url: /azure/service-fabric/service-fabric-diagnostic-collect-logs-without-an-agent
-translationtype: Human Translation
+redirect_url: /azure/service-fabric/service-fabric-diagnostics-event-aggregation-eventflow
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 86c1b4dd0cc8833404bd7b66804fa67bbf0d119a
+ms.contentlocale: ja-jp
 ms.lasthandoff: 12/08/2016
 
 
