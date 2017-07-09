@@ -1,9 +1,10 @@
 ---
 redirect_url: /azure/active-directory/develop/active-directory-protocols-oauth-code
-translationtype: Human Translation
-ms.sourcegitcommit: 146d1377a017becdcdcd7fed7b97f07c2cb2bb39
-ms.openlocfilehash: 30405ce2ddbabb0acb00b787540d73c0babef122
-ms.lasthandoff: 02/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9904ec79782b1790ecb21f31b078fea9936c8380
+ms.openlocfilehash: a197b93fb72c49d5fc7d1ee42ff28ce47a033941
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 ---
 
