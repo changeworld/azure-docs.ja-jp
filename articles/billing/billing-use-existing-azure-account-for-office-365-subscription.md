@@ -4,7 +4,7 @@ description: "Azure アカウントを使用して、Office 365 サブスクリ�
 services: 
 documentationcenter: 
 author: JiangChen79
-manager: vikdesai
+manager: adpick
 editor: 
 tags: billing,top-support-issue
 ms.assetid: 
@@ -15,9 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2017
 ms.author: cjiang
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: 553c896b01c78922d992b132ac897d272eb27517
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/12/2017
 
 
