@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 6/13/2017
 ms.author: parakhj
 ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 4649bec5290e09b8a18e3e12719e63bf5e57c0b0
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 3499ff57e650c70679dfa018eec5dbe1a6173a33
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 07/04/2017
 
 
 
@@ -52,7 +52,7 @@ B2C 機能ブレードがスタート画面にピン留めされている場合�
 1. ブレードの上部にある **[+追加]** をクリックします。
 1. アプリケーションの **[名前]** には、コンシューマーがアプリケーションの機能を把握できるような名前を設定します。 たとえば、「Contoso B2C app」などと入力します。
 1. **[Include web app / web API (Web アプリ/Web API を含める)]** スイッチを **[はい]** に切り替えます。
-1. **[応答 URL]** に[適切な](#choosing-a-web-app/api-reply-url)値 (アプリケーションが要求したトークンを Azure AD B2C が返すエンドポイント) を入力します。 たとえば、「 `https://localhost:44316/`」のように入力します。
+1. **[応答 URL]** に[適切な](#limitations)値 (アプリケーションが要求したトークンを Azure AD B2C が返すエンドポイント) を入力します。 たとえば、「 `https://localhost:44316/`」のように入力します。
 1. **[作成]** をクリックして、アプリケーションを登録します。
 1. 作成したアプリケーションをクリックし、後でコードの作成時に使用するために、グローバルに一意の **アプリケーション クライアント ID** をメモしておきます。
 1. Web アプリケーションで、Azure AD B2C によってセキュリティ保護された Web API も呼び出す場合は、次の手順が必要になります。
@@ -154,3 +154,4 @@ B2C アプリケーションは次の手段で編集しないでください。
 ## <a name="next-steps"></a>次のステップ
 
 アプリケーションを Azure AD B2C に登録したので、いずれかの[クイック スタート チュートリアル](active-directory-b2c-overview.md#get-started)を実行して使い始めることができます。
+

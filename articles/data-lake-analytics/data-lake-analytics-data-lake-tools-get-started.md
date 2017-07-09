@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/06/2017
-ms.author: edmaca, yanacai
+ms.date: 06/28/2017
+ms.author: saveenr, yanacai
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: b2fd62683f0272da271eebeb6eb3a71388ecb59e
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 401e2d84e5e2eb9f66a16b299fbb93bd1943e04b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -33,10 +33,10 @@ Visual Studio を使用して Azure Data Lake Analytics アカウントを作成
 
 * **Visual Studio**: Express を除くすべてのエディションがサポートされます。
     * Visual Studio 2017
-    * Visual Studio 2015 Update 4
+    * Visual Studio 2015
     * Visual Studio 2013
 * **Microsoft Azure SDK for .NET** バージョン 2.7.1 以上。  [Web プラットフォーム インストーラー](http://www.microsoft.com/web/downloads/platform.aspx)を使用してインストールします。
-* **Data Lake Analytics**  アカウント。 アカウントを作成するには、「[Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」を参照してください。
+* **Data Lake Analytics ** アカウント。 アカウントを作成するには、「[Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」を参照してください。
 
 ## <a name="install-azure-data-lake-tools-for-visual-studio"></a>Azure Data Lake Tools for Visual Studio をインストールする 
 
@@ -89,10 +89,10 @@ OUTPUT @a
 
     ![U-SQL Visual Studio Data Lake Analytics ジョブ パフォーマンス グラフ](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-performance-graph.png)
 
-   *  **ジョブの概要**: ジョブの概要を示します。   
+   * **ジョブの概要**: ジョブの概要を示します。   
    * **ジョブの詳細**: スクリプト、リソース、頂点などの、ジョブに関する固有情報が表示されます。
-   *  **ジョブ グラフ**: ジョブの進行状況を視覚化します。
-   *  **メタデータ操作**: U-SQL カタログに対して実行されたすべてのアクションを示します。
+   * **ジョブ グラフ**: ジョブの進行状況を視覚化します。
+   * **メタデータ操作**: U-SQL カタログに対して実行されたすべてのアクションを示します。
    * **データ**: すべての入力と出力を示します。
    * **診断**: ジョブの実行とパフォーマンスを最適化するための高度な分析を提供します。
 
