@@ -13,12 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2017
+ms.date: 06/26/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 81cd91ae4a0537898726783b26e7468f41c35ea3
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 2d886795b301ab79272cae10a53831fd44c18f10
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -44,12 +45,12 @@ ms.lasthandoff: 04/03/2017
 ## <a name="virtual-machines"></a>仮想マシン
 Azure 環境内の主要なリソースの 1 つは VM です。 このリソースでアプリケーション、データベース、認証サービスなどを実行します。
 
-パフォーマンスとコストの観点から環境のサイズを設定するには、 [さまざまなサイズの VM](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) について理解しておくことが重要です。 VM に十分な量のメモリや CPU コアがない場合、どれほど適切に設計、開発してもアプリケーションのパフォーマンスは低下します。 インフラストラクチャの各コンポーネントに対して使用する VM のサイズを決定する際の出発点として、各 VM シリーズの推奨ワークロードを確認します。 デプロイ後、 [VM のサイズを変更](change-vm-size.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) できます。
+パフォーマンスとコストの観点から環境のサイズを設定するには、 [さまざまなサイズの VM](sizes.md) について理解しておくことが重要です。 VM に十分な量のメモリや CPU コアがない場合、どれほど適切に設計、開発してもアプリケーションのパフォーマンスは低下します。 インフラストラクチャの各コンポーネントに対して使用する VM のサイズを決定する際の出発点として、各 VM シリーズの推奨ワークロードを確認します。 デプロイ後、 [VM のサイズを変更](change-vm-size.md) できます。
 
-ストレージは、VM のパフォーマンスにおいて重要な役割を果たします。 通常の回転ディスクを使った Standard Storage か、高い I/O ワークロードとピーク パフォーマンス用の SSD ディスクを使った Premium Storage を使用できます。 VM サイズと同様に、ストレージ メディア選択についてはコストに関する考慮事項があります。 VM の最適なパフォーマンス実現に適したストレージ設計の詳細については、「 [Storage infrastructure guidelines (ストレージ インフラストラクチャのガイドライン)](../windows/infrastructure-storage-solutions-guidelines.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 」を参照してください。
+ストレージは、VM のパフォーマンスにおいて重要な役割を果たします。 通常の回転ディスクを使った Standard Storage か、高い I/O ワークロードとピーク パフォーマンス用の SSD ディスクを使った Premium Storage を使用できます。 VM サイズと同様に、ストレージ メディア選択についてはコストに関する考慮事項があります。 VM の最適なパフォーマンス実現に適したストレージ設計の詳細については、「 [Storage infrastructure guidelines (ストレージ インフラストラクチャのガイドライン)](infrastructure-storage-solutions-guidelines.md) 」を参照してください。
 
 ## <a name="resource-groups"></a>リソース グループ
-[Azure リソース グループ](../../azure-resource-manager/resource-group-overview.md)を使った管理と保守を容易にするため、VM などのコンポーネントは論理的にグループ化されます。 リソース グループを使用すると、特定のアプリケーションを構成するすべてのリソースを作成、管理、および監視することができます。 また、チーム内の他者に必要なリソースのみへのアクセスを許可するため、 [ロールベースのアクセス制御](../../active-directory/role-based-access-control-what-is.md) を実装することもできます。 リソース グループとロール割り当ての計画に時間をとってください。 リソース グループの実際の設計と実装にはさまざまな方法があるため、 [リソース グループのガイドラインに関する記事](../windows/infrastructure-resource-groups-guidelines.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) をお読みになり、最適な VM の設計を理解してください。
+[Azure リソース グループ](../../azure-resource-manager/resource-group-overview.md)を使った管理と保守を容易にするため、VM などのコンポーネントは論理的にグループ化されます。 リソース グループを使用すると、特定のアプリケーションを構成するすべてのリソースを作成、管理、および監視することができます。 また、チーム内の他者に必要なリソースのみへのアクセスを許可するため、 [ロールベースのアクセス制御](../../active-directory/role-based-access-control-what-is.md) を実装することもできます。 リソース グループとロール割り当ての計画に時間をとってください。 リソース グループの実際の設計と実装にはさまざまな方法があるため、 [リソース グループのガイドラインに関する記事](infrastructure-resource-groups-guidelines.md) をお読みになり、最適な VM の設計を理解してください。
 
 ## <a name="templates"></a>テンプレート
 宣言型の JSON ファイルで定義されたテンプレートを構築して、VM を作成できます。 テンプレートは通常、VM 自体とともに、必要となるストレージ、ネットワーク、ネットワーク インターフェイス、IP アドレス指定なども作成します。 テンプレートを使って、一貫性があり再現可能な、開発とテストを目的とする環境を作成し、容易に運用環境をレプリケートすることができ、またその逆のこともできます。 テンプレートを使った VM の作成とデプロイについての詳細は、[テンプレートの構築と使用についての記事](../../azure-resource-manager/resource-group-overview.md#template-deployment)をご覧ください。

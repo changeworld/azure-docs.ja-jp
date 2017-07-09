@@ -9,10 +9,11 @@ ms.technology: speech
 ms.topic: article
 ms.date: 02/17/2017
 ms.author: prrajan
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 910ffd7f655ed958ce69a88bc62e4ca13345cede
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 941837242c58e98636ef9321e92ac3099f66a217
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/02/2017
 
 ---
 
@@ -105,7 +106,7 @@ Or Use the generic events subscription method
 **Phrases** | The set of n-best recognized phrases with the recognition confidence. Refer to the above table for phrase format.
 
 ## <a name="Response">Speech Response</a>
-Speech Rsponse example:
+Speech Response example:
 ```
 --- Partial result received by OnPartialResult  
 ---what  
@@ -129,3 +130,4 @@ The APIs utilizes a single web-socket connection per request. For optimal user e
 ## <a name="Buffering">Buffering Behavior</a>
 By default, the SDK buffers audio so it can recover when a network interrupt occurs. In some scenario where it is preferable to discard the audio lost during the network disconnect and restart the connection where the stream at due to performance considerations, it is best to disable audio buffering by setting **EnableAudioBuffering** in the Preferences object to **false**.
  
+

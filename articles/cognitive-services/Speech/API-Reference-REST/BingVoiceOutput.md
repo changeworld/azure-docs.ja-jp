@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 03/16/2017
 ms.author: prrajan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 3e1e278b20cd16584eccafe1becfa272c59173e5
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: aff0f2753436cff10c165f4586179fddb5f2d404
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
+ms.lasthandoff: 06/29/2017
 
 ---
 
@@ -38,7 +38,7 @@ The required header information for token access is as follows.
 
 Name    | Format    | Description
 ---------|---------|--------
-Ocp-Apim-Subscription-Key |    ASCII    | Your subscription key
+Ocp-Apim-Subscription-Key | ASCII   | Your subscription key
 
 The token service returns the JWT access token as `text/plain`. Then the JWT is passed as a `Base64 access_token` to the speech endpoint as an authorization header prefixed with the string `Bearer`. For example:
 
@@ -137,6 +137,8 @@ This section will show examples of changing certain characteristics of generated
 4. Change volume:```<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="http://www.w3.org/2001/mstts" xml:lang="en-US"><prosody volume="+20.00%">Welcome to use Microsoft Text to speech voice in cognitive service.</prosody></speak>```  
 5. Change pitch:```<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="http://www.w3.org/2001/mstts" xml:lang="en-US">Welcome to use <prosody pitch="high">Microsoft Text to speech voice </prosody>in cognitive service.</speak>```  
 6. Change prosody contour:```<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="http://www.w3.org/2001/mstts" xml:lang="en-US"><prosody contour="(80%,+20%) (90%,+30%)" >Good morning.</prosody></speak>```  
+7. Insert recorded audio* :```<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="http://www.w3.org/2001/mstts" xml:lang="en-US"><mstts:audiosegment data = "aQdcsdfAsf7sfskAAACUSIIFEasaqKcqEqksk10Nr9zZWIGXigsiS18y..."> Welcome to use Microsoft Text to Speech Voice</mstts:audiosegment></speak>```
+* Please note the audio data has to be 8k or 16k wav filed in the below format : CRC code (CRC-32):      4 bytes (DWORD) <valid range: 0x00000000 ~ 0xFFFFFFFF> Audio format flag:      4 bytes (DWORD) <valid range: 0x00000000 ~ 0xFFFFFFFF> Sample count:           4 bytes (DWORD) <valid range: 0x00000000 ~ 0x7FFFFFFF> Size of binary body:    4 bytes (DWORD) <valid range: 0x00000000 ~ 0x7FFFFFFF> Binary body:            n bytes
 
 ## <a name="SampleApp"></a>Sample application
 For implementation details, see the [Visual C#.NET text-to-speech sample application](https://github.com/Microsoft/Cognitive-Speech-TTS/blob/master/Samples-Http/CSharp/TTSProgram.cs).  

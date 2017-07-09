@@ -11,18 +11,18 @@ ms.topic: article
 ms.date: 01/12/2017
 ms.author: scottwhi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 0184a095c128aa10308b48a5ec4638a212bcfd0c
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: b23cdebfc6849bdf311a579189690932ff6732d3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/09/2017
 
 ---
 
 # <a name="getting-suggested-search-query-terms"></a>Getting suggested search query terms
 
-Your user experience must provide a search box where the user enters a search query term. To improve the search box experience, you'd call the Autosuggest API to get back a list of suggested queries based on the partial query string the user has entered. You'd then display the suggestions in a drop-down list. The suggested terms are based on suggested queries that other users have searched on and user intent. 
+If you send queries to any of the Bing Search APIs, call the Autosuggest API to improve your search box experience. The Autosuggest API returns a list of suggested queries based on the partial query string the user enters in the search box. Display the suggestions in the search box's drop-down list. The suggested terms are based on suggested queries that other users have searched on and user intent.
 
-You'd call this API each time the user types a new character in the search box. The completeness of the query string impacts the relevance of the suggested query terms that the API returns. The more complete the query string, the more relevant the list of suggested query terms are. For example, the suggestions that the API may return for *s* are likely to be less relevant than the queries it returns for *sailing dinghies*. 
+Typically, you'd call this API each time the user types a new character in the search box. The completeness of the query string impacts the relevance of the suggested query terms that the API returns. The more complete the query string, the more relevant the list of suggested query terms are. For example, the suggestions that the API may return for *s* are likely to be less relevant than the queries it returns for *sailing dinghies*. 
 
 The following example shows a request that returns the suggested query strings for *sail*. Remember to URL encode the user's partial query term when you set the [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query) query parameter. For example, if the user entered *sailing les*, set `q` to *sailing+les* or *sailing%20les*.
   

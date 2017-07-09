@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 03/01/2017
 ms.author: cahann
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 35060acf1ebaf17175a8995e6784927bce2acb30
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: 8bf05bdc9384410106b4fcc34b14789904241c89
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 06/29/2017
 
 ---
 # <a name="language-understanding-intelligent-services-luis-frequently-asked-questions"></a>Language Understanding Intelligent Services (LUIS) Frequently Asked Questions
@@ -28,9 +28,9 @@ Divide your intents into multiple LUIS apps, in which each app will group relate
 
 ## <a name="i-want-to-build-an-app-in-luis-with-more-than-30-entities-what-should-i-do"></a>I want to build an app in LUIS with more than 30 entities. What should I do?
 
-You might need to leverage the power of hierarchical and composite entities. Hierarchical entities enable you to build hierarchy of entities related to their parent in an inheritance relationship. The child entities are all members of their parent's category. The hierarchy spans only one level of depth. 
+You might need to use hierarchical and composite entities. Hierarchical entities reflect the relationship between entities that share characteristics or are members of a category. The child entities are all members of their parent's category. For example, a hierarchical entity named PlaneTicketClass may have the child entities EconomyClass and FirstClass. The hierarchy spans only one level of depth. 
 
-Composite entities enable you to compose a parent entity of already existing simple entities, children of hierarchical entities or pre-built entities. LUIS is limited to 10 parent entities with up to 10 children for each parent entity (composite or hierarchical). 
+Composite entities represent parts of a whole. For example, a composite entity named PlaneTicketOrder may have child entities Airline, Destination, DepartureCity, DepartureDate, and PlaneTicketClass. You build a composite entity from pre-existing simple entities, children of hierarchical entities or prebuilt entities. LUIS is limited to 10 parent entities with up to 10 children for each parent entity (composite or hierarchical). 
 
 LUIS also provides the list entity type that is not machine learned but allows users to specify a fixed set entities with a given set of values. 
 
@@ -49,27 +49,37 @@ Yes, it is good that to train your **None** intent with more utterances as you a
 ## <a name="how-can-i-deal-with-spelling-mistakes-in-utterances"></a>How can I deal with spelling mistakes in utterances?
 
 You have one of two options: 
-1.    Pass your utterances by a spell checker before sending them to the LUIS endpoint.
-2.    Label utterances that have spelling mistakes that are as diverse as possible, so that LUIS can learn proper spelling as well as typos.
+1.  Pass your utterances by a spell checker before sending them to the LUIS endpoint.
+2.  Label utterances that have spelling mistakes that are as diverse as possible, so that LUIS can learn proper spelling as well as typos.
 
 The second option takes more labeling effort while the first might be easier.
 
 ## <a name="i-see-some-errors-in-the-batch-testing-pane-for-some-of-the-models-in-my-app-how-can-i-address-this-problem"></a>I see some errors in the batch testing pane for some of the models in my app. How can I address this problem?
 
 This is an indication that there is some discrepancy between your labels and the predictions from your models. You need to do one or both of the following:
-1.    Add more labels to help LUIS make the discrimination among intents better.
-2.    Add phrase list feature(s) to introduce domain-specific vocabulary to help LUIS learn faster.
+1.  Add more labels to help LUIS make the discrimination among intents better.
+2.  Add phrase list feature(s) to introduce domain-specific vocabulary to help LUIS learn faster.
 
 
 ## <a name="i-have-an-app-in-one-language-and-would-like-to-create-a-parallel-app-in-another-language-what-is-the-easiest-way-to-do-so"></a>I have an app in one language and would like to create a parallel app in another language. What is the easiest way to do so?
-1.    Export your app.
-2.    Translate the labeled utterances in the JSON of the exported app to the target language.
-3.    You might need to change the names of the intents and entities or leave them as they are.
-4.    Import the app afterwards to have an LUIS app in the target language
+1.  Export your app.
+2.  Translate the labeled utterances in the JSON of the exported app to the target language.
+3.  You might need to change the names of the intents and entities or leave them as they are.
+4.  Import the app afterwards to have an LUIS app in the target language
 
+## <a name="how-can-i-delete-data-from-luis"></a>How can I delete data from LUIS? 
+
+* If you delete an utterance from your LUIS app, it is removed from the LUIS web service and not available for export.
+* If you delete an account, all apps and their utterances are deleted. Data is retained on the servers for 60 days before permanent deletion.
+* You can turn off the logging of user utterances by setting `log=false` in the URL when your client application queries LUIS. However, note that this will disable your LUIS app's ability to suggest utterances or improve performance based on user queries. If you set `log=false` due to data privacy concerns be aware that you won't be able to download a record of user utterances from LUIS or use those utterances to improve your app.
+
+<!-- What does it mean to delete an utterance? 
+Deleting an account -all apps, all utterances deleted, 60 days retention
+Turning off logging-->
 
 ## <a name="next-steps"></a>Next steps
 
+* You can find many answers in the [Stack Overflow questions tagged with LUIS](https://stackoverflow.com/questions/tagged/luis).
 * Another resource is the [MSDN LUIS Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=LUIS) 
 
 

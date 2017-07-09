@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 02/24/2017
 ms.author: anroth
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: f85fcf253202fd7313bc640b8706930ad46c9214
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: fac3fe24cd119148aec3803e89920f6933a90deb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/17/2017
 
 ---
 
@@ -107,7 +107,12 @@ Face API is a cloud API which you can invoke through HTTPS requests. For a more 
 
 ![GetStartedCSharp-CheckInstrallation.png](../Images/GetStartedCSharp-CheckInstallation.png)
 
-4. Open MainWindow.xaml.cs in your MyFirstApp project, add this using directives to the beginning of the file:      using System.IO;      using Microsoft.ProjectOxford.Face;      using Microsoft.ProjectOxford.Face.Contract; 
+4. Open MainWindow.xaml.cs in your MyFirstApp project, add this using directives to the beginning of the file:
+
+        using System.IO;
+        using Microsoft.ProjectOxford.Face;
+        using Microsoft.ProjectOxford.Face.Contract; 
+        
 5. Insert the following code in the MainWindow class:      private readonly IFaceServiceClient faceServiceClient = new FaceServiceClient("_key_"); Replace the word _key_ with the subscription key you obtained in step 1.
 6. Now you are ready to call the Face API from your application. 
 

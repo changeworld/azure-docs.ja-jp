@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 0ea23f4f59737123f4400dafc7506e121f24ae34
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: 35896cc9891e2439df004cc4eab339219d47b805
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/15/2017
 
 
 ---
@@ -42,7 +42,7 @@ Azure サブスクリプションの新しいストレージ アカウントを�
     
     **[ストレージ アカウントを作成]** ブレードが表示されます。   
 
-       ![Create Storage Account][create-new-storage-account]  
+    ![[ストレージ アカウントを作成]][create-new-storage-account]  
 
 3. **[名前]** フィールドにサブドメイン名を入力します。 文字数は 3 ～ 24 文字とし、アルファベット小文字と数字を使用できます。
    
@@ -75,7 +75,7 @@ Azure サブスクリプションの新しいストレージ アカウントを�
     - **CDN endpoint name (CDN エンドポイント名)**: 任意のエンドポイント名を入力します。
 
     > [!TIP]
-       > 作成した CDN エンドポイントは、既定の送信元としてストレージ アカウントのホスト名を使用します。
+    > 作成した CDN エンドポイントは、既定の送信元としてストレージ アカウントのホスト名を使用します。
 
     ![cdn new endpoint creation][cdn-new-endpoint-creation]
 
@@ -123,3 +123,4 @@ CDN に既にキャッシュされているオブジェクトは、オブジェ�
 [cdn-enable-navigation]: ./media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-creation.png
 [cdn-storage-new-endpoint]: ./media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-list.png
 [cdn-storage-cdn-configuration]: ./media/cdn-create-a-storage-account-with-cdn/cdn-storage-endpoint-configuration.png 
+

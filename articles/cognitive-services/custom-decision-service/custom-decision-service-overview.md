@@ -6,13 +6,13 @@ author: alekh
 manager: slivkins
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/03/2017
-ms.author: alekha;slivkins
+ms.date: 06/02/2017
+ms.author: slivkins;marcozo;alekh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: c404362d98509517f41bd1cb4f01f6e13d2d19af
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: fadcab5a9b2dc9650c9baece3655c33b8201fdac
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 06/03/2017
 
 ---
 
@@ -73,5 +73,6 @@ Several terms frequently occur in our documentation:
 
 ## <a name="next-steps"></a>Next steps
 
-* Get started with Custom Decision Service to optimize [a webpage](custom-decision-service-get-started-browser.md) or [a smartphone app](custom-decision-service-get-started-app.md).
+* [Register your application](custom-decision-service-get-started-register.md) with Custom Decision Service
+* Get started to optimize [a webpage](custom-decision-service-get-started-browser.md) or [a smartphone app](custom-decision-service-get-started-app.md).
 * Consult the [API reference](custom-decision-service-api-reference.md) to learn more about the provided functionality.

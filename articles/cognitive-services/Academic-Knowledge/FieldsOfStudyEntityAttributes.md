@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 03/31/2017
 ms.author: alch
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: 2cb91b1b8b3c3279e0e99bba1b9dd21d57383f3f
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: df6bf2fe4cdf1bc7554669c9931145d7397f1c36
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 06/09/2017
 
 ---
 
@@ -23,11 +23,13 @@ ms.lasthandoff: 05/04/2017
 
 Name    |Description                            |Type       | Operations
 ------- | ------------------------------------- | --------- | ----------------------------
-Id        |Entity ID                                |Int64        |Equals
-FN        |Field of study normalized name            |String        |Equals
-DFN     |Field of study display name            |String        |none
-CC        |Field of study total citation count    |Int32        |none  
-ECC        |Field of total estimated citation count|Int32        |none
-FL        |Level in fields of study hierarchy     |Int32        |Equals, <br/>IsBetween
-FP.FN    |Parent field of study name             |String        |Equals
-FP.FId     |Parent field of study ID                 |Int64         |Equals
+Id      |Entity ID                              |Int64      |Equals
+FN      |Field of study normalized name         |String     |Equals
+DFN     |Field of study display name            |String     |none
+CC      |Field of study total citation count    |Int32      |none  
+ECC     |Field of total estimated citation count|Int32      |none
+FL      |Level in fields of study hierarchy     |Int32      |Equals, <br/>IsBetween
+FP.FN   |Parent field of study name             |String     |Equals
+FP.FId  |Parent field of study ID               |Int64      |Equals
+FC.FN   |Child field of study name              |String     |Equals
+FC.FId  |Child field of study ID                |Int64      |Equals

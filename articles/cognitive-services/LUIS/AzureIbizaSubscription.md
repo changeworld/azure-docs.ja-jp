@@ -9,16 +9,19 @@ ms.technology: luis
 ms.topic: article
 ms.date: 03/01/2017
 ms.author: cahann
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 8ea1715b0e99205ca0bafcb2d64ec95a0ae7366f
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
+ms.openlocfilehash: 7badfe2cec1c925ce98b9bf9479ace31dfd02cf1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/21/2017
 
 ---
 
 # <a name="creating-subscription-keys-via-azure"></a>Creating Subscription Keys Via Azure
 
-For unlimited traffic to your HTTP endpoint, you must create a metered key for your account on LUIS. Metered keys provide unlimited traffic to your endpoint following a payment plan. To create your key, follow these steps: 
+For unlimited traffic to your HTTP endpoint, you must create a metered key for your account on LUIS. Metered keys provide unlimited traffic to your endpoint following a payment plan. See [Cognitive Services Pricing](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/?v=17.23h) for pricing information. 
+
+To create your key, follow these steps: 
 
 1. Sign in to the **[Microsoft Azure Portal](https://ms.portal.azure.com/)** 
 2. Click the green **+** sign in the upper left-hand panel and search for “Cognitive Services” in the marketplace, then click on **Cognitive Services APIs** and follow the **create experience** to create an API account you are interested in. 

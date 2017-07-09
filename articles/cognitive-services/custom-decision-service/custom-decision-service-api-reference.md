@@ -7,12 +7,12 @@ manager: slivkins
 ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/03/2017
-ms.author: slivkins
+ms.author: slivkins;marcozo;alekh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: fb06659f9e4d7534f1395f6013d43e9cd06111ba
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 6d930644d19ba495d691d384abbee8b955c4e8eb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 06/03/2017
 
 ---
 
@@ -32,18 +32,18 @@ Insert the following snippet into the HTML head of the front page. Here by "fron
 // "data" provides the ranking of URLs, see example below.
 
 // call to Ranking API
-<script src="https://ds.microsoft.com/<appId>/rank/<actionSetId>?<parameters>" async></script>
+<script src="https://ds.microsoft.com/api/v2/<appId>/rank/<actionSetId>?<parameters>" async></script>
 // action set id is the name of the corresponding RSS/Atom feed.
 
 // same call with multiple action sets:
-// <script src="https://ds.microsoft.com/<appId>/rank/<A1>/<A2>/.../<An>?<parameters>" async></script>
+// <script src="https://ds.microsoft.com/api/v2/<appId>/rank/<A1>/<A2>/.../<An>?<parameters>" async></script>
 ```
 
 > [!IMPORTANT]
 > The callback function must be defined before the call to the Ranking API.
 
 > [!TIP]
-> To improve latency, we also expose the Ranking API via HTTP rather than HTTPS, as in `http://ds.microsoft.com/<appId>/rank/*`.
+> To improve latency, we also expose the Ranking API via HTTP rather than HTTPS, as in `http://ds.microsoft.com/api/v2/<appId>/rank/*`.
 > However, an HTTPS endpoint must be used if the front page is served through HTTPS.
 
 When parameters are not specified, the HTTP response from the Ranking API is a JSONP-formatted string, as follows:
@@ -99,13 +99,12 @@ callback({
                  {"id":"<A2>","lastRefresh":"timeStamp2"}]});
 ```
 
-The `details=2` element adds more details that Custom Decision Service might extract from articles' SEO metatags:
+The `details=2` element adds more details that Custom Decision Service might extract from articles' SEO metatags (featurization code can be found [here](https://github.com/Microsoft/mwt-ds/tree/master/Crawl):
 
 - `title` from `<meta property="og:title" content="..." />` or `<meta property="twitter:title" content="..." />` or `<title>...</title>`
 - `description` from `<meta property="og:description" ... />` or `<meta property="twitter:description" content="..." />` or `<meta property="description" content="..." />`
 - `image` from `<meta property="og:image" content="..." />`
 - `ds_id` from `<meta name=”microsoft:ds_id” content="..." />`
-
 
 The HTTP response then looks like the following:
 
@@ -188,5 +187,3 @@ The Atom feed version uses the same XML syntax and conventions.
 
 > [!TIP]
 > If your system uses its own article IDs, they can be passed into the callback function by using `<guid>`.
-
-
