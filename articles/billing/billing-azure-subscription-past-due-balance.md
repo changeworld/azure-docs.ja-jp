@@ -4,7 +4,7 @@ description: "Azure サブスクリプションに支払期限を過ぎた未払
 services: 
 documentationcenter: 
 author: genlin
-manager: narmstr
+manager: jlian
 editor: 
 tags: billing
 ms.assetid: d0b88c92-fb9d-4d12-931b-c26104ad63e9
@@ -15,9 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
 ms.author: genli
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: abab8b90de07877e13c554daad618c7c636c8318
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/31/2017
 
 

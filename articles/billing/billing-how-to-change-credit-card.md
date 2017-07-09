@@ -4,7 +4,7 @@ description: "Azure サブスクリプションの支払いに使用するクレ
 services: 
 documentationcenter: 
 author: genlin
-manager: narmstr
+manager: jlian
 editor: 
 tags: billing
 ms.assetid: 15252ced-1841-4a66-ae79-2e58af1d3370
@@ -15,9 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: genli
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
 ms.openlocfilehash: 2093d6fcef343d9bf05942ce817989bcf5e559d3
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/31/2017
 
 
