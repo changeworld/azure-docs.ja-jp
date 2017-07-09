@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 03/01/2017
 ms.author: cahann
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 7c1885da0aed2e8b21f028a4366b667b0b6b5166
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: 448f2a6bcf0819217fe8a10f90f8aa8249a079ec
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 06/29/2017
 
 ---
 
@@ -39,13 +39,13 @@ Before you start creating it in the LUIS web interface, plan your LUIS app by pr
 ## <a name="build-and-train-a-luis-app"></a>Build and train a LUIS app
 Once you have determined which intents and entities you want your app to recognize, you can start adding them to your LUIS app. See [create a new LUIS app](LUIS-get-started-create-app.md), for a quick walkthrough of creating a LUIS app.<!-- that you can monitor using the [Dashboard](App-Dashboard.md)-->
 For more detail about the steps in configuring your LUIS app, see the following articles:
-1.    [Add intents](Add-intents.md)
+1.  [Add intents](Add-intents.md)
 2.  [Add utterances](Add-example-utterances.md)
-3.    [Add entities](Add-entities.md)
+3.  [Add entities](Add-entities.md)
 4.  [Improve performance using features](Add-Features.md)
-5.    [Train and test](Train-Test.md)
+5.  [Train and test](Train-Test.md)
 6.  [Use active learning](label-suggested-utterances.md)
-7.    [Publish](PublishApp.md)
+7.  [Publish](PublishApp.md)
 
 You can also watch a basic [video tutorial](https://www.youtube.com/watch?v=jWeLajon9M8&index=4&list=PLD7HFcN7LXRdHkFBFu4stPPeWJcQ0VFLx) on these steps.
 
@@ -53,9 +53,9 @@ You can also watch a basic [video tutorial](https://www.youtube.com/watch?v=jWeL
 Once your application is deployed and traffic starts to flow into the system, LUIS uses active learning to improve itself. In the active learning process, LUIS identifies the utterances that it is relatively unsure of, and asks you to label them according to intent and entities. This process has tremendous advantages. LUIS knows what it is unsure of, and asks for your help in the cases that lead to the maximum improvement in system performance. LUIS learns quicker, and takes the minimum amount of your time and effort. This is active machine learning at its best. See [Label suggested utterances][label-suggested-utterances] for an explanation of how to implement active learning using the LUIS web interface.
 
 ## <a name="configure-luis-programmatically"></a>Configure LUIS programmatically
-LUIS offers a set of programmatic REST APIs that can be used by developers to automate the application creation process. These APIs allow you to author, train,  and publish your application.
+LUIS offers a set of programmatic REST APIs that can be used by developers to automate the application creation process. These APIs allow you to author, train, and publish your application.
 
-* [LUIS Programmatic API](https://dev.projectoxford.ai/docs/services/56d95961e597ed0f04b76e58/operations/5739a8c71984550500affdfa).
+* [LUIS Programmatic API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f).
 
 ## <a name="integrate-luis-with-a-bot"></a>Integrate LUIS with a bot
 It's easy to use a LUIS app from a bot built using the [Bot Framework](https://docs.microsoft.com/bot-framework/), which provides the Bot Builder SDK for Node.js or .NET. You simply reference the LUIS app as shown in the following examples:
@@ -79,8 +79,8 @@ bot.recognizer(new builder.LuisRecognizer(model));
 
 The Bot Builder SDK provides classes that automatically handle the intents and entities returned from the LUIS app. For code that demonstrate how to use these classes, see the following samples:
 
-*    [LUIS demo bot (C#)](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/intelligence-LUIS)
-*    [LUIS demo bot (Node.js)](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/intelligence-LUIS) 
+*   [LUIS demo bot (C#)](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/intelligence-LUIS)
+*   [LUIS demo bot (Node.js)](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/intelligence-LUIS) 
 
 
 ## <a name="integrate-luis-with-speech"></a>Integrate LUIS with Speech

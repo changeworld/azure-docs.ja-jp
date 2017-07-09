@@ -10,20 +10,28 @@ ms.topic: article
 ms.date: 03/31/2017
 ms.author: cahann
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 153ce46c9b4f187e979a534ec6545d29f37dfdab
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 3f680b408e3d5f1239ed41711590a37b85c135f8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 
 # <a name="cortana-prebuilt-app"></a>Cortana Prebuilt App
 
-In addition to allowing you to build your own applications, LUIS also provides selected models from Microsoft Cortana personal assistant as a prebuilt application. This is an "as-is" application; the intents and entities in this application cannot be edited or integrated into other LUIS applications. If you’d like your client to have access to both this prebuilt application and your own LUIS application, then your client will have to reference both LUIS apps.
+<!-- For example, instead of using builtin.intent.calendar.create_calendar_entry, use Calendar.Add -->
+> [!IMPORTANT]
+> We recommend that you use the [prebuilt domains](./luis-how-to-use-prebuilt-domains.md), instead of the Cortana prebuilt app. For example, instead of **builtin.intent.calendar.create_calendar_entry**, use **Calendar.Add** from the **Calendar** prebuilt domain.
+> The prebuilt domains provide these advantages: 
+> * They provide packages of prebuilt and pretrained intents and entities that are designed to work well with each other. You can integrate a prebuilt domain directly into your app. For example, if you're building a fitness tracker, you can add the **Fitness** domain and have an entire set of intents and entities for tracking fitness activities, including intents for tracking weight and meal planning, remaining time or distance, and saving fitness activity notes.
+> * The prebuilt domain intents are customizable. For example, if you want to provide reviews of hotels, you can train and customize the **Places.GetReviews** intent from the **Places** domain to recognize requests for hotel reviews.
+> * The prebuilt domains are extensible. For example, if you want to use the **Places** prebuilt domain in a bot that searches for restaurants, and need an intent for getting the type of cuisine, you can build and train a **Places.GetCuisine** intent.
 
-The pre-built personal assistant application is available in these cultures (locales): English, French, Italian, Spanish and Chinese.
+In addition to allowing you to build your own applications, LUIS also provides intents and entities from the Microsoft Cortana personal assistant as a prebuilt app. This is an "as-is" application. The intents and entities in this application cannot be edited or integrated into other LUIS apps. If you’d like your client to have access to both this prebuilt application and your own LUIS application, then your client has to reference both LUIS apps.
 
-**To use the Cortana Prebuilt App:**
+The pre-built personal assistant app is available in these cultures (locales): English, French, Italian, Spanish, and Chinese.
+
+## <a name="use-the-cortana-prebuilt-app"></a>Use the Cortana Prebuilt App
 
 1. On **My Apps** page, click **Cortana prebuilt apps** and select your language, English for example. The following dialog box appears:
 
@@ -34,7 +42,7 @@ The pre-built personal assistant application is available in these cultures (loc
 
     ![Cortana Query Result](./Images/Cortana-JSON-Result.JPG)
 
-## <a name="prebuilt-intents"></a>Prebuilt Intents
+## <a name="cortana-prebuilt-intents"></a>Cortana prebuilt intents
 The pre-built personal assistant application can identify the following intents:
 
 | Intent | Example utterances |
@@ -134,58 +142,58 @@ The pre-built personal assistant application can identify the following intents:
 
 Here are some examples of entities the prebuilt personal assistant application can identify:
 
-|Entity    |Example of entity in utterance |
+|Entity |Example of entity in utterance |
 |-------|------------------|
-|builtin.alarm.alarm_state | turn `off` my wake up alarm    <br/> is my wake up alarm `on`    | 
-|builtin.alarm.duration |snooze for `10 minutes`    <br/> snooze alarm for `5 minutes`    |
-|builtin.alarm.start_date | set an alarm for `monday` at 7 am    <br/> set an alarm for `tomorrow` at noon    |
-|builtin.alarm.start_time | create an alarm for `30 minutes`    <br/> set the alarm to go off `in 20 minutes`    |
-|builtin.alarm.title | is my `wake up` alarm on    <br/> can you set an alarm for quarter to 12 monday to friday called `take antibiotics`    |
-|builtin.calendar.absolute_location | create an appointment for tomorrow at `123 main street`    <br/> the meeting will take place in `cincinnati` on the 5th of june    |
-|builtin.calendar.contact_name|put a marketing meeting on my calendar and be sure that `joe` is there <br/>i want to set up a lunch at il fornaio and invite `paul` |    
-|builtin.calendar.destination_calendar|add this to my `work` schedule    <br/>put this on my `personal` calendar    |
-|builtin.calendar.duration| set up an appointment for `an hour` at 6 tonight <br/>    book a `2 hour` meeting with joe |    
-|builtin.calendar.end_date | create a calendar entry called vacation from tomorrow until `next monday` <br/>    block my time as busy until `monday, october 5th` |    
-|builtin.calendar.end_time | the meeting ends at `5:30 PM` <br/> schedule it from 11 to `noon`    |    
-|builtin.calendar.implicit_location | cancel the appointment at the dmv    <br/> change the location of miles' birthday to `poppy restaurant` |    
-|builtin.calendar.move_earlier_time | push the meeting forward `an hour` <br/> move the dentist's appointment up `30 minutes`        |
-|builtin.calendar.move_later_time | move my dentist appointment `30 minutes`    <br/> push the meeting out `an hour` |    
-|builtin.calendar.original_start_date | reschedule my appointment at the barber from 'tuesday' to wednesday    <br/> move my meeting with ken from `monday` to tuesday    |
-|builtin.calendar.original_start_time | reschedule my meeting from `2:00` to 3    <br/> change my dentist appointment from `3:30` to 4 |    
-|builtin.calendar.start_date | what time does my party start on `flag day` <br/> schedule lunch for the `friday after next` at noon    
-|builtin.calendar.start_time | i want to schedule it for `this morning`    <br/> i want to schedule it in the `morning` |    
-|builtin.calendar.title | `vet appointment`     <br/> `dentist` tuesday |
-|builtin.communication.audio_device_type | make the call using `bluetooth`    <br/> call using my `headset` |    
-|builtin.communication.contact_name | text `bob jones`    <br/> | call `sarah`|
-|builtin.communication.destination_platform | call dave in `london`    <br/> call his `work line` |    
-|builtin.communication.from_relationship_name | show calls from my `daughter` <br/> read the email from `mom`    |    
-|builtin.communication.key | dial `star` <br/>     press the `hash` key    |
-|builtin.communication.message | email carly to say `i'm running late` <br/> please text angus smith `good luck on your exam` |    
-|builtin.communication.message_category | new email marked for `follow up`    <br/> new email marked `high priority` |    
-|builtin.communication.message_type | send an `email`    <br/> read my `text` messages aloud    |
-|builtin.communication.phone_number | i want to dial `1-800-328-9459` <br/>     call `555-555-5555` |    
-|builtin.communication.relationship_name | text my `husband` <br/>    email `family`|    
-|builtin.communication.slot_attribute | change the `recipient` <br/>    change the `text` |    
+|builtin.alarm.alarm_state | turn `off` my wake up alarm    <br/> is my wake up alarm `on`  | 
+|builtin.alarm.duration |snooze for `10 minutes`    <br/> snooze alarm for `5 minutes`  |
+|builtin.alarm.start_date | set an alarm for `monday` at 7 am   <br/> set an alarm for `tomorrow` at noon   |
+|builtin.alarm.start_time | create an alarm for `30 minutes`    <br/> set the alarm to go off `in 20 minutes`   |
+|builtin.alarm.title | is my `wake up` alarm on <br/> can you set an alarm for quarter to 12 monday to friday called `take antibiotics` |
+|builtin.calendar.absolute_location | create an appointment for tomorrow at `123 main street`   <br/> the meeting will take place in `cincinnati` on the 5th of june    |
+|builtin.calendar.contact_name|put a marketing meeting on my calendar and be sure that `joe` is there <br/>i want to set up a lunch at il fornaio and invite `paul` |   
+|builtin.calendar.destination_calendar|add this to my `work` schedule   <br/>put this on my `personal` calendar |
+|builtin.calendar.duration| set up an appointment for `an hour` at 6 tonight <br/>  book a `2 hour` meeting with joe |  
+|builtin.calendar.end_date | create a calendar entry called vacation from tomorrow until `next monday` <br/>    block my time as busy until `monday, october 5th` | 
+|builtin.calendar.end_time | the meeting ends at `5:30 PM` <br/> schedule it from 11 to `noon`  |   
+|builtin.calendar.implicit_location | cancel the appointment at the dmv <br/> change the location of miles' birthday to `poppy restaurant` |    
+|builtin.calendar.move_earlier_time | push the meeting forward `an hour` <br/> move the dentist's appointment up `30 minutes`       |
+|builtin.calendar.move_later_time | move my dentist appointment `30 minutes`    <br/> push the meeting out `an hour` |  
+|builtin.calendar.original_start_date | reschedule my appointment at the barber from 'tuesday' to wednesday <br/> move my meeting with ken from `monday` to tuesday |
+|builtin.calendar.original_start_time | reschedule my meeting from `2:00` to 3  <br/> change my dentist appointment from `3:30` to 4 |  
+|builtin.calendar.start_date | what time does my party start on `flag day` <br/> schedule lunch for the `friday after next` at noon 
+|builtin.calendar.start_time | i want to schedule it for `this morning` <br/> i want to schedule it in the `morning` |  
+|builtin.calendar.title | `vet appointment`  <br/> `dentist` tuesday |
+|builtin.communication.audio_device_type | make the call using `bluetooth`  <br/> call using my `headset` | 
+|builtin.communication.contact_name | text `bob jones`  <br/> | call `sarah`|
+|builtin.communication.destination_platform | call dave in `london` <br/> call his `work line` |    
+|builtin.communication.from_relationship_name | show calls from my `daughter` <br/> read the email from `mom`   |   
+|builtin.communication.key | dial `star` <br/>  press the `hash` key    |
+|builtin.communication.message | email carly to say `i'm running late` <br/> please text angus smith `good luck on your exam` | 
+|builtin.communication.message_category | new email marked for `follow up`  <br/> new email marked `high priority` |    
+|builtin.communication.message_type | send an `email`   <br/> read my `text` messages aloud |
+|builtin.communication.phone_number | i want to dial `1-800-328-9459` <br/>     call `555-555-5555` |   
+|builtin.communication.relationship_name | text my `husband` <br/>  email `family`| 
+|builtin.communication.slot_attribute | change the `recipient` <br/>    change the `text` | 
 
 <!-- 
 builtin.communication.source_platform
-call him from skype    
+call him from skype 
 {
     "type": "builtin.communication.source_platform",
     "entity": "skype"
 }
-call him from my personal line    
+call him from my personal line  
 {
     "type": "builtin.communication.source_platform",
     "entity": "personal line"
 }
 builtin.mystuff.attachment
-with documents attached    
+with documents attached 
 {
     "type": "builtin.mystuff.attachment",
     "entity": "attached"
 }
-find the email attachment bob sent    
+find the email attachment bob sent  
 {
     "type": "builtin.mystuff.attachment",
     "entity": "attachment"
@@ -201,18 +209,18 @@ find the spreadsheet lisa sent to me
         "value": "me"
     }
 }
-where's the document i sent to susan last night    
+where's the document i sent to susan last night 
 {
     "type": "builtin.mystuff.contact_name",
     "entity": "susan"
 }
 builtin.mystuff.data_source
-c:\dev\    
+c:\dev\ 
 {
     "type": "builtin.mystuff.data_source",
     "entity": "c:\dev\"
 }
-my desktop    
+my desktop  
 {
     "type": "builtin.mystuff.data_source",
     "entity": "desktop",
@@ -223,7 +231,7 @@ my desktop
     }
 }
 builtin.mystuff.data_type
-locate the document i worked on last night    
+locate the document i worked on last night  
 {
     "type": "builtin.mystuff.data_type",
     "entity": "document",
@@ -233,7 +241,7 @@ locate the document i worked on last night
         "value": "Document"
     }
 }
-bring up mike's visio diagram    
+bring up mike's visio diagram   
 {
     "type": "builtin.mystuff.data_type",
     "entity": "visio diagram"
@@ -248,7 +256,7 @@ show me the docs i worked on between yesterday and today
         "date": "2015-10-17"
     }
 }
-find what doc i was working on before thursday the 31st    
+find what doc i was working on before thursday the 31st 
 {
     "type": "builtin.mystuff.end_date",
     "entity": "before thursday the 31st",
@@ -259,7 +267,7 @@ find what doc i was working on before thursday the 31st
     }
 }
 builtin.mystuff.end_time
-find files i saved before noon    
+find files i saved before noon  
 {
     "type": "builtin.mystuff.end_time",
     "entity": "before noon",
@@ -268,7 +276,7 @@ find files i saved before noon
         "time": "2015-10-16T12:00:00"
     }
 }
-find what doc i was working on before 4pm    
+find what doc i was working on before 4pm   
 {
     "type": "builtin.mystuff.end_time",
     "entity": "before 4pm",
@@ -279,18 +287,18 @@ find what doc i was working on before 4pm
     }
 }
 builtin.mystuff.file_action
-open the spreadsheet i saved yesterday    
+open the spreadsheet i saved yesterday  
 {
     "type": "builtin.mystuff.file_action",
     "entity": "saved"
 }
-find the spreadsheet kevin created    
+find the spreadsheet kevin created  
 {
     "type": "builtin.mystuff.file_action",
     "entity": "created"
 }
 builtin.mystuff.from_contact_name
-find the proposal jason sent me    
+find the proposal jason sent me 
 {
     "type": "builtin.mystuff.from_contact_name",
     "entity": "jason"
@@ -306,13 +314,13 @@ show me the french conjugation files
     "type": "builtin.mystuff.keyword",
     "entity": "french conjugation"
 }
-find the marketing plan i drafted yesterday    
+find the marketing plan i drafted yesterday 
 {
     "type": "builtin.mystuff.keyword",
     "entity": "marketing plan"
 }
 builtin.mystuff.location
-the document i edited at work    
+the document i edited at work   
 {
     "type": "builtin.mystuff.location",
     "entity": "work",
@@ -322,24 +330,24 @@ the document i edited at work
         "value": "work"
     }
 }
-photos i took in paris    
+photos i took in paris  
 {
     "type": "builtin.mystuff.location",
     "entity": "paris"
 }
 builtin.mystuff.message_category
-look for my new emails    
+look for my new emails  
 {
     "type": "builtin.mystuff.message_category",
     "entity": "new"
 }
-search for my high priority email    
+search for my high priority email   
 {
     "type": "builtin.mystuff.message_category",
     "entity": "high priority"
 }
 builtin.mystuff.message_type
-check my email    
+check my email  
 {
     "type": "builtin.mystuff.message_type",
     "entity": "email",
@@ -360,18 +368,18 @@ show me my text messages
     }
 }
 builtin.mystuff.source_platform
-search my hotmail email for email from john    
+search my hotmail email for email from john 
 {
     "type": "builtin.mystuff.source_platform",
     "entity": "hotmail"
 }
-find the document i sent from work    
+find the document i sent from work  
 {
     "type": "builtin.mystuff.source_platform",
     "entity": "work"
 }
 builtin.mystuff.start_date
-find notes from january    
+find notes from january 
 {
     "type": "builtin.mystuff.start_date",
     "entity": "january",
@@ -380,7 +388,7 @@ find notes from january
         "date": "2015-01"
     }
 }
-find the email i send rob after january 1st    
+find the email i send rob after january 1st 
 {
     "type": "builtin.mystuff.start_date",
     "entity": "after january 1st",
@@ -391,7 +399,7 @@ find the email i send rob after january 1st
     }
 }
 builtin.mystuff.start_time
-find that email i sent rob sometime before 2pm but after noon?    
+find that email i sent rob sometime before 2pm but after noon?  
 {
     "type": "builtin.mystuff.start_time",
     "entity": "after noon",
@@ -400,7 +408,7 @@ find that email i sent rob sometime before 2pm but after noon?
         "time": "2015-10-16T12:00:00"
     }
 }
-find the worksheet kristin sent to me that i edited last night    
+find the worksheet kristin sent to me that i edited last night  
 {
     "type": "builtin.mystuff.start_time",
     "entity": "last night",
@@ -410,67 +418,67 @@ find the worksheet kristin sent to me that i edited last night
     }
 }
 builtin.mystuff.title
-c:\dev\mystuff.txt    
+c:\dev\mystuff.txt  
 {
     "type": "builtin.mystuff.title",
     "entity": "c:\dev\mystuff.txt"
 }
-*.txt    
+*.txt   
 {
     "type": "builtin.mystuff.title",
     "entity": "*.txt"
 }
 builtin.mystuff.transform_action
-download the file john sent me    
+download the file john sent me  
 {
     "type": "builtin.mystuff.transform_action",
     "entity": "download"
 }
-open my annotation guidelines doc    
+open my annotation guidelines doc   
 {
     "type": "builtin.mystuff.transform_action",
     "entity": "open"
 }
 builtin.note.note_text
-create a grocery list including pork chops, applesauce and milk    
+create a grocery list including pork chops, applesauce and milk 
 {
     "type": "builtin.note.note_text",
     "entity": "pork chops, applesauce and milk"
 }
-make a note to buy milk    
+make a note to buy milk 
 {
     "type": "builtin.note.note_text",
     "entity": "buy milk"
 }
 builtin.note.title
-make a note called grocery list    
+make a note called grocery list 
 {
     "type": "builtin.note.title",
     "entity": "grocery list"
 }
-make a note called people to call    
+make a note called people to call   
 {
     "type": "builtin.note.title",
     "entity": "people to call"
 }
 builtin.ondevice.music_artist_name
-play everything by rufus wainwright    
+play everything by rufus wainwright 
 {
     "type": "builtin.ondevice.music_artist_name",
     "entity": "rufus wainwright"
 }
-play garth brooks music    
+play garth brooks music 
 {
     "type": "builtin.ondevice.music_artist_name",
     "entity": "garth brooks"
 }
 builtin.ondevice.music_genre
-show classic rock songs    
+show classic rock songs 
 {
     "type": "builtin.ondevice.music_genre",
     "entity": "classic rock"
 }
-play my classical music from the baroque period    
+play my classical music from the baroque period 
 {
     "type": "builtin.ondevice.music_genre",
     "entity": "classical"
@@ -481,24 +489,24 @@ shuffle all britney spears from workout playlist
     "type": "builtin.ondevice.music_playlist",
     "entity": "workout"
 }
-play breakup playlist    
+play breakup playlist   
 {
     "type": "builtin.ondevice.music_playlist",
     "entity": "breakup"
 }
 builtin.ondevice.music_song_name
-play summertime    
+play summertime 
 {
     "type": "builtin.ondevice.music_song_name",
     "entity": "summertime"
 }
-play me and bobby mcgee    
+play me and bobby mcgee 
 {
     "type": "builtin.ondevice.music_song_name",
     "entity": "me and bobby mcgee"
 }
 builtin.ondevice.setting_type
-quiet hours    
+quiet hours 
 {
     "type": "builtin.ondevice.setting_type",
     "entity": "quiet hours",
@@ -508,7 +516,7 @@ quiet hours
         "value": "Do not disturb"
     }
 }
-airplane mode    
+airplane mode   
 {
     "type": "builtin.ondevice.setting_type",
     "entity": "airplane mode",
@@ -519,18 +527,18 @@ airplane mode
     }
 }
 builtin.places.absolute_location
-take me to the intersection of 5th and pike    
+take me to the intersection of 5th and pike 
 {
     "type": "builtin.places.absolute_location",
     "entity": "5th and pike"
 }
-no , i want directions to 1 microsoft way redmond wa 98052    
+no , i want directions to 1 microsoft way redmond wa 98052  
 {
     "type": "builtin.places.absolute_location",
     "entity": "1 microsoft way redmond wa 98052"
 }
 builtin.places.atmosphere
-look for interesting places to go out    
+look for interesting places to go out   
 {
     "type": "builtin.places.atmosphere",
     "entity": "interesting"
@@ -541,18 +549,18 @@ where can i find a casual restaurant
     "entity": "casual"
 }
 builtin.places.audio_device_type
-call the post office on hands free    
+call the post office on hands free  
 {
     "type": "builtin.places.audio_device_type",
     "entity": "hands free"
 }
-call papa john's with speakerphone    
+call papa john's with speakerphone  
 {
     "type": "builtin.places.audio_device_type",
     "entity": "speakerphone"
 }
 builtin.places.avoid_route
-avoid the toll road    
+avoid the toll road 
 {
     "type": "builtin.places.avoid_route",
     "entity": "toll road"
@@ -563,18 +571,18 @@ get me to san francisco avoiding the construction on 101
     "entity": "construction on 101"
 }
 builtin.places.cuisine
-halal deli near mountain view    
+halal deli near mountain view   
 {
     "type": "builtin.places.cuisine",
     "entity": "halal"
 }
-kosher fine dining on the peninsula    
+kosher fine dining on the peninsula 
 {
     "type": "builtin.places.cuisine",
     "entity": "kosher"
 }
 builtin.places.date
-make a reservation for next friday the 12th    
+make a reservation for next friday the 12th 
 {
     "type": "builtin.places.date",
     "entity": "next friday the 12th",
@@ -609,18 +617,18 @@ is there a good diner within 5 miles of here
     "type": "builtin.places.distance",
     "entity": "within 5 miles"
 }
-find ones within 15 miles    
+find ones within 15 miles   
 {
     "type": "builtin.places.distance",
     "entity": "within 15 miles"
 }
 builtin.places.from_absolute_location
-directions from 45 elm street to home    
+directions from 45 elm street to home   
 {
     "type": "builtin.places.from_absolute_location",
     "entity": "45 elm street"
 }
-get me directions from san francisco to palo alto    
+get me directions from san francisco to palo alto   
 {
     "type": "builtin.places.from_absolute_location",
     "entity": "san francisco"
@@ -631,7 +639,7 @@ driving from the post office to 56 center street
     "type": "builtin.places.from_place_name",
     "entity": "post office"
 }
-get me directions from home depot to lowes    
+get me directions from home depot to lowes  
 {
     "type": "builtin.places.from_place_name",
     "entity": "home depot"
@@ -642,7 +650,7 @@ directions to downtown from work
     "type": "builtin.places.from_place_type",
     "entity": "work"
 }
-get me directions from the drug store to home    
+get me directions from the drug store to home   
 {
     "type": "builtin.places.from_place_type",
     "entity": "drug store"
@@ -658,7 +666,7 @@ nearby places for dinner
         "value": "restaurants"
     }
 }
-find a good place for a business lunch    
+find a good place for a business lunch  
 {
     "type": "builtin.places.meal_type",
     "entity": "lunch",
@@ -669,7 +677,7 @@ find a good place for a business lunch
     }
 }
 builtin.places.nearby
-show me some cool shops near me    
+show me some cool shops near me 
 {
     "type": "builtin.places.nearby",
     "entity": "near"
@@ -680,18 +688,18 @@ are there any good lebanese restaurants around here?
     "entity": "around"
 }
 builtin.places.open_status
-when is the mall closed    
+when is the mall closed 
 {
     "type": "builtin.places.open_status",
     "entity": "closed"
 }
-get me the opening hours of the store    
+get me the opening hours of the store   
 {
     "type": "builtin.places.open_status",
     "entity": "opening"
 }
 builtin.places.place_name
-take me to central park    
+take me to central park 
 {
     "type": "builtin.places.place_name",
     "entity": "central park"
@@ -712,7 +720,7 @@ atms
         "value": "atms"
     }
 }
-post office    
+post office 
 {
     "type": "builtin.places.place_type",
     "entity": "post office",
@@ -723,18 +731,18 @@ post office
     }
 }
 builtin.places.prefer_route
-show directions by the shortest route    
+show directions by the shortest route   
 {
     "type": "builtin.places.prefer_route",
     "entity": "shortest"
 }
-take the fastest route    
+take the fastest route  
 {
     "type": "builtin.places.prefer_route",
     "entity": "fastest"
 }
 builtin.places.price_range
-give me places that are moderately affordable    
+give me places that are moderately affordable   
 {
     "type": "builtin.places.price_range",
     "entity": "moderately affordable",
@@ -744,7 +752,7 @@ give me places that are moderately affordable
         "value": "average"
     }
 }
-i want an expensive one    
+i want an expensive one 
 {
     "type": "builtin.places.price_range",
     "entity": "expensive",
@@ -755,18 +763,18 @@ i want an expensive one
     }
 }
 builtin.places.product
-where can i get fresh fish around here    
+where can i get fresh fish around here  
 {
     "type": "builtin.places.product",
     "entity": "fresh fish"
 }
-where around here sells bare minerals    
+where around here sells bare minerals   
 {
     "type": "builtin.places.product",
     "entity": "bare minerals"
 }
 builtin.places.public_transportation_route
-bus schedule for the m2 bus    
+bus schedule for the m2 bus 
 {
     "type": "builtin.places.public_transportation_route",
     "entity": "m2"
@@ -777,12 +785,12 @@ bus route 3x
     "entity": "3x"
 }
 builtin.places.rating
-show 3 star restaurants    
+show 3 star restaurants 
 {
     "type": "builtin.places.rating",
     "entity": "3 star"
 }
-show results that are 3 stars or higher    
+show results that are 3 stars or higher 
 {
     "type": "builtin.places.rating",
     "entity": "3 stars or higher",
@@ -793,7 +801,7 @@ show results that are 3 stars or higher
     }
 }
 builtin.places.reservation_number
-book a table for seven people    
+book a table for seven people   
 {
     "type": "builtin.places.reservation_number",
     "entity": "seven"
@@ -804,12 +812,12 @@ make a reservation for two at il fornaio
     "entity": "two"
 }
 builtin.places.results_number
-show me the 10 coffee shops closest to here    
+show me the 10 coffee shops closest to here 
 {
     "type": "builtin.places.results_number",
     "entity": "10"
 }
-show me top 3 aquariums    
+show me top 3 aquariums 
 {
     "type": "builtin.places.results_number",
     "entity": "3",
@@ -820,18 +828,18 @@ show me top 3 aquariums
     }
 }
 builtin.places.service_provided
-where can i go to whale watch by bus ?    
+where can i go to whale watch by bus ?  
 {
     "type": "builtin.places.service_provided",
     "entity": "whale watch"
 }
-i need a mechanic to fix my brakes    
+i need a mechanic to fix my brakes  
 {
     "type": "builtin.places.service_provided",
     "entity": "fix my brakes"
 }
 builtin.places.time
-i want places that are open on saturday at 8 am    
+i want places that are open on saturday at 8 am 
 {
     "type": "builtin.places.time",
     "entity": "8 am",
@@ -840,7 +848,7 @@ i want places that are open on saturday at 8 am
         "time": "XXXX-WXX-6T08"
     }
 }
-is mashiko open now ?    
+is mashiko open now ?   
 {
     "type": "builtin.places.time",
     "entity": "now",
@@ -850,18 +858,18 @@ is mashiko open now ?
     }
 }
 builtin.places.transportation_company
-train schedules for new jersey transit    
+train schedules for new jersey transit  
 {
     "type": "builtin.places.transportation_company",
     "entity": "new jersey transit"
 }
-can i get there on bart    
+can i get there on bart 
 {
     "type": "builtin.places.transportation_company",
     "entity": "bart"
 }
 builtin.places.transportation_type
-where is a music store i can get to on foot ?    
+where is a music store i can get to on foot ?   
 {
     "type": "builtin.places.transportation_type",
     "entity": "on foot",
@@ -882,7 +890,7 @@ give me biking directions to mashiko
     }
 }
 builtin.places.travel_time
-i want to be able to drive less than 15 minutes    
+i want to be able to drive less than 15 minutes 
 {
     "type": "builtin.places.travel_time",
     "entity": "less than 15 minutes",
@@ -891,7 +899,7 @@ i want to be able to drive less than 15 minutes
         "duration": "PT15M"
     }
 }
-i want somewhere i can get to in under 15 minutes    
+i want somewhere i can get to in under 15 minutes   
 {
     "type": "builtin.places.travel_time",
     "entity": "under 15 minutes",
@@ -901,35 +909,35 @@ i want somewhere i can get to in under 15 minutes
     }
 }
 builtin.reminder.absolute_location
-remind me to call my dad when i land in chicago    
+remind me to call my dad when i land in chicago 
 {
     "type": "builtin.reminder.absolute_location",
     "entity": "chicago"
 }
-when i get back to seattle remind me to get gas    
+when i get back to seattle remind me to get gas 
 {
     "type": "builtin.reminder.absolute_location",
     "entity": "seattle"
 }
 builtin.reminder.contact_name
-when bob calls, remind me to tell him the joke    
+when bob calls, remind me to tell him the joke  
 {
     "type": "builtin.reminder.contact_name",
     "entity": "bob"
 }
-create a reminder to mention the school bus when i talk to arthur    
+create a reminder to mention the school bus when i talk to arthur   
 {
     "type": "builtin.reminder.contact_name",
     "entity": "arthur"
 }
 builtin.reminder.leaving_absolute_location
-reminder pick up craig when leaving 1200 main    
+reminder pick up craig when leaving 1200 main   
 {
     "type": "builtin.reminder.leaving_absolute_location",
     "entity": "1200 main"
 }
 builtin.reminder.leaving_implicit_location
-remind me to get gas when i leave work    
+remind me to get gas when i leave work  
 {
     "type": "builtin.reminder.leaving_implicit_location",
     "entity": "work",
@@ -940,7 +948,7 @@ remind me to get gas when i leave work
     }
 }
 builtin.reminder.original_start_date
-change the reminder about the lawn from saturday to sunday    
+change the reminder about the lawn from saturday to sunday  
 {
     "type": "builtin.reminder.original_start_date",
     "entity": "saturday"
@@ -951,7 +959,7 @@ move my reminder about school from monday to tuesday
     "entity": "monday"
 }
 builtin.reminder.relationship_name
-when my husband calls, remind me to tell him about the pta meeting    
+when my husband calls, remind me to tell him about the pta meeting  
 {
     "type": "builtin.reminder.relationship_name",
     "entity": "husband",
@@ -961,7 +969,7 @@ when my husband calls, remind me to tell him about the pta meeting
         "value": "husband"
     }
 }
-remind me again when mom calls    
+remind me again when mom calls  
 {
     "type": "builtin.reminder.relationship_name",
     "entity": "mom",
@@ -972,18 +980,18 @@ remind me again when mom calls
     }
 }
 builtin.reminder.reminder_text
-can you remind me to bring up my small spot of patchy skin when dr smith'calls    
+can you remind me to bring up my small spot of patchy skin when dr smith'calls  
 {
     "type": "builtin.reminder.reminder_text",
     "entity": "bring up my small spot of patchy skin"
 }
-remind me to pick up dry cleaning at 4:40    
+remind me to pick up dry cleaning at 4:40   
 {
     "type": "builtin.reminder.reminder_text",
     "entity": "pick up dry cleaning"
 }
 builtin.reminder.start_date
-remind me the thursday after next at 8 pm    
+remind me the thursday after next at 8 pm   
 {
     "type": "builtin.reminder.start_date",
     "entity": "thursday after next"
@@ -994,18 +1002,18 @@ remind me next thursday the 18th at 8 pm
     "entity": "next thursday the 18th"
 }
 builtin.reminder.start_time
-create a reminder in 30 minutes    
+create a reminder in 30 minutes 
 {
     "type": "builtin.reminder.start_time",
     "entity": "in 30 minutes"
 }
-create a reminder to water the plants this evening at 7    
+create a reminder to water the plants this evening at 7 
 {
     "type": "builtin.reminder.start_time",
     "entity": "this evening at 7"
 }
 builtin.weather.absolute_location
-will it rain in boston    
+will it rain in boston  
 {
     "type": "builtin.weather.absolute_location",
     "entity": "boston"
@@ -1016,7 +1024,7 @@ what's the forecast for seattle?
     "entity": "seattle"
 }
 builtin.weather.date_range
-weather in nyc this weekend    
+weather in nyc this weekend 
 {
     "type": "builtin.weather.date_range",
     "entity": "this weekend",
@@ -1025,7 +1033,7 @@ weather in nyc this weekend
         "date": "2015-W42-WE"
     }
 }
-look up the five day forecast in hollywood florida    
+look up the five day forecast in hollywood florida  
 {
     "type": "builtin.weather.date_range",
     "entity": "five day",
@@ -1035,18 +1043,18 @@ look up the five day forecast in hollywood florida
     }
 }
 builtin.weather.suitable_for
-can i go hiking in shorts this weekend?    
+can i go hiking in shorts this weekend? 
 {
     "type": "builtin.weather.suitable_for",
     "entity": "hiking"
 }
-will it be nice enough to walk to the game today?    
+will it be nice enough to walk to the game today?   
 {
     "type": "builtin.weather.suitable_for",
     "entity": "walk"
 }
 builtin.weather.temperature_unit
-what is the temperature today in kelvin    
+what is the temperature today in kelvin 
 {
     "type": "builtin.weather.temperature_unit",
     "entity": "kelvin",
@@ -1067,7 +1075,7 @@ show me the temps in celsius
     }
 }
 builtin.weather.time_range
-does it look like it will snow tonight?    
+does it look like it will snow tonight? 
 {
     "type": "builtin.weather.time_range",
     "entity": "tonight",
@@ -1076,7 +1084,7 @@ does it look like it will snow tonight?
         "time": "2015-10-17TNI"
     }
 }
-is it windy right now?    
+is it windy right now?  
 {
     "type": "builtin.weather.time_range",
     "entity": "now",
@@ -1086,7 +1094,7 @@ is it windy right now?
     }
 }
 builtin.weather.weather_condition
-show precipitation    
+show precipitation  
 {
     "type": "builtin.weather.weather_condition",
     "entity": "precipitation",

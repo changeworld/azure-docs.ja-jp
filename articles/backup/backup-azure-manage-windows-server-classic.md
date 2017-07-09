@@ -12,11 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 06/14/2017
 ms.author: markgal;
-translationtype: Human Translation
-ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
-ms.openlocfilehash: 41d02237708517c782d64aeadcafd053fcd6523d
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 7218366ec8455bc2d8747446319bac79e7b8abea
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -31,6 +33,12 @@ ms.openlocfilehash: 41d02237708517c782d64aeadcafd053fcd6523d
 
 > [!IMPORTANT]
 > Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
+
+> [!IMPORTANT]
+> Backup コンテナーを Recovery Services コンテナーにアップグレードできるようになりました。 詳細については、「[Backup コンテナーを Recovery Services コンテナーにアップグレードする](backup-azure-upgrade-backup-to-recovery-services.md)」を参照してください。 Backup コンテナーを Recovery Services コンテナーにアップグレードすることをお勧めします。<br/> **2017 年 11 月 1 日以降**:
+>- 残っている Backup コンテナーは、自動的に Recovery Services コンテナーにアップグレードされます。
+>- クラシック ポータルでバックアップ データにアクセスすることはできなくなります。 代わりに、Azure Portal を使用して、Recovery Services コンテナーのバックアップ データにアクセスしてください。
+>
 
 ## <a name="management-portal-tasks"></a>管理ポータルのタスク
 1. [管理ポータル](https://manage.windowsazure.com)にサインインします。
@@ -191,10 +199,5 @@ Azure Backup エージェントには、データ転送時のネットワーク�
 ## <a name="next-steps"></a>次のステップ
 * [Azure からの Windows Server または Windows クライアントの復元](backup-azure-restore-windows-server.md)
 * Azure Backup の詳細については、「 [Azure Backup の概要](backup-introduction-to-azure-backup.md)
-*  [Azure Backup フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)
-
-
-
-<!--HONumber=Dec16_HO1-->
-
+* [Azure Backup フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)
 

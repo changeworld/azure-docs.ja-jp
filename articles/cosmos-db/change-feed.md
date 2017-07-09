@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/23/2017
 ms.author: arramac
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 8e0516585e2191caaef70bc973f027925df91bf6
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: d04d1240fb353a973953b2a90eadc65705219edb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -167,7 +167,7 @@ ReadDocumentFeed のしくみを簡単に説明します。 Azure Cosmos DB は�
     <tr>
         <td>minInclusive</td>
         <td>パーティション キー範囲のパーティション キー ハッシュ最小値です。 内部使用のみ。</td>
-    </tr>        
+    </tr>       
 </table>
 
 サポートされている [ Azure Cosmos DB SDK](documentdb-sdk-dotnet.md) のいずれかを使用してこれを実行できます。 たとえば次のスニペットは、.NET でパーティション キー範囲を取得する方法を示します。
@@ -402,5 +402,5 @@ ReadDocumentFeed は、Azure Cosmos DB コレクションの変更の増分処�
 
 ## <a name="next-steps"></a>次のステップ
 * [GitHub の Azure Cosmos DB Change Feed コード サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeed)を使ってみる
-* [Azure Cosmos DB SDK](documentdb-sdk-dotnet.md) または [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を使用してコーディングを開始する
+* [Azure Cosmos DB SDK](documentdb-sdk-dotnet.md) または [REST API](/rest/api/documentdb/) を使用してコーディングを開始する
 

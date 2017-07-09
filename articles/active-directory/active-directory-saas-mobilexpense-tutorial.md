@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: jeedes
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: 34cc5f5b2947f775c00548e5d8699976caabfd47
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 030a1fc9f36d6fcfa607552d85ce232e36eaa64b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -112,16 +112,16 @@ MobileXpense で Azure AD のシングル サインオンを構成してテス�
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_url11.png)
 
-       In the **Reply URL** textbox, type a URL using the following pattern: `https://<sub domain>.mobilexpense.com/SSO/SAML20/SAML/AssertionConsumerService.aspx`
+    **[応答 URL]** ボックスに、`https://<sub domain>.mobilexpense.com/SSO/SAML20/SAML/AssertionConsumerService.aspx` のパターンを使用して URL を入力します。
 
 4. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_url22.png)
 
-    **[サインオン URL]** ボックスに、`https://<sub domain>.mobilexpense.com/<customername>` のパターンを使用して URL を入力します。
-     
-    > [!NOTE] 
-    > これらは実際の値ではありません。 実際の応答 URLとサインオン URL でこれらの値を更新します。 これらの値を取得するには、[MobileXpense クライアント サポート チーム](http://www.mobilexpense.net/contact)に問い合わせてください。 
+**[サインオン URL]** ボックスに、`https://<sub domain>.mobilexpense.com/<customername>` のパターンを使用して URL を入力します。
+
+> [!NOTE] 
+> これらは実際の値ではありません。 実際の応答 URLとサインオン URL でこれらの値を更新します。 これらの値を取得するには、[MobileXpense クライアント サポート チーム](http://www.mobilexpense.net/contact)に問い合わせてください。 
 
 5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 

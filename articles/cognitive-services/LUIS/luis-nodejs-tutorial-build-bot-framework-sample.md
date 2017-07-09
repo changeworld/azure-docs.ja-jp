@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 04/26/2017
 ms.author: v-demak
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 677b2d2196b1145f5b936301ce134f62dc97ede4
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 1d170e40872ccb9c942b183514b3a0c929b39d93
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/30/2017
 
 ---
 
@@ -81,7 +81,7 @@ Open a node.js command prompt, and run the bot: `node app.js`.
 ## <a name="next-steps"></a>Next steps
 
 * Try to improve your LUIS app's performance by continuing to [add](Add-example-utterances.md) and [label utterances](Label-Suggested-Utterances.md).
-* Try adding additional [Features](Add-Features.md) to enrich your model and improve performance in language understanding. Features help your app identify alternative interchangeable words/phrases, as well as commonly-used patterns specific to your domain.
+* Try adding additional [Features](Add-Features.md) to enrich your model and improve performance in language understanding. Features help your app identify alternative interchangeable words/phrases, as well as commonly used patterns specific to your domain.
 
 <!-- Links -->
 [EmulatorDownload]: https://github.com/Microsoft/BotFramework-Emulator

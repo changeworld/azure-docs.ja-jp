@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: cephalin
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 6adc34f208c6c4363b73f6e42b4a4d6ae2e4483f
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 5f6537a45bcb092b5ef463e8069b9fc5582c14c2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 05/27/2017
 
 この記事では、ダウンタイムを発生させずにアクティブなカスタム ドメインを [Azure App Service](../app-service/app-service-value-prop-what-is.md) に移行する方法について説明します。
 
-ライブ サイトと、ライブ トラフィックを既に提供しているそのドメイン名を App Service に移行する際、移行プロセス中に DNS 解決にダウンタイムが生じないようにしたいとします。 この場合、事前にドメイン名を Azure アプリにバインドしてドメイン検証を行う必要があります。 
+ライブ サイトと、ライブ トラフィックを既に提供しているそのドメイン名を App Service に移行する際、移行プロセス中に DNS 解決にダウンタイムが生じないようにしたいとします。 この場合、事前にドメイン名を Azure アプリにバインドしてドメイン検証を行う必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,10 +44,10 @@ ms.lasthandoff: 05/27/2017
 
 次の手順に従ってください。
 
-1. 最初に、「[DNS レコードを作成する](app-service-web-tutorial-custom-domain.md#create-a)」の手順に従って、DNS レジストリで検証用 TXT レコードを作成します。
+1. 最初に、「[DNS レコードを作成する](app-service-web-tutorial-custom-domain.md)」の手順に従って、DNS レジストリで検証用 TXT レコードを作成します。
 追加の TXT レコードでは、&lt;*subdomain*>.&lt;*rootdomain*> を &lt;*appname*>.azurewebsites.net にマップする規則が適用されます。
 例については、次の表を参照してください。  
- 
+
     <table cellspacing="0" border="1">
     <tr>
     <th>FQDN の例</th>
@@ -75,7 +75,7 @@ ms.lasthandoff: 05/27/2017
 
     カスタム ドメインが Azure アプリで有効になります。 残りの作業は、ドメイン レジストラーで DNS レコードを更新することだけです。
 
-3. 最後に、「[DNS レコードを作成する](app-service-web-tutorial-custom-domain.md#create-a)」の手順に従って、Azure アプリを指すようにドメインの DNS レコードを更新します。 
+3. 最後に、「[DNS レコードを作成する](app-service-web-tutorial-custom-domain.md)」の手順に従って、Azure アプリを指すようにドメインの DNS レコードを更新します。
 
     DNS に反映されるとすぐに、ユーザー トラフィックが Azure アプリにリダイレクトされます。
 
@@ -84,11 +84,10 @@ HTTPS でカスタム ドメイン名をセキュリティ保護する方法を�
 
 > [!NOTE]
 > Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
-> 
-> 
+>
+>
 
 [Azure DNS の概要](../dns/dns-getstarted-create-dnszone.md)  
 [カスタム ドメインにおける Web アプリの DNS レコードの作成](../dns/dns-web-sites-custom-domain.md)  
 [Azure DNS へのドメインの委任](../dns/dns-domain-delegation.md)
-
 

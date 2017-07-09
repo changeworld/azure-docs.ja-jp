@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: juliako;
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 13878d16304612c7bebcdc902bcd053c0ce1ecee
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 316a34dcd761a8a45464863bd0612a5224ec1eeb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -93,7 +93,7 @@ language|The language of the transcript.
 
 Attribute | Description 
 ---|---
-transcripBlocks|May contain one or more [transcripBlocks](#transcripBlocks)
+transcriptBlocks|May contain one or more [transcriptBlocks](#transcriptBlocks)
 topics|May contain one or more [topics](#topics)
 faces|May contain one or more [faces](#faces)
 participants|May contain one or more [participants](#participants)
@@ -209,7 +209,7 @@ Attribute | Description
 type|Id of the category.
 key|One of the following: Speech, Silence, HandClaps. 
 
-## <a name="transcripblocks"></a>transcripBlocks
+## <a name="transcriptblocks"></a>transcriptBlocks
 
 Attribute | Description
 ---|---
@@ -236,9 +236,9 @@ lines|May contain one or more [lines](#lines).
 
 ## <a name="lines"></a>lines
 
-### <a name="transcripblocks"></a>transcripBlocks
+### <a name="transcriptblocks"></a>transcriptBlocks
 
-**lines** that appear under **transcripBlocks**, describe lines of transcripts found in the video.
+**lines** that appear under **transcriptBlocks**, describe lines of transcripts found in the video.
 
 Attribute | Description 
 ---|---

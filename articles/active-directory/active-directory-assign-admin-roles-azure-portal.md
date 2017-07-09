@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: curtand
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 8e8723c6dc81012a0dddd4e0a28c4d4af6828c6c
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 59954c02741de2fbba22a3e41640573914efdad8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
+ms.lasthandoff: 06/13/2017
 
 
 ---
@@ -156,6 +156,17 @@ Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別�
 
 ## <a name="assign-or-remove-administrator-roles"></a>管理者ロールの割り当てまたは削除
 Azure Active Directory のユーザーに管理者ロールを割り当てる方法については、「[Azure Active Directory プレビューでユーザーを管理者ロールに割り当てる](active-directory-users-assign-role-azure-portal.md)」を参照してください。
+
+## <a name="deprecated-roles"></a>非推奨のロール
+
+次のロールは使用しないでください。 これらは廃止されており、将来的に Azure AD から削除されます。
+
+* アドホック ライセンス管理者
+* メールで確認済みのユーザー作成者
+* デバイスの参加
+* デバイス マネージャー
+* デバイス ユーザー
+* デバイスの社内参加
 
 ## <a name="next-steps"></a>次のステップ
 

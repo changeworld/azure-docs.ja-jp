@@ -14,10 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: mlearned
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: da4bb7fcbb45afed5d45f4d48c0b90e44503daf8
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: f4f5f231536bc381d17898ff2c592be821168a65
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -186,7 +187,7 @@ Git を使用する場合は、通常、working 分岐で変更を行い、開�
 10. **[ビルド]** ビューに移動して、working 分岐に対してトリガーされたビルドを見つけます。
 
 ## <a name="next-steps"></a>次のステップ
-Visual Studio Team Services で Git を使用する場合のその他のヒントについては、[Visual Studio を使用した Git でのコードの開発と共有](http://www.visualstudio.com/get-started/share-your-code-in-git-vs.aspx)に関するページを参照してください。また、Visual Studio Team Services で管理されていない Git リポジトリを使用した Azure への発行の詳細については、「[Azure App Service への継続的なデプロイ](../app-service-web/app-service-continuous-deployment.md)」を参照してください。 Visual Studio Team Services の詳細については、[Visual Studio Team Services](http://go.microsoft.com/fwlink/?LinkId=253861) に関するページを参照してください。
+Visual Studio Team Services で Git を使用する場合のその他のヒントについては、[Visual Studio を使用した Git でのコードの開発と共有](https://www.visualstudio.com/en-us/docs/git/share-your-code-in-git-vs-2017)に関するページを参照してください。また、Visual Studio Team Services で管理されていない Git リポジトリを使用した Azure への発行の詳細については、「[Azure App Service への継続的なデプロイ](../app-service-web/app-service-continuous-deployment.md)」を参照してください。 Visual Studio Team Services の詳細については、[Visual Studio Team Services](http://go.microsoft.com/fwlink/?LinkId=253861) に関するページを参照してください。
 
 [0]: ./media/cloud-services-continuous-delivery-use-vso/tfs0.PNG
 [1]: ./media/cloud-services-continuous-delivery-use-vso-git/CreateTeamProjectInGit.PNG

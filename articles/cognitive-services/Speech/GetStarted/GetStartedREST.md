@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 04/28/201
 ms.author: v-ducvo
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 32c633926d8f95d7f12d08282488b8b9daf8261f
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: e8047657a3f45e19dfb189cb6b0d3d51425a6b6f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/29/2017
 
 ---
 
@@ -24,7 +24,7 @@ With Bing Speech API you can develop applications using REST API to convert spok
 ## <a name="prerequisites"></a>Prerequisites
 
 #### <a name="subscribe-to-speech-api-and-get-a-free-trial-subscription-key"></a>Subscribe to Speech API and get a free trial subscription key
-To access the REST end point, you must subscribe to Speech API which is part of Microsoft Cognitive Services (previously Project Oxford). After subscribing, you will have the necessary subscription keys to execute this operation. Both the primary and secondary keys can be used. For subscription and key management details, see [Subscriptions](https://www.microsoft.com/cognitive-services/en-us/sign-up). 
+To access the REST end point, you must subscribe to Speech API which is part of Microsoft Cognitive Services (previously Project Oxford). After subscribing, you will have the necessary subscription keys to execute this operation. Both the primary and secondary keys can be used. For subscription and key management details, see [Subscriptions](https://azure.microsoft.com/en-us/try/cognitive-services/). 
 
 #### <a name="precorded-audio-file"></a>Precorded audio file
 Record a short audio file of you saying something short (e.g.: *"What is the weather like today?"* or *"Find funny movies to watch."*) You will pass this audio to the Bing Speech API via the REST end point to have it transcribe into text. Or, you can use the microphone at the time of the request.

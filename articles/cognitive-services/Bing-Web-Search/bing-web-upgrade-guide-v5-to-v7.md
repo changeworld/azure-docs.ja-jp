@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 0151/2017
 ms.author: scottwhi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 5d30b6b79e3f98c5f4039f9bdae563bfdb0e0831
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 2357261d8e67edee01d40268ea60a157ba67c562
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/03/2017
 
 ---
 
@@ -75,6 +75,10 @@ Blocked|InvalidRequest.Blocked
 
 
 ## <a name="non-breaking-changes"></a>Non-breaking changes  
+
+### <a name="headers"></a>Headers
+
+- Added the optional [Pragma](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#pragma) request header. By default, Bing returns cached content, if available. To prevent Bing from returning cached content, set the Pragma header to no-cache (for example, Pragma: no-cache).
 
 ### <a name="query-parameters"></a>Query parameters
 

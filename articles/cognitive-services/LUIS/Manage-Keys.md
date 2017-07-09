@@ -9,32 +9,55 @@ ms.technology: luis
 ms.topic: article
 ms.date: 03/01/2017
 ms.author: cahann
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 692e0cdc583dabad9afbecc967f8f226742f88c2
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
+ms.openlocfilehash: 922857664e833900a646eebfccdfb4abed9b2c89
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/21/2017
 
 ---
 
 # <a name="manage-your-keys"></a>Manage your keys
 A key is your passport to the server allowing you to publish your app to be used by end users. LUIS has three different types of keys:
 
-* **Programmatic API Key:** Created automatically per LUIS account and you don't have to buy it. It enables you to author and edit your application using LUIS programmatic APIs. 
+* **Programmatic API Key:** Created automatically for LUIS account and it's free. It enables you to author and edit your application using the LUIS Programmatic APIs. 
 [Click here for a complete API Reference](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f).
 
-* **Endpoint Key(s):** You need to buy it from Microsoft Azure portal. It is essential for publishing your app and accessing your HTTP endpoint. This key reflects your quota of endpoint hits based on the usage plan you specified while creating the key. 
+* **Endpoint Key(s):** You need to buy it from the Microsoft Azure portal. It is essential for publishing your app and accessing your HTTP endpoint. This key reflects your quota of endpoint hits based on the usage plan you specified while creating the key. See [Cognitive Services Pricing](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/?v=17.23h) for pricing information.
 
-* **External Key(s):** You need to buy an external key only if you want to use any external services with LUIS (e.g. Bing Spell Check service).
+* **External Key(s):** You need to buy an external key only if you want to use any external services with LUIS.
  
 The process of creating and using endpoint and external keys involves the following tasks in the same order:
 
- 1. Create a key on Azure portal.
+ 1. Create a key on the Azure portal.
  
- 2. Add the key to your LUIS account (on **My Keys** page). 
+ 2. Add the key to your LUIS account (on the **My Keys** page). 
  3. Assign the key to your app on the **Publish** page. 
 
 
-## <a name="reset-programmatic-api-key"></a>Reset Programmatic API key
+## <a name="regions-and-keys"></a>Regions and keys
+
+The region to which you publish your LUIS app must correspond to the region or location you specify in the Azure portal when you create a key. To publish a LUIS app to more than one region, you need at least one key per region. LUIS apps created on https://www.luis.ai can be published to endpoints in the following regions:
+
+ Azure region   |   Endpoint URL format   |   
+------|------|
+West US     |   https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY  |
+East US     |   https://eastus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
+West Central US     |   https://westcentralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
+Southeast Asia     |   https://southeastasia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
+
+To publish to the European regions, you can create LUIS apps at https://eu.luis.ai.  
+
+> [!NOTE]
+> LUIS apps created at [https://eu.luis.ai](https://eu.luis.ai) don't automatically migrate to [https://www.luis.ai](https://www.luis.ai). You will need to export and then import the LUIS app in order to migrate it.
+
+ Azure region   |   Endpoint URL format   |   
+------|------|
+West Europe     | https://westeurope.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY |
+
+
+
+## <a name="reset-your-programmatic-api-key"></a>Reset your Programmatic API key
 You can reset your Programmatic API key to get a new one generated for your account.
 
 **To reset a Programmatic API key:**
@@ -53,7 +76,7 @@ You can create as many endpoint keys as you need for your LUIS apps on Azure por
 1.  Click **My Keys** on LUIS top navigation bar to access **My Keys** page.
 
 2. On **My Keys** page, **Endpoint Keys** tab, click **Buy Key on Azure**. This will take you directly to Microsoft Azure portal. You can create one or more keys per account by subscribing to one or more subscription tiers. 
-3. For further instructions, see [Creating a subscription key via Azure Ibiza](AzureIbizaSubscription.md).
+3. For further instructions, see [Creating a subscription key using Azure](AzureIbizaSubscription.md).
 
 **To add the endpoint key to your LUIS account:**
 
@@ -78,7 +101,7 @@ In the list of added keys, you can edit a key name, or delete a key (if no longe
 
 
 ## <a name="create-and-use-external-keys"></a>Create and use external keys
-External keys are the keys required for any external services that you want to use with your LUIS app to enhance the language understanding experience. One of these services, which is currently available, is [Bing Spell Check](https://www.microsoft.com/cognitive-services/en-us/bing-spell-check-api/documentation). It can be used with LUIS to detect and correct any spelling mistakes in end-user queries submitted to your application's endpoint.
+External keys are the keys required for any external services that you want to use with your LUIS app to enhance the language understanding experience. One of these services, which is currently available, is [Bing Spell Check](https://www.microsoft.com/cognitive-services/bing-spell-check-api/documentation). It can be used with LUIS to detect and correct any spelling mistakes in end-user queries submitted to your application's endpoint.
 
 **To create and add an external key to your LUIS account:**
 
