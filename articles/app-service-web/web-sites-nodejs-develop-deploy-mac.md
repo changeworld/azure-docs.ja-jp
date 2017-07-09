@@ -1,11 +1,12 @@
 ---
 redirect_url: /azure/app-service-web/app-service-web-get-started-nodejs
-redirect_document_id: TRUE
+redirect_document_id: FALSE
 ROBOTS: NOINDEX
-translationtype: Human Translation
-ms.sourcegitcommit: b6ca674d808dbe5381a6344f128bd3e243c1399d
-ms.openlocfilehash: 98f5a59e8327ba92a93013fc4bf0231bf9460d5c
-ms.lasthandoff: 04/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: 3e59b0b131d792e49aa822ce2af79154b58488bb
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 ---
 
