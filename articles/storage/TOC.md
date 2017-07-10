@@ -113,9 +113,10 @@
 ### [セキュリティ ガイド](storage-security-guide.md)
 ### [保存データの暗号化](storage-service-encryption.md)
 ### [カスタマー キーでの保存時の暗号化](storage-service-encryption-customer-managed-keys.md)
-### [共有キー認証](https://msdn.microsoft.com/library/dd179428.aspx)
+### [共有キー認証](/rest/api/storageservices/Authentication-for-the-Azure-Storage-Services)
 ### [Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md)
 ### [チュートリアル: Azure Key Vault を使用して BLOB を暗号化および復号化する](storage-encrypt-decrypt-blobs-key-vault.md)
+### [安全な転送が必要](storage-require-secure-transfer.md)
 ### クライアント側暗号化
 #### [.NET](storage-client-side-encryption.md)
 #### [Java](storage-client-side-encryption-java.md)
@@ -201,11 +202,12 @@
 ### [トラブルシューティングのチュートリアル](storage-e2e-troubleshooting-classic-portal.md)
 
 # リソース
-## [料金](https://azure.microsoft.com/pricing/details/storage/blobs/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [Azure Storage クライアント ツール](storage-explorers.md)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/windows-azure-storage)
 ## [フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)
+## [料金](https://azure.microsoft.com/pricing/details/storage/blobs/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=storage)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/windows-azure-storage)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=storage)
 
 ## Azure ストレージ エクスプローラー

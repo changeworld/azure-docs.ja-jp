@@ -70,7 +70,8 @@
 ### [ポータルを使用してポリシーを割り当てる](resource-manager-policy-portal.md)
 ### [スクリプトを使用してポリシーを割り当てる](resource-manager-policy-create-assign.md)
 ### 例
-#### [リソース タグ](resource-manager-policy-tags.md)
+#### [タグ](resource-manager-policy-tags.md)
+#### [名前付け規則](resource-manager-policy-naming-convention.md)
 #### [Storage](resource-manager-policy-storage.md)
 #### [Linux VM](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 #### [Windows VM](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
@@ -119,8 +120,9 @@
 ## [REST ()](/rest/api/resources/)
 
 # リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=azure-resource-manager)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-resource-manager)
 ## [スロットル リクエスト](resource-manager-request-limits.md)
 ## [非同期操作の追跡](resource-manager-async-operations.md)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-resource-manager)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager)
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=azure-resource-manager)

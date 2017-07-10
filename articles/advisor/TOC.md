@@ -21,3 +21,4 @@
 
 # リソース
 ## [Azure Advisor のビデオ](https://azure.microsoft.com/en-us/resources/videos/index/?services=advisor)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)

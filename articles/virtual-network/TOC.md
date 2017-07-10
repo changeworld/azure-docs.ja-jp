@@ -21,24 +21,27 @@
 #### [PowerShell](virtual-networks-create-vnet-arm-ps.md)
 #### [CLI](virtual-networks-create-vnet-arm-cli.md)
 #### [テンプレート](virtual-networks-create-vnet-arm-template-click.md)
-#### [ポータル (クラシック)](virtual-networks-create-vnet-classic-pportal.md)
-#### [PowerShell (クラシック)](virtual-networks-create-vnet-classic-netcfg-ps.md)
-#### [CLI (クラシック)](virtual-networks-create-vnet-classic-cli.md)
+#### クラシック
+##### [ポータル](virtual-networks-create-vnet-classic-pportal.md)
+##### [PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md)
+##### [CLI](virtual-networks-create-vnet-classic-cli.md)
 
 ### ネットワーク セキュリティ グループ
 #### [ポータル](virtual-networks-create-nsg-arm-pportal.md)
 #### [PowerShell](virtual-networks-create-nsg-arm-ps.md)
 #### [CLI](virtual-networks-create-nsg-arm-cli.md)
 #### [テンプレート](virtual-networks-create-nsg-arm-template.md)
-#### [PowerShell (クラシック)](virtual-networks-create-nsg-classic-ps.md)
-#### [CLI (クラシック)](virtual-networks-create-nsg-classic-cli.md)
+#### クラシック
+##### [PowerShell](virtual-networks-create-nsg-classic-ps.md)
+##### [CLI](virtual-networks-create-nsg-classic-cli.md)
 
 ### ユーザー定義のルート
 #### [PowerShell](virtual-network-create-udr-arm-ps.md)
 #### [CLI](virtual-network-create-udr-arm-cli.md)
 #### [テンプレート](virtual-network-create-udr-arm-template.md)
-#### [PowerShell (クラシック)](virtual-network-create-udr-classic-ps.md)
-#### [CLI (クラシック)](virtual-network-create-udr-classic-cli.md)
+#### クラシック
+##### [PowerShell](virtual-network-create-udr-classic-ps.md)
+##### [CLI](virtual-network-create-udr-classic-cli.md)
 
 ### [仮想ネットワーク ピアリング](virtual-network-create-peering.md)
 
@@ -48,21 +51,24 @@
 ##### [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
 ##### [CLI](virtual-network-deploy-static-pip-arm-cli.md)
 ##### [テンプレート](virtual-network-deploy-static-pip-arm-template.md)
-##### [PowerShell (クラシック)](virtual-networks-reserved-public-ip.md)
+##### クラシック
+###### [PowerShell](virtual-networks-reserved-public-ip.md)
 
 #### 静的プライベート IP アドレスを持つ VM を作成する
 ##### [ポータル](virtual-networks-static-private-ip-arm-pportal.md)
 ##### [PowerShell](virtual-networks-static-private-ip-arm-ps.md)
 ##### [CLI](virtual-networks-static-private-ip-arm-cli.md)
-##### [ポータル (クラシック)](virtual-networks-static-private-ip-classic-pportal.md)
-##### [PowerShell (クラシック)](virtual-networks-static-private-ip-classic-ps.md)
-##### [CLI (クラシック)](virtual-networks-static-private-ip-classic-cli.md)
+##### クラシック
+###### [ポータル](virtual-networks-static-private-ip-classic-pportal.md)
+###### [PowerShell](virtual-networks-static-private-ip-classic-ps.md)
+###### [CLI](virtual-networks-static-private-ip-classic-cli.md)
 
 #### 複数のネットワーク インターフェイスを持つ VM を作成する
 ##### [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 ##### [CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-##### [PowerShell (クラシック)](virtual-network-deploy-multinic-classic-ps.md)
-##### [CLI (クラシック)](virtual-network-deploy-multinic-classic-cli.md)
+##### クラシック
+###### [PowerShell](virtual-network-deploy-multinic-classic-ps.md)
+###### [CLI](virtual-network-deploy-multinic-classic-cli.md)
 
 #### 複数の IP アドレスを持つ VM を作成する
 ##### [Azure ポータル](virtual-network-multiple-ip-addresses-portal.md)
@@ -103,6 +109,9 @@
 ### [仮想ネットワーク](virtual-network-manage-network.md)
 #### [サブネット](virtual-network-manage-subnet.md)
 #### [ピアリング](virtual-network-manage-peering.md)
+#### クラシック
+##### [ネットワーク構成ファイル](virtual-networks-using-network-configuration-file.md)
+##### [アフィニティ グループからリージョンへの移行](virtual-networks-migrate-to-regional-vnet.md)
 ### ネットワーク セキュリティ グループ
 #### [ポータル](virtual-network-manage-nsg-arm-portal.md)
 #### [PowerShell](virtual-network-manage-nsg-arm-ps.md)
@@ -126,7 +135,7 @@
 
 # リファレンス
 ## [PowerShell (Resource Manager)](/powershell/module/azurerm.network)
-## [PowerShell (クラシック)](/powershell/module/azure/?view=azuresmps-3.7.0)
+## [PowerShell (クラシック)](/powershell/module/azure/)
 ## [Azure CLI](/cli/azure/network)
 ## [Java](/java/api/)
 ## [REST (Resource Manager)](https://msdn.microsoft.com/library/mt163658.aspx)
@@ -143,6 +152,7 @@
 ## [ExpressRoute](/azure/expressroute/)
 
 # リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [ネットワークのブログ](http://azure.microsoft.com/blog/topics/networking)
 ## [ネットワークのフォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [料金](https://azure.microsoft.com/pricing/details/virtual-network)

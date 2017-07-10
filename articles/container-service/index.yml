@@ -1,0 +1,66 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Container Service のドキュメント
+metadata:
+  document_id: 
+  title: Azure Container Service のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+  meta.description: Azure Container Service allows you to quickly deploy a production ready Kubernetes, DC/OS, or Docker Swarm cluster.  Learn how to use Azure Container Service with these quickstarts, tutorials, and samples.
+  services: container-service
+  author: carolz
+  manager: carolz
+  ms.service: container-service
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 01-23-2017
+  ms.author: carolz
+abstract:
+  description: Azure Container Service では、運用環境で使用できる Kubernetes、DC/OS、または Docker Swarm クラスターを迅速にデプロイすることができます。  以下のクイック スタート、チュートリアル、サンプルを使用して、Azure Container Service の使用方法を確認してください。
+sections:
+- title: 5 分間のクイック スタート
+  items:
+  - type: paragraph
+    text: Azure Container Service を使用して Kubernetes クラスターをデプロイする方法を学習します。
+  - type: list
+    style: icon48
+    items: 
+    - image: 
+        src: /media/logos/logo_linux.svg
+      text: Linux
+      href: /azure/container-service/container-service-kubernetes-walkthrough
+    - image: 
+        src: /media/logos/logo_Windows.svg
+      text: Windows
+      href: /azure/container-service/container-service-kubernetes-windows-walkthrough
+- title: ステップバイステップのチュートリアル
+  items:
+  - type: paragraph
+    text: Azure Container Service Kubernetes クラスター内のアプリケーションをデプロイ、管理、更新する方法を学習します。
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/container-service/container-service-tutorial-kubernetes-prepare-app">アプリケーションからコンテナー イメージを作成する</a>
+    - html: <a href="/azure/container-service/container-service-tutorial-kubernetes-prepare-acr">Azure Container Registry にコンテナー イメージをアップロードする</a>
+    - html: <a href="/azure/container-service/container-service-tutorial-kubernetes-deploy-cluster">Azure Container Service で Kubernetes クラスターをデプロイする</a>
+    - html: <a href="/azure/container-service/container-service-tutorial-kubernetes-deploy-application">Kubernetes でコンテナー イメージを実行する</a>
+    - html: <a href="/azure/container-service/container-service-tutorial-kubernetes-scale">アプリケーションと Kubernetes インフラストラクチャのスケールを変更する</a>
+    - html: <a href="/azure/container-service/container-service-tutorial-kubernetes-app-update">Kubernetes で実行されているアプリケーションを更新する</a>
+    - html: <a href="/azure/container-service/container-service-tutorial-kubernetes-monitor">OMS で Kubernetes を監視する</a>
+- title: サンプル
+ 
+  items:
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/container-service/cli-samples">Azure CLI</a>
+- title: リファレンス
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: コマンド ライン
+      html: <p><a href="/cli/azure/acs">Azure CLI</a></p>
+    - title: REST ()
+      html: <p><a href="/rest/api/compute/containerservices">REST API</a></p>
