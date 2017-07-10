@@ -1,6 +1,6 @@
 # 概要
 ## [Application Insights とは何か?](app-insights-overview.md)
-## [DevOps サイクルにおけるパフォーマンス監視](app-insights-detect-triage-diagnose.md)
+## [DevOps のパフォーマンス監視の概要](app-insights-detect-triage-diagnose.md)
 
 # 作業開始
 ## Azure の監視
@@ -80,7 +80,6 @@
 #### [Search](app-insights-diagnostic-search.md)
 #### [メトリック](app-insights-metrics-explorer.md)
 #### [ライブ ストリーム](app-insights-live-stream.md)
-
 #### [アプリケーション マップ](app-insights-app-map.md)
 #### [HockeyApp データ](app-insights-hockeyapp-bridge-app.md)
 
@@ -93,6 +92,7 @@
 ### 使用法
 #### [概要](app-insights-usage-overview.md)
 #### [ユーザー、セッション、イベント](app-insights-usage-segmentation.md)
+#### [ファネル](app-insights-understand-usage-patterns.md)
 #### [保持](app-insights-usage-retention.md)
 #### [ブック](app-insights-usage-workbooks.md)
 
@@ -111,6 +111,7 @@
 ### [アラートを設定する](app-insights-powershell-alerts.md)
 ### [Azure 診断の実行](app-insights-powershell-azure-diagnostics.md)
 ### [Microsoft Flow で自動化する](app-insights-automate-with-flow.md)
+### [Azure ロジック アプリで自動化する](automate-with-logic-apps.md)
 
 ## 開発
 
@@ -154,6 +155,7 @@
 ## [テレメトリの関連付け](application-insights-correlation.md)
 
 # リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 
 ## [言語とプラットフォーム](app-insights-platforms.md)
 

@@ -7,10 +7,10 @@
 ## [互換性のあるサードパーティ製ソフトウェア](active-directory-ds-compatible-software.md)
 
 # 作業開始
-## [管理グループを作成する](active-directory-ds-getting-started.md)
+## [管理グループを作成する](active-directory-ds-getting-started-create-group.md)
 ## [仮想ネットワークを作成または選択する](active-directory-ds-getting-started-vnet.md)
 ## [Azure AD DS を有効にする](active-directory-ds-getting-started-enableaadds.md)
-## [DNS の設定を更新する](active-directory-ds-getting-started-dns.md)
+## [DNS の設定を更新する](active-directory-ds-getting-started-update-dns.md)
 ## パスワードの同期を有効にする
 ### [クラウド専用テナント](active-directory-ds-getting-started-password-sync.md)
 ### [同期されたテナント](active-directory-ds-getting-started-password-sync-synced-tenant.md)
@@ -41,12 +41,8 @@
 ## [Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
 
 # リソース
-## [料金](https://azure.microsoft.com/pricing/details/active-directory-ds/)
 ## [Azure AD フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory)
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=active-directory-ds)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [お問い合わせ](active-directory-ds-contact-us.md)
-
-
-<!--HONumber=Feb17_HO1-->
-
-
+## [料金](https://azure.microsoft.com/pricing/details/active-directory-ds/)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=active-directory-ds)
