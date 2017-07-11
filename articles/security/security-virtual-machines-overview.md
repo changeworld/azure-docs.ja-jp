@@ -12,16 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2017
+ms.date: 05/04/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 70d22ae8d7f67f1e12a233e004f1eb749927e7d8
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 9307b1688ed9e3dc412d044e72bdf88b7bb4d1ec
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/05/2017
 
 
 ---
-# <a name="azure-virtual-machines-security-overview"></a>Azure 仮想マシンのセキュリティの概要
+<a id="azure-virtual-machines-security-overview" class="xliff"></a>
+
+# Azure 仮想マシンのセキュリティの概要
 Azure 仮想マシンを使用すると、さまざまなコンピューティング ソリューションを俊敏にデプロイできます。 Microsoft Windows、Linux、Microsoft SQL Server、Oracle、IBM、SAP、Azure BizTalk Services に対応しており、ほぼすべてのオペレーティング システムですべてのワークロード、すべての言語をデプロイできます。
 
 Azure Virtual Machine は、仮想マシンを実行する物理的なハードウェアを購入して維持する手間を省き、仮想化がもたらす柔軟性を提供します。  高度にセキュリティ保護されたデータセンターでデータが保護されているという安心感を持って、アプリケーションを構築してデプロイできます。
@@ -47,8 +50,10 @@ Azure によって、セキュリティが強化され、コンプライアン�
 * セキュリティ ポリシーの管理とレポート
 * コンプライアンス
 
-## <a name="antimalware"></a>マルウェア対策
-Azure では、Microsoft、Symantec、Trend Micro、McAfee、Kaspersky などのセキュリティ ベンダーが提供するマルウェア対策ソフトウェアを利用できます。これにより、悪意のあるファイルやアドウェアなどの脅威から仮想マシンを保護できます。 パートナー ソリューションに関する記事については、後述の「詳細情報:」を参照してください。
+<a id="antimalware" class="xliff"></a>
+
+## マルウェア対策
+Azure では、Microsoft、Symantec、Trend Micro、Kaspersky などのセキュリティ ベンダーが提供するマルウェア対策ソフトウェアを利用できます。これにより、悪意のあるファイルやアドウェアなどの脅威から仮想マシンを保護できます。 パートナー ソリューションに関する記事については、後述の「詳細情報:」を参照してください。
 
 Azure Cloud Services および 仮想マシン に対する Microsoft マルウェア対策は、ウイルス、スパイウェアなどの悪意のあるソフトウェアの特定や駆除に役立つリアルタイムの保護機能です。  Microsoft マルウェア対策は、既知の悪意あるまたは望ましくないソフトウェアが Azure システム上に自動でインストールまたは実行されそうになった場合に、構成可能なアラートを提供します。
 
@@ -73,10 +78,11 @@ Microsoft マルウェア対策をデプロイして有効にすると、次の�
 * [Azure Virtual Machines へのマルウェア対策ソリューションのデプロイ](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
 * [Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](../virtual-machines/windows/classic/install-trend.md)
 * [Windows VM に Symantec Endpoint Protection をインストールし、構成する方法](../virtual-machines/windows/classic/install-symantec.md)
-* [New Antimalware Options for Protecting Azure Virtual Machines – McAfee Endpoint Protection (Azure Virtual Machines を保護するための新しいマルウェア対策オプション – McAfee Endpoint Protection)](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)
 * [Azure Marketplace のセキュリティ ソリューション](https://azure.microsoft.com/marketplace/?term=security)
 
-## <a name="hardware-security-module"></a>ハードウェア セキュリティ モジュール
+<a id="hardware-security-module" class="xliff"></a>
+
+## ハードウェア セキュリティ モジュール
 暗号化と認証は、キー自体が保護されない限り、セキュリティを向上させません。 大切な秘密情報とキーを Azure Key Vault に格納して、それらの管理とセキュリティ保護をシンプルにできます。 Key Vault では、オプションとして、キーを保管するためのハードウェア セキュリティ モジュール (HSM) が提供されています。HSM は FIPS 140-2 レベル 2 標準に準拠しています。 バックアップまたは [Transparent Data Encryption](https://msdn.microsoft.com/library/bb934049.aspx) 用の SQL Server 暗号化キーに加えて、アプリケーションのすべてのキーや秘密情報を Key Vault に格納できます。 保護されたこれらのアイテムに対するアクセス許可とアクセスは、[Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/) を通して管理されます。
 
 詳細情報:
@@ -85,7 +91,9 @@ Microsoft マルウェア対策をデプロイして有効にすると、次の�
 * [Azure Key Vault の概要](../key-vault/key-vault-get-started.md)
 * [Azure Key Vault ブログ](https://blogs.technet.microsoft.com/kv/)
 
-## <a name="virtual-machine-disk-encryption"></a>仮想マシン ディスクの暗号化
+<a id="virtual-machine-disk-encryption" class="xliff"></a>
+
+## 仮想マシン ディスクの暗号化
 Azure Disk Encryption は、Windows および Linux Azure 仮想マシン ディスクを暗号化できる新機能です。 Azure Disk Encryption では、Windows の業界標準である [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 機能と Linux の [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) 機能を使用して、OS およびデータ ディスクのボリュームの暗号化を提供します。
 
 ソリューションは Azure Key Vault と統合されています。これは、Key Vault サブスクリプションでディスク暗号化キーとシークレットを制御および管理し、Azure ストレージで保存中の仮想マシン ディスク内のすべてのデータを確実に暗号化する場合に役立ちます。
@@ -96,7 +104,9 @@ Azure Disk Encryption は、Windows および Linux Azure 仮想マシン ディ
 * [Linux および Windows 仮想マシン向け Azure Disk Encryption](https://blogs.msdn.microsoft.com/azuresecurity/2015/11/16/azure-disk-encryption-for-linux-and-windows-virtual-machines-public-preview-now-available/)
 * [仮想マシンの暗号化](../security-center/security-center-disk-encryption.md)
 
-## <a name="virtual-machine-backup"></a>仮想マシンのバックアップ
+<a id="virtual-machine-backup" class="xliff"></a>
+
+## 仮想マシンのバックアップ
 Azure Backup は、設備投資なしで、また最小限の運用コストでアプリケーション データを保護できる、スケーラブルなソリューションです。 アプリケーション エラーが発生するとデータが破損するおそれがあり、ヒューマン エラーが生じればアプリケーションにバグが生まれる危険があります。 Azure Backup により、Windows と Linux で実行されている仮想マシンが保護されます。
 
 詳細情報:
@@ -105,7 +115,9 @@ Azure Backup は、設備投資なしで、また最小限の運用コストで�
 * [Azure Backup のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/backup/)
 * [Azure Backup サービス - FAQ](../backup/backup-azure-backup-faq.md)
 
-## <a name="azure-site-recovery"></a>Azure Site Recovery
+<a id="azure-site-recovery" class="xliff"></a>
+
+## Azure Site Recovery
 組織の BCDR 戦略において重要となるのは、計画済みおよび計画外の停止が発生した場合に企業のワークロードとアプリを継続して実行する方法を見極めることです。 Azure Site Recovery は、ワークロードとアプリのレプリケーション、フェールオーバー、および復旧を調整するため、1 次拠点がダウンした場合でも 2 次拠点からワークロードとアプリを利用できます。
 
 Site Recovery:
@@ -122,7 +134,9 @@ Site Recovery:
 * [Azure Site Recovery のしくみ](../site-recovery/site-recovery-components.md)
 * [Azure Site Recovery によって保護されるワークロードの種類](../site-recovery/site-recovery-workload.md)
 
-## <a name="virtual-networking"></a>仮想ネットワーク
+<a id="virtual-networking" class="xliff"></a>
+
+## 仮想ネットワーク
 仮想マシンには、ネットワーク接続が必要です。 その要件に対応するため、Azure では、仮想マシンによる Azure Virtual Network への接続が必要となります。 Azure Virtual Network は、物理的な Azure ネットワーク ファブリック上に構築される論理的な構築物です。 各論理 Azure Virtual Network は、他のすべての Azure Virtual Network から分離されています。 この分離は、他の Microsoft Azure ユーザーによるデプロイ内のネットワーク トラフィックへのアクセスを防ぐ上で役立ちます。
 
 詳細情報:
@@ -131,7 +145,9 @@ Site Recovery:
 * [仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)
 * [エンタープライズ シナリオ向けのネットワーク機能とパートナーシップ](https://azure.microsoft.com/blog/networking-enterprise/)
 
-## <a name="security-policy-management-and-reporting"></a>セキュリティ ポリシーの管理とレポート
+<a id="security-policy-management-and-reporting" class="xliff"></a>
+
+## セキュリティ ポリシーの管理とレポート
 Azure Security Center は、脅威の回避、検出、対応に役立つサービスで、Azure リソースのセキュリティを高度に視覚化して制御できます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
 Azure Security Center は、仮想マシンのセキュリティの最適化と監視に役立つ次の機能を備えています。
@@ -145,7 +161,9 @@ Azure Security Center は、仮想マシンのセキュリティの最適化と�
 * [Azure セキュリティ センターについてよく寄せられる質問](../security-center/security-center-faq.md)
 * [Azure Security Center 計画および運用](../security-center/security-center-planning-and-operations-guide.md)
 
-## <a name="compliance"></a>コンプライアンス
+<a id="compliance" class="xliff"></a>
+
+## コンプライアンス
 Azure Virtual Machines は、FISMA、FedRAMP、HIPAA、PCI DSS レベル 1、その他の主要なコンプライアンス プログラムの認定を受けています。 この認定により、Azure アプリケーションをコンプライアンス要件に準拠させ、広範に及ぶ国内および国際的な規制の要件にビジネスを対応させることが容易になります。
 
 詳細情報:

@@ -1,5 +1,6 @@
 ---
-title: "Azure Active Directory プレビューでディレクトリからユーザーを削除する | Microsoft Docs"
+
+title: "Azure Active Directory でディレクトリからユーザーを削除する"
 description: "Azure Active Directory からユーザーとそのユーザーのすべての情報を削除する方法について説明します。"
 services: active-directory
 documentationcenter: 
@@ -12,19 +13,26 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2017
+ms.date: 06/27/2017
 ms.author: curtand;jeffsta
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d33da5ca6cf1768fc7ca6d9f2035be7edbb8ad36
-ms.lasthandoff: 11/17/2016
+ms.reviewer: jeffsta
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: f4d12e8a8e2710879c8748b120ab63179b3a4be2
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="delete-a-user-from-a-directory-in-azure-active-directory-preview"></a>Azure Active Directory プレビューでディレクトリからユーザーを削除する
-この記事では、Azure Active Directory (Azure AD) プレビューでディレクトリからユーザーを削除する方法について説明します。 [プレビューの機能については、こちらの記事をご覧ください。](active-directory-preview-explainer.md) 組織内の新しいユーザーの追加については、[Azure Active Directory プレビューに新しいユーザーを追加する](active-directory-users-create-azure-portal.md)に関する記事をご覧ください。
 
-## <a name="to-delete-a-user"></a>ユーザーの削除
+<a id="delete-a-user-from-a-directory-in-azure-active-directory" class="xliff"></a>
+
+# Azure Active Directory でディレクトリからユーザーを削除する
+この記事では、Azure Active Directory (Azure AD) でディレクトリからユーザーを削除する方法について説明します。 組織への新しいユーザーの追加については、[Azure Active Directory への新しいユーザーの追加](active-directory-users-create-azure-portal.md)に関する記事をご覧ください。
+
+<a id="to-delete-a-user" class="xliff"></a>
+
+## ユーザーの削除
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
 
@@ -37,10 +45,12 @@ ms.lasthandoff: 11/17/2016
 
     ![[削除] をクリックする](./media/active-directory-users-delete-user-azure-portal/create-users-delete-command.png)
 
-## <a name="next-steps"></a>次のステップ
-* [Azure Active Directory プレビューに新しいユーザーを追加する](active-directory-users-create-azure-portal.md)
-* [Azure Active Directory プレビューでのユーザー パスワードのリセット](active-directory-users-reset-password-azure-portal.md)
-* [Azure Active Directory プレビューでユーザーを管理者ロールに割り当てる](active-directory-users-assign-role-azure-portal.md)
-* [Azure Active Directory プレビューでユーザーのプロファイル情報を追加または変更する](active-directory-users-work-info-azure-portal.md)
-* [Azure Active Directory プレビューでディレクトリからユーザーを削除する](active-directory-users-profile-azure-portal.md)
+<a id="next-steps" class="xliff"></a>
+
+## 次のステップ
+* [Azure Active Directory に新しいユーザーを追加する](active-directory-users-create-azure-portal.md)
+* [Azure Active Directory でのユーザー パスワードのリセット](active-directory-users-reset-password-azure-portal.md)
+* [Azure Active Directory でユーザーを管理者ロールに割り当てる](active-directory-users-assign-role-azure-portal.md)
+* [Azure Active Directory でユーザーのプロファイル情報を追加または変更する](active-directory-users-work-info-azure-portal.md)
+* [Azure Active Directory でディレクトリからユーザーを削除する](active-directory-users-profile-azure-portal.md)
 
