@@ -23,12 +23,14 @@ ms.lasthandoff: 04/12/2017
 
 
 ---
-# <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Azure アカウントで Office 365 サブスクリプションにサインアップする
+<a id="sign-up-for-an-office-365-subscription-with-your-azure-account" class="xliff"></a>
+# Azure アカウントで Office 365 サブスクリプションにサインアップする
 Azure サブスクライバ―は、Azure アカウントを使用して、Office 365 サブスクリプションにサインアップできます。 Azure サブスクリプションがある組織に属している場合は、既存の Azure Active directory (Azure AD) にユーザーの Office 365 サブスクリプションを作成できます。 Azure Active Directory テナントでグローバル管理者または課金管理者ディレクトリ ロールのメンバーであるアカウントを使用して、Office 365 サブスクリプションにサインアップします。 詳細については、「[Azure AD でアカウントのアクセス許可を確認する](#RoleInAzureAD)」と「[Azure Active Directory の管理者ロールの割り当て](../active-directory/active-directory-assign-admin-roles.md)」を参照してください。
 
 既に Office 365 アカウントと Azure サブスクリプションの両方がある場合は、「[Office 365 テナントの Azure サブスクリプションへの関連付け](billing-add-office-365-tenant-to-azure-subscription.md)」を参照してください。
 
-## <a name="get-an-office-365-subscription-by-using-your-azure-account"></a>Azure アカウントを使用して Office 365 サブスクリプションを取得する
+<a id="get-an-office-365-subscription-by-using-your-azure-account" class="xliff"></a>
+## Azure アカウントを使用して Office 365 サブスクリプションを取得する
 
 1. [Office 365 の製品ページ](https://products.office.com/business)に移動し、プランを選択します。
 2. ページの右上隅にある **[サインイン]** をクリックします。
@@ -70,5 +72,6 @@ Azure サブスクライバ―は、Azure アカウントを使用して、Offic
 
     ![Azure Portal での課金管理者ディレクトリ ロールの表示のスクリーン ショット](./media/billing-use-existing-azure-account-office-365-subscription/billing-directoryrole-limited.png)
 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
+<a id="need-help-contact-support" class="xliff"></a>
+## お困りの際は、 サポートにお問い合せください。
 お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。 
