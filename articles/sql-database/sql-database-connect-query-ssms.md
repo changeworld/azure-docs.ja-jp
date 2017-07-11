@@ -18,18 +18,22 @@ ms.topic: hero-article
 ms.date: 05/26/2017
 ms.author: carlrab
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 05cbc0c80a4e622f537772c698e2711a7a85c00d
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 29883e37f1f506f33f44cf02dbf08221274e109d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
-# <a name="azure-sql-database-use-sql-server-management-studio-to-connect-and-query-data"></a>Azure SQL Database: SQL Server Management Studio を使って接続とデータの照会を行う
+<a id="azure-sql-database-use-sql-server-management-studio-to-connect-and-query-data" class="xliff"></a>
+
+# Azure SQL Database: SQL Server Management Studio を使って接続とデータの照会を行う
 
 [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) は、SQL Server から SQL Database まで、Microsoft Windows を対象としたあらゆる SQL インフラストラクチャを管理するための統合環境です。 このクイック スタートでは、SSMS を使って Azure SQL データベースに接続し Transact-SQL ステートメントを使ってデータベース内のデータを照会、挿入、更新、削除する方法について説明します。 
 
-## <a name="prerequisites"></a>前提条件
+<a id="prerequisites" class="xliff"></a>
+
+## 前提条件
 
 このクイック スタートでは、次のクイック スタートで作成されたリソースが出発点として使用されます。
 
@@ -39,7 +43,9 @@ ms.lasthandoff: 05/31/2017
 
 開始する前に、必ず最新バージョンの [SSMS](https://msdn.microsoft.com/library/mt238290.aspx) をインストールしておいてください。 
 
-## <a name="get-connection-information"></a>接続情報の取得
+<a id="get-connection-information" class="xliff"></a>
+
+## 接続情報の取得
 
 Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名、データベース名、ログイン情報が必要になります。
 
@@ -51,7 +57,9 @@ Azure SQL データベースに接続するために必要な接続情報を取�
 
 4. Azure SQL Database サーバーのログイン情報を忘れた場合は、[SQL データベース サーバー] ページに移動して、サーバー管理者名を表示し、必要に応じて、パスワードをリセットします。 
 
-## <a name="connect-to-your-database"></a>データベースに接続する
+<a id="connect-to-your-database" class="xliff"></a>
+
+## データベースに接続する
 
 SQL Server Management Studio を使用して、Azure SQL Database サーバーに対する接続を確立します。 
 
@@ -83,7 +91,9 @@ SQL Server Management Studio を使用して、Azure SQL Database サーバー�
 
 5. オブジェクト エクスプローラーで、**Databases** フォルダー、**mySampleDatabase** フォルダーの順に展開して、サンプル データベース内のオブジェクトを表示します。
 
-## <a name="query-data"></a>データのクエリを実行する
+<a id="query-data" class="xliff"></a>
+
+## データのクエリを実行する
 
 次のコードを使用して、カテゴリ別で上位 20 の製品を照会します。ここでは [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL ステートメントを使用します。
 
@@ -101,7 +111,9 @@ SQL Server Management Studio を使用して、Azure SQL Database サーバー�
 
     ![query](./media/sql-database-connect-query-ssms/query.png)
 
-## <a name="insert-data"></a>データを挿入する
+<a id="insert-data" class="xliff"></a>
+
+## データを挿入する
 
 次のコードを使用して、SalesLT.Product テーブルに新しい製品を挿入します。ここでは [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL ステートメントを使用します。
 
@@ -131,7 +143,9 @@ SQL Server Management Studio を使用して、Azure SQL Database サーバー�
 
     <img src="./media/sql-database-connect-query-ssms/insert.png" alt="insert" style="width: 780px;" />
 
-## <a name="update-data"></a>データの更新
+<a id="update-data" class="xliff"></a>
+
+## データの更新
 
 次のコードを使用して、先ほど追加した新しい製品を更新します。ここでは [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL ステートメントを使用します。
 
@@ -147,7 +161,9 @@ SQL Server Management Studio を使用して、Azure SQL Database サーバー�
 
     <img src="./media/sql-database-connect-query-ssms/update.png" alt="update" style="width: 780px;" />
 
-## <a name="delete-data"></a>データの削除
+<a id="delete-data" class="xliff"></a>
+
+## データの削除
 
 次のコードを使用して、先ほど追加した新しい製品を削除します。ここでは [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL ステートメントを使用します。
 
@@ -162,8 +178,11 @@ SQL Server Management Studio を使用して、Azure SQL Database サーバー�
 
     <img src="./media/sql-database-connect-query-ssms/delete.png" alt="delete" style="width: 780px;" />
 
-## <a name="next-steps"></a>次のステップ
+<a id="next-steps" class="xliff"></a>
 
+## 次のステップ
+
+- Transact-SQL を使ったサーバーとデータベースの作成および管理については、[Azure SQL Database のサーバーとデータベース](sql-database-servers-databases.md)に関するページを参照してください。
 - SSMS については、「[Use SQL Server Management Studio (SQL Server Management Studio の使用)](https://msdn.microsoft.com/library/ms174173.aspx)」を参照してください。
 - Visual Studio Code を使用して接続とデータの照会を行うには、[Visual Studio Code を使った接続とデータの照会](sql-database-connect-query-vscode.md)に関するページを参照してください。
 - .NET を使用して接続とデータの照会を行うには、[.NET を使った接続とデータの照会](sql-database-connect-query-dotnet.md)に関するページを参照してください。

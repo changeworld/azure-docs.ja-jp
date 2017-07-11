@@ -12,34 +12,45 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/23/2017
+ms.date: 06/21/2017
 ms.author: magoedte
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: ff8d911750a551f4a099fcba13841c98881104a9
+ms.sourcegitcommit: 61fd58063063d69e891d294e627ae40cb878d65b
+ms.openlocfilehash: b4d5ab66db64a50d1b87edd4bf445e49004e67b4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 06/22/2017
 
 
 ---
-# <a name="update-management-solution-in-oms"></a>OMS の更新管理ソリューション
-OMS の更新管理ソリューションを使用すると、Windows コンピューターと Linux コンピューターの更新プログラムを管理することができます。  すべてのエージェント コンピューターで利用可能な更新プログラムの状態をすばやく評価し、サーバーに必要な更新プログラムをインストールするプロセスを開始することができます。 
+<a id="update-management-solution-in-oms" class="xliff"></a>
 
-## <a name="solution-components"></a>ソリューションのコンポーネント
+# OMS の更新管理ソリューション
 
-OMS で管理されるコンピューターでは、評価と更新プログラムのデプロイに次のコンポーネントを使用します。 
+![更新管理のシンボル](./media/oms-solution-update-management/update-management-symbol.png)
+
+OMS の更新管理ソリューションを使用すると、Windows コンピューターと Linux コンピューターの更新プログラムを管理することができます。  すべてのエージェント コンピューターで利用可能な更新プログラムの状態をすばやく評価し、サーバーに必要な更新プログラムをインストールするプロセスを開始することができます。
+
+
+<a id="solution-overview" class="xliff"></a>
+
+## ソリューションの概要
+OMS で管理されるコンピューターでは、評価と更新プログラムのデプロイに次のコンポーネントを使用します。
 
 * Linux または Windows 用の OMS エージェント
-* PowerShell Desired State Configuration (DSC) (Linux の場合) 
-* Automation Hybrid Runbook Worker 
+* PowerShell Desired State Configuration (DSC) (Linux の場合)
+* Automation Hybrid Runbook Worker
 * Microsoft Update または Windows Server Update Services (Windows コンピューターの場合)
 
 下の図は、動作とデータ フローの概念図です。ワークスペースに接続されたすべての Windows Server および Linux コンピューターがこのソリューションによってどのように評価され、更新プログラムが適用されるかを示しています。    
 
-#### <a name="windows-server"></a>Windows Server
+<a id="windows-server" class="xliff"></a>
+
+#### Windows Server
 ![Windows Server の更新管理プロセスのフロー](media/oms-solution-update-management/update-mgmt-windows-updateworkflow.png)
 
-#### <a name="linux"></a>Linux
+<a id="linux" class="xliff"></a>
+
+#### Linux
 ![Linux の更新管理プロセスのフロー](media/oms-solution-update-management/update-mgmt-linux-updateworkflow.png)
 
 コンピューターが更新プログラムの対応状態を確認するためにスキャンを実行した後、OMS エージェントによって情報が OMS に一括して転送されます。 Windows コンピューターでは、対応スキャンは既定で 12 時間ごとに実行されます。  このスキャン スケジュールに加えて、Microsoft Monitoring Agent (MMA) の再起動後 15 分以内、更新プログラムのインストール前、および更新プログラムのインストール後に、更新プログラムの対応状態を確認するためのスキャンが開始されます。  Linux コンピューターでは、対応スキャンは既定で 3 時間ごとに実行されます。また、MMA エージェントが再起動された場合も 15 分以内に対応スキャンが開始されます。  
@@ -50,15 +61,17 @@ OMS で管理されるコンピューターでは、評価と更新プログラ�
 
 更新プログラムの展開で指定した日時に、対象のコンピューターでデプロイが並行して実行されます。  まず、スキャンが実行され、その更新プログラムが必須であることが確認されてからインストールされます。  WSUS クライアント コンピューターの場合、更新プログラムが WSUS で承認されていないと更新プログラムの展開は失敗するので、注意してください。  適用された更新プログラムの結果は OMS に転送され、そこで処理されてダッシュボードに要約が表示されます。また、イベントを検索することもできます。     
 
-## <a name="prerequisites"></a>前提条件
-* このソリューションでサポートされるのは、Windows Server 2008 以降に対する更新プログラムの評価と、Windows Server 2008 R2 以降に対する更新プログラムの展開の実行です。  Server Core と Nano Server のインストール オプションはサポートされていません。
+<a id="prerequisites" class="xliff"></a>
+
+## 前提条件
+* このソリューションでサポートされるのは、Windows Server 2008 以降に対する更新プログラムの評価と、Windows Server 2008 R2 SP1 以降に対する更新プログラムのデプロイです。  Server Core と Nano Server のインストール オプションはサポートされていません。
 
     > [!NOTE]
-    > Windows Server 2008 R2 に更新プログラムをデプロイするためには、.NET Framework 4.5 および WMF 5.0 以降が必要です。
+    > Windows Server 2008 R2 SP1 に更新プログラムをデプロイするためには、.NET Framework 4.5 および WMF 5.0 以降が必要です。
     >  
 * Windows クライアント オペレーティング システムはサポートされていません。  
 * Windows エージェントは、Windows Server Update Services (WSUS) サーバーと通信するか Microsoft Update にアクセスできるように構成する必要があります。  
-  
+
     > [!NOTE]
     > Windows エージェントは、System Center Configuration Manager で同時に管理することはできません。  
     >
@@ -66,19 +79,26 @@ OMS で管理されるコンピューターでは、評価と更新プログラ�
 * Red Hat Enterprise 6 (x86/x64) および 7 (x64)
 * SUSE Linux Enterprise Server 11 (x86/x64) および 12 (x64)
 * Ubuntu 12.04 LTS 以降 (x86/x64)  
+    > [!NOTE]  
+    > Ubuntu でメンテナンス期間外に更新プログラムが適用されないようにするには、無人アップグレード パッケージを再構成して自動更新を無効にします。 構成方法については、[Ubuntu サーバー ガイドの自動更新に関するトピック](https://help.ubuntu.com/lts/serverguide/automatic-updates.html)をご覧ください。
+
 * Linux エージェントは、更新リポジトリへのアクセスが必要です。  
 
     > [!NOTE]
     > このソリューションでは、OMS Agent for Linux が複数の OMS ワークスペースにレポートする構成はサポートされていません。  
-    > 
+    >
 
 OMS Agent for Linux をインストールして最新バージョンをダウンロードする方法の詳細については、[Operations Management Suite Agent for Linux](https://github.com/microsoft/oms-agent-for-linux) に関するページを参照してください。  Windows 用 OMS エージェントをインストールする方法の詳細については、[Windows 用 Operations Management Suite エージェント](../log-analytics/log-analytics-windows-agents.md)に関するページを参照してください。  
 
-## <a name="solution-components"></a>ソリューションのコンポーネント
-このソリューションは以下のリソースで構成されています。これらのリソースは、Automation アカウントに追加され、エージェントに直接接続されるか、Operations Manager に接続された管理グループに接続されます。 
+<a id="solution-components" class="xliff"></a>
 
-### <a name="management-packs"></a>管理パック
-System Center Operations Manager 管理グループが OMS ワークスペースに接続されている場合は、以下の管理パックが Operations Manager にインストールされます。  これらの管理パックは、このソリューションを追加した後、直接接続された Windows コンピューターにもインストールされます。 管理パックに伴って構成や管理が必要となるものはありません。 
+## ソリューションのコンポーネント
+このソリューションは以下のリソースで構成されています。これらのリソースは、Automation アカウントに追加され、エージェントに直接接続されるか、Operations Manager に接続された管理グループに接続されます。
+
+<a id="management-packs" class="xliff"></a>
+
+### 管理パック
+System Center Operations Manager 管理グループが OMS ワークスペースに接続されている場合は、以下の管理パックが Operations Manager にインストールされます。  これらの管理パックは、このソリューションを追加した後、直接接続された Windows コンピューターにもインストールされます。 管理パックに伴って構成や管理が必要となるものはありません。
 
 * Microsoft System Center Advisor 更新プログラム評価インテリジェンス パック (Microsoft.IntelligencePacks.UpdateAssessment)
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
@@ -86,13 +106,17 @@ System Center Operations Manager 管理グループが OMS ワークスペース
 
 ソリューション管理パックの更新方法の詳細については、「 [Operations Manager を Log Analytics に接続する](../log-analytics/log-analytics-om-agents.md)」を参照してください。
 
-### <a name="hybrid-worker-groups"></a>ハイブリッド worker グループ
+<a id="hybrid-worker-groups" class="xliff"></a>
+
+### ハイブリッド worker グループ
 このソリューションを有効にすると、ソリューションに含まれている Runbook をサポートするために、OMS ワークスペースに直接接続された Windows コンピューターが自動的に Hybrid Runbook Worker として構成されます。  ソリューションで管理されている各 Windows コンピューターは、<*ホスト名 FQDN_GUID*> という命名規則に従って、Automation アカウントの Hybrid Runbook Worker グループ ブレードに表示されます。  アカウントの Runbook でこれらのグループを対象として指定することはできません。指定すると失敗します。 これらのグループは、管理ソリューションをサポートすることのみを目的としています。   
 
 ただし、このソリューションと Hybrid Runbook Worker グループ メンバーシップの両方に同じアカウントを使用すれば、Windows コンピューターを Automation アカウントの Hybrid Runbook Worker に追加して Automation Runbook をサポートすることができます。  この機能は、Hybrid Runbook Worker のバージョン 7.2.12024.0 に追加されました。  
 
-## <a name="configuration"></a>構成
-OMS ワークスペースに更新管理ソリューションを追加し、エージェントがレポートしていることを確認するには、次の手順を実行します。 ワークスペースに既に接続されている Windows エージェントは、そのままの構成で自動的に追加されます。 
+<a id="configuration" class="xliff"></a>
+
+## 構成
+OMS ワークスペースに更新管理ソリューションを追加し、エージェントがレポートしていることを確認するには、次の手順を実行します。 ワークスペースに既に接続されている Windows エージェントは、そのままの構成で自動的に追加されます。
 
 このソリューションのデプロイには、次の方法を使用できます。
 
@@ -101,7 +125,9 @@ OMS ワークスペースに更新管理ソリューションを追加し、エ�
 
 既に Automation アカウントと OMS ワークスペースが同じリソース グループとリージョンにリンクされている場合は、[オートメーションと制御] を選択すると、構成を確認し、ソリューションをインストールするだけで、両方のサービスでソリューションが構成されます。  Azure Marketplace で更新管理ソリューションを選択した場合も、同じようにして構成されます。  サブスクリプションにどちらかのサービスがデプロイされている場合は、**[新しいソリューションの作成]** ブレードの手順に従って、事前に選択された他の推奨ソリューションをインストールする必要があるかどうかを確認します。  また、必要に応じて、[OMS ソリューションの追加](../log-analytics/log-analytics-add-solutions.md)に関するページで説明されているプロセスをソリューション ギャラリーで実行して、更新管理ソリューションを OMS ワークスペースに追加できます。  
 
-### <a name="confirm-oms-agents-and-operations-manager-management-group-connected-to-oms"></a>OMS エージェントと Operations Manager 管理グループが OMS に接続されていることを確認する
+<a id="confirm-oms-agents-and-operations-manager-management-group-connected-to-oms" class="xliff"></a>
+
+### OMS エージェントと Operations Manager 管理グループが OMS に接続されていることを確認する
 
 直接接続された OMS Agent for Linux と Windows 用 OMS エージェントが OMS と通信していることを確認するには、数分経ってから、次のログ検索を実行します。
 
@@ -114,14 +140,24 @@ Windows コンピューターでは、次の内容を調べて、OMS とエー�
 1.  コントロール パネルで [Microsoft Monitoring Agent] を開き、**[Azure Log Analytics (OMS)]** タブで、エージェントに "**Microsoft Monitoring Agent は Microsoft Operations Management Suite サービスに正常に接続しました**" というメッセージが表示されていることを確認します。   
 2.  Windows イベント ログを開き、**アプリケーションとサービス ログ\Operations Manager** に移動して、ソースのサービス コネクタでイベント ID 3000 および 5002 を検索します。  これらのイベントは、コンピューターが OMS ワークスペースに登録され、構成を受信していることを示しています。  
 
-エージェントが OMS サービスと通信できない場合、ファイアウォールまたはプロキシ サーバーを介してインターネットと通信するよう構成されていれば、「[Log Analytics のプロキシ設定とファイアウォール設定の構成](../log-analytics/log-analytics-proxy-firewall.md)」を参照して、ファイアウォールまたはプロキシ サーバーが正しく構成されていることを確認します。
-  
-新しく追加された Linux エージェントは、評価が完了した後、状態が "**更新済み**" と表示されます。  このプロセスには最大で 6 時間かかります。 
+エージェントが OMS サービスと通信できない場合、ファイアウォールまたはプロキシ サーバーを介してインターネットと通信するよう構成されているのであれば、[Windows エージェントのネットワーク構成](../log-analytics/log-analytics-windows-agents.md#network)または [Linux エージェントのネットワーク構成](../log-analytics/log-analytics-agent-linux.md#network)に関するページを参照して、ファイアウォールまたはプロキシ サーバーが正しく構成されていることを確認します。
+
+> [!NOTE]
+> Linux システムがプロキシまたは OMS ゲートウェイと通信するよう構成されており、このソリューションをオンボードしている場合は、次のコマンドを実行し、ファイルに対する読み取り権限を omiuser グループに付与するよう、*proxy.conf* のアクセス許可を更新してください。  
+> `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf`  
+> `sudo chmod 644 /etc/opt/microsoft/omsagent/proxy.conf`
+
+
+新しく追加された Linux エージェントは、評価が完了した後、状態が "**更新済み**" と表示されます。  このプロセスには最大で 6 時間かかります。
 
 Operations Manager 管理グループが OMS と通信していることを確認する方法については、「[Operations Manager と OMS の統合を検証する](../log-analytics/log-analytics-om-agents.md#validate-operations-manager-integration-with-oms)」を参照してください。
 
-## <a name="data-collection"></a>データ収集
-### <a name="supported-agents"></a>サポートされているエージェント
+<a id="data-collection" class="xliff"></a>
+
+## データ収集
+<a id="supported-agents" class="xliff"></a>
+
+### サポートされているエージェント
 次の表は、このソリューションの接続先としてサポートされているソースとその説明です。
 
 | 接続されているソース | サポートの有無 | 説明 |
@@ -131,32 +167,42 @@ Operations Manager 管理グループが OMS と通信していることを確�
 | Operations Manager 管理グループ |はい |ソリューションは、接続された管理グループ内のエージェントからシステムの更新プログラムに関する情報を収集します。<br>Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 データは管理グループから OMS リポジトリに転送されます。 |
 | Azure ストレージ アカウント |なし |Azure Storage には、システムの更新プログラムに関する情報が含まれていません。 |
 
-### <a name="collection-frequency"></a>収集の頻度
-管理対象の各 Windows コンピューターでは、1 日 2 回スキャンが実行されます。 Windows API が 15 分ごとに呼び出され、最後の更新時間のクエリによって状態が変更されたかどうかが確認されます。更新されている場合は対応スキャンが開始されます。  管理対象の各 Linux コンピューターでは、3 時間ごとにスキャンが実行されます。 
+<a id="collection-frequency" class="xliff"></a>
+
+### 収集の頻度
+管理対象の各 Windows コンピューターでは、1 日 2 回スキャンが実行されます。 Windows API が 15 分ごとに呼び出され、最後の更新時間のクエリによって状態が変更されたかどうかが確認されます。更新されている場合は対応スキャンが開始されます。  管理対象の各 Linux コンピューターでは、3 時間ごとにスキャンが実行されます。
 
 ダッシュボードが管理対象コンピューターの更新されたデータを表示するのに、30 分～ 6 時間かかります。   
 
-## <a name="using-the-solution"></a>ソリューションの使用
+<a id="using-the-solution" class="xliff"></a>
+
+## ソリューションの使用
 OMS ワークスペースに更新管理ソリューションを追加すると、OMS のダッシュボードに **[Update Management (更新管理)]** タイルが追加されます。 このタイルには、ご利用の環境におけるコンピューターの数と更新プログラムの対応状態が数字とグラフで表示されます。<br><br>
 ![更新管理の概要タイル](media/oms-solution-update-management/update-management-summary-tile.png)  
 
 
-## <a name="viewing-update-assessments"></a>更新プログラムの評価の表示
-**[Update Management (更新管理)]** タイルをクリックすると、**[Update Management (更新管理)]** ダッシュボードが表示されます。<br><br> ![更新管理の概要ダッシュボード](./media/oms-solution-update-management/update-management-dashboard.png)<br> 
+<a id="viewing-update-assessments" class="xliff"></a>
+
+## 更新プログラムの評価の表示
+**[Update Management (更新管理)]** タイルをクリックすると、**[Update Management (更新管理)]** ダッシュボードが表示されます。<br><br> ![更新管理の概要ダッシュボード](./media/oms-solution-update-management/update-management-dashboard.png)<br>
 
 このダッシュボードには、更新状態の詳細な内訳が表示されます。更新状態は、オペレーティング システムの種類と更新プログラムの分類ごとに分けられています。更新プログラムの分類は、重要な更新プログラム、セキュリティ更新プログラム、その他 (定義更新など) です。 **[Update Deployments (更新プログラムの展開)]** タイルをクリックすると、[Update Deployments (更新プログラムの展開)] ページが表示されます。このページで、スケジュール、現在実行されているデプロイ、完了したデプロイを表示したり、新しいデプロイのスケジュールを設定したりすることができます。  
 
 特定のタイルをクリックすると、すべてのレコードを返すログ検索が実行されます。また、カテゴリと定義済みの条件を指定してクエリを実行し、**[一般的な更新クエリ]** 列に表示された一覧から任意のレコード 1 つを選択することもできます。    
 
-## <a name="installing-updates"></a>更新プログラムのインストール
-ご利用のワークスペースにある Linux コンピューターと Windows コンピューターのすべてで更新プログラムが評価されたら、"*更新プログラムの展開*" を作成して、必要な更新プログラムがインストールされるようにすることができます。  "更新プログラムの展開" とは、1 台以上のコンピューターに対して、必要な更新プログラムをスケジュールに従ってインストールすることです。  デプロイの範囲に含めるコンピューターまたはコンピューター グループと、デプロイの日時を指定します。  コンピューター グループの詳細については、[Log Analytics のコンピューター グループ](../log-analytics/log-analytics-computer-groups.md)に関するページを参照してください。  更新プログラムの展開にコンピューター グループを含めると、スケジュールの作成時にグループ メンバーシップが 1 回だけ評価されます。  その後で加えられたグループへの変更は反映されません。  この問題を回避するには、スケジュールされた更新プログラムの展開を削除して、もう一度作成します。 
+<a id="installing-updates" class="xliff"></a>
+
+## 更新プログラムのインストール
+ご利用のワークスペースにある Linux コンピューターと Windows コンピューターのすべてで更新プログラムが評価されたら、"*更新プログラムの展開*" を作成して、必要な更新プログラムがインストールされるようにすることができます。  "更新プログラムの展開" とは、1 台以上のコンピューターに対して、必要な更新プログラムをスケジュールに従ってインストールすることです。  デプロイの範囲に含めるコンピューターまたはコンピューター グループと、デプロイの日時を指定します。  コンピューター グループの詳細については、[Log Analytics のコンピューター グループ](../log-analytics/log-analytics-computer-groups.md)に関するページを参照してください。  更新プログラムの展開にコンピューター グループを含めると、スケジュールの作成時にグループ メンバーシップが 1 回だけ評価されます。  その後で加えられたグループへの変更は反映されません。  この問題を回避するには、スケジュールされた更新プログラムの展開を削除して、もう一度作成します。
 
 > [!NOTE]
 > Azure Marketplace からデプロイされた Windows VM は、既定で Windows Update Service から自動更新を受信するように設定されています。  このソリューションまたは Windows VM をワークスペースに追加した後も、この動作は変更されません。  このソリューションで更新プログラムを能動的に管理しない場合は、既定の動作 (更新プログラムが自動的に適用される) が適用されます。  
 
 Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise Linux (RHEL) イメージから作成した仮想マシンは、Azure にデプロイされた [Red Hat Update Infrastructure (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) にアクセスするよう登録されています。  その他の Linux ディストリビューションは、サポートされている方式に従ったディストリビューション オンライン ファイル リポジトリから更新する必要があります。  
 
-### <a name="viewing-update-deployments"></a>更新プログラムの展開の表示
+<a id="viewing-update-deployments" class="xliff"></a>
+
+### 更新プログラムの展開の表示
 **[Update Deployment (更新プログラムの展開)]** タイルをクリックすると、既存の更新プログラムの展開の一覧が表示されます。  これらは状態別 (**スケジュール**、**実行中**、**Completed (完了)**) にグループ化されています。<br><br> ![更新プログラムの展開スケジュールのページ](./media/oms-solution-update-management/update-updatedeployment-schedule-page.png)<br>  
 
 各更新プログラムの展開に表示されるプロパティについては、次の表で説明します。
@@ -179,10 +225,12 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 | Linux コンピューター |更新プログラムの展開に含まれる Linux コンピューターの数を状態別に表示します。  状態をクリックするとログ検索が実行され、更新プログラムの展開でその状態の更新レコードがすべて返されます。 |
 | コンピューターのインストール状態 |更新プログラムの展開に含まれるコンピューターと、インストールに成功した更新プログラムの割合を示します。 エントリの 1 つをクリックするとログ検索が実行され、適用していない緊急更新プログラムがすべて返されます。 |
 | **更新ビュー** | |
-| Windows の更新プログラム |更新プログラムの展開に含まれる Windows の更新プログラムと各更新プログラムのインストール状態が一覧表示されます。  いずれかの更新プログラムを選択すると、その更新プログラムに関するすべての更新レコードを返すログ検索が実行されます。状態をクリックすると、デプロイのすべての更新レコードを返すログ検索が実行されます。 | 
-| Linux の更新プログラム |更新プログラムの展開に含まれる Linux の更新プログラムと各更新プログラムのインストール状態が一覧表示されます。  いずれかの更新プログラムを選択すると、その更新プログラムに関するすべての更新レコードを返すログ検索が実行されます。状態をクリックすると、デプロイのすべての更新レコードを返すログ検索が実行されます。 | 
+| Windows の更新プログラム |更新プログラムの展開に含まれる Windows の更新プログラムと各更新プログラムのインストール状態が一覧表示されます。  いずれかの更新プログラムを選択すると、その更新プログラムに関するすべての更新レコードを返すログ検索が実行されます。状態をクリックすると、デプロイのすべての更新レコードを返すログ検索が実行されます。 |
+| Linux の更新プログラム |更新プログラムの展開に含まれる Linux の更新プログラムと各更新プログラムのインストール状態が一覧表示されます。  いずれかの更新プログラムを選択すると、その更新プログラムに関するすべての更新レコードを返すログ検索が実行されます。状態をクリックすると、デプロイのすべての更新レコードを返すログ検索が実行されます。 |
 
-### <a name="creating-an-update-deployment"></a>更新プログラムの展開の作成
+<a id="creating-an-update-deployment" class="xliff"></a>
+
+### 更新プログラムの展開の作成
 新しい更新プログラムの展開を作成するには、画面上部にある **[追加]** ボタンをクリックして **[New Update Deployment (新しい更新プログラムの展開)]** ページを開きます。  次の表にあるプロパティの値を指定する必要があります。
 
 | プロパティ | Description |
@@ -196,15 +244,21 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 
 <br><br> ![[New Update Deployment (新しい更新プログラムの展開)] ページ](./media/oms-solution-update-management/update-newupdaterun-page.png)
 
-### <a name="time-range"></a>時間範囲
-既定では、更新管理ソリューションの分析は、過去 1 日間に生成された接続されているすべての管理グループから収集されたデータが対象となります。 
+<a id="time-range" class="xliff"></a>
+
+### 時間範囲
+既定では、更新管理ソリューションの分析は、過去 1 日間に生成された接続されているすべての管理グループから収集されたデータが対象となります。
 
 データの時間範囲を変更するには、ダッシュボードの上部にある **[Data based on (データの時間範囲)]** を選択します。 過去 7 日間、過去 1 日間、または過去 6 時間以内に作成または更新されたレコードを選択できます。 **[Custom]** (カスタム) を選択して、独自の日付範囲を指定することもできます。
 
-## <a name="log-analytics-records"></a>Log Analytics のレコード
+<a id="log-analytics-records" class="xliff"></a>
+
+## Log Analytics のレコード
 更新管理ソリューションにより 2 種類のレコードが OMS リポジトリに作成されます。
 
-### <a name="update-records"></a>Update レコード
+<a id="update-records" class="xliff"></a>
+
+### Update レコード
 **Update** という種類のレコードは、各コンピューターでインストールされるか必要とされる更新プログラムごとに作成されます。 Update レコードには、次の表に示したプロパティがあります。
 
 | プロパティ | 説明 |
@@ -233,11 +287,11 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 | UpdateID |更新プログラムを一意に識別する GUID。 |
 | UpdateState |このコンピューターに更新プログラムがインストールされているかどうかを示します。<br>次のいずれかの値になります。<br>- Installed - 更新プログラムはこのコンピューターにインストールされています。<br>- Needed - 更新プログラムはインストールされていないため、このコンピューターに必要です。 |
 
-**Update** という種類のレコードを返すログ検索を実行する際に、**Updates** を選択すると、検索から返された最新情報が一連のタイルに集約されて表示されます。 **[インストールされていない更新プログラムと適用済みの更新プログラム]** タイルと **[必須およびオプションの更新プログラム]** タイルでエントリをクリックすると、ビューをその更新プログラムのセットに限定することができます。 **[リスト]** ビューまたは **[テーブル]** ビューを選択すると、個別のレコードが返されます。<br> 
+**Update** という種類のレコードを返すログ検索を実行する際に、**Updates** を選択すると、検索から返された最新情報が一連のタイルに集約されて表示されます。 **[インストールされていない更新プログラムと適用済みの更新プログラム]** タイルと **[必須およびオプションの更新プログラム]** タイルでエントリをクリックすると、ビューをその更新プログラムのセットに限定することができます。 **[リスト]** ビューまたは **[テーブル]** ビューを選択すると、個別のレコードが返されます。<br>
 
 ![ログ検索の更新ビュー (レコードの種類 Update)](./media/oms-solution-update-management/update-la-view-updates.png)  
 
-**[テーブル]** ビューでは、任意のレコードの **KBID** をクリックすると、ブラウザーが起動してそのサポート技術情報の記事が表示されます。 これにより、特定の更新プログラムの詳細をすぐに確認できます。<br> 
+**[テーブル]** ビューでは、任意のレコードの **KBID** をクリックすると、ブラウザーが起動してそのサポート技術情報の記事が表示されます。 これにより、特定の更新プログラムの詳細をすぐに確認できます。<br>
 
 ![ログ検索のテーブル ビュー (タイルのレコードの種類 Updates)](./media/oms-solution-update-management/update-la-view-table.png)
 
@@ -245,7 +299,9 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 
 ![ログ検索のテーブル ビュー (タイルのレコードの種類 Updates)](./media/oms-solution-update-management/update-la-view-list.png)
 
-### <a name="updatesummary-records"></a>UpdateSummary レコード
+<a id="updatesummary-records" class="xliff"></a>
+
+### UpdateSummary レコード
 **UpdateSummary** という種類のレコードは、Windows エージェント コンピューターごとに作成されます。 このレコードは、更新プログラムについてコンピューターがスキャンされるたびに更新されます。 **UpdateSummary** レコードには、次の表に示したプロパティがあります。
 
 | プロパティ | 説明 |
@@ -268,45 +324,52 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 | WindowsUpdateSetting |コンピューターで重要な更新プログラムをインストールする方法に関する設定。<br>次のいずれかの値になります。<br>- 無効<br>- Notify before installation (インストール前に通知)<br>- Scheduled installation (スケジュールに従ってインストール) |
 | WSUSServer |WSUS サーバーの URL (コンピューターがそれを使用するように構成されている場合)。 |
 
-## <a name="sample-log-searches"></a>サンプル ログ検索
-次の表は、このソリューションによって収集された更新レコードを探すログ検索の例です。 
+<a id="sample-log-searches" class="xliff"></a>
+
+## サンプル ログ検索
+次の表は、このソリューションによって収集された更新レコードを探すログ検索の例です。
 
 | クエリ | Description |
 | --- | --- |
-|更新プログラムが必要な Windows ベースのサーバー コンピューター |`Type:Update OSType!=Linux UpdateState=Needed Optional=false Approved!=false | measure count() by Computer` |
-|更新プログラムが必要な Linux サーバー | `Type:Update OSType=Linux UpdateState!="Not needed" | measure count() by Computer` |
-| 更新プログラムがインストールされていないすべてのコンピューター |`Type=Update UpdateState=Needed Optional=false | select Computer,Title,KBID,Classification,UpdateSeverity,PublishedDate` |
-| 特定のコンピューターにインストールされていない更新プログラム (コンピューター名は実際の名前に置き換えてください) |`Type=Update UpdateState=Needed Optional=false Computer="COMPUTER01.contoso.com" | select Computer,Title,KBID,Product,UpdateSeverity,PublishedDate` |
-| All computers with missing critical or security updates (緊急更新プログラムまたはセキュリティ更新プログラムがインストールされていないすべてのコンピューター) |`Type=Update UpdateState=Needed Optional=false (Classification="Security Updates" OR Classification="Critical Updates"`) |
-| Critical or security updates needed by machines where updates are manually applied (更新プログラムが手動で適用されるコンピューターに必要な、緊急更新プログラムまたはセキュリティ更新プログラム) |`Type=Update UpdateState=Needed Optional=false (Classification="Security Updates" OR Classification="Critical Updates") Computer IN {Type=UpdateSummary WindowsUpdateSetting=Manual | Distinct Computer} | Distinct KBID` |
-| Error events for machines that have missing critical or security required updates (必要とされている緊急更新プログラムまたはセキュリティ更新プログラムがインストールされていないコンピューターのエラー イベント) |`Type=Event EventLevelName=error Computer IN {Type=Update (Classification="Security Updates" OR Classification="Critical Updates") UpdateState=Needed Optional=false | Distinct Computer}` |
-| 更新プログラムのロールアップがインストールされていないすべてのコンピューター |`Type=Update Optional=false Classification="Update Rollups" UpdateState=Needed| select Computer,Title,KBID,Classification,UpdateSeverity,PublishedDate` |
-| 全コンピューターのインストールされていない個別の更新プログラム |`Type=Update UpdateState=Needed Optional=false | Distinct Title` |
-| 更新実行に失敗した更新プログラムがある Windows ベースのサーバー コンピューター | `Type:UpdateRunProgress InstallationStatus=failed | measure count() by Computer, Title, UpdateRunName` |
-| 更新実行に失敗した更新プログラムがある Linux サーバー |`Type:UpdateRunProgress InstallationStatus=failed | measure count() by Computer, Product, UpdateRunName` |
-| WSUS コンピューター メンバーシップ |`Type=UpdateSummary | measure count() by WSUSServer` |
-| 自動更新の構成 |`Type=UpdateSummary | measure count() by WindowsUpdateSetting` |
-| 自動更新が無効にされたコンピューター |`Type=UpdateSummary WindowsUpdateSetting=Manual` |
-| List of all the Linux machines which have a package update available (パッケージ更新プログラムが使用可能なすべての Linux マシンの一覧) |`Type=Update and OSType=Linux and UpdateState!="Not needed" | measure count() by Computer` |
-| List of all the Linux machines which have a package update available which addresses Critical or Security vulnerability (重大な脆弱性またはセキュリティの脆弱性に対処するパッケージ更新プログラムが使用可能なすべての Linux マシンの一覧) |`Type=Update and OSType=Linux and UpdateState!="Not needed" and (Classification="Critical Updates" OR Classification="Security Updates") | measure count() by Computer` |
-| List of all packages that have an update available (更新プログラムが使用可能なすべてのパッケージの一覧) |Update and OSType=Linux and UpdateState!="Not needed" |
-| List of all packages that have an update available which addresses Critical or Security vulnerability (重大な脆弱性またはセキュリティの脆弱性に対処する更新プログラムが使用可能なすべてのパッケージの一覧) |`Type=Update  and OSType=Linux and UpdateState!="Not needed" and (Classification="Critical Updates" OR Classification="Security Updates")` |
-| コンピューターに変更を加えた更新プログラムの展開の一覧 |`Type:UpdateRunProgress | measure Count() by UpdateRunName` |
-|この更新実行で更新されたコンピューター (更新プログラムの展開名は実際の名前に置き換えてください) |`Type:UpdateRunProgress UpdateRunName="DeploymentName" | measure Count() by Computer` |
-| List of all the “Ubuntu” machines with any update available (任意の更新プログラムが使用可能なすべての "Ubuntu" マシンの一覧) |`Type=Update and OSType=Linux and OSName = Ubuntu &| measure count() by Computer` |
+| Type:Update OSType!=Linux UpdateState=Needed Optional=false Approved!=false &#124; measure count() by Computer |更新プログラムが必要な Windows ベースのサーバー コンピューター |
+| Type:Update OSType=Linux UpdateState!="Not needed" &#124; measure count() by Computer |更新プログラムが必要な Linux サーバー | 
+| Type=Update UpdateState=Needed Optional=false &#124; select Computer,Title,KBID,Classification,UpdateSeverity,PublishedDate |更新プログラムがインストールされていないすべてのコンピューター |
+| Type=Update UpdateState=Needed Optional=false Computer="COMPUTER01.contoso.com" &#124; select Computer,Title,KBID,Product,UpdateSeverity,PublishedDate |特定のコンピューターにインストールされていない更新プログラム (コンピューター名は実際の名前に置き換えてください)|
+| Type=Update UpdateState=Needed Optional=false (Classification="Security Updates" OR Classification="Critical Updates") |All computers with missing critical or security updates (緊急更新プログラムまたはセキュリティ更新プログラムがインストールされていないすべてのコンピューター) | 
+| Type=Update UpdateState=Needed Optional=false (Classification="Security Updates" OR Classification="Critical Updates") Computer IN {Type=UpdateSummary WindowsUpdateSetting=Manual &#124; Distinct Computer} &#124; Distinct KBID |Critical or security updates needed by machines where updates are manually applied (更新プログラムが手動で適用されるコンピューターに必要な、緊急更新プログラムまたはセキュリティ更新プログラム) |
+| Type=Event EventLevelName=error Computer IN {Type=Update (Classification="Security Updates" OR Classification="Critical Updates") UpdateState=Needed Optional=false &#124; Distinct Computer} |Error events for machines that have missing critical or security required updates (必要とされている緊急更新プログラムまたはセキュリティ更新プログラムがインストールされていないコンピューターのエラー イベント) |
+| Type=Update Optional=false Classification="Update Rollups" UpdateState=Needed &#124; select Computer,Title,KBID,Classification,UpdateSeverity,PublishedDate |更新プログラムのロールアップがインストールされていないすべてのコンピューター | 
+| Type=Update UpdateState=Needed Optional=false &#124; Distinct Title |全コンピューターのインストールされていない個別の更新プログラム | 
+| Type:UpdateRunProgress InstallationStatus=failed &#124; measure count() by Computer, Title, UpdateRunName |更新実行に失敗した更新プログラムがある Windows ベースのサーバー コンピューター | 
+| Type:UpdateRunProgress InstallationStatus=failed &#124; measure count() by Computer, Product, UpdateRunName |更新実行に失敗した更新プログラムがある Linux サーバー | 
+| Type=UpdateSummary &#124; measure count() by WSUSServer |WSUS コンピューター メンバーシップ | 
+| Type=UpdateSummary &#124; measure count() by WindowsUpdateSetting |自動更新の構成 | 
+| Type=UpdateSummary WindowsUpdateSetting=Manual |自動更新が無効にされたコンピューター | 
+| Type=Update and OSType=Linux and UpdateState!="Not needed" &#124; measure count() by Computer |List of all the Linux machines which have a package update available (パッケージ更新プログラムが使用可能なすべての Linux マシンの一覧) | 
+| Type=Update and OSType=Linux and UpdateState!="Not needed" and (Classification="Critical Updates" OR Classification="Security Updates") &#124; measure count() by Computer |List of all the Linux machines which have a package update available which addresses Critical or Security vulnerability (重大な脆弱性またはセキュリティの脆弱性に対処するパッケージ更新プログラムが使用可能なすべての Linux マシンの一覧) | 
+| Update and OSType=Linux and UpdateState!="Not needed" |List of all packages that have an update available (更新プログラムが使用可能なすべてのパッケージの一覧) | 
+| Type=Update  and OSType=Linux and UpdateState!="Not needed" and (Classification="Critical Updates" OR Classification="Security Updates") |List of all packages that have an update available which addresses Critical or Security vulnerability (重大な脆弱性またはセキュリティの脆弱性に対処する更新プログラムが使用可能なすべてのパッケージの一覧) | 
+| Type:UpdateRunProgress &#124; measure Count() by UpdateRunName |コンピューターに変更を加えた更新プログラムの展開の一覧 | 
+| Type:UpdateRunProgress UpdateRunName="DeploymentName" &#124; measure Count() by Computer |この更新実行で更新されたコンピューター (更新プログラムの展開名は実際の名前に置き換えてください) | 
+| Type=Update and OSType=Linux and OSName = Ubuntu &#124; measure count() by Computer |List of all the “Ubuntu” machines with any update available (任意の更新プログラムが使用可能なすべての "Ubuntu" マシンの一覧) | 
 
-## <a name="troubleshooting"></a>トラブルシューティング 
+<a id="troubleshooting" class="xliff"></a>
+
+## トラブルシューティング
 
 このセクションでは、更新管理ソリューションに関する問題のトラブルシューティングに役立つ情報について説明します。  
 
-### <a name="how-do-i-troubleshoot-update-deployments"></a>更新プログラムの展開のトラブルシューティングを行うにはどうすればよいですか。
+<a id="how-do-i-troubleshoot-update-deployments" class="xliff"></a>
+
+### 更新プログラムの展開のトラブルシューティングを行うにはどうすればよいですか。
 このソリューションをサポートしている OMS ワークスペースにリンクされた Automation アカウントの [ジョブ] ブレードで、スケジュールされた更新プログラムの展開に含まれた更新プログラムをデプロイする Runbook の結果を表示できます。  Runbook **Patch-MicrosoftOMSComputer** は、管理されたコンピューター 1 台を対象とする子 Runbook です。詳細ストリームを確認すると、そのデプロイに関する詳細情報を把握できます。  出力に、適用可能な必須の更新プログラム、ダウンロード状態、インストール状態、その他の詳細情報が表示されます。<br><br> ![更新プログラムの展開ジョブの状態](media/oms-solution-update-management/update-la-patchrunbook-outputstream.png)<br>
 
 詳細については、[Automation Runbook の出力とメッセージ](../automation/automation-runbook-output-and-messages.md)に関するページを参照してください。   
-  
-## <a name="next-steps"></a>次のステップ
+
+<a id="next-steps" class="xliff"></a>
+
+## 次のステップ
 * [Log Analytics](../log-analytics/log-analytics-log-searches.md) でログ検索を使用して、詳細な更新プログラムデータを確認します。
 * 管理対象のコンピューターで更新プログラムが準拠しているかどうかを示す[独自のダッシュボードを作成](../log-analytics/log-analytics-dashboards.md)します。
 * 緊急更新プログラムがコンピューターにインストールされていないと検出された場合またはコンピューターで自動更新が無効になっている場合、[アラートを作成](../log-analytics/log-analytics-alerts.md)します。  
-
 

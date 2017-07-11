@@ -14,17 +14,19 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/10/2017
+ms.date: 07/03/2017
 ms.author: jgao
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: b60a0d1668e7c1010663ee2b11bff26b0bb70cf0
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 993cff63037017e37ff5b0787f50ba002df28d03
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/13/2017
+ms.lasthandoff: 07/04/2017
 
 
 ---
-# <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Data Lake Store を使用する
+<a id="use-data-lake-store-with-azure-hdinsight-clusters" class="xliff"></a>
+
+# Azure HDInsight クラスターで Data Lake Store を使用する
 
 HDInsight クラスターでデータを分析するために、[Azure Storage](../storage/storage-introduction.md) と [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) のいずれか、または両方にデータを格納できます。 両方のストレージ オプションにより、計算で使用される HDInsight クラスターを安全に削除できます。このとき、ユーザー データは失われません。
 
@@ -35,7 +37,9 @@ HDInsight クラスターでデータを分析するために、[Azure Storage](
 > 
 > 
 
-## <a name="availabilities-for-hdinsight-clusters"></a>HDInsight クラスターの利用可能性
+<a id="availabilities-for-hdinsight-clusters" class="xliff"></a>
+
+## HDInsight クラスターの利用可能性
 
 Hadoop は、既定のファイル システムの概念をサポートしています。 既定のファイル システムは、既定のスキームとオーソリティを意味します。 これは相対パスの解決に使用することもできます。 HDInsight クラスターの作成プロセス時に、Azure Storage 内の BLOB コンテナーを既定のファイル システムとして指定できます。また、HDInsight 3.5 以降のバージョンでは、Azure Storage と Azure Data Lake Store のいずれかを既定のファイル システムとして選択できます (いくつか例外があります)。 
 
@@ -59,7 +63,9 @@ HDInsight クラスターでは、2 つの方法で Data Lake Store を使用で
 Data Lake Store を追加ストレージ アカウントとして使っても、クラスターから Azure ストレージに対する読み取り/書き込みのパフォーマンスや機能には影響しません。
 
 
-## <a name="use-data-lake-store-as-default-storage"></a>Data Lake Store を既定のストレージとして使用する
+<a id="use-data-lake-store-as-default-storage" class="xliff"></a>
+
+## Data Lake Store を既定のストレージとして使用する
 
 Data Lake Store を既定のストレージとして HDInsight がデプロイされている場合、クラスター関連のファイルは次の場所の Data Lake Store に格納されます。
 
@@ -81,7 +87,9 @@ Data Lake Store を既定のストレージとして HDInsight がデプロイ�
 サービス プリンシパルの作成とアクセスの許可に関して詳しくは、「[Data Lake Store へのアクセスを構成する](#configure-data-lake-store-access)」をご覧ください。
 
 
-## <a name="use-data-lake-store-as-additional-storage"></a>Data Lake Store を追加のストレージとして使用する
+<a id="use-data-lake-store-as-additional-storage" class="xliff"></a>
+
+## Data Lake Store を追加のストレージとして使用する
 
 Data Lake Store を、クラスターの追加のストレージとして使用することもできます。 この場合、クラスターの既定のストレージとしては、Azure Storage Blob アカウントまたは Data Lake Store アカウントを使うことができます。 追加のストレージとしての Data Lake Store に格納されているデータに対して HDInsight ジョブを実行する場合は、ファイルへの完全修飾パスを使う必要があります。 For example:
 
@@ -96,15 +104,25 @@ URL に **cluster_root_path** がないことに注意してください。 こ�
 サービス プリンシパルの作成とアクセスの許可に関して詳しくは、「[Data Lake Store へのアクセスを構成する](#configure-data-lake-store-access)」をご覧ください。
 
 
-## <a name="use-more-than-one-data-lake-store-accounts"></a>複数の Data Lake Store アカウントを使用する
+<a id="use-more-than-one-data-lake-store-accounts" class="xliff"></a>
+
+## 複数の Data Lake Store アカウントを使用する
 
 Data Lake Store アカウントを追加ストレージとして使い、複数の Data Lake Store アカウントを追加するには、1 つ以上の Data Lake Store アカウント内のデータに HDInsight クラスターのアクセス許可を付与します。 「[Data Lake Store へのアクセスを構成する](#configure-data-lake-store-access)」をご覧ください。
 
-## <a name="configure-data-lake-store-access"></a>Data Lake Store へのアクセスを構成する
+<a id="configure-data-lake-store-access" class="xliff"></a>
+
+## Data Lake Store へのアクセスを構成する
 
 HDInsight クラスターから Data Lake Store へのアクセスを構成するには、Azure Active Directory (Azure AD) のサービス プリンシパルが必要です。 サービス プリンシパルを作成できるのは、Azure AD 管理者だけです。 サービス プリンシパルは証明書で作成する必要があります。 詳しくは、「[Configure Data Lake Store access](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md#configure-data-lake-store-access)」(Data Lake Store へのアクセスを構成する) および「[自己署名証明書を使用したサービス プリンシパルの作成](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate)」をご覧ください。
 
-## <a name="access-files-from-the-cluster"></a>クラスターからファイルにアクセスする
+> [!NOTE]
+> Azure Data Lake Store を HDInsight クラスターの追加ストレージとして使用する場合は、この記事で説明されているように、クラスターを作成するときにそうすることを強くお勧めします。 Azure Data Lake Store を既存の HDInsight クラスターに追加のストレージとして追加することは、複雑なプロセスであり、エラーも発生しやすくなります。
+>
+
+<a id="access-files-from-the-cluster" class="xliff"></a>
+
+## クラスターからファイルにアクセスする
 
 複数の方法で、HDInsight クラスターから Data Lake Store のファイルにアクセスできます。
 
@@ -124,7 +142,9 @@ HDInsight クラスターから Data Lake Store へのアクセスを構成す�
 
         /example/data/sample.log
 
-## <a name="create-hdinsight-clusters-with-access-to-data-lake-store"></a>Data Lake Store にアクセスできる HDInsight クラスターを作成する
+<a id="create-hdinsight-clusters-with-access-to-data-lake-store" class="xliff"></a>
+
+## Data Lake Store にアクセスできる HDInsight クラスターを作成する
 
 Data Lake Store にアクセスできる HDInsight クラスターを作成する方法の詳しい手順については、以下のリンクをご覧ください。
 
@@ -134,7 +154,9 @@ Data Lake Store にアクセスできる HDInsight クラスターを作成す�
 * [Azure テンプレートの使用](../data-lake-store/data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 
 
-## <a name="next-steps"></a>次のステップ
+<a id="next-steps" class="xliff"></a>
+
+## 次のステップ
 この記事では、HDInsight で HDFS と互換性のある Azure Data Lake Store を使う方法について説明しました。 これにより、収集したデータを長期にわたって格納できるスケーラブルなソリューションを構築できます。さらに HDInsight を使用すると、格納されている構造化データと非構造化データから有益な情報を得ることができます。
 
 詳細については、次を参照してください。
