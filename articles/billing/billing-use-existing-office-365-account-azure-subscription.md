@@ -23,12 +23,14 @@ ms.lasthandoff: 04/12/2017
 
 
 ---
-# <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>Office 365 アカウントを使用して Azure のサブスクリプションにサインアップする
+<a id="sign-up-for-an-azure-subscription-with-your-office-365-account" class="xliff"></a>
+# Office 365 アカウントを使用して Azure のサブスクリプションにサインアップする
 Office 365 サブスクリプションがある場合は、Office 365 アカウントを使用して、Azure サブスクリプションを作成します。 Office 365 のユーザー名とパスワードを使用すると、Azure サブスクリプションがなくても、[Azure ポータル](https://portal.azure.com/)にサインインできます。 ただし、仮想マシンを設定したり、他の Azure サービスを使用する場合は、アカウント用の Azure サブスクリプションを作成する必要があります。 Azure サービスを使用する必要がある組織に所属している場合、サブスクリプションを作成したあとで、組織内の他のユーザーをサブスクリプションに追加します。  
 
 既に Office 365 アカウントと Azure サブスクリプションの両方がある場合は、「[Office 365 テナントの Azure サブスクリプションへの関連付け](billing-add-office-365-tenant-to-azure-subscription.md)」を参照してください。
 
-## <a name="get-an-azure-subscription-by-using-your-office-365-account"></a>Office 365 アカウントを使用して Azure サブスクリプションにサインアップする
+<a id="get-an-azure-subscription-by-using-your-office-365-account" class="xliff"></a>
+## Office 365 アカウントを使用して Azure サブスクリプションにサインアップする
 
 Azure にサインアップするには、Azure 無料リンクを使用し、Office 365 のユーザー名とパスワードを使用して、Azure にサインアップします。 
 
@@ -58,5 +60,6 @@ Office 365 と Azure では、ユーザーとサブスクリプションの管�
 
 詳細については、「 [Azure サブスクリプションを Azure Active Directory に関連付ける方法](../active-directory/active-directory-how-subscriptions-associated-directory.md)」を参照してください。
 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
+<a id="need-help-contact-support" class="xliff"></a>
+## お困りの際は、 サポートにお問い合せください。
 お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。 
