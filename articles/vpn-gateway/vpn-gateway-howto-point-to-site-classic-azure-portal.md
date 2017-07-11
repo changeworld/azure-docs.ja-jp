@@ -13,17 +13,19 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/15/2017
+ms.date: 06/27/2017
 ms.author: cherylmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: b8e4bf060202c2700d8bf6cadedd13fc20783799
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: f048e344026b0fd930569c949b23a42c3c30fffe
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
-# <a name="configure-a-point-to-site-connection-to-a-vnet-using-the-azure-portal-classic"></a>Azure Portal を使用した VNet へのポイント対サイト接続の構成 (クラシック)
+<a id="configure-a-point-to-site-connection-to-a-vnet-using-the-azure-portal-classic" class="xliff"></a>
+
+# Azure Portal を使用した VNet へのポイント対サイト接続の構成 (クラシック)
 
 [!INCLUDE [deployment models](../../includes/vpn-gateway-classic-deployment-model-include.md)]
 
@@ -33,7 +35,6 @@ ms.lasthandoff: 06/17/2017
 > * [Azure ポータル](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
 > * [Azure Portal (クラシック)](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
->
 >
 
 ポイント対サイト (P2S) 構成では、個々のクライアント コンピューターから仮想ネットワークへのセキュリティで保護された接続を作成することができます。 ポイント対サイト接続は、自宅や会議室など、リモートの場所から VNet に接続する場合や、仮想ネットワークに接続する必要があるクライアントの数が少ない場合に便利です。 P2S VPN 接続は、クライアント コンピューターからネイティブ Windows VPN クライアントを使用して開始されます。 クライアントの接続には、認証のために証明書が使用されます。 
@@ -50,7 +51,9 @@ P2S 接続には、以下のものが必要です。
 * ルート証明書から生成され、接続する各クライアント コンピューターにインストールされたクライアント証明書。 この証明書はクライアントの認証に使用されます。
 * VPN クライアント構成パッケージが生成され、接続するすべてのクライアント コンピューターにインストールされていること。 このクライアント構成パッケージによって構成されるのは、既にオペレーティング システム上で動作し、VNet への接続に必要な情報を備えているネイティブ VPN クライアントです。
 
-### <a name="example-settings"></a>設定例
+<a id="example-settings" class="xliff"></a>
+
+### 設定例
 
 次の値を使用して、テスト環境を作成できます。また、この値を参考にしながら、この記事の例を確認していくこともできます。
 
@@ -130,7 +133,9 @@ P2S 接続には、以下のものが必要です。
 
 ## <a name="generatecerts"></a>セクション 2: 証明書の作成
 
-証明書は、ポイント対サイト VPN の VPN クライアントを認証するために、Azure によって使用されます。 そのため、ルート証明書の公開キー情報を Azure にアップロードします。 その後、その公開キーは "信頼された" と見なされます。 信頼されたルート証明書からクライアント証明書を生成し、それを各クライアント コンピューターの [証明書 - 現在のユーザー] の [個人] 証明書ストアにインストールする必要があります。 この証明書は、クライアントで VNet への接続を開始するときに、そのクライアントを認証するために使用されます。 証明書の生成とインストールの詳細については、[ポイント対サイトの証明書](vpn-gateway-certificates-point-to-site.md)に関するページを参照してください。
+証明書は、ポイント対サイト VPN の VPN クライアントを認証するために、Azure によって使用されます。 そのため、ルート証明書の公開キー情報を Azure にアップロードします。 その後、その公開キーは "信頼された" と見なされます。 信頼されたルート証明書からクライアント証明書を生成し、それを各クライアント コンピューターの [証明書 - 現在のユーザー] の [個人] 証明書ストアにインストールする必要があります。 この証明書は、クライアントで VNet への接続を開始するときに、そのクライアントを認証するために使用されます。 
+
+自己署名証明書を使用する場合は、特定のパラメーターを使って証明書を作成する必要があります。 自己署名証明書は、[PowerShell と Windows 10](vpn-gateway-certificates-point-to-site.md) を使った手順のほか、[MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) を使って作成することができます。 自己署名ルート証明書を扱うときや、自己署名ルート証明書からクライアント証明書を生成するときは、これらの説明に記載されている手順に従うことが大切です。 説明どおりに作成しないと、証明書が P2S 接続に適合せず、接続エラーが発生します。
 
 ### <a name="cer"></a>パート 1: ルート証明書に使用する公開キー (.cer) の取得
 
@@ -163,7 +168,9 @@ P2S 接続には、以下のものが必要です。
 
 バージョンがクライアントのアーキテクチャと一致すれば、各クライアント コンピューターで同じ VPN クライアント構成パッケージを使用できます。 サポートされているクライアント オペレーティング システムの一覧については、この記事の最後にある「[ポイント対サイト接続に関してよく寄せられる質問](#faq)」を参照してください。
 
-### <a name="part-1-generate-and-install-the-vpn-client-configuration-package"></a>パート 1: VPN クライアント構成パッケージの生成とインストール
+<a id="part-1-generate-and-install-the-vpn-client-configuration-package" class="xliff"></a>
+
+### パート 1: VPN クライアント構成パッケージの生成とインストール
 
 1. Azure Portal で、VNet の **[概要]** ブレードの **[VPN 接続]** にあるクライアントのグラフィックをクリックして、**[ポイント対サイト VPN 接続]** ブレードを開きます。
 2. **[ポイント対サイト VPN 接続]** ブレードの上部で、インストール先のクライアントのオペレーティング システムに対応するダウンロード パッケージをクリックします。
@@ -174,13 +181,17 @@ P2S 接続には、以下のものが必要です。
   ![VPN クライアント構成パッケージのダウンロード](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/dlclient.png)<br>
 3. パッケージが生成されたら、クライアント コンピューターにそれをダウンロードしてインストールします。 SmartScreen ポップアップが表示された場合は、**[詳細]**、**[実行]** の順にクリックしてください。 パッケージを保存して、他のクライアント コンピューターにインストールすることもできます。
 
-### <a name="part-2-install-the-client-certificate"></a>パート 2: クライアント証明書のインストール
+<a id="part-2-install-the-client-certificate" class="xliff"></a>
+
+### パート 2: クライアント証明書のインストール
 
 クライアント証明書の生成に使用したクライアント コンピューター以外から P2S 接続を作成する場合は、クライアント証明書をインストールする必要があります。 クライアント証明書をインストールするときに、クライアント証明書のエクスポート時に作成されたパスワードが必要になります。 通常は、証明書をダブルクリックするだけでインストールできます。 詳細については、「[エクスポートしたクライアント証明書のインストール](vpn-gateway-certificates-point-to-site.md#install)」を参照してください。
 
 ## <a name="connect"></a>セクション 5 - Azure への接続
 
-### <a name="connect-to-your-vnet"></a>VNet への接続
+<a id="connect-to-your-vnet" class="xliff"></a>
+
+### VNet への接続
 
 1. VNet に接続するには、クライアント コンピューターで [VPN 接続] に移動し、作成した VPN 接続を見つけます。 仮想ネットワークと同じ名前が付いています。 **[接続]**をクリックします。 証明書を使用することを示すポップアップ メッセージが表示される場合があります。 その場合、 **[続行]** をクリックして、昇格された特権を使用します。
 2. **接続**の状態ページで、**[接続]** をクリックして接続を開始します。 **[証明書の選択]** 画面が表示された場合は、表示されているクライアント証明書が接続に使用する証明書であることを確認します。 そうでない場合は、ドロップダウン矢印を使用して適切な証明書を選択し、 **[OK]**をクリックします。
@@ -196,7 +207,9 @@ P2S 接続には、以下のものが必要です。
 
 - エンタープライズ CA ソリューションを使用して発行した証明書を使用している場合に認証の問題が発生したときは、クライアント証明書の認証の順序を確認します。 認証の一覧の順序を確認するには、クライアント証明書をダブルクリックし、**[詳細]、[拡張キー使用法]** の順に選択します。 一覧の最初の項目として "クライアント認証" が表示されていることを確認します。 表示されていない場合は、一覧の最初の項目が "クライアント認証" であるユーザー テンプレートに基づいたクライアント証明書を発行する必要があります。 
 
-### <a name="verify-the-vpn-connection"></a>VPN 接続の確認
+<a id="verify-the-vpn-connection" class="xliff"></a>
+
+### VPN 接続の確認
 
 1. VPN 接続がアクティブであることを確認するには、管理者特権でのコマンド プロンプトを開いて、 *ipconfig/all*を実行します。
 2. 結果を表示します。 受信した IP アドレスが、VNet の作成時に指定したポイント対サイト接続アドレス範囲内のアドレスのいずれかであることに注意してください。 結果は、次のようになります。
@@ -225,11 +238,15 @@ P2S 接続には、以下のものが必要です。
 
 信頼されたルート証明書を Azure に追加したり、Azure から削除したりできます。 ルート証明書を削除すると、そのルートから証明書を生成したクライアントは認証が無効となり、接続できなくなります。 クライアントの認証と接続を正常に実行できるようにするには、Azure に信頼されている (Azure にアップロードされている) ルート証明書から生成した新しいクライアント証明書をインストールする必要があります。
 
-### <a name="to-add-a-trusted-root-certificate"></a>信頼されたルート証明書を追加するには
+<a id="to-add-a-trusted-root-certificate" class="xliff"></a>
+
+### 信頼されたルート証明書を追加するには
 
 信頼されたルート証明書 .cer ファイルを最大 20 個まで Azure に追加できます。 手順については、「[セクション 3: ルート証明書 .cer ファイルのアップロード](#upload)」を参照してください。
 
-### <a name="to-remove-a-trusted-root-certificate"></a>信頼されたルート証明書を削除するには
+<a id="to-remove-a-trusted-root-certificate" class="xliff"></a>
+
+### 信頼されたルート証明書を削除するには
 
 1. VNet のブレードの **[VPN 接続]** セクションで**クライアント**のグラフィックをクリックして、**[ポイント対サイト VPN 接続]** ブレードを開きます。
 
@@ -247,7 +264,9 @@ P2S 接続には、以下のものが必要です。
 
 一般的な方法としては、ルート証明書を使用してチームまたは組織レベルでアクセスを管理し、失効したクライアント証明書を使用して、個々のユーザーの細かいアクセス制御を構成します。
 
-### <a name="to-revoke-a-client-certificate"></a>クライアント証明書を失効させるには
+<a id="to-revoke-a-client-certificate" class="xliff"></a>
+
+### クライアント証明書を失効させるには
 
 失効リストに拇印を追加することで、クライアント証明書を失効させることができます。
 
@@ -262,6 +281,8 @@ P2S 接続には、以下のものが必要です。
 
 [!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-point-to-site-faq-include.md)]
 
-## <a name="next-steps"></a>次のステップ
+<a id="next-steps" class="xliff"></a>
+
+## 次のステップ
 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) に関するページを参照してください。 ネットワークと仮想マシンの詳細については、「[Azure と Linux の VM ネットワークの概要](../virtual-machines/linux/azure-vm-network-overview.md)」を参照してください。
 

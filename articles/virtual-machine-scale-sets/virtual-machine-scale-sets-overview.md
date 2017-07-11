@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure 仮想マシン スケール セットの概要 | Microsoft Docs"
 description: "Azure 仮想マシン スケール セットについて説明します"
 services: virtual-machine-scale-sets
@@ -13,18 +13,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/30/2017
+ms.date: 07/03/2017
 ms.author: guybo
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: aa27689f564aedf61174fecaae76b5bf60951482
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 8b2fbc230faf01797109114d6ebdffe5ec50e48b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 07/04/2017
 
 
 ---
-# <a name="what-are-virtual-machine-scale-sets-in-azure"></a>Azure の仮想マシン スケール セットとは
+<a id="what-are-virtual-machine-scale-sets-in-azure" class="xliff"></a>
+
+# Azure の仮想マシン スケール セットとは
 仮想マシン スケール セットは、同一の VM のセットをデプロイして管理するために使用できる Azure コンピューティング リソースです。 すべての VM が同じ構成になっており、VM を事前にプロビジョニングする必要がない、真の自動スケールをサポートするように設計されています。 そのため、ビッグ コンピューティング、ビッグ データ、コンテナー化されたワークロードを対象にした大規模サービスを簡単に構築できます。
 
 コンピューティング リソースをスケール アウトしたりスケール インしたりする必要のあるアプリケーションでは、複数の障害ドメインと更新ドメインに対してスケール操作が暗黙的にバランシングされます。 スケール セットの概要についてさらに確認したい場合は、[Azure ブログでの発表](https://azure.microsoft.com/blog/azure-virtual-machine-scale-sets-ga/)を参照してください。
@@ -34,16 +36,20 @@ ms.lasthandoff: 05/31/2017
 * [Mark Russinovich が語る Azure スケール セット](https://channel9.msdn.com/Blogs/Regular-IT-Guy/Mark-Russinovich-Talks-Azure-Scale-Sets/)  
 * [仮想マシン スケール セットを Guy Bowerman が解説](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman)
 
-## <a name="creating-and-managing-scale-sets"></a>スケール セットの作成と管理
+<a id="creating-and-managing-scale-sets" class="xliff"></a>
+
+## スケール セットの作成と管理
 [Azure Portal](https://portal.azure.com) でスケール セットを作成するには、**[新規]** を選択して、検索バーに「**スケール**」と入力します。 検索結果に、**仮想マシン スケール セット**が表示されます。 そこから、必要なフィールドを入力し、スケール セットをカスタマイズしてデプロイします。 また、ポータルには、CPU 使用率に基づいて基本的な自動スケール規則を設定するオプションも用意されています。
 
 スケール セットの定義とデプロイは、個々の Azure Resource Manager VM と同様に JSON テンプレートと [REST API](https://msdn.microsoft.com/library/mt589023.aspx) を使用して行えます。 そのため、Azure Resource Manager の標準的なデプロイ方法を利用することができます。 テンプレートの詳細については、「 [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」をご覧ください。
 
 仮想マシン スケール セットの一連のサンプル テンプレートは、[Azure クイックスタート テンプレートの GitHub リポジトリ](https://github.com/Azure/azure-quickstart-templates)から入手できます  (タイトルに **vmss** が付いているテンプレートを探してください)。
 
-これらのテンプレートの詳細ページには、ポータルのデプロイ機能にリンクしているボタンあります。 スケール セットをデプロイするには、ボタンをクリックし、ポータルで必要なすべてのパラメーターを指定します。 リソースで大文字や大文字と小文字の混在がサポートされているかどうかが不明な場合は、小文字と数字のパラメーター値を使用する方が安全です。 動画「[VM Scale Set Template Dissection (VM スケール セットのテンプレートの解説)](https://channel9.msdn.com/Blogs/Azure/VM-Scale-Set-Template-Dissection/player)」では、スケール セットのテンプレートについてやさしく解説されています。
+クイックスタートのサンプル テンプレートについては、各テンプレートの Readme にある "Azure へのデプロイ" ボタンが、ポータルのデプロイ機能にリンクされています。 スケール セットをデプロイするには、ボタンをクリックし、ポータルで必要なすべてのパラメーターを指定します。 
 
-## <a name="scaling-a-scale-set-out-and-in"></a>スケール セットのスケール アウトとスケール イン
+<a id="scaling-a-scale-set-out-and-in" class="xliff"></a>
+
+## スケール セットのスケール アウトとスケール イン
 Azure Portal でスケール セットの容量を変更するには、**[設定]** で **[スケーリング]** セクションをクリックします。 
 
 コマンド ラインでスケール セットの容量を変更するには、[Azure CLI](https://github.com/Azure/azure-cli) で **scale** コマンドを使用します。 たとえば、スケール セットの容量を VM 10 個に設定するには、次のコマンドを使用します。
@@ -64,7 +70,9 @@ Azure Resource Manager テンプレートを使用してスケール セット�
 
 容量を変更するために Azure Resource Manager テンプレートを再デプロイする場合は、**SKU** プロパティ パケットと更新された容量のみが含まれた、非常に小さいテンプレートを定義できます。 [こちら](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing)でサンプルをご覧ください。
 
-## <a name="autoscale"></a>Autoscale
+<a id="autoscale" class="xliff"></a>
+
+## Autoscale
 
 Azure Portal でスケール セットを作成する場合、オプションで自動スケール設定を構成できます。 これを構成すると、平均 CPU 使用率に基づいて VM の数を増減できます。 
 
@@ -83,19 +91,23 @@ $profile1 = New-AzureRmAutoscaleProfile -DefaultCapacity 2 -MaximumCapacity 10 -
 Add-AzureRmAutoscaleSetting -Location $location -Name "autosetting1" -ResourceGroup $rgname -TargetResourceId /subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/virtualMachineScaleSets/$vmssname -AutoscaleProfiles $profile1
 ```
 
- 「[Azure Monitor のサポートされるメトリック](../monitoring-and-diagnostics/monitoring-supported-metrics.md)」の「Microsoft.Compute/virtualMachineScaleSets」には、スケールのための有効なメトリックの一覧があります。 スケジュールに基づく自動スケールや、webhook を使用したアラート システムとの統合など、高度な自動スケールのオプションも用意されています。
+「[Azure Monitor のサポートされるメトリック](../monitoring-and-diagnostics/monitoring-supported-metrics.md)」の「Microsoft.Compute/virtualMachineScaleSets」には、スケールのための有効なメトリックの一覧があります。 スケジュールに基づく自動スケールや、webhook を使用したアラート システムとの統合など、高度な自動スケールのオプションも用意されています。
 
-## <a name="monitoring-your-scale-set"></a>スケール セットの監視
+<a id="monitoring-your-scale-set" class="xliff"></a>
+
+## スケール セットの監視
 [Azure Portal](https://portal.azure.com) には、スケール セットがそのプロパティと共に一覧表示されます。 Azure Portal では管理操作もサポートされており、 スケール セットとスケール セット内の個々の VM の両方に対して、管理操作を実行できます。 また、カスタマイズ可能なリソース使用量グラフも表示されます。 
 
 Azure リソースの基盤となっている JSON 定義を表示または編集する必要がある場合は、[Azure リソース エクスプローラー](https://resources.azure.com)を使用することもできます。 スケール セットは、Microsoft.Compute Azure リソース プロバイダーの下にあるリソースなので、 このサイトから次のリンクを展開すると表示できます。
 
 **subscriptions** > **自分のサブスクリプション** > **resourceGroups** > **providers** > **Microsoft.Compute** > **virtualMachineScaleSets** > **自分のスケール セット** > その他
 
-## <a name="scale-set-scenarios"></a>スケール セットのシナリオ
+<a id="scale-set-scenarios" class="xliff"></a>
+
+## スケール セットのシナリオ
 このセクションでは、標準的なスケール セットのシナリオをいくつか紹介します。 一部の高レベルの Azure サービス (Batch、Service Fabric、Container Service など) で、これらのシナリオが使用されます。
 
-* **RDP または SSH でスケール セット インスタンスに接続する**: スケール セットは仮想ネットワーク内に作成され、スケール セット内の個々の VM にはパブリック IP アドレスが割り当てられていません。 このポリシーによって、コンピューティング グリッド内のすべてのノードに個別にパブリック IP アドレスを割り当てる費用や管理オーバーヘッドを回避できます。 これらの VM には、ロード バランサーやスタンドアロンの仮想マシンなど、仮想ネットワーク内の他のリソースから接続できます。このようなリソースには、パブリック IP アドレスを割り当てることができます。
+* **RDP または SSH でスケール セット インスタンスに接続する**: スケール セットは仮想ネットワーク内に作成され、既定ではスケール セット内の個々の VM にパブリック IP アドレスが割り当てられていません。 このポリシーによって、コンピューティング グリッド内のすべてのノードに個別にパブリック IP アドレスを割り当てる費用や管理オーバーヘッドを回避できます。 スケール セット VM への直接外部接続がどうしても必要な場合は、新しい VM に自動的にパブリック IP アドレスを割り当てるようにスケール セットを構成することができます。 VM には、ロード バランサーやスタンドアロンの仮想マシンなど、パブリック IP アドレスを割り当てることができる、仮想ネットワーク内の他のリソースから接続することもできます。 
 * **NAT 規則を使用して VM に接続する**: パブリック IP アドレスを作成し、それをロード バランサーに割り当てて、受信 NAT プールを定義できます。 これらの操作を行うと、IP アドレス上のポートがスケール セット内の VM 上のポートにマッピングされます。 For example:
   
   | から | 発信元ポート | 変換先 | 宛先ポート |
@@ -122,13 +134,17 @@ Azure リソースの基盤となっている JSON 定義を表示または編�
   
    そのようなアプローチの[こちらの例](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos)では、[Azure Container Service](https://azure.microsoft.com/services/container-service/) によって、コンテナー オーケストレーターを使用するスケール セットに基づいてクラスターがデプロイされます。
 
-## <a name="scale-set-performance-and-scale-guidance"></a>スケール セットのパフォーマンスとスケールのガイダンス
+<a id="scale-set-performance-and-scale-guidance" class="xliff"></a>
+
+## スケール セットのパフォーマンスとスケールのガイダンス
 * スケール セットでは、最大 1,000 個の VM がサポートされます。 独自のカスタム VM イメージを作成してアップロードする場合は、上限が 100 個になります。 大規模なスケール セットを使用する際の考慮事項については、「[大規模な仮想マシン スケール セットの使用](virtual-machine-scale-sets-placement-groups.md)」をご覧ください。
 * スケール セットを使用するために Azure ストレージ アカウントを事前作成する必要はありません。 スケール セットでは Azure 管理ディスクがサポートされているため、ストレージ アカウントあたりのディスク数に関してパフォーマンスを懸念しなくて済みます。 詳細については、「[Azure VM スケール セットと管理ディスク](virtual-machine-scale-sets-managed-disks.md)」をご覧ください。
 * VM のプロビジョニング時間を短縮して予測できるものにし、I/O パフォーマンスを向上させるために、Azure Storage ではなく Azure Premium Storage を使用することを検討してください。
 * 作成できる VM の数は、デプロイ先のリージョンのコア クォータによって制限されます。 コンピューティング クォータの制限を緩和するには、現時点で Azure Cloud Services で使用するためのコアの上限が高い場合でも、カスタマー サポートへの連絡が必要である場合があります。 クォータを照会するには、Azure CLI コマンド `azure vm list-usage` を実行します。 または、PowerShell コマンド `Get-AzureRmVMUsage` を実行します。
 
-## <a name="frequently-asked-questions-for-scale-sets"></a>スケール セットに関してよく寄せられる質問
+<a id="frequently-asked-questions-for-scale-sets" class="xliff"></a>
+
+## スケール セットに関してよく寄せられる質問
 **Q.** スケール セットには何個の VM を設定できますか。
 
 **A.** スケール セットには、プラットフォーム イメージに基づいて 0 ～ 1,000 個の VM、またはカスタム イメージに基づいて 0 ～ 100 個の VM を含めることができます。 

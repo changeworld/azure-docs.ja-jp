@@ -13,46 +13,52 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/25/2017
+ms.date: 06/21/2017
 ms.author: mandia; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 95cf7ebd9528dc5b258c96d3f3d62a9ab850d93d
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 1e2dad92647630c8b9a4e7676eee9288c87daf44
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
-# <a name="connectors-list"></a>コネクタの一覧
+<a id="connectors-list" class="xliff"></a>
+
+# コネクタの一覧
 > [!TIP]
 > このトピックの「[A ～ Z の完全な一覧](#az)」には、Logic Apps で使用できるすべてのコネクタの一覧が示されています。 [コネクタの詳細情報](/connectors/)に関するページに、Swagger で定義されているトリガーとアクション、さらに各コネクタの制限が記載されています。
 
 コネクタは、ロジック アプリを作成するときに不可欠な構成要素です。 これらのコネクタを使用することで、オンプレミスやクラウドのアプリケーションを実際に拡張して、作成したデータや既にあるデータに対してさまざまな操作を実行できます。 次のカテゴリのコネクタを利用できます。 
 
-* **標準コネクタ**: ロジック アプリを使用する場合に、自動的に含まれ、使用できます。 例としては、Service Bus、DropBox、GoogleDrive、Power BI、Oracle Database、OneDrive などがあります。
+* **標準コネクタ**: ロジック アプリを使用する場合に、自動的に含まれ、使用できます。 例としては、Service Bus、Power BI、Oracle Database、OneDrive などがあります。
 
-* **統合アカウント コネクタ**: これらは、統合アカウントを購入した場合に使用できます。 これらのコネクタを使用すると、XML の変換と検証、AS2/X12/EDIFACT を使用した企業間メッセージの処理、フラット ファイルのエンコードとデコードを行うことができます。 BizTalk Server を利用しており、BizTalk ワークフローを Azure に拡張する場合は、これらのコネクタが適しています。  
+* **統合アカウント コネクタ**: 統合アカウントを購入した場合に使用できます。 これらのコネクタを使用すると、XML の変換と検証、AS2/X12/EDIFACT を使用した企業間メッセージの処理、フラット ファイルのエンコードとデコードを行うことができます。 BizTalk Server を利用しており、BizTalk ワークフローを Azure に拡張する場合は、これらのコネクタが適しています。  
 
     BizTalk Server には、ロジック アプリとの間で送受信を行う [Logic Apps アダプター](https://msdn.microsoft.com/library/mt787163.aspx)もあります。
 
-* **エンタープライズ コネクタ**: MQ および SAP が含まれます。 追加料金が発生します。 
+* **エンタープライズ コネクタ**: MQ および SAP が含まれます。 追加の料金で利用できます。 
 
 価格の詳細については、「[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)」と[料金モデル](../logic-apps/logic-apps-pricing.md)に関する記事を参照してください。 
 
-## <a name="popular-connectors"></a>人気のコネクタ
+<a id="popular-connectors" class="xliff"></a>
+
+## 人気のコネクタ
 数千ものアプリケーションと何百万もの実行で、次のコネクタを使用して、データや情報が正常に処理されています。 次の表に、非常に人気があり、ユーザーがよく利用しているコネクタを示します。
 
 | |  |  |  |
 | --- | --- | --- | --- |
 | [![API Icon][AzureBlobStorageicon]<br/>**Azure Blob<br/>Storage**][AzureBlobStoragedoc] | ストレージ アカウントを使用してタスクを自動化する場合は、このコネクタを検討してください。 CRUD (作成、読み取り、更新、削除) 操作をサポートしています。 | [![API アイコン][Azure-Functionsicon]<br/>**Azure Functions**][azure-functionsdoc] | C# または node.js のカスタム スニペットを実行する関数を作成し、ロジック アプリで使用できます。  |
-| [![API アイコン][Dynamics-365icon]<br/>**Dynamics 365<br/>CRM Online**][Dynamics-365doc] | これは、人気の高いコネクタの 1 つです。 潜在顧客に関連するワークフローの自動化に役立つトリガーやアクションなどが用意されています。 | [![API アイコン][Event-Hubs-icon]<br/>**Event Hubs**][event-hubs-doc] | Event Hub のイベントを使用および発行します。 たとえば、ロジック アプリから Event Hubs を使用して出力を取得し、リアルタイム分析プロバイダーに送信できます。 |
+| [![API アイコン][Dynamics-365icon]<br/>**Dynamics 365<br/>CRM Online**][Dynamics-365doc] | 人気の高いコネクタの 1 つです。 潜在顧客に関連するワークフローの自動化に役立つトリガーやアクションなどが用意されています。 | [![API アイコン][Event-Hubs-icon]<br/>**Event Hubs**][event-hubs-doc] | Event Hub のイベントを使用および発行します。 たとえば、ロジック アプリから Event Hubs を使用して出力を取得し、リアルタイム分析プロバイダーに送信できます。 |
 | [![API Icon][FTPicon]<br/>**FTP**][FTPdoc] | FTP サーバーにインターネットからアクセスできる場合は、ファイルやフォルダーを使用するワークフローを自動化できます。 <br/><br/>SFTP コネクタを使用すると、SFTP も利用できます。 | [![API Icon][HTTPicon]<br/>**HTTP**][httpdoc] | ロジック アプリを使用して、HTTP 経由で任意のエンドポイントと通信できます。 |
 | [![API Icon][Office-365-Outlookicon]<br/>**Office 365<br/>Outlook**][office365-outlookdoc] | 数多くのトリガーやアクションにより、ワークフロー内で Office 365 の電子メールやイベントを使用できます。 <br/><br/>このコネクタには、休暇申請や経費明細書などを承認するための*承認電子メール* アクションが用意されています。 <br/><br/>Office 365 ユーザーは、Office 365 ユーザー コネクタも使用できます。| [![API アイコン][HTTP-Requesticon]<br/>**要求 / 応答**][HTTP-Requestdoc] | このコネクタは、HTTPS URL を提供します。 ロジック アプリは、この URL への要求を受け取ると、起動します。 |
 | [![API Icon][Salesforceicon]<br/>**Salesforce**][salesforcedoc] | Salesforce アカウントで簡単にサインインして、オブジェクト (例: 潜在顧客) などにアクセスできます。 |  [![API Icon][Service-Busicon]<br/>**Service Bus**][Service-Busdoc] | ロジック アプリにおいて最も人気の高いコネクタです。非同期メッセージングの処理、キュー、サブスクリプション、およびトピックを使用した発行/サブスクライブを行うためのトリガーとアクションが用意されています。 |
 |  [![API アイコン][SharePointicon]<br/>**SharePoint<br/>Online**][SharePointdoc] | SharePoint を利用しており、自動化の恩恵を受けることができる場合は、このコネクタを検討することをお勧めします。 オンプレミスの SharePoint および SharePoint Online で使用できます。 | [![API Icon][SQL-Servericon]<br/>**SQL Server**][SQL-Serverdoc] | よく利用されているコネクタの 1 つです。オンプレミスの SQL Server および Azure SQL Database に接続できます。 | 
 | [![API Icon][Twittericon]<br/>**Twitter**][Twitterdoc] | Twitter アカウントで簡単にサインインし、新しいツイートが投稿されたときにワークフローを開始できます。 その後、それらのツイートを SQL データベースまたは SharePoint リストに保存することができます。 | | | 
 
-## <a name="integration-account-connectors"></a>統合アカウント コネクタ 
+<a id="integration-account-connectors" class="xliff"></a>
+
+## 統合アカウント コネクタ 
 
 Enterprise Integration Pack (EIP) には、BizTalk Server コミュニティでよく知られているコネクタが含まれています。 [統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)を購入すると、次のコネクタも利用できます。 
 
@@ -62,13 +68,15 @@ Enterprise Integration Pack (EIP) には、BizTalk Server コミュニティで�
 [![API アイコン][flatfileicon]<br/>**フラット ファイル</br>エンコード**][flatfiledoc] | [![API アイコン][flatfiledecodeicon]<br/>**フラット ファイル</br>デコード**][flatfiledecodedoc] | [![API アイコン][integrationaccounticon]<br/>**統合<br/>アカウント**][integrationaccountdoc] | [![API アイコン][xmltransformicon]<br/>**XML<br/>変換**][xmltransformdoc] |
 | [![API アイコン][x12icon]<br/>**X12</br>デコード**][x12decode] | [![API アイコン][x12icon]<br/>**X12</br>エンコード**][x12encode] | [![API Icon][xmlvalidateicon]<br/>**XML <br/>検証**][xmlvalidatedoc] | |
 
-## <a name="enterprise-connectors"></a>エンタープライズ コネクタ
+<a id="enterprise-connectors" class="xliff"></a>
+
+## エンタープライズ コネクタ
 
 ロジック アプリ内でエンタープライズ アプリケーションに接続します。
 
 |  |  |
 | --- | --- |
-|![API アイコン][MQicon]<br/>**MQ**|[![API アイコン][SAPicon]<br/>**SAP**][sapconnector]|
+|[![API アイコン][MQ アイコン]<br/>**MQ**][mqdoc]|[![API アイコン][SAPicon]<br/>**SAP**][sapconnector]|
 
 
 ## <a name="az"></a>A ～ Z の完全な一覧
@@ -82,12 +90,14 @@ Enterprise Integration Pack (EIP) には、BizTalk Server コミュニティで�
 
 | | |
 |---|---|
-|<a name="1"></a>10to8 Appointment Scheduling<br/><br/><a name="a"></a>Act!<br/>appFigures<br/>[AS2][as2doc]<br/>Asana<br/>Azure Active Directory<br/>Azure API Management<br/>Azure App Service<br/>Azure Automation<br/>[Azure Blob Storage][azureblobstoragedoc]<br/>Azure Data Lake<br/>Azure Cosmos DB<br/>[Azure Functions][azure-functionsdoc]<br/>[Azure Logic Apps][nested-logic-appdoc]<br/>AzureML<br/>Azure キュー<br/>Azure リソース マネージャー<br/>[Azure SQL Database][sql-serverdoc]<br/><br/><a name="b"></a>Basecamp 2<br/>Basecamp 3<br/>Benchmark Email<br/>Bing Search<br/>Bitbucket<br/>Bitly<br/>BizTalk Server<br/>Blogger<br/>Box<br/>Buffer<br/><br/><a name="c"></a>Campfire<br/>Capsule CRM<br/>Chatter<br/>Cognito Forms<br/>Cognitive Services Computer Vision API<br/>Cognitive Services Face API<br/>Cognitive Services LUIS<br/>Cognitive Services Text Analytics<br/>Common Data Service<br/>Control-Terminate<br/>[カスタム API/Web アプリ][api/web-appdoc]<br/><br/><a name="d"></a>データ操作<br/>[DB2][db2doc]<br/>Disqus<br/>DocuSign<br/>Do Until<br/>Dropbox<br/>[Dynamics 365 CRM Online][Dynamics-365doc]<br/>Dynamics 365 for Financials<br/>Dynamics 365 for Operations<br/>Dynamics NAV<br/><br/><a name="e"></a>Easy Redmine<br/>EDIFACT<br/>[Event Hubs][event-hubs-doc]<br/>Eventbrite<br/><br/><a name="f"></a>Facebook<br/>[ファイル システム][filesystemdoc]<br/>[フラット ファイル][flatfiledoc]<br/>FreshBooks<br/>Freshdesk<br/>[FTP][ftpdoc]<br/><br/><a name="g"></a>GitHub<br/>Gmail<br/>Google カレンダー<br/>Google コンタクト<br/>Google ドライブ<br/>Google スプレッドシート<br/>Google ToDo リスト<br/>GoToMeeting<br/>GoToTraining<br/>GoToWebinar<br/><br/><a name="h"></a>Harvest<br/>HelloSign<br/>HipChat<br/>[HTTP][httpdoc]<br/>[HTTP + Swagger][http-swaggerdoc]<br/>[HTTP Webhook][webhookdoc]<br/><br/><a name="i"></a>[Informix][informixdoc]<br/>Infusionsoft<br/>Inoreader<br/>Insightly<br/>Instagram<br/>Instapaper<br/>統合アカウント<br/>Intercom | <a name="j"></a>JIRA<br/><br/><a name="l"></a>LeanKit<br/>LiveChat<br/><br/><a name="m"></a>MailChimp<br/>Mandrill<br/>中<br/>Microsoft Translator<br/>Microsoft Teams<br/>MQ<br/>MSN 天気<br/>Muhimbi PDF<br/>MySQL<br/><br/><a name="n"></a>Nexmo<br/><br/><a name="o"></a>[Office 365 Outlook][office365-outlookdoc]<br/>Office 365 ユーザー<br/>Office 365 Video<br/>OneDrive<br/>OneDrive for Business<br/>OneNote (Business)<br/>[Oracle Database][oracle-db-doc]<br/>Outlook Customer<br/>Outlook タスク<br/>Outlook.com<br/><br/><a name="p"></a>PagerDuty<br/>Parserr<br/>Paylocity<br/>Pinterest<br/>Pipedrive<br/>Pivotal Tracker<br/>Planner<br/>PostgreSQL<br/>Power BI<br/>Project Online<br/><br/><a name="r"></a>Redmine<br/>[要求/応答][http-requestdoc]<br/>RSS<br/><br/><a name="s"></a>[Salesforce][salesforcedoc]<br/>[SAP アプリケーション サーバー][sapconnector]<br/>[SAP メッセージ サーバー][sapconnector]<br/>[スケジュール][recurrencedoc]<br/>Scope<br/>SendGrid<br/>[Service Bus][service-busdoc]<br/>SFTP<br/>[SharePoint Online][sharepointdoc]<br/>[SharePoint Server][sharepointdoc]<br/>Slack<br/>Smartsheet<br/>SMTP<br/>SparkPost<br/>[SQL Server][sql-serverdoc]<br/>Stripe<br/>SurveyMonkey<br/>Switch Case<br/><br/><a name="t"></a>Teradata<br/>Todoist<br/>Toodledo<br/>[XML 変換][xmltransformdoc]<br/>Trello<br/>Twilio<br/>[Twitter][twitterdoc]<br/>Typeform<br/><br/><a name="u"></a>UserVoice<br/><br/><a name="v"></a>変数<br/>Vimeo<br/>Visual Studio Team Services<br/><br/><a name="w"></a>WebMerge<br/>WordPress<br/>Wunderlist<br/><br/><a name="x"></a>[X12][x12doc]<br/>[XML 検証][xmlvalidatedoc]<br/><br/><a name="y"></a>Yammer<br/>YouTube<br/><br/><a name="z"></a>Zendesk |
+|<a name="1"></a>10to8 Appointment Scheduling<br/><br/><a name="a"></a>Act!<br/>Adobe Creative Cloud<br/>appFigures<br/>[AS2][as2doc]<br/>Asana<br/>Azure Active Directory (AD)<br/>Azure API Management<br/>Azure App Service<br/>Azure Application<br/>Azure Automation<br/>[Azure Blob Storage][azureblobstoragedoc]<br/>Azure Data Lake<br/>Azure DocumentDB (Cosmos DB)<br/>[Azure Functions][azure-functionsdoc]<br/>[Azure Logic Apps][nested-logic-appdoc]<br/>AzureML<br/>Azure キュー<br/>Azure リソース マネージャー<br/>[Azure SQL Database][sql-serverdoc]<br/><br/><a name="b"></a>Basecamp 2<br/>Basecamp 3<br/>Batch<br/>Benchmark Email<br/>Bing Search<br/>Bitbucket<br/>Bitly<br/>BizTalk Server<br/>Blogger<br/>Box<br/>Buffer<br/><br/><a name="c"></a>Calendly<br/>Campfire<br/>Capsule CRM<br/>Chatter<br/>Cognito Forms<br/>Cognitive Services Computer Vision API<br/>Cognitive Services Face API<br/>Cognitive Services LUIS<br/>Cognitive Services Text Analytics<br/>Common Data Service<br/>Content Conversion<br/>Control-Terminate<br/>[カスタム API/Web アプリ][api/web-appdoc]<br/><br/><a name="d"></a>データ操作<br/>[DB2][db2doc]<br/>Disqus<br/>DocuSign<br/>Do Until<br/>Dropbox<br/>[Dynamics 365 CRM Online][Dynamics-365doc]<br/>Dynamics 365 for Financials<br/>Dynamics 365 for Operations<br/>Dynamics NAV<br/><br/><a name="e"></a>Easy Redmine<br/>EDIFACT<br/>[Event Hubs][event-hubs-doc]<br/>Eventbrite<br/><br/><a name="f"></a>Facebook<br/>[ファイル システム][filesystemdoc]<br/>[フラット ファイル][flatfiledoc]<br/>FreshBooks<br/>Freshdesk<br/>FreshService<br/>[FTP][ftpdoc]<br/><br/><a name="g"></a>GitHub<br/>Gmail<br/>Google カレンダー<br/>Google コンタクト<br/>Google ドライブ<br/>Google スプレッドシート<br/>Google ToDo リスト<br/>GoToMeeting<br/>GoToTraining<br/>GoToWebinar<br/><br/><a name="h"></a>Harvest<br/>HelloSign<br/>HipChat<br/>[HTTP][httpdoc]<br/>[HTTP + Swagger][http-swaggerdoc]<br/>[HTTP Webhook][webhookdoc]<br/><br/><a name="i"></a>[Informix][informixdoc]<br/>Infusionsoft<br/>Inoreader<br/>Insightly<br/>Instagram<br/>Instapaper<br/>統合アカウント<br/>Intercom | <a name="j"></a>JotForm<br/>JIRA<br/><br/><a name="l"></a>LeanKit<br/>LiveChat<br/><br/><a name="m"></a>MailChimp<br/>Mandrill<br/>中<br/>Microsoft フォーム<br/>Microsoft Teams<br/>Microsoft Translator<br/>[MQ][mqdoc]<br/>MSN 天気<br/>Muhimbi PDF<br/>MySQL<br/><br/><a name="n"></a>Nexmo<br/><br/><a name="o"></a>[Office 365 Outlook][office365-outlookdoc]<br/>Office 365 ユーザー<br/>Office 365 Video<br/>OneDrive<br/>OneDrive for Business<br/>OneNote (Business)<br/>[Oracle Database][oracle-db-doc]<br/>Outlook Customer Manager<br/>Outlook タスク<br/>Outlook.com<br/><br/><a name="p"></a>PagerDuty<br/>Parserr<br/>Paylocity<br/>Pinterest<br/>Pipedrive<br/>Pivotal Tracker<br/>Planner<br/>PostgreSQL<br/>Power BI<br/>Project Online<br/><br/><a name="r"></a>Redmine<br/>[要求/応答][http-requestdoc]<br/>RSS<br/><br/><a name="s"></a>[Salesforce][salesforcedoc]<br/>[SAP アプリケーション サーバー][sapconnector]<br/>[SAP メッセージ サーバー][sapconnector]<br/>[スケジュール][recurrencedoc]<br/>Scope<br/>SendGrid<br/>メッセージをバッチに送信する<br/>[Service Bus][service-busdoc]<br/>SFTP<br/>[SharePoint Online][sharepointdoc]<br/>[SharePoint Server][sharepointdoc]<br/>Slack<br/>Smartsheet<br/>SMTP<br/>SparkPost<br/>[SQL Server][sql-serverdoc]<br/>Stripe<br/>SurveyMonkey<br/>Switch Case<br/><br/><a name="t"></a>Teamwork Projects<br/>Teradata<br/>Todoist<br/>Toodledo<br/>[XML 変換][xmltransformdoc]<br/>Trello<br/>Twilio<br/>[Twitter][twitterdoc]<br/>Typeform<br/><br/><a name="u"></a>UserVoice<br/><br/><a name="v"></a>変数<br/>Vimeo<br/>Visual Studio Team Services<br/><br/><a name="w"></a>WebMerge<br/>WordPress<br/>Wunderlist<br/><br/><a name="x"></a>[X12][x12doc]<br/>[XML 検証][xmlvalidatedoc]<br/><br/><a name="y"></a>Yammer<br/>YouTube<br/><br/><a name="z"></a>Zendesk |
 
 > [!TIP]
 > Azure アカウントにサインアップせずに Azure Logic Apps を体験するには、[Logic Apps の試用](https://tryappservice.azure.com/?appservice=logic)に関するページをご覧ください。 短時間有効な簡易版のロジック アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-## <a name="connectors-as-triggers-and-actions"></a>トリガーおよびアクションとしてのコネクタ
+<a id="connectors-as-triggers-and-actions" class="xliff"></a>
+
+## トリガーおよびアクションとしてのコネクタ
 
 **トリガー**は、ロジック アプリのインスタンスを起動または実行します。 一部のコネクタには、特定のイベントが発生したときにアプリに通知するトリガーが用意されています。 たとえば、FTP コネクタには、ファイルが更新されたときにロジック アプリを起動する `OnUpdatedFile` トリガーがあります。 
 
@@ -107,7 +117,9 @@ Enterprise Integration Pack (EIP) には、BizTalk Server コミュニティで�
 > トリガーとアクションの詳細については、[コネクタの概要](connectors-overview.md)に関する記事をご覧ください。 
 
 
-## <a name="message-manipulation-actions"></a>メッセージ操作アクション
+<a id="message-manipulation-actions" class="xliff"></a>
+
+## メッセージ操作アクション
 
 ロジック アプリには、ペイロード データを変更または操作できる組み込みのアクションが用意されています。 組み込みの**データ操作**コネクタには、次のアクションがあります。 
 
@@ -118,21 +130,29 @@ Enterprise Integration Pack (EIP) には、BizTalk Server コミュニティで�
 | **配列のフィルター処理** (クエリ) | 結果セットをフィルター処理して、関心のあるエントリを取り出します。 たとえば、`#Azure` を含むすべてのツイートを検索し、返されたツイートを "フィルター処理" して、`Tweeted_by_followers > 50` の結果のみを返します。 |
 | **Join** | 何らかの区切り記号で配列を結合します。 たとえば、キー フレーズ検出操作では、キー フレーズの配列が返されます。 それらのキー フレーズを `,` などで "結合" できます。 そうすると、`["Some", "Phrase"]` ではなく、`"Some, Phrase"` になります。 |
 | **JSON の解析** | デザイナーで JSON オブジェクトの値を解析およびアクセスします。 たとえば、Azure 関数で JSON ペイロードが返される場合、そのペイロードを解析して、後の別の手順で JSON プロパティにアクセスできます。 このアクションでは、実行時に JSON が指定したスキーマと一致することも検証します。 | 
-| **選択肢** | 後続の処理のために配列の特定のプロパティを選択します。 SQL の "レコードの一覧表示" を行い、15 列が返された場合に、後続の処理のためにその一部の列を選択します (出力は選択したプロパティだけを含む配列です)。 |
+| **選択肢** | 後続の処理のために配列の特定のプロパティを選択します。 SQL の "レコードの一覧表示" を行い、15 列が返された場合に、後続の処理のためにその一部の列を選択します。 出力は、選択したプロパティのみを含む配列です。 |
 
-## <a name="custom-connectors-and-azure-certification"></a>カスタム コネクタと Azure の認定 
+<a id="custom-connectors-and-azure-certification" class="xliff"></a>
+
+## カスタム コネクタと Azure の認定 
 
 カスタム コードを実行する API や、コネクタとして使用できない API を呼び出すために、[カスタム コネクタとして REST ベースの API アプリを作成](../logic-apps/logic-apps-create-api-app.md)して、Logic Apps プラットフォームを拡張できます。 
 
 カスタム API アプリを公開して Azure で使用できるようにする場合は、[Microsoft Azure Certified プログラム](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)に推薦を送信します。
 
-## <a name="get-help"></a>問い合わせ
+<a id="get-help" class="xliff"></a>
+
+## 問い合わせ
 
 [Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)では、質問の投稿や質問への回答を行うことができるほか、他の Azure Logic Apps ユーザーがどのようなことを行っているかがわかります。
 
 [Logic Apps ユーザー フィードバック サイト](http://aka.ms/logicapps-wish)でアイデアへの投票やアイデアの投稿を行って、Azure Logic Apps とコネクタの改善にご協力ください。
 
-## <a name="next-steps"></a>次のステップ
+コネクタのトピックについて不足している情報や、重要と思われる情報がありましたらお知らせください。 既存のトピックに追加いたします。または、読者が独自に作成することもできます。 ドキュメントはオープン ソースであり、GitHub でホストされています。 まずは、[GitHub リポジトリ](https://github.com/Microsoft/azure-docs)にアクセスしてみましょう。 
+
+<a id="next-steps" class="xliff"></a>
+
+## 次のステップ
 * [初めてのロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)
 * [ロジック アプリ用のカスタム API を作成する](../logic-apps/logic-apps-create-api-app.md)
 * [ロジック アプリを監視する](../logic-apps/logic-apps-monitor-your-logic-apps.md)
@@ -154,6 +174,7 @@ Enterprise Integration Pack (EIP) には、BizTalk Server コミュニティで�
 [nested-logic-appdoc]: ../logic-apps/logic-apps-http-endpoint.md "入れ子になったワークフローを使用してロジック アプリを統合します。"
 [office365-outlookdoc]: ./connectors-create-api-office365-outlook.md "Office 365 アカウントに接続します。電子メールの送受信、予定表と連絡先の管理などを行います。"
 [oracle-db-doc]: ./connectors-create-api-oracledatabase.md "Oracle データベースに接続して、行の追加、挿入、削除などを実行します。"
+[mqdoc]: ./connectors-create-api-mq.md "MQ オンプレミスまたは Azure に接続し、メッセージを送受信します。"
 [recurrencedoc]:  ./connectors-native-recurrence.md "ロジック アプリの定期的なアクションをトリガーします。"
 [salesforcedoc]: ./connectors-create-api-salesforce.md "Salesforce アカウントに接続します。アカウント、潜在顧客、営業案件などを管理します。"
 [sapconnector]: ../logic-apps/logic-apps-using-sap-connector.md "オンプレミスの SAP システムに接続します。"

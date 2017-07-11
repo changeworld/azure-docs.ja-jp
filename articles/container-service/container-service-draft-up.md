@@ -16,23 +16,27 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: rasquill
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 20619fd21f376afee95facb688e35534f5979b90
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: dc3ae52b1ec6717c7e19a160e3e7ea5d211f1f5f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/03/2017
+ms.lasthandoff: 06/28/2017
 
 
 
 ---
 
-# <a name="use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>Azure Container Service と Azure Container Registry で Draft を使用して、アプリケーションを構築し Kubernetes にデプロイする
+<a id="use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes" class="xliff"></a>
+
+# Azure Container Service と Azure Container Registry で Draft を使用して、アプリケーションを構築し Kubernetes にデプロイする
 
 [Draft](https://aka.ms/draft) は、新しいオープンソース ツールです。Docker や Kubernetes について詳しくなくても、またそれらをインストールしなくても、容易にコンテナーベースのアプリケーションの開発と、Kubernetes クラスターへのデプロイを行えるようになります。 Draft のようなツールを使用すると、チームはインフラストラクチャをあまり気にせずに、アプリケーションの構築に集中できます。
 
 Draft は、すべての Docker イメージ レジストリと、ローカルを含むすべての Kubernetes クラスターで使用できます。 このチュートリアルでは、Kubernetes、ACR、Azure DNS で ACS を使用し、Draft を使用してライブ CI/CD 開発者パイプラインを作成する方法を説明します。
 
 
-## <a name="create-an-azure-container-registry"></a>Azure Container Registry を作成する
+<a id="create-an-azure-container-registry" class="xliff"></a>
+
+## Azure Container Registry を作成する
 [新しい Azure Container Registry の作成](../container-registry/container-registry-get-started-azure-cli.md)は容易です。手順は次のとおりです。
 
 1. Azure リソース グループを作成して、ACR レジストリと Kubernetes クラスターを ACS で管理します。
@@ -46,7 +50,9 @@ Draft は、すべての Docker イメージ レジストリと、ローカル�
       ```
 
 
-## <a name="create-an-azure-container-service-with-kubernetes"></a>Kubernetes を使用して Azure Container Service をデプロイする
+<a id="create-an-azure-container-service-with-kubernetes" class="xliff"></a>
+
+## Kubernetes を使用して Azure Container Service をデプロイする
 
 これで、[az acs create](/cli/azure/acs#create) を使用し、Kubernetes を `--orchestrator-type` の値として、ACS クラスターを作成する準備が整いました。
 ```azurecli
@@ -104,15 +110,17 @@ waiting for AAD role to propagate.done
 
 クラスターが作成されたところで、[az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials) コマンドを使用して資格情報をインポートできます。 現在、クラスターのローカル構成ファイルがあり、Helm と Draft が処理を行うためにこれが必要です。
 
-## <a name="install-and-configure-draft"></a>Draft をインストールして構成する
+<a id="install-and-configure-draft" class="xliff"></a>
+
+## Draft をインストールして構成する
 Draft のインストール手順は、[Draft のリポジトリ](https://github.com/Azure/draft/blob/master/docs/install.md)にあります。 比較的単純な手順ですが、Helm チャートを作成して Kubernetes クラスターにデプロイするために [Helm](https://aka.ms/helm) を利用するための構成が必要です。
 
 1. [Helm をダウンロードしてインストールします](https://aka.ms/helm#install)。
 2. Helm を使用して、`stable/traefik` と受信コントローラーを検索してインストールし、ビルドのインバウンド要求を有効にします。
     ```bash
     $ helm search traefik
-    NAME              VERSION    DESCRIPTION
-    stable/traefik    1.2.1-a    A Traefik based Kubernetes ingress controller w...
+    NAME            VERSION DESCRIPTION
+    stable/traefik  1.3.0   A Traefik based Kubernetes ingress controller w...
 
     $ helm install stable/traefik --name ingress
     ```
@@ -127,7 +135,9 @@ Draft のインストール手順は、[Draft のリポジトリ](https://github
 
     このケースでは、デプロイ ドメインの外部 IP は `13.64.108.240` です。 ここで、その IP にドメインをマップできます。
 
-## <a name="wire-up-deployment-domain"></a>デプロイ ドメインに接続する
+<a id="wire-up-deployment-domain" class="xliff"></a>
+
+## デプロイ ドメインに接続する
 
 Draft によって、作成される各 Helm チャート (作業対象の各アプリケーション) のリリースが作成されます。 それぞれに対して、Draft で使用される名前が生成されます。これは、ユーザーが制御するルート "_デプロイ ドメイン_" 上の "_サブドメイン_" です (この例では、デプロイ ドメインとして `squillace.io` を使用します)。このサブドメインの動作を有効にするには、デプロイ ドメインの DNS エントリで `'*'` に対して A レコードを作成する必要があります。こうすることで、生成される各サブドメインが Kubernetes クラスターの受信コントローラーにルーティングされます。
 
@@ -194,29 +204,40 @@ Draft によって、作成される各 Helm チャート (作業対象の各ア
     ```
 
 5. レジストリを使用して、作成される各 Helm チャートのサブドメインを作成するように、Draft を構成します。 Draft を構成するには次が必要です。
-  - Azure Container Registry 名 (この例では `draftacs`)
-  - レジストリ キーまたはパスワード (`az acr credential show -n $acrname --output tsv --query "passwords[0].value"` を使用)
-  - Kubernetes 受信外部 IP アドレスにマップするように構成したルート デプロイ ドメイン (この例では `13.64.108.240`)
+  - Azure Container Registry 名 (この例では `draft`)
+  - レジストリ キーまたはパスワード (`az acr credential show -n <registry name> --output tsv --query "passwords[0].value"` を使用)
+  - Kubernetes 受信外部 IP アドレスにマップするように構成したルート デプロイ ドメイン (この例では `squillace.io`)
 
-  これらの値を使用し、構成 JSON 文字列 (`{"username":"<user>","password":"<secret>","email":"email@example.com"}`) の base-64 でエンコードされた値を作成します。 この値をエンコードする方法の 1 つを次に示します (例の値を自分の値で置き換えてください)。
-      ```bash
-      acrname="draftacs"
-      password=$(az acr credential show -n $acrname --output tsv --query "passwords[0].value")
-      authtoken=$(echo \{\"username\":\"$acrname\",\"password\":\"$password\",\"email\":\"rasquill@microsoft.com\"\} | base64)
-      ```
+  `draft init` を呼び出すと、構成プロセスによって、上記の値の入力を求めるメッセージが表示されます。 このプロセスは、初めて実行すると、次のように表示されます。
+    ```
+    draft init
+    Creating pack ruby...
+    Creating pack node...
+    Creating pack gradle...
+    Creating pack maven...
+    Creating pack php...
+    Creating pack python...
+    Creating pack dotnetcore...
+    Creating pack golang...
+    $DRAFT_HOME has been configured at /Users/ralphsquillace/.draft.
 
-  JSON 文字列が正しいことを確認するには、`echo $authtoken | base64 -D` を入力して、エンコードされていない結果を表示します。
-  ここで、次のコマンドと `-set` オプションの構成引数を使用して、Draft を初期化します。
-      ```bash
-      draft init --set registry.url=$acrname.azurecr.io,registry.org=$acrname,registry.authtoken=$authtoken,basedomain=squillace.io
-      ```
-      > [!NOTE]
-      > `basedomain` の値は、自分で制御しているベース デプロイ ドメインであり、受信外部 IP を指すように構成したことを忘れがちです。
+    In order to install Draft, we need a bit more information...
+
+    1. Enter your Docker registry URL (e.g. docker.io, quay.io, myregistry.azurecr.io): draft.azurecr.io
+    2. Enter your username: draft
+    3. Enter your password:
+    4. Enter your org where Draft will push images [draft]: draft
+    5. Enter your top-level domain for ingress (e.g. draft.example.com): squillace.io
+    Draft has been installed into your Kubernetes Cluster.
+    Happy Sailing!
+    ```
 
 これで、アプリケーションをデプロイする準備が整いました。
 
 
-## <a name="build-and-deploy-an-application"></a>アプリケーションを構築してデプロイする
+<a id="build-and-deploy-an-application" class="xliff"></a>
+
+## アプリケーションを構築してデプロイする
 
 Draft リポジトリには [6 個の単純なサンプル アプリケーション](https://github.com/Azure/draft/tree/master/examples)があります。 このリポジトリを複製して、[Python のサンプル](https://github.com/Azure/draft/tree/master/examples/python)を使用しましょう。 examples/Python ディレクトリに移動し、`draft create` と入力してアプリケーションを構築します。 次の例のようになります。
 ```bash
@@ -254,7 +275,9 @@ Watching local files for changes...
 
 チャートの名前に関係なく、`curl http://gangly-bronco.squillace.io` を実行すると、`Hello World!` が返信されます。
 
-## <a name="next-steps"></a>次のステップ
+<a id="next-steps" class="xliff"></a>
+
+## 次のステップ
 
 これで、ACS Kubernetes クラスターが用意されました。[Azure Container Registry](../container-registry/container-registry-intro.md) を使用して調査し、このシナリオのさまざまなデプロイを作成できます。 たとえば、特定の ACS デプロイの深い階層のサブドメインの処理を制御する、draft._basedomain.toplevel_ ドメイン DNS レコードセットを作成できます。
 

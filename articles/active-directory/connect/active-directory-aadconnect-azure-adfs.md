@@ -16,13 +16,16 @@ ms.topic: get-started-article
 ms.date: 02/27/2017
 ms.author: anandy; billmath
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: a6a8300046a0f17061e74b793b254cdca1e1a265
-ms.lasthandoff: 04/10/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 9119a4523c66415925223b5de10ca0fb4a7147b2
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/04/2017
 
 ---
-# <a name="deploying-active-directory-federation-services-in-azure"></a>Azure での Active Directory フェデレーション サービスのデプロイ
+<a id="deploying-active-directory-federation-services-in-azure" class="xliff"></a>
+
+# Azure での Active Directory フェデレーション サービスのデプロイ
 AD FS は、単純かつ安全な ID フェデレーションと Web シングル サインオン (SSO) 機能を実現します。 Azure AD または O365 とのフェデレーションによって、ユーザーはオンプレミスの資格情報を認証に使用し、クラウド内のあらゆるリソースにアクセスすることができます。 そのため、オンプレミスとクラウドの両方のリソースに確実にアクセスできるよう、AD FS インフラストラクチャには、高い可用性を確保することが重要となります。 AD FS を Azure にデプロイすると、必要な高可用性を最小限の手間で確保できます。
 AD FS を Azure にデプロイする利点はいくつかありますが、その一部を以下に示します。
 
@@ -31,7 +34,9 @@ AD FS を Azure にデプロイする利点はいくつかありますが、そ�
 * **地域を越えた冗長性** - Azure Geo Redundancy によって地域を越えた世界規模での高可用性がインフラストラクチャに確保されます。
 * **管理しやすい** - 高度に単純化された管理オプションが Azure ポータルに用意されているため、インフラストラクチャ管理の手間がかからず、ごく簡単に管理することができます。 
 
-## <a name="design-principles"></a>設計原則
+<a id="design-principles" class="xliff"></a>
+
+## 設計原則
 ![Deployment design](./media/active-directory-aadconnect-azure-adfs/deployment.png)
 
 上の図は、これから AD FS インフラストラクチャを Azure にデプロイしようとする場合に推奨される基本的なトポロジを示したものです。 このトポロジの各種コンポーネントの要点を以下に示します。
@@ -44,10 +49,14 @@ AD FS を Azure にデプロイする利点はいくつかありますが、そ�
 * **ストレージ アカウント**: ストレージ アカウントは 2 つ用意することをお勧めします。 ストレージ アカウントが 1 つである場合、単一障害点が形成され、万一ストレージ アカウントがダウンした場合に、環境が利用できなくなる可能性があります。 ストレージ アカウントが 2 つあれば、障害系統ごとに 1 つのストレージ アカウントを関連付けることができます。
 * **ネットワークの分離**: Web アプリケーション プロキシ サーバーは、単独の DMZ ネットワークにデプロイする必要があります。 1 つの仮想ネットワークを 2 つのサブネットに分割したうえで、分離したサブネットに Web アプリケーション プロキシ サーバーをデプロイすることができます。 単にネットワーク セキュリティ グループの設定をサブネットごとに構成し、その 2 つのサブネット間に必要な通信のみを許可してください。 以降、デプロイのシナリオに従って詳しく説明します。
 
-## <a name="steps-to-deploy-ad-fs-in-azure"></a>AD FS を Azure にデプロイする手順
+<a id="steps-to-deploy-ad-fs-in-azure" class="xliff"></a>
+
+## AD FS を Azure にデプロイする手順
 このセクションで取り上げる手順は、以下に示した AD FS インフラストラクチャを Azure にデプロイするうえでの指針を概説したものです。
 
-### <a name="1-deploying-the-network"></a>1.ネットワークをデプロイする
+<a id="1-deploying-the-network" class="xliff"></a>
+
+### 1.ネットワークをデプロイする
 既に述べたように、1 つの仮想ネットワークに 2 つのサブネットを作成するか、まったく異なる 2 つの仮想ネットワーク (VNet) を作成することができます。 この記事では、1 つの仮想ネットワークをデプロイして 2 つのサブネットに分割する方法について重点的に説明します。 現時点では、その方が簡単です。2 つの独立した VNet を使用した場合、通信に VNet 間ゲートウェイが必要となります。
 
 **1.1 仮想ネットワークを作成する**
@@ -99,12 +108,16 @@ Azure にドメイン コントローラー (DC) をデプロイするために�
 推奨されるのは、ExpressRoute を使用する方法です。 ExpressRoute を使用すると、Azure のデータセンターとオンプレミスや共用環境にあるインフラストラクチャ間にプライベート接続を作成できます。 ExpressRoute 接続では、公共のインターネットを利用できません。 ExpressRoute 接続は一般的なインターネットでの接続よりも信頼性が高く、高速で、待ち時間が短く、セキュリティの高い接続を提供します。
 ExpressRoute の使用をお勧めしますが、所属する組織に合った任意の接続方法を選ぶことができます。 ExpressRoute と ExpressRoute を使用した各種の接続方法の詳細については、「 [ExpressRoute の技術概要](https://aka.ms/Azure/ExpressRoute)」を参照してください。
 
-### <a name="2-create-storage-accounts"></a>2.ストレージ アカウントを作成する
+<a id="2-create-storage-accounts" class="xliff"></a>
+
+### 2.ストレージ アカウントを作成する
 高い可用性を維持し、1 つのストレージ アカウントへの依存を回避するために、ストレージ アカウントは 2 つ作成することができます。 可用性セットごとの 2 つのグループにマシンを分けたうえで、それぞれのグループに別個のストレージ アカウントを割り当てます。
 
 ![Create storage accounts](./media/active-directory-aadconnect-azure-adfs/storageaccount1.png)
 
-### <a name="3-create-availability-sets"></a>3.可用性セットを作成する
+<a id="3-create-availability-sets" class="xliff"></a>
+
+### 3.可用性セットを作成する
 それぞれのロール (DC/AD FS と WAP) について、最低 2 つのマシンを含んだ可用性セットを作成します。 そうすることで各ロールの可用性を高めることができます。 可用性セットを作成する際は、次の点についての意思決定が必須となります。
 
 * **障害ドメイン**: 同じ障害ドメインの仮想マシンは、同じ電源と物理ネットワーク スイッチを共有します。 障害ドメインは 2 以上とすることをお勧めします。 ここでは既定値の 3 をそのまま使用します。
@@ -119,7 +132,9 @@ ExpressRoute の使用をお勧めしますが、所属する組織に合った�
 | contosodcset |DC/ADFS |3 |5 |
 | contosowapset |WAP |3 |5 |
 
-### <a name="4-deploy-virtual-machines"></a>4.仮想マシンをデプロイする
+<a id="4-deploy-virtual-machines" class="xliff"></a>
+
+### 4.仮想マシンをデプロイする
 次に、インフラストラクチャ内の各ロールのホストとなる仮想マシンをデプロイします。 それぞれの可用性セットには、最低でも 2 つのマシンをデプロイすることをお勧めします。 基本的なデプロイでは 4 つの仮想マシンを作成します。
 
 | マシン | 役割 | サブネット | 可用性セット | ストレージ アカウント | IP アドレス |
@@ -135,7 +150,9 @@ DNS が管理下にある場合は、静的 IP アドレスをお勧めします
 
 ![Virtual Machines deployed](./media/active-directory-aadconnect-azure-adfs/virtualmachinesdeployed_noadfs.png)
 
-### <a name="5-configuring-the-domain-controller--ad-fs-servers"></a>5.ドメイン コントローラー / AD FS サーバーを構成する
+<a id="5-configuring-the-domain-controller--ad-fs-servers" class="xliff"></a>
+
+### 5.ドメイン コントローラー / AD FS サーバーを構成する
  受信要求を認証するためには、AD FS がドメイン コントローラーに問い合わせを行う必要があります。 認証のたびに Azure がオンプレミスの DC とやり取りするのでは無駄が大きいため、ドメイン コントローラーのレプリカを Azure にデプロイすることをお勧めします。 高い可用性を確保するために、少なくとも 2 つのドメイン コントローラーから成る可用性セットを作成することをお勧めします。
 
 | ドメイン コントローラー | 役割 | ストレージ アカウント |
@@ -146,7 +163,9 @@ DNS が管理下にある場合は、静的 IP アドレスをお勧めします
 * 2 台のサーバーをレプリカ ドメイン コントローラー (DNS を含む) として昇格させます。
 * サーバー マネージャーを使用して AD FS ロールをインストールし、AD FS サーバーを構成します。
 
-### <a name="6-deploying-internal-load-balancer-ilb"></a>6.内部ロード バランサー (ILB) をデプロイする
+<a id="6-deploying-internal-load-balancer-ilb" class="xliff"></a>
+
+### 6.内部ロード バランサー (ILB) をデプロイする
 **6.1.ILB を作成する**
 
 ILB をデプロイするには、Azure ポータルで [ロード バランサー] を選択し、[追加] \(+) をクリックします。
@@ -162,7 +181,7 @@ ILB をデプロイするには、Azure ポータルで [ロード バランサ�
 * **[スキーム]**: このロード バランサーは AD FS サーバーの前に配置されます。つまり内部的なネットワーク接続のみを意図したものであるため、[内部] を選択します。
 * **[仮想ネットワーク]**: AD FS をデプロイする仮想ネットワークを選択します。
 * **[サブネット]**: 内部サブネットを選択します。
-* **[IP アドレスの割り当て]**: 動的
+* **[IP アドレスの割り当て]**: 静的
 
 ![内部ロード バランサー](./media/active-directory-aadconnect-azure-adfs/ilbdeployment1.png)
 
@@ -207,7 +226,9 @@ ILB をデプロイするには、Azure ポータルで [ロード バランサ�
 DNS サーバーに移動して、ILB の CNAME を作成します。 CNAME には、IP アドレスが ILB の IP アドレスを指すフェデレーション サービスの値を指定する必要があります。 たとえば ILB の DIP アドレスが 10.3.0.8 であるとき、インストールされているフェデレーション サービスが fs.contoso.com である場合は、10.3.0.8 を指す fs.contoso.com の CNAME を作成します。
 これで fs.contoso.com についてのすべての通信は最終的に ILB に到達し、適切にルーティングされます。
 
-### <a name="7-configuring-the-web-application-proxy-server"></a>7.Web アプリケーション プロキシ サーバーを構成する
+<a id="7-configuring-the-web-application-proxy-server" class="xliff"></a>
+
+### 7.Web アプリケーション プロキシ サーバーを構成する
 **7.1.AD FS サーバーに到達するための構成を Web アプリケーション プロキシ サーバーに対して行う**
 
 Web アプリケーション プロキシ サーバーが ILB の内側にある AD FS サーバーに到達するためには、%systemroot%\system32\drivers\etc\hosts にその ILB のレコードを作成する必要があります。 識別名 (DN) は、フェデレーション サービスの名前 (例: fs.contoso.com) となることに注意してください。 また IP には、ILB の IP アドレスを入力する必要があります (この例では 10.3.0.8)。
@@ -217,7 +238,9 @@ Web アプリケーション プロキシ サーバーが ILB の内側にある
 Web アプリケーション プロキシ サーバーから ILB の内側の AD FS サーバーに到達できる状態を確保したら、続けて Web アプリケーション プロキシ サーバーをインストールすることができます。 Web アプリケーション プロキシ サーバーはドメインに参加しません。 リモート アクセス ロールを選択して、2 つの Web アプリケーション プロキシ サーバーに Web アプリケーション プロキシ ロールをインストールします。 サーバー マネージャーの指示に従って、WAP のインストールを実行してください。
 WAP のデプロイ方法について詳しくは、「 [Web アプリケーション プロキシ サーバーをインストールし、構成する](https://technet.microsoft.com/library/dn383662.aspx)」をご覧ください。
 
-### <a name="8--deploying-the-internet-facing-public-load-balancer"></a>8.インターネット接続 (パブリック) ロード バランサーをデプロイする
+<a id="8--deploying-the-internet-facing-public-load-balancer" class="xliff"></a>
+
+### 8.インターネット接続 (パブリック) ロード バランサーをデプロイする
 **8.1.インターネット接続 (パブリック) ロード バランサーを作成する**
 
 Azure ポータルで [ロード バランサー] を選択し、[追加] をクリックします。 [ロード バランサーの作成] パネルで次の情報を入力します。
@@ -262,7 +285,9 @@ ILB と同じ手順に従って、TCP 443 の負荷分散規則を構成しま�
 
 ![Configure balancing rules of Internet Facing Load Balancer](./media/active-directory-aadconnect-azure-adfs/elbdeployment7.png)
 
-### <a name="9-securing-the-network"></a>9.ネットワークを保護する
+<a id="9-securing-the-network" class="xliff"></a>
+
+### 9.ネットワークを保護する
 **9.1.内部サブネットを保護する**
 
 内部サブネットを効率的に保護するには、一般に次の規則が (以下に記載された順序で) 必要となります。
@@ -292,7 +317,9 @@ ILB と同じ手順に従って、TCP 443 の負荷分散規則を構成しま�
 > 
 > 
 
-### <a name="10-test-the-ad-fs-sign-in"></a>10.AD FS サインインをテストする
+<a id="10-test-the-ad-fs-sign-in" class="xliff"></a>
+
+### 10.AD FS サインインをテストする
 AD FS のテストは、IdpInitiatedSignon.aspx ページを使用して行うのが最も簡単です。 そのためには、AD FS のプロパティで IdpInitiatedSignOn を有効にする必要があります。 以下の手順に従って AD FS の設定を確認してください。
 
 1. AD FS サーバーで PowerShell から以下のコマンドレットを実行し、このプロパティを有効にします。
@@ -306,7 +333,9 @@ AD FS のテストは、IdpInitiatedSignon.aspx ページを使用して行う�
 
 ![Test success](./media/active-directory-aadconnect-azure-adfs/test2.png)
 
-## <a name="template-for-deploying-ad-fs-in-azure"></a>Azure で AD FS をデプロイするためのテンプレート
+<a id="template-for-deploying-ad-fs-in-azure" class="xliff"></a>
+
+## Azure で AD FS をデプロイするためのテンプレート
 このテンプレートでは、ドメイン コントローラー、AD FS、WAP にそれぞれ 2 つずつ使用する、6 つのマシンのセットアップをデプロイします。
 
 [Azure での AD FS のデプロイ テンプレート](https://github.com/paulomarquesc/adfs-6vms-regular-template-based)
@@ -341,7 +370,9 @@ AD FS のテストは、IdpInitiatedSignon.aspx ページを使用して行う�
 | AdminUserName |仮想マシンのローカル管理者の名前 |
 | AdminPassword |仮想マシンのローカル管理者アカウントのパスワード |
 
-## <a name="additional-resources"></a>その他のリソース
+<a id="additional-resources" class="xliff"></a>
+
+## その他のリソース
 * [可用性セット](https://aka.ms/Azure/Availability) 
 * [Azure Load Balancer](https://aka.ms/Azure/ILB)
 * [内部ロード バランサー](https://aka.ms/Azure/ILB/Internal)
@@ -350,7 +381,9 @@ AD FS のテストは、IdpInitiatedSignon.aspx ページを使用して行う�
 * [Azure 仮想ネットワーク](https://aka.ms/Azure/VNet)
 * [AD FS と Web アプリケーション プロキシについてのリンク](http://aka.ms/ADFSLinks) 
 
-## <a name="next-steps"></a>次のステップ
+<a id="next-steps" class="xliff"></a>
+
+## 次のステップ
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 * [Azure AD Connect を使用した AD FS の構成と管理](active-directory-aadconnectfed-whatis.md)
 * [Azure Traffic Manager を使用した Azure への可用性に優れた地域間 AD FS デプロイ](../active-directory-adfs-in-azure-with-azure-traffic-manager.md)

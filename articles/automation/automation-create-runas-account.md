@@ -12,17 +12,19 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/01/2017
+ms.date: 06/29/2017
 ms.author: magoedte
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 431049c714a58f85ebb73165fe338d927d27039a
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 09ddca83fc0f39d7911813e488317f9434fdcfc8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/03/2017
+ms.lasthandoff: 06/30/2017
 
 ---
 
-# <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>Automation アカウントの認証を実行アカウントで更新する 
+<a id="update-your-automation-account-authentication-with-run-as-accounts" class="xliff"></a>
+
+# Automation アカウントの認証を実行アカウントで更新する 
 次の条件に該当する場合は、ポータルまたは PowerShell を使用して既存の Automation アカウントを更新できます。
 
 * Automation アカウントは作成済みであるものの、実行アカウントの作成を拒否した場合。
@@ -30,7 +32,9 @@ ms.lasthandoff: 06/03/2017
 * クラシック リソースを管理するための Automation アカウントを既に所有しており、それを、新しいアカウントを作成する代わりにクラシック実行アカウントを使用するように更新し、Runbook と資産をそのアカウントに移行する場合。   
 * エンタープライズ証明機関 (CA) によって発行された証明書を使用して実行アカウントとクラシック実行アカウントを作成する場合。
 
-## <a name="prerequisites"></a>前提条件
+<a id="prerequisites" class="xliff"></a>
+
+## 前提条件
 
 * このスクリプトは、Azure Resource Manager モジュール 3.0.0 以降がインストールされた Windows 10 と Windows Server 2016 でのみ実行できます。 前のバージョンの Windows ではサポートされません。
 * Azure PowerShell 1.0 以降。 PowerShell 1.0 リリースについては、[Azure PowerShell のインストールと構成方法](/powershell/azureps-cmdlets-docs)に関するページを参照してください。
@@ -42,7 +46,19 @@ ms.lasthandoff: 06/03/2017
 2. **[すべての設定]** ブレードで、**[アカウント設定]** の **[プロパティ]** を選択します。 
 3. **[プロパティ]** ブレードに表示される値をメモします。<br><br> ![Automation アカウントの "プロパティ" ブレード](media/automation-create-runas-account/automation-account-properties.png)  
 
-## <a name="create-run-as-account-from-the-portal"></a>ポータルで実行アカウントを作成する
+<a id="required-permissions-to-update-your-automation-account" class="xliff"></a>
+
+### Automation アカウントを更新するために必要なアクセス許可
+Automation アカウントを更新するには、このトピックの作業で要求される以下に記載した特権とアクセス許可が必要となります。   
+ 
+* ご利用の AD ユーザー アカウントが、「[Azure Automation におけるロールベースのアクセス制御](automation-role-based-access-control.md#contributor-role-permissions)」の記事に記載されている Microsoft.Automation リソースの共同作成者ロールに相当するアクセス許可を備えたロールに追加されている必要があります。  
+* [アプリの登録] が **[はい]** に設定されている場合、Azure AD テナントの非管理者ユーザーが [AD アプリケーションを登録](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions)できます。  [アプリの登録] が **[いいえ]** に設定されている場合、この操作を行うユーザーは、Azure AD の全体管理者であることが必要です。 
+
+サブスクリプションの Active Directory インスタンスのメンバーになっていない状態で、サブスクリプションの全体管理者/共同管理者ロールに追加された場合、Active Directory にゲストとして追加されることになります。 この場合、"…を作成するためのアクセス許可がありません" という 警告が **[Automation アカウントの追加]** ブレードに表示されます。 先に全体管理者/共同管理者ロールに追加されていたユーザーは、サブスクリプションの Active Directory インスタンスから削除した後、Active Directory の完全なユーザーとして再度追加できます。 このような状況を検証するには、Azure Portal の **[Azure Active Directory]** ウィンドウで、**[ユーザーとグループ]**、**[すべてのユーザー]**、特定のユーザー、**[プロファイル]** の順に選択します。 ユーザーのプロファイルの下部にある **[ユーザー タイプ]** 属性の値は、**[ゲスト]** と一致しないようにする必要があります。
+
+<a id="create-run-as-account-from-the-portal" class="xliff"></a>
+
+## ポータルで実行アカウントを作成する
 このセクションでは、以下の手順に従って、Azure Portal で Azure Automation アカウントを更新します。  実行アカウントとクラシック実行アカウントをそれぞれ作成します。Azure クラシック ポータル でリソースを管理する必要がない場合は、Azure 実行アカウントのみを作成してください。  
 
 Automation アカウントに次の項目が作成されます。
@@ -58,13 +74,14 @@ Automation アカウントに次の項目が作成されます。
 * 指定された Automation アカウントに *AzureClassicRunAsCertificate* という名前の Automation 証明書資産を作成します。 この証明書資産には、管理証明書によって使用される証明書の秘密キーが格納されます。
 * 指定された Automation アカウントに *AzureClassicRunAsConnection* という名前の Automation 接続資産を作成します。 この接続資産には、サブスクリプション名、サブスクリプション ID、証明書の資産名が格納されます。
 
-
 1. サブスクリプション管理ロールのメンバーかつサブスクリプションの共同管理者であるアカウントを使用して、Azure Portal にサインインします。
 2. [Automation アカウント] ブレードで、**[アカウント設定]** セクションの **[実行アカウント]** を選択します。  
 3. 必要なアカウントに応じて、**[Azure 実行アカウント]** または **[Azure クラシック実行アカウント]** を選択します。  **[Azure 実行アカウントを追加する]** または **[Azure クラシック実行アカウントを追加する]** のどちらかを選択すると、ブレードが表示されます。概要情報を確認してから、**[作成]** をクリックして実行アカウントの作成を進めます。  
 4. Azure によって実行アカウントが作成されているとき、進行状況を **[通知]** の下で確認できます。また、アカウントが作成中であることを示すバナーが表示されます。  このプロセスが完了するまでに数分かかることがあります。  
 
-## <a name="create-run-as-account-using-powershell-script"></a>PowerShell スクリプトを使用して実行アカウントを作成する
+<a id="create-run-as-account-using-powershell-script" class="xliff"></a>
+
+## PowerShell スクリプトを使用して実行アカウントを作成する
 この PowerShell スクリプトでは、以下の構成がサポートされます。
 
 * 自己署名証明書を使用して実行アカウントを作成する。
@@ -290,6 +307,8 @@ Automation アカウントに次の項目が作成されます。
 * エンタープライズ公開証明書 (.cer ファイル) を使ってクラシック実行アカウントを作成した場合は、その証明書を使用します。 [Management API 証明書を Azure クラシック ポータルにアップロード](../azure-api-management-certs.md)する手順を実行した後、[Azure クラシック デプロイメント リソースで認証を行うサンプル コード](automation-verify-runas-authentication.md#classic-run-as-authentication)を使用して、クラシック デプロイメント リソースに対する資格情報の構成を確認します。 
 * クラシック実行アカウントを "*作成しなかった場合*" は、「[サービス管理リソースで認証を行うサンプル コード](automation-verify-runas-authentication.md#automation-run-as-authentication)」を参照して、Resource Manager リソースに対する認証を行い、資格情報の構成を確認します。
 
-## <a name="next-steps"></a>次のステップ
+<a id="next-steps" class="xliff"></a>
+
+## 次のステップ
 * サービス プリンシパルの詳細については、 [アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト](../active-directory/active-directory-application-objects.md)に関するページを参照してください。
 * 証明書と Azure サービスの詳細については、「[Azure Cloud Services の証明書の概要](../cloud-services/cloud-services-certs-create.md)」を参照してください。
