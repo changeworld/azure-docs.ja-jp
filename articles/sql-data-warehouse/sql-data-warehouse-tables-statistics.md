@@ -23,7 +23,9 @@ ms.lasthandoff: 12/08/2016
 
 
 ---
-# <a name="managing-statistics-on-tables-in-sql-data-warehouse"></a>SQL Data Warehouse のテーブルの統計の管理
+<a id="managing-statistics-on-tables-in-sql-data-warehouse" class="xliff"></a>
+
+# SQL Data Warehouse のテーブルの統計の管理
 > [!div class="op_single_selector"]
 > * [概要][Overview]
 > * [データ型][Data Types]
@@ -37,24 +39,30 @@ ms.lasthandoff: 12/08/2016
 
 SQL Data Warehouse がご使用のデータについてより多くを把握していればいるほど、それだけ速くデータにクエリを実行できます。  データに関する情報を SQL Data Warehouse に伝えるには、データに関する統計情報を収集します。  データに関する統計情報を取得することが、クエリの最適化のために実行できる最も重要なことの 1 つです。  統計は、SQL Data Warehouse のクエリの最適なプランの作成に利用できます。  これは、SQL Data Warehouse のクエリ オプティマイザーがコストに基づくオプティマイザーであるためです。  つまり、さまざまなクエリ プランのコストを比較し、コストが最も低いプランを選択します。選択されたプランが、最も高速に実行されるプランでもあります。
 
-統計は、単一列、複数列、またはテーブルのインデックスに作成することができます。  統計は、値の範囲と選択性をキャプチャするヒストグラムに格納されます。  これは、オプティマイザーがクエリの JOIN、GROUP BY、HAVING、WHERE の各句 を評価する必要がある場合に特に重要となります。  たとえば、オプティマイザーによって、クエリでフィルター処理している日付が 1 行を返すと評価された場合、選択した日付が 100 万行を返すと評価された場合とではまったく異なるプランを選択することができます。  統計を作成することは非常に重要ですが、テーブルの現在の状態をその統計に "正確に" ** 反映することは、同じくらい重要です。  最新の統計情報を取得すると、オプティマイザーによって適切なプランが確実に選択されることになります。  オプティマイザーによって作成されたプランの有効性は、データの統計によって決まります。
+統計は、単一列、複数列、またはテーブルのインデックスに作成することができます。  統計は、値の範囲と選択性をキャプチャするヒストグラムに格納されます。  これは、オプティマイザーがクエリの JOIN、GROUP BY、HAVING、WHERE の各句 を評価する必要がある場合に特に重要となります。  たとえば、オプティマイザーによって、クエリでフィルター処理している日付が 1 行を返すと評価された場合、選択した日付が 100 万行を返すと評価された場合とではまったく異なるプランを選択することができます。  統計を作成することは非常に重要ですが、テーブルの現在の状態をその統計に *"正確に"* 反映することは、同じくらい重要です。  最新の統計情報を取得すると、オプティマイザーによって適切なプランが確実に選択されることになります。  オプティマイザーによって作成されたプランの有効性は、データの統計によって決まります。
 
 統計の作成および更新の処理は、現在は手動のプロセスですが、操作は非常に簡単です。  この点が、単一列とインデックスに関する統計が自動的に作成および更新される SQL Server と異なります。  次の情報を使用すると、データの統計情報の管理を大幅に自動化できます。 
 
-## <a name="getting-started-with-statistics"></a>統計の概要
+<a id="getting-started-with-statistics" class="xliff"></a>
+
+## 統計の概要
  統計を開始する簡単な方法は、すべての列のサンプリングされた統計を作成することです。  統計情報を最新の状態に維持することは同様に重要なため、保守的なアプローチでは、毎日または各読み込みの後に統計を更新します。 パフォーマンスと統計を作成および更新するコストの間には常にトレードオフの関係が存在します。  すべての統計を管理するのは時間がかかりすぎる場合は、統計を作成する列や頻繁に更新する列を限定することをお勧めします。  たとえば、読み込み後に新しい値が追加される可能性があるため、日付列は日次で更新することができます。 さらに、JOIN、GROUP BY、HAVING、WHERE 句で使用されている列の統計を作成すると、最も大きなメリットが得られます。  SELECT 句のみで使用される列を多数持つテーブルがある場合、これらの列の統計情報が役に立たない場合があります。統計情報が役立つ列のみを特定する努力を少しするだけで、統計情報を維持するために必要な時間を短縮できます。
 
-## <a name="multi-column-statistics"></a>複数列統計
+<a id="multi-column-statistics" class="xliff"></a>
+
+## 複数列統計
 単一列で統計を作成するだけでなく、複数列統計からクエリにとってのメリットを得られる場合がります。  複数列統計は、列のリストで作成される統計です。  この統計には、リストの最初の列の単一列統計に加え、密度と呼ばれる列間の相関関係情報が含まれます。  たとえば、2 つの列で別のテーブルと結合されているテーブルがある場合、SQL Data Warehouse が 2 つの列のリレーションシップを認識すると、プランはさらに最適化されます。   複合結合やグループ化などの一部の操作では、複数列統計によってクエリのパフォーマンスを向上させることができます。
 
-## <a name="updating-statistics"></a>統計の更新
+<a id="updating-statistics" class="xliff"></a>
+
+## 統計の更新
 統計の更新は、データベース管理ルーチンの重要な一部です。  データベース内のデータの分布が変わったら、統計を更新する必要があります。  統計情報が古いと、クエリのパフォーマンスが最適化されなくなります。
 
 ベスト プラクティスの 1 つが、新しい日付が追加されるたびに日付列の統計を更新することです。  新しい行がデータ ウェアハウスに読み込まれるたびに、新しい読み込みの日付またはトランザクションの日付が追加されます。 これらによってデータの分布が変わり、統計が古くなります。 一方、顧客テーブルの国列の統計は更新する必要がないと考えられます。一般的に値の分布は変わらないためです。 顧客間で分布が一定であると仮定すると、テーブル バリエーションに新しい行を追加しても、データの分布が変わることはありません。 ただし、データ ウェアハウスに 1 つの国しか含まれておらず、新しい国のデータを取り込んで複数の国のデータが格納されるようになった場合は、国列の統計を更新する必要があることは明らかです。
 
 クエリのトラブルシューティングを行うときに最初に尋ねる質問の 1 つが、「統計は最新の状態ですか」というものです。
 
-この質問は、データの経過時間で答えられるものではありません。 基になるデータに重要な変更がない場合は、最新の統計オブジェクトが非常に古い可能性があります。 行数が大幅に変わった場合や、特定の列の値の分布で重大な変更があった場合は、"その後で" ** 統計を更新する必要があります。  
+この質問は、データの経過時間で答えられるものではありません。 基になるデータに重要な変更がない場合は、最新の統計オブジェクトが非常に古い可能性があります。 行数が大幅に変わった場合や、特定の列の値の分布で重大な変更があった場合は、 *"その後で"* 統計を更新する必要があります。  
 
 なお、 **SQL Server** (SQL Data Warehouse ではありません) によって統計が自動更新されるのは次の場合です。
 
@@ -100,7 +108,9 @@ WHERE
 
 詳細については、MSDN の「[統計][Statistics]」をご覧ください。
 
-## <a name="implementing-statistics-management"></a>統計管理の実装
+<a id="implementing-statistics-management" class="xliff"></a>
+
+## 統計管理の実装
 多くの場合、読み込みの終わりに統計が確実に更新されるように、データ読み込みプロセスを拡張することが推奨されます。 テーブルのサイズや値の分布が変わる頻度が最も高いのがデータの読み込み時です。 したがって、これが管理プロセスを実装する論理的な場所となります。
 
 読み込みプロセスで統計を更新する際の基本原則は、次のとおりです。
@@ -118,10 +128,14 @@ WHERE
 
 詳細については、MSDN の[基数推定][Cardinality Estimation]に関するページをご覧ください。
 
-## <a name="examples-create-statistics"></a>例: 統計の作成
+<a id="examples-create-statistics" class="xliff"></a>
+
+## 例: 統計の作成
 以下の例では、さまざまなオプションを使用して統計を作成する方法を示します。 各列に使用するオプションは、データの特性とクエリでの列の使用方法によって異なります。
 
-### <a name="a-create-single-column-statistics-with-default-options"></a>A. 既定のオプションを使用した単一列統計の作成
+<a id="a-create-single-column-statistics-with-default-options" class="xliff"></a>
+
+### A. 既定のオプションを使用した単一列統計の作成
 列の統計を作成するには、統計オブジェクトの名前と列の名前を指定するだけです。
 
 次の構文では、既定のオプションをすべて使用しています。 既定では、SQL Data Warehouse は統計を作成するときに、テーブルの 20% をサンプリングします。
@@ -136,7 +150,9 @@ CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name])
 CREATE STATISTICS col1_stats ON dbo.table1 (col1);
 ```
 
-### <a name="b-create-single-column-statistics-by-examining-every-row"></a>B. すべての列の検査による単一列統計の作成
+<a id="b-create-single-column-statistics-by-examining-every-row" class="xliff"></a>
+
+### B. すべての列の検査による単一列統計の作成
 ほとんどの場合、20% という既定のサンプリング レートで十分です。 ただし、サンプリング レートを調整することもできます。
 
 テーブル全体をサンプリングするには、次の構文を使用します。
@@ -151,14 +167,18 @@ CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name])
 CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH FULLSCAN;
 ```
 
-### <a name="c-create-single-column-statistics-by-specifying-the-sample-size"></a>C. サンプル サイズを指定した単一列統計の作成
+<a id="c-create-single-column-statistics-by-specifying-the-sample-size" class="xliff"></a>
+
+### C. サンプル サイズを指定した単一列統計の作成
 サンプル サイズをパーセントで指定することもできます。
 
 ```sql
 CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH SAMPLE = 50 PERCENT;
 ```
 
-### <a name="d-create-single-column-statistics-on-only-some-of-the-rows"></a>D. 一部の行のみの単一列統計の作成
+<a id="d-create-single-column-statistics-on-only-some-of-the-rows" class="xliff"></a>
+
+### D. 一部の行のみの単一列統計の作成
 テーブルの一部の行の統計を作成することもできます。 これは、フィルター選択された統計と呼ばれます。
 
 たとえば、大規模なパーティション テーブルの特定のパーティションのクエリを計画するときに、フィルター選択された統計を使用できます。 パーティション値のみで統計を作成すると、統計の精度が向上するので、クエリのパフォーマンスが向上します。
@@ -174,7 +194,9 @@ CREATE STATISTICS stats_col1 ON table1(col1) WHERE col1 > '2000101' AND col1 < '
 > 
 > 
 
-### <a name="e-create-single-column-statistics-with-all-the-options"></a>E. すべてのオプションを使用した単一列統計の作成
+<a id="e-create-single-column-statistics-with-all-the-options" class="xliff"></a>
+
+### E. すべてのオプションを使用した単一列統計の作成
 オプションは組み合わせることができます。 次の例では、カスタム サンプル サイズを指定してフィルター選択された統計オブジェクトを作成します。
 
 ```sql
@@ -183,7 +205,9 @@ CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < 
 
 詳細については、MSDN の [CREATE STATISTICS][CREATE STATISTICS] に関するページをご覧ください。
 
-### <a name="f-create-multi-column-statistics"></a>F. 複数列統計の作成
+<a id="f-create-multi-column-statistics" class="xliff"></a>
+
+### F. 複数列統計の作成
 複数列統計を作成するには、これまでの例を使用するだけですが、複数の列を指定します。
 
 > [!NOTE]
@@ -199,7 +223,9 @@ CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category)
 
 *product\_category* と *product\_sub\_category* の間には相関関係があるため、これらの列に同時にアクセスする場合は複数列統計が役立ちます。
 
-### <a name="g-create-statistics-on-all-the-columns-in-a-table"></a>G. テーブルのすべての列の統計の作成
+<a id="g-create-statistics-on-all-the-columns-in-a-table" class="xliff"></a>
+
+### G. テーブルのすべての列の統計の作成
 統計を作成する方法の 1 つとして、テーブルの作成後に CREATE STATISTICS コマンドを発行します。
 
 ```sql
@@ -220,7 +246,9 @@ CREATE STATISTICS stats_col2 on dbo.table2 (col2);
 CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 ```
 
-### <a name="h-use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>H. ストアド プロシージャを使用した、データベース内のすべての列の統計の作成
+<a id="h-use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database" class="xliff"></a>
+
+### H. ストアド プロシージャを使用した、データベース内のすべての列の統計の作成
 SQL Data Warehouse には、SQL Server の [sp_create_stats][] に相当するシステム ストアド プロシージャはありません。 このストアド プロシージャは、まだ統計がないデータベースのすべての列の単一列統計オブジェクトを作成します。
 
 これは、データベースの設計を開始する際に役立ちます。 ニーズに合わせて、このオブジェクトを自由に変更できます。
@@ -312,13 +340,17 @@ DROP TABLE #stats_ddl;
 prc_sqldw_create_stats;
 ```
 
-## <a name="examples-update-statistics"></a>例: 統計の更新
+<a id="examples-update-statistics" class="xliff"></a>
+
+## 例: 統計の更新
 統計を更新するには、次の操作を行います。
 
 1. 統計オブジェクトを 1 つ更新します。 更新する統計オブジェクトの名前を指定します。
 2. テーブルのすべての統計オブジェクトを更新します。 特定の統計オブジェクトではなく、テーブルの名前を指定します。
 
-### <a name="a-update-one-specific-statistics-object"></a>A. 1 つの特定の統計オブジェクトの更新
+<a id="a-update-one-specific-statistics-object" class="xliff"></a>
+
+### A. 1 つの特定の統計オブジェクトの更新
 特定の統計オブジェクトを更新するには、次の構文を使用します。
 
 ```sql
@@ -333,7 +365,9 @@ UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
 
 特定の統計オブジェクトを更新することで、統計を管理するために必要な時間とリソースを最小限に抑えることができます。 ただし、この場合、更新する最適な統計オブジェクトの選択について少し検討する必要があります。
 
-### <a name="b-update-all-statistics-on-a-table"></a>B. テーブルのすべての統計の更新
+<a id="b-update-all-statistics-on-a-table" class="xliff"></a>
+
+### B. テーブルのすべての統計の更新
 テーブルのすべての統計オブジェクトを更新する簡単な方法を次に示します。
 
 ```sql
@@ -357,10 +391,14 @@ UPDATE STATISTICS dbo.table1;
 
 完全な構文については、MSDN の [Update Statistics][Update Statistics] に関するページをご覧ください。
 
-## <a name="statistics-metadata"></a>統計のメタデータ
+<a id="statistics-metadata" class="xliff"></a>
+
+## 統計のメタデータ
 統計に関する情報を確認する際に使用できるシステム ビューとシステム関数がいくつかあります。 たとえば、stats-date 関数を使用して、統計が最後に作成または更新されたのがいつであるかを確認することで、統計オブジェクトが古くなっているかどうかがわかります。
 
-### <a name="catalog-views-for-statistics"></a>統計のカタログ ビュー
+<a id="catalog-views-for-statistics" class="xliff"></a>
+
+### 統計のカタログ ビュー
 次のシステム ビューは、統計に関する情報を提供します。
 
 | カタログ ビュー | Description |
@@ -373,7 +411,9 @@ UPDATE STATISTICS dbo.table1;
 | [sys.tables][sys.tables] |テーブル (外部テーブルを含む) ごとに 1 行。 |
 | [sys.table_types][sys.table_types] |データ型ごとに 1 行。 |
 
-### <a name="system-functions-for-statistics"></a>統計のシステム関数
+<a id="system-functions-for-statistics" class="xliff"></a>
+
+### 統計のシステム関数
 次のシステム関数は統計の操作に役立ちます。
 
 | システム関数 | Description |
@@ -381,7 +421,9 @@ UPDATE STATISTICS dbo.table1;
 | [STATS_DATE][STATS_DATE] |統計オブジェクトの最終更新日。 |
 | [DBCC SHOW_STATISTICS][DBCC SHOW_STATISTICS] |統計オブジェクトで認識される値の分布に関する概要レベルの情報と詳細情報を提供します。 |
 
-### <a name="combine-statistics-columns-and-functions-into-one-view"></a>1 つのビューへの統計列と関数の統合
+<a id="combine-statistics-columns-and-functions-into-one-view" class="xliff"></a>
+
+### 1 つのビューへの統計列と関数の統合
 このビューには、統計に関連する列と、[STATS_DATE()][] 関数の結果が一緒に表示されます。
 
 ```sql
@@ -420,7 +462,9 @@ AND     st.[user_created] = 1
 ;
 ```
 
-## <a name="dbcc-showstatistics-examples"></a>DBCC SHOW_STATISTICS() の例
+<a id="dbcc-showstatistics-examples" class="xliff"></a>
+
+## DBCC SHOW_STATISTICS() の例
 DBCC SHOW_STATISTICS() は、統計オブジェクト内に保持されているデータを表示します。 このデータは 3 つの部分で提供されます。
 
 1. ヘッダー
@@ -429,7 +473,9 @@ DBCC SHOW_STATISTICS() は、統計オブジェクト内に保持されている
 
 ヘッダーには、統計に関するメタデータが含まれます。 ヒストグラムには、統計オブジェクトの最初のキー列の値の分布が表示されます。 密度ベクトルは、列間の相関関係を測定します。 SQLDW では、統計オブジェクト内のデータを使用して基数推定値を計算します。
 
-### <a name="show-header-density-and-histogram"></a>ヘッダー、密度、ヒストグラムの表示
+<a id="show-header-density-and-histogram" class="xliff"></a>
+
+### ヘッダー、密度、ヒストグラムの表示
 次の簡単な例は、統計オブジェクトの 3 つの部分をすべて表示します。
 
 ```sql
@@ -442,7 +488,9 @@ DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
 ```
 
-### <a name="show-one-or-more-parts-of-dbcc-showstatistics"></a>DBCC SHOW_STATISTICS(); の 1 つ以上の部分の表示
+<a id="show-one-or-more-parts-of-dbcc-showstatistics" class="xliff"></a>
+
+### DBCC SHOW_STATISTICS(); の 1 つ以上の部分の表示
 特定の部分だけを表示する場合は、`WITH` 句を使用して表示する部分を指定します。
 
 ```sql
@@ -455,7 +503,9 @@ DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>) WITH stat_header
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 ```
 
-## <a name="dbcc-showstatistics-differences"></a>DBCC SHOW_STATISTICS() の相違点
+<a id="dbcc-showstatistics-differences" class="xliff"></a>
+
+## DBCC SHOW_STATISTICS() の相違点
 SQL Server に比べ、SQL Data Warehouse では、DBCC SHOW_STATISTICS() がより厳密に実装されています。
 
 1. ドキュメントに記載されていない機能はサポートされていません。
@@ -466,7 +516,9 @@ SQL Server に比べ、SQL Data Warehouse では、DBCC SHOW_STATISTICS() がよ
 6. 列名を使用して、統計オブジェクトを識別することはできません。
 7. カスタム エラー 2767 はサポートされていません。
 
-## <a name="next-steps"></a>次のステップ
+<a id="next-steps" class="xliff"></a>
+
+## 次のステップ
 MSDN の [DBCC SHOW_STATISTICS][DBCC SHOW_STATISTICS] に関するページで詳細を確認します。  [テーブルの概要][Overview]、[テーブルのデータ型][Data Types]、[テーブルの分散][Distribute]、[テーブルのインデックス作成][Index]、[テーブルのパーティション分割][Partition]、[一時テーブル][Temporary]に関する各記事で詳細を確認します。  [SQL Data Warehouse のベスト プラクティス][SQL Data Warehouse Best Practices]に関する記事でベスト プラクティスの詳細を確認します。  
 
 <!--Image references-->
