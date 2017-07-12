@@ -15,15 +15,20 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 41d63ef88e9f0caf3d5f74841ec4670875fdaad1
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: aadbe872dd3384c8d337b432fb3be69422ca322b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
-# <a name="analyze-azure-cdn-usage-patterns"></a>Azure CDN の使用パターンを分析する
-[!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)] 以下のガイドでは、Verizon プロファイルの管理ポータルを使用してコア レポートを表示する手順について説明します。 [Azure Portal を使用](cdn-log-analysis.md)して、Verizon と Akamai 両方のプロファイルについて、コア分析データをストレージ、イベント ハブ、またはログ分析 (oms) にエクスポートすることもできます。
+<a id="analyze-azure-cdn-usage-patterns" class="xliff"></a>
+
+# Azure CDN の使用パターンを分析する
+
+[!INCLUDE[cdn-verizon-only](../../includes/cdn-verizon-only.md)]
+
+以下のガイドでは、Verizon プロファイルの管理ポータルを使用してコア レポートを表示する手順について説明します。 [Azure Portal を使用](cdn-log-analysis.md)して、Verizon と Akamai 両方のプロファイルについて、コア分析データをストレージ、イベント ハブ、またはログ分析 (oms) にエクスポートすることもできます。
 
 次のレポートを使用して、CDN の使用パターンを表示できます。
 
@@ -34,7 +39,9 @@ ms.lasthandoff: 05/11/2017
 * キャッシュ ヒット率
 * 転送された IPV4/IPV6 データ
 
-## <a name="accessing-core-reports"></a>コア レポートへのアクセス
+<a id="accessing-core-reports" class="xliff"></a>
+
+## コア レポートへのアクセス
 1. CDN プロファイル ブレードで、 **[管理]** をクリックします。
    
     ![[CDN プロファイル] ブレードの [管理] ボタン](./media/cdn-reports/cdn-manage-btn.png)
@@ -44,7 +51,9 @@ ms.lasthandoff: 05/11/2017
    
     ![CDN management portal - Core Reports menu](./media/cdn-reports/cdn-core-reports.png)
 
-## <a name="bandwidth"></a>帯域幅
+<a id="bandwidth" class="xliff"></a>
+
+## 帯域幅
 帯域幅レポートは、特定の期間での HTTP および HTTPS の帯域幅の使用量を示すグラフやデータ テーブルで構成されます。 すべての CDN POP または特定の POP での帯域幅の使用量を表示できます。 CDN POP 間でのトラフィックの急増や分布を Mbps で表示できます。
 
 * [すべての Edge ノード] を選択してすべてのノードのトラフックを確認するか、ドロップダウン リストから特定のリージョン/ノードを選択します。
@@ -55,7 +64,9 @@ ms.lasthandoff: 05/11/2017
 
 ![帯域幅レポート](./media/cdn-reports/cdn-bandwidth.png)
 
-## <a name="data-transferred"></a>転送されたデータ
+<a id="data-transferred" class="xliff"></a>
+
+## 転送されたデータ
 このレポートは、特定の期間における HTTP および HTTPS のトラフィックの使用量を示すグラフやデータ テーブルで構成されます。 すべての CDN POP または特定の POP でのトラフィックの使用量を表示できます。 CDN POP 間でのトラフィックの急増や分布を GB で表示できます。
 
 * [すべてのエッジ ノード] を選択してすべてのノードのトラフックを確認するか、ドロップダウン リストから特定のリージョン/ノードを選択します。
@@ -66,7 +77,9 @@ ms.lasthandoff: 05/11/2017
 
 ![転送されたデータ レポート](./media/cdn-reports/cdn-data-transferred.png)
 
-## <a name="hits-status-codes"></a>ヒット数 (状態コード)
+<a id="hits-status-codes" class="xliff"></a>
+
+## ヒット数 (状態コード)
 このレポートは、コンテンツの要求状態コードの分布を示します。 コンテンツのすべての要求で、HTTP 状態コードが生成されます。 状態コードにより、エッジ POP が要求をどのように処理したかがわかります。 たとえば、2xx 状態コードは、要求がクライアントに正常に提供されことを、4xx 状態コードは、エラーが発生したことを示します。 HTTP 状態コードの詳細については、 [状態コード](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)に関するページを参照してください。
 
 * [日付範囲] を選択して今日/今週/今月などのデータを表示するか、カスタム日付を入力し、[実行] をクリックして選択内容を更新します。
@@ -74,12 +87,16 @@ ms.lasthandoff: 05/11/2017
 
 ![ヒット数レポート](./media/cdn-reports/cdn-hits.png)
 
-## <a name="cache-statuses"></a>キャッシュの状態
+<a id="cache-statuses" class="xliff"></a>
+
+## キャッシュの状態
 このレポートは、クライアント要求のキャッシュ ヒット数とキャッシュ ミス数の分布を示します。 キャッシュ ヒット数から最速のパフォーマンスが得られるため、キャッシュ ミス数と期限切れのキャッシュ ヒット数を最小化することで、データ配信速度を最適化できます。 キャッシュ ミス数を減らすには、配信元サーバーを "キャッシュなし" 応答ヘッダーを割り当てないように構成し、必要でない限りクエリ文字列のキャッシングを回避し、キャッシュできない応答コードを回避します。 期限切れのキャッシュ ヒット数を減らすには、資産の最大期間をできるだけ長くして、配信元のサーバーへの要求数を最小化します。
 
 ![キャッシュの状態レポート](./media/cdn-reports/cdn-cache-statuses.png)
 
-### <a name="main-cache-statuses-include"></a>主なキャッシュの状態には次のようなものがあります。
+<a id="main-cache-statuses-include" class="xliff"></a>
+
+### 主なキャッシュの状態には次のようなものがあります。
 * TCP_HIT: Edge から提供されます。 オブジェクトはキャッシュ内にあり、その最大期間を超えませんでした。
 * TCP_MISS: 配信元から提供されます。 オブジェクトはキャッシュ内になく、応答が配信元に戻りました。
 * TCP_EXPIRED _MISS: 配信元との再検証後、配信元から提供されます。 オブジェクトはキャッシュ内にありましたが、その最大期間を超えました。 配信元との再検証により、キャッシュ オブジェクトが配信元からの新しい応答に置き換えられました。
@@ -87,7 +104,9 @@ ms.lasthandoff: 05/11/2017
 * [日付範囲] を選択して今日/今週/今月などのデータを表示するか、カスタム日付を入力し、[実行] をクリックして選択内容を更新します。
 * データをエクスポート、ダウンロードするには、[実行] の横にある Excel シートのアイコンをクリックします。
 
-### <a name="full-list-of-cache-statuses"></a>キャッシュの状態の完全な一覧
+<a id="full-list-of-cache-statuses" class="xliff"></a>
+
+### キャッシュの状態の完全な一覧
 * TCP_HIT - この状態は、要求が POP からクライアントに直接提供された場合に報告されます。 資産は、クライアントに一番近い POP でキャッシュされ、有効な有効期限 (TTL) がある場合に、POP から直ちに提供されます。 TTL は、次の応答ヘッダーによって決定されます。
   
   * Cache-Control: s-maxage
@@ -106,7 +125,9 @@ ms.lasthandoff: 05/11/2017
 * TCP_ PARTIAL_HIT - この状態は、バイト範囲の要求で、部分的にキャッシュされた資産のヒットが発生した場合に報告されます。 要求されたバイト範囲は、POP からクライアントに直ちに提供されます。
 * UNCACHEABLE - この状態は、資産の Cache-Control と Expires ヘッダーで、資産が POP で、または HTTP クライアントによりキャッシュされる必要があることが示された場合に報告されます。 この種の要求は、配信元サーバーから提供されます。
 
-## <a name="cache-hit-ratio"></a>キャッシュ ヒット率
+<a id="cache-hit-ratio" class="xliff"></a>
+
+## キャッシュ ヒット率
 このレポートは、キャッシュから直接提供されたキャッシュされた要求の割合を示します。
 
 レポートは次の詳細を示します。
@@ -128,7 +149,9 @@ ms.lasthandoff: 05/11/2017
 
 ![キャッシュ ヒット率レポート](./media/cdn-reports/cdn-cache-hit-ratio.png)
 
-## <a name="ipv4ipv6-data-transferred"></a>転送された IPV4/IPV6 データ
+<a id="ipv4ipv6-data-transferred" class="xliff"></a>
+
+## 転送された IPV4/IPV6 データ
 このレポートは、IPV4 と IPV6 のトラフィック使用量の分布を示します。
 
 ![転送された IPV4/IPV6 データ](./media/cdn-reports/cdn-ipv4-ipv6.png)
@@ -136,7 +159,9 @@ ms.lasthandoff: 05/11/2017
 * [日付範囲] を選択して今日/今週/今月などのデータを表示するか、カスタム日付を入力します。
 * 次に、[実行] をクリックして、選択内容を更新します。
 
-## <a name="considerations"></a>考慮事項
+<a id="considerations" class="xliff"></a>
+
+## 考慮事項
 レポートは過去 18 か月分のみ生成できます。
 
 
