@@ -1,4 +1,6 @@
-### <a name="create-a-tcp-endpoint-for-the-virtual-machine"></a>仮想マシン用の TCP エンドポイントを作成する
+<a id="create-a-tcp-endpoint-for-the-virtual-machine" class="xliff"></a>
+
+### 仮想マシン用の TCP エンドポイントを作成する
 インターネットから SQL Server にアクセスするには、仮想マシンに、着信する TCP 通信をリッスンするエンドポイントが必要です。 この Azure 構成手順により、仮想マシンからアクセスできる TCP ポートに、着信する TCP ポート トラフィックが送信されます。
 
 > [!NOTE]

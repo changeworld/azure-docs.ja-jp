@@ -1,10 +1,11 @@
 ---
 redirect_url: /azure/virtual-machines/windows/overview
-redirect_document_id: true
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 7ca57746ba9a0de6692623c51d8f48aab51d2a68
+redirect_document_id: false
+ms.translationtype: HT
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: 4ecc4b1420464ae1c435c14d8e6db69880fe5e13
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/12/2017
 
 ---
+
