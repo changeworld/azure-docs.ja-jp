@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: raynew
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 858ed6ca4355c36c728ae88bf9488f362d487646
-ms.openlocfilehash: 7ffef4a8dcd10fa6608d200b4ca34fb3517c0cc6
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: d686d411b0877d2e4aef992e6b28da2a6f03b66e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/22/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -431,8 +431,8 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
    4. 次を実行して gzipped インストーラーからファイルを抽出します。**tar –xvzf Microsoft-ASR_UA_8.4.0.0_RHEL6-64***
       ![Linux マスター ターゲット サーバー](./media/site-recovery-vmware-to-azure-classic-legacy/linux-tar.png)
    5. tar ファイルの内容を抽出したディレクトリで操作していることを確認します。
-   6. **echo* `<passphrase>`* >passphrase.txt** コマンドを使用して、構成サーバーのパスフレーズをローカル ファイルにコピーします。
-   7. コマンド "**sudo ./install -t both -a host -R MasterTarget -d /usr/local/ASR -i* `<Configuration server internal IP address>`* -p 443 -s y -c https -P passphrase.txt**" を実行します。
+   6. **echo *`<passphrase>`* >passphrase.txt** コマンドを使用して、構成サーバーのパスフレーズをローカル ファイルにコピーします。
+   7. コマンド "**sudo ./install -t both -a host -R MasterTarget -d /usr/local/ASR -i *`<Configuration server internal IP address>`* -p 443 -s y -c https -P passphrase.txt**" を実行します。
 
       ![ターゲット サーバーの登録](./media/site-recovery-vmware-to-azure-classic-legacy/linux-mt-install.png)
 7. 10 ～ 15 分間待機してから、**[サーバー]** > **[構成サーバー]** ページの **[サーバーの詳細]** タブでマスター ターゲット サーバーが登録済みとして表示されていることを確認します。 Linux を実行していて、登録されていない場合は、/usr/local/ASR/Vx/bin/hostconfigcli からホストの構成ツールをもう一度実行してください。 root として chmod を実行し、アクセス許可を設定する必要があります。

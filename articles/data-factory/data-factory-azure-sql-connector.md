@@ -1,6 +1,6 @@
 ---
-title: "Azure SQL Database との間でのデータの移動 | Microsoft Docs"
-description: "Azure Data Factory を使用して Azure SQL Database に、または Azure SQL Database からデータを移動する方法を説明します。"
+title: "Azure SQL Database との間でのデータのコピー | Microsoft Docs"
+description: "Azure Data Factory を使用して Azure SQL Database に、または Azure SQL Database からデータをコピーする方法を説明します。"
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -12,24 +12,40 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/14/2017
+ms.date: 06/04/2017
 ms.author: jingwang
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: c2616c6ff91a8fe78d60ed3bbae90b0739a6c104
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: a64d13fa7dc5f50c259b98774be80b603dce400a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
-# <a name="move-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>Azure Data Factory を使用した Azure SQL Database との間でのデータの移動
+<a id="copy-data-to-and-from-azure-sql-database-using-azure-data-factory" class="xliff"></a>
+
+# Azure Data Factory を使用した Azure SQL Database との間でのデータのコピー
 この記事では、Azure Data Factory のコピー アクティビティを使って、Azure SQL Database との間でデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。  
 
-サポートされる任意のソース データ ストアのデータを、Azure SQL Database にコピーしたり、Azure SQL Database のデータを、サポートされる任意のシンク データ ストアにコピーしたりできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関するページの表をご覧ください。
+<a id="supported-scenarios" class="xliff"></a>
 
-## <a name="supported-authentication-type"></a>サポートされている認証の種類
+## サポートされるシナリオ
+**Azure SQL Database から**以下のデータ ストアにデータをコピーできます。
+
+[!INCLUDE [data-factory-supported-sinks](../../includes/data-factory-supported-sinks.md)]
+
+以下のデータ ストアから **Azure SQL Database に**データをコピーできます。
+
+[!INCLUDE [data-factory-supported-sources](../../includes/data-factory-supported-sources.md)]
+
+<a id="supported-authentication-type" class="xliff"></a>
+
+## サポートされている認証の種類
 Azure SQL Database コネクタは基本認証をサポートしています。
 
-## <a name="getting-started"></a>使用の開始
+<a id="getting-started" class="xliff"></a>
+
+## 使用の開始
 さまざまなツール/API を使用して、Azure SQL Database との間でデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
 パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
@@ -38,15 +54,18 @@ Azure SQL Database コネクタは基本認証をサポートしています。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。 
 
-1. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
-2. コピー操作用の入力データと出力データを表す**データセット**を作成します。 
-3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 
+1. **Data Factory**を作成します。 データ ファクトリには、1 つまたは複数のパイプラインを設定できます。 
+2. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。 たとえば、Azure Blob Storage から Azure SQL Database にデータをコピーする場合、リンクされたサービスを 2 つ作成して、Azure ストレージ アカウントと Azure SQL Database をデータ ファクトリにリンクします。 Azure SQL Database に固有のリンクされたサービスのプロパティについては、「[リンクされたサービスのプロパティ](#linked-service-properties)」セクションをご覧ください。 
+3. コピー操作用の入力データと出力データを表す**データセット**を作成します。 最後の手順で説明されている例では、データセットを作成して入力データを含む BLOB コンテナーとフォルダーを指定します。 また、もう 1 つのデータセットを作成して、Blob Storage からコピーされたデータを保持する Azure SQL Database の SQL テーブルを指定します。 Azure Data Lake Store に固有のデータセットのプロパティについては、「[データセットのプロパティ](#dataset-properties)」セクションをご覧ください。
+4. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 前に説明した例では、コピー アクティビティのソースとして BlobSource を、シンクとして SqlSink を使います。 同様に、Azure SQL Database から Azure Blob Storage にコピーする場合は、SqlSource と BlobSink をコピー アクティビティで使います。 Azure SQL Database に固有のコピー アクティビティのプロパティについては、「[コピー アクティビティのプロパティ](#copy-activity-properties)」セクションをご覧ください。 ソースまたはシンクとしてデータ ストアを使う方法について詳しくは、前のセクションのデータ ストアのリンクをクリックしてください。
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 ツール/API (.NET API を除く) を使う場合、こうした Data Factory エンティティは、JSON 形式で定義します。  Azure SQL Database との間でデータをコピーするときに使用する Data Factory エンティティの JSON 定義のサンプルについては、この記事の「[JSON の使用例](#json-examples)」を参照してください。 
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 ツール/API (.NET API を除く) を使う場合、こうした Data Factory エンティティは、JSON 形式で定義します。  Azure SQL Database との間でデータをコピーするときに使用する Data Factory エンティティの JSON 定義のサンプルについては、この記事の「[JSON の使用例](#json-examples-for-copying-data-to-and-from-sql-database)」を参照してください。 
 
 以下のセクションでは、Azure SQL Database に固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。 
 
-## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
+<a id="linked-service-properties" class="xliff"></a>
+
+## リンクされたサービスのプロパティ
 Azure SQL のリンクされたサービスは、Azure SQL データベースをデータ ファクトリにリンクします。 次の表は、Azure SQL のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
 | プロパティ | 説明 | 必須 |
@@ -57,7 +76,9 @@ Azure SQL のリンクされたサービスは、Azure SQL データベースを
 > [!IMPORTANT]
 > [サーバーへのアクセスを Azure サービスに許可する](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)ように [Azure SQL Database ファイアウォール](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) データベース サーバーを構成します。 また、Azure の外部から (たとえば、Data Factory ゲートウェイのあるオンプレミスのデータ ソースから) Azure SQL Database にデータをコピーする場合、Azure SQL Database にデータを送信するマシンに適切な IP アドレス範囲を設定します。
 
-## <a name="dataset-properties"></a>データセットのプロパティ
+<a id="dataset-properties" class="xliff"></a>
+
+## データセットのプロパティ
 データセットを指定して Azure SQL Database の入力データまたは出力データを表すには、そのデータセットの type プロパティを **AzureSqlTable** に設定します。 また、データセットの **linkedServiceName** プロパティは、Azure SQL のリンクされたサービスの名前に設定します。  
 
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
@@ -68,7 +89,9 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 | --- | --- | --- |
 | tableName |リンクされたサービスが参照する Azure SQL Database インスタンスのテーブルまたはビューの名前です。 |はい |
 
-## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
+<a id="copy-activity-properties" class="xliff"></a>
+
+## コピー アクティビティのプロパティ
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
 
 > [!NOTE]
@@ -78,13 +101,15 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 Azure SQL データベースからデータを移動する場合は、コピー アクティビティのソースの種類を **SqlSource**に設定します。 同様に、Azure SQL データベースにデータを移動する場合は、コピー アクティビティのシンクの種類を **SqlSink**に設定します。 このセクションでは、SqlSource と SqlSink でサポートされるプロパティの一覧を示します。
 
-### <a name="sqlsource"></a>SqlSource
+<a id="sqlsource" class="xliff"></a>
+
+### SqlSource
 コピー アクティビティで、source の種類が **SqlSource** である場合は、**typeProperties** セクションで次のプロパティを使用できます。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | SqlReaderQuery |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: `select * from MyTable`. |なし |
-| sqlReaderStoredProcedureName |ソース テーブルからデータを読み取るストアド プロシージャの名前。 |ストアド プロシージャの名前。 最後の SQL ステートメントはストアド プロシージャの SELECT ステートメントにする必要があります。 |いいえ |
+| sqlReaderStoredProcedureName |ソース テーブルからデータを読み取るストアド プロシージャの名前。 |ストアド プロシージャの名前。 最後の SQL ステートメントはストアド プロシージャの SELECT ステートメントにする必要があります。 |なし |
 | storedProcedureParameters |ストアド プロシージャのパラメーター。 |名前と値のペア。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |なし |
 
 SqlSource に **sqlReaderQuery** が指定されている場合、コピー アクティビティでは、データを取得するために Azure SQL Database ソースに対してこのクエリを実行します。 または、**sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。
@@ -96,7 +121,9 @@ sqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、Az
 >
 >
 
-### <a name="sqlsource-example"></a>SqlSource の例
+<a id="sqlsource-example" class="xliff"></a>
+
+### SqlSource の例
 
 ```JSON
 "source": {
@@ -128,20 +155,24 @@ END
 GO
 ```
 
-### <a name="sqlsink"></a>パイプライン
+<a id="sqlsink" class="xliff"></a>
+
+### パイプライン
 **SqlSink** では次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。 |timespan<br/><br/> 例: "00:30:00" (30 分)。 |いいえ |
 | writeBatchSize |バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。 |整数 (行数) |いいえ (既定値: 10000) |
-| sqlWriterCleanupScript |特定のスライスのデータを消去するコピー アクティビティのクエリを指定します。 詳細については、 [再現性に関するセクション](#repeatability-during-copy)をご覧ください。 |クエリ ステートメント。 |いいえ |
-| sliceIdentifierColumnName |自動生成スライス ID を入力するためのコピー アクティビティの列名を指定します。再実行時、特定のスライスのデータを消去するときに使用されます。 詳細については、 [再現性に関するセクション](#repeatability-during-copy)をご覧ください。 |バイナリ (32) のデータ型の列の列名。 |いいえ |
+| sqlWriterCleanupScript |特定のスライスのデータを消去するコピー アクティビティのクエリを指定します。 詳細については、「[反復可能なコピー](#repeatable-copy)」を参照してください。 |クエリ ステートメント。 |いいえ |
+| sliceIdentifierColumnName |自動生成スライス ID を入力するためのコピー アクティビティの列名を指定します。再実行時、特定のスライスのデータを消去するときに使用されます。 詳細については、「[反復可能なコピー](#repeatable-copy)」を参照してください。 |バイナリ (32) のデータ型の列の列名。 |いいえ |
 | sqlWriterStoredProcedureName |対象テーブルにデータをアップサート (更新/挿入) するストアド プロシージャの名前。 |ストアド プロシージャの名前。 |いいえ |
 | storedProcedureParameters |ストアド プロシージャのパラメーター。 |名前と値のペア。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |いいえ |
 | sqlWriterTableType |ストアド プロシージャで使用するテーブル型の名前を指定します。 コピー アクティビティでは、このテーブル型の一時テーブルでデータを移動できます。 その後、ストアド プロシージャのコードにより、コピーされたデータを既存のデータと結合できます。 |テーブルの種類の名前。 |なし |
 
-#### <a name="sqlsink-example"></a>SqlSink の例
+<a id="sqlsink-example" class="xliff"></a>
+
+#### SqlSink の例
 
 ```JSON
 "sink": {
@@ -158,10 +189,14 @@ GO
 }
 ```
 
-## <a name="json-examples"></a>JSON の使用例
+<a id="json-examples-for-copying-data-to-and-from-sql-database" class="xliff"></a>
+
+## SQL Database との間でのデータのコピーに関する JSON の例
 以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、Azure SQL Database と Azure BLOB ストレージの間でデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、 **こちら** に記載されているいずれかのシンクに、任意のソースからデータを [直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats) コピーすることができます。
 
-## <a name="example-copy-data-from-azure-sql-database-to-azure-blob"></a>例: Azure SQL Database から Azure BLOB へのデータのコピー
+<a id="example-copy-data-from-azure-sql-database-to-azure-blob" class="xliff"></a>
+
+### 例: Azure SQL Database から Azure BLOB へのデータのコピー
 このサンプルでは、次の Data Factory のエンティティを定義します。
 
 1. [AzureSqlDatabase](#linked-service-properties)型のリンクされたサービス。
@@ -353,7 +388,9 @@ sqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、Az
 
 SqlSource と BlobSink でサポートされるプロパティの一覧については、「[SqlSource](#sqlsource)」および [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) に関する記述を参照してください。
 
-## <a name="example-copy-data-from-azure-blob-to-azure-sql-database"></a>例: Azure BLOB から Azure SQL Database へのデータのコピー
+<a id="example-copy-data-from-azure-blob-to-azure-sql-database" class="xliff"></a>
+
+### 例: Azure BLOB から Azure SQL Database へのデータのコピー
 このサンプルでは、次の Data Factory のエンティティを定義します。  
 
 1. [AzureSqlDatabase](#linked-service-properties)型のリンクされたサービス。
@@ -539,7 +576,9 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 ```
 SqlSink と BlobSource でサポートされるプロパティの一覧については、「[Sql Sink](#sqlsink)」および [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) に関する記述を参照してください。
 
-## <a name="identity-columns-in-the-target-database"></a>ターゲット データベースの ID 列
+<a id="identity-columns-in-the-target-database" class="xliff"></a>
+
+## ターゲット データベースの ID 列
 このセクションでは、ID 列がないソース テーブルから ID 列がある対象テーブルにデータをコピーする例を示します。
 
 **ソース テーブル:**
@@ -610,24 +649,20 @@ create table dbo.TargetTbl
 
 ソースとターゲット テーブルには異なるスキーマがあることに注意してください (ターゲットには ID を持つ追加の列があります)。 このシナリオでは、ターゲット データセット定義で **structure** プロパティを指定する必要があります。ここでは、ID 列は含みません。
 
-## <a name="map-source-to-sink-columns"></a>ソース列からシンク列へのマップ
-ソース データセット列のシンク データセット列へのマッピングの詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。
+<a id="invoke-stored-procedure-from-sql-sink" class="xliff"></a>
 
-## <a name="repeatable-copy"></a>反復可能なコピー
-SQL Server Database にデータをコピーすると、既定では、コピー アクティビティによりデータがシンク テーブルに付加されます。 代わりに UPSERT を実行するには、「[SqlSink への反復可能な書き込み](data-factory-repeatable-copy.md#repeatable-write-to-sqlsink)」を参照してください。 
-
-リレーショナル データ ストアからデータをコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。 Azure Data Factory では、スライスを手動で再実行できます。 障害が発生したときにスライスを再実行できるように、データセットの再試行ポリシーを構成することもできます。 いずれかの方法でスライスが再実行された際は、何度スライスが実行されても同じデータが読み込まれることを確認する必要があります。 「[リレーショナル ソースからの反復可能な読み取り](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)」を参照してください。
-
-## <a name="invoke-stored-procedure-from-sql-sink"></a>SQL シンクからのストアド プロシージャの呼び出し
+## SQL シンクからのストアド プロシージャの呼び出し
 パイプラインのコピー アクティビティで SQL シンクからストアド プロシージャを呼び出す例については、[コピー アクティビティでの SQL シンクのストアド プロシージャの呼び出し](data-factory-invoke-stored-procedure-from-copy-activity.md)に関する記事をご覧ください。 
 
-## <a name="sql-database-to-net-type-mapping"></a>SQL Database と .NET の型のマッピング
+<a id="type-mapping-for-azure-sql-database" class="xliff"></a>
+
+## Azure SQL Database の型のマッピング
 [データ移動アクティビティ](data-factory-data-movement-activities.md) に関する記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
 
 1. ネイティブの source 型から .NET 型に変換する
 2. .NET 型からネイティブの sink 型に変換する
 
-Azure SQL との間でデータを移動するとき、SQL 型から .NET 型へのマッピング (およびその逆) に次のマッピングが使用されます。 マッピングは ADO.NET の SQL Server データ型マッピングと同じです。
+Azure SQL Database との間でデータを移動するとき、SQL 型から .NET 型へのマッピング (およびその逆) に次のマッピングが使用されます。 マッピングは ADO.NET の SQL Server データ型マッピングと同じです。
 
 | SQL Server Databases エンジンの型 | .NET Framework 型 |
 | --- | --- |
@@ -664,6 +699,20 @@ Azure SQL との間でデータを移動するとき、SQL 型から .NET 型へ
 | varchar |String、Char[] |
 | xml |xml |
 
-## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
+<a id="map-source-to-sink-columns" class="xliff"></a>
+
+## ソース列からシンク列へのマップ
+ソース データセット列のシンク データセット列へのマッピングの詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。
+
+<a id="repeatable-copy" class="xliff"></a>
+
+## 反復可能なコピー
+SQL Server Database にデータをコピーすると、既定では、コピー アクティビティによりデータがシンク テーブルに付加されます。 代わりに UPSERT を実行するには、「[SqlSink への反復可能な書き込み](data-factory-repeatable-copy.md#repeatable-write-to-sqlsink)」を参照してください。 
+
+リレーショナル データ ストアからデータをコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。 Azure Data Factory では、スライスを手動で再実行できます。 障害が発生したときにスライスを再実行できるように、データセットの再試行ポリシーを構成することもできます。 いずれかの方法でスライスが再実行された際は、何度スライスが実行されても同じデータが読み込まれることを確認する必要があります。 [リレーショナル ソースからの反復可能読み取り](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)に関するページをご覧ください。
+
+<a id="performance-and-tuning" class="xliff"></a>
+
+## パフォーマンスとチューニング
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 

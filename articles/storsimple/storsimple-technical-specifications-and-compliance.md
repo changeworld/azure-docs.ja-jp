@@ -14,17 +14,25 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d82f352d714c0272296eb36782cbbcbac99a1bab
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: ac1f6fbd40770374f68d0d280fc1cc040e41b1ef
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
-# <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>StorSimple デバイスの技術的仕様とコンプライアンス
-## <a name="overview"></a>Overview
+<a id="technical-specifications-and-compliance-for-the-storsimple-device" class="xliff"></a>
+
+# StorSimple デバイスの技術的仕様とコンプライアンス
+<a id="overview" class="xliff"></a>
+
+## Overview
 Microsoft Azure StorSimple デバイスのハードウェア コンポーネントは、この記事で説明されている技術的仕様と規制標準に準拠します。 技術的仕様では、電源と冷却モジュール (PCM)、ディスク ドライブ、記憶域容量、エンクロージャについて説明します。 対応情報では、国際標準、安全性と排出量、ケーブルなどについて説明します。
 
-## <a name="power-and-cooling-module-specifications"></a>電源および冷却モジュールの仕様
+<a id="power-and-cooling-module-specifications" class="xliff"></a>
+
+## 電源および冷却モジュールの仕様
 StorSimple デバイスには、100-240V デュアル ファンの SBB 対応電源冷却モジュール (PCM) が 2 台搭載されています。 そのため、電源が冗長構成になります。 1 台の PCM に障害が発生した場合、障害が発生したモジュールが交換されるまで、デバイスはもう一方の PCM で通常どおり動作し続けます。  
 
 EBOD エンクロージャは 580 W PCM を使用し、主エンクロージャは 764 W PCM を使用します。 次の表に、PCM に関連する技術的仕様を示します。
@@ -44,7 +52,9 @@ EBOD エンクロージャは 580 W PCM を使用し、主エンクロージャ�
 | スイッチと LED |AC オン/オフ スイッチと 4 つのステータス インジケーター LED |AC オン/オフ スイッチと 6 つのステータス インジケーター LED |
 | エンクロージャの冷却 |軸流冷却ファン (可変ファン速度制御) |軸流冷却ファン (可変ファン速度制御) |
 
-## <a name="power-consumption-statistics"></a>消費電力の統計
+<a id="power-consumption-statistics" class="xliff"></a>
+
+## 消費電力の統計
 次の表に、StorSimple デバイスの各モデルの一般的な消費電力データ (実際の値は公開値と異なる場合があります) を示します。 
 
 | 条件 | 240 V AC | 240 V AC | 240 V AC | 110 V AC | 110 V AC | 110 V AC |
@@ -56,10 +66,14 @@ EBOD エンクロージャは 580 W PCM を使用し、主エンクロージャ�
 |  ファンは高速、ドライブはアクセス中、2 台の PSU が稼働 |2.26 A |0.51 kW |1740.19 BTU/時 |4.95 A |0.54 kW |1842.56 BTU/時 |
 |  ファンは高速、ドライブはアクセス中、PSU は 1 台が稼働し 1 台がアイドル状態 |2.14 A |0.49 kW |1671.95 BTU/時 |4.81 A |0.53 kW |1808.44 BTU/時 |
 
-## <a name="disk-drive-specifications"></a>ディスク ドライブの仕様
+<a id="disk-drive-specifications" class="xliff"></a>
+
+## ディスク ドライブの仕様
 StorSimple デバイスでは 3.5 インチのフォーム ファクターの Serial Attached SCSI (SAS) ディスク ドライブが 12 台までサポートされます。 実際のドライブは、製品の構成に応じてソリッド ステート ドライブ (SSD) とハード ディスク ドライブ (HDD) の組み合わせになる場合があります。 12 個のディスク ドライブ スロットは、エンクロージャの前面に 3 x 4 で配置されています。 EBOD エンクロージャでは別の 12 台のディスク ドライブによる追加の記憶域を利用できます。 これらはすべて HDD にする必要があります。  
 
-## <a name="storage-specifications"></a>Storage の仕様
+<a id="storage-specifications" class="xliff"></a>
+
+## Storage の仕様
 StorSimple デバイスには、8100 と 8600 のどちらにもハード ディスク ドライブとソリッド ステート ドライブが搭載されています。 8100 と 8600 の使用可能な容量の合計は、それぞれ約 15 TB と 38 TB です。 次の表は、StorSimple ソリューション容量のコンテキストの SSD、HDD、クラウド容量の詳細について説明した一覧です。
 
 | デバイス モデル/容量 | 8100 | 8600 |
@@ -74,12 +88,16 @@ StorSimple デバイスには、8100 と 8600 のどちらにもハード ディ
 | 合計の使用可能な容量* |～ 15 TB |～ 38 TB |
 | ソリューションの最大容量 (クラウドを含む) |200 TB |500 TB |
 
-<sup>* </sup>- *使用可能な容量の合計には、データ、メタデータ、バッファーに使用できる容量が含まれています。*
+<sup>*  </sup>- *使用可能な容量の合計には、データ、メタデータ、バッファーに使用できる容量が含まれています。*
 
-## <a name="enclosure-dimensions-and-weight-specifications"></a>エンクロージャの寸法と重量
+<a id="enclosure-dimensions-and-weight-specifications" class="xliff"></a>
+
+## エンクロージャの寸法と重量
 次の表に、エンクロージャの寸法と重量の各種仕様を示します。  
 
-### <a name="enclosure-dimensions"></a>エンクロージャの寸法
+<a id="enclosure-dimensions" class="xliff"></a>
+
+### エンクロージャの寸法
 次の表に、エンクロージャの寸法を示します (mm およびインチ単位)。
 
 | エンクロージャ | mm | インチ |
@@ -91,7 +109,9 @@ StorSimple デバイスには、8100 と 8600 のどちらにもハード ディ
 | 操作パネルからエンクロージャ最遠端までの奥行 |630.5 |24.82 |
 | 取り付け用フランジからエンクロージャ最遠端までの奥行 |603 |23.74 |
 
-### <a name="enclosure-weight"></a>エンクロージャの重量
+<a id="enclosure-weight" class="xliff"></a>
+
+### エンクロージャの重量
 フル装備の主エンクロージャの重量は構成に応じて 21 ～ 33 kg になり、2 人で取り扱う必要があります。 
 
 | エンクロージャ | 重量 |
@@ -99,16 +119,22 @@ StorSimple デバイスには、8100 と 8600 のどちらにもハード ディ
 | 最大重量 (構成によって異なる) |30 ～ 33 kg |
 | 空 (ドライブ未搭載) |21 ～ 23 kg |
 
-## <a name="enclosure-environment-specifications"></a>エンクロージャの環境仕様
+<a id="enclosure-environment-specifications" class="xliff"></a>
+
+## エンクロージャの環境仕様
 ここでは、エンクロージャの環境に関連する仕様を示します。 温度、湿度、高度、衝撃、振動、定位、安全性、電磁両立性 (EMC) が記載されています。  
 
-### <a name="temperature-and-humidity"></a>温度と湿度
+<a id="temperature-and-humidity" class="xliff"></a>
+
+### 温度と湿度
 | エンクロージャ | 周辺温度の範囲 | 相対周辺湿度 | 最高湿球温度 |
 | --- | --- | --- | --- |
 | 運用時 |5 ～ 35°C (41 ～ 95°F) |20 ～ 80% (結露なし) |28°C (82°F) |
 | 非運用時 |-40 ～ 70°C (40 ～ 158°F) |5 ～ 100% (結露なし) |29°C (84°F) |
 
-### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>エアフロー、高度、衝撃、振動、定位、安全性、EMC
+<a id="airflow-altitude-shock-vibration-orientation-safety-and-emc" class="xliff"></a>
+
+### エアフロー、高度、衝撃、振動、定位、安全性、EMC
 | エンクロージャ | 運用上の仕様 |
 | --- | --- |
 | エアフロー |システムのエアフローは前面から背面方向です。 システムは低圧の背面排気環境で運用する必要があります。 ラックの扉と障害物によって生じる背圧が 5 パスカル (0.5 mm 水位計) を超えないようにしてください。 |
@@ -124,59 +150,76 @@ StorSimple デバイスには、8100 と 8600 のどちらにもハード ディ
 | 安全性と認可 |CE および UL EN 61000-3、IEC 61000-3、UL 61000-3 |
 | EMC |EN55022 (CISPR - A)、FCC A |
 
-## <a name="international-standards-compliance"></a>国際標準への準拠
+<a id="international-standards-compliance" class="xliff"></a>
+
+## 国際標準への準拠
 Microsoft Azure StorSimple デバイスは次の国際標準に準拠しています。  
 
 * CE - EN 60950 - 1  
 * IEC 60950 - 1 に対する CB レポート  
 * UL 60950 - 1 に対する UL および cUL  
 
-## <a name="safety-compliance"></a>安全性コンプライアンス
+<a id="safety-compliance" class="xliff"></a>
+
+## 安全性コンプライアンス
 Microsoft Azure StorSimple デバイスは次の安全性規格を満たしています。  
 
 * システム製品タイプ承認: UL、cUL、CE  
 * 安全性コンプライアンス: UL 60950、IEC 60950、EN 60950  
 
-## <a name="emc-compliance"></a>EMC コンプライアンス
+<a id="emc-compliance" class="xliff"></a>
+
+## EMC コンプライアンス
 Microsoft Azure StorSimple デバイスは次の EMC 規格を満たしています。  
 
-### <a name="emissions"></a>排出量
+<a id="emissions" class="xliff"></a>
+
+### 排出量
 デバイスは、伝導および放射される排出量レベルについて EMC に準拠しています。  
 
 * 伝導性排出物規制レベル:CFR 47 Part 15B Class A、EN55022 Class A、CISPR Class A  
 * 放射性排出物規制レベル:CFR 47 Part 15B Class A、EN55022 Class A、CISPR Class A   
 
-### <a name="harmonics-and-flicker"></a>高調波と明滅
+<a id="harmonics-and-flicker" class="xliff"></a>
+
+### 高調波と明滅
 デバイスは EN61000-3-2/3 に準拠しています。  
 
-### <a name="immunity-limit-levels"></a>電磁波耐性限界レベル
+<a id="immunity-limit-levels" class="xliff"></a>
+
+### 電磁波耐性限界レベル
 デバイスは EN55024 に準拠しています。  
 
-## <a name="ac-power-cord-compliance"></a>AC 電源コード対応
+<a id="ac-power-cord-compliance" class="xliff"></a>
+
+## AC 電源コード対応
 プラグおよび電源コード アセンブリ全体は、デバイスを使用する国の適切な標準を満たす必要があり、その国で許容される安全性の認定を受けている必要があります。 次の表では、米国およびヨーロッパの標準を示します。  
 
-### <a name="ac-power-cords---usa-must-be-nrtl-listed"></a>AC 電源コード - 米国 (NRTL にリストされている必要があります)
+<a id="ac-power-cords---usa-must-be-nrtl-listed" class="xliff"></a>
+
+### AC 電源コード - 米国 (NRTL にリストされている必要があります)
 | コンポーネント | 仕様 |
 | --- | --- |
 | コードの種類 |SV または SVT、18 AWG 以上、3 線、2.0 m 以下 |
 | プラグ |NEMA 5-15P 接地タイプ アタッチメント プラグ、定格 120 V、10 A、または IEC 320 C14、250 V、10 A |
 | ソケット |IEC 320 C-13、250 V、10 A |
 
-### <a name="ac-power-cords---europe"></a>AC 電源コード - ヨーロッパ
+<a id="ac-power-cords---europe" class="xliff"></a>
+
+### AC 電源コード - ヨーロッパ
 | コンポーネント | 仕様 |
 | --- | --- |
 | コードの種類 |整合、H05-VVF-3G1.0 |
 | ソケット |IEC 320 C-13、250 V、10 A |
 
-## <a name="supported-network-cables"></a>サポートされるネットワーク ケーブル
+<a id="supported-network-cables" class="xliff"></a>
+
+## サポートされるネットワーク ケーブル
 10 GbE ネットワーク インターフェイス、DATA 2、DATA 3 については、 [サポートされるネットワーク ケーブルとモジュールの一覧](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+<a id="next-steps" class="xliff"></a>
+
+## 次のステップ
 StorSimple デバイスをデータセンターにデプロイする準備ができました。 詳細については、「 [オンプレミスの StorSimple デバイス (Update 2) のデプロイ](storsimple-deployment-walkthrough-u2.md)」を参照してください。  
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
