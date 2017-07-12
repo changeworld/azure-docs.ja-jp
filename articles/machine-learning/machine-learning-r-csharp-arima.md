@@ -2,14 +2,17 @@
 
 ROBOTS: NOINDEX, NOFOLLOW
 redirect_url: https://gallery.cortanaintelligence.com/
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
 ms.openlocfilehash: be75a60762674ab347ab7adaddfb17c4208a2b9e
+ms.contentlocale: ja-jp
 ms.lasthandoff: 05/03/2017
 
 
 ---
-# <a name="deprecated-forecasting---autoregressive-integrated-moving-average-arima"></a>(非推奨) 予測 - 自己回帰統合の移動平均 (ARIMA)
+<a id="deprecated-forecasting---autoregressive-integrated-moving-average-arima" class="xliff"></a>
+
+# (非推奨) 予測 - 自己回帰統合の移動平均 (ARIMA)
 
 > [!NOTE]
 > Microsoft DataMarket は間もなく提供終了となる予定です。この API は推奨されていません。 
@@ -25,7 +28,9 @@ ms.lasthandoff: 05/03/2017
 > 
 > 
 
-## <a name="consumption-of-web-service"></a>Web サービスの使用
+<a id="consumption-of-web-service" class="xliff"></a>
+
+## Web サービスの使用
 このサービスは、4 つの引数を使用して、ARIMA 予測を計算します。
 入力引数は、次のとおりです。
 
@@ -49,7 +54,9 @@ ms.lasthandoff: 05/03/2017
 
 自動でサービスを使用するための複数の方法があります ([ここ](http://microsoftazuremachinelearning.azurewebsites.net/ArimaForecasting.aspx)にアプリケーション例があります)。
 
-### <a name="starting-c-code-for-web-service-consumption"></a>Web サービスを使用する C# コードを開始します。
+<a id="starting-c-code-for-web-service-consumption" class="xliff"></a>
+
+### Web サービスを使用する C# コードを開始します。
     public class Input
     {
         public string frequency;
@@ -79,21 +86,29 @@ ms.lasthandoff: 05/03/2017
           var scoreResult = result.ReadAsStringAsync().Result;
       }
 
-## <a name="creation-of-web-service"></a>Web サービスの作成
+<a id="creation-of-web-service" class="xliff"></a>
+
+## Web サービスの作成
 > この Web サービスは、Azure Machine Learning を使用して作成されました。 無料試用版の場合は、実験の作成と [Web サービスの発行](machine-learning-publish-a-machine-learning-web-service.md)に関する入門ビデオのほか、[azure.com/ml](http://azure.com/ml) もご覧ください。 Web サービスを作成した実験のスクリーン ショット、および実験内の各モジュールに対するコード例を以下に示します。
 > 
 > 
 
 Azure Machine Learning 内で、新しい空白の実験が作成されました。 入力データのサンプルは、事前定義済みのデータ スキーマにアップロードされました。 データ スキーマには [R スクリプトの実行][execute-r-script]モジュールがリンクされ、R の 'auto.arima' と 'forecast' 関数を使用して、ARIMA の予測モデルを生成します。 
 
-### <a name="experiment-flow"></a>実験フロー:
+<a id="experiment-flow" class="xliff"></a>
+
+### 実験フロー:
 ![Create workspace][2]
 
-#### <a name="module-1"></a>モジュール 1:
+<a id="module-1" class="xliff"></a>
+
+#### モジュール 1:
     # Add in the CSV file with the data in the format shown below 
 ![Create workspace][3]    
 
-#### <a name="module-2"></a>モジュール 2:
+<a id="module-2" class="xliff"></a>
+
+#### モジュール 2:
     # data input
     data <- maml.mapInputPort(1) # class: data.frame
     library(forecast)
@@ -121,10 +136,14 @@ Azure Machine Learning 内で、新しい空白の実験が作成されました
     maml.mapOutputPort("data.forecast");
 
 
-## <a name="limitations"></a>制限事項
+<a id="limitations" class="xliff"></a>
+
+## 制限事項
 これは、ARIMA 予測のきわめて簡単な例です。 上のコード例からわかるように、エラーのキャッチは実装されません。このサービスは、すべての変数が連続した正の値で、頻度を 1 より大きい整数にする必要があります。 日付と値のベクターの長さは同じにします。 日付変数の形式は、'/mm/dd/yyyy' とします。
 
-## <a name="faq"></a>FAQ
+<a id="faq" class="xliff"></a>
+
+## FAQ
 Web サービスの使用や Marketplace への発行に関するよく寄せられる質問については、 [ここ](machine-learning-marketplace-faq.md)をご覧ください。
 
 [1]: ./media/machine-learning-r-csharp-arima/arima-img1.png

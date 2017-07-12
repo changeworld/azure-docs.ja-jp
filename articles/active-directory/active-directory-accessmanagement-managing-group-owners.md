@@ -14,17 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2016
 ms.author: curtand
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
 ms.openlocfilehash: 8c4920107b5d05716021bcef80d3c52c25f6eade
+ms.contentlocale: ja-jp
 ms.lasthandoff: 12/29/2016
 
 
 ---
-# <a name="managing-owners-for-a-group"></a>グループの所有者の管理
+<a id="managing-owners-for-a-group" class="xliff"></a>
+
+# グループの所有者の管理
 リソースの所有者がリソースへのアクセスを Azure AD グループに割り当てたら、そのグループの所有者がグループのメンバーシップを管理します。 実質的には、リソースの所有者が、ユーザーをリソースに割り当てる権限をグループの所有者に委任することになります。
 
-## <a name="assigning-group-ownership"></a>グループの所有権の割り当て
+<a id="assigning-group-ownership" class="xliff"></a>
+
+## グループの所有権の割り当て
 **グループに所有者を追加するには**
 
 1. [Azure クラシック ポータル](https://manage.windowsazure.com)で **[Active Directory]**を選択し、該当する組織のディレクトリを開きます。
@@ -39,7 +44,9 @@ ms.lasthandoff: 12/29/2016
 3. **[所有者]** タブをクリックします。
 4. このグループから削除する所有者を選択し、 **[削除]**をクリックします。
 
-## <a name="additional-information"></a>追加情報
+<a id="additional-information" class="xliff"></a>
+
+## 追加情報
 次の記事は、Azure Active Directory に関する追加情報を示します。
 
 * [Azure Active Directory グループによるリソースのアクセス管理](active-directory-manage-groups.md)
