@@ -15,14 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/30/2017
 ms.author: jdial
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: d365f7137527d60eb509b4f431295de2218ea706
 ms.openlocfilehash: 5ff91cccb711d61ed120e4a4e820d6a5dfc5e4a6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/31/2017
 
 
 ---
 
-# <a name="create-a-virtual-network-classic-with-a-netcfg-file-using-the-azure-classic-portal"></a>Azure クラシック ポータルで netcfg ファイルを使用して仮想ネットワーク (クラシック) を作成する
+<a id="create-a-virtual-network-classic-with-a-netcfg-file-using-the-azure-classic-portal" class="xliff"></a>
+
+# Azure クラシック ポータルで netcfg ファイルを使用して仮想ネットワーク (クラシック) を作成する
 [!INCLUDE [virtual-networks-create-vnet-selectors-classic-include](../../includes/virtual-networks-create-vnet-selectors-classic-include.md)]
 
 [!INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
@@ -33,7 +37,9 @@ ms.openlocfilehash: 5ff91cccb711d61ed120e4a4e820d6a5dfc5e4a6
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 
-## <a name="how-to-create-a-vnet-with-a-network-config-file-in-the-microsoft-azure-classic-portal"></a>Microsoft Azure クラシック ポータルのネットワーク構成ファイルで VNet を作成する方法
+<a id="how-to-create-a-vnet-with-a-network-config-file-in-the-microsoft-azure-classic-portal" class="xliff"></a>
+
+## Microsoft Azure クラシック ポータルのネットワーク構成ファイルで VNet を作成する方法
 Azure では、xml ファイルを使用して、サブスクリプションに使用可能なすべての Vnet を定義します。 このファイルをダウンロードして編集して、クラシック デプロイメント モデルで VNet を作成したり、既存の VNet を変更または削除したりできます。 この記事では、ネットワーク構成 (または netcfg) ファイルと呼ばれるこのファイルをダウンロードする方法、これに VNet を追加する方法、ファイルをアップロードして VNet を作成する方法を説明します。 ネットワーク構成ファイルの詳細については、「[Azure Virtual Network Configuration Schema (Azure 仮想ネットワークの構成スキーマ)](https://msdn.microsoft.com/library/azure/jj157100.aspx)」を参照してください。
 
 Azure クラシック ポータルで netcfg ファイルを使用して VNet を作成するには、次の手順を実行します。
@@ -84,9 +90,4 @@ Azure クラシック ポータルで netcfg ファイルを使用して VNet �
 10. VNet を作成するには、直前の図の右下隅にあるチェック マーク ボタンをクリックします。 数秒経つと、作成した VNet が次の図のように利用可能な VNet の一覧に表示されます。
 
     ![新しい仮想ネットワーク](./media/virtual-networks-create-vnet-classic-portal/vnet-create-portal-netcfg-figure6.png)
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 
