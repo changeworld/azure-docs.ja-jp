@@ -1,8 +1,7 @@
 <!--author=alkohli last changed: 02/10/17-->
 
-<a id="to-add-a-storsimple-backup-policy" class="xliff"></a>
-
 #### StorSimple のバックアップ ポリシーを追加するには
+<a id="to-add-a-storsimple-backup-policy" class="xliff"></a>
 
 1. StorSimple デバイスに移動して、**[バックアップ ポリシー]** をクリックします。
 

@@ -1,9 +1,8 @@
 <!--author=alkohli last changed: 01/02/17-->
 
 
-<a id="to-add-or-remove-a-volume" class="xliff"></a>
-
 #### ボリュームを追加または削除するには
+<a id="to-add-or-remove-a-volume" class="xliff"></a>
 
 1. StorSimple デバイスに移動して、**[バックアップ ポリシー]** をクリックします。
 

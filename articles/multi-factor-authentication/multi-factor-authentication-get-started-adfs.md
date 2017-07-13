@@ -21,9 +21,8 @@ ms.contentlocale: ja-jp
 ms.lasthandoff: 07/12/2017
 
 ---
-<a id="getting-started-with-azure-multi-factor-authentication-and-active-directory-federation-services" class="xliff"></a>
-
 # Azure Multi-Factor Authentication と Active Directory フェデレーション サービスの概要
+<a id="getting-started-with-azure-multi-factor-authentication-and-active-directory-federation-services" class="xliff"></a>
 <center>![クラウド](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
 
 組織がオンプレミスの Active Directory と Azure Active Directory を AD FS を使ってフェデレーションする場合、Azure Multi-Factor Authentication の使用には 2 つの選択肢があります。
@@ -45,9 +44,8 @@ Azure Multi-Factor Authentication と AD FS を使用したリソースのセキ
 * アプリ パスワードでは、オンプレミスの認証ログ機能が失われます。
 * ディレクトリ同期のアカウントの無効化/削除には 3 時間かかり、クラウド ID のアプリのパスワードの無効化/削除も遅延します。
 
-<a id="next-steps" class="xliff"></a>
-
 ## 次のステップ
+<a id="next-steps" class="xliff"></a>
 AD FS を使用した Azure Multi-Factor Authentication または Azure Multi-Factor Authentication Server の設定の詳細については、次の記事を参照してください。
 
 * [Azure Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護](multi-factor-authentication-get-started-adfs-cloud.md)

@@ -1,8 +1,7 @@
 <!--author=alkohli last changed: 01/12/17-->
 
-<a id="to-take-a-backup" class="xliff"></a>
-
 ### バックアップを作成するには
+<a id="to-take-a-backup" class="xliff"></a>
 
 1. StorSimple デバイス マネージャー サービスに移動します。 表形式のデバイス一覧で、デバイスを選択してクリックし、**[すべての設定]** をクリックします。 **[設定]** ブレードで、**[設定]、[管理]、[バックアップ ポリシー]** の順に移動します。
 
