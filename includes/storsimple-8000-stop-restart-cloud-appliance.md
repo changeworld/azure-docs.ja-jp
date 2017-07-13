@@ -1,6 +1,5 @@
-<a id="to-stop-and-start-a-cloud-appliance" class="xliff"></a>
-
 #### クラウド アプライアンスを停止および開始するには
+<a id="to-stop-and-start-a-cloud-appliance" class="xliff"></a>
 
 1. クラウド アプライアンスを停止するには、クラウド アプライアンスの VM に移動します。
     ![StorSimple Cloud Appliance 仮想マシン](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart1.png)
@@ -27,9 +26,8 @@
 
 `Start-AzureVM -ServiceName "MyStorSimpleservice1" -Name "MyStorSimpleDevice"`
 
-<a id="to-restart-a-cloud-appliance" class="xliff"></a>
-
 #### クラウド アプライアンスを再起動するには
+<a id="to-restart-a-cloud-appliance" class="xliff"></a>
 
 クラウド アプライアンスを再起動するには、クラウド アプライアンスの VM に移動します。 コマンド バーで **[再起動]** をクリックします。 メッセージが表示されたら、再起動を確定します。 クラウド アプライアンスを使用する準備ができると、状態が **[実行中]** になります。
 

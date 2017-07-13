@@ -1,8 +1,7 @@
 <!--author=alkohli last changed: 01/12/17-->
 
-<a id="to-complete-the-minimum-storsimple-device-setup" class="xliff"></a>
-
 #### StorSimple の最小デバイス セットアップを完了するには
+<a id="to-complete-the-minimum-storsimple-device-setup" class="xliff"></a>
 
 1. **[デバイス]** ブレードの表形式のデバイス一覧で、デバイスを選択してクリックします。 デバイスの状態は "**セットアップの準備が完了しました**" になっています。 **[デバイスの構成]** ブレードが開きます。
 

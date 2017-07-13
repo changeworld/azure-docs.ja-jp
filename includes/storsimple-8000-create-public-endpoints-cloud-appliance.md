@@ -1,6 +1,5 @@
-<a id="to-create-public-endpoints-on-the-cloud-appliance" class="xliff"></a>
-
 #### クラウド アプライアンス上にパブリック エンドポイントを作成するには
+<a id="to-create-public-endpoints-on-the-cloud-appliance" class="xliff"></a>
 
 1. Azure ポータルにサインインします。
 2. **[Virtual Machines]** に移動し、クラウド アプライアンスとして使用している仮想マシンを選択してクリックします。

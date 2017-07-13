@@ -1,8 +1,7 @@
 <!--author=SharS last changed: 9/17/15-->
 
-<a id="to-mount-initialize-and-format-a-volume" class="xliff"></a>
-
 #### ボリュームをマウント、初期化、フォーマットするには
+<a id="to-mount-initialize-and-format-a-volume" class="xliff"></a>
 1. Microsoft iSCSI イニシエーターを開始します。
 2. **[iSCSI イニシエーターのプロパティ]** ウィンドウの **[探索]** タブで、**[ポータルの探索]** をクリックします。
 3. **[ターゲット ポータルの探索]** ダイアログ ボックスで、iSCSI 対応ネットワーク インターフェイスの IP アドレスを入力し、**[OK]** をクリックします。 
