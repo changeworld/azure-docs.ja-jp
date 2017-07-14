@@ -22,9 +22,8 @@ ms.lasthandoff: 07/04/2017
 
 
 ---
-<a id="expressroute-partners-and-peering-locations" class="xliff"></a>
-
 # ExpressRoute パートナーとピアリングの場所
+<a id="expressroute-partners-and-peering-locations" class="xliff"></a>
 
 > [!div class="op_single_selector"]
 > * [プロバイダー別の場所](expressroute-locations.md)
@@ -40,9 +39,8 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
 地理的リージョン内の少なくとも 1 つの ExpressRoute の場所に接続している場合は、その地理的リージョン内のすべてのリージョンの Azure サービスにアクセスできます。
 
-<a id="azure-regions-to-expressroute-locations-within-a-geopolitical-region" class="xliff"></a>
-
 ### 地理的リージョン内の Azure リージョンと ExpressRoute の場所の対応
+<a id="azure-regions-to-expressroute-locations-within-a-geopolitical-region" class="xliff"></a>
 次の表は、地理的リージョン、ExpressRoute の場所、Azure リージョンをまとめたものです。
 
 | **地理的リージョン** | **Azure リージョン** | **ExpressRoute の場所** |
@@ -56,9 +54,8 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **インド** |インド西部、インド中部、インド南部 |チェンナイ、ムンバイ |
 | **韓国** |韓国中部、韓国南部 |釜山、ソウル |
 
-<a id="regions-and-geopolitical-boundaries-for-national-clouds" class="xliff"></a>
-
 ### 各国のクラウドのリージョンと地理的境界
+<a id="regions-and-geopolitical-boundaries-for-national-clouds" class="xliff"></a>
 次の表は、国内のクラウドのリージョンと地政学的境界に関する情報をまとめたものです。
 
 | **地理的リージョン** | **Azure リージョン** | **ExpressRoute の場所** |
@@ -74,9 +71,8 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 次の表に、サービス プロバイダー別の場所を示します。 場所別の使用可能なプロバイダーを確認する場合は、[場所別のサービス プロバイダー](expressroute-locations-providers.md#locations)に関するページを参照してください。
 
 
-<a id="production-azure" class="xliff"></a>
-
 ### 運用 Azure
+<a id="production-azure" class="xliff"></a>
 | **サービス プロバイダー** | **Microsoft Azure** | **Office 365 および Dynamics 365** | **場所** |
 | --- | --- | --- | --- |
 | **[AARNet](https://www.aarnet.edu.au/network-and-services/cloud-services-applications/azure-expressroute/)** |サポートされています |サポートされています |メルボルン、シドニー |
@@ -132,13 +128,11 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
  **+** は近日対応予定を表します
 
+### 各国のクラウド環境
 <a id="national-cloud-environment" class="xliff"></a>
 
-### 各国のクラウド環境
-
-<a id="us-government-cloud" class="xliff"></a>
-
 ### 米国政府のクラウド
+<a id="us-government-cloud" class="xliff"></a>
 | **サービス プロバイダー** | **Microsoft Azure** | **Office 365** | **場所** |
 | --- | --- | --- | --- |
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |サポートされています |サポートされています |シカゴ、ワシントン DC |
@@ -147,18 +141,16 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |サポートされています | サポートされています | シカゴ、ダラス |
 | **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** |サポートされています |サポートされています |シカゴ、ダラス、ニューヨーク、ワシントン DC |
 
-<a id="china" class="xliff"></a>
-
 ### 中国
+<a id="china" class="xliff"></a>
 | **サービス プロバイダー** | **Microsoft Azure** | **Office 365** | **場所** |
 | --- | --- | --- | --- |
 | **China Telecom** |サポートされています |サポートされていません |北京、上海 |
 
 詳細については、 [中国の ExpressRoute](http://www.windowsazure.cn/home/features/expressroute/)に関するページを参照してください。
 
-<a id="germany" class="xliff"></a>
-
 ### ドイツ
+<a id="germany" class="xliff"></a>
 | **サービス プロバイダー** | **Microsoft Azure** | **Office 365** | **場所** |
 | --- | --- | --- | --- |
 | **[Colt](http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |サポートされています |サポートされていません |ベルリン+、フランクフルト |
@@ -167,9 +159,8 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **Interxion** |サポートされています |サポートされていません |フランクフルト |
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |サポートされています  | サポートされていません | ベルリン |
 
-<a id="connectivity-through-exchange-providers" class="xliff"></a>
-
 ## Exchange プロバイダー経由の接続
+<a id="connectivity-through-exchange-providers" class="xliff"></a>
 
 接続プロバイダーが上記のセクションの一覧にない場合でも、接続を作成できます。
 
@@ -187,9 +178,8 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 * Microsoft に接続するために、接続プロバイダーとしてその Exchange で ExpressRoute 回線を要求します。
   * 「 [ExpressRoute 回線の作成](expressroute-howto-circuit-classic.md) 」の手順に従い、接続を構築します。
 
-<a id="connectivity-through-additional-service-providers" class="xliff"></a>
-
 ## 追加のサービス プロバイダー経由の接続
+<a id="connectivity-through-additional-service-providers" class="xliff"></a>
 
 | **接続プロバイダー** | **Exchange** | **場所** |
 | --- | --- | --- |
@@ -228,9 +218,8 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[Zertia](http://www.zertia.es/index.php/novedades)**| レベル 3 | マドリッド |
 | **[Zirro](https://zirro.com/services/)**| Equinix | トロント、モントリオール |
 
-<a id="connectivity-through-datacenter-providers" class="xliff"></a>
-
 ## データセンター プロバイダー経由の接続
+<a id="connectivity-through-datacenter-providers" class="xliff"></a>
 | **プロバイダー** | **Exchange** |
 | --- | --- |
 | **[Cyrus One](https://cyrusone.com/enterprise-data-center-services/connectivity-and-interconnection/)** | Megaport |
@@ -239,9 +228,8 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[RagingWire Data Centers](http://www.ragingwire.com/wholesale/wholesale-data-centers-worldwide-nexcenters)** | コンソール |
 | **[T5 Datacenters](http://t5datacenters.com/network-cloud-connect/)** | コンソール |
 
-<a id="connectivity-through-national-research-and-education-networks-nren" class="xliff"></a>
-
 ## 国立研究教育ネットワーク (NREN) 経由の接続
+<a id="connectivity-through-national-research-and-education-networks-nren" class="xliff"></a>
 
 | **プロバイダー**|
 | --- |
@@ -257,9 +245,8 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
 * ご利用の接続プロバイダーがこの一覧にない場合は、そのプロバイダーが上に記載されている ExpressRoute Exchange パートナーに接続されているかどうかを確認してください。
 
-<a id="expressroute-system-integrators" class="xliff"></a>
-
 ## ExpressRoute システム インテグレーター
+<a id="expressroute-system-integrators" class="xliff"></a>
 ネットワークの規模によっては、ニーズに合わせてプライベート接続を有効にするのは難しい場合があります。 次の表のいずれかのシステム インテグレーターを使用すると、ExpressRoute の利用開始に役立ちます。
 
 | **システム インテグレーター** | **大陸** |
@@ -284,9 +271,8 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[Vigilant.IT](https://vigilant.it/expressroute)** | オーストラリア |
 
 
-<a id="next-steps" class="xliff"></a>
-
 ## 次のステップ
+<a id="next-steps" class="xliff"></a>
 * ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 * すべての前提条件を満たしていることを確認します。 「 [Azure ExpressRoute の前提条件](expressroute-prerequisites.md)」を参照してください。
 

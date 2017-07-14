@@ -21,9 +21,8 @@ ms.contentlocale: ja-jp
 ms.lasthandoff: 07/04/2017
 
 ---
-<a id="expressroute-partners-and-peering-locations" class="xliff"></a>
-
 # ExpressRoute パートナーとピアリングの場所
+<a id="expressroute-partners-and-peering-locations" class="xliff"></a>
 
 > [!div class="op_single_selector"]
 > * [プロバイダー別の場所](expressroute-locations.md)
@@ -39,9 +38,8 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
 地理的リージョン内の少なくとも 1 つの ExpressRoute の場所に接続している場合は、その地理的リージョン内のすべてのリージョンの Azure サービスにアクセスできます。 
 
-<a id="azure-regions-to-expressroute-locations-within-a-geopolitical-region" class="xliff"></a>
-
 ### 地理的リージョン内の Azure リージョンと ExpressRoute の場所の対応
+<a id="azure-regions-to-expressroute-locations-within-a-geopolitical-region" class="xliff"></a>
 次の表は、地理的リージョン、ExpressRoute の場所、Azure リージョンをまとめたものです。
 
 | **地理的リージョン** | **Azure リージョン** | **ExpressRoute の場所** |
@@ -55,9 +53,8 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **インド** |インド西部、インド中部、インド南部 |チェンナイ、ムンバイ |
 | **韓国** |韓国中部、韓国南部 |釜山、ソウル |
 
-<a id="regions-and-geopolitical-boundaries-for-national-clouds" class="xliff"></a>
-
 ### 各国のクラウドのリージョンと地理的境界
+<a id="regions-and-geopolitical-boundaries-for-national-clouds" class="xliff"></a>
 次の表は、国内のクラウドのリージョンと地政学的境界に関する情報をまとめたものです。
 
 | **地理的リージョン** | **Azure リージョン** | **ExpressRoute の場所** |
@@ -73,9 +70,8 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 次の表に、接続する場所と、各場所のサービス プロバイダーを示します。 サービス プロバイダーと、そのサービス プロバイダーがサービスを提供できる場所を確認する場合は、[サービス プロバイダー別の場所](expressroute-locations.md#locations)に関するページを参照してください。 
 
 
-<a id="production-azure" class="xliff"></a>
-
 ### 運用 Azure
+<a id="production-azure" class="xliff"></a>
 | **場所** | **サービス プロバイダー** |
 | --- | --- |
 | **アムステルダム** |Aryaka Networks、AT&T NetBond、British Telecom、Colt、Equinix、euNetworks、GÉANT、InterCloud、Internet Solutions - Cloud Connect、Interxion、KPN、Level 3 Communications、Megaport、Orange、Tata Communications、TeleCity Group、Telefonica、Telenor、Verizon、Zayo Group |
@@ -112,13 +108,11 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
  **+** は近日対応予定を表します
 
+### 国内のクラウド環境
 <a id="national-cloud-environments" class="xliff"></a>
 
-### 国内のクラウド環境
-
-<a id="us-government-cloud" class="xliff"></a>
-
 ### 米国政府のクラウド
+<a id="us-government-cloud" class="xliff"></a>
 | **場所** | **サービス プロバイダー** |
 | --- | --- |
 | **シカゴ** |AT&T NetBond、Equinix、Level 3 Communications、Verizon |
@@ -128,9 +122,8 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **シアトル** | Equinix |
 | **ワシントン DC** |AT&T NetBond、Equinix、Level 3 Communications、Verizon |
 
-<a id="china" class="xliff"></a>
-
 ### 中国
+<a id="china" class="xliff"></a>
 | **場所** | **サービス プロバイダー** |
 | --- | --- |
 | **北京** |China Telecom |
@@ -138,9 +131,8 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
 詳細については、 [中国の ExpressRoute](http://www.windowsazure.cn/home/features/expressroute/)
 
-<a id="germany" class="xliff"></a>
-
 ### ドイツ
+<a id="germany" class="xliff"></a>
 | **場所** | **サービス プロバイダー** |
 | --- | --- |
 | **ベルリン** |Colt+、e-shelter、Megaport+ |
@@ -185,9 +177,8 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **トロント** | Equinix | Airgate Technologies. Inc、Cogeco Peer 1、Rogers、Thinktel、Zirro|
 | **ワシントン DC** |Equinix | Altice Business、Gtt Communications Inc、Epsilon、Lightower、Masergy、Windstream |
 
-<a id="expressroute-system-integrators" class="xliff"></a>
-
 ## ExpressRoute システム インテグレーター
+<a id="expressroute-system-integrators" class="xliff"></a>
 ネットワークの規模によっては、ニーズに合わせてプライベート接続を有効にするのは難しい場合があります。 次の表のいずれかのシステム インテグレーターを使用すると、ExpressRoute の利用開始に役立ちます。
 
 | **大陸** | **システム インテグレーター** |
@@ -197,9 +188,8 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **ヨーロッパ** |Avanade Inc.、Altogee、Bright Skies GmbH、Inframon、MSG Services、New Signature、Nelite、Orange Networks、sol-tec |
 | **北米** |Avanade Inc.、Equinix Professional Services、FlexManage、Perficient、Presidio |
 | **南アメリカ** |Avanade Inc. |
-<a id="next-steps" class="xliff"></a>
-
 ## 次のステップ
+<a id="next-steps" class="xliff"></a>
 * ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 * すべての前提条件を満たしていることを確認します。 「 [Azure ExpressRoute の前提条件](expressroute-prerequisites.md)」を参照してください。
 

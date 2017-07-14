@@ -22,18 +22,16 @@ ms.lasthandoff: 06/24/2017
 
 
 ---
-<a id="partner-integration-in-azure-security-center" class="xliff"></a>
-
 # Azure Security Center でのパートナー統合
+<a id="partner-integration-in-azure-security-center" class="xliff"></a>
 このドキュメントでは、Azure Security Center とパートナーの統合により、パートナーの証明と課金に Azure Marketplace を活用しながら、全体的なセキュリティを強化して Azure での統合されたエクスペリエンスを実現する方法について説明します。
 
 >[!NOTE] 
 >2017 年 6 月上旬以降、Security Center では、Microsoft Monitoring Agent を使用してデータの収集と格納を行います。 詳細については、「[Azure Security Center のプラットフォームの移行](security-center-platform-migration.md)」を参照してください。 この記事の情報は、Microsoft Monitoring Agent に移行した後の Security Center の機能を示しています。
 >
 
-<a id="why-deploy-partners-solutions-from-security-center" class="xliff"></a>
-
 ## Security Center からパートナーのソリューションをデプロイする理由
+<a id="why-deploy-partners-solutions-from-security-center" class="xliff"></a>
 
 Security Center でパートナー統合を利用する主な理由は、次の 4 つです。
 
@@ -43,9 +41,8 @@ Security Center でパートナー統合を利用する主な理由は、次の 
 - **SIEM へのエクスポート**: ユーザーは、Microsoft Azure ログ統合 (プレビュー) を使用して、Security Center とパートナーのすべての警告をオンプレミスの SIEM システムに CEF 形式でエクスポートできるようになりました。
 
 
-<a id="what-partners-are-integrated-with-security-center" class="xliff"></a>
-
 ## Security Center と統合されているパートナー
+<a id="what-partners-are-integrated-with-security-center" class="xliff"></a>
 Security Center は現在、次のソリューションと統合されています。
 
 - エンドポイント保護 ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html)、Symantec、[Microsoft Antimalware for Azure](https://docs.microsoft.com/azure/security/azure-security-antimalware)) 
@@ -55,9 +52,8 @@ Security Center は現在、次のソリューションと統合されていま�
 
 Security Center では、これらの既存のカテゴリに含まれるパートナーの数を徐々に拡大し、新しいカテゴリを追加する予定です。 
 
-<a id="how-to-deploy-a-partner-solution" class="xliff"></a>
-
 ## パートナー ソリューションのデプロイ方法
+<a id="how-to-deploy-a-partner-solution" class="xliff"></a>
 
 Azure 環境の構成と定義されたセキュリティ ポリシーに応じて、Security Center がパートナー ソリューションのデプロイを推奨する場合があります。 推奨する際は、パートナー ソリューションの選択とインストールの手順が案内されます。 このときの全体的なデプロイ操作は、ソリューションとパートナーの種類によって異なります。 詳細については、次のリンクを参照してください。
 
@@ -66,9 +62,8 @@ Azure 環境の構成と定義されたセキュリティ ポリシーに応じ�
 - [Endpoint Protection をインストールします](security-center-install-endpoint-protection.md)
 - [脆弱性評価がインストールされていません](security-center-vulnerability-assessment-recommendations.md)
 
-<a id="how-to-manage-partner-solutions" class="xliff"></a>
-
 ## パートナー ソリューションの管理方法
+<a id="how-to-manage-partner-solutions" class="xliff"></a>
 
 パートナー ソリューションのデプロイが完了したら、Security Center のメイン ダッシュボードにあるパートナー ソリューションのタイルから、ソリューションの正常性に関する情報を確認したり、基本的な管理タスクを実行したりできます。 Security Center でのパートナー ソリューションの管理の詳細については、「[Monitoring partner solutions with Azure Security Center (Azure Security Center を使用したパートナー ソリューションの監視)](security-center-partner-solutions.md)」を参照してください。
 
@@ -78,9 +73,8 @@ Azure 環境の構成と定義されたセキュリティ ポリシーに応じ�
 > Symantec Endpoint Protection のサポートは検出に制限されており、正常性アラートは利用できません。
 >
 
-<a id="see-also" class="xliff"></a>
-
 ## 関連項目
+<a id="see-also" class="xliff"></a>
 このドキュメントでは、Azure Security Center でのパートナー ソリューションの統合方法について説明しました。 セキュリティ センターの詳細については、次を参照してください。
 
 * [Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)
