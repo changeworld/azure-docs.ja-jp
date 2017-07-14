@@ -22,9 +22,8 @@ ms.contentlocale: ja-jp
 ms.lasthandoff: 07/04/2017
 
 ---
-<a id="start-with-apache-kafka-preview-on-hdinsight" class="xliff"></a>
-
 # HDInsight での Apache Kafka (プレビュー) の開始
+<a id="start-with-apache-kafka-preview-on-hdinsight" class="xliff"></a>
 
 Azure HDInsight で [Apache Kafka](https://kafka.apache.org) クラスターを作成および使用する方法について説明します。 Apache Kafka は、HDInsight で利用できるオープンソースの分散ストリーミング プラットフォームです。 発行/サブスクライブ メッセージ キューと同様の機能を備えているため、メッセージ ブローカーとして多く使われています。
 
@@ -33,17 +32,15 @@ Azure HDInsight で [Apache Kafka](https://kafka.apache.org) クラスターを�
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-<a id="prerequisites" class="xliff"></a>
-
 ## 前提条件
+<a id="prerequisites" class="xliff"></a>
 
 * [Java JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html) または同等の OpenJDK など。
 
 * [Apache Maven](http://maven.apache.org/) 
 
-<a id="create-a-kafka-cluster" class="xliff"></a>
-
 ## Kafka クラスターの作成
+<a id="create-a-kafka-cluster" class="xliff"></a>
 
 HDInsight で Kafka クラスターを作成するには、次の手順に従います。
 
@@ -101,9 +98,8 @@ HDInsight で Kafka クラスターを作成するには、次の手順に従い
     > [!NOTE]
     > クラスターの作成には最大で 20 分かかります。
 
-<a id="connect-to-the-cluster" class="xliff"></a>
-
 ## クラスターへの接続
+<a id="connect-to-the-cluster" class="xliff"></a>
 
 クライアントから、SSH を使用してクラスターに接続します。
 
@@ -151,9 +147,8 @@ Kafka を使用する場合、*Zookeeper* ホストと*ブローカー* ホス�
     >
     > 有効な情報を得るために、Zookeeper ホストとブローカー ホストの情報は、使用する直前に取得するようにしてください。
 
-<a id="create-a-topic" class="xliff"></a>
-
 ## トピックを作成する
+<a id="create-a-topic" class="xliff"></a>
 
 Kafka では、*トピック* というカテゴリ内にデータのストリームを格納します。 クラスターのヘッド ノードに SSH で接続し、Kafka に付属のスクリプトを使用してトピックを作成します。
 
@@ -169,9 +164,8 @@ Kafka では、*トピック* というカテゴリ内にデータのストリ�
 
 このコマンドの出力では Kafka トピックが一覧表示され、**test** トピックも表示されます。
 
-<a id="produce-and-consume-records" class="xliff"></a>
-
 ## レコードの生成および消費
+<a id="produce-and-consume-records" class="xliff"></a>
 
 Kafka では、トピック内に*レコード*が格納されます。 レコードは、*プロデューサー*によって生成され、*コンシューマー*によって消費されます。 プロデューサーは、Kafka の*ブローカー*からレコードを取得します。 HDInsight クラスターの各ワーカー ノードが、Kafka のブローカーです。
 
@@ -195,9 +189,8 @@ Kafka では、トピック内に*レコード*が格納されます。 レコ�
 
 3. __Ctrl+C__ キーを使用してコンシューマーを停止します。
 
-<a id="producer-and-consumer-api" class="xliff"></a>
-
 ## プロデューサーとコンシューマーの API
+<a id="producer-and-consumer-api" class="xliff"></a>
 
 [Kafka の API](http://kafka.apache.org/documentation#api) を使用して、レコードをプログラムにより生成および消費することもできます。 Java ベースのプロデューサーとコンシューマーをダウンロードし構築するには、次の手順に従います。
 
@@ -246,9 +239,8 @@ Kafka では、トピック内に*レコード*が格納されます。 レコ�
 
 6. __Ctrl+C__ キーを使用してコンシューマーを終了します。
 
-<a id="multiple-consumers" class="xliff"></a>
-
 ### 複数のコンシューマー
+<a id="multiple-consumers" class="xliff"></a>
 
 Kafka の重要なコンセプトとして、コンシューマーはレコードを読み取る場合に (グループ ID で定義された) コンシューマー グループを使用するということがあります。 複数のコンシューマーで同じグループを使用すると、トピックからの読み取りの負荷が分散されます。 グループ内の各コンシューマーは、レコードの一部を受け取ります。 このプロセスを実際に確認するには、次の手順に従います。
 
@@ -270,9 +262,8 @@ Kafka の重要なコンセプトとして、コンシューマーはレコー�
 
 Kafka に格納されたレコードは、受信した順番でパーティション内に格納されます。 *パーティション内*のレコードの順次配信順を実現するには、コンシューマー インスタンスの数がパーティションの数と同じコンシューマー グループを作成します。 *トピック内*のレコードの順次配信を実現するには、コンシューマー インスタンスが 1 つのみのコンシューマー グループを作成します。
 
-<a id="streaming-api" class="xliff"></a>
-
 ## ストリーミング API
+<a id="streaming-api" class="xliff"></a>
 
 ストリーミング API は、バージョン 0.10.0 の Kafka から追加されました。以前のバージョンでは、ストリーム処理に Apache Spark または Storm を使用しています。
 
@@ -347,21 +338,18 @@ Kafka に格納されたレコードは、受信した順番でパーティシ�
 
 7. __Ctrl+C__ キーを使用してコンシューマーを終了してから、`fg` コマンドを使用してバックグラウンドのストリーミング タスクをフォアグラウンドに移します。 同様に、__Ctrl+C__ キーを使用してこのタスクも終了します。
 
-<a id="delete-the-cluster" class="xliff"></a>
-
 ## クラスターを削除する
+<a id="delete-the-cluster" class="xliff"></a>
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-<a id="troubleshoot" class="xliff"></a>
-
 ## トラブルシューティング
+<a id="troubleshoot" class="xliff"></a>
 
 HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](hdinsight-administer-use-portal-linux.md#create-clusters)」を参照してください。
 
-<a id="next-steps" class="xliff"></a>
-
 ## 次のステップ
+<a id="next-steps" class="xliff"></a>
 
 このドキュメントでは、HDInsight で Apache Kafka を使用する際の基本事項を学習しました。 次の各ドキュメントを参考に、Kafka の使用の詳細を確認してください。
 

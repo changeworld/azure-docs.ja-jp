@@ -22,9 +22,8 @@ ms.lasthandoff: 07/01/2017
 
 
 ---
-<a id="prepare-your-development-environment-on-linux" class="xliff"></a>
-
 # Linux で開発環境を準備する
+<a id="prepare-your-development-environment-on-linux" class="xliff"></a>
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started.md)
 > * [Linux](service-fabric-get-started-linux.md)
@@ -34,20 +33,17 @@ ms.lasthandoff: 07/01/2017
 
  Linux の開発コンピューターに [Azure Service Fabric アプリケーション](service-fabric-application-model.md) をデプロイして実行するには、ランタイムと共通 SDK をインストールする必要があります。 また、必要に応じて Java 用 SDK と .NET Core 用 SDK をインストールすることもできます。
 
+## 前提条件
 <a id="prerequisites" class="xliff"></a>
 
-## 前提条件
-
-<a id="supported-operating-system-versions" class="xliff"></a>
-
 ### サポートされるオペレーティング システムのバージョン
+<a id="supported-operating-system-versions" class="xliff"></a>
 開発では、次のオペレーティング システムのバージョンがサポートされます。
 
 * Ubuntu 16.04 (`Xenial Xerus`)
 
-<a id="update-your-apt-sources" class="xliff"></a>
-
 ## apt ソースを更新する
+<a id="update-your-apt-sources" class="xliff"></a>
 apt get を実行して SDK および関連付けられたランタイム パッケージをインストールするために、まず apt ソースを更新する必要があります。
 
 1. ターミナルを開きます。
@@ -88,9 +84,8 @@ apt get を実行して SDK および関連付けられたランタイム パッ
     sudo apt-get update
     ```
 
-<a id="install-and-set-up-the-sdk-for-containers-and-guest-executables" class="xliff"></a>
-
 ## コンテナーとゲスト実行可能ファイルを作成するための SDK をインストールしてセットアップする
+<a id="install-and-set-up-the-sdk-for-containers-and-guest-executables" class="xliff"></a>
 
 ソースが更新されたら、SDK をインストールできます。
 
@@ -131,9 +126,8 @@ apt get を実行して SDK および関連付けられたランタイム パッ
 > これらのコマンドは、ログインのたびに環境変数を設定する必要がないように、~/.bashrc ファイルに追加できます。
 >
 
-<a id="setup-the-xplat-service-fabric-cli" class="xliff"></a>
-
 ## XPlat Service Fabric CLI の設定
+<a id="setup-the-xplat-service-fabric-cli" class="xliff"></a>
 [XPlat CLI][azure-xplat-cli-github] には、クラスターやアプリケーションなどの Service Fabric エンティティを操作するコマンドが含まれています。 この CLI は Node.js をベースにしているため、[Node がインストールされていることを確認][install-node]してから、以下の手順に進んでください。
 
 1. 開発用コンピューターに GitHub リポジトリをクローンします。
@@ -163,17 +157,15 @@ apt get を実行して SDK および関連付けられたランタイム パッ
     source ~/azure.completion.sh
     ```
 
-<a id="setup-azure-cli-20" class="xliff"></a>
-
 ### Azure CLI 2.0 の設定
+<a id="setup-azure-cli-20" class="xliff"></a>
 
 XPlat CLI に代わる方法として、Azure CLI に Service Fabric コマンド モジュールが追加されました。
 
 Azure CLI 2.0 のインストールと Service Fabric コマンドの使用について詳しくは、[概要のドキュメント](service-fabric-azure-cli-2-0.md)を参照してください。
 
-<a id="set-up-a-local-cluster" class="xliff"></a>
-
 ## ローカル クラスターをセットアップする
+<a id="set-up-a-local-cluster" class="xliff"></a>
 すべてが正常にインストールされていれば、ローカル クラスターを起動できます。
 
 1. クラスターのセットアップ スクリプトを実行します。
@@ -193,9 +185,8 @@ Azure CLI 2.0 のインストールと Service Fabric コマンドの使用に�
 > スタンドアロン クラスターは Linux でサポートされていません。プレビューでは、ワン ボックスと Azure Linux マルチマシン クラスターのみがサポートされています。
 >
 
-<a id="install-the-java-sdk-optional-if-you-wish-to-use-the-java-programming-models" class="xliff"></a>
-
 ## Java SDK をインストールする (省略可能。Java プログラミング モデルを使用したい場合)
+<a id="install-the-java-sdk-optional-if-you-wish-to-use-the-java-programming-models" class="xliff"></a>
 Java SDK には、Java を使用して Service Fabric サービスを構築するために必要なライブラリとテンプレートが用意されています。
 
 1. Java SDK パッケージをインストールします。
@@ -210,9 +201,8 @@ Java SDK には、Java を使用して Service Fabric サービスを構築す�
     sudo /opt/microsoft/sdk/servicefabric/java/sdkjavasetup.sh
     ```
 
-<a id="install-the-eclipse-neon-plugin-optional" class="xliff"></a>
-
 ## Eclipse Neon プラグインをインストールする (省略可能)
+<a id="install-the-eclipse-neon-plugin-optional" class="xliff"></a>
 
 **Eclipse IDE for Java Developers** 内から Service Fabric 用 Eclipse プラグインをインストールできます。 Eclipse を使用すると、Service Fabric Java アプリケーションのほかに、Service Fabric ゲスト実行可能アプリケーションと Service Fabric コンテナー アプリケーションを作成できます。
 
@@ -235,9 +225,8 @@ Service Fabric Eclipse プラグインを既にインストールしてある場
 詳細については、[Service Fabric での Eclipse の使用](service-fabric-get-started-eclipse.md)に関するページを参照してください。
 
 
-<a id="install-the-net-core-sdk-optional-if-you-wish-to-use-the-net-core-programming-models" class="xliff"></a>
-
 ## .NET Core SDK をインストールする (省略可能。.NET Core プログラミング モデルを使用したい場合)
+<a id="install-the-net-core-sdk-optional-if-you-wish-to-use-the-net-core-programming-models" class="xliff"></a>
 .NET Core SDK には、.NET Core を使用して Service Fabric サービスを構築するために必要なライブラリとテンプレートが用意されています。
 
 1. .NET Core SDK パッケージをインストールします。
@@ -252,9 +241,8 @@ Service Fabric Eclipse プラグインを既にインストールしてある場
    sudo /opt/microsoft/sdk/servicefabric/csharp/sdkcsharpsetup.sh
    ```
 
-<a id="updating-the-sdk-and-runtime" class="xliff"></a>
-
 ## SDK とランタイムの更新
+<a id="updating-the-sdk-and-runtime" class="xliff"></a>
 
 SDK とランタイムを最新バージョンに更新するには、次のコマンドを実行します (不要な SDK は除外してください)。
 
@@ -267,9 +255,8 @@ sudo apt-get install servicefabric servicefabricsdkcommon servicefabricsdkcsharp
 > [!NOTE]
 > 上記のパッケージを更新すると、ローカルの開発クラスターが停止する可能性があります。 このページの手順に従って、アップグレード後にローカル クラスターを再起動してください。
 
-<a id="next-steps" class="xliff"></a>
-
 ## 次のステップ
+<a id="next-steps" class="xliff"></a>
 * [Yeoman を使用して Linux で最初の Service Fabric Java アプリケーションを作成してデプロイする](service-fabric-create-your-first-linux-application-with-java.md)
 * [Eclipse 用の Service Fabric プラグインを使用して Linux で最初の Service Fabric Java アプリケーションを作成してデプロイする](service-fabric-get-started-eclipse.md)
 * [Linux で最初の CSharp アプリケーションを作成する](service-fabric-create-your-first-linux-application-with-csharp.md)
@@ -277,9 +264,8 @@ sudo apt-get install servicefabric servicefabricsdkcommon servicefabricsdkcsharp
 * [XPlat CLI を使用した Service Fabric アプリケーションの管理](service-fabric-azure-cli.md)
 * [Service Fabric における Windows と Linux の違い](service-fabric-linux-windows-differences.md)
 
-<a id="related-articles" class="xliff"></a>
-
 ## 関連記事:
+<a id="related-articles" class="xliff"></a>
 
 * [Service Fabric と Azure CLI 2.0 の概要](service-fabric-azure-cli-2-0.md)
 * [Service Fabric XPlat CLI の概要](service-fabric-azure-cli.md)

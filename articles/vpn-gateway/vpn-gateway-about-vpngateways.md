@@ -23,17 +23,15 @@ ms.lasthandoff: 06/22/2017
 
 
 ---
-<a id="about-vpn-gateway" class="xliff"></a>
-
 # VPN Gateway について
+<a id="about-vpn-gateway" class="xliff"></a>
 
 VPN ゲートウェイは、暗号化されたトラフィックをパブリック接続経由でオンプレミスの場所に送信する種類の仮想ネットワーク ゲートウェイです。 VPN ゲートウェイを使用すると、Microsoft ネットワークを経由して Azure 仮想ネットワーク間で暗号化されたトラフィックを送信することもできます。 Azure 仮想ネットワークとオンプレミスのサイトとの間で暗号化されたネットワーク トラフィックを送信するには、仮想ネットワーク用の VPN ゲートウェイを作成する必要があります。
 
 各仮想ネットワークには VPN ゲートウェイを 1 つだけ作成できますが、同一の VPN ゲートウェイに対して複数の接続を作成することができます。 その一例は、マルチサイト接続構成です。 同一の VPN ゲートウェイへの複数の接続を作成する場合、そのゲートウェイで利用できる帯域幅は、(ポイント対サイト VPN を含め) すべての VPN トンネルによって共有されます。
 
-<a id="what-is-a-virtual-network-gateway" class="xliff"></a>
-
 ### 仮想ネットワーク ゲートウェイとは
+<a id="what-is-a-virtual-network-gateway" class="xliff"></a>
 
 仮想ネットワーク ゲートウェイは、GatewaySubnet と呼ばれる特定のサブネットにデプロイされる 2 台以上の仮想マシンで構成されます。 GatewaySubnet に配置される VM は、仮想ネットワーク ゲートウェイの作成時に作成されます。 仮想ネットワーク ゲートウェイの VM は、ゲートウェイ固有のルーティング テーブルとゲートウェイ サービスを含むように構成されます。 仮想ネットワーク ゲートウェイの一部である VM を直接構成することはできません。また、GatewaySubnet に、その他のリソースをデプロイすべきではありません。
 
@@ -43,27 +41,23 @@ VPN ゲートウェイは、暗号化されたトラフィックをパブリッ�
 
 [!INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
 
-<a id="configuring-a-vpn-gateway" class="xliff"></a>
-
 ## VPN ゲートウェイの構成
+<a id="configuring-a-vpn-gateway" class="xliff"></a>
 
 VPN ゲートウェイ接続は、特定の設定で構成された複数のリソースに依存します。 ほとんどのリソースは個別に構成できますが、場合によってはある一定の順序で構成を行う必要があります。
 
-<a id="settings" class="xliff"></a>
-
 ### [設定]
+<a id="settings" class="xliff"></a>
 
 リソースごとに選択した設定は、適切な接続を作成するうえで非常に重要です。 VPN Gateway の個々のリソースと設定については、「 [VPN Gateway の設定について](vpn-gateway-about-vpn-gateway-settings.md)」を参照してください。 ゲートウェイの種類、VPN の種類、接続の種類、ゲートウェイ サブネット、ローカル ネットワーク ゲートウェイ、検討が必要なその他のさまざまなリソース設定を把握するのに役立つ情報が記載されています。
 
-<a id="deployment-tools" class="xliff"></a>
-
 ### デプロイ ツール
+<a id="deployment-tools" class="xliff"></a>
 
 Azure Portal などの構成ツールをどれか 1 つ使用して、リソースの作成と構成を開始できます。 その後、追加のリソースを構成したり、適用できる場合に既存のリソースを変更したりするために、PowerShell などの別のツールに切り替えることができます。 現時点では、すべてのリソースとリソースの設定を Azure Portal で構成することはできません。 各接続トポロジの記事の手順では、特定の構成ツールが必要な場合が指定されています。 
 
-<a id="deployment-model" class="xliff"></a>
-
 ### デプロイメント モデル
+<a id="deployment-model" class="xliff"></a>
 
 VPN ゲートウェイを構成する手順は、仮想ネットワークの作成に使用したデプロイメント モデルによって異なります。 たとえば、クラシック デプロイメント モデルを使用して VNet を作成した場合は、クラシック デプロイメント モデルに対応したガイドラインと手順を使用して VPN ゲートウェイ設定を作成し、構成します。 デプロイメント モデルの詳細については、 [Resource Manager デプロイメント モデルとクラシック デプロイメント モデルについて](../azure-resource-manager/resource-manager-deployment-model.md)のページを参照してください。
 
@@ -77,9 +71,8 @@ VPN ゲートウェイ接続ではさまざまな構成が利用できること�
 
 図と説明を参考にして、要件を満たす接続トポロジを選択できます。 図は主要なベースライン トポロジを示していますが、図をガイドラインとして使用して、より複雑な構成を構築することもできます。
 
-<a id="site-to-site-and-multi-site-ipsecike-vpn-tunnel" class="xliff"></a>
-
 ## サイト間とマルチサイト (IPsec/IKE VPN トンネル)
+<a id="site-to-site-and-multi-site-ipsecike-vpn-tunnel" class="xliff"></a>
 
 ### <a name="S2S"></a>サイト間
 
@@ -93,9 +86,8 @@ VPN ゲートウェイ接続ではさまざまな構成が利用できること�
 
 ![Azure VPN Gateway マルチサイト接続の例](./media/vpn-gateway-about-vpngateways/vpngateway-multisite-connection-diagram.png)
 
-<a id="deployment-models-and-methods-for-site-to-site-and-multi-site" class="xliff"></a>
-
 ### サイト間接続とマルチサイト接続で使用できるデプロイメント モデルとデプロイ方法
+<a id="deployment-models-and-methods-for-site-to-site-and-multi-site" class="xliff"></a>
 
 [!INCLUDE [vpn-gateway-table-site-to-site](../../includes/vpn-gateway-table-site-to-site-include.md)]
 
@@ -105,9 +97,8 @@ VPN ゲートウェイ接続ではさまざまな構成が利用できること�
 
 ![Azure VPN Gateway ポイント対サイト接続の例](./media/vpn-gateway-about-vpngateways/vpngateway-point-to-site-connection-diagram.png)
 
-<a id="deployment-models-and-methods-for-point-to-site" class="xliff"></a>
-
 ### ポイント対サイト接続で使用できるデプロイメント モデルとデプロイ方法
+<a id="deployment-models-and-methods-for-point-to-site" class="xliff"></a>
 
 [!INCLUDE [vpn-gateway-table-point-to-site](../../includes/vpn-gateway-table-point-to-site-include.md)]
 
@@ -123,21 +114,18 @@ VPN ゲートウェイ接続ではさまざまな構成が利用できること�
 
 ![Azure VPN Gateway VNet 間接続の例](./media/vpn-gateway-about-vpngateways/vpngateway-vnet-to-vnet-connection-diagram.png)
 
-<a id="connections-between-deployment-models" class="xliff"></a>
-
 ### デプロイメント モデル間の接続
+<a id="connections-between-deployment-models" class="xliff"></a>
 
 Azure には現在、クラシックと Resource Manager という 2 つのデプロイメント モデルがあります。 これまで Azure を使用してきているユーザーであれば、おそらく Azure VM およびクラシック VNet で実行されているインスタンス ロールを利用されていることでしょう。 新しい VM とロール インスタンスが、Resource Manager で作成された VNet 上で実行されていることも考えられます。 VNet 間に接続を作成し、一方の VNet 内のリソースがもう一方の VNet 内のリソースと直接通信できるようにすることが可能です。
 
-<a id="vnet-peering" class="xliff"></a>
-
 ### VNET ピアリング
+<a id="vnet-peering" class="xliff"></a>
 
 仮想ネットワークが特定の要件を満たしていれば、接続の作成に VNET ピアリングを使用することができます。 VNET ピアリングは、仮想ネットワーク ゲートウェイを使用しません。 詳細については、「 [VNet ピアリング](../virtual-network/virtual-network-peering-overview.md)」を参照してください。
 
-<a id="deployment-models-and-methods-for-vnet-to-vnet" class="xliff"></a>
-
 ### VNet 間接続で使用できるデプロイメント モデルとデプロイ方法
+<a id="deployment-models-and-methods-for-vnet-to-vnet" class="xliff"></a>
 
 [!INCLUDE [vpn-gateway-table-vnet-to-vnet](../../includes/vpn-gateway-table-vnet-to-vnet-include.md)]
 
@@ -157,29 +145,25 @@ ExpressRoute 用にセキュリティで保護されたフェールオーバー 
 
 ![ExpressRoute と VPN Gateway の共存接続の例](./media/vpn-gateway-about-vpngateways/expressroute-vpngateway-coexisting-connections-diagram.png)
 
-<a id="deployment-models-and-methods-for-s2s-and-expressroute" class="xliff"></a>
-
 ### S2S 接続と ExpressRoute 接続で使用できるデプロイメント モデルとデプロイ方法
+<a id="deployment-models-and-methods-for-s2s-and-expressroute" class="xliff"></a>
 
 [!INCLUDE [vpn-gateway-table-coexist](../../includes/vpn-gateway-table-coexist-include.md)]
 
-<a id="pricing" class="xliff"></a>
-
 ## 価格
+<a id="pricing" class="xliff"></a>
 
 [!INCLUDE [vpn-gateway-about-pricing-include](../../includes/vpn-gateway-about-pricing-include.md)]
 
 VPN ゲートウェイの SKU の詳細については、「[ゲートウェイの SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)」を参照してください。
 
-<a id="faq" class="xliff"></a>
-
 ## FAQ
+<a id="faq" class="xliff"></a>
 
 VPN Gateway に関してよく寄せられる質問については、「[VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md)」を参照してください。
 
-<a id="next-steps" class="xliff"></a>
-
 ## 次のステップ
+<a id="next-steps" class="xliff"></a>
 
 - VPN ゲートウェイの構成を計画します。 [VPN Gateway の計画と設計](vpn-gateway-plan-design.md)に関するページを参照してください。
 - 詳細については、「[VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md)」を参照してください。

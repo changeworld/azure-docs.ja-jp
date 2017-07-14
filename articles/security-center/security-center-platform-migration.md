@@ -22,9 +22,8 @@ ms.lasthandoff: 06/28/2017
 
 
 ---
-<a id="azure-security-center-platform-migration" class="xliff"></a>
-
 # Azure Security Center のプラットフォームの移行
+<a id="azure-security-center-platform-migration" class="xliff"></a>
 
 2017 年 6 月上旬以降、Azure Security Center は、セキュリティ データの収集と格納方法の重要な変更をロールアウトします。  これらの変更により、セキュリティ データを簡単に検索する機能などの新機能が公開され、他の Azure 管理サービスや監視サービスとの整合性が高まります。
 
@@ -32,17 +31,15 @@ ms.lasthandoff: 06/28/2017
 > このプラットフォームの移行は、運用環境のリソースに影響を与えることはなく、ユーザー側で必要なアクションはありません。
 
 
-<a id="whats-happening-during-this-platform-migration" class="xliff"></a>
-
 ## このプラットフォームの移行中に何が行われるか
+<a id="whats-happening-during-this-platform-migration" class="xliff"></a>
 
 これまで、Security Center では、Azure Monitoring Agent を使用して、ユーザーの VM からセキュリティ データを収集していました。 これには、脆弱性を識別するために使用されるセキュリティ構成と、脅威を検出するために使用されるセキュリティ イベントに関する情報が含まれています。 このデータは、Azure のストレージ アカウントに保存されていました。
 
 今後、Security Center は、Microsoft Monitoring Agent を使用します。これは Operations Management Suite と Log Analytics サービスで使用されるものと同じエージェントです。 このエージェントから収集されたデータは、VM の位置情報を考慮して、Azure サブスクリプションに関連付けられている既存の *Log Analytics* [ワークスペース](../log-analytics/log-analytics-manage-access.md)または新規のワークスペースのいずれかに格納されます。
 
-<a id="agent" class="xliff"></a>
-
 ## エージェント
+<a id="agent" class="xliff"></a>
 
 移行の一環として、現在データが収集されているすべての Azure VM に Microsoft Monitoring Agent ([Windows ](../log-analytics/log-analytics-windows-agents.md) 用または [Linux](../log-analytics/log-analytics-linux-agents.md) 用) がインストールされます。  VM に Microsoft Monitoring Agent が既にインストールされている場合、Security Center は、現在インストールされているエージェントを活用します。
 
@@ -56,9 +53,8 @@ Microsoft Monitoring Agent for Windows は TCP ポート 443 を使用する必�
 > [!NOTE] 
 > Microsoft Monitoring Agent は他の Azure 管理サービスや監視サービスで使用されている場合があるため、Security Center でデータ収集をオフにしても、このエージェントが自動的にアンインストールされることはありません。 ただし、必要な場合は、手動でエージェントをアンインストールできます。
 
-<a id="workspace" class="xliff"></a>
-
 ## ワークスペース
+<a id="workspace" class="xliff"></a>
 
 前述のように、(Security Center に代わって) Microsoft Monitoring Agent から収集されたデータは、VM の位置情報を考慮して、Azure サブスクリプションに関連付けられている既存の Log Analytics ワークスペースまたは新規のワークスペースのいずれかに格納されます。
 
@@ -72,16 +68,14 @@ Security Center によって作成されたワークスペースでは、デー�
 > [!NOTE]
 > これまで Security Center で収集されたデータは、ストレージ アカウントに残ります。 移行が完了したら、これらのストレージ アカウントを削除することができます。
 
-<a id="oms-security-solution" class="xliff"></a>
-
-### OMS セキュリティ ソリューション 
+### OMS セキュリティ ソリューション
+<a id="oms-security-solution" class="xliff"></a> 
 
 OMS セキュリティ ソリューションがインストールされていない既存のユーザーに対して、Microsoft は、そのワークスペースにソリューションをインストールしますが、Azure VM のみを対象とします。 このソリューションをアンインストールしないでください。これは、アンインストールが OMS 管理コンソールから実行された場合、自動修復する方法がないためです。
 
 
-<a id="other-updates" class="xliff"></a>
-
 ## 他の更新プログラム
+<a id="other-updates" class="xliff"></a>
 
 プラットフォームの移行に併せて、いくつかの小規模の追加更新も展開します。
 

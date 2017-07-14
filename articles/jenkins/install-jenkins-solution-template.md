@@ -23,9 +23,8 @@ ms.lasthandoff: 06/30/2017
 
 ---
 
-<a id="create-your-first-jenkins-master-on-a-linux-ubuntu-vm-on-azure" class="xliff"></a>
-
 # Azure で Linux (Ubuntu) VM に初めての Jenkins マスターを作成する
+<a id="create-your-first-jenkins-master-on-a-linux-ubuntu-vm-on-azure" class="xliff"></a>
 
 このクイックスタートでは、最新の安定したバージョンの Jenkins と、Azure で動作するように構成されたツールおよびプラグインを、Linux (Ubuntu 14.04 LTS) VM にインストールする方法について説明します。 ツールには次のものが含まれます。
 <ul>
@@ -46,9 +45,8 @@ ms.lasthandoff: 06/30/2017
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-<a id="create-the-vm-in-azure-by-deploying-the-solution-template-for-jenkins" class="xliff"></a>
-
 ## Jenkins 用のソリューション テンプレートをデプロイして Azure に VM を作成する
+<a id="create-the-vm-in-azure-by-deploying-the-solution-template-for-jenkins" class="xliff"></a>
 
 Azure クイックスタート テンプレートを使うと、Azure に複雑なテクノロジを迅速かつ確実にデプロイできます。  Azure Resource Manager では、[宣言型のテンプレート](https://azure.microsoft.com/en-us/resources/templates/?term=jenkins)を使ってアプリケーションをプロビジョニングすることができます。 1 つのテンプレートで、複数のサービスをその依存関係と共にデプロイできます。 アプリケーション ライフサイクルの各ステージで、同じテンプレートを使用してアプリケーションを繰り返しデプロイします。
 
@@ -85,17 +83,15 @@ Azure Portal で、**[作成]** をクリックします。  このテンプレ�
 
 次に、**[購入]** を選択してすべてのリソースをプロビジョニングします。
 
-<a id="setup-ssh-port-forwarding" class="xliff"></a>
-
 ## SSH ポート フォワーディングを設定する
+<a id="setup-ssh-port-forwarding" class="xliff"></a>
 
 既定では、Jenkins インスタンスは http プロトコルを使い、ポート 8080 でリッスンします。 ユーザーは、セキュリティ保護されていないプロトコルで認証を行わないようにする必要があります。
     
 ポート フォワーディングを設定して、ローカル コンピューターに Jenkins UI を表示します。
 
-<a id="if-you-are-using-windows" class="xliff"></a>
-
 ### Windows を使っている場合:
+<a id="if-you-are-using-windows" class="xliff"></a>
 
 パスワードを使って Jenkins を保護している場合は、PuTTY をインストールして次のコマンドを実行します。
 ```
@@ -110,9 +106,8 @@ SSH を使っている場合は、次のコマンドを実行します。
 putty -i <private key file including path> -L 8080:localhost:8080 <username>@<Domain name label>.<location>.cloudapp.azure.com
 ```
 
-<a id="if-you-are-using-linux-or-mac" class="xliff"></a>
-
 ### Linux または Mac を使っている場合:
+<a id="if-you-are-using-linux-or-mac" class="xliff"></a>
 
 パスワードを使って Jenkins マスターを保護している場合は、次のコマンドを実行します。
 ```
@@ -125,9 +120,8 @@ SSH を使っている場合は、次のコマンドを実行します。
 ssh -i <private key file including path> -L 8080:localhost:8080 <username>@<Domain name label>.<location>.cloudapp.azure.com
 ```
 
-<a id="connect-to-jenkins" class="xliff"></a>
-
 ## Jenkins に接続する
+<a id="connect-to-jenkins" class="xliff"></a>
 トンネルを開始した後、ローカル コンピューターで http://localhost:8080/ に移動します。
 
 初めて使うときは、初期管理パスワードを使って Jenkins ダッシュボードのロックを解除します。
@@ -146,9 +140,8 @@ Jenkins インスタンスを使用する準備ができました。 http://\<�
 
 ![Jenkins の準備ができました。](./media/install-jenkins-solution-template/jenkins-welcome.png)
 
-<a id="next-steps" class="xliff"></a>
-
 ## 次のステップ
+<a id="next-steps" class="xliff"></a>
 
 このチュートリアルでは、次のことを行いました。
 

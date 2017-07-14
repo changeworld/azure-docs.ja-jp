@@ -23,37 +23,32 @@ ms.lasthandoff: 06/23/2017
 
 
 ---
-<a id="azure-cosmos-db-build-a-net-application-using-the-table-api" class="xliff"></a>
-
 # Azure Cosmos DB: Table API を使用した .NET アプリケーションの構築
+<a id="azure-cosmos-db-build-a-net-application-using-the-table-api" class="xliff"></a>
 
 Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成およびクエリできます。 
 
 このクイック スタートでは、Azure Cosmos DB アカウントを作成する方法と、Azure Portal を使用してそのアカウント内にテーブルを作成する方法を説明します。 次に、エンティティを挿入、更新、削除するコードを記述し、NuGet の新しい [Windows Azure Storage Premium Table](https://aka.ms/premiumtablenuget) (プレビュー) パッケージを使用してクエリを実行します。 このライブラリには、公開されている [Windows Azure Storage SDK](https://www.nuget.org/packages/WindowsAzure.Storage) と同じクラスおよびメソッド シグネチャが含まれます。ただし、[Table API](table-introduction.md) (プレビュー) を使用して Azure Cosmos DB アカウントに接続する機能もあります。 
 
-<a id="prerequisites" class="xliff"></a>
-
 ## 前提条件
+<a id="prerequisites" class="xliff"></a>
 
 まだ Visual Studio 2017 をインストールしていない場合は、**無料**の [Visual Studio 2017 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-<a id="create-a-database-account" class="xliff"></a>
-
 ## データベース アカウントの作成
+<a id="create-a-database-account" class="xliff"></a>
 
 [!INCLUDE [cosmos-db-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)]
 
-<a id="add-a-table" class="xliff"></a>
-
 ## テーブルの追加
+<a id="add-a-table" class="xliff"></a>
 
 [!INCLUDE [cosmos-db-create-table](../../includes/cosmos-db-create-table.md)]
 
-<a id="add-sample-data" class="xliff"></a>
-
 ## サンプル データの追加
+<a id="add-sample-data" class="xliff"></a>
 
 これで、データ エクスプローラー (プレビュー) を使用して、新しいテーブルにデータを追加できます。
 
@@ -66,9 +61,8 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
   
     これで、テーブルにさらにエンティティを追加したり、エンティティを編集したり、データ エクスプローラーでデータをクエリしたりできます。 データ エクスプローラーでは、スループットを拡張し、ストアド プロシージャ、ユーザー定義関数、およびトリガーをテーブルに追加することもできます。
 
-<a id="clone-the-sample-application" class="xliff"></a>
-
 ## サンプル アプリケーションの複製
+<a id="clone-the-sample-application" class="xliff"></a>
 
 github で Table アプリの複製を作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
 
@@ -82,9 +76,8 @@ github で Table アプリの複製を作成し、接続文字列を設定して
 
 3. 次に、Visual Studio でソリューション ファイルを開きます。 
 
-<a id="review-the-code" class="xliff"></a>
-
 ## コードの確認
+<a id="review-the-code" class="xliff"></a>
 
 アプリで何が行われているかを簡単に確認してみましょう。 Program.cs ファイルを開くと、以下のコード行によって、Azure Cosmos DB リソースが作成されていることがわかります。 
 
@@ -115,9 +108,8 @@ github で Table アプリの複製を作成し、接続文字列を設定して
                 };
     ```
 
-<a id="update-your-connection-string" class="xliff"></a>
-
 ## 接続文字列を更新する
+<a id="update-your-connection-string" class="xliff"></a>
 
 今度は、アプリから Azure Cosmos DB に接続できるように接続文字列情報を更新します。 
 
@@ -136,9 +128,8 @@ github で Table アプリの複製を作成し、接続文字列を設定して
 
 これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
 
-<a id="run-the-web-app" class="xliff"></a>
-
 ## Web アプリの実行
+<a id="run-the-web-app" class="xliff"></a>
 
 1. Visual Studio の**ソリューション エクスプローラー**で **[PremiumTableGetStarted]** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 
 
@@ -160,24 +151,21 @@ github で Table アプリの複製を作成し、接続文字列を設定して
 
     ![データ エクスプローラー内の新しいエンティティ](./media/create-table-dotnet/azure-cosmosdb-table-quickstart-data-explorer.png)
 
-<a id="review-slas-in-the-azure-portal" class="xliff"></a>
-
 ## Azure Portal での SLA の確認
+<a id="review-slas-in-the-azure-portal" class="xliff"></a>
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-<a id="clean-up-resources" class="xliff"></a>
-
 ## リソースのクリーンアップ
+<a id="clean-up-resources" class="xliff"></a>
 
 このアプリの使用を続けない場合は、以下の手順に従い、Azure Portal でこのクイック スタートで作成したすべてのリソースを削除してください。 
 
 1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックし、作成したリソースの名前をクリックします。 
 2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
 
-<a id="next-steps" class="xliff"></a>
-
 ## 次のステップ
+<a id="next-steps" class="xliff"></a>
 
 このクイック スタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してテーブルを作成し、アプリを実行する方法を説明しました。  これで、Table API を使用して、データをクエリできます。  
 
