@@ -19,11 +19,12 @@ ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: 034b61fdeb34c03bb4b58145f04138410e0d6fc6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
-# <a name="process-and-analyze-json-documents-using-hive-in-hdinsight"></a>HDInsight の Hive を使用した JSON ドキュメントの処理と分析
+# HDInsight の Hive を使用した JSON ドキュメントの処理と分析
+<a id="process-and-analyze-json-documents-using-hive-in-hdinsight" class="xliff"></a>
 
 HDInsight の Hive を使用して JSON ファイルを処理および分析する方法について説明します。 このチュートリアルでは、次の JSON ドキュメントが使用されます。
 
@@ -66,7 +67,8 @@ HDInsight の Hive を使用して JSON ファイルを処理および分析す�
 
 このチュートリアルでは、Hive コンソールを使用します。  Hive コンソールを開く手順については、「 [リモート デスクトップによる HDInsight での Hive と Hadoop の使用](hdinsight-hadoop-use-hive-remote-desktop.md)」をご覧ください。
 
-## <a name="flatten-json-documents"></a>JSON ドキュメントの平坦化
+## JSON ドキュメントの平坦化
+<a id="flatten-json-documents" class="xliff"></a>
 次のセクションで一覧表示されているメソッドでは、JSON ドキュメントが 1 行で表示されている必要があります。 このため、JSON ドキュメントを文字列に平坦化する必要があります。 JSON ドキュメントがすでにフラット化されている場合、このステップをスキップして、JSON データの分析に関する次のセクションに直接進むことができます。
 
     DROP TABLE IF EXISTS StudentsRaw;
@@ -98,7 +100,8 @@ SELECT ステートメントの出力を次に示します。
 
 ![JSON ドキュメントのフラット化。][image-hdi-hivejson-flatten]
 
-## <a name="analyze-json-documents-in-hive"></a>Hive での JSON ドキュメントの分析
+## Hive での JSON ドキュメントの分析
+<a id="analyze-json-documents-in-hive" class="xliff"></a>
 Hive は、JSON ドキュメントに対してクエリを実行するための次の 3 つの異なるメカニズムを提供します。
 
 * GET\_JSON\_OBJECT UDF (ユーザー定義関数) を使用する
@@ -106,7 +109,8 @@ Hive は、JSON ドキュメントに対してクエリを実行するための�
 * カスタム SerDe を使用する
 * Python またはその他の言語を使用して独自の UDF を作成する Hive を使用した独自の Python コードの実行については、[この記事][hdinsight-python]をご覧ください。
 
-### <a name="use-the-getjsonobject-udf"></a>GET\_JSON_OBJECT UDF を使用する
+### GET\_JSON_OBJECT UDF を使用する
+<a id="use-the-getjsonobject-udf" class="xliff"></a>
 Hive には、ランタイム処理中に JSON クエリを実行できる [get json object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) という組み込み UDF があります。 このメソッドでは 2 つの引数 (テーブル名とメソッド名) を取り、解析が必要なフラット化された JSON ドキュメントと JSON フィールドが含まれます。 この UDF の動作を確認する例を見てみましょう。
 
 各学生の姓と名を取得します。
@@ -127,7 +131,8 @@ get-json_object UDF にはいくつかの制限があります。
 
 このため、Hive Wiki では json_tuple の使用が推奨されています。  
 
-### <a name="use-the-jsontuple-udf"></a>JSON_TUPLE UDF を使用する
+### JSON_TUPLE UDF を使用する
+<a id="use-the-jsontuple-udf" class="xliff"></a>
 Hive に備えられたもう 1 つの UDF は [json_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple) と呼ばれ、[get_ json _object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) よりもパフォーマンスが優れています。 このメソッドは、一連のキーと、JSON 文字列を取り、1 つの関数を使用して値のタプルを返します。 次のクエリでは、JSON ドキュメントから、学生 ID とグレードが返されます。
 
     SELECT q1.StudentId, q1.Grade
@@ -141,7 +146,8 @@ Hive コンソールにおけるこのスクリプトの出力:
 
 JSON\_TUPLE では、Hive で [lateral view](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) 構文を使用します。これによって、json\_tuple は元のテーブルの各行に UDT 関数を適用して、仮想テーブルを作成することができます。  複雑な JSON では LATERAL VIEW が繰り返し使用されるため、処理が難しくなります。 また、JSON_TUPLE では入れ子になった JSON を処理できません。
 
-### <a name="use-custom-serde"></a>カスタム SerDe を使用する
+### カスタム SerDe を使用する
+<a id="use-custom-serde" class="xliff"></a>
 SerDe は、入れ子になった JSON ドキュメントを解析するのに最適です。これを使用して JSON スキーマを定義し、そのスキーマを使用してドキュメントを解析できます。 このチュートリアルでは、[Roberto Congiu](https://github.com/rcongiu) によって作成された、最も広く使用されている SerDe の 1 つを使用します。
 
 **カスタムの SerDe を使用するには:**
@@ -242,10 +248,12 @@ Hive コンソールの出力を次に示します。
 
 
 
-## <a name="summary"></a>概要
+## 概要
+<a id="summary" class="xliff"></a>
 結論として、Hive で選択する JSON 演算子の種類は、シナリオによって異なります。 JSON ドキュメントが単純で、検索するのが 1 つのフィールドのみの場合には、Hive UDF get\_json\_object を選択できます。 検索対象のキーが複数ある場合には、json_tuple を使用できます。 入れ子になったドキュメントの場合、JSON SerDe を使用する必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## 次のステップ
+<a id="next-steps" class="xliff"></a>
 
 その他の関連記事については、次を参照してください。
 
