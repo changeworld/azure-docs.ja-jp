@@ -23,14 +23,15 @@ ms.lasthandoff: 07/06/2017
 
 
 ---
-## <a name="configure-your-aspnet-web-app-with-the-applications-registration-information"></a>アプリケーションの登録情報を使用した ASP.NET Web アプリの構成
+## アプリケーションの登録情報を使用した ASP.NET Web アプリの構成
+<a id="configure-your-aspnet-web-app-with-the-applications-registration-information" class="xliff"></a>
 
 この手順では、SSL を使用するようにプロジェクトを構成した後、SSL URL を使用してアプリケーションの登録情報を構成します。 その後、*web.config* を介して、アプリケーションの登録情報をソリューションに追加します。
 
-1.  ソリューション エクスプローラーで、プロジェクト選択して [`Properties`] (プロパティ) ウィンドウを確認します ([プロパティ] ウィンドウが表示されない場合は F4 キーを押します)。
-2.  以下のように [`SSL Enabled`] (SSL 有効) を `True` に変えます。<br/>
+1.  ソリューション エクスプローラーで、プロジェクト選択して [`Properties`] \(プロパティ) ウィンドウを確認します ([プロパティ] ウィンドウが表示されない場合は F4 キーを押します)。
+2.  以下のように [`SSL Enabled`] \(SSL 有効) を `True` に変えます。<br/>
 ![プロジェクトのプロパティ](media/active-directory-serversidewebapp-aspnetwebappowin-configure/vsprojectproperties.png)<br />
-3.  上の画像にある [`SSL URL`] の値をコピーしてこのページの最上部にある [`Redirect URL`] (リダイレクト URL) フィールドに貼り付け、*[更新]* をクリックします。
+3.  上の画像にある [`SSL URL`] の値をコピーしてこのページの最上部にある [`Redirect URL`] \(リダイレクト URL) フィールドに貼り付け、*[更新]* をクリックします。
 4.  `configuration\appSettings` セクションのルート フォルダーにあるファイル `web.config` に、以下のコードを追加します。
 
 ```xml
