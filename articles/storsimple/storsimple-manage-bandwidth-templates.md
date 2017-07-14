@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2a717adb94ab92f206aab45e4836bb26252f89a0
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: df3ae8bf775370432b3648459a7c942afe69fb17
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
-# <a name="use-the-storsimple-manager-service-to-manage-storsimple-bandwidth-templates"></a>StorSimple Manager サービスを使用して StorSimple 帯域幅テンプレートを管理する
-## <a name="overview"></a>Overview
+# StorSimple Manager サービスを使用して StorSimple 帯域幅テンプレートを管理する
+<a id="use-the-storsimple-manager-service-to-manage-storsimple-bandwidth-templates" class="xliff"></a>
+## 概要
+<a id="overview" class="xliff"></a>
 帯域幅テンプレートを使用すると、StorSimple デバイスからクラウドへのデータを階層化する複数の時刻スケジュールにわたって、ネットワーク帯域幅の使用量を構成することができます。
 
 帯域幅調整スケジュールを使用すると、次のことができます。
@@ -47,10 +51,12 @@ ms.openlocfilehash: 2a717adb94ab92f206aab45e4836bb26252f89a0
 * 帯域幅テンプレートに関する質問と回答
 * 帯域幅テンプレートのベスト プラクティス
 
-## <a name="add-a-bandwidth-template"></a>帯域幅テンプレートを追加する
+## 帯域幅テンプレートを追加する
+<a id="add-a-bandwidth-template" class="xliff"></a>
 新しい帯域幅テンプレートを作成するには、次の手順を実行します。
 
-#### <a name="to-add-a-bandwidth-template"></a>帯域幅テンプレートを追加するには
+#### 帯域幅テンプレートを追加するには
+<a id="to-add-a-bandwidth-template" class="xliff"></a>
 1. StorSimple Manager サービスの **[構成]** ページで、**[帯域幅テンプレートの追加/編集]** をクリックします。
 2. **[帯域幅テンプレートの追加/編集]** ダイアログ ボックスで次の操作を行います。
    
@@ -68,21 +74,23 @@ ms.openlocfilehash: 2a717adb94ab92f206aab45e4836bb26252f89a0
       > 
       > 
    5. **[帯域幅レート]**を指定します。 これは、クラウドに関連する操作 (アップロードとダウンロード) で StorSimple デバイスが使用する帯域幅 (メガビット/秒 (Mbps)) です。 1 ～ 1,000 の値をこのフィールドで指定します。
-   6. チェック マーク アイコン ![チェック マーク アイコン](をクリックします。/media/storsimple-manage-bandwidth-templates/HCS_CheckIconをクリックします。png)をクリックします。 作成したテンプレートは、サービスの **[構成]** ページの帯域幅テンプレートの一覧に追加されます。
+   6. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-manage-bandwidth-templates/HCS_CheckIcon.png)をクリックします。 作成したテンプレートは、サービスの **[構成]** ページの帯域幅テンプレートの一覧に追加されます。
       
       ![新しい帯域幅テンプレートを作成する](./media/storsimple-manage-bandwidth-templates/HCS_CreateNewBT1.png)
 4. ページ下部の **[保存]** をクリックし、確認プロンプトに **[はい]** をクリックします。 これにより、構成の変更内容が保存されます。
 
-## <a name="edit-a-bandwidth-template"></a>帯域幅テンプレートを編集する
+## 帯域幅テンプレートを編集する
+<a id="edit-a-bandwidth-template" class="xliff"></a>
 帯域幅テンプレートを編集するには、次の手順を実行します。
 
-### <a name="to-edit-a-bandwidth-template"></a>帯域幅テンプレートを編集するには
+### 帯域幅テンプレートを編集するには
+<a id="to-edit-a-bandwidth-template" class="xliff"></a>
 1. **[帯域幅テンプレートの追加/編集]**をクリックします。
 2. **[帯域幅テンプレートの追加/編集]** ダイアログ ボックスで次の操作を行います。
    
    1. **[テンプレート]** ドロップダウン リストで、変更する既存の帯域幅テンプレートを選択します。
    2. 変更を完了します (既存の設定はいずれも変更できます)。
-   3. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-manage-bandwidth-templates/HCS_CheckIcon.png) をクリックします。 サービスの [構成] ページの帯域幅テンプレートの一覧に変更したテンプレートが表示されます。
+   3. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-manage-bandwidth-templates/HCS_CheckIcon.png)をクリックします。 サービスの [構成] ページの帯域幅テンプレートの一覧に変更したテンプレートが表示されます。
 3. 変更内容を保存するには、ページの下部にある **[保存]** をクリックします。 ページ下部の **[はい]** をクリックします。
 
 > [!NOTE]
@@ -90,10 +98,12 @@ ms.openlocfilehash: 2a717adb94ab92f206aab45e4836bb26252f89a0
 > 
 > 
 
-## <a name="delete-a-bandwidth-template"></a>帯域幅テンプレートを削除する
+## 帯域幅テンプレートを削除する
+<a id="delete-a-bandwidth-template" class="xliff"></a>
 帯域幅テンプレートを削除するには、次の手順を実行します。
 
-#### <a name="to-delete-a-bandwidth-template"></a>帯域幅テンプレートを削除するには
+#### 帯域幅テンプレートを削除するには
+<a id="to-delete-a-bandwidth-template" class="xliff"></a>
 1. サービスの帯域幅テンプレートの表形式のリストで、削除するテンプレートを選択します。 削除アイコン (**[x]**) が選択したテンプレートの右端に表示されます。 **[x]** アイコンをクリックしてテンプレートを削除します。
 2. 確認を求められます。 **[OK]** をクリックして続行します。
 
@@ -101,7 +111,8 @@ ms.openlocfilehash: 2a717adb94ab92f206aab45e4836bb26252f89a0
 
 このテンプレートに対するすべての参照を削除するには、 **[ボリューム コンテナー]** ページにアクセスし、このテンプレートを使用しているボリューム コンテナーを変更して、別のテンプレートを使用するか、カスタムまたは無制限の帯域幅を使用するように設定します。 すべての参照を削除すると、テンプレートを削除できます。
 
-## <a name="use-a-default-bandwidth-template"></a>既定の帯域幅テンプレートを使用する
+## 既定の帯域幅テンプレートを使用する
+<a id="use-a-default-bandwidth-template" class="xliff"></a>
 既定の帯域幅テンプレートが提供され、既定でボリューム コンテナーによって使用されて、クラウドにアクセスするときに帯域幅の制御が適用されます。 また、既定のテンプレートは、ユーザーが独自のテンプレートを作成するときの参照用にもなります。 この既定のテンプレートの詳細は、次のとおりです。
 
 * **[名前]** – 夜間と週末は無制限
@@ -109,17 +120,20 @@ ms.openlocfilehash: 2a717adb94ab92f206aab45e4836bb26252f89a0
 
 既定のテンプレートは編集することができます。 このテンプレート (編集済みのバージョンを含む) の使用状況は追跡されます。
 
-## <a name="create-an-all-day-bandwidth-template-that-starts-at-a-specified-time"></a>指定した時刻に開始する終日帯域幅テンプレートを作成する
+## 指定した時刻に開始する終日帯域幅テンプレートを作成する
+<a id="create-an-all-day-bandwidth-template-that-starts-at-a-specified-time" class="xliff"></a>
 指定した時刻に開始して 1 日実行するスケジュールを作成には、この手順を使用します。 たとえば、スケジュールは午前 9 時に開始し、翌日の午前 9 時まで実行されます。 特定のスケジュールの開始および終了時刻は両方とも、同じ 24 時間スケジュールに含める必要があり、複数の日にまたがってはならないので注意してください。 複数の日にまたがる帯域幅テンプレートが必要な場合は、複数のスケジュールを使用して設定する必要があります (例を参照)。
 
-#### <a name="to-create-an-all-day-bandwidth-template"></a>終日の帯域幅テンプレートを作成するには
+#### 終日の帯域幅テンプレートを作成するには
+<a id="to-create-an-all-day-bandwidth-template" class="xliff"></a>
 1. 午前 9 時に開始して午前 0 時まで実行するスケジュールを作成します。
 2. 別のスケジュールを追加します。 2 番目のスケジュールは、午前 0 時から午前 9 時まで実行するように構成します。
 3. 帯域幅テンプレートを保存します。
 
 複合スケジュールは指定した時刻に開始して、終日実行します。
 
-## <a name="questions-and-answers-about-bandwidth-templates"></a>帯域幅テンプレートに関する質問と回答
+## 帯域幅テンプレートに関する質問と回答
+<a id="questions-and-answers-about-bandwidth-templates" class="xliff"></a>
 **Q**.デバイスに複数のボリューム コンテナーがあり、それらのスケジュールは重なっているが適用される制限が異なります。 スケジュールとスケジュールの合間では帯域幅の制御をどうなりますか  (1 つのスケジュールが終了し、別のスケジュールがまだ開始していないときです)。
 
 **A**.デバイスに 3 つのボリューム コンテナーがあると仮定します。 そのような場合、帯域幅コントロールは行われません。 つまり、クラウドへのデータを階層化するとき、デバイスは帯域幅を無制限に使用できます。
@@ -148,18 +162,15 @@ ms.openlocfilehash: 2a717adb94ab92f206aab45e4836bb26252f89a0
 
 **A**.デバイスに 3 つのボリューム コンテナーがあると仮定します。 これらのコンテナーに関連付けられているスケジュールが完全に重なっています。 これらのコンテナーの帯域幅制限は、それぞれ 5、10、15 Mbps です。 これらのコンテナーのすべてで I/O が同時に発生した場合は、3 つの帯域幅制限の最小値が適用されます。 この場合は、これらの送信 I/O 要求が同一のキューを共有するので、5 Mbps となります。
 
-## <a name="best-practices-for-bandwidth-templates"></a>帯域幅テンプレートのベスト プラクティス
+## 帯域幅テンプレートのベスト プラクティス
+<a id="best-practices-for-bandwidth-templates" class="xliff"></a>
 StorSimple デバイスに関する次のベスト プラクティスに従ってください。
 
 * デバイスに帯域幅テンプレートを構成し、1 日の異なる時間にデバイスごとにネットワーク スループットを可変調整できるようにします。 これらの帯域幅テンプレートをバックアップ スケジュールと併用すると、オフピーク時間帯のクラウド運用に追加ネットワーク帯域幅を効果的に利用できます。
 * デプロイのサイズおよび必要な目標復旧時間 (RTO) に基づいて、特定のデプロイメントに必要な実際の帯域幅を計算します。
 
-## <a name="next-steps"></a>次のステップ
+## 次のステップ
+<a id="next-steps" class="xliff"></a>
 [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
