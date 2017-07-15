@@ -23,7 +23,8 @@ ms.lasthandoff: 12/09/2016
 
 ---
 
-# <a name="azure-media-services-telemetry"></a>Azure Media Services テレメトリ
+# Azure Media Services テレメトリ
+<a id="azure-media-services-telemetry" class="xliff"></a>
 
 Azure Media Services (AMS) を使用して、サービスのテレメトリ/メトリック データにアクセスできます。 現在のバージョンの AMS では、ライブ **チャネル** エンティティ、**ストリーミング ポイント** エンティ、およびライブ **アーカイブ** エンティティのテレメトリ データを取得できます。 
 
@@ -33,9 +34,10 @@ Azure Media Services (AMS) を使用して、サービスのテレメトリ/メ�
 
 このトピックでは、AMS テレメトリを構成して使用する方法について説明します。
 
-## <a name="configuring-telemetry"></a>テレメトリの構成
+## テレメトリの構成
+<a id="configuring-telemetry" class="xliff"></a>
 
-テレメトリはコンポーネント レベルの粒度で構成でき、 "Normal" と "Verbose" の&2; つの詳細レベルがあります。 現時点では、どちらのレベルでも同じ情報が返ります。 "Normal" を使用することをお勧めします。 
+テレメトリはコンポーネント レベルの粒度で構成でき、 "Normal" と "Verbose" の 2 つの詳細レベルがあります。 現時点では、どちらのレベルでも同じ情報が返ります。 "Normal" を使用することをお勧めします。 
 
 次のトピックで、テレメトリを有効にする方法を示します。
 
@@ -43,7 +45,8 @@ Azure Media Services (AMS) を使用して、サービスのテレメトリ/メ�
 
 [REST を使用したテレメトリの有効化](media-services-rest-telemetry.md)に関するトピック
 
-## <a name="consuming-telemetry-information"></a>テレメトリ情報の使用
+## テレメトリ情報の使用
+<a id="consuming-telemetry-information" class="xliff"></a>
 
 テレメトリは、Media Services アカウントのテレメトリを構成するときに指定したストレージ アカウントの Azure Storage テーブルに書き込まれます。 このセクションでは、メトリック用のストレージ テーブルについて説明します。
 
@@ -68,14 +71,15 @@ Azure Media Services (AMS) を使用して、サービスのテレメトリ/メ�
 - 特定のサービスの特定の日付範囲にあるすべてのデータの取得。
 - サービスの最新データの取得。
 
-### <a name="telemetry-table-storage-output-schema"></a>テレメトリ テーブル ストレージの出力スキーマ
+### テレメトリ テーブル ストレージの出力スキーマ
+<a id="telemetry-table-storage-output-schema" class="xliff"></a>
 
 テレメトリ データは、1 つのテーブルにまとめて格納されます (例: "TelemetryMetrics20160321"。"20160321" はテーブルの作成日です)。 テレメトリ システムでは、00:00 UTC に基づいて日が変わるごとに個別のテーブルが作成されます。 テーブルは、繰り返し発生する値 (特定の時間帯の取り込みビットレートや送信されたバイト数など) を格納するために使用されます。 
 
 プロパティ|値|例/メモ
 ---|---|---
 PartitionKey|{アカウント ID}_{エンティティ ID}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>アカウント ID は、ワークフローを簡単にするためにパーティション キーに含まれ、複数の Media Services アカウントが同じストレージ アカウントに書き込まれます。
-RowKey|{午前&0; 時までの秒数}_{ランダム値}|01688_00199<br/><br/>行キーは、パーティション内の上位 n 件を取得するスタイルのクエリを可能にするために、午前&0; 時までの秒数から始まります。 詳細については、[こちらの記事](../storage/storage-table-design-guide.md#log-tail-pattern)を参照してください。 
+RowKey|{午前 0 時までの秒数}_{ランダム値}|01688_00199<br/><br/>行キーは、パーティション内の上位 n 件を取得するスタイルのクエリを可能にするために、午前 0 時までの秒数から始まります。 詳細については、[こちらの記事](../storage/storage-table-design-guide.md#log-tail-pattern)を参照してください。 
 Timestamp|日付/時刻|Azure Table の自動タイムスタンプ 2016-09-09T22:43:42.241Z
 Type|テレメトリ データを提供するエンティティの種類|Channel/StreamingEndpoint/Archive<br/><br/>イベントの種類は単なる文字列値です。
 Name|テレメトリ イベントの名前|ChannelHeartbeat/StreamingEndpointRequestLog
@@ -83,13 +87,14 @@ ObservedTime|テレメトリ イベントが発生した時刻 (UTC)|2016-09-09T
 ServiceID|{サービス ID}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 エンティティ固有のプロパティ|イベントによって定義されたとおり|StreamName: stream1, Bitrate 10123, …<br/><br/>残りのプロパティは、指定されたイベントの種類に対して定義されます。 Azure Table の内容は、キーと値のペアです   (つまり、テーブル内の異なる行には、異なるプロパティのセットが格納されます)。
 
-### <a name="entity-specific-schema"></a>エンティティ固有のスキーマ
+### エンティティ固有のスキーマ
+<a id="entity-specific-schema" class="xliff"></a>
 
-エンティティ固有の&3; 種類のテレメトリ データ エントリがあり、それぞれ次の頻度でプッシュされます。
+エンティティ固有の 3 種類のテレメトリ データ エントリがあり、それぞれ次の頻度でプッシュされます。
 
 - ストリーミング エンドポイント: 30 秒ごと
-- ライブ チャネル:&1; 分ごと
-- ライブ アーカイブ:&1; 分ごと
+- ライブ チャネル: 1 分ごと
+- ライブ アーカイブ: 1 分ごと
 
 **ストリーミング エンドポイント**
 
@@ -149,13 +154,15 @@ ServiceID|サービス ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 ManifestName|プログラムの URL|asset-eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4bd2-8c01-a92a2b38c9ba.ism
 TrackName|トラックの名前|audio_1
 TrackType|トラックの種類|Audio/video
-カスタム属性|名前とビットレートが同じ複数のトラックを区別する&16; 進数の文字列 (マルチ カメラ アングル)|
+カスタム属性|名前とビットレートが同じ複数のトラックを区別する 16 進数の文字列 (マルチ カメラ アングル)|
 Bitrate|トラックのビットレート|785000
-Healthy|FragmentDiscardedCount == 0 && ArchiveAcquisitionError == False の場合は True|True (これら&2; つの値はメトリック内には存在しないがソース イベントには存在する)<br/><br/>Healthy は、次の条件のいずれかに該当する場合は false を返す複合関数です。<br/><br/>- FragmentDiscardedCount > 0<br/>- ArchiveAcquisitionError == True
+Healthy|FragmentDiscardedCount == 0 && ArchiveAcquisitionError == False の場合は True|True (これら 2 つの値はメトリック内には存在しないがソース イベントには存在する)<br/><br/>Healthy は、次の条件のいずれかに該当する場合は false を返す複合関数です。<br/><br/>- FragmentDiscardedCount > 0<br/>- ArchiveAcquisitionError == True
 
-## <a name="general-qa"></a>全般的な Q&A
+## 全般的な Q&A
+<a id="general-qa" class="xliff"></a>
 
-### <a name="how-to-consume-metrics-data"></a>メトリック データの使用方法は?
+### メトリック データの使用方法は?
+<a id="how-to-consume-metrics-data" class="xliff"></a>
 
 メトリック データは、一連の Azure Table として顧客のストレージ アカウントに格納されます。 このデータは、次のツールで使用できます。
 
@@ -163,20 +170,24 @@ Healthy|FragmentDiscardedCount == 0 && ArchiveAcquisitionError == False の場�
 - Microsoft Azure Storage Explorer (Excel で処理できるコンマ区切り値形式でのエクスポートをサポートします)
 - REST API
 
-### <a name="how-to-find-average-bandwidth-consumption"></a>帯域幅の平均使用量を調べる方法は?
+### 帯域幅の平均使用量を調べる方法は?
+<a id="how-to-find-average-bandwidth-consumption" class="xliff"></a>
 
 帯域幅の平均使用量は、一定期間の BytesSent の平均です。
 
-### <a name="how-to-define-streaming-unit-count"></a>ストリーミング ユニット数を定義する方法は?
+### ストリーミング ユニット数を定義する方法は?
+<a id="how-to-define-streaming-unit-count" class="xliff"></a>
 
-ストリーミング ユニット数は、サービスのストリーミング エンドポイントからのピーク スループットを&1; つのストリーミング エンドポイントのピーク スループットで除算したピーク スループットと定義できます。 1 つのストリーミング エンドポイントの使用可能なピーク スループットは、160 Mbps です。
+ストリーミング ユニット数は、サービスのストリーミング エンドポイントからのピーク スループットを 1 つのストリーミング エンドポイントのピーク スループットで除算したピーク スループットと定義できます。 1 つのストリーミング エンドポイントの使用可能なピーク スループットは、160 Mbps です。
 たとえば、顧客のサービスからのピーク スループットが 40 MBps であるとします (一定時間の BytesSent の最大値)。 この場合、ストリーミング ユニット数は、(40 MBps)*(8 ビット/バイト)/(160 Mbps) = 2 になります。
 
-### <a name="how-to-find-average-requestssecond"></a>平均要求数/秒を調べる方法は?
+### 平均要求数/秒を調べる方法は?
+<a id="how-to-find-average-requestssecond" class="xliff"></a>
 
 平均要求数/秒を調べるには、一定時間の要求 (RequestCount) の平均数を計算します。
 
-### <a name="how-to-define-channel-health"></a>チャネルの状態を定義する方法は?
+### チャネルの状態を定義する方法は?
+<a id="how-to-define-channel-health" class="xliff"></a>
 
 チャネルの状態は、次の条件のいずれかに該当する場合は false になる複合ブール関数として定義できます。
 
@@ -188,19 +199,23 @@ Healthy|FragmentDiscardedCount == 0 && ArchiveAcquisitionError == False の場�
 - UnexpectedBitrate == True
 
 
-### <a name="how-to-detect-discontinuities"></a>不連続性を検出する方法は?
+### 不連続性を検出する方法は?
+<a id="how-to-detect-discontinuities" class="xliff"></a>
 
 不連続性を検出するには、DiscontinuityCount > 0 であるすべての Channel データ エントリを探します。 対応する ObservedTime タイムスタンプが、不連続性の発生時刻を示します。
 
-### <a name="how-to-detect-timestamp-overlaps"></a>タイムスタンプの重複を検出する方法は?
+### タイムスタンプの重複を検出する方法は?
+<a id="how-to-detect-timestamp-overlaps" class="xliff"></a>
 
 タイムスタンプの重複を検出するには、OverlapCount > 0 であるすべての Channel データ エントリを探します。 対応する ObservedTime タイムスタンプが、タイムスタンプの重複が発生した時刻を示します。
 
-### <a name="how-to-find-streaming-request-failures-and-reasons"></a>ストリーミング要求エラーとその理由を調べる方法は?
+### ストリーミング要求エラーとその理由を調べる方法は?
+<a id="how-to-find-streaming-request-failures-and-reasons" class="xliff"></a>
 
 ストリーミング要求エラーとその理由を調べるには、ResultCode が S_OK ではないすべてのストリーミング エンドポイントのデータ エントリを探します。 対応する StatusCode フィールドで、要求エラーの理由が示されます。
 
-### <a name="how-to-consume-data-with-external-tools"></a>外部ツールを使用してデータを使用する方法は?
+### 外部ツールを使用してデータを使用する方法は?
+<a id="how-to-consume-data-with-external-tools" class="xliff"></a>
 
 テレメトリ データは、次のツールで処理して視覚化できます。
 
@@ -210,15 +225,18 @@ Healthy|FragmentDiscardedCount == 0 && ArchiveAcquisitionError == False の場�
 - AMS ライブ ダッシュボード
 - Azure Portal (保留中のリリース)
 
-### <a name="how-to-manage-data-retention"></a>データ保有期間を管理する方法は?
+### データ保有期間を管理する方法は?
+<a id="how-to-manage-data-retention" class="xliff"></a>
 
 テレメトリ システムは、データ保有期間の管理も古いレコードの自動削除も実行しません。 このため、ストレージ テーブルの管理と古いレコードの削除は、手動で行う必要があります。 方法については、Storage SDK を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## 次のステップ
+<a id="next-steps" class="xliff"></a>
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>フィードバックの提供
+## フィードバックの提供
+<a id="provide-feedback" class="xliff"></a>
 
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
