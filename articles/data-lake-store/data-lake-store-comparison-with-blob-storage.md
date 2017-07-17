@@ -12,16 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/03/2017
+ms.date: 06/29/2017
 ms.author: nitinme
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ab9c4bc6e2e68a3522bbc3fe23ea33760f03b620
 ms.openlocfilehash: 10926263ee2657dc96fb1873733d349cf0956e92
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/05/2017
 
 
 ---
-# <a name="comparing-azure-data-lake-store-and-azure-blob-storage"></a>Azure Data Lake Store と Azure BLOB ストレージの比較
+# Azure Data Lake Store と Azure BLOB ストレージの比較
+<a id="comparing-azure-data-lake-store-and-azure-blob-storage" class="xliff"></a>
 この記事の表には、ビッグ データ処理の重要な側面に沿った Azure Data Lake Store と Azure BLOB ストレージの違いがまとめられています。 Azure BLOB ストレージは、さまざまなストレージ シナリオ向けに設計されたスケーラブルな汎用オブジェクト ストアです。 Azure Data Lake Store は、ビッグ データ分析ワークロードに最適化されたハイパースケール リポジトリです。
 
 |  | Azure Data Lake Store | Azure BLOB ストレージ |
@@ -47,7 +49,8 @@ ms.lasthandoff: 01/05/2017
 | リージョン別の提供状況 |詳細については、 [こちら](https://azure.microsoft.com/regions/#services) |詳細については、 [こちら](https://azure.microsoft.com/regions/#services) |
 | 料金 |詳細については、 [価格](https://azure.microsoft.com/pricing/details/data-lake-store/) |詳細については、 [価格](https://azure.microsoft.com/pricing/details/storage/) |
 
-### <a name="next-steps"></a>次のステップ
+### 次のステップ
+<a id="next-steps" class="xliff"></a>
 * [Azure Data Lake Store の概要](data-lake-store-overview.md)
 * [Data Lake Store の使用](data-lake-store-get-started-portal.md)
 
