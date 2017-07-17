@@ -14,14 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 2f0b7a04f4b732277abc65dd5fe0844d6e906496
-ms.lasthandoff: 03/30/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 78025789fd03d3c3a6cfb170329d9d51ac282034
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/28/2017
 
 ---
 
-# <a name="azure-load-balancer-overview"></a>Azure Load Balancer の概要
+# Azure Load Balancer の概要
+<a id="azure-load-balancer-overview" class="xliff"></a>
 
 Azure Load Balancer は、アプリケーションに高可用性と優れたネットワーク パフォーマンスを提供します。 Azure Load Balancer は、負荷分散セットで定義されているサービスの正常なインスタンス間で着信トラフィックを分散する、レイヤー 4 (TCP、UDP) ロード バランサーです。
 
@@ -33,11 +35,13 @@ Azure Load Balancer は次のように構成できます。
 
 インターネットから到達できるようにするには、クラウド内のすべてのリソースにパブリック IP アドレスが必要です。 Azure のクラウド インフラストラクチャでは、ルーティング不可能な IP アドレスをリソースに使用します。 インターネットとの通信には、ネットワーク アドレス変換 (NAT) とパブリック IP アドレスが使用されます。
 
-## <a name="azure-deployment-models"></a>Azure のデプロイメント モデル
+## Azure のデプロイメント モデル
+<a id="azure-deployment-models" class="xliff"></a>
 
 Azure クラシック [デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md)と Resource Manager デプロイメント モデルの違いを理解することが重要です。 各モデルで Azure Load Balancer の構成方法が異なります。
 
-### <a name="azure-classic-deployment-model"></a>Azure クラシック デプロイ モデル
+### Azure クラシック デプロイ モデル
+<a id="azure-classic-deployment-model" class="xliff"></a>
 
 クラウド サービス境界内にデプロイされた仮想マシンは、ロード バランサーを使用するためにグループ化できます。 このモデルでは、パブリック IP アドレスと完全修飾ドメイン名 (FQDN) がクラウド サービスに割り当てられます。 ロード バランサーはポート変換を実行し、クラウド サービスのパブリック IP アドレスを使用して、ネットワーク トラフィックの負荷を分散します。
 
@@ -49,7 +53,8 @@ Azure クラシック [デプロイメント モデル](../azure-resource-manage
 
 このデプロイ モデルでロード バランサーが使用するパブリック IP アドレスのドメイン ラベルは、\<クラウド サービス名\>.cloudapp.net です。 次の図は、このモデルの Azure Load Balancer を示しています。
 
-### <a name="azure-resource-manager-deployment-model"></a>Azure Resource Manager デプロイ モデル
+### Azure Resource Manager デプロイ モデル
+<a id="azure-resource-manager-deployment-model" class="xliff"></a>
 
 Resource Manager デプロイメント モデルでは、クラウド サービスを作成する必要はありません。 複数の仮想マシン間でトラフィックを明示的にルーティングするためにロード バランサーが作成されます。
 
@@ -65,7 +70,8 @@ Resource Manager デプロイメント モデルでは、クラウド サービ�
 
 ロード バランサーは、Resource Manager ベースのテンプレート、API、ツールを使用して管理できます。 Resource Manager の詳細については、[Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)に関する記事をご覧ください。
 
-## <a name="load-balancer-features"></a>Load Balancer の機能
+## Load Balancer の機能
+<a id="load-balancer-features" class="xliff"></a>
 
 * ハッシュベースの分散
 
@@ -114,12 +120,19 @@ Resource Manager デプロイメント モデルでは、クラウド サービ�
 
     このトピックの詳細については、[送信接続](load-balancer-outbound-connections.md)に関する記事をご覧ください。
 
-### <a name="support-for-multiple-load-balanced-ip-addresses-for-virtual-machines"></a>仮想マシンの複数の負荷分散された IP アドレスのサポート
+### 仮想マシンの複数の負荷分散された IP アドレスのサポート
+<a id="support-for-multiple-load-balanced-ip-addresses-for-virtual-machines" class="xliff"></a>
 負荷分散された複数のパブリック IP アドレスを、一連の仮想マシンに割り当てることができます。 この機能を使用して、複数の SSL Web サイトや複数の SQL Server AlwaysOn 可用性グループ リスナーを同じ仮想マシン セット上にホストすることができます。 詳細については、[クラウド サービスごとの複数の VIP](load-balancer-multivip.md) に関する記事をご覧ください。
 
 [!INCLUDE [load-balancer-compare-tm-ag-lb-include.md](../../includes/load-balancer-compare-tm-ag-lb-include.md)]
 
-## <a name="next-steps"></a>次のステップ
+## 制限事項
+<a id="limitations" class="xliff"></a>
+
+Load Balancer のバックエンド プールには、Basic レベルを除く任意の VM SKU を含めることができます。
+
+## 次のステップ
+<a id="next-steps" class="xliff"></a>
 
 [インターネットに接続するロード バランサーの概要](load-balancer-internet-overview.md)
 
