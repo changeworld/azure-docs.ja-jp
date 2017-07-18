@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 05/15/2017
+ms.date: 06/02/2017
 ms.author: marsma
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: 90b67cf3d136882d59ed7fe4210f93fb694e96a6
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 6098216f7dd901ea48fb3ab969c7934cc288b247
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -257,7 +257,8 @@ az storage blob upload \
 
  異なる BLOB の種類の詳細については、「[Understanding Block Blobs, Append Blobs, and Page Blobs](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs)」 (ブロック BLOB、追加 BLOB、ページ BLOB について) をご覧ください。
 
-### <a name="download-blobs-from-a-container"></a>コンテナーから BLOB をダウンロードする
+
+### <a name="download-a-blob-from-a-container"></a>コンテナーから BLOB をダウンロードする
 この例は、BLOB をコンテナーからダウンロードする方法を示しています。
 
 ```azurecli
@@ -267,35 +268,47 @@ az storage blob download \
     --file ~/mydownloadedblob.png
 ```
 
+### <a name="list-the-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
+
+コンテナー内の BLOB は、[az storage blob list](/cli/azure/storage/blob#list) コマンドで一覧表示します。
+
+```azurecli
+az storage blob list \
+    --container-name mycontainer \
+    --output table
+```
+
 ### <a name="copy-blobs"></a>BLOB をコピーする
 BLOB は、ストレージ アカウント内、またはストレージ アカウントとリージョン間にまたがって非同期的にコピーできます。
 
-次の例は、BLOB をあるストレージ アカウントから別のストレージ アカウントにコピーする方法を示しています。 最初に別のアカウントでコンテナーを作成し、 その BLOB をパブリックおよび匿名アクセス可能と指定します。 次にコンテナーにファイルをアップロードし、最後にそのコンテナーから BLOB を現在のアカウントの **mycontainer** コンテナーにコピーします。
+次の例は、BLOB をあるストレージ アカウントから別のストレージ アカウントにコピーする方法を示しています。 まず、ソース ストレージ アカウントにコンテナーを作成し、その BLOB にパブリックな読み取りアクセス権を指定します。 次にコンテナーにファイルをアップロードし、最後にそのコンテナーから目的のストレージ アカウントのコンテナーに BLOB をコピーします。
 
 ```azurecli
-# Create container in second account
+# Create container in source account
 az storage container create \
-    --account-name <accountName2> \
-    --account-key <accountKey2> \
-    --name mycontainer2 \
+    --account-name sourceaccountname \
+    --account-key sourceaccountkey \
+    --name sourcecontainer \
     --public-access blob
 
-# Upload blob to container in second account
+# Upload blob to container in source account
 az storage blob upload \
-    --account-name <accountName2> \
-    --account-key <accountKey2> \
-    --file ~/Images/HelloWorld.png \
-    --container-name mycontainer2 \
-    --name myBlockBlob2
+    --account-name sourceaccountname \
+    --account-key sourceaccountkey \
+    --container-name sourcecontainer \
+    --file ~/Pictures/sourcefile.png \
+    --name sourcefile.png
 
-# Copy blob from second account to current account
+# Copy blob from source account to destination account (destcontainer must exist)
 az storage blob copy start \
-    --source-uri https://<accountname2>.blob.core.windows.net/mycontainer2/myBlockBlob2 \
-    --destination-blob myBlobBlob \
-    --destination-container mycontainer
+    --account-name destaccountname \
+    --account-key destaccountkey \
+    --destination-blob destfile.png \
+    --destination-container destcontainer \
+    --source-uri https://sourceaccountname.blob.core.windows.net/sourcecontainer/sourcefile.png
 ```
 
-ソースの BLOB の URL (`--source-uri` によって指定) は、パブリック アクセス可能であるか、共有アクセス署名 (SAS) トークンを含んでいる必要があります。
+この例のコピー操作が成功するためには、目的のストレージ アカウントにコピー先となるコンテナーがあらかじめ存在していることが必要です。 加えて、`--source-uri` 引数に指定したコピー元の BLOB が、Shared Access Signature (SAS) トークンを含んでいるか、この例のようにパブリックにアクセス可能であることが必要です。
 
 ### <a name="delete-a-blob"></a>BLOB を削除する
 BLOB を削除するには、`blob delete` コマンドを使用します。

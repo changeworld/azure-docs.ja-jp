@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/21/2017
+ms.date: 06/08/2017
 ms.author: marsma
 ms.translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: e9601830a2444772dd268160c9ad821a772bc1b4
+ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
+ms.openlocfilehash: 9820cef564e291d1c8aee7c360198de1dc05379e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/25/2017
+ms.lasthandoff: 06/21/2017
 
 
 ---
@@ -29,7 +29,7 @@ Microsoft Azure ストレージ エミュレーターでは、Azure の BLOB、�
 ## <a name="get-the-storage-emulator"></a>ストレージ エミュレーターの取得
 ストレージ エミュレーターは、 [Microsoft Azure SDK](https://azure.microsoft.com/downloads/)に付属しています。 また、[スタンドアロンのインストーラー](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409) (直接ダウンロード) を使用して、ストレージ エミュレーターをインストールすることも可能です。 ストレージ エミュレーターをインストールするには、お使いのコンピューターに対する管理者特権が必要です。
 
-ストレージ エミュレーターは、現在、Windows でのみ実行されます。
+ストレージ エミュレーターは、現在、Windows でのみ実行されます。 Linux 用のストレージ エミュレーターをお探しの場合、コミュニティで管理されているオープン ソースのストレージ エミュレーター [Azurite](https://github.com/arafato/azurite) が選択肢の 1 つとして挙げられます。
 
 > [!NOTE]
 > ストレージ エミュレーターの特定のバージョンで作成されたデータには、別のバージョンを使用しているとアクセスできない場合があります。 データを永続化して長期にわたって保持する必要がある場合、そのデータはストレージ エミュレーターではなく Azure ストレージ アカウントに格納することをお勧めします。
@@ -260,6 +260,7 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 
 ## <a name="next-steps"></a>次のステップ
 
+* コミュニティで管理されているオープン ソースのクロスプラットフォーム ストレージ エミュレーター [Azurite](https://github.com/arafato/azurite) を評価します。 
 * 「[.NET を使用した Azure Storage サンプル](storage-samples-dotnet.md)」には、アプリケーションを開発する際に使用できるいくつかのコード サンプルへのリンクが含まれています。
 * [Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com)を使用して、ストレージ アカウント内やストレージ エミュレーター内のリソースを操作できます。
 
