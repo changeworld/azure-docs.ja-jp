@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/12/2017
 ms.author: robb
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: 726a33b5cad8b44c520d6c59d418fec1bbfc6fa5
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 72b0c11f8bea24fc8777e3e0d7712577fab8ef97
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 05/10/2017
 
 
 ## <a name="azure-monitor-and-microsofts-other-monitoring-products"></a>Azure Monitor と Microsoft のその他の監視製品
-Azure Monitor では、Microsoft Azure のほとんどのサービス向けにベース レベルのインフラストラクチャのメトリックおよびログを提供します。 Azure Monitor にまだデータを格納していない Azure サービスは、将来的にそのデータを格納します。 
+Azure Monitor では、Microsoft Azure のほとんどのサービス向けにベース レベルのインフラストラクチャのメトリックおよびログを提供します。 Azure Monitor にまだデータを格納していない Azure サービスは、今後データを格納する予定です。
 
 Microsoft は、開発者、DevOps、または IT オペレーター向けの追加の監視機能が備わっている製品やサービスを他にも提供しています。これらの機能には、オンプレミスのインストールも用意されています。 このようなさまざまな製品やサービスの連携方法の概要と理解については、[Microsoft Azure での監視](monitoring-overview.md)に関する記事を参照してください。
 
@@ -138,7 +138,7 @@ Azure Monitor REST API、クロス プラットフォーム コマンド ライ�
 * [PowerShell](insights-powershell-samples.md)  
 * [クロスプラットフォーム コマンド ライン インターフェイス (CLI)](insights-cli-samples.md)
 * [REST API](https://docs.microsoft.com/rest/api/monitor/)
-* [.NET SDK](https://msdn.microsoft.com/library/dn802153.aspx)
+* [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor)
 
 ## <a name="next-steps"></a>次のステップ
 項目ごとに詳しい情報を確認できます。
