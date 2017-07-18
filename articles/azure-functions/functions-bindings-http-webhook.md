@@ -16,10 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: mahender
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 06958522139d621f86afd8bf25128ee64cf822b3
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: 56d6f7b5858a0e2122021e02718050a26e6defe4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/29/2017
 
 
 ---
@@ -35,14 +36,11 @@ Azure Functions には、以下のバインドが用意されています。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-> [!TIP]
->
-> [HTTPClient](https://github.com/mspnp/performance-optimization/blob/master/ImproperInstantiation/docs/ImproperInstantiation.md) のベスト プラクティスに関するドキュメントを読むことをお勧めします。
->
+[!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
 <a name="httptrigger"></a>
 
-## <a name="http-trigger"></a>HTTP トリガー
+## <a name="http-trigger"></a>HTTP trigger
 HTTP トリガーは、HTTP 要求に応答して、関数を実行します。 これを、特定の URL または HTTP メソッドのセットに応答するようにカスタマイズできます。 HTTP トリガーも、webhook に応答するように構成することができます。 
 
 Functions ポータルを使用している場合は、事前作成されたテンプレートをすぐに使用し始めることもできます。 **[新しい関数]** を選択し、**[シナリオ]** ドロップダウンで [API と webhook] を選択します。 いずれかのテンプレートを選択し、**[作成]** をクリックします。
@@ -58,7 +56,7 @@ HTTP トリガーを定義するには、次のような JSON オブジェクト
     "type": "httpTrigger",
     "direction": "in",
     "authLevel": "function",
-    "methods": [ "GET" ],
+    "methods": [ "get" ],
     "route": "values/{id}"
 },
 ```
@@ -269,7 +267,7 @@ function.json の `bindings` 配列に次の HTTP トリガーがあるとしま
 
 
 <a name="httptriggercsharp"></a>
-### <a name="http-trigger-sample-in-c"></a>C での HTTP トリガーのサンプル# #
+### <a name="http-trigger-sample-in-c"></a>C# での HTTP トリガーのサンプル #
 ```csharp
 using System.Net;
 using System.Threading.Tasks;
@@ -296,7 +294,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 ```
 
 <a name="httptriggerfsharp"></a>
-### <a name="http-trigger-sample-in-f"></a>F での HTTP トリガーのサンプル# #
+### <a name="http-trigger-sample-in-f"></a>F# での HTTP トリガーのサンプル #
 ```fsharp
 open System.Net
 open System.Net.Http
@@ -381,7 +379,7 @@ GitHub の問題のコメントを記録する、言語固有のサンプルを�
 
 <a name="hooktriggercsharp"></a>
 
-### <a name="webhook-sample-in-c"></a>C での webhook のサンプル# #
+### <a name="webhook-sample-in-c"></a>C# での webhook のサンプル #
 ```csharp
 #r "Newtonsoft.Json"
 
@@ -405,7 +403,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 
 <a name="hooktriggerfsharp"></a>
 
-### <a name="webhook-sample-in-f"></a>F での webhook のサンプル# #
+### <a name="webhook-sample-in-f"></a>F# での webhook のサンプル #
 ```fsharp
 open System.Net
 open System.Net.Http

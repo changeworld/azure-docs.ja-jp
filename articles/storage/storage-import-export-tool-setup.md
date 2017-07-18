@@ -12,12 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2017
+ms.date: 06/29/2017
 ms.author: muralikk
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 2aebded82fcf67bf9ad4a00a703e62eb12e2370c
-ms.lasthandoff: 03/30/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: d39ec89b4877e2fca01b68b30bb287a120f2eb71
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -36,19 +37,19 @@ Microsoft Azure Import/Export ツールは、ドライブの準備と修復用�
 
 * アクティブな Azure サブスクリプションが必要です。
 * インポートするファイルを保存するための十分な空き領域を持つストレージ アカウントがサブスクリプションに含まれている必要があります。
-* ストレージ アカウントのアカウント キーが少なくとも 1 つ必要です。
+* ストレージ アカウント アクセス キーが少なくとも 1 つ必要です。
 * Windows 7、Windows Server 2008 R2、またはそれ以降の新しい Windows オペレーティング システムがインストールされているコンピューター ("コピー用コンピューター") が必要です。
 * .NET Framework 4 をコピー用コンピューターにインストールする必要があります。
 * コピー用コンピューターで BitLocker を有効にする必要があります。
-* コピー用コンピューターに接続されている 1 台以上の空の 3.5 インチ SATA ハード ドライブが必要です。
+* コピー用マシンに接続されている 1 台以上の空の 3.5 インチ SATA ハード ドライブが必要です。
 * インポートするファイル (ネットワーク共有とローカル ハード ドライブのどちらにある場合でも) にコピー用コンピューターからアクセス可能であることが必要です。
 
-部分的に問題のある**インポートを修復する**場合は、次の項目が必要です。
+部分的に失敗した**インポートを修復する**場合は、以下が必要です。
 
 * コピー ログ ファイル
 * ストレージ アカウント キー。
 
-部分的に問題のある**エクスポートを修復する**場合は、次の項目が必要です。
+部分的に失敗した**エクスポートを修復する**場合は、以下が必要です。
 
 * コピー ログ ファイル
 * マニフェスト ファイル (オプション)
@@ -56,7 +57,7 @@ Microsoft Azure Import/Export ツールは、ドライブの準備と修復用�
 
 ## <a name="installing-the-azure-importexport-tool"></a>Azure Import/Export ツールのインストール
 
-まず、[Azure Import/Export ツールをダウンロード](http://download.microsoft.com/download/3/6/B/36BFF22A-91C3-4DFC-8717-7567D37D64C5/WAImportExport.zip)し、コンピューター上のディレクトリ (`c:\WAImportExport` など) に展開します。
+まず、[Azure Import/Export ツールをダウンロード](https://www.microsoft.com/download/details.aspx?id=55280)し、コンピューター上のディレクトリ (`c:\WAImportExport` など) に展開します。
 
 Azure Import/Export ツールは次のファイルで構成されます。
 
@@ -65,45 +66,37 @@ Azure Import/Export ツールは次のファイルで構成されます。
 * hddid.dll
 * Microsoft.Data.Services.Client.dll
 * Microsoft.WindowsAzure.Storage.dll
+* Microsoft.WindowsAzure.Storage.pdb
+* Microsoft.WindowsAzure.Storage.xml
 * WAImportExport.exe
 * WAImportExport.exe.config
+* WAImportExport.pdb
 * WAImportExportCore.dll
+* WAImportExportCore.pdb
 * WAImportExportRepair.dll
+* WAImportExportRepair.pdb
 
 次に、**管理者モード**でコマンド プロンプト ウィンドウを開き、展開したファイルを含むディレクトリに移動します。
 
-コマンドのヘルプを出力するには、パラメーターを指定せずにツールを実行します。
+コマンドのヘルプを出力するには、パラメーターを指定せずにツール (`WAImportExport.exe`) を実行します。
 
 ```
-WAImportExport, a client tool for Windows Azure Import/Export service. Microsoft (c) 2013
+WAImportExport, a client tool for Windows Azure Import/Export Service. Microsoft (c) 2013
 
 
 Copy directories and/or files with a new copy session:
-    WAImportExport.exe PrepImport
-        /j:<JournalFile>
-        /id:<SessionId> [/logdir:<LogDirectory>]
-        [/sk:<StorageAccountKey>]
-        [/silentmode]
-        [/InitialDriveSet:<driveset.csv>]
+    WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>]
+        [/sk:<StorageAccountKey>] [/silentmode] [/InitialDriveSet:<driveset.csv>]
         DataSet:<dataset.csv>
 
 Add more drives:
-    WAImportExport.exe PrepImport
-        /j:<JournalFile>
-        /id:<SessionId>
-        /AdditionalDriveSet:<driveset.csv>
+    WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /AdditionalDriveSet:<driveset.csv>
 
 Abort an interrupted copy session:
-    WAImportExport.exe PrepImport
-        /j:<JournalFile>
-        /id:<SessionId>
-        /AbortSession
+    WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /AbortSession
 
 Resume an interrupted copy session:
-    WAImportExport.exe PrepImport
-        /j:<JournalFile>
-        /id:<SessionId>
-        /ResumeSession
+    WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /ResumeSession
 
 List drives:
     WAImportExport.exe PrepImport /j:<JournalFile> /ListDrives
@@ -178,7 +171,7 @@ Parameters:
     /ExportBlobListFile:<ExportBlobListFile>
         - Required. Path to the XML file containing list of blob paths or blob path
           prefixes for the blobs to be exported. The file format is the same as the
-          blob list blob format in the Put Job operation of the Import/Export service
+          blob list blob format in the Put Job operation of the Import/Export Service
           REST API.
     /DriveSize:<DriveSize>
         - Required. Size of drives to be used for export. For example, 500GB, 1.5TB.

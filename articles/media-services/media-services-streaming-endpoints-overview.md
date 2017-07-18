@@ -14,11 +14,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/13/2017
+ms.date: 06/29/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 7e18325426bac86d89ff0235e18ddca9fd21e8de
-ms.openlocfilehash: 41a58493c8931e8ce241ce31ecb1ca20b5a82cb3
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: cbdc964b16cbc6cf291dbc4b6f60b20d67d9fc41
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -54,7 +56,7 @@ Azure Media Services アカウントを作成すると、既定の標準スト�
 
 2017 年 1 月 10 日より前のリリースで AMS アカウントを作成したユーザーのために、**クラシック** タイプのストリーミング エンドポイントがあります。 このタイプは、ストリーミング エンドポイントのバージョン「1.0」の一部です。
 
-**バージョン「1.0」**のストリーミング エンドポイントに&1; つ以上の Premium ストリーミング ユニット (SU) が含まれる場合は、Premium ストリーミング エンドポイントになり、AMS のすべての機能が提供されます (**Standard/Premium** タイプと同様)。追加の構成手順はありません。
+**バージョン「1.0」**のストリーミング エンドポイントに 1 つ以上の Premium ストリーミング ユニット (SU) が含まれる場合は、Premium ストリーミング エンドポイントになり、AMS のすべての機能が提供されます (**Standard/Premium** タイプと同様)。追加の構成手順はありません。
 
 >[!NOTE]
 >**クラシック** ストリーミング エンドポイント (バージョン「1.0」、0 SU) は、機能に制限があり、SLA は含まれていません。 エクスペリエンスを改善し、**Standard** タイプに備わっているダイナミック パッケージや暗号化などの機能を使用できるように、**Standard** タイプに移行することをお勧めします。 **Standatrd** タイプに移行するには、[Azure Portal](https://portal.azure.com/) にアクセスして **[Standard にオプトイン]** を選択します。 移行の詳細については、[移行](#migration-between-types)に関するセクションを参照してください。
@@ -78,8 +80,8 @@ Azure Media Services アカウントを作成すると、既定の標準スト�
 機能|標準|Premium
 ---|---|---
 最初の 15 日間無料| はい |なし
-スループット |Azure CDN を使用しない場合は、最大 600 Mbps。 CDN に合わせて拡大縮小。|ストリーミング ユニット (SU) あたり&200; Mbps。 CDN に合わせて拡大縮小。
-SLA | 99.9|99.9 (SU あたり&200; Mbps)。
+スループット |Azure CDN を使用しない場合は、最大 600 Mbps。 CDN に合わせて拡大縮小。|ストリーミング ユニット (SU) あたり 200 Mbps。 CDN に合わせて拡大縮小。
+SLA | 99.9|99.9 (SU あたり 200 Mbps)。
 CDN|Azure CDN、サード パーティ製 CDN、または CDN なし。|Azure CDN、サード パーティ製 CDN、または CDN なし。
 課金は日割り計算| 毎日|毎日
 動的な暗号化|はい|はい
@@ -112,10 +114,5 @@ Media Services のラーニング パスを確認します。
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

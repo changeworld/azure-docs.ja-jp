@@ -13,12 +13,13 @@ ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/21/2017
+ms.date: 6/17/2017
 ms.author: xshi
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: e2d44f821635ce9d91b67ecdc0653e2ba9c99b01
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 2f770a8f088754e63aec40d3f670f6ae0543d6e0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -54,6 +55,7 @@ Adafruit Feather M0 WiFi を、作成する IoT Hub に接続します。 次に
 
 また、開発環境に次のものが必要です。
 
+* 有効な Azure サブスクリプション Azure アカウントがない場合は、[無料試用版の Azure アカウント](https://azure.microsoft.com/free/)を数分で作成できます。
 * Mac PC または Windows か Ubuntu をインストールした PC。
 * Feather M0 WiFi を接続するワイヤレス ネットワーク。
 * 構成ツールをダウンロードするためのインターネット接続。
@@ -155,9 +157,9 @@ Arduino IDE の Feather M0 WiFi パッケージをインストールします。
 
    ![Arduino IDE のサンプル アプリケーションを開く](media/iot-hub-adafruit-feather-m0-wifi-get-started/6_arduino-ide-open-sample-app.png)
 
-1. **[Tools]**(ツール) > **[Board]**(ボード) > **[Boards Manager]**(ボード マネージャー) をクリックし、`Arduino SAMD Boards` バージョン `1.6.2` 以降をインストールします。 
+1. **[Tools]\(ツール\)** > **[Board]\(ボード\)** > **[Boards Manager]\(ボード マネージャー\)** の順にクリックし、`Arduino SAMD Boards` バージョン `1.6.2` 以降をインストールします。 次に、`Adafruit SAMD` パッケージをインストールして、ボード ファイル定義を追加します。
 
-   `Arduino SAMD Boards` バージョン `1.6.2` 以降がインストールされていることがボード マネージャーに表示されます。
+   `Arduino SAMD Boards` バージョン `1.6.2` 以降がインストールされていることがボード マネージャーに表示されます。 
 
    ![ESP8266 のインストール](media/iot-hub-adafruit-feather-m0-wifi-get-started/7_arduino-ide-package-url.png)
 
@@ -170,7 +172,6 @@ Arduino IDE の Feather M0 WiFi パッケージをインストールします。
 
 1. Arduino IDE で、**[スケッチ]** > **[ライブラリをインクルード]** > **[ライブラリを管理]** をクリックします。
 1. 1 つずつ次のライブラリ名を検索します。 検索したライブラリごとに、**[インストール]** をクリックします。
-   * `Adafruit_WINC1500`
    * `RTCZero`
    * `NTPClient`
    * `AzureIoTHub`
@@ -179,6 +180,7 @@ Arduino IDE の Feather M0 WiFi パッケージをインストールします。
    * `ArduinoJson`
    * `Adafruit BME280 Library`
    * `Adafruit Unified Sensor`
+1. `Adafruit_WINC1500` を手動でインストールします。 [こちらのリンク](https://github.com/adafruit/Adafruit_WINC1500)で GitHub に移動して、**[Clone or download]\(複製またはダウンロード\)** ボタン、**[Download ZIP]\(ZIP のダウンロード\)** の順にクリックします。 次に、Arduino IDE で **[Sketch]\(スケッチ\)** -> **[Include Library]\(ライブラリをインクルード\)** -> **[Add .zip Library]\(.zip ライブラリの追加\)** の順に移動して、ダウンロードした zip ファイルを追加します。
 
 ### <a name="dont-have-a-real-bme280-sensor"></a>BME280 センサーがない場合
 
