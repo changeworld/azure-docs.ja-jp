@@ -2,7 +2,7 @@
 title: "要求ユニットとスループットの推定 - Azure Cosmos DB | Microsoft Docs"
 description: "Azure Cosmos DB の要求ユニット要件を確認、指定、推定する方法について説明します。"
 services: cosmos-db
-author: syamkmsft
+author: mimig1
 manager: jhubbard
 editor: mimig
 documentationcenter: 
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
-ms.author: syamk
+ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: f263aaad1ba2a902401d8210727f146cb92f4ea8
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 95adddc01ee2814515c20f36e8503de30454a8f4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 07/04/2017
 
 
 ---
@@ -30,9 +30,9 @@ Azure Cosmos DB の [要求ユニット計算ツール](https://www.documentdb.c
 ## <a name="introduction"></a>はじめに
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) は、Microsoft が提供するグローバル分散型のマルチモデル データベースです。 Azure Cosmos DB では、仮想マシンのレンタル、ソフトウェアのデプロイ、データベースの監視などを自分で行う必要はありません。 Microsoft のトップ エンジニアによって運用され、継続的な監視が行われる Azure Cosmos DB は、卓越した可用性、パフォーマンス、データ保護を提供します。 [DocumentDB SQL](documentdb-sql-query.md) (ドキュメント)、MongoDB (ドキュメント)、[Azure Table Storage](https://azure.microsoft.com/services/storage/tables/) (キー値)、[Gremlin](https://tinkerpop.apache.org/gremlin.html) (グラフ) などの API がネイティブにサポートされているため、お好きな API を利用してデータへアクセスできます。 Azure Cosmos DB の通貨は要求ユニット (RU) です。 RU を使用すると、読み取り、書き込み容量の予約や、CPU、メモリ、および IOPS のプロビジョニングが不要です。
 
-Azure Cosmos DB は、読み取り、書き込みから、複雑なグラフのクエリまで、さまざまな操作を行うための API を多数サポートしています。 すべての要求が同等ではないため、要求を処理するために必要な計算量に基づいて、正規化された**要求ユニット**の量が割り当てられます。 1 つの操作の要求ユニットの数は確定的であり、Azure Cosmos DB のすべての操作で使用された要求ユニットの数は応答ヘッダーを介して追跡できます。 
+Azure Cosmos DB は、単純な読み取りと書き込みから複雑なグラフのクエリまで、さまざまな操作を行うための API を多数サポートしています。 すべての要求が同等ではないため、要求を処理するために必要な計算量に基づいて、正規化された**要求ユニット**の量が割り当てられます。 1 つの操作の要求ユニットの数は確定的であり、Azure Cosmos DB のすべての操作で使用された要求ユニットの数は応答ヘッダーを介して追跡できます。 
 
-予測可能性を高めるには、100 RU/秒単位でスループットを予約する必要があります。 100 RU/秒ブロックごとに、1,000 RU/分ブロックを接続することができます。 1 秒あたりのプロビジョニングと 1 分あたりのプロビジョニングを組み合わせると、ピーク時のためのプロビジョニングが不要になるため非常に強力になり、1 秒あたりのプロビジョニングのみで動作しているサービスと比べて最大 75% のコストを節約できます。
+予測可能性を高めるには、100 RU/秒単位でスループットを予約する必要があります。 100 RU/秒ブロックごとに、1,000 RU/分ブロックを接続することができます。 1 秒あたりのプロビジョニングと 1 分あたりのプロビジョニングを組み合わせると、ピーク時の負荷のためのプロビジョニングが不要になるため非常に強力になり、1 秒あたりのプロビジョニングのみで動作しているサービスと比べて最大 75% のコストを節約できます。
 
 この記事を読むと、次の質問に回答できるようになります。  
 

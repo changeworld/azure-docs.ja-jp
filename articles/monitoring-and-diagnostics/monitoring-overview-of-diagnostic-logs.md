@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/19/2017
+ms.date: 07/05/2017
 ms.author: johnkem; magoedte
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 300958a69fc854cb8db02120a383a4cbbfcacd7b
-ms.openlocfilehash: c3e766b2e4c7bd372dc9c7b9d675a76c2d14a4cc
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: d144dd60192a4b62db393db08b82efeaa8d45447
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/20/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -188,6 +188,7 @@ Azure Monitor REST API を使用して診断設定を変更する場合は、[�
 | Azure Batch |[Azure Batch 診断ログ](../batch/batch-diagnostics.md) |
 | Customer Insights | スキーマは使用できません。 |
 | Content Delivery Network | スキーマは使用できません。 |
+| Cosmos DB | スキーマは使用できません。 |
 | Data Lake Analytics |[Azure Data Lake Analytics の診断ログへのアクセス](../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[Azure Data Lake Store の診断ログへのアクセス](../data-lake-store/data-lake-store-diagnostic-logs.md) |
 | Event Hubs |[Azure Event Hubs の診断ログ](../event-hubs/event-hubs-diagnostic-logs.md) |
@@ -215,6 +216,7 @@ Azure Monitor REST API を使用して診断設定を変更する場合は、[�
 |Microsoft.DataLakeAnalytics/accounts|要求数|要求ログ|
 |Microsoft.DataLakeStore/accounts|Audit|Audit Logs|
 |Microsoft.DataLakeStore/accounts|要求数|要求ログ|
+|Microsoft.DocumentDB/databaseAccounts|DataPlaneRequests|DataPlaneRequests|
 |Microsoft.EventHub/namespaces|ArchiveLogs|アーカイブ ログ|
 |Microsoft.EventHub/namespaces|OperationalLogs|操作ログ|
 |Microsoft.EventHub/namespaces|AutoScaleLogs|自動スケール ログ|
@@ -233,7 +235,6 @@ Azure Monitor REST API を使用して診断設定を変更する場合は、[�
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryEvents|Azure Site Recovery イベント|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryReplicatedItems|Azure Site Recovery レプリケートされた項目|
 |Microsoft.Search/searchServices|OperationLogs|操作ログ|
-|Microsoft.ServerManagement/nodes|RequestLogs|要求ログ|
 |Microsoft.ServiceBus/namespaces|OperationalLogs|操作ログ|
 |Microsoft.StreamAnalytics/streamingjobs|実行|実行|
 |Microsoft.StreamAnalytics/streamingjobs|作成|作成|
