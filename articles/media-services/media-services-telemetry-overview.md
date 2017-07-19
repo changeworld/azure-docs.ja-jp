@@ -14,17 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 99c43c63f75e01713600ef5ca46a8d11e8c5c7ce
-ms.openlocfilehash: b6560fdd50c93a7e84f12047ec4401328b601deb
+ms.translationtype: HT
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: bc16ef727f0c3942b0be8c633717fd52da246c55
 ms.contentlocale: ja-jp
-ms.lasthandoff: 12/09/2016
-
+ms.lasthandoff: 07/19/2017
 
 ---
 
-# Azure Media Services テレメトリ
-<a id="azure-media-services-telemetry" class="xliff"></a>
+# <a name="azure-media-services-telemetry"></a>Azure Media Services テレメトリ
 
 Azure Media Services (AMS) を使用して、サービスのテレメトリ/メトリック データにアクセスできます。 現在のバージョンの AMS では、ライブ **チャネル** エンティティ、**ストリーミング ポイント** エンティ、およびライブ **アーカイブ** エンティティのテレメトリ データを取得できます。 
 
@@ -34,8 +32,7 @@ Azure Media Services (AMS) を使用して、サービスのテレメトリ/メ�
 
 このトピックでは、AMS テレメトリを構成して使用する方法について説明します。
 
-## テレメトリの構成
-<a id="configuring-telemetry" class="xliff"></a>
+## <a name="configuring-telemetry"></a>テレメトリの構成
 
 テレメトリはコンポーネント レベルの粒度で構成でき、 "Normal" と "Verbose" の 2 つの詳細レベルがあります。 現時点では、どちらのレベルでも同じ情報が返ります。 "Normal" を使用することをお勧めします。 
 
@@ -45,8 +42,7 @@ Azure Media Services (AMS) を使用して、サービスのテレメトリ/メ�
 
 [REST を使用したテレメトリの有効化](media-services-rest-telemetry.md)に関するトピック
 
-## テレメトリ情報の使用
-<a id="consuming-telemetry-information" class="xliff"></a>
+## <a name="consuming-telemetry-information"></a>テレメトリ情報の使用
 
 テレメトリは、Media Services アカウントのテレメトリを構成するときに指定したストレージ アカウントの Azure Storage テーブルに書き込まれます。 このセクションでは、メトリック用のストレージ テーブルについて説明します。
 
@@ -71,8 +67,7 @@ Azure Media Services (AMS) を使用して、サービスのテレメトリ/メ�
 - 特定のサービスの特定の日付範囲にあるすべてのデータの取得。
 - サービスの最新データの取得。
 
-### テレメトリ テーブル ストレージの出力スキーマ
-<a id="telemetry-table-storage-output-schema" class="xliff"></a>
+### <a name="telemetry-table-storage-output-schema"></a>テレメトリ テーブル ストレージの出力スキーマ
 
 テレメトリ データは、1 つのテーブルにまとめて格納されます (例: "TelemetryMetrics20160321"。"20160321" はテーブルの作成日です)。 テレメトリ システムでは、00:00 UTC に基づいて日が変わるごとに個別のテーブルが作成されます。 テーブルは、繰り返し発生する値 (特定の時間帯の取り込みビットレートや送信されたバイト数など) を格納するために使用されます。 
 
@@ -87,8 +82,7 @@ ObservedTime|テレメトリ イベントが発生した時刻 (UTC)|2016-09-09T
 ServiceID|{サービス ID}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 エンティティ固有のプロパティ|イベントによって定義されたとおり|StreamName: stream1, Bitrate 10123, …<br/><br/>残りのプロパティは、指定されたイベントの種類に対して定義されます。 Azure Table の内容は、キーと値のペアです   (つまり、テーブル内の異なる行には、異なるプロパティのセットが格納されます)。
 
-### エンティティ固有のスキーマ
-<a id="entity-specific-schema" class="xliff"></a>
+### <a name="entity-specific-schema"></a>エンティティ固有のスキーマ
 
 エンティティ固有の 3 種類のテレメトリ データ エントリがあり、それぞれ次の頻度でプッシュされます。
 
@@ -158,11 +152,9 @@ TrackType|トラックの種類|Audio/video
 Bitrate|トラックのビットレート|785000
 Healthy|FragmentDiscardedCount == 0 && ArchiveAcquisitionError == False の場合は True|True (これら 2 つの値はメトリック内には存在しないがソース イベントには存在する)<br/><br/>Healthy は、次の条件のいずれかに該当する場合は false を返す複合関数です。<br/><br/>- FragmentDiscardedCount > 0<br/>- ArchiveAcquisitionError == True
 
-## 全般的な Q&A
-<a id="general-qa" class="xliff"></a>
+## <a name="general-qa"></a>全般的な Q&A
 
-### メトリック データの使用方法は?
-<a id="how-to-consume-metrics-data" class="xliff"></a>
+### <a name="how-to-consume-metrics-data"></a>メトリック データの使用方法は?
 
 メトリック データは、一連の Azure Table として顧客のストレージ アカウントに格納されます。 このデータは、次のツールで使用できます。
 
@@ -170,24 +162,20 @@ Healthy|FragmentDiscardedCount == 0 && ArchiveAcquisitionError == False の場�
 - Microsoft Azure Storage Explorer (Excel で処理できるコンマ区切り値形式でのエクスポートをサポートします)
 - REST API
 
-### 帯域幅の平均使用量を調べる方法は?
-<a id="how-to-find-average-bandwidth-consumption" class="xliff"></a>
+### <a name="how-to-find-average-bandwidth-consumption"></a>帯域幅の平均使用量を調べる方法は?
 
 帯域幅の平均使用量は、一定期間の BytesSent の平均です。
 
-### ストリーミング ユニット数を定義する方法は?
-<a id="how-to-define-streaming-unit-count" class="xliff"></a>
+### <a name="how-to-define-streaming-unit-count"></a>ストリーミング ユニット数を定義する方法は?
 
 ストリーミング ユニット数は、サービスのストリーミング エンドポイントからのピーク スループットを 1 つのストリーミング エンドポイントのピーク スループットで除算したピーク スループットと定義できます。 1 つのストリーミング エンドポイントの使用可能なピーク スループットは、160 Mbps です。
 たとえば、顧客のサービスからのピーク スループットが 40 MBps であるとします (一定時間の BytesSent の最大値)。 この場合、ストリーミング ユニット数は、(40 MBps)*(8 ビット/バイト)/(160 Mbps) = 2 になります。
 
-### 平均要求数/秒を調べる方法は?
-<a id="how-to-find-average-requestssecond" class="xliff"></a>
+### <a name="how-to-find-average-requestssecond"></a>平均要求数/秒を調べる方法は?
 
 平均要求数/秒を調べるには、一定時間の要求 (RequestCount) の平均数を計算します。
 
-### チャネルの状態を定義する方法は?
-<a id="how-to-define-channel-health" class="xliff"></a>
+### <a name="how-to-define-channel-health"></a>チャネルの状態を定義する方法は?
 
 チャネルの状態は、次の条件のいずれかに該当する場合は false になる複合ブール関数として定義できます。
 
@@ -199,23 +187,19 @@ Healthy|FragmentDiscardedCount == 0 && ArchiveAcquisitionError == False の場�
 - UnexpectedBitrate == True
 
 
-### 不連続性を検出する方法は?
-<a id="how-to-detect-discontinuities" class="xliff"></a>
+### <a name="how-to-detect-discontinuities"></a>不連続性を検出する方法は?
 
 不連続性を検出するには、DiscontinuityCount > 0 であるすべての Channel データ エントリを探します。 対応する ObservedTime タイムスタンプが、不連続性の発生時刻を示します。
 
-### タイムスタンプの重複を検出する方法は?
-<a id="how-to-detect-timestamp-overlaps" class="xliff"></a>
+### <a name="how-to-detect-timestamp-overlaps"></a>タイムスタンプの重複を検出する方法は?
 
 タイムスタンプの重複を検出するには、OverlapCount > 0 であるすべての Channel データ エントリを探します。 対応する ObservedTime タイムスタンプが、タイムスタンプの重複が発生した時刻を示します。
 
-### ストリーミング要求エラーとその理由を調べる方法は?
-<a id="how-to-find-streaming-request-failures-and-reasons" class="xliff"></a>
+### <a name="how-to-find-streaming-request-failures-and-reasons"></a>ストリーミング要求エラーとその理由を調べる方法は?
 
 ストリーミング要求エラーとその理由を調べるには、ResultCode が S_OK ではないすべてのストリーミング エンドポイントのデータ エントリを探します。 対応する StatusCode フィールドで、要求エラーの理由が示されます。
 
-### 外部ツールを使用してデータを使用する方法は?
-<a id="how-to-consume-data-with-external-tools" class="xliff"></a>
+### <a name="how-to-consume-data-with-external-tools"></a>外部ツールを使用してデータを使用する方法は?
 
 テレメトリ データは、次のツールで処理して視覚化できます。
 
@@ -225,18 +209,15 @@ Healthy|FragmentDiscardedCount == 0 && ArchiveAcquisitionError == False の場�
 - AMS ライブ ダッシュボード
 - Azure Portal (保留中のリリース)
 
-### データ保有期間を管理する方法は?
-<a id="how-to-manage-data-retention" class="xliff"></a>
+### <a name="how-to-manage-data-retention"></a>データ保有期間を管理する方法は?
 
 テレメトリ システムは、データ保有期間の管理も古いレコードの自動削除も実行しません。 このため、ストレージ テーブルの管理と古いレコードの削除は、手動で行う必要があります。 方法については、Storage SDK を参照してください。
 
-## 次のステップ
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## フィードバックの提供
-<a id="provide-feedback" class="xliff"></a>
+## <a name="provide-feedback"></a>フィードバックの提供
 
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
