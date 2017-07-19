@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: wesmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: c1fdd9835992559c985426855a45c09849d54af2
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 6da663ea282e09b01ce380827fa7e31505712516
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/04/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 05/10/2017
 
 [Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) は、ネットワーク サービスを安全に使用するための暗号化ネットワークプロトコルです。 コマンド ラインからシステムにリモートで安全にログインし、管理コマンドをリモートで実行するために最もよく使用されます。
 
-Web App on Linux では、新しい Web アプリのランタイム スタックで使用される組み込みの Docker イメージのそれぞれに SSH のサポートを提供しています。 
+Web App on Linux では、新しい Web アプリのランタイム スタックで使用される組み込みの Docker イメージのそれぞれにアプリ コンテナーへの SSH のサポートを提供しています。 
 
 ![ランタイム スタック](./media/app-service-linux-ssh-support/app-service-linux-runtime-stack.png)
 
@@ -72,7 +72,7 @@ Azure ポータルでのコンテナーとクライアント間の SSH 通信を
       && echo "root:Docker!" | chpasswd
     ``` 
 
-2. [sshd_config](http://man.openbsd.org/sshd_config) ファイルを */etc/ssh/* ディレクトリにコピーする [`COPY` 命令](https://docs.docker.com/engine/reference/builder/#copy)を Dockerfile に 追加します。 構成ファイルは、GitHub レポジトリに格納されている Azure App Service の sshd_config ファイルに基づいている必要があります ([こちら](https://github.com/Azure-App-Service/node/blob/master/6.9.3-1/sshd_config)を参照してください)。
+2. [sshd_config](http://man.openbsd.org/sshd_config) ファイルを */etc/ssh/* ディレクトリにコピーする [`COPY` 命令](https://docs.docker.com/engine/reference/builder/#copy)を Dockerfile に 追加します。 構成ファイルは、GitHub レポジトリに格納されている Azure App Service の sshd_config ファイルに基づいている必要があります ([こちら](https://github.com/Azure-App-Service/node/blob/master/6.11/sshd_config)を参照してください)。
 
     > [!NOTE] 
     > *sshd_config* ファイルには次の項目を指定する必要があります。指定がない場合、接続は失敗します。 
@@ -103,7 +103,7 @@ Azure ポータルでのコンテナーとクライアント間の SSH 通信を
     COPY init_container.sh /bin/
       ...
     RUN chmod 755 /bin/init_container.sh 
-      ...        
+      ...       
     CMD ["/bin/init_container.sh"]
     ```
 

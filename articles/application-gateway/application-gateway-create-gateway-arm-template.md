@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: 0786e54c288f30b0039c1d0b88f5c5b5965eecef
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: 46a036c5f1646197522874b1302b95947e90cdd8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 06/29/2017
 
 
 ---
@@ -210,8 +210,15 @@ Azure CLI を使用してダウンロードした Azure Resource Manager テン�
 
 ## <a name="providing-certificate-data-to-resource-manager-templates"></a>証明書データを Resource Manager テンプレートに提供する
 
-テンプレートを使って SSL を使用する場合、証明書をアップロードするのではなく、base64 文字列で指定する必要があります。 .pfx または .cer を base64 文字列に変換するには、次の PowerShell コマンドを実行します。 このスニペットにより、証明書はテンプレートに提供できる base64 文字列に変換されます。 予測される出力は、変数に格納できる文字列、またテンプレートに貼り付けることのできる文字列です。
+テンプレートを使って SSL を使用する場合、証明書をアップロードするのではなく、base64 文字列で指定する必要があります。 .pfx または .cer を base64 文字列に変換するには、以下のいずれかのコマンドを使用します。 これらのコマンドによって、証明書はテンプレートに提供できる base64 文字列に変換されます。 予測される出力は、変数に格納できる文字列、またテンプレートに貼り付けることのできる文字列です。
 
+### <a name="macos"></a>macOS
+```bash
+cert=$( base64 <certificate path and name>.pfx )
+echo $cert
+```
+
+### <a name="windows"></a>Windows
 ```powershell
 [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes("<certificate path and name>.pfx"))
 ```
