@@ -14,14 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: ccompy
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 85a4c87447681bd21698143b4228d94c0877d1b9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
-# <a name="configuring-an-app-service-environment"></a>App Service 環境の構成
-## <a name="overview"></a>概要
+<a id="configuring-an-app-service-environment" class="xliff"></a>
+
+# App Service 環境の構成
+<a id="overview" class="xliff"></a>
+
+## 概要
 大まかに言えば、Azure App Service Environment は次に挙げるいくつかの主要なコンポーネントで構成されます。
 
 * App Service Environment ホステッド サービスで実行されるコンピューティング リソース
@@ -30,7 +36,9 @@ ms.openlocfilehash: 85a4c87447681bd21698143b4228d94c0877d1b9
 * V1 (クラシック) または V2 (Resource Manager) Azure Virtual Network (VNet) 
 * App Service Environment ホステッド サービスが実行されるサブネット
 
-### <a name="compute-resources"></a>コンピューティング リソース
+<a id="compute-resources" class="xliff"></a>
+
+### コンピューティング リソース
 コンピューティング リソースは、4 つのリソース プールに使用します。  1 つの App Service Environment (ASE) には、フロント エンドと最大 3 つのワーカー プールが存在します。 3 つのワーカー プールすべてを使用する必要はありません。1 つか 2 つだけ使用することもできます。
 
 リソース プール (フロント エンドおよびワーカー) 内のホストが直接テナントにアクセスすることはできません。 リモート デスクトップ プロトコル (RDP) でテナントに接続してそのプロビジョニングを変更したり、管理者として作業を行ったりすることはできません。
@@ -64,15 +72,21 @@ ms.openlocfilehash: 85a4c87447681bd21698143b4228d94c0877d1b9
 
 **自動スケール**コンピューティング リソースの使用を管理するのに役立つ手段の 1 つが自動スケールです。 自動スケールは、フロント エンド プールに対して実行することも、ワーカー プールに対して実行することもできます。 いずれかのプール タイプのインスタンス数を午前中は増やし、夜間は減らすといったことが可能です。 また、ワーカー プールから利用できるワーカー数が特定のしきい値を下回ったときにインスタンスを追加することもできます。
 
-コンピューティング リソース プールのメトリックに基づいて自動スケール規則を設定する場合は、プロビジョニングの所要時間に注意してください。 App Service Environment の自動スケールの詳細については、「[自動スケールと App Service Environment][ASEAutoscale]」を参照してください。
+コンピューティング リソース プールのメトリックに基づいて自動スケール規則を設定する場合は、プロビジョニングの所要時間に注意してください。 App Service 環境の自動スケールの詳細については、[App Service 環境で自動スケールを構成する方法][ASEAutoscale]に関するページを参照してください。
 
-### <a name="storage"></a>Storage
+<a id="storage" class="xliff"></a>
+
+### Storage
 各 ASE には、500 GB の記憶域が構成されています。 この領域は、ASE 内のすべてのアプリケーションに使用されます。 この記憶域は ASE の一部であり、ユーザーの記憶域を使用するように切り替えることはできません。 仮想ネットワーク ルーティングまたはセキュリティを調整する場合も、Azure Storage へのアクセスを許可する必要があります。そうしないと、ASE が機能しません。
 
-### <a name="database"></a>データベース
+<a id="database" class="xliff"></a>
+
+### データベース
 データベースには、環境を定義する情報だけでなく、環境内で実行されているアプリに関する詳細情報が格納されています。 これは、Azure が保持しているサブスクリプションの一部です。 ユーザーが直接操作することはできません。 仮想ネットワーク ルーティングまたはセキュリティを調整する場合も、SQL Azure へのアクセスを許可する必要があります。そうしないと、ASE が機能しません。
 
-### <a name="network"></a>ネットワーク
+<a id="network" class="xliff"></a>
+
+### ネットワーク
 ASE で使用される VNet には、ASE の作成時または事前に作成したネットワークを使用できます。 ASE の作成時にサブネットを作成すると、強制的にその仮想ネットワークと同じリソース グループ内に ASE が作成されます。 ASE で使用するリソース グループを VNet とは異なるリソース グループにする必要がある場合は、リソースマネージャー テンプレートを使用して ASE を作成する必要があります。
 
 ASE に使用される仮想ネットワークにはいくつかの制限があります。
@@ -82,7 +96,7 @@ ASE に使用される仮想ネットワークにはいくつかの制限があ�
 * いったんサブネットを ASE のホストとして使用したら、そのサブネットのアドレス範囲は変更できません。 このため、将来の ASE の拡大に対応できるように、サブネットに 64 個以上のアドレスが含まれるようにすることをお勧めします。
 * サブネットに配置できるのは ASE だけです。
 
-ASE を含んでいるホストされるサービスとは異なり、[仮想ネットワーク][virtualnetwork]とサブネットはユーザーの管理下にあります。  仮想ネットワークの管理は、Virtual Network UI または PowerShell を使用して行うことができます。  ASE は、クラシック VNet または Resource Manager VNet にデプロイすることができます。  クラシック VNet と Resource Manager VNet とでは、ポータルと API の操作性が若干異なりますが、ASE の操作性は同じです。
+ASE が含まれているホストされるサービスとは異なり、[仮想ネットワーク][virtualnetwork]とサブネットは、ユーザーの管理下にあります。  仮想ネットワークの管理は、Virtual Network UI または PowerShell を使用して行うことができます。  ASE は、クラシック VNet または Resource Manager VNet にデプロイすることができます。  クラシック VNet と Resource Manager VNet とでは、ポータルと API の操作性が若干異なりますが、ASE の操作性は同じです。
 
 ASE のホストとして使用する VNet は、RFC1918 のプライベート IP アドレスを使用することも、パブリック IP アドレスを使用することもできます。  RFC1918 でカバーされていない IP 範囲 (10.0.0.0/8、172.16.0.0/12、192.168.0.0/16) を使用する場合は、ASE の作成前に、ASE に使用する独自の VNet とサブネットを作成する必要があります。
 
@@ -90,16 +104,20 @@ ASE のホストとして使用する VNet は、RFC1918 のプライベート I
 
 たとえば、サブスクリプションには含まれているものの、ASE のホストとなる仮想ネットワークには接続されていない仮想ネットワークがある場合、VNET 統合を使用することで、そのネットワークと統合することができます。 また、ハイブリッド接続を使用して、通常と同様の方法で他のネットワーク内のリソースにアクセスすることもできます。  
 
-ExpressRoute VPN を使用して仮想ネットワークを構成している場合、ASE に関するいくつかのルーティング ニーズに気を付ける必要があります。 ASE とは互換性がないユーザー定義ルート (UDR) 構成がいくつかあります。 ExpressRoute を使用する仮想ネットワークで ASE を実行する場合の詳細については、「[ExpressRoute を使用した App Service 環境のネットワーク構成の詳細][ExpressRoute]」を参照してください。
+ExpressRoute VPN を使用して仮想ネットワークを構成している場合、ASE に関するいくつかのルーティング ニーズに気を付ける必要があります。 ASE とは互換性がないユーザー定義ルート (UDR) 構成がいくつかあります。 ExpressRoute を使用した仮想ネットワークにおける ASE の実行の詳細については、[ExpressRoute を使用した仮想ネットワーク内での App Service 環境の実行][ExpressRoute]に関するページを参照してください。
 
-#### <a name="securing-inbound-traffic"></a>受信トラフィックのセキュリティ保護
+<a id="securing-inbound-traffic" class="xliff"></a>
+
+#### 受信トラフィックのセキュリティ保護
 ASE に入ってくる受信トラフィックは、主に 2 つの方法で制御することができます。  ASE へのアクセスを許可する IP アドレスは、ネットワーク セキュリティ グループ (NSG) を使用して制御できます (「[App Service 環境への受信トラフィックを制御する方法](app-service-app-service-environment-control-inbound-traffic.md)」を参照)。また、内部ロード バランサー (ILB) を使って ASE を構成することもできます。  さらに、これらの機能を組み合わせれば、NSG を使って、ILB ASE へのアクセスに制限を加えることも可能です。
 
 ASE を作成すると、VNet に VIP が作成されます。  VIP には、外部と内部の 2 種類が存在します。  外部 VIP で ASE を作成した場合、その ASE 内のアプリには、インターネットでルーティングできる IP アドレスを介してアクセスすることができます。 内部 VIP を選択した場合、ASE は ILB を使って構成され、インターネットから直接アクセスすることはできません。  外部 VIP は ILB ASE でも必要ですが、この場合は、Azure の管理と保守を目的としたアクセスに限定されます。  
 
 ILB ASE の作成時には、ILB ASE で使用するサブドメインを指定することになります。また、指定したサブドメインに対しては、独自の DNS を管理する必要があります。  サブドメイン名は自分で設定するため、HTTPS アクセスに使用する証明書も自分で管理する必要があります。  ASE の作成後、その証明書を指定するように求められます。  ILB ASE の作成と使用の詳細については、「[App Service 環境での内部ロード バランサーの使用][ILBASE]」を参照してください。 
 
-## <a name="portal"></a>ポータル
+<a id="portal" class="xliff"></a>
+
+## ポータル
 App Service Environment の管理と監視は、Azure ポータルの UI を使って実行できます。 ASE があれば、ほとんどの場合、サイド バーに App Service 記号が表示されます。 この記号は、Azure ポータルに App Service Environment があることを示すために使用されます。
 
 ![App Service Environment symbol][1]
@@ -110,7 +128,9 @@ App Service Environment の管理と監視は、Azure ポータルの UI を使�
 
 この最初のブレードには、ASE の一部のプロパティと、リソース プールごとのメトリック グラフが表示されます。 **Essentials** ブロックに表示されるプロパティの一部は、関連付けられているブレードを開くハイパーリンクです。 たとえば、仮想ネットワーク名 ( **[仮想ネットワーク]** ) を選択して、ASE が実行されている仮想ネットワークと関連付けられた UI を開くことができます。 **App Service プラン**と**アプリ**でそれぞれブレードが開き、ASE 内にある項目が一覧表示されます。  
 
-### <a name="monitoring"></a>監視
+<a id="monitoring" class="xliff"></a>
+
+### 監視
 グラフから、各リソース プールの多様なパフォーマンス メトリックを確認できます。 フロント エンド プールについては、CPU とメモリの平均値を監視できます。 ワーカー プールについては、使用されているプール数と使用できるプール数を監視できます。
 
 ワーカー プール内のワーカーは、複数の App Service プランによって利用される場合があります。 ワークロードはフロント エンド サーバーと同様の方法では分散されないため、CPU とメモリの使用率からは有用な情報はそれほど得られません。 それまでに使用したワーカー数と、特に、このシステムを管理する場合に、他のシステムが使用できるワーカー数を追跡することは重要です。  
@@ -123,14 +143,16 @@ App Service Environment の管理と監視は、Azure ポータルの UI を使�
 
 ASE では、App Service プランはすべて、App Service 専用のプランです。 つまり、その App Service プランに割り当てられているホストで実行されているアプリのみが、その App Service プラン内のアプリです。 App Service プランの詳細を確認するには、ASE の UI に表示される一覧から目的の App Service プランを選択するか、またはすべての App Service プランが表示される **[Browse App Service plans (App Service プランの参照)]** から目的の App Service プランを選択します。   
 
-### <a name="settings"></a>設定
+<a id="settings" class="xliff"></a>
+
+### 設定
 ASE ブレードには **[設定]** セクションがあり、そこにいくつかの重要な機能が用意されています。
 
-**[設定]** > **[プロパティ]**: ASE ブレードを選択すると、**[設定]** ブレードが自動的に開きます。 その一番上に **[プロパティ]**が表示されます。 プロパティには多数の項目があり、**[要点]** に表示される項目と重複していますが、非常に役に立つのは **[仮想 IP アドレス]** と** [送信 IP アドレス]** です。
+**[設定]** > **[プロパティ]**: ASE ブレードを選択すると、**[設定]** ブレードが自動的に開きます。 その一番上に **[プロパティ]**が表示されます。 プロパティには多数の項目があり、**[要点]** に表示される項目と重複していますが、非常に役に立つのは **[仮想 IP アドレス]** と **[送信 IP アドレス]** です。
 
 ![Settings blade and Properties][4]
 
-**設定** > **[IP アドレス]**: ASE に IP SSL (Secure Sockets Layer) アプリを作成する場合は、IP SSL アドレスが必要です。 このアドレスを取得するためには、割り当てが可能な独自の IP SSL アドレスが ASE に必要となります。 ASE の作成時に、この目的で使用できる IP SSL アドレスが 1 つ用意されますが、追加することもできます。 「[App Service の価格][AppServicePricing]」の SSL 接続のセクションに、IP SSL アドレスを追加する際の価格が記載されています。 追加の価格は、IP SSL の価格です。
+**設定** > **[IP アドレス]**: ASE に IP SSL (Secure Sockets Layer) アプリを作成する場合は、IP SSL アドレスが必要です。 このアドレスを取得するためには、割り当てが可能な独自の IP SSL アドレスが ASE に必要となります。 ASE の作成時に、この目的で使用できる IP SSL アドレスが 1 つ用意されますが、追加することもできます。 「[App Service の価格][AppServicePricing]」の「SSL 接続」セクションに記載されているとおり、追加の IP SSL アドレスは課金対象です。 追加の価格は、IP SSL の価格です。
 
 **[設定]** > **[フロントエンド プール]** / **[ワーカー プール]**: 各リソース プール ブレードでは、そのリソース プールに関する情報のみを確認できます。また、そのリソース プールのスケールを完全に制御できます。  
 
@@ -138,7 +160,9 @@ ASE ブレードには **[設定]** セクションがあり、そこにいく�
 
 ![Worker pool settings UI][5]
 
-### <a name="portal-scale-capabilities"></a>ポータルのスケール機能
+<a id="portal-scale-capabilities" class="xliff"></a>
+
+### ポータルのスケール機能
 スケール処理には、次の 3 つがあります。
 
 * IP SSL に使用できる ASE 内の IP アドレス数を変更する。
@@ -159,7 +183,9 @@ ASE ブレードでスケール操作を使用するには、目的の数まで�
 
 ![Scale settings UI][7]
 
-## <a name="fault-tolerance-considerations"></a>フォールト トレランスに関する考慮事項
+<a id="fault-tolerance-considerations" class="xliff"></a>
+
+## フォールト トレランスに関する考慮事項
 App Service 環境は合計 55 個までのコンピューティング リソースを使用するように構成できます。 この 55 個のコンピューティング リソースのうち、ワークロードのホストに使用できるのは 50 個のみです。 その理由は 2 つあります。 フロントエンドのコンピューティング リソースは最小で 2 つです。  これにより、ワーカー プールの割り当てのサポートには最大で 53 個残ります。 フォールト トレランスを提供するには、次のルールに従い、追加のコンピューティング リソースを割り当てる必要があります。
 
 * 各ワーカー プールには、ワークロードに割り当てることができない追加のコンピューティング リソースを 1 つ以上用意する必要があります。
@@ -180,12 +206,16 @@ App Service 環境は合計 55 個までのコンピューティング リソー
 
 フォールト トレランスの側面は重要ですが、スケールが特定のしきい値を超える場合に注意する必要があります。 20 個のインスタンスから容量を追加するには、22 個以上に増やします。これは、21 個では容量が追加されないためです。 同様に、40 個を超える数に増やす場合、容量が追加される次の数は 42 です。  
 
-## <a name="deleting-an-app-service-environment"></a>App Service 環境の削除
+<a id="deleting-an-app-service-environment" class="xliff"></a>
+
+## App Service 環境の削除
 App Service 環境を削除する必要がある場合は、単に [App Service 環境] ブレード上部の **[削除]** アクションを使用します。 この操作を実行すると、App Service Environment の名前を入力し、操作の実行を確定するように求められます。 App Service Environment を削除すると、その内部のすべてのコンテンツも削除されるので注意してください。  
 
 ![Delete an App Service Environment UI][9]  
 
-## <a name="getting-started"></a>使用の開始
+<a id="getting-started" class="xliff"></a>
+
+## 使用の開始
 App Service 環境の使用を開始するには、 [App Service 環境の作成方法](app-service-web-how-to-create-an-app-service-environment.md)に関するページを参照してください。
 
 Azure App Service プラットフォームの詳細については、 [Azure App Service](../app-service/app-service-value-prop-what-is.md)に関するページを参照してください。
@@ -217,9 +247,4 @@ Azure App Service プラットフォームの詳細については、 [Azure App
 [ASEAutoscale]: http://azure.microsoft.com/documentation/articles/app-service-environment-auto-scale/
 [ExpressRoute]: http://azure.microsoft.com/documentation/articles/app-service-app-service-environment-network-configuration-expressroute/
 [ILBASE]: http://azure.microsoft.com/documentation/articles/app-service-environment-with-internal-load-balancer/
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -1,6 +1,6 @@
 ---
 title: "Azure Service Bus の認証と承認 | Microsoft Docs"
-description: "Shared Access Signature (SAS) 認証の概要です。"
+description: "Shared Access Signature (SAS) 認証を使用して、アプリケーションを Service Bus に対して認証します。"
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
@@ -12,16 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/21/2017
+ms.date: 06/27/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 4eaae725c62f66de1b50fd2c7094f3e6e89281be
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 5ed7558cfff9991734e909e06e8bac9181131381
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/28/2017
 
 
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Service Bus の認証と承認
+
 アプリケーションは、Shared Access Signature (SAS) 認証または Azure Active Directory Access Control (Access Control Service または ACS とも呼ばれます) を使用して、Azure Service Bus に対して認証できます。 Shared Access Signature 認証により、アプリケーションは、名前空間、または特定の権限が関連付けられているエンティティで構成されたアクセス キーを使用して Service Bus に対して認証できます。 次に、このキーを使用して、クライアントが Service Bus に対する認証に使用できる Shared Access Signature トークンを生成できます。
 
 > [!IMPORTANT]
@@ -32,7 +34,7 @@ ms.lasthandoff: 04/27/2017
 
 SAS のキーは Service Bus 名前空間で構成できます。 このキーは、その名前空間内のすべてのメッセージング エンティティに適用されます。 Service Bus のキューとトピックでキーを構成することもできます。 SAS は [Azure リレー](../service-bus-relay/relay-authentication-and-authorization.md)でもサポートされます。
 
-SAS を使用するには、名前空間、キュー、トピックで、次の要素で構成される [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) オブジェクトを構成します。
+SAS を使用するには、名前空間、キュー、トピックで [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) オブジェクトを構成します。 この規則は次の要素で構成されます。
 
 * *KeyName* 。
 * *PrimaryKey* は、SAS トークンの署名または検証に使用される暗号化キーです。
@@ -67,6 +69,7 @@ New-AzureSBNamespace <namespaceName> "<Region>” -CreateACSNamespace $false
 Service Bus の ACS 認証サポートは、Azure .NET SDK バージョン 2.0 以降に含まれています。 この認証には、 [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider)のサポートが含まれています。 接続文字列をパラメーターとして受け取るすべての API では、ACS 接続文字列がサポートされています。
 
 ## <a name="next-steps"></a>次のステップ
+
 SAS の詳細については、「[Shared Access Signature による Service Bus の認証](service-bus-sas.md)」を引き続きお読みください。
 
 Azure リレーの認証と承認についての対応する情報は、「[Azure Relay authentication and authorization (Azure リレーの認証と承認)](../service-bus-relay/relay-authentication-and-authorization.md)」を参照してください。 

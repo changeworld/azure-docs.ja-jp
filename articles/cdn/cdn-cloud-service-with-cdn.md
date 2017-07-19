@@ -14,13 +14,15 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 06bd0112eab46f3347dfb039a99641a37c2b0197
 ms.openlocfilehash: 6355c98f5c50d03b54cb4977bff4e51b8dfa669f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
-# <a name="a-nameintroa-integrate-a-cloud-service-with-azure-cdn"></a><a name="intro"></a> クラウド サービスと Azure CDN との統合
+# <a name="intro"></a> クラウド サービスと Azure CDN との統合
 クラウド サービスを Azure CDN に統合すると、クラウド サービスの場所からコンテンツを配信できます。 この方法には、次の利点があります。
 
 * クラウド サービスのプロジェクト ディレクトリへの画像、スクリプト、およびスタイルシートのデプロイと更新を簡単に行うことができる。
@@ -29,7 +31,9 @@ ms.openlocfilehash: 6355c98f5c50d03b54cb4977bff4e51b8dfa669f
 * Web アプリケーションと CDN によって配信されるコンテンツのデプロイメント ワークフローを一元化できる。
 * ASP.NET のバンドルと縮小を Azure CDN と統合できる。
 
-## <a name="what-you-will-learn"></a>学習内容
+<a id="what-you-will-learn" class="xliff"></a>
+
+## 学習内容
 このチュートリアルで学習する内容は次のとおりです。
 
 * [Azure CDN エンドポイントをクラウド サービスと統合して、Azure CDN から Web ページの静的コンテンツを配信する](#deploy)
@@ -38,10 +42,14 @@ ms.openlocfilehash: 6355c98f5c50d03b54cb4977bff4e51b8dfa669f
 * [Visual Studio のスクリプトのデバッグ エクスペリエンスを維持しながらバンドルされたコンテンツおよび縮小されたコンテンツを配信する](#bundling)
 * [Azure CDN がオフラインのときのスクリプトおよび CSS のフォールバックを構成する](#fallback)
 
-## <a name="what-you-will-build"></a>学習内容
+<a id="what-you-will-build" class="xliff"></a>
+
+## 学習内容
 既定の ASP.NET MVC テンプレートを使用してクラウド サービス Web ロールをデプロイし、統合された Azure CDN からコンテンツ (たとえば、画像、コントローラー アクションの結果、既定の JavaScript ファイルおよび CSS ファイル) を配信するコードを追加します。さらに、CDN がオフラインになった場合に提供されるバンドルのフォールバック メカニズムを構成するコードを作成します。
 
-## <a name="what-you-will-need"></a>前提条件
+<a id="what-you-will-need" class="xliff"></a>
+
+## 前提条件
 このチュートリアルの前提条件は次のとおりです。
 
 * アクティブな [Microsoft Azure アカウント](/account/)
@@ -57,7 +65,9 @@ ms.openlocfilehash: 6355c98f5c50d03b54cb4977bff4e51b8dfa669f
 
 <a name="deploy"></a>
 
-## <a name="deploy-a-cloud-service"></a>クラウド サービスのデプロイ
+<a id="deploy-a-cloud-service" class="xliff"></a>
+
+## クラウド サービスのデプロイ
 このセクションでは、Visual Studio 2015 の既定の ASP.NET MVC アプリケーション テンプレートをクラウド サービス Web ロールにデプロイした後、これを新しい CDN エンドポイントと統合します。 次の手順に従ってください。
 
 1. Visual Studio 2015 で、メニュー バーから **[ファイル]、[新規]、[プロジェクト]、[クラウド]、[Azure クラウド サービス]** の順に選択して新しい Azure クラウド サービスを作成します。 クラウド サービスに名前を付けて、 **[OK]**をクリックします。
@@ -98,7 +108,9 @@ ms.openlocfilehash: 6355c98f5c50d03b54cb4977bff4e51b8dfa669f
    > 
    > 
 
-## <a name="create-a-new-cdn-profile"></a>新しい CDN プロファイルを作成する
+<a id="create-a-new-cdn-profile" class="xliff"></a>
+
+## 新しい CDN プロファイルを作成する
 CDN プロファイルは、CDN エンドポイントのコレクションです。  各プロファイルには、1 つ以上の CDN エンドポイントが含まれます。  複数のプロファイルを使って、インターネット ドメイン、Web アプリケーション、またはその他の一部の基準別に CDN エンドポイントを整理する必要が生じる場合があります。
 
 > [!TIP]
@@ -108,7 +120,9 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 
 [!INCLUDE [cdn-create-profile](../../includes/cdn-create-profile.md)]
 
-## <a name="create-a-new-cdn-endpoint"></a>[新しい CDN エンドポイントの作成]
+<a id="create-a-new-cdn-endpoint" class="xliff"></a>
+
+## [新しい CDN エンドポイントの作成]
 **ストレージ アカウントに対する新しい CDN エンドポイントを作成するには**
 
 1. [Microsoft Azure 管理ポータル](https://portal.azure.com)で CDN プロファイルに移動します。  これは、前の手順でダッシュボードにピン留めしている可能性があります。  ピン留めしていない場合は、**[参照]**、**[CDN プロファイル]** の順にクリックし、エンドポイントの追加先のプロファイルをクリックします。
@@ -126,7 +140,7 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 3. この CDN エンドポイントの **名前** を入力します。  この名前は、ドメイン `<EndpointName>.azureedge.net`でキャッシュされたリソースにアクセスする際に使用します。
 4. **[配信元の種類]** ドロップダウンで、 *[クラウド サービス]*を選択します。  
 5. **[配信元ホスト名]** ドロップダウンで、クラウド サービスを選択します。
-6. **[元のパス]**、**[配信元のホスト ヘッダー]**、および **[プロトコル/配信元ポート]** の既定値はそのまま使用します。  少なくとも&1; つのプロトコル (HTTP または HTTPS) を指定する必要があります。
+6. **[元のパス]**、**[配信元のホスト ヘッダー]**、および **[プロトコル/配信元ポート]** の既定値はそのまま使用します。  少なくとも 1 つのプロトコル (HTTP または HTTPS) を指定する必要があります。
 7. **[追加]** ボタンをクリックして、新しいエンドポイントを作成します。
 8. エンドポイントが作成されると、プロファイルのエンドポイントの一覧に表示されます。 一覧には、キャッシュされたコンテンツへのアクセスに使用する URL と元のドメインが表示されます。
    
@@ -137,7 +151,9 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
    > 
    > 
 
-## <a name="test-the-cdn-endpoint"></a>CDN エンドポイントをテストする
+<a id="test-the-cdn-endpoint" class="xliff"></a>
+
+## CDN エンドポイントをテストする
 発行状態が **[完了]** と表示されたら、ブラウザー ウィンドウを開き、**http://<cdnName>*.azureedge.net/Content/bootstrap.css** に移動します。 この設定では、次の URL を使用します。
 
     http://camservice.azureedge.net/Content/bootstrap.css
@@ -157,7 +173,7 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 * 任意のコントローラー/アクション
 * CDN エンドポイントでクエリ文字列が有効になっている場合、クエリ文字列を含む任意の URL
 
-実際、上記の構成の場合、**http://*&lt;cdnName>*.azureedge.net/** からのクラウド サービス全体をホストできます。**http://camservice.azureedge.net/** に移動すると、Home/Index からのアクション結果が得られます。
+実際、上記の構成の場合、**http://*&lt;cdnName>*.azureedge.net/** からのクラウド サービス全体をホストできます。 **http://camservice.azureedge.net/** に移動すると、Home/Index からのアクション結果が得られます。
 
 ![](media/cdn-cloud-service-with-cdn/cdn-2-home-page.PNG)
 
@@ -171,7 +187,9 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 
 <a name="caching"></a>
 
-## <a name="configure-caching-options-for-static-files-in-your-cloud-service"></a>クラウド サービスの静的ファイルのキャッシュ オプションを構成する
+<a id="configure-caching-options-for-static-files-in-your-cloud-service" class="xliff"></a>
+
+## クラウド サービスの静的ファイルのキャッシュ オプションを構成する
 Azure CDN 統合をクラウド サービスに組み込むと、CDN エンドポイントで静的コンテンツをどのようにキャッシュするかを指定できます。 そのためには、Web ロール プロジェクト (たとえば、WebRole1) の *Web.config* を開き、`<staticContent>` 要素を `<system.webServer>` に追加します。 次の XML では、3 日間で有効期限が切れるキャッシュを追加しています。  
 
     <system.webServer>
@@ -200,7 +218,9 @@ Azure CDN 統合をクラウド サービスに組み込むと、CDN エンド�
 
 <a name="controller"></a>
 
-## <a name="serve-content-from-controller-actions-through-azure-cdn"></a>Azure CDN を介してコントローラー アクションからコンテンツを配信する
+<a id="serve-content-from-controller-actions-through-azure-cdn" class="xliff"></a>
+
+## Azure CDN を介してコントローラー アクションからコンテンツを配信する
 クラウド サービス Web ロールを Azure CDN と統合すると、Azure CDN を介してコントローラー アクションからコンテンツを簡単に配信できます。 (上に示した) Azure CDN を介して直接クラウド サービスを提供する方法のほか、[Maarten Balliauw](https://twitter.com/maartenballiauw) 氏は、[Azure CDN による Web の遅延時間の短縮](http://channel9.msdn.com/events/TechDays/Techdays-2014-the-Netherlands/Reducing-latency-on-the-web-with-the-Windows-Azure-CDN)のビデオでおもしろい MemeGenerator コントローラーを使用した方法を紹介しています。 ここではその方法を再現します。
 
 クラウド サービスで次のような Chuck Norris の若いときの画像 ( [Alan Light](http://www.flickr.com/photos/alan-light/218493788/)による撮影) に基づいてミームを生成するとします。
@@ -367,7 +387,9 @@ Azure CDN 統合をクラウド サービスに組み込むと、CDN エンド�
 
 <a name="bundling"></a>
 
-## <a name="integrate-aspnet-bundling-and-minification-with-azure-cdn"></a>ASP.NET のバンドルと縮小を Azure CDN と統合できる。
+<a id="integrate-aspnet-bundling-and-minification-with-azure-cdn" class="xliff"></a>
+
+## ASP.NET のバンドルと縮小を Azure CDN と統合できる。
 スクリプトや CSS スタイルシートはあまり頻繁に変更されないため、Azure CDN キャッシュの有力な候補になります。 Azure CDN を介して Web ロール全体を提供するやり方は、バンドルや縮小を Azure CDN と統合する方法として最も簡単です。 ただし、このやり方を希望しない方のために、次のような ASP.NET のバンドルと縮小の開発者エクスペリエンスを維持しながらこれを実現する方法を紹介します。
 
 * 優れたデバッグ モード エクスペリエンス
@@ -393,7 +415,7 @@ Azure Web ロールでこの Razor コードが実行されると、次のよう
 
     <script src="/bundles/jquery?v=FVs3ACwOLIVInrAl5sdzR2jrCDmVOWFbZMY6g6Q0ulE1"></script>
 
-ただし、 `F5`キーを押してこのコードを Visual Studio 内で実行した場合は、バンドル内の各スクリプト ファイルが個別にレンダリングされます (上記のケースでは、バンドルに含まれているスクリプト ファイルは&1; つだけです)。
+ただし、 `F5`キーを押してこのコードを Visual Studio 内で実行した場合は、バンドル内の各スクリプト ファイルが個別にレンダリングされます (上記のケースでは、バンドルに含まれているスクリプト ファイルは 1 つだけです)。
 
     <script src="/Scripts/jquery-1.10.2.js"></script>
 
@@ -440,7 +462,7 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
    
         new ScriptBundle("~/bundles/jquery", string.Format(cdnUrl, "http://<yourCDNName>.azureedge.net/bundles/jquery?v=<W.X.Y.Z>"))
    
-    このコンストラクターは、ASP.NET のバンドルおよび縮小機能に対して、ローカルにデバッグされたときに個々のスクリプト ファイルをレンダリングする一方で、指定された CDN アドレスを使用して対象のスクリプトにアクセスすることを指定しています。 ここで、この巧妙に作成された CDN URL の&2; つの重要な特性に注意してください。
+    このコンストラクターは、ASP.NET のバンドルおよび縮小機能に対して、ローカルにデバッグされたときに個々のスクリプト ファイルをレンダリングする一方で、指定された CDN アドレスを使用して対象のスクリプトにアクセスすることを指定しています。 ここで、この巧妙に作成された CDN URL の 2 つの重要な特性に注意してください。
    
    * この CDN URL のオリジンは、実際にはクラウド サービスのスクリプト バンドルの仮想ディレクトリである `http://<yourCloudService>.cloudapp.net/bundles/jquery?v=<W.X.Y.Z>`です。
    * CDN コンストラクターを使用しているため、バンドルのための CDN スクリプト タグには、レンダリングされた URL 内の自動生成されたバージョン文字列が含まれません。 Azure CDN でキャッシュ ミスを強制的に発生させるには、スクリプト バンドルを変更するたびに一意のバージョン文字列を手動で生成する必要があります。 また、この一意のバージョン文字列は、バンドルがデプロイされた後の Azure CDN でのキャッシュ ヒットを最大化するために、デプロイの有効期間を通じて一定に保たれる必要があります。
@@ -486,7 +508,9 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 
 <a name="fallback"></a>
 
-## <a name="fallback-mechanism-for-cdn-urls"></a>CDN URL のフォールバック メカニズム
+<a id="fallback-mechanism-for-cdn-urls" class="xliff"></a>
+
+## CDN URL のフォールバック メカニズム
 何かの理由で Azure CDN エンドポイントに障害が発生した場合に備えて、JavaScript または Bootstrap を読み込むためのフォールバック オプションとしてオリジン Web サーバーにアクセスできるようにしておくと便利です。 CDN が利用できないために Web サイトの画像が失われることは深刻な事態ですが、スクリプトやスタイルシートで提供される重要なページ機能が失われることは、さらに深刻な事態です。
 
 [Bundle](http://msdn.microsoft.com/library/system.web.optimization.bundle.aspx) クラスには、CDN 障害に対するフォールバック メカニズムを構成するための [CdnFallbackExpression](http://msdn.microsoft.com/library/system.web.optimization.bundle.cdnfallbackexpression.aspx) プロパティがあります。 このプロパティを使用するには、次の手順に従います。
@@ -590,7 +614,9 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 
     ただし、(すぐ上の行の) || 式の最初の部分は常に true を返すため、document.write() 関数が実行されることはありません。
 
-## <a name="more-information"></a>詳細情報
+<a id="more-information" class="xliff"></a>
+
+## 詳細情報
 * [Azure Content Delivery Network (CDN) の概要](http://msdn.microsoft.com/library/azure/ff919703.aspx)
 * [Azure CDN の使用](cdn-create-new-endpoint.md)
 * [ASP.NET のバンドルおよび縮小](http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification)
@@ -600,9 +626,4 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 [cdn-new-endpoint-button]: ./media/cdn-cloud-service-with-cdn/cdn-new-endpoint-button.png
 [cdn-add-endpoint]: ./media/cdn-cloud-service-with-cdn/cdn-add-endpoint.png
 [cdn-endpoint-success]: ./media/cdn-cloud-service-with-cdn/cdn-endpoint-success.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

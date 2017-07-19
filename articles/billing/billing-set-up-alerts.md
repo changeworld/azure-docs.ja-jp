@@ -24,12 +24,14 @@ ms.contentlocale: ja-jp
 ms.lasthandoff: 03/02/2017
 
 ---
-# <a name="set-up-billing-or-credit-alerts-for-your-microsoft-azure-subscriptions"></a>Microsoft Azure サブスクリプションの課金アラートまたはクレジット アラートの設定
+<a id="set-up-billing-or-credit-alerts-for-your-microsoft-azure-subscriptions" class="xliff"></a>
+# Microsoft Azure サブスクリプションの課金アラートまたはクレジット アラートの設定
 Azure サブスクリプションのアカウント管理者である場合は、Azure 課金アラート サービスを使用して、Azure アカウントの課金アクティビティを監視、管理するのに役立つ、カスタマイズされた課金アラートを作成できます。
 
 このサービスはプレビュー段階なので、まずプレビュー機能のページで機能を有効にする必要があります。
 
-## <a name="set-the-alert-threshold-and-email-recipients"></a>アラートのしきい値と電子メールの受信者を設定する
+<a id="set-the-alert-threshold-and-email-recipients" class="xliff"></a>
+## アラートのしきい値と電子メールの受信者を設定する
 1. [プレビュー機能のページ](https://account.windowsazure.com/PreviewFeatures) にアクセスして、**課金アラート サービス**を有効にします。
 
 1. サブスクリプションで課金サービスが有効になったという確認メールを受信したら、アカウント ポータルの [[サブスクリプション] ページ](https://account.windowsazure.com/Subscriptions) を開きます。 監視するサブスクリプションをクリックし、 **[アラート]**をクリックします。
@@ -46,13 +48,16 @@ Azure サブスクリプションのアカウント管理者である場合は�
 
 Azure は任意の電子メール アドレスをサポートしていますが、電子メール アドレスが有効であるかは確認されないため、入力ミスがないようダブルチェックしてください。
 
-## <a name="check-on-your-alerts"></a>アラートを確認する
+<a id="check-on-your-alerts" class="xliff"></a>
+## アラートを確認する
 アラートを設定した後、アカウント センターで一覧表示され、設定可能な残数も表示されます。 それぞれのアラートに対し、送信された日付と時刻、アラートが請求合計または通貨クレジットであるか、設定した制限が表示されます。 日付と時刻形式は 24 時間協定世界時 (UTC) で、日付は yyyy-mm-dd の形式です。 アラートを編集するには、リストのアラートのプラス記号をクリックします。アラートを削除するには、ごみ箱アイコンをクリックします。
 
-## <a name="billing-alerts-for-enterprise-agreement-ea-customers"></a>エンタープライズ契約 (EA) のお客様に対する課金アラート
+<a id="billing-alerts-for-enterprise-agreement-ea-customers" class="xliff"></a>
+## エンタープライズ契約 (EA) のお客様に対する課金アラート
 EA のお客様は、加入契約の下にある各部署ごとに、使用金額クォータを設定してアラートを取得できます。 ご利用を開始するには EA ポータルの「[	部署課金クォータ](https://ea.azure.com/helpdocs/departmentSpendingQuotas)」をご覧ください。
 
-## <a name="learn-more-about-azure-cost-management"></a>Azure コスト管理の詳細情報
+<a id="learn-more-about-azure-cost-management" class="xliff"></a>
+## Azure コスト管理の詳細情報
 - [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)や[総保有コスト計算ツール](https://aka.ms/azure-tco-calculator)を使用してコストを見積もり、サービスを追加するときにもコストを見積もる
 - [Azure Portal で使用状況とコストを定期的に確認する](billing-getting-started.md#costs)
 - [Azure Advisor のコストに関する推奨事項](../advisor/advisor-cost-recommendations.md)を有効にする

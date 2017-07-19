@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory Domain Services: 仮想ネットワークの作成または選択 | Microsoft Docs"
-description: "Azure Active Directory ドメイン サービスの概要"
+description: "Azure クラシック ポータルを使って Azure Active Directory Domain Services を有効にする"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -12,20 +12,27 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/06/2017
+ms.date: 06/28/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: cb372232492e8f98ff1543798b92b4b60fc25021
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: 457519b00b65b0157effe2d4aba033a1c99852e8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/30/2017
 
 
 ---
-# <a name="create-or-select-a-virtual-network-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services の仮想ネットワークの作成または選択
-## <a name="before-you-begin"></a>開始する前に
+<a id="create-or-select-a-virtual-network-for-azure-active-directory-domain-services" class="xliff"></a>
+
+# Azure Active Directory Domain Services の仮想ネットワークの作成または選択
+<a id="before-you-begin" class="xliff"></a>
+
+## 開始する前に
 [Azure Active Directory Domain Services のネットワークに関する考慮事項](active-directory-ds-networking.md)のページを参照してください。
 
-## <a name="task-2-create-an-azure-virtual-network"></a>タスク 2: Azure 仮想ネットワークを作成する
+<a id="task-2-create-an-azure-virtual-network" class="xliff"></a>
+
+## タスク 2: Azure 仮想ネットワークを作成する
 次の構成タスクでは、Azure 仮想ネットワークを作成し、その中にサブネットを作成します。 仮想ネットワーク内のこのサブネットで、Azure Active Directory Domain Services を有効にします。 希望する仮想ネットワークが既にある場合は、この手順を省略してかまいません。
 
 > [!NOTE]
@@ -45,12 +52,12 @@ Azure Active Directory Domain Services を有効にする Azure 仮想ネット�
 
     ![[Virtual Networks] ウィンドウ](./media/active-directory-domain-services-getting-started/virtual-networks.png)
 4. **[ネットワーク サービス]** をクリックし、**[仮想ネットワーク]** を選択します。
-    
+
     ![Virtual network - quick create](./media/active-directory-domain-services-getting-started/virtual-network-quickcreate.png)
 5. 仮想ネットワークを作成するには、**[簡易作成]** をクリックします。
-    
-6. 仮想ネットワークの **[名前]** を指定し、以下の点について検討します。 
-    * このネットワークの **[アドレス空間]** や **[最大 VM 数]** を構成することができます。 
+
+6. 仮想ネットワークの **[名前]** を指定し、以下の点について検討します。
+    * このネットワークの **[アドレス空間]** や **[最大 VM 数]** を構成することができます。
     * 現時点では、**[DNS サーバー]** 設定は **[なし]** のままでかまいません。 この設定は、Azure Active Directory Domain Services を有効にした後で更新できます。
 7. **[場所]** ボックスの一覧で、サポートされている Azure リージョンを選択します。  
     Azure Active Directory Domain Services を利用できる Azure リージョンを確認するには、[リージョン別の Azure サービス](https://azure.microsoft.com/regions/#services/)に関するページを参照してください。
@@ -60,12 +67,15 @@ Azure Active Directory Domain Services を有効にする Azure 仮想ネット�
 9. 仮想ネットワークを作成したら、その仮想ネットワークの名前を選択し、**[構成]** タブをクリックします。
 
     ![サブネットの作成](./media/active-directory-domain-services-getting-started/create-vnet-properties.png)
-10. **[仮想ネットワーク アドレス空間]** で、**[サブネットの追加]** をクリックし、**AaddsSubnet** という名前のサブネットを指定します。 
+10. **[仮想ネットワーク アドレス空間]** で、**[サブネットの追加]** をクリックし、**AaddsSubnet** という名前のサブネットを指定します。
 
     ![Azure Active Directory Domain Services のサブネットを作成する](./media/active-directory-domain-services-getting-started/create-vnet-add-subnet.png)
 
 11. サブネットを作成するには、**[保存]** をクリックします。
 
-## <a name="next-steps"></a>次のステップ
-タスク 3: [Azure Active Directory Domain Services を有効にする](active-directory-ds-getting-started-enableaadds.md)
+
+<a id="next-step" class="xliff"></a>
+
+## 次のステップ
+[タスク 3: Azure Active Directory Domain Services を有効にする](active-directory-ds-getting-started-enableaadds.md)
 

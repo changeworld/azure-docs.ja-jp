@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory Domain Services: Azure Active Directory Domain Services を有効にする | Microsoft Docs"
-description: "Azure Active Directory ドメイン サービスの概要"
+description: "Azure クラシック ポータルを使って Azure Active Directory Domain Services を有効にする"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -12,17 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/06/2017
+ms.date: 06/28/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: e5f1fe51d8931985fa55b2d8c0a3fd25bb93f20f
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: ed72325ca9db99405c6173eb882a92f80cd77f47
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/30/2017
 
 
 ---
-# <a name="enable-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services を有効にする
-## <a name="task-3-enable-azure-active-directory-domain-services"></a>タスク 3: Azure Active Directory Domain Services を有効にする
+<a id="enable-azure-active-directory-domain-services-using-the-azure-classic-portal" class="xliff"></a>
+
+# Azure クラシック ポータルを使って Azure Active Directory Domain Services を有効にする
+
+<a id="task-3-enable-azure-active-directory-domain-services" class="xliff"></a>
+
+## タスク 3: Azure Active Directory Domain Services を有効にする
 このタスクでは、以下の手順に従い、ディレクトリに対して Azure Active Directory Domain Services (Azure AD DS) を有効にします。
 
 1. [Azure クラシック ポータル](https://manage.windowsazure.com)に移動します。
@@ -70,7 +76,7 @@ ms.lasthandoff: 04/12/2017
    * Azure Active Directory Domain Services には仮想ネットワーク内の専用サブネットを使用します。 ゲートウェイ サブネットは選択 "*しない*" でください。 [ネットワークに関する考慮事項](active-directory-ds-networking.md)を参照してください。
 
    * 同様に、Azure Resource Manager を使用して作成された仮想ネットワークは、ドロップダウン リストに表示されません。 現在、Resource Manager ベースの仮想ネットワークは Azure Active Directory Domain Services でサポートされていません。
-9. Azure Active Directory Domain Services を有効にするには、ページ下部の作業ウィンドウで **[保存]** をクリックします。 
+9. Azure Active Directory Domain Services を有効にするには、ページ下部の作業ウィンドウで **[保存]** をクリックします。
     * ディレクトリで Azure Active Directory Domain Services が有効になっている間、ページには *[保留中]* という状態が表示されます。
 
         ![[Domain Services を有効にします] ウィンドウ](./media/active-directory-domain-services-getting-started/enable-domain-services-pendingstate.png)
@@ -82,8 +88,8 @@ ms.lasthandoff: 04/12/2017
     * 約 20 ～ 30 分後に、仮想ネットワーク上でドメイン サービスを利用できる 1 つ目の IP アドレスが、**[構成]** ページの **[IP アドレス]** フィールドに表示されます。
 
         ![1 つ目のプロビジョニング済み IP が表示されている Domain Services ウィンドウ](./media/active-directory-domain-services-getting-started/domain-services-enabled-firstdc-available.png)
-    * ドメインで高可用性が利用できるようになると、2 つの IP アドレスがページに表示されます。 管理対象ドメインには、選択した仮想ネットワーク上の、この 2 つの IP アドレスでアクセスできます。 
-    
+    * ドメインで高可用性が利用できるようになると、2 つの IP アドレスがページに表示されます。 管理対象ドメインには、選択した仮想ネットワーク上の、この 2 つの IP アドレスでアクセスできます。
+
 10. 仮想ネットワークの DNS 設定を更新できるように、2 つの IP アドレスをメモしておきます。 DNS 設定を更新することで、ドメインへの参加などの操作のために、仮想ネットワーク上の仮想マシンからドメインに接続できるようになります。
 
     ![両方のプロビジョニング済み IP が表示されている Domain Services ウィンドウ](./media/active-directory-domain-services-getting-started/domain-services-enabled-bothdcs-available.png)
@@ -93,6 +99,8 @@ ms.lasthandoff: 04/12/2017
 >
 >
 
-## <a name="next-steps"></a>次のステップ
-タスク 4: [Azure 仮想ネットワークの DNS 設定を更新する](active-directory-ds-getting-started-dns.md)
+<a id="next-step" class="xliff"></a>
+
+## 次のステップ
+[タスク 4: Azure 仮想ネットワークの DNS 設定を更新する](active-directory-ds-getting-started-update-dns.md)
 

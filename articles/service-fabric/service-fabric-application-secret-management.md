@@ -22,19 +22,21 @@ ms.lasthandoff: 12/09/2016
 
 
 ---
-# <a name="managing-secrets-in-service-fabric-applications"></a>Service Fabric アプリケーションでのシークレットの管理
+# Service Fabric アプリケーションでのシークレットの管理
+<a id="managing-secrets-in-service-fabric-applications" class="xliff"></a>
 このガイドでは、Service Fabric アプリケーションでシークレットを管理する手順について説明します。 シークレットは、ストレージ接続文字列、パスワード、プレーン テキストで処理できないその他の値など、機密情報である可能性があります。
 
 このガイドでは、Azure Key Vault を使用してキーとシークレットを管理します。 ただし、アプリケーションでのシークレットの " *使用* " はクラウド プラットフォームに依存しないので、クラスターでホストされている任意の場所にアプリケーションをデプロイできます。 
 
-## <a name="overview"></a>概要
+## 概要
+<a id="overview" class="xliff"></a>
 サービスの構成設定を管理する方法として、[サービス構成パッケージ][config-package]を使用することが推奨されます。 構成パッケージはバージョン管理されており、正常性の検証と自動ロールバックを含む管理されたローリング アップグレードによって更新可能です。 グローバル サービスの停止の可能性が低減されるため、グローバル構成をお勧めします。 暗号化されたシークレットも例外ではありません。 Service Fabric には、証明書の暗号化を使用して、構成パッケージの Settings.xml ファイル内の値を暗号化および暗号化解除する機能が組み込まれています。
 
 次の図は、Service Fabric アプリケーションでのシークレットの管理の基本的なフローを示しています。
 
 ![シークレットの管理の概要][overview]
 
-このフローには、次の&4; つの主な手順があります。
+このフローには、次の 4 つの主な手順があります。
 
 1. データ暗号化証明書を取得します。
 2. クラスターに証明書をインストールします。
@@ -43,7 +45,8 @@ ms.lasthandoff: 12/09/2016
 
 ここでは、証明書の安全な格納場所として [Azure Key Vault][key-vault-get-started] を使用します。また、Azure の Service Fabric クラスターにインストールされている証明書を取得する方法としても使用します。 Azure にデプロイしない場合は、Service Fabric アプリケーションでのシークレットの管理に Key Vault を使用する必要はありません。
 
-## <a name="data-encipherment-certificate"></a>データ暗号化証明書
+## データ暗号化証明書
+<a id="data-encipherment-certificate" class="xliff"></a>
 データ暗号化証明書は、サービスの Settings.xml 内の構成値の暗号化と暗号化解除に厳密に使用されます。認証や暗号化テキストの署名には使用されません。 証明書は次の要件を満たす必要があります。
 
 * 証明書は秘密キーを含む必要があります。
@@ -56,10 +59,12 @@ ms.lasthandoff: 12/09/2016
   New-SelfSignedCertificate -Type DocumentEncryptionCert -KeyUsage DataEncipherment -Subject mydataenciphermentcert -Provider 'Microsoft Enhanced Cryptographic Provider v1.0'
   ```
 
-## <a name="install-the-certificate-in-your-cluster"></a>クラスターへの証明書のインストール
+## クラスターへの証明書のインストール
+<a id="install-the-certificate-in-your-cluster" class="xliff"></a>
 この証明書は、クラスターの各ノードにインストールする必要があります。 実行時に、この証明書を使用して、サービスの Settings.xml に保存された値の暗号化が解除されます。 セットアップ手順については、[Azure Resource Manager を使用してクラスターを作成する方法][service-fabric-cluster-creation-via-arm]に関する記事をご覧ください。 
 
-## <a name="encrypt-application-secrets"></a>アプリケーション シークレットの暗号化
+## アプリケーション シークレットの暗号化
+<a id="encrypt-application-secrets" class="xliff"></a>
 Service Fabric SDK には、シークレットの暗号化と暗号化解除の機能が組み込まれています。 シークレット値は作成時に暗号化し、その後、暗号化解除して、サービス コードでプログラムによって読み取ることができます。 
 
 次の PowerShell コマンドを使用して、シークレットを暗号化します。 このコマンドは値を暗号化するだけであり、暗号化テキストの署名は**行いません**。 クラスターにインストールされている同じ暗号化証明書を使用して、シークレット値の暗号化テキストを生成する必要があります。
@@ -68,7 +73,7 @@ Service Fabric SDK には、シークレットの暗号化と暗号化解除の�
 Invoke-ServiceFabricEncryptText -CertStore -CertThumbprint "<thumbprint>" -Text "mysecret" -StoreLocation CurrentUser -StoreName My
 ```
 
-生成された Base-64 文字列には、シークレットの暗号化テキストと、暗号化に使用された証明書に関する情報が含まれます。  Base&64; でエンコードされた文字列は、サービスの Settings.xml 構成ファイル内の、`IsEncrypted` 属性が `true` に設定されたパラメーターに挿入できます。
+生成された Base-64 文字列には、シークレットの暗号化テキストと、暗号化に使用された証明書に関する情報が含まれます。  Base 64 でエンコードされた文字列は、サービスの Settings.xml 構成ファイル内の、`IsEncrypted` 属性が `true` に設定されたパラメーターに挿入できます。
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -79,10 +84,12 @@ Invoke-ServiceFabricEncryptText -CertStore -CertThumbprint "<thumbprint>" -Text 
 </Settings>
 ```
 
-### <a name="inject-application-secrets-into-application-instances"></a>アプリケーション インスタンスへのアプリケーション シークレットの挿入
+### アプリケーション インスタンスへのアプリケーション シークレットの挿入
+<a id="inject-application-secrets-into-application-instances" class="xliff"></a>
 さまざまな環境へのデプロイは、できるだけ自動化するのが理想的です。 これは、ビルド環境でシークレットの暗号化を実行し、アプリケーション インスタンスの作成時に、暗号化されたシークレットをパラメーターとして指定することで実現できます。
 
-#### <a name="use-overridable-parameters-in-settingsxml"></a>Settings.xml でのオーバーライド可能なパラメーターの使用
+#### Settings.xml でのオーバーライド可能なパラメーターの使用
+<a id="use-overridable-parameters-in-settingsxml" class="xliff"></a>
 Settings.xml 構成ファイルでは、アプリケーションの作成時に指定できるオーバーライド可能なパラメーターを使用できます。 パラメーターの値を指定する代わりに、 `MustOverride` 属性を使用します。
 
 ```xml
@@ -141,7 +148,8 @@ ApplicationDescription applicationDescription = new ApplicationDescription(
 await fabricClient.ApplicationManager.CreateApplicationAsync(applicationDescription);
 ```
 
-## <a name="decrypt-secrets-from-service-code"></a>サービス コードからのシークレットの暗号化解除
+## サービス コードからのシークレットの暗号化解除
+<a id="decrypt-secrets-from-service-code" class="xliff"></a>
 Service Fabric のサービスは、既定で Windows のネットワーク サービスで実行されます。ノードにインストールされた証明書にアクセスするには、追加のセットアップが必要になります。
 
 データ暗号化証明書を使用する場合、ネットワーク サービスまたはこのサービスが実行されているユーザー アカウントに証明書の秘密キーへのアクセス権があることを確認する必要があります。 Service Fabric では、サービスのアクセス権の付与を自動的に処理します (Service Fabric をそのように構成している場合)。 この構成を行うには、ApplicationManifest.xml で証明書のユーザーとセキュリティ ポリシーを定義します。 次の例では、ネットワーク サービス アカウントに、拇印によって定義された証明書への読み取りアクセス権が付与されます。
@@ -169,7 +177,8 @@ Service Fabric のサービスは、既定で Windows のネットワーク サ�
 > 
 > 
 
-### <a name="use-application-secrets-in-service-code"></a>サービス コードでのアプリケーション シークレットの使用
+### サービス コードでのアプリケーション シークレットの使用
+<a id="use-application-secrets-in-service-code" class="xliff"></a>
 構成パッケージの Settings.xml の構成値にアクセスするための API を使用すると、`IsEncrypted` 属性が `true` に設定された値の暗号化を簡単に解除できます。 暗号化されたテキストには、暗号化に使用された証明書に関する情報が含まれているので、証明書を手動で見つける必要はありません。 必要なのは、サービスが実行されているノードに証明書をインストールすることだけです。 元のシークレット値を取得するには、 `DecryptValue()` メソッドを呼び出します。
 
 ```csharp
@@ -177,7 +186,8 @@ ConfigurationPackage configPackage = this.Context.CodePackageActivationContext.G
 SecureString mySecretValue = configPackage.Settings.Sections["MySettings"].Parameters["MySecret"].DecryptValue()
 ```
 
-## <a name="next-steps"></a>次のステップ
+## 次のステップ
+<a id="next-steps" class="xliff"></a>
 [さまざまなセキュリティ アクセス許可でアプリケーションを実行する方法](service-fabric-application-runas-security.md)
 
 <!-- Links -->

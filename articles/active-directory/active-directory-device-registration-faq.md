@@ -21,7 +21,8 @@ ms.lasthandoff: 04/27/2017
 
 
 ---
-# <a name="azure-active-directory-automatic-device-registration-faq"></a>Azure Active Directory へのデバイスの自動登録に関する FAQ
+<a id="azure-active-directory-automatic-device-registration-faq" class="xliff"></a>
+# Azure Active Directory へのデバイスの自動登録に関する FAQ
 
 **Q: 最近、デバイスを登録しました。Azure Portal のユーザー情報にデバイスが表示されないのはなぜですか?**
 

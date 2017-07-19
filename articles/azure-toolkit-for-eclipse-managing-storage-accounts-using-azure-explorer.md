@@ -14,82 +14,105 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 3c95ddde2909cd8dee055724ba01f22647627bd3
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 5b3014b5aca368be8ea46863c83665abde10fed5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/08/2017
 
 
 ---
 
-# <a name="managing-storage-accounts-using-the-azure-explorer-for-eclipse"></a>Azure Explorer for Eclipse を使用してストレージ アカウントを管理する
+<a id="manage-storage-accounts-by-using-the-azure-explorer-for-eclipse" class="xliff"></a>
 
-Azure Toolkit for Eclipse の一部である Azure Explorer は、Eclipse IDE 内から Azure アカウントのストレージ アカウントを管理するための使いやすいソリューションを Java 開発者に提供します。
+# Azure Explorer for Eclipse を使用してストレージ アカウントを管理する
+
+Azure Toolkit for Eclipse の一部である Azure Explorer は、Eclipse 統合開発環境 (IDE) 内から Azure アカウントのストレージ アカウントを管理するための使いやすいソリューションを Java 開発者に提供します。
 
 [!INCLUDE [azure-toolkit-for-eclipse-prerequisites](../includes/azure-toolkit-for-eclipse-prerequisites.md)]
 
 [!INCLUDE [azure-toolkit-for-eclipse-show-azure-explorer](../includes/azure-toolkit-for-eclipse-show-azure-explorer.md)]
 
-## <a name="creating-a-storage-account-in-eclipse"></a>Eclipse でストレージ アカウントを作成する
+<a id="create-a-storage-account-in-eclipse" class="xliff"></a>
 
-次の手順は、Azure Explorer を使用してストレージ アカウントを作成する方法を説明しています。
+## Eclipse でストレージ アカウントを作成する
 
-1. 「[Azure Toolkit for Eclipse のサインイン手順]」の記事の手順を使用して、Azure アカウントにサインインします。
+Azure Explorer を使用してストレージ アカウントを作成するには、以下の手順を実行します。
 
-1. **Azure Explorer** ビューで、**[Azure]** ノードを展開し、**[ストレージ アカウント]** を右クリックして **[ストレージ アカウントの作成]** をクリックします。
-   ![[ストレージ アカウントの作成] メニュー][CS01]
+1. 「[Azure Toolkit for Eclipse のサインイン手順]」を使用して Azure アカウントにサインインします。
 
-1. **[ストレージ アカウントの作成]** ダイアログ ボックスが表示されたら、以下のオプションを指定します。![[新しいストレージ アカウントの作成] ダイアログ ボックス][CS02]
+2. **Azure Explorer** ビューで、**[Azure]** ノードを展開し、**[ストレージ アカウント]** を右クリックし、**[ストレージ アカウントの作成]** をクリックします。
 
-   a. **[名前]**: 新しいストレージ アカウントの名前を指定します。
+   ![[ストレージ アカウントの作成] コマンド][CS01]
 
-   b. **[サブスクリプション]**: 新しいストレージ アカウントに使用する Azure サブスクリプションを指定します。
+3. **[ストレージ アカウントの作成]** ダイアログ ボックスで、次のオプションを指定します。
 
-   c. **[リソース グループ]**: 仮想マシンのリソース グループを指定します。以下のオプションのいずれかを選ぶ必要があります。
+   ![[新しいストレージ アカウントの作成] ダイアログ ボックス][CS02]
+
+   * **[名前]**: 新しいストレージ アカウントの名前を指定します。
+
+   * **[サブスクリプション]**: 新しいストレージ アカウントに使用する Azure サブスクリプションを指定します。
+
+   * **[リソース グループ]**: 仮想マシン用のリソース グループを指定します。 次のいずれかのオプションを選択します。
       * **[新規作成]**: 新しいリソース グループを作成することを指定します。
-      * **[Use Existing (既存の使用)]**: Azure アカウントに関連付けられているリソース グループの一覧から選ぶことを指定します。
+      * **[既存のものを使用]**: Azure アカウントに関連付けられているリソース グループの一覧から選択することを指定します。
 
-   d. **[地域]**: ストレージ アカウントを作成する場所 ("米国西部" など) を指定します。
+   * **[リージョン]**: ストレージ アカウントが作成される場所 ("米国西部" など) を指定します。
 
-   e. **[アカウントの種類]**: 作成するストレージ アカウントの種類 ("Blob storage" など) を指定します。 (詳しくは、「[Azure ストレージ アカウントについて]」をご覧ください。)
+   * **[アカウントの種類]**: 作成するストレージ アカウントの種類 ("Blob Storage" など) を指定します。 詳細については、「[Azure ストレージ アカウントについて]」を参照してください。
 
-   f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[パフォーマンス]**: 選択した発行元の、ストレージ アカウントで使用するプランを指定します ("Premium" など)。 (詳しくは、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット]」をご覧ください。)
+   * **[パフォーマンス]**: 選択された発行元からどのストレージ アカウント サービスを使用するかを指定します ("Premium" など)。 詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット]」を参照してください。
 
-   g. **[レプリケーション]**: ストレージ アカウントのレプリケーションを指定します ("ゾーン冗長" など)。 (詳しくは、「[Azure Storage のレプリケーション]」をご覧ください。)
+   * **[レプリケーション]**: ストレージ アカウントのレプリケーション ("ゾーン冗長" など) を指定します。 詳細については、「[Azure Storage のレプリケーション]」を参照してください。
 
-1. 上記のオプションをすべて指定したら、**[作成]** をクリックします。
+4. 上記のオプションをすべて指定したら、**[作成]** をクリックします。
 
-## <a name="creating-a-storage-container-in-eclipse"></a>Eclipse でストレージ コンテナーを作成する
+<a id="create-a-storage-container-in-eclipse" class="xliff"></a>
 
-次の手順は、Azure Explorer を使用してストレージ コンテナーを作成する方法を説明しています。
+## Eclipse でストレージ コンテナーを作成する
 
-1. Azure Explorer で、コンテナーを作成するストレージ アカウントを右クリックし、**[BLOB コンテナーの作成]** をクリックします。
-   ![ストレージ コンテナーの作成メニュー][CC01]
+Azure Explorer を使用してストレージ コンテナーを作成するには、以下の手順を実行します。
 
-1. **[BLOB コンテナーの作成]** ダイアログ ボックスが表示されたら、コンテナーの名前を指定し、**[OK]** をクリックします。 (ストレージ コンテナーの名前付けについて詳しくは、「[コンテナー、BLOB、およびメタデータの名前付けおよび参照]」をご覧ください。)![ストレージ コンテナーの作成ダイアログ ボックス][CC02]
+1. **Azure Explorer** ビューで、コンテナーを作成するストレージ アカウントを右クリックし、**[BLOB コンテナーを作成する]** をクリックします。
 
-## <a name="deleting-a-storage-container-in-eclipse"></a>Eclipse でストレージ コンテナーを削除する
+   ![[BLOB コンテナーを作成する] コマンド][CC01]
 
-Azure Explorer を使用してストレージ コンテナーを削除するには、次の手順を使用します。
+2. **[BLOB コンテナーを作成する]** ダイアログ ボックスで、コンテナーの名前を指定し、**[OK]** をクリックします。 ストレージ コンテナーの名前付けの詳細については、「[コンテナー、BLOB、メタデータの名前付けと参照]」を参照してください。
 
-1. Azure Explorer で、ストレージ コンテナーを右クリックし、**[削除]** をクリックします。
-   ![ストレージ コンテナーの削除メニュー][DC01]
+   ![[BLOB コンテナーを作成する] ダイアログ ボックス][CC02]
 
-1. ストレージ コンテナーの削除を求めるメッセージが表示されたら、**[OK]** をクリックします。
-   ![ストレージ コンテナーの削除ダイアログ ボックス][DC02]
+<a id="delete-a-storage-container-in-eclipse" class="xliff"></a>
 
-## <a name="deleting-a-storage-account-in-eclipse"></a>Eclipse でストレージ アカウントを削除する
+## Eclipse でストレージ コンテナーを削除する
 
-Azure Explorer を使用してストレージ アカウントを削除するには、次の手順を使用します。
+Azure Explorer を使用してストレージ コンテナーを削除するには、以下の手順を実行します。
 
-1. **Azure Explorer** ビューで、ストレージ アカウントを右クリックし、**[削除]** を選択します。
-   ![ストレージ アカウントの削除メニュー][DS01]
+1. **Azure Explorer** ビューで、ストレージ コンテナーを右クリックし、**[削除]** をクリックします。
 
-1. ストレージ アカウントの削除を求めるメッセージが表示されたら、**[OK]** をクリックします。
-   ![ストレージ アカウントの削除ダイアログ ボックス][DS02]
+   ![[ストレージ コンテナーの削除] コマンド][DC01]
 
-## <a name="see-also"></a>関連項目
-Azure ストレージ アカウント、サイズ、料金について詳しくは、次のリンクをご覧ください。
+2. 確認ウィンドウで、**[OK]** をクリックします。
+
+   ![[ストレージ コンテナーの削除] 確認ウィンドウ][DC02]
+
+<a id="delete-a-storage-account-in-eclipse" class="xliff"></a>
+
+## Eclipse でストレージ アカウントを削除する
+
+Azure Explorer を使用してストレージ アカウントを削除するには、以下の手順を実行します。
+
+1. **Azure Explorer** ビューで、ストレージ アカウントを右クリックし、**[削除]** をクリックします。
+
+   ![[Delete storage account] (ストレージ アカウントの削除) コマンド][DS01]
+
+2. 確認ウィンドウで、**[OK]** をクリックします。
+
+   ![[Delete storage account] (ストレージ アカウントの削除) 確認ウィンドウ][DS02]
+
+<a id="next-steps" class="xliff"></a>
+
+## 次のステップ
+Azure ストレージ アカウント、サイズ、および料金の詳細については、次のリソースを参照してください。
 
 * [Microsoft Azure Storage の概要]
 * [Azure ストレージ アカウントについて]
@@ -100,7 +123,7 @@ Azure ストレージ アカウント、サイズ、料金について詳しく�
   * [Windows ストレージ アカウントの料金]
   * [Linux ストレージ アカウントの料金]
 
-Azure Toolkits for Java IDE の詳細については、次のリンクをご覧ください。
+Azure Toolkit for Java IDE の詳細については、次のリソースを参照してください。
 
 * [Azure Toolkit for Eclipse]
   * [Azure Toolkit for Eclipse の新機能]
@@ -113,7 +136,7 @@ Azure Toolkits for Java IDE の詳細については、次のリンクをご覧�
   * [Azure Toolkit for IntelliJ のサインイン手順]
   * [IntelliJ で Azure 用の Hello World Web アプリを作成する]
 
-Java での Azure の使用の詳細については、 [Azure Java デベロッパー センター] と[Java Tools for Visual Studio Team Services] を参照してください。
+Java での Azure の使用の詳細については、[Azure Java デベロッパー センター]と [Java Tools for Visual Studio Team Services] を参照してください。
 
 <!-- URL List -->
 
@@ -135,7 +158,7 @@ Java での Azure の使用の詳細については、 [Azure Java デベロッ�
 [Azure ストレージ アカウントについて]: /azure/storage/storage-create-storage-account
 [Azure Storage のレプリケーション]: /azure/storage/storage-redundancy
 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット]: /azure/storage/storage-scalability-targets
-[コンテナー、BLOB、およびメタデータの名前付けおよび参照]: http://go.microsoft.com/fwlink/?LinkId=255555
+[コンテナー、BLOB、メタデータの名前付けと参照]: http://go.microsoft.com/fwlink/?LinkId=255555
 
 [Azure の Windows ストレージ アカウントのサイズ]: /azure/virtual-machines/virtual-machines-windows-sizes
 [Azure の Linux ストレージ アカウントのサイズ]: /azure/virtual-machines/virtual-machines-linux-sizes

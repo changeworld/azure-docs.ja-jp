@@ -13,35 +13,40 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/06/2017
+ms.date: 06/25/2017
 ms.author: xshi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 2b772afc946f1637cb8d61c198bc9cf18f42e1ba
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 61cb8eb0ad23a7d4b333bf54342b872a3a8ae1da
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
-# <a name="use-iot-gateway-to-connect-things-to-the-cloud---sensortag-to-azure-iot-hub"></a>IoT ゲートウェイを使用してモノをクラウドに接続する - SensorTag から Azure IoT Hub へ
+# IoT ゲートウェイを使用してモノをクラウドに接続する - SensorTag から Azure IoT Hub へ
+<a id="use-iot-gateway-to-connect-things-to-the-cloud---sensortag-to-azure-iot-hub" class="xliff"></a>
 
 > [!NOTE]
 > このチュートリアルを開始する前に、[IoT ゲートウェイとしての Intel NUC のセットアップ](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)を完了しておいてください。 [IoT ゲートウェイとしての Intel NUC のセットアップ](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)で、Intel NUC デバイスを IoT ゲートウェイとして設定します。
 
-## <a name="what-you-will-learn"></a>学習内容
+## 学習内容
+<a id="what-you-will-learn" class="xliff"></a>
 
 IoT ゲートウェイを使用して、Texas Instruments SensorTag (CC2650STK) を Azure IoT Hub に接続する方法を学習します。 IoT ゲートウェイは、SensorTag から収集された温度と湿度のデータを Azure IoT Hub に送信します。
 
-## <a name="what-you-will-do"></a>学習内容
+## 学習内容
+<a id="what-you-will-do" class="xliff"></a>
 
 - IoT Hub を作成します。
 - SensorTag のために IoT Hub 内でデバイスを登録します。
 - IoT ゲートウェイと SensorTag の間の接続を有効にします。
 - BLE サンプル アプリケーションを実行し、SensorTag データを IoT Hub に送信します。
 
-## <a name="what-you-need"></a>必要なもの
+## 必要なもの
+<a id="what-you-need" class="xliff"></a>
 
 - Intel NUC を IoT ゲートウェイとしてセットアップする [IoT ゲートウェイとしての Intel NUC のセットアップ](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md) が完了していること。
+- * 有効な Azure サブスクリプション Azure アカウントがない場合は、[無料試用版の Azure アカウント](https://azure.microsoft.com/free/)を数分で作成できます。
 - ホスト コンピューターで実行される SSH クライアント。 Windows では PuTTY をお勧めします。 Linux と macOS には既に SSH クライアントが付属しています。
 - IP アドレスと、SSH クライアントからゲートウェイにアクセスするためのユーザー名とパスワード。
 - インターネット接続。
@@ -51,14 +56,16 @@ IoT ゲートウェイを使用して、Texas Instruments SensorTag (CC2650STK) 
 > [!NOTE]
 > ここで、この新しいデバイスを SensorTag 用に登録します
 
-## <a name="enable-the-connection-between-the-iot-gateway-and-the-sensortag"></a>IoT ゲートウェイと SensorTag の間の接続を有効にします
+## IoT ゲートウェイと SensorTag の間の接続を有効にします
+<a id="enable-the-connection-between-the-iot-gateway-and-the-sensortag" class="xliff"></a>
 
 このセクションでは、次のタスクを実行します。
 
 - Bluetooth 接続のための SensorTag の MAC アドレスを取得する。
 - IoT ゲートウェイから SensorTag への Bluetooth 接続を開始する。
 
-### <a name="get-the-mac-address-of-the-sensortag-for-bluetooth-connection"></a>Bluetooth 接続のための SensorTag の MAC アドレスの取得
+### Bluetooth 接続のための SensorTag の MAC アドレスの取得
+<a id="get-the-mac-address-of-the-sensortag-for-bluetooth-connection" class="xliff"></a>
 
 1. ホスト コンピューターで SSH クライアントを実行して IoT ゲートウェイに接続します。
 1. 次のコマンドを実行して Bluetooth のブロックを解除します。
@@ -100,7 +107,8 @@ IoT ゲートウェイを使用して、Texas Instruments SensorTag (CC2650STK) 
 
    ![bluetoothctl を使用した近くの Bluetooth デバイスのスキャンを停止する](./media/iot-hub-iot-gateway-connect-device-to-cloud/10_stop-scanning-nearby-bluetooth-devices-at-bluetooth-shell-bluetoothctl.png)
 
-### <a name="initiate-a-bluetooth-connection-from-the-iot-gateway-to-the-sensortag"></a>IoT ゲートウェイから SensorTag への Bluetooth 接続の開始
+### IoT ゲートウェイから SensorTag への Bluetooth 接続の開始
+<a id="initiate-a-bluetooth-connection-from-the-iot-gateway-to-the-sensortag" class="xliff"></a>
 
 1. 次のコマンドを実行して SensorTag に接続します。
 
@@ -121,19 +129,21 @@ IoT ゲートウェイを使用して、Texas Instruments SensorTag (CC2650STK) 
 
 SensorTag と IoT ゲートウェイの間の接続が正常に有効になりました。
 
-## <a name="run-a-ble-sample-application-to-send-sensortag-data-to-your-iot-hub"></a>BLE サンプル アプリケーションを実行して SensorTag データを IoT Hub に送信する
+## BLE サンプル アプリケーションを実行して SensorTag データを IoT Hub に送信する
+<a id="run-a-ble-sample-application-to-send-sensortag-data-to-your-iot-hub" class="xliff"></a>
 
 Bluetooth Low Energy (BLE) サンプル アプリケーションは、Azure IoT Edge によって提供されます。 サンプル アプリケーションでは、BLE 接続からデータを収集し、IoT hub にデータを送信します。 サンプル アプリケーションを実行するには、次のことを行う必要があります。
 
 1. サンプル アプリケーションを構成する。
 1. IoT ゲートウェイでサンプル アプリケーションを実行する。
 
-### <a name="configure-the-sample-application"></a>サンプル アプリケーションの構成
+### サンプル アプリケーションの構成
+<a id="configure-the-sample-application" class="xliff"></a>
 
 1. 次のコマンドを実行して、サンプル アプリケーションのフォルダーに移動します。
 
    ```bash
-   cd /user/share/azureiotgatewaysdk/samples
+   cd /usr/share/azureiotgatewaysdk/samples/ble_gateway
    ```
 
 1. 次のコマンドを実行して、構成ファイルを開きます。
@@ -160,7 +170,8 @@ Bluetooth Low Energy (BLE) サンプル アプリケーションは、Azure IoT 
 
 1. `ESC` キーを押し、`:wq` と入力してファイルを保存します。
 
-### <a name="run-the-sample-application"></a>サンプル アプリケーションの実行
+### サンプル アプリケーションの実行
+<a id="run-the-sample-application" class="xliff"></a>
 
 1. SensorTag がパワーオンになっていることを確認します。
 1. 次のコマンドを実行します。
@@ -169,7 +180,8 @@ Bluetooth Low Energy (BLE) サンプル アプリケーションは、Azure IoT 
    ./ble_gateway ble_gateway.json
    ```
 
-## <a name="next-steps"></a>次のステップ
+## 次のステップ
+<a id="next-steps" class="xliff"></a>
 
 [Azure IoT Edge でセンサー データを変換するための IoT ゲートウェイを使用する](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
 

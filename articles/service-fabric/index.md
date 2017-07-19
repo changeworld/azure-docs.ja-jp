@@ -19,7 +19,9 @@ ms.contentlocale: ja-jp
 ms.lasthandoff: 06/23/2017
 
 ---
-#<a name="service-fabric-documentation"></a>Service Fabric のドキュメント
+<a id="service-fabric-documentation" class="xliff"></a>
+
+#Service Fabric のドキュメント
 
 Service Fabric を使用して、拡張性と信頼性の高いマイクロサービスをパッケージ化、デプロイ、管理する方法について説明します。 チュートリアル、API リファレンス、コード サンプルでは、このミドルウェア プラットフォームを使用してクラウド規模のアプリケーションを構築および管理する方法を紹介します。
 

@@ -1,4 +1,5 @@
 ---
+
 title: "Azure Active Directory のパスワードのリセット | Microsoft Docs"
 description: "Azure Active Directory でユーザーのパスワードをリセットする方法を説明します"
 services: active-directory
@@ -12,24 +13,30 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 06/27/2017
 ms.author: curtand
+ms.reviewer: jeffsta
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 15cb521e928bab6c7966d19e74d9ae3bca99ef34
-ms.openlocfilehash: a5e48f43751e90f41ffd61049a17af3ff48d132e
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: b460232b4d47e6a70fb31f6c3917f359b49df338
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="reset-the-password-for-a-user-in-azure-active-directory---public-preview"></a>Azure Active Directory のユーザー パスワードのリセット | Microsoft Docs
+<a id="reset-the-password-for-a-user-in-azure-active-directory" class="xliff"></a>
+
+# Azure Active Directory でのユーザー パスワードのリセット
 > [!div class="op_single_selector"]
 > * [Azure ポータル](active-directory-users-reset-password-azure-portal.md)
 > * [Azure クラシック ポータル](active-directory-create-users-reset-password.md)
 >
 >
 
-## <a name="how-to-reset-the-password-for-a-user"></a>ユーザーのパスワードをリセットする方法
+<a id="how-to-reset-the-password-for-a-user" class="xliff"></a>
+
+## ユーザーのパスワードをリセットする方法
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
 
@@ -43,7 +50,9 @@ ms.lasthandoff: 03/01/2017
     ![[パスワードのリセット] コマンドの選択](./media/active-directory-users-reset-password-azure-portal/create-users-reset-password-command.png)
 6. **[パスワードのリセット]** ブレードで、**[パスワードのリセット]** を選択します。
 
-## <a name="next-steps"></a>次のステップ
+<a id="next-steps" class="xliff"></a>
+
+## 次のステップ
 * [ユーザーの追加](active-directory-users-create-azure-portal.md)
 * [Azure AD でのロールへのユーザーの割り当て](active-directory-users-assign-role-azure-portal.md)
 * [ユーザーの勤務先情報の変更](active-directory-users-work-info-azure-portal.md)
