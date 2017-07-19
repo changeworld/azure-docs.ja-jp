@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
-ms.author: padmavc
+ms.author: LADocs; padmavc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 197df490690754730425231f358fde31d17dcfad
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 97864ade77fc694bd1eababe22e6eeb4b9d6e11e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -69,71 +69,73 @@ Logic Apps 統合アカウントのビジネス継続性は、X12、AS2、EDIFAC
 
 ## <a name="x12"></a>X12 
 EDI X12 ドキュメントのビジネス継続性は、制御番号に基づいています。
-* パートナーから受信した制御番号 (受信メッセージ)  
-* 生成されてパートナーに送信された制御番号 (送信メッセージ) 
-    
-    > [!Tip]
+
+> [!Tip]
     > [X12 クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/201-logic-app-x12-disaster-recovery-replication/)を使用してロジック アプリを作成することもできます。 プライマリ統合アカウントとセカンダリ統合アカウントの作成は、テンプレートを使用するための前提条件です。 テンプレートは 2 つのロジック アプリを作成するのに役立ちます。1 つは受信した制御番号用、もう 1 つは生成された制御番号用です。 ロジック アプリでそれぞれのトリガーとアクションが作成されます。トリガーはプライマリ統合アカウントに、アクションはセカンダリ統合アカウントに接続します。
-    > 
+    >
     >
 
-### <a name="control-numbers-received-from-partners"></a>パートナーから受信した制御番号
+前提条件: X12 の契約受信設定で重複チェック設定を選択し、受信メッセージの障害復旧を有効にする![X12 検索](./media/logic-apps-enterprise-integration-b2b-business-continuity/dupcheck.png)  
 
-1. 契約受信設定の重複チェックを有効にします。   
-![X12 を検索](./media/logic-apps-enterprise-integration-b2b-business-continuity/dupcheck.png)  
+1. セカンダリ リージョンに[ロジック アプリ](../logic-apps/logic-apps-create-a-logic-app.md)を作成します。    
 
-2. セカンダリ リージョンに[ロジック アプリ](../logic-apps/logic-apps-create-a-logic-app.md)を作成します。 
-
-3. **X12** を検索し、**[X12 - 受信した制御番号が変更されたとき]** を選択します。   
-![X12 を検索](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12recevicedCN1.png)
-
-4. トリガーを選択すると、統合アカウントへの接続を確立するように求められます。 トリガーは、プライマリ リージョンの統合アカウントに接続される必要があります。 接続名を入力し、リストから**プライマリ リージョンの統合アカウント**を選択して、**[作成]** をクリックします。  
-![プライマリ リージョンの統合アカウント名](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12recevicedCN2.png)
-
-5. **制御番号の同期を開始する DateTime** 設定は省略できます。 **頻度**は、**[日]**、**[時間]**、**[分]**、または **[秒]** の間隔に設定できます。  
-![DateTime と頻度](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12recevicedCN3.png)
-
-6. **[新しいステップ]** > **[アクションの追加]** の順に選択します。    
-![[アクションの追加]](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12recevicedCN4.png)
-
-7. **X12** を検索し、**[X12 - 受信した制御番号を追加または更新します]** を選択します。   
-![受信した制御番号の変更](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12recevicedCN5.png)
-
-8. アクションをセカンダリ リージョン統合アカウントに接続するには、**[接続の変更]** > **[新しい接続の追加]** の順に選択し、使用可能な統合アカウントのリストを表示します。 接続名を入力し、リストから**セカンダリ リージョンの統合アカウント**を選択して、**[作成]** をクリックします。   
-![セカンダリ リージョンの統合アカウント名](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12recevicedCN6.png)
-
-9. 動的コンテンツを選択して、ロジック アプリを保存します。 
-![動的コンテンツ](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12recevicedCN7.png)
-
-10. 時間間隔に基づいて、トリガーはプライマリ リージョンで受信した制御番号テーブルのポーリングを実行し、新しいレコードを取得します。 アクションはセカンダリ リージョンの統合アカウントのレコードを更新します。 更新がない場合、トリガーの状態は **[スキップ済み]** と表示されます。
-![制御番号テーブル](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12recevicedCN8.png)
-
-### <a name="control-numbers-generated-and-sent-to-partners"></a>生成されてパートナーに送信された制御番号
-1. セカンダリ リージョンに[ロジック アプリ](../logic-apps/logic-apps-create-a-logic-app.md)を作成します。
-
-2. **X12** を検索し、**[X12 - 生成された制御番号が変更されたとき]** を選択します。  
-![生成された制御番号の変更](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12generatedCN1.png)
+2. **X12** で検索し、**[X12 - 制御番号が変更されたとき]** を選択します。   
+![X12 検索](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn1.png)
 
 3. トリガーを選択すると、統合アカウントへの接続を確立するように求められます。 トリガーは、プライマリ リージョンの統合アカウントに接続される必要があります。 接続名を入力し、リストから**プライマリ リージョンの統合アカウント**を選択して、**[作成]** をクリックします。   
-![プライマリ リージョンの統合アカウント名](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12generatedCN2.png) 
+![プライマリ リージョンの統合アカウント名](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn2.png)
 
-4. **制御番号の同期を開始する DateTime** 設定は省略できます。 **頻度**は、**[日]**、**[時間]**、**[分]**、または **[秒]** の間隔に設定できます。  
-![DateTime と頻度](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12generatedCN3.png)  
+4. **制御番号の同期を開始する DateTime** 設定は省略できます。 **頻度**は、**[日]**、**[時間]**、**[分]**、または **[秒]** の間隔に設定できます。   
+![DateTime と頻度](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
 
-5. **[新しいステップ]** > **[アクションの追加]** の順に選択します。  
-![[アクションの追加]](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12generatedCN4.png)
+5. **[新しいステップ]** > **[アクションの追加]** の順に選択します。    
+![[アクションの追加]](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
 
-6. **X12** を検索し、**[X12 - 生成された制御番号を追加または更新します]** を選択します。   
-![生成された制御番号の追加または変更](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12generatedCN5.png)
+6. **X12** で検索し、**[X12 - 制御番号を追加または更新します]** を選択します。   
+![受信した制御番号の変更](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn5.png)
 
 7. アクションをセカンダリ リージョン統合アカウントに接続するには、**[接続の変更]** > **[新しい接続の追加]** の順に選択し、使用可能な統合アカウントのリストを表示します。 接続名を入力し、リストから**セカンダリ リージョンの統合アカウント**を選択して、**[作成]** をクリックします。   
-![セカンダリ リージョンの統合アカウント名](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12generatedCN6.png)
+![セカンダリ リージョンの統合アカウント名](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
-8. 動的コンテンツを選択して、ロジック アプリを保存します。 
-![動的コンテンツ](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12generatedCN7.png)
+8. 動的コンテンツを選択して、ロジック アプリを保存します。   
+![動的コンテンツ](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn7.png)
 
-9. 時間間隔に基づいて、トリガーはプライマリ リージョンで受信した制御番号テーブルのポーリングを実行し、新しいレコードを取得します。 アクションはセカンダリ リージョンの統合アカウントのレコードを更新します。 更新がない場合、トリガーの状態は **[スキップ済み]** と表示されます。  
-![制御番号テーブル](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12generatedCN8.png)
+9. 時間間隔に基づいて、トリガーはプライマリ リージョンで受信した制御番号テーブルのポーリングを実行し、新しいレコードを取得します。 アクションはセカンダリ リージョンの統合アカウントのレコードを更新します。 更新がない場合、トリガーの状態は **[スキップ済み]** と表示されます。   
+![制御番号テーブル](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12recevicedcn8.png)
+
+時間間隔に基づいて、増分ランタイム状態がプライマリ リージョンからセカンダリ リージョンにレプリケートされます。 障害イベント時に、プライマリ リージョンが使用できない場合は、セカンダリ リージョンにトラフィックをダイレクトしてビジネス継続性を確保します。 
+
+## <a name="edifact"></a>EDIFACT 
+EDI EDIFACT ドキュメントのビジネス継続性は、制御番号に基づいています。
+
+前提条件: EDIFACT の契約受信設定で重複チェック設定を選択し、受信メッセージの障害復旧を有効にする     
+![EDIFACT 検索](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactdupcheck.png)  
+
+1. セカンダリ リージョンに[ロジック アプリ](../logic-apps/logic-apps-create-a-logic-app.md)を作成します。    
+
+2. **EDIFACT** で検索し、**[EDIFACT - 制御番号が変更されたとき]** を選択します。     
+![EDIFACT 検索](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactcn1.png)
+
+4. トリガーを選択すると、統合アカウントへの接続を確立するように求められます。 トリガーは、プライマリ リージョンの統合アカウントに接続される必要があります。 接続名を入力し、リストから**プライマリ リージョンの統合アカウント**を選択して、**[作成]** をクリックします。    
+![プライマリ リージョンの統合アカウント名](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12CN2.png)
+
+5. **制御番号の同期を開始する DateTime** 設定は省略できます。 **頻度**は、**[日]**、**[時間]**、**[分]**、または **[秒]** の間隔に設定できます。    
+![DateTime と頻度](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
+
+6. **[新しいステップ]** > **[アクションの追加]** の順に選択します。    
+![[アクションの追加]](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
+
+7. **EDIFACT** で検索し、**[EDIFACT - 制御番号を追加または更新します]** を選択します。   
+![受信した制御番号の変更](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn5.png)
+
+8. アクションをセカンダリ リージョン統合アカウントに接続するには、**[接続の変更]** > **[新しい接続の追加]** の順に選択し、使用可能な統合アカウントのリストを表示します。 接続名を入力し、リストから**セカンダリ リージョンの統合アカウント**を選択して、**[作成]** をクリックします。   
+![セカンダリ リージョンの統合アカウント名](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
+
+9. 動的コンテンツを選択して、ロジック アプリを保存します。   
+![動的コンテンツ](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactcn5.png)
+
+10. 時間間隔に基づいて、トリガーはプライマリ リージョンで受信した制御番号テーブルのポーリングを実行し、新しいレコードを取得します。 アクションはセカンダリ リージョンの統合アカウントのレコードを更新します。 更新がない場合、トリガーの状態は **[スキップ済み]** と表示されます。   
+![制御番号テーブル](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12recevicedcn8.png)
 
 時間間隔に基づいて、増分ランタイム状態がプライマリ リージョンからセカンダリ リージョンにレプリケートされます。 障害イベント時に、プライマリ リージョンが使用できない場合は、セカンダリ リージョンにトラフィックをダイレクトしてビジネス継続性を確保します。 
 
@@ -148,30 +150,31 @@ AS2 プロトコルを使用するドキュメントのビジネス継続性は�
 1. セカンダリ リージョンで[ロジック アプリ](../logic-apps/logic-apps-create-a-logic-app.md)を作成します。  
 
 2. **AS2** を検索し、**[AS2 - When a MIC value is created] (AS2 - MIC 値を作成する場合)** を選択します。   
-![AS2 を検索](./media/logic-apps-enterprise-integration-b2b-business-continuity/AS2messageid1.png)
+![AS2 検索](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid1.png)
 
 3. トリガーを選択すると、統合アカウントへの接続を確立するように求められます。 トリガーは、プライマリ リージョンの統合アカウントに接続される必要があります。 接続名を入力し、リストから**プライマリ リージョンの統合アカウント**を選択して、**[作成]** をクリックします。   
-![プライマリ リージョンの統合アカウント名](./media/logic-apps-enterprise-integration-b2b-business-continuity/AS2messageid2.png)
+![プライマリ リージョンの統合アカウント名](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid2.png)
 
 4. **MIC 値の同期を開始する DateTime** 設定は省略できます。 **頻度**は、**[日]**、**[時間]**、**[分]**、または **[秒]** の間隔に設定できます。   
-![DateTime と頻度](./media/logic-apps-enterprise-integration-b2b-business-continuity/AS2messageid3.png)
+![DateTime と頻度](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid3.png)
 
 5. **[新しいステップ]** > **[アクションの追加]** の順に選択します。  
-![[アクションの追加]](./media/logic-apps-enterprise-integration-b2b-business-continuity/AS2messageid4.png)
+![[アクションの追加]](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid4.png)
 
 6. **AS2** を検索し、**[AS2 - Add or update a MIC] (AS2 - MIC を追加または更新する)** を選択します。  
-![MIC の追加または変更](./media/logic-apps-enterprise-integration-b2b-business-continuity/AS2messageid5.png)
+![MIC の追加または変更](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid5.png)
 
 7. アクションをセカンダリ リージョン統合アカウントに接続するには、**[接続の変更]** > **[新しい接続の追加]** の順に選択し、使用可能な統合アカウントのリストを表示します。 接続名を入力し、リストから**セカンダリ リージョンの統合アカウント**を選択して、**[作成]** をクリックします。    
-![セカンダリ リージョンの統合アカウント名](./media/logic-apps-enterprise-integration-b2b-business-continuity/AS2messageid6.png)
+![セカンダリ リージョンの統合アカウント名](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid6.png)
 
 8. 動的コンテンツを選択して、ロジック アプリを保存します。   
-![動的コンテンツ](./media/logic-apps-enterprise-integration-b2b-business-continuity/AS2messageid7.png)
+![動的コンテンツ](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid7.png)
 
 9. 時間間隔に基づいて、トリガーはプライマリ リージョン テーブルのポーリングを実行し、新しいレコードを取得します。 アクションはセカンダリ リージョンの統合アカウントのレコードを更新します。 更新がない場合、トリガーの状態は **[スキップ済み]** と表示されます。  
-![プライマリ リージョン テーブル](./media/logic-apps-enterprise-integration-b2b-business-continuity/AS2messageid8.png)
+![プライマリ リージョン テーブル](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid8.png)
 
 時間間隔に基づいて、増分ランタイム状態がプライマリ リージョンからセカンダリ リージョンにレプリケートされます。 障害イベント時に、プライマリ リージョンが使用できない場合は、セカンダリ リージョンにトラフィックをダイレクトしてビジネス継続性を確保します。 
+
 
 ## <a name="next-steps"></a>次のステップ
 [B2B メッセージの監視方法](logic-apps-monitor-b2b-message.md)についての詳細情報。   

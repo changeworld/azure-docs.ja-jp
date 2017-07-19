@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/26/2017
+ms.date: 06/13/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 7f19efa7e09b0dce43851019f94285b2887c46d5
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: 7af374232fd45da8769001cd520fa7d1734cbc4e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 06/15/2017
 
 
 ---
@@ -46,7 +46,30 @@ Resource Manager には、テンプレートで比較を行うための関数が
 | arg1 |はい |整数、文字列、配列、オブジェクト |等しいかどうかを確認する 1 番目の値。 |
 | arg2 |はい |整数、文字列、配列、オブジェクト |等しいかどうかを確認する 2 番目の値。 |
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+
+値が等しい場合は **True** を、それ以外の場合は **False** を返します。
+
+### <a name="remarks"></a>解説
+
+equals 関数は、リソースがデプロイされているかどうかをテストするために、多くの場合 `condition` 要素と共に使用されます。
+
+```json
+{
+    "condition": "[equals(parameters('newOrExisting'),'new')]",
+    "type": "Microsoft.Storage/storageAccounts",
+    "name": "[variables('storageAccountName')]",
+    "apiVersion": "2017-06-01",
+    "location": "[resourceGroup().location]",
+    "sku": {
+        "name": "[variables('storageAccountType')]"
+    },
+    "kind": "Storage",
+    "properties": {}
+}
+```
+
+### <a name="example"></a>例
 
 この例のテンプレートでは、さまざまな型の値が等しいかどうかを確認します。 すべての既定値は True を返します。
 
@@ -111,9 +134,14 @@ Resource Manager には、テンプレートで比較を行うための関数が
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-値が等しい場合は **True** を、それ以外の場合は **False** を返します。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| checkInts | ブール値 | True |
+| checkStrings | ブール値 | True |
+| checkArrays | ブール値 | True |
+| checkObjects | ブール値 | True |
 
 <a id="less" />
 
@@ -129,7 +157,11 @@ Resource Manager には、テンプレートで比較を行うための関数が
 | arg1 |はい |整数または文字列 |小さいかどうかを比較する 1 番目の値。 |
 | arg2 |はい |整数または文字列 |小さいかどうかを比較する 2 番目の値。 |
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+
+1 番目の値が 2 番目の値よりも小さい場合は **True** を、それ以外の場合は **False** を返します。
+
+### <a name="example"></a>例
 
 この例のテンプレートでは、一方の値がもう一方の値よりも小さいかどうかを確認します。
 
@@ -139,16 +171,20 @@ Resource Manager には、テンプレートで比較を行うための関数が
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
-            "type": "int"
+            "type": "int",
+            "defaultValue": 1
         },
         "secondInt": {
-            "type": "int"
+            "type": "int",
+            "defaultValue": 2
         },
         "firstString": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "A"
         },
         "secondString": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "a"
         }
     },
     "resources": [
@@ -166,9 +202,12 @@ Resource Manager には、テンプレートで比較を行うための関数が
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-1 番目の値が 2 番目の値よりも小さい場合は **True** を、それ以外の場合は **False** を返します。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| checkInts | ブール値 | True |
+| checkStrings | ブール値 | False |
 
 <a id="lessorequals" />
 
@@ -184,7 +223,11 @@ Resource Manager には、テンプレートで比較を行うための関数が
 | arg1 |はい |整数または文字列 |以下かどうかを比較する 1 番目の値。 |
 | arg2 |はい |整数または文字列 |以下かどうかを比較する 2 番目の値。 |
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+
+1 番目の値が 2 番目の値以下の場合は **True** を、それ以外の場合は **False** を返します。
+
+### <a name="example"></a>例
 
 この例のテンプレートでは、一方の値がもう一方の値以下かどうかを確認します。
 
@@ -194,16 +237,20 @@ Resource Manager には、テンプレートで比較を行うための関数が
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
-            "type": "int"
+            "type": "int",
+            "defaultValue": 1
         },
         "secondInt": {
-            "type": "int"
+            "type": "int",
+            "defaultValue": 2
         },
         "firstString": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "A"
         },
         "secondString": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "a"
         }
     },
     "resources": [
@@ -221,9 +268,12 @@ Resource Manager には、テンプレートで比較を行うための関数が
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-1 番目の値が 2 番目の値以下の場合は **True** を、それ以外の場合は **False** を返します。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| checkInts | ブール値 | True |
+| checkStrings | ブール値 | False |
 
 <a id="greater" />
 
@@ -234,12 +284,16 @@ Resource Manager には、テンプレートで比較を行うための関数が
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |あり |整数または文字列 |大きいかどうかを比較する 1 番目の値。 |
+| arg1 |はい |整数または文字列 |大きいかどうかを比較する 1 番目の値。 |
 | arg2 |はい |整数または文字列 |大きいかどうかを比較する 2 番目の値。 |
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+
+1 番目の値が 2 番目の値よりも大きい場合は **True** を、それ以外の場合は **False** を返します。
+
+### <a name="example"></a>例
 
 この例のテンプレートでは、一方の値がもう一方の値よりも大きいかどうかを確認します。
 
@@ -249,16 +303,20 @@ Resource Manager には、テンプレートで比較を行うための関数が
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
-            "type": "int"
+            "type": "int",
+            "defaultValue": 1
         },
         "secondInt": {
-            "type": "int"
+            "type": "int",
+            "defaultValue": 2
         },
         "firstString": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "A"
         },
         "secondString": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "a"
         }
     },
     "resources": [
@@ -276,9 +334,12 @@ Resource Manager には、テンプレートで比較を行うための関数が
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-1 番目の値が 2 番目の値よりも大きい場合は **True** を、それ以外の場合は **False** を返します。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| checkInts | ブール値 | False |
+| checkStrings | ブール値 | True |
 
 <a id="greaterorequals" />
 
@@ -289,12 +350,16 @@ Resource Manager には、テンプレートで比較を行うための関数が
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数または文字列 |以上かどうかを比較する 1 番目の値。 |
 | arg2 |はい |整数または文字列 |以上かどうかを比較する 2 番目の値。 |
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+
+1 番目の値が 2 番目の値以上の場合は **True** を、それ以外の場合は **False** を返します。
+
+### <a name="example"></a>例
 
 この例のテンプレートでは、一方の値がもう一方の値以上かどうかを確認します。
 
@@ -304,16 +369,20 @@ Resource Manager には、テンプレートで比較を行うための関数が
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
-            "type": "int"
+            "type": "int",
+            "defaultValue": 1
         },
         "secondInt": {
-            "type": "int"
+            "type": "int",
+            "defaultValue": 2
         },
         "firstString": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "A"
         },
         "secondString": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "a"
         }
     },
     "resources": [
@@ -331,9 +400,13 @@ Resource Manager には、テンプレートで比較を行うための関数が
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-1 番目の値が 2 番目の値以上の場合は **True** を、それ以外の場合は **False** を返します。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| checkInts | ブール値 | False |
+| checkStrings | ブール値 | True |
+
 
 ## <a name="next-steps"></a>次のステップ
 * Azure Resource Manager テンプレートのセクションの説明については、[Azure Resource Manager テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。

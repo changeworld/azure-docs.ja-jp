@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/27/2017
 ms.author: sethm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
-ms.openlocfilehash: 4e145740f8485e4a02c70f2c9d3a9fa6057da635
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: ef14dbaecf5675fa92c91cb5df58b65f59764fa7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -64,9 +64,9 @@ var azure = require('azure');
 ### <a name="set-up-a-service-bus-connection"></a>Service Bus 接続の設定
 Azure モジュールは、Service Bus に接続するために必要な情報を得るために、環境変数 AZURE\_SERVICEBUS\_NAMESPACE と AZURE\_SERVICEBUS\_ACCESS\_KEY を読み取ります。 これらの環境変数が設定されていない場合、**createServiceBusService** を呼び出すときにアカウント情報を指定する必要があります。
 
-Azure Cloud Service の構成ファイルで環境変数を設定する例については、[Storage を使用する Node.js Cloud Service に関するトピック][Node.js Cloud Service with Storage]をご覧ください。
+Azure Cloud Service の環境変数を設定する例については、[Storage を使用する Node.js Cloud Service][Node.js Cloud Service with Storage] に関する記事をご覧ください。
 
-Azure Web サイトの Azure クラシック ポータル[Azure classic portal]で環境変数を設定する例については、「[ストレージを使用する Node.js Web アプリケーション][Node.js Web Application with Storage]」をご覧ください。
+Azure Web サイトの環境変数を設定する例については、[ストレージを使用する Node.js Web アプリケーション][Node.js Web Application with Storage]に関する記事をご覧ください。
 
 ## <a name="create-a-topic"></a>トピックを作成する
 **ServiceBusService** オブジェクトを使用すると、トピックを操作できます。 次のコードでは、**ServiceBusService** オブジェクトを作成します。 **server.js** ファイルの先頭付近の、azure モジュールをインポートするステートメントの後に、このコードを追加します。

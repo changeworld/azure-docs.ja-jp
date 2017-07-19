@@ -12,12 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 05/25/2017
 ms.author: marsma
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: e99294069f92f51d212b38b1c5ee12232c6dc77d
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: f3336d4b0036e1dc181de1f1296da521f68b9464
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.lasthandoff: 04/27/2017
 Azure ストレージ アカウントの BLOB データにアクセスするためのカスタム ドメインを構成できます。 BLOB ストレージの既定のエンドポイントは `<storage-account-name>.blob.core.windows.net`です。 **www.contoso.com** などのカスタム ドメインおよびサブドメインをストレージ アカウントの BLOB エンドポイントにマッピングしている場合、ユーザーはそのドメインを使って、ストレージ アカウントの BLOB データにアクセスできます。
 
 > [!IMPORTANT]
-> Azure Storage では、カスタム ドメインでの HTTPS はまだサポートしていません。 共有できる具体的な予定はまだありませんが、この機能に関するお客様の関心は認識しています。
+> Azure Storage では、カスタム ドメインでの HTTPS はまだネイティブでサポートされていません。 現在、[カスタム ドメインを用いた BLOB にAzure CDN から HTTPS 経由でアクセスする](./storage-https-custom-domain-cdn.md)ことができます。
 >
 
 次の表は、 **mystorageaccount** というストレージ アカウントにある BLOB データのサンプル URL を示します。 ストレージ アカウントに登録されているカスタム ドメインは **www.contoso.com**です。
@@ -70,7 +71,7 @@ Azure ストレージ アカウントの BLOB データにアクセスするた�
 1. CNAME 管理セクションを見つけます。 詳細設定ページに進み、"**CNAME**"、"**エイリアス**"、"**サブドメイン**" などの語句を探します。
 1. 新しい CNAME レコードを作成し、"**www**" や "**photos**" などのサブドメイン エイリアスを指定します。 次に、**mystorageaccount.blob.core.windows.net** (*mystorageaccount* はストレージ アカウントの名前です) という形式でホスト名を指定します。これは BLOB サービス エンドポイントです。 使用するホスト名が、[Azure Portal](https://portal.azure.com) の "*Custom domain*" ブレードの項目 1 に表示されます。
 1. [Azure Portal](https://portal.azure.com) の "*Custom domain*" ブレードのテキスト ボックスに、サブドメインを含むカスタム ドメインの名前を入力します。 たとえば、ドメインが **contoso.com** でサブドメイン エイリアスが **www** の場合、「**www.contoso.com**」と入力します。 サブドメインが **photos** の場合、「**photos.contoso.com**」と入力します。 サブドメインは*必須*です。
-1. "*Custom domain*" ブレードの "**Save**" を選択して、カスタム ドメインを登録します。 正常に登録された場合は、ストレージ アカウントが正常に更新されたことを示すメッセージが表示されます。
+1. "*Custom domain*" ブレードの "**Save**" を選択して、カスタム ドメインを登録します。 正常に登録された場合は、ストレージ アカウントが正常に更新されたことを示すポータルの通知が表示されます。
 
 DNS を介して新しい CNAME レコードが反映されると、ユーザーは、適切なアクセス許可がある限り、カスタム ドメインを使用して BLOB データを表示できます。
 
@@ -86,7 +87,7 @@ DNS を介して新しい CNAME レコードが反映されると、ユーザー
 1. 新しい CNAME レコードを作成し、*asverify* サブドメインを含むサブドメイン エイリアスを指定します。 たとえば、**asverify.www** または **asverify.photos** と指定します。 そして、**asverify.mystorageaccount.blob.core.windows.net** (**mystorageaccount** はストレージ アカウントの名前です) という形式でホスト名を指定します。これは BLOB サービス エンドポイントです。 使用するホスト名が、[Azure Portal](https://portal.azure.com) の "*Custom domain*" ブレードの項目 2 に表示されます。
 1. [Azure Portal](https://portal.azure.com) の "*Custom domain*" ブレードのテキスト ボックスに、サブドメインを含むカスタム ドメインの名前を入力します。 *asverify* は含めないでください。 たとえば、ドメインが **contoso.com** でサブドメイン エイリアスが **www** の場合、「**www.contoso.com**」と入力します。 サブドメインが **photos** の場合、「**photos.contoso.com**」と入力します。 サブドメインは必須です。
 1. **Use indirect CNAME validation** チェックボックスをオンにします。
-1. "*Custom domain*" ブレードの "**Save**" を選択して、カスタム ドメインを登録します。 正常に登録された場合は、ストレージ アカウントが正常に更新されたことを示すメッセージが表示されます。 この時点で、カスタム ドメインは Azure によって確認されていますが、ドメインへのトラフィックは、まだストレージ アカウントへはルーティングされません。
+1. "*Custom domain*" ブレードの "**Save**" を選択して、カスタム ドメインを登録します。 正常に登録された場合は、ストレージ アカウントが正常に更新されたことを示すポータルの通知が表示されます。 この時点で、カスタム ドメインは Azure によって確認されていますが、ドメインへのトラフィックは、まだストレージ アカウントへはルーティングされません。
 1. DNS プロバイダーの Web サイトに戻り、サブドメインを BLOB サービス エンドポイントにマッピングする別の CNAME レコードを作成します。 たとえば、**www** または **photos** というサブドメインと (*asverify* は含めません)、**mystorageaccount.blob.core.windows.net** (**mystorageaccount** はストレージ アカウントの名前です) というホスト名を指定します。 この手順で、カスタム ドメインの登録が完了します。
 1. 最後に、**asverify** サブドメインを含めて作成した CNAME レコードを削除します。このレコードは、中間の手順としてだけ必要であったためです。
 
@@ -105,6 +106,17 @@ DNS を介して新しい CNAME レコードが反映されると、ユーザー
 ## <a name="deregister-a-custom-domain"></a>カスタム ドメインの登録解除
 
 BLOB ストレージ エンドポイントのカスタム ドメインを登録解除するには、次のいずれかの手順に従います。
+
+### <a name="azure-portal"></a>Azure ポータル
+
+Azure Portal で次の手順を実行して、カスタム ドメイン設定を削除します。
+
+1. [Azure Portal](https://portal.azure.com) のストレージ アカウントに移動します。
+1. メニュー ブレードの "**BLOB SERVICE**" で、"**Custom domain**" を選択して "*Custom domain*" ブレードを開きます。
+1. カスタム ドメイン名を含むテキスト ボックスの内容を消去します。
+1. **[保存]** を選択します。
+
+カスタム ドメインが正常に削除されると、ストレージ アカウントが正常に更新されたことを伝えるポータルの通知が表示されます。
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
@@ -133,7 +145,7 @@ BLOB ストレージ エンドポイントのカスタム ドメインを登録�
 [Set-AzureRmStorageAccount](/powershell/module/azurerm.storage/set-azurermstorageaccount) PowerShell コマンドレットを使用して、`-CustomDomainName` 引数値に空の文字列 (`""`) を指定し、カスタム ドメインの登録を削除します。
 
 * コマンド形式:
-  
+
   ```powershell
   Set-AzureRmStorageAccount `
       -ResourceGroupName "<resource-group-name>" `
@@ -150,11 +162,7 @@ BLOB ストレージ エンドポイントのカスタム ドメインを登録�
       -CustomDomainName ""
   ```
 
-### <a name="azure-portal"></a>Azure ポータル
-
-現在、Azure ポータルを使用してカスタム ドメインの登録を削除することはできません。 これは既知の問題です。 現在のところ問題がいつ解決されるかわかりませんが、解決されたらこの記事を更新します。 それまでの間は、Azure CLI 2.0 または Azure PowerShell を使用してカスタム ドメインの設定を削除してください。
-
 ## <a name="next-steps"></a>次のステップ
 * [Azure Content Delivery Network (CDN) エンドポイントへのカスタム ドメインのマップ](../cdn/cdn-map-content-to-custom-domain.md)
-
+* [カスタム ドメインを用いた BLOB にAzure CDN から HTTPS 経由でアクセスする](./storage-https-custom-domain-cdn.md)
 

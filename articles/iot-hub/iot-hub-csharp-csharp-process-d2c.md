@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/02/2017
 ms.author: dobett
 ms.translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: ff0b234f27e2d5068cc0dcdc73e32e60f8622633
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: f8917ca67aa5f15ccc11030fd0292ac803d9e994
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/06/2017
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -114,6 +114,9 @@ private static async void SendDeviceToCloudMessagesAsync()
 Service Bus キューのメッセージを処理する方法の詳細については、「[Service Bus キューの使用][Service Bus queue]」を参照してください。
 
 1. 「[Service Bus キューの使用][Service Bus queue]」の説明に従って、Service Bus キューを作成します。 キューは、IoT Hub と同じサブスクリプションとリージョン内にある必要があります。 名前空間とキューの名前をメモしておきます。
+
+    > [!NOTE]
+    > IoT Hub エンドポイントとして使用される Service Bus のキューとトピックでは、**セッション**または**重複データ検出**が有効になっていてはいけません。 これらのオプションのいずれかが有効になっている場合、エンドポイントは Azure Portal に**到達不能**として表示されます。
 
 2. Azure Portal で、IoT Hub を開き、**[エンドポイント]** をクリックします。
     

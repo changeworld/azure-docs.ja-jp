@@ -15,10 +15,10 @@ ms.workload: data-services
 ms.date: 03/07/2017
 ms.author: andrl
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 371976a35ae285942decaf8e22651e98f6217a95
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: b78d8d257ea31e7cb6b4e1abfb32c81fcea67b6d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -57,7 +57,7 @@ TypeScript で記述された Node.js クライアントのラッパーです (�
 ### <a name="swagger-rest-api-for-documentdb"></a>DocumentDB 用 Swagger REST API
 *作者: Howard Edidin*
 
-API アプリとして簡単にデプロイできる Azure Cosmos DB DocumentDB REST API Swagger ファイル。
+API アプリとして簡単にデプロイできる DocumentDB API の Azure Cosmos DB REST API Swagger ファイル。
 
 [GitHub](https://github.com/HEDIDIN/DocumentDB-REST/tree/master/DocumentDBRestApi) でご覧ください。
 

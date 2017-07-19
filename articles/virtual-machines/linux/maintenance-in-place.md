@@ -1,6 +1,6 @@
 ---
-title: "Azure での Linux VM の VM 保持メンテナンス | Microsoft Docs"
-description: "メモリ保持更新のためのインプレース VM 移行。"
+title: "Azure での Windows VM の VM 保護メンテナンス | Microsoft Docs"
+description: "メモリ保護更新のためのインプレース VM 移行。"
 services: virtual-machines-windows
 documentationcenter: 
 author: 
@@ -15,21 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2017
 ms.author: 
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 08da5407cc5ddceeba21a558dc0de1008a566bab
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
+ms.openlocfilehash: 09fc9021e8dfb910d1a81178434ca2e27c0bacf7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/23/2017
 
 
 ---
 
 
 
-# <a name="vm-preserving-maintenance-in-place-vm-migration"></a>VM 保持メンテナンス (インプレース VM 移行)
+# <a name="vm-preserving-maintenance-in-place-vm-migration"></a>VM 保護メンテナンス (インプレース VM 移行)
 
 多くの更新はホステッド VM に影響がありませんが、コンポーネントまたはサービスの更新によって、実行中の VM に対するごくわずかな干渉が発生する (仮想マシンの完全な再起動は不要) ことがあります。
 
-これらの更新は、インプレース ライブ移行 ("メモリ保持更新" とも呼ばれます) を実現するテクノロジによって完了します。 ホストの更新時は仮想マシンが "一時停止" 状態になり、RAM 内のメモリが保持されます。一方、ホスティング環境 (基礎となるオペレーティング システムなど) には必要な更新プログラムと修正プログラムが適用されます。
+これらの更新は、インプレース ライブ移行 ("メモリ保護更新" とも呼ばれます) を可能にするテクノロジによって実現します。 ホストの更新時は仮想マシンが "一時停止" 状態になり、RAM 内のメモリが保護されます。一方、ホスティング環境 (基礎となるオペレーティング システムなど) には必要な更新プログラムと修正プログラムが適用されます。
 仮想マシンは、一時停止後 30 秒以内に再開されます。
 再開後、仮想マシンのクロックは自動的に同期されます。
 
@@ -37,4 +38,4 @@ ms.lasthandoff: 04/03/2017
 
 複数インスタンスの更新 (可用性セット内の VM) が、一度に 1 つの更新ドメインに適用されます。
 
-仮想マシン内で実行されているアプリケーションは、メタデータ サービスのスケジュールされたイベントを呼び出すことで今後の更新を確認できます。 スケジュールされたイベントの詳細については、「[Azure Metadata Service: スケジュールされたイベント](../virtual-machines-scheduled-events.md)」を参照してください。
+一部のアプリケーションは、これらの更新プログラムによって他のアプリケーションよりも影響を受ける可能性があります。 リアルタイム イベント処理、メディア ストリーミングまたはコード変換、あるいは高スループットのネットワーク シナリオなどを実行するアプリケーションは、30 秒の一時停止を許容するようには設計されていない可能性があります。 仮想マシン内で実行されているアプリケーションは、[Azure Metadata Service](../virtual-machines-instancemetadataservice-overview.md) の[スケジュールされたイベント](../virtual-machines-scheduled-events.md)の API を呼び出すことで、今後の更新プログラムを確認できます。

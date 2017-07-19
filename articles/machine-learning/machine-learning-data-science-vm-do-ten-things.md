@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: gokuma;weig;bradsev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: c35d1548262f25e65c391c927919b8acf1411e10
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 467626354cff5643f5f6e602b9d7b72c6c1281ec
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -805,16 +805,16 @@ Azure Cosmos DB は、クラウドにおける NoSQL データベースです。
 DSVM から Azure Cosmos DB にアクセスするには、以下の前提条件を満たす必要があります。
 
 1. DocumentDB Python SDK をインストールします (コマンド プロンプトから ```pip install pydocumentdb``` を実行)。
-2. [Azure Portal](https://portal.azure.com) から Azure Cosmos DB アカウントと Document DB データベースを作成します
+2. [Azure Portal](https://portal.azure.com) で Azure Cosmos DB アカウントとデータベースを作成します。
 3. [こちら](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) から "Azure Cosmos DB 移行ツール" をダウンロードし、任意のディレクトリに展開します
 4. 移行ツール (Cosmos DB 移行ツールをインストールしたディレクトリの dtui.exe) に次のコマンド パラメーターを指定して、 [パブリック BLOB](https://cahandson.blob.core.windows.net/samples/volcano.json) に格納されている JSON データ (volcano データ) を Cosmos DB にインポートします。 インポート元とインポート先の場所を示すパラメーター (以下) を入力します。
    
     /s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1
 
-データのインポート後、Jupyter にアクセスして、*DocumentDBSample* というタイトルの Notebook を開くことができます。この Notebook には、DocumentDB にアクセスして基本的なクエリを実行する Python コードが含まれています。 DocumentDB の詳細については、サービスの[ドキュメント ページ](https://azure.microsoft.com/documentation/learning-paths/documentdb/)をご覧ください。
+データのインポート後、Jupyter にアクセスして、*DocumentDBSample* というタイトルの Notebook を開くことができます。この Notebook には、DocumentDB にアクセスして基本的なクエリを実行する Python コードが含まれています。 Cosmos DB の詳細については、サービスの[ドキュメント ページ](https://docs.microsoft.com/azure/cosmos-db/)をご覧ください。
 
 ## <a name="8-build-reports-and-dashboard-using-the-power-bi-desktop"></a>8.Power BI Desktop を使ってレポートとダッシュボードを作成する
-先ほどの例の Cosmos DB で使用した Volcano JSON ファイルを Power BI で視覚化してみましょう。データの本質を視覚的に把握することができます。 詳しい手順については、[Power BI の記事](../documentdb/documentdb-powerbi-visualize.md)を参照してください。 おおよその手順は以下のとおりです。
+先ほどの例の Cosmos DB で使用した Volcano JSON ファイルを Power BI で視覚化してみましょう。データの本質を視覚的に把握することができます。 詳しい手順については、[Power BI の記事](../cosmos-db/powerbi-visualize.md)を参照してください。 おおよその手順は以下のとおりです。
 
 1. Power BI Desktop を開いて "データを取得" します。 URL として https://cahandson.blob.core.windows.net/samples/volcano.json と指定します。
 2. リストとしてインポートされた JSON レコードが表示されます。
@@ -842,7 +842,7 @@ DSVM から Azure Cosmos DB にアクセスするには、以下の前提条件�
 
 ![Power BI Desktop](./media/machine-learning-data-science-vm-do-ten-things/PowerBIVolcanoData.png)
 
-このデータ モデルを使ってレポートの作成と視覚化の作業を開始できます。 レポートを作成するには、こちらの [Power BI の記事](../documentdb/documentdb-powerbi-visualize.md#build-the-reports) にある手順に従います。 最終的に次のようなレポートが得られます。
+このデータ モデルを使ってレポートの作成と視覚化の作業を開始できます。 レポートを作成するには、こちらの [Power BI の記事](../cosmos-db/powerbi-visualize.md#build-the-reports) にある手順に従います。 最終的に次のようなレポートが得られます。
 
 ![Power BI Desktop のレポート ビュー- Power BI コネクタ](./media/machine-learning-data-science-vm-do-ten-things/power_bi_connector_pbireportview2.png)
 

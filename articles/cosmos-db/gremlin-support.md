@@ -1,31 +1,31 @@
 ---
 title: "Azure Cosmos DB での Gremlin のサポート | Microsoft Docs"
-description: "Gremlin 言語の概要と、Azure Cosmos DB で使用できる Gremlin の機能とステップについて説明します。"
-services: cosmosdb
+description: "Apache TinkerPop の Gremlin 言語の概要と、Azure Cosmos DB で使用できる Gremlin の機能とステップについて説明します。"
+services: cosmos-db
 documentationcenter: 
 author: arramac
 manager: jhubbard
 editor: 
 tags: 
-ms.assetid: 
-ms.service: cosmosdb
+ms.assetid: 6016ccba-0fb9-4218-892e-8f32a1bcc590
+ms.service: cosmos-db
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 05/10/2017
+ms.date: 06/10/2017
 ms.author: arramac
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: db2287782df66ecee0795adb483e253021d0c2cf
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: acea54d202d1117cf2dfb1d35ad48346daa9053d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/13/2017
 
 
 ---
 
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB での Gremlin グラフのサポート
-Azure Cosmos DB では、グラフ エンティティを作成し、グラフ クエリとトラバーサル操作を実行するための [Gremlin]([Gremlin language](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps)) Graph API をサポートしています。 Gremlin 言語を使用して、グラフ エンティティ (頂点と辺) の作成、エンティティ内のプロパティの変更、クエリとトラバーサルの実行、エンティティの削除を行うことができます。 
+Azure Cosmos DB では、[Apache Tinkerpop](http://tinkerpop.apache.org) のグラフ トラバーサル言語である [Gremlin]([Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps)) をサポートしています。これは、グラフ エンティティを作成し、グラフ クエリ操作を実行するための Graph API です。 Gremlin 言語を使用して、グラフ エンティティ (頂点と辺) の作成、エンティティ内のプロパティの変更、クエリとトラバーサルの実行、エンティティの削除を行うことができます。 
 
 Azure Cosmos DB は、グラフ データベースにエンタープライズ対応の機能を提供します。 これには、グローバル配布、ストレージとスループットの個別スケーリング、1 桁ミリ秒の予測可能な待機時間、自動インデックス作成、99.99% の SLA などがあります。 Azure Cosmos DB は TinkerPop/Gremlin をサポートしているため、コードを変更しなくても、別のグラフ データベースを使用して作成されたアプリケーションを簡単に移行できます。 さらに、Gremlin のサポートにより、Azure Cosmos DB は [Apache Spark GraphX](http://spark.apache.org/graphx/) などの TinkerPop 対応分析フレームワークとシームレスに統合されます。 
 
@@ -94,7 +94,7 @@ TinkerPop は、さまざまなグラフ テクノロジに対応する標準で
 
 Azure Cosmos DB では、Gremlin の操作から結果を返すときに [GraphSON 形式](https://github.com/thinkaurelius/faunus/wiki/GraphSON-Format)を使用します。 GraphSON は、JSON を使用して頂点、辺、プロパティ (単一値および複数値プロパティ) を表すための Gremlin の標準形式です。 
 
-たとえば、次のスニペットは、Azure Cosmos DB での GraphSON による頂点の表現を示しています。 
+たとえば、次のスニペットは、Azure Cosmos DB から "*クライアントに返される*" GraphSON による頂点の表現を示しています。 
 
 ```json
   {
@@ -172,6 +172,7 @@ Gremlin の操作は、Azure Cosmos DB の複数のパーティションにま�
 | --- | --- | --- | --- |
 | `addE` | 2 つの頂点の間に辺を追加します。 | [addE ステップ](http://tinkerpop.apache.org/docs/current/reference/#addedge-step) | |
 | `addV` | グラフに頂点を追加します。 | [addV ステップ](http://tinkerpop.apache.org/docs/current/reference/#addvertex-step) | |
+| `and` | すべてのトラバーサルが値を返すようにします。 | [and ステップ](http://tinkerpop.apache.org/docs/current/reference/#and-step) | |
 | `as` | ステップの出力に変数を割り当てるステップ モジュレーター。 | [as ステップ](http://tinkerpop.apache.org/docs/current/reference/#as-step) | |
 | `by` | `group` および `order` と共に使用するステップ モジュレーター。 | [by ステップ](http://tinkerpop.apache.org/docs/current/reference/#by-step) | |
 | `coalesce` | 結果を返す最初のトラバーサルを返します。 | [coalesce ステップ](http://tinkerpop.apache.org/docs/current/reference/#coalesce-step) | |
@@ -209,4 +210,3 @@ Azure Cosmos DB の書き込みに最適化されたエンジンは、頂点お�
 ## <a name="next-steps"></a>次のステップ
 * [SDK を使用](create-graph-dotnet.md)してグラフ アプリケーションの構築を開始する 
 * [Azure Cosmos DB のグラフ サポート](graph-introduction.md)の詳細を確認する
-

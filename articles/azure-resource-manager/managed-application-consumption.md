@@ -8,13 +8,13 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 05/11/2017
+ms.date: 05/17/2017
 ms.author: gauravbh; tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 2763da60fe25f2ca55603ecfcbbcefe3e368c25d
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 041254b07584a52ae92e603f60a439050b747af1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -49,8 +49,7 @@ az group create --name managedResourceGroup --location westcentralus
 次に、以下のコマンドを使って、mainResourceGroup に applianceMainTemplate.json をデプロイします。
 
 ```azurecli
-az group deployment --name managedAppDeployment --resourceGroup mainResourceGroup 
-      --templateUri  
+az group deployment create --name managedAppDeployment --resourceGroup mainResourceGroup --templateUri  
 ```
 
 前述のテンプレートを実行すると、テンプレートに定義されているパラメーターの値を入力するよう求められます。 テンプレート内のリソースをプロビジョニングするうえで必要なパラメーターに加え、次に示す 2 つの重要なパラメーターの値が必要となります。
@@ -94,9 +93,9 @@ az appliance definition show -n ravtestAppDef1 -g ravApplianceRG2
 
 ISV によって発行されたマネージ アプリケーションは、ポータルから実行することもできます。 以下の手順に従ってください。
 
-Azure Portal の [作成] ブレードから [Managed Application]\(マネージ アプリケーション\) を選択します。
+Azure Portal の [作成] ブレードで [サービス カタログの管理されているアプリケーション] を選択します。
 
-![](./media/managed-application-consumption/create-blade.png)
+![](./media/managed-application-consumption/create-service-catalog-managed-application.png)
 
 すると、さまざまな ISV/パートナーから提供されているプランが一覧表示されます。 作成するアプリケーションを選択し、[作成] をクリックします。
 

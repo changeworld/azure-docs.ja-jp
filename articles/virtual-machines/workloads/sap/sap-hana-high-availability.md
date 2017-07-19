@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 04/25/2017
 ms.author: sedusch
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 258ccee349e07448ebebaebe64cd6fb6888d7ed4
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 7fa853983119ef4e570b768ca177d169c6e17153
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/20/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -46,8 +46,8 @@ ms.lasthandoff: 05/20/2017
 
 * SAP Note [2205917] SUSE Linux Enterprise Server for SAP Applications 向けの推奨の OS 設定
 * SAP Note [1944799] SUSE Linux Enterprise Server for SAP Applications の SAP HANA ガイドライン
-* [SAP HANA SR Performance Optimized Scenario][suse-hana-ha-guide] (SAP HANA SR パフォーマンス最適化シナリオ)  
-  このガイドには、SAP HANA システム レプリケーションをオンプレミスでセットアップするときに必要なすべての情報が記載されています。 このガイドをベースラインとして使用します。
+* [SAP HANA SR Performance Optimized Scenario (SAP HANA SR パフォーマンス最適化シナリオ)][suse-hana-ha-guide] このガイドには、SAP HANA システム レプリケーションをオンプレミスでセットアップするときに必要なすべての情報が記載されています。 このガイドをベースラインとして使用します。
+  
 ## <a name="deploying-linux"></a>Linux のデプロイ
 
 SAP HANA のリソース エージェントは、SUSE Linux Enterprise Server for SAP Applications に含まれています。
@@ -337,7 +337,7 @@ Github にあるいずれかのクイック スタート テンプレートを�
     * Select additional components for installation (追加でインストールするコンポーネントの選択) -> 1
     * Enter Installation Path [/hana/shared] \(インストールのパス (/hana/shared) の入力): -> ENTER
     * Enter Local Host Name [..] \(ローカルのホスト名 (..) の入力): -> ENTER
-    * Do you want to add additional hosts to the system? (y/n) [n] \(システムに別のホストを追加しますか? (y/n) (n)): -> ENTER
+    * Do you want to add additional hosts to the system? (システムに別のホストを追加しますか?)  (y/n) [n]: -> ENTER
     * Enter SAP HANA System ID (SAP HANA のシステム ID を入力): <SID of HANA e.g. HDB>
     * Enter Instance Number [00] \(インスタンス番号 (00) の入力):   
   HANA のインスタンス番号です。 Azure テンプレートを使用した場合、または上記サンプルに従った場合は、「03」を使用します
@@ -346,8 +346,8 @@ Github にあるいずれかのクイック スタート テンプレートを�
   システムの使用率を選択します
     * Enter Location of Data Volumes [/hana/data/HDB] \(データ ボリュームの場所 (/hana/data/HDB) の入力): -> ENTER
     * Enter Location of Log Volumes [/hana/log/HDB] \(ログ ボリュームの場所 (/hana/log/HDB) の入力): -> ENTER
-    * Restrict maximum memory allocation? [n] \(メモリの最大割り当てを制限しますか? (n)): -> ENTER
-    * Enter Certificate Host Name For Host '...' [...] \(ホスト '...' の証明書のホスト名 (...) を入力): -&gt; ENTER
+    * Restrict maximum memory allocation? (メモリの最大割り当てを制限しますか?)  [n]: -> ENTER
+    * Enter Certificate Host Name For Host '...' (ホスト '...' の証明書のホスト名を入力)  [...]: -> ENTER
     * Enter SAP Host Agent User (sapadm) Password (SAP ホスト エージェントのユーザー (sapadm) パスワードを入力):
     * Confirm SAP Host Agent User (sapadm) Password (SAP ホスト エージェントのユーザー (sapadm) パスワードを確認):
     * Enter System Administrator (hdbadm) Password (システム管理者 (hdbadm) のパスワードを入力):
@@ -358,8 +358,8 @@ Github にあるいずれかのクイック スタート テンプレートを�
     * Enter ID of User Group (sapsys) [79] \(ユーザー グループ (sapsys) の ID (79) を入力): -> ENTER
     * Enter Database User (SYSTEM) Password (データベース ユーザー (SYSTEM) のパスワードを入力):
     * Confirm Database User (SYSTEM) Password (データベース ユーザー (SYSTEM) のパスワードを確認):
-    * Restart system after machine reboot? [n] \(コンピューターの再起動後にシステムを再起動しますか?(n)): -> ENTER
-    * Do you want to continue? (y/n) (続行しますか? (y/n)):  
+    * Restart system after machine reboot? (コンピューターの再起動後にシステムを再起動しますか?)  [n]: -> ENTER
+    * Do you want to continue? (続行してもよろしいですか?)  (y/n):  
   内容を確認し、「y」を入力して続行します
 1. [A] SAP Host Agent をアップグレードします  
   [SAP ソフトウェアセンター][sap-swcenter]から最新の SAP Host Agent アーカイブをダウンロードし、次のコマンドを実行してエージェントをアップグレードします。 アーカイブのパスを置き換えて、ダウンロードしたファイルを示すようにします。
