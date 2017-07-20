@@ -84,7 +84,7 @@ Azure AD への MobileXpense の統合を構成するには、ギャラリーか
 
 シングル サインオンを機能させるには、Azure AD ユーザーに対応する MobileXpense ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと MobileXpense の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
-MobileXpense で、Azure AD の **[ユーザー名]** の値を **[Username] (ユーザー名)** の値として割り当ててリンク関係を確立します。
+MobileXpense で、Azure AD の **[ユーザー名]** の値を **[Username] \(ユーザー名)** の値として割り当ててリンク関係を確立します。
 
 MobileXpense で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
