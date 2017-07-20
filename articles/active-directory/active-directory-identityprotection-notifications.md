@@ -23,19 +23,16 @@ ms.lasthandoff: 12/22/2016
 
 
 ---
-<a id="azure-active-directory-identity-protection-notifications" class="xliff"></a>
-# Azure Active Directory Identity Protection の通知
-Azure AD Identity Protection では、ユーザーのリスクとリスク イベントの管理に役立つ&2; 種類の自動通知電子メールが送信されます。
+# <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection の通知
+Azure AD Identity Protection では、ユーザーのリスクとリスク イベントの管理に役立つ 2 種類の自動通知電子メールが送信されます。
 
 * ユーザー侵害アラート電子メール
 * 週間ダイジェスト電子メール
 
-<a id="user-compromised-alert-email" class="xliff"></a>
-## ユーザー侵害アラート電子メール
+## <a name="user-compromised-alert-email"></a>ユーザー侵害アラート電子メール
 ユーザー侵害電子メール アラートは、Azure AD Identity Protection がアカウントの侵害を識別すると生成されます。 この電子メールには、Identity Protection ダッシュボードのリスクのフラグ付きユーザー レポートへのリンクが含まれます。 侵害されたアカウントに関する通知はすぐに調査することをお勧めします。
 
-<a id="weekly-digest-email" class="xliff"></a>
-## 週間ダイジェスト電子メール
+## <a name="weekly-digest-email"></a>週間ダイジェスト電子メール
 週間ダイジェスト電子メールには、新しいリスク イベントの概要が含まれます。<br>
 次の情報が含まれます。
 
@@ -64,7 +61,6 @@ Azure AD Identity Protection では、ユーザーのリスクとリスク イ�
    ![ユーザー リスク ポリシー](./media/active-directory-identityprotection-notifications/405.png "User risk policy")
    <br>
 
-<a id="see-also" class="xliff"></a>
-## 関連項目
+## <a name="see-also"></a>関連項目
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 
