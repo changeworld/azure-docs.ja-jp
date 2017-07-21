@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 5/16/2017
+ms.date: 6/29/2017
 ms.author: msfussell
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: fb73507ed596a65607d60f59d6834cc8bf5734f7
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 9dcec753e5f999a1bac07276373c0c25f89ec58d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/26/2017
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -57,44 +57,50 @@ Service Fabric のアプリケーションには、アプリケーションの�
 ```
 
 ## <a name="create-the-application"></a>アプリケーションを作成する
-1. ターミナルで、「`yo azuresfguest`」と入力します。
-2. フレームワークには **[コンテナー]** を選択します。
-3. アプリケーションに名前を付けます (例: SimpleContainerApp)。
-4. DockerHub リポジトリにあるコンテナー イメージの URL を指定します。 イメージ パラメーターは、<リポジトリ>/<イメージ名> の形式で指定してください。
+1. ターミナルで、「`yo azuresfcontainer`」と入力します。
+2. アプリケーションに名前を付けます (例: mycontainerap)。
+3. DockerHub リポジトリにあるコンテナー イメージの URL を指定します。 イメージ パラメーターは、<リポジトリ>/<イメージ名> の形式で指定してください。
+4. イメージにワークロード エントリ ポイントが定義されていない場合は、入力コマンドとコンテナー内で実行する一連のコマンドをコンマで区切ったものを明示的に指定する必要があります。これにより、起動後にコンテナーの実行が維持されます。
 
 ![コンテナー用 Service Fabric Yeoman ジェネレーター][sf-yeoman]
 
 ## <a name="deploy-the-application"></a>アプリケーションのデプロイ
+
+### <a name="using-xplat-cli"></a>XPlat CLI の使用
 アプリケーションがビルドされたら、Azure CLI を使用してローカル クラスターにデプロイできます。
 
 1. ローカルの Service Fabric クラスターに接続します。
 
-```bash
+    ```bash
     azure servicefabric cluster connect
-```
+    ```
 
 2. テンプレートに用意されているインストール スクリプトを使用してクラスターのイメージ ストアにアプリケーション パッケージをコピーし、アプリケーションの種類を登録して、アプリケーションのインスタンスを作成します。
 
-```bash
+    ```bash
     ./install.sh
-```
+    ```
 
 3. ブラウザーを開き、http://localhost:19080/Explorer の Service Fabric Explorer に移動します (Mac OS X で Vagrant を使用している場合は、localhost を VM のプライベート IP に置き換えます)。
 4. Applications ノードを展開し、アプリケーションの種類のエントリと、その種類の最初のインスタンスのエントリができたことを確認します。
 5. アプリケーション インスタンスを削除し、その種類のアプリケーションの登録を解除するには、テンプレートに指定されているアンインストール スクリプトを使用します。
 
-```bash
+    ```bash
     ./uninstall.sh
-```
+    ```
+
+### <a name="using-azure-cli-20"></a>Azure CLI 2.0 の使用
+
+[Azure CLI 2.0 を使ったアプリケーションのライフ サイクル](service-fabric-application-lifecycle-azure-cli-2-0.md)の管理に関する参照ドキュメントをご覧ください。
 
 アプリケーションの例については、[GitHub にある Service Fabric コンテナーのコード サンプルをご覧ください](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 
 ## <a name="adding-more-services-to-an-existing-application"></a>既存アプリケーションへのサービスの追加
 
-`yo` を使用して作成したアプリケーションに別のコンテナー サービスを追加するには、次の手順を実行します。 
+`yo` を使用して作成したアプリケーションに別のコンテナー サービスを追加するには、次の手順を実行します。
 
 1. ディレクトリを既存アプリケーションのルートに変更します。  たとえば、Yeoman で作成したアプリケーションが `MyApplication` の場合は、`cd ~/YeomanSamples/MyApplication` です。
-2. `yo azuresfguest:AddService` を実行します。
+2. `yo azuresfcontainer:AddService` を実行します。
 
 <a id="manually"></a>
 
@@ -124,6 +130,9 @@ Service Fabric の [アプリケーション モデル](service-fabric-applicati
 
 コンテナー内で実行されるコンマ区切りの一連のコマンドによりオプションの `Commands` 要素を指定することで、入力コマンドを指定することができます。
 
+> [!NOTE]
+> イメージにワークロード エントリ ポイントが定義されていない場合は、`Commands` 要素内の入力コマンドとコンテナー内で実行する一連のコマンドをコンマで区切ったものを、明示的に指定する必要があります。これにより、起動後にコンテナーの実行が維持されます。
+
 ## <a name="understand-resource-governance"></a>リソース ガバナンスについて
 リソース ガバナンスは、コンテナー機能の 1 つです。コンテナーがホスト上で使用できるリソースを制限します。 アプリケーション マニフェストで指定された `ResourceGovernancePolicy` は、サービス コード パッケージのリソース制限を宣言するために使用します。 次のリソースのリソースの制限を設定できます。
 
@@ -135,8 +144,8 @@ Service Fabric の [アプリケーション モデル](service-fabric-applicati
 
 > [!NOTE]
 > 今後のリリースで、IOPS、読み取り/書き込み BPS などの特定のブロック IO 制限の指定がサポートされる予定です。
-> 
-> 
+>
+>
 
 ```xml
     <ServiceManifestImport>
@@ -209,7 +218,7 @@ Service Fabric の [アプリケーション モデル](service-fabric-applicati
     </ServiceManifestImport>
 ```
 
-ネーム サービスに登録すると、[リバース プロキシ](service-fabric-reverseproxy.md)を使用して、コンテナー内のコードでコンテナー間の通信を簡単に行うことができます。 通信は、リバース プロキシ HTTP リスニング ポートおよび通信先のサービスの名前を環境変数として設定することで実行します。 詳細については、次のセクションを参照してください。 
+ネーム サービスに登録すると、[リバース プロキシ](service-fabric-reverseproxy.md)を使用して、コンテナー内のコードでコンテナー間の通信を簡単に行うことができます。 通信は、リバース プロキシ HTTP リスニング ポートおよび通信先のサービスの名前を環境変数として設定することで実行します。 詳細については、次のセクションを参照してください。
 
 ## <a name="configure-and-set-environment-variables"></a>環境変数の構成と設定
 環境変数は、サービス マニフェストのコード パッケージごとに指定できます。これは、コンテナーにデプロイされたサービスでも、プロセス実行可能ファイルまたはゲスト実行可能ファイルとしてデプロイされたサービスでも実施可能です。 これらの環境変数の値は、アプリケーション マニフェスト内で個別に上書きできるほか、デプロイの最中にアプリケーションのパラメーターとして指定することもできます。
@@ -317,4 +326,9 @@ Service Fabric の [アプリケーション モデル](service-fabric-applicati
 
 <!-- Images -->
 [sf-yeoman]: ./media/service-fabric-deploy-container-linux/sf-container-yeoman1.png
+
+## <a name="related-articles"></a>関連記事
+
+* [Service Fabric と Azure CLI 2.0 の概要](service-fabric-azure-cli-2-0.md)
+* [Service Fabric XPlat CLI の概要](service-fabric-azure-cli.md)
 

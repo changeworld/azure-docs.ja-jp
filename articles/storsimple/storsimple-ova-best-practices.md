@@ -12,12 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/01/2017
+ms.date: 06/08/2017
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 6d5563d06d9097134715f8885521c85e987a3acd
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: 56e8f5cf3886c740853a40781c42b3e36144134b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -163,7 +164,7 @@ StorSimple Virtual Array には、共有 (ファイル サーバーとして構�
 * 許容される共有/ボリュームの数は 16 で、並列に処理できる共有/ボリュームの最大数も 16 であるため、共有/ボリュームの数は、障害復旧における RPO や RTO とは関係ありません。
 
 #### <a name="volumeshare-type"></a>ボリューム/共有の種類
-StorSimple はその用途に応じて、"ローカル固定" と "階層化" という 2 種類のボリューム/共有をサポートします。 ローカル固定ボリューム/共有がシック プロビジョニングで、階層化ボリューム/共有はシン プロビジョニングとなります。 
+StorSimple はその用途に応じて、"ローカル固定" と "階層化" という 2 種類のボリューム/共有をサポートします。 ローカル固定ボリューム/共有がシック プロビジョニングで、階層化ボリューム/共有はシン プロビジョニングとなります。 作成されると、ローカル固定ボリューム/共有を階層化、または*その逆*に変換することはできません。
 
 StorSimple のボリューム/共有を構成するときは、次のベスト プラクティスに従うようお勧めします。
 

@@ -12,19 +12,19 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/21/2017
+ms.date: 06/29/2017
 ms.author: muralikk
 ms.translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 04ac94a1c07c3ad2a9384f5cf5fca1341ebfa0d8
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 5b894dac8fdc26999b6f3cbffaf7e6a98e68d000
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/25/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>インポート ジョブ用のハード ドライブを準備する
 
-WAImportExport ツールは、ドライブの準備および修復用のツールであり、[Microsoft Azure Import/Export サービス](storage-import-export-service.md)で使用できます。 このツールを使用して、Azure データ センターに発送するハード ドライブにデータをコピーできます。 インポート ジョブが完了したら、このツールを使用して、壊れている BLOB、不足している BLOB、または他の BLOB と競合している BLOB を修復できます。 エクスポート ジョブが完了してドライブを受け取ったら、このツールを使用して、ドライブ上の破損しているファイルや見つからないファイルを修復できます。 この記事では、このツールの機能について詳しく説明します。
+WAImportExport ツールは、ドライブの準備および修復用のツールであり、[Microsoft Azure Import/Export サービス](storage-import-export-service.md)で使用できます。 このツールを使用して、Azure データ センターに発送するハード ドライブにデータをコピーできます。 インポート ジョブが完了したら、このツールを使用して、壊れている BLOB、不足している BLOB、または他の BLOB と競合している BLOB を修復できます。 エクスポート ジョブが完了してドライブを受け取ったら、このツールを使用して、ドライブ上の破損しているファイルや見つからないファイルを修復できます。 この記事では、このツールの使用方法について詳しく説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +37,7 @@ WAImportExport ツールは、ドライブの準備および修復用のツー�
 
 ### <a name="preparing-disk-for-import-job"></a>インポート ジョブ用のディスクの準備
 
-- **BitLocker** - WAImportExport ツールを実行するコンピューターで BitLocker を有効にする必要があります。 BitLocker を有効にする方法については、「[FAQ](#faq)」を参照してください。
+- **BitLocker** - WAImportExport ツールを実行するコンピューターで BitLocker を有効にする必要があります。 BitLocker を有効にする方法については、「[よくあるご質問 (FAQ)](#faq)」を参照してください。
 - **ディスク** - WAImportExport ツールを実行するコンピューターからアクセスできるディスク。 ディスクの仕様については、「[FAQ](#faq)」を参照してください。
 - **ソース ファイル** - インポートするファイル (ネットワーク共有とローカル ハード ドライブのどちらにある場合でも) にコピー用コンピューターからアクセス可能であることが必要です。
 
@@ -52,7 +52,7 @@ WAImportExport ツールは、ドライブの準備および修復用のツー�
 
 ## <a name="download-and-install-waimportexport"></a>WAImportExport のダウンロードとインストール
 
-[最新バージョンの WAImportExport.exe をダウンロード](https://www.microsoft.com/download/details.aspx?id=42659)してください。 使用するコンピューター上のディレクトリに zip の内容を展開します。
+[最新バージョンの WAImportExport.exe をダウンロード](https://www.microsoft.com/download/details.aspx?id=55280)してください。 使用するコンピューター上のディレクトリに zip の内容を展開します。
 
 次のタスクでは、CSV ファイルを作成します。
 
@@ -60,7 +60,7 @@ WAImportExport ツールは、ドライブの準備および修復用のツー�
 
 ### <a name="what-is-dataset-csv"></a>データセット CSV とは
 
-データセット CSV ファイルは、ターゲット ドライブにコピーするディレクトリの一覧または一覧ファイルを含む CSV ファイルの /dataset フラグの値です。 インポート ジョブを作成するには、インポートするディレクトリとファイルを最初に決定します。 その際には、ディレクトリの一覧、一意のファイルの一覧、またはその 2 つの組み合わせを指定できます。 ディレクトリが含まれる場合は、そのディレクトリとサブディレクトリ内のすべてのファイルがインポート ジョブに追加されます。
+データセット CSV ファイルは、ターゲット ドライブにコピーするディレクトリの一覧またはファイルの一覧を含む CSV ファイルの /dataset フラグの値です。 インポート ジョブを作成するには、インポートするディレクトリとファイルを最初に決定します。 その際には、ディレクトリの一覧、一意のファイルの一覧、またはその 2 つの組み合わせを指定できます。 ディレクトリが含まれる場合は、そのディレクトリとサブディレクトリ内のすべてのファイルがインポート ジョブに追加されます。
 
 インポートするディレクトリまたはファイルごとに、Azure BLOB service でインポート先の仮想ディレクトリまたは BLOB を指定する必要があります。 これらのターゲットを WAImportExport ツールの入力値として使用します。 ディレクトリをスラッシュ (/) で区切ってください。
 
@@ -85,10 +85,10 @@ BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
 
 | フィールド | Description |
 | --- | --- |
-| BasePath | **[必須]**<br/>このパラメーターの値は、インポートするデータがあるソースを表します。ツールはこのパスにあるすべてのデータを繰り返しコピーします。<br><br/>**使用可能な値**: ローカル コンピューター上の有効なパスまたは有効な共有パスを指定する必要があります。ユーザーがアクセスできるパスを指定してください。 このディレクトリ パスには絶対パスを使用します (相対パスは不可)。末尾が "\\" のパスはディレクトリを表します。末尾が "\\" でないパスはファイルを表します。<br/>このフィールドでは正規表現を使用できません。 パスにスペースが含まれる場合は、"" で囲んでください。<br><br/>**例**: "c:\Directory\c\Directory\File.txt"<br>"\\\\FBaseFilesharePath.domain.net\sharename\directory\"  |
-| DstBlobPathOrPrefix | **[必須]**<br/> Microsoft Azure ストレージ アカウントのインポート先の仮想ディレクトリへのパス。 既存の仮想ディレクトリがある場合とない場合があります。 仮想ディレクトリがない場合は、インポート/エクスポート サービスによって作成されます。<br/><br/>コピー先の仮想ディレクトリや BLOB を指定する場合は、有効なコンテナー名を使用してください。 コンテナー名は小文字にする必要があります。 コンテナーの名前付け規則については、「[Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」(コンテナー、BLOB、メタデータの命名および参照) を参照してください。ルートのみ指定すると、ソースのディレクトリ構造がインポート先の BLOB コンテナーにレプリケートされます。ソースとは別のディレクトリ構造が必要な場合は、CSV のマッピングの複数の行が使用されます。<br/><br/>コンテナーまたは BLOB プレフィックス (例: music/70s/) を指定できます。 インポート先のディレクトリの先頭はコンテナー名にして、その後にスラッシュ (/) を続けます。末尾が "/" の仮想 BLOB ディレクトリ (省略可能) を追加することもできます。<br/><br/>インポート先のコンテナーがルート コンテナーの場合は、スラッシュを含むルート コンテナーを明示的に指定する必要があります (例: $root/)。 ルート コンテナーにある BLOB の名前に "/" を含めることはできないため、インポート先のディレクトリがルート コンテナーの場合、ソース ディレクトリのサブディレクトリはコピーされません。<br/><br/>**例**<br/>インポート先の BLOB パスが https://mystorageaccount.blob.core.windows.net/video の場合、このフィールドの値は video/ になります。  |
+| BasePath | **[必須]**<br/>このパラメーターの値は、インポートするデータが配置されるソースを表します。 ツールでは、このパスに配置されたすべてのデータを再帰的にコピーします。<br><br/>**使用可能な値**: ローカル コンピューター上の有効なパスまたは有効な共有パスを指定する必要があります。ユーザーがアクセスできるパスを指定してください。 ディレクトリ パスは絶対パス (相対パスではなく) にする必要があります。 パスが "\\" で終わる場合は、ディレクトリを表し、それ以外の "\\" なしで終わるパスは、ファイルを表します。<br/>このフィールドでは正規表現を使用できません。 パスにスペースが含まれる場合は、"" で囲んでください。<br><br/>**例**: "c:\Directory\c\Directory\File.txt"<br>"\\\\FBaseFilesharePath.domain.net\sharename\directory\"  |
+| DstBlobPathOrPrefix | **[必須]**<br/> Microsoft Azure ストレージ アカウントのインポート先の仮想ディレクトリへのパス。 既存の仮想ディレクトリがある場合とない場合があります。 仮想ディレクトリがない場合は、インポート/エクスポート サービスによって作成されます。<br/><br/>コピー先の仮想ディレクトリや BLOB を指定する場合は、有効なコンテナー名を使用してください。 コンテナー名は小文字にする必要があります。 コンテナーの名前付け規則については、「[コンテナー、BLOB、およびメタデータの名前付けおよび参照](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」をご覧ください。 ルートのみが指定されている場合、ソースのディレクトリ構造は、インポート先の BLOB コンテナーにレプリケートされます。 ソースのディレクトリ構造ではなく、別のディレクトリ構造が必要な場合は、CSV のマッピングを複数行にします。<br/><br/>コンテナーまたは BLOB プレフィックス (例: music/70s/) を指定できます。 インポート先のディレクトリの先頭はコンテナー名にして、その後にスラッシュ (/) を続けます。末尾が "/" の仮想 BLOB ディレクトリ (省略可能) を追加することもできます。<br/><br/>インポート先のコンテナーがルート コンテナーの場合は、スラッシュを含むルート コンテナーを明示的に指定する必要があります (例: $root/)。 ルート コンテナーにある BLOB の名前に "/" を含めることはできないため、インポート先のディレクトリがルート コンテナーの場合、ソース ディレクトリのサブディレクトリはコピーされません。<br/><br/>**例**<br/>インポート先の BLOB パスが https://mystorageaccount.blob.core.windows.net/video の場合、このフィールドの値は video/ になります。  |
 | BlobType | **[省略可能]** block &#124; page<br/>現在、インポート/エクスポート サービスは 2 種類の BLOB をサポートしています  (ページ BLOB とブロック BLOB)。既定では、すべてのファイルがブロック BLOB としてインポートされます。 また、\*.vhd と \*.vhdx はページ BLOB としてインポートされます。ブロック BLOB と ページ BLOB に使用できるサイズには制限があります。 詳細については、[Azure Storage のスケーラビリティ ターゲット](storage-scalability-targets.md#scalability-targets-for-blobs-queues-tables-and-files)に関するページを参照してください。  |
-| Disposition | **[省略可能]** rename &#124; no-overwrite &#124; overwrite <br/> このフィールドは、インポート中 ( ディスクからストレージ アカウントへのデータのアップロード中) のコピー動作を指定します。使用可能なオプションは rename &#124; overwite &#124; no-overwrite です。何も指定しない場合、既定値は "rename" になります。 <br/><br/>**rename**: 同名のオブジェクトが存在する場合に、インポート先にコピーを作成します。<br/>overwrite: ファイルを新しいファイルで上書きします。 更新日の最も新しいファイルで上書きされます。<br/>**no-overwrite**: 既存のファイルがある場合は、ファイルの書き込みをスキップします。|
+| Disposition | **[省略可能]** rename &#124; no-overwrite &#124; overwrite <br/> このフィールドは、インポート中 ( 例: データのディスクからストレージ アカウントへのアップロード中) のコピー動作を指定します。 利用可能なオプション: rename&#124;overwite&#124;no-overwrite。何も指定しない場合は、既定値の "rename" になります。 <br/><br/>**rename**: 同名のオブジェクトが存在する場合に、インポート先にコピーを作成します。<br/>overwrite: ファイルを新しいファイルで上書きします。 更新日の最も新しいファイルで上書きされます。<br/>**no-overwrite**: 既存のファイルがある場合は、ファイルの書き込みをスキップします。|
 | MetadataFile | **[省略可能]** <br/>このフィールドの値は、オブジェクトのメタデータを保持するか、またはカスタム メタデータを指定する必要がある場合に指定可能なメタデータ ファイルです。 インポート先の BLOB のメタデータ ファイルへのパスです。 詳細については、「[Import/Export サービスのメタデータとプロパティ ファイルの形式](storage-import-export-file-format-metadata-and-properties.md)」を参照してください。 |
 | PropertiesFile | **[省略可能]** <br/>インポート先の BLOB のプロパティ ファイルへのパスです。 詳細については、「[Import/Export サービスのメタデータとプロパティ ファイルの形式](storage-import-export-file-format-metadata-and-properties.md)」を参照してください。 |
 
@@ -96,7 +96,7 @@ BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
 
 ### <a name="what-is-driveset-csv"></a>ドライブセット CSV とは
 
-/InitialDriveSet または /AdditionalDriveSet フラグの値は、ドライブ文字のマップ先のディスクの一覧を含む CSV ファイルです。これにより、準備するディスクの一覧をツールで正しく選択できます。 データ サイズが 1 つのディスク サイズよりも大きい場合、WAImportExport ツールは最適化された方法でこの CSV ファイル内の複数のディスクにデータを分散します。
+/InitialDriveSet または /AdditionalDriveSet フラグの値は、ドライブ文字がマップされるディスクの一覧を含む CSV ファイルです。これにより、準備するディスクの一覧をツールで正しく選択できます。 データ サイズが 1 つのディスク サイズよりも大きい場合、WAImportExport ツールは最適化された方法でこの CSV ファイル内の複数のディスクにデータを分散します。
 
 1 つのセッションでデータを書き込むことのできるディスクの数に制限はありません。 このツールはディスク サイズとフォルダー サイズに基づいてデータを分散します。 オブジェクト サイズ用に最も最適化されたディスクが選択されます。 ストレージ アカウントにアップロードされたデータは、データセット ファイルに指定されたディレクトリ構造に集約されます。 ドライブセット CSV を作成するには、次の手順に従ってください。
 
@@ -118,7 +118,7 @@ H,Format,SilentMode,Encrypt,
 | --- | --- |
 | DriveLetter | **[必須]**<br/> インポート先としてツールに指定する各ドライブには、シンプルな NTFS ボリュームとそのボリュームに割り当てるドライブ文字が必要です。<br/> <br/>**例**: R または r |
 | FormatOption | **[必須]** Format &#124; AlreadyFormatted<br/><br/> **Format**: この値を指定すると、ディスク上のすべてのデータがフォーマットされます。 <br/>**AlreadyFormatted**: この値を指定すると、ツールはフォーマットをスキップします。 |
-| SilentOrPromptOnFormat | **[必須]** SilentMode &#124; PromptOnFormat<br/><br/>**SilentMode**: この値を指定すると、ユーザーがサイレント モードでツールを実行できます。 <br/>**PromptOnFormat**: 各フォーマットについて、それが本当に意図したアクションかどうかの確認を求められます。<br/><br/>値を設定しない場合は、コマンドが中止され、"Incorrect value for SilentOrPromptOnFormat: none (SilentOrPromptOnFormat の値が正しくありません: 指定なし)" というエラー メッセージが表示されます。 |
+| SilentOrPromptOnFormat | **[必須]** SilentMode &#124; PromptOnFormat<br/><br/>**SilentMode**: この値を指定すると、ユーザーがサイレント モードでツールを実行できます。 <br/>**PromptOnFormat**: 各フォーマットについて、それが本当に意図したアクションかどうかの確認を求められます。<br/><br/>値を設定しない場合は、コマンドが中止され、"Incorrect value for SilentOrPromptOnFormat: none" (SilentOrPromptOnFormat の値が正しくありません: 指定なし) というエラー メッセージが表示されます。 |
 | 暗号化 | **[必須]** Encrypt &#124; AlreadyEncrypted<br/> このフィールドの値によって、暗号化するディスクとしないディスクが決定されます。 <br/><br/>**Encrypt**: ツールがドライブをフォーマットします。 "FormatOption" フィールドの値が "Format" の場合は、この値を "Encrypt" にする必要があります。 この場合に "AlreadyEncrypted" を指定すると、"When Format is specified, Encrypt must also be specified (Format を指定する場合は、Encrypt を指定する必要があります)" というエラーが表示されます。<br/>**AlreadyEncrypted**: "ExistingBitLockerKey" フィールドに指定された BitLockerKey を使用して、ツールがドライブの暗号化を解除します。 "FormatOption" フィールドの値が "AlreadyFormatted" の場合は、この値を "Encrypt" または "AlreadyEncrypted" にすることができます。 |
 | ExistingBitLockerKey | **[必須]** "Encryption" フィールドの値が "AlreadyEncrypted" の場合。<br/> このフィールドの値は、特定のディスクに関連付けられている BitLocker キーです。 <br/><br/>"Encryption" フィールドの値が "Encrypt" の場合は、このフィールドを空白のままにする必要があります。  この場合に BitLocker キーを指定すると、"Bitlocker Key should not be specified (BitLocker キーを指定しないでください)" というエラーが表示されます。<br/>  **例**: 060456-014509-132033-080300-252615-584177-672089-411631|
 
@@ -223,8 +223,8 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2 /ResumeSession
 |     /ManifestFile:&lt;DriveManifestFile&gt; | **必須**。RepairExport にのみ適用できます。<br/> ドライブ マニフェスト ファイルへのパス。  |
 |     /PathMapFile:&lt;DrivePathMapFile&gt; | **省略可能**。 RepairImport にのみ適用できます。<br/> ドライブのルートを基準としたファイルの相対パスの実際のファイルの場所へのマッピング (タブ区切り) を含むファイルへのパス。 最初に指定する場合は、空のターゲットを含むファイル パスが設定されます。つまり、TargetDirectories に見つからない、アクセスが拒否される、無効な名前を持つパスか、または複数のディレクトリに存在するパスです。 パス マップ ファイルは、正しいターゲット パスを含めるように手動で編集し、ツールでファイル パスを正しく解決するために再度指定できます。  |
 |     /ExportBlobListFile:&lt;ExportBlobListFile&gt; | **必須**。 PreviewExport にのみ適用できます。<br/> エクスポートする BLOB の BLOB パスや BLOB パスのプレフィックスの一覧を含む XML ファイルへのパス。 ファイル形式は、インポート/エクスポート サービス REST API の Put Job 操作の BLOB 一覧の BLOB 形式と同じです。  |
-|     /DriveSize:&lt;DriveSize&gt; | **必須**。 PreviewExport にのみ適用できます。<br/>  エクスポートに使用するドライブのサイズ。 たとえば、500GB、1.5TB と指定します。1 GB は 1,000,000,000 バイト、1 TB は 1,000,000,000,000 バイトです。  |
-|     /DataSet:&lt;dataset.csv&gt; | **必須**<br/> ターゲット ドライブにコピーするディレクトリの一覧または一覧ファイルを含む CSV ファイル。  |
+|     /DriveSize:&lt;DriveSize&gt; | **必須**。 PreviewExport にのみ適用できます。<br/>  エクスポートに使用するドライブのサイズ。 例: 500 GB、1.5 TB。 注: 1 GB = 1,000,000,000 バイト、1 TB = 1,000,000,000,000 バイト  |
+|     /DataSet:&lt;dataset.csv&gt; | **必須**<br/> ターゲット ドライブにコピーするディレクトリの一覧またはファイルの一覧を含む CSV ファイル。  |
 |     /silentmode  | **省略可能**。<br/> 指定されていない場合、ドライブの要件が通知され、操作を続行するための確認が必要になります。  |
 
 ## <a name="tool-output"></a>ツールの出力
@@ -286,7 +286,7 @@ SaveCommandOutput: Completed
 [EndUpdateRecord]
 ```
 
-### <a name="sample-journal-file-jrn-for-session-which-records-the-trail-of-sessions"></a>セッションの軌跡を記録する、セッションのジャーナル ファイル (JRN) のサンプル
+### <a name="sample-journal-file-jrn-for-session-that-records-the-trail-of-sessions"></a>セッションの軌跡を記録する、セッションのジャーナル ファイル (JRN) のサンプル
 
 ```
 [BeginUpdateRecord][2016/11/02 18:24:14.735][Type:NewJournalFile]
@@ -310,13 +310,13 @@ StorageAccountKey: *******
 
 WAImportExport ツールは、ドライブの準備および修復用のツールであり、Microsoft Azure Import/Export サービスで使用できます。 このツールを使用して、Azure データ センターに発送するハード ドライブにデータをコピーできます。 インポート ジョブが完了したら、このツールを使用して、壊れている BLOB、不足している BLOB、または他の BLOB と競合している BLOB を修復できます。 エクスポート ジョブが完了してドライブを受け取ったら、このツールを使用して、ドライブ上の破損しているファイルや見つからないファイルを修復できます。
 
-#### <a name="how-does-the-waimportexport-tool-work-on-multiple-sorce-dir-and-disks"></a>WAImportExport ツールは複数のソース ディレクトリとディスクに対してはどのように機能しますか?
+#### <a name="how-does-the-waimportexport-tool-work-on-multiple-source-dir-and-disks"></a>WAImportExport ツールは、複数のソース ディレクトリとディスクに対してはどのように機能しますか?
 
 データ サイズがディスク サイズよりも大きい場合、WAImportExport ツールは最適化された方法で複数のディスクにデータを分散します。 複数のディスクへのデータ コピーは並列で、または同時に実行できます。 同時にデータを書き込むことのできるディスクの数に制限はありません。 このツールはディスク サイズとフォルダー サイズに基づいてデータを分散します。 オブジェクト サイズ用に最も最適化されたディスクが選択されます。 ストレージ アカウントにアップロードされたデータは、指定されたディレクトリ構造に集約されます。
 
 #### <a name="where-can-i-find-previous-version-of-waimportexport-tool"></a>以前のバージョンの WAImportExport ツールはどこで入手できますか?
 
-WAImportExport ツールには、WAImportExport V1 ツールのすべての機能が含まれています。 ユーザーは、WAImportExport ツールを使用して複数のソースを指定し、複数のドライブに書き込むことができます。 また、データのコピー元となる複数の場所を 1 つの CSV ファイルで簡単に管理できます。 ただし、SAS のサポートが必要な場合や、1 つのソースを 1 つのディスクにコピーする場合は、[WAImportExport V1 ツールをダウンロード] [http://go.microsoft.com/fwlink/?LinkID=301900&amp;clcid=0x409] し、[WAImportExport V1 リファレンス](storage-import-export-tool-how-to-v1.md)で WAImportExport V1 の使用方法を参照できます。
+WAImportExport ツールには、WAImportExport V1 ツールのすべての機能が含まれています。 WAImportExport ツールを使用すると、ユーザーは複数のソースを指定し、複数のドライブに書き込むことができます。 また、データのコピー元となる複数の場所を 1 つの CSV ファイルで簡単に管理できます。 ただし、SAS のサポートが必要な場合や、1 つのソースを 1 つのディスクにコピーする場合は、[WAImportExport V1 ツールをダウンロード] [http://go.microsoft.com/fwlink/?LinkID=301900&amp;clcid=0x409] し、[WAImportExport V1 リファレンス](storage-import-export-tool-how-to-v1.md)で WAImportExport V1 の使用方法を参照できます。
 
 #### <a name="what-is-a-session-id"></a>セッション ID とは何ですか?
 
@@ -344,11 +344,11 @@ Azure Import/Export ツールを使用して準備する各ハード ドライ�
 
 #### <a name="what-are-the-specifications-of-my-disk"></a>どのような仕様のディスクが必要ですか?
 
-コピー用コンピューターに接続されている 1 台以上の空の 2.5/3.5 インチ SATA II/III ハード ドライブまたは SSD ドライブが必要です。
+コピー用コンピューターに接続されている 1 台以上の空の 2.5 インチまたは 3.5 インチの SATA II/III ハード ドライブまたは SSD ドライブが必要です。
 
 #### <a name="how-can-i-enable-bitlocker-on-my-machine"></a>コンピューター上で BitLocker を有効にするにはどうすればよいですか?
 
-簡単なチェック方法としては、システム ドライブを右クリックします。 BitLocker が有効になっている場合は、そのオプションが表示されます。 無効になっている場合は、オプションが表示されません。
+簡単なチェック方法としては、システム ドライブを右クリックします。 BitLocker が有効になっている場合は、そのオプションが表示されます。 無効になっている場合、オプションは表示されません。
 
 ![BitLocker の確認](./media/storage-import-export-tool-preparing-hard-drives-import/BitLocker.png)
 
@@ -358,7 +358,7 @@ BitLocker を有効にする方法については、[こちの記事](https://te
 
 #### <a name="how-to-disable-trusted-platform-module-tpm-in-bitlocker"></a>BitLocker でトラステッド プラットフォーム モジュール (TPM) を無効にするにはどうすればよいですか?
 > [!NOTE]
-> サーバーに TPM が搭載されていない場合のみ、TPM ポリシーを無効にする必要があります。ユーザーのサーバーに信頼できる TPM が搭載されている場合、TPM を無効にする必要はありません。 
+> サーバーに TPM がない場合にのみ、TPM ポリシーを無効にする必要があります。 ユーザーのサーバーに信頼されている TPM がある場合、TPM を無効にする必要はありません。 
 > 
 
 BitLocker で TPM を無効にするには、次の手順に従ってください。<br/>
@@ -395,11 +395,11 @@ Microsoft .NET Framework のすべてのバージョンは %windir%\Microsoft.NE
 
 #### <a name="how-many-of-the-input-disks-will-have-active-io-in-parallel-when-copy-is-in-progress"></a>コピーの実行中には、何台の入力ディスクでアクティブ IO が並列処理されますか?
 
-ツールでは、入力ファイルのサイズに基づいてデータを複数の入力ディスクに分散します。 しかし、並列処理されるアクティブ ディスクの数は完全に入力データの性質に依存します。 入力データセット内の個々のファイルのサイズによっては、並列処理されるアクティブ IO が 1 台以上のディスクに表示される場合があります。 詳細については、次の FAQ を参照してください。
+ツールでは、入力ファイルのサイズに基づいてデータを複数の入力ディスクに分散します。 しかし、並列処理されるアクティブ ディスクの数は完全に入力データの性質に依存します。 入力データセット内の個々のファイルのサイズによっては、並列処理されるアクティブ IO が 1 台以上のディスクに表示される場合があります。 詳細については、次の質問を参照してください。
 
 #### <a name="how-does-the-tool-distribute-the-files-across-the-disks"></a>ツールではファイルがどのように複数のディスクに分散されますか?
 
-WAImportExport ツールはバッチ単位でファイルの読み取りと書き込みを行います。1 つのバッチには最大 100,000 個のファイルが含まれています。 つまり、最大 100,000 個のファイルを並行して書き込むことができます。 この 100,000 個のファイルが複数のドライブに分散される場合は、複数のディスクに同時に書き込まれます。 ただし、ツールが複数のディスクに同時に書き込むか 1 台のディスクに書き込むかは、バッチの合計サイズによって異なります。 たとえば、ファイルのサイズが小さく、10,0000 個すべてのファイルが 1 台のドライブに収まる場合、このバッチの処理中にツールは 1 台のディスクに書き込みます。
+WAImportExport ツールはバッチ単位でファイルの読み取りと書き込みを行います。1 つのバッチには最大 100,000 個のファイルが含まれています。 つまり、最大 100,000 個のファイルを並行して書き込むことができます。 この 100,000 個のファイルが複数のドライブに分散される場合は、複数のディスクに同時に書き込まれます。 ただし、ツールが複数のディスクに同時に書き込むか、または 1 台のディスクに書き込むかは、バッチの合計サイズによって異なります。 たとえば、ファイルのサイズが小さく、10,0000 個すべてのファイルが 1 台のドライブに収まる場合、このバッチの処理中にツールは 1 台のディスクに書き込みます。
 
 ### <a name="waimportexport-output"></a>WAImportExport の出力
 

@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2017
 ms.author: xshi
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: be140e86047cae304bfb5c32c5cdd9135413df82
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 0b7ce531c73d991897f1c35932e795a97dd33162
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -53,6 +54,7 @@ Sparkfun ESP8266 Thing Dev を、作成する Azure IoT Hub に接続します�
 
 また、開発環境に次のものが必要です。
 
+* 有効な Azure サブスクリプション Azure アカウントがない場合は、[無料試用版の Azure アカウント](https://azure.microsoft.com/free/)を数分で作成できます。
 * Mac PC または Windows か Ubuntu をインストールした PC。
 * Sparkfun ESP8266 Thing Dev を接続するワイヤレス ネットワーク。
 * 構成ツールをダウンロードするためのインターネット接続。
@@ -64,79 +66,7 @@ Sparkfun ESP8266 Thing Dev を、作成する Azure IoT Hub に接続します�
 * ブレッドボード
 * M/M ジャンパー ワイヤ
 
-## <a name="create-an-iot-hub-and-register-a-device-for-sparkfun-esp8266-thing-dev"></a>IoT Hub を作成し、Sparkfun ESP8266 Thing Dev のデバイスを登録する
-
-### <a name="create-your-azure-iot-hub-in-the-azure-portal"></a>Azure Portal で Azure IoT Hub を作成する
-
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
-1. **[新規]** > **[モノのインターネット (IoT)]** > **[IoT Hub]** の順にクリックします。
-
-   ![IoT Hub を作成する](media/iot-hub-sparkfun-thing-dev-get-started/3_iot-hub-creation.png)
-
-1. **[IoT Hub]** ウィンドウで、IoT Hub に必要な情報を入力します。
-
-   ![IoT Hub の作成に関する基本情報](media/iot-hub-sparkfun-thing-dev-get-started/4_iot-hub-provide-basic-info.png)
-
-   * **[名前]**: IoT Hub の名前。 入力した名前が有効である場合は、緑色のチェック マークが表示されます。
-   * **[pricing and scale tier] (価格とスケール レベル)**: 無料の F1 レベルを選択します。このデモでは Free で十分です。 [[pricing and scale tier] (価格とスケール レベル)](https://azure.microsoft.com/pricing/details/iot-hub/) を参照してください。
-   * **[リソース グループ]**: IoT Hub をホストするリソース グループを作成するか、既存のリソース グループを使用します。 [リソース グループを使用した Azure リソースの管理](../azure-resource-manager/resource-group-portal.md)に関する記事をご覧ください。
-   * **[場所]**: IoT Hub が作成される場所に最も近い場所を選択します。
-   * **[ダッシュボードにピン留めする]**: ダッシュボードから IoT Hub に簡単にアクセスするためには、このオプションにチェックを入れます。
-1. **[作成]**をクリックします。 IoT Hub の作成には数分かかります。 **[通知]** ウィンドウで進行状況を確認できます。
-
-   ![[通知] ウィンドウで IoT Hub 作成の進行状況を監視する](media/iot-hub-sparkfun-thing-dev-get-started/5_iot-hub-monitor-creation-progress-notification-pane.png)
-
-1. IoT Hub 作成後は、ダッシュボードで IoT Hub をクリックします。 後で使用するために **[ホスト名]** をメモしておき、**[共有アクセス ポリシー]** をクリックします。
-
-   ![IoT Hub の [ホスト名] をメモする](media/iot-hub-sparkfun-thing-dev-get-started/6_iot-hub-get-hostname.png)
-
-1. **[共有アクセス ポリシー]** ウィンドウで、**[iothubowner]** ポリシーをクリックし、後で使用するために IoT Hub の **[接続文字列]** をコピーしてメモしておきます。 詳細については、「[IoT Hub へのアクセスの制御](iot-hub-devguide-security.md)」を参照してください。
-
-   ![IoT Hub の [接続文字列] をメモする](media/iot-hub-sparkfun-thing-dev-get-started/7_iot-hub-get-connection-string.png)
-
-IoT Hub の作成は以上です。 メモしたホスト名と接続文字列は、後で使用します。
-
-### <a name="register-a-device-for-sparkfun-esp8266-thing-dev-in-your-iot-hub"></a>IoT Hub で Sparkfun ESP8266 Thing Dev のデバイスを登録する
-
-すべての IoT Hub には、その IoT Hub への接続が許可されたデバイスに関する情報を保存する ID レジストリがあります。 デバイスを IoT Hub に接続できるようにするには、そのデバイスのエントリが IoT Hub の ID レジストリに存在する必要があります。
-
-このセクションでは、ESP8266 Thing Dev のデバイスを IoT Hub の ID レジストリに登録するために、CLI ツールの iothub-explorer を使用します。
-
-> [!NOTE]
-> iothub-explorer を正しく動作させるには、Node.js 4.x 以降が必要です。
-
-ESP8266 Thing Dev のデバイスを登録するには、次の手順に従います。
-
-1. NPM を含め Node.js の最新の LTS バージョンを[ダウンロード](https://nodejs.org/en/download/)しインストールします。
-1. NPM を使用して iothub-explorer をインストールします。
-
-   * Windows 7 以降の場合、管理者としてコマンド プロンプトを起動します。 次のコマンドを実行して、iothub-explorer をインストールします。
-
-     ```bash
-     npm install -g iothub-explorer
-     ```
-   * Ubuntu 16.04 以降の場合、キーボード ショートカットの Ctrl + Alt + T キーでターミナルを開き、次のコマンドを実行します。
-
-     ```bash
-     sudo npm install -g iothub-explorer
-     ```
-   * macOS 10.1 以降の場合、ターミナルを開き、次のコマンドを実行します。
-
-     ```bash
-     npm install -g iothub-explorer
-     ```
-1. 次のコマンドを実行して、IoT Hub にログインします。
-
-   ```bash
-   iothub-explorer login [your iot hub connection string]
-   ```
-1. `deviceID` が `new-device` の新しいデバイスを登録し、次のコマンドを実行して接続文字列を取得します。
-
-   ```bash
-   iothub-explorer create new-device --connection-string
-   ```
-
-後で使用するために、登録したデバイスの接続文字列をメモします。
+[!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
 ## <a name="connect-esp8266-thing-dev-with-the-sensor-and-your-computer"></a>センサー付き ESP8266 Thing Dev をコンピューターに接続する
 
@@ -232,7 +162,7 @@ Arduino IDE の Sparkfun ESP8266 Thing Dev パッケージをインストール�
 
    ![ESP8266 のインストール](media/iot-hub-sparkfun-thing-dev-get-started/12_arduino-ide-esp8266-installed.png)
 
-1. **[ツール]** > **[ボード]** > **[Adafruit HUZZAH ESP8266]** をクリックします。
+1. **[ツール]** > **[ボード]** > **[Sparkfun ESP8266 Thing Dev]** の順にクリックします。
 
 ### <a name="install-necessary-libraries"></a>必要なライブラリをインストールする
 

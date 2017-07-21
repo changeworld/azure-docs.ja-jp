@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI スクリプト - エラスティック プールのスケール設定 | Microsoft Docs"
-description: "Azure CLI のサンプル スクリプト - エラスティック データベース プールのスケール設定"
+title: "CLI サンプル - SQL エラスティック プールのスケーリング - Azure SQL データベース | Microsoft Docs"
+description: "Azure SQL データベースの SQL エラスティック プールをスケーリングするための Azure CLI サンプル スクリプト"
 services: sql-database
 documentationcenter: sql-database
 author: janeng
@@ -14,25 +14,25 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 04/24/2017
+ms.date: 06/23/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 5ca7befc4b7ea031287b81ae6834496579b480fd
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: f1f178d05826e8d2a37b41f2f98ed0ddf83f542b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 06/28/2017
 
 ---
 
-# <a name="scale-an-elastic-pool-in-azure-sql-database-using-the-azure-cli"></a>Azure CLI を使用して Azure SQL Database のエラスティック プールのスケールを設定する
+# <a name="use-azure-cli-to-scale-a-sql-elastic-pool-in-azure-sql-database"></a>Azure CLI を使用して Azure SQL Database の SQL エラスティック プールをスケーリングする
 
-この CLI のサンプル スクリプトは、エラスティック プールを作成し、プールされているデータベースを移動して、パフォーマンス レベルを変更します。 
+この Azure CLI サンプル スクリプトでは、SQL エラスティック プールが作成され、プールされたデータベースが移動され、エラスティック プールのパフォーマンス レベルが変更されます。 
 
-[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
