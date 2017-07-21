@@ -21,8 +21,6 @@ ms.openlocfilehash: 6f8d220a64e04b7dfa021aacf68dadf0d55393bf
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/30/2017
 
-
-
 ---
 # <a name="load-data-from-azure-data-lake-store-into-sql-data-warehouse"></a>Azure Data Lake Store から Azure SQL Data Warehouse へのデータの読み込み
 このドキュメントでは、PolyBase を使用して Azure Data Lake Store (ADLS) から SQL Data Warehouse にデータを読み込むために必要な手順を 1 つずつ説明します。
@@ -84,7 +82,7 @@ WITH
 -- It should look something like this:
 CREATE DATABASE SCOPED CREDENTIAL ADLCredential
 WITH
-    IDENTITY = '536540b4-4239-45fe-b9a3-629f97591c0c@https://login.windows.net/42f988bf-85f1-41af-91ab-2d2cd011da47/oauth2/token',
+    IDENTITY = '536540b4-4239-45fe-b9a3-629f97591c0c@https://login.microsoftonline.com/42f988bf-85f1-41af-91ab-2d2cd011da47/oauth2/token',
     SECRET = 'BjdIlmtKp4Fpyh9hIvr8HJlUida/seM5kQ3EpLAmeDI='
 ;
 ```

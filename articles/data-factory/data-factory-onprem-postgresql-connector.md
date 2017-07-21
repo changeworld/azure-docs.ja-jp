@@ -12,14 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/05/2017
+ms.date: 07/11/2017
 ms.author: jingwang
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
 ms.openlocfilehash: b12bb8edc0d0ac805efaeb9104e067bd353d99e1
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/07/2017
-
 
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Azure Data Factory を使用して PostgreSQL からデータを移動する

@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Active Directory ポータルのリスクの高いサインイン レポート | Microsoft Docs"
 description: "Azure Active Directory ポータルのリスクの高いサインイン レポートについて説明します。"
 services: active-directory
@@ -11,14 +10,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/04/2017
+ms.date: 07/15/2017
 ms.author: markvi
+ms.reviewer: dhanyahk
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
 ms.openlocfilehash: e21b7733bc0f6b8625fbdcec3529ad603ce306c1
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/09/2017
-
 
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのリスクの高いサインイン レポート

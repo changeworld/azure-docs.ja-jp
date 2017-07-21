@@ -3,8 +3,8 @@ title: "Mobile Apps 用 Node.js バックエンド サーバー SDK を操作す
 description: "Azure App Service Mobile Apps 用の Node.js バックエンド サーバー SDK を操作する方法について説明します。"
 services: app-service\mobile
 documentationcenter: 
-author: adrianhall
-manager: adrianha
+author: ggailey777
+manager: syntaxc4
 editor: 
 ms.assetid: e7d97d3b-356e-4fb3-ba88-38ecbda5ea50
 ms.service: app-service-mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: adrianha
-translationtype: Human Translation
+ms.author: glenga
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
 ms.openlocfilehash: 8a6fd3711bf273d7035587d3731a334fd2268c32
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/09/2017
-
 
 ---
 # <a name="how-to-use-the-azure-mobile-apps-nodejs-sdk"></a>Azure Mobile Apps Node.js SDK の使用方法
@@ -45,33 +45,33 @@ Azure Mobile Apps Node SDK は、2 つのデータベース ドライバーを�
 Azure App Service Mobile Apps の Node.js バックエンドはすべて ExpressJS アプリケーションとして開始されます。  ExpressJS は、Node.js で使用可能な最も人気のある Web サービス フレームワークです。  次のように、基本的な [Express] アプリケーションを作成できます。
 
 1. コマンド ウィンドウまたは PowerShell ウィンドウで、プロジェクトのディレクトリを作成します。
-   
+
         mkdir basicapp
 2. npm init を実行して、パッケージの構造を初期化します。
-   
+
         cd basicapp
         npm init
-   
+
     npm init コマンドでは、プロジェクトを初期化するための一連の質問が示されます。  次の出力例を参照してください。
-   
+
     ![npm init の出力][0]
 3. npm リポジトリから express および azure-mobile-apps ライブラリをインストールします。
-   
+
         npm install --save express azure-mobile-apps
 4. app.js ファイルを作成して、基本的なモバイル サーバーを実装します。
-   
+
         var express = require('express'),
             azureMobileApps = require('azure-mobile-apps');
-   
+
         var app = express(),
             mobile = azureMobileApps();
-   
+
         // Define a TodoItem table
         mobile.tables.add('TodoItem');
-   
+
         // Add the mobile API so it is accessible as a Web API
         app.use(mobile);
-   
+
         // Start listening on HTTP
         app.listen(process.env.PORT || 3000);
 
@@ -94,28 +94,28 @@ Visual Studio 2015 には、IDE 内で Node.js アプリケーションを開発
 2. **[テンプレート]** > **[JavaScript]** > **[Node.js]** の順に展開します。
 3. **[Basic Azure Node.js Express 4 Application]**を選択します。
 4. プロジェクト名を入力します。  *[OK]*をクリックします。
-   
+
     ![Visual Studio 2015 の新しいプロジェクト][1]
 5. **npm** ノードを右クリックし、**[新しい npm パッケージのインストール]** を選択します。
 6. 最初の Node.js アプリケーションの作成時に、npm カタログを更新することが必要な場合があります。  必要に応じて、 **[最新の情報に更新]** をクリックします。
 7. 検索ボックスに「 *azure-mobile-apps* 」と入力します。  **azure-mobile-apps 2.0.0** パッケージをクリックし、**[パッケージのインストール]** をクリックします。
-   
+
     ![新しい npm パッケージのインストール][2]
 8. **[閉じる]**をクリックします。
 9. *app.js* ファイルを開き、Azure Mobile Apps SDK のサポートを追加します。  ライブラリの require ステートメントの下の 6 行目に、次のコードを追加します。
-   
+
         var bodyParser = require('body-parser');
         var azureMobileApps = require('azure-mobile-apps');
-   
+
     他の app.use ステートメントの後の約 27 行目に、次のコードを追加します。
-   
+
         app.use('/users', users);
-   
+
         // Azure Mobile Apps Initialization
         var mobile = azureMobileApps();
         mobile.tables.add('TodoItem');
         app.use(mobile);
-   
+
     ファイルを保存します。
 10. アプリケーションをローカルで実行するか (API は http://localhost:3000 で動作します)、Azure に発行します。
 
@@ -124,7 +124,8 @@ Visual Studio 2015 には、IDE 内で Node.js アプリケーションを開発
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service-classic](../../includes/app-service-mobile-dotnet-backend-create-new-service-classic.md)]
 
-**[テーブル API の作成]** の *[はじめに]* ブレードに戻り、**[バックエンド言語]** として **[Node.js]** を選択します。 **[これにより、すべてのサイト コンテンツが上書きされることを確認しました。]** のボックスをオンにし、**[TodoItem テーブルを作成する]** をクリックします。
+**[テーブル API の作成]** の *[はじめに]* ブレードに戻り、**[バックエンド言語]** として **[Node.js]** を選択します。
+**[これにより、すべてのサイト コンテンツが上書きされることを確認しました。]** のボックスをオンにし、**[TodoItem テーブルを作成する]** をクリックします。
 
 ### <a name="download-quickstart"></a>方法: Git を使用して Node.js バックエンド クイック スタート コード プロジェクトをダウンロードする
 ポータルの **[クイック スタート]** ブレードを使用して Node.js モバイル アプリ バックエンドを作成すると、Node.js プロジェクトが自動的に作成され、サイトにデプロイされます。 ポータルでは、テーブルと API を追加したり、Node.js バックエンドのコード ファイルを編集したりできます。 また、さまざまなデプロイ ツールを使用してバックエンド プロジェクトをダウンロードすると、テーブルと API を追加または変更した後でプロジェクトを再発行できます。 詳細については、 [Azure App Service デプロイメント ガイド]を参照してください。 次の手順では、Git リポジトリを使用して、クイック スタート プロジェクトのコードをダウンロードします。
@@ -133,14 +134,14 @@ Visual Studio 2015 には、IDE 内で Node.js アプリケーションを開発
 2. 「[App Service アプリのリポジトリの有効化](../app-service-web/app-service-deploy-local-git.md#Step3)」の手順に従って、バックエンド サイトの Git リポジトリを有効にします。このとき、デプロイ用のユーザー名とパスワードをメモしておきます。
 3. モバイル アプリ バックエンドのブレードで、 **[Git クローン URL]** の設定をメモしておきます。
 4. 次の例に示すように、Git クローン URL を使用して、`git clone` コマンドを実行します (必要に応じてパスワードを入力します)。
-   
+
         $ git clone https://username@todolist.scm.azurewebsites.net:443/todolist.git
 5. ローカル ディレクトリ (前の例では /todolist) を参照し、プロジェクト ファイルがダウンロード済みであることを確認します。 `/tables` ディレクトリで `todoitem.json` ファイルを見つけます。  このファイルでは、テーブルに対するアクセス許可を定義します。  また、同じディレクトリにある `todoitem.js` ファイルも見つけます。このファイルでは、テーブルの CRUD 操作スクリプトを定義します。
 6. プロジェクト ファイルに変更を加えた後に、次のコマンドを実行して、変更をサイトに追加、コミット、アップロードします。
-   
+
         $ git commit -m "updated the table script"
         $ git push origin master
-   
+
     新しいファイルをプロジェクトに追加する場合は、最初に `git add .` コマンドを実行する必要があります。
 
 一連の新しいコミットがサイトにプッシュされるたびに、そのサイトは再発行されます。
@@ -242,37 +243,37 @@ Azure Mobile Apps Node.js SDK では [mssql Node.js パッケージ] を使用�
 
 > [!TIP]
 > メモリ ドライバーでは、テスト用の完全な機能セットは提供されません。  ローカルでバックエンドをテストする場合は、SQL Express データ ストアと mssql ドライバーを使用することをお勧めします。
-> 
-> 
+>
+>
 
 1. [Microsoft SQL Server 2014 Express]をダウンロードしてインストールします。  必ず、SQL Server 2014 Express with Tools エディションをインストールしてください。  64 ビット サポートを明示的に要求した場合を除き、32 ビット版を使用することで実行時のメモリ使用量が少なくなります。
 2. SQL Server 2014 構成マネージャーを実行します。
-   
+
    1. 左側のツリー メニューの **[SQL Server ネットワークの構成]** ノードを展開します。
    2. **[SQLEXPRESS のプロトコル]**をクリックします。
    3. **[TCP/IP]** を右クリックし、**[有効化]** を選択します。  ポップアップ ダイアログで **[OK]** をクリックします。
    4. **[TCP/IP]** を右クリックし、**[プロパティ]** を選択します。
    5. **[IP アドレス]** タブをクリックします。
    6. **[IPAll]** ノードを見つけます。  **[TCP ポート]** フィールドに、「**1433**」と入力します。
-      
+
           ![Configure SQL Express for TCP/IP][3]
    7. **[OK]**をクリックします。  ポップアップ ダイアログで **[OK]** をクリックします。
    8. 左側のツリー メニューの **[SQL Server のサービス]** をクリックします。
    9. **[SQL Server (SQLEXPRESS)]** を右クリックし、**[再起動]** を選択します。
    10. SQL Server 2014 構成マネージャーを閉じます。
 3. SQL Server 2014 Management Studio を実行して、ローカルの SQL Express インスタンスに接続します。
-   
+
    1. オブジェクト エクスプローラーでインスタンスを右クリックし、 **[プロパティ]**
    2. **[セキュリティ]** ページを選択します。
    3. **[SQL Server 認証モードと Windows 認証モード]** が選択されていることを確認します。
    4. **[OK]**
-      
+
           ![Configure SQL Express Authentication][4]
    5. **[セキュリティ]** > **[ログイン]** の順に展開します。
    6. **[ログイン]** を右クリックし、**[新しいログイン]** を選択します。
    7. ログイン名を入力します。  **[SQL Server 認証]**を選択します。  パスワードを入力し、**[パスワードの確認入力]** に同じパスワードを入力します。  パスワードは、Windows の複雑さの要件を満たしている必要があります。
    8. **[OK]**
-      
+
           ![Add a new user to SQL Express][5]
    9. 新しいログインを右クリックし、 **[プロパティ]**
    10. **[サーバー ロール]** ページを選択します。
@@ -356,13 +357,13 @@ Azure SQL Database をデータ ストアとして使用する方法は、Azure 
 
 > [!NOTE]
 > モバイル アプリ バックエンドと同じ場所に、既にデータベースがある場合は、 **[既存のデータベースを使用する]** を選択すると、そのデータベースを選択できます。 別の場所にあるデータベースを使用すると、待機時間が増加するため、これはお勧めできません。
-> 
-> 
+>
+>
 
 1. 新しいモバイル アプリ バックエンドで、**[設定]** > **[モバイル アプリ]** > **[データ]** > **[+ 追加]** の順にクリックします。
 2. **[データ接続の追加]** ブレードで、**[SQL Database - 必要な設定の構成]** > **[新しいデータベースの作成]** の順にクリックします。  **[名前]** フィールドに新しいデータベースの名前を入力します。
 3. **[サーバー]**をクリックします。  **[新しいサーバー]** ブレードで、**[サーバー名]** フィールドに一意のサーバー名を入力し、**[サーバー管理ログイン]** と **[パスワード]** に適切な内容を指定します。  **[Azure サービスにサーバーへのアクセスを許可する]** チェック ボックスがオンになっていることを確認します。  **[OK]**をクリックします。
-   
+
     ![Azure SQL Database の作成][6]
 4. **[新しいデータベース]** ブレードで、**[OK]** をクリックします。
 5. **[データ接続の追加]** ブレードに戻り、**[接続文字列]** を選択して、データベースの作成時に指定したログイン名とパスワードを入力します。  既存のデータベースを使用する場合は、そのデータベースのログイン資格情報を入力します。  入力したら、 **[OK]**をクリックします。
@@ -801,8 +802,8 @@ Node.js アプリケーションは、広範囲の診断ログ ツールにア�
 
 テーブル用のコマンド バーには、次のコマンドが用意されています。
 
-* **[アクセス許可の変更]** - テーブルに対する読み取り、挿入、更新、削除操作のアクセス許可を変更します。 
-  匿名アクセスを許可するオプション、認証を要求するオプション、操作に対するすべてのアクセスを無効にするオプションがあります。 
+* **[アクセス許可の変更]** - テーブルに対する読み取り、挿入、更新、削除操作のアクセス許可を変更します。
+  匿名アクセスを許可するオプション、認証を要求するオプション、操作に対するすべてのアクセスを無効にするオプションがあります。
 * **[スクリプトの編集]** - テーブルのスクリプト ファイルは、App Service Editor で開きます。
 * **[スキーマの管理]** - 列の追加または削除やテーブルのインデックスの変更を実行します。
 * **[テーブルのクリア]** - 既存のテーブルですべてのデータ行が削除されるように切り捨てます。ただし、スキーマは変更されません。
@@ -822,7 +823,7 @@ Node.js アプリケーションは、広範囲の診断ログ ツールにア�
 Azure ポータルでは、ローカル コンピューターにプロジェクトをダウンロードする必要なく、App Service Editor を使用して Node.js バックエンド スクリプト ファイルを編集できます。 オンライン エディターでスクリプト ファイルを編集するには、次の手順に従います。
 
 1. モバイル アプリ バックエンドのブレードで、**[すべての設定]**、**[テーブルの簡単操作]** または **[API の簡単操作]** の順にクリックし、テーブルまたは API をクリックしてから、**[スクリプトの編集]** をクリックします。 App Service Editor でスクリプト ファイルが開きます。
-   
+
     ![App Service Editor](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-visual-studio-editor.png)
 2. オンライン エディターで、コード ファイルを変更します。 変更内容は、入力時に自動的に保存されています。
 

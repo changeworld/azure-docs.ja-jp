@@ -3,7 +3,7 @@ title: "Azure Web アプリのオープン ソース テクノロジに関する
 description: "Azure App Service の Web Apps 機能のオープン ソース テクノロジに関するよく寄せられる質問への回答を掲載しています。"
 services: app-service\web
 documentationcenter: 
-author: simonxjx
+author: genlin
 manager: cshepard
 editor: 
 tags: top-support-issue
@@ -13,14 +13,13 @@ ms.workload: web
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 5/16/2017
-ms.author: v-six
+ms.date: 7/10/2017
+ms.author: genli
 ms.translationtype: Human Translation
 ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
 ms.openlocfilehash: 3f7dcaf21e39ebfd6a36f1bfe38f8e78adad081f
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/15/2017
-
 
 ---
 

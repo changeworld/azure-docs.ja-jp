@@ -4,7 +4,7 @@ description: "iothub-explorer CLI ツールを使用して、Azure IoT Hub で D
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "iothub-explorer, クラウド デバイス メッセージング, IoT Hub C2D, C2D メッセージング"
 ms.assetid: 04521658-35d3-4503-ae48-51d6ad3c62cc
@@ -21,11 +21,8 @@ ms.openlocfilehash: a7abb8fb279e134b7f23df779f1c4548a9feb82d
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/08/2017
 
-
 ---
-<a id="use-iothub-explorer-to-send-and-receive-messages-between-your-device-and-iot-hub" class="xliff"></a>
-
-# iothub-explorer を使用してデバイスと IoT Hub 間でメッセージを送受信する
+# <a name="use-iothub-explorer-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>iothub-explorer を使用してデバイスと IoT Hub 間でメッセージを送受信する
 
 ![エンド ツー エンド ダイアグラム](media/iot-hub-get-started-e2e-diagram/2.png)
 
@@ -33,22 +30,16 @@ ms.lasthandoff: 05/08/2017
 
 [iothub-explorer](https://github.com/azure/iothub-explorer) には、IoT Hub 管理を容易にするためのコマンドがいくつか用意されています。 このチュートリアルでは、iothub-explorer を使用して、デバイスと IoT Hub 間でメッセージを送受信する方法を中心に説明します。
 
-<a id="what-you-will-learn" class="xliff"></a>
-
-## 学習内容
+## <a name="what-you-will-learn"></a>学習内容
 
 iothub-explorer を使用して、D2C メッセージを監視し、C2D メッセージを送信する方法について学習します。 D2C メッセージは、デバイスが収集し、IoT Hub に送信するセンサー データである可能性があります。 C2D メッセージは、IoT Hub がデバイスに送信するコマンドである可能性があります。このコマンドによって、そのデバイスに接続されている LED が点滅します。
 
-<a id="what-you-will-do" class="xliff"></a>
-
-## 学習内容
+## <a name="what-you-will-do"></a>学習内容
 
 - iothub-explorer を使用して、D2C メッセージを監視します。
 - iothub-explorer を使用して、C2D メッセージを送信します。
 
-<a id="what-you-need" class="xliff"></a>
-
-## 必要なもの
+## <a name="what-you-need"></a>必要なもの
 
 - 次の要件に対応するために、[デバイスのセットアップ](iot-hub-raspberry-pi-kit-node-get-started.md)に関するチュートリアルを完了しておきます。
   - 有効な Azure サブスクリプション
@@ -56,9 +47,7 @@ iothub-explorer を使用して、D2C メッセージを監視し、C2D メッ�
   - Azure IoT Hub にメッセージを送信するクライアント アプリケーション。
 - iothub-explorer  ([iothub-explorer のインストール](https://github.com/azure/iothub-explorer))
 
-<a id="monitor-device-to-cloud-messages" class="xliff"></a>
-
-## D2C メッセージの監視
+## <a name="monitor-device-to-cloud-messages"></a>D2C メッセージの監視
 
 デバイスから IoT Hub に送信されたメッセージを監視するには、次の手順に従います。
 
@@ -72,9 +61,7 @@ iothub-explorer を使用して、D2C メッセージを監視し、C2D メッ�
    > [!Note]
    > IoT Hub から `<device-id>` と `<IoTHubConnectionString>` を取得します。 前のチュートリアルが完了していることを確認してください。 または `HostName`、`SharedAccessKeyName`、および `SharedAccessKey` がある場合は、`iothub-explorer monitor-events <device-id> --login "HostName=<my-hub>.azure-devices.net;SharedAccessKeyName=<my-policy>;SharedAccessKey=<my-policy-key>"` を使用してみることができます。
 
-<a id="send-cloud-to-device-messages" class="xliff"></a>
-
-## C2D メッセージの送信
+## <a name="send-cloud-to-device-messages"></a>C2D メッセージの送信
 
 IoT Hub からデバイスにメッセージを送信するには、次の手順に従います。
 
@@ -96,9 +83,7 @@ IoT Hub からデバイスにメッセージを送信するには、次の手順
 > [!Note]
 > デバイスは、メッセージの受信時に、IoT Hub に対して個別に確認コマンドを送信する必要はありません。
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
 使用している IoT デバイスと Azure IoT Hub の間で D2C メッセージを監視し、C2D メッセージを送信する方法については学習しました。
 

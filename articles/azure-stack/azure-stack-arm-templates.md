@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/1/2017
+ms.date: 07/10/2017
 ms.author: helaw
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
 ms.openlocfilehash: ab82107c74620522758b02e679689f6eb5013a7f
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/03/2017
-
 
 ---
 # <a name="use-azure-resource-manager-templates-in-azure-stack"></a>Use Azure Resource Manager templates in Azure Stack

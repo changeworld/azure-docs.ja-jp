@@ -13,18 +13,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 06/19/2017
 ms.author: arramac
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: f85be2c605ec5dadd9296486d3a1357c39e40b64
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: a3f2e8634981ac158312e6b9700db92415e9e6c5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Azure Cosmos DB のパフォーマンスとスケールのテスト
-パフォーマンスとスケールのテストは、アプリケーション開発における重要なステップです。 データベース層は、多くのアプリケーションの全体的なパフォーマンスとスケーラビリティに大きく関係しており、パフォーマンス テストの重要な構成要素となっています。 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) は、拡張の柔軟性とパフォーマンスの確実性を目指した専用設計になっているため、ハイパフォーマンスのデータベース層が求められるアプリケーションにとてもよく合います。 
+パフォーマンスとスケールのテストは、アプリケーション開発における重要なステップです。 データベース層は、多くのアプリケーションの全体的なパフォーマンスとスケーラビリティに大きく関係しており、パフォーマンス テストの重要な構成要素となっています。 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) は、拡張の柔軟性とパフォーマンスの確実性を目指した専用設計になっているため、ハイパフォーマンスのデータベース層が求められるアプリケーションにとてもよく合います。 
 
 Cosmos DB のワークロードに対するパフォーマンス テストを検討している開発者や、ハイパフォーマンス アプリケーション用のデータベースとして Cosmos DB の評価を担当する開発者の方は、この記事をご参考ください。 データベースのパフォーマンス テストに主眼を置いた内容となっていますが、運用環境のアプリケーションに該当するベスト プラクティスも含まれています。
 
@@ -50,7 +50,7 @@ Cosmos DB のパフォーマンスを向上させるためのクライアント�
 **手順 2:** App.config で EndpointUrl、AuthorizationKey、CollectionThroughput、DocumentTemplate (任意) の設定を変更します。
 
 > [!NOTE]
-> 高スループットでコレクションをプロビジョニングすることになるので、事前に[料金に関するページ](https://azure.microsoft.com/pricing/details/documentdb/)でコレクションあたりのコストを見積もってください。 Cosmos DB では、記憶域とスループットが別々に時間単位で課金されます。そのためテスト後に DocumentDB コレクションのスループットを下げるかコレクションを削除することでコストを節約できます。
+> 高スループットでコレクションをプロビジョニングすることになるので、事前に[料金に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)でコレクションあたりのコストを見積もってください。 Cosmos DB では、記憶域とスループットが別々に時間単位で課金されます。そのためテスト後に DocumentDB コレクションのスループットを下げるかコレクションを削除することでコストを節約できます。
 > 
 > 
 
@@ -100,19 +100,16 @@ Cosmos DB のパフォーマンスを向上させるためのクライアント�
     DocumentDBBenchmark completed successfully.
 
 
-**手順 4 (必要に応じて実行):** ツールからレポートされるスループット (RU/s) は、プロビジョニングするコレクションのスループット以上である必要があります。 そのようになっていない場合は、DegreeOfParallelism を少しずつ増やすと、その境界値に到達しやすくなります。 クライアント アプリのスループットが横ばいになった場合は、その複数のインスタンスを同じマシンまたは異なるマシンで起動すれば、それら複数のインスタンスで、プロビジョニングするスループットに到達させることができます。 この手順について不明な点がある場合は、askdocdb@microsoft.com にメールをお送りいただくか、[Azure Portal](https://portal.azure.com) からサポート チケットを申請してください。
+**手順 4 (必要に応じて実行):** ツールからレポートされるスループット (RU/s) は、プロビジョニングするコレクションのスループット以上である必要があります。 そのようになっていない場合は、DegreeOfParallelism を少しずつ増やすと、その境界値に到達しやすくなります。 クライアント アプリのスループットが横ばいになった場合は、その複数のインスタンスを同じマシンまたは異なるマシンで起動すれば、それら複数のインスタンスで、プロビジョニングするスループットに到達させることができます。 この手順について不明な点がある場合は、askcosmosdb@microsoft.com にメールをお送りいただくか、[Azure Portal](https://portal.azure.com) からサポート チケットを申請してください。
 
 アプリの稼働後は、さまざまな[インデックス作成ポリシー](indexing-policies.md)と[一貫性レベル](consistency-levels.md)を試しながら、スループットや待機時間への影響を把握することができます。 ソース コードに目を通して、同様の構成を独自のテスト スイートや実稼働アプリケーションに実装することもできます。
 
 ## <a name="next-steps"></a>次のステップ
-この記事では、.NET コンソール アプリを使用して Cosmos DB でパフォーマンスとスケールのテストを実行する方法を説明しました。 Cosmos DB の操作の詳細については、以下のリンクを参照してください。
+この記事では、.NET コンソール アプリを使用して Cosmos DB でパフォーマンスとスケールのテストを実行する方法を説明しました。 Azure Cosmos DB の操作の詳細については、以下のリンクを参照してください。
 
 * [Azure Cosmos DB パフォーマンス テスト サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)
 * [Azure Cosmos DB のパフォーマンスを向上させるクライアント構成オプション](performance-tips.md)
 * [Azure Cosmos DB でのサーバー側のパーティション分割](partition-data.md)
-* [DocumentDB のコレクションとパフォーマンス レベル](performance-levels.md)
-* [MSDN の DocumentDB .NET SDK に関するドキュメント](https://msdn.microsoft.com/library/azure/dn948556.aspx)
-* [DocumentDB .NET のサンプル](https://github.com/Azure/azure-documentdb-net)
-* [パフォーマンスに関するヒントについての Azure Cosmos DB ブログ](https://azure.microsoft.com/blog/2015/01/20/performance-tips-for-azure-documentdb-part-1-2/)
+
 
 

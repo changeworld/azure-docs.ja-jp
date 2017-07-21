@@ -4,7 +4,7 @@ description: "Azure Machine Learning を使用して、IoT Hub がセンサー�
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "機械学習を使用した天気予報"
 ms.assetid: 8ba7d9e7-699c-4448-b353-0f3e1429d198
@@ -20,7 +20,6 @@ ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
 ms.openlocfilehash: 872930fd127729e0f444942ad1ee6fa11465ceb9
 ms.contentlocale: ja-jp
 ms.lasthandoff: 04/25/2017
-
 
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Azure Machine Learning で IoT Hub からのセンサー データを使用して天気予報を行う

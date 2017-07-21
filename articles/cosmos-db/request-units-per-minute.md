@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: acomet
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: ea63b988a72801ae4c288048021a915b20a34794
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 0c597fa4afa816f9731edb744ae494b6ef928b9e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -176,7 +176,7 @@ var query = client.CreateDocumentQuery<Book>(
 この記事では、Azure Cosmos DB でのパーティション分割のしくみ、パーティション分割コレクションの作成方法、またアプリケーションに最適なパーティション キーの選択方法を説明しました。
 
 * Azure Cosmos DB のスケールとパフォーマンスのテストを行う。 サンプルについては、「[Azure Cosmos DB のパフォーマンスとスケールのテスト](performance-testing.md)」を参照してください。
-* [SDK](documentdb-sdk-dotnet.md) または [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を使ってコーディングを開始します。
+* [SDK](documentdb-sdk-dotnet.md) または [REST API](/rest/api/documentdb/) を使ってコーディングを開始します。
 * Azure Cosmos DB における[スループットのプロビジョニング](request-units.md)について理解します。 
 
 

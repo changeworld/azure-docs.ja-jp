@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 07/13/2017
 ms.author: curtand
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
 ms.openlocfilehash: 8f61e947d9667f5047729ac19dc2bf1e03a48c6b
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/08/2017
-
 
 ---
 # <a name="add-a-custom-domain-name-to-azure-active-directory"></a>Azure Active Directory へのカスタム ドメイン名の追加

@@ -1,7 +1,7 @@
 ---
 title: "Azure メトリック アラートでの webhook の構成 | Microsoft Docs"
 description: "他の Azure 以外のシステムに Azure アラートを再ルーティングします。"
-author: kamathashwin
+author: johnkemnetz
 manager: carmonm
 editor: 
 services: monitoring-and-diagnostics
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2017
-ms.author: ashwink
-translationtype: Human Translation
+ms.author: johnkem
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 7282de704a1053e2052a189990fb2b30b2adad6f
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/03/2017
-
 
 ---
 # <a name="configure-a-webhook-on-an-azure-metric-alert"></a>Azure メトリック アラートでの webhook の構成

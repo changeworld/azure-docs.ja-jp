@@ -17,10 +17,10 @@ ms.date: 02/07/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 098904d8b5262d8a19d1c10003e0bcaa668ef2dc
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 24ee84bdd1c795d6354bb5cb8fe397b078e7c51f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -30,8 +30,8 @@ ms.lasthandoff: 05/27/2017
 AWS やオンプレミスの仮想化ソリューションから Azure に VHD ファイルをアップロードして、Managed Disks を利用する VM を作成できます。 Azure Managed Disks では、Azure IaaS VM のストレージ アカウントを管理する必要がなくなります。 指定する必要があるのは必要なディスクの種類 (Premium または Standard) とサイズだけで、ディスクは Azureによって作成および管理されます。 
 
 一般化された VHD と特殊化された VHD のいずれもアップロードできます。 
-**一般化された VHD** - 一般化した VHD では、Sysprep を使用して個人アカウント情報がすべて削除されています。 
-**特殊化された VHD** - 特殊化された VHD では、ユーザーアカウント、アプリケーション、その他のステート データが元の VM から保持されます。 
+- **一般化した VMD**: Sysprep を使用してすべての個人アカウント情報が削除されています。 
+- **特殊化された VHD**: ユーザーアカウント、アプリケーション、その他のステート データが元の VM から保持されます。 
 
 > [!IMPORTANT]
 > VHD を Azure にアップロードする前に、「[Windows VHD の Azure へのアップロードの準備](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」に従う必要があります
@@ -41,9 +41,9 @@ AWS やオンプレミスの仮想化ソリューションから Azure に VHD �
 
 | シナリオ                                                                                                                         | ドキュメント                                                                                                                       |
 |----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| Azure Managed Disks に移行する既存の AWS EC2 インスタンスがある                                     | [アマゾン ウェブ サービス (AWS) から Azure Managed Disks に移行する](aws-to-azure.md)                           |
-| 複数の Azure VM を作成するためのイメージとして使用する他の仮想化プラットフォームの VM がある。 | [汎用化された VHD の Azure へのアップロードと、Managed Disks を使用した新しい VM の作成](upload-generalized-managed.md)に関する記事 |
-| Azure で再作成する一意にカスタマイズされた VM がある。                                                      | [特殊化された VHD の Azure へのアップロードと、Managed Disks を使用した新しい VM の作成](create-vm-specialized.md)に関する記事         |
+| Azure Managed Disks に移行する既存の AWS EC2 インスタンスがある                                     | [PowerShell を使用してアマゾン ウェブ サービス (AWS) から Azure に Windows VM を移行する](aws-to-azure.md)                           |
+| 複数の Azure VM を作成するためのイメージとして使用する他の仮想化プラットフォームの VM がある。 | [汎用化した VHD をアップロードして Azure で新しい VM を作成する](upload-generalized-managed.md) |
+| Azure で再作成する一意にカスタマイズされた VM がある。                                                      | [特殊化されたディスクからの Windows VM の作成](create-vm-specialized.md)         |
 
 
 ## <a name="overview-of-managed-disks"></a>Managed Disks の概要

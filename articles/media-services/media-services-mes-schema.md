@@ -12,14 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/12/2017
+ms.date: 07/19/2017
 ms.author: juliako
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
 ms.openlocfilehash: f8e6e1da776d680d48737ecb5ac7b9319901f121
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/30/2017
-
 
 ---
 # <a name="media-encoder-standard-schema"></a>Media Encoder Standard スキーマ

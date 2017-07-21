@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2016
+ms.date: 06/06/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 244413be8b094605883445bb3cbf675b538b704e
-ms.lasthandoff: 03/10/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 3bad3219b087523125047f24d643ffdc5e24caa0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -28,6 +29,9 @@ ms.lasthandoff: 03/10/2017
 このトピックでは、Media Encoder Standard (MES) を使用して、入力解像度とビットレートに基づいてビットレート ラダー (ビットレートと解像度のペア) を自動生成する方法を説明します。 自動生成されたプリセットが、入力解像度とビットレートを超えることはありません。 たとえば、入力が 3Mbps で 720p の場合、出力は最高でも 720p のままになり、3Mbps よりも低い速度で開始されます。
 
 この機能を使用するには、エンコード タスクを作成するときに**アダプティブ ストリーミング** プリセットを指定する必要があります。 **アダプティブ ストリーミング** プリセットを使用するときは、MES エンコーダーの判断によってビットレート ラダーの上限が設定されます。 ただし、使用されるレイヤーの数と解像度はサービスによって決まるため、ユーザーがエンコード コストを制御することはできません。 **アダプティブ ストリーミング** プリセットをエンコードした結果、MES によって生成される出力レイヤーの例は、このトピックの[終わり](#output)で確認できます。
+
+>[!NOTE]
+> このプリセットは、ストリーム可能な出力資産を生成する場合にのみ使用してください。 具体的には、出力資産に MP4 ファイルが含まれます。MP4 ファイルの場合、音声とビデオはインターリーブされません。 ビデオと音声がインターリーブされる MP4 ファイルを出力に含める必要がある場合は (たとえば、プログレッシブ ダウンロード ファイルとして使用する場合など)、[このセクション](media-services-mes-presets-overview.md)に記載されているいずれかのプリセットを使用します。
 
 ## <a id="encoding_with_dotnet"></a>Media Services .NET SDK を使用したエンコード
 

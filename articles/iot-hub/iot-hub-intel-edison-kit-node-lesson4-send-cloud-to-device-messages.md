@@ -4,7 +4,7 @@ description: "サンプル アプリケーションは、Edison 上で動作し�
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "Web からの Arduino による LED の制御, Web 経由の Arduino による LED の制御"
 ROBOTS: NOINDEX
@@ -17,11 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: adf5b10721a28432e6b37ef73c6a7e7ec9f93cdd
 ms.openlocfilehash: 4dfddf6a2664abbdfd9b5d782dafc9e5ff243e5a
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/25/2017
-
 
 ---
 # <a name="run-a-sample-application-to-receive-cloud-to-device-messages"></a>クラウドからデバイスへのメッセージを受信するサンプル アプリケーションの実行

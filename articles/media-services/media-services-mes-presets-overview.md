@@ -12,14 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 07/19/2017
 ms.author: juliako
 ms.translationtype: Human Translation
 ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
 ms.openlocfilehash: e9018ffa74c2895560adbd4c0d2b83ee67e9eb1c
 ms.contentlocale: ja-jp
 ms.lasthandoff: 03/03/2017
-
 
 ---
 

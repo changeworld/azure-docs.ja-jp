@@ -3,8 +3,8 @@ title: "Azure サイト間 VPN が断続的に切断される問題のトラブ�
 description: "サイト間 VPN 接続が頻繁に切断される問題をトラブルシューティングする方法について説明します。"
 services: vpn-gateway
 documentationcenter: na
-author: genlin
-manager: willchen
+author: chadmath
+manager: cshepard
 editor: 
 tags: 
 ms.service: vpn-gateway

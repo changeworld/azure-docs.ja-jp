@@ -3,24 +3,23 @@ title: "Azure Web Apps の構成に関する FAQ | Microsoft Docs"
 description: "Azure App Service の Web Apps 機能の構成および管理の問題に関するよく寄せられる質問への回答を確認します。"
 services: app-service\web
 documentationcenter: 
-author: simonxjx
+author: genlin
 manager: cshepard
 editor: 
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-webf
+ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 5/16/2017
-ms.author: v-six
+ms.date: 7/10/2017
+ms.author: genli
 ms.translationtype: Human Translation
 ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
 ms.openlocfilehash: d957bff779c3815706a682e8e78a1933218e361e
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/15/2017
-
 
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure の Web Apps の構成と管理に関する FAQ

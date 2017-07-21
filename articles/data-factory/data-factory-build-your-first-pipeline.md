@@ -13,14 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 07/10/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
 ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
 ms.openlocfilehash: b01a03fa362f8a9677e625945a2864c77d49f1bb
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/14/2017
-
 
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>チュートリアル: Hadoop クラスターを使用してデータを変換する最初のパイプラインを作成する

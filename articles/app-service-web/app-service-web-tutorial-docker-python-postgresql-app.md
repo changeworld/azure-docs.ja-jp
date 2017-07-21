@@ -77,7 +77,7 @@ GRANT ALL PRIVILEGES ON DATABASE eventregistration TO manager;
 次のコマンドを実行してサンプル レポジトリを複製し、*0.1-initialapp* リリースに移動します。
 
 ```bash
-git clone https://github.com/Azure-Samples/docker-flask-postgres.gi
+git clone https://github.com/Azure-Samples/docker-flask-postgres.git
 cd docker-flask-postgres
 git checkout tags/0.1-initialapp
 ```
@@ -98,7 +98,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 cd app
 FLASK_APP=app.py DBHOST="localhost" DBUSER="manager" DBNAME="eventregistration" DBPASS="supersecretpass" flask db upgrade
-FLASK_APP=app.py DBHOST="localhost" DBUSER="manager" DBNAME="eventregistration" DBPASS="supersecretpass" flask db run
+FLASK_APP=app.py DBHOST="localhost" DBUSER="manager" DBNAME="eventregistration" DBPASS="supersecretpass" flask run
 ```
 
 アプリが完全に読み込まれると、次のようなメッセージが表示されます。

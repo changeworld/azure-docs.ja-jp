@@ -5,7 +5,7 @@ services: cognitive services
 documentationcenter: 
 author: juliako
 manager: erikre
-ms.service: video-indexer
+ms.service: cognitive-services
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: juliako;
@@ -15,12 +15,11 @@ ms.openlocfilehash: 75ba33cae9556071fba9b6ff9e9888879dab5b53
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/10/2017
 
-
 ---
 # <a name="video-indexer-concepts"></a>Video Indexer concepts
  
 This topic describes some concepts of the Video Indexer service.
-     
+    
 ## <a name="breakdowns"></a>Breakdowns
 
 The **breakdowns** element has the full list and details of everything. For example, it has a list of blocks where each block has its transcript lines, OCR lines, faces. In addition, transcript lines, OCR lines, faces have their timestamps and other details. This is where the full transcript comes from. However, the breadown can be too detailed and too long for most users, in which case you would look at **Summarized insights**.

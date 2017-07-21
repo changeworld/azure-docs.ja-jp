@@ -5,7 +5,7 @@ services: cognitive services
 documentationcenter: 
 author: juliako
 manager: erikre
-ms.service: video-indexer
+ms.service: cognitive-services
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: juliako;
@@ -14,7 +14,6 @@ ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
 ms.openlocfilehash: 316a34dcd761a8a45464863bd0612a5224ec1eeb
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/02/2017
-
 
 ---
 # <a name="examine-the-video-indexer-output"></a>Examine the Video Indexer output
@@ -34,7 +33,7 @@ You can also visually examine the video's summarized insights by pressing the **
 This topic examines the JSON content returned by the  **Get Breakdowns** API.
  
 >[!NOTE]
-> Make sure to review the [concepts](video-indexer-concepts.md) topic.    
+> Make sure to review the [concepts](video-indexer-concepts.md) topic.  
 
 ## <a name="root-elements"></a>Root elements
 

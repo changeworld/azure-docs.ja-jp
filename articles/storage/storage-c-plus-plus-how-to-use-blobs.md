@@ -20,7 +20,6 @@ ms.openlocfilehash: 8571011cac1182a5bfdfe722c194fcd681712a02
 ms.contentlocale: ja-jp
 ms.lasthandoff: 11/17/2016
 
-
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>C++ から BLOB ストレージを使用する方法
 [!INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
@@ -57,8 +56,8 @@ C++ 用 Azure ストレージ クライアント ライブラリをインスト�
 Azure Storage API を使用して BLOB にアクセスする C++ ファイルの先頭には、次の include ステートメントを追加します。  
 
 ```cpp
-include <was/storage_account.h>
-include <was/blob.h>
+#include <was/storage_account.h>
+#include <was/blob.h>
 ```
 
 ## <a name="setup-an-azure-storage-connection-string"></a>Azure のストレージ接続文字列の設定

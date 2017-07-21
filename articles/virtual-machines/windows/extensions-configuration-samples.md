@@ -15,10 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: abe6d13e4fcb323f5aceacaee3b9dc8ed51c8b61
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: a22962690854d273377f7295ab5dd49419f5a354
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -358,6 +359,32 @@ ms.lasthandoff: 04/03/2017
             "storageAccountKey": "[listkeys(variables('accountid'), '2015-05-01-preview').key1]",
             "storageAccountEndPoint": "https://core.windows.net"
           }
+          }
+
+### <a name="octopus-deploy-tentacle-agent"></a>Octopus Deploy Tentacle エージェント
+
+Azure で Octopus Deploy Tentacle を構成する方法の詳細については、[Octopus のドキュメント](https://octopus.com/docs/installation/installing-tentacles/azure-virtual-machines)を参照してください。
+
+          {
+            "publisher": "OctopusDeploy.Tentacle",
+            "type": "OctopusDeployWindowsTentacle",
+            "typeHandlerVersion": "2.0",
+            "autoUpgradeMinorVersion": "true",
+            "settings": {
+              "OctopusServerUrl": "(string, required) The url to the Octopus server portal.",
+              "Environments": [ "(array of strings, required) The environments to which the Tentacle should be added." ],
+              "Roles": [ "(array of strings, required) The roles to assign to the Tentacle." ],
+              "CommunicationMode": "(string, required) Whether the Tentacle should wait for connections from the server ('Listen') or should poll the server ('Poll').",
+              "Port": (int, required) The port to listen on for connections from the server (in 'Listen' mode), or the port on which to connect to the Octopus server ('Poll' mode).,
+              "PublicHostNameConfiguration": "(string, optional) If in listening mode, how the server should contact the Tentacle. Can be 'PublicIP', 'FQDN', 'ComputerName' or 'Custom'. Defaults to 'PublicIp'.",
+              "CustomPublicHostName": "(string, optional) If in listening mode, and 'PublicHostNameConfiguration' is set to 'Custom', the address that the server should use for this Tentacle.",
+              "MachinePolicy": "(string, optional) The Machine Policy to assign to the Tentacle. If not specified, uses the default Machine Policy.",
+              "Tenants": [ "(array of strings, optional) The tenants to assign to the Tentacle. The tenants feature must be enabled on the Octopus Server." ],
+              "TenantTags": [ "(array of strings, optional) The tenant tags to assign to the Tentacle, in the format 'TagSet/TagName'. The tenants feature must be enabled on the Octopus Server." ]
+            },
+            "protectedSettings": {
+              "ApiKey": "(string, required) The Api Key to use to connect to the Octopus server."
+            }
           }
 
 上記の例では、バージョン番号を最新のバージョン番号に置き換えます。

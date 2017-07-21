@@ -5,7 +5,7 @@ services: cognitive services
 documentationcenter: 
 author: juliako
 manager: erikre
-ms.service: video-indexer
+ms.service: cognitive-services
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: juliako;
@@ -14,7 +14,6 @@ ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: d5c8463d1669a03c82601cff7eacb9e9d7a461b9
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/01/2017
-
 
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>Embed Video Indexer widgets into your applications

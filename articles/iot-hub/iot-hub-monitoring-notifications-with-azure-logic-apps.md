@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 04/12/2017
 ms.author: xshi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 2cdfbadfc4cc28afe34b4d558f40bba6451f7388
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: bf45f4c80c73ab47698a39e310324e34a3e21e67
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/25/2017
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -145,6 +145,7 @@ Azure Logic Apps は、一連の手順として、プロセスを自動化する
    1. 作成したキューを選択し、[**Maximum message count**] \(最大メッセージ数) に「`175`」と入力する
 
       ![ロジック アプリで Service Bus 接続の最大メッセージ数を指定する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/8_specify-maximum-message-count-for-service-bus-connection-logic-app-azure-portal.png)
+   1. [保存] ボタンをクリックして、変更を保存します。
 
 1. SMTP サービス接続を作成します。
    1. [**新しいステップ**]  >  [**アクションの追加**] をクリックします。
@@ -176,3 +177,4 @@ Azure Logic Apps は、一連の手順として、プロセスを自動化する
 温度の監視と通知のメールボックスと IoT Hub を接続するロジック アプリが正常に作成されました。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
+

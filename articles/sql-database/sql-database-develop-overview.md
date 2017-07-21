@@ -8,17 +8,18 @@ manager: jhubbard
 editor: genemi
 ms.assetid: 67c02204-d1bd-4622-acce-92115a7cde03
 ms.service: sql-database
-ms.custom: development
+ms.custom: develop apps
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: sstein
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 338fa476377e9ff04c9a1f4e585f790b92a59f87
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: 50024fdb487e859b870a1025b23790f1cc5d1a18
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -66,7 +67,7 @@ SQL Database への接続中に一時エラーが発生した場合は、コー�
 ## <a name="network-considerations"></a>ネットワークに関する考慮事項
 * クライアント プログラムをホストするコンピューターのファイアウォールで、ポート 1433 での発信 TCP が許可されていることを確認します。  詳細: [Azure ポータルを使用して Azure SQL Database ファイアウォールを構成する](sql-database-configure-firewall-settings.md)
 * クライアントが Azure 仮想マシン (VM) で実行されているときに、クライアント プログラムが SQL Database に接続する場合、VM で特定のポートの範囲を開く必要があります。 詳細: [ADO.NET 4.5 および SQL Database における 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)
-* Azure SQL Database へのクライアント接続はプロキシを使用せずに、データベースに直接やり取りする場合があります。 1433 以外のポートが重要になります。 詳細: [ADO.NET 4.5 および SQL Database における 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)
+* Azure SQL Database へのクライアント接続はプロキシを使用せずに、データベースに直接やり取りする場合があります。 1433 以外のポートが重要になります。 詳細については、「[Azure SQL Database connectivity architecture](sql-database-connectivity-architecture.md)」 (Azure SQL データベース接続アーキテクチャ) および「[ADO.NET 4.5 用の 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)」を参照してください。
 
 ## <a name="data-sharding-with-elastic-scale"></a>Elastic Scale によるデータ シャーディング
 Elastic Scale は、スケール アウト (およびスケール イン) のプロセスを簡略化します。 

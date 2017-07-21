@@ -5,7 +5,7 @@ services: cognitive services
 documentationcenter: 
 author: juliako
 manager: erikre
-ms.service: video-indexer
+ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/02/2017
 ms.author: juliako;
@@ -14,7 +14,6 @@ ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
 ms.openlocfilehash: c032357cb14cb3acf148390b263fe8c13b8d35b0
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/15/2017
-
 
 ---
 # <a name="how-to-sign-up-and-upload-your-first-video"></a>How to sign up and upload your first video
@@ -31,8 +30,8 @@ You can sign up for the service using existing AAD, LinkedIn, Facebook, Google, 
 
 If signing in with an AAD account (for example, alice@contoso.onmicrosoft.com) you must go through two preliminary steps: 
 
-1.     Contact Microsoft to register your AAD organization’s domain (contoso.onmicrosoft.com).
-2.     Your AAD organization’s admin must first sign in to grant the portal permissions to your org. 
+1.  Contact Microsoft to register your AAD organization’s domain (contoso.onmicrosoft.com).
+2.  Your AAD organization’s admin must first sign in to grant the portal permissions to your org. 
 
 ##<a name="upload-a-video"></a>Upload a video
 

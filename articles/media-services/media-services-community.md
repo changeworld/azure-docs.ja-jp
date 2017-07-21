@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 07/17/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 735f8d81ce089727b14b8b67de7233ab71fc5abd
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="azure-media-services-community"></a>Azure Media Services コミュニティ
@@ -59,10 +60,5 @@ Azure Media Services のメインの電子メール アドレスは **mediaservi
 | Azure Media Player |ampinfo@microsoft.com |
 | Azure Media Explorer |amse@microsoft.com |
 | ワークフロー デザイナー |mepd@microsoft.com |
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

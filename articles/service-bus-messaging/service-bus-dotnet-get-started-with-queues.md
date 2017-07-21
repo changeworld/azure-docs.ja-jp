@@ -20,16 +20,11 @@ ms.openlocfilehash: 02d0ce093bc42cffa4f3993826c61c8aeca4d033
 ms.contentlocale: ja-jp
 ms.lasthandoff: 07/01/2017
 
-
 ---
-<a id="get-started-with-service-bus-queues" class="xliff"></a>
-
-# Service Bus キューの使用
+# <a name="get-started-with-service-bus-queues"></a>Service Bus キューの使用
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-<a id="what-will-be-accomplished" class="xliff"></a>
-
-## 作業内容
+## <a name="what-will-be-accomplished"></a>作業内容
 このチュートリアルに含まれる手順は次のとおりです。
 
 1. Azure ポータルを使用して Service Bus 名前空間を作成する。
@@ -37,50 +32,36 @@ ms.lasthandoff: 07/01/2017
 3. メッセージを送信するコンソール アプリケーションを記述する。
 4. 直前の手順で送信されたメッセージを受信するためのコンソール アプリケーションを作成する。
 
-<a id="prerequisites" class="xliff"></a>
-
-## 前提条件
+## <a name="prerequisites"></a>前提条件
 1. [Visual Studio 2015 以降](http://www.visualstudio.com)。 このチュートリアルの例では、Visual Studio 2017 を使用します。
 2. Azure サブスクリプション。
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-<a id="1-create-a-namespace-using-the-azure-portal" class="xliff"></a>
-
-## 1.Azure ポータルを使用した名前空間の作成
+## <a name="1-create-a-namespace-using-the-azure-portal"></a>1.Azure ポータルを使用した名前空間の作成
 Service Bus メッセージング名前空間を既に作成している場合は、「[Azure Portal を使用したキューの作成](#2-create-a-queue-using-the-azure-portal)」セクションに進んでください。
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-<a id="2-create-a-queue-using-the-azure-portal" class="xliff"></a>
-
-## 2.Azure ポータルを使用したキューの作成
+## <a name="2-create-a-queue-using-the-azure-portal"></a>2.Azure ポータルを使用したキューの作成
 Service Bus キューを既に作成している場合は、「[キューへのメッセージの送信](#3-send-messages-to-the-queue)」セクションに進んでください。
 
 [!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
 
-<a id="3-send-messages-to-the-queue" class="xliff"></a>
-
-## 3.キューへのメッセージの送信
+## <a name="3-send-messages-to-the-queue"></a>3.キューへのメッセージの送信
 キューにメッセージを送信するために、Visual Studio を使用して C# コンソール アプリケーションを記述します。
 
-<a id="create-a-console-application" class="xliff"></a>
-
-### コンソール アプリケーションの作成
+### <a name="create-a-console-application"></a>コンソール アプリケーションの作成
 
 Visual Studio を起動し、新しい**コンソール アプリ (.NET Framework)** プロジェクトを作成します。
 
-<a id="add-the-service-bus-nuget-package" class="xliff"></a>
-
-### Service Bus NuGet パッケージの追加
+### <a name="add-the-service-bus-nuget-package"></a>Service Bus NuGet パッケージの追加
 1. 新しく作成したプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
 2. **[参照]** タブをクリックし、**Microsoft Azure Service Bus** を検索して、**[WindowsAzure.ServiceBus]** の項目を選択します。 **[インストール]** をクリックし、インストールが完了したら、このダイアログ ボックスを閉じます。
    
     ![Select a NuGet package][nuget-pkg]
 
-<a id="write-some-code-to-send-a-message-to-the-queue" class="xliff"></a>
-
-### キューにメッセージを送信するコードの記述
+### <a name="write-some-code-to-send-a-message-to-the-queue"></a>キューにメッセージを送信するコードの記述
 1. Program.cs ファイルの先頭に次の `using` ステートメントを追加します。
    
     ```csharp
@@ -95,7 +76,6 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Framewor
     var client = QueueClient.CreateFromConnectionString(connectionString, queueName);
     var message = new BrokeredMessage("This is a test message!");
 
-    Console.WriteLine(String.Format("Message body: {0}", message.GetBody<String>()));
     Console.WriteLine(String.Format("Message id: {0}", message.MessageId));
 
     client.Send(message);
@@ -126,7 +106,6 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Framewor
                 var client = QueueClient.CreateFromConnectionString(connectionString, queueName);
                 var message = new BrokeredMessage("This is a test message!");
 
-                Console.WriteLine(String.Format("Message body: {0}", message.GetBody<String>()));
                 Console.WriteLine(String.Format("Message id: {0}", message.MessageId));
 
                 client.Send(message);
@@ -141,9 +120,7 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Framewor
    
       ![メッセージ サイズ][queue-message]
 
-<a id="4-receive-messages-from-the-queue" class="xliff"></a>
-
-## 4.キューからメッセージを受け取る
+## <a name="4-receive-messages-from-the-queue"></a>4.キューからメッセージを受け取る
 
 1. 送信したメッセージを受信するには、前の手順で説明した送信側アプリケーションと同じように、新しいコンソール アプリケーションを作成し、Service Bus NuGet パッケージへの参照を追加します。
 2. Program.cs ファイルの先頭に次の `using` ステートメントを追加します。
@@ -204,9 +181,7 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Framewor
 
 お疲れさまでした。 これで、キューを作成し、メッセージを送信して、メッセージを受信しました。
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
 Service Bus メッセージングのさらに高度な機能を紹介する[サンプルが含まれる GitHub リポジトリ](https://github.com/Azure/azure-service-bus/tree/master/samples)を参照してください。
 

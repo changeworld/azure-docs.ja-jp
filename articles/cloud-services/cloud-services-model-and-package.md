@@ -12,14 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2016
+ms.date: 07/05/2017
 ms.author: adegeo
 ms.translationtype: Human Translation
 ms.sourcegitcommit: cca4d126a5c5f012af6afb9a31d0aedc0f7eb155
 ms.openlocfilehash: 7aebd5bd168799e1a88bad0e78ba3a164bfcfccd
 ms.contentlocale: ja-jp
 ms.lasthandoff: 07/06/2017
-
 
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>クラウド サービス モデルとそのパッケージ化について

@@ -2,7 +2,7 @@
 title: "Azure アクティビティ ログのアーカイブ | Microsoft Docs"
 description: "ストレージ アカウントの長期保持に関する Azure アクティビティ ログをアーカイブする方法を説明します。"
 author: johnkemnetz
-manager: rboucher
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2016
 ms.author: johnkem
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaa162df8a6cd60cb174242e6a353439f2da58b4
 ms.openlocfilehash: eb3a0ad811a4286df1bac963904bd9154c0ccfa3
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/10/2016
 
 ---
 # <a name="archive-the-azure-activity-log"></a>Azure アクティビティ ログのアーカイブ
@@ -167,10 +168,5 @@ PT1H.json ファイル内では、各イベントは、この形式に従って 
 * [分析のための BLOB のダウンロード](../storage/storage-dotnet-how-to-use-blobs.md#download-blobs)
 * [アクティビティ ログの Event Hubs へのストリーム](monitoring-stream-activity-logs-event-hubs.md)
 * [詳細については、アクティビティ ログに関するセクションをご覧ください](monitoring-overview-activity-logs.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

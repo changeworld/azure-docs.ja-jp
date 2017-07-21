@@ -7,7 +7,7 @@ manager: jhubbard
 editor: mimig
 documentationcenter: 
 ms.assetid: d0a3c310-eb63-4e45-8122-b7724095c32f
-ms.service: Azure Cosmos DB
+ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -19,7 +19,6 @@ ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
 ms.openlocfilehash: 95adddc01ee2814515c20f36e8503de30454a8f4
 ms.contentlocale: ja-jp
 ms.lasthandoff: 07/04/2017
-
 
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB の要求ユニット

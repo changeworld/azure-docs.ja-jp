@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2016
+ms.date: 07/17/2017
 ms.author: anandy
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
 ms.openlocfilehash: 9bb29624324305f5295e0a50ef79d8f4c6d063c0
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/21/2017
-
 
 ---    
 
@@ -65,10 +65,10 @@ AD FS ファームのサーバーに関する情報の確認が済むと、Azure
 
 証明書を指定すると、Azure AD Connect が一連の前提条件を確認します。 証明書を確認し、証明書が AD FS ファーム用として正しいことを確認します。
 
--    証明書のサブジェクト名/代替サブジェクト名がフェデレーション サービス名と同じであるか、またはワイルドカード証明書であること。
--    証明書の有効期間が 30 日より長いこと。
--    証明書の信頼チェーンが有効であること。
--    証明書がパスワードで保護されていること。
+-   証明書のサブジェクト名/代替サブジェクト名がフェデレーション サービス名と同じであるか、またはワイルドカード証明書であること。
+-   証明書の有効期間が 30 日より長いこと。
+-   証明書の信頼チェーンが有効であること。
+-   証明書がパスワードで保護されていること。
 
 ## <a name="step-3-select-servers-for-the-update"></a>手順 3: 更新するサーバーを選ぶ
 

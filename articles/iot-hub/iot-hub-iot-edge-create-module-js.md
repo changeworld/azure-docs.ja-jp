@@ -3,7 +3,7 @@ title: "Azure IoT Edge モジュールを Node.jsで作成する | Microsoft Doc
 description: "このチュートリアルでは、BLE データ コンバーター モジュールを最新の Azure IoT Edge NPM パッケージと Yeoman ジェネレーターを使用して記述する方法を紹介します。"
 services: iot-hub
 author: sushi
-manager: xiaozha
+manager: timlt
 ms.service: iot-hub
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,15 +18,13 @@ ms.contentlocale: ja-jp
 ms.lasthandoff: 07/01/2017
 
 ---
-# Azure IoT Edge モジュールを Node.js で作成する
-<a id="create-an-azure-iot-edge-module-with-nodejs" class="xliff"></a>
+# <a name="create-an-azure-iot-edge-module-with-nodejs"></a>Azure IoT Edge モジュールを Node.js で作成する
 
 このチュートリアルでは、Azure IoT Edge 用のモジュールを JS で作成する方法を紹介します。
 
 このチュートリアルでは、環境をセットアップし、最新の Azure IoT Edge NPM パッケージを使用して [BLE](https://en.wikipedia.org/wiki/Bluetooth_Low_Energy) データ コンバーター モジュールを記述する方法を示します。
 
-## 前提条件
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>前提条件
 
 このセクションでは、IoT Edge モジュールを開発するための環境をセットアップします。 *64 ビット 版の Windows* オペレーティング システムと *64 ビット版の Linux (Ubuntu 14 以降)* オペレーティング システムの両方に適用されます。
 
@@ -36,8 +34,7 @@ ms.lasthandoff: 07/01/2017
 * `npm install -g yo`
 * `npm install -g generator-az-iot-gw-module`
 
-## アーキテクチャ
-<a id="architecture" class="xliff"></a>
+## <a name="architecture"></a>アーキテクチャ
 
 Azure IoT Edge プラットフォームは、[ノイマン型アーキテクチャ](https://en.wikipedia.org/wiki/Von_Neumann_architecture)を採用しています。 これは、Azure IoT Edge アーキテクチャ全体が入力を処理して出力を生成する 1 つのシステムであり、個別のモジュールもそれぞれが小さな入出力サブシステムであることを意味します。 このチュートリアルでは、次の 2 つのモジュールについて説明します。
 
@@ -48,17 +45,14 @@ Azure IoT Edge プラットフォームは、[ノイマン型アーキテクチ�
 
 ![3 つのモジュール間のデータフロー (](media/iot-hub-iot-edge-create-module/dataflow.png "入力: シミュレートされた BLE モジュール; プロセッサー: コンバーター モジュール; 出力: 出力モジュール"))
 
-## 環境をセットアップする
-<a id="set-up-the-environment" class="xliff"></a>
+## <a name="set-up-the-environment"></a>環境をセットアップする
 JS で最初の BLE コンバーター モジュールの記述を開始するための環境をすばやくセットアップする方法を次に示します。
 
-### モジュール プロジェクトを作成する
-<a id="create-module-project" class="xliff"></a>
+### <a name="create-module-project"></a>モジュール プロジェクトを作成する
 1. コマンド ライン ウィンドウを開き、`yo az-iot-gw-module` を実行します。
 2. 画面の手順に従って、モジュール プロジェクトの初期化を完了します。
 
-### プロジェクト構造
-<a id="project-structure" class="xliff"></a>
+### <a name="project-structure"></a>プロジェクト構造
 JS モジュール プロジェクトは、次のコンポーネントで構成されます。
 
 `modules` - カスタマイズされる JS モジュールのソース ファイル。 既定の `sensor.js` と `printer.js` を、独自のモジュール ファイルに置き換えます。
@@ -72,8 +66,7 @@ JS モジュール プロジェクトは、次のコンポーネントで構成�
 `README.md` - モジュール プロジェクトの基本ドキュメント。
 
 
-### パッケージ ファイル
-<a id="package-file" class="xliff"></a>
+### <a name="package-file"></a>パッケージ ファイル
 
 この `package.json` は、モジュール プロジェクトで必要なすべてのメタデータ情報 (名前、バージョン、エントリ、スクリプト、ランタイム、開発の依存関係など) を宣言します。
 
@@ -102,8 +95,7 @@ JS モジュール プロジェクトは、次のコンポーネントで構成�
 ```
 
 
-### エントリ ファイル
-<a id="entry-file" class="xliff"></a>
+### <a name="entry-file"></a>エントリ ファイル
 `app.js` は、Edge インスタンスを初期化する方法を定義します。 ここでは、変更を加える必要はありません。
 
 ```javascript
@@ -123,8 +115,7 @@ JS モジュール プロジェクトは、次のコンポーネントで構成�
 })();
 ```
 
-### モジュールのインターフェイス
-<a id="interface-of-module" class="xliff"></a>
+### <a name="interface-of-module"></a>モジュールのインターフェイス
 Azure IoT Edge モジュールは、そのジョブが入力の受信、処理の実行、出力の生成であるデータ プロセッサとして扱うことができます。
 
 入力には、ハードウェア (モーション ディテクターなど) からのデータ、他のモジュールからのメッセージ、その他 (タイマーによって定期的に生成されるランダムな数値など) があります。
@@ -163,8 +154,7 @@ module.exports = {
 };
 ```
 
-### コンバーター モジュール
-<a id="converter-module" class="xliff"></a>
+### <a name="converter-module"></a>コンバーター モジュール
 | 入力                    | プロセッサ                              | 出力                 | ソース ファイル            |
 | ------------------------ | -------------------------------------- | ---------------------- | ---------------------- |
 | 温度データ メッセージ | 解析を行って新しい JSON メッセージを構築する | JSON メッセージを構築する | `converter.js` |
@@ -206,8 +196,7 @@ receive: function (message) {
 },
 ```
 
-### 出力モジュール
-<a id="printer-module" class="xliff"></a>
+### <a name="printer-module"></a>出力モジュール
 | 入力                          | プロセッサ | 出力                     | ソース ファイル          |
 | ------------------------------ | --------- | -------------------------- | -------------------- |
 | 他のモジュールからのメッセージ | 該当なし       | メッセージをコンソールに記録する | `printer.js` |
@@ -224,8 +213,7 @@ receive: function (message) {
 }
 ```
 
-### 構成
-<a id="configuration" class="xliff"></a>
+### <a name="configuration"></a>構成
 モジュールを実行する前の最後の手順は、Azure IoT Edge を構成し、モジュール間の接続を確立することです。
 
 最初に、後のセクションで `name` によって参照できる `node` ローダーを宣言する必要があります (これは Azure IoT Edge が異なる言語のローダーをサポートするためです)。
@@ -294,8 +282,7 @@ receive: function (message) {
 ]
 ```
 
-## モジュールの実行
-<a id="running-the-modules" class="xliff"></a>
+## <a name="running-the-modules"></a>モジュールの実行
 1. `npm install`
 2. `npm start`
 

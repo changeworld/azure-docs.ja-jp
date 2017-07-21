@@ -3,7 +3,7 @@ title: "Azure IoT Edge モジュールを Javaで作成する | Microsoft Docs"
 description: "このチュートリアルでは、BLE データ コンバーター モジュールを最新の Azure IoT Edge Maven パッケージを使用して記述する方法を紹介します。"
 services: iot-hub
 author: junyi
-manager: sushi
+manager: timlt
 ms.service: iot-hub
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,15 +18,13 @@ ms.contentlocale: ja-jp
 ms.lasthandoff: 07/04/2017
 
 ---
-# Azure IoT Edge モジュールを Java で作成する
-<a id="create-an-azure-iot-edge-module-with-java" class="xliff"></a>
+# <a name="create-an-azure-iot-edge-module-with-java"></a>Azure IoT Edge モジュールを Java で作成する
 
 このチュートリアルでは、Azure IoT Edge 用のモジュールを Java でビルドする方法を紹介します。
 
 このチュートリアルでは、環境をセットアップし、最新の Azure IoT Edge Maven パッケージを使用して [BLE](https://en.wikipedia.org/wiki/Bluetooth_Low_Energy) データ コンバーター モジュールを記述する方法を示します。
 
-## 前提条件
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>前提条件
 
 このセクションでは、IoT Edge モジュールを開発するための環境をセットアップします。 *64 ビット 版の Windows* オペレーティング システムと *64 ビット版の Linux (Ubuntu/Debian 8)* オペレーティング システムの両方に適用されます。
 
@@ -41,8 +39,7 @@ ms.lasthandoff: 07/04/2017
 1. `git clone https://github.com/Azure-Samples/iot-edge-samples.git`
 2. `cd iot-edge-samples/java/simulated_ble`
 
-## 全体的なアーキテクチャ
-<a id="overall-architecture" class="xliff"></a>
+## <a name="overall-architecture"></a>全体的なアーキテクチャ
 
 Azure IoT Edge プラットフォームは、[ノイマン型アーキテクチャ](https://en.wikipedia.org/wiki/Von_Neumann_architecture)を採用しています。 これは、Azure IoT Edge アーキテクチャ全体が入力を処理して出力を生成する 1 つのシステムであり、個別のモジュールもそれぞれが小さな入出力サブシステムであることを意味します。 このチュートリアルでは、次の 2 つのモジュールについて説明します。
 
@@ -53,11 +50,9 @@ Azure IoT Edge プラットフォームは、[ノイマン型アーキテクチ�
 
 ![3 つのモジュール間のデータフロー (](media/iot-hub-iot-edge-create-module/dataflow.png "入力: シミュレートされた BLE モジュール; プロセッサー: コンバーター モジュール; 出力: 出力モジュール"))
 
-## コードについて
-<a id="understanding-the-code" class="xliff"></a>
+## <a name="understanding-the-code"></a>コードについて
 
-### Maven プロジェクト構造
-<a id="maven-project-structure" class="xliff"></a>
+### <a name="maven-project-structure"></a>Maven プロジェクト構造
 
 Azure IoT Edge パッケージは Maven に基づいているため、`pom.xml` ファイルを含む典型的な Maven プロジェクト構造を作成する必要があります。
 
@@ -125,8 +120,7 @@ POM は `com.microsoft.azure.gateway.gateway-module-base` パッケージから�
 </project>
 ```
 
-### Azure IoT Edge モジュールの基礎知識
-<a id="basic-understanding-of-an-azure-iot-edge-module" class="xliff"></a>
+### <a name="basic-understanding-of-an-azure-iot-edge-module"></a>Azure IoT Edge モジュールの基礎知識
 
 Azure IoT Edge モジュールは、そのジョブが入力の受信、処理の実行、出力の生成であるデータ プロセッサとして扱うことができます。
 
@@ -173,8 +167,7 @@ public class MyEdgeModule extends GatewayModule {
 }
 ```
 
-### コンバーター モジュール
-<a id="converter-module" class="xliff"></a>
+### <a name="converter-module"></a>コンバーター モジュール
 
 | 入力                    | プロセッサ                              | 出力                 | ソース ファイル            |
 | ------------------------ | -------------------------------------- | ---------------------- | ---------------------- |
@@ -206,8 +199,7 @@ public void receive(Message message) {
 }
 ```
 
-### 出力モジュール
-<a id="printer-module" class="xliff"></a>
+### <a name="printer-module"></a>出力モジュール
 
 | 入力                          | プロセッサ | 出力                     | ソース ファイル          |
 | ------------------------------ | --------- | -------------------------- | -------------------- |
@@ -222,8 +214,7 @@ public void receive(Message message) {
 }
 ```
 
-### Azure IoT Edge の構成
-<a id="azure-iot-edge-configuration" class="xliff"></a>
+### <a name="azure-iot-edge-configuration"></a>Azure IoT Edge の構成
 
 モジュールを実行する前の最後の手順は、Azure IoT Edge を構成し、モジュール間の接続を確立することです。
 
@@ -298,8 +289,7 @@ public void receive(Message message) {
 ]
 ```
 
-## モジュールの実行
-<a id="running-the-modules" class="xliff"></a>
+## <a name="running-the-modules"></a>モジュールの実行
 
 `mvn package` を使用して、すべてを `target/` フォルダー内に構築します。 クリーン ビルド用の `mvn clean package` もお勧めします。
 

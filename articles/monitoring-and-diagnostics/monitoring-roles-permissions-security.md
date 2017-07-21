@@ -2,7 +2,7 @@
 title: "Azure Monitor での役割、アクセス許可、およびセキュリティの使用 | Microsoft Docs"
 description: "Azure Monitor の組み込みの役割とアクセス許可を使用して、監視リソースへのアクセスを制限する方法について説明します。"
 author: johnkemnetz
-manager: rboucher
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: johnkem
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 26e12a27693fe94ae88b70328ed5dd0d9d5b4c10
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Azure Monitor での役割、アクセス許可、およびセキュリティの使用
@@ -169,10 +170,5 @@ New-AzureRmRoleDefinition -Role $role
 ## <a name="next-steps"></a>次のステップ
 * [Resource Manager で RBAC とアクセス許可を確認します](../active-directory/role-based-access-control-what-is.md)
 * [Azure で監視の概要を確認します](monitoring-overview.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

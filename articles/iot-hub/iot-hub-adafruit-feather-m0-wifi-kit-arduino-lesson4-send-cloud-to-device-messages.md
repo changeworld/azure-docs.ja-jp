@@ -4,7 +4,7 @@ description: "サンプル アプリケーションは、Adafruit Feather M0 WiF
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "Web からの Arduino による LED の制御, Web 経由の Arduino による LED の制御"
 ROBOTS: NOINDEX
@@ -17,11 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 4f9feb665ac93028023df86889ca53a64ac2ec0e
 ms.openlocfilehash: 63113841ca836681232e0aa43b15b444f8bb92e2
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/28/2017
-
 
 ---
 # <a name="run-a-sample-application-to-receive-cloud-to-device-messages"></a>クラウドからデバイスへのメッセージを受信するサンプル アプリケーションの実行

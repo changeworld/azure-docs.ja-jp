@@ -1,14 +1,14 @@
 ---
 title: "Azure CLI サンプル スクリプト - 別のリージョンのストレージ アカウントに、スナップショットを VHD としてエクスポート/コピーする | Microsoft Docs"
 description: "Azure CLI サンプル スクリプト - 同じまたは別のサブスクリプションのストレージ アカウントに、スナップショットを VHD としてエクスポート/コピーする"
-services: managed-disks-linux
+services: virtual-machines-linux
 documentationcenter: storage
-author: ramankum
+author: ramankumarlive
 manager: kavithag
-editor: ramankum
+editor: tysonn
 tags: azure-service-management
 ms.assetid: 
-ms.service: managed-disks-linux
+ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: vm-linux

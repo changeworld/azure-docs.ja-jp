@@ -12,14 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2016
+ms.date: 07/05/2017
 ms.author: adegeo
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 7b1b50f71158e62da6b8ceb741a5b8cf9795e3a4
 ms.openlocfilehash: cbe7da8670693a6bbc895ce06f000b6a7d6f0ae1
 ms.contentlocale: ja-jp
 ms.lasthandoff: 07/06/2017
-
 
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>クラウド サービスのスタートアップ タスクを構成して実行する方法

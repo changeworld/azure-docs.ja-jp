@@ -16,17 +16,17 @@ ms.date: 05/10/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: cd3b13b9988f51fd3755ced48714fdc18cf1ea3c
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 5f501bdb0a3c478a436d729dfe045ad8e39bd3bb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/14/2017
 
 
 ---
 
 # <a name="how-to-partition-and-scale-in-azure-cosmos-db"></a>Azure Cosmos DB でのパーティション分割とスケーリングの方法
 
-[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) は、世界規模で分散配置されるマルチモデルのデータベース サービスとして、高速で予測可能なパフォーマンスを実現し、アプリケーションの規模の拡大に合わせてシームレスにスケーリングできるように設計されています。 この記事では、Azure Cosmos DB におけるあらゆるデータ モデルのパーティション分割のしくみについて概説すると共に、Azure Cosmos DB コンテナーを構成してアプリケーションを効率的にスケーリングする方法について説明します。
+[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) は、世界規模で分散配置されるマルチモデルのデータベース サービスとして、高速で予測可能なパフォーマンスを実現し、アプリケーションの規模の拡大に合わせてシームレスにスケーリングできるように設計されています。 この記事では、Azure Cosmos DB におけるあらゆるデータ モデルのパーティション分割のしくみについて概説すると共に、Azure Cosmos DB コンテナーを構成してアプリケーションを効率的にスケーリングする方法について説明します。
 
 パーティション分割とパーティション キーについては、Scott Hanselman と Azure Cosmos DB プリンシパル エンジニアリング マネージャー Shireesh Thota による次の Azure Friday 動画でも取り上げています。
 

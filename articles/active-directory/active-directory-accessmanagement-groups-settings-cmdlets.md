@@ -20,7 +20,6 @@ ms.openlocfilehash: 81fdae033afd90b77d3725f8c39b8a6c6bbc3812
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/05/2017
 
-
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>グループの設定を構成するための Azure Active Directory コマンドレット
 
@@ -76,7 +75,7 @@ Office365 グループの設定は、Settings オブジェクトおよび Settin
 5. 最後に、設定を適用します。
   
   ```
-  New-AzureADDirectorySetting -DirectorySetting $settings
+  New-AzureADDirectorySetting -DirectorySetting $setting
   ```
 
 このコマンドレットが正常に完了すると、新しい Settings オブジェクトの ID が返されます。

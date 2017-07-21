@@ -21,10 +21,8 @@ ms.openlocfilehash: 7e0fa9a83c3c83145a4813422bf73a0e711d0ecc
 ms.contentlocale: ja-jp
 ms.lasthandoff: 07/06/2017
 
-
 ---
-# 変更の追跡ソリューションを使用してユーザーの環境内のソフトウェアの変更を追跡する
-<a id="track-software-changes-in-your-environment-with-the-change-tracking-solution" class="xliff"></a>
+# <a name="track-software-changes-in-your-environment-with-the-change-tracking-solution"></a>変更の追跡ソリューションを使用してユーザーの環境内のソフトウェアの変更を追跡する
 
 ![変更の追跡シンボル](./media/log-analytics-change-tracking/change-tracking-symbol.png)
 
@@ -32,15 +30,13 @@ ms.lasthandoff: 07/06/2017
 
 このソリューションをインストールすると、インストールしたエージェントの種類が更新されます。 監視対象サーバーにインストールされているソフトウェア、Windows サービス、および Linux デーモンの変更が読み取られた後、そのデータがクラウドの Log Analytics サービスに送信され、処理されます。 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。 [変更の追跡] ダッシュボードの情報を使用して、サーバー インフラストラクチャで行われた変更を簡単に確認できます。
 
-## ソリューションのインストールと構成
-<a id="installing-and-configuring-the-solution" class="xliff"></a>
+## <a name="installing-and-configuring-the-solution"></a>ソリューションのインストールと構成
 次の情報を使用して、ソリューションをインストールおよび構成します。
 
 * 変更を監視する各コンピューターに、[Windows](log-analytics-windows-agents.md)、[Operations Manager](log-analytics-om-agents.md)、または [Linux](log-analytics-linux-agents.md) エージェントが必要です。
 * 変更の追跡ソリューションを OMS ワークスペースに追加します。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ChangeTrackingOMS?tab=Overview) から追加するか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に説明されている手順に従って追加してください。  さらに手動で構成する必要はありません。
 
-### 追跡する Linux ファイルを構成する
-<a id="configure-linux-files-to-track" class="xliff"></a>
+### <a name="configure-linux-files-to-track"></a>追跡する Linux ファイルを構成する
 次の手順を使用して、Linux コンピューター上で追跡するファイルを構成します。
 
 1. OMS ポータルで、**[設定]** (歯車アイコン) をクリックします。
@@ -51,8 +47,7 @@ ms.lasthandoff: 07/06/2017
 > [!NOTE]
 > Linux ファイルの追跡には、ディレクトリの追跡、ディレクトリの再帰、およびワイルドカード追跡などの追加機能があります。
 
-### 追跡する Windows ファイルの構成
-<a id="configure-windows-files-to-track" class="xliff"></a>
+### <a name="configure-windows-files-to-track"></a>追跡する Windows ファイルの構成
 次の手順を使用して、Windows コンピューター上で追跡するファイルを構成します。
 
 1. OMS ポータルで、**[設定]** (歯車アイコン) をクリックします。
@@ -61,8 +56,7 @@ ms.lasthandoff: 07/06/2017
 4. [ **Save**] をクリックします。  
    ![Windows ファイルの変更追跡](./media/log-analytics-change-tracking/windows-file-change-tracking.png)
 
-### 追跡する Windows レジストリ キーを構成する
-<a id="configure-windows-registry-keys-to-track" class="xliff"></a>
+### <a name="configure-windows-registry-keys-to-track"></a>追跡する Windows レジストリ キーを構成する
 次の手順を使用して、Windows コンピューターで追跡するレジストリ キーを構成します。
 
 1. OMS ポータルで、**[設定]** (歯車アイコン) をクリックします。
@@ -71,8 +65,7 @@ ms.lasthandoff: 07/06/2017
 4. **[保存]** をクリックします。  
    ![Windows レジストリの変更追跡](./media/log-analytics-change-tracking/windows-registry-change-tracking.png)
 
-### Linux ファイル コレクションのプロパティの説明
-<a id="explanation-of-linux-file-collection-properties" class="xliff"></a>
+### <a name="explanation-of-linux-file-collection-properties"></a>Linux ファイル コレクションのプロパティの説明
 1. **種類**
    * **ファイル** (ファイルのメタデータを報告: サイズ、変更日、ハッシュなど)
    * **ディレクトリ** (ディレクトリのメタデータを報告: サイズ、変更日など)
@@ -80,13 +73,14 @@ ms.lasthandoff: 07/06/2017
    * **無視** (再帰中にシンボリック リンクを無視して、参照先のファイル/ディレクトリを含めないようにする)
    * **フォロー** (再帰中にシンボリック リンクをフォローして、参照先のファイル/ディレクトリも含めるようにする)
    * **管理** (シンボリック リンクをフォローし、返されたコンテンツの処理を変更する) 
+   
    > [!NOTE]   
    > ファイルのコンテンツの取得は現時点ではサポートされていないため、[管理] リンク オプションは推奨されません。
+   
 3. **再帰** (フォルダー レベルで再帰し、パス ステートメントに適合するすべてのファイルを追跡する)
 4. **Sudo** (sudo 特権を必要とするファイルまたはディレクトリへのアクセスを有効にする)
 
-### 制限事項
-<a id="limitations" class="xliff"></a>
+### <a name="limitations"></a>制限事項
 現在、変更の追跡ソリューションでは以下に対応していません。
 
 * Windows ファイル追跡用のフォルダー (ディレクトリ)
@@ -103,8 +97,7 @@ ms.lasthandoff: 07/06/2017
 * ネットワーク トラフィックが高いとき、変更レコードが表示されるまでに最長で 6 時間かかることがあります。
 * コンピューターのシャットダウン中に構成を変更した場合、そのコンピューターからは前の構成に対応するファイル変更が送信される可能性があります。
 
-## 変更の追跡データ収集の詳細
-<a id="change-tracking-data-collection-details" class="xliff"></a>
+## <a name="change-tracking-data-collection-details"></a>変更の追跡データ収集の詳細
 変更の追跡では、有効になっているエージェントを使用して、ソフトウェア インベントリと Windows サービス メタデータを収集します。
 
 次の表は、変更の追跡におけるデータの収集手段と、データ収集方法に関する各種情報をまとめたものです。
@@ -126,8 +119,7 @@ ms.lasthandoff: 07/06/2017
 | Windows ソフトウェア | 30 分 | はい。変更が検出されたときに 30 分ごとに送信されます。 スナップショットは、変更の有無に関係なく 24 時間おきに送信されます。 つまり変更が生じていなくてもスナップショットが送信されます。 |
 | Linux ソフトウェア | 5 分 | はい。 24 時間以内に変更がない場合は、スナップショットが送信されます。 |
 
-### レジストリ キーの変更追跡
-<a id="registry-key-change-tracking" class="xliff"></a>
+### <a name="registry-key-change-tracking"></a>レジストリ キーの変更追跡
 
 Log Analytics は、変更の追跡ソリューションを使用して、Windows レジストリの監視と追跡を実行します。 レジストリ キーへの変更を監視する目的は、サード パーティのコードやマルウェアがアクティブ化できる拡張性のポイントを正確に特定することです。 次の一覧は、ソリューションが追跡する既定のレジストリ キーとそれぞれが追跡される理由を示しています。
 
@@ -167,8 +159,7 @@ Log Analytics は、変更の追跡ソリューションを使用して、Window
     - Windows オペレーティング システムの対話型ログオン サポート モデルである Winlogon からイベント通知を受信できるパッケージの一覧を監視します。
 
 
-## 変更の追跡を使用する
-<a id="use-change-tracking" class="xliff"></a>
+## <a name="use-change-tracking"></a>変更の追跡を使用する
 ソリューションをインストールした後で、OMS の **[概要]** ページにある **[変更の追跡]** タイルを使用すると、監視対象サーバーの変更の概要を確認できます。
 
 ![[変更の追跡] タイルの画像](./media/log-analytics-change-tracking/change-tracking-tile.png)
@@ -186,13 +177,11 @@ Log Analytics は、変更の追跡ソリューションを使用して、Window
 
 ![[変更の追跡] ダッシュボードの画像](./media/log-analytics-change-tracking/change-tracking-dash02.png)
 
-### 変更の種類別に変更を表示するには
-<a id="to-view-changes-for-any-change-type" class="xliff"></a>
+### <a name="to-view-changes-for-any-change-type"></a>変更の種類別に変更を表示するには
 1. **[概要]** ページで、**[変更の追跡]** タイルをクリックします。
 2. **[変更の追跡]** ダッシュボードにあるいずれかの変更の種類ブレードで概要情報を確認し、**ログの検索**ページで、詳細情報を表示する変更の 1 つをクリックします。
 3. どのログの検索ページでも、時間、詳細結果、ログ検索履歴を表示することができます。 結果を絞り込むファセットを使用してフィルター処理することもできます。
 
-## 次のステップ
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>次のステップ
 * [Log Analytics のログ検索機能](log-analytics-log-searches.md) を使用して、詳細な変更追跡データを確認してください。
 

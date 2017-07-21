@@ -1,8 +1,8 @@
-﻿---
+---
 title: "Microsoft Azure と Azure Monitor のアラートの概要 | Microsoft Docs"
 description: "アラートを使用すると、Azure リソースのメトリック、イベント、またはログを監視し、指定した条件が満たされたときに通知を受けることができます。"
 author: rboucher
-manager: carolz
+manager: carmonm
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/02/2017
 ms.author: robb
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
 ms.openlocfilehash: 76c8feb077cca27dc96f43e708cdef4fbb0f824c
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/31/2017
-
 
 ---
 # <a name="what-are-alerts-in-microsoft-azure"></a>Microsoft Azure のアラートの概要
@@ -53,7 +53,7 @@ ms.lasthandoff: 03/31/2017
 * webhook を呼び出す。これにより、追加のオートメーション アクションを実行できます。 たとえば、次のものの呼び出しが可能です。
     - Azure Automation Runbook
     - Azure 関数
-    - Azure ロジック アプリ
+    - Azure Logic App
     - サードパーティのサービス
 
 ## <a name="what-can-activity-log-alerts-do"></a>アクティビティ ログ アラートでできること

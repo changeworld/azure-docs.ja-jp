@@ -21,7 +21,6 @@ ms.openlocfilehash: bfcf1f8c1aeb30df13a82470bb4fa0161204d8ee
 ms.contentlocale: ja-jp
 ms.lasthandoff: 07/04/2017
 
-
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Stream Analytics ジョブ モニターをプログラムで作成する
 
@@ -53,7 +52,7 @@ ms.lasthandoff: 07/04/2017
      <add key="ResourceGroupName" value="RESOURCE GROUP NAME" />
      <add key="JobName" value="YOUR JOB NAME" />
      <add key="StorageAccountName" value="YOUR STORAGE ACCOUNT"/>
-     <add key="ActiveDirectoryEndpoint" value="https://login.windows.net/" />
+     <add key="ActiveDirectoryEndpoint" value="https://login.microsoftonline.com/" />
      <add key="ResourceManagerEndpoint" value="https://management.azure.com/" />
      <add key="WindowsManagementUri" value="https://management.core.windows.net/" />
      <add key="AsaClientId" value="1950a258-227b-4e31-a9cf-717495945fc2" />

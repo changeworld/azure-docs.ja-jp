@@ -1,6 +1,6 @@
 ---
 title: "Azure Site Recovery を使用して StorSimple ファイル共有 DR を自動化する | Microsoft Docs"
-description: "Microsoft Azure StorSimple ストレージでホストされているファイル共有用ディザスター リカバリー ソリューションを作成するための手順とベスト プラクティスについて説明します。"
+description: "Microsoft Azure StorSimple ストレージでホストされているファイル共有用の障害復旧ソリューションを作成するための手順とベスト プラクティスについて説明します。"
 services: storsimple
 documentationcenter: NA
 author: vidarmsft
@@ -12,30 +12,31 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/13/2017
+ms.date: 06/09/2017
 ms.author: vidarmsft
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 3c7c972cdc395e2e20e7f6a296a2ffab6efad66d
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: 19346f2e4f2860258c421d76729abeb82f0e8987
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/10/2017
 
 
 ---
-# <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>StorSimple でホストされたファイル共有向けの Azure Site Recovery を使用した自動ディザスター リカバリー ソリューション
+# <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>StorSimple でホストされたファイル共有向けの Azure Site Recovery を使用した自動障害復旧ソリューション
 ## <a name="overview"></a>概要
 Microsoft Azure StorSimple は、ファイル共有でよく使用される複雑な非構造データに対応できるハイブリッド クラウド ストレージ ソリューションです。 StorSimple では、クラウド ストレージがオンプレミス ソリューションの拡張機能として使用され、オンプレミス ストレージとクラウド ストレージをまたがってデータが自動的に階層化されます。 ローカル スナップショットおよびクラウド スナップショットを使用した統合型データ保護により、ストレージ インフラストラクチャを拡大する必要がなくなります。
 
-[Azure Site Recovery](../site-recovery/site-recovery-overview.md) は、仮想マシンのレプリケーション、フェールオーバー、復旧を調整するといったディザスター リカバリー (DR) 機能を提供する Azure ベースのサービスです。 Azure Site Recovery は、仮想マシンとアプリケーションの一貫したレプリケート、保護、およびプライベート/パブリック クラウドまたはホスト側のクラウドへのシームレスなフェールオーバーを実行するために、多くのレプリケーション テクノロジをサポートしています。
+[Azure Site Recovery](../site-recovery/site-recovery-overview.md) は、仮想マシンのレプリケーション、フェールオーバー、復旧を調整するといった障害復旧 (DR) 機能を提供する Azure ベースのサービスです。 Azure Site Recovery は、仮想マシンとアプリケーションの一貫したレプリケート、保護、およびプライベート/パブリック クラウドまたはホスト側のクラウドへのシームレスなフェールオーバーを実行するために、多くのレプリケーション テクノロジをサポートしています。
 
-Azure Site Recovery、仮想マシンのレプリケーション、および StorSimple クラウド スナップショットの機能を使用することで、ファイル サーバー環境全体を保護することができます。 災害が発生した場合は、ワンクリックするだけで、数分以内に Azure 内でオンラインでファイル共有ができるようになります。
+Azure Site Recovery、仮想マシンのレプリケーション、および StorSimple クラウド スナップショットの機能を使用することで、ファイル サーバー環境全体を保護することができます。 障害が発生した場合は、ワンクリックするだけで、数分以内に Azure 内でオンラインでファイル共有ができるようになります。
 
-このドキュメントでは、StorSimple ストレージでホストされているファイル共有のディザスター リカバリー ソリューションの作成方法と、ワンクリック復旧計画を使用している計画、計画外、テスト フェールオーバーの実行方法を詳しく説明します。 つまり、災害発生時に StorSimple のフェールオーバーが有効になるように、Azure Site Recovery コンテナーで復旧計画を変更する方法を説明します。 さらに、サポートされている構成と前提条件についても説明します。 このドキュメントは、Azure Site Recovery と StorSimple のアーキテクチャの基礎知識をお持ちの方を対象としています。
+このドキュメントでは、StorSimple ストレージでホストされているファイル共有の障害復旧ソリューションの作成方法と、ワンクリック復旧計画を使用している計画済み、計画外、テスト フェールオーバーの実行方法を詳しく説明します。 つまり、障害発生時に StorSimple のフェールオーバーが有効になるように、Azure Site Recovery コンテナーで復旧計画を変更する方法を説明します。 さらに、サポートされている構成と前提条件についても説明します。 このドキュメントは、Azure Site Recovery と StorSimple のアーキテクチャの基礎知識をお持ちの方を対象としています。
 
 ## <a name="supported-azure-site-recovery-deployment-options"></a>サポートされている Azure Site Recovery のデプロイ オプション
-まず Hyper-V または VMware 上で実行される物理サーバーあるいは仮想マシン (VM) としてファイル サーバーをデプロイしてから、StorSimple ストレージの分割されたボリュームでファイル共有を作成できます。Azure Site Recovery を使用すると、物理および仮想のデプロイをセカンダリ サイトまたは Azure のいずれかで保護できます。このドキュメントでは、Azure を Hyper-V でホストされるファイル サーバー VM の復旧サイトとして使用し、StorSimple ストレージでファイル共有をしている場合のディザスター リカバリー ソリューションを詳しく説明します。ファイル サーバー が VMware VM または物理マシン上にある場合の他のシナリオでも、ディザスター リカバリー ソリューションを同様に実装できます。
+まず Hyper-V または VMware 上で実行される物理サーバーあるいは仮想マシン (VM) としてファイル サーバーをデプロイしてから、StorSimple ストレージの分割されたボリュームでファイル共有を作成できます。 Azure Site Recovery を使用すると、物理および仮想のデプロイをセカンダリ サイトまたは Azure のいずれかで保護できます。 このドキュメントでは、Azure を Hyper-V でホストされるファイル サーバー VM の復旧サイトとして使用し、StorSimple ストレージでファイル共有をしている場合の障害復旧ソリューションを詳しく説明します。 ファイル サーバー が VMware VM または物理マシン上にある場合の他のシナリオでも、障害復旧ソリューションを同様に実装できます。
 
 ## <a name="prerequisites"></a>前提条件
-StorSimple ストレージでホストされているファイル共有向けに Azure Site Recovery を使用するワンクリック ディザスター リカバリー ソリューションを実装する場合、前提条件は次のとおりです。
+StorSimple ストレージでホストされているファイル共有向けに Azure Site Recovery を使用するワンクリック障害復旧ソリューションを実装する場合、前提条件は次のとおりです。
 
 * Hyper-V、VMware、または物理マシンでホストされているオンプレミスの Windows Server 2012 R2 ファイル サーバー VM
 * Azure StorSimple Manager に登録されたオンプレミスの StorSimple ストレージ デバイス
@@ -47,7 +48,7 @@ StorSimple ストレージでホストされているファイル共有向けに
 
 (コストを引き上げる可能性のある) 待機時間が発生しないようにするには、StorSimple Cloud Appliance、オートメーション アカウント、およびストレージ アカウントを同じリージョンに作成してください。
 
-## <a name="enable-dr-for-storsimple-file-shares"></a>StorSimple ファイル共有におけるディザスター リカバリーを有効にする方法
+## <a name="enable-dr-for-storsimple-file-shares"></a>StorSimple ファイル共有における障害復旧を有効にする方法
 完全なレプリケーションと復旧を有効にするには、オンプレミス環境内の各コンポーネントを保護する必要があります。 このセクションでは以下の手順を説明します。
 
 * Active Directory と DNS レプリケーションの設定方法 (オプション)
@@ -56,7 +57,7 @@ StorSimple ストレージでホストされているファイル共有向けに
 * ネットワークの構成方法
 
 ### <a name="set-up-active-directory-and-dns-replication-optional"></a>Active Directory と DNS レプリケーションの設定方法 (オプション)
-Active Directory と DNS を実行するコンピューターを保護してディザスター リカバリー サイトで使用できるようにするには、これらのコンピューターを明示的に保護する必要があります (フェールオーバー後に、ファイル サーバーへの認証によるアクセスを可能にするためです)。2 つの方法をお勧めしますので、お客様のオンプレミス環境の複雑さに応じて選択してください。
+Active Directory と DNS を実行するコンピューターを保護して障害復旧サイトで使用できるようにするには、これらのコンピューターを明示的に保護する必要があります (フェールオーバー後に、ファイル サーバーへの認証によるアクセスを可能にするためです)。 2 つの方法をお勧めしますので、お客様のオンプレミス環境の複雑さに応じて選択してください。
 
 #### <a name="option-1"></a>方法 1
 お客様のアプリケーションの数が少ない場合は、オンプレミスのサイト全体に 1 つのドメイン コントローラーを使用して、サイト全体をフェールオーバーしてから、Azure Site Recovery レプリケーションを使用してドメイン コントローラー マシンをセカンダリ サイトにレプリケートすることをお勧めします (この方法は、サイト間、サイトと Azure 間の両方に適用できます)。
@@ -64,13 +65,13 @@ Active Directory と DNS を実行するコンピューターを保護してデ�
 #### <a name="option-2"></a>方法 2
 お客様のアプリケーションの数が多く、Active Directory フォレストを実行している場合は、一度に複数のアプリケーションをフェールオーバーしてから、障害復旧サイトで追加のドメイン コントローラーを (セカンダリ サイトまたは Azure のいずれかにおいて) 設定することをお勧めします。
 
-ディザスター リカバリー サイト上でドメイン コントローラーを使用できるようにする手順については、「 [Azure Site Recovery で Active Directory と DNS を保護する](../site-recovery/site-recovery-active-directory.md) 」を参照してください。 これ以降のドキュメントでは、ドメイン コントローラーがディザスター リカバリー サイトで使用可能になっていることを前提とします。
+障害復旧サイト上でドメイン コントローラーを使用できるようにする手順については、「 [Azure Site Recovery で Active Directory と DNS を保護する](../site-recovery/site-recovery-active-directory.md) 」を参照してください。 これ以降のドキュメントでは、ドメイン コントローラーが 障害復旧サイトで使用可能になっていることを前提とします。
 
 ### <a name="use-azure-site-recovery-to-enable-protection-of-the-file-server-vm"></a>Azure Site Recovery を使用してファイル サーバー VM の保護を有効にする方法
 この手順では、オンプレミスのファイル サーバー環境を準備し、Azure Site Recovery コンテナーを作成および準備してから、VM のファイル保護を有効にする必要があります。
 
 #### <a name="to-prepare-the-on-premises-file-server-environment"></a>オンプレミスのファイル サーバー環境を準備するには
-1. **[ユーザー アカウント制御]** を **[通知しない]** に設定します。 この設定が必要なのは、Azure Site Recovery によってフェールオーバーされた後に、Azure オートメーション スクリプトを使用して iSCSI ターゲットに接続するためです。
+1. **[ユーザー アカウント制御]** を **[通知しない]** に設定します。 この設定が必要なのは、Azure Site Recovery によってフェールオーバーされた後に、Azure  オートメーション スクリプトを使用して iSCSI ターゲットに接続するためです。
 
    1. Windows キー + Q キーを押して、 **UAC**を検索します。
    2. **[ユーザー アカウント制御設定の変更]**の設定を選択します。
@@ -89,7 +90,7 @@ Active Directory と DNS を実行するコンピューターを保護してデ�
       > バージョンによって、ファイル名が異なる場合があります。
       >
       >
-3. **[次へ]**をクリックします。
+3. **[次へ]** をクリックします。
 4. **[契約の条項]** をクリックして、**[次へ]** をクリックします。
 5. **[完了]**をクリックします。
 6. StorSimple ストレージで分割されたボリュームを使用して、ファイル共有を作成します。 詳細については、「 [StorSimple Manager サービスを使用してボリュームを管理する](storsimple-manage-volumes.md)」を参照してください。
@@ -140,11 +141,20 @@ StorSimple ボリュームの **[このボリュームの既定のバックア�
 ## <a name="create-a-recovery-plan"></a>復旧計画の作成
 ASR で復旧計画を作成し、ファイル共有のフェールオーバー プロセスを自動化することができます。 障害が発生した場合は、ワンクリックするだけで数分以内にファイル共有を稼働できます。 この自動化を有効にするには、Azure オートメーション アカウントが必要です。
 
-#### <a name="to-create-the-account"></a>アカウントを作成するには
+#### <a name="to-create-an-automation-account"></a>オートメーション アカウントを作成するには
 1. Azure ポータル &gt; **[Automation]** セクションに移動します。
-2. 新しいオートメーション アカウントを作成します。 アカウントは、StorSimple Cloud Appliance とストレージ アカウントが作成されたのと同じ geo/リージョンに設定してください。
+2. [**+ 追加**] ボタンをクリックして、以下のブレードを開きます。
+
+   ![](./media/storsimple-disaster-recovery-using-azure-site-recovery/image11.png)
+
+   * 名前 - 新しいオートメーション アカウントを入力します
+   * サブスクリプション - サブスクリプションを選択します
+   * リソース グループ - 新規作成するか、既存のリソース グループを選択します
+   * 場所 - 場所を選んで、StorSimple Cloud Appliance とストレージ アカウントが作成されたのと同じ geo/リージョンに設定してください。
+   * Azure 実行アカウントを作成する - [**はい**] オプションを選択します。
+
 3. Automation アカウントに移動し、**[Runbook]** &gt; **[ギャラリーの参照]** をクリックして、必要なすべての Runbook をオートメーション アカウントにインポートします。
-4. ギャラリーの **[ディザスター リカバリー]** ウィンドウで、次の Runbook を追加します。
+4. ギャラリーで **[障害復旧]** タグを見つけて、次の Runbook を追加します。
 
    * テスト フェールオーバー (TFO) 後の StorSimple ボリュームのクリーンアップ
    * StorSimple ボリューム コンテナーのフェールオーバー
@@ -153,13 +163,12 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
    * StorSimple Virtual Appliance の開始
 
      ![](./media/storsimple-disaster-recovery-using-azure-site-recovery/image3.png)
+
 5. オートメーション アカウントで Runbook を選択してすべてのスクリプトを発行し、**[編集]** &gt; **[発行]** をクリックした後、確認メッセージに対して **[はい]** をクリックします。 この手順の後、 **[Runbook]** タブは次のように表示されます。
 
     ![](./media/storsimple-disaster-recovery-using-azure-site-recovery/image4.png)
-6. オートメーション アカウントで、**[資産]** タブ &gt; の **[資格情報]** &gt; **[+ 資格情報の追加]** をクリックしてから Azure の資格情報を追加し、その資産に AzureCredential という名前を付けます。
 
-   Windows PowerShell の資格情報を使用します。 資格情報は、組織 ID ユーザー名とパスワードを含み、この Azure サブスクリプションにアクセスでき、多要素認証が無効にされている必要があります。 資格情報は、フェールオーバー時にユーザーに代わって認証し、障害復旧サイトでファイル サーバー ボリュームを稼働するために必要です。
-7. オートメーション アカウントで、**[資産]** タブ &gt; を選択してから **[変数]** &gt; **[変数の追加]** をクリックし、次の変数を追加します。 これらの資産を暗号化することもできます。 これらの変数は、復旧計画によって異なります。 (次の手順で作成する) 復旧計画の名前が TestPlan の場合、変数は TestPlan StorSimRegKey や TestPlan-AzureSubscriptionName などになります。
+6. オートメーション アカウントで、**[資産]** タブ &gt; を選択してから **[変数]** &gt; **[変数の追加]** をクリックし、次の変数を追加します。 これらの資産を暗号化することもできます。 これらの変数は、復旧計画によって異なります。 (次の手順で作成する) 復旧計画の名前が TestPlan の場合、変数は TestPlan StorSimRegKey や TestPlan-AzureSubscriptionName などになります。
 
    * *RecoveryPlanName***-StorSimRegKey**: StorSimple Manager サービス登録キー。
    * *RecoveryPlanName***-AzureSubscriptionName**: Azure サブスクリプションの名前。
@@ -178,8 +187,8 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
 
    ![](./media/storsimple-disaster-recovery-using-azure-site-recovery/image5.png)
 
-8. **[Recovery Services]** セクションに移動して、先ほど作成した Azure Site Recovery コンテナーを選択します。
-9. **[管理]** グループから **[復旧計画 (サイトの回復)]** オプションを選択し、次のように新しい復旧計画を作成します。
+7. **[Recovery Services]** セクションに移動して、先ほど作成した Azure Site Recovery コンテナーを選択します。
+8. **[管理]** グループから **[復旧計画 (サイトの回復)]** オプションを選択し、次のように新しい復旧計画を作成します。
 
    a.  **[+ 復旧計画]** ボタンをクリックすると、下のブレードが開きます。
 
@@ -284,14 +293,14 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
 * 1 つの StorSimple Cloud Appliance の最大容量が 64 TB であるため、合計 64 TB を超えるボリュームはフェール オーバーすることができません。
 * 計画/計画されていないフェールオーバーが失敗し、VM が Azure で作成された場合は、その VM をクリーンアップしないでください。 代わりに、フェールバックを実行します。 VM を削除してしまうと、オンプレミスの VM を再び立ち上げることができなくなります。
 * フェールオーバー後にボリュームが表示されない場合、VM に移動して、[ディスクの管理] を開き、ディスクを再スキャンしてからオンラインにします。
-* ディザスター リカバリー サイトのドライブ文字がオンプレミスのドライブ文字と異なる場合があります。 このような場合は、フェールオーバーが完了したら、手動で問題を修正する必要があります。
+* 障害復旧サイトのドライブ文字がオンプレミスのドライブ文字と異なる場合があります。 このような場合は、フェールオーバーが完了したら、手動で問題を修正する必要があります。
 * オートメーション アカウントに資産として入力する Azure の資格情報では、多要素認証を無効にする必要があります。 この認証が無効になっていないと、スクリプトは自動的に実行されないため、復旧計画が失敗します。
 * フェールオーバー ジョブのタイムアウト: ボリューム コンテナーのフェールオーバーにかかる時間が、Azure Site Recovery でスクリプトあたりの制限されている時間 (現在は 120 分) を超えると、StorSimple のスクリプトはタイムアウトになります。
 * バックアップ ジョブのタイムアウト: ボリュームのバックアップにかかる時間が、Azure Site Recovery でスクリプトあたりの制限されている時間 (現在は 120 分) を超えると、StorSimple のスクリプトはタイムアウトになります。
 
   > [!IMPORTANT]
   > Azure ポータルから手動でバックアップを実行し、復旧計画をもう一度実行してください。
-  
+
 * 複製ジョブのタイムアウト: ボリュームの複製にかかる時間が、Azure Site Recovery でスクリプトあたりの制限されている時間 (現在は 120 分) を超えると、StorSimple のスクリプトがタイムアウトになります。
 * 時間同期のエラー: ポータルでバックアップが正常に作成された場合でも、バックアップが失敗したというエラーが StorSimple スクリプトで表示されることがあります。 このエラーの原因として、StorSimple アプライアンスの時間がタイム ゾーンの現在の時間と同期されていないことが考えられます。
 

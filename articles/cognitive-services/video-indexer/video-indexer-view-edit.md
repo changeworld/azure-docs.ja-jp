@@ -4,7 +4,7 @@ description: This topic demonstrates how to view and edit Video Indexer insights
 services: cognitive services
 documentationcenter: 
 author: juliako
-ms.service: video-indexer
+ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/02/2017
 ms.author: juliako;
@@ -13,7 +13,6 @@ ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
 ms.openlocfilehash: 4f6ad3a0bc76071704bb8fa32c7a373988f34ac3
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/15/2017
-
 
 ---
 # <a name="view-and-edit-video-indexer-insights"></a>View and edit Video Indexer insights

@@ -5,7 +5,7 @@ services: cognitive services
 documentationcenter: 
 author: juliako
 manager: erikre
-ms.service: video-indexer
+ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/02/2017
 ms.author: juliako;
@@ -14,7 +14,6 @@ ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
 ms.openlocfilehash: 7760b2a07eb64d09eb2f0b73f7b8cf482e7610af
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/15/2017
-
 
 ---
 # <a name="create-video-insights-from-existing-videos"></a>Create video insights from existing videos

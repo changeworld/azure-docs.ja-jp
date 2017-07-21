@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: mithal;garye
-translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: d109c50be94a227efd39f151c01070a8e30b237d
-ms.lasthandoff: 03/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 22f9369d18edae34f51f20712c3f92e0a57700f2
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -40,7 +41,7 @@ ms.lasthandoff: 03/17/2017
 ## <a name="more-help-with-machine-learning-studio"></a>Machine Learning Studio に役立つその他の情報
 * Microsoft Azure Machine Learning の概要については、「 [Microsoft Azure での機械学習の概要](machine-learning-what-is-machine-learning.md)」を参照してください。
 * スコアリング Web サービスをデプロイする方法については、「 [Azure Machine Learning Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)」を参照してください。
-* スコアリング Web サービスを使用する方法については、「 [Machine Learning の実験からデプロイされた Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」を参照してください。
+* スコアリング Web サービスを使用する方法については、「[Machine Learning の実験からデプロイされた Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」を参照してください。
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 

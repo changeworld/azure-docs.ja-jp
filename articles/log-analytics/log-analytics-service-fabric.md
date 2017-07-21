@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 07/06/2017
 ms.author: nini
 ms.translationtype: Human Translation
 ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
 ms.openlocfilehash: a9d1b05e8f6740cb7c5ccf15dbe33b15bdbe27b0
 ms.contentlocale: ja-jp
 ms.lasthandoff: 07/06/2017
-
 
 ---
 # <a name="assess-azure-service-fabric-applications-and-micro-services-with-powershell"></a>PowerShell を使用して Azure Service Fabric アプリケーションとマイクロ サービスを評価する
@@ -92,12 +91,12 @@ function Select-Subscription {
 
             $count = 1
             foreach ($subscription in $allSubscriptions) {
-                $uiPrompt += "$count. " + $subscription.SubscriptionName + " (" + $subscription.SubscriptionId + ")`n"
+                $uiPrompt += "$count. " + $subscription.Name + " (" + $subscription.Id + ")`n"
                 $count++
             }
             $answer = (Read-Host -Prompt $uiPrompt) - 1
             $subscription = $allSubscriptions[$answer]
-             Write-Host $subscription.SubscriptionId
+             Write-Host $subscription.Id
         }  
     }
     return $subscription
@@ -248,7 +247,7 @@ function Select-StorageAccount {
                             {
                                 $existingConfig = Get-AzureRmOperationalInsightsStorageInsight -Workspace $workspace -Name $insightsName -ErrorAction Stop
                             }
-                        catch [Hyak.Common.CloudException]
+                        catch
                             {
                                 # HTTP Not Found is returned if the storage insight doesn't exist
                             }
@@ -341,7 +340,7 @@ function Select-Workspace {
     return $workspace
 }
 $subscription = Select-Subscription
-$subscriptionId = $subscription.SubscriptionId
+$subscriptionId = $subscription.Id
 $subscription = Select-AzureRmSubscription -SubscriptionId $subscriptionId
 $workspace = Select-Workspace
 Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -IntelligencePackName "ServiceFabric" -Enabled $true

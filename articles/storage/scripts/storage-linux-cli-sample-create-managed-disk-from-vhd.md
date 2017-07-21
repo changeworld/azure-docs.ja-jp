@@ -1,14 +1,14 @@
 ---
 title: "Azure CLI サンプル スクリプト - 同じサブスクリプションのストレージ アカウントに VHD ファイルから管理ディスクを作成する | Microsoft Docs"
 description: "Azure CLI サンプル スクリプト - 同じサブスクリプションのストレージ アカウントに VHD ファイルから管理ディスクを作成する"
-services: managed-disks-linux
+services: virtual-machines-linux
 documentationcenter: storage
-author: ramankum
+author: ramankumarlive
 manager: kavithag
-editor: ramankum
+editor: tysonn
 tags: azure-service-management
 ms.assetid: 
-ms.service: managed-disks-linux
+ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: vm-linux

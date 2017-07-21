@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/23/2017
+ms.date: 07/12/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 555e0b6340d09517bfd87efe209f0304f3266788
 ms.openlocfilehash: 76fd245f91e1bfab3df68120859c69e459283e5b
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/27/2017
 
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-the-azure-portal"></a>Azure ポータルを使用したオンデマンド コンテンツ配信の概要
@@ -164,10 +165,5 @@ Media Services のラーニング パスを確認します。
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
