@@ -35,7 +35,7 @@ ms.lasthandoff: 06/16/2017
 詳細については、「[Azure における VM バックアップ インフラストラクチャの計画を立てる](backup-azure-vms-introduction.md)」と [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/) に関するページを参照してください。
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して 2 種類のデプロイ モデルがあります。。[Resource Manager デプロイ モデルとクラシック デプロイ モデル](../azure-resource-manager/resource-manager-deployment-model.md)です。 バックアップ コンテナーで保護できるのは、クラシック モデルでデプロイされた VM だけです。 Resource Manager モデルでデプロイされた VM をバックアップ コンテナーで保護することはできません。 Recovery Services コンテナーの操作について詳しくは、[Recovery Services コンテナーへの VM のバックアップ](backup-azure-arm-vms.md)に関するページをご覧ください
+> Azure には、リソースの作成と操作に関して 2 種類のデプロイ モデルがあります: [Resource Manager デプロイ モデルとクラシック デプロイ モデル](../azure-resource-manager/resource-manager-deployment-model.md)です。 バックアップ コンテナーで保護できるのは、クラシック モデルでデプロイされた VM だけです。 Resource Manager モデルでデプロイされた VM をバックアップ コンテナーで保護することはできません。 Recovery Services コンテナーの操作について詳しくは、[Recovery Services コンテナーへの VM のバックアップ](backup-azure-arm-vms.md)に関するページをご覧ください
 >
 >
 
