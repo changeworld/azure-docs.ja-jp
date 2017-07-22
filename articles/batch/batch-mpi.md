@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: 5/22/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: d533dc2c49974f2ce4ef1d1f6dc12e23ec18877f
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 9adaf46743bad039e2a5680a7d6dca767d964459
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/03/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -96,7 +96,7 @@ await myCloudPool.CommitAsync();
 ```
 
 ### <a name="remote-direct-memory-access-rdma"></a>リモート ダイレクト メモリ アクセス (RDMA)
-Batch プールのコンピューティング ノードのサイズとして [RDMA 対応サイズ](../virtual-machines/windows/a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (A9 など) を選択した場合、MPI アプリケーションは Azure の高パフォーマンスで待機時間の短いリモート ダイレクト メモリ アクセス (RDMA) ネットワークを利用できます。
+Batch プールのコンピューティング ノードのサイズとして [RDMA 対応サイズ](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (A9 など) を選択した場合、MPI アプリケーションは Azure の高パフォーマンスで待機時間の短いリモート ダイレクト メモリ アクセス (RDMA) ネットワークを利用できます。
 
 次の記事で、"RDMA 対応" として指定されたサイズを確認してください。
 
