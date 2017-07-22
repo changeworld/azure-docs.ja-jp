@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 25e0a25a4468acf001f1ce4e6d62ceef1b420955
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 5998d785a63d43338240eabfdbbca8008a02e4b7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="analyze-sensor-data-with-apache-storm-event-hub-and-hbase-in-hdinsight-hadoop"></a>Apache Storm、Event Hub、HBase を HDInsight (Hadoop) で使用してセンサー データを分析する
@@ -32,7 +31,7 @@ HDInsight で Apache Storm を使用して、Azure Event Hub からのセンサ�
 > [!NOTE]
 > このドキュメントの情報とこのドキュメントで示されている例には、HDInsight バージョン 3.5 が必要です。
 >
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -83,7 +82,7 @@ HDInsight で Apache Storm を使用して、Azure Event Hub からのセンサ�
 > [!IMPORTANT]
 > Storm と HBase の両方に対して 1 つの HDInsight クラスターを作成するメソッドはサポートされていないため、2 つのクラスターが必要です。
 
-トポロジは、[org.apache.storm.eventhubs.spout.EventHubSpout](http://storm.apache.org/releases/0.10.1/javadocs/org/apache/storm/eventhubs/spout/class-use/EventHubSpout.html) クラスを使ってイベント ハブからデータを読み取り、[org.apache.storm.hbase.bolt.HBaseBolt](https://storm.apache.org/javadoc/apidocs/org/apache/storm/hbase/bolt/class-use/HBaseBolt.html) クラスを使って HBase にデータを書き込みます。 Web サイトとの通信は、 [socket.io client.java](https://github.com/nkzawa/socket.io-client.java)を使用して行います。
+トポロジは、[org.apache.storm.eventhubs.spout.EventHubSpout](http://storm.apache.org/releases/0.10.1/javadocs/org/apache/storm/eventhubs/spout/class-use/EventHubSpout.html) クラスを使ってイベント ハブからデータを読み取り、[org.apache.storm.hbase.bolt.HBaseBolt](https://storm.apache.org/releases/1.0.1/javadocs/org/apache/storm/hbase/bolt/HBaseBolt.html) クラスを使って HBase にデータを書き込みます。 Web サイトとの通信は、 [socket.io client.java](https://github.com/nkzawa/socket.io-client.java)を使用して行います。
 
 次の図は、トポロジのレイアウトを説明しています。
 

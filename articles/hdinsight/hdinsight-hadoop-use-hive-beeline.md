@@ -17,17 +17,14 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/26/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 93ea31b4469f21e92337a768668ae6d93bbc6ba6
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: db5dff01c0459db746eace0c9a4535aeccd4dcfa
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
-<a id="use-the-beeline-client-with-apache-hive" class="xliff"></a>
-
-# Apache Hive で Beeline クライアントを使用する
+# <a name="use-the-beeline-client-with-apache-hive"></a>Apache Hive で Beeline クライアントを使用する
 
 [Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) を使用して HDInsight で Hive クエリを実行する方法について説明します。
 
@@ -50,7 +47,7 @@ Beeline は、HDInsight クラスターのヘッド ノードに含まれてい�
 * HDInsight クラスターでの Linux ベースの Hadoop
 
   > [!IMPORTANT]
-  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 * SSH クライアントまたはローカル Beeline クライアント。 このドキュメントのほとんどの手順では、SSH セッションからクラスターへの Beeline を使用していることを前提としています。 クラスターの外部から Beeline を実行する方法について詳しくは、「[Beeline をリモートで使用する](#remote)」をご覧ください。
 
@@ -86,7 +83,7 @@ Beeline は、HDInsight クラスターのヘッド ノードに含まれてい�
 
 3. 次のコマンドを使用して、hivesampletable のスキーマを表示します。
 
-    ```bash
+    ```hiveql
     describe hivesampletable;
     ```
 

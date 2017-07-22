@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/09/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 593a355dd29371c321b2e939677e28637f74b291
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: ee38401d2a4faa55b9736b1de45e03bde8def5bb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 06/20/2017
 
 このチュートリアルを完了するには、以下が必要です。
 
-* 次のワークロードを使って、[Visual Studio 2017](https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx) をインストールします。
+* 次のワークロードを使って、[Visual Studio 2017](https://www.visualstudio.com/downloads/) をインストールします。
   - **ASP.NET と Web 開発**
   - **Azure 開発**
 

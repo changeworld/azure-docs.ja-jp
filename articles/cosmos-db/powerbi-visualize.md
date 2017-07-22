@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/24/2016
+ms.date: 07/07/2016
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 68b4e317c51e18d61c8bde80d9fce2d63910847c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6221f5fa113bf58ed3f5e0767b79b2b647005c71
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -123,7 +123,7 @@ Cosmos DB アカウントから火山データを取得し、次のような対�
     ![Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - 座標一覧](./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png)
 7. coordinates 配列をフラット化するために、LatLong という **カスタム列** を作成します。  **[列の追加]** リボンを選択し、**[カスタム列の追加]** をクリックします。  **[カスタム列の追加]** ウィンドウが表示されます。
 8. "LatLong" など、新しい列の名前を入力します。
-9. 次に、新しい列のカスタム式を指定します。  たとえば、次のような式を使用して、緯度と経度の値をコンマ区切りで連結します: `Text.From([Document.Location.coordinates]{1})&","&Text.From([Document.Location.coordinates]{0})`。 **[OK]**をクリックします。
+9. 次に、新しい列のカスタム式を指定します。  たとえば、次のような式を使用して、緯度と経度の値をコンマ区切りで連結します: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`。 **[OK]**をクリックします。
    
     DAX 関数など Data Analysis Expressions(DAX) の詳細については、「 [Power BI Desktop における DAX の基本事項](https://support.powerbi.com/knowledgebase/articles/554619-dax-basics-in-power-bi-desktop)」を参照してください。
    

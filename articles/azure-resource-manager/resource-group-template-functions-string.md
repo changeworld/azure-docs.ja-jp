@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/13/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 0db4ba33c3a6720ba447e27f530ca97c992fbb72
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: a6c33f11dfcbb02689956269ce5a37408534b6cd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/15/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの文字列関数
@@ -396,7 +395,7 @@ base64 形式を文字列に変換します。
 
 | 名前 | 型 | 値 |
 | ---- | ---- | ----- |
-| 戻り値 | array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
+| return | array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
 <a id="contains" />
 

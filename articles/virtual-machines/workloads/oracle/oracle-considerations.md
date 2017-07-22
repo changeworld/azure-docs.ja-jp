@@ -14,12 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/15/2017
 ms.author: rclaus
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 8f95c79637db39208267e477735aefb9bec14512
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 9174f7c8d16ff311312980fbe4d35996ec7ac832
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="oracle-solutions-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure での Oracle ソリューションとそのデプロイ
@@ -65,7 +64,7 @@ Azure で Oracle データベースを使用する場合、いかなるダウン
 
 Azure の Oracle Database Enterprise Edition (RAC なし) では、[Data Guard, Active Data Guard](http://www.oracle.com/technetwork/articles/oem/dataguardoverview-083155.html) または [Oracle Golden Gate](http://www.oracle.com/technetwork/middleware/goldengate) と 2 つの異なる仮想マシンの 2 つのデータベースを使用することで高可用性と障害復旧を実現できます。 両方の仮想マシンを同じ[仮想ネットワーク](https://azure.microsoft.com/documentation/services/virtual-network/)に置き、プライベートの固定 IP アドレスで互いにアクセスできるようにする必要があります。  さらに、Azure が仮想マシンを個別の障害ドメインやアップグレード ドメインに配置できるように、仮想マシンを同じ可用性セットに配置することをお勧めします。  地理的冗長性を実現する必要がある場合は、2 つの異なるリージョン間でこれらの 2 つのデータベースをレプリケートし、2 つのインスタンスを VPN Gateway で接続することができます。
 
-[Azure での Oracle DataGuard の実装](configuring-oracle-dataguard.md)に関するチュートリアルでは、Azure でこれを試すための基本的なセットアップ手順を説明しています。  
+[Azure での Oracle DataGuard の実装](configure-oracle-dataguard.md)に関するチュートリアルでは、Azure でこれを試すための基本的なセットアップ手順を説明しています。  
 
 Oracle Data Guard では、1 つの仮想マシンにプライマリ データベース、別の仮想マシンにセカンダリ データベース (待機)、そしてその間に一方向のレプリケーションセットを配置することで高可用性を実現できます。 データベースのコピーへのアクセスを結果として読み込みます。 Oracle GoldenGate では、2 つのデータベース間に双方向レプリケーションを構成することができます。 これらのツールを使用してデータベース用に高可用性ソリューションを設定する方法については、Oracle の Web サイトにある [Active Data Guard](http://www.oracle.com/technetwork/database/features/availability/data-guard-documentation-152848.html) および [GoldenGate](http://docs.oracle.com/goldengate/1212/gg-winux/index.html) に関する文書をご覧ください。 データベースのコピーに読み込み/書き込みアクセスをする必要がある場合は、 [Oracle Active Data Guard](http://www.oracle.com/uk/products/database/options/active-data-guard/overview/index.html)もご利用いただけます。
 

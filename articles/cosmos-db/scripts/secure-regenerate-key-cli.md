@@ -16,11 +16,11 @@ ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 06/02/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: 1776d41266d451f03ebcd71b83912c1cb35512bf
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 1a0ff3f8b8fb3eaf398d9fa925ef027b2481d47a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -51,9 +51,9 @@ az group delete --name myResourceGroup
 | コマンド | メモ |
 |---|---|
 | [az group create](/cli/azure/group#create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az cosmosdb create](/cli/azure/cosmosdb/name#create) | Azure Cosmos DB アカウントを更新します。 |
+| [az cosmosdb create](https://docs.microsoft.com/cli/azure/cosmosdb#create) | Azure Cosmos DB アカウントを更新します。 |
 | [az cosmosdb regenerate-key](/cli/azure/cosmosdb/regenerate-key) | Azure Cosmos DB アカウント キーを再生成します。 |
-| [az group delete](/cli/azure/resource#delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [az group delete](https://docs.microsoft.com/cli/azure/group#delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

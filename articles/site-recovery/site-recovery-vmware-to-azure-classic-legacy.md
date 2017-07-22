@@ -14,17 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: d686d411b0877d2e4aef992e6b28da2a6f03b66e
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: d50a4bdbafccd645ca339b2dd1ab97456704e3ae
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
-<a id="replicate-vmware-virtual-machines-and-physical-servers-to-azure-with-azure-site-recovery-using-the-classic-portal-legacy" class="xliff"></a>
-
-# クラシック ポータル (レガシ) を使用して Azure Site Recovery で VMware 仮想マシンと物理サーバーを Azure にレプリケートする
+# <a name="replicate-vmware-virtual-machines-and-physical-servers-to-azure-with-azure-site-recovery-using-the-classic-portal-legacy"></a>クラシック ポータル (レガシ) を使用して Azure Site Recovery で VMware 仮想マシンと物理サーバーを Azure にレプリケートする
 > [!div class="op_single_selector"]
 > * [Azure ポータル](site-recovery-vmware-to-azure.md)
 > * [クラシック ポータル](site-recovery-vmware-to-azure-classic.md)
@@ -34,9 +31,7 @@ ms.lasthandoff: 07/06/2017
 
 Azure Site Recovery へようこそ。 この記事では、クラシック ポータルで Azure Site Recovery を使用して、オンプレミスの VMware 仮想マシンまたは Windows/Linux 物理サーバーを Azure にレプリケートするための従来のデプロイ方法について説明します。
 
-<a id="overview" class="xliff"></a>
-
-## 概要
+## <a name="overview"></a>概要
 組織には、予定されたダウンタイムおよび予定外のダウンタイム時にアプリ、ワークロード、およびデータの実行と利用可能な状態を維持し、できるだけ早く通常の動作状態に復旧させる方法を決定する BCDR の戦略が必要です。 BCDR 戦略は、災害発生時にビジネス データを安全かつ回復可能な状態に維持し、ワークロードが継続的に利用可能な状態に保たれるようなものである必要があります。
 
 Site Recovery とは、クラウド (Azure) またはセカンダリ データセンターへのオンプレミスの物理サーバーおよび仮想マシンのレプリケーションを統制することで BCDR 戦略を支援する Azure サービスです。 プライマリ ロケーションで障害が発生した場合は、セカンダリ ロケーションにフェールオーバーしてアプリとワークロードの可用性を維持します。 プライマリの場所が通常の動作に戻ると、その場所にフェールバックします。 詳細については、「 [Site Recovery とは](site-recovery-overview.md)
@@ -46,9 +41,7 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 >
 >
 
-<a id="migrate-to-the-enhanced-deployment" class="xliff"></a>
-
-## 強化されたデプロイへの移行
+## <a name="migrate-to-the-enhanced-deployment"></a>強化されたデプロイへの移行
 このセクションは、この記事の手順に従って、Site Recovery を既にデプロイした場合にのみ該当します。
 
 既存のデプロイを移行するには、以下の操作が必要です。
@@ -66,12 +59,12 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 
 移行手順は、次のとおりです。
 
-1. [クラシック ポータルで強化されたデプロイ](site-recovery-vmware-to-azure-classic.md#enhanced-deployment)について読みます。 強化された[アーキテクチャ](site-recovery-vmware-to-azure-classic.md#scenario-architecture)、および[前提条件](site-recovery-vmware-to-azure-classic.md#before-you-start-deployment)を確認します。
+1. [クラシック ポータルで強化されたデプロイ](site-recovery-vmware-to-azure-classic.md)について読みます。 強化された[アーキテクチャ](site-recovery-vmware-to-azure-classic.md)、および[前提条件](site-recovery-vmware-to-azure-classic.md)を確認します。
 2. 現在レプリケートているマシンからモビリティ サービスをアンインストールします。 新しい保護グループにマシンを追加すると、そのマシンに新しいバージョンのサービスがインストールされます。
-3. [コンテナー登録キー](site-recovery-vmware-to-azure-classic.md#step-4-download-a-vault-registration-key)をダウンロードし、[統合セットアップ ウィザードを実行](site-recovery-vmware-to-azure-classic.md#step-5-install-the-management-server)して、構成サーバー、プロセス サーバー、およびマスター ターゲット サーバーのコンポーネントをインストールします。 [容量計画](site-recovery-vmware-to-azure-classic.md#capacity-planning)についての詳細情報をお読みください。
-4. [資格情報をセットアップ](site-recovery-vmware-to-azure-classic.md#step-6-set-up-credentials-for-the-vcenter-server) します。 [必要なアクセス許可](site-recovery-vmware-to-azure-classic.md#vmware-permissions-for-vcenter-access)についてお読みください。
-5. [vCenter サーバーまたは vSphere ホスト](site-recovery-vmware-to-azure-classic.md#step-7-add-vcenter-servers-and-esxi-hosts)を追加します。 Site Recovery ポータルにサーバーが表示されるまで 15 分以上かかる場合があります。
-6. [新しい保護グループ](site-recovery-vmware-to-azure-classic.md#step-8-create-a-protection-group)を作成します。 ポータルを更新し、仮想マシンを検出して表示するまでに、最大で 15 分かかる場合があります。 待機しない場合は、管理サーバー名を強調表示し (クリックせずに)、**[更新]** を選択します。
+3. [コンテナー登録キー](site-recovery-vmware-to-azure-classic.md)をダウンロードし、[統合セットアップ ウィザードを実行](site-recovery-vmware-to-azure-classic.md)して、構成サーバー、プロセス サーバー、およびマスター ターゲット サーバーのコンポーネントをインストールします。 [容量計画](site-recovery-vmware-to-azure-classic.md)についての詳細情報をお読みください。
+4. [資格情報をセットアップ](site-recovery-vmware-to-azure-classic.md) します。 [必要なアクセス許可](site-recovery-vmware-to-azure-classic.md)についてお読みください。
+5. [vCenter サーバーまたは vSphere ホスト](site-recovery-vmware-to-azure-classic.md)を追加します。 Site Recovery ポータルにサーバーが表示されるまで 15 分以上かかる場合があります。
+6. [新しい保護グループ](site-recovery-vmware-to-azure-classic.md)を作成します。 ポータルを更新し、仮想マシンを検出して表示するまでに、最大で 15 分かかる場合があります。 待機しない場合は、管理サーバー名を強調表示し (クリックせずに)、**[更新]** を選択します。
 7. 新しい保護グループの下の **[コンピューターの移行]**をクリックします。
 
     ![[アカウントの追加]](./media/site-recovery-vmware-to-azure-classic-legacy/legacy-migration1.png)
@@ -100,9 +93,7 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 >
 >
 
-<a id="what-do-i-need" class="xliff"></a>
-
-## 必要なもの
+## <a name="what-do-i-need"></a>必要なもの
 次の図は、デプロイの各種コンポーネントを示しています。
 
 ![新しいコンテナー](./media/site-recovery-vmware-to-azure-classic-legacy/architecture.png)
@@ -119,17 +110,13 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 | **Azure Site Recovery コンテナー** |Azure サブスクリプションを使用して Site Recovery コンテナーを作成し、そのコンテナーにサーバーを登録します。 |コンテナーは、オンプレミスのサイトと Azure 間でのデータ レプリケーション、フェールオーバー、および復旧を調整およびオーケストレーションします。 |
 | **レプリケーション メカニズム** |**インターネット経由** — インターネットを介してセキュリティで保護された SSL/TLS チャネルを使用して、保護されたオンプレミスのサーバーから Azure へのデータを通信およびレプリケートします。 これが既定のオプションです。<br/><br/> **VPN/ExpressRoute** — オンプレミスのサーバーと Azure の通信およびデータ レプリケーションを VPN 接続を介して実行します。 オンプレミスのサイトと Azure ネットワークとの間にサイト間 VPN 接続または ExpressRoute 接続を設定する必要があります。<br/><br/> Site Recovery のデプロイの間にレプリケートする方法を選択します。 構成が済んだ後では、既存のマシンのレプリケーションに影響を与えずにメカニズムを変更することはできません。 |どちらのオプションでも、保護されたマシン上で受信ネットワーク ポートを開く必要があります。 すべてのネットワーク通信は、オンプレミスのサイトから開始されます。 |
 
-<a id="capacity-planning" class="xliff"></a>
-
-## 容量計画
+## <a name="capacity-planning"></a>容量計画
 次の主な領域を考慮する必要があります。
 
 * **ソースの環境**— VMware インフラストラクチャ、ソース マシンの設定、要件
 * **コンポーネント サーバー**— プロセス サーバー、構成サーバー、マスター ターゲット サーバー
 
-<a id="considerations-for-the-source-environment" class="xliff"></a>
-
-### ソース環境に関する考慮事項
+### <a name="considerations-for-the-source-environment"></a>ソース環境に関する考慮事項
 * **最大ディスク サイズ**— 仮想マシンに接続するディスクの現在の最大サイズは 1 TB です。 したがって、レプリケート可能なソース ディスクの最大サイズも 1 TB に制限されます。
 * **ソースあたりの最大サイズ**— 1 つのソース マシンの最大サイズは 31 TB (31 個のディスク) であり、マスター ターゲット サーバーに D14 インスタンスをプロビジョニングできます。
 * **マスター ターゲット サーバーごとのソース数** — 1 台のマスター ターゲット サーバーで複数のソース コンピューターを保護できます。 ただし、1 台のソース マシンを複数のマスター ターゲット サーバーで保護することはできません。これは、ディスクのレプリケート時に、このディスクのサイズをミラーリングする VHD が Azure の Blob Storage に作成され、データ ディスクとしてマスター ターゲット サーバーに接続されるためです。  
@@ -138,9 +125,7 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
   * **ターゲット ディスクでサポートされる最大のスループット**— ソース ディスクあたりの最大変化量は、144 GB/日を超えることはできません (8 K の書き込みサイズの場合)。 さまざまな書き込みサイズでのターゲットのスループットと IOPS については、マスター ターゲット セクションの表を参照してください。 各ソース IOPS によってターゲット ディスクでは 2 IOPS が生成されるので、この値を 2 で割る必要があります。 Premium Storage アカウントのターゲットの構成時には、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../storage/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks)」を参照してください。
   * **ストレージ アカウントでサポートされる最大スループット**— 1 つのソースで複数のストレージ アカウントに対応することはできません。 ストレージ アカウントが 1 秒間に最大で 20,000 の要求を受け取り、各ソース IOPS によってマスター ターゲット サーバーでは 2 IOPS が生成されることから、ソースの IOPS 数を 10,000 に維持することをお勧めします。 Premium Storage アカウントのソースの構成時には、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../storage/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks)」を参照してください。
 
-<a id="considerations-for-component-servers" class="xliff"></a>
-
-### コンポーネント サーバーに関する考慮事項
+### <a name="considerations-for-component-servers"></a>コンポーネント サーバーに関する考慮事項
 表 1 は、構成サーバーとマスター ターゲット サーバーの仮想マシンのサイズをまとめたものです。
 
 | **コンポーネント** | **デプロイされた Azure インスタンス** | **コア** | **メモリ** | **ディスクの最大数** | **ディスク サイズ** |
@@ -152,9 +137,7 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 
 **表 1**
 
-<a id="process-server-considerations" class="xliff"></a>
-
-#### プロセス サーバーに関する考慮事項
+#### <a name="process-server-considerations"></a>プロセス サーバーに関する考慮事項
 通常、プロセス サーバーのサイズは、保護されているすべてのワークロードに対する 1 日の変更率に依存します。
 
 * インライン圧縮や暗号化などのタスクを実行するのに十分なコンピューティング能力が必要です。
@@ -179,14 +162,10 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 * キャッシュ ディスクの場合、すべてのプロセス サーバーで別に 128 GB 以上の OS ディスクを使用することをお勧めします。
 * キャッシュ ディスクのスループットでは、次のストレージをベンチマークに使用しました: 10 K RPM の SAS ドライブ 8 台を RAID 10 構成にしたもの。
 
-<a id="configuration-server-considerations" class="xliff"></a>
-
-#### 構成サーバーに関する考慮事項
+#### <a name="configuration-server-considerations"></a>構成サーバーに関する考慮事項
 各構成サーバーは、3 ～ 4 個のボリュームで最大 100 個のソース マシンをサポートできます。 デプロイがこれよりも大規模な場合は、別の構成サーバーをデプロイすることをお勧めします。 構成サーバーの仮想マシンの既定のプロパティについては、表 1 を参照してください。
 
-<a id="master-target-server-and-storage-account-considerations" class="xliff"></a>
-
-#### マスター ターゲット サーバーおよびストレージ アカウントに関する考慮事項
+#### <a name="master-target-server-and-storage-account-considerations"></a>マスター ターゲット サーバーおよびストレージ アカウントに関する考慮事項
 各マスター ターゲット サーバーのストレージには、OS ディスク、保持ボリューム、およびデータ ディスクが含まれます。 保持ドライブは、Site Recovery ポータルで定義されている保有期間の間、ディスク変更のジャーナルを保持します。  マスター ターゲット サーバーの仮想マシンのプロパティは、表 1 を参照してください。 表 3 では、A4 のディスクの使用方法を示します。
 
 | **インスタンス** | **OS ディスク** | **保持** | **データ ディスク** |
@@ -216,9 +195,7 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
     * 1 日あたりのソース環境からの合計変更量 (非圧縮) / 287 GB。 287 GB は、ターゲット ディスクがサポートする 1 日あたりの最大スループットです。 このケースでは 8 K が想定される書き込みサイズなので、このメトリックは 8 K 単位の書き込みサイズによって異なります。 たとえば、書き込みサイズが 4 K の場合、スループットは 287/2 になります。 また、書き込みサイズが 16 K の場合、スループットは 287*2 になります。
 * 必要なストレージ アカウントの数 = 合計ソース IOPS/10000。
 
-<a id="before-you-start" class="xliff"></a>
-
-## 開始する前に
+## <a name="before-you-start"></a>開始する前に
 | **コンポーネント** | **要件** | **詳細** |
 | --- | --- | --- |
 | **Azure アカウント** |[Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。 アカウントがなくても、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。 | |
@@ -234,9 +211,7 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 | **Linux マシン** |サポートされる 64 ビット オペレーティング システム: **Centos 6.4、6.5、6.6**、**Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、6.5**、**SUSE Linux Enterprise Server 11 SP3**。<br/><br/> 保護されたマシンのファイアウォール規則は、保護されたマシンから構成サーバーおよび Azure のマスター ターゲット サーバーにアクセスできるように設定する必要があります。<br/><br/> 保護されたコンピューターの /etc/hosts ファイルには、ローカル ホスト名を、すべての NIC に関連付けられた IP アドレスにマップするエントリが含まれます。 <br/><br/> フェールオーバー後に、Linux を実行する Azure 仮想マシンに Secure Shell クライアント (ssh) を使用して接続する場合、保護されたマシンのシステム ブート時に Secure Shell サービスが自動的に起動し、ファイアウォールの規則で仮想マシンへの ssh 接続が許可されるように設定していることを確認してください。<br/><br/> ホスト名、マウント ポイント、デバイス名、および Linux システム パスとファイル名 (例: /etc/; /usr) には英語のみ使用できます。<br/><br/> オンプレミスのマシンに対する保護は、以下のストレージで有効にできます。<br>ファイル システム: EXT3、ETX4、ReiserFS、XFS<br>マルチパス ソフトウェア デバイス マッパー (マルチパス)<br>ボリューム マネージャー: LVM2<br>HP CCISS コントローラー ストレージを使用する物理サーバーはサポートされていません。 | |
 | **サードパーティ** |このシナリオでは、正しく機能するためにサード パーティのソフトウェアに依存している、一部のデプロイ コンポーネントがあります。 すべてを一覧表示するには、「 [Third Party Software Notices and Information](#third-party) | |
 
-<a id="network-connectivity" class="xliff"></a>
-
-### ネットワーク接続
+### <a name="network-connectivity"></a>ネットワーク接続
 インフラストラクチャ コンポーネント (構成サーバー、マスター ターゲット サーバー) のデプロイ先となる Azure Virtual Network とオンプレミス サイト間のネットワーク接続を構成する場合、2 つの選択肢があります。 構成サーバーをデプロイするには、どちらのネットワーク接続を使用するかを決めておく必要があります。 デプロイメント時にはこの設定を選択する必要があります。 後から変更することはできません。
 
 **インターネット:** オンプレミスのサーバー (プロセス サーバー、保護されたマシン) と Azure インフラストラクチャ コンポーネントのサーバー (構成サーバー、マスター ターゲット サーバー) 間での通信とデータのレプリケーションは、オンプレミスから、構成サーバーとマスター ターゲット サーバー上のパブリック エンドポイントへのセキュリティで保護された SSL/TLS 接続経由で行われます。 (唯一の例外は、プロセス サーバーとマスター ターゲット サーバー間の TCP ポート 9080 上の接続です。この接続は暗号化されません。 レプリケーション プロトコルに関連して、レプリケーションのセットアップに使用される制御情報だけがこの接続でやり取りされます。)
@@ -247,9 +222,7 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 
 ![VPN のデプロイ図](./media/site-recovery-vmware-to-azure-classic-legacy/vpn-deployment.png)
 
-<a id="step-1-create-a-vault" class="xliff"></a>
-
-## ステップ 1: コンテナーの作成
+## <a name="step-1-create-a-vault"></a>ステップ 1: コンテナーの作成
 1. [管理ポータル](https://portal.azure.com)にサインインします。
 2. **[Data Services]**  >  **[Recovery Services]** の順に展開し、**[Site Recovery コンテナー]** をクリックします。
 3. **[新規作成]**  >  **[簡易作成]** の順にクリックします。
@@ -261,12 +234,8 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 
 ステータス バーを確認して、コンテナーが正常に作成されたことを確かめます。 メイン **[Recovery Services]** ページで、コンテナーは **[アクティブ]** と表示されています。
 
-<a id="step-2-deploy-a-configuration-server" class="xliff"></a>
-
-## ステップ 2: 構成サーバーのデプロイ
-<a id="configure-server-settings" class="xliff"></a>
-
-### サーバー設定の構成
+## <a name="step-2-deploy-a-configuration-server"></a>ステップ 2: 構成サーバーのデプロイ
+### <a name="configure-server-settings"></a>サーバー設定の構成
 1. **[復旧サービス]** ページで、コンテナーをクリックして [クイック スタート] ページを開きます。 [クイック スタート] は、アイコンを使っていつでも開くことができます。
 
     ![[クイック スタート] アイコン](./media/site-recovery-vmware-to-azure-classic-legacy/quick-start-icon.png)
@@ -301,9 +270,7 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 
 構成サーバーは、予約済み IP アドレスで自動的に作成される Azure クラウド サービスにデプロイされます。 予約されたアドレスは、クラウド サービスで仮想マシン (構成サーバーを含む) の再起動の間に構成サーバーのクラウド サービスの IP アドレスが変わらないために必要です。 構成サーバーを使用停止するときは予約されたパブリック IP アドレスを手動で予約解除する必要があります。そうしないと、予約されたまま残ります。 既定では、サブスクリプションごとの予約済みパブリック IP アドレスは 20 個までに制限されています。 予約済み IP アドレスの詳細については、[こちら](../virtual-network/virtual-networks-reserved-private-ip.md)を参照してください。
 
-<a id="register-the-configuration-server-in-the-vault" class="xliff"></a>
-
-### 構成サーバーのコンテナーへの登録
+### <a name="register-the-configuration-server-in-the-vault"></a>構成サーバーのコンテナーへの登録
 1. **[クイック スタート]** ページで、**[ターゲット リソースの準備]** > **[登録キーをダウンロード]** の順にクリックします。 キー ファイルが自動的に生成されます。 キーは生成後 5 日間有効です。 それを構成サーバーにコピーします。
 2. **[Virtual Machines]** で、仮想マシンの一覧から構成サーバーを選択します。 **[ダッシュボード]** タブを開いて **[接続]** をクリックします。 **開き** 、リモート デスクトップを使用して構成サーバーにログオンします。 VPN を使用している場合は、オンプレミス サイトからのリモート デスクトップ接続に対して、内部 IP アドレス (構成サーバーをデプロイしたときに指定したアドレス) を使用します。 初回ログオン時は、Azure Site Recovery 構成サーバー セットアップ ウィザードが自動的に実行されます。
 
@@ -346,9 +313,7 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 
 登録後、コンテナーの **[構成サーバー]** ページに構成サーバーが一覧されます。
 
-<a id="set-up-and-manage-accounts" class="xliff"></a>
-
-### アカウントの設定と管理
+### <a name="set-up-and-manage-accounts"></a>アカウントの設定と管理
 デプロイの間に、Site Recovery は以下のアクションに資格情報を要求します。
 
 * VMware アカウント (Site Recovery がvCenter サーバーまたは vSphere ホストで VM を自動的に検出できるように)。
@@ -366,9 +331,7 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 
     ![[アカウントの管理]](./media/site-recovery-vmware-to-azure-classic-legacy/account-details.png)
 
-<a id="connect-to-the-configuration-server" class="xliff"></a>
-
-### 構成サーバーに接続します。
+### <a name="connect-to-the-configuration-server"></a>構成サーバーに接続します。
 構成サーバーに接続するには 2 つの方法があります。
 
 * VPN サイト間または ExpressRoute 接続経由
@@ -380,9 +343,7 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 * VPN 接続では、サーバーの内部 IP アドレスと、エンドポイントのプライベート ポートを使用します。
 * オンプレミス サーバーから Azure で実行しているさまざまなコンポーネント サーバー (構成サーバー、マスター ターゲット サーバー) に、VPN 接続またはインターネットのどちらで接続する (制御およびレプリケーション データ) かを決定するのは、1 回だけの決定です。 その後、この設定を変更することはできません。 変更する場合は、シナリオを再デプロイし、マシンを再保護する必要があります。  
 
-<a id="step-3-deploy-the-master-target-server" class="xliff"></a>
-
-## ステップ 3: マスター ターゲット サーバーのデプロイ
+## <a name="step-3-deploy-the-master-target-server"></a>ステップ 3: マスター ターゲット サーバーのデプロイ
 1. **[ターゲット (Azure) リソースの準備]** > **[マスター ターゲット サーバーのデプロイ]** をクリックします。
 2. マスター ターゲット サーバーの詳細情報と資格情報を指定します。 サーバーは、構成サーバーと同じ Azure ネットワークにデプロイされます。 クリックして完了すると、Windows または Linux のギャラリー イメージを使用して Azure 仮想マシンが作成されます。
 
@@ -444,9 +405,7 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 >
 >
 
-<a id="step-4-deploy-the-on-premises-process-server" class="xliff"></a>
-
-## ステップ 4: オンプレミスのプロセス サーバーのデプロイ
+## <a name="step-4-deploy-the-on-premises-process-server"></a>ステップ 4: オンプレミスのプロセス サーバーのデプロイ
 開始する前に、再起動後も保持されるように、プロセス サーバーに静的 IP アドレスを構成することをお勧めします。
 
 1. [クイック スタート] で、**[オンプレミスのプロセス サーバーのインストール]** > **[プロセス サーバーをダウンロードしてインストールする]** の順にクリックします。
@@ -498,9 +457,7 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 1. プロセス サーバーに管理者としてログオンし、編集のために C:\pushinstallsvc\pushinstaller.conf ファイルを開きます。 **[PushInstaller.transport]** セクションに、**SignatureVerificationChecks="0"** という行を追加します。 ファイルを保存して閉じます。
 2. InMage PushInstall サービスを再起動します。
 
-<a id="step-5-update-site-recovery-components" class="xliff"></a>
-
-## ステップ 5: Site Recovery コンポーネントの更新
+## <a name="step-5-update-site-recovery-components"></a>ステップ 5: Site Recovery コンポーネントの更新
 Site Recovery コンポーネントは随時更新されます。 新しい更新プログラムが利用可能な場合は、次の順序でインストールする必要があります。
 
 1. 構成サーバー
@@ -508,9 +465,7 @@ Site Recovery コンポーネントは随時更新されます。 新しい更�
 3. マスター ターゲット サーバー
 4. フェールバック ツール (vContinuum)
 
-<a id="obtain-and-install-the-updates" class="xliff"></a>
-
-### 更新プログラムの取得とインストール
+### <a name="obtain-and-install-the-updates"></a>更新プログラムの取得とインストール
 1. Site Recovery **ダッシュボード**から、構成サーバー、プロセス サーバー、およびマスター ターゲット サーバー用の更新プログラムを入手できます。 Linux のインストールの場合は、gzip 圧縮されたインストーラーからファイルを抽出し、コマンド “sudo ./install” を実行して更新プログラムをインストールします。
 2. [ダウンロード](http://go.microsoft.com/fwlink/?LinkID=533813) します。
 3. モビリティ サービスが既にインストールされている仮想マシンまたは物理サーバーを実行している場合は、次のようにしてサービスの更新プログラムを入手できます。
@@ -531,9 +486,7 @@ Site Recovery コンポーネントは随時更新されます。 新しい更�
 
 [アカウントの選択] で、保護対象サーバー上のモビリティ サービスの更新に使用する管理者アカウントを指定します。 [OK] をクリックして、トリガーされたジョブの完了を待ちます。
 
-<a id="step-6-add-vcenter-servers-or-vsphere-hosts" class="xliff"></a>
-
-## ステップ 6: vCenter サーバーまたは vSphere ホストの追加
+## <a name="step-6-add-vcenter-servers-or-vsphere-hosts"></a>ステップ 6: vCenter サーバーまたは vSphere ホストの追加
 1. **[サーバー]** > **[構成サーバー]** の順にクリックして構成サーバーを選択し、**[vCenter サーバーの追加]** をクリックして、vCenter サーバーまたは vSphere ホストを追加します。
 
     ![vCenter サーバーの選択](./media/site-recovery-vmware-to-azure-classic-legacy/add-vcenter.png)
@@ -551,9 +504,7 @@ Site Recovery コンポーネントは随時更新されます。 新しい更�
    * vCenter アカウントでは、データセンター、データストア、フォルダー、ホスト、ネットワーク、リソース、ストレージ ビュー、仮想マシン、および vSphere Distributed Switch の特権が有効になっている必要があります。
    * vSphere ホスト アカウントでは、データセンター、データストア、フォルダー、ホスト、ネットワーク、リソース、仮想マシン、および vSphere Distributed Switch の特権が有効になっている必要があります。
 
-<a id="step-7-create-a-protection-group" class="xliff"></a>
-
-## ステップ 7: 保護グループの作成
+## <a name="step-7-create-a-protection-group"></a>ステップ 7: 保護グループの作成
 1. **[保護された項目]** > **[保護グループ]** > **[保護グループの作成]** の順に開きます。
 
     ![[保護グループの作成]](./media/site-recovery-vmware-to-azure-classic-legacy/create-pg1.png)
@@ -572,17 +523,13 @@ Site Recovery コンポーネントは随時更新されます。 新しい更�
 
 保護グループの作成は、 **[保護された項目]** ページで監視することができます。
 
-<a id="step-8-set-up-machines-you-want-to-protect" class="xliff"></a>
-
-## ステップ 8: 保護するマシンの設定
+## <a name="step-8-set-up-machines-you-want-to-protect"></a>ステップ 8: 保護するマシンの設定
 保護する仮想マシンおよび物理サーバーにモビリティ サービスをインストールする必要があります。 次の 2 つの方法で行います。
 
 * プロセス サーバーから各マシンにサービスを自動的にプッシュしてインストールします。
 * サービスを手動でインストールします。
 
-<a id="install-the-mobility-service-automatically" class="xliff"></a>
-
-### モビリティ サービスを自動的にインストールする
+### <a name="install-the-mobility-service-automatically"></a>モビリティ サービスを自動的にインストールする
 保護グループにマシンを追加すると、プロセス サーバーによってモビリティ サービスが自動的にプッシュされ、各マシンにインストールされます。
 
 **Windows サーバーにモビリティ サービスを自動的にプッシュ インストールします。**
@@ -615,9 +562,7 @@ Site Recovery コンポーネントは随時更新されます。 新しい更�
        ![Linux のプッシュ モビリティ](./media/site-recovery-vmware-to-azure-classic-legacy/linux-push2.png)    
 8. ソース マシンの Linux バリエーションがサポートされていることを確認します。
 
-<a id="install-the-mobility-service-manually" class="xliff"></a>
-
-### モビリティ サービスを手動でインストールする
+### <a name="install-the-mobility-service-manually"></a>モビリティ サービスを手動でインストールする
 モビリティ サービスのインストールに使用するソフトウェア パッケージは、プロセス サーバーの C:\pushinstallsvc\repository にあります。 プロセス サーバーにログオンし、次の表に基づいて適切なインストール パッケージをソース マシンにコピーします。
 
 | ソース オペレーティング システム | プロセス サーバー上のモビリティ サービス パッケージ |
@@ -678,9 +623,7 @@ Site Recovery コンポーネントは随時更新されます。 新しい更�
 >
 >
 
-<a id="step-9-enable-protection" class="xliff"></a>
-
-## ステップ 9: 保護の有効化
+## <a name="step-9-enable-protection"></a>ステップ 9: 保護の有効化
 保護を有効にするには、仮想マシンと物理サーバーを保護グループに追加します。 開始する前に、次のことに注意してください。
 
 * 仮想マシンは 15 分ごとに検出されるので、検出後に Azure Site Recovery に表示されるまでに最大で 15 分かかります。
@@ -718,9 +661,7 @@ Site Recovery コンポーネントは随時更新されます。 新しい更�
 
     ![仮想マシンのジョブ](./media/site-recovery-vmware-to-azure-classic-legacy/pg-jobs.png)
 
-<a id="set-protected-machine-properties" class="xliff"></a>
-
-### 保護されたマシンのプロパティの設定
+### <a name="set-protected-machine-properties"></a>保護されたマシンのプロパティの設定
 1. マシンの状態が **[保護されています]** になると、マシンのフェールオーバーのプロパティを構成できます。 保護グループの詳細で、マシンを選択し、 **[構成]** タブを開きます。
 2. フェールオーバー後に Azure のマシンに付けられる名前と Azure 仮想マシンのサイズを変更できます。 フェールオーバー後にマシンが接続する Azure ネットワークを選択することもできます。
 
@@ -744,9 +685,7 @@ Site Recovery コンポーネントは随時更新されます。 新しい更�
       ![仮想マシンのプロパティの設定](./media/site-recovery-vmware-to-azure-classic-legacy/remove-vm.png)
   * d) 仮想マシンの保護を再び有効にします。 保護を再度有効にすると、サイズが変更されたボリュームのデータが Azure に転送されます。
 
-<a id="step-10-run-a-failover" class="xliff"></a>
-
-## ステップ 10: フェールオーバーの実行
+## <a name="step-10-run-a-failover"></a>ステップ 10: フェールオーバーの実行
 現在は、保護された VMware 仮想マシンと物理サーバーの非計画的フェールオーバーのみを実行できます。 以下の点に注意してください。
 
 * フェールオーバーを開始する前に、構成サーバーとマスター ターゲット サーバーが正常に実行していることを確認します。 そうでない場合、フェールオーバーは失敗します。
@@ -764,14 +703,10 @@ Site Recovery コンポーネントは随時更新されます。 新しい更�
 5. **[フェールオーバーの確認]** で、フェールオーバーの方向 (Azure に) を確認します。次に、フェールオーバーする復旧ポイントを選択します。
 6. フェールオーバー ジョブが完了するまで待機します。その後、フェールオーバーが予期したとおりに実行され、レプリケートされた仮想マシンが Azure で正常に起動することを確認します。
 
-<a id="step-11-fail-back-failed-over-machines-from-azure" class="xliff"></a>
-
-## ステップ 11: フェールオーバーされたマシンの Azure からのフェールバック
+## <a name="step-11-fail-back-failed-over-machines-from-azure"></a>ステップ 11: フェールオーバーされたマシンの Azure からのフェールバック
 [詳細についてはここ](site-recovery-failback-azure-to-vmware-classic-legacy.md) を参照してください。
 
-<a id="manage-your-process-servers" class="xliff"></a>
-
-## プロセス サーバーを管理する
+## <a name="manage-your-process-servers"></a>プロセス サーバーを管理する
 プロセス サーバーは、レプリケーション データを Azure のマスター ターゲット サーバーに送信し、vCenter サーバーに追加された新しい VMware 仮想マシンを検出します。 次のような状況では、デプロイ内のプロセス サーバーを変更する場合があります。
 
 * 現在のプロセス サーバーがダウンした場合
@@ -782,14 +717,10 @@ Site Recovery コンポーネントは随時更新されます。 新しい更�
 * **エラー**— プロセス サーバーがエラーの場合、または使用できない場合は、保護されたマシンのレプリケーションを別のプロセス サーバーに移動できます。 ソース マシンとレプリカ マシンのメタデータが新しいプロセス サーバーに移動されて、データが再同期されます。 新しいプロセス サーバーは、vCenter サーバーに自動的に接続して自動検出を実行します。 Site Recovery ダッシュボードでプロセス サーバーの状態を監視できます。
 * **RPO を調整するための負荷分散**— 負荷分散を改善するため、Site Recovery ポータルで別のプロセス サーバーを選択し、手動負荷分散のために 1 つまたは複数のマシンのレプリケーションを移動できます。 この場合、選択したソース マシンとレプリカ マシンのメタデータは、新しいプロセス サーバーに移動されます。 元のプロセス サーバーは、vCenter サーバーに接続されたままです。
 
-<a id="monitor-the-process-server" class="xliff"></a>
-
-### プロセス サーバーを監視する
+### <a name="monitor-the-process-server"></a>プロセス サーバーを監視する
 プロセス サーバーが重大な状態の場合、Site Recovery ダッシュボードにステータスの警告が表示されます。 ステータスをクリックして [イベント] タブを開き、[ジョブ] タブで特定のジョブにドリルダウンできます。
 
-<a id="modify-the-process-server-used-for-replication" class="xliff"></a>
-
-### レプリケーションに使用されるプロセス サーバーを変更する
+### <a name="modify-the-process-server-used-for-replication"></a>レプリケーションに使用されるプロセス サーバーを変更する
 1. **[サーバー]** > **[構成サーバー]** を開き、構成サーバーを選択して、**[サーバーの詳細]** を開きます。
 2. 変更するサーバーの横の **[プロセス サーバー]** > **[プロセス サーバーの変更]** をクリックします。
 
@@ -799,9 +730,7 @@ Site Recovery コンポーネントは随時更新されます。 新しい更�
     ![Change Process Server 2](./media/site-recovery-vmware-to-azure-classic-legacy/change-ps2.png)
 4. チェック マークをクリックして、新しいプロセス サーバーへのレプリケーションを開始します。 重要な状態になったプロセス サーバーからすべての仮想マシンを削除すると、重大な警告はダッシュボードに表示されなくなることに注意してください。
 
-<a id="third-party-software-notices-and-information" class="xliff"></a>
-
-## Third Party Software Notices and Information
+## <a name="third-party-software-notices-and-information"></a>Third Party Software Notices and Information
 Do Not Translate or Localize
 
 The software and firmware running in the Microsoft product or service is based on or incorporates material from the projects listed below (collectively, “Third Party Code”).  Microsoft is the not original author of the Third Party Code.  The original copyright notice and license, under which Microsoft received such Third Party Code, are set forth below.

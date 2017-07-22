@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/21/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
-ms.openlocfilehash: 63ad1dcc5a069a9958e56c8260f9aa208fafc645
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: cbb5d3598ef91512991d7d1e9f854eb12980752b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 06/23/2017
 **前提条件** | **詳細** 
 --- | --- 
 **Azure** | [Azure の要件](site-recovery-prereq.md#azure-requirements)を確認します。
-**オンプレミスのサーバー** | オンプレミスの Hyper-V ホストの要件の[詳細を確認](site-recovery-prereq.md#disaster-recovery-of-hyper-v-virtual-machines-to-azure-no-virtual-machine-manager)します。
+**オンプレミスのサーバー** | オンプレミスの Hyper-V ホストの要件の[詳細を確認](site-recovery-prereq.md#disaster-recovery-of-hyper-v-vms-to-azure-no-vmm)します。
 **オンプレミスの Hyper-V VM** | レプリケートする VM では、[サポートされるオペレーティング システム](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)を実行し、[Azure の前提条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)に準拠する必要があります。
 **Azure の URL** | Hyper-V ホストには、これらの URL へのアクセス権が必要です。<br/><br/> [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]<br/><br/> IP アドレスベースのファイアウォール規則を使用している場合、その規則で Azure との通信が許可されていることを確認します。<br/></br> [Azure データセンターの IP の範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)と HTTPS (443) ポートを許可します。<br/></br> ご利用のサブスクリプションの Azure リージョンと米国西部の IP アドレス範囲を許可します (Access Control と ID 管理に使用されます)。
 
@@ -38,6 +38,6 @@ ms.lasthandoff: 06/23/2017
 
 ## <a name="next-steps"></a>次のステップ
 
-- 完全なデプロイを行っている場合は、[手順 3: 容量を計画する](hyper-v-site-walkthrough-capacity.md)方法に関するページに進む
-- 簡単なテスト デプロイを行っている場合は、[手順 4: ネットワークを計画する](hyper-v-site-walkthrough-network.md)方法に関するページに進む
+- 完全なデプロイを行う場合は、「[手順 3: 容量を計画する](hyper-v-site-walkthrough-capacity.md)」に進みます。
+- 簡単なテスト配置を行う場合は、「[手順 4: ネットワークを計画する](hyper-v-site-walkthrough-network.md)」に進みます。
 

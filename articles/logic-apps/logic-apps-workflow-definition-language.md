@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: 8066621670e6e79ff4169253f2a97972e376eaa3
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: b9cd83e6891c723f843825b99dce0e0158fc6ef6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/07/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -72,7 +72,7 @@ ms.lasthandoff: 06/07/2017
 
 |要素名|必須|説明|  
 |------------------|--------------|-----------------|  
-|type|はい|**型**: string <p> **宣言**: `"parameters": {"parameter1": {"type": "string"}` <p> **指定**: `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **型**: securestring <p> **宣言**: `"parameters": {"parameter1": {"type": "securestring"}}` <p> **指定**: `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **型**: int <p> **宣言**: `"parameters": {"parameter1": {"type": "int"}}` <p> **指定**: `"parameters": {"parameter1": {"value" : 5}}` <p> **型**: bool <p> **宣言**: `"parameters": {"parameter1": {"type": "array"}}` <p> **指定**: `"parameters": {"parameter1": { "value": true }}` <p> **型**: array <p> **宣言**: `"parameters": {"parameter1": {"type": "array"}}` <p> **指定**: `"parameters": {"parameter1": { "value": [ array-of-values ]}}` <p> **型**: object <p> **宣言**: `"parameters": {"parameter1": {"type": "object"}}` <p> **指定**: `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **型**: secureobject <p> **宣言**: `"parameters": {"parameter1": {"type": "object"}}` <p> **指定**: `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **注:** `securestring` 型と `secureobject` 型は、`GET` 操作では返されません。 すべてのパスワード、キー、シークレットで、この型を使う必要があります。|  
+|type|はい|**型**: string <p> **宣言**: `"parameters": {"parameter1": {"type": "string"}` <p> **指定**: `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **型**: securestring <p> **宣言**: `"parameters": {"parameter1": {"type": "securestring"}}` <p> **指定**: `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **型**: int <p> **宣言**: `"parameters": {"parameter1": {"type": "int"}}` <p> **指定**: `"parameters": {"parameter1": {"value" : 5}}` <p> **型**: bool <p> **宣言**: `"parameters": {"parameter1": {"type": "bool"}}` <p> **指定**: `"parameters": {"parameter1": { "value": true }}` <p> **型**: array <p> **宣言**: `"parameters": {"parameter1": {"type": "array"}}` <p> **指定**: `"parameters": {"parameter1": { "value": [ array-of-values ]}}` <p> **型**: object <p> **宣言**: `"parameters": {"parameter1": {"type": "object"}}` <p> **指定**: `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **型**: secureobject <p> **宣言**: `"parameters": {"parameter1": {"type": "object"}}` <p> **指定**: `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **注:** `securestring` 型と `secureobject` 型は、`GET` 操作では返されません。 すべてのパスワード、キー、シークレットで、この型を使う必要があります。|  
 |defaultValue|いいえ|リソース作成時に値が指定されないときの、パラメーターの既定値を指定します。|  
 |allowedValues|いいえ|パラメーターに許可される値の配列を指定します。|  
 |metadata|いいえ|読み取り可能な説明や、Visual Studio または他のツールによって使われる設計時データなど、パラメーターに関する追加情報を指定します。|  

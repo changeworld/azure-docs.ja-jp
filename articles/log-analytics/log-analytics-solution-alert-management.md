@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/07/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 885de1e94e3ce520621dc8dc7a4a495501f6a429
-ms.openlocfilehash: 35b4c30de20c46312bd7e4524a4264450184138a
-ms.lasthandoff: 02/18/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 3714730dce9c856f602cf46e013b1ff6a89cfb07
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="alert-management-solution-in-operations-management-suite-oms"></a>Operations Management Suite (OMS) アラート管理ソリューション
 
 ![Alert Management icon](media/log-analytics-solution-alert-management/icon.png)
 
-Log Analytics リポジトリ内のアラートはすべて、アラート管理ソリューションを使用して分析できます。  アラートはさまざまなソースから取得されている可能性があります。[Log Analytics によって作成されたアラート](log-analytics-alerts.md)や、[Nagios や Zabbix からインポートされたアラート](log-analytics-linux-agents.md#linux-alerts)のほか、  アラートは[接続された System Center Operations Manager (SCOM) 管理グループ](log-analytics-om-agents.md)からもインポートされます。
+Log Analytics リポジトリ内のアラートはすべて、アラート管理ソリューションを使用して分析できます。  アラートはさまざまなソースから取得されている可能性があります。[Log Analytics によって作成されたアラート](log-analytics-alerts.md)や、[Nagios や Zabbix からインポートされたアラート](log-analytics-linux-agents.md)のほか、  アラートは[接続された System Center Operations Manager (SCOM) 管理グループ](log-analytics-om-agents.md)からもインポートされます。
 
 ## <a name="prerequisites"></a>前提条件
 アラート管理ソリューションでは、Log Analytics リポジトリ内の **Alert** タイプのすべてのレコードが分析されます。そのため、これらのレコードを収集するために必要な構成をすべて行う必要があります。
 
 - Log Analytics のアラートの場合は、[アラート ルールを作成](log-analytics-alerts.md)して、リポジトリに直接アラート レコードを作成します。
-- Nagios と Zabbix のアラートの場合は、[これらのサーバーを構成](log-analytics-linux-agents.md#linux-alerts)して、Log Analytics にアラートを送信します。
+- Nagios と Zabbix のアラートの場合は、[これらのサーバーを構成](log-analytics-linux-agents.md)して、Log Analytics にアラートを送信します。
 - SCOM のアラートの場合は、[Log Analytics ワークスペースに Operations Manager 管理グループを接続](log-analytics-om-agents.md)します。  SCOM で作成されたアラートはすべて、Log Analytics にインポートされます。  
 
 ## <a name="configuration"></a>構成
@@ -64,7 +64,7 @@ OMS ワークスペースにアラート管理ソリューションを追加す�
 
 ![Alert Management tile](media/log-analytics-solution-alert-management/tile.png)
 
-**[Alert Management]** (アラート管理) タイルをクリックすると、**[Alert Management]** (アラート管理) ダッシュボードが表示されます。  ダッシュボードには、次の表に示した列が存在します。  それぞれの列には、特定のスコープと時間範囲について、その列の基準に該当するアラート数の上位&10; 件が表示されます。  ログ検索を実行してアラート全件を取得するには、列の一番下にある **[See all]** (すべて表示) をクリックするか、列ヘッダーをクリックします。
+**[Alert Management]** (アラート管理) タイルをクリックすると、**[Alert Management]** (アラート管理) ダッシュボードが表示されます。  ダッシュボードには、次の表に示した列が存在します。  それぞれの列には、特定のスコープと時間範囲について、その列の基準に該当するアラート数の上位 10 件が表示されます。  ログ検索を実行してアラート全件を取得するには、列の一番下にある **[See all]** (すべて表示) をクリックするか、列ヘッダーをクリックします。
 
 | 分割 | 説明 |
 |:--- |:--- |

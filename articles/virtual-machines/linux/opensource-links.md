@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/27/2016
 ms.author: rasquill
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 0b273631d3d725aded0e92bbe0be0479484cb3bd
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 1cdd0e68368d2dc376ee45df67bf5e75288d4ca3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="linux-and-open-source-computing-on-azure"></a>Azure での Linux とオープン ソース コンピューティング
@@ -73,7 +73,7 @@ ms.lasthandoff: 04/03/2017
 * [Azure インフラストラクチャ サービス実装ガイドライン](../windows/infrastructure-subscription-accounts-guidelines.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Linux ユーザー名の選択](usernames.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [クラシック デプロイ モデルに仮想マシンの可用性セットを構成する方法](../windows/classic/configure-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-* [Azure VM の計画的メンテナンスのスケジュールを設定する方法](planned-maintenance-schedule.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure VM の計画的メンテナンスのスケジュールを設定する方法](classic/planned-maintenance-schedule.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 * [仮想マシンの可用性管理](../windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure での Linux 仮想マシンに対する計画的なメンテナンス](planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

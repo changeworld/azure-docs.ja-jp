@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: fd331d805c0c6ddcfb492db2902a8e53b23dcab3
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: a2fabc56463c8cbf0b8a76b7a84369ed8e535486
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 06/30/2017
 
 この記事では、次のものが既に作成されていることを前提としています。
 - Recovery Services コンテナー ([Azure Portal](http://portal.azure.com "Azure Portal") 内)。
-- [自動検出](./site-recovery-vmware-to-azure.md#vmware-account-permissions)に使用できる、VMware vCenter 内の専用アカウント。
+- [自動検出](./site-recovery-vmware-to-azure.md)に使用できる、VMware vCenter 内の専用アカウント。
 - 構成サーバーをインストールする仮想マシン。
 
 ## <a name="configuration-server-minimum-requirements"></a>構成サーバーの最小要件

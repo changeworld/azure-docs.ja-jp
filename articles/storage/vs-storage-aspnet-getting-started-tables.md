@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2016
 ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 5840ec74f6af2e373d9ebb34b0f6e13094c33f19
-ms.openlocfilehash: ca603d4833336ddee1474d365d57159bc288303f
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: d9cb32483d3f582bbeb0ccc6a204a8b6d9ea5c96
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Azure Table Storage と Visual Studio 接続済みサービスの概要 (ASP.NET)
@@ -27,11 +28,11 @@ ms.openlocfilehash: ca603d4833336ddee1474d365d57159bc288303f
 
 Azure テーブル ストレージを使用すると、大量の構造化データを格納できるようになります。 このサービスは、Azure クラウドの内部および外部からの認証された呼び出しを受け付ける NoSQL データストアです。 Azure のテーブルは、構造化された非リレーショナル データを格納するのに最適です。
 
-このチュートリアルでは、Azure Table Storage エンティティを使用していくつかの一般的なシナリオの ASP.NET コードを記述する方法を示します。 紹介するシナリオは、テーブルの作成、テーブル エンティティの追加、照会、削除などです。 
+このチュートリアルでは、Azure Table Storage エンティティを使用していくつかの一般的なシナリオの ASP.NET コードを記述する方法を示します。 紹介するシナリオは、テーブルの作成、テーブル エンティティの追加、クエリの実行、削除などです。 
 
 ##<a name="prerequisites"></a>前提条件
 
-* [Microsoft Visual Studio](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)
+* [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure Storage アカウント](storage-create-storage-account.md#create-a-storage-account)
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
@@ -178,7 +179,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
 
 ## <a name="add-an-entity-to-a-table"></a>エンティティをテーブルに追加する
 
-*エンティティ*は、**TableEntity** から派生するカスタム クラスを使用して C\# オブジェクトにマップされます。 エンティティをテーブルに追加するには、エンティティのプロパティを定義するクラスを作成します。 このセクションでは、ユーザーの名を行キー、姓をパーティション キーとしてそれぞれ使用するエンティティ クラスを定義する方法について説明します。 エンティティのパーティション キーと行キーの組み合わせで、テーブル内のエンティティを一意に識別します。 同じパーティション キーを持つエンティティは、異なるパーティション キーを持つエンティティよりも迅速に照会できます。一方、多様なパーティション キーを使用すると、並列操作の拡張性が向上します。 Table service に格納するプロパティはすべて、設定値と取得値の両方を公開する、サポートされている型のパブリック プロパティである必要があります。
+*エンティティ*は、**TableEntity** から派生するカスタム クラスを使用して C\# オブジェクトにマップされます。 エンティティをテーブルに追加するには、エンティティのプロパティを定義するクラスを作成します。 このセクションでは、ユーザーの名を行キー、姓をパーティション キーとしてそれぞれ使用するエンティティ クラスを定義する方法について説明します。 エンティティのパーティション キーと行キーの組み合わせで、テーブル内のエンティティを一意に識別します。 同じパーティション キーを持つエンティティは、異なるパーティション キーを持つエンティティよりも迅速にクエリを実行できます。一方、多様なパーティション キーを使用すると、並列操作のスケーラビリティが向上します。 Table service に格納するプロパティはすべて、設定値と取得値の両方を公開する、サポートされている型のパブリック プロパティである必要があります。
 エンティティ クラスでは、パブリックでパラメーターのないコンストラクターを宣言する*必要があります*。
 
 > [!NOTE]
@@ -280,7 +281,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
 
 ## <a name="add-a-batch-of-entities-to-a-table"></a>エンティティのバッチをテーブルに追加する
 
-エンティティは[一度に&1; つずつテーブルに追加](#add-an-entity-to-a-table)できるだけでなく、複数のエンティティをバッチで追加することもできます。 複数のエンティティをバッチで追加することで、コードと Azure Table service 間のラウンドトリップの回数が抑えられます。 次の手順では、1 回の挿入操作で複数のエンティティをテーブルに追加する方法を説明します。
+エンティティは[一度に 1 つずつテーブルに追加](#add-an-entity-to-a-table)できるだけでなく、複数のエンティティをバッチで追加することもできます。 複数のエンティティをバッチで追加することで、コードと Azure Table service 間のラウンドトリップの回数が抑えられます。 次の手順では、1 回の挿入操作で複数のエンティティをテーブルに追加する方法を説明します。
 
 > [!NOTE]
 > 
@@ -494,13 +495,13 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
     <li>@Html.ActionLink("Get single", "GetSingle", "Tables")</li>
     ```
 
-1. アプリケーションを実行して **[Get Single] (単一エンティティの取得) ** を選択し、次のスクリーン ショットと同様の結果が表示されることを確認します。
+1. アプリケーションを実行して **[Get Single] (単一エンティティの取得)** を選択し、次のスクリーン ショットと同様の結果が表示されることを確認します。
   
     ![単一エンティティの取得](./media/vs-storage-aspnet-getting-started-tables/get-single-results.png)
 
 ## <a name="get-all-entities-in-a-partition"></a>パーティション内のすべてのエンティティを取得する
 
-「[エンティティをテーブルに追加する](#add-an-entity-to-a-table)」セクションで説明したように、パーティション キーと行キーを組み合わせることでテーブル内のエンティティを一意に指定することができます。 同じパーティション キーを持つエンティティは、異なるパーティション キーを持つエンティティよりも迅速に照会できます。 このセクションでは、指定したパーティションのすべてのエンティティについてテーブルを紹介する方法について説明します。  
+「[エンティティをテーブルに追加する](#add-an-entity-to-a-table)」セクションで説明したように、パーティション キーと行キーを組み合わせることでテーブル内のエンティティを一意に指定することができます。 同じパーティション キーを持つエンティティは、異なるパーティション キーを持つエンティティよりも迅速に照会できます。 このセクションでは、テーブルでクエリを実行して指定したパーティションのすべてのエンティティを求める方法について説明します。  
 
 > [!NOTE]
 > 
@@ -604,7 +605,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
     <li>@Html.ActionLink("Get partition", "GetPartition", "Tables")</li>
     ```
 
-1. アプリケーションを実行して **[Get Partition] (パーティションの取得) ** を選択し、次のスクリーン ショットと同様の結果が表示されることを確認します。
+1. アプリケーションを実行して **[Get Partition] (パーティションの取得)** を選択し、次のスクリーン ショットと同様の結果が表示されることを確認します。
   
     ![パーティションの取得](./media/vs-storage-aspnet-getting-started-tables/get-partition-results.png)
 
@@ -713,8 +714,4 @@ Azure でデータを格納するための追加のオプションについて�
 
   * [Azure Blob Storage と Visual Studio 接続済みサービスの概要 (ASP.NET)](./vs-storage-aspnet-getting-started-blobs.md)
   * [Azure キュー ストレージと Visual Studio 接続済みサービスの概要](./vs-storage-aspnet-getting-started-queues.md)
-
-
-<!--HONumber=Jan17_HO1-->
-
 
