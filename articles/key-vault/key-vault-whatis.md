@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/07/2017
+ms.date: 07/19/2017
 ms.author: cabailey
 ms.translationtype: Human Translation
 ms.sourcegitcommit: a178f6b88054425177092225095b016c902cfc78
 ms.openlocfilehash: 59b1e2a5398d687d71708f6e641cda321062dd7d
 ms.contentlocale: ja-jp
 ms.lasthandoff: 07/06/2017
-
 
 ---
 # <a name="what-is-azure-key-vault"></a>Azure Key Vault とは

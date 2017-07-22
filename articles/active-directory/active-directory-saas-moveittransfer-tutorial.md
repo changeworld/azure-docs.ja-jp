@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 07/21/2017
 ms.author: jeedes
-translationtype: Human Translation
+ms.reviewer: jeedes
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2d8d925f80830a0d7047e9567fdd413af2e8c5c3
 ms.openlocfilehash: e1b4cda400205611a957c23d9a9b90c918d260f3
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/28/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moveit-transfer"></a>チュートリアル: Azure Active Directory と MOVEit Transfer の統合

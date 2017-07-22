@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 07/20/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 55bfd5b283e6159e0a06b3107de31d1722796bf1
 ms.openlocfilehash: 37f3a2b50b437fd675c17a26a143eb649fb6c857
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/29/2016
 
 ---
 
@@ -115,8 +116,4 @@ ms.openlocfilehash: 37f3a2b50b437fd675c17a26a143eb649fb6c857
   ]  
 }  
 ```
-
-
-<!--HONumber=Nov16_HO5-->
-
 
