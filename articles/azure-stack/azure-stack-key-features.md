@@ -12,31 +12,28 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 6/1/2017
+ms.date: 7/10/2017
 ms.author: helaw
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 0c68ccb03db837cc4da6ace665832c8256977635
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 37b2d2a8397d09ab83cd51904a26aa2b300e7d38
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/03/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Key features and concepts in Azure Stack
 If you’re new to Microsoft Azure Stack, these terms and feature descriptions might be helpful.
 
 ## <a name="personas"></a>Personas
-There are two varieties of users for Microsoft Azure Stack, the cloud administrator (provider) and the tenant (consumer).
+There are two varieties of users for Microsoft Azure Stack, the cloud operator (provider) and the tenant (consumer).
 
-* A **cloud administrator** can configure Azure Stack and manage offers, plans, services, quotas, and pricing to provide resources for their tenants.  Cloud administrators also manage capacity and respond to alerts.  
+* A **cloud operator** can configure Azure Stack and manage offers, plans, services, quotas, and pricing to provide resources for their tenants.  Cloud operators also manage capacity and respond to alerts.  
 * A **tenant** (also referred to as a user) consumes services that the cloud administrator offers. Tenants can provision, monitor, and manage services that they have subscribed to, such as Web Apps, Storage, and Virtual Machines.
 
 ## <a name="portal"></a>Portal
 The primary methods of interacting with Microsoft Azure Stack are the administrator portal, user portal, and PowerShell.
 
-![](media/azure-stack-key-features/image3.png)
-
-The Azure Stack portals are each backed by separate instances of Azure Resource Manager.  A cloud administrator uses the administrator portal to manage Azure Stack, and to do things like create tenant offerings.  The user portal (also referred to as the tenant portal) provides a self-service experience for consumption of cloud resources, like virtual machines, storage accounts, and Web Apps. For more information, see [Using the Azure Stack administrator and user portals](azure-stack-manage-portals.md).
+The Azure Stack portals are each backed by separate instances of Azure Resource Manager.  A cloud operator uses the administrator portal to manage Azure Stack, and to do things like create tenant offerings.  The user portal (also referred to as the tenant portal) provides a self-service experience for consumption of cloud resources, like virtual machines, storage accounts, and Web Apps. For more information, see [Using the Azure Stack administrator and user portals](azure-stack-manage-portals.md).
 
 ## <a name="identity"></a>Identity 
 Azure Stack uses either Azure Active Directory (AAD) or Active Directory Federation Services (AD FS) as an identity provider.  
@@ -45,9 +42,9 @@ Azure Stack uses either Azure Active Directory (AAD) or Active Directory Federat
 Azure Active Directory is Microsoft's cloud-based, multi-tenant identity provider.  Most hybrid scenarios use Azure Active Directory as the identity store.
 
 ### <a name="active-directory-federation-services"></a>Active Directory Federation Services
-You may choose to use Active Directory Federation Services (AD FS) for disconnected deployments of Azure Stack.  Azure Stack, resource providers, and other applications work much the same way with AD FS as they do with Azure Active Directory. Azure Stack includes its own AD FS and Active Directory instance, and an Active Directory Graph API. Azure Stack Technical Preview 3 supports the following AD FS scenarios:
+You may choose to use Active Directory Federation Services (AD FS) for disconnected deployments of Azure Stack.  Azure Stack, resource providers, and other applications work much the same way with AD FS as they do with Azure Active Directory. Azure Stack includes its own AD FS and Active Directory instance, and an Active Directory Graph API. Azure Stack Development Kit supports the following AD FS scenarios:
 
-- Sign in to the POC deployment by using AD FS.
+- Sign in to the deployment by using AD FS.
 - Create a virtual machine with secrets in Key Vault
 - Create a vault for storing/accessing secrets
 - Create custom RBAC roles in subscription
@@ -65,7 +62,7 @@ In Azure Stack, services are delivered to tenants using regions, subscriptions, 
 Example hierarchy of a tenant’s subscriptions to offers, each with varying plans and services.
 
 ### <a name="regions"></a>Regions
-Azure Stack regions are a basic element of scale and management. An organization may have multiple regions with resources available in each region. Regions may also have different service offerings available. In Azure Stack TP3, only a single region is supported, and is automatically named *local*.
+Azure Stack regions are a basic element of scale and management. An organization may have multiple regions with resources available in each region. Regions may also have different service offerings available. In Azure Stack Development Kit, only a single region is supported, and is automatically named *local*.
 
 ### <a name="services"></a>Services
 Microsoft Azure Stack enables providers to deliver a wide variety of services and applications, such as virtual machines, SQL Server databases, SharePoint, Exchange, and more.
@@ -136,8 +133,8 @@ Azure RBAC has three basic roles that apply to all resource types: Owner, Contri
 ## <a name="usage-data"></a>Usage data
 Microsoft Azure Stack collects and aggregates usage data across all resource providers, and transmits it to Azure for processing by Azure commerce. The usage data collected on Azure Stack can be viewed via a REST API. There is an Azure-consistent Tenant API as well as Provider and Delegated Provider APIs to get usage data across all tenant subscriptions. This data can be used to integrate with an external tool or service for billing or chargeback. Once usage has been processed by Azure commerce, it can be viewed in the Azure billing portal.
 
-## <a name="in-development-build-of-azure-stack-poc"></a>In-development build of Azure Stack POC
-In-development builds let early-adopters evaluate the most recent version of the Azure Stack POC. They’re incremental builds based on the most recent major release. While major versions will continue to be released every few months, the in-development builds will release intermittently between the major releases.
+## <a name="in-development-build-of-azure-stack-development-kit"></a>In-development build of Azure Stack Development Kit
+In-development builds let early-adopters evaluate the most recent version of the Azure Stack Development Kit. They’re incremental builds based on the most recent major release. While major versions will continue to be released every few months, the in-development builds will release intermittently between the major releases.
 
 In-development builds will provide the following benefits:
 - Bug fixes
@@ -145,6 +142,6 @@ In-development builds will provide the following benefits:
 - Other improvements
 
 ## <a name="next-steps"></a>Next steps
-[Deploy Azure Stack Technical Preview 3 (POC)](azure-stack-deploy.md)
+[Deploy Azure Stack Development Kit](azure-stack-deploy.md)
 
 

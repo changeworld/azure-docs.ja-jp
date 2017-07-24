@@ -12,19 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/31/2016
+ms.date: 07/14/2017
 ms.author: sngun
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
-ms.openlocfilehash: 523f5fddc30333c8fc53572172a2359ae67dc559
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: fcd845bce02a4440a01237737b11c08ae9f95779
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="install-and-configure-cli-for-use-with-azure-stack"></a>Install and configure CLI for use with Azure Stack
 
-In this document, we guide you through the process of using Azure Command-line Interface (CLI) to manage Azure Stack resources on Linux and Mac client platforms. You can use the steps described in this article either from the [Azure Stack POC computer](azure-stack-connect-azure-stack.md#connect-with-remote-desktop) or from an external client if you are [connected through VPN](azure-stack-connect-azure-stack.md#connect-with-vpn).
+In this document, we guide you through the process of using Azure Command-line Interface (CLI) to manage Azure Stack resources on Linux and Mac client platforms. You can use the steps described in this article either from the [Azure Stack Development Kit](azure-stack-connect-azure-stack.md#connect-with-remote-desktop) or from an external client if you are [connected through VPN](azure-stack-connect-azure-stack.md#connect-with-vpn).
 
 ## <a name="install-azure-stack-cli"></a>Install Azure Stack CLI
 
@@ -57,16 +56,22 @@ Use the following steps to connect to Azure Stack:
 
 2. Get your Azure Stack environment’s active directory endpoint and active directory resource Id endpoint. You can get these values by navigating to one of the following links in a browser: 
 
-   a. For the **administrative** environment, use:    `https://adminmanagement.local.azurestack.external/metadata/endpoints?api-version=2015-01-01`
+   a. For the **cloud administrative** environment, use:    
+   `https://adminmanagement.local.azurestack.external/metadata/endpoints?api-version=2015-01-01`
 
    b. For the **user** environment, use:    
    `https://management.local.azurestack.external/metadata/endpoints?api-version=2015-01-01`
 
-   When you navigate to the previous link, a file named **endpoints** is downloaded. Open this file and make a note of the values assigned to the **loginEndpoint** and **audiences** parameters, you will use these values in the next step. The *loginEndpoint* value is set to - `https://login.windows.net/` for AAD-based deployments and `https://adfs.local.azurestack.external/adfs` for AD FS-based deployments. And the *audiences* parameter has the format- `https://management.<aadtenant>.onmicrosoft.com/<active-directory-resource-id>`.
+   When you navigate to the previous link, a file named **endpoints** is downloaded. Open this file and make a note of the following values:  
+
+   | **JSON object** | **Value** | **Mapping parameter** |
+   | --- | --- | --- |
+   | loginEndpoint | **AAD** - https://login.windows.net/ <br> **AD FS**- https://adfs.local.azurestack.external/adfs | endpoint-active-directory |
+   | audiences | `https://management.<your aadtenant>.onmicrosoft.com/<your active-directory-resource-id>` | endpoint-active-directory-resource-id |
 
 3. Register your Azure Stack environment by running the following command:
 
-   a. To register the **administrative** environment, use:
+   a. To register the **cloud administrative** environment, use:
 
    ```azurecli
    az cloud register \
