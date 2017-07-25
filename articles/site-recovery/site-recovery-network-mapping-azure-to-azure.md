@@ -32,7 +32,7 @@ ms.lasthandoff: 06/15/2017
 
 ## <a name="map-networks"></a>ネットワークのマップ
 
-Azure リージョンの Azure 仮想ネットワークを、別のリージョンの仮想ネットワークにマップするには、[Site Recovery インフラストラクチャ]、[ネットワークのマッピング] (Azure Virtual Machines の場合) の順に移動し、ネットワーク マッピングを作成してください。
+Azure リージョンの Azure 仮想ネットワークを、別のリージョンの仮想ネットワークにマップするには、[Site Recovery インフラストラクチャ]、[ネットワークのマッピング] \(Azure Virtual Machines の場合) の順に移動し、ネットワーク マッピングを作成してください。
 
 ![ネットワーク マッピング](./media/site-recovery-network-mapping-azure-to-azure/network-mapping1.png)
 

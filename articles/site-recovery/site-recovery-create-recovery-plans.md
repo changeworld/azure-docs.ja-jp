@@ -7,19 +7,18 @@ author: rayne-wiselman
 manager: carmonm
 editor: 
 ms.assetid: 72408c62-fcb6-4ee2-8ff5-cab1218773f2
-ms.service: storage-backup-recovery
+ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 05/24/2017
+ms.date: 07/23/2017
 ms.author: raynew
 ms.translationtype: Human Translation
 ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
 ms.openlocfilehash: 618c6fead3dbad385c4ded39352eea0cfcf1b134
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/16/2017
-
 
 ---
 # <a name="create-recovery-plans"></a>復旧計画の作成

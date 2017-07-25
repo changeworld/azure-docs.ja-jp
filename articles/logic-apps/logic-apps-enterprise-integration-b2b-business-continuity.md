@@ -149,7 +149,7 @@ AS2 プロトコルを使用するドキュメントのビジネス継続性は�
 
 1. セカンダリ リージョンで[ロジック アプリ](../logic-apps/logic-apps-create-a-logic-app.md)を作成します。  
 
-2. **AS2** を検索し、**[AS2 - When a MIC value is created] (AS2 - MIC 値を作成する場合)** を選択します。   
+2. **AS2** を検索し、**[AS2 - When a MIC value is created] \(AS2 - MIC 値を作成する場合)** を選択します。   
 ![AS2 検索](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid1.png)
 
 3. トリガーを選択すると、統合アカウントへの接続を確立するように求められます。 トリガーは、プライマリ リージョンの統合アカウントに接続される必要があります。 接続名を入力し、リストから**プライマリ リージョンの統合アカウント**を選択して、**[作成]** をクリックします。   
@@ -161,7 +161,7 @@ AS2 プロトコルを使用するドキュメントのビジネス継続性は�
 5. **[新しいステップ]** > **[アクションの追加]** の順に選択します。  
 ![[アクションの追加]](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid4.png)
 
-6. **AS2** を検索し、**[AS2 - Add or update a MIC] (AS2 - MIC を追加または更新する)** を選択します。  
+6. **AS2** を検索し、**[AS2 - Add or update a MIC] \(AS2 - MIC を追加または更新する)** を選択します。  
 ![MIC の追加または変更](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid5.png)
 
 7. アクションをセカンダリ リージョン統合アカウントに接続するには、**[接続の変更]** > **[新しい接続の追加]** の順に選択し、使用可能な統合アカウントのリストを表示します。 接続名を入力し、リストから**セカンダリ リージョンの統合アカウント**を選択して、**[作成]** をクリックします。    

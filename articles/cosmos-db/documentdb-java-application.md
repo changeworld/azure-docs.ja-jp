@@ -744,7 +744,7 @@ Azure Websites での Java アプリケーションのデプロイは簡単で�
 3. Eclipse で、**[File]** メニューの **[Import]** をクリックします。
 4. **[Import]** ウィンドウで、**[Git]**、**[Projects from Git]**、**[Next]** の順にクリックします。
 5. **[Select Repository Source]** 画面で、**[Clone URI]** をクリックします。
-6. **[Source Git Repository]\(ソース Git リポジトリ\)** 画面の **[URI]** ボックスに「https://github.com/Azure-Samples/java-todo-app.git」と入力し、**[Next]\(次へ\)** をクリックします。
+6. **[Source Git Repository]\(ソース Git リポジトリ\)** 画面の **[URI]** ボックスに「 https://github.com/Azure-Samples/java-todo-app.git 」と入力し、**[Next]\(次へ\)** をクリックします。
 7. **[Branch Selection]** 画面で、**[master]** が選択されていることを確認し、**[Next]** をクリックします。
 8. **[Local Destination]** 画面で、**[Browse]** をクリックしてリポジトリをコピーするフォルダーを選択し、**[Next]** をクリックします。
 9. **[Select a wizard to use for importing projects]** 画面で、**[Import existing projects]** が選択されていることを確認し、**[Next]** をクリックします。

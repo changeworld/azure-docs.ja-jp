@@ -1,58 +1,60 @@
-- name: Content Moderator Documentation
+- name: Content Moderator のドキュメント
   href: ../index.md
-- name: Overview
+- name: 概要
   items: 
-  - name: Learn about the Content Moderator API
+  - name: Content Moderator API の詳細
     href: overview.md
-- name: Get started
+- name: 作業開始
   items: 
-  - name: Get started with Content Moderator
+  - name: Content Moderator の概要
     href: quick-start.md
-- name: How to
+- name: 方法
   items: 
-  - name: Review tool user guide
+  - name: レビュー ツールのユーザー ガイド
     items:
-    - name: Human in the loop
+    - name: 人間の関与について
       href: Review-Tool-User-Guide/human-in-the-loop.md
-    - name: Create team
-      href: Review-Tool-User-Guide/Sign-up.md
-    - name: Upload images
-      href: Review-Tool-User-Guide/Upload-Images.md
-    - name: Image reviews
-      href: Review-Tool-User-Guide/Review-Moderated-Images.md
-    - name: Text reviews
-      href: Review-Tool-User-Guide/Text-Reviews.md
-    - name: Team and subteams
-      href: Review-Tool-User-Guide/SubTeams.md
-    - name: Using workflows
-      href: Review-Tool-User-Guide/Workflows.md
-    - name: Settings
+    - name: 設定
       href: Review-Tool-User-Guide/Configure.md
-    - name: View dashboard
+    - name: チームおよびサブチーム
+      href: Review-Tool-User-Guide/SubTeams.md
+    - name: タグについて
+      href: Review-Tool-User-Guide/Tags.md
+    - name: 画像のレビュー
+      href: Review-Tool-User-Guide/Review-Moderated-Images.md
+    - name: テキストのレビュー
+      href: Review-Tool-User-Guide/Text-Reviews.md
+    - name: 資格情報の検証
+      href: Review-Tool-User-Guide/Credentials.md
+    - name: コネクタについて
+      href: Review-Tool-User-Guide/Connectors.md
+    - name: ワークフローの使用
+      href: Review-Tool-User-Guide/Workflows.md
+    - name: ダッシュボードの表示
       href: Review-Tool-User-Guide/View-Dashboard.md
-- name: Reference
+- name: リファレンス
   items: 
-  - name: API Reference Guide
+  - name: API リファレンス ガイド
   
     href: api-reference.md
     items:
-  - name: Review APIs
+  - name: API の確認
     href: review-api.md
-  - name: Image moderation
+  - name: 画像のモデレート
     href: image-moderation-api.md
-  - name: Text moderation
+  - name: テキストのモデレート
     href: text-moderation-api.md
-  - name: Text moderation - languages
+  - name: テキストのモデレート - 言語
     href: Text-Moderation-API-Languages.md
-  - name: Video moderation
+  - name: ビデオのモデレート
     href: video-moderation-api.md
-- name: Resources
+- name: リソース
   items:  
-  - name: Azure Roadmap
+  - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
   - name: Windows SDK
     href: https://github.com/MicrosoftContentModerator/Microsoft.CognitiveServices.ContentModerator-Windows/
-  - name: Samples
+  - name: サンプル
     href: https://azure.microsoft.com/resources/samples/?service=cognitive-services
   - name: FAQ
     href: FAQs.md

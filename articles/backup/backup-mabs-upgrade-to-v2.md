@@ -101,7 +101,7 @@ Backup Server にボリュームを追加する場合、ボリュームにフレ
 
     ![[Add Disk Storage](ディスク ストレージの追加) ウィザードを開きます](./media//backup-mabs-upgrade-to-v2/open-add-disk-storage-wizard.png)
 
-    [Add Disk Storage](ディスク ストレージの追加) ウィザードが開きます。
+    [Add Disk Storage] \(ディスク ストレージの追加) ウィザードが開きます。
 
 2. **[Add Disk Storage]**(ディスク ストレージの追加) ページの **[Available volumes]**(使用可能なボリューム) ボックスで、ボリュームを選択し、**[Add]**(追加) を選択します。
 3. **[Selected volumes]**(選択したボリューム) ボックスに、ボリュームのフレンドリ名を入力し、**[OK]** を選択します。

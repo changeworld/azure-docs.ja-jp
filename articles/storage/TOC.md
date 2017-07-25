@@ -37,13 +37,18 @@
 ### [Python](storage-python-how-to-use-table-storage.md)
 ### [Ruby](storage-ruby-how-to-use-table-storage.md)
 
-## File Storage
-### [Windows、.NET、PowerShell](storage-dotnet-how-to-use-files.md)
+## [File Storage](storage-files-introduction.md)
+### [ポータル](storage-file-how-to-use-files-portal.md)
+### [.NET](storage-dotnet-how-to-use-files.md)
+### [PowerShell](storage-file-how-to-use-files-powershell.md)
+### [Windows](storage-file-how-to-use-files-windows.md)
 ### [Linux](storage-how-to-use-files-linux.md)
+### [Mac](storage-file-how-to-use-files-mac.md)  
 ### [Java](storage-java-how-to-use-file-storage.md)
 ### [C++](storage-c-plus-plus-how-to-use-files.md)
 ### [Python](storage-python-how-to-use-file-storage.md)
-
+### [ファイル共有の作成](storage-file-how-to-create-file-share.md)
+### [FAQ](storage-files-faq.md)
 ## ディスク ストレージ 
 ### [Resource Manager と PowerShell を使用して VM を作成する](../virtual-machines/virtual-machines-windows-ps-create.md)
 ### [Azure CLI 2.0 を使用して Linux VM を作成する](../virtual-machines/linux/quick-create-cli.md)
@@ -122,6 +127,8 @@
 #### [Java](storage-client-side-encryption-java.md)
 #### [Python](storage-client-side-encryption-python.md)
 ## 監視とトラブルシューティング
+### [障害復旧ガイダンス](storage-disaster-recovery-guidance.md)
+### [IAAS ディスクのバックアップと DR](storage-backup-and-disaster-recovery-for-azure-iaas-disks.md)
 ### [ストレージ エクスプローラーのトラブルシューティング](storage-explorer-troubleshooting.md)
 ### メトリックとログ
 #### [Storage Analytics](storage-analytics.md)
@@ -132,7 +139,6 @@
 #### [リソース マネージャー デプロイの場合](storage-resource-manager-cannot-delete-storage-account-container-vhd.md)
 #### [クラシック デプロイの場合](storage-cannot-delete-storage-account-container-vhd.md)
 ### [File Storage のトラブルシューティング](storage-troubleshoot-file-connection-problems.md)
-### [障害復旧ガイダンス](storage-disaster-recovery-guidance.md)
 ## データの転送
 ### [Storage との間でデータを移動する](storage-moving-data.md)
 ### [Windows での AzCopy](storage-use-azcopy.md)

@@ -77,7 +77,7 @@ Azure Media Services で Azure AD 認証を使用する場合、次の 2 つの�
         テナント情報は、Azure Portal から取得できます。 右上隅のサインインしているユーザーの名前にカーソルを合わせます。
     * Media Services リソース URI。 
 
-        この URI は、同じ Azure 環境 内の Media Services アカウントの URI と同じです (例: https://rest.media.azure.net)。
+        この URI は、同じ Azure 環境 内の Media Services アカウントの URI と同じです (例: https://rest.media.azure.net )。
 
     * Media Services (ネイティブ) アプリケーション クライアント ID。
     * Media Services (ネイティブ) アプリケーション リダイレクト URI。
@@ -119,7 +119,7 @@ Azure AD アプリケーションを作成した後、次の設定の値を取�
         テナント情報は、Azure Portal から取得できます。 右上隅のサインインしているユーザーの名前にカーソルを合わせます。
     * Media Services リソース URI。 
 
-        この URI は、同じ Azure 環境 内の Media Services アカウントの URI と同じです (例: https://rest.media.azure.net)。
+        この URI は、同じ Azure 環境 内の Media Services アカウントの URI と同じです (例: https://rest.media.azure.net )。
 
     * REST Media Services のリソース URI。
 

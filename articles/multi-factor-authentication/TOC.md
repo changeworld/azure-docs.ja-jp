@@ -15,6 +15,7 @@
 ### [設定を構成する](multi-factor-authentication-whats-next.md)
 ### [MFA でのレポート](multi-factor-authentication-manage-reports.md)
 ### [既存のネットワーク ポリシー サーバーを使用する](multi-factor-authentication-nps-extension.md)
+#### [NPS 拡張機能の詳細な構成](nps-extension-advanced-configuration.md)
 ### [認証プロバイダーを作成する](multi-factor-authentication-get-started-auth-provider.md)
 ### オンプレミスでの Azure MFA
 #### [ユーザー ポータルをインストールする](multi-factor-authentication-get-started-portal.md)

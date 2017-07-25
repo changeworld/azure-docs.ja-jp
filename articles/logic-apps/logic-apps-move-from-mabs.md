@@ -61,7 +61,7 @@ BizTalk Services のソースは、FTP、SFTP、および Service Bus Queue ま�
 
 ![](media/logic-apps-move-from-mabs/sources.png)
 
-各ブリッジには、既定ではブリッジの [Runtime Address] (ランタイム アドレス) および [Relative Address] (相対アドレス) プロパティで構成される HTTP エンドポイントがあります。 Logic Apps と同じ機能を実現するには、[要求および応答](../connectors/connectors-native-reqres.md)アクションを使用します。
+各ブリッジには、既定ではブリッジの [Runtime Address] \(ランタイム アドレス) および [Relative Address] \(相対アドレス) プロパティで構成される HTTP エンドポイントがあります。 Logic Apps と同じ機能を実現するには、[要求および応答](../connectors/connectors-native-reqres.md)アクションを使用します。
 
 ## <a name="xml-processing-and-bridges"></a>XML の処理とブリッジ
 BizTalk Services 内のブリッジは、処理パイプラインに似ています。 ブリッジはコネクタから受信されたデータを取得でき、そのデータに対して何からの処理を実行してから、それを別のシステムに送信します。 Logic Apps は、BizTalk Services と同じパイプライン ベースの相互通信パターンをサポートすることによって同じ処理を実行し、またその他の統合パターンもいくつか提供します。 BizTalk Services の [XML 要求-応答ブリッジ](https://msdn.microsoft.com/library/azure/hh689781.aspx)は、次を実行できる各段階から成る VETER パイプラインと呼ばれます。
@@ -100,7 +100,7 @@ Logic Apps は[条件](../logic-apps/logic-apps-use-logic-app-features.md)と[�
 BizTalk Services 処理での強化段階は、受信されたデータに関連付けられたメッセージ コンテキストにプロパティを追加します。 たとえば、ルーティングに使用するプロパティ (下で説明します) をデータベース検索から、または XPath 式を使用して値を抽出することによって昇格させます。 前のアクションからのすべてのコンテキスト データ出力へのアクセスを提供するため、同じ動作のレプリケーションが単純明快になります。 たとえば、`Get Row` SQL 接続アクションを使用して SQL Server データベースからのデータを返し、そのデータをルーティングのための決定アクションで使用します。 同様に、トリガーによってキューに入れられた受信 Service Bus メッセージに関するプロパティや、xpath ワークフロー定義言語式を使用した XPath をアドレス指定できます。
 
 ### <a name="use-custom-code"></a>カスタム コードを使用する
-BizTalk Services は、独自のアセンブリでアップロードされた[カスタム コードを実行する](https://msdn.microsoft.com/library/azure/dn232389.aspx)機能を提供します。 これは、[IMessageInspector](https://msdn.microsoft.com/library/microsoft.biztalk.services.imessageinspector.aspx) インターフェイスによって実装されます。 ブリッジ内の各段階には、作成した .NET 型を提供するこのインターフェイスを実装する 2 つのプロパティ ([On Enter Inspector] (開始時の Inspector) と [On Exit Inspector] (終了時の Inspector)) が含まれています。 カスタム コードを使用すると、データに対してより複雑な処理を実行したり、一般的なビジネス ロジックを実行するアセンブリ内の既存のコードを再利用したりすることができます。 
+BizTalk Services は、独自のアセンブリでアップロードされた[カスタム コードを実行する](https://msdn.microsoft.com/library/azure/dn232389.aspx)機能を提供します。 これは、[IMessageInspector](https://msdn.microsoft.com/library/microsoft.biztalk.services.imessageinspector.aspx) インターフェイスによって実装されます。 ブリッジ内の各段階には、作成した .NET 型を提供するこのインターフェイスを実装する 2 つのプロパティ ([On Enter Inspector] \(開始時の Inspector) と [On Exit Inspector] \(終了時の Inspector)) が含まれています。 カスタム コードを使用すると、データに対してより複雑な処理を実行したり、一般的なビジネス ロジックを実行するアセンブリ内の既存のコードを再利用したりすることができます。 
 
 Logic Apps には、カスタム コードを実行するための 2 つの主な方法である Azure Functions と API Apps が用意されています。 Azure Functions は作成して、ロジック アプリから呼び出すことができます。 「[Add and run custom code for logic apps through Azure Functions (Azure Functions を使用してロジック アプリのカスタム コードを追加して実行する)](../logic-apps/logic-apps-azure-functions.md)」を参照してください。 Azure App Service の一部である API Apps は、独自のトリガーやアクションを作成するために使用します。 詳細については、「[Logic Apps で使用するカスタム API の作成](../logic-apps/logic-apps-create-api-app.md)」を参照してください。 
 

@@ -7,13 +7,18 @@
 ## [互換性のあるサードパーティ製ソフトウェア](active-directory-ds-compatible-software.md)
 
 # 作業開始
-## [管理グループを作成する](active-directory-ds-getting-started-create-group.md)
-## [仮想ネットワークを作成または選択する](active-directory-ds-getting-started-vnet.md)
-## [Azure AD DS を有効にする](active-directory-ds-getting-started-enableaadds.md)
-## [DNS の設定を更新する](active-directory-ds-getting-started-update-dns.md)
-## パスワードの同期を有効にする
-### [クラウド専用テナント](active-directory-ds-getting-started-password-sync.md)
-### [同期されたテナント](active-directory-ds-getting-started-password-sync-synced-tenant.md)
+## Azure クラシック ポータル
+### [タスク 1: 管理者グループを作成する](active-directory-ds-getting-started-create-group.md)
+### [タスク 2: 仮想ネットワークを作成または選択する](active-directory-ds-getting-started-vnet.md)
+### [タスク 3: Azure AD Domain Services を有効にする](active-directory-ds-getting-started-enableaadds.md)
+### [タスク 4: 仮想ネットワークの DNS 設定を更新する](active-directory-ds-getting-started-update-dns.md)
+### [タスク 5: パスワード同期を有効にする](active-directory-ds-getting-started-password-sync.md)
+## Azure Portal (プレビュー)
+### [タスク 1: 基本設定を構成する](active-directory-ds-getting-started.md)
+### [タスク 2: ネットワーク設定を構成する](active-directory-ds-getting-started-network.md)
+### [タスク 3: 管理者グループを構成して Azure AD Domain Services を有効にする](active-directory-ds-getting-started-admingroup.md)
+### [タスク 4: 仮想ネットワークの DNS 設定を更新する](active-directory-ds-getting-started-dns.md)
+### [タスク 5: パスワード同期を有効にする](active-directory-ds-getting-started-password-sync.md)
 
 # 方法
 ## 管理対象ドメインに参加する
@@ -23,7 +28,12 @@
 ## 管理対象ドメインを管理する
 ### [管理対象ドメインを管理する](active-directory-ds-admin-guide-administer-domain.md)
 ### [管理対象ドメインで DNS を管理する](active-directory-ds-admin-guide-administer-dns.md)
-### [管理対象ドメインのセキュリティで保護された LDAP を構成する](active-directory-ds-admin-guide-configure-secure-ldap.md)
+### 管理対象ドメインのセキュリティで保護された LDAP を構成する
+#### [タスク 1: セキュリティで保護された LDAP 用の証明書を取得する](active-directory-ds-admin-guide-configure-secure-ldap.md)
+#### [タスク 2: セキュリティで保護された LDAP 証明書をエクスポートする](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)
+#### [タスク 3: Azure クラシック ポータルを使用して、管理対象ドメインに対してセキュリティで保護された LDAP を有効にする](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps-classic.md)
+#### [タスク 3: Azure Portal (プレビュー) を使用して、管理対象ドメインに対してセキュリティで保護された LDAP を有効にする](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
+
 ### [管理されたドメインで OU を作成する](active-directory-ds-admin-guide-create-ou.md)
 ### [管理対象ドメインでグループ ポリシーを管理する](active-directory-ds-admin-guide-administer-group-policy.md)
 ## [仮想ネットワークを選択する](active-directory-ds-networking.md)
@@ -34,6 +44,8 @@
 ## トラブルシューティング
 ### [FAQ](active-directory-ds-faqs.md)
 ### [トラブルシューティング ガイド](active-directory-ds-troubleshooting.md)
+### [プレビューの Azure Portal のエクスペリエンスを有効にする](active-directory-ds-azure-portal-enable-preview-access.md)
+### [一致しないテナントのエラーを解決する](active-directory-ds-mismatched-tenant-error.md)
 
 # 関連項目
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)

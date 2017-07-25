@@ -92,7 +92,7 @@
 ### 使用法
 #### [概要](app-insights-usage-overview.md)
 #### [ユーザー、セッション、イベント](app-insights-usage-segmentation.md)
-#### [ファネル](app-insights-understand-usage-patterns.md)
+#### [ファネル](usage-funnels.md)
 #### [保持](app-insights-usage-retention.md)
 #### [ブック](app-insights-usage-workbooks.md)
 
@@ -116,6 +116,7 @@
 ## 開発
 
 ### [カスタム イベントとメトリックの API](app-insights-api-custom-events-metrics.md)
+### [.NET SDK でのカスタム操作の追跡](application-insights-custom-operations-tracking.md)
 ### [テレメトリのフィルター処理および前処理](app-insights-api-filtering-sampling.md)
 ### [サンプリング](app-insights-sampling.md)
 
