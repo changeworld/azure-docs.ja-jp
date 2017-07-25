@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/26/2017
+ms.date: 07/26/2017
 ms.author: dobett
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
@@ -20,17 +20,12 @@ ms.openlocfilehash: 5efb78c2c514bd0b21be842ddee5465fe4e4dcf9
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/04/2017
 
-
 ---
-<a id="connect-your-microsoft-azure-iot-raspberry-pi-3-starter-kit-to-the-remote-monitoring-solution" class="xliff"></a>
-
-# Microsoft Azure IoT Raspberry Pi 3 スタート キットをリモート監視ソリューションに接続する
+# <a name="connect-your-microsoft-azure-iot-raspberry-pi-3-starter-kit-to-the-remote-monitoring-solution"></a>Microsoft Azure IoT Raspberry Pi 3 スタート キットをリモート監視ソリューションに接続する
 
 このセクションのチュートリアルでは、Raspberry Pi 3 デバイスをリモート監視ソリューションに接続する方法について説明します。 使用するプログラミング言語に応じたチュートリアルを選択し、お使いの Raspberry Pi で使用できるセンサー ハードウェアの有無を確認します。
 
-<a id="the-tutorials" class="xliff"></a>
-
-## チュートリアル
+## <a name="the-tutorials"></a>チュートリアル
 
 | チュートリアル | メモ | 言語 |
 | -------- | ----- | --------- |
@@ -38,9 +33,7 @@ ms.lasthandoff: 05/04/2017
 | 実際のセンサー (中級) | Raspberry Pi に接続している BME280 センサーからのデータを使用します。 | [C][lnk-c-basic]、[Node.js][lnk-node-basic] |
 | ファームウェアの更新の実装 (上級)| Raspberry Pi に接続している BME280 センサーからのデータを使用します。 Raspberry Pi のリモート ファームウェア更新を有効にします。 | [C][lnk-c-advanced]、[Node.js][lnk-node-advanced] |
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
 Azure IoT のその他のサンプルとドキュメントについては、「[Azure IoT デベロッパー センター](https://azure.microsoft.com/develop/iot/)」をご覧ください。
 

@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/21/2017
+ms.date: 07/21/2017
 ms.author: steveesp
 ms.translationtype: Human Translation
 ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: a2cbb6ca9197c7af0d1d30e87d58b0314507a531
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/31/2017
-
 
 ---
 
@@ -152,7 +151,7 @@ ntttcp -s -m <2 x nr cores>,*,<Windows server IP> -N -t 300
 
 受信者<Linux>:
 
-``` bash 
+``` bash
 ntttcp -r -m <2 x nr cores>,*,<Linux server IP>
 ```
 
