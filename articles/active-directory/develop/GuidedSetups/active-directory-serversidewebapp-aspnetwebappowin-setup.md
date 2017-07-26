@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
+ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: e8a22545e00b16f02124980cba4a8831e0df207a
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: 0807e37632f9d817b22735103514f7bd03c05d59
 ms.contentlocale: ja-jp
 
 
@@ -26,7 +27,7 @@ ms.contentlocale: ja-jp
 
 このセクションでは、ASP.NET プロジェクトで OpenID 接続を使用して、OWIN ミドルウェアから認証パイプラインをインストールおよび構成する手順について説明します。 
 
-> 代わりにこの Visual Studio プロジェクトのサンプルをダウンロードすることもできます。 [プロジェクトをダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)したら[構成](#create-an-application-express)の手順に進み、実行する前にコード サンプルを構成します。
+> 代わりにこのサンプルの Visual Studio プロジェクトをダウンロードすることもできます。 [プロジェクトをダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)したら[構成](#create-an-application-express "構成手順")手順に進み、実行前にコード サンプルを構成します。
 
 <!--start-collapse-->
 > ### <a name="create-your-aspnet-project"></a>ASP.NET プロジェクトを作成する

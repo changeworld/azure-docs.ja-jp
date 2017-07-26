@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: juluk
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 63f1c468b5f8f4b0bb298cb67adea8c01b065427
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 6b4bbb13dbb86f82dd6a70acaccfcf38eec951c6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 05/18/2017
 
 ---
 # <a name="overview-of-azure-cloud-shell-preview"></a>Azure Cloud Shell (プレビュー) の概要
@@ -77,4 +77,11 @@ Cloud Shell のホストとなるマシンは無料です。ただし $Home デ�
 
 ## <a name="supported-browsers"></a>サポートされているブラウザー
 Cloud Shell は、Chrome、Edge、Safari での使用をお勧めします。 Cloud Shell は Chrome、Firefox、Safari、IE、Edge でサポートされますが、ブラウザー固有の設定の影響を受けます。
+
+## <a name="troubleshooting"></a>トラブルシューティング
+* ストレージを作成するとき、409 MissingSubscriptionRegistration というエラーを受け取ります。
+  * このエラーは、ストレージの名前空間にサブスクリプションが登録されていないことを示します。 [こちらの詳細な手順](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-common-deployment-errors#noregisteredproviderfound)に従い、完了したらもう一度やり直してください。
+* Azure Active Directory サブスクリプションを使っているとき、400 DisallowedOperation エラーのためのストレージを作成できません。
+  * AD サブスクリプションは、Azure リソース作成のためのアクセスを許可されていません。ストレージ リソースを作成できる Azure サブスクリプションを使ってください。
+
 具体的に確認されている制限については、[Cloud Shell の制限](limitations.md)に関するページを参照してください。

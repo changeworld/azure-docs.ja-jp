@@ -1,5 +1,5 @@
 ---
-title: ".NET SDK を使用した HDInsight での Hadoop クラスターの管理 | Microsoft Docs"
+title: ".NET SDK を使用した HDInsight での Hadoop クラスターの管理 - Azure | Microsoft Docs"
 description: "HDInsight .NET SDK を使用して、HDInsight で Hadoop クラスターの管理タスクを実行する方法について説明します。"
 services: hdinsight
 editor: cgronlun
@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 05/25/2017
 ms.author: jgao
 ms.translationtype: Human Translation
-ms.sourcegitcommit: ec710057c2016175f65578a9d6884f7273b65169
-ms.openlocfilehash: f2a762ad64feeef91802429cdd959cec67b73473
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: c10471425fa1202ddb7fe35d0adf4ef33509f268
 ms.contentlocale: ja-jp
-ms.lasthandoff: 12/20/2016
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -217,7 +217,7 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 > 
 > 
 
-これは、ポータルを使用して行うこともできます。 [Azure ポータルを使用した HDInsight の管理][hdinsight-admin-portal]に関するページを参照してください。
+これは、ポータルを使用して行うこともできます。 [Azure Portal ポータルを使用した HDInsight の管理][hdinsight-admin-portal]に関するページをご覧ください。
 
 ## <a name="update-http-user-credentials"></a>HTTP ユーザーの資格情報の更新
 [HTTP アクセス許可の付与/取り消し](#grant/revoke-access)と同じ手順です。HTTP アクセスがクラスターで許可されている場合、最初に取り消す必要があります。  次に、新しい HTTP ユーザーの資格情報を使用してアクセス許可を付与してください。

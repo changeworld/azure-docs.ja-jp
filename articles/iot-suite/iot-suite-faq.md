@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 05/15/2017
 ms.author: corywink
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 9b92801609dfc8d14352a50edd10f8902c87c661
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 9f850175be843b29432c4803a150ddb2ec79780d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -95,6 +95,14 @@ ms.lasthandoff: 05/10/2017
 
 [Azure AD テナントの削除方法][lnk-delete-aad-tennant]に関する Eric Golpe のブログ投稿を参照してください。
 
+### <a name="what-is-opc-ua"></a>OPC UA とは
+
+2008年にリリースされた OPC Unified Architecture (UA) は、プラットフォームに依存しないサービス指向の相互運用性標準であり、産業用の PC、PLC、センサーなど、さまざまな産業システムとデバイスで使われています。 OPC UA では、個別の OPC Classic 仕様のすべての機能が、セキュリティを組み込まれた 1 つの拡張可能なフレームワークに統合されています。 これは、OPC Foundation によって主導されている標準です。 [OPC Foundation][lnk-opc-foundation] は非営利組織であり、440 を超えるメンバーが、OPC 仕様を使ってマルチ ベンダーでマルチ プラットフォームの安全で信頼性の高い相互運用性を促進するための、インフラストラクチャ、仕様、技術、プロセスを提供するという共通の目標を共有しています。
+
+### <a name="why-did-microsoft-choose-opc-ua-for-the-connected-factory-preconfigured-solution"></a>Microsoft が接続済みファクトリの事前に構成されたソリューションとして OPC UA を選んだ理由
+
+Microsoft が OPC UA を選んだのは、それがオープンであり、特定の企業が占有する技術ではなく、プラットフォームから独立しており、業界で認められた実績のある標準であるためです。 OPC UA は、製造プロセスと機器の広範なセットの間の相互運用性を保証する Industrie 4.0 (RAMI4.0) 参照アーキテクチャ ソリューションの要件になっています。 Microsoft には、お客様から Industrie 4.0 ソリューション構築の要望が寄せられています。 OPC UA をサポートすることで、お客様が目標を達成するときの障害が低くなり、ビジネス価値がお客様に直接提供されます。
+
 ### <a name="next-steps"></a>次のステップ
 
 IoT Suite の事前構成済みのソリューションの他の機能について学習できます。
@@ -102,6 +110,7 @@ IoT Suite の事前構成済みのソリューションの他の機能につい�
 * [予測的なメンテナンスの構成済みソリューションの概要][lnk-predictive-overview]
 * [IoT の徹底的なセキュリティ][lnk-security-groundup]
 
+[lnk-opc-foundation]: http://opcfoundation.org/
 [lnk-predictive-overview]: iot-suite-predictive-overview.md
 [lnk-security-groundup]: securing-iot-ground-up.md
 
