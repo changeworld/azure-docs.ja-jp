@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 4/6/2017
+ms.date: 7/26/2017
 ms.author: v-six
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
 ms.openlocfilehash: 47a9736fd6498d15305fb2296446c61e709ad0b8
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/07/2017
-
 
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>ロールのリサイクルを引き起こす一般的な問題

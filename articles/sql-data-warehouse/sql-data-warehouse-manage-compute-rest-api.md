@@ -13,14 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
-ms.date: 10/31/2016
-ms.author: elbutter; barbkess
+ms.date: 07/25/2017
+ms.author: elbutter
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
 ms.openlocfilehash: e250fa59204be14614a4c91fb5a0c1af5a8d5281
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/02/2017
-
 
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-rest"></a>Azure SQL Data Warehouse のコンピューティング能力の管理 (REST)
@@ -42,7 +41,7 @@ ms.lasthandoff: 06/02/2017
 DWU を変更するには、[データベースの作成または更新][Create or Update Database] REST API を使います。 次の例では、MyServer サーバーにホストされているデータベース MySQLDW のサービスレベル目標を DW1000 に設定します。 サーバーは "ResourceGroup1" という名前の Asure リソース グループ内にあります。
 
 ```
-PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01-preview HTTP/1.1
+PATCH https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01-preview HTTP/1.1
 Content-Type: application/json; charset=UTF-8
 
 {

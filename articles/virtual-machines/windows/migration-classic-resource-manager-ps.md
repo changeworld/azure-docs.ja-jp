@@ -21,7 +21,6 @@ ms.openlocfilehash: 7520e07700680fa4129a9babff30202218cefa71
 ms.contentlocale: ja-jp
 ms.lasthandoff: 07/04/2017
 
-
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-powershell"></a>Azure PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する
 以下の手順では、Azure PowerShell コマンドを使用して、サービスとしてのインフラストラクチャ (IaaS) のリソースをクラシック デプロイメント モデルから Azure Resource Manager デプロイメント モデルに移行する方法を説明します。
@@ -78,7 +77,7 @@ Resource Manager モデルの自分のアカウントにサインインします
 次のコマンドを使用して、利用可能なサブスクリプションを取得します。
 
 ```powershell
-    Get-AzureRMSubscription | Sort SubscriptionName | Select SubscriptionName
+    Get-AzureRMSubscription | Sort Name | Select Name
 ```
 
 現在のセッション用の Azure サブスクリプションを設定します。 この例では、既定のサブスクリプション名を **My Azure Subscription** に設定します。 例のサブスクリプション名を対象のサブスクリプションの名前に置き換えてください。
