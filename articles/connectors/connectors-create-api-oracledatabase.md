@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 03/29/2017
 ms.author: mandia; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 014b726c2e960029cf5896e07063e807e9ae1915
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 77bbdadcab38ab0ce1987d52ce04e465891e3697
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -124,8 +124,9 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 * 複合キーが含まれるテーブル
 * テーブル内の入れ子になったオブジェクトの種類
  
-## <a name="view-the-swagger"></a>Swagger の表示
-[Swagger の詳細](/connectors/oracle/)を参照してください。 
+## <a name="connector-specific-details"></a>コネクタ固有の詳細
+
+[コネクタの詳細](/connectors/oracle/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。 
 
 ## <a name="get-some-help"></a>ヘルプ情報
 
