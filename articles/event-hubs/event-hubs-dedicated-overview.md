@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 06/01/2017
 ms.author: sethm;babanisa
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: fa0d49498db74ec81c98f3df9317d42cdd31ab46
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: b3af61ec0923a0d9d207cee790d59aa9254a578b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -55,13 +56,13 @@ Event Hubs Dedicated を使用することで実現する利点を次に示し�
 * メンテナンス不要: 負荷分散、OS の更新、セキュリティ パッチ、パーティション分割は Microsoft が管理。
 * 月額固定価格。
 
-Event Hubs Dedicated では、Standard プランのスループットの制限もいくつか削除されます。 Basic および Standard レベルのスループット単位では、1 秒あたり 1000 件のイベントまたは TU あたり 1 MBps の受信 (送信量の 2 倍) が提供されます。 Dedicated スケール プランには、イングレス イベントとエグレス イベントの数に制限はありません。 これらの制限は、購入したイベント ハブの処理容量によってのみ決定されます。
+Event Hubs Dedicated では、Standard プランのスループットの制限もいくつか削除されます。 Basic レベルと Standard レベルのスループット単位では、1 秒あたり 1000 件のイベント、または 1 秒あたり 1 MBps の受信とその倍量の送信が提供されます。 Dedicated スケール プランには、イングレス イベントとエグレス イベントの数に制限はありません。 これらの制限は、購入したイベント ハブの処理容量によってのみ決定されます。
 
 このサービスは最大規模のテレメトリ ユーザーを対象としており、エンタープライズ契約で提供されます。
 
 ## <a name="how-to-onboard"></a>利用を開始する方法
 
-Event Hubs Dedicated プラットフォームは、さまざまなサイズの CU でエンタープライズ契約を通じて一般に提供されます。 CU ごとに約 200 スループット ユニットが提供されます。 CU を追加または削除することによって、1 か月の間にニーズに合わせて容量をスケールアップまたはスケールダウンできます。 Dedicated プランは、お客様に適した柔軟なデプロイを実現するために、Event Hubs 製品チームからより実践的な利用方法が提供されるという点でほかにはないサービスとなっています。 
+Event Hubs Dedicated プラットフォームは、さまざまなサイズの CU でエンタープライズ契約を通じて提供されます。 CU ごとに約 200 スループット ユニットが提供されます。 CU を追加または削除することによって、1 か月の間にニーズに合わせて容量をスケールアップまたはスケールダウンできます。 Dedicated プランは、お客様に適した柔軟なデプロイを実現するために、Event Hubs 製品チームからより実践的な利用方法が提供されるという点でほかにはないサービスとなっています。 
 
 ## <a name="next-steps"></a>次のステップ
 Event Hubs Dedicated 容量の詳細については、Microsoft の営業担当者または Microsoft サポートにお問い合わせください。 次のリンク先で、Event Hubs の詳細を確認することもできます。
