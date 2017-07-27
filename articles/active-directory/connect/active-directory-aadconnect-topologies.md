@@ -12,13 +12,13 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 1da3bc5454111bac5e958bf26d33cf61a5d4213c
 ms.openlocfilehash: ecff6e2e5be05499896ad23675682db184c634af
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/17/2017
-
 
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect のトポロジ

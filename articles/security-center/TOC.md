@@ -19,6 +19,7 @@
 
 ## 回避
 ### [セキュリティ ポリシーの設定](security-center-policies.md)
+### [ジャスト イン タイム アクセス](security-center-just-in-time.md)
 ### [セキュリティの推奨事項の実装](security-center-recommendations.md)
 
 ### [アプリケーションの推奨事項](security-center-application-recommendations.md)

@@ -11,13 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/28/2017
+ms.date: 05/25/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 4296bbc7123f6571ad564351612864a6315d8abf
-ms.openlocfilehash: 450f3e001a0bc4a45fea4c4f0a81e676e9a80cc4
-ms.lasthandoff: 03/02/2017
-
+ms.reviewer: calebb
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: db7d8b6b2cbe1604fc1b02cc36780ddd83a4d350
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 ---
 # <a name="azure-active-directory-conditional-access-technical-reference"></a>Azure Active Directory の条件付きアクセスに関するテクニカル リファレンス
@@ -37,7 +38,8 @@ ms.lasthandoff: 03/02/2017
 * Microsoft Office 365 SharePoint Online (OneDrive for Business を含む)
 * Microsoft Power BI 
 * Azure AD アプリケーション ギャラリーのパスワード SSO アプリケーション
-* Visual Studio Online
+* Visual Studio Team Services
+* Microsoft Teams
 
 
 

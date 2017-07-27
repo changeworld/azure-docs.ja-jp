@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 037045c4e76d0fb8e96944fe8a3235223594a034
-ms.lasthandoff: 03/30/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: 3b2ddf764f54d2e7f23b02b5b593077938ac9355
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/29/2017
 
 
 ---
@@ -32,7 +33,7 @@ Azure Application Gateway は、アプリケーション配信コントローラ
 
 **Q.Application Gateway はどのような機能をサポートしますか?**
 
-Application Gateway は、SSL オフロードとエンド ツー エンド SSL、Web アプリケーション ファイアウォール (プレビュー)、Cookie ベースのセッション アフィニティ、URL パス ベースのルーティング、複数サイトのホスティングなどをサポートします。 サポートされている機能の完全な一覧については、「[Application Gateway の概要](application-gateway-introduction.md)」をご覧ください。
+Application Gateway は、SSL オフロードとエンド ツー エンド SSL、Web アプリケーション ファイアウォール、Cookie ベースのセッション アフィニティ、URL パス ベースのルーティング、複数サイトのホスティングなどをサポートします。 サポートされている機能の完全な一覧については、「[Application Gateway の概要](application-gateway-introduction.md)」をご覧ください。
 
 **Q.Application Gateway と Azure Load Balancer の違いは何ですか?**
 
@@ -78,6 +79,10 @@ Application Gateway でサポートされるパブリック IP アドレスは 1
 
 はい。Application Gateway は、バックエンドに転送される要求に x-forwarded-for、x-forwarded-proto、および x-forwarded-port ヘッダーを挿入します。 x-forwarded-for ヘッダーの形式は、"IP:ポート" のコンマ区切りリストです。 x-forwarded-proto の有効な値は http または https です。 x-forwarded-port は、要求が Application Gateway に到達するポートを指定します。
 
+**Q.Application Gateway のデプロイにはどのくらい時間がかかりますか?更新中にも Application Gateway は動作しますか?**
+
+新しい Application Gateway のデプロイには、プロビジョニングに最大 20 分かかります。 インスタンス サイズ/数の変更は中断を伴わず、ゲートウェイはこの時間にはアクティブなままです。
+
 ## <a name="configuration"></a>構成
 
 **Q.Application Gateway は常に仮想ネットワークにデプロイされますか?**
@@ -94,7 +99,13 @@ Application Gateway は IP 接続がある限り、仮想ネットワークの�
 
 **Q.ネットワーク セキュリティ グループは Application Gateway サブネットでサポートされますか?**
 
-ネットワーク セキュリティ グループは Application Gateway サブネットでサポートされますが、適切に動作させるには、65503 ～ 65534 ポートを例外として設定し、バックエンドの正常性を確保する必要があります。 送信インターネット接続をブロックしないようにしてください。
+ネットワーク セキュリティ グループは Application Gateway サブネットでサポートされますが、次の制約があります。
+
+* 着信トラフィックの例外は、バックエンドのヘルスが正しく動作するように、65503 ~ 65534 のポートに配置する必要があります。
+
+* 送信インターネット接続をブロックしないようにしてください。
+
+* AzureLoadBalancer タグからのトラフィックを許可する必要があります。
 
 **Q.Application Gateway にはどのような制限がありますか?これらの制限値を引き上げることはできますか?**
 
@@ -122,7 +133,21 @@ Application Gateway は IP 接続がある限り、仮想ネットワークの�
 
 **Q.カスタム プローブの [ホスト] フィールドは何を表しますか?**
 
-[ホスト] フィールドは、プローブの送信先の名前を指定します。 Application Gateway でマルチサイトが構成されている場合にのみ適用されます。それ以外の場合は、"127.0.0.1" を使用します。 この値は VM ホスト名とは異なり、\<プロトコル\>://\<ホスト\>:\<ポート\>\<パス\> という形式になります。 
+[ホスト] フィールドは、プローブの送信先の名前を指定します。 Application Gateway でマルチサイトが構成されている場合にのみ適用されます。それ以外の場合は、"127.0.0.1" を使用します。 この値は VM ホスト名とは異なり、\<プロトコル\>://\<ホスト\>:\<ポート\>\<パス\> という形式になります。
+
+**Q.Application Gateway アクセスを少数のソース IP に限定できますか?**
+
+Application Gateway サブネットの NSG を使用して行うことができます。 次の制約を次の優先順位でサブネットに適用する必要があります。
+
+* ソース IP と IP 範囲からの着信トラフィックを許可します。
+
+* [バックエンド ヘルス通信](application-gateway-diagnostics.md)用にポート 65503 ~ 65534 のすべてのソースからの着信要求を許可します。
+
+* [NSG](../virtual-network/virtual-networks-nsg.md)で着信 Azure Load Balancer プローブ (AzureLoadBalancer タグ) と受信仮想ネットワーク トラフィック (VirtualNetwork タグ) を許可します。
+
+* すべて拒否ルールを使用して、その他すべての着信トラフィックをブロックします。
+
+* インターネットのすべての宛先への送信トラフィックを許可します。
 
 ## <a name="performance"></a>パフォーマンス
 
@@ -283,3 +308,4 @@ Application Gateway では監査ログを使用できます。 ポータルで�
 ## <a name="next-steps"></a>次のステップ
 
 Application Gateway について詳しくは、「[Application Gateway の概要](application-gateway-introduction.md)」をご覧ください。
+

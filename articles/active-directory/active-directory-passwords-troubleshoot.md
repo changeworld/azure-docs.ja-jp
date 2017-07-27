@@ -6,22 +6,21 @@ keywords:
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
-editor: gahug
+ms.reviewer: gahug
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2017
+ms.date: 07/17/2017
 ms.author: joflore
 ms.custom: it-pro
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 6d1cfd588ad60cbdf69a432b4f4baa0b13fed0d3
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 963749bce0a84a97a0938f5531ebf7d694a3ca58
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 07/06/2017
 
 ---
 
@@ -144,7 +143,7 @@ ms.lasthandoff: 05/11/2017
 
 Azure AD Connect のパスワード ライトバック コンポーネントでサービスの中断が発生した場合は、いくつかの簡単な手順を使用してこの問題を解決できます。
 
-* [Azure AD Connect 同期サービスを再起動する](#restart-the-azure-AD-Connect-sync-service)
+* [Azure AD Connect 同期サービスを再起動する](#restart-the-azure-ad-connect-sync-service)
 * [パスワード ライトバック機能を無効にしてから再び有効にする](#disable-and-re-enable-the-password-writeback-feature)
 * [最新の Azure AD Connect リリースをインストールする](#install-the-latest-azure-ad-connect-release)
 * [パスワード ライトバックをトラブルシューティングする](#troubleshoot-password-writeback)
@@ -199,6 +198,27 @@ Azure AD Connect を再インストールすると、マイクロソフトのク
 これらの手順によって、クラウド サービスとの接続が再確立され、発生する可能性のある中断が解決されます。
 
 最新バージョンの Azure AD Connect サーバーをインストールしても問題が解決しない場合は、最終手段として、最新のリリースをインストールした後、パスワード ライトバックを無効にしてから再び有効にすることをお勧めします。
+
+## <a name="verify-whether-azure-ad-connect-has-the-required-permission-for-password-writeback"></a>パスワード ライトバックに必要なアクセス許可が Azure AD Connect にあるかどうかを確認する 
+Azure AD Connect には、パスワード ライトバックを実行するための AD **パスワードのリセット** アクセス許可が必要です。 特定のオンプレミス AD ユーザー アカウントに対する権限が Azure AD Connect にあるかどうかを確認するには、Windows の「有効なアクセス許可」機能を使用できます。
+
+1. Azure AD Connect サーバーにログインし、**Synchronization Service Manager** を開始します ([開始] → [同期サービス])。
+2. **[コネクタ]** タブの下で、オンプレミスの **AD コネクタ**を選択し、**[プロパティ]** をクリックします。  
+![有効なアクセス許可 - 手順 2](./media/active-directory-passwords-troubleshoot/checkpermission01.png)  
+3. ポップアップ ダイアログで **[Active Directory フォレストに接続]** タブを選択し、**[ユーザー名]** のプロパティを書き留めます。 これは、ディレクトリ同期を実行するために、Azure AD Connect によって使用される AD DS アカウントです。 Azure AD Connect でパスワード ライトバックを実行するために、AD DS アカウントには「パスワードのリセット」アクセス許可が必要です。  
+![有効なアクセス許可 - 手順 3](./media/active-directory-passwords-troubleshoot/checkpermission02.png)  
+4. オンプレミスのドメイン コントローラーにログインし、**[Active Directory ユーザーとコンピューター]** アプリケーションを起動します。
+5. **[表示]** をクリックし、**[高度な機能]** オプションが有効であることを確認します。  
+![有効なアクセス許可 - 手順 5](./media/active-directory-passwords-troubleshoot/checkpermission03.png)  
+6. 確認する AD ユーザー アカウントを探します。 アカウントを右クリックし、**[プロパティ]** を選択します。  
+![有効なアクセス許可 - 手順 6](./media/active-directory-passwords-troubleshoot/checkpermission04.png)  
+7. ポップアップ ダイアログで、**[セキュリティ]** タブに移動し、**[詳細設定]** をクリックします。  
+![有効なアクセス許可 - 手順 7](./media/active-directory-passwords-troubleshoot/checkpermission05.png)  
+8. [セキュリティの詳細設定] ポップアップ ダイアログで、**[有効なアクセス]** タブに移動します。
+9. **[ユーザーを選択]** をクリックし、Azure AD Connect で使用する AD DS アカウントを選択します (手順 3 を参照)。 **[有効なアクセス許可の表示]** をクリックします。  
+![有効なアクセス許可 - 手順 9](./media/active-directory-passwords-troubleshoot/checkpermission06.png)  
+10. 下にスクロールし、**[パスワードのリセット]** を探します。 エントリがチェックされている場合は、選択した AD ユーザー アカウントのパスワードをリセットするアクセス許可が AD DS アカウントにあることを意味します。  
+![有効なアクセス許可 - 手順 10](./media/active-directory-passwords-troubleshoot/checkpermission07.png)  
 
 ## <a name="azure-ad-forums"></a>Azure AD フォーラム
 

@@ -20,7 +20,6 @@ ms.openlocfilehash: f4d72d4d11ee64e3431879f6ad1b5d8d091a0c87
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/15/2017
 
-
 ---
 # <a name="silently-install-the-azure-ad-application-proxy-connector"></a>Azure AD アプリケーション プロキシ コネクタのサイレント インストール
 複数の Windows サーバーまたはユーザー インターフェイスが有効になっていない Windows サーバーにインストール スクリプトを送信できます。 このトピックでは、Azure AD アプリケーション プロキシ コネクタの無人インストールおよび登録を有効にする Windows PowerShell スクリプトの作成方法について説明します。
@@ -72,7 +71,7 @@ ms.lasthandoff: 05/15/2017
         /// <summary>
         /// The AAD authentication endpoint uri
         /// </summary>
-        static readonly Uri AadAuthenticationEndpoint = new Uri("https://login.windows.net/common/oauth2/token?api-version=1.0");
+        static readonly Uri AadAuthenticationEndpoint = new Uri("https://login.microsoftonline.com/common/oauth2/token?api-version=1.0");
 
         /// <summary>
         /// The application ID of the connector in AAD

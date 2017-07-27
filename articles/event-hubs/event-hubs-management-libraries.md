@@ -20,7 +20,6 @@ ms.openlocfilehash: a9023448c4ced1edf54c84bb103454cbd76fbfba
 ms.contentlocale: ja-jp
 ms.lasthandoff: 04/12/2017
 
-
 ---
 
 # <a name="event-hubs-management-libraries"></a>Event Hubs 管理ライブラリ
@@ -49,7 +48,7 @@ Event Hubs リソースを操作するパターンは、次の共通のプロト
 
 1. `Microsoft.IdentityModel.Clients.ActiveDirectory` ライブラリを使用して Azure Active Directory からトークンを取得します。
     ```csharp
-    var context = new AuthenticationContext($"https://login.windows.net/{tenantId}");
+    var context = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
 
     var result = await context.AcquireTokenAsync(
         "https://management.core.windows.net/",

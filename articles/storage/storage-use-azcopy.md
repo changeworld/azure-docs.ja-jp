@@ -1,6 +1,6 @@
 ---
-title: "AzCopy を使用して Storage にデータをコピーまたは移動する | Microsoft Docs"
-description: "AzCopy ユーティリティを使用して、BLOB、テーブル、およびファイル間でデータを移動またはコピーします。 ローカル ファイルから Azure ストレージにデータをコピーする、またはストレージ アカウント内またはその間でデータをコピーします。 Azure Storage にデータを簡単に移行します。"
+title: "AzCopy on Windows を使用して Azure Storage にデータをコピーまたは移動する | Microsoft Docs"
+description: "AzCopy on Windows ユーティリティを使用して、BLOB、テーブル、およびファイル コンテンツ間でデータを移動またはコピーします。 ローカル ファイルから Azure ストレージにデータをコピーする、またはストレージ アカウント内またはその間でデータをコピーします。 Azure Storage にデータを簡単に移行します。"
 services: storage
 documentationcenter: 
 author: seguler
@@ -12,30 +12,27 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2017
+ms.date: 05/14/2017
 ms.author: seguler
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: f703da63c4243c73cf68d3df9953f73d2462ac1c
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 045778822022752295bb634bdf734daaf36ab938
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/03/2017
 
 
 ---
-# <a name="transfer-data-with-the-azcopy-command-line-utility"></a>AzCopy コマンド ライン ユーティリティを使用してデータを転送する
-## <a name="overview"></a>概要
-AzCopy は、最適なパフォーマンスの単純なコマンドを使用して、Microsoft Azure BLOB、File、Table の記憶域との間でデータをコピーするために設計された Windows コマンドライン ユーティリティです。 ストレージ アカウント内のあるオブジェクトから別のオブジェクトにデータをコピーしたり、ストレージ アカウント間でコピーしたりすることができます。
+# <a name="transfer-data-with-the-azcopy-on-windows"></a>AzCopy on Windows を使ったデータの転送
+AzCopy は、最適なパフォーマンスの単純なコマンドを使用して、Microsoft Azure BLOB、ファイル、テーブルのストレージ間でデータをコピーするために設計されたコマンドライン ユーティリティです。 ストレージ アカウント内のあるオブジェクトから別のオブジェクトにデータをコピーしたり、ストレージ アカウント間でコピーしたりすることができます。
 
-> [!NOTE]
-> このガイドでは、既に [Azure Storage](https://azure.microsoft.com/services/storage/)を使い慣れている前提で説明します。 また使い慣れていない場合は、「 [Microsoft Azure Storage の概要](storage-introduction.md) 」を参照してください。 最も重要な点は、AzCopy を使用するには、 [ストレージ アカウントを作成する](storage-create-storage-account.md#create-a-storage-account) 必要がある、ということです。
-> 
-> 
+ダウンロードできる AzCopy には、2 つのバージョンがあります。 AzCopy on Windows は .NET Framework を使って構築され、Windows スタイルのコマンド ライン オプションが備わっています。 [AzCopy on Linux](storage-use-azcopy-linux.md) は .NET Core Framework を使って構築されています。その対象プラットフォームは Linux で、POSIX スタイルのコマンド ライン オプションが備わっています。 この記事では、AzCopy on Windows を取り上げます。
 
 ## <a name="download-and-install-azcopy"></a>AzCopy のダウンロードとインストール
-### <a name="windows"></a>Windows
-[最新バージョンの AzCopy](http://aka.ms/downloadazcopy)をダウンロードします。
+### <a name="azcopy-on-windows"></a>AzCopy on Windows
+[最新バージョンの AzCopy on Windows](http://aka.ms/downloadazcopy) をダウンロードします。
 
-### <a name="maclinux"></a>Mac/Linux
-AzCopy は、Mac または Linux OS では使用できませんが、 Azure Storage との間でデータをコピーする代替の方法として、Azure CLI があります。 詳細については、「[Azure Storage での Azure CLI の使用](storage-azure-cli.md)」をご覧ください。
+#### <a name="installation-on-windows"></a>Windows でのインストール
+インストーラーを使用して AzCopy on Windows をインストールした後、コマンド ウィンドウを開き、`AzCopy.exe` 実行可能ファイルが格納されている、コンピューターの AzCopy インストール ディレクトリに移動します。 必要に応じて、AzCopy のインストール先をシステム パスに追加できます。 既定で、AzCopy は `%ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy` または `%ProgramFiles%\Microsoft SDKs\Azure\AzCopy` にインストールされます。
 
 ## <a name="writing-your-first-azcopy-command"></a>AzCopy コマンドの基本
 AzCopy コマンドの基本構文は次のとおりです。
@@ -43,8 +40,6 @@ AzCopy コマンドの基本構文は次のとおりです。
 ```azcopy
 AzCopy /Source:<source> /Dest:<destination> [Options]
 ```
-
-コマンド ウィンドウを開き、 `AzCopy.exe` 実行可能ファイルが格納されている、コンピューターの AzCopy インストール ディレクトリに移動します。 必要に応じて、AzCopy のインストール先をシステム パスに追加できます。 既定で、AzCopy は `%ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy` または `%ProgramFiles%\Microsoft SDKs\Azure\AzCopy` にインストールされます。
 
 以下の例では、Microsoft Azure BLOB、File、Table との間でデータをコピーする多様なシナリオを紹介しています。 各サンプルで使用されているパラメーターの詳細な説明については、「 [AzCopy のパラメーター](#azcopy-parameters) 」を参照してください。
 
@@ -897,6 +892,7 @@ Azure Storage および AzCopy の詳細については、以下のリソース�
 * [Java からファイル ストレージを使用する方法](storage-dotnet-how-to-use-files.md)
 * [.NET からテーブル ストレージを使用する方法](storage-dotnet-how-to-use-tables.md)
 * [ストレージ アカウントを作成、管理、または削除する方法](storage-create-storage-account.md)
+* [AzCopy on Linux を使ったデータの転送](storage-use-azcopy-linux.md)
 
 ### <a name="azure-storage-blog-posts"></a>Azure Storage に関するブログの投稿:
 * [Azure Storage Data Movement Library プレビューの概要](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)

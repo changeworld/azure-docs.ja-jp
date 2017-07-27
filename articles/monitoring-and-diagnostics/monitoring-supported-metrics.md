@@ -2,7 +2,7 @@
 title: "Azure Monitor のメトリック - サポートされているメトリック (リソースの種類別) | Microsoft Docs"
 description: "Azure Monitor で使用できるメトリックの一覧 (リソースの種類別) です。"
 author: johnkemnetz
-manager: rboucher
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 5/10/2017
+ms.date: 7/05/2017
 ms.author: johnkem
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: ff47eaa27351f8d1685090edc54d90e5e91a1de0
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: b034251438c65dd13d9ca0bb116699532e3960ef
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 07/06/2017
 
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
@@ -27,8 +26,8 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 > [!NOTE]
 > 他のメトリックについては、ポータルや従来の API で使用できる場合があります。 この一覧には、統合された Azure Monitor メトリック パイプラインのパブリック プレビューで使用できる、パブリック プレビュー メトリックのみが含まれます。
-> 
-> 
+>
+>
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
 
@@ -90,8 +89,10 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 |メトリック|メトリックの表示名|単位|集計の種類|説明|
 |---|---|---|---|---|
-|CoreCount|コア数|カウント|合計|Batch アカウントの合計コア数|
-|TotalNodeCount|ノード数|カウント|合計|Batch アカウントの合計ノード数|
+|CoreCount|Dedicated Core Count (専用コアの数)|カウント|合計|Batch アカウントの専用コアの合計数|
+|TotalNodeCount|Dedicated Node Count (専用ノードの数)|カウント|合計|Batch アカウントの専用ノードの合計数|
+|LowPriorityCoreCount|LowPriority Core Count (優先順位の低いコアの数)|カウント|合計|Batch アカウントの優先順位の低いコアの合計数|
+|TotalLowPriorityNodeCount|Low-Priority Node Count (優先順位の低いノードの数)|カウント|合計|Batch アカウントの優先順位の低いノードの合計数|
 |CreatingNodeCount|作成ノード数|カウント|合計|作成されるノードの数|
 |StartingNodeCount|開始ノード数|カウント|合計|開始するノードの数|
 |WaitingForStartTaskNodeCount|開始タスクの待機ノード数|カウント|合計|開始タスクの完了を待機しているノードの数|
@@ -103,6 +104,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |RunningNodeCount|実行中のノード数|カウント|合計|実行中のノードの数|
 |LeavingPoolNodeCount|プールから移動中のノード数|カウント|合計|プールから移動中のノードの数|
 |UnusableNodeCount|使用できないノード数|カウント|合計|使用できないノードの数|
+|PreemptedNodeCount|Preempted Node Count (割り込まれたノードの数)|カウント|合計|割り込まれたノードの数|
 |TaskStartEvent|タスク開始イベント|カウント|合計|開始したタスクの合計数|
 |TaskCompleteEvent|タスク完了イベント|カウント|合計|完了したタスクの合計数|
 |TaskFailEvent|タスク失敗イベント|カウント|合計|障害状態で完了したタスクの合計数|
@@ -336,7 +338,41 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 |メトリック|メトリックの表示名|単位|集計の種類|Description|
 |---|---|---|---|---|
-|CustomerInsightsApiCalls|CustomerInsightsApiCalls|カウント|合計||
+|DCIApiCalls|Customer Insights API Calls (Customer Insights API 呼び出し)|カウント|合計||
+|DCIMappingImportOperationSuccessfulLines|Mapping Import Operation Successful Lines (マッピングのインポート操作に成功した行数)|カウント|合計||
+|DCIMappingImportOperationFailedLines|Mapping Import Operation Failed Lines (マッピングのインポート操作に失敗した行数)|カウント|合計||
+|DCIMappingImportOperationTotalLines|Mapping Import Operation Total Lines (マッピングのインポート操作の合計行数)|カウント|合計||
+|DCIMappingImportOperationRuntimeInSeconds|Mapping Import Operation Runtime In Seconds (マッピングのインポート操作の実行時間 (秒))|Seconds|合計||
+|DCIOutboundProfileExportSucceeded|Outbound Profile Export Succeeded (成功した送信プロファイルのエクスポート)|カウント|合計||
+|DCIOutboundProfileExportFailed|Outbound Profile Export Failed (失敗した送信プロファイルのエクスポート)|カウント|合計||
+|DCIOutboundProfileExportDuration|Outbound Profile Export Duration (送信プロファイルのエクスポート時間)|Seconds|合計||
+|DCIOutboundKpiExportSucceeded|Outbound Kpi Export Succeeded (成功した送信 KPI のエクスポート)|カウント|合計||
+|DCIOutboundKpiExportFailed|Outbound Kpi Export Failed (失敗した送信 KPI のエクスポート)|カウント|合計||
+|DCIOutboundKpiExportDuration|Outbound Kpi Export Duration (送信 KPI のエクスポート時間)|Seconds|合計||
+|DCIOutboundKpiExportStarted|Outbound Kpi Export Started (送信 KPI のエクスポートの開始)|Seconds|合計||
+|DCIOutboundKpiRecordCount|Outbound Kpi Record Count (送信 KPI レコードの数)|Seconds|合計||
+|DCIOutboundProfileExportCount|Outbound Profile Export Count (送信プロファイルのエクスポートの数)|Seconds|合計||
+|DCIOutboundInitialProfileExportFailed|Outbound Initial Profile Export Failed (失敗した送信初期プロファイルのエクスポート)|Seconds|合計||
+|DCIOutboundInitialProfileExportSucceeded|Outbound Initial Profile Export Succeeded (成功した送信初期プロファイルのエクスポート)|Seconds|合計||
+|DCIOutboundInitialKpiExportFailed|Outbound Initial Kpi Export Failed (失敗した送信初期 KPI のエクスポート)|Seconds|合計||
+|DCIOutboundInitialKpiExportSucceeded|Outbound Initial Kpi Export Succeeded (成功した送信初期 KPI のエクスポート)|Seconds|合計||
+|DCIOutboundInitialProfileExportDurationInSeconds|Outbound Initial Profile Export Duration In Seconds (送信初期プロファイルのエクスポート時間 (秒))|Seconds|合計||
+|AdlaJobForStandardKpiFailed|Adla Job For Standard Kpi Failed In Seconds (失敗した標準 KPI の Adla ジョブ (秒))|Seconds|合計||
+|AdlaJobForStandardKpiTimeOut|Adla Job For Standard Kpi TimeOut In Seconds (標準 KPI の Adla ジョブのタイムアウト (秒))|Seconds|合計||
+|AdlaJobForStandardKpiCompleted|Adla Job For Standard Kpi Completed In Seconds (完了した標準 KPI の Adla ジョブ (秒))|Seconds|合計||
+|ImportASAValuesFailed|Import ASA Values Failed Count (ASA 値のインポートの失敗数)|カウント|合計||
+|ImportASAValuesSucceeded|Import ASA Values Succeeded Count (ASA 値のインポートの成功数)|カウント|合計||
+
+## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.DataLakeAnalytics/accounts
+
+|メトリック|メトリックの表示名|単位|集計の種類|Description|
+|---|---|---|---|---|
+|JobEndedSuccess|Successful Jobs (成功したジョブ)|カウント|合計|成功したジョブの数。|
+|JobEndedFailure|Failed Jobs (失敗したジョブ)|カウント|合計|失敗したジョブの数。|
+|JobEndedCancelled|Cancelled Jobs (取り消されたジョブ)|カウント|合計|取り消されたジョブの数。|
+|JobAUEndedSuccess|Successful AU Time (成功した AU 時間)|Seconds|合計|成功したジョブの AU 時間の合計。|
+|JobAUEndedFailure|Failed AU Time (失敗した AU 時間)|Seconds|合計|失敗したジョブの AU 時間の合計。|
+|JobAUEndedCancelled|Cancelled AU Time (取り消された AU 時間)|Seconds|合計|取り消されたジョブの AU 時間の合計。|
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
 
@@ -485,6 +521,13 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |---|---|---|---|---|
 |スループット|スループット|BytesPerSecond|平均||
 
+## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.Network/expressRouteCircuits
+
+|メトリック|メトリックの表示名|単位|集計の種類|Description|
+|---|---|---|---|---|
+|BytesIn|BytesIn|カウント|合計||
+|BytesOut|BytesOut|カウント|合計||
+
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft.NotificationHubs/Namespaces/NotificationHubs
 
 |メトリック|メトリックの表示名|単位|集計の種類|説明|
@@ -548,10 +591,55 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |outgoing.mpns.dropped|MPNS ドロップ通知|カウント|合計|MPNS によって破棄されたプッシュの数 (MPNS 応答ヘッダー: X-NotificationStatus: QueueFull または Suppressed)。|
 |outgoing.mpns.pnserror|MPNS エラー|カウント|合計|MPNS との通信エラーにより失敗したプッシュの数。|
 |outgoing.mpns.authenticationerror|MPNS 認証エラー|カウント|合計|PNS が提供された資格情報を受け取らなかったか、資格情報がブロックされたために失敗したプッシュの数 |
-|notificationhub.devices|Notification Hub デバイス|カウント|平均|Notification Hub のデバイス数|
-|notificationhub.pushes|Notification Hub のプッシュ通知|カウント|合計|Notification Hub のプッシュ通知の数|
+|notificationhub.pushes|All Outgoing Notifications (すべての送信通知)|カウント|合計|Notification Hub のすべての送信通知|
 |incoming.all.requests|すべての受信要求|カウント|合計|Notification Hub の受信要求の合計数|
 |incoming.all.failedrequests|失敗したすべての受信要求|カウント|合計|Notification Hub の失敗した受信要求の合計数|
+
+## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
+
+|メトリック|メトリックの表示名|単位|集計の種類|説明|
+|---|---|---|---|---|
+|qpu_metric|QPU|カウント|平均|QPU。 範囲は S1 で 0 ～ 100、S2 で 0 ～ 200、S4 で 0 ～ 400|
+|memory_metric|メモリ|バイト|平均|メモリ。 範囲は S1 で 0 ～ 25 GB、S2 で 0 ～ 50 GB、S4 で 0 ～ 100 GB|
+|TotalConnectionRequests|合計接続要求数|カウント|平均|合計接続要求数。 これらは到着した接続要求です。|
+|SuccessfullConnectionsPerSec|成功した接続数 (秒単位)|CountPerSecond|平均|接続が正常に完了した割合。|
+|TotalConnectionFailures|合計接続失敗数|カウント|平均|失敗した接続試行数の合計。|
+|CurrentUserSessions|現在のユーザー セッション|カウント|平均|確立された現在のユーザー セッションの数。|
+|QueryPoolBusyThreads|クエリ プール ビジー スレッド|カウント|平均|クエリ スレッド プールのビジー スレッドの数。|
+|CommandPoolJobQueueLength|コマンド プールのジョブ キューの長さ|カウント|平均|コマンド スレッド プールのキュー内のジョブの数。|
+|ProcessingPoolJobQueueLength|処理プール ジョブ キューの長さ|カウント|平均|処理スレッド プールのキュー内の非 I/O ジョブの数。|
+|CurrentConnections|接続: 現在の接続|カウント|平均|現在確立されているクライアント接続の数。|
+|CleanerCurrentPrice|メモリ: クリーナーの現在の価格|カウント|平均|現在のメモリ価格 ($/バイト/時刻)。標準は 1,000 です。|
+|CleanerMemoryShrinkable|メモリ: クリーナーの圧縮可能なメモリ|Bytes|平均|バックグラウンド クリーナーによる削除の対象となるメモリの量 (バイト単位)。|
+|CleanerMemoryNonshrinkable|メモリ: クリーナーの圧縮不可能なメモリ|Bytes|平均|バックグラウンド クリーナーによる削除の対象とならないメモリの量 (バイト単位)。|
+|MemoryUsage|メモリ: メモリ使用量|Bytes|平均|クリーナー メモリの価格の計算で使用されるサーバー プロセスのメモリ使用量。 Process\PrivateBytes カウンターの値に、メモリがマップされたデータのサイズを加えた値と等しくなります。xVelocity インメモリ分析エンジン (VertiPaq) によって xVelocity エンジンのメモリの制限を超えてマップされた (割り当てられた) メモリは無視されます。|
+|MemoryLimitHard|メモリ: メモリの制限 - ハード|Bytes|平均|構成ファイルに指定されているハードのメモリの制限。|
+|MemoryLimitHigh|メモリ: メモリの制限 - 高|Bytes|平均|構成ファイルに指定されているメモリの上限。|
+|MemoryLimitLow|メモリ: メモリの制限 - 低|Bytes|平均|構成ファイルに指定されているメモリの下限。|
+|MemoryLimitVertiPaq|メモリ: メモリの制限 - VertiPaq|Bytes|平均|構成ファイルに指定されているインメモリの制限。|
+|クォータ|メモリ: クォータ|Bytes|平均|現在のメモリ クォータ (バイト単位)。 メモリ クォータはメモリ付与またはメモリ予約とも呼ばれます。|
+|QuotaBlocked|メモリ: ブロックされているクォータ|カウント|平均|他のメモリ クォータが解放されるまでブロックされている現在のクォータ要求の数。|
+|VertiPaqNonpaged|メモリ: VertiPaq 非ページ|Bytes|平均|メモリ内エンジン用にワーキング セットでロックされているメモリの量 (バイト単位)。|
+|VertiPaqPaged|メモリ: VertiPaq ページ|Bytes|平均|メモリ内エンジン用に使用されているページ メモリの量 (バイト単位)。|
+|RowsReadPerSec|処理: 1 秒あたりの読み取り行数|CountPerSecond|平均|すべてのリレーショナル データベースから読み取った行の比率。|
+|RowsConvertedPerSec|処理: 1 秒あたりの変換行数|CountPerSecond|平均|処理中に変換された行の比率。|
+|RowsWrittenPerSec|処理: 1 秒あたりの書き込み行数|CountPerSecond|平均|処理中に書き込まれた行の比率。|
+|CommandPoolBusyThreads|スレッド: コマンド プールのビジー状態のスレッド|カウント|平均|コマンド スレッド プール内にあるビジー状態のスレッドの数。|
+|CommandPoolIdleThreads|スレッド: コマンド プールのアイドル状態のスレッド|カウント|平均|コマンド スレッド プール内にあるアイドル状態のスレッドの数。|
+|LongParsingBusyThreads|スレッド: 長時間解析を行っているビジー状態のスレッド|カウント|平均|長時間解析を行っているスレッド プール内にあるビジー状態のスレッドの数。|
+|LongParsingIdleThreads|スレッド: 長時間解析を行っているアイドル状態のスレッド|カウント|平均|長時間解析を行っているスレッド プール内にあるアイドル状態のスレッドの数。|
+|LongParsingJobQueueLength|スレッド: 長時間解析を行っているジョブのキューの長さ|カウント|平均|長時間解析を行っているスレッド プールのキューに登録されているジョブの数。|
+|ProcessingPoolBusyIOJobThreads|スレッド: 処理中のプールのビジー状態の I/O ジョブのスレッド|カウント|平均|処理中のスレッド プール内で I/O ジョブを実行しているスレッドの数。|
+|ProcessingPoolBusyNonIOThreads|スレッド: 処理中のプールのビジー状態の I/O 以外のスレッド|カウント|平均|処理中のスレッド プール内で I/O 以外のジョブを実行しているスレッドの数。|
+|ProcessingPoolIOJobQueueLength|スレッド: 処理中のプール I/O ジョブ キューの長さ|カウント|平均|処理中のスレッド プールのキューに登録されている I/O ジョブの数。|
+|ProcessingPoolIdleIOJobThreads|スレッド: 処理中のプールのアイドル状態の I/O ジョブのスレッド|カウント|平均|処理中のスレッド プール内にある I/O ジョブのアイドル状態のスレッドの数。|
+|ProcessingPoolIdleNonIOThreads|スレッド: 処理中のプールのアイドル状態の I/O 以外のスレッド|カウント|平均|I/O 以外のジョブ専用の、処理中のスレッド プール内にあるアイドル状態のスレッドの数。|
+|QueryPoolIdleThreads|スレッド: クエリ プールのアイドル状態のスレッド|カウント|平均|処理中のスレッド プール内にある I/O ジョブのアイドル状態のスレッドの数。|
+|QueryPoolJobQueueLength|スレッド: クエリ プール ジョブ キューの長さ|カウント|平均|クエリ スレッド プールのキューに登録されているジョブの数。|
+|ShortParsingBusyThreads|スレッド: 短時間解析を行っているビジー状態のスレッド|カウント|平均|短時間解析を行っているスレッド プール内にあるビジー状態のスレッドの数。|
+|ShortParsingIdleThreads|スレッド: 短時間解析を行っているアイドル状態のスレッド|カウント|平均|短時間解析を行っているスレッド プール内にあるアイドル状態のスレッドの数。|
+|ShortParsingJobQueueLength|スレッド: 短時間解析を行っているジョブ キューの長さ|カウント|平均|短時間解析を行っているスレッド プールのキューに登録されているジョブの数。|
+|memory_thrashing_metric|メモリ スラッシング|Percent|平均|平均的なメモリ スラッシング。|
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.Search/searchServices
 
@@ -596,17 +684,33 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |メトリック|メトリックの表示名|単位|集計の種類|Description|
 |---|---|---|---|---|
 |cpu_percent|CPU の割合|Percent|平均|CPU の割合|
+|database_cpu_percent|CPU の割合|Percent|平均|CPU の割合|
 |physical_data_read_percent|データ IO の割合|Percent|平均|データ IO の割合|
+|database_physical_data_read_percent|データ IO の割合|Percent|平均|データ IO の割合|
 |log_write_percent|ログ IO の割合|Percent|平均|ログ IO の割合|
+|database_log_write_percent|ログ IO の割合|Percent|平均|ログ IO の割合|
 |dtu_consumption_percent|DTU の割合|Percent|平均|DTU の割合|
+|database_dtu_consumption_percent|DTU の割合|Percent|平均|DTU の割合|
 |storage_percent|ストレージの割合|Percent|平均|ストレージの割合|
 |workers_percent|ワーカーの割合|Percent|平均|ワーカーの割合|
+|database_workers_percent|ワーカーの割合|Percent|平均|ワーカーの割合|
 |sessions_percent|セッションの割合|Percent|平均|セッションの割合|
+|database_sessions_percent|セッションの割合|Percent|平均|セッションの割合|
 |eDTU_limit|eDTU 制限|カウント|平均|eDTU 制限|
 |storage_limit|ストレージの制限|バイト|平均|ストレージの制限|
 |eDTU_used|使用済み eDTU|カウント|平均|使用済み eDTU|
 |storage_used|使用済みストレージ|バイト|平均|使用済みストレージ|
+|database_storage_used|使用済みストレージ|バイト|平均|使用済みストレージ|
 |xtp_storage_percent|インメモリ OLTP ストレージの割合|Percent|平均|インメモリ OLTP ストレージの割合|
+
+## <a name="microsoftsqlservers"></a>Microsoft.Sql/servers
+
+|メトリック|メトリックの表示名|単位|集計の種類|Description|
+|---|---|---|---|---|
+|dtu_consumption_percent|DTU の割合|Percent|平均|DTU の割合|
+|database_dtu_consumption_percent|DTU の割合|Percent|平均|DTU の割合|
+|storage_used|使用済みストレージ|バイト|平均|使用済みストレージ|
+|database_storage_used|使用済みストレージ|バイト|平均|使用済みストレージ|
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
 
@@ -635,7 +739,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |BytesReceived|受信データ|Bytes|合計|受信データ|
 |BytesSent|送信データ|Bytes|合計|送信データ|
 
-## <a name="microsoftwebsites-including-functions"></a>Microsoft.Web/sites (関数を含みます)
+## <a name="microsoftwebsites-excluding-functions"></a>Microsoft.Web/sites (関数を除く)
 
 |メトリック|メトリックの表示名|単位|集計の種類|Description|
 |---|---|---|---|---|
@@ -655,6 +759,16 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |MemoryWorkingSet|メモリ ワーキング セット|バイト|平均|メモリ ワーキング セット|
 |AverageMemoryWorkingSet|平均メモリ ワーキング セット|Bytes|平均|平均メモリ ワーキング セット|
 |AverageResponseTime|平均応答時間|Seconds|平均|平均応答時間|
+
+## <a name="microsoftwebsites-functions"></a>Microsoft.Web/sites (関数)
+
+|メトリック|メトリックの表示名|単位|集計の種類|Description|
+|---|---|---|---|---|
+|BytesReceived|受信データ|Bytes|合計|受信データ|
+|BytesSent|送信データ|Bytes|合計|送信データ|
+|Http5xx|HTTP サーバー エラー|カウント|合計|HTTP サーバー エラー|
+|MemoryWorkingSet|メモリ ワーキング セット|バイト|平均|メモリ ワーキング セット|
+|AverageMemoryWorkingSet|平均メモリ ワーキング セット|Bytes|平均|平均メモリ ワーキング セット|
 |FunctionExecutionUnits|関数の実行単位|カウント|平均|関数の実行単位|
 |FunctionExecutionCount|関数の実行回数|カウント|平均|関数の実行回数|
 
@@ -685,5 +799,4 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 * [Azure Monitor のメトリックを確認します](monitoring-overview-metrics.md)
 * [メトリックでアラートを作成します](insights-receive-alert-notifications.md)
 * [メトリックをストレージ、Event Hub、または Log Analytics にエクスポートします](monitoring-overview-of-diagnostic-logs.md)
-
 

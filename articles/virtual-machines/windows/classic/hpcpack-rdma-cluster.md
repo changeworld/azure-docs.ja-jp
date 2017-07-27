@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 12/29/2016
+ms.date: 06/01/2017
 ms.author: danlep
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 4e542ea6431933668d96f7028431826bceb9f337
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 2ec31c5444f72c7255d8925bdb3ea85854cfaf1a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -58,7 +59,7 @@ Windows でコンピューティング集中型インスタンスを使用する
     ヘッド ノードと Azure の間の接続をセキュリティで保護するための証明書を構成します。 オプションと手順については、 [HPC Pack 用に Azure の管理証明書を構成するシナリオ](http://technet.microsoft.com/library/gg481759.aspx)に関するページを参照してください。 テスト デプロイでは、HPC Pack により、Azure サブスクリプションに迅速にアップロードできる既定の Microsoft HPC Azure 管理証明書がインストールされます。
 3. **新しいクラウド サービスとストレージ アカウントを作成する**
    
-    Azure クラシック ポータルを使用して、RDMA 対応のインスタンスが使用可能なリージョンでのデプロイのためにクラウド サービスとストレージ アカウントを作成します。
+    Azure Portal を使って、RDMA 対応のインスタンスが使用可能なリージョンでのデプロイのためにクラウド サービスとストレージ アカウントを作成します。
 4. **Azure ノード テンプレートを作成する**
    
     HPC クラスター マネージャーのノード テンプレートの作成ウィザードを使用します。 手順については、Microsoft HPC Pack を使用して Azure ノードをデプロイする手順に関するページの [Azure ノード テンプレートの作成](http://technet.microsoft.com/library/gg481758.aspx#BKMK_Templ) に関するセクションを参照してください。

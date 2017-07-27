@@ -12,30 +12,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/06/2017
+ms.date: 07/10/2017
 ms.author: sngun
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 16d57bfd8232c1d2f646bffef671aa0236b8c2f6
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 12b3216e4228749930ba30911d6f1dc859df01a6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="create-virtual-machines-and-include-certificates-retrieved-from-a-key-vault"></a>Create virtual machines and include certificates retrieved from a key vault
 
-> [!NOTE]
-> In Technical Preview 3, you can create and manage a key vault from the [user portal](azure-stack-manage-portals.md#the-user-portal) or user API only. If you are an administrator, sign in to the user portal to access and perform operations on a key vault.
+This article helps you to create a virtual machine in Azure Stack and push certificates onto it. 
 
 ## <a name="prerequisites"></a>Prerequisites
 
 * [Install PowerShell for Azure Stack.](azure-stack-powershell-install.md)  
-* Azure Stack administrators must have [created an offer](azure-stack-create-offer.md) that includes the Azure Key Vault service.  
-* Tenants must [subscribe to an offer](azure-stack-subscribe-plan-provision-vm.md) that includes the Key Vault service. 
+* Azure Stack cloud administrators must have [created an offer](azure-stack-create-offer.md) that includes the Azure Key Vault service.  
+* Users must [subscribe to an offer](azure-stack-subscribe-plan-provision-vm.md) that includes the Key Vault service. 
+* [Configure PowerShell for use with Azure Stack.](azure-stack-powershell-configure.md)
 
 A key vault in Azure Stack is used to store certificates. Certificates are helpful in many different scenarios. For example, consider a scenario where you have a virtual machine in Azure Stack that is running an application that needs a certificate. This certificate can be used for encrypting, for authenticating to Active Directory, or for SSL on a website. Having the certificate in a key vault helps make sure that it's secure.
 
-In this article, we walk you through the steps required to push a certificate onto a Windows virtual machine in Azure Stack. You can use these steps either from the Azure Stack POC computer, or from a Windows-based external client if you are connected through VPN.
+In this article, we walk you through the steps required to push a certificate onto a Windows virtual machine in Azure Stack. You can use these steps either from the Azure Stack Development Kit, or from a Windows-based external client if you are connected through VPN.
 
 ## <a name="include-a-certificate-on-the-virtual-machine"></a>Include a certificate on the virtual machine
 

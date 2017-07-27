@@ -12,26 +12,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 06/07/2017
 ms.author: banders
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: a26b1f6c13b11d0fb6b47599fee43f955cbf7b7a
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: bb89bed9778056c52e47d984e5d559a4abf864a2
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/09/2017
 
 
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>容量とパフォーマンス ソリューション (プレビュー) を使って Hyper-V 仮想マシンの容量を計画する
 
-![容量とパフォーマンス ソリューション](./media/log-analytics-capacity/capacity-solution.png) Log Analytics の容量とパフォーマンス ソリューションは、Hyper-V サーバーの容量の把握に役立ちます。 このソリューションでは、Hyper-V ホストとそのホストで実行中の VM に関して (CPU、メモリ、およびディスクの) 全体としての使用状況が表示されるため、Hyper-V 環境の状況を把握できます。 すべてのホストとそのホストで実行している VM について、CPU、メモリ、ディスクに関するメトリックが収集されます。
+![キャパシティとパフォーマンスのシンボル](./media/log-analytics-capacity/capacity-solution.png)
+
+Log Analytics の容量とパフォーマンス ソリューションは、Hyper-V サーバーの容量の把握に役立ちます。 このソリューションでは、Hyper-V ホストとそのホストで実行中の VM に関して (CPU、メモリ、およびディスクの) 全体としての使用状況が表示されるため、Hyper-V 環境の状況を把握できます。 すべてのホストとそのホストで実行している VM について、CPU、メモリ、ディスクに関するメトリックが収集されます。
 
 このソリューションでは次のことが可能です。
 
--    CPU とメモリの使用率が上位のホストと下位のホストをそれぞれ表示する
--    CPU とメモリの使用率が上位の VM と下位の VM をそれぞれ表示する
--    IOPS とスループットの使用率が上位の VM と下位の VM をそれぞれ表示する
--    VM を実行しているホストを表示する
--    クラスター共有ボリュームに含まれるディスクをスループット、IOPS、待機時間の観点から評価し、上位のものを表示する
+-   CPU とメモリの使用率が上位のホストと下位のホストをそれぞれ表示する
+-   CPU とメモリの使用率が上位の VM と下位の VM をそれぞれ表示する
+-   IOPS とスループットの使用率が上位の VM と下位の VM をそれぞれ表示する
+-   VM を実行しているホストを表示する
+-   クラスター共有ボリュームに含まれるディスクをスループット、IOPS、待機時間の観点から評価し、上位のものを表示する
 - グループに基づくカスタマイズとフィルタリング
 
 > [!NOTE]

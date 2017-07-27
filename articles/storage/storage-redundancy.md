@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure Storage のデータ レプリケーション | Microsoft Docs"
 description: "Microsoft Azure Storage アカウント内のデータは、持続性と高可用性を保証するため、レプリケートされます。 レプリケーション オプションには、ローカル冗長ストレージ (LRS)、ゾーン冗長ストレージ (ZRS)、geo 冗長ストレージ (GRS)、読み取りアクセス geo 冗長ストレージ (RA-GRS) などがあります。"
 services: storage
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: marsma
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: 6a5ba89d8b17e0646cd8a6185da6d1094fd64d12
+ms.sourcegitcommit: 8be2bcb9179e9af0957fcee69680ac803fd3d918
+ms.openlocfilehash: 0237d10ccd9424da0ec10bc2773b978ffc11a294
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 06/23/2017
 
 ---
 # <a name="azure-storage-replication"></a>Azure Storage のレプリケーション
@@ -111,7 +111,9 @@ GRS では、プライマリ リージョンとセカンダリ リージョン�
 | インド中部 |インド南部 |
 | インド西部 |インド南部 |
 | 米国政府アイオワ州 |米国政府バージニア州 |
-| 米国政府バージニア州 |米国政府アイオワ州 |
+| 米国政府バージニア州 |米国政府テキサス |
+| 米国政府テキサス |米国政府アリゾナ |
+| 米国政府アリゾナ |米国政府テキサス |
 | カナダ中部 |カナダ東部 |
 | カナダ東部 |カナダ中部 |
 | 英国西部 |英国南部 |
@@ -122,6 +124,11 @@ GRS では、プライマリ リージョンとセカンダリ リージョン�
 | 米国中西部 |米国西部 2 |
 
 Azure でサポートされているリージョンに関する最新の情報については、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。
+
+>[!NOTE]  
+> 米国政府バージニアのセカンダリ リージョンは米国政府テキサスです。 従来、米国政府バージニアのセカンダリ リージョンとしては、米国政府アイオワが使用されていました。 米国政府アイオワがセカンダリ リージョンとして利用されているストレージ アカウントは今後、米国政府テキサスにセカンダリ リージョンとして移行されます。 
+> 
+> 
 
 ## <a name="read-access-geo-redundant-storage"></a>読み取りアクセス geo 冗長ストレージ
 読み取りアクセス geo 冗長ストレージ (RA-GRS) では、GRS が提供する 2 つのリージョンにまたがるレプリケーションに加えて、2 次拠点のデータにも読み取り専用アクセスを提供することで、ストレージ アカウントの可用性が最大限に発揮されます。
@@ -135,6 +142,49 @@ Azure でサポートされているリージョンに関する最新の情報�
 * Microsoft がセカンダリ リージョンへのフェールオーバーを開始した場合、フェールオーバーの完了後、そのデータへの読み取り/書き込みアクセスができるようになります。 詳細については、「[障害復旧のガイダンス](storage-disaster-recovery-guidance.md)」を参照してください。 
 * RA-GRS は高可用性を目的として作られています。 スケーラビリティのガイダンスについては、[パフォーマンス チェックリスト](storage-performance-checklist.md)をご覧ください。
 
+## <a name="frequently-asked-questions"></a>よく寄せられる質問
+
+<a id="howtochange"></a>
+#### <a name="1-how-can-i-change-the-geo-replication-type-of-my-storage-account"></a>1.ストレージ アカウントの geo レプリケーションの種類を変更するにはどうすればよいですか。
+
+   ストレージ アカウントの geo レプリケーションは、LRS、GRS、RA-GRS のいずれかの種類に変更できます。変更は、[Azure Portal](https://portal.azure.com/) または [Azure PowerShell](storage-powershell-guide-full.md) を使用して行うことができるほか、多数存在するストレージ クライアント ライブラリのいずれかを使用してプログラムで行うことができます。 ZRS アカウントを LRS または GRS に変換することはできないことに注意してください。 同様に、既存の LRS または GRS アカウントを ZRS アカウントに変換することはできません。
+
+<a id="changedowntime"></a>
+#### <a name="2-will-there-be-any-down-time-if-i-change-the-replication-type-of-my-storage-account"></a>2.ストレージ アカウントのレプリケーションの種類を変更した場合、ダウン タイムは発生しますか。
+
+   いいえ。ダウン タイムは一切発生しません。
+
+<a id="changecost"></a>
+#### <a name="3-will-there-be-any-additional-cost-if-i-change-the-replication-type-of-my-storage-account"></a>手順 3.ストレージ アカウントのレプリケーションの種類を変更した場合、追加のコストは発生しますか。
+
+   はい。 ストレージ アカウントを LRS から GRS (または RA-GRS) に変更した場合、プライマリ ロケーションの既存のデータをセカンダリ ロケーションにコピーする際のエグレス トラフィックについて追加料金が発生します。 初回データ コピー後は、プライマリ ロケーションからセカンダリ ロケーションへのデータの geo レプリケーションに関してそれ以上のエグレス料金が発生することはありません。 帯域幅使用料の詳細については、[Azure Storage の価格に関するページ](https://azure.microsoft.com/pricing/details/storage/blobs/)を参照してください。 GRS から LRS に変更した場合、追加のコストは発生しませんが、セカンダリ ロケーションからデータが削除されます。
+
+<a id="ragrsbenefits"></a>
+#### <a name="4-how-can-ra-grs-help-me"></a>4.RA-GRS の利点を教えてください。
+   
+   GRS ストレージでは、プライマリ リージョンのデータが、数百マイル離れたセカンダリ リージョンにレプリケートされます。 これにより、地域的な停電やプライマリ リージョンが復旧できない災害が発生しても、データは保持されます。 RA-GRS ストレージでは、それに加えてセカンダリ ロケーションのデータを読み取る機能が追加されます。 この機能の活用方法について詳しくは、[RA-GRS ストレージを使用した高可用性アプリケーションの設計](storage-designing-ha-apps-with-ragrs.md)に関するページを参照してください。 
+
+<a id="lastsynctime"></a>
+#### <a name="5-is-there-a-way-for-me-to-figure-out-how-long-it-takes-to-replicate-my-data-from-the-primary-to-the-secondary-region"></a>5.プライマリ リージョンからセカンダリ リージョンにデータをレプリケートするのにかかる時間を把握する方法はありますか。
+   
+   RA-GRS ストレージをご利用の場合、ストレージ アカウントの最後の同期時刻を確認できます。 最後の同期時刻は、GMT の日付/時刻値です。この時刻より前にプライマリに対して書き込まれたデータはすべて、セカンダリ ロケーションに対して正常に書き込まれています。つまり、これらのデータは、セカンダリ ロケーションから読み取ることができます。 最後の同期時刻より後にプライマリに対して書き込まれたデータに関しては、読み取りできる場合とできない場合とがあります。 この値は、[Azure Portal](https://portal.azure.com/) または [Azure PowerShell](storage-powershell-guide-full.md) で照会できるほか、プログラムで REST API またはいずれかのストレージ クライアント ライブラリを使用して照会することができます。 
+
+<a id="outage"></a>
+#### <a name="6-how-can-i-switch-to-the-secondary-region-if-there-is-an-outage-in-the-primary-region"></a>6.プライマリ リージョンで障害が発生した場合、セカンダリ リージョンに切り替えるにはどうすればよいですか。
+   
+   詳細については、「[Azure Storage の停止が発生した場合の対処方法](storage-disaster-recovery-guidance.md)」の記事を参照してください。
+
+<a id="rpo-rto"></a>
+#### <a name="7-what-is-the-rpo-and-rto-with-grs"></a>7.GRS の RPO や RTO とは何ですか。
+   
+   Recover Point Objective (RPO: 回復ポイントの目標): GRS と RA-GRS のストレージ サービスでは、プライマリ ロケーションのデータがセカンダリ ロケーションに対して非同期的に geo レプリケーションされます。 特定の地域で大規模な災害が発生してフェールオーバーが必要となった場合、geo レプリケーションが済んでいない直近の差分変更は失われる可能性があります。 データ消失が生じる可能性のある時間 (分) を RPO といいます (つまりデータを過去のどの時点まで復旧できるかを表します)。 現在、geo レプリケーションの所要時間を規定する SLA はありませんが、RPO は 15 分未満とするのが一般的です。
+
+   Recovery Time Objective (RTO: 目標復旧時間): フェールオーバーが必要となった場合に、それを実行してストレージ アカウントをオンラインに戻すまでにかかる時間の指標です。 フェールオーバーの所要時間には、次の内容が含まれます。
+    * プライマリ ロケーションのデータを復旧できるか、またはフェールオーバーが必要かを Microsoft が調査して判断するまでの時間。
+    * アカウントをフェールオーバーする (プライマリ DNS エントリの参照先をセカンダリ ロケーションに変更する) のにかかる時間。
+
+   Microsoft はお客様のデータを保全する重大な責任を果たすために、データを復旧できる可能性がわずかでもあれば、フェールオーバーを先送りしてでも、プライマリ ロケーションのデータを復旧することに専念します。 将来的には、お客様がアカウント レベルでフェールオーバーをトリガーできる API を提供する予定です。そうなれば、お客様が個々に RTO を制御することも可能ですが、現時点ではまだその機能はご利用いただけません。
+   
 ## <a name="next-steps"></a>次のステップ
 * [RA-GRS ストレージを使用した高可用性アプリケーションの設計](storage-designing-ha-apps-with-ragrs.md)
 * [Azure Storage の料金](https://azure.microsoft.com/pricing/details/storage/)

@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 05/05/2017
 ms.author: markscu
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 69e26eaf4aedaf17b58091420430ca996c01cf69
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 5f37bc9dc3b754e7900883263a2b8fdcbf4b707f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -29,6 +29,8 @@ Azure Batch には Batch ワークロードのコストを減らす優先順位�
 優先順位の低い VM を使用するデメリットは、Azure に余剰容量がないとこれらの VM が別の VM によって割り込まれる可能性がある点です。 このため、優先順位の低い VM は特定の種類のワークロードに最適です。 優先順位の低い VM は、ジョブの完了時間に柔軟性があり、作業が多数の VM に分散されているバッチおよび非同期処理ワークロードに使用します。
 
 優先順位の低い VM は、専用 VM よりも大幅にコストを抑えることができます。 料金について詳しくは、「[Batch の価格](https://azure.microsoft.com/pricing/details/batch/)」をご覧ください。
+
+優先順位の低い VM に関する追加の説明については、ブログ投稿の告知「[Batch computing at a fraction of the price](https://azure.microsoft.com/blog/announcing-public-preview-of-azure-batch-low-priority-vms/preview/)」 (わずかな価格でのバッチ コンピューティング) をご覧ください。
 
 > [!IMPORTANT]
 > 優先順位の低い VM は現在プレビューの段階であり、Batch で実行されるワークロードでのみ使用できます。 
@@ -72,6 +74,9 @@ Azure Batch には、優先順位の低い VM を使用してメリットを享�
 -   Batch プールは優先順位の低い VM のターゲット数を自動的にシークします。 VM が割り込まれた場合、Batch は失われた容量に対して置き換えを試行し、ターゲットに戻します。
 
 -   タスクが中断されたときには、Batch はタスクを検出してもう一度実行するように自動的にキューに入れます。
+
+-   優先順位の低い VM には専用 VM とは異なるコア クォータが存在します。 
+    優先順位の低い VM はコストがより低いため、クォータが専用コストよりも高くなります。 詳しくは、「[Batch サービスのクォータと制限](batch-quota-limit.md#resource-quotas)」をご覧ください。    
 
 > [!NOTE]
 > 優先順位の低い VM は、プールの割り当てモードが[ユーザー サブスクリプション](batch-account-create-portal.md#user-subscription-mode)になっている Batch アカウントでは、現在サポートされていません。

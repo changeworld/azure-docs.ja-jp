@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/23/2017
+ms.date: 07/17/2017
 ms.author: cynthn
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 250417aa1bbacb038dbff66daab7f31be202e40a
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/03/2017
-
 
 ---
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2016
 ms.author: rachelap
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 08a84ace63465e7c058add69a25687fe46c7ea07
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 9e19618a1b24bbdf3163ddfc3423c5c932dcd7af
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="manage-a-web-app-in-azure-app-service"></a>Azure App Service での Web アプリの管理
@@ -78,10 +77,6 @@ Web アプリの運用中、それが利用可能であり、ユーザー トラ
 
 [ステージング デプロイ](web-sites-staged-publishing.md)の使用を考慮してください。 このオプションを使用すると、運用デプロイと併用実行されるステージング デプロイへ更新を公開することができます。 
 
-Visual Studio Team Services を使用する場合は、ソース管理から継続的デプロイを設定することができます。
-
-* [Team Foundation バージョン管理 (TFVC) の使用](../cloud-services/cloud-services-continuous-delivery-use-vso.md) 
-* [Git の使用](../cloud-services/cloud-services-continuous-delivery-use-vso-git.md)
 
 <!-- Anchors. -->
 

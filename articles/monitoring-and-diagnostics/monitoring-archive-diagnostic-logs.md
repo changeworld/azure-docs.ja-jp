@@ -2,7 +2,7 @@
 title: "Azure 診断ログのアーカイブ | Microsoft Docs"
 description: "ストレージ アカウントの長期保持に関する Azure 診断ログをアーカイブする方法を説明します。"
 author: johnkemnetz
-manager: rboucher
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/26/2016
 ms.author: johnkem
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 3e82377c36da1563931bc0301daa4534e6f82377
 ms.openlocfilehash: e3413236445f3f6034a228dc93624d3fdc9b87ad
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/10/2016
 
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Azure 診断ログのアーカイブ
@@ -133,10 +134,5 @@ PT1H.json ファイル内では、各イベントは、この形式に従って 
 * [分析のための BLOB のダウンロード](../storage/storage-dotnet-how-to-use-blobs.md#download-blobs)
 * [診断ログを Event Hubs にストリーミングする](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 * [診断ログの詳細についてはこちら](monitoring-overview-of-diagnostic-logs.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

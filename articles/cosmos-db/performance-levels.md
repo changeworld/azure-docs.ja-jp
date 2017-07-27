@@ -16,10 +16,10 @@ ms.date: 05/24/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 929ee15b77215ca6b150918eff6f608dc153776e
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 38afe40cf45cf13d587faf13cc5216e4326b84a0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -143,7 +143,7 @@ S1、S2、S3 パフォーマンス レベルから単一パーティション �
 
 **.NET SDK を使用して単一パーティション コレクションに移行するには**
 
-コレクションのパフォーマンス レベルを変更するもう 1 つの方法は、マイクロソフトの SDK を使用する方法です。 ここでは、Microsoft の [.NET SDK](https://msdn.microsoft.com/library/azure/dn948556.aspx) を使用してコレクションのパフォーマンス レベルを変更する手順を説明しますが、この手順は他の [SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) の場合にもほぼ当てはまります。 .NET SDK を初めてご使用になる場合は、[チュートリアル入門](documentdb-get-started.md)を参照してください。
+コレクションのパフォーマンス レベルを変更するもう 1 つの方法は、マイクロソフトの SDK を使用する方法です。 ここでは、Microsoft の [DocumentDB .NET API](documentdb-sdk-dotnet.md) を使用してコレクションのパフォーマンス レベルを変更する手順を説明しますが、この手順は他の SDK の場合にもほぼ当てはまります。
 
 コレクションのスループットを 1 秒あたり 5,000 要求ユニットに変更するためのコード スニペットを次に示します。
     
@@ -177,7 +177,7 @@ EA をご使用の場合は、現在の契約が終了するまで価格は保�
 ## <a name="next-steps"></a>次のステップ
 Azure Cosmos DB の価格設定とデータ管理の詳細については、以下のリソースを参照してください。
 
-1.    [Cosmos DB でのデータのパーティション分割](documentdb-partition-data.md)。 単一パーティション コンテナーとパーティション分割コンテナーの差異と、シームレスにスケーリングするためのパーティション分割戦略の実装に関するヒントについて説明しています。
-2.    [Cosmos DB の価格](https://azure.microsoft.com/pricing/details/cosmos-db/)。 スループットのプロビジョニングとストレージの使用のコストについて説明しています。
-3.    [要求ユニット](request-units.md)。 読み取り、書き込み、クエリなどのさまざまな種類の操作におけるスループットの使用量について説明しています。
+1.  [Cosmos DB でのデータのパーティション分割](documentdb-partition-data.md)。 単一パーティション コンテナーとパーティション分割コンテナーの差異と、シームレスにスケーリングするためのパーティション分割戦略の実装に関するヒントについて説明しています。
+2.  [Cosmos DB の価格](https://azure.microsoft.com/pricing/details/cosmos-db/)。 スループットのプロビジョニングとストレージの使用のコストについて説明しています。
+3.  [要求ユニット](request-units.md)。 読み取り、書き込み、クエリなどのさまざまな種類の操作におけるスループットの使用量について説明しています。
 

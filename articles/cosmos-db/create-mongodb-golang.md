@@ -7,7 +7,7 @@ manager: jhubbard
 editor: mimig1
 ms.service: cosmos-db
 ms.topic: hero-article
-ms.date: 06/22/2017
+ms.date: 07/21/2017
 ms.author: mimig
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
@@ -17,9 +17,7 @@ ms.lasthandoff: 06/29/2017
 
 ---
 
-<a id="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal" class="xliff"></a>
-
-# Azure Cosmos DB: Golang と Azure Portal による MongoDB API コンソール アプリの構築
+# <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB: Golang と Azure Portal による MongoDB API コンソール アプリの構築
 
 Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成およびクエリできます。
 
@@ -27,24 +25,18 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 言い換えると、Golang アプリケーションは、MongoDB API を使用してデータベースに接続していることだけを認識します。 データが Azure Cosmos DB に格納されることは、アプリケーションにとっては透過です。
 
-<a id="prerequisites" class="xliff"></a>
-
-## 前提条件
+## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション。 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free)を作成してください。
 - [Go](https://golang.org/dl/) と、[Go](https://golang.org/) 言語の基本的な知識。
 - IDE - Jetbrains 提供の [Gogland](https://www.jetbrains.com/go/)、Microsoft 提供の [Visual Studio Code](https://code.visualstudio.com/)、または [Atom](https://atom.io/)。 このチュートリアルでは、Goglang を使用しています。
 
 <a id="create-account"></a>
-<a id="create-a-database-account" class="xliff"></a>
-
-## How to create a DocumentDB account (DocumentDB アカウントの作成方法)
+## <a name="create-a-database-account"></a>How to create a DocumentDB account (DocumentDB アカウントの作成方法)
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
-<a id="clone-the-sample-application" class="xliff"></a>
-
-## サンプル アプリケーションの複製
+## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
 サンプル アプリケーションを複製し、必要なパッケージをインストールします。
 
@@ -64,9 +56,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 <a id="connection-string"></a>
 
-<a id="update-your-connection-string" class="xliff"></a>
-
-## 接続文字列を更新する
+## <a name="update-your-connection-string"></a>接続文字列を更新する
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。
 
@@ -86,15 +76,11 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 3. main.go ファイルを保存します。
 
-<a id="review-the-code" class="xliff"></a>
-
-## コードの確認
+## <a name="review-the-code"></a>コードの確認
 
 main.go ファイルで何が行われているかを簡単に確認してみましょう。 
 
-<a id="connecting-the-go-app-to-azure-cosmos-db" class="xliff"></a>
-
-### Azure Cosmos DB への Go アプリの接続
+### <a name="connecting-the-go-app-to-azure-cosmos-db"></a>Azure Cosmos DB への Go アプリの接続
 
 Azure Cosmos DB では、SSL 対応の MongoDB がサポートされています。 SSL 対応の MongoDB に接続するには、[mgo.DialInfo](http://gopkg.in/mgo.v2#DialInfo) で **DialServer** 関数を定義し、接続の際に [tls.*Dial*](http://golang.org/pkg/crypto/tls#Dial) 関数を使用する必要があります。
 
@@ -105,8 +91,8 @@ Azure Cosmos DB では、SSL 対応の MongoDB がサポートされています
 dialInfo := &mgo.DialInfo{
     Addrs:    []string{"golang-couch.documents.azure.com:10255"}, // Get HOST + PORT
     Timeout:  60 * time.Second,
-    Database: "golang-coach", // It can be anything
-    Username: "golang-coach", // Username
+    Database: "database", // It can be anything
+    Username: "username", // Username
     Password: "Azure database connect password from Azure Portal", // PASSWORD
     DialServer: func(addr *mgo.ServerAddr) (net.Conn, error) {
         return tls.Dial("tcp", addr.String(), &tls.Config{})
@@ -137,14 +123,12 @@ session.SetSafe(&mgo.Safe{})
 **DialWIthInfo{}** オブジェクトのインスタンスは、セッション オブジェクトの作成に使用されます。 セッションが確立されたら、次のコード スニペットを使用してコレクションにアクセスすることができます。
 
 ```go
-collection := session.DB(“golang-couch”).C(“package”)
+collection := session.DB(“database”).C(“package”)
 ```
 
 <a id="create-document"></a>
 
-<a id="create-a-document" class="xliff"></a>
-
-### ドキュメントの作成
+### <a name="create-a-document"></a>ドキュメントの作成
 
 ```go
 // Model
@@ -173,9 +157,7 @@ if err != nil {
 }
 ```
 
-<a id="query-or-read-a-document" class="xliff"></a>
-
-### ドキュメントの照会または読み取り
+### <a name="query-or-read-a-document"></a>ドキュメントの照会または読み取り
 
 Azure Cosmos DB では、各コレクションに格納された JSON ドキュメントに対する豊富なクエリがサポートされています。 次のサンプル コードは、コレクションでドキュメントに対して実行できるクエリを示しています。
 
@@ -192,9 +174,7 @@ fmt.Println("Description:", result.Description)
 ```
 
 
-<a id="update-a-document" class="xliff"></a>
-
-### ドキュメントの更新
+### <a name="update-a-document"></a>ドキュメントの更新
 
 ```go
 // Update a document
@@ -207,9 +187,7 @@ if err != nil {
 }
 ```
 
-<a id="delete-a-document" class="xliff"></a>
-
-### ドキュメントの削除
+### <a name="delete-a-document"></a>ドキュメントの削除
 
 Azure Cosmos DB は、JSON ドキュメントの削除をサポートします。
 
@@ -223,9 +201,7 @@ if err != nil {
 }
 ```
     
-<a id="run-the-app" class="xliff"></a>
-
-## アプリの実行
+## <a name="run-the-app"></a>アプリの実行
 
 1. Goglang で、gopkg がインストールされた場所 (既定では USERPROFILE\go) が GOPATH (**[File]\(ファイル\)**、**[Settings]\(設定\)**、**[Go]**、**[GOPATH]** にあります) に含まれていることを確認します。 
 2. ドキュメントを削除する行 (91 ～ 96 行目) をコメントアウトし、アプリの実行後にドキュメントを参照できるようにします。
@@ -241,9 +217,7 @@ if err != nil {
 
     ![アプリの出力が表示されている Goglang](./media/create-mongodb-golang/goglang-cosmos-db.png)
     
-<a id="review-your-document-in-data-explorer" class="xliff"></a>
-
-## データ エクスプローラーでのドキュメントの確認
+## <a name="review-your-document-in-data-explorer"></a>データ エクスプローラーでのドキュメントの確認
 
 Azure Portal に戻り、データ エクスプローラーでドキュメントを表示します。
 
@@ -253,24 +227,18 @@ Azure Portal に戻り、データ エクスプローラーでドキュメント
     
 2. ドキュメントの作業をインラインで行い、**[更新]** をクリックしてドキュメントを保存します。 また、ドキュメントを削除したり、新しいドキュメントやクエリを作成したりすることもできます。
 
-<a id="review-slas-in-the-azure-portal" class="xliff"></a>
-
-## Azure Portal での SLA の確認
+## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-<a id="clean-up-resources" class="xliff"></a>
-
-## リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 このアプリの使用を続けない場合は、以下の手順に従い、Azure Portal でこのクイック スタートで作成したすべてのリソースを削除してください。
 
 1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックし、作成したリソースの名前をクリックします。 
 2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Azure Cosmos DB アカウントを作成し、MongoDB 用 API を使用して Golang アプリを実行する方法を学習しました。 これで、Cosmos DB アカウントに追加のデータをインポートできます。 
 

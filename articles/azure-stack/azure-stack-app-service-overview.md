@@ -12,13 +12,13 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/6/2017
+ms.date: 7/3/2017
 ms.author: anwestg
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 8b74509b07a34eca389af8fc47958f28db142cf9
-ms.lasthandoff: 04/06/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: d9609d1fa7d4c3a245930cbdda9cb0eca9f893c6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -33,10 +33,16 @@ App Service on Azure Stack is the Azure offering brought to Azure Stack. The App
 
 In addition, the App Service on Azure Stack installer will create a file server.
     
-## <a name="whats-new-in-technical-preview-3-of-app-service-on-azure-stack"></a>What's New in Technical Preview 3 of App Service on Azure Stack?
+## <a name="whats-new-in-release-candidate-one-of-app-service-on-azure-stack"></a>What's New in Release Candidate One of App Service on Azure Stack?
 ![App Service in the Azure Stack Portal][1]
 
-Technical Preview 3 of App Service on Azure Stack, builds on top of the second preview and brings a preview of Azure Functions to Azure Stack.  Azure Functions is an event-based serverless compute experience to accelerate your development.  New improvements to the stability of the service, updates to the Tenant Portal experience along with updates to the installer experience to give more configuration options.
+Release Candidate One of App Service on Azure Stack, builds on top of the third preview and brings a number of new capabilities and improvements:
+* Azure Functions is now available in ADFS-based Azure Stack environments, including Single Sign on Support for the Functions Portal and Advanced Developer tools (Kudu)
+* Java Support for Web/Mobile/API Applications
+* App Service now manages worker tiers using virtual machine scale sets, improving scale-out capabilities for Service Administrators
+* Localization of Admin Experience
+* New improvements to the stability of the service
+* Updates to the Tenant Portal experience and updates to the install process
 
 ## <a name="limitations-of-the-technical-preview"></a>Limitations of the Technical Preview
 

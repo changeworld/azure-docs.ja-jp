@@ -9,7 +9,7 @@ editor: monicar
 tags: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: tutorial-develop, mvc
+ms.custom: mvc,scale out apps
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,10 +17,10 @@ ms.workload:
 ms.date: 05/08/2017
 ms.author: AyoOlubek
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 80df7b504d13fe1b3be9806eb95e3980d7790970
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 0aea69d86a51c38c99a72f46737de1eea27bef83
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -42,18 +42,21 @@ ms.lasthandoff: 05/10/2017
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
+## <a name="prerequisites"></a>前提条件
+
 このチュートリアルを完了するには、以下のものが必要です。
-* PowerShell がコンピューターにインストールされていること、および[最新の Azure PowerShell SDK](http://azure.microsoft.com/downloads/)。
 
-* 最新バージョンの [SQL Server Management Studio](http://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。 SQL Server Management Studio をインストールすると、最新バージョンの SQLPackage コマンド ライン ユーティリティもインストールされます。このユーティリティを使用して、さまざまなデータベース開発タスクを自動化できます。
+* 最新版の PowerShell と[最新の Azure PowerShell SDK](http://azure.microsoft.com/downloads/) をインストールしていること。
 
-* [Java Runtime Environment (JRE) 8](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html)、および[最新の JAVA Development Kit (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)がコンピューターにインストールされていること。 
+* 最新版の [SQL Server Management Studio](http://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) をインストールしていること。 SQL Server Management Studio をインストールすると、最新バージョンの SQLPackage コマンド ライン ユーティリティもインストールされます。このユーティリティを使用して、さまざまなデータベース開発タスクを自動化できます。
 
-* [Apache Maven](https://maven.apache.org/download.cgi) がコンピューターにインストールされていること。 Maven を使用して、サンプル Java プロジェクトの依存関係の管理、ビルド、テスト、および実行を行うことができます。
+* [Java Runtime Environment (JRE) 8](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) と[最新の JAVA Development Kit (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) がコンピューターにインストールされていること。 
+
+* [Apache Maven](https://maven.apache.org/download.cgi) をインストールしていること。 Maven を使用して、サンプル Java プロジェクトの依存関係の管理、ビルド、テスト、および実行を行うことができます。
 
 ## <a name="set-up-data-environment"></a>データ環境を設定する
 
-データベースをテナントごとにプロビジョニングします。 テナントごとのデータベース モデルは、テナント間において、少しの DevOps コストで最高水準の分離を提供します。 また、クラウド リソースのコストを最適化するために、テナント データベースをエラスティック プールにプロビジョニングします。これにより、データベースのグループの価格のパフォーマンスを最適化します。 その他のデータベース プロビジョニング モデルについては、[こちら](sql-database-design-patterns-multi-tenancy-saas-applications.md#multitenant-data-models)をご覧ください。 
+データベースをテナントごとにプロビジョニングします。 テナントごとのデータベース モデルは、テナント間において、少しの DevOps コストで最高水準の分離を提供します。 また、クラウド リソースのコストを最適化するために、テナント データベースをエラスティック プールにプロビジョニングします。これにより、データベースのグループの価格のパフォーマンスを最適化します。 その他のデータベース プロビジョニング モデルについては、[こちら](sql-database-design-patterns-multi-tenancy-saas-applications.md#multi-tenant-data-models)をご覧ください。
 
 次の手順に従って、すべてのテナント データベースをホストする SQL サーバーとエラスティック プールを作成します。 
 
@@ -71,7 +74,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    
    # Store current client IP address (modify to include your IP address)
    $startIpAddress = 0.0.0.0 
-   $endIpAddress = 0.0.0.1
+   $endIpAddress = 0.0.0.0
    ```
    
 2. Azure にログインして SQL サーバーとエラスティック プールを作成します。 
@@ -505,6 +508,7 @@ Remove-AzureRmSqlDatabase -ResourceGroupName "myResourceGroup" `
 Java アプリケーションを使用して 'tenant1' に接続してみましょう。 そのテナントが存在しないことを示すエラーが表示されます。
 
 ## <a name="next-steps"></a>次のステップ 
+
 このチュートリアルで学習した内容は次のとおりです。
 > [!div class="checklist"]
 > * テナントごとのデータベース パターンを使用して、マルチテナント SaaS アプリケーションをサポートするデータベース環境を設定する

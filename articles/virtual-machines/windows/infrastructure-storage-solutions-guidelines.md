@@ -13,7 +13,7 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2017
+ms.date: 06/26/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
@@ -22,17 +22,14 @@ ms.openlocfilehash: c0fabf155d4feb6d88ef7d7e087cc1654f44978b
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/28/2017
 
-
 ---
-# Windows VM 用の Azure Storage インフラストラクチャのガイドライン
-<a id="azure-storage-infrastructure-guidelines-for-windows-vms" class="xliff"></a>
+# <a name="azure-storage-infrastructure-guidelines-for-windows-vms"></a>Windows VM 用の Azure Storage インフラストラクチャのガイドライン
 
 [!INCLUDE [virtual-machines-windows-infrastructure-guidelines-intro](../../../includes/virtual-machines-windows-infrastructure-guidelines-intro.md)]
 
 この記事は、最適な仮想マシン (VM) のパフォーマンスを実現するための、ストレージのニーズと設計に関する考慮事項について説明します。
 
-## ストレージに関する実装ガイドライン
-<a id="implementation-guidelines-for-storage" class="xliff"></a>
+## <a name="implementation-guidelines-for-storage"></a>ストレージに関する実装ガイドライン
 決めること:
 
 * Azure Managed Disks または非管理対象ディスクのどちらを使用するか
@@ -46,8 +43,7 @@ ms.lasthandoff: 06/28/2017
 * デプロイするアプリケーションの I/O 要求を確認し、適切なストレージ アカウントの数と種類を計画します。
 * 名前付け規則を使用してストレージ アカウントのセットを作成します。 Azure PowerShell またはポータルを使用できます。
 
-## Storage
-<a id="storage" class="xliff"></a>
+## <a name="storage"></a>Storage
 Azure Storage は仮想マシン (VM) とアプリケーションをデプロイし、管理するための重要な要素です。 Azure Storage はファイル データ、構造化されていないデータ、メッセージを保存するためのサービスを提供します。VM をサポートするインフラストラクチャの一部でもあります。
 
 [Azure Managed Disks](../../storage/storage-managed-disks-overview.md) はバックグラウンドでストレージを管理します。 非管理対象ディスクでは、Azure VM のディスク (VHD ファイル) を保持するストレージ アカウントを作成します。 スケールアップするときは、それぞれのディスクでストレージの IOPS の上限を超えないように、追加のストレージ アカウントを作成する必要があります。 Managed Disks でストレージを管理すれば、ストレージ アカウントの制限 (アカウントあたり 20,000 IOPS など) に縛られることはなくなります。 また、カスタム イメージ (VHD ファイル) を複数のストレージ アカウントにコピーする必要もなくなります。 カスタム イメージを 1 か所 (Azure リージョンごとに 1 つのストレージ アカウント) で管理し、これらのイメージを使用して 1 つのサブスクリプションで数百台の VM を作成できます。 新規デプロイでは Managed Disks を使用することをお勧めします。
@@ -73,8 +69,7 @@ Azure Storage のデプロイを設計する場合、スケーラビリティ制
 
 アプリケーション ストレージについては、BLOB ストレージを使用して、ドキュメント、イメージ、バックアップ、構成データ、ログなどの非構造化データを 保存できます。 アプリケーションが VM に接続されている仮想ディスクに書き込むのではなく、アプリケーションが Azure BLOB ストレージに直接書き込むことができます。 BLOB ストレージには、可用性ニーズとコスト面の制約に応じて、[ホット ストレージ層とクール ストレージ層](../../storage/storage-blob-storage-tiers.md)のオプションも用意されています。
 
-## ストライピングされたディスク
-<a id="striped-disks" class="xliff"></a>
+## <a name="striped-disks"></a>ストライピングされたディスク
 データ ディスクにストライピングを使用すると、4 TB より大きいディスクを作成できるだけでなく、多くの場合、複数の BLOB で単一ボリュームのストレージをバックアップできるため、パフォーマンスが向上します。 ストライピングにより、単一の論理ディスクのデータを読み書きするのに必要な I/O が並列化されます。
 
 Azure では、使用できるデータ ディスクの数と帯域幅が、VM のサイズに応じて制限されます。 詳細については、「 [仮想マシンのサイズ](sizes.md)」を参照してください。
@@ -87,16 +82,14 @@ Azure データ ディスクにディスク ストライピングを使用する
 
 詳細については、「 [Storage Spaces - Designing for Performance](http://social.technet.microsoft.com/wiki/contents/articles/15200.storage-spaces-designing-for-performance.aspx)」(記憶域スペース - パフォーマンスのための設計) を参照してください。
 
-## 複数のストレージ アカウント
-<a id="multiple-storage-accounts" class="xliff"></a>
+## <a name="multiple-storage-accounts"></a>複数のストレージ アカウント
 個別のストレージ アカウントを作成しないため、このセクションは [Azure Managed Disks](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) には適用されません。 
 
 非管理対象ディスクの Azure Storage 環境を設計するとき、デプロイする VM の増加に伴って複数のストレージ アカウントを使用できます。 このアプローチにより、I/O を基盤となる Azure Storage インフラストラクチャ間に分散させ、VM とアプリケーションの最適なパフォーマンスを維持することができます。 デプロイするアプリケーションを設計する場合は、各 VM の I/O 要件を考慮し、Azure Storage アカウント間に VM を分散してください。 I/O 要求の高いすべての VM を、1 ～ 2 個のストレージ アカウントだけにまとめることは避けてください。
 
 さまざまな Azure Storage オプションの I/O 機能と推奨する最大値の詳細については、「 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../../storage/storage-scalability-targets.md)」を参照してください。
 
-## 次のステップ
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>次のステップ
 [!INCLUDE [virtual-machines-windows-infrastructure-guidelines-next-steps](../../../includes/virtual-machines-windows-infrastructure-guidelines-next-steps.md)]
 
 

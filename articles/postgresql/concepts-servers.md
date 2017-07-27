@@ -10,10 +10,10 @@ ms.service: postgresql-database
 ms.topic: article
 ms.date: 05/10/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: e14712b8fd68d6364f44c116448a9a8f33622a91
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 5197a3f44a085d25d964f355154d92b08e65560b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/17/2017
 
 ---
 # <a name="azure-database-for-postgresql-servers"></a>Azure Database for PostgreSQL サーバー
@@ -42,7 +42,7 @@ Azure Database for PostgreSQL サーバーの特徴を次に示します。
 
 |||
 | :-- | :-- |
-| **認証と権限承認** | Azure Database for PostgreSQL サーバーは、ネイティブ PostgreSQL 認証をサポートしています。 サーバーにはサーバーの管理者ログインで接続し、認証できます。<br />詳細については、[Azure Database for PostgreSQL でのユーザーとロールの管理](/azure/sql-database/sql-database-manage-logins)に関するページをご覧ください。 |
+| **認証と権限承認** | Azure Database for PostgreSQL サーバーは、ネイティブ PostgreSQL 認証をサポートしています。 サーバーにはサーバーの管理者ログインで接続し、認証できます。 |
 | **プロトコル** | サービスは、PostgreSQL で使用されるメッセージ ベースのプロトコルをサポートしています。 |
 | **TCP/IP** | プロトコルは、TCP/IP および UNIX ドメイン ソケット経由でサポートされます。 |
 | **ファイアウォール** | データを保護するため、ファイアウォール規則は、どのコンピューターに権限を持たせるかを指定するまで、データベース サーバーまたはそのデータベースへのすべてのアクセスを遮断します。 「[Azure Database for PostgreSQL サーバーのファイアウォール規則](concepts-firewall-rules.md)」を参照してください。 |
@@ -50,7 +50,7 @@ Azure Database for PostgreSQL サーバーの特徴を次に示します。
 
 ## <a name="how-do-i-manage-a-server"></a>サーバーの管理方法
 
-Azure Database for PostgreSQL サーバーを管理するには、Azure Portal または Azure CLI を使用します。
+Azure Database for PostgreSQL サーバーを管理するには、Azure Portal または [Azure CLI](/cli/azure/postgres) を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 

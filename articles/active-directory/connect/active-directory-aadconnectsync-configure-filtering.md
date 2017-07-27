@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 07/12/2017
 ms.author: billmath
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: a78679782f538121c2451a6e2d1519f457ad057c
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 635affebf9130c2bfb38e84cc144ee4838504777
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/25/2017
 
 ---
 
@@ -254,7 +254,7 @@ Active Directory からメタバースへの[受信](#inbound-filtering)フィ�
 1. **ADSyncAdmins** セキュリティ グループに属するアカウントを使用して、Azure AD Connect Sync を実行しているサーバーにサインインします。
 2. **[スタート]** メニューから、**同期規則エディター**を起動します。
 3. **[規則の種類]** の **[送信]** をクリックします。
-4. **[Out to AAD – User Join SOAInAD]**という規則を探して **[編集]** クリックします。
+4. **[Out to AAD – User Join]** という規則を探し、**[編集]** をクリックします。
 5. ポップアップで **[はい]** を選択して規則のコピーを作成します。
 6. **[説明]** ページの **[優先順位]** の値を、まだ使用していない値 (50 など) に設定します。
 7. 左側のナビゲーションにある **[スコープ フィルター]** をクリックし、**[句の追加]** をクリックします。 **[属性]** で **[mail]** を選択します。 **[演算子]** で **[ENDSWITH]** を選択します。 **[値]** で「**@contoso.com**」を入力し、**[句の追加]** をクリックします。 **[属性]** で **[userPrincipalName]** を選択します。 **[演算子]** で **[ENDSWITH]** を選択します。 **[値]** に「**@contoso.com**」を入力します。

@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 07/10/2017
 ms.author: spelluru
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 49545648a069f25820f6a6e483072be8410b091e
 ms.openlocfilehash: 0fc9eb7869ebe7316e4aed0d561638a05bc9a91c
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/24/2017
-
 
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Azure Data Factory コピー ウィザードでデータを簡単にコピーまたは移動する

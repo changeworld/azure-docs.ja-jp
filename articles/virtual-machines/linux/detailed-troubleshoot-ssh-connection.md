@@ -14,17 +14,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: support-article
-ms.date: 03/07/2017
+ms.date: 05/18/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: df65c08a56596af2341b9cad4c89b5d18f6c6404
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: f31f17121fdb42f4ae911efde9e98bbd223d0680
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
-# <a name="detailed-ssh-troubleshooting-steps"></a>SSH の詳細なトラブルシューティング手順
-SSH クライアントは、さまざまな理由で VM 上の SSH サービスに到達できない可能性があります。 [SSH のトラブルシューティングの一般的な手順](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に従った場合は、接続の問題について詳細なトラブルシューティングを行う必要があります。 この記事では、詳細なトラブルシューティング手順を説明し、SSH 接続に失敗した場所の特定とその解決方法を確認します。
+# <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Azure での Linux VM 接続問題に関する SSH の詳細なトラブルシューティングの手順
+SSH クライアントは、さまざまな理由で VM 上の SSH サービスに到達できない可能性があります。 [SSH のトラブルシューティングの一般的な手順](troubleshoot-ssh-connection.md)に従った場合は、接続の問題について詳細なトラブルシューティングを行う必要があります。 この記事では、詳細なトラブルシューティング手順を説明し、SSH 接続に失敗した場所の特定とその解決方法を確認します。
 
 ## <a name="take-preliminary-steps"></a>準備作業を行う
 次の図は、関係しているコンポーネントを示しています。
@@ -95,7 +96,7 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 
 ![組織の境界デバイスを示す図](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot3.png)
 
-インターネットに直接接続されているコンピューターがない場合は、新しい Azure VM を独自のリソース グループまたはクラウド サービスに作成して使用します。 詳細については、「[Azure 上で Linux を実行する仮想マシンの作成](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。 テストの完了後に、そのリソース グループまたは VM と、クラウド サービスを削除します。
+インターネットに直接接続されているコンピューターがない場合は、新しい Azure VM を独自のリソース グループまたはクラウド サービスに作成して使用します。 詳細については、「[Azure 上で Linux を実行する仮想マシンの作成](quick-create-cli.md)」を参照してください。 テストの完了後に、そのリソース グループまたは VM と、クラウド サービスを削除します。
 
 インターネットに直接接続されているコンピューターとの SSH 接続を作成できる場合は、組織のエッジ デバイスで以下を確認してください。
 
@@ -113,7 +114,7 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 
 ![クラウド サービス エンドポイントと ACL を示す図](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot4.png)
 
-同じ仮想ネットワーク内に別の VM がない場合、VM を簡単に作成することができます。 詳細については、「[CLI を使用した Azure での Linux VM の作成](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。 テストの完了後に、追加した VM を削除してください。
+同じ仮想ネットワーク内に別の VM がない場合、VM を簡単に作成することができます。 詳細については、「[CLI を使用した Azure での Linux VM の作成](quick-create-cli.md)」をご覧ください。 テストの完了後に、追加した VM を削除してください。
 
 同じ仮想ネットワーク内にある VM に対して SSH 接続を作成できる場合は、次の点を確認します。
 
@@ -143,6 +144,6 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 * Azure 仮想マシンで実行されている侵入検出ソフトウェアまたはネットワーク監視ソフトウェアが、SSH 接続を妨げている。
 
 ## <a name="additional-resources"></a>その他のリソース
-アプリケーションへのアクセスのトラブルシューティングに関する詳細については、「[Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
+アプリケーションへのアクセスのトラブルシューティングに関する詳細については、「[Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](troubleshoot-app-connection.md)」を参照してください。
 
 

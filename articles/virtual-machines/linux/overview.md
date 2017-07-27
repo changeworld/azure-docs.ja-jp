@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/14/2016
 ms.author: rclaus
-ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: 704403704bd52ba1fe1815345708ab4d2d2547af
-ms.lasthandoff: 04/04/2017
+ms.custom: H1Hack27Feb2017, mvc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 981b87540070dff18a01d6bf3dce24a675b451aa
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/01/2017
 
 ---
 # <a name="azure-and-linux"></a>Azure と Linux
@@ -51,7 +52,6 @@ Azure Virtual Machines を使用すると、さまざまなコンピューティ
 Azure に VM をデプロイするとき、あらかじめ用意された一連のサイズから、目的のワークロードに適した VM サイズを選択します。 また、サイズは仮想マシンの処理能力、メモリ、記憶容量にも影響します。 課金は、VM の実行時間とその割り当てリソースの消費量に基づいて行われます。 [Virtual Machines のサイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)の完全な一覧。
 
 ここでは、Microsoft が提供している一連の VM サイズ (A、D、DS、G、GS) からの選び方について基本的なガイドラインを紹介しています。
-
 * A シリーズの VM は、軽量のワークロードと開発/テストを想定した低価格、入門レベルの VM です。 すべてのリージョンで広く利用できます。定番となっているさまざまなリソースをつないで、仮想マシンから使用することが可能です。
 * A シリーズ サイズ (A8 ～ A11) は、ハイパフォーマンス コンピューティング クラスター アプリケーションに適した特殊なコンピューティング集中型の構成です。
 * D シリーズ VM は、より高いコンピューティング能力と一時ディスクのパフォーマンスを必要とするアプリケーションを実行するように設計されています。 D シリーズ VM は、より高速なプロセッサ、より高いメモリ対コア比、一時ディスク用ソリッド ステート ドライブ (SSD) を提供します。
@@ -93,7 +93,7 @@ Microsoft はパートナーと連携し、利用可能なイメージが Azure 
 * Docker - [Azure Marketplace - Azure Container Service with Docker Swarm](https://azure.microsoft.com/marketplace/partners/microsoft/acsswarms/)
 * Jenkins - [Azure Marketplace - CloudBees Jenkins Platform](https://azure.microsoft.com/marketplace/partners/cloudbees/jenkins-platformjenkins-platform/)
 
-## <a name="getting-setup-on-azure"></a>Azure の設定
+## <a name="getting-started-with-linux-on-azure"></a>Microsoft Azure における Linux の概要
 Azure の使用を開始するには、Azure アカウント、Azure CLI のインストール、および SSH 公開キーと秘密キーのペアが必要です。
 
 ### <a name="sign-up-for-an-account"></a>アカウントにサインアップする

@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 1/23/2017
+ms.date: 05/31/2017
 ms.author: saurabh
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 52d83b21f2f2346bfeb8d469a9bfb1b64dd4ba23
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: e9bb11645a0f45449bfc102e1d0cefd6fbf3ffd9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -74,7 +74,7 @@ Windows 仮想マシンで診断の拡張機能を有効にするには、リソ
 
 **Microsoft.Azure.Diagnostics** の *publisher* プロパティや *type* プロパティの **IaaSDiagnostics** によって、Azure 診断の拡張機能が一意に識別されます。
 
-リソース グループの拡張機能を参照するには、 *name* プロパティの値を使用することができます。 このプロパティを具体的に **Microsoft.Insights.VMDiagnosticsSettings** に設定することで、Azure クラシック ポータルでの識別が簡単になり、Azure クラシック ポータルで監視グラフが正しく表示されるようになります。
+リソース グループの拡張機能を参照するには、 *name* プロパティの値を使用することができます。 このプロパティを具体的に **Microsoft.Insights.VMDiagnosticsSettings** に設定することで、Azure ポータルでの識別が簡単になり、Azure ポータルで監視グラフが正しく表示されるようになります。
 
 *typeHandlerVersion* は使用する拡張機能のバージョンを指定します。 *autoUpgradeMinorVersion* を **true** に設定することで、使用できる拡張機能で最新のマイナー バージョンが表示されるようになります。 新機能とバグの修正がすべて含まれる、最新の診断の拡張機能を常に使用できるように、 *autoUpgradeMinorVersion* は常に **true** に設定することを強くお勧めします。 
 

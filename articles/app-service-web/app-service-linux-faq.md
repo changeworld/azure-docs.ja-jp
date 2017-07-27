@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: aelnably;wesmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: dcce8d855f8c37d40fe8f09ef0a97e46b342e3cf
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 3fb0f6b26f36ef4044c9733ace05c4f59909ddda
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -62,6 +62,10 @@ Azure App Service on Linux のリリースでは、機能の追加とプラッ�
 
 **A:** はい。
 
+**Q:** **Web デプロイ**を使用して Web アプリをデプロイすることはできますか。
+
+**A:** はい。`UseWebDeployScm` というアプリ設定を `false` に設定する必要があります。
+
 ## <a name="language-support"></a>言語のサポート
 
 **Q:** コンパイルされていない .NET Core アプリはサポートされていますか。
@@ -70,7 +74,7 @@ Azure App Service on Linux のリリースでは、機能の追加とプラッ�
 
 **Q:** PHP アプリの依存関係マネージャーとして Composer はサポートされていますか。
 
-**A:** いいえ。 PHP アプリはすべての依存関係と共にデプロイする必要があります。 今後のリリースで、完全なデプロイ エクスペリエンスを計画しています。
+**A:** はい。 Git のデプロイ中に、Kudu は (composer.json ファイルの存在により) PHP アプリケーションをデプロイしていることを検出し、Composer のインストールを自動的にトリガーします。
 
 ## <a name="custom-containers"></a>カスタム コンテナー
 
@@ -84,7 +88,7 @@ Azure App Service on Linux のリリースでは、機能の追加とプラッ�
 
 **Q:**プライベート レジストリ オプションのイメージ名の形式は何ですか。
 
-**A:**プライベート レジストリ の URI を含む完全なイメージ名を追加する必要があります (例:  myacr.azurecr.io/dotnet:latest)。
+**A:** プライベート レジストリ の URI を含む完全なイメージ名を追加する必要があります (例:  myacr.azurecr.io/dotnet:latest)。
 
 **Q:** カスタム コンテナー イメージで 1 つ以上のポートを公開したいと思っています。 可能でしょうか。
 

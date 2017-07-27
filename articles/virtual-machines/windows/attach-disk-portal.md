@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/09/2017
 ms.author: cynthn
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: d02f92a8809efd6f58312af8cb40739299ea28f6
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: c0886302c82641f8cc1a00d3972870d58ba8afb4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -45,7 +45,7 @@ ms.lasthandoff: 05/10/2017
 
 ## <a name="option-1-attach-and-initialize-a-new-disk"></a>オプション 1: 新しいディスクを接続し、初期化する
 1. **[ディスク]** ブレードで、**[+ Add data disk]** (データ ディスクの追加) をクリックします。
-2. **[Attach managed disk] (管理ディスクの接続)** ブレードで、**[名前]** にディスクの名前を入力し、**[ソースの種類]** で **[新規 (空のディスク)]** を選択します。
+2. **[Attach managed disk] \(管理ディスクの接続)** ブレードで、**[名前]** にディスクの名前を入力し、**[ソースの種類]** で **[新規 (空のディスク)]** を選択します。
 3. **ストレージ コンテナー** の下にある **[参照]** ボタンをクリックし、新しい VHD を格納するストレージ アカウントとコンテナーまで移動して、**[選択]** をクリックします。 
   
    ![ディスク設定を確認する](./media/attach-disk-portal/attach-empty-unmanaged.png)
@@ -95,12 +95,15 @@ fsutil behavior query DisableDeleteNotify
 ```
 fsutil behavior set DisableDeleteNotify 0
 ```
-                
+
 ディスクからデータを削除した後は、TRIM でデフラグを実行して、TRIM 操作が正しくフラッシュすることを確認できます。
 
 ```
 defrag.exe <volume:> -l
 ```
+
+ボリュームのフォーマットによって、ボリューム全体を確実に削除することもできます。
+
 
 ## <a name="next-steps"></a>次のステップ
 アプリケーションで D: ドライブを使用してデータを保存する必要がある場合は、 [Windows 一時ディスクのドライブ文字を変更](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)できます。

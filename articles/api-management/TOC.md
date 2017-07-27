@@ -1,268 +1,94 @@
-
-
 # 概要
-
-
 ## [API Management とは](api-management-key-concepts.md)
-
-
 # 作業開始
-
-
 ## [Azure API Management での最初の API の管理](api-management-get-started.md)
-
-
 ## [レート制限で API を保護する](api-management-howto-product-with-rules.md)
-
-
 ## [パフォーマンス向上のためにキャッシュを追加する](api-management-howto-cache.md)
-
-
 ## [よく寄せられる質問](api-management-faq.md)
-
-
 # 方法
-
-
 ## API を開発する
-
-
 ### [API 製品を追加および発行する](api-management-howto-add-products.md)
-
-
 ### [操作を追加する](api-management-howto-add-operations.md)
-
-
 ### [API の作成](api-management-howto-create-apis.md)
-
-
 ### [API 定義をインポートする](api-management-howto-import-api.md)
-
-
 ## バックエンドをセキュリティで保護する
-
-
 ### [AAD で Web API バックエンドを保護する](api-management-howto-protect-backend-with-aad.md)
-
-
 ### [仮想ネットワークに接続する](api-management-using-with-vnet.md)
-
-
 ### [内部仮想ネットワークに接続する](api-management-using-with-internal-vnet.md)
-
-
 ### [内部 VNET で Application Gateway を統合する](api-management-howto-integrate-internal-vnet-appgateway.md)
-
-
 ### [相互証明書認証](api-management-howto-mutual-certificates.md)
-
-
 ## ポリシーを構成する
-
-
 ### [カスタム キャッシュ](api-management-sample-cache-by-key.md)
-
-
 ### [高度な監視](api-management-log-to-eventhub-sample.md)
-
-
 ### [高度な要求スロットル](api-management-sample-flexible-throttling.md)
-
-
 ### [外部サービスの使用](api-management-sample-send-request.md)
-
-
 ### [ポリシー リファレンスのインデックス](api-management-policy-reference.md)
-
-
 ### [ポリシーの概要](api-management-howto-policies.md)
-
-
 ### [プロパティを使用してシークレットを管理する](api-management-howto-properties.md)
-
-
 ### [クライアント証明書認証を使用して API を保護する](api-management-howto-mutual-certificates-for-clients.md)
-
-
 ## 開発者エクスペリエンスをカスタマイズする
-
-
 ### [ページのコンテンツとレイアウトを変更する](api-management-modify-content-layout.md)
-
-
 ### [ページ要素のスタイルをカスタマイズする](api-management-customize-styles.md)
-
-
 ### [テンプレートを使用してシステム ページをカスタマイズする](api-management-developer-portal-templates.md)
-
-
 ### [AAD による認証](api-management-howto-aad.md)
-
-
 ### [AAD B2C による認証](api-management-howto-aad-b2c.md)
-
-
 ### [委任された認証](api-management-howto-setup-delegation.md)
-
-
 ### [電子メール通知とテンプレート](api-management-howto-configure-notifications.md)
-
-
 ### [コンソール OAuth サポートを有効にする](api-management-howto-oauth2.md)
-
-
 ## 運用環境でテストする
-
-
 ### [グループの管理](api-management-howto-create-groups.md)
-
-
 ### [複数の Azure リージョンにデプロイする](api-management-howto-deploy-multi-region.md)
-
-
 ### [イベントを Azure Event Hubs にログ記録する](api-management-howto-log-event-hubs.md)
-
-
 ### [バックアップ/復元を使用して DR を設定する](api-management-howto-disaster-recovery-backup-restore.md)
-
-
 ### [API Inspector で呼び出しをトレースする](api-management-howto-api-inspector.md)
-
-
 ### [ユーザー アカウントを管理する](api-management-howto-create-or-invite-developers.md)
-
-
 ### [Automation を使用して管理する](automation-manage-api-management.md)
-
-
 ### [Git を使用して構成する](api-management-configuration-repository-git.md)
-
-
 ### [Azure Monitor を使用して監視する](api-management-howto-use-azure-monitor.md)
-
-
 ### [ロールベースのアクセス制御を使用する](api-management-role-based-access-control.md)
-
+### Service Fabric と統合する
+#### [概要](../service-fabric/service-fabric-api-management-overview.md)
+#### [クイック スタート](../service-fabric/service-fabric-api-management-quick-start.md)
 
 # リファレンス
-
-
 ## [PowerShell](/powershell/azure/overview)
-
-
 ## [REST ()](/rest/api/apimanagement/)
-
-
 ## [REST (オリジナル)](/rest/api/apimanagement/ApiManagementREST/api-management-REST)
-
-
 ## [ポリシー](api-management-policies.md)
-
-
 ### Policy reference (ポリシー リファレンス)
-
-
 #### [アクセス制限ポリシー](api-management-access-restriction-policies.md)
-
-
 #### [高度なポリシー](api-management-advanced-policies.md)
-
-
 #### [認証ポリシー](api-management-authentication-policies.md)
-
-
 #### [キャッシュ ポリシー](api-management-caching-policies.md)
-
-
 #### [クロス ドメイン ポリシー](api-management-cross-domain-policies.md)
-
-
 #### [変換ポリシー](api-management-transformation-policies.md)
-
-
 ### [エラー処理](api-management-error-handling-policies.md)
-
-
 ### [ポリシー式](api-management-policy-expressions.md)
-
-
 ## [テンプレート](api-management-developer-portal-templates-reference.md)
-
-
 ### テンプレート リファレンス
-
-
 #### [API](api-management-api-templates.md)
-
-
 #### [成果物](api-management-product-templates.md)
-
-
 #### [アプリケーション](api-management-application-templates.md)
-
-
 #### [問題](api-management-issue-templates.md)
-
-
 #### [ユーザー プロファイル](api-management-user-profile-templates.md)
-
-
 #### [ページ](api-management-page-templates.md)
-
-
 ### [データ モデル リファレンス](api-management-template-data-model-reference.md)
-
-
 ### [ページ コントロール](api-management-page-controls.md)
-
-
 ### [テンプレート リソース](api-management-template-resources.md)
-
-
 # リソース
-
-
 ## [API 設計ガイダンス](../best-practices-api-design.md?toc=%2fazure%2fapi-management%2ftoc.json)
-
-
 ## [API 実装ガイダンス](../best-practices-api-implementation.md?toc=%2fazure%2fapi-management%2ftoc.json)
-
-
 ## [API Management - 他の Azure サービスと効果的に連携する](http://weblogs.asp.net/cschittko/api-management-plays-well-with-other-azure-services)
-
-
 ## [API Management plugin for SmartBear Ready!API](http://smartbear.com/plugins/microsoft-azure-api-management-plugin/)
-
-
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
-
-
 ## [Event Hubs を API Management に接続する](http://weblogs.asp.net/cschittko/connecting-eventhubs-to-api-management)
-
-
 ## [HTTP 経由で SOAP WCF サービスを使用する](http://mostlydotnetdev.blogspot.nl/2015/03/azure-api-management-apim-consuming.html)
-
-
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt)
-
-
 ## [料金](https://azure.microsoft.com/pricing/details/api-management/)
-
-
 ## [REST API を使用して RBAC ライクなアクセスを提供する](http://blogs.msdn.com/b/katriend/archive/2015/12/21/using-the-azure-api-management-rest-api-as-workaround-to-rbac-functionality.aspx)
-
-
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=api-management)
-
-
 ## [API Management API を呼び出すために PostMan を設定する](http://www.bizbert.com/bizbert/2015/07/08/Setting+Up+PostMan+To+Call+The+Azure+Management+APIs.aspx)
-
-
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-api-management)
-
-
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=api-management) 
-
-
 ## [ホワイトペーパー: クラウド ベースの API Management](http://j.mp/ms-apim-whitepaper)
 

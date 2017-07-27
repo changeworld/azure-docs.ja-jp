@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: naziml;wesmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: f4bf4138ce3a9a2495a0a0fd46e149f6ac96d82d
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 49091d4a85bed23927850f9c0bbc5ea8b6e8c9e1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -47,7 +47,7 @@ Linux での Web アプリの作成は、次の図のとおり [Azure Portal](ht
 ![アプリケーションの設定][3]
 
 ## <a name="deploy-your-web-app"></a>Web アプリのデプロイ
-管理ポータルから **[デプロイ オプション]** を選択することで、ローカル Git または GitHub リポジトリを使用してアプリケーションをデプロイできるようになります。 残りの手順は、Linux 以外の Web アプリの手順と同じです。 [ローカル Git のデプロイ](app-service-deploy-local-git.md)に関する記事または[継続的なデプロイ](app-service-continuous-deployment.md)に関する記事の手順に従って、アプリをデプロイすることができます。
+管理ポータルから**デプロイ オプション**を選択することで、ローカル Git または GitHub リポジトリを使用してアプリケーションをデプロイできるようになります。 残りの手順は、Linux 以外の Web アプリの手順と同じです。 [ローカル Git のデプロイ](app-service-deploy-local-git.md)に関する記事または[継続的なデプロイ](app-service-continuous-deployment.md)に関する記事の手順に従って、アプリをデプロイすることができます。
 
 サイトへのアプリケーションのアップロードには FTP を使用することもできます。 次の図のように、Web アプリ用の FTP エンドポイントは [診断ログ] セクションから取得できます。
 

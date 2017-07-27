@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2016
 ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 5840ec74f6af2e373d9ebb34b0f6e13094c33f19
-ms.openlocfilehash: 003ca36c80274c4cad430ac67cf8cf3551d4137a
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 8fd13efdbdd98c6d7dff1b88a6b232a08aa5a13d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet"></a>Azure Blob Storage と Visual Studio 接続済みサービスの概要 (ASP.NET)
@@ -31,7 +32,7 @@ Azure Blob Storage は、非構造化データをクラウド内にオブジェ�
 
 ##<a name="prerequisites"></a>前提条件
 
-* [Microsoft Visual Studio](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)
+* [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure Storage アカウント](storage-create-storage-account.md#create-a-storage-account)
 
 [!INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
@@ -117,7 +118,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
 
 1. **ソリューション エクスプローラー**で **[ビュー]** フォルダーを展開し、**[BLOB]** を右クリックし、コンテキスト メニューで **[追加]、[ビュー]** の順に選択します。
 
-1. **[ビューの追加] ** ダイアログで、ビューの名前として **CreateBlobContainer** と入力し、**[追加]** を選択します。
+1. **[ビューの追加]**  ダイアログで、ビューの名前として **CreateBlobContainer** と入力し、**[追加]** を選択します。
 
 1. `CreateBlobContainer.cshtml` を開き、次のコード スニペットのように変更します。
 
@@ -309,7 +310,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
 
 1. **ソリューション エクスプローラー**で **[ビュー]** フォルダーを展開し、**[BLOB]** を右クリックし、コンテキスト メニューで **[追加]、[ビュー]** の順に選択します。
 
-1. **[ビューの追加] ** ダイアログで、ビューの名前として **ListBlobs** と入力し、**[追加]** を選択します。
+1. **[ビューの追加]**  ダイアログで、ビューの名前として **ListBlobs** と入力し、**[追加]** を選択します。
 
 1. `ListBlobs.cshtml` を開き、次のコード スニペットのように変更します。
 
@@ -469,8 +470,4 @@ Azure でデータを格納するための追加のオプションについて�
 
   * [テーブル ストレージと Visual Studio 接続済みサービスの概要 (ASP.NET)](./vs-storage-aspnet-getting-started-tables.md)
   * [Azure キュー ストレージと Visual Studio 接続済みサービスの概要](./vs-storage-aspnet-getting-started-queues.md)
-
-
-<!--HONumber=Jan17_HO1-->
-
 

@@ -12,12 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2017
+ms.date: 06/19/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: eeaab56b376ffd3123efb95a1223b7344dd6d187
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
+ms.openlocfilehash: 65709ef9f6cdd50fb8650a1a11c9321defb9cf5b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/21/2017
 
 
 ---
@@ -111,16 +112,16 @@ Azure サブスクリプションがない場合は、無料試用版のアカ�
 
    ![](./media/data-factory-data-processing-using-batch/image3.png)
 
-   **Inputfolder** と **outputfolder** は、**mycontainer** のトップ レベル フォルダーにあり、**inputfolder** には日付タイム スタンプ (YYYY-MM-DD-HH) を含むサブフォルダーがあります。
+   `Inputfolder` と `outputfolder` は、`mycontainer` 内の最上位フォルダーです。 `inputfolder` 内には、日付時刻スタンプ (YYYY-MM-DD-HH 形式) の付いたサブフォルダーがあります。
 
-   **Azure Storage エクスプローラ**を使用している場合は、次の手順で、以下の名前を持つファイルをアップロードする必要があります。inputfolder/2015-11-16-00/file.txt、inputfolder/2015-11-16-01/file.txt など。 この手順では、フォルダーが自動的に作成されます。
+   **Azure ストレージ エクスプローラー**を使用している場合は、次の手順で、`inputfolder/2015-11-16-00/file.txt`、`inputfolder/2015-11-16-01/file.txt` などの名前を持つファイルをアップロードする必要があります。 この手順では、フォルダーが自動的に作成されます。
 3. テキスト ファイル **file.txt** を、キーワード **Microsoft** を含めた内容でコンピューターに作成します。 例: “test custom activity Microsoft test custom activity Microsoft”。
 4. ファイルを Azure Blob Storage 内の次の入力フォルダーにアップロードします。
 
    ![](./media/data-factory-data-processing-using-batch/image4.png)
 
-   **Azure Storage エクスプローラー**を使用している場合、ファイル **file.txt** を **mycontainer** にアップロードします。 ツールバーで **[コピー]** をクリックして、BLOB のコピーを作成します。 **[BLOB のコピー]** ダイアログ ボックスで、**[宛先 BLOB 名]** を「**inputfolder/2015-11-16-00/file.txt**」に変更します。 この手順を繰り返して、inputfolder/2015-11-16-01/file.txt、inputfolder/2015-11-16-02/file.txt、inputfolder/2015-11-16-03/file.txt、inputfolder/2015-11-16-04/file.txt などを作成します。 この操作では、フォルダーが自動的に作成されます。
-5. **customactivitycontainer**という名前の別のコンテナーを作成します。 カスタム アクティビティの zip ファイルを、このコンテナーにアップロードします。
+   **Azure Storage エクスプローラー**を使用している場合、ファイル **file.txt** を **mycontainer** にアップロードします。 ツールバーで **[コピー]** をクリックして、BLOB のコピーを作成します。 **[BLOB のコピー]** ダイアログ ボックスで、**[宛先 BLOB 名]** を「`inputfolder/2015-11-16-00/file.txt`」に変更します。 この手順を繰り返して `inputfolder/2015-11-16-01/file.txt`、`inputfolder/2015-11-16-02/file.txt`、`inputfolder/2015-11-16-03/file.txt`、`inputfolder/2015-11-16-04/file.txt` などを作成します。 この操作では、フォルダーが自動的に作成されます。
+5. `customactivitycontainer` という名前の別のコンテナーを作成します。 カスタム アクティビティの zip ファイルを、このコンテナーにアップロードします。
 
 #### <a name="visual-studio"></a>Visual Studio
 Microsoft Visual Studio 2012 以降をインストールして、Data Factory ソリューションで使用するカスタム Batch アクティビティを作成します。
@@ -157,7 +158,7 @@ public IDictionary<string, string> Execute(
 
    1. **Visual Studio 2012**/**2013/2015** を起動します。
    2. **[ファイル]** をクリックし、**[新規作成]** をポイントして、**[プロジェクト]** をクリックします。
-   3. **[テンプレート]** を展開し、**[Visual C#]\#** を選択します。このチュートリアルでは C\# を使用しますが、カスタム アクティビティの開発には、どの .NET 言語でも使用できます。
+   3. **[テンプレート]** を展開し、**[Visual C#]\#** を選択します。 このチュートリアルでは C\# を使用しますが、カスタム アクティビティの開発には、どの .NET 言語でも使用できます。
    4. 右側にあるプロジェクトの種類の一覧から **[クラス ライブラリ]** を選択します。
    5. **MyDotNetActivity** for the **MyDotNetActivity**に関する記事を参照してください。
    6. **[場所]** で [**C:\\ADF**] を選択します。 **ADF** フォルダーがない場合には、フォルダーを作成します。
@@ -368,7 +369,7 @@ public IDictionary<string, string> Execute(
 3. **\\bin\\Debug** フォルダー内のすべてのバイナリを含む zip ファイル、**MyDotNetActivity.zip** を作成します。 エラー発生時の問題の原因となったソース コードの行番号など、追加情報を取得するために、MyDotNetActivity.**pdb** ファイルを含めることもできます。
 
    ![](./media/data-factory-data-processing-using-batch/image5.png)
-4. **MyDotNetActivity.zip** を Azure Blob Storage 内の **customactivitycontainer** に BLOB としてアップロードします。この BLOB コンテナーは、**ADFTutorialDataFactory** 内のリンクされたサービス **StorageLinkedService** が使用します。 BLOB コンテナー **customactivitycontainer** が既に存在していなければ、作成します。
+4. **MyDotNetActivity.zip** を Azure Blob Storage 内の BLOB コンテナー `customactivitycontainer` に BLOB としてアップロードします。このコンテナーは、**ADFTutorialDataFactory** 内のリンクされたサービス **StorageLinkedService** が使用します。 BLOB コンテナー `customactivitycontainer` がまだ存在しない場合は作成します。
 
 #### <a name="execute-method"></a>Execute メソッド
 ここでは、Execute メソッドのコードの詳細と注意事項について説明します。
@@ -447,7 +448,7 @@ public IDictionary<string, string> Execute(
 ### <a name="create-the-data-factory"></a>Data Factory の作成
 「 [カスタム アクティビティの作成](#create-the-custom-activity) 」セクションでは、カスタム アクティビティを作成し、バイナリと PDB ファイルを含む zip ファイルを Azure Blob コンテナーにアップロードしました。 ここでは、**カスタム アクティビティ**を使用した**パイプライン**で Azure **Data Factory** を作成します。
 
-カスタム アクティビティの入力データセットは、Blob Storage の入力フォルダー (mycontainer\\inputfolder) 内にある BLOB (ファイル) を表します。 アクティビティの出力データセットは、Blob Storage の出力フォルダー (mycontainer\\outputfolder) 内にある出力 BLOB を表します。
+カスタム アクティビティの入力データセットは、Blob Storage の入力フォルダー (`mycontainer\\inputfolder`) 内にある BLOB (ファイル) を表します。 アクティビティの出力データセットは、Blob Storage の出力フォルダー (`mycontainer\\outputfolder`) 内にある出力 BLOB を表します。
 
 次のように、入力フォルダーに 1 つ以上のファイルをドロップします。
 
@@ -668,7 +669,7 @@ test custom activity Microsoft test custom activity Microsoft
     }
     ```
 
-    各入力スライスの出力 BLOB/ファイルが生成されます。 次に、各スライスの出力ファイルの命名方法を示します。 すべての出力ファイルは、**mycontainer\\outputfolder** という 1 つの出力フォルダーに生成されます。
+    各入力スライスの出力 BLOB/ファイルが生成されます。 次に、各スライスの出力ファイルの命名方法を示します。 すべての出力ファイルは、`mycontainer\\outputfolder` という 1 つの出力フォルダーに生成されます。
 
     | **スライス** | **開始時刻**          | **出力ファイル**       |
     |-----------|-------------------------|-----------------------|
@@ -771,7 +772,7 @@ test custom activity Microsoft test custom activity Microsoft
 
    ![](./media/data-factory-data-processing-using-batch/image13.png)
 6. Azure Portal を使用して、**スライス**に関連付けられている**タスク**を表示し、各スライスが実行された VM を確認します。 詳細については、「 [Data Factory と Batch の統合](#data-factory-and-batch-integration) 」をご覧ください。
-7. Azure Blob Storage の **mycontainer** の **outputfolder** に、出力ファイルが表示されます。
+7. Azure Blob Storage の `mycontainer` 内の `outputfolder` に、出力ファイルが表示されます。
 
    ![](./media/data-factory-data-processing-using-batch/image15.png)
 
@@ -788,7 +789,7 @@ test custom activity Microsoft test custom activity Microsoft
 10. **[OutputDataset]** ブレードで、**[スライス開始時間]** を **11/16/2015 01:00:00 AM** に設定したスライスを右クリックして、**[実行]** をクリックし、スライスを再実行または再度処理します。 スライスには、1 個のファイルではなく、5 個のファイルがあります。
 
     ![](./media/data-factory-data-processing-using-batch/image17.png)
-11. スライスを実行して、その状態が **[準備完了]** になると、Blob Storage の **mycontainer** の **outputfolder** で、このスライスの出力ファイル (**2015-11-16-01.txt**) の内容を確認します。 スライスのファイルごとに 1 行あります。
+11. スライスを実行して、その状態が **[準備完了]** になると、Blob Storage の `mycontainer` 内の `outputfolder` で、このスライスの出力ファイル (**2015-11-16-01.txt**) の内容を確認します。 スライスのファイルごとに 1 行あります。
 
     ```
     2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-01/file.txt.
@@ -804,7 +805,7 @@ test custom activity Microsoft test custom activity Microsoft
 >
 
 #### <a name="data-factory-and-batch-integration"></a>Data Factory と Batch の統合
-Data Factory サービスによって、Azure Batch に **adf-poolname:job-xxx**という名前のジョブが作成されます。
+Data Factory サービスによって、Azure Batch に `adf-poolname:job-xxx` という名前のジョブが作成されます。
 
 ![Azure Data Factory - Batch ジョブ](media/data-factory-data-processing-using-batch/data-factory-batch-jobs.png)
 
@@ -855,7 +856,7 @@ Data Factory サービスによって、Azure Batch に **adf-poolname:job-xxx**
    ![](./media/data-factory-data-processing-using-batch/image21.png)
 
    > [!NOTE]
-   > **adfjobs** という名前の Azure Blob Storage に、**コンテナー**が表示されます。 このコンテナーは自動的に削除されませんが、ソリューションのテストを完了した後に、安全に削除することができます。 同様に、Data Factory ソリューションでは、**adf-\<pool ID/name\>:job-0000000001** という名前の Azure Batch **ジョブ**を作成します。 必要な場合は、ソリューションをテストした後、このジョブを削除することができます。
+   > `adfjobs` という名前の Azure Blob Storage に、**コンテナー**が表示されます。 このコンテナーは自動的に削除されませんが、ソリューションのテストを完了した後に、安全に削除することができます。 同様に、Data Factory ソリューションでは、`adf-\<pool ID/name\>:job-0000000001` という名前の Azure Batch **ジョブ**を作成します。 必要な場合は、ソリューションをテストした後、このジョブを削除することができます。
    >
    >
 7. このカスタム アクティビティでは、パッケージ内の **app.config** ファイルは使用されません。 そのためこの構成ファイルから接続文字列を読み取るようにコードを記述した場合、実行時に正しく機能しません。 Azure Batch を使用するときは、すべてのシークレットを **Azure KeyVault** に保持し、証明書ベースのサービス プリンシパルを使用して keyvault を保護したうえで、Azure Batch プールに証明書を配布するのがベスト プラクティスです。 こうすることで .NET カスタム アクティビティが実行時に KeyVault 内のシークレットにアクセスすることができます。 このソリューションは一般的なものであり、接続文字列に限らず、あらゆる種類のシークレットに応用できます。
@@ -865,7 +866,7 @@ Data Factory サービスによって、Azure Batch に **adf-poolname:job-xxx**
 #### <a name="extend-the-sample"></a>サンプルの拡張
 Azure Data Factory および Azure Batch の機能の詳細については、このサンプルを拡張することができます。 たとえば、異なる時間範囲でスライスを処理するには、次の手順を実行します。
 
-1. **inputfolder**に2015-11-16-05、2015-11-16-06、201-11-16-07、2011-11-16-08、2015-11-16-09 のサブフォルダーを追加し、これらのフォルダーに入力ファイルを配置します。 パイプラインの終了時刻を `2015-11-16T05:00:00Z` から `2015-11-16T10:00:00Z` に変更します。 **[ダイアグラム] ビュー**で、**[InputDataset]** をダブルクリックして、入力スライスが準備完了であることを確認します。 **[OuptutDataset]** をダブルクリックして、出力スライスの状態を表示します。 準備完了の状態である場合、出力ファイルの outputfolder を確認します。
+1. `inputfolder` に2015-11-16-05、2015-11-16-06、201-11-16-07、2011-11-16-08、2015-11-16-09 の各サブフォルダーを追加し、これらのフォルダーに入力ファイルを配置します。 パイプラインの終了時刻を `2015-11-16T05:00:00Z` から `2015-11-16T10:00:00Z` に変更します。 **[ダイアグラム] ビュー**で、**[InputDataset]** をダブルクリックして、入力スライスが準備完了であることを確認します。 **[OuptutDataset]** をダブルクリックして、出力スライスの状態を表示します。 準備完了の状態である場合、出力フォルダーで出力ファイルを確認します。
 2. 特に Azure Batch 上で発生する処理のように、どのようにソリューションのパフォーマンスに影響するかを理解するには、**concurrency** の設定を増加または減少させます。 (**concurrency** の設定の詳細については、「手順 4: パイプラインを作成して実行する」を参照してください。)
 3. **[VM ごとの最大タスク]** を高くまたは低くして、プールを作成します。 新しく作成したプールを使用するには、Data Factory ソリューションで、Azure Batch のリンクされたサービスを更新します。 (**VM ごとの最大タスク**の設定の詳細については、「手順 4: パイプラインを作成して実行する」を参照してください。)
 4. **[自動スケール]** 機能で、Azure Batch プールを作成します。 Azure Batch プール内のコンピューティング ノードの自動スケールは、アプリケーションによって使用される処理能力を動的に調整します。 

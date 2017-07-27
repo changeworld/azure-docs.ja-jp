@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: bc1b22b6269dc42add45a63d12c6c733e9d8c6ab
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 9a588a28312388a524d91df7363234e0f609660e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -28,8 +28,7 @@ ms.lasthandoff: 05/18/2017
 HDInsight の Spark クラスターには、Spark ジョブの実行に使用できる Zeppelin Notebook が含まれています。 この記事では、HDInsight クラスターで Zeppelin Notebook を使用する方法について説明します。
 
 > [!NOTE]
-> 既定では、Zeppelin Notebook は、HDInsight クラスター バージョン 3.5 での Spark 1.6.2 に対してのみ使用できます。 他のバージョンの HDInsight Spark クラスターで Zeppelin を使用する場合は、スクリプト アクションを使って Zeppelin をインストールできます。 詳細については、[HDInsight Linux の Apache Spark クラスターに Zeppelin Notebook をインストールする](hdinsight-apache-spark-use-zeppelin-notebook.md)に関する記事をご覧ください。
-> 
+> Zeppelin Notebook は、HDInsight 3.5 上の Spark 1.6.3 と、HDInsight 3.6 上の Spark 2.1.0 に対してのみ使用できます。
 >
 
 **前提条件:**

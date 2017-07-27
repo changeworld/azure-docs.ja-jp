@@ -122,6 +122,7 @@
 ### [スケールアウト プロセス サーバーの管理](site-recovery-vmware-to-azure-manage-scaleout-process-server.md)
 ### [vCenter サーバーの管理](site-recovery-vmware-to-azure-manage-vCenter.md)
 ### [サーバーの削除と保護の無効化](site-recovery-manage-registration-and-protection.md)
+### [Recovery Services コンテナーの削除](delete-vault.md)
 
 ## 監視とトラブルシューティング
 ### [Azure から Azure へのレプリケーションの問題](site-recovery-azure-to-azure-troubleshoot-errors.md)

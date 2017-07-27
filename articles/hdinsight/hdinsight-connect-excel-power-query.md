@@ -1,5 +1,5 @@
 ---
-title: "Power Query を使用した Excel から Hadoop への接続 | Microsoft Docs"
+title: "Power Query を使用した Excel から Hadoop への接続 - Azure HDInsight | Microsoft Docs"
 description: "ビジネス インテリジェンス コンポーネントを活用し、HDInsight 上の Hadoop に格納されているデータに Power Query for Excel でアクセスする方法を説明します。"
 services: hdinsight
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 6407c371bc51461a05429fabaf38d3f9bc80d32c
-ms.openlocfilehash: 26383db7a3fe6736fb739121dd545518784c098a
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: c83328a2b349e92bfdbcba6474040ac930483354
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/07/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---

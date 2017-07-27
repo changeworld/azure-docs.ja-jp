@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: markvi
+ms.reviewer: jairoc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
 ms.openlocfilehash: 9934902811354ffa4047d70d995a6dd44be0229b
 ms.contentlocale: ja-jp
 ms.lasthandoff: 03/10/2017
 
-
 ---
-<a id="get-started-with-azure-active-directory-device-registration" class="xliff"></a>
-# Azure Active Directory デバイス登録の使用
+# <a name="get-started-with-azure-active-directory-device-registration"></a>Azure Active Directory デバイス登録の使用
 
 Azure Active Directory デバイス登録は、デバイスに基づいて条件付きでアクセスを許可するというシナリオの基礎となる機能です。 デバイスが登録されると、Azure Active Directory デバイス登録によって、そのデバイスの ID がプロビジョニングされます。この ID は、ユーザーのサインイン時のデバイス認証に使用されます。 認証済みのデバイスおよびデバイスの属性を使用して、クラウドおよびオンプレミスでホストされるアプリケーションに条件付きアクセス ポリシーを適用できます。
 
@@ -36,8 +35,7 @@ Azure Active Directory Device Registration で実現されるシナリオ。Azur
 
 - **オンプレミスでホストされるアプリケーションへの条件付きアクセス:** Windows Server 2012 R2 で AD FS を使用するように構成されたアプリケーションに対して、アクセス ポリシーの登録済みのデバイスを使用できます。 オンプレミスの条件付きアクセスを設定する方法の詳細については、「[Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](active-directory-device-registration-on-premises-setup.md)」を参照してください。
 
-<a id="setting-up-azure-active-directory-device-registration" class="xliff"></a>
-## Azure Active Directory Device Registration の設定
+## <a name="setting-up-azure-active-directory-device-registration"></a>Azure Active Directory Device Registration の設定
 
 デバイス登録をセットアップするには、次のような複数のオプションがあります。
 
@@ -50,8 +48,7 @@ Azure Active Directory Device Registration で実現されるシナリオ。Azur
 最新の手順については、「[Azure Active Directory への Windows ドメイン参加済みデバイスの自動登録の構成方法](active-directory-conditional-access-automatic-device-registration-setup.md)」を参照してください。  
 Azure Active Directory の管理者ポータルを使用して、登録されているデバイスを確認し、有効または無効にすることもできます。
 
-<a id="enable-the-azure-active-directory-device-registration-service" class="xliff"></a>
-## Azure Active Directory デバイス登録サービスを有効にする
+## <a name="enable-the-azure-active-directory-device-registration-service"></a>Azure Active Directory デバイス登録サービスを有効にする
 
 **Azure Active Directory デバイス登録サービスを有効にするには:**
 
@@ -77,8 +74,7 @@ Office 365 用に Microsoft Intune またはモバイル デバイス管理を�
 
 - Windows Server 2012 R2 で AD FS を使用している場合は、AD FS で 2 要素認証モジュールを構成する必要があります。Active Directory フェデレーション サービスでの Multi-Factor Authentication の使用に関する記事を参照してください。
 
-<a id="view-and-manage-device-objects-in-azure-active-directory" class="xliff"></a>
-## Azure Active Directory のデバイス オブジェクトを表示および管理する
+## <a name="view-and-manage-device-objects-in-azure-active-directory"></a>Azure Active Directory のデバイス オブジェクトを表示および管理する
 
 Azure 管理者ポータルから、デバイスの表示、ブロック、およびブロック解除を行うことができます。 ブロックされたデバイスからは、登録済みデバイスのみを許可するように構成されたアプリケーションにアクセスできなくなります。
 
@@ -102,8 +98,7 @@ Azure 管理者ポータルから、デバイスの表示、ブロック、お�
 オンプレミスのドメインに参加済みで自動的に登録された Windows 10 デバイスは、[ユーザー] タブには表示されません。 企業のすべてのデバイスを検索するには、Get-MsolDevice PowerShell コマンドを使用してください。 
 
 
-<a id="next-steps" class="xliff"></a>
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
 自動化されたデバイス登録をセットアップするには、「[Azure Active Directory への Windows ドメイン参加済みデバイスの自動登録の構成方法](active-directory-conditional-access-automatic-device-registration-setup.md)」を参照してください。
 

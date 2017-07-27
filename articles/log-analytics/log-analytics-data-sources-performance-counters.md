@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/23/2017
+ms.date: 06/16/2017
 ms.author: magoedte
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: ce90e15108ace97d86e7180d79e38652e1be9872
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 4ce302095fc36f046785ac45d1a9452de321113c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -46,7 +46,10 @@ Windows のパフォーマンス カウンターの場合、パフォーマン�
 
 収集する新しい Windows パフォーマンス カウンターを追加するには、次の手順を実行します。
 
-1. *<オブジェクト (インスタンス)>\<カウンター>* の形式で、テキスト ボックスにカウンターの名前を入力します。  入力を開始すると、入力内容に一致する一般的なカウンターの一覧が表示されます。  一覧からカウンターを選択するか、または独自の名前を入力することができます。  *<オブジェクト>\<カウンター>* を指定して、特定のカウンターのすべてのインスタンスを返すこともできます。
+1. *<オブジェクト (インスタンス)>\<カウンター>* の形式で、テキスト ボックスにカウンターの名前を入力します。  入力を開始すると、入力内容に一致する一般的なカウンターの一覧が表示されます。  一覧からカウンターを選択するか、または独自の名前を入力することができます。  *<オブジェクト>\<カウンター>* を指定して、特定のカウンターのすべてのインスタンスを返すこともできます。  
+
+    名前付きインスタンスから SQL Server パフォーマンス カウンターを収集するとき、すべての名前付きインスタンス カウンターの名前が *MSSQL$* から始まり、その後ろにインスタンスの名前が付きます。  たとえば、名前付き SQL インスタンス INST2 のデータベース パフォーマンス オブジェクトからログ キャッシュ ヒット率カウンターを収集するには、`MSSQL$INST2:Databases(*)\Log Cache Hit Ratio` と指定します。 
+ 
 2. **+** をクリックするか、または **Enter** キーを押して、一覧にカウンターを追加します。
 3. カウンターを追加すると、その **[サンプルの間隔]** には既定値の 10 秒が使用されます。  収集されたパフォーマンス データのストレージ要件を削減する場合は、この値を最大 1800 秒 (30 分) まで高く変更できます。
 4. カウンターの追加を完了したら、画面の上部にある **[保存]** ボタンをクリックして、構成を保存します。
@@ -217,6 +220,7 @@ Log Analytics は、カウンターがインストールされているすべて
 | Type=Perf CounterName="% Processor Time" InstanceName="_Total"  &#124; measure avg(CounterValue) by Computer Interval 1HOUR |全コンピューターの CPU 使用率の平均値 (1 時間ごと) |
 | Type=Perf Computer="MyComputer" CounterName=%* InstanceName=_Total &#124; measure percentile70(CounterValue) by CounterName Interval 1HOUR |特定のコンピューターの各パーセント (%) カウンターの 70 パーセンタイル (1 時間ごと) |
 | Type=Perf CounterName="% Processor Time" InstanceName="_Total"  (Computer="MyComputer") &#124; measure min(CounterValue), avg(CounterValue), percentile75(CounterValue), max(CounterValue) by Computer Interval 1HOUR |特定のコンピューターの CPU 使用率の平均、最小、最大、75 パーセンタイル (1 時間ごと) |
+| Type=Perf ObjectName="MSSQL$INST2:Databases" InstanceName=master | 名前付き SQL インスタンス INST2 のマスター データベースのデータベース パフォーマンス オブジェクトのすべてのパフォーマンス データ。  
 
 ## <a name="viewing-performance-data"></a>パフォーマンス データの表示
 パフォーマンス データのログ検索を実行すると、既定で **[リスト]** ビューが表示されます。  グラフィカルな形式でデータを表示するには、 **[メトリック]**をクリックします。  詳細なグラフィック表示については、カウンターの横にある **+** をクリックします。  

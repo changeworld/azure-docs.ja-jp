@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: LADocs; jehollan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 859f9a1ca9dbe166fd514c8eba868b466dbc4d2c
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 41fcccae7b3d306c25f4429d47e81884d88cd83e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -101,6 +101,8 @@ ms.lasthandoff: 05/18/2017
 |アクションの入れ子に許容される深さ|5|この制限は、入れ子にしたワークフローを必要に応じて追加することで拡張できます。|
 |サブスクリプションごとの 1 リージョンあたりのワークフロー数|1,000||
 |ワークフローごとのトリガー数|10||
+|スコープ ケースの切り替えの制限|25||
+|ワークフローごとの変数の数|250||
 |式ごとの最大文字数|8,192||
 |最大 `trackedProperties` サイズ (文字数)|16,000|
 |`action`/`trigger` 名の制限|80||

@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/31/2017
+ms.date: 06/19/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: 124f04eb39296899af501d506476ad966442fc3d
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: dbee3f1d0aae885325ef9efe9c2f48961495e8b9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/13/2017
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -299,7 +299,7 @@ Spark アクティビティを使用するパイプラインのサンプル JSON
 | className | アプリケーションの Java/Spark のメイン クラス | なし |
 | arguments | Spark プログラムのコマンドライン引数の一覧です。 | いいえ |
 | proxyUser | Spark プログラムの実行を偽装する借用すユーザー アカウント | いいえ |
-| sparkConfig | Spark 構成のプロパティ。 | いいえ |
+| sparkConfig | 「[Spark Configuration - Application properties (Spark 構成 - アプリケーションのプロパティ)](https://spark.apache.org/docs/latest/configuration.html#available-properties)」と題するトピックに示されている Spark 構成プロパティの値を指定します。 | いいえ |
 | getDebugInfo | HDInsight クラスターで使用されている Azure Storage または sparkJobLinkedService で指定された Azure Storage に Spark ログ ファイルがコピーされるタイミングを指定します。 使用できる値: None、Always、または Failure。 既定値: None。 | なし |
 | sparkJobLinkedService | Spark ジョブ ファイル、依存関係、およびログが含まれる Azure Storage のリンクされたサービス。  指定しない場合は、HDInsight クラスターに関連付けられているストレージが使用されます。 | なし |
 
@@ -310,7 +310,7 @@ HDInsight のリンクされたサービスによって参照される Azure Blo
 
 | パス | Description | 必須 | 型 |
 | ---- | ----------- | -------- | ---- |
-| をクリックします。    | ストレージのリンクされたサービスにおける Spark ジョブのルート パス    | はい | フォルダー |
+| をクリックします。 | ストレージのリンクされたサービスにおける Spark ジョブのルート パス  | はい | フォルダー |
 | &lt;user defined &gt; | Spark ジョブの入力ファイルを指定するパス | はい | ファイル |
 | ./jars | このフォルダーのすべてのファイルがアップロードされ、クラスターの java classpath に配置されます | なし | フォルダー |
 | ./pyFiles | このフォルダーのすべてのファイルがアップロードされ、クラスターの PYTHONPATH に配置されます | いいえ | フォルダー |

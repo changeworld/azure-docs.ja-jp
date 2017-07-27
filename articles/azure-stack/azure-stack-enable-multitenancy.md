@@ -1,6 +1,6 @@
 ---
 title: Enable multi-tenancy in Azure Stack | Microsoft Docs
-description: Learn how to support multiple Azure AD directories in Azure Stack
+description: Learn how to support multiple Azure Active Directory directories in Azure Stack
 services: azure-stack
 documentationcenter: 
 author: HeathL17
@@ -11,14 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2017
+ms.date: 07/14/2017
 ms.author: helaw
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 863b3deaa2f2602a2bd3dcd6d0eaad422cc5598f
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: a9dd5494017daaabd2433cacdf999385df86cf28
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -48,21 +47,6 @@ There are a few pre-requisites to account for before you configure multi-tenancy
 ## <a name="configure-azure-stack-directory"></a>Configure Azure Stack directory
 In this section, you configure Azure Stack to allow sign-ins from Fabrikam Azure AD directory tenants.
 
-### <a name="create-azure-ad-applications"></a>Create Azure AD applications
-First, you must publish Azure AD applications to Azure Resource Manager to allow access to Azure Stack.  This step only needs to be completed once, regardless of additional guest tenants in the future.  Run this PowerShell as the Azure Stack Service Administrator from the Azure Stack host or MAS-CON01.
-
-````PowerShell 
-$adminARMEndpoint = "https://adminmanagement.local.azurestack.external"
-    
-# Replace the value below with the Azure Stack directory.
-$azureStackDirectoryTenant = "contoso.onmicrosoft.com"
-
-Publish-AzureStackApplicationsToARM` 
- -AdminResourceManagerEndpoint $adminARMEndpoint`
- -DirectoryTenantName $azureStackDirectoryTenant 
-````
-
-
 ### <a name="onboard-guest-directory-tenant"></a>Onboard guest directory tenant
 Next, onboard the Guest Directory Tenant (Fabrikam) to Azure Stack.  This step configures Azure Resource Manager to accept users and service principals from the guest directory tenant.
 
@@ -75,7 +59,7 @@ $azureStackDirectoryTenant = "contoso.onmicrosoft.com"
 ## Replace the value below with the guest tenant directory. 
 $guestDirectoryTenantToBeOnboarded = "fabrikam.onmicrosoft.com"
 
-Register-GuestDirectoryTenantToAzureStack -AdminResourceManagerEndpoint $adminARMEndpoint `
+Register-AzSGuestDirectoryTenantToAzureStack -AdminResourceManagerEndpoint $adminARMEndpoint `
  -DirectoryTenantName $azureStackDirectoryTenant`
  -GuestDirectoryTenantName $guestDirectoryTenantToBeOnboarded 
 ````
@@ -99,7 +83,7 @@ $tenantARMEndpoint = "https://management.local.azurestack.external"
 ## Replace the value below with the guest tenant directory. 
 $guestDirectoryTenantName = "fabrikam.onmicrosoft.com"
 
-Register-AzureStackWithMyDirectoryTenant `
+Register-AzSAzureStackWithMyDirectoryTenant `
  -TenantResourceManagerEndpoint $tenantARMEndpoint `
  -DirectoryTenantName $guestDirectoryTenantName -Verbose 
 ````

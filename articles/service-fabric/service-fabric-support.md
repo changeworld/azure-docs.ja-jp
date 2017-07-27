@@ -1,6 +1,6 @@
 ---
 title: "Azure Service Fabric のサポート オプションを学習する | Microsoft Docs"
-description: "サポートされている Azure Service Fabric クラスターのバージョンと、サポート チケットを提出するためのリンク。"
+description: "サポートされている Azure Service Fabric クラスターのバージョンと、サポート チケットを提出するためのリンク"
 services: service-fabric
 documentationcenter: .net
 author: pkc
@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/05/2017
+ms.date: 06/15/2017
 ms.author: pkc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: f87aec3698addae135d4c934bb7217d9fae0e571
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: de5795d4781d8c01bce7313ae53ad801a0e48149
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -78,13 +78,13 @@ Azure Service Fabric の問題は、[Service-Fabric-issues git リポジトリ](
  
 サポートされている Service Fabric のバージョンとそのサポートの終了日の一覧を次に示します。
 
-| **Service Fabric ランタイム クラスター** | **サポートの終了日** |
-| --- | --- |
-| 5.3.121 より前のすべてのクラスター バージョン |2017 年 1 月 20 日 |
-| 5.3.* |2017 年 2 月 24 日 |
-| 5.4.* |2017 年 5 月 10 日     |
-| 5.5.* |2017 年 7 月 10 日    |
-| 5.6.* |最新バージョンのため、終了日はありません
+| **Service Fabric ランタイム クラスター** | **互換性のある SDK / NuGet パッケージのバージョン** | **サポートの終了日** |
+| --- | --- | --- |
+| 5.3.121 より前のすべてのクラスター バージョン |バージョン 2.3 以前 |2017 年 1 月 20 日 |
+| 5.3.* |バージョン 2.3 以前 |2017 年 2 月 24 日 |
+| 5.4.* |バージョン 2.4 以前 |2017 年 5 月 10 日     |
+| 5.5.* |バージョン 2.5 以前 |2017 年 8 月 10 日    |
+| 5.6.* |バージョン 2.6 以前 |最新バージョンのため、終了日はありません
 
 <a id="previewversion"></a>
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Service Fabric プレビュー バージョン - 運用環境で使用がサポートされていません。

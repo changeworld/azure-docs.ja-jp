@@ -1,5 +1,5 @@
-﻿---
-title: "Azure Site Recovery を使用した Azure へのレプリケーションの前提条件 | Microsoft Docs"
+---
+title: "Azure Site Recovery を使用して Azure へのレプリケーションを行うための前提条件 | Microsoft Docs"
 description: "この記事では、Azure Site Recovery サービスを使用して VM や物理マシンを Azure にレプリケートするための前提条件について説明します。"
 services: site-recovery
 documentationcenter: 
@@ -12,25 +12,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 03/27/2017
+ms.date: 06/23/2017
 ms.author: rajanaki
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 5ff598af73b6be727753ecac5b99f28bae19a417
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 1ed0bfe4f1b77db00dc858f010f72e084e77039e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/18/2017
+ms.lasthandoff: 05/31/2017
 
 ---
 
-#  <a name="prerequisites-for-replication-to-azure-by-using-azure-site-recovery"></a>Azure Site Recovery を使って Azure へのレプリケーションを行うための前提条件
+#  <a name="prerequisites-for-replication-from-on-premises-to-azure-using-azure-site-recovery"></a>Azure Site Recovery を使用してオンプレミスから Azure へのレプリケーションを行うための前提条件
 
+> [!div class="op_single_selector"]
+> * [Azure から Azure へのレプリケート](site-recovery-azure-to-azure-prereq.md)
+> * [オンプレミスから Azure へのレプリケート](site-recovery-prereq.md)
 
-Azure Site Recovery は、クラウド (Azure) またはセカンダリ データセンターへのオンプレミスの物理サーバーおよび仮想マシンのレプリケーションを調整することでビジネス継続性と災害復旧 (BCDR) の戦略を支援するサービスです。 プライマリ ロケーションで障害が発生した場合は、セカンダリ ロケーションにフェールオーバーしてアプリとワークロードの可用性を維持できます。 プライマリの場所が通常の動作に戻ったときに、その場所にフェールバックすることができます。 Site Recovery について詳しくは、「[Site Recovery とは](site-recovery-overview.md)」をご覧ください。
+Azure Site Recovery は、別の Azure リージョンへの Azure 仮想マシンのレプリケーションと、クラウド (Azure) またはセカンダリ データセンターへのオンプレミスの物理サーバーおよび仮想マシンのレプリケーションを調整することで、ビジネス継続性とディザスター リカバリー (BCDR) の戦略を支援するサービスです。 プライマリ ロケーションで障害が発生した場合は、セカンダリ ロケーションにフェールオーバーしてアプリとワークロードの可用性を維持できます。 プライマリの場所が通常の動作に戻ったときに、その場所にフェールバックすることができます。 Site Recovery について詳しくは、「[Site Recovery とは](site-recovery-overview.md)」をご覧ください。
 
-この記事では、Site Recovery を使用して Azure へのレプリケーションを開始するために必要な前提条件について説明します。
+この記事では、オンプレミスから Azure への Site Recovery レプリケーションを開始するために必要な前提条件について説明します。
 
 コメントはこの記事の末尾に投稿し、技術的な質問は [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿してください。
-
 
 ## <a name="azure-requirements"></a>Azure の要件
 
@@ -38,18 +40,18 @@ Azure Site Recovery は、クラウド (Azure) またはセカンダリ デー�
 --- | ---
 **Azure アカウント** | [Microsoft Azure](http://azure.microsoft.com/) アカウント。<br/><br/> アカウントがなくても、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。
 **Site Recovery サービス** | Site Recovery の価格について詳しくは、「[Site Recovery の価格](https://azure.microsoft.com/pricing/details/site-recovery/)」をご覧ください。 |
-**Azure Storage** | レプリケートされたデータを格納するための Azure Storage アカウントが必要です。このアカウントは、Recovery Services コンテナーと同じリージョンに存在する必要があります。 レプリケートされたデータは Azure Storage に格納され、フェールオーバーが発生すると Azure VM が作成されます。<br/><br/> フェールオーバーされた Azure VM に使用するリソース モデルに応じて、アカウントを [Azure Resource Manager モデル](../storage/storage-create-storage-account.md)または[クラシック モデル](../storage/storage-create-storage-account-classic-portal.md)でセットアップできます。<br/><br/>[地理冗長ストレージ](../storage/storage-redundancy.md#geo-redundant-storage)またはローカル冗長ストレージを使うことができます。 地域的障害が発生した場合やプライマリ リージョンが復旧できない場合にデータの復元性を確保できるように、地理冗長ストレージをお勧めします。<br/><br/> Azure ポータルで VMware VM または物理サーバーをレプリケートする場合は、Premium Storage がサポートされています。 [Premium Storage](https://docs.microsoft.com/en-us/azure/storage/storage-premium-storage) は、IO を集中的に行うワークロードをホストするために、常に高い IO パフォーマンスと低遅延時間を必要とする仮想マシンに通常使用されます。 レプリケートされたデータに Premium Storage を使用する場合は、オンプレミス データへの継続的な変更をキャプチャしたレプリケーション ログを保存するために、Standard ストレージ アカウントも必要になります。<br/><br/>
-**ストレージの制限事項** | Site Recovery で使われる Storage アカウントを、リソース グループ間、サブスクリプション内、またはサブスクリプション間で移動することはできません。<br/><br/> インド中部およびインド南部での Premium Storage アカウントへのレプリケーションは現在サポートされていません。
-**Azure ネットワーク** | フェールオーバー後に Azure VM の接続先となる Azure ネットワークが必要です。このネットワークは、Recovery Services コンテナーと同じリージョンに存在する必要があります。<br/><br/> Azure ポータルでは、[Resource Manager モデル](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)または[クラシック モデル](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)でネットワークを作成できます。<br/><br/> System Center Virtual Machine Manager から Azure にレプリケートする場合は、Virtual Machine Manager の VM ネットワークと Azure のネットワークの間にネットワーク マッピングを設定して、フェールオーバー後に Azure VM が適切なネットワークに接続されるようします。
+**Azure Storage** | レプリケートされたデータを格納するための Azure ストレージ アカウントが必要です。このアカウントは、Recovery Services コンテナーと同じリージョンに存在する必要があります。 レプリケートされたデータは Azure Storage に格納され、フェールオーバーが発生すると Azure VM が作成されます。<br/><br/> フェールオーバーされた Azure VM に使用するリソース モデルに応じて、アカウントを [Azure Resource Manager モデル](../storage/storage-create-storage-account.md)または[クラシック モデル](../storage/storage-create-storage-account-classic-portal.md)でセットアップできます。<br/><br/>[geo 冗長ストレージ](../storage/storage-redundancy.md#geo-redundant-storage)またはローカル冗長ストレージを使うことができます。 地域的障害が発生した場合やプライマリ リージョンが復旧できない場合にデータの復元性を確保できるように、geo 冗長ストレージをお勧めします。<br/><br/> Standard Storage または Premium Storage を使用できます。 [Premium Storage](https://docs.microsoft.com/azure/storage/storage-premium-storage) は、IO を集中的に行うワークロードをホストするために、常に高い IO パフォーマンスと低遅延時間を必要とする仮想マシンに通常使用されます。 レプリケートされたデータに Premium Storage を使用する場合は、オンプレミス データへの継続的な変更をキャプチャしたレプリケーション ログを保存するために、Standard ストレージ アカウントも必要になります。<br/><br/>
+**ストレージの制限事項** | Site Recovery で使われるストレージ アカウントを、リソース グループ間、サブスクリプション内、またはサブスクリプション間で移動することはできません。<br/><br/> インド中部およびインド南部での Premium Storage アカウントへのレプリケーションは現在サポートされていません。
+**Azure ネットワーク** | フェールオーバー後に Azure VM の接続先となる Azure ネットワークが必要です。このネットワークは、Recovery Services コンテナーと同じリージョンに存在する必要があります。<br/><br/> Azure Portal では、[Resource Manager モデル](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)または[クラシック モデル](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)でネットワークを作成できます。<br/><br/> System Center Virtual Machine Manager から Azure にレプリケートする場合は、Virtual Machine Manager の VM ネットワークと Azure のネットワークの間にネットワーク マッピングを設定して、フェールオーバー後に Azure VM が適切なネットワークに接続されるようします。
 **ネットワークの制限** | Site Recovery で使われるネットワーク アカウントを、リソース グループ間、サブスクリプション内、またはサブスクリプション間で移動することはできません。
 **ネットワーク マッピング** | Virtual Machine Manager クラウド内で Hyper-V VM をレプリケートする場合は、Azure VM がフェールオーバー後に作成された場合に適切なネットワークに接続されるように、ネットワーク マッピングを設定する必要があります。
 
 >[!NOTE]
->以下のセクションでは、お客様の環境で使われるさまざまなコンポーネントの前提条件について説明します。 特定の構成のサポートについて詳しくは、[サポート マトリックス](site-recovery-support-matrix.md)をご覧ください。
+>以下のセクションでは、お客様の環境で使われるさまざまなコンポーネントの前提条件について説明します。 特定の構成に対するサポートの詳細については、[サポート マトリックス](site-recovery-support-matrix.md)をご覧ください。
 >
 
-## <a name="disaster-recovery-of-vmware-virtual-machines-or-physical-windows-or-linux-servers-to-azure"></a>VMware 仮想マシンまたは Windows/Linux 物理サーバーを Azure に災害復旧する場合
-以下に示すのは、VMware 仮想マシンや Windows/Linux 物理サーバーを災害復旧するために、[Azure の要件](#Azure requirements)に加えて必要となるコンポーネントです。
+## <a name="disaster-recovery-of-vmware-virtual-machines-or-physical-windows-or-linux-servers-to-azure"></a>VMware 仮想マシンまたは Windows/Linux 物理サーバーの Azure へのディザスター リカバリー
+以下に示すのは、[Azure の要件](#Azure requirements) に加えて VMware 仮想マシンや Windows/Linux 物理サーバーのディザスター リカバリーに必要となるコンポーネントです。
 
 
 ### <a name="configuration-server-or-additional-process-server-you-will-need-to-set-up-an-on-premises-machine-as-the-configuration-server-to-coordinate-communications-between-the-on-premises-site-and-azure-and-to-manage-data-replication-brbr"></a>**構成サーバーまたは追加のプロセス サーバー**: オンプレミス サイトと Azure 間の通信を調整し、データのレプリケーションを管理するために、オンプレミス マシンを構成サーバーとして設定する必要があります。 <br></br>
@@ -68,12 +70,12 @@ Azure Site Recovery は、クラウド (Azure) またはセカンダリ デー�
 | --- | --- |
 | **オンプレミス** (VMware VM) | レプリケーション対象の VM では、VMware ツールがインストールされ、実行されている必要があります。<br/><br/> VM は、Azure VM を作成するための [Azure の前提条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)に準拠している必要があります。<br/><br/>保護対象のマシン上の個々のディスク容量が 1,023 GB 以下である必要があります。 <br/><br/>コンポーネントのインストール用として、インストール ドライブに 2 GB 以上の空き領域が必要です。<br/><br/>マルチ VM 整合性を有効にする場合、ポート 20004 を VM のローカル ファイアウォールで開く必要があります。<br/><br/>マシン名は 1 - 63 文字 (英字、数字、ハイフン) にする必要があります。 文字または数字で始まり、文字または数字で終わる必要があります。 Azure 上の名前は、マシンのレプリケーションを有効にした後で変更できます。<br/><br/> |
 | **Windows マシン** (物理または VMware) | マシンでは、サポートされている 64 ビット オペレーティング システム (Windows Server 2012 R2、Windows Server 2012、または Windows Server 2008 R2 SP1 以降) が実行されている必要があります。<br/><br/> オペレーティング システムは、C ドライブにインストールされている必要があります。OS ディスクは、ダイナミック ディスクではなく、Windows ベーシック ディスクである必要があります。 データ ディスクはダイナミックでもかまいません。<br/><br/>|
-| **Linux マシン** (物理または VMware) | サポートされている 64 ビット オペレーティング システム (Red Hat Enterprise Linux 6.7、6.8、7.1、7.2、Centos 6.5、6.6、6.7、6.8、7.0、7.1、7.2、Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、6.5、SUSE Linux Enterprise Server 11 SP3、SUSE Linux Enterprise Server 11 SP4) が必要です。<br/><br/>保護対象のマシン上の /etc/hosts ファイルには、ローカル ホスト名をすべてのネットワーク アダプターに関連付けられた IP アドレスにマップするエントリが含まれている必要があります。<br/><br/>フェールオーバー後に、Linux を実行する Azure 仮想マシンに Secure Shell クライアント (ssh) を使って接続する場合、保護されたマシンのシステム ブート時に Secure Shell サービスが自動的に起動し、ファイアウォールの規則で仮想マシンへの ssh 接続が許可されるように設定していることを確認してください。<br/><br/>ホスト名、マウント ポイント、デバイス名、および Linux システム パスとファイル名 (例: /etc/; /usr) には英語のみ使用できます。<br/><br/>/ (ルート)、/boot、/usr、/usr/local、/var、/etc の各ディレクトリ (個別のパーティション/ファイルシステムとしてセットアップされた場合) はすべて、ソース サーバーの同じディスク (OS ディスク) 上に存在する必要があります。<br/><br/>メタデータ チェックサムなど XFS v5 の機能は現在、XFS ファイルシステムの ASR でサポートされていません。 XFS ファイルシステムで v5 の機能を使用していないことを確認してください。 xfs_info ユーティリティを使用して、パーティションの XFS スーパーブロックを確認します。 ftype が 1 に設定されている場合は、XFSv5 の機能が使用されています。<br/><br/>Red Hat Enterprise Linux 7 サーバーと CentOS 7 サーバーでは、lsof ユーティリティをインストールして使用可能にする必要があります。<br/><br/>
+| **Linux マシン** (物理または VMware) | 以下のサポートされている 64 ビット オペレーティング システムが必要です。Red Hat Enterprise Linux 6.7、6.8、7.1、7.2、Centos 6.5、6.6、6.7、6.8、7.0、7.1、7.2、Ubuntu 14.04 LTS サーバー (Ubuntu でサポートされるカーネルのバージョン一覧は、[サポートされるオペレーティング システム](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)に関するページをご覧ください)、Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、6.5、SUSE Linux Enterprise Server 11 SP3、SUSE Linux Enterprise Server 11 SP4。<br/><br/>保護対象のマシン上の /etc/hosts ファイルには、ローカル ホスト名をすべてのネットワーク アダプターに関連付けられた IP アドレスにマップするエントリが含まれている必要があります。<br/><br/>フェールオーバー後に、Linux を実行する Azure 仮想マシンに Secure Shell クライアント (ssh) を使って接続する場合、保護されたマシンのシステム ブート時に Secure Shell サービスが自動的に起動し、ファイアウォールの規則で仮想マシンへの ssh 接続が許可されるように設定していることを確認してください。<br/><br/>ホスト名、マウント ポイント、デバイス名、および Linux システム パスとファイル名 (例: /etc/; /usr) には英語のみ使用できます。<br/><br/>/ (ルート)、/boot、/usr、/usr/local、/var、/etc の各ディレクトリ (個別のパーティション/ファイルシステムとしてセットアップされた場合) はすべて、ソース サーバーの同じディスク (OS ディスク) 上に存在する必要があります。<br/><br/>メタデータ チェックサムなど XFS v5 の機能は現在、XFS ファイルシステムの ASR でサポートされていません。 XFS ファイルシステムで v5 の機能を使用していないことを確認してください。 xfs_info ユーティリティを使用して、パーティションの XFS スーパーブロックを確認します。 ftype が 1 に設定されている場合は、XFSv5 の機能が使用されています。<br/><br/>Red Hat Enterprise Linux 7 サーバーと CentOS 7 サーバーでは、lsof ユーティリティをインストールして使用可能にする必要があります。<br/><br/>
 
 
-## <a name="disaster-recovery-of-hyper-v-virtual-machines-to-azure-no-virtual-machine-manager"></a>Hyper-V 仮想マシンを Azure (非 Virtual Machine Manager) に災害復旧する場合
+## <a name="disaster-recovery-of-hyper-v-virtual-machines-to-azure-no-virtual-machine-manager"></a>Hyper-V 仮想マシンの Azure (非 Virtual Machine Manager) へのディザスター リカバリー
 
-以下に示すのは、Virtual Machine Manager クラウド内の Hyper-V 仮想マシンを災害復旧するために、[Azure の要件](#Azure requirements)に加えて必要となるコンポーネントです。
+以下に示すのは、[Azure の要件](#Azure requirements) に加えて Virtual Machine Manager クラウド内の Hyper-V 仮想マシンのディザスター リカバリーに必要となるコンポーネントです。
 
 | **前提条件** | **詳細** |
 | --- | --- |
@@ -81,9 +83,9 @@ Azure Site Recovery は、クラウド (Azure) またはセカンダリ デー�
 |**プロバイダーとエージェント**| Azure Site Recovery のデプロイ時に、Azure Site Recovery Provider をインストールします。 保護対象の仮想マシンを実行している各 Hyper-V サーバーにプロバイダーをインストールすると、Azure Recovery Services エージェントもインストールされます。 <br/><br/>Site Recovery コンテナー内のすべての Hyper-V サーバーで、プロバイダーとエージェントが同じバージョンである必要があります。<br/><br/>プロバイダーは、インターネット経由で Azure Site Recovery に接続する必要があります。 トラフィックを直接送信することも、プロキシ経由で送信することもできます。 HTTPS ベースのプロキシはサポートされません。 プロキシ サーバーでは、次の URL へのアクセスを許可する必要があります:<br/><br/> [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]<br/><br/>サーバーに IP アドレスベースのファイアウォール規則がある場合、規則で Azure との通信を許可していることを確認します。<br/><br/> [Azure データセンターの IP の範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)と HTTPS (443) ポートを許可します。<br/><br/> サブスクリプションの Azure リージョンと米国西部 (アクセス制御と ID 管理に使われます) の IP アドレス範囲を許可します。
 
 
-## <a name="disaster-recovery-of-hyper-v-virtual-machines-in-virtual-machine-manager-clouds-to-azure"></a>Virtual Machine Manager クラウド内の Hyper-V 仮想マシンを Azure に災害復旧する場合
+## <a name="disaster-recovery-of-hyper-v-virtual-machines-in-virtual-machine-manager-clouds-to-azure"></a>Virtual Machine Manager クラウド内 Hyper-V 仮想マシンの Azure へのディザスター リカバリー
 
-以下に示すのは、Virtual Machine Manager クラウド内の Hyper-V 仮想マシンを災害復旧するために、[Azure の要件](#Azure requirements)に加えて必要となるコンポーネントです。
+以下に示すのは、[Azure の要件](#Azure requirements) に加えて Virtual Machine Manager クラウド内の Hyper-V 仮想マシンのディザスター リカバリーに必要となるコンポーネントです。
 
 | **前提条件** | **詳細** |
 | --- | --- |
@@ -97,13 +99,13 @@ Azure Site Recovery は、クラウド (Azure) またはセカンダリ デー�
 | **保護対象の VM** | Site Recovery では、[Azure](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx) でサポートされているすべてのオペレーティング システムがサポートされます。<br/><br/>VM は、Azure VM を作成するための [Azure の前提条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)に準拠している必要があります。 マシン名は 1 - 63 文字 (英字、数字、ハイフン) にする必要があります。 文字または数字で始まり、文字または数字で終わる必要があります。 <br/><br/>名前は、VM のレプリケーションを有効にした後で変更できます。 <br/><br/> 保護対象のマシン上の個々のディスク容量が 1,023 GB 以下である必要があります。 VM は最大 16 個のディスク (最大 16 TB) に対応できます。<br/><br/>
 
 
-## <a name="disaster-recovery-of-hyper-v-virtual-machines-in-virtual-machine-manager-clouds-to-a-customer-owned-site"></a>Virtual Machine Manager クラウド内の Hyper-V 仮想マシンをお客様が所有するサイトに災害復旧する場合
+## <a name="disaster-recovery-of-hyper-v-virtual-machines-in-virtual-machine-manager-clouds-to-a-customer-owned-site"></a>Virtual Machine Manager クラウド内の Hyper-V 仮想マシンをお客様が所有するサイトに障害復旧する場合
 
-以下に示すのは、Virtual Machine Manager クラウド内の Hyper-V 仮想マシンをお客様が所有するサイトに災害復旧するために、[Azure の要件](#Azure requirements)に加えて必要となるコンポーネントです。
+以下に示すのは、Virtual Machine Manager クラウド内の Hyper-V 仮想マシンをお客様が所有するサイトに障害復旧するために、[Azure の要件](#Azure requirements)に加えて必要となるコンポーネントです。
 
 | **コンポーネント** | **詳細** |
 | --- | --- |
-| **Virtual Machine Manager** |  Virtual Machine Manager サーバーをプライマリ サイトとセカンダリ サイトに 1 つずつデプロイすることをお勧めします。<br/><br/> [単一の VMM サーバー上のクラウド間でレプリケート](site-recovery-vmm-to-vmm.md#prepare-for-single-server-deployment)できます。 これを行うには、Virtual Machine Manager サーバーに少なくとも 2 つのクラウドが構成されている必要があります。<br/><br/> Virtual Machine Manager サーバーは、最新の更新プログラムがインストールされている System Center 2012 SP1 以降を実行している必要があります。<br/><br/> 各 Virtual Machine Manager サーバーに&1; つ以上のクラウドが必要です。 すべてのクラウドには Hyper-V キャパシティ プロファイル セットが必要です。 <br/><br/>クラウドには、1 つ以上の Virtual Machine Manager ホスト グループが含まれる必要があります。 Virtual Machine Manager クラウドの設定に関して詳しくは、「[Azure Site Recovery のデプロイの準備](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric)」をご覧ください。 |
+| **Virtual Machine Manager** |  Virtual Machine Manager サーバーをプライマリ サイトとセカンダリ サイトに 1 つずつデプロイすることをお勧めします。<br/><br/> [単一の VMM サーバー上のクラウド間でレプリケート](site-recovery-vmm-to-vmm.md#prepare-for-single-server-deployment)できます。 これを行うには、Virtual Machine Manager サーバーに少なくとも 2 つのクラウドが構成されている必要があります。<br/><br/> Virtual Machine Manager サーバーは、最新の更新プログラムがインストールされている System Center 2012 SP1 以降を実行している必要があります。<br/><br/> 各 Virtual Machine Manager サーバーに 1 つ以上のクラウドが必要です。 すべてのクラウドには Hyper-V キャパシティ プロファイル セットが必要です。 <br/><br/>クラウドには、1 つ以上の Virtual Machine Manager ホスト グループが含まれる必要があります。 Virtual Machine Manager クラウドの設定に関して詳しくは、「[Azure Site Recovery のデプロイの準備](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric)」をご覧ください。 |
 | **Hyper-V** | Hyper-V サーバーでは、Hyper-V ロールを設定済みの Windows Server 2012 以降が実行され、最新の更新プログラムがインストールされている必要があります。<br/><br/> Hyper-V サーバーに 1 つ以上の VM が含まれている必要があります。<br/><br/>  Hyper-V ホスト サーバーが、プライマリおよびセカンダリの VMM クラウドに配置されている必要があります。<br/><br/> Windows Server 2012 R2 のクラスターで Hyper-V を実行する場合は、[更新プログラム 2961977](https://support.microsoft.com/kb/2961977) をインストールすることをお勧めします。<br/><br/> Windows Server 2012 上のクラスターで Hyper-V を実行し、静的 IP アドレス ベースのクラスターが存在する場合、クラスター ブローカーは自動では作成されません。 クラスター ブローカーを手動で構成する必要があります。 クラスター ブローカーについて詳しくは、「[Configure replica broker role cluster to cluster replication](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx)」(レプリカ ブローカー ロールのクラスター間レプリケーションを構成する) をご覧ください。 |
 | **プロバイダー** | Site Recovery をデプロイするときに、Azure Site Recovery プロバイダーを Virtual Machine Manager サーバーにインストールします。 プロバイダーは、HTTPS 443 経由で Azure Site Recovery と通信して、レプリケーションを調整します。 データのレプリケーションは、LAN または VPN 接続を経由してプライマリとセカンダリの Hyper-V サーバー間で実行されます。<br/><br/> Virtual Machine Manager サーバーで実行されるプロバイダーには、次の URL へのアクセス権が必要です。<br/><br/>[!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)] <br/><br/>プロバイダーは、Virtual Machine Manager サーバーから [Azure データセンターの IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)へのファイアウォール通信と、HTTPS (443) プロトコルの使用を許可する必要があります。 |
 

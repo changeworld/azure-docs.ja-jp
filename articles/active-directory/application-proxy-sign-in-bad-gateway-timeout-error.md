@@ -11,7 +11,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
@@ -19,16 +19,13 @@ ms.openlocfilehash: 7c4e2f084571a2146e5013f24bd5da55319118af
 ms.contentlocale: ja-jp
 ms.lasthandoff: 07/06/2017
 
-
 ---
 
-# アプリケーション プロキシ アプリケーション使用時の "この企業アプリケーションにアクセスできない" というエラー
-<a id="cant-access-this-corporate-application-error-when-using-an-application-proxy-application" class="xliff"></a>
+# <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーション使用時の "この企業アプリケーションにアクセスできない" というエラー
 
 この記事では、Azure AD アプリケーション プロキシ アプリケーションで "この企業アプリにアクセスできない" というエラーが表示される一般的な問題をトラブルシューティングする方法について説明します。
 
-## 概要
-<a id="overview" class="xliff"></a>
+## <a name="overview"></a>概要
 このエラーが表示された場合、ページでは状態コードも共有されます。 そのコードは、次のいずれかになる可能性があります。
 
 -   **ゲートウェイ タイムアウト**: アプリケーション プロキシ サービスがコネクタに到達できません。 これは通常、コネクタの割り当て、コネクタ自体、またはコネクタ周りのネットワーク規則に関する問題を示しています。
@@ -43,14 +40,12 @@ ms.lasthandoff: 07/06/2017
 
 これらのエラーの原因をトラブルシューティングする方法の詳細、および推奨される解決策の詳細については、以下の対応するセクションを参照してください。
 
-## ゲートウェイ タイムアウト エラー
-<a id="gateway-timeout-errors" class="xliff"></a>
+## <a name="gateway-timeout-errors"></a>ゲートウェイ タイムアウト エラー
 
 ゲートウェイ タイムアウトは、サービスがコネクタに到達しようとしたが、タイムアウト ウィンドウ内に到達できない場合に発生します。 これは通常、動作するコネクタがないコネクタ グループ、またはコネクタに必要な一部のポートが開いていないコネクタ グループに割り当てられたアプリケーションで発生します。
 
 
-## 無効なゲートウェイのエラー
-<a id="bad-gateway-errors" class="xliff"></a>
+## <a name="bad-gateway-errors"></a>無効なゲートウェイのエラー
 
 無効なゲートウェイのエラーは、コネクタがバックエンド アプリケーションに到達できないことを示します。 正しいアプリケーションを発行していることを確認します。 このエラーの原因となる一般的な間違い:
 
@@ -62,8 +57,7 @@ ms.lasthandoff: 07/06/2017
 
 -   バックエンド アプリケーションに関する問題
 
-## 許可されていないというエラー
-<a id="forbidden-errors" class="xliff"></a>
+## <a name="forbidden-errors"></a>許可されていないというエラー
 
 許可されていないというエラーが表示された場合は、ユーザーがアプリケーションに割り当てられていません。 これは、Azure Active Directory またはバックエンド アプリケーションのどちらかで発生することがあります。
 
@@ -71,13 +65,11 @@ ms.lasthandoff: 07/06/2017
 
 ユーザーが Azure 内のアプリケーションに割り当てられていることを確認する場合は、バックエンド アプリケーションでユーザー構成をチェックします。 Kerberos の制約付き委任/統合 Windows 認証を使用している場合は、[KCD トラブルシューティング] ページにいくつかのガイドラインが表示されます。
 
-## アプリケーションの内部 URL を確認する
-<a id="check-the-applications-internal-url" class="xliff"></a>
+## <a name="check-the-applications-internal-url"></a>アプリケーションの内部 URL を確認する
 
 最初のクイック ステップとして、**[エンタープライズ アプリケーション]** からアプリケーションを開き、次に **[アプリケーション プロキシ]** メニューを選択することにより、内部 URL を二重にチェックして修正します。 これが正しい内部 URL、つまりアプリケーションにアクセスするためにオンプレミス ネットワークから使用される URL であることを確認します。
 
-## アプリケーションが動作するコネクタ グループに割り当てられていることを確認する
-<a id="check-the-application-is-assigned-to-a-working-connector-group" class="xliff"></a>
+## <a name="check-the-application-is-assigned-to-a-working-connector-group"></a>アプリケーションが動作するコネクタ グループに割り当てられていることを確認する
 
 アプリケーションが動作するコネクタ グループに割り当てられていることを確認するには、次の手順に従います。
 
@@ -97,20 +89,17 @@ ms.lasthandoff: 07/06/2017
 
 これらの手順を使用して、動作するコネクタを含むグループにアプリケーションが割り当てられていることを確認した後、アプリケーションを再度テストします。 まだ動作しない場合は、次のセクションに進みます。
 
-## 必要なすべてのポートがホワイトリストに登録されていることを確認する
-<a id="check-all-required-ports-are-whitelisted" class="xliff"></a>
+## <a name="check-all-required-ports-are-whitelisted"></a>必要なすべてのポートがホワイトリストに登録されていることを確認する
 
 必要なすべてのポートが開いていることを確認するには、ポートの開放に関するドキュメントを参照してください。 必要なすべてのポートが開いている場合は、次のセクションに移動します。
 
-## その他のコネクタ エラーを確認する
-<a id="check-for-other-connector-errors" class="xliff"></a>
+## <a name="check-for-other-connector-errors"></a>その他のコネクタ エラーを確認する
 
 上記のどの解決策でも問題が解決されない場合は、次の手順として、コネクタ自体の問題またはエラーを調べます。 いくつかの一般的なエラーは、[トラブルシューティング ドキュメント](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#connector-errors)で確認できます。 
 
 また、コネクタのログを直接確認して、エラーを識別することもできます。 多くのエラー メッセージで、解決策のためのより具体的な推奨事項を共有できます。 ログを表示する方法については、[コネクタのドキュメント](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors#under-the-hood)を参照してください。
 
-## その他の解決策
-<a id="additional-resolutions" class="xliff"></a>
+## <a name="additional-resolutions"></a>その他の解決策
 
 上記の解決策によって問題が解決されない場合は、いくつかの別の原因が考えられます。 問題を識別するには、次の手順に従います。
 
@@ -122,7 +111,6 @@ ms.lasthandoff: 07/06/2017
 
 そのマシンからアプリケーションに到達できる場合は、コネクタ自体の問題またはエラーを調べます。 いくつかの一般的なエラーは、[トラブルシューティング ドキュメント](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#connector-errors)で確認できます。 また、コネクタのログを直接確認して、エラーを識別することもできます。 多くのエラー メッセージで、解決策のためのより具体的な推奨事項を共有できます。 ログを表示する方法については、[コネクタのドキュメント](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors#under-the-hood)を参照してください。
 
-## 次のステップ
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>次のステップ
 [Azure AD アプリケーション プロキシ コネクタについて](application-proxy-understand-connectors.md)
 

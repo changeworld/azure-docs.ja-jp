@@ -13,12 +13,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2016
+ms.date: 06/01/2017
 ms.author: guybo
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 1c1591079bf09da6fbe50d848b05ec7791657e04
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 43175672c81373b5c9cc1bddc8ce27bcaaf5ec14
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -28,14 +29,14 @@ ms.lasthandoff: 04/03/2017
 
 Linux 向け Microsoft Azure カスタム スクリプト拡張機能では、Python や Bash など、仮想マシン (VM) でサポートされているスクリプト言語で記述された任意のコードを実行する VM をカスタマイズすることができます。 これによって、非常に柔軟に複数のマシンにアプリケーションを自動的にデプロイすることが可能になります。
 
-カスタム スクリプト拡張機能は、Azure クラシック ポータル、Windows PowerShell、Azure コマンド ライン インターフェイス (Azure CLI) を使ってデプロイできます。
+カスタム スクリプト拡張機能は、Azure ポータル、Windows PowerShell、Azure コマンド ライン インターフェイス (Azure CLI) を使ってデプロイできます。
 
 この記事では、Azure CLI を使って、クラシック デプロイ モデルを使用して作成された Ubuntu VM に単純な LAMP アプリケーションをデプロイします。
 
 ## <a name="prerequisites"></a>前提条件
 この例では、まず、Ubuntu 14.04 以降を実行している 2 つの Azure VM を作成します。 VM の名前は *script-vm* と *lamp-vm* です。 自分で VM を作成するときは、固有の名前を付けてください。 1 つは CLI コマンドの実行に使用し、もう 1 つは LAMP アプリのデプロイに使用します。
 
-また、Azure ストレージ アカウントとアカウントにアクセスするキーが必要になります (Azure クラシック ポータルで取得できます)。
+また、Azure ストレージ アカウントとアカウントにアクセスするキーが必要になります (Azure ポータルで取得できます)。
 
 Azure での Linux VM の作成については、「[Linux を実行する仮想マシンの作成](createportal.md)」をご覧ください。
 

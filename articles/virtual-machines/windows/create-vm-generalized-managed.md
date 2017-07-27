@@ -13,22 +13,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 02/7/2017
+ms.date: 05/22/2017
 ms.author: cynthn
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: e308b75581ca5372a4de168895f2eeb140a69a78
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 527f3f33e2b5996c6fa7b7dc874123bba5ab39dd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/27/2017
 
 
 ---
-# <a name="create-a-vm-from-a-generalized-managed-vm-image"></a>一般化された管理 VM イメージから VM を作成する
+# <a name="create-a-vm-from-a-managed-image"></a>管理イメージから VM を作成する
 
 Azure では、管理 VM イメージから複数の VM を作成できます。 管理 VM イメージには、OS や データ ディスクなど、VM の作成に必要な情報が含まれています。 OS ディスクやデータ ディスクなど、イメージを構成する VHD は、管理ディスクとして保管されます。 
-
-一般化した VM イメージでは、[Sysprep](generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を使用してすべての個人アカウント情報が削除されています。 一般化した VM を作成するには、オンプレミスの VM で Sysprep を実行してから [VHD を Azure にアップロード](upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)するか、既存の Azure VM で Sysprep を実行してから [VM のイメージをキャプチャ](capture-image-resource.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)します。
-
 
 
 ## <a name="prerequisites"></a>前提条件

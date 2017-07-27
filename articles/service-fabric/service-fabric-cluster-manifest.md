@@ -1,6 +1,6 @@
 ---
-title: "スタンドアロン クラスターの構成 | Microsoft Docs"
-description: "この記事では、スタンドアロンまたはプライベート Service Fabric クラスターを構成する方法について説明します。"
+title: "Azure Service Fabric スタンドアロン クラスターを構成する | Microsoft Docs"
+description: "スタンドアロンまたはプライベート Service Fabric クラスターを構成する方法について説明します。"
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/17/2017
+ms.date: 06/02/2017
 ms.author: ryanwi
-translationtype: Human Translation
-ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
-ms.openlocfilehash: 8192f9e36ebadd41d93ec3c2fa61b05e342d5bc1
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: 3b65f9391a4ff5a641546f8d0048f36386a7efe8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -37,7 +38,7 @@ ms.lasthandoff: 03/29/2017
 
     "name": "SampleCluster",
     "clusterConfigurationVersion": "1.0.0",
-    "apiVersion": "2016-09-26",
+    "apiVersion": "01-2017",
 
 **name** 変数にフレンドリ名を割り当てることで、Service Fabric クラスターにフレンドリ名を付けることができます。 **clusterConfigurationVersion** はクラスターのバージョン番号です。Service Fabric クラスターをアップグレードするたびに増やす必要があります。 ただし、**apiVersion** は既定値のままにしなければいけません。
 
@@ -87,6 +88,10 @@ ClusterConfig.JSON の **properties** セクションは、以下のようにク
     "reliabilityLevel": "Bronze",
 
 1 つのプライマリ ノードで実行されるシステム サービスのコピーは 1 つであるため、信頼性レベルが *Bronze* の場合は 3 個、*Silver* の場合は 5 個、*Gold* の場合は 7 個、*Platinum* の場合は 9 個のプライマリ ノードが少なくとも必要になります。
+
+clusterConfig.json に reliabilityLevel プロパティを指定していない場合、存在する "Primary NodeType" ノード数に基づいて、最適な reliabilityLevel が自動的に計算されます。 たとえば、4 つのプライマリ ノードがある場合、reliabilityLevel は Bronze に設定され、5 つのプライマリ ノードがある場合、reliabilityLevel は Silver に設定されます。 最適な信頼性レベルがクラスターによって自動的に検出され、使用されるため、近い将来、信頼性レベルを構成するオプションを削除する予定です。
+
+ReliabilityLevel はアップグレード可能です。 [Standalone Cluster Configuration Upgrade](service-fabric-cluster-upgrade-windows-server.md) によって clusterConfig.json v2 を作成し、スケール アップとスケール ダウンを行うことができます。 また、clusterConfig.json v2 にアップグレードすることもできます。この場合、reliabilityLevel は自動計算されるため、reliabilityLevel は指定しません。 
 
 ### <a name="diagnostics"></a>診断
 次のスニペットに示すように、**diagnosticsStore** セクションを使用すると、ノードまたはクラスターの障害に関する診断とトラブルシューティングを可能にするパラメーターを構成できます。 
@@ -183,6 +188,21 @@ ClusterConfig.JSON の **properties** セクションは、以下のようにク
             "value": "4096"
         }]
     }]
+
+### <a name="add-on-features"></a>アドオン機能
+アドオン機能を構成するには、apiVersion を '04-2017' 以降に構成し、addonFeatures を構成する必要があります。
+
+    "apiVersion": "04-2017",
+    "properties": {
+      "addOnFeatures": [
+          "DnsService",
+          "RepairManager"
+      ]
+    }
+
+### <a name="container-support"></a>コンテナー サポート
+スタンドアロン クラスターの Windows Server コンテナーと Hyper-V コンテナーの両方でコンテナー サポートを有効にするには、'DnsService' アドオン機能を有効にする必要があります。
+
 
 ## <a name="next-steps"></a>次のステップ
 スタンドアロン クラスターのセットアップに従って ClusterConfig.JSON ファイルの構成が完了したら、[スタンドアロンの Service Fabric クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)に関する記事に従ってクラスターをデプロイした後、「[Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)」に進むことができます。

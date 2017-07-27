@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2017
 ms.author: glenga
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: fc5c87e45f3c92172f01a462451bc145ce8b0b16
-ms.lasthandoff: 03/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 9023ca104fcab29bc0b16ecd3a6584848e2d453e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -25,11 +26,11 @@ ms.lasthandoff: 03/27/2017
 ## <a name="overview"></a>概要
 このトピックでは、Azure Web ジョブと Azure Web ジョブ SDK の使用方法に関するドキュメント リソースへのリンクを掲載しています。 Azure Web ジョブでは、 [App Service の Web アプリ、API アプリ、またはモバイル アプリ](../app-service/app-service-value-prop-what-is.md)のコンテキストで、スクリプトやプログラムをバックグラウンド プロセスとして簡単に実行できます。 cmd、bat、exe (.NET)、ps1、sh、php、py、js、jar などの実行可能ファイルをアップロードして、実行できます。 これらのプログラムは、スケジュールに従って (cron)、または継続的に Web ジョブとして実行されます。
 
-[WebJobs SDK](websites-webjobs-resources.md) の目的は、Web ジョブで実行できる一般的な作業 (画像処理、キュー処理、RSS 情報集約、ファイル管理、電子メールの送信など) を単純なコードで記述できるようにすることです。 WebJobs SDK には、Azure Storage や Service Bus の操作、タスクのスケジューリング、エラー処理など、一般的な用途に対応した各種の機能が組み込まれています。 拡張性にも優れた設計となっており、 [拡張機能のオープン ソース リポジトリ](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)が存在します。 [Azure Functions](../azure-functions/functions-overview.md) (現在プレビュー段階) は、C# スクリプト、Node.js、その他の言語で動作するバージョンの WebJobs SDK に基づいています。 
+[WebJobs SDK](https://docs.microsoft.com/azure/app-service-web/websites-dotnet-webjobs-sdk) の目的は、Web ジョブで実行できる一般的な作業 (画像処理、キュー処理、RSS 情報集約、ファイル管理、電子メールの送信など) を単純なコードで記述できるようにすることです。 WebJobs SDK には、Azure Storage や Service Bus の操作、タスクのスケジューリング、エラー処理など、一般的な用途に対応した各種の機能が組み込まれています。 拡張性にも優れた設計となっており、 [拡張機能のオープン ソース リポジトリ](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)が存在します。 [Azure Functions](../azure-functions/functions-overview.md) (現在プレビュー段階) は、C# スクリプト、Node.js、その他の言語で動作するバージョンの WebJobs SDK に基づいています。 
 
 [!INCLUDE [app-service-web-webjobs-corenote](../../includes/app-service-web-webjobs-corenote.md)]
 
-Web ジョブの作成、デプロイ、管理は、Visual Studio の統合ツールでシームレスに行うことができます。 テンプレートから Web ジョブを作成し、発行、および管理 (実行、停止、監視、デバッグ) できます。 
+Web ジョブの作成、デプロイ、管理は、Visual Studio の統合ツールでシームレスに行うことができます。 テンプレートから Web ジョブを作成し、発行および管理 (実行、停止、監視、デバッグ) できます。 
 
 Azure ポータルの Web ジョブ ダッシュボードは、Web ジョブ内の個々の関数を呼び出す機能など、強力な管理機能を提供して Web ジョブの実行をきめ細かく制御できます。 また、ダッシュボードでは、関数の実行時間とログ出力も表示されます。 
 
@@ -38,7 +39,7 @@ Azure ポータルの Web ジョブ ダッシュボードは、Web ジョブ内�
 * [Azure WebJobs はすごいので、今すぐ使ってみよう!](http://www.troyhunt.com/2015/01/azure-webjobs-are-awesome-and-you.html) (Troy Hunt によるブログの投稿です。)
 * [Azure Web ジョブの機能](https://azure.microsoft.com/blog/2014/10/22/webjobs-goes-into-full-production/)
 * [Azure Web ジョブ SDK とは](websites-dotnet-webjobs-sdk.md)
-* [Microsoft Patterns and Practices によるバック グラウンド ジョブのガイダンス](/documentation/articles/best-practices-background-jobs/)
+* [Microsoft Patterns and Practices によるバック グラウンド ジョブのガイダンス](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs)
 * [Microsoft Azure Web ジョブ SDK の 1.1.0 RTM の発表](https://azure.microsoft.com/blog/azure-webjobs-sdk-1-1-0-rtm/)
 * [Azure Web ジョブ SDK の使用](websites-dotnet-webjobs-sdk-get-started.md)
 * [Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)

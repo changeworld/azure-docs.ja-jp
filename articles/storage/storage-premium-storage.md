@@ -12,19 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 06/27/2017
 ms.author: ramankum
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 1040027de1df88544bd7a0c4ba6565d5599a54ab
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: c905bfe672d1027916d7f273ab5ac79ceec9a4d9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/28/2017
 
 
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>VM 向けの高パフォーマンスの Premium Storage と管理ディスク
 Azure Premium Storage は、I/O (入力/出力) を集中的に行うワークロードが存在する仮想マシン (VM) 向けに高パフォーマンスで待ち時間の少ないディスク サポートを提供します。 Premium Storage を使用する VM ディスクでは、ソリッドステート ドライブ (SSD) にデータを格納します。 Premium Storage ディスクの速度とパフォーマンスを活用するために、既存の VM ディスクを Premium Storage に移行することができます。
 
-Azure では、VM にいくつかの Premium Storage ディスクを接続することができます。 複数のディスクを使用すると、アプリケーションは VM あたり最大 64 TB のストレージを利用できます。 Premium Storage を使用した場合、アプリケーションは、VM あたり 80,000 IOPS (秒あたりの I/O 操作数) を達成し、VM あたり最大 2,000 MB/秒のディスク スループットを達成できます。 読み取り操作により、待ち時間は非常に短くなります。
+Azure では、VM にいくつかの Premium Storage ディスクを接続することができます。 複数のディスクを使用すると、アプリケーションは VM あたり最大 256 TB のストレージを利用できます。 Premium Storage を使用した場合、アプリケーションは、VM あたり 80,000 IOPS (秒あたりの I/O 操作数) を達成し、VM あたり最大 2,000 MB/秒のディスク スループットを達成できます。 読み取り操作により、待ち時間は非常に短くなります。
 
 Premium Storage により、Azure では、Dynamics AX、Dynamics CRM、Exchange Server、SAP Business Suite、SharePoint ファームなどの要件の厳しいエンタープライズ アプリケーションを本当の意味でクラウドにリフトアンドシフトできるようになります。 SQL Server、Oracle、MongoDB、MySQL、Redis など、一貫して高いパフォーマンスと短い待ち時間を必要とするアプリケーションではパフォーマンスを集中的に使用するデータベース ワークロードを実行できます。
 
@@ -58,11 +59,11 @@ Premium Storage の使用を開始するには、[無料の Azure アカウン�
 
 * **Premium Storage ディスク**
 
-    Premium Storage では、特定のサイズ シリーズの VM に接続できる VM ディスクがサポートされています。 Premium Storage は、DS シリーズ、DSv2 シリーズ、GS シリーズ、Fs シリーズの VM をサポートしています。 ディスク サイズには、P10 (128 GB)、P20 (512 GB)、P30 (1,024 GB) という 3 つの選択肢があります。 各ディスク サイズは、それぞれ独自のパフォーマンス仕様があります。 アプリケーションの要件に応じて、VM には 1 つ以上のディスクを接続できます。 仕様の詳細については、[Premium Storage のスケーラビリティとパフォーマンスのターゲット](#premium-storage-scalability-and-performance-targets)に関するセクションで説明します。
+    Premium Storage では、特定のサイズ シリーズの VM に接続できる VM ディスクがサポートされています。 Premium Storage は、DS シリーズ、DSv2 シリーズ、GS シリーズ、Fs シリーズの VM をサポートしています。 選択することができるディスク サイズは、P4 (32 GB)、P6 (64 GB)、P10 (128 GB)、P20 (512 GB)、P30 (1,024 GB)、P40 (2,048 GB)、P50 (4,095 GB) の 7 つです。 P4 および P6 ディスク サイズは、現時点では Managed Disks のみでサポートされています。 各ディスク サイズは、それぞれ独自のパフォーマンス仕様があります。 アプリケーションの要件に応じて、VM には 1 つ以上のディスクを接続できます。 仕様の詳細については、[Premium Storage のスケーラビリティとパフォーマンスのターゲット](#premium-storage-scalability-and-performance-targets)に関するセクションで説明します。
 
 * **Premium ページ BLOB**
 
-    Premium Storage では、ページ BLOB がサポートされています。 Premium Storage に VM 用の永続的な非管理対象ディスクを保存するには、ページ BLOB を使用します。 Standard Azure Storage とは異なり、Premium Storage では、ブロック BLOB、追加 BLOB、ファイル、テーブル、またはキューがサポートされていません。
+    Premium Storage では、ページ BLOB がサポートされています。 Premium Storage に VM 用の永続的な非管理対象ディスクを保存するには、ページ BLOB を使用します。 Standard Azure Storage とは異なり、Premium Storage では、ブロック BLOB、追加 BLOB、ファイル、テーブル、またはキューがサポートされていません。 Premium ページ BLOB では、P10 から P50、および P60 (8,191 GiB) の 6 つのサイズがサポートされています。 P60 Premium ページ BLOB を VM ディスクとしてアタッチすることは、サポートされていません。 
 
     Premium Storage アカウントに配置されたオブジェクトはページ BLOB になります。 ページ BLOB は、サポートされているプロビジョニング済みのサイズのいずれかにスナップされます。 このため、Premium Storage アカウントは小さな BLOB の格納に使用するためのものではありません。
 
@@ -83,11 +84,11 @@ Premium Storage の使用を開始するには、[無料の Azure アカウン�
     Azure では、ストレージ アカウントを非管理対象ディスクのコンテナーとして使用します。 非管理対象ディスクを使用する Azure DS シリーズ、DSv2 シリーズ、GS シリーズ、または Fs シリーズの VM を作成し、Premium Storage アカウントを選択すると、オペレーティング システム ディスクとデータ ディスクがそのストレージ アカウントに格納されます。
 
 ## <a name="supported-vms"></a>サポート対象の VM
-Premium Storage は、DS シリーズ、DSv2 シリーズ、GS シリーズ、Fs シリーズの VM をサポートしています。 これらの VM の種類では、Standard Storage ディスクと Premium Storage ディスクを使用できます。 Premium Storage に互換性のない VM シリーズで Premium Storage ディスクを使用することはできません。
+Premium Storage は、DS シリーズ、DSv2 シリーズ、GS シリーズ、Ls シリーズ、および Fs シリーズの VM をサポートしています。 これらの VM の種類では、Standard Storage ディスクと Premium Storage ディスクを使用できます。 Premium Storage に互換性のない VM シリーズで Premium Storage ディスクを使用することはできません。
 
 Windows 向けの Azure の VM の種類とサイズについては、[Windows VM のサイズ](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事を参照してください。 Linux 向けの Azure の VM の種類とサイズについては、[Linux VM のサイズ](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事を参照してください。
 
-次に、DS シリーズ、DSv2 シリーズ、GS シリーズ、および Fs シリーズの VM の機能をいくつか紹介します。
+次に、DS シリーズ、DSv2 シリーズ、GS シリーズ、Ls シリーズ、および Fs シリーズの VM の機能をいくつか紹介します。
 
 * **クラウド サービス**
 
@@ -148,13 +149,13 @@ Premium Storage アカウントのスケーラビリティ ターゲットは、
 非管理対象ディスクに Premium Storage アカウントを使用しており、アプリケーションが 1 つのストレージ アカウントのスケーラビリティ ターゲットを超えた場合、管理ディスクへの移行が必要になることがあります。 管理ディスクに移行しない場合は、複数のストレージ アカウントを使用するようにアプリケーションを作成します。 その後、それらのストレージ アカウント間でデータをパーティション分割します。 たとえば、複数の VM で合計 51 TB のディスクを接続する場合、ディスクを 2 つのストレージ アカウントに分散します。 Premium Storage アカウント 1 つあたりの上限は 35 TB です。 1 つの Premium Storage アカウントでプロビジョニングするディスクの容量が 35 TB を超えることがないようにしてください。
 
 ### <a name="premium-storage-disk-limits"></a>Premium Storage ディスクの制限
-Premium Storage ディスクをプロビジョニングする場合、ディスクのサイズによって最大 IOPS とスループット (帯域幅) が決まります。 Azure には、P10、P20、P30 という 3 種類の Premium Storage ディスクが用意されています。 Premium Storage ディスクの種類それぞれには、IOPS とスループットに関する固有の制限があります。 ディスクの種類の制限については、次の表で説明します。
+Premium Storage ディスクをプロビジョニングする場合、ディスクのサイズによって最大 IOPS とスループット (帯域幅) が決まります。 Azure では、Premium Storage ディスクとして P4 (Managed Disks のみ)、P6 (Managed Disks のみ)、P10、P20、P30、P40、および P50 の 7 種類を提供しています。 Premium Storage ディスクの種類それぞれには、IOPS とスループットに関する固有の制限があります。 ディスクの種類の制限については、次の表で説明します。
 
-|Premium Storage ディスクの種類 | P10 | P20 | P30 |
-| --- | --- | --- | --- |
-| ディスク サイズ | 128 GB | 512 GB | 1,024 GB (1 TB) |
-| ディスクあたりの IOPS | 500 | 2,300 | 5,000 |
-ディスクあたりのスループット | 100 MB/秒 | 150 MB/秒 | 200 MB/秒 |
+| Premium ディスクの種類  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
+|---------------------|-------|-------|-------|-------|-------|-------|-------|
+| ディスク サイズ           | 32 GB| 64 GB| 128 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
+| ディスクあたりの IOPS       | 120   | 240   | 500   | 2300              | 5000              | 7500              | 7500              | 
+| ディスクあたりのスループット | 25 MB/秒  | 50 MB/秒  | 100 MB/秒 | 150 MB/秒 | 200 MB/秒 | 250 MB/秒 | 250 MB/秒 | 
 
 > [!NOTE]
 > [Premium Storage でサポートされる VM](#premium-storage-supported-vms) に関するセクションの説明に従って、ディスク トラフィックを促進するために、VM で十分な帯域幅を使用できることを確認してください。 確認できない場合、ディスクのスループットと IOPS の値は低くなります。 スループットと IOPS の最大値は、上記の表で説明したディスクの制限ではなく、VM の制限に基づきます。  
@@ -165,7 +166,7 @@ Premium Storage のスケーラビリティとパフォーマンスのターゲ�
 
 * **プロビジョニング済みの容量とパフォーマンス**
 
-    Premium Storage ディスクをプロビジョニングすると、Standard Storage とは異なり、対象のディスクの容量、IOPS、スループットが保証されます。 たとえば、P30 ディスクを作成した場合、対象のディスクに 1,024 GB のストレージ容量、5,000 IOPS、200 MB/秒のスループットがプロビジョニングされます。 アプリケーションでは、容量とパフォーマンスのすべてまたは一部を使用できます。
+    Premium Storage ディスクをプロビジョニングすると、Standard Storage とは異なり、対象のディスクの容量、IOPS、スループットが保証されます。 たとえば、P50 ディスクを作成した場合、対象のディスクに 4,095 GB のストレージ容量、7,500 IOPS、および 250 MB/秒のスループットがプロビジョニングされます。 アプリケーションでは、容量とパフォーマンスのすべてまたは一部を使用できます。
 
 * **ディスク サイズ**
 

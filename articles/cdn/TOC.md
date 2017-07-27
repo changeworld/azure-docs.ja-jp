@@ -14,6 +14,7 @@
 ### [最適化の概要](cdn-optimization-overview.md)
 ####[大きなファイルの最適化](cdn-large-file-optimization.md)
 ####[メディア ストリーミングの最適化](cdn-media-streaming-optimization.md)
+####[動的サイト アクセラレーション](cdn-dynamic-site-acceleration.md)
  
 ## 管理
 ### [カスタム ドメインで HTTPS を有効にする](cdn-custom-ssl.md)
@@ -58,6 +59,9 @@
 
 # リソース
 ##  [ルール エンジンのリファレンス](cdn-rules-engine-reference.md)
+### [ルール エンジンの条件式](cdn-rules-engine-reference-conditional-expressions.md)
+### [ルール エンジンの機能](cdn-rules-engine-reference-features.md)
+### [ルール エンジンの一致条件](cdn-rules-engine-reference-match-conditions.md)
 ## [Azure CDN の POP の場所](cdn-pop-locations.md)
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecdn)
@@ -65,6 +69,4 @@
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=cdn)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cdn)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=cdn)
-### [ルール エンジンの条件式](cdn-rules-engine-reference-conditional-expressions.md)
-### [ルール エンジンの機能](cdn-rules-engine-reference-features.md)
-### [ルール エンジンの一致条件](cdn-rules-engine-reference-match-conditions.md)
+

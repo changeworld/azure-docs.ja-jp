@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 25aa4af6ac5ce9822daa8e7070d4fa59e11afc1f
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 56c24eb26faf1729c33b025d5c9fcf5d13abd376
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 07/24/2017
 
 ---
 
@@ -120,7 +120,7 @@ Event Hubs を使用して、接続された IoT デバイスやアプリケー�
                 <div class="card">
                     <div class="cardText">
                         <h3>言語</h3>
-                        <p><a href="/dotnet/api/overview/azure/eventhub/">.NET</a></p>
+                        <p><a href="/dotnet/api/overview/azure/event-hubs/">.NET</a></p>
                    </div>
                 </div>
             </div>

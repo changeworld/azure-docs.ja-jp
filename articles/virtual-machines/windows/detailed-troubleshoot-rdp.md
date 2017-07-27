@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: support-article
-ms.date: 05/26/2017
+ms.date: 05/31/2017
 ms.author: genli
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 3ba81282cd7b58cc118497c14e911fc89815d6d4
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: bd832efd3902dd61be1a8b64396eaadf1cd76e24
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -49,7 +49,7 @@ RDP 接続には以下のコンポーネントが関連しています。
 ## <a name="preliminary-steps"></a>準備作業
 詳細なトラブルシューティングに進む前に、以下の操作を実行します。
 
-* Azure クラシック ポータルまたは Azure ポータルで、仮想マシンの状態に明らかな問題があるかどうかを確認します。
+* Azure Portal で、仮想マシンの状態に明らかな問題があるかどうかを確認します。
 * [基本的なトラブルシューティング ガイドの一般的な RDP エラーに対する応急処置の手順](troubleshoot-rdp-connection.md#quick-troubleshooting-steps)に従います。
 
 これらの手順を実行してから、リモート デスクトップを介して VM に再接続してみてください。

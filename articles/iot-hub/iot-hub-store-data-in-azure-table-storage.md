@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: xshi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 4918648906212ea9708b6c6f0e89d1f4bb7bdcc5
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: c1f5d737b9718ead9c59794dae23798ef26aa42a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -48,7 +48,7 @@ Azure ストレージ アカウントと Azure Function App を作成し、IoT H
 
 ## <a name="create-an-azure-storage-account"></a>Azure のストレージ アカウントの作成
 
-1. Azure Portal で、**[新規]** > **[ストレージ]** > **[ストレージ アカウント]** の順にクリックします。
+1. [Azure Portal](https://portal.azure.com/) で、**[新規]** > **[ストレージ]** > **[ストレージ アカウント]** の順にクリックします。
 1. ストレージ アカウントに必要な情報を入力します。
 
    ![Azure Portal でのストレージ アカウントの作成](media\iot-hub-store-data-in-azure-table-storage\1_azure-portal-create-storage-account.png)
@@ -115,6 +115,8 @@ IoT Hub は、アプリケーションによる IoT Hub メッセージの読み
 1. この Function App で新しい関数を作成します。
    1. **[新しい関数]** をクリックします。
    1. **[言語]** として **[JavaScript]**、**[シナリオ]** として **[データ処理]** を選択します。
+   1. **[この関数を作成する]** をクリックし、**[新しい関数]** をクリックします。
+   1. [言語] として **[JavaScript]**、[シナリオ] として **[データ処理]** を選択します。
    1. **EventHubTrigger-JavaScript** テンプレートをクリックします。
    1. テンプレートに必要な情報を入力します。
 
@@ -134,8 +136,9 @@ IoT Hub は、アプリケーションによる IoT Hub メッセージの読み
       
       **[テーブル名]**: `deviceData` を名前として使用します。
 
-      **[ストレージ アカウント接続]**: **[新規]** をクリックして、ストレージ アカウントを選択または入力します。
-   1. **[Save]**をクリックします。
+      **[ストレージ アカウント接続]**: **[新規]** をクリックして、ストレージ アカウントを選択または入力します。 ストレージ アカウントが表示されない場合、「[ストレージ アカウントの要件](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)」を参照してください。
+      
+   1. [ **Save**] をクリックします。
 1. **[トリガー]** で **[Azure Event Hub (myEventHubTrigger) (Azure イベント ハブ (myEventHubTrigger))]** をクリックします。
 1. **[イベント ハブ コンシューマー グループ]** で、作成したコンシューマー グループの名前を入力し、**[保存]** をクリックします。
 1. **[開発]** をクリックし、**[ファイルの表示]** をクリックします。

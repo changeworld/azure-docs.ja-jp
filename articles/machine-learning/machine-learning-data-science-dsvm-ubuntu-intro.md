@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: aaf3e9daca2fb810aa32b1b58acdade6ddfc1744
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 548b4af7619521e4b61b99b94c1d40f835e6efdb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -126,13 +126,13 @@ Linux VM は、既に X2Go サーバーでプロビジョニングされてお�
 
 1. [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient)のページから、お使いのクライアント プラットフォーム向けの X2Go クライアントをダウンロードしてインストールします。    
 2. X2Go クライアントを実行し、 **[New Session (新しいセッション)]**を選択します。 複数のタブがある構成ウィンドウが開きます。 次の構成パラメーターを入力します。
-   * **[Session] \(セッション) タブ**:
+   * **[Session] (セッション) タブ**:
      * **[Host (ホスト)]**: Linux データ サイエンス VM のホスト名または IP アドレス。
      * **[Login (ログイン)]**: Linux VM のユーザー名。
-     * **[SSH Port] \(SSH ポート)**: 既定値の 22 のままにします。
-     * **[Session Type] \(セッションの種類)**: 値を XFCE に変更します。 現在、Linux VM では XFCE デスクトップのみをサポートしています。
-   * **[Media] \(メディア) タブ**: 音声のサポートとクライアントの印刷を使用しない場合は、それらをオフにできます。
-   * **[Shared folders] \(共有フォルダー)**: クライアント コンピューターのディレクトリを Linux VM にマウントする場合は、このタブで VM と共有するクライアント コンピューターのディレクトリを追加します。
+     * **[SSH Port] (SSH ポート)**: 既定値の 22 のままにします。
+     * **[Session Type] (セッションの種類)**: 値を XFCE に変更します。 現在、Linux VM では XFCE デスクトップのみをサポートしています。
+   * **[Media] (メディア) タブ**: 音声のサポートとクライアントの印刷を使用しない場合は、それらをオフにできます。
+   * **[Shared folders] (共有フォルダー)**: クライアント コンピューターのディレクトリを Linux VM にマウントする場合は、このタブで VM と共有するクライアント コンピューターのディレクトリを追加します。
 
 SSH クライアントを使用するか、X2Go クライアントから XFCE グラフィカル デスクトップを使用して VM にサインインしたら、VM にインストールされ、構成されているツールをすぐに使い始めることができます。 XFCE では、アプリケーション メニューのショートカットとさまざまなツールのデスクトップ アイコンが表示されます。
 
@@ -153,7 +153,7 @@ CNTK としても知られる Microsoft Cognitive Toolkit は、オープン ソ
 Caffe は、Berkeley Vision and Learning Center が開発したディープ ラーニング フレームワークです。 /opt/caffe で入手できます。 サンプルは、/opt/caffe/examples にあります。
 
 #### <a name="h2o"></a>H2O
-H2O は、高速でインメモリの分散型機械学習と予測分析のプラットフォームです。 Python パッケージは、ルートと py35 両方の Anaconda 環境にインストールされます。 また、R パッケージもインストールされます。 Flow の Web UI は、"java -jar /dsvm/tools/h2o/current/h2o.jar" を使用して起動します。 開始するには、http://localhost:54321 を参照してください。 サンプルの Notebook は、JupyterHub でも利用できます。
+H2O は、高速でインメモリの分散型機械学習と予測分析のプラットフォームです。 Python パッケージは、ルートと py35 両方の Anaconda 環境にインストールされます。 また、R パッケージもインストールされます。 コマンド ラインから H2O を起動するには、`java -jar /dsvm/tools/h2o/current/h2o.jar` を実行します。多様な[コマンド ライン オプション](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line)があり、必要に応じて構成できます。 Flow Web UI にアクセスするには、まず http://localhost:54321 にアクセスします。 サンプルの Notebook は、JupyterHub でも利用できます。
 
 #### <a name="keras"></a>Keras
 Keras は、TensorFlow または Theano で実行可能であり、Python で記述された高度なニュートラル ネットワーク API です。 ルートと py35 の Python 環境で使用できます。 

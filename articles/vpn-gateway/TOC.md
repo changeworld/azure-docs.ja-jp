@@ -61,6 +61,9 @@
 ### [PowerShell (クラシック)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 ## [VPN ゲートウェイの構成 (クラシック)](vpn-gateway-configure-vpn-gateway-mp.md)
 ## [ゲートウェイの SKU (旧)](vpn-gateway-about-skus-legacy.md)
+## サード パーティ VPN デバイスの構成
+### [概要と Azure の構成](vpn-gateway-3rdparty-device-config-overview.md)
+### [サンプル: Cisco ASA デバイス (IKEv2/BGP なし)](vpn-gateway-3rdparty-device-config-cisco-asa.md)
 ## トラブルシューティング
 ### [VNet への VPN スループットの確認](vpn-gateway-validate-throughput-to-vnet.md)
 ### [コミュニティで推奨される VPN またはファイアウォール デバイスの設定](vpn-gateway-third-party-settings.md)
@@ -84,7 +87,7 @@
 ## [ExpressRoute](/azure/expressroute/)
 
 # リソース
-## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=networking)
 ## [ブログ](https://azure.microsoft.com/blog/topics/networking)
 ## [フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [料金](https://azure.microsoft.com/pricing/details/vpn-gateway)

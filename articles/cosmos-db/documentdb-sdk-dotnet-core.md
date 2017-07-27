@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 06/12/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: c851e01fb8884b2f601986207d730efb338422a8
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: c1f0bbfd1bea292eedaaf8904a2f60e9415dcbcf
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -40,7 +40,7 @@ ms.lasthandoff: 05/31/2017
 
 <tr><td>**SDK のダウンロード**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)</td></tr>
 
-<tr><td>**API ドキュメント**</td><td>[.NET API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn948556.aspx)</td></tr>
+<tr><td>**API ドキュメント**</td><td>[.NET API リファレンス ドキュメント](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)</td></tr>
 
 <tr><td>**サンプル**</td><td>[.NET コード サンプル](documentdb-dotnet-samples.md)</td></tr>
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 05/31/2017
 
 <tr><td>**Web アプリ チュートリアル**</td><td>[DocumentDB による Web アプリケーション開発](documentdb-dotnet-application.md)</td></tr>
 
-<tr><td>**現在サポートされているフレームワーク**</td><td>[.NET Standard 1.6](https://www.nuget.org/packages/NETStandard.Library)</td></tr>
+<tr><td>**現在サポートされているフレームワーク**</td><td>[.NET Standard 1.6 および .NET Standard 1.5](https://www.nuget.org/packages/NETStandard.Library)</td></tr>
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
@@ -56,16 +56,24 @@ ms.lasthandoff: 05/31/2017
 DocumentDB .NET Core SDK には最新バージョンの [DocumentDB .NET SDK](documentdb-sdk-dotnet.md) と同等の機能が備わっています。
 
 > [!NOTE] 
-> DocumentDB .NET Core SDK は、現在のところ、ユニバーサル Windows プラットフォーム (UWP) アプリとの互換性はありません。 UWP アプリをサポートする .NET Core SDK については、[askdocdb@microsoft.com](mailto:askdocdb@microsoft.com) に電子メールでお問い合わせください。
+> DocumentDB .NET Core SDK は、現在のところ、ユニバーサル Windows プラットフォーム (UWP) アプリとの互換性はありません。 UWP アプリをサポートする .NET Core SDK については、[askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) に電子メールでお問い合わせください。
+
+### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
+
+*   ターゲット フレームワークの 1 つとして .NET Standard 1.5 をサポートします。
+
+### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
+
+*   SSE4 命令をサポートせず、DocumentDB クエリの実行時に SEHException をスローする x64 マシンに影響を与える問題を修正しました。
 
 ### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
 
-*    1 分あたりの要求ユニット (RU/分) 機能のサポートが追加されました。
-*    ConsistentPrefix と呼ばれる新しい一貫性レベルに対応するようになりました。
-*    個別のパーティションに対するメトリックのクエリに対応するようになりました。
-*    クエリの継続トークンのサイズ制限に対応するようになりました。
-*    失敗した要求の詳細なトレースに対応するようになりました。
-*    SDK でのパフォーマンスが向上しています。
+*   1 分あたりの要求ユニット (RU/分) 機能のサポートが追加されました。
+*   ConsistentPrefix と呼ばれる新しい一貫性レベルに対応するようになりました。
+*   個別のパーティションに対するメトリックのクエリに対応するようになりました。
+*   クエリの継続トークンのサイズ制限に対応するようになりました。
+*   失敗した要求の詳細なトレースに対応するようになりました。
+*   SDK でのパフォーマンスが向上しています。
 
 ### <a name="a-name122122"></a><a name="1.2.2"/>1.2.2
 
@@ -117,6 +125,8 @@ DocumentDB .NET Core Preview SDK には最新バージョンの [DocumentDB .NET
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.3.2](#1.3.2) |2017 年 6 月 12 日 |--- |
+| [1.3.1](#1.3.1) |2017 年 5 月 23 日 |--- |
 | [1.3.0](#1.3.0) |2017 年 5 月 10 日 |--- |
 | [1.2.2](#1.2.2) |2017 年 4 月 19 日 |--- |
 | [1.2.1](#1.2.1) |2017 年 3 月 29 日 |--- |

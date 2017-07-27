@@ -16,9 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: glenga
-translationtype: Human Translation
-ms.sourcegitcommit: a64af1a9f969c5ce5a7e2f18ca23451ac96f1a13
-ms.openlocfilehash: 7abd7b0921c029ff159935d89905d3c502aba643
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: fa3d37b963c1bb6b58127b9180cd657d7b1dabcc
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -43,7 +45,7 @@ function.json ファイルは、次のプロパティを提供します。
 * `connection` : この接続文字列は、使用している通知ハブの **DefaultFullSharedAccessSignature** 値に設定された *アプリケーション設定* の接続文字列である必要があります。
 * `direction` : *"out"*に設定する必要があります。 
 * `platform` : platform プロパティは、通知の対象となる通知プラットフォームを示します。 次のいずれかの値を指定する必要があります。
-  * `template` : これは、出力バインドで platform プロパティが省略された場合の既定のプラットフォームです。 テンプレート通知は、Azure Notification Hub に構成されているすべてのプラットフォームを対象として使用できます。 Azure Notification Hub でテンプレートを使用してクロスプラットフォームの通知を送信する一般的な方法の詳細については、「[Templates (テンプレート)](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)」を参照してください。
+  * 既定では、プラットフォームのプロパティが出力バインドから省略されている場合、テンプレート通知は、Azure 通知ハブで構成されている任意のプラットフォームを対象として使用できます。 Azure Notification Hub でテンプレートを使用してクロスプラットフォームの通知を送信する一般的な方法の詳細については、「[Templates (テンプレート)](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)」を参照してください。
   * `apns` : Apple Push Notification Service。 APNS 向けに Notification Hub を構成する方法と、クライアント アプリで通知を受信する方法の詳細については、「[Azure Notification Hubs から iOS へのプッシュ通知の送信](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md)」を参照してください。 
   * `adm` : [Amazon Device Messaging](https://developer.amazon.com/device-messaging)。 ADM 向けに Notification Hub を構成する方法と、Kindle アプリで通知を受信する方法の詳細については、「[Getting Started with Notification Hubs for Kindle apps](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md)」(Kindle アプリ向けの Notification Hubs の概要) を参照してください。 
   * `gcm` : [Google Cloud Messaging](https://developers.google.com/cloud-messaging/)。 GCM の新しいバージョンである Firebase Cloud Messaging もサポートされます。 GCM/FCM 向けに Notification Hub を構成する方法と、Android クライアント アプリで通知を受信する方法の詳細については、「[Azure Notification Hubs から Android へのプッシュ通知の送信](../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md)」を参照してください。
@@ -294,10 +296,5 @@ private static TemplateNotification GetTemplateNotification(string message)
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

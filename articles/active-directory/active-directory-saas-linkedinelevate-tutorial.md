@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/31/2017
 ms.author: jeedes
 ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: c175d54fcc7e55bae5057adbb4b9dba0a8843fe2
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 5949ae254233aa32384aab50b188fdd6527787a0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/13/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -140,11 +140,14 @@ LinkedIn Elevate で Azure AD のシングル サインオンを構成してテ�
 
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-linkedinElevate-tutorial/userattribute.png)
 
-    a. [属性の追加] をクリックして属性の詳細ページを開き、以下のように department 属性を追加します。
-    
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-linkedinElevate-tutorial/adduserattribute.png)
+       a. Click on Add attribute to open the attribute details page add the department attribute as shown below-
 
-    b. **[OK]** をクリックして属性を保存します。
+       ![Creating an Azure AD test user](./media/active-directory-saas-linkedinElevate-tutorial/adduserattribute.png)
+
+       b. Click on **Ok** to save the attribute.
+
+    c. 属性 **emailaddress** の名前を **email** に変更します。
+
 
 10. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
 
@@ -237,6 +240,7 @@ LinkedIn Elevate アプリケーションでは、ジャストインタイムの
 
 ## <a name="additional-resources"></a>その他のリソース
 
+* [チュートリアル: LinkedIn Elevate を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる](active-directory-saas-linkedinelevate-provisioning-tutorial.md)
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
@@ -254,4 +258,3 @@ LinkedIn Elevate アプリケーションでは、ジャストインタイムの
 [201]: ./media/active-directory-saas-linkedinElevate-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-linkedinElevate-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-linkedinElevate-tutorial/tutorial_general_203.png
-

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: markvi
+ms.reviewer: jairoc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 1e7e764bdb1e883c28c137292de6a3ef8873e473
 ms.openlocfilehash: e4b8622fc6d06be480a2de057070155b12746133
 ms.contentlocale: ja-jp
 ms.lasthandoff: 12/29/2016
-
 
 ---
 # <a name="set-device-based-conditional-access-policy-for-azure-active-directory-connected-applications"></a>Azure Active Directory 接続アプリケーションに対するデバイス ベースの条件付きアクセス ポリシーを設定する方法

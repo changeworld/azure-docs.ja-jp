@@ -9,6 +9,8 @@
 ## 使用状況とコストの監視
 ### [請求書および使用状況を取得する](billing-download-azure-invoice-daily-usage-date.md)
 ### [課金内容の確認](billing-understand-your-bill.md)
+### [請求書の用語について](billing-understand-your-invoice.md)
+### [使用状況の用語について](billing-understand-your-usage.md)
 ### [外部サービスの料金について](billing-understand-your-azure-marketplace-charges.md)
 ### [使用制限の確認](billing-spending-limit.md)
 ### [課金アラートのセットアップ](billing-set-up-alerts.md)

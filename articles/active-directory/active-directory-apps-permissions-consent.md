@@ -13,12 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/17/2016
+ms.date: 07/20/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.reviewer: jesakowi
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 095497656a1c6ed1fe5322b6015de750d8fd6f15
 ms.openlocfilehash: 3706ed729a525526a415d3a3367e6b8245ead812
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/07/2016
 
 ---
 
@@ -215,10 +217,5 @@ FabrikamMail の場合、次のようになります。
 (**ClientId** は、(作成されたばかりの) FabrikamMail のサービス プリンシパル オブジェクト ID です。**PrincipalId** は、(同意を行ったユーザーの) ユーザー オブジェクト ID です。**ResourceId** は、Exchange のサービス プリンシパル オブジェクト ID です。Scope は、Exchange の同意されたアクセス許可です)。
 
 ユーザーの同意が許可されていない場合、その許可が必要なことを示す画面が表示されます。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

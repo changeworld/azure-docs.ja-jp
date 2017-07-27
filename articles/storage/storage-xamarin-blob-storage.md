@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: michaelhauss
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 2ef27dc58e12d1b9e8eed54239332a53860ddd52
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 0952c0e7189dd360098744a7e19b04cd330cb617
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/27/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="how-to-use-blob-storage-from-xamarin"></a>Xamarin から BLOB ストレージを使用する方法

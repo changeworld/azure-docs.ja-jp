@@ -23,8 +23,7 @@ ms.lasthandoff: 06/28/2017
 
 
 ---
-# コネクタの一覧
-<a id="connectors-list" class="xliff"></a>
+# <a name="connectors-list"></a>コネクタの一覧
 > [!TIP]
 > このトピックの「[A ～ Z の完全な一覧](#az)」には、Logic Apps で使用できるすべてのコネクタの一覧が示されています。 [コネクタの詳細情報](/connectors/)に関するページに、Swagger で定義されているトリガーとアクション、さらに各コネクタの制限が記載されています。
 
@@ -40,8 +39,7 @@ ms.lasthandoff: 06/28/2017
 
 価格の詳細については、「[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)」と[料金モデル](../logic-apps/logic-apps-pricing.md)に関する記事を参照してください。 
 
-## 人気のコネクタ
-<a id="popular-connectors" class="xliff"></a>
+## <a name="popular-connectors"></a>人気のコネクタ
 数千ものアプリケーションと何百万もの実行で、次のコネクタを使用して、データや情報が正常に処理されています。 次の表に、非常に人気があり、ユーザーがよく利用しているコネクタを示します。
 
 | |  |  |  |
@@ -54,8 +52,7 @@ ms.lasthandoff: 06/28/2017
 |  [![API アイコン][SharePointicon]<br/>**SharePoint<br/>Online**][SharePointdoc] | SharePoint を利用しており、自動化の恩恵を受けることができる場合は、このコネクタを検討することをお勧めします。 オンプレミスの SharePoint および SharePoint Online で使用できます。 | [![API Icon][SQL-Servericon]<br/>**SQL Server**][SQL-Serverdoc] | よく利用されているコネクタの 1 つです。オンプレミスの SQL Server および Azure SQL Database に接続できます。 | 
 | [![API Icon][Twittericon]<br/>**Twitter**][Twitterdoc] | Twitter アカウントで簡単にサインインし、新しいツイートが投稿されたときにワークフローを開始できます。 その後、それらのツイートを SQL データベースまたは SharePoint リストに保存することができます。 | | | 
 
-## 統合アカウント コネクタ
-<a id="integration-account-connectors" class="xliff"></a> 
+## <a name="integration-account-connectors"></a>統合アカウント コネクタ 
 
 Enterprise Integration Pack (EIP) には、BizTalk Server コミュニティでよく知られているコネクタが含まれています。 [統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)を購入すると、次のコネクタも利用できます。 
 
@@ -65,14 +62,13 @@ Enterprise Integration Pack (EIP) には、BizTalk Server コミュニティで�
 [![API アイコン][flatfileicon]<br/>**フラット ファイル</br>エンコード**][flatfiledoc] | [![API アイコン][flatfiledecodeicon]<br/>**フラット ファイル</br>デコード**][flatfiledecodedoc] | [![API アイコン][integrationaccounticon]<br/>**統合<br/>アカウント**][integrationaccountdoc] | [![API アイコン][xmltransformicon]<br/>**XML<br/>変換**][xmltransformdoc] |
 | [![API アイコン][x12icon]<br/>**X12</br>デコード**][x12decode] | [![API アイコン][x12icon]<br/>**X12</br>エンコード**][x12encode] | [![API Icon][xmlvalidateicon]<br/>**XML <br/>検証**][xmlvalidatedoc] | |
 
-## エンタープライズ コネクタ
-<a id="enterprise-connectors" class="xliff"></a>
+## <a name="enterprise-connectors"></a>エンタープライズ コネクタ
 
 ロジック アプリ内でエンタープライズ アプリケーションに接続します。
 
 |  |  |
 | --- | --- |
-|[![API アイコン][MQ アイコン]<br/>**MQ**][mqdoc]|[![API アイコン][SAPicon]<br/>**SAP**][sapconnector]|
+|[![API Icon][MQicon]<br/>**MQ**][mqdoc]|[![API アイコン][SAPicon]<br/>**SAP**][sapconnector]|
 
 
 ## <a name="az"></a>A ～ Z の完全な一覧
@@ -91,8 +87,7 @@ Enterprise Integration Pack (EIP) には、BizTalk Server コミュニティで�
 > [!TIP]
 > Azure アカウントにサインアップせずに Azure Logic Apps を体験するには、[Logic Apps の試用](https://tryappservice.azure.com/?appservice=logic)に関するページをご覧ください。 短時間有効な簡易版のロジック アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-## トリガーおよびアクションとしてのコネクタ
-<a id="connectors-as-triggers-and-actions" class="xliff"></a>
+## <a name="connectors-as-triggers-and-actions"></a>トリガーおよびアクションとしてのコネクタ
 
 **トリガー**は、ロジック アプリのインスタンスを起動または実行します。 一部のコネクタには、特定のイベントが発生したときにアプリに通知するトリガーが用意されています。 たとえば、FTP コネクタには、ファイルが更新されたときにロジック アプリを起動する `OnUpdatedFile` トリガーがあります。 
 
@@ -112,8 +107,7 @@ Enterprise Integration Pack (EIP) には、BizTalk Server コミュニティで�
 > トリガーとアクションの詳細については、[コネクタの概要](connectors-overview.md)に関する記事をご覧ください。 
 
 
-## メッセージ操作アクション
-<a id="message-manipulation-actions" class="xliff"></a>
+## <a name="message-manipulation-actions"></a>メッセージ操作アクション
 
 ロジック アプリには、ペイロード データを変更または操作できる組み込みのアクションが用意されています。 組み込みの**データ操作**コネクタには、次のアクションがあります。 
 
@@ -126,15 +120,13 @@ Enterprise Integration Pack (EIP) には、BizTalk Server コミュニティで�
 | **JSON の解析** | デザイナーで JSON オブジェクトの値を解析およびアクセスします。 たとえば、Azure 関数で JSON ペイロードが返される場合、そのペイロードを解析して、後の別の手順で JSON プロパティにアクセスできます。 このアクションでは、実行時に JSON が指定したスキーマと一致することも検証します。 | 
 | **選択肢** | 後続の処理のために配列の特定のプロパティを選択します。 SQL の "レコードの一覧表示" を行い、15 列が返された場合に、後続の処理のためにその一部の列を選択します。 出力は、選択したプロパティのみを含む配列です。 |
 
-## カスタム コネクタと Azure の認定
-<a id="custom-connectors-and-azure-certification" class="xliff"></a> 
+## <a name="custom-connectors-and-azure-certification"></a>カスタム コネクタと Azure の認定 
 
 カスタム コードを実行する API や、コネクタとして使用できない API を呼び出すために、[カスタム コネクタとして REST ベースの API アプリを作成](../logic-apps/logic-apps-create-api-app.md)して、Logic Apps プラットフォームを拡張できます。 
 
 カスタム API アプリを公開して Azure で使用できるようにする場合は、[Microsoft Azure Certified プログラム](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)に推薦を送信します。
 
-## 問い合わせ
-<a id="get-help" class="xliff"></a>
+## <a name="get-help"></a>問い合わせ
 
 [Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)では、質問の投稿や質問への回答を行うことができるほか、他の Azure Logic Apps ユーザーがどのようなことを行っているかがわかります。
 
@@ -142,8 +134,7 @@ Enterprise Integration Pack (EIP) には、BizTalk Server コミュニティで�
 
 コネクタのトピックについて不足している情報や、重要と思われる情報がありましたらお知らせください。 既存のトピックに追加いたします。または、読者が独自に作成することもできます。 ドキュメントはオープン ソースであり、GitHub でホストされています。 まずは、[GitHub リポジトリ](https://github.com/Microsoft/azure-docs)にアクセスしてみましょう。 
 
-## 次のステップ
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>次のステップ
 * [初めてのロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)
 * [ロジック アプリ用のカスタム API を作成する](../logic-apps/logic-apps-create-api-app.md)
 * [ロジック アプリを監視する](../logic-apps/logic-apps-monitor-your-logic-apps.md)

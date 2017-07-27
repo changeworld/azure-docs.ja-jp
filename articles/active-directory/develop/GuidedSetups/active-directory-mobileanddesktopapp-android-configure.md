@@ -16,8 +16,8 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
-ms.openlocfilehash: 9b23f34300248ff87ed4a6abbeb6cfdda6570581
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 945b09ccdb7537987da33d32d94a3ccacd829ffd
 ms.contentlocale: ja-jp
 
 
@@ -35,7 +35,7 @@ ms.contentlocale: ja-jp
 1. [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/portal/register-app)に移動して、アプリケーションを登録します
 2. アプリケーションの名前とお使いのメール アドレスを入力します 
 3. ガイド付きセットアップのオプションがオフになっていることを確認します。
-4. [`Add Platforms`] (プラットフォームの追加) をクリックしてから [`Native Application`] (ネイティブ アプリケーション) を選択し、[保存] をクリックします。
+4. [`Add Platform`] (プラットフォームの追加) をクリックしてから [`Native Application`] (ネイティブ アプリケーション) を選択し、[保存] をクリックします。
 5.  `MainActivity` を開きます ([`app`]  >  [`java`]  >  [*`{host}.{namespace}`*] の順)。
 6.  "`final static String CLIENT_ID`" で始まる行の *[Enter the application Id here]* (アプリケーション ID を入力してください) を、登録したアプリケーション ID に置き換えます。
 

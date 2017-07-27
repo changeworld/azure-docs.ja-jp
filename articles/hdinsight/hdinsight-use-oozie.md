@@ -14,13 +14,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-translationtype: Human Translation
-ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
-ms.openlocfilehash: e6749bdf73acc9c05e71c85410bb3d95c57a0a9f
-ms.lasthandoff: 12/08/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 10726bdaf1aa0a98276747868771999625ccf5e5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -60,7 +61,7 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 > 
 
 ### <a name="prerequisites"></a>前提条件
-このチュートリアルを読み始める前に、次の項目を用意する必要があります。
+このチュートリアルを開始する前に、次の項目を用意する必要があります。
 
 * **Azure PowerShell を実行できるワークステーション**。 
   
@@ -581,7 +582,7 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 
 **チュートリアルを再実行するには**
 
-ワークフローを再実行するには、以下のものを削除する必要があります。
+ワークフローを再実行するには、以下の項目を削除する必要があります。
 
 * Hive スクリプトの出力ファイル
 * log4jLogsCount テーブル内のデータ

@@ -20,7 +20,6 @@ ms.openlocfilehash: 384066affe46bfd2917a3a14e4cfa7d2fc8a25f1
 ms.contentlocale: ja-jp
 ms.lasthandoff: 07/06/2017
 
-
 ---
 
 # <a name="service-bus-management-libraries"></a>Service Bus 管理ライブラリ
@@ -49,9 +48,8 @@ Service Bus 管理ライブラリの使用を開始するには、Azure Active D
 すべての Service Bus リソースを操作するパターンは、次の共通のプロトコルに従います。
 
 1. **Microsoft.IdentityModel.Clients.ActiveDirectory** ライブラリを使用して、Azure Active Directory からトークンを取得します。
-
    ```csharp
-   var context = new AuthenticationContext($"https://login.windows.net/{tenantId}");
+   var context = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
 
    var result = await context.AcquireTokenAsync("https://management.core.windows.net/", new ClientCredential(clientId, clientSecret));
    ```

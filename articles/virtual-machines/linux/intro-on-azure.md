@@ -13,12 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2017
+ms.date: 06/01/2017
 ms.author: szark
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: eaac5300292e328bcff9ddf5447bea0e53075179
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 7bd0c5549a2e1f592681760d5ef464b9570ca4ab
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.lasthandoff: 04/03/2017
 このトピックでは、Azure クラウドで Linux 仮想マシンを使用するさまざまな局面について概説します。 Linux 仮想マシンのデプロイは、ギャラリー内に存在するイメージを使用する際に簡単に使用できるプロセスです。
 
 ## <a name="authentication-usernames-passwords-and-ssh-keys"></a>認証: ユーザー名、パスワード、SSH 鍵。
-Azure クラシック ポータルを使用して Linux 仮想マシンを作成すると、ユーザー名、パスワードまたは SSH 公開キーの入力が求められます。 Azure で Linux 仮想マシンをデプロイするユーザー名を選択する場合、root など、既に仮想マシン内に存在するシステム アカウント (UID <100) の名前は許可されない、という制約があります。
+Azure ポータルを使用して Linux 仮想マシンを作成すると、ユーザー名とパスワードまたは SSH 公開キーの入力が求められます。 Azure で Linux 仮想マシンをデプロイするユーザー名を選択する場合、root など、既に仮想マシン内に存在するシステム アカウント (UID <100) の名前は許可されない、という制約があります。
 
 * 参照: [Linux を実行する仮想マシンの作成](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * 参照: [Azure 上の Linux における SSH の使用方法](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -41,7 +42,7 @@ Azure での仮想マシン インスタンスをデプロイする際に指定�
 * 参照: [Azure 上の Linux 仮想マシンでの root 権限の使用](use-root-privileges.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="firewall-configuration"></a>ファイアウォールの構成
-Azure では、Azure クラシック ポータルで指定されたポートに接続を制限する受信パケット フィルターが用意されています。 既定では、許可されている唯一のポートは SSH です。 Azure クラシック ポータルでエンドポイントを構成することで、Linux 仮想マシンの追加ポートへのアクセスを設定できます。
+Azure では、Azure ポータルで指定されたポートに接続を制限する受信パケット フィルターが用意されています。 既定では、許可されている唯一のポートは SSH です。 Azure ポータルでエンドポイントを構成することで、Linux 仮想マシンの追加ポートへのアクセスを設定できます。
 
 * 参照: [Azure 上でクラシック Windows 仮想マシンにエンドポイントをセットアップする方法](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
@@ -69,9 +70,9 @@ Azure Linux エージェントには、この名前の変更を自動的に検�
 ## <a name="virtual-machine-image-capture"></a>仮想マシン イメージのキャプチャ
 Azure には、既存の仮想マシンの状態をイメージにキャプチャする機能があります。このイメージは、後で追加の仮想マシンのインスタンスをデプロイするために使用できます。 Azure Linux エージェントは、プロビジョニング中に実行したカスタマイズをロールバックするために使用することもできます。 仮想マシンをイメージとしてキャプチャする手順は次のとおりです。
 
-1. **waagent -deprovision** を実行してプロビジョニング中のカスタマイズを元に戻します。 または、 **waagent -deprovision+user** を実行して、プロビジョニング中に指定したユーザー アカウントとすべての関連データを削除します。
+1. **waagent -deprovision** を実行してプロビジョニング中のカスタマイズを元に戻します。 または、**waagent -deprovision+user** を実行して、プロビジョニング中に指定したユーザー アカウントとすべての関連データを削除します。
 2. 仮想マシンをシャットダウン/電源オフします。
-3. Azure クラシック ポータルで *[キャプチャ]* をクリックするか、Powershell ツールまたは CLI ツールを使用して仮想マシンをイメージとしてキャプチャします。
+3. Azure ポータルで **[キャプチャ]** をクリックするか、Powershell ツールまたは CLI ツールを使用して仮想マシンをイメージとしてキャプチャします。
    
    * 参照: [Linux を実行する仮想マシンのイメージをキャプチャする方法](classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 

@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2016
+ms.date: 05/23/2017
 ms.author: asmalser
-translationtype: Human Translation
-ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
-ms.openlocfilehash: 39714145f84f5f9229dbf4bbe136103d4d102bed
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 1d4249dcab69bb2000fa895e6a0cd8cfb9ec9437
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 
 ---

@@ -12,22 +12,21 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2017
+ms.date: 07/10/2017
 ms.author: sngun
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 731611dfae528141c8567ae8c715aa4dcc0ed549
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 864dc7697b66bbf0604cbe471b61f72bad98e327
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 
 # <a name="download-azure-stack-tools-from-github"></a>Download Azure Stack tools from GitHub
 
-AzureStack-Tools is a GitHub repository that hosts PowerShell modules that you can use to manage and deploy resources to Azure Stack. You can download and use these PowerShell modules from Azure Stack POC computer, or from a windows-based external client if you are planning to establish VPN connectivity. To obtain these tools, clone the GitHub repository or download the AzureStack-Tools folder. 
+AzureStack-Tools is a GitHub repository that hosts PowerShell modules that you can use to manage and deploy resources to Azure Stack. You can download and use these PowerShell modules to the Azure Stack Development Kit, or to a windows-based external client if you are planning to establish VPN connectivity. To obtain these tools, clone the GitHub repository or download the AzureStack-Tools folder. 
 
-To clone the repository, download [Git](https://git-scm.com/download/win) for Windows, open a Command Prompt window and run the following command:
+To clone the repository, download [Git](https://git-scm.com/download/win) for Windows, open a Command Prompt window and run the following script:
 
 ```PowerShell
 # Change directory to the root directory 
@@ -40,7 +39,7 @@ git clone https://github.com/Azure/AzureStack-Tools.git --recursive
 cd AzureStack-Tools
 ```
 
-To download the tools folder, run the following command:
+To download the tools folder, run the following script:
 
 ```PowerShell
 # Change directory to the root directory 
@@ -71,7 +70,7 @@ The AzureStack-Tools repository contains PowerShell modules that support the fol
 | [Azure Stack compute administration](azure-stack-add-vm-image.md) | Use this module to add or remove a VM image from the Azure Stack marketplace. | Cloud administrators. |
 | [Azure Stack Infrastructure administration](https://github.com/Azure/AzureStack-Tools/blob/master/Infrastructure/README.md) | Use this module to manage Azure Stack infrastructure VMs, alerts, updates etc. |  Cloud administrators.|
 | [Resource Manager policy for Azure Stack](azure-stack-policy-module.md) | Use this module to configure an Azure subscription or an Azure resource group with the same versioning and service availability as Azure Stack. | Cloud administrators and users |
-| [Register with Azure](azure-stack-register.md) | Use this module to register your Azure Stack POC instance with Azure. After registering, you can download the marketplace items from Azure and use them in Azure Stack. | Cloud administrators |
+| [Register with Azure](azure-stack-register.md) | Use this module to register your development kit instance with Azure. After registering, you can download the marketplace items from Azure and use them in Azure Stack. | Cloud administrators |
 | [Azure Stack deployment](azure-stack-run-powershell-script.md) | Use this module to prepare the Azure Stack host computer to deploy and redeploy by using the Azure Stack Virtual Hard Disk(VHD) image. | Cloud administrators. |
 | [Connecting to Azure Stack](azure-stack-connect-powershell.md) | Use this module to connect to an Azure Stack instance through PowerShell and to configure VPN connectivity to Azure Stack. | Cloud administrators and users |
 | [Azure Stack service administration](azure-stack-create-offer.md) | Azure Stack administrators can use this module to create a default tenant offer with unlimited quota across Compute, Storage, Network, and Key Vault services.   | Cloud administrators.|
@@ -80,5 +79,5 @@ The AzureStack-Tools repository contains PowerShell modules that support the fol
 
 ## <a name="next-steps"></a>Next steps
 * [Configure powerShell for use with Azure Stack](azure-stack-powershell-configure.md)   
-* [Connect to Azure Stack POC over a VPN](azure-stack-connect-azure-stack.md)  
+* [Connect to Azure Stack Development Kit over a VPN](azure-stack-connect-azure-stack.md)  
 

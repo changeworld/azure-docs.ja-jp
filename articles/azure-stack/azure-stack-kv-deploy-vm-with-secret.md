@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/15/2017
 ms.author: sngun
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
 ms.openlocfilehash: 8c95c08fd55b98b1e25f7168b406536af71e57f6
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/17/2017
-
 
 ---
 # <a name="deploy-a-vm-by-retrieving-the-password-stored-in-key-vault"></a>Deploy a VM by retrieving the password stored in Key Vault
@@ -43,8 +43,7 @@ You reference the secret from within a parameters file, which passes values to y
 
 > [!NOTE]
 > The parameter that accepts the secret should be a *securestring*.
-> 
-> 
+
 
 ## <a name="next-steps"></a>Next Steps
 [Deploy a sample app with Key Vault](azure-stack-kv-sample-app.md)

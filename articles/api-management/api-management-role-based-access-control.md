@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: b048a1db135d217b319541b92cf3c30b345d1a66
-ms.openlocfilehash: cedab98452ad336748d805f0efbf50633badf8ab
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
+ms.openlocfilehash: fa757a591d788f52d759bc24accedd3c55149ae7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/19/2017
 
 
 ---
@@ -45,9 +47,9 @@ API Management では現在、組み込みロールが 3 つ提供されてお�
 
 
 ## <a name="custom-roles"></a>カスタム ロール
-特定のニーズを満たす組み込みロールがない場合は、カスタム ロールを作成して、API Management エンティティのアクセス管理をより詳細にすることができます。 たとえば、API Management サービスへの読み取り専用アクセス権はあるが、特定の&1; つの API にしか書き込みアクセス権がないカスタム ロールを作成できます。 カスタム ロールの詳細については、「[Azure RBAC のカスタム ロール](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-custom-roles)」を参照してください。 
+特定のニーズを満たす組み込みロールがない場合は、カスタム ロールを作成して、API Management エンティティのアクセス管理をより詳細にすることができます。 たとえば、API Management サービスへの読み取り専用アクセス権はあるが、特定の 1 つの API にしか書き込みアクセス権がないカスタム ロールを作成できます。 カスタム ロールの詳細については、「[Azure RBAC のカスタム ロール](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-custom-roles)」を参照してください。 
 
-カスタム ロールを作成するときは、いずれかの組み込みロールを土台にすると簡単です。 その属性を編集して Actions、NotActions、またはAssignableScopes を追加し、変更内容を新しいロールとして保存します。 次の例では、はじめに "Azure API Managment Service Reader" ロールがあり、"Calculator API Editor" と呼ばれるカスタム ロールを作成します。 カスタム ロールは特定の&1; つの API にしか割り当てられないため、その API にのみアクセス権があります。 
+カスタム ロールを作成するときは、いずれかの組み込みロールを土台にすると簡単です。 その属性を編集して Actions、NotActions、またはAssignableScopes を追加し、変更内容を新しいロールとして保存します。 次の例では、はじめに "Azure API Managment Service Reader" ロールがあり、"Calculator API Editor" と呼ばれるカスタム ロールを作成します。 カスタム ロールは特定の 1 つの API にしか割り当てられないため、その API にのみアクセス権があります。 
 
 ```
 $role = Get-AzureRmRoleDefinition "API Management Service Reader Role"
@@ -73,9 +75,4 @@ New-AzureRmRoleAssignment -ObjectId <object ID of the user account> -RoleDefinit
   * [Azure Portal でのアクセス管理の概要](https://azure.microsoft.com/en-us/documentation/articles/role-based-access-control-what-is/)
   * [Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](https://azure.microsoft.com/en-us/documentation/articles/role-based-access-control-what-is/)
   * [Azure RBAC のカスタム ロール](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-custom-roles)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

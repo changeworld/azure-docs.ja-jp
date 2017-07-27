@@ -20,7 +20,6 @@ ms.openlocfilehash: 7a68a2764d17b53164ded5096ddee68ab8c723ed
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/16/2017
 
-
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Azure Portal を使用して IoT Hub を作成する
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
@@ -42,6 +41,8 @@ IoT Hub の作成には、次の方法を使用できます。
 
 ### <a name="choose-the-name-of-the-iot-hub"></a>IoT Hub の名前の選択
 IoT Hub を作成するには、IoT ハブに名前を付ける必要があります。 この名前は、IoT ハブ全体で一意にする必要があります。 ソリューション バックエンドではハブの重複は許可されないため、このハブの名前はできるだけ一意にすることをお勧めします。
+
+[!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
 ### <a name="choose-the-pricing-tier"></a>価格レベルの選択
 **Free**、**Standard 1**、**Standard 2**、**Standard S3** の 4 つのレベルから選択することができます。 Free レベルでは、IoT Hub に接続できるデバイスは 500 個のみで、1 日に許可されるメッセージ数は最大 8,000 件です。

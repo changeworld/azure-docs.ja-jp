@@ -28,12 +28,15 @@
 ### [U-SQL R 拡張機能](data-lake-analytics-u-sql-r-extensions.md)
 ### [U-SQL Cognitive 拡張機能](data-lake-analytics-u-sql-cognitive.md)
 ### [Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)
+### [Visual Studio Code での U-SQL](data-lake-analytics-data-lake-tools-for-vscode.md)
 
 ## U-SQL プログラムのデバッグ
 ### [ジョブの監視およびトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 ### [U-SQL で C# コードをデバッグする](data-lake-analytics-debug-u-sql-jobs.md)
 ### [ジョブ ブラウザーとジョブ ビューを使用する](data-lake-analytics-data-lake-tools-view-jobs.md)
 ### [頂点実行ビューを使用する](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
+### [VSCode でのローカル実行とローカル デバッグ](data-lake-tools-for-vscode-local-run-and-debug.md)
+### [U-SQL プログラミング ガイド](data-lake-analytics-u-sql-programmability-guide.md)
 
 # リファレンス
 ## [PowerShell](/powershell/module/azurerm.datalakeanalytics)

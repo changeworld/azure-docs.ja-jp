@@ -1,6 +1,6 @@
 ---
 title: "Hadoop 用に Java MapReduce を作成する - Azure HDInsight | Microsoft Docs"
-description: "Java MapReduce プログラムを開発する方法と、それらのプログラムを HDInsight の Hadoop にデプロイする方法について説明します。"
+description: "Apache Maven を使用して Java ベースの MapReduce アプリケーションを作成し、Azure HDInsight 上で Hadoop を使用して実行する方法について説明します。"
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
@@ -9,7 +9,7 @@ documentationcenter:
 tags: azure-portal
 ms.assetid: 9ee6384c-cb61-4087-8273-fb53fa27c1c3
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: Java
@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 05/17/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: ce5661febe502e9da9682166af1b601b1fc0b965
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 33705cff8d65b40aeca2cdaf0b102bf7fbbfa9d6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -257,7 +257,7 @@ Java と JDK をインストールするときに、次のような環境変数�
 
 このコマンドにより、ファイルがローカル システムからヘッド ノードにコピーされます。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-## <a name="run"></a>MapReduce ジョブを実行する
+## <a name="run"></a>Hadoop で MapReduce ジョブを実行する
 
 1. SSH を使用して HDInsight に接続する。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 

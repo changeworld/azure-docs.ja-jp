@@ -3,7 +3,7 @@ title: "Azure IoT Edge モジュールを C# で作成する | Microsoft Docs"
 description: "このチュートリアルでは、BLE データ コンバーター モジュールを最新の Azure IoT Edge NuGet パッケージ、Visual Studio Code、および C# を使用して記述する方法を紹介します。"
 services: iot-hub
 author: jeffreyCline
-manager: sushi
+manager: timlt
 keywords: "Azure, iot, チュートリアル, モジュール, NuGet, vscode, csharp, Edge"
 ms.service: iot-hub
 ms.devlang: csharp
@@ -19,8 +19,7 @@ ms.contentlocale: ja-jp
 ms.lasthandoff: 07/04/2017
 
 ---
-# Azure IoT Edge モジュールを C&#x23; で作成する
-<a id="create-an-azure-iot-edge-module-with-cx23" class="xliff"></a>
+# <a name="create-an-azure-iot-edge-module-with-cx23"></a>Azure IoT Edge モジュールを C&#x23; で作成する
 
 このチュートリアルでは、`Azure IoT Edge` 用のモジュールを `Visual Studio Code` と `C#` を使用して作成する方法を紹介します。
 
@@ -29,8 +28,7 @@ ms.lasthandoff: 07/04/2017
 >[!NOTE]
 このチュートリアルでは、クロスプラットフォームの互換性をサポートしている `.NET Core SDK` を使用しています。 次のチュートリアルは、`Windows 10` オペレーティング システムを使用して記述されています。 このチュートリアルで使用されているいくつかのコマンドは、`development environment`によって異なる可能性があります。 
 
-## 前提条件
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>前提条件
 
 このセクションでは、`Azure IoT Edge` モジュールを開発するための環境をセットアップします。 **64 ビット 版の Windows** オペレーティング システムと **64 ビット版の Linux (Ubuntu/Debian 8)** オペレーティング システムの両方に適用されます。
 
@@ -45,16 +43,14 @@ ms.lasthandoff: 07/04/2017
 - `git clone https://github.com/Azure-Samples/iot-edge-samples.git`
 - `cd iot-edge-samples/dotnetcore/simulated_ble`
 
-## 使用の開始
-<a id="getting-started" class="xliff"></a>
+## <a name="getting-started"></a>使用の開始
 
 1. `.NET Core SDK` をインストールします。
 2. Visual Studio Code Marketplace から `Visual Studio Code` と `C# extension`をインストールします。
 
 `Visual Studio Code` と `.NET Core SDK` の使用を開始する方法については、こちらの[クイック ビデオ チュートリアル](https://channel9.msdn.com/Blogs/dotnet/Get-started-VSCode-Csharp-NET-Core-Windows)を参照してください。
 
-## Azure IoT Edge コンバーター モジュールの作成
-<a id="creating-the-azure-iot-edge-converter-module" class="xliff"></a>
+## <a name="creating-the-azure-iot-edge-converter-module"></a>Azure IoT Edge コンバーター モジュールの作成
 
 1. 新しい `.NET Core` クラス ライブラリの C# プロジェクトを初期化します。
     - コマンド プロンプトを開きます (`Windows + R` -> `cmd` -> `enter`)。

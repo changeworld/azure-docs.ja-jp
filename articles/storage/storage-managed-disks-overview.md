@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2017
+ms.date: 06/15/2017
 ms.author: robinsh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: e36deaeba611896e793f40cf0e05b8771841816f
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: 292a93bd1d355b8a39c59d220352ad465df46629
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -27,14 +27,11 @@ ms.lasthandoff: 05/03/2017
 
 Azure Managed Disks は、VM ディスクに関連付けられている[ストレージ アカウント](storage-introduction.md)を管理することで、Azure IaaS VM のディスク管理を簡素化します。 必要なディスクの種類 ([Premium](storage-premium-storage.md) または [Standard](storage-standard-storage.md)) とサイズを指定するだけで、ディスクの作成と管理は Azure によって行われます。
 
->[!NOTE]
->Managed Disks を使用する VM では、インストール済みの [VM 拡張機能](../virtual-machines/windows/extensions-features.md)の状態を Azure プラットフォームにレポートするためにポート 8443 上の送信トラフィックを必要とします。 このポートを利用できない場合、拡張機能を含む VM のプロビジョニングは失敗します。 また、実行中の VM にインストールされている場合、拡張機能のデプロイ ステータスは不明になります。 ポート 8443 をブロック解除できない場合は、非管理対象ディスクを使用する必要があります。 現在、この問題の解決に積極的に取り組んでいます。 詳細については、[IaaS VM ディスクに関する FAQ](storage-faq-for-disks.md#managed-disks-and-port-8443)に関するページを参照してください。 
->
->
-
 ## <a name="benefits-of-managed-disks"></a>管理ディスクの利点
 
-管理ディスクを使用することによって得られる利点をいくつか紹介します。
+管理ディスクを使用して得られる利点をいくつか見てみましょう。まず、チャンネル 9 のビデオ「[管理ディスクを使用した Azure VM の回復性向上](https://channel9.msdn.com/Blogs/Azure/Managed-Disks-for-Azure-Resiliency)」です。
+<br/>
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Managed-Disks-for-Azure-Resiliency/player]
 
 ### <a name="simple-and-scalable-vm-deployment"></a>シンプルでスケーラブルな VM のデプロイ
 
@@ -44,16 +41,16 @@ Managed Disks では、1 つのサブスクリプションで最大 10,000 個�
 
 ### <a name="better-reliability-for-availability-sets"></a>可用性セットの信頼性の向上
 
-Managed Disks では、可用性セットの VM のディスクが、単一障害点にならないように相互に十分に分離されるため、可用性セットの信頼性が向上します。 これは、ディスクをさまざまなストレージ スケール ユニット (スタンプ) に自動的に配置することによって実現されます。 ハードウェアやソフトウェアの障害によってスタンプが機能しなくなった場合、そのスタンプ上のディスクを使用する VM インスタンスだけが機能しなくなります。 たとえば、5 台の VM 上で実行されているアプリケーションがあり、これらの VM が可用性セットに含まれているとします。 各 VM のディスクはすべて同じスタンプに格納されるわけではないため、1 つのスタンプがダウンしても、アプリケーションの他のインスタンスは引き続き実行されます。
+管理ディスクでは、[可用性セットの VM](../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) のディスクが、単一障害点にならないように相互に十分に分離されるため、可用性セットの信頼性が向上します。 これは、ディスクをさまざまなストレージ スケール ユニット (スタンプ) に自動的に配置することによって実現されます。 ハードウェアやソフトウェアの障害によってスタンプが機能しなくなった場合、そのスタンプ上のディスクを使用する VM インスタンスだけが機能しなくなります。 たとえば、5 台の VM 上で実行されているアプリケーションがあり、これらの VM が可用性セットに含まれているとします。 各 VM のディスクはすべて同じスタンプに格納されるわけではないため、1 つのスタンプがダウンしても、アプリケーションの他のインスタンスは引き続き実行されます。
 
 ### <a name="granular-access-control"></a>詳細なアクセス制御
 
 [Azure のロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-what-is.md) を使用して、管理ディスクに対する特定のアクセス許可を 1 人以上のユーザーに割り当てることができます。 Managed Disks では、ディスクの読み取り、書き込み (作成/更新)、削除、[Shared Access Signature (SAS) URI](storage-dotnet-shared-access-signature-part-1.md) の取得など、さまざまな操作を公開しています。 ユーザーが仕事をする上で必要な操作へのアクセス権だけを付与することができます。 たとえば、ユーザーが管理ディスクをストレージ アカウントにコピーすることが望ましくない場合は、その管理ディスクに対するエクスポート アクションへのアクセス権を付与しないようにします。 同様に、ユーザーが SAS URI を使用して管理ディスクをコピーできないようにする場合は、その管理ディスクに対する該当のアクセス許可を付与しないことを選択できます。
 
-### <a name="azure-backup-service-support"></a>Azure Backup サービスのサポート 
-Managed Disks で Azure Backup サービスを使用して、時間ベースのバックアップ、VM の簡易復元、バックアップ リテンション期間ポリシーを適用したバックアップ ジョブを作成できます。 Managed Disks は、レプリケーション オプションとしてローカル冗長ストレージ (LRS) のみをサポートしています。つまり、1 つのリージョン内にデータのコピーを 3 つ保持します。 地域的な障害復旧では、[Azure Backup サービス](../backup/backup-introduction-to-azure-backup.md)と GRS ストレージ アカウントをバックアップ コンテナーとして使用して VM ディスクを別のリージョンにバックアップする必要があります。 詳細については、[Managed Disks を使用する VM での Azure Backup サービスの使用](../backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)に関するセクションをご覧ください。 
+### <a name="azure-backup-service-support"></a>Azure Backup サービスのサポート
+Managed Disks で Azure Backup サービスを使用して、時間ベースのバックアップ、VM の簡易復元、バックアップ リテンション期間ポリシーを適用したバックアップ ジョブを作成できます。 Managed Disks は、レプリケーション オプションとしてローカル冗長ストレージ (LRS) のみをサポートしています。つまり、1 つのリージョン内にデータのコピーを 3 つ保持します。 地域的な障害復旧では、[Azure Backup サービス](../backup/backup-introduction-to-azure-backup.md)と GRS ストレージ アカウントをバックアップ コンテナーとして使用して VM ディスクを別のリージョンにバックアップする必要があります。 詳細については、[Managed Disks を使用する VM での Azure Backup サービスの使用](../backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)に関するセクションをご覧ください。
 
-## <a name="pricing-and-billing"></a>価格と課金 
+## <a name="pricing-and-billing"></a>価格と課金
 
 Managed Disks を使用するときには、課金に関する次の考慮事項が適用されます。
 
@@ -76,15 +73,17 @@ Managed Disks を使用するときには、課金に関する次の考慮事項
 
 Premium 管理ディスクで提供されるディスク サイズを次に示します。
 
-| **Premium 管理<br>ディスクの種類**  | **P10** | **P20** | **P30**        |
-|------------------|---------|---------|----------------|
-| ディスク サイズ        | 128 GB  | 512 GB  | 1024 GB (1 TB) |
+| **Premium 管理<br>ディスクの種類** | **P4** | **P6** |**P10** | **P20** | **P30** | **P40** | **P50** | 
+|------------------|---------|---------|---------|---------|----------------|----------------|----------------|  
+| ディスク サイズ        | 32 GB   | 64 GB   | 128 GB  | 512 GB  | 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
 
-Standard 管理ディスクで提供されるディスク サイズを次に示します。 
 
-| **Standard 管理<br>ディスクの種類** | **S4**  | **S6**  | **S10**        | **S20** | **S30**        |
-|------------------|---------|---------|----------------|---------|----------------|
-| ディスク サイズ        | 32 GB   | 64 GB   | 128 GB  | 512 GB  | 1024 GB (1 TB) |
+Standard 管理ディスクで提供されるディスク サイズを次に示します。
+
+| **Standard 管理<br>ディスクの種類** | **S4** | **S6** | **S10** | **S20** | **S30** | **S40** | **S50** |
+|------------------|---------|---------|--------|--------|----------------|----------------|----------------| 
+| ディスク サイズ        | 32 GB   | 64 GB   | 128 GB | 512 GB | 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
+
 
 **トランザクション数**: Standard 管理ディスクで実行されるトランザクションの数に対して課金されます。 Premium 管理ディスクの場合、トランザクションのコストはかかりません。
 
@@ -120,15 +119,12 @@ VM が 5 つのディスクを使用しており、それらのディスクが�
 
 ## <a name="managed-disks-and-encryption"></a>Managed Disks と暗号化
 
-Managed Disks に関して説明する暗号化には 2 つの種類があります。 1 つ目は、ストレージ サービスによって実行される Storage Service Encryption (SSE) です。 2 つ目は、OS と VM 用データ ディスクで有効にできる Azure Disk Encryption です。 
+Managed Disks に関して説明する暗号化には 2 つの種類があります。 1 つ目は、ストレージ サービスによって実行される Storage Service Encryption (SSE) です。 2 つ目は、OS と VM 用データ ディスクで有効にできる Azure Disk Encryption です。
 
 ### <a name="storage-service-encryption-sse"></a>Storage Service Encryption (SSE)
 
-Azure Storage では、ストレージ アカウントに書き込まれたデータの自動暗号化をサポートしています。 詳細については、「[Azure Storage Service Encryption for Data at Rest](storage-service-encryption.md)」をご覧ください。 管理ディスク上のデータはどうでしょうか。 現時点では、Managed Disks で Storage Service Encryption を有効にすることはできません。 ただし、今後リリースされる予定です。 それまでの間は、暗号化されたストレージ アカウント内に存在し、それ自体も暗号化されている VHD ファイルの使用方法を理解しておく必要があります。 
+[Azure Storage Service Encryption ](storage-service-encryption.md) は、保管データの暗号化を提供し、データの安全性を保護して組織のセキュリティおよびコンプライアンス要件を満たします。 SSE は、管理ディスクを使用できるすべてのリージョンのすべての管理ディスク、スナップショット、イメージに対して既定で有効になっています。 2017 年 6 月 10 日以降、新しいすべての管理ディスク、スナップショット、イメージおよび既存の管理ディスクに書き込まれた新しいデータは、Microsoft が管理するキーで自動的に暗号化されます。  詳細については、「[管理ディスクに関する FAQ ページ](storage-faq-for-disks.md#managed-disks-and-storage-service-encryption)」を参照してください。
 
-SSE では、ストレージ アカウントに書き込まれたデータを暗号化します。 SSE によって暗号化されたことがある VHD ファイルがある場合、その VHD ファイルを使用して Managed Disks を使用する VM を作成することはできません。 また、暗号化された非管理対象ディスクを管理ディスクに変換することもできません。 該当のストレージ アカウントで暗号化を無効にしても、VHD ファイルが元の状態に戻り、暗号化が解除されるわけではありません。 
-
-暗号化されたディスクを使用するには、まず、暗号化されたことのないストレージ アカウントに VHD ファイルをコピーする必要があります。 これで、Managed Disks を使用する VM を作成し、作成時にその VHD ファイルを指定できるようになります。また、コピーした VHD ファイルを Managed Disks を使用する実行中の VM にアタッチすることもできます。 
 
 ### <a name="azure-disk-encryption-ade"></a>Azure Disk Encryption (ADE)
 
@@ -138,7 +134,7 @@ Azure Disk Encryption を使用すると、IaaS 仮想マシンで使用され�
 
 Managed Disks の詳細については、次の記事をご覧ください。
 
-### <a name="get-started-with-managed-disks"></a>管理ディスクの概要 
+### <a name="get-started-with-managed-disks"></a>管理ディスクの概要
 
 * [Resource Manager と PowerShell を使用して VM を作成する](../virtual-machines/virtual-machines-windows-ps-create.md)
 
@@ -150,7 +146,9 @@ Managed Disks の詳細については、次の記事をご覧ください。
 
 * [Managed Disks の PowerShell サンプル スクリプト](https://github.com/Azure-Samples/managed-disks-powershell-getting-started)
 
-### <a name="compare-managed-disks-storage-options"></a>Managed Disks のストレージ オプションの比較 
+* [Azure Resource Manager テンプレートでの管理ディスクの使用](storage-using-managed-disks-template-deployments.md)
+
+### <a name="compare-managed-disks-storage-options"></a>Managed Disks のストレージ オプションの比較
 
 * [Premium Storage とディスク](storage-premium-storage.md)
 

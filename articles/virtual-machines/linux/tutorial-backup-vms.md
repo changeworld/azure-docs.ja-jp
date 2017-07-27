@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/05/2017
 ms.author: cynthn
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 8ec31be4c2cdd634a0e45b58a6afaeaca1c4896e
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 4dcfad63fdc610160bd47a3b900591fb06585005
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 06/01/2017
 
 ---
 # <a name="back-up-linux--virtual-machines-in-azure"></a>Azure での Linux 仮想マシンのバックアップ
@@ -46,7 +47,7 @@ Azure Backup サービスがスナップショットを取ると、データは�
 Recovery Services コンテナーに対するバックアップを 1 日 1 回の単純なスケジュールで作成します。 
 
 1. [Azure ポータル](https://portal.azure.com/)にサインインします。
-2. 左側のメニューの **[仮想マシン]** を選択します。 
+2. 左側のメニューから **[仮想マシン]** を選択します。 
 3. バックアップする VM を一覧から選択します。
 4. その VM のブレードの **[設定]** セクションで **[バックアップ]** をクリックします。 **[バックアップの有効化]** ブレードが開きます。
 5. **[Recovery Services コンテナー]** の **[新規作成]** をクリックして、新しいコンテナーの名前を入力します。 仮想マシンと同じリソース グループで、仮想マシンと同じ場所に新しいコンテナーが作成されます。
