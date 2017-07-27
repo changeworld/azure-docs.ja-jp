@@ -1,5 +1,5 @@
 ---
-title: "HDInsight で Hadoop のデバッグをする: ログの表示とエラーメッセージの解釈 | Microsoft Docs"
+title: "HDInsight で Hadoop をデバッグする: ログを表示してエラーメッセージを解釈する - Azure | Microsoft Docs"
 description: "PowerShell を使用して HDInsight を管理しているときに表示されることがあるエラー メッセージと、回復するために使用できる手順について説明します。"
 services: hdinsight
 tags: azure-portal
@@ -16,10 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: a2b32f23381ed1f9912edf6432f029e51bdf1be4
-ms.openlocfilehash: bcf2791f0e1788d7d18a4efc123066aaf633d549
-ms.lasthandoff: 02/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 3031644e2975fd59edff13c7a9da1efa418e8abd
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -89,7 +90,7 @@ Power Query は、[www.microsoft.com/en-us/download/details.aspx?id=39379](http:
 7. **[OK]** をクリックしてデータをインポートします。
 8. **[TraceLevel]**、[Role]、**[ComponentName]** の各列を選択し、リボンの **[グループ化]** コントロールをクリックします。
 9. [グループ化] ダイアログ ボックスで **[OK]** をクリックします。
-10. **[適用して閉じる]** をクリックします。
+10. [適用して閉じる] をクリックします。
 
 これで、Excel を使用して、必要に応じてフィルター処理と並べ替えを実行できるようになりました。 当然ながら、問題の発生時にその問題を掘り下げるために、他の列 (Message など) を含めることもできますが、前に説明した列を選択してグループ化すると、Hadoop サービスで何が起こっているかを適切に把握できます。 setuplog テーブルと hadoopinstalllog テーブルにも同じ考え方が当てはまります。
 

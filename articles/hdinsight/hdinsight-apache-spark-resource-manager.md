@@ -1,5 +1,5 @@
 ---
-title: "Azure HDInsight での Apache Spark クラスターのリソースの管理 | Microsoft Docs"
+title: "Azure HDInsight 上の Apache Spark クラスターのリソースを管理する | Microsoft Docs"
 description: "Azure HDInsight で Spark クラスターのリソースを管理してパフォーマンスを向上させる方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 05/25/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: 68972d9422dd0861318b0f26a4543f7596d9a680
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 7acd83cf477f9294c75e1bf11f093be50c32e786
 ms.contentlocale: ja-jp
-ms.lasthandoff: 01/24/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -39,7 +39,7 @@ ms.lasthandoff: 01/24/2017
 1. [Azure ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。 **[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。
 2. Spark クラスター ブレードで、 **[ダッシュ ボード]**をクリックします。 入力を求められたら、Spark クラスターの管理者資格情報を入力します。
 
-    ![Ambari を起動する](./media/hdinsight-apache-spark-resource-manager/hdispark.cluster.launch.dashboard.png "Resource Manager を開始する")
+    ![Ambari を起動する](./media/hdinsight-apache-spark-resource-manager/hdinsight-launch-cluster-dashboard.png "Resource Manager を開始する")
 3. これで、次の図のように、Ambari Web UI が起動されます。
 
     ![Ambari Web UI](./media/hdinsight-apache-spark-resource-manager/ambari-web-ui.png "Ambari Web UI")   
@@ -170,7 +170,7 @@ Spark の動的割り当てを使用するため、Thrift サーバーから利�
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
 * [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
 * [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
+* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-zeppelin-notebook.md)
 * [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 * [Jupyter Notebook で外部のパッケージを使用する](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
 * [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
@@ -186,6 +186,5 @@ Spark の動的割り当てを使用するため、Thrift サーバーから利�
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
