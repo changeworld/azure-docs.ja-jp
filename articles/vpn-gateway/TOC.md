@@ -87,7 +87,7 @@
 ## [ExpressRoute](/azure/expressroute/)
 
 # リソース
-## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=networking)
 ## [ブログ](https://azure.microsoft.com/blog/topics/networking)
 ## [フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [料金](https://azure.microsoft.com/pricing/details/vpn-gateway)

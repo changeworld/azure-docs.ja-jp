@@ -50,7 +50,7 @@
 
 # リソース
 ## [キー、シークレット、証明書について](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates)
-## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [ブログ](http://blogs.technet.com/b/kv/)
 ## [コード サンプル](https://www.microsoft.com/download/details.aspx?id=45343)
 ## [フォーラム](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureKeyVault)

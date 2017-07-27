@@ -112,7 +112,7 @@
 ## [REST ()](https://msdn.microsoft.com/library/azure/ee460812)
 
 # リソース
-## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=compute)
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/cloud-services/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-us/home?forum=windowsazuredevelopment)
 ## [料金](https://azure.microsoft.com/pricing/details/cloud-services/)

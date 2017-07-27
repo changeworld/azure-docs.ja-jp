@@ -81,7 +81,8 @@
 ### [アプリケーションへのアクセス](../../virtual-machines-windows-troubleshoot-app-connection.md)
 ### [新しい VM の作成に関するクラシック デプロイの問題](troubleshoot-deployment-new-vm.md)
 ### [既存の VM の再起動またはサイズ変更に関するクラシック デプロイの問題](virtual-machines-windows-classic-restart-resize-error-troubleshooting.md)
-## [RDP パスワードをリセットする](reset-rdp.md)
+### [RDP パスワードをリセットする](reset-rdp.md)
+### [トラブルシューティング用 VM に仮想ハード ディスクを接続する](troubleshoot-recovery-disks-portal.md)
 
 # リファレンス
 ## [PowerShell](/powershell/azure/overview)
@@ -95,7 +96,7 @@
 ## [Storage REST](/rest/api/storageservices)
 
 # リソース
-## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=compute)
 ## [料金](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)
 ## [リージョン別の提供状況](https://azure.microsoft.com/regions/services/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-machine)

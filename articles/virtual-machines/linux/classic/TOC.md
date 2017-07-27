@@ -66,6 +66,7 @@
 ## トラブルシューティング
 ### [VM のデプロイ](troubleshoot-deployment-new-vm.md)
 ### [VM を再起動またはサイズ変更する](restart-resize-error-troubleshooting.md)
+### [トラブルシューティング用 VM に仮想ハード ディスクを接続する](troubleshoot-recovery-disks-portal.md)
 
 # リファレンス
 ## [PowerShell](/powershell/azure/overview)
@@ -79,7 +80,7 @@
 
 
 # リソース
-## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=compute)
 ## [料金](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux)
 ## [リージョン別の提供状況](https://azure.microsoft.com/regions/services)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-machine)

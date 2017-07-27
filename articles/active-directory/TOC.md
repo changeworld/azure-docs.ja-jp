@@ -384,7 +384,7 @@
 
 # リソース
 ## [Azure フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory)
-## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
 ## [料金](https://azure.microsoft.com/pricing/details/active-directory/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=active-directory)

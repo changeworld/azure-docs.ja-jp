@@ -106,4 +106,4 @@
 #### [証明書の資格情報](active-directory-certificate-credentials.md)
 ### [スコープ](active-directory-v2-scopes.md)
 # リソース
-## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)

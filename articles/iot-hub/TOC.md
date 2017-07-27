@@ -173,7 +173,7 @@
 # リソース
 ## [IoT デバイス カタログ向けの Azure 認定](https://catalog.azureiotsuite.com/)
 ## [Azure IoT デベロッパー センター](https://azure.microsoft.com/develop/iot/)
-## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=internet-of-things)
 ## [DeviceExplorer ツール](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)
 ## [iothub-diagnostics ツール](https://github.com/Azure/iothub-diagnostics)
 ## [iothub-explorer ツール](https://github.com/Azure/iothub-explorer)

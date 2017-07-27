@@ -31,8 +31,8 @@
 ## 管理
 ### [Batch PowerShell コマンドレット](batch-powershell-cmdlets-get-started.md)
 ### [Azure CLI](batch-cli-get-started.md)
-#### [Batch アカウントを作成する](./scripts/batch-cli-sample-create-account.md)
 #### [コードを使用せずに Batch ジョブを実行する](batch-cli-templates.md)
+#### [Batch アカウントを作成する](./scripts/batch-cli-sample-create-account.md)
 #### [アプリケーションを追加する](./scripts/batch-cli-sample-add-application.md)
 #### [プールを管理する](./scripts/batch-cli-sample-manage-pool.md)
 #### [ジョブとタスクを実行する](./scripts/batch-cli-sample-run-job.md)

@@ -16,7 +16,8 @@
 ### [2 - Docker Compose を使用した .NET アプリのデプロイ](service-fabric-host-app-in-a-container.md)
 
 # サンプル
-## [PowerShell](service-fabric-powershell-samples.md) 
+## [PowerShell](service-fabric-powershell-samples.md)
+## [Azure CLI](samples-cli.md)
 # 概念
 ## [マイクロサービスの概要](service-fabric-overview-microservices.md)
 ## [全体像](service-fabric-content-roadmap.md)

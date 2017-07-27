@@ -141,7 +141,7 @@
 ## [PowerShell コマンドレット](sql-data-warehouse-reference-powershell-cmdlets.md)
 
 # リソース
-## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=databases)
 ## [フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse)
 ## [料金](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=sql-data-warehouse)

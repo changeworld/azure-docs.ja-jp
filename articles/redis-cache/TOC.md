@@ -56,7 +56,7 @@
 ## [REST ()](https://docs.microsoft.com/rest/api/redis/)
 
 # リソース
-## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=databases)
 ## [料金](https://azure.microsoft.com/pricing/details/cache/)
 ## [Redis Cache のサンプル](cache-redis-samples.md)
 

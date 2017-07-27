@@ -54,7 +54,7 @@
 
 # リソース
 ## [Azure AD フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory)
-## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [お問い合わせ](active-directory-ds-contact-us.md)
 ## [料金](https://azure.microsoft.com/pricing/details/active-directory-ds/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=active-directory-ds)

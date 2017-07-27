@@ -128,7 +128,7 @@
 ## [REST ()](/rest/api/resources/)
 
 # リソース
-## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=azure-resource-manager)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-resource-manager)
 ## [スロットル リクエスト](resource-manager-request-limits.md)
