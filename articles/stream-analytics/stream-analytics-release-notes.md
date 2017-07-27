@@ -15,19 +15,39 @@ ms.workload: data-services
 ms.date: 05/03/2017
 ms.author: jeffstok
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 6a5ec66172e7920a89ff8c0592224f01f19c9e41
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: e1ab8dd89c0590c8ee309a032efc17edeacf4d0e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/04/2017
 
 
 ---
 # <a name="stream-analytics-release-notes"></a>Stream Analytics のリリース ノート
 
+## <a name="notes-for-06142017-update-of-stream-analytics-tools-for-visual-studio"></a>Visual Studio の Stream Analytics ツールの 2017 年 6 月 14 日付けの更新に関するノート
+この更新は、Visual Studio Tools を対象としています。 このリリースには、次の新機能が含まれています。
+
+| タイトル | Description |
+| --- | --- |
+| Java スクリプト エディターのサポート |Java スクリプト関数の作成後に、ネイティブの Java スクリプト エディターのエクスペリエンスを利用できます。|
+| ジョブの実行時のエラー メッセージの表示 | ジョブの実行中にランタイム エラーが発生した場合、表示時間枠を調整することによってそれらのエラーを [エラー] タブに表示できます。 既定では、過去 30 分間のエラー メッセージが表示されます。 |
+| ローカル テストの入力での CSV と Avro のサポート | JSON に加え、CSV および Avro ファイル形式をローカル テストの入力に使用できるようになりました。|
+
 ## <a name="notes-for-05032017-update-of-stream-analytics"></a>Stream Analytics の 2017 年 5 月 3 日付けの更新に関するノート
 この更新は、トラブルシューティング ドキュメントのリリースについてお知らせするものです。
 
 [トラブルシューティング ガイド](stream-analytics-troubleshooting-guide.md)とその他のドキュメントがリリースされています。 ぜひご覧になって、フィードバックをお寄せください。
+
+## <a name="notes-for-04242017-update-of-stream-analytics-tools-for-visual-studio"></a>Visual Studio の Stream Analytics ツールの 2017 年 4 月 24 日付けの更新に関するノート
+この更新は、Visual Studio Tools を対象としています。 このリリースには、次の新機能が含まれています。
+
+| タイトル | Description |
+| --- | --- |
+| Visual Studio でのローカル テストの結果の表示 | ローカル テストの出力結果を表示するには、出力コンソール ウィンドウで Enter キーを押すか、ウィンドウを閉じます。 結果は、Visual Studio のウィンドウに表形式で表示されます。 |
+| JSON 形式のローカル出力結果 | ローカル テストを実行すると、JSON と CSV の両方のファイル形式で出力結果が生成されます。 |
+| BLOB またはテーブル ストレージの入力/出力データのプレビュー | ジョブ ビューで、BLOB Storage または Table Storage の入力/出力をダブルクリックすることで、Visual Studio 内のデータを非常に簡単にプレビューできます。 |
+| 入力/出力のエラー メッセージの表示 | ジョブの入力または出力に関連するランタイム エラーが発生した場合、ジョブ ダイアグラムに表示されます。ジョブ ダイアグラムでエラーをポイントすると、詳細なエラー メッセージを確認できます。|
+
 
 ## <a name="notes-for-02012017-release-of-stream-analytics"></a>Stream Analytics の 2017 年 2 月 1 日付けリリースに関するノート
 このリリースには、次の更新プログラムが含まれています。
@@ -147,7 +167,7 @@ ms.lasthandoff: 05/10/2017
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
-* [Azure Stream Analytics の使用](stream-analytics-get-started.md)
+* [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)

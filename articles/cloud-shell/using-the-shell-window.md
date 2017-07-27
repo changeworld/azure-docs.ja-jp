@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 06/14/2017
 ms.author: juluk
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 69316d271fc4847565d183293013580b61695731
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 024f2ea5ba574444bc096d655a8aa9f313f7f2fe
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 06/28/2017
 
 ---
 
@@ -32,9 +32,10 @@ Cloud Shell では、各セッションが別の Bash プロセスとして存�
 
 ## <a name="restart-cloud-shell"></a>Cloud Shell の再起動
 ![](media/recycle.png)
-* ツールバーの再起動アイコンをクリックして、Cloud Shell マシンをリセットします。
+> [!WARNING]
+> Cloud Shell を再起動すると、マシンの状態がリセットされ、ファイル共有に保持されていないファイルはすべて失われます。
 
-> ![警告] Cloud Shell を再起動すると、マシンの状態がリセットされ、clouddrive に保持されていないファイルはすべて失われます。
+* ツールバーの再起動アイコンをクリックして、Cloud Shell マシンをリセットします。
 
 ## <a name="minimize--maximize-cloud-shell-window"></a>Cloud Shell ウィンドウの最小化と最大化
 ![](media/minmax.png)
